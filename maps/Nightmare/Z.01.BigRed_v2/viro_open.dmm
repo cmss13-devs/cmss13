@@ -357,7 +357,7 @@
 /obj/structure/machinery/door/airlock/almayer/research{
 	dir = 1;
 	name = "\improper Virology Lab Decontamination";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "warnwhite";

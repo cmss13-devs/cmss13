@@ -2040,7 +2040,7 @@
 "dB" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -2672,7 +2672,7 @@
 "eG" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -2909,7 +2909,7 @@
 "fe" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
@@ -3030,7 +3030,7 @@
 "fl" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";

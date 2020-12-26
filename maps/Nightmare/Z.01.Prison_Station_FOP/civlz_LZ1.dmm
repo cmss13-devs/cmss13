@@ -8,7 +8,7 @@
 "ac" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -200,7 +200,7 @@
 /area/prison/hanger/main)
 "ay" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/main)
@@ -275,7 +275,7 @@
 "aG" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/pipes/standard/simple/hidden/scrubbers,

@@ -932,7 +932,7 @@
 /area/adminlevel/bunker01/bathroom)
 "gj" = (
 /obj/structure/machinery/chem_dispenser{
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -1227,7 +1227,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 4;
 	name = "\improper Bedroom";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2058,7 +2058,7 @@
 "kL" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Operating Theatre";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2202,7 +2202,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Operating Theatre";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -3223,7 +3223,7 @@
 "mT" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	name = "\improper Tools";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -3256,7 +3256,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 8;
 	name = "\improper Command Room";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -3990,7 +3990,7 @@
 "oO" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Hydroponics";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -4084,7 +4084,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Bedroom";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -4112,7 +4112,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/computer/secure_data{
 	dir = 4;
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -4427,7 +4427,7 @@
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	dir = 1;
 	name = "\improper Tools";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
@@ -4481,7 +4481,7 @@
 "ql" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	name = "\improper Gear Storage";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -4520,7 +4520,7 @@
 "qr" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
@@ -4614,7 +4614,7 @@
 "qC" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -4725,7 +4725,7 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 1;
 	name = "\improper Security";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -4891,7 +4891,7 @@
 "rk" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	name = "\improper Security";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -4942,7 +4942,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	dir = 1;
 	name = "\improper Entrance";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -4992,7 +4992,7 @@
 "rt" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cell 3";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -5131,7 +5131,7 @@
 "rG" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medbay";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -5294,7 +5294,7 @@
 "rX" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cell 2";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -5328,7 +5328,7 @@
 /area/adminlevel/bunker01/security)
 "sa" = (
 /obj/structure/machinery/chem_dispenser{
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/machinery/firealarm{
@@ -5383,7 +5383,7 @@
 "se" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cell 1";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -5586,7 +5586,7 @@
 "sC" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Chemistry";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -5610,7 +5610,7 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 1;
 	name = "\improper Security";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -5733,7 +5733,7 @@
 "sS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Storage";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -5774,7 +5774,7 @@
 	dir = 1;
 	id_tag = "bunker_or1";
 	name = "\improper Operating Room 1";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -5968,7 +5968,7 @@
 /obj/structure/machinery/crema_switch{
 	pixel_x = 23;
 	pixel_y = 0;
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -6079,7 +6079,7 @@
 	dir = 1;
 	id_tag = "bunker_or2";
 	name = "\improper Operating Room 2";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -6092,7 +6092,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	name = "\improper Crematorium";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -6107,7 +6107,7 @@
 "tw" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	name = "\improper Security";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -6141,7 +6141,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -6203,7 +6203,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/secure{
 	dir = 8;
 	name = "\improper Entrance";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -6214,7 +6214,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 1;
 	name = "\improper Medbay";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -6523,7 +6523,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "\improper Leader's Bedroom";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
@@ -6786,7 +6786,7 @@
 "Bt" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -6806,7 +6806,7 @@
 "BC" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Hydroponics";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /turf/open/floor/almayer,
 /area/adminlevel/bunker01/hydroponics)
@@ -6879,7 +6879,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/plating/almayer,
@@ -7201,7 +7201,7 @@
 "Fn" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Kitchen";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -7304,7 +7304,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{
@@ -7625,7 +7625,7 @@
 "Km" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Kitchen";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -7670,7 +7670,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	name = "\improper Tools";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -8042,7 +8042,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 1;
 	name = "\improper Medbay";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag,
@@ -8070,7 +8070,7 @@
 "Nm" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	name = "\improper Gear Storage";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer,
@@ -8387,7 +8387,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Bedroom";
-	req_access = list(201)
+	req_access_txt = "201"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer/antag{
 	dir = 2
@@ -8704,7 +8704,7 @@
 "SA" = (
 /obj/structure/machinery/door/airlock/almayer/marine/requisitions{
 	name = "\improper Tools";
-	req_access = list(201);
+	req_access_txt = "201";
 	req_one_access = null
 	},
 /turf/open/floor/almayer{

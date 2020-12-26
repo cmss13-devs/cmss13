@@ -144,6 +144,11 @@
 	desc = "An ammunition case containing 20 M41A magazines."
 	supplies = list(/obj/item/ammo_magazine/rifle = 20)
 
+/obj/structure/largecrate/supply/ammo/m41a/half
+	name = "\improper M41A magazine case (x10)"
+	desc = "An ammunition case containing 10 M41A magazines."
+	supplies = list(/obj/item/ammo_magazine/rifle = 10)
+
 /obj/structure/largecrate/supply/ammo/m41a_box
 	name = "\improper M41A ammunition box case (x4)"
 	desc = "An ammunition case containing four M41A 600 round boxes of ammunition."
@@ -159,10 +164,20 @@
 	desc = "An ammunition case containing sixteen M39 HV magazines."
 	supplies = list(/obj/item/ammo_magazine/smg/m39 = 16)
 
+/obj/structure/largecrate/supply/ammo/m39/half
+	name = "\improper M39 HV magazine case (x8)"
+	desc = "An ammunition case containing eight M39 HV magazines."
+	supplies = list(/obj/item/ammo_magazine/smg/m39 = 8)
+
 /obj/structure/largecrate/supply/ammo/pistol
 	name = "sidearm ammunition case (x40)"
 	desc = "An ammunition case containing sixteen M44 speedloaders, and twenty-four M4A3 magazines."
 	supplies = list(/obj/item/ammo_magazine/revolver = 16, /obj/item/ammo_magazine/pistol = 24)
+
+/obj/structure/largecrate/supply/ammo/pistol/half
+	name = "sidearm ammunition case (x20)"
+	desc = "An ammunition case containing eight M44 speedloaders, and twelve M4A3 magazines."
+	supplies = list(/obj/item/ammo_magazine/revolver = 8, /obj/item/ammo_magazine/pistol = 12)
 
 /obj/structure/largecrate/supply/ammo/sentry
 	name = "\improper UA 571-C ammunition drum case (x6)"

@@ -167,7 +167,7 @@
 	icon_state = "W"
 	},
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/plating,
 /area/prison/research/secret/bioengineering)
@@ -238,7 +238,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Research Suit Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret)
@@ -263,7 +263,7 @@
 /area/prison/research/secret)
 "aja" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret)
@@ -346,7 +346,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Research Armory";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret)
@@ -617,7 +617,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Chemistry";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -755,7 +755,7 @@
 /area/prison/research/secret/chemistry)
 "aog" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 6;
@@ -1071,7 +1071,7 @@
 /area/prison/research/RD)
 "arV" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
@@ -1568,7 +1568,7 @@
 /area/prison/research)
 "avC" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -1707,7 +1707,7 @@
 /area/prison/hanger/research)
 "axA" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/research)
@@ -1841,7 +1841,7 @@
 /area/prison/research)
 "azc" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-kitchen";
@@ -1988,7 +1988,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor (SOUTHWEST)";
@@ -2181,7 +2181,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
@@ -2650,7 +2650,7 @@
 /area/prison/quarters/research)
 "aHd" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/prison/quarters/research)
@@ -2661,7 +2661,7 @@
 	dir = 1
 	},
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/wood,
 /area/prison/quarters/research)
@@ -2724,7 +2724,7 @@
 /area/prison/hangar_storage/main)
 "aIk" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
@@ -2774,7 +2774,7 @@
 /area/prison/research)
 "aJk" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison{
 	dir = 2;
@@ -2839,7 +2839,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Research Dorms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/prison/quarters/research)
@@ -3127,7 +3127,7 @@
 /area/prison/quarters/research)
 "aKk" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 2;
@@ -3183,7 +3183,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/quarters/research)
@@ -3321,7 +3321,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Research Restrooms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -3343,7 +3343,7 @@
 	icon_state = "door_open";
 	name = "Research Director's Quarters";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/wood,
 /area/prison/quarters/research)

@@ -94,8 +94,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
 	name = "\improper Chemistry Laboratory";
-	req_access = list(20);
-	req_one_access = list()
+	req_access_txt = "20";
+	req_one_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
@@ -162,7 +162,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreen (WEST)";
@@ -429,7 +429,7 @@
 "bb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Hospital";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
@@ -751,7 +751,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Operating Theatre";
-	req_one_access = list(2,8,19)
+	req_one_access_txt = "2;8;19"
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_marked (SOUTHWEST)";
@@ -827,7 +827,7 @@
 "ch" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Bay";
-	req_one_access = list(2,8,19)
+	req_one_access_txt = "2;8;19"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -1316,7 +1316,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -1839,7 +1839,7 @@
 	icon_state = "pipe-c"
 	},
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage{
-	req_access = list(11)
+	req_access_txt = "11"
 	},
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -1952,7 +1952,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreen (EAST)";
@@ -1988,7 +1988,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreen (WEST)";
@@ -2126,7 +2126,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Operating Theatre";
-	req_one_access = list(2,8,19)
+	req_one_access_txt = "2;8;19"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor{
@@ -2245,7 +2245,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/machinery/light/small{
 	tag = "icon-bulb1 (WEST)";
@@ -2382,7 +2382,7 @@
 "fM" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/southleft{
-	req_one_access = list(2,21)
+	req_one_access_txt = "2;21"
 	},
 /obj/structure/machinery/door/window/northleft,
 /turf/open/floor/prison{
@@ -3190,7 +3190,7 @@
 "hU" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Engineering Dorms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -4004,7 +4004,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	no_panel = 1;
 	not_weldable = 1;
-	req_one_access = list(2,21)
+	req_one_access_txt = "2;21"
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -4405,7 +4405,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/belt/utility/full,
@@ -4457,7 +4457,7 @@
 "lk" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage{
-	req_access = list(11)
+	req_access_txt = "11"
 	},
 /turf/open/floor{
 	tag = "icon-asteroidfloor (NORTH)";
@@ -5163,7 +5163,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/gm/dirt,
 /area/whiskey_outpost/outside/mortar_pit)
@@ -5456,8 +5456,8 @@
 /obj/structure/machinery/door/airlock/almayer/marine/delta{
 	dir = 1;
 	name = "\improper Pillbox Tequila";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -5572,8 +5572,8 @@
 /obj/structure/machinery/door/airlock/almayer/marine/delta{
 	dir = 1;
 	name = "\improper Pillbox Tequila";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -6159,8 +6159,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
 	name = "\improper Medical Storage";
-	req_access = list(20);
-	req_one_access = list()
+	req_access_txt = "20";
+	req_one_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
@@ -6674,8 +6674,8 @@
 "qt" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Commander's Storage";
-	req_access = list(19);
-	req_one_access = list()
+	req_access_txt = "19";
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -6686,7 +6686,7 @@
 "qu" = (
 /obj/structure/closet/secure_closet/bar{
 	name = "Success Cabinet";
-	req_access = list(1)
+	req_access_txt = "1"
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -6724,7 +6724,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
 	name = "\improper Commander's Quarters";
-	req_access = list(1)
+	req_access_txt = "1"
 	},
 /turf/open/floor/wood,
 /area/whiskey_outpost/inside/cic)
@@ -6776,8 +6776,8 @@
 /obj/structure/machinery/door/airlock/almayer/marine/alpha{
 	dir = 1;
 	name = "\improper Pillbox Bourbon";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -6802,8 +6802,8 @@
 /obj/structure/machinery/door/airlock/almayer/marine/alpha{
 	dir = 1;
 	name = "\improper Pillbox Bourbon";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -7107,7 +7107,7 @@
 "rx" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Engineering";
-	req_one_access = list(2,7)
+	req_one_access_txt = "2;7"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7269,7 +7269,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/bunker)
@@ -7354,8 +7354,8 @@
 /obj/structure/machinery/door/airlock/almayer/marine/bravo{
 	dir = 1;
 	name = "\improper Pillbox Wine";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -7386,8 +7386,8 @@
 /obj/structure/machinery/door/airlock/almayer/marine/bravo{
 	dir = 1;
 	name = "\improper Pillbox Wine";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -7428,7 +7428,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /obj/item/storage/large_holster/machete/full,
 /obj/item/storage/large_holster/machete/full,
@@ -7480,7 +7480,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /obj/item/storage/box/m94,
 /obj/item/device/motiondetector,
@@ -7660,8 +7660,8 @@
 /obj/structure/machinery/door/airlock/almayer/marine/charlie{
 	dir = 1;
 	name = "\improper Pillbox Vodka";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -7777,8 +7777,8 @@
 /obj/structure/machinery/door/airlock/almayer/marine/charlie{
 	dir = 1;
 	name = "\improper Pillbox Vodka";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -8161,7 +8161,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -9562,7 +9562,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTHWEST)";
@@ -9601,7 +9601,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreen (NORTHEAST)";
@@ -10115,7 +10115,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -10155,7 +10155,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = 30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -10642,8 +10642,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
 	name = "\improper Triage";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
@@ -10655,8 +10655,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 4;
 	name = "\improper Triage";
-	req_access = list();
-	req_one_access = list()
+	req_access = null;
+	req_one_access = null
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10918,7 +10918,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
@@ -13361,7 +13361,7 @@
 	name = "Emergency NanoMed";
 	pixel_x = -30;
 	pixel_y = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";

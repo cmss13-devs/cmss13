@@ -1417,7 +1417,7 @@
 /obj/structure/machinery/door_control{
 	id = "dam_checkpoint_north";
 	name = "Checkpoint Lockdown";
-	req_access = list()
+	req_access = null
 	},
 /obj/effect/landmark/objective_landmark/far,
 /turf/open/floor/prison{
@@ -7389,7 +7389,7 @@
 /area/desert_dam/interior/lab_northeast/east_lab_workshop)
 "auM" = (
 /obj/structure/machinery/cm_vending/sorted/tech/science{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -8397,7 +8397,7 @@
 /obj/structure/machinery/door_control{
 	id = "dam_checkpoint_northeast";
 	name = "Checkpoint Lockdown";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -10197,7 +10197,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
 	pixel_x = 30;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/interior/wood/alt,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -16812,7 +16812,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/faxmachine{
 	density = 0;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
@@ -17345,7 +17345,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "\improper Colony Administration Office";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -17421,7 +17421,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "\improper Colony Administration Office";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -18901,7 +18901,7 @@
 /obj/structure/machinery/door_control{
 	id = "hangar_dam_1";
 	name = "Hangar Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -20037,7 +20037,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/faxmachine{
 	density = 0;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
@@ -24934,7 +24934,7 @@
 /obj/structure/machinery/door_control{
 	id = "hangar_dam_2";
 	name = "Hangar Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -25506,7 +25506,7 @@
 "bwr" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper SMES";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark2";
@@ -26107,7 +26107,7 @@
 /obj/structure/machinery/door_control{
 	id = "dam_shutter_hangar";
 	name = "Hangar Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -26570,7 +26570,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "\improper Colony Overseer's Office";
-	req_access = list()
+	req_access = null
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -27097,7 +27097,7 @@
 /obj/structure/machinery/door_control{
 	id = "dam_checkpoint_northwest";
 	name = "Checkpoint Lockdown";
-	req_access = list()
+	req_access = null
 	},
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/prison{
@@ -30810,7 +30810,7 @@
 /obj/structure/machinery/door_control{
 	id = "dam_stormlock_east";
 	name = "Storm Shutter Lockdown";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
@@ -32211,7 +32211,7 @@
 /obj/structure/machinery/door_control{
 	id = "dam_stormlock_central";
 	name = "Storm Shutter Lockdown";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -38193,7 +38193,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Telecommunications Substation";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/substation/west)
@@ -38805,7 +38805,7 @@
 "clq" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Lab Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bright_clean2"
@@ -39375,7 +39375,7 @@
 "cnl" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Telecommunications";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/telecommunication)
@@ -39667,7 +39667,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Lab Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
@@ -40500,7 +40500,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 1;
 	name = "\improper Flight Control";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/warehouse/warehouse)
@@ -41009,7 +41009,7 @@
 /area/desert_dam/exterior/valley/valley_cargo)
 "csw" = (
 /obj/structure/machinery/computer/telecomms/traffic{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 9;
@@ -41264,7 +41264,7 @@
 /area/desert_dam/exterior/valley/valley_civilian)
 "cte" = (
 /obj/structure/machinery/computer/telecomms/server{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -41286,7 +41286,7 @@
 /area/desert_dam/interior/dam_interior/west_tunnel)
 "cth" = (
 /obj/structure/machinery/computer/telecomms/monitor{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 1;
@@ -42902,7 +42902,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Telecommunications";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "greencorner"
@@ -43743,7 +43743,7 @@
 /area/desert_dam/building/medical/primary_storage)
 "cAo" = (
 /obj/structure/closet/secure_closet/medical3{
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -44473,7 +44473,7 @@
 /area/desert_dam/building/medical/primary_storage)
 "cCo" = (
 /obj/structure/closet/secure_closet/medical3{
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -46151,7 +46151,7 @@
 /obj/structure/machinery/door_control{
 	id = "cargo_hangar1";
 	name = "Warehouse Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -46518,7 +46518,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/east_wing_hallway)
@@ -46663,7 +46663,7 @@
 /obj/structure/machinery/door_control{
 	id = "cargo_hangar2";
 	name = "Warehouse Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -46917,7 +46917,7 @@
 /obj/structure/machinery/door_control{
 	id = "cargo_hangar3";
 	name = "Warehouse Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -49077,7 +49077,7 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass{
 	dir = 1;
 	name = "\improper Virology Lab Cell";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -49087,7 +49087,7 @@
 "cPO" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/medical/virology_wing)
@@ -49851,7 +49851,7 @@
 /obj/structure/machinery/door_control{
 	id = "dam_checkpoint_west";
 	name = "Checkpoint Lockdown";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/surface/table/reinforced,
 /obj/effect/landmark/objective_landmark/medium,
@@ -52729,7 +52729,7 @@
 "ded" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
@@ -53611,7 +53611,7 @@
 /obj/structure/machinery/door_control{
 	id = "dam_stormlock_north2";
 	name = "Storm Shutter Lockdown";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/r_wall/bunker{
 	name = "reinforced metal wall"
@@ -57501,7 +57501,7 @@
 "dHh" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Lab Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/dorms/hallway_westwing)
@@ -61642,7 +61642,7 @@
 /obj/structure/machinery/door_control{
 	id = "warehouse_dam_2";
 	name = "Warehouse Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
@@ -63838,7 +63838,7 @@
 /obj/structure/machinery/door_control{
 	id = "warehouse_dam_2";
 	name = "Warehouse Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall,
 /area/desert_dam/building/cafeteria/loading)
@@ -63924,7 +63924,7 @@
 /obj/structure/machinery/door_control{
 	id = "warehouse_dam_3";
 	name = "Warehouse Shutters";
-	req_access = list()
+	req_access = null
 	},
 /turf/closed/wall,
 /area/desert_dam/building/hydroponics/hydroponics_loading)

@@ -222,7 +222,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Telecommunications";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/telecomms)
@@ -268,7 +268,7 @@
 /area/prison/telecomms)
 "I" = (
 /obj/structure/machinery/computer/telecomms/monitor{
-	req_one_access = list(19, 200)
+	req_one_access_txt = "19;200"
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
@@ -279,7 +279,7 @@
 "J" = (
 /obj/structure/machinery/computer/telecomms/server{
 	req_access = null;
-	req_one_access = list(19, 200)
+	req_one_access_txt = "19;200"
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
@@ -290,7 +290,7 @@
 "K" = (
 /obj/structure/machinery/computer/telecomms/traffic{
 	req_access = null;
-	req_one_access = list(19, 200)
+	req_one_access_txt = "19;200"
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkyellowfull2 (EAST)";
@@ -382,7 +382,7 @@
 "Q" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/pipes/standard/simple/hidden/supply,

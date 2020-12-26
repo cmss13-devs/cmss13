@@ -265,7 +265,7 @@
 /area/prison/security/monitoring/highsec)
 "aE" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
@@ -289,7 +289,7 @@
 "aH" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/ne)
@@ -298,7 +298,7 @@
 /area/prison/maintenance/residential/ne)
 "aJ" = (
 /obj/structure/pipes/vents/pump{
-	dir = 4 
+	dir = 4
 	},
 /obj/effect/decal/warning_stripes{
 	tag = "icon-NW-out";
@@ -488,7 +488,7 @@
 /area/prison/security/monitoring/highsec)
 "bg" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 5;
@@ -690,7 +690,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 4;
 	name = "Civilian Residences Admin";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/scrubbers{
 	tag = "icon-intact-scrubbers (EAST)";
@@ -905,7 +905,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
@@ -924,7 +924,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -999,7 +999,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
 	name = "Civilian Residences Admin";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
@@ -1113,7 +1113,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
@@ -1508,7 +1508,7 @@
 /area/prison/monorail/west)
 "cT" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -1758,7 +1758,7 @@
 /area/prison/security/monitoring/highsec)
 "dx" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -1782,7 +1782,7 @@
 /area/prison/monorail/west)
 "dz" = (
 /obj/structure/pipes/vents/pump{
-	dir = 8 
+	dir = 8
 	},
 /turf/open/floor/prison{
 	tag = "icon-cell_stripe (EAST)";
@@ -2037,7 +2037,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
@@ -2147,7 +2147,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -2248,7 +2248,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -2367,7 +2367,7 @@
 "eA" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -2586,7 +2586,7 @@
 /area/prison/cellblock/highsec/south/north)
 "eR" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
@@ -2629,7 +2629,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"

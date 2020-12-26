@@ -362,7 +362,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Dormitories EVA";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	tag = "icon-dark";
@@ -1219,7 +1219,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Bar Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
@@ -1270,7 +1270,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "\improper Bar Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)
@@ -1478,7 +1478,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
 	name = "\improper Bar Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/bar)

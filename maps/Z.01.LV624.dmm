@@ -535,7 +535,7 @@
 "acn" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Nexus Dome Canteen";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "bar"
@@ -563,8 +563,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Nexus Dome Canteen";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "bar"
@@ -584,8 +584,8 @@
 "acv" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Nexus Dome Canteen";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "bar"
@@ -962,7 +962,7 @@
 	icon_state = "door_locked";
 	locked = 1;
 	name = "Mining Storage";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -2555,7 +2555,7 @@
 "aiL" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Water Filtration Plant";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 8;
@@ -5193,7 +5193,7 @@
 "asM" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper LZ1 Access";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/floor,
@@ -5213,8 +5213,8 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Storage Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -5250,7 +5250,7 @@
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -5397,8 +5397,8 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Leisure Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 5;
@@ -5697,7 +5697,7 @@
 /obj/structure/machinery/door/airlock/almayer/research{
 	locked = 1;
 	name = "\improper Research Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -5855,8 +5855,8 @@
 "auO" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper River Snack Bar";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -6019,7 +6019,7 @@
 	dir = 1;
 	locked = 1;
 	name = "\improper Research Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -6033,7 +6033,7 @@
 	icon_state = "door_open";
 	name = "\improper Research Dome";
 	opacity = 0;
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -6223,8 +6223,8 @@
 "avS" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Storage Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -6313,8 +6313,8 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Robotics Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/robotics)
@@ -6331,7 +6331,7 @@
 /obj/structure/machinery/door/airlock/almayer/research{
 	locked = 1;
 	name = "\improper Research Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -6363,7 +6363,7 @@
 	icon_state = "door_open";
 	name = "\improper Research Dome";
 	opacity = 0;
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -6379,7 +6379,7 @@
 "awo" = (
 /obj/structure/machinery/door/airlock/almayer/research{
 	name = "\improper Research Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -6415,7 +6415,7 @@
 	icon_state = "door_open";
 	name = "\improper Research Dome";
 	opacity = 0;
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -6571,7 +6571,7 @@
 	icon_state = "door_open";
 	name = "\improper Research Dome";
 	opacity = 0;
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -6590,7 +6590,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Leisure Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -6625,8 +6625,8 @@
 "awU" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Leisure Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 5;
@@ -6823,8 +6823,8 @@
 "axB" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Robotics Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 8;
@@ -6980,8 +6980,8 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Storage Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -7085,7 +7085,7 @@
 "ayr" = (
 /obj/structure/machinery/door/airlock/almayer/research{
 	name = "\improper Research Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 5;
@@ -7169,8 +7169,8 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Robotics Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor/plating{
 	icon_state = "platebot"
@@ -7270,7 +7270,7 @@
 "ayQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Nexus Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/main_hall)
@@ -7536,8 +7536,8 @@
 "azE" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Robotics Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/robotics)
@@ -7577,8 +7577,8 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Robotics Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/robotics)
@@ -8393,8 +8393,8 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Robotics Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 8;
@@ -8443,7 +8443,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Nexus Dome Male Dormitories";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "bluecorner"
@@ -8458,7 +8458,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Nexus Dome Female Dormitories";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 9;
@@ -9672,8 +9672,8 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "\improper Nexus Cargo Storage";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 4;
@@ -9792,8 +9792,8 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Storage Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -9991,7 +9991,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Nexus Dome Bathroom";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -10155,8 +10155,8 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Storage Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -10441,7 +10441,7 @@
 "aHH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Nexus Dome Chapel";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -10831,7 +10831,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Nexus Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	dir = 4;
@@ -10954,7 +10954,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Nexus Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -12546,7 +12546,7 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal Office";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor,
 /area/lv624/lazarus/security)
@@ -13029,7 +13029,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	locked = 1;
 	name = "\improper Nexus Dome Armory";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -13222,8 +13222,8 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Communications Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 9;
@@ -13817,7 +13817,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	locked = 1;
 	name = "\improper Nexus Dome Marshal's Quarter";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -14226,7 +14226,7 @@
 "aSU" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Nexus Dome Command Quarter";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor/plating,
 /area/lv624/lazarus/hop)
@@ -14412,7 +14412,7 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
 	name = "\improper Nexus Dome Freezer";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor,
 /area/lv624/lazarus/kitchen)
@@ -14549,7 +14549,7 @@
 	dir = 1;
 	locked = 1;
 	name = "\improper Nexus Dome Director's Quarter";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "cult"
@@ -14623,8 +14623,8 @@
 "aUk" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Communications Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	dir = 9;
@@ -14916,8 +14916,8 @@
 	dir = 1;
 	locked = 1;
 	name = "\improper Engineering Dome SMES";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -15219,8 +15219,8 @@
 "aWf" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper Engineering Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /obj/structure/foamedmetal,
 /turf/open/floor{
@@ -15458,7 +15458,7 @@
 "aWL" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	name = "\improper Nexus Dome";
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -15612,8 +15612,8 @@
 	dir = 1;
 	locked = 1;
 	name = "\improper Engineering Dome Office";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -15623,8 +15623,8 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Dome";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -16946,7 +16946,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper LZ2 Access";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/lv624/lazarus/landing_zones/lz2)
@@ -17388,7 +17388,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper LZ1 Access";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
@@ -17812,7 +17812,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper LZ1 Access";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -18144,7 +18144,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper LZ2 Access";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -18388,8 +18388,8 @@
 "nIZ" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Nexus Dome Canteen";
-	req_access = list(100);
-	req_one_access = list()
+	req_access_txt = "100";
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "bar"
@@ -18736,7 +18736,7 @@
 "qfr" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "\improper LZ2 Access";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"

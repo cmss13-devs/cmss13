@@ -547,7 +547,7 @@
 /area/prison/engineering)
 "bXt" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/storage/medsec)
@@ -784,7 +784,7 @@
 /area/prison/engineering)
 "cbC" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/library)
@@ -1054,7 +1054,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Chief Engineer's Quarters";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/engineering)
@@ -1876,7 +1876,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Protective Custody Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-floor_plate";
@@ -2028,7 +2028,7 @@
 "cpn" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/protective)
@@ -2042,7 +2042,7 @@
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/protective)
@@ -2069,7 +2069,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"

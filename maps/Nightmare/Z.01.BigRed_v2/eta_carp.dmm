@@ -95,7 +95,7 @@
 /obj/structure/machinery/door/airlock/almayer/research/glass{
 	dir = 4;
 	name = "\improper Eta Lab Cell";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-dark";

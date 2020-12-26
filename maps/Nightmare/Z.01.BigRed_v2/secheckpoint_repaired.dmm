@@ -122,7 +122,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Checkpoint Office";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -277,7 +277,7 @@
 	icon_state = "door_locked";
 	locked = 1;
 	name = "\improper Checkpoint Office";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"

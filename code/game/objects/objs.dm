@@ -15,6 +15,10 @@
 
 	var/projectile_coverage = 0 //an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
 	var/garbage = FALSE //set to true if the item is garbage and should be deleted after awhile
+	var/list/req_access = null
+	var/list/req_one_access = null
+	var/req_access_txt = null
+	var/req_one_access_txt = null
 
 /obj/New()
 	..()

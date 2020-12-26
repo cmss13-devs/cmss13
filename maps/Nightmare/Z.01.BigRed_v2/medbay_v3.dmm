@@ -19,7 +19,7 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Clinic";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "warnwhite";
@@ -466,7 +466,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Medical Clinic";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -698,7 +698,7 @@
 "bS" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Clinic Scanner Room";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -762,7 +762,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Medical Clinic CMO's Office";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1688,7 +1688,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Clinic Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -1717,7 +1717,7 @@
 "en" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Clinic Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "platingdmg1"
@@ -2003,7 +2003,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "\improper Medical Clinic";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -2050,7 +2050,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "\improper Medical Clinic Operating Theatre";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "damaged2";

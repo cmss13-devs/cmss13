@@ -32,7 +32,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Department";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
@@ -48,7 +48,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Department";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
@@ -109,7 +109,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Intake Processing";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
@@ -125,7 +125,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Intake Processing";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 2;
@@ -199,7 +199,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Department";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -215,7 +215,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Department";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
@@ -282,7 +282,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Execution";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/execution)
@@ -294,7 +294,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Execution";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/execution)

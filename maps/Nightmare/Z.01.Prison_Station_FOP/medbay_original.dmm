@@ -31,7 +31,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Research-Infirmary Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/medbay)
@@ -151,7 +151,7 @@
 "qu" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Medical Cell";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -433,7 +433,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Operating Theatre";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -557,7 +557,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Operating Theatre";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -811,7 +811,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Morgue";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/medbay/morgue)
@@ -840,7 +840,7 @@
 	id = "crema";
 	pixel_x = 28;
 	pixel_y = 28;
-	req_one_access = list(2,8,19)
+	req_one_access_txt = "2;8;19"
 	},
 /turf/open/floor/prison,
 /area/prison/medbay/morgue)
@@ -861,7 +861,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Morgue";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/medbay/morgue)
@@ -1140,7 +1140,7 @@
 /area/prison/medbay)
 "wP" = (
 /obj/structure/closet/secure_closet/medical3{
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -1197,7 +1197,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Infirmary Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-sterile_white (SOUTHWEST)";
@@ -1321,7 +1321,7 @@
 /area/prison/medbay)
 "yb" = (
 /obj/structure/closet/secure_closet/chemical{
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -1433,7 +1433,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Infirmary Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -1655,7 +1655,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Doctor's Office";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -1725,7 +1725,7 @@
 "BA" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/medbay)
@@ -1791,7 +1791,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research)
@@ -1969,7 +1969,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Infirmary Reception";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -1980,7 +1980,7 @@
 "En" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "Infirmary";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
@@ -2011,7 +2011,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
@@ -2389,7 +2389,7 @@
 /area/prison/medbay/foyer)
 "HV" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/medbay)
@@ -2434,7 +2434,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
 	name = "Infirmary Foyer";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
@@ -2468,7 +2468,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Biological Research Department";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkpurplefull2";

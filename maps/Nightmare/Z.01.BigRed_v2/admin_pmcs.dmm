@@ -452,7 +452,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Operations Office";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -493,7 +493,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "\improper Operations Meeting Room";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/admin_building)

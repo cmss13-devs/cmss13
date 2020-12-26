@@ -95,7 +95,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "\improper Operations";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"

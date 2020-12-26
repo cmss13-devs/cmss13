@@ -13,7 +13,7 @@
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 1;
@@ -1107,7 +1107,7 @@
 "bQ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 1;
@@ -2314,7 +2314,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Canteen";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;

@@ -926,7 +926,7 @@
 	icon_state = "door_open";
 	name = "Cell";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -1369,7 +1369,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Biological Testing";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
@@ -1444,7 +1444,7 @@
 	tag = "icon-SE-out"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/research/secret/containment)
@@ -1503,7 +1503,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Cell Access";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -1721,7 +1721,7 @@
 	icon_state = "door_open";
 	name = "Cell";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1772,7 +1772,7 @@
 	icon_state = "door_open";
 	name = "Cell";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison{
@@ -1834,7 +1834,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/research/secret/containment)
@@ -1842,7 +1842,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Human Containment Pen";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
@@ -2442,7 +2442,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
@@ -2829,7 +2829,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security{
 	name = "Research Containment Locker";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret)
@@ -2913,7 +2913,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Panopticon Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -2926,7 +2926,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Panopticon Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -3280,7 +3280,7 @@
 "ahB" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Simian Containment Pen";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
@@ -3437,7 +3437,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Test Subject Containment";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
@@ -3459,7 +3459,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Test Subject Containment";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
@@ -3505,7 +3505,7 @@
 "aik" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Maximum-Security Panopticon";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -3635,7 +3635,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Maximum-Security Panopticon";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
@@ -3646,7 +3646,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Maximum-Security Panopticon";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -3689,7 +3689,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Simian Containment Pen";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "whitepurplefull"
@@ -3795,7 +3795,7 @@
 	id = "crema";
 	pixel_x = 28;
 	pixel_y = 28;
-	req_one_access = list(2,8,19)
+	req_one_access_txt = "2;8;19"
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
@@ -3861,7 +3861,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Maximum-Security Panopticon";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -3874,7 +3874,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Maximum-Security Panopticon";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -3895,7 +3895,7 @@
 "ajh" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Dissection";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
@@ -4295,7 +4295,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Chemistry";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -4352,7 +4352,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Cell Access";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -4421,7 +4421,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Cell Access";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -4857,7 +4857,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Research-Infirmary Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/research_medbay)
@@ -4918,7 +4918,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Dissection";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret/dissection)
@@ -5480,7 +5480,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/north/north)
@@ -5795,7 +5795,7 @@
 "anV" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Research-Infirmary Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/research_medbay)
@@ -5873,7 +5873,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/maxsec/south)
@@ -6091,7 +6091,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Operating Theatre";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -6370,7 +6370,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Research-Infirmary Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/medbay)
@@ -6679,7 +6679,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -6812,7 +6812,7 @@
 "aqu" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Medical Cell";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -6866,7 +6866,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Operating Theatre";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -7379,7 +7379,7 @@
 "arB" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Morgue";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -7406,7 +7406,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Morgue";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/medbay/morgue)
@@ -8093,7 +8093,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Maximum-Security Suspended Cellblock";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -8106,7 +8106,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Maximum-Security Suspended Cellblock";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -8262,7 +8262,7 @@
 "atK" = (
 /obj/structure/machinery/door/airlock/almayer/security{
 	name = "Research Containment Locker";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret)
@@ -8288,7 +8288,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Cell Access";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -8417,7 +8417,7 @@
 /area/prison/medbay)
 "aug" = (
 /obj/structure/closet/secure_closet/medical3{
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -8555,7 +8555,7 @@
 "auA" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Maximum-Security Suspended Cellblock";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -8612,7 +8612,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Cell Access";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -8660,7 +8660,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Infirmary Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -8880,7 +8880,7 @@
 /area/prison/residential/north)
 "avn" = (
 /obj/structure/closet/secure_closet/chemical{
-	req_access = list(100)
+	req_access_txt = "100"
 	},
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/prison{
@@ -9142,7 +9142,7 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	locked = 1;
 	name = "Research Containment Locker";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research/secret)
@@ -9255,7 +9255,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Infirmary Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -9742,7 +9742,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -10251,7 +10251,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Doctor's Office";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -10280,7 +10280,7 @@
 "azm" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/medbay)
@@ -10324,7 +10324,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/research)
@@ -10373,7 +10373,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
@@ -10622,7 +10622,7 @@
 /obj/structure/machinery/door/morgue{
 	dir = 2;
 	name = "Confession Booth (Chaplain)";
-	req_access = list(22)
+	req_access_txt = "22"
 	},
 /turf/open/floor/wood,
 /area/prison/chapel)
@@ -11158,7 +11158,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Toilet";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "kitchen";
@@ -11236,7 +11236,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/maxsec)
@@ -11247,7 +11247,7 @@
 "aBM" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "Maximum-Security Wing";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -11276,7 +11276,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 2;
 	name = "Infirmary Reception";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -11287,7 +11287,7 @@
 "aBQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "Infirmary";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -11312,7 +11312,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -11880,7 +11880,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Garden";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
@@ -12796,7 +12796,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
 	name = "Infirmary Foyer";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -12815,7 +12815,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Biological Research Department";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -12843,7 +12843,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Research Common Room";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -12924,7 +12924,7 @@
 	dir = 2;
 	icon_state = "door_open";
 	name = "Research Restrooms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -13336,7 +13336,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Research Dorms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -13617,7 +13617,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/wood,
 /area/prison/storage/highsec/n)
@@ -13725,7 +13725,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/quarters/research)
@@ -13837,7 +13837,7 @@
 	icon_state = "door_open";
 	name = "Research Director's Quarters";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/wood,
 /area/prison/quarters/research)
@@ -14457,7 +14457,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "North High-Security Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/storage/highsec/n)
@@ -14658,7 +14658,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
@@ -15218,7 +15218,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Staff Quarters";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "greenfull"
@@ -15731,7 +15731,7 @@
 "aOa" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Staff Quarters";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "greenfull"
@@ -16433,7 +16433,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Warden's Office";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/carpet,
 /area/prison/command/office)
@@ -16508,7 +16508,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
@@ -16516,7 +16516,7 @@
 /area/prison/security/checkpoint/highsec/n)
 "aQf" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/lowsec/nw)
@@ -16600,7 +16600,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Northeast Low-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -16813,7 +16813,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Toilet";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -17604,7 +17604,7 @@
 /area/prison/security/monitoring/lowsec/ne)
 "aTf" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/lowsec/ne)
@@ -17783,7 +17783,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/prison,
@@ -17954,7 +17954,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Staff Restrooms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -17982,7 +17982,7 @@
 "aUh" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Staff Recreation";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
@@ -18096,7 +18096,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Phone Booth";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 9;
@@ -18202,7 +18202,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/lowsec/ne)
@@ -18267,7 +18267,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Staff Recreation";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/wood,
 /area/prison/recreation/staff)
@@ -18289,7 +18289,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
 	name = "Warden's Secretary's Office";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -18309,7 +18309,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
 	name = "Warden's Quarters";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -18338,7 +18338,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/north/south)
@@ -20330,7 +20330,7 @@
 "bax" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -20682,7 +20682,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -21251,7 +21251,7 @@
 "bcV" = (
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Civilian Residences Admin";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -21454,7 +21454,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/vip)
@@ -22033,7 +22033,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -22064,7 +22064,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -22155,7 +22155,7 @@
 "bfq" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/storage/vip)
@@ -22469,7 +22469,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "Canteen";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -23334,7 +23334,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -23393,7 +23393,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
 	name = "Civilian Residences Admin";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
@@ -23449,7 +23449,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
@@ -23495,7 +23495,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/storage/vip)
@@ -23682,7 +23682,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
@@ -23831,7 +23831,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/highsec)
@@ -24387,7 +24387,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/hallway/central/east)
@@ -24415,7 +24415,7 @@
 "bkR" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -24426,7 +24426,7 @@
 "bkS" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -24790,7 +24790,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -24850,7 +24850,7 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
 	name = "VIP Cellblock / Civilian Residences Access";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"
@@ -26475,7 +26475,7 @@
 "bqE" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/canteen)
@@ -27782,7 +27782,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
@@ -28158,7 +28158,7 @@
 "buX" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
@@ -28631,7 +28631,7 @@
 "bwx" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -28752,7 +28752,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Hangar-Barracks Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/hanger/main)
@@ -28763,7 +28763,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Main Hangar Traffic Control";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison,
@@ -29420,7 +29420,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/lowsec/sw)
@@ -29608,7 +29608,7 @@
 "bzE" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	name = "East Hallway";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -30231,7 +30231,7 @@
 /area/prison/hallway/central/west)
 "bBH" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/security/monitoring/lowsec/sw)
@@ -30896,7 +30896,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Southwest Low-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security/monitoring/lowsec/sw)
@@ -31183,7 +31183,7 @@
 "bDU" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -31371,7 +31371,7 @@
 /area/prison/cellblock/lowsec/se)
 "bEu" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -31904,7 +31904,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Telecommunications";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/telecomms)
@@ -32410,7 +32410,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Hangar-Barracks Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/hangar_barracks)
@@ -32640,7 +32640,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/hallway/east)
@@ -32777,7 +32777,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Research-Infirmary Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/medbay)
@@ -32954,7 +32954,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "South High-Security Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/storage/highsec/s)
@@ -33130,7 +33130,7 @@
 /area/prison/telecomms)
 "bJk" = (
 /obj/structure/machinery/computer/telecomms/monitor{
-	req_one_access = list(19,200)
+	req_one_access_txt = "19;200"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -33147,7 +33147,7 @@
 /area/prison/hallway/east)
 "bJn" = (
 /obj/structure/machinery/computer/telecomms/server{
-	req_one_access = list(19,200)
+	req_one_access_txt = "19;200"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -33157,7 +33157,7 @@
 /area/prison/telecomms)
 "bJo" = (
 /obj/structure/machinery/computer/telecomms/traffic{
-	req_one_access = list(19,200)
+	req_one_access_txt = "19;200"
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -33232,7 +33232,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
@@ -33390,7 +33390,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Department";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -33402,7 +33402,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Department";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -34251,7 +34251,7 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/laundry)
@@ -34969,7 +34969,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Security Restrooms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -35112,7 +35112,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
@@ -35155,7 +35155,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Toilet";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -35575,7 +35575,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Garden";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -35587,7 +35587,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Garden";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
@@ -35915,7 +35915,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Medium-Security Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -36925,7 +36925,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -36961,7 +36961,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -37429,7 +37429,7 @@
 /area/prison/laundry)
 "bVu" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/medsec)
@@ -37449,7 +37449,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/north)
@@ -37628,7 +37628,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "SMES";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/engineering)
@@ -37946,7 +37946,7 @@
 "bWQ" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison,
@@ -37976,7 +37976,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "Medium-Security Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -37989,7 +37989,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "Medium-Security Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -38086,7 +38086,7 @@
 "bXk" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Atmospherics";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -38216,7 +38216,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Intake Processing";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -38228,7 +38228,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Intake Processing";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -38470,7 +38470,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "Atmospherics";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/engineering/atmos)
@@ -38479,7 +38479,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "Atmospherics";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/engineering/atmos)
@@ -38855,7 +38855,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Department";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security)
@@ -39260,7 +39260,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Toilet";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/recreation/medsec)
@@ -39346,7 +39346,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Engineering";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/engineering)
@@ -39511,7 +39511,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Engineering Hallway";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -39532,7 +39532,7 @@
 "cbo" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Department";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security)
@@ -39644,7 +39644,7 @@
 /area/prison/cellblock/mediumsec/north)
 "cbC" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/library)
@@ -39733,7 +39733,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/north)
@@ -39815,7 +39815,7 @@
 "ccm" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Engineering";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/engineering)
@@ -39892,7 +39892,7 @@
 "ccA" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Engineering Hallway";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
@@ -39949,7 +39949,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Head of Security's Office";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -40098,7 +40098,7 @@
 /area/prison/cellblock/highsec/south/south)
 "cdr" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -40460,7 +40460,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Phone Booth";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/recreation/medsec)
@@ -40612,7 +40612,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Disposals";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/disposal)
@@ -40625,7 +40625,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Execution";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/execution)
@@ -40637,7 +40637,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Execution";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/execution)
@@ -40646,7 +40646,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Briefing";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -40658,7 +40658,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Briefing";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -40671,7 +40671,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Riot Armory";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -40716,7 +40716,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Lethal Armory";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -40729,7 +40729,7 @@
 /obj/structure/machinery/door/airlock/almayer/command{
 	dir = 2;
 	name = "Head of Security's Quarters";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security/head)
@@ -40817,7 +40817,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/command{
 	name = "Chief Engineer's Quarters";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/engineering)
@@ -41639,7 +41639,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"
@@ -43127,7 +43127,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -43206,7 +43206,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Protective Custody Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -43281,7 +43281,7 @@
 "cmv" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Disposals";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/disposal)
@@ -43471,7 +43471,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Execution Chamber";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/execution)
@@ -43480,7 +43480,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 2;
 	name = "Execution Chamber";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/execution)
@@ -43548,7 +43548,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
@@ -44501,7 +44501,7 @@
 "cqp" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
@@ -45200,7 +45200,7 @@
 "csD" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
@@ -45236,7 +45236,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/east)
@@ -45554,7 +45554,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -46052,7 +46052,7 @@
 "cvf" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -46851,7 +46851,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
@@ -47063,7 +47063,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Medium-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/prison{
@@ -47077,7 +47077,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Medium-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -47534,7 +47534,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
@@ -47664,7 +47664,7 @@
 "cWg" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/canteen)
@@ -48206,7 +48206,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -48388,7 +48388,7 @@
 "fbk" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/laundry)
@@ -48408,7 +48408,7 @@
 "ffd" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	name = "Research Dorms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -48453,7 +48453,7 @@
 "ftk" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
@@ -48723,7 +48723,7 @@
 /area/prison/cellblock/mediumsec/west)
 "gfe" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/south)
@@ -48811,7 +48811,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Medium-Security Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"
@@ -48962,7 +48962,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security/monitoring/highsec)
@@ -49178,7 +49178,7 @@
 "hnD" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/quarters/research)
@@ -50453,7 +50453,7 @@
 "knf" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -50557,7 +50557,7 @@
 "kzI" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Maintainance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/security/checkpoint/vip)
@@ -50986,7 +50986,7 @@
 "lJd" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
@@ -51084,7 +51084,7 @@
 "mbP" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -51636,7 +51636,7 @@
 "nyk" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -52348,7 +52348,7 @@
 "pib" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "Morgue";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/medbay/morgue)
@@ -52471,7 +52471,7 @@
 "pvE" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/supply,
 /turf/open/floor/plating,
@@ -52847,7 +52847,7 @@
 "qEB" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	name = "Infirmary";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -53017,7 +53017,7 @@
 "rhV" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Medium-Security Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"
@@ -53538,7 +53538,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 2;
 	name = "SMES";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/engineering)
@@ -53588,7 +53588,7 @@
 "tfd" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/residential/central)
@@ -53612,7 +53612,7 @@
 "thZ" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	name = "Medium-Security Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	dir = 4;
@@ -54136,7 +54136,7 @@
 	density = 0;
 	icon_state = "door_open";
 	name = "Staff Restrooms";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -54147,7 +54147,7 @@
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
 	name = "Staff-Research Maintenance";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/maintenance/staff_research)
@@ -54405,7 +54405,7 @@
 "vfK" = (
 /obj/structure/machinery/door/airlock/almayer/medical{
 	name = "Morgue";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/medbay/morgue)
@@ -54574,7 +54574,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "redfull"
@@ -55080,7 +55080,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
 	name = "High-Security Monitoring";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";

@@ -71,7 +71,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Atmospherics Condenser Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -191,7 +191,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Atmospherics Condenser";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -287,7 +287,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Filtration Facility";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -345,7 +345,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Filtration Facility";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
@@ -368,7 +368,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Filtration Facility";
-	req_one_access = list()
+	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4;
@@ -492,7 +492,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 1;
 	name = "\improper Filtration Facility";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -602,7 +602,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 1;
 	name = "\improper Filtration Facility";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -729,7 +729,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Atmospherics Condenser";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)

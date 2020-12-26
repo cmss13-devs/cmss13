@@ -331,7 +331,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "\improper Cargo Bay Security";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -601,7 +601,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Cargo Bay Quartermaster";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
@@ -707,7 +707,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Cargo Bay Quartermaster";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/cargo)

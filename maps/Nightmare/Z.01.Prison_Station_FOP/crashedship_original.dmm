@@ -2705,7 +2705,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	name = "Security Booth";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/prison,
 /area/prison/security/checkpoint/highsec_medsec)
@@ -4834,7 +4834,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "Toilet";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/prison{
 	tag = "icon-kitchen (SOUTHWEST)";
@@ -4979,7 +4979,7 @@
 "jF" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -5043,7 +5043,7 @@
 	icon_state = "door_open";
 	name = "Solitary Confinement";
 	opacity = 0;
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -5103,14 +5103,14 @@
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
 "jT" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/highsec/south/south)
@@ -5151,14 +5151,14 @@
 /obj/structure/pipes/standard/simple/hidden/scrubbers,
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
 "jY" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)
@@ -5463,7 +5463,7 @@
 	},
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 2;
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor/plating,
 /area/prison/cellblock/mediumsec/west)

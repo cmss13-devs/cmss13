@@ -145,7 +145,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Marshall Office Prison";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull (NORTHEAST)";
@@ -161,7 +161,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
 	name = "\improper Marshall Office Prison";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull (NORTHEAST)";
@@ -297,7 +297,7 @@
 	icon_state = "door_locked";
 	locked = 1;
 	name = "\improper Marshall Office Prison";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull (NORTHEAST)";
@@ -312,7 +312,7 @@
 	icon_state = "door_locked";
 	locked = 1;
 	name = "\improper Marshall Office Prison";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull (NORTHEAST)";
@@ -326,7 +326,7 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Marshall Office Prison";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-whitegreenfull (NORTHEAST)";
@@ -537,7 +537,7 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Marshall Office Armory";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -786,7 +786,7 @@
 	icon_state = "door_locked";
 	locked = 1;
 	name = "\improper Marshall Office Armory";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -833,7 +833,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 4;
 	name = "\improper Marshall Office Interrogation";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	tag = "icon-darkish";
@@ -948,7 +948,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Marshall Office Evidence Room";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1162,7 +1162,7 @@
 	dir = 1;
 	icon_state = "door_open";
 	name = "\improper Marshall Office Holding Cell";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1174,7 +1174,7 @@
 	icon_state = "door_locked";
 	locked = 1;
 	name = "\improper Marshall Office Holding Cell";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
@@ -1184,7 +1184,7 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	name = "\improper Marshall Office Checkpoint";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "redfull";

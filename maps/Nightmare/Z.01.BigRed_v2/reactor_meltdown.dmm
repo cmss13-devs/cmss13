@@ -21,7 +21,7 @@
 "af" = (
 /obj/structure/machinery/door/airlock/almayer/secure{
 	name = "\improper Engineering Secure Storage";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -152,7 +152,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Chief Engineer's Office";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -182,7 +182,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Tool Storage";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -210,7 +210,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engineering Lockers";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -370,7 +370,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Engineering Workshop";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -395,7 +395,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
 	name = "\improper Engine Reactor Control";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -625,7 +625,7 @@
 /obj/structure/machinery/door/airlock/almayer/secure{
 	dir = 1;
 	name = "\improper Engine Reactor";
-	req_access = list()
+	req_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -656,7 +656,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Engine Reactor Control";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
@@ -667,7 +667,7 @@
 	name = "Reactor Radiation Shielding control";
 	pixel_x = 30;
 	pixel_y = 0;
-	req_access = list(7)
+	req_access_txt = "7"
 	},
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
@@ -677,7 +677,7 @@
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 4;
 	name = "\improper Engine Reactor Control";
-	req_one_access = list()
+	req_one_access = null
 	},
 /turf/open/floor,
 /area/bigredv2/outside/engineering)

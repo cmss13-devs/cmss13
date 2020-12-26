@@ -213,7 +213,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	name = "Identification Desk";
-	req_access = list(3)
+	req_access_txt = "3"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 4;
@@ -251,7 +251,7 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westleft{
 	name = "Identification Desk";
-	req_access = list(3)
+	req_access_txt = "3"
 	},
 /obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 4;

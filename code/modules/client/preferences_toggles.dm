@@ -225,16 +225,16 @@
 	set category = "Preferences"
 	set desc = "Shows ghost-related preferences."
 
-	verbs += ghost_prefs_verbs
-	verbs -= /client/proc/show_ghost_preferences
+	add_verb(src, ghost_prefs_verbs)
+	remove_verb(src, /client/proc/show_ghost_preferences)
 
 /client/proc/hide_ghost_preferences() // Hides ghost-related preferences.
 	set name = "Y: Hide Ghost Prefs"
 	set category = "Preferences"
 	set desc = "Hides ghost-related preferences."
 
-	verbs -= ghost_prefs_verbs
-	verbs += /client/proc/show_ghost_preferences
+	remove_verb(src, ghost_prefs_verbs)
+	add_verb(src, /client/proc/show_ghost_preferences)
 
 /client/proc/toggle_ghost_hivemind()
 	set name = "Y: Toggle GhostHivemind"
@@ -329,16 +329,16 @@
 	set name = "Z: Show Combat Chat Prefs"
 	set desc = "Shows additional chat preferences for combat and ghost messages."
 
-	verbs += combat_chat_prefs_verbs
-	verbs -= /client/proc/show_combat_chat_preferences
+	add_verb(src, combat_chat_prefs_verbs)
+	remove_verb(src, /client/proc/show_combat_chat_preferences)
 
 /client/proc/hide_combat_chat_preferences() // Hides additional chat logs preferences.
 	set category = "Preferences"
 	set name = "Z: Hide Combat Chat Prefs"
 	set desc = "Hides additional chat preferences for combat and ghost messages."
 
-	verbs -= combat_chat_prefs_verbs
-	verbs += /client/proc/show_combat_chat_preferences
+	remove_verb(src, combat_chat_prefs_verbs)
+	add_verb(src, /client/proc/show_combat_chat_preferences)
 
 /client/proc/toggle_chat_shooting()
 	set name = "Z: Toggle Firing Messages"

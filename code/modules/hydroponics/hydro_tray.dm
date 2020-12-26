@@ -739,6 +739,6 @@
 
 /obj/structure/machinery/portable_atmospherics/hydroponics/soil/Initialize()
 	. = ..()
-	verbs -= /obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid
+	remove_verb(src, /obj/structure/machinery/portable_atmospherics/hydroponics/verb/close_lid)
 
 #undef HYDRO_SPEED_MULTIPLIER

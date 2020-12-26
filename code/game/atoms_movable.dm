@@ -23,9 +23,9 @@
 
 //===========================================================================
 /atom/movable/Destroy()
-	for(var/atom/movable/I in contents) 
+	for(var/atom/movable/I in contents)
 		qdel(I)
-	if(pulledby) 
+	if(pulledby)
 		pulledby.stop_pulling()
 	QDEL_NULL(launch_metadata)
 
@@ -44,8 +44,7 @@
 
 /atom/movable/overlay/New()
 	..()
-	for(var/x in src.verbs)
-		src.verbs -= x
+	remove_verb(src, verbs)
 	return
 
 /atom/movable/overlay/attackby(a, b)

@@ -28,7 +28,7 @@
 	if(!customizable)
 		return
 	if(has_blast_wave_dampener)
-		LAZYADD(verbs, /obj/item/explosive/proc/toggle_blast_dampener)
+		add_verb(src, /obj/item/explosive/proc/toggle_blast_dampener)
 	create_reagents(1000)
 	for(var/limit in reaction_limits)
 		reagents.vars[limit] = reaction_limits[limit]
@@ -69,7 +69,7 @@
 				icon_state = initial(icon_state) + "_ass"
 			else
 				icon_state = initial(icon_state)
-		if(ASSEMBLY_LOCKED)	
+		if(ASSEMBLY_LOCKED)
 			icon_state = initial(icon_state) + "_locked"
 		else
 			icon_state = initial(icon_state)
@@ -130,7 +130,7 @@
 					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
 					W.forceMove(src)
 					containers += W
-					current_container_volume += W.reagents.maximum_volume 
+					current_container_volume += W.reagents.maximum_volume
 					assembly_stage = ASSEMBLY_UNLOCKED
 					desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
 			else
@@ -174,7 +174,7 @@
 		for(var/datum/reagent/R in O.reagents.reagent_list)
 			reagent_list_text += " [R.volume] [R.name], "
 		i++
-	
+
 	if(source_mob)//so we don't message for simulations
 		msg_admin_niche("[key_name(source_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
 		reagents.source_mob = source_mob
@@ -189,8 +189,8 @@
 			reagents.trigger_volatiles = TRUE //So it doesn't explode before transfering the last container
 	if(reagents)
 		reagents.trigger_volatiles = FALSE
-	
-	
+
+
 	if(!QDELETED(src)) //the possible reactions didn't qdel src
 		if(reagents.total_volume) //The possible reactions didnt use up all reagents.
 			var/datum/effect_system/steam_spread/steam = new /datum/effect_system/steam_spread()

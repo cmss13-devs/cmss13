@@ -43,16 +43,14 @@
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(25))
-				for(var/x in verbs)
-					verbs -= x
+				remove_verb(src, verbs)
 				set_broken()
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if (prob(25))
 				qdel(src)
 				return
 			if (prob(50))
-				for(var/x in verbs)
-					verbs -= x
+				remove_verb(src, verbs)
 				set_broken()
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			qdel(src)

@@ -121,8 +121,6 @@
 
 /obj/item/storage/bag/sheetsnatcher/Initialize()
 	. = ..()
-	//verbs -= /obj/item/storage/verb/quick_empty
-	//verbs += /obj/item/storage/bag/sheetsnatcher/quick_empty
 
 /obj/item/storage/bag/sheetsnatcher/can_be_inserted(obj/item/W as obj, stop_messages = 0)
 	if(!istype(W,/obj/item/stack/sheet) || istype(W,/obj/item/stack/sheet/mineral/sandstone) || istype(W,/obj/item/stack/sheet/wood))

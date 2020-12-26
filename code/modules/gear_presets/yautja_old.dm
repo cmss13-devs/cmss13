@@ -126,7 +126,7 @@
 	var/obj/item/clothing/gloves/yautja/bracer = new(H)
 	bracer.charge = 2500
 	bracer.charge_max = 2500
-	H.verbs += /obj/item/clothing/gloves/yautja/proc/translate
+	add_verb(H, /obj/item/clothing/gloves/yautja/proc/translate)
 	bracer.upgrades = 1
 	H.equip_to_slot_or_del((bracer), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
@@ -152,7 +152,7 @@
 	var/obj/item/clothing/gloves/yautja/bracer = new(H)
 	bracer.charge = 3000
 	bracer.charge_max = 3000
-	H.verbs += /obj/item/clothing/gloves/yautja/proc/translate
+	add_verb(H, /obj/item/clothing/gloves/yautja/proc/translate)
 	bracer.upgrades = 2
 	H.equip_to_slot_or_del((bracer), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)

@@ -58,30 +58,42 @@
 /obj/vehicle/multitile/apc/add_seated_verbs(var/mob/living/M, var/seat)
 	if(!M.client)
 		return
-	M.client.verbs += /obj/vehicle/multitile/proc/get_status_info
-	M.client.verbs += /obj/vehicle/multitile/proc/open_controls_guide
-	M.client.verbs += /obj/vehicle/multitile/proc/name_vehicle
+	add_verb(M.client, list(
+		/obj/vehicle/multitile/proc/get_status_info,
+		/obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/proc/name_vehicle,
+	))
 	if(seat == VEHICLE_DRIVER)
-		M.client.verbs += /obj/vehicle/multitile/proc/toggle_door_lock
-		M.client.verbs += /obj/vehicle/multitile/proc/activate_horn
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn,
+		))
 	else if(seat == VEHICLE_GUNNER)
-		M.client.verbs += /obj/vehicle/multitile/proc/switch_hardpoint
-		M.client.verbs += /obj/vehicle/multitile/proc/cycle_hardpoint
-		M.client.verbs += /obj/vehicle/multitile/proc/toggle_shift_click
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/switch_hardpoint,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_shift_click,
+		))
 
 /obj/vehicle/multitile/apc/remove_seated_verbs(var/mob/living/M, var/seat)
 	if(!M.client)
 		return
-	M.client.verbs -= /obj/vehicle/multitile/proc/get_status_info
-	M.client.verbs -= /obj/vehicle/multitile/proc/open_controls_guide
-	M.client.verbs -= /obj/vehicle/multitile/proc/name_vehicle
+	remove_verb(M.client, list(
+		/obj/vehicle/multitile/proc/get_status_info,
+		/obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/proc/name_vehicle,
+	))
 	if(seat == VEHICLE_DRIVER)
-		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_door_lock
-		M.client.verbs -= /obj/vehicle/multitile/proc/activate_horn
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn,
+		))
 	else if(seat == VEHICLE_GUNNER)
-		M.client.verbs -= /obj/vehicle/multitile/proc/switch_hardpoint
-		M.client.verbs -= /obj/vehicle/multitile/proc/cycle_hardpoint
-		M.client.verbs -= /obj/vehicle/multitile/proc/toggle_shift_click
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/switch_hardpoint,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_shift_click,
+		))
 
 /obj/structure/interior_wall/apc
 	name = "\improper APC interior wall"

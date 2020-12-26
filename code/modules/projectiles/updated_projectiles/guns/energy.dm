@@ -117,9 +117,11 @@
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
-	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
-	verbs -= /obj/item/weapon/gun/verb/empty_mag
+	remove_verb(src, list(
+		/obj/item/weapon/gun/verb/field_strip,
+		/obj/item/weapon/gun/verb/toggle_burst,
+		/obj/item/weapon/gun/verb/empty_mag,
+	))
 
 /obj/item/weapon/gun/energy/plasmarifle/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -243,9 +245,11 @@
 /obj/item/weapon/gun/energy/plasmapistol/Initialize(mapload, spawn_empty)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
-	verbs -= /obj/item/weapon/gun/verb/empty_mag
+	remove_verb(src, list(
+		/obj/item/weapon/gun/verb/field_strip,
+		/obj/item/weapon/gun/verb/toggle_burst,
+		/obj/item/weapon/gun/verb/empty_mag,
+	))
 
 
 
@@ -337,10 +341,12 @@
 
 /obj/item/weapon/gun/energy/plasma_caster/Initialize(mapload, spawn_empty)
 	. = ..()
-	verbs -= /obj/item/weapon/gun/verb/field_strip
-	verbs -= /obj/item/weapon/gun/verb/toggle_burst
-	verbs -= /obj/item/weapon/gun/verb/empty_mag
-	verbs -= /obj/item/weapon/gun/verb/use_unique_action
+	remove_verb(src, list(
+		/obj/item/weapon/gun/verb/field_strip,
+		/obj/item/weapon/gun/verb/toggle_burst,
+		/obj/item/weapon/gun/verb/empty_mag,
+		/obj/item/weapon/gun/verb/use_unique_action,
+	))
 
 /obj/item/weapon/gun/energy/plasma_caster/Destroy()
 	. = ..()

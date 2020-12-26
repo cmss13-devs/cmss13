@@ -985,7 +985,7 @@ This function completely restores a damaged organ to perfect condition.
 		W.embedded_organ = src
 		owner.embedded_items += W
 		if(is_sharp(W)) // Only add the verb if its not a shrapnel
-			owner.verbs += /mob/proc/yank_out_object
+			add_verb(owner, /mob/proc/yank_out_object)
 	W.add_mob_blood(owner)
 
 	if(ismob(W.loc))

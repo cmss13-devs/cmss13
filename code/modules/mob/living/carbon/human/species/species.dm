@@ -101,9 +101,9 @@
 	var/mob_flags // The mob flags to give their mob
 
 /datum/species/New()
-	if(unarmed_type) 
+	if(unarmed_type)
 		unarmed = new unarmed_type()
-	if(secondary_unarmed_type) 
+	if(secondary_unarmed_type)
 		secondary_unarmed = new secondary_unarmed_type()
 
 /datum/species/proc/larva_impregnated(var/obj/item/alien_embryo/embryo)
@@ -207,7 +207,7 @@
 		H.start_audio_emote_cooldown()
 		target.start_audio_emote_cooldown()
 		return
-	
+
 	//Initiate high five
 	if(H.recent_audio_emote)
 		to_chat(H, "You just did an audible emote. Wait a while.")
@@ -250,7 +250,7 @@
 		H.start_audio_emote_cooldown()
 		target.start_audio_emote_cooldown()
 		return
-	
+
 	//Initiate fistbump
 	if(H.recent_audio_emote)
 		to_chat(H, "You just did an audible emote. Wait a while.")
@@ -275,19 +275,15 @@
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs -= verb_path
-	return
+		remove_verb(H, inherent_verbs)
 
 /datum/species/proc/add_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			H.verbs |= verb_path
-	return
+		add_verb(H, inherent_verbs)
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
-	
+
 	if(icobase_source)
 		icobase = get_icon_from_source(icobase_source)
 	if(deform_source)

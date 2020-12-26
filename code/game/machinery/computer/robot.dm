@@ -192,7 +192,7 @@
 					if(choice == "Confirm")
 						if(R && istype(R))
 							log_game("[key_name(usr)] emagged [R.name] using robotic console!")
-							R.verbs += /mob/living/silicon/robot/proc/ResetSecurityCodes
+							add_verb(R, /mob/living/silicon/robot/proc/ResetSecurityCodes)
 
 		src.add_fingerprint(usr)
 	src.updateUsrDialog()

@@ -38,7 +38,7 @@
 	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = 100
-	verbs += /mob/dead/observer/proc/dead_tele
+	add_verb(src, /mob/dead/observer/proc/dead_tele)
 	GLOB.observer_list += src
 
 	var/turf/T

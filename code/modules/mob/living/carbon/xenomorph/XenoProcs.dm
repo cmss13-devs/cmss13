@@ -43,7 +43,7 @@
 	var/shieldtotal = 0
 	for (var/datum/xeno_shield/XS in xeno_shields)
 		shieldtotal += XS.amount
-	
+
 	stat("Shield:", "[shieldtotal]")
 
 	stat("")
@@ -198,14 +198,12 @@
 //Strip all inherent xeno verbs from your caste. Used in evolution.
 /mob/living/carbon/Xenomorph/proc/remove_inherent_verbs()
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			verbs -= verb_path
+		remove_verb(src, inherent_verbs)
 
 //Add all your inherent caste verbs and procs. Used in evolution.
 /mob/living/carbon/Xenomorph/proc/add_inherent_verbs()
 	if(inherent_verbs)
-		for(var/verb_path in inherent_verbs)
-			verbs |= verb_path
+		add_verb(src, inherent_verbs)
 
 
 //Adds or removes a delay to movement based on your caste. If speed = 0 then it shouldn't do much.
@@ -589,7 +587,7 @@
 	else
 		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
 		tackle_counter[M] = TC
-	
+
 	if (TC.tackle_reset_id)
 		deltimer(TC.tackle_reset_id)
 		TC.tackle_reset_id = null

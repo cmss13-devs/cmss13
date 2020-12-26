@@ -11,7 +11,7 @@
 
 /obj/structure/bed/chair/New()
 	if(anchored)
-		src.verbs -= /atom/movable/verb/pull
+		remove_verb(src, /atom/movable/verb/pull)
 	..()
 	spawn(3) //Sorry. i don't think there's a better way to do this.
 		handle_rotation()

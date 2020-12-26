@@ -5,8 +5,8 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	verbs += debug_verbs
-	verbs -= /client/proc/enable_debug_verbs
+	add_verb(src, debug_verbs)
+	remove_verb(src, /client/proc/enable_debug_verbs)
 
 /client/proc/hide_debug_verbs()
 	set category = "Debug"
@@ -15,8 +15,8 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	verbs -= debug_verbs
-	verbs += /client/proc/enable_debug_verbs
+	remove_verb(src, debug_verbs)
+	add_verb(src, /client/proc/enable_debug_verbs)
 
 /client/proc/check_round_statistics()
 	set category = "Debug"

@@ -608,15 +608,15 @@
 	set name = "Z: Mob Event Verbs - Show"
 	set category = "Event"
 
-	verbs += admin_mob_event_verbs_hideable
-	verbs -= /client/proc/enable_event_mob_verbs
+	add_verb(src, admin_mob_event_verbs_hideable)
+	remove_verb(src, /client/proc/enable_event_mob_verbs)
 
 /client/proc/hide_event_mob_verbs()
 	set name = "Z: Mob Event Verbs - Hide"
 	set category = "Event"
 
-	verbs -= admin_mob_event_verbs_hideable
-	verbs += /client/proc/enable_event_mob_verbs
+	remove_verb(src, admin_mob_event_verbs_hideable)
+	add_verb(src, /client/proc/enable_event_mob_verbs)
 
 // ----------------------------
 // PANELS

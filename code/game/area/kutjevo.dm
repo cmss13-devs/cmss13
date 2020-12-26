@@ -59,7 +59,7 @@
 /area/kutjevo/exterior/lz_dunes
 	name = "Kutjevo - Landing Zone Dunes"
 	icon_state = "lz_dunes"
-
+	is_resin_allowed = FALSE
 /area/kutjevo/exterior/lz_river
 	name = "Kutjevo - Power Station River"
 	icon_state = "lz_river"

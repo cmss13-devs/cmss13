@@ -668,17 +668,13 @@
 								/obj/item/attachable/quickfire, /obj/item/attachable/heavy_barrel, /obj/item/attachable/scope, /obj/item/attachable/quickfire,
 								/obj/item/attachable/scope/mini)
 
-/obj/item/storage/box/attachments/New()
-	..()
-	Pick_Contents()
-
-/obj/item/storage/box/attachments/proc/Pick_Contents()
+/obj/item/storage/box/attachments/fill_preset_inventory()
 	var/a1 = pick(common)
 	var/a2 = pick(attachment_1)
 	var/a3 = pick(attachment_2)
-	if(a1) new a1 (src)
-	if(a2) new a2 (src)
-	if(a3) new a3 (src)
+	if(a1) new a1(src)
+	if(a2) new a2(src)
+	if(a3) new a3(src)
 	return
 
 /obj/item/storage/box/attachments/update_icon()
@@ -687,4 +683,3 @@
 		if(T)
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
-

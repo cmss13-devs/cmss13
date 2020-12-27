@@ -14,13 +14,12 @@ from changelog import Changelog
 DATE_FORMAT = "%d.%m.%Y %H:%M:%S"
 MR_DATES_FILE = "last_mr_dates.txt"
 
-def generate_changelogs(pid, branch, pat):
+def generate_changelogs(pid, branch, directory):
     '''
         Generates changelogs from MR descriptions on the given branch
 
         :param pid: The project ID of the project to work with
         :param branch: The name of the target branch for which we look for MRs
-        :param pat: The personal access token to use
     '''
 
     # Load the latest MR date on the branch
@@ -36,7 +35,7 @@ def generate_changelogs(pid, branch, pat):
         print("    {} - {}".format(branch, last_processed_date.strftime(DATE_FORMAT)))
 
     # Fetch new MRs on the branch
-    mrs, status_code = working_branch.fetch_new_mrs(pat)
+    mrs, status_code = working_branch.fetch_new_mrs()
 
     # Didn't fetch any MRs
     if not mrs:
@@ -107,12 +106,12 @@ def generate_changelogs(pid, branch, pat):
 
             # make a YAML file for the changelog
             file_name = "{}-merge_request-{}".format(user, merge_request.get("id"))
-            changelog.dump_yaml(file_name)
+            changelog.dump_yaml(file_name, directory)
             print("Generated changelog for MR #{}    {}".format(iid, file_name))
             cls_generated += 1
 
         # Fetch new MRs to process
-        mrs, status_code = working_branch.fetch_new_mrs(pat)
+        mrs, status_code = working_branch.fetch_new_mrs()
 
     print("--------------------")
     # High quality fluffprint
@@ -123,11 +122,9 @@ def generate_changelogs(pid, branch, pat):
     working_branch.save_latest_mr_date(str(pid)+'.txt')
 
 if __name__ == "__main__":
-    if argv[2] is None:
+    if len(argv) < 4:
         PID = environ["GITLAB_CHANGELOG_PID"]
-        PAT = environ["GITLAB_CHANGELOG_PAT"]
     else :
-        PID = argv[2]
-        PAT = argv[3]
+        PID = argv[3]
 
-    generate_changelogs(PID, argv[1], PAT)
+    generate_changelogs(PID, argv[1], argv[2])

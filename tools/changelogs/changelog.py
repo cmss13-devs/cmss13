@@ -130,17 +130,18 @@ class Changelog:
         # If not, we never found a changelog
         return in_cl
 
-    def dump_yaml(self, file_name):
+    def dump_yaml(self, file_name, directory = ""):
         '''
             Writes the changelog to a YAML file
 
             :param file_name: The name the changelog file should be given
+            :param directory: The directory to store the file in.
         '''
 
         if not self.changes:
             return
 
-        with open("{}.yml".format(file_name), "w+") as file:
+        with open("{}{}.yml".format(directory, file_name), "w+") as file:
             data = "author: \"{}\"\ndelete-after: true\nchanges:\n{}"
             change_data = ""
 

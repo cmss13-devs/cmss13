@@ -15,10 +15,7 @@
 	icon_state = "green 2,0";
 	tag = "icon-green 2,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "aI" = (
 /obj/item/tool/shovel,
@@ -182,10 +179,7 @@
 	icon_state = "red 1,0";
 	tag = "icon-red 1,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "cI" = (
 /obj/vehicle/train/cargo/trolley,
@@ -510,10 +504,7 @@
 	icon_state = "red 2,0";
 	tag = "icon-red 2,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "ih" = (
 /obj/effect/decal/cleanable/blood/splatter/animated,
@@ -963,12 +954,6 @@
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
-"pc" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/corsat/sigma/biodome/scrapyard)
 "pe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -1028,12 +1013,6 @@
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
-"qx" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_4";
-	tag = "icon-mars_cave_4"
-	},
-/area/corsat/sigma/biodome/scrapyard)
 "qC" = (
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/inaccessible)
@@ -1058,12 +1037,6 @@
 	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/biodome/gunrange)
-"rI" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_22";
-	tag = "icon-mars_cave_22"
-	},
-/area/corsat/sigma/biodome/scrapyard)
 "rP" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/door/window/northright{
@@ -1419,10 +1392,7 @@
 	icon_state = "blue 1,0";
 	tag = "icon-blue 1,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "xp" = (
 /obj/structure/surface/table/almayer,
@@ -1622,10 +1592,7 @@
 	icon_state = "blue 2,0";
 	tag = "icon-blue 2,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "zf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1921,20 +1888,6 @@
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
-"CT" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/corsat/sigma/biodome{
-	temperature = 223
-	})
 "CX" = (
 /obj/structure/surface/rack,
 /obj/structure/window/reinforced/toughened{
@@ -2174,10 +2127,7 @@
 	icon_state = "green 1,0";
 	tag = "icon-green 1,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "FI" = (
 /turf/open/floor/corsat{
@@ -2883,10 +2833,7 @@
 	icon_state = "red 0,0";
 	tag = "icon-red 0,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "QN" = (
 /obj/structure/target,
@@ -3022,10 +2969,7 @@
 	icon_state = "green 0,0";
 	tag = "icon-green 0,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "Sl" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -3294,13 +3238,6 @@
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
-"Wq" = (
-/obj/structure/fence,
-/turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
-	},
-/area/corsat/sigma/biodome/gunrange)
 "Wt" = (
 /obj/structure/window/framed/corsat/security,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -3517,10 +3454,7 @@
 	icon_state = "blue 0,0";
 	tag = "icon-blue 0,0"
 	},
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
+/turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "Zr" = (
 /turf/open/ice,
@@ -5099,7 +5033,7 @@ TX
 TX
 Bf
 PY
-pc
+TX
 Sh
 TX
 ol
@@ -5180,7 +5114,7 @@ yT
 TX
 TX
 TX
-pc
+TX
 FC
 UF
 TX
@@ -5261,7 +5195,7 @@ cI
 TX
 TX
 TX
-pc
+TX
 FC
 Zm
 TX
@@ -5342,7 +5276,7 @@ cI
 TX
 sA
 TX
-rI
+TX
 aB
 xk
 TX
@@ -5424,7 +5358,7 @@ TX
 TX
 cf
 fT
-pc
+TX
 yY
 RM
 TX
@@ -5906,7 +5840,7 @@ Zf
 nq
 oK
 oK
-pc
+oM
 QD
 TX
 LS
@@ -5987,7 +5921,7 @@ Zf
 nq
 yL
 oK
-qx
+oM
 cH
 TX
 yT
@@ -6068,7 +6002,7 @@ Zf
 nq
 oK
 oS
-pc
+oM
 hZ
 TX
 TX
@@ -7172,8 +7106,8 @@ fs
 IJ
 IJ
 fs
-Wq
-Wq
+IJ
+IJ
 fs
 bN
 sx
@@ -7444,7 +7378,7 @@ hH
 hH
 hH
 hH
-CT
+hH
 hH
 hH
 hH

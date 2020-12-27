@@ -27,7 +27,7 @@
 			icon_state = "reagent_analyzer_sample"
 			to_chat(user, SPAN_NOTICE("You insert [B] and start configuring the [src]."))
 			updateUsrDialog()
-			if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 				return
 			processing = TRUE
 			if(sample.reagents.total_volume < 30 || sample.reagents.reagent_list.len > 1)
@@ -114,7 +114,7 @@
 /datum/reagent/proc/print_report(var/turf/loc, var/obj/item/paper/research_report/report, var/admin_spawned = FALSE, var/sample_number = 0)
 	if(!report)
 		report = new /obj/item/paper/research_report(loc)
-	
+
 	report.name = "Analysis of [name]"
 
 	report.info += "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"

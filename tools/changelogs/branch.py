@@ -47,11 +47,9 @@ class Branch:
 
         return self.latest_mr_date
 
-    def fetch_new_mrs(self, pat):
+    def fetch_new_mrs(self):
         '''
             Fetches all MRs that were updated after the most lately processed MR
-
-            :param pat: The personal access token to use
 
             :return mrs: A list of merge requests updated after latest_mr_date
             :return status code: The status code from the GET request
@@ -65,7 +63,7 @@ class Branch:
             get_url += "&updated_after={}".format(self.latest_mr_date)
 
         # Get the MRs
-        resp = requests.get(get_url, headers={"Private-Token": pat, "Content-Type": "application/json"})
+        resp = requests.get(get_url, headers={"Content-Type": "application/json"})
         mrs = resp.json()
 
         # No MRs were fetched, i.e. there were no new ones
@@ -83,12 +81,12 @@ class Branch:
         # being merged, but it is technically possible, so better safe than sorry
         for merge_request in mrs:
             mr_merged_at = merge_request.get("merged_at")
-            
+
             if mr_merged_at is None:
                 continue
-                       
+
             latest_date = dateparser.parse(self.latest_mr_date)
-            
+
             mr_merged_date = dateparser.parse(mr_merged_at)
 
             # If this has happened, remove the troublemaker from the list of MRs
@@ -150,7 +148,7 @@ class Branch:
                 # We found our line, so replace it with the new latest MR date
                 found_line = True
                 lines.append("{};{}".format(self.name, self.latest_mr_date))
-            
+
             if not found_line:
                 # We didn't find a line for the branch, so append one
                 lines.append("{};{}".format(self.name, self.latest_mr_date))

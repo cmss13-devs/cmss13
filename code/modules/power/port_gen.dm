@@ -244,7 +244,7 @@ display round(lastgen) and phorontank amount
 			for(var/obj/item/I in component_parts)
 				if(I.reliability < 100)
 					I.crit_fail = 1
-				I.loc = src.loc
+				I.forceMove(src.loc)
 			while ( sheets > 0 )
 				var/obj/item/stack/sheet/G = new sheet_path(src.loc)
 

@@ -227,7 +227,7 @@ var/waiting_for_drop_votes = 0
 		if(H.contents.len)
 			for(var/I in H.contents)
 				qdel(I)
-		H.loc = picked
+		H.forceMove(picked)
 	else
 		H = new(picked)
 

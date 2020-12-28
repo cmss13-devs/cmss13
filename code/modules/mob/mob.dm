@@ -809,7 +809,7 @@ mob/proc/yank_out_object()
 			affected.wounds += I
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
 
-	selection.loc = get_turf(src)
+	selection.forceMove(get_turf(src))
 	return TRUE
 
 /mob/living/proc/handle_statuses()

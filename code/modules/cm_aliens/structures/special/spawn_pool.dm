@@ -7,7 +7,7 @@
 	var/last_larva_time = 0
 	var/spawn_cooldown = 30 SECONDS
 	var/mob/melting_body
-	
+
 	luminosity = 3
 
 /obj/effect/alien/resin/special/pool/update_icon()
@@ -58,12 +58,12 @@
 	if(isXeno(M))
 		if(!linked_hive || M.stat != DEAD)
 			return
-		
+
 		if(SSticker.mode && !(SSticker.mode.flags_round_type & MODE_XVX))
 			return // For now, disabled on gamemodes that don't support it (primarily distress signal)
 
 		// Will probably allow for hives to slowly gain larva by killing hostile xenos and taking them to the spawnpool
-		// A self sustaining cycle until one hive kills more of the other hive to tip the balance 
+		// A self sustaining cycle until one hive kills more of the other hive to tip the balance
 
 		// Makes attacking hives very profitable if they can successfully wipe them out without suffering any significant losses
 		var/mob/living/carbon/Xenomorph/X = M
@@ -82,18 +82,18 @@
 	visible_message(SPAN_DANGER("\The [src] splashes loudly as \the [M] is tossed in, bubbling uncontrollably!"))
 	melting_body = M
 	melting_body.dir = SOUTH
-	melting_body.loc = null
+	melting_body.moveToNullspace()
 	melting_body.pixel_x = 16
 	melting_body.pixel_y = 19
 	vis_contents += melting_body
 	update_icon()
 	new /obj/effect/overlay/temp/acid_pool_splash(loc)
 	playsound(src, 'sound/effects/slosh.ogg', 25, 1)
-	
+
 	linked_hive.stored_larva += larva_amount
 
 	linked_hive.hive_ui.update_pooled_larva()
-	
+
 	melt_body()
 
 /obj/effect/alien/resin/special/pool/process()
@@ -135,7 +135,7 @@
 /obj/effect/alien/resin/special/pool/proc/spawn_pooled_larva(var/mob/xeno_candidate)
 	if(can_spawn_larva() && xeno_candidate)
 		var/mob/living/carbon/Xenomorph/Larva/new_xeno = spawn_hivenumber_larva(loc, linked_hive.hivenumber)
-		if(isnull(new_xeno)) 
+		if(isnull(new_xeno))
 			return FALSE
 
 		new_xeno.visible_message(SPAN_XENODANGER("A larva suddenly emerges out of from the [src]!"),

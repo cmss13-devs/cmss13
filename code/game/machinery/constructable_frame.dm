@@ -116,14 +116,14 @@
 					return
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 				state = CONSTRUCTION_STATE_BEGIN
-				circuit.loc = src.loc
+				circuit.forceMove(loc)
 				circuit = null
 				if(components.len == 0)
 					to_chat(user, SPAN_NOTICE("You remove the circuit board."))
 				else
 					to_chat(user, SPAN_NOTICE("You remove the circuit board and other components."))
 					for(var/obj/item/W in components)
-						W.loc = src.loc
+						W.forceMove(loc)
 				update_desc()
 				req_components = null
 				components = null
@@ -142,9 +142,9 @@
 					QDEL_NULL_LIST(new_machine.component_parts)
 					src.circuit.construct(new_machine)
 					for(var/obj/O in src)
-						O.loc = new_machine
+						O.forceMove(new_machine)
 						LAZYADD(new_machine.component_parts, O)
-					circuit.loc = new_machine
+					circuit.forceMove(new_machine)
 					new_machine.RefreshParts()
 					qdel(src)
 			else if(istype(P, /obj/item))

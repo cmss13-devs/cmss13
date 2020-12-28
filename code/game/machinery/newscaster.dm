@@ -728,7 +728,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 /obj/structure/machinery/newscaster/proc/AttachPhoto(mob/user as mob)
 	if(photo)
 		if(!isRemoteControlling(user))
-			photo.loc = src.loc
+			photo.forceMove(loc)
 			user.put_in_inactive_hand(photo)
 		photo = null
 	var/obj/item/photo/PH = user.get_active_hand()
@@ -919,7 +919,7 @@ obj/item/newspaper/attackby(obj/item/W as obj, mob/user as mob)
 		NEWSPAPER.news_content += FC
 	if(news_network.wanted_issue)
 		NEWSPAPER.important_message = news_network.wanted_issue
-	NEWSPAPER.loc = get_turf(src)
+	NEWSPAPER.forceMove(get_turf(src))
 	src.paper_remaining--
 	return
 

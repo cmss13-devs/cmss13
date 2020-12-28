@@ -53,7 +53,7 @@
 				to_chat(user, SPAN_NOTICE(" You remove the circuit board."))
 				state = 1
 				icon_state = "0"
-				circuit.loc = loc
+				circuit.forceMove(loc)
 				circuit = null
 		if(2)
 			if(istype(P, /obj/item/tool/screwdriver) && circuit)
@@ -121,7 +121,7 @@
 			if(istype(P, /obj/item/tool/crowbar) && brain)
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the brain."))
-				brain.loc = loc
+				brain.forceMove(loc)
 				brain = null
 				icon_state = "3"
 
@@ -177,7 +177,7 @@ That prevents a few funky behaviors.
 							new /obj/structure/AIcore/deactivated(T.loc)//Spawns a deactivated terminal at AI location.
 							T.aiRestorePowerRoutine = 0//So the AI initially has power.
 							T.control_disabled = 1//Can't control things remotely if you're stuck in a card!
-							T.loc = C//Throw AI into the card.
+							T.forceMove(C)//Throw AI into the card.
 							C.name = "inteliCard - [T.name]"
 							if (T.stat == 2)
 								C.icon_state = "aicard-404"
@@ -196,7 +196,7 @@ That prevents a few funky behaviors.
 						if(A)//If AI exists on the card. Else nothing since both are empty.
 							A.control_disabled = 0
 							A.aiRadio.disabledAi = 0
-							A.loc = T.loc//To replace the terminal.
+							A.forceMove(T.loc)//To replace the terminal.
 							C.icon_state = "aicard"
 							C.name = "inteliCard"
 							C.overlays.Cut()
@@ -216,7 +216,7 @@ That prevents a few funky behaviors.
 								C.icon_state = "aicard"
 								C.name = "inteliCard"
 								C.overlays.Cut()
-								A.loc = T
+								A.forceMove(T)
 								T.occupant = A
 								A.control_disabled = 1
 								if (A.stat == 2)
@@ -239,7 +239,7 @@ That prevents a few funky behaviors.
 									T.overlays -= image('icons/obj/structures/machinery/computer.dmi', "ai-fixer-full")
 								to_chat(T.occupant, "You have been downloaded to a mobile storage device. Still no remote access.")
 								to_chat(U, SPAN_NOTICE(" <b>Transfer successful</b>: \black [T.occupant.name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory."))
-								T.occupant.loc = C
+								T.occupant.forceMove(C)
 								T.occupant.cancel_camera()
 								T.occupant = null
 							else if (C.contents.len)

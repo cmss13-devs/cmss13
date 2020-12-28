@@ -458,16 +458,16 @@
 							to_chat(user, SPAN_DANGER("[O] must be emptied before it can be recycled"))
 							continue
 						new /obj/item/stack/sheet/metal(get_step(src,dir))
-						O.loc = get_turf(locate(84,237,2)) //z.2
-//						O.loc = get_turf(locate(30,70,1)) //z.1
+						O.forceMove(get_turf(locate(84,237,2))) //z.2
+//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
 						removed++
 						break
 					else if(istype(O,/obj/item))
 						var/obj/item/I = O
 						if(I.anchored)
 							continue
-						O.loc = get_turf(locate(84,237,2)) //z.2
-//						O.loc = get_turf(locate(30,70,1)) //z.1
+						O.forceMove(get_turf(locate(84,237,2))) //z.2
+//						O.forceMove(get_turf(locate(30,70,1)) )//z.1
 						removed++
 						break
 				for(var/mob/M in T)
@@ -475,8 +475,8 @@
 						var/mob/living/carbon/Xenomorph/X = M
 						if(!X.stat == DEAD)
 							continue
-						X.loc = get_turf(locate(84,237,2)) //z.2
-//						X.loc = get_turf(locate(30,70,1)) //z.1
+						X.forceMove(get_turf(locate(84,237,2))) //z.2
+//						X.forceMove(get_turf(locate(30,70,1)) )//z.1
 						removed++
 						break
 				if(removed && !working)

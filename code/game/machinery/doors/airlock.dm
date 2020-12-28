@@ -667,7 +667,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				else
 					ae = electronics
 					electronics = null
-					ae.loc = loc
+					ae.forceMove(loc)
 				if(operating == -1)
 					ae.icon_state = "door_electronics_smoked"
 					operating = 0

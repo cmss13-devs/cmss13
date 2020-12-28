@@ -259,7 +259,7 @@
 				for(var/obj/O in source)
 					if(O.name == K)
 						source.Remove(O)
-						O.loc = loc
+						O.forceMove(loc)
 						i--
 						if (i <= 0)
 							return TRUE
@@ -377,7 +377,7 @@
 		item_quants[O]--
 		for(var/obj/T in contents)
 			if(T.name == O)
-				T.loc = src.loc
+				T.forceMove(src.loc)
 				throw_item = T
 				break
 		break

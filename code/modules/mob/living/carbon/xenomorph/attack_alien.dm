@@ -844,7 +844,7 @@
 	new /obj/item/stack/sheet/wood(src)
 	var/turf/T = get_turf(src)
 	for(var/obj/O in contents)
-		O.loc = T
+		O.forceMove(T)
 	M.visible_message(SPAN_DANGER("[M] smashes [src] apart!"), \
 	SPAN_DANGER("You smash [src] apart!"), \
 	SPAN_DANGER("You hear splitting wood!"), 5, CHAT_TYPE_XENO_COMBAT)

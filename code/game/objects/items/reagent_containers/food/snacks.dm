@@ -212,7 +212,7 @@
 /obj/item/reagent_container/food/snacks/Destroy()
 	if(contents)
 		for(var/atom/movable/something in contents)
-			something.loc = get_turf(src)
+			something.forceMove(get_turf(src))
 	return ..()
 
 /obj/item/reagent_container/food/snacks/attack_animal(var/mob/M)
@@ -1498,7 +1498,7 @@
 		baconbeacon = new /obj/item/device/radio/beacon/bacon(src)
 	On_Consume()
 		if(!reagents.total_volume)
-			baconbeacon.loc = usr
+			baconbeacon.forceMove(usr)
 			baconbeacon.digest_delay()
 */
 

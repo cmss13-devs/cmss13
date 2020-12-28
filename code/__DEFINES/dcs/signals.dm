@@ -147,6 +147,8 @@
 /// From /atom/movable/proc/launch_towards
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"
 	#define COMPONENT_CANCEL_THROW (1<<0)
+//from base of atom/movable/Moved(): (/atom, dir, forced)
+#define COMSIG_MOVABLE_MOVED "movable_moved"
 
 ///from /obj/item/device/agents/floppy_disk/proc/insert_drive
 #define COMSIG_AGENT_DISK_INSERTED "agent_disk_inserted"

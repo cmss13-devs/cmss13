@@ -21,7 +21,7 @@
 	if(!H.equip_to_slot_if_possible(tracker, WEAR_IN_BACK))
 		if(!H.equip_to_slot_if_possible(tracker, WEAR_L_HAND))
 			if(!H.equip_to_slot_if_possible(tracker, WEAR_R_HAND))
-				tracker.loc = H.loc
+				tracker.forceMove(H.loc)
 
 	RegisterSignal(tracker, list(COMSIG_TRACKING_PLANTED, COMSIG_TRACKING_DISARMED), .proc/placed_tracker)
 

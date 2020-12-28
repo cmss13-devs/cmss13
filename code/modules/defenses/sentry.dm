@@ -168,7 +168,7 @@
 
 		ammo = O
 		user.drop_held_item(O)
-		O.loc = src
+		O.forceMove(src)
 		update_icon()
 		return
 

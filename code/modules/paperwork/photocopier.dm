@@ -71,11 +71,11 @@
 							W = copy(W)
 						else if(istype(W, /obj/item/photo))
 							W = photocopy(W)
-						W.loc = p
+						W.forceMove(p)
 						p.amount++
 						j++
 					p.amount--
-					p.loc = src.loc
+					p.forceMove(src.loc)
 					p.update_icon()
 					p.icon_state = "paper_words"
 					p.name = bundle.name
@@ -85,19 +85,19 @@
 				updateUsrDialog()
 		else if(href_list["remove"])
 			if(copy)
-				copy.loc = usr.loc
+				copy.forceMove(usr.loc)
 				usr.put_in_hands(copy)
 				to_chat(usr, SPAN_NOTICE("You take the paper out of \the [src]."))
 				copy = null
 				updateUsrDialog()
 			else if(photocopy)
-				photocopy.loc = usr.loc
+				photocopy.forceMove(usr.loc)
 				usr.put_in_hands(photocopy)
 				to_chat(usr, SPAN_NOTICE("You take the photo out of \the [src]."))
 				photocopy = null
 				updateUsrDialog()
 			else if(bundle)
-				bundle.loc = usr.loc
+				bundle.forceMove(usr.loc)
 				usr.put_in_hands(bundle)
 				to_chat(usr, SPAN_NOTICE("You take the paper bundle out of \the [src]."))
 				bundle = null

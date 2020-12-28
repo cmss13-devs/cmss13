@@ -102,7 +102,7 @@
 	else if(istype(W, /obj/item/tool/screwdriver))
 		if(bcell)
 			bcell.updateicon()
-			bcell.loc = get_turf(src.loc)
+			bcell.forceMove(get_turf(src.loc))
 			bcell = null
 			to_chat(user, SPAN_NOTICE("You remove the cell from the [src]."))
 			status = 0

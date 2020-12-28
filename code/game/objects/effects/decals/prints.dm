@@ -16,7 +16,7 @@
 /obj/effect/decal/prints/New(var/turf/location, var/mob/living/carbon/human/criminal_mob, var/incident = "")
 	. = ..()
 
-	loc = location
+	forceMove(location)
 	criminal_name = criminal_mob.name
 
 	var/obj/item/card/id/I = criminal_mob.get_idcard()
@@ -52,7 +52,7 @@
 		return
 	S.scanning = FALSE
 
-	src.loc = null
+	moveToNullspace()
 	S.found_prints = src
 	S.update_icon()
 	to_chat(user, SPAN_INFO("Print set found: [generate_clue()]"))
@@ -72,13 +72,13 @@
 
 	if(!criminal_squad)
 		return information
-			
+
 	information += " "
 	information += criminal_squad
-	
+
 	return information
 
 /obj/effect/decal/prints/Destroy()
 	SSclues.prints_list -= src
 
-	. = ..()	
+	. = ..()

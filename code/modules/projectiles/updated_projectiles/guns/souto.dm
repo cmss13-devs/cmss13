@@ -18,7 +18,7 @@
 	accuracy_mult = BASE_ACCURACY_MULT + 2*HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_10
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
-	
+
 /obj/item/weapon/gun/souto/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!soutopack)
 		if(!link_soutopack(user))
@@ -63,11 +63,11 @@
 			if(!in_chamber)
 				load_into_chamber()
 			in_chamber.icon_state = S.can_type.icon_state
-			S.can_type.loc = in_chamber
+			S.can_type.forceMove(in_chamber)
 			S.can_type.sharp = 1
 
 /obj/item/weapon/gun/souto/proc/link_soutopack(var/mob/user)
-	if(user.back)	
+	if(user.back)
 		if(istype(user.back, /obj/item/storage/backpack/souto))
 			soutopack = user.back
 			return TRUE

@@ -146,13 +146,9 @@ var/global/list/deployed_fultons = list()
 
 	icon_state = ""
 
-	attached_atom.z = space_tile.z
-	attached_atom.x = space_tile.x
-	attached_atom.y = space_tile.y
+	attached_atom.forceMove(space_tile)
 
-	src.z = attached_atom.z
-	src.x = attached_atom.x
-	src.y = attached_atom.y
+	forceMove(attached_atom)
 	deployed_fultons += src
 	attached_atom.overlays -= I
 
@@ -162,9 +158,7 @@ var/global/list/deployed_fultons = list()
 	if(!istype(get_area(attached_atom), /area/space/highalt))
 		return
 	if(return_turf)
-		attached_atom.z = return_turf.z
-		attached_atom.x = return_turf.x
-		attached_atom.y = return_turf.y
+		attached_atom.forceMove(return_turf)
 		playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
 
 	if(intel_system)

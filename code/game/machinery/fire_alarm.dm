@@ -98,7 +98,7 @@ FIRE ALARM
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 					spawn(20)
 						var/obj/item/circuitboard/firealarm/circuit = new()
-						circuit.loc = user.loc
+						circuit.forceMove(user.loc)
 						buildstage = 0
 						update_icon()
 			if(0)
@@ -111,7 +111,7 @@ FIRE ALARM
 				else if(istype(W, /obj/item/tool/wrench))
 					to_chat(user, "You remove the fire alarm assembly from the wall!")
 					var/obj/item/frame/fire_alarm/frame = new /obj/item/frame/fire_alarm()
-					frame.loc = user.loc
+					frame.forceMove(user.loc)
 					playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 					qdel(src)
 		return
@@ -224,7 +224,7 @@ FIRE ALARM
 	..()
 
 	if(loc)
-		src.loc = loc
+		src.forceMove(loc)
 
 	if(dir)
 		src.dir = dir

@@ -953,9 +953,7 @@
 
 	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehh
 	C.anchored = FALSE
-	C.z = T.z
-	C.x = T.x
-	C.y = T.y
+	C.forceMove(T)
 	var/turf/TC = get_turf(C)
 	TC.ceiling_debris_check(3)
 	playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.

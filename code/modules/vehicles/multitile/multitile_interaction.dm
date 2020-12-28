@@ -339,7 +339,7 @@
 //CLAMP procs, unsafe proc, checks are done before calling it
 /obj/vehicle/multitile/proc/attach_clamp(obj/item/vehicle_clamp/O, mob/user)
 	user.temp_drop_inv_item(O, 0)
-	O.loc = src
+	O.forceMove(src)
 	clamped = TRUE
 	move_delay = 50000
 	next_move = world.time + move_delay

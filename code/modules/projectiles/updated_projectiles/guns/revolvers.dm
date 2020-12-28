@@ -211,7 +211,7 @@
 	for(var/mob/M in viewers(user))
 		M << trick
 	sleep(5)
-	trick.loc = null
+	qdel(trick)
 	if(loc && user)
 		invisibility = 0
 		playsound(user, thud_sound, 25, 1)

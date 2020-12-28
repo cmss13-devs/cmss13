@@ -369,7 +369,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/souto, WEAR_FEET)
 	var/obj/vehicle/souto/V = new
-	V.loc = H.loc
+	V.forceMove(H.loc)
 	V.buckle_mob(H, H)
 
 /*****************************************************************************************************/

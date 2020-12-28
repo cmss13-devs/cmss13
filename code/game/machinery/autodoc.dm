@@ -616,7 +616,7 @@
 		connected.start_processing()
 	//prevents occupant's belonging from landing inside the machine
 	for(var/obj/O in src)
-		O.loc = loc
+		O.forceMove(loc)
 
 
 

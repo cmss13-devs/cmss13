@@ -109,7 +109,7 @@
 			A.circuit = M
 			A.anchored = 1
 			for (var/obj/C in src)
-				C.loc = src.loc
+				C.forceMove(loc)
 			if (src.stat & BROKEN)
 				to_chat(user, SPAN_NOTICE(" The broken glass falls out."))
 				new /obj/item/shard( src.loc )

@@ -131,7 +131,7 @@
 
 		return
 	
-	user.loc = next_pipe
+	user.forceMove(next_pipe)
 	user.client.eye = next_pipe //if we don't do this, Byond only updates the eye every tick - required for smooth movement
 	user.update_pipe_icons(next_pipe)
 	

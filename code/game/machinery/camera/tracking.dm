@@ -47,13 +47,13 @@
 
 	return
 
-/mob/living/silicon/ai/proc/ai_store_location(loc as text)
+/mob/living/silicon/ai/proc/ai_store_location(newloc as text)
 	set category = "AI Commands"
 	set name = "Store Camera Location"
 	set desc = "Stores your current camera location by the given name"
 
-	loc = copytext(sanitize(loc), 1, MAX_MESSAGE_LEN)
-	if(!loc)
+	newloc = copytext(sanitize(loc), 1, MAX_MESSAGE_LEN)
+	if(!newloc)
 		to_chat(src, SPAN_DANGER("Must supply a location name"))
 		return
 
@@ -61,7 +61,7 @@
 		to_chat(src, SPAN_DANGER("Cannot store additional locations. Remove one first"))
 		return
 
-	if(loc in stored_locations)
+	if(newloc in stored_locations)
 		to_chat(src, SPAN_DANGER("There is already a stored location by this name"))
 		return
 
@@ -70,8 +70,8 @@
 		to_chat(src, SPAN_DANGER("Unable to store this location"))
 		return
 
-	stored_locations[loc] = L
-	to_chat(src, "Location '[loc]' stored")
+	stored_locations[newloc] = L
+	to_chat(src, "Location '[newloc]' stored")
 
 /mob/living/silicon/ai/proc/sorted_stored_locations()
 	return sortList(stored_locations)

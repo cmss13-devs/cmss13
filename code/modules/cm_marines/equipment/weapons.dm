@@ -57,7 +57,7 @@
 		var/obj/item/cell/C = A
 		visible_message("[user.name] swaps out the power cell in the [src.name].","You swap out the power cell in the [src] and drop the old one.")
 		to_chat(user, "The new cell contains: [C.charge] power.")
-		pcell.loc = get_turf(user)
+		pcell.forceMove(get_turf(user))
 		pcell = C
 		user.drop_inv_item_to_loc(C, src)
 		playsound(src,'sound/machines/click.ogg', 25, 1)		

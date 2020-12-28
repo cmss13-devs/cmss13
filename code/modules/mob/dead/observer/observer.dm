@@ -255,7 +255,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		for(var/obj/effect/step_trigger/S in NewLoc)
 			S.Crossed(src)
 
-	loc = get_turf(src) //Get out of closets and such as a ghost
+	forceMove(get_turf(src) )//Get out of closets and such as a ghost
 	if((direct & NORTH) && y < world.maxy)
 		y += m_intent //Let's take advantage of the intents being 1 & 2 respectively
 	else if((direct & SOUTH) && y > 1)
@@ -336,7 +336,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!L || !L.len)
 		to_chat(src, "<span style='color: red;'>No area available.</span>")
 
-	usr.loc = pick(L)
+	usr.forceMove(pick(L))
 	following = null
 
 /mob/dead/observer/verb/follow_local(var/mob/target)
@@ -423,7 +423,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 					break
 				// To stop the ghost flickering.
 				if(loc != T)
-					loc = T
+					forceMove(T)
 				sleep(15)
 
 /mob/dead/observer/proc/JumpToCoord(var/tx, var/ty, var/tz)
@@ -459,7 +459,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			var/turf/T = get_turf(M) //Turf of the destination mob
 
 			if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
-				A.loc = T
+				A.forceMove(T)
 				following = null
 			else
 				to_chat(A, "<span style='color: red;'>This mob is not located in the game world.</span>")

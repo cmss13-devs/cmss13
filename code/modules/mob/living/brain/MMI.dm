@@ -37,7 +37,7 @@
 
 			brainmob = O:brainmob
 			O:brainmob = null
-			brainmob.loc = src
+			brainmob.forceMove(src)
 			brainmob.container = src
 			brainmob.stat = 0
 			GLOB.dead_mob_list -= brainmob//Update dem lists
@@ -75,7 +75,7 @@
 			to_chat(user, SPAN_NOTICE(" You upend the MMI, spilling the brain onto the floor."))
 			var/obj/item/organ/brain/brain = new(user.loc)
 			brainmob.container = null//Reset brainmob mmi var.
-			brainmob.loc = brain//Throw mob into brain.
+			brainmob.forceMove(brain)//Throw mob into brain.
 			GLOB.alive_mob_list -= brainmob//Get outta here
 			brain.brainmob = brainmob//Set the brain to use the brainmob
 			brainmob = null//Set mmi brainmob var to null

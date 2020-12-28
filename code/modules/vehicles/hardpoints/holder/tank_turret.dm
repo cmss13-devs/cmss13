@@ -216,7 +216,7 @@
 	origin_turf = get_step(get_step(origin_turf, owner.dir), owner.dir)	//this should get us tile in front of tank to prevent grenade being stuck under us.
 
 	var/obj/item/projectile/P = new(initial(name), user)
-	P.loc = origin_turf
+	P.forceMove(origin_turf)
 	P.generate_bullet(new ammo.default_ammo)
 	if(ammo.has_iff && owner.seats[VEHICLE_GUNNER])
 		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, get_dist(origin_turf, A) + 1, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)

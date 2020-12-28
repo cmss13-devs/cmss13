@@ -10,7 +10,7 @@
 	if(coat)
 		user.visible_message("[user] takes [coat] off \the [src].", "You take [coat] off the \the [src]")
 		if(!user.put_in_active_hand(coat))
-			coat.loc = get_turf(user)
+			coat.forceMove(get_turf(user))
 		coat = null
 		update_icon()
 

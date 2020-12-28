@@ -153,7 +153,7 @@
 			amount--
 			if(amount == 1)
 				var/obj/item/paper/P = contents[1]
-				P.loc = usr.loc
+				P.forceMove(usr.loc)
 				usr.drop_inv_item_on_ground(src)
 				qdel(src)
 				usr.put_in_hands(P)

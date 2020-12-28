@@ -52,7 +52,7 @@
 
 	playsound(src.loc, 'sound/machines/click.ogg', 15, 1)
 	for(var/obj/O in src)
-		O.loc = get_turf(src)
+		O.forceMove(get_turf(src))
 	opened = 1
 	update_icon()
 	if(climbable)
@@ -77,7 +77,7 @@
 			var/obj/structure/bed/B = O
 			if(B.buckled_mob)
 				continue
-		O.loc = src
+		O.forceMove(src)
 		itemcount++
 
 	opened = 0
@@ -106,7 +106,7 @@
 		if(rigged)
 			to_chat(user, SPAN_NOTICE("You attach [W] to [src]."))
 			user.drop_held_item()
-			W.loc = src
+			W.forceMove(src)
 			return
 	else if(istype(W, /obj/item/tool/wirecutters))
 		if(rigged)

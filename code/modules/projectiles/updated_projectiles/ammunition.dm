@@ -130,7 +130,7 @@ They're all essentially identical when it comes to getting the job done.
 			user.put_in_hands(new_handful)
 			to_chat(user, SPAN_NOTICE("You grab <b>[R]</b> round\s from [obj_name]."))
 
-		else new_handful.loc = get_turf(src)
+		else new_handful.forceMove(get_turf(src))
 		update_icon(-R) //Update the other one.
 	return R //Give the number created.
 

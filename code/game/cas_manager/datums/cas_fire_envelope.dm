@@ -32,7 +32,7 @@
 /datum/cas_fire_envelope/proc/generate_mission(firemission_name, length)
 	if(!missions || !linked_console || missions.len>max_mission_len || !fire_length)
 		return null
-	
+
 	var/list/obj/structure/dropship_equipment/weapons = list()
 	for(var/X in linked_console.shuttle_equipments)
 		var/obj/structure/dropship_equipment/E = X
@@ -51,7 +51,7 @@
 		for(var/idx = 1; idx<=fire_length; idx++)
 			record.offsets[idx] = "-"
 		fm.records += record
-	
+
 	fm.name = firemission_name
 	fm.mission_length = length
 
@@ -83,11 +83,11 @@
 		return 1
 	if(check_result == FIRE_MISSION_WEAPON_OUT_OF_AMMO)
 		return 1
-	
+
 	mission_error = mission.error_message(check_result)
 	if(skip_checks)
 		return 0
-	
+
 	//we have mission error. Fill the thing and restore previous state
 	fmr.offsets[offset_step] = old_offset
 
@@ -116,13 +116,13 @@
 	var/check_result = mission.check(linked_console)
 	if(check_result == FIRE_MISSION_CODE_ERROR)
 		return -1
-	
+
 	if(check_result != FIRE_MISSION_ALL_GOOD)
 		mission_error = mission.error_message(check_result)
 		return 0
 
-	if(target_turf && target_turf.loc)
-		var/turf/TT = get_turf(target_turf.loc)
+	if(target_turf && target_turf.signal_loc)
+		var/turf/TT = get_turf(target_turf.signal_loc)
 		if(TT && TT.z)
 			msg_admin_niche("[key_name(usr)] launching Fire Mission '[mission.name]' onto [target_turf.name] at ([TT.x],[TT.y],[TT.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[TT.x];Y=[TT.y];Z=[TT.z]'>JMP LOC</a>)")
 	//actual firemission code
@@ -162,15 +162,15 @@
 		for(var/mob/M in guidance.users)
 			if(istype(M) && M.client)
 				M.reset_view()
-		qdel(guidance)			
+		qdel(guidance)
 		return
 	if(!guidance)
-		guidance = new /obj/effect/firemission_guidance()			
-	guidance.loc = location
+		guidance = new /obj/effect/firemission_guidance()
+	guidance.forceMove(location)
 
 /datum/cas_fire_envelope/proc/user_is_guided(user)
 	return guidance && (user in guidance.users)
-	
+
 
 /datum/cas_fire_envelope/proc/add_user_to_tracking(user)
 	if(!guidance)
@@ -180,7 +180,7 @@
 		M.reset_view(guidance)
 		if(!(user in guidance.users))
 			guidance.users += user
-		
+
 
 /datum/cas_fire_envelope/proc/remove_user_from_tracking(user)
 	if(!guidance)
@@ -196,8 +196,8 @@
 
 /datum/cas_fire_envelope/proc/execute_firemission_unsafe(datum/cas_signal/target_turf, offset, dir, datum/cas_fire_mission/mission)
 	var/sx = 0
-	var/sy = 0		
-	
+	var/sy = 0
+
 	recorded_dir = dir
 	recorded_offset = offset
 
@@ -221,7 +221,7 @@
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target Lost."
 		return
-	var/turf/tt_turf = get_turf(target_turf.loc)
+	var/turf/tt_turf = get_turf(target_turf.signal_loc)
 	if(!tt_turf || !check_firemission_loc(target_turf))
 		stat = FIRE_MISSION_STATE_IDLE
 		mission_error = "Target is off bounds or obstructed."
@@ -232,7 +232,7 @@
 		mission_error = "Target is off bounds."
 		return
 	change_current_loc(shootloc)
-	playsound(shootloc, soundeffect, 70, TRUE, 50) 
+	playsound(shootloc, soundeffect, 70, TRUE, 50)
 	sleep(flyto_period)
 	stat = FIRE_MISSION_STATE_FIRING
 	mission.execute_firemission(linked_console, shootloc, recorded_dir, fire_length, step_delay, src)
@@ -242,7 +242,7 @@
 	sleep(cooldown_period)
 	stat = FIRE_MISSION_STATE_IDLE
 
-/datum/cas_fire_envelope/proc/change_direction(new_dir)		
+/datum/cas_fire_envelope/proc/change_direction(new_dir)
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT)
 		mission_error = "Fire Mission is under way already."
 		return 0
@@ -255,7 +255,7 @@
 	recorded_dir = new_dir
 	return 1
 
-/datum/cas_fire_envelope/proc/change_offset(new_offset)		
+/datum/cas_fire_envelope/proc/change_offset(new_offset)
 	if(stat > FIRE_MISSION_STATE_IN_TRANSIT)
 		mission_error = "Fire Mission is under way already."
 		return 0

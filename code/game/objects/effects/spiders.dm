@@ -119,7 +119,7 @@
 
 /obj/effect/spider/spiderling/Collide(atom/A)
 	if(istype(A, /obj/structure/surface/table))
-		src.loc = A.loc
+		src.forceMove(A.loc)
 	else
 		..()
 

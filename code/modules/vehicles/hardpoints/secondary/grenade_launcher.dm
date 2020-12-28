@@ -51,7 +51,7 @@
 		range = max_range
 
 	var/obj/item/projectile/P = new(initial(name), user)
-	P.loc = origin_turf
+	P.forceMove(origin_turf)
 	P.generate_bullet(new ammo.default_ammo)
 	if(ammo.has_iff && owner.seats[VEHICLE_GUNNER])
 		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)

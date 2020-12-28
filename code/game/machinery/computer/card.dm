@@ -36,13 +36,13 @@
 
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
-		scan.loc = get_turf(src)
+		scan.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
 	else if(modify)
 		to_chat(usr, "You remove \the [modify] from \the [src].")
-		modify.loc = get_turf(src)
+		modify.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(modify)
 		modify = null
@@ -145,12 +145,12 @@
 				GLOB.data_core.manifest_modify(modify.registered_name, modify.assignment, modify.rank)
 				modify.name = text("[modify.registered_name]'s ID Card ([modify.assignment])")
 				if(ishuman(usr))
-					modify.loc = usr.loc
+					modify.forceMove(usr.loc)
 					if(!usr.get_active_hand())
 						usr.put_in_hands(modify)
 					modify = null
 				else
-					modify.loc = loc
+					modify.forceMove(loc)
 					modify = null
 			else
 				var/obj/item/I = usr.get_active_hand()
@@ -162,12 +162,12 @@
 		if ("scan")
 			if (scan)
 				if(ishuman(usr))
-					scan.loc = usr.loc
+					scan.forceMove(usr.loc)
 					if(!usr.get_active_hand())
 						usr.put_in_hands(scan)
 					scan = null
 				else
-					scan.loc = src.loc
+					scan.forceMove(loc)
 					scan = null
 			else
 				var/obj/item/I = usr.get_active_hand()

@@ -362,7 +362,7 @@
 		if(istype(T, /turf/open))
 			var/obj/structure/machinery/autodoc/event/E = new (T)
 			var/obj/structure/machinery/autodoc_console/C = new (T)
-			C.loc = get_step(T, EAST)
+			C.forceMove(get_step(T, EAST))
 			E.connected = C
 			C.connected = E
 	..()
@@ -377,7 +377,7 @@
 		if(istype(T, /turf/open))
 			var/obj/structure/machinery/bodyscanner/E = new (T)
 			var/obj/structure/machinery/body_scanconsole/C = new (T)
-			C.loc = get_step(T, EAST)
+			C.forceMove(get_step(T, EAST))
 			C.connected = E
 	..()
 
@@ -391,7 +391,7 @@
 		if(istype(T, /turf/open))
 			var/obj/structure/machinery/sleeper/E = new (T)
 			var/obj/structure/machinery/sleep_console/C = new (T)
-			C.loc = get_step(T, EAST)
+			C.forceMove(get_step(T, EAST))
 			E.connected = C
 			C.connected = E
 	..()

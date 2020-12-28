@@ -133,7 +133,7 @@
 
 			else
 				var/atom/movable/prize = pick(contents)
-				prize.loc = src.loc
+				prize.forceMove(loc)
 
 	else if ((src.enemy_mp <= 5) && (prob(70)))
 		var/stealamt = rand(2,3)

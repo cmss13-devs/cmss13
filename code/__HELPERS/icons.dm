@@ -154,7 +154,7 @@ mob
 		// Testing object types (and layers)
 		overlays+=/obj/effect/overlayTest
 
-		loc = locate (10,10,1)
+		forceMove(locate (10,10,1))
 	verb
 		Browse_Icon()
 			set name = "1. Browse Icon"

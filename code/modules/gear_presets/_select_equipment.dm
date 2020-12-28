@@ -204,7 +204,7 @@
 				if(!H.equip_to_slot_if_possible(medal, WEAR_IN_BACK))
 					if(!H.equip_to_slot_if_possible(medal, WEAR_L_HAND))
 						if(!H.equip_to_slot_if_possible(medal, WEAR_R_HAND))
-							medal.loc = H.loc
+							medal.forceMove(H.loc)
 			
 
 	//Gives glasses to the vision impaired

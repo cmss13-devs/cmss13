@@ -15,7 +15,7 @@
 
 	attack_hand(mob/user as mob)
 		if(wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
-			wrapped.loc = (get_turf(src.loc))
+			wrapped.forceMove(get_turf(src.loc))
 			if(istype(wrapped, /obj/structure/closet))
 				var/obj/structure/closet/O = wrapped
 				O.welded = 0
@@ -121,11 +121,11 @@
 
 	attack_self(mob/user as mob)
 		if (src.wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
-			wrapped.loc = user.loc
+			wrapped.forceMove(user.loc)
 			if(ishuman(user))
 				user.put_in_hands(wrapped)
 			else
-				wrapped.loc = get_turf(src)
+				wrapped.forceMove(get_turf(src))
 
 		qdel(src)
 		return
@@ -245,7 +245,7 @@
 					if(user.client)
 						user.client.screen -= O
 				P.wrapped = O
-				O.loc = P
+				O.forceMove(P)
 				P.w_class = O.w_class
 				var/i = round(P.w_class)
 				if(i in list(1,2,3,4,5))
@@ -274,7 +274,7 @@
 				var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
 				P.icon_state = "deliverycrate"
 				P.wrapped = O
-				O.loc = P
+				O.forceMove(P)
 				src.amount -= 3
 				user.visible_message("\The [user] wraps \a [target] with \a [src].",\
 				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
@@ -287,7 +287,7 @@
 				var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
 				P.wrapped = O
 				O.welded = 1
-				O.loc = P
+				O.forceMove(P)
 				src.amount -= 3
 				user.visible_message("\The [user] wraps \a [target] with \a [src].",\
 				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
@@ -379,10 +379,10 @@
 
 		if(istype(AM, /obj))
 			var/obj/O = AM
-			O.loc = src
+			O.forceMove(src)
 		else if(istype(AM, /mob))
 			var/mob/M = AM
-			M.loc = src
+			M.forceMove(src)
 		src.flush()
 
 	flush()

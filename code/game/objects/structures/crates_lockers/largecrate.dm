@@ -20,7 +20,7 @@
 		new /obj/item/stack/sheet/wood(src)
 		var/turf/T = get_turf(src)
 		for(var/obj/O in contents)
-			O.loc = T
+			O.forceMove(T)
 		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
 							 SPAN_NOTICE("You pry open \the [src]."), \
 							 SPAN_NOTICE("You hear splitting wood."))

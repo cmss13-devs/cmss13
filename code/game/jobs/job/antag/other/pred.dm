@@ -39,8 +39,8 @@
 		clan_info.sync()
 		if(clan_info.clan_id)
 			spawn_points = get_clan_spawnpoints(clan_info.clan_id)
-	
-	Y.loc = pick(spawn_points)
+
+	Y.forceMove(pick(spawn_points))
 	Y.job = NP.job
 	Y.name = NP.real_name
 	Y.voice = NP.real_name
@@ -77,7 +77,7 @@
 
 	return rank
 
-		
+
 /datum/job/antag/predator/announce_entry_message(var/mob/new_predator, var/account, var/whitelist_status)
 	to_chat(new_predator, SPAN_NOTICE("You are <B>Yautja</b>, a great and noble predator!"))
 	to_chat(new_predator, SPAN_NOTICE("Your job is to first study your opponents. A hunt cannot commence unless intelligence is gathered."))

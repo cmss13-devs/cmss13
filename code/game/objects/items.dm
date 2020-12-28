@@ -148,9 +148,9 @@
 
 	var/turf/T = src.loc
 
-	src.loc = null
+	moveToNullspace()
 
-	src.loc = T
+	src.forceMove(T)
 
 /*Global item proc for all of your unique item skin needs. Works with any
 item, and will change the skin to whatever you specify here. You can also

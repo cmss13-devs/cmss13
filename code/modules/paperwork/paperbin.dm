@@ -55,7 +55,7 @@
 			
 			
 
-		P.loc = user.loc
+		P.forceMove(user.loc)
 		user.put_in_hands(P)
 		to_chat(user, SPAN_NOTICE("You take [P] out of the [src]."))
 	else

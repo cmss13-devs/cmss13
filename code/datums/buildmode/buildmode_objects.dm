@@ -36,7 +36,7 @@
     master = null
     cl.screen -= src
 
-    loc = null
+    moveToNullspace()
     cl = null
     return ..()
 

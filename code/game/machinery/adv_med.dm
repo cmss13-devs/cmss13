@@ -80,14 +80,14 @@
 	icon_state = "body_scanner_1"
 	//prevents occupant's belonging from landing inside the machine
 	for(var/obj/O in src)
-		O.loc = loc
+		O.forceMove(loc)
 	playsound(src, 'sound/machines/scanning_pod1.ogg')
 
 /obj/structure/machinery/bodyscanner/proc/go_out()
 	if ((!( src.occupant ) || src.locked))
 		return
 	for(var/obj/O in src)
-		O.loc = src.loc
+		O.forceMove(loc)
 		//Foreach goto(30)
 	occupant.forceMove(loc)
 	occupant = null
@@ -132,7 +132,7 @@
 
 /obj/structure/machinery/bodyscanner/ex_act(var/severity, var/source)
 	for(var/atom/movable/A as mob|obj in src)
-		A.loc = src.loc
+		A.forceMove(loc)
 		A.ex_act(severity, , source)
 	switch(severity)
 		if(0 to EXPLOSION_THRESHOLD_LOW)

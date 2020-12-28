@@ -83,7 +83,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	if(user)
 		user.put_in_hands(new_handful)
 		playsound(user, reload_sound, 25, 1)
-	else new_handful.loc = get_turf(src)
+	else new_handful.forceMove(get_turf(src))
 
 	current_mag.current_rounds--
 	current_mag.chamber_contents[current_mag.chamber_position] = "empty"

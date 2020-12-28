@@ -102,7 +102,7 @@
 		return
 
 	user.temp_drop_inv_item(I)
-	I.loc = null
+	I.moveToNullspace()
 	incident_reports += I
 
 	to_chat(user, SPAN_NOTICE("You insert [I] into [name]."))

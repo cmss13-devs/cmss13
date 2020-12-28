@@ -165,7 +165,7 @@
 /datum/player_action/bring/act(var/client/user, var/mob/target, var/list/params)
 	var/mob/M = user.mob
 
-	target.loc = M.loc
+	target.forceMove(M.loc)
 	message_staff("[key_name_admin(user)] teleported [key_name_admin(target)] to themselves.", M.loc.x, M.loc.y, M.loc.z)
 	return TRUE
 

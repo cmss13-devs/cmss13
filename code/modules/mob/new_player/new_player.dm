@@ -126,7 +126,7 @@
 				var/obj/O = locate("landmark*Observer-Start")
 				if(istype(O))
 					to_chat(src, SPAN_NOTICE("Now teleporting."))
-					observer.loc = O.loc
+					observer.forceMove(O.loc)
 				else
 					to_chat(src, SPAN_DANGER("Could not locate an observer spawn point. Use the Teleport verb to jump to the station map."))
 				observer.icon = 'icons/mob/humans/species/r_human.dmi'

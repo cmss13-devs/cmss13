@@ -109,7 +109,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 		visible_message(SPAN_NOTICE("[src] beeps happily as it disgorges [I]."))
 
-		I.loc = get_turf(src)
+		I.forceMove(get_turf(src))
 		frozen_items_for_type -= I
 
 	else if(href_list["allitems"])
@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		visible_message(SPAN_NOTICE("[src] beeps happily as it disgorges the desired objects."))
 
 		for(var/obj/item/I in frozen_items_for_type)
-			I.loc = get_turf(src)
+			I.forceMove(get_turf(src))
 			frozen_items_for_type -= I
 
 	src.updateUsrDialog()
@@ -250,13 +250,13 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 					for(var/obj/item/I in SS.pockets) //But we keep stuff inside them
 						SS.pockets.remove_from_storage(I, loc)
 						strippeditems += I
-						I.loc = null
+						I.moveToNullspace()
 				if(isstorage(W))
 					var/obj/item/storage/S = W
 					for(var/obj/item/I in S)
 						S.remove_from_storage(I, loc)
 						strippeditems += I
-						I.loc = null
+						I.moveToNullspace()
 				qdel(W)
 				continue
 
@@ -268,20 +268,20 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 				for(var/obj/item/I in SS.pockets)
 					SS.pockets.remove_from_storage(I, loc)
 					strippeditems += I
-					I.loc = null
+					I.moveToNullspace()
 
 			if(istype(W, /obj/item/clothing/under))
 				var/obj/item/clothing/under/UN = W
 				for(var/obj/item/I in UN.accessories)
 					UN.remove_accessory(occupant, I)
 					strippeditems += I
-					I.loc = null
+					I.moveToNullspace()
 
 			if(istype(W, /obj/item/clothing/shoes/marine))
 				var/obj/item/clothing/shoes/marine/MS = W
 				if(MS.stored_item)
 					strippeditems += MS.stored_item
-					MS.stored_item.loc = null
+					MS.stored_item.moveToNullspace()
 					MS.stored_item = null
 
 
@@ -299,7 +299,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 					continue item_loop
 
 			dept_console += W
-			W.loc = null
+			W.moveToNullspace()
 
 	stripped_items:
 		for(var/obj/item/A in strippeditems)
@@ -309,7 +309,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 					continue stripped_items
 
 			dept_console += A
-			A.loc = null
+			A.moveToNullspace()
 
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
@@ -440,7 +440,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	if(announce) items -= announce
 
 	for(var/obj/item/W in items)
-		W.loc = get_turf(src)
+		W.forceMove(get_turf(src))
 
 	go_out()
 	add_fingerprint(usr)

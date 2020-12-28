@@ -61,14 +61,14 @@
 		if (contents.len)
 			src.visible_message(SPAN_DANGER("[src] slams into [hit_atom] spilling its contents!"))
 		for (var/obj/item/clothing/mask/cigarette/O in contents)
-			O.loc = src.loc
+			O.forceMove(src.loc)
 		icon_state = icon_empty
 	return ..()
 
 /obj/item/ashtray/proc/die()
 	src.visible_message(SPAN_DANGER("[src] shatters spilling its contents!"))
 	for (var/obj/item/clothing/mask/cigarette/O in contents)
-		O.loc = src.loc
+		O.forceMove(src.loc)
 	icon_state = icon_broken
 
 /obj/item/ashtray/plastic

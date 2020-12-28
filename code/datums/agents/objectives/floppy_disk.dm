@@ -11,7 +11,7 @@
 	if(!H.equip_to_slot_if_possible(disk, WEAR_IN_BACK))
 		if(!H.equip_to_slot_if_possible(disk, WEAR_L_HAND))
 			if(!H.equip_to_slot_if_possible(disk, WEAR_R_HAND))
-				disk.loc = H.loc
+				disk.forceMove(H.loc)
 
 	RegisterSignal(disk, COMSIG_AGENT_DISK_INSERTED, .proc/inserted_disk)
 

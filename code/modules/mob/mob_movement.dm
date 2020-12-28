@@ -87,7 +87,7 @@
 			if(!mob.control_object)	return
 			mob.control_object.dir = direct
 		else
-			mob.control_object.loc = get_step(mob.control_object,direct)
+			mob.control_object.forceMove(get_step(mob.control_object,direct))
 	return
 
 /client/proc/recalculate_move_delay()

@@ -81,36 +81,72 @@
 		Move(target_turf)
 	return
 
-/atom/movable/proc/Moved(atom/OldLoc,Dir)
+/atom/movable/proc/Moved(atom/oldloc, direction, Forced = FALSE)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_MOVED, oldloc, direction, Forced)
 	if (isturf(loc))
 		if (opacity)
-			OldLoc.UpdateAffectingLights()
+			oldloc.UpdateAffectingLights()
 		else
 			if (light)
 				light.changed()
-	return
+	return TRUE
 
 /atom/movable/proc/forceMove(atom/destination)
-	if (destination)
-		if (pulledby)
+	. = FALSE
+	if(destination)
+		. = doMove(destination)
+	else
+		CRASH("No valid destination passed into forceMove")
+
+
+/atom/movable/proc/moveToNullspace()
+	return doMove(null)
+
+
+/atom/movable/proc/doMove(atom/destination)
+	. = FALSE
+	if(destination)
+		if(pulledby)
 			pulledby.stop_pulling()
-		var/oldLoc
-		if (loc)
-			oldLoc = loc
-			loc.Exited(src)
+		var/atom/oldloc = loc
+		var/same_loc = oldloc == destination
+		var/area/old_area = get_area(oldloc)
+		var/area/destarea = get_area(destination)
+
 		loc = destination
-		loc.Entered(src)
-		var/area/old_area
-		if (oldLoc)
-			old_area = get_area(oldLoc)
-		var/area/new_area = get_area(destination)
-		if (new_area && old_area != new_area)
-			new_area.Entered(src)
-		for (var/atom/movable/AM in destination)
-			if (AM == src)
-				continue
-			AM.Crossed(src)
-		if (oldLoc)
-			Moved(oldLoc,dir)
-		return 1
-	return 0
+
+		if(!same_loc)
+			if(oldloc)
+				oldloc.Exited(src, destination)
+				if(old_area && old_area != destarea)
+					old_area.Exited(src, destination)
+			for(var/atom/movable/AM in oldloc)
+				AM.Uncrossed(src)
+//			var/turf/oldturf = get_turf(oldloc)  // TODO: maploader
+//			var/turf/destturf = get_turf(destination)
+//			var/old_z = (oldturf ? oldturf.z : null)
+//			var/dest_z = (destturf ? destturf.z : null)
+//			if(old_z != dest_z)
+//				onTransitZ(old_z, dest_z)
+			destination.Entered(src, oldloc)
+			if(destarea && old_area != destarea)
+				destarea.Entered(src, oldloc)
+
+			for(var/atom/movable/AM in destination)
+				if(AM == src)
+					continue
+				AM.Crossed(src, oldloc)
+
+		Moved(oldloc, NONE, TRUE)
+		. = TRUE
+
+	//If no destination, move the atom into nullspace (don't do this unless you know what you're doing)
+	else
+		. = TRUE
+		if (loc)
+			var/atom/oldloc = loc
+			var/area/old_area = get_area(oldloc)
+			oldloc.Exited(src, null)
+			if(old_area)
+				old_area.Exited(src, null)
+		loc = null

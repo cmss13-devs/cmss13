@@ -98,7 +98,7 @@
 		var/obj/effect/egg_trigger/ET = trigger
 		target_turf = locate(x+x_coords[i],y+y_coords[i], z)
 		if(target_turf)
-			ET.loc = target_turf
+			ET.forceMove(target_turf)
 			i++
 
 /obj/effect/alien/egg/proc/delete_egg_triggers()
@@ -253,10 +253,10 @@
 	if(!linked_egg && !linked_eggmorph) //something went very wrong.
 		qdel(src)
 	else if(linked_egg && (get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc))) //something went wrong
-		loc = linked_egg
+		forceMove(linked_egg)
 
 	else if(linked_eggmorph && (get_dist(src, linked_eggmorph) != 1 || !isturf(linked_eggmorph.loc))) //something went wrong
-		loc = linked_eggmorph
+		forceMove(linked_eggmorph)
 	else if(iscarbon(A))
 		var/mob/living/carbon/C = A
 		if(linked_egg)

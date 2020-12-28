@@ -11,13 +11,13 @@
 	. = ..()
 	for(var/obj/item/I in loc)
 		if(istype(I, /obj/item/book))
-			I.loc = src
+			I.forceMove(src)
 	update_icon()
 
 /obj/structure/bookcase/attackby(obj/O as obj, mob/user as mob)
 	if(istype(O, /obj/item/book))
 		user.drop_held_item()
-		O.loc = src
+		O.forceMove(src)
 		update_icon()
 	else if(istype(O, /obj/item/tool/pen))
 		var/newname = stripped_input(usr, "What would you like to title this bookshelf?")
@@ -38,7 +38,7 @@
 				if(!user.get_active_hand())
 					user.put_in_hands(choice)
 			else
-				choice.loc = get_turf(src)
+				choice.forceMove(get_turf(src))
 			update_icon()
 
 /obj/structure/bookcase/ex_act(severity)
@@ -46,12 +46,12 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if (prob(50))
 				for(var/obj/item/book/b in contents)
-					b.loc = (get_turf(src))
+					b.forceMove((get_turf(src)))
 				qdel(src)
 			return
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			for(var/obj/item/book/b in contents)
-				if (prob(50)) b.loc = (get_turf(src))
+				if (prob(50)) b.forceMove((get_turf(src)))
 				else qdel(b)
 			qdel(src)
 			return

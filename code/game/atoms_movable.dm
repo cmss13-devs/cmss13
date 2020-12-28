@@ -33,7 +33,7 @@
 		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
 	vis_contents.Cut()
 	. = ..()
-	loc = null //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
+	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff
 
 //===========================================================================
 
@@ -192,8 +192,9 @@
 
 /atom/movable/proc/update_clone()
 	///---Var-Copy---////
-	clone.x = x + clone.proj_x //Translate clone position by projection factor
-	clone.y = y + clone.proj_y //This is done first to reduce movement latency
+	clone.forceMove(locate(x + clone.proj_x, y + clone.proj_y, z))
+	//Translate clone position by projection factor
+	//This is done first to reduce movement latency
 
 	clone.anchored 		= anchored //Some of these may be suitable for Init
 	clone.appearance 	= appearance

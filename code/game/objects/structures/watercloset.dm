@@ -32,7 +32,7 @@
 			if(ishuman(user))
 				user.put_in_hands(I)
 			else
-				I.loc = get_turf(src)
+				I.forceMove(get_turf(src))
 			to_chat(user, SPAN_NOTICE("You find \an [I] in the cistern."))
 			w_items -= I.w_class
 			return
@@ -86,7 +86,7 @@
 			to_chat(user, SPAN_NOTICE("The cistern is full."))
 			return
 		user.drop_held_item()
-		I.loc = src
+		I.forceMove(src)
 		w_items += I.w_class
 		to_chat(user, "You carefully place \the [I] into the cistern.")
 		return

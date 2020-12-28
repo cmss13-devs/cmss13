@@ -77,7 +77,7 @@
 	if(mob_owner)
 		owner = mob_owner
 
-	loc = mob_owner
+	forceMove(mob_owner)
 
 
 
@@ -351,7 +351,7 @@ This function completely restores a damaged organ to perfect condition.
 	// remove embedded objects and drop them on the floor
 	for(var/obj/implanted_object in implants)
 		if(!istype(implanted_object,/obj/item/implant))	// We don't want to remove REAL implants. Just shrapnel etc.
-			implanted_object.loc = owner.loc
+			implanted_object.forceMove(owner.loc)
 			implants -= implanted_object
 			if(is_sharp(implanted_object) || istype(implanted_object, /obj/item/shard/shrapnel))
 				owner.embedded_items -= implanted_object

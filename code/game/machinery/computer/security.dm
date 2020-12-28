@@ -31,7 +31,7 @@
 
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
-		scan.loc = get_turf(src)
+		scan.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
@@ -256,7 +256,7 @@ What a mess.*/
 			if("print_report")
 				var/obj/effect/decal/prints/D = scanner.found_prints
 				var/obj/item/paper/fingerprint/P = new /obj/item/paper/fingerprint(D.criminal_name, D.criminal_rank, D.criminal_rank, D.description)
-				P.loc = loc
+				P.forceMove(loc)
 				P.name = "fingerprint report ([D.generate_clue()])"
 				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)
 

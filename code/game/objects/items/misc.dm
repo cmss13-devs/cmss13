@@ -173,7 +173,7 @@
 	overlays += "evidence"	//should look nicer for transparent stuff. not really that important, but hey.
 
 	desc = "An evidence bag containing [I]."
-	I.loc = src
+	I.forceMove(src)
 	stored_item = I
 	w_class = I.w_class
 	return

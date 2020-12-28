@@ -123,12 +123,12 @@
 	src.is_shrapnel = is_shrapnel
 	if(!loc)
 		if (!is_shrapnel)
-			loc = get_turf(F)
+			forceMove(get_turf(F))
 		else
-			loc = get_turf(S)
+			forceMove(get_turf(S))
 	starting = get_turf(src)
 	if(starting != loc)
-		loc = starting //Put us on the turf, if we're not.
+		forceMove(starting) //Put us on the turf, if we're not.
 	target_turf = get_turf(target)
 	if(!target_turf || !starting || target_turf == starting) //This shouldn't happen, but it can.
 		qdel(src)
@@ -236,7 +236,7 @@
 			qdel(src)
 			return
 
-		loc = next_turf
+		forceMove(next_turf)
 		speed = each_turf(speed)
 
 		this_iteration++

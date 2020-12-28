@@ -197,7 +197,7 @@
 //ALWAYS CALL THIS WHEN ATTACHING HARDPOINTS
 /obj/vehicle/multitile/proc/add_hardpoint(var/obj/item/hardpoint/HP, var/mob/user)
 	HP.owner = src
-	HP.loc = src
+	HP.forceMove(src)
 	hardpoints += HP
 
 	HP.on_install(src)
@@ -212,9 +212,9 @@
 		return
 
 	if(user)
-		old.loc = get_turf(user)
+		old.forceMove(get_turf(user))
 	else
-		old.loc = get_turf(src)
+		old.forceMove(get_turf(src))
 
 	old.on_uninstall(src)
 	old.reset_rotation()

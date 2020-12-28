@@ -487,7 +487,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 		if (imp_in)
 			imp_in.put_in_hands(scanned)
 		else
-			scanned.loc = t
+			scanned.forceMove(t)
 		qdel(src)
 
 	implanted(mob/source as mob)

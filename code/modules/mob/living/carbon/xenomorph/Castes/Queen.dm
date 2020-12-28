@@ -103,7 +103,7 @@
 
 /mob/hologram/queen/proc/start_watching(var/mob/living/carbon/Xenomorph/X, var/mob/living/carbon/Xenomorph/target)
 	SIGNAL_HANDLER
-	loc = target
+	forceMove(target)
 	is_watching = target
 
 	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/target_watching_qdeleted)
@@ -121,11 +121,11 @@
 			var/turf/T = get_turf(target)
 
 			if(T)
-				loc = T
+				forceMove(T)
 		UnregisterSignal(target, COMSIG_PARENT_QDELETING)
 
 	if(!isturf(loc) || (turf_weed_only(src, loc) & COMPONENT_TURF_DENY_MOVEMENT))
-		loc = X.loc
+		forceMove(X.loc)
 
 	is_watching = null
 	X.reset_view()
@@ -181,7 +181,7 @@
 	if(!(turf_weed_only(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))
 		return
 
-	loc = T
+	forceMove(T)
 	if(is_watching)
 		Q.overwatch(stop_overwatch = TRUE)
 

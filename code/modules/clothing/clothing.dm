@@ -372,7 +372,7 @@
 				if(stored_item)	return
 				M.drop_held_item()
 				stored_item = I
-				I.loc = src
+				I.forceMove(src)
 				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
 				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 				update_icon()

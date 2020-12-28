@@ -40,7 +40,7 @@
 	else if(istype(I, /obj/item/storage/bag/trash))
 		to_chat(user, SPAN_NOTICE("You hook the trashbag onto the [callme]."))
 		user.drop_held_item()
-		I.loc = src
+		I.forceMove(src)
 		mybag = I
 	else
 		. = ..()
@@ -48,7 +48,7 @@
 
 /obj/structure/bed/chair/janicart/attack_hand(mob/user)
 	if(mybag)
-		mybag.loc = get_turf(user)
+		mybag.forceMove(get_turf(user))
 		user.put_in_hands(mybag)
 		mybag = null
 	else

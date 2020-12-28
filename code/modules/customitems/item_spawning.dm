@@ -53,4 +53,4 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 							break
 
 				if (ok == 0) // Finally, since everything else failed, place it on the ground
-					Item.loc = get_turf(M.loc)
+					Item.forceMove(get_turf(M.loc))

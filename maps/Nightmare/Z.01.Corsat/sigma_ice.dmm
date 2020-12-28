@@ -39,8 +39,17 @@
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "aS" = (
-/obj/structure/ice/thin/single,
-/turf/closed/ice_rock/corners,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/obj/structure/machinery/door/window/brigdoor/eastleft{
+	dir = 8
+	},
+/turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
@@ -71,9 +80,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/machinery/door/window/brigdoor/eastleft{
-	dir = 8
-	},
+/obj/structure/machinery/door/window/brigdoor/eastleft,
 /turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
@@ -539,18 +546,12 @@
 	temperature = 223
 	})
 "iy" = (
-/obj/structure/window/reinforced{
-	dir = 1
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/obj/structure/machinery/door/window/brigdoor/eastleft,
-/turf/open/ice,
-/area/corsat/sigma/biodome{
-	temperature = 223
-	})
+/area/corsat/sigma/biodome/scrapyard)
 "iK" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -946,12 +947,13 @@
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "on" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/area/corsat/sigma/biodome/scrapyard)
+/turf/open/ice,
+/area/corsat/sigma/biodome{
+	temperature = 223
+	})
 "oK" = (
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/scrapyard)
@@ -1159,14 +1161,6 @@
 	unacidable = 0
 	},
 /turf/open/auto_turf/snow/layer2,
-/area/corsat/sigma/biodome{
-	temperature = 223
-	})
-"tp" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
@@ -5436,7 +5430,7 @@ hH
 hC
 hC
 hC
-on
+iy
 TX
 dT
 TX
@@ -6613,7 +6607,7 @@ Zr
 YN
 Zr
 Wk
-aS
+Wk
 aY
 aY
 aY
@@ -7622,8 +7616,8 @@ hH
 Uv
 Uv
 UD
-ba
-tp
+aS
+on
 Ba
 iO
 TA
@@ -8594,7 +8588,7 @@ hH
 Uv
 Uv
 UD
-iy
+ba
 LH
 Jm
 HB

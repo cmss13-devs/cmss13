@@ -207,11 +207,10 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		return
 	if (!harness_check(user))
 		return
+
 	var/obj/item/I = user.wear_suit
-	user.equip_to_slot_if_possible(src, WEAR_J_STORE)
-	if(user.s_store == src)
+	if(user.equip_to_slot_if_possible(src, WEAR_J_STORE))
 		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
-	user.update_inv_s_store()
 
 /obj/item/weapon/gun/proc/handle_harness(mob/living/carbon/human/user)
 	if (!ishuman(user))
@@ -808,9 +807,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		to_chat(usr, "Not right now.")
 		return
 
-	to_chat(usr, SPAN_NOTICE("You toggle the safety [flags_gun_features & GUN_TRIGGER_SAFETY ? "<b>off</b>" : "<b>on</b>"]."))
-	playsound(usr, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 	flags_gun_features ^= GUN_TRIGGER_SAFETY
+	gun_safety_message(usr)
+
+
+/obj/item/weapon/gun/proc/gun_safety_message(var/mob/user)
+	to_chat(user, SPAN_NOTICE("You toggle the safety [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "on" : "off")]."))
+	playsound(user, 'sound/weapons/handling/safety_toggle.ogg', 25, 1)
 
 /obj/item/weapon/gun/verb/activate_attachment_verb()
 	set category = "Weapons"

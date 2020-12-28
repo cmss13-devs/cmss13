@@ -18,14 +18,14 @@
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
-	var/lit = 0 //Turn the flamer on/off
 
 	attachable_allowed = list( //give it some flexibility.
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/extinguisher)
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY|GUN_TRIGGER_SAFETY
 	gun_category = GUN_CATEGORY_HEAVY
+
 
 /obj/item/weapon/gun/flamer/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -40,11 +40,15 @@
 	fire_delay = FIRE_DELAY_TIER_4 * 5
 
 /obj/item/weapon/gun/flamer/unique_action(mob/user)
-	toggle_flame(user)
+	toggle_gun_safety()
+
+/obj/item/weapon/gun/flamer/gun_safety_message(var/mob/user)
+	to_chat(user, SPAN_NOTICE("You [SPAN_BOLD(flags_gun_features & GUN_TRIGGER_SAFETY ? "extinguish" : "ignite")] the pilot light."))
+	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
+	update_icon()
 
 /obj/item/weapon/gun/flamer/examine(mob/user)
 	..()
-	to_chat(user, "It's turned [lit? "on" : "off"].")
 	if(current_mag)
 		to_chat(user, "The fuel gauge shows the current tank is [round(current_mag.get_ammo_percent())]% full!")
 	else
@@ -66,7 +70,7 @@
 
 		overlays += I
 
-	if(lit)
+	if(!(flags_gun_features & GUN_TRIGGER_SAFETY))
 		var/image/I = image('icons/obj/items/weapons/guns/gun.dmi', src, "+lit")
 		I.pixel_x += 3
 		overlays += I
@@ -76,12 +80,6 @@
 	if(.)
 		if(!current_mag || !current_mag.current_rounds)
 			return
-
-/obj/item/weapon/gun/flamer/proc/toggle_flame(mob/user)
-	playsound(user,'sound/weapons/handling/flamer_ignition.ogg', 25, 1)
-	lit = !lit
-
-	update_icon()
 
 /obj/item/weapon/gun/flamer/proc/get_fire_sound()
 	var/list/fire_sounds = list(
@@ -97,7 +95,7 @@
 	var/turf/targloc = get_turf(target)
 	if (!targloc || !curloc) return //Something has gone wrong...
 
-	if(!lit)
+	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		to_chat(user, SPAN_WARNING("The weapon isn't lit"))
 		return
 
@@ -207,8 +205,13 @@
 	current_mag = null
 	var/obj/item/storage/large_holster/fuelpack/fuelpack
 	starting_attachment_types = list(/obj/item/attachable/attached_gun/extinguisher/pyro)
-
+	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_WIELDED_FIRING_ONLY
 	flags_item = TWOHANDED|NO_CRYO_STORE
+
+
+/obj/item/weapon/gun/flamer/M240T/unique_action(mob/user)
+	if(fuelpack)
+		fuelpack.do_toggle_fuel(user)
 
 /obj/item/weapon/gun/flamer/M240T/Destroy()
 	if(fuelpack)
@@ -218,21 +221,28 @@
 	. = ..()
 
 /obj/item/weapon/gun/flamer/M240T/harness_check(var/mob/living/carbon/human/user)
-	if (..())
+	var/obj/item/storage/large_holster/fuelpack/FP = user.back
+	if(istype(FP) && !(FP.contents.len))
 		return TRUE
 
-	var/obj/item/I = user.back
-	if(!istype(I, /obj/item/storage/large_holster/fuelpack))
-		return FALSE
-	return TRUE
+	. = ..()
 
 /obj/item/weapon/gun/flamer/M240T/harness_return(var/mob/living/carbon/human/user)
+	if (!loc || !user)
+		return
+	if (!isturf(loc))
+		return
+	if (!harness_check(user))
+		return
+
 	var/obj/item/storage/large_holster/fuelpack/FP = user.back
-	if (istype(FP) && FP.handle_item_insertion(src, TRUE))
+	if (istype(FP) && user.equip_to_slot_if_possible(src, WEAR_IN_SCABBARD))
 		to_chat(user, SPAN_WARNING("[src] snaps into place on [FP]."))
 		return
 
-	..()
+	var/obj/item/I = user.wear_suit
+	if(user.equip_to_slot_if_possible(src, WEAR_J_STORE))
+		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
 
 /obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
@@ -248,8 +258,9 @@
 			// This was a manually loaded fuel tank
 			if (current_mag && !(current_mag in list(fuelpack.fuel, fuelpack.fuelB, fuelpack.fuelX)))
 				to_chat(user, SPAN_WARNING("\The [current_mag] is ejected by the Broiler-T back harness and replaced with \the [fuelpack.active_fuel]!"))
-				unload()
+				unload(user, drop_override = TRUE)
 			current_mag = fuelpack.active_fuel
+			update_icon()
 	..()
 
 

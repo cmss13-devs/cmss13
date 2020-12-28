@@ -235,7 +235,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
-		if(F.lit)
+		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
 			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of the [F]."))
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
@@ -476,7 +476,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
-		if(F.lit)
+		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
 			light(SPAN_NOTICE("[user] lights their [src] with the pilot light of the [F], the glint of pyromania in their eye."))
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))

@@ -202,17 +202,13 @@
 
 
 /obj/item/storage/large_holster/fuelpack/attack_self(mob/user)
-	toggle_fuel()
+	do_toggle_fuel(user)
 
-/obj/item/storage/large_holster/fuelpack/verb/toggle_fuel()
-	set name = "Toggle Fuel Type"
-	set desc = "Toggle between the fuel types."
-	set category = "Pyro"
+/obj/item/storage/large_holster/fuelpack/proc/do_toggle_fuel(var/mob/user)
+	if(!ishuman(user) || user.is_mob_incapacitated())
+		return FALSE
 
-	if(!ishuman(usr) || usr.is_mob_incapacitated())
-		return 0
-
-	var/obj/item/weapon/gun/flamer/M240T/F = usr.get_active_hand()
+	var/obj/item/weapon/gun/flamer/M240T/F = user.get_active_hand()
 	if(!istype(F))
 		to_chat(usr, "You must be holding the M240-T incinerator unit to use [src]")
 		return
@@ -234,19 +230,36 @@
 		var/datum/action/A = X
 		A.update_button_icon()
 
-	to_chat(usr, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
+	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
 	playsound(src,'sound/machines/click.ogg', 25, 1)
 	F.current_mag = active_fuel
 	F.update_icon()
 
 	return TRUE
 
+/obj/item/storage/large_holster/fuelpack/verb/toggle_fuel()
+	set name = "Toggle Fuel Type"
+	set desc = "Toggle between the fuel types."
+	set category = "Pyro"
+
+	do_toggle_fuel(usr)
+
 
 /obj/item/storage/large_holster/fuelpack/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/ammo_magazine/flamer_tank/large/))
 		switch_fuel(A, user)
-	else
-		. = ..()
+		return
+
+	var/obj/item/weapon/gun/flamer/M240T/F = A
+	if(istype(F) && !(F.fuelpack))
+		F.link_fuelpack(user)
+		if(F.current_mag && !(F.current_mag in list(fuel,fuelB,fuelX)))
+			to_chat(user, SPAN_WARNING("\The [F.current_mag] is ejected by the Broiler-T back harness and replaced with \the [active_fuel]!"))
+			F.unload(user, drop_override = TRUE)
+			F.current_mag = active_fuel
+			F.update_icon()
+
+	. = ..()
 
 /obj/item/storage/large_holster/fuelpack/proc/switch_fuel(var/obj/item/ammo_magazine/flamer_tank/large/new_fuel, var/mob/user)
 	// Switch out the currently stored fuel and drop it

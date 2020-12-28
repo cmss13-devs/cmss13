@@ -22,8 +22,15 @@
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/gunrange)
 "aL" = (
-/obj/structure/ice/thin/single,
-/turf/open/auto_turf/snow/layer2,
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/turf/open/floor/wood,
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
@@ -57,8 +64,17 @@
 	temperature = 223
 	})
 "ba" = (
-/obj/structure/ice/thin/single,
-/turf/open/auto_turf/snow/layer3,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/obj/structure/machinery/door/window/brigdoor/eastleft{
+	dir = 8
+	},
+/turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
@@ -492,7 +508,7 @@
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
-/area/space)
+/area/corsat/inaccessible)
 "hU" = (
 /obj/structure/barricade/wooden,
 /turf/open/ice,
@@ -523,13 +539,14 @@
 	temperature = 223
 	})
 "iy" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /obj/effect/decal/warning_stripes{
-	icon_state = "E-corner";
-	tag = "icon-E-corner"
+	icon_state = "N";
+	tag = "icon-N"
 	},
-/obj/structure/machinery/door/window/eastright{
-	name = "Basketball Court"
-	},
+/obj/structure/machinery/door/window/brigdoor/eastleft,
 /turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
@@ -662,9 +679,9 @@
 	network = list("sigma")
 	},
 /turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/corsat/sigma/biodome/scrapyard)
 "kr" = (
@@ -929,8 +946,12 @@
 /turf/open/ice,
 /area/corsat/sigma/biodome/scrapyard)
 "on" = (
-/turf/closed/wall/r_wall/biodome,
-/area/space)
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/corsat/sigma/biodome/scrapyard)
 "oK" = (
 /turf/open/auto_turf/snow/layer1,
 /area/corsat/sigma/biodome/scrapyard)
@@ -1142,15 +1163,10 @@
 	temperature = 223
 	})
 "tp" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8;
-	network = list("sigma")
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
+/turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
 	})
@@ -1330,12 +1346,12 @@
 	icon_state = "E-corner";
 	tag = "icon-E-corner"
 	},
-/obj/structure/machinery/door/window/eastright{
-	name = "Basketball Court"
-	},
 /obj/structure/barricade/wooden{
 	dir = 1;
 	pixel_y = 7
+	},
+/obj/structure/window/reinforced{
+	dir = 4
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome{
@@ -1482,13 +1498,11 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/structure/machinery/door/window/eastright{
-	name = "Basketball Court"
-	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
 	tag = "icon-E-corner"
 	},
+/obj/structure/machinery/door/window/brigdoor/eastleft,
 /turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
@@ -1700,15 +1714,6 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/corsat/sigma/biodome/gunrange)
-"Ax" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
-	},
-/turf/open/floor/wood,
-/area/corsat/sigma/biodome{
-	temperature = 223
-	})
 "AI" = (
 /obj/structure/ice/ice_rock/cornerOverlay{
 	dir = 10;
@@ -1757,10 +1762,10 @@
 	icon_state = "W";
 	tag = "icon-W"
 	},
-/obj/structure/machinery/door/window/westright{
-	name = "Basketball Court"
-	},
 /obj/structure/barricade/wooden,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
@@ -1881,7 +1886,7 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/obj/structure/window/reinforced{
+/obj/structure/machinery/door/window/brigdoor/eastleft{
 	dir = 8
 	},
 /turf/open/ice,
@@ -2326,10 +2331,10 @@
 	icon_state = "E-corner";
 	tag = "icon-E-corner"
 	},
-/obj/structure/machinery/door/window/eastleft{
-	name = "Basketball Court"
-	},
 /obj/structure/barricade/wooden,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /turf/open/ice,
 /area/corsat/sigma/biodome{
 	temperature = 223
@@ -3048,12 +3053,12 @@
 	icon_state = "W";
 	tag = "icon-W"
 	},
-/obj/structure/machinery/door/window/westleft{
-	name = "Basketball Court"
-	},
 /obj/structure/barricade/wooden{
 	dir = 1;
 	pixel_y = 7
+	},
+/obj/structure/window/reinforced{
+	dir = 8
 	},
 /turf/open/ice,
 /area/corsat/sigma/biodome{
@@ -3464,9 +3469,8 @@
 "Zy" = (
 /obj/structure/sign/safety/airlock,
 /turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
 /area/corsat/sigma/airlock/control)
 "ZB" = (
@@ -4340,7 +4344,7 @@ yX
 yX
 yX
 hR
-Dw
+db
 Zr
 Zr
 Vg
@@ -4930,7 +4934,7 @@ be
 be
 be
 be
-on
+db
 BM
 Lb
 Aj
@@ -4987,8 +4991,8 @@ Zr
 eG
 Zr
 Zr
-Sl
-Sl
+Zr
+Zr
 Zr
 Vg
 Vg
@@ -5023,7 +5027,7 @@ hH
 hH
 kl
 hH
-hH
+BV
 Zf
 ho
 Zf
@@ -5068,11 +5072,11 @@ Zr
 YN
 Zr
 Zr
-Sl
-Sl
 Zr
-Sl
-Sl
+Zr
+Zr
+Zr
+Zr
 Zr
 Zr
 Zr
@@ -5104,7 +5108,7 @@ hH
 hH
 NI
 hQ
-hQ
+Sg
 dP
 nk
 Zf
@@ -5185,7 +5189,7 @@ hH
 hH
 kl
 hH
-hH
+BV
 Zf
 bs
 Zf
@@ -5210,7 +5214,7 @@ vl
 Dy
 kr
 hz
-ba
+Wk
 vh
 UW
 UW
@@ -5266,7 +5270,7 @@ hH
 hH
 kl
 hH
-hH
+BV
 Zf
 gi
 Zf
@@ -5342,12 +5346,12 @@ be
 be
 be
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -5373,7 +5377,7 @@ vl
 BL
 XF
 be
-ba
+Wk
 vh
 Yd
 Yd
@@ -5423,16 +5427,16 @@ bs
 bs
 gi
 be
-hH
+jv
 hH
 hH
 kl
 hH
 hH
-hH
-hH
-hH
-nZ
+hC
+hC
+hC
+on
 TX
 dT
 TX
@@ -5504,7 +5508,7 @@ bx
 kH
 bx
 bT
-hQ
+Kj
 hQ
 hQ
 kv
@@ -5585,7 +5589,7 @@ bs
 Vz
 Zf
 be
-hH
+jv
 hH
 hH
 NI
@@ -5666,15 +5670,15 @@ Zf
 Vz
 Zf
 be
-hH
+jv
 hH
 hH
 kl
 hH
 hH
-hH
-hH
-hH
+mY
+mY
+mY
 km
 bE
 Bf
@@ -5726,7 +5730,7 @@ lr
 nB
 wg
 aY
-aS
+Wk
 Wk
 Zr
 YN
@@ -5747,12 +5751,12 @@ bs
 ho
 be
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -5828,12 +5832,12 @@ jT
 lc
 be
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 tm
 Zf
@@ -5909,12 +5913,12 @@ bs
 ho
 bs
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -5990,12 +5994,12 @@ bs
 ho
 bs
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -6051,7 +6055,7 @@ gr
 Wk
 aY
 aY
-ba
+Wk
 be
 XF
 be
@@ -6071,12 +6075,12 @@ bs
 ho
 bs
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -6152,12 +6156,12 @@ bs
 ho
 bs
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -6233,12 +6237,12 @@ bx
 ln
 bx
 bT
-hQ
+Kj
 hQ
 hQ
 kv
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -6314,12 +6318,12 @@ bs
 bs
 gi
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -6395,12 +6399,12 @@ be
 be
 be
 be
-hH
+jv
 hH
 hH
 kl
 hH
-hH
+BV
 Zf
 Zf
 Zf
@@ -6690,7 +6694,7 @@ Zr
 YN
 Zr
 Wk
-ba
+Wk
 Wk
 Wk
 Wk
@@ -6881,12 +6885,12 @@ kl
 hH
 hH
 hH
-hH
-hH
-kl
-hH
-hH
-hH
+mY
+mY
+uS
+mY
+mY
+mY
 mY
 mY
 mY
@@ -7012,7 +7016,7 @@ Zr
 YN
 Wk
 aY
-aL
+Wk
 XF
 Zf
 Zf
@@ -7093,7 +7097,7 @@ Sl
 pP
 Wk
 aY
-aL
+Wk
 XF
 be
 fs
@@ -7173,7 +7177,7 @@ Zr
 Zr
 Wk
 aY
-aL
+Wk
 be
 ho
 be
@@ -7253,7 +7257,7 @@ Zr
 Zr
 Wk
 aY
-aL
+Wk
 be
 bs
 ho
@@ -7334,7 +7338,7 @@ Zr
 Zr
 Wk
 aY
-aL
+Wk
 be
 bs
 ho
@@ -7415,7 +7419,7 @@ Zr
 Wk
 aY
 aY
-aL
+Wk
 be
 bs
 ho
@@ -7466,7 +7470,7 @@ hH
 hH
 hH
 hH
-tp
+hH
 hH
 hH
 NA
@@ -7496,7 +7500,7 @@ Zr
 Wk
 aY
 aY
-aL
+Wk
 be
 bs
 ho
@@ -7537,13 +7541,13 @@ hH
 Uv
 Uv
 UD
-UD
-Ax
-UD
+aL
 UD
 UD
 UD
 UD
+UD
+aL
 UD
 Rw
 Rw
@@ -7576,8 +7580,8 @@ YN
 Zr
 Wk
 aY
-Zf
-aL
+aY
+Wk
 be
 bs
 ho
@@ -7618,8 +7622,8 @@ hH
 Uv
 Uv
 UD
-EV
-KV
+ba
+tp
 Ba
 iO
 TA
@@ -7657,7 +7661,7 @@ YN
 Zr
 Wk
 aY
-aL
+Wk
 be
 Zr
 Zr
@@ -7768,7 +7772,7 @@ Xm
 fs
 jm
 hH
-hH
+kl
 hH
 hH
 BV
@@ -8590,12 +8594,12 @@ hH
 Uv
 Uv
 UD
-EV
+iy
 LH
 Jm
 HB
 we
-iy
+LH
 yn
 UD
 Rw
@@ -8671,13 +8675,13 @@ hH
 Uv
 Uv
 UD
-UD
-Ax
-UD
+aL
 UD
 UD
 UD
 UD
+UD
+aL
 UD
 Rw
 Rw

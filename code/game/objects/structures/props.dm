@@ -136,7 +136,7 @@
 		L = 1
 	else if(istype(W, /obj/item/weapon/gun/flamer))
 		var/obj/item/weapon/gun/flamer/F = W
-		if(F.lit)
+		if(!(F.flags_gun_features & GUN_TRIGGER_SAFETY))
 			L = 1
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))

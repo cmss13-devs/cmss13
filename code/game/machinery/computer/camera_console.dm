@@ -1,45 +1,49 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-
-//SortNames variant for cameras that uses their tags rather than names
-/proc/sortCameras(var/list/L)
-	var/list/Q = new()
-	for(var/obj/structure/machinery/camera/CAM in L)
-		Q[CAM.c_tag] = CAM
-	return sortList(Q)
+#define DEFAULT_MAP_SIZE 15
 
 /obj/structure/machinery/computer/security
 	name = "Security Cameras Console"
 	desc = "Used to access the various cameras on the station."
 	icon_state = "cameras"
-	var/obj/structure/machinery/camera/current = null
-	var/last_pic = 1.0
+	var/obj/structure/machinery/camera/current
 	var/list/network = list("military")
-	var/mapping = 0//For the overview file, interesting bit of code.
 	circuit = /obj/item/circuitboard/computer/security
-	var/next_use_time = 0		//sorting cameras list is heavy operation, so added a 2 seconds delay between interactions with console
+
+	/// The turf where the camera was last updated.
+	var/turf/last_camera_turf
+	var/list/concurrent_users = list()
+
+	// Stuff needed to render the map
+	var/map_name
+	var/obj/screen/map_view/cam_screen
+	var/obj/screen/background/cam_background
+
+/obj/structure/machinery/computer/security/Initialize()
+	. = ..()
+	// Map name has to start and end with an A-Z character,
+	// and definitely NOT with a square bracket or even a number.
+	// I wasted 6 hours on this. :agony:
+	map_name = "camera_console_[REF(src)]_map"
+	// Convert networks to lowercase
+	for(var/i in network)
+		network -= i
+		network += lowertext(i)
+	// Initialize map objects
+	cam_screen = new
+	cam_screen.name = "screen"
+	cam_screen.assigned_map = map_name
+	cam_screen.del_on_map_removal = FALSE
+	cam_screen.screen_loc = "[map_name]:1,1"
+	cam_background = new
+	cam_background.assigned_map = map_name
+	cam_background.del_on_map_removal = FALSE
+
+/obj/structure/machinery/computer/security/Destroy()
+	qdel(cam_screen)
+	qdel(cam_background)
+	return ..()
 
 /obj/structure/machinery/computer/security/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
-
-/obj/structure/machinery/computer/security/check_eye(mob/user)
-	if (user.is_mob_incapacitated() || ((get_dist(user, src) > 1 || !( user.canmove ) || user.blinded) && !isRemoteControlling(user))) //user can't see - not sure why canmove is here.
-		user.unset_interaction()
-		return
-	else if ( !current || !current.can_use() ) //camera doesn't work
-		current = null
-	user.reset_view(current)
-
-
-/obj/structure/machinery/computer/security/on_set_interaction(mob/user)
-	..()
-	if(current && current.can_use())
-		user.reset_view(current)
-
-
-/obj/structure/machinery/computer/security/on_unset_interaction(mob/user)
-	..()
-	user.reset_view(null)
-
 
 /obj/structure/machinery/computer/security/attack_hand(mob/user)
 	if(z > 6)
@@ -47,98 +51,155 @@
 		return
 	if(inoperable())
 		return
-	if(next_use_time < world.time)
-		to_chat(user, SPAN_DANGER("\The [src]'s system is taking it's time to update camera list, please wait."))
-
 	if(!isRemoteControlling(user))
 		user.set_interaction(src)
+	tgui_interact(user)
 
-	var/list/camera_list_sorted = sortCameras(cameranet.cameras)		//here we sort cameras, however, due to how procs work, it returns list of camera_name = null
+/obj/structure/machinery/computer/security/tgui_interact(mob/user, datum/tgui/ui)
+	// Update UI
+	ui = SStgui.try_update_ui(user, src, ui)
 
-	for(var/obj/structure/machinery/camera/CAM in cameranet.cameras)	//here we add actual cameras to respective C_tag in list
-		camera_list_sorted[CAM.c_tag] = CAM
+	// Update the camera, showing static if necessary and updating data if the location has moved.
+	update_active_camera_screen()
 
-	var/list/camera_list_final = list()
-	for(var/C in camera_list_sorted)
-		var/obj/structure/machinery/camera/CAM = camera_list_sorted[C]
-		if(can_access_camera(CAM))
-			camera_list_final += list("[CAM.c_tag][CAM.can_use() ? null : " (Deactivated)"]" = CAM)
+	if(!ui)
+		var/user_ref = REF(user)
+		var/is_living = isliving(user)
+		// Ghosts shouldn't count towards concurrent users, which produces
+		// an audible terminal_on click.
+		if(is_living)
+			concurrent_users += user_ref
+		// Turn on the console
+		if(length(concurrent_users) == 1 && is_living)
+			use_power(active_power_usage)
+		// Register map objects
+		user.client.register_map_obj(cam_screen)
+		user.client.register_map_obj(cam_background)
+		// Open UI
+		ui = new(user, src, "CameraConsole", name)
+		ui.open()
 
-	var/t = input(user, "Which camera should you change to?") as null|anything in camera_list_final
-	if(!t)
-		user.unset_interaction()
-		return 0
+/obj/structure/machinery/computer/security/ui_data()
+	var/list/data = list()
+	data["network"] = network
+	data["activeCamera"] = null
+	if(current)
+		data["activeCamera"] = list(
+			name = current.c_tag,
+			status = current.status,
+		)
+	return data
 
-	var/obj/structure/machinery/camera/C = camera_list_final[t]
+/obj/structure/machinery/computer/security/ui_static_data()
+	var/list/data = list()
+	data["mapRef"] = map_name
+	var/list/cameras = get_available_cameras()
+	data["cameras"] = list()
+	for(var/i in cameras)
+		var/obj/structure/machinery/camera/C = cameras[i]
+		data["cameras"] += list(list(
+			name = C.c_tag,
+		))
 
-	if(C)
-		if(!can_access_camera(C))
-			return
-		switch_to_camera(user, C)
-		addtimer(CALLBACK(src, /atom.proc/attack_hand, user), 25)
-	return
+	return data
 
-/obj/structure/machinery/computer/security/proc/can_access_camera(obj/structure/machinery/camera/C)
-	if(!istype(C))
-		return FALSE
-	var/list/shared_networks = network & C.network
-	if(shared_networks.len)
+/obj/structure/machinery/computer/security/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	if(action == "switch_camera")
+		var/c_tag = params["name"]
+		var/list/cameras = get_available_cameras()
+		var/obj/structure/machinery/camera/selected_camera
+		selected_camera = cameras[c_tag]
+		// Cause Unicode breaks c_tags
+		if(!selected_camera)
+			for(var/I in cameras)
+				if(copytext_char(I, 3) == c_tag)
+					selected_camera = cameras[I]
+					break
+		current = selected_camera
+		playsound(src, get_sfx("terminal_type"), 25, FALSE)
+
+		if(!selected_camera)
+			return TRUE
+
+		update_active_camera_screen()
+
 		return TRUE
-	return FALSE
 
-/obj/structure/machinery/computer/security/proc/switch_to_camera(mob/user, obj/structure/machinery/camera/C)
-	//don't need to check if the camera works for AI because the AI jumps to the camera location and doesn't actually look through cameras.
-	if(isRemoteControlling(user))
-		var/mob/living/silicon/ai/A = user
-		A.eyeobj.setLoc(get_turf(C))
-		A.client.eye = A.eyeobj
-		return 1
-
-	if (!C.can_use() || user.is_mob_incapacitated() || (get_dist(user, src) > 1 || user.interactee != src || user.blinded || !( user.canmove ) && !isRemoteControlling(user)))
-		return 0
-	current = C
-	use_power(50)
-	user.reset_view(C)
-	return 1
-
-//Camera control: moving.
-/obj/structure/machinery/computer/security/proc/jump_on_click(var/mob/user,var/A)
-	if(user.interactee != src)
+/obj/structure/machinery/computer/security/proc/update_active_camera_screen()
+	// Show static if can't use the camera
+	if(!current?.can_use())
+		show_camera_static()
 		return
-	var/obj/structure/machinery/camera/jump_to
-	if(istype(A,/obj/structure/machinery/camera))
-		jump_to = A
-	else if(ismob(A))
-		if(ishuman(A))
-			jump_to = locate() in A:head
-		else if(isrobot(A))
-			jump_to = A:camera
-	else if(isobj(A))
-		jump_to = locate() in A
-	else if(isturf(A))
-		var/best_dist = INFINITY
-		for(var/obj/structure/machinery/camera/camera in get_area(A))
-			if(!camera.can_use())
-				continue
-			if(!can_access_camera(camera))
-				continue
-			var/dist = get_dist(camera,A)
-			if(dist < best_dist)
-				best_dist = dist
-				jump_to = camera
-	if(isnull(jump_to))
+
+	var/list/visible_turfs = list()
+
+	// Is this camera located in or attached to a living thing, Vehicle or helmet? If so, assume the camera's loc is the living (or non) thing.
+	var/cam_location = current
+	if(isliving(current.loc) || isVehicle(current.loc))
+		cam_location = current.loc
+	else if(istype(current.loc, /obj/item/clothing/head/helmet/marine))
+		var/obj/item/clothing/head/helmet/marine/helmet = current.loc
+		cam_location = helmet.loc
+
+	// If we're not forcing an update for some reason and the cameras are in the same location,
+	// we don't need to update anything.
+	// Most security cameras will end here as they're not moving.
+	var/newturf = get_turf(cam_location)
+	if(last_camera_turf == newturf)
 		return
-	if(can_access_camera(jump_to))
-		switch_to_camera(user,jump_to)
 
-//Camera control: mouse.
-/obj/structure/machinery/computer/security/clicked(var/mob/user, var/list/mods)
-	if (mods["ctrl"] && mods["middle"])
-		if (src == user.interactee)
-			jump_on_click(user, src)
-		return 1
+	// Cameras that get here are moving, and are likely attached to some moving atom such as cyborgs.
+	last_camera_turf = get_turf(cam_location)
 
-	..()
+	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
+
+	for(var/turf/visible_turf in visible_things)
+		visible_turfs += visible_turf
+
+	var/list/bbox = get_bbox_of_atoms(visible_turfs)
+	var/size_x = bbox[3] - bbox[1] + 1
+	var/size_y = bbox[4] - bbox[2] + 1
+
+	cam_screen.vis_contents = visible_turfs
+	cam_background.icon_state = "clear"
+	cam_background.fill_rect(1, 1, size_x, size_y)
+
+/obj/structure/machinery/computer/security/ui_close(mob/user)
+	var/user_ref = REF(user)
+	var/is_living = isliving(user)
+	// Living creature or not, we remove you anyway.
+	concurrent_users -= user_ref
+	// Unregister map objects
+	user.client.clear_map(map_name)
+	// Turn off the console
+	if(length(concurrent_users) == 0 && is_living)
+		current = null
+		use_power(0)
+	user.unset_interaction()
+
+/obj/structure/machinery/computer/security/proc/show_camera_static()
+	cam_screen.vis_contents.Cut()
+	cam_background.icon_state = "scanline2"
+	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
+
+// Returns the list of cameras accessible from this computer
+/obj/structure/machinery/computer/security/proc/get_available_cameras()
+	var/list/D = list()
+	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
+		if(!C.network)
+			stack_trace("Camera in a cameranet has no camera network")
+			continue
+		if(!(islist(C.network)))
+			stack_trace("Camera in a cameranet has a non-list camera network")
+			continue
+		var/list/tempnetwork = C.network & network
+		if(tempnetwork.len)
+			D["[C.c_tag]"] = C
+	return D
 
 /obj/structure/machinery/computer/security/telescreen
 	name = "Telescreen"
@@ -220,3 +281,4 @@
 	name = "\improper 'Normandy' camera controls"
 	network = list("dropship2","laser targets")
 
+#undef DEFAULT_MAP_SIZE

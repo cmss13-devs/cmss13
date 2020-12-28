@@ -191,7 +191,7 @@ Additional game mode variables.
 
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
-	if(pred_candidate) pred_candidate.loc = null //Nullspace it for garbage collection later.
+	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
 

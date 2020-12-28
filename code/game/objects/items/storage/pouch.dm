@@ -542,7 +542,7 @@
 		var/obj/structure/machinery/chem_dispenser/cd = target
 		if(!cd.beaker)
 			to_chat(user, SPAN_NOTICE("You unhook the inner container and connect it to [target]."))
-			inner.loc = cd
+			inner.forceMove(cd)
 			cd.beaker = inner
 			inner = null
 			update_icon()

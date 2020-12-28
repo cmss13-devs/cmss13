@@ -1235,7 +1235,7 @@ var/global/image/action_blue_power_up
 
 						// Spawn a new shuttle corner object
 						var/obj/corner = new()
-						corner.loc = X
+						corner.forceMove(X)
 						corner.density = 1
 						corner.anchored = 1
 						corner.icon = X.icon
@@ -1263,10 +1263,10 @@ var/global/image/action_blue_power_up
 							qdel(O) // prevents multiple shuttle corners from stacking
 							continue
 						if(!istype(O,/obj)) continue
-						O.loc = X
+						O.forceMove(X)
 					for(var/mob/M in T)
 						if(!istype(M,/mob) || istype(M, /mob/aiEye)) continue // If we need to check for more mobs, I'll add a variable
-						M.loc = X
+						M.forceMove(X)
 
 //					var/area/AR = X.loc
 

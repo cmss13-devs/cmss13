@@ -78,7 +78,7 @@
 				return
 			P = O
 			user.drop_item()
-			O.loc = src
+			O.forceMove(src)
 			to_chat(user, SPAN_NOTICE(" You add the phoron tank to the generator."))
 		else if(!active)
 			if(istype(O, /obj/item/weapon/wrench))
@@ -101,7 +101,7 @@
 				for(var/obj/item/I in component_parts)
 					if(I.reliability < 100)
 						I.crit_fail = 1
-					I.loc = src.loc
+					I.forceMove(src.loc)
 				new_frame.state = 2
 				new_frame.icon_state = "box_1"
 				del(src)

@@ -243,7 +243,7 @@
 			wzhzhzh(4)
 			muck_finish()
 			cooked = fail()
-			cooked.loc = src.loc
+			cooked.forceMove(src.loc)
 			return
 		else if (has_extra_item())
 			if (!wzhzhzh(4))
@@ -251,7 +251,7 @@
 				return
 			broke()
 			cooked = fail()
-			cooked.loc = src.loc
+			cooked.forceMove(src.loc)
 			return
 		else
 			if (!wzhzhzh(10))
@@ -259,7 +259,7 @@
 				return
 			stop()
 			cooked = fail()
-			cooked.loc = src.loc
+			cooked.forceMove(src.loc)
 			return
 	else
 		var/halftime = round(recipe.time/10/2)
@@ -269,12 +269,12 @@
 		if (!wzhzhzh(halftime))
 			abort()
 			cooked = fail()
-			cooked.loc = src.loc
+			cooked.forceMove(src.loc)
 			return
 		cooked = recipe.make_food(src)
 		stop()
 		if(cooked)
-			cooked.loc = src.loc
+			cooked.forceMove(src.loc)
 		return
 
 /obj/structure/machinery/microwave/proc/wzhzhzh(var/seconds as num)
@@ -313,7 +313,7 @@
 
 /obj/structure/machinery/microwave/proc/dispose()
 	for (var/obj/O in contents)
-		O.loc = src.loc
+		O.forceMove(src.loc)
 	if (src.reagents.total_volume)
 		src.dirty++
 	src.reagents.clear_reagents()

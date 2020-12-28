@@ -73,8 +73,8 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 
 /obj/structure/sign/poster/proc/roll_and_drop(turf/newloc)
 	var/obj/item/poster/P = new(src, serial_number)
-	P.loc = newloc
-	src.loc = P
+	P.forceMove(newloc)
+	src.forceMove(P)
 	qdel(src)
 
 
@@ -102,7 +102,7 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 
 	var/temp_loc = user.loc
 	flick("poster_being_set",D)
-	D.loc = src
+	D.forceMove(src)
 	qdel(P)	//delete it now to cut down on sanity checks afterwards. Agouri's code supports rerolling it anyway
 	playsound(D.loc, 'sound/items/poster_being_created.ogg', 25, 1)
 

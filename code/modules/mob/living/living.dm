@@ -332,7 +332,7 @@
 
 	//Leaping mobs just land on the tile, no pushing, no anything.
 	if(status_flags & LEAPING)
-		loc = L.loc
+		forceMove(L.loc)
 		status_flags &= ~LEAPING
 		now_pushing = FALSE
 		return

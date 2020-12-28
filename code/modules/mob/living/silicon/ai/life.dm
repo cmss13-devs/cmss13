@@ -44,7 +44,7 @@
 		var/area/loc = null
 		if (istype(T, /turf))
 			//stage = 3
-			loc = T.loc
+			forceMove(T.loc)
 			if (istype(loc, /area))
 				//stage = 4
 				if (!loc.master.power_equip && !istype(src.loc,/obj/item))

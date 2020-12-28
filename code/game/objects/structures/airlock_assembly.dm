@@ -94,7 +94,7 @@
 					return
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				user.drop_held_item()
-				W.loc = src
+				W.forceMove(src)
 				to_chat(user, SPAN_NOTICE("You installed the airlock electronics!"))
 				state = STATE_CIRCUIT
 				electronics = W
@@ -163,7 +163,7 @@
 				else
 					door.name = "[istext(glass) ? "[glass] airlock" : base_name]"
 
-				electronics.loc = door
+				electronics.forceMove(door)
 				qdel(src)
 				return
 	..()

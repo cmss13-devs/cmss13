@@ -204,7 +204,7 @@
 		return
 	playsound(src, 'sound/machines/hydraulics_1.ogg', 40, 1)
 	if(!ammo_equipped.ammo_count)
-		ammo_equipped.loc = null
+		ammo_equipped.moveToNullspace()
 		to_chat(user, SPAN_NOTICE("You discard the empty [ammo_equipped.name] in [src]."))
 		qdel(ammo_equipped)
 	else
@@ -345,7 +345,7 @@
 			icon_state = "sentry_system"
 			deployed_turret.pixel_y = 0
 			deployed_turret.pixel_x = 0
-			deployed_turret.loc = src
+			deployed_turret.forceMove(src)
 			deployed_turret.dir = dir
 			deployed_turret.turned_on = 0
 		else
@@ -360,9 +360,9 @@
 	deployed_turret.turned_on = TRUE
 
 	if(ship_base.base_category == DROPSHIP_WEAPON)
-		deployed_turret.loc = get_step(src, dir)
+		deployed_turret.forceMove(get_step(src, dir))
 	else
-		deployed_turret.loc = src.loc
+		deployed_turret.forceMove(src.loc)
 
 	icon_state = "sentry_system_deployed"
 
@@ -381,7 +381,7 @@
 
 	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 	deployment_cooldown = world.time + 50
-	deployed_turret.loc = src
+	deployed_turret.forceMove(src)
 	deployed_turret.turned_on = FALSE
 	deployed_turret.stop_processing()
 	deployed_turret.unset_range()
@@ -463,7 +463,7 @@
 			icon_state = "mg_system"
 			deployed_mg.pixel_y = 0
 			deployed_mg.pixel_x = 0
-			deployed_mg.loc = src
+			deployed_mg.forceMove(src)
 			deployed_mg.dir = dir
 		else
 			icon_state = "mg_system_destroyed"
@@ -476,17 +476,17 @@
 			switch(dir)
 				if(NORTH)
 					if( istype(get_step(src, WEST), /turf/open) )
-						deployed_mg.loc = get_step(src, WEST)
+						deployed_mg.forceMove(get_step(src, WEST))
 					else if ( istype(get_step(src, EAST), /turf/open) )
-						deployed_mg.loc = get_step(src, EAST)
+						deployed_mg.forceMove(get_step(src, EAST))
 					else
-						deployed_mg.loc = get_step(src, NORTH)
+						deployed_mg.forceMove(get_step(src, NORTH))
 				if(EAST)
-					deployed_mg.loc = get_step(src, SOUTH)
+					deployed_mg.forceMove(get_step(src, SOUTH))
 				if(WEST)
-					deployed_mg.loc = get_step(src, SOUTH)
+					deployed_mg.forceMove(get_step(src, SOUTH))
 		else
-			deployed_mg.loc = src.loc
+			deployed_mg.forceMove(src.loc)
 		icon_state = "mg_system_deployed"
 
 		for(var/mob/M in deployed_mg.loc)
@@ -501,7 +501,7 @@
 			deployed_mg.operator.unset_interaction()
 		playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
 		deployment_cooldown = world.time + 10
-		deployed_mg.loc = src
+		deployed_mg.forceMove(src)
 		icon_state = "mg_system_installed"
 
 

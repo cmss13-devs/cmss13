@@ -204,7 +204,7 @@
 			to_chat(embedded_human, SPAN_NOTICE("You remove all the [S] stuck in the [organ.display_name]."))
 		else
 			to_chat(embedded_human, SPAN_NOTICE("You remove [S] from the [organ.display_name]."))
-		S.loc = embedded_human.loc
+		S.forceMove(embedded_human.loc)
 		organ.implants -= S
 		embedded_human.embedded_items -= S
 		no_shards = FALSE

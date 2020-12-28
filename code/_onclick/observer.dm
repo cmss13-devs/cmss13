@@ -56,7 +56,7 @@
 			return 1
 
 		following = null
-		loc = get_turf(A)
+		forceMove(get_turf(A))
 		return 1
 
 	if(world.time <= next_move)
@@ -82,27 +82,27 @@
 	var/atom/l = loc
 	var/obj/structure/machinery/computer/teleporter/com = locate(/obj/structure/machinery/computer/teleporter, locate(l.x - 2, l.y, l.z))
 	if(com && com.locked)
-		user.loc = get_turf(com.locked)
+		user.forceMove(get_turf(com.locked))
 
 /obj/effect/portal/attack_ghost(mob/user as mob)
 	if(target)
-		user.loc = get_turf(target)
+		user.forceMove(get_turf(target))
 
 /obj/structure/ladder/attack_ghost(mob/user as mob)
 	if(up && down)
 		switch( alert("Go up or down the ladder?", "Ladder", "Up", "Down", "Cancel") )
 			if("Up")
-				user.loc = get_turf(up)
+				user.forceMove(get_turf(up))
 			if("Down")
-				user.loc = get_turf(down)
+				user.forceMove(get_turf(down))
 			if("Cancel")
 				return
 
 	else if(up)
-		user.loc = get_turf(up)
+		user.forceMove(get_turf(up))
 
 	else if(down)
-		user.loc = get_turf(down)
+		user.forceMove(get_turf(down))
 
 // -------------------------------------------
 // This was supposed to be used by adminghosts

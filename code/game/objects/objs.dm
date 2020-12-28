@@ -201,7 +201,7 @@
 	send_buckling_message(target, user)
 	if (src && src.loc)
 		target.buckled = src
-		target.loc = src.loc
+		target.forceMove(src.loc)
 		target.dir = src.dir
 		target.update_canmove()
 		src.buckled_mob = target
@@ -232,7 +232,7 @@
 		. = 0
 
 /obj/forceMove(atom/dest)
-	..(dest)
+	. = ..(dest)
 
 	if(buckled_mob)
 		handle_buckled_mob_movement(loc,0)
@@ -240,7 +240,7 @@
 /obj/proc/handle_buckled_mob_movement(NewLoc, direct)
 	if(!(direct & (direct - 1))) //not diagonal move. the obj's diagonal move is split into two cardinal moves and those moves will handle the buckled mob's movement.
 		if(!buckled_mob.Move(NewLoc, direct))
-			loc = buckled_mob.loc
+			forceMove(buckled_mob.loc)
 			last_move_dir = buckled_mob.last_move_dir
 			buckled_mob.inertia_dir = last_move_dir
 			return 0

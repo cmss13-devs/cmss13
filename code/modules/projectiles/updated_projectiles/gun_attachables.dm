@@ -155,7 +155,7 @@ Defined in conflicts.dm of the #defines folder.
 			qdel(X)
 			break
 
-	loc = get_turf(G)
+	forceMove(get_turf(G))
 
 	if(sharp)
 		G.sharp = 0

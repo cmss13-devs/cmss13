@@ -105,7 +105,7 @@
 		// Make a quick flash
 		var/turf/T = get_turf(src)
 		var/atom/movable/x = new spawner_type
-		x.loc = T
+		x.forceMove(T)
 
 	qdel(src)
 	return

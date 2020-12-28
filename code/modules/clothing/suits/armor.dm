@@ -374,7 +374,7 @@
 			return
 		holstered = usr.get_active_hand()
 		usr.drop_held_item()
-		holstered.loc = src
+		holstered.forceMove(src)
 		usr.visible_message(SPAN_NOTICE("\The [usr] holsters \the [holstered]."), "You holster \the [holstered].")
 	else
 		if(istype(usr.get_active_hand(),/obj) && istype(usr.get_inactive_hand(),/obj))

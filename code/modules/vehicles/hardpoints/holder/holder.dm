@@ -120,7 +120,7 @@
 
 /obj/item/hardpoint/holder/proc/add_hardpoint(var/obj/item/hardpoint/H)
 	H.owner = owner
-	H.loc = src
+	H.forceMove(src)
 	LAZYADD(hardpoints, H)
 
 	H.rotate(turning_angle(H.dir, dir))
@@ -129,7 +129,7 @@
 	if(!hardpoints)
 		return
 	hardpoints -= H
-	H.loc = uninstall_to ? uninstall_to : get_turf(src)
+	H.forceMove(uninstall_to ? uninstall_to : get_turf(src))
 
 	H.reset_rotation()
 

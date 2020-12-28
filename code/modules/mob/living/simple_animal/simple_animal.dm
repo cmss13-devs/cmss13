@@ -198,7 +198,7 @@
 	if(isturf(src.loc))
 		if(ismob(AM))
 			var/newamloc = src.loc
-			src.loc = AM:loc
+			src.forceMove(AM:loc)
 			AM:loc = newamloc
 		else
 			..()

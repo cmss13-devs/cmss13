@@ -44,7 +44,7 @@
 		if (M.imp)
 			if ((src.imp || M.imp.implanted))
 				return
-			M.imp.loc = src
+			M.imp.forceMove(src)
 			src.imp = M.imp
 			M.imp = null
 			src.update()
@@ -53,7 +53,7 @@
 			if (src.imp)
 				if (M.imp)
 					return
-				src.imp.loc = M
+				src.imp.forceMove(M)
 				M.imp = src.imp
 				src.imp = null
 				update()

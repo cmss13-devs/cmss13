@@ -174,7 +174,7 @@
 		SPAN_NOTICE("You take [obj] out of incision on [target]'s [affected.display_name]s with \the [tool]."))
 		affected.implants -= obj
 
-		obj.loc = get_turf(target)
+		obj.forceMove(get_turf(target))
 		if(istype(obj,/obj/item/implant))
 			var/obj/item/implant/imp = obj
 			imp.imp_in = null
@@ -189,7 +189,7 @@
 	else if(affected.hidden)
 		user.visible_message(SPAN_NOTICE("[user] takes something out of incision on [target]'s [affected.display_name] with \the [tool]."), \
 		SPAN_NOTICE("You take something out of incision on [target]'s [affected.display_name]s with \the [tool]."))
-		affected.hidden.loc = get_turf(target)
+		affected.hidden.forceMove(get_turf(target))
 
 		affected.hidden.blood_color = target.get_blood_color()
 		affected.hidden.update_icon()

@@ -41,7 +41,7 @@
 	if(!holder_type)
 		return
 	var/obj/item/holder/H = new holder_type(loc)
-	src.loc = H
+	src.forceMove(H)
 	H.name = loc.name
 	H.attack_hand(grabber)
 

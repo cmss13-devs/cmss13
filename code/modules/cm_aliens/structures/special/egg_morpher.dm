@@ -73,7 +73,7 @@
 				qdel(captured_mob)
 			captured_mob = M
 			captured_mob.dir = SOUTH
-			captured_mob.loc = null
+			captured_mob.moveToNullspace()
 			var/matrix/MX = matrix()
 			captured_mob.apply_transform(MX)
 			captured_mob.pixel_x = 16

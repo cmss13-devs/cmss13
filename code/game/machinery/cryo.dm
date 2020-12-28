@@ -128,7 +128,7 @@
 
 	if(href_list["ejectBeaker"])
 		if(beaker)
-			beaker.loc = get_step(loc, SOUTH)
+			beaker.forceMove(get_step(loc, SOUTH))
 			beaker = null
 
 	if(href_list["ejectOccupant"])
@@ -218,13 +218,13 @@
 		occupant.client.perspective = MOB_PERSPECTIVE
 	switch(dir)
 		if(1)
-			occupant.loc = get_step(loc, NORTH)
+			occupant.forceMove(get_step(loc, NORTH))
 		if(4)
-			occupant.loc = get_step(loc, EAST)
+			occupant.forceMove(get_step(loc, EAST))
 		if(8)
-			occupant.loc = get_step(loc, WEST)
+			occupant.forceMove(get_step(loc, WEST))
 		else
-			occupant.loc = get_step(loc, SOUTH)
+			occupant.forceMove(get_step(loc, SOUTH))
 	if (occupant.bodytemperature < 261 && occupant.bodytemperature >= 70)
 		occupant.bodytemperature = 261
 		occupant.recalculate_move_delay = TRUE
@@ -232,7 +232,7 @@
 	update_use_power(1)
 	update_icon()
 	return
-	
+
 /obj/structure/machinery/cryo_cell/proc/put_mob(mob/living/carbon/M as mob)
 	if (inoperable())
 		to_chat(usr, SPAN_DANGER("The cryo cell is not functioning."))
@@ -257,7 +257,7 @@
 /obj/structure/machinery/cryo_cell/proc/display_message(msg)
 	playsound(src.loc, 'sound/machines/ping.ogg', 25, 1)
 	visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("\The [src] pings: Patient's " + msg + " healed.")]")
-	
+
 /obj/structure/machinery/cryo_cell/verb/move_eject()
 	set name = "Eject occupant"
 	set category = "Object"

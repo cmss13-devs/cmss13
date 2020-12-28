@@ -21,7 +21,7 @@
 	if(carved)
 		if(store)
 			to_chat(user, SPAN_NOTICE("[store] falls out of [title]!"))
-			store.loc = get_turf(src.loc)
+			store.forceMove(get_turf(src.loc))
 			store = null
 			return
 		else
@@ -39,7 +39,7 @@
 		if(!store)
 			if(W.w_class < SIZE_MEDIUM)
 				user.drop_held_item()
-				W.loc = src
+				W.forceMove(src)
 				store = W
 				to_chat(user, SPAN_NOTICE("You put [W] in [title]."))
 				return

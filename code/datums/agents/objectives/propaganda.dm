@@ -19,7 +19,7 @@
 		if(!H.equip_to_slot_if_possible(P, WEAR_IN_BACK))
 			if(!H.equip_to_slot_if_possible(P, WEAR_L_HAND))
 				if(!H.equip_to_slot_if_possible(P, WEAR_R_HAND))
-					P.loc = H.loc
+					P.forceMove(H.loc)
 		RegisterSignal(P, COMSIG_POSTER_PLACED, .proc/placed_propaganda)
 
 /datum/agent_objective/propaganda/generate_objective_body_message()
@@ -53,6 +53,6 @@
 
 /obj/item/poster/propaganda/Initialize(mapload, ...)
 	. = ..()
-	
+
 	serial_number = 19
 	name = initial(name)

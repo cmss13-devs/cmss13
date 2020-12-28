@@ -238,7 +238,6 @@
 			var/z = input(usr, "Enter Z position", "Environment Position") as num|null
 			if(!z)
 				return
-
 			env.x = x
 			env.y = y
 			env.z = z

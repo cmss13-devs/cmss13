@@ -48,7 +48,7 @@
 
 	if(!held_card)
 		user.drop_held_item()
-		O.loc = src
+		O.forceMove(src)
 		held_card = O
 
 		nanomanager.update_uis(src)
@@ -154,7 +154,7 @@
 				creating_new_account = 0
 			if("insert_card")
 				if(held_card)
-					held_card.loc = src.loc
+					held_card.forceMove(src.loc)
 
 					if(ishuman(usr) && !usr.get_active_hand())
 						usr.put_in_hands(held_card)
@@ -165,7 +165,7 @@
 					if (istype(I, /obj/item/card/id))
 						var/obj/item/card/id/C = I
 						usr.drop_held_item()
-						C.loc = src
+						C.forceMove(src)
 						held_card = C
 
 			if("view_account_detail")

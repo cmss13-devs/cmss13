@@ -87,10 +87,10 @@
 			sleep(70)
 			raise_elevator_effect()
 			sleep(21)
-			SW.loc = null
-			SE.loc = null
-			NW.loc = null
-			NE.loc = null
+			SW.moveToNullspace()
+			SE.moveToNullspace()
+			NW.moveToNullspace()
+			NE.moveToNullspace()
 			move(away_area, destination)
 
 		moving_status = SHUTTLE_IDLE
@@ -143,10 +143,10 @@
 		playsound(locate(Elevator_x,Elevator_y,Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
 /datum/shuttle/ferry/supply/proc/lower_elevator_effect()
-	SW.loc = locate(Elevator_x-2,Elevator_y-2,Elevator_z)
-	SE.loc = locate(Elevator_x+2,Elevator_y-2,Elevator_z)
-	NW.loc = locate(Elevator_x-2,Elevator_y+2,Elevator_z)
-	NE.loc = locate(Elevator_x+2,Elevator_y+2,Elevator_z)
+	SW.forceMove(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
+	SE.forceMove(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
+	NW.forceMove(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
+	NE.forceMove(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
 	flick("supply_elevator_lowering", SW)
 	flick("supply_elevator_lowering", SE)
 	flick("supply_elevator_lowering", NW)

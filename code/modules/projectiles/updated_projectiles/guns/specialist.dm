@@ -869,7 +869,7 @@
 		if(user)
 			user.put_in_hands(nade)
 			playsound(user, unload_sound, 25, 1)
-		else nade.loc = get_turf(src)
+		else nade.forceMove(get_turf(src))
 		grenades -= nade
 	else to_chat(user, SPAN_WARNING("It's empty!"))
 
@@ -894,7 +894,7 @@
 	to_chat(user, SPAN_WARNING("You fire the grenade launcher! [length(grenades)-1]/[max_grenades] grenades remaining"))
 	var/obj/item/explosive/grenade/F = grenades[1]
 	grenades -= F
-	F.loc = user.loc
+	F.forceMove(user.loc)
 	F.throw_range = 20
 
 	var/pass_flags = NO_FLAGS
@@ -997,7 +997,7 @@
 		if(user)
 			user.put_in_hands(nade)
 			playsound(user, unload_sound, 25, 1)
-		else nade.loc = get_turf(src)
+		else nade.forceMove(get_turf(src))
 		grenade = null
 	else to_chat(user, SPAN_WARNING("It's empty!"))
 
@@ -1021,7 +1021,7 @@
 							SPAN_WARNING("You fire the grenade launcher!"))
 	var/obj/item/explosive/grenade/F = grenade
 	grenade = null
-	F.loc = user.loc
+	F.forceMove(user.loc)
 	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
 

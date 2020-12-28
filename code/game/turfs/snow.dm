@@ -27,8 +27,7 @@
 		L.anchored = 1
 		L.icon_state = "lightstick_[L.s_color][L.anchored]"
 		user.drop_held_item()
-		L.x = x
-		L.y = y
+		L.forceMove(src)
 		L.pixel_x += rand(-5,5)
 		L.pixel_y += rand(-5,5)
 		L.SetLuminosity(2)

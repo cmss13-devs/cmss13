@@ -625,7 +625,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		else replace_magazine(user, magazine)
 	else
 		current_mag = magazine
-		magazine.loc = src
+		magazine.forceMove(src)
 		replace_ammo(,magazine)
 		if(!in_chamber) load_into_chamber()
 
@@ -655,7 +655,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
-		current_mag.loc = get_turf(src) //Drop it on the ground.
+		current_mag.forceMove(get_turf(src) )//Drop it on the ground.
 	else
 		user.put_in_hands(current_mag)
 
@@ -691,7 +691,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 			if(!found_handful)
 				var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 				new_handful.generate_handful(current_mag.default_ammo, current_mag.caliber, 8, 1, type)
-				new_handful.loc = get_turf(src)
+				new_handful.forceMove(get_turf(src))
 		in_chamber = null
 	else
 		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),

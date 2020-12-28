@@ -350,7 +350,7 @@
 	H.concealed = 0
 	H.discard_pile = discard_pile
 	H.update_icon()
-	H.loc = get_step(usr,usr.dir)
+	H.forceMove(get_step(usr,usr.dir))
 	if(src)
 		src.update_icon()
 

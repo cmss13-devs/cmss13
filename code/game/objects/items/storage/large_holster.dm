@@ -262,7 +262,7 @@
 	visible_message("[user] swaps out the fuel tank in [src].","You swap out the fuel tank in [src] and drop the old one.")
 	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [round(new_fuel.get_ammo_percent())]% fuel.")
 	user.temp_drop_inv_item(new_fuel)
-	new_fuel.loc = null //necessary to not confuse the storage system
+	new_fuel.moveToNullspace() //necessary to not confuse the storage system
 	playsound(src,'sound/machines/click.ogg', 25, 1)
 	// If the fuel being switched is the active one, set it as new_fuel until it gets toggled
 	if(istype(new_fuel, active_fuel))
@@ -294,7 +294,7 @@
 	var/obj/item/storage/large_holster/fuelpack/FP = holder_item
 	if (!istype(FP))
 		return
-	
+
 	var/icon = 'icons/obj/items/weapons/guns/ammo.dmi'
 	var/icon_state
 	if(istype(FP.active_fuel, /obj/item/ammo_magazine/flamer_tank/large/X))

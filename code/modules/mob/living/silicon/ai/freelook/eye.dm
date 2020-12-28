@@ -40,7 +40,7 @@
 			ai.ai_cancel_tracking()
 
 		T = get_turf(T)
-		loc = T
+		forceMove(T)
 		cameranet.visibility(src)
 		if(ai.client)
 			ai.client.eye = src
@@ -75,7 +75,7 @@
 		eyeobj.name = "[src.name] (AI Eye)" // Give it a name
 		spawn(5)
 			if(eyeobj)
-				eyeobj.loc = src.loc
+				eyeobj.forceMove(src.loc)
 
 /mob/living/silicon/ai/Destroy()
 	if(eyeobj)

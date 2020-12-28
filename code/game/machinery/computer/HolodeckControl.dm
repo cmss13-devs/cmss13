@@ -167,7 +167,7 @@
 		if(istype(I, /obj/item/projectile))
 			return BLOCKED_MOVEMENT
 		if(prob(50))
-			I.loc = src.loc
+			I.forceMove(src.loc)
 			for(var/obj/structure/machinery/scoreboard/X in machines)
 				if(X.id == id)
 					X.score(side)

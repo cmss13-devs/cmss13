@@ -110,7 +110,7 @@
 					for(var/obj/I in component_parts)
 						if(I.reliability != 100 && crit_fail)
 							I.crit_fail = 1
-						I.loc = src.loc
+						I.forceMove(src.loc)
 					qdel(src)
 					return 1
 				else

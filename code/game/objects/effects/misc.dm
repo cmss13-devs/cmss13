@@ -77,4 +77,4 @@
 	..(nloc)
 
 	spawn(20)
-		loc = null
+		moveToNullspace()

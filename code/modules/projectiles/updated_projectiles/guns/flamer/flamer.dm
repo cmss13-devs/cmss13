@@ -136,7 +136,7 @@
 			else replace_magazine(user, magazine)
 		else
 			current_mag = magazine
-			magazine.loc = src
+			magazine.forceMove(src)
 			replace_ammo(,magazine)
 
 	update_icon()

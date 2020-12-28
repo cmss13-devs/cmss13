@@ -122,7 +122,7 @@
 	else if(iswelder(W) && canDeconstruct())
 		if(weld(W, user))
 			if(assembly)
-				assembly.loc = src.loc
+				assembly.forceMove(loc)
 				assembly.state = 1
 			qdel(src)
 

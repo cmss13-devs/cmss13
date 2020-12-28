@@ -136,7 +136,7 @@
 		if(!nomoveupdate)
 			I.forceMove(newloc)
 		else
-			I.loc = newloc
+			I.forceMove(newloc)
 	I.dropped(src)
 	if(I.unequip_sounds.len)
 		playsound_client(client, pick(I.unequip_sounds), null, ITEM_EQUIP_VOLUME)
@@ -259,57 +259,57 @@
 			if (src.back && isstorage(src.back))
 				var/obj/item/storage/B = src.back
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
-					W.loc = B
+					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_SHOES)
 			if(src.shoes && istype(src.shoes, /obj/item/clothing/shoes))
 				var/obj/item/clothing/shoes/S = src.shoes
 				if(!S.stored_item)
 					S.stored_item = W
-					W.loc = S
+					W.forceMove(S)
 					equipped = 1
 		if(WEAR_IN_SCABBARD)
 			if(src.back && istype(src.back, /obj/item/storage/large_holster))
 				var/obj/item/storage/large_holster/B = src.back
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
-					W.loc = B
+					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_ACCESSORY)
 			var/obj/item/clothing/under/U = w_uniform
 			if(U && U.accessories)
 				for(var/obj/item/clothing/accessory/storage/A in U.accessories)
 					if(istype(A) && A.hold.storage_slots)
-						W.loc = A.hold
+						W.forceMove(A.hold)
 						equipped = 1
 						break
 		if(WEAR_IN_JACKET)
 			var/obj/item/clothing/suit/storage/S = wear_suit
 			if(istype(S) && S.pockets.storage_slots)
-				W.loc = S.pockets
+				W.forceMove(S.pockets)
 				equipped = 1
 		if(WEAR_IN_BELT)
 			if(src.belt && isstorage(src.belt))
 				var/obj/item/storage/B = src.belt
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
-					W.loc = B
+					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_J_STORE)
 			if(src.s_store && isstorage(src.s_store))
 				var/obj/item/storage/B = src.s_store
 				if(B.contents.len < B.storage_slots && W.w_class <= B.max_w_class)
-					W.loc = B
+					W.forceMove(B)
 					equipped = 1
 		if(WEAR_IN_L_STORE)
 			if(src.l_store && istype(src.l_store, /obj/item/storage/pouch))
 				var/obj/item/storage/pouch/P = src.l_store
 				if(P.contents.len < P.storage_slots && W.w_class <= P.max_w_class)
-					W.loc = P
+					W.forceMove(P)
 					equipped = 1
 		if(WEAR_IN_R_STORE)
 			if(src.r_store && istype(src.r_store, /obj/item/storage/pouch))
 				var/obj/item/storage/pouch/P = src.r_store
 				if(P.contents.len < P.storage_slots && W.w_class <= P.max_w_class)
-					W.loc = P
+					W.forceMove(P)
 					equipped = 1
 
 
@@ -317,7 +317,7 @@
 		recalculate_move_delay = TRUE
 		W.layer = ABOVE_HUD_LAYER
 		if(src.back && W.loc != src.back)
-			W.loc = src
+			W.forceMove(src)
 	else
 		if (del_on_fail)
 			qdel(W)

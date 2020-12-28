@@ -123,7 +123,7 @@ obj/structure/weapons_loader/proc/reload_ammo()
 		to_chat(user, SPAN_WARNING("Something interrupted you while reloading \the [HP]."))
 		return
 
-	HP.ammo.loc = get_turf(src)
+	HP.ammo.forceMove(get_turf(src))
 	HP.ammo.update_icon()
 	HP.ammo = M
 	LAZYREMOVE(HP.backup_clips, M)

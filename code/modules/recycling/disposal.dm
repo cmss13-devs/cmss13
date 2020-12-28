@@ -275,7 +275,7 @@
 //Eject the contents of the disposal unit
 /obj/structure/machinery/disposal/proc/eject()
 	for(var/atom/movable/AM in src)
-		AM.loc = loc
+		AM.forceMove(loc)
 		AM.pipe_eject(0)
 		if(ismob(AM))
 			var/mob/M = AM
@@ -419,7 +419,7 @@
 	if(H) //Somehow, someone managed to flush a window which broke mid-transit and caused the disposal to go in an infinite loop trying to expel null, hopefully this fixes it
 		for(var/atom/movable/AM in H)
 			target = get_offset_target_turf(loc, rand(5) - rand(5), rand(5) - rand(5))
-			AM.loc = loc
+			AM.forceMove(loc)
 			AM.pipe_eject(0)
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Poor drones kept smashing windows and taking system damage being fired out of disposals. ~Z
 				spawn(1)
@@ -476,7 +476,7 @@
 	//Now everything inside the disposal gets put into the holder
 	//Note AM since can contain mobs or objs
 	for(var/atom/movable/AM in D)
-		AM.loc = src
+		AM.forceMove(src)
 		if(istype(AM, /obj/structure/bigDelivery) && !hasmob)
 			var/obj/structure/bigDelivery/T = AM
 			destinationTag = T.sortTag
@@ -496,7 +496,7 @@
 		D.expel(src) //No trunk connected, so expel immediately
 		return
 
-	loc = D.trunk
+	forceMove(D.trunk)
 	active = 1
 	dir = DOWN
 	spawn(1)
@@ -553,7 +553,7 @@
 //Used when a a holder meets a stuck holder
 /obj/structure/disposalholder/proc/merge(var/obj/structure/disposalholder/other)
 	for(var/atom/movable/AM in other)
-		AM.loc = src //Move everything in other holder to this one
+		AM.forceMove(src) //Move everything in other holder to this one
 		if(ismob(AM))
 			var/mob/M = AM
 			if(M.client) //If a client mob, update eye to follow this holder
@@ -624,7 +624,7 @@
 			//Deleting pipe is inside a dense turf (wall), this is unlikely, but just dump out everything into the turf in case
 
 			for(var/atom/movable/AM in H)
-				AM.loc = T
+				AM.forceMove(T)
 				AM.pipe_eject(0)
 			qdel(H)
 			..()
@@ -652,9 +652,9 @@
 		if(H2 && !H2.active)
 			H.merge(H2)
 
-		H.loc = P
+		H.forceMove(P)
 	else //If wasn't a pipe, then set loc to turf
-		H.loc = T
+		H.forceMove(T)
 		return null
 	return P
 
@@ -681,7 +681,7 @@
 
 	if(T.density) //Dense ouput turf, so stop holder
 		H.active = 0
-		H.loc = src
+		H.forceMove(src)
 		return
 	if(istype(T, /turf/open/floor)) //intact floor, pop the tile
 		var/turf/open/floor/F = T
@@ -699,7 +699,7 @@
 		playsound(src, 'sound/machines/hiss.ogg', 25, 0)
 		if(H)
 			for(var/atom/movable/AM in H)
-				AM.loc = T
+				AM.forceMove(T)
 				AM.pipe_eject(direction)
 				spawn(1)
 					if(AM)
@@ -713,7 +713,7 @@
 			for(var/atom/movable/AM in H)
 				target = get_offset_target_turf(T, rand(5) - rand(5), rand(5) - rand(5))
 
-				AM.loc = T
+				AM.forceMove(T)
 				AM.pipe_eject(0)
 				spawn(1)
 					if(AM)
@@ -740,7 +740,7 @@
 			//Broken pipe is inside a dense turf (wall)
 			//This is unlikely, but just dump out everything into the turf in case
 			for(var/atom/movable/AM in H)
-				AM.loc = T
+				AM.forceMove(T)
 				AM.pipe_eject(0)
 			qdel(H)
 			return
@@ -877,7 +877,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 12)
-		H.loc = loc
+		H.forceMove(loc)
 		return
 
 	else
@@ -890,9 +890,9 @@
 		if(H2 && !H2.active)
 			H.merge(H2)
 
-		H.loc = P
+		H.forceMove(P)
 	else //If wasn't a pipe, then set loc to turf
-		H.loc = T
+		H.forceMove(T)
 		return null
 	return P
 
@@ -920,7 +920,7 @@
 	var/obj/structure/disposalpipe/P
 
 	if(nextdir == 11)
-		H.loc = loc
+		H.forceMove(loc)
 		return
 
 	else
@@ -933,9 +933,9 @@
 		if(H2 && !H2.active)
 			H.merge(H2)
 
-		H.loc = P
+		H.forceMove(P)
 	else //If wasn't a pipe, then set loc to turf
-		H.loc = T
+		H.forceMove(T)
 		return null
 	return P
 
@@ -986,9 +986,9 @@
 		if(H2 && !H2.active)
 			H.merge(H2)
 
-		H.loc = P
+		H.forceMove(P)
 	else //If wasn't a pipe, then set loc to turf
-		H.loc = loc
+		H.forceMove(loc)
 		return null
 	return P
 
@@ -1015,9 +1015,9 @@
 		if(H2 && !H2.active)
 			H.merge(H2)
 
-		H.loc = P
+		H.forceMove(P)
 	else //If wasn't a pipe, then set loc to turf
-		H.loc = loc
+		H.forceMove(loc)
 		return null
 	return P
 
@@ -1196,9 +1196,9 @@
 		if(H2 && !H2.active)
 			H.merge(H2)
 
-		H.loc = P
+		H.forceMove(P)
 	else //If wasn't a pipe, then set loc to turf
-		H.loc = T
+		H.forceMove(T)
 		return null
 	return P
 
@@ -1352,7 +1352,7 @@
 
 	if(H)
 		for(var/atom/movable/AM in H)
-			AM.loc = src.loc
+			AM.forceMove(loc)
 			AM.pipe_eject(dir)
 			if(!istype(AM, /mob/living/silicon/robot/drone)) //Drones keep smashing windows from being fired out of chutes. Bad for the station. ~Z
 				spawn(5)

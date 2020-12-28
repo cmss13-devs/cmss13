@@ -591,10 +591,10 @@ qdel(src)
 				continue
 
 			if (isobj(A))
-				A.loc = target
+				A.forceMove(target)
 
 			if (ismob(A))
-				A.loc = target
+				A.forceMove(target)
 				if(iscarbon(A))
 					var/mob/living/carbon/M = A
 					if(M.client)

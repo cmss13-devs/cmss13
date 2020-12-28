@@ -44,7 +44,7 @@
 
 		user.visible_message(SPAN_NOTICE("[user] opens the panel on [src] and removes [cell]."), SPAN_NOTICE("You open the panel on [src] and remove [cell]."))
 		cell.add_fingerprint(user)
-		cell.loc = src.loc
+		cell.forceMove(loc)
 		cell = null
 		return
 

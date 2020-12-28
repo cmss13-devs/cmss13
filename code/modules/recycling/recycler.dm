@@ -34,7 +34,7 @@
 		if(istype(AM, /obj/item))
 			recycle(AM)
 		else
-			AM.loc = loc
+			AM.forceMove(loc)
 
 
 /obj/structure/machinery/recycler/proc/recycle(obj/item/I)
@@ -42,7 +42,7 @@
 
 	for(var/forbidden_path in ignored_items)
 		if(istype(I, forbidden_path))
-			I.loc = loc
+			I.forceMove(loc)
 			return
 
 	if(isstorage(I))

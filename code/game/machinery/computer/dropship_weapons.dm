@@ -73,7 +73,7 @@
 		var/datum/cas_signal/LT = X
 		if(!istype(LT) || !LT.valid_signal())
 			continue
-		var/area/laser_area = get_area(LT.loc)
+		var/area/laser_area = get_area(LT.signal_loc)
 		targets_data += list(list("target_name" = "[LT.name] ([laser_area.name])", "target_tag" = LT.target_id))
 	shuttle_equipments = FM.equipments
 	var/element_nbr = 1
@@ -167,7 +167,7 @@
 			screen_mode = 3
 			fm_offset = firemission_envelope.recorded_offset
 			fm_direction = dir2text(firemission_envelope.recorded_dir)
-			if(firemission_envelope.recorded_loc && (!firemission_envelope.recorded_loc.loc || !firemission_envelope.recorded_loc.loc:loc))
+			if(firemission_envelope.recorded_loc && (!firemission_envelope.recorded_loc.signal_loc || !firemission_envelope.recorded_loc.signal_loc:loc))
 				firemission_envelope.recorded_loc = null
 
 			firemission_signal = firemission_envelope.recorded_loc?firemission_envelope.recorded_loc.get_name() : "NOT SELECTED"
@@ -267,9 +267,9 @@
 				if(DEW.last_fired > world.time - DEW.firing_delay)
 					to_chat(usr, SPAN_WARNING("[DEW] just fired, wait for it to cool down."))
 					return
-				if(!LT.loc) return
-				var/turf/TU = get_turf(LT.loc)
-				var/area/targ_area = get_area(LT.loc)
+				if(!LT.signal_loc) return
+				var/turf/TU = get_turf(LT.signal_loc)
+				var/area/targ_area = get_area(LT.signal_loc)
 				var/is_outside = FALSE
 				if(is_ground_level(TU.z))
 					switch(targ_area.ceiling)
@@ -284,7 +284,7 @@
 					to_chat(usr, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
 					return
 
-				DEW.open_fire(LT.loc)
+				DEW.open_fire(LT.signal_loc)
 				break
 
 	if(href_list["deselect"])
@@ -592,7 +592,7 @@
 		if(WEST)
 			sx = -1
 			sy = 0
-	var/turf/tt_turf = get_turf(firemission_envelope.recorded_loc.loc)
+	var/turf/tt_turf = get_turf(firemission_envelope.recorded_loc.signal_loc)
 	if(!tt_turf)
 		return
 	var/turf/shootloc = locate(tt_turf.x + sx*firemission_envelope.recorded_offset, tt_turf.y + sy*firemission_envelope.recorded_offset,tt_turf.z)

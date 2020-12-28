@@ -130,12 +130,12 @@ LINEN BINS
 		else
 			B = new /obj/item/bedsheet(loc)
 
-		B.loc = user.loc
+		B.forceMove(user.loc)
 		user.put_in_hands(B)
 		to_chat(user, SPAN_NOTICE("You take [B] out of [src]."))
 
 		if(hidden)
-			hidden.loc = user.loc
+			hidden.forceMove(user.loc)
 			to_chat(user, SPAN_NOTICE("[hidden] falls out of [B]!"))
 			hidden = null
 

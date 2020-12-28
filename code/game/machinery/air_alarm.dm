@@ -113,7 +113,7 @@
 
 	if(building)
 		if(loc)
-			src.loc = loc
+			forceMove(loc)
 
 		if(direction)
 			src.dir = direction
@@ -992,7 +992,7 @@ table tr:first-child th:first-child { border: none;}
 					user.visible_message(SPAN_NOTICE("[user] pries out [src]'s circuits."),
 					SPAN_NOTICE("You pry out [src]'s circuits."))
 					var/obj/item/circuitboard/airalarm/circuit = new()
-					circuit.loc = user.loc
+					circuit.forceMove(user.loc)
 					buildstage = 0
 					update_icon()
 				return
@@ -1007,7 +1007,7 @@ table tr:first-child th:first-child { border: none;}
 			else if(iswrench(W))
 				to_chat(user, "You remove the fire alarm assembly from the wall!")
 				var/obj/item/frame/air_alarm/frame = new /obj/item/frame/air_alarm()
-				frame.loc = user.loc
+				frame.forceMove(user.loc)
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				qdel(src)
 

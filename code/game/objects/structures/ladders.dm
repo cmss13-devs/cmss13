@@ -96,17 +96,17 @@
 	if(do_after(user, 20, INTERRUPT_INCAPACITATED|INTERRUPT_OUT_OF_RANGE|INTERRUPT_RESIST, BUSY_ICON_GENERIC, src, INTERRUPT_NONE))
 		if(!user.is_mob_incapacitated() && get_dist(user, src) <= 1 && !user.blinded && !user.lying && !user.buckled && !user.anchored)
 			//TODO: Using forceMove is desirable here, but this breaks the pull. If you know how to preserve the pull, this would be nice!
-			user.loc = ladder_dest.loc //Cannot use forceMove method on pulls! Move manually //Make sure we move before we broadcast the message
+			user.forceMove(ladder_dest.loc )//Cannot use forceMove method on pulls! Move manually //Make sure we move before we broadcast the message
 			visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src].")) //Hack to give a visible message to the people here without duplicating user message
 			user.visible_message(SPAN_NOTICE("[user] climbs [ladder_dir_name] [src]."),
 			SPAN_NOTICE("You climb [ladder_dir_name] [src]."))
 			ladder_dest.add_fingerprint(user)
 			if(user.pulling && get_dist(src, user.pulling) <= 2)
-				user.pulling.loc = ladder_dest.loc //Cannot use forceMove method on pulls! Move manually
+				user.pulling.forceMove(ladder_dest.loc )//Cannot use forceMove method on pulls! Move manually
 				if(isobj(user.pulling))
 					var/obj/O = user.pulling
 					if(O.buckled_mob)
-						O.buckled_mob.loc = ladder_dest.loc //Cannot use forceMove method on pulls! Move manually
+						O.buckled_mob.forceMove(ladder_dest.loc )//Cannot use forceMove method on pulls! Move manually
 	busy = 0
 	add_fingerprint(user)
 

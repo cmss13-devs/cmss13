@@ -203,7 +203,7 @@
 	if(!usr.control_object) //If you're not already possessing something...
 		usr.name_archive = usr.real_name
 
-	usr.loc = O
+	usr.forceMove(O)
 	usr.real_name = O.name
 	usr.name = O.name
 	usr.client.eye = O
@@ -221,7 +221,7 @@
 			H.name = H.get_visible_name()
 			H.change_real_name(H, usr.name_archive)
 
-	usr.loc = O.loc // Appear where the object you were controlling is -- TLE
+	usr.forceMove(O.loc )// Appear where the object you were controlling is -- TLE
 	usr.client.eye = usr
 	usr.control_object = null
 

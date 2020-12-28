@@ -163,9 +163,9 @@
 					var/obj/structure/disposaloutlet/retrieval/R = i
 					if(R.z != src.z)	continue
 					var/obj/structure/disposalholder/H = new()
-					AM.loc = H
+					AM.forceMove(H)
 					sleep(10)
-					H.loc = R
+					H.forceMove(R)
 					for(var/mob/living/M in H)
 						M.take_overall_damage(100, 0, "Blunt Trauma")
 					sleep(20)

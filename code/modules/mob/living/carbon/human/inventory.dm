@@ -229,7 +229,7 @@
 			A.remove_action(src)
 
 	W.screen_loc = null
-	W.loc = src
+	W.forceMove(src)
 	W.layer = ABOVE_HUD_LAYER
 
 	switch(slot)

@@ -28,7 +28,7 @@
 
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
-		scan.loc = get_turf(src)
+		scan.forceMove(get_turf(src))
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(scan)
 		scan = null
@@ -150,7 +150,7 @@
 			if (src.scan)
 
 				if(ishuman(usr))
-					scan.loc = usr.loc
+					scan.forceMove(usr.loc)
 
 					if(!usr.get_active_hand())
 						usr.put_in_hands(scan)
@@ -158,7 +158,7 @@
 					scan = null
 
 				else
-					src.scan.loc = src.loc
+					src.scan.forceMove(src.loc)
 					src.scan = null
 
 			else

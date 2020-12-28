@@ -297,7 +297,7 @@
 			return
 		var/obj/item/stack/tile/plasteel/T = new /obj/item/stack/tile/plasteel
 		T.amount = 4
-		T.loc = M.loc
+		T.forceMove(M.loc)
 		qdel(M)
 		src.target = null
 		src.repairing = 0

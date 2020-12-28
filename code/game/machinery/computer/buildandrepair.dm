@@ -55,7 +55,7 @@
 				to_chat(user, SPAN_NOTICE(" You remove the circuit board."))
 				src.state = 1
 				src.icon_state = "0"
-				circuit.loc = src.loc
+				circuit.forceMove(loc)
 				src.circuit = null
 		if(2)
 			if(istype(P, /obj/item/tool/screwdriver) && circuit)

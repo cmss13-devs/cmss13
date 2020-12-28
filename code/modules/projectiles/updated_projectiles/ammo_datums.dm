@@ -1194,7 +1194,7 @@
 	var/obj/item/ammo_magazine/rocket/custom/rocket = launcher.current_mag
 	if(rocket.locked && rocket.warhead && rocket.warhead.detonator)
 		if(rocket.fuel && rocket.fuel.reagents.get_reagent_amount(rocket.fuel_type) >= rocket.fuel_requirement)
-			rocket.loc = P.loc
+			rocket.forceMove(P.loc)
 		rocket.warhead.prime()
 		qdel(rocket)
 	smoke.set_up(1, get_turf(A))

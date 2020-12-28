@@ -26,7 +26,7 @@
 			to_chat(src, "You wriggle out of [M]'s grip!")
 		else if(istype(H.loc,/obj/item))
 			to_chat(src, "You struggle free of [H.loc].")
-			H.loc = get_turf(H)
+			H.forceMove(get_turf(H))
 
 		if(!istype(M))
 			return

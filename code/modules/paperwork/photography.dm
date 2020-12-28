@@ -255,7 +255,7 @@
 		viewer = user.client.eye
 	var/can_see = (dummy in viewers(world_view_size, viewer)) != null
 
-	dummy.loc = null
+	dummy.moveToNullspace()
 	dummy = null	//Alas, nameless creature	//garbage collect it instead
 	return can_see
 
@@ -304,7 +304,7 @@
 
 /obj/item/device/camera/proc/printpicture(mob/user, var/datum/picture/P)
 	var/obj/item/photo/Photo = new/obj/item/photo()
-	Photo.loc = user.loc
+	Photo.forceMove(user.loc)
 	if(!user.get_inactive_hand())
 		user.put_in_inactive_hand(Photo)
 	Photo.construct(P)

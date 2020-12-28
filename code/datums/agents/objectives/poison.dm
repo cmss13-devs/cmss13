@@ -13,7 +13,7 @@
 	if(!H.equip_to_slot_if_possible(poisoned_food, WEAR_IN_BACK))
 		if(!H.equip_to_slot_if_possible(poisoned_food, WEAR_L_HAND))
 			if(!H.equip_to_slot_if_possible(poisoned_food, WEAR_R_HAND))
-				poisoned_food.loc = H.loc
+				poisoned_food.forceMove(H.loc)
 
 	RegisterSignal(poisoned_food, COMSIG_SNACK_EATEN, .proc/ate_poison)
 
@@ -50,6 +50,6 @@
 	desc = initial(O.desc)
 	icon = initial(O.icon)
 	icon_state = initial(O.icon_state)
-	
+
 	reagents.add_reagent("nutriment", 8)
 	bitesize = 3

@@ -100,20 +100,20 @@
 	if(tank_one && href_list["tankone"])
 		split_gases()
 		valve_open = 0
-		tank_one.loc = get_turf(src)
+		tank_one.forceMove(get_turf(src))
 		tank_one = null
 		update_icon()
 	else if(tank_two && href_list["tanktwo"])
 		split_gases()
 		valve_open = 0
-		tank_two.loc = get_turf(src)
+		tank_two.forceMove(get_turf(src))
 		tank_two = null
 		update_icon()
 	else if(href_list["open"])
 		toggle_valve()
 	else if(attached_device)
 		if(href_list["rem_device"])
-			attached_device.loc = get_turf(src)
+			attached_device.forceMove(get_turf(src))
 			attached_device:holder = null
 			attached_device = null
 			update_icon()

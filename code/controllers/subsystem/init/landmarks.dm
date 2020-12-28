@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(landmark_init)
 			var/turf/T = pool.turfs[rand(1, pool.turfs.len)]
 			var/atom/movable/newly_spawned = new pool.type_to_spawn()
 
-			newly_spawned.loc = T
+			newly_spawned.forceMove(T)
 			pool.turfs -= T
 
 	return ..()

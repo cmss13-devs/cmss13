@@ -34,7 +34,7 @@
 	if(istype(I, /obj/item/storage/bag/trash) && !mybag)
 		user.drop_held_item()
 		mybag = I
-		I.loc = src
+		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
@@ -51,7 +51,7 @@
 		if(!mymop)
 			user.drop_held_item()
 			mymop = I
-			I.loc = src
+			I.forceMove(src)
 			update_icon()
 			updateUsrDialog()
 			to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
@@ -59,7 +59,7 @@
 	else if(istype(I, /obj/item/reagent_container/spray) && !myspray)
 		user.drop_held_item()
 		myspray = I
-		I.loc = src
+		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
@@ -67,7 +67,7 @@
 	else if(istype(I, /obj/item/device/lightreplacer) && !myreplacer)
 		user.drop_held_item()
 		myreplacer = I
-		I.loc = src
+		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))
@@ -75,7 +75,7 @@
 	else if(istype(I, /obj/item/tool/wet_sign))
 		if(signs < 4)
 			user.drop_held_item()
-			I.loc = src
+			I.forceMove(src)
 			signs++
 			update_icon()
 			updateUsrDialog()
@@ -86,7 +86,7 @@
 	else if(istype(I, /obj/item/reagent_container/glass/bucket/janibucket))
 		user.drop_held_item()
 		mybucket = I
-		I.loc = src
+		I.forceMove(src)
 		update_icon()
 		updateUsrDialog()
 		to_chat(user, SPAN_NOTICE("You put [I] into [src]."))

@@ -22,7 +22,7 @@
 
 /obj/item/device/clue_scanner/attack_self(mob/user)
 	. = ..()
-	
+
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
@@ -36,7 +36,7 @@
 		return
 	scanning = FALSE
 
-	var/obj/effect/decal/prints/print_set 
+	var/obj/effect/decal/prints/print_set
 	for(var/obj/effect/decal/prints/P in range(2))
 		P = print_set
 		break
@@ -45,7 +45,7 @@
 		to_chat(user, SPAN_WARNING("No prints located in the area..."))
 		return
 
-	print_set.loc = null
+	print_set.moveToNullspace()
 	found_prints = print_set
 	update_icon()
 	to_chat(user, SPAN_INFO("Print set found: [found_prints.generate_clue()]"))

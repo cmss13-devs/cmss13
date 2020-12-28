@@ -31,7 +31,7 @@
 		for(var/obj/item/I in src.loc)
 			if(I.density || I.anchored || I == src)
 				continue
-			I.loc = src
+			I.forceMove(src)
 	GLOB.closet_list += src
 
 /obj/structure/closet/Destroy()
@@ -122,7 +122,7 @@
 		if(stored_units + item_size > storage_capacity)
 			continue
 		if(!I.anchored)
-			I.loc = src
+			I.forceMove(src)
 			stored_units += item_size
 	return stored_units
 
@@ -151,18 +151,18 @@
 		if(0 to EXPLOSION_THRESHOLD_LOW)
 			if(prob(5))
 				for(var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
+					A.forceMove(src.loc)
 					A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
 			if(prob(50))
 				for (var/atom/movable/A as mob|obj in src)
-					A.loc = src.loc
+					A.forceMove(src.loc)
 					A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 				qdel(src)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
 			for(var/atom/movable/A as mob|obj in src)//pulls everything out of the locker and hits it with an explosion
-				A.loc = src.loc
+				A.forceMove(src.loc)
 				A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 			qdel(src)
 
@@ -171,7 +171,7 @@
 	if(prob(30)) playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
 	if(health <= 0)
 		for(var/atom/movable/A as mob|obj in src)
-			A.loc = src.loc
+			A.forceMove(src.loc)
 		spawn(1)
 			playsound(loc, 'sound/effects/meteorimpact.ogg', 25, 1)
 			qdel(src)
@@ -182,7 +182,7 @@
 	if(user.wall_smash)
 		visible_message(SPAN_DANGER("[user] destroys the [src]. "))
 		for(var/atom/movable/A as mob|obj in src)
-			A.loc = src.loc
+			A.forceMove(src.loc)
 		qdel(src)
 
 /obj/structure/closet/attackby(obj/item/W, mob/living/user)

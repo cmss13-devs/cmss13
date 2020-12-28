@@ -29,7 +29,7 @@
 
 	O = new species.primitive(loc)
 
-	O.loc = loc
+	O.forceMove(loc)
 	O.viruses = viruses
 	O.a_intent = INTENT_HARM
 
@@ -110,7 +110,7 @@
 		O.key = key
 		if(O.client) O.client.change_view(world_view_size)
 
-	O.loc = loc
+	O.forceMove(loc)
 	O.job = "Cyborg"
 	if(O.job == "Cyborg")
 		O.mmi = new /obj/item/device/mmi(O)

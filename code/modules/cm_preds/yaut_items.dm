@@ -58,7 +58,7 @@
 
 /obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,6), elder_restricted = 0)
 	..()
-	loc = location
+	forceMove(location)
 
 	if(elder_restricted)
 		armor_melee = CLOTHING_ARMOR_MEDIUMHIGH

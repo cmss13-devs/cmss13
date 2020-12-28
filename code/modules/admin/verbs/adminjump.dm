@@ -100,11 +100,7 @@
 
 		var/mob/A = src.mob
 		A.on_mob_jump()
-		A.x = tx
-		A.y = ty
-		A.z = tz
-		//This is a bit hacky but ensures it works properly
-		A.forceMove(A.loc)
+		A.forceMove(locate(tx,ty,tz))
 
 		var/turf/T = get_turf(A)
 		if(!T)
@@ -135,7 +131,7 @@
 		admin_ghost()
 
 	mob.on_mob_jump()
-	mob.loc = M.loc
+	mob.forceMove(M.loc)
 	message_staff("[usr.ckey] jumped to ckey [key_name(M)] in [get_area(M)] ([M.loc.x],[M.loc.y],[M.loc.z]).", M.loc.x, M.loc.y, M.loc.z)
 
 /client/proc/Getmob(var/mob/M)
@@ -149,7 +145,7 @@
 		return
 
 	M.on_mob_jump()
-	M.loc = get_turf(usr)
+	M.forceMove(get_turf(usr))
 	message_staff(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 /client/proc/Getkey()
@@ -172,7 +168,7 @@
 		return
 
 	M.on_mob_jump()
-	M.loc = get_turf(usr)
+	M.forceMove(get_turf(usr))
 	message_staff(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to themselves in [get_area(usr)] ([usr.x],[usr.y],[usr.z])."), usr.x, usr.y, usr.z)
 
 /client/proc/sendmob(var/mob/M in sortmobs())
@@ -186,5 +182,5 @@
 	var/area/A = input(usr, "Pick an area.", "Pick an area") as null|anything in return_sorted_areas()
 	if(A)
 		M.on_mob_jump()
-		M.loc = pick(get_area_turfs(A))
+		M.forceMove(pick(get_area_turfs(A)))
 		message_staff(WRAP_STAFF_LOG(usr, "teleported [key_name(M)] to [get_area(M)] ([M.x],[M.y],[M.z])."), M.x, M.y, M.z)

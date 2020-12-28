@@ -67,7 +67,7 @@ obj/structure/bed/Destroy()
 /obj/structure/bed/proc/do_buckle_bodybag(obj/structure/closet/bodybag/B, mob/user)
 	B.visible_message(SPAN_NOTICE("[user] buckles [B] to [src]!"))
 	B.roller_buckled = src
-	B.loc = loc
+	B.forceMove(loc)
 	B.dir = dir
 	buckled_bodybag = B
 	density = 1
@@ -109,7 +109,7 @@ obj/structure/bed/Destroy()
 /obj/structure/bed/proc/handle_buckled_bodybag_movement(NewLoc, direct)
 	if(!(direct & (direct - 1))) //Not diagonal move. the obj's diagonal move is split into two cardinal moves and those moves will handle the buckled bodybag's movement.
 		if(!buckled_bodybag.Move(NewLoc, direct))
-			loc = buckled_bodybag.loc
+			forceMove(buckled_bodybag.loc)
 			last_move_dir = buckled_bodybag.last_move_dir
 			return 0
 	return 1
@@ -222,7 +222,7 @@ obj/structure/bed/Destroy()
 		var/obj/item/roller_holder/RH = W
 		if(!RH.held)
 			to_chat(user, SPAN_NOTICE("You pick up [src]."))
-			loc = RH
+			forceMove(RH)
 			RH.held = src
 			return
 	. = ..()

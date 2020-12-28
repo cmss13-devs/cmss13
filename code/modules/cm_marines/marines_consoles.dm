@@ -19,18 +19,18 @@
 		if(ACCESS_MARINE_LOGISTICS in idcard.access)
 			if(!scan)
 				usr.drop_held_item()
-				idcard.loc = src
+				idcard.forceMove(src)
 				scan = idcard
 			else if(!ID_to_modify)
 				usr.drop_held_item()
-				idcard.loc = src
+				idcard.forceMove(src)
 				ID_to_modify = idcard
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 		else
 			if(!ID_to_modify)
 				usr.drop_held_item()
-				idcard.loc = src
+				idcard.forceMove(src)
 				ID_to_modify = idcard
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
@@ -214,35 +214,35 @@
 				GLOB.data_core.manifest_modify(ID_to_modify.registered_name, ID_to_modify.assignment)
 				ID_to_modify.name = text("[ID_to_modify.registered_name]'s ID Card ([ID_to_modify.assignment])")
 				if(ishuman(usr))
-					ID_to_modify.loc = usr.loc
+					ID_to_modify.forceMove(usr.loc)
 					if(!usr.get_active_hand())
 						usr.put_in_hands(ID_to_modify)
 					ID_to_modify = null
 				else
-					ID_to_modify.loc = loc
+					ID_to_modify.forceMove(loc)
 					ID_to_modify = null
 			else
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/card/id))
 					usr.drop_held_item()
-					I.loc = src
+					I.forceMove(src)
 					ID_to_modify = I
 			authenticated = 0
 		if ("scan")
 			if (scan)
 				if(ishuman(usr))
-					scan.loc = usr.loc
+					scan.forceMove(usr.loc)
 					if(!usr.get_active_hand())
 						usr.put_in_hands(scan)
 					scan = null
 				else
-					scan.loc = src.loc
+					scan.forceMove(src.loc)
 					scan = null
 			else
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/card/id))
 					usr.drop_held_item()
-					I.loc = src
+					I.forceMove(src)
 					scan = I
 			authenticated = 0
 		if ("auth")
@@ -356,7 +356,7 @@
 			var/obj/item/card/id/idcard = O
 			if(!ID_to_modify)
 				H.drop_held_item()
-				idcard.loc = src
+				idcard.forceMove(src)
 				ID_to_modify = idcard
 				to_chat(usr, SPAN_NOTICE("You insert the ID card into [src]"))
 			else
@@ -418,7 +418,7 @@
 		usr.set_interaction(src)
 		if(href_list["card"])
 			if(ID_to_modify)
-				ID_to_modify.loc = src.loc
+				ID_to_modify.forceMove(src.loc)
 				if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 					usr.put_in_hands(ID_to_modify)
 				ID_to_modify = null
@@ -427,7 +427,7 @@
 				var/obj/item/I = usr.get_active_hand()
 				if (istype(I, /obj/item/card/id))
 					usr.drop_held_item()
-					I.loc = src
+					I.forceMove(src)
 					ID_to_modify = I
 					to_chat(usr, SPAN_NOTICE("You insert the ID card into \the [src]"))
 		else if(href_list["squad"])

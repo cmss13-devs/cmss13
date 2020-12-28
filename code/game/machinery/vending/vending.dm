@@ -478,7 +478,7 @@
 			to_chat(usr, "There is no coin in this machine.")
 			return
 
-		coin.loc = src.loc
+		coin.forceMove(src.loc)
 		if(!usr.get_active_hand())
 			usr.put_in_hands(coin)
 		to_chat(usr, SPAN_NOTICE(" You remove the [coin] from the [src]"))
@@ -488,7 +488,7 @@
 		if (!ewallet)
 			to_chat(usr, "There is no charge card in this machine.")
 			return
-		ewallet.loc = src.loc
+		ewallet.forceMove(src.loc)
 		if(!usr.get_active_hand())
 			usr.put_in_hands(ewallet)
 		to_chat(usr, SPAN_NOTICE(" You remove the [ewallet] from the [src]"))
@@ -709,7 +709,8 @@
 /obj/structure/machinery/vending/power_change()
 	..()
 	if(stat & NOPOWER)
-		sleep(rand(0, 15))
+		addtimer(CALLBACK(src, .proc/update_icon), rand(1, 15))
+		return
 	update_icon()
 
 //Oh no we're malfunctioning!  Dump out some product and break.

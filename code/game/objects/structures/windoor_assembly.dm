@@ -153,12 +153,12 @@ obj/structure/windoor_assembly/Destroy()
 					if(!src) return
 
 					user.drop_held_item()
-					W.loc = src
+					W.forceMove(src)
 					to_chat(user, SPAN_NOTICE(" You've installed the airlock electronics!"))
 					src.name = "Near finished Windoor Assembly"
 					src.electronics = W
 				else
-					W.loc = src.loc
+					W.forceMove(src.loc)
 
 			//Screwdriver to remove airlock electronics. Step 6 undone.
 			else if(istype(W, /obj/item/tool/screwdriver) && src.electronics)
@@ -174,7 +174,7 @@ obj/structure/windoor_assembly/Destroy()
 						src.name = "Wired Windoor Assembly"
 					var/obj/item/circuitboard/airlock/ae = electronics
 					electronics = null
-					ae.loc = src.loc
+					ae.forceMove(src.loc)
 
 			//Crowbar to complete the assembly, Step 7 complete.
 			else if(istype(W, /obj/item/tool/crowbar))
@@ -209,7 +209,7 @@ obj/structure/windoor_assembly/Destroy()
 						else
 							windoor.req_access = src.electronics.conf_access
 						windoor.electronics = src.electronics
-						src.electronics.loc = windoor
+						src.electronics.forceMove(windoor)
 					else
 						var/obj/structure/machinery/door/window/windoor = new /obj/structure/machinery/door/window(src.loc)
 						if(src.facing == "l")
@@ -227,7 +227,7 @@ obj/structure/windoor_assembly/Destroy()
 						else
 							windoor.req_access = src.electronics.conf_access
 						windoor.electronics = src.electronics
-						src.electronics.loc = windoor
+						src.electronics.forceMove(windoor)
 
 
 					qdel(src)

@@ -733,7 +733,8 @@
 /datum/ammo/bullet/sniper/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P.homing_target && M == P.homing_target)
 		var/mob/living/L = M
-		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE)
+		L.apply_armoured_damage(damage*2, ARMOR_BULLET, BRUTE, null, penetration)
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/incendiary
 	name = "incendiary sniper bullet"
@@ -756,6 +757,7 @@
 				blind_duration = 2
 		L.AdjustEyeBlur(blind_duration)
 		L.adjust_fire_stacks(10)
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 
 /datum/ammo/bullet/sniper/flak
 	name = "flak sniper bullet"
@@ -777,7 +779,8 @@
 			if(target.mob_size >= MOB_SIZE_BIG)
 				slow_duration = 4
 		M.AdjustSuperslowed(slow_duration)
-		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE)
+		L.apply_armoured_damage(damage, ARMOR_BULLET, BRUTE, null, penetration)
+		to_chat(P.firer, SPAN_WARNING("Bullseye!"))
 	else
 		burst(get_turf(M),P,damage_type, 2 , 2)
 		burst(get_turf(M),P,damage_type, 1 , 2 , 0)

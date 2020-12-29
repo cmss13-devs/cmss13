@@ -19,10 +19,10 @@ var/internal_tick_usage = 0
 	hub = "Exadv1.spacestation13"
 
 /world/New()
-	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || "./byond-extools.dll"
-	if(fexists(extools))
-		call(extools, "maptick_initialize")()
-	enable_debugger()
+	var/debug_server = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	if (debug_server)
+		call(debug_server, "auxtools_init")()
+		enable_debugging()
 	internal_tick_usage = 0.2 * world.tick_lag
 	hub_password = "kMZy3U5jJHSiBQjr"
 

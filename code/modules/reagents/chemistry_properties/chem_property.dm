@@ -42,10 +42,7 @@
 	return TRUE
 
 /datum/chem_property/proc/process_dead(mob/living/M, var/potency = 1)
-	if(deleted)
-		return FALSE
-
-	return TRUE
+	return FALSE // By default, chemicals don't process in dead personnel.
 
 /datum/chem_property/proc/trigger(var/A) //used for properties that needs something to trigger outside of where process is usually called
 	return

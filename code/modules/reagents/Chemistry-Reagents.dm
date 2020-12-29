@@ -163,12 +163,16 @@
 
 //Dead Processing, see /mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
 /datum/reagent/proc/handle_dead_processing(mob/living/M, var/list/mods)
+	var/processing_in_dead = FALSE
 	for(var/datum/chem_property/P in properties)
 		var/potency = mods[REAGENT_EFFECT] * ((P.level+mods[REAGENT_BOOST]) * 0.5)
 		if(potency <= 0)
 			continue
 		if(P.process_dead(M, potency))
-			holder.remove_reagent(id, custom_metabolism)
+			processing_in_dead = TRUE
+
+	if(processing_in_dead && !mods[REAGENT_FORCE]) // mods[REAGENT_FORCE] will force the reagent removal anyhow.
+		holder.remove_reagent(id, custom_metabolism)
 
 /datum/reagent/proc/on_delete()
 	if(!holder || !holder.my_atom || !isliving(holder.my_atom))

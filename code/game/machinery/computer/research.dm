@@ -197,6 +197,8 @@
 			to_chat(usr, SPAN_WARNING("Higher authorization is required to increase the clearance level further."))
 	else if(href_list["purchase_document"])
 		var/purchase_tier = text2num(href_list["purchase_document"])
+		if(purchase_tier < 0 || purchase_tier > 5)
+			return
 		var/purchase_cost = base_purchase_cost + purchase_tier * purchase_tier
 		if(purchase_cost <= chemical_data.rsc_credits)
 			if(alert(usr,"Are you sure you wish to purchase a new level [purchase_tier] chemical report for [purchase_cost] credits?","Warning","Yes","No") != "Yes")

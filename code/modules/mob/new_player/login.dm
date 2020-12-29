@@ -30,7 +30,8 @@
 	client.change_view(16)
 	// Credit the lobby art author
 	if(displayed_lobby_art != -1)
-		var/author = "[lobby_art_authors[displayed_lobby_art]]"
+		var/list/lobby_authors = CONFIG_GET(str_list/lobby_art_authors)
+		var/author = lobby_authors[displayed_lobby_art]
 		if(author != "Unknown")
 			to_chat(src, SPAN_ROUNDBODY("<hr>This round's lobby art is brought to you by [author]<hr>"))
 	if(join_motd)

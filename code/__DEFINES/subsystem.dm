@@ -88,6 +88,7 @@
 #define SS_INIT_PLAYTIME    	  -27
 #define SS_INIT_OBJECTIVES         -31
 #define SS_INIT_MAPVIEW            -32
+#define SS_INIT_LOBBYART          -33
 
 #define SS_PRIORITY_TIMER          700
 #define SS_PRIORITY_CHAT		   300

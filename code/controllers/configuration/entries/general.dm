@@ -432,3 +432,7 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/flag/report_runtimes
 
 /datum/config_entry/flag/record_rounds
+
+/datum/config_entry/str_list/lobby_art_images
+
+/datum/config_entry/str_list/lobby_art_authors

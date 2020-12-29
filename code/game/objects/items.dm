@@ -285,6 +285,7 @@ cases. Override_icon_state should be a list.*/
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
+	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	return
 

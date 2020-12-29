@@ -16,6 +16,9 @@
 	flags_equip_slot = SLOT_ACCESSORY
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
 
+/obj/item/clothing/accessory/proc/can_attach_to(var/mob/user, var/obj/item/clothing/C)
+	return TRUE
+
 /obj/item/clothing/accessory/New()
 	..()
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]")
@@ -122,6 +125,20 @@
 	slot = ACCESSORY_SLOT_MEDAL
 	high_visibility = TRUE
 
+/obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user)
+	. = ..()
+	RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
+
+/obj/item/clothing/accessory/medal/proc/remove_medal(var/obj/item/clothing/C, var/mob/user)
+	SIGNAL_HANDLER
+	if(user.real_name != recipient_name)
+		C.remove_accessory(user, src)
+		user.drop_held_item(src)
+
+/obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/C)
+	. = ..()
+	UnregisterSignal(C, COMSIG_ITEM_PICKUP)
+
 /obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
 	if(istype(H) && istype(user) && user.a_intent == INTENT_HELP)
 		if(H.w_uniform)
@@ -150,6 +167,12 @@
 	else
 		return ..()
 
+/obj/item/clothing/accessory/medal/can_attach_to(mob/user, obj/item/clothing/C)
+	if(user.real_name != recipient_name)
+		return FALSE
+
+	return TRUE
+	
 
 /obj/item/clothing/accessory/medal/examine(mob/user)
 	..()

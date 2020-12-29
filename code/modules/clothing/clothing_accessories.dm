@@ -90,6 +90,9 @@
  *  items on spawn
  */
 /obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A)
+	if(!A.can_attach_to(user, src))
+		return
+
 	LAZYADD(accessories, A)
 	A.on_attached(src, user)
 	if(A.removable)

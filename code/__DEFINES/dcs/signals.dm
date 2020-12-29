@@ -172,3 +172,5 @@
 
 #define COMSIG_GRENADE_PRE_PRIME "grenade_pre_prime"
 	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)
+
+#define COMSIG_ITEM_PICKUP "item_pickup"

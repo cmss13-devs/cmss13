@@ -194,7 +194,7 @@
 	if(mode == MODE_CREATE && chemical_data.has_new_properties)
 		update_costs()
 
-	if(href_list["simulate"])
+	if(href_list["simulate"] && ready)
 		simulating = SIMULATION_STAGE_BEGIN
 		status_bar = "COMMENCING SIMULATION"
 		icon_state = "modifier_running"
@@ -455,11 +455,13 @@
 		new_od_level += 5
 
 /obj/structure/machinery/chem_simulator/proc/prepare_recipe_options()
-	var/datum/chemical_reaction/generated/R = chemical_reactions_list[target.data.id]
-	if(!R) //If it doesn't have a recipe, go immediately to finalizing, which will then generate a new associated recipe
+	var/datum/chemical_reaction/generated/O = chemical_reactions_list[target.data.id]
+	if(!O) //If it doesn't have a recipe, go immediately to finalizing, which will then generate a new associated recipe
 		return FALSE
 	recipe_targets = list() //reset
-	var/list/old_reaction = R.required_reagents.Copy()
+	var/list/old_reaction = O.required_reagents.Copy()
+	var/datum/chemical_reaction/generated/R = new /datum/chemical_reaction/generated()
+	R.required_reagents = old_reaction.Copy()
 	while(LAZYLEN(recipe_targets) < 3)
 		var/list/target_elevated[0]
 		for(var/i = 0 to 5) //5 attempts at modifying the recipe before elevating recipe length
@@ -478,7 +480,7 @@
 			target_elevated["[new_component.id]"] = FALSE
 			break
 		LAZYADD(recipe_targets, target_elevated)
-	R.required_reagents = old_reaction.Copy() //it was just a simulation
+		R.required_reagents = old_reaction.Copy() //it was just a simulation
 	return TRUE
 
 /obj/structure/machinery/chem_simulator/proc/check_ready()

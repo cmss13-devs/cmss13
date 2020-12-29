@@ -52,12 +52,13 @@
 			if(!A)
 				continue
 			for(var/mod in A)
-				mods[mod] += A[mod]
+				mods[mod] |= A[mod]
 
 		if(mods[REAGENT_CANCEL])
 			return
 
 		if(mods[REAGENT_FORCE])
 			R.handle_processing(src, mods)
-		else
-			R.handle_dead_processing(src, mods)
+			R.holder.remove_reagent(R.id, R.custom_metabolism)
+
+		R.handle_dead_processing(src, mods)

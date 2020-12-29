@@ -182,6 +182,7 @@
 #define HAS_UNDERWEAR 512
 #define IS_WHITELISTED 1024
 #define IS_SYNTHETIC 2048
+#define NO_SHRAPNEL 4096
 
 //=================================================
 

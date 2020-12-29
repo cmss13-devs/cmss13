@@ -5,7 +5,7 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
-	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_SCAN|NO_POISON
+	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_SCAN|NO_POISON|NO_SHRAPNEL
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja

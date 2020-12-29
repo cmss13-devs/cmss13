@@ -377,11 +377,11 @@
 		return
 
 	if(istype(A, /obj/structure/machinery))
-		add_machine(A)
+		INVOKE_ASYNC(src, .proc/add_machine, A)
 
 /area/Exited(A)
 	if(istype(A, /obj/structure/machinery))
-		remove_machine(A)
+		INVOKE_ASYNC(src, .proc/remove_machine, A)
 
 /area/proc/add_machine(var/obj/structure/machinery/M)
 	if(istype(M))

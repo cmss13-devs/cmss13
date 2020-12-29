@@ -308,7 +308,7 @@
 
 		if(Y.upgrades > 0)
 			to_chat(src, SPAN_NOTICE("[Y] hum as their support systems come online."))
-			add_verb(src, /obj/item/clothing/gloves/yautja/proc/translate)
+			Y.verbs += /obj/item/clothing/gloves/yautja/proc/translate
 		remove_verb(src, /mob/living/carbon/human/proc/pred_buy)
 
 // Mark for Hunt verbs

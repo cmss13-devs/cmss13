@@ -435,7 +435,7 @@
 		var/name = input("What would you like to name this location?", "Text") as null|text
 		if(!name)
 			return
-		GLOB.yautja_teleport_descs += name + location.loc_to_string()
+		GLOB.yautja_teleport_descs[name + location.loc_to_string()] = location
 		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
 		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
 		yautja_announcement(SPAN_YAUTJABOLDBIG("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]"))

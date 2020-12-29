@@ -86,6 +86,9 @@
 
 /obj/effect/alien/weeds/Destroy()
 	if(parent)
+		if(istype(parent, /obj/effect/alien/weeds/node/pylon))
+			var/obj/effect/alien/weeds/node/pylon/P = parent
+			P.parent_pylon.damaged = TRUE
 		parent.remove_child(src)
 
 	var/oldloc = loc
@@ -425,9 +428,22 @@
 	node_range = WEED_RANGE_CORE
 
 /obj/effect/alien/weeds/node/pylon/Destroy()
-	if(parent_pylon)
-		addtimer(CALLBACK(parent_pylon, .obj/effect/alien/resin/special/pylon/proc/replace_node), rand(150, 250))
-	parent_pylon = null
-	. = ..()
+	parent_pylon = null 
+	return ..()
+
+/obj/effect/alien/weeds/node/pylon/ex_act(severity)
+	return
+
+/obj/effect/alien/weeds/node/pylon/attackby(obj/item/W, mob/living/user)
+	return 
+
+/obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/Xenomorph/X)
+	return
+
+/obj/effect/alien/weeds/node/pylon/flamer_fire_act(dam)
+	return
+
+/obj/effect/alien/weeds/node/pylon/acid_spray_act()
+	return
 
 #undef WEED_BASE_GROW_SPEED

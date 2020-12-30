@@ -4,7 +4,7 @@
 	The threshold vars determine when the associated threshold procs should activate.
 	The threshold vars are percentage values, so if you want the mild effect to appear at 20% pain, you assign it 20.
 
-	Each mob should spawn with a pain datumn. 
+	Each mob should spawn with a pain datumn.
 
 	Can be customized for each mob, default procs are slow and messages appearing at mild.
 		discomforting-moderate, more slow, new message.
@@ -48,7 +48,7 @@
 
 	var/current_pain 		= 0
 	var/max_pain 			= 100
-	var/reduction_pain		= 0	
+	var/reduction_pain		= 0
 
 	var/pain_level 			= PAIN_LEVEL_NONE
 	var/last_level			= PAIN_LEVEL_NONE
@@ -61,7 +61,7 @@
 	var/threshold_horrible			= 85
 
 	var/pain_slowdown		= 0
-	
+
 	var/last_reduction_update = 0
 	var/level_updating		= FALSE
 
@@ -121,7 +121,7 @@
 
 /datum/pain/proc/reset_pain_reduction()
 	reduction_pain = 0
-	
+
 	update_pain_level()
 
 /datum/pain/proc/update_pain_level()
@@ -150,7 +150,7 @@
 		increase_pain_level()
 	else
 		decrease_pain_level()
-		
+
 
 /datum/pain/proc/check_active_pain(var/level = 0)
 	if(level == last_level) //Check if the new level is same as old one
@@ -195,7 +195,8 @@
 
 	if(new_level >= PAIN_LEVEL_SEVERE)
 		RegisterSignal(source_mob, COMSIG_MOB_DRAGGED, .proc/oxyloss_drag, override = TRUE)
-		RegisterSignal(source_mob, COMSIG_MOB_DEVOURED, .proc/oxy_kill, override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOB_DEVOURED, .proc/handle_devour, override = TRUE)
+		RegisterSignal(source_mob, COMSIG_MOVABLE_PRE_THROW, .proc/oxy_kill, override = TRUE)
 
 	last_level = new_level
 	addtimer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
@@ -229,8 +230,11 @@
 				activate_severe()
 
 	if(new_level < PAIN_LEVEL_SEVERE)
-		UnregisterSignal(source_mob, COMSIG_MOB_DRAGGED)
-		UnregisterSignal(source_mob, COMSIG_MOB_DEVOURED)
+		UnregisterSignal(source_mob, list(
+			COMSIG_MOB_DRAGGED,
+			COMSIG_MOB_DEVOURED,
+			COMSIG_MOVABLE_PRE_THROW
+		))
 
 	last_level = new_level
 	addtimer(CALLBACK(src, .proc/before_update), PAIN_UPDATE_FREQUENCY)
@@ -246,7 +250,7 @@
 
 	for(var/datum/effects/pain/P in source_mob.effects_list)
 		qdel(P)
-		
+
 	// Reapply it all
 	apply_pain(source_mob.getBruteLoss(), BRUTE)
 	apply_pain(source_mob.getFireLoss(), BURN)
@@ -284,14 +288,18 @@
 	if(isXeno(puller) && source.stat == UNCONSCIOUS)
 		source.apply_damage(20, OXY)
 
-/datum/pain/proc/oxy_kill(mob/living/source, mob/living/carbon/Xenomorph/X)
+/datum/pain/proc/handle_devour(mob/living/source)
 	SIGNAL_HANDLER
 	if(source.chestburst)
 		return
-	INVOKE_ASYNC(source, /mob.proc/death)
+	oxy_kill(source)
 	return COMPONENT_CANCEL_DEVOUR
+
+/datum/pain/proc/oxy_kill(mob/living/source)
+	SIGNAL_HANDLER
+	INVOKE_ASYNC(source, /mob/proc.death)
 
 /datum/pain/Destroy()
 	. = ..()
-	
+
 	source_mob = null

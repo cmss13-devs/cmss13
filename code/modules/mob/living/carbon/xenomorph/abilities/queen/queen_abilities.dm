@@ -35,15 +35,15 @@
 	name = "Expand Weeds"
 	action_icon_state = "plant_weeds"
 	ability_name = "weed expansion"
-	plasma_cost = 100
+	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 1 SECOND
+	xeno_cooldown = 0.5 SECOND
 
 	var/node_plant_cooldown = 7 SECONDS
 	var/node_plant_plasma_cost = 300
 
-	var/turf_build_cooldown = 15 SECONDS
+	var/turf_build_cooldown = 7 SECONDS
 
 /datum/action/xeno_action/onclick/banish
 	name = "Banish a Xenomorph"

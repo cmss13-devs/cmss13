@@ -122,6 +122,9 @@
 	LM.thrower = thrower
 	LM.spin = spin
 
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_LAUNCH, LM) & COMPONENT_LAUNCH_CANCEL)
+		return
+
 	launch_towards(LM)
 
 // Proc for throwing or propelling movable atoms towards a target

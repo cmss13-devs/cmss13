@@ -9,7 +9,7 @@
 #define HOURS *36000
 
 #define MINUTES_TO_DECISECOND *600
-#define MINUTES_TO_HOURS /60 
+#define MINUTES_TO_HOURS /60
 
 #define DECISECONDS_TO_HOURS /36000
 
@@ -70,7 +70,7 @@ var/rollovercheck_last_timeofday = 0
 /proc/update_midnight_rollover()
 	if(world.timeofday < rollovercheck_last_timeofday)
 		midnight_rollovers++
-	
+
 	rollovercheck_last_timeofday = world.timeofday
 	return midnight_rollovers
 

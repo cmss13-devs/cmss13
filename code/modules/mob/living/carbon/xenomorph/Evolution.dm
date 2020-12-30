@@ -341,9 +341,6 @@
 	//Regenerate the new mob's name now that our player is inside
 	new_xeno.generate_name()
 
-	// Self-deevolve is only usable once
-	remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)
-
 	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [src]."), \
 	SPAN_XENODANGER("You regress into your previous form."))
 

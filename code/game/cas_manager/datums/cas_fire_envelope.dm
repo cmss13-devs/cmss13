@@ -146,16 +146,16 @@
 		if(FIRE_MISSION_STATE_COOLDOWN)
 			return "Returning to Sub-Orbital"
 
-/datum/cas_fire_envelope/proc/change_target_loc(obj/location)
-	if(location == null)
+/datum/cas_fire_envelope/proc/change_target_loc(datum/cas_signal/marker)
+	if(!marker)
 		recorded_loc = null
-		return 1
-	var/turf/TU = get_turf(location.loc)
+		return TRUE
+	var/turf/TU = get_turf(marker.signal_loc)
 	if(!istype(TU))
 		mission_error = "Can't find target."
-		return 0
-	recorded_loc = location
-	return 1
+		return FALSE
+	recorded_loc = marker
+	return TRUE
 
 /datum/cas_fire_envelope/proc/change_current_loc(location)
 	if(!location && guidance)
@@ -291,14 +291,14 @@
 
 	var/z_level_restriction = TRUE
 
-/datum/cas_fire_envelope/uscm_dropship/change_target_loc(obj/location)
-	if(!location)
-		return ..(location)
-	var/turf/TU = get_turf(location.loc)
-	if(TU.z != 1 && z_level_restriction)
+/datum/cas_fire_envelope/uscm_dropship/change_target_loc(datum/cas_signal/marker)
+	if(!marker)
+		return ..(marker)
+	var/turf/TU = get_turf(marker.signal_loc)
+	if(!is_ground_level(TU.z) && z_level_restriction)
 		mission_error = "USCM Dropships can only operate with planetside targets."
-		return 0
-	return ..(location)
+		return FALSE
+	return ..(marker)
 
 /datum/cas_fire_envelope/uscm_dropship/check_firemission_loc(datum/cas_signal/target_turf)
 	return istype(target_turf) && target_turf.valid_signal()

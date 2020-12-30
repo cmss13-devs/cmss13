@@ -232,7 +232,7 @@
 		. = 0
 
 /obj/forceMove(atom/dest)
-	. = ..(dest)
+	. = ..()
 
 	if(buckled_mob)
 		handle_buckled_mob_movement(loc,0)

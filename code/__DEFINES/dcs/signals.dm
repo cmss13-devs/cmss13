@@ -176,3 +176,6 @@
 	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+
+#define COMSIG_MOVABLE_PRE_LAUNCH "movable_pre_launch"
+	#define COMPONENT_LAUNCH_CANCEL (1<<0)

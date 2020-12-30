@@ -265,7 +265,7 @@
 	var/list/targets = list()
 	for (var/turf/target_turf in turflist)
 		for (var/mob/living/carbon/H in target_turf)
-			if(!isXenoOrHuman(H) || X.match_hivemind(H) || H.is_dead())
+			if(!isXenoOrHuman(H) || X.match_hivemind(H) || H.is_dead() || H.is_mob_incapacitated(TRUE))
 				continue
 
 			targets += H

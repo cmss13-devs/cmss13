@@ -1,3 +1,6 @@
+#define XENO_QUEEN_AGE_TIME	(15 MINUTES)
+#define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
+
 /datum/caste_datum/queen
 	caste_name = "Queen"
 	tier = 0
@@ -260,9 +263,6 @@
 		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/onclick/psychic_whisper,
 		/datum/action/xeno_action/activable/gut,
-		/datum/action/xeno_action/activable/screech, //custom macro, "Screech"
-		/datum/action/xeno_action/activable/xeno_spit, //first macro
-		/datum/action/xeno_action/onclick/shift_spits, //second macro
 		/datum/action/xeno_action/onclick/plant_weeds, //here so its overridden by xeno_spit, and fits near the resin structure macros.
 		/datum/action/xeno_action/onclick/choose_resin/queen_macro, //third macro
 		/datum/action/xeno_action/activable/secrete_resin/queen_macro, //fourth macro
@@ -299,8 +299,18 @@
 		/datum/action/xeno_action/onclick/banish,
 		/datum/action/xeno_action/onclick/readmit,
 			)
+
+	// Abilities they get when they've successfully aged.
+	var/mobile_aged_abilities = list(
+		/datum/action/xeno_action/activable/screech, //custom macro, Screech
+		/datum/action/xeno_action/activable/xeno_spit, //first macro
+		/datum/action/xeno_action/onclick/shift_spits, //second macro
+	)
 	mutation_type = QUEEN_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
+
+	var/queen_aged = FALSE
+	var/queen_age_timer_id = TIMER_ID_NULL
 
 /mob/living/carbon/Xenomorph/Queen/can_destroy_special()
 	return TRUE
@@ -328,6 +338,65 @@
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
+
+	if(hive?.dynamic_evolution)
+		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
+	else
+		make_combat_effective()
+
+/mob/living/carbon/Xenomorph/Queen/generate_name()
+	. = ..()
+
+	var/datum/hive_status/in_hive = hive
+	if(!in_hive)
+		in_hive = hive_datum[hivenumber]
+
+	var/name_prefix = in_hive.prefix
+	if(queen_aged)
+		switch(age)
+			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
+			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
+			if(XENO_ELDER) name = "[name_prefix]Elder Empress"	 //Elite
+			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
+			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
+	else
+		age = XENO_NORMAL
+		if(client)
+			hud_update()
+
+		name = "[name_prefix]Young Queen"
+
+/mob/living/carbon/Xenomorph/Queen/proc/make_combat_effective()
+	queen_aged = TRUE
+
+	give_combat_abilities()
+	recalculate_actions()
+	recalculate_health()
+	generate_name()
+
+/mob/living/carbon/Xenomorph/Queen/proc/give_combat_abilities()
+	if(ovipositor)
+		return
+
+	QDEL_LIST(actions)
+
+	var/list/abilities_to_give = mobile_abilities
+
+	if(!queen_aged)
+		abilities_to_give -= mobile_aged_abilities
+
+	for(var/path in abilities_to_give)
+		var/datum/action/xeno_action/A = new path()
+		A.give_action(src)
+
+
+/mob/living/carbon/Xenomorph/Queen/recalculate_health()
+	. = ..()
+	if(!queen_aged)
+		maxHealth *= YOUNG_QUEEN_HEALTH_MULTIPLIER
+
+	if(health > maxHealth)
+		health = maxHealth
 
 /mob/living/carbon/Xenomorph/Queen/Destroy()
 	if(observed_xeno)
@@ -368,7 +437,11 @@
 
 	stat("Pooled Larvae:", "[stored_larvae]")
 	stat("Leaders:", "[xeno_leader_num] / [hive?.queen_leader_limit]")
-	return 1
+	if(queen_age_timer_id != TIMER_ID_NULL)
+		var/time_left = time2text(timeleft(queen_age_timer_id) + 1 MINUTES, "mm") // We add a minute so that it basically ceilings the value.
+		stat("Maturity:", "[time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining")
+
+	return TRUE
 
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
 /mob/living/carbon/Xenomorph/Queen/Collide(atom/A)
@@ -733,12 +806,8 @@
 		overwatch(observed_xeno, TRUE)
 	zoom_out()
 
-	for(var/datum/action/A in actions)
-		qdel(A)
+	give_combat_abilities()
 
-	for(var/path in mobile_abilities)
-		var/datum/action/xeno_action/A = new path()
-		A.give_action(src)
 	recalculate_actions()
 
 	egg_amount = 0

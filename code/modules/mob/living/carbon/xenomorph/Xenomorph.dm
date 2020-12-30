@@ -453,15 +453,10 @@
 	color = in_hive.color
 
 	//Queens have weird, hardcoded naming conventions based on age levels. They also never get nicknumbers
-	if(isXenoQueen(src))
-		switch(age)
-			if(XENO_NORMAL) name = "[name_prefix]Queen"			 //Young
-			if(XENO_MATURE) name = "[name_prefix]Elder Queen"	 //Mature
-			if(XENO_ELDER) name = "[name_prefix]Elder Empress"	 //Elite
-			if(XENO_ANCIENT) name = "[name_prefix]Ancient Empress" //Ancient
-			if(XENO_PRIME) name = "[name_prefix]Prime Empress" //Primordial
-	else if(isXenoPredalien(src)) name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
-	else if(caste) name = "[name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	if(isXenoPredalien(src))
+		name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+	else if(caste)
+		name = "[name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)

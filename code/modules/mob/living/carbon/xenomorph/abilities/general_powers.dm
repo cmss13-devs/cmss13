@@ -1,4 +1,4 @@
-//// Powers used by multiple Xenomorphs. 
+//// Powers used by multiple Xenomorphs.
 // In general, powers files hold actual implementations of abilities,
 // and abilities files hold the object declarations for the abilities
 
@@ -7,9 +7,9 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!action_cooldown_check())
 		return
-	if(!X.check_state()) 
+	if(!X.check_state())
 		return
-	if(X.burrow) 
+	if(X.burrow)
 		return
 
 	var/turf/T = X.loc
@@ -58,7 +58,7 @@
 	playsound(X.loc, "alien_resin_build", 25)
 
 	apply_cooldown()
-		
+
 	..()
 	return
 
@@ -116,7 +116,7 @@
 		for(var/mob/living/M in X.stomach_contents)
 			// Also has good reason to be a proc on all Xenos
 			X.regurgitate(M, TRUE)
-	
+
 	..()
 	return
 
@@ -163,7 +163,7 @@
 		X.visible_message(SPAN_XENOWARNING("\The [X] stops emitting pheromones."), \
 		SPAN_XENOWARNING("You stop emitting pheromones."), null, 5)
 	else
-		
+
 		var/choice = input(X, "Choose a pheromone") in X.caste.aura_allowed + "help" + "cancel"
 		if(choice == "help")
 			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
@@ -185,7 +185,7 @@
 
 /datum/action/xeno_action/activable/pounce/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	
+
 	if(!action_cooldown_check())
 		return
 
@@ -252,18 +252,18 @@
 	LM.spin = FALSE
 	LM.pass_flags = pounce_pass_flags
 	LM.collision_callbacks = pounce_callbacks
-	
+
 	X.launch_towards(LM) //Victim, distance, speed
 
 	additional_effects_always()
 	..()
-	
+
 	return
 
 // Massive, customizable spray_acid
 /datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	
+
 	if(!action_cooldown_check())
 		return
 
@@ -298,13 +298,13 @@
 
 	apply_cooldown()
 
-	// Build our list of target turfs based on 
+	// Build our list of target turfs based on
 	if (spray_type == ACID_SPRAY_LINE)
 		X.do_acid_spray_line(getline2(X, A, include_from_atom = FALSE), spray_effect_type, spray_distance)
 
 	else if (spray_type == ACID_SPRAY_CONE)
 		X.do_acid_spray_cone(get_turf(A), spray_effect_type, spray_distance)
-	
+
 	..()
 	return
 
@@ -328,7 +328,7 @@
 	if (istype(X, /mob/living/carbon/Xenomorph/Burrower))
 		var/mob/living/carbon/Xenomorph/Burrower/B = X
 		if (B.burrow)
-			return 
+			return
 
 	if(!X.check_plasma(plasma_cost))
 		return
@@ -357,8 +357,12 @@
 	if(!X.check_alien_construction(T))
 		return
 
-	if(locate(/obj/effect/alien/resin/trap) in orange(1, T))
+	if(locate(/obj/effect/alien/resin/trap) in orange(1, T)) // obj/effect/alien/resin presence is checked on turf by check_alien_construction, so we just check orange.
 		to_chat(X, SPAN_XENOWARNING("This is too close to another resin hole!"))
+		return
+
+	if(locate(/obj/effect/alien/resin/fruit) in orange(1, T))
+		to_chat(X, SPAN_XENOWARNING("This is too close to a fruit!"))
 		return
 
 	X.use_plasma(plasma_cost)

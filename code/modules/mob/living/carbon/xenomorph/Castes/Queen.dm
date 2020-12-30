@@ -607,67 +607,6 @@
 		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
 		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.")
 
-/mob/living/carbon/Xenomorph/Queen/proc/queen_screech()
-	if(!check_state())
-		return
-
-	if(has_screeched)
-		to_chat(src, SPAN_WARNING("You are not ready to screech again."))
-		return
-
-	if(!check_plasma(250))
-		return
-
-	//screech is so powerful it kills huggers in our hands
-	if(istype(r_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = r_hand
-		if(FH.stat != DEAD)
-			FH.Die()
-
-	if(istype(l_hand, /obj/item/clothing/mask/facehugger))
-		var/obj/item/clothing/mask/facehugger/FH = l_hand
-		if(FH.stat != DEAD)
-			FH.Die()
-
-	has_screeched = 1
-	use_plasma(250)
-	addtimer(CALLBACK(src, .proc/screech_ready), 50 SECONDS)
-	playsound(loc, screech_sound_effect, 75, 0, status = 0)
-	visible_message(SPAN_XENOHIGHDANGER("[src] emits an ear-splitting guttural roar!"))
-	create_shriekwave() //Adds the visual effect. Wom wom wom
-
-	for(var/mob/M in view())
-		if(M && M.client)
-			if(isXeno(M))
-				shake_camera(M, 10, 1)
-			else
-				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
-
-	for(var/mob/living/carbon/M in oview(7, src))
-		if((match_hivemind(M) || isXenoQueen(M)))
-			continue
-
-		M.scream_stun_timeout = SECONDS_20
-		var/dist = get_dist(src, M)
-		if(dist <= 4)
-			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
-			M.AdjustStunned(4)
-			M.KnockDown(4)
-			if(!M.ear_deaf)
-				M.ear_deaf += 5 //Deafens them temporarily
-		else if(dist >= 5 && dist < 7)
-			M.AdjustStunned(3)
-			if(!M.ear_deaf)
-				M.ear_deaf += 2
-			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
-
-/mob/living/carbon/Xenomorph/Queen/proc/screech_ready()
-	has_screeched = 0
-	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
-	for(var/Z in actions)
-		var/datum/action/A = Z
-		A.update_button_icon()
-
 /mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/A)
 
 	if(!iscarbon(A))

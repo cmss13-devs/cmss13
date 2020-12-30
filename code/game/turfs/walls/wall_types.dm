@@ -701,7 +701,16 @@
 			W.hivenumber = hive
 			set_hive_data(W, W.hivenumber)
 
+/turf/closed/wall/resin/weak
+	name = "weak resin wall"
+	desc = "Weird slime solidified into a wall. It already looks on the verge of collapsing..."
+	damage_cap = HEALTH_WALL_XENO_WEAK
+	var/duration = 5 SECONDS
 
+
+/turf/closed/wall/resin/weak/Initialize(...)
+	. = ..()
+	addtimer(CALLBACK(src, .proc/ScrapeAway), duration)
 
 
 /turf/closed/wall/resin/can_be_dissolved()

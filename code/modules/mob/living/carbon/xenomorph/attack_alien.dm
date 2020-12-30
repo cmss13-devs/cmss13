@@ -173,6 +173,8 @@
 				MD.melee_attack_additional_effects_target(src)
 				MD.melee_attack_additional_effects_self()
 
+			SEND_SIGNAL(M, COMSIG_HUMAN_ALIEN_ATTACK, src)
+
 			updatehealth()
 
 		if(INTENT_DISARM)

@@ -283,7 +283,7 @@
 	if(hud_used.alien_plasma_display)
 		if(plasma_max == 0)
 			hud_used.alien_plasma_display.icon_state = "power_display_empty"
-		else	
+		else
 			var/plasma_stacks = (get_plasma_percentage() * 0.01) * HUD_PLASMA_STATES_XENO
 			hud_used.alien_plasma_display.icon_state = "power_display_[Ceiling(plasma_stacks)]"
 			if(plasma_stacks >= HUD_PLASMA_STATES_XENO)
@@ -341,11 +341,11 @@ updatehealth()
 			if(health < maxHealth && !hardcore && is_hive_living(hive) && last_hit_time + caste.heal_delay_time <= world.time)
 				if(lying || resting)
 					if(health < 0) //Unconscious
-						XENO_HEAL_WOUNDS(caste.heal_knocked_out,recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
+						XENO_HEAL_WOUNDS(caste.heal_knocked_out * regeneration_multiplier, recoveryActual) //Healing is much slower. Warding pheromones make up for the rest if you're curious
 					else
-						XENO_HEAL_WOUNDS(caste.heal_resting,recoveryActual)
+						XENO_HEAL_WOUNDS(caste.heal_resting * regeneration_multiplier, recoveryActual)
 				else
-					XENO_HEAL_WOUNDS(caste.heal_standing,recoveryActual)
+					XENO_HEAL_WOUNDS(caste.heal_standing * regeneration_multiplier, recoveryActual)
 				updatehealth()
 
 			if(armor_integrity < armor_integrity_max && armor_deflection > 0 && world.time > armor_integrity_last_damage_time + XENO_ARMOR_REGEN_DELAY)

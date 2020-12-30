@@ -190,7 +190,7 @@
 			if(istype(O, /obj/effect/landmark))
 				continue
 			qdel(O)
-		qdel(T)
+		T.ScrapeAway()
 
 	for(var/mob/living/carbon/bug in destination)
 		bug.gib(initial(origin.name))

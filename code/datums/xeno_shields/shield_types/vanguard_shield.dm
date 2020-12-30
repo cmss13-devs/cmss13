@@ -2,7 +2,6 @@
 // Vanguard shields rapidly decay after the first hit.
 /datum/xeno_shield/vanguard
 	var/hit_yet = FALSE
-	var/linked_xeno = null
 	var/explosive_armor_amount = XENO_EXPOSIVEARMOR_MOD_VERYLARGE
 	amount = 800
 
@@ -12,9 +11,9 @@
 
 	if (!hit_yet)
 		hit_yet = TRUE
-		decay()
+		begin_decay()
 		return 0
-	else 
+	else
 		return ..(damage)
 
 /datum/xeno_shield/vanguard/Destroy()
@@ -25,22 +24,25 @@
 
 	return ..()
 
-/datum/xeno_shield/vanguard/proc/decay()
-	amount *= 0.70
-	amount -= 50
+/datum/xeno_shield/vanguard/begin_decay()
+	rapid_decay()
 
-	notify_xeno()
+/datum/xeno_shield/vanguard/proc/rapid_decay()
+	set waitfor = 0
+	while(amount > 0)
+		amount *= 0.70
+		amount -= 50
 
-	if (amount > 0)
-		addtimer(CALLBACK(src, /datum/xeno_shield/vanguard/proc/decay), 2, TIMER_UNIQUE)
-	else
+		notify_xeno()
+		sleep(1)
+
+	if (amount <= 0)
 		if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))
 			var/mob/living/carbon/Xenomorph/X = linked_xeno
 
 			if (QDELETED(X) || !istype(X))
 				return
 
-			X.xeno_shields -= src
 			qdel(src)
 			X.overlay_shields()
 

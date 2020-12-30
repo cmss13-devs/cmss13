@@ -75,7 +75,6 @@
 
 /datum/config_entry/string/alien_weeds
 	config_entry_value = "icons/mob/hostiles/weeds.dmi"
-
 /datum/config_entry/string/alien_gib_48x48
 	config_entry_value = "icons/mob/xenos_old/xenomorph_48x48.dmi"
 

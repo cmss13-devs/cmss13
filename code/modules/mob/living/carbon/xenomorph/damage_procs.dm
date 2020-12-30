@@ -93,19 +93,23 @@
 	if(damage > 0 && stat == DEAD)
 		return
 
+	var/shielded = FALSE
 	if(xeno_shields.len != 0 && damage > 0)
+		shielded = TRUE
 		for(var/datum/xeno_shield/XS in xeno_shields)
 			damage = XS.on_hit(damage)
 
 			if(damage > 0)
 				XS.on_removal()
-				xeno_shields -= XS
 				QDEL_NULL(XS)
 
 			if(damage == 0)
 				return
 
 		overlay_shields()
+
+	if(shielded) // We were shielded, but damage went through.
+		playsound(src, "shield_shatter", 50, 1)
 
 	switch(damagetype)
 		if(BRUTE)

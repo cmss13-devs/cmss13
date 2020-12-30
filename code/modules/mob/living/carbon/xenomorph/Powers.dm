@@ -1,54 +1,3 @@
-//Note: All the neurotoxin projectile items are stored in XenoProcs.dm
-/mob/living/carbon/Xenomorph/proc/xeno_spit(atom/T)
-
-	if(!check_state())
-		return
-
-	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't spit from here!"))
-		return
-
-	if(has_spat > world.time)
-		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
-		return
-
-	if(!check_plasma(ammo.spit_cost))
-		return
-
-	var/turf/current_turf = get_turf(src)
-
-	if(!current_turf)
-		return
-
-	has_spat = world.time + caste.spit_delay + ammo.added_spit_delay
-	use_plasma(ammo.spit_cost)
-	cooldown_notification(caste.spit_delay + ammo.added_spit_delay, "spit")
-
-	visible_message(SPAN_XENOWARNING("[src] spits at [T]!"), \
-	SPAN_XENOWARNING("You spit at [T]!") )
-	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
-	playsound(src.loc, sound_to_play, 25, 1)
-
-	var/obj/item/projectile/A = new /obj/item/projectile(initial(caste_name), src, current_turf)
-	A.generate_bullet(ammo)
-	A.permutated += src
-	A.def_zone = get_limbzone_target()
-	A.fire_at(T, src, src, ammo.max_range, ammo.shell_speed)
-
-	return TRUE
-
-/mob/living/carbon/Xenomorph/proc/cooldown_notification(cooldown, message)
-	set waitfor = FALSE
-	sleep(cooldown)
-	switch(message)
-		if("spit")
-			to_chat(src, SPAN_NOTICE("You feel your neurotoxin glands swell with ichor. You can spit again."))
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
-
-
-
 /mob/living/carbon/Xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE)
 	var/datum/resin_construction/RC = resin_build_order[selected_resin]
 
@@ -72,6 +21,15 @@
 		var/thickened = FALSE
 		if(istype(A, /turf/closed/wall/resin))
 			var/turf/closed/wall/resin/WR = A
+
+			if(istype(A, /turf/closed/wall/resin/weak))
+				to_chat(src, SPAN_XENOWARNING("[WR] is too flimsy to be reinforced."))
+				return FALSE
+
+			for(var/datum/effects/xeno_structure_reinforcement/sf in WR.effects_list)
+				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing you from reinforcing [WR]. Wait until it elapse."))
+				return FALSE
+
 			if (WR.hivenumber != hivenumber)
 				to_chat(src, SPAN_XENOWARNING("[WR] doesn't belong to your hive!"))
 				return FALSE
@@ -91,6 +49,10 @@
 				to_chat(src, SPAN_XENOWARNING("[DR] doesn't belong to your hive!"))
 				return FALSE
 
+			for(var/datum/effects/xeno_structure_reinforcement/sf in DR.effects_list)
+				to_chat(src, SPAN_XENOWARNING("The extra resin is preventing you from reinforcing [DR]. Wait until it elapse."))
+				return FALSE
+
 			if(DR.hardness == 1.5) //non thickened
 				var/oldloc = DR.loc
 				qdel(DR)
@@ -108,7 +70,7 @@
 				playsound(loc, "alien_resin_build", 25)
 			A.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
-	
+
 	if (!RC.can_build_here(current_turf, src))
 		return FALSE
 

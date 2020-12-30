@@ -736,6 +736,10 @@
 	if(ammo.sound_hit) playsound(M, ammo.sound_hit, 50, 1)
 	if(M.stat != DEAD) animation_flash_color(M)
 
+/obj/item/projectile/proc/play_shielded_damage_effect(mob/M)
+	if(ammo.sound_shield_hit) playsound(M, ammo.sound_shield_hit, 50, 1)
+	if(M.stat != DEAD) animation_flash_color(M)
+
 //----------------------------------------------------------
 				//				    \\
 				//    OTHER PROCS	\\
@@ -905,7 +909,10 @@
 
 	if(damage)
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone)	//Deal the damage.
-		P.play_damage_effect(src)
+		if(xeno_shields.len)
+			P.play_shielded_damage_effect(src)
+		else
+			P.play_damage_effect(src)
 		if(!stat && prob(5 + round(damage_result / 4)))
 			var/pain_emote = prob(70) ? "hiss" : "roar"
 			emote(pain_emote)

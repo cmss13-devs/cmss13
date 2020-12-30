@@ -5,18 +5,47 @@
 	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1
+	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
+	xeno_cooldown = 60 SECONDS
 
 /datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	X.xeno_spit(A)
+	if(!X.check_state())
+		return
+
+	if(!isturf(X.loc))
+		to_chat(src, SPAN_WARNING("You can't spit from here!"))
+		return
+
+	if(!action_cooldown_check())
+		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
+		return
+
+	var/turf/current_turf = get_turf(X)
+
+	if(!current_turf)
+		return
+
+	plasma_cost = X.ammo.spit_cost
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
+
+	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
+	SPAN_XENOWARNING("You spit at [A]!") )
+	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
+	playsound(X.loc, sound_to_play, 25, 1)
+
+	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, current_turf)
+	P.generate_bullet(X.ammo)
+	P.permutated += X
+	P.def_zone = X.get_limbzone_target()
+	P.fire_at(A, X, X, X.ammo.max_range, X.ammo.shell_speed)
+
+	apply_cooldown()
 	..()
-
-/datum/action/xeno_action/activable/xeno_spit/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(X.has_spat < world.time)
-		return TRUE
-
-
 
 //Carrier Abilities
 
@@ -169,14 +198,67 @@
 	ability_name = "screech"
 	macro_path = /datum/action/xeno_action/verb/verb_screech
 	action_type = XENO_ACTION_ACTIVATE
-
-/datum/action/xeno_action/activable/screech/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	return !X.has_screeched
+	xeno_cooldown = 50 SECONDS
+	plasma_cost = 250
+	cooldown_message = "You feel your throat muscles vibrate. You are ready to screech again."
 
 /datum/action/xeno_action/activable/screech/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
-	X.queen_screech()
+
+	if (!istype(X))
+		return
+
+	if (!action_cooldown_check())
+		return
+
+	if (!X.check_state())
+		return
+
+	if (!check_and_use_plasma_owner())
+		return
+
+	//screech is so powerful it kills huggers in our hands
+	if(istype(X.r_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/FH = X.r_hand
+		if(FH.stat != DEAD)
+			FH.Die()
+
+	if(istype(X.l_hand, /obj/item/clothing/mask/facehugger))
+		var/obj/item/clothing/mask/facehugger/FH = X.l_hand
+		if(FH.stat != DEAD)
+			FH.Die()
+
+	playsound(X.loc, X.screech_sound_effect, 75, 0, status = 0)
+	X.visible_message(SPAN_XENOHIGHDANGER("[X] emits an ear-splitting guttural roar!"))
+	X.create_shriekwave() //Adds the visual effect. Wom wom wom
+
+	for(var/mob/M in view())
+		if(M && M.client)
+			if(isXeno(M))
+				shake_camera(M, 10, 1)
+			else
+				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
+
+	for(var/mob/living/carbon/M in oview(7, X))
+		if((X.match_hivemind(M) || isXenoQueen(M)))
+			continue
+
+		M.scream_stun_timeout = SECONDS_20
+		var/dist = get_dist(X, M)
+		if(dist <= 4)
+			to_chat(M, SPAN_DANGER("An ear-splitting guttural roar shakes the ground beneath your feet!"))
+			M.AdjustStunned(4)
+			M.KnockDown(4)
+			if(!M.ear_deaf)
+				M.ear_deaf += 5 //Deafens them temporarily
+		else if(dist >= 5 && dist < 7)
+			M.AdjustStunned(3)
+			if(!M.ear_deaf)
+				M.ear_deaf += 2
+			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
+
+	apply_cooldown()
+
 	..()
 
 /datum/action/xeno_action/activable/gut
@@ -251,7 +333,7 @@
 	if(!target.caste.can_be_queen_healed)
 		to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
 		return
-	
+
 	if(target.on_fire)
 		to_chat(X, SPAN_XENOWARNING("You cannot give plasma to xenos that are on fire!"))
 		return

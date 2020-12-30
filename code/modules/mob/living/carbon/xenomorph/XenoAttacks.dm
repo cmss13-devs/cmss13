@@ -105,7 +105,7 @@
 			if(INTENT_HARM)
 				if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
 					return
-				
+
 				if(stat == DEAD)
 					to_chat(M, SPAN_WARNING("[src] is dead, why would you want to touch it?"))
 					return FALSE
@@ -116,7 +116,7 @@
 					SPAN_WARNING("You nibble \the [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 					return 1
 				else
-					
+
 					// copypasted from attack_alien.dm
 					//From this point, we are certain a full attack will go out. Calculate damage and modifiers
 					var/damage = get_xeno_damage_slash(src, rand(M.melee_damage_lower, M.melee_damage_upper))
@@ -152,6 +152,8 @@
 						MD.melee_attack_additional_effects_target(src)
 						MD.melee_attack_additional_effects_self()
 
+					SEND_SIGNAL(M, COMSIG_XENO_ALIEN_ATTACK, src)
+
 			if(INTENT_DISARM)
 				M.animation_attack_on(src)
 				M.flick_attack_overlay(src, "disarm")
@@ -183,7 +185,7 @@
 		start_audio_emote_cooldown()
 		target.start_audio_emote_cooldown()
 		return
-	
+
 	//Initiate headbutt
 	if(recent_audio_emote)
 		to_chat(src, "You just did an audible emote. Wait a while.")
@@ -211,7 +213,7 @@
 		start_audio_emote_cooldown()
 		target.start_audio_emote_cooldown()
 		return
-	
+
 	//Initiate tail swipe
 	if(recent_audio_emote)
 		to_chat(src, "You just did an audible emote. Wait a while.")

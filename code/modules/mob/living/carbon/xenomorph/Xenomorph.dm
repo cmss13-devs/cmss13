@@ -76,6 +76,7 @@
 	var/plasma_stored = 10
 	var/plasma_max = 10
 	var/plasma_gain = 5
+	var/cooldown_reduction_percentage = 0 // By what % cooldown are reduced by. 1 => No cooldown. Should normally be clamped at 50%
 
 	var/small_explosives_stun = TRUE // Have to put this here, otherwise it can't be strain specific
 
@@ -163,6 +164,7 @@
 	var/explosivearmor_modifier = 0
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
+	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
 	var/acid_modifier = 0
@@ -235,6 +237,10 @@
 	var/obj/structure/tunnel/start_dig = null
 	var/tunnel_delay = 0
 	var/steelcrest = FALSE
+	var/list/available_placeable = list() // List of placeable the xenomorph has access to.
+	var/list/current_placeable = list() // If we have current_placeable that are limited, e.g. fruits
+	var/max_placeable = 0 // Limit to that amount
+	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
 
 
 	//////////////////////////////////////////////////////////////////
@@ -245,9 +251,6 @@
 	var/burrow_timer = 200
 	var/tunnel_timer = 20
 
-	///// BELOW HERE LIE COOLDOWN VARS
-	var/has_spat = 0
-	var/has_screeched = 0
 	//Burrower Vars
 	var/used_tremor = 0
 	// Defender vars

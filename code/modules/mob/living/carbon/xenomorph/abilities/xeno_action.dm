@@ -8,6 +8,7 @@
 
 	// Cooldown
 	var/xeno_cooldown = null   // Cooldown of the ability
+	var/cooldown_message = null
 
 	var/cooldown_timer_id = TIMER_ID_NULL // holds our timer ID
 
@@ -69,7 +70,7 @@
 /datum/action/xeno_action/proc/check_and_use_plasma_owner(var/plasma_to_use)
 	if (!check_plasma_owner(plasma_to_use))
 		return FALSE
-	
+
 	use_plasma_owner(plasma_to_use)
 	return TRUE
 
@@ -149,6 +150,7 @@
 /datum/action/xeno_action/proc/apply_cooldown()
 	if(!owner)
 		return
+	var/mob/living/carbon/Xenomorph/X = owner
 	// Uh oh! STINKY! already on cooldown
 	if (cooldown_timer_id != TIMER_ID_NULL)
 		log_debug("Xeno action [src] tried to go on cooldown while already on cooldown.")
@@ -160,6 +162,8 @@
 
 	if(xeno_cooldown)
 		cooldown_to_apply = xeno_cooldown
+
+	cooldown_to_apply = cooldown_to_apply * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
 
 	// Add a unique timer
 	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_to_apply, TIMER_UNIQUE | TIMER_STOPPABLE)
@@ -175,8 +179,11 @@
 // Useful for things like abilities with 2 xeno_cooldown
 // Otherwise identical to apply_cooldown, but likewise should not be overridden
 /datum/action/xeno_action/proc/apply_cooldown_override(cooldown_duration)
-
+	if(!owner)
+		return
+	var/mob/living/carbon/Xenomorph/X = owner
 	// Note: no check to see if we're already on CD. we just flat override whatever's there
+	cooldown_duration = cooldown_duration * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
 
 	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE | TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
@@ -258,7 +265,9 @@
 	for(var/X in owner.actions)
 		var/datum/action/act = X
 		act.update_button_icon()
-	if (!istype(src, /datum/action/xeno_action/onclick))
+	if(cooldown_message)
+		to_chat(owner, SPAN_XENODANGER("[cooldown_message]"))
+	else if (!istype(src, /datum/action/xeno_action/onclick))
 		to_chat(owner, SPAN_XENODANGER("You feel your strength return! You can use [name] again!"))
 	return
 

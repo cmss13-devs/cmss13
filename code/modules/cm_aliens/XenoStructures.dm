@@ -136,6 +136,16 @@
 	health = 7
 	slow_amt = 4
 
+// Gardener drone uses this.
+/obj/effect/alien/resin/sticky/thin/weak
+	name = "Weak sticky resin"
+	desc = "A thin and weak layer of disgusting sticky slime. It looks like it's already melting..."
+	var/duration = 20 SECONDS
+
+/obj/effect/alien/resin/sticky/thin/weak/Initialize(...)
+	. = ..()
+	QDEL_IN(src, duration)
+
 /obj/effect/alien/resin/sticky/fast
 	name = "fast resin"
 	desc = "A layer of disgusting sleek slime."

@@ -16,7 +16,6 @@
 
 	evolution_allowed = FALSE
 	deevolves_to = "Drone"
-	aura_strength = 1 //Carrier's pheromones are equivalent to Hivelord. Climbs 0.5 up to 2.5
 	eggs_max = 5
 	throwspeed = 1
 	can_hold_facehuggers = 1

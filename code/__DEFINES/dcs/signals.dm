@@ -84,6 +84,11 @@
 #define COMSIG_MOB_GETTING_UP "mob_getting_up"
 /// From /mob/proc/update_canmove()
 
+#define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
+/// from /mob/living/carbon/human/attack_alien()
+#define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+/// from /mob/living/carbon/Xenomorph/attack_alien()
+
 
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"

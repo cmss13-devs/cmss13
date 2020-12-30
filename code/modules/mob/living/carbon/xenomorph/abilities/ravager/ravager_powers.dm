@@ -29,14 +29,14 @@
 	activated_once = FALSE
 	X.visible_message(SPAN_XENOWARNING("[X] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("You feel a rush of power from the surrounding enemies!"))
 	X.create_empower()
-	
+
 	var/list/mobs_in_range = orange(empower_range, X)
 	// Spook patrol
 	X.emote("tail")
 
 	var/accumulative_health = 0
 	for(var/mob/living/carbon/H in mobs_in_range)
-		if(!isXenoOrHuman(H) || X.match_hivemind(H)) 
+		if(!isXenoOrHuman(H) || X.match_hivemind(H))
 			continue
 		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest))
 			continue
@@ -45,7 +45,7 @@
 
 	accumulative_health = min(max_shield, accumulative_health)
 	accumulative_health += baseline_shield
-	
+
 	X.add_xeno_shield(accumulative_health, XENO_SHIELD_SOURCE_RAVAGER)
 	X.overlay_shields()
 
@@ -63,7 +63,7 @@
 /datum/action/xeno_action/activable/empower/proc/timeout()
 	if(!activated_once)
 		return
-	
+
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!istype(X))
 		return
@@ -97,12 +97,12 @@
 			for (var/datum/xeno_shield/XS in X.xeno_shields)
 				if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 					shield_total += XS.amount
-					break 
+					break
 
 			if (shield_total > BD.min_shield_buffed_abilities)
 				X.visible_message(SPAN_XENODANGER("The [X] uses its shield to bash [H] as it charges at them!"), SPAN_XENODANGER("You use your shield to bash [H] as you charge at them!"))
 				H.KnockDown(BD.knockdown_amount)
-				
+
 				var/facing = get_dir(X, H)
 				var/turf/T = X.loc
 				var/turf/temp = X.loc
@@ -132,12 +132,12 @@
 	if (X.mutation_type == RAVAGER_NORMAL)
 		var/datum/behavior_delegate/ravager_base/BD = X.behavior_delegate
 		if (istype(BD))
-			
+
 			var/shield_total = 0
 			for (var/datum/xeno_shield/XS in X.xeno_shields)
 				if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 					shield_total += XS.amount
-					break 
+					break
 
 			if (shield_total >= BD.min_shield_buffed_abilities)
 				should_daze = TRUE
@@ -181,7 +181,7 @@
 	for (var/turf/target_turf in target_turfs)
 		for (var/mob/living/carbon/H in target_turf)
 			if (H.stat)
-				continue 
+				continue
 
 			if(X.match_hivemind(H))
 				continue
@@ -209,7 +209,7 @@
 
 	if (!X.check_state() || X.action_busy)
 		return
-	
+
 	if (!isXenoOrHuman(A) || X.match_hivemind(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
@@ -227,8 +227,8 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	
-	
+
+
 	apply_cooldown()
 
 	to_chat(H, SPAN_XENOHIGHDANGER("You feel [X] fire bone spurs that dig into your skin! You have [windup_duration/10] seconds to move away or it will pull itself to you!"))
@@ -304,7 +304,7 @@
 
 		if (BD.rage >= 1)
 			BD.decrement_rage()
-		else 
+		else
 			to_chat(X, SPAN_XENOWARNING("You don't have enough rage to heal!"))
 			heal_amount -= heal_per_rage
 			debilitate = FALSE
@@ -319,7 +319,7 @@
 
 	// Heal
 	X.gain_health(heal_amount)
-	
+
 	// Fling
 	var/facing = get_dir(X, H)
 	var/turf/T = X.loc
@@ -367,12 +367,12 @@
 			windup_reduction = windup_reduction_at_rage_levels[Clamp(BD.rage+1, 1, BD.max_rage)]
 
 		apply_cooldown()
-	
+
 	if (range > 1)
 		X.visible_message(SPAN_XENOHIGHDANGER("[X] begins digging in for a massive strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a massive strike!"))
 	else
 		X.visible_message(SPAN_XENODANGER("[X] begins digging in for a strike!"), SPAN_XENOHIGHDANGER("You begin digging in for a strike!"))
-	
+
 	X.frozen = 1
 	X.anchored = 1
 	X.update_canmove()
@@ -399,7 +399,7 @@
 			else
 				X.visible_message(SPAN_XENODANGER("[X] claws [H]!"), SPAN_XENODANGER("You claw [H]!"))
 				playsound(get_turf(H), "alien_claw_flesh", 30, 1)
-	
+
 			H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, "chest", 20)
 
 	X.frozen = 0
@@ -408,7 +408,7 @@
 
 	..()
 	return
-			
+
 
 ////////// HEDGEHOG POWERS
 
@@ -426,11 +426,11 @@
 		if (istype(BD))
 			if (!BD.check_shards(shard_cost))
 				to_chat(X, SPAN_DANGER("Not enough shards! You need [shard_cost - BD.shards] more!"))
-				return 
+				return
 			BD.use_shards(shard_cost)
 
 	X.visible_message(SPAN_XENODANGER("[X] ruffles its bone-shard quills, forming a defensive shell!"), SPAN_XENODANGER("You ruffle your bone-shard quills, forming a defensive shell!"))
-	
+
 	// Add our shield
 	var/datum/xeno_shield/hedgehog_shield/XS = X.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_HEDGE_RAV, /datum/xeno_shield/hedgehog_shield)
 	if (XS)
@@ -474,9 +474,8 @@
 	for (var/datum/xeno_shield/XS in X.xeno_shields)
 		if (XS.shield_source == XENO_SHIELD_SOURCE_HEDGE_RAV)
 			XS.on_removal()
-			X.xeno_shields -= XS
 			qdel(XS)
-			break 
+			break
 
 	to_chat(X, SPAN_XENODANGER("You feel your shard shield dissipate!"))
 	X.overlay_shields()
@@ -489,8 +488,8 @@
 
 	if (!action_cooldown_check())
 		return
-	
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state()) 
+
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())
 		return
 
 	if (X.mutation_type == RAVAGER_HEDGEHOG)
@@ -498,14 +497,14 @@
 		if (istype(BD))
 			if (!BD.check_shards(shard_cost))
 				to_chat(X, SPAN_DANGER("Not enough shards! You need [shard_cost - BD.shards] more!"))
-				return 
+				return
 			BD.use_shards(shard_cost)
 
 	X.visible_message(SPAN_XENOWARNING("The [X] fires their spikes at [A]!"), SPAN_XENOWARNING("You fire your spikes at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, X.loc)
-	
+
 	var/datum/ammo/ammoDatum = ammo_list[ammo_type]
 
 	P.generate_bullet(ammoDatum)
@@ -528,7 +527,7 @@
 				return BD.check_shards(shard_cost)
 
 		return TRUE
-	else 
+	else
 		return FALSE
 
 /datum/action/xeno_action/activable/spike_shed/use_ability(atom/A)
@@ -544,7 +543,7 @@
 		if (istype(BD))
 			if (!BD.check_shards(shard_cost))
 				to_chat(X, SPAN_DANGER("Not enough shards! You need [shard_cost - BD.shards] more!"))
-				return 
+				return
 			BD.use_shards(shard_cost)
 			BD.lock_shards()
 
@@ -568,5 +567,5 @@
 				return BD.check_shards(shard_cost)
 
 		return TRUE
-	else 
+	else
 		return FALSE

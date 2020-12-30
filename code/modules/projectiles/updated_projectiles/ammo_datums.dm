@@ -25,6 +25,7 @@
 	var/sound_armor //When it's blocked by human armor.
 	var/sound_miss //When it misses someone.
 	var/sound_bounce //When it bounces off something.
+	var/sound_shield_hit //When the bullet is absorbed by a xeno_shield
 
 	var/accurate_range_min 			= 0			// Snipers use this to simulate poor accuracy at close ranges
 	var/scatter  					= 0 		// How much the ammo scatters when burst fired, added to gun scatter, along with other mods
@@ -141,15 +142,22 @@
 			var/msg = "You are hit by backlash from \a </b>[P.name]</b>!"
 			M.visible_message(SPAN_DANGER("[M] is hit by backlash from \a [P.name]!"),isXeno(M) ? SPAN_XENODANGER("[msg]"):SPAN_HIGHDANGER("[msg]"))
 		var/damage = P.damage/damage_div
+
+		var/mob/living/carbon/Xenomorph/XNO = null
+
 		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/XNO = M
+			XNO = M
 			var/total_explosive_resistance = XNO.caste.xeno_explosion_resistance + XNO.armor_explosive_buff
 			damage = armor_damage_reduction(GLOB.xeno_explosive, damage, total_explosive_resistance , 60, 0, 0.5, XNO.armor_integrity)
 			var/armor_punch = armor_break_calculation(GLOB.xeno_explosive, damage, total_explosive_resistance, 60, 0, 0.5, XNO.armor_integrity)
 			XNO.apply_armorbreak(armor_punch)
 
 		M.apply_damage(damage,damage_type)
-		P.play_damage_effect(M)
+
+		if(XNO && XNO.xeno_shields.len)
+			P.play_shielded_damage_effect(M)
+		else
+			P.play_damage_effect(M)
 
 /datum/ammo/proc/fire_bonus_projectiles(obj/item/projectile/original_P)
 	set waitfor = 0
@@ -194,6 +202,7 @@
 	sound_armor  = "ballistic_armor"
 	sound_miss	 = "ballistic_miss"
 	sound_bounce = "ballistic_bounce"
+	sound_shield_hit = "ballistic_shield_hit"
 
 	accurate_range_min = 0
 	damage = BULLET_DAMAGE_TIER_2

@@ -1,12 +1,16 @@
 /datum/xeno_mutator/healer
 	name = "STRAIN: Drone - Healer"
-	description = "In exchange for your ability to build, you gain better pheromones and the ability to transfer life to other Xenomorphs. Be wary, this is a dangerous process, overexert yourself and you might die..."
+	description = "In exchange for your ability to build, you gain better pheromones, lesser resin fruits, and the ability to transfer life to other Xenomorphs. Be wary, this is a dangerous process, overexert yourself and you might die..."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Drone") //Only drone.
 	mutator_actions_to_remove = list("Secrete Resin","Choose Resin Structure")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/transfer_health)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/transfer_health,
+		/datum/action/xeno_action/onclick/plant_resin_fruit // Resin fruits belong to Gardener, but Healer has a minor variant
+		)
 	keystone = TRUE
+
 
 /datum/xeno_mutator/healer/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
@@ -17,9 +21,11 @@
 	D.mutation_type = DRONE_HEALER
 	D.phero_modifier += XENO_PHERO_MOD_LARGE
 	D.plasma_types += PLASMA_PHEROMONE
+	D.max_placeable = 3
 	mutator_update_actions(D)
 	MS.recalculate_actions(description, flavor_description)
 	D.recalculate_pheromones()
+	D.available_placeable = list("Lesser Resin Fruit")
 
 /*
 	TRANSFER HEALTH
@@ -46,7 +52,7 @@
 	set name = "Transfer Health"
 	set hidden = 1
 	var/action_name = "Transfer Health"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /mob/living/carbon/Xenomorph/proc/xeno_transfer_health(atom/A, amount = 40, transfer_delay = 50, max_range = 1)
 	if(!istype(A, /mob/living/carbon/Xenomorph))

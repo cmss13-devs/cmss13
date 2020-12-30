@@ -259,7 +259,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		log_attack("[src] took [damage] [type] damage from [attacker].")
 
 /obj/vehicle/multitile/Entered(var/atom/movable/A)
-	if(istype(A, /obj) && !istype(A, /obj/item/ammo_magazine/hardpoint))
+	if(istype(A, /obj) && !istype(A, /obj/item/ammo_magazine/hardpoint) && !istype(A, /obj/item/hardpoint))
 		A.forceMove(src.loc)
 		return
 	return ..()

@@ -79,7 +79,7 @@
 		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
 		if(ismob(A)) continue // Mobs shouldn't block boiler gas
 
-		if(A && A.unacidable && A.density) return FALSE
+		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER)) return FALSE
 
 	return TRUE
 
@@ -105,5 +105,3 @@
 // No special behavior for boilers
 /datum/behavior_delegate/boiler_base
 	name = "Base Boiler Behavior Delegate"
-
-

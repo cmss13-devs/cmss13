@@ -36,7 +36,7 @@
 
 	var/accumulative_health = 0
 	for(var/mob/living/carbon/H in mobs_in_range)
-		if(!isXenoOrHuman(H) || X.match_hivemind(H))
+		if(!isXenoOrHuman(H) || X.can_not_harm(H))
 			continue
 		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest))
 			continue
@@ -183,7 +183,7 @@
 			if (H.stat)
 				continue
 
-			if(X.match_hivemind(H))
+			if(X.can_not_harm(H))
 				continue
 			X.flick_attack_overlay(H, "slash")
 			H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
@@ -210,7 +210,7 @@
 	if (!X.check_state() || X.action_busy)
 		return
 
-	if (!isXenoOrHuman(A) || X.match_hivemind(A))
+	if (!isXenoOrHuman(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
@@ -275,7 +275,7 @@
 	if (!X.check_state())
 		return
 
-	if (!isXenoOrHuman(A) || X.match_hivemind(A))
+	if (!isXenoOrHuman(A) || X.can_not_harm(A))
 		to_chat(X, SPAN_XENOWARNING("You must target a hostile!"))
 		return
 
@@ -382,7 +382,7 @@
 		X.spin_circle()
 
 		for (var/mob/living/carbon/H in orange(X, range))
-			if(!isXenoOrHuman(H) || X.match_hivemind(H))
+			if(!isXenoOrHuman(H) || X.can_not_harm(H))
 				continue
 
 			if (H.stat == DEAD)

@@ -111,48 +111,48 @@
 					return FALSE
 
 				M.animation_attack_on(src)
-				if(hivenumber == M.hivenumber && !banished)
+				if(M.can_not_harm(src))
 					M.visible_message(SPAN_WARNING("\The [M] nibbles \the [src]."), \
 					SPAN_WARNING("You nibble \the [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
-					return 1
-				else
+					return TRUE
 
-					// copypasted from attack_alien.dm
-					//From this point, we are certain a full attack will go out. Calculate damage and modifiers
-					var/damage = get_xeno_damage_slash(src, rand(M.melee_damage_lower, M.melee_damage_upper))
 
-					if(M.behavior_delegate)
-						damage = M.behavior_delegate.melee_attack_modify_damage(damage, src)
+				// copypasted from attack_alien.dm
+				//From this point, we are certain a full attack will go out. Calculate damage and modifiers
+				var/damage = get_xeno_damage_slash(src, rand(M.melee_damage_lower, M.melee_damage_upper))
 
-					//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
-					if(M.frenzy_aura > 0)
-						damage += (M.frenzy_aura * 2)
+				if(M.behavior_delegate)
+					damage = M.behavior_delegate.melee_attack_modify_damage(damage, src)
 
-					//Somehow we will deal no damage on this attack
-					if(!damage)
-						playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-						M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
-						SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-						return 0
+				//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+				if(M.frenzy_aura > 0)
+					damage += (M.frenzy_aura * 2)
 
-					M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
-					SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-					last_damage_source = initial(M.name)
-					last_damage_mob = M
-					src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
-					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
-					log_attack("[key_name(M)] slashed [key_name(src)]")
+				//Somehow we will deal no damage on this attack
+				if(!damage)
+					playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+					M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
+					SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+					return 0
 
-					M.flick_attack_overlay(src, "slash")
-					playsound(loc, "alien_claw_flesh", 25, 1)
-					apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+				M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
+				SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				last_damage_source = initial(M.name)
+				last_damage_mob = M
+				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
+				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
+				log_attack("[key_name(M)] slashed [key_name(src)]")
 
-					if(M.behavior_delegate)
-						var/datum/behavior_delegate/MD = M.behavior_delegate
-						MD.melee_attack_additional_effects_target(src)
-						MD.melee_attack_additional_effects_self()
+				M.flick_attack_overlay(src, "slash")
+				playsound(loc, "alien_claw_flesh", 25, 1)
+				apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 
-					SEND_SIGNAL(M, COMSIG_XENO_ALIEN_ATTACK, src)
+				if(M.behavior_delegate)
+					var/datum/behavior_delegate/MD = M.behavior_delegate
+					MD.melee_attack_additional_effects_target(src)
+					MD.melee_attack_additional_effects_self()
+
+				SEND_SIGNAL(M, COMSIG_XENO_ALIEN_ATTACK, src)
 
 			if(INTENT_DISARM)
 				M.animation_attack_on(src)

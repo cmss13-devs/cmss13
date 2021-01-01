@@ -141,7 +141,7 @@
 	return TRUE
 
 /proc/spawn_hivenumber_larva(var/atom/A, var/hivenumber)
-	if(!hive_datum[hivenumber] || isnull(A))
+	if(!GLOB.hive_datum[hivenumber] || isnull(A))
 		return
 
 	var/mob/living/carbon/Xenomorph/Larva/L = new /mob/living/carbon/Xenomorph/Larva(A)

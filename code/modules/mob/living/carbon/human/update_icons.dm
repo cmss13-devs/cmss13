@@ -76,6 +76,7 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/apply_overlay(cache_index)
 	var/image/I = overlays_standing[cache_index]
 	if(I)
+		I.appearance_flags |= RESET_COLOR
 		overlays += I
 
 /mob/living/carbon/human/remove_overlay(cache_index)
@@ -654,12 +655,12 @@ There are several things that need to be remembered:
 	switch(fire_stacks)
 		if(1 to 14)
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_weak", "layer"= -FIRE_LAYER)
-			I.color = fire_reagent.burncolor
 		if(15 to INFINITY)
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_medium", "layer"= -FIRE_LAYER)
-			I.color = fire_reagent.burncolor
 		else
 			return
+	I.appearance_flags |= RESET_COLOR
+	I.color = fire_reagent.burncolor
 	overlays_standing[FIRE_LAYER] = I
 	apply_overlay(FIRE_LAYER)
 

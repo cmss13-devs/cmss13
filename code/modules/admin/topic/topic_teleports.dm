@@ -113,14 +113,14 @@
 			else if(faction == "Xenomorphs")
 				faction = null
 				var/list/hives = list()
-				for(var/datum/hive_status/hive in hive_datum)
+				for(var/datum/hive_status/hive in GLOB.hive_datum)
 					hives += list("[hive.name]" = hive.hivenumber)
 
 				faction = input(owner, "Select hive you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Hive Choice", "") as null|anything in hives
 				if(!faction)
 					to_chat(owner, SPAN_ALERT("Hive choice error. Aborting."))
 					return
-				var/datum/hive_status/Hive = hive_datum[hives[faction]]
+				var/datum/hive_status/Hive = GLOB.hive_datum[hives[faction]]
 				var/list/targets = Hive.totalXenos
 				for(var/mob/living/carbon/Xenomorph/X in targets)
 					var/area/AR = get_area(X)

@@ -121,7 +121,7 @@
 /obj/effect/alien/resin/sticky/Crossed(atom/movable/AM)
 	. = ..()
 	var/mob/living/carbon/human/H = AM
-	if(istype(H) && !H.lying && !H.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+	if(istype(H) && !H.lying && !H.ally_of_hivenumber(hivenumber))
 		H.next_move_slowdown = H.next_move_slowdown + slow_amt
 		return .
 	var/mob/living/carbon/Xenomorph/X = AM
@@ -210,7 +210,7 @@
 		return
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		if (C.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+		if (C.ally_of_hivenumber(hivenumber))
 			return ..()
 
 /obj/structure/mineral_door/resin/Open()

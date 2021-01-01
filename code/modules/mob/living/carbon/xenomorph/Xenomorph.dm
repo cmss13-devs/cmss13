@@ -282,7 +282,7 @@
 		hivenumber = h_number
 
 	// Well, not yet, technically
-	var/datum/hive_status/in_hive = hive_datum[hivenumber]
+	var/datum/hive_status/in_hive = GLOB.hive_datum[hivenumber]
 	if(in_hive)
 		in_hive.add_xeno(src)
 		// But now we are!
@@ -368,6 +368,15 @@
 
 	job = caste.caste_name // Used for tracking the caste playtime
 
+	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
+
+/mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
+	SIGNAL_HANDLER
+	if(can_not_harm(queen))
+		return COMPONENT_SCREECH_ACT_CANCEL
+
+
+
 /mob/living/carbon/Xenomorph/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -439,7 +448,7 @@
 	// Even if we don't have the hive datum we usually still have the hive number
 	var/datum/hive_status/in_hive = hive
 	if(!in_hive)
-		in_hive = hive_datum[hivenumber]
+		in_hive = GLOB.hive_datum[hivenumber]
 
 	//Larvas have their own, very weird naming conventions, let's not kick a beehive, not yet
 	if(isXenoLarva(src))
@@ -624,14 +633,12 @@
 
 //Call this function to set the hive and do other cleanup
 /mob/living/carbon/Xenomorph/proc/set_hive_and_update(var/new_hivenumber = XENO_HIVE_NORMAL)
-	var/datum/hive_status/new_hive = hive_datum[new_hivenumber]
+	var/datum/hive_status/new_hive = GLOB.hive_datum[new_hivenumber]
 	if(!new_hive)
 		return
 
 
 	new_hive.add_xeno(src)
-
-	set_faction(hive.name)
 
 	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
 		var/mob/living/carbon/Xenomorph/Larva/L = src

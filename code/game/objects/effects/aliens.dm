@@ -108,7 +108,7 @@
 			M.ExtinguishMob()
 			if (iscarbon(M))
 				var/mob/living/carbon/C = M
-				if (C.allied_to_hivenumber(hivenumber))
+				if (C.ally_of_hivenumber(hivenumber))
 					continue
 
 				apply_spray(M)
@@ -137,7 +137,7 @@
 	..()
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if(H.allied_to_hivenumber(hivenumber))
+		if(H.ally_of_hivenumber(hivenumber))
 			return
 		apply_spray(AM)
 	else if (isXeno(AM))
@@ -410,11 +410,11 @@
 				continue
 
 			var/mob/living/carbon/Xenomorph/X = H
-			if (X.hivenumber == source_xeno.hivenumber)
+			if (source_xeno.can_not_harm(X))
 				continue
 
 		if (!H.stat)
-			if(H.match_hivemind(source_xeno))
+			if(source_xeno.can_not_harm(H))
 				continue
 			H.apply_armoured_damage(damage, ARMOR_BIO, BURN)
 			animation_flash_color(H)
@@ -481,7 +481,7 @@
 		if (H.stat == DEAD)
 			continue
 
-		if(H.allied_to_hivenumber(hivenumber))
+		if(H.ally_of_hivenumber(hivenumber))
 			continue
 
 		animation_flash_color(H)
@@ -521,7 +521,7 @@
 		if (H.stat == DEAD)
 			continue
 
-		if(H.allied_to_hivenumber(hivenumber))
+		if(H.ally_of_hivenumber(hivenumber))
 			continue
 
 		total_hits++

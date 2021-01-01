@@ -113,7 +113,10 @@
 /mob/proc/prepare_huds()
 	hud_list = new
 	for(var/hud in hud_possible)
-		hud_list[hud] = image('icons/mob/hud/hud.dmi', src, "")
+		var/image/I = image('icons/mob/hud/hud.dmi', src, "")
+		I.appearance_flags |= RESET_COLOR
+		hud_list[hud] = I
+
 
 /mob/proc/show_message(msg, type, alt, alt_type, message_flags = CHAT_TYPE_OTHER)//Message, type of message (1 or 2), alternative message, alt message type (1 or 2)
 

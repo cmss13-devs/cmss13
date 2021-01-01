@@ -28,16 +28,16 @@
 	var/turf/L = get_turf(src)
 	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
 
-	if(h_number && hive_datum[h_number])
+	if(h_number && GLOB.hive_datum[h_number])
 		hivenumber = h_number
-		hive = hive_datum[h_number]
+		hive = GLOB.hive_datum[h_number]
 
 		set_hive_data(src, h_number)
 
 		hive.tunnels += src
 
 	if(!hive)
-		hive = hive_datum[hivenumber]
+		hive = GLOB.hive_datum[hivenumber]
 
 		hive.tunnels += src
 
@@ -53,7 +53,7 @@
 
 /obj/structure/tunnel/proc/isfriendly(var/mob/target)
 	var/mob/living/carbon/C = target
-	if(istype(C) && C.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+	if(istype(C) && C.ally_of_hivenumber(hivenumber))
 		return TRUE
 
 	return FALSE

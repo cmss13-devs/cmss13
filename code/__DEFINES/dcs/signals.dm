@@ -184,3 +184,7 @@
 
 #define COMSIG_MOVABLE_PRE_LAUNCH "movable_pre_launch"
 	#define COMPONENT_LAUNCH_CANCEL (1<<0)
+
+// Return non-zero value to override original behaviour
+#define COMSIG_MOB_SCREECH_ACT	"mob_screech_act"
+	#define COMPONENT_SCREECH_ACT_CANCEL (1<<0)

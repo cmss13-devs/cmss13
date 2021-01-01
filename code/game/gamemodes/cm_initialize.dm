@@ -287,7 +287,7 @@ Additional game mode variables.
 			var/new_queen = pick(possible_queens)
 			if(new_queen)
 				setup_new_xeno(new_queen)
-				picked_queens += list(hive_datum[hive] = new_queen)
+				picked_queens += list(GLOB.hive_datum[hive] = new_queen)
 				LAZYREMOVE(possible_xenomorphs, new_queen)
 
 	for(var/datum/mind/A in possible_xenomorphs)
@@ -295,7 +295,7 @@ Additional game mode variables.
 			LAZYREMOVE(possible_xenomorphs, A)
 
 	for(var/hive in hives)
-		xenomorphs[hive_datum[hive]] = list()
+		xenomorphs[GLOB.hive_datum[hive]] = list()
 
 	var/datum/mind/new_xeno
 	var/current_index = 1
@@ -304,7 +304,7 @@ Additional game mode variables.
 		if(current_index > LAZYLEN(hives))
 			current_index = 1
 
-		var/datum/hive_status/hive = hive_datum[LAZYACCESS(hives, current_index)]
+		var/datum/hive_status/hive = GLOB.hive_datum[hives[current_index]]
 		if(LAZYLEN(possible_xenomorphs)) //We still have candidates
 			new_xeno = pick(possible_xenomorphs)
 			LAZYREMOVE(possible_xenomorphs, new_xeno)
@@ -327,7 +327,7 @@ Additional game mode variables.
 	if(remaining_slots)
 		var/larva_per_hive = round(remaining_slots / LAZYLEN(hives))
 		for(var/hivenumb in hives)
-			var/datum/hive_status/hive = hive_datum[hivenumb]
+			var/datum/hive_status/hive = GLOB.hive_datum[hivenumb]
 			hive.stored_larva = larva_per_hive
 
 	/*
@@ -376,7 +376,7 @@ Additional game mode variables.
 
 	var/pooled_larva = "pooled larva"
 
-	for(var/datum/hive_status/hive in hive_datum)
+	for(var/datum/hive_status/hive in GLOB.hive_datum)
 		var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
 		if(!isnull(SP) && SP.can_spawn_larva())
 			hives += hive
@@ -498,7 +498,7 @@ Additional game mode variables.
 
 /datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
 	var/mob/living/original = ghost_mind.current
-	var/datum/hive_status/hive = hive_datum[hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
 		return
 
@@ -544,7 +544,7 @@ Additional game mode variables.
 
 /datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL)
 	var/mob/living/original = ghost_mind.current
-	var/datum/hive_status/hive = hive_datum[hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
 		return
 

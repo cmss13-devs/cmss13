@@ -457,7 +457,7 @@
 			if(embryo.hivenumber == hivenumber)
 				return
 
-	if(M.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+	if(M.ally_of_hivenumber(hivenumber))
 		return
 
 	//Already have a hugger? NOPE

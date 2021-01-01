@@ -251,7 +251,7 @@
 		return
 
 	var/list/hives = list()
-	for(var/datum/hive_status/hive in hive_datum)
+	for(var/datum/hive_status/hive in GLOB.hive_datum)
 		hives += list("[hive.name]" = hive.hivenumber)
 
 	var/newhive = input(src,"Select a hive.", null, null) in hives
@@ -266,15 +266,15 @@
 	else
 		var/was_leader = FALSE
 		if(H.hivenumber)
-			var/datum/hive_status/hive = hive_datum[H.hivenumber]
+			var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
 			if(H == hive.leading_cult_sl)
 				was_leader = TRUE
 			hive.leading_cult_sl = null
 
 		H.hivenumber = hives[newhive]
 
-		var/datum/hive_status/hive = hive_datum[H.hivenumber]
-		H.faction = hive.name
+		var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
+		H.faction = hive.internal_faction
 
 		if(was_leader && (!hive.leading_cult_sl || hive.leading_cult_sl.stat == DEAD))
 			hive.leading_cult_sl = H

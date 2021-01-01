@@ -209,7 +209,7 @@
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(!round_finished)
-		for(var/datum/hive_status/hive in hive_datum)
+		for(var/datum/hive_status/hive in GLOB.hive_datum)
 			if(!hive.living_xeno_queen && hive.xeno_queen_timer && world.time>hive.xeno_queen_timer) xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
 
 		if(!active_lz && world.time > lz_selection_timer)
@@ -284,7 +284,7 @@
 
 /datum/game_mode/colonialmarines/check_queen_status(var/queen_time, var/hivenumber)
 	set waitfor = 0
-	var/datum/hive_status/hive = hive_datum[hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	hive.xeno_queen_timer = world.time + queen_time SECONDS
 	if(!(flags_round_type & MODE_INFESTATION)) return
 	xeno_queen_deaths += 1
@@ -293,7 +293,7 @@
 	//We want to make sure that another queen didn't die in the interim.
 
 	if(xeno_queen_deaths == num_last_deaths && !round_finished)
-		for(var/datum/hive_status/hs in hive_datum)
+		for(var/datum/hive_status/hs in GLOB.hive_datum)
 			if(hs.living_xeno_queen && !is_admin_level(hs.living_xeno_queen.loc.z))
 				//Some Queen is alive, we shouldn't end the game yet
 				return

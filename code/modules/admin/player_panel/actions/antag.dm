@@ -37,7 +37,7 @@
 	if(!isXeno(target))
 		return
 
-	if(params["hivenumber"] > length(hive_datum))
+	if(params["hivenumber"] > length(GLOB.hive_datum))
 		return
 
 	var/mob/living/carbon/Xenomorph/X = target
@@ -58,7 +58,7 @@
 	if(!ishuman(target))
 		return
 
-	if(params["hivenumber"] > length(hive_datum))
+	if(params["hivenumber"] > length(GLOB.hive_datum))
 		return
 
 	var/mob/living/carbon/human/H = target

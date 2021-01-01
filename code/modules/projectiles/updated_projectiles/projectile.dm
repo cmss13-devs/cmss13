@@ -338,7 +338,7 @@
 
 					if (!istype(F))
 						continue
-					if (X.hivenumber == F.hivenumber)
+					if (F.can_not_harm(X))
 						continue
 				remote_detonation = 1
 				kill_proj = ammo.on_near_target(T, src)
@@ -780,7 +780,8 @@
 		return
 
 	if(isXeno(P.firer))
-		if(match_hivemind(P.firer))
+		var/mob/living/carbon/Xenomorph/X = P.firer
+		if(X.can_not_harm(src))
 			bullet_ping(P)
 			return -1
 
@@ -881,7 +882,8 @@
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 
 	if(isXeno(P.firer))
-		if(match_hivemind(P.firer))
+		var/mob/living/carbon/Xenomorph/X = P.firer
+		if(X.can_not_harm(src))
 			bullet_ping(P)
 			return -1
 		else

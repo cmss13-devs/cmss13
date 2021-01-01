@@ -8,7 +8,7 @@
 		return
 	var/turf/picked
 	var/list/xeno_spawn_loc = list()
-	var/datum/hive_status/hive = hive_datum[XENO_HIVE_NORMAL]
+	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(hive.slashing_allowed != XENO_SLASH_ALLOWED)
 		hive.slashing_allowed = XENO_SLASH_ALLOWED //Allows harm intent for aliens
 	var/xenos_to_spawn

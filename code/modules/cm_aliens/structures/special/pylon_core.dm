@@ -15,7 +15,7 @@
 
 	var/damaged = FALSE
 	var/plasma_stored = 0
-	var/plasma_required_to_repair = 1000 
+	var/plasma_required_to_repair = 1000
 
 	var/protection_level = TURF_PROTECTION_CAS
 
@@ -53,7 +53,7 @@
 	to_chat(M, SPAN_XENONOTICE("You begin adding the plasma to \the [name] to repair it."))
 	if(!do_after(M, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !damaged)
 		return
-	
+
 	var/amount_to_use = min(M.plasma_stored, (plasma_required_to_repair - plasma_stored))
 	plasma_stored += amount_to_use
 	M.plasma_stored -= amount_to_use
@@ -63,7 +63,7 @@
 		return
 
 	damaged = FALSE
-	plasma_stored = 0 
+	plasma_stored = 0
 	health = initial(health)
 
 	var/obj/effect/alien/weeds/node/pylon/N = locate() in loc
@@ -128,7 +128,7 @@
 /obj/effect/alien/resin/special/pylon/core/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(linked_hive)
 		var/current_health = health
-		if(hardcore && M.hivenumber == linked_hive.hivenumber)
+		if(hardcore && HIVE_ALLIED_TO_HIVE(M.hivenumber, linked_hive.hivenumber))
 			return
 
 		. = ..()
@@ -136,7 +136,7 @@
 		if(hardcore && last_attacked_message < world.time && current_health > health)
 			xeno_message(SPAN_XENOANNOUNCE("The hive core is under attack!"), 2, linked_hive.hivenumber)
 			last_attacked_message = world.time + next_attacked_message
-		
+
 	else
 		. = ..()
 

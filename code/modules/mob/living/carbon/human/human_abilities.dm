@@ -191,7 +191,7 @@ CULT
 	if(!input)
 		return
 
-	var/datum/hive_status/hive = hive_datum[H.hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
 
 	if(!istype(hive))
 		return
@@ -263,7 +263,7 @@ CULT
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/H = owner
-	var/datum/hive_status/hive = LAZYACCESS(hive_datum, H.hivenumber)
+	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
 	if(!hive)
 		return
 
@@ -305,8 +305,6 @@ CULT
 
 	XC.load_race(chosen, H.hivenumber)
 	XC.load_status(chosen)
-
-	chosen.faction = hive.name
 
 	to_chat(chosen, SPAN_HIGHDANGER("<hr>You are now a Xeno Cultist!"))
 	to_chat(chosen, SPAN_DANGER("Worship the Xenomorphs and listen to the Cult Leader for orders. The Cult Leader is typically the person who transformed you. Do not kill anyone unless you are wearing your black robes, you may defend yourself.<hr>"))

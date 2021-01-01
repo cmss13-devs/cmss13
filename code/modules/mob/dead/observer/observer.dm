@@ -389,7 +389,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		if("Xenos by Hive")
 			var/hives = list()
 
-			for(var/datum/hive_status/hive in hive_datum)
+			for(var/datum/hive_status/hive in GLOB.hive_datum)
 				hives += list("[hive.name]" = hive.hivenumber)
 
 			input = input("Please, select a Hive:", "Follow", null, null) as null|anything in hives
@@ -543,7 +543,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/list/hives = list()
 	var/datum/hive_status/last_hive_checked
 
-	for(var/datum/hive_status/hive in hive_datum)
+	for(var/datum/hive_status/hive in GLOB.hive_datum)
 		if(hive.totalXenos.len > 0)
 			hives += list("[hive.name]" = hive.hivenumber)
 			last_hive_checked = hive
@@ -559,7 +559,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			to_chat(src, SPAN_ALERT("Hive choice error. Aborting."))
 			return
 
-		hive_datum[hives[faction]].hive_ui.open_hive_status(src)
+		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
 
 /mob/dead/verb/join_as_alien()
 	set category = "Ghost"

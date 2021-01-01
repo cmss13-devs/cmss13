@@ -281,7 +281,7 @@
 /obj/effect/particle_effect/smoke/xeno_burn/affect(var/mob/living/carbon/M)
 	..()
 
-	if(M.allied_to_hivenumber(hivenumber))
+	if(M.ally_of_hivenumber(hivenumber))
 		return
 
 	if(isYautja(M) && prob(75))

@@ -17,6 +17,24 @@
 
 	hive.hive_ui.open_hive_status(src)
 
+/mob/living/carbon/Xenomorph/verb/hive_alliance_status()
+	set name = "Hive Alliance Status"
+	set desc = "Check the status of your alliances."
+	set category = "Alien"
+
+	if(!hive)
+		return
+
+	if((!hive.living_xeno_queen || Check_WO()) && !hive.allow_no_queen_actions) //No Hive status on WO
+		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
+		return
+
+	if(interference)
+		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
+		return
+
+	hive.faction_ui.tgui_interact(src)
+
 /mob/living/carbon/Xenomorph/verb/toggle_xeno_mobhud()
 	set name = "Toggle Xeno Status HUD"
 	set desc = "Toggles the health and plasma HUD appearing above Xenomorphs."
@@ -25,7 +43,7 @@
 	var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
 	if (xeno_mobhud)
 		H.remove_hud_from(usr)
-	else 
+	else
 		H.add_hud_to(usr)
 
 	xeno_mobhud = !xeno_mobhud
@@ -38,7 +56,7 @@
 	var/datum/mob_hud/H = huds[MOB_HUD_XENO_HOSTILE]
 	if (xeno_hostile_hud)
 		H.remove_hud_from(usr)
-	else 
+	else
 		H.add_hud_to(usr)
 
 	xeno_hostile_hud = !xeno_hostile_hud

@@ -69,7 +69,7 @@
 
 /obj/effect/alien/resin/trap/bullet_act(obj/item/projectile/P)
 	var/mob/living/carbon/Xenomorph/X = P.firer
-	if(istype(X) && X.hivenumber == hivenumber)
+	if(istype(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		return
 
 	. = ..()
@@ -90,7 +90,7 @@
 					return
 				if(H.stat == DEAD || H.lying)
 					return
-				if(H.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+				if(H.ally_of_hivenumber(hivenumber))
 					return
 				trigger_trap()
 			if(isXeno(AM))
@@ -168,7 +168,7 @@
 			for(var/turf/T in range(1,loc))
 				var/obj/effect/xenomorph/spray/SP = new spray_type(T, source_name, source_mob)
 				for(var/mob/living/carbon/H in T)
-					if(H.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))
+					if(H.ally_of_hivenumber(hivenumber))
 						continue
 					SP.apply_spray(H)
 			set_state()
@@ -313,7 +313,7 @@
 
 		if (!do_after(user, SECONDS_3, INTERRUPT_ALL|INTERRUPT_DAZED, BUSY_ICON_HOSTILE))
 			return
-		
+
 		set_state(RESIN_TRAP_HUGGER)
 		to_chat(user, SPAN_XENONOTICE("You place a facehugger in [src]."))
 		qdel(FH)

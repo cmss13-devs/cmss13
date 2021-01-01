@@ -72,7 +72,7 @@
 	process_growth()
 
 /obj/item/alien_embryo/proc/process_growth()
-	var/datum/hive_status/hive = hive_datum[hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	//Low temperature seriously hampers larva growth (as in, way below livable), so does stasis
 	if(!hive.hardcore) // Cannot progress if the hive has entered hardcore mode.
 		if(affected_mob.in_stasis || affected_mob.bodytemperature < 170)
@@ -163,11 +163,10 @@
 		new_xeno = new(affected_mob)
 
 
-	var/datum/hive_status/hive = hive_datum[hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive)
 		hive.add_xeno(new_xeno)
 
-	new_xeno.set_faction(faction)
 	new_xeno.update_icons()
 
 	// If we have a candidate, transfer it over
@@ -220,7 +219,7 @@
 	var/burstcount = 0
 
 	for(var/mob/living/carbon/Xenomorph/Larva/L in victim)
-		var/datum/hive_status/hive = hive_datum[L.hivenumber]
+		var/datum/hive_status/hive = GLOB.hive_datum[L.hivenumber]
 		L.forceMove(get_turf(victim)) //moved to the turf directly so we don't get stuck inside a cryopod or another mob container.
 		playsound(L, pick('sound/voice/alien_chestburst.ogg','sound/voice/alien_chestburst2.ogg'), 25)
 

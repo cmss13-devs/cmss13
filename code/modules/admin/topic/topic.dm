@@ -747,7 +747,7 @@
 			return
 
 		var/list/hives = list()
-		for(var/datum/hive_status/hive in hive_datum)
+		for(var/datum/hive_status/hive in GLOB.hive_datum)
 			hives += list("[hive.name]" = hive.hivenumber)
 
 		var/newhive = input(usr,"Select a hive.", null, null) in hives
@@ -790,7 +790,7 @@
 			return
 
 		var/list/hives = list();
-		for(var/datum/hive_status/hive in hive_datum)
+		for(var/datum/hive_status/hive in GLOB.hive_datum)
 			LAZYSET(hives, hive.name, hive)
 		LAZYSET(hives, "CANCEL", null)
 
@@ -798,7 +798,7 @@
 		if(!hive_name || hive_name == "CANCEL")
 			to_chat(usr, SPAN_ALERT("Hive choice error. Aborting."))
 
-		var/datum/hive_status/hive = LAZYACCESS(hives, hive_name);
+		var/datum/hive_status/hive = hives[hive_name]
 
 		if(href_list["makecultist"])
 			var/datum/equipment_preset/other/xeno_cultist/XC = new()
@@ -812,7 +812,7 @@
 			XC.load_status(H)
 			message_staff("[key_name_admin(usr)] has made [key_name_admin(H)] into a cultist leader for [hive.name].")
 
-		H.faction = hive.name
+		H.faction = hive.internal_faction
 
 	else if(href_list["forceemote"])
 		if(!check_rights(R_FUN))	return

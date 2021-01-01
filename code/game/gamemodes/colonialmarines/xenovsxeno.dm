@@ -149,10 +149,10 @@
     var/list/hive_spots = list()
     for(var/hive in hives)
         var/turf/spot = get_turf(pick(hive_spawns))
-        hive_spots[hive_datum[hive]] = spot
+        hive_spots[GLOB.hive_datum[hive]] = spot
         hive_spawns -= spot
 
-        current_hives += hive_datum[hive].name
+        current_hives += GLOB.hive_datum[hive].name
 
     for(var/datum/hive_status/hive in xenomorphs) //Build and move the xenos.
         for(var/datum/mind/ghost_mind in xenomorphs[hive])
@@ -176,7 +176,7 @@
 
 // Queen delay timer. No more instant evolves
 /datum/game_mode/xenovs/check_queen_status(var/queen_time, var/hivenumber)
-	var/datum/hive_status/hive = hive_datum[hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 
 	if(hive)
 		hive.xeno_queen_timer = world.time + 5 MINUTES
@@ -193,8 +193,8 @@
         if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
             if(world.time > round_time_larva_interval)
                 for(var/hive in hives)
-                    hive_datum[hive].stored_larva += 1
-                    hive_datum[hive].hive_ui.update_pooled_larva()
+                    GLOB.hive_datum[hive].stored_larva += 1
+                    GLOB.hive_datum[hive].hive_ui.update_pooled_larva()
 
                 round_time_larva_interval = world.time + hive_larva_interval_gain
 
@@ -212,13 +212,13 @@
 
 /datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBITT, ZTRAIT_MARINE_MAIN_SHIP)))
     var/list/list/hivenumbers = list()
-    for(var/datum/hive_status/H in hive_datum)
+    for(var/datum/hive_status/H in GLOB.hive_datum)
         hivenumbers += list(H.name = list())
 
     for(var/mob/M in GLOB.player_list)
         if(M.z && (M.z in z_levels) && M.stat != DEAD && !istype(M.loc, /turf/open/space)) //If they have a z var, they are on a turf.
             var/mob/living/carbon/Xenomorph/X = M
-            var/datum/hive_status/hive = hive_datum[X.hivenumber]
+            var/datum/hive_status/hive = GLOB.hive_datum[X.hivenumber]
             if(!hive)
                 continue
 

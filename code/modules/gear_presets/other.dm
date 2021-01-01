@@ -522,6 +522,11 @@
 	. = ..()
 	H.hivenumber = hivenumber
 
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+
+	if(hive)
+		H.faction = hive.internal_faction
+
 /datum/equipment_preset/other/xeno_cultist/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/marine/satchel
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
@@ -542,11 +547,10 @@
 	if(SSticker.mode && H.mind)
 		SSticker.mode.xenomorphs += H.mind
 
-	if(hive_datum[H.hivenumber])
-		var/datum/hive_status/hive = hive_datum[H.hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
 
-		if(hive.leading_cult_sl == H)
-			hive.leading_cult_sl = null
+	if(hive.leading_cult_sl == H)
+		hive.leading_cult_sl = null
 
 	GLOB.xeno_cultists += H
 
@@ -581,9 +585,8 @@
 /datum/equipment_preset/other/xeno_cultist/leader/load_status(mob/living/carbon/human/H)
 	. = ..()
 
-	if(hive_datum[H.hivenumber])
-		var/datum/hive_status/hive = hive_datum[H.hivenumber]
-		hive.leading_cult_sl = H
+	var/datum/hive_status/hive = GLOB.hive_datum[H.hivenumber]
+	hive.leading_cult_sl = H
 
 	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader/)
 

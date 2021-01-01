@@ -20,7 +20,7 @@
 			if(isobserver(M))
 				continue
 			var/mob/living/carbon/X = M
-			if(!istype(X) || !X.allied_to_hivenumber(hivenumber, XENO_SLASH_RESTRICTED))	//additionally filter out those of wrong hive
+			if(!istype(X) || !X.ally_of_hivenumber(hivenumber))	//additionally filter out those of wrong hive
 				targets.Remove(X)
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))

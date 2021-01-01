@@ -59,6 +59,12 @@
             && coords.y_pos >= center_y - height /2  \
             && coords.y_pos <= center_y + height / 2)
 
+/datum/shape/rectangle/proc/contains_atom(var/atom/A)
+    return (A.x >= center_x - width / 2  \
+            && A.x <= center_x + width / 2 \
+            && A.y >= center_y - height /2  \
+            && A.y <= center_y + height / 2)
+
 /datum/quadtree/proc/subdivide() 
     //Warning: this might give you eye cancer
     nw_branch = QTREE(RECT(boundary.center_x - boundary.width / 4, boundary.center_y + boundary.height/ 4, boundary.width/2, boundary.height/2), capacity, z_level)

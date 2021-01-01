@@ -113,10 +113,7 @@
 	recycletime--
 	if(!recycletime)
 		recycletime = initial(recycletime)
-		for(var/X in blip_pool) //we dump and remake the blip pool every few minutes
-			if(blip_pool[X])	//to clear blips assigned to mobs that are long gone.
-				qdel(blip_pool[X])
-		blip_pool = list()
+		refresh_blip_pool()
 
 	if(!detector_mode)
 		long_range_cooldown--
@@ -125,14 +122,29 @@
 
 	scan()
 
+/obj/item/device/motiondetector/proc/refresh_blip_pool()
+	for(var/X in blip_pool) //we dump and remake the blip pool every few minutes
+		if(blip_pool[X])	//to clear blips assigned to mobs that are long gone.
+			qdel(blip_pool[X])
+	blip_pool = list()
+
+/obj/item/device/motiondetector/proc/get_user()
+	if(ishuman(loc))
+		return loc
+
+/obj/item/device/motiondetector/sg
+
+/obj/item/device/motiondetector/sg/get_user()
+	var/atom/A = loc
+	if(ishuman(A.loc))
+		return A.loc
+
 /obj/item/device/motiondetector/proc/scan()
 	set waitfor = 0
 	if(scanning)
 		return
 	scanning = TRUE
-	var/mob/living/carbon/human/human_user
-	if(ishuman(loc))
-		human_user = loc
+	var/mob/living/carbon/human/human_user = get_user()
 
 	ping_count = 0
 
@@ -149,7 +161,8 @@
 
 	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 
-	for(var/mob/M in ping_candidates)
+	for(var/A in ping_candidates)
+		var/mob/M = A	//do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
 		if(isrobot(M)) continue
@@ -161,6 +174,12 @@
 		if(human_user)
 			show_blip(human_user, M)
 
+	for(var/mob/hologram/queen/Q in GLOB.hologram_list)
+		if(Q.z != cur_turf.z || !(range_bounds.contains_atom(Q))) continue
+		ping_count++
+		if(human_user)
+			show_blip(human_user, Q, "error")
+
 	if(ping_count > 0)
 		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)
 	else
@@ -169,10 +188,13 @@
 	update_icon()
 	scanning = FALSE
 
+	return ping_count
 
-/obj/item/device/motiondetector/proc/show_blip(mob/user, mob/target)
+/obj/item/device/motiondetector/proc/show_blip(mob/user, mob/target, var/blip_icon)
 	set waitfor = 0
 	if(user && user.client)
+
+		blip_icon = blip_icon ? blip_icon : blip_type
 
 		if(!blip_pool[target])
 			blip_pool[target] = new /obj/effect/detector_blip
@@ -194,10 +216,10 @@
 		if(target.y - user.y > c_view + view_y_offset) diff_dir_y = 1
 		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
 		if(diff_dir_x || diff_dir_y)
-			DB.icon_state = "[blip_type]_blip_dir"
+			DB.icon_state = "[blip_icon]_blip_dir"
 			DB.dir = diff_dir_x + diff_dir_y
 		else
-			DB.icon_state = "[blip_type]_blip"
+			DB.icon_state = "[blip_icon]_blip"
 			DB.dir = initial(DB.dir)
 
 		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"

@@ -300,13 +300,9 @@
 	var/range = 12
 	var/angle = 2
 	var/list/angle_list = list(180,135,90,60,30)
-	var/detector_range = 14
-	var/ping_count = 0
-	var/list/blip_pool = list()
-	var/detector_mode = MOTION_DETECTOR_LONG
-	var/recycletime = 120
+	var/obj/item/device/motiondetector/sg/MD
 	var/long_range_cooldown = 2
-	var/blip_type = "detector"
+	var/recycletime = 120
 
 	unacidable = 1
 	indestructible = 1
@@ -326,6 +322,7 @@
 	ammo_primary = ammo_list[ammo_primary]
 	ammo_secondary = ammo_list[ammo_secondary]
 	AddElement(/datum/element/magharness)
+	MD = new(src)
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -357,8 +354,10 @@
 	..()
 	if(iff_enabled)
 		drain += 10
+		MD.iff_signal = initial(MD.iff_signal)
 	if(!iff_enabled)
 		drain -= 10
+		MD.iff_signal = null
 	if(!powerpack)
 		link_powerpack(usr)
 
@@ -555,82 +554,13 @@
 		recycletime--
 		if(!recycletime)
 			recycletime = initial(recycletime)
-			for(var/X in blip_pool) //we dump and remake the blip pool every few minutes
-				if(blip_pool[X])	//to clear blips assigned to mobs that are long gone.
-					qdel(blip_pool[X])
-			blip_pool = list()
-		if(!detector_mode)
-			long_range_cooldown--
-			if(long_range_cooldown)
-				return
-			long_range_cooldown = initial(long_range_cooldown)
-		scan()
+			MD.refresh_blip_pool()
 
-/obj/item/weapon/gun/smartgun/proc/scan()
-	var/mob/living/carbon/human/human_user
-	if(ishuman(loc))
-		human_user = loc
-
-	ping_count = 0
-	for(var/i in GLOB.alive_mob_list)
-		var/mob/M = i
-
-		if(loc == null || M == null) continue
-		if(loc.z != M.z) continue
-		if(get_dist(M, src) > detector_range) continue
-		if(M == loc) continue //device user isn't detected
-		if(!isturf(M.loc)) continue
-		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
-		if(isrobot(M)) continue
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(human_user && H.get_target_lock(human_user.faction_group))
-				continue
-		ping_count++
-
-		if(human_user)
-			show_blip(human_user, M)
-
-	if(ping_count > 0)
-		playsound(loc, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, 0, 7, 2)
-	else
-		playsound(loc, 'sound/items/detector.ogg', 60, 0, 7, 2)
-
-/obj/item/weapon/gun/smartgun/proc/show_blip(mob/user, mob/target)
-	set waitfor = 0
-	if(user && user.client)
-
-		if(!blip_pool[target])
-			blip_pool[target] = new /obj/effect/detector_blip
-
-		var/obj/effect/detector_blip/DB = blip_pool[target]
-		var/c_view = user.client.view
-		var/view_x_offset = 0
-		var/view_y_offset = 0
-		if(c_view > 7)
-			if(user.client.pixel_x >= 0) view_x_offset = round(user.client.pixel_x/32)
-			else view_x_offset = Ceiling(user.client.pixel_x/32)
-			if(user.client.pixel_y >= 0) view_y_offset = round(user.client.pixel_y/32)
-			else view_y_offset = Ceiling(user.client.pixel_y/32)
-
-		var/diff_dir_x = 0
-		var/diff_dir_y = 0
-		if(target.x - user.x > c_view + view_x_offset) diff_dir_x = 4
-		else if(target.x - user.x < -c_view + view_x_offset) diff_dir_x = 8
-		if(target.y - user.y > c_view + view_y_offset) diff_dir_y = 1
-		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
-		if(diff_dir_x || diff_dir_y)
-			DB.icon_state = "[blip_type]_blip_dir"
-			DB.dir = diff_dir_x + diff_dir_y
-		else
-			DB.icon_state = "[blip_type]_blip"
-			DB.dir = initial(DB.dir)
-
-		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
-		user.client.screen += DB
-		sleep(12)
-		if(user.client)
-			user.client.screen -= DB
+		long_range_cooldown--
+		if(long_range_cooldown)
+			return
+		long_range_cooldown = initial(long_range_cooldown)
+		MD.scan()
 
 /obj/item/weapon/gun/smartgun/proc/get_target(var/mob/living/user)
 	var/list/conscious_targets = list()

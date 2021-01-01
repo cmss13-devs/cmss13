@@ -231,7 +231,7 @@ var/datum/controller/supply/supply_controller = new()
 		return
 
 	var/area/A = get_area(T)
-	if(A && A.ceiling >= CEILING_UNDERGROUND)
+	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return
 

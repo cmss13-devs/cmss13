@@ -111,7 +111,7 @@
 /area/ice_colony/exterior/surface/valley/south/excavation
 	name = "\improper Southern Valleys - Excavation Site"
 	icon_state = "valley_south_excv"
-	ceiling = CEILING_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/ice_colony/exterior/surface/valley/southeast
 	name = "\improper Eastern Valleys"
@@ -164,7 +164,7 @@
 	icon_state = "cave"
 	sound_environment = 6
 	soundscape_playlist = SCAPE_PL_CAVE
-	soundscape_interval = 25 
+	soundscape_interval = 25
 	ambience_exterior = AMBIENCE_CAVE
 
 /area/ice_colony/exterior/underground/caves/open
@@ -212,7 +212,7 @@
 	name = "\improper Aurora Medical Clinic"
 	icon_state = "medbay"
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
-	soundscape_interval = 60 
+	soundscape_interval = 60
 
 /area/ice_colony/surface/clinic/lobby
 	name = "\improper Aurora Medical Clinic Lobby"

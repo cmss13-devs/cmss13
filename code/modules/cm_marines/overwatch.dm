@@ -862,7 +862,7 @@
 		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("The target zone has strong biological protection. The orbital strike cannot reach here.")]")
 		return
 
-	if(istype(A) && A.ceiling >= CEILING_DEEP_UNDERGROUND)
+	if(istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_DEEP_UNDERGROUND))
 		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("The target zone is deep underground. The orbital strike cannot reach here.")]")
 		return
 
@@ -924,7 +924,7 @@
 		return
 
 	var/area/A = get_area(T)
-	if(A && A.ceiling >= CEILING_UNDERGROUND)
+	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return
 

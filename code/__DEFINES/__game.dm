@@ -187,17 +187,43 @@ var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
 //Flags for zone sleeping
 #define GET_RANDOM_FREQ rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
 
-//ceiling types
-#define CEILING_NONE 0
-#define CEILING_GLASS 1
-#define CEILING_METAL 2
-#define CEILING_UNDERGROUND 3
-#define CEILING_UNDERGROUND_METAL 4
-#define CEILING_DEEP_UNDERGROUND 5
-#define CEILING_DEEP_UNDERGROUND_METAL 5
-#define CEILING_REINFORCED_METAL 6
-#define CEILING_RESIN 7
-#define CEILING_MAX 7
+
+// Ceilings
+// Ceiling types
+// CEILING_PROTECTION_TIER_X are thresholds for blocking shit, everything else is
+// for handling ceiling behaviors (eg debris)
+
+/// Do not block any ordnance
+#define CEILING_NO_PROTECTION 0
+#define CEILING_NONE 0.1
+#define CEILING_GLASS 0.2
+
+/// Blocks mortar placement, lasing, and medevac
+#define CEILING_PROTECTION_TIER_1 1
+#define CEILING_METAL 1.1
+
+/// Blocks CAS signals, supply drops, fultoning, and mortar fire
+#define CEILING_PROTECTION_TIER_2 2
+#define CEILING_UNDERGROUND_ALLOW_CAS 2.1
+#define CEILING_UNDERGROUND_METAL_ALLOW_CAS 2.2
+
+/// Blocks CAS fire
+#define CEILING_PROTECTION_TIER_3 3
+#define CEILING_UNDERGROUND_BLOCK_CAS 3.1
+#define CEILING_UNDERGROUND_METAL_BLOCK_CAS 3.2
+
+/// Blocks OB fire
+#define CEILING_PROTECTION_TIER_4 4
+#define CEILING_DEEP_UNDERGROUND 4.1
+#define CEILING_DEEP_UNDERGROUND_METAL 4.2
+#define CEILING_REINFORCED_METAL 4.3
+#define CEILING_RESIN 4.4
+#define CEILING_MAX 4.5
+
+// Helpers
+/// Only use the CEILING_PROTECTION_TIER_X defines for `protection_level`
+#define CEILING_IS_PROTECTED(ceiling, protection_level) (ceiling >= protection_level)
+
 
 // Default font settings
 #define FONT_SIZE "5pt"

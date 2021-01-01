@@ -119,12 +119,13 @@
 		return
 
 /obj/structure/machinery/door/window/bullet_act(var/obj/item/projectile/Proj)
-	bullet_ping(Proj)
-	if(Proj.ammo.damage)
-		take_damage(round(Proj.ammo.damage / 2))
-		if(Proj.ammo.damage_type == BRUTE)
-			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
-	return 1
+	var/ammo_flags = Proj.ammo.flags_ammo_behavior | Proj.projectile_override_flags
+	if(Proj.ammo.damage_type == HALLOSS || Proj.damage <= 0 || ammo_flags & AMMO_ENERGY)
+		return FALSE
+
+	take_damage(round(Proj.ammo.damage))
+	playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)
+	return TRUE
 
 //When an object is thrown at the window
 /obj/structure/machinery/door/window/hitby(atom/movable/AM)

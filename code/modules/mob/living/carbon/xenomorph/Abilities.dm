@@ -240,7 +240,7 @@
 				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
 	for(var/mob/living/carbon/M in oview(7, X))
-		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, src) & COMPONENT_SCREECH_ACT_CANCEL)
+		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, X) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
 
 		M.scream_stun_timeout = SECONDS_20

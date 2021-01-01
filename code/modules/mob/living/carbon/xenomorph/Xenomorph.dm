@@ -372,7 +372,7 @@
 
 /mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
 	SIGNAL_HANDLER
-	if(can_not_harm(queen))
+	if(queen.can_not_harm(src))
 		return COMPONENT_SCREECH_ACT_CANCEL
 
 

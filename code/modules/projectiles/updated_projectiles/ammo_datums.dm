@@ -1293,7 +1293,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/energy/yautja/caster/sphere
-	name = "plasma eradication sphere"
+	name = "plasma immobilizer sphere"
 	icon_state = "bluespace"
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF
@@ -1327,6 +1327,7 @@
 	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)
 	for (var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
 		var/stun_time = src.stun_time
+		log_attack("[key_name(M)] was stunned by a plasma immobilizer from [key_name(P.firer)] at [get_area(P)]")
 		if (isYautja(M))
 			stun_time -= 2
 		else if (isXeno(M))

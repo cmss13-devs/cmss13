@@ -62,7 +62,6 @@
 	},
 /area/lv624/ground/jungle7)
 "al" = (
-/obj/effect/landmark/lv624/fog_time_extender,
 /turf/open/floor/plating{
 	dir = 1;
 	icon_state = "asteroidfloor"
@@ -83,12 +82,6 @@
 /turf/open/gm/coast{
 	dir = 2;
 	icon_state = "beachcorner2"
-	},
-/area/lv624/ground/river2)
-"jV" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "asteroidfloor"
 	},
 /area/lv624/ground/river2)
 "km" = (
@@ -244,13 +237,13 @@ aj
 "}
 (7,1,1) = {"
 ac
-jV
-jV
-jV
-jV
-jV
-jV
-jV
+al
+al
+al
+al
+al
+al
+al
 lY
 ai
 lS
@@ -259,13 +252,13 @@ ak
 "}
 (8,1,1) = {"
 ac
-jV
-jV
-jV
 al
-jV
-jV
-jV
+al
+al
+al
+al
+al
+al
 lY
 ai
 lS
@@ -274,13 +267,13 @@ aj
 "}
 (9,1,1) = {"
 ac
-jV
-jV
-jV
-jV
-jV
-jV
-jV
+al
+al
+al
+al
+al
+al
+al
 lY
 ai
 lS

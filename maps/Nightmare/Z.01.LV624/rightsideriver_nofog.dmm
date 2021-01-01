@@ -72,10 +72,6 @@
 	dir = 8
 	},
 /area/lv624/ground/river3)
-"t" = (
-/obj/effect/landmark/lv624/fog_time_extender,
-/turf/open/gm/dirt,
-/area/lv624/ground/river3)
 "v" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/closed/wall/strata_ice/jungle,
@@ -172,7 +168,7 @@ i
 a
 a
 a
-t
+a
 o
 a
 p

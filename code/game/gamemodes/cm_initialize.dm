@@ -72,7 +72,6 @@ Additional game mode variables.
 	var/list/round_fog = list()				//List of the fog locations.
 	var/list/round_toxic_river = list()		//List of all toxic river locations
 	var/round_time_lobby 		//Base time for the lobby, for fog dispersal.
-	var/round_time_fog 			//Variance time for fog dispersal, done during pre-setup.
 	var/round_time_river
 	var/monkey_amount		= 0 //How many monkeys do we spawn on this map ?
 	var/list/monkey_types	= list() //What type of monkeys do we spawn

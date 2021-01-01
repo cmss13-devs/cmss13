@@ -35,19 +35,6 @@
 	GLOB.fog_blockers -= src
 	return ..()
 
-/obj/effect/landmark/lv624/fog_time_extender
-	name = "fog time extender"
-	icon_state = "spawn_event"
-	var/time_to_extend = 9000
-
-/obj/effect/landmark/lv624/fog_time_extender/Initialize(mapload, ...)
-	. = ..()
-	GLOB.fog_time_extenders += src
-
-/obj/effect/landmark/lv624/fog_time_extender/Destroy()
-	GLOB.fog_time_extenders -= src
-	return ..()
-
 /obj/effect/landmark/lv624/xeno_tunnel
 	name = "xeno tunnel"
 	icon_state = "spawn_event"
@@ -65,15 +52,10 @@
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
 	setup_round_stats()
-	var/fog_timer = 0
 	for(var/i in GLOB.fog_blockers)
 		var/obj/effect/landmark/lv624/fog_blocker/FB = i
 		round_fog += new /obj/structure/blocker/fog(FB.loc)
 		qdel(FB)
-	for(var/i in GLOB.fog_time_extenders)
-		var/obj/effect/landmark/lv624/fog_time_extender/fte = i
-		fog_timer += fte.time_to_extend
-		qdel(fte)
 
 	QDEL_LIST(GLOB.hunter_primaries)
 	QDEL_LIST(GLOB.hunter_secondaries)
@@ -95,13 +77,14 @@
 			if(MAP_CORSAT) new /obj/item/map/corsat(T)
 			if(MAP_KUTJEVO) new /obj/item/map/kutjevo_map(T)
 
-	if(!round_fog.len) round_fog = null //No blockers?
+	if(!round_fog.len)
+		round_fog = null //No blockers?
 	else
-		round_time_fog = fog_timer + rand(-2500,2500)
 		flags_round_type |= MODE_FOG_ACTIVATED
 
 	//desert river test
-	if(!round_toxic_river.len) round_toxic_river = null //No tiles?
+	if(!round_toxic_river.len)
+		round_toxic_river = null //No tiles?
 	else
 		round_time_river = rand(-100,100)
 		flags_round_type |= MODE_FOG_ACTIVATED
@@ -199,8 +182,8 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-#define FOG_DELAY_INTERVAL		MINUTES_30 // 30 minutes
-#define PODLOCKS_OPEN_WAIT		MINUTES_45 // CORSAT pod doors drop at 12:45
+#define FOG_DELAY_INTERVAL		(35 MINUTES)
+#define PODLOCKS_OPEN_WAIT		(45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/colonialmarines/process()
@@ -224,7 +207,7 @@
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
-			if(flags_round_type & MODE_FOG_ACTIVATED && map_tag == MAP_LV_624  && world.time >= (FOG_DELAY_INTERVAL + round_time_lobby + round_time_fog))
+			if(flags_round_type & MODE_FOG_ACTIVATED && map_tag == MAP_LV_624  && world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
 				disperse_fog() //Some RNG thrown in.
 			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN) && (map_tag == MAP_CORSAT || map_tag == MAP_PRISON_STATION) && world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
 				round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN

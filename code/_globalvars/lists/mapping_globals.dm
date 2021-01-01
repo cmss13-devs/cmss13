@@ -21,7 +21,6 @@ GLOBAL_LIST_EMPTY(latejoin)
 GLOBAL_LIST_EMPTY(newplayer_start)
 
 GLOBAL_LIST_EMPTY(fog_blockers)
-GLOBAL_LIST_EMPTY(fog_time_extenders)
 
 GLOBAL_LIST_EMPTY(map_items)
 GLOBAL_LIST_EMPTY(xeno_tunnels)

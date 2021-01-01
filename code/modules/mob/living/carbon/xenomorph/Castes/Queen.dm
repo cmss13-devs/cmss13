@@ -380,7 +380,7 @@
 
 	QDEL_LIST(actions)
 
-	var/list/abilities_to_give = mobile_abilities
+	var/list/abilities_to_give = mobile_abilities.Copy()
 
 	if(!queen_aged)
 		abilities_to_give -= mobile_aged_abilities

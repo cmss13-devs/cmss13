@@ -281,10 +281,9 @@
 
 	sleep(2 SECONDS) // Wait out the rest of the landing time
 
-	if(protected_by_pylon(TURF_PROTECTION_MORTAR, target))
-		return
 	target.ceiling_debris_check(2)
-	shell.detonate(target)
+	if(!protected_by_pylon(TURF_PROTECTION_MORTAR, target))
+		shell.detonate(target)
 	qdel(shell)
 	firing = 0
 

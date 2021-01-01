@@ -33,7 +33,7 @@
 		hive = GLOB.hive_datum[hivenumber]
 
 	if(!hive)
-		return
+		return FALSE
 
 	return hive.is_ally(C)
 

@@ -165,8 +165,7 @@
 	var/turf/curloc = get_turf(original_P.shot_from)
 	var/initial_angle = Get_Angle(curloc, original_P.target_turf)
 
-	var/i
-	for(i = 0 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
+	for(var/i in 1 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
 
 		var/final_angle = initial_angle
 
@@ -653,7 +652,7 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_7
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
@@ -682,7 +681,7 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	penetration	= 0
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
 	pen_armor_punch = 0
@@ -1553,7 +1552,7 @@
 	accurate_range = 5
 	max_range = 5
 	scatter = SCATTER_AMOUNT_NEURO
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 
 /datum/ammo/xeno/toxin/shotgun/New()
 	..()
@@ -1802,7 +1801,7 @@
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_5
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_6
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 

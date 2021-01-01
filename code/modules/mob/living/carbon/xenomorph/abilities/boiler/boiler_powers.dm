@@ -81,8 +81,8 @@
 
 	if (!activated_once && !action_cooldown_check())
 		return
-	
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc)) 
+
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
 	if (!activated_once)
@@ -98,7 +98,7 @@
 		addtimer(CALLBACK(src, .proc/timeout), max_stacks*stack_time + time_after_max_before_end)
 		apply_cooldown()
 		return ..()
-		
+
 	else
 		activated_once = FALSE
 		var/range = base_range + stacks*range_per_stack
@@ -126,7 +126,7 @@
 				break
 
 			turfs_visited++
-			
+
 			new /obj/effect/xenomorph/acid_damage_delay(T, damage, 7, FALSE, "You are blasted with a stream of high-velocity acid!", X)
 
 		X.visible_message(SPAN_XENODANGER("[X] fires a massive blast of acid at [A]!"), SPAN_XENODANGER("You fire a massive blast of acid at [A]!"))
@@ -203,10 +203,10 @@
 			continue
 
 		XA.apply_cooldown_override(cooldown_duration)
-		
+
 	apply_cooldown()
 	..()
-	return		
+	return
 
 /datum/action/xeno_action/onclick/dump_acid/proc/remove_speed_buff()
 	if (isXeno(owner))
@@ -250,7 +250,7 @@
 	if (!istype(X) || QDELETED(X))
 		qdel(src)
 		return
-	
+
 	X.event_movement.remove_handler(src)
 	qdel(src)
 
@@ -330,8 +330,8 @@
 
 	if (!action_cooldown_check())
 		return
-	
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc)) 
+
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
 	if(!check_clear_path_to_target(X, A, TRUE, 10))
@@ -367,15 +367,15 @@
 
 	if (!action_cooldown_check())
 		return
-	
-	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state()) 
+
+	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc) || !X.check_state())
 		return
 
 	X.visible_message(SPAN_XENOWARNING("The [X] fires a blast of acid at [A]!"), SPAN_XENOWARNING("You fire a blast of acid at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
 	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, X.loc)
-	
+
 	var/datum/ammo/ammoDatum = new ammo_type()
 
 	P.generate_bullet(ammoDatum)
@@ -401,7 +401,7 @@
 	accuracy = HIT_ACCURACY_TIER_8
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_8
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_9
 	shrapnel_type = /datum/ammo/xeno/acid_shotgun/spread
 	shrapnel_chance = 100
 

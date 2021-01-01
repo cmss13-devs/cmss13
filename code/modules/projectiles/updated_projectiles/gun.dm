@@ -434,7 +434,7 @@
 		ammo_name = in_ammo.name
 
 		damage = in_ammo.damage * damage_mult
-		bonus_projectile_amount = in_ammo.bonus_projectiles_amount ? in_ammo.bonus_projectiles_amount + 1 : 0
+		bonus_projectile_amount = in_ammo.bonus_projectiles_amount
 		falloff = in_ammo.damage_falloff * damage_falloff_mult
 
 		penetration = in_ammo.penetration
@@ -1092,7 +1092,7 @@ and you're good to go.
 
 	if(projectile_to_fire.ammo.bonus_projectiles_amount)
 		var/obj/item/projectile/BP
-		for(var/i in 0 to projectile_to_fire.ammo.bonus_projectiles_amount)
+		for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
 			BP = new /obj/item/projectile(initial(name), user, M.loc)
 			BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0)
 			BP.damage *= damage_buff

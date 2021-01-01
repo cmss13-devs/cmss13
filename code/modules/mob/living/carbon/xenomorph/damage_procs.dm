@@ -59,7 +59,7 @@
 			else
 				Slow(powerfactor_value/3)
 
-/mob/living/carbon/Xenomorph/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
+/mob/living/carbon/Xenomorph/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0, var/effectiveness_mult = 1)
 	if(damage <= 0)
 		return ..(damage, armour_type, damage_type, def_zone)
 
@@ -67,8 +67,8 @@
 	if(armour_type == ARMOR_MELEE)
 		armour_config = GLOB.xeno_melee
 
-	var/modified_damage = armor_damage_reduction(armour_config, damage, armor_deflection + armor_deflection_buff, penetration, armour_break_pr_pen, armour_break_flat)
-	var/armor_punch = armor_break_calculation(armour_config, damage, armor_deflection + armor_deflection_buff, penetration, armour_break_pr_pen, armour_break_flat, armor_integrity)
+	var/modified_damage = armor_damage_reduction(armour_config, damage, (armor_deflection + armor_deflection_buff) * effectiveness_mult, penetration, armour_break_pr_pen, armour_break_flat)
+	var/armor_punch = armor_break_calculation(armour_config, damage, (armor_deflection + armor_deflection_buff) * effectiveness_mult, penetration, armour_break_pr_pen, armour_break_flat, armor_integrity)
 	apply_armorbreak(armor_punch)
 
 	apply_damage(modified_damage, damage_type)

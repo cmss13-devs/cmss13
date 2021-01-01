@@ -30,7 +30,7 @@
 	if(isXeno(user))
 		to_chat(user, "A queen egg, it needs to be planted on weeds to start growing.")
 		if(hivenumber != XENO_HIVE_NORMAL)
-			var/datum/hive_status/hive = hive_datum[hivenumber]
+			var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 			to_chat(user, "This one appears to belong to the [hive.prefix]hive")
 
 /obj/item/xeno_egg/afterattack(atom/target, mob/user, proximity)
@@ -86,7 +86,7 @@
 			break
 
 	if(!hive_weeds)
-		var/datum/hive_status/hive = hive_datum[hivenumber]
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		to_chat(user, SPAN_XENOWARNING("[src] can only be planted on [lowertext(hive.prefix)]hive weeds."))
 		return
 

@@ -13,7 +13,7 @@
 	var/datum/mind/queen_mind = NP.mind
 	var/mob/living/original = queen_mind.current
 	queen_mind.setup_xeno_stats()
-	var/datum/hive_status/hive = hive_datum[hive_index]
+	var/datum/hive_status/hive = GLOB.hive_datum[hive_index]
 	if(hive.living_xeno_queen)
 		return
 

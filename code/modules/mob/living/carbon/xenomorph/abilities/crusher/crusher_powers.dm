@@ -5,7 +5,7 @@
 		return
 
 	for (var/mob/living/carbon/H in orange(1, get_turf(X)))
-		if(X.match_hivemind(H))
+		if(X.can_not_harm(H))
 			continue
 
 		new /datum/effects/xeno_slow(H, X, null, null, 35)
@@ -68,7 +68,7 @@
 	X.create_stomp()
 
 	for (var/mob/living/carbon/H in get_turf(X))
-		if (H.stat == DEAD || X.match_hivemind(H))
+		if (H.stat == DEAD || X.can_not_harm(H))
 			continue
 
 		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))
@@ -82,7 +82,7 @@
 		H.last_damage_source = initial(X.caste_name)
 
 	for (var/mob/living/carbon/H in orange(distance, get_turf(X)))
-		if (H.stat == DEAD || X.match_hivemind(H))
+		if (H.stat == DEAD || X.can_not_harm(H))
 			continue
 
 		new effect_type_base(H, X, , , get_xeno_stun_duration(H, effect_duration))

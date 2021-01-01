@@ -21,7 +21,7 @@
 /datum/job/antag/xenos/proc/transform_to_xeno(var/mob/living/carbon/human/H, var/hive_index)
 	var/datum/mind/new_xeno = H.mind
 	new_xeno.setup_xeno_stats()
-	var/datum/hive_status/hive = hive_datum[hive_index]
+	var/datum/hive_status/hive = GLOB.hive_datum[hive_index]
 
 	H.first_xeno = TRUE
 	H.stat = 1

@@ -40,7 +40,7 @@
 
 /proc/update_living_queens() // needed to update when you change a queen to a different hive
 	outer_loop:
-		for(var/datum/hive_status/hive in hive_datum)
+		for(var/datum/hive_status/hive in GLOB.hive_datum)
 			if(hive.living_xeno_queen)
 				if(hive.living_xeno_queen.hivenumber == hive.hivenumber)
 					continue
@@ -349,7 +349,7 @@
 
 	var/datum/hive_status/in_hive = hive
 	if(!in_hive)
-		in_hive = hive_datum[hivenumber]
+		in_hive = GLOB.hive_datum[hivenumber]
 
 	var/name_prefix = in_hive.prefix
 	if(queen_aged)
@@ -432,7 +432,7 @@
 
 /mob/living/carbon/Xenomorph/Queen/Stat()
 	..()
-	var/stored_larvae = hive_datum[hivenumber].stored_larva
+	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
 
 	stat("Pooled Larvae:", "[stored_larvae]")
@@ -529,10 +529,6 @@
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>permitted</b> the harming of hosts! Go hog wild!"), 2, hivenumber)
 		hive.slashing_allowed = XENO_SLASH_ALLOWED
-	else if(choice == "Restricted - Hosts of Interest")
-		to_chat(src, SPAN_XENONOTICE("You restrict slashing."))
-		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>restricted</b> the harming of hosts. You cannot slash hosts of interests"), 2, hivenumber)
-		hive.slashing_allowed = XENO_SLASH_RESTRICTED
 	else if(choice == "Forbidden")
 		to_chat(src, SPAN_XENONOTICE("You forbid slashing entirely."))
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has <b>forbidden</b> the harming of hosts. You can no longer slash your enemies."), 2, hivenumber)
@@ -606,6 +602,15 @@
 	else
 		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
 		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.")
+
+/mob/living/carbon/Xenomorph/Queen/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
+	return COMPONENT_SCREECH_ACT_CANCEL
+
+/mob/living/carbon/Xenomorph/Queen/proc/screech_ready()
+	to_chat(src, SPAN_WARNING("You feel your throat muscles vibrate. You are ready to screech again."))
+	for(var/Z in actions)
+		var/datum/action/A = Z
+		A.update_button_icon()
 
 /mob/living/carbon/Xenomorph/Queen/proc/queen_gut(atom/A)
 

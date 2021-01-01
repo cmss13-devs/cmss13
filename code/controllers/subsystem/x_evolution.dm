@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(xevolution)
 	name = "Evilution"
 	wait = 1 MINUTES
 	priority = SS_PRIORITY_INACTIVITY
-	
+
 	var/human_xeno_ratio_modifier = 0.4
 	var/time_ratio_modifier = 0.4
 
@@ -14,13 +14,13 @@ SUBSYSTEM_DEF(xevolution)
 	var/force_boost_power = FALSE // Debugging only
 
 /datum/controller/subsystem/xevolution/Initialize(start_timeofday)
-	for(var/datum/hive_status/HS in hive_datum)
+	for(var/datum/hive_status/HS in GLOB.hive_datum)
 		boost_power += HS.hivenumber
 		boost_power[HS.hivenumber] = 1
 	return ..()
 
 /datum/controller/subsystem/xevolution/fire(resumed = FALSE)
-	for(var/datum/hive_status/HS in hive_datum)
+	for(var/datum/hive_status/HS in GLOB.hive_datum)
 		if(!HS)
 			continue
 
@@ -32,7 +32,7 @@ SUBSYSTEM_DEF(xevolution)
 		var/boost_power_new
 		// Minimum of 5 evo until 10 minutes have passed.
 		if((world.time - SSticker.round_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)
-			boost_power_new = max(boost_power_new, XENO_ROUNDSTART_PROGRESS_AMOUNT) 
+			boost_power_new = max(boost_power_new, XENO_ROUNDSTART_PROGRESS_AMOUNT)
 		else
 			boost_power_new = Floor(10 * (world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - SSticker.round_start_time) / EVOLUTION_INCREMENT_TIME) / 10
 

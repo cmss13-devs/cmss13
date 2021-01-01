@@ -23,7 +23,7 @@
 	last_larva_time = world.time
 	..(loc, hive_ref)
 	if(isnull(linked_hive))
-		linked_hive = hive_datum[XENO_HIVE_NORMAL]
+		linked_hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	linked_hive.spawn_pool = src
 
 /obj/effect/alien/resin/special/pool/examine(mob/user)

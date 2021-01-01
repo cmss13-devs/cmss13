@@ -350,8 +350,8 @@ var/list/datum/mob_hud/huds = list(
 		if(hivenumber)
 			holder4.icon_state = "hudalien"
 
-			if(hive_datum[hivenumber])
-				var/datum/hive_status/hive = hive_datum[hivenumber]
+			if(GLOB.hive_datum[hivenumber])
+				var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 
 				if(hive)
 					if(hive.color)
@@ -365,7 +365,7 @@ var/list/datum/mob_hud/huds = list(
 			var/obj/item/alien_embryo/E = locate(/obj/item/alien_embryo) in src
 			if(E)
 				holder3.icon_state = "infected[E.stage]"
-				var/datum/hive_status/hive = hive_datum[E.hivenumber]
+				var/datum/hive_status/hive = GLOB.hive_datum[E.hivenumber]
 
 				if(hive && hive.color)
 					holder3.color = hive.color
@@ -490,8 +490,8 @@ var/list/datum/mob_hud/huds = list(
 	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
-	if (stat != DEAD && hivenumber && hivenumber <= hive_datum.len)
-		var/datum/hive_status/hive = hive_datum[hivenumber]
+	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum.len)
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
 		if (Q && Q.observed_xeno == src)
 			holder.icon_state = "queen_overwatch"
@@ -515,6 +515,10 @@ var/list/datum/mob_hud/huds = list(
 		holder.overlays += I
 	if (age)
 		var/image/J = image('icons/mob/hud/hud.dmi',src, "hudxenoupgrade[age]")
+		holder.overlays += J
+	if(hive && hivenumber != XENO_HIVE_NORMAL)
+		var/image/J = image('icons/mob/hud/hud.dmi', src, "hudalien_xeno")
+		J.color = hive.color
 		holder.overlays += J
 
 //Sec HUDs

@@ -203,7 +203,7 @@ var/nextAdminBioscan = MINUTES_30//30 minutes in
 
 	var/larva = 0
 	//Count all larva across all hives
-	for(var/datum/hive_status/hs in hive_datum)
+	for(var/datum/hive_status/hs in GLOB.hive_datum)
 		larva += hs.stored_larva
 
 	//Keeping track of peak numbers to determine when a side is "losing"

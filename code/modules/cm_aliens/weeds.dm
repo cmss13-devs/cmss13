@@ -36,7 +36,7 @@
 		node.add_child(src)
 		hivenumber = linked_hive.hivenumber
 	else
-		linked_hive = hive_datum[hivenumber]
+		linked_hive = GLOB.hive_datum[hivenumber]
 
 	set_hive_data(src, hivenumber)
 
@@ -106,11 +106,11 @@
 /obj/effect/alien/weeds/Crossed(atom/movable/AM)
 	if (ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if (!isYautja(H) && !H.allied_to_hivenumber(linked_hive.hivenumber, XENO_SLASH_RESTRICTED)) // predators are immune to weed slowdown effect
+		if (!isYautja(H) && !H.ally_of_hivenumber(linked_hive.hivenumber)) // predators are immune to weed slowdown effect
 			H.next_move_slowdown = H.next_move_slowdown + weed_strength
 	else if (isXeno(AM))
 		var/mob/living/carbon/Xenomorph/X = AM
-		if (X.hivenumber != linked_hive.hivenumber)
+		if (!linked_hive.is_ally(X))
 			X.next_move_slowdown = X.next_move_slowdown + (weed_strength*WEED_XENO_SPEED_MULT)
 
 // Uh oh, we might be dying!
@@ -259,7 +259,7 @@
 			qdel(src)
 
 /obj/effect/alien/weeds/attack_alien(mob/living/carbon/Xenomorph/X)
-	if(X.hivenumber != linked_hive.hivenumber)
+	if(!HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		X.animation_attack_on(src)
 
 		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
@@ -382,7 +382,7 @@
 	else if (istype(X) && X.hive)
 		linked_hive = X.hive
 	else
-		linked_hive = hive_datum[hivenumber]
+		linked_hive = GLOB.hive_datum[hivenumber]
 
 
 	. = ..(mapload, src)
@@ -428,14 +428,14 @@
 	node_range = WEED_RANGE_CORE
 
 /obj/effect/alien/weeds/node/pylon/Destroy()
-	parent_pylon = null 
+	parent_pylon = null
 	return ..()
 
 /obj/effect/alien/weeds/node/pylon/ex_act(severity)
 	return
 
 /obj/effect/alien/weeds/node/pylon/attackby(obj/item/W, mob/living/user)
-	return 
+	return
 
 /obj/effect/alien/weeds/node/pylon/attack_alien(mob/living/carbon/Xenomorph/X)
 	return

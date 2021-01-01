@@ -17,6 +17,7 @@
 /mob/living/carbon/Xenomorph/apply_overlay(cache_index)
 	var/image/I = overlays_standing[cache_index]
 	if(I)
+		I.appearance_flags |= RESET_COLOR
 		overlays += I
 
 /mob/living/carbon/Xenomorph/remove_overlay(cache_index)
@@ -119,12 +120,13 @@
 	if (color)
 		screech_image = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" = "shriek_waves_greyscale") // For Praetorian screech
 		screech_image.color = color
-		screech_image.pixel_x = offset_x
-		screech_image.pixel_y = offset_y
 	else
 		screech_image = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
-		screech_image.pixel_x = offset_x
-		screech_image.pixel_y = offset_y
+
+	screech_image.pixel_x = offset_x
+	screech_image.pixel_y = offset_y
+
+	screech_image.appearance_flags |= RESET_COLOR
 
 	remove_suit_layer()
 
@@ -163,14 +165,13 @@
 		if(mob_size >= MOB_SIZE_BIG)
 			if((!initial(pixel_y) || lying) && !resting && !sleeping)
 				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
-				I.color = fire_reagent.burncolor
 			else
 				I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_overlay_64x64)), "icon_state"="alien_fire_lying", "layer"=-X_FIRE_LAYER)
-				I.color = fire_reagent.burncolor
 		else
 			I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_effects)), "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
-			I.color = fire_reagent.burncolor
 
+		I.appearance_flags |= RESET_COLOR
+		I.color = fire_reagent.burncolor
 		overlays_standing[X_FIRE_LAYER] = I
 		apply_overlay(X_FIRE_LAYER)
 

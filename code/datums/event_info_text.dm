@@ -46,7 +46,7 @@
 
 	else
 		var/datum/hive_status/hive
-		for(hive in hive_datum)
+		for(hive in GLOB.hive_datum)
 			if(hive.name == faction)
 				for(var/mob/M in hive.totalXenos)
 					show_player_event_info(M)

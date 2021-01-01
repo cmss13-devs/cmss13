@@ -109,7 +109,7 @@
 	QDEL_IN(src, 3 SECONDS)
 
 /obj/effect/alien/resin/fruit/attack_alien(mob/living/carbon/Xenomorph/X)
-	if(X.a_intent == INTENT_HELP && X.match_hivemind(bound_xeno))
+	if(X.a_intent == INTENT_HELP && X.can_not_harm(bound_xeno))
 		if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && X.health >= X.caste.max_health)
 			to_chat(X, SPAN_XENODANGER("You are at full health! This would be a waste..."))
 			return
@@ -120,7 +120,7 @@
 			consume_effect(X)
 		else
 			to_chat(X, SPAN_XENOWARNING("[name] isn't ripe yet. You need to wait a little longer."))
-	if(X.a_intent == INTENT_HARM && isXenoBuilder(X) || !X.match_hivemind(bound_xeno))
+	if(X.a_intent == INTENT_HARM && isXenoBuilder(X) || !X.can_not_harm(bound_xeno))
 		to_chat(X, SPAN_XENODANGER("You remove [name]!"))
 		playsound(loc, "alien_resin_break", 25)
 		qdel(src)

@@ -16,7 +16,7 @@
 		return
 
 	var/mob/living/carbon/Xenomorph/Runner/R = MS.xeno
-	R.mutation_type = RUNNER_ACIDER	
+	R.mutation_type = RUNNER_ACIDER
 	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	apply_behavior_holder(R)
 	mutator_update_actions(R)
@@ -25,7 +25,7 @@
 
 /datum/behavior_delegate/runner_acider
 	var/acid_amount = 0
-	
+
 	var/caboom_left = 20
 	var/caboom_trigger
 	var/caboom_last_proc
@@ -56,8 +56,8 @@
 	stat("Acid:", "[acid_amount]")
 	if(caboom_trigger)
 		stat("FOR THE HIVE!:", "in [caboom_left] seconds")
-	
-/datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(atom/A)	
+
+/datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(atom/A)
 	if (ishuman(A))
 		var/mob/living/carbon/human/H = A
 		if (H.stat == DEAD)
@@ -76,7 +76,7 @@
 	if(!bound_xeno)
 		return
 	if(bound_xeno.stat == DEAD)
-		return		
+		return
 	if(caboom_trigger)
 		var/wt = world.time
 		if(caboom_last_proc)
@@ -109,7 +109,7 @@
 	var/x = bound_xeno.x
 	var/y = bound_xeno.y
 	for(var/mob/living/M in view(bound_xeno, burn_range))
-		if (!isXenoOrHuman(M) || bound_xeno.match_hivemind(M))
+		if (!isXenoOrHuman(M) || bound_xeno.can_not_harm(M))
 			continue
 		var/dist = 0
 		// such cheap, much fast

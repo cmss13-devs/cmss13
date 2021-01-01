@@ -38,7 +38,7 @@
 	if (!istype(X))
 		return
 
-	if(!isXenoOrHuman(A) || X.match_hivemind(A))
+	if(!isXenoOrHuman(A) || X.can_not_harm(A))
 		return
 
 	if(!X.check_state())
@@ -130,7 +130,7 @@
 
 	var/sweep_range = 1
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
-		if (!isXenoOrHuman(H) || X.match_hivemind(H)) continue
+		if (!isXenoOrHuman(H) || X.can_not_harm(H)) continue
 		if(H.stat == DEAD) continue
 		if(istype(H.buckled, /obj/structure/bed/nest)) continue
 		step_away(H, X, sweep_range, 2)

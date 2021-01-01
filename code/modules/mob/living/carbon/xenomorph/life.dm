@@ -413,7 +413,7 @@ updatehealth()
 
 /mob/living/carbon/Xenomorph/updatehealth()
 	if(status_flags & GODMODE)
-		health = 100
+		health = maxHealth
 		stat = CONSCIOUS
 	else if(xeno_shields.len != 0)
 		overlay_shields()
@@ -484,7 +484,7 @@ updatehealth()
 
 	var/obj/effect/alien/weeds/W = locate(/obj/effect/alien/weeds) in T
 
-	if(W && W.linked_hive.hivenumber == hivenumber)
+	if(W && W.linked_hive.is_ally(src))
 		return TRUE //weeds, yes!
 	if(need_weeds)
 		return FALSE //needs weeds, doesn't have any

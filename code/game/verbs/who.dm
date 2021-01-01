@@ -124,7 +124,7 @@
 				if(show_fact)
 					msg += "<br><br>Xenomorphs:"
 					show_fact = FALSE
-				hive = hive_datum[i]
+				hive = GLOB.hive_datum[i]
 				if(hive)
 					msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
 				else

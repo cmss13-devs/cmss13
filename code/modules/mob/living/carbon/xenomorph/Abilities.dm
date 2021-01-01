@@ -240,7 +240,7 @@
 				shake_camera(M, 30, 1) //50 deciseconds, SORRY 5 seconds was way too long. 3 seconds now
 
 	for(var/mob/living/carbon/M in oview(7, X))
-		if((X.match_hivemind(M) || isXenoQueen(M)))
+		if(SEND_SIGNAL(M, COMSIG_MOB_SCREECH_ACT, src) & COMPONENT_SCREECH_ACT_CANCEL)
 			continue
 
 		M.scream_stun_timeout = SECONDS_20
@@ -326,7 +326,7 @@
 		to_chat(X, SPAN_XENOWARNING("You cannot give plasma to yourself!"))
 		return
 
-	if(!X.match_hivemind(target))
+	if(!X.can_not_harm(target))
 		to_chat(X, SPAN_WARNING("You can only target xenos part of your hive!"))
 		return
 
@@ -464,7 +464,7 @@
 			return FALSE
 		var/obj/effect/alien/weeds/alien_weeds = locate() in T
 		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
-			to_chat(X, SPAN_WARNING("You can only shape on [lowertext(hive_datum[X.hivenumber].prefix)]hive weeds. Find a hive node or core before you start building!"))
+			to_chat(X, SPAN_WARNING("You can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. Find a hive node or core before you start building!"))
 			qdel(structure_template)
 			return FALSE
 

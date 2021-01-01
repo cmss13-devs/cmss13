@@ -74,7 +74,7 @@
 	UnregisterSignal(SSdcs, COMSIG_GLOB_MODE_POSTSETUP, .proc/setup_yautja_icons)
 
 /datum/species/yautja/larva_impregnated(var/obj/item/alien_embryo/embryo)
-	var/datum/hive_status/hive = hive_datum[embryo.hivenumber]
+	var/datum/hive_status/hive = GLOB.hive_datum[embryo.hivenumber]
 
 	if(!istype(hive))
 		return

@@ -39,7 +39,7 @@
 				M.start_pulling(src)
 
 		if(INTENT_HARM)
-			if(match_hivemind(M))
+			if(M.can_not_harm(src))
 				M.animation_attack_on(src)
 				M.visible_message(SPAN_NOTICE("[M] nibbles [src]"), \
 				SPAN_XENONOTICE("You nibble [src]"))
@@ -250,7 +250,7 @@
 			if(M.caste && !M.caste.is_intelligent)
 				if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
 					for(var/obj/item/alien_embryo/embryo in src)
-						if(embryo.hivenumber == M.hivenumber)
+						if(HIVE_ALLIED_TO_HIVE(M.hivenumber, embryo.hivenumber))
 							to_chat(M, SPAN_WARNING("You should not harm this host! It has a sister inside."))
 							return FALSE
 

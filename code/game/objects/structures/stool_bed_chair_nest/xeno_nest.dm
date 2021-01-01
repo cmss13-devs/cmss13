@@ -54,12 +54,12 @@
 
 	if(isXeno(user))
 		var/mob/living/carbon/Xenomorph/X = user
-		if(!X.hive.unnesting_allowed && !isXenoBuilder(X) && X.hivenumber == hivenumber)
+		if(!X.hive.unnesting_allowed && !isXenoBuilder(X) && HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 			to_chat(X, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
 	else if(iscarbon(user))
 		var/mob/living/carbon/H = user
-		if(H.hivenumber == hivenumber)
+		if(HIVE_ALLIED_TO_HIVE(H.hivenumber, hivenumber))
 			to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
 

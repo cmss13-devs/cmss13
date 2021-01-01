@@ -53,25 +53,6 @@
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_lurker))
 
-/mob/living/carbon/Xenomorph/Lurker/update_icons()
-	if(!caste)
-		return
-	if(stat == DEAD)
-		icon_state = "[mutation_type] [caste.caste_name] Dead"
-	else if(lying)
-		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] [caste.caste_name] Sleeping"
-		else
-			icon_state = "[mutation_type] [caste.caste_name] Knocked Down"
-	else
-		var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(src, /datum/action/xeno_action/onclick/lurker_invisibility)
-		if (LIA && istype(LIA) && LIA.is_invisible)
-			icon_state = "[mutation_type] [caste.caste_name] Invisible"
-		else
-			icon_state = "[mutation_type] [caste.caste_name] Running"
-
-	update_fire()
-
 /datum/behavior_delegate/lurker_base
 	name = "Base Lurker Behavior Delegate"
 

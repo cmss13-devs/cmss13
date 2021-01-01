@@ -154,10 +154,10 @@
 	if(iscarbon(speaker))
 		var/mob/living/carbon/C = speaker
 
-		if(!(C.hivenumber in hive_datum))
+		if(!(C.hivenumber in GLOB.hive_datum))
 			return
 
-		C.hivemind_broadcast(message, hive_datum[C.hivenumber])
+		C.hivemind_broadcast(message, GLOB.hive_datum[C.hivenumber])
 
 /datum/language/binary
 	name = "Robot Talk"

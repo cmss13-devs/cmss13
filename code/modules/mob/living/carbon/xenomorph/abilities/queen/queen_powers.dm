@@ -244,7 +244,7 @@
 		return
 
 	for(var/mob/living/carbon/Xenomorph/Xa in range(4, T))
-		if(!X.match_hivemind(Xa))
+		if(!X.can_not_harm(Xa))
 			continue
 
 		if(Xa.on_fire)

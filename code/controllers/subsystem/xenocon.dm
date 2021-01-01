@@ -9,7 +9,7 @@ SUBSYSTEM_DEF(xenocon)
 	if(rewarded)
 		return
 
-	for(var/datum/hive_status/hive in hive_datum)
+	for(var/datum/hive_status/hive in GLOB.hive_datum)
 		if(hive.xenocon_points >= XENOCON_THRESHOLD)
 			var/datum/emergency_call/em_call = new /datum/emergency_call/xenos/platoon()
 			em_call.activate()

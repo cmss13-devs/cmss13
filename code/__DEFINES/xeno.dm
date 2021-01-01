@@ -72,8 +72,7 @@
 #define XENO_STARTING_CRYSTAL 100 //How much building resource the queen gets to start with
 
 #define XENO_SLASH_ALLOWED 0
-#define XENO_SLASH_RESTRICTED 1
-#define XENO_SLASH_FORBIDDEN 2
+#define XENO_SLASH_FORBIDDEN 1
 // Holds defines for /datum/caste_datum, which is the primary datum for the caste system,
 // /datum/hive_status (self explanatory)
 // and some of the var defines for the Xenomorph base type.
@@ -89,12 +88,13 @@
 
 #define XVX_UNIVERSAL_DAMAGEMULT 1.5 // Use to unilaterally buff every caste's DAMAGE against other xenos.
 
-#define XVX_SLASH_DAMAGEMULT 1 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that uses brute damage or slash damage
-#define XVX_ACID_DAMAGEMULT 2 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that apply acid damage (not including projectiles)
+#define XVX_SLASH_DAMAGEMULT 1.5 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that uses brute damage or slash damage
+#define XVX_ACID_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that apply acid damage (not including projectiles)
 #define XVX_PROJECTILE_DAMAGEMULT 1.75 * XVX_UNIVERSAL_DAMAGEMULT // Applies to any abilities that use projectiles
 
 #define XVX_STUN_LENGTHMULT 1.25
 
+#define XVX_ARMOR_EFFECTIVEMULT 0.25
 
 // Caste-specific
 #define XVX_WARRIOR_HEALMULT 0.35
@@ -530,3 +530,9 @@
 #define CASTE_BURROWER "Burrower"
 
 #define CASTE_QUEEN "Queen"
+
+// Checks if two hives are allied to each other.
+// PARAMETERS:
+// source_hive 	integer	 the hive to check the alliance of
+// target_hive  integer  the target hive to see if the source_hive is allied to it.
+#define HIVE_ALLIED_TO_HIVE(source_hive, target_hive) (source_hive == target_hive || GLOB.hive_datum[source_hive]?.faction_is_ally(GLOB.hive_datum[target_hive]?.internal_faction))

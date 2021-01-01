@@ -82,7 +82,7 @@
 	max_level = 6
 
 /datum/chem_property/special/ciphering/process(mob/living/M, var/potency = 1)
-	if(!hive_datum[level]) // This should probably always be valid
+	if(!GLOB.hive_datum[level]) // This should probably always be valid
 		return
 
 	for(var/content in M.contents)
@@ -90,7 +90,7 @@
 			continue
 		var/obj/item/alien_embryo/A = content
 		A.hivenumber = level
-		A.faction = hive_datum[level].name
+		A.faction = GLOB.hive_datum[level].internal_faction
 
 /datum/chem_property/special/ciphering/predator
 	name = PROPERTY_CIPHERING_PREDATOR

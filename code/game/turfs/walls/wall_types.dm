@@ -611,7 +611,9 @@
 	if(!istype(X))
 		return FALSE
 
-	return X.hivenumber == hivenumber
+	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
+
+	return hive.is_ally(X)
 
 /turf/closed/wall/resin/membrane/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

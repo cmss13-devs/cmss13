@@ -69,7 +69,7 @@ SUBSYSTEM_DEF(tracking)
 
 	if(tracking_id != tracked_group)
 		tracked_mobs[tracked_group] -= mob
-		
+
 	if(tracked_mobs[tracking_id])
 		tracked_mobs[tracking_id] -= mob
 
@@ -93,5 +93,5 @@ SUBSYSTEM_DEF(tracking)
 
 /datum/controller/subsystem/tracking/proc/initialize_trackers()
 	setup_trackers(null, "marine_sl")
-	for(var/datum/hive_status/hive in hive_datum)
+	for(var/datum/hive_status/hive in GLOB.hive_datum)
 		setup_trackers(null, "hive_[hive.hivenumber]")

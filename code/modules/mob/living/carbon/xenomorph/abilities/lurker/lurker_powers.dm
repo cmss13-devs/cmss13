@@ -10,7 +10,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	is_invisible = TRUE
+	animate(X, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
 	X.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
 
 	var/min_dist_found = 100000
@@ -51,9 +51,8 @@
 	return
 
 /datum/action/xeno_action/onclick/lurker_invisibility/proc/invisibility_off()
-	if (!is_invisible)
+	if(!owner || owner.alpha == initial(owner.alpha))
 		return
-	is_invisible = FALSE
 
 	if (invis_timer_id != TIMER_ID_NULL)
 		deltimer(invis_timer_id)
@@ -61,7 +60,7 @@
 
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (istype(X))
-
+		animate(X, alpha = initial(X.alpha), time = 0.1 SECONDS, easing = QUAD_EASING)
 		to_chat(X, SPAN_XENOHIGHDANGER("You feel your invisibility end!"))
 
 		X.update_icons()

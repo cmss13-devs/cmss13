@@ -159,6 +159,9 @@
 /datum/hive_status
 	var/name = "Normal Hive"
 
+	// Used for the faction of the xenomorph. Not recommended to modify.
+	var/internal_faction
+
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
 	var/egg_planting_range = 15
@@ -223,12 +226,19 @@
 	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
 
 	var/datum/hive_status_ui/hive_ui = new
+	var/datum/hive_faction_ui/faction_ui
 
 	var/list/tunnels = list()
+
+	var/list/allies = list()
 
 /datum/hive_status/New()
 	mutators.hive = src
 	hive_ui.set_hive(src)
+
+	faction_ui = new(src)
+
+	internal_faction = name
 
 // Adds a xeno to this hive
 /datum/hive_status/proc/add_xeno(var/mob/living/carbon/Xenomorph/X)
@@ -251,6 +261,11 @@
 
 	X.hivenumber = hivenumber
 	X.hive = src
+
+	X.set_faction(internal_faction)
+
+	if(X.hud_list)
+		X.hud_update()
 
 	if(!is_admin_level(X.z))
 		totalXenos += X
@@ -666,6 +681,29 @@
 			qdel(embryo)
 		potential_host.death("larva suicide")
 
+/mob/living/carbon/proc/ally_of_hivenumber(var/hivenumber)
+	var/datum/hive_status/H = GLOB.hive_datum[hivenumber]
+	if(!H)
+		return FALSE
+
+	return H.is_ally(src)
+
+/datum/hive_status/proc/is_ally(var/mob/living/carbon/C)
+	if(isXeno(C) && C.hivenumber == hivenumber)
+		var/mob/living/carbon/Xenomorph/X = C
+		return !X.banished
+
+	if(!C.faction)
+		return FALSE
+
+	return faction_is_ally(C.faction)
+
+/datum/hive_status/proc/faction_is_ally(var/faction)
+	if(!living_xeno_queen)
+		return FALSE
+
+	return allies[faction]
+
 /datum/hive_status/corrupted
 	name = "Corrupted Hive"
 	hivenumber = XENO_HIVE_CORRUPTED
@@ -711,3 +749,4 @@
 	color = "#8080ff"
 
 	dynamic_evolution = FALSE
+

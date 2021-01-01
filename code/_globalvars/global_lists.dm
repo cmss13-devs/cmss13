@@ -97,7 +97,14 @@ var/global/list/synth_types = list("Synthetic","Second Generation Synthetic")
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, name)
 
 //Xeno hives
-var/global/list/datum/hive_status/hive_datum = list(new /datum/hive_status(), new /datum/hive_status/corrupted(), new /datum/hive_status/alpha(), new /datum/hive_status/bravo(), new /datum/hive_status/charlie(), new /datum/hive_status/delta())
+GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
+	new /datum/hive_status(),
+	new /datum/hive_status/corrupted(),
+	new /datum/hive_status/alpha(),
+	new /datum/hive_status/bravo(),
+	new /datum/hive_status/charlie(),
+	new /datum/hive_status/delta(),
+))
 
 //DEFCON rewards / assets
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(defcon_reward_list, /datum/defcon_reward, name)
@@ -272,9 +279,9 @@ var/global/list/paramslist_cache = list()
 		GLOB.custom_event_info_list[T] = CEI
 
 	var/datum/hive_status/hive
-	for(hive in hive_datum)
+	for(hive in GLOB.hive_datum)
 		CEI = new /datum/custom_event_info
-		CEI.faction = hive.name
+		CEI.faction = hive.internal_faction
 		GLOB.custom_event_info_list[hive.name] = CEI
 
 	return 1

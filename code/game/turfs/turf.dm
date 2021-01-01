@@ -227,6 +227,8 @@
 	return 0
 
 /turf/proc/inertial_drift(atom/movable/A as mob|obj)
+	if(A.anchored)
+		return
 	if(!(A.last_move_dir))	return
 	if((istype(A, /mob/) && src.x > 2 && src.x < (world.maxx - 1) && src.y > 2 && src.y < (world.maxy-1)))
 		var/mob/M = A

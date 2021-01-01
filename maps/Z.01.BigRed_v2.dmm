@@ -29887,7 +29887,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "cqj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -30822,7 +30822,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "iQw" = (
 /obj/item/ore,
 /turf/open/mars_cave{
@@ -30941,7 +30941,7 @@
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "jvt" = (
 /obj/structure/lz_sign/solaris_sign,
 /turf/open/mars,
@@ -31018,7 +31018,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "jOc" = (
 /turf/open/floor{
 	dir = 1;
@@ -31033,7 +31033,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "jUc" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -31093,7 +31093,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "kkB" = (
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor{
@@ -31298,7 +31298,7 @@
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "lQU" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -31343,7 +31343,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "mbH" = (
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/plating,
@@ -31358,7 +31358,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "msf" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11";
@@ -31385,7 +31385,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "mya" = (
 /obj/structure/mineral_door/resin,
 /turf/open/mars_cave{
@@ -31505,14 +31505,14 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "nHj" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "nMB" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
@@ -31520,7 +31520,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "nTK" = (
 /obj/structure/pipes/standard/manifold/visible,
 /obj/effect/landmark/objective_landmark/science,
@@ -31606,7 +31606,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "oip" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_6";
@@ -31623,7 +31623,7 @@
 "otW" = (
 /obj/vehicle/multitile/van/fixed,
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "ovq" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -31639,7 +31639,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "oxp" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -31832,7 +31832,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "pYt" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7";
@@ -31872,7 +31872,7 @@
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "qkB" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8";
@@ -31888,7 +31888,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "qmY" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
@@ -31912,10 +31912,10 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "qsE" = (
 /turf/closed/wall/solaris/reinforced,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "qvA" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/mars_cave{
@@ -31955,7 +31955,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "qFY" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -32024,7 +32024,7 @@
 /area/bigredv2/outside/se)
 "rml" = (
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "rnc" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_research)
@@ -32062,7 +32062,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "rDP" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -32077,7 +32077,7 @@
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "rLR" = (
 /obj/effect/landmark/structure_spawner/xenos/nest,
 /turf/open/mars_cave{
@@ -32092,14 +32092,14 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "rMG" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating{
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "rRO" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11";
@@ -32149,7 +32149,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "siu" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -32186,7 +32186,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "svp" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
@@ -32300,7 +32300,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "trk" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_13";
@@ -32351,7 +32351,7 @@
 	dir = 4;
 	icon_state = "warnplate"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "tLt" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_14";
@@ -32407,7 +32407,7 @@
 "upE" = (
 /obj/structure/machinery/light,
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "usG" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_18";
@@ -32424,13 +32424,13 @@
 "uvz" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "uFp" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "uGz" = (
 /obj/effect/landmark/structure_spawner/xenos/wall,
 /turf/open/floor{
@@ -32448,7 +32448,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "uPm" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -32519,7 +32519,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "vjc" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -32606,7 +32606,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "vOM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -32637,7 +32637,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "waJ" = (
 /obj/structure/mineral_door/resin,
 /turf/open/mars_cave{
@@ -32667,11 +32667,11 @@
 "whZ" = (
 /obj/vehicle/multitile/van/decrepit,
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "wix" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "wiK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -32798,7 +32798,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/garage)
+/area/bigred/ground/garage)
 "wNw" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;

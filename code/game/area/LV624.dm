@@ -203,6 +203,10 @@
 	icon_state = "green"
 	ceiling = CEILING_METAL
 
+/area/lv624/lazarus/garage
+	name = "vehicle garage"
+	icon_state = "green"
+
 /area/lv624/lazarus/atmos
 	name = "\improper Atmospherics"
 	icon_state = "atmos"

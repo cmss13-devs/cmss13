@@ -6,10 +6,6 @@
 	soundscape_playlist = SCAPE_PL_THUNDER
 	soundscape_interval = 50
 
-/area/bigred/garage
-	name = "vehicle garage"
-	icon_state = "green"
-
 /area/bigred/ground
 	name = "ground"
 	icon_state = "blue"
@@ -17,6 +13,11 @@
 /area/bigred/uground
 	name = "uground"
 	icon_state = "blue"
+
+/area/bigred/ground/garage
+	name = "vehicle garage"
+	icon_state = "green"
+	ceiling = CEILING_METAL
 
 /area/bigred/ground/ship
 	name = "\improper crashed vessel"

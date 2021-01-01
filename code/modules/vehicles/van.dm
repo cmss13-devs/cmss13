@@ -36,7 +36,7 @@
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
 
-	luminosity = 4
+	luminosity = 8
 
 	max_momentum = 3
 
@@ -50,7 +50,7 @@
 	)
 
 	turn_momentum_loss_factor = 1
-	
+
 	req_access = list()
 	req_one_access = list()
 
@@ -89,7 +89,7 @@
 
 	var/direction_taken = pick(45, -45)
 	var/successful = step(L, turn(last_move_dir, direction_taken))
-	
+
 	if(!successful)
 		successful = step(L, turn(last_move_dir, -direction_taken))
 
@@ -101,25 +101,25 @@
 /obj/vehicle/multitile/van/post_movement()
 	if(locate(/obj/effect/alien/weeds) in loc)
 		momentum *= momentum_loss_on_weeds_factor
-	
+
 	. = ..()
-	
+
 
 /obj/vehicle/multitile/van/attackby(obj/item/O, mob/user)
 	if(iswelder(O) && health >= initial(health))
-		var/obj/item/hardpoint/H 
+		var/obj/item/hardpoint/H
 		for(var/obj/item/hardpoint/potential_hardpoint in hardpoints)
 			if(potential_hardpoint.health < initial(potential_hardpoint.health))
 				H = potential_hardpoint
 				break
-			
+
 		if(H)
 			H.handle_repair(O, user)
 			update_icon()
 			return
-		
+
 	. = ..()
-	
+
 
 /obj/vehicle/multitile/van/handle_click(mob/living/user, atom/A, list/mods)
 	if(mods["shift"] && !mods["alt"])
@@ -133,7 +133,7 @@
 		next_overdrive = world.time + overdrive_cooldown
 		to_chat(user, SPAN_NOTICE("You activate overdrive."))
 		playsound(src, 'sound/vehicles/overdrive_activate.ogg', 75, FALSE)
-		return 
+		return
 
 	return ..()
 
@@ -146,7 +146,7 @@
 
 /obj/vehicle/multitile/van/decrepit/load_damage(var/obj/vehicle/multitile/R)
 	take_damage_type(1e8, "abstract") //OOF.ogg
-	
+
 
 /obj/structure/interior_exit/vehicle/van/left
 	name = "Van left door"

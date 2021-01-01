@@ -53,19 +53,20 @@
 	name = "Early Synthetic"
 	name_plural = "Early Synthetics"
 	uses_ethnicity = FALSE
+	burn_mod = 0.80 // a little bit of resistance
 
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
 	pain_type = /datum/pain/synthetic/early_synthetic
 	rarity_value = 1.5
-	//slowdown = 1.3 //Slower than later synths
+	slowdown = 1.4
 	total_health = 200 //But more durable
 	insulated = 1
 
 	hair_color = "#000000"
 
-	knock_down_reduction = 2
-	stun_reduction = 2
+	knock_down_reduction = 3.5
+	stun_reduction = 3.5 
 
 	inherent_verbs = null

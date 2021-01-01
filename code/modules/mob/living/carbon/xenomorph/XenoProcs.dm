@@ -273,6 +273,13 @@
 					KnockDown(4)
 					throwing = FALSE
 					return
+			if(isEarlySynthetic(H) && prob(60))
+				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
+					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
+				KnockDown(1.5)
+				throwing = FALSE
+				return
+
 
 	visible_message(SPAN_DANGER("[src] [pounceAction.ability_name] onto [M]!"), SPAN_XENODANGER("You [pounceAction.ability_name] onto [M]!"), null, 5)
 

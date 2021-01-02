@@ -30,7 +30,7 @@
 
 /area/kutjevo/interior
 	name = "Kutjevo - Interior"
-	ceiling = CEILING_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "int"
 	requires_power = 1
 
@@ -188,19 +188,19 @@
 
 /area/kutjevo/interior/colony
 	name = "Kutjevo - Colony Building Interior"
-	ceiling = CEILING_UNDERGROUND_METAL
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	icon_state = "colony_int"
 	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_central
 	name = "Kutjevo - Central Colony Caves"
-	ceiling = CEILING_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
 	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_central/mine_elevator
 	name = "Kutjevo - Central Colony Elevator"
-	ceiling = CEILING_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
 	can_hellhound_enter = 0
 

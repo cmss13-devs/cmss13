@@ -599,7 +599,7 @@
 	if(!shootloc)
 		return
 	var/area/laser_area = get_area(shootloc)
-	if(!istype(laser_area) || laser_area.ceiling > CEILING_GLASS)
+	if(!istype(laser_area) || CEILING_IS_PROTECTED(laser_area.ceiling, CEILING_PROTECTION_TIER_1))
 		if(firemission_envelope.user_is_guided(usr))
 			to_chat(usr, SPAN_WARNING("Vision Obstructed. You have to go in blind."))
 		firemission_envelope.change_current_loc()

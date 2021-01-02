@@ -180,7 +180,7 @@
 				return -1
 			var/turf/shootloc = locate(current_turf.x + sx*offset, current_turf.y + sy*offset, current_turf.z)
 			var/area/A = get_area(shootloc)
-			if(shootloc && A?.ceiling < CEILING_DEEP_UNDERGROUND && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
+			if(shootloc && !CEILING_IS_PROTECTED(A?.ceiling, CEILING_PROTECTION_TIER_3) && !protected_by_pylon(TURF_PROTECTION_CAS, shootloc))
 				item.weapon.open_fire_firemission(shootloc)
 		sleep(step_delay)
 	if(envelope)

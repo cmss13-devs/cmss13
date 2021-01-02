@@ -123,7 +123,8 @@
 		var/offset_y_max = round(abs((targ_y + dial_y) - y)/offset_per_turfs)
 		offset_x = rand(-offset_x_max, offset_x_max)
 		offset_y = rand(-offset_y_max, offset_y_max)
-	else busy = 0
+	else
+		busy = 0
 
 /obj/structure/mortar/proc/handle_dial(var/manual, var/mob/user, var/temp_dial_x = 0, var/temp_dial_y = 0)
 	if(manual)
@@ -184,7 +185,7 @@
 			to_chat(user, SPAN_WARNING("You cannot fire [src] to this target."))
 			return
 		var/area/A = get_area(T)
-		if((istype(A) && A.ceiling >= CEILING_UNDERGROUND) || protected_by_pylon(TURF_PROTECTION_MORTAR, T))
+		if((istype(A) && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2)) || protected_by_pylon(TURF_PROTECTION_MORTAR, T))
 			to_chat(user, SPAN_WARNING("You cannot hit the target. It is probably underground."))
 			return
 
@@ -315,7 +316,7 @@
 		to_chat(user, SPAN_WARNING("You cannot deploy [src] here."))
 		return
 	var/area/A = get_area(src)
-	if(A.ceiling >= CEILING_METAL)
+	if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_1))
 		to_chat(user, SPAN_WARNING("You probably shouldn't deploy [src] indoors."))
 		return
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \

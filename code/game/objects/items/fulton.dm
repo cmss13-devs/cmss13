@@ -77,7 +77,7 @@ var/global/list/deployed_fultons = list()
 		return
 
 	var/area/A = get_area(target_atom)
-	if(A && A.ceiling >= CEILING_UNDERGROUND)
+	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
 		to_chat(usr, SPAN_WARNING("You can't attach [src] to something when underground!"))
 		return
 

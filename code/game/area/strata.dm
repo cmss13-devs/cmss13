@@ -65,7 +65,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Under Ground Area"
 	icon_state = "ug"
 	fake_zlevel = 2 //'Underground', because numbers are fun
-	ceiling = CEILING_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/strata/ug/interior
 	name = "Interior Under Ground Area"

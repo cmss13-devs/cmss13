@@ -36,10 +36,10 @@
 		if(plasma && plasma.growth_level)
 			minimap.DrawBox(rgb(196,48,201),T.x-1,T.y-1,T.x+1,T.y+1)
 			continue
-		if(A.ceiling > CEILING_METAL && A.ceiling != CEILING_REINFORCED_METAL)
+		if(A.ceiling >= CEILING_PROTECTION_TIER_2 && A.ceiling != CEILING_REINFORCED_METAL)
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
-		if(A.ceiling > CEILING_METAL)
+		if(A.ceiling >= CEILING_PROTECTION_TIER_2)
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
 		if(locate(/obj/structure/window_frame) in T || locate(/obj/structure/window/framed) in T || locate(/obj/structure/machinery/door) in T)

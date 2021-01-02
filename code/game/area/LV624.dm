@@ -150,7 +150,7 @@
 	ambience_exterior = AMBIENCE_CAVE
 	soundscape_playlist = SCAPE_PL_CAVE
 	soundscape_interval = 25
-	ceiling = CEILING_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	sound_environment = 6
 
 //Caves

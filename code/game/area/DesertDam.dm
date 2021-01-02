@@ -9,7 +9,7 @@
 //INTERIOR
 // areas under rock
 /area/desert_dam/interior
-	ceiling = CEILING_UNDERGROUND_METAL
+	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 //NorthEastern Lab Section
 /area/desert_dam/interior/lab_northeast
 	name = "Northeastern Lab"

@@ -329,7 +329,7 @@ var/global/list/activated_medevac_stretchers = list()
 			return
 
 		var/area/AR = get_area(src)
-		if(AR.ceiling >= CEILING_METAL)
+		if(CEILING_IS_PROTECTED(AR.ceiling, CEILING_PROTECTION_TIER_1))
 			to_chat(user, SPAN_WARNING("[src] must be in the open or under a glass roof."))
 			return
 

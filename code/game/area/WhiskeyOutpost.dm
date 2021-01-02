@@ -11,7 +11,7 @@
 
 /area/whiskey_outpost/inside
 	name = "Interior Whiskey Outpost"
-	ceiling = CEILING_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 
 /area/whiskey_outpost/inside/hospital
 	name = "\improper Hospital"
@@ -172,7 +172,7 @@
 	name = "\improper Rock"
 	icon_state = "rock"
 	ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambisin4.ogg')
-	ceiling = CEILING_UNDERGROUND
+	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	requires_power = 1
 	always_unpowered = 1
 	lighting_use_dynamic = 1

@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY_TYPED(tracking_implant_list, /obj/item/implant/tracking)
 GLOBAL_LIST_EMPTY_TYPED(chem_implant_list, /obj/item/implant/chem)
 
 GLOBAL_LIST_EMPTY_TYPED(seed_list, /obj/item/seeds)
+GLOBAL_LIST_EMPTY_TYPED(grown_snacks_list, /obj/item/reagent_container/food/snacks/grown)
 GLOBAL_LIST_EMPTY_TYPED(head_limb_list, /obj/item/limb/head)
 
 GLOBAL_LIST_EMPTY_TYPED(portal_list, /obj/effect/portal)

@@ -21,27 +21,31 @@
 
 /obj/item/reagent_container/food/snacks/grown/Initialize()
 	. = ..()
+	GLOB.grown_snacks_list += src
+	update_from_seed()
 
-	//Handle some post-spawn var stuff.
-	spawn(1)
-		// Fill the object up with the appropriate reagents.
-		if(!isnull(plantname))
-			var/datum/seed/S = seed_types[plantname]
-			if(!S || !S.chems)
-				return
+/obj/item/reagent_container/food/snacks/grown/Destroy()
+	GLOB.grown_snacks_list -= src
+	return ..()
 
-			potency = S.potency
+/obj/item/reagent_container/food/snacks/grown/proc/update_from_seed()// Fill the object up with the appropriate reagents.
+	if(!isnull(plantname))
+		var/datum/seed/S = seed_types[plantname]
+		if(!S || !S.chems)
+			return
 
-			for(var/rid in S.chems)
-				var/list/reagent_data = S.chems[rid]
-				var/rtotal = reagent_data[1]
-				if(reagent_data.len > 1 && potency > 0)
-					rtotal += round(potency/reagent_data[2])
-				if(reagents)
-					reagents.add_reagent(rid, max(1, rtotal))
+		potency = S.potency
 
-		if(reagents && reagents.total_volume > 0)
-			bitesize = 1+round(reagents.total_volume / 2, 1)
+		for(var/rid in S.chems)
+			var/list/reagent_data = S.chems[rid]
+			var/rtotal = reagent_data[1]
+			if(length(reagent_data) > 1 && potency > 0)
+				rtotal += round(potency/reagent_data[2])
+			if(reagents)
+				reagents.add_reagent(rid, max(1, rtotal))
+
+	if(reagents && reagents.total_volume > 0)
+		bitesize = 1+round(reagents.total_volume / 2, 1)
 
 /obj/item/reagent_container/food/snacks/grown/corn
 	name = "ear of corn"

@@ -302,7 +302,7 @@
 	stop_pulling()
 	if(pulledby)
 		pulledby.stop_pulling()
-	if(buckled)
+	if(buckled && destination != buckled.loc)
 		buckled.unbuckle()
 	. = ..()
 	on_movement()

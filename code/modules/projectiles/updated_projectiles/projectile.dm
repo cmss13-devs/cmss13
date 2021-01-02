@@ -539,6 +539,8 @@
 	if(!anchored && !health) //unanchored objects offer no protection. Unless they can be destroyed.
 		return FALSE
 
+	if(!throwpass)
+		return TRUE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_IGNORE_COVER)
 		return FALSE
@@ -574,6 +576,9 @@
 
 	if(!anchored && !health) //unanchored objects offer no protection. Unless they can be destroyed.
 		return FALSE
+
+	if(!throwpass)
+		return TRUE
 
 	//At this point, all that's left is window frames, tables, and barricades
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -654,25 +659,7 @@
 	return TRUE
 
 
-/obj/structure/machinery/door/window/get_projectile_hit_boolean(obj/item/projectile/P)
-	if(src == P.original) //clicking on the object itself hits the object
-		if(prob(P.get_effective_accuracy()))
-			return TRUE
-
-	if(density)
-		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(ammo_flags & AMMO_ENERGY)
-			return FALSE
-
-		else if((P.dir & dir) || (P.dir & reverse_direction(dir)))
-			return TRUE
-	else
-		return FALSE
-
 /obj/structure/window/get_projectile_hit_boolean(obj/item/projectile/P)
-	if(src == P.original) //clicking on the object itself hits the object
-		if(prob(P.get_effective_accuracy()))
-			return TRUE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ammo_flags & AMMO_ENERGY)
 		return FALSE

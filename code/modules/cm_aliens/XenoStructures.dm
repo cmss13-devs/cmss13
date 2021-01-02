@@ -125,7 +125,7 @@
 		H.next_move_slowdown = H.next_move_slowdown + slow_amt
 		return .
 	var/mob/living/carbon/Xenomorph/X = AM
-	if(istype(X) && X.hivenumber != hivenumber)
+	if(istype(X) && !X.ally_of_hivenumber(hivenumber))
 		X.next_move_slowdown = X.next_move_slowdown + (slow_amt * WEED_XENO_SPEED_MULT)
 		return .
 

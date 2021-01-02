@@ -149,11 +149,12 @@
 	H.disable_special_flags()
 	H.disable_lights()
 	H.disable_special_items()
-	null_ghost_of_buckled_mob()
 
 	var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
 	if(choice == "Ghost")
-		ghost_of_buckled_mob = M.ghostize(FALSE)
+		// Ask to ghostize() so they can reenter, to leave mind and such intact
+		ghost_of_buckled_mob = M.ghostize(can_reenter_corpse = TRUE)
+		ghost_of_buckled_mob?.can_reenter_corpse = FALSE // Just don't for now
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"), \
@@ -176,27 +177,18 @@
 	resisting_ready = FALSE
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
+	var/mob/living/carbon/human/H = buckled_mob
 
-	var/mob/living/carbon/human/H = buckled_mob // Gets nulled in the next line
+	. = ..()
 
-	..()
-
-	if(ghost_of_buckled_mob && istype(H))
-		if(H.undefibbable)
-			return
-
-		if(!ghost_of_buckled_mob || !ghost_of_buckled_mob.mind)
-			return
-		var/datum/mind/M = ghost_of_buckled_mob.mind
-		if(!isobserver(M.current))
-			return
-
-		if(alert(ghost_of_buckled_mob, "You have been freed from your nest, do you want to return to your body?", ,"Yes", "No") == "Yes")
-			if(!ghost_of_buckled_mob || !ghost_of_buckled_mob.mind)
-				return
-			ghost_of_buckled_mob.mind.transfer_to(H, TRUE)
-			qdel(ghost_of_buckled_mob)
-			null_ghost_of_buckled_mob()
+	var/mob/dead/observer/G = ghost_of_buckled_mob
+	var/datum/mind/M = G?.mind
+	ghost_of_buckled_mob = null
+	if(!istype(H) || !istype(G) || !istype(M) || H.undefibbable || H.mind || M.original != H)
+		return // Zealous checking as most is handled by ghost code
+	to_chat(G, FONT_SIZE_HUGE(SPAN_DANGER("You have been freed from your nest and may go back to your body! (Look for 'Re-enter Corpse' in Ghost verbs, or <a href='?src=\ref[G];reentercorpse=1'>click here</a>!)")))
+	G.can_reenter_corpse = TRUE
+	return
 
 /obj/structure/bed/nest/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
@@ -246,14 +238,8 @@
 
 /obj/structure/bed/nest/Destroy()
 	unbuckle()
-
-	. = ..()
-
-	if(ghost_of_buckled_mob)
-		addtimer(CALLBACK(src, .proc/null_ghost_of_buckled_mob), 600) // Give the user 60 seconds to respond when nest is destroyed.
-
-/obj/structure/bed/nest/proc/null_ghost_of_buckled_mob()
 	ghost_of_buckled_mob = null
+	return ..()
 
 /obj/structure/bed/nest/structure
 	name = "thick alien nest"

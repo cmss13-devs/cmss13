@@ -234,8 +234,9 @@
 /obj/forceMove(atom/dest)
 	. = ..()
 
-	if(buckled_mob)
-		handle_buckled_mob_movement(loc,0)
+	// Bring the buckled_mob with us. No Move(), on_move callbacks, or any of this bullshit, we just got teleported
+	if(buckled_mob && loc == dest)
+		buckled_mob.forceMove(dest)
 
 /obj/proc/handle_buckled_mob_movement(NewLoc, direct)
 	if(!(direct & (direct - 1))) //not diagonal move. the obj's diagonal move is split into two cardinal moves and those moves will handle the buckled mob's movement.

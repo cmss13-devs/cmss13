@@ -14,7 +14,7 @@
 	//non-verbal languages are garbled if you can't see the speaker. Yes, this includes if they are inside a closet.
 	if (language && (language.flags & NONVERBAL))
 		if (!speaker || (src.sdisabilities & BLIND || src.blinded) || !(speaker.z == z && get_dist(speaker, src) <= world_view_size))
-			message = stars(message)
+			message = language.scramble(message)
 
 	if(!say_understands(speaker,language))
 		if(istype(speaker,/mob/living/simple_animal))
@@ -23,6 +23,8 @@
 				message = pick(S.speak)
 			else
 				message = stars(message)
+		else if(language)
+			message = language.scramble(message)
 		else
 			message = stars(message)
 

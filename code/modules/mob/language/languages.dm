@@ -1,55 +1,11 @@
-/*
-	Datum based languages. Easily editable and modular.
-*/
-
-/datum/language
-	var/name = "an unknown language" // Fluff name of language if any.
-	var/desc = "A language."         // Short description for 'Check Languages'.
-	var/speech_verb = "says"         // 'says', 'hisses', 'farts'.
-	var/ask_verb = "asks"            // Used when sentence ends in a ?
-	var/exclaim_verb = "exclaims"    // Used when sentence ends in a !
-	var/signlang_verb = list()       // list of emotes that might be displayed if this language has NONVERBAL or SIGNLANG flags
-	var/colour = "body"         	 // CSS style to use for strings in this language.
-	var/key = "x"                    // Character used to speak in language eg. :o for Unathi.
-	var/flags = 0                    // Various language flags.
-	var/native                       // If set, non-native speakers will have trouble speaking.
-
-/datum/language/proc/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
-
-	log_say("[key_name(speaker)] : ([name]) [message]")
-
-	for(var/mob/player in GLOB.player_list)
-
-		var/understood = 0
-
-		if(istype(player,/mob/dead))
-			understood = 1
-		else if((src in player.languages) && check_special_condition(player))
-			understood = 1
-
-		if(understood)
-			if(!speaker_mask) speaker_mask = speaker.name
-			var/msg = "<i><span class='game say'>[name], <span class='name'>[speaker_mask]</span> <span class='message'>[speech_verb], \"<span class='[colour]'>[message]</span><span class='message'>\"</span></span></span></i>"
-			to_chat(player, "[msg]")
-
-/datum/language/proc/check_special_condition(var/mob/other)
-	return 1
-
-/datum/language/proc/get_spoken_verb(var/msg_end)
-	switch(msg_end)
-		if("!")
-			return exclaim_verb
-		if("?")
-			return ask_verb
-	return speech_verb
-
-
 /datum/language/common
 	name = "English"
 	desc = "Common earth English."
 	speech_verb = "says"
 	key = "0"
 	flags = RESTRICTED
+
+	syllables = list("al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it", "le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to", "ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin", "his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi", "tio", "uld", "ver", "was", "wit", "you")
 
 /datum/language/common/get_spoken_verb(var/msg_end)
 	switch(msg_end)
@@ -59,15 +15,6 @@
 			return ask_verb
 	return speech_verb
 
-/*
-/datum/language/human
-	name = "Sol Common"
-	desc = "A bastardized hybrid of informal English and elements of Mandarin Chinese; the common language of the Sol system."
-	colour = "rough"
-	key = "1"
-	flags = RESTRICTED
-*/
-
 // Galactic common languages (systemwide accepted standards).
 /datum/language/japanese
 	name = "Japanese"
@@ -76,12 +23,16 @@
 	colour = "japanese"
 	key = "2"
 
+	syllables = list("ka", "ki", "ku", "ke", "ko", "ta", "chi", "tsu", "te", "to", "sa", "shi", "su", "se", "so", "na", "ni", "nu", "ne", "no", "n", "ha", "hi", "fu", "he", "ho", "ma", "mi", "mu", "me", "mo", "ya", "yu", "yo", "ra", "ri", "ru", "re", "ro", "wa", "wo")
+
 /datum/language/russian
 	name = "Russian"
 	desc = "An East Slavic language from Earth."
 	speech_verb = "says"
 	colour = "soghun"
 	key = "3"
+
+	syllables = list("al", "an", "bi", "vye", "vo", "go", "dye", "yel", "?n", "yer", "yet", "ka", "ko", "la", "ly", "lo", "l", "na", "nye", "ny", "no", "ov", "ol", "on", "or", "slog", "ot", "po", "pr", "ra", "rye", "ro", "st", "ta", "tye", "to", "t", "at", "bil", "vyer", "yego", "yeny", "yenn", "yest", "kak", "ln", "ova", "ogo", "oro", "ost", "oto", "pry", "pro", "sta", "stv", "tor", "chto", "eto")
 
 /datum/language/german
 	name = "Spacendeutchen"
@@ -92,6 +43,8 @@
 	colour = "german"
 	key = "4"
 
+	syllables = list("die", "das", "wein", "mir", "und", "wier", "ein", "nein", "gen", "en", "sauen", "bien", "nien", "rien", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "be")
+
 /datum/language/spanish
 	name = "Spanish"
 	desc = "The second most common language spoken in the UA, mostly concentrated and brought from marines from the Latin American territories and in the former southern USA."
@@ -101,6 +54,8 @@
 	colour = "spanish"
 	key = "5"
 
+	syllables = list("ha", "pana", "ja", "blo", "que", "spa", "di", "ga", "na", "ces", "si", "mo", "so", "de", "el", "to", "ro", "mi", "ca", "la", "di", "ah", "mio", "tar", "ion", "gran", "van", "jo", "cie", "qie", "las", "locho", "mas")
+
 /datum/language/commando
 	name = "Tactical Sign Language"
 	desc = "TSL is a modern technique with a combination of modified American sign language, tactical hand signals and discreet and esoteric code names for radios only known by elite commando groups."
@@ -108,7 +63,11 @@
 	ask_verb = "interrogates"
 	exclaim_verb = "orders"
 	colour = "commando"
-	key = "t"
+	key = "l"
+
+	syllables = list("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", "?", "@", "#" ,"*")
+	sentence_chance = 50
+	space_chance = 50
 
 /datum/language/sainja //Yautja tongue
 	name = "Sainja"
@@ -119,6 +78,9 @@
 	colour = "tajaran"
 	key = "s"
 	flags = WHITELISTED
+
+	syllables = list("!", "?", ".", "@", "$", "%", "^", "&", "*", "-", "=", "+", "e", "b", "y", "p", "|", "z", "~", ">")
+	space_chance = 20
 
 /datum/language/monkey
 	name = "Primitive"
@@ -171,7 +133,6 @@
 	var/drone_only
 
 /datum/language/binary/broadcast(var/mob/living/speaker,var/message,var/speaker_mask)
-
 	if(!speaker.binarycheck())
 		return
 
@@ -221,46 +182,3 @@
 	key = "d"
 	flags = RESTRICTED|HIVEMIND
 	drone_only = 1
-
-// Language handling.
-/mob/proc/add_language(var/language)
-	var/datum/language/new_language = all_languages[language]
-
-	if(!istype(new_language) || (new_language in languages))
-		return 0
-
-	languages.Add(new_language)
-	return 1
-
-/mob/proc/set_languages(var/list/new_languages)
-	languages = list()
-	for(var/language in new_languages)
-		add_language(language)
-
-
-/mob/proc/remove_language(var/rem_language)
-	languages.Remove(all_languages[rem_language])
-	return 0
-
-/mob/proc/get_default_language()
-	if (languages.len > 0)
-		return languages[1]
-	return null
-
-// Can we speak this language, as opposed to just understanding it?
-/mob/proc/can_speak(datum/language/speaking)
-	return (universal_speak || (speaking in src.languages))
-
-//TBD
-/mob/verb/check_languages()
-	set name = "Check Known Languages"
-	set category = "IC"
-	set src = usr
-
-	var/dat
-
-	for(var/datum/language/L in languages)
-		dat += "<b>[L.name] (:[L.key])</b><br/>[L.desc]<br/><br/>"
-
-	show_browser(src, dat, "Known Languages", "checklanguage")
-	return

@@ -435,13 +435,11 @@
 	var/stored_larvae = GLOB.hive_datum[hivenumber].stored_larva
 	var/xeno_leader_num = hive?.queen_leader_limit - hive?.open_xeno_leader_positions.len
 
-	stat("Pooled Larvae:", "[stored_larvae]")
-	stat("Leaders:", "[xeno_leader_num] / [hive?.queen_leader_limit]")
+	. += "Pooled Larvae: [stored_larvae]"
+	. += "Leaders: [xeno_leader_num] / [hive?.queen_leader_limit]"
 	if(queen_age_timer_id != TIMER_ID_NULL)
 		var/time_left = time2text(timeleft(queen_age_timer_id) + 1 MINUTES, "mm") // We add a minute so that it basically ceilings the value.
-		stat("Maturity:", "[time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining")
-
-	return TRUE
+		. += "Maturity: [time_left == 1? "[time_left] minute" : "[time_left] minutes"] remaining"
 
 //Custom bump for crushers. This overwrites normal bumpcode from carbon.dm
 /mob/living/carbon/Xenomorph/Queen/Collide(atom/A)

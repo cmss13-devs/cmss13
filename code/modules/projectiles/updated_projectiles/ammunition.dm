@@ -192,7 +192,9 @@ bullets/shells. ~N
 		dir = current_rounds + round(current_rounds/3)
 
 /obj/item/ammo_magazine/handful/pickup(mob/user)
-	return
+	var/olddir = dir
+	. = ..()
+	dir = olddir
 
 /obj/item/ammo_magazine/handful/equipped(mob/user, slot)
 	var/thisDir = src.dir

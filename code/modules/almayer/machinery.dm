@@ -262,6 +262,9 @@
 
 
 /obj/structure/machinery/prop/almayer/CICmap/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if (href_list["close"])
 		var/mob/living/L = locate(href_list["viewer"])
 		if (!L)
@@ -290,7 +293,7 @@
 
 /obj/structure/prop/almayer/computers/update_icon()
 	. = ..()
-	
+
 	overlays.Cut()
 
 	if(hacked)

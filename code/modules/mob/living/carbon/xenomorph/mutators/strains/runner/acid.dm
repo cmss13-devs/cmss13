@@ -53,9 +53,10 @@
 		acid_amount = 0
 
 /datum/behavior_delegate/runner_acider/append_to_stat()
-	stat("Acid:", "[acid_amount]")
+	. = list()
+	. += "Acid: [acid_amount]"
 	if(caboom_trigger)
-		stat("FOR THE HIVE!:", "in [caboom_left] seconds")
+		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
 /datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(atom/A)
 	if (ishuman(A))

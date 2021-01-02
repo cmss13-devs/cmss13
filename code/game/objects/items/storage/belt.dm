@@ -134,7 +134,7 @@
 /obj/item/storage/belt/medical/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
 	set category = "Object"
 	set name = "Toggle Belt Mode"
-
+	set src in usr
 	if(src && ishuman(usr))
 		mode = !mode
 		to_chat(usr, SPAN_NOTICE("You will now [mode ? "take pills directly from bottles": "no longer take pills directly from bottles"]."))

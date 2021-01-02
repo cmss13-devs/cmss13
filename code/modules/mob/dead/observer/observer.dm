@@ -107,6 +107,9 @@
 
 
 /mob/dead/observer/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(href_list["reentercorpse"])
 		if(istype(usr, /mob/dead/observer))
 			var/mob/dead/observer/A = usr
@@ -184,7 +187,7 @@ Works together with spawning an observer, noted above.
 	var/mob/dead/observer/ghost = new(src)	//Transfer safety to observer spawning proc.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	ghost.timeofdeath = timeofdeath //BS12 EDIT
-
+	SStgui.on_transfer(src, ghost)
 	if(is_admin_level(z))
 		ghost.timeofdeath = 0 // Bypass respawn limit if you die on the admin zlevel
 
@@ -208,6 +211,7 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	if(ghost.client)
+		ghost.client.init_verbs()
 		ghost.client.change_view(world_view_size) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
@@ -285,21 +289,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/observer/can_use_hands()
 	return 0
 
-/mob/dead/observer/Stat()
-	if (!..())
-		return 0
-
-	stat("Time:","[worldtime2text()]")
-	stat("DEFCON Level:","[defcon_controller.current_defcon_level]")
-
-	if(EvacuationAuthority)
-		var/eta_status = EvacuationAuthority.get_status_panel_eta()
-		if(eta_status)
-			stat(null, eta_status)
-	return 1
-
 /mob/dead/observer/verb/reenter_corpse()
-	set category = "Ghost"
+	set category = "Ghost.Body"
 	set name = "Re-enter Corpse"
 
 	if(!client)
@@ -314,6 +305,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	mind.transfer_to(mind.original, TRUE)
+	SStgui.on_transfer(src, mind.current)
 	qdel(src)
 	return TRUE
 
@@ -340,7 +332,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	following = null
 
 /mob/dead/observer/verb/follow_local(var/mob/target)
-	set category = "Ghost"
+	set category = "Ghost.Follow"
 	set name = "Follow Local Mob"
 	set desc = "Follow on-screen mob"
 
@@ -348,7 +340,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	return
 
 /mob/dead/observer/verb/follow()
-	set category = "Ghost"
+	set category = "Ghost.Follow"
 	set name = "Follow"
 
 	var/list/choices = list("Humans", "Xenomorphs", "Holograms", "Predators", "Synthetics", "ERT Members", "Survivors", "Any Mobs", "Mobs by Faction", "Xenos by Hive", "Vehicles")
@@ -500,7 +492,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/toggle_zoom()
 	set name = "Toggle Zoom"
-	set category = "Ghost"
+	set category = "Ghost.Settings"
 
 	if(client)
 		if(client.view != world_view_size)
@@ -511,7 +503,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/toggle_darkness()
 	set name = "Toggle Darkness"
-	set category = "Ghost"
+	set category = "Ghost.Settings"
 
 	if (see_invisible == SEE_INVISIBLE_OBSERVER_NOLIGHTING)
 		see_invisible = SEE_INVISIBLE_OBSERVER
@@ -520,7 +512,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/toggle_self_visibility()
 	set name = "Toggle Self Visibility"
-	set category = "Ghost"
+	set category = "Ghost.Settings"
 
 	if (alpha)
 		alpha = 0
@@ -529,7 +521,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/verb/view_manifest()
 	set name = "View Crew Manifest"
-	set category = "Ghost"
+	set category = "Ghost.View"
 
 	var/dat = GLOB.data_core.get_manifest()
 
@@ -538,7 +530,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/dead/verb/hive_status()
 	set name = "Hive Status"
 	set desc = "Check the status of the hive."
-	set category = "Ghost"
+	set category = "Ghost.View"
 
 	var/list/hives = list()
 	var/datum/hive_status/last_hive_checked
@@ -562,7 +554,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		GLOB.hive_datum[hives[faction]].hive_ui.open_hive_status(src)
 
 /mob/dead/verb/join_as_alien()
-	set category = "Ghost"
+	set category = "Ghost.Join"
 	set name = "Join as Xeno"
 	set desc = "Select an alive but logged-out Xenomorph to rejoin the game."
 
@@ -577,7 +569,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		SSticker.mode.attempt_to_join_as_xeno(src)
 
 /mob/dead/verb/join_as_zombie() //Adapted from join as hellhoud
-	set category = "Ghost"
+	set category = "Ghost.Join"
 	set name = "Join as Zombie"
 	set desc = "Select an alive but logged-out Zombie to rejoin the game."
 
@@ -627,7 +619,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 
 /mob/dead/verb/join_as_freed_mob()
-	set category = "Ghost"
+	set category = "Ghost.Join"
 	set name = "Join as Freed Mob"
 	set desc = "Select a freed mob by staff."
 
@@ -656,7 +648,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	M.mind.transfer_to(L, TRUE)
 
 /mob/dead/verb/join_as_hellhound()
-	set category = "Ghost"
+	set category = "Ghost.Join"
 	set name = "Join as Hellhound"
 	set desc = "Select an alive and available Hellhound. THIS COMES WITH STRICT RULES. READ THEM OR GET BANNED."
 
@@ -728,7 +720,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			qdel(ghostmob)
 
 /mob/dead/verb/join_as_yautja()
-	set category = "Ghost"
+	set category = "Ghost.Join"
 	set name = "Join the Hunt"
 	set desc = "If you are whitelisted, and it is the right type of round, join in."
 
@@ -781,7 +773,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		addtimer(VARSET_CALLBACK(src, voted_this_drop, FALSE), 20 SECONDS)
 
 /mob/dead/observer/verb/go_dnr()
-	set category = "Ghost"
+	set category = "Ghost.Body"
 	set name = "Go DNR"
 	set desc = "Prevent your character from being revived."
 
@@ -796,7 +788,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	client.prefs.ShowChoices(src)
 
 /mob/dead/observer/verb/view_stats()
-	set category = "Ghost"
+	set category = "Ghost.View"
 	set name = "View Playtimes"
 	set desc = "View your playtimes."
 
@@ -804,7 +796,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		client.player_data.ui_interact(src)
 
 /mob/dead/observer/verb/view_kill_feed()
-	set category = "Ghost"
+	set category = "Ghost.View"
 	set name = "View Kill Feed"
 	set desc = "View global kill statistics tied to the game."
 
@@ -812,7 +804,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		round_statistics.show_kill_feed(src)
 
 /mob/dead/observer/verb/toggle_fast_ghost_move()
-	set category = "Ghost"
+	set category = "Ghost.Settings"
 	set name = "Toggle Observer Speed"
 	set desc = "Switch between fast and regular ghost movement"
 
@@ -824,6 +816,32 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(href_list["preference"])
 		if(client)
 			client.prefs.process_link(src, href_list)
+
+/mob/dead/observer/get_status_tab_items()
+	. = ..()
+	. += ""
+	. += "Game Mode: [GLOB.master_mode]"
+
+	if(SSticker.HasRoundStarted())
+		return
+
+	var/time_remaining = SSticker.GetTimeLeft()
+	if(time_remaining > 0)
+		. += "Time To Start: [round(time_remaining)]s"
+	else if(time_remaining == -10)
+		. += "Time To Start: DELAYED"
+	else
+		. += "Time To Start: SOON"
+
+	. += "Players: [SSticker.totalPlayers]"
+	if(client.admin_holder)
+		. += "Players Ready: [SSticker.totalPlayersReady]"
+	. += "DEFCON Level: [defcon_controller.current_defcon_level]"
+
+	if(EvacuationAuthority)
+		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+		if(eta_status)
+			. += eta_status
 
 #undef MOVE_INTENT_WALK
 #undef MOVE_INTENT_RUN

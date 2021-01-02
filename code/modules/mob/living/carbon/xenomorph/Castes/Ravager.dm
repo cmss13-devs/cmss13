@@ -79,13 +79,14 @@
 		cAction.reduce_cooldown(slash_charge_cdr)
 
 /datum/behavior_delegate/ravager_base/append_to_stat()
+	. = list()
 	var/shield_total = 0
 	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
 		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
 			shield_total += XS.amount
 
-	stat("Empower Shield:", "[shield_total]")
-	stat("Bonus Slash Damage:", "[shield_total*damage_per_shield_hp]")
+	. += "Empower Shield: [shield_total]"
+	. += "Bonus Slash Damage: [shield_total*damage_per_shield_hp]"
 
 /datum/behavior_delegate/ravager_base/on_life()
 	var/datum/xeno_shield/rav_shield

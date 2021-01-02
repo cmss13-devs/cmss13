@@ -64,13 +64,14 @@ SUBSYSTEM_DEF(weather)
 
 	. = ..()
 
-/datum/controller/subsystem/weather/stat_entry(var/msg)
+/datum/controller/subsystem/weather/stat_entry(msg)
 	if (is_weather_event && weather_event_instance.display_name)
-		..("P: Current event: [weather_event_instance.display_name]")
+		msg = "P: Current event: [weather_event_instance.display_name]"
 	else if (is_weather_event)
-		..("P: Current event of unknown type ([weather_event_type])")
+		msg = "P: Current event of unknown type ([weather_event_type])"
 	else
-		..("P: No event")
+		msg = "P: No event"
+	return ..()
 
 /datum/controller/subsystem/weather/fire()
 	if (controller_state_lock)

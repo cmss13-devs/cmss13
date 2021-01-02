@@ -377,6 +377,9 @@
 		to_chat(user, dat)
 
 /obj/item/weapon/gun/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(!ishuman(usr) && !isobserver(usr))
 		return
 

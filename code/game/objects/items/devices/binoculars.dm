@@ -71,7 +71,7 @@
 	set name = "Toggle Rangefinder Display"
 	set category = "Object"
 	set desc = "Toggles display mode for rangefinder coordinates."
-
+	set src in usr
 	rangefinder_popup = !rangefinder_popup
 	to_chat(usr, "The rangefinder [rangefinder_popup ? "now" : "no longer"] shows coordinates on the display.")
 
@@ -94,7 +94,7 @@
 	if(mods["ctrl"])
 		if(SEND_SIGNAL(user, COMSIG_BINOCULAR_HANDLE_CLICK, src))
 			return FALSE
-		
+
 		acquire_target(A, user)
 		return TRUE
 	return FALSE
@@ -205,7 +205,7 @@
 	set category = "Object"
 	set name = "Toggle Laser Mode"
 	set desc = "Toggles laser mode of laser designator between rangefinding and lasing for CAS"
-
+	set src in usr
 	if(!ishuman(usr))
 		return
 	toggle_bino_mode(usr)

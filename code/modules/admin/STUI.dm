@@ -116,7 +116,7 @@ GLOBAL_DATUM_INIT(STUI, /datum/STUI, new)
 		ui.set_auto_update(1)
 
 /client/proc/open_STUI()
-	set name = "S: Open STUI"
+	set name = "Open STUI"
 	set category = "Admin"
 
 	GLOB.STUI.ui_interact(usr, force_start=1)

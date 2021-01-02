@@ -10,7 +10,7 @@
     if(!P)
         message_admins("Tried stickybanning ckey \"[ckey]\", player entity was unable to be found. Please try again later.")
         return
-    
+
     var/datum/entity/player_sticky_ban/PSB = DB_ENTITY(/datum/entity/player_sticky_ban)
     PSB.player_id = P.id
     if(reason)
@@ -30,7 +30,7 @@
         PSB.admin_id = banning_admin.id
         if(banning_admin.owning_client)
             message_admins("[banning_admin.owning_client.ckey] has stickybanned [ckey].")
-    
+
     message_admins("[ckey] (IP: [address], CID: [cid]) has been stickybanned for: \"[reason]\".")
 
     if(P.owning_client)
@@ -66,9 +66,9 @@
     return SBLW
 
 /client/proc/cmd_stickyban()
-    set category = "Admin"
+    set category = "Admin.Panels"
     set desc = "Opens up the stickyban panel"
-    set name = "D: Stickyban Panel"
+    set name = "Stickyban Panel"
 
     if(admin_holder)
         admin_holder.stickyban()
@@ -78,7 +78,7 @@
 /datum/admins/proc/stickyban()
     if(!check_rights(R_ADMIN))
         return
-    
+
     if(!stickyban_handler)
         stickyban_handler = new()
         stickyban_handler.linked_admin = src
@@ -137,7 +137,7 @@
     ..()
     if(!check_rights(R_ADMIN))
         return
-    
+
     if(next_click > world.time)
         return
 
@@ -150,8 +150,8 @@
     ui_interact(usr)
 
 /datum/stickyban_panel_handler/proc/generate_query(var/query_data)
-    var/list/datum/view_record/stickyban_list_view/SBLW 
-    
+    var/list/datum/view_record/stickyban_list_view/SBLW
+
     if(query_data)
         SBLW = DB_VIEW(/datum/view_record/stickyban_list_view,
         DB_OR(
@@ -177,7 +177,7 @@
 
             "linked_ckey" = SB.linked_ckey,
             "linked_reason" = SB.linked_reason,
-            
+
             "admin_ckey" = SB.admin_ckey
         )
 
@@ -189,16 +189,16 @@
             row_data["admin_ckey"] = SB.linked_admin_ckey
             if(!row_data["admin_ckey"])
                 row_data["admin_ckey"] = "--UNKNOWN--"
-    
+
         query_info[index++] = row_data
-    
+
     return query_info
 
 /datum/stickyban_panel_handler/proc/handle_topic(href, href_list)
     if(href_list["switch_panel"])
         data["panel_menu"] = href_list["switch_panel"]
         return TRUE
-        
+
     if(href_list["stickyban_update_query"])
         var/query_data = input("Please input what to search for (this can include IPs, CIDs and ckeys):") as null|text
 
@@ -229,7 +229,7 @@
 
             if(input("You are about to remove [length(SBLW)+1] sticky ban entries. Please input \"confirm\" to proceed with this action.") != "confirm")
                 return TRUE
-            
+
             var/datum/entity/player/P = DB_ENTITY(/datum/entity/player, PSB.player_id)
             P.sync()
 
@@ -242,7 +242,7 @@
 
             if(PSB.status != DB_ENTITY_STATE_DELETED)
                 PSB.delete()
-            
+
             PSB.sync() // Will wait for it to be deleted before continuing.
 
         if(href_list["whitelist_ckey"])
@@ -258,14 +258,14 @@
             to_whitelist.stickyban_whitelisted = should_whitelist
             to_whitelist.save()
             to_whitelist.sync()
-        
+
         data["query_info"] = generate_query(last_query)
         return TRUE
 
     if(href_list["modify"])
         if(!(href_list["modify"] in modifiable_vars))
             return TRUE
-        
+
         var/to_input = strip_html(input(usr, "Please input a value for this field:", "Modify Field", data[href_list["modify"]]))
 
         data[href_list["modify"]] = to_input
@@ -280,7 +280,7 @@
         if(!ckey || !address || !cid || !reason)
             to_chat(usr, SPAN_WARNING("Sticky bans require all fields to be filled out."))
             return
-        
+
         var/datum/entity/player/P = get_player_from_key(ckey)
         if(!P)
             to_chat(usr, SPAN_WARNING("Bad ckey. Please input a valid ckey"))
@@ -290,7 +290,7 @@
 
         if(alert(usr, "You are about to add an entry. Please confirm details:\nCKEY - [P.ckey]\nIP ADDRESS - [address]\nCOMPUTER ID - [cid]\nREASON - [reason]", "Confirm", "Add Entry", "Cancel") == "Cancel")
             return
-        
+
         P.stickyban_whitelisted = FALSE
         P.save()
 
@@ -316,6 +316,6 @@
             return
 
         var/client/C = P.owning_client
-    
+
         data["entry_address"] = C.address
         data["entry_cid"] = C.computer_id

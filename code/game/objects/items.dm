@@ -103,6 +103,8 @@
 		for(var/mob/M in S.can_see_content())
 			if(M.client)
 				M.client.screen -= src
+	if(ismob(loc))
+		dropped(loc)
 
 	return ..()
 
@@ -274,6 +276,8 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/dropped(mob/user as mob)
 	SHOULD_CALL_PARENT(TRUE)
 
+	remove_item_verbs(user)
+
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.remove_action(user)
@@ -285,9 +289,9 @@ cases. Override_icon_state should be a list.*/
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
+	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_PICKUP, user)
 	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
-	return
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
@@ -301,14 +305,32 @@ cases. Override_icon_state should be a list.*/
 /obj/item/proc/on_found(mob/finder as mob)
 	return
 
+/obj/item/proc/remove_item_verbs(mob/user)
+	var/list/verbs_to_remove = list()
+	for(var/v in verbs)
+		var/verbstring = "[v]"
+		if(length(user.item_verbs[verbstring]) == 1)
+			if(user.item_verbs[verbstring][1] == src)
+				verbs_to_remove += v
+		LAZYREMOVE(user.item_verbs[verbstring], src)
+	remove_verb(user, verbs_to_remove)
+
 // called after an item is placed in an equipment slot
 // user is mob that equipped it
 // slot uses the slot_X defines found in setup.dm
 // for items that can be placed in multiple slots
 // note this isn't called during the initial dressing of a player
 /obj/item/proc/equipped(mob/user, slot)
+	SHOULD_CALL_PARENT(TRUE)
 	if((flags_item & MOB_LOCK_ON_EQUIP) && !locked_to_mob)
 		locked_to_mob = user
+
+	if(item_action_slot_check(user, slot))
+		add_verb(user, verbs)
+		for(var/v in verbs)
+			LAZYDISTINCTADD(user.item_verbs["[v]"], src)
+	else
+		remove_item_verbs(user)
 
 	src.dir = SOUTH//Always rotate it south. This resets it to default position, so you wouldn't be putting things on backwards
 	for(var/X in actions)

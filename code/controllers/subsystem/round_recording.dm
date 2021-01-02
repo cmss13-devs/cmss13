@@ -14,8 +14,9 @@ SUBSYSTEM_DEF(round_recording)
 
 // use CONFIG_GET(flag/record_rounds)
 
-/datum/controller/subsystem/round_recording/stat_entry()
-	..(recorder ? "SS#: [recorder.snapshots] T: [LAZYLEN(recorder.tracked_players)]" : "Disabled")
+/datum/controller/subsystem/round_recording/stat_entry(msg)
+	msg = recorder ? "SS#: [recorder.snapshots] T: [LAZYLEN(recorder.tracked_players)]" : "Disabled"
+	return ..()
 
 /datum/controller/subsystem/round_recording/fire(resumed = FALSE)
 	can_fire = FALSE

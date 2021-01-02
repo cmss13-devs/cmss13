@@ -158,12 +158,10 @@
 	START_PROCESSING(SSobj, src)
 	last_regen = world.time
 	update_icon()
-	remove_verb(src, list(
-		/obj/item/weapon/gun/verb/field_strip, //We don't want these to show since they're useless.
-		/obj/item/weapon/gun/verb/toggle_burst,
-		/obj/item/weapon/gun/verb/empty_mag,
-		/obj/item/weapon/gun/verb/use_unique_action,
-	))
+	verbs -= /obj/item/weapon/gun/verb/field_strip
+	verbs -= /obj/item/weapon/gun/verb/toggle_burst
+	verbs -= /obj/item/weapon/gun/verb/empty_mag
+	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
 /obj/item/weapon/gun/launcher/spike/set_gun_config_values()
 	..()

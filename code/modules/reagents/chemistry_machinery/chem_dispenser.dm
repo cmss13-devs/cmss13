@@ -117,6 +117,9 @@
 		ui.open()
 
 /obj/structure/machinery/chem_dispenser/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable())
 		return FALSE // don't update UIs attached to this object
 

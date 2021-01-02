@@ -619,7 +619,7 @@
 	set category = "Weapons"
 	set name = "Flush Container"
 	set desc = "Forces the container to empty its reagents."
-
+	set src in usr
 	if(!inner)
 		to_chat(usr, SPAN_WARNING("There is no container inside this pouch!"))
 		return

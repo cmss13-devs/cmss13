@@ -271,9 +271,10 @@
 		sAction.reduce_cooldown(cdr_amount)
 
 /datum/behavior_delegate/crusher_base/append_to_stat()
+	. = list()
 	var/shield_total = 0
 	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
 		if (XS.shield_source == XENO_SHIELD_SOURCE_CRUSHER)
 			shield_total += XS.amount
 
-	stat("Shield:", "[shield_total]")
+	. += "Shield: [shield_total]"

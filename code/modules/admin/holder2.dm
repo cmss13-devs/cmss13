@@ -13,6 +13,8 @@ var/list/datum/admins/admin_datums = list()
 	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
 	var/admincaster_signature	//What you'll sign the newsfeeds as
 
+	var/href_token
+
 /datum/admins/New(initial_rank = "Temporary Admin", initial_rights = 0, ckey)
 	if(!ckey)
 		error("Admin datum created without a ckey argument. Datum has been deleted")
@@ -69,7 +71,7 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 		if(C.admin_holder)
 			return TRUE
 		else
-			if(show_msg) 
+			if(show_msg)
 				to_chat(C, SPAN_DANGER("Error: You are not an admin."))
 	return FALSE
 

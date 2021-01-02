@@ -22,13 +22,14 @@
 /obj/item/tank/jetpack/verb/toggle_rockets()
 	set name = "Toggle Jetpack Stabilization"
 	set category = "Object"
+	set src in usr
 	src.stabilization_on = !( src.stabilization_on )
 	to_chat(usr, "You toggle the stabilization [stabilization_on? "on":"off"].")
 
 /obj/item/tank/jetpack/verb/toggle()
 	set name = "Toggle Jetpack"
 	set category = "Object"
-
+	set src in usr
 	on = !on
 	if(on)
 		icon_state = "[icon_state]-on"

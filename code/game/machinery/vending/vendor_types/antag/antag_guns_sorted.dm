@@ -157,6 +157,9 @@
 		ui.set_auto_update(0)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/antag_guns/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable())
 		return
 	if(usr.is_mob_incapacitated())

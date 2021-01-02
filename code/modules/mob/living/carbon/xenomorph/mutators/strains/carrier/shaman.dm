@@ -14,7 +14,8 @@
 	var/remembered_count = 0
 
 /datum/behavior_delegate/carrier_shaman/append_to_stat()
-    stat("Remembered:", "[remembered_count]")
+	. = list()
+	. += "Remembered: [remembered_count]"
 
 /datum/behavior_delegate/carrier_shaman/proc/reset_shaman_ability()
 	used_shaman_ability = FALSE

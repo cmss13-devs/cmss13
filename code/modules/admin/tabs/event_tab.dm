@@ -1,6 +1,6 @@
 /client/proc/cmd_admin_change_custom_event()
-	set name = "A: Setup Event Info"
-	set category = "Event"
+	set name = "Setup Event Info"
+	set category = "Admin.Events"
 
 	if(!admin_holder)
 		to_chat(usr, "Only administrators may use this command.")
@@ -61,15 +61,15 @@
 	CONFIG_SET(flag/remove_gun_restrictions, !CONFIG_GET(flag/remove_gun_restrictions))
 
 /client/proc/togglebuildmodeself()
-	set name = "B: Buildmode"
-	set category = "Event"
+	set name = "Buildmode"
+	set category = "Admin.Events"
 	if(src.mob)
 		togglebuildmode(src.mob)
 
 /client/proc/drop_bomb()
-	set name = "B: Drop Bomb"
+	set name = "Drop Bomb"
 	set desc = "Cause an explosion of varying strength at your location."
-	set category = "Event"
+	set category = "Admin.Fun"
 
 	var/turf/epicenter = mob.loc
 	var/custom_limit = 5000
@@ -110,7 +110,7 @@
 
 /client/proc/cmd_admin_emp(atom/O as obj|mob|turf in world)
 	set name = "EM Pulse"
-	set category = "Event"
+	set category = "Admin.Fun"
 
 	if(!check_rights(R_DEBUG|R_FUN))
 		return
@@ -130,9 +130,9 @@
 	return
 
 /datum/admins/proc/admin_force_ERT_shuttle()
-	set name = "E: Force ERT Shuttle"
+	set name = "Force ERT Shuttle"
 	set desc = "Force Launch the ERT Shuttle."
-	set category = "Event"
+	set category = "Admin.Shuttles"
 
 	if (!SSticker.mode)
 		return
@@ -182,9 +182,9 @@
 	message_staff(SPAN_NOTICE("[key_name_admin(usr)] force launched a distress shuttle ([tag])"), 1)
 
 /datum/admins/proc/admin_force_distress()
-	set name = "E: Distress Beacon"
+	set name = "Distress Beacon"
 	set desc = "Call a distress beacon. This should not be done if the shuttle's already been called."
-	set category = "Event"
+	set category = "Admin.Shuttles"
 
 	if (!SSticker.mode)
 		return
@@ -228,9 +228,9 @@
 	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]"), 1)
 
 /datum/admins/proc/admin_force_selfdestruct()
-	set name = "E: Self Destruct"
+	set name = "Self Destruct"
 	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
-	set category = "Event"
+	set category = "Admin.Events"
 
 	if(!SSticker.mode || !check_rights(R_ADMIN) || get_security_level() == "delta")
 		return
@@ -243,9 +243,9 @@
 	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-started self destruct stystem."), 1)
 
 /client/proc/view_faxes()
-	set name = "X: View Faxes"
+	set name = "View Faxes"
 	set desc = "View faxes from this round"
-	set category = "Event"
+	set category = "Admin.Events"
 
 	if(!admin_holder)
 		return
@@ -274,9 +274,9 @@
 			return
 
 /client/proc/show_objectives_status()
-	set name = "O: Objectives Status"
+	set name = "Objectives Status"
 	set desc = "Check the status of objectives."
-	set category = "Event"
+	set category = "Admin.Events"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -317,9 +317,9 @@
 	message_staff("Admin [key_name(usr)] has turned everyone into a primitive")
 
 /client/proc/force_shuttle()
-	set name = "E: Force Dropship"
+	set name = "Force Dropship"
 	set desc = "Force a dropship to launch"
-	set category = "Event"
+	set category = "Admin.Shuttles"
 
 	var/tag = input("Which dropship should be force launched?", "Select a dropship:") as null|anything in list("Dropship 1", "Dropship 2")
 	if(!tag) return
@@ -349,9 +349,9 @@
 		dropship.process_state = WAIT_LAUNCH
 
 /client/proc/force_ground_shuttle()
-	set name = "F: Force Ground Transport"
+	set name = "Force Ground Transport"
 	set desc = "Force a ground transport vehicle to launch"
-	set category = "Event"
+	set category = "Admin.Shuttles"
 
 	var/tag = input("Which vehicle should be force launched?", "Select a dropship:") as null|anything in list("Transport 1")
 	if(!tag)
@@ -367,8 +367,8 @@
 	dropship.process_state = WAIT_LAUNCH
 
 /client/proc/cmd_admin_create_centcom_report()
-	set name = "A: Report: Faction"
-	set category = "Event"
+	set name = "Report: Faction"
+	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -403,9 +403,9 @@
 	message_staff("[key_name_admin(src)] has created a [faction] command report")
 
 /client/proc/cmd_admin_xeno_report()
-	set name = "A: Report: Queen Mother"
+	set name = "Report: Queen Mother"
 	set desc = "Basically a command announcement, but only for selected Xenos Hive"
-	set category = "Event"
+	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -440,8 +440,8 @@
 	message_staff("[key_name_admin(src)] has created a [hive_choice] Queen Mother report")
 
 /client/proc/cmd_admin_create_AI_report()
-	set name = "A: Report: ARES Comms"
-	set category = "Event"
+	set name = "Report: ARES Comms"
+	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -463,8 +463,8 @@
 		to_chat(usr, SPAN_WARNING("[MAIN_AI_SYSTEM] is not responding. It may be offline or destroyed."))
 
 /client/proc/cmd_admin_create_AI_shipwide_report()
-	set name = "A: Report: ARES Shipwide"
-	set category = "Event"
+	set name = "Report: ARES Shipwide"
+	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -486,8 +486,8 @@
 	message_staff("[key_name_admin(src)] has created an AI shipwide report")
 
 /client/proc/cmd_admin_create_predator_report()
-	set name = "A: Report: Yautja AI"
-	set category = "Event"
+	set name = "Report: Yautja AI"
+	set category = "Admin.Factions"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -499,8 +499,8 @@
 	message_staff("[key_name_admin(src)] has created a predator ship AI report")
 
 /client/proc/cmd_admin_world_narrate() // Allows administrators to fluff events a little easier -- TLE
-	set name = "N: Narrate to Everyone"
-	set category = "Event"
+	set name = "Narrate to Everyone"
+	set category = "Admin.Events"
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -514,89 +514,13 @@
 	to_world(SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
 	message_staff(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]"))
 
-/client/proc/admin_play_sound()
-	set name = "S: Play Sound"
-	set desc = "Play local or imported sounds"
-	set category = "Event"
-
-	if(!admin_holder)
-		return
-
-	var/answer = alert(src, "Which kind of sound would you like to play?", "Sound", "Sound from list", "Imported sound", "Cancel")
-	switch(answer)
-		if("Sound from list")
-			play_sound_from_list()
-		if("Imported sound")
-			var/S = input("Pick a sound to play.") as sound
-			play_imported_sound(S)
-		if("Cancel")
-			return
-
-/client/proc/play_imported_sound(soundin as sound)
-	if(!check_rights(R_SOUNDS))
-		return
-	if(midi_playing)
-		to_chat(usr, "No. An Admin already played a midi recently.")
-		return
-
-	switch(alert("Play sound globally or locally?\n(NOTE : If an admin sound is already being played, this one will override it)", "Sound", "Global", "Local", "Individual", "Cancel"))
-		if("Global")
-			var/sound/S = sound(soundin, 0, 0, SOUND_CHANNEL_ADMIN_MIDI)
-			for(var/mob/M in GLOB.player_list)
-				if(M.client.prefs.toggles_sound & SOUND_MIDI)
-					S.volume = 50 * M.client.volume_preferences[VOLUME_ADM]
-					sound_to(M, S)
-					heard_midi++
-		if("Local")
-			playsound(get_turf(src.mob), soundin, 50, 0, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM)
-			for(var/mob/M in view())
-				heard_midi++
-		if("Individual")
-			var/mob/target = input("Select a mob to play sound to:", "List of All Mobs") as null|anything in GLOB.mob_list
-			if(istype(target,/mob/))
-				if(!target.client)
-					return
-
-				if(target.client.prefs.toggles_sound & SOUND_MIDI)
-					playsound_client(src, soundin, null, 50, channel = SOUND_CHANNEL_ADMIN_MIDI, vol_cat = VOLUME_ADM)
-					heard_midi = "[target] ([target.key])"
-				else
-					heard_midi = 0
-		if("Cancel")
-			return
-	if(isnum(heard_midi))
-		message_staff("[key_name_admin(src)] played sound `[soundin]` for [heard_midi] player(s). [length(GLOB.player_list) - heard_midi] player(s) have disabled admin midis.")
-	else
-		message_staff("[key_name_admin(src)] played sound `[soundin]` for [heard_midi].")
-		return
-
-	// A 30 sec timer used to show Admins how many players are silencing the sound after it starts - see preferences_toggles.dm
-	var/midi_playing_timer = 30 SECONDS // Should match with the midi_silenced spawn() in preferences_toggles.dm
-	midi_playing = 1
-	spawn(midi_playing_timer)
-		midi_playing = 0
-		message_staff("'Silence Current Midi' usage reporting 30-sec timer has expired. [total_silenced] player(s) silenced the midi in the first 30 seconds out of [heard_midi] total player(s) that have 'Play Admin Midis' enabled. <span style='color: red'>[round((total_silenced / (heard_midi ? heard_midi : 1)) * 100)]% of players don't want to hear it, and likely more if the midi is longer than 30 seconds.</span>")
-		heard_midi = 0
-		total_silenced = 0
-
-/client/proc/play_sound_from_list()
-	if(!check_rights(R_SOUNDS))
-		return
-	var/list/sounds = file2list("sound/soundlist.txt");
-	sounds += "--CANCEL--"
-	var/melody = input("Select a sound to play", "Sound list", "--CANCEL--") in sounds
-
-	if(melody == "--CANCEL--")
-		return
-
-	play_imported_sound(melody)
 
 /client
 	var/remote_control = FALSE
 
 /client/proc/toogle_door_control()
-	set name = "F: Toggle Remote Control"
-	set category = "Event"
+	set name = "Toggle Remote Control"
+	set category = "Admin.Events"
 
 	if(!check_rights(R_FUN))
 		return
@@ -605,15 +529,15 @@
 	message_staff("[key_name_admin(src)] has toggled remote control [remote_control? "on" : "off"] for themselves")
 
 /client/proc/enable_event_mob_verbs()
-	set name = "Z: Mob Event Verbs - Show"
-	set category = "Event"
+	set name = "Mob Event Verbs - Show"
+	set category = "Admin.Events"
 
 	add_verb(src, admin_mob_event_verbs_hideable)
 	remove_verb(src, /client/proc/enable_event_mob_verbs)
 
 /client/proc/hide_event_mob_verbs()
-	set name = "Z: Mob Event Verbs - Hide"
-	set category = "Event"
+	set name = "Mob Event Verbs - Hide"
+	set category = "Admin.Events"
 
 	remove_verb(src, admin_mob_event_verbs_hideable)
 	add_verb(src, /client/proc/enable_event_mob_verbs)
@@ -663,8 +587,8 @@
 	return
 
 /client/proc/event_panel()
-	set name = "C: Event Panel"
-	set category = "Event"
+	set name = "Event Panel"
+	set category = "Admin.Panels"
 	if (admin_holder)
 		admin_holder.event_panel()
 	return
@@ -696,8 +620,8 @@
 	return
 
 /client/proc/chem_panel()
-	set name = "C: Chem Panel"
-	set category = "Event"
+	set name = "Chem Panel"
+	set category = "Admin.Panels"
 	if(admin_holder)
 		admin_holder.chempanel()
 	return
@@ -715,15 +639,15 @@
 	show_browser(user, replacetext(create_humans_html, "/* ref src */", "\ref[src]"), "Create Humans", "create_humans", "size=450x630")
 
 /client/proc/create_humans()
-	set name = "D: Create Humans"
-	set category = "Event"
+	set name = "Create Humans"
+	set category = "Admin.Events"
 	if(admin_holder)
 		admin_holder.create_humans(usr)
 	return
 
 /client/proc/clear_mutineers()
-	set name = "D: Clear All Mutineers"
-	set category = "Event"
+	set name = "Clear All Mutineers"
+	set category = "Admin.Events"
 	if(admin_holder)
 		admin_holder.clear_mutineers()
 	return

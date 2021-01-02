@@ -117,6 +117,9 @@
 	show_browser(user, dat, name, "janicart")
 
 /obj/structure/janitorialcart/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(!in_range(src, usr))
 		return
 	if(!isliving(usr))

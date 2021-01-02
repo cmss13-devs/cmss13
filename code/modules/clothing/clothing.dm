@@ -28,6 +28,9 @@
 		.+= ". <a href='?src=\ref[src];list_acc=1'>\[See accessories\]</a>"
 
 /obj/item/clothing/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(href_list["list_acc"])
 		if(LAZYLEN(accessories))
 			var/list/ties = list()

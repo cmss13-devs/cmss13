@@ -77,6 +77,9 @@
 		ui.set_auto_update(FALSE)//Auto update is NOT compatible with forms.
 
 /obj/structure/mortar/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	var/mob/user = usr
 	if(get_dist(user, src) > 1)
 		return

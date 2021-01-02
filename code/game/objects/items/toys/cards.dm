@@ -42,7 +42,7 @@
 	var/datum/playingcard/P
 	var/card_id = 1
 	//wild cards
-	
+
 	for(var/suit in list("wild","wild-draw-four"))
 		for(var/i = 1 to 4)
 			P = new()
@@ -154,7 +154,7 @@
 	if(cards.len<num_cards)
 		to_chat(usr, SPAN_WARNING("Not enough cards in the deck."))
 		return
-	
+
 	if(num_cards==1)
 		user.visible_message("\The [user] draws a card.")
 	else
@@ -169,7 +169,7 @@
 		update_icon()
 		num_cards--
 		chat_message += "[P]; "
-	
+
 	to_chat(user, "You've drawn: [chat_message]")
 
 /obj/item/toy/deck/verb/deal_card()
@@ -283,7 +283,7 @@
 	set category = "Object"
 	set name = "Toggle Discard State"
 	set desc = "Set or Unset this pile as a discard pile. Try not having multiple discard piles nearby"
-
+	set src in usr
 	if(usr.stat || !ishuman(usr) || !Adjacent(usr)) return
 
 	discard_pile = !discard_pile
@@ -293,7 +293,7 @@
 	set category = "Object"
 	set name = "Sort Hand"
 	set desc = "Sort this hand by deck's initial order"
-
+	set src in usr
 	if(usr.stat || !ishuman(usr) || !Adjacent(usr)) return
 
 	//fuck any qsorts and merge sorts. This needs to be brutally easy
@@ -311,7 +311,7 @@
 	set category = "Object"
 	set name = "Discard"
 	set desc = "Place a card from your hand in front of you or onto a discard pile."
-
+	set src in usr
 	var/list/to_discard = list()
 	for(var/datum/playingcard/P in cards)
 		to_discard[P.name] = P
@@ -330,7 +330,7 @@
 	if(!found)
 		return
 	qdel(to_discard)
-	
+
 	cards -= card
 	if(!cards.len)
 		qdel(src)
@@ -368,7 +368,7 @@
 	var/picking_up = input("Which card do you wish to pick up?") as null|anything in to_pick_up
 
 	if(!picking_up || !usr || QDELETED(src)) return
-	
+
 	var/mob/living/carbon/human/user = usr
 
 	var/datum/playingcard/card = to_pick_up[picking_up]
@@ -382,7 +382,7 @@
 	if(!found)
 		return
 	qdel(to_pick_up)
-	
+
 	cards -= card
 	if(!cards.len)
 		qdel(src)
@@ -480,4 +480,5 @@
 		update_icon()
 
 /obj/item/toy/handcard/pickup(mob/user as mob)
+	. = ..()
 	src.update_icon()

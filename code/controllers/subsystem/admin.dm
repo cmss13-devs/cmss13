@@ -6,8 +6,9 @@ SUBSYSTEM_DEF(admin)
 	var/list/currentrun = list()
 	var/times_repeated = 0
 
-/datum/controller/subsystem/admin/stat_entry()
-	..("P:[unansweredAhelps.len]")
+/datum/controller/subsystem/admin/stat_entry(msg)
+	msg = "P:[unansweredAhelps.len]"
+	return ..()
 
 /datum/controller/subsystem/admin/fire(resumed = FALSE)
 	if (!resumed)
@@ -22,7 +23,7 @@ SUBSYSTEM_DEF(admin)
 	while (currentrun.len)
 		var/ahelp_msg = currentrun[currentrun.len]
 		currentrun.len--
-	
+
 		if (!ahelp_msg)
 			continue
 
@@ -30,7 +31,7 @@ SUBSYSTEM_DEF(admin)
 
 		if (MC_TICK_CHECK)
 			return
-	
+
 	var/list/current_staff = get_staff_by_category()
 	current_staff = current_staff["admins"]
 	if(current_staff.len)

@@ -26,44 +26,42 @@
 
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count
 //Those are dealt with in their caste files.
-/mob/living/carbon/Xenomorph/Stat()
-	if(!..())
-		return FALSE
+/mob/living/carbon/Xenomorph/get_status_tab_items()
+	. = ..()
 
-	stat("Name:", "[name]")
-	stat("Time:","[worldtime2text()]")
+	. += "Name: [name]"
 
-	stat("")
+	. += ""
 
-	stat("Health:", "[round(health)]/[round(maxHealth)]")
-	stat("Armor:", "[round(0.01*armor_integrity*armor_deflection)]/[round(armor_deflection)]")
-	stat("Plasma:", "[round(plasma_stored)]/[round(plasma_max)]")
-	stat("Slash Damage:", "[round((melee_damage_lower+melee_damage_upper)/2)]")
+	. += "Health: [round(health)]/[round(maxHealth)]"
+	. += "Armor: [round(0.01*armor_integrity*armor_deflection)]/[round(armor_deflection)]"
+	. += "Plasma: [round(plasma_stored)]/[round(plasma_max)]"
+	. += "Slash Damage: [round((melee_damage_lower+melee_damage_upper)/2)]"
 
 	var/shieldtotal = 0
 	for (var/datum/xeno_shield/XS in xeno_shields)
 		shieldtotal += XS.amount
 
-	stat("Shield:", "[shieldtotal]")
+	. += "Shield: [shieldtotal]"
 
-	stat("")
+	. += ""
 
 	if(caste_name == "Bloody Larva" || caste_name == "Predalien Larva")
-		stat("Evolve Progress:", "[round(amount_grown)]/[max_grown]")
+		. += "Evolve Progress: [round(amount_grown)]/[max_grown]"
 	else if(hive && !hive.living_xeno_queen)
-		stat("Evolve Progress:", "NO QUEEN")
+		. += "Evolve Progress: NO QUEEN"
 	else if(hive && !hive.living_xeno_queen.ovipositor && !caste_name == "Queen")
-		stat("Evolve Progress:", "NO OVIPOSITOR")
+		. += "Evolve Progress: NO OVIPOSITOR"
 	else if(caste && caste.evolution_allowed)
-		stat("Evolve Progress:", "[round(evolution_stored)]/[evolution_threshold]")
+		. += "Evolve Progress: [round(evolution_stored)]/[evolution_threshold]"
 
-	stat("")
+	. += ""
 
 	if (behavior_delegate)
 		var/datum/behavior_delegate/MD = behavior_delegate
-		MD.append_to_stat()
+		. += MD.append_to_stat()
 
-	stat("")
+	. += ""
 	//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
 	var/msg_holder = "-"
 
@@ -74,7 +72,7 @@
 			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
-	stat("Frenzy:", "[msg_holder]")
+	. += "Frenzy: [msg_holder]"
 	msg_holder = "-"
 
 	if(warding_aura)
@@ -84,7 +82,7 @@
 			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
-	stat("Warding:", "[msg_holder]")
+	. += "Warding: [msg_holder]"
 	msg_holder = "-"
 
 	if(recovery_aura)
@@ -94,42 +92,41 @@
 			if(2.0 to 2.9) msg_holder = "Moderate"
 			if(3.0 to 3.9) msg_holder = "Strong"
 			if(4.0 to INFINITY) msg_holder = "Very Strong"
-	stat("Recovery:", "[msg_holder]")
+	. += "Recovery: [msg_holder]"
 
-	stat(null,"")
+	. += ""
 
 	if(hive)
 		if(!hive.living_xeno_queen)
-			stat("Queen's Location:", "NO QUEEN")
+			. += "Queen's Location: NO QUEEN"
 		else if(!(caste_name == "Queen"))
-			stat("Queen's Location:", "[hive.living_xeno_queen.loc.loc.name]")
+			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
 
 		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
-			stat("Slashing:", "PERMITTED")
+			. += "Slashing: PERMITTED"
 		else
-			stat("Slashing:", "FORBIDDEN")
+			. += "Slashing: FORBIDDEN"
 
 		if(hive.construction_allowed == XENO_LEADER)
-			stat("Construction Placement:", "LEADERS")
+			. += "Construction Placement: LEADERS"
 		else if(hive.construction_allowed == NORMAL_XENO)
-			stat("Construction Placement:", "ANYONE")
+			. += "Construction Placement: ANYONE"
 		else
-			stat("Construction Placement:", "QUEEN")
+			. += "Construction Placement: QUEEN"
 
 		if(hive.destruction_allowed == XENO_LEADER)
-			stat("Special Structure Destruction:", "LEADERS")
+			. += "Special Structure Destruction: LEADERS"
 		else if(hive.destruction_allowed == NORMAL_XENO)
-			stat("Special Structure Destruction:", "BUILDERS and LEADERS")
+			. += "Special Structure Destruction: BUILDERS and LEADERS"
 		else
-			stat("Special Structure Destruction:", "QUEEN")
+			. += "Special Structure Destruction: QUEEN"
 
 		if(hive.hive_orders)
-			stat("Hive Orders:", "[hive.hive_orders]")
+			. += "Hive Orders: [hive.hive_orders]"
 		else
-			stat("Hive Orders:", "-")
+			. += "Hive Orders: -"
 
-	stat("")
-	return TRUE
+	. += ""
 
 //A simple handler for checking your state. Used in pretty much all the procs.
 /mob/living/carbon/Xenomorph/proc/check_state(var/permissive = 0)

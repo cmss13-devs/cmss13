@@ -4,6 +4,8 @@
 	GLOB.alive_mob_list -= src
 	GLOB.player_list -= src
 
+	item_verbs = null
+
 	if(mind)
 		if(mind.current == src)
 			mind.current = null
@@ -63,52 +65,6 @@
 	if (PF)
 		PF.flags_pass = PASS_MOB_IS_OTHER
 		PF.flags_can_pass_all = PASS_MOB_THRU_OTHER|PASS_AROUND|PASS_HIGH_OVER_ONLY
-
-/mob/Stat()
-	if(!client)
-		return FALSE
-	if(client.admin_holder && client.inactivity < 1200)
-		if(client.admin_holder && client.admin_holder.rights & R_DEBUG && client.prefs.View_MC) //Skip admins, and check for our pref.
-			if(statpanel("MC"))
-				stat("CPU:", "[world.cpu]")
-				stat("Instances:", "[num2text(length(world.contents), 10)]")
-				stat("World Time:", "[world.time]")
-				GLOB.stat_entry()
-				config.stat_entry()
-				stat(null)
-				if(Master)
-					Master.stat_entry()
-				else
-					stat("Master Controller:", "ERROR")
-				if(Failsafe)
-					Failsafe.stat_entry()
-				else
-					stat("Failsafe Controller:", "ERROR")
-				if(Master)
-					stat(null)
-					for(var/datum/controller/subsystem/SS in Master.subsystems)
-						SS.stat_entry()
-
-	// Looking at contents of a tile
-	if (tile_contents_change)
-		tile_contents_change = 0
-		statpanel("Tile Contents")
-		client.statpanel = "Tile Contents"
-		stat(tile_contents)
-		client.stat_force_fast_update = 1
-		return 0
-
-	if (client.statpanel == "Tile Contents")
-		if (tile_contents.len && statpanel("Tile Contents"))
-			stat(tile_contents)
-			return 0
-
-	if (statpanel("Stats"))
-		return 1
-
-	sleep(world.tick_lag * 2)
-
-	return 0
 
 /mob/proc/prepare_huds()
 	hud_list = new
@@ -398,9 +354,12 @@
 	if(prefs.lastchangelog != changelog_hash)
 		prefs.lastchangelog = changelog_hash
 		prefs.save_preferences()
-		winset(src, "rpane.changelog", "background-color=none;font-style=;")
+		winset(src, "infowindow.changelog", "background-color=none;font-style=;")
 
 /mob/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(href_list["mach_close"])
 		var/t1 = href_list["mach_close"]
 		unset_interaction()
@@ -983,3 +942,7 @@ mob/proc/yank_out_object()
 			AM.Moved(oldLoc)
 
 	return TRUE
+
+/// Adds this list to the output to the stat browser
+/mob/proc/get_status_tab_items()
+	. = list()

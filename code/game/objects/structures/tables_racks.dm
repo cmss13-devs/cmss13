@@ -396,8 +396,8 @@
 	if(!straight_table_check(turn(direction, 90)) || !straight_table_check(turn(direction, -90)))
 		return 0
 
-	remove_verb(src, /obj/structure/surface/table/verb/do_flip)
-	add_verb(src, /obj/structure/surface/table/proc/do_put)
+	verbs -= /obj/structure/surface/table/verb/do_flip
+	verbs += /obj/structure/surface/table/proc/do_put
 
 	detach_all()
 
@@ -425,8 +425,8 @@
 	return 1
 
 /obj/structure/surface/table/proc/unflip()
-	remove_verb(src, /obj/structure/surface/table/proc/do_put)
-	add_verb(src, /obj/structure/surface/table/verb/do_flip)
+	verbs -= /obj/structure/surface/table/proc/do_put
+	verbs += /obj/structure/surface/table/verb/do_flip
 
 	projectile_coverage = upright_projectile_coverage
 

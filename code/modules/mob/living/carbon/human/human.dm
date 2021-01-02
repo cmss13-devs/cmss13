@@ -87,38 +87,35 @@
 		agent_holder.source_human = null
 		human_agent_list -= src
 
-/mob/living/carbon/human/Stat()
-	if(!..())
-		return FALSE
+/mob/living/carbon/human/get_status_tab_items()
+	. = ..()
 
-	if(statpanel("Stats"))
-		stat("Operation Time:","[worldtime2text()]")
-		stat("Security Level:","[uppertext(get_security_level())]")
-		stat("DEFCON Level:","[defcon_controller.current_defcon_level]")
+	. += ""
+	. += "Security Level: [uppertext(get_security_level())]"
+	. += "DEFCON Level: [defcon_controller.current_defcon_level]"
 
-		if(!isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
-			stat("Primary LZ: ", SSticker.mode.active_lz.loc.loc.name)
+	if(!isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
+		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
 
-		if(assigned_squad)
-			if(assigned_squad.overwatch_officer)
-				stat("Overwatch Officer: ", "[assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]")
-			if(assigned_squad.primary_objective)
-				stat("Primary Objective: ", assigned_squad.primary_objective)
-			if(assigned_squad.secondary_objective)
-				stat("Secondary Objective: ", assigned_squad.secondary_objective)
+	if(assigned_squad)
+		if(assigned_squad.overwatch_officer)
+			. += "Overwatch Officer: [assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]"
+		if(assigned_squad.primary_objective)
+			. += "Primary Objective: [assigned_squad.primary_objective]"
+		if(assigned_squad.secondary_objective)
+			. += "Secondary Objective: [assigned_squad.secondary_objective]"
 
-		if(mobility_aura)
-			stat("Active Order: ", "MOVE")
-		if(protection_aura)
-			stat("Active Order: ", "HOLD")
-		if(marksman_aura)
-			stat("Active Order: ", "FOCUS")
+	if(mobility_aura)
+		. += "Active Order: MOVE"
+	if(protection_aura)
+		. += "Active Order: HOLD"
+	if(marksman_aura)
+		. += "Active Order: FOCUS"
 
-		if(EvacuationAuthority)
-			var/eta_status = EvacuationAuthority.get_status_panel_eta()
-			if(eta_status)
-				stat(null, eta_status)
-		return TRUE
+	if(EvacuationAuthority)
+		var/eta_status = EvacuationAuthority.get_status_panel_eta()
+		if(eta_status)
+			. += eta_status
 
 /mob/living/carbon/human/ex_act(var/severity, var/direction, var/source, var/source_mob)
 	if(lying)

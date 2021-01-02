@@ -422,7 +422,7 @@
 	set name = "Add Teleporter Destination"
 	set desc = "Adds this location to the teleporter."
 	set category = "Yautja"
-
+	set src in usr
 	if(!usr || usr.stat || !is_ground_level(usr.z))
 		return
 
@@ -708,7 +708,7 @@
 	set category = "Weapons"
 	set name = "Unique Action"
 	set desc = "Activate or deactivate the combistick."
-
+	set src in usr
 	unique_action(usr)
 
 /obj/item/weapon/melee/combistick/attack_self(mob/user)

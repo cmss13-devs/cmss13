@@ -7,8 +7,9 @@ SUBSYSTEM_DEF(clues)
 	var/list/currentrun = list()
 	var/list/prints_list = list()
 
-/datum/controller/subsystem/clues/stat_entry()
-	..("P:[prints_list.len]")
+/datum/controller/subsystem/clues/stat_entry(msg)
+	msg = "P:[prints_list.len]"
+	return ..()
 
 /datum/controller/subsystem/clues/fire(resumed = FALSE)
 	if(!resumed && length(prints_list))

@@ -15,7 +15,7 @@
 /datum/xeno_mutator/berserker/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()
 	if (. == 0)
-		return	
+		return
 
 	var/mob/living/carbon/Xenomorph/Ravager/R = MS.xeno
 	R.mutation_type = RAVAGER_BERSERKER
@@ -23,7 +23,7 @@
 	R.health_modifier -= XENO_HEALTH_MOD_MED
 	R.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 	R.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	
+
 	mutator_update_actions(R)
 	MS.recalculate_actions(description, flavor_description)
 
@@ -36,7 +36,7 @@
 	name = "Berserker Ravager Behavior Delegate"
 
 	var/hp_vamp_ratio = 0.3
-	
+
 	// Rage config
 	var/max_rage = 5
 	var/rage_decay_time = 30 // How many deciseconds between slashes until we start to decay rage
@@ -47,7 +47,7 @@
 	// Eviscerate config
 	var/rage_lock_duration = 100      // 10 seconds of max rage
 	var/rage_cooldown_duration = 100  // 10 seconds of NO rage.
-	
+
 	// State for tracking rage
 	var/rage = 0
 	var/last_slash_time = 0
@@ -58,7 +58,7 @@
 
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
-	
+
 	if (rage != max_rage && !rage_cooldown_start_time)
 		rage = rage + 1
 		bound_xeno.armor_modifier += armor_buff_per_rage
@@ -76,7 +76,8 @@
 	bound_xeno.gain_health((0.05*rage + hp_vamp_ratio)*((bound_xeno.melee_damage_upper - bound_xeno.melee_damage_lower)/2 + bound_xeno.melee_damage_lower))
 
 /datum/behavior_delegate/ravager_berserker/append_to_stat()
-	stat("Rage:", "[rage]/[max_rage]")
+	. = list()
+	. += "Rage: [rage]/[max_rage]"
 
 /datum/behavior_delegate/ravager_berserker/on_life()
 	// Compute our current rage (demerit if necessary)
@@ -88,7 +89,7 @@
 	var/real_amount = amount
 	if (amount > rage)
 		real_amount = rage
-	
+
 	rage -= real_amount
 	bound_xeno.armor_modifier -= armor_buff_per_rage*real_amount
 	bound_xeno.attack_speed_modifier += attack_delay_buff_per_rage*real_amount

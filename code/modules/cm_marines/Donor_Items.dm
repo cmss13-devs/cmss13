@@ -16,6 +16,7 @@
 	flags_marine_armor = NO_FLAGS
 
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_squad_markings()
+	set src in usr
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
@@ -27,6 +28,7 @@
 	usr.update_inv_wear_suit()
 
 /obj/item/clothing/suit/storage/marine/fluff/verb/toggle_shoulder_lamp()
+	set src in usr
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
@@ -348,6 +350,7 @@
 	item_state = "AlexLermire_u"
 	var/open = 0
 /obj/item/clothing/suit/storage/marine/fluff/AlexLemire/verb/verb_toggleopen()
+	set src in usr
 	set category = "Object"
 	set name = "Toggle Open"
 	if(open ==0)
@@ -442,6 +445,7 @@
 	flags_marine_helmet = HELMET_STORE_GARB
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_squad_markings()
+	set src in usr
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))
@@ -453,6 +457,7 @@
 	usr.update_inv_head()
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_garb_overlay()
+	set src in usr
 	if(!ishuman(usr)) return
 
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained() || !usr.loc || !isturf(usr.loc))

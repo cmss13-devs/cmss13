@@ -45,7 +45,7 @@
 			if(user.drop_held_item())
 				O.forceMove(src)
 				beaker = O
-				add_verb(src, /obj/structure/machinery/juicer/verb/detach)
+				verbs += /obj/structure/machinery/juicer/verb/detach
 				update_icon()
 			updateUsrDialog()
 			return 0
@@ -125,7 +125,7 @@
 		return
 	if (!beaker)
 		return
-	remove_verb(src, /obj/structure/machinery/juicer/verb/detach)
+	verbs -= /obj/structure/machinery/juicer/verb/detach
 	beaker.forceMove(src.loc)
 	beaker = null
 	update_icon()

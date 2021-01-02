@@ -416,6 +416,9 @@ IN_USE						used for vending/denying
 
 
 /obj/structure/machinery/cm_vending/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable())
 		return
 	if(usr.is_mob_incapacitated())
@@ -452,6 +455,9 @@ IN_USE						used for vending/denying
 	vendor_theme = VENDOR_THEME_USCM
 
 /obj/structure/machinery/cm_vending/gear/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())
@@ -600,6 +606,9 @@ IN_USE						used for vending/denying
 	show_points = FALSE
 
 /obj/structure/machinery/cm_vending/clothing/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())
@@ -795,6 +804,9 @@ IN_USE						used for vending/denying
 		ui.set_auto_update(0)		//here we need autoupdate because items can be vended by others and are limited
 
 /obj/structure/machinery/cm_vending/sorted/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable())
 		return
 	if(usr.is_mob_incapacitated())
@@ -928,6 +940,9 @@ IN_USE						used for vending/denying
 	avaliable_points_to_display = MARINE_TOTAL_BUY_POINTS
 
 /obj/structure/machinery/cm_vending/own_points/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())

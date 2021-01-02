@@ -36,7 +36,7 @@
 /obj/item/clothing/suit/storage/verb/toggle_draw_mode()
 	set name = "Switch Storage Drawing Method"
 	set category = "Object"
-
+	set src in usr
 	var/toggled = FALSE // Only for the message
 
 	if(!istype(src, /obj/item/clothing/suit/storage)) // This will trigger on uniforms, for webbings etc

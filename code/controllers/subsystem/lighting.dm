@@ -12,8 +12,9 @@ SUBSYSTEM_DEF(lighting)
 	var/list/turf/changed_turfs = list()
 
 
-/datum/controller/subsystem/lighting/stat_entry()
-	..("L:[lights.len]; T:[changed_turfs.len]")
+/datum/controller/subsystem/lighting/stat_entry(msg)
+	msg = "L:[lights.len]; T:[changed_turfs.len]"
+	return ..()
 
 /datum/controller/subsystem/lighting/Initialize(timeofday)
 	for(var/thing in lights)
@@ -51,7 +52,7 @@ SUBSYSTEM_DEF(lighting)
 		L.check()
 		if (MC_TICK_CHECK)
 			return
-	
+
 	while (changed_turfs_current.len)
 		var/turf/T = changed_turfs_current[changed_turfs_current.len]
 		changed_turfs_current.len--

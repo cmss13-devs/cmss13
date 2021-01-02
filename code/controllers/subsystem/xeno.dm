@@ -6,8 +6,9 @@ SUBSYSTEM_DEF(xeno)
 
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/xeno/stat_entry()
-	..("P:[GLOB.xeno_mob_list.len]")
+/datum/controller/subsystem/xeno/stat_entry(msg)
+	msg = "P:[GLOB.xeno_mob_list.len]"
+	return ..()
 
 
 /datum/controller/subsystem/xeno/fire(resumed = FALSE)

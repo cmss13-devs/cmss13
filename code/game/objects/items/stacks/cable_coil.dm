@@ -61,6 +61,7 @@
 /obj/item/stack/cable_coil/verb/make_restraint()
 	set name = "Make Cable Restraints"
 	set category = "Object"
+	set src in usr
 	var/mob/M = usr
 
 	if(ishuman(M) && !M.is_mob_incapacitated())
@@ -307,7 +308,7 @@
 /obj/item/stack/cable_coil/attack(mob/M as mob, mob/user as mob)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		
+
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 		if(!(S.status & LIMB_ROBOT) || user.a_intent != INTENT_HELP)
 			return ..()

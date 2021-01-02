@@ -83,7 +83,7 @@
 	message_staff(SPAN_INFO("[key_name(usr)] has given a [hud_choice] to [M]."))
 
 /client/proc/cmd_admin_gib(mob/M as mob in GLOB.mob_list)
-	set category = "Special Verbs"
+	set category = "Admin.Fun"
 	set name = "Gib"
 
 	if(!check_rights(R_ADMIN|R_FUN))	return

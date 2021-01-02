@@ -54,6 +54,9 @@
 
 
 	Topic(href, href_list)
+		. = ..()
+		if(.)
+			return
 		if((get_dist(src, usr) <= 1) || isRemoteControlling(usr))
 			if(href_list["implant"])
 				if(src.occupant)

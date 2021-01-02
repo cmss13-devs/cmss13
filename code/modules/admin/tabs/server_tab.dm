@@ -1,5 +1,5 @@
 /datum/admins/proc/restart()
-	set name = "A: Restart Server"
+	set name = "Restart Server"
 	set desc = "Restarts the world"
 	set category = "Server"
 
@@ -21,7 +21,7 @@
 		world.Reboot()
 
 /datum/admins/proc/togglejoin()
-	set name = "T: Toggle Marines Joining"
+	set name = "Toggle Marines Joining"
 	set desc = "Players can still log into the server, but Marines won't be able to join the game as a new mob."
 	set category = "Server"
 
@@ -34,7 +34,7 @@
 	world.update_status()
 
 /datum/admins/proc/toggledsay()
-	set name = "T: Toggle Deadchat"
+	set name = "Toggle Deadchat"
 	set desc = "Globally Toggles Deadchat"
 	set category = "Server"
 
@@ -46,7 +46,7 @@
 	message_staff("[key_name_admin(usr)] toggled deadchat.")
 
 /datum/admins/proc/toggleooc()
-	set name = "T: Toggle OOC"
+	set name = "Toggle OOC"
 	set desc = "Globally Toggles OOC"
 	set category = "Server"
 
@@ -58,7 +58,7 @@
 	message_staff("[key_name_admin(usr)] toggled OOC.")
 
 /datum/admins/proc/togglelooc()
-	set name = "T: Toggle LOOC"
+	set name = "Toggle LOOC"
 	set desc = "Globally Toggles LOOC"
 	set category = "Server"
 

@@ -1,13 +1,4 @@
-/*
-/mob/verb/test_shuttle()
-	set name = "DEBUG EVAC SHUTTLE"
-	set category = "DEBUG"
 
-	to_world("Location is [emergency_shuttle.shuttle.location]")
-	to_world("Moving status is [emergency_shuttle.shuttle.moving_status]")
-	to_world("Departed is [emergency_shuttle.departed]")
-
-*/
 #define QUEEN_DEATH_COUNTDOWN 			 MINUTES_10 //10 minutes. Can be changed into a variable if it needs to be manipulated later.
 
 #define MODE_INFESTATION_X_MAJOR		"Xenomorph Major Victory"

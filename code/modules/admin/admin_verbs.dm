@@ -49,7 +49,8 @@ var/list/admin_verbs_ban = list(
 	// /client/proc/jobbans // Disabled temporarily due to 15-30 second lag spikes. Don't forget the comma in the line above when uncommenting this!
 )
 var/list/admin_verbs_sounds = list(
-	/client/proc/admin_play_sound
+	/client/proc/play_web_sound,
+	/client/proc/play_sound
 )
 var/list/admin_verbs_fun = list(
 	/client/proc/enable_event_mob_verbs,
@@ -310,14 +311,14 @@ var/list/admin_verbs_mod = list(
 	return
 
 /client/proc/game_panel()
-	set name = "C: Game Panel"
-	set category = "Admin"
+	set name = "Game Panel"
+	set category = "Admin.Game"
 	if(admin_holder)
 		admin_holder.Game()
 	return
 
 /client/proc/set_ooc_color_self()
-	set category = "OOC"
+	set category = "OOC.OOC"
 	set name = "OOC Text Color - Self"
 	if(!admin_holder && !donator)	return
 	var/new_ooccolor = input(src, "Please select your OOC colour.", "OOC colour") as color|null
@@ -361,7 +362,7 @@ var/list/admin_verbs_mod = list(
 			message_staff("[key_name_admin(src)] has warned [warned_ckey] (DC). They have [MAX_WARNS-P.warning_count] strikes remaining.")
 
 /client/proc/give_disease(mob/T as mob in GLOB.mob_list) // -- Giacom
-	set category = "Fun"
+	set category = "Admin.Fun"
 	set name = "Give Disease (old)"
 	set desc = "Gives a (tg-style) Disease to a mob."
 	var/list/disease_names = list()
@@ -376,7 +377,7 @@ var/list/admin_verbs_mod = list(
 
 
 /client/proc/object_talk(var/msg as text) // -- TLE
-	set category = "Special Verbs"
+	set category = "Admin.Events"
 	set name = "Object Say"
 	set desc = "Display a message to everyone who can hear the target"
 	if(mob.control_object)
@@ -387,7 +388,7 @@ var/list/admin_verbs_mod = list(
 
 
 /client/proc/toggle_log_hrefs()
-	set name = "X: Toggle href Logging"
+	set name = "Toggle href Logging"
 	set category = "Server"
 	if(!admin_holder)	return
 	if(config)
@@ -452,7 +453,7 @@ var/list/admin_verbs_mod = list(
 
 /client/proc/toggleattacklogs()
 	set name = "Toggle Attack Log Messages"
-	set category = "Preferences"
+	set category = "Preferences.Logs"
 
 	prefs.toggles_chat ^= CHAT_ATTACKLOGS
 	if (prefs.toggles_chat & CHAT_ATTACKLOGS)
@@ -463,7 +464,7 @@ var/list/admin_verbs_mod = list(
 
 /client/proc/toggleffattacklogs()
 	set name = "Toggle FF Attack Log Messages"
-	set category = "Preferences"
+	set category = "Preferences.Logs"
 
 	prefs.toggles_chat ^= CHAT_FFATTACKLOGS
 	if (prefs.toggles_chat & CHAT_FFATTACKLOGS)
@@ -474,7 +475,7 @@ var/list/admin_verbs_mod = list(
 
 /client/proc/toggledebuglogs()
 	set name = "Toggle Debug Log Messages"
-	set category = "Preferences"
+	set category = "Preferences.Logs"
 
 	prefs.toggles_chat ^= CHAT_DEBUGLOGS
 	if(prefs.toggles_chat & CHAT_DEBUGLOGS)
@@ -485,7 +486,7 @@ var/list/admin_verbs_mod = list(
 
 /client/proc/togglenichelogs()
 	set name = "Toggle Niche Log Messages"
-	set category = "Preferences"
+	set category = "Preferences.Logs"
 
 	prefs.toggles_chat ^= CHAT_NICHELOGS
 	if(prefs.toggles_chat & CHAT_NICHELOGS)

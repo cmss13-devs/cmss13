@@ -20,8 +20,8 @@
 	freed_mob_list += M
 
 /client/proc/free_all_mobs_in_view()
-	set name = "F: Free All Mobs - In View"
-	set category = "Event"
+	set name = "Free All Mobs"
+	set category = "Admin.InView"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
 		to_chat(src, "Only administrators may use this command.")

@@ -82,7 +82,7 @@
 /client/proc/toggle_own_ghost_vis()
 	set name = "Show/Hide Own Ghost"
 	set desc = "Toggle your visibility as a ghost to other ghosts."
-	set category = "Preferences"
+	set category = "Preferences.Ghost"
 
 	if(!admin_holder || !(admin_holder.rights & R_MOD)) return
 
@@ -102,8 +102,8 @@
 // bite me
 var/global/grenade_antigrief_on = TRUE
 /client/proc/toggle_grenade_antigrief()
-	set name = "X: Toggle Grenade Antigrief"
-	set category = "Admin"
+	set name = "Toggle Grenade Antigrief"
+	set category = "Admin.Game"
 
 	grenade_antigrief_on = !grenade_antigrief_on
 	message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has [grenade_antigrief_on ? "enabled" : "disabled"] grenade antigrief"))

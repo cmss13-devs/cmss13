@@ -81,7 +81,7 @@
 
 //Shows today's server log
 /datum/admins/proc/view_txt_log()
-	set name = "S: Show Server Log"
+	set name = "Show Server Log"
 	set desc = "Shows today's server log."
 	set category = "Server"
 

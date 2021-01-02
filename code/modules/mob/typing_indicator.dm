@@ -72,7 +72,7 @@ var/global/image/typing_indicator
 
 /client/verb/typing_indicator()
 	set name = "Show/Hide Typing Indicator"
-	set category = "Preferences"
+	set category = "Preferences.Chat"
 	set desc = "Toggles showing an indicator when you are typing emote or say message."
 	prefs.toggles_chat ^= SHOW_TYPING
 	prefs.save_preferences()

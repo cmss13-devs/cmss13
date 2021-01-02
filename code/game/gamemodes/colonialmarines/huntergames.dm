@@ -447,18 +447,7 @@ var/waiting_for_drop_votes = 0
 		else
 			obj_type = HUNTER_OKAY_ITEM
 			new obj_type(location)
-/*
-/mob/verb/debug_item_spawn()
-	set name = "Debug Item Drops"
-	set category = "DEBUG"
 
-	var/i = input("Pick what to spawn in","Spawning","good") as null|anything in list("god","good","crap")
-	if(i)
-		switch(i)
-			if("god") ticker.mode:place_drop(loc, i, 1)
-			else ticker.mode:place_drop(loc, i)
-
-*/
 #undef HUNTER_BEST_ITEM
 #undef HUNTER_GOOD_ITEM
 #undef HUNTER_OKAY_ITEM

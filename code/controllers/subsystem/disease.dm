@@ -9,8 +9,9 @@ SUBSYSTEM_DEF(disease)
 
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/disease/stat_entry()
-	..("P:[active_diseases.len]")
+/datum/controller/subsystem/disease/stat_entry(msg)
+	msg = "P:[active_diseases.len]"
+	return ..()
 
 
 /datum/controller/subsystem/disease/fire(resumed = FALSE)

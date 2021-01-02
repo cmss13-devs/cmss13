@@ -1,16 +1,16 @@
 /client/proc/force_teleporter()
-	set name = "F: Force Teleporter"
+	set name = "Force Teleporter"
 	set desc = "Force a teleporter to teleport"
-	set category = "Admin"
+	set category = "Admin.Game"
 
-	var/available_teleporters = teleporter_ss.teleporters
+	var/available_teleporters = SSteleporter.teleporters
 
 	var/datum/teleporter/teleporter = input("Which teleporter do you want to use?", "Select a teleporter:") as null|anything in available_teleporters
 	if(!teleporter)
 		return
 
 	var/available_locations = teleporter.locations.Copy()
-    
+
 	var/source_location = input("Which location do you want to teleport from?", "Select a location:") as null|anything in available_locations
 	if(!source_location)
 		return

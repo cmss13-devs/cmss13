@@ -9,8 +9,9 @@ SUBSYSTEM_DEF(smoke_effects)
 
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/smoke_effects/stat_entry()
-	..("P:[active_smoke_effects.len]")
+/datum/controller/subsystem/smoke_effects/stat_entry(msg)
+	msg = "P:[active_smoke_effects.len]"
+	return ..()
 
 
 /datum/controller/subsystem/smoke_effects/fire(resumed = FALSE)

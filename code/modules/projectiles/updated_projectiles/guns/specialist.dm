@@ -364,62 +364,86 @@
 /obj/item/weapon/gun/smartgun/verb/vtoggle_lethal_mode()
 	set category = "Smartgun"
 	set name = "Toggle Lethal Mode"
+	set src in usr
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	if(!istype(G))
+		return
 
 	if(isobserver(usr) || isXeno(usr))
 		return
-	if(!powerpack)
-		link_powerpack(usr)
-	toggle_lethal_mode(usr)
+	if(!G.powerpack)
+		G.link_powerpack(usr)
+	G.toggle_lethal_mode(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_ammo_type()
 	set category = "Smartgun"
 	set name = "Toggle Ammo Type"
+	set src in usr
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	if(!istype(G))
+		return
 
 	if(isobserver(usr) || isXeno(usr))
 		return
-	if(!powerpack)
-		link_powerpack(usr)
-	toggle_ammo_type(usr)
+	if(!G.powerpack)
+		G.link_powerpack(usr)
+	G.toggle_ammo_type(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_recoil_compensation()
 	set category = "Smartgun"
 	set name = "Toggle Recoil Compensation"
+	set src in usr
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	if(!istype(G))
+		return
 
 	if(isobserver(usr) || isXeno(usr))
 		return
-	if(!powerpack)
-		link_powerpack(usr)
-	toggle_recoil_compensation(usr)
+	if(!G.powerpack)
+		G.link_powerpack(usr)
+	G.toggle_recoil_compensation(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_accuracy_improvement()
 	set category = "Smartgun"
 	set name = "Toggle Accuracy Improvement"
+	set src in usr
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	if(!istype(G))
+		return
 
 	if(isobserver(usr) || isXeno(usr))
 		return
-	if(!powerpack)
-		link_powerpack(usr)
-	toggle_accuracy_improvement(usr)
+	if(!G.powerpack)
+		G.link_powerpack(usr)
+	G.toggle_accuracy_improvement(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_auto_fire()
 	set category = "Smartgun"
 	set name = "Toggle Auto Fire"
+	set src in usr
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	if(!istype(G))
+		return
 
 	if(isobserver(usr) || isXeno(usr))
 		return
-	if(!powerpack)
-		link_powerpack(usr)
-	toggle_auto_fire(usr)
+	if(!G.powerpack)
+		G.link_powerpack(usr)
+	G.toggle_auto_fire(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_motion_detector()
 	set category = "Smartgun"
 	set name = "Toggle Motion Detector"
+	set src in usr
+	var/obj/item/weapon/gun/smartgun/G = get_active_firearm(usr)
+	if(!istype(G))
+		return
 
 	if(isobserver(usr) || isXeno(usr))
 		return
-	if(!powerpack)
-		link_powerpack(usr)
-	toggle_motion_detector(usr)
+	if(!G.powerpack)
+		G.link_powerpack(usr)
+	G.toggle_motion_detector(usr)
 
 /obj/item/weapon/gun/smartgun/able_to_fire(mob/living/user)
 	. = ..()

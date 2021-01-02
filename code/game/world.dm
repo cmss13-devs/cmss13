@@ -367,12 +367,14 @@ var/list/datum/entity/map_vote/all_votes
 		round_extra_data = "&message=[SSticker.mode.end_round_message()]"
 
 	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
-	for(var/client/C in GLOB.clients)
-		var/datum/chatOutput/chat = C.chatOutput
-		if(chat)
-			chat.browser_send(C, "roundrestart")
-		if(CONFIG_GET(string/server))	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[CONFIG_GET(string/server)]")
+	var/server = CONFIG_GET(string/server)
+	for(var/thing in GLOB.clients)
+		if(!thing)
+			continue
+		var/client/C = thing
+		C?.tgui_panel?.send_roundrestart()
+		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+			C << link("byond://[server]")
 
 	..(reason)
 

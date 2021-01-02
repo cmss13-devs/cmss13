@@ -147,6 +147,9 @@ var/list/alldepartments = list()
 	return
 
 /obj/structure/machinery/faxmachine/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(href_list["send"])
 		if(tofax)
 

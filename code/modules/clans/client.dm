@@ -18,15 +18,15 @@
         clan_info.save()
 
 /client/proc/usr_create_new_clan()
-    set name = "A: Create New Clan"
+    set name = "Create New Clan"
     set category = "Debug"
 
     if(!clan_info)
         return
-    
+
     if(!(clan_info.permissions & CLAN_PERMISSION_ADMIN_MANAGER))
         return
-    
+
     var/input = input(src, "Name the clan:", "Create a Clan") as text|null
 
     if(!input)
@@ -39,7 +39,7 @@
 /client/verb/view_clan_info()
     set name = "View Clan Info"
     set category = "OOC"
-    
+
     INVOKE_ASYNC(src, .proc/usr_view_clan_info)
 
 /client/proc/usr_view_clan_info(var/clan_id, var/force_clan_id = FALSE)
@@ -87,7 +87,7 @@
     else
         clan_to_get = clan_id
 
-    var/datum/entity/clan/C 
+    var/datum/entity/clan/C
     var/list/datum/view_record/clan_playerbase_view/CPV
 
     if(clan_to_get)
@@ -140,11 +140,11 @@
             player_rename_clan = FALSE,
             player_setdesc_clan = FALSE,
             player_modify_ranks = FALSE,
-            
+
             player_purge = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MANAGER),
             player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)
         )
-        
+
     var/list/clan_members[CPV.len]
 
     var/index = 1
@@ -182,7 +182,7 @@
         if(clan_id != clan_info.clan_id)
             if(warn) to_chat(src, "You do not have permission to perform actions on this clan!")
             return FALSE
-        
+
 
     if(!(clan_info.permissions & permission_flag))
         if(warn) to_chat(src, "You do not have the necessary permissions to perform this action!")
@@ -205,7 +205,7 @@
         target_clan.honor = max(number + target_clan.honor, 0)
 
         target_clan.save()
-    
+
     return TRUE
 
 /client/proc/clan_topic(href, href_list)
@@ -227,7 +227,7 @@
             if(CLAN_ACTION_CLAN_RENAME)
                 if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY))
                     return
-                
+
                 var/input = input(src, "Input the new name", "Set Name", target_clan.name) as text|null
 
                 if(!input || input == target_clan.name)
@@ -243,7 +243,7 @@
                     return
 
                 var/input = input(usr, "Input a new description", "Set Description", target_clan.description) as message|null
-                
+
                 if(!input || input == target_clan.description)
                     return
 
@@ -259,7 +259,7 @@
 
                 if(!color)
                     return
-                
+
                 target_clan.color = color
                 log_and_message_staff("[key_name_admin(src)] has set the color of [target_clan.name] to [color].")
                 to_chat(src, SPAN_NOTICE("Set the name of [target_clan.name] to [color]."))
@@ -275,7 +275,7 @@
                 log_and_message_staff("[key_name_admin(src)] has set the honor of clan [target_clan.name] from [target_clan.honor] to [input].")
                 to_chat(src, SPAN_NOTICE("Set the honor of [target_clan.name] from [target_clan.honor] to [input]."))
                 target_clan.honor = input
-                
+
             if(CLAN_ACTION_CLAN_DELETE)
                 if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER))
                     return
@@ -323,7 +323,7 @@
 
         if(has_clan_permission(CLAN_PERMISSION_ADMIN_MANAGER, warn = FALSE))
             player_rank = 999
-        
+
         if((target.permissions & CLAN_PERMISSION_ADMIN_MANAGER) || player_rank <= target.clan_rank)
             to_chat(src, SPAN_DANGER("You can't target this person!"))
             return
@@ -349,7 +349,7 @@
 
                 usr_view_clan_info(target_clan, TRUE)
                 return // Return because we don't want to save them. They've been deleted
-                
+
             if(CLAN_ACTION_PLAYER_MOVECLAN)
                 if(!has_clan_permission(CLAN_PERMISSION_ADMIN_MOVE))
                     return
@@ -360,10 +360,10 @@
                 var/list/clans = list()
                 for(var/datum/view_record/clan_view/CV in CPV)
                     clans += list("[CV.name]" = CV.clan_id)
-                
+
                 if(is_clan_manager && clans.len >= 1)
                     if(target.permissions & CLAN_PERMISSION_ADMIN_ANCIENT)
-                        clans += list("Remove from Ancient") 
+                        clans += list("Remove from Ancient")
                     else
                         clans += list("Make Ancient")
 
@@ -440,19 +440,19 @@
                                 if(players_in_rank >= available_slots)
                                     to_chat(src, SPAN_DANGER("This slot is full! (Maximum of [chosen_rank.limit] per player in the clan, currently [available_slots])"))
                                     return
-                                
+
 
                 else
                     return // Doesn't have permission to do this
 
                 if(!has_clan_permission(chosen_rank.permission_required)) // Double check
                     return
-                
+
                 target.clan_rank = clan_ranks_ordered[chosen_rank.name]
                 target.permissions = chosen_rank.permissions
                 log_and_message_staff("[key_name_admin(src)] has set the rank of [player_name] to [chosen_rank.name] for their clan.")
                 to_chat(src, SPAN_NOTICE("Set [player_name]'s rank to [chosen_rank.name]"))
-            
+
         target.save()
         target.sync()
         usr_view_clan_info(target.clan_id, TRUE)

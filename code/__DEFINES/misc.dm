@@ -187,3 +187,19 @@
  * Use instead of `A.loc.loc`.
  */
 #define get_area(A) (isarea(A) ? A : get_step(A, 0)?.loc)
+
+//https://secure.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
+#define MOUSE_OPACITY_TRANSPARENT 0
+#define MOUSE_OPACITY_ICON 1
+#define MOUSE_OPACITY_OPAQUE 2
+
+#define CLIENT_FROM_VAR(I) (ismob(I) ? I:client : (istype(I, /client) ? I : (istype(I, /datum/mind) ? I:current?:client : null)))
+
+#define to_chat_forced(Target, Message) to_chat_immediate(Target, Message)
+
+#define to_world(Message) to_chat(world, Message)
+
+//world/proc/shelleo
+#define SHELLEO_ERRORLEVEL 1
+#define SHELLEO_STDOUT 2
+#define SHELLEO_STDERR 3

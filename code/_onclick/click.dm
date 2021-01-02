@@ -143,7 +143,7 @@
 		if(A.loc != src)
 			next_move += 4
 		else
-			next_move += 0.5	
+			next_move += 0.5
 		UnarmedAttack(A, 1, mods)
 	return
 
@@ -174,15 +174,9 @@
 	if (mods["alt"])
 		var/turf/T = get_turf(src)
 		if(T && user.TurfAdjacent(T) && T.contents.len)
-			user.tile_contents = T.contents.Copy()
-			user.tile_contents += T
+			user.listed_turf = T
+			user.client << output("[url_encode(json_encode(T.name))];", "statbrowser:create_listedturf")
 
-			for (var/atom/A in user.tile_contents)
-				if (A.invisibility > user.see_invisible)
-					user.tile_contents -= A
-
-			if (user.tile_contents.len)
-				user.tile_contents_change = 1
 		return TRUE
 	return FALSE
 

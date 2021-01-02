@@ -26,7 +26,7 @@
 		msg_admin_niche("[key]/[ckey] has tried to transfer to deleted [new_character].")
 		return
 
-	if(current)	
+	if(current)
 		current.mind = null	//remove ourself from our old body's mind variable
 		nanomanager.user_transferred(current, new_character) // transfer active NanoUI instances to new user
 
@@ -47,6 +47,7 @@
 		new_character.key = key		//now transfer the key to link the client to our new body
 		SSround_recording.recorder.update_key(new_character)
 		if(new_character.client)
+			new_character.client.init_verbs()
 			new_character.client.change_view(world_view_size) //reset view range to default.
 			new_character.client.pixel_x = 0
 			new_character.client.pixel_y = 0
@@ -82,7 +83,7 @@
 			objective_memory.view_objective_memories(recipient, null)
 
 /datum/mind/Topic(href, href_list)
-	if(!check_rights(R_ADMIN))	
+	if(!check_rights(R_ADMIN))
 		return
 
 	else if (href_list["memory_edit"])

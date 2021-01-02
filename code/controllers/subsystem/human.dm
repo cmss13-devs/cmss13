@@ -7,9 +7,9 @@ SUBSYSTEM_DEF(human)
 	var/list/currentrun = list()
 
 
-/datum/controller/subsystem/human/stat_entry()
-	..("P:[processable_human_list.len]")
-
+/datum/controller/subsystem/human/stat_entry(msg)
+	msg = "P:[processable_human_list.len]"
+	return ..()
 
 /datum/controller/subsystem/human/fire(resumed = FALSE)
 	if (!resumed)

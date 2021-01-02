@@ -63,9 +63,10 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	connection = settings.create_connection()
 	connection.keep()
 
-/datum/controller/subsystem/database_query_manager/stat_entry()
+/datum/controller/subsystem/database_query_manager/stat_entry(msg)
 	var/text = (connection && connection.status == DB_CONNECTION_READY) ? ("READY") : ("PREPPING")
-	..("[text], Q:[queries.len]; P:[currentrun.len]; C:[in_callback]")
+	msg = "[text], Q:[queries.len]; P:[currentrun.len]; C:[in_callback]"
+	return ..()
 
 /datum/controller/subsystem/database_query_manager/fire(resumed = FALSE)
 	if (!resumed)
@@ -76,7 +77,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	if(connection.status != DB_CONNECTION_READY)
 		return
 	while (currentrun.len)
-		var/datum/db/query_response/Q = currentrun[currentrun.len]		
+		var/datum/db/query_response/Q = currentrun[currentrun.len]
 		if (!Q || QDELETED(Q))
 			queries -= Q
 			continue
@@ -87,7 +88,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 				rejected_queries += Q
 			in_callback_tally++
 		currentrun.len--
-		if (MC_TICK_CHECK)			
+		if (MC_TICK_CHECK)
 			return
 	in_progress = in_progress_tally
 	in_callback = in_callback_tally
@@ -106,7 +107,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	queries += qr
 	if(debug_mode)
 		all_queries += qr
-	
+
 // if DB supports this
 /datum/controller/subsystem/database_query_manager/proc/create_parametric_query(query_text, parameters, success_callback, fail_callback, unique_query_id)
 	var/datum/db/query_response/qr = new()
@@ -180,7 +181,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 			value = copytext(t, pos + 1)
 		else
 			name = lowertext(t)
-		
+
 		if(findtext(name, "db_")==0)
 			continue
 

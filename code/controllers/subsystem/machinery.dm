@@ -18,11 +18,9 @@ SUBSYSTEM_DEF(machinery)
 	. = ..()
 	makepowernets()
 
-/datum/controller/subsystem/machinery/stat_entry(var/msg)
-	if (msg)
-		return ..()
-
-	..("M:[global.processing_machines.len]")
+/datum/controller/subsystem/machinery/stat_entry(msg)
+	msg = "M:[global.processing_machines.len]"
+	return ..()
 
 /datum/controller/subsystem/machinery/fire(resumed = FALSE)
 	if (!resumed)

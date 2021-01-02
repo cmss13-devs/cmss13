@@ -6,7 +6,7 @@
 //Used to swap which module a position is using
 //e.g. swapping primary gunner from the minigun to the smoke launcher
 /obj/vehicle/multitile/proc/switch_hardpoint()
-	set name = "A: Change Active Hardpoint"
+	set name = "Change Active Hardpoint"
 	set category = "Vehicle"
 
 	var/mob/M = usr
@@ -38,7 +38,7 @@
 
 //cycles through hardpoints in a activatable hardpoints list without asking anything
 /obj/vehicle/multitile/proc/cycle_hardpoint()
-	set name = "A: Cycle Active Hardpoint"
+	set name = "Cycle Active Hardpoint"
 	set category = "Vehicle"
 
 	var/mob/M = usr
@@ -74,7 +74,7 @@
 
 // Used to lock/unlock the vehicle doors to anyone without proper access
 /obj/vehicle/multitile/proc/toggle_door_lock()
-	set name = "G: Toggle Door Locks"
+	set name = "Toggle Door Locks"
 	set category = "Vehicle"
 
 	var/mob/M = usr
@@ -96,7 +96,7 @@
 
 //switches between SHIFT + Click and Middle Mouse Button Click to fire not selected currently weapon
 /obj/vehicle/multitile/proc/toggle_shift_click()
-	set name = "G: Toggle Middle/Shift Clicking"
+	set name = "Toggle Middle/Shift Clicking"
 	set desc = "Toggles between using Middle Mouse Button click and Shift + Click to fire not currently selected weapon if possible."
 	set category = "Vehicle"
 
@@ -115,7 +115,7 @@
 
 //opens vehicle status window with HP and ammo of hardpoints
 /obj/vehicle/multitile/proc/get_status_info()
-	set name = "I: Get Status Info"
+	set name = "Get Status Info"
 	set desc = "Displays all available information about your vehicle in a small window."
 	set category = "Vehicle"
 
@@ -169,7 +169,7 @@
 
 //opens vehicle controls guide, that contains description of all verbs and shortcuts in it
 /obj/vehicle/multitile/proc/open_controls_guide()
-	set name = "I: Vehicle Controls Guide"
+	set name = "Vehicle Controls Guide"
 	set desc = "MANDATORY FOR FIRST PLAY AS VEHICLE CREWMAN OR AFTER UPDATES."
 	set category = "Vehicle"
 
@@ -209,7 +209,7 @@
 
 //toggles gyrostabilizer for vehicles that have turret, allowing it to keep direction regardless hull rotations
 /obj/vehicle/multitile/proc/toggle_gyrostabilizer()
-	set name = "G: Toggle Turret Gyrostabilizer"
+	set name = "Toggle Turret Gyrostabilizer"
 	set desc = "Toggles Turret Gyrostabilizer allowing it independant movement regardless of hull direction."
 	set category = "Vehicle"
 
@@ -231,7 +231,7 @@
 
 //single use verb that allows VCs to add a nickname in "" at the end of their vehicle name
 /obj/vehicle/multitile/proc/name_vehicle()
-	set name = "G: Name Vehicle"
+	set name = "Name Vehicle"
 	set desc = "Allows you to add a custom name to your vehicle. Single use. 26 characters maximum."
 	set category = "Vehicle"
 
@@ -280,7 +280,7 @@
 
 //Activates vehicle horn. Yes, it is annoying.
 /obj/vehicle/multitile/proc/activate_horn()
-	set name = "G: Activate Horn"
+	set name = "Activate Horn"
 	set desc = "Activates vehicle signal. Beep-beep."
 	set category = "Vehicle"
 

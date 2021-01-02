@@ -16,9 +16,6 @@ SUBSYSTEM_DEF(mapview)
 		if(istype(C, /obj/structure/machinery/computer/communications) || istype(C, /obj/structure/machinery/prop/almayer/CICmap) || istype(C, /obj/structure/machinery/computer/overwatch))
 			map_machines += C
 
-///datum/controller/subsystem/mob/stat_entry()
-//	..("P:[mob_list.len]")
-
 /datum/controller/subsystem/mapview/fire(resumed = FALSE)
 	if (MC_TICK_CHECK)
 		return

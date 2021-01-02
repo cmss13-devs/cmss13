@@ -882,6 +882,9 @@
 	return 1
 
 /obj/structure/machinery/power/apc/Topic(href, href_list, var/usingUI = 1)
+	. = ..()
+	if(.)
+		return
 	if(!(isrobot(usr) && (href_list["apcwires"] || href_list["pulse"])))
 		if(!can_use(usr, 1))
 			return 0

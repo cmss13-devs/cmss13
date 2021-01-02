@@ -14,7 +14,7 @@
 /obj/item/reagent_container/verb/set_APTFT() //set amount_per_transfer_from_this
 	set name = "Set transfer amount"
 	set category = "Object"
-
+	set src in usr
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr
@@ -28,7 +28,7 @@
 /obj/item/reagent_container/Initialize()
 	. = ..()
 	if (!possible_transfer_amounts)
-		remove_verb(src, /obj/item/reagent_container/verb/set_APTFT) //which objects actually uses it?
+		verbs -= /obj/item/reagent_container/verb/set_APTFT //which objects actually uses it?
 	create_reagents(volume)
 
 /obj/item/reagent_container/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.

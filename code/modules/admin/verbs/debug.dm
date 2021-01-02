@@ -13,7 +13,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 /client/proc/proccall_atom(datum/A as null|area|mob|obj|turf)
 	set category = null
-	set name = "B: Atom ProcCall"
+	set name = "Atom ProcCall"
 	set waitfor = FALSE
 
 	if(!check_rights(R_DEBUG))
@@ -49,7 +49,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 /client/proc/proccall_advanced()
 	set category = "Debug"
-	set name = "A: Advanced ProcCall"
+	set name = "Advanced ProcCall"
 	set waitfor = FALSE
 
 	if(!check_rights(R_DEBUG))
@@ -370,7 +370,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 /client/proc/cmd_admin_change_hivenumber()
 	set category = "Debug"
-	set name = "E: Change Hivenumber"
+	set name = "Change Hivenumber"
 
 	var/mob/living/carbon/X = input(src,"Select a xeno.", null, null) in GLOB.living_xeno_list
 	if(!istype(X))
@@ -381,7 +381,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 /client/proc/cmd_debug_toggle_should_check_for_win()
 	set category = "Debug"
-	set name = "H: Toggle Round End Checks"
+	set name = "Toggle Round End Checks"
 
 	if(!SSticker.mode)
 		to_chat(usr, "Mode not found?")
@@ -396,7 +396,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 //TODO: merge the vievars version into this or something maybe mayhaps
 /client/proc/cmd_debug_del_all()
 	set category = "Debug"
-	set name = "E: Delete Instance"
+	set name = "Delete Instance"
 
 	// to prevent REALLY stupid deletions
 	var/blocked = list(/obj, /obj/item, /obj/effect, /obj/structure/machinery, /mob, /mob/living, /mob/living/carbon, /mob/living/carbon/Xenomorph, /mob/living/carbon/human, /mob/dead, /mob/dead/observer, /mob/living/silicon, /mob/living/silicon/robot, /mob/living/silicon/ai)
@@ -428,7 +428,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 /client/proc/cmd_debug_fire_ob()
 	set category = "Debug"
 	set desc = "Fire an OB warhead at your current location."
-	set name = "E: Fire OB"
+	set name = "Fire OB"
 
 	if(!check_rights(R_DEBUG))
 		return
@@ -447,7 +447,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 /client/proc/cmd_debug_make_powernets()
 	set category = "Debug"
-	set name = "X: Generate Powernets"
+	set name = "Generate Powernets"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	makepowernets()
 	message_staff("[key_name_admin(src)] has remade the powernets. makepowernets() called.", 0)
@@ -522,8 +522,8 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	message_staff(SPAN_NOTICE("[key_name_admin(usr)] assumed direct control of [M]."), 1)
 
 /client/proc/cmd_debug_list_processing_items()
-	set category = "Debug"
-	set name = "C: List Processing Items"
+	set category = "Debug.Controllers"
+	set name = "List Processing Items"
 	set desc = "For scheduler debugging"
 
 	var/list/individual_counts = list()

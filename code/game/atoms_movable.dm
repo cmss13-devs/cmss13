@@ -44,7 +44,7 @@
 
 /atom/movable/overlay/New()
 	..()
-	remove_verb(src, verbs)
+	verbs.Cut()
 	return
 
 /atom/movable/overlay/attackby(a, b)

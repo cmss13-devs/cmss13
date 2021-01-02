@@ -257,7 +257,7 @@
 
 /obj/vehicle/souto/Initialize()
 	. = ..()
-	remove_verb(src, /atom/movable/verb/pull)
+	verbs -= /atom/movable/verb/pull
 
 /obj/vehicle/souto/update_icon()
 	var/image/I = new(icon = 'icons/obj/vehicles/vehicles.dmi', icon_state = "soutomobile_overlay", layer = layer + 0.2) //over mobs

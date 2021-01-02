@@ -1,6 +1,6 @@
 #ifndef OVERRIDE_BAN_SYSTEM
 //Blocks an attempt to connect before even creating our client datum thing.
-world/IsBanned(key,address,computer_id, type)
+world/IsBanned(key,address,computer_id, type, real_bans_only=FALSE)
 	var/ckey = ckey(key)
 
 	// This is added siliently. Thanks to MSO for this fix. You will see it when/if we go OS

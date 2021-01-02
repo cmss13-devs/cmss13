@@ -378,6 +378,7 @@
 
 
 /obj/item/tool/weldingtool/pickup(mob/user)
+	. = ..()
 	if(welding && loc != user)
 		SetLuminosity(0)
 		user.SetLuminosity(2)

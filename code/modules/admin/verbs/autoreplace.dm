@@ -1,8 +1,8 @@
 var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 
 /client/proc/set_autoreplacer()
-	set category = "Event"
-	set name = "D: Set Autoreplacer"
+	set category = "Admin.Events"
+	set name = "Set Autoreplacer"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
 		to_chat(usr, "Only administrators may use this command.")
@@ -35,8 +35,8 @@ var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 	log_and_message_staff("[src] activated new decorator id: [admin_runtime_decorators.len] set for [hint_text] `[types]` for field `[field]` set value `[value]`")
 
 /client/proc/deactivate_autoreplacer()
-	set category = "Event"
-	set name = "D: Deactivate Autoreplacer"
+	set category = "Admin.Events"
+	set name = "Deactivate Autoreplacer"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
 		to_chat(usr, "Only administrators may use this command.")
@@ -46,14 +46,14 @@ var/list/datum/decorator/manual/admin_runtime/admin_runtime_decorators = list()
 
 	if(!num_value)
 		return
-	
+
 	admin_runtime_decorators[num_value].enabled = FALSE
 
 	log_and_message_staff("[src] deactivated decorator id: [num_value]")
 
 /client/proc/rerun_decorators()
-	set category = "Event"
-	set name = "D: Rerun Decorators"
+	set category = "Admin.Events"
+	set name = "Rerun Decorators"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
 		to_chat(usr, "Only administrators may use this command.")

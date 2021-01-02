@@ -141,7 +141,7 @@
 	var/comm_title = ""
 	var/faction = FACTION_NEUTRAL //Used for checking whether hostile simple animals will attack you, possibly more stuff later
 	var/faction_group
-	
+
 	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
 									//see skills.dm in #define folder and code/datums/skills.dm for more info
 	var/obj/item/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.
@@ -205,3 +205,8 @@
 	appearance_flags = TILE_BOUND
 
 	var/datum/player_panel/mob_panel
+
+	///the current turf being examined in the stat panel
+	var/turf/listed_turf = null
+
+	var/list/list/item_verbs = list()

@@ -69,7 +69,9 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	show_browser(user, dat, "Cryogenic Oversight Control for [cryotype]", "cryopod_console")
 
 /obj/structure/machinery/computer/cryopod/Topic(href, href_list)
-
+	. = ..()
+	if(.)
+		return
 	var/mob/user = usr
 	var/list/frozen_items_for_type = GLOB.frozen_items[cryotype]
 

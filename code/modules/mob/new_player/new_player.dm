@@ -67,22 +67,10 @@
 	show_browser(src, output, null, "playersetup", "size=240x[round_start ? 330 : 380];can_close=0;can_minimize=0")
 	return
 
-/mob/new_player/Stat()
-	if (!..())
-		return 0
-
-	stat("Time:","[worldtime2text()]")
-	stat("Map:", "[map_tag]")
-
-	stat("Game Mode:", "[GLOB.master_mode]") // Old setting for showing the game mode
-
-	if(SSticker.current_state == GAME_STATE_PREGAME)
-		stat("Time To Start:", "[SSticker.time_left > 0 ? SSticker.GetTimeLeft() : "(DELAYED)"]")
-		stat("Players: [length(GLOB.player_list)]", "Players Ready: [readied_players]")
-		for(var/mob/new_player/player in GLOB.new_player_list)
-			stat("[player.key]", player.ready ? "(Playing)" : "")
-
 /mob/new_player/Topic(href, href_list[])
+	. = ..()
+	if(.)
+		return
 	if(!client)
 		return
 
@@ -271,6 +259,8 @@
 		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
 			msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[character]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 
+	character.client.init_verbs() // init verbs for the late join
+
 	qdel(src)
 
 
@@ -384,8 +374,10 @@
 	INVOKE_ASYNC(new_character, /mob/living/carbon/human.proc/update_hair)
 
 	new_character.key = key		//Manually transfer the key to log them in
+
 	if(new_character.client)
 		new_character.client.change_view(world_view_size)
+		new_character.client.init_verbs()
 
 	return new_character
 
@@ -441,3 +433,23 @@
 
 /mob/new_player/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0)
 	return
+
+/mob/new_player/get_status_tab_items()
+	. = ..()
+	. += ""
+	. += "Game Mode: [GLOB.master_mode]"
+
+	if(SSticker.HasRoundStarted())
+		return
+
+	var/time_remaining = SSticker.GetTimeLeft()
+	if(time_remaining > 0)
+		. += "Time To Start: [round(time_remaining)]s"
+	else if(time_remaining == -10)
+		. += "Time To Start: DELAYED"
+	else
+		. += "Time To Start: SOON"
+
+	. += "Players: [SSticker.totalPlayers]"
+	if(client.admin_holder)
+		. += "Players Ready: [SSticker.totalPlayersReady]"

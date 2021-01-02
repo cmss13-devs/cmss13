@@ -1013,6 +1013,9 @@ var/datum/controller/supply/supply_controller = new()
 	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 
 /obj/structure/machinery/computer/supplycomp/vehicle/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(!is_mainship_level(z))
 		return
 	if(spent)

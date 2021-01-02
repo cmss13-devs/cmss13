@@ -110,6 +110,9 @@
 
 
 /obj/structure/machinery/space_heater/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if (usr.stat)
 		return
 	if ((in_range(src, usr) && istype(src.loc, /turf)) || (isRemoteControlling(usr)))

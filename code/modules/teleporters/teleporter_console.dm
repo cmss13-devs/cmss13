@@ -41,11 +41,9 @@
     if(linked_teleporter) // Maybe should debug log this because it's indicative of bad logic, but I'll leave it out for the sake of (potential) spam
         return 1
 
-    var/datum/controller/subsystem/teleporter/teleporterSS = teleporter_ss
+    if(SSteleporter)
 
-    if(teleporterSS)
-
-        var/datum/teleporter/found_teleporter = teleporterSS.teleporters_by_id[teleporter_id]
+        var/datum/teleporter/found_teleporter = SSteleporter.teleporters_by_id[teleporter_id]
         if(found_teleporter)
             linked_teleporter = found_teleporter
             linked_teleporter.linked_consoles += src
@@ -168,7 +166,7 @@
         for(var/turf_key in turf_keys)
             var/turf/T = turf_keys[turf_key]
             flick("corsat_teleporter_dynamic", T)
- 
+
         sleep(10)
 
         visible_message("<b>[src]</b> beeps, \"INITIATING TELEPORTATION....\"")

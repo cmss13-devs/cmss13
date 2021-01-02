@@ -22,11 +22,12 @@ SUBSYSTEM_DEF(tracking)
 	return ..()
 
 
-/datum/controller/subsystem/tracking/stat_entry()
+/datum/controller/subsystem/tracking/stat_entry(msg)
 	var/mobs = 0
 	for(var/tracked_group in tracked_mobs)
 		mobs += length(tracked_mobs[tracked_group])
-	..("P:[mobs]")
+	msg = "P:[mobs]"
+	return ..()
 
 
 /datum/controller/subsystem/tracking/fire(resumed = FALSE)

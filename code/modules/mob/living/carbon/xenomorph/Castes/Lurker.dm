@@ -131,5 +131,6 @@
 			LIA.end_cooldown()
 
 /datum/behavior_delegate/lurker_base/append_to_stat()
+	. = list()
 	var/invis_message = (invis_start_time == -1) ? "N/A" : "[(invis_duration-(world.time - invis_start_time))/10] seconds."
-	stat("Invisibility Time Left:", invis_message)
+	. += "Invisibility Time Left: [invis_message]"

@@ -8,8 +8,9 @@ SUBSYSTEM_DEF(effects)
 
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/effects/stat_entry()
-	..("P:[active_effects.len]")
+/datum/controller/subsystem/effects/stat_entry(msg)
+	msg = "P:[active_effects.len]"
+	return ..()
 
 
 /datum/controller/subsystem/effects/fire(resumed = FALSE)

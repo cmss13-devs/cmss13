@@ -15,9 +15,9 @@
 	. = ..()
 	if (. == 0)
 		return
-	
+
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
-	
+
 	// Make a 'halftank'
 	P.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
@@ -27,7 +27,7 @@
 	MS.recalculate_actions(description, flavor_description)
 
 	P.recalculate_everything()
-	
+
 	apply_behavior_holder(P)
 	P.mutation_type = PRAETORIAN_WARDEN
 
@@ -39,13 +39,14 @@
 	var/internal_hitpoints_per_attack = 75
 	var/percent_hp_to_self_heal = 0.2
 	var/internal_hp_selfheal_size = 50
-	var/internal_hp_per_life = 5 
+	var/internal_hp_per_life = 5
 
 	// State
 	var/internal_hitpoints = 0
 
 /datum/behavior_delegate/praetorian_warden/append_to_stat()
-	stat("Health Reserves:", "[internal_hitpoints]/[internal_hitpoints_max]")
+	. = list()
+	. += "Health Reserves: [internal_hitpoints]/[internal_hitpoints_max]"
 
 /datum/behavior_delegate/praetorian_warden/on_life()
 	if ((internal_hitpoints != 0) && bound_xeno.health <= percent_hp_to_self_heal*bound_xeno.maxHealth && !bound_xeno.on_fire)
@@ -57,7 +58,7 @@
 			remove_internal_hitpoints(internal_hitpoints)
 
 		to_chat(bound_xeno, SPAN_XENOHIGHDANGER("You feel your resources of health pour through your blood!"))
-	else 
+	else
 		internal_hitpoints = min(internal_hitpoints_max, internal_hitpoints + internal_hp_per_life)
 
 /datum/behavior_delegate/praetorian_warden/on_hitby_projectile(ammo)

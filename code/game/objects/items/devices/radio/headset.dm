@@ -196,6 +196,7 @@
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
 
 /obj/item/device/radio/headset/equipped(mob/living/carbon/human/user, slot)
+	. = ..()
 	if (slot == WEAR_EAR)
 		RegisterSignal(user, list(
 			COMSIG_LIVING_REJUVENATED,

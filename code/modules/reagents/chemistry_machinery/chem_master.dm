@@ -97,6 +97,9 @@
 				source.reagents.trans_id_to(dest, reagent_id, amount)
 
 /obj/structure/machinery/chem_master/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable())
 		return
 	if(!ishuman(usr))
@@ -252,7 +255,7 @@
 					P = new/obj/item/reagent_container/glass/beaker/vial()
 					P.name = "[name] vial"
 					reagents.trans_to(P, 30)
-				
+
 				P.pixel_x = rand(-7, 7) //random position
 				P.pixel_y = rand(-7, 7)
 				P.update_icon()
@@ -296,7 +299,7 @@
 		if(QDELETED(connected))
 			to_chat(user, SPAN_WARNING("Connect a smartfridge first."))
 			return
-		
+
 		if(src.z != connected.z || get_dist(src, connected) > tether_range)
 			to_chat(user, SPAN_WARNING("Smartfridge is out of range. Connection severed."))
 			cleanup()

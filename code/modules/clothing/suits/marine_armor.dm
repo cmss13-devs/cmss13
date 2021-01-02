@@ -643,7 +643,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	set name = "Activate Fire Shield"
 	set desc = "Activate your armor's FIREWALK protocol for a short duration."
 	set category = "Pyro"
-
+	set src in usr
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return
 	if(!ishuman(usr))
@@ -806,7 +806,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	set name = "Prepare Position"
 	set desc = "Use the ghillie suit and the nearby environment to become near invisible."
 	set category = "Object"
-
+	set src in usr
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return
 

@@ -59,7 +59,7 @@
 	age++
 
 /client/proc/spawn_wave()
-	set name = "X: Spawn Cellauto Wave"
+	set name = "Spawn Cellauto Wave"
 	set desc = "suck some ass ok"
 	set category = "Debug"
 

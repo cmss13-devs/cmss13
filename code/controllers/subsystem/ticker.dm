@@ -42,6 +42,9 @@ SUBSYSTEM_DEF(ticker)
 
 	var/automatic_delay_end = FALSE
 
+	var/totalPlayers = 0					//used for pregame stats on statpanel
+	var/totalPlayersReady = 0				//used for pregame stats on statpanel
+
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 
@@ -69,6 +72,14 @@ SUBSYSTEM_DEF(ticker)
 		if(GAME_STATE_PREGAME)
 			if(isnull(time_left))
 				time_left = max(0, start_at - world.time)
+
+			totalPlayers = LAZYLEN(GLOB.new_player_list)
+			totalPlayersReady = 0
+			for(var/i in GLOB.new_player_list)
+				var/mob/new_player/player = i
+				if(player.ready) // TODO: port this     == PLAYER_READY_TO_PLAY)
+					++totalPlayersReady
+
 			if(start_immediately)
 				time_left = 0
 
@@ -226,6 +237,9 @@ SUBSYSTEM_DEF(ticker)
 	login_music = SSticker.login_music
 
 	delay_end = SSticker.delay_end
+
+	totalPlayers = SSticker.totalPlayers
+	totalPlayersReady = SSticker.totalPlayersReady
 
 	time_left = SSticker.time_left
 

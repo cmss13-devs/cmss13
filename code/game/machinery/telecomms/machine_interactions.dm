@@ -285,7 +285,9 @@
 
 
 /obj/structure/machinery/telecomms/Topic(href, href_list)
-
+	. = ..()
+	if(.)
+		return
 	if(!ishighersilicon(usr))
 		if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
 			return

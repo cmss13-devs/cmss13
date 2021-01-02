@@ -32,6 +32,9 @@
 
 
 /obj/structure/machinery/computer/pandemic/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable())
 		return
 	if(!ishuman(usr))

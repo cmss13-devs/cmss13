@@ -107,6 +107,9 @@
 
 
 /obj/item/device/portable_vendor/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(broken)
 		return
 	if(usr.is_mob_incapacitated())

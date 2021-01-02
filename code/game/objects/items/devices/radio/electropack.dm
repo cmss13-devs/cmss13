@@ -20,7 +20,9 @@
 
 
 /obj/item/device/radio/electropack/Topic(href, href_list)
-	//..()
+	. = ..()
+	if(.)
+		return
 	if(usr.stat || usr.is_mob_restrained())
 		return
 	if(((istype(usr, /mob/living/carbon/human) && ((!( SSticker ) || (SSticker && SSticker.mode != "monkey")) && usr.contents.Find(src))) || (usr.contents.Find(master) || (in_range(src, usr) && istype(loc, /turf)))))

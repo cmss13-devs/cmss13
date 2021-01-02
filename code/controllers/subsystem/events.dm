@@ -22,8 +22,9 @@ SUBSYSTEM_DEF(events)
 	var/extra_delay_based_on_pop = 0
 	var/last_event_time = 0
 
-/datum/controller/subsystem/events/stat_entry()
-	..("C:[events_run]")
+/datum/controller/subsystem/events/stat_entry(msg)
+	msg = "C:[events_run]"
+	return ..()
 
 /datum/controller/subsystem/events/Initialize()
 	LAZYINITLIST(events_list)
@@ -39,7 +40,7 @@ SUBSYSTEM_DEF(events)
 		ready_to_run = TRUE
 
 	start_time = world.time
-	
+
 	return ..()
 
 /datum/controller/subsystem/events/fire(resumed = FALSE)

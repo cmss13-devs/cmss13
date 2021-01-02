@@ -241,7 +241,7 @@
 	set name = "Toggle Fuel Type"
 	set desc = "Toggle between the fuel types."
 	set category = "Pyro"
-
+	set src in usr
 	do_toggle_fuel(usr)
 
 

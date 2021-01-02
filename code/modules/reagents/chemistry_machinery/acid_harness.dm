@@ -129,6 +129,9 @@
 
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr
@@ -166,7 +169,7 @@
 					acid_core.inject_vitals &= ~flag_value
 				else
 					acid_core.inject_vitals |= flag_value
-		
+
 
 	nanomanager.update_uis(src) // update all UIs attached to src
 	add_fingerprint(user)
@@ -310,7 +313,7 @@
 	var/damage_toxin = user.getToxLoss()
 	var/damage_oxygen = user.getOxyLoss()
 	var/damage_clone = user.getCloneLoss()
-	
+
 	if(inject_damage_types & ACID_SCAN_DAMAGE_BRUTE && damage_brute > inject_damage_threshold)
 		damage_scan |= ACID_SCAN_DAMAGE_BRUTE
 	if(inject_damage_types & ACID_SCAN_DAMAGE_BURN && damage_burn > inject_damage_threshold)
@@ -321,7 +324,7 @@
 		damage_scan |= ACID_SCAN_DAMAGE_OXYGEN
 	if(inject_damage_types & ACID_SCAN_DAMAGE_CLONE && damage_clone > inject_damage_threshold)
 		damage_scan |= ACID_SCAN_DAMAGE_CLONE
-	
+
 	var/health = user.maxHealth - damage_brute - damage_burn - damage_toxin - damage_oxygen - damage_clone
 
 	//Organ damage
@@ -405,18 +408,18 @@
 			if(!(last_condition_scan & ACID_SCAN_CONDITION_ORGAN_FAILURE))
 				voice(ACID_SCAN_CONDITION_ORGAN_FAILURE)
 			break
-	
+
 	if(inject_conditions & ACID_SCAN_CONDITION_DEATH && vitals_scan & ACID_VITALS_DEAD)
 		condition_scan |= ACID_SCAN_CONDITION_DEATH
 	else if(inject_conditions & ACID_SCAN_CONDITION_DEFIB && vitals_scan < ACID_VITALS_DEAD && last_vitals_scan & ACID_SCAN_CONDITION_DEATH)
 		condition_scan |= ACID_SCAN_CONDITION_DEFIB //If we were previously dead and are now alive, we assume we got defibbed
-	
+
 	if(inject_conditions & ACID_SCAN_CONDITION_CONCUSSION && (user.knocked_down || user.knocked_out))
 		condition_scan |= ACID_SCAN_CONDITION_CONCUSSION
 
 	if(inject_conditions & ACID_SCAN_CONDITION_INTOXICATION && (user.dazed || user.slowed || user.confused || user.drowsyness || user.dizziness || user.druggy))
 		condition_scan |= ACID_SCAN_CONDITION_INTOXICATION
-	
+
 	//Compare
 	if(vitals_scan != last_vitals_scan)
 		voice(vitals_scan, TRUE)

@@ -28,7 +28,7 @@
 	if(!customizable)
 		return
 	if(has_blast_wave_dampener)
-		add_verb(src, /obj/item/explosive/proc/toggle_blast_dampener)
+		verbs += /obj/item/explosive/proc/toggle_blast_dampener
 	create_reagents(1000)
 	for(var/limit in reaction_limits)
 		reagents.vars[limit] = reaction_limits[limit]

@@ -13,6 +13,13 @@
 		"tgui.bundle.css" = 'tgui/public/tgui.bundle.css',
 	)
 
+/datum/asset/simple/tgui_panel
+	keep_local_name = TRUE
+	assets = list(
+		"tgui-panel.bundle.js" = 'tgui/public/tgui-panel.bundle.js',
+		"tgui-panel.bundle.css" = 'tgui/public/tgui-panel.bundle.css',
+	)
+
 /datum/asset/simple/fontawesome
 	keep_local_name = TRUE
 	assets = list(
@@ -48,33 +55,11 @@
 		"common.css" = 'html/browser/common.css'
 	)
 
-
-/datum/asset/group/goonchat
-	children = list(
-		/datum/asset/simple/jquery,
-		/datum/asset/simple/goonchat,
-		/datum/asset/spritesheet/goonchat,
-		/datum/asset/simple/fontawesome
-	)
-
 /datum/asset/simple/jquery
 	legacy = TRUE
 	assets = list(
-		"jquery.min.js" = 'browserassets/js/jquery.min.js',
+		"jquery.min.js" = 'html/jquery.min.js',
 	)
-
-/datum/asset/simple/goonchat
-	keep_local_name = TRUE
-	assets = list(
-		"json2.min.js"             = 'browserassets/js/json2.min.js',
-		"browserOutput.js"         = 'browserassets/js/browserOutput.js',
-		"browserOutput.css"	       = 'browserassets/css/browserOutput.css',
-		"browserOutput_night.css"  = 'browserassets/css/browserOutput_night.css',
-	)
-
-/datum/asset/spritesheet/goonchat
-	name = "chat"
-
 
 /datum/asset/nanoui
 	var/list/common = list()
@@ -177,3 +162,20 @@
 		"faxwylogo.png" = 'html/images/faxwylogo.png',
 		"faxbackground.jpg" = 'html/images/faxbackground.jpg',
 	)
+
+/datum/asset/spritesheet/chat
+	name = "chat"
+
+/datum/asset/spritesheet/chat/register()
+	InsertAll("emoji", 'icons/emoji.dmi')
+	// pre-loading all lanugage icons also helps to avoid meta
+/*	InsertAll("language", 'icons/misc/language.dmi')
+	// catch languages which are pulling icons from another file
+	for(var/path in typesof(/datum/language))
+		var/datum/language/L = path
+		var/icon = initial(L.icon)
+		if (icon != 'icons/misc/language.dmi')
+			var/icon_state = initial(L.icon_state)
+			Insert("language-[icon_state]", icon, icon_state=icon_state)*/
+	..()
+

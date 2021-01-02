@@ -171,6 +171,9 @@ log transactions
 		close_browser(user,"atm")
 
 /obj/structure/machinery/atm/Topic(var/href, var/href_list)
+	. = ..()
+	if(.)
+		return
 	if(href_list["choice"])
 		switch(href_list["choice"])
 			if("transfer")

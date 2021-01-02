@@ -92,6 +92,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 
 /obj/item/tool/candle/pickup(mob/user)
+	. = ..()
 	if(heat_source && src.loc != user)
 		SetLuminosity(0)
 		user.SetLuminosity(CANDLE_LUM)
@@ -692,10 +693,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 
 /obj/item/tool/lighter/pickup(mob/user)
+	. = ..()
 	if(heat_source && src.loc != user)
 		SetLuminosity(0)
 		user.SetLuminosity(2)
-	return
 
 
 /obj/item/tool/lighter/dropped(mob/user)

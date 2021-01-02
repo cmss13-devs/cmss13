@@ -194,6 +194,7 @@
 	. = ..()
 
 /obj/item/reagent_container/food/snacks/grown/glowberries/pickup(mob/user)
+	. = ..()
 	src.SetLuminosity(0)
 	user.SetLuminosity(round((potency/5),1))
 
@@ -560,6 +561,7 @@
 	. = ..()
 
 /obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/pickup(mob/user)
+	. = ..()
 	SetLuminosity(0)
 	user.SetLuminosity(round((potency/10),1))
 

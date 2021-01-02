@@ -20,14 +20,14 @@ const saveChatToStorage = async store => {
   const messages = chatRenderer.messages
     .slice(fromIndex)
     .map(message => serializeMessage(message));
-  storage.set('chat-state', state);
-  storage.set('chat-messages', messages);
+  storage.set('chat-state-cm', state);
+  storage.set('chat-messages-cm', messages);
 };
 
 const loadChatFromStorage = async store => {
   const [state, messages] = await Promise.all([
-    storage.get('chat-state'),
-    storage.get('chat-messages'),
+    storage.get('chat-state-cm'),
+    storage.get('chat-messages-cm'),
   ]);
   // Discard incompatible versions
   if (state && state.version <= 4) {

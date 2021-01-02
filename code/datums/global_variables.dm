@@ -1,6 +1,6 @@
 /client/proc/debug_global_variables()
-	set category = "Debug"
-	set name = "A: View Global Variables"
+	set category = "Debug.Controllers"
+	set name = "View Global Variables"
 
 	if(!usr.client || !usr.client.admin_holder || !(usr.client.admin_holder.rights & R_MOD))
 		to_chat(usr, SPAN_DANGER("You need to be a moderator or higher to access this."))

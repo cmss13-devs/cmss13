@@ -77,14 +77,3 @@
 	if(mind && mind.player_entity)
 		mind.player_entity.update_panel_data(round_statistics)
 	ghostize(TRUE)
-
-//mostly so the pane isn't empty
-/mob/living/brain/synth/Stat()
-	if(!..())
-		return FALSE
-
-	if(statpanel("Stats"))
-		stat("Operation Time:","[worldtime2text()]")
-		stat("Status:","CRITICAL")
-
-	return TRUE

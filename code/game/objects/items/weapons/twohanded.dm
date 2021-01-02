@@ -24,6 +24,7 @@
 	unwield(user)
 
 /obj/item/weapon/melee/twohanded/pickup(mob/user)
+	. = ..()
 	unwield(user)
 
 /obj/item/proc/wield(var/mob/user)

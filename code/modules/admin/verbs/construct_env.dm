@@ -34,8 +34,8 @@
 */
 
 /client/proc/construct_env_dmm()
-	set category = "Event"
-	set name = "C: Construct Map from DMM"
+	set category = "Admin.Events"
+	set name = "Construct Map from DMM"
 
 	if(!admin_holder || !(admin_holder.rights & (R_ADMIN|R_DEBUG)))
 		to_chat(usr, "Only administrators may use this command.")
@@ -101,7 +101,7 @@
 		for(var/obj/O in M.atoms_to_initialise)
 			O.update_icon()
 			O.set_pixel_location()
-		
+
 		message_staff("[key_name_admin(usr)] has finished constructing an environment using a DMM file ([input]).", x, y, show_z)
 	catch (var/ex)
 		to_chat(src, SPAN_NOTICE("Encountered an error whilst constructing the map! [ex]"))
@@ -110,8 +110,8 @@
 
 
 /client/proc/construct_env()
-	set category = "Event"
-	set name = "C: Construct Environment"
+	set category = "Admin.Events"
+	set name = "Construct Environment"
 
 	if(!admin_holder || !(admin_holder.rights & R_ADMIN))
 		to_chat(usr, "Only administrators may use this command.")
@@ -208,10 +208,10 @@
 			if(char in test_env_prefab_types || char == "\n")
 				continue
 
-			// If the key was assigned to a 
+			// If the key was assigned to a
 			if(LAZYACCESS(env_assignments, char))
 				continue
-			
+
 			LAZYADD(errors, "custom symbol '[char]' was not assigned a typepath")
 
 	// Give up if there were any errors

@@ -65,3 +65,5 @@
 		check_event_info(X.hive.name)
 	else if(!isobserver(src) && faction)
 		check_event_info(faction)
+
+	client.init_verbs()

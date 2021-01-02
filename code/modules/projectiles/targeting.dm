@@ -1,6 +1,7 @@
 /obj/item/weapon/gun/verb/lower_aim()
 	set name = "Lower Aim"
 	set category = "Object"
+	set src in usr
 	if(target)
 		stop_aim()
 		usr.visible_message(SPAN_NOTICE("\The [usr] lowers \the [src]..."))

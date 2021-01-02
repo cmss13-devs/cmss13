@@ -1,5 +1,5 @@
 /client/proc/yooc(msg as text)
-	set category = "OOC"
+	set category = "OOC.OOC"
 	set name = "YOOC"
 	set desc = "OOC channel for Yautja players."
 

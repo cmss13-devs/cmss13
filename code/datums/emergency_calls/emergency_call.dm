@@ -100,7 +100,7 @@
 
 /mob/dead/observer/verb/JoinResponseTeam()
 	set name = "Join Response Team"
-	set category = "Ghost"
+	set category = "Ghost.Join"
 	set desc = "Join an ongoing distress call response. You must be ghosted to do this."
 
 	if(jobban_isbanned(usr, "Syndicate") || jobban_isbanned(usr, "Emergency Response Team"))

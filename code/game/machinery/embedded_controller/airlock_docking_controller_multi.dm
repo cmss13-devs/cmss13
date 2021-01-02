@@ -43,10 +43,6 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/obj/structure/machinery/embedded_controller/radio/docking_port_multi/Topic(href, href_list)
-	return
-
-
 
 //a docking port based on an airlock
 /obj/structure/machinery/embedded_controller/radio/airlock/docking_port_multi
@@ -108,46 +104,3 @@
 
 	return 1
 
-
-
-/*** DEBUG VERBS ***
-
-/datum/computer/file/embedded_program/docking/multi/proc/print_state()
-	to_world("id_tag: [id_tag]")
-	to_world("dock_state: [dock_state]")
-	to_world("control_mode: [control_mode]")
-	to_world("tag_target: [tag_target]")
-	to_world("response_sent: [response_sent]")
-
-/datum/computer/file/embedded_program/docking/multi/post_signal(datum/signal/signal, comm_line)
-	to_world("Program [id_tag] sent a message!")
-	print_state()
-	to_world("[id_tag] sent command \")[signal.data["command"]]\" to \"[signal.data["recipient"]]\""
-	..(signal)
-
-/obj/structure/machinery/embedded_controller/radio/docking_port_multi/verb/view_state()
-	set category = "Debug"
-	set src in view(1)
-	src.program:print_state()
-
-/obj/structure/machinery/embedded_controller/radio/docking_port_multi/verb/spoof_signal(var/command as text, var/sender as text)
-	set category = "Debug"
-	set src in view(1)
-	var/datum/signal/signal = new
-	signal.data["tag"] = sender
-	signal.data["command"] = command
-	signal.data["recipient"] = id_tag
-
-	src.program:receive_signal(signal)
-
-/obj/structure/machinery/embedded_controller/radio/docking_port_multi/verb/debug_init_dock(var/target as text)
-	set category = "Debug"
-	set src in view(1)
-	src.program:initiate_docking(target)
-
-/obj/structure/machinery/embedded_controller/radio/docking_port_multi/verb/debug_init_undock()
-	set category = "Debug"
-	set src in view(1)
-	src.program:initiate_undocking()
-
-*/

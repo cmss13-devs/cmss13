@@ -85,6 +85,9 @@
 		return
 */
 /obj/structure/dispenser/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(usr.stat || usr.is_mob_restrained())
 		return
 	if(Adjacent(usr))

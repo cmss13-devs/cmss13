@@ -140,7 +140,9 @@
 			"}
 
 /obj/item/device/radio/Topic(href, href_list)
-	//..()
+	. = ..()
+	if(.)
+		return
 	if (usr.stat || !on)
 		return
 

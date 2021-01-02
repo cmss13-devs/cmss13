@@ -414,7 +414,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	set name = "Activate Cloak"
 	set desc = "Activate your cloak's camouflage."
 	set category = "Scout"
-
+	set src in usr
 	if(!usr || usr.is_mob_incapacitated(TRUE))
 		return
 

@@ -84,7 +84,7 @@
 /obj/item/clothing/mask/rebreather/scarf/verb/pull_down()
 	set name = "Pull Up/Down"
 	set category = "Object"
-
+	set src in usr
 	if(usr.stat == DEAD)
 		return
 

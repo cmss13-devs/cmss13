@@ -7,7 +7,7 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 	var/flush = null
-	
+
 
 
 /obj/item/device/aicard/attack(mob/living/silicon/ai/M as mob, mob/user as mob)
@@ -58,6 +58,9 @@
 	return
 
 /obj/item/device/aicard/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	var/mob/U = usr
 	if (!in_range(src, U)||U.interactee!=src)//If they are not in range of 1 or less or their machine is not the card (ie, clicked on something else).
 		close_browser(U, "aicard")

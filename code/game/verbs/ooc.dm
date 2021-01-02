@@ -3,7 +3,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 
 /client/verb/ooc(msg as text)
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
-	set category = "OOC"
+	set category = "OOC.OOC"
 
 	if(usr.talked == 2)
 		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
@@ -78,14 +78,14 @@ var/global/normal_ooc_colour = "#1c52f5"
 /client/proc/set_ooc_color_global(newColor as color)
 	set name = "OOC Text Color - Global"
 	set desc = "Set to yellow for eye burning goodness."
-	set category = "OOC"
+	set category = "OOC.OOC"
 	normal_ooc_colour = newColor
 
 
 /client/verb/looc(msg as text)
 	set name = "LOOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set desc = "Local OOC, seen only by those in view."
-	set category = "OOC"
+	set category = "OOC.OOC"
 
 	if(usr.talked == 2)
 		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
@@ -176,41 +176,12 @@ var/global/normal_ooc_colour = "#1c52f5"
 	set category = "OOC"
 	to_chat(usr, SPAN_NOTICE("The current map is [map_tag]"))
 
-
-/client/verb/old_chat()
-	set name = "Old Chat"
-	set category = "OOC"
-	if(alert(src, "Are you sure you want to switch back to the old chat?", "", "Yes", "Cancel") == "Yes")
-		if(chatOutput)
-			chatOutput.oldChat = TRUE
-		winset(src, "output", "is-visible=true;is-disabled=false")
-		winset(src, "browseroutput", "is-visible=false")
-
-
-/client/verb/reload_chat()
-	set name = "Reload Goonchat"
-	set category = "OOC"
-	if (!chatOutput)
-		chatOutput = new /datum/chatOutput(src)
-		chatOutput.start()
-		if(alert(src, "Goonchat is starting up again, wait for a bit before answering. Is it fixed?", "", "Yes", "No") == "No")
-			chatOutput.load()
-	else if (chatOutput.loaded)
-		chatOutput.loaded = FALSE
-		chatOutput.start()
-		if(alert(src, "Goonchat is starting up again, wait for a bit before answering. Is it fixed?", "", "Yes", "No") == "No")
-			chatOutput.load()
-	else
-		chatOutput.start()
-		if(alert(src, "Goonchat is starting up again, wait for a bit before answering. Is it fixed?", "", "Yes", "No") == "No")
-			chatOutput.load()
-
 // Sometimes the game fails to close NanoUIs, seemingly at random. This makes it impossible to open new ones
 // If this happens, let the player manually close them all
 /client/verb/fixnanoui()
 	set name = "Fix Interfaces"
 	set desc = "Fixes all broken interfaces by forcing all existing ones to close"
-	set category = "OOC"
+	set category = "OOC.Fix"
 
 	if(!mob)
 		return

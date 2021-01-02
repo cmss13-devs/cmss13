@@ -77,13 +77,11 @@
 				eggs_cur--
 
 
-/mob/living/carbon/Xenomorph/Carrier/Stat()
-	if (!..())
-		return 0
+/mob/living/carbon/Xenomorph/Carrier/get_status_tab_items()
+	. = ..()
 	if(huggers_max > 0)
-		stat("Stored Huggers:", "[huggers_cur] / [huggers_max]")
-	stat("Stored Eggs:", "[eggs_cur] / [eggs_max]")
-	return 1
+		. += "Stored Huggers: [huggers_cur] / [huggers_max]"
+	. += "Stored Eggs: [eggs_cur] / [eggs_max]"
 
 /mob/living/carbon/Xenomorph/Carrier/proc/store_hugger(obj/item/clothing/mask/facehugger/F)
 	if(F.hivenumber != hivenumber)

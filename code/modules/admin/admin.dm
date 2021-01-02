@@ -127,7 +127,7 @@
 /datum/admins/proc/toggleaban()
 	set category = "Server"
 	set desc = "Respawn basically"
-	set name = "T: Toggle Respawn"
+	set name = "Toggle Respawn"
 	CONFIG_SET(flag/respawn, !CONFIG_GET(flag/respawn))
 	if (CONFIG_GET(flag/respawn))
 		to_world("<B>You may now respawn.</B>")

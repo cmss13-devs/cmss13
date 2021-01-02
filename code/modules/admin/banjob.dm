@@ -5,60 +5,6 @@ As such, ranks shouldn't really change to maintain consistency. You can see some
 stuff like sulacochiefmedicalofficer, to where now they list it as chiefmedicalofficer. The system
 won't recognize the older one, as an example.
 
-//DEBUG
-/mob/verb/list_all_jobbans()
-	set name = "list all jobbans"
-	set category = "DEBUG"
-
-	for(var/s in jobban_keylist)
-		world << s
-
-/mob/verb/reload_jobbans()
-	set name = "reload jobbans"
-	set category = "DEBUG"
-
-	jobban_loadbanfile()
-
-/mob/verb/loadNewBans()
-	set name = "Load New Bans"
-	set desc = "Transfer the old jobban list to the new system and file"
-	set category = "DEBUG"
-
-	var/list/banned_jobs = list()
-
-	var/savefile/S1 = new("data/job_full.ban")
-	var/savefile/S2 = new("data/job_new.ban")
-	var/regex/r1 = new("(.*) - (.*) ## (.*)")
-	var/regex/r2 = new("(.*) - (.*)")
-	var/ckey
-	var/title
-	var/reason
-	var/L[] = new
-	S1["keys[0]"] >> L
-
-	for(var/s in L)
-		ckey = ""
-		title = ""
-		reason = ""
-		if(r1.Find(s))
-			ckey = r1.group[1] //ckey already has ckey() applied.
-			title = ckey(r1.group[2]) //Strip all capitals, spaces, etc from the title.
-			reason = r1.group[3]
-		else if(r2.Find(s))
-			ckey = r2.group[1]
-			title = r2.group[2]
-
-		if(!banned_jobs.Find(title))
-			banned_jobs[title] = list()
-			to_world("New job found in list [title]")
-
-		if(!reason) banned_jobs[title][ckey] = "Reason Unspecified"
-		else banned_jobs[title][ckey] = reason
-
-	S2["new_bans"] << banned_jobs
-	jobban_savebanfile()
-	jobban_loadbanfile()
-
 */
 
 var/jobban_runonce			// Updates legacy bans with new info
@@ -131,7 +77,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 /client/proc/cmd_admin_job_ban(var/mob/M)
 	if(!check_rights(R_BAN|R_MOD))
 		return
-	
+
 	if(admin_holder)
 		admin_holder.job_ban(M)
 
@@ -148,7 +94,7 @@ var/jobban_keylist[0]		//to store the keys & ranks
 		return
 
 	var/datum/entity/player/P = M.client?.player_data
-	
+
 	if(!P)
 		P = get_player_from_key(M.ckey)
 

@@ -266,6 +266,9 @@
 		show_browser(user, dat, name, "magnet", "size=400x500")
 
 	Topic(href, href_list)
+		. = ..()
+		if(.)
+			return
 		if(inoperable())
 			return
 		usr.set_interaction(src)

@@ -82,7 +82,8 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 	var/max_kills = 10
 
 /datum/behavior_delegate/predalien_base/append_to_stat()
-	stat("Kills:", "[kills]/[max_kills]")
+	. = list()
+	. += "Kills: [kills]/[max_kills]"
 
 /datum/behavior_delegate/predalien_base/on_kill_mob(mob/M)
 	. = ..()

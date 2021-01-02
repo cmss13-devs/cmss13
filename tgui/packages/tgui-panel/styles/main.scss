@@ -7,11 +7,7 @@
 @use 'sass:color';
 
 @use '~tgui/styles/colors.scss';
-@use '~tgui/styles/base.scss' with (
-  $color-bg: #202020,
-  $color-bg-section: color.adjust(#202020, $lightness: -5%),
-  $color-bg-grad-spread: 0%,
-);
+@use '~tgui/styles/base.scss';
 
 // Core styles
 @include meta.load-css('~tgui/styles/reset.scss');

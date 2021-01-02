@@ -1,10 +1,10 @@
 SUBSYSTEM_DEF(quadtree)
     name = "Quadtree"
-    wait = 0.5 SECONDS 
+    wait = 0.5 SECONDS
     priority = SS_PRIORITY_QUADTREE
 
-    var/list/cur_quadtrees 
-    var/list/new_quadtrees 
+    var/list/cur_quadtrees
+    var/list/new_quadtrees
     var/list/player_feed
     var/qtree_capacity = QUADTREE_CAPACITY
 
@@ -17,8 +17,9 @@ SUBSYSTEM_DEF(quadtree)
         new_quadtrees[i] = QTREE(R, qtree_capacity, i)
     return ..()
 
-/datum/controller/subsystem/quadtree/stat_entry()
-	..("QT:[length(cur_quadtrees)]")
+/datum/controller/subsystem/quadtree/stat_entry(msg)
+	msg = "QT:[length(cur_quadtrees)]"
+	return ..()
 
 /datum/controller/subsystem/quadtree/fire(resumed = FALSE)
     if(!resumed)

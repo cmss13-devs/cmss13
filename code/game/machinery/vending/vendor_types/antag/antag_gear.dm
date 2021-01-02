@@ -677,6 +677,9 @@
 		ui.set_auto_update(0)
 
 /obj/structure/machinery/cm_vending/gear/antag/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(stat & (BROKEN|NOPOWER))
 		return
 	if(usr.is_mob_incapacitated())

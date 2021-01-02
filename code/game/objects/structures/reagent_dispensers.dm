@@ -21,7 +21,7 @@
 	. = ..()
 	create_reagents(reagent_amount)
 	if(!possible_transfer_amounts)
-		remove_verb(src, /obj/structure/reagent_dispensers/verb/set_APTFT)
+		verbs -= /obj/structure/reagent_dispensers/verb/set_APTFT
 	if(chemical)
 		reagents.add_reagent(chemical, reagent_amount)
 
@@ -184,16 +184,16 @@
 			log_game("[key_name(user)] opened fueltank at [loc.loc.name] ([loc.x],[loc.y],[loc.z]), leaking fuel.")
 			leak_fuel(amount_per_transfer_from_this)*/
 	if(istype(W,/obj/item/device/assembly_holder))
-	
+
 		if(rig)
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
 
 		user.visible_message("[user] begins rigging [W] to \the [src].", "You begin rigging [W] to \the [src]")
-		
+
 		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
 			return
-	
+
 		if(rig)
 			to_chat(user, SPAN_DANGER("There is another device in the way."))
 			return ..()
@@ -262,7 +262,7 @@
 		if(Proj.firer)
 			message_staff("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 			log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
-	
+
 	return TRUE
 
 /obj/structure/reagent_dispensers/fueltank/ex_act(severity)
@@ -279,7 +279,7 @@
 		return ..()
 
 /obj/structure/reagent_dispensers/fueltank/proc/explode(var/force)
-	if(reagents.handle_volatiles() || force) 
+	if(reagents.handle_volatiles() || force)
 		qdel(src)
 		return
 

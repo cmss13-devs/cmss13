@@ -49,7 +49,7 @@
 /obj/item/device/motiondetector/verb/toggle_range_mode()
 	set name = "Toggle Range Mode"
 	set category = "Object"
-
+	set src in usr
 	toggle_mode(usr)
 
 /obj/item/device/motiondetector/proc/toggle_mode(mob/user)

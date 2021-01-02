@@ -1,7 +1,7 @@
 /client/proc/adjust_predator_round()
-	set name = "P: Adjust Predator Round"
+	set name = "Adjust Predator Round"
 	set desc = "Adjust the number of predators present in a predator round."
-	set category = "Round"
+	set category = "Server.Round"
 
 	if(admin_holder)
 		if(!SSticker || !SSticker.mode)
@@ -19,15 +19,15 @@
 			message_staff(SPAN_NOTICE("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)]."))
 
 /datum/admins/proc/force_predator_round()
-	set name = "P: Force Predator Round"
+	set name = "Force Predator Round"
 	set desc = "Force a predator round for the round type. Only works on maps that support Predator spawns."
-	set category = "Round"
+	set category = "Server.Round"
 
 	if(!SSticker || SSticker.current_state < GAME_STATE_PLAYING || !SSticker.mode)
 		to_chat(usr, SPAN_DANGER("The game hasn't started yet!"))
 		return
 
-	if(alert("Are you sure you want to force a predator round?",, "Yes", "No") == "No") 
+	if(alert("Are you sure you want to force a predator round?",, "Yes", "No") == "No")
 		return
 
 	var/datum/game_mode/predator_round = SSticker.mode
@@ -46,12 +46,12 @@
 	return
 
 /client/proc/free_slot()
-	set name = "J: Free Job Slots"
-	set category = "Round"
+	set name = "Free Job Slots"
+	set category = "Server.Round"
 
 	if(!admin_holder)
 		return
-		
+
 	var/roles[] = new
 	var/i
 	var/datum/job/J
@@ -67,8 +67,8 @@
 	RoleAuthority.free_role_admin(RoleAuthority.roles_for_mode[role], TRUE, src)
 
 /client/proc/modify_slot()
-	set name = "J: Adjust Job Slots"
-	set category = "Round"
+	set name = "Adjust Job Slots"
+	set category = "Server.Round"
 
 	if(!admin_holder)
 		return
@@ -94,27 +94,27 @@
 	message_staff(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
 
 /client/proc/check_antagonists()
-	set name = "S: Check Antagonists"
-	set category = "Round"
+	set name = "Check Antagonists"
+	set category = "Server.Round"
 	if(admin_holder)
 		admin_holder.check_antagonists()
 		log_admin("[key_name(usr)] checked antagonists.")
 	return
 
 /client/proc/check_round_status()
-	set name = "S: Round Status"
-	set category = "Round"
+	set name = "Round Status"
+	set category = "Server.Round"
 	if(admin_holder)
 		admin_holder.check_round_status()
 		log_admin("[key_name(usr)] checked round status.")
 	return
 
 /datum/admins/proc/end_round()
-	set name = "A: End Round"
+	set name = "End Round"
 	set desc = "Immediately ends the round, be very careful"
-	set category = "Round"
+	set category = "Server.Round"
 
-	if(!check_rights(R_SERVER) || !SSticker.mode)	
+	if(!check_rights(R_SERVER) || !SSticker.mode)
 		return
 
 	if(alert("Are you sure you want to end the round?",,"Yes","No") != "Yes")
@@ -134,11 +134,11 @@
 	return
 
 /datum/admins/proc/delay()
-	set name = "A: Delay Round Start/End"
+	set name = "Delay Round Start/End"
 	set desc = "Delay the game start/end"
-	set category = "Round"
+	set category = "Server.Round"
 
-	if(!check_rights(R_SERVER))	
+	if(!check_rights(R_SERVER))
 		return
 	if (SSticker.current_state != GAME_STATE_PREGAME)
 		SSticker.delay_end = !SSticker.delay_end
@@ -162,9 +162,9 @@
 		log_admin("[key_name(usr)] removed the delay.")
 
 /datum/admins/proc/startnow()
-	set name = "A: Start Round"
+	set name = "Start Round"
 	set desc = "Start the round RIGHT NOW"
-	set category = "Round"
+	set category = "Server.Round"
 
 	if (!SSticker)
 		alert("Unable to start the game as it is not set up.")

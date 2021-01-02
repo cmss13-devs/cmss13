@@ -57,7 +57,7 @@
 	set name = "Toggle Mask Zoom"
 	set desc = "Toggle your mask's zoom function."
 	set category = "Yautja"
-
+	set src in usr
 	if(!usr || usr.stat)
 		return
 
@@ -67,7 +67,7 @@
 	set name = "Toggle Mask Visors"
 	set desc = "Toggle your mask visor sights. You must only be wearing a type of Yautja visor for this to work."
 	set category = "Yautja"
-
+	set src in usr
 	if(!usr || usr.stat) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return

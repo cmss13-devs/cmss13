@@ -91,6 +91,7 @@ FORENSIC SCANNER
 /obj/item/device/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
 	set category = "Object"
+	set src in usr
 	mode = !mode
 	switch (mode)
 		if(1)
@@ -101,6 +102,7 @@ FORENSIC SCANNER
 /obj/item/device/healthanalyzer/verb/toggle_hud_mode()
 	set name = "Switch Hud"
 	set category = "Object"
+	set src in usr
 	hud_mode = !hud_mode
 	switch (hud_mode)
 		if(1)

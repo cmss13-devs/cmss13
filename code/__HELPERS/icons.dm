@@ -550,3 +550,88 @@ proc/sort_atoms_by_layer(var/list/atoms)
 
     I.color = color
     I.flick_overlay(src, time)
+
+/proc/htmlicon(thing, target = world, sourceonly = FALSE)
+	return icon2html(thing, target, sourceonly = sourceonly)
+
+/proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
+	if (!thing)
+		return
+
+	var/key
+	var/icon/I = thing
+
+	if (!target)
+		return
+	if (target == world)
+		target = GLOB.clients
+
+	var/list/targets
+	if (!islist(target))
+		targets = list(target)
+	else
+		targets = target
+		if (!targets.len)
+			return
+	if (!isicon(I))
+		if (isfile(thing)) //special snowflake
+			var/name = sanitize_filename("[generate_asset_name(thing)].png")
+			if (!SSassets.cache[name])
+				SSassets.transport.register_asset(name, thing)
+			for (var/thing2 in targets)
+				SSassets.transport.send_assets(thing2, name)
+			if(sourceonly)
+				return SSassets.transport.get_asset_url(name)
+			return "<img class='icon icon-misc' src='[SSassets.transport.get_asset_url(name)]'>"
+		var/atom/A = thing
+
+		I = A.icon
+		if (isnull(icon_state))
+			icon_state = A.icon_state
+			if (!(icon_state in icon_states(I, 1)))
+				icon_state = initial(A.icon_state)
+				if (isnull(dir))
+					dir = initial(A.dir)
+
+		if (isnull(dir))
+			dir = A.dir
+
+		if (ishuman(thing)) // Shitty workaround for a BYOND issue.
+			var/icon/temp = I
+			I = icon()
+			I.Insert(temp, dir = SOUTH)
+			dir = SOUTH
+	else
+		if (isnull(dir))
+			dir = SOUTH
+		if (isnull(icon_state))
+			icon_state = ""
+
+	I = icon(I, icon_state, dir, frame, moving)
+
+	key = "[generate_asset_name(I)].png"
+	if(!SSassets.cache[key])
+		SSassets.transport.register_asset(key, I)
+	for (var/thing2 in targets)
+		SSassets.transport.send_assets(thing2, key)
+	if(sourceonly)
+		return SSassets.transport.get_asset_url(key)
+	return "<img class='icon icon-[icon_state]' src='[SSassets.transport.get_asset_url(key)]'>"
+
+//Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
+/proc/costly_icon2html(thing, target, sourceonly = FALSE)
+	if (!thing)
+		return
+
+	if (isicon(thing))
+		return icon2html(thing, target)
+
+	var/icon/I = getFlatIcon(thing)
+	return icon2html(I, target, sourceonly = sourceonly)
+
+/// Generate a filename for this asset
+/// The same asset will always lead to the same asset name
+/// (Generated names do not include file extention.)
+/proc/generate_asset_name(file)
+	return "asset.[md5(fcopy_rsc(file))]"
+

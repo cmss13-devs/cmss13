@@ -142,6 +142,7 @@
 		Die()
 
 /obj/item/clothing/mask/facehugger/equipped(mob/M)
+	SHOULD_CALL_PARENT(FALSE) // ugh equip sounds
 	return
 
 /obj/item/clothing/mask/facehugger/Crossed(atom/target)

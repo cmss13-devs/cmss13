@@ -29,7 +29,7 @@
 
 	if(flamer_chem)
 		reagents.add_reagent(flamer_chem, max_rounds)
-	
+
 	reagents.min_fire_dur = 1
 	reagents.min_fire_int = 1
 	reagents.min_fire_rad = 1
@@ -117,7 +117,7 @@
 /obj/item/ammo_magazine/flamer_tank/get_ammo_percent()
 	if(!reagents)
 		return 0
-	
+
 	return 100 * (reagents.total_volume / max_rounds)
 
 /obj/item/ammo_magazine/flamer_tank/examine(mob/user)

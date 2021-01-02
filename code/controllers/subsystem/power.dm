@@ -12,8 +12,9 @@ SUBSYSTEM_DEF(power)
 	var/list/currentrun_power_machines = list()
 	var/list/currentrun_areas = list()
 
-/datum/controller/subsystem/power/stat_entry()
-	..("PN:[powernets.len]|PM:[power_machines.len]|A:[active_areas.len]")
+/datum/controller/subsystem/power/stat_entry(msg)
+	msg = "PN:[powernets.len]|PM:[power_machines.len]|A:[active_areas.len]"
+	return ..()
 
 
 /datum/controller/subsystem/power/Initialize(timeofday)

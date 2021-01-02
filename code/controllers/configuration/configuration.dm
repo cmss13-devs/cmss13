@@ -187,10 +187,9 @@
 	return (var_name != NAMEOF(src, entries_by_type) || !hiding_entries_by_type) && ..()
 
 
-/datum/controller/configuration/stat_entry()
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Debug", src)
-	stat("[name]:", statclick)
+/datum/controller/configuration/stat_entry(msg)
+	msg = "Edit"
+	return msg
 
 
 /datum/controller/configuration/proc/Get(entry_type)

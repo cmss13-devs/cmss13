@@ -26,9 +26,9 @@ var/global/list/power_update_requests_by_area = list()
 	power_last_profile_time = world.time
 
 /client/proc/toggle_power_update_profiling()
-	set name = "T: Toggle Area Power Update Profiling"
+	set name = "Toggle Area Power Update Profiling"
 	set desc = "Toggles the recording of area power update requests."
-	set category = "Debug"
+	set category = "Debug.Profiling"
 	if(!check_rights(R_DEBUG))	return
 	if(!ishost(usr) || alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(enable_power_update_profiling)
@@ -48,7 +48,7 @@ var/global/list/power_update_requests_by_area = list()
 /client/proc/view_power_update_stats_machines()
 	set name = "View Area Power Update Statistics By Machines"
 	set desc = "See which types of machines are triggering area power updates."
-	set category = "Debug"
+	set category = "Debug.Profiling"
 
 	if(!check_rights(R_DEBUG))	return
 
@@ -59,7 +59,7 @@ var/global/list/power_update_requests_by_area = list()
 /client/proc/view_power_update_stats_area()
 	set name = "View Area Power Update Statistics By Area"
 	set desc = "See which areas are having area power updates."
-	set category = "Debug"
+	set category = "Debug.Profiling"
 
 	if(!check_rights(R_DEBUG))	return
 

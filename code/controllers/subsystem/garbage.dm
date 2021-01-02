@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(garbage)
 	var/refID = "\ref[D]"
 
 	if(force) // please remove in the future
-		del(D) 
+		del(D)
 
 	tick = (TICK_USAGE-tick+((world.time-ticktime)/world.tick_lag*100))
 

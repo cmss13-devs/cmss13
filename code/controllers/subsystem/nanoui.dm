@@ -6,8 +6,9 @@ SUBSYSTEM_DEF(nano)
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/nano/stat_entry()
-	..("P:[nanomanager.processing_uis.len]")
+/datum/controller/subsystem/nano/stat_entry(msg)
+	msg = "P:[nanomanager.processing_uis.len]"
+	return ..()
 
 /datum/controller/subsystem/nano/fire(resumed = FALSE)
 	if (!resumed)

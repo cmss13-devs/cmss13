@@ -223,6 +223,9 @@
 		ui.set_auto_update(0)
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable())
 		return
 	if(usr.is_mob_incapacitated())

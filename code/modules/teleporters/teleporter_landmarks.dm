@@ -40,10 +40,9 @@
 //   \ "location_id" -> /list/turf(area_size)
 /obj/effect/landmark/teleporter_loc/LateInitialize()
 	. = ..()
-	var/datum/controller/subsystem/teleporter/teleporterSS = teleporter_ss
 
-	if (teleporterSS)
-		var/datum/teleporter/T = teleporterSS.teleporters_by_id[linked_teleporter]
+	if (SSteleporter)
+		var/datum/teleporter/T = SSteleporter.teleporters_by_id[linked_teleporter]
 		if (T)
 			if (!T.locations[location_id])
 				T.locations[location_id] = list()

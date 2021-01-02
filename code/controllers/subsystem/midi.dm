@@ -14,8 +14,9 @@ SUBSYSTEM_DEF(midi)
 	var/list/datum/midi_record/currentrun = list()
 
 
-/datum/controller/subsystem/midi/stat_entry()
-	..("MR:[prepped_midis.len]")
+/datum/controller/subsystem/midi/stat_entry(msg)
+	msg = "MR:[prepped_midis.len]"
+	return ..()
 
 
 /datum/controller/subsystem/midi/fire(resumed = FALSE)

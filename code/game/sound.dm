@@ -281,7 +281,7 @@
 	return S
 
 /client/proc/generate_sound_queues()
-	set name = "X: Queue sounds"
+	set name = "Queue sounds"
 	set desc = "stress test this bich"
 	set category = "Debug"
 
@@ -302,7 +302,7 @@
 		SSsound.queue(S)
 
 /client/proc/sound_debug_query()
-	set name = "X: Dump Playing Client Sounds"
+	set name = "Dump Playing Client Sounds"
 	set desc = "dumps info about locally, playing sounds"
 	set category = "Debug"
 

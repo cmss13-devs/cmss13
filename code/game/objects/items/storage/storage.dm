@@ -503,7 +503,7 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/verb/toggle_gathering_mode()
 	set name = "Switch Gathering Method"
 	set category = "Object"
-
+	set src in usr
 	storage_flags ^= STORAGE_GATHER_SIMULTAENOUSLY
 	if (storage_flags & STORAGE_GATHER_SIMULTAENOUSLY)
 		to_chat(usr, "[src] now picks up all items in a tile at once.")
@@ -513,7 +513,7 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/verb/toggle_draw_mode()
 	set name = "Switch Storage Drawing Method"
 	set category = "Object"
-
+	set src in usr
 	storage_flags ^= STORAGE_USING_DRAWING_METHOD
 	if (storage_flags & STORAGE_USING_DRAWING_METHOD)
 		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
@@ -523,7 +523,7 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/verb/toggle_click_empty()
 	set name = "Toggle Tile Dumping"
 	set category = "Object"
-
+	set src in usr
 	storage_flags ^= STORAGE_CLICK_EMPTY
 	if (storage_flags & STORAGE_CLICK_EMPTY)
 		to_chat(usr, "Clicking on a tile with [src] in your hand now empties its contents on that tile.")
@@ -533,7 +533,7 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/verb/empty_verb()
 	set name = "Empty"
 	set category = "Object"
-
+	set src in usr
 	var/mob/living/carbon/human/H = usr
 	if (!ishuman(H) || loc != H || H.is_mob_restrained())
 		return
@@ -619,13 +619,13 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/Initialize()
 	. = ..()
 	if (!(storage_flags & STORAGE_QUICK_GATHER))
-		remove_verb(src, /obj/item/storage/verb/toggle_gathering_mode)
+		verbs -= /obj/item/storage/verb/toggle_gathering_mode
 
 	if (!(storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE))
-		remove_verb(src, /obj/item/storage/verb/toggle_draw_mode)
+		verbs -= /obj/item/storage/verb/toggle_draw_mode
 
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
-		remove_verb(src, /obj/item/storage/verb/empty_verb)
+		verbs -= /obj/item/storage/verb/empty_verb
 
 	boxes = new
 	boxes.name = "storage"

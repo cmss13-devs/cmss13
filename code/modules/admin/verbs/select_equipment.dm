@@ -152,7 +152,7 @@
 
 /client/proc/cmd_admin_dress_all()
 	set category = "Debug"
-	set name = "X: Select Equipment - All Humans"
+	set name = "Select Equipment - All Humans"
 	set desc = "Applies an equipment preset to all humans in the world."
 
 	var/datum/equipment_preset/dresscode = input("Select dress for ALL HUMANS", "Robust quick dress shop") as null|anything in gear_presets_list

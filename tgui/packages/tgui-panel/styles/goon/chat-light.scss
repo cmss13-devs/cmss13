@@ -302,7 +302,6 @@ em {
 }
 
 .ooc {
-  color: #002eb8;
   font-weight: bold;
 }
 
@@ -353,28 +352,20 @@ em {
 }
 
 .radio {
-  color: #008000;
+  color: #4E4E4E;
 }
 
 .sciradio {
   color: #993399;
 }
 
-.comradio {
-  color: #948f02;
-}
+// comradio below
 
-.secradio {
-  color: #a30000;
-}
+// secradio below
 
-.medradio {
-  color: #337296;
-}
+// medradio below
 
-.engradio {
-  color: #fb5613;
-}
+// engradio below
 
 .suppradio {
   color: #a8732b;
@@ -715,9 +706,7 @@ h1.alert, h2.alert {
   font-size: 60%;
 }
 
-.big {
-  font-size: 185%;
-}
+// big below
 
 .reallybig {
   font-size: 245%;
@@ -902,3 +891,114 @@ h1.alert, h2.alert {
 .ml-3 {
   margin-left: 3em;
 }
+
+/* CM stuff */
+
+.xooc					{color: #6C0094;	font-weight: bold; font-size: 120%;}
+.mooc					{color: #009900;	font-weight: bold; font-size: 120%;}
+.yooc					{color: #999600;	font-weight: bold; font-size: 120%;}
+
+.headminsay				{color: #5A0A7F;	font-weight: bold;}
+
+.radio					{color: #4E4E4E;}
+.deptradio				{color: #993399;}
+.comradio				{color: #004080;}
+
+.centradio				{color: #5C5C8A;}
+.airadio				{color: #FF00FF;}
+
+.secradio				{color: #A30000;}
+.engradio				{color: #A66300;}
+.medradio				{color: #008160;}
+
+.supradio				{color: #5F4519;}
+.jtacradio				{color: #702963;}
+.intelradio				{color: #027D02;}
+.wyradio				{color: #FE9B24;}
+
+.alpharadio				{color: #EA0000;}
+.bravoradio				{color: #C68610;}
+.charlieradio			{color: #AA55AA;}
+.deltaradio				{color: #007FCF;}
+
+.medium					{					font-size: 110%}
+.big					{					font-size: 115%}
+.large					{					font-size: 125%}
+.extra_large			{					font-size: 130%}
+.huge					{					font-size: 150%}
+
+.underline				{text-decoration: underline;}
+
+.orange 				{color: #eca100;}
+
+.normal					{font-style: normal;}
+
+.attack					{color: #ff0000;}
+.moderate				{color: #CC0000;}
+.disarm					{color: #990000;}
+.passive				{color: #660000;}
+
+.helpful				{color: #368f31;}
+
+.scanner				{color: #ff0000;}
+.scannerb				{color: #ff0000;	font-weight: bold;}
+.scannerburn			{color: #ffa500;}
+.scannerburnb			{color: #ffa500;	font-weight: bold;}
+.rose					{color: #ff5050;}
+
+.debuginfo				{color: #493D26;	font-style: italic;}
+
+.xenonotice				{color: #2a623d;}
+
+.xenowarning			{color: #2a623d;	font-style: italic;}
+.xenominorwarning		{color: #2a623d;	font-weight: bold; font-style: italic;}
+
+.xenodanger				{color: #2a623d;	font-weight: bold;}
+.avoidharm				{color:	#72a0e5;	font-weight: bold;}
+.highdanger				{color: #ff0000;	font-weight: bold; font-size: 120%;}
+.xenohighdanger			{color: #2a623d; 	font-weight: bold; font-size: 120%;}
+.xenoannounce           {color: #1a472a;    font-family: book-antiqua; font-weight: bold; font-size: 120%;}
+.yautjabold				{color: #800080;	font-weight: bold;}
+.yautjaboldbig			{color: #800080;	font-weight: bold; font-size: 110%;}
+
+.objectivebig			{font-weight: bold; font-size: 130%;}
+.objectivegreen			{color: #00ff00;}
+.objectivered			{color: #ff0000;}
+.objectivesuccess		{color: #00ff00;	font-weight: bold; font-size: 110%;}
+.objectivefail			{color: #ff0000;	font-weight: bold; font-size: 110%;}
+
+.xeno					{color: #900090;	font-style: italic;}
+.xenoleader				{color: #730d73;	font-style: italic;						font-size: 120%;}
+.xenoqueen				{color: #730d73; 	font-style: italic; font-weight: bold; font-size: 120%;}
+.newscaster				{color: #800000;}
+
+.role_header			{color: #db0000;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 120%;}
+.role_body				{color: #000099;	display: block; text-align: center;}
+
+.round_setup			{color: #db0000;	font-family: impact; font-size: 125%;}
+.round_header			{color: #db0000; 	display: block; text-align: center; font-family: courier; font-weight: bold; font-size: 140%;}
+.round_body				{color: #001427; 	display: block; text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 120%;}
+.event_announcement		{color: #600d48; 	font-family: arial-narrow; font-weight: bold; font-size: 120%;}
+
+.announce_header		{color: #000000;	font-weight: bold; font-size: 120%;}
+.announce_header_blue	{color: #000099;	font-weight: bold; font-size: 120%;}
+.announce_body			{color: #ff0000;	font-weight: normal; font-size: 100%;}
+
+.centerbold				{						display: block; text-align: center; font-weight: bold;}
+
+.mod					{color: #735638;	font-weight: bold;}
+.modooc					{color: #184880;	font-weight: bold;}
+.adminmod				{color: #402A14;	font-weight: bold;}
+.tajaran				{color: #803B56;}
+.tajaran_signlang		{color: #941C1C;}
+.skrell					{color: #00CED1;}
+.soghun					{color: #228B22;}
+.changeling				{color: #800080;}
+.vox					{color: #AA00AA;}
+.monkey					{color: #966C47;}
+.german					{color: #858F1E;	 font-family: 'Times New Roman', Times, serif;}
+.spanish				{color: #CF982B;}
+.japanese				{color: #be0029}
+.commando				{color: #FE9B24; font-style: bold;}
+.rough					{font-family: trebuchet-ms, cursive, sans-serif;}
+.say_quote				{font-family: Georgia, Verdana, sans-serif;}

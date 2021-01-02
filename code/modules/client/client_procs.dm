@@ -7,6 +7,13 @@
 									//I would just like the code ready should it ever need to be used.
 #define GOOD_BYOND_MAJOR	513
 #define GOOD_BYOND_MINOR	1500
+
+#define LIMITER_SIZE	5
+#define CURRENT_SECOND	1
+#define SECOND_COUNT	2
+#define CURRENT_MINUTE	3
+#define MINUTE_COUNT	4
+#define ADMINSWARNED_AT	5
 	/*
 	When somebody clicks a link in game, this Topic is called first.
 	It does the stuff in this proc and  then is redirected to the Topic() proc for the src=[0xWhatever]
@@ -38,11 +45,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!usr || usr != mob)	//stops us calling Topic for somebody else's client. Also helps prevent usr=null
 		return
 
-	//Reduces spamming of links by dropping calls that happen during the delay period
-	if(next_allowed_topic_time > world.time)
-		return
-	next_allowed_topic_time = world.time + TOPIC_SPAM_DELAY
-
 	// asset_cache
 	var/asset_cache_job
 	if(href_list["asset_cache_confirm_arrival"])
@@ -50,9 +52,46 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		if (!asset_cache_job)
 			return
 
+	// Rate limiting
+	var/mtl = CONFIG_GET(number/minute_topic_limit)
+	if (!admin_holder && mtl)
+		var/minute = round(world.time, 600)
+		if (!topiclimiter)
+			topiclimiter = new(LIMITER_SIZE)
+		if (minute != topiclimiter[CURRENT_MINUTE])
+			topiclimiter[CURRENT_MINUTE] = minute
+			topiclimiter[MINUTE_COUNT] = 0
+		topiclimiter[MINUTE_COUNT] += 1
+		if (topiclimiter[MINUTE_COUNT] > mtl)
+			var/msg = "Your previous action was ignored because you've done too many in a minute."
+			if (minute != topiclimiter[ADMINSWARNED_AT]) //only one admin message per-minute. (if they spam the admins can just boot/ban them)
+				topiclimiter[ADMINSWARNED_AT] = minute
+				msg += " Administrators have been informed."
+				log_game("[key_name(src)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
+				message_admins("[key_name(usr)] Has hit the per-minute topic limit of [mtl] topic calls in a given game minute")
+			to_chat(src, "<span class='danger'>[msg]</span>")
+			return
+
+	var/stl = CONFIG_GET(number/second_topic_limit)
+	if (!admin_holder && stl)
+		var/second = round(world.time, 10)
+		if (!topiclimiter)
+			topiclimiter = new(LIMITER_SIZE)
+		if (second != topiclimiter[CURRENT_SECOND])
+			topiclimiter[CURRENT_SECOND] = second
+			topiclimiter[SECOND_COUNT] = 0
+		topiclimiter[SECOND_COUNT] += 1
+		if (topiclimiter[SECOND_COUNT] > stl)
+			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
+			return
+
 	// Tgui Topic middleware
 	if(tgui_Topic(href_list))
 		return
+	if(href_list["reload_tguipanel"])
+		nuke_chat()
+	if(href_list["reload_statbrowser"])
+		src << browse(file('html/statbrowser.html'), "window=statbrowser")
 
 	//byond bug ID:2256651
 	if (asset_cache_job && (asset_cache_job in completed_asset_jobs))
@@ -63,9 +102,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if (href_list["asset_cache_preload_data"])
 		asset_cache_preload_data(href_list["asset_cache_preload_data"])
 		return
-
-	if(href_list["_src_"] == "chat") //Hopefully this catches pings before we log
-		return chatOutput.Topic(href, href_list)
 
 	//search the href for script injection
 	if(findtext(href,"<script",1,0) )
@@ -116,8 +152,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			return view_glob_var_Topic(href, href_list, hsrc)
 		if("matrices")
 			return matrix_editor_Topic(href, href_list, hsrc)
-		if("chat")
-			return chatOutput.Topic(href, href_list)
 
 	switch(href_list["action"])
 		if ("openLink")
@@ -169,7 +203,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//CONNECT//
 	///////////
 /client/New(TopicData)
-	chatOutput = new /datum/chatOutput(src)
 	soundOutput = new /datum/soundOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
@@ -181,6 +214,12 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		qdel(src)
 		return
 
+	GLOB.clients += src
+	GLOB.directory[ckey] = src
+
+	// Instantiate tgui panel
+	tgui_panel = new(src)
+
 	// Change the way they should download resources.
 	var/static/next_external_rsc = 0
 	var/list/external_rsc_urls = CONFIG_GET(keyed_list/external_rsc_urls)
@@ -189,11 +228,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		preload_rsc = external_rsc_urls[next_external_rsc]
 	else src.preload_rsc = 1 // If config.resource_urls is not set, preload like normal.
 
-	to_chat_forced(src, SPAN_WARNING("If the title screen is black, resources are still downloading. Please be patient until the title screen appears."))
-
-
-	GLOB.clients += src
-	GLOB.directory[ckey] = src
 	player_entity = setup_player_entity(ckey)
 
 	if(!CONFIG_GET(flag/no_localhost_rank))
@@ -225,7 +259,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(!xeno_postfix || xeno_name_ban)
 		xeno_postfix = ""
 	. = ..()	//calls mob.Login()
-	chatOutput.start()
 
 	// Macros added at runtime
 	runtime_macro_insert(prefs.swap_hand_hotkeymode, "hotkeymode", ".SwapMobHand")
@@ -245,6 +278,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if((byond_version < GOOD_BYOND_MAJOR) || ((byond_version == GOOD_BYOND_MAJOR) && (byond_build < GOOD_BYOND_MINOR)))
 		to_chat(src, FONT_SIZE_HUGE(SPAN_BOLDNOTICE("YOUR BYOND VERSION IS NOT WELL SUITED FOR THIS SERVER. Download latest BETA build or you may suffer random crashes or disconnects.")))
 
+	// Initialize tgui panel
+	tgui_panel.initialize()
+	src << browse(file('html/statbrowser.html'), "window=statbrowser")
+	addtimer(CALLBACK(src, .proc/check_panel_loaded), 30 SECONDS)
+
 	var/datum/custom_event_info/CEI = GLOB.custom_event_info_list["Global"]
 	CEI.show_player_event_info(src)
 
@@ -263,15 +301,16 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		host = key
 		world.update_status()
 
-	send_assets()
-
 	connection_time = world.time
+	winset(src, null, "command=\".configure graphics-hwmode on\"")
+
+	send_assets()
 
 	create_clickcatcher()
 	apply_clickcatcher()
 
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-		winset(src, "rpane.changelog", "background-color=#ED9F9B;font-style=bold")
+		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
 
 
 	var/file = file2text("config/donators.txt")
@@ -282,8 +321,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			src.donator = 1
 			add_verb(src, /client/proc/set_ooc_color_self)
 
-	if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
-		set_night_skin()
+	//if(prefs.window_skin & TOGGLE_WINDOW_SKIN)
+	//	set_night_skin()
 
 	load_player_data()
 
@@ -293,7 +332,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//DISCONNECT//
 	//////////////
 /client/Del()
-	QDEL_NULL(chatOutput)
 	QDEL_NULL(soundOutput)
 	if(prefs)
 		prefs.owner = null
@@ -331,25 +369,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
 		addtimer(CALLBACK(SSassets.transport, /datum/asset_transport.proc/send_assets_slow, src, SSassets.transport.preload), 5 SECONDS)
-
-/client/Stat()
-	// We just did a short sleep because of a change, do another to render quickly, but flip the flag back.
-	if (stat_fast_update)
-		stat_fast_update = 0
-
-	last_statpanel = statpanel
-
-	. = ..() // Do our regular Stat stuff
-
-	//statpanel changed? We doin a short sleep
-	if (statpanel != last_statpanel || stat_force_fast_update)
-		stat_fast_update = 1
-		stat_force_fast_update = 0
-
-	if(!stat_fast_update)
-		// Nothing happening, long sleep
-		sleep(20)
-	return .
 
 /proc/setup_player_entity(var/ckey)
 	if(!ckey)
@@ -430,7 +449,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 /client/verb/fix_swap_hand_macro()
 	set name = "Fix Swap Hand Macros"
-	set category = "OOC"
+	set category = "OOC.Fix"
 
 	if (!prefs)
 		return
@@ -442,3 +461,39 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	runtime_macro_insert(prefs.swap_hand_default, "hotkeymode", ".SwapMobHand")
 
 	to_chat(src, SPAN_NOTICE("Fixed your swap hand macros!"))
+
+/// compiles a full list of verbs and sends it to the browser
+/client/proc/init_verbs()
+	if(IsAdminAdvancedProcCall())
+		return
+	var/list/verblist = list()
+	var/list/verbstoprocess = verbs.Copy()
+	if(mob)
+		verbstoprocess += mob.verbs
+		for(var/AM in mob.contents)
+			var/atom/movable/thing = AM
+			verbstoprocess += thing.verbs
+	panel_tabs.Cut() // panel_tabs get reset in init_verbs on JS side anyway
+	for(var/thing in verbstoprocess)
+		var/procpath/verb_to_init = thing
+		if(!verb_to_init)
+			continue
+		if(verb_to_init.hidden)
+			continue
+		if(!istext(verb_to_init.category))
+			continue
+		panel_tabs |= verb_to_init.category
+		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
+	src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
+
+
+/client/verb/fix_stat_panel()
+	set name = "Fix Stat Panel"
+	set hidden = TRUE
+
+	init_verbs()
+
+/client/proc/check_panel_loaded()
+	if(statbrowser_ready)
+		return
+	to_chat(src, "<span class='userdanger'>Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel </span>")

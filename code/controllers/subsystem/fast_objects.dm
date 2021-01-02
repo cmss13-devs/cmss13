@@ -7,8 +7,9 @@ SUBSYSTEM_DEF(fast_obj)
 	flags         = SS_NO_INIT
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/fast_obj/stat_entry()
-	..("P:[fast_objects.len]")
+/datum/controller/subsystem/fast_obj/stat_entry(msg)
+	msg = "P:[fast_objects.len]"
+	return ..()
 
 /datum/controller/subsystem/fast_obj/fire(var/resumed = FALSE)
 	if (!resumed)

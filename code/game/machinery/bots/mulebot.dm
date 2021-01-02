@@ -90,7 +90,7 @@
 		suffix = "#[count]"
 	name = "Mulebot ([suffix])"
 
-	remove_verb(src, /atom/movable/verb/pull)
+	verbs -= /atom/movable/verb/pull
 
 
 // set up the wire colours in random order

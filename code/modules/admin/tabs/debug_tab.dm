@@ -1,6 +1,6 @@
 /client/proc/enable_debug_verbs()
 	set category = "Debug"
-	set name = "Z: Debug Verbs - Show"
+	set name = "Debug Verbs - Show"
 
 	if(!check_rights(R_DEBUG))
 		return
@@ -10,7 +10,7 @@
 
 /client/proc/hide_debug_verbs()
 	set category = "Debug"
-	set name = "Z: Debug Verbs - Hide"
+	set name = "Debug Verbs - Hide"
 
 	if(!check_rights(R_DEBUG))
 		return
@@ -20,7 +20,7 @@
 
 /client/proc/check_round_statistics()
 	set category = "Debug"
-	set name = "C: Round Statistics"
+	set name = "Round Statistics"
 	if(!check_rights(R_ADMIN|R_DEBUG))
 		return
 
@@ -28,7 +28,7 @@
 
 /client/proc/cmd_admin_delete(atom/O as obj|mob|turf in world)
 	set category = "Debug"
-	set name = "E: Delete"
+	set name = "Delete"
 
 	if (!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
@@ -43,8 +43,8 @@
 			qdel(O)
 
 /client/proc/ticklag()
-	set category = "Debug"
-	set name = "S: Set Ticklag"
+	set category = "Debug.Controllers"
+	set name = "Set Ticklag"
 	set desc = "Sets a new tick lag. Recommend you don't mess with this too much! Stable, time-tested ticklag value is 0.9"
 
 	if(!check_rights(R_DEBUG))	return
@@ -53,7 +53,7 @@
 	//I've used ticks of 2 before to help with serious singulo lags
 	if(newtick && newtick <= 2 && newtick > 0)
 		message_staff("[key_name(src)] has modified world.tick_lag to [newtick]")
-		world.tick_lag = newtick
+		world.change_tick_lag(newtick)
 	else
 		to_chat(src, SPAN_DANGER("Error: ticklag(): Invalid world.ticklag value. No changes made."))
 
@@ -87,7 +87,7 @@
 	return
 
 /client/proc/reload_admins()
-	set name = "F: Reload Admins"
+	set name = "Reload Admins"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!check_rights(R_SERVER))	return
@@ -96,7 +96,7 @@
 	load_admins()
 
 /client/proc/reload_whitelist()
-	set name = "F: Reload Whitelist"
+	set name = "Reload Whitelist"
 	set category = "Debug"
 	if(alert("Are you sure you want to do this?",, "Yes", "No") == "No") return
 	if(!check_rights(R_SERVER) || !RoleAuthority) return
@@ -105,7 +105,7 @@
 	RoleAuthority.load_whitelist()
 
 /client/proc/bulk_fetcher()
-	set name = "D: Bulk Fetch Items"
+	set name = "Bulk Fetch Items"
 	set category = "Debug"
 
 	if (admin_holder)

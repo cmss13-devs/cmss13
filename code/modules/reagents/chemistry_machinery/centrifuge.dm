@@ -117,6 +117,9 @@
 		ui.open()
 
 /obj/structure/machinery/centrifuge/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable() || !ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr

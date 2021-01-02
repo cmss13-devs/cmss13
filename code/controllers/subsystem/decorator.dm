@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(decorator)
 	var/list/registered_decorators = list()
 	var/list/datum/decorator/active_decorators = list()
 
-/datum/controller/subsystem/decorator/Initialize()	
+/datum/controller/subsystem/decorator/Initialize()
 	var/list/all_decors = typesof(/datum/decorator) - list(/datum/decorator) - typesof(/datum/decorator/manual)
 	for(var/decor_type in all_decors)
 		var/datum/decorator/decor = new decor_type()
@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(decorator)
 				registered_decorators[app_type] = list()
 			registered_decorators[app_type] += decor
 
-	for(var/i in registered_decorators)		
+	for(var/i in registered_decorators)
 		registered_decorators[i] = sortDecorators(registered_decorators[i])
 
 	for(var/atom/object in world)
@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(decorator)
 			registered_decorators[app_type] = list()
 		registered_decorators[app_type] += decor
 
-	for(var/i in registered_decorators)		
+	for(var/i in registered_decorators)
 		registered_decorators[i] = sortDecorators(registered_decorators[i])
 
 	return decor
@@ -68,11 +68,10 @@ SUBSYSTEM_DEF(decorator)
 	for(var/atom/o in world)
 		o.Decorate()
 
-/datum/controller/subsystem/decorator/stat_entry()
+/datum/controller/subsystem/decorator/stat_entry(msg)
 	if(registered_decorators && decoratable)
-		..("D:[registered_decorators.len],P:[decoratable.len]")
-		return
-	..("INITING")
+		msg = "D:[registered_decorators.len],P:[decoratable.len]"
+	return ..()
 
 /datum/controller/subsystem/decorator/proc/decorate(var/atom/o)
 	if (!o || QDELETED(o))

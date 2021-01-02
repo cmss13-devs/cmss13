@@ -9,8 +9,9 @@ SUBSYSTEM_DEF(fz_transitions)
 	init_order		= SS_INIT_FZ_TRANSITIONS
 	flags     		= SS_KEEP_TIMING
 
-/datum/controller/subsystem/fz_transitions/stat_entry()
-	..("P:[projectors.len]|C:[clones.len]|T:[clones_t.len]")
+/datum/controller/subsystem/fz_transitions/stat_entry(msg)
+	msg = "P:[projectors.len]|C:[clones.len]|T:[clones_t.len]"
+	return ..()
 
 /datum/controller/subsystem/fz_transitions/Initialize()
 	for(var/obj/effect/projector/P in world)

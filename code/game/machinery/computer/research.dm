@@ -79,7 +79,7 @@
 		else
 			clearance_allowance = C.clearance_access
 
-		
+
 	var/setting = input(usr,"How do you want to change the clearance settings?","[src]") in options
 	if(!setting)
 		return
@@ -96,7 +96,7 @@
 			if(!can_give_x)
 				to_chat(usr, SPAN_WARNING("Access denied."))
 				return
-			
+
 			chemical_data.clearance_x_access = TRUE
 			chemical_data.reached_x_access = TRUE
 
@@ -137,6 +137,9 @@
 		ui.open()
 
 /obj/structure/machinery/computer/research/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(inoperable() || !ishuman(usr))
 		return
 	var/mob/living/carbon/human/user = usr

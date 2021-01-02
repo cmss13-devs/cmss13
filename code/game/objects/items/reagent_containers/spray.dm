@@ -22,7 +22,7 @@
 
 /obj/item/reagent_container/spray/Initialize()
 	. = ..()
-	remove_verb(src, /obj/item/reagent_container/verb/set_APTFT)
+	verbs -= /obj/item/reagent_container/verb/set_APTFT
 
 /obj/item/reagent_container/spray/afterattack(atom/A, mob/user, proximity)
 	//this is what you get for using afterattack() TODO: make is so this is only called if attackby() returns 0 or something

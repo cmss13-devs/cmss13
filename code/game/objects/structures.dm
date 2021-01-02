@@ -19,7 +19,7 @@
 /obj/structure/New()
 	..()
 	if(climbable)
-		add_verb(src, /obj/structure/proc/climb_on)
+		verbs += /obj/structure/proc/climb_on
 
 /obj/structure/Destroy()
 	//before ..() because the parent does loc = null

@@ -1,6 +1,6 @@
 /client/proc/run_all_tests()
-	set name = "D: Run All Tests"
-	set category = "Debug"
+	set name = "Run All Tests"
+	set category = "Debug.Tests"
 
 	if(!check_rights(R_DEBUG))
 		return
@@ -14,8 +14,8 @@
 	test_executor.run_all_tests(verbose)
 
 /client/proc/run_test_set()
-	set name = "D: Run Test Set"
-	set category = "Debug"
+	set name = "Run Test Set"
+	set category = "Debug.Tests"
 
 	if(!check_rights(R_DEBUG))
 		return
@@ -34,8 +34,8 @@
 	to_chat(src, "Error: [results[TEST_ERROR]]")
 
 /client/proc/run_individual_test()
-	set name = "D: Run Test Case"
-	set category = "Debug"
+	set name = "Run Test Case"
+	set category = "Debug.Tests"
 
 	if(!check_rights(R_DEBUG))
 		return

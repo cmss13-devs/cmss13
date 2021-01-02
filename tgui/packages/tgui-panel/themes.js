@@ -71,6 +71,10 @@ export const setClientTheme = name => {
       // Say, OOC, me Buttons etc.
       'saybutton.background-color': 'none',
       'saybutton.text-color': '#000000',
+      'hotkey_toggle.background-color': 'none',
+      'hotkey_toggle.text-color': '#000000',
+      'input.background-color': '#d3b5b5',
+      'input.text-color': '#000000',
       'oocbutton.background-color': 'none',
       'oocbutton.text-color': '#000000',
       'mebutton.background-color': 'none',
@@ -121,6 +125,10 @@ export const setClientTheme = name => {
       // Say, OOC, me Buttons etc.
       'saybutton.background-color': COLOR_DARK_BG,
       'saybutton.text-color': COLOR_DARK_TEXT,
+      'hotkey_toggle.background-color': COLOR_DARK_BG,
+      'hotkey_toggle.text-color': COLOR_DARK_TEXT,
+      'input.background-color': COLOR_DARK_BG,
+      'input.text-color': COLOR_DARK_TEXT,
       'oocbutton.background-color': COLOR_DARK_BG,
       'oocbutton.text-color': COLOR_DARK_TEXT,
       'mebutton.background-color': COLOR_DARK_BG,

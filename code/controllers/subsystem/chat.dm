@@ -1,151 +1,38 @@
-#define MAX_DEQUEUE 10 // dequeue no more than this amount of messages, to prevent noone getting a message due to high load
-
-/datum/chat_item
-	var/target
-	var/message
+/*!
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
 
 SUBSYSTEM_DEF(chat)
 	name = "Chat"
-	flags = SS_POST_FIRE_TIMING
-	wait = 2
+	flags = SS_TICKER
+	wait = 1
 	priority = SS_PRIORITY_CHAT
 	init_order = SS_INIT_CHAT
-	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
-	var/list/processQueue = list()
-	var/list/processQueue_current = list()
-	var/list/chatQueue = list()
-
-/datum/controller/subsystem/chat/stat_entry()
-	..("P:[processQueue.len]; C:[processQueue_current.len]")
+	var/list/payload_by_client = list()
 
 /datum/controller/subsystem/chat/fire()
-	for(var/datum/chat_item/item in processQueue_current)
-		de_queue(item.target, item.message)
-		processQueue_current -= item
+	for(var/key in payload_by_client)
+		var/client/client = key
+		var/payload = payload_by_client[key]
+		payload_by_client -= key
+		if(client)
+			// Send to tgchat
+			client.tgui_panel?.window.send_message("chat/message", payload)
+			// Send to old chat
+			for(var/message in payload)
+				SEND_TEXT(client, message_to_html(message))
 		if(MC_TICK_CHECK)
 			return
 
-	if(processQueue_current.len==0)
-		processQueue_current = processQueue
-		processQueue = list()
-
-	for(var/i in chatQueue)
-		var/client/C = i
-		var/msg = url_encode(json_encode(list("message"=chatQueue[C])))
-		C << output(msg, "browseroutput:output")
-		chatQueue -= C
-
-		if(MC_TICK_CHECK)
-			return
-
-/datum/controller/subsystem/chat/proc/queue(var/target, var/message)
-	if(!target || !message)
+/datum/controller/subsystem/chat/proc/queue(target, message)
+	if(islist(target))
+		for(var/_target in target)
+			var/client/client = CLIENT_FROM_VAR(_target)
+			if(client)
+				LAZYADD(payload_by_client[client], list(message))
 		return
-	
-	if(!istext(message))
-		CRASH("to_chat called with invalid input type ([message])")
-
-	var/datum/chat_item/ci = new()
-	ci.target = target
-	ci.message = message
-
-	processQueue.Add(ci)
-
-/datum/controller/subsystem/chat/proc/de_queue_single(var/target, var/encoded_message, var/clean_message)
-	var/client/C
-	if (istype(target, /client))
-		C = target
-	else if (istype(target, /mob))
-		var/mob/M = target
-		C = M.client
-	else if (istype(target, /datum/mind))
-		var/datum/mind/M = target
-		if (M.current)
-			C = M.current.client
-
-	if(!istype(C))
-		return
-
-	if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
-		C << clean_message
-		return
-
-	if (C.chatOutput && !C.chatOutput.loaded && islist(C.chatOutput.messageQueue))
-		C.chatOutput.messageQueue += encoded_message
-		return
-
-	chatQueue[C] += encoded_message
-
-/datum/controller/subsystem/chat/proc/de_queue(var/target, var/message)
-	#define GCHAT_UNDEFINED_LIST 0
-	#define GCHAT_CLIENT_LIST 1
-	#define GCHAT_MOB_LIST 2
-	#define GCHAT_MIND_LIST 3
-
-	var/type_of_list = GCHAT_UNDEFINED_LIST
-
-	if(target == world)
-		target = GLOB.clients
-		type_of_list = GCHAT_CLIENT_LIST
-
-	var/clean_message = message
-
-	//Some macros remain in the string even after parsing and fuck up the eventual output
-	message = replacetextEx(message, "\n", "<br>")
-	message += "<br>"
-
-	var/encoded_message = message
-
-	//Grab us a client if possible
-	if(islist(target))		
-		
-		for(var/T in target)
-			var/client/C
-
-			if(type_of_list == GCHAT_UNDEFINED_LIST)
-				if (istype(T, /client))
-					type_of_list = GCHAT_CLIENT_LIST
-				else if (istype(T, /mob))
-					type_of_list = GCHAT_MOB_LIST
-				else if (istype(T, /datum/mind))
-					type_of_list = GCHAT_MIND_LIST
-				else
-					continue
-			
-			if(type_of_list == GCHAT_CLIENT_LIST)
-				C = T
-			
-			if(type_of_list == GCHAT_MOB_LIST)
-				var/mob/M = T
-				if(!istype(M))
-					continue
-				C = M.client
-			
-			if(type_of_list == GCHAT_MOB_LIST)
-				var/datum/mind/M = T
-				if(!istype(M))
-					continue
-				if(M.current)
-					C = M.current.client
-
-			if(!C || !istype(C))
-				continue
-
-			// If they are using the old chat, send it the old way
-			if(C.chatOutput && C.chatOutput.oldChat || !C.chatOutput)
-				C << clean_message
-				continue
-			
-			if (C.chatOutput && !C.chatOutput.loaded && C.chatOutput.messageQueue && islist(C.chatOutput.messageQueue))
-				//Client sucks at loading things, put their messages in a queue
-				C.chatOutput.messageQueue += message
-				continue
-
-			chatQueue[C] += encoded_message
-		#undef GCHAT_UNDEFINED_LIST
-		#undef GCHAT_CLIENT_LIST
-		#undef GCHAT_MOB_LIST
-		#undef GCHAT_MIND_LIST
-	else
-		de_queue_single(target, encoded_message, clean_message)
+	var/client/client = CLIENT_FROM_VAR(target)
+	if(client)
+		LAZYADD(payload_by_client[client], list(message))

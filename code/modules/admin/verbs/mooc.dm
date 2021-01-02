@@ -1,5 +1,5 @@
 /client/proc/mooc(msg as text)
-	set category = "OOC"
+	set category = "OOC.OOC"
 	set name = "MOOC"
 
 	if(!src.admin_holder || !(admin_holder.rights & R_MOD))

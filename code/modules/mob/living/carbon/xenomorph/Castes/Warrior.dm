@@ -134,7 +134,8 @@
 		stored_shield += stored_shield_per_slash
 
 /datum/behavior_delegate/warrior_base/append_to_stat()
-	stat("Stored Shield", "[stored_shield]/[stored_shield_max]")
+	. = list()
+	. += "Stored Shield: [stored_shield]/[stored_shield_max]"
 
 /datum/behavior_delegate/boxer
 	name = "Boxer Warrior Behavior Delegate"
@@ -162,9 +163,10 @@
 		max_clear_head = 0
 
 /datum/behavior_delegate/boxer/append_to_stat()
+	. = list()
 	if(punching_bag)
-		stat("Beating", "[punching_bag] - [ko_counter] hits")
-	stat("Clarity", "[clear_head] hits")
+		. += "Beating [punching_bag] - [ko_counter] hits"
+	. += "Clarity [clear_head] hits"
 
 /datum/behavior_delegate/boxer/on_life()
 	var/wt = world.time

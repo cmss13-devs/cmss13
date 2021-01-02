@@ -73,6 +73,9 @@
 	return
 
 /obj/structure/filingcabinet/Topic(href, href_list)
+	. = ..()
+	if(.)
+		return
 	if(href_list["retrieve"])
 		close_browser(usr, "filingcabinet") // Close the menu
 

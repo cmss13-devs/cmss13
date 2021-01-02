@@ -1,337 +1,455 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
+#define CARDCON_DEPARTMENT_MISC "Miscellaneous"
+#define CARDCON_DEPARTMENT_MARINE "Marines"
+#define CARDCON_DEPARTMENT_SECURITY "Security"
+#define CARDCON_DEPARTMENT_MEDICAL "Medical and Science"
+#define CARDCON_DEPARTMENT_MEDICALWO "Medical"
+#define CARDCON_DEPARTMENT_SUPPLY "Supply"
+#define CARDCON_DEPARTMENT_AUXCOM "Auxiliary Command"
+#define CARDCON_DEPARTMENT_ENGINEERING "Engineering"
+#define CARDCON_DEPARTMENT_COMMAND "Command"
 
-/obj/structure/machinery/computer/marine_card
+/obj/structure/machinery/computer/card
 	name = "Identification Computer"
-	desc = "You can use this to change ID's."
+	desc = "Terminal for programming USCM employee ID card access."
 	icon_state = "id"
 	req_access = list(ACCESS_MARINE_LOGISTICS)
-	circuit = "/obj/item/circuitboard/computer/card"
-	var/obj/item/card/id/scan = null
-	var/obj/item/card/id/ID_to_modify = null
-	var/authenticated = 0.0
-	var/mode = 0.0
-	var/printing = null
+	circuit = /obj/item/circuitboard/computer/card
+	var/obj/item/card/id/user_id_card
+	var/obj/item/card/id/target_id_card
+	// What factions we are able to modify
+	var/list/factions = list(FACTION_MARINE)
+	var/printing
 
+	var/is_centcom = FALSE
+	var/authenticated = FALSE
 
-/obj/structure/machinery/computer/marine_card/attackby(O as obj, user as mob)//TODO:SANITY
+/obj/structure/machinery/computer/card/proc/authenticate(mob/user, obj/item/card/id/id_card)
+	if(!id_card)
+		visible_message("<span class='bold'>[src]</span> states, \"AUTH ERROR: Authority confirmation card is missing!\"")
+		return FALSE
+
+	if(check_access(id_card))
+		authenticated = TRUE
+		visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGIN: Welcome, [id_card.registered_name]. Access granted.\"")
+		update_static_data(user)
+		return TRUE
+
+	visible_message("<span class='bold'>[src]</span> states, \"AUTH ERROR: You have not enough authority! Access denied.\"")
+	return FALSE
+
+/obj/structure/machinery/computer/card/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "CardMod", name)
+		ui.open()
+
+/obj/structure/machinery/computer/card/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/user = usr
+
+	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
+	switch(action)
+		if("PRG_authenticate")
+			var/obj/item/I = user.get_active_hand()
+			if (istype(I, /obj/item/card/id))
+				if(user.drop_held_item())
+					I.forceMove(src)
+					user_id_card = I
+			if(authenticate(user, user_id_card))
+				return TRUE
+			// Well actualy we have no button for auth card ejection, so just spit it back in user's face
+			else
+				if(!user_id_card)
+					return
+				if(ishuman(user))
+					user_id_card.forceMove(user.loc)
+					if(!user.get_active_hand())
+						user.put_in_hands(user_id_card)
+				else
+					user_id_card.forceMove(loc)
+				user_id_card = null
+		if("PRG_logout")
+			visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGOUT: Session end confirmed.\"")
+			authenticated = FALSE
+			if(ishuman(user))
+				user_id_card.forceMove(user.loc)
+				if(!user.get_active_hand())
+					user.put_in_hands(user_id_card)
+			else
+				user_id_card.forceMove(loc)
+			user_id_card = null
+			return TRUE
+		if("PRG_print")
+			if(!printing)
+				if(params["mode"])
+					if(!authenticated)
+						return
+					printing = TRUE
+					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+					sleep(40)
+					var/faction = "N/A"
+					if(target_id_card.faction_group && islist(target_id_card.faction_group))
+						faction = jointext(target_id_card.faction_group, ", ")
+					if(isnull(target_id_card.faction_group))
+						target_id_card.faction_group = list()
+					else
+						faction = target_id_card.faction_group
+					var/contents = {"<center><h4>Access Report</h4></center>
+								<u>Prepared By:</u> [user_id_card?.registered_name ? user_id_card.registered_name : "Unknown"]<br>
+								<u>For:</u> [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]<br>
+								<hr>
+								<u>Faction:</u> [faction]<br>
+								<u>Assignment:</u> [target_id_card.assignment]<br>
+								<u>Account Number:</u> #[target_id_card.associated_account_number]<br>
+								<u>Blood Type:</u> [target_id_card.blood_type]<br><br>
+								<u>Access:</u><br>
+								"}
+
+					var/known_access_rights = get_all_accesses()
+					for(var/A in target_id_card.access)
+						if(A in known_access_rights)
+							contents += "  [get_access_desc(A)]"
+			
+					var/obj/item/paper/P = new /obj/item/paper(src.loc)
+					P.name = "Access Report"
+					P.info += contents
+				else
+					printing = TRUE
+					playsound(src.loc, 'sound/machines/fax.ogg', 15, 1)
+					sleep(40)
+					var/obj/item/paper/P = new /obj/item/paper(src.loc)
+					P.name = text("Crew Manifest ([])", worldtime2text())
+					P.info = {"<center><h4>Crew Manifest</h4></center>
+						<br>
+						[GLOB.data_core.get_manifest(TRUE)]
+					"}
+				visible_message(SPAN_NOTICE("\The [src] prints out a paper."))
+				printing = FALSE
+				return TRUE
+			return
+		if("PRG_eject")
+			if(target_id_card)
+				GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.assignment, target_id_card.rank)
+				target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+				if(ishuman(user))
+					target_id_card.forceMove(user.loc)
+					if(!user.get_active_hand())
+						user.put_in_hands(target_id_card)
+					target_id_card = null
+				else
+					target_id_card.forceMove(loc)
+					target_id_card = null
+				visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+				return TRUE
+			else
+				var/obj/item/I = user.get_active_hand()
+				if (istype(I, /obj/item/card/id))
+					if(user.drop_held_item())
+						I.forceMove(src)
+						target_id_card = I
+						visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+						update_static_data(user)
+						return TRUE
+			return FALSE
+		if("PRG_terminate")
+			if(!authenticated)
+				return
+
+			var/is_agent = FALSE
+			if(target_id_card.registered_gid)
+				is_agent = target_id_card.fail_agent_objectives()
+			target_id_card.assignment = "Terminated"
+			target_id_card.access = list()
+			message_staff("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].[is_agent ? " They were an Agent." : ""]")
+			return TRUE
+		if("PRG_edit")
+			if(!authenticated || !target_id_card)
+				return
+			var/new_name = params["name"]	// reject_bad_name() can be added here
+			if(!new_name)
+				visible_message(SPAN_NOTICE("[src] buzzes rudely."))
+				return
+			target_id_card.registered_name = new_name
+			return TRUE
+		if("PRG_assign")
+			if(!authenticated || !target_id_card)
+				return
+			var/target = params["assign_target"]
+			if(!target)
+				return
+
+			if(target == "Custom")
+				var/custom_name = params["custom_name"]
+				if(custom_name)
+					target_id_card.assignment = custom_name
+			else
+				var/list/new_access = list()
+				if(is_centcom)
+					new_access = get_centcom_access(target)
+				else
+					var/datum/job/job = RoleAuthority.roles_for_mode[target]
+
+					if(!job)
+						visible_message("<span class='bold'>[src]</span> states, \"DATA ERROR: Can not find next entry in database: [target]\"")
+						return
+					new_access = job.get_access()
+				target_id_card.access -= get_all_centcom_access() + get_all_accesses()
+				target_id_card.access |= new_access
+				target_id_card.assignment = target
+				target_id_card.rank = target
+			message_staff("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment [target_id_card.assignment].")
+			return TRUE
+		if("PRG_access")
+			if(!authenticated)
+				return
+			if(params["access_target"] in factions)
+				if(!target_id_card.faction_group)
+					target_id_card.faction_group = list()
+				if(params["access_target"] in target_id_card.faction_group)
+					target_id_card.faction_group -= params["access_target"]
+				else
+					target_id_card.faction_group |= params["access_target"]
+				return TRUE
+			var/access_type = text2num(params["access_target"])
+			if(access_type in (is_centcom ? get_all_centcom_access() : get_all_accesses()))
+				if(access_type in target_id_card.access)
+					target_id_card.access -= access_type
+				else
+					target_id_card.access |= access_type
+				return TRUE
+		if("PRG_grantall")
+			if(!authenticated)
+				return
+			target_id_card.access |= (is_centcom ? get_all_centcom_access() : get_all_accesses())
+			target_id_card.faction_group |= factions
+			return TRUE
+		if("PRG_denyall")
+			if(!authenticated)
+				return
+			var/list/access = target_id_card.access
+			access.Cut()
+			target_id_card.faction_group -= factions
+			return TRUE
+		if("PRG_grantregion")
+			if(!authenticated)
+				return
+			if(params["region"] == "Faction (IFF system)")
+				target_id_card.faction_group |= factions
+				return TRUE
+			var/region = text2num(params["region"])
+			if(isnull(region))
+				return
+			target_id_card.access |= get_region_accesses(region)
+			return TRUE
+		if("PRG_denyregion")
+			if(!authenticated)
+				return
+			if(params["region"] == "Faction (IFF system)")
+				target_id_card.faction_group -= factions
+				return TRUE
+			var/region = text2num(params["region"])
+			if(isnull(region))
+				return
+			target_id_card.access -= get_region_accesses(region)
+			return TRUE
+		if("PRG_account")
+			if(!authenticated)
+				return
+			var/account = text2num(params["account"])
+			target_id_card.associated_account_number = account
+			return TRUE
+
+/obj/structure/machinery/computer/card/ui_static_data(mob/user)
+	var/list/data = list()
+	data["station_name"] = station_name
+	data["centcom_access"] = is_centcom
+	data["manifest"] = GLOB.data_core.get_manifest(FALSE, FALSE, TRUE)
+
+	var/list/departments
+	if(is_centcom)
+		departments = list("CentCom" = get_all_centcom_jobs())
+	else if(Check_WO())
+		// I am not sure about WOs departments so it may need adjustment
+		departments = list(
+			CARDCON_DEPARTMENT_COMMAND = ROLES_CIC & ROLES_WO,
+			CARDCON_DEPARTMENT_AUXCOM = ROLES_AUXIL_SUPPORT & ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = ROLES_MISC & ROLES_WO,
+			CARDCON_DEPARTMENT_SECURITY = ROLES_POLICE & ROLES_WO,
+			CARDCON_DEPARTMENT_ENGINEERING = ROLES_ENGINEERING & ROLES_WO,
+			CARDCON_DEPARTMENT_SUPPLY = ROLES_REQUISITION & ROLES_WO,
+			CARDCON_DEPARTMENT_MEDICAL = ROLES_MEDICAL & ROLES_WO,
+			CARDCON_DEPARTMENT_MARINE = ROLES_MARINES
+		)
+	else
+		departments = list(
+			CARDCON_DEPARTMENT_COMMAND = ROLES_CIC - ROLES_WO,
+			CARDCON_DEPARTMENT_AUXCOM = ROLES_AUXIL_SUPPORT - ROLES_WO,
+			CARDCON_DEPARTMENT_MISC = ROLES_MISC - ROLES_WO,
+			CARDCON_DEPARTMENT_SECURITY = ROLES_POLICE - ROLES_WO,
+			CARDCON_DEPARTMENT_ENGINEERING = ROLES_ENGINEERING - ROLES_WO,
+			CARDCON_DEPARTMENT_SUPPLY = ROLES_REQUISITION - ROLES_WO,
+			CARDCON_DEPARTMENT_MEDICAL = ROLES_MEDICAL - ROLES_WO,
+			CARDCON_DEPARTMENT_MARINE = ROLES_MARINES
+		)
+	data["jobs"] = list()
+	for(var/department in departments)
+		var/list/job_list = departments[department]
+		var/list/department_jobs = list()
+		for(var/job in job_list)
+			department_jobs += list(list(
+				"display_name" = replacetext(job, "&nbsp", " "),
+				"job" = job
+			))
+		if(length(department_jobs))
+			data["jobs"][department] = department_jobs
+
+	var/list/regions = list()
+	for(var/i in 1 to 7)
+
+		var/list/accesses = list()
+		for(var/access in get_region_accesses(i))
+			if (get_access_desc(access))
+				accesses += list(list(
+					"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
+					"ref" = access,
+				))
+
+		regions += list(list(
+			"name" = get_region_accesses_name(i),
+			"regid" = i,
+			"accesses" = accesses
+		))
+	
+	// Factions goes here
+	if(target_id_card && target_id_card.faction_group && isnull(target_id_card.faction_group))
+		target_id_card.faction_group = list()
+	var/list/localfactions = list()
+	// We can see only those factions which have our console tuned on
+	for(var/faction in factions)
+		localfactions += list(list(
+			"desc" = faction,
+			"ref" = faction,
+	))
+
+	regions += list(list(
+		"name" = "Faction (IFF system)",
+		"regid" = "Faction (IFF system)",
+		"accesses" = localfactions
+	))
+
+	data["regions"] = regions
+
+	return data
+
+/obj/structure/machinery/computer/card/ui_data(mob/user)
+	var/list/data = list()
+
+	data["station_name"] = station_name
+	data["authenticated"] = authenticated
+
+	data["has_id"] = !!target_id_card
+	data["id_name"] = target_id_card ? target_id_card.name : "-----"
+	if(target_id_card)
+		data["id_rank"] = target_id_card.assignment ? target_id_card.assignment : "Unassigned"
+		data["id_owner"] = target_id_card.registered_name ? target_id_card.registered_name : "-----"
+		data["access_on_card"] = target_id_card.access + target_id_card.faction_group
+		data["id_account"] = target_id_card.associated_account_number
+
+	return data
+
+/obj/structure/machinery/computer/card/attackby(obj/O, mob/user)
 	if(istype(O, /obj/item/card/id))
+		if(!operable())
+			to_chat(user, SPAN_NOTICE("You tried to inject \the [O] but \the [src] remains silent."))
+			return
 		var/obj/item/card/id/idcard = O
-		if(ACCESS_MARINE_LOGISTICS in idcard.access)
-			if(!scan)
-				usr.drop_held_item()
-				idcard.forceMove(src)
-				scan = idcard
-			else if(!ID_to_modify)
-				usr.drop_held_item()
-				idcard.forceMove(src)
-				ID_to_modify = idcard
+		if(check_access(idcard))
+			if(!user_id_card)
+				if(user.drop_held_item())
+					O.forceMove(src)
+					user_id_card = O
+				authenticate(user, user_id_card)
+			else if(!target_id_card)
+				if(user.drop_held_item())
+					O.forceMove(src)
+					target_id_card = O
+					update_static_data(user)
+					visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 		else
-			if(!ID_to_modify)
-				usr.drop_held_item()
-				idcard.forceMove(src)
-				ID_to_modify = idcard
+			if(!target_id_card)
+				if(user.drop_held_item())
+					O.forceMove(src)
+					target_id_card = O
+					update_static_data(user)
+					visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(user, "Both slots are full already. Remove a card first.")
 	else
 		..()
 
 
-/obj/structure/machinery/computer/marine_card/attack_remote(var/mob/user as mob)
+/obj/structure/machinery/computer/card/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
-/obj/structure/machinery/computer/marine_card/bullet_act()
+/obj/structure/machinery/computer/card/bullet_act()
 	return 0
 
-/obj/structure/machinery/computer/marine_card/attack_hand(var/mob/user as mob)
-	if(..())
-		return
+/obj/structure/machinery/computer/card/verb/eject_id()
+	set category = "Object"
+	set name = "Eject ID Card"
+	set src in oview(1)
 
-	user.set_interaction(src)
-	var/dat
-	var/title
-	if (mode) // accessing crew manifest
+	if(!usr || usr.stat || usr.lying)	return
 
-		title = "Crew Manifest"
-		dat += "Entries cannot be modified from this terminal.<br><br>"
-		dat += GLOB.data_core.get_manifest(0) // make it monochrome
-		dat += "<br>"
-		dat += "<a href='?src=\ref[src];choice=print'>Print</a><br>"
-		dat += "<br>"
-		dat += "<a href='?src=\ref[src];choice=mode;mode_target=0'>Access ID modification console.</a><br>"
+	if(user_id_card)
+		user_id_card.loc = get_turf(src)
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(user_id_card)
+		if(operable())	// Powered. Console can response.
+			visible_message("<span class='bold'>[src]</span> states, \"AUTH LOGOUT: Session end confirmed.\"")
+		else
+			to_chat(usr, "You remove \the [user_id_card] from \the [src].")
+		authenticated = FALSE	// No card - no access
+		user_id_card = null
 
-		/*var/crew = ""
-		var/list/L = list()
-		for (var/datum/data/record/t in GLOB.data_core.general)
-			var/R = t.fields["name"] + " - " + t.fields["rank"]
-			L += R
-		for(var/R in sortList(L))
-			crew += "[R]<br>"*/
-		//dat = "<tt><b>Crew Manifest:</b><br>Please use security record computer to modify entries.<br><br>[crew]<a href='?src=\ref[src];choice=print'>Print</a><br><br><a href='?src=\ref[src];choice=mode;mode_target=0'>Access ID modification console.</a><br></tt>"
+	else if(target_id_card)
+		target_id_card.loc = get_turf(src)
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(target_id_card)
+		if(operable())	// Powered. Make comp proceed ejection
+			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.assignment, target_id_card.rank)
+			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+			visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
+		else
+			to_chat(usr, "You remove \the [target_id_card] from \the [src].")
+		target_id_card = null
+
 	else
-		title = "Identification Card Modifier"
-		var/header
-
-		var/target_name
-		var/target_owner
-		var/target_rank
-		if(ID_to_modify)
-			target_name = ID_to_modify.name
-		else
-			target_name = "--------"
-		if(ID_to_modify && ID_to_modify.registered_name)
-			target_owner = ID_to_modify.registered_name
-		else
-			target_owner = "--------"
-		if(ID_to_modify && ID_to_modify.assignment)
-			target_rank = ID_to_modify.assignment
-		else
-			target_rank = "Unassigned"
-
-		var/scan_name
-		if(scan)
-			scan_name = scan.name
-		else
-			scan_name = "--------"
-
-		if(!authenticated)
-			header += "<i>Please insert the cards into the slots</i><br>"
-			header += "Target: <a href='?src=\ref[src];choice=modify'>[target_name]</a><br>"
-			header += "Confirm Identity: <a href='?src=\ref[src];choice=scan'>[scan_name]</a><br>"
-		else
-			header += "<div align='center'>"
-			header += "<a href='?src=\ref[src];choice=modify'>Remove [target_name]</a> || "
-			header += "<a href='?src=\ref[src];choice=scan'>Remove [scan_name]</a> <br> "
-			header += "<a href='?src=\ref[src];choice=mode;mode_target=1'>Access Crew Manifest</a> || "
-			header += "<a href='?src=\ref[src];choice=logout'>Log Out</a></div>"
-
-		header += "<hr>"
-
-		var/jobs_all = ""
-		var/list/alljobs = (get_marine_jobs()) + "Custom"
-		for(var/job in alljobs)
-			jobs_all += "<a href='?src=\ref[src];choice=assign;assign_target=[job]'>[replacetext(job, " ", "&nbsp")]</a> " //make sure there isn't a line break in the middle of a job
-
-
-		var/body
-		if (authenticated && ID_to_modify)
-			var/carddesc = {"<script type="text/javascript">
-								function markRed(){
-									var nameField = document.getElementById('namefield');
-									nameField.style.backgroundColor = "#FFDDDD";
-								}
-								function markGreen(){
-									var nameField = document.getElementById('namefield');
-									nameField.style.backgroundColor = "#DDFFDD";
-								}
-								function markAccountGreen(){
-									var nameField = document.getElementById('accountfield');
-									nameField.style.backgroundColor = "#DDFFDD";
-								}
-								function markAccountRed(){
-									var nameField = document.getElementById('accountfield');
-									nameField.style.backgroundColor = "#FFDDDD";
-								}
-								function showAll(){
-									var allJobsSlot = document.getElementById('alljobsslot');
-									allJobsSlot.innerHTML = "<a href='#' onclick='hideAll()'>hide</a><br>"+ "[jobs_all]";
-								}
-								function hideAll(){
-									var allJobsSlot = document.getElementById('alljobsslot');
-									allJobsSlot.innerHTML = "<a href='#' onclick='showAll()'>show</a>";
-								}
-							</script>"}
-			carddesc += "<form name='cardcomp' action='?src=\ref[src]' method='get'>"
-			carddesc += "<input type='hidden' name='src' value='\ref[src]'>"
-			carddesc += "<input type='hidden' name='choice' value='reg'>"
-			carddesc += "<b>Registered Name:</b> <input type='text' id='namefield' name='reg' value='[target_owner]' style='width:250px; background-color:white;' onchange='markRed()'>"
-			carddesc += "<input type='submit' value='Rename' onclick='markGreen()'>"
-			carddesc += "</form>"
-
-			carddesc += "<form name='accountnum' action='?src=\ref[src]' method='get'>"
-			carddesc += "<input type='hidden' name='src' value='\ref[src]'>"
-			carddesc += "<input type='hidden' name='choice' value='account'>"
-			carddesc += "<b>Stored account number:</b> <input type='text' id='accountfield' name='account' value='[ID_to_modify.associated_account_number]' style='width:250px; background-color:white;' onchange='markAccountRed()'>"
-			carddesc += "<input type='submit' value='Rename' onclick='markAccountGreen()'>"
-			carddesc += "</form>"
-
-			carddesc += "<b>Assignment:</b> "
-			var/jobs = "<span id='alljobsslot'><a href='#' onclick='showAll()'>[target_rank]</a></span><br>" //CHECK THIS
-			var/paygrade = ""
-			if(!(ID_to_modify.paygrade in PAYGRADES_MARINE))
-				paygrade += "<b>Paygrade:<b> [get_paygrades(ID_to_modify.paygrade)] -- UNABLE TO MODIFY"
-			else
-				paygrade += "<form name='paygrade' action='?src=\ref[src]' method='get'>"
-				paygrade += "<input type='hidden' name='src' value='\ref[src]'>"
-				paygrade += "<input type='hidden' name='choice' value='paygrade'>"
-				paygrade += "<b>Paygrade:</b> <select name='paygrade'>"
-				var/i
-				for(i in PAYGRADES_ENLISTED)
-					if(i == ID_to_modify.paygrade) paygrade += "<option value='[i]' selected=selected>[get_paygrades(i)]</option>"
-					else paygrade += "<option value='[i]'>[get_paygrades(i)]</option>"
-				if(copytext(scan.paygrade,1,2) == "O")
-					var/r = text2num(copytext(scan.paygrade,2))
-					r = r > 4 ? 4 : r
-					while(--r > 0)
-						i = "O[r]"
-						if(i == ID_to_modify.paygrade) paygrade += "<option value='[i]' selected=selected>[get_paygrades(i)]</option>"
-						else paygrade += "<option value='[i]'>[get_paygrades(i)]</option>"
-				paygrade += "</select>"
-				paygrade += "<input type='submit' value='Modify'>"
-				paygrade += "</form>"
-			var/accesses = "<div align='center'><b>Access</b></div>"
-			accesses += "<table style='width:100%'>"
-			accesses += "<tr>"
-			for(var/i = 1; i <= 6; i++)
-				accesses += "<td style='width:14%'><b>[get_region_accesses_name(i)]:</b></td>"
-			accesses += "</tr><tr>"
-			for(var/i = 1; i <= 6; i++)
-				accesses += "<td style='width:14%' valign='top'>"
-				for(var/A in get_region_accesses(i))
-					if(A in ID_to_modify.access)
-						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=0'><font color=\"red\">[replacetext(get_access_desc(A), " ", "&nbsp")]</font></a> "
-					else
-						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=1'>[replacetext(get_access_desc(A), " ", "&nbsp")]</a> "
-					accesses += "<br>"
-				accesses += "</td>"
-			accesses += "</tr></table>"
-			body = "[carddesc]<br>[jobs]<br>[paygrade]<br><br>[accesses]" //CHECK THIS
-		else
-			body = "<a href='?src=\ref[src];choice=auth'>{Log in}</a> <br><hr>"
-			body += "<a href='?src=\ref[src];choice=mode;mode_target=1'>Access Crew Manifest</a>"
-		dat = "<tt>[header][body]<hr><br></tt>"
-	show_browser(user, dat, title, "id_com", "size=625x500")
+		to_chat(usr, "There is nothing to remove from the console.")
 	return
 
-/obj/structure/machinery/computer/marine_card/Topic(href, href_list)
+/obj/structure/machinery/computer/card/attack_hand(var/mob/user as mob)
 	if(..())
 		return
-	usr.set_interaction(src)
-	switch(href_list["choice"])
-		if ("modify")
-			if (ID_to_modify)
-				GLOB.data_core.manifest_modify(ID_to_modify.registered_name, ID_to_modify.assignment)
-				ID_to_modify.name = text("[ID_to_modify.registered_name]'s ID Card ([ID_to_modify.assignment])")
-				if(ishuman(usr))
-					ID_to_modify.forceMove(usr.loc)
-					if(!usr.get_active_hand())
-						usr.put_in_hands(ID_to_modify)
-					ID_to_modify = null
-				else
-					ID_to_modify.forceMove(loc)
-					ID_to_modify = null
-			else
-				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/card/id))
-					usr.drop_held_item()
-					I.forceMove(src)
-					ID_to_modify = I
-			authenticated = 0
-		if ("scan")
-			if (scan)
-				if(ishuman(usr))
-					scan.forceMove(usr.loc)
-					if(!usr.get_active_hand())
-						usr.put_in_hands(scan)
-					scan = null
-				else
-					scan.forceMove(src.loc)
-					scan = null
-			else
-				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/card/id))
-					usr.drop_held_item()
-					I.forceMove(src)
-					scan = I
-			authenticated = 0
-		if ("auth")
-			if ((!( authenticated ) && (scan || (ishighersilicon(usr))) && (ID_to_modify || mode)))
-				if (check_access(scan))
-					authenticated = 1
-			else if ((!( authenticated ) && (ishighersilicon(usr))) && (!ID_to_modify))
-				to_chat(usr, "You can't modify an ID without an ID inserted to modify. Once one is in the modify slot on the computer, you can log in.")
-		if ("logout")
-			authenticated = 0
-		if("access")
-			if(href_list["allowed"])
-				if(authenticated)
-					var/access_type = text2num(href_list["access_target"])
-					var/access_allowed = text2num(href_list["allowed"])
-					if(access_type in get_all_marine_access())
-						ID_to_modify.access -= access_type
-						if(access_allowed == 1)
-							ID_to_modify.access += access_type
-		if ("assign")
-			if (authenticated)
-				var/t1 = href_list["assign_target"]
-				if(t1 == "Custom")
-					var/temp_t = strip_html(input("Enter a custom job assignment.","Assignment"))
-					//let custom jobs function as an impromptu alt title, mainly for sechuds
-					if(temp_t && ID_to_modify)
-						ID_to_modify.assignment = temp_t
-				else
-					var/datum/job/jobdatum
-					for(var/jobtype in typesof(/datum/job))
-						var/datum/job/J = new jobtype
-						if(ckey(J.title) == ckey(t1))
-							jobdatum = J
-							break
+	if(inoperable())
+		return
+	user.set_interaction(src)
+	tgui_interact(user)
 
-					if(!jobdatum)
-						to_chat(usr, SPAN_DANGER("No log exists for this job."))
-						return
-
-					if(!ID_to_modify)
-						to_chat(usr, SPAN_DANGER("No card to modify!"))
-						return
-
-					ID_to_modify.access = jobdatum.get_access()
-					ID_to_modify.paygrade = jobdatum.get_paygrade()
-					ID_to_modify.assignment = t1
-					ID_to_modify.rank = t1
-		if ("reg")
-			if (authenticated)
-				var/t2 = ID_to_modify
-				//var/t1 = input(usr, "What name?", "ID computer", null)  as text
-				if ((authenticated && ID_to_modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
-					var/temp_name = reject_bad_name(href_list["reg"])
-					if(temp_name)
-						ID_to_modify.registered_name = temp_name
-					else
-						src.visible_message(SPAN_NOTICE("[src] buzzes rudely."))
-		if ("account")
-			if (authenticated)
-				var/t2 = ID_to_modify
-				//var/t1 = input(usr, "What name?", "ID computer", null)  as text
-				if ((authenticated && ID_to_modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
-					var/account_num = text2num(href_list["account"])
-					ID_to_modify.associated_account_number = account_num
-		if ("paygrade")
-			if(authenticated)
-				var/t2 = ID_to_modify
-				if ((authenticated && ID_to_modify == t2 && (in_range(src, usr) || (ishighersilicon(usr))) && istype(loc, /turf)))
-					ID_to_modify.paygrade = href_list["paygrade"]
-		if ("mode")
-			mode = text2num(href_list["mode_target"])
-		if ("print")
-			if (!( printing ))
-				printing = 1
-				sleep(50)
-				var/obj/item/paper/P = new /obj/item/paper( loc )
-
-				var/t1 = "<h4>Crew Manifest</h4>"
-				t1 += "<br>"
-				t1 += GLOB.data_core.get_manifest(0) // make it monochrome
-
-				P.info = t1
-				P.name = "paper- 'Crew Manifest'"
-				printing = null
-	if (ID_to_modify)
-		ID_to_modify.name = text("[ID_to_modify.registered_name]'s ID Card ([ID_to_modify.assignment])")
-	updateUsrDialog()
-	return
-
+#undef CARDCON_DEPARTMENT_MISC
+#undef CARDCON_DEPARTMENT_MARINE
+#undef CARDCON_DEPARTMENT_SECURITY
+#undef CARDCON_DEPARTMENT_MEDICAL
+#undef CARDCON_DEPARTMENT_MEDICALWO
+#undef CARDCON_DEPARTMENT_SUPPLY
+#undef CARDCON_DEPARTMENT_AUXCOM
+#undef CARDCON_DEPARTMENT_ENGINEERING
+#undef CARDCON_DEPARTMENT_COMMAND
 
 //This console changes a marine's squad. It's very simple.
 //It also does not: change or increment the squad count (used in the login randomizer), nor does it check for jobs.
@@ -345,7 +463,101 @@
 	req_access = list(ACCESS_MARINE_LOGISTICS)
 	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
-	var/screen = 0 //0: main, 1: squad menu
+
+/obj/structure/machinery/computer/squad_changer/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "SquadMod", name)
+		ui.open()
+
+/obj/structure/machinery/computer/squad_changer/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/user = usr
+
+	// Please stay close, marine
+	if(person_to_modify && !(person_to_modify.Adjacent(src)))
+		person_to_modify = null
+
+	playsound(src, pick('sound/machines/computer_typing4.ogg', 'sound/machines/computer_typing5.ogg', 'sound/machines/computer_typing6.ogg'), 5, 1)
+	switch(action)
+		if("PRG_eject")
+			if(ID_to_modify)
+				if(ishuman(user))
+					ID_to_modify.forceMove(user.loc)
+					if(!user.get_active_hand())
+						user.put_in_hands(ID_to_modify)
+					ID_to_modify = null
+				else
+					ID_to_modify.forceMove(loc)
+					ID_to_modify = null
+				visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: ID modification protocol disabled.\"")
+				return TRUE
+			else
+				var/obj/item/I = user.get_active_hand()
+				if (istype(I, /obj/item/card/id))
+					if(user.drop_held_item())
+						I.forceMove(src)
+						ID_to_modify = I
+						visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
+						return TRUE
+		if("PRG_squad")
+			if(
+				istype(ID_to_modify) && istype(person_to_modify) && \
+				person_to_modify.skills.get_skill_level(SKILL_FIREARMS) && \
+				person_to_modify.real_name == ID_to_modify.registered_name && \
+				person_to_modify.Adjacent(src)
+			)
+				var/datum/squad/selected = get_squad_by_name(params["name"])
+				if(!selected)
+					return
+				//First, remove any existing squad access and clear the card.
+				for(var/datum/squad/Q in RoleAuthority.squads)
+					if(findtext(ID_to_modify.assignment, Q.name)) //Found one!
+						ID_to_modify.access -= Q.access //Remove any access found.
+						person_to_modify.assigned_squad = null
+				if(selected.put_marine_in_squad(person_to_modify, ID_to_modify))
+					visible_message("<span class='bold'>[src]</span> states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
+					return TRUE
+				else
+					visible_message("<span class='bold'>[src]</span> states, \"DATABASE ERROR: There was an error assigning [person_to_modify] to [selected] Squad.\"")
+			else if(!istype(ID_to_modify))
+				to_chat(usr, SPAN_WARNING("You need to insert a card to modify."))
+			else if(!istype(person_to_modify) || !person_to_modify.Adjacent(src))
+				visible_message("<span class='bold'>[src]</span> states, \"SCANNER ERROR: You need to keep the hand of the person to be assigned to Squad!\"")
+			else if(!person_to_modify.skills.get_skill_level(SKILL_FIREARMS))
+				visible_message("<span class='bold'>[src]</span> states, \"QUALIFICATION ERROR: You cannot assign untrained civilians to squads!\"")
+			else
+				visible_message("<span class='bold'>[src]</span> states, \"ID ERROR: The ID in the machine is not owned by the person whose hand is scanned!\"")
+			return TRUE
+
+/obj/structure/machinery/computer/squad_changer/ui_data(mob/user)
+	// Please stay close, marine
+	if(person_to_modify && !(person_to_modify.Adjacent(src)))
+		person_to_modify = null
+	var/list/data = list()
+	if(person_to_modify)
+		data["human"] = person_to_modify.name
+	else
+		data["human"] = null
+	data["id_name"] = ID_to_modify ? ID_to_modify.name : "-----"
+	data["has_id"] = !!ID_to_modify
+	return data
+
+/obj/structure/machinery/computer/squad_changer/ui_static_data(mob/user)
+	var/list/data = list()
+	var/list/squads = list()
+	for(var/datum/squad/S in RoleAuthority.squads)
+		if(S.usable)
+			var/list/squad = list(list(
+				"name" = S.name,
+				"color" = S.color-1
+			))
+			squads += squad
+	data["squads"] = squads
+	return data
 
 /obj/structure/machinery/computer/squad_changer/attackby(obj/O as obj, mob/user as mob)
 	if(user)
@@ -353,20 +565,30 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(istype(O, /obj/item/card/id))
+			if(!operable())
+				to_chat(usr, SPAN_NOTICE("You tried to insert [O] but \the [src] remains silent."))
+				return
 			var/obj/item/card/id/idcard = O
 			if(!ID_to_modify)
 				H.drop_held_item()
 				idcard.forceMove(src)
 				ID_to_modify = idcard
-				to_chat(usr, SPAN_NOTICE("You insert the ID card into [src]"))
+				visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
 			else
 				to_chat(H, SPAN_NOTICE("Remove the inserted card first."))
 		else if(istype(O, /obj/item/grab))
 			var/obj/item/grab/G = O
 			if(ismob(G.grabbed_thing))
-				person_to_modify = G.grabbed_thing
-				H.visible_message(SPAN_NOTICE("You hear a beep as [person_to_modify]'s hand is scanned to \the [name]."))
+				if(!operable())
+					to_chat(usr, SPAN_NOTICE("You place [G.grabbed_thing]'s hand on scanner but \the [src] remains silent."))
+					return
+				var/isXenos = isXeno(G.grabbed_thing)
+				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
+				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scaned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
+				// No Xeno Squads, please!
+				if(!isXenos)
+					person_to_modify = G.grabbed_thing
 	else
 		..()
 
@@ -384,128 +606,310 @@
 		add_fingerprint(user)
 
 	usr.set_interaction(src)
-
-	var/dat
-
-	var/target_name
-
-	if(ID_to_modify)
-		target_name = ID_to_modify.name
-	else
-		target_name = "--------"
-
-	dat += "<CENTER>"
-
-	if(!ID_to_modify)
-		dat += "<br><i>Please insert the card into the slot:</i><br>"
-		dat += "Target: <a href='?src=\ref[src];card=1'>[target_name]</a><br>"
-	else
-		dat += "<br>"
-		dat += "<a href='?src=\ref[src];card=1'>Remove [target_name]</a>"
-
-	dat += "<hr>"
-
-	dat += "<BR><A href='?src=\ref[src];squad=1'>Modify Squad</A><BR>"
-
-	show_browser(user, dat, "Squad Distribution Console", "computer", "size=400x300")
-
-
-/obj/structure/machinery/computer/squad_changer/Topic(href, href_list)
-	if(..())
+	if(!operable())
 		return
+	if(allowed(user))
+		tgui_interact(user)
+	else
+		var/isXenos = isXeno(user)
+		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
+		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scaned, please stay close until operation's end."]\"")
+		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
+		// No Xeno Squads, please!
+		if(!isXenos)
+			person_to_modify = user
 
-	if (get_dist(src, usr) <= 1 && istype(src.loc, /turf))
-		usr.set_interaction(src)
-		if(href_list["card"])
-			if(ID_to_modify)
-				ID_to_modify.forceMove(src.loc)
-				if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
-					usr.put_in_hands(ID_to_modify)
-				ID_to_modify = null
-				to_chat(usr, SPAN_NOTICE("You remove the ID card from \the [src]"))
-			else
-				var/obj/item/I = usr.get_active_hand()
-				if (istype(I, /obj/item/card/id))
-					usr.drop_held_item()
-					I.forceMove(src)
-					ID_to_modify = I
-					to_chat(usr, SPAN_NOTICE("You insert the ID card into \the [src]"))
-		else if(href_list["squad"])
-			if(allowed(usr))
-				// Second check is to make sure civilians aren't assigned into squads
-				if(
-					istype(ID_to_modify) && istype(person_to_modify) && \
-					person_to_modify.skills.get_skill_level(SKILL_FIREARMS) && \
-					person_to_modify.real_name == ID_to_modify.registered_name && \
-					person_to_modify.Adjacent(src)
-				)
-					var/list/squad_list = list()
-					for(var/datum/squad/S in RoleAuthority.squads)
-						if(S.usable)
-							squad_list += S.name
-
-					var/name_sel = input("Which squad would you like to put the person in?") as null|anything in squad_list
-					if(!name_sel)
-						return
-
-					var/datum/squad/selected = get_squad_by_name(name_sel)
-					if(!selected)
-						return
-
-					//First, remove any existing squad access and clear the card.
-					for(var/datum/squad/Q in RoleAuthority.squads)
-						if(findtext(ID_to_modify.assignment, Q.name)) //Found one!
-							ID_to_modify.access -= Q.access //Remove any access found.
-							person_to_modify.assigned_squad = null
-					if(selected.put_marine_in_squad(person_to_modify, ID_to_modify))
-						to_chat(usr, SPAN_NOTICE("[person_to_modify] was assigned to [selected] Squad."))
-					else
-						to_chat(usr, SPAN_WARNING("There was an error assigning [person_to_modify] to [selected] Squad."))
-				else if(!istype(ID_to_modify))
-					to_chat(usr, SPAN_WARNING("You need to insert a card to modify."))
-				else if(!istype(person_to_modify) || !person_to_modify.Adjacent(src))
-					to_chat(usr, SPAN_WARNING("You need to keep the hand of the person to be assigned to \the [src] Squad."))
-				else if(!person_to_modify.skills.get_skill_level(SKILL_FIREARMS))
-					to_chat(usr, SPAN_WARNING("You cannot assign untrained civilians to squads."))
-				else
-					to_chat(usr, SPAN_WARNING("The ID in the machine is not owned by the person whose hand is scanned."))
-			else
-				to_chat(usr, SPAN_WARNING("You don't have sufficient access to use this console."))
-		updateUsrDialog()
-		src.add_fingerprint(usr)
-	return
-
+/// How often the sensor data is updated
+#define SENSORS_UPDATE_PERIOD	10 SECONDS //How often the sensor data updates.
+/// The job sorting ID associated with otherwise unknown jobs
+#define UNKNOWN_JOB_ID			998
 
 /obj/structure/machinery/computer/crew
 	name = "Crew monitoring computer"
-	desc = "Used to monitor active health sensors built into marine jumpsuits."
+	desc = "Used to monitor active health sensors built into marine jumpsuits.  You can see that the console highlights ship areas with BLUE and remote locations with RED."
 	icon_state = "crew"
 	density = TRUE
 	use_power = 1
 	idle_power_usage = 250
 	active_power_usage = 500
 //	circuit = "/obj/item/circuitboard/computer/crew"
-	var/list/tracked = list(  )
 
+GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
-/obj/structure/machinery/computer/crew/New()
-	tracked = list()
-	..()
+#define SENSOR_LIVING 1
+#define SENSOR_VITALS 2
+#define SENSOR_COORDS 3
+
+/datum/crewmonitor
+	/// List of user -> UI source
+	var/list/ui_sources = list()
+	/// Cache of data generated, used for serving the data within SENSOR_UPDATE_PERIOD of the last update
+	var/list/data = list()
+	/// Cache of last update time
+	var/last_update
+	/// Map of job to ID for sorting purposes
+	var/list/jobs
+
+/datum/crewmonitor/New()
+	// Cause "[SQUAD_NAME_1] [JOB_SQUAD_LEADER]" calls "expected a constant expression" error
+	jobs = list(
+		// Note that jobs divisible by 10 are considered heads of staff, and bolded
+		// 00-10: Command
+		JOB_CO = 00,
+		JOB_XO = 01,
+		JOB_SO = 02,
+		JOB_SEA = 03,
+		// 10-19: Aux Command (Synth isn't Aux head, but important - make him bold)
+		JOB_SYNTH = 10,
+		JOB_PILOT = 11,
+		JOB_CREWMAN	 = 12,
+		JOB_INTEL = 13,
+		// 20-29: Security
+		JOB_CHIEF_POLICE = 20,
+		JOB_WARDEN = 21,
+		JOB_POLICE = 22,
+		// 30-39: MedSci
+		JOB_CMO = 30,
+		JOB_DOCTOR = 31,
+		JOB_NURSE = 32,
+		JOB_RESEARCHER = 33,
+		// 40-49: Engineering
+		JOB_CHIEF_ENGINEER = 40,
+		JOB_ORDNANCE_TECH = 41,
+		JOB_MAINT_TECH = 42,
+		// 50-59: Cargo
+		JOB_CHIEF_REQUISITION = 50,
+		JOB_CARGO_TECH = 51,
+		// SQUADS
+		// 60-79: Alpha
+		"[SQUAD_NAME_1] [JOB_SQUAD_LEADER]" = 60,
+		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST]" = 61,
+		"[SQUAD_NAME_1] [JOB_SQUAD_SMARTGUN]" = 62,
+		"[SQUAD_NAME_1] [JOB_SQUAD_ENGI]" = 63,
+		"[SQUAD_NAME_1] [JOB_SQUAD_MEDIC]" = 64,
+		"[SQUAD_NAME_1] [JOB_SQUAD_MARINE]" = 65,
+		// 70-79: Bravo
+		"[SQUAD_NAME_2] [JOB_SQUAD_LEADER]" = 70,
+		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST]" = 71,
+		"[SQUAD_NAME_2] [JOB_SQUAD_SMARTGUN]" = 72,
+		"[SQUAD_NAME_2] [JOB_SQUAD_ENGI]" = 73,
+		"[SQUAD_NAME_2] [JOB_SQUAD_MEDIC]" = 74,
+		"[SQUAD_NAME_2] [JOB_SQUAD_MARINE]" = 75,
+		// 80-89: Charlie
+		"[SQUAD_NAME_3] [JOB_SQUAD_LEADER]" = 80,
+		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST]" = 81,
+		"[SQUAD_NAME_3] [JOB_SQUAD_SMARTGUN]" = 82,
+		"[SQUAD_NAME_3] [JOB_SQUAD_ENGI]" = 83,
+		"[SQUAD_NAME_3] [JOB_SQUAD_MEDIC]" = 84,
+		"[SQUAD_NAME_3] [JOB_SQUAD_MARINE]" = 85,
+		// 90-99: Delta
+		"[SQUAD_NAME_4] [JOB_SQUAD_LEADER]" = 90,
+		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST]" = 91,
+		"[SQUAD_NAME_4] [JOB_SQUAD_SMARTGUN]" = 92,
+		"[SQUAD_NAME_4] [JOB_SQUAD_ENGI]" = 93,
+		"[SQUAD_NAME_4] [JOB_SQUAD_MEDIC]" = 94,
+		"[SQUAD_NAME_4] [JOB_SQUAD_MARINE]" = 95,
+		// 100-109: Echo
+		"[SQUAD_NAME_5] [JOB_SQUAD_LEADER]" = 100,
+		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST]" = 101,
+		"[SQUAD_NAME_5] [JOB_SQUAD_SMARTGUN]" = 102,
+		"[SQUAD_NAME_5] [JOB_SQUAD_ENGI]" = 103,
+		"[SQUAD_NAME_5] [JOB_SQUAD_MEDIC]" = 104,
+		"[SQUAD_NAME_5] [JOB_SQUAD_MARINE]" = 105,
+		// 110+: Civilian/other
+		JOB_CORPORATE_LIAISON = 110,
+		JOB_MESS_SERGEANT = 111,
+		JOB_PASSENGER = 112,
+		// Unknown squad IDs
+		JOB_SQUAD_LEADER = 120,
+		JOB_SQUAD_SPECIALIST = 121,
+		JOB_SQUAD_SMARTGUN = 122,
+		JOB_SQUAD_ENGI = 123,
+		JOB_SQUAD_MEDIC = 124,
+		JOB_SQUAD_MARINE = 125,
+		// Non Almayer jobs lower then registered
+		JOB_SYNTH_SURVIVOR = 130,
+		JOB_SURVIVOR = 131,
+		JOB_COLONIST = 132,
+
+		// WO jobs
+		// 00-10: Command
+		JOB_WO_CO = 00,
+		JOB_WO_XO = 01,
+		// 10-19: Aux Command
+		JOB_WO_CHIEF_POLICE = 10,
+		JOB_WO_SO = 11,
+		// 20-29: Security
+		JOB_WO_CREWMAN = 20,
+		JOB_WO_POLICE = 21,
+		JOB_WO_PILOT = 22,
+		// 30-39: MedSci
+		JOB_WO_CMO = 30,
+		JOB_WO_DOCTOR = 31,
+		JOB_WO_RESEARCHER = 32,
+		// 40-49: Engineering
+		JOB_WO_CHIEF_ENGINEER = 40,
+		JOB_WO_ORDNANCE_TECH = 41,
+		// 50-59: Cargo
+		JOB_WO_CHIEF_REQUISITION = 50,
+		JOB_WO_REQUISITION = 51,
+		// 60-109: SQUADS (look above)
+		// 110+: Civilian/other
+		JOB_WO_CORPORATE_LIAISON = 110,
+		JOB_WO_SYNTH = 120,
+
+		// ANYTHING ELSE = UNKNOWN_JOB_ID, Unknowns/custom jobs will appear after civilians, and before stowaways
+		JOB_STOWAWAY = 999,
+
+		// 200-229: Centcom
+		"Admiral" = 200,
+		"USCM Admiral" = 210,
+		"Custodian" = 211,
+		"Medical Officer" = 212,
+		"Research Officer" = 213,
+		"Emergency Response Team Commander" = 220,
+		"Security Response Officer" = 221,
+		"Engineer Response Officer" = 222,
+		"Medical Response Officer" = 223
+	)
+	. = ..()
+
+/datum/crewmonitor/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if (!ui)
+		ui = new(user, src, "CrewConsole")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/crewmonitor/proc/show(mob/M, source)
+	if(!ui_sources.len)
+		START_PROCESSING(SSprocessing, src)
+	ui_sources[M] = source
+	tgui_interact(M)
+
+/datum/crewmonitor/process()
+	if(data && last_update && world.time <= last_update + SENSORS_UPDATE_PERIOD)
+		return
+	update_data()
+	// Update active users UI
+	for(var/H in ui_sources)
+		var/datum/tgui/ui = SStgui.try_update_ui(H, src)
+		if(!ui)	// What are you doing in list?
+			ui_sources -= H
+
+/datum/crewmonitor/ui_close(mob/M)
+	. = ..()
+	ui_sources -= M
+	if(!ui_sources.len)
+		STOP_PROCESSING(SSprocessing, src)
+
+/datum/crewmonitor/ui_host(mob/user)
+	return ui_sources[user]
+
+/datum/crewmonitor/ui_data(mob/user)
+	. = list(
+		"sensors" = update_data(),
+		"link_allowed" = isAI(user)
+	)
+
+/datum/crewmonitor/proc/update_data()
+	var/list/results = list()
+	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
+		// Predators
+		if(isYautja(H))
+			continue
+		// Survivors can't be found at ground (until we code remote access to local systems for Almayer)
+		if(H.faction == FACTION_SURVIVOR && is_ground_level(H.loc.z))
+			continue
+		// Check for a uniform
+		var/obj/item/clothing/under/C = H.w_uniform
+		if(!C || !istype(C))
+			continue
+		// Check that sensors are present and active
+		if(!C.has_sensor || !C.sensor_mode || !H.mind)
+			continue
+
+		// Check if z-level is correct
+		var/turf/pos = get_turf(H)
+
+		// The entry for this human
+		var/list/entry = list(
+			"ref" = REF(H),
+			"name" = "Unknown",
+			"ijob" = UNKNOWN_JOB_ID
+		)
+
+		// ID and id-related data
+		var/obj/item/card/id/id_card = H.get_idcard()
+		if (id_card)
+			entry["name"] = id_card.registered_name
+			entry["assignment"] = id_card.assignment
+			entry["ijob"] = jobs[id_card.assignment]
+
+		// Binary living/dead status
+		if (C.sensor_mode >= SENSOR_LIVING)
+			entry["life_status"] = !H.stat
+
+		// Damage
+		if (C.sensor_mode >= SENSOR_VITALS)
+			entry += list(
+				"oxydam" = round(H.getOxyLoss(), 1),
+				"toxdam" = round(H.getToxLoss(), 1),
+				"burndam" = round(H.getFireLoss(), 1),
+				"brutedam" = round(H.getBruteLoss(), 1)
+			)
+
+		// Location
+		if (pos && (C.sensor_mode >= SENSOR_COORDS))
+			if(is_mainship_level(pos.z))
+				entry["side"] = "Almayer"
+			var/area/A = get_area(H)
+			entry["area"] = sanitize(A.name)
+
+		// Trackability
+		entry["can_track"] = H.detectable_by_ai()
+
+		results[++results.len] = entry
+
+	// Cache result
+	data = results
+	last_update = world.time
+
+	return results
+
+/datum/crewmonitor/ui_act(action,params)
+	. = ..()
+	if(.)
+		return
+	switch (action)
+		if ("select_person")
+			// May work badly cause currently there is no player-controlled AI
+			var/mob/living/silicon/ai/AI = usr
+			if(!istype(AI))
+				return
+			var/mob/living/carbon/human/H
+			for(var/entry in data)
+				if(entry["name"] == params["name"])
+					H = locate(entry["ref"])
+					break
+			if(!H)	// Sanity check
+				to_chat(AI, SPAN_NOTICE("ERROR: unable to track subject with ID '[params["name"]]'"))
+			else
+				// We do not care is there camera or no - we just know his location
+				AI.ai_actual_track(H)
 
 /obj/structure/machinery/computer/crew/attack_remote(mob/living/user)
 	attack_hand(user)
-	ui_interact(user)
-
 
 /obj/structure/machinery/computer/crew/attack_hand(mob/living/user)
-	add_fingerprint(user)
+	if(!isRemoteControlling(user))
+		add_fingerprint(user)
 	if(inoperable())
 		return
-	ui_interact(user)
-
+	user.set_interaction(src)
+	GLOB.crewmonitor.show(user, src)
 
 /obj/structure/machinery/computer/crew/update_icon()
-
 	if(stat & BROKEN)
 		icon_state = "crewb"
 	else
@@ -516,94 +920,11 @@
 			icon_state = initial(icon_state)
 			stat &= ~NOPOWER
 
-
-/obj/structure/machinery/computer/crew/Topic(href, href_list)
-	if(..()) return
-	if( href_list["close"] )
-		var/mob/user = usr
-		var/datum/nanoui/ui = nanomanager.get_open_ui(user, src, "main")
-		user.unset_interaction()
-		ui.close()
-		return 0
-	if(href_list["update"])
-		updateDialog()
-		return 1
-
 /obj/structure/machinery/computer/crew/interact(mob/living/user)
-	ui_interact(user)
+	GLOB.crewmonitor.show(user, src)
 
-/obj/structure/machinery/computer/crew/ui_interact(mob/living/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-	if(inoperable())
-		return
-	user.set_interaction(src)
-	scan()
-
-	var/data[0]
-	var/list/crewmembers = list()
-
-	for(var/obj/item/clothing/under/C in tracked)
-
-		var/turf/pos = get_turf(C)
-
-		if(C && pos)
-			if(istype(C.loc, /mob/living/carbon/human))
-
-				var/mob/living/carbon/human/H = C.loc
-				if(H && H.faction == FACTION_SURVIVOR && is_ground_level(H.loc.z))
-					continue // survivors
-				if(H.w_uniform != C)
-					continue
-
-				var/list/crewmemberData = list()
-
-				crewmemberData["sensor_type"] = C.sensor_mode
-				crewmemberData["dead"] = H.stat > 1
-				crewmemberData["oxy"] = round(H.getOxyLoss(), 1)
-				crewmemberData["tox"] = round(H.getToxLoss(), 1)
-				crewmemberData["fire"] = round(H.getFireLoss(), 1)
-				crewmemberData["brute"] = round(H.getBruteLoss(), 1)
-
-				crewmemberData["name"] = "Unknown"
-				crewmemberData["rank"] = "Unknown"
-				if(H.wear_id && istype(H.wear_id, /obj/item/card/id) )
-					var/obj/item/card/id/I = H.wear_id
-					crewmemberData["name"] = I.name
-					crewmemberData["rank"] = I.rank
-
-				var/area/A = get_area(H)
-				crewmemberData["area"] = sanitize(A.name)
-//				crewmemberData["x"] = pos.x
-//				crewmemberData["y"] = pos.y
-
-				// Works around list += list2 merging lists; it's not pretty but it works
-				crewmembers += "temporary item"
-				crewmembers[crewmembers.len] = crewmemberData
-
-	crewmembers = sortByKey(crewmembers, "name")
-
-	data["crewmembers"] = crewmembers
-
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "crew_monitor.tmpl", "Crew Monitoring Computer", 900, 800)
-
-		// adding a template with the key "mapContent" enables the map ui functionality
-//		ui.add_template("mapContent", "crew_monitor_map_content.tmpl")
-		// adding a template with the key "mapHeader" replaces the map header content
-//		ui.add_template("mapHeader", "crew_monitor_map_header.tmpl")
-
-		ui.set_initial_data(data)
-		ui.open()
-
-		// should make the UI auto-update; doesn't seem to?
-		ui.set_auto_update(1)
-
-
-/obj/structure/machinery/computer/crew/proc/scan()
-	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(isYautja(H)) continue
-		var/obj/item/clothing/under/C = H.w_uniform
-		if(!C || !istype(C)) continue
-		if(C.has_sensor && H.mind)
-			tracked |= C
-	return 1
+#undef SENSOR_LIVING
+#undef SENSOR_VITALS
+#undef SENSOR_COORDS
+#undef SENSORS_UPDATE_PERIOD
+#undef UNKNOWN_JOB_ID

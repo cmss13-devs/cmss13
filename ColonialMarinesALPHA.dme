@@ -584,7 +584,6 @@
 #include "code\game\machinery\computer\atmos_alert.dm"
 #include "code\game\machinery\computer\buildandrepair.dm"
 #include "code\game\machinery\computer\camera_console.dm"
-#include "code\game\machinery\computer\card.dm"
 #include "code\game\machinery\computer\communications.dm"
 #include "code\game\machinery\computer\computer.dm"
 #include "code\game\machinery\computer\demo_sim.dm"

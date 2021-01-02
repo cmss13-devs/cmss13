@@ -23,6 +23,19 @@ export const COLORS = {
     centcom: '#00c100',
     other: '#c38312',
   },
+  // Almayer colors
+  shipDeps: {
+    command: '#004080',
+    security: '#a30000',
+    medsci: '#008160',
+    engineering: '#a66300',
+    cargo: '#5f4519',
+    alpha: '#ea0000',
+    bravo: '#c68610',
+    charlie: '#aa55aa',
+    delta: '#007fcf',
+    echo: '#027d02',
+  },
   // Damage type colors
   damageType: {
     oxy: '#3498db',

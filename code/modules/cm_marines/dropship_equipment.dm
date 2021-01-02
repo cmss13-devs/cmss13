@@ -641,9 +641,13 @@
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/on_launch()
 	linked_cam_console.network.Add("landing zones") //only accessible while in the air.
+	for(var/ref in linked_cam_console.concurrent_users)
+		linked_cam_console.update_static_data(locate(ref))
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/on_arrival()
 	linked_cam_console.network.Remove("landing zones")
+	for(var/ref in linked_cam_console.concurrent_users)
+		linked_cam_console.update_static_data(locate(ref))
 
 
 /////////////////////////////////// COMPUTERS //////////////////////////////////////

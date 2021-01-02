@@ -36,6 +36,11 @@ proc/populate_seed_list()
 		var/obj/item/seeds/S = i
 		S.update_seed()
 
+	// Same as above, for any grown snacks.
+	for(var/i in GLOB.grown_snacks_list)
+		var/obj/item/reagent_container/food/snacks/grown/G = i
+		G.update_from_seed()
+
 	//Might as well mask the gene types while we're at it.
 	var/list/gene_tags = list("products","consumption","environment","resistance","vigour","flowers")
 	var/list/used_masks = list()

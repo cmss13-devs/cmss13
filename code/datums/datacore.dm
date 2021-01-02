@@ -8,7 +8,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	//This list tracks characters spawned in the world and cannot be modified in-game. Currently referenced by respawn_character().
 	var/locked[] = list()
 
-/obj/effect/datacore/proc/get_manifest(monochrome, OOC)
+/obj/effect/datacore/proc/get_manifest(monochrome, OOC, nonHTML)
 	var/list/cic = ROLES_CIC.Copy()
 	var/list/auxil = ROLES_AUXIL_SUPPORT.Copy()
 	var/list/misc = ROLES_MISC.Copy()
@@ -20,6 +20,51 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 	for(var/squad_name in marines_by_squad)
 		marines_by_squad[squad_name] = ROLES_MARINES.Copy()
 	var/list/isactive = new()
+
+// If we need not the HTML table, but list
+	if(nonHTML)
+		var/list/departments = list(
+			"Command" = cic,
+			"Auxiliary" = auxil,
+			"Security" = mp,
+			"Engineering" = eng,
+			"Requisition" = req,
+			"Medical" = med
+		)
+		departments += marines_by_squad
+		var/list/manifest_out = list()
+		for(var/datum/data/record/t in GLOB.data_core.general)
+			if(t.fields["mob_faction"] != FACTION_MARINE)	//we process only USCM humans
+				continue
+			var/name = t.fields["name"]
+			var/rank = t.fields["rank"]
+			var/squad = t.fields["squad"]
+			if(isnull(name) || isnull(rank))
+				continue
+			var/has_department = FALSE
+			for(var/department in departments)
+				// STOP SIGNING ALL MARINES IN ALPHA!
+				if(department in ROLES_SQUAD_ALL)
+					if(squad != department)
+						continue
+				var/list/jobs = departments[department]
+				if(rank in jobs)
+					if(!manifest_out[department])
+						manifest_out[department] = list()
+					manifest_out[department] += list(list(
+						"name" = name,
+						"rank" = rank
+					))
+					has_department = TRUE
+					break
+			if(!has_department)
+				if(!manifest_out["Miscellaneous"])
+					manifest_out["Miscellaneous"] = list()
+				manifest_out["Miscellaneous"] += list(list(
+					"name" = name,
+					"rank" = rank
+				))
+		return manifest_out
 
 	var/dat = {"
 	<div align='center'>

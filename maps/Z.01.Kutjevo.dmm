@@ -2332,7 +2332,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/botany)
 "hC" = (
-/obj/structure/machinery/computer/marine_card{
+/obj/structure/machinery/computer/card{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,
@@ -7400,7 +7400,7 @@
 	},
 /area/kutjevo/interior/power)
 "xG" = (
-/obj/structure/machinery/computer/marine_card{
+/obj/structure/machinery/computer/card{
 	dir = 4
 	},
 /obj/structure/surface/table/reinforced/prison,

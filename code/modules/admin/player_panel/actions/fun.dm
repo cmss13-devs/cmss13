@@ -12,7 +12,7 @@
 	if(!params["to_narrate"]) return
 
 	to_chat(target, params["to_narrate"])
-	message_staff(SPAN_NOTICE("DirectNarrate: [key_name_admin(user)] to ([key_name_admin(target)]): [params["to_narrate"]]"), 1)
+	message_staff("DirectNarrate: [key_name_admin(user)] to ([key_name_admin(target)]): [params["to_narrate"]]")
 	return TRUE
 
 /datum/player_action/fun/explode

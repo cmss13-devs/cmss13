@@ -85,7 +85,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		notes_add(ckey, note_text, admin.mob)
 	else
 		// notes_add already sends a message
-		message_staff(SPAN_NOTICE("[key_name_admin(admin.mob)] has edited [ckey]'s notes: [sanitize(note_text)]"))
+		message_staff("[key_name_admin(admin.mob)] has edited [ckey]'s notes: [sanitize(note_text)]")
 
 	// create new instance of player_note entity
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note)
@@ -121,7 +121,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		return FALSE
 
 	// this is here for a short transition period when we still are testing DB notes and constantly deleting the file
-	message_staff(SPAN_NOTICE("[key_name_admin(admin)] deleted one of [ckey]'s notes."))
+	message_staff("[key_name_admin(admin)] deleted one of [ckey]'s notes.")
 	// get note from our list
 	var/datum/entity/player_note/note = DB_ENTITY(/datum/entity/player_note, note_id)
 	// de-list it
@@ -185,7 +185,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		message_admins(SPAN_WARNING("CANNOT REMOVE BANS FROM OLD BAN MANAGER. If you see this during test period - reapply unban after test round is done."), 1)
 
 	ban_unban_log_save("[key_name(admin)] removed [ckey]'s ban.")
-	message_staff(SPAN_NOTICE("[key_name_admin(admin)] removed [ckey]'s ban."), 1)
+	message_staff("[key_name_admin(admin)] removed [ckey]'s ban.", 1)
 
 	time_ban_date = null
 	time_ban_expiration = null
@@ -454,7 +454,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 				source_ckey = SLW.ckey
 
 			log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Stickybanned (Linked to [source_ckey]; Reason: [source_reason])")
-			message_staff(SPAN_NOTICE("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Linked to ckey [source_ckey]; Reason: [source_reason])"))
+			message_staff("Failed Login: [ckey] (IP: [last_known_ip], CID: [last_known_cid]) - Stickybanned (Linked to ckey [source_ckey]; Reason: [source_reason])")
 
 			DB_FILTER(/datum/entity/player_sticky_ban,
 				DB_AND(
@@ -475,7 +475,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 	if(is_permabanned)
 		permaban_admin.sync()
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [permaban_reason]")
-		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]"))
+		message_staff("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [permaban_reason]")
 		.["desc"]	= "\nReason: [permaban_reason]\nExpires: <B>PERMANENT</B>\nBy: [permaban_admin.ckey][appeal]"
 		.["reason"]	= "ckey/id"
 		return .
@@ -492,7 +492,7 @@ BSQL_PROTECT_DATUM(/datum/entity/player)
 		else
 			timeleftstring = "[time_left] Minutes"
 		log_access("Failed Login: [ckey] [last_known_cid] [last_known_ip] - Banned [time_ban_reason]")
-		message_staff(SPAN_NOTICE("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]"))
+		message_staff("Failed Login: [ckey] id:[last_known_cid] ip:[last_known_ip] - Banned [time_ban_reason]")
 		.["desc"]	= "\nReason: [time_ban_reason]\nExpires: [timeleftstring]\nBy: [time_ban_admin.ckey][appeal]"
 		.["reason"]	= "ckey/id"
 		return .

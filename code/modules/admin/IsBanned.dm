@@ -14,7 +14,7 @@ world/IsBanned(key,address,computer_id, type, real_bans_only=FALSE)
 	//Guest Checking
 	if(IsGuestKey(key))
 		log_access("Failed Login: [key] - Guests not allowed")
-		message_staff(SPAN_NOTICE("Failed Login: [key] - Guests not allowed"))
+		message_staff("Failed Login: [key] - Guests not allowed")
 		return list("reason"="guest", "desc"="\nReason: Guests not allowed. Please sign in with a byond account.")
 
 	WAIT_DB_READY
@@ -29,7 +29,7 @@ world/IsBanned(key,address,computer_id, type, real_bans_only=FALSE)
 	//check if the IP address is a known TOR node
 	if(CONFIG_GET(flag/ToRban) && ToRban_isbanned(address))
 		log_access("Failed Login: [src] - Banned: ToR")
-		message_staff(SPAN_NOTICE("Failed Login: [src] - Banned: ToR"))
+		message_staff("Failed Login: [src] - Banned: ToR")
 		return list("reason"="Using ToR", "desc"="\nReason: The network you are using to connect has been banned.\nIf you believe this is a mistake, please request help at [CONFIG_GET(string/banappeals)]")
 
 	// wait for database to be ready

@@ -17,7 +17,7 @@
 	else
 		input = message
 	if(input)
-		message = "<B>[comm_paygrade][src]</B> [input]"
+		message = SPAN_EMOTE("<B>[comm_paygrade][src]</B> [input]")
 	else
 		return
 

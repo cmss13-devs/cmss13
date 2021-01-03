@@ -44,9 +44,9 @@
 		if(speaker == src)
 			to_chat(src, SPAN_WARNING("You cannot hear yourself speak!"))
 		else
-			to_chat(src, "<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear \him.")
+			to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] talks but you cannot hear them."))
 	else
-		to_chat(src, "<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>")
+		to_chat(src, SPAN_LOCALSAY("<span class='prefix'>[comm_paygrade][speaker_name]</span>[alt_name] [verb], <span class='[style]'>\"[message]\"</span>"))
 		if (speech_sound && (get_dist(speaker, src) <= world_view_size && src.z == speaker.z))
 			var/turf/source = speaker? get_turf(speaker) : get_turf(src)
 			playsound_client(src.client, speech_sound, source, sound_vol, GET_RANDOM_FREQ)
@@ -181,9 +181,9 @@
 		comm_paygrade = H.get_paygrade()
 
 	if(say_understands(speaker, language))
-		message = "<B>[comm_paygrade][src]</B> [verb], \"[message]\""
+		message = SPAN_EMOTE("<B>[comm_paygrade][src]</B> [verb], \"[message]\"")
 	else
-		message = "<B>[comm_paygrade][src]</B> [verb]."
+		message = SPAN_EMOTE("<B>[comm_paygrade][src]</B> [verb].")
 
 	if(src.status_flags & PASSEMOTES)
 		for(var/obj/item/holder/H in src.contents)
@@ -203,9 +203,9 @@
 			heardword = copytext(heardword,2)
 		if(copytext(heardword,-1) in punctuation)
 			heardword = copytext(heardword,1,length(heardword))
-		heard = "<span class = 'game_say'>...You hear something about...[heardword]</span>"
+		heard = SPAN_LOCALSAY("<span class = 'game_say'>...You hear something about...[heardword]</span>")
 
 	else
-		heard = "<span class = 'game_say'>...<i>You almost hear someone talking</i>...</span>"
+		heard = SPAN_LOCALSAY("<span class = 'game_say'>...<i>You almost hear someone talking</i>...</span>")
 
 	to_chat(src, heard)

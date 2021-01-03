@@ -364,7 +364,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		spawn(10)
 			M:Alienize()
 
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] made [key_name(M)] into an alien."), 1)
+		message_staff("[key_name_admin(usr)] made [key_name(M)] into an alien.")
 	else
 		alert("Invalid mob")
 
@@ -387,9 +387,9 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 		to_chat(usr, "Mode not found?")
 	round_should_check_for_win = !round_should_check_for_win
 	if (round_should_check_for_win)
-		message_staff(SPAN_NOTICE("[key_name(src)] enabled checking for round-end."), 1)
+		message_staff("[key_name(src)] enabled checking for round-end.")
 	else
-		message_staff(SPAN_NOTICE("[key_name(src)] disabled checking for round-end."), 1)
+		message_staff("[key_name(src)] disabled checking for round-end.")
 
 
 
@@ -478,7 +478,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	else
 		alert("Invalid mob")
 
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] full access."), 1)
+	message_staff("[key_name_admin(usr)] has granted [M.key] full access.")
 
 /client/proc/cmd_admin_grantallskills(var/mob/M in GLOB.mob_list)
 	set category = null
@@ -492,7 +492,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	else
 		alert("Invalid mob")
 
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] has granted [M.key] all skills."), 1)
+	message_staff("[key_name_admin(usr)] has granted [M.key] all skills.")
 
 /client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
 	set name = "Control Mob"
@@ -519,7 +519,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 	usr.mind.transfer_to(M, TRUE)
 
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] assumed direct control of [M]."), 1)
+	message_staff("[key_name_admin(usr)] assumed direct control of [M].")
 
 /client/proc/cmd_debug_list_processing_items()
 	set category = "Debug.Controllers"

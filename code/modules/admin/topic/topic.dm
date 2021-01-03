@@ -100,13 +100,13 @@
 				if(!EvacuationAuthority.initiate_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to initiate an evacuation right now!"))
 				else
-					message_staff(SPAN_NOTICE("[key_name_admin(usr)] called an evacuation."), 1)
+					message_staff("[key_name_admin(usr)] called an evacuation.")
 
 			if("cancel_evac")
 				if(!EvacuationAuthority.cancel_evacuation())
 					to_chat(usr, SPAN_WARNING("You are unable to cancel an evacuation right now!"))
 				else
-					message_staff(SPAN_NOTICE("[key_name_admin(usr)] canceled an evacuation."), 1)
+					message_staff("[key_name_admin(usr)] canceled an evacuation.")
 
 			if("toggle_evac")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_EVACUATION_DENY
@@ -116,19 +116,19 @@
 				if(!EvacuationAuthority.begin_launch())
 					to_chat(usr, SPAN_WARNING("You are unable to launch the pods directly right now!"))
 				else
-					message_staff(SPAN_NOTICE("[key_name_admin(usr)] force-launched the escape pods."), 1)
+					message_staff("[key_name_admin(usr)] force-launched the escape pods.")
 
 			if("init_dest")
 				if(!EvacuationAuthority.enable_self_destruct())
 					to_chat(usr, SPAN_WARNING("You are unable to authorize the self-destruct right now!"))
 				else
-					message_staff(SPAN_NOTICE("[key_name_admin(usr)] force-enabled the self-destruct system."), 1)
+					message_staff("[key_name_admin(usr)] force-enabled the self-destruct system.")
 
 			if("cancel_dest")
 				if(!EvacuationAuthority.cancel_self_destruct(1))
 					to_chat(usr, SPAN_WARNING("You are unable to cancel the self-destruct right now!"))
 				else
-					message_staff(SPAN_NOTICE("[key_name_admin(usr)] canceled the self-destruct system."), 1)
+					message_staff("[key_name_admin(usr)] canceled the self-destruct system.")
 
 			if("use_dest")
 
@@ -141,7 +141,7 @@
 					return
 				if(alert("Are you sure you want to destroy the Almayer right now?",, "Yes", "Cancel") == "Cancel") return
 
-				message_staff(SPAN_NOTICE("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME]."), 1)
+				message_staff("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME].")
 
 			if("toggle_dest")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_SELF_DESTRUCT_DENY
@@ -154,7 +154,7 @@
 		if(!check_rights(R_SERVER))	return
 
 		SSticker.delay_end = !SSticker.delay_end
-		message_staff(SPAN_NOTICE("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"]."), 1)
+		message_staff("[key_name(usr)] [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"].")
 
 	else if(href_list["simplemake"])
 
@@ -170,7 +170,7 @@
 			if("Cancel")	return
 			if("Yes")		delmob = 1
 
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]"), 1)
+		message_staff("[key_name_admin(usr)] has used rudimentary transformation on [key_name_admin(M)]. Transforming to [href_list["simplemake"]]; deletemob=[delmob]")
 
 		var/mob/transformed
 		var/hivenumber = XENO_HIVE_NORMAL
@@ -256,7 +256,7 @@
 		if(!reason)	return
 
 		ban_unban_log_save("[key_name(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]"), 1)
+		message_staff("[key_name_admin(usr)] upgraded [banned_key]'s ban to a permaban. Reason: [sanitize(reason)]")
 		Banlist.cd = "/base/[banfolder]"
 		Banlist["reason"] << sanitize(reason)
 		Banlist["temp"] << 0
@@ -295,7 +295,7 @@
 		if(!reason)	return
 
 		ban_unban_log_save("[key_name(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]"), 1)
+		message_staff("[key_name_admin(usr)] edited [banned_key]'s ban. Reason: [sanitize(reason)] Duration: [duration]")
 		Banlist.cd = "/base/[banfolder]"
 		Banlist["reason"] << sanitize(reason)
 		Banlist["temp"] << temp
@@ -475,7 +475,7 @@
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server"))
 			else
 				to_chat_forced(M, SPAN_WARNING("You have been kicked from the server: [reason]"))
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] booted [key_name_admin(M)]."), 1)
+			message_staff("[key_name_admin(usr)] booted [key_name_admin(M)].")
 			qdel(M.client)
 
 	else if(href_list["removejobban"])
@@ -484,7 +484,7 @@
 		var/t = href_list["removejobban"]
 		if(t)
 			if((alert("Do you want to unjobban [t]?","Unjobban confirmation", "Yes", "No") == "Yes") && t) //No more misclicks! Unless you do it twice.
-				message_staff(SPAN_NOTICE("[key_name_admin(usr)] removed [t]"), 1)
+				message_staff("[key_name_admin(usr)] removed [t]")
 				jobban_remove(t)
 				jobban_savebanfile()
 				href_list["ban"] = 1 // lets it fall through and refresh
@@ -663,7 +663,7 @@
 		if (SSticker.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
 		master_mode = href_list["c_mode2"]
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] set the mode as [master_mode]."), 1)
+		message_staff("[key_name_admin(usr)] set the mode as [master_mode].")
 		to_world(SPAN_NOTICE("<b><i>The mode is now: [master_mode]!</i></b>"))
 		Game() // updates the main game menu
 		world.save_mode(master_mode)
@@ -677,7 +677,7 @@
 		if(master_mode != "secret")
 			return alert(usr, "The game mode has to be secret!", null, null, null, null)
 		secret_force_mode = href_list["f_secret2"]
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode]."), 1)
+		message_staff("[key_name_admin(usr)] set the forced secret mode as [secret_force_mode].")
 		Game() // updates the main game menu
 		.(href, list("f_secret"=1))
 
@@ -689,7 +689,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]"), 1)
+		message_staff("[key_name_admin(usr)] attempting to monkeyize [key_name_admin(H)]")
 		H.monkeyize()
 
 	else if(href_list["corgione"])
@@ -700,7 +700,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]"), 1)
+		message_staff("[key_name_admin(usr)] attempting to corgize [key_name_admin(H)]")
 		H.corgize()
 
 	else if(href_list["forcespeech"])
@@ -715,7 +715,7 @@
 		if(!speech)	return
 		M.say(speech)
 		speech = sanitize(speech) // Nah, we don't trust them
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]"))
+		message_staff("[key_name_admin(usr)] forced [key_name_admin(M)] to say: [speech]")
 
 	else if(href_list["zombieinfect"])
 		if(!check_rights(R_ADMIN))	return
@@ -735,7 +735,7 @@
 
 		H.AddDisease(bg, FALSE)
 
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS"))
+		message_staff("[key_name_admin(usr)] infected [key_name_admin(H)] with a ZOMBIE VIRUS")
 	else if(href_list["larvainfect"])
 		if(!check_rights(R_ADMIN))	return
 		var/mob/living/carbon/human/H = locate(href_list["larvainfect"])
@@ -760,7 +760,7 @@
 		embryo.hivenumber = hives[newhive]
 		embryo.faction = newhive
 
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva."))
+		message_staff("[key_name_admin(usr)] infected [key_name_admin(H)] with a xeno ([newhive]) larva.")
 
 	else if(href_list["makemutineer"])
 		if(!check_rights(R_DEBUG|R_SPAWN))
@@ -825,7 +825,7 @@
 		if(!speech)	return
 		M.custom_emote(1, speech, TRUE)
 		speech = sanitize(speech) // Nah, we don't trust them
-		message_staff(SPAN_NOTICE("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]"))
+		message_staff("[key_name_admin(usr)] forced [key_name_admin(M)] to emote: [speech]")
 
 	else if(href_list["sendbacktolobby"])
 		if(!check_rights(R_MOD))

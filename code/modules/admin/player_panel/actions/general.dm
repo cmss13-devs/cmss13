@@ -85,7 +85,7 @@
 
 	target.say(params["to_say"])
 
-	message_staff(SPAN_NOTICE("[key_name_admin(user)] forced [key_name_admin(target)] to say: [sanitize(params["to_say"])]"))
+	message_staff("[key_name_admin(user)] forced [key_name_admin(target)] to say: [sanitize(params["to_say"])]")
 
 	return TRUE
 
@@ -100,7 +100,7 @@
 
 	target.custom_emote(1, params["to_emote"], TRUE)
 
-	message_staff(SPAN_NOTICE("[key_name_admin(user)] forced [key_name_admin(target)] to emote: [sanitize(params["to_emote"])]"))
+	message_staff("[key_name_admin(user)] forced [key_name_admin(target)] to emote: [sanitize(params["to_emote"])]")
 	return TRUE
 
 
@@ -111,7 +111,7 @@
 /datum/player_action/toggle_frozen/act(var/client/user, var/mob/target, var/list/params)
 	target.frozen = text2num(params["freeze"])
 
-	message_staff(SPAN_NOTICE("[key_name_admin(user)] [target.frozen? "froze" : "unfroze"] [key_name_admin(target)]"))
+	message_staff("[key_name_admin(user)] [target.frozen? "froze" : "unfroze"] [key_name_admin(target)]")
 	return TRUE
 
 // MESSAGE

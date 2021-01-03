@@ -417,7 +417,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 			//Book keeping!
 			var/area/location = get_area(src)
-			message_staff(SPAN_NOTICE("[key_name_admin(user)] put [key_name_admin(M)], [M.job] into [src] at [location]."))
+			message_staff("[key_name_admin(user)] put [key_name_admin(M)], [M.job] into [src] at [location].")
 
 			//Despawning occurs when process() is called with an occupant without a client.
 			add_fingerprint(user)
@@ -493,7 +493,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	start_processing()
 	var/area/location = get_area(src)
 	if(M.job != JOB_SQUAD_MARINE)
-		message_staff(SPAN_NOTICE("[key_name_admin(M)], [M.job], has entered a [src] at [location] after playing for [duration2text(world.time - M.life_time_start)]."))
+		message_staff("[key_name_admin(M)], [M.job], has entered a [src] at [location] after playing for [duration2text(world.time - M.life_time_start)].")
 
 	playsound(src, 'sound/machines/hydraulics_3.ogg', 30)
 

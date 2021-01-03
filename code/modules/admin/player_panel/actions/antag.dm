@@ -43,7 +43,7 @@
 	var/mob/living/carbon/Xenomorph/X = target
 
 	X.set_hive_and_update(params["hivenumber"])
-	message_staff(SPAN_NOTICE("[key_name_admin(user)] changed hivenumber of [target] to [params["hivenumber"]]."))
+	message_staff("[key_name_admin(user)] changed hivenumber of [target] to [params["hivenumber"]].")
 	return TRUE
 
 /datum/player_action/make_cultist
@@ -73,5 +73,5 @@
 
 	var/title = params["leader"]? "xeno cultist leader" : "cultist"
 
-	message_staff(SPAN_NOTICE("[key_name_admin(user)] has made [target] into a [title], enslaved to hivenumber [params["hivenumber"]]."))
+	message_staff("[key_name_admin(user)] has made [target] into a [title], enslaved to hivenumber [params["hivenumber"]].")
 	return TRUE

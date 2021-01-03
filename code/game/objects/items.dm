@@ -306,13 +306,15 @@ cases. Override_icon_state should be a list.*/
 	return
 
 /obj/item/proc/remove_item_verbs(mob/user)
+	if(!user.item_verbs)
+		return
+
 	var/list/verbs_to_remove = list()
 	for(var/v in verbs)
-		var/verbstring = "[v]"
-		if(length(user.item_verbs[verbstring]) == 1)
-			if(user.item_verbs[verbstring][1] == src)
+		if(length(user.item_verbs[v]) == 1)
+			if(user.item_verbs[v][1] == src)
 				verbs_to_remove += v
-		LAZYREMOVE(user.item_verbs[verbstring], src)
+		LAZYREMOVE(user.item_verbs[v], src)
 	remove_verb(user, verbs_to_remove)
 
 // called after an item is placed in an equipment slot
@@ -328,7 +330,7 @@ cases. Override_icon_state should be a list.*/
 	if(item_action_slot_check(user, slot))
 		add_verb(user, verbs)
 		for(var/v in verbs)
-			LAZYDISTINCTADD(user.item_verbs["[v]"], src)
+			LAZYDISTINCTADD(user.item_verbs[v], src)
 	else
 		remove_item_verbs(user)
 

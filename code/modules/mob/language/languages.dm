@@ -93,7 +93,7 @@
 
 /datum/language/xenocommon
 	name = "Xenomorph"
-	colour = "xeno"
+	colour = "xenotalk"
 	desc = "The common tongue of the xenomorphs."
 	speech_verb = "hisses"
 	ask_verb = "hisses"

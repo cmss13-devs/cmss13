@@ -236,7 +236,7 @@
 	mentor = thread_mentor
 
 	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked your thread and is preparing to respond."))
-	message_staff(SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp."))
+	message_staff("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has marked <font style='color:red;'>[author_key]</font>'s mentorhelp.")
 	log_message("[mentor.key] marked [author_key]'s mentorhelp")
 
 // Unmarks the mentorhelp thread and notifies the author that the thread is no longer being handled by a mentor
@@ -256,7 +256,7 @@
 		return
 
 	to_chat(author, SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked your thread and is no longer responding to it."))
-	message_staff(SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked <font style='color:red;'>[author_key]</font>'s mentorhelp."))
+	message_staff("<b>NOTICE:</b> <font style='color:red;'>[mentor.key]</font> has unmarked <font style='color:red;'>[author_key]</font>'s mentorhelp.")
 	log_message("[mentor.key] unmarked [author_key]'s mentorhelp")
 	mentor = null
 
@@ -271,7 +271,7 @@
 
 	// Thread was closed because the author is gone
 	if(!author)
-		message_staff(SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed due to the author disconnecting."))
+		message_staff("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed due to the author disconnecting.")
 		log_message("[author_key]'s mentorhelp thread was closed because of a disconnection")
 		return
 
@@ -286,10 +286,10 @@
 		log_message("[closer.key] closed [author_key]'s mentorhelp")
 		if(closer == author)
 			to_chat(author, SPAN_NOTICE("You have closed your mentorhelp thread."))
-			message_staff(SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font> closed their mentorhelp thread."))
+			message_staff("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font> closed their mentorhelp thread.")
 			return
 	to_chat(author, SPAN_NOTICE("Your mentorhelp thread has been closed."))
-	message_staff(SPAN_NOTICE("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed."))
+	message_staff("<b>NOTICE:</b> <font style='color:red;'>[author_key]</font>'s mentorhelp thread has been closed.")
 
 // We handle all clicks and links and yadda internally
 /datum/mentorhelp/Topic(var/href, var/list/href_list)

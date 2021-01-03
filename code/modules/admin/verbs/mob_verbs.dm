@@ -179,7 +179,7 @@
 		return
 
 	to_chat(M, SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	message_staff(SPAN_NOTICE("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]"), 1)
+	message_staff("\bold DirectNarrate: [key_name(usr)] to ([M.name]/[M.key]): [msg]")
 
 /client/proc/cmd_admin_attack_log(mob/M as mob in GLOB.mob_list)
 	set name = "Attack Log"
@@ -279,7 +279,7 @@
 		if(was_leader && (!hive.leading_cult_sl || hive.leading_cult_sl.stat == DEAD))
 			hive.leading_cult_sl = H
 
-	message_staff(SPAN_NOTICE("[key_name(src)] changed hivenumber of [H] to [H.hivenumber]."))
+	message_staff("[key_name(src)] changed hivenumber of [H] to [H.hivenumber].")
 
 
 /client/proc/cmd_admin_change_their_name(var/mob/living/carbon/X)
@@ -304,7 +304,7 @@
 			if(H.wear_id.assignment)
 				H.wear_id.name += " ([H.wear_id.assignment])"
 
-	message_staff(SPAN_NOTICE("[key_name(src)] changed name of [old_name] to [newname]."))
+	message_staff("[key_name(src)] changed name of [old_name] to [newname].")
 
 /datum/admins/proc/togglesleep(var/mob/living/M as mob in GLOB.mob_list)
 	set name = "Toggle Sleeping"

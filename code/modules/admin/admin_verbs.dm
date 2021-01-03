@@ -373,7 +373,7 @@ var/list/admin_verbs_mod = list(
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)
 
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] gave [key_name(T)] the disease [D]."), 1)
+	message_staff("[key_name_admin(usr)] gave [key_name(T)] the disease [D].")
 
 
 /client/proc/object_talk(var/msg as text) // -- TLE

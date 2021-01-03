@@ -659,7 +659,7 @@ There are several things that need to be remembered:
 			I = image("icon"='icons/mob/humans/onmob/OnFire.dmi', "icon_state"="Standing_medium", "layer"= -FIRE_LAYER)
 		else
 			return
-	I.appearance_flags |= RESET_COLOR
+	I.appearance_flags |= RESET_COLOR|RESET_ALPHA
 	I.color = fire_reagent.burncolor
 	overlays_standing[FIRE_LAYER] = I
 	apply_overlay(FIRE_LAYER)

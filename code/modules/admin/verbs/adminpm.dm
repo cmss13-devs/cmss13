@@ -83,14 +83,12 @@
 						adminhelp(reply)													//sender has left, adminhelp instead
 				return
 
-	recieve_message = "<br><font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.admin_holder ? 1 : 0, C.admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"
+	recieve_message = SPAN_PM("<br><font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.admin_holder ? 1 : 0, C.admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>")
 	to_chat(C, recieve_message)
-	to_chat(src, "<br><font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, admin_holder ? 1 : 0, admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>")
+	to_chat(src, SPAN_PM("<br><font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, admin_holder ? 1 : 0, admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"))
 
-	//play the recieving admin the adminhelp sound (if they have them enabled)
-	//non-admins shouldn't be able to disable this
-	if(C.prefs && C.prefs.toggles_sound & SOUND_ADMINHELP)
-		C << 'sound/effects/adminhelp-reply.ogg'
+	//play the recieving admin the adminhelp sound
+	playsound_client(C, 'sound/effects/adminhelp-reply.ogg')
 
 	log_admin("PM: [key_name(src)]->[key_name(C)]: [msg]")
 	GLOB.STUI.staff.Add("PM: [key_name(src)]->[key_name(C)]: [msg]<br>")
@@ -101,4 +99,4 @@
 		if(X == C || X == src)
 			continue
 		if(X.key!=key && X.key!=C.key && (X.admin_holder.rights & R_ADMIN) || (X.admin_holder.rights & (R_MOD)) )
-			to_chat(X, "<B>[SPAN_BLUE("PM: [key_name(src, X, 0)]-&gt;[key_name(C, X, 0)]:</B> \blue [msg]")]") //inform X
+			to_chat(X, SPAN_PM(SPAN_BLUE("<B>PM: [key_name(src, X, 0)]-&gt;[key_name(C, X, 0)]:</B> [msg]"))) //inform X

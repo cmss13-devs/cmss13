@@ -22,64 +22,64 @@
 				communications_blackout(0)
 			else
 				communications_blackout(1)
-			message_staff("[key_name_admin(usr)] triggered a communications blackout.", 1)
+			message_staff("[key_name_admin(usr)] triggered a communications blackout.")
 		if("blackout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			message_staff("[key_name_admin(usr)] broke all lights", 1)
+			message_staff("[key_name_admin(usr)] broke all lights")
 			lightsout(0,0)
 		if("whiteout")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
 			for(var/obj/structure/machinery/light/L in machines)
 				L.fix()
-			message_staff("[key_name_admin(usr)] fixed all lights", 1)
+			message_staff("[key_name_admin(usr)] fixed all lights")
 		if("power")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs"), 1)
+			message_staff("[key_name_admin(usr)] powered all SMESs and APCs")
 			power_restore()
 		if("unpower")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] unpowered all SMESs and APCs"), 1)
+			message_staff("[key_name_admin(usr)] unpowered all SMESs and APCs")
 			power_failure()
 		if("quickpower")
 			if(alert(usr, "Are you sure you want to do this? It will laaag.", "Confirmation", "Yes", "No") == "No")
 				return
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs"), 1)
+			message_staff("[key_name_admin(usr)] powered all SMESs")
 			power_restore_quick()
 		if("powereverything")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] powered all SMESs and APCs everywhere"), 1)
+			message_staff("[key_name_admin(usr)] powered all SMESs and APCs everywhere")
 			power_restore_everything()
 		if("powershipreactors")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] powered all ship reactors"), 1)
+			message_staff("[key_name_admin(usr)] powered all ship reactors")
 			power_restore_ship_reactors()
 		if("decrease_defcon")
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] decreased DEFCON level."), 1)
+			message_staff("[key_name_admin(usr)] decreased DEFCON level.")
 			defcon_controller.decrease_defcon_level()
 		if("give_defcon_points")
 			var/amount = input(usr, "How many points to add?") as num
 			if(amount != 0) //can add negative numbers too!
-				message_staff(SPAN_NOTICE("[key_name_admin(usr)] added [amount] DEFCON points."), 1)
+				message_staff("[key_name_admin(usr)] added [amount] DEFCON points.")
 				SSobjectives.add_admin_points(amount)
 		if("change_clearance")
 			var/list/clearance_levels = list(0,1,2,3,4,5)
 			var/level = input("Select new clearance level:","Current level: [chemical_data.clearance_level]") as null|anything in clearance_levels
 			if(!level)
 				return
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] changed research clearance level to [level]."), 1)
+			message_staff("[key_name_admin(usr)] changed research clearance level to [level].")
 			chemical_data.clearance_level = level
 		if("give_research_credits")
 			var/amount = input(usr, "How many credits to add?") as num
 			if(amount != 0) //can add negative numbers too!
-				message_staff(SPAN_NOTICE("[key_name_admin(usr)] added [amount] research credits."), 1)
+				message_staff("[key_name_admin(usr)] added [amount] research credits.")
 				chemical_data.update_credits(amount)
 
 /datum/admins/proc/create_humans_list(var/href_list)

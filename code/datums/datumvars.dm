@@ -532,7 +532,7 @@ body
 				if(!i)
 					to_chat(usr, "No objects of this type exist")
 					return
-				message_staff(SPAN_NOTICE("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) "))
+				message_staff("[key_name(usr)] deleted all objects of type [O_type] ([i] objects deleted) ")
 			if("Type and subtypes")
 				var/i = 0
 				for(var/obj/Obj in GLOB.object_list)
@@ -542,7 +542,7 @@ body
 				if(!i)
 					to_chat(usr, "No objects of this type exist")
 					return
-				message_staff(SPAN_NOTICE("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) "))
+				message_staff("[key_name(usr)] deleted all objects of type or subtype of [O_type] ([i] objects deleted) ")
 
 	else if(href_list["enablepixelscaling"])
 		if(!check_rights(R_DEBUG|R_VAREDIT))
@@ -1085,7 +1085,7 @@ body
 		L.updatehealth()
 
 		if(amount != 0)
-			message_staff(SPAN_NOTICE("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] "))
+			message_staff("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] ")
 			href_list["datumrefresh"] = href_list["mobToDamage"]
 
 	else if(href_list["setmatrix"])

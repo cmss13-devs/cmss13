@@ -16,7 +16,7 @@
 
 		if(value)
 			SSticker.mode.pred_additional_max = abs(value)
-			message_staff(SPAN_NOTICE("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)]."))
+			message_staff("[key_name_admin(usr)] adjusted the additional pred amount to [abs(value)].")
 
 /datum/admins/proc/force_predator_round()
 	set name = "Force Predator Round"
@@ -42,7 +42,7 @@
 		to_chat(usr, "The Hunt is already in progress.")
 		return
 
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-forced a predator round."))
+	message_staff("[key_name_admin(usr)] admin-forced a predator round.")
 	return
 
 /client/proc/free_slot()
@@ -91,7 +91,7 @@
 		return
 	if(!RoleAuthority.modify_role(J, num))
 		to_chat(usr, SPAN_BOLDNOTICE("Can't set job slots to be less than amount of log-ins or you are setting amount of slots less than minimal. Free slots first."))
-	message_staff(SPAN_NOTICE("[key_name(usr)] adjusted job slots of [J.title] to be [num]."))
+	message_staff("[key_name(usr)] adjusted job slots of [J.title] to be [num].")
 
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"
@@ -124,7 +124,7 @@
 		return
 
 	SSticker.mode.round_finished = MODE_INFESTATION_DRAW_DEATH
-	message_staff(SPAN_NOTICE("[key_name(usr)] has made the round end early."))
+	message_staff("[key_name(usr)] has made the round end early.")
 	for(var/client/C in GLOB.admins)
 		to_chat(C, {"
 		<hr>

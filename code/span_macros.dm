@@ -41,6 +41,8 @@
 #define SPAN_ADMINNOTICE(X) "<span class='adminnotice'>[X]</span>"
 #define SPAN_ADMIN(X) "<span class='admin'>[X]</span>"
 
+#define SPAN_PM(X) "<span class='pm'>[X]</span>"
+
 // Misc
 #define SPAN_BOLD(X) "<span class='bold'>[X]</span>"
 #define SPAN_UNDERLINE(X) "<span class='underline'>[X]</span>"
@@ -62,6 +64,8 @@
 
 #define SPAN_HELPFUL(X) "<span class='helpful'>[X]</span>"
 
+#define SPAN_EMOTE(X) "<span class='emote'>[X]</span>"
+#define SPAN_LOCALSAY(X) "<span class='say'>[X]</span>"
 #define SPAN_DEADSAY(X) "<span class='deadsay'>[X]</span>"
 
 #define SPAN_AVOIDHARM(X) "<span class='avoidharm'>[X]</span>"

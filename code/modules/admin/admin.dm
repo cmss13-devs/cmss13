@@ -9,14 +9,14 @@
 /proc/message_staff(var/msg, var/jmp_x=0, var/jmp_y=0, var/jmp_z=0) // +MOD and above, not mentors
 	log_admin(msg)
 
-	msg = "<span class=\"admin\"><span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]"
+	msg = "<span class=\"prefix\">STAFF LOG:</span> <span class=\"message\">[msg]"
 	if(jmp_x && jmp_y && jmp_z)
 		msg += " (<a href='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[jmp_x];Y=[jmp_y];Z=[jmp_z]'>JMP</a>)"
-	msg += "</span></span>"
+	msg += "</span>"
 
 	for(var/client/C in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
-			to_chat(C, msg)
+			to_chat(C, SPAN_ADMIN(msg))
 
 /proc/msg_admin_attack(var/text, jump_x, jump_y, jump_z) //Toggleable Attack Messages; server logs don't include the JMP part
 	log_attack(text)
@@ -133,7 +133,7 @@
 		to_world("<B>You may now respawn.</B>")
 	else
 		to_world("<B>You may no longer respawn :(</B>")
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"]."), 1)
+	message_staff("[key_name_admin(usr)] toggled respawn to [CONFIG_GET(flag/respawn) ? "On" : "Off"].")
 	world.update_status()
 
 

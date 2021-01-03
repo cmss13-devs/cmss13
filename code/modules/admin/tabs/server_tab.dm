@@ -30,7 +30,7 @@
 		to_world("<B>New players may no longer join the game.</B>")
 	else
 		to_world("<B>New players may now join the game.</B>")
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] toggled new player game joining."), 1)
+	message_staff("[key_name_admin(usr)] toggled new player game joining.")
 	world.update_status()
 
 /datum/admins/proc/toggledsay()

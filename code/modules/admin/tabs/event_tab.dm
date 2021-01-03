@@ -106,7 +106,7 @@
 				return
 			cell_explosion(epicenter, power, falloff, explosion_shape)
 			message_staff("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
-	message_staff(SPAN_NOTICE("[ckey] used 'Drop Bomb' at [epicenter.loc]."))
+	message_staff("[ckey] used 'Drop Bomb' at [epicenter.loc].")
 
 /client/proc/cmd_admin_emp(atom/O as obj|mob|turf in world)
 	set name = "EM Pulse"
@@ -179,7 +179,7 @@
 
 	shuttle.launch()
 
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] force launched a distress shuttle ([tag])"), 1)
+	message_staff("[key_name_admin(usr)] force launched a distress shuttle ([tag])")
 
 /datum/admins/proc/admin_force_distress()
 	set name = "Distress Beacon"
@@ -225,7 +225,7 @@
 
 	chosen_ert.activate(is_announcing)
 
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]"), 1)
+	message_staff("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self Destruct"
@@ -240,7 +240,7 @@
 
 	set_security_level(SEC_LEVEL_DELTA)
 
-	message_staff(SPAN_NOTICE("[key_name_admin(usr)] admin-started self destruct stystem."), 1)
+	message_staff("[key_name_admin(usr)] admin-started self destruct stystem.")
 
 /client/proc/view_faxes()
 	set name = "View Faxes"
@@ -512,7 +512,7 @@
 		return
 
 	to_world(SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
-	message_staff(SPAN_NOTICE("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]"))
+	message_staff("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]")
 
 
 /client

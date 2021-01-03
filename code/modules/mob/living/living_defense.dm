@@ -67,9 +67,8 @@
 	L.Move(get_step_away(L, src))
 
 /mob/living/obj_launch_collision(var/obj/O)
-	if ((!thrower || thrower != src) && \
-		!rebounding
-	)
+	var/datum/launch_metadata/LM = launch_metadata
+	if(!rebounding && LM.thrower != src)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [O]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt
@@ -79,7 +78,8 @@
 
 //This is called when the mob or human is thrown into a dense turf or wall
 /mob/living/turf_launch_collision(var/turf/T)
-	if (!rebounding)
+	var/datum/launch_metadata/LM = launch_metadata
+	if(!rebounding && LM.thrower != src)
 		var/impact_damage = (1 + MOB_SIZE_COEFF/(mob_size + 1))*THROW_SPEED_DENSE_COEFF*cur_speed
 		apply_damage(impact_damage)
 		visible_message(SPAN_DANGER("\The [name] slams into [T]!"), null, null, 5) //feedback to know that you got slammed into a wall and it hurt

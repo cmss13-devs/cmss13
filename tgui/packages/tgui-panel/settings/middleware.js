@@ -18,9 +18,9 @@ const setGlobalFontSize = fontSize => {
 
 const setGlobalFontFamily = fontFamily => {
   document.documentElement.style
-    .setProperty('font-family', fontFamily + 'px');
+    .setProperty('font-family', fontFamily);
   document.body.style
-    .setProperty('font-family', fontFamily + 'px');
+    .setProperty('font-family', fontFamily);
 };
 
 export const settingsMiddleware = store => {

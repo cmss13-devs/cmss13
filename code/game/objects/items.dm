@@ -306,6 +306,9 @@ cases. Override_icon_state should be a list.*/
 	return
 
 /obj/item/proc/remove_item_verbs(mob/user)
+	if(!user.item_verbs)
+		return
+
 	var/list/verbs_to_remove = list()
 	for(var/v in verbs)
 		var/verbstring = "[v]"

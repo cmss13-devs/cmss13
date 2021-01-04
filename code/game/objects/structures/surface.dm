@@ -43,18 +43,25 @@
 	if(O.luminosity) //it can't make light as an overlay
 		return
 	O.forceMove(src)
+	RegisterSignal(O, COMSIG_ATOM_DECORATED, .proc/decorate_update)
 	if(update)
 		draw_item_overlays()
 
 /obj/structure/surface/proc/detach_item(var/obj/item/O)
 	O.pixel_x = initial(O.pixel_x)
 	O.pixel_y = initial(O.pixel_y)
+	UnregisterSignal(O, COMSIG_ATOM_DECORATED)
 	draw_item_overlays()
 	return
+
+/obj/structure/surface/proc/decorate_update(obj/item/O)
+	SIGNAL_HANDLER
+	draw_item_overlays()
 
 /obj/structure/surface/proc/detach_all()
 	overlays.Cut()
 	for(var/obj/item/O in contents)
+		UnregisterSignal(O, COMSIG_ATOM_DECORATED)
 		O.forceMove(loc)
 
 /obj/structure/surface/proc/get_item(var/list/click_data)

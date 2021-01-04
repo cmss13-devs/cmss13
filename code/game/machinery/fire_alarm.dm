@@ -220,11 +220,8 @@ FIRE ALARM
 	//playsound(src.loc, 'sound/ambience/signal.ogg', 50, 0)
 	return
 
-/obj/structure/machinery/firealarm/New(loc, dir, building)
-	..()
-
-	if(loc)
-		src.forceMove(loc)
+/obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
+	. = ..()
 
 	if(dir)
 		src.dir = dir

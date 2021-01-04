@@ -177,12 +177,9 @@
 				teleatom.visible_message(SPAN_DANGER("<B>The [teleatom] bounces off of the portal!</B>"))
 			return 0
 
-		if(is_admin_level(destination.z)) //centcomm z-level
+		if(is_admin_level(destination.z))
 			if(length(teleatom.search_contents_for(/obj/item/storage/backpack/holding)))
 				teleatom.visible_message(SPAN_DANGER("<B>The Bag of Holding bounces off of the portal!</B>"))
 				return 0
 
-
-		if(destination.z > 7) //Away mission z-levels
-			return 0
 		return 1

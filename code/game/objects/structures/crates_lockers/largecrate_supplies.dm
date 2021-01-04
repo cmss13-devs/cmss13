@@ -85,14 +85,13 @@
 	name = "supply crate"
 	var/list/supplies = list()
 
-/obj/structure/largecrate/supply/New()
-	..()
+/obj/structure/largecrate/supply/Initialize()
+	. = ..()
 	if(supplies.len)
 		for(var/s in supplies)
 			var/amount = supplies[s]
 			for(var/i = 1, i <= amount, i++)
 				new s (src)
-	sleep(-1)
 
 /obj/structure/largecrate/supply/weapons
 	name = "weapons chest"

@@ -35,7 +35,7 @@
 	alpha = 255
 
 	if(!length(connected_to))
-		new /obj/item/pipe(loc, make_from = src)
+		new /obj/item/pipe(loc, null, null, src)
 		qdel(src)
 	else
 		overlays.Cut()
@@ -47,7 +47,7 @@
 		var/turf/T = get_turf(src)
 		for(var/D in valid_directions)
 			add_underlay(T, D)
-	
+
 	..()
 
 /obj/structure/pipes/standard/manifold/visible

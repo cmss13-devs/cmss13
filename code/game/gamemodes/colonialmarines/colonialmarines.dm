@@ -16,7 +16,7 @@
 	return TRUE
 
 /datum/game_mode/colonialmarines/announce()
-	to_world("<span class='round_header'>The current map is - [map_tag]!</span>")
+	to_world("<span class='round_header'>The current map is - [SSmapping.configs[GROUND_MAP].map_name]!</span>")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 //Temporary, until we sort this out properly.
@@ -63,19 +63,12 @@
 	QDEL_LIST(GLOB.good_items)
 
 	// Spawn gamemode-specific map items
-	for(var/i in GLOB.map_items)
-		var/turf/T = get_turf(i)
-		qdel(i)
-		switch(map_tag)
-			if(MAP_LV_624) new /obj/item/map/lazarus_landing_map(T)
-			if(MAP_ICE_COLONY) new /obj/item/map/ice_colony_map(T)
-			if(MAP_BIG_RED) new /obj/item/map/big_red_map(T)
-			if(MAP_PRISON_STATION) new /obj/item/map/FOP_map(T)
-			if(MAP_DESERT_DAM) new /obj/item/map/desert_dam(T)
-			if(MAP_WHISKEY_OUTPOST) new /obj/item/map/whiskey_outpost_map(T)
-			if(MAP_SOROKYNE_STRATA) new /obj/item/map/sorokyne_map(T)
-			if(MAP_CORSAT) new /obj/item/map/corsat(T)
-			if(MAP_KUTJEVO) new /obj/item/map/kutjevo_map(T)
+	if(SSmapping.configs[GROUND_MAP].map_item_type)
+		var/type_to_spawn = SSmapping.configs[GROUND_MAP].map_item_type
+		for(var/i in GLOB.map_items)
+			var/turf/T = get_turf(i)
+			qdel(i)
+			new type_to_spawn(T)
 
 	if(!round_fog.len)
 		round_fog = null //No blockers?
@@ -125,25 +118,7 @@
 	if(!marines_assigned)
 		return
 
-	switch(map_tag)
-		if(MAP_LV_624)
-			monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-		if(MAP_ICE_COLONY)
-			monkey_types = list(/mob/living/carbon/human/yiren)
-		if(MAP_BIG_RED)
-			monkey_types = list(/mob/living/carbon/human/neaera)
-		if(MAP_KUTJEVO)
-			monkey_types = list(/mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-		if(MAP_PRISON_STATION)
-			monkey_types = list(/mob/living/carbon/human/monkey)
-		if(MAP_DESERT_DAM)
-			monkey_types = list(/mob/living/carbon/human/stok)
-		if(MAP_SOROKYNE_STRATA)
-			monkey_types = list(/mob/living/carbon/human/yiren)
-		if(MAP_CORSAT)
-			monkey_types = list(/mob/living/carbon/human/yiren, /mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-		else
-			monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
+	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
 
 	if(!length(monkey_types))
 		return
@@ -161,23 +136,8 @@
 	shipwide_ai_announcement(input, name, 'sound/AI/ares_online.ogg')
 
 /datum/game_mode/colonialmarines/proc/map_announcement()
-	switch(map_tag)
-		if(MAP_LV_624)
-			marine_announcement("An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-		if(MAP_ICE_COLONY)
-			marine_announcement("An automated distress signal has been received from archaeology site \"Shiva's Snowball\", on border ice world \"Ifrit\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-		if(MAP_BIG_RED)
-			marine_announcement("We've lost contact with the Weston-Yamada's research facility, [map_tag]. The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
-		if(MAP_PRISON_STATION)
-			marine_announcement("An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-		if(MAP_DESERT_DAM)
-			marine_announcement("We've lost contact with Weston-Yamada's extra-solar colony, \"[map_tag]\", on the planet \"Navarone.\" The [MAIN_SHIP_NAME] has been dispatched to assist.", "[MAIN_SHIP_NAME]")
-		if (MAP_SOROKYNE_STRATA)
-			marine_announcement("An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the [MAIN_SHIP_NAME] will be dispatched shortly to investigate.", "[MAIN_SHIP_NAME]")
-		if (MAP_CORSAT)
-			marine_announcement("An automated distress signal has been received from Weston-Yamada's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
-		if (MAP_KUTJEVO)
-			marine_announcement("An automated distress signal has been received from Weston-Yamada colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The [MAIN_SHIP_NAME] has been dispatched to investigate.", "[MAIN_SHIP_NAME]")
+	if(SSmapping.configs[GROUND_MAP].announce_text)
+		marine_announcement(SSmapping.configs[GROUND_MAP].announce_text, "[MAIN_SHIP_NAME]")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -207,9 +167,9 @@
 			bioscan_current_interval += bioscan_ongoing_interval //Add to the interval based on our set interval time.
 
 		if(++round_checkwin >= 5) //Only check win conditions every 5 ticks.
-			if(flags_round_type & MODE_FOG_ACTIVATED && map_tag == MAP_LV_624  && world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
+			if(flags_round_type & MODE_FOG_ACTIVATED && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_FOG] && world.time >= (FOG_DELAY_INTERVAL + SSticker.round_start_time))
 				disperse_fog() //Some RNG thrown in.
-			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN) && (map_tag == MAP_CORSAT || map_tag == MAP_PRISON_STATION) && world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
+			if(!(round_status_flags & ROUNDSTATUS_PODDOORS_OPEN) && SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_LOCKDOWN] && world.time >= (PODLOCKS_OPEN_WAIT + round_time_lobby))
 				round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN
 
 				var/input = "Security lockdown will be lifting in 30 seconds per automated lockdown protocol."

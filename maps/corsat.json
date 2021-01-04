@@ -1,0 +1,36 @@
+{
+    "map_name": "CORSAT",
+    "map_path": "map_files/Corsat",
+    "map_file": "Corsat.dmm",
+    "environment_traits": {
+        "Lockdown": true,
+        "COLD": true
+    },
+    "survivor_types": [
+        "Survivor - Scientist",
+        "Survivor - Scientist",
+        "Survivor - Scientist",
+        "Survivor - Doctor",
+        "Survivor - Security",
+        "Survivor - Corporate Liaison",
+        "Survivor - Engineer"
+    ],
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "You are a survivor of the containment breach on the Corporate Orbital Research Station for Advanced Technology (CORSAT). You worked or lived on the station, and managed to avoid the alien attacks... until now.",
+    "map_item_type": "/obj/item/map/corsat",
+    "announce_text": "An automated distress signal has been received from Weston-Yamada's Corporate Orbital Research Station for Advanced Technology, or CORSAT. The ###SHIPNAME### has been dispatched to investigate.",
+    "monkey_types": [
+        "yiren",
+        "farwa",
+        "monkey",
+        "neaera",
+        "stok"
+    ],
+    "traits": [{ "Ground": true }]
+}

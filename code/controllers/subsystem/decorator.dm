@@ -1,15 +1,16 @@
 // our atom declaration should not be hardcoded for this SS existance.
 // if this subsystem is deleted, stuff still works
 // That's why we define this here
-/atom/Decorate()
-	if(SSdecorator && SSdecorator.registered_decorators[type])
+/atom/proc/Decorate()
+	if(SSdecorator.registered_decorators[type])
 		SSdecorator.decorate(src)
+	flags_atom |= ATOM_DECORATED
 
 SUBSYSTEM_DEF(decorator)
-	name          = "Decorator"
-	init_order    = SS_INIT_DECORATOR
-	priority      = SS_PRIORITY_DECORATOR
-	flags		  = SS_NO_FIRE
+	name = "Decorator"
+	init_order = SS_INIT_DECORATOR
+	priority = SS_PRIORITY_DECORATOR
+	flags = SS_NO_FIRE
 
 	can_fire = FALSE
 
@@ -37,7 +38,8 @@ SUBSYSTEM_DEF(decorator)
 		registered_decorators[i] = sortDecorators(registered_decorators[i])
 
 	for(var/atom/object in world)
-		object.Decorate()
+		if(!(object.flags_atom & ATOM_DECORATED))
+			object.Decorate()
 		CHECK_TICK
 	return ..()
 

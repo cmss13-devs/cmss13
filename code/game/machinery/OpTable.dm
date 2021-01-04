@@ -25,8 +25,8 @@
 
 	var/obj/structure/machinery/computer/operating/computer = null
 
-/obj/structure/machinery/optable/New()
-	..()
+/obj/structure/machinery/optable/Initialize()
+	. = ..()
 	for(dir in list(NORTH,EAST,SOUTH,WEST))
 		computer = locate(/obj/structure/machinery/computer/operating, get_step(src, dir))
 		if (computer)

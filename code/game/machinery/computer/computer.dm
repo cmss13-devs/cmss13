@@ -13,8 +13,8 @@
 	var/processing = FALSE //Set to true if computer needs to do /process()
 	var/exproof = 0
 
-/obj/structure/machinery/computer/New()
-	..()
+/obj/structure/machinery/computer/Initialize()
+	. = ..()
 	if(processing)
 		start_processing()
 

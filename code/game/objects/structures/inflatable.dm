@@ -264,12 +264,12 @@
 	item_state = "syringe_kit"
 	max_storage_space = 21
 
-	New()
-		..()
-		new /obj/item/inflatable/door(src)
-		new /obj/item/inflatable/door(src)
-		new /obj/item/inflatable/door(src)
-		new /obj/item/inflatable(src)
-		new /obj/item/inflatable(src)
-		new /obj/item/inflatable(src)
-		new /obj/item/inflatable(src)
+/obj/item/storage/briefcase/inflatable/Initialize()
+	. = ..()
+	new /obj/item/inflatable/door(src)
+	new /obj/item/inflatable/door(src)
+	new /obj/item/inflatable/door(src)
+	new /obj/item/inflatable(src)
+	new /obj/item/inflatable(src)
+	new /obj/item/inflatable(src)
+	new /obj/item/inflatable(src)

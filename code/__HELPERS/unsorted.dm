@@ -1153,16 +1153,22 @@ var/global/image/action_blue_power_up
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all turfs in areas of that type of that type in the world.
-/proc/get_area_turfs(var/areatype)
-	if(!areatype) return null
+/proc/get_area_turfs(areatype)
+	if(!areatype)
+		return
+
+	if(istext(areatype))
+		areatype = text2path(areatype)
+
 	if(isarea(areatype))
 		var/area/areatemp = areatype
 		areatype = areatemp.type
 
-	var/list/turfs = new/list()
-	for(var/area/N in all_areas)
-		if(istype(N, areatype))
-			for(var/turf/T in N) turfs += T
+	var/list/turfs = list()
+	var/area/A = GLOB.areas_by_type[areatype]
+	for(var/turf/T in A)
+		turfs += T
+
 	return turfs
 
 /datum/coords //Simple datum for storing coordinates.
@@ -1562,7 +1568,7 @@ var/list/WALLITEMS = list(
 	var/turf/T = get_turf(G)
 	if(!(T.loc.type in grenade_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if(G.harmful && (T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBITT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
+		if(G.harmful && (T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
 			return TRUE
 	return FALSE
 
@@ -1743,3 +1749,25 @@ var/list/WALLITEMS = list(
 	if(istype(D))
 		return !QDELETED(D)
 	return FALSE
+
+//Repopulates sortedAreas list
+/proc/repopulate_sorted_areas()
+	GLOB.sorted_areas = list()
+
+	for(var/area/A in world)
+		GLOB.sorted_areas.Add(A)
+
+	sortTim(GLOB.sorted_areas, /proc/cmp_name_asc)
+
+/atom/proc/GetAllContentsIgnoring(list/ignore_typecache)
+	if(!length(ignore_typecache))
+		return GetAllContents()
+	var/list/processing = list(src)
+	var/list/assembled = list()
+	while(processing.len)
+		var/atom/A = processing[1]
+		processing.Cut(1,2)
+		if(!ignore_typecache[A.type])
+			processing += A.contents
+			assembled += A
+	return assembled

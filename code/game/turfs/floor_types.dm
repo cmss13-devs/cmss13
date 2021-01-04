@@ -9,8 +9,6 @@
 	icon_state = "default"
 
 
-
-
 /turf/open/floor/plating
 	name = "plating"
 	icon_state = "plating"
@@ -24,17 +22,17 @@
 	icon_state = "plating"
 	name = "airless plating"
 
-	New()
-		..()
-		name = "plating"
+/turf/open/floor/plating/airless/Initialize(mapload, ...)
+	. = ..()
+	name = "plating"
 
 /turf/open/floor/plating/icefloor
 	icon_state = "plating"
 	name = "ice colony plating"
 
-	New()
-		..()
-		name = "plating"
+/turf/open/floor/plating/icefloor/Initialize(mapload, ...)
+	. = ..()
+	name = "plating"
 
 /turf/open/floor/plating/plating_catwalk
 	icon = 'icons/turf/almayer.dmi'
@@ -93,9 +91,11 @@
 
 
 
-/turf/open/floor/plating/ironsand/New()
-	..()
+/turf/open/floor/plating/ironsand
 	name = "Iron Sand"
+
+/turf/open/floor/plating/ironsand/Initialize(mapload, ...)
+	. = ..()
 	icon_state = "ironsand[rand(1,15)]"
 
 
@@ -254,17 +254,17 @@
 	icon_state = "floor"
 	name = "airless floor"
 
-	New()
-		..()
-		name = "floor"
+/turf/open/floor/airless/Initialize(mapload, ...)
+	. = ..()
+	name = "floor"
 
 /turf/open/floor/icefloor
 	icon_state = "floor"
 	name = "ice colony floor"
 
-	New()
-		..()
-		name = "floor"
+/turf/open/floor/icefloor/Initialize(mapload, ...)
+	. = ..()
+	name = "floor"
 
 
 /turf/open/floor/light
@@ -272,14 +272,12 @@
 	luminosity = 5
 	icon_state = "light_on"
 
-/turf/open/floor/light/New()
-	floor_tile = new/obj/item/stack/tile/light
+/turf/open/floor/light/Initialize(mapload, ...)
 	var/n = name //just in case commands rename it in the ..() call
-	..()
-	spawn(4)
-		if(src)
-			update_icon()
-			name = n
+	. = ..()
+	floor_tile = new/obj/item/stack/tile/light
+	update_icon()
+	name = n
 
 
 /turf/open/floor/wood
@@ -290,9 +288,9 @@
 /turf/open/floor/vault
 	icon_state = "rockvault"
 
-	New(location,type)
-		..()
-		icon_state = "[type]vault"
+/turf/open/floor/vault/Initialize(mapload, type)
+	. = ..()
+	icon_state = "[type]vault"
 
 
 
@@ -364,34 +362,38 @@
 	name = "Grass patch"
 	icon_state = "grass1"
 
-/turf/open/floor/grass/New()
+/turf/open/floor/grass/Initialize(mapload, ...)
+	. = ..()
 	floor_tile = new/obj/item/stack/tile/grass
 	icon_state = "grass[pick("1","2","3","4")]"
-	..()
-	spawn(4)
-		if(src)
-			update_icon()
-			for(var/direction in cardinal)
-				if(istype(get_step(src,direction),/turf/open/floor))
-					var/turf/open/floor/FF = get_step(src,direction)
-					FF.update_icon() //so siding get updated properly
+	update_icon()
+	return INITIALIZE_HINT_LATELOAD
+
+/turf/open/floor/grass/LateInitialize()
+	. = ..()
+	for(var/direction in cardinal)
+		if(istype(get_step(src,direction),/turf/open/floor))
+			var/turf/open/floor/FF = get_step(src,direction)
+			FF.update_icon() //so siding get updated properly
 
 /turf/open/floor/carpet
 	name = "Carpet"
 	icon_state = "carpet"
 
-/turf/open/floor/carpet/New()
+/turf/open/floor/carpet/Initialize(mapload, ...)
+	. = ..()
 	floor_tile = new/obj/item/stack/tile/carpet
 	if(!icon_state)
 		icon_state = "carpet"
-	..()
-	spawn(4)
-		if(src)
-			update_icon()
-			for(var/direction in list(1,2,4,8,5,6,9,10))
-				if(istype(get_step(src,direction),/turf/open/floor))
-					var/turf/open/floor/FF = get_step(src,direction)
-					FF.update_icon() //so siding get updated properly
+	return INITIALIZE_HINT_LATELOAD
+
+/turf/open/floor/carpet/LateInitialize()
+	. = ..()
+	update_icon()
+	for(var/direction in list(1,2,4,8,5,6,9,10))
+		if(istype(get_step(src,direction),/turf/open/floor))
+			var/turf/open/floor/FF = get_step(src,direction)
+			FF.update_icon() //so siding get updated properly
 
 // Start Prison tiles
 

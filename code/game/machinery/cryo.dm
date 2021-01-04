@@ -18,8 +18,8 @@
 	var/mob/living/carbon/occupant = null
 	var/obj/item/reagent_container/glass/beaker = null
 
-/obj/structure/machinery/cryo_cell/New()
-	..()
+/obj/structure/machinery/cryo_cell/Initialize()
+	. = ..()
 	start_processing()
 
 /obj/structure/machinery/cryo_cell/process()

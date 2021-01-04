@@ -12,10 +12,6 @@ var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_WHISKEY
 var/list/LOWPOP_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_PRISON_STATION, MAP_KUTJEVO)
 var/list/NOTVOTABLE_MAPS = list(MAP_WHISKEY_OUTPOST, MAP_ICE_COLONY)
 var/list/NEXT_MAP_CANDIDATES = DEFAULT_NEXT_MAP_CANDIDATES.Copy() - NOTVOTABLE_MAPS
-var/list/MAPS_COLD_TEMP = list(MAP_ICE_COLONY, MAP_SOROKYNE_STRATA, MAP_CORSAT)
-
-//List of player votes. Name of the map from NEXT_MAP_CANDIADATES indexed by ckey
-var/list/player_votes = list()
 
 // Global lists of the HUDs
 var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),

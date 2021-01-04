@@ -85,7 +85,6 @@
 /area/lv624/lazarus/hydroponics)
 "of" = (
 /obj/structure/surface/table,
-/obj/item/clothing/suit/apron/overalls,
 /obj/item/clothing/under/colonist,
 /turf/open/floor{
 	dir = 5;

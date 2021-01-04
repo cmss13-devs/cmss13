@@ -71,25 +71,21 @@
 	wrenchable = TRUE
 	var/vending_dir
 
-/obj/structure/machinery/vending/New()
-	..()
-	spawn(4)
-		src.slogan_list = splittext(src.product_slogans, ";")
+/obj/structure/machinery/vending/Initialize(mapload, ...)
+	. = ..()
+	src.slogan_list = splittext(src.product_slogans, ";")
 
-		// So not all machines speak at the exact same time.
-		// The first time this machine says something will be at slogantime + this random value,
-		// so if slogantime is 10 minutes, it will say it at somewhere between 10 and 20 minutes after the machine is crated.
-		src.last_slogan = world.time + rand(0, slogan_delay)
+	// So not all machines speak at the exact same time.
+	// The first time this machine says something will be at slogantime + this random value,
+	// so if slogantime is 10 minutes, it will say it at somewhere between 10 and 20 minutes after the machine is crated.
+	src.last_slogan = world.time + rand(0, slogan_delay)
 
-		src.build_inventory(products)
-		 //Add hidden inventory
-		src.build_inventory(contraband, 1)
-		src.build_inventory(premium, 0, 1)
-		power_change()
-		start_processing()
-		return
-
-	return
+	src.build_inventory(products)
+		//Add hidden inventory
+	src.build_inventory(contraband, 1)
+	src.build_inventory(premium, 0, 1)
+	power_change()
+	start_processing()
 
 /obj/structure/machinery/vending/update_icon()
 	overlays.Cut()
@@ -118,9 +114,6 @@
 
 /obj/structure/machinery/vending/proc/build_inventory(var/list/productlist,hidden=0,req_coin=0)
 
-	if(delay_product_spawn)
-		sleep(15) //Make ABSOLUTELY SURE the seed datum is properly populated.
-
 	for(var/typepath in productlist)
 		var/amount = productlist[typepath]
 		var/price = prices[typepath]
@@ -135,10 +128,6 @@
 
 		if(ispath(typepath,/obj/item/weapon/gun) || ispath(typepath,/obj/item/ammo_magazine) || ispath(typepath,/obj/item/explosive/grenade) || ispath(typepath,/obj/item/weapon/gun/flamer) || ispath(typepath,/obj/item/storage) )
 			R.display_color = "black"
-//		else if(ispath(typepath,/obj/item/clothing) || ispath(typepath,/obj/item/storage))
-//			R.display_color = "white"
-//		else if(ispath(typepath,/obj/item/reagent_container) || ispath(typepath,/obj/item/stack/medical))
-//			R.display_color = "blue"
 		else
 			R.display_color = "white"
 
@@ -152,11 +141,7 @@
 			R.category=CAT_NORMAL
 			product_records += R
 
-		if(delay_product_spawn)
-			sleep(5) //sleep(1) did not seem to cut it, so here we are.
-
 		R.product_name = initial(temp_path.name)
-	return
 
 /obj/structure/machinery/vending/get_repair_move_text(var/include_name = TRUE)
 	if(!stat)

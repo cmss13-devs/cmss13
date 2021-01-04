@@ -254,9 +254,13 @@
 		/obj/structure/window/framed/almayer,
 		/obj/structure/machinery/door/airlock)
 
-/obj/structure/machinery/door/airlock/almayer/New()
-	addtimer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
-	..()
+/obj/structure/machinery/door/airlock/almayer/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/door/airlock/almayer/LateInitialize()
+	. = ..()
+	relativewall_neighbours()
 
 /obj/structure/machinery/door/airlock/almayer/take_damage(var/dam, var/mob/M)
 	var/damage_check = max(0, damage + dam)

@@ -9,8 +9,8 @@
 
 
 //Disk stuff.
-/obj/item/disk/data/New()
-	..()
+/obj/item/disk/data/Initialize()
+	. = ..()
 	var/diskcolor = pick(0,1,2)
 	src.icon_state = "datadisk[diskcolor]"
 
@@ -49,8 +49,8 @@
 	name = "Diskette Box"
 	icon_state = "disk_kit"
 
-/obj/item/storage/box/disks/New()
-	..()
+/obj/item/storage/box/disks/Initialize()
+	. = ..()
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)
 	new /obj/item/disk/data(src)

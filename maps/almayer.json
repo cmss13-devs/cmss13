@@ -1,0 +1,6 @@
+{
+    "map_name": "USS Almayer",
+    "map_path": "map_files/USS_Almayer",
+    "map_file": "USS_Almayer.dmm",
+    "traits": [{"Marine Main Ship": true}]
+}

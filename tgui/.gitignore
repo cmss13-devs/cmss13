@@ -3,6 +3,7 @@
 node_modules
 *.log
 package-lock.json
+package.json
 
 ## Yarn stuff
 /.pnp.*

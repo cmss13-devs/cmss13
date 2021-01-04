@@ -11,7 +11,7 @@
 	var/obj/item/toppaper	//The topmost piece of paper.
 	flags_equip_slot = SLOT_WAIST
 
-/obj/item/clipboard/New()
+/obj/item/clipboard/Initialize()
 	. = ..()
 	update_icon()
 

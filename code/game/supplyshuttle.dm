@@ -1,6 +1,4 @@
 //Config stuff
-#define SUPPLY_DOCKZ 2          //Z-level of the Dock.
-#define SUPPLY_STATIONZ 1       //Z-level of the Station.
 #define SUPPLY_STATION_AREATYPE /area/supply/station //Type of the supply shuttle area for station
 #define SUPPLY_STATION_AREATYPE_VEHICLE /area/supply/station/vehicle
 #define SUPPLY_DOCK_AREATYPE /area/supply/dock	//Type of the supply shuttle area for dock
@@ -224,8 +222,13 @@ var/datum/controller/supply/supply_controller = new()
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
+	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+	if(length(z_coord))
+		z_coord = z_coord[1]
+	else
+		z_coord = 1 // fuck it
 
-	var/turf/T = locate(x_coord, y_coord, 1)
+	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
 		return
@@ -1053,8 +1056,14 @@ var/datum/controller/supply/supply_controller = new()
 			if(T.y > max_y)
 				max_y = T.y
 
+		var/z_coord = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
+		if(length(z_coord))
+			z_coord = z_coord[1]
+		else
+			z_coord = 1 //fuck it
+
 		// dunno why the +1 is needed but the vehicles spawn off-center
-		var/turf/middle_turf = locate(min_x + Ceiling((max_x-min_x)/2) + 1, min_y + Ceiling((max_y-min_y)/2) + 1, SUPPLY_DOCKZ)
+		var/turf/middle_turf = locate(min_x + Ceiling((max_x-min_x)/2) + 1, min_y + Ceiling((max_y-min_y)/2) + 1, z_coord)
 
 		var/obj/vehicle/multitile/ordered_vehicle
 		switch(href_list["get_vehicle"])

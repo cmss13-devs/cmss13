@@ -28,8 +28,8 @@ They're all essentially identical when it comes to getting the job done.
 	var/base_mag_icon //the default mag icon state.
 	var/base_mag_item //the default mag item (inhand) state.
 
-/obj/item/ammo_magazine/New(loc, spawn_empty)
-	..()
+/obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
+	. = ..()
 	GLOB.ammo_magazine_list += src
 	base_mag_icon = icon_state
 	base_mag_item = item_state
@@ -257,8 +257,8 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/number_of_states = 10 //How many variations of this item there are.
 	garbage = TRUE
 
-/obj/item/ammo_casing/New()
-	..()
+/obj/item/ammo_casing/Initialize()
+	. = ..()
 	pixel_x = rand(-2.0, 2) //Want to move them just a tad.
 	pixel_y = rand(-2.0, 2)
 	icon_state += "[rand(1,number_of_states)]" //Set the icon to it.

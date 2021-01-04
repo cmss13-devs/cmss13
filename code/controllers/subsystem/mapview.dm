@@ -4,9 +4,11 @@ SUBSYSTEM_DEF(mapview)
 	wait          = 2 SECONDS
 	flags         = SS_KEEP_TIMING | SS_DISABLE_FOR_TESTING
 	priority      = SS_PRIORITY_MAPVIEW
+	init_order = SS_INIT_MAPVIEW
 	var/list/map_machines
 
 /datum/controller/subsystem/mapview/Initialize(start_timeofday)
+	generate_marine_mapview()
 	create_map_machines()
 	return ..()
 

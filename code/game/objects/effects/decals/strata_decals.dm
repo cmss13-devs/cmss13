@@ -2,11 +2,11 @@
 	icon = 'icons/effects/strata_decals.dmi'
 	layer = TURF_LAYER
 
-/obj/effect/decal/strata_decals/New()
+/obj/effect/decal/strata_decals/Initialize(mapload, ...)
 	. = ..()
 
 	loc.overlays += src
-	qdel(src)
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/decal/strata_decals/catwalk/prison //For finding and replacing prison catwalk objects since they nasty
 	icon = 'icons/turf/floors/strata_floor.dmi'

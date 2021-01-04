@@ -11,7 +11,7 @@
 	if(is_zoomed)
 		zoom_out()
 
-	if(map_tag == MAP_WHISKEY_OUTPOST)
+	if(SSticker?.mode?.hardcore)
 		ghostize()
 
 	SetLuminosity(0)

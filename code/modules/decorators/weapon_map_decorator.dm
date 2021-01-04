@@ -8,7 +8,7 @@
 	var/icon/j_icon
 
 /datum/decorator/weapon_map_decorator/is_active_decor()
-	return map_array.Find(map_tag)
+	return map_array.Find(SSmapping.configs[GROUND_MAP].map_name)
 
 /datum/decorator/weapon_map_decorator/get_decor_types()
 	return typesof(/obj/item/weapon/gun) - /obj/item/weapon/gun
@@ -21,8 +21,8 @@
 
 	gun.icon = c_icon
 
-	gun.item_icons = list()	
-	
+	gun.item_icons = list()
+
 	gun.item_icons += list(WEAR_L_HAND = l_icon)
 	gun.item_icons += list(WEAR_R_HAND = r_icon)
 	gun.item_icons += list(WEAR_BACK = b_icon)

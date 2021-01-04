@@ -39,7 +39,7 @@ PLANT_CUT_MACHETE = 3 = Needs at least a machete to be cut down
 	var/fire_flag = FLORA_NO_BURN
 	var/center = TRUE //Determine if we want less or more ash when burned
 
-/obj/structure/flora/New()
+/obj/structure/flora/Initialize()
 	. = ..()
 	if(icon_tag)
 		icon_state = "[icon_tag]_[rand(1,variations)]"
@@ -168,8 +168,8 @@ ICE GRASS
 	unacidable = TRUE
 	var/overlay_type = "tallgrass_overlay"
 
-/obj/structure/flora/grass/tallgrass/New()
-	..()
+/obj/structure/flora/grass/tallgrass/Initialize()
+	. = ..()
 	update_icon()
 
 /obj/structure/flora/grass/tallgrass/update_icon()

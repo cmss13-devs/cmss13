@@ -79,12 +79,9 @@ var/CELLRATE = 0.002	// multiplier for watts per tick <> cell storage (eg: 0.02 
 						//It's a conversion constant. power_used*CELLRATE = charge_provided, or charge_used/CELLRATE = power_provided
 var/CHARGELEVEL = 0.0005 // Cap for how fast cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 
-var/SupplyElevator
-var/VehicleElevator
 var/VehicleElevatorConsole
 var/HangarUpperElevator
 var/HangarLowerElevator
-var/global/map_tag
 
 //Spawnpoints.
 var/list/fallen_list = list()

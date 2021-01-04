@@ -11,8 +11,8 @@
 	var/last_use
 	var/id
 
-/obj/structure/machinery/line_nexter/New()
-	..()
+/obj/structure/machinery/line_nexter/Initialize()
+	. = ..()
 	last_use = world.time
 
 /obj/structure/machinery/line_nexter/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -33,7 +33,7 @@
 
 /obj/structure/machinery/line_nexter/proc/next()
 	//if((last_use + 20) > world.time) // 20 seconds
-	for(var/mob/living/carbon/human/H in locate(x,y,z))
+	for(var/mob/living/carbon/human/H in loc)
 		step(H,dir)
 	last_use = world.time
 

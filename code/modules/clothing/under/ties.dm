@@ -16,11 +16,8 @@
 	flags_equip_slot = SLOT_ACCESSORY
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/ties_monkey.dmi')
 
-/obj/item/clothing/accessory/proc/can_attach_to(var/mob/user, var/obj/item/clothing/C)
-	return TRUE
-
-/obj/item/clothing/accessory/New()
-	..()
+/obj/item/clothing/accessory/Initialize()
+	. = ..()
 	inv_overlay = image("icon" = 'icons/obj/items/clothing/ties_overlay.dmi', "icon_state" = "[item_state? "[item_state]" : "[icon_state]"]")
 
 /obj/item/clothing/accessory/Destroy()
@@ -28,6 +25,9 @@
 		has_suit.remove_accessory()
 	QDEL_NULL(inv_overlay)
 	. = ..()
+
+/obj/item/clothing/accessory/proc/can_attach_to(var/mob/user, var/obj/item/clothing/C)
+	return TRUE
 
 //when user attached an accessory to S
 /obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user)
@@ -172,7 +172,7 @@
 		return FALSE
 
 	return TRUE
-	
+
 
 /obj/item/clothing/accessory/medal/examine(mob/user)
 	..()

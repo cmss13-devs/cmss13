@@ -11,8 +11,8 @@
 	var/scoreleft = 0
 	var/scoreright = 0
 
-/obj/structure/machinery/scoreboard/New()
-	..()
+/obj/structure/machinery/scoreboard/Initialize()
+	. = ..()
 	update_display()
 
 /obj/structure/machinery/scoreboard/proc/update_display()

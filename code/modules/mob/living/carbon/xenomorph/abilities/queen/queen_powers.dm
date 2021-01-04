@@ -152,7 +152,7 @@
 		to_chat(X, SPAN_XENOWARNING("You need to be on resin to grow an ovipositor."))
 		return
 
-	if(interior_manager && interior_manager.interior_z == X.z)
+	if(GLOB.interior_manager.interior_z == X.z)
 		to_chat(X, SPAN_XENOWARNING("It's too tight in here to grow an ovipositor."))
 		return
 

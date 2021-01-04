@@ -46,26 +46,29 @@
 /obj/proc/check_access(obj/item/I)
 	//These generations have been moved out of /obj/New() because they were slowing down the creation of objects that never even used the access system.
 	gen_access()
-	var/i
 	if(!islist(req_access)) return 1//something's very wrong
 	var/L[] = req_access
 	if(!L.len && (!req_one_access || !req_one_access.len)) return 1//no requirements
 	if(!I) return
 
-	var/A[] = I.GetAccess()
-	for(i in req_access)
-		if(!(i in A)) return//doesn't have this access
+	var/list/A = I.GetAccess()
+	for(var/i in req_access)
+		if(!(i in A))
+			return FALSE//doesn't have this access
 
 	if(req_one_access && req_one_access.len)
-		for(i in req_one_access)
-			if(i in A) return 1//has an access from the single access list
-		return
-	return 1
+		for(var/i in req_one_access)
+			if(i in A)
+				return TRUE//has an access from the single access list
+		return FALSE
+	return TRUE
 
 /obj/proc/check_access_list(L[])
 	gen_access()
 	if(!req_access  && !req_one_access)	return 1
 	if(!islist(req_access)) return 1
+	if(!req_access.len && !islist(req_one_access))
+		return TRUE
 	if(!req_access.len && (!req_one_access || !req_one_access.len))	return 1
 	if(!islist(L))	return
 	var/i

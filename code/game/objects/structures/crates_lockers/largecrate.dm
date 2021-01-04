@@ -98,16 +98,14 @@
 						/obj/item/clothing/under/marine,
 						/obj/item/clothing/shoes/marine)
 
-/obj/structure/largecrate/random/New()
-	..()
+/obj/structure/largecrate/random/Initialize()
+	. = ..()
 	if(!num_things) num_things = rand(0,3)
 
-	while(num_things)
-		if(!num_things)
-			break
-		num_things--
+	for(var/i in 1 to num_things)
 		var/obj/item/thing = pick(stuff)
 		new thing(src)
+	num_things = 0
 
 /obj/structure/largecrate/random/case
 	name = "storage case"

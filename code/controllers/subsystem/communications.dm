@@ -251,7 +251,7 @@ SUBSYSTEM_DEF(radio)
 		target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	if(tcomm_machines_almayer.len > 0)
 		target_zs += SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-		target_zs += SSmapping.levels_by_trait(ZTRAIT_LOWORBITT)
+		target_zs += SSmapping.levels_by_trait(ZTRAIT_LOWORBIT)
 	return target_zs
 
 /datum/controller/subsystem/radio/proc/add_tcomm_machine(var/obj/machine)

@@ -83,14 +83,14 @@
 	icon_state = "golden_health"
 	item_state = "analyzer"
 
-/obj/item/device/healthanalyzer/golden/New()
+/obj/item/device/healthanalyzer/golden/Initialize()
 	. = ..()
-	
+
 	LAZYADD(objects_of_interest, src)
 
 /obj/item/device/healthanalyzer/golden/Destroy()
 	. = ..()
-	
+
 	LAZYREMOVE(objects_of_interest, src)
 
 // Medbay item
@@ -100,14 +100,14 @@
 	icon_state = "folded_sheet_medical"
 	item_state = "folded_sheet_medical"
 
-/obj/item/folded_medical_sheet/New()
+/obj/item/folded_medical_sheet/Initialize()
 	. = ..()
-	
+
 	LAZYADD(objects_of_interest, src)
 
 /obj/item/folded_medical_sheet/Destroy()
 	. = ..()
-	
+
 	LAZYREMOVE(objects_of_interest, src)
 
 // Req tally book
@@ -117,14 +117,14 @@
 	icon = 'icons/obj/items/books.dmi'
 	icon_state ="book"
 
-/obj/item/tally_book/New()
+/obj/item/tally_book/Initialize()
 	. = ..()
-	
+
 	LAZYADD(objects_of_interest, src)
 
 /obj/item/tally_book/Destroy()
 	. = ..()
-	
+
 	LAZYREMOVE(objects_of_interest, src)
 
 // CIC item
@@ -134,12 +134,12 @@
 	icon_state = "golden_cup"
 	item_state = "golden_cup"
 
-/obj/item/golden_cup/New()
+/obj/item/golden_cup/Initialize()
 	. = ..()
-	
+
 	LAZYADD(objects_of_interest, src)
-	
+
 /obj/item/golden_cup/Destroy()
 	. = ..()
-	
+
 	LAZYREMOVE(objects_of_interest, src)

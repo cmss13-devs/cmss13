@@ -31,12 +31,13 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-	New(loc, laser_name)
-		..()
-		if(!c_tag && laser_name)
-			var/area/A = get_area(src)
-			c_tag = "[laser_name] ([A.name])"
+/obj/structure/machinery/camera/laser_cam/Initialize(mapload, laser_name)
+	. = ..()
+	if(!c_tag && laser_name)
+		var/area/A = get_area(src)
+		c_tag = "[laser_name] ([A.name])"
 
+/obj/structure/machinery/camera/laser_cam
 	emp_act(severity)
 		return //immune to EMPs, just in case
 
@@ -46,8 +47,8 @@
 
 // ALL UPGRADES
 
-/obj/structure/machinery/camera/all/New()
-	..()
+/obj/structure/machinery/camera/all/Initialize(mapload, ...)
+	. = ..()
 	upgradeEmpProof()
 	upgradeXRay()
 	upgradeMotion()
@@ -72,19 +73,18 @@
 	var/number = 0 //camera number in area
 
 //This camera type automatically sets it's name to whatever the area that it's in is called.
-/obj/structure/machinery/camera/autoname/New()
-	..()
-	spawn(10)
-		number = 1
-		var/area/A = get_area(src)
-		if(A)
-			for(var/obj/structure/machinery/camera/autoname/C in machines)
-				if(C == src) continue
-				var/area/CA = get_area(C)
-				if(CA.type == A.type)
-					if(C.number)
-						number = max(number, C.number+1)
-			c_tag = "[A.name] #[number]"
+/obj/structure/machinery/camera/autoname/Initialize(mapload, ...)
+	. = ..()
+	number = 1
+	var/area/A = get_area(src)
+	if(A)
+		for(var/obj/structure/machinery/camera/autoname/C in machines)
+			if(C == src) continue
+			var/area/CA = get_area(C)
+			if(CA.type == A.type)
+				if(C.number)
+					number = max(number, C.number+1)
+		c_tag = "[A.name] #[number]"
 
 //cameras installed inside the dropships, accessible via both cockpit monitor and Almayer camera computers
 /obj/structure/machinery/camera/autoname/almayer/dropship_one
@@ -102,7 +102,7 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	network = list("almayer", "containment")
-	
+
 /obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	return
 

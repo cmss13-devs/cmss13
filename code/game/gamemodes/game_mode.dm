@@ -32,6 +32,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/datum/entity/round_stats/round_stats = null
 
 	var/list/roles_to_roll
+	
+	var/hardcore = FALSE
 
 /datum/game_mode/proc/announce() //to be calles when round starts
 	to_world("<B>Notice</B>: [src] did not define announce()")
@@ -98,7 +100,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	log_game("Round end result: [round_finished]")
 	to_world("<span class='round_header'>|Round Complete|</span>")
 
-	to_world(SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [map_tag]."))
+	to_world(SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name]."))
 	to_world(SPAN_ROUNDBODY("The game-mode was: [master_mode]!"))
 	to_world(SPAN_ROUNDBODY("End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
 
@@ -209,10 +211,6 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 			heads += player.mind
 	return heads
 
-/datum/game_mode/New()
-	if(!map_tag)
-		to_world("MT001: No mapping tag set, tell a coder. [map_tag]")
-
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
@@ -282,7 +280,7 @@ proc/display_roundstart_logout_report()
 		round_stats.name = operation_name
 		round_stats.real_time_start = world.realtime
 		var/datum/entity/map_stats/new_map = new()
-		new_map.name = map_tag
+		new_map.name = SSmapping.configs[GROUND_MAP].map_name
 		new_map.linked_round = round_stats
 		new_map.death_stats_list = round_stats.death_stats_list
 		round_stats.game_mode = name

@@ -93,7 +93,7 @@
 		var/turf/T = get_turf(R)
 		if (!T)
 			continue
-		if(is_admin_level(T.z) || T.z > 7)
+		if(is_admin_level(T.z))
 			continue
 		var/tmpname = T.loc.name
 		if(areaindex[tmpname])

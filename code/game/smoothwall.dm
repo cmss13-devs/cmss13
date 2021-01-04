@@ -131,7 +131,7 @@
 					k.relativewall()
 					break
 
-		T = locate(x, y-1, z)
+		T = get_step(src, SOUTH)
 		for(j in tiles_with)
 			if(istype(T, j))
 				T.relativewall()
@@ -152,7 +152,7 @@
 					k.relativewall()
 					break
 
-		T = locate(x-1, y, z)
+		T = get_step(src, WEST)
 		for(j in tiles_with)
 			if(istype(T, j))
 				T.relativewall()

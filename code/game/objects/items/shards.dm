@@ -24,7 +24,8 @@
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 6)
 
 
-/obj/item/shard/New()
+/obj/item/shard/Initialize()
+	. = ..()
 	shardsize = pick("large", "medium", "small")
 	switch(shardsize)
 		if("small")
@@ -37,7 +38,6 @@
 			pixel_x = rand(-5, 5)
 			pixel_y = rand(-5, 5)
 	icon_state += shardsize
-	..()
 
 
 /obj/item/shard/attackby(obj/item/W, mob/user)
@@ -68,7 +68,7 @@
 	source_sheet_type = /obj/item/stack/sheet/glass/phoronglass
 
 
-// Shrapnel. 
+// Shrapnel.
 // on_embed is called from projectile.dm, bullet_act(obj/item/projectile/P).
 // on_embedded_movement is called from human.dm, handle_embedded_objects().
 

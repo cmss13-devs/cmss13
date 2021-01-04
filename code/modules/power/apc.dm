@@ -121,7 +121,7 @@
 
 	appearance_flags = TILE_BOUND
 
-/obj/structure/machinery/power/apc/New(var/turf/loc, var/ndir, var/building=0)
+/obj/structure/machinery/power/apc/Initialize(mapload, var/ndir, var/building=0)
 	. = ..()
 
 	//Offset 24 pixels in direction of dir
@@ -145,8 +145,6 @@
 		addtimer(CALLBACK(src, .proc/update), 5)
 
 	start_processing()
-
-	sleep(0) //Break few ACPs on the colony
 
 	if(!start_charge && is_ground_level(z) && prob(10))
 		set_broken()
@@ -1216,12 +1214,14 @@
 
 	//Aesthetically much better!
 	visible_message(SPAN_WARNING("[src]'s screen flickers with warnings briefly!"))
-	spawn(rand(2, 5))
-		visible_message(SPAN_DANGER("[src]'s screen suddenly explodes in rain of sparks and small debris!"))
-		stat |= BROKEN
-		operating = 0
-		update_icon()
-		update()
+	addtimer(CALLBACK(src, .proc/do_set_broken), rand(2, 5))
+
+/obj/structure/machinery/power/apc/proc/do_set_broken()
+	visible_message(SPAN_DANGER("[src]'s screen suddenly explodes in rain of sparks and small debris!"))
+	stat |= BROKEN
+	operating = 0
+	update_icon()
+	update()
 
 //Overload all the lights in this APC area
 /obj/structure/machinery/power/apc/proc/overload_lighting()

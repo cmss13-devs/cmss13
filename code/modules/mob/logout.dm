@@ -1,6 +1,6 @@
 /mob/Logout()
 	nanomanager.user_logout(src) // this is used to clean up (remove) this user's Nano UIs
-	if(interactee) 
+	if(interactee)
 		unset_interaction()
 	GLOB.player_list -= src
 	log_access("Logout: [key_name(src)]")
@@ -22,5 +22,10 @@
 			record_playtime(P, job, type)
 
 	logging_ckey = null
+
+	if(client)
+		for(var/foo in client.player_details.post_logout_callbacks)
+			var/datum/callback/CB = foo
+			CB.Invoke()
 
 	return TRUE

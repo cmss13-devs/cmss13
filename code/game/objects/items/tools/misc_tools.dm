@@ -99,7 +99,7 @@
 		playsound(user.loc, "sound/items/pen_click_[on? "on": "off"].ogg", 100, 1, 5)
 	update_pen_state()
 
-/obj/item/tool/pen/New()
+/obj/item/tool/pen/Initialize()
 	. = ..()
 	update_pen_state()
 

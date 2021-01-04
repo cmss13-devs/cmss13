@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(sound)
 	runlevels 	  = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 	var/list/template_queue = list()							// Full Template Queue
-	var/list/run_queue = list()									// Queue subset being processed during this tick	
+	var/list/run_queue = list()									// Queue subset being processed during this tick
 	var/list/run_hearers = null									// Hearers for currently being processed template
 
 /datum/controller/subsystem/sound/fire(resumed = FALSE)
@@ -36,10 +36,10 @@ SUBSYSTEM_DEF(sound)
 /datum/controller/subsystem/sound/proc/queue(datum/sound_template/template, var/list/client/hearers, list/datum/interior/extra_interiors)
 	if(!hearers)
 		hearers = list()
-	if(extra_interiors && interior_manager)
+	if(extra_interiors && GLOB.interior_manager)
 		for(var/datum/interior/VI in extra_interiors)
 			if(VI?.ready && VI?.chunk_id)
-				var/list/bounds = interior_manager.get_chunk_coords(VI.chunk_id)
+				var/list/bounds = GLOB.interior_manager.get_chunk_coords(VI.chunk_id)
 				if(bounds.len >= 2)
-					hearers |= SSquadtree.players_in_range(RECT(bounds[1], bounds[2], interior_manager.chunk_size, interior_manager.chunk_size), interior_manager.interior_z)
+					hearers |= SSquadtree.players_in_range(RECT(bounds[1], bounds[2], GLOB.interior_manager.chunk_size, GLOB.interior_manager.chunk_size), GLOB.interior_manager.interior_z)
 	template_queue[template] = hearers

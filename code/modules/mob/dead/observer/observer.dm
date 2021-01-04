@@ -313,12 +313,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Teleport"
 	set desc= "Teleport to a location"
+
 	if(!istype(usr, /mob/dead/observer))
 		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
 		return
-	var/A
-	A = input("Area to jump to", "BOOYEA", A) as null|anything in ghostteleportlocs
-	var/area/thearea = ghostteleportlocs[A]
+
+	var/area/thearea = input("Area to jump to", "BOOYEA") as null|anything in GLOB.sorted_areas
 	if(!thearea)	return
 
 	var/list/L = list()
@@ -327,8 +327,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(!L || !L.len)
 		to_chat(src, "<span style='color: red;'>No area available.</span>")
+		return
 
-	usr.forceMove(pick(L))
+	usr.loc = pick(L)
 	following = null
 
 /mob/dead/observer/verb/follow_local(var/mob/target)

@@ -11,6 +11,9 @@
 	can_bloody = FALSE
 	layer = UNDER_TURF_LAYER
 
+/turf/open/space/basic/New()	//Do not convert to Initialize
+	//This is used to optimize the map loader
+	return
 
 // override for space turfs, since they should never hide anything
 /turf/open/space/levelupdate()
@@ -18,10 +21,10 @@
 		if(O.level == 1)
 			O.hide(FALSE)
 
-/turf/open/space/New()
+/turf/open/space/Initialize(mapload, ...)
+	. = ..()
 	if(!istype(src, /turf/open/space/transit))
 		icon_state = "[((x + y) ^ ~(x * y) + z) % 25]"
-	..()
 
 /turf/open/space/attack_hand(mob/user)
 	if ((user.is_mob_restrained() || !( user.pulling )))
@@ -117,8 +120,7 @@
 			var/safety = 1
 
 			while(move_to_z == src.z)
-				var/move_to_z_str = pickweight(accessable_z_levels)
-				move_to_z = text2num(move_to_z_str)
+				move_to_z = pick(SSmapping.levels_by_trait(ZTRAIT_GROUND))
 				safety++
 				if(safety > 10)
 					break

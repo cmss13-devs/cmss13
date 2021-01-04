@@ -299,7 +299,7 @@
 
 	. = ..()
 	//WO GAMEMODE
-	if(map_tag == MAP_WHISKEY_OUTPOST)
+	if(SSticker?.mode?.hardcore)
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
 

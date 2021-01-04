@@ -47,15 +47,7 @@
 			to_chat(H, line)
 	else
 		to_chat(H, "<h2>You are a survivor!</h2>")
-		switch(map_tag)
-			if(MAP_PRISON_STATION)
-				to_chat(H, SPAN_NOTICE(" You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now."))
-			if(MAP_CORSAT)
-				to_chat(H, SPAN_NOTICE("You are a survivor of the containment breach on the Corporate Orbital Research Station for Advanced Technology (CORSAT). You worked or lived on the station, and managed to avoid the alien attacks... until now."))
-			if(MAP_ICE_COLONY)
-				to_chat(H, SPAN_NOTICE("You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now."))
-			else
-				to_chat(H, SPAN_NOTICE("You are a survivor of the attack on the colony. You worked or lived in the archaeology colony, and managed to avoid the alien attacks... until now."))
+		to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
 		to_chat(H, SPAN_NOTICE("You are fully aware of the xenomorph threat and are able to use this knowledge as you see fit."))
 		to_chat(H, SPAN_NOTICE("You are NOT aware of the marines or their intentions. "))
 
@@ -104,66 +96,7 @@
 	return TRUE
 
 /datum/job/civilian/survivor/proc/survivor_old_equipment(var/mob/living/carbon/human/H)
-	var/list/survivor_types
-	switch(map_tag)
-		if(MAP_PRISON_STATION)
-			survivor_types = list(
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Corporate Liaison",
-				"Survivor - Security",
-				"Survivor - Prisoner",
-				"Survivor - Prisoner",
-				"Survivor - Gang Leader",
-				"Survivor - Engineer"
-			)
-		if(MAP_LV_624, MAP_BIG_RED,MAP_DESERT_DAM, MAP_KUTJEVO)
-			survivor_types = list(
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Chef",
-				"Survivor - Chaplain",
-				"Survivor - Miner",
-				"Survivor - Engineer",
-				"Survivor - Trucker",
-				"Survivor - Colonial Marshall",
-			)
-		if(MAP_ICE_COLONY)
-			survivor_types = list(
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Security",
-				"Survivor - Trucker",
-				"Survivor - Engineer"
-			)
-		if (MAP_SOROKYNE_STRATA)
-			survivor_types = list(
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Security",
-				"Survivor - Engineer"
-			)
-		if(MAP_CORSAT)
-			survivor_types = list(
-				"Survivor - Scientist",
-				"Survivor - Scientist",
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Security",
-				"Survivor - Corporate Liaison",
-				"Survivor - Engineer"
-			)
-		else
-			survivor_types = list(
-				"Survivor - Scientist",
-				"Survivor - Doctor",
-				"Survivor - Chef",
-				"Survivor - Chaplain",
-				"Survivor - Miner",
-				"Survivor - Colonial Marshall",
-				"Survivor - Engineer"
-				)
-
+	var/list/survivor_types = SSmapping.configs[GROUND_MAP].survivor_types
 	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
 
 /datum/job/civilian/survivor/synth

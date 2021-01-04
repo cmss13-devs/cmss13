@@ -17,6 +17,8 @@
 
 	var/flags_alarm_state = NO_FLAGS
 
+	var/unique = TRUE
+
 	var/has_gravity = 1
 	var/list/apc = list()
 	var/list/area_machines = list() // list of machines only for master areas
@@ -78,17 +80,24 @@
 
 
 /area/New()
+	// This interacts with the map loader, so it needs to be set immediately
+	// rather than waiting for atoms to initialize.
+	if(unique)
+		GLOB.areas_by_type[type] = src
 	..()
+	master = src //moved outside the spawn(1) to avoid runtimes in lighting.dm when it references loc.loc.master ~Carn
 
+	related = list(src)
+	initialize_power_and_lighting()
+
+/area/Initialize(mapload, ...)
 	icon_state = "" //Used to reset the icon overlay, I assume.
 	layer = AREAS_LAYER
-	master = src //moved outside the spawn(1) to avoid runtimes in lighting.dm when it references loc.loc.master ~Carn
 	uid = ++global_uid
-	related = list(src)
+	. = ..()
 	active_areas += src
 	all_areas += src
-
-	initialize_power_and_lighting()
+	reg_in_areas_in_z()
 
 /area/proc/initialize_power_and_lighting(override_power)
 	if(requires_power)
@@ -447,4 +456,27 @@
 /area/return_gas()
 	return gas_type
 
+
+// A hook so areas can modify the incoming args
+/area/proc/PlaceOnTopReact(list/new_baseturfs, turf/fake_turf_type, flags)
+	return flags
+
+/area/proc/reg_in_areas_in_z()
+	if(!length(contents))
+		return
+
+	var/list/areas_in_z = SSmapping.areas_in_z
+	var/z
+	for(var/i in contents)
+		var/atom/thing = i
+		if(!thing)
+			continue
+		z = thing.z
+		break
+	if(!z)
+		WARNING("No z found for [src]")
+		return
+	if(!areas_in_z["[z]"])
+		areas_in_z["[z]"] = list()
+	areas_in_z["[z]"] += src
 

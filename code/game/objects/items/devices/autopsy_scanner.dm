@@ -8,20 +8,20 @@
 	icon_state = "autopsy_scanner"
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_SMALL
-	
+
 	var/list/datum/autopsy_data_scanner/wdata = list()
 	var/list/datum/autopsy_data_scanner/chemtraces = list()
 	var/target_name = null
 	var/timeofdeath = null
 
-/obj/item/device/autopsy_scanner/New()
+/obj/item/device/autopsy_scanner/Initialize()
 	. = ..()
-	
+
 	LAZYADD(objects_of_interest, src)
 
 /obj/item/device/autopsy_scanner/Destroy()
 	. = ..()
-	
+
 	LAZYREMOVE(objects_of_interest, src)
 
 /datum/autopsy_data_scanner
@@ -107,9 +107,9 @@
 
 			var/wname = W.pretend_weapon
 
-			if(weapon_chances[wname]) 
+			if(weapon_chances[wname])
 				weapon_chances[wname] += W.damage
-			else 
+			else
 				weapon_chances[wname] = max(W.damage, 1)
 			total_score+=W.damage
 

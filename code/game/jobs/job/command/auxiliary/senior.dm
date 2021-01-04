@@ -9,7 +9,7 @@
 	return ..()
 
 /datum/job/command/senior/announce_entry_message(mob/living/carbon/human/H)
-	if(flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
+	if(flags_startup_parameters & ROLE_ADD_TO_MODE && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/ai_announcement, "Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!"), 1.5 SECONDS)
 	..()
 

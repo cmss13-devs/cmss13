@@ -95,7 +95,7 @@
 
 	// START: CORSAT shuttle(s).. i mean monorails, what
 	// Added by Fourkhan, 5/31/2019 - 6/7/19
-	if (map_tag == MAP_CORSAT)
+	if (SSmapping.configs[GROUND_MAP].map_name)
 		shuttle1 = new
 		shuttle1.location = 0
 		shuttle1.warmup_time = SECONDS_10
@@ -382,6 +382,9 @@
 	shuttle.require_link = 1
 	shuttles["Transit 2"] = shuttle
 	process_shuttles += shuttle
+
+	for(var/obj/structure/machinery/computer/shuttle_control/S in GLOB.shuttle_controls)
+		S.shuttle_datum = shuttles[S.shuttle_tag]
 
 
 //This is called by gameticker after all the machines and radio frequencies have been properly initialized

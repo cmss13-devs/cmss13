@@ -169,7 +169,7 @@
 	updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/check_blood_splash(damage = 0, damtype = BRUTE, chancemod = 0, radius = 1)
-	if(!damage || world.time < acid_splash_last + acid_splash_cooldown ||map_tag == MAP_WHISKEY_OUTPOST)
+	if(!damage || world.time < acid_splash_last + acid_splash_cooldown || SSticker?.mode?.hardcore)
 		return FALSE
 	var/chance = 20 //base chance
 	if(damtype == BRUTE) chance += 5

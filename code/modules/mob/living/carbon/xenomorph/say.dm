@@ -23,7 +23,7 @@
 	if(copytext(message, 1, 2) == "*")
 		return emote(copytext(message, 2), player_caused = TRUE)
 
-	var/datum/language/speaking = null			
+	var/datum/language/speaking = null
 	if(length(message) >= 2)
 		if(copytext(message,1,2) == ";" && languages.len)
 			for(var/datum/language/L in languages)
@@ -56,7 +56,7 @@
 					forced = 1
 					break
 
-	if(speaking && !forced) 
+	if(speaking && !forced)
 		if (copytext(message,1,2) == ";")
 			message = trim(copytext(message,2))
 		else if (copytext(message,1,3) == ":q" || copytext(message,1,3) == ":Q")
@@ -88,18 +88,18 @@
 	if(interference)
 		to_chat(src, SPAN_WARNING("A headhunter temporarily cut off your psychic connection!"))
 		return
-	
+
 	hivemind_broadcast(message, hive)
 
 /mob/living/carbon/proc/hivemind_broadcast(var/message, var/datum/hive_status/hive)
 	if(!message || stat || !hive)
 		return
 
-	if(!hive.living_xeno_queen && !Check_WO() && !hive.allow_no_queen_actions)
+	if(!hive.living_xeno_queen && !SSticker?.mode?.hardcore && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("There is no Queen. You are alone."))
 		return
 
-	log_hivemind("[key_name(src)] : [message]")	
+	log_hivemind("[key_name(src)] : [message]")
 
 	var/track = ""
 	var/overwatch_target = XENO_OVERWATCH_TARGET_HREF
@@ -138,6 +138,6 @@
 					rendered = SPAN_XENOLEADER("Hivemind, Leader [src.name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
 				else
 					rendered = SPAN_XENO("Hivemind, [src.name] [overwatch_insert] hisses, <span class='normal'>'[message]'</span>")
-				
+
 				S.show_message(rendered, 2)
-				
+

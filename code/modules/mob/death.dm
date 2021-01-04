@@ -3,7 +3,7 @@
 /mob/proc/gib(var/cause = "gibbing")
 	death(cause, 1)
 	gib_animation()
-	if (map_tag != MAP_WHISKEY_OUTPOST)
+	if (!SSticker?.mode?.hardcore)
 		spawn_gibs()
 
 	// You're not coming back from being gibbed. Stop tracking here

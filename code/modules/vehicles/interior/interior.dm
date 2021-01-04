@@ -45,7 +45,7 @@
 /datum/interior/Destroy()
 	exterior = null
 
-	interior_manager.unload_chunk(chunk_id)
+	GLOB.interior_manager.unload_chunk(chunk_id)
 
 	QDEL_NULL(interior_data)
 
@@ -60,7 +60,7 @@
 		return
 	name = interior_map
 
-	var/list/data = interior_manager.load_interior(src)
+	var/list/data = GLOB.interior_manager.load_interior(src)
 
 	if(!data)
 		qdel(src)
@@ -190,11 +190,11 @@
 
 // Returns min and max turfs for the interior
 /datum/interior/proc/get_bound_turfs()
-	var/turf/min = locate(interior_data.bounds[MAP_MINX], interior_data.bounds[MAP_MINY], interior_manager.interior_z)
+	var/turf/min = locate(interior_data.bounds[MAP_MINX], interior_data.bounds[MAP_MINY], GLOB.interior_manager.interior_z)
 	if(!min)
 		return null
 
-	var/turf/max = locate(interior_data.bounds[MAP_MAXX], interior_data.bounds[MAP_MAXY], interior_manager.interior_z)
+	var/turf/max = locate(interior_data.bounds[MAP_MAXX], interior_data.bounds[MAP_MAXY], GLOB.interior_manager.interior_z)
 	if(!max)
 		return null
 
@@ -203,7 +203,7 @@
 /datum/interior/proc/get_middle_turf()
 	var/list/turf/bounds = get_bound_turfs()
 	var/turf/middle = locate(Floor(bounds[1].x + (bounds[2].x - bounds[1].x)/2), Floor(bounds[1].y + (bounds[2].y - bounds[1].y)/2), bounds[1].z)
-	
+
 	return middle
 
 // Store all entrance and exit markers

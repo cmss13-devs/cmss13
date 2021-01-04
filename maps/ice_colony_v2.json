@@ -1,0 +1,29 @@
+{
+    "map_name": "Ice Colony",
+    "map_path": "map_files/Ice_Colony_v2",
+    "map_file": "Ice_Colony_v2.dmm",
+    "environment_traits": {
+        "COLD": true
+    },
+    "survivor_types": [
+        "Survivor - Scientist",
+        "Survivor - Doctor",
+        "Survivor - Security",
+        "Survivor - Trucker",
+        "Survivor - Engineer"
+    ],
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "You are a survivor of the attack on the ice habitat. You worked or lived on the colony, and managed to avoid the alien attacks... until now.",
+    "map_item_type": "/obj/item/map/ice_colony_map",
+    "announce_text": "An automated distress signal has been received from archaeology site \"Shiva's Snowball\", on border ice world \"Ifrit\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "yiren"
+	],
+	"traits": [{ "Ground": true }]
+}

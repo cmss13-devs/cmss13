@@ -102,6 +102,9 @@
 			new_player_panel_proc(TRUE)
 
 		if("observe")
+			if(!SSticker || SSticker.current_state == GAME_STATE_STARTUP)
+				to_chat(src, "<span class='warning'>The game is still setting up, please try again later.</span>")
+				return
 			if(alert(src,"Are you sure you wish to observe? When you observe, you will not be able to join as marine. It might also take some time to become a xeno or responder!","Player Setup","Yes","No") == "Yes")
 				if(!client)
 					return TRUE
@@ -227,9 +230,9 @@
 	close_spawn_windows()
 
 	var/turf/T
-	if(map_tag != MAP_WHISKEY_OUTPOST)
+	if(SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
 		T = get_turf(pick(GLOB.latejoin))
-	else if (map_tag == MAP_WHISKEY_OUTPOST)
+	else if (SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		T = get_turf(pick(GLOB.latewhiskey))
 
 	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
@@ -237,7 +240,7 @@
 	EquipCustomItems(character)
 
 	GLOB.data_core.manifest_inject(character)
-	if(map_tag == MAP_WHISKEY_OUTPOST)
+	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		call(/datum/game_mode/whiskey_outpost/proc/spawn_player)(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 	SSticker.mode.latejoin_tally++

@@ -14,8 +14,8 @@
 	flags_atom = FPRINT
 
 
-/obj/structure/machinery/space_heater/New()
-	..()
+/obj/structure/machinery/space_heater/Initialize()
+	. = ..()
 	cell = new (src)
 	cell.charge += 500
 	update_icon()

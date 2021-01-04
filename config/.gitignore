@@ -1,4 +1,6 @@
 #ignore everything here, except subdirectories.
 /*
+!maps.txt
+!shipmaps.txt
 !example/
 !names/

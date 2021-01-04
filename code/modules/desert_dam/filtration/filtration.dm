@@ -97,9 +97,12 @@ var/global/east_riverstart = 0
 	icon_state = "spawn_shuttle_dock"
 
 
-/obj/effect/blocker/toxic_water/New()
-	..()
-	sleep(10)
+/obj/effect/blocker/toxic_water/Initialize(mapload, ...)
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/effect/blocker/toxic_water/LateInitialize()
+	. = ..()
 	update_turf()
 	icon_state = null
 

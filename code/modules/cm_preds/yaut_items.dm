@@ -56,10 +56,8 @@
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 
-/obj/item/clothing/suit/armor/yautja/New(location, armor_number = rand(1,6), elder_restricted = 0)
-	..()
-	forceMove(location)
-
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,6), elder_restricted = 0)
+	. = ..()
 	if(elder_restricted)
 		armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 		armor_bullet = CLOTHING_ARMOR_HIGH
@@ -129,8 +127,8 @@
 			/obj/item/storage/backpack/yautja,
 			/obj/item/weapon/melee/twohanded/glaive)
 
-/obj/item/clothing/suit/armor/yautja/full/New(location)
-	. = ..(location, 0)
+/obj/item/clothing/suit/armor/yautja/full/Initialize(mapload, armor_number)
+	. = ..(mapload, 0)
 
 /obj/item/clothing/suit/armor/yautja/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)

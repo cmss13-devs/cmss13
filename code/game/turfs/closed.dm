@@ -16,15 +16,14 @@
 	icon = 'icons/turf/walls/walls.dmi'
 	icon_state = "rock"
 
-/turf/closed/mineral/New()
-	..()
-	spawn(2)
-		var/list/step_overlays = list("s" = NORTH, "n" = SOUTH, "w" = EAST, "e" = WEST)
-		for(var/direction in step_overlays)
-			var/turf/turf_to_check = get_step(src,step_overlays[direction])
+/turf/closed/mineral/Initialize(mapload)
+	. = ..()
+	var/list/step_overlays = list("s" = NORTH, "n" = SOUTH, "w" = EAST, "e" = WEST)
+	for(var/direction in step_overlays)
+		var/turf/turf_to_check = get_step(src,step_overlays[direction])
 
-			if(istype(turf_to_check,/turf/open))
-				turf_to_check.overlays += image('icons/turf/walls/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
+		if(istype(turf_to_check,/turf/open))
+			turf_to_check.overlays += image('icons/turf/walls/walls.dmi', "rock_side_[direction]", 2.99) //Really high since it's an overhead turf and it shouldn't collide with anything else
 
 
 
@@ -47,15 +46,14 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "wall2"
 
-/turf/closed/gm/dense/New()
-	..()
-	spawn(1)
-		if(rand(0,15) == 0)
-			icon_state = "wall1"
-		else if (rand(0,20) == 0)
-			icon_state = "wall3"
-		else
-			icon_state = "wall2"
+/turf/closed/gm/dense/Initialize(mapload)
+	. = ..()
+	if(prob(6))
+		icon_state = "wall1"
+	else if (prob(5))
+		icon_state = "wall3"
+	else
+		icon_state = "wall2"
 
 
 
@@ -161,31 +159,33 @@
 	icon_state = "full_corners"
 
 //Directional walls each have 4 possible sprites and are
-//randomized on New().
 /turf/closed/ice_rock/northWall
 	icon_state = "north_wall"
-	New()
-		..()
-		dir = pick(NORTH,SOUTH,EAST,WEST)
+
+/turf/closed/ice_rock/northWall/Initialize(mapload)
+	. = ..()
+	dir = pick(NORTH,SOUTH,EAST,WEST)
 
 /turf/closed/ice_rock/southWall
 	icon_state = "south_wall"
-	New()
-		..()
-		dir = pick(NORTH,SOUTH,EAST,WEST)
+
+/turf/closed/ice_rock/southWall/Initialize(mapload)
+	. = ..()
+	dir = pick(NORTH,SOUTH,EAST,WEST)
 
 /turf/closed/ice_rock/westWall
 	icon_state = "west_wall"
-	New()
-		..()
-		dir = pick(NORTH,SOUTH,EAST,WEST)
+
+/turf/closed/ice_rock/westWall/Initialize(mapload)
+	. = ..()
+	dir = pick(NORTH,SOUTH,EAST,WEST)
 
 /turf/closed/ice_rock/eastWall
 	icon_state = "east_wall"
-	New()
-		..()
-		dir = pick(NORTH,SOUTH,EAST,WEST)
 
+/turf/closed/ice_rock/eastWall/Initialize(mapload)
+	. = ..()
+	dir = pick(NORTH,SOUTH,EAST,WEST)
 /turf/closed/ice_rock/cornerOverlay
 	icon_state = "corner_overlay"
 

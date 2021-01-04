@@ -1,0 +1,28 @@
+{
+    "map_name": "Sorokyne Strata",
+    "map_path": "map_files/Sorokyne_Strata",
+    "map_file": "Sorokyne_Strata.dmm",
+    "environment_traits": {
+        "COLD": true
+    },
+    "weather_holder": "/datum/weather_ss_map_holder/sorokyne",
+    "survivor_types": [
+        "Survivor - Scientist",
+        "Survivor - Doctor",
+        "Survivor - Security",
+        "Survivor - Engineer"
+    ],
+    "defcon_triggers": [
+        3750,
+        2600,
+        1450,
+        875,
+        0.0
+    ],
+    "map_item_type": "/obj/item/map/sorokyne_map",
+    "announce_text": "An automated distress signal has been recieved from a mining colony on border world LV-976, \"Sorokyne Outpost\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "yiren"
+	],
+	"traits": [{ "Ground": true }]
+}

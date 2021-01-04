@@ -73,10 +73,9 @@
 /obj/structure/interior_exit/vehicle
 	name = "vehicle door"
 
-/obj/structure/interior_exit/vehicle/New()
-	..()
-	// See interior wall code for an explanation
-	addtimer(CALLBACK(src, .proc/update_icon), 10)
+/obj/structure/interior_exit/vehicle/Initialize()
+	. = ..()
+	update_icon()
 
 /obj/structure/interior_exit/vehicle/update_icon()
 	switch(dir)

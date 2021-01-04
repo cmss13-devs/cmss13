@@ -2,8 +2,8 @@
 	var/obj/item/storage/internal/pockets
 	var/storage_slots = 2
 
-/obj/item/clothing/suit/storage/New()
-	..()
+/obj/item/clothing/suit/storage/Initialize()
+	. = ..()
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = storage_slots
 	pockets.max_w_class = SIZE_SMALL		//fit only small items

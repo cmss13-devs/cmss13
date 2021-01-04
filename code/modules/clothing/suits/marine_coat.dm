@@ -29,7 +29,7 @@
 		/obj/item/storage/belt/gun/m44,
 		/obj/item/storage/belt/gun/mateba,
 		/obj/item/storage/belt/gun/smartpistol,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -40,8 +40,8 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
 
-/obj/item/clothing/suit/storage/jacket/marine/New(loc)
-	..()
+/obj/item/clothing/suit/storage/jacket/marine/Initialize()
+	. = ..()
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
 

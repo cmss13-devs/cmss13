@@ -6,7 +6,7 @@
 	you want a new vehicle interior, who you come to? yeah, bud, you come to me
 */
 
-var/global/datum/interior_manager/interior_manager = new
+GLOBAL_DATUM(interior_manager, /datum/interior_manager)
 
 /datum/interior_manager
 	// The z level to use for storing interiors in
@@ -25,8 +25,8 @@ var/global/datum/interior_manager/interior_manager = new
 
 /datum/interior_manager/New()
 	// Create the z level for interiors
-	world.maxz += 1
-	interior_z = world.maxz
+	var/datum/space_level/S = SSmapping.add_new_zlevel("interiors", ZTRAITS_INTERIORS)
+	interior_z = S.z_value
 
 	// Create the illusion of the black "void"
 	var/turf/z_min = locate(1, 1, interior_z)

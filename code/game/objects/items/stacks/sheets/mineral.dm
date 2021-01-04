@@ -63,8 +63,8 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 3
 
-/obj/item/stack/sheet/mineral/New()
-	..()
+/obj/item/stack/sheet/mineral/Initialize()
+	. = ..()
 	pixel_x = rand(0,4)-4
 	pixel_y = rand(0,4)-4
 
@@ -79,8 +79,8 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	perunit = 3750
 	stack_id = "iron"
 
-/obj/item/stack/sheet/mineral/iron/New()
-	..()
+/obj/item/stack/sheet/mineral/iron/Initialize()
+	. = ..()
 	recipes = iron_recipes
 
 /obj/item/stack/sheet/mineral/sandstone
@@ -94,8 +94,8 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	sheettype = "sandstone"
 	stack_id = "sandstone"
 
-/obj/item/stack/sheet/mineral/sandstone/New()
-	..()
+/obj/item/stack/sheet/mineral/sandstone/Initialize()
+	. = ..()
 	recipes = sandstone_recipes
 
 /obj/item/stack/sheet/mineral/diamond
@@ -109,8 +109,8 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	stack_id = "diamond"
 
 
-/obj/item/stack/sheet/mineral/diamond/New()
-	..()
+/obj/item/stack/sheet/mineral/diamond/Initialize()
+	. = ..()
 	recipes = diamond_recipes
 
 /obj/item/stack/sheet/mineral/uranium
@@ -123,8 +123,8 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	sheettype = "uranium"
 	stack_id = "uranium"
 
-/obj/item/stack/sheet/mineral/uranium/New()
-	..()
+/obj/item/stack/sheet/mineral/uranium/Initialize()
+	. = ..()
 	recipes = uranium_recipes
 
 /obj/item/stack/sheet/mineral/uranium/small_stack
@@ -139,10 +139,6 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	perunit = 2000
 	sheettype = "phoron"
 	stack_id = "phoron"
-
-/obj/item/stack/sheet/mineral/phoron/New()
-	..()
-	// recipes = phoron_recipes // Disabled phoron doors
 
 /obj/item/stack/sheet/mineral/phoron/small_stack
 	amount = STACK_10
@@ -160,8 +156,8 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	perunit = 2000
 	stack_id = "plastic"
 
-/obj/item/stack/sheet/mineral/plastic/New()
-	..()
+/obj/item/stack/sheet/mineral/plastic/Initialize()
+	. = ..()
 	recipes = plastic_recipes
 
 /obj/item/stack/sheet/mineral/plastic/small_stack
@@ -184,8 +180,8 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	sheettype = "gold"
 	stack_id = "gold"
 
-/obj/item/stack/sheet/mineral/gold/New()
-	..()
+/obj/item/stack/sheet/mineral/gold/Initialize()
+	. = ..()
 	recipes = gold_recipes
 
 /obj/item/stack/sheet/mineral/gold/small_stack
@@ -201,8 +197,8 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 	sheettype = "silver"
 	stack_id = "silver"
 
-/obj/item/stack/sheet/mineral/silver/New()
-	..()
+/obj/item/stack/sheet/mineral/silver/Initialize()
+	. = ..()
 	recipes = silver_recipes
 
 /obj/item/stack/sheet/mineral/silver/small_stack

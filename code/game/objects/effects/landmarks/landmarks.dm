@@ -11,13 +11,6 @@
 	invisibility = 101
 
 	switch(name)			//some of these are probably obsolete
-		if("SupplyElevator")
-			SupplyElevator = loc
-			qdel(src)
-
-		if("VehicleElevator")
-			VehicleElevator = loc
-			qdel(src)
 		if("HangarUpperElevator")
 			HangarUpperElevator = loc
 			qdel(src)
@@ -239,11 +232,3 @@
 /obj/effect/landmark/late_join/Destroy()
 	GLOB.latejoin -= src
 	return ..()
-
-/obj/effect/landmark/map_tag
-	name = "mapping tag"
-
-/obj/effect/landmark/map_tag/New()
-	map_tag = name
-	qdel(src)
-	return

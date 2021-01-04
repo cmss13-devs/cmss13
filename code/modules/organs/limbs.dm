@@ -68,7 +68,8 @@
 	var/list/bleeding_effects_list = list()
 
 
-/obj/limb/New(obj/limb/P, mob/mob_owner)
+/obj/limb/Initialize(mapload, obj/limb/P, mob/mob_owner)
+	. = ..()
 	if(P)
 		parent = P
 		if(!parent.children)

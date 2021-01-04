@@ -19,8 +19,8 @@
 
 	var/obj/item/storage/internal/container
 
-/obj/structure/vehicle_locker/New()
-	..()
+/obj/structure/vehicle_locker/Initialize()
+	. = ..()
 	container = new/obj/item/storage/internal(src)
 	container.storage_slots = null
 	container.max_w_class = SIZE_MEDIUM

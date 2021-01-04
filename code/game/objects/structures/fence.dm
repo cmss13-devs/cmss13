@@ -184,8 +184,8 @@
 	density = 0
 	update_icon() //Make it appear cut through!
 
-/obj/structure/fence/New(Loc, start_dir = null, constructed = 0)
-	..()
+/obj/structure/fence/Initialize(mapload, start_dir = null, constructed = 0)
+	. = ..()
 
 	if(start_dir)
 		dir = start_dir

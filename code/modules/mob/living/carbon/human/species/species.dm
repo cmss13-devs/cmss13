@@ -118,23 +118,23 @@
 	H.internal_organs_by_name = list()
 
 	//This is a basic humanoid limb setup.
-	var/obj/limb/chest/C = new(null, H)
+	var/obj/limb/chest/C = new(H, null, H)
 	H.limbs += C
-	var/obj/limb/groin/G = new(C, H)
+	var/obj/limb/groin/G = new(H, C, H)
 	H.limbs += G
-	H.limbs += new/obj/limb/head(C, H)
-	var/obj/limb/arm/l_arm/LA = new(C, H)
+	H.limbs += new /obj/limb/head(H, C, H)
+	var/obj/limb/arm/l_arm/LA = new(H, C, H)
 	H.limbs += LA
-	var/obj/limb/arm/r_arm/RA = new(C, H)
+	var/obj/limb/arm/r_arm/RA = new(H, C, H)
 	H.limbs += RA
-	var/obj/limb/leg/l_leg/LL = new(G, H)
+	var/obj/limb/leg/l_leg/LL = new(H, G, H)
 	H.limbs += LL
-	var/obj/limb/leg/r_leg/RL = new(G, H)
+	var/obj/limb/leg/r_leg/RL = new(H, G, H)
 	H.limbs += RL
-	H.limbs +=  new/obj/limb/hand/l_hand(LA, H)
-	H.limbs +=  new/obj/limb/hand/r_hand(RA, H)
-	H.limbs +=  new/obj/limb/foot/l_foot(LL, H)
-	H.limbs +=  new/obj/limb/foot/r_foot(RL, H)
+	H.limbs +=  new /obj/limb/hand/l_hand(H, LA, H)
+	H.limbs +=  new /obj/limb/hand/r_hand(H, RA, H)
+	H.limbs +=  new /obj/limb/foot/l_foot(H, LL, H)
+	H.limbs +=  new /obj/limb/foot/r_foot(H, RL, H)
 
 	for(var/organ in has_organ)
 		var/organ_type = has_organ[organ]

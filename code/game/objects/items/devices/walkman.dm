@@ -23,8 +23,8 @@
 			WEAR_IN_J_STORE = 'icons/mob/humans/onmob/ears.dmi'
 			)
 
-/obj/item/device/walkman/New()
-	..()
+/obj/item/device/walkman/Initialize()
+	. = ..()
 	design = rand(1, 3)
 	update_icon()
 

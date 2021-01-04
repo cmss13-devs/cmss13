@@ -154,7 +154,7 @@
 		return 0
 
 /obj/structure/cable/ex_act(severity)
-	if(Check_WO())
+	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		return
 	if(is_ground_level(z) && layer < 2) //ground map - no blowie. They are buried underground.
 		return

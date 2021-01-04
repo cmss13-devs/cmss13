@@ -66,4 +66,9 @@
 	else if(!isobserver(src) && faction)
 		check_event_info(faction)
 
+	if(client.player_details)
+		for(var/foo in client.player_details.post_login_callbacks)
+			var/datum/callback/CB = foo
+			CB.Invoke()
+
 	client.init_verbs()

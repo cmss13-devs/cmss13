@@ -981,7 +981,7 @@
 	if(!selected_stretcher.stretcher_activated)//stretcher beacon was deactivated midway
 		return
 
-	if(selected_stretcher.z != 1) //in case the stretcher was on a groundside dropship that flew away during our input()
+	if(!is_ground_level(selected_stretcher.z)) //in case the stretcher was on a groundside dropship that flew away during our input()
 		return
 
 	if(!selected_stretcher.buckled_mob && !selected_stretcher.buckled_bodybag)
@@ -1066,7 +1066,7 @@
 		to_chat(user, SPAN_WARNING("There seems to be no medevac stretcher connected to [src]."))
 		return
 
-	if(linked_stretcher.z != 1)
+	if(!is_ground_level(linked_stretcher.z))
 		linked_stretcher.linked_medevac = null
 		linked_stretcher = null
 		to_chat(user, SPAN_WARNING(" There seems to be no medevac stretcher connected to [src]."))
@@ -1091,7 +1091,7 @@
 
 	busy_winch = FALSE
 	var/fail
-	if(!linked_stretcher || linked_stretcher != old_stretcher || linked_stretcher.z != 1)
+	if(!linked_stretcher || linked_stretcher != old_stretcher || !is_ground_level(linked_stretcher.z))
 		fail = TRUE
 
 	else if(!ship_base) //uninstalled midway

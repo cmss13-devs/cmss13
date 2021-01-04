@@ -1577,10 +1577,7 @@
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
 "bWo" = (
-/obj/structure/pipes/binary/pump/high_power{
-	on = 1;
-
-	},
+/obj/structure/pipes/binary/pump/high_power/on,
 /turf/open/floor/plating,
 /area/prison/engineering/atmos)
 "bWp" = (
@@ -3046,7 +3043,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/prison/execution)
 "cfE" = (
-/obj/structure/machinery/door/poddoor/two_tile/open{
+/obj/structure/machinery/door/poddoor/two_tile/opened{
 	id = "execution";
 	unacidable = 0
 	},
@@ -3605,7 +3602,8 @@
 /area/prison/security/armory/riot)
 "cjl" = (
 /obj/structure/machinery/door/poddoor/two_tile/vertical/open{
-	id = "lethal_armory"unacidable = 0
+	id = "lethal_armory";
+	unacidable = 0
 	},
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";

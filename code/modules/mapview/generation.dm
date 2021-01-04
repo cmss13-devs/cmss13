@@ -14,12 +14,13 @@
 /var/global/list/map_sizes = list(list(),list(),list())
 
 /proc/generate_marine_mapview()
-	var/icon/minimap = icon('icons/minimap.dmi',map_tag)
+	var/icon/minimap = icon('icons/minimap.dmi',SSmapping.configs[GROUND_MAP].map_name)
 	var/min_x = 1000
 	var/max_x = 0
 	var/min_y = 1000
 	var/max_y = 0
-	for(var/turf/T in z1turfs)
+	for(var/z1 in z1turfs)
+		var/turf/T = z1
 		if(T.x < min_x && !istype(T,/turf/open/space))
 			min_x = T.x
 		if(T.x > max_x && !istype(T,/turf/open/space))
@@ -29,7 +30,7 @@
 		if(T.y > max_y && !istype(T,/turf/open/space))
 			max_y = T.y
 		var/area/A = get_area(T)
-		if((map_tag != MAP_PRISON_STATION || map_tag != MAP_CORSAT) && istype(T,/turf/open/space))
+		if((SSmapping.configs[GROUND_MAP].map_name != MAP_PRISON_STATION || SSmapping.configs[GROUND_MAP].map_name != MAP_CORSAT) && istype(T,/turf/open/space))
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
 		var/obj/structure/resource_node/plasma/plasma = locate(/obj/structure/resource_node/plasma) in T
@@ -91,7 +92,7 @@
 	var/list/tier_2 = list()
 	var/list/tier_3 = list()
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(H.z != 1 && !istype(H.loc,/mob/living/carbon/Xenomorph))
+		if(!is_ground_level(H.z))
 			continue
 		if(!H.has_helmet_camera())
 			continue
@@ -140,7 +141,7 @@
 			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y+1)
 	if(SSticker.toweractive)
 		for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
-			if(X.loc.z != 1) continue
+			if(!is_ground_level(X.loc.z)) continue
 			switch(X.tier)
 				if(0)
 					tier_0 += X

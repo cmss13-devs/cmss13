@@ -102,12 +102,9 @@
 //used by marine equipment machines to spawn the correct map.
 /obj/item/map/current_map
 
-/obj/item/map/current_map/New()
-	..()
-	if(!map_tag)
-		qdel(src)
-		return
-	switch(map_tag)
+/obj/item/map/current_map/Initialize(mapload, ...)
+	. = ..()
+	switch(SSmapping.configs[GROUND_MAP].map_name)
 		if(MAP_LV_624)
 			name = "\improper Lazarus Landing Map"
 			desc = "A satellite printout of the Lazarus Landing colony on LV-624."
@@ -149,7 +146,7 @@
 			html_link = "images/0/0d/Kutjevo_a1.jpg"
 			color = "red"
 		else
-			qdel(src)
+			return INITIALIZE_HINT_QDEL
 
 
 

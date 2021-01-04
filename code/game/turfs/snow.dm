@@ -36,8 +36,8 @@
 
 
 //Update icon and sides on start, but skip nearby check for turfs.
-/turf/open/snow/New()
-	..()
+/turf/open/snow/Initialize(mapload, ...)
+	. = ..()
 	update_icon(1,1)
 
 /turf/open/snow/Entered(atom/movable/AM)

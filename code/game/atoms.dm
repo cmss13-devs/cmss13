@@ -61,16 +61,6 @@
 			//we were deleted
 			return
 
-	pass_flags = pass_flags_cache[type]
-	if (isnull(pass_flags))
-		pass_flags = new()
-		initialize_pass_flags(pass_flags)
-		pass_flags_cache[type] = pass_flags
-	else
-		initialize_pass_flags()
-
-	Decorate()
-
 /*
 We actually care what this returns, since it can return different directives.
 Not specifically here, but in other variations of this. As a general safety,
@@ -386,6 +376,17 @@ Parameters are passed from New.
 		CRASH("Warning: [src]([type]) initialized multiple times!")
 	flags_atom |= INITIALIZED
 
+	pass_flags = pass_flags_cache[type]
+	if (isnull(pass_flags))
+		pass_flags = new()
+		initialize_pass_flags(pass_flags)
+		pass_flags_cache[type] = pass_flags
+	else
+		initialize_pass_flags()
+
+	if(!mapload)
+		Decorate()
+
 	return INITIALIZE_HINT_NORMAL
 
 //called if Initialize returns INITIALIZE_HINT_LATELOAD
@@ -394,9 +395,6 @@ Parameters are passed from New.
 
 
 /atom/process()
-	return
-
-/atom/proc/Decorate()
 	return
 
 ///---CLONE---///

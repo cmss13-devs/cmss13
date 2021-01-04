@@ -116,7 +116,7 @@
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] unfastens [src]."),
 		SPAN_NOTICE("You unfasten [src]."))
-		new /obj/item/pipe(loc, make_from = src)
+		new /obj/item/pipe(loc, null, null, src)
 		qdel(src)
 
 /obj/structure/pipes/vents/Destroy()

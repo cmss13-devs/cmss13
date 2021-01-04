@@ -99,8 +99,8 @@ Class Procs:
 	projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
 	var/power_machine = FALSE //Whether the machine should process on power, or normal processor
 
-/obj/structure/machinery/New()
-	..()
+/obj/structure/machinery/Initialize(mapload, ...)
+	. = ..()
 	machines += src
 	var/area/A = get_area(src)
 	if(A)

@@ -11,11 +11,13 @@ SUBSYSTEM_DEF(statpanels)
 
 /datum/controller/subsystem/statpanels/fire(resumed = FALSE)
 	if (!resumed)
-//		var/datum/map_config/cached = SSmapping.next_map_config
+		var/datum/map_config/cached
+		if(SSmapping.next_map_configs)
+			cached = SSmapping.next_map_configs[GROUND_MAP]
 //		var/round_time = world.time - SSticker.round_start_time
 		var/list/global_data = list(
-//			"Map: [SSmapping.config?.map_name || "Loading..."]",
-//			cached ? "Next Map: [cached.map_name]" : null,
+			"Map: [SSmapping.configs[GROUND_MAP]?.map_name || "Loading..."]",
+			cached ? "Next Map: [cached?.map_name]" : null,
 //			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
 			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]",
 			"Round Time: [duration2text()]",

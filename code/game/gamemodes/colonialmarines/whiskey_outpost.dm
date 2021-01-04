@@ -2,7 +2,7 @@
 
 //Global proc for checking if the game is whiskey outpost so I dont need to type if(gamemode == whiskey outpost) 50000 times
 /proc/Check_WO()
-	if(SSticker.mode == "Whiskey Outpost" || map_tag == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
+	if(SSticker.mode == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
 		return 1
 	return 0
 
@@ -71,6 +71,8 @@
 
 	var/list/whiskey_outpost_waves = list()
 
+	hardcore = TRUE
+
 /datum/game_mode/whiskey_outpost/announce()
 	return 1
 
@@ -112,15 +114,15 @@
 	to_world("<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>")
 	to_world(SPAN_ROUNDBODY("It is the year [game_year - 5] on the planet LV-624, five years before the arrival of the USS Almayer and the 7th 'Falling Falcons' Battalion in the sector"))
 	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM prescence in the Tychon's Rift sector"))
-	to_world(SPAN_ROUNDBODY("[map_tag], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
-	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [map_tag] must survive for an hour to alert the rest of their battalion in the sector"))
+	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
+	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector"))
 	to_world(SPAN_ROUNDBODY("Hold out for as long as you can."))
 	world << sound('sound/effects/siren.ogg')
 
 	sleep(10)
 	switch(map_locale) //Switching it up.
 		if(0)
-			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [map_tag] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
+			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
 
 	return ..()
 
@@ -565,7 +567,7 @@
 		to_chat(user, "Toss it to get supplies!")
 		return
 
-	if(user.z != 1)
+	if(!is_ground_level(user.z))
 		to_chat(user, "You have to be on the ground to use this or it won't transmit.")
 		return
 

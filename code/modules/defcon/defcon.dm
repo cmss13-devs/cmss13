@@ -106,30 +106,7 @@ var/global/datum/controller/defcon/defcon_controller
 	return TRUE
 
 /datum/controller/defcon/proc/initialize_level_triggers_by_map()
-	// Sometimes map_tag won't be populated
-	if (!map_tag)
-		return FALSE
-
-	// Leaving debug messages here in case this code has bugs.
-	// Without these, it is -literally- impossible to debug this
-	// as this code can sometimes execute before world initialization.
-	//text2file("DEFCON lists began initialization","data/defcon_log.txt")
-	//text2file("Map tag: [map_tag]", "data/defcon_log.txt")
-	if (map_tag == MAP_PRISON_STATION || map_tag == MAP_SOROKYNE_STRATA)
-		defcon_level_triggers = list(3750, 2600, 1450, 875, 0.0)
-	else if (map_tag == MAP_ICE_COLONY || map_tag == MAP_DESERT_DAM || map_tag == MAP_CORSAT)
-		defcon_level_triggers = list(3300, 2100, 1450, 580, 0.0)
-	else if (map_tag == MAP_BIG_RED)
-		defcon_level_triggers = list(4750, 3500, 2000, 1000, 0.0)
-	else if (map_tag == MAP_KUTJEVO)
-		defcon_level_triggers = list(4250, 2950, 1650, 1000, 0.0)
-	else
-		// Defaults
-		// Currently just LV
-		defcon_level_triggers = list(5150, 4225, 2800, 1000, 0.0)
-	//text2file("Listing level triggers:","data/defcon_log.txt")
-	//for (var/i in defcon_level_triggers)
-		//text2file("Defcon level trigger: [i]","data/defcon_log.txt")
+	defcon_level_triggers = SSmapping.configs[GROUND_MAP].defcon_triggers
 	lists_initialized = 1
 	return TRUE
 

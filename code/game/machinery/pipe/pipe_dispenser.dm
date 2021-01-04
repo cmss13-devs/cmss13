@@ -83,7 +83,7 @@
 		if(!wait)
 			var/p_type = text2num(href_list["make"])
 			var/p_dir = text2num(href_list["dir"])
-			var/obj/item/pipe/P = new (/*usr.loc*/ src.loc, pipe_type=p_type, dir=p_dir)
+			var/obj/item/pipe/P = new (/*usr.loc*/ src.loc, p_type, p_dir)
 			P.update()
 			P.add_fingerprint(usr)
 			wait = 1

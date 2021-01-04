@@ -39,7 +39,7 @@
 	if(..())  //Checks for power outages
 		return
 
-	if(!ishighersilicon(usr) && !skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) && !Check_WO())
+	if(!ishighersilicon(usr) && !skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
 		to_chat(user, SPAN_WARNING("You don't have the training to use [src]."))
 		return
 
@@ -854,8 +854,13 @@
 
 	var/x_coord = deobfuscate_x(x_bomb)
 	var/y_coord = deobfuscate_y(y_bomb)
+	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+	if(length(z_coord))
+		z_coord = z_coord[1]
+	else
+		z_coord = 1 // fuck it
 
-	var/turf/T = locate(x_coord, y_coord, 1)
+	var/turf/T = locate(x_coord, y_coord, z_coord)
 
 	var/area/A = get_area(T)
 	if(protected_by_pylon(TURF_PROTECTION_OB, T))
@@ -917,8 +922,13 @@
 
 	var/x_coord = deobfuscate_x(x_supply)
 	var/y_coord = deobfuscate_y(y_supply)
+	var/z_coord = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+	if(length(z_coord))
+		z_coord = z_coord[1]
+	else
+		z_coord = 1 // fuck it
 
-	var/turf/T = locate(x_coord, y_coord, 1)
+	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
 		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
 		return

@@ -30,7 +30,7 @@
 /datum/round_recorder/proc/start_game()
 	game_start = time2text(world.realtime, "DD.MM.YYYY@hh:mm:ss")
 
-	map = map_tag
+	map = SSmapping.configs[GROUND_MAP].map_name
 	gamemode = master_mode
 	round_name = round_statistics.name
 

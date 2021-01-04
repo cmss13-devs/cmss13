@@ -45,6 +45,8 @@
 #define COMSIG_ELEMENT_ATTACH "element_attach"
 /// fires on the target datum when an element is attached to it  (/datum/element)
 #define COMSIG_ELEMENT_DETACH "element_detach"
+/// From /atom/proc/Decorate
+#define COMSIG_ATOM_DECORATED "atom_decorated"
 
 // /mob signals
 /// From /obj/structure/machinery/door/airlock/proc/take_damage

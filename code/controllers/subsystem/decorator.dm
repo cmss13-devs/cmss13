@@ -5,6 +5,7 @@
 	if(SSdecorator.registered_decorators[type])
 		SSdecorator.decorate(src)
 	flags_atom |= ATOM_DECORATED
+	SEND_SIGNAL(src, COMSIG_ATOM_DECORATED)
 
 SUBSYSTEM_DEF(decorator)
 	name = "Decorator"

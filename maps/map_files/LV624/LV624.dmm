@@ -4537,8 +4537,7 @@
 "apZ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
-	name = "\improper Medical Bay";
-	req_one_access = newlist()
+	name = "\improper Medical Bay"
 	},
 /turf/open/floor{
 	icon_state = "white"

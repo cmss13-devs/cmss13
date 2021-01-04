@@ -189,12 +189,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/Reboot(var/reason)
 	Master.Shutdown()
-	var/round_extra_data = ""
-	// Notify helper daemon of reboot, regardless of reason.
-	if(SSticker.mode)
-		round_extra_data = "&message=[SSticker.mode.end_round_message()]"
 
-	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
 	var/server = CONFIG_GET(string/server)
 	for(var/thing in GLOB.clients)
 		if(!thing)
@@ -204,6 +199,12 @@ var/world_topic_spam_protect_time = world.timeofday
 		if(server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[server]")
 
+	var/round_extra_data = ""
+	// Notify helper daemon of reboot, regardless of reason.
+	if(SSticker.mode)
+		round_extra_data = "&message=[SSticker.mode.end_round_message()]"
+	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
+	
 	..(reason)
 
 

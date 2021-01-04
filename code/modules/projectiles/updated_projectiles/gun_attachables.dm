@@ -1490,6 +1490,13 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_6
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_3
 
+/obj/item/attachable/gyro/Attach(obj/item/weapon/gun/G)
+	if(istype(G, /obj/item/weapon/gun/shotgun))
+		accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_10 + HIT_ACCURACY_MULT_TIER_1
+	else
+		accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_3
+	..()
+
 
 /obj/item/attachable/lasersight
 	name = "laser sight"

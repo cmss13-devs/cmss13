@@ -50,12 +50,11 @@
 	icon_state = "vest_acid_brown"
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/New()
+	. = ..()
 	acid_core = new /obj/structure/machinery/acid_core(src)
 	acid_core.acid_harness = src
 	if(loc && loc.loc && ishuman(loc.loc))
 		acid_core.user = loc.loc
-	acid_core.start_processing()
-	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/attackby(obj/item/B, mob/living/user)
 	if(ismultitool(B))
@@ -197,6 +196,14 @@
 	var/boot_status = FALSE
 	var/battery_level = FALSE
 	var/rechecking = FALSE
+
+/obj/structure/machinery/acid_core/Initialize(mapload, ...)
+	..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/acid_core/LateInitialize()
+	. = ..()
+	start_processing()
 
 /obj/structure/machinery/acid_core/proc/boot_sequence()
 	if(!user || !acid_harness.battery)

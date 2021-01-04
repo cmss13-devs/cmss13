@@ -548,11 +548,11 @@
 
 /obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/C, mob/living/user)
 	..()
-	verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+	C.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
 /obj/item/clothing/accessory/storage/on_removed(mob/living/user, obj/item/clothing/C)
 	..()
-	verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+	C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
 /obj/item/clothing/accessory/storage/webbing
 	name = "webbing"

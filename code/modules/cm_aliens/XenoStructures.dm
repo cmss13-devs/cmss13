@@ -193,6 +193,8 @@
 	return 1
 
 /obj/structure/mineral_door/resin/attackby(obj/item/W, mob/living/user)
+	if(W.pry_capable == IS_PRY_CAPABLE_FORCE && user.a_intent != INTENT_HARM)
+		return // defer to item afterattack
 	if(!(W.flags_item & NOBLUDGEON) && W.force)
 		user.animation_attack_on(src)
 		health -= W.force*RESIN_MELEE_DAMAGE_MULTIPLIER

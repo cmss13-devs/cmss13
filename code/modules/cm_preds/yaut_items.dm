@@ -500,18 +500,41 @@
 	..()
 
 /obj/item/weapon/wristblades/afterattack(atom/A, mob/user, proximity)
-	if(!proximity || !user) return
+	if(!proximity || !user || user.action_busy) return
 	if(user)
 		var/obj/item/weapon/wristblades/W = user.get_inactive_hand()
 		attack_speed = (istype(W)) ? 4 : initial(attack_speed)
 
-	if (istype(A, /obj/structure/machinery/door/airlock))
+	if(istype(A, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/D = A
 		if(D.operating || !D.density) return
-		to_chat(user, SPAN_NOTICE("You jam [src] into [D] and strain to rip it open."))
-		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, 1)
-		if(do_after(user,30, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
+		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
+		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
+		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+		if(do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
+			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]."),
+			SPAN_DANGER("You force [D] open with the [name]."))
 			D.open(1)
+
+	else if(istype(A, /obj/structure/mineral_door/resin))
+		var/obj/structure/mineral_door/resin/D = A
+		if(D.isSwitchingStates || user.a_intent == INTENT_HARM || user.action_busy) return
+		if(D.density)
+			user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
+			SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
+			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+			if(do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
+				user.visible_message(SPAN_DANGER("[user] forces [D] open using the [name]."),
+				SPAN_DANGER("You force [D] open with your [name]."))
+				D.Open()
+		else
+			user.visible_message(SPAN_DANGER("[user] pushes [D] with their [name] to force it closed."),
+			SPAN_DANGER("You push [D] with your [name] to force it closed."))
+			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
+			if(do_after(user, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !D.density)
+				user.visible_message(SPAN_DANGER("[user] forces [D] closed using the [name]."),
+				SPAN_DANGER("You force [D] closed with your [name]."))
+				D.Close()
 
 /obj/item/weapon/wristblades/attack_self(mob/user)
 	for(var/obj/item/clothing/gloves/yautja/Y in user.contents)

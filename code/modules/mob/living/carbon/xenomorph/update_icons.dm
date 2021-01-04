@@ -170,7 +170,7 @@
 		else
 			I = image("icon"=get_icon_from_source(CONFIG_GET(string/alien_effects)), "icon_state"="alien_fire", "layer"=-X_FIRE_LAYER)
 
-		I.appearance_flags |= RESET_COLOR
+		I.appearance_flags |= RESET_COLOR|RESET_ALPHA
 		I.color = fire_reagent.burncolor
 		overlays_standing[X_FIRE_LAYER] = I
 		apply_overlay(X_FIRE_LAYER)

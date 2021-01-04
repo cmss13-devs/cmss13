@@ -311,25 +311,27 @@
 	return
 
 /obj/item/mortar_kit/attack_self(mob/user)
-
+	var/turf/deploy_turf = get_turf(user)
+	if(!deploy_turf)
+		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't have the training to deploy [src]."))
 		return
-	if(!is_ground_level(z))
+	if(!is_ground_level(deploy_turf.z))
 		to_chat(user, SPAN_WARNING("You cannot deploy [src] here."))
 		return
-	var/area/A = get_area(src)
+	var/area/A = get_area(deploy_turf)
 	if(CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_1))
 		to_chat(user, SPAN_WARNING("You probably shouldn't deploy [src] indoors."))
 		return
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
 		SPAN_NOTICE("You start deploying [src]."))
-	playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
+	playsound(deploy_turf, 'sound/items/Deconstruct.ogg', 25, 1)
 	if(do_after(user, SECONDS_4, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
 			SPAN_NOTICE("You deploy [src]."))
-		playsound(loc, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
-		var/obj/structure/mortar/M = new /obj/structure/mortar(get_turf(user))
+		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
+		var/obj/structure/mortar/M = new /obj/structure/mortar(deploy_turf)
 		M.dir = user.dir
 		qdel(src)
 

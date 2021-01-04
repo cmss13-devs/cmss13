@@ -17,7 +17,7 @@
 	var/obj/item/cell/dcell = null
 	var/datum/effect_system/spark_spread/sparks = new
 	var/defib_cooldown = 0 //Cooldown for toggling the defib
-	
+
 /mob/living/carbon/human/proc/check_tod()
 	if(!undefibbable && world.time <= timeofdeath + revive_grace_period)
 		return TRUE
@@ -25,7 +25,7 @@
 
 /obj/item/device/defibrillator/Initialize(mapload, ...)
 	. = ..()
-	
+
 	sparks.set_up(5, 0, src)
 	sparks.attach(src)
 	dcell = new/obj/item/cell(src)
@@ -196,7 +196,7 @@
 		if(!H.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
 			user.visible_message(SPAN_WARNING("[htmlicon(src, viewers(src))] \The [src] buzzes: Defibrillation failed. No soul detected."))
 			return
-			
+
 		//At this point, the defibrillator is ready to work
 		H.apply_damage(-damage_threshold, BRUTE)
 		H.apply_damage(-damage_threshold, BURN)
@@ -214,7 +214,6 @@
 		if(H.health > HEALTH_THRESHOLD_DEAD)
 			user.visible_message(SPAN_NOTICE("[htmlicon(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 			user.track_life_saved(user.job)
-			SEND_SIGNAL(H, COMSIG_HUMAN_REVIVED)
 			H.handle_revive()
 			to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
 		else

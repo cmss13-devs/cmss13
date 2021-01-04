@@ -72,14 +72,14 @@
 
 /* Pre-pre-startup */
 /datum/game_mode/xenovs/can_start()
-    setup_mapdata(map_tag)
+    setup_mapdata(SSmapping.configs[GROUND_MAP].map_name)
     xeno_starting_num = readied_players
     if(!initialize_starting_xenomorph_list(hives, TRUE))
         return
     return TRUE
 
 /datum/game_mode/xenovs/announce()
-    to_world("<span class='round_header'>The current map is - [map_tag]!</span>")
+    to_world("<span class='round_header'>The current map is - [SSmapping.configs[GROUND_MAP].map_name]!</span>")
 
 /* Pre-setup */
 /datum/game_mode/xenovs/pre_setup()
@@ -210,7 +210,7 @@
             round_checkwin = 0
 
 
-/datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBITT, ZTRAIT_MARINE_MAIN_SHIP)))
+/datum/game_mode/xenovs/proc/get_xenos_hive(list/z_levels = SSmapping.levels_by_any_trait(list(ZTRAIT_GROUND, ZTRAIT_LOWORBIT, ZTRAIT_MARINE_MAIN_SHIP)))
     var/list/list/hivenumbers = list()
     for(var/datum/hive_status/H in GLOB.hive_datum)
         hivenumbers += list(H.name = list())
@@ -292,7 +292,7 @@
     log_game("Round end result: [round_finished]")
     to_world("<span class='round_header'>|Round Complete|</span>")
 
-    to_world(SPAN_ROUNDBODY("Thus ends the story of the battling hives on [map_tag]. [round_finished]"))
+    to_world(SPAN_ROUNDBODY("Thus ends the story of the battling hives on [SSmapping.configs[GROUND_MAP].map_name]. [round_finished]"))
     to_world(SPAN_ROUNDBODY("The game-mode was: [master_mode]!"))
     to_world(SPAN_ROUNDBODY("End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
 

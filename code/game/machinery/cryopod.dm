@@ -146,13 +146,12 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	orient_right = 1
 	icon_state = "cryo_rear-r"
 
-/obj/structure/cryofeed/New()
-
+/obj/structure/cryofeed/Initialize()
+	. = ..()
 	if(orient_right)
 		icon_state = "cryo_rear-r"
 	else
 		icon_state = "cryo_rear"
-	..()
 
 
 

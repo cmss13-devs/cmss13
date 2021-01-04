@@ -81,8 +81,8 @@
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm
 	var/global/list/blood_overlay_cache = list() //taken from blood.dm
 
-/obj/item/New(loc)
-	..()
+/obj/item/Initialize(mapload, ...)
+	. = ..()
 
 	GLOB.item_list += src
 	for(var/path in actions_types)
@@ -164,10 +164,10 @@ cases. Override_icon_state should be a list.*/
 		var/new_protection
 		var/new_item_state
 		if(override_icon_state && override_icon_state.len)
-			new_icon_state = override_icon_state[map_tag]
+			new_icon_state = override_icon_state[SSmapping.configs[GROUND_MAP].map_name]
 		if(override_protection && override_protection.len)
-			new_protection = override_protection[map_tag]
-		switch(map_tag)
+			new_protection = override_protection[SSmapping.configs[GROUND_MAP].map_name]
+		switch(SSmapping.configs[GROUND_MAP].map_name) // maploader TODO: json
 			if(MAP_ICE_COLONY, MAP_CORSAT, MAP_SOROKYNE_STRATA)
 				icon_state = new_icon_state ? new_icon_state : "s_" + icon_state
 				item_state = new_item_state ? new_item_state : "s_" + item_state

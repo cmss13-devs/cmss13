@@ -778,8 +778,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		return TRUE
 	return FALSE
 
-/obj/structure/machinery/door/airlock/New()
-	..()
+/obj/structure/machinery/door/airlock/Initialize()
+	. = ..()
 
 	wall_check()
 
@@ -787,12 +787,15 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		var/area/A = get_area(loc)
 		name = A.name
 
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/door/airlock/LateInitialize()
+	. = ..()
 	if(closeOtherId != null)
-		spawn (5)
-			for(var/obj/structure/machinery/door/airlock/A in machines)
-				if(A.closeOtherId == closeOtherId && A != src)
-					closeOther = A
-					break
+		for(var/obj/structure/machinery/door/airlock/A in machines)
+			if(A.closeOtherId == closeOtherId && A != src)
+				closeOther = A
+				break
 	// fix smoothing
 	for(var/turf/closed/wall/W in orange(1))
 		W.update_connections()

@@ -1,0 +1,28 @@
+{
+    "map_name": "Trijent Dam",
+    "map_path": "map_files/Desert_Dam",
+    "map_file": "Desert_Dam.dmm",
+    "survivor_types": [
+        "Survivor - Scientist",
+        "Survivor - Doctor",
+        "Survivor - Chef",
+        "Survivor - Chaplain",
+        "Survivor - Miner",
+        "Survivor - Engineer",
+        "Survivor - Trucker",
+        "Survivor - Colonial Marshall"
+    ],
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "map_item_type": "/obj/item/map/desert_dam",
+    "announce_text": "We've lost contact with Weston-Yamada's extra-solar colony, \"Trijent Dam\", on the planet \"Navarone.\" The ###SHIPNAME### has been dispatched to assist.",
+    "monkey_types": [
+        "stok"
+	],
+	"traits": [{ "Ground": true }]
+}

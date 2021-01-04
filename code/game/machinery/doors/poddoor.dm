@@ -63,7 +63,7 @@
 
 	X.visible_message(SPAN_DANGER("[X] pries open [src]."), \
 	SPAN_XENONOTICE("You pry open [src]."), max_distance = 3)
-	
+
 	open()
 
 
@@ -232,7 +232,7 @@
 	dir = NORTH
 	icon = 'icons/obj/structures/doors/1x4blast_vert.dmi'
 
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened
 	density = FALSE
 
 /obj/structure/machinery/door/poddoor/filler_object
@@ -246,6 +246,9 @@
 	openspeed = 17
 	unslashable = TRUE
 	unacidable = TRUE
+
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure/opened
+	density = FALSE
 
 /obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/secure
 	icon = 'icons/obj/structures/doors/1x4blast_vert_secure.dmi'

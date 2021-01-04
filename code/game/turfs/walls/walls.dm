@@ -41,20 +41,15 @@
 	var/list/blend_objects = list(/obj/structure/machinery/door, /obj/structure/window_frame, /obj/structure/window/framed) // Objects which to blend with
 	var/list/noblend_objects = list(/obj/structure/machinery/door/window) //Objects to avoid blending with (such as children of listed blend objects.
 
-/turf/closed/wall/New()
+/turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
-	
+	return INITIALIZE_HINT_LATELOAD
+
+/turf/closed/wall/LateInitialize()
+	. = ..()
 	update_connections(TRUE)
 
 	update_icon()
-
-/turf/closed/wall/Initialize(mapload, ...)
-	. = ..()
-	
-	if(mapload)
-		update_connections()
-
-		update_icon()
 
 
 /turf/closed/wall/ChangeTurf(newtype)
@@ -62,7 +57,6 @@
 
 	. = ..()
 	if(.) //successful turf change
-
 		var/turf/T
 		for(var/i in cardinal)
 			T = get_step(src, i)
@@ -107,7 +101,7 @@
 					var/turf/closed/wall/wall_south_turf = get_step(src, SOUTH)
 					var/turf/closed/wall/wall_east_turf = get_step(src, EAST)
 					var/turf/closed/wall/wall_west_turf = get_step(src, WEST)
-					
+
 					if(!istype(wall_north_turf) && !istype(wall_south_turf) && !istype(wall_east_turf) && !istype(wall_west_turf))
 						acided_hole_dir = dir_to & (NORTH|SOUTH)
 					else if(!istype(wall_north_turf) && !istype(wall_south_turf))
@@ -120,7 +114,7 @@
 		else
 			take_damage(damage_cap / XENO_HITS_TO_DESTROY_WALL)
 		return
-	
+
 	. = ..()
 
 //Appearance
@@ -259,13 +253,13 @@
 
 		if(!istype(src, /turf/closed/wall) || QDELETED(src))
 			break
-		
+
 		if(thermite > (damage_cap - damage)/100) // Thermite gains a speed buff when the amount is overkill
 			var/timereduction = round((thermite - (damage_cap - damage)/100)/5) // Every 5 units over the required amount reduces the sleep by 0.1s
 			sleep(max(2, 20 - timereduction))
 		else
 			sleep(20)
-			
+
 		if(!istype(src, /turf/closed/wall) || QDELETED(src))
 			break
 
@@ -274,7 +268,7 @@
 
 	if(istype(W))
 		W.melting = FALSE
-	
+
 
 //Interactions
 /turf/closed/wall/attack_animal(mob/living/M as mob)
@@ -362,7 +356,7 @@
 			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return
 
-	if(!istype(src, /turf/closed/wall)) 
+	if(!istype(src, /turf/closed/wall))
 		return
 
 	//DECONSTRUCTION
@@ -373,7 +367,7 @@
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
 				SPAN_NOTICE("You begin slicing through the outer plating."))
-				if(!WT || !WT.isOn())	
+				if(!WT || !WT.isOn())
 					return
 				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return

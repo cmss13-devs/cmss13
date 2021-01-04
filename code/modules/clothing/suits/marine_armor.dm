@@ -116,10 +116,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	time_to_equip = 20
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 
-/obj/item/clothing/suit/storage/marine/New(loc)
+/obj/item/clothing/suit/storage/marine/Initialize()
+	. = ..()
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag in MAPS_COLD_TEMP)
+		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
 		else
 			name += " armor"
@@ -129,7 +130,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
-	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
@@ -413,9 +413,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 					/obj/item/device/motiondetector,
 					/obj/item/device/walkman)
 
-/obj/item/clothing/suit/storage/marine/smartgunner/New(loc)
+/obj/item/clothing/suit/storage/marine/smartgunner/Initialize()
 	. = ..()
-	if(map_tag in MAPS_COLD_TEMP && name == "M56 combat harness")
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD] && name == "M56 combat harness")
 		name = "M56 snow combat harness"
 	else
 		name = "M56 combat harness"
@@ -452,17 +452,17 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 	var/class = "H" //This variable should be what comes before the variation number (H6 -> H).
 
-/obj/item/clothing/suit/storage/marine/class/New()
+/obj/item/clothing/suit/storage/marine/class/Initialize()
+	. = ..()
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag in MAPS_COLD_TEMP)
+		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
 		else
 			name += " armor"
 	if(istype(src, /obj/item/clothing/suit/storage/marine/class))
 		var/armor_variation = rand(1,6)
 		icon_state = "[class]" + "[armor_variation]"
-	..()
 	armor_overlays = list("lamp") //Just one for now, can add more later.
 	update_icon()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
@@ -1393,8 +1393,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS
 	min_cold_protection_temperature = SPACE_SUIT_min_cold_protection_temperature
 
-/obj/item/clothing/suit/storage/militia/New()
-	..()
+/obj/item/clothing/suit/storage/militia/Initialize()
+	. = ..()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,

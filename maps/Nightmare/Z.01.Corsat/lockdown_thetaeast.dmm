@@ -52,7 +52,7 @@
 	},
 /area/corsat/theta/airlock/east)
 "k" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
 	id = "ThetaEastW";
 	name = "Theta East Airlock";
 	unacidable = 0;
@@ -64,7 +64,7 @@
 /area/corsat/theta/airlock/east)
 "l" = (
 /obj/structure/pipes/vents/pump{
-	dir = 1 
+	dir = 1
 	},
 /turf/open/floor/corsat{
 	icon_state = "plate"

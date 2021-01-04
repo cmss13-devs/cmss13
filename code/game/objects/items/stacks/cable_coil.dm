@@ -21,8 +21,8 @@
 	stack_id = "cable coil"
 
 
-/obj/item/stack/cable_coil/New(loc, length = MAXCOIL, var/param_color = null)
-	..()
+/obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, var/param_color = null)
+	. = ..()
 	src.amount = length
 	if (param_color) // It should be red by default, so only recolor it if parameter was specified.
 		color = param_color
@@ -272,8 +272,8 @@
 	item_state = "coil2"
 	garbage = TRUE
 
-/obj/item/stack/cable_coil/cut/New(loc)
-	..()
+/obj/item/stack/cable_coil/cut/Initialize()
+	. = ..()
 	src.amount = rand(1,2)
 	pixel_x = rand(-2,2)
 	pixel_y = rand(-2,2)
@@ -301,9 +301,9 @@
 /obj/item/stack/cable_coil/white
 	color = "#FFFFFF"
 
-/obj/item/stack/cable_coil/random/New()
+/obj/item/stack/cable_coil/random/Initialize()
+	. = ..()
 	color = pick(COLOR_RED, COLOR_BLUE, COLOR_GREEN, COLOR_WHITE, COLOR_PINK, COLOR_YELLOW, COLOR_CYAN)
-	..()
 
 /obj/item/stack/cable_coil/attack(mob/M as mob, mob/user as mob)
 	if(ishuman(M))

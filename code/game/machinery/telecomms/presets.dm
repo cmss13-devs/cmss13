@@ -45,8 +45,8 @@
 	health = 450
 	tcomms_machine = TRUE
 
-/obj/structure/machinery/telecomms/relay/preset/tower/New()
-	..()
+/obj/structure/machinery/telecomms/relay/preset/tower/Initialize(mapload, ...)
+	. = ..()
 	playsound(src, 'sound/machines/tcomms_on.ogg', 75)
 	add_tcomm_machine()
 
@@ -189,10 +189,10 @@
 	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, SUP_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ)
 
 	//Common and other radio frequencies for people to freely use
-	New()
-		for(var/i = 1441, i < 1489, i += 2)
-			freq_listening |= i
-		..()
+/obj/structure/machinery/telecomms/receiver/preset/Initialize(mapload, ...)
+	. = ..()
+	for(var/i = 1441, i < 1489, i += 2)
+		freq_listening |= i
 
 /obj/structure/machinery/telecomms/receiver/preset_cent
 	id = "CentComm Receiver"
@@ -227,10 +227,10 @@
 	freq_listening = list(CIV_GEN_FREQ)
 	autolinkers = list("processor4", "common")
 
-/obj/structure/machinery/telecomms/bus/preset_four/New()
+/obj/structure/machinery/telecomms/bus/preset_four/Initialize(mapload, ...)
+	. = ..()
 	for(var/i = 1441, i < 1489, i += 2)
 		freq_listening |= i
-	..()
 
 /obj/structure/machinery/telecomms/bus/preset_cent
 	id = "CentComm Bus"
@@ -293,10 +293,10 @@
 
 	//Common and other radio frequencies for people to freely use
 	// 1441 to 1489
-/obj/structure/machinery/telecomms/server/presets/common/New()
+/obj/structure/machinery/telecomms/server/presets/common/Initialize(mapload, ...)
+	. = ..()
 	for(var/i = 1441, i < 1489, i += 2)
 		freq_listening |= i
-	..()
 
 /obj/structure/machinery/telecomms/server/presets/command
 	id = "Command Server"

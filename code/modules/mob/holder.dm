@@ -5,8 +5,8 @@
 	icon = 'icons/obj/objects.dmi'
 	flags_equip_slot = SLOT_HEAD
 
-/obj/item/holder/New()
-	..()
+/obj/item/holder/Initialize()
+	. = ..()
 	START_PROCESSING(SSobj, src)
 
 /obj/item/holder/Destroy()

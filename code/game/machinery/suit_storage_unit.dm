@@ -23,8 +23,8 @@
 
 
 
-/obj/structure/machinery/suit_storage_unit/New()
-	..()
+/obj/structure/machinery/suit_storage_unit/Initialize()
+	. = ..()
 	if(starting_suit_type)
 		inserted_suit = new starting_suit_type(src)
 	if(starting_helmet_type)

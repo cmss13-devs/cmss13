@@ -242,6 +242,6 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 	var/language = "human"
 	var/obj/item/device/radio/headset/server_radio = null
 
-/obj/structure/machinery/telecomms/server/New()
-	..()
+/obj/structure/machinery/telecomms/server/Initialize(mapload, ...)
+	. = ..()
 	server_radio = new()

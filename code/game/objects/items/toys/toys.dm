@@ -399,7 +399,7 @@
 	var/sides = 6
 	attack_verb = list("diced")
 
-/obj/item/toy/dice/New()
+/obj/item/toy/dice/Initialize()
 	. = ..()
 	icon_state = "[name][rand(sides)]"
 

@@ -1,0 +1,25 @@
+{
+    "map_name": "LV-624",
+    "map_path": "map_files/LV624",
+    "map_file": "LV624.dmm",
+    "survivor_types": [
+        "Survivor - Scientist",
+        "Survivor - Doctor",
+        "Survivor - Chef",
+        "Survivor - Chaplain",
+        "Survivor - Miner",
+        "Survivor - Engineer",
+        "Survivor - Trucker",
+        "Survivor - Colonial Marshall"
+    ],
+    "map_item_type": "/obj/item/map/lazarus_landing_map",
+    "announce_text": "An automated distress signal has been received from archaeology site Lazarus Landing, on border world LV-624. A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "farwa",
+        "monkey",
+        "neaera",
+        "stok"
+    ],
+    "environment_traits": { "Fog": true },
+    "traits": [{ "Ground": true }]
+}

@@ -8,7 +8,7 @@
 	icon = 'icons/obj/structures/machinery/power.dmi'
 	icon_state = "cell"
 	item_state = "cell"
-	
+
 	force = 5.0
 	throwforce = 5.0
 	throw_speed = SPEED_VERY_FAST
@@ -21,9 +21,9 @@
 	var/construction_time=100
 	matter = list("metal" = 700, "glass" = 50)
 
-/obj/item/cell/New()
-	..()
-	
+/obj/item/cell/Initialize()
+	. = ..()
+
 	charge = maxcharge
 	updateicon()
 
@@ -114,66 +114,66 @@
 /obj/item/cell/crap
 	name = "\improper Yamada brand rechargable AA battery"
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
-	
+
 	maxcharge = 500
 	matter = list("metal" = 700, "glass" = 40)
 
-/obj/item/cell/crap/empty/New()
-	..()
+/obj/item/cell/crap/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/cell/secborg
 	name = "security borg rechargable D battery"
-	
+
 	maxcharge = 600	//600 max charge / 100 charge per shot = six shots
 	matter = list("metal" = 700, "glass" = 40)
 
-/obj/item/cell/secborg/empty/New()
-	..()
+/obj/item/cell/secborg/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/cell/apc
 	name = "heavy-duty power cell"
-	
+
 	maxcharge = 5000
 	matter = list("metal" = 700, "glass" = 50)
 
 /obj/item/cell/apc/full
 	charge = 5000
-	
+
 /obj/item/cell/high
 	name = "high-capacity power cell"
-	
+
 	icon_state = "hcell"
 	maxcharge = 10000
 	matter = list("metal" = 700, "glass" = 60)
 
-/obj/item/cell/high/empty/New()
-	..()
+/obj/item/cell/high/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/cell/super
 	name = "super-capacity power cell"
-	
+
 	icon_state = "scell"
 	maxcharge = 20000
 	matter = list("metal" = 700, "glass" = 70)
 	construction_cost = list("metal"=750,"glass"=100)
 
-/obj/item/cell/super/empty/New()
-	..()
+/obj/item/cell/super/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/cell/hyper
 	name = "hyper-capacity power cell"
-	
+
 	icon_state = "hpcell"
 	maxcharge = 30000
 	matter = list("metal" = 700, "glass" = 80)
 	construction_cost = list("metal"=500,"glass"=150,"gold"=200,"silver"=200)
 
-/obj/item/cell/hyper/empty/New()
-	..()
+/obj/item/cell/hyper/empty/Initialize()
+	. = ..()
 	charge = 0
 
 /obj/item/cell/infinite
@@ -187,7 +187,7 @@
 /obj/item/cell/potato
 	name = "potato battery"
 	desc = "A rechargable starch based power cell."
-	
+
 	icon = 'icons/obj/structures/machinery/power.dmi' //'icons/obj/items/harvest.dmi'
 	icon_state = "potato_cell" //"potato_battery"
 	charge = 100

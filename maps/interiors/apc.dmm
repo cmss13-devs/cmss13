@@ -10,7 +10,7 @@
 /obj/structure/interior_wall/apc{
 	dir = 1;
 	icon_state = "apc_left_1";
-	pixel_y = 32
+	pixel_y = 31
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	pixel_y = 28
@@ -27,7 +27,7 @@
 /obj/structure/interior_wall/apc{
 	dir = 1;
 	icon_state = "apc_left_2";
-	pixel_y = 32
+	pixel_y = 31
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	pixel_y = 28
@@ -46,7 +46,7 @@
 /obj/structure/interior_wall/apc{
 	dir = 1;
 	icon_state = "apc_left_3";
-	pixel_y = 32
+	pixel_y = 31
 	},
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin3";
@@ -61,7 +61,7 @@
 /obj/structure/interior_wall/apc{
 	dir = 1;
 	icon_state = "apc_left_4";
-	pixel_y = 32
+	pixel_y = 31
 	},
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat{
 	icon_state = "comfychair";
@@ -106,7 +106,7 @@
 	icon_state = "apc_back_1"
 	},
 /obj/structure/interior_wall/apc{
-	alpha = 100;
+	alpha = 50;
 	icon_state = "apc_right_1"
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
@@ -129,7 +129,7 @@
 	dir = 1
 	},
 /obj/structure/interior_wall/apc{
-	alpha = 100;
+	alpha = 50;
 	icon_state = "apc_right_2"
 	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
@@ -147,7 +147,7 @@
 	tag = "right"
 	},
 /obj/structure/interior_wall/apc{
-	alpha = 100;
+	alpha = 50;
 	icon_state = "apc_right_3"
 	},
 /turf/open/shuttle/dropship{
@@ -163,7 +163,7 @@
 /area/vehicle/apc)
 "l" = (
 /obj/structure/interior_wall/apc{
-	alpha = 100;
+	alpha = 50;
 	icon_state = "apc_right_4"
 	},
 /obj/structure/interior_wall/apc{

@@ -95,11 +95,11 @@
 /datum/equipment_preset/wy/manager/survivor/load_skills(mob/living/carbon/human/H)
 	. = ..()
 	H.skills.set_skill(SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR)
-	
+
 
 /datum/equipment_preset/wy/manager/survivor/load_gear(mob/living/carbon/human/H)
 	. = ..()
-	if(map_tag in MAPS_COLD_TEMP)
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		add_ice_colony_survivor_equipment(H)
 	else
 		H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)

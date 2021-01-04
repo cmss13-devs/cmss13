@@ -27,8 +27,8 @@
 		var/turf/owner_turf = get_turf(owner.mob)
 		if(owner_turf)
 			// We're in an interior and sound came from outside
-			if(owner_turf.z == interior_manager.interior_z && owner_turf.z != T.z)
-				var/datum/interior/VI = interior_manager.get_interior_by_coords(owner_turf.x, owner_turf.y)
+			if(owner_turf.z == GLOB.interior_manager.interior_z && owner_turf.z != T.z)
+				var/datum/interior/VI = GLOB.interior_manager.get_interior_by_coords(owner_turf.x, owner_turf.y)
 				if(VI && VI.exterior)
 					var/turf/candidate = get_turf(VI.exterior)
 					if(!(candidate.z == T.z))

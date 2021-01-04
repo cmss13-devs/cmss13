@@ -11,10 +11,6 @@
 	if(SSticker)
 		cameranet.updateVisibility(src)
 
-/turf/New()
-	..()
-	visibilityChanged()
-
 /obj/structure/machinery/door/poddoor/shutters/open()
 	if(SSticker)
 		cameranet.updateVisibility(src)
@@ -38,8 +34,8 @@
 		cameranet.updateVisibility(src)
 	. = ..()
 
-/obj/structure/New()
-	..()
+/obj/structure/Initialize()
+	. = ..()
 	if(SSticker)
 		cameranet.updateVisibility(src)
 
@@ -101,8 +97,8 @@
 		SetLuminosity(0)
 		cameranet.removeCamera(src)
 
-/obj/structure/machinery/camera/New()
-	..()
+/obj/structure/machinery/camera/Initialize()
+	. = ..()
 	cameranet.cameras += src //Camera must be added to global list of all cameras no matter what...
 	var/list/open_networks = difflist(network,RESTRICTED_CAMERA_NETWORKS) //...but if all of camera's networks are restricted, it only works for specific camera consoles.
 	if(open_networks.len) //If there is at least one open network, chunk is available for AI usage.

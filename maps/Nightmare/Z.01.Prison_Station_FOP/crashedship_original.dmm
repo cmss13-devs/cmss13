@@ -1890,7 +1890,7 @@
 /turf/closed/wall/sulaco/unmeltable,
 /area/prison/pirate)
 "dy" = (
-/obj/structure/machinery/door/poddoor/two_tile/open{
+/obj/structure/machinery/door/poddoor/two_tile/opened{
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door";
 	unacidable = 0
@@ -1907,7 +1907,7 @@
 	},
 /area/prison/pirate)
 "dA" = (
-/obj/structure/machinery/door/poddoor/two_tile/open{
+/obj/structure/machinery/door/poddoor/two_tile/opened{
 	id = "pirate_cargo";
 	name = "Rocinante Cargo Bay Door";
 	unacidable = 0
@@ -4179,8 +4179,7 @@
 /area/prison/pirate)
 "ic" = (
 /obj/structure/pipes/standard/tank/carbon_dioxide{
-	dir = 8;
-	start_pressure = 435
+	dir = 8
 	},
 /turf/open/floor/plating{
 	icon_plating = "platebot";
@@ -4623,9 +4622,7 @@
 /area/prison/pirate)
 "iV" = (
 /obj/structure/pipes/standard/tank/phoron{
-	dir = 1;
-	start_pressure = 0;
-	volume = 0
+	dir = 1
 	},
 /turf/open/floor/plating{
 	icon_plating = "platebot";

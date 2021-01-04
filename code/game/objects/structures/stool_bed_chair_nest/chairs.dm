@@ -9,13 +9,11 @@
 	buckle_lying = FALSE
 	var/propelled = 0 //Check for fire-extinguisher-driven chairs
 
-/obj/structure/bed/chair/New()
+/obj/structure/bed/chair/Initialize()
+	. = ..()
 	if(anchored)
 		verbs -= /atom/movable/verb/pull
-	..()
-	spawn(3) //Sorry. i don't think there's a better way to do this.
-		handle_rotation()
-	return
+	handle_rotation()
 
 /obj/structure/bed/chair/handle_rotation() //Making this into a seperate proc so office chairs can call it on Move()
 	if(src.dir == NORTH)
@@ -155,15 +153,13 @@
 /obj/structure/bed/chair/dropship/passenger/ex_act(severity)
 	return
 
-/obj/structure/bed/chair/dropship/passenger/New()
+/obj/structure/bed/chair/dropship/passenger/Initialize()
+	. = ..()
 	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 
-	return ..()
-
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair/New()
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair/Initialize()
 	. = ..()
-
 	chairbar = image("icons/obj/objects.dmi", "hotseat_bars")
 	chairbar.layer = ABOVE_MOB_LAYER
 

@@ -33,8 +33,8 @@
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
-/obj/item/paper/New()
-	..()
+/obj/item/paper/Initialize()
+	. = ..()
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	stamps = ""
@@ -44,10 +44,8 @@
 		info = replacetext(info, "\n", "<BR>")
 		info = parsepencode(info)
 
-	spawn(2)
-		update_icon()
-		updateinfolinks()
-		return
+	update_icon()
+	updateinfolinks()
 
 /obj/item/paper/update_icon()
 	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm")
@@ -497,6 +495,11 @@
 	name = "paper- 'Test Log'"
 	info = "<p style=\"text-align: center;\"><sub>TEST LOG</sub></p><p>SPECIMEN: Bioweapon candidate Kappa. Individual 3</p><BR>\n<p>-</p><p>PROCEDURE: Observation</p><p>RESULTS: Specimen paces around cell. Appears agitated. Vocalisations.</p><p>-</p><p>PROCEDURE: Simian test subject</p><p>RESULTS: Devoured by specimen. No significant difference from last simian test.</p><p><em>Note: Time to amp it up</em></p><p>-</p><p>PROCEDURE: Human test subject (D-1). Instructed to \"pet it like a dog\"</p><p>RESULTS: Specimen and D-1 stare at each other for approximately two seconds. D-1 screams and begins pounding on observation window, begging to be released. Specimen pounces on D-1. Specimen kills D-1 with multiple slashes from its foreclaws.</p><p><em>Note: Promising!</em></p><p>-</p><p>PROCEDURE: Two human test subjects (D-2, D-3). Instructed to subdue specimen</p><p>RESULTS: D-2 and D-3 slowly approach specimen. D-3 punches specimen on forehead to no noticeable effect. Specimen pounces on D-3, then kills him with multiple slashes from its foreclaws. D-2 screams and begins pounding on observation window. Specimen pounces on D-2, then kills him with multiple slashes from its foreclaws.</p><p>Specimen begins slashing at observation access doors. Exhibiting an unexpected amount of strength, it is able to d~</p>"
 
+/obj/item/paper/prison_station/interrogation_log
+	name = "paper- 'Test Log'"
+	desc = "This paper seems to have been crumpled up in dried blood, turning it nearly unreadable.";
+	info = "<p style=\"text-align: center;\"><sub>INTERROGATION  LOG</sub></p><p>Person: (Withheld) 'Verdan' (Withheld)</p><BR>\n<p</p><p>PROCEDURE: Wringer Technique</p><p>RESULTS: Verdan bashes head around. Appears agitated and cries, perhaps angry. Heavy Vocalisations.</p><p>-</p><p>PROCEDURE: Shocking.</p><p>RESULTS: Cries and screams in anger. No significant difference from last procedure.</p><p><em>Note: Pain Tolerant, must increase pain.</em></p><p>-</p><p>PROCEDURE: Handy Man. Instructed to \"look.\" while saw performs its work.</p><p>RESULTS: Verdan stares for approximately three seconds. Verdan screams and begins trying to break the restraints while begging to be released. The saw finally completes its work. Verdan seems to be a blabbering mess.</p><p><em>Note: Promising!</em></p><p>-</p><p>PROCEDURE: Information Gathering.</p><p>RESULTS: Verdan starts giving out information about the other cells. </p><p>Verdan starts whispering from fatigue, have to sit closer. Verdan leans in closer to me, he~</p><em>(The remaining paper is splattered in blood and unreadable.)</em>";
+
 /obj/item/paper/prison_station/monkey_note
 	name = "paper- 'Note on simian test subjects'"
 	info = "Keep an eye on the monkeys, and keep track of the numbers. We just found out that they can crawl through air vents and into the atmospheric system.<BR>\n<BR>\nI'd rather not have to explain to the Warden how the prisoners managed to acquire a new \"pet\". Again."
@@ -552,7 +555,11 @@
 
 /obj/item/paper/research_notes/Initialize()
 	. = ..()
-	addtimer(CALLBACK(src, .proc/generate), 7) //To make sure reagents got initialized first
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/item/paper/research_notes/LateInitialize()
+	. = ..()
+	generate()
 
 /obj/item/paper/research_notes/proc/generate()
 	if(!note_type)
@@ -748,13 +755,12 @@
 	name = "incident report"
 	var/datum/crime_incident/incident
 
-/obj/item/paper/incident/New()
+/obj/item/paper/incident/Initialize()
+	. = ..()
 	info = {"\[center\]\[logo\]\[/center\]
 \[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
 \[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
 \[barcode\]\[/center\]"}
-
-	..()
 
 /obj/item/paper/incident/Destroy()
 	incident = null
@@ -765,7 +771,8 @@
 /obj/item/paper/fingerprint
 	name = "fingerprint report"
 
-/obj/item/paper/fingerprint/New(var/criminal_name = "", var/criminal_rank = "", var/criminal_squad = "", var/description = "")
+/obj/item/paper/fingerprint/Initialize(mapload, var/criminal_name = "", var/criminal_rank = "", var/criminal_squad = "", var/description = "")
+	. = ..()
 	info = {"\[center\]\[logo\]\[/center\]
 			\[center\]\[b\]\[i\]Fingerprint Sample From [criminal_name]\[/b\]\[/i\]\[hr\]
 			\[small\]
@@ -775,5 +782,3 @@
 			Description [description]\[br\]
 			\[/small\]
 			\[/center\]"}
-
-	..()

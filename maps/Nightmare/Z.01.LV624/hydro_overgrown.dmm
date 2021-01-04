@@ -339,7 +339,6 @@
 /area/lv624/lazarus/hydroponics)
 "aol" = (
 /obj/structure/surface/table,
-/obj/item/clothing/suit/apron/overalls,
 /obj/item/clothing/under/colonist,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";

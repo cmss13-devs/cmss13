@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(perf_logging)
 	while(!SSentity_manager.ready)
 		stoplag()
 	round = SSentity_manager.select(/datum/entity/mc_round)
-	round.map_name = "[map_tag]"
+	round.map_name = SSmapping.configs[GROUND_MAP].map_name
 	round.save()
 	round.sync()
 	if(!Master)

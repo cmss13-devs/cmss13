@@ -570,3 +570,12 @@ proc/listclearnulls(list/list)
 		right.Cut(1,2)
 
 	return result
+
+/proc/typecache_filter_list_reverse(list/atoms, list/typecache)
+	RETURN_TYPE(/list)
+	. = list()
+	for(var/thing in atoms)
+		var/atom/A = thing
+		if(!typecache[A.type])
+			. += A
+

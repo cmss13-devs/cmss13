@@ -12,8 +12,8 @@
 	var/selected_mail
 
 
-/obj/structure/machinery/computer/emails/New()
-	..()
+/obj/structure/machinery/computer/emails/Initialize()
+	. = ..()
 	email_list = list()
 	var/list/L = typesof(email_type) - email_type
 	var/email_amt = rand(2,4)

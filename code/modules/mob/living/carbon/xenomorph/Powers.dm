@@ -9,7 +9,7 @@
 		return FALSE
 	if(!check_plasma(total_resin_cost))
 		return FALSE
-	if(interior_manager && interior_manager.interior_z == z)
+	if(GLOB.interior_manager.interior_z == z)
 		to_chat(src, SPAN_XENOWARNING("It's too tight in here to build."))
 		return FALSE
 

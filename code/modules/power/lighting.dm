@@ -158,7 +158,7 @@
 
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	return
-	
+
 
 // the smaller bulb light fixture
 
@@ -698,8 +698,8 @@
 /obj/structure/machinery/landinglight/ex_act(severity)
 	return
 
-/obj/structure/machinery/landinglight/New()
-	..()
+/obj/structure/machinery/landinglight/Initialize(mapload, ...)
+	. = ..()
 	turn_off()
 
 /obj/structure/machinery/landinglight/proc/turn_off()

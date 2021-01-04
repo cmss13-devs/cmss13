@@ -6,7 +6,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/omega/checkpoint)
 "c" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure/open{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/secure/opened{
 	id = "delta_gamma2";
 	name = "Gamma Checkpoint";
 	use_power = 0

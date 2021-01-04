@@ -321,7 +321,7 @@
 	new_protection[]	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature))
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag in MAPS_COLD_TEMP)
+		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 			name += " snow helmet"
 		else
 			name += " helmet"

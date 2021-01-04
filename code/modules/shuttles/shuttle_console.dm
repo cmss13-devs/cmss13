@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(shuttle_controls)
+
 /obj/structure/machinery/computer/shuttle_control
 	name = "shuttle control console"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
@@ -21,7 +23,11 @@
 
 /obj/structure/machinery/computer/shuttle_control/Initialize()
 	. = ..()
-	shuttle_datum = shuttle_controller.shuttles[shuttle_tag]
+	GLOB.shuttle_controls += src
+
+/obj/structure/machinery/computer/shuttle_control/Destroy()
+	GLOB.shuttle_controls -= src
+	return ..()
 
 /obj/structure/machinery/computer/shuttle_control/proc/get_shuttle()
 	var/datum/shuttle/ferry/shuttle = shuttle_controller.shuttles[shuttle_tag]
@@ -373,7 +379,7 @@
 
 		for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in machines)
 			if(M.id == ship_id)
-				if(M.z != 4)
+				if(!is_loworbit_level(M.z))
 					M.unlock()
 
 		var/obj/structure/machinery/door/airlock/multi_tile/almayer/reardoor
@@ -384,7 +390,7 @@
 			if("sh_dropship2")
 				for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ds2/D in machines)
 					reardoor = D
-		if(reardoor.z != 4)
+		if(!is_loworbit_level(reardoor.z))
 			reardoor.unlock()
 
 	if(href_list["side door"])
@@ -476,11 +482,9 @@
 	exproof = 1
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 
-/obj/structure/machinery/computer/shuttle_control/dropship1/New()
-	..()
+/obj/structure/machinery/computer/shuttle_control/dropship1/Initialize()
+	. = ..()
 	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 1"
-	if(shuttle_controller)
-		shuttle_datum = shuttle_controller.shuttles[shuttle_tag]
 
 /obj/structure/machinery/computer/shuttle_control/dropship1/onboard
 	name = "\improper 'Alamo' flight controls"
@@ -502,11 +506,9 @@
 	exproof = 1
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP, ACCESS_WY_CORPORATE)
 
-/obj/structure/machinery/computer/shuttle_control/dropship2/New()
-	..()
+/obj/structure/machinery/computer/shuttle_control/dropship2/Initialize()
+	. = ..()
 	shuttle_tag = "[MAIN_SHIP_NAME] Dropship 2"
-	if(shuttle_controller)
-		shuttle_datum = shuttle_controller.shuttles[shuttle_tag]
 
 /obj/structure/machinery/computer/shuttle_control/dropship2/onboard
 	name = "\improper 'Normandy' flight controls"

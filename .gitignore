@@ -15,16 +15,14 @@ cfg/
 tmp/
 tools/Runtime Condenser/Input.txt
 tools/Runtime Condenser/Output.txt
-tools/MapDaemon/logs/*.txt
 sound/music/*.ogg
 sound/music/walkman/*/*.ogg
 sound/music/walkman/*.txt
 icons/custom/*
 maps/**/backup
-*.json
 *.before
 __pycache__
 test_environment.txt
-
+*.json
 *.vscode/*
 !/.vscode/extensions.json

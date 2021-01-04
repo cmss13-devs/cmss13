@@ -15,7 +15,8 @@
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 
-/obj/structure/platform/New()
+/obj/structure/platform/Initialize()
+	. = ..()
 	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.
 	switch(dir)
 		if(SOUTH)
@@ -30,7 +31,6 @@
 			I.pixel_x = -16
 			layer = ABOVE_MOB_LAYER+0.1
 	overlays += I
-	..()
 
 /obj/structure/platform/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -60,7 +60,8 @@ obj/structure/platform_decoration
 	flags_atom = ON_BORDER
 	unacidable = TRUE
 
-/obj/structure/platform_decoration/New()
+/obj/structure/platform_decoration/Initialize()
+	. = ..()
 	switch(dir)
 		if (NORTH)
 			layer = ABOVE_MOB_LAYER+0.1
@@ -70,7 +71,6 @@ obj/structure/platform_decoration
 			layer = ABOVE_MOB_LAYER+0.1
 		if (SOUTHWEST)
 			layer = ABOVE_MOB_LAYER+0.1
-	.. ()
 
 /obj/structure/platform_decoration/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

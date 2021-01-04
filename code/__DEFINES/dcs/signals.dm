@@ -7,6 +7,8 @@
 // start global signals with "!", this used to be necessary but now it's just a formatting choice
 
 ///from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)
+#define COMSIG_GLOB_NEW_Z "!new_z"
+///from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)
 #define COMSIG_GLOB_VEHICLE_ORDERED "!vehicle_ordered"
 ///from /datum/game_mode/proc/pre_setup
 #define COMSIG_GLOB_MODE_PRESETUP "!mode_presetup"
@@ -16,6 +18,7 @@
 #define COMSIG_GLOB_MARINE_DEATH "!marine_death"
 ///from /mob/living/carbon/Xenomorph/death
 #define COMSIG_GLOB_XENO_DEATH "!xeno_death"
+#define COMSIG_GLOB_REMOVE_VOTE_BUTTON "!remove_vote_button"
 
 //////////////////////////////////////////////////////////////////
 

@@ -25,18 +25,17 @@
 	var/disposal_pressure = 0
 
 //Create a new disposal, find the attached trunk (if present) and init gas resvr.
-/obj/structure/machinery/disposal/New()
-	..()
-	spawn(5)
-		trunk = locate() in loc
-		if(!trunk)
-			mode = 0
-			flush = 0
-		else
-			trunk.linked = src	//Link the pipe trunk to self
+/obj/structure/machinery/disposal/Initialize(mapload, ...)
+	. = ..()
+	trunk = locate() in loc
+	if(!trunk)
+		mode = 0
+		flush = 0
+	else
+		trunk.linked = src	//Link the pipe trunk to self
 
-		update()
-		start_processing()
+	update()
+	start_processing()
 
 /obj/structure/machinery/disposal/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -510,8 +509,7 @@
 		if(hasmob && prob(3))
 			for(var/mob/living/H in src)
 				if(!istype(H, /mob/living/silicon/robot/drone)) //Drones use the mailing code to move through the disposal system,
-					if(map_tag != MAP_WHISKEY_OUTPOST)
-						H.take_overall_damage(20, 0, "Blunt Trauma") //Horribly maim any living creature jumping down disposals.  c'est la vie
+					H.take_overall_damage(20, 0, "Blunt Trauma") //Horribly maim any living creature jumping down disposals.  c'est la vie
 
 		if(has_fat_guy && prob(2)) //Chance of becoming stuck per segment if contains a fat guy
 			active = 0
@@ -606,10 +604,9 @@
 	var/base_icon_state	//Initial icon state on map
 
 	//New pipe, set the icon_state as on map
-	New()
-		..()
-		base_icon_state = icon_state
-		return
+/obj/structure/disposalpipe/Initialize(mapload, ...)
+	. = ..()
+	base_icon_state = icon_state
 
 
 //Pipe is deleted
@@ -769,7 +766,7 @@
 
 //Test health for brokenness
 /obj/structure/disposalpipe/proc/healthcheck()
-	if(Check_WO())
+	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 		return
 	if(health < -2)
 		broken(0)
@@ -844,22 +841,22 @@
 /obj/structure/disposalpipe/segment
 	icon_state = "pipe-s"
 
-	New()
-		..()
-		if(icon_state == "pipe-s")
-			dpdir = dir|turn(dir, 180)
-		else
-			dpdir = dir|turn(dir, -90)
-		update()
+/obj/structure/disposalpipe/segment/Initialize(mapload, ...)
+	. = ..()
+	if(icon_state == "pipe-s")
+		dpdir = dir|turn(dir, 180)
+	else
+		dpdir = dir|turn(dir, -90)
+	update()
 
 //Z-Level stuff
 /obj/structure/disposalpipe/up
 	icon_state = "pipe-u"
 
-	New()
-		..()
-		dpdir = dir
-		update()
+/obj/structure/disposalpipe/up/Initialize(mapload, ...)
+	. = ..()
+	dpdir = dir
+	update()
 
 /obj/structure/disposalpipe/up/nextdir(var/fromdir)
 	var/nextdir
@@ -899,10 +896,10 @@
 /obj/structure/disposalpipe/down
 	icon_state = "pipe-d"
 
-	New()
-		..()
-		dpdir = dir
-		update()
+/obj/structure/disposalpipe/down/Initialize(mapload, ...)
+	. = ..()
+	dpdir = dir
+	update()
 
 /obj/structure/disposalpipe/down/nextdir(var/fromdir)
 	var/nextdir
@@ -1028,15 +1025,15 @@
 /obj/structure/disposalpipe/junction
 	icon_state = "pipe-j1"
 
-	New()
-		..()
-		if(icon_state == "pipe-j1")
-			dpdir = dir|turn(dir, -90)|turn(dir, 180)
-		else if(icon_state == "pipe-j2")
-			dpdir = dir|turn(dir, 90)|turn(dir, 180)
-		else //Pipe-y
-			dpdir = dir|turn(dir,90)|turn(dir, -90)
-		update()
+/obj/structure/disposalpipe/junction/Initialize(mapload, ...)
+	. = ..()
+	if(icon_state == "pipe-j1")
+		dpdir = dir|turn(dir, -90)|turn(dir, 180)
+	else if(icon_state == "pipe-j2")
+		dpdir = dir|turn(dir, 90)|turn(dir, 180)
+	else //Pipe-y
+		dpdir = dir|turn(dir,90)|turn(dir, -90)
+	update()
 
 //Next direction to move, if coming in from secondary dirs, then next is primary dir, if coming in from primary dir, then next is equal chance of other dirs
 /obj/structure/disposalpipe/junction/nextdir(var/fromdir)
@@ -1069,13 +1066,13 @@
 	var/sort_tag = ""
 	var/partial = 0
 
-	New()
-		. = ..()
-		dpdir = dir|turn(dir, 180)
-		if(sort_tag) tagger_locations |= sort_tag
-		updatename()
-		updatedesc()
-		update()
+/obj/structure/disposalpipe/tagger/Initialize(mapload, ...)
+	. = ..()
+	dpdir = dir|turn(dir, 180)
+	if(sort_tag) tagger_locations |= sort_tag
+	updatename()
+	updatedesc()
+	update()
 
 /obj/structure/disposalpipe/tagger/proc/updatedesc()
 	desc = initial(desc)
@@ -1126,14 +1123,14 @@
 	var/negdir = 0
 	var/sortdir = 0
 
-	New()
-		. = ..()
-		if(sortType) tagger_locations |= sortType
+/obj/structure/disposalpipe/sortjunction/Initialize(mapload, ...)
+	. = ..()
+	if(sortType) tagger_locations |= sortType
 
-		updatedir()
-		updatename()
-		updatedesc()
-		update()
+	updatedir()
+	updatename()
+	updatedesc()
+	update()
 
 /obj/structure/disposalpipe/sortjunction/proc/updatedesc()
 	desc = initial(desc)
@@ -1232,12 +1229,15 @@
 	icon_state = "pipe-t"
 	var/obj/linked 	//The linked obj/structure/machinery/disposal or obj/disposaloutlet
 
-/obj/structure/disposalpipe/trunk/New()
-	..()
+/obj/structure/disposalpipe/trunk/Initialize(mapload, ...)
+	. = ..()
 	dpdir = dir
-	spawn(1)
-		getlinked()
 	update()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/disposalpipe/trunk/LateInitialize()
+	. = ..()
+	getlinked()
 
 /obj/structure/disposalpipe/trunk/proc/getlinked()
 	linked = null
@@ -1312,9 +1312,9 @@
 	dpdir = 0 //Broken pipes have dpdir = 0 so they're not found as 'real' pipes i.e. will be treated as an empty turf
 	desc = "A broken piece of disposal pipe."
 
-	New()
-		..()
-		update()
+/obj/structure/disposalpipe/broken/Initialize(mapload, ...)
+	. = ..()
+	update()
 
 //Called when welded, for broken pipe, remove and turn into scrap
 /obj/structure/disposalpipe/broken/welded()
@@ -1333,14 +1333,12 @@
 	var/mode = 0
 	var/range = 10
 
-	New()
-		..()
-
-		spawn(1)
-			target = get_ranged_target_turf(src, dir, range)
-			var/obj/structure/disposalpipe/trunk/trunk = locate() in loc
-			if(trunk)
-				trunk.linked = src	//Link the pipe trunk to self
+/obj/structure/disposaloutlet/Initialize(mapload, ...)
+	. = ..()
+	target = get_ranged_target_turf(src, dir, range)
+	var/obj/structure/disposalpipe/trunk/trunk = locate() in loc
+	if(trunk)
+		trunk.linked = src	//Link the pipe trunk to self
 
 //Expel the contents of the holder object, then delete it. Called when the holder exits the outlet
 /obj/structure/disposaloutlet/proc/expel(var/obj/structure/disposalholder/H)

@@ -21,9 +21,13 @@
 	maptext_height = 26
 	maptext_width = 32
 
-/obj/structure/machinery/door_display/New()
-	..()
-	addtimer(CALLBACK(src, .proc/get_targets))
+/obj/structure/machinery/door_display/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/door_display/LateInitialize()
+	. = ..()
+	get_targets()
 
 /obj/structure/machinery/door_display/proc/get_targets()
 	for(var/obj/structure/machinery/door/D in machines)
@@ -249,7 +253,7 @@
 	//Room Divider
 	if(has_wall_divider)
 		data += "<br/><A href='?src=\ref[src];divider=1'>Containment Divider</A><br/>"
-	
+
 	data += "<br/><a href='?src=\ref[user];mach_close=computer'>Close Display</a>"
 	data += "</TT></BODY></HTML>"
 

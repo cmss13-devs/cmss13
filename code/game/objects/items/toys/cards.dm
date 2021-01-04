@@ -15,8 +15,8 @@
 
 	var/list/datum/playingcard/cards = list()
 
-/obj/item/toy/deck/New()
-	..()
+/obj/item/toy/deck/Initialize()
+	. = ..()
 	populate_deck()
 
 /obj/item/toy/deck/proc/populate_deck()

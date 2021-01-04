@@ -20,12 +20,11 @@
 	var/specialty = "USCM" //Makes it so that we can see the right name in the vendor.
 	layer = UPPER_ITEM_LAYER
 
-/obj/item/clothing/under/marine/New(loc,
-	new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature), override_icon_state[] 	= null)
-	..()
+/obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature), override_icon_state[] 	= null)
+	. = ..()
 	if(!(flags_atom & UNIQUE_ITEM_TYPE))
 		name = "[specialty]"
-		if(map_tag in MAPS_COLD_TEMP)
+		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 			name += " snow uniform"
 		else
 			name += " uniform"

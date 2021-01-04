@@ -1,0 +1,28 @@
+{
+    "map_name": "Solaris Ridge",
+    "map_path": "map_files/BigRed_v2",
+    "map_file": "BigRed_v2.dmm",
+    "survivor_types": [
+        "Survivor - Scientist",
+        "Survivor - Doctor",
+        "Survivor - Chef",
+        "Survivor - Chaplain",
+        "Survivor - Miner",
+        "Survivor - Engineer",
+        "Survivor - Trucker",
+        "Survivor - Colonial Marshall"
+    ],
+    "defcon_triggers": [
+        4750,
+        3500,
+        2000,
+        1000,
+        0.0
+    ],
+    "map_item_type": "/obj/item/map/big_red_map",
+    "announce_text": "We've lost contact with the Weston-Yamada's research facility, Solaris Ridge. The ###SHIPNAME### has been dispatched to assist.",
+    "monkey_types": [
+        "neaera"
+	],
+	"traits": [{ "Ground": true }]
+}

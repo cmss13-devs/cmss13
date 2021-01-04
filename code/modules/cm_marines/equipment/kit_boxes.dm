@@ -96,7 +96,7 @@
 		new /obj/item/explosive/plastic(src)
 		new /obj/item/explosive/plastic(src)
 		new /obj/item/device/encryptionkey/jtac(src)
-		if(Check_WO())
+		if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
 			new /obj/item/device/binoculars/designator(src)
 		else
 			new /obj/item/device/binoculars/range/designator/scout(src)

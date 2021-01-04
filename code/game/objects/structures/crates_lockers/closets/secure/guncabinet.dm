@@ -73,8 +73,8 @@
 //	req_access = list(ACCESS_MARINE_BRIG)
 	req_level = SEC_LEVEL_RED
 
-/obj/structure/closet/secure_closet/guncabinet/mp_armory/New()
-	..()
+/obj/structure/closet/secure_closet/guncabinet/mp_armory/Initialize()
+	. = ..()
 	new /obj/item/weapon/gun/shotgun/combat(src)
 	new /obj/item/weapon/gun/shotgun/combat(src)
 	new /obj/item/ammo_magazine/shotgun/slugs(src)
@@ -90,8 +90,8 @@
 	storage_capacity = 55 //lots of stuff to fit in
 	req_level = SEC_LEVEL_RED
 
-/obj/structure/closet/secure_closet/guncabinet/riot_control/New()
-	..()
+/obj/structure/closet/secure_closet/guncabinet/riot_control/Initialize()
+	. = ..()
 	new /obj/item/weapon/gun/shotgun/pump(src, TRUE)
 	new /obj/item/weapon/gun/shotgun/pump(src, TRUE)
 	new /obj/item/weapon/gun/shotgun/pump(src, TRUE)

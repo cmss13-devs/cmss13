@@ -45,7 +45,7 @@
 		"cold"
 	)
 
-/obj/structure/machinery/door/firedoor/New()
+/obj/structure/machinery/door/firedoor/Initialize()
 	. = ..()
 	for(var/obj/structure/machinery/door/firedoor/F in loc)
 		if(F != src)

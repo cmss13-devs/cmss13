@@ -20,8 +20,8 @@
 	var/width = 3
 	health = 50
 
-/obj/structure/grille/fence/New()
-	..()
+/obj/structure/grille/fence/Initialize()
+	. = ..()
 
 	if(width > 1)
 		if(dir in list(EAST, WEST))

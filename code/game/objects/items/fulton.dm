@@ -72,7 +72,7 @@ var/global/list/deployed_fultons = list()
 		to_chat(user, SPAN_WARNING("You can't attach [src] to something that far away."))
 		return
 
-	if(target_atom.z != 1)
+	if(!is_ground_level(target_atom.z))
 		to_chat(user, SPAN_WARNING("You can't attach [src] to something here."))
 		return
 

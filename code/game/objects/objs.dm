@@ -20,8 +20,8 @@
 	var/req_access_txt = null
 	var/req_one_access_txt = null
 
-/obj/New()
-	..()
+/obj/Initialize(mapload, ...)
+	. = ..()
 	GLOB.object_list += src
 	if(garbage)
 		add_to_garbage(src)

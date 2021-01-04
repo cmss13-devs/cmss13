@@ -10,15 +10,18 @@ FLOOR SAFES
 	name = "Secure Safe Combination"
 	var/obj/structure/safe/safe = null
 
-/obj/item/paper/safe_key/New()
-	..()
-	spawn(10)
-		for(var/obj/structure/safe/safe in loc)
-			if(safe)
-				info = "This looks like a handwritten page with two numbers on it: \n\n<b>[safe.tumbler_1_open]|[safe.tumbler_2_open]</b>."
-				info_links = info
-				icon_state = "paper_words"
-				break
+/obj/item/paper/safe_key/Initialize()
+	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/item/paper/safe_key/LateInitialize()
+	. = ..()
+	for(var/obj/structure/safe/safe in loc)
+		if(safe)
+			info = "This looks like a handwritten page with two numbers on it: \n\n<b>[safe.tumbler_1_open]|[safe.tumbler_2_open]</b>."
+			info_links = info
+			icon_state = "paper_words"
+			break
 
 /obj/structure/safe
 	name = "safe"
@@ -41,8 +44,8 @@ FLOOR SAFES
 	var/maxspace = 24	//the maximum combined w_class of stuff in the safe
 
 
-/obj/structure/safe/New()
-	..()
+/obj/structure/safe/Initialize()
+	. = ..()
 	tumbler_1_pos = 0
 	tumbler_1_open = (rand(0,10) * 5)
 
@@ -53,21 +56,15 @@ FLOOR SAFES
 		//adding an objective for cracking open the safe
 		new /datum/cm_objective/crack_safe(src)
 
-	spawn(5)
-		if(loc && spawnkey)
-			new /obj/item/paper/safe_key(loc) //Spawn the key on top of the safe.
-
-/obj/structure/safe/Initialize()
-	. = ..()
 	for(var/obj/item/I in loc)
-		if(istype(I,/obj/item/paper/safe_key))
-			continue
 		if(space >= maxspace)
 			return
 		if(I.w_class + space <= maxspace)
 			space += I.w_class
 			I.forceMove(src)
 
+	if(spawnkey)
+		new /obj/item/paper/safe_key(loc) //Spawn the key on top of the safe.
 
 /obj/structure/safe/proc/check_unlocked(mob/user as mob, canhear)
 	if(user && canhear)

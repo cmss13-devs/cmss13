@@ -397,16 +397,13 @@
 	unacidable = TRUE
 
 /obj/structure/prop/almayer/name_stencil
+	name = MAIN_SHIP_NAME
 	desc = "The name of the ship stenciled on the hull."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "almayer0"
 	density = 0 //dunno who would walk on it, but you know.
 	unslashable = TRUE
 	unacidable = TRUE
-
-	New()
-		..()
-		name = MAIN_SHIP_NAME
 
 /obj/structure/prop/almayer/hangar_stencil
 	name = "floor"
@@ -491,9 +488,8 @@
 	icon_state = "mixed"
 	icon_closed = "mixed"
 
-/obj/structure/closet/basketball/New()
-	..()
-	sleep(2)
+/obj/structure/closet/basketball/Initialize()
+	. = ..()
 	new /obj/item/clothing/under/shorts/grey(src)
 	new /obj/item/clothing/under/shorts/black(src)
 	new /obj/item/clothing/under/shorts/red(src)

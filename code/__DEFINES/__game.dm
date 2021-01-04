@@ -37,7 +37,7 @@
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
-#define PREROUND_TIME 240 // time before the round starts
+#define PREROUND_TIME 360 // time before the round starts
 
 //A set of constants used to determine which type of mute an admin wishes to apply:
 //Please read and understand the muting/automuting stuff before changing these. MUTE_IC_AUTO etc = (MUTE_IC << 1)
@@ -178,9 +178,6 @@
 
 //=================================================
 //Game mode related defines.
-
-var/list/accessable_z_levels = list("1" = 10, "3" = 10, "4" = 10, "5" = 70)
-//This list contains the z-level numbers which can be accessed via space travel and the percentile chances to get there.
 
 #define TRANSITIONEDGE	3 //Distance from edge to move to another z-level
 

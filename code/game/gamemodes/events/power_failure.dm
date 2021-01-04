@@ -1,7 +1,9 @@
 
 /proc/power_failure(var/announce = 1)
+	var/ship_zlevels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+
 	for(var/obj/structure/machinery/power/smes/S in machines)
-		if(S.z != 3) // Ship only
+		if(!is_mainship_level(S.z))
 			continue
 		S.last_charge = S.charge
 		S.last_output = S.output
@@ -13,10 +15,10 @@
 		S.power_change()
 
 	for(var/obj/structure/machinery/power/apc/C in machines)
-		if(C.cell && is_mainship_level(C.z))
+		if(!is_mainship_level(C.z) && C.cell)
 			C.cell.charge = 0
 
-	playsound_z(SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), 'sound/effects/powerloss.ogg')
+	playsound_z(ship_zlevels, 'sound/effects/powerloss.ogg')
 
 	sleep(100)
 	if(announce)
@@ -24,7 +26,7 @@
 
 /proc/power_restore(var/announce = 1)
 	for(var/obj/structure/machinery/power/smes/S in machines)
-		if(S.z != 3)
+		if(!is_mainship_level(S.z))
 			continue
 		S.charge = S.capacity
 		S.output = S.output_level_max
@@ -43,7 +45,7 @@
 /proc/power_restore_quick(var/announce = 1)
 
 	for(var/obj/structure/machinery/power/smes/S in machines)
-		if(S.z != 3) // Ship only
+		if(!is_mainship_level(S.z)) // Ship only
 			continue
 		S.charge = S.capacity
 		S.output = S.output_level_max

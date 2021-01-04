@@ -15,8 +15,8 @@
 	anchored = 1
 	throwpass = 1
 
-/obj/structure/morgue/New()
-	..()
+/obj/structure/morgue/Initialize()
+	. = ..()
 	connected = new tray_path(src)
 
 /obj/structure/morgue/Destroy()

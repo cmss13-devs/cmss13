@@ -2,7 +2,7 @@
 	var/map_name
 	var/total_votes
 
-	
+
 /datum/entity_meta/map_vote
 	entity_type = /datum/entity/map_vote
 	table_name = "map_vote"

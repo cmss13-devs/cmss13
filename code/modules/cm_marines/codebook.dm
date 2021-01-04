@@ -4,7 +4,8 @@
 	unique = 1
 	dat = ""
 
-/obj/item/book/codebook/New()
+/obj/item/book/codebook/Initialize()
+	. = ..()
 	var/number
 	var/letter
 	dat = "<table><tr><th>Call</th><th>Response<th></tr>"

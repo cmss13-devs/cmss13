@@ -121,11 +121,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		cmd_admin_pm(C,null)
 		return
 
-	//Map voting
-	if(href_list["vote_for_map"])
-		mapVote()
-		return
-
 	else if(href_list["FaxView"])
 		var/info = locate(href_list["FaxView"])
 		show_browser(usr, "<body class='paper'>[info]</body>", "Fax Message", "Fax Message")
@@ -152,6 +147,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			return view_glob_var_Topic(href, href_list, hsrc)
 		if("matrices")
 			return matrix_editor_Topic(href, href_list, hsrc)
+		if("vote")
+			return SSvote.Topic(href, href_list)
 
 	switch(href_list["action"])
 		if ("openLink")
@@ -258,6 +255,17 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		xeno_prefix = "XX"
 	if(!xeno_postfix || xeno_name_ban)
 		xeno_postfix = ""
+
+	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
+
+	if(GLOB.player_details[ckey])
+		player_details = GLOB.player_details[ckey]
+		player_details.byond_version = full_version
+	else
+		player_details = new
+		player_details.byond_version = full_version
+		GLOB.player_details[ckey] = player_details
+
 	. = ..()	//calls mob.Login()
 
 	// Macros added at runtime

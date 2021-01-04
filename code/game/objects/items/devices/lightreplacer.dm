@@ -49,17 +49,17 @@
 
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
-	
+
 
 	var/max_uses = 50
 	var/uses = 0
 	var/failmsg = ""
 	var/charge = 1
 
-/obj/item/device/lightreplacer/New()
+/obj/item/device/lightreplacer/Initialize()
+	. = ..()
 	uses = max_uses
 	failmsg = "The [name]'s refill light blinks red."
-	..()
 
 /obj/item/device/lightreplacer/examine(mob/user)
 	..()

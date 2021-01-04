@@ -42,11 +42,10 @@
 	tag = "left"
 	},
 /obj/structure/interior_wall/apc{
-	alpha = 255;
+	alpha = 50;
 	dir = 1;
 	icon_state = "apc_right_3";
-	layer = 4;
-	pixel_y = 31
+	layer = 4
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3"

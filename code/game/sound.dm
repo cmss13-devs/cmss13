@@ -67,14 +67,14 @@
 	S.y = turf_source.y
 	S.z = turf_source.z
 
-	if(!interior_manager)
+	if(!GLOB.interior_manager)
 		SSsound.queue(S)
 		return S.channel
 
 	var/list/datum/interior/extra_interiors = list()
 	// If we're in an interior, range the chunk, then adjust to do so from outside instead
-	if(turf_source.z == interior_manager.interior_z)
-		var/datum/interior/VI = interior_manager.get_interior_by_coords(turf_source.x, turf_source.y)
+	if(turf_source.z == GLOB.interior_manager.interior_z)
+		var/datum/interior/VI = GLOB.interior_manager.get_interior_by_coords(turf_source.x, turf_source.y)
 		if(VI?.ready)
 			extra_interiors |= VI
 			if(VI.exterior)
@@ -84,7 +84,7 @@
 				S.z = new_turf_source.z
 			else sound_range = 0
 	// Range for 'nearby interiors' aswell
-	for(var/datum/interior/VI in interior_manager.interiors)
+	for(var/datum/interior/VI in GLOB.interior_manager.interiors)
 		if(VI?.ready && VI.exterior?.z == turf_source.z && get_dist(VI.exterior, turf_source) <= sound_range)
 			extra_interiors |= VI
 

@@ -110,6 +110,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
+				addtimer(CALLBACK(SSvote, /datum/controller/subsystem/vote.proc/initiate_vote, "groundmap", "SERVER"), 3 SECONDS)
 				addtimer(CALLBACK(src, .proc/Reboot), 63 SECONDS)
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
@@ -173,7 +174,6 @@ SUBSYSTEM_DEF(ticker)
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc(TRUE)
 
-	run_mapdaemon_batch()
 	begin_game_recording()
 
 	if((master_mode == "Distress Signal") && SSevents)

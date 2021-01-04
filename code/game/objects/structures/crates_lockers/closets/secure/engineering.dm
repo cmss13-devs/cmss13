@@ -116,7 +116,7 @@
 	if(!is_mainship_level(z) && prob(70)) new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
 	else new /obj/item/clothing/accessory/storage/webbing(src)
 	new /obj/item/storage/toolbox/mechanical(src)
-	if(z != 1)
+	if(!is_ground_level(z))
 		new /obj/item/device/radio/headset/almayer/mt(src)
 		new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
 	new /obj/item/clothing/suit/storage/hazardvest(src)
@@ -130,7 +130,7 @@
 	new /obj/item/storage/backpack/industrial(src)
 
 /obj/structure/closet/secure_closet/engineering_personal/select_gamemode_equipment(gamemode)
-	if (map_tag in MAPS_COLD_TEMP)
+	if (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 		new /obj/item/clothing/suit/storage/snow_suit(src)
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 
@@ -152,7 +152,7 @@
 	new /obj/item/storage/backpack/industrial(src)
 	new /obj/item/device/flashlight(src)
 	new /obj/item/tool/extinguisher(src)
-	if(z != 1)
+	if(!is_ground_level(z))
 		new /obj/item/device/radio/headset/almayer/mt(src)
 		new /obj/item/clothing/accessory/storage/black_vest/brown_vest(src)
 	new /obj/item/clothing/suit/storage/hazardvest(src)

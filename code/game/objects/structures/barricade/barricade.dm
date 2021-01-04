@@ -30,8 +30,8 @@
 	var/burn_multiplier = 1
 	var/explosive_multiplier = 1
 
-/obj/structure/barricade/New(loc, mob/user)
-	..(loc)
+/obj/structure/barricade/Initialize(mapload, mob/user)
+	. = ..()
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	addtimer(CALLBACK(src, .proc/update_icon), 0)

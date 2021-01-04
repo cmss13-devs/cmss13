@@ -177,7 +177,7 @@
 		if(busy)
 			to_chat(user, SPAN_WARNING("Someone else is currently using [src]."))
 			return
-		if(z != 1)
+		if(!is_ground_level(z))
 			to_chat(user, SPAN_WARNING("You cannot fire [src] here."))
 			return
 		if(targ_x == 0 && targ_y == 0) //Mortar wasn't set
@@ -315,7 +315,7 @@
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 		to_chat(user, SPAN_WARNING("You don't have the training to deploy [src]."))
 		return
-	if(user.z != 1)
+	if(!is_ground_level(z))
 		to_chat(user, SPAN_WARNING("You cannot deploy [src] here."))
 		return
 	var/area/A = get_area(src)
@@ -471,8 +471,8 @@
 	mouse_opacity = 0
 	brightness_on = 7 //Way brighter than most lights
 
-/obj/item/device/flashlight/flare/on/illumination/New()
-	..()
+/obj/item/device/flashlight/flare/on/illumination/Initialize()
+	. = ..()
 	fuel = rand(400, 500) // Half the duration of a flare, but justified since it's invincible
 
 /obj/item/device/flashlight/flare/on/illumination/turn_off()
@@ -492,8 +492,8 @@
 	icon_unlocked = "secure_unlocked_mortar"
 	req_one_access = list(ACCESS_MARINE_OT, ACCESS_MARINE_CARGO, ACCESS_MARINE_ENGPREP)
 
-/obj/structure/closet/crate/secure/mortar_ammo/full/New()
-	..()
+/obj/structure/closet/crate/secure/mortar_ammo/full/Initialize()
+	. = ..()
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)
@@ -515,8 +515,8 @@
 	name = "\improper M402 mortar kit"
 	desc = "A crate containing a basic set of a mortar and some shells, to get an engineer started."
 
-/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/New()
-	..()
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit/Initialize()
+	. = ..()
 	new /obj/item/mortar_kit(src)
 	new /obj/item/mortar_shell/he(src)
 	new /obj/item/mortar_shell/he(src)

@@ -76,7 +76,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "m" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
 	id = "GammaWestD";
 	name = "Gamma Dome Airlock";
 	unacidable = 0;

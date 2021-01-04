@@ -32,7 +32,7 @@
 	return ..()
 
 /datum/job/command/commander/announce_entry_message(mob/living/carbon/human/H)
-	if(flags_startup_parameters & ROLE_ADD_TO_MODE && map_tag != MAP_WHISKEY_OUTPOST)
+	if(flags_startup_parameters & ROLE_ADD_TO_MODE && SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
 		addtimer(CALLBACK(src, .proc/do_announce_entry_message, H), 1.5 SECONDS)
 	..()
 

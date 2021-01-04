@@ -15,8 +15,8 @@
 	var/obj/item/device/encryptionkey/keyslot3 = null
 	maxf = 1489
 
-/obj/item/device/radio/headset/New()
-	..()
+/obj/item/device/radio/headset/Initialize()
+	. = ..()
 	recalculateChannels()
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)

@@ -56,10 +56,21 @@
 
 	visibilityChanged()
 
+	pass_flags = pass_flags_cache[type]
+	if (isnull(pass_flags))
+		pass_flags = new()
+		initialize_pass_flags(pass_flags)
+		pass_flags_cache[type] = pass_flags
+	else
+		initialize_pass_flags()
+
 	for(var/atom/movable/AM in src)
 		Entered(AM)
 
-	Decorate()
+	if(luminosity)
+		if(light)	WARNING("[type] - Don't set lights up manually during New(), We do it automatically.")
+		trueLuminosity = luminosity * luminosity
+		light = new(src)
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -600,3 +611,69 @@
 			linked_pylons -= pylon
 
 	return protection_level
+
+GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
+	/turf/open/space,
+	/turf/baseturf_bottom,
+	)))
+
+// Make a new turf and put it on top
+// The args behave identical to PlaceOnBottom except they go on top
+// Things placed on top of closed turfs will ignore the topmost closed turf
+// Returns the new turf
+/turf/proc/PlaceOnTop(list/new_baseturfs, turf/fake_turf_type, flags)
+	var/area/turf_area = loc
+	if(new_baseturfs && !length(new_baseturfs))
+		new_baseturfs = list(new_baseturfs)
+	flags = turf_area.PlaceOnTopReact(new_baseturfs, fake_turf_type, flags) // A hook so areas can modify the incoming args
+
+	var/turf/newT
+	if(flags & CHANGETURF_SKIP) // We haven't been initialized
+		if(flags_atom & INITIALIZED)
+			stack_trace("CHANGETURF_SKIP was used in a PlaceOnTop call for a turf that's initialized. This is a mistake. [src]([type])")
+		assemble_baseturfs()
+	if(fake_turf_type)
+		if(!new_baseturfs) // If no baseturfs list then we want to create one from the turf type
+			if(!length(baseturfs))
+				baseturfs = list(baseturfs)
+			var/list/old_baseturfs = baseturfs.Copy()
+			if(!istype(src, /turf/closed))
+				old_baseturfs += type
+			newT = ChangeTurf(fake_turf_type, null, flags)
+			newT.assemble_baseturfs(initial(fake_turf_type.baseturfs)) // The baseturfs list is created like roundstart
+			if(!length(newT.baseturfs))
+				newT.baseturfs = list(baseturfs)
+			newT.baseturfs -= GLOB.blacklisted_automated_baseturfs
+			newT.baseturfs.Insert(1, old_baseturfs) // The old baseturfs are put underneath
+			return newT
+		if(!length(baseturfs))
+			baseturfs = list(baseturfs)
+		if(!istype(src, /turf/closed))
+			baseturfs += type
+		baseturfs += new_baseturfs
+		return ChangeTurf(fake_turf_type, null, flags)
+	if(!length(baseturfs))
+		baseturfs = list(baseturfs)
+	if(!istype(src, /turf/closed))
+		baseturfs += type
+	var/turf/change_type
+	if(length(new_baseturfs))
+		change_type = new_baseturfs[new_baseturfs.len]
+		new_baseturfs.len--
+		if(new_baseturfs.len)
+			baseturfs += new_baseturfs
+	else
+		change_type = new_baseturfs
+	return ChangeTurf(change_type, null, flags)
+
+/turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)
+	// Remove all atoms except observers, landmarks, docking ports
+	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark)) // shuttle TODO:
+	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
+	allowed_contents -= src
+	for(var/i in 1 to allowed_contents.len)
+		var/thing = allowed_contents[i]
+		qdel(thing, force=TRUE)
+
+	if(turf_type)
+		ChangeTurf(turf_type, baseturf_type, flags)

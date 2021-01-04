@@ -24,6 +24,7 @@
 #define CAN_BE_SYRINGED			(1<<13)	// syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
 #define CAN_BE_DISPENSED_INTO	(1<<14)	// Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
 #define INITIALIZED				(1<<15)	// Initialized by SSatoms.
+#define ATOM_DECORATED				(1<<16) // Has run Decorate() as part of subsystem init
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1

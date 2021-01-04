@@ -3256,7 +3256,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/emergency_access)
 "Yf" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
 	id = "SigmaWestW";
 	name = "Sigma West Airlock"
 	},
@@ -3286,7 +3286,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "Yu" = (
-/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/open{
+/obj/structure/machinery/door/poddoor/two_tile/four_tile/vertical/opened{
 	id = "SigmaWestE";
 	name = "Sigma West Airlock"
 	},

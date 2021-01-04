@@ -1,7 +1,7 @@
-
-
-
-
+/obj/effect/landmark/supply_elevator/Initialize(mapload, ...)
+	. = ..()
+	GLOB.supply_elevator = get_turf(src)
+	return INITIALIZE_HINT_QDEL
 
 /datum/shuttle/ferry/supply
 	iselevator = 1
@@ -20,15 +20,14 @@
 	var/elevator_loc
 
 /datum/shuttle/ferry/supply/proc/pick_loc()
-	elevator_loc = SupplyElevator
+	RETURN_TYPE(/turf)
+	return GLOB.supply_elevator
 
 /datum/shuttle/ferry/supply/New()
 	..()
-	pick_loc()
-	var/turf/SupplyElevatorLoc = get_turf(elevator_loc)
-	Elevator_x = SupplyElevatorLoc.x
-	Elevator_y = SupplyElevatorLoc.y
-	Elevator_z = SupplyElevatorLoc.z
+	Elevator_x = pick_loc().x
+	Elevator_y = pick_loc().y
+	Elevator_z = pick_loc().z
 	SW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
 	SE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
 	SE.pixel_x = -128
@@ -179,9 +178,14 @@
 			spawn()
 				M.icon_state = "gear"
 
+/obj/effect/landmark/vehicleelevator/Initialize(mapload, ...)
+	. = ..()
+	GLOB.vehicle_elevator = get_turf(src)
+	return INITIALIZE_HINT_QDEL
+
 /datum/shuttle/ferry/supply/vehicle
 	railing_id = "vehicle_elevator_railing"
 	gear_id = "vehicle_elevator_gears"
 
 /datum/shuttle/ferry/supply/vehicle/pick_loc()
-	elevator_loc = VehicleElevator
+	return GLOB.vehicle_elevator

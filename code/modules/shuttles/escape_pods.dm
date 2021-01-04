@@ -41,11 +41,11 @@ with the original.*/
 	can_launch() //Cannot launch it early before the evacuation takes place proper, and the pod must be ready. Cannot be delayed, broken, launching, or otherwise.
 		if(..() && EvacuationAuthority.evac_status >= EVACUATION_STATUS_INITIATING)
 			switch(evacuation_program.dock_state)
-				if(STATE_READY) 
+				if(STATE_READY)
 					return TRUE
 				if(STATE_DELAYED)
 					for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) //If all are occupied, the pod will launch anyway.
-						if(!C.occupant) 
+						if(!C.occupant)
 							return FALSE
 					return TRUE
 
@@ -128,7 +128,7 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 				D.lock()
 
 /datum/shuttle/ferry/marine/evacuation_pod/proc/prepare_for_launch()
-	if(!can_launch()) 
+	if(!can_launch())
 		return FALSE //Can't launch in some circumstances.
 	evacuation_program.dock_state = STATE_LAUNCHING
 	spawn()
@@ -166,7 +166,7 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 	for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells)
 		if(C.occupant)
 			n++
-			if(C.occupant.stat != DEAD && msg) 
+			if(C.occupant.stat != DEAD && msg)
 				to_chat(C.occupant, msg)
 	//Hardcoded typecast, which should be changed into some weight system of some kind eventually.
 	var/area/A = msg ? evacuation_program.master.loc.loc : staging_area //Before or after launch.
@@ -175,19 +175,19 @@ This can probably be done a lot more elegantly either way, but it'll suffice for
 			M = locate(/mob/living/carbon/human) in i
 			if(M)
 				n++ //No hiding in closets.
-				if(M.stat != DEAD && msg) 
+				if(M.stat != DEAD && msg)
 					to_chat(M, msg)
 		else if(istype(i, /mob/living/carbon/human) || isrobot(i))
 			n++ //Dead or alive, counts as a thing.
 			M = i
-			if(M.stat != DEAD && msg) 
+			if(M.stat != DEAD && msg)
 				to_chat(M, msg)
 		else if(istype(i, /mob/living/carbon/Xenomorph))
 			var/mob/living/carbon/Xenomorph/X = i
-			if(X.mob_size >= MOB_SIZE_BIG) 
+			if(X.mob_size >= MOB_SIZE_BIG)
 				return FALSE //Huge xenomorphs will automatically fail the launch.
 			n++
-			if(X.stat != DEAD && msg) 
+			if(X.stat != DEAD && msg)
 				to_chat(X, msg)
 	if(n > cryo_cells.len)  . = FALSE //Default is 3 cryo cells and three people inside the pod.
 	if(msg)
@@ -213,7 +213,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	//id_tag is the generic connection tag.
 	//TODO make sure you can't C4 this.
 
-	ex_act(severity) 
+	ex_act(severity)
 		return FALSE
 
 	ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1)
@@ -236,7 +236,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 			ui.set_auto_update(0)
 
 	Topic(href, href_list)
-		if(..()) 
+		if(..())
 			return TRUE	//Has to return true to fail. For some reason.
 
 		var/datum/shuttle/ferry/marine/evacuation_pod/P = shuttle_controller.shuttles[id_tag]
@@ -293,7 +293,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	var/being_forced = 0 //Simple variable to prevent sound spam.
 	var/datum/computer/file/embedded_program/docking/simple/escape_pod/evacuation_program
 
-	ex_act(severity) 
+	ex_act(severity)
 		return FALSE
 
 	attackby(obj/item/grab/G, mob/user)
@@ -311,7 +311,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 				return FALSE
 
 			var/mob/living/carbon/human/M = G.grabbed_thing
-			if(!istype(M)) 
+			if(!istype(M))
 				return FALSE
 
 			visible_message(SPAN_WARNING("[user] starts putting [M.name] into the cryo pod."), null, null, 3)
@@ -326,7 +326,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 		set category = "Object"
 		set src in oview(1)
 
-		if(!occupant || !usr.stat || usr.is_mob_restrained()) 
+		if(!occupant || !usr.stat || usr.is_mob_restrained())
 			return FALSE
 
 		if(occupant) //Once you're in, you cannot exit, and outside forces cannot eject you.
@@ -349,7 +349,7 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 
 		var/mob/living/carbon/human/user = usr
 
-		if(!istype(user) || user.stat || user.is_mob_restrained()) 
+		if(!istype(user) || user.stat || user.is_mob_restrained())
 			return FALSE
 
 		if(being_forced)
@@ -404,24 +404,24 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/door/airlock/evacuation/New()
-	..()
+/obj/structure/machinery/door/airlock/evacuation/Initialize()
+	. = ..()
 	INVOKE_ASYNC(src, .proc/lock)
 
 	//Can't interact with them, mostly to prevent grief and meta.
-/obj/structure/machinery/door/airlock/evacuation/Collided() 
+/obj/structure/machinery/door/airlock/evacuation/Collided()
 	return FALSE
 
-/obj/structure/machinery/door/airlock/evacuation/attackby() 
+/obj/structure/machinery/door/airlock/evacuation/attackby()
 	return FALSE
 
-/obj/structure/machinery/door/airlock/evacuation/attack_hand() 
+/obj/structure/machinery/door/airlock/evacuation/attack_hand()
 	return FALSE
 
-/obj/structure/machinery/door/airlock/evacuation/attack_alien() 
+/obj/structure/machinery/door/airlock/evacuation/attack_alien()
 	return FALSE //Probably a better idea that these cannot be forced open.
 
-/obj/structure/machinery/door/airlock/evacuation/attack_remote() 
+/obj/structure/machinery/door/airlock/evacuation/attack_remote()
 	return FALSE
 
 #undef STATE_IDLE

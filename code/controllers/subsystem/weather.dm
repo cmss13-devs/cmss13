@@ -34,9 +34,9 @@ SUBSYSTEM_DEF(weather)
 	// Set up our map delegate datum for supported maps
 	// The ONLY place where things should depend on map_tag
 	// in the weather subsystem
-	switch(map_tag)
-		if (MAP_SOROKYNE_STRATA)
-			map_holder = new /datum/weather_ss_map_holder/sorokyne()
+	if(SSmapping.configs[GROUND_MAP].weather_holder)
+		var/weathertype = SSmapping.configs[GROUND_MAP].weather_holder
+		map_holder = new weathertype
 
 	// Disable the weather subsystem on maps that don't currently implement it
 	if (!map_holder)

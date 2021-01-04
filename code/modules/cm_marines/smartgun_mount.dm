@@ -42,15 +42,14 @@
 	storage_slots = 6
 	can_hold = list()
 
-	New()
-		..()
-		spawn(1)
-			new /obj/item/device/m56d_gun(src) //gun itself
-			new /obj/item/ammo_magazine/m56d(src) //ammo for the gun
-			new /obj/item/device/m56d_post(src) //post for the gun
-			new /obj/item/tool/wrench(src) //wrench to hold it down into the ground
-			new /obj/item/tool/screwdriver(src) //screw the gun onto the post.
-			new /obj/item/ammo_magazine/m56d(src)
+/obj/item/storage/box/m56d_hmg/Initialize()
+	. = ..()
+	new /obj/item/device/m56d_gun(src) //gun itself
+	new /obj/item/ammo_magazine/m56d(src) //ammo for the gun
+	new /obj/item/device/m56d_post(src) //post for the gun
+	new /obj/item/tool/wrench(src) //wrench to hold it down into the ground
+	new /obj/item/tool/screwdriver(src) //screw the gun onto the post.
+	new /obj/item/ammo_magazine/m56d(src)
 
 
 
@@ -109,7 +108,7 @@
 		return FALSE
 	if(!has_mount)
 		return FALSE
-	if(interior_manager && user.z == interior_manager.interior_z)
+	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	if(do_after(user, 1 SECOND, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -158,7 +157,7 @@
 /obj/item/device/m56d_post/attack_self(mob/user) //click the tripod to unfold it.
 	if(!ishuman(usr))
 		return
-	if(interior_manager && user.z == interior_manager.interior_z)
+	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	to_chat(user, SPAN_NOTICE("You deploy [src]."))

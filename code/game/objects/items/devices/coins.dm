@@ -11,8 +11,8 @@
 	var/string_attached
 	var/sides = 2
 
-/obj/item/coin/New()
-	..()
+/obj/item/coin/Initialize()
+	. = ..()
 	pixel_x = rand(0,16)-8
 	pixel_y = rand(0,8)-8
 

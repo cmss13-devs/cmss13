@@ -17,7 +17,7 @@
 
 	prev_gender = gender // Debug for plural genders
 
-	if(map_tag == MAP_WHISKEY_OUTPOST)
+	if(SSticker?.mode?.hardcore)
 		hardcore = TRUE //For WO disposing of corpses
 
 /mob/living/carbon/human/initialize_pass_flags(var/datum/pass_flags_container/PF)

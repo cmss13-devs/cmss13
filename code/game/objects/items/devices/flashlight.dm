@@ -167,8 +167,8 @@
 	on = 0
 	raillight_compatible = 0
 
-/obj/item/device/flashlight/lamp/on/New()
-	..()
+/obj/item/device/flashlight/lamp/on/Initialize()
+	. = ..()
 	on = 1
 	update_brightness()
 
@@ -215,9 +215,9 @@
 	var/fuel = 0
 	var/on_damage = 7
 
-/obj/item/device/flashlight/flare/New()
+/obj/item/device/flashlight/flare/Initialize()
+	. = ..()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
-	..()
 
 /obj/item/device/flashlight/flare/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -265,17 +265,14 @@
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
 
-/obj/item/device/flashlight/flare/on
-
-	New()
-
-		..()
-		on = 1
-		heat_source = 1500
-		update_brightness()
-		force = on_damage
-		damtype = "fire"
-		START_PROCESSING(SSobj, src)
+/obj/item/device/flashlight/flare/on/Initialize()
+	. = ..()
+	on = 1
+	heat_source = 1500
+	update_brightness()
+	force = on_damage
+	damtype = "fire"
+	START_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/slime
 	gender = PLURAL
@@ -289,12 +286,11 @@
 	on = 1 //Bio-luminesence has one setting, on.
 	raillight_compatible = 0
 
-/obj/item/device/flashlight/slime/New()
-	..()
+/obj/item/device/flashlight/slime/Initialize()
+	. = ..()
 	SetLuminosity(brightness_on)
-	spawn(1) //Might be sloppy, but seems to be necessary to prevent further runtimes and make these work as intended... don't judge me!
-		update_brightness()
-		icon_state = initial(icon_state)
+	update_brightness()
+	icon_state = initial(icon_state)
 
 /obj/item/device/flashlight/slime/attack_self(mob/user)
 	return //Bio-luminescence does not toggle.

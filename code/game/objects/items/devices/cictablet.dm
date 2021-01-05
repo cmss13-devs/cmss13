@@ -6,7 +6,7 @@
 #define STATE_ALERT_LEVEL 9
 #define STATE_CONFIRM_LEVEL 10
 
-#define COOLDOWN_COMM_MESSAGE MINUTES_1
+#define COOLDOWN_COMM_MESSAGE SECONDS_30
 #define COOLDOWN_COMM_REQUEST MINUTES_5
 #define COOLDOWN_COMM_CENTRAL SECONDS_30
 
@@ -49,7 +49,7 @@
 			dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
 			dat += "<BR><A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A>"
 			switch(EvacuationAuthority.evac_status)
-				if(EVACUATION_STATUS_STANDING_BY) 
+				if(EVACUATION_STATUS_STANDING_BY)
 					dat += "<BR><hr>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
 

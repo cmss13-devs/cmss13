@@ -5,7 +5,7 @@
 #define STATE_DESTROY 5
 #define STATE_DEFCONLIST 6
 
-#define COOLDOWN_COMM_MESSAGE MINUTES_1
+#define COOLDOWN_COMM_MESSAGE SECONDS_30
 #define COOLDOWN_COMM_REQUEST MINUTES_5
 #define COOLDOWN_COMM_CENTRAL SECONDS_30
 #define COOLDOWN_COMM_DESTRUCT MINUTES_5
@@ -66,7 +66,7 @@
 			dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
 			dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self Destruct</A>"
 			switch(EvacuationAuthority.evac_status)
-				if(EVACUATION_STATUS_STANDING_BY) 
+				if(EVACUATION_STATUS_STANDING_BY)
 					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
 				if(EVACUATION_STATUS_INITIATING)
 					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_cancel'>Cancel emergency evacuation</A>"
@@ -91,25 +91,25 @@
 				dat += "DEFCON [DR.minimum_defcon_level] - [DR.name]<BR>"
 
 	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=almayer_control'>Close</A>"
-	
+
 	show_browser(user, dat, name, "almayer_control")
 	onclose(user, "almayer_control")
 
 /obj/structure/machinery/computer/almayer_control/Topic(href, href_list)
-	if(..()) 
+	if(..())
 		return FALSE
 
 	usr.set_interaction(src)
 
 	switch(href_list["operation"])
-		if("main") 
+		if("main")
 			state = STATE_DEFAULT
 
 		if("defcon")
 			defcon_controller.list_and_purchase_rewards()
 			return
 
-		if("defconlist") 
+		if("defconlist")
 			state = STATE_DEFCONLIST
 
 		if("ship_announce")
@@ -117,7 +117,7 @@
 				to_chat(usr, SPAN_WARNING("Please allow at least [COOLDOWN_COMM_MESSAGE*0.1] second\s to pass between announcements."))
 				return FALSE
 			var/input = stripped_multiline_input(usr, "Please write a message to announce to the station crew.", "Priority Announcement", "")
-			if(!input || !is_announcement_active || !(usr in view(1,src))) 
+			if(!input || !is_announcement_active || !(usr in view(1,src)))
 				return FALSE
 
 			is_announcement_active = FALSE
@@ -181,7 +181,7 @@
 					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
 					return FALSE
 
-				if(!SSticker.mode) 
+				if(!SSticker.mode)
 					return FALSE //Not a game mode?
 
 				if(SSticker.mode.force_end_at == 0)
@@ -215,7 +215,7 @@
 					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
 					return FALSE
 
-				if(!SSticker.mode) 
+				if(!SSticker.mode)
 					return FALSE //Not a game mode?
 
 				if(SSticker.mode.force_end_at == 0)

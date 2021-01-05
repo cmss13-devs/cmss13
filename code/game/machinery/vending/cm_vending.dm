@@ -584,7 +584,8 @@ IN_USE						used for vending/denying
 				playsound(loc, vend_sound, 25, 1, 2)	//heard only near vendor
 			sleep(vend_delay)
 		var/prod_type = L[3]
-		new prod_type(T)
+		var/obj/our_item = new prod_type(T)
+		H.put_in_any_hand_if_possible(our_item, disable_warning = TRUE)
 		vending_stat_bump(prod_type, src.type)
 	else
 		to_chat(H, SPAN_WARNING("ERROR: L is missing. Please report this to admins."))

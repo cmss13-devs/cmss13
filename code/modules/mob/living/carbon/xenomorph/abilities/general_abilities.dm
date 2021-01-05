@@ -294,6 +294,7 @@
 	var/max_range = 2
 	macro_path = /datum/action/xeno_action/verb/verb_transfer_plasma
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/transfer_plasma/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner

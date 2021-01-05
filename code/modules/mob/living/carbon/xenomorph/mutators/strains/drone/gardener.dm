@@ -6,9 +6,9 @@
 	caste_whitelist = list("Drone") //Only drone.
 	mutator_actions_to_remove = list("Secrete Resin","Choose Resin Structure", "Corrosive Acid (75)", "Transfer Plasma", "Order Construction (400)")
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/onclick/plant_resin_fruit/greater,
-		/datum/action/xeno_action/onclick/change_fruit,
-		/datum/action/xeno_action/activable/resin_surge
+		/datum/action/xeno_action/activable/resin_surge, //second macro
+		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, //third macro
+		/datum/action/xeno_action/onclick/change_fruit //fourth macro
 		)
 	keystone = TRUE
 
@@ -26,17 +26,18 @@
 	D.available_placeable = list("Greater Resin Fruit", "Unstable Resin Fruit", "Spore Resin Fruit")
 
 /datum/action/xeno_action/onclick/plant_resin_fruit
-	name = "Plant Resin Fruit"
+	name = "Plant Resin Fruit (50)"
 	action_icon_state = "gardener_plant"
 	ability_name = "plant resin fruit"
 	plasma_cost = 50
 	macro_path = /datum/action/xeno_action/verb/plant_resin_fruit
 	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	xeno_cooldown = 10
 	var/health_cost = 50
 
 /datum/action/xeno_action/onclick/plant_resin_fruit/greater
-	name = "Plant Greater Resin Fruit"
+	name = "Plant Greater Resin Fruit (100)"
 	plasma_cost = 100
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
@@ -160,7 +161,7 @@
 */
 
 /datum/action/xeno_action/activable/resin_surge
-	name = "Resin Surge"
+	name = "Resin Surge (75)"
 	action_icon_state = "gardener_resin_surge"
 	ability_name = "resin surge"
 	plasma_cost = 75

@@ -4,10 +4,11 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Drone") //Only drone.
-	mutator_actions_to_remove = list("Secrete Resin","Choose Resin Structure")
+	mutator_actions_to_remove = list("Secrete Resin","Choose Resin Structure", "Transfer Plasma")
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/transfer_health,
-		/datum/action/xeno_action/onclick/plant_resin_fruit // Resin fruits belong to Gardener, but Healer has a minor variant
+		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant
+		/datum/action/xeno_action/activable/transfer_health, //Third macro.
+		/datum/action/xeno_action/activable/transfer_plasma //fourth macro
 		)
 	keystone = TRUE
 
@@ -40,7 +41,7 @@
 	var/max_range = 1
 	macro_path = /datum/action/xeno_action/verb/verb_transfer_health
 	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_2
+	ability_primacy = XENO_PRIMARY_ACTION_3
 
 /datum/action/xeno_action/activable/transfer_health/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner

@@ -4,9 +4,10 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Hivelord")
-	mutator_actions_to_remove = list("Secrete Thick Resin", "Corrosive Acid (100)")
+	mutator_actions_to_remove = list("Secrete Thick Resin", "Corrosive Acid (100)", "Resin Walker (50)")
 	mutator_actions_to_add = list(
-		/datum/action/xeno_action/activable/secrete_resin/remote,
+		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro
+		/datum/action/xeno_action/onclick/toggle_speed, //fourth macro
 		/datum/action/xeno_action/onclick/toggle_long_range,
 	)
 	keystone = TRUE

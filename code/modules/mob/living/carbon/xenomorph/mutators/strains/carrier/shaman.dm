@@ -4,8 +4,14 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Carrier")
-	mutator_actions_to_remove = list("Use/Throw Facehugger","Emit Pheromones (30)","Plant Weeds (75)","Place resin hole (200)")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/sacrifice_egg/radius_remember, /datum/action/xeno_action/activable/sacrifice_egg/radius_heal, /datum/action/xeno_action/activable/sacrifice_egg/radius_scream, /datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones)
+	mutator_actions_to_remove = list("Use/Throw Facehugger","Emit Pheromones (30)","Plant Weeds (75)","Place resin hole (200)", "Retrieve Egg")
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_remember,
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_heal, //first macro
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_scream, //second macro
+		/datum/action/xeno_action/activable/sacrifice_egg/radius_pheromones, //third macro
+		/datum/action/xeno_action/activable/retrieve_egg //fourth macro
+		)
 	behavior_delegate_type = /datum/behavior_delegate/carrier_shaman
 	keystone = TRUE
 
@@ -78,6 +84,7 @@
 	ability_name = "adrenal healing"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_heal
 	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_1
 	var/windup_delay = 25
 
 	var/heal_strength_base = 10 // in percent
@@ -194,6 +201,7 @@
 	ability_name = "frenzied scream"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
 	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_2
 	var/windup_delay = 30
 	var/initial_range = 3
 	var/maximum_range = 7
@@ -314,6 +322,7 @@
 	ability_name = "adrenal pheromones"
 	macro_path = /datum/action/xeno_action/verb/verb_egg_sacr_scream
 	action_type = XENO_ACTION_ACTIVATE
+	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/pheromone_strength_per_xeno = 0.5
 	var/pheromone_strength_base = 1
 	var/gather_range = 3

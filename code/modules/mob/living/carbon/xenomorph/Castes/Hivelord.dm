@@ -59,7 +59,7 @@
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin/hivelord, //third macro
-		/datum/action/xeno_action/onclick/toggle_speed, //fourth macro
+		/datum/action/xeno_action/onclick/toggle_speed //fourth macro
 		)
 	mutation_type = HIVELORD_NORMAL
 

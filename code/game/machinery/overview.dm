@@ -143,7 +143,7 @@
 
 		H.screen_loc = "[5 + i%icx],[6+ round(i/icx)]"
 
-		//world<<"[htmlicon(I)] at [H.screen_loc]"
+		//world<<"[icon2html(I)] at [H.screen_loc]"
 
 		H.name = (i==0)?"maprefresh":"map"
 
@@ -258,7 +258,7 @@
 
 		H.screen_loc = "[5 + i%icx],[6+ round(i/icx)]"
 
-		//world<<"[htmlicon(I)] at [H.screen_loc]"
+		//world<<"[icon2html(I)] at [H.screen_loc]"
 
 		H.name = (i==0)?"maprefresh":"map"
 

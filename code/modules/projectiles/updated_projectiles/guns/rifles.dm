@@ -278,7 +278,7 @@
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)
-			to_chat(user, SPAN_WARNING("[htmlicon(src)] A red light flashes at the side of [src]."))
+			to_chat(user, SPAN_WARNING("[icon2html(src)] A red light flashes at the side of [src]."))
 			return FALSE
 
 		linked_human = null
@@ -291,11 +291,11 @@
 	set src in usr
 
 	if(usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[htmlicon(src)] A red light flashes at the side of [src]."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src)] A red light flashes at the side of [src]."))
 		return
 
 	is_locked = !is_locked
-	to_chat(usr, SPAN_NOTICE("[htmlicon(src)] You [is_locked? "lock": "unlock"] [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src)] You [is_locked? "lock": "unlock"] [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 
@@ -305,11 +305,11 @@
 	set src in usr
 
 	if(is_locked && linked_human && usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[htmlicon(src)] A red light flashes at the side of [src]."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src)] A red light flashes at the side of [src]."))
 		return
 
 	iff_enabled = !iff_enabled
-	to_chat(usr, SPAN_NOTICE("[htmlicon(src)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
+	to_chat(usr, SPAN_NOTICE("[icon2html(src)] You [iff_enabled? "enable": "disable"] the IFF on [src]."))
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 	recalculate_attachment_bonuses()

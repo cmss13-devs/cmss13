@@ -68,9 +68,9 @@
 			update_icon()
 			if(power_gen_percent < 100) power_gen_percent++
 			switch(power_gen_percent)
-				if(10) visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to whirr as it powers up.")]")
-				if(50) visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to hum loudly as it reaches half capacity.")]")
-				if(99) visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.")]")
+				if(10) visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to whirr as it powers up.")]")
+				if(50) visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to hum loudly as it reaches half capacity.")]")
+				if(99) visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.")]")
 			add_avail(power_generation_max * (power_gen_percent / 100) ) //Nope, all good, just add the power
 
 /obj/structure/machinery/power/geothermal/proc/check_failure()
@@ -81,11 +81,11 @@
 		cur_tick = 0
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(rand(0,3) == 0)
-			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
+			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
 			buildstate = 2
 			icon_state = "wire"
 		else
-			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
+			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
 			buildstate = 3
 			icon_state = "wrench"
 		is_on = 0
@@ -119,14 +119,14 @@
 		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
 		return 0
 	if(is_on)
-		visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps softly and the humming stops as [usr] shuts off the turbines.")]")
+		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps softly and the humming stops as [usr] shuts off the turbines.")]")
 		is_on = 0
 		power_gen_percent = 0
 		cur_tick = 0
 		icon_state = "off"
 		stop_processing()
 		return 1
-	visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps loudly as [usr] turns on the turbines and the generator begins spinning up.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps loudly as [usr] turns on the turbines and the generator begins spinning up.")]")
 	icon_state = "on10"
 	is_on = 1
 	cur_tick = 0

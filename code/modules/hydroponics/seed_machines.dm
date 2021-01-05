@@ -68,15 +68,15 @@
 	active = 0
 	if(failed_task)
 		failed_task = 0
-		visible_message("[htmlicon(src, viewers(src))] [src] pings unhappily, flashing a red warning light.")
+		visible_message("[icon2html(src, viewers(src))] [src] pings unhappily, flashing a red warning light.")
 	else
-		visible_message("[htmlicon(src, viewers(src))] [src] pings happily.")
+		visible_message("[icon2html(src, viewers(src))] [src] pings happily.")
 
 	if(eject_disk)
 		eject_disk = 0
 		if(loaded_disk)
 			loaded_disk.forceMove(get_turf(src))
-			visible_message("[htmlicon(src, viewers(src))] [src] beeps and spits out [loaded_disk].")
+			visible_message("[icon2html(src, viewers(src))] [src] beeps and spits out [loaded_disk].")
 			loaded_disk = null
 	stop_processing()
 
@@ -193,14 +193,14 @@
 			seed_types[seed.seed.name] = seed.seed
 
 		seed.update_seed()
-		visible_message("[htmlicon(src, viewers(src))] [src] beeps and spits out [seed].")
+		visible_message("[icon2html(src, viewers(src))] [src] beeps and spits out [seed].")
 
 		seed = null
 
 	if(href_list["eject_disk"])
 		if(!loaded_disk) return
 		loaded_disk.forceMove(get_turf(src))
-		visible_message("[htmlicon(src, viewers(src))] [src] beeps and spits out [loaded_disk].")
+		visible_message("[icon2html(src, viewers(src))] [src] beeps and spits out [loaded_disk].")
 		loaded_disk = null
 
 	usr.set_interaction(src)

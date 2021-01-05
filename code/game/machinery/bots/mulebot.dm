@@ -402,15 +402,15 @@
 				if(istype(usr.get_active_hand(), /obj/item/device/multitool))
 					switch(href_list["wire"])
 						if("1","2")
-							to_chat(usr, SPAN_NOTICE(" [htmlicon(src, usr)] The charge light flickers."))
+							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The charge light flickers."))
 						if("4")
-							to_chat(usr, SPAN_NOTICE(" [htmlicon(src, usr)] The external warning lights flash briefly."))
+							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The external warning lights flash briefly."))
 						if("8")
-							to_chat(usr, SPAN_NOTICE(" [htmlicon(src, usr)] The load platform clunks."))
+							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The load platform clunks."))
 						if("16", "32")
-							to_chat(usr, SPAN_NOTICE(" [htmlicon(src, usr)] The drive motor whines briefly."))
+							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The drive motor whines briefly."))
 						else
-							to_chat(usr, SPAN_NOTICE(" [htmlicon(src, usr)] You hear a radio crackle."))
+							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] You hear a radio crackle."))
 				else
 					to_chat(usr, SPAN_NOTICE(" You need a multitool!"))
 

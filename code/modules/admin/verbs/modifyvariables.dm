@@ -174,7 +174,7 @@ var/list/forbidden_varedit_object_types = list(
 
 	else if(isicon(variable))
 		to_chat(usr, "Variable appears to be <b>ICON</b>.")
-		variable = "[htmlicon(variable, usr)]"
+		variable = "[icon2html(variable, usr)]"
 		default = "icon"
 
 	else if(istype(variable,/matrix))

@@ -54,10 +54,10 @@
 		return 0
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(rand(0,3) == 0)
-			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
+			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
 			buildstate = 2
 		else
-			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
+			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
 			buildstate = 3
 		is_on = 0
 		update_icon()
@@ -89,13 +89,13 @@
 		to_chat(usr, SPAN_INFO("Use a wrench to repair it."))
 		return 0
 	if(is_on)
-		visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> goes dark as [usr] shuts the power off.")]")
+		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> goes dark as [usr] shuts the power off.")]")
 		is_on = 0
 		cur_tick = 0
 		update_icon()
 		stop_processing()
 		return 1
-	visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> lights up as [usr] turns the power on.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> lights up as [usr] turns the power on.")]")
 	is_on = 1
 	cur_tick = 0
 	update_icon()
@@ -115,7 +115,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
 				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(buildstate != 1 || is_on || !WT.isOn()) 
+					if(buildstate != 1 || is_on || !WT.isOn())
 						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
@@ -135,7 +135,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
-				if(buildstate != 2 || is_on) 
+				if(buildstate != 2 || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
@@ -152,7 +152,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != 3 || is_on) 
+				if(buildstate != 3 || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0

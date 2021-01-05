@@ -313,14 +313,14 @@
 						var/datum/money_account/D = attempt_account_access(C.associated_account_number, attempt_pin, 2)
 						transfer_and_vend(D)
 					else
-						to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Unable to access account. Check security settings and try again.")]")
+						to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to access account. Check security settings and try again.")]")
 				else
 					//Just Vend it.
 					transfer_and_vend(CH)
 			else
-				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Connected account has been suspended.")]")
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Connected account has been suspended.")]")
 		else
-			to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Error: Unable to access your account. Please contact technical support if problem persists.")]")
+			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error: Unable to access your account. Please contact technical support if problem persists.")]")
 
 /obj/structure/machinery/vending/proc/transfer_and_vend(var/datum/money_account/acc)
 	if(acc)
@@ -357,9 +357,9 @@
 			src.vend(src.currently_vending, usr)
 			currently_vending = null
 		else
-			to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("You don't have that much money!")]")
+			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("You don't have that much money!")]")
 	else
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Error: Unable to access your account. Please contact technical support if problem persists.")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error: Unable to access your account. Please contact technical support if problem persists.")]")
 
 /obj/structure/machinery/vending/proc/GetProductIndex(var/datum/data/vending_product/P)
 	var/list/plist

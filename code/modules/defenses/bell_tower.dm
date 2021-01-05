@@ -29,11 +29,11 @@
 /obj/structure/machinery/defenses/bell_tower/power_on_action()
 	clear_tripwires()
 	setup_tripwires()
-	visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a short ring, as it comes alive.")]")
 
 /obj/structure/machinery/defenses/bell_tower/power_off_action()
 	clear_tripwires()
-	visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("The [name] gives a beep and powers down.")]")
 
 /obj/structure/machinery/defenses/bell_tower/proc/clear_tripwires()
 	for(var/obj/effect/bell_tripwire/FE in tripwires_placed)
@@ -88,11 +88,11 @@
 		return
 
 	var/mob/M = A
-	if(ishuman(M)) 
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.get_target_lock(faction))
 			return
-	
+
 	if(linked_bell.last_mob_activated == M)
 		return
 	linked_bell.last_mob_activated = M

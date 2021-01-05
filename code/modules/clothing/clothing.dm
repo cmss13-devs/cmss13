@@ -35,7 +35,7 @@
 		if(LAZYLEN(accessories))
 			var/list/ties = list()
 			for(var/accessory in accessories)
-				ties += "[htmlicon(accessory)] \a [accessory]"
+				ties += "[icon2html(accessory)] \a [accessory]"
 			to_chat(usr, "Attached to \the [src] are [english_list(ties)].")
 		return
 

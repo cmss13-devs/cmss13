@@ -41,13 +41,13 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/transfer_plasma,
 		/datum/action/xeno_action/activable/corrosive_acid/weak,
+		/datum/action/xeno_action/onclick/emit_pheromones,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/plant_weeds, //first macro
 		/datum/action/xeno_action/onclick/choose_resin, //second macro
 		/datum/action/xeno_action/activable/secrete_resin, //third macro
-		/datum/action/xeno_action/onclick/emit_pheromones
+		/datum/action/xeno_action/activable/transfer_plasma //fourth macro
 		)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,

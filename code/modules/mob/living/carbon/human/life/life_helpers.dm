@@ -302,6 +302,7 @@
 		knocked_out += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
 
 /mob/living/carbon/human/proc/handle_revive()
+	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)
 	track_revive(job)
 	GLOB.alive_mob_list += src
 	if(!isSynth(src) && !isYautja(src))

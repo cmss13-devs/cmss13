@@ -43,8 +43,6 @@
 	overlays.Cut()
 	if(uses_left)
 		overlays += "[chemname]_[uses_left]"
-	else
-		add_to_garbage(src)
 
 /obj/item/reagent_container/hypospray/autoinjector/examine(mob/user)
 	..()
@@ -215,6 +213,13 @@
 /obj/item/reagent_container/hypospray/autoinjector/empty/examine(mob/user)
 	..()
 	to_chat(user, SPAN_NOTICE("It transfers [amount_per_transfer_from_this]u per injection and has a maximum of [volume/amount_per_transfer_from_this] injections."))
+
+/obj/item/reagent_container/hypospray/autoinjector/empty/update_icon()
+	overlays.Cut()
+	if(uses_left)
+		var/image/cust_fill = image('icons/obj/items/syringe.dmi', src, "[chemname]_[uses_left]")
+		cust_fill.color = mix_color_from_reagents(reagents.reagent_list)
+		overlays += cust_fill
 
 /obj/item/reagent_container/hypospray/autoinjector/empty/small
 	name = "autoinjector (C-S)"

@@ -683,7 +683,6 @@
 //mobs use get_projectile_hit_chance instead of get_projectile_hit_boolean
 
 /mob/living/proc/get_projectile_hit_chance(obj/item/projectile/P)
-
 	if(lying && src != P.original)
 		return FALSE
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -697,7 +696,8 @@
 
 	if(isliving(P.firer))
 		var/mob/living/shooter_living = P.firer
-		if( !can_see(shooter_living,src) ) . -= 15 //Can't see the target (Opaque thing between shooter and target)
+		if(!can_see(shooter_living,src))
+			. -= 15 //Can't see the target (Opaque thing between shooter and target)
 
 /mob/living/carbon/human/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()

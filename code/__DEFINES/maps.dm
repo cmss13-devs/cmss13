@@ -26,7 +26,6 @@ require only minor tweaks.
 #define ZTRAIT_MARINE_MAIN_SHIP "Marine Main Ship"
 #define ZTRAIT_ADMIN "Admin"
 #define ZTRAIT_LOWORBIT "LowOrbit"
-#define ZTRAIT_HUNTER_SHIP "HunterShop"
 #define ZTRAIT_INTERIORS "Interiors"
 
 #define ZTRAIT_FOG "Fog"
@@ -100,6 +99,7 @@ require only minor tweaks.
 #define SHIP_MAP "ship_map"
 #define ALL_MAPTYPES list(GROUND_MAP, SHIP_MAP)
 #define MAP_TO_FILENAME list(GROUND_MAP = "data/next_map.json", SHIP_MAP = "data/next_ship.json")
+#define HUNTERSHIPS_TEMPLATE_PATH "maps/predship/huntership.dmm"
 
 // traity things
 #define MAP_COLD "COLD"

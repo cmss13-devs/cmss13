@@ -374,43 +374,48 @@
 		if(clan_info.permissions & CLAN_PERMISSION_ADMIN_VIEW)
 			var/list/datum/view_record/clan_view/CPV = DB_VIEW(/datum/view_record/clan_view/)
 			for(var/datum/view_record/clan_view/CV in CPV)
-				if(!("[CV.clan_id]" in pred_ships))
+				if(!SSpredships.is_clanship_loaded("[CV.clan_id]"))
 					continue
-
 				ship_to_tele += list("[CV.name]" = "[CV.clan_id]")
 		else if(clan_info.clan_id)
 			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
 
 	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
 
-	if((!clan || !(clan in pred_ships)) && clan != CLAN_SHIP_ALMAYER)
+	if(!SSpredships.is_clanship_loaded(clan))
+		return // Checking ship is valid
+	
+	// Getting an arrival point
+	var/turf/target_turf
+	if(clan == CLAN_SHIP_ALMAYER)
+		var/obj/effect/landmark/yautja_teleport/pickedYT = pick(GLOB.mainship_yautja_teleports)
+		target_turf = get_turf(pickedYT)
+	else
+		var/list/turf/SP = SSpredships.get_clan_spawnpoints(clan)
+		if(SP) target_turf = pick(SP)
+	if(!istype(target_turf))
 		return
 
-	playsound(src,'sound/ambience/signal.ogg', 25, 1)
+	// Let's go
+	playsound(src,'sound/ambience/signal.ogg', 25, 1, sound_range = 6)
 	timer = 1
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 
 	if(do_after(user, SECONDS_10, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-		// Teleport self.
+		// Display fancy animation for you and the person you might be pulling (Legacy)
 		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
-		// Also teleport whoever you're pulling.
 		var/mob/living/M = user.pulling
-		if(istype(M))
+		if(istype(M)) // Pulled person
 			M.visible_message(SPAN_WARNING("[icon2html(M, viewers(src))][M] disappears!"))
 			animation_teleport_quick_out(M)
-		sleep(tele_time)
 
-		var/turf/end_turf
-		if(clan != CLAN_SHIP_ALMAYER)
-			end_turf = pick(get_clan_spawnpoints(clan))
-		else
-			end_turf = get_turf(pick(GLOB.mainship_yautja_teleports))
+		sleep(tele_time) // Animation delay
+		user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled
 
-		user.forceMove(end_turf)
+		// Undo animations 
 		animation_teleport_quick_in(user)
-		if(M && M.loc)
-			M.forceMove(end_turf)
+		if(istype(M) && !QDELETED(M))
 			animation_teleport_quick_in(M)
 		timer = 0
 	else

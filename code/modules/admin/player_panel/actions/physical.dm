@@ -93,6 +93,7 @@
 					if(set_name && !available_specialist_sets.Find(set_name))
 						available_specialist_sets += set_name
 			S.forget_marine_in_squad(H)
+		message_staff("[key_name_admin(user)] sent [key_name_admin(target)] ([H.job]) to cryogenics.")
 
 	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 

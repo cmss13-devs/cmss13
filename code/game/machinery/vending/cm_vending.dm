@@ -117,8 +117,6 @@ IN_USE						used for vending/denying
 		to_chat(user, SPAN_WARNING("You have succesfully removed access restrictions in [src]."))
 		if(user && is_mainship_level(z))
 			SSclues.create_print(get_turf(user), user, "A small piece of cut wire is found on the fingerprint.")
-			if(user.faction == FACTION_MARINE && user.detectable_by_ai())
-				ai_silent_announcement("DAMAGE REPORT: Unauthorized access change detected at [get_area(src)], requesting Military Police supervision.")
 	else
 		to_chat(user, SPAN_WARNING("You have restored access restrictions in [src]."))
 	return

@@ -537,8 +537,6 @@
 			if(announce_hacked && is_mainship_level(z))
 				announce_hacked = FALSE
 				SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
-				if(usr.detectable_by_ai())
-					ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 
 		else if ((href_list["pulsewire"]) && (src.panel_open))
 			var/wire = text2num(href_list["pulsewire"])

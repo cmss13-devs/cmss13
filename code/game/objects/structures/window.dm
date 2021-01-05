@@ -549,8 +549,6 @@
 	if(health <= 0)
 		if(user && is_mainship_level(z))
 			SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
-			if(user.detectable_by_ai())
-				ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 
 	. = ..()
 

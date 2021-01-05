@@ -49,7 +49,7 @@
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/brown
 	icon_state = "vest_acid_brown"
 
-/obj/item/clothing/accessory/storage/black_vest/acid_harness/New()
+/obj/item/clothing/accessory/storage/black_vest/acid_harness/Initialize()
 	. = ..()
 	acid_core = new /obj/structure/machinery/acid_core(src)
 	acid_core.acid_harness = src

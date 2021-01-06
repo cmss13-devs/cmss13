@@ -257,17 +257,6 @@
 
 	return ..()
 
-/obj/proc/wall_check() //used at roundstart to automatically detect and remove walls that overlap. Called by windows and airlocks
-	spawn(10)
-		if(SSticker.current_state == GAME_STATE_PREGAME)
-			var/turf/T = get_turf(src)
-			if( istype( T,/turf/closed/wall ) )
-				message_admins("Overlap of [src] with [T] detected and fixed in area [T.loc.name] ([T.x],[T.y],[T.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")
-				log_game("Overlap of [src] with [T] detected and fixed in area [T.loc.name] ([T.x],[T.y],[T.z])")
-				var/turf/closed/wall/W = T
-				if(!W.hull)
-					W.ChangeTurf(/turf/open/floor/plating, TRUE)
-
 /obj/bullet_act(obj/item/projectile/P)
 	//Tasers and the like should not damage objects.
 	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)

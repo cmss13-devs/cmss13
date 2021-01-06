@@ -781,8 +781,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 /obj/structure/machinery/door/airlock/Initialize()
 	. = ..()
 
-	wall_check()
-
 	if(autoname)
 		var/area/A = get_area(loc)
 		name = A.name

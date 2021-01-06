@@ -5,7 +5,9 @@
 	icon_state = "pool"
 	health = 900
 	var/last_larva_time = 0
+	var/last_surge_time = 0
 	var/spawn_cooldown = 30 SECONDS
+	var/surge_cooldown = 1 MINUTE
 	var/mob/melting_body
 
 	luminosity = 3
@@ -112,6 +114,12 @@
 		var/list/players_with_xeno_pref = get_alien_candidates()
 		if(players_with_xeno_pref && players_with_xeno_pref.len && can_spawn_larva())
 			spawn_pooled_larva(pick(players_with_xeno_pref))
+
+	if(linked_hive.hijack_pooled_surge && (last_surge_time + surge_cooldown) < world.time)
+		last_surge_time = world.time
+		linked_hive.stored_larva++
+		for(var/mob/dead/observer/ghost in GLOB.observer_list)
+			to_chat(ghost, SPAN_DEADSAY("The hive has gained another pooled larva! Use the Join As Xeno verb to take it."))
 
 /obj/effect/alien/resin/special/pool/proc/melt_body(var/iterations = 3)
 	if(!melting_body)

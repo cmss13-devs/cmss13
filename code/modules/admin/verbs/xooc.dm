@@ -25,4 +25,4 @@
 		if(!(C.admin_holder.rights & R_MOD))
 			continue
 
-		to_chat(C, SPAN_XOOC("XOOC: [src.key]([src.admin_holder.rank]): [msg]"))
+		to_chat_spaced(C, margin_top = 0.5, margin_bottom = 0.5, html = SPAN_XOOC("XOOC: [src.key]([src.admin_holder.rank]): [msg]"))

@@ -93,13 +93,13 @@
 #define SS_INIT_CHAT			   -100 //Should be last to ensure chat remains smooth during init.
 
 #define SS_PRIORITY_TIMER          700
-#define SS_PRIORITY_CHAT		   400
-#define SS_PRIORITY_STATPANEL		390
 #define SS_PRIORITY_SOUND          250
 #define SS_PRIORITY_TICKER         200
 #define SS_PRIORITY_MAPVIEW		   170
-#define SS_PRIORITY_QUADTREE       150
-#define SS_PRIORITY_CELLAUTO       150
+#define SS_PRIORITY_QUADTREE       160
+#define SS_PRIORITY_CHAT		   155
+#define SS_PRIORITY_STATPANEL	   154
+#define SS_PRIORITY_CELLAUTO       151
 #define SS_PRIORITY_MOB            150
 #define SS_PRIORITY_XENO           149
 #define SS_PRIORITY_HUMAN          148

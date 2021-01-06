@@ -43,12 +43,19 @@
 
 /turf/closed/wall/Initialize(mapload, ...)
 	. = ..()
-	return INITIALIZE_HINT_LATELOAD
+	// Defer updating based on neighbors while we're still loading map
+	if(mapload && . != INITIALIZE_HINT_QDEL)
+		return INITIALIZE_HINT_LATELOAD
+	// Otherwise do it now, but defer icon update to late if it's going to happen
+	update_connections(TRUE)
+	if(. != INITIALIZE_HINT_LATELOAD)
+		update_icon()	
 
 /turf/closed/wall/LateInitialize()
 	. = ..()
-	update_connections(TRUE)
-
+	// By default this assumes being used for map late init
+	// We update without cascading changes as each wall will be updated individually
+	update_connections(FALSE)
 	update_icon()
 
 

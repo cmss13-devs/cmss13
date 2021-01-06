@@ -63,7 +63,7 @@
 	if ((oldloc != loc && oldloc && oldloc.z == z))
 		last_move_dir = get_dir(oldloc, loc)
 	if (.)
-		Moved(oldloc,direct)
+		Moved(oldloc, direct)
 
 /atom/movable/proc/Collide(atom/A)
 	if (throwing)

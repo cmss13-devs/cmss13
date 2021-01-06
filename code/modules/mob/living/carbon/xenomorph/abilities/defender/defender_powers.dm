@@ -185,7 +185,8 @@
 			X.anchored = TRUE
 			X.small_explosives_stun = FALSE
 			X.update_canmove()
-		X.mob_size = MOB_SIZE_BIG //knockback immune
+		X.mob_size = MOB_SIZE_IMMOBILE //knockback immune
+		X.mob_flags &= ~SQUEEZE_UNDER_VEHICLES
 		X.update_icons()
 		X.fortify = TRUE
 	else
@@ -202,6 +203,7 @@
 			X.armor_explosive_buff -= 60
 			X.small_explosives_stun = TRUE
 		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
+		X.mob_flags |= SQUEEZE_UNDER_VEHICLES
 		X.update_canmove()
 		X.update_icons()
 		X.fortify = FALSE

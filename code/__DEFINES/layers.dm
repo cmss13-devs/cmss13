@@ -53,6 +53,7 @@
 
 #define DOOR_OPEN_LAYER 2.85	//Under all objects if opened. 2.85 due to tables being at 2.8
 
+#define BELOW_VAN_LAYER	2.98
 #define BELOW_OBJ_LAYER 2.98 //just below all items
 
 #define LOWER_ITEM_LAYER 2.99 //for items that should be at the bottom of the pile of items
@@ -106,8 +107,8 @@
 
 #define BELOW_FULLSCREEN_LAYER 16.9 //blip from motion detector
 #define FULLSCREEN_LAYER 17
-#define FULLSCREEN_WEATHER_LAYER 17.01 // Weather 
-#define FULLSCREEN_IMPAIRED_LAYER 17.02 //visual impairment from wearing welding helmet, etc. 
+#define FULLSCREEN_WEATHER_LAYER 17.01 // Weather
+#define FULLSCREEN_IMPAIRED_LAYER 17.02 //visual impairment from wearing welding helmet, etc.
 #define FULLSCREEN_DRUGGY_LAYER 17.03
 #define FULLSCREEN_BLURRY_LAYER 17.04
 #define FULLSCREEN_FLASH_LAYER 17.05 //flashed

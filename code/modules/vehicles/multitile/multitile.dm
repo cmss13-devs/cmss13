@@ -181,7 +181,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	overlays.Cut()
 
 	if(health <= initial(health))
-		var/image/damage_overlay = image(icon, icon_state = "damaged_frame")
+		var/image/damage_overlay = image(icon, icon_state = "damaged_frame", layer = layer+0.1)
 		damage_overlay.alpha = 255 * (1 - (health / initial(health)))
 		overlays += damage_overlay
 
@@ -202,10 +202,13 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 			C[H.hdpt_layer] -= 1
 
 		for(var/i = 1 to amt_hardpoints)
-			overlays += hardpoint_images[i]
+			var/image/I = hardpoint_images[i]
+			if(I)
+				I.layer = layer + (i*0.1)
+			overlays += I
 
 	if(clamped)
-		var/image/J = image(icon, icon_state = "vehicle_clamp")
+		var/image/J = image(icon, icon_state = "vehicle_clamp", layer = layer+0.1)
 		overlays += J
 
 //Normal examine() but tells the player what is installed and if it's broken

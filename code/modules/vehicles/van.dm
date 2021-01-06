@@ -2,9 +2,12 @@
 //Trucks
 //Read the documentation in multitile.dm before trying to decipher this stuff
 
+#define TIER_3_RAM_DAMAGE_TAKEN	60
+
 /obj/vehicle/multitile/van
 	name = "Colony Van"
 	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides."
+	layer = ABOVE_XENO_LAYER
 
 	icon = 'icons/obj/vehicles/van.dmi'
 	icon_state = "van_base"
@@ -36,7 +39,7 @@
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
 
-	luminosity = 8
+	luminosity = 4
 
 	max_momentum = 3
 
@@ -67,6 +70,47 @@
 
 	move_on_turn = TRUE
 
+	var/list/mobs_under = list()
+	var/image/under_image
+	var/image/normal_image
+
+	var/next_push = 0
+	var/push_delay = 0.5 SECONDS
+
+/obj/vehicle/multitile/van/Initialize()
+	. = ..()
+	under_image = image(icon, src, icon_state, layer = BELOW_MOB_LAYER)
+	under_image.alpha = 127
+
+	normal_image = image(icon, src, icon_state, layer = layer)
+
+	icon_state = null
+
+	RegisterSignal(SSdcs, COMSIG_GLOB_MOB_LOGIN, .proc/add_default_image)
+
+	for(var/I in GLOB.player_list)
+		add_default_image(SSdcs, I)
+
+/obj/vehicle/multitile/van/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(mover in mobs_under) //can't collide with the thing you're buckled to
+		return NO_BLOCKED_MOVEMENT
+
+	if(ismob(mover))
+		var/mob/M = mover
+		if(M.mob_flags & SQUEEZE_UNDER_VEHICLES)
+			add_under_van(M)
+			return NO_BLOCKED_MOVEMENT
+
+		if(M.lying)
+			return NO_BLOCKED_MOVEMENT
+
+		if(M.mob_size >= MOB_SIZE_IMMOBILE && next_push < world.time)
+			if(try_move(target_dir, force=TRUE))
+				next_push = world.time + push_delay
+				return NO_BLOCKED_MOVEMENT
+
+	return ..()
+
 /obj/structure/interior_wall/van
 	name = "van interior wall"
 	desc = "An interior wall."
@@ -84,6 +128,13 @@
 ** PRESETS
 */
 /obj/vehicle/multitile/van/handle_living_collide(var/mob/living/L)
+	if(!seats[VEHICLE_DRIVER])
+		return FALSE
+
+	if(L.mob_flags & SQUEEZE_UNDER_VEHICLES)
+		add_under_van(L)
+		return TRUE
+
 	if(L.mob_size >= MOB_SIZE_IMMOBILE)
 		return FALSE
 
@@ -94,9 +145,70 @@
 		successful = step(L, turn(last_move_dir, -direction_taken))
 
 	if(L.mob_size >= MOB_SIZE_BIG)
+		take_damage_type(TIER_3_RAM_DAMAGE_TAKEN, "blunt", L)
+		playsound(src, 'sound/effects/metal_crash.ogg', 35)
 		return FALSE
 
 	return successful
+
+/obj/vehicle/multitile/van/post_movement()
+	. = ..()
+
+	for(var/I in mobs_under)
+		var/mob/M = I
+		if(!(M.loc in locs))
+			remove_under_van(M)
+
+/obj/vehicle/multitile/van/proc/add_under_van(var/mob/living/L)
+	if(L in mobs_under)
+		return
+
+	mobs_under += L
+	RegisterSignal(L, COMSIG_PARENT_QDELETING, .proc/remove_under_van)
+	RegisterSignal(L, COMSIG_MOB_LOGIN, .proc/add_client)
+	RegisterSignal(L, COMSIG_MOB_POST_MOVE, .proc/check_under_van)
+
+	if(L.client)
+		add_client(L)
+
+/obj/vehicle/multitile/van/proc/remove_under_van(var/mob/living/L)
+	SIGNAL_HANDLER
+	mobs_under -= L
+
+	if(L.client)
+		L.client.images -= under_image
+		add_default_image(SSdcs, L)
+
+	UnregisterSignal(L, list(
+		COMSIG_PARENT_QDELETING,
+		COMSIG_MOB_LOGIN,
+		COMSIG_MOB_POST_MOVE,
+	))
+
+/obj/vehicle/multitile/van/proc/check_under_van(var/mob/M, var/turf/NewLoc, var/direction)
+	SIGNAL_HANDLER
+	if(!(NewLoc in locs))
+		remove_under_van(M)
+
+/obj/vehicle/multitile/van/proc/add_client(var/mob/living/L)
+	SIGNAL_HANDLER
+	L.client.images += under_image
+	L.client.images -= normal_image
+
+/obj/vehicle/multitile/van/proc/add_default_image(var/subsystem, var/mob/M)
+	SIGNAL_HANDLER
+	M.client.images += normal_image
+
+/obj/vehicle/multitile/van/Destroy()
+	for(var/I in mobs_under)
+		remove_under_van(I)
+
+	for(var/I in GLOB.player_list)
+		var/mob/M = I
+		M.client.images -= normal_image
+
+	return ..()
+
 
 /obj/vehicle/multitile/van/post_movement()
 	if(locate(/obj/effect/alien/weeds) in loc)
@@ -170,3 +282,18 @@
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "van_back_1"
 	dir = WEST
+
+/obj/vehicle/multitile/van/Collide(var/atom/A)
+	if(!seats[VEHICLE_DRIVER])
+		return FALSE
+
+	if(istype(A, /obj/structure/barricade/plasteel))
+		return ..()
+
+	if(istype(A, /obj/structure/barricade) || istype(A, /turf/closed/wall))
+		return FALSE
+
+	return ..()
+
+/obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE

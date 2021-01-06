@@ -98,7 +98,7 @@
 
 	var/melee_allowed = TRUE
 
-	var/mob_flags // The mob flags to give their mob
+	var/mob_flags = NO_FLAGS // The mob flags to give their mob
 
 /datum/species/New()
 	if(unarmed_type)

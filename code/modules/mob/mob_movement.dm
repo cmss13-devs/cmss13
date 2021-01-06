@@ -269,5 +269,7 @@
 	return TRUE
 
 /mob/Move(NewLoc, direction)
-    SEND_SIGNAL(src, COMSIG_MOB_MOVE, NewLoc, direction)
-    return ..()
+	SEND_SIGNAL(src, COMSIG_MOB_MOVE, NewLoc, direction)
+	. = ..()
+	if(.)
+		SEND_SIGNAL(src, COMSIG_MOB_POST_MOVE, NewLoc, direction)

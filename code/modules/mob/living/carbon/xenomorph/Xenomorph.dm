@@ -413,6 +413,9 @@
 
 	recalculate_everything()
 
+	if(mob_size < MOB_SIZE_BIG)
+		mob_flags |= SQUEEZE_UNDER_VEHICLES
+
 /mob/living/carbon/Xenomorph/proc/fire_immune(mob/living/L)
 	SIGNAL_HANDLER
 

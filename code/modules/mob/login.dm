@@ -72,3 +72,7 @@
 			CB.Invoke()
 
 	client.init_verbs()
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGIN, src)
+	SEND_SIGNAL(src, COMSIG_MOB_LOGIN)
+

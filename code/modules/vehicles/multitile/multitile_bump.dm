@@ -5,7 +5,7 @@
 
 	if(isliving(A))
 		return handle_living_collide(A)
-		
+
 	// Attempt to open doors before crushing them
 	if(istype(A, /obj/structure/machinery/door))
 		var/obj/structure/machinery/door/D = A
@@ -21,8 +21,11 @@
 				return FALSE
 
 	if(istype(A, /obj/structure/barricade/plasteel))
-		var/obj/structure/barricade/plasteel/cade = A
-		cade.close(cade)
+		if(seats[VEHICLE_DRIVER])
+			var/obj/structure/barricade/plasteel/cade = A
+			cade.close(cade)
+		else
+			return FALSE
 
 	else if(istype(A, /obj/structure/barricade/deployable))
 		var/obj/structure/barricade/deployable/cade = A
@@ -167,7 +170,7 @@
 			damage_percentage = max(damage_percentage, VEHICLE_TRAMPLE_DAMAGE_MIN)
 
 			X.apply_damage(round((X.maxHealth / 100) * damage_percentage), BRUTE)
-		
+
 	else
 		if(is_knocked_down)
 			L.KnockDown(3, 1)

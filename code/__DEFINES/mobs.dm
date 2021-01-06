@@ -157,7 +157,8 @@
 //=================================================
 
 // Mob flags.
-#define KNOWS_TECHNOLOGY	1	// This mob understands technology
+#define KNOWS_TECHNOLOGY		(1<<0)	// This mob understands technology
+#define SQUEEZE_UNDER_VEHICLES 	(1<<1)  // Only the van is supported as of now.
 
 //=================================================
 

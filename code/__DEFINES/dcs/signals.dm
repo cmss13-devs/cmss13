@@ -20,6 +20,8 @@
 #define COMSIG_GLOB_XENO_DEATH "!xeno_death"
 #define COMSIG_GLOB_REMOVE_VOTE_BUTTON "!remove_vote_button"
 
+#define COMSIG_GLOB_MOB_LOGIN "!mob_login"
+
 //////////////////////////////////////////////////////////////////
 
 #define COMSIG_CLIENT_LMB_DOWN "client_lmb_down"
@@ -121,6 +123,8 @@
 #define COMSIG_MOB_PRE_CLICK "mob_pre_click"
 	#define COMPONENT_INTERRUPT_CLICK (1<<0)
 
+#define COMSIG_MOB_LOGIN "mob_login"
+
 /// From /mob/living/rejuvenate
 #define COMSIG_LIVING_REJUVENATED "living_rejuvenated"
 /// From /mob/living/proc/IgniteMob
@@ -179,6 +183,7 @@
 	#define COMPONENT_TURF_DENY_MOVEMENT  (1<<1)
 
 #define COMSIG_MOB_MOVE	"mob_move"
+#define COMSIG_MOB_POST_MOVE "mob_post_move"
 
 #define COMSIG_MOB_POST_UPDATE_CANMOVE "mob_can_move"
 

@@ -162,8 +162,8 @@
 	if((istype(H) && H.get_target_lock(iff_signal)) || isrobot(H))
 		return
 
-	H.visible_message(SPAN_DANGER("[htmlicon(src, viewers(src))] The [name] clicks as [H] moves in front of it."), \
-	SPAN_DANGER("[htmlicon(src, H)] The [name] clicks as you move in front of it."), \
+	H.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [H] moves in front of it."), \
+	SPAN_DANGER("[icon2html(src, H)] The [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
 
 	triggered = TRUE

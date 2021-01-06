@@ -727,7 +727,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_UP, .proc/full_auto_stop)
 			RegisterSignal(usr.client, COMSIG_CLIENT_LMB_DRAG, .proc/full_auto_new_target)
 
-			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to full auto mode."))
+			to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to full auto mode."))
 			return
 		else if(flags_gun_features & GUN_FULL_AUTO_ON)
 			flags_gun_features &= ~GUN_FULL_AUTO_ON
@@ -738,17 +738,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				COMSIG_CLIENT_LMB_DRAG,
 			))
 
-			to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to single fire mode."))
+			to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to single fire mode."))
 			return
 
 	if(!(flags_gun_features & GUN_BURST_ON))
 		flags_gun_features |= GUN_BURST_ON
 
-		to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You set [src] to burst fire mode."))
+		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You set [src] to burst fire mode."))
 	else
 		flags_gun_features ^= GUN_BURST_ON
 
-		to_chat(usr, SPAN_NOTICE("[htmlicon(src, usr)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
+		to_chat(usr, SPAN_NOTICE("[icon2html(src, usr)] You [flags_gun_features & GUN_BURST_ON ? "<B>enable</b>" : "<B>disable</b>"] [src]'s burst fire mode."))
 
 
 /obj/item/weapon/gun/verb/empty_mag()

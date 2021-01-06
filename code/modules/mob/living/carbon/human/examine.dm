@@ -7,7 +7,7 @@
 		var/msg = "<span class='info'>*---------*\nThis is "
 
 		if(icon)
-			msg += "[htmlicon(icon, user)] "
+			msg += "[icon2html(icon, user)] "
 		msg += "<EM>[src]</EM>!\n"
 
 		if(species && species.flags & IS_SYNTHETIC)
@@ -76,7 +76,7 @@
 		t_is = "are"
 	else
 		if(icon)
-			msg += "[htmlicon(src, user)] "
+			msg += "[icon2html(src, user)] "
 		switch(gender)
 			if(MALE)
 				t_He = "He"

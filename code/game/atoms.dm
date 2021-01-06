@@ -256,7 +256,7 @@ its easier to just keep the beam vertical.
 	examine(usr)
 
 /atom/proc/examine(mob/user)
-	to_chat(user, "[htmlicon(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
+	to_chat(user, "[icon2html(src, user)] That's \a [src].") //changed to "That's" from "This is" because "This is some metal sheets" sounds dumb compared to "That's some metal sheets" ~Carn
 	if(desc)
 		to_chat(user, desc)
 

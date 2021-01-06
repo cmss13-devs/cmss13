@@ -218,7 +218,7 @@
 		var/part_b_extra = ""
 		if(data == 3) // intercepted radio message
 			part_b_extra = " <i>(Intercepted)</i>"
-		var/part_b = "</span><b> [htmlicon(radio, (heard_masked + heard_normal + heard_voice + heard_garbled + heard_gibberish))]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
+		var/part_b = "</span><b> [icon2html(radio, (heard_masked + heard_normal + heard_voice + heard_garbled + heard_gibberish))]\[[freq_text]\][part_b_extra]</b> <span class='message'>" // Tweaked for security headsets -- TLE
 
 		// Antags!
 		if (display_freq in ANTAG_FREQS)

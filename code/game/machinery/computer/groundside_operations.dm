@@ -250,20 +250,20 @@
 			if(selected)
 				current_squad = selected
 			else
-				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
 
 		if("use_cam")
 			if(isRemoteControlling(usr))
-				to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Unable to override console camera viewer. Track with camera instead. ")]")
 				return
 
 			if(current_squad)
 				var/mob/cam_target = locate(href_list["cam_target"])
 				var/obj/structure/machinery/camera/new_cam = get_camera_from_target(cam_target)
 				if(!new_cam || !new_cam.can_use())
-					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Searching for helmet cam. No helmet cam found for this marine! Tell your squad to put their helmets on!")]")
 				else if(cam && cam == new_cam)//click the camera you're watching a second time to stop watching.
-					visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Stopping helmet cam view of [cam_target].")]")
 					cam = null
 					usr.reset_view(null)
 				else if(usr.client.view != world_view_size)

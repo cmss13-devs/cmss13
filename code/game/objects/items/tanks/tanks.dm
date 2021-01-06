@@ -44,7 +44,7 @@
 			else
 				descriptive = "furiously hot"
 
-		to_chat(user, SPAN_NOTICE(" \The [htmlicon(src, user)][src] feels [descriptive]"))
+		to_chat(user, SPAN_NOTICE(" \The [icon2html(src, user)][src] feels [descriptive]"))
 
 
 /obj/item/tank/attackby(obj/item/W as obj, mob/user as mob)
@@ -52,11 +52,11 @@
 
 	if ((istype(W, /obj/item/device/analyzer)) && get_dist(user, src) <= 1)
 		for (var/mob/O in viewers(user, null))
-			to_chat(O, SPAN_DANGER("[user] has used [W] on [htmlicon(src, O)] [src]"))
+			to_chat(O, SPAN_DANGER("[user] has used [W] on [icon2html(src, O)] [src]"))
 
 		manipulated_by = user.real_name			//This person is aware of the contents of the tank.
 
-		to_chat(user, SPAN_NOTICE(" Results of analysis of [htmlicon(src, user)]"))
+		to_chat(user, SPAN_NOTICE(" Results of analysis of [icon2html(src, user)]"))
 		if (pressure>0)
 			to_chat(user, SPAN_NOTICE(" Pressure: [round(pressure,0.1)] kPa"))
 

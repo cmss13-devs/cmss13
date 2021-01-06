@@ -45,7 +45,7 @@
 			stop_processing()
 		return 0
 	if (fusion_cell.fuel_amount <= 0)
-		visible_message("[htmlicon(src, viewers(src))] <b>[src]</b> flashes that the fuel cell is empty as the engine seizes.")
+		visible_message("[icon2html(src, viewers(src))] <b>[src]</b> flashes that the fuel cell is empty as the engine seizes.")
 		fuel_rate = 0
 		buildstate = 2  //No fuel really fucks it.
 		is_on = 0
@@ -61,17 +61,17 @@
 
 		switch(power_gen_percent) //Flavor text!
 			if(10)
-				visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to whirr as it powers up.")]")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to whirr as it powers up.")]")
 				fuel_rate = 0.025
 			if(50)
-				visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to hum loudly as it reaches half capacity.")]")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> begins to hum loudly as it reaches half capacity.")]")
 				fuel_rate = 0.05
 			if(99)
-				visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.")]")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> rumbles loudly as the combustion and thermal chambers reach full strength.")]")
 				fuel_rate = 0.1
 
 		add_avail(FUSION_ENGINE_MAX_POWER_GEN * (power_gen_percent / 100) ) //Nope, all good, just add the power
-		
+
 		update_icon()
 
 
@@ -91,7 +91,7 @@
 			to_chat(user, SPAN_NOTICE("Use a wrench to repair it."))
 			return FALSE
 	if(is_on)
-		visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps softly and the humming stops as [usr] shuts off the generator.")]")
+		visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps softly and the humming stops as [usr] shuts off the generator.")]")
 		is_on = 0
 		power_gen_percent = 0
 		cur_tick = 0
@@ -109,8 +109,8 @@
 			return FALSE
 
 	if(fusion_cell.fuel_amount <= 10)
-		to_chat(user, "[htmlicon(src, user)] [SPAN_WARNING("<b>[src]</b>: Fuel levels critically low.")]")
-	visible_message("[htmlicon(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps loudly as [user] turns the generator on and begins the process of fusion...")]")
+		to_chat(user, "[icon2html(src, user)] [SPAN_WARNING("<b>[src]</b>: Fuel levels critically low.")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("<b>[src]</b> beeps loudly as [user] turns the generator on and begins the process of fusion...")]")
 	fuel_rate = 0.01
 	is_on = 1
 	cur_tick = 0
@@ -146,7 +146,7 @@
 				user.visible_message(SPAN_NOTICE("[user] starts welding [src]'s internal damage."),
 				SPAN_NOTICE("You start welding [src]'s internal damage."))
 				if(do_after(user, 200 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(buildstate != 1 || is_on || !WT.isOn()) 
+					if(buildstate != 1 || is_on || !WT.isOn())
 						return FALSE
 					playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 					buildstate = 2
@@ -168,7 +168,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts securing [src]'s wiring."),
 			SPAN_NOTICE("You start securing [src]'s wiring."))
 			if(do_after(user, 120 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, numticks = 12))
-				if(buildstate != 2 || is_on) 
+				if(buildstate != 2 || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				buildstate = 3
@@ -187,7 +187,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts repairing [src]'s tubing and plating."),
 			SPAN_NOTICE("You start repairing [src]'s tubing and plating."))
 			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != 3 || is_on) 
+				if(buildstate != 3 || is_on)
 					return FALSE
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				buildstate = 0
@@ -215,7 +215,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts prying [src]'s fuel receptacle open."),
 			SPAN_NOTICE("You start prying [src]'s fuel receptacle open."))
 			if(do_after(user, 100 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				if(buildstate != 0 || is_on || !fusion_cell) 
+				if(buildstate != 0 || is_on || !fusion_cell)
 					return FALSE
 				user.visible_message(SPAN_NOTICE("[user] pries [src]'s fuel receptacle open and removes the cell."),
 				SPAN_NOTICE("You pry [src]'s fuel receptacle open and remove the cell.."))
@@ -296,10 +296,10 @@
 	cur_tick = 0 //reset the timer
 	if(rand(1,100) < fail_rate) //Oh snap, we failed! Shut it down!
 		if(prob(25))
-			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
+			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and a fuse blows! Use wirecutters, then a wrench to repair it.")]")
 			buildstate = 2
 		else
-			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
+			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("<b>[src]</b> beeps wildly and sprays random pieces everywhere! Use a wrench to repair it.")]")
 			buildstate = 3
 		is_on = 0
 		power_gen_percent = 0

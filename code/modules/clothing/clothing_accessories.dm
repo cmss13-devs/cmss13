@@ -81,7 +81,7 @@
 /obj/item/clothing/examine(var/mob/user)
 	. = ..(user)
 	for(var/obj/item/clothing/accessory/A in accessories)
-		to_chat(user, "[htmlicon(A, user)] \A [A] is attached to it.")
+		to_chat(user, "[icon2html(A, user)] \A [A] is attached to it.")
 
 /**
  *  Attach accessory A to src

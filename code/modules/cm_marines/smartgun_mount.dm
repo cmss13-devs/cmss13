@@ -299,7 +299,7 @@
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
-				G.visible_message("[htmlicon(G)] <B>[G] is now complete!</B>") //finished it for everyone to
+				G.visible_message("[icon2html(G)] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.dir = src.dir //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
 				G.update_icon()
@@ -640,7 +640,7 @@
 	return total_scatter_angle
 
 /obj/structure/machinery/m56d_hmg/proc/handle_ammo_out(mob/user)
-	visible_message(SPAN_NOTICE(" [htmlicon(src, viewers(src))] [src] beeps steadily and its ammo light blinks red."))
+	visible_message(SPAN_NOTICE(" [icon2html(src, viewers(src))] [src] beeps steadily and its ammo light blinks red."))
 	playsound(loc, empty_alarm, 25, 1)
 	update_icon() //final safeguard.
 
@@ -712,7 +712,7 @@
 	if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
 		if(user.interactee == src)
 			user.unset_interaction()
-			visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("[user] decided to let someone else have a go ")]")
+			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] decided to let someone else have a go ")]")
 			to_chat(usr, SPAN_NOTICE("You decided to let someone else have a go on the MG "))
 			return
 		if(operator) //If there is already a operator then they're manning it.
@@ -728,7 +728,7 @@
 			if(user.get_active_hand() != null)
 				to_chat(user, SPAN_WARNING("You need a free hand to man the [src]."))
 			else
-				visible_message("[htmlicon(src, viewers(src))] [SPAN_NOTICE("[user] mans the M56D!")]")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] mans the M56D!")]")
 				to_chat(user, SPAN_NOTICE("You man the gun!"))
 				user.set_interaction(src)
 
@@ -1227,7 +1227,7 @@
 // SCATTER WAS SUPERBUGGED, REVISED M56E FIRING CODE TO AVOID FUTURE INCIDENTS
 
 /obj/structure/machinery/m56d_hmg/auto/handle_ammo_out(mob/user)
-	visible_message(SPAN_NOTICE(" [htmlicon(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
+	visible_message(SPAN_NOTICE(" [icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
 	playsound(loc, empty_alarm, 70, 1)
 	update_icon() //final safeguard.
 	var/obj/item/ammo_magazine/m2c/AM = new /obj/item/ammo_magazine/m2c(src.loc)

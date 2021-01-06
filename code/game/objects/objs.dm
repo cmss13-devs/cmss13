@@ -45,9 +45,9 @@
 
 /obj/item/proc/get_examine_line()
 	if(blood_color)
-		. = SPAN_WARNING("[htmlicon(src)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")
+		. = SPAN_WARNING("[icon2html(src)] [gender==PLURAL?"some":"a"] <font color='[blood_color]'>stained</font> [src]")
 	else
-		. = "[htmlicon(src)] \a [src]"
+		. = "[icon2html(src)] \a [src]"
 
 /obj/proc/updateUsrDialog()
 	if(in_use)

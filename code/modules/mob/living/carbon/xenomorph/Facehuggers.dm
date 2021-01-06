@@ -433,7 +433,7 @@
 	icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
 
-	visible_message("[htmlicon(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
+	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] curls up into a ball!</span>")
 	playsound(src.loc, 'sound/voice/alien_facehugger_dies.ogg', 25, 1)
 
 	if(ismob(loc)) //Make it fall off the person so we can update their icons. Won't update if they're in containers thou
@@ -445,7 +445,7 @@
 	addtimer(CALLBACK(src, .proc/do_die), 3 MINUTES)
 
 /obj/item/clothing/mask/facehugger/proc/do_die()
-	visible_message("[htmlicon(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
+	visible_message("[icon2html(src, viewers(src))] <span class='danger'>\The [src] decays into a mass of acid and chitin.</span>")
 	qdel(src)
 
 /proc/CanHug(mob/living/carbon/M, var/hivenumber)

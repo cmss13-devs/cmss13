@@ -551,9 +551,6 @@ proc/sort_atoms_by_layer(var/list/atoms)
     I.color = color
     I.flick_overlay(src, time)
 
-/proc/htmlicon(thing, target = world, sourceonly = FALSE)
-	return icon2html(thing, target, sourceonly = sourceonly)
-
 /proc/icon2html(thing, target, icon_state, dir = SOUTH, frame = 1, moving = FALSE, sourceonly = FALSE)
 	if (!thing)
 		return

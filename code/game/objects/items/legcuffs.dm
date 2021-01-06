@@ -7,7 +7,7 @@
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 0
 	w_class = SIZE_MEDIUM
-	
+
 	var/breakouttime = SECONDS_15
 
 /obj/item/legcuffs/beartrap
@@ -117,7 +117,7 @@
 		src.forceMove(H)
 		H.legcuff_update()
 		playsound(H,'sound/weapons/tablehit1.ogg', 25, 1)
-		to_chat(H, "[htmlicon(src, H)] \red <B>You get caught in \the [src]!</B>")
+		to_chat(H, "[icon2html(src, H)] \red <B>You get caught in \the [src]!</B>")
 		H.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(H)] was caught in \a [src] at [get_location_in_text(H)].</font>")
 		log_attack("[key_name(H)] was caught in \a [src] at [get_location_in_text(H)].")
 		H.KnockDown(4)
@@ -139,7 +139,7 @@
 						for(var/mob/O in viewers(H, null))
 							if(O == H)
 								continue
-							O.show_message(SPAN_WARNING("[htmlicon(src, O)] <B>[H] gets caught in \the [src].</B>"), 1)
+							O.show_message(SPAN_WARNING("[icon2html(src, O)] <B>[H] gets caught in \the [src].</B>"), 1)
 				if(isanimal(AM) && !istype(AM, /mob/living/simple_animal/parrot))
 					armed = 0
 					var/mob/living/simple_animal/SA = AM

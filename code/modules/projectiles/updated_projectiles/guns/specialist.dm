@@ -473,15 +473,15 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	if(!iff_enabled)
-		to_chat(user, "[htmlicon(src, usr)] Can't switch ammunition type when the [src]'s fire restriction is disabled.")
+		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when the [src]'s fire restriction is disabled.")
 		return
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "[htmlicon(src, usr)] You changed the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
+	to_chat(user, "[icon2html(src, usr)] You changed the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
-	to_chat(user, "[htmlicon(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
+	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
 	ammo = ammo_primary
@@ -515,7 +515,7 @@
 	src.powerpack = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
-	to_chat(user, "[htmlicon(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src]'s recoil compensation.")
+	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src]'s recoil compensation.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	recoil_compensation = !recoil_compensation
 	recoil_compensation()
@@ -531,7 +531,7 @@
 		src.drain -= 50
 
 /obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
-	to_chat(user, "[htmlicon(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src]'s accuracy improvement.")
+	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src]'s accuracy improvement.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	accuracy_improvement = !accuracy_improvement
 	accuracy_improvement()
@@ -546,9 +546,9 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
 	if(!(flags_item & WIELDED))
-		to_chat(user, "[htmlicon(src, usr)] You need to wield the [src] to enable autofire.")
+		to_chat(user, "[icon2html(src, usr)] You need to wield the [src] to enable autofire.")
 		return //Have to be actually be wielded.
-	to_chat(user, "[htmlicon(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src]'s auto fire mode.")
+	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src]'s auto fire mode.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	auto_fire = !auto_fire
 	auto_fire()
@@ -675,7 +675,7 @@
 	target = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
-	to_chat(user, "[htmlicon(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src]'s motion detector.")
+	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src]'s motion detector.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
 	motion_detector()

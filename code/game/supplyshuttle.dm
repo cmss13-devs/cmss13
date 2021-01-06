@@ -191,33 +191,33 @@ var/datum/controller/supply/supply_controller = new()
 					current_squad = selected
 					attack_hand(usr)
 				else
-					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
 		if("supply_x")
 			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
-			to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Longitude is now [input].")]")
+			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Longitude is now [input].")]")
 			x_supply = input
 		if("supply_y")
 			var/input = input(usr,"What latitude should be targetted? (Increments towards the north)", "Y Coordinate", 0) as num
-			to_chat(usr, "[htmlicon(src, usr)] [SPAN_NOTICE("Latitude is now [input].")]")
+			to_chat(usr, "[icon2html(src, usr)] [SPAN_NOTICE("Latitude is now [input].")]")
 			y_supply = input
 		if("refresh")
 			src.attack_hand(usr)
 		if("dropsupply")
 			if(current_squad)
 				if((current_squad.supply_cooldown + drop_cooldown) > world.time)
-					to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Supply drop not yet available!")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet available!")]")
 				else
 					handle_supplydrop()
 	src.attack_hand(usr) //Refresh
 
 /obj/structure/machinery/computer/supply_drop_console/proc/handle_supplydrop()
 	if(busy)
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The [name] is busy processing another action!")]")
 		return
 
 	var/obj/structure/closet/crate/C = locate() in current_squad.drop_pad.loc //This thing should ALWAYS exist.
 	if(!istype(C))
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No crate was detected on the drop pad. Get Requisitions on the line!")]")
 		return
 
 	var/x_coord = deobfuscate_x(x_supply)
@@ -230,21 +230,21 @@ var/datum/controller/supply/supply_controller = new()
 
 	var/turf/T = locate(x_coord, y_coord, z_coord)
 	if(!T)
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Error, invalid coordinates.")]")
 		return
 
 	var/area/A = get_area(T)
 	if(A && CEILING_IS_PROTECTED(A.ceiling, CEILING_PROTECTION_TIER_2))
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone is underground. The supply drop cannot reach here.")]")
 		return
 
 	if(istype(T, /turf/open/space) || T.density)
-		to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
+		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("The landing zone appears to be obstructed or out of bounds. Package would be lost on drop.")]")
 		return
 
 	busy = 1
 
-	visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop is now loading into the launch tube! Stand by!")]")
+	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop is now loading into the launch tube! Stand by!")]")
 	C.visible_message(SPAN_WARNING("\The [C] begins to load into a launch tube. Stand clear!"))
 	C.anchored = TRUE //To avoid accidental pushes
 	send_to_squad("'[C.name]' supply drop incoming. Heads up!")
@@ -252,7 +252,7 @@ var/datum/controller/supply/supply_controller = new()
 	spawn(100)
 		if(!C || C.loc != S.drop_pad.loc) //Crate no longer on pad somehow, abort.
 			if(C) C.anchored = FALSE
-			to_chat(usr, "[htmlicon(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
+			to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Launch aborted! No crate detected on the drop pad.")]")
 			return
 		S.supply_cooldown = world.time
 		if(ismob(usr))
@@ -265,8 +265,8 @@ var/datum/controller/supply/supply_controller = new()
 		var/turf/TC = get_turf(C)
 		TC.ceiling_debris_check(3)
 		playsound(C.loc,'sound/effects/bamf.ogg', 50, 1)  //Ehhhhhhhhh.
-		C.visible_message("[htmlicon(C, viewers(src))] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
-		visible_message("[htmlicon(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
+		C.visible_message("[icon2html(C, viewers(src))] [SPAN_BOLDNOTICE("The '[C.name]' supply drop falls from the sky!")]")
+		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("'[C.name]' supply drop launched! Another launch will be available in five minutes.")]")
 		busy = 0
 
 
@@ -285,12 +285,12 @@ var/datum/controller/supply/supply_controller = new()
 			if(!only_leader)
 				if(plus_name)
 					M << sound('sound/effects/radiostatic.ogg')
-				to_chat(M, "[htmlicon(src, M)] [SPAN_BLUE("<B>\[Overwatch\]:</b> [nametext][text]")]")
+				to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>\[Overwatch\]:</b> [nametext][text]")]")
 			else
 				if(current_squad.squad_leader == M)
 					if(plus_name)
 						M << sound('sound/effects/radiostatic.ogg')
-					to_chat(M, "[htmlicon(src, M)] [SPAN_BLUE("<B>\[SL Overwatch\]:</b> [nametext][text]</font>")]")
+					to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>\[SL Overwatch\]:</b> [nametext][text]</font>")]")
 					return
 
 //A limited version of the above console

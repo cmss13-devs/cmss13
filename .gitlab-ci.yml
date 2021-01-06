@@ -19,6 +19,13 @@ run_linters:
   script:
     - find . -name "*.json" -not -path "*/node_modules/*" -print0 | xargs -0 python3 ./tools/json_verifier.py
     - ~/dreamchecker
+
+compile_tgui:
+  stage: build
+  image: node:buster
+  script:
+    - bash tgui/bin/tgui --lint
+
 compile_all_maps:
   stage: build
   before_script:

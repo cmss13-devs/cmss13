@@ -64,8 +64,8 @@ SUBSYSTEM_DEF(ticker)
 				return
 			if(isnull(start_at))
 				start_at = time_left || world.time + (CONFIG_GET(number/lobby_countdown) * 10)
-			to_chat(world, SPAN_ROUNDBODY("Welcome to the pre-game lobby of [CONFIG_GET(string/servername)]!"))
-			to_chat(world, SPAN_ROLE_BODY("Please, setup your character and select ready. Game will start in [round(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 2, margin_bottom = 0, html = SPAN_ROUNDHEADER("Welcome to the pre-game lobby of [CONFIG_GET(string/servername)]!"))
+			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 0, html = SPAN_ROUNDBODY("Please, setup your character and select ready. Game will start in [round(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
 			current_state = GAME_STATE_PREGAME
 			fire()
 
@@ -193,7 +193,7 @@ SUBSYSTEM_DEF(ticker)
 	mode.post_setup()
 
 	if(round_statistics)
-		to_world(SPAN_BLUE("<B>Welcome to [round_statistics.name]</B>"))
+		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.name]</B>")))
 
 	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
 

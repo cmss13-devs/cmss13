@@ -120,7 +120,7 @@ var/global/list/ahelp_msgs = list()
 
 	GLOB.STUI.staff.Add("\[[time_stamp()]] <font color=red>[key_name(src)] AHELP: </font><font color='#006400'>[get_options_bar(mob, 4, 1, 1, 0)]:</b> [msg]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
-	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1, msg=original_msg)]:</b></font> <br>&emsp;<font color='#DA6200'><b>[msg]</font></b><br>"
+	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1, msg=original_msg)]:</b></font> <br>&emsp;<font color='#DA6200'><b>[msg]</font></b>"
 
 	var/list/list/current_staff = get_staff_by_category()
 	var/admin_number_afk = current_staff["afk"].len
@@ -130,10 +130,10 @@ var/global/list/ahelp_msgs = list()
 		for(var/client/X in admins) // Admins get the full monty
 			if(X.prefs.toggles_sound & SOUND_ADMINHELP)
 				sound_to(X, 'sound/effects/adminhelp_new.ogg')
-			to_chat(X, msg)
+			to_chat_spaced(X, type = MESSAGE_TYPE_ADMINPM, margin_bottom = 0.5, margin_top = 0.5, html = SPAN_PM(msg))
 
 	//show it to the person adminhelping too
-	to_chat(src, "<br><font color='#009900'><b>PM to Staff ([selected_type]):</font><br>&emsp;<font color='#DA6200'>[original_msg]</b></font><br>")
+	to_chat_spaced(src, margin_bottom = 0.5, margin_top = 0.5, type = MESSAGE_TYPE_ADMINPM, html = SPAN_PM("<font color='#009900'><b>PM to Staff ([selected_type]):</font><br>&emsp;<font color='#DA6200'>[original_msg]</b></font>"))
 
 	// Adminhelp cooldown
 	remove_verb(src, /client/verb/adminhelp)

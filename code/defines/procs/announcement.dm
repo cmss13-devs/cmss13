@@ -130,5 +130,5 @@
 		if(istype(T, /mob/new_player))
 			continue
 
-		to_chat(T, "<br>[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]<br><br>")
+		to_chat_spaced(T, html = "[SPAN_ANNOUNCEMENT_HEADER(title)]<br><br>[SPAN_ANNOUNCEMENT_BODY(message)]")
 		playsound_client(T.client, sound_to_play, T, vol = 45)

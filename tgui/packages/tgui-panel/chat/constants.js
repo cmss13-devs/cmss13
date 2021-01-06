@@ -53,13 +53,13 @@ export const MESSAGE_TYPES = [
     type: MESSAGE_TYPE_LOCALCHAT,
     name: 'Local',
     description: 'In-character local messages (say, emote, etc)',
-    selector: '.say, .emote, .say_quote, .german, .rough, .japanese, .monkey, .vox, .changeling, .soghun, .skrell, .tajaran_signlang, .tajaran, .xenotalk',
+    selector: '.say, .emote, .say_quote, .german, .rough, .japanese, .monkey, .vox, .changeling, .soghun, .tajaran, .xenotalk',
   },
   {
     type: MESSAGE_TYPE_RADIO,
     name: 'Radio',
     description: 'All departments of radio messages',
-    selector: '.radio, .xeno, .xenoqueen, .xenoleader, .deltaradio, .charlieradio, .bravoradio, .alpharadio, .wyradio, .intelradio, .jtacradio, .alert, .syndradio, .centradio, .airadio, .entradio, .comradio, .secradio, .engradio, .medradio, .sciradio, .supradio, .srvradio, .expradio, .radio, .deptradio, .newscaster',
+    selector: '.radio, .xeno, .xenoqueen, .xenoleader, .alert, .newscaster',
   },
   {
     type: MESSAGE_TYPE_INFO,

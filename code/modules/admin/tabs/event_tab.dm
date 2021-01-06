@@ -511,7 +511,7 @@
 	if(!msg)
 		return
 
-	to_world(SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
+	to_chat_spaced(world, html = SPAN_ANNOUNCEMENT_HEADER_BLUE(msg))
 	message_staff("\bold GlobalNarrate: [key_name_admin(usr)] : [msg]")
 
 

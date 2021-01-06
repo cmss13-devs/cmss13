@@ -83,9 +83,9 @@
 						adminhelp(reply)													//sender has left, adminhelp instead
 				return
 
-	recieve_message = SPAN_PM("<br><font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.admin_holder ? 1 : 0, C.admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>")
-	to_chat(C, recieve_message)
-	to_chat(src, SPAN_PM("<br><font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, admin_holder ? 1 : 0, admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font><br>"))
+	recieve_message = SPAN_PM("<br><font color='[recieve_color]'><b>[recieve_pm_type] PM from [get_options_bar(src, C.admin_holder ? 1 : 0, C.admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font>")
+	to_chat_spaced(C, margin_bottom = 0.5, margin_top = 0.5, type = MESSAGE_TYPE_ADMINPM, html = recieve_message)
+	to_chat_spaced(src, margin_bottom = 0.5, margin_top = 0.5, type = MESSAGE_TYPE_ADMINPM, html = SPAN_PM("<br><font color='#009900'><b>[send_pm_type]PM to [get_options_bar(C, admin_holder ? 1 : 0, admin_holder ? 1 : 0, 1)]: <font color='#DA6200'>[msg]</b></font>"))
 
 	//play the recieving admin the adminhelp sound
 	playsound_client(C, 'sound/effects/adminhelp-reply.ogg')

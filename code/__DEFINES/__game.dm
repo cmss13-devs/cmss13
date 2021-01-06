@@ -370,6 +370,9 @@
 #define CHAT_TYPE_ALL ((1<<16) - 1) // this is so if we have newer flags, we still have ALL working. This will work for 16 first flags
 #define CHAT_TYPE_TARGETS_ME CHAT_TYPE_TAKING_HIT
 
+// Used for pre-setting tgchat message type as combat messages
+#define CHAT_TYPE_ALL_COMBAT (CHAT_TYPE_BEING_HIT|CHAT_TYPE_WEAPON_USE|CHAT_TYPE_ARMOR_DAMAGE|CHAT_TYPE_MELEE_HIT|CHAT_TYPE_COMBAT_ACTION|CHAT_TYPE_XENO_COMBAT|CHAT_TYPE_TAKING_HIT)
+
 // Window skin types
 #define TOGGLE_WINDOW_SKIN 1
 

@@ -27,10 +27,12 @@
 #define SPAN_ANNOUNCEMENT_HEADER_BLUE(X) "<span class='announce_header_blue'>[X]</span>"
 #define SPAN_ANNOUNCEMENT_BODY(X) "<span class='announce_body'>[X]</span>"
 
-// Roundstart role text
+// Round and roles
+#define SPAN_ROUNDHEADER(X) "<span class='round_header'>[X]</span>"
+#define SPAN_ROUNDBODY(X) "<span class='round_body'>[X]</span>"
 #define SPAN_ROLE_HEADER(X) "<span class='role_header'>[X]</span>"
 #define SPAN_ROLE_BODY(X) "<span class='role_body'>[X]</span>"
-#define SPAN_ROUNDBODY(X) "<span class='round_body'>[X]</span>"
+
 
 // OOC
 #define SPAN_XOOC(X) "<span class='xooc'>[X]</span>"

@@ -851,9 +851,9 @@ em {
 
 /* CM stuff */
 
-.xooc					{color: #ac04e9;	font-weight: bold; font-size: 120%;}
-.mooc					{color: #009900;	font-weight: bold; font-size: 120%;}
-.yooc					{color: #999600;	font-weight: bold; font-size: 120%;}
+.xooc					{color: #ac04e9;	font-weight: bold; font-size: 140%;}
+.mooc					{color: #009900;	font-weight: bold; font-size: 140%;}
+.yooc					{color: #999600;	font-weight: bold; font-size: 140%;}
 
 .headminsay				{color: #7d4b94;	font-weight: bold;}
 
@@ -912,11 +912,11 @@ em {
 
 .xenodanger				{color: #51a16c;	font-weight: bold;}
 .avoidharm				{color:	#72a0e5;	font-weight: bold;}
-.highdanger				{color: #ff3838;	font-weight: bold; font-size: 120%;}
-.xenohighdanger			{color: #51a16c; 	font-weight: bold; font-size: 120%;}
-.xenoannounce           {color: #65c585;    font-family: book-antiqua; font-weight: bold; font-size: 120%;}
+.highdanger				{color: #ff3838;	font-weight: bold; font-size: 140%;}
+.xenohighdanger			{color: #51a16c; 	font-weight: bold; font-size: 140%;}
+.xenoannounce           {color: #65c585;    font-family: book-antiqua; font-weight: bold; font-size: 140%;}
 .yautjabold				{color: #800080;	font-weight: bold;}
-.yautjaboldbig			{color: #800080;	font-weight: bold; font-size: 110%;}
+.yautjaboldbig			{color: #800080;	font-weight: bold; font-size: 120%;}
 
 .objectivebig			{font-weight: bold; font-size: 130%;}
 .objectivegreen			{color: #00ff00;}
@@ -926,21 +926,20 @@ em {
 
 .xenotalk,
 .xeno					    {color: #c048c0;	font-style: italic;}
-.xenoleader				{color: #996e99;	font-style: italic;						font-size: 120%;}
-.xenoqueen				{color: #996e99; 	font-style: italic; font-weight: bold; font-size: 120%;}
+.xenoleader				{color: #996e99;	font-style: italic;						font-size: 125%;}
+.xenoqueen				{color: #996e99; 	font-style: italic; font-weight: bold; font-size: 125%;}
 .newscaster				{color: #800000;}
 
-.role_header			{color: #e92d2d;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 120%;}
-.role_body				{color: #3a3ae9;	display: block; text-align: center;}
+.role_header			{color: #e92d2d;	display: block; text-align: center; font-weight: bold; font-family: trebuchet-ms; font-size: 170%;}
+.role_body				{color: #3a3ae9;	display: block; text-align: center; font-size: 120%;}
 
-.round_setup			{color: #e92d2d;	font-family: impact; font-size: 125%;}
-.round_header			{color: #e92d2d; 	display: block; text-align: center; font-family: courier; font-weight: bold; font-size: 140%;}
-.round_body				{color: #c5c5c5; 	display: block; text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 120%;}
-.event_announcement		{color: #600d48; 	font-family: arial-narrow; font-weight: bold; font-size: 120%;}
+.round_header			{color: #e92d2d; 	display: block; text-align: center; font-family: courier; font-weight: bold; font-size: 250%;}
+.round_body				{color: #c5c5c5; 	display: block; text-align: center; font-family: trebuchet-ms; font-weight: bold; font-size: 180%;}
+.event_announcement		{color: #600d48; 	font-family: arial-narrow; font-weight: bold; font-size: 140%;}
 
-.announce_header		{color: #cecece;	font-weight: bold; font-size: 120%;}
-.announce_header_blue	{color: #7575f3;	font-weight: bold; font-size: 120%;}
-.announce_body			{color: #e92d2d;	font-weight: normal; font-size: 100%;}
+.announce_header		{color: #cecece;	font-weight: bold; font-size: 180%;}
+.announce_header_blue	{color: #7575f3;	font-weight: bold; font-size: 180%;}
+.announce_body			{color: #e92d2d;	font-weight: normal; font-size: 140%;}
 
 .centerbold				{						display: block; text-align: center; font-weight: bold;}
 
@@ -960,6 +959,10 @@ em {
 .rough					{font-family: trebuchet-ms, cursive, sans-serif;}
 .commando				{color: #FE9B24; font-style: bold;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
+
+.admin .message         {color: #314cad;}
+.admin .prefix          {font-weight: bolder;}
+.pm                     {font-size: 125%;}
 
 .deadsay {
   color: #8b4dff;

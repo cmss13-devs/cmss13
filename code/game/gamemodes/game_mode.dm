@@ -98,12 +98,8 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	if(round_statistics)
 		round_statistics.track_round_end()
 	log_game("Round end result: [round_finished]")
-	to_world("<span class='round_header'>|Round Complete|</span>")
-
-	to_world(SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name]."))
-	to_world(SPAN_ROUNDBODY("The game-mode was: [master_mode]!"))
-	to_world(SPAN_ROUNDBODY("End of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
-
+	to_chat_spaced(world, margin_top = 2, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDHEADER("|Round Complete|"))
+	to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, html = SPAN_ROUNDBODY("Thus ends the story of the brave men and women of the [MAIN_SHIP_NAME] and their struggle on [SSmapping.configs[GROUND_MAP].map_name].\nThe game-mode was: [master_mode]!\nEnd of Round Grief (EORG) is an IMMEDIATE 3 hour ban with no warnings, see rule #3 for more details."))
 
 /datum/game_mode/proc/declare_completion()
 	if(round_statistics)
@@ -215,7 +211,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 //Reports player logouts//
 //////////////////////////
 proc/display_roundstart_logout_report()
-	var/msg = SPAN_NOTICE("<b>Roundstart logout report\n\n")
+	var/msg = FONT_SIZE_LARGE("<b>Roundstart logout report\n\n")
 	for(var/i in GLOB.living_mob_list)
 		var/mob/living/L = i
 
@@ -257,7 +253,7 @@ proc/display_roundstart_logout_report()
 
 	for(var/mob/M in GLOB.player_list)
 		if(M.client.admin_holder && (M.client.admin_holder.rights & R_MOD))
-			to_chat(M, msg)
+			to_chat_spaced(M, html = msg)
 
 //Announces objectives/generic antag text.
 /proc/show_generic_antag_text(var/datum/mind/player)

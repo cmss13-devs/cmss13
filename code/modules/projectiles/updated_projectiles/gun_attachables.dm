@@ -853,7 +853,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/carbine/New()
 	..()
 	//it makes stuff much better when two-handed
-	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_6
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5

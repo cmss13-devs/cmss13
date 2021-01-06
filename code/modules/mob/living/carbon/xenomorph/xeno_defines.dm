@@ -192,6 +192,7 @@
 	var/tier_slot_multiplier = 1.0
 	var/larva_gestation_multiplier = 1.0
 	var/bonus_larva_spawn_chance = 1.0
+	var/hijack_pooled_surge = FALSE //at hijack, start spawning lots of pooled
 
 	var/dynamic_evolution = TRUE
 	var/evolution_rate = 3 // Only has use if dynamic_evolution is false

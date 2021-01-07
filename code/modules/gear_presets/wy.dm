@@ -88,14 +88,9 @@
 	name = "Survivor - Corporate Supervisor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrade = "WY-5G"
+	skills = /datum/skills/civilian/manager_survivor
 	assignment = "Colony Supervisor"
 	role_comm_title = "Supervisor"
-
-
-/datum/equipment_preset/wy/manager/survivor/load_skills(mob/living/carbon/human/H)
-	. = ..()
-	H.skills.set_skill(SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR)
-
 
 /datum/equipment_preset/wy/manager/survivor/load_gear(mob/living/carbon/human/H)
 	. = ..()

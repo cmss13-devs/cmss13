@@ -199,6 +199,16 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
 	)
 
+/datum/skills/civilian/manager_survivor
+	name = "Weston-Yamada Manager" //Manager but balanced for survivor, endurance 5 and can build cades
+	skills = list(
+		SKILL_ENDURANCE = SKILL_ENDURANCE_SURVIVOR,
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
+	)
 
 /datum/skills/civilian/survivor
 	name = "Survivor"

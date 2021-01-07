@@ -149,7 +149,7 @@
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
-            limb.fracture()
+            limb.fracture(100)
         if ("blood_loss")
             var/amount = 0
             amount = input(usr, "Amount?") as num|null

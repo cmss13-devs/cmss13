@@ -183,8 +183,9 @@
 #define HAS_UNDERWEAR 512
 #define IS_WHITELISTED 1024
 #define IS_SYNTHETIC 2048
-#define NO_SHRAPNEL 4096
-
+#define NO_NEURO 4096 //species cannot be neuroed
+#define SPECIAL_BONEBREAK 8192 //species do not get their bonebreak chance modified by endurance
+#define NO_SHRAPNEL 16384
 //=================================================
 
 //Some on_mob_life() procs check for alien races.

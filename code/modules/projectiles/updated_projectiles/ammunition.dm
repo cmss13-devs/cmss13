@@ -1083,7 +1083,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 //SMG
 
 /obj/item/ammo_box/rounds/smg
-	name = "SMG ammunition box (10x20mm HV)"
+	name = "SMG HV ammunition box (10x20mm)"
 	desc = "A 10x20mm ammunition box. Used to refill M39 HV and extended magazines. It comes with a leather strap allowing to wear it on the back."
 	caliber = "10x20mm"
 	icon_state = "base_m39"

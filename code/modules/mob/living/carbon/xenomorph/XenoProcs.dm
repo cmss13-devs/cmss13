@@ -543,7 +543,7 @@
 		visible_message(SPAN_XENOWARNING("You hear the bones in [M]'s [L.display_name] snap with a sickening crunch!"), \
 		SPAN_XENOWARNING("[M]'s [L.display_name] bones snap with a satisfying crunch!"))
 		L.take_damage(rand(15,25), 0, 0)
-		L.fracture()
+		L.fracture(100)
 	M.last_damage_source = initial(name)
 	M.last_damage_mob = src
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress</font>")

@@ -421,7 +421,6 @@
 
 /datum/ammo/bullet/smg
 	name = "submachinegun bullet"
-
 	damage = BULLET_DAMAGE_TIER_8
 	accurate_range = 6
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -1409,12 +1408,14 @@
 
 /proc/apply_neuro(mob/M, power, insta_neuro)
 	var/pass_down_the_line = FALSE
-	if(isSynth(M) || isYautja(M))
-		return // unaffected
+	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR) && !insta_neuro)
+		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
-			return
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
+			return //species like zombies or synths are immune to neurotoxin
 
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
@@ -1459,11 +1460,13 @@
 
 /proc/apply_scatter_neuro(mob/M, power)
 	var/pass_down_the_line = FALSE
-	if(isSynth(M) || isYautja(M))
-		return // unaffected
+	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
+		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
+		return //endurance 5 makes you immune to weak neuro
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
+		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
+			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return
 
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing

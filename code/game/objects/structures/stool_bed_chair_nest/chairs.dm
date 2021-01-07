@@ -62,7 +62,7 @@
 
 /obj/structure/bed/chair/comfy
 	name = "comfy chair"
-	desc = "It looks comfy."
+	desc = "A chair with leather padding and adjustable headrest. You could probably sit in one of these for ages."
 	icon_state = "comfychair"
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
@@ -130,7 +130,7 @@
 
 /obj/structure/bed/chair/dropship/passenger
 	name = "passenger seat"
-	desc = "Holds you in place during high altitude drops."
+	desc = "A sturdy metal chair with a brace that lowers over your body. Holds you in place during high altitude drops."
 	icon_state = "hotseat"
 	var/image/chairbar = null
 	var/chair_state = DROPSHIP_CHAIR_UNFOLDED

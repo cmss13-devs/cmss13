@@ -29,4 +29,4 @@
 	config_entry_value = 4
 
 /datum/config_entry/number/surv_number_divider
-	config_entry_value = 20
+	config_entry_value = 4

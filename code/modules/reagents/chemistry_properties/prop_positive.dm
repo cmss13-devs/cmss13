@@ -339,7 +339,7 @@
 	var/mob/living/carbon/human/H = M
 	var/obj/limb/L = pick(H.limbs)
 	if(L)
-		L.fracture()
+		L.fracture(100)
 
 /datum/chem_property/positive/fluxing
 	name = PROPERTY_FLUXING

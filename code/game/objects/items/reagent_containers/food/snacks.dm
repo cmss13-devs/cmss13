@@ -1544,7 +1544,7 @@
 		surprise.add_mob_blood(M)
 		var/mob/living/carbon/human/H = M
 		var/obj/limb/E = H.get_limb("chest")
-		E.fracture()
+		E.fracture(100)
 		H.recalculate_move_delay = TRUE
 		for (var/datum/internal_organ/I in E.internal_organs)
 			I.take_damage(rand(I.min_bruised_damage, I.min_broken_damage+1))

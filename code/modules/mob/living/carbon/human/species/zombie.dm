@@ -8,7 +8,7 @@
 	pain_type = /datum/pain/zombie
 	stamina_type = /datum/stamina/none
 	death_message = "seizes up and falls limp..."
-	flags = NO_BREATHE|NO_SCAN|NO_POISON|NO_SHRAPNEL
+	flags = NO_BREATHE|NO_SCAN|NO_POISON|NO_NEURO|NO_SHRAPNEL
 	brute_mod = 0.25 //EXTREME BULLET RESISTANCE
 	burn_mod = 0.8 //Lowered burn damage since it would 1-shot zombies from 2 to 0.8.
 	speech_chance  = 5

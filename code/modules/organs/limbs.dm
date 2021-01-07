@@ -889,31 +889,35 @@ This function completely restores a damaged organ to perfect condition.
 		not_salved |= !W.salved
 	return !not_salved
 
-/obj/limb/proc/fracture()
+/obj/limb/proc/fracture(var/bonebreak_probability)
 	if(status & (LIMB_BROKEN|LIMB_DESTROYED|LIMB_ROBOT))
 		if (knitting_time != -1)
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
 		return
-	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE)
-		return
-	owner.recalculate_move_delay = TRUE
-	owner.visible_message(\
-		SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
-		SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
-		SPAN_HIGHDANGER("You hear a sickening crack!"))
-	var/F = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
-	playsound(owner,F, 45, 1)
-	if(owner.pain.feels_pain)
-		owner.emote("scream")
+	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE || owner.species.flags & SPECIAL_BONEBREAK || !owner.skills) //stops division by zero
+		bonebreak_probability = 100
+	//if the chance was not set by what called fracture(), the endurance check is done instead
+	if(!bonebreak_probability) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.
+		bonebreak_probability = 100 / Clamp(owner.skills.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
+	if(prob(bonebreak_probability))
+		owner.recalculate_move_delay = TRUE
+		owner.visible_message(\
+			SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
+			SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
+			SPAN_HIGHDANGER("You hear a sickening crack!"))
+		playsound(owner,"bone_break", 45, 1)
+		start_processing()
 
-	start_processing()
-
-	status |= LIMB_BROKEN
-	status &= ~LIMB_REPAIRED
-	owner.pain.apply_pain(PAIN_BONE_BREAK)
-	broken_description = pick("broken","fracture","hairline fracture")
-	perma_injury = brute_dam
+		status |= LIMB_BROKEN
+		status &= ~LIMB_REPAIRED
+		owner.pain.apply_pain(PAIN_BONE_BREAK)
+		broken_description = pick("broken","fracture","hairline fracture")
+		perma_injury = brute_dam
+	else
+		owner.visible_message(\
+			SPAN_WARNING("[owner] seems to withstand the blow!"),
+			SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
 
 /obj/limb/proc/robotize()
 	status &= ~LIMB_BROKEN

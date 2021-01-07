@@ -195,6 +195,7 @@
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry
 	name = "\improper WestonChem Plus"
 	desc = "Medical chemistry dispenser. Provided by W-Y Pharmaceuticals Division(TM)."
+	icon_state = "chem"
 
 	healthscan = FALSE
 	chem_refill = list(

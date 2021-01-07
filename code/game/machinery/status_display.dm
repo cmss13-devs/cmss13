@@ -8,6 +8,7 @@
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
 	name = "status display"
+	desc = "A monitor depicting the ship's current status. It flickers every so often."
 	anchored = 1
 	density = 0
 	use_power = FALSE

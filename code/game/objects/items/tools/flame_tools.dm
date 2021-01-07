@@ -173,7 +173,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 //////////////////
 /obj/item/clothing/mask/cigarette
 	name = "cigarette"
-	desc = "A roll of tobacco and nicotine."
+	desc = "A roll of tobacco and fillers, wrapped in paper with a filter at the end. Apparently, inhaling the smoke makes you feel happier."
 	icon_state = "cigoff"
 	throw_speed = SPEED_AVERAGE
 	item_state = "cigoff"
@@ -379,7 +379,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "ucigoff"
 	type_butt = /obj/item/trash/ucigbutt
 	name = "cigarette"
-	desc = "An unfiltered roll of tobacco and nicotine."
+	desc = "An unfiltered roll of tobacco and nicotine. Smoking this releases even more tar and soot into your mouth."
 	item_state = "cigoff"
 	icon_state = "ucigoff"
 
@@ -388,7 +388,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_off = "bcigoff"
 	type_butt = /obj/item/trash/bcigbutt
 	name = "cigarette"
-	desc = "A roll of tobacco and nicotine in a fancy black package."
+	desc = "A roll of tobacco, nicotine, and some phosphor, in a fancy black package. The phosphor makes the tip glow blue when lit."
 	item_state = "bcigoff"
 	icon_state = "bcigoff"
 
@@ -412,7 +412,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 ////////////
 /obj/item/clothing/mask/cigarette/cigar
 	name = "premium cigar"
-	desc = "A brown roll of tobacco and... well, you're not quite sure. This thing's huge!"
+	desc = "A huge, brown roll of tobacco and some other stuff that you're meant to smoke. Makes you feel like a true USCM sergeant."
 	icon_state = "cigar_off"
 	icon_on = "cigar_on"
 	icon_off = "cigar_off"

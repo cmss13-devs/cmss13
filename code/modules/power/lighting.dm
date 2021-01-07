@@ -129,7 +129,7 @@
 	icon = 'icons/obj/items/lighting.dmi'
 	var/base_state = "tube"		// base description and icon_state
 	icon_state = "tube1"
-	desc = "A lighting fixture."
+	desc = "A bright fluorescent tube light. Looking at it for too long makes your eyes go watery."
 	anchored = 1
 	layer = FLY_LAYER
 	use_power = 2
@@ -158,7 +158,7 @@
 
 /obj/structure/machinery/light/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	return
-	
+
 
 // the smaller bulb light fixture
 

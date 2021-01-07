@@ -444,7 +444,7 @@
 	songs = list("side1" = list("sound/music/walkman/surf/10-1-1.ogg",\
 								"sound/music/walkman/surf/10-1-2.ogg",\
 								"sound/music/walkman/surf/10-1-3.ogg",\
-								"sound/music/walkman/surf/10-1-4ogg"),\
+								"sound/music/walkman/surf/10-1-4.ogg"),\
 				 "side2" = list("sound/music/walkman/surf/10-2-1.ogg",\
 								"sound/music/walkman/surf/10-2-2.ogg",\
 								"sound/music/walkman/surf/10-2-3.ogg",\

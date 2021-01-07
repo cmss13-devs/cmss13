@@ -272,6 +272,8 @@ var/list/admin_verbs_mod = list(
 
 		if(RoleAuthority && (RoleAuthority.roles_whitelist[ckey] & WHITELIST_YAUTJA_LEADER))
 			add_verb(src, clan_verbs)
+	if(admin_holder && admin_holder.rights & R_MENTOR)
+		add_verb(src, /client/proc/cmd_mentor_say)
 
 /client/proc/add_admin_whitelists()
 	if(is_mentor(src) || AHOLD_IS_MOD(admin_holder))

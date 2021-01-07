@@ -193,6 +193,8 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
+	iff_enabled = TRUE
+	iff_enabled_current = TRUE
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle/extended,
@@ -211,7 +213,6 @@
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/scope/mini_iff,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
 						/obj/item/attachable/flashlight/grip,
@@ -224,7 +225,6 @@
 	random_spawn_rail = list(
 							/obj/item/attachable/reddot,
 							/obj/item/attachable/reflex/,
-							/obj/item/attachable/scope/mini_iff,
 							)
 	random_spawn_underbarrel = list(
 							/obj/item/attachable/angledgrip,
@@ -299,7 +299,7 @@
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 
-/*/obj/item/weapon/gun/rifle/m46c/verb/toggle_iff()
+/obj/item/weapon/gun/rifle/m46c/verb/toggle_iff()
 	set category = "Weapons"
 	set name = "Toggle Lethal Mode"
 	set src in usr
@@ -317,11 +317,12 @@
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()
 	if(iff_enabled)
-		damage_mult -= config.min_hit_damage_mult
-		fire_delay += config.min_fire_delay
-		burst_amount -= config.max_burst_value
+		damage_mult -= BULLET_DAMAGE_MULT_TIER_1 //Loses a tier of damage
+		fire_delay += FIRE_DELAY_TIER_10
+		burst_amount -=  BURST_AMOUNT_TIER_6
 
-		flags_gun_features &= ~GUN_BURST_ON*/
+		flags_gun_features &= ~GUN_BURST_ON //Gun loses some combat ability in return for IFF, as well as burst fire mode
+
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
 	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]."

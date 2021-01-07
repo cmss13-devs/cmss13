@@ -228,9 +228,7 @@
 	if(!msg)
 		return
 
-	log_admin("ADMIN : [key_name(src)] : [msg]")
-	GLOB.STUI.staff.Add("\[[time_stamp()]] <font color='#800080'>ADMIN: [key_name(src)] : [msg]</font><br>")
-	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
+	log_adminpm("ADMIN : [key_name(src)] : [msg]")
 
 	var/color = "adminsay"
 	if(ishost(usr))
@@ -251,12 +249,12 @@
 		return
 
 	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
-	log_admin("MOD: [key_name(src)] : [msg]")
-	GLOB.STUI.staff.Add("\[[time_stamp()]] <font color='#b82e00'>MOD: [key_name(src)] : [msg]</font><br>")
-	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 
 	if (!msg)
 		return
+
+	log_adminpm("MOD: [key_name(src)] : [msg]")
+
 	var/color = "mod"
 	if (check_rights(R_ADMIN,0))
 		color = "adminmod"
@@ -266,6 +264,32 @@
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
+
+/client/proc/cmd_mentor_say(msg as text)
+	set name = "MentorSay"
+	set category = "OOC"
+	set hidden = 0
+
+	if(!check_rights(R_MENTOR|R_MOD|R_ADMIN))
+		return
+
+	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+
+	if (!msg)
+		return
+
+	log_adminpm("MENTOR: [key_name(src)] : [msg]")
+
+	var/color = "mentorsay"
+	var/channel = "Mentor:"
+	channel = "[admin_holder.rank]:"
+	if(check_rights(R_MOD|R_ADMIN,0))
+		color = "staffsay"
+
+	for(var/client/C in GLOB.admins)
+		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
+			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
+
 
 /client/proc/enable_admin_mob_verbs()
 	set name = "Mob Admin Verbs - Show"

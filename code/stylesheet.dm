@@ -24,6 +24,10 @@ em						{font-style: normal;	font-weight: bold;}
 .admin					{color: #386aff;	font-weight: bold;}
 .adminsay				{color: #9611D4;	font-weight: bold;}
 .headminsay				{color: #5A0A7F;	font-weight: bold;}
+.mod					{color: #735638;	font-weight: bold;}
+.adminmod				{color: #402A14;	font-weight: bold;}
+.mentorsay				{color: #d4af57;	font-weight: bold;}
+.staffsay				{color: #b5850d;	font-weight: bold;}
 
 .name					{					font-weight: bold;}
 
@@ -122,9 +126,7 @@ h1.alert, h2.alert		{color: #000000;}
 
 .centerbold				{				 	text-align: center; font-weight: bold;}
 
-.mod					{color: #735638;	font-weight: bold;}
 .modooc					{color: #184880;	font-weight: bold;}
-.adminmod				{color: #402A14;	font-weight: bold;}
 .tajaran				{color: #803B56;}
 .tajaran_signlang		{color: #941C1C;}
 .skrell					{color: #00CED1;}

@@ -178,6 +178,14 @@
 	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
 	var/list/xeno_leader_list[2] // Ordered list (i.e. index n holds the nth xeno leader)
 	var/stored_larva = 0
+	/// Assoc list of free slots available to specific castes
+	var/list/free_slots = list(
+		/datum/caste_datum/burrower = 1,
+		/datum/caste_datum/hivelord = 1,
+		/datum/caste_datum/carrier = 1
+	)
+	/// Assoc list of free slots currently used by specific castes
+	var/list/used_free_slots
 	var/list/tier_2_xenos = list()//list of living tier2 xenos
 	var/list/tier_3_xenos = list()//list of living tier3 xenos
 	var/list/totalXenos	= list()  //list of living xenos
@@ -225,7 +233,7 @@
 	var/list/list/hive_structures = list() //Stringref list of structures that have been built
 	var/list/list/hive_constructions = list() //Stringref list of structures that are being built
 
-	var/datum/hive_status_ui/hive_ui = new
+	var/datum/hive_status_ui/hive_ui
 	var/datum/hive_faction_ui/faction_ui
 
 	var/list/tunnels = list()
@@ -234,8 +242,8 @@
 
 /datum/hive_status/New()
 	mutators.hive = src
-	hive_ui.set_hive(src)
 
+	hive_ui = new(src)
 	faction_ui = new(src)
 
 	internal_faction = name
@@ -255,7 +263,6 @@
 
 	// Can only have one queen.
 	if(isXenoQueen(X))
-
 		if(!living_xeno_queen && !is_admin_level(X.z)) // Don't consider xenos in admin level
 			set_living_xeno_queen(X)
 
@@ -458,7 +465,7 @@
 
 	// Make it all nice and fancy by sorting the list before returning it
 	var/list/sorted_keys = sort_xeno_keys(xenos)
-	if(sorted_keys && sorted_keys.len)
+	if(length(sorted_keys))
 		return sorted_keys
 	return xenos
 
@@ -468,15 +475,15 @@
 // 3. Tier
 // It uses a slightly modified insertion sort to accomplish this
 /datum/hive_status/proc/sort_xeno_keys(var/list/xenos)
-	if(!xenos || !xenos.len)
+	if(!length(xenos))
 		return
 
 	var/list/sorted_list = xenos.Copy()
 
-	if(!sorted_list || !sorted_list.len)
+	if(!length(sorted_list))
 		return
 
-	for(var/index = 2 to sorted_list.len)
+	for(var/index in 2 to sorted_list.len)
 		var/j = index
 
 		while(j > 1)
@@ -571,17 +578,27 @@
 	var/pooled_factor = min(stored_larva, sqrt(4*stored_larva))
 	pooled_factor = round(pooled_factor)
 
-	var/effective_total = totalXenos.len + pooled_factor
+	var/used_tier_2_slots = length(tier_2_xenos)
+	var/used_tier_3_slots = length(tier_3_xenos)
+	for(var/caste_path in used_free_slots)
+		if(!used_free_slots[caste_path])
+			continue
+		var/datum/caste_datum/C = caste_path
+		switch(initial(C.tier))
+			if(2) used_tier_2_slots--
+			if(3) used_tier_3_slots--
+
+	var/effective_total = length(totalXenos) + pooled_factor
 
 	// no division by zero here, sir, nope.
 	if(!effective_total)
 		return slots
 
-	// Tier 3 slots are always 20% of the total xenos in the hive
-	slots[2] = max(0, Ceiling(0.20 * tier_slot_multiplier * totalXenos.len) - tier_3_xenos.len)
+	// Tier 3 slots are always 25% of the total xenos in the hive
+	slots[2] = max(0, Ceiling(0.25*length(totalXenos)/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 25% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[1] = max(0, Ceiling(effective_total * (0.5 - tier_3_xenos.len / effective_total) * tier_slot_multiplier) - tier_2_xenos.len)
+	slots[1] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 

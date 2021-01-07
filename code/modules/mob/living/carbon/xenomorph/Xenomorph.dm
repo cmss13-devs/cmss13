@@ -205,6 +205,7 @@
 	var/viewsize = 0
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/list/tackle_counter = list()
+	var/evolving = FALSE // Whether the xeno is in the process of evolving
 
 
 	//////////////////////////////////////////////////////////////////
@@ -275,6 +276,7 @@
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
+
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
@@ -357,6 +359,14 @@
 	else
 		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
 
+	// Only handle free slots if the xeno is not in tdome
+	if(!is_admin_level(z))
+		var/selected_caste = GLOB.xeno_datum_list[caste_name]?.type
+		var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
+		if(free_slots)
+			hive.free_slots[selected_caste] -= 1
+			var/new_val = LAZYACCESS(hive.used_free_slots, selected_caste) + 1
+			LAZYSET(hive.used_free_slots, selected_caste, new_val)
 
 	if(round_statistics && !statistic_exempt)
 		round_statistics.track_new_participant(faction, 1)
@@ -522,8 +532,16 @@
 
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
-	if(hive)
-		hive.remove_xeno(src)
+	// Only handle free slots if the xeno is not in tdome
+	if(!is_admin_level(z))
+		var/selected_caste = GLOB.xeno_datum_list[caste_name]?.type
+		var/used_slots = LAZYACCESS(hive.used_free_slots, selected_caste)
+		if(used_slots)
+			hive.used_free_slots[selected_caste] -= 1
+			var/new_val = LAZYACCESS(hive.free_slots, selected_caste) + 1
+			LAZYSET(hive.free_slots, selected_caste, new_val)
+
+	hive.remove_xeno(src)
 
 	remove_from_all_mob_huds()
 

@@ -8,9 +8,7 @@
 	// List of all open UIs and their users. These will be updated whenever the data updates
 	var/list/open_uis = list()
 
-/datum/hive_status_ui/proc/set_hive(var/datum/hive_status/hive)
-	if(isnull(hive) || !istype(hive))
-		return
+/datum/hive_status_ui/New(var/datum/hive_status/hive)
 	assoc_hive = hive
 
 	for(var/ref in open_uis)
@@ -55,7 +53,7 @@
 	if(!data["xeno_keys"])
 		return
 
-	for(var/index = 1 to length(data["xeno_keys"]))
+	for(var/index in 1 to length(data["xeno_keys"]))
 		var/list/info = data["xeno_keys"][index]
 		if(info["nicknumber"] == X.nicknumber)
 

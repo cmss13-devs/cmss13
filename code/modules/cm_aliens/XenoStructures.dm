@@ -281,7 +281,7 @@
 	if(!density)
 		severity *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
 
-	health -= (severity * RESIN_EXPLOSIVE_MULTIPLIER)
+	health -= (severity * RESIN_EXPLOSIVE_MULTIPLIER * EXPLOSION_DAMAGE_MULTIPLIER_DOOR)
 	healthcheck()
 
 	if(src)

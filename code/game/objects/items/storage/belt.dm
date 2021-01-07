@@ -929,6 +929,8 @@
 	icon_x = 6
 	icon_y = -2
 	can_hold = list(
+		/obj/item/device/flashlight/flare,
+		/obj/item/weapon/gun/flare,
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver/m44,
 		/obj/item/ammo_magazine/revolver,
@@ -965,6 +967,7 @@
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/weapon/gun/revolver/m44,
+		/obj/item/weapon/gun/flare,
 		/obj/item/mortar_shell
 	)
 	bypass_w_limit = list(/obj/item/mortar_shell)

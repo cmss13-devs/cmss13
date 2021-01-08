@@ -19,7 +19,11 @@ endmap
 map bigredv2
 endmap
 
+map prison_station_fop
+endmap
+
 map corsat
+	minplayers 130
 endmap
 
 map desert_dam

@@ -11,7 +11,17 @@ SUBSYSTEM_DEF(vote)
 	var/time_remaining = 0
 	var/mode = null
 	var/question = null
+	/**
+	  * Callback to calculate how many votes to add/remove
+	  * Pass the number of current round votes and carryover
+	  */
+	var/datum/callback/vote_adjustment_callback = null
+	/// Adjustments applied to the current round's votes
+	var/list/adjustments = list()
+	/// Current round votes
 	var/list/choices = list()
+	/// Votes from previous rounds
+	var/list/carryover = list()
 	var/list/voted = list()
 	var/list/voting = list()
 
@@ -41,7 +51,11 @@ SUBSYSTEM_DEF(vote)
 	time_remaining = 0
 	mode = null
 	question = null
+	if(vote_adjustment_callback)
+		QDEL_NULL(vote_adjustment_callback)
+	adjustments.Cut()
 	choices.Cut()
+	carryover.Cut()
 	voted.Cut()
 	voting.Cut()
 	remove_action_buttons()
@@ -50,11 +64,25 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/get_result()
 	var/greatest_votes = 0
 	var/total_votes = 0
+	var/list/choices_adjusted = list()
+
+	// First read in the total amount of votes
 	for(var/option in choices)
-		var/votes = choices[option]
-		total_votes += votes
-		if(votes > greatest_votes)
-			greatest_votes = votes
+		var/current_votes = choices[option]
+		total_votes += current_votes
+
+	// Then go through all the vote choices again to perform adjustments and checks
+	for(var/option in choices)
+		var/current_votes = choices[option]
+		var/carryover = src.carryover[option]
+		current_votes += carryover
+		if(vote_adjustment_callback)
+			adjustments[option] = vote_adjustment_callback.Invoke(current_votes, carryover, total_votes)
+			current_votes += adjustments[option]
+		choices_adjusted[option] = current_votes
+
+		if(current_votes > greatest_votes)
+			greatest_votes = current_votes
 	if(!CONFIG_GET(flag/default_no_vote) && length(choices))
 		var/list/non_voters = GLOB.directory.Copy()
 		non_voters -= voted
@@ -69,8 +97,8 @@ SUBSYSTEM_DEF(vote)
 					greatest_votes = choices["Continue Playing"]
 	. = list()
 	if(greatest_votes)
-		for(var/option in choices)
-			if(choices[option] == greatest_votes)
+		for(var/option in choices_adjusted)
+			if(choices_adjusted[option] == greatest_votes)
 				. += option
 	return .
 
@@ -84,10 +112,25 @@ SUBSYSTEM_DEF(vote)
 		else
 			text += "<b>[capitalize(mode)] Vote</b>"
 		for(var/i = 1 to length(choices))
-			var/votes = choices[choices[i]]
+			var/choice = choices[i]
+			var/votes = choices[choice]
 			if(!votes)
 				votes = 0
-			text += "<br><b>[choices[i]]:</b> [votes]"
+			var/adjustment = adjustments[choice]
+			var/carryover = src.carryover[choice]
+			var/votes_actual = votes + adjustment + carryover
+
+			var/msg = "<br><b>[choice]:</b> [votes_actual]"
+			if(votes)
+				msg += " ("
+				if(votes)
+					msg += "[votes] new vote[votes > 1 ? "s" : ""]; "
+				if(adjustment)
+					msg += "[abs(adjustment)] vote[abs(adjustment) > 1 ? "s" : ""] [adjustment < 0 ? "removed" : "added"] for adjustment; "
+				// Remove the trailing "; "
+				msg = copytext(msg, 1, length(msg)-1)
+				msg += ")"
+			text += msg
 		if(mode != "custom")
 			if(length(winners) > 1)
 				text = "<br><b>Vote Tied Between:</b>"
@@ -117,8 +160,10 @@ SUBSYSTEM_DEF(vote)
 				var/datum/map_config/VM = config.maplist[GROUND_MAP][.]
 				SSmapping.changemap(VM, GROUND_MAP)
 				for(var/datum/entity/map_vote/in_vote in votes)
-					if(!isnull(choices[in_vote.map_name]))
-						in_vote.total_votes = (. == in_vote.map_name) ? 0 : choices[in_vote.map_name]
+					var/map = in_vote.map_name
+					if(!isnull(choices[map]))
+						var/total_votes = choices[map] + adjustments[map] + carryover[map]
+						in_vote.total_votes = (. == map) ? 0 : total_votes
 						in_vote.save()
 			if("shipmap")
 				var/datum/map_config/VM = config.maplist[SHIP_MAP][.]
@@ -167,7 +212,7 @@ SUBSYSTEM_DEF(vote)
 			vote.total_votes = 0
 			vote.save()
 
-		choices[i] += vote.total_votes
+		carryover[i] += vote.total_votes
 
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key)
 	if(!mode)
@@ -218,6 +263,8 @@ SUBSYSTEM_DEF(vote)
 				if(length(choices) < 2)
 					return FALSE
 				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, .proc/carry_over_callback))
+
+				vote_adjustment_callback = CALLBACK(src, .proc/map_vote_adjustment)
 			if("shipmap")
 				var/list/maps = list()
 				for(var/i in config.maplist[SHIP_MAP])
@@ -323,6 +370,15 @@ SUBSYSTEM_DEF(vote)
 
 ///datum/controller/subsystem/vote/can_interact(mob/user) // can_interact refactor TODO:
 //	return TRUE
+
+/* VOTE ADJUSTMENT PROCS */
+/datum/controller/subsystem/vote/proc/map_vote_adjustment(current_votes, carry_over, total_votes)
+	// Get 10% of the total map votes and remove them from the pool
+	var/total_vote_adjustment = round(total_votes * 0.1)
+
+	// Do not remove more votes than were made for the map
+	return -(min(current_votes, total_vote_adjustment))
+/* END VOTE ADJUSTMENT PROCS */
 
 
 /datum/controller/subsystem/vote/Topic(href, list/href_list, hsrc)

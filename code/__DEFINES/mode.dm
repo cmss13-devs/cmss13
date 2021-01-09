@@ -31,16 +31,17 @@
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
-#define MODE_INFESTATION		1
-#define MODE_PREDATOR			2
-#define MODE_NO_LATEJOIN		4
-#define MODE_HAS_FINISHED		8
-#define MODE_FOG_ACTIVATED 		16
-#define MODE_INFECTION			32
-#define MODE_HUMAN_ANTAGS		64
-#define MODE_NO_SPAWN 			128 // Disables marines from spawning in normally
-#define MODE_XVX				256 // Affects several castes for XvX, as well as other things (e.g. spawnpool)
-#define MODE_NEW_SPAWN 			512 // Enables the new spawning, only works for Distress currently
+#define MODE_INFESTATION		(1<<0)
+#define MODE_PREDATOR			(1<<1)
+#define MODE_NO_LATEJOIN		(1<<2)
+#define MODE_HAS_FINISHED		(1<<3)
+#define MODE_FOG_ACTIVATED 		(1<<4)
+#define MODE_INFECTION			(1<<5)
+#define MODE_HUMAN_ANTAGS		(1<<6)
+#define MODE_NO_SPAWN 			(1<<7) // Disables marines from spawning in normally
+#define MODE_XVX				(1<<8) // Affects several castes for XvX, as well as other things (e.g. spawnpool)
+#define MODE_NEW_SPAWN 			(1<<9) // Enables the new spawning, only works for Distress currently
+#define MODE_RANDOM_HIVE		(1<<10)// Makes Join-as-Xeno choose a hive to join as pooled larva at random rather than at user's input..
 
 #define ROUNDSTATUS_FOG_DOWN 		1
 #define ROUNDSTATUS_PODDOORS_OPEN	2

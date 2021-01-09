@@ -29,7 +29,7 @@
 			final_name = "Le'pro"
 	H.change_real_name(H, final_name)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/blooded
 	name = "Yautja Blooded"
@@ -55,7 +55,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(H, armor_number), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(H, mask_number), WEAR_FACE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/blooded/councillor
 	name = "Yautja Councillor"
@@ -70,7 +70,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
 	. = ..()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/elder
 	name = "Yautja Elder"
@@ -86,35 +86,35 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H, armor_number), WEAR_BACK)
 	. = ..()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/elder/dragon
 	name = "Yautja Elder, Dragon"
 	flags = EQUIPMENT_PRESET_EXTRA
 	elder_number = 1341 //overwriting elder gear
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/elder/horror
 	name = "Yautja Elder, Swamp Horror"
 	flags = EQUIPMENT_PRESET_EXTRA
 	elder_number = 7128 //overwriting elder gear
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/elder/enforcer
 	name = "Yautja Elder, Enforcer"
 	flags = EQUIPMENT_PRESET_EXTRA
 	elder_number = 9867 //overwriting elder gear
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/elder/collector
 	name = "Yautja Elder, Ambivalent Collector"
 	flags = EQUIPMENT_PRESET_EXTRA
 	elder_number = 4879 //overwriting elder gear
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/warrior
 	name = "Yautja Warrior"
@@ -140,7 +140,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/yautja_sword(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/spawnergrenade/smartdisc(H), WEAR_R_HAND)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/yautja/elder_geared
 	name = "Yautja Elder, geared up"

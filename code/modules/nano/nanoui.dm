@@ -1,10 +1,10 @@
-/**********************************************************
+/*
 NANO UI FRAMEWORK
 
 nanoui class (or whatever Byond calls classes)
 
 nanoui is used to open and update nano browser uis
-**********************************************************/
+*/
 
 
 #define STATUS_INTERACTIVE 2 // GREEN Visability
@@ -100,7 +100,7 @@ nanoui is used to open and update nano browser uis
 	assets.send(user, ntemplate_filename)
 	assets.send(user, "layout_default.tmpl", TRUE)
 
-/**
+/*
  * Clear references to the nanoui instance to prepare for garbage collection
  */
 /datum/nanoui/Destroy()

@@ -130,7 +130,7 @@
 			new /obj/effect/decal/cleanable/blood/oil(src.loc)
 		healthcheck()
 
-/******************************************************************/
+//******************************************************************/
 // Navigation procs
 // Used for A-star pathfinding
 

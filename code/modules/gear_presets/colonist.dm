@@ -18,7 +18,7 @@
 	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/colonist/engineer
 	name = "Colonist - Engineer"
@@ -39,7 +39,7 @@
 	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/colonist/security
 	name = "Colonist - Security"
@@ -59,7 +59,7 @@
 	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/colonist/doctor
 	name = "Colonist - Doctor"

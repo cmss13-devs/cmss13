@@ -1,6 +1,6 @@
 
 
-/*****************************Pickaxe********************************/
+//*****************************Pickaxe********************************/
 
 /obj/item/tool/pickaxe
 	name = "pickaxe"
@@ -14,7 +14,7 @@
 	w_class = SIZE_LARGE
 	matter = list("metal" = 3750)
 	var/digspeed = 40 //moving the delay to an item var so R&D can make improved picks. --NEO
-	
+
 	attack_verb = list("hit", "pierced", "sliced", "attacked")
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
 	var/drill_verb = "picking"
@@ -31,7 +31,7 @@
 	icon_state = "spickaxe"
 	item_state = "spickaxe"
 	digspeed = 30
-	
+
 	desc = "This makes no metallurgic sense."
 
 /obj/item/tool/pickaxe/drill
@@ -39,7 +39,7 @@
 	icon_state = "handdrill"
 	item_state = "jackhammer"
 	digspeed = 30
-	
+
 	desc = "Yours is the drill that will pierce through the rock walls."
 	drill_verb = "drilling"
 
@@ -48,7 +48,7 @@
 	icon_state = "jackhammer"
 	item_state = "jackhammer"
 	digspeed = 20 //faster than drill, but cannot dig
-	
+
 	desc = "Cracks rocks with sonic blasts, perfect for killing cave lizards."
 	drill_verb = "hammering"
 
@@ -57,7 +57,7 @@
 	icon_state = "gpickaxe"
 	item_state = "gpickaxe"
 	digspeed = 20
-	
+
 	desc = "This makes no metallurgic sense."
 
 /obj/item/tool/pickaxe/plasmacutter
@@ -67,7 +67,7 @@
 	w_class = SIZE_MEDIUM //it is smaller than the pickaxe
 	damtype = "fire"
 	digspeed = 20 //Can slice though normal walls, all girders, or be used in reinforced wall deconstruction/ light thermite on fire
-	
+
 	desc = "A rock cutter that uses bursts of hot plasma. You could use it to cut limbs off of xenos! Or, you know, mine stuff."
 	drill_verb = "cutting"
 	heat_source = 3800
@@ -77,7 +77,7 @@
 	icon_state = "dpickaxe"
 	item_state = "dpickaxe"
 	digspeed = 10
-	
+
 	desc = "A pickaxe with a diamond pick head, this is just like minecraft."
 
 /obj/item/tool/pickaxe/diamonddrill //When people ask about the badass leader of the mining tools, they are talking about ME!
@@ -85,7 +85,7 @@
 	icon_state = "diamonddrill"
 	item_state = "jackhammer"
 	digspeed = 5 //Digs through walls, girders, and can dig up sand
-	
+
 	desc = "Yours is the drill that will pierce the heavens!"
 	drill_verb = "drilling"
 

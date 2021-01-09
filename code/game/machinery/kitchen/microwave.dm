@@ -22,9 +22,9 @@
 
 // see code/modules/food/recipes_microwave.dm for recipes
 
-/*******************
-*   Initialising
-********************/
+//*******************
+//*   Initialising
+//********************/
 
 /obj/structure/machinery/microwave/Initialize()
 	. = ..()
@@ -54,9 +54,9 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_HIGH_OVER_ONLY|PASS_AROUND|PASS_OVER_THROW_ITEM
 
-/*******************
-*   Item Adding
-********************/
+//*******************
+//*   Item Adding
+//********************/
 
 /obj/structure/machinery/microwave/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(iswrench(O))
@@ -149,9 +149,9 @@
 	user.set_interaction(src)
 	interact(user)
 
-/*******************
-*   Microwave Menu
-********************/
+//*******************
+//*   Microwave Menu
+//********************/
 
 /obj/structure/machinery/microwave/interact(mob/user as mob) // The microwave Menu
 	var/dat = ""
@@ -216,9 +216,9 @@
 
 
 
-/***********************************
-*   Microwave Menu Handling/Cooking
-************************************/
+//***********************************
+//*   Microwave Menu Handling/Cooking
+//************************************/
 
 /obj/structure/machinery/microwave/proc/cook()
 	if(inoperable())

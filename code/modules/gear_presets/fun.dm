@@ -7,7 +7,7 @@
 	skills = /datum/skills/civilian
 	idtype = /obj/item/card/id
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/fun/pirate
 	name = "Fun - Pirate"
@@ -29,7 +29,7 @@
 	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/fun/pirate/captain
 	name = "Fun - Pirate Captain"
@@ -52,7 +52,7 @@
 	H.equip_to_slot(new /obj/item/attachable/bayonet(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/fun/clown
 	name = "Fun - Clown"
@@ -68,7 +68,7 @@
 	H.equip_to_slot(new /obj/item/toy/bikehorn(H), WEAR_L_STORE)
 	H.equip_to_slot(new /obj/item/device/flashlight(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/fun/dutch
 	name = "Dutch's Dozen - Soldier"
 	paygrade = "DTC"

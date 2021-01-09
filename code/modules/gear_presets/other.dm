@@ -4,7 +4,7 @@
 /datum/equipment_preset/other/load_languages(mob/living/carbon/human/H)
 	H.set_languages(list("English"))
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/mutineer
 	name = "Mutineer"
@@ -61,7 +61,7 @@
 	H.g_hair = 25
 	H.b_hair = 35
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer/standard
 	name = "Freelancer (Standard)"
@@ -87,7 +87,7 @@
 
 	spawn_merc_weapon(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer/medic
 	name = "Freelancer (Medic)"
@@ -119,7 +119,7 @@
 
 	spawn_merc_weapon(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/freelancer/leader
 	name = "Freelancer (Leader)"
@@ -150,7 +150,7 @@
 	spawn_merc_weapon(H,0,7)
 	spawn_merc_weapon(H,1)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/mercenary_heavy
 	name = "Mercenary (Heavy)"
@@ -181,7 +181,7 @@
 	spawn_merc_weapon(H,0,7)
 	spawn_merc_weapon(H,1)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/mercenary_miner
 	name = "Mercenary (Miner)"
@@ -209,7 +209,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/mercenary_engineer
 	name = "Mercenary (Engineer)"
@@ -238,7 +238,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/business_person
 	name = "Business Person"
@@ -262,7 +262,7 @@
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 	H.equip_if_possible(new /obj/item/clipboard, WEAR_WAIST)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/compression_suit
 	name = "Mk50 Compression Suit"
@@ -286,7 +286,7 @@
 	spawn_merc_weapon(H)
 
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/pizza
 	name = "Pizza"
@@ -372,7 +372,7 @@
 	V.forceMove(H.loc)
 	V.buckle_mob(H, H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/zombie
 	name = "Zombie"
@@ -416,7 +416,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/gladiator
 	name = "Gladiator"
@@ -452,7 +452,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/gladiator/champion
 	name = "Gladiator Champion"
@@ -477,7 +477,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar/red, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/gladiator/leader
 	name = "Gladiator Leader"
@@ -502,7 +502,7 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/holy_hand_grenade, WEAR_L_STORE)
 	H.equip_to_slot_or_del(lantern, WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/xeno_cultist
 	name = "Cultist - Xeno Cultist"
@@ -542,7 +542,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
 	if(SSticker.mode && H.mind)
 		SSticker.mode.xenomorphs += H.mind
@@ -593,7 +593,7 @@
 	for(var/type in types)
 		var/datum/action/human_action/activable/cult_leader/O = new type()
 		O.give_action(H)
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/professor_dummy
 	name = "DUMMY"
@@ -624,7 +624,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical, WEAR_BODY)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/other/tank
 	name = "Event Vehicle Crewman (CRMN)"
@@ -667,4 +667,4 @@
 /datum/equipment_preset/other/tank/load_status()
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/

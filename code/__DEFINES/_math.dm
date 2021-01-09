@@ -1,5 +1,9 @@
-//gets the turf the atom is located in (or itself, if it is a turf).
-//returns null if the atom is not in a turf.
+/**
+ * Get the turf that `A` resides in, regardless of any containers.
+ *
+ * Use in favor of `A.loc` or `src.loc` so that things work correctly when
+ * stored inside an inventory, locker, or other container.
+ */
 #define get_turf(A) get_step(A, 0)
 
 #define CARDINAL_DIRS 		list(1,2,4,8)

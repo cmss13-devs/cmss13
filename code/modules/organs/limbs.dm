@@ -1,6 +1,6 @@
-/****************************************************
-				EXTERNAL ORGANS
-****************************************************/
+//****************************************************
+//				EXTERNAL ORGANS
+//****************************************************/
 /obj/limb
 	name = "limb"
 	appearance_flags = KEEP_TOGETHER | TILE_BOUND
@@ -152,9 +152,9 @@
 
 
 
-/****************************************************
-			   DAMAGE PROCS
-****************************************************/
+/*
+			DAMAGE PROCS
+*/
 
 /obj/limb/emp_act(severity)
 	if(!(status & LIMB_ROBOT))	//meatbags do not care about EMP
@@ -468,9 +468,9 @@ This function completely restores a damaged organ to perfect condition.
 			qdel(I)
 
 
-/****************************************************
-			   PROCESSING & UPDATING
-****************************************************/
+/*
+			PROCESSING & UPDATING
+*/
 
 //Determines if we even need to process this organ.
 
@@ -659,9 +659,9 @@ This function completely restores a damaged organ to perfect condition.
 		tbrute = 3
 	return "[tbrute][tburn]"
 
-/****************************************************
-			   DISMEMBERMENT
-****************************************************/
+/*
+			DISMEMBERMENT
+*/
 
 //Recursive setting of all child organs to amputated
 /obj/limb/proc/setAmputatedTree()
@@ -824,9 +824,9 @@ This function completely restores a damaged organ to perfect condition.
 
 		if(vital) owner.death(cause)
 
-/****************************************************
-			   HELPERS
-****************************************************/
+/*
+			HELPERS
+*/
 
 /obj/limb/proc/release_restraints()
 	if(!owner)
@@ -1066,9 +1066,9 @@ This function completely restores a damaged organ to perfect condition.
 
 
 
-/****************************************************
-			   LIMB TYPES
-****************************************************/
+/*
+			LIMB TYPES
+*/
 
 /obj/limb/chest
 	name = "chest"

@@ -1,8 +1,8 @@
 #define PROCESS_ACCURACY 10
 
-/****************************************************
+/*
 				INTERNAL ORGANS
-****************************************************/
+*/
 
 
 /datum/internal_organ
@@ -25,7 +25,7 @@
 /datum/internal_organ/process()
 	if(!owner && !organ_holder)
 		qdel(src)
-	
+
 	return 0
 
 /datum/internal_organ/proc/rejuvenate()
@@ -105,9 +105,9 @@
 	min_bruised_damage = 15
 	min_broken_damage = 35
 
-/****************************************************
+/*
 				INTERNAL ORGANS TYPES
-****************************************************/
+*/
 
 /datum/internal_organ/heart // This is not set to vital because death immediately occurs in blood.dm if it is removed.
 	name = "heart"
@@ -258,7 +258,7 @@
 	removed_type = /obj/item/organ/eyes/prosthetic
 
 /datum/internal_organ/proc/remove(var/mob/user)
-	if(!removed_type) 
+	if(!removed_type)
 		return 0
 
 	var/obj/item/organ/removed_organ = new removed_type(get_turf(user), src)

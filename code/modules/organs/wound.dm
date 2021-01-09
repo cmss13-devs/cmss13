@@ -1,7 +1,7 @@
 
-/****************************************************
+/*
 					WOUNDS
-****************************************************/
+*/
 /datum/wound
 	// number representing the current stage
 	var/current_stage = 0
@@ -101,7 +101,7 @@
 	proc/merge_wound(var/datum/wound/other)
 		src.damage += other.damage
 		src.amount += other.amount
-		src.created = max(src.created, other.created)	//take the newer created time		
+		src.created = max(src.created, other.created)	//take the newer created time
 
 	// heal the given amount of damage, and if the given amount of damage was more
 	// than what needed to be healed, return how much heal was left
@@ -151,7 +151,7 @@
 
 		return 1
 
-/** WOUND DEFINITIONS **/
+/* WOUND DEFINITIONS **/
 
 //Note that the MINIMUM damage before a wound can be applied should correspond to
 //the damage amount for the stage with the same name as the wound.
@@ -189,7 +189,7 @@
 					return /datum/wound/burn/moderate
 	return null //no wound
 
-/** CUTS **/
+/* CUTS **/
 /datum/wound/cut/small
 	// link wound descriptions to amounts of damage
 	stages = list("ugly ripped cut" = 20, "ripped cut" = 10, "cut" = 5, "healing cut" = 2, "small scab" = 0)
@@ -215,14 +215,14 @@ datum/wound/cut/massive
 	stages = list("massive wound" = 70, "massive healing wound" = 50, "massive angry scar" = 10,  "massive jagged scar" = 0)
 	damage_type = CUT
 
-/** BRUISES **/
+/* BRUISES **/
 /datum/wound/bruise
 	stages = list("monumental bruise" = 80, "huge bruise" = 50, "large bruise" = 30,\
 				  "moderate bruise" = 20, "small bruise" = 10, "tiny bruise" = 5)
 	autoheal_cutoff = 30
 	damage_type = BRUISE
 
-/** BURNS **/
+/* BURNS **/
 /datum/wound/burn/moderate
 	stages = list("ripped burn" = 10, "moderate burn" = 5, "healing moderate burn" = 2, "fresh skin" = 0)
 	damage_type = BURN
@@ -243,12 +243,12 @@ datum/wound/cut/massive
 	stages = list("carbonised area" = 50, "healing carbonised area" = 20, "massive burn scar" = 0)
 	damage_type = BURN
 
-/** INTERNAL BLEEDING **/
+/* INTERNAL BLEEDING **/
 /datum/wound/internal_bleeding
 	internal = 1
 	stages = list("bruised artery" = 0)
 
-/** EXTERNAL ORGAN LOSS **/
+/* EXTERNAL ORGAN LOSS **/
 /datum/wound/lost_limb
     damage_type = CUT
     stages = list("ripped stump" = 65, "bloody stump" = 50, "clotted stump" = 25, "scarred stump" = 0)

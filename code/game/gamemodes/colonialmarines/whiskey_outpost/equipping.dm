@@ -1,6 +1,6 @@
-/*************************************
-----------------COMMANDER--------------
-*************************************/
+//*************************************
+//----------------COMMANDER--------------
+//*************************************/
 
 /datum/job/command/commander/whiskey
 	title = JOB_WO_CO
@@ -21,9 +21,9 @@ Stay alive, and Godspeed, commander!"}
 		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) marine_announcement("All forces, Ground Commander [H.real_name] is in command!")
 
 
-/*************************************
-----------------SYNTHETIC-------------
-*************************************/
+//*************************************
+//----------------SYNTHETIC-------------
+//*************************************/
 
 /datum/job/civilian/synthetic/whiskey
 	title = JOB_WO_SYNTH
@@ -36,9 +36,9 @@ Assist the humans in sending a signal to the remaining Dust Raiders on board the
 Destruction in inevitable. At the very least, you can assist in preventing others from sharing the same fate."}
 
 
-/*************************************
----------EXECUITIVE OFFICER-----------
-*************************************/
+//*************************************
+//---------EXECUITIVE OFFICER-----------
+//*************************************/
 /datum/job/command/executive/whiskey
 	title = JOB_WO_XO
 	gear_preset = "WO Lieutenant Commander"
@@ -49,9 +49,9 @@ Assist the commander in ensuring that Whiskey Outpost stands long enough for a d
 Make the USCM proud!"}
 
 
-/*************************************
-----------------CMP-------------
-*************************************/
+//*************************************
+//----------------CMP-------------
+//*************************************/
 
 //Chief MP
 /datum/job/command/warrant/whiskey
@@ -66,9 +66,9 @@ You must lead his Honor guard, his elite unit of marines, to protect the command
 "}
 
 
-/*************************************
--------------STAFF OFFICER------------
-*************************************/
+//*************************************
+//-------------STAFF OFFICER------------
+//*************************************/
 /datum/job/command/bridge/whiskey
 	title = JOB_WO_SO
 	gear_preset = "WO Veteran Honor Guard"
@@ -80,9 +80,9 @@ You're expected to defend not only the commander, but the bunker at large; leave
 Glory to the commander. Glory to the USCM."}
 
 
-/*************************************
-----------------CREWMAN---------------
-*************************************/
+//*************************************
+//----------------CREWMAN---------------
+//*************************************/
 /datum/job/command/tank_crew/whiskey
 	title = JOB_WO_CREWMAN
 	gear_preset = "WO Honor Guard Specialist"
@@ -94,9 +94,9 @@ You've been through much, and as such, have been given special-weapons training.
 Glory to the commander. Glory to the USCM."}
 
 
-/*************************************
-------------MILITARY POLICE----------
-*************************************/
+//*************************************
+//------------MILITARY POLICE----------
+//*************************************/
 /datum/job/command/police/whiskey
 	title = JOB_WO_POLICE
 	gear_preset = "WO Honor Guard"
@@ -107,9 +107,9 @@ You're expected to defend not only the commander, but the bunker at large; leave
 Glory to the commander. Glory to the USCM."}
 
 
-/*************************************
-----------------PILOT----------------
-*************************************/
+//*************************************
+//----------------PILOT----------------
+//*************************************/
 /datum/job/command/pilot/whiskey
 	title = JOB_WO_PILOT
 	gear_preset = "WO Mortar Crew"
@@ -119,9 +119,9 @@ Glory to the commander. Glory to the USCM."}
 Listen in on your radio, and pay attention to provide fire support for the marines. Watch out for friendly-fire!"}
 
 
-/*************************************
----------REQUISITIONS OFFICER--------
-*************************************/
+//*************************************
+//---------REQUISITIONS OFFICER--------
+//*************************************/
 /datum/job/logistics/requisition/whiskey
 	title = JOB_WO_CHIEF_REQUISITION
 	gear_preset = "WO Quartermaster"
@@ -132,9 +132,9 @@ Ensure that supplies are rationed out, and not wasted. Other outposts will send 
 You can order bunker crew to assist you, in place of proper cargo technicians."}
 
 
-/*************************************
---------CHIEF MEDICAL OFFICER--------
-*************************************/
+//*************************************
+//--------CHIEF MEDICAL OFFICER--------
+//*************************************/
 /datum/job/civilian/professor/whiskey
 	title = JOB_WO_CMO
 	gear_preset = "WO Head Surgeon"
@@ -144,9 +144,9 @@ You can order bunker crew to assist you, in place of proper cargo technicians."}
 Treat the wounded, guide triage, and survive for as long as possible."}
 
 
-/*************************************
-----------------DOCTOR---------------
-*************************************/
+//*************************************
+//----------------DOCTOR---------------
+//*************************************/
 /datum/job/civilian/doctor/whiskey
 	title = JOB_WO_DOCTOR
 	gear_preset = "WO Field Doctor"
@@ -156,9 +156,9 @@ Treat the wounded, guide triage, and survive for as long as possible."}
 Treat the wounded, perform triage, and survive for as long as possible."}
 
 
-/*************************************
----------------RESEARCHER-------------
-*************************************/
+//*************************************
+//---------------RESEARCHER-------------
+//*************************************/
 /datum/job/civilian/researcher/whiskey
 	title = JOB_WO_RESEARCHER
 	gear_preset = "WO Chemist"
@@ -168,9 +168,9 @@ Treat the wounded, perform triage, and survive for as long as possible."}
 Hey, at least now, you can try out all those chems that are outlawed - not like there's anyone to enforce the law, here, anyways."}
 
 
-/*************************************
-------------CHIEF ENGINEER-----------
-*************************************/
+//*************************************
+//------------CHIEF ENGINEER-----------
+//*************************************/
 /datum/job/logistics/engineering/whiskey
 	title = JOB_WO_CHIEF_ENGINEER
 	gear_preset = "WO Bunker Crew Master"
@@ -180,9 +180,9 @@ Hey, at least now, you can try out all those chems that are outlawed - not like 
 Ensure power is up, and the bunker is well defended. You share your bunker crew with the Quartermaster."}
 
 
-/*************************************
----------------MAINT TECH-------------
-*************************************/
+//*************************************
+//---------------MAINT TECH-------------
+//*************************************/
 /datum/job/logistics/tech/maint/whiskey
 	title = JOB_WO_ORDNANCE_TECH
 	supervisors = "the bunker crew master and the quartermaster"
@@ -193,9 +193,9 @@ Ensure power is up, and the bunker is well defended. You share your bunker crew 
 Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 
 
-/*************************************
---------------CARGO TECH-------------
-*************************************/
+//*************************************
+//--------------CARGO TECH-------------
+//*************************************/
 /datum/job/logistics/tech/cargo/whiskey
 	title = JOB_WO_REQUISITION
 	supervisors = "the bunker crew master and the quartermaster"
@@ -209,9 +209,9 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 
 
 //Giving the liaison a role on whiskey outpost! Nothing can go wrong here. N o t h i n g.
-/*************************************
------------------LIAISON---------------
-*************************************/
+//*************************************
+//-----------------LIAISON---------------
+//*************************************/
 /datum/job/civilian/liaison/whiskey
 	title = JOB_WO_CORPORATE_LIAISON
 	supervisors = "the press"

@@ -1,6 +1,6 @@
-/****************************************************
+/*
 				BLOOD SYSTEM
-****************************************************/
+*/
 
 /mob/living/proc/handle_blood()
 	return
@@ -92,9 +92,9 @@
 	blood_volume = BLOOD_VOLUME_NORMAL
 
 
-/****************************************************
+/*
 				BLOOD TRANSFERS
-****************************************************/
+*/
 //Transfers blood from container to mob
 /mob/living/carbon/proc/inject_blood(obj/item/reagent_container/container, amount)
 	var/b_id = get_blood_id()

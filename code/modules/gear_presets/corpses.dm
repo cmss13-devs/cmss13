@@ -46,7 +46,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/realpirate
 	name = "Corpse - Pirate"
@@ -67,7 +67,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(H), WEAR_HEAD)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/realpirate/ranged
 	name = "Corpse - Pirate Gunner"
@@ -77,7 +77,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/pirate(H), WEAR_HEAD)
 	. = ..()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/russian
 	name = "Corpse - Russian"
@@ -101,7 +101,7 @@
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
                                  ///////////Civilians//////////////////////
 
 /datum/equipment_preset/corpse/prisoner
@@ -112,7 +112,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/color/orange(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/orange(H), WEAR_FEET)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/chef
 	name = "Corpse - Chef"
@@ -126,7 +126,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/chefhat(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), WEAR_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/doctor
 	name = "Corpse - Doctor"
@@ -142,7 +142,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/engineer
 	name = "Corpse - Engineer"
@@ -158,7 +158,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat(H), WEAR_HEAD)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/clown
 	name = "Corpse - Clown"
@@ -181,7 +181,7 @@
 	H.equip_to_slot_or_del(new /obj/item/toy/bikehorn(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(H), WEAR_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/scientist
 	name = "Corpse - Scientist"
@@ -195,7 +195,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/miner
 	name = "Corpse - Shaft Miner"
@@ -209,7 +209,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/industrial(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security
 	name = "Corpse - Security"
@@ -222,7 +222,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security/marshal
 	name = "Corpse - Marshal"
@@ -244,7 +244,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB(H), WEAR_JACKET)
 	. = ..()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/security/lawyer
 	name = "Corpse - Lawyer"
@@ -267,7 +267,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
 	. = ..()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/prison_security
 	name = "Corpse - Prison Guard"
@@ -288,7 +288,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), WEAR_HEAD)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
                                 /////////////////Officers//////////////////////
 
 /datum/equipment_preset/corpse/bridgeofficer
@@ -311,7 +311,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/corpse/bridgeofficer/johnson
 	name = "Corpse - Mr. Johnson Telovin"
 	idtype = /obj/item/card/id/admiral
@@ -341,7 +341,7 @@
 /datum/equipment_preset/corpse/bridgeofficer/johnson/load_name(mob/living/carbon/human/H, var/randomise)
 	H.change_real_name(H, "Johnson Telovin")
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/commander
 	name = "Corpse - Commanding Officer"
@@ -367,7 +367,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/swat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/tool/lighter/zippo(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/corpse/PMC
 	name = "Corpse - Private Security Officer"
@@ -422,4 +422,3 @@
 	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/colonist/doctor
-	

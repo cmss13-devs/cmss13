@@ -1,5 +1,5 @@
 
-/*********************MANUALS (BOOKS)***********************/
+//*********************MANUALS (BOOKS)***********************/
 
 //Oh god what the fuck I am not good at computer
 /obj/item/book/manual
@@ -1300,10 +1300,10 @@
 
 /obj/item/book/manual/orbital_cannon_manual/New()
 	. = ..()
-	
+
 	LAZYADD(objects_of_interest, src)
 
 /obj/item/book/manual/orbital_cannon_manual/Destroy()
 	. = ..()
-	
+
 	LAZYREMOVE(objects_of_interest, src)

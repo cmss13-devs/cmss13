@@ -22,7 +22,7 @@
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
@@ -93,7 +93,7 @@
 			return paygrade
 	return paygrade
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/uscm_ship/liaison/nightmare
 	name = "Nightmare USCM Corporate Liaison"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -101,7 +101,7 @@
 
 	access = list(ACCESS_WY_PMC_GREEN, ACCESS_WY_PMC_ORANGE, ACCESS_WY_PMC_RED, ACCESS_WY_PMC_BLACK, ACCESS_WY_PMC_WHITE, ACCESS_WY_CORPORATE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/chief_engineer
 	name = "USCM Chief Engineer (CE)"
@@ -140,7 +140,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/electronics(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/maint
 	name = "USCM Maintenance Technician (MT)"
@@ -175,7 +175,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/demo_scanner(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/bag/trash(H), WEAR_L_HAND)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/ordn
 	name = "USCM Ordnance Technician (OT)"
@@ -210,7 +210,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/demo_scanner(H), WEAR_L_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/ro
 	name = "USCM Requisitions Officer (RO)"
@@ -254,7 +254,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/cargo
 	name = "USCM Cargo Technician (CT)"
@@ -283,7 +283,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/commander
 	name = "USCM Captain (CO)"
@@ -331,7 +331,7 @@
 
 	H.hud_set_squad()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/commander/commodore
 	name = "USCM Commodore (CO+)"
@@ -354,7 +354,7 @@
 	name = "USCM Commodore (CO++)"
 	idtype = /obj/item/card/id/admiral
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/xo
 	name = "USCM Executive Officer (XO)"
@@ -390,7 +390,7 @@
 
 	H.hud_set_squad()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/so
 	name = "USCM Staff Officer (SO)"
@@ -421,7 +421,7 @@
 
 	H.hud_set_squad()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/sea
 	name = "USCM Senior Enlisted Advisor (SEA)"
@@ -464,7 +464,7 @@
 			return "E9"
 	return paygrade
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/po
 	name = "USCM Pilot Officer (PO) (Cryo)"
@@ -487,7 +487,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/po/full
 	name = "USCM Pilot Officer (PO)"
@@ -513,7 +513,7 @@
 
 	H.hud_set_squad()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/officer
 	name = "USCM Officer (USCM Command)"
@@ -554,7 +554,7 @@
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 	H.equip_if_possible(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/admiral
 	name = "USCM Admiral (USCM Command)"
@@ -604,7 +604,7 @@
 
 	H.hud_set_squad()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/upp_spy
 	name = "UPP Spy"
@@ -641,7 +641,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/chef
 	name = "USCM Mess Sergeant (MS)"

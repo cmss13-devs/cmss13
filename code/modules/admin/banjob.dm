@@ -102,11 +102,11 @@ var/jobban_keylist[0]		//to store the keys & ranks
 	var/body
 	var/jobs = ""
 
-/***********************************WARNING!************************************
+/* WARNING!
 					The jobban stuff looks mangled and disgusting
 							But it looks beautiful in-game
 									-Nodrak
-************************************WARNING!***********************************/
+WARNING!*/
 //Regular jobs
 //Command (Blue)
 	jobs += generate_job_ban_list(M, P, ROLES_CIC, "CIC", "ddddff")

@@ -3,7 +3,7 @@
 	faction = FACTION_MARINE
 	minimum_age = 27
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/mp
 	name = "USCM Military Police (MP)"
@@ -52,7 +52,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/warden
 	name = "USCM Military Warden (MW)"
@@ -104,7 +104,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/cmp
 	name = "USCM Chief MP (CMP)"
@@ -156,7 +156,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp
 	name = "USCM Riot MP (RMP)"
@@ -203,7 +203,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/with_beanbags(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/riot_cmp
 	name = "USCM Riot Chief MP (RCMP)"

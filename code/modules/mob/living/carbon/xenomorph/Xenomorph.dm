@@ -668,6 +668,7 @@
 		generate_name()
 	if(istype(src, /mob/living/carbon/Xenomorph/Queen))
 		update_living_queens()
+
 	recalculate_everything()
 
 	// Update the hive status UI

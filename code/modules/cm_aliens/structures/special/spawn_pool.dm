@@ -157,6 +157,7 @@
 
 		linked_hive.stored_larva--
 		linked_hive.hive_ui.update_pooled_larva()
+
 		return TRUE
 	return FALSE
 

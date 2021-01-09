@@ -123,7 +123,7 @@
 
 /client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in GLOB.human_mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
 	if (!no_logs)
-		dresscode = input("Select dress for [M]", "Robust quick dress shop") as null|anything in gear_presets_list
+		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", gear_presets_list)
 
 	if(isnull(dresscode))
 		return

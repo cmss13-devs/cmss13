@@ -354,7 +354,6 @@ Additional game mode variables.
 	for(var/datum/hive_status/hive in picked_queens)
 		INVOKE_ASYNC(src, .proc/pick_queen_spawn, picked_queens[hive], hive.hivenumber)
 
-
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
 	if(jobban_isbanned(xeno_candidate, "Alien")) // User is jobbanned
 		to_chat(xeno_candidate, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
@@ -505,38 +504,31 @@ Additional game mode variables.
 		return
 
 	// Make the list pretty
-	var/spawn_list_names = list()
+	var/list/spawn_list_names = list()
+	var/list/spawn_list_map = list()
 	for(var/T in GLOB.queen_spawns)
-		spawn_list_names += get_area(T)
+		var/area/A = get_area(T)
+		spawn_list_names += A.name
+		spawn_list_map[A.name] = T
 
-	// Timed input, answer before the time us up
-	// H'yup, that's how you do it, ugly as fuck
-	var/list/spawn_name = list("temp")
-	var/datum/temp = new()
-	var/expiration = world.time + MINUTES_2
-	spawn()
-		src = temp
-		spawn_name[1] = input(original, "Where do you want to spawn?") as null|anything in spawn_list_names
-	while(spawn_name[1] == "temp")
-		if(world.time > expiration)
-			del(temp)
-			break
-		else
-			sleep(SECONDS_2)
+	var/spawn_name = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_names, QUEEN_SPAWN_TIMEOUT)
 
 	var/turf/QS
-	for(var/T in GLOB.queen_spawns)
-		if(get_area(T) == spawn_name[1])
-			QS = get_turf(T)
+	if(spawn_name)
+		. = spawn_list_map[spawn_name]
+		QS = get_turf(.)
 
 	// Pick a random one if nothing was picked
 	if(isnull(QS))
-		QS = get_turf(pick(GLOB.queen_spawns))
+		. = pick(GLOB.queen_spawns)
+		QS = get_turf(.)
 		// Support maps without queen spawns
 		if(isnull(QS))
 			QS = get_turf(pick(GLOB.xeno_spawns))
 
-	QDEL_LIST(GLOB.queen_spawns)
+	for(var/obj/effect/landmark/structure_spawner/xenos/X in get_area(QS))
+		new X.path_to_spawn(X.loc)
+		qdel(X)
 
 	transform_queen(ghost_mind, QS, hivenumber)
 

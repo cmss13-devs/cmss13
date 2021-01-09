@@ -364,7 +364,6 @@ Additional game mode variables.
 /datum/game_mode/proc/attempt_to_join_as_xeno(mob/xeno_candidate, instant_join = 0)
 	var/list/available_xenos = list()
 	var/list/available_xenos_non_ssd = list()
-	var/list/obj/effect/alien/resin/special/pool/hives = list()
 
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
@@ -373,15 +372,16 @@ Additional game mode variables.
 			if(X.away_timer >= XENO_LEAVE_TIMER || (isXenoLarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA) ) available_xenos_non_ssd += X
 			available_xenos += X
 
-	var/pooled_larva = "pooled larva"
-
 	for(var/datum/hive_status/hive in GLOB.hive_datum)
 		var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
 		if(!isnull(SP) && SP.can_spawn_larva())
-			hives += hive
-
-	if(length(hives))
-		available_xenos += pooled_larva
+			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))
+				available_xenos |= "pooled larva"
+				LAZYADD(available_xenos["pooled larva"], hive)
+			else
+				var/larva_option = "pooled larva ([hive])"
+				available_xenos += larva_option
+				available_xenos[larva_option] = list(hive)
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or pooled larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
@@ -391,11 +391,10 @@ Additional game mode variables.
 	if(!instant_join)
 		var/userInput = input("Available Xenomorphs") as null|anything in available_xenos
 
-		// isnull() is checked here, in case the spawn pool gets destroyed while the menu is open.
-		if(userInput == pooled_larva)
-			var/datum/hive_status/H = pick(hives)
+		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
+			var/datum/hive_status/H = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
 			var/obj/effect/alien/resin/special/pool/SP = H.spawn_pool
-			if(!isnull(SP) && SP.can_spawn_larva())
+			if(!isnull(SP) && SP.can_spawn_larva()) //isnull() is checked here, in case the spawn pool gets destroyed while the menu is open.
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/N = xeno_candidate
 					N.close_spawn_windows()

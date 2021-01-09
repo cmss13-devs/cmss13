@@ -6,7 +6,7 @@
     required_players = 4 //Need at least 4 players
     xeno_required_num = 4 //Need at least four xenos.
     monkey_amount = 0.2 // Amount of monkeys per player
-    flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX
+    flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE
 
     var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/computer/shuttle_control)
     var/list/hives = list()

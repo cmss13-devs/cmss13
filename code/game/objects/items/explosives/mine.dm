@@ -146,9 +146,10 @@
 	..()
 	if(isliving(A))
 		var/mob/living/L = A
-		if(!L.lying)//so dragged corpses don't trigger mines.
+		if(!L.stat == DEAD)//so dragged corpses don't trigger mines.
+			return
+		else
 			try_to_prime(A)
-
 
 /obj/item/explosive/mine/Collided(atom/movable/AM)
 	try_to_prime(AM)
@@ -159,9 +160,10 @@
 		return
 	if(!isliving(H))
 		return
+	if(H.stat == DEAD)
+		return
 	if((istype(H) && H.get_target_lock(iff_signal)) || isrobot(H))
 		return
-
 	H.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [H] moves in front of it."), \
 	SPAN_DANGER("[icon2html(src, H)] The [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
@@ -169,6 +171,7 @@
 	triggered = TRUE
 	playsound(loc, 'sound/weapons/mine_tripped.ogg', 25, 1)
 	prime()
+
 
 
 //Note : May not be actual explosion depending on linked method

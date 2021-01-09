@@ -16,34 +16,27 @@
 GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 
 /obj/structure/machinery/telecomms
+	unslashable = TRUE
+	unacidable = TRUE
+
+	var/id = "NULL" // identification string
+	var/network = "NULL" // the network of the machinery
+
 	var/list/links = list() // list of machines this machine is linked to
 	var/traffic = 0 // value increases as traffic increases
 	var/netspeed = 5 // how much traffic to lose per tick (50 gigabytes/second * netspeed)
 	var/list/autolinkers = list() // list of text/number values to link with
-	var/id = "NULL" // identification string
-	var/network = "NULL" // the network of the machinery
-
 	var/list/freq_listening = list() // list of frequencies to tune into: if none, will listen to all
-
 	var/machinetype = 0 // just a hacky way of preventing alike machines from pairing
-	var/toggled = 1 	// Is it toggled on
-	var/on = 1
-	var/integrity = 100 // basically HP, loses integrity by heat
 	var/delay = 10 // how many process() ticks to delay per heat
 	var/long_range_link = 0	// Can you link it across Z levels or on the otherside of the map? (Relay & Hub)
 	var/circuitboard = null // string pointing to a circuitboard type
-	var/hide = 0				// Is it a hidden machine?
 	var/listening_level = 0	// 0 = auto set in New() - this is the z level that the machine is listening to.
-	unslashable = TRUE
-	unacidable = TRUE
-	var/tcomms_machine = FALSE //Set to true if the machine is enabling tcomms
 
-/obj/structure/machinery/telecomms/proc/add_tcomm_machine()
-	if(tcomms_machine && on)
-		SSradio.add_tcomm_machine(src)
-
-/obj/structure/machinery/telecomms/proc/remove_tcomm_machine()
-	SSradio.remove_tcomm_machine(src)
+	var/tcomms_machine = FALSE 			// Set to true if the machine is enabling tcomms
+	var/toggled = TRUE 					// Is it toggled on
+	var/on = TRUE						// Is it actually on
+	var/hide = FALSE					// Is it a hidden machine?
 
 //Never allow tecommunications machinery being blown up
 /obj/structure/machinery/telecomms/ex_act(severity)
@@ -52,11 +45,11 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 /obj/structure/machinery/telecomms/Initialize(mapload, ...)
 	. = ..()
 	GLOB.telecomms_list += src
-	add_tcomm_machine()
+	tcomms_startup()
 
 /obj/structure/machinery/telecomms/Destroy()
 	GLOB.telecomms_list -= src
-	remove_tcomm_machine()
+	tcomms_shutdown()
 	return ..()
 
 /obj/structure/machinery/telecomms/update_icon()
@@ -66,21 +59,35 @@ GLOBAL_LIST_EMPTY_TYPED(telecomms_list, /obj/structure/machinery/telecomms)
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/structure/machinery/telecomms/power_change(var/area/master_area = null)
-	..()
-	update_power()
+	. = ..()
+	update_state()
 
-/obj/structure/machinery/telecomms/proc/update_power()
-	if(toggled)
-		if(inoperable(EMPED) || integrity <= 0) // if powered, on. if not powered, off. if too damaged, off
-			on = 0
-			remove_tcomm_machine()
-		else
-			on = 1
-			add_tcomm_machine()
-	else
-		on = 0
-		remove_tcomm_machine()
+// When effectively started up
+/obj/structure/machinery/telecomms/proc/tcomms_startup()
+	on = TRUE
+	if(tcomms_machine)
+		SSradio.add_tcomm_machine(src)
 
+// When effectively shut down
+/obj/structure/machinery/telecomms/proc/tcomms_shutdown()
+	on = FALSE
+	if(tcomms_machine)
+		SSradio.remove_tcomm_machine(src)
+
+// In any case that might warrant reevaluating working state
+/obj/structure/machinery/telecomms/proc/update_state()
+	if(!toggled || inoperable(EMPED) || health <= 0)
+		if(on)
+			tcomms_shutdown()
+	else if(!on)
+		tcomms_startup()
+	update_icon()
+	return on
+
+// When an operator attempts to flip the switch
+/obj/structure/machinery/telecomms/proc/toggle_state(mob/user)
+	toggled = !toggled
+	update_state()
 
 /obj/structure/machinery/telecomms/emp_act(severity)
 	if(prob(100/severity))

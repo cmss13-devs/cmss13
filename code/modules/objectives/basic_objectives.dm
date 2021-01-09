@@ -55,6 +55,7 @@
 	objective_flags = OBJ_DO_NOT_TREE | OBJ_CAN_BE_UNCOMPLETED
 	display_flags = OBJ_DISPLAY_AT_END
 	priority = OBJECTIVE_ABSOLUTE_VALUE
+	var/last_contact_time = NONE // Time of last loss of comms to notify of
 
 /datum/cm_objective/communications/get_completion_status()
 	if(is_complete())
@@ -64,14 +65,30 @@
 /datum/cm_objective/communications/check_completion()
 	. = ..()
 	for(var/obj/structure/machinery/telecomms/relay/T in machines)
-		if(!is_ground_level(T.loc.z))
-			continue
-		if(!T.powered())
-			continue
-		complete()
-		return TRUE
+		if(is_ground_level(T.loc.z) && T.operable() && T.on)
+			complete()
+			return TRUE
 	uncomplete()
 	return FALSE
+
+/datum/cm_objective/communications/complete()
+	. = ..()
+	if(. && !last_contact_time)
+		last_contact_time = world.time
+		ai_silent_announcement("SYSTEMS REPORT: Colony communications link online.", ":v")
+
+/datum/cm_objective/communications/uncomplete()
+	if(complete)
+		last_contact_time = world.time
+		addtimer(CALLBACK(src, .proc/blackout_warning, last_contact_time), 45 SECONDS + rand(0, 45 SECONDS))
+	. = ..()
+
+/datum/cm_objective/communications/proc/blackout_warning(blackout_start)
+	if(!complete && !check_completion() && blackout_start == last_contact_time)
+		var/timediff = world.time - blackout_start
+		var/timeformat = "[round(timediff / (1 SECONDS))].[round(timediff % (1 SECONDS))]"
+		ai_silent_announcement("SYSTEMS WARNING: Colony communications link unresponsive for [timeformat] seconds.", ":v")
+		last_contact_time = NONE
 
 /datum/cm_objective/establish_power/get_point_value()
 	return complete * priority

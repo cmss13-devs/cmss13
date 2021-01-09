@@ -51,7 +51,7 @@
 
 /obj/item/storage/lockbox/loyalty
 	name = "\improper lockbox of W-Y implants"
-	req_access = list(ACCESS_MARINE_BRIG)
+	req_access = list(ACCESS_WY_CORPORATE)
 
 /obj/item/storage/lockbox/loyalty/fill_preset_inventory()
 	new /obj/item/implantcase/loyalty(src)

@@ -18,7 +18,7 @@
 
 	matter = list("metal" = 50,"glass" = 20)
 
-	
+
 	var/obj/structure/machinery/telecomms/buffer // simple machine buffer for device linkage
 
 /obj/item/device/debugger/is_used_on(obj/O, mob/user)

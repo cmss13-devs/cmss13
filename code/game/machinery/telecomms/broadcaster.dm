@@ -22,7 +22,7 @@
 	tcomms_machine = TRUE
 
 
-/**
+/*
 
 	Here is the big, bad function that broadcasts a message given the appropriate
 	parameters.
@@ -77,7 +77,7 @@
 	@param freq
 		The frequency of the signal
 
-**/
+*/
 
 /proc/Broadcast_Message(var/datum/radio_frequency/connection, var/mob/M,
 						var/vmask, var/vmessage, var/obj/item/device/radio/radio,

@@ -31,7 +31,7 @@
 	H.b_eyes = 19
 	idtype = /obj/item/card/id/dogtag
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/soldier
 	name = "UPP Soldier"
@@ -67,7 +67,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71, /obj/item/ammo_magazine/rifle/type71, H, 0, 12)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/soldier/cryo
 	name = "UPP Cryo Soldier"
@@ -75,7 +75,7 @@
 /datum/equipment_preset/upp/soldier/cryo/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/survivor
 	name = "UPP Survivor"
@@ -98,7 +98,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/synth
 	name = "UPP Combat Synthetic"
@@ -154,7 +154,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/upp, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/engineer
 	name = "UPP Engineer"
@@ -186,7 +186,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 6)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/engineer/cryo
 	name = "UPP Cryo Engineer"
@@ -194,7 +194,7 @@
 /datum/equipment_preset/upp/engineer/cryo/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/upp/medic
 	name = "UPP Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -229,14 +229,14 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 6)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/upp/medic/cryo
 	name = "UPP Cryo Medic"
 
 /datum/equipment_preset/upp/medic/cryo/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/specialist
 	name = "UPP Specialist"
@@ -266,7 +266,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/minigun/upp, /obj/item/ammo_magazine/minigun, H, 0, 5)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/specialist/cryo
 	name = "UPP Cryo Specialist"
@@ -274,7 +274,7 @@
 /datum/equipment_preset/upp/specialist/cryo/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/leader
 	name = "UPP Leader"
@@ -307,7 +307,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/flamer, /obj/item/ammo_magazine/rifle/type71, H, 0, 8)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/leader/cryo
 	name = "UPP Cryo Leader"
@@ -315,7 +315,7 @@
 /datum/equipment_preset/upp/leader/cryo/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando
 	name = "UPP Commando"
@@ -355,7 +355,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71/ap, H, 0, 8)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/medic
 	name = "UPP Commando Medic"
@@ -397,7 +397,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71/ap, H, 0, 5)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/leader
 	name = "UPP Commando Leader"
@@ -438,7 +438,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando, /obj/item/ammo_magazine/rifle/type71/ap, H, 0, 7)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/tank
 	name = "UPP Vehicle Crewman (TANK)"
@@ -472,7 +472,7 @@
 /datum/equipment_preset/upp/tank/load_status()
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/fleet_admiral
 	name = "UPP Fleet Admiral" //Renamed from Fleet Admiral

@@ -2,7 +2,7 @@
 
 
 
-/*****************************Shovels********************************/
+//*****************************Shovels********************************/
 
 /obj/item/tool/shovel
 	name = "shovel"
@@ -16,7 +16,7 @@
 	throwforce = 4
 	w_class = SIZE_MEDIUM
 	matter = list("metal" = 50)
-	
+
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
 	var/dirt_overlay = "shovel_overlay"
 	var/folded = FALSE
@@ -65,7 +65,7 @@
 
 
 /obj/item/tool/shovel/afterattack(atom/target, mob/user, proximity)
-	if(!proximity || folded || !isturf(target)) 
+	if(!proximity || folded || !isturf(target))
 		return
 
 	if(user.action_busy)
@@ -163,7 +163,7 @@
 	force = 30
 	throwforce = 2
 	w_class = SIZE_LARGE
-	
+
 	dirt_overlay = "etool_overlay"
 	dirt_amt_per_dig = 5
 	shovelspeed = 50

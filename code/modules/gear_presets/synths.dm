@@ -29,7 +29,7 @@
 
 	H.allow_gun_usage = FALSE
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm
 	name = "USCM Synthetic"
@@ -53,7 +53,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/councillor
 	name = "USCM Synthetic Councillor"
@@ -77,7 +77,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/synth/uscm/wo
 	name = "WO Support Synthetic"
@@ -97,7 +97,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/synth/combat_smartgunner
 	name = "USCM Combat Synth (Smartgunner)"
@@ -135,7 +135,7 @@
 
 	H.allow_gun_usage = TRUE
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor
 	name = "Survivor - Synthetic"
@@ -168,7 +168,7 @@
 
 	add_random_survivor_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor/working_joe
 	name = "Working Joe"
@@ -210,7 +210,7 @@
 			final_name = "Working [H.real_name]"
 	H.change_real_name(H, final_name)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/synth/survivor/midwife
 	name = "Fun - Xeno Cultist Midwife (Synthetic)"

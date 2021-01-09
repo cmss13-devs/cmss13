@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(co_secure_boxes)
 
-/**********************Marine Gear**************************/
+//**********************Marine Gear**************************/
 
 //MARINE COMMAND CLOSET
 /obj/structure/closet/secure_closet/commander
@@ -152,7 +152,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 		new /obj/item/clothing/mask/rebreather/scarf(src)
 
-/**********************Military Police Gear**************************/
+//**********************Military Police Gear**************************/
 /obj/structure/closet/secure_closet/military_police
 	name = "military police's locker"
 	req_access = list(ACCESS_MARINE_BRIG)
@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 /obj/structure/closet/secure_closet/medical_doctor/Initialize()
 	. = ..()
 	new /obj/item/storage/backpack/marine/satchel(src)
-	if(!is_ground_level(z)) 
+	if(!is_ground_level(z))
 		new /obj/item/device/radio/headset/almayer/doc(src)
 	new /obj/item/clothing/shoes/white(src)
 	new /obj/item/clothing/shoes/white(src)

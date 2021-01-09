@@ -6,7 +6,7 @@
  *		Photo Albums
  */
 
-/*******
+/*
 * film *
 *******/
 /obj/item/device/camera_film
@@ -18,7 +18,7 @@
 	w_class = SIZE_TINY
 
 
-/********
+/*
 * photo *
 ********/
 /obj/item/photo
@@ -75,7 +75,7 @@
 	return
 
 
-/**************
+/*
 * photo album *
 **************/
 /obj/item/storage/photo_album
@@ -109,7 +109,7 @@
 			return
 	return
 
-/*********
+/*
 * camera *
 *********/
 /obj/item/device/camera

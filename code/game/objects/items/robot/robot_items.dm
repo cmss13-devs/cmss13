@@ -1,8 +1,6 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
-
-/**********************************************************************
-						Cyborg Spec Items
-***********************************************************************/
+//**********************************************************************
+//						Cyborg Spec Items
+//***********************************************************************/
 //Might want to move this into several files later but for now it works here
 /obj/item/robot/stun
 	name = "electrified arm"
@@ -31,9 +29,9 @@
 	icon = 'icons/obj/structures/props/decals.dmi'
 	icon_state = "shock"
 
-/**********************************************************************
-						HUD/SIGHT things
-***********************************************************************/
+//**********************************************************************
+//						HUD/SIGHT things
+//***********************************************************************/
 /obj/item/robot/sight
 	icon = 'icons/obj/structures/props/decals.dmi'
 	icon_state = "securearea"

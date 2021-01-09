@@ -520,9 +520,9 @@
 	keyslot2 = new /obj/item/device/encryptionkey/med
 */
 
-/*************************************
------SELF SETTING MARINE HEADSET-----
-*************************************/
+//*************************************
+//-----SELF SETTING MARINE HEADSET-----
+//*************************************/
 //For events. Currently used for WO only. After equipping it, self_set() will adapt headset to marine.
 
 /obj/item/device/radio/headset/almayer/marine/self_setting/proc/self_set()

@@ -303,7 +303,7 @@ var/datum/sortInstance/sortInstance = new()
 		//ASSERT(lastOffset == offset)
 		return offset
 
-	/**
+	/*
 	 * Like gallopLeft, except that if the range contains an element equal to
 	 * key, gallopRight returns the index after the rightmost equal element.
 	 *

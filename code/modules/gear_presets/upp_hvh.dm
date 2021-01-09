@@ -1,5 +1,5 @@
 // UPP HvH Loadouts
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/upp/soldier/hvh
 	name = "UPP Soldier HvH"
 
@@ -26,7 +26,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/hvh, /obj/item/ammo_magazine/rifle/type71, H, 0, 12)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/soldier/cryo/hvh
 	name = "UPP Cryo Soldier HvH"
@@ -34,7 +34,7 @@
 /datum/equipment_preset/upp/soldier/cryo/hvh/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/survivor/hvh
 	name = "UPP Survivor HvH"
@@ -50,7 +50,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/synth/hvh
 	name = "UPP Combat Synthetic HvH"
@@ -98,7 +98,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/hvh, WEAR_J_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/engineer/hvh
 	name = "UPP Engineer HvH"
@@ -123,7 +123,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/hvh, /obj/item/ammo_magazine/rifle/type71, H, 0, 6)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/engineer/cryo/hvh
 	name = "UPP Cryo Engineer HvH"
@@ -131,7 +131,7 @@
 /datum/equipment_preset/upp/engineer/cryo/hvh/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/upp/medic/hvh
 	name = "UPP Medic HvH"
 
@@ -157,14 +157,14 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/hvh, /obj/item/ammo_magazine/rifle/type71, H, 0, 6)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/upp/medic/cryo/hvh
 	name = "UPP Cryo Medic HvH"
 
 /datum/equipment_preset/upp/medic/cryo/hvh/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/specialist/hvh
 	name = "UPP Specialist HvH"
@@ -185,7 +185,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/minigun/upp/hvh, /obj/item/ammo_magazine/minigun, H, 0, 5)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/specialist/cryo/hvh
 	name = "UPP Cryo Specialist HvH"
@@ -193,7 +193,7 @@
 /datum/equipment_preset/upp/specialist/cryo/hvh/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/leader/hvh
 	name = "UPP Leader HvH"
@@ -217,7 +217,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/flamer/hvh, /obj/item/ammo_magazine/rifle/type71, H, 0, 8)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/leader/cryo/hvh
 	name = "UPP Cryo Leader HvH"
@@ -225,7 +225,7 @@
 /datum/equipment_preset/upp/leader/cryo/hvh/load_gear(mob/living/carbon/human/H)
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/hvh
 	name = "UPP Commando HvH"
@@ -253,7 +253,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando/hvh, /obj/item/ammo_magazine/rifle/type71/ap, H, 0, 8)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/medic/hvh
 	name = "UPP Commando Medic HvH"
@@ -284,7 +284,7 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine/commando/hvh, /obj/item/ammo_magazine/rifle/type71/ap, H, 0, 5)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando/leader/hvh
 	name = "UPP Commando Leader HvH"

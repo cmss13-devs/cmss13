@@ -1064,11 +1064,7 @@
 
 		usr.client.cmd_admin_animalize(M)
 
-/***************** BEFORE**************
 
-
-
-*****************AFTER******************/
 
 // Now isn't that much better? IT IS NOW A PROC, i.e. kinda like a big panel like unstable
 	else if(href_list["playerpanelextended"])

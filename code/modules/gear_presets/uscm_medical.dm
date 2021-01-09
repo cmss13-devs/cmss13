@@ -53,7 +53,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_J_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 	name = "USCM Doctor"
@@ -100,7 +100,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/green(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_ship/uscm_medical/nurse
 	name = "USCM Nurse"
@@ -147,7 +147,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/orange(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 /datum/equipment_preset/uscm_ship/uscm_medical/researcher
 	name = "USCM Researcher"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
@@ -195,4 +195,4 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/vials(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H), WEAR_J_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/

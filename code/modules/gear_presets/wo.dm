@@ -9,7 +9,7 @@
 	H.nutrition = NUTRITION_NORMAL
 
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/commander
 	name = "WO Ground Commander"
@@ -60,7 +60,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword/ceremonial(H), WEAR_J_STORE)
 
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/xo
 	name = "WO Lieutenant Commander"
@@ -91,7 +91,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/RO(H), WEAR_JACKET)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/cmp
 	name = "WO Honor Guard Squad Leader"
@@ -119,7 +119,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/vhg
 	name = "WO Veteran Honor Guard" //SO
@@ -151,7 +151,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41aMK1(H), WEAR_J_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/hgs
 	name = "WO Honor Guard Specialist" //Tank crew
@@ -182,7 +182,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/spec_kit(H), WEAR_R_HAND)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/hg
 	name = "WO Honor Guard" //MP
@@ -214,7 +214,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat(H), WEAR_J_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/regular(H), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/mortar_crew
 	name = "WO Mortar Crew" //PO
@@ -244,7 +244,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_L_HAND)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/quartermaster
 	name = "WO Quartermaster"
@@ -272,7 +272,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/cargo
 	name = "WO Bunker Crew Logistics" //CT
@@ -304,7 +304,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/head_surgeron
 	name = "WO Head Surgeon" //CMO
@@ -340,7 +340,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H.back), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/doctor
 	name = "WO Field Doctor"
@@ -373,7 +373,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H.back), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/chemist
 	name = "WO Chemist"
@@ -406,7 +406,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/defibrillator(H.back), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/bcm
 	name = "WO Bunker Crew Master" //CE
@@ -438,7 +438,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/bc
 	name = "WO Bunker Crew" //OT
@@ -470,7 +470,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/reporter
 	name = "WO Combat Reporter" //CL
@@ -504,13 +504,13 @@
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/megaphone(H), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine
 	name = "WO Dust Raider" //Stub other Marine equipment stems from
 	flags = EQUIPMENT_PRESET_STUB
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/sl
 	name = "WO Dust Raider Squad Leader"
@@ -545,7 +545,7 @@
 
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/spec
 	name = "WO Dust Raider Squad Specialist"
@@ -580,7 +580,7 @@
 
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/sg
 	name = "WO Dust Raider Squad Smartgunner"
@@ -605,7 +605,7 @@
 
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/engineer
 	name = "WO Dust Raider Squad Engineer"
@@ -640,7 +640,7 @@
 	generate_random_marine_primary_for_wo(H)
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/medic
 	name = "WO Dust Raider Squad Medic"
@@ -674,7 +674,7 @@
 	generate_random_marine_primary_for_wo(H)
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/pfc
 	name = "WO Dust Raider Squad Marine (PFC)"

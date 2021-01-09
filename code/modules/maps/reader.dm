@@ -23,7 +23,7 @@ var/global/dmm_suite/preloader/_preloader = new
 	var/static/turfsSkipped
 	#endif
 
-/**
+/*
  * Construct the model map and control the loading process
  *
  * WORKING :
@@ -190,7 +190,7 @@ var/global/dmm_suite/preloader/_preloader = new
 		M.atoms_to_initialise = atoms_to_initialise
 		return M
 
-/**
+/*
  * Fill a given tile with its area/turf/objects/mobs
  * Variable model is one full map line (e.g /turf/unsimulated/wall{icon_state = "rock"}, /area/mine/explored)
  *

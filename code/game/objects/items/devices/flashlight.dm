@@ -295,7 +295,7 @@
 /obj/item/device/flashlight/slime/attack_self(mob/user)
 	return //Bio-luminescence does not toggle.
 
-/******************************Lantern*******************************/
+//******************************Lantern*******************************/
 
 /obj/item/device/flashlight/lantern
 	name = "lantern"

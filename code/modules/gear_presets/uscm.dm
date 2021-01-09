@@ -25,7 +25,7 @@
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
 	H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/pfc
 	name = "USCM (Cryo) Squad Marine (PFC)"
@@ -51,7 +51,7 @@
 			return "E1"
 	return paygrade
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle
 	name = "USCM PFC (Pulse Rifle)"
@@ -79,7 +79,7 @@
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle/load_status()
 	return //No cryo munchies
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/sg
 	name = "USCM (Cryo) Smartgunner"
@@ -99,7 +99,7 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/sg/full
 	name = "USCM Smartgunner"
@@ -119,7 +119,7 @@
 /datum/equipment_preset/uscm/sg/full/load_status()
 	return //No cryo munchies
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/tank
 	name = "USCM Vehicle Crewman (CRMN) (Cryo)"
@@ -154,7 +154,7 @@
 /datum/equipment_preset/uscm/tank/load_status()
 	return
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/tank/full
 	name = "USCM Vehicle Crewman (CRMN)"
@@ -179,7 +179,7 @@
 
 	H.hud_set_squad()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/intel
 	name = "USCM Intelligence Officer (IO) (Cryo)"
@@ -216,7 +216,7 @@
 /datum/equipment_preset/uscm/intel/load_status()
 	return //No cryo munchies
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/intel/full
 	name = "USCM Intelligence Officer (IO)"
@@ -244,7 +244,7 @@
 
 	H.hud_set_squad()
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/spec
 	name = "USCM (Cryo) Squad Specialist"
@@ -265,7 +265,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/specrag(H), WEAR_HEAD)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/spec/full_armor
 	name = "USCM Specialist (B18 Armor)"
@@ -290,7 +290,7 @@
 /datum/equipment_preset/uscm/spec/full_armor/load_status()
 	return //No cryo munchies
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/medic
 	name = "USCM (Cryo) Squad Medic"
@@ -312,7 +312,7 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/engineer
 	name = "USCM (Cryo) Squad Engineer"
@@ -334,7 +334,7 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/leader
 	name = "USCM (Cryo) Squad Leader"
@@ -357,7 +357,7 @@
 
 
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 // ERT members that spawn with full gear from DEFCON
 
 /datum/equipment_preset/uscm/private_equipped
@@ -396,7 +396,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/leader_equipped
 	name = "USCM Cryo Squad Leader (Equipped)"
@@ -428,7 +428,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/smartgunner_equipped
 	name = "USCM Cryo Smartgunner (Equipped)"
@@ -459,7 +459,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/engineer_equipped
 	name = "USCM Cryo Engineer (Equipped)"
@@ -498,7 +498,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/medic_equipped
 	name = "USCM Cryo Medic (Equipped)"
@@ -537,7 +537,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/specialist_equipped
 	name = "USCM Cryo Specialist (Equipped)"
@@ -571,5 +571,5 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 

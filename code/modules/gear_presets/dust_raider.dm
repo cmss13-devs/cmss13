@@ -15,7 +15,7 @@
 	H.name = H.real_name
 	H.age = rand(21,45)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/private
 	name = "Dust Raider Private"
@@ -37,7 +37,7 @@
 	generate_random_marine_primary_for_wo(H)
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/leader
 	name = "Dust Raider Squad Leader"
@@ -66,7 +66,7 @@
 	H.equip_to_slot_or_del(new /obj/item/map/whiskey_outpost_map(H), WEAR_IN_BACK)
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/smartgunner
 	name = "Dust Raider Smartgunner"
@@ -93,7 +93,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/engineer
 	name = "Dust Raider Engineer"
@@ -122,7 +122,7 @@
 	generate_random_marine_primary_for_wo(H)
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/medic
 	name = "Dust Raider Medic"
@@ -152,7 +152,7 @@
 	generate_random_marine_primary_for_wo(H)
 	add_common_wo_equipment(H)
 
-/*****************************************************************************************************/
+//*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/specialist
 	name = "Dust Raider Specialist"

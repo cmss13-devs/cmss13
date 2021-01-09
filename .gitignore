@@ -13,6 +13,7 @@ Thumbs.db
 data/
 cfg/
 tmp/
+dmdoc/
 tools/Runtime Condenser/Input.txt
 tools/Runtime Condenser/Output.txt
 sound/music/*.ogg

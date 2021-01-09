@@ -61,9 +61,11 @@
 #define CHEM_CLASS_ULTRA            6 //Randomly generated chemicals
 
 //chem effect flags, used to quickly check if the mob has a chem that provides a special effect
-#define CHEM_EFFECT_RESIST_FRACTURE		1
-#define CHEM_EFFECT_RESIST_NEURO		2
-#define CHEM_EFFECT_HYPER_THROTTLE		4 //universal understand but not speech
+#define CHEM_EFFECT_RESIST_FRACTURE		(1<<0)
+#define CHEM_EFFECT_RESIST_NEURO		(1<<1)
+#define CHEM_EFFECT_HYPER_THROTTLE		(1<<2) //universal understand but not speech
+#define CHEM_EFFECT_ORGAN_STASIS		(1<<3) //peri stabiliser
+
 
 //Blood plasma
 #define PLASMA_PURPLE 			"purpleplasma"
@@ -139,6 +141,7 @@
 #define PROPERTY_NEUROCRYOGENIC		"neurocryogenic"
 #define PROPERTY_ANTIPARASITIC		"anti-parasitic"
 #define PROPERTY_ELECTROGENETIC		"electrogenetic"
+#define PROPERTY_ORGANSTABILIZE		"organ-stabilizing"
 //Rare Combo, made by combining other properties
 #define PROPERTY_DEFIBRILLATING		"defibrillating"
 #define PROPERTY_THANATOMETABOL		"thanatometabolizing"

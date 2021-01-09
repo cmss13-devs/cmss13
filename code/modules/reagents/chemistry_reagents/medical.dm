@@ -259,7 +259,7 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = 0.05
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_UNKNOWN = 4) //handled by organ code
+	properties = list(PROPERTY_ORGANSTABILIZE = 4)
 
 /datum/reagent/medical/bicaridine // yes it cures IB, it's located in some other part of wound code for whatever reason
 	name = "Bicaridine"

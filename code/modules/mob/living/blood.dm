@@ -23,7 +23,7 @@
 			var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 			if(!heart)
 				b_volume = 0
-			else if(reagents.has_reagent("peridaxon"))
+			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 				b_volume *= 1
 			else if(heart.damage > 1 && heart.damage < heart.min_bruised_damage)
 				b_volume *= 0.8

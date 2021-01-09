@@ -135,6 +135,8 @@
 	hive.stored_larva++
 	if(!hive.spawn_pool || !hive.spawn_pool.spawn_pooled_larva(C.mob))
 		hive.stored_larva--
+	else
+		hive.hive_ui.update_pooled_larva()
 
 /mob/living/carbon/Xenomorph/Runner/can_ventcrawl()
 	var/datum/behavior_delegate/runner_acider/BD = behavior_delegate

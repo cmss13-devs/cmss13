@@ -262,8 +262,8 @@
 #define EXTREMELY_PAINFUL 3
 
 // Xeno hivemind HREFs
-#define XENO_OVERWATCH_TARGET_HREF "xeno_overwatch_href"
-#define XENO_OVERWATCH_SRC_HREF "xeno_overwatch_src_href"
+#define XENO_OVERWATCH_TARGET_HREF "target_ref"
+#define XENO_OVERWATCH_SRC_HREF "user_ref"
 
 // xeno abilities cooldown
 

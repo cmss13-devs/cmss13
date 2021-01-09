@@ -317,6 +317,7 @@ toggle, closed by default.
 - `title: string` - Text to display on the button for collapsing
 - `color: string` - Color of the button; see [Button](#button)
 - `buttons: any` - Buttons or other content to render inline with the button
+- `open: boolean` - Whether the contents are initially displayed
 
 ### `ColorBox`
 
@@ -880,6 +881,7 @@ A straight forward mapping to `<tr>` element.
 **Props:**
 
 - See inherited props: [Box](#box)
+- `header: boolean` - Whether the cells of the row are header cells.
 
 ### `Table.Cell`
 
@@ -890,6 +892,7 @@ A straight forward mapping to `<td>` element.
 - See inherited props: [Box](#box)
 - `collapsing: boolean` - Collapses table cell to the smallest possible size,
 and stops any text inside from wrapping.
+- `header: boolean` - Whether the cell is a header cell.
 
 ### `Tabs`
 

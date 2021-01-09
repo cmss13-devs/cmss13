@@ -669,6 +669,7 @@
 		world.save_mode(master_mode)
 		.(href, list("c_mode"=1))
 
+
 	else if(href_list["f_secret2"])
 		if(!check_rights(R_ADMIN|R_SERVER))	return
 

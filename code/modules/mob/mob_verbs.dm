@@ -166,9 +166,6 @@
 	return
 
 
-
-
-
 /mob/verb/observe()
 	set name = "Observe"
 	set category = "OOC"

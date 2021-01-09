@@ -1449,8 +1449,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
 
-/obj/item/clothing/suit/storage/CMB/New()
-	..()
+/obj/item/clothing/suit/storage/CMB/Initialize()
+	. = ..()
 	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
 	pockets.bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,

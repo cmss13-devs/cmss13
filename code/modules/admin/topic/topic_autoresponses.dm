@@ -13,7 +13,7 @@
 		to_chat(usr, "<b>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</b>")
 		return
 
-	var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: No plasma regen", "A: Devour as Xeno", "T: Tunnel", "J: Job bans", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "M: Macros", "C: Changelog", "G: Gitlab it", "H: Clear Cache")
+	var/choice = input("Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", "--CANCEL--") in list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: Self-Solving Bug", "A: Intended Feature", "A: No plasma regen", "A: Devour as Xeno", "T: Tunnel", "J: Job bans", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "M: Macros", "C: Changelog", "G: Gitlab it", "H: Clear Cache")
 	var/msgplayer
 	switch(choice)
 		if("IC Issue")
@@ -26,6 +26,10 @@
 			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>! Have a CM day!</b>")
 		if("Marine Law")
 			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This is a <a href='[URL_WIKI_LAW]'>marine law issue</a>. Unless the MPs are breaking procedure in a significant way we will not influence IC events. You do have the right to appeal your sentence and should try to appeal to the Captain first. If you wish, you may <a href='[URL_FORUM_PLAYER_REPORT]'>file a player report</a> at our forums.</b>")
+		if("A: Self-Solving Bug")
+			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This is a self-solving bug. It likely will be solved by using the Reconnect verb (via the File dropdown), leaving and rejoining the server, or restarting BYOND entirely. Adminhelp again if issues persist.</b>")
+		if("A: Intended Feature")
+			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. This is an intended feature and therefore does not need admin intervention.</b>")
 		if("L: Xeno Quickstart Guide")
 			msgplayer = SPAN_NOTICE("<b>NOTICE: <font color=red>[key_name_admin(usr, 0)]</font> is autoresponding with <font color='#009900'>'[choice]'</font>. Your answer can be found on the Xeno Quickstart Guide on our wiki. <a href='[URL_WIKI_XENO_QUICKSTART]'>Check it out here.</a></b>")
 		if("L: Marine quickstart guide")

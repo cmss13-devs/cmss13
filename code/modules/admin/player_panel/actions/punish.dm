@@ -64,7 +64,7 @@
 
 
 /datum/player_action/show_notes/act(var/client/user, var/mob/target, var/list/params)
-	user.admin_holder.player_notes_show(target.key)
+	user.admin_holder.player_notes_show(target.ckey)
 	return TRUE
 
 

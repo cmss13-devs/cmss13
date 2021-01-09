@@ -641,18 +641,19 @@ Defined in conflicts.dm of the #defines folder.
 		zoom_offset = initial(zoom_offset)
 		allows_movement	= 1
 		. = ..()
-		if(user && G.zoom)
-			G.slowdown += dynamic_aim_slowdown
-			if(istype(G, /obj/item/weapon/gun/launcher/m92))
-				G.fire_delay += FIRE_DELAY_TIER_4
-			RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_buffs)
 
-/obj/item/attachable/scope/mini/proc/remove_buffs(mob/living/carbon/user, obj/item/weapon/gun/G)
-	SIGNAL_HANDLER
-	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
+/obj/item/attachable/scope/mini/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
+	. = ..()
+	if(G.zoom)
+		G.slowdown += dynamic_aim_slowdown
+		if(istype(G, /obj/item/weapon/gun/launcher/m92))
+			G.fire_delay += FIRE_DELAY_TIER_4
+
+/obj/item/attachable/scope/mini/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	G.slowdown -= dynamic_aim_slowdown
 	if(istype(G, /obj/item/weapon/gun/launcher/m92))
 		G.fire_delay -= FIRE_DELAY_TIER_4
+	..()
 
 /obj/item/attachable/scope/mini/hunting //can only be attached to the hunting rifle to prevent vending hunting rifles to cannibalize scopes
 	name = "2x hunting mini-scope"
@@ -687,14 +688,15 @@ Defined in conflicts.dm of the #defines folder.
 	if(do_after(user, 8, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 		allows_movement	= 1
 		. = ..()
-		if(user && G.zoom)
-			G.slowdown += dynamic_aim_slowdown
-			RegisterSignal(user, COMSIG_LIVING_ZOOM_OUT, .proc/remove_buffs)
 
-/obj/item/attachable/scope/mini_iff/proc/remove_buffs(mob/living/carbon/user, obj/item/weapon/gun/G)
-	SIGNAL_HANDLER
-	UnregisterSignal(user, COMSIG_LIVING_ZOOM_OUT)
+/obj/item/attachable/scope/mini_iff/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
+	. = ..()
+	if(G.zoom)
+		G.slowdown += dynamic_aim_slowdown
+
+/obj/item/attachable/scope/mini_iff/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	G.slowdown -= dynamic_aim_slowdown
+	..()
 
 /obj/item/attachable/scope/slavic
 	icon_state = "slavicscope"

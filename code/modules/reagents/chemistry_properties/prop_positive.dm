@@ -425,6 +425,25 @@
 /datum/chem_property/positive/antiparasitic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(4*potency, TOX)
 
+/datum/chem_property/positive/organstabilize
+	name = PROPERTY_ORGANSTABILIZE
+	code = "OGS"
+	description = "Stabilizes internal organ damage, stopping internal damage symptoms."
+	rarity = PROPERTY_COMMON
+	value = 2
+
+/datum/chem_property/positive/organstabilize/process(mob/living/M, var/potency = 1)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	H.chem_effect_flags |= CHEM_EFFECT_ORGAN_STASIS
+
+/datum/chem_property/positive/organstabilize/process_overdose(mob/living/M, var/potency = 1)
+	M.apply_damage(potency, BRUTE)
+
+/datum/chem_property/positive/organstabilize/process_critical(mob/living/M, var/potency = 1)
+	M.apply_damages(3*potency, 3*potency, 3*potency)
+
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
 	code = "EGN"

@@ -339,10 +339,12 @@
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
-	if(hive?.dynamic_evolution)
+	if(hive.dynamic_evolution)
 		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
 	else
 		make_combat_effective()
+
+	STOP_PROCESSING(SShive_status, hive.hive_ui)
 
 /mob/living/carbon/Xenomorph/Queen/generate_name()
 	. = ..()
@@ -425,10 +427,6 @@
 					if(T.contents.len <= 25) //so we don't end up with a million object on that turf.
 						egg_amount--
 						new /obj/item/xeno_egg(loc, hivenumber)
-
-		// Update vitals for all xenos in the Queen's hive
-		if(hive)
-			hive.hive_ui.update_xeno_vitals()
 
 /mob/living/carbon/Xenomorph/Queen/Stat()
 	..()
@@ -680,6 +678,12 @@
 
 		stop_pulling()
 
+/mob/living/carbon/Xenomorph/Queen/death(var/cause, var/gibbed)
+	. = ..()
+
+	// So observers get updated information
+	START_PROCESSING(SShive_status, hive.hive_ui)
+
 /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor()
 	if(ovipositor)
 		return //sanity check
@@ -724,6 +728,8 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has grown an ovipositor, evolution progress resumed."), 3, hivenumber)
 
+	START_PROCESSING(SShive_status, hive.hive_ui)
+
 /mob/living/carbon/Xenomorph/Queen/proc/dismount_ovipositor(instant_dismount)
 	set waitfor = 0
 	if(!instant_dismount)
@@ -765,6 +771,8 @@
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, instant_dismount)
+
+	STOP_PROCESSING(SShive_status, hive.hive_ui)
 
 /mob/living/carbon/Xenomorph/Queen/update_canmove()
 	. = ..()

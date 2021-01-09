@@ -65,6 +65,7 @@ export const CSS_COLORS = [
   'average',
   'bad',
   'label',
+  'xeno',
 ];
 
 export const RADIO_CHANNELS = [

@@ -166,18 +166,20 @@
 	if(X.action_busy)
 		return
 
-	if(X.check_plasma(plasma_cost))
-		X.visible_message(SPAN_XENOWARNING("\The [X] starts to grow an ovipositor."), \
-		SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still)"))
-		if(!do_after(X, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && X.check_plasma(plasma_cost))
-			return
-		if(!X.check_state()) return
-		if(!locate(/obj/effect/alien/weeds) in current_turf)
-			return
-		X.use_plasma(plasma_cost)
-		X.visible_message(SPAN_XENOWARNING("\The [X] has grown an ovipositor!"), \
-		SPAN_XENOWARNING("You have grown an ovipositor!"))
-		X.mount_ovipositor()
+	if(!X.check_plasma(plasma_cost))
+		return
+
+	X.visible_message(SPAN_XENOWARNING("\The [X] starts to grow an ovipositor."), \
+	SPAN_XENOWARNING("You start to grow an ovipositor...(takes 20 seconds, hold still)"))
+	if(!do_after(X, 200, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, numticks = 20) && X.check_plasma(plasma_cost))
+		return
+	if(!X.check_state()) return
+	if(!locate(/obj/effect/alien/weeds) in current_turf)
+		return
+	X.use_plasma(plasma_cost)
+	X.visible_message(SPAN_XENOWARNING("\The [X] has grown an ovipositor!"), \
+	SPAN_XENOWARNING("You have grown an ovipositor!"))
+	X.mount_ovipositor()
 
 
 /datum/action/xeno_action/onclick/set_xeno_lead/use_ability(atom/A)

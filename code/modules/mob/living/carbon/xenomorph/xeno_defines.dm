@@ -173,6 +173,7 @@
 	var/xeno_queen_timer
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
+	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
 	var/prefix = ""
 	var/queen_leader_limit = 2
 	var/list/open_xeno_leader_positions = list(1, 2) // Ordered list of xeno leader positions (indexes in xeno_leader_list) that are not occupied
@@ -243,10 +244,8 @@
 
 /datum/hive_status/New()
 	mutators.hive = src
-
 	hive_ui = new(src)
 	faction_ui = new(src)
-
 	internal_faction = name
 
 // Adds a xeno to this hive
@@ -457,7 +456,7 @@
 		xenos[index++] = list(
 			"nicknumber" = X.nicknumber,
 			"tier" = X.tier, // This one is only important for sorting
-			"leader" = (IS_XENO_LEADER(X)),
+			"is_leader" = (IS_XENO_LEADER(X)),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
 		)
 
@@ -484,7 +483,7 @@
 	if(!length(sorted_list))
 		return
 
-	for(var/index in 2 to sorted_list.len)
+	for(var/index in 2 to length(sorted_list))
 		var/j = index
 
 		while(j > 1)
@@ -531,7 +530,6 @@
 		// its name updates with its icon, unlike other castes which only update the mature/elder, etc. prefix on evolve
 		if(istype(X, /mob/living/carbon/Xenomorph/Larva))
 			xeno_name = "Larva ([X.nicknumber])"
-
 		xenos["[X.nicknumber]"] = list(
 			"name" = xeno_name,
 			"strain" = X.mutation_type,
@@ -727,6 +725,7 @@
 	hivenumber = XENO_HIVE_CORRUPTED
 	prefix = "Corrupted "
 	color = "#80ff80"
+	ui_color ="#4d994d"
 
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/Xenomorph/X)
 	. = ..()
@@ -741,6 +740,7 @@
 	hivenumber = XENO_HIVE_ALPHA
 	prefix = "Alpha "
 	color = "#ff4040"
+	ui_color = "#992626"
 
 	dynamic_evolution = FALSE
 
@@ -749,6 +749,7 @@
 	hivenumber = XENO_HIVE_BRAVO
 	prefix = "Bravo "
 	color = "#ffff80"
+	ui_color = "#99994d"
 
 	dynamic_evolution = FALSE
 
@@ -757,6 +758,7 @@
 	hivenumber = XENO_HIVE_CHARLIE
 	prefix = "Charlie "
 	color = "#bb40ff"
+	ui_color = "#702699"
 
 	dynamic_evolution = FALSE
 
@@ -765,6 +767,7 @@
 	hivenumber = XENO_HIVE_DELTA
 	prefix = "Delta "
 	color = "#8080ff"
+	ui_color = "#4d4d99"
 
 	dynamic_evolution = FALSE
 

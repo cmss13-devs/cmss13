@@ -26,18 +26,6 @@
 			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
 			return 0
 
-	// REPAIRING: Use Nanopaste to repair 10-20 integrity points.
-	if(istype(P, /obj/item/stack/nanopaste))
-		var/obj/item/stack/nanopaste/T = P
-		if (integrity < 100)               								//Damaged, let's repair!
-			if (T.use(1))
-				integrity = between(0, integrity + rand(10,20), 100)
-				to_chat(usr, "You apply the Nanopaste to [src], repairing some of the damage.")
-		else
-			to_chat(usr, "This machine is already in perfect condition.")
-		return
-
-
 	switch(construct_op)
 		if(0)
 			if(istype(P, /obj/item/tool/screwdriver) && deconstructable)
@@ -301,7 +289,7 @@
 			if("toggle")
 				src.toggled = !src.toggled
 				temp = "<font color = #666633>-% [src] has been [src.toggled ? "activated" : "deactivated"].</font color>"
-				update_power()
+				toggle_state(usr)
 
 			/*
 			if("hide")

@@ -45,58 +45,58 @@
 	health = 450
 	tcomms_machine = TRUE
 
-/obj/structure/machinery/telecomms/relay/preset/tower/Initialize(mapload, ...)
+// doesn't need power, instead uses health
+/obj/structure/machinery/telecomms/relay/preset/tower/inoperable(additional_flags)
+	if(stat & (additional_flags|BROKEN))
+		return TRUE
+	if(health <= 0)
+		return TRUE
+	return FALSE
+
+/obj/structure/machinery/telecomms/relay/preset/tower/tcomms_startup()
 	. = ..()
-	playsound(src, 'sound/machines/tcomms_on.ogg', 75)
-	add_tcomm_machine()
+	if(on)
+		playsound(src, 'sound/machines/tcomms_on.ogg', vol = 80, vary = FALSE, sound_range = 16, falloff = 0.5)
+		msg_admin_niche("Portable communication relay started for Z-Level [src.z] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 
-/obj/structure/machinery/telecomms/relay/preset/tower/add_tcomm_machine()
-	if(powered())
-		SSradio.add_tcomm_machine(src)
-
-/obj/structure/machinery/telecomms/relay/preset/tower/powered()
-	return on && health > 0
-
-/obj/structure/machinery/telecomms/relay/preset/tower/get_explosion_resistance()
-	return 1000000
+/obj/structure/machinery/telecomms/relay/preset/tower/tcomms_shutdown()
+	. = ..()
+	if(!on)
+		msg_admin_niche("Portable communication relay shut down for Z-Level [src.z] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)")
 
 /obj/structure/machinery/telecomms/relay/preset/tower/bullet_act(var/obj/item/projectile/P)
 	..()
-	if (istype(P.ammo, /datum/ammo/xeno/boiler_gas))
+	if(istype(P.ammo, /datum/ammo/xeno/boiler_gas))
 		update_health(50)
 
-	else if (P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
+	else if(P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
 		update_health(P.damage*ANTISTRUCT_DMG_MULT_BARRICADES)
 
 	update_health(round(P.damage/2))
-
 	return TRUE
 
-/obj/structure/machinery/telecomms/relay/preset/tower/update_power()
-	if(health <= 0)
-		on = FALSE
-		remove_tcomm_machine()
-	else
-		if(!on)
-			playsound(src, 'sound/machines/tcomms_on.ogg', 75)
-			add_tcomm_machine()
-		on = TRUE
+/obj/structure/machinery/telecomms/relay/preset/tower/update_health(damage = 0)
+	if(!damage)
+		return
+	if(damage > 0 && health <= 0)
+		return // Leave the poor thing alone 
 
-/obj/structure/machinery/telecomms/relay/preset/tower/update_health(var/damage = 0)
-	if(damage)
-		health -= damage
-		health = Clamp(health, 0, initial(health))
-	if(health <= 0)
-		toggled = FALSE
-		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
-	else if(health >= (initial(health) / 2))
-		toggled = TRUE
+	health -= damage
+	health = Clamp(health, 0, initial(health))
 
+	if(health <= 0)
+		toggled = FALSE		// requires flipping on again once repaired	
 	if(health < initial(health))
 		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
 	else
 		desc = initial(desc)
-	update_icon()
+	update_state()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/toggle_state(mob/user)
+	if(!toggled && (inoperable() || (health <= initial(health) / 2)))
+		to_chat(user, SPAN_WARNING("The [src.name] needs repairs to be turned back on!"))
+		return
+	..()
 
 /obj/structure/machinery/telecomms/relay/preset/tower/update_icon()
 	if(health <= 0)
@@ -133,6 +133,14 @@
 	else if(ismultitool(I))
 		return
 	else return ..()
+
+/obj/structure/machinery/telecomms/relay/preset/tower/attack_hand(mob/user)
+	if(ishighersilicon(user))
+		return ..()
+	if(on)
+		to_chat(user, SPAN_WARNING("The [src.name] blinks and beeps incomprehensibly as it operates, better not touch this..."))
+		return
+	toggle_state(user) // just flip dat switch
 
 /obj/structure/machinery/telecomms/relay/preset/telecomms
 	id = "Telecomms Relay"

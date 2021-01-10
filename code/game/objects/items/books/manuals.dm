@@ -416,7 +416,7 @@
 					<li>Internal armor is plasteel for additional strength.</li>
 					<li>External armor must be installed in 2 parts, totalling 10 sheets.</li>
 					<li>Completed mech is more resilient against fire, and is a bit more durable overall.</li>
-					<li>NanoTrasen is determined to ensure the safety of its <s>investments</s> employees.</li>
+					<li>Weston-Yamada is determined to ensure the safety of its <s>investments</s> employees.</li>
 				</ul>
 				</body>
 			</html>
@@ -698,11 +698,11 @@
 
 
 /obj/item/book/manual/security_space_law
-	name = "Corporate Regulations"
-	desc = "A set of NanoTrasen guidelines for keeping law and order on their space stations."
+	name = "Standard Operating Procedure"
+	desc = "A set of USCM guidelines for keeping law and order on their vessels."
 	icon_state = "bookSpaceLaw"
-	author = "NanoTrasen"
-	title = "Corporate Regulations"
+	author = "USCM High Command"
+	title = "Standard Operating Procedure"
 
 	dat = {"
 
@@ -721,7 +721,7 @@
 	name = "Marine Law"
 	desc = "A set of guidelines for keeping law and order on military vessels."
 	icon_state = "bookSpaceLaw"
-	author = "The Company"
+	author = "USCM High Command"
 	title = "Marine Law"
 
 	dat = {"
@@ -941,7 +941,7 @@
 /obj/item/book/manual/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
-	author = "NanoTrasen"
+	author = "Weston-Yamada"
 	title = "The Film Noir: Proper Procedures for Investigations"
 
 	dat = {"<html>
@@ -984,7 +984,7 @@
 /obj/item/book/manual/nuclear
 	name = "Fission Mailed: Nuclear Sabotage 101"
 	icon_state ="bookNuclear"
-	author = "Syndicate"
+	author = "The Colonial Liberation Front"
 	title = "Fission Mailed: Nuclear Sabotage 101"
 
 	dat = {"<html>
@@ -1000,7 +1000,7 @@
 				</head>
 				<body>
 				<h1>Nuclear Explosives 101</h1>
-				Hello and thank you for choosing the Syndicate for your nuclear information needs. Today's crash course will deal with the operation of a Fusion Class NanoTrasen made Nuclear Device.<br><br>
+				Hello and thank you for choosing the CLF for your nuclear information needs. Today's crash course will deal with the operation of a Fusion Class Weston-Yamada made Nuclear Device.<br><br>
 
 				First and foremost, DO NOT TOUCH ANYTHING UNTIL THE BOMB IS IN PLACE. Pressing any button on the compacted bomb will cause it to extend and bolt itself into place. If this is done, to unbolt it, one must completely log in, which at this time may not be possible.<br>
 
@@ -1025,7 +1025,7 @@
 
 				Remember the order:<br>
 				<b>Disk, Code, Safety, Timer, Disk, RUN!</b><br><br>
-				Intelligence Analysts believe that normal NanoTrasen procedure is for the Captain to secure the nuclear authentication disk.<br><br>
+				Intelligence Analysts believe that normal Weston-Yamada procedure is for the Commanding Officer, or Captain, to secure the nuclear authentication disk.<br><br>
 
 				Good luck!
 				</body>
@@ -1275,7 +1275,7 @@
 					<li>Open the Orbital Cannon Console's interface.</li>
 					<li>Load the Tray into the Cannon.</li>
 					<li>Chamber the Tray's content into the cannon barrel. <b>(can't be undone!)</b></li>
-					<li>Staff Officers can now fire the Orbital Cannon from their console.</li>
+					<li>The CIC staff can now fire the Orbital Cannon from any overwatch console.</li>
 					<li>After firing, unload the Tray from the Orbital Cannon.</li>
 					<li>Inspect the Tray to make sure it is empty and operational.</li>
 				</ol>

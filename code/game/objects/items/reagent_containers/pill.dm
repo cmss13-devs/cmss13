@@ -76,7 +76,7 @@ var/global/list/randomized_pill_icons
 		if(!do_after(user, ingestion_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
 
 		user.drop_inv_item_on_ground(src) //icon update
-		
+
 		user.affected_message(M,
 			SPAN_HELPFUL("You [user == M ? "<b>swallowed</b>" : "<b>fed</b> [M]"] a pill."),
 			SPAN_HELPFUL("[user] <b>fed</b> you a pill."),
@@ -128,7 +128,7 @@ var/global/list/randomized_pill_icons
 
 //Pills
 /obj/item/reagent_container/pill/antitox
-	pill_desc = "An anti-toxins pill. It neutralizes many common toxins."
+	pill_desc = "An anti-toxin pill. It neutralizes many common toxins, as well as treating toxin damage"
 
 /obj/item/reagent_container/pill/antitox/Initialize()
 	. = ..()
@@ -263,7 +263,7 @@ var/global/list/randomized_pill_icons
 
 
 /obj/item/reagent_container/pill/peridaxon
-	pill_desc = "A Peridaxon pill. Heals internal organ damage."
+	pill_desc = "A Peridaxon pill. Temporarily halts the effects of internal organ damage."
 
 /obj/item/reagent_container/pill/peridaxon/Initialize()
 	. = ..()

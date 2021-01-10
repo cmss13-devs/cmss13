@@ -130,9 +130,14 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 
 #define FLAME_REAGENT_USE_AMOUNT 1
 
-#define DIRT_SPLATTER "splatter" //Blood, vomit, oil
-#define DIRT_JUNK "junk" //Gibs, Robot debris, etcetera
-#define DIRT_MISC "misc" //Anything else
+#define CLEANABLE_SPLATTER 		"splatter" // Vomit, oil
+#define CLEANABLE_BLOOD			"blood"
+#define CLEANABLE_BLOOD_SPLATTER	"blood splatter"
+#define CLEANABLE_BLOOD_DRIP		"blood drip"
+#define CLEANABLE_BLOOD_GIBS		"blood gibs"
+#define CLEANABLE_TRACKS			"tracks"
+#define CLEANABLE_JUNK 			"junk" //Gibs, Robot debris, etcetera
+#define CLEANABLE_MISC 			"misc" //Anything else
 
 //For nuke announcements
 #define NUKE_SHOW_TIMER_TEN_SEC	1

@@ -81,8 +81,8 @@
 	},
 /area/lv624/lazarus/main_hall)
 "al" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "damaged2"
@@ -90,8 +90,8 @@
 /area/lv624/lazarus/main_hall)
 "am" = (
 /obj/effect/landmark/good_item,
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -130,8 +130,8 @@
 /area/lv624/lazarus/main_hall)
 "as" = (
 /obj/item/limb/arm/l_arm,
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "floorscorched1"
@@ -157,7 +157,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "av" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -166,7 +166,7 @@
 /area/lv624/lazarus/main_hall)
 "aw" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/effect/landmark/xeno_hive_spawn,
 /turf/open/floor{
@@ -180,15 +180,15 @@
 	},
 /area/lv624/lazarus/main_hall)
 "ay" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "floorscorched2"
 	},
 /area/lv624/lazarus/main_hall)
 "az" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -214,9 +214,9 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aC" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -229,7 +229,7 @@
 /area/lv624/lazarus/main_hall)
 "aE" = (
 /obj/item/trash/chips,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "white"
@@ -248,10 +248,10 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aG" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/limb/arm/l_arm,
 /obj/item/frame/table,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -267,7 +267,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aI" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/frame/table,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -309,14 +309,14 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aN" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	icon_state = "damaged5"
 	},
 /area/lv624/lazarus/main_hall)
 "aO" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs,
 /turf/open/floor{
 	icon_state = "white"
@@ -339,7 +339,7 @@
 /area/lv624/lazarus/main_hall)
 "aR" = (
 /obj/item/limb/foot/r_foot,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -347,7 +347,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aS" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/doctor,
 /obj/item/frame/table,
 /obj/item/ammo_casing,
@@ -382,7 +382,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aX" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/item/ammo_casing,
@@ -391,18 +391,18 @@
 	},
 /area/lv624/lazarus/main_hall)
 "aY" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/limb/arm/l_arm,
 /obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "aZ" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
 	dir = 2;
 	flipped = 1
@@ -419,13 +419,13 @@
 /area/lv624/lazarus/main_hall)
 "bb" = (
 /obj/item/frame/table,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/main_hall)
 "bc" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
@@ -440,7 +440,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bd" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "damaged5"
@@ -448,7 +448,7 @@
 /area/lv624/lazarus/main_hall)
 "be" = (
 /obj/item/stack/barbed_wire,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "damaged2"
@@ -464,8 +464,8 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bg" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor,
@@ -527,7 +527,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bp" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/limb/foot/l_foot,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -538,18 +538,18 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bq" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	icon_state = "damaged4"
 	},
 /area/lv624/lazarus/main_hall)
 "br" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
 	dir = 4;
 	flipped = 1
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -623,7 +623,7 @@
 /area/lv624/lazarus/main_hall)
 "bA" = (
 /obj/item/tool/crowbar,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
 	dir = 8;
 	flipped = 1
@@ -635,7 +635,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bB" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/limb/foot/l_foot,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -685,7 +685,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bG" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "floorscorched2"
@@ -693,7 +693,7 @@
 /area/lv624/lazarus/main_hall)
 "bH" = (
 /obj/structure/barricade/wooden,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	dir = 4;
@@ -701,7 +701,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bI" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_magazine/smg/mp7,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
@@ -711,7 +711,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bJ" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/surface/table{
 	dir = 2;
 	flipped = 1
@@ -733,7 +733,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bL" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /obj/structure/surface/table{
 	dir = 2;
@@ -743,18 +743,18 @@
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "bM" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/limb/leg/r_leg,
 /obj/structure/surface/table{
 	dir = 2;
 	flipped = 1
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor,
 /area/lv624/lazarus/main_hall)
 "bN" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -770,12 +770,12 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bP" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "white"
@@ -789,8 +789,8 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bR" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_magazine/smg/mp7,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -798,7 +798,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bS" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor{
@@ -824,7 +824,7 @@
 /area/lv624/lazarus/main_hall)
 "bV" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	dir = 2;
@@ -832,8 +832,8 @@
 	},
 /area/lv624/lazarus/main_hall)
 "bW" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "damaged5"
@@ -841,7 +841,7 @@
 /area/lv624/lazarus/main_hall)
 "bX" = (
 /obj/effect/landmark/good_item,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/item/ammo_casing,
 /turf/open/floor{
 	icon_state = "white"
@@ -1099,7 +1099,7 @@
 	},
 /area/lv624/lazarus/main_hall)
 "Jf" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"

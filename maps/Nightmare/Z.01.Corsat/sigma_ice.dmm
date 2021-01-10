@@ -332,7 +332,7 @@
 	})
 "eV" = (
 /obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -541,7 +541,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/sigma/biodome/scrapyard)
 "ih" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -623,7 +623,7 @@
 	temperature = 223
 	})
 "jy" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 1;
@@ -1100,7 +1100,7 @@
 	},
 /area/corsat/sigma/biodome/gunrange)
 "sx" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -1126,7 +1126,7 @@
 	})
 "sS" = (
 /obj/effect/landmark/corpsespawner/PMC,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -1292,7 +1292,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -1566,7 +1566,7 @@
 /area/corsat/sigma/biodome/scrapyard)
 "zf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -2482,7 +2482,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -2578,7 +2578,7 @@
 	},
 /area/corsat/sigma/airlock/control)
 "Om" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},

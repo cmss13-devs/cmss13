@@ -9,13 +9,11 @@
 /////// add_blood ///////////////////
 //to add blood onto something, with blood dna info to include.
 /atom/proc/add_blood(b_color = "#830303")
-	return 0
+	return FALSE
 
 /turf/add_blood(b_color = "#830303")
-	var/obj/effect/decal/cleanable/blood/splatter/B = locate() in src
-	if(!B)
-		B = new /obj/effect/decal/cleanable/blood/splatter(src, b_color)
-	return 1 //we bloodied the floor
+	new /obj/effect/decal/cleanable/blood/splatter(src, b_color)
+	return TRUE //we bloodied the floor
 
 
 /obj/item/add_blood(b_color = "#830303")
@@ -29,10 +27,8 @@
 		overlays += blood_overlay
 
 	else if(blood_overlay && b_color && blood_overlay.color != b_color)
-		overlays -= blood_overlay
 		blood_overlay.color = b_color
-		overlays += blood_overlay
-	return 1 //we applied blood to the item
+	return TRUE //we applied blood to the item
 
 /obj/item/proc/generate_blood_overlay(b_color)
 	var/icon/I = new /icon('icons/effects/blood.dmi', "itemblood")
@@ -40,26 +36,34 @@
 	blood_overlay.blend_mode = BLEND_INSET_OVERLAY
 	blood_overlay.color = b_color
 
-/mob/living/carbon/human/add_blood(b_color = "#830303")
-	if(wear_suit)
-		wear_suit.add_blood(b_color)
-		update_inv_wear_suit()
-	else if(w_uniform)
-		w_uniform.add_blood(b_color)
-		update_inv_w_uniform()
-	if(gloves)
-		var/obj/item/clothing/gloves/G = gloves
-		G.add_blood(b_color)
-	else
-		hands_blood_color = b_color
-	hands_blood_amt = rand(2, 4)
-
-	update_inv_gloves()	//handles bloody hands overlays and updating
-	return 1
+/mob/living/carbon/human/add_blood(b_color = "#830303", blood_flags = BLOOD_ALL)
+	if(blood_flags & BLOOD_BODY)
+		if(wear_suit)
+			wear_suit.add_blood(b_color)
+			update_inv_wear_suit()
+		else if(w_uniform)
+			w_uniform.add_blood(b_color)
+			update_inv_w_uniform()
+	if(blood_flags & BLOOD_HANDS)
+		if(gloves)
+			var/obj/item/clothing/gloves/G = gloves
+			G.add_blood(b_color)
+		else
+			hands_blood_color = b_color
+			hands_blood_amt = rand(2, 4)
+		update_inv_gloves() // Adds blood overlays for gloves or hands
+	if(blood_flags & BLOOD_FEET)
+		if(shoes)
+			var/obj/item/clothing/shoes/S = shoes
+			S.add_blood(b_color)
+		else
+			feet_blood_color = b_color
+		update_inv_shoes() // Adds blood overlays for shoes or feet
+	return TRUE
 
 
 /atom/proc/clean_blood()
-	return 0
+	return FALSE
 
 /turf/clean_blood()
 	for(var/obj/effect/decal/cleanable/blood/B in src)

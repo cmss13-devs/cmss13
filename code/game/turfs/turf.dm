@@ -32,7 +32,15 @@
 	var/list/linked_pylons = list()
 
 	var/list/datum/automata_cell/autocells = list()
-	var/list/dirt_overlays = list()
+	/**
+	 * Associative list of cleanable types (strings) mapped to
+	 * cleanable objects
+	 *
+	 * The cleanable object does not necessarily need to be
+	 * on the turf, it can simply be for handling how the
+	 * overlays or placing new cleanables of the same type work
+	 */
+	var/list/cleanables
 
 	var/list/baseturfs = /turf/baseturf_bottom
 	var/changing_turf = FALSE
@@ -79,6 +87,9 @@
 	if(!changing_turf)
 		stack_trace("Incorrect turf deletion")
 	changing_turf = FALSE
+	for(var/cleanable_type in cleanables)
+		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
+		C.cleanup_cleanable()
 	if(force)
 		..()
 		//this will completely wipe turf state
@@ -97,6 +108,12 @@
 
 /turf/proc/update_icon() //Base parent. - Abby
 	return
+
+/turf/proc/add_cleanable_overlays()
+	for(var/cleanable_type in cleanables)
+		var/obj/effect/decal/cleanable/C = cleanables[cleanable_type]
+		if(C.overlayed_image)
+			overlays += C.overlayed_image
 
 /turf/proc/loc_to_string()
 	var/text

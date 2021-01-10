@@ -799,10 +799,6 @@
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 
-
-/mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
-	death(cause, 1) //we need the body to show the queen's name at round end.
-
 /mob/living/carbon/Xenomorph/Queen/proc/in_egg_plant_range(var/turf/T)
 	if(!ovipositor)
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways

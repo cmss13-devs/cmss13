@@ -213,17 +213,19 @@
 
 	QDEL_NULL(occupant)
 
-	spawn(src.gibtime)
-		playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
-		operating = 0
-		for (var/i=1 to totalslabs)
-			var/obj/item/meatslab = allmeat[i]
-			var/turf/Tx = locate(src.x - i, src.y, src.z)
-			meatslab.forceMove(src.loc)
-			meatslab.throw_atom(Tx, i, SPEED_FAST, src)
-			if (!Tx.density)
-				new /obj/effect/decal/cleanable/blood/gibs(Tx)
-		src.operating = 0
-		update_icon()
+	addtimer(CALLBACK(src, .proc/create_gibs, totalslabs, allmeat), src.gibtime)
+
+/obj/structure/machinery/gibber/proc/create_gibs(totalslabs, list/obj/item/reagent_container/food/snacks/meat/allmeat)
+	playsound(src.loc, 'sound/effects/splat.ogg', 25, 1)
+	operating = FALSE
+	for (var/i=1 to totalslabs)
+		var/obj/item/meatslab = allmeat[i]
+		var/turf/Tx = locate(src.x - i, src.y, src.z)
+		meatslab.forceMove(src.loc)
+		meatslab.throw_atom(Tx, i, SPEED_FAST, src)
+		if (!Tx.density)
+			new /obj/effect/decal/cleanable/blood/gibs(Tx)
+	src.operating = FALSE
+	update_icon()
 
 

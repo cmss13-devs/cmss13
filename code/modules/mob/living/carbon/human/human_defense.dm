@@ -218,8 +218,7 @@ Contains most of the procs that are called when a mob is attacked by something
 				if(ishuman(user))
 					var/mob/living/carbon/human/H = user
 					if(get_dist(H, src) <= 1) //people with TK won't get smeared with blood
-						H.bloody_body(src)
-						H.bloody_hands(src)
+						H.add_blood(get_blood_color(), BLOOD_BODY|BLOOD_HANDS)
 
 
 		switch(hit_area)
@@ -237,7 +236,7 @@ Contains most of the procs that are called when a mob is attacked by something
 
 			if("chest")
 				if(bloody)
-					bloody_body(src)
+					add_blood(get_blood_color(), BLOOD_BODY)
 
 	//Melee weapon embedded object code.
 	if (I.damtype == BRUTE && !I.is_robot_module() && !(I.flags_item & (NODROP|DELONDROP)))
@@ -334,29 +333,6 @@ Contains most of the procs that are called when a mob is attacked by something
 			//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
 			if (!isYautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
 				affecting.embed(I)
-
-/mob/living/carbon/human/proc/bloody_hands(var/mob/living/source, var/amount = 2)
-	var/b_color = source.get_blood_color()
-	if(!b_color)
-		return
-	if (gloves)
-		gloves.add_mob_blood(source)
-		gloves.gloves_blood_amt = amount
-	else
-		hands_blood_color = b_color
-		hands_blood_amt = max(amount, hands_blood_amt)
-
-	update_inv_gloves()		//updates on-mob overlays for bloody hands and/or bloody gloves
-
-
-/mob/living/carbon/human/proc/bloody_body(var/mob/living/source)
-	if(wear_suit)
-		wear_suit.add_mob_blood(source)
-		update_inv_wear_suit()
-	if(w_uniform)
-		w_uniform.add_mob_blood(source)
-		update_inv_w_uniform()
-
 
 /mob/living/carbon/human/proc/get_id_faction_group()
 	var/obj/item/card/id/C = wear_id

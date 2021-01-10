@@ -54,9 +54,9 @@
 	if(ishuman(user) && prob(60))
 		var/mob/living/carbon/human/H = user
 		if(blood_level)
-			H.bloody_hands(target, 0)
+			H.add_blood(target.get_blood_color(), BLOOD_HANDS)
 		if(blood_level > 1)
-			H.bloody_body(target, 0)
+			H.add_blood(target.get_blood_color(), BLOOD_BODY)
 	return
 
 //Does stuff to end the step, which is normally print a message + do whatever this step changes

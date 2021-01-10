@@ -7,10 +7,12 @@
 var/global/list/human_icon_cache = list()
 var/global/list/tail_icon_cache = list()
 
-/proc/overlay_image(icon,icon_state,color,flags)
+/proc/overlay_image(icon, icon_state, color, flags)
 	var/image/ret = image(icon,icon_state)
-	ret.color = color
-	ret.appearance_flags = flags
+	var/mutable_appearance/MA = new(ret)
+	MA.color = color
+	MA.appearance_flags = flags
+	ret.appearance = MA
 	return ret
 
 /*

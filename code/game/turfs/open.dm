@@ -14,6 +14,8 @@
 /turf/open/update_icon()
 	overlays.Cut()
 
+	add_cleanable_overlays()
+
 	for(var/direction in alldirs)
 		var/turf/open/auto_turf/T = get_step(src, direction)
 		if(!istype(T))
@@ -113,6 +115,16 @@
 /turf/open/beach
 	name = "Beach"
 	icon = 'icons/turf/floors/beach.dmi'
+
+/turf/open/beach/Entered(atom/movable/AM)
+	..()
+
+	if(AM.throwing || !ishuman(AM))
+		return
+
+	var/mob/living/carbon/human/H = AM
+	if(H.bloody_feet)
+		QDEL_NULL(H.bloody_feet)
 
 
 /turf/open/beach/sand
@@ -260,7 +272,11 @@
 
 /turf/open/gm/river/Entered(atom/movable/AM)
 	..()
-	if(!covered && iscarbon(AM) && !AM.throwing)
+
+	if(!iscarbon(AM) || AM.throwing)
+		return
+
+	if(!covered)
 		var/mob/living/carbon/C = AM
 		var/river_slowdown = 1.75
 
@@ -281,6 +297,12 @@
 
 		var/new_slowdown = C.next_move_slowdown + river_slowdown
 		C.next_move_slowdown = new_slowdown
+
+	if(ishuman(AM))
+		var/mob/living/carbon/human/H = AM
+		if(H.bloody_feet)
+			QDEL_NULL(H.bloody_feet)
+
 
 /turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)
 	if(!M || !istype(M)) return

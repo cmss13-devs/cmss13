@@ -100,6 +100,7 @@
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "vomit_1"
 	random_icon_states = list("vomit_1", "vomit_2", "vomit_3", "vomit_4")
+	cleanable_type = CLEANABLE_SPLATTER
 
 /obj/effect/decal/cleanable/vomit/ex_act()
 	return
@@ -157,5 +158,3 @@
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mucus"
 	random_icon_states = list("mucus")
-
-

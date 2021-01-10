@@ -509,15 +509,15 @@
 	chemclass = CHEM_CLASS_UNCOMMON
 
 /datum/reagent/space_cleaner/reaction_obj(var/obj/O, var/volume)
-	if(istype(O,/obj/effect/decal/cleanable))
-		qdel(O)
-	else
-		if(O)
-			O.clean_blood()
+	if(istype(O, /obj/effect/decal/cleanable))
+		var/obj/effect/decal/cleanable/C = O
+		C.cleanup_cleanable()
+	else if(O)
+		O.clean_blood()
 
 /datum/reagent/space_cleaner/reaction_turf(var/turf/T, var/volume)
 	if(volume >= 1 && istype(T))
-		T.clean_dirt()
+		T.clean_cleanables()
 
 /datum/reagent/space_cleaner/reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
 	if(iscarbon(M))

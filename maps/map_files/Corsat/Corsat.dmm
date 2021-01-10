@@ -4521,7 +4521,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "amm" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -5073,7 +5073,7 @@
 	},
 /area/corsat/sigma/hangar/monorail)
 "anK" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -5430,7 +5430,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -5722,7 +5722,7 @@
 /area/corsat/sigma/southeast/generator)
 "apE" = (
 /obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -5837,7 +5837,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/sigma/dorms)
 "apW" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -6980,7 +6980,7 @@
 	},
 /area/corsat/gamma/security/armory)
 "atN" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -7302,7 +7302,7 @@
 /area/corsat/sigma/south/engineering)
 "auI" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
@@ -7514,7 +7514,7 @@
 	},
 /area/corsat/sigma/hangar/checkpoint)
 "avp" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "red"
@@ -8695,7 +8695,7 @@
 	},
 /area/corsat/sigma/hangar/id)
 "ayk" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -11682,7 +11682,7 @@
 	},
 /area/corsat/gamma/foyer)
 "aFA" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/barricade/handrail{
 	dir = 4
 	},
@@ -11712,7 +11712,7 @@
 /area/corsat/gamma/residential/east)
 "aFD" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat{
 	icon_state = "plate"
@@ -11944,7 +11944,7 @@
 /obj/structure/platform{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -14195,7 +14195,7 @@
 /area/corsat/theta/airlock/east/id)
 "aLW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -19845,7 +19845,7 @@
 	},
 /area/corsat/omega/offices)
 "aZK" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/platform{
 	density = 0;
 	dir = 4;
@@ -20073,7 +20073,7 @@
 	},
 /area/corsat/omega/hangar/security)
 "bak" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/platform{
 	dir = 1;
 	layer = 2.7
@@ -26350,7 +26350,7 @@
 /obj/structure/noticeboard{
 	pixel_y = 32
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "bluegreycorner"
@@ -29319,7 +29319,7 @@
 /area/corsat/omega/complex)
 "bAb" = (
 /obj/structure/machinery/optable,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
@@ -31911,7 +31911,7 @@
 	},
 /area/corsat/sigma/hangar/office)
 "bIe" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
@@ -36651,7 +36651,7 @@
 /area/corsat/sigma/airlock/control)
 "bXh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -38052,7 +38052,7 @@
 	},
 /area/corsat/sigma/hangar/arrivals)
 "clg" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "redcorner"
@@ -38201,7 +38201,7 @@
 /area/corsat/sigma/biodome/gunrange)
 "cqT" = (
 /obj/effect/landmark/corpsespawner/security,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -38464,7 +38464,7 @@
 	},
 /area/corsat/omega/control)
 "czh" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -38761,7 +38761,7 @@
 /area/corsat/gamma/hangar/checkpoint)
 "cPR" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -38777,7 +38777,7 @@
 	},
 /area/corsat/omega/hallways)
 "cQs" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -38935,7 +38935,7 @@
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
 "cYj" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -39116,7 +39116,7 @@
 	},
 /area/corsat/gamma/medbay)
 "dem" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "dex" = (
@@ -39218,7 +39218,7 @@
 /area/corsat/gamma/sigmaremote)
 "dhG" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -39267,7 +39267,7 @@
 /area/corsat/gamma/residential/researcher)
 "djC" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -39290,13 +39290,13 @@
 	},
 /area/corsat/omega/complex)
 "dky" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
 /area/corsat/gamma/foyer)
 "dkK" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
@@ -39540,7 +39540,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "dug" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -39933,7 +39933,7 @@
 /area/corsat/gamma/biodome/virology)
 "dIa" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -40114,7 +40114,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -40306,7 +40306,7 @@
 	},
 /area/corsat/sigma/south/engineering)
 "dXm" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -40462,7 +40462,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -40536,7 +40536,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -40824,7 +40824,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -40971,7 +40971,7 @@
 	},
 /area/corsat/gamma/foyer)
 "eqM" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -41214,7 +41214,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
 "eyK" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat,
 /area/corsat/gamma/freezer)
 "ezs" = (
@@ -41281,7 +41281,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -41375,7 +41375,7 @@
 	},
 /area/corsat/gamma/canteen)
 "eHn" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -41401,7 +41401,7 @@
 /area/corsat/gamma/hallwaysouth)
 "eJz" = (
 /obj/effect/landmark/corpsespawner/security,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -41607,7 +41607,7 @@
 	},
 /area/corsat/sigma/north)
 "eRX" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -41637,7 +41637,7 @@
 	},
 /area/corsat/sigma/cargo)
 "eTf" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -41973,7 +41973,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "feZ" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "yellowcorner"
@@ -42366,13 +42366,13 @@
 	},
 /area/corsat/omega/hangar/office)
 "fsn" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
 	},
 /area/corsat/sigma/south/robotics)
 "fsr" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/PMC,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -42675,7 +42675,7 @@
 /area/corsat/gamma/hangar/arrivals)
 "fFa" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
@@ -42911,7 +42911,7 @@
 /area/corsat/theta/biodome)
 "fOh" = (
 /obj/effect/landmark/corpsespawner/prisoner,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -43091,7 +43091,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -43159,7 +43159,7 @@
 /area/corsat/sigma/hangar/security)
 "fYB" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -43358,7 +43358,7 @@
 /area/corsat/theta/biodome)
 "geV" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -43444,7 +43444,7 @@
 /area/corsat/gamma/hallwaysouth)
 "ghu" = (
 /obj/effect/landmark/corpsespawner/security,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -43661,7 +43661,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "goV" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -44137,7 +44137,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "gEm" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -44428,7 +44428,7 @@
 /area/corsat/gamma/biodome/virology)
 "gOZ" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -44608,7 +44608,7 @@
 /obj/structure/bed/chair{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -44769,7 +44769,7 @@
 	},
 /area/corsat/omega/maint)
 "gYr" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "whitetan"
 	},
@@ -44817,7 +44817,7 @@
 /area/corsat/sigma/south)
 "gZw" = (
 /obj/effect/landmark/corpsespawner/chef,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "sterileplate"
 	},
@@ -44831,7 +44831,7 @@
 "gZF" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "gZH" = (
@@ -45031,7 +45031,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -45240,7 +45240,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -45605,7 +45605,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "greenwhite"
@@ -45758,7 +45758,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/administration)
 "hDl" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -45808,7 +45808,7 @@
 	},
 /area/corsat/sigma/airlock/east)
 "hEH" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "yellow"
@@ -45836,7 +45836,7 @@
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/bar)
 "hFo" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -45873,7 +45873,7 @@
 /area/corsat/theta/biodome)
 "hGg" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -45966,7 +45966,7 @@
 	},
 /area/corsat/theta/biodome)
 "hJG" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "darkgreen"
@@ -45979,7 +45979,7 @@
 /area/corsat/omega/complex)
 "hKc" = (
 /obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -46055,7 +46055,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/corsat{
 	dir = 10;
@@ -46135,7 +46135,7 @@
 /obj/structure/bed/chair/office/light{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -46296,7 +46296,7 @@
 /area/corsat/gamma/residential/west)
 "hTe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -46478,7 +46478,7 @@
 	},
 /area/corsat/gamma/hydroponics)
 "iav" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "redcorner"
@@ -46727,7 +46727,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat,
 /area/corsat/gamma/sigmaremote)
 "ill" = (
@@ -46909,7 +46909,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -47172,7 +47172,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -47280,7 +47280,7 @@
 /area/corsat/sigma/hangar/security)
 "iEF" = (
 /obj/effect/landmark/corpsespawner/doctor,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -47366,7 +47366,7 @@
 	},
 /area/corsat/gamma/residential/researcher)
 "iIu" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "whitetancorner"
@@ -47403,7 +47403,7 @@
 	},
 /area/corsat/gamma/hangar/cargo)
 "iJB" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -47572,7 +47572,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -47669,7 +47669,7 @@
 	},
 /area/corsat/gamma/residential)
 "iVA" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -47829,7 +47829,7 @@
 /area/corsat/sigma/south/robotics)
 "jcA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -48097,7 +48097,7 @@
 	},
 /area/corsat/sigma/hangar/monorail)
 "jns" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -48202,7 +48202,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -48269,7 +48269,7 @@
 /area/corsat/sigma/dorms)
 "jvG" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -48306,7 +48306,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -48342,7 +48342,7 @@
 	name = "Corporate Shuttle"
 	})
 "jyK" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/shuttle{
 	icon_state = "floor7"
 	},
@@ -49063,7 +49063,7 @@
 	},
 /area/corsat/gamma/airlock/north)
 "kdn" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -49389,7 +49389,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -49436,7 +49436,7 @@
 /area/corsat/omega/airlocknorth/id)
 "kqE" = (
 /obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
 	},
@@ -49460,7 +49460,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "krK" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -49570,7 +49570,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -49638,7 +49638,7 @@
 /area/corsat/gamma/canteen)
 "kAq" = (
 /obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -49808,7 +49808,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "kGJ" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "green"
@@ -50044,7 +50044,7 @@
 /area/corsat/omega/security)
 "kPC" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -50053,7 +50053,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -50239,7 +50239,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "whitetan"
@@ -50249,7 +50249,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -50473,7 +50473,7 @@
 	},
 /area/corsat/sigma/hangar/arrivals)
 "leM" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -50523,7 +50523,7 @@
 /area/corsat/gamma/medbay/morgue)
 "lfH" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -51128,7 +51128,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "whitetancorner"
@@ -51228,7 +51228,7 @@
 	},
 /area/corsat/gamma/sigmaremote)
 "lFY" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -51244,7 +51244,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "lGo" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -51330,7 +51330,7 @@
 	},
 /area/corsat/sigma/south)
 "lIq" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -51500,7 +51500,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -51617,7 +51617,7 @@
 /area/corsat/sigma/hangar/id)
 "lRW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "whitetan"
@@ -51784,7 +51784,7 @@
 /area/corsat/sigma/hangar/id)
 "lXP" = (
 /obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -51920,7 +51920,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -52048,7 +52048,7 @@
 /area/corsat/gamma/residential/east)
 "mfS" = (
 /obj/effect/landmark/corpsespawner/security,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -52114,7 +52114,7 @@
 	},
 /area/corsat/sigma/checkpoint)
 "mhq" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/platform{
 	density = 0;
 	dir = 8;
@@ -52232,7 +52232,7 @@
 /area/corsat/theta/biodome/hydrowest)
 "mmp" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -53093,7 +53093,7 @@
 /area/corsat/gamma/biodome/complex)
 "mSG" = (
 /obj/effect/landmark/corpsespawner/PMC,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -53298,7 +53298,7 @@
 	name = "Corporate Shuttle"
 	})
 "nbn" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -53951,7 +53951,7 @@
 /area/corsat/sigma/southeast/datalab)
 "nxP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -54002,7 +54002,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "whitetancorner"
@@ -54129,7 +54129,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -54514,7 +54514,7 @@
 	pixel_x = -11
 	},
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "whitebluefull"
@@ -54522,7 +54522,7 @@
 /area/corsat/gamma/residential/researcher)
 "nSG" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
@@ -54537,7 +54537,7 @@
 	},
 /area/corsat/omega/security)
 "nSP" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -54547,7 +54547,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -54594,7 +54594,7 @@
 	},
 /area/corsat/omega/complex)
 "nUd" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "red"
@@ -54629,7 +54629,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -54682,7 +54682,7 @@
 	},
 /area/corsat/sigma/southeast/generator)
 "nXo" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -54766,7 +54766,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -54914,7 +54914,7 @@
 /area/corsat/gamma/rnr/library)
 "ofP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "white"
@@ -55367,7 +55367,7 @@
 	},
 /area/corsat/sigma/north)
 "oxL" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -55466,7 +55466,7 @@
 /area/corsat/gamma/residential/west)
 "oCa" = (
 /obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "yellow"
@@ -55876,7 +55876,7 @@
 	},
 /area/corsat/gamma/residential)
 "oPq" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat,
 /area/corsat/sigma/dorms)
 "oPu" = (
@@ -56129,7 +56129,7 @@
 /area/corsat/gamma/rnr)
 "oZx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -56351,7 +56351,7 @@
 	},
 /area/corsat/omega/security)
 "phK" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -56401,7 +56401,7 @@
 	},
 /area/corsat/sigma/south/engineering)
 "piZ" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat,
 /area/corsat/gamma/residential/researcher)
 "pji" = (
@@ -56569,7 +56569,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "prG" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -56581,7 +56581,7 @@
 /turf/open/gm/dirt,
 /area/corsat/theta/biodome)
 "psq" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/medium,
 /turf/open/floor{
 	dir = 1;
@@ -56718,7 +56718,7 @@
 /area/corsat/sigma/north)
 "pya" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
 "pyL" = (
@@ -56853,7 +56853,7 @@
 "pEe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "white"
@@ -56909,7 +56909,7 @@
 /area/corsat/sigma/hangar/arrivals)
 "pGp" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -57161,7 +57161,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/corsat/gamma/biodome)
 "pSp" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "darkgreen"
@@ -57219,7 +57219,7 @@
 /area/corsat/omega/offices)
 "pUP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -57325,7 +57325,7 @@
 /area/corsat/theta/biodome)
 "pXp" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "pXx" = (
@@ -57667,7 +57667,7 @@
 	},
 /area/corsat/gamma/security/cells)
 "qhT" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "darkgreencorner"
 	},
@@ -57683,7 +57683,7 @@
 	},
 /area/corsat/omega/hangar)
 "qiW" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "bluegrey"
@@ -57697,7 +57697,7 @@
 /area/corsat/gamma/medbay)
 "qjf" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -58040,7 +58040,7 @@
 /area/corsat/theta/biodome)
 "quI" = (
 /obj/structure/pipes/vents/pump,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -58420,7 +58420,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -58438,7 +58438,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/researcher)
 "qJA" = (
@@ -58771,7 +58771,7 @@
 /area/corsat/theta/biodome)
 "qVz" = (
 /obj/effect/landmark/corpsespawner/PMC,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -58881,7 +58881,7 @@
 /area/corsat/gamma/cargo)
 "raw" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -59352,7 +59352,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet,
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "greenwhite"
@@ -59374,7 +59374,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -59554,7 +59554,7 @@
 	},
 /area/corsat/sigma/south/engineering)
 "rAc" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -59783,7 +59783,7 @@
 /area/corsat/theta/biodome)
 "rJu" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -59800,7 +59800,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -60172,7 +60172,7 @@
 	},
 /area/corsat/sigma/hangar/security)
 "rWE" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -60474,7 +60474,7 @@
 /area/corsat/gamma/residential/showers)
 "sga" = (
 /obj/effect/landmark/hunter_primary,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "darkgreen"
@@ -60531,14 +60531,14 @@
 /area/corsat/gamma/residential/west)
 "shq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/doctor,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
 /area/corsat/gamma/medbay/lobby)
 "shW" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -60709,7 +60709,7 @@
 /area/corsat/gamma/biodome/virology)
 "smk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "bluegreycorner"
 	},
@@ -61000,7 +61000,7 @@
 	},
 /area/corsat/gamma/medbay/lobby)
 "sxI" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "darkgreen"
@@ -61064,7 +61064,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "sBH" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/shuttle/dropship{
@@ -61115,7 +61115,7 @@
 /area/corsat/sigma/biodome)
 "sDx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -61184,7 +61184,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "sGB" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/gamma/rnr/library)
 "sGQ" = (
@@ -61440,7 +61440,7 @@
 	},
 /area/corsat/omega/hangar/security)
 "sOq" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/platform{
 	dir = 1
 	},
@@ -61530,7 +61530,7 @@
 /area/corsat/sigma/airlock/control)
 "sRo" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -61676,7 +61676,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -61768,7 +61768,7 @@
 	},
 /area/corsat/sigma/south/robotics)
 "tav" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -61854,7 +61854,7 @@
 /area/corsat/gamma/residential/west)
 "tcF" = (
 /obj/effect/landmark/corpsespawner/doctor,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "lightplate"
 	},
@@ -61869,7 +61869,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "tdp" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "whitetan"
@@ -62099,7 +62099,7 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/gamma/hangar/monorail)
 "tnQ" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	dir = 1;
@@ -62350,7 +62350,7 @@
 	},
 /area/corsat/gamma/medbay/morgue)
 "tvW" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "spiralplate"
 	},
@@ -62523,7 +62523,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -62608,7 +62608,7 @@
 /area/corsat/omega/maint)
 "tGr" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -62686,7 +62686,7 @@
 	},
 /area/corsat/theta/biodome)
 "tJs" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -62898,7 +62898,7 @@
 /area/corsat/theta/biodome)
 "tQs" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "bluegrey"
@@ -63029,7 +63029,7 @@
 	},
 /area/corsat/gamma/airlock/north)
 "tVc" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/objective_landmark/close,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -63081,7 +63081,7 @@
 	},
 /area/corsat/omega/offices)
 "tWw" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -63253,7 +63253,7 @@
 	},
 /area/corsat/gamma/residential/east)
 "ubW" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -63290,7 +63290,7 @@
 /area/corsat/gamma/biodome/toxins)
 "ucx" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -63414,7 +63414,7 @@
 	},
 /area/corsat/sigma/hangar/security)
 "ujX" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "yellowcorner"
@@ -63551,7 +63551,7 @@
 /turf/open/floor/wood,
 /area/corsat/sigma/cafe)
 "uoQ" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/scientist,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
@@ -63632,7 +63632,7 @@
 	},
 /area/corsat/omega/airlocknorth)
 "usD" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -63658,7 +63658,7 @@
 /area/corsat/theta/biodome)
 "usW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -63821,7 +63821,7 @@
 	},
 /area/corsat/gamma/airlock/control)
 "uyw" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -64247,7 +64247,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/gamma/residential/east)
 "uPK" = (
@@ -64593,7 +64593,7 @@
 	},
 /area/corsat/omega/checkpoint)
 "uZL" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -64954,7 +64954,7 @@
 	},
 /area/corsat/omega/control)
 "vkO" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquareslight"
 	},
@@ -64976,7 +64976,7 @@
 /area/corsat/sigma/hangar)
 "vlv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -65137,7 +65137,7 @@
 	},
 /area/corsat/gamma/biodome/toxins)
 "vsg" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -65198,7 +65198,7 @@
 	},
 /area/corsat/gamma/hangar/arrivals)
 "vuu" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "officesquares"
 	},
@@ -65427,7 +65427,7 @@
 	},
 /area/corsat/gamma/hydroponics)
 "vDu" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "whitetan"
@@ -65527,7 +65527,7 @@
 /obj/structure/noticeboard{
 	pixel_y = 30
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "whitetan"
@@ -65751,7 +65751,7 @@
 /area/corsat/gamma/residential/east)
 "vOw" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -65863,7 +65863,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "whitetan"
@@ -66183,7 +66183,7 @@
 	},
 /area/corsat/omega/hallways)
 "wjb" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/shuttle/dropship{
 	icon_state = "floor8";
 	tag = "icon-rasputin7"
@@ -66320,7 +66320,7 @@
 "wmE" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "white"
@@ -66547,7 +66547,7 @@
 	},
 /area/corsat/gamma/hallwaysouth)
 "wuC" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "sterileplate"
 	},
@@ -66595,7 +66595,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -66624,7 +66624,7 @@
 /area/corsat/gamma/residential/showers)
 "wwC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -66933,7 +66933,7 @@
 	},
 /area/corsat/sigma/hangar/security)
 "wIk" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/corsat{
 	icon_state = "squares"
@@ -67148,7 +67148,7 @@
 /area/corsat/sigma/southeast/datalab)
 "wPq" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	icon_state = "retrosquares"
 	},
@@ -67652,7 +67652,7 @@
 	},
 /area/corsat/gamma/medbay/morgue)
 "xld" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/platform{
 	dir = 4;
 	layer = 2
@@ -67841,7 +67841,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "xsm" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "bluegreycorner"
@@ -67858,7 +67858,7 @@
 /turf/open/gm/grass/weedable,
 /area/corsat/theta/biodome)
 "xsZ" = (
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat,
 /area/corsat/sigma/southeast/generator)
 "xtF" = (
@@ -67892,7 +67892,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "tan"
@@ -68068,7 +68068,7 @@
 /area/corsat/sigma/hangar)
 "xBK" = (
 /obj/effect/landmark/corpsespawner/scientist,
-/obj/effect/decal/cleanable/blood/splatter/animated,
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/wood,
 /area/corsat/sigma/dorms)
 "xCe" = (

@@ -1,4 +1,3 @@
-
 //Not to be confused with /obj/item/reagent_container/food/drinks/bottle
 
 /obj/item/reagent_container/glass/bottle
@@ -80,7 +79,7 @@
 
 /obj/item/reagent_container/glass/bottle/dexalin
 	name = "\improper Dexalin bottle"
-	desc = "A small bottle. Contains dexalin - used to supply blood with oxygen."
+	desc = "A small bottle. Contains dexalin - used to treat oxygen deprivation."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle10"
 	amount_per_transfer_from_this = 60
@@ -143,7 +142,7 @@
 
 /obj/item/reagent_container/glass/bottle/antitoxin
 	name = "\improper Dylovene bottle"
-	desc = "A small bottle of dylovene. Counters poisons, and repairs damage. A wonder drug."
+	desc = "A small bottle of dylovene. Counters poisons, and repairs toxin damage. A wonder drug."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle7"
 	amount_per_transfer_from_this = 60
@@ -174,7 +173,7 @@
 
 /obj/item/reagent_container/glass/bottle/diethylamine
 	name = "diethylamine bottle"
-	desc = "A small bottle."
+	desc = "A small bottle. Contains a potent fertiliser."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
 
@@ -334,7 +333,7 @@
 
 /obj/item/reagent_container/glass/bottle/pacid
 	name = "polytrinic acid bottle"
-	desc = "A small bottle. Contains a small amount of Polytrinic Acid"
+	desc = "A small bottle. Contains a small amount of Polytrinic Acid, an extremely potent and dangerous acid."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
 	
@@ -374,7 +373,7 @@
 
 /obj/item/reagent_container/glass/bottle/bicaridine
 	name = "\improper Bicaridine bottle"
-	desc = "A small bottle. Contains Bicaridine - Used to treat brute damage by doctors."
+	desc = "A small bottle. Contains Bicaridine - Used to treat brute damage."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
 	amount_per_transfer_from_this = 60
@@ -385,7 +384,7 @@
 
 /obj/item/reagent_container/glass/bottle/peridaxon
 	name = "\improper Peridaxon bottle"
-	desc = "A small bottle. Contains Peridaxon - Used by lazy doctors to treat internal organ damage."
+	desc = "A small bottle. Contains Peridaxon - Used by lazy doctors to temporarily halt the effects of internal organ damage."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle4"
 	volume = 20
@@ -420,7 +419,7 @@
 
 /obj/item/reagent_container/glass/bottle/tricordrazine
 	name = "\improper Tricordrazine bottle"
-	desc = "A very small bottle. Contains tricordrazine - A weak but catch-all stimulant for treating all sorts of damage."
+	desc = "A very small bottle. Contains tricordrazine - A weak but catch-all medicine for treating all sorts of damage."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle18"
 	volume = 30

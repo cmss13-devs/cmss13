@@ -447,8 +447,8 @@
 		return 0
 
 /obj/item/storage/belt/grenade
-	name="\improper M276 pattern M40 HEDP rig"
-	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of M40 HEDP Grenades."
+	name="\improper M276 pattern M40 Grenade rig"
+	desc="The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed to carry bulk quantities of M40 pattern and AGM pattern Grenades."
 	icon_state = "grenadebelt" // temp
 	item_state = "marinebelt"
 	w_class = SIZE_LARGE
@@ -475,8 +475,8 @@
 		return ..()
 
 /obj/item/storage/belt/grenade/large
-	name="\improper M276 pattern M40 HEDP rig Mk. II"
-	desc="The M276 Mk. II is is an upgraded version of the M276 HEDP rig, with more storage capacity. It consists of a modular belt with various clips."
+	name="\improper M276 pattern M40 Grenade rig Mk. II"
+	desc="The M276 Mk. II is is an upgraded version of the M276 Grenade rig, with more storage capacity. It consists of a modular belt with various clips."
 	storage_slots = 18
 	max_storage_space = 54
 
@@ -637,7 +637,7 @@
 
 /obj/item/storage/belt/gun/m4a3
 	name = "\improper M276 pattern general pistol holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store 9mm or .45 magazines."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version has a holster assembly that allows one to carry the most common pistols. It also contains side pouches that can store most pistol magazines."
 	storage_slots = 7
 	item_state = "marinebelt"
 	can_hold = list(

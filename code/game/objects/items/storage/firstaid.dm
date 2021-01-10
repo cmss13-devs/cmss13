@@ -47,7 +47,7 @@
 
 /obj/item/storage/firstaid/fire
 	name = "fire first-aid kit"
-	desc = "It's an emergency medical kit for when the toxins lab <i>-spontaneously-</i> burns down."
+	desc = "It's an emergency medical kit for when the dropship ammo storage <i>-spontaneously-</i> burns down."
 	icon_state = "ointment"
 	item_state = "firstaid-ointment"
 	possible_icons_full = list("ointment","firefirstaid")
@@ -99,7 +99,7 @@
 
 /obj/item/storage/firstaid/o2
 	name = "oxygen deprivation first aid"
-	desc = "A box full of oxygen goodies."
+	desc = "A box full of reoxygenating goodies."
 	icon_state = "o2"
 	item_state = "firstaid-o2"
 

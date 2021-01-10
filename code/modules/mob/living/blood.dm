@@ -69,13 +69,15 @@
 
 //Makes a blood drop, leaking amt units of blood from the mob
 /mob/living/carbon/proc/drip(amt)
-	if(blood_volume)
-		blood_volume = max(blood_volume - amt, 0)
-		if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
-			if(amt >= 10)
-				add_splatter_floor(loc)
-			else
-				add_splatter_floor(loc, 1)
+	if(!blood_volume)
+		return
+
+	blood_volume = max(blood_volume - amt, 0)
+	if(isturf(src.loc)) //Blood loss still happens in locker, floor stays clean
+		if(amt >= 10)
+			add_splatter_floor(loc)
+		else
+			add_splatter_floor(loc, TRUE)
 
 /mob/living/carbon/human/drip(amt)
 	if(in_stasis) // stasis now stops bloodloss

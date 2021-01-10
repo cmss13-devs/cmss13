@@ -87,8 +87,7 @@
 		return ret
 
 	if(blood_color && blood_overlay_type)
-		var/image/bloodsies = overlay_image('icons/effects/blood.dmi', "[blood_overlay_type]_blood", blood_color, RESET_COLOR)
-		bloodsies.appearance_flags |= NO_CLIENT_COLOR
+		var/image/bloodsies = overlay_image('icons/effects/blood.dmi', "[blood_overlay_type]_blood", blood_color, RESET_COLOR|NO_CLIENT_COLOR)
 		ret.overlays += bloodsies
 
 	if(LAZYLEN(accessories))

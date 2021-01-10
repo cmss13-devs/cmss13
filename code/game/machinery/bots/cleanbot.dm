@@ -157,7 +157,6 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	if(src.oddbutton && prob(5))
 		visible_message("Something flies out of [src]. He seems to be acting oddly.")
 		var/obj/effect/decal/cleanable/blood/gibs/gib = new /obj/effect/decal/cleanable/blood/gibs(src.loc)
-		//gib.streak(list(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 		src.oldtarget = gib
 	if(!src.target || src.target == null)
 		for (var/obj/effect/decal/cleanable/D in view(7,src))
@@ -271,7 +270,7 @@ text("<A href='?src=\ref[src];operation=oddbutton'>[src.oddbutton ? "Yes" : "No"
 	target_types += /obj/effect/decal/cleanable/dirt
 
 	if(src.blood)
-		target_types += /obj/effect/decal/cleanable/blood/
+		target_types += /obj/effect/decal/cleanable/blood
 
 /obj/structure/machinery/bot/cleanbot/proc/clean(var/obj/effect/decal/cleanable/target)
 	anchored = 1

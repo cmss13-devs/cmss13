@@ -6,11 +6,13 @@
 	..()
 	if(QDELETED(src))
 		return
-	
+
 	if(!damage_overlays[1]) //list hasn't been populated
 		generate_damage_overlays()
 
 	overlays.Cut()
+
+	add_cleanable_overlays()
 
 	//smooth wall stuff
 	if(!special_icon)
@@ -28,7 +30,7 @@
 
 	if(damage)
 		var/current_dmg_overlay = round(damage / damage_cap * damage_overlays.len) + 1
-		if(current_dmg_overlay > damage_overlays.len) 
+		if(current_dmg_overlay > damage_overlays.len)
 			current_dmg_overlay = damage_overlays.len
 
 		damage_overlay = current_dmg_overlay

@@ -39,7 +39,7 @@
 			affected.update_damages()
 	if(ishuman(user) && prob(40))
 		var/mob/living/carbon/human/H = user
-		H.bloody_hands(target, 0)
+		H.add_blood(target.get_blood_color(), BLOOD_HANDS)
 
 	target.pain.recalculate_pain()
 

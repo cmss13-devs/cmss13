@@ -117,11 +117,12 @@
 	var/hands_blood_amt = 0
 	var/feet_blood_color = "" //color of the blood on our feet if there's any
 	var/feet_blood_amt = 0
+	var/datum/component/bloody_feet
 
 	//taken from random files
 	var/last_chew = 0
 
-	//taken from human.dm 
+	//taken from human.dm
 	directional_lum = 0 				//humans carrying light sources only illuminate the area in front of themselves
 	hud_possible = list(HEALTH_HUD,STATUS_HUD, STATUS_HUD_OOC, STATUS_HUD_XENO_INFECTION, STATUS_HUD_XENO_CULTIST, ID_HUD, WANTED_HUD, SQUAD_HUD, ORDER_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, PRED_CLAN, FACTION_HUD)
 	var/embedded_flag	  				//To check if we've need to roll for damage on movement while an item is imbedded in us.
@@ -155,7 +156,7 @@
 		var/datum/job/J = RoleAuthority.roles_by_name[job]
 		if(istype(J, /datum/job/antag))
 			continue
-		
+
 		total_marine_playtime += get_job_playtime(src, job)
 
 	cached_human_playtime = total_marine_playtime

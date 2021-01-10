@@ -1422,7 +1422,7 @@
 	else
 		dirs = alldirs.Copy()
 
-	streak(dirs)
+	INVOKE_ASYNC(streak(dirs))
 
 /obj/effect/decal/cleanable/blood/gibs/robot/pipe_eject(var/direction)
 	var/list/dirs
@@ -1431,4 +1431,4 @@
 	else
 		dirs = alldirs.Copy()
 
-	streak(dirs)
+	INVOKE_ASYNC(streak(dirs))

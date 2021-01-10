@@ -159,7 +159,7 @@
 
 	var/new_layer = bleed_layer - 1
 	changing_layer(new_layer)
-	
+
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
 	if(bleed_layer > 0)
 		if(iscarbon(AM))

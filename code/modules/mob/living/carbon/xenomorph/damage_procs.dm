@@ -208,4 +208,5 @@
 				if(prob(60) && !victim.stat && pain.feels_pain)
 					victim.emote("scream") //Topkek
 				victim.take_limb_damage(0, rand(8, 12)) //Sizzledam! This automagically burns a random existing body part.
+				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time

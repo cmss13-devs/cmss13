@@ -218,6 +218,9 @@
 
 
 /obj/vehicle/multitile/van/attackby(obj/item/O, mob/user)
+	if(user.z != z)
+		return ..()
+
 	if(iswelder(O) && health >= initial(health))
 		var/obj/item/hardpoint/H
 		for(var/obj/item/hardpoint/potential_hardpoint in hardpoints)

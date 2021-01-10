@@ -68,7 +68,7 @@ GLOBAL_LIST_INIT(pp_transformables, list(
 	),
 	list(
 	  name = "Spitter",
-	  key = /mob/living/carbon/Xenomorph/Burrower,
+	  key = /mob/living/carbon/Xenomorph/Spitter,
 	  color = "purple"
 	),
 	list(

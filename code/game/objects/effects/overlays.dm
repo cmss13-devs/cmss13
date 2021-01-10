@@ -75,17 +75,20 @@
 
 		pixel_x = dist_x * 32
 		pixel_y = dist_y * 32
-		
+
 		animate(src, pixel_x = 0, pixel_y = 0, time = glide_time, easing = QUAD_EASING)
-	
+
 	QDEL_IN(src, effect_duration + glide_time)
 
 /obj/effect/overlay/temp/point/big
 	icon_state = "big_arrow"
 	effect_duration = SECONDS_4
 
+/obj/effect/overlay/temp/point/big/greyscale
+	icon_state = "big_arrow_grey"
+
 /obj/effect/overlay/temp/point/big/queen
-	icon_state = "big_arrow_queen"
+	icon_state = "big_arrow_grey"
 	invisibility = INVISIBILITY_MAXIMUM
 
 	var/list/client/clients
@@ -119,10 +122,10 @@
 	for(var/i in clients)
 		var/client/C = i
 		if(!C) continue
-		
+
 		C.images -= self_icon
 		LAZYREMOVE(clients, C)
-	
+
 	clients = null
 	self_icon = null
 

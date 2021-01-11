@@ -1,19 +1,3 @@
-//Bitflag defines are in setup.dm. Referenced here.
-/*
-#define AMMO_EXPLOSIVE 		1
-#define AMMO_XENO_ACID 		2
-#define AMMO_XENO_TOX		4
-#define AMMO_ENERGY 		8
-#define AMMO_ROCKET			16
-#define AMMO_SNIPER			32
-#define AMMO_INCENDIARY		64
-#define AMMO_SKIPS_ALIENS 	256
-#define AMMO_IS_SILENCED 	512
-#define AMMO_IGNORE_ARMOR	1024
-#define AMMO_IGNORE_RESIST	2048
-#define AMMO_BALLISTIC		4096
-*/
-
 /datum/ammo
 	var/name 		= "generic bullet"
 	var/impact_name	= null // Name of icon when trying to give a mob a projectile impact overlay
@@ -55,6 +39,16 @@
 	var/effective_range_min	= EFFECTIVE_RANGE_OFF	//What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.
 	var/effective_range_max	= EFFECTIVE_RANGE_OFF	//What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.
 	var/shell_speed 		= AMMO_SPEED_TIER_1 	// How fast the projectile moves.
+
+	/// A list in the format list(/datum/element/bullet_trait_to_give, ...args) that will be given to a projectile with the current ammo datum
+	var/list/traits_to_give
+
+/datum/ammo/New()
+	set_bullet_traits()
+
+/// Populate traits_to_give in this proc
+/datum/ammo/proc/set_bullet_traits()
+	return
 
 /datum/ammo/can_vv_modify()
 	return FALSE
@@ -294,10 +288,16 @@
 	name = "incendiary pistol bullet"
 	damage_type = BURN
 	shrapnel_chance = 0
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 	accuracy = HIT_ACCURACY_TIER_3
 	damage = BULLET_DAMAGE_TIER_4
+
+/datum/ammo/bullet/pistol/incendiary/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
@@ -315,11 +315,17 @@
 	ping = null //no bounce off.
 	damage_type = BURN
 	debilitate = list(4,4,0,0,0,0,0,0)
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR
 
 	damage = BULLET_DAMAGE_TIER_3
 	damage_var_high = PROJECTILE_VARIANCE_TIER_5
 	shell_speed = AMMO_SPEED_TIER_2
+
+/datum/ammo/bullet/pistol/mankey/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P && P.loc && !M.stat && !istype(M,/mob/living/carbon/human/monkey))
@@ -444,10 +450,16 @@
 	name = "incendiary submachinegun bullet"
 	damage_type = BURN
 	shrapnel_chance = 0
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage = BULLET_DAMAGE_TIER_5
 	accuracy = -HIT_ACCURACY_TIER_2
+
+/datum/ammo/bullet/smg/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/smg/le
 	name = "armor-shredding submachinegun bullet"
@@ -527,13 +539,18 @@
 	name = "incendiary rifle bullet"
 	damage_type = BURN
 	shrapnel_chance = 0
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage = BULLET_DAMAGE_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = -HIT_ACCURACY_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
 
+/datum/ammo/bullet/rifle/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/rifle/m4ra
 	name = "A19 high velocity bullet"
@@ -549,13 +566,19 @@
 
 /datum/ammo/bullet/rifle/m4ra/incendiary
 	name = "A19 high velocity incendiary bullet"
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 	damage = BULLET_DAMAGE_TIER_8
 	accuracy = HIT_ACCURACY_TIER_4
 	scatter = -SCATTER_AMOUNT_TIER_8
 	penetration= ARMOR_PENETRATION_TIER_5
 	shell_speed = AMMO_SPEED_TIER_3
+
+/datum/ammo/bullet/rifle/m4ra/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/rifle/m4ra/impact
 	name = "A19 high velocity impact bullet"
@@ -621,12 +644,18 @@
 /datum/ammo/bullet/shotgun/incendiary
 	name = "incendiary slug"
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY
+	flags_ammo_behavior = AMMO_BALLISTIC
 
 	accuracy = -HIT_ACCURACY_TIER_2
 	max_range = 12
 	damage = BULLET_DAMAGE_TIER_11
 	penetration= ARMOR_PENETRATION_TIER_1
+
+/datum/ammo/bullet/shotgun/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/shotgun/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
 	burst(get_turf(M),P,damage_type)
@@ -747,12 +776,18 @@
 	name = "incendiary sniper bullet"
 	accuracy = 0
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_INCENDIARY|AMMO_SNIPER|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	scatter = 0
 	damage = BULLET_DAMAGE_TIER_12
 	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/sniper/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/sniper/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
 	if(P.homing_target && M == P.homing_target)
@@ -1135,13 +1170,19 @@
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
-	flags_ammo_behavior = AMMO_ROCKET|AMMO_INCENDIARY|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
+	flags_ammo_behavior = AMMO_ROCKET|AMMO_EXPLOSIVE|AMMO_STRIKES_SURFACE
 	damage_type = BURN
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 8
 	damage = BULLET_DAMAGE_TIER_18
 	max_range = 8
+
+/datum/ammo/rocket/wp/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/rocket/wp/drop_flame(turf/T, var/source, var/source_mob)
 	playsound(T, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
@@ -1872,11 +1913,17 @@
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_STOPPED_BY_COVER
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 
 	shell_speed = AMMO_SPEED_TIER_1
 	damage = BULLET_DAMAGE_TIER_4
 	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/shrapnel/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/shrapnel/light // weak shrapnel
 	name = "light shrapnel"
@@ -1962,10 +2009,16 @@
 	name = "flame"
 	icon_state = "pulse0"
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR
 
 	max_range = 6
 	damage = BULLET_DAMAGE_TIER_7
+
+/datum/ammo/flamethrower/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/flamethrower/on_hit_mob(mob/M,obj/item/projectile/P)
 	drop_flame(get_turf(M))
@@ -1988,12 +2041,18 @@
 	new /obj/flamer_fire(T, source, source_mob, R, 2)
 
 /datum/ammo/flamethrower/sentry_flamer
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
+	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
 
 	accuracy = HIT_ACCURACY_TIER_8
 	accurate_range = 6
 	max_range = 12
 	shell_speed = AMMO_SPEED_TIER_3
+
+/datum/ammo/flamethrower/sentry_flamer/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/flamethrower/sentry_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
 	if(!istype(T))
@@ -2005,12 +2064,18 @@
 	name = "flare"
 	ping = null //no bounce off.
 	damage_type = BURN
-	flags_ammo_behavior = AMMO_INCENDIARY|AMMO_HITS_TARGET_TURF
+	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 
 	damage = BULLET_DAMAGE_TIER_3
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 14
 	shell_speed = AMMO_SPEED_TIER_3
+
+/datum/ammo/flare/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		list(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
 	drop_flare(get_turf(P))

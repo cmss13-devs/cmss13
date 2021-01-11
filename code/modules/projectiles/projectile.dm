@@ -109,6 +109,12 @@
 	damage_buildup = ammo.damage_buildup
 	projectile_override_flags = special_flags
 
+	// Apply bullet traits from ammo
+	for(var/entry in ammo.traits_to_give)
+		var/list/L = entry
+		// Need to use the proc instead of the wrapper because each entry is a list
+		_AddElement(L.Copy())
+
 /obj/item/projectile/proc/calculate_damage()
 	if(effective_range_min && distance_travelled < effective_range_min)
 		return max(0, damage - round((effective_range_min - distance_travelled) * damage_falloff))
@@ -767,13 +773,9 @@
 		bullet_message(P)
 		apply_damage(damage, P.ammo.damage_type, P.def_zone, 0, 0, P)
 		P.play_damage_effect(src)
-		if(ammo_flags & AMMO_INCENDIARY)
-			var/datum/reagent/napalm/ut/N = new()
-			if(!TryIgniteMob(20, N))
-				return
-			if(isHumanStrict(src))
-				emote("scream")
-			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
+
+	SEND_SIGNAL(P, COMSIG_BULLET_ACT_LIVING, src, damage, damage)
+
 
 /mob/living/carbon/human/bullet_act(obj/item/projectile/P)
 	if(!P)
@@ -785,7 +787,6 @@
 			bullet_ping(P)
 			return -1
 
-	flash_weak_pain()
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
 	if(ismob(P.weapon_source_mob))
 		var/mob/M = P.weapon_source_mob
@@ -794,11 +795,12 @@
 	var/damage = P.calculate_damage()
 	var/damage_result = damage
 
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_PRE_BULLET_ACT, P) & COMPONENT_BULLET_NO_HIT)
+		return
+
+	flash_weak_pain()
 	if(P.ammo.stamina_damage)
 		apply_stamina_damage(P.ammo.stamina_damage, P.def_zone, ARMOR_ENERGY) // Stamina damage is energy
-
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, P) & COMPONENT_BULLET_NO_HIT)
-		return
 
 	//Shields
 	if( !(ammo_flags & AMMO_ROCKET) ) //No, you can't block rockets.
@@ -837,16 +839,9 @@
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 
 	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
+		. = TRUE
 		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs, firer = P.firer)
 		P.play_damage_effect(src)
-
-		if(ammo_flags & AMMO_INCENDIARY)
-			var/datum/reagent/napalm/ut/N = new()
-			adjust_fire_stacks(20, N)
-			IgniteMob(TRUE)
-			if(!stat && pain.feels_pain)
-				emote("scream")
-			to_chat(src, SPAN_HIGHDANGER("You burst into flames!! Stop drop and roll!"))
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))
 			if(ammo_flags && AMMO_SPECIAL_EMBED)
@@ -868,8 +863,7 @@
 				if(!stat && pain.feels_pain)
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
-
-		return TRUE
+	SEND_SIGNAL(P, COMSIG_BULLET_ACT_HUMAN, src, damage, damage_result)
 
 //Deal with xeno bullets.
 /mob/living/carbon/Xenomorph/bullet_act(obj/item/projectile/P)
@@ -918,16 +912,9 @@
 		if(!stat && prob(5 + round(damage_result / 4)))
 			var/pain_emote = prob(70) ? "hiss" : "roar"
 			emote(pain_emote)
-		if(ammo_flags & AMMO_INCENDIARY)
-			if(caste.fire_immune)
-				if(!stat) to_chat(src, SPAN_AVOIDHARM("You shrug off some persistent flames."))
-			else
-				var/datum/reagent/napalm/ut/N = new()
-				adjust_fire_stacks(10 + round(damage_result / 4), N)
-				IgniteMob()
-				visible_message(SPAN_DANGER("[src] bursts into flames!"), \
-				SPAN_XENODANGER("You burst into flames!! Auuugh! Resist to put out the flames!"))
 		updatehealth()
+
+	SEND_SIGNAL(P, COMSIG_BULLET_ACT_XENO, src, damage, damage_result)
 
 	return TRUE
 

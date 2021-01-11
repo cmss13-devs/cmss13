@@ -143,7 +143,7 @@
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
 /// From /mob/living/carbon/human/bullet_act
-#define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
+#define COMSIG_HUMAN_PRE_BULLET_ACT "human_pre_bullet_act"
 	#define COMPONENT_BULLET_NO_HIT (1<<0)
 
 #define COMSIG_XENOMORPH_OVERWATCH_XENO "xenomorph_overwatch_xeno"
@@ -198,3 +198,11 @@
 // Return non-zero value to override original behaviour
 #define COMSIG_MOB_SCREECH_ACT "mob_screech_act"
 	#define COMPONENT_SCREECH_ACT_CANCEL (1<<0)
+
+// Bullet trait signals
+/// Called when a bullet hits a living mob
+#define COMSIG_BULLET_ACT_LIVING "bullet_act_living"
+/// Called when a bullet hits a human
+#define COMSIG_BULLET_ACT_HUMAN "bullet_act_human"
+/// Called when a bullet hits a xenomorph
+#define COMSIG_BULLET_ACT_XENO "bullet_act_xeno"

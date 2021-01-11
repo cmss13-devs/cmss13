@@ -402,7 +402,7 @@
 			return 0
 		if(!drain_power(M,50)) return
 		cloaked = 1
-		RegisterSignal(M, COMSIG_HUMAN_BULLET_ACT, .proc/bullet_hit)
+		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, .proc/bullet_hit)
 		to_chat(M, SPAN_NOTICE("You are now invisible to normal detection."))
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		for(var/mob/O in oviewers(M))
@@ -421,7 +421,7 @@
 
 /obj/item/clothing/gloves/yautja/proc/decloak(var/mob/user)
 	if(!user) return
-	UnregisterSignal(user, COMSIG_HUMAN_BULLET_ACT)
+	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 	to_chat(user, "Your cloaking device deactivates.")
 	cloaked = 0
 	log_game("[key_name_admin(usr)] has disabled their cloaking device.")

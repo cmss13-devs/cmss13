@@ -81,6 +81,16 @@ Defined in conflicts.dm of the #defines folder.
 	var/has_marine_iff = FALSE //adds IFF to bullets
 	var/hidden = FALSE //Render on gun?
 
+	/// A list in the format list(/datum/element/bullet_trait_to_give, ...args) that will be given to a projectile with the current ammo datum
+	var/list/traits_to_give
+
+/obj/item/attachable/Initialize(mapload, ...)
+	. = ..()
+	set_bullet_traits()
+
+/obj/item/attachable/proc/set_bullet_traits()
+	return
+
 /obj/item/attachable/attackby(obj/item/I, mob/user)
 	if(flags_attach_features & ATTACH_RELOADABLE)
 		if(user.get_inactive_hand() != src)

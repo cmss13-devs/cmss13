@@ -125,6 +125,9 @@
 
 	var/last_recoil_update = 0
 
+	/// A list in the format list(/datum/element/bullet_trait_to_give, ...args) that will be given to a projectile with the current ammo datum
+	var/list/traits_to_give
+
 
 //----------------------------------------------------------
 				//				    \\
@@ -150,6 +153,7 @@
 
 	set_gun_attachment_offsets()
 	set_gun_config_values()
+	set_bullet_traits()
 	update_force_list() //This gives the gun some unique attack verbs for attacking.
 	handle_starting_attachment()
 	handle_random_attachments(random_spawn_chance)
@@ -160,10 +164,12 @@
 	attachable_offset = null
 
 
-//Called by the gun's New(), set the gun variables' values.
-//Each gun gets its own version of the proc instead of adding/substracting
-//amounts to get specific values in each gun subtype's New().
-//This makes reading each gun's values MUCH easier.
+/**
+  * Called by the gun's New(), set the gun variables' values.
+  * Each gun gets its own version of the proc instead of adding/substracting
+  * amounts to get specific values in each gun subtype's New().
+  * This makes reading each gun's values MUCH easier.
+  */
 /obj/item/weapon/gun/proc/set_gun_config_values()
 	fire_delay = FIRE_DELAY_TIER_5
 	accuracy_mult = BASE_ACCURACY_MULT
@@ -187,6 +193,10 @@
 	//reset initial define-values
 	aim_slowdown = initial(aim_slowdown)
 	wield_delay = initial(wield_delay)
+
+/// Populate traits_to_give in this proc
+/obj/item/weapon/gun/proc/set_bullet_traits()
+	return
 
 /obj/item/weapon/gun/proc/recalculate_attachment_bonuses()
 	//Reset silencer mod
@@ -763,6 +773,24 @@ and you're good to go.
 /obj/item/weapon/gun/proc/ready_in_chamber()
 	if(current_mag && current_mag.current_rounds > 0)
 		in_chamber = create_bullet(ammo, initial(name))
+
+		// Apply bullet traits from gun
+		for(var/entry in traits_to_give)
+			var/list/L = entry
+			// Need to use the proc instead of the wrapper because each entry is a list
+			in_chamber._AddElement(L.Copy())
+
+		// Apply bullet traits from attachments
+		for(var/slot in attachments)
+			if(!attachments[slot])
+				continue
+
+			var/obj/item/attachable/AT = attachments[slot]
+			for(var/entry in AT.traits_to_give)
+				var/list/L = entry
+				// Need to use the proc instead of the wrapper because each entry is a list
+				in_chamber._AddComponent(L.Copy())
+
 		current_mag.current_rounds-- //Subtract the round from the mag.
 		return in_chamber
 

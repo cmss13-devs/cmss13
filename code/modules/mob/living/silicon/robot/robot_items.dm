@@ -8,7 +8,7 @@
 
 /obj/item/tool/pen/robopen/attack_self(mob/user as mob)
 
-	var/choice = input("Would you like to change colour or mode?") as null|anything in list("Colour","Mode")
+	var/choice = tgui_input_list(usr, "Would you like to change colour or mode?", list("Colour","Mode"))
 	if(!choice) return
 
 	playsound(src.loc, 'sound/effects/pop.ogg', 25, 0)
@@ -16,7 +16,7 @@
 	switch(choice)
 
 		if("Colour")
-			var/newcolour = input("Which colour would you like to use?") as null|anything in list("black","blue","red","green","yellow")
+			var/newcolour = tgui_input_list(usr, "Which colour would you like to use?", list("black","blue","red","green","yellow"))
 			if(newcolour) colour = newcolour
 
 		if("Mode")
@@ -84,7 +84,7 @@
 	set category = "Object"
 	set src in range(0)
 
-	var/N = input("How much damage should the shield absorb?") in list("5","10","25","50","75","100")
+	var/N = tgui_input_list(usr, "How much damage should the shield absorb?", "Shield level", list("5","10","25","50","75","100"))
 	if (N)
 		shield_level = text2num(N)/100
 

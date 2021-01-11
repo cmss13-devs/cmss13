@@ -206,7 +206,7 @@
 			if(!I.cut_away && I.parent_limb == target_zone)
 				attached_organs |= organ
 
-		var/organ_to_detach = input(user, "Which organ do you want to prepare for removal?") as null|anything in attached_organs
+		var/organ_to_detach = tgui_input_list(user, "Which organ do you want to prepare for removal?", "Remove organ", attached_organs)
 		if(!organ_to_detach)
 			return 0
 		if(affected.surgery_organ)
@@ -270,7 +270,7 @@
 			if(I.cut_away && I.parent_limb == target_zone)
 				removable_organs |= organ
 
-		var/organ_to_remove = input(user, "Which organ do you want to remove?") as null|anything in removable_organs
+		var/organ_to_remove = tgui_input_list(user, "Which organ do you want to remove?", "Remove organ", removable_organs)
 		if(!organ_to_remove)
 			return 0
 		if(affected.surgery_organ) //already working on an organ
@@ -448,7 +448,7 @@
 			if(I.cut_away && I.parent_limb == target_zone)
 				removable_organs |= organ
 
-		var/organ_to_replace = input(user, "Which organ do you want to reattach?") as null|anything in removable_organs
+		var/organ_to_replace = tgui_input_list(user, "Which organ do you want to reattach?", "Attach organ", removable_organs)
 		if(!organ_to_replace)
 			return 0
 

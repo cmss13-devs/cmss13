@@ -230,7 +230,7 @@
 
 	spawn(0)
 		var/newname
-		newname = input(src,"You are drone. Pick a name, no duplicates allowed.", null, null) in greek_letters
+		newname = tgui_input_list(src,"You are drone. Pick a name, no duplicates allowed.", "Drone name pick", greek_letters)
 		if(custom_name)
 			return
 

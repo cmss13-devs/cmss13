@@ -236,7 +236,7 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 					return
 
 				// Allow the queen to choose the ship section to crash into
-				var/crash_target = input("Choose a ship section to target","Hijack",null) as null|anything in almayer_ship_sections + list("Cancel")
+				var/crash_target = tgui_input_list(usr, "Choose a ship section to target","Hijack", almayer_ship_sections + list("Cancel"))
 				if(crash_target == "Cancel")
 					return
 

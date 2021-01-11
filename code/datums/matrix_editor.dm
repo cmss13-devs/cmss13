@@ -220,7 +220,7 @@
 			if(!A)
 				return
 
-			var/other_m = input("Select the other matrix to multiply by:", "Matrix multiplication") as null|anything in (stored_matrices + "Cancel")
+			var/other_m = tgui_input_list(usr, "Select the other matrix to multiply by:", "Matrix multiplication", (stored_matrices + "Cancel"))
 			if(!other_m || other_m == "Cancel")
 				return
 
@@ -246,7 +246,7 @@
 			if(!A)
 				return
 
-			var/other_m = input("Select the other matrix to subtract by:", "Matrix subtraction") as null|anything in (stored_matrices + "Cancel")
+			var/other_m = tgui_input_list(usr, "Select the other matrix to subtract by:", "Matrix subtraction", (stored_matrices + "Cancel"))
 			if(!other_m || other_m == "Cancel")
 				return
 
@@ -264,7 +264,7 @@
 			if(!A)
 				return
 
-			var/other_m = input("Select the other matrix to add by:", "Matrix addition") as null|anything in (stored_matrices + "Cancel")
+			var/other_m = tgui_input_list(usr, "Select the other matrix to add by:", "Matrix addition", (stored_matrices + "Cancel"))
 			if(!other_m || other_m == "Cancel")
 				return
 

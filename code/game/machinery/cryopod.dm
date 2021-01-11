@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 			to_chat(user, SPAN_WARNING("There is nothing to recover from storage."))
 			return
 
-		var/obj/item/I = input(usr, "Please choose which object to retrieve.", "Object recovery",null) as null|anything in frozen_items_for_type
+		var/obj/item/I = tgui_input_list(usr, "Please choose which object to retrieve.", "Object recovery",null, frozen_items_for_type)
 		if(!I)
 			return
 

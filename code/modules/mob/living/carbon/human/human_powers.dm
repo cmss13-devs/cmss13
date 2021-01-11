@@ -19,7 +19,7 @@
 			choices += M
 	choices -= src
 
-	var/mob/living/T = input(src,"Who do you wish to tackle?") as null|anything in choices
+	var/mob/living/T = tgui_input_list(src,"Who do you wish to tackle?", "Tackle", choices)
 
 	if(!T || !src || stat || !Adjacent(T))
 		return
@@ -66,7 +66,7 @@
 			choices += M
 	choices -= src
 
-	var/mob/living/T = input(src,"Who do you wish to leap at?") as null|anything in choices
+	var/mob/living/T = tgui_input_list(src,"Who do you wish to leap at?", "Leap", choices)
 
 	if(!T || !src || stat || get_dist(get_turf(T), get_turf(src)) > 6)
 		return
@@ -150,7 +150,7 @@
 	var/text = null
 
 	targets += getmobs() //Fill list, prompt user with list
-	target = input("Select a creature!", "Speak to creature", null, null) as null|anything in targets
+	target = tgui_input_list(usr, "Select a creature!", "Speak to creature", targets)
 
 	if(!target)
 		return
@@ -207,7 +207,7 @@
 		return
 
 	if(!order)
-		order = input(src, "Choose an order") in list(COMMAND_ORDER_MOVE, COMMAND_ORDER_HOLD, COMMAND_ORDER_FOCUS, "help", "cancel")
+		order = tgui_input_list(src, "Choose an order", "Order to send", list(COMMAND_ORDER_MOVE, COMMAND_ORDER_HOLD, COMMAND_ORDER_FOCUS, "help", "cancel"))
 		if(order == "help")
 			to_chat(src, SPAN_NOTICE("<br>Orders give a buff to nearby soldiers for a short period of time, followed by a cooldown, as follows:<br><B>Move</B> - Increased mobility and chance to dodge projectiles.<br><B>Hold</B> - Increased resistance to pain and combat wounds.<br><B>Focus</B> - Increased gun accuracy and effective range.<br>"))
 			return
@@ -328,7 +328,7 @@
 	if(!isSynth(usr) || usr.is_mob_incapacitated())
 		return
 
-	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD", null) as null|anything in list("Medical HUD", "Security HUD")
+	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", null, list("Medical HUD", "Security HUD"))
 	if(usr.is_mob_incapacitated())
 		return
 

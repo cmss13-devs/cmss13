@@ -336,7 +336,7 @@
 /proc/select_active_ai(var/mob/user)
 	var/list/ais = active_ais()
 	if(ais.len)
-		if(user)	. = input(usr,"AI signals detected:", "AI selection") in ais
+		if(user)	. = tgui_input_list(usr,"AI signals detected:", "AI selection", ais)
 		else		. = pick(ais)
 	return .
 
@@ -1546,7 +1546,7 @@ var/list/WALLITEMS = list(
 	var/list/options = list()
 	for(var/datum/D in marked_datums)
 		options += "Marked datum ([D] - \ref[D])"
-	var/choice = input("Select marked datum", "Marked datums") as null|anything in options
+	var/choice = tgui_input_list(usr, "Select marked datum", "Marked datums", options)
 
 	if(!choice)
 		return null

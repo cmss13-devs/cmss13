@@ -102,7 +102,7 @@
 
 /datum/action/xeno_action/morph_resin/action_activate()
 	var/mob/living/carbon/Xenomorph/X = owner
-	var/choice = input(X, "Choose a pheromone") in X.caste.structures_allowed + "help" + "cancel"
+	var/choice = tgui_input_list(X, "Choose a pheromone", X.caste.structures_allowed + "help" + "cancel")
 	if(choice == "help")
 		var/message = "<br>Morphing into resin sacrifices your current body in order to create special structures that can benefit the hive, as follows:<br>"
 		for(var/structure_name in X.caste.structures_allowed)

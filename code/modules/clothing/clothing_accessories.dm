@@ -121,7 +121,7 @@
 		if(ass.removable)
 			removables |= ass
 	if(LAZYLEN(accessories) > 1)
-		A = input("Select an accessory to remove from [src]") as null|anything in removables
+		A = tgui_input_list(usr, "Select an accessory to remove from [src]", "Remove accessory", removables)
 	else
 		A = LAZYACCESS(accessories, 1)
 	src.remove_accessory(usr,A)

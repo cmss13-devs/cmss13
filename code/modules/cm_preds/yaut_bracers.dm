@@ -742,7 +742,7 @@
 			return
 	if(!yautja_gear.len)
 		return
-	var/obj/item/pickeditem = input("item to remove") as null|anything in yautja_gear
+	var/obj/item/pickeditem = tgui_input_list(usr, "item to remove", "Remove item", yautja_gear)
 	if(pickeditem && !(pickeditem in untracked_yautja_gear))
 		untracked_yautja_gear += pickeditem
 		remove_from_missing_pred_gear(pickeditem)
@@ -769,7 +769,7 @@
 			return
 	if(!untracked_yautja_gear.len)
 		return
-	var/obj/item/pickeditem = input("item to add") as null|anything in untracked_yautja_gear
+	var/obj/item/pickeditem = tgui_input_list(usr, "item to add", "Add item", untracked_yautja_gear)
 	if(pickeditem && !(pickeditem in yautja_gear))
 		untracked_yautja_gear -= pickeditem
 		add_to_missing_pred_gear(pickeditem)

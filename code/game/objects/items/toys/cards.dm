@@ -190,7 +190,7 @@
 			players += player
 	//players -= usr
 
-	var/mob/living/M = input("Who do you wish to deal a card?") as null|anything in players
+	var/mob/living/M = tgui_input_list(usr, "Who do you wish to deal a card?", "Deal card", players)
 	if(!usr || QDELETED(src) || !Adjacent(usr) || !M || QDELETED(M)) return
 
 	if(!cards.len)
@@ -315,7 +315,7 @@
 	var/list/to_discard = list()
 	for(var/datum/playingcard/P in cards)
 		to_discard[P.name] = P
-	var/discarding = input("Which card do you wish to put down?") as null|anything in to_discard
+	var/discarding = tgui_input_list(usr, "Which card do you wish to put down?", "Discard card", to_discard)
 
 	if(!discarding || !usr || QDELETED(src) || loc != usr) return
 
@@ -365,7 +365,7 @@
 	var/list/to_pick_up = list()
 	for(var/datum/playingcard/P in cards)
 		to_pick_up[P.name] = P
-	var/picking_up = input("Which card do you wish to pick up?") as null|anything in to_pick_up
+	var/picking_up = tgui_input_list(usr, "Which card do you wish to pick up?", "Take a card", to_pick_up)
 
 	if(!picking_up || !usr || QDELETED(src)) return
 

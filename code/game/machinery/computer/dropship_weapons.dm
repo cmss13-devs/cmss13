@@ -394,7 +394,7 @@
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		var/list/directions = list(dir2text(NORTH), dir2text(SOUTH), dir2text(EAST), dir2text(WEST))
-		var/chosen = input("Select new Direction for the strafing run", "Select Direction", dir2text(firemission_envelope.recorded_dir)) as null|anything in directions
+		var/chosen = tgui_input_list(usr, "Select new Direction for the strafing run", "Select Direction", dir2text(firemission_envelope.recorded_dir), directions)
 
 		var/chosen_dir = text2dir(chosen)
 		if(!chosen_dir)

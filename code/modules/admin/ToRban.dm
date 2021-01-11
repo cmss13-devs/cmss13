@@ -69,7 +69,7 @@
 			src << browse(dat,"window=ToRban_show")
 		if("remove")
 			var/savefile/F = new(TORFILE)
-			var/choice = input(src,"Please select an IP address to remove from the ToR banlist:","Remove ToR ban",null) as null|anything in F.dir
+			var/choice = tgui_input_list(src,"Please select an IP address to remove from the ToR banlist:","Remove ToR ban",null, F.dir)
 			if(choice)
 				F.dir.Remove(choice)
 				to_chat(src, "<b>Address removed</b>")

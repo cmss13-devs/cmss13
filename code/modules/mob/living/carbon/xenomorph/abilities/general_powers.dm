@@ -164,11 +164,11 @@
 		SPAN_XENOWARNING("You stop emitting pheromones."), null, 5)
 	else
 
-		var/choice = input(X, "Choose a pheromone") in X.caste.aura_allowed + "help" + "cancel"
+		var/choice = tgui_input_list(X, "Choose a pheromone", "Pheromone Menu", X.caste.aura_allowed + "help" + "cancel")
 		if(choice == "help")
 			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
 			return
-		if(choice == "cancel" || X.current_aura || !X.check_state(1)) //If they are stacking windows, disable all input
+		if(!choice || choice == "cancel" || X.current_aura || !X.check_state(1)) //If they are stacking windows, disable all input
 			return
 		if (!check_and_use_plasma_owner())
 			return

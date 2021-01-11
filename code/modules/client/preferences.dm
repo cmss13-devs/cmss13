@@ -654,7 +654,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							continue
 						valid_gear_choices += gear_name
 
-					var/choice = input(user, "Select gear to add: ") as null|anything in valid_gear_choices
+					var/choice = tgui_input_list(user, "Select gear to add: ", "Gear to add", valid_gear_choices)
 
 					if(choice && gear_datums[choice])
 
@@ -806,7 +806,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						if(new_name) synthetic_name = new_name
 						else to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and .</font>")
 				if("synth_type")
-					var/new_synth_type = input(user, "Choose your model of synthetic:", "Make and Model") as null|anything in synth_types
+					var/new_synth_type = tgui_input_list(user, "Choose your model of synthetic:", "Make and Model", synth_types)
 					if(new_synth_type) synthetic_type = new_synth_type
 				if("pred_name")
 					var/raw_name = input(user, "Choose your Predator's name:", "Character Preference")  as text|null
@@ -837,7 +837,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(whitelist_flags & WHITELIST_COMMANDER_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
 
-					var/new_commander_status = input(user, "Choose your new Commander Whitelist Status.", "Commander Status") in options
+					var/new_commander_status = tgui_input_list(user, "Choose your new Commander Whitelist Status.", "Commander Status", options)
 
 					if(!new_commander_status)
 						return
@@ -852,7 +852,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(whitelist_flags & WHITELIST_YAUTJA_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
 
-					var/new_yautja_status = input(user, "Choose your new Yautja Whitelist Status.", "Yautja Status") in options
+					var/new_yautja_status = tgui_input_list(user, "Choose your new Yautja Whitelist Status.", "Yautja Status", options)
 
 					if(!new_yautja_status)
 						return
@@ -867,7 +867,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(whitelist_flags & WHITELIST_SYNTHETIC_LEADER)
 						options += list("Leader" = WHITELIST_LEADER)
 
-					var/new_synth_status = input(user, "Choose your new Synthetic Whitelist Status.", "Synthetic Status") in options
+					var/new_synth_status = tgui_input_list(user, "Choose your new Synthetic Whitelist Status.", "Synthetic Status", options)
 
 					if(!new_synth_status)
 						return
@@ -992,13 +992,13 @@ var/const/MAX_SAVE_SLOTS = 10
 						h_style = new_h_style
 
 				if ("ethnicity")
-					var/new_ethnicity = input(user, "Choose your character's ethnicity:", "Character Preferences") as null|anything in GLOB.ethnicities_list
+					var/new_ethnicity = tgui_input_list(user, "Choose your character's ethnicity:", "Character Preferences", GLOB.ethnicities_list)
 
 					if (new_ethnicity)
 						ethnicity = new_ethnicity
 
 				if ("body_type")
-					var/new_body_type = input(user, "Choose your character's body type:", "Character Preferences") as null|anything in GLOB.body_types_list
+					var/new_body_type = tgui_input_list(user, "Choose your character's body type:", "Character Preferences", GLOB.body_types_list)
 
 					if (new_body_type)
 						body_type = new_body_type
@@ -1046,7 +1046,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/list/undershirt_options
 					undershirt_options = undershirt_t
 
-					var/new_undershirt = input(user, "Choose your character's undershirt:", "Character Preference") as null|anything in undershirt_options
+					var/new_undershirt = tgui_input_list(user, "Choose your character's undershirt:", "Character Preference", undershirt_options)
 					if (new_undershirt)
 						undershirt = undershirt_options.Find(new_undershirt)
 					ShowChoices(user)
@@ -1080,7 +1080,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						preferred_squad = new_pref_squad
 
 				if("limbs")
-					var/limb_name = input(user, "Which limb do you want to change?") as null|anything in list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand")
+					var/limb_name = tgui_input_list(user, "Which limb do you want to change?", list("Left Leg","Right Leg","Left Arm","Right Arm","Left Foot","Right Foot","Left Hand","Right Hand"))
 					if(!limb_name) return
 
 					var/limb = null
@@ -1112,7 +1112,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							limb = "r_hand"
 							third_limb = "r_arm"
 
-					var/new_state = input(user, "What state do you wish the limb to be in?") as null|anything in list("Normal","Prothesis") //"Amputated"
+					var/new_state = tgui_input_list(user, "What state do you wish the limb to be in?", list("Normal","Prothesis")) //"Amputated")
 					if(!new_state) return
 
 					switch(new_state)
@@ -1127,7 +1127,7 @@ var/const/MAX_SAVE_SLOTS = 10
 							if(third_limb && organ_data[third_limb] == "amputated")
 								organ_data[third_limb] = null
 				if("organs")
-					var/organ_name = input(user, "Which internal function do you want to change?") as null|anything in list("Heart", "Eyes")
+					var/organ_name = tgui_input_list(user, "Which internal function do you want to change?", list("Heart", "Eyes"))
 					if(!organ_name) return
 
 					var/organ = null
@@ -1137,7 +1137,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						if("Eyes")
 							organ = "eyes"
 
-					var/new_state = input(user, "What state do you wish the organ to be in?") as null|anything in list("Normal","Assisted","Mechanical")
+					var/new_state = tgui_input_list(user, "What state do you wish the organ to be in?", "Organ state", list("Normal","Assisted","Mechanical"))
 					if(!new_state) return
 
 					switch(new_state)
@@ -1149,16 +1149,16 @@ var/const/MAX_SAVE_SLOTS = 10
 							organ_data[organ] = "mechanical"
 
 				if("skin_style")
-					var/skin_style_name = input(user, "Select a new skin style") as null|anything in list("default1", "default2", "default3")
+					var/skin_style_name = tgui_input_list(user, "Select a new skin style", "Skin style", list("default1", "default2", "default3"))
 					if(!skin_style_name) return
 
 				if("citizenship")
-					var/choice = input(user, "Please choose your current citizenship.") as null|anything in citizenship_choices
+					var/choice = tgui_input_list(user, "Please choose your current citizenship.", citizenship_choices)
 					if(choice)
 						citizenship = choice
 
 				if("religion")
-					var/choice = input(user, "Please choose a religion.") as null|anything in religion_choices + list("None","Other")
+					var/choice = tgui_input_list(user, "Please choose a religion.", religion_choices + list("None","Other"))
 					if(!choice)
 						return
 					if(choice == "Other")
@@ -1206,7 +1206,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					UI_style_alpha = UI_style_alpha_new
 
 				if("stylesheet")
-					var/stylesheet_new = input(user, "Select a stylesheet to use (affects non-NanoUI interfaces)") in stylesheets
+					var/stylesheet_new = tgui_input_list(user, "Select a stylesheet to use (affects non-NanoUI interfaces)", "Select a stylesheet", stylesheets)
 					stylesheet = stylesheet_new
 
 				if("ViewMC")

@@ -215,7 +215,7 @@
 			possible_xenos += T
 
 		if(possible_xenos.len > 1)
-			var/mob/living/carbon/Xenomorph/selected_xeno = input(X, "Target", "Watch which xenomorph leader?") as null|anything in possible_xenos
+			var/mob/living/carbon/Xenomorph/selected_xeno = tgui_input_list(X, "Target", "Watch which xenomorph leader?", possible_xenos)
 			if(!selected_xeno || selected_xeno.hive_pos == NORMAL_XENO || selected_xeno == X.observed_xeno || selected_xeno.stat == DEAD || selected_xeno.z != X.z || !X.check_state())
 				return
 			X.overwatch(selected_xeno)

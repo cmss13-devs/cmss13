@@ -519,7 +519,7 @@
 	pslash_delay = TRUE
 	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown), SECONDS_30)
 
-	var/choice = input("Choose which level of slashing hosts to permit to your hive.","Harming") as null|anything in list("Allowed", "Restricted - Hosts of Interest", "Forbidden")
+	var/choice = tgui_input_list(usr, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Hosts of Interest", "Forbidden"))
 
 	if(choice == "Allowed")
 		to_chat(src, SPAN_XENONOTICE("You allow slashing."))
@@ -542,7 +542,7 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
-	var/choice = input("Choose which level of construction placement freedom to permit to your hive.","Harming") as null|anything in list("Queen", "Leaders", "Anyone")
+	var/choice = tgui_input_list(usr, "Choose which level of construction placement freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"))
 
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
@@ -566,7 +566,7 @@
 		to_chat(src, SPAN_WARNING("You can't do that now."))
 		return
 
-	var/choice = input("Choose which level of destruction freedom to permit to your hive.","Harming") as null|anything in list("Queen", "Leaders", "Anyone")
+	var/choice = tgui_input_list(usr, "Choose which level of destruction freedom to permit to your hive.","Harming", list("Queen", "Leaders", "Anyone"))
 
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))

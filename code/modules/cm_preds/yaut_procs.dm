@@ -53,7 +53,7 @@
 	if(src in choices)
 		choices -= src
 
-	var/mob/living/carbon/T = input(src,"What do you wish to butcher?") as null|anything in choices
+	var/mob/living/carbon/T = tgui_input_list(src,"What do you wish to butcher?", "Butcher", choices)
 
 	var/mob/living/carbon/Xenomorph/xeno_victim
 	var/mob/living/carbon/human/victim
@@ -94,7 +94,7 @@
 	var/procedure = ""
 	if(ishuman(T))
 		victim = T
-		procedure = input(src,"Which slice would you like to take?") as null|anything in procedureChoices
+		procedure = tgui_input_list(src,"Which slice would you like to take?", "Take slice", procedureChoices)
 
 
 	if (isXeno(T) || procedure == "Skin")
@@ -269,12 +269,12 @@
 		var/list/other = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Purifying Smart-Disc", "The Formidable Plate Armor")//, "The Clever Hologram")
 		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor") //Can only select them once each.
 
-		var/msel = input("Which weapon shall you use on your hunt?:","Melee Weapon") as null|anything in melee
+		var/msel = tgui_input_list(usr, "Which weapon shall you use on your hunt?:","Melee Weapon", melee)
 		if(!msel) return //We don't want them to cancel out then get nothing.
-		var/mother_0 = input("Which secondary gear shall you take?","Item 1 (of 2)") as null|anything in other
+		var/mother_0 = tgui_input_list(usr, "Which secondary gear shall you take?","Item 1 (of 2)", other)
 		if(!mother_0) return
 		if(mother_0 in restricted) other -= mother_0
-		var/mother_1 = input("And the last piece of equipment?:","Item 2 (of 2)") as null|anything in other
+		var/mother_1 = tgui_input_list(usr, "And the last piece of equipment?:","Item 2 (of 2)", other)
 		if(!mother_1) return
 
 		if(!istype(Y) || Y.upgrades) return //Tried to run it several times in the same loop. That's not happening.
@@ -338,7 +338,7 @@
 		if((isHumanStrict(prey) || isXeno(prey)) && prey.stat != DEAD)
 			target_list += prey
 
-	var/mob/living/M = input("Target", "Choose a prey.") as null|anything in target_list
+	var/mob/living/M = tgui_input_list(usr, "Target", "Choose a prey.", target_list)
 	if(!M) return
 	yautja_hunted_prey = M
 

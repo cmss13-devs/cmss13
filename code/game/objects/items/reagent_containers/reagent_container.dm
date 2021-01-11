@@ -21,7 +21,7 @@
 	var/obj/item/reagent_container/R = user.get_active_hand()
 	if(!istype(R))
 		return
-	var/N = input("Amount per transfer from this:","[R]") as null|anything in possible_transfer_amounts
+	var/N = tgui_input_list(usr, "Amount per transfer from this:","[R]", possible_transfer_amounts)
 	if (N)
 		R.amount_per_transfer_from_this = N
 

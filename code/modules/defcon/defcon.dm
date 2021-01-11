@@ -73,7 +73,7 @@ var/global/datum/controller/defcon/defcon_controller
 	var/list/rewards_for_purchase = available_rewards()
 	if(rewards_for_purchase.len == 0)
 		to_chat(usr, "No additional assets have been authorised at this point. Increase the threat assessment level to enable further assets.")
-	var/pick = input("Which asset would you like to enable?") as null|anything in rewards_for_purchase
+	var/pick = tgui_input_list(usr, "Which asset would you like to enable?", "Enable asset", rewards_for_purchase)
 	if(!pick)
 		return
 	if(GLOB.defcon_reward_list[pick].apply_reward(src))

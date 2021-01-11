@@ -13,7 +13,7 @@ var/list/forbidden_varedit_object_types = list(
 	possible_classes += "edit referenced object"
 	possible_classes += "restore to default"
 
-	class = input("What kind of variable?","Variable Type") as null|anything in possible_classes
+	class = tgui_input_list(usr, "What kind of variable?","Variable Type", possible_classes)
 	if(!class)
 		return
 
@@ -28,7 +28,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Enter new number:","Num") as null|num
 
 		if("type")
-			var_value = input("Enter type:","Type") as null|anything in typesof(/obj,/mob,/area,/turf)
+			var_value = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
 
 		if("reference")
 			var_value = input("Select reference:","Reference") as null|mob|obj|turf|area in world
@@ -43,7 +43,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Pick icon:","Icon") as null|icon
 
 		if("matrix")
-			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
 			if(!matrix_name || matrix_name == "Cancel")
 				return
 
@@ -74,7 +74,7 @@ var/list/forbidden_varedit_object_types = list(
 	possible_classes += "edit referenced object"
 	possible_classes += "restore to default"
 
-	class = input("What kind of variable?","Variable Type") as null|anything in possible_classes
+	class = tgui_input_list(usr, "What kind of variable?","Variable Type", possible_classes)
 	if(!class)
 		return
 
@@ -92,7 +92,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Enter new number:","Num") as num
 
 		if("type")
-			var_value = input("Enter type:","Type") in typesof(/obj,/mob,/area,/turf)
+			var_value = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
 
 		if("reference")
 			var_value = input("Select reference:","Reference") as mob|obj|turf|area in world
@@ -107,7 +107,7 @@ var/list/forbidden_varedit_object_types = list(
 			var_value = input("Pick icon:","Icon") as icon
 
 		if("matrix")
-			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
 			if(!matrix_name || matrix_name == "Cancel")
 				return
 
@@ -140,7 +140,7 @@ var/list/forbidden_varedit_object_types = list(
 	var/list/locked = list("vars", "key", "ckey", "client", "icon")
 	var/list/names = sortList(L)
 
-	var/variable = input("Which var?","Var") as null|anything in names + "(ADD VAR)"
+	var/variable = tgui_input_list(usr, "Which var?","Var", names + "(ADD VAR)")
 
 	if(variable == "(ADD VAR)")
 		mod_list_add(L)
@@ -161,41 +161,41 @@ var/list/forbidden_varedit_object_types = list(
 
 	else if(isnum(variable))
 		to_chat(usr, "Variable appears to be <b>NUM</b>.")
-		default = "num"
+
 		dir = 1
 
 	else if(istext(variable))
 		to_chat(usr, "Variable appears to be <b>TEXT</b>.")
-		default = "text"
+
 
 	else if(isloc(variable))
 		to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
-		default = "reference"
+
 
 	else if(isicon(variable))
 		to_chat(usr, "Variable appears to be <b>ICON</b>.")
 		variable = "[icon2html(variable, usr)]"
-		default = "icon"
+
 
 	else if(istype(variable,/matrix))
 		to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
-		default = "matrix"
+
 
 	else if(istype(variable,/atom) || istype(variable,/datum))
 		to_chat(usr, "Variable appears to be <b>TYPE</b>.")
-		default = "type"
+
 
 	else if(istype(variable,/list))
 		to_chat(usr, "Variable appears to be <b>LIST</b>.")
-		default = "list"
+
 
 	else if(istype(variable,/client))
 		to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
-		default = "cancel"
+
 
 	else
 		to_chat(usr, "Variable appears to be <b>FILE</b>.")
-		default = "file"
+
 
 	to_chat(usr, "Variable contains: [variable]")
 	if(dir)
@@ -236,7 +236,7 @@ var/list/forbidden_varedit_object_types = list(
 		choices += "edit associated variable"
 	choices += "DELETE FROM LIST"
 
-	class = input("What kind of variable?","Variable Type",default) as null|anything in choices
+	class = tgui_input_list(usr, "What kind of variable?","Variable Type", choices)
 
 	if(!class)
 		return
@@ -263,7 +263,7 @@ var/list/forbidden_varedit_object_types = list(
 			L[L.Find(variable)] = input("Enter new number:","Num") as num
 
 		if("type")
-			L[L.Find(variable)] = input("Enter type:","Type") in typesof(/obj,/mob,/area,/turf)
+			L[L.Find(variable)] = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
 
 		if("reference")
 			L[L.Find(variable)] = input("Select reference:","Reference") as mob|obj|turf|area in world
@@ -278,7 +278,7 @@ var/list/forbidden_varedit_object_types = list(
 			L[L.Find(variable)] = input("Pick icon:","Icon") as icon
 
 		if("matrix")
-			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
 			if(!matrix_name || matrix_name == "Cancel")
 				return
 
@@ -384,7 +384,7 @@ var/list/forbidden_varedit_object_types = list(
 
 		names = sortList(names)
 
-		variable = input("Which var?","Var") as null|anything in names
+		variable = tgui_input_list(usr, "Which var?","Var", names)
 		if(!variable)	return
 		var_value = O.vars[variable]
 
@@ -394,27 +394,26 @@ var/list/forbidden_varedit_object_types = list(
 	if(!autodetect_class)
 
 		var/dir
-		var/default
 		if(isnull(var_value))
 			to_chat(usr, "Unable to determine variable type.")
 
 		else if(isnum(var_value))
 			to_chat(usr, "Variable appears to be <b>NUM</b>.")
-			default = "num"
+
 			dir = 1
 
 		else if(istext(var_value))
 			to_chat(usr, "Variable appears to be <b>TEXT</b>.")
-			default = "text"
+
 
 		else if(isloc(var_value))
 			to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
-			default = "reference"
+
 
 		else if(isicon(var_value))
 			to_chat(usr, "Variable appears to be <b>ICON</b>.")
 			var_value = "\icon[var_value]"
-			default = "icon"
+
 
 		else if(istype(var_value,/matrix))
 			to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
@@ -422,19 +421,19 @@ var/list/forbidden_varedit_object_types = list(
 
 		else if(istype(var_value,/atom) || istype(var_value,/datum))
 			to_chat(usr, "Variable appears to be <b>TYPE</b>.")
-			default = "type"
+
 
 		else if(istype(var_value,/list))
 			to_chat(usr, "Variable appears to be <b>LIST</b>.")
-			default = "list"
+
 
 		else if(istype(var_value,/client))
 			to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
-			default = "cancel"
+
 
 		else
 			to_chat(usr, "Variable appears to be <b>FILE</b>.")
-			default = "file"
+
 
 		to_chat(usr, "Variable contains: [var_value]")
 		if(dir)
@@ -469,7 +468,7 @@ var/list/forbidden_varedit_object_types = list(
 		possible_classes += "edit referenced object"
 		possible_classes += "restore to default"
 
-		class = input("What kind of variable?","Variable Type",default) as null|anything in possible_classes
+		class = tgui_input_list(usr, "What kind of variable?","Variable Type", possible_classes)
 		if(!class)
 			return
 
@@ -518,7 +517,7 @@ var/list/forbidden_varedit_object_types = list(
 				O.vars[variable] = var_new
 
 		if("type")
-			var/var_new = input("Enter type:","Type",O.vars[variable]) as null|anything in typesof(/obj,/mob,/area,/turf)
+			var/var_new = tgui_input_list(usr, "Enter type:","Type",O.vars[variable], typesof(/obj,/mob,/area,/turf))
 			if(var_new==null) return
 			O.vars[variable] = var_new
 
@@ -543,7 +542,7 @@ var/list/forbidden_varedit_object_types = list(
 			O.vars[variable] = var_new
 
 		if("matrix")
-			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
 			if(!matrix_name || matrix_name == "Cancel")
 				return
 

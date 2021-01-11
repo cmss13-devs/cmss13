@@ -121,7 +121,7 @@
 
 		beacons += list("[name]" = em_call) // I hate byond
 
-	var/choice = input(usr, "Choose a distress beacon to join", "") in beacons
+	var/choice = tgui_input_list(usr, "Choose a distress beacon to join", "", beacons)
 
 	if(!choice)
 		to_chat(usr, "Something seems to have gone wrong!")

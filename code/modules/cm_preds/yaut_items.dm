@@ -381,7 +381,7 @@
 		else if(clan_info.clan_id)
 			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
 
-	var/clan = ship_to_tele[(input(H, "Select a ship to teleport to", "[src]") as null|anything in ship_to_tele)]
+	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
 
 	if((!clan || !(clan in pred_ships)) && clan != CLAN_SHIP_ALMAYER)
 		return
@@ -901,7 +901,7 @@
 			L += H.real_name
 		L["Cancel"] = "Cancel"
 
-		var/choice = input(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View") as null|anything in L
+		var/choice = tgui_input_list(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View", L)
 		if(!choice || choice == "Cancel" || isnull(choice))
 			user.unset_interaction()
 			to_chat(user, "Stopping camera feed.")

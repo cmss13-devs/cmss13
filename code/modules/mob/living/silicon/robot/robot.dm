@@ -160,7 +160,7 @@ var/list/robot_verbs_default = list(
 	if(module)
 		return
 	var/list/modules = list("Standard", "Engineering", "Surgeon", "Medic", "Janitor", "Service", "Security")
-	modtype = input("Please, select a module!", "Robot", null, null) in modules
+	modtype = tgui_input_list(usr, "Please, select a module!", "Robot", modules)
 
 	var/module_sprites[0] //Used to store the associations between sprite names and sprite index.
 
@@ -355,7 +355,7 @@ var/list/robot_verbs_default = list(
 		if(C.installed)
 			installed_components += V
 
-	var/toggle = input(src, "Which component do you want to toggle?", "Toggle Component") as null|anything in installed_components
+	var/toggle = tgui_input_list(src, "Which component do you want to toggle?", "Toggle Component", installed_components)
 	if(!toggle)
 		return
 
@@ -511,7 +511,7 @@ var/list/robot_verbs_default = list(
 					if(C.installed == 1 || C.installed == -1)
 						removable_components += V
 
-				var/remove = input(user, "Which component do you want to pry out?", "Remove Component") as null|anything in removable_components
+				var/remove = tgui_input_list(user, "Which component do you want to pry out?", "Remove Component", removable_components)
 				if(!remove)
 					return
 				var/datum/robot_component/C = components[remove]
@@ -895,7 +895,7 @@ var/list/robot_verbs_default = list(
 	else
 		triesleft--
 
-	var/icontype = input("Select an icon! [triesleft ? "You have [triesleft] more chances." : "This is your last try."]", "Robot", null, null) in module_sprites
+	var/icontype = tgui_input_list(usr, "Select an icon! [triesleft ? "You have [triesleft] more chances." : "This is your last try."]", "Robot", module_sprites)
 
 	if(icontype)
 		icon_state = module_sprites[icontype]
@@ -908,7 +908,7 @@ var/list/robot_verbs_default = list(
 	update_icons()
 
 	if (triesleft >= 1)
-		var/choice = input("Look at your icon - is this what you want?") in list("Yes","No")
+		var/choice = tgui_input_list(usr, "Look at your icon - is this what you want?", "Icon", list("Yes","No"))
 		if(choice=="No")
 			choose_icon(triesleft, module_sprites)
 		else

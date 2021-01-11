@@ -670,7 +670,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(possible_attachments.len == 1)
 		A = possible_attachments[1]
 	else
-		A = input("Which attachment to remove?") as null|anything in possible_attachments
+		A = tgui_input_list(usr, "Which attachment to remove?", "Remove attachment", possible_attachments)
 
 	if(!A || get_active_firearm(usr) != src || usr.action_busy || zoom || (!(A == attachments[A.slot])) || !(A.flags_attach_features & ATTACH_REMOVABLE))
 		return
@@ -840,7 +840,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	if(usable_attachments.len == 1) //Activates the only attachment if there is only one.
 		A = usable_attachments[1]
 	else
-		A = input("Which attachment to activate?") as null|anything in usable_attachments
+		A = tgui_input_list(usr, "Which attachment to activate?", "Activate attachment", usable_attachments)
 		if(!A || A.loc != src)
 			return
 	if(A)

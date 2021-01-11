@@ -536,7 +536,7 @@
 		"Smartgun ammo",
 	)
 
-	var/supply_drop_choice = input(user, "Which supplies to call down?") as null|anything in supplies
+	var/supply_drop_choice = tgui_input_list(user, "Which supplies to call down?", "Supply Drop", supplies)
 
 	switch(supply_drop_choice)
 		if("10x24mm, slugs, buckshot, and 10x20mm rounds")

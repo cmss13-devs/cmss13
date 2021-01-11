@@ -121,7 +121,7 @@
 				areaindex[tmpname] = 1
 			L[tmpname] = I
 
-	var/desc = input("Please select a location to lock in.", "Locking Computer") in L|null
+	var/desc = tgui_input_list(usr, "Please select a location to lock in.", "Locking Computer", L|null)
 	if(!desc)
 		return
 	if(get_dist(src, usr) > 1 && !isRemoteControlling(usr))

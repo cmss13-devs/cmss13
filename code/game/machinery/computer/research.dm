@@ -39,7 +39,7 @@
 			for(var/category in chemical_data.research_documents)
 				pool += category
 			pool = sortAssoc(pool)
-			response = input(usr,"Select a category:") as null|anything in pool
+			response = tgui_input_list(usr,"Select a category:", "Categories", pool)
 		else if(response == "New")
 			response = input(usr,"Please enter the category of the paper:")
 		if(!response)
@@ -80,7 +80,7 @@
 			clearance_allowance = C.clearance_access
 
 
-	var/setting = input(usr,"How do you want to change the clearance settings?","[src]") in options
+	var/setting = tgui_input_list(usr,"How do you want to change the clearance settings?","[src]", options)
 	if(!setting)
 		return
 

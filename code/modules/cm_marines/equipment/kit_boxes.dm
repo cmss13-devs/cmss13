@@ -185,7 +185,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
 
 /obj/item/spec_kit/proc/select_and_spawn(mob/user)
-	var/selection = input(user, "Pick your equipment", "Specialist Kit Selection") as null|anything in kits
+	var/selection = tgui_input_list(user, "Pick your equipment", "Specialist Kit Selection", kits)
 	if(!selection)
 		return FALSE
 	if(!kits[selection] || kits[selection] <= 0)

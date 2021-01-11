@@ -1,21 +1,21 @@
 /datum/admins/proc/topic_teleports(var/href)
 	switch(href)
 		if("jump_to_area")
-			var/area/choice = input(owner, "Pick an area to jump to:") as null|anything in return_sorted_areas()
+			var/area/choice = tgui_input_list(owner, "Pick an area to jump to:", "Jump", return_sorted_areas())
 			if(QDELETED(choice))
 				return
 
 			owner.jump_to_area(choice)
 
 		if("jump_to_turf")
-			var/turf/choice = input(owner, "Pick a turf to jump to:") as null|anything in turfs
+			var/turf/choice = tgui_input_list(owner, "Pick a turf to jump to:", "Jump", turfs)
 			if(QDELETED(choice))
 				return
 
 			owner.jump_to_turf(choice)
 
 		if("jump_to_mob")
-			var/mob/choice = input(owner, "Pick a mob to jump to:") as null|anything in GLOB.mob_list
+			var/mob/choice = tgui_input_list(owner, "Pick a mob to jump to:", GLOB.mob_list)
 			if(QDELETED(choice))
 				return
 
@@ -35,7 +35,7 @@
 			owner.jumptocoord(targ_x, targ_y, targ_z)
 
 		if("jump_to_obj")
-			var/obj/choice = input(owner, "Pick an object to jump to:") as null|anything in GLOB.object_list
+			var/obj/choice = tgui_input_list(owner, "Pick an object to jump to:", GLOB.object_list)
 			if(QDELETED(choice))
 				return
 
@@ -45,7 +45,7 @@
 			owner.jumptokey()
 
 		if("get_mob")
-			var/mob/choice = input(owner, "Pick a mob to teleport here:","Get Mob",null) as null|anything in GLOB.mob_list
+			var/mob/choice = tgui_input_list(owner, "Pick a mob to teleport here:","Get Mob",null, GLOB.mob_list)
 			if(QDELETED(choice))
 				return
 
@@ -55,7 +55,7 @@
 			owner.Getkey()
 
 		if("teleport_mob_to_area")
-			var/mob/choice = input(owner, "Pick a mob to an area:","Teleport Mob",null) as null|anything in sortmobs()
+			var/mob/choice = tgui_input_list(owner, "Pick a mob to an area:","Teleport Mob", sortmobs())
 			if(QDELETED(choice))
 				return
 
@@ -84,10 +84,10 @@
 			message_staff(WRAP_STAFF_LOG(owner.mob, "mass-teleported [targets.len] mobs in [collect_range] tiles range to themselves in [get_area(owner.mob)] ([owner.mob.x],[owner.mob.y],[owner.mob.z])."), owner.mob.x, owner.mob.y, owner.mob.z)
 
 		if("teleport_mobs_by_faction")
-			var/faction = input(owner, "Choose between humanoids and xenomorphs.", "Mobs Choice", "") as null|anything in list("Humanoids", "Xenomorphs")
+			var/faction = tgui_input_list(owner, "Choose between humanoids and xenomorphs.", "Mobs Choice", list("Humanoids", "Xenomorphs"))
 			if(faction == "Humanoids")
 				faction = null
-				faction = input(owner, "Select faction you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Faction Choice", "") as null|anything in FACTION_LIST_HUMANOID
+				faction = tgui_input_list(owner, "Select faction you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Faction Choice", "", FACTION_LIST_HUMANOID)
 				if(!faction)
 					to_chat(owner, SPAN_ALERT("Faction choice error. Aborting."))
 					return
@@ -116,7 +116,7 @@
 				for(var/datum/hive_status/hive in GLOB.hive_datum)
 					hives += list("[hive.name]" = hive.hivenumber)
 
-				faction = input(owner, "Select hive you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Hive Choice", "") as null|anything in hives
+				faction = tgui_input_list(owner, "Select hive you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Hive Choice", "", hives)
 				if(!faction)
 					to_chat(owner, SPAN_ALERT("Hive choice error. Aborting."))
 					return

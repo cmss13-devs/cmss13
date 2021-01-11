@@ -206,7 +206,7 @@
     selected_key = input(usr,"Enter variable name:" ,"Name", "name")
     if(selected_key in locked && !check_rights(R_DEBUG,0))
         return TRUE
-    var/type = input(usr,"Select variable type:" ,"Type") in list("text","number","mob-reference","obj-reference","turf-reference")
+    var/type = tgui_input_list(usr,"Select variable type:" ,"Type", list("text","number","mob-reference","obj-reference","turf-reference"))
 
     if(!type)
         return TRUE

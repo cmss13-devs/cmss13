@@ -237,7 +237,7 @@
 		if(I.loc != src && I.w_class <= SIZE_SMALL && I.Adjacent(src) )
 			items.Add(I)
 
-	var/obj/selection = input("Select an item.", "Pickup") in items
+	var/obj/selection = tgui_input_list(usr, "Select an item.", "Pickup", items)
 
 	if(selection)
 		for(var/obj/item/I in view(1, src))

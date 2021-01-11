@@ -295,14 +295,21 @@
 		else
 			creation_name = newname
 	else if(href_list["set_level"] && target_property)
-		target_property.level = input("Set target level for [target_property.name]:","[src]") as anything in list(1,2,3,4,5,6,7,8,9,10)
+		var/level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
+		if(!level_to_set)
+			return
+
+		target_property.level = level_to_set
 		if(target_property.max_level && target_property.level > target_property.max_level)
 			target_property.level = target_property.max_level
 			to_chat(user, "Max level for [target_property.name] is [target_property.max_level].")
 		calculate_creation_cost()
 	else if(href_list["set_od"])
-		new_od_level = input("Set new OD:","[src]") as anything in list(5,10,15,20,25,30,35,40,45,50,55,60)
-		creation_od_level = new_od_level
+		var/od_to_set = tgui_input_list(usr, "Set new OD:", "[src]", list(5,10,15,20,25,30,35,40,45,50,55,60))
+		if(!new_od_level)
+			return
+		new_od_level = od_to_set
+		creation_od_level = od_to_set
 		calculate_creation_cost()
 	else if(href_list["set_filter"])
 		if(href_list["set_filter"] == "ALL")
@@ -317,7 +324,10 @@
 		complexity_editor = !complexity_editor
 	else if(href_list["set_complexity"])
 		var/slot = text2num(href_list["set_complexity"])
-		var/new_rarity = input("Set chemical rarity for complexity slot [slot]:","[src]") as anything in list("BASIC (+7)","COMMON (+4)","UNCOMMON (1)","RARE (-5)")
+		var/new_rarity = tgui_input_list(usr, "Set chemical rarity for complexity slot [slot]:","[src]", list("BASIC (+7)","COMMON (+4)","UNCOMMON (1)","RARE (-5)"))
+		if(!new_rarity)
+			return
+
 		switch(new_rarity)
 			if("BASIC (+7)")
 				creation_complexity[slot] = CHEM_CLASS_BASIC

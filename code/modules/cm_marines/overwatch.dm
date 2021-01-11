@@ -458,7 +458,7 @@
 						if(S.usable && !S.overwatch_officer)
 							squad_list += S.name
 
-					var/name_sel = input("Which squad would you like to claim for Overwatch?") as null|anything in squad_list
+					var/name_sel = tgui_input_list(usr, "Which squad would you like to claim for Overwatch?", "Claim Squad", squad_list)
 					if(!name_sel)
 						return
 					if(operator != usr)
@@ -662,7 +662,7 @@
 	for(var/mob/living/carbon/human/H in current_squad.marines_list)
 		if(istype(H) && H.stat != DEAD && H.mind && !jobban_isbanned(H, JOB_SQUAD_LEADER))
 			sl_candidates += H
-	var/new_lead = input(usr, "Choose a new Squad Leader") as null|anything in sl_candidates
+	var/new_lead = tgui_input_list(usr, "Choose a new Squad Leader", "Replace SL", sl_candidates)
 	if(!new_lead || new_lead == "Cancel")
 		return
 	var/mob/living/carbon/human/H = new_lead
@@ -730,7 +730,7 @@
 	if(!current_squad)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No squad selected!")]")
 		return
-	var/mob/living/carbon/human/wanted_marine = input(usr, "Report a marine for insubordination") as null|anything in current_squad.marines_list
+	var/mob/living/carbon/human/wanted_marine = tgui_input_list(usr, "Report a marine for insubordination", current_squad.marines_list)
 	if(!wanted_marine)
 		return
 	if(!istype(wanted_marine))//gibbed/deleted, all we have is a name.
@@ -764,7 +764,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No squad selected!")]")
 		return
 	var/datum/squad/S = current_squad
-	var/mob/living/carbon/human/transfer_marine = input(usr, "Choose marine to transfer") as null|anything in current_squad.marines_list
+	var/mob/living/carbon/human/transfer_marine = tgui_input_list(usr, "Choose marine to transfer", current_squad.marines_list)
 	if(!transfer_marine || S != current_squad) //don't change overwatched squad, idiot.
 		return
 
@@ -776,7 +776,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [transfer_marine] isn't wearing an ID.")]")
 		return
 
-	var/datum/squad/new_squad = input(usr, "Choose the marine's new squad") as null|anything in RoleAuthority.squads
+	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", RoleAuthority.squads)
 	if(!new_squad || S != current_squad)
 		return
 

@@ -27,7 +27,7 @@
 
 		maprotatechoices[mapname] = VM
 
-	var/chosenmap = input("Choose a ground map to change to", "Change Ground Map") as null|anything in maprotatechoices
+	var/chosenmap = tgui_input_list(usr, "Choose a ground map to change to", "Change Ground Map", maprotatechoices)
 	if(!chosenmap)
 		return
 

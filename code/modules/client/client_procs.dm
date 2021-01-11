@@ -266,6 +266,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		player_details.byond_version = full_version
 		GLOB.player_details[ckey] = player_details
 
+	view = world_view_size
 	. = ..()	//calls mob.Login()
 
 	// Macros added at runtime
@@ -333,8 +334,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	//	set_night_skin()
 
 	load_player_data()
-
-	view = world_view_size
 
 	//////////////
 	//DISCONNECT//

@@ -7,6 +7,8 @@ var/global/list/cleanable_decal_cache = list()
 	var/overlay_on_initialize = TRUE
 	/// The overlayed image
 	var/image/overlayed_image
+	/// Whether to cache the overlayed image or not
+	var/cache_overlay = TRUE
 	/// The turf that the cleanable is on,
 	/// whether overlayed or physically on top of
 	var/turf/cleanable_turf
@@ -65,10 +67,14 @@ var/global/list/cleanable_decal_cache = list()
 
 /obj/effect/decal/cleanable/proc/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state)
 	var/cache_key = "[overlay_icon]&[overlay_icon_state]"
-	var/image/I = cleanable_decal_cache[cache_key]
-	if(!istype(I))
+	var/image/I
+	if(cache_overlay)
+		I = cleanable_decal_cache[cache_key]
+		if(!istype(I))
+			I = image(overlay_icon, icon_state = overlay_icon_state)
+			cleanable_decal_cache[cache_key] = I
+	else
 		I = image(overlay_icon, icon_state = overlay_icon_state)
-		cleanable_decal_cache[cache_key] = I
 	var/mutable_appearance/MA = new(I)
 	MA.layer = layer
 	MA.dir = dir

@@ -17,7 +17,6 @@
 	var/amount = 3
 	var/drying_time = 30 SECONDS
 	var/dry_start_time // If this dries, track the dry start time for footstep drying
-	var/darken_on_dry = TRUE
 	garbage = FALSE // Keep for atmosphere
 
 /obj/effect/decal/cleanable/blood/Destroy()
@@ -62,8 +61,6 @@
 	color = basecolor
 
 /obj/effect/decal/cleanable/blood/proc/dry()
-	if(darken_on_dry)
-		color = adjust_brightness(color, -50)
 	amount = 0
 	if(cleanable_turf)
 		create_overlay()
@@ -125,7 +122,6 @@
 	icon_state = "gibbl5"
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	cleanable_type = CLEANABLE_BLOOD_GIBS
-	darken_on_dry = FALSE
 	var/fleshcolor = "#830303"
 
 /obj/effect/decal/cleanable/blood/gibs/update_icon()

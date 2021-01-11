@@ -7,7 +7,6 @@
 	icon = 'icons/effects/blood.dmi'
 	basecolor = "#dffc00"
 	amount = 1
-	darken_on_dry = FALSE
 
 /obj/effect/decal/cleanable/blood/gibs/xeno
 	name = "steaming gibs"

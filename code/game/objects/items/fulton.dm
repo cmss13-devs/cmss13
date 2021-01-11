@@ -146,6 +146,7 @@ var/global/list/deployed_fultons = list()
 
 	icon_state = ""
 
+	attached_atom.anchored = TRUE
 	attached_atom.forceMove(space_tile)
 
 	forceMove(attached_atom)
@@ -159,6 +160,7 @@ var/global/list/deployed_fultons = list()
 		return
 	if(return_turf)
 		attached_atom.forceMove(return_turf)
+		attached_atom.anchored = FALSE
 		playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
 
 	if(intel_system)

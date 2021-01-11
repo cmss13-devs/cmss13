@@ -278,15 +278,18 @@
 				var/obj/limb/target = pick(possible_points)
 				target.take_damage(remain_brute, remain_burn, sharp, edge, used_weapon, forbidden_limbs + src, TRUE, attack_source = attack_source)
 
+	// Check what the damage was before
+	var/old_brute_dam = brute_dam
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()
 
-	//If limb took enough damage, try to cut or tear it off
-	if(!is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss)
+	//If limb was damaged before and took enough damage, try to cut or tear it off
+	if(old_brute_dam > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss)
 		var/obj/item/clothing/head/helmet/H = owner.head
-		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner)) \
-			&& CONFIG_GET(flag/limbs_can_break) && brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)
+		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner))\
+			&& CONFIG_GET(flag/limbs_can_break)\
+			&& brute_dam >= max_damage * CONFIG_GET(number/organ_health_multiplier)\
 		)
 			var/cut_prob = brute/max_damage * 5
 			if(prob(cut_prob))

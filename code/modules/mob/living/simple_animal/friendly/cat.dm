@@ -121,3 +121,14 @@
 	icon_living = "kitten"
 	icon_dead = "kitten_dead"
 	gender = NEUTER
+
+/mob/living/simple_animal/cat/George
+	name = "George"
+	desc = "A caracal with very floppy ears. Its mere presence inspires fear."
+	icon_state = "floppa"
+	icon_living = "floppa"
+	icon_dead = "floppa_dead"
+	health = 200
+	maxHealth = 200
+	holder_type = /obj/item/holder/George
+	//I love it when you call me big floppa! Put ya hands in the air if you's a true playa!

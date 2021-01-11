@@ -79,3 +79,9 @@
 /obj/item/holder/mouse/Doc
 	name = "Doc"
 	desc = "Senior researcher of the Almayer. Likes: cheese, experiments, explosions."
+
+/obj/item/holder/George
+	name = "George"
+	desc = "A caracal with very floppy ears. Its mere presence inspires fear."
+	icon_state = "floppa"
+	flags_equip_slot = null

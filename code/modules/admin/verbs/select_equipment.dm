@@ -33,7 +33,7 @@
 				if(rankpath)
 					var/obj/item/clothing/accessory/ranks/R = new rankpath()
 					C.attach_accessory(H, R)
-		var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", "Neutral", FACTION_LIST_HUMANOID)
+		var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
 		if(!new_faction)
 			new_faction = FACTION_NEUTRAL
 		H.faction = new_faction
@@ -100,7 +100,7 @@
 					I.assignment = IDtitle
 					I.name = "[I.registered_name]'s ID Card ([I.assignment])"
 
-				var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", "Neutral", FACTION_LIST_HUMANOID)
+				var/new_faction = tgui_input_list(usr, "Select faction.", "Faction Choice", FACTION_LIST_HUMANOID)
 				if(!new_faction)
 					new_faction = FACTION_NEUTRAL
 				H.faction = new_faction

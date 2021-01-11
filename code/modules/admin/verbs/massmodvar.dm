@@ -280,7 +280,7 @@
 
 		if("type")
 			var/new_value
-			new_value = tgui_input_list(usr, "Enter type:","Type",O.vars[variable], typesof(/obj,/mob,/area,/turf))
+			new_value = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
 			if(new_value == null) return
 			O.vars[variable] = new_value
 			if(method)

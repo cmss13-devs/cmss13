@@ -517,7 +517,7 @@ var/list/forbidden_varedit_object_types = list(
 				O.vars[variable] = var_new
 
 		if("type")
-			var/var_new = tgui_input_list(usr, "Enter type:","Type",O.vars[variable], typesof(/obj,/mob,/area,/turf))
+			var/var_new = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
 			if(var_new==null) return
 			O.vars[variable] = var_new
 

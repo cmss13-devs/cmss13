@@ -380,7 +380,7 @@
 			global.vars[variable] = var_new
 
 		if("type")
-			var/var_new = tgui_input_list(usr, "Enter type:","Type",global.vars[variable], typesof(/obj,/mob,/area,/turf))
+			var/var_new = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
 			if(var_new==null) return
 			global.vars[variable] = var_new
 

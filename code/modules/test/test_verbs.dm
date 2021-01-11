@@ -20,7 +20,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	var/set_to_run = tgui_input_list(usr, "Select test set","Test",null, test_executor.test_sets)
+	var/set_to_run = tgui_input_list(usr, "Select test set","Test", test_executor.test_sets)
 	if(!set_to_run)
 		return
 	var/verbose = (alert("Verbose?",,"Yes","No") == "Yes")

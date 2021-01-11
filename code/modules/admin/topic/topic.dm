@@ -751,7 +751,7 @@
 		for(var/datum/hive_status/hive in GLOB.hive_datum)
 			hives += list("[hive.name]" = hive.hivenumber)
 
-		var/newhive = tgui_input_list(usr,"Select a hive.", hives)
+		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
 
 		if(!H)
 			to_chat(usr, "This mob no longer exists")

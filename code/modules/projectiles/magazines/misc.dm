@@ -7,7 +7,7 @@
 	desc = "A huge ammo drum for a huge gun."
 	caliber = "7.62x51mm"
 	icon_state = "painless" //PLACEHOLDER
-	
+
 	matter = list("metal" = 10000)
 	default_ammo = /datum/ammo/bullet/minigun
 	max_rounds = 300

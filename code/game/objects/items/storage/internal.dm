@@ -139,4 +139,3 @@
 /obj/item/storage/internal/Destroy()
 	. = ..()
 	master_item = null
-

@@ -180,7 +180,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	default_ammo = /datum/ammo/bullet/pistol/mankey
 	caliber = ".70M"
 	icon_state = "c70" //PLACEHOLDER
-	
+
 	matter = list("metal" = 3000)
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/pistol/chimp

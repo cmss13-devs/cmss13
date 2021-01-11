@@ -8,7 +8,7 @@
 
 /obj/item/tool/pen/robopen/attack_self(mob/user as mob)
 
-	var/choice = tgui_input_list(usr, "Would you like to change colour or mode?", list("Colour","Mode"))
+	var/choice = tgui_input_list(usr, "Would you like to change colour or mode?", "Change Mode", list("Colour","Mode"))
 	if(!choice) return
 
 	playsound(src.loc, 'sound/effects/pop.ogg', 25, 0)

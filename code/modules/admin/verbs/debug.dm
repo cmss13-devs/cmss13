@@ -182,7 +182,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			if(admin_holder && admin_holder.marked_datums.len)
 				options += "Marked datum"
 
-			class = tgui_input_list(usr, "Proc owned by...","Owner",null, options)
+			class = tgui_input_list(usr, "Proc owned by...","Owner", options)
 			switch(class)
 				if("Obj")
 					target = input("Enter target:","Target",usr) as obj in GLOB.object_list

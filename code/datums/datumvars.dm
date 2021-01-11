@@ -974,7 +974,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/new_limb = tgui_input_list(usr, "Please choose an organ to add.","Organ",null, typesof(/obj/limb)-/obj/limb)
+		var/new_limb = tgui_input_list(usr, "Please choose an organ to add.","Organ", typesof(/obj/limb)-/obj/limb)
 
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")
@@ -1003,7 +1003,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/rem_limb = tgui_input_list(usr, "Please choose a limb to remove.","Organ",null, M.limbs)
+		var/rem_limb = tgui_input_list(usr, "Please choose a limb to remove.","Organ", M.limbs)
 
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")
@@ -1026,7 +1026,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/rem_limb = tgui_input_list(usr, "Please choose a limb to remove.","Organ",null, M.limbs)
+		var/rem_limb = tgui_input_list(usr, "Please choose a limb to remove.","Organ", M.limbs)
 
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")

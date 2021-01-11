@@ -26,7 +26,7 @@
 		to_chat(M, SPAN_WARNING("None of the hardpoints can be activated or they are all broken."))
 		return
 
-	var/obj/item/hardpoint/HP = tgui_input_list(usr, "Select a hardpoint.", usable_hps)
+	var/obj/item/hardpoint/HP = tgui_input_list(usr, "Select a hardpoint.", "Switch Hardpoint", usable_hps)
 	if(!HP)
 		return
 

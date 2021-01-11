@@ -228,7 +228,7 @@
 	var/eye_name = null
 
 	var/ok = "[is_admin ? "Admin Observe" : "Observe"]"
-	eye_name = tgui_input_list(usr, "Please, select a player!", ok, null, null, creatures)
+	eye_name = tgui_input_list(usr, "Please, select a player!", ok, creatures)
 
 	if (!eye_name)
 		return

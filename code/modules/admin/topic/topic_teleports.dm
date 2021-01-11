@@ -15,7 +15,7 @@
 			owner.jump_to_turf(choice)
 
 		if("jump_to_mob")
-			var/mob/choice = tgui_input_list(owner, "Pick a mob to jump to:", GLOB.mob_list)
+			var/mob/choice = tgui_input_list(owner, "Pick a mob to jump to:", "Jump", GLOB.mob_list)
 			if(QDELETED(choice))
 				return
 
@@ -35,7 +35,7 @@
 			owner.jumptocoord(targ_x, targ_y, targ_z)
 
 		if("jump_to_obj")
-			var/obj/choice = tgui_input_list(owner, "Pick an object to jump to:", GLOB.object_list)
+			var/obj/choice = tgui_input_list(owner, "Pick an object to jump to:", "Jump", GLOB.object_list)
 			if(QDELETED(choice))
 				return
 
@@ -87,7 +87,7 @@
 			var/faction = tgui_input_list(owner, "Choose between humanoids and xenomorphs.", "Mobs Choice", list("Humanoids", "Xenomorphs"))
 			if(faction == "Humanoids")
 				faction = null
-				faction = tgui_input_list(owner, "Select faction you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Faction Choice", "", FACTION_LIST_HUMANOID)
+				faction = tgui_input_list(owner, "Select faction you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Faction Choice", FACTION_LIST_HUMANOID)
 				if(!faction)
 					to_chat(owner, SPAN_ALERT("Faction choice error. Aborting."))
 					return

@@ -325,6 +325,7 @@ var/list/datum/mob_hud/huds = list(
 /mob/hologram/queen/med_hud_set_status()
 	var/image/holder = hud_list[XENO_STATUS_HUD]
 	holder.icon_state = "hudeye"
+	holder.color = color
 
 /mob/living/carbon/human/med_hud_set_status()
 	var/image/holder = hud_list[STATUS_HUD]

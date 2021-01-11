@@ -59,23 +59,25 @@
 
 	hud_possible = list(XENO_STATUS_HUD)
 	var/mob/is_watching
+
+	var/hivenumber = XENO_HIVE_NORMAL
 	var/next_point = 0
 
 	var/point_delay = 1 SECOND
 
 
-/mob/hologram/queen/Initialize(mapload, mob/M)
-	if(!isXenoQueen(M))
+/mob/hologram/queen/Initialize(mapload, mob/living/carbon/Xenomorph/Queen/Q)
+	if(!istype(Q))
+		stack_trace("Tried to initialize a /mob/hologram/queen on type ([Q.type])")
 		return INITIALIZE_HINT_QDEL
 
-	var/mob/living/carbon/Xenomorph/Queen/Q = M
 	if(!Q.ovipositor)
 		return INITIALIZE_HINT_QDEL
 
 	// Make sure to turn off any previous overwatches
 	Q.overwatch(stop_overwatch = TRUE)
 
-	. = ..(mapload, M)
+	. = ..()
 	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, .proc/handle_overwatch)
 	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, .proc/exit_hologram)
 	RegisterSignal(Q, COMSIG_XENOMORPH_OVERWATCH_XENO, .proc/start_watching)
@@ -85,11 +87,15 @@
 	), .proc/stop_watching)
 	RegisterSignal(src, COMSIG_TURF_ENTER, .proc/turf_weed_only)
 
+	// Default colour
+	if(Q.hive.color)
+		color = Q.hive.color
 
+	hivenumber = Q.hivenumber
 	med_hud_set_status()
 	add_to_all_mob_huds()
 
-	M.sight |= SEE_TURFS|SEE_OBJS
+	Q.sight |= SEE_TURFS|SEE_OBJS
 
 /mob/hologram/queen/proc/exit_hologram()
 	SIGNAL_HANDLER
@@ -146,7 +152,7 @@
 			return COMPONENT_TURF_DENY_MOVEMENT
 
 	var/obj/effect/alien/weeds/W = locate() in T
-	if(W)
+	if(W && HIVE_ALLIED_TO_HIVE(W.hivenumber, hivenumber))
 		return COMPONENT_TURF_ALLOW_MOVEMENT
 
 	return COMPONENT_TURF_DENY_MOVEMENT
@@ -171,14 +177,18 @@
 			if(X == Q) continue
 			to_chat(X, message)
 
-		new /obj/effect/overlay/temp/point/big/queen(T, src)
+		var/obj/effect/overlay/temp/point/big/queen/point = new(T, src)
+		point.color = color
+
 		return COMPONENT_INTERRUPT_CLICK
 
 	if(!mods["ctrl"])
 		return
 
 	if(isXeno(A))
-		Q.overwatch(A)
+		var/mob/living/carbon/Xenomorph/X = A
+		if(X.ally_of_hivenumber(hivenumber))
+			Q.overwatch(A)
 		return COMPONENT_INTERRUPT_CLICK
 
 	if(!(turf_weed_only(src, T) & COMPONENT_TURF_ALLOW_MOVEMENT))

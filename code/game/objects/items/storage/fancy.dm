@@ -11,6 +11,7 @@
  *		Candle Box
  *		Crayon Box
  *		Cigarette Box
+ *		Cigar Box
  */
 
 /obj/item/storage/fancy
@@ -140,6 +141,10 @@
 		new default_cig_type(src)
 	create_reagents(15 * storage_slots)//so people can inject cigarettes without opening a packet, now with being able to inject the whole one
 
+/obj/item/storage/fancy/cigarettes/Initialize()
+	. = ..()
+	icon_state = "[initial(icon_state)]"
+
 /obj/item/storage/fancy/cigarettes/update_icon()
 	icon_state = "[initial(icon_state)][contents.len]"
 	return
@@ -172,7 +177,7 @@
 
 /obj/item/storage/fancy/cigarettes/wypacket
 	name = "\improper Weston-Yamada Gold packet"
-	desc = "Building better worlds, and rolling better cigarettes. These fancy cigarettes are Weston-Yamada's entry into the market. Comes backed by a fierce legal team."
+	desc = "Building Better Worlds, and rolling better cigarettes. These fancy cigarettes are Weston-Yamada's entry into the market. Comes backed by a fierce legal team."
 	icon_state = "wypacket"
 	item_state = "wypacket"
 
@@ -184,7 +189,7 @@
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
 
 /obj/item/storage/fancy/cigarettes/blackpack
-	name = "\improper Executive Select Packet"
+	name = "\improper Executive Select packet"
 	desc = "These cigarettes are the height of luxury. They're smooth, they're cool, and they smell like victory...and cigarette smoke."
 	icon_state = "blackpacket"
 	item_state = "blackpacket"
@@ -197,17 +202,22 @@
 	item_state = "kpacket"
 
 /obj/item/storage/fancy/cigarettes/arcturian_ace
-	name = "\improper Arcturian Ace"
+	name = "\improper Arcturian Ace packet"
 	desc = "An entry level brand of cigarettes with a bright blue packaging. You're guessing these aren't really good for you, but it doesn't matter when it's Arcturian baby!"
 	icon_state = "aapacket"
 	item_state = "aapacket"
 
 /obj/item/storage/fancy/cigarettes/lady_finger
-	name = "\improper lady_fingers"
+	name = "\improper Lady Fingers packet"
 	desc = "These intensely strong unfiltered menthol cigarettes don't seem very ladylike. They don't seem very fingerlike for that matter, either. Smoking may kill, but poor branding is almost as bad."
 	icon_state = "lfpacket"
 	item_state = "lfpacket"
 	default_cig_type = /obj/item/clothing/mask/cigarette/ucigarette
+
+
+/////////////
+//CIGAR BOX//
+/////////////
 
 /obj/item/storage/fancy/cigar
 	name = "cigar case"
@@ -222,12 +232,17 @@
 	storage_slots = 7
 	can_hold = list(/obj/item/clothing/mask/cigarette/cigar)
 	icon_type = "cigar"
+	var/default_cigar_type = /obj/item/clothing/mask/cigarette/cigar
 
 /obj/item/storage/fancy/cigar/fill_preset_inventory()
 	flags_atom |= NOREACT
 	for(var/i = 1 to storage_slots)
-		new /obj/item/clothing/mask/cigarette/cigar(src)
+		new default_cigar_type(src)
 	create_reagents(15 * storage_slots)
+
+/obj/item/storage/fancy/cigar/Initialize()
+	. = ..()
+	icon_state = "[initial(icon_state)]"
 
 /obj/item/storage/fancy/cigar/update_icon()
 	icon_state = "[initial(icon_state)][contents.len]"
@@ -248,10 +263,26 @@
 		if(C)
 			remove_from_storage(C, get_turf(user))
 			user.equip_to_slot_if_possible(C, WEAR_FACE)
-			to_chat(user, SPAN_NOTICE("You take a cigar out of the case."))
+			to_chat(user, SPAN_NOTICE("You remove a cigar."))
 			update_icon()
 	else
 		..()
+
+/obj/item/storage/fancy/cigar/tarbacks
+	name = "\improper Tarbacks case"
+	desc = "Don't let the fancy box and piece of paper spouting nonsense about tradition and quality fool you. These stogies are bottom of the barrel. Rolled in Columbia."
+	icon_state = "tarbackbox"
+	item_state = "tarbackbox"
+	storage_slots = 5
+	default_cigar_type = /obj/item/clothing/mask/cigarette/cigar/tarbacks
+
+/obj/item/storage/fancy/cigar/tarbacktube
+	name = "\improper Tarback tube"
+	desc = "A single Tarback cigar in a protective metal tube. About as low-end as you can get. Rolled in Columbia."
+	icon_state = "tarbacktube"
+	item_state = "tarbacktube"
+	storage_slots = 1
+	default_cigar_type = /obj/item/clothing/mask/cigarette/cigar/tarbacks
 
 /*
  * Vial Box

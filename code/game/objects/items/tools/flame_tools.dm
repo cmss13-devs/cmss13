@@ -169,6 +169,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		user.SetLuminosity(-2)
 		SetLuminosity(2)
 	return ..()
+
 //////////////////
 //FINE SMOKABLES//
 //////////////////
@@ -247,7 +248,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
 				light(SPAN_NOTICE("[user] lights their [src] with [G.attachments[slot]]."))
 				break
-
 
 	else if(istype(W, /obj/item/tool/surgery/cautery))
 		light(SPAN_NOTICE("[user] lights their [src] with the [W]."))
@@ -362,7 +362,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		die()
 	return ..()
 
-
 /obj/item/clothing/mask/cigarette/proc/die()
 	var/turf/T = get_turf(src)
 	var/obj/item/butt = new type_butt(T)
@@ -412,7 +411,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 // CIGARS //
 ////////////
 /obj/item/clothing/mask/cigarette/cigar
-	name = "premium cigar"
+	name = "\improper premium cigar"
 	desc = "A huge, brown roll of tobacco and some other stuff that you're meant to smoke. Makes you feel like a true USCM sergeant."
 	icon_state = "cigar_off"
 	icon_on = "cigar_on"
@@ -422,6 +421,16 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigar_off"
 	smoketime = 50 MINUTES
 	chem_volume = 20
+
+/obj/item/clothing/mask/cigarette/cigar/tarbacks
+	name = "\improper Tarback cigar"
+	desc = "Tarbacks by Reisland Tobacco. The Surgeon General has declared that smoking Tarbacks can be hazardous to one’s health. Reisland Tobacco has declared that the Surgeon General is a bitch. Rolled in Columbia."
+	icon_state = "tarback_off"
+	icon_on = "tarback_on"
+	icon_off = "tarback_off"
+	type_butt = /obj/item/trash/cigbutt/cigarbutt
+	item_state = "tarback_off"
+	smoketime = 30 MINUTES
 
 /obj/item/clothing/mask/cigarette/cigar/Initialize()
 	. = ..()
@@ -436,7 +445,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	desc = "A cigar fit for only the best of the best."
 	smoketime = 7200
 	chem_volume = 30
-
 
 /obj/item/clothing/mask/cigarette/cigar/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W, /obj/item/tool/weldingtool))

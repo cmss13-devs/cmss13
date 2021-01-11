@@ -121,12 +121,14 @@
 	vend_delay = 14
 	icon_state = "cigs"
 	products = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 50,
+					/obj/item/storage/fancy/cigar/tarbacktube = 20,
 					/obj/item/storage/box/matches = 15,
 					/obj/item/tool/lighter/random = 25,
 					/obj/item/tool/lighter/zippo = 10)
 
 	premium = list(/obj/item/storage/fancy/cigar = 25)
 	prices = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 15,
+					/obj/item/storage/fancy/cigar/tarbacktube = 5,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/tool/lighter/random = 2,
 					/obj/item/tool/lighter/zippo = 20)
@@ -135,6 +137,7 @@
 	product_slogans = ""
 	product_ads = ""
 	products = list(/obj/item/storage/fancy/cigarettes/lucky_strikes = 50,
+					/obj/item/storage/fancy/cigar/tarbacktube = 20,
 					/obj/item/storage/box/matches = 15,
 					/obj/item/tool/lighter/random = 25,
 					/obj/item/tool/lighter/zippo = 10)
@@ -150,6 +153,7 @@
 					/obj/item/storage/fancy/cigarettes/wypacket = 15,
 					/obj/item/storage/fancy/cigarettes/lady_finger = 15,
 					/obj/item/storage/fancy/cigarettes/blackpack = 10,
+					/obj/item/storage/fancy/cigar/tarbacks = 5,
 					/obj/item/storage/box/matches = 10,
 					/obj/item/tool/lighter/random = 20,
 					/obj/item/tool/lighter/zippo = 5)
@@ -159,6 +163,7 @@
 					/obj/item/storage/fancy/cigarettes/wypacket = 20,
 					/obj/item/storage/fancy/cigarettes/lady_finger = 30,
 					/obj/item/storage/fancy/cigarettes/blackpack = 50,
+					/obj/item/storage/fancy/cigar/tarbacks = 40,
 					/obj/item/storage/box/matches = 1,
 					/obj/item/tool/lighter/random = 2,
 					/obj/item/tool/lighter/zippo = 20)

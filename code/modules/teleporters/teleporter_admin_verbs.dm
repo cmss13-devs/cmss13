@@ -5,19 +5,19 @@
 
 	var/available_teleporters = SSteleporter.teleporters
 
-	var/datum/teleporter/teleporter = input("Which teleporter do you want to use?", "Select a teleporter:") as null|anything in available_teleporters
+	var/datum/teleporter/teleporter = tgui_input_list(usr, "Which teleporter do you want to use?", "Select a teleporter:", available_teleporters)
 	if(!teleporter)
 		return
 
 	var/available_locations = teleporter.locations.Copy()
 
-	var/source_location = input("Which location do you want to teleport from?", "Select a location:") as null|anything in available_locations
+	var/source_location = tgui_input_list(usr, "Which location do you want to teleport from?", "Select a location:", available_locations)
 	if(!source_location)
 		return
 
 	available_locations -= source_location
 
-	var/dest_location = input("Which location do you want to teleport to?", "Select a location:") as null|anything in available_locations
+	var/dest_location = tgui_input_list(usr, "Which location do you want to teleport to?", "Select a location:", available_locations)
 
 	if(!teleporter.check_teleport_cooldown() && alert("Error: Teleporter is on cooldown. Proceed anyways?", , "Yes", "No") != "Yes")
 		return

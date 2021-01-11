@@ -57,7 +57,7 @@
 
 	//Debugging that should've been done
 
-	var/castepick = input("You are growing into a beautiful alien! It is time to choose a caste.") as null|anything in caste.evolves_to
+	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to)
 	if(!castepick) //Changed my mind
 		return
 

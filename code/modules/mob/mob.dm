@@ -723,7 +723,7 @@ mob/proc/yank_out_object()
 		remove_verb(src, /mob/proc/yank_out_object)
 		return
 
-	var/obj/item/selection = input("What do you want to yank out?", "Embedded objects") in valid_objects
+	var/obj/item/selection = tgui_input_list(usr, "What do you want to yank out?", "Embedded objects", valid_objects)
 	if(self)
 		if(get_active_hand())
 			to_chat(src, SPAN_WARNING("You need an empty hand for this!"))

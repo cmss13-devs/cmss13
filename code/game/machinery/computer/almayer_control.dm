@@ -262,7 +262,7 @@
 				if(SEC_LEVEL_DELTA)
 					return
 
-			var/level_selected = input("What alert would you like to set it as?") as null|anything in alert_list
+			var/level_selected = tgui_input_list(usr, "What alert would you like to set it as?", "Alert Level", alert_list)
 			if(!level_selected)
 				return
 

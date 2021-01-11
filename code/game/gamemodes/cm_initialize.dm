@@ -388,7 +388,7 @@ Additional game mode variables.
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!instant_join)
-		var/userInput = input("Available Xenomorphs") as null|anything in available_xenos
+		var/userInput = tgui_input_list(usr, "Available Xenomorphs", "Join as Xeno", available_xenos)
 
 		if(available_xenos[userInput]) //Free xeno mobs have no associated value and skip this. "Pooled larva" strings have a list of hives.
 			var/datum/hive_status/H = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.

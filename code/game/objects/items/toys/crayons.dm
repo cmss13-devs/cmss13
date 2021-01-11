@@ -68,10 +68,10 @@
 /obj/item/toy/crayon/afterattack(atom/target, mob/user as mob, proximity)
 	if(!proximity) return
 	if(istype(target,/turf/open/floor))
-		var/drawtype = input("Choose what you'd like to draw.", "Crayon scribbles") in list("graffiti","rune","letter")
+		var/drawtype = tgui_input_list(usr, "Choose what you'd like to draw.", "Crayon scribbles", list("graffiti","rune","letter"))
 		switch(drawtype)
 			if("letter")
-				drawtype = input("Choose the letter.", "Crayon scribbles") in alphabet_lowercase
+				drawtype = tgui_input_list(usr, "Choose the letter.", "Crayon scribbles", alphabet_lowercase)
 				to_chat(user, "You start drawing a letter on the [target.name].")
 			if("graffiti")
 				to_chat(user, "You start drawing graffiti on the [target.name].")

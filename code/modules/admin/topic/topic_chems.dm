@@ -41,7 +41,7 @@
 			if(response == "Select from list")
 				var/list/pool = chemical_reagents_list
 				pool = sortAssoc(pool)
-				target = input(usr,"Select the ID of the chemical reagent you wish to view:") as null|anything in pool
+				target = tgui_input_list(usr,"Select the ID of the chemical reagent you wish to view:", "View reagent", pool)
 			else if(response == "Enter ID")
 				target = input(usr,"Enter the ID of the chemical reagent you wish to view:")
 			if(!target)
@@ -201,7 +201,7 @@
 					if("Select")
 						var/list/pool = chemical_properties_list
 						pool = sortAssoc(pool)
-						var/P = input(usr,"Which property do you want?") as null|anything in pool
+						var/P = tgui_input_list(usr,"Which property do you want?", "Property selection", pool)
 						var/level = input(usr,"Choose the level (this is a strength modifier, ought to be between 1-8)") as num
 						R.insert_property(P,level)
 						response = alert(usr,"Done. Add more?","Custom reagent [target]","Specific property","Specific number","No more properties")
@@ -264,7 +264,7 @@
 					if("Select from list")
 						var/list/pool = chemical_reagents_list
 						pool = sortAssoc(pool)
-						component = input(usr,"Select:") as null|anything in pool
+						component = tgui_input_list(usr,"Select:", "Create custom reaction", pool)
 						if(!component)
 							response = "Select type"
 							continue

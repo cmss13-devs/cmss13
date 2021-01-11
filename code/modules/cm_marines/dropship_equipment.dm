@@ -967,7 +967,7 @@
 		to_chat(user, SPAN_WARNING("No active medevac stretcher detected."))
 		return
 
-	var/stretcher_choice = input("Which emitting stretcher would you like to link with?", "Available stretchers") as null|anything in possible_stretchers
+	var/stretcher_choice = tgui_input_list(usr, "Which emitting stretcher would you like to link with?", "Available stretchers", possible_stretchers)
 	if(!stretcher_choice)
 		return
 
@@ -1178,7 +1178,7 @@
 		to_chat(user, SPAN_WARNING("No active balloons detected."))
 		return
 
-	var/fulton_choice = input("Which balloon would you like to link with?", "Available balloons") as null|anything in possible_fultons
+	var/fulton_choice = tgui_input_list(usr, "Which balloon would you like to link with?", "Available balloons", possible_fultons)
 	if(!fulton_choice)
 		return
 

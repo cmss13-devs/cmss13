@@ -270,7 +270,7 @@
 
 		names = sortList(names)
 
-		variable = input("Which var?","Var") as null|anything in names
+		variable = tgui_input_list(usr, "Which var?","Var", names)
 		if(!variable)	return
 		var_value = global.vars[variable]
 
@@ -279,27 +279,26 @@
 
 	if(!autodetect_class)
 		var/dir
-		var/default
 		if(isnull(var_value))
 			to_chat(usr, "Unable to determine variable type.")
 
 		else if(isnum(var_value))
 			to_chat(usr, "Variable appears to be <b>NUM</b>.")
-			default = "num"
+
 			dir = 1
 
 		else if(istext(var_value))
 			to_chat(usr, "Variable appears to be <b>TEXT</b>.")
-			default = "text"
+
 
 		else if(isloc(var_value))
 			to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
-			default = "reference"
+
 
 		else if(isicon(var_value))
 			to_chat(usr, "Variable appears to be <b>ICON</b>.")
 			var_value = "\icon[var_value]"
-			default = "icon"
+
 
 		else if(istype(var_value,/matrix))
 			to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
@@ -307,19 +306,19 @@
 
 		else if(istype(var_value,/atom) || istype(var_value,/datum))
 			to_chat(usr, "Variable appears to be <b>TYPE</b>.")
-			default = "type"
+
 
 		else if(istype(var_value,/list))
 			to_chat(usr, "Variable appears to be <b>LIST</b>.")
-			default = "list"
+
 
 		else if(istype(var_value,/client))
 			to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
-			default = "cancel"
+
 
 		else
 			to_chat(usr, "Variable appears to be <b>FILE</b>.")
-			default = "file"
+
 
 		to_chat(usr, "Variable contains: [var_value]")
 		if(dir)
@@ -354,7 +353,7 @@
 		possible_classes += "edit referenced object"
 		possible_classes += "restore to default"
 
-		class = input("What kind of variable?","Variable Type",default) as null|anything in possible_classes
+		class = tgui_input_list(usr, "What kind of variable?","Variable Type", possible_classes)
 		if(!class)
 			return
 
@@ -381,7 +380,7 @@
 			global.vars[variable] = var_new
 
 		if("type")
-			var/var_new = input("Enter type:","Type",global.vars[variable]) as null|anything in typesof(/obj,/mob,/area,/turf)
+			var/var_new = tgui_input_list(usr, "Enter type:","Type",global.vars[variable], typesof(/obj,/mob,/area,/turf))
 			if(var_new==null) return
 			global.vars[variable] = var_new
 
@@ -406,7 +405,7 @@
 			global.vars[variable] = var_new
 
 		if("matrix")
-			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
 			if(!matrix_name || matrix_name == "Cancel")
 				return
 

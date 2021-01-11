@@ -182,7 +182,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			if(admin_holder && admin_holder.marked_datums.len)
 				options += "Marked datum"
 
-			class = input("Proc owned by...","Owner",null) as null|anything in options
+			class = tgui_input_list(usr, "Proc owned by...","Owner",null, options)
 			switch(class)
 				if("Obj")
 					target = input("Enter target:","Target",usr) as obj in GLOB.object_list
@@ -194,7 +194,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 					var/list/keys = list()
 					for(var/client/C)
 						keys += C
-					target = input("Please, select a player!", "Selection", null, null) as null|anything in keys
+					target = tgui_input_list(usr, "Please, select a player!", "Selection", keys)
 				if("Marked datum")
 					var/datum/D = input_marked_datum(admin_holder.marked_datums)
 					target = D
@@ -227,7 +227,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	for(i=1, i<argnum+1, i++) // Lists indexed from 1 forwards in byond
 
 		// Make a list with each index containing one variable, to be given to the proc
-		class = input("What kind of variable?","Variable Type") in list("text","num","type","reference","mob reference","icon","file","client","mob's area","marked datum","CANCEL")
+		class = tgui_input_list(usr, "What kind of variable?","Variable Type", list("text","num","type","reference","mob reference","icon","file","client","mob's area","marked datum","CANCEL"))
 		switch(class)
 			if("CANCEL")
 				return
@@ -239,7 +239,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 				lst[i] = input("Enter new number:","Num",0) as num
 
 			if("type")
-				lst[i] = input("Enter type:","Type") in typesof(/obj,/mob,/area,/turf)
+				lst[i] = tgui_input_list(usr, "Enter type:","Type", typesof(/obj,/mob,/area,/turf))
 
 			if("reference")
 				lst[i] = input("Select reference:","Reference",src) as mob|obj|turf|area in world
@@ -257,7 +257,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 				var/list/keys = list()
 				for(var/mob/M in GLOB.player_list)
 					keys += M.client
-				lst[i] = input("Please, select a player!", "Selection", null, null) as null|anything in keys
+				lst[i] = tgui_input_list(usr, "Please, select a player!", "Selection", keys)
 
 			if("mob's area")
 				var/mob/temp = input("Select mob", "Selection", usr) as mob in GLOB.mob_list
@@ -372,7 +372,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	set category = "Debug"
 	set name = "Change Hivenumber"
 
-	var/mob/living/carbon/X = input(src,"Select a xeno.", null, null) in GLOB.living_xeno_list
+	var/mob/living/carbon/X = tgui_input_list(src,"Select a xeno.", "Change Hivenumber", GLOB.living_xeno_list)
 	if(!istype(X))
 		to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 		return
@@ -404,7 +404,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	if(chosen_deletion)
 		chosen_deletion = text2path(chosen_deletion)
 		if(ispath(chosen_deletion))
-			var/hsbitem = input(usr, "Choose an object to delete.", "Delete:") as null|anything in typesof(chosen_deletion)
+			var/hsbitem = tgui_input_list(usr, "Choose an object to delete.", "Delete:", typesof(chosen_deletion))
 			if(hsbitem)
 				var/do_delete = 1
 				if(hsbitem in blocked)
@@ -437,7 +437,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 	// Select the warhead.
 	var/list/warheads = subtypesof(/obj/structure/ob_ammo/warhead/)
-	var/choice = input("Select the warhead:") as null|anything in warheads
+	var/choice = tgui_input_list(usr, "Select the warhead:", "Warhead to use", warheads)
 	var/obj/structure/ob_ammo/warhead/warhead = new choice
 	var/turf/target = get_turf(usr.loc)
 	target.ceiling_debris_check(5)

@@ -365,7 +365,7 @@ var/list/admin_verbs_mod = list(
 	var/list/disease_names = list()
 	for(var/v in diseases)
 		disease_names.Add(copytext("[v]", 16, 0))
-	var/datum/disease/D = input("Choose the disease to give to that guy", "ACHOO") as null|anything in disease_names
+	var/datum/disease/D = tgui_input_list(usr, "Choose the disease to give to that guy", "ACHOO", disease_names)
 	if(!D) return
 	var/path = text2path("/datum/disease/[D]")
 	T.contract_disease(new path, 1)

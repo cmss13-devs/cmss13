@@ -94,7 +94,7 @@
 					to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
 					return
 				var/obj/item/stack/sheet/metal/M = W
-				upgrade = input(user, "Choose an upgrade to apply to the barricade") in list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_EXPLOSIVE, "cancel")
+				upgrade = tgui_input_list(user, "Choose an upgrade to apply to the barricade", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_EXPLOSIVE, "cancel"))
 				if(!user.Adjacent(src))
 					to_chat(user, SPAN_NOTICE("You are too far away!"))
 					return

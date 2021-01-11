@@ -16,7 +16,7 @@
 	singular_name = "glass sheet"
 	icon_state = "sheet-glass"
 	matter = list("glass" = 3750)
-	
+
 	stack_id = "glass sheet"
 	var/created_window = /obj/structure/window
 	var/created_full_window = /obj/structure/window/full
@@ -70,7 +70,7 @@
 		return 0
 	var/title = "Sheet-[name]"
 	title += " ([src.amount] sheet\s left)"
-	switch(input(title, "What would you like to construct?") as null|anything in construction_options)
+	switch(tgui_input_list(title, "What would you like to construct?", "Construct Object", construction_options))
 		if("One Direction")
 			if(!src)	return 1
 			if(src.loc != user)	return 1
@@ -146,7 +146,7 @@
 	stack_id = "reinf glass sheet"
 
 	matter = list("metal" = 1875,"glass" = 3750)
-	
+
 
 	created_window = /obj/structure/window/reinforced
 	created_full_window = /obj/structure/window/reinforced/full
@@ -165,7 +165,7 @@
 	singular_name = "phoron glass sheet"
 	icon_state = "sheet-phoronglass"
 	matter = list("glass" = 7500)
-	
+
 	created_window = /obj/structure/window/phoronbasic
 	created_full_window = /obj/structure/window/phoronbasic/full
 
@@ -196,7 +196,7 @@
 	icon_state = "sheet-phoronrglass"
 	matter = list("glass" = 7500,"metal" = 1875)
 
-	
+
 	created_window = /obj/structure/window/phoronreinforced
 	created_full_window = /obj/structure/window/phoronreinforced/full
 	is_reinforced = 1

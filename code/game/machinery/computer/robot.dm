@@ -150,7 +150,7 @@
 			if(src.allowed(usr))
 				var/mob/living/silicon/robot/R = locate(href_list["killbot"])
 				if(R)
-					var/choice = input("Are you certain you wish to detonate [R.name]?") in list("Confirm", "Abort")
+					var/choice = tgui_input_list(usr, "Are you certain you wish to detonate [R.name]?", list("Confirm", "Abort"))
 					if(choice == "Confirm")
 						if(R && istype(R))
 							message_staff("[key_name_admin(usr)] detonated [R.name]!")
@@ -163,7 +163,7 @@
 			if(src.allowed(usr))
 				var/mob/living/silicon/robot/R = locate(href_list["stopbot"])
 				if(R && istype(R)) // Extra sancheck because of input var references
-					var/choice = input("Are you certain you wish to [R.canmove ? "lock down" : "release"] [R.name]?") in list("Confirm", "Abort")
+					var/choice = tgui_input_list(usr, "Are you certain you wish to [R.canmove ? "lock down" : "release"] [R.name]?", list("Confirm", "Abort"))
 					if(choice == "Confirm")
 						if(R && istype(R))
 							message_staff("[key_name_admin(usr)] [R.canmove ? "locked down" : "released"] [R.name]!")
@@ -188,7 +188,7 @@
 				// whatever weirdness this is supposed to be, but that is how the href gets added, so here it is again
 				if(istype(R) && isRemoteControlling(usr) && (usr.mind.original == usr))
 
-					var/choice = input("Are you certain you wish to hack [R.name]?") in list("Confirm", "Abort")
+					var/choice = tgui_input_list(usr, "Are you certain you wish to hack [R.name]?", list("Confirm", "Abort"))
 					if(choice == "Confirm")
 						if(R && istype(R))
 							log_game("[key_name(usr)] emagged [R.name] using robotic console!")

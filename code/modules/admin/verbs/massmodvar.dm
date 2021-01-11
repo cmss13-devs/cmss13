@@ -17,7 +17,7 @@
 
 	if(A && A.type)
 		if(typesof(A.type))
-			switch(input("Strict object type detection?") as null|anything in list("Strictly this type","This type and subtypes", "Cancel"))
+			switch(tgui_input_list(usr, "Strict object type detection?", "Object detection", list("Strictly this type","This type and subtypes", "Cancel")))
 				if("Strictly this type")
 					method = 0
 				if("This type and subtypes")
@@ -54,12 +54,11 @@
 	var/variable = ""
 
 	if(!var_name)
-		variable = input("Which var?","Var") as null|anything in names
+		variable = tgui_input_list(usr, "Which var?","Var", names)
 	else
 		variable = var_name
 
 	if(!variable)	return
-	var/default
 	var/var_value = O.vars[variable]
 	var/dir
 
@@ -71,41 +70,37 @@
 
 	else if(isnum(var_value))
 		to_chat(usr, "Variable appears to be <b>NUM</b>.")
-		default = "num"
+
 		dir = 1
 
 	else if(istext(var_value))
 		to_chat(usr, "Variable appears to be <b>TEXT</b>.")
-		default = "text"
+
 
 	else if(isloc(var_value))
 		to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
-		default = "reference"
+
 
 	else if(isicon(var_value))
 		to_chat(usr, "Variable appears to be <b>ICON</b>.")
 		var_value = "\icon[var_value]"
-		default = "icon"
+
 
 	else if(istype(var_value,/matrix))
 		to_chat(usr, "Variable appears to be <b>MATRIX</b>.")
-		default = "matrix"
+
 
 	else if(istype(var_value,/atom) || istype(var_value,/datum))
 		to_chat(usr, "Variable appears to be <b>TYPE</b>.")
-		default = "type"
 
 	else if(istype(var_value,/list))
 		to_chat(usr, "Variable appears to be <b>LIST</b>.")
-		default = "list"
 
 	else if(istype(var_value,/client))
 		to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
-		default = "cancel"
 
 	else
 		to_chat(usr, "Variable appears to be <b>FILE</b>.")
-		default = "file"
 
 	to_chat(usr, "Variable contains: [var_value]")
 	if(dir)
@@ -136,7 +131,7 @@
 		possible_classes += "matrix"
 	possible_classes += "edit referenced object"
 	possible_classes += "restore to default"
-	var/class = input("What kind of variable?","Variable Type",default) as null|anything in possible_classes
+	var/class = tgui_input_list(usr, "What kind of variable?","Variable Type", possible_classes)
 
 	if(!class)
 		return
@@ -285,7 +280,7 @@
 
 		if("type")
 			var/new_value
-			new_value = input("Enter type:","Type",O.vars[variable]) as null|anything in typesof(/obj,/mob,/area,/turf)
+			new_value = tgui_input_list(usr, "Enter type:","Type",O.vars[variable], typesof(/obj,/mob,/area,/turf))
 			if(new_value == null) return
 			O.vars[variable] = new_value
 			if(method)
@@ -396,7 +391,7 @@
 				to_chat(usr, "You don't have any matrices stored!")
 				return
 
-			var/matrix_name = input("Choose a matrix", "Matrix") as null|anything in (stored_matrices + "Cancel")
+			var/matrix_name = tgui_input_list(usr, "Choose a matrix", "Matrix", (stored_matrices + "Cancel"))
 			if(!matrix_name || matrix_name == "Cancel")
 				return
 

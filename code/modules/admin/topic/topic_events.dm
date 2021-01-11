@@ -71,7 +71,7 @@
 				SSobjectives.add_admin_points(amount)
 		if("change_clearance")
 			var/list/clearance_levels = list(0,1,2,3,4,5)
-			var/level = input("Select new clearance level:","Current level: [chemical_data.clearance_level]") as null|anything in clearance_levels
+			var/level = tgui_input_list(usr, "Select new clearance level:","Current level: [chemical_data.clearance_level]", clearance_levels)
 			if(!level)
 				return
 			message_staff("[key_name_admin(usr)] changed research clearance level to [level].")

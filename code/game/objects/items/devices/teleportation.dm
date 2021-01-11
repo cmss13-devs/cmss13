@@ -155,7 +155,7 @@
 		turfs += T
 	if(turfs.len)
 		L["None (Dangerous)"] = pick(turfs)
-	var/t1 = input(user, "Please select a teleporter to lock in on.", "Hand Teleporter") in L
+	var/t1 = tgui_input_list(user, "Please select a teleporter to lock in on.", "Hand Teleporter", L)
 	if ((user.get_active_hand() != src || user.stat || user.is_mob_restrained()))
 		return
 	var/count = 0	//num of portals from this teleport in the world

@@ -4,7 +4,7 @@
 	set desc = "Tag yourself for delivery through the disposals system."
 	set category = "Drone"
 
-	var/new_tag = input("Select the desired destination.", "Set Mail Tag", null) as null|anything in tagger_locations
+	var/new_tag = tgui_input_list(usr, "Select the desired destination.", "Set Mail Tag", null, tagger_locations)
 
 	if(!new_tag)
 		mail_destination = ""

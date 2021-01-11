@@ -20,7 +20,7 @@
 	for (var/obj/structure/machinery/camera/C in cameras)
 		friendly_cameras.Add(C.c_tag)
 
-	var/target = input("Select the camera to observe", null) as null|anything in friendly_cameras
+	var/target = tgui_input_list(usr, "Select the camera to observe", "Camera to Observe", friendly_cameras)
 	if (!target)
 		return
 	for (var/obj/structure/machinery/camera/C in cameras)

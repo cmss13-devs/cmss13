@@ -179,7 +179,7 @@
 	add_fingerprint(usr)
 
 	if (href_list["change_category"])
-		var/choice = input("Which category do you wish to display?") as null|anything in categories+"All"
+		var/choice = tgui_input_list(usr, "Which category do you wish to display?", categories+"All")
 		if(!choice)
 			return
 		show_category = choice

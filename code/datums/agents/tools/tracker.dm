@@ -17,7 +17,7 @@
 /obj/item/device/tracker/attack_self(var/mob/user)
 	if(!skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
 		return ..()
-	
+
 	if(isnull(tracked_object))
 		select_object(user)
 		return
@@ -58,12 +58,12 @@
 
 		if(z_level_to_compare_from == user.z)
 			object_choices += O
-	
+
 	if(!length(object_choices))
 		to_chat(user, SPAN_WARNING("There are nothing of interest to track."))
 		return
 
-	tracked_object = input("What Object of Interest do you want to track?", "Object type", null) in object_choices
+	tracked_object = tgui_input_list(usr, "What Object of Interest do you want to track?", "Object type", object_choices)
 
 	to_chat(user, SPAN_WARNING("New interest to track selected as [tracked_object.name]."))
 

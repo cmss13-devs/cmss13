@@ -29,7 +29,7 @@
 	if(working)
 		to_chat(user, "Something is already being printed...")
 		return
-	var/choice = input("What would you like to print?") as null|anything in products
+	var/choice = tgui_input_list(usr, "What would you like to print?", "Bioprinter", products)
 	if(!choice)
 		return
 	if(stored_matter >= products[choice][2] && stored_metal >= products[choice][3]) //Matter and metal

@@ -51,7 +51,7 @@
         "Left Leg" = "l_leg",
     )
     var/selection = ""
-    selection = input(usr, "Select Organ") as null|anything in procedureChoices
+    selection = tgui_input_list(usr, "Select Organ", "Organ selection", procedureChoices)
     return LAZYACCESS(procedureChoices, selection)
 
 
@@ -65,7 +65,7 @@
         "Eyes" = "eyes",
     )
     var/selection = ""
-    selection = input(usr, "Select Organ") as null|anything in procedureChoices
+    selection = tgui_input_list(usr, "Select Organ", "Organ selection", procedureChoices)
     return LAZYACCESS(procedureChoices, selection)
 
 /obj/item/device/professor_dummy_tablet/proc/select_body_part()
@@ -83,7 +83,7 @@
         "Left Leg" = "l_leg",
     )
     var/selection = ""
-    selection = input(usr, "Select Organ") as null|anything in procedureChoices
+    selection = tgui_input_list(usr, "Select Organ", "Organ selection", procedureChoices)
     return LAZYACCESS(procedureChoices, selection)
 
 

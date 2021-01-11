@@ -186,7 +186,7 @@
 /obj/effect/step_trigger/teleporter/yautja_ship/Trigger(atom/movable/A)
 	var/turf/destination
 	if(length(GLOB.yautja_teleports))	//We have some possible locations.
-		var/pick = input("Where do you want to go today?", "Locations") as null|anything in GLOB.yautja_teleport_descs	//Pick one of them in the list.
+		var/pick = tgui_input_list(usr, "Where do you want to go today?", "Locations", GLOB.yautja_teleport_descs)	//Pick one of them in the list.)
 		destination = GLOB.yautja_teleport_descs[pick]
 	if(!destination || (A.loc != loc))
 		return

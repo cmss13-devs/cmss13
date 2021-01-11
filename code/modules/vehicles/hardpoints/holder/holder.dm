@@ -95,7 +95,7 @@
 			to_chat(user, SPAN_WARNING("You don't know what to do with \the [O] on \the [src]."))
 			return
 
-		var/chosen_hp = input("Select a hardpoint to remove") in (hardpoints + "Cancel")
+		var/chosen_hp = tgui_input_list(usr, "Select a hardpoint to remove", "Vehicle Hardpoint Removal", (hardpoints + "Cancel"))
 		if(chosen_hp == "Cancel")
 			return
 		var/obj/item/hardpoint/old = chosen_hp

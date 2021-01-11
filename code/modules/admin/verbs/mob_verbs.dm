@@ -65,7 +65,7 @@
 		return
 
 	var/list/listed_huds = list("Medical HUD", "Security HUD", "Squad HUD", "Xeno Status HUD")
-	var/hud_choice = input("Choose a HUD to toggle", "Toggle HUD", null) as null|anything in listed_huds
+	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", listed_huds)
 	var/datum/mob_hud/H
 	switch(hud_choice)
 		if("Medical HUD")
@@ -129,7 +129,7 @@
 
 	var/list/subtle_message_options = list("Voice in head", "Weston-Yamada", "USCM High Command", "Faction-specific")
 
-	var/message_option = input("Choose the method of subtle messaging", "") in subtle_message_options
+	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
 
 	if(message_option == "Faction-specific")
 		message_option = input("Choose which faction", "")
@@ -168,7 +168,7 @@
 		return
 
 	if(!M)
-		M = input("Direct narrate to who?", "Active Players") as null|anything in GLOB.player_list
+		M = tgui_input_list(usr, "Direct narrate to who?", "Active Players", GLOB.player_list)
 
 	if(!M)
 		return
@@ -254,7 +254,7 @@
 	for(var/datum/hive_status/hive in GLOB.hive_datum)
 		hives += list("[hive.name]" = hive.hivenumber)
 
-	var/newhive = input(src,"Select a hive.", null, null) in hives
+	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives)
 
 	if(!H)
 		to_chat(usr, "This mob no longer exists")

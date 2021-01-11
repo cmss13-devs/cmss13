@@ -388,7 +388,7 @@
 	if(!ID || !(ID.rank in ROLES_MARINES))
 		return
 	if(ID.rank == JOB_SQUAD_LEADER || squad_leader == target)		//if SL/aSL are chosen
-		var/choice = input(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders")
+		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign Fireteam 1 Leader", "Unassign Fireteam 2 Leader", "Unassign Fireteam 3 Leader", "Unassign all Team Leaders"))
 		if(target.assigned_squad != src)
 			return		//in case they somehow change squad while SL is choosing
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
@@ -403,7 +403,7 @@
 		return
 	if(target.assigned_fireteam)
 		if(fireteam_leaders[target.assigned_fireteam] == target)	//Check if person already is FT leader
-			var/choice = input(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Unassign from Team Leader position")
+			var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Unassign from Team Leader position"))
 			if(target.assigned_squad != src)
 				return
 			if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
@@ -413,7 +413,7 @@
 			target.hud_set_squad()
 			return
 
-		var/choice = input(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Remove from Fireteam", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3", "Assign as Team Leader")
+		var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Remove from Fireteam", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3", "Assign as Team Leader"))
 		if(target.assigned_squad != src)
 			return
 		if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
@@ -428,7 +428,7 @@
 		target.hud_set_squad()
 		return
 
-	var/choice = input(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management") as null|anything in list("Cancel", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3")
+	var/choice = tgui_input_list(squad_leader, "Manage Fireteams and Team leaders.", "Fireteams Management", list("Cancel", "Assign to Fireteam 1", "Assign to Fireteam 2", "Assign to Fireteam 3"))
 	if(target.assigned_squad != src)
 		return
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))
@@ -445,7 +445,7 @@
 /datum/squad/proc/change_squad_status(mob/living/carbon/human/target)
 	if(target == squad_leader)
 		return		//you can't mark yourself KIA
-	var/choice = input(squad_leader, "Marine status management. M.I.A. for unaccounted for marines, K.I.A. for confirmed unrevivable dead.", "Squad Management") as null|anything in list("Cancel", "Remove status", "M.I.A.", "K.I.A.")
+	var/choice = tgui_input_list(squad_leader, "Marine status management. M.I.A. for unaccounted for marines, K.I.A. for confirmed unrevivable dead.", "Squad Management", list("Cancel", "Remove status", "M.I.A.", "K.I.A."))
 	if(target.assigned_squad != src)
 		return		//in case they somehow change squad while SL is choosing
 	if(squad_leader.is_mob_incapacitated() || !hasHUD(squad_leader,"squadleader"))

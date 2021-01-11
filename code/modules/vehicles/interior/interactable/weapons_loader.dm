@@ -97,7 +97,7 @@ obj/structure/weapons_loader/proc/reload_ammo()
 		to_chat(user, SPAN_WARNING("None of the hardpoints can be reloaded!"))
 		return
 
-	var/chosen_hp = input("Select a hardpoint") in (hps + "Cancel")
+	var/chosen_hp = tgui_input_list(usr, "Select a hardpoint", "Hardpoint Menu", (hps + "Cancel"))
 	if(chosen_hp == "Cancel")
 		return
 

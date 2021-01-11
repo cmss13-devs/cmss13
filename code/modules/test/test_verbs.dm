@@ -20,7 +20,7 @@
 	if(!check_rights(R_DEBUG))
 		return
 
-	var/set_to_run = input("Select test set","Test",null) as null|anything in test_executor.test_sets
+	var/set_to_run = tgui_input_list(usr, "Select test set","Test",null, test_executor.test_sets)
 	if(!set_to_run)
 		return
 	var/verbose = (alert("Verbose?",,"Yes","No") == "Yes")
@@ -46,7 +46,7 @@
 		for(var/datum/test_case/case in test_executor.test_sets[test_set])
 			all_tests[case.name] = case
 
-	var/test_name = input("Select test case","Test",null) as null|anything in all_tests
+	var/test_name = tgui_input_list(usr, "Select test case","Test", all_tests)
 	if(!test_name)
 		return
 	var/verbose = (alert("Verbose?",,"Yes","No") == "Yes")

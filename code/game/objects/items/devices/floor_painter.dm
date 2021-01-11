@@ -81,14 +81,14 @@
 			to_chat(usr, "You can't paint that!")
 
 /obj/item/device/floor_painter/attack_self(mob/user as mob)
-	var/type = input("What type of floor?", "Floor painter", "solid") in list("solid", "corner", "opposite corners", "side/three corners", "special", "letters")
+	var/type = tgui_input_list(usr, "What type of floor?", "Floor painter", list("solid", "corner", "opposite corners", "side/three corners", "special", "letters"))
 
 	tile_dir_mode = 0
 
 	switch(type)
 		if("solid")
 			tile_dir_mode = 0
-			var/design = input("Which color?", "Floor painter") in list("standard", "dark", "red", "blue", "green", "yellow", "purple", "neutral", "white", "white-red", "white-blue", "white-green", "white-yellow", "white-purple", "freezer", "hydro", "showroom")
+			var/design = tgui_input_list(usr, "Which color?", "Floor painter", list("standard", "dark", "red", "blue", "green", "yellow", "purple", "neutral", "white", "white-red", "white-blue", "white-green", "white-yellow", "white-purple", "freezer", "hydro", "showroom"))
 			if(design == "standard")
 				mode = "floor"
 				mode_nice = "standard"
@@ -104,12 +104,12 @@
 			mode_nice = design
 			mode = "[replacetext(design, "-", "")]full"
 		if("corner")
-			var/design = input("Which design?", "Floor painter") in list("black", "red", "blue", "green", "yellow", "purple", "neutral", "white", "white-grey", "white-red", "white-blue", "white-green", "white-yellow", "white-purple")
+			var/design = tgui_input_list(usr, "Which design?", "Floor painter", list("black", "red", "blue", "green", "yellow", "purple", "neutral", "white", "white-grey", "white-red", "white-blue", "white-green", "white-yellow", "white-purple"))
 			mode_nice = "[design] corner"
 			mode = "[replacetext(design, "-", "")]corner"
 			tile_dir_mode = 2
 		if("opposite corners")
-			var/design = input("Which design?", "Floor painter") in list("bar", "cmo", "yellowpatch", "cafeteria", "red-yellow", "red-blue", "red-green", "green-yellow", "green-blue", "blue-yellow")
+			var/design = tgui_input_list(usr, "Which design?", "Floor painter", list("bar", "cmo", "yellowpatch", "cafeteria", "red-yellow", "red-blue", "red-green", "green-yellow", "green-blue", "blue-yellow"))
 			mode_nice = design
 			if(design == "bar" || design == "cmo" || design == "yellowpatch" || design == "cafeteria")
 				mode = design
@@ -120,7 +120,7 @@
 			else
 				tile_dir_mode = 0
 		if("side/three corners")
-			var/design = input("Which design?", "Floor painter") in list("black", "red", "blue", "green", "yellow", "purple", "neutral", "white", "white-red", "white-blue", "white-green", "white-yellow", "white-purple", "red-yellow", "red-blue", "blue-red", "red-green", "green-yellow", "green-blue", "blue-yellow")
+			var/design = tgui_input_list(usr, "Which design?", "Floor painter", list("black", "red", "blue", "green", "yellow", "purple", "neutral", "white", "white-red", "white-blue", "white-green", "white-yellow", "white-purple", "red-yellow", "red-blue", "blue-red", "red-green", "green-yellow", "green-blue", "blue-yellow"))
 			if(design == "white")
 				mode = "whitehall"
 				mode_nice = "white side"
@@ -130,7 +130,7 @@
 				mode = replacetext(design, "-", "")
 				tile_dir_mode = 1
 		if("special")
-			var/design = input("Which design?", "Floor painter") in list("arrival", "escape", "caution", "warning", "white-warning", "white-blue-green", "loadingarea", "delivery", "bot", "white-delivery", "white-bot")
+			var/design = tgui_input_list(usr, "Which design?", "Floor painter", list("arrival", "escape", "caution", "warning", "white-warning", "white-blue-green", "loadingarea", "delivery", "bot", "white-delivery", "white-bot"))
 			if(design == "white-blue-green")
 				mode_nice = design
 				mode = "whitebluegreencorners"
@@ -160,7 +160,7 @@
 					mode = design
 					tile_dir_mode = 1
 		if("letters")
-			var/which = input("Which letters/design?", "Floor painter") in list("A1", "A2", "DI", "SA", "SA (red)", "SB", "SB (red)", "SC", "SC (red)", "W (red)", "V (green)", "Psy", "Ex", "Ex (blue)", "CMO", "O (OP)", "P (OP)")
+			var/which = tgui_input_list(usr, "Which letters/design?", "Floor painter", list("A1", "A2", "DI", "SA", "SA (red)", "SB", "SB (red)", "SC", "SC (red)", "W (red)", "V (green)", "Psy", "Ex", "Ex (blue)", "CMO", "O (OP)", "P (OP)"))
 			mode_nice = which
 			switch(which)
 				if("A1")

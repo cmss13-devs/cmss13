@@ -158,7 +158,7 @@
 			var/dock_list = list("Port", "Starboard", "Aft")
 			if(MS.use_umbilical)
 				dock_list = list("Port Hangar", "Starboard Hangar")
-			var/dock_name = input("Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:") as null|anything in dock_list
+			var/dock_name = tgui_input_list(usr, "Where on the [MAIN_SHIP_NAME] should the shuttle dock?", "Select a docking zone:", dock_list)
 			if(MS.moving_status != SHUTTLE_IDLE || !is_admin_level(z))
 				return
 			switch(dock_name)

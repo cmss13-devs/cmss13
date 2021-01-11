@@ -32,7 +32,7 @@
 								"/obj/vehicle"
 								)
 
-	pathtext = input("Select the path of the object you wish to create.", "Path", "/obj") as null|anything in quick_paths
+	pathtext = tgui_input_list(usr, "Select the path of the object you wish to create.", "Path", "/obj", quick_paths)
 	if(!pathtext)
 		return
 	var/path = text2path(pathtext)

@@ -62,7 +62,7 @@
 
             clans += list("People without clans" = null)
 
-            var/input = input(src, "Choose the clan to view", "View clan") as null|anything in clans
+            var/input = tgui_input_list(src, "Choose the clan to view", "View clan", clans)
 
             if(!input)
                 to_chat(src, SPAN_WARNING("Couldn't find any clans for you to view!"))
@@ -76,7 +76,7 @@
                 "People without clans" = null
             )
 
-            var/input = input(src, "Choose the clan to view", "View clan") as null|anything in options
+            var/input = tgui_input_list(src, "Choose the clan to view", "View clan", options)
 
             if(!input)
                 return
@@ -370,7 +370,7 @@
                 if(target.clan_id)
                     clans += list("Remove from clan")
 
-                var/input = input(src, "Choose the clan to put them in", "Change player's clan") as null|anything in clans
+                var/input = tgui_input_list(src, "Choose the clan to put them in", "Change player's clan", clans)
 
                 if(!input)
                     return
@@ -405,7 +405,7 @@
 
                 var/datum/rank/chosen_rank
                 if(has_clan_permission(CLAN_PERMISSION_ADMIN_MODIFY, warn = FALSE))
-                    var/input = input(src, "Select the rank to change this user to.", "Select Rank") as null|anything in ranks
+                    var/input = tgui_input_list(src, "Select the rank to change this user to.", "Select Rank", ranks)
 
                     if(!input)
                         return
@@ -417,7 +417,7 @@
                         if(!has_clan_permission(ranks[rank].permission_required, warn = FALSE))
                             ranks -= rank
 
-                    var/input = input(src, "Select the rank to change this user to.", "Select Rank") as null|anything in ranks
+                    var/input = tgui_input_list(src, "Select the rank to change this user to.", "Select Rank", ranks)
 
                     if(!input)
                         return

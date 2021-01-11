@@ -313,6 +313,7 @@
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 	recalculate_attachment_bonuses()
+	check_iff()
 
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()

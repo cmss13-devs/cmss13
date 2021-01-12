@@ -372,7 +372,6 @@
 #include "code\datums\events\events.dm"
 #include "code\datums\events\new_agent.dm"
 #include "code\datums\events\objective_given.dm"
-#include "code\datums\helper_datums\global_iterator.dm"
 #include "code\datums\helper_datums\teleport.dm"
 #include "code\datums\helper_datums\topic_input.dm"
 #include "code\datums\langchat\langchat.dm"

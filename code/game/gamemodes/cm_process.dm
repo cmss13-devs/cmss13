@@ -150,7 +150,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 	for(i in round_fog)
 		round_fog -= i
 		qdel(i)
-		sleep(1)
+		CHECK_TICK
 	round_fog = null
 
 // Open podlocks with the given ID if they aren't already opened.

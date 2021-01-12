@@ -26,11 +26,11 @@
 	var/fuel_rate = 0.00 //Rate at which fuel is used.  Based mostly on how long the generator has been running.
 	power_machine = TRUE
 
-/obj/structure/machinery/power/fusion_engine/New()
+/obj/structure/machinery/power/fusion_engine/Initialize(mapload, ...)
+	. = ..()
 	fusion_cell.fuel_amount = 100
 	update_icon()
 	connect_to_network() //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
-	..()
 	start_processing()
 
 /obj/structure/machinery/power/fusion_engine/power_change()

@@ -19,9 +19,8 @@
 	var/locked = 0.0
 //	req_access = list(access_maint_tunnels)
 
-/obj/structure/machinery/deployable/barrier/New()
-	..()
-
+/obj/structure/machinery/deployable/barrier/Initialize(mapload, ...)
+	. = ..()
 	src.icon_state = "barrier[src.locked]"
 
 /obj/structure/machinery/deployable/barrier/initialize_pass_flags(var/datum/pass_flags_container/PF)

@@ -44,8 +44,8 @@
 			icon_state = "wrench"
 			desc = "A thermoelectric generator sitting atop a plasma-filled borehole. This one is lightly damaged. Use a wrench to repair it."
 
-/obj/structure/machinery/power/geothermal/New()
-	..()
+/obj/structure/machinery/power/geothermal/Initialize(mapload, ...)
+	. = ..()
 	if(!connect_to_network()) //Should start with a cable piece underneath, if it doesn't, something's messed up in mapping
 		powernet_connection_failed = 1
 

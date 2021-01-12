@@ -1032,8 +1032,8 @@ table tr:first-child th:first-child { border: none;}
 	breach_detection = 0
 	post_alert = 0
 
-/obj/structure/machinery/alarm/server/New()
-	..()
+/obj/structure/machinery/alarm/server/Initialize()
+	. = ..()
 	req_one_access = list(ACCESS_CIVILIAN_ENGINEERING)
 	TLV["oxygen"] =			list(-1.0, -1.0,-1.0,-1.0) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0,   5,  10) // Partial pressure, kpa

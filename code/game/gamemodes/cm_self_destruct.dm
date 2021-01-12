@@ -302,8 +302,8 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 	var/in_progress = 0 //Cannot interact with while it's doing something, like an animation.
 	var/active_state = SELF_DESTRUCT_MACHINE_INACTIVE //What step of the process it's on.
 
-/obj/structure/machinery/self_destruct/New()
-	..()
+/obj/structure/machinery/self_destruct/Initialize(mapload, ...)
+	. = ..()
 	icon_state += "_1"
 
 /obj/structure/machinery/self_destruct/Destroy()

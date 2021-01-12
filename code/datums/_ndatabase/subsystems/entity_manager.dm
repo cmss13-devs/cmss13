@@ -65,8 +65,7 @@ var/datum/controller/subsystem/entity_manager/SSentity_manager
 
 /datum/controller/subsystem/entity_manager/Initialize()
 	set waitfor=0
-	while(!SSdatabase.connection.connection_ready())
-		sleep(10)
+	UNTIL(SSdatabase.connection.connection_ready())
 	adapter = SSdatabase.connection.get_adapter()	
 	prepare_tables()
 	

@@ -1578,8 +1578,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	RegisterSignal(owner, COMSIG_CLIENT_KEY_DOWN, .proc/parse_key_down)
 	RegisterSignal(owner, COMSIG_CLIENT_KEY_UP, .proc/set_key_buf)
 	winset(owner, null, "mainwindow.macro=keyreader")
-	while (!key_buf)
-		stoplag()
+	UNTIL(key_buf)
 	winset(owner, null, "mainwindow.macro=[old]")
 	UnregisterSignal(owner, list(
 		COMSIG_CLIENT_KEY_DOWN,

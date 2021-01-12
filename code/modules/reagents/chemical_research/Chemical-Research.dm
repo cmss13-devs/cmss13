@@ -89,8 +89,7 @@ var/global/datum/chemical_data/chemical_data = new /datum/chemical_data/
 //Called after all the default chems have been initialized
 /datum/chemical_data/proc/initialize_saved_chem_data()
 	set waitfor = 0
-	while(!SSentity_manager.ready)
-		stoplag()
+	WAIT_DB_READY
 	DB_FILTER(/datum/entity/chemical_information, DB_COMP("spent_chemical", DB_EQUALS, 0), CALLBACK(GLOBAL_PROC, /proc/initialize_saved_chem_data_callback), TRUE)
 
 /proc/initialize_saved_chem_data_callback(var/list/datum/entity/chemical_information/chemicals)

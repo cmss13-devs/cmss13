@@ -137,8 +137,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	qr.fail_callback = fail_callback
 	if(debug_mode)
 		all_queries += qr
-	while(!qr.process())
-		stoplag()
+	UNTIL(qr.process())
 	return qr
 
 /datum/controller/subsystem/database_query_manager/proc/create_parametric_query_sync(query_text, parameters, success_callback, fail_callback)
@@ -153,8 +152,7 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	qr.fail_callback = fail_callback
 	if(debug_mode)
 		all_queries += qr
-	while(!qr.process())
-		stoplag()
+	UNTIL(qr.process())
 	return qr
 
 /datum/controller/subsystem/database_query_manager/proc/get_query_text(qid)

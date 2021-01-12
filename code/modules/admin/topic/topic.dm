@@ -1675,7 +1675,7 @@
 		spawn(100)
 			if(distress_cancel)
 				return
-			var/mob/ref_person = locate(href_list["destroy"])
+			var/mob/ref_person = locate(href_list["destroyship"])
 			set_security_level(SEC_LEVEL_DELTA)
 			log_game("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]")
 			message_staff("[key_name_admin(usr)] has granted self destruct, requested by [key_name_admin(ref_person)]", 1)

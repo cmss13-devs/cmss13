@@ -9,9 +9,8 @@
 	var/transform_dead = 0
 	var/transform_standing = 0
 
-/obj/structure/machinery/transformer/New()
-	// On us
-	..()
+/obj/structure/machinery/transformer/Initialize(mapload, ...)
+	. = ..()
 	new /obj/structure/machinery/conveyor(loc, WEST, 1)
 
 /obj/structure/machinery/transformer/Collided(atom/movable/AM)
@@ -39,8 +38,8 @@
 		if(robot)
 			robot.lying = 0
 
-/obj/structure/machinery/transformer/conveyor/New()
-	..()
+/obj/structure/machinery/transformer/conveyor/Initialize(mapload, ...)
+	. = ..()
 	var/turf/T = loc
 	if(T)
 		// Spawn Conveyour Belts

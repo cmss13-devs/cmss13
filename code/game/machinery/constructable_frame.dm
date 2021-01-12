@@ -17,8 +17,8 @@
 	var/required_skill = SKILL_CONSTRUCTION_ENGI
 	var/required_dismantle_skill = SKILL_ENGINEER_ENGI
 
-/obj/structure/machinery/constructable_frame/New()
-	..()
+/obj/structure/machinery/constructable_frame/Initialize(mapload, ...)
+	. = ..()
 	update_desc()
 
 /obj/structure/machinery/constructable_frame/proc/update_desc()

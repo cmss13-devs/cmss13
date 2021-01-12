@@ -188,8 +188,7 @@
 			chair_state = DROPSHIP_CHAIR_BROKEN
 		else
 			chair_state = DROPSHIP_CHAIR_FOLDED
-		sleep(5) // animation length
-		icon_state = "hotseat_new_folded"
+		addtimer(VARSET_CALLBACK(src, icon_state, "hotseat_new_folded"), 5) // animation length
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/fold_down(var/break_it = 1)
 	if(chair_state == DROPSHIP_CHAIR_UNFOLDED)
@@ -204,8 +203,7 @@
 	flick("hotseat_new_unfolding", src)
 	is_animating = 0
 	chair_state = DROPSHIP_CHAIR_UNFOLDED
-	sleep(5)
-	icon_state = "hotseat"
+	addtimer(VARSET_CALLBACK(src, icon_state, "hotseat"), 5) // animation length
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/unfold_up()
 	if(chair_state == DROPSHIP_CHAIR_BROKEN)

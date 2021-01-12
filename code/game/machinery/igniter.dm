@@ -30,8 +30,8 @@
 //			location.hotspot_expose(1000,500,1)
 	return 1
 
-/obj/structure/machinery/igniter/New()
-	..()
+/obj/structure/machinery/igniter/Initialize(mapload, ...)
+	. = ..()
 	icon_state = "igniter[on]"
 
 /obj/structure/machinery/igniter/power_change()

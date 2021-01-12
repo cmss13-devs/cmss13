@@ -20,8 +20,7 @@ SUBSYSTEM_DEF(perf_logging)
 
 
 /datum/controller/subsystem/perf_logging/proc/true_initialize()
-	while(!SSentity_manager.ready)
-		stoplag()
+	WAIT_DB_READY
 	round = SSentity_manager.select(/datum/entity/mc_round)
 	round.map_name = SSmapping.configs[GROUND_MAP].map_name
 	round.save()

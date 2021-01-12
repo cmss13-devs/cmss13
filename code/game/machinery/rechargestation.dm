@@ -15,8 +15,8 @@
 	var/icon_update_tick = 0				// Used to update icon only once every 10 ticks
 	can_buckle = TRUE
 
-/obj/structure/machinery/recharge_station/New()
-	..()
+/obj/structure/machinery/recharge_station/Initialize(mapload, ...)
+	. = ..()
 	build_icon()
 	update_icon()
 

@@ -235,42 +235,6 @@
 
 	return
 
-/obj/structure/machinery/door_control/timed_automatic
-	var/trigger_delay = 1 //in minutes
-	var/trigger_time
-	var/triggered = 0
-	use_power = 0
-
-/obj/structure/machinery/door_control/timed_automatic/New()
-	..()
-	trigger_time = world.time + trigger_delay*600
-	START_PROCESSING(SSobj, src)
-	start_processing()  // should really be using this -spookydonut
-
-/obj/structure/machinery/door_control/timed_automatic/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/structure/machinery/door_control/timed_automatic/process()
-	if (!triggered && world.time >= trigger_time)
-		icon_state = initial(icon_state) + "1"
-
-		switch(normaldoorcontrol)
-			if(CONTROL_NORMAL_DOORS)
-				handle_door()
-			if(CONTROL_POD_DOORS)
-				handle_pod()
-			if(CONTROL_DROPSHIP)
-				handle_dropship(id)
-
-		desiredstate = !desiredstate
-		triggered = 1
-		STOP_PROCESSING(SSobj, src)
-		//stop_processing()
-		spawn(15)
-			if(!(stat & NOPOWER))
-				icon_state = initial(icon_state) + "0"
-
 // Controls elevator railings
 /obj/structure/machinery/door_control/railings
 	name = "railing controls"

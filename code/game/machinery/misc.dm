@@ -70,8 +70,8 @@ var/list/alldepartments = list()
 
 	var/dpt = "Weston-Yamada" // the department we're sending to
 
-/obj/structure/machinery/faxmachine/New()
-	..()
+/obj/structure/machinery/faxmachine/Initialize(mapload, ...)
+	. = ..()
 	allfaxes += src
 
 	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.

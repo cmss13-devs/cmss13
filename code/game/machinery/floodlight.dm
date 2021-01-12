@@ -15,10 +15,9 @@
 	unslashable = TRUE
 	unacidable = TRUE
 
-/obj/structure/machinery/floodlight/New()
-	..()
-	spawn(1)
-		cell = new /obj/item/cell(src)
+/obj/structure/machinery/floodlight/Initialize(mapload, ...)
+	. = ..()
+	cell = new /obj/item/cell(src)
 
 /obj/structure/machinery/floodlight/Destroy()
 	SetLuminosity(0)

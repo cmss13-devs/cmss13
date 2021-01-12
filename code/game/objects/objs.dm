@@ -229,7 +229,7 @@
 	. = ..()
 	handle_rotation()
 	if(. && buckled_mob && !handle_buckled_mob_movement(loc,direct)) //movement fails if buckled mob's move fails.
-		. = 0
+		. = FALSE
 
 /obj/forceMove(atom/dest)
 	. = ..()
@@ -239,17 +239,16 @@
 		buckled_mob.forceMove(dest)
 
 /obj/proc/handle_buckled_mob_movement(NewLoc, direct)
-	if(!(direct & (direct - 1))) //not diagonal move. the obj's diagonal move is split into two cardinal moves and those moves will handle the buckled mob's movement.
-		if(!buckled_mob.Move(NewLoc, direct))
-			forceMove(buckled_mob.loc)
-			last_move_dir = buckled_mob.last_move_dir
-			buckled_mob.inertia_dir = last_move_dir
-			return 0
+	if(!buckled_mob.Move(NewLoc, direct))
+		forceMove(buckled_mob.loc)
+		last_move_dir = buckled_mob.last_move_dir
+		buckled_mob.inertia_dir = last_move_dir
+		return FALSE
 
 	// Even if the movement is entirely managed by the object, notify the buckled mob that it's moving for its handler.
 	//It won't be called otherwise because it's a function of client_move or pulled mob, neither of which accounts for this.
 	buckled_mob.on_movement()
-	return 1
+	return TRUE
 
 /obj/BlockedPassDirs(atom/movable/mover, target_dir)
 	if(mover == buckled_mob) //can't collide with the thing you're buckled to

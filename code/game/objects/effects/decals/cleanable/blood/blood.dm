@@ -49,11 +49,10 @@
 	var/dry_time_left = 0
 	if(drying_time)
 		dry_time_left = max(0, drying_time - (world.time - dry_start_time))
-	if(!H.bloody_feet)
-		H.bloody_feet = H.AddComponent(/datum/component/bloody_feet, amount, basecolor, dry_time_left, H.shoes)
+	if(!H.bloody_footsteps)
+		H.AddElement(/datum/element/bloody_feet, dry_time_left, H.shoes, amount, basecolor)
 	else
-		var/datum/component/bloody_feet/BF = H.bloody_feet
-		BF.blood_crossed(amount, basecolor, dry_time_left)
+		SEND_SIGNAL(H, COMSIG_HUMAN_BLOOD_CROSSED, amount, basecolor, dry_time_left)
 
 /obj/effect/decal/cleanable/blood/update_icon()
 	if(basecolor == "rainbow")

@@ -117,7 +117,8 @@
 	var/hands_blood_amt = 0
 	var/feet_blood_color = "" //color of the blood on our feet if there's any
 	var/feet_blood_amt = 0
-	var/datum/component/bloody_feet
+	/// The number of bloody foot steps left to make
+	var/bloody_footsteps = 0
 
 	//taken from random files
 	var/last_chew = 0

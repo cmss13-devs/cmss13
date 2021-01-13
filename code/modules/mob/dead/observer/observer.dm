@@ -253,7 +253,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 /mob/dead/observer/Move(NewLoc, direct)
 	following = null
-	dir = direct
+	setDir(direct)
 	var/area/last_area = get_area(loc)
 	if(NewLoc)
 		for(var/obj/effect/step_trigger/S in NewLoc)

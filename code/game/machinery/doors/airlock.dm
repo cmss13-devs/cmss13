@@ -640,7 +640,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 				var/obj/structure/airlock_assembly/da = new assembly_type(loc)
 				if(istype(da, /obj/structure/airlock_assembly/multi_tile))
-					da.dir = dir
+					da.setDir(dir)
 
 				da.anchored = 1
 				if(mineral)

@@ -184,7 +184,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	origins = new_origin
 
 	// Update dir
-	dir = turn(dir, deg)
+	setDir(turn(dir, deg))
 
 //for status window
 /obj/item/hardpoint/proc/get_hardpoint_info()

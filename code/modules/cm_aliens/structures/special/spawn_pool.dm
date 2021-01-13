@@ -83,7 +83,7 @@
 		return
 	visible_message(SPAN_DANGER("\The [src] splashes loudly as \the [M] is tossed in, bubbling uncontrollably!"))
 	melting_body = M
-	melting_body.dir = SOUTH
+	melting_body.setDir(SOUTH)
 	melting_body.moveToNullspace()
 	melting_body.pixel_x = 16
 	melting_body.pixel_y = 19

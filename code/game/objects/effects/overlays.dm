@@ -225,7 +225,7 @@
 	effect_duration = 10
 
 	New(loc)
-		dir = pick(cardinal)
+		setDir(pick(cardinal))
 		..()
 
 /obj/effect/overlay/temp/emp_pulse

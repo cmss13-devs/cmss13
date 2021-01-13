@@ -217,10 +217,10 @@
 		else if(target.y - user.y < -c_view + view_y_offset) diff_dir_y = 2
 		if(diff_dir_x || diff_dir_y)
 			DB.icon_state = "[blip_icon]_blip_dir"
-			DB.dir = diff_dir_x + diff_dir_y
+			DB.setDir(diff_dir_x + diff_dir_y)
 		else
 			DB.icon_state = "[blip_icon]_blip"
-			DB.dir = initial(DB.dir)
+			DB.setDir(initial(DB.dir))
 
 		DB.screen_loc = "[Clamp(c_view + 1 - view_x_offset + (target.x - user.x), 1, 2*c_view+1)],[Clamp(c_view + 1 - view_y_offset + (target.y - user.y), 1, 2*c_view+1)]"
 		user.client.screen += DB

@@ -42,7 +42,7 @@
 	var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(H.loc) //Create a new nest for the host
 	H.statistic_exempt = TRUE
 	H.buckled = start_nest
-	H.dir = start_nest.dir
+	H.setDir(start_nest.dir)
 	H.update_canmove()
 	start_nest.buckled_mob = H
 	start_nest.afterbuckle(H)

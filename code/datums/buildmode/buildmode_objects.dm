@@ -46,7 +46,7 @@
 
 /obj/effect/bmode/builddir/clicked()
     master.buildmode.change_dir()
-    dir = master.dir
+    setDir(master.dir)
     return TRUE
 
 /obj/effect/bmode/buildhelp

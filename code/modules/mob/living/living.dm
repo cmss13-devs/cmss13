@@ -211,7 +211,7 @@
 				if(istype(pmob))
 					pmob.on_movement()
 				if(!(flags_atom & DIRLOCK))
-					dir = turn(direct, 180) //face the pullee
+					setDir(turn(direct, 180)) //face the pullee
 
 	if(pulledby && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()

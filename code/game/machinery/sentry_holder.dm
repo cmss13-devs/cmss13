@@ -77,7 +77,7 @@
 		else
 			step(M, get_dir(src,deployed_turret))
 
-	deployed_turret.dir = dir
+	deployed_turret.setDir(dir)
 	deployed_turret.pixel_x = 0
 	deployed_turret.pixel_y = 0
 

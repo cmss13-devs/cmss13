@@ -123,7 +123,7 @@
 
 /obj/screen/gun
 	name = "gun"
-	dir = 2
+	dir = SOUTH
 	var/gun_click_time = -100
 
 /obj/screen/gun/move

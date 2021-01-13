@@ -73,7 +73,7 @@
 	anchored = 1
 
 /obj/effect/engine_exhaust/New(var/turf/nloc, var/ndir, var/temp)
-	dir = ndir
+	setDir(ndir)
 	..(nloc)
 
 	spawn(20)

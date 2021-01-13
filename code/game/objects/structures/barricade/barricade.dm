@@ -300,9 +300,9 @@
 // to hacky.
 /obj/structure/barricade/handle_rotation()
 	if (dir & EAST)
-		dir = EAST
+		setDir(EAST)
 	else if(dir & WEST)
-		dir = WEST
+		setDir(WEST)
 	update_icon()
 
 obj/structure/barricade/acid_spray_act()
@@ -368,7 +368,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return
 
 	user.next_move = world.time + 3	//slight spam prevention? you don't want every metal cade to turn into a doorway
-	dir = turn(dir, 90 * rotation_dir)
+	setDir(turn(dir, 90 * rotation_dir))
 	update_icon()
 
 /obj/structure/barricade/clicked(mob/user, list/mods)

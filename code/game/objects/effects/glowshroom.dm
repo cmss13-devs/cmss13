@@ -23,7 +23,7 @@
 /obj/effect/glowshroom/Initialize(mapload, ...)
 	. = ..()
 
-	dir = CalcDir()
+	setDir(CalcDir())
 
 	if(!floor)
 		switch(dir) //offset to make it be on the wall rather than on the floor

@@ -226,7 +226,7 @@
 		inv_box.icon_state =  slot_data["state"]
 
 		if(slot_data["dir"])
-			inv_box.dir = slot_data["dir"]
+			inv_box.setDir(slot_data["dir"])
 
 		if(slot_data["toggle"])
 			toggleable_inventory += inv_box

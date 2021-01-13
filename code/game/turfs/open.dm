@@ -391,7 +391,7 @@
 //Randomize ice floor sprite
 /turf/open/ice/Initialize(mapload, ...)
 	. = ..()
-	dir = pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST)
+	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 
 
 

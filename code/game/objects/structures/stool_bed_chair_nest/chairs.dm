@@ -21,7 +21,7 @@
 	else
 		src.layer = OBJ_LAYER
 	if(buckled_mob)
-		buckled_mob.dir = dir
+		buckled_mob.setDir(dir)
 
 /obj/structure/bed/chair/verb/rotate()
 	set name = "Rotate Chair"
@@ -29,7 +29,7 @@
 	set src in oview(1)
 
 	if(CONFIG_GET(flag/ghost_interaction))
-		src.dir = turn(src.dir, 90)
+		src.setDir(turn(src.dir, 90))
 		handle_rotation()
 		return
 	else
@@ -40,7 +40,7 @@
 		if(usr.stat || usr.is_mob_restrained())
 			return
 
-		dir = turn(src.dir, 90)
+		setDir(turn(src.dir, 90))
 		handle_rotation()
 		return
 

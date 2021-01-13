@@ -276,7 +276,7 @@
 	var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
 	inv_box.name = WEAR_L_HAND
 	inv_box.icon = ui_datum.ui_style_icon
-	inv_box.dir = EAST
+	inv_box.setDir(EAST)
 	inv_box.screen_loc = ui_datum.ui_lhand
 	inv_box.icon_state = "hand_inactive"
 	if(mymob && mymob.hand)
@@ -294,7 +294,7 @@
 	var/obj/screen/inventory/inv_box = new /obj/screen/inventory()
 	inv_box.name = WEAR_R_HAND
 	inv_box.icon = ui_datum.ui_style_icon
-	inv_box.dir = WEST
+	inv_box.setDir(WEST)
 	inv_box.screen_loc = ui_datum.ui_rhand
 	inv_box.icon_state = "hand_inactive"
 	if(mymob && !mymob.hand)	//This being 0 or null means the right hand is in use

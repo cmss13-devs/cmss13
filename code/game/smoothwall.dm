@@ -165,9 +165,9 @@
 // Not proud of this.
 /obj/structure/mineral_door/resin/handle_icon_junction(junction)
 	if(junction & (SOUTH|NORTH))
-		dir = WEST
+		setDir(WEST)
 	else if(junction & (EAST|WEST))
-		dir = NORTH
+		setDir(NORTH)
 
 /obj/structure/window/framed/handle_icon_junction(jun_1, jun_2)
 	icon_state = "[basestate][jun_2 ? jun_2 : jun_1]" //Use junction 2 if possible, junction 1 otherwise.

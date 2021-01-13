@@ -103,7 +103,7 @@ obj/structure/pipes/binary/passive_gate
 	if (usr.stat || usr.is_mob_restrained() || anchored)
 		return
 
-	src.dir = turn(src.dir, 90)
+	src.setDir(turn(src.dir, 90))
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."
 
 /obj/structure/pipes/binary/circulator/verb/rotate_anticlockwise()
@@ -114,5 +114,5 @@ obj/structure/pipes/binary/passive_gate
 	if (usr.stat || usr.is_mob_restrained() || anchored)
 		return
 
-	src.dir = turn(src.dir, -90)
+	src.setDir(turn(src.dir, -90))
 	desc = initial(desc) + " Its outlet port is to the [dir2text(dir)]."

@@ -497,7 +497,7 @@
 
 	forceMove(D.trunk)
 	active = 1
-	dir = DOWN
+	setDir(DOWN)
 	spawn(1)
 		move() //Spawn off the movement process
 
@@ -639,7 +639,7 @@
 //Transfer the holder through this pipe segment, overriden for special behaviour
 /obj/structure/disposalpipe/proc/transfer(var/obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir)
-	H.dir = nextdir
+	H.setDir(nextdir)
 	var/turf/T = H.nextloc()
 	var/obj/structure/disposalpipe/P = H.findpipe(T)
 
@@ -725,7 +725,7 @@
 		for(var/D in cardinal)
 			if(D & dpdir)
 				var/obj/structure/disposalpipe/broken/P = new(loc)
-				P.dir = D
+				P.setDir(D)
 
 	invisibility = 101	//Make invisible (since we won't delete the pipe immediately)
 	var/obj/structure/disposalholder/H = locate() in src
@@ -831,7 +831,7 @@
 		if("pipe-tagger-partial")
 			C.ptype = 14
 	transfer_fingerprints_to(C)
-	C.dir = dir
+	C.setDir(dir)
 	C.density = 0
 	C.anchored = 1
 	C.update()
@@ -868,7 +868,7 @@
 
 /obj/structure/disposalpipe/up/transfer(var/obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir)
-	H.dir = nextdir
+	H.setDir(nextdir)
 
 	var/turf/T
 	var/obj/structure/disposalpipe/P
@@ -911,7 +911,7 @@
 
 /obj/structure/disposalpipe/down/transfer(var/obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir)
-	H.dir = nextdir
+	H.setDir(nextdir)
 
 	var/turf/T
 	var/obj/structure/disposalpipe/P
@@ -962,7 +962,7 @@
 
 /obj/structure/disposalpipe/up/almayer/transfer(var/obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir)
-	H.dir = nextdir
+	H.setDir(nextdir)
 
 	var/turf/T
 	var/obj/structure/disposalpipe/P
@@ -991,7 +991,7 @@
 
 /obj/structure/disposalpipe/down/almayer/transfer(var/obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir)
-	H.dir = nextdir
+	H.setDir(nextdir)
 
 	var/turf/T
 	var/obj/structure/disposalpipe/P
@@ -1183,7 +1183,7 @@
 
 /obj/structure/disposalpipe/sortjunction/transfer(var/obj/structure/disposalholder/H)
 	var/nextdir = nextdir(H.dir, H.destinationTag)
-	H.dir = nextdir
+	H.setDir(nextdir)
 	var/turf/T = H.nextloc()
 	var/obj/structure/disposalpipe/P = H.findpipe(T)
 

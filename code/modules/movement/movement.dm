@@ -53,7 +53,7 @@
 
 	. = ..()
 	if (flags_atom & DIRLOCK)
-		dir = old_dir
+		setDir(old_dir)
 	else
 		if (old_dir & EAST|WEST) // Can no longer face NW/NE/SW/SE after moving/being moved
 			dir &= NORTH|SOUTH

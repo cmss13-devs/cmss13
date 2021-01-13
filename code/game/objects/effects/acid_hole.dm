@@ -15,7 +15,7 @@
 		W.acided_hole = src
 		holed_wall = W
 		holed_wall.opacity = 0
-		dir = W.acided_hole_dir
+		setDir(W.acided_hole_dir)
 
 /obj/effect/acid_hole/Destroy()
 	if(holed_wall)
@@ -130,7 +130,7 @@
 								 SPAN_WARNING("You throw [G] through [src]"))
 			user.drop_held_item()
 			G.forceMove(Target)
-			G.dir = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+			G.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 			step_away(G,src,rand(2,5))
 			if(!G.active)
 				G.activate(user)
@@ -152,7 +152,7 @@
 								 SPAN_WARNING("You throw [F] through [src]"))
 			user.drop_held_item()
 			F.forceMove(Target)
-			F.dir = pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST)
+			F.setDir(pick(NORTH, SOUTH, EAST, WEST, NORTHEAST, NORTHWEST, SOUTHEAST, SOUTHWEST))
 			step_away(F,src,rand(1,5))
 			F.SetLuminosity(0)
 			if(F.on && loc != user)

@@ -31,9 +31,9 @@
 
 /obj/structure/pipes/standard/simple/proc/normalize_dir()
 	if(dir == 3)
-		dir = 1
+		setDir(NORTH)
 	else if(dir == 12)
-		dir = 4
+		setDir(EAST)
 
 /obj/structure/pipes/standard/simple/update_icon(var/safety = 0)
 	..()

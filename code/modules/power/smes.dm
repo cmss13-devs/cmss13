@@ -175,7 +175,7 @@
 	to_chat(user, SPAN_NOTICE("You start adding cable to the [src]."))
 	if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		terminal = new /obj/structure/machinery/power/terminal(tempLoc)
-		terminal.dir = tempDir
+		terminal.setDir(tempDir)
 		terminal.master = src
 		return 0
 	return 1

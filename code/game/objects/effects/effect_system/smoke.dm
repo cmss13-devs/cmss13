@@ -90,7 +90,7 @@
 			else
 				continue
 		var/obj/effect/particle_effect/smoke/S = new type(T, amount, source, source_mob)
-		S.dir = pick(cardinal)
+		S.setDir(pick(cardinal))
 		S.time_to_live = time_to_live
 		if(S.amount>0)
 			S.spread_smoke()
@@ -451,7 +451,7 @@
 			if(istype(A, /obj/flamer_fire))
 				qdel(A)
 
-		S.dir = pick(cardinal)
+		S.setDir(pick(cardinal))
 		S.time_to_live = time_to_live
 		if(S.amount>0)
 			S.spread_smoke()

@@ -15,7 +15,7 @@
 
 /obj/structure/barricade/sandbags/New(loc, mob/user, direction, var/amount = 1)
 	if(direction)
-		dir = direction
+		setDir(direction)
 
 	if(dir == SOUTH)
 		pixel_y = -7

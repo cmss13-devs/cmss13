@@ -55,7 +55,7 @@
 
 	var/factions = user.get_id_faction_group()
 	var/obj/structure/machinery/defenses/D = new defense_type(T, factions)
-	D.dir = direction
+	D.setDir(direction)
 	playsound(T, 'sound/mecha/mechmove01.ogg', 30, 1)
 	qdel(src)
 

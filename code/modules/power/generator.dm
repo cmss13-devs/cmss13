@@ -24,7 +24,7 @@
 	if (usr.stat || usr.is_mob_restrained()  || anchored)
 		return
 
-	src.dir = turn(src.dir, 90)
+	src.setDir(turn(src.dir, 90))
 
 /obj/structure/machinery/power/generator/verb/rotate_anticlock()
 	set category = "Object"
@@ -34,4 +34,4 @@
 	if (usr.stat || usr.is_mob_restrained()  || anchored)
 		return
 
-	src.dir = turn(src.dir, -90)
+	src.setDir(turn(src.dir, -90))

@@ -113,7 +113,7 @@
 		return
 	if(do_after(user, 1 SECOND, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
-		M.dir = user.dir // Make sure we face the right direction
+		M.setDir(user.dir) // Make sure we face the right direction
 		M.gun_rounds = src.rounds //Inherit the amount of ammo we had.
 		M.gun_mounted = TRUE
 		M.anchored = TRUE
@@ -244,15 +244,7 @@
 	if(istype(O,/obj/item/tool/wrench)) //rotate the mount
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] rotates [src]."),SPAN_NOTICE("You rotate [src]."))
-		switch(dir)
-			if(NORTH)
-				dir = EAST
-			if(EAST)
-				dir = SOUTH
-			if(SOUTH)
-				dir = WEST
-			if(WEST)
-				dir = NORTH
+		setDir(turn(dir, -90))
 		return
 
 	if(istype(O,/obj/item/device/m56d_gun)) //lets mount the MG onto the mount.
@@ -300,7 +292,7 @@
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
 				G.visible_message("[icon2html(G)] <B>[G] is now complete!</B>") //finished it for everyone to
-				G.dir = src.dir //make sure we face the right direction
+				G.setDir(dir) //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
 				G.update_icon()
 				qdel(src)
@@ -434,15 +426,7 @@
 		else
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message("[user] rotates the [src].","You rotate the [src].")
-			switch(dir)
-				if(NORTH)
-					dir = EAST
-				if(EAST)
-					dir = SOUTH
-				if(SOUTH)
-					dir = WEST
-				if(WEST)
-					dir = NORTH
+			setDir(turn(dir, -90))
 		return
 
 	if(isscrewdriver(O)) // Lets take it apart.
@@ -620,7 +604,7 @@
 				target = get_angle_target_turf(T, final_angle, 30)
 
 			in_chamber.weapon_source_mob = user
-			in_chamber.dir = src.dir
+			in_chamber.setDir(dir)
 			in_chamber.def_zone = pick("chest","chest","chest","head")
 			playsound(loc,gun_noise, 50, 1)
 			in_chamber.fire_at(target,user,src,ammo.max_range,ammo.shell_speed)
@@ -900,7 +884,7 @@
 	if(!do_after(user, M2C_SETUP_TIME , INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 		return
 	var/obj/structure/machinery/m56d_hmg/auto/M = new /obj/structure/machinery/m56d_hmg/auto(user.loc)
-	M.dir = user.dir // Make sure we face the right direction
+	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, 1)
 	to_chat(user, SPAN_NOTICE("You deploy [M]."))
@@ -1339,7 +1323,7 @@
 	user.visible_message(SPAN_NOTICE("[user] handles [src]."),SPAN_NOTICE("You handle [src], locked and loaded!"))
 	user.update_canmove()
 	user.forceMove(src.loc)
-	user.dir = src.dir
+	user.setDir(dir)
 	user_old_x = user.pixel_x
 	user_old_y = user.pixel_y
 	update_pixels(user)
@@ -1373,7 +1357,7 @@
 	step(user, grip_dir)
 	user_old_x = 0
 	user_old_y = 0
-	user.dir = old_dir
+	user.setDir(old_dir)
 
 	if(user.client)
 		user.client.change_view(world_view_size)
@@ -1444,8 +1428,8 @@
 		to_chat(user, "You can't rotate it that way.")
 		return
 
-	src.dir = direction
-	user.dir = direction
+	src.setDir(direction)
+	user.setDir(direction)
 	update_pixels(user)
 	playsound(src.loc, 'sound/items/m56dauto_rotate.ogg', 25, 1)
 	to_chat(user, "You rotate [src], using the tripod to support your pivoting movement.")

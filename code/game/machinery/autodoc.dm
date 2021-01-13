@@ -689,7 +689,7 @@
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "sleeperconsole"
 	var/obj/structure/machinery/autodoc/connected = null
-	dir = 2
+	dir = SOUTH
 	anchored = 1 //About time someone fixed this.
 	density = 0
 

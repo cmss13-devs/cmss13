@@ -153,7 +153,7 @@
 	shot_from = S
 	in_flight = 1
 
-	dir = get_dir(loc, target_turf)
+	setDir(get_dir(loc, target_turf))
 
 	var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 	if(round_statistics && ammo_flags & AMMO_BALLISTIC)

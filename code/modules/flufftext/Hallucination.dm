@@ -311,7 +311,7 @@ proc/check_panel(mob/M)
 				collapse()
 				continue
 			if(get_dist(src,my_target) > 1)
-				src.dir = get_dir(src,my_target)
+				setDir(get_dir(src,my_target))
 				step_towards(src,my_target)
 				updateimage()
 			else

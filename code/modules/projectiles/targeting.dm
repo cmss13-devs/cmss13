@@ -27,7 +27,7 @@
 			Aim(M) //Aha!  Aim at them!
 		else if(!ismob(M) || (ismob(M) && !(M in view(user)))) //Nope!  They weren't there!
 			Fire(A,user,params)  //Fire like normal, then.
-	user.dir = get_cardinal_dir(src, A)
+	user.setDir(get_cardinal_dir(src, A))
 
 //Aiming at the target mob.
 /obj/item/weapon/gun/proc/Aim(var/mob/living/M)
@@ -57,7 +57,7 @@
 	else
 		click_empty(M)
 
-	usr.dir = get_cardinal_dir(src, T)
+	usr.setDir(get_cardinal_dir(src, T))
 
 //Yay, math!
 

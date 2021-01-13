@@ -140,7 +140,7 @@ obj/item/circuitboard/machine/rdserver
 
 /obj/item/circuitboard/machine/unary_atmos/construct(var/obj/structure/pipes/unary/U)
 	//TODO: Move this stuff into the relevant constructor when pipe/construction.dm is cleaned up.
-	U.dir = src.machine_dir
+	U.setDir(src.machine_dir)
 	U.valid_directions = list(init_dirs)
 
 /obj/item/circuitboard/machine/unary_atmos/heater

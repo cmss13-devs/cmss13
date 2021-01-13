@@ -68,7 +68,7 @@ obj/structure/bed/Destroy()
 	B.visible_message(SPAN_NOTICE("[user] buckles [B] to [src]!"))
 	B.roller_buckled = src
 	B.forceMove(loc)
-	B.dir = dir
+	B.setDir(dir)
 	buckled_bodybag = B
 	density = 1
 	update_icon()

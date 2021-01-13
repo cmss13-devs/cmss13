@@ -230,7 +230,7 @@
 			visible_message("[icon2html(src, viewers(src))] <span class='danger'>[src] beeps and buzzes wildly, flashing odd symbols on its screen before shutting down!</span>")
 			playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 			for(var/i = 1 to 6)
-				dir = pick(1, 2, 3, 4)
+				setDir(pick(1, 2, 3, 4))
 				sleep(2)
 			turned_on = FALSE
 	if(health > 0)

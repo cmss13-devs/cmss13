@@ -123,7 +123,7 @@ var/list/test_env_prefab_types = list(
 		for(var/type in types)
 			var/atom/A = new type(char_turf)
 			if(types[type])
-				A.dir = types[type]
+				A.setDir(types[type])
 
 // Insert yourself into the environment here, for example by keying into a mob
 /datum/test_environment/proc/insert_actors()

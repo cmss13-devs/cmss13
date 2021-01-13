@@ -80,7 +80,7 @@
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
 	user.drop_inv_item_on_ground(src)
-	dir = user.dir //The direction it is planted in is the direction the user faces at that time
+	setDir(user.dir) //The direction it is planted in is the direction the user faces at that time
 	activate_sensors()
 	update_icon()
 

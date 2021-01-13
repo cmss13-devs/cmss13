@@ -118,7 +118,7 @@
 	H.internal = anes_tank
 	H.visible_message(SPAN_NOTICE("[user] fits the mask over [H]'s face and turns on the anesthetic."))
 	to_chat(H, SPAN_INFO("You begin to feel sleepy."))
-	H.dir = SOUTH
+	H.setDir(SOUTH)
 	start_processing()
 	update_icon()
 

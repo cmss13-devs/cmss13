@@ -94,7 +94,7 @@ Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, e
 	caliber = "12g"
 	max_rounds = 5
 	current_rounds = 5
-	dir = 6
+	dir = SOUTHEAST
 	gun_type = /obj/item/weapon/gun/shotgun
 
 /obj/item/ammo_magazine/handful/shotgun/slug

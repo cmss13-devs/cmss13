@@ -77,11 +77,18 @@
 			// Otherwise the preview dummy will runtime
 			// because atoms aren't initialized yet
 			if(SSticker.current_state < GAME_STATE_PREGAME)
+				to_chat(src, "Game is still starting up, please wait")
+				return
+			if(!SSentity_manager.ready)
+				to_chat(src, "DB is still starting up, please wait")
 				return
 			client.prefs.ShowChoices(src)
 			return 1
 
 		if("show_playtimes")
+			if(!SSentity_manager.ready)
+				to_chat(src, "DB is still starting up, please wait")
+				return
 			if(client.player_data)
 				client.player_data.ui_interact(src)
 			return 1

@@ -351,9 +351,10 @@
 
 
 	tier_slot_multiplier = mutators.tier_slot_multiplier
-
 	larva_gestation_multiplier = mutators.larva_gestation_multiplier
 	bonus_larva_spawn_chance = mutators.bonus_larva_spawn_chance
+
+	hive_ui.update_all_data()
 
 /datum/hive_status/proc/add_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
 	if(!xeno)

@@ -123,8 +123,8 @@
 		return
 
 	var/mob/living/carbon/human/H = AM
-	if(H.bloody_feet)
-		QDEL_NULL(H.bloody_feet)
+	if(H.bloody_footsteps)
+		SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
 
 /turf/open/beach/sand
@@ -300,8 +300,8 @@
 
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
-		if(H.bloody_feet)
-			QDEL_NULL(H.bloody_feet)
+		if(H.bloody_footsteps)
+			SEND_SIGNAL(H, COMSIG_HUMAN_CLEAR_BLOODY_FEET)
 
 
 /turf/open/gm/river/proc/cleanup(var/mob/living/carbon/human/M)

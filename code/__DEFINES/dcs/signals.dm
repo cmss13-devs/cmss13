@@ -145,6 +145,9 @@
 /// From /mob/living/carbon/human/bullet_act
 #define COMSIG_HUMAN_PRE_BULLET_ACT "human_pre_bullet_act"
 	#define COMPONENT_BULLET_NO_HIT (1<<0)
+/// From /obj/effect/decal/cleanable/blood/Crossed(): (amount, bcolor, dry_time_left)
+#define COMSIG_HUMAN_BLOOD_CROSSED "human_blood_crossed"
+#define COMSIG_HUMAN_CLEAR_BLOODY_FEET "human_clear_bloody_feet"
 
 #define COMSIG_XENOMORPH_OVERWATCH_XENO "xenomorph_overwatch_xeno"
 #define COMSIG_XENOMORPH_STOP_OVERWATCH	"xenomorph_stop_overwatch"

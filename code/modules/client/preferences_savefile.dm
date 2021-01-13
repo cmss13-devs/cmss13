@@ -253,6 +253,7 @@
 	S["citizenship"] 		>> citizenship
 	S["faction"] 			>> faction
 	S["religion"] 			>> religion
+	S["traits"]				>> traits
 
 	S["preferred_squad"]		>> preferred_squad
 	S["nanotrasen_relation"] 	>> nanotrasen_relation
@@ -308,15 +309,15 @@
 	alternate_option = sanitize_integer(alternate_option, 0, 2, initial(alternate_option))
 	if(!job_preference_list)
 		ResetJobs()
-	else	
+	else
 		for(var/job in job_preference_list)
 			job_preference_list[job] = sanitize_integer(job_preference_list[job], 0, 3, initial(job_preference_list[job]))
 
-	if(isnull(disabilities)) 
+	if(isnull(disabilities))
 		disabilities = 0
-	if(!organ_data) 
+	if(!organ_data)
 		organ_data = list()
-	if(!gear) 
+	if(!gear)
 		gear = list()
 
 	//if(!skin_style) skin_style = "Default"
@@ -392,6 +393,7 @@
 	S["citizenship"] 		<< citizenship
 	S["faction"] 			<< faction
 	S["religion"] 			<< religion
+	S["traits"]				<< traits
 
 	S["nanotrasen_relation"] 	<< nanotrasen_relation
 	S["preferred_squad"]		<< preferred_squad

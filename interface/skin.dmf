@@ -707,7 +707,7 @@ window "preferencewindow"
 	elem "preferencewindow"
 		type = MAIN
 		pos = 281,0
-		size = 660x800
+		size = 1000x1000
 		anchor1 = none
 		anchor2 = none
 		background-color = none
@@ -719,7 +719,7 @@ window "preferencewindow"
 	elem "preferencebrowser"
 		type = BROWSER
 		pos = 0,240
-		size = 660x550
+		size = 1000x1000
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = none
@@ -727,7 +727,7 @@ window "preferencewindow"
 	elem "preview"
 		type = MAP
 		pos = 0,-10
-		size = 660x250
+		size = 1000x250
 		anchor1 = 0,0
 		anchor2 = 100,0
 		right-click = true

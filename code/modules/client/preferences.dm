@@ -183,13 +183,13 @@ var/const/MAX_SAVE_SLOTS = 10
 		return
 	update_preview_icon()
 
-	var/dat = "<html><head><style>"
+	var/dat = "<style>"
 	dat += "#wrapper 		{position: relative; margin: 0 auto;}"
 	dat += "#column1			{width: 30%; float: left;}"
 	dat += "#column2			{width: 30%; float: left;}"
 	dat += "#column3			{width: 40%; float: left;}"
 	dat += ".square			{width: 15px; height: 15px; display: inline-block;}"
-	dat += "</style></head>"
+	dat += "</style>"
 	dat += "<body onselectstart='return false;'>"
 
 	if(path)
@@ -311,6 +311,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	dat += "<a href='byond://?src=\ref[user];preference=flavor_text;task=open'><b>Character Description</b></a>"
 
+	dat += "<a href='byond://?src=\ref[user];preference=traits;task=open'><b>Character Traits</b></a>"
+
 	dat += "<br><br>"
 
 	dat += "<h2><b><u>Marine Gear:</u></b></h2>"
@@ -415,10 +417,10 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<b>Synthetic whitelist status:</b> <a href='?_src_=prefs;preference=synth_status;task=input'>[synth_status]</a><br>"
 		dat += "</div>"
 
-	dat += "</div></body></html>"
+	dat += "</div></body>"
 
 	winshow(user, "preferencewindow", TRUE)
-	show_browser(user, dat, "Preferences", "preferencebrowser", "size=640x770")
+	show_browser(user, dat, "Preferences", "preferencebrowser")
 	onclose(user, "preferencewindow", src)
 
 //limit 	 	- The amount of jobs allowed per column. Defaults to 13 to make it look nice.
@@ -744,6 +746,32 @@ var/const/MAX_SAVE_SLOTS = 10
 
 						gen_record = genmsg
 						SetRecords(user)
+
+		if("traits")
+			switch(href_list["task"])
+				if("open")
+					open_character_traits(user)
+				if("change_slot")
+					var/trait_group = text2path(href_list["trait_group"])
+					if(!GLOB.character_trait_groups[trait_group])
+						trait_group = null
+					open_character_traits(user, trait_group)
+				if("give_trait")
+					var/trait_group = text2path(href_list["trait_group"])
+					if(!GLOB.character_trait_groups[trait_group])
+						trait_group = null
+					var/trait = text2path(href_list["trait"])
+					var/datum/character_trait/CT = GLOB.character_traits[trait]
+					CT?.try_give_trait(src)
+					open_character_traits(user, trait_group)
+				if("remove_trait")
+					var/trait_group = text2path(href_list["trait_group"])
+					if(!GLOB.character_trait_groups[trait_group])
+						trait_group = null
+					var/trait = text2path(href_list["trait"])
+					var/datum/character_trait/CT = GLOB.character_traits[trait]
+					CT?.try_remove_trait(src)
+					open_character_traits(user, trait_group)
 
 	switch (href_list["task"])
 		if ("random")
@@ -1587,3 +1615,46 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	alert("The key sequence is [key_buf].")
 	return key_buf
+
+/datum/preferences/proc/open_character_traits(mob/user, character_trait_group)
+	if(!read_traits)
+		read_traits = TRUE
+		for(var/trait in traits)
+			var/datum/character_trait/CT = GLOB.character_traits[trait]
+			trait_points -= CT.cost
+	var/dat = "<body onselectstart='return false;'>"
+	dat += "<center>"
+	var/datum/character_trait_group/current_trait_group
+	var/i = 1
+	for(var/trait_group in GLOB.character_trait_groups)
+		var/datum/character_trait_group/CTG = GLOB.character_trait_groups[trait_group]
+		var/button_class = ""
+		if(!character_trait_group && i == 1 || character_trait_group == trait_group)
+			button_class = "class='linkOn'"
+			current_trait_group = CTG
+		dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=traits;task=change_slot;trait_group=[trait_group]' [button_class]>"
+		dat += CTG.trait_group_name
+		dat += "</a>"
+		i++
+	dat += "</center>"
+	dat += "<table>"
+	for(var/trait in current_trait_group.traits)
+		var/datum/character_trait/CT = trait
+		if(!CT.applyable)
+			continue
+		var/has_trait = (CT.type in traits)
+		var/task = has_trait ? "remove_trait" : "give_trait"
+		var/button_class = has_trait ? "class='linkOn'" : ""
+		dat += "<tr><td width='40%'>"
+		if(has_trait || CT.can_give_trait(src))
+			dat += "<a href='?_src_=prefs;preference=traits;task=[task];trait=[CT.type];trait_group=[current_trait_group.type]' [button_class]>"
+			dat += "[CT.trait_name]"
+			dat += "</a>"
+		else
+			dat += "<i>[CT.trait_name]</i>"
+		var/cost_text = CT.cost ? " ([CT.cost] points)" : ""
+		dat += "</td><td>[CT.trait_desc][cost_text]</td></tr>"
+		dat += ""
+	dat += "</table>"
+	dat += "</body>"
+	show_browser(user, dat, "Character Traits", "character_traits")

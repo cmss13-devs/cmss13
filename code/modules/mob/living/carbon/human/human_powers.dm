@@ -328,7 +328,7 @@
 	if(!isSynth(usr) || usr.is_mob_incapacitated())
 		return
 
-	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", null, list("Medical HUD", "Security HUD"))
+	var/hud_choice = tgui_input_list(usr, "Choose a HUD to toggle", "Toggle HUD", list("Medical HUD", "Security HUD"))
 	if(usr.is_mob_incapacitated())
 		return
 

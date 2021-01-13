@@ -19097,6 +19097,14 @@
 "aYa" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/objective_landmark/close,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
 /turf/open/floor/corsat{
 	icon_state = "yellow"
 	},

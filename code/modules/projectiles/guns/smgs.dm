@@ -433,3 +433,41 @@
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_7
 
 //-------------------------------------------------------
+
+/obj/item/weapon/gun/smg/nailgun
+	name = "nailgun"
+	desc = "A carpentry tool, used to drive nails into tough surfaces. Of course, if there isn't anything there, that's just a very sharp nail launching at high velocity..."
+	icon_state = "nailgun"
+	item_state = "nailgun"
+	current_mag = /obj/item/ammo_magazine/smg/nailgun
+
+	reload_sound = 'sound/weapons/handling/smg_reload.ogg'
+	unload_sound = 'sound/weapons/handling/smg_unload.ogg'
+	cocked_sound = 'sound/weapons/gun_cocked2.ogg'
+
+	fire_sound = 'sound/weapons/nailgun_fire.ogg'
+	force = 5
+	w_class = SIZE_MEDIUM
+	movement_acc_penalty_mult = 4
+	aim_slowdown = SLOWDOWN_ADS_SMG
+	wield_delay = WIELD_DELAY_VERY_FAST
+	attachable_allowed = list()
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
+	gun_category = GUN_CATEGORY_SMG
+	var/nailing_speed = 2 SECONDS //Time to apply a sheet for patching. Also haha name. Try to keep sync with soundbyte duration
+	var/repair_sound = 'sound/weapons/nailgun_repair_long.ogg'
+
+/obj/item/weapon/gun/smg/nailgun/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_9
+
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
+	scatter = SCATTER_AMOUNT_TIER_7
+	scatter_unwielded = SCATTER_AMOUNT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil_unwielded = RECOIL_AMOUNT_TIER_5
+
+/obj/item/weapon/gun/smg/unique_action(mob/user)
+	return //Yeah no.

@@ -15545,10 +15545,15 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle6)
 "aYh" = (
-/obj/structure/foamedmetal{
-	layer = 3.1
-	},
 /obj/structure/surface/rack,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
 /turf/open/floor{
 	icon_state = "dark"
 	},

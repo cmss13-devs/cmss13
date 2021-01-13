@@ -15,6 +15,7 @@
 	density = 0
 	closed = TRUE
 	can_wire = TRUE
+	repair_materials = list("plasteel" = 0.2)
 
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/tool_cooldown = 0 //Delay to apply tools to prevent spamming
@@ -83,6 +84,9 @@
 			else
 				busy = 0
 				WT.remove_fuel(-1)
+		return
+
+	if(try_nailgun_usage(W, user))
 		return
 
 	for(var/obj/effect/xenomorph/acid/A in src.loc)

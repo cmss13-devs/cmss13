@@ -446,6 +446,85 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/bullet/smg/nail
+	name = "7x45mm plasteel nail"
+	icon_state = "nail-projectile"
+
+	damage = BULLET_DAMAGE_TIER_5
+	penetration = ARMOR_PENETRATION_TIER_8
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	accurate_range = 5
+	shell_speed = AMMO_SPEED_TIER_4
+
+
+/datum/ammo/bullet/smg/nail/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+	if(!user || user.a_intent != INTENT_HARM)
+		return ..()
+	if(!istype(M, /mob/living/carbon))
+		return ..()
+
+	var/mob/living/carbon/C = M
+	if(isXeno(C))
+		var/mob/living/carbon/Xenomorph/X = C
+		if(X.tier != 1) // 0 is queen!
+			return ..()
+	if(isYautja(C) || C.stat == DEAD)
+		return ..()
+	if(C.frozen)
+		to_chat(user, SPAN_DANGER("[C] struggles and avoids being nailed further!"))
+		return ..()
+	//Check for presence of solid surface behind
+	var/turf/T = get_step(C, user.dir)
+	if(!T || T.z != C.z)
+		return ..() //Welp we tried boy, pack it up.
+
+	var/thick_surface = null
+	if(T.density || T.opacity)
+		thick_surface = T
+	else
+		for(var/obj/O in T)
+			if(O.get_projectile_hit_boolean(P))
+				thick_surface = O
+				break
+
+	if(!thick_surface)
+		return ..()
+
+	C.frozen = TRUE
+	user.visible_message(SPAN_DANGER("[user] punches [C] with the nailgun, and nail their limb to [thick_surface]!"),
+		SPAN_DANGER("You punch [C] with the nailgun, and nail their limb to [thick_surface]!"))
+	C.update_canmove()
+	addtimer(CALLBACK(C, /mob.proc/unfreeze), SECONDS_3)
+
+/datum/ammo/bullet/smg/nail/on_hit_mob(mob/M, obj/item/projectile/P)
+	var/turf/T = get_step(M.loc, P.dir)
+
+	var/thick_surface = FALSE
+	if(!istype(M, /mob/living/carbon))
+		return FALSE
+
+	var/mob/living/carbon/C = M
+	C.AdjustSlowed(1) //Slow on hit.
+
+	if(!T || T.z != C.z)
+		return FALSE //Welp we tried boy, pack it up. Slow applied, but no further
+
+	if(T.density || T.opacity)
+		thick_surface = TRUE
+	else
+		for(var/obj/O in T)
+			if(O.get_projectile_hit_boolean(P))
+				thick_surface = TRUE
+				break
+
+	if(!thick_surface)
+		C.recalculate_move_delay = TRUE
+		return FALSE
+
+	C.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+	C.AdjustSuperslowed(3) //Superslows if there`s an obstacle behind
+	C.recalculate_move_delay = TRUE
+
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
 	damage_type = BURN

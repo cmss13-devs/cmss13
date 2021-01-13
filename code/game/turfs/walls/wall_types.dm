@@ -570,6 +570,7 @@
 	layer = RESIN_STRUCTURE_LAYER
 	blend_turfs = list(/turf/closed/wall/resin)
 	blend_objects = list(/obj/structure/mineral_door/resin)
+	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
 
 /turf/closed/wall/resin/Initialize(mapload, ...)

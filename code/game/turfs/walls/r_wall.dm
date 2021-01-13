@@ -35,18 +35,8 @@
 				thermitemelt(user)
 			return
 
-	if(damage && istype(W, /obj/item/tool/weldingtool))
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.remove_fuel(0,user))
-			to_chat(user, SPAN_NOTICE("You start repairing the damage to [src]."))
-			playsound(src, 'sound/items/Welder.ogg', 25, 1)
-			if(do_after(user, max(5, damage / 5 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && WT && WT.isOn())
-				to_chat(user, SPAN_NOTICE("You finish repairing the damage to [src]."))
-				take_damage(-damage)
-			return
-		else
-			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
-			return
+	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
+		return
 
 
 	//DECONSTRUCTION
@@ -57,7 +47,7 @@
 				playsound(src, 'sound/items/Welder.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] begins slicing through the outer plating."),
 				SPAN_NOTICE("You begin slicing through the outer plating."))
-				if(!WT || !WT.isOn())	
+				if(!WT || !WT.isOn())
 					return
 				if(!do_after(user, 60 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					return

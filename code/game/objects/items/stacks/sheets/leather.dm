@@ -3,7 +3,7 @@
 	desc = "The by-product of human farming."
 	singular_name = "human skin piece"
 	icon_state = "sheet-hide"
-	
+	sheettype = "leather"
 	stack_id = "human skin"
 
 /obj/item/stack/sheet/animalhide/corgi
@@ -11,7 +11,7 @@
 	desc = "The by-product of corgi farming."
 	singular_name = "corgi hide piece"
 	icon_state = "sheet-corgi"
-	
+	sheettype = "leather"
 	stack_id = "corgi hide"
 
 /obj/item/stack/sheet/animalhide/cat
@@ -19,7 +19,7 @@
 	desc = "The by-product of cat farming."
 	singular_name = "cat hide piece"
 	icon_state = "sheet-cat"
-	
+	sheettype = "leather"
 	stack_id = "cat hide"
 
 /obj/item/stack/sheet/animalhide/monkey
@@ -27,7 +27,7 @@
 	desc = "The by-product of monkey farming."
 	singular_name = "monkey hide piece"
 	icon_state = "sheet-monkey"
-	
+	sheettype = "leather"
 	stack_id = "monkey hide"
 
 /obj/item/stack/sheet/animalhide/lizard
@@ -35,7 +35,7 @@
 	desc = "Sssssss..."
 	singular_name = "lizard skin piece"
 	icon_state = "sheet-lizard"
-	
+	sheettype = "leather"
 	stack_id = "lizard skin"
 
 /obj/item/stack/sheet/animalhide/xeno
@@ -43,7 +43,7 @@
 	desc = "The skin of a terrible creature."
 	singular_name = "alien hide piece"
 	icon_state = "sheet-xeno"
-	
+	sheettype = "leather"
 	stack_id = "alien hide"
 
 /obj/item/stack/sheet/animalhide/xeno/kinghide
@@ -57,27 +57,27 @@
 	desc = "A piece of the hide of a terrible creature."
 	singular_name = "alien hide piece"
 	icon_state = "chitin"
-	
+	sheettype = "chitin"
 	stack_id = "alien chitin"
 
 /obj/item/xenos_claw
 	name = "alien claw"
 	desc = "The claw of a terrible creature."
 	icon_state = "claw"
-	
+
 
 /obj/item/weed_extract
 	name = "weed extract"
 	desc = "A piece of slimy, purplish weed."
 	icon_state = "weed_extract"
-	
+
 
 /obj/item/stack/sheet/hairlesshide
 	name = "hairless hide"
 	desc = "This hide was stripped of it's hair, but still needs tanning."
 	singular_name = "hairless hide piece"
 	icon_state = "sheet-hairlesshide"
-	
+	sheettype = "leather"
 	stack_id = "hairless hide"
 
 /obj/item/stack/sheet/wetleather
@@ -85,7 +85,7 @@
 	desc = "This leather has been cleaned but still needs to be dried."
 	singular_name = "wet leather piece"
 	icon_state = "sheet-wetleather"
-	
+	sheettype = "leather"
 	stack_id = "wet leather"
 	var/wetness = 30 //Reduced when exposed to high temperautres
 	var/drying_threshold_temperature = 500 //Kelvin to start drying
@@ -95,7 +95,7 @@
 	desc = "The by-product of mob grinding."
 	singular_name = "leather piece"
 	icon_state = "sheet-leather"
-	
+	sheettype = "leather"
 	stack_id = "leather"
 
 

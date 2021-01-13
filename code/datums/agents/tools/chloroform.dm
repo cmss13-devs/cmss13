@@ -79,11 +79,10 @@
 /obj/item/weapon/melee/chloroform/proc/remove_stun(var/mob/living/M)
     animate(M, pixel_x = 0, pixel_y = 0, time = 0.2 SECONDS, easing = QUAD_EASING)
     M.anchored = FALSE
-    M.frozen = FALSE
     M.density = TRUE
     M.able_to_speak = TRUE
     M.layer = MOB_LAYER
-    M.update_canmove()
+    M.unfreeze()
 
     QDEL_NULL(mask_item)
 

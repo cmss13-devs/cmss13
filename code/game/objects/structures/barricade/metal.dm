@@ -14,6 +14,7 @@
 	barricade_type = "metal"
 	can_wire = TRUE
 	bullet_divider = 5
+	repair_materials = list("metal" = 0.2, "plasteel" = 0.25)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 
@@ -63,6 +64,9 @@
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 			else
 				WT.remove_fuel(-1)
+		return
+
+	if(try_nailgun_usage(W, user))
 		return
 
 	for(var/obj/effect/xenomorph/acid/A in src.loc)

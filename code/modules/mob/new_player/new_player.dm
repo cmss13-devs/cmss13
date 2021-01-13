@@ -74,6 +74,10 @@
 
 	switch(href_list["lobby_choice"])
 		if("show_preferences")
+			// Otherwise the preview dummy will runtime
+			// because atoms aren't initialized yet
+			if(SSticker.current_state < GAME_STATE_PREGAME)
+				return
 			client.prefs.ShowChoices(src)
 			return 1
 

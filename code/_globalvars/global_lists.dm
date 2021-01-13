@@ -138,6 +138,11 @@ var/global/list/pass_flags_cache = list()
 //Parameterss cache
 var/global/list/paramslist_cache = list()
 
+// Character traits
+// character_trait_groups should be defined BEFORE character_traits because of dependencies
+GLOBAL_REFERENCE_LIST_INDEXED(character_trait_groups, /datum/character_trait_group, type)
+GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
+
 #define cached_key_number_decode(key_number_data) cached_params_decode(key_number_data, /proc/key_number_decode)
 #define cached_number_list_decode(number_list_data) cached_params_decode(number_list_data, /proc/number_list_decode)
 

@@ -141,6 +141,7 @@
 	load_id(H)
 	load_status(H)
 	load_vanity(H)
+	load_traits(H)
 	if(round_statistics && count_participant)
 		round_statistics.track_new_participant(faction)
 	H.regenerate_icons()
@@ -175,11 +176,11 @@
 				H.w_uniform.attach_accessory(H, R)
 			else
 				qdel(R)
-		
+
 	if(flags & EQUIPMENT_PRESET_MARINE)
 		var/playtime = get_job_playtime(H.client, assignment)
 		var/medal_type
-		
+
 		switch(playtime)
 			if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)
 				medal_type = /obj/item/clothing/accessory/medal/bronze/service
@@ -205,13 +206,21 @@
 					if(!H.equip_to_slot_if_possible(medal, WEAR_L_HAND))
 						if(!H.equip_to_slot_if_possible(medal, WEAR_R_HAND))
 							medal.forceMove(H.loc)
-			
+
 
 	//Gives glasses to the vision impaired
 	if(H.disabilities & NEARSIGHTED)
 		var/obj/item/clothing/glasses/regular/P = new (H)
 		P.prescription = 1
 		H.equip_to_slot_or_del(P, WEAR_EYES)
+
+/datum/equipment_preset/proc/load_traits(mob/living/carbon/human/H)
+	if(!H.client || !H.client.prefs || !H.client.prefs.traits)
+		return
+
+	for(var/trait in H.client.prefs.traits)
+		var/datum/character_trait/CT = GLOB.character_traits[trait]
+		CT.apply_trait(H)
 
 /datum/equipment_preset/strip //For removing all equipment
 	name = "*strip*"

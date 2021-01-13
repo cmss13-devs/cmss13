@@ -29,6 +29,7 @@
 	var/brute_multiplier = 1
 	var/burn_multiplier = 1
 	var/explosive_multiplier = 1
+	var/repair_materials = list()
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
@@ -376,3 +377,57 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return TRUE
 
 	return ..()
+
+/obj/structure/barricade/proc/try_nailgun_usage(obj/item/W, mob/user)
+	if(length(repair_materials) == 0 || health >= maxhealth || !istype(W, /obj/item/weapon/gun/smg/nailgun))
+		return FALSE
+
+	var/obj/item/weapon/gun/smg/nailgun/NG = W
+
+	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < 3)
+		to_chat(user, SPAN_WARNING("You require atleast 4 nails to complete this task!"))
+		return FALSE
+
+	// Check if either hand has a metal stack by checking the weapon offhand
+	// Presume the material is a sheet until proven otherwise.
+	var/obj/item/stack/sheet/material = null
+	if(user.l_hand == NG)
+		material = user.r_hand
+	else
+		material = user.l_hand
+
+	if(!istype(material, /obj/item/stack/sheet/))
+		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
+	var/repair_value = 0
+	for(var/validSheetType in repair_materials)
+		if(validSheetType == material.sheettype)
+			repair_value = repair_materials[validSheetType]
+			break
+
+	if(repair_value == 0)
+		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
+	var/soundchannel = playsound(src, NG.repair_sound, 25, 1)
+	if(!do_after(user, NG.nailing_speed, INTERRUPT_ALL|INTERRUPT_CLICK, BUSY_ICON_FRIENDLY, src))
+		playsound(src, null, channel = soundchannel)
+		return FALSE
+
+	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
+		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
+		return FALSE
+
+	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < 3)
+		to_chat(user, SPAN_WARNING("You require atleast 4 nails to complete this task!"))
+		return FALSE
+
+	update_health(-repair_value*maxhealth)
+	to_chat(user, SPAN_WARNING("You nail [material] to [src], restoring some of its integrity!"))
+	update_damage_state()
+	material.use(1)
+	NG.current_mag.current_rounds -= 3
+	NG.in_chamber = null
+	NG.load_into_chamber()
+	return TRUE

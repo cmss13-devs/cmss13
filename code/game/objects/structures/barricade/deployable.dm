@@ -13,6 +13,7 @@
 	climbable = FALSE
 	unacidable = TRUE
 	anchored = TRUE
+	repair_materials = list("metal" = 0.2, "plasteel" = 0.25)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 
 /obj/structure/barricade/deployable/examine(mob/user)
@@ -73,6 +74,10 @@
 				collapse(usr)
 			else
 				to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
+
+	if(try_nailgun_usage(W, user))
+		return
+
 	. = ..()
 
 /obj/structure/barricade/deployable/MouseDrop(obj/over_object as obj)

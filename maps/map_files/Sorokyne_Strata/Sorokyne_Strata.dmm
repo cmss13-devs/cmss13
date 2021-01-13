@@ -13340,6 +13340,14 @@
 /obj/structure/platform_decoration/strata/metal{
 	dir = 4
 	},
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
 /turf/open/floor/strata,
 /area/strata/ag/interior/outpost/engi)
 "aKy" = (

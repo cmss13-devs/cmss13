@@ -132,8 +132,7 @@
 /mob/living/carbon/Xenomorph/proc/do_tunnel(var/turf/T)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))
 	anchored = FALSE
-	frozen = FALSE
-	update_canmove()
+	unfreeze()
 	forceMove(T)
 	burrow = FALSE
 	burrow_off()

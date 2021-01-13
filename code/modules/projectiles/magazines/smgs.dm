@@ -131,3 +131,16 @@
 	w_class = SIZE_MEDIUM
 	max_rounds = 50
 	gun_type = /obj/item/weapon/gun/smg/fp9000
+
+//-------------------------------------------------------
+//Nailgun!
+/obj/item/ammo_magazine/smg/nailgun
+	name = "nailgun magazine (7x45mm)"
+	desc = "A large magazine of oversized plasteel nails. Unfortunately, the production cost of those nail makes them ill-affordable for most military projects, and only some specific construction projects requires them."
+	default_ammo = /datum/ammo/bullet/smg/nail
+	flags_magazine = NO_FLAGS // Let's not start messing with nails...
+	caliber = "7x45mm"
+	icon_state = "nailgun"
+	w_class = SIZE_SMALL
+	max_rounds = 50
+	gun_type = /obj/item/weapon/gun/smg/nailgun

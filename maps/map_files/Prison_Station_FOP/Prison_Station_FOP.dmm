@@ -39803,6 +39803,14 @@
 "cck" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
 /turf/open/floor/plating,
 /area/prison/engineering)
 "ccl" = (

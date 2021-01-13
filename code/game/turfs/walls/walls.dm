@@ -29,6 +29,7 @@
 	var/list/wall_connections = list("0", "0", "0", "0")
 	var/neighbors_list = 0
 	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
+	var/repair_materials = list("wood"= 0.05, "metal" = 0.1, "plasteel" = 0.2) //Max health % recovered on a nailgun repair
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 
@@ -49,7 +50,7 @@
 	// Otherwise do it now, but defer icon update to late if it's going to happen
 	update_connections(TRUE)
 	if(. != INITIALIZE_HINT_LATELOAD)
-		update_icon()	
+		update_icon()
 
 /turf/closed/wall/LateInitialize()
 	. = ..()
@@ -348,20 +349,8 @@
 		to_chat(user, SPAN_WARNING("[src] is much too tough for you to do anything to it with [W]."))
 		return
 
-	if(damage && istype(W, /obj/item/tool/weldingtool))
-		var/obj/item/tool/weldingtool/WT = W
-		if(WT.remove_fuel(0, user))
-			user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
-			SPAN_NOTICE("You start repairing the damage to [src]."))
-			playsound(src, 'sound/items/Welder.ogg', 25, 1)
-			if(do_after(user, max(5, round(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
-				user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
-				SPAN_NOTICE("You finish repairing the damage to [src]."))
-				take_damage(-damage)
-			return
-		else
-			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
-			return
+	if(try_weldingtool_usage(W, user) || try_nailgun_usage(W, user))
+		return
 
 	if(!istype(src, /turf/closed/wall))
 		return
@@ -428,6 +417,94 @@
 				return
 
 	return attack_hand(user)
+
+/turf/closed/wall/proc/try_weldingtool_usage(obj/item/W, mob/user)
+	if(!damage || !istype(W, /obj/item/tool/weldingtool))
+		return FALSE
+
+	var/obj/item/tool/weldingtool/WT = W
+	if(WT.remove_fuel(0, user))
+		user.visible_message(SPAN_NOTICE("[user] starts repairing the damage to [src]."),
+		SPAN_NOTICE("You start repairing the damage to [src]."))
+		playsound(src, 'sound/items/Welder.ogg', 25, 1)
+		if(do_after(user, max(5, round(damage / 5) * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION)), INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && istype(src, /turf/closed/wall) && WT && WT.isOn())
+			user.visible_message(SPAN_NOTICE("[user] finishes repairing the damage to [src]."),
+			SPAN_NOTICE("You finish repairing the damage to [src]."))
+			take_damage(-damage)
+	else
+		to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
+
+	return TRUE
+
+/turf/closed/wall/proc/try_nailgun_usage(obj/item/W, mob/user)
+	if((!damage && !acided_hole) || !istype(W, /obj/item/weapon/gun/smg/nailgun))
+		return FALSE
+
+	var/obj/item/weapon/gun/smg/nailgun/NG = W
+	var/amount_needed = acided_hole ? 3 : 1
+
+	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < (4*amount_needed-1))
+		to_chat(user, SPAN_WARNING("You require atleast [4*amount_needed] nails to complete this task!"))
+		return FALSE
+
+	// Check if either hand has a metal stack by checking the weapon offhand
+	// Presume the material is a sheet until proven otherwise.
+	var/obj/item/stack/sheet/material = null
+	if(user.l_hand == NG)
+		material = user.r_hand
+	else
+		material = user.l_hand
+
+	if(!istype(material, /obj/item/stack/sheet/))
+		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
+	var/repair_value = 0
+	for(var/validSheetType in repair_materials)
+		if(validSheetType == material.sheettype)
+			repair_value = repair_materials[validSheetType]
+			break
+
+	if(repair_value == 0)
+		to_chat(user, SPAN_WARNING("You'll need some adequate repair material in your other hand to patch up [src]!"))
+		return FALSE
+
+	if(!material || material.amount < amount_needed)
+		to_chat(user, SPAN_WARNING("You need [amount_needed] sheets of material to fix this!"))
+		return FALSE
+
+	for(var/i = 1 to amount_needed)
+		var/soundchannel = playsound(src, NG.repair_sound, 25, 1)
+		if(!do_after(user, NG.nailing_speed, INTERRUPT_ALL|INTERRUPT_CLICK, BUSY_ICON_FRIENDLY, src))
+			playsound(src, null, channel = soundchannel)
+			return FALSE
+
+
+	// Check again for presence of objects
+	if(!material || (material != user.l_hand && material != user.r_hand) || material.amount <= 0)
+		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
+		return FALSE
+
+	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < 3)
+		to_chat(user, SPAN_WARNING("You require atleast [4*amount_needed] nails to complete this task!"))
+		return FALSE
+
+	if(acided_hole)
+		qdel(acided_hole)
+		acided_hole = null
+		take_damage(-0.05*damage_cap)
+		to_chat(user, SPAN_WARNING("You barricade the hole with [material], slightly raising the integrity of [src], and blocking the hole!"))
+	else
+		take_damage(-repair_value*damage_cap)
+		to_chat(user, SPAN_WARNING("You reinforce the fissures in [src], raising its integrity!"))
+
+	material.use(1)
+	NG.current_mag.current_rounds -= (4*amount_needed-1)
+	NG.in_chamber = null
+	NG.load_into_chamber()
+	update_icon()
+
+	return TRUE
 
 /turf/closed/wall/can_be_dissolved()
 	return !hull

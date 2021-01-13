@@ -108,7 +108,7 @@
 		immobile_form = FALSE
 		M.status_flags |= CANPUSH
 		M.anchored = FALSE
-		M.frozen = FALSE
+		M.unfreeze()
 	..()
 
 /obj/item/storage/backpack/marine/smartpack/Destroy()
@@ -192,7 +192,7 @@
 	if(immobile_form)
 		user.status_flags |= CANPUSH
 		user.anchored = FALSE
-		user.frozen = FALSE
+		user.unfreeze()
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You can now move again.\""))
 	else
 		battery_charge -= IMMOBILE_COST

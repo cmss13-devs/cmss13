@@ -25383,11 +25383,19 @@
 "bpD" = (
 /obj/structure/surface/rack,
 /obj/item/device/camera_film,
+/obj/item/device/analyzer,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpE" = (
 /obj/structure/surface/rack,
-/obj/item/device/analyzer,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/weapon/gun/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
+/obj/item/ammo_magazine/smg/nailgun,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "bpF" = (

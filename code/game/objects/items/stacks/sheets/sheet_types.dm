@@ -57,7 +57,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	matter = list("metal" = 3750)
 	throwforce = 14.0
 	flags_atom = FPRINT|CONDUCT
-
+	sheettype = "metal"
 	stack_id = "metal"
 
 /obj/item/stack/sheet/metal/small_stack
@@ -96,7 +96,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	matter = list("metal" = 3750)
 	throwforce = 15.0
 	flags_atom = FPRINT|CONDUCT
-
+	sheettype = "plasteel"
 	stack_id = "plasteel"
 
 /obj/item/stack/sheet/plasteel/New(var/loc, var/amount=null)
@@ -133,7 +133,7 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 	singular_name = "wood plank"
 	icon_state = "sheet-wood"
 	item_state = "sheet-wood"
-
+	sheettype = "wood"
 	stack_id = "wood plank"
 
 /obj/item/stack/sheet/wood/cyborg
@@ -247,7 +247,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	desc = "Large sheets of card, like boxes folded flat."
 	singular_name = "cardboard sheet"
 	icon_state = "sheet-card"
-
+	sheettype = "cardboard"
 	stack_id = "cardboard"
 
 /obj/item/stack/sheet/cardboard/New(var/loc, var/amount=null)
@@ -275,6 +275,7 @@ var/global/list/datum/stack_recipe/aluminum_recipes = list ( \
 	desc = "A silvery-white soft metal of the boron group. Because of its low density it is often uses as a structural material in aircrafts."
 	singular_name = "aluminum sheet"
 	icon_state = "sheet-aluminum"
+	sheettype = "aluminum"
 
 /*
  * Copper
@@ -285,7 +286,8 @@ var/global/list/datum/stack_recipe/copper_recipes = list ( \
 
 /obj/item/stack/sheet/copper
 	name = "copper"
-	desc = "A solfe malleable red metal with high thermal and electrical conductivity."
+	desc = "A soft and malleable red metal with high thermal and electrical conductivity."
 	singular_name = "copper sheet"
 	icon_state = "sheet-copper"
+	sheettype = "copper"
 

@@ -679,6 +679,10 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/get_species()
 	return ""
 
+/mob/proc/unfreeze()
+	frozen = FALSE
+	update_canmove()
+
 /mob/proc/flash_weak_pain()
 	overlay_fullscreen("pain", /obj/screen/fullscreen/pain, 1)
 	clear_fullscreen("pain")

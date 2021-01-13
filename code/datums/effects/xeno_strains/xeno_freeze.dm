@@ -31,8 +31,7 @@
 /datum/effects/xeno_freeze/Destroy()
 	if(affected_atom)
 		var/mob/living/carbon/affected_mob = affected_atom
-		affected_mob.frozen = FALSE
-		affected_mob.update_canmove()
+		affected_mob.unfreeze()
 
 		if(affected_atom && ishuman(affected_atom))
 			var/mob/living/carbon/human/H = affected_atom

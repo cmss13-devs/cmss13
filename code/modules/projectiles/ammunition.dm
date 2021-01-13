@@ -310,6 +310,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	var/magazine_type = /obj/item/ammo_magazine/rifle
 	var/num_of_magazines = 10
 	var/handfuls = FALSE
+	var/icon_state_deployed = null
 
 /obj/item/ammo_box/magazine/Initialize()
 	. = ..()
@@ -333,9 +334,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	if(overlays)
 		overlays.Cut()
 	overlays += image(icon, icon_state = "[icon_state]_lid")				//adding lid
-	overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
-	overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
-	overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
+	if(overlay_gun_type)
+		overlays += image(icon, icon_state = "text[overlay_gun_type]")		//adding text
+	if(overlay_ammo_type)
+		overlays += image(icon, icon_state = "base_type[overlay_ammo_type]")	//adding base color stripes
+		overlays += image(icon, icon_state = "lid_type[overlay_ammo_type]")	//adding base color stripes
 
 /obj/item/ammo_box/magazine/examine(mob/living/user)
 	..()
@@ -382,7 +385,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		to_chat(user, SPAN_WARNING("There is a [MB] deployed here already."))
 		return
 	var/obj/structure/magazine_box/M = new /obj/structure/magazine_box(T)
-	M.icon_state = icon_state
+	M.icon_state = icon_state_deployed ? icon_state_deployed : icon_state
 	M.name = name
 	M.desc = desc
 	M.item_box = src
@@ -785,10 +788,12 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/structure/magazine_box/update_icon()
 	if(overlays)
 		overlays.Cut()
-		overlays += image(icon, icon_state = "text[item_box.overlay_gun_type]")			//adding text
+		if(item_box.overlay_gun_type)
+			overlays += image(icon, icon_state = "text[item_box.overlay_gun_type]")			//adding text
 
 	if(!item_box.handfuls)
-		overlays += image(icon, icon_state = "base_type[item_box.overlay_ammo_type]")		//adding base color stripes
+		if(item_box.overlay_ammo_type)
+			overlays += image(icon, icon_state = "base_type[item_box.overlay_ammo_type]")		//adding base color stripes
 		if(item_box.contents.len == item_box.num_of_magazines)
 			overlays += image(icon, icon_state = "magaz[item_box.overlay_content]")
 		else if(item_box.contents.len > (item_box.num_of_magazines/2))
@@ -1123,6 +1128,21 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	max_bullet_amount = 400
 
 /obj/item/ammo_box/rounds/smg/incen/empty
+	empty = TRUE
+
+
+/obj/item/ammo_box/magazine/smg/nailgun
+	name = "magazine box (Nailgun x 10)"
+	icon_state = "base_nailgun"			//base color of box
+	icon_state_deployed = "base_nailgun_deployed"
+	overlay_ammo_type = "_nail"		//used for ammo type color overlay
+	overlay_gun_type = null	//used for text overlay
+	overlay_content = "_nailgun"
+	magazine_type = /obj/item/ammo_magazine/smg/nailgun
+	num_of_magazines = 10
+	handfuls = FALSE
+
+/obj/item/ammo_box/magazine/smg/nailgun/empty
 	empty = TRUE
 
 //Misc

@@ -1355,7 +1355,7 @@
 	RegisterSignal(user, COMSIG_MOB_POST_UPDATE_CANMOVE, .proc/disable_canmove_interaction)
 	operator = user
 
-	user.frozen = FALSE
+	user.unfreeze()
 
 // DISMOUNT THE MG
 

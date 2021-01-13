@@ -59,12 +59,12 @@ var/list/admin_verbs_fun = list(
 	/client/proc/drop_bomb,
 	/client/proc/set_ooc_color_global,
 	/client/proc/announce_random_fact,
-	/client/proc/construct_env,
-	/client/proc/construct_env_dmm,
 	/client/proc/set_autoreplacer,
 	/client/proc/deactivate_autoreplacer,
 	/client/proc/rerun_decorators,
-	/client/proc/toogle_door_control
+	/client/proc/toogle_door_control,
+	/client/proc/map_template_load,
+	/client/proc/map_template_upload
 )
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,

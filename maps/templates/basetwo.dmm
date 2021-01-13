@@ -1,0 +1,4684 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/bunker01/caves)
+"ac" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/mainroom)
+"ad" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SE-out";
+	tag = "icon-SE-out"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"ae" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"af" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "SW-out";
+	tag = "icon-SW-out"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"ag" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "E";
+	tag = "icon-W"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"ah" = (
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"ai" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W";
+	tag = "icon-W"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"aj" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NE-out";
+	tag = "icon-NE-out"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"ak" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "N";
+	tag = "icon-N"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"al" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "NW-out";
+	tag = "icon-NW-out"
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"am" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/medbay)
+"an" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"ao" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"ap" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"aq" = (
+/obj/structure/machinery/body_scanconsole{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"ar" = (
+/obj/structure/machinery/bodyscanner,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"as" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"at" = (
+/obj/structure/machinery/autodoc,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"au" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"av" = (
+/obj/structure/machinery/autodoc_console{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"aw" = (
+/obj/structure/machinery/autodoc,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"ax" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/engineering)
+"ay" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Engineering";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/plating/almayer,
+/area/adminlevel/bunker01/mainroom)
+"az" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"aA" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aB" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aC" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aD" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aE" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"aF" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"aG" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"aH" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"aI" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"aJ" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"aK" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"aL" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aM" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"aN" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aO" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"aP" = (
+/obj/structure/surface/rack,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"aQ" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/engineering)
+"aR" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange";
+	tag = "icon-orange (EAST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"aS" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Medbay";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aT" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"aU" = (
+/obj/structure/machinery/body_scanconsole{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aV" = (
+/obj/structure/machinery/bodyscanner,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aW" = (
+/obj/structure/machinery/autodoc,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aX" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aY" = (
+/obj/structure/machinery/autodoc_console{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"aZ" = (
+/obj/structure/machinery/autodoc,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"ba" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"bb" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/engineering)
+"bc" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"bd" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	dir = 1;
+	name = "\improper Medbay";
+	req_access = null;
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"be" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bf" = (
+/obj/structure/surface/rack,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"bg" = (
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "base_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bh" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"bi" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bj" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"bk" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"bl" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"bm" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bn" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"bo" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
+/turf/open/floor/almayer{
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"bp" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/gloves/yellow,
+/turf/open/floor/almayer{
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"bq" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"br" = (
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"bs" = (
+/obj/structure/machinery/door_control{
+	id = "base_blastdoor";
+	name = "Base Shutters";
+	pixel_x = 24
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"bt" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "base_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bu" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/gear)
+"bv" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "base_blastdoor";
+	name = "\improper Bunker Blast Doors"
+	},
+/turf/open/floor/almayer{
+	icon_state = "test_floor4";
+	tag = "icon-test_floor4"
+	},
+/area/adminlevel/bunker01/mainroom)
+"bw" = (
+/obj/structure/machinery/smartfridge/secure/medbay,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "base_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bx" = (
+/obj/structure/machinery/door_control{
+	id = "base_medbay";
+	name = "Medbay Lockdown";
+	pixel_x = -23;
+	pixel_y = -23
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"by" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bz" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	dir = 1;
+	name = "\improper Medbay";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bA" = (
+/obj/structure/machinery/cm_vending/clothing/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/gear)
+"bB" = (
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"bC" = (
+/obj/structure/largecrate/supply/supplies/plasteel,
+/obj/structure/largecrate/supply/supplies/plasteel,
+/obj/structure/largecrate/supply/supplies/plasteel,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"bD" = (
+/obj/structure/largecrate/supply/supplies/sandbags,
+/obj/structure/largecrate/supply/supplies/sandbags,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"bE" = (
+/obj/structure/machinery/chem_dispenser{
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"bF" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/tool/hand_labeler,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bG" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/reagentgrinder,
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25
+	},
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bH" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"bI" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"bJ" = (
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bK" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"bL" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"bM" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/gear)
+"bN" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/gear)
+"bO" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/gear)
+"bP" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/storage)
+"bQ" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/gear)
+"bR" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Tools";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/gear)
+"bS" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
+"bT" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"bU" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"bV" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"bW" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/gear)
+"bX" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Tools";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/storage)
+"bY" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/storage)
+"bZ" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
+"ca" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Engineering";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"cb" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"cc" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"cd" = (
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"ce" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	dir = 8;
+	name = "\improper Entrance";
+	req_access_txt = "201"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"cf" = (
+/obj/structure/largecrate/supply/weapons/m56d,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"cg" = (
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"ch" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"ci" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"cj" = (
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"ck" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"cl" = (
+/obj/structure/closet/crate/secure/mortar_ammo/full{
+	name = "\improper M402 mortar ammo crate"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"cm" = (
+/obj/structure/machinery/door_control{
+	id = "base_1_shutter";
+	name = "Base Shutters";
+	pixel_x = -7;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"cn" = (
+/obj/structure/machinery/door_control{
+	id = "base_2_shutter";
+	name = "Base Shutters";
+	pixel_x = 7;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"co" = (
+/obj/structure/machinery/door_control{
+	id = "base_3_shutter";
+	name = "Base Shutters";
+	pixel_x = -7;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"cp" = (
+/obj/structure/machinery/door_control{
+	id = "base_4_shutter";
+	name = "Base Shutters";
+	pixel_x = 7;
+	pixel_y = -20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"cq" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
+"cr" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "base_1_shutter";
+	name = "\improper Bunker Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"cs" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "base_2_shutter";
+	name = "\improper Bunker Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"ct" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "base_3_shutter";
+	name = "\improper Bunker Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"cu" = (
+/obj/structure/window_frame/colony/reinforced,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "base_4_shutter";
+	name = "\improper Bunker Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/mainroom)
+"cv" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/caves/outpost)
+"cw" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	dir = 1;
+	name = "\improper Engineering";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cx" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cy" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves/outpost)
+"cz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cA" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/outpost)
+"cB" = (
+/obj/structure/barricade/plasteel,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cC" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves/outpost)
+"cD" = (
+/obj/structure/barricade/plasteel,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cE" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cF" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cG" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cH" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cI" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cJ" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cK" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cL" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cM" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves/outpost)
+"cN" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/caves/outpost)
+"cO" = (
+/obj/structure/barricade/plasteel,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"cP" = (
+/obj/structure/barricade/metal/wired,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"cQ" = (
+/obj/structure/barricade/metal/wired{
+	dir = 4
+	},
+/obj/structure/barricade/metal/wired,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"cR" = (
+/obj/structure/machinery/door_control{
+	id = "second_base";
+	name = "Second Base Shutters"
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/outpost)
+"cS" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/pressure{
+	density = 1;
+	icon_state = "shutter1";
+	id = "second_base";
+	indestructible = 1;
+	name = "Second Base";
+	opacity = 1
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/mainroom)
+"cT" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/bunker01/caves/xeno)
+"cU" = (
+/obj/structure/blocker/forcefield/human{
+	dir = 4
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/xeno)
+"cV" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/kitchen)
+"cW" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/hydroponics)
+"cX" = (
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/xeno)
+"cY" = (
+/obj/structure/surface/table/reinforced,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"cZ" = (
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"da" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"db" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/juicer,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"dc" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/hydroponics)
+"dd" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "blue";
+	tag = "icon-blue (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"de" = (
+/obj/structure/surface/rack,
+/obj/item/storage/bag/plants,
+/obj/item/tool/shovel/spade,
+/obj/item/reagent_container/glass/bucket,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "blue";
+	tag = "icon-blue (NORTH)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"df" = (
+/obj/structure/machinery/hydro_floodlight,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "blue";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"dg" = (
+/obj/effect/alien/weeds/node/pylon/core{
+	hivenumber = 3
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves/xeno)
+"dh" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Kitchen";
+	req_access_txt = "201"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/kitchen)
+"di" = (
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"dj" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave,
+/obj/structure/machinery/power/apc/antag{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"dk" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "blue";
+	tag = "icon-blue (WEST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"dl" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/hydroponics)
+"dm" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue";
+	tag = "icon-blue (EAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"dn" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave,
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"do" = (
+/turf/closed/wall/r_wall/bunker,
+/area/adminlevel/bunker01/breakroom)
+"dp" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Bathroom"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/breakroom)
+"dq" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"dr" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/rollingpin,
+/obj/item/tool/kitchen/knife,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"ds" = (
+/obj/structure/machinery/processor,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"dt" = (
+/obj/structure/sign/safety/hydro,
+/turf/closed/wall,
+/area/adminlevel/bunker01/hydroponics)
+"du" = (
+/obj/structure/machinery/vending/hydroseeds,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue";
+	tag = "icon-blue (EAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"dv" = (
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dw" = (
+/obj/structure/machinery/vending/cigarette/free,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dx" = (
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dy" = (
+/obj/structure/machinery/vending/coffee/simple,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dz" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"dA" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Hydroponics";
+	req_access_txt = "201"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/hydroponics)
+"dB" = (
+/turf/open/floor/almayer{
+	icon_state = "blue";
+	tag = "icon-blue"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"dC" = (
+/obj/structure/machinery/vending/hydronutrients,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "blue";
+	tag = "icon-blue (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"dD" = (
+/obj/structure/bed/chair,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dE" = (
+/obj/structure/sign/safety/galley{
+	pixel_x = 32
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dF" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dG" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dH" = (
+/obj/structure/surface/table/almayer,
+/obj/item/trash/cigbutt,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dI" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dJ" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ashtray/plastic,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/breakroom)
+"dK" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Bedroom";
+	req_access_txt = "201"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/breakroom)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cT
+cT
+cT
+cX
+cX
+cT
+cT
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ax
+ax
+ax
+ax
+ax
+ax
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+cv
+cv
+cv
+cj
+cj
+cj
+cO
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+ab
+cT
+cT
+cT
+cX
+cX
+cX
+cX
+cX
+cT
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ax
+aF
+aP
+ba
+bf
+bn
+bu
+bA
+bM
+bQ
+bM
+bW
+bu
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cv
+cE
+cJ
+cL
+cj
+cj
+cj
+cP
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+cT
+cT
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ax
+aG
+aQ
+bb
+aQ
+bo
+bu
+bA
+bN
+bQ
+bN
+bW
+bu
+ac
+ac
+ac
+ac
+ab
+ab
+ab
+cj
+cj
+cv
+cF
+cy
+cC
+cj
+cj
+cj
+cO
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+cT
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+ab
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ax
+aH
+aQ
+bb
+aQ
+bp
+bu
+bA
+bN
+bQ
+bN
+bW
+bu
+cb
+ch
+ch
+ac
+ab
+cj
+cj
+cj
+cj
+cw
+cy
+cy
+cM
+cj
+cj
+cj
+cj
+ab
+ab
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+cT
+cX
+dg
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+ab
+ac
+ad
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+ag
+aj
+ah
+ax
+aI
+aR
+bb
+aR
+bq
+bu
+bA
+bO
+bQ
+bO
+bW
+bu
+cc
+aK
+aJ
+ac
+cj
+cj
+cj
+cj
+cj
+cA
+cG
+cy
+cM
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+ab
+ab
+cT
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ax
+ax
+ax
+bc
+ax
+ax
+bu
+bu
+bu
+bR
+bu
+bu
+bu
+cc
+aK
+aJ
+cr
+cj
+cj
+cj
+cj
+cj
+cw
+cy
+cy
+cC
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+ab
+ab
+cT
+cT
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ac
+aJ
+aJ
+aK
+aJ
+br
+bv
+br
+aJ
+aK
+aJ
+aJ
+ca
+aK
+aK
+aJ
+cr
+cj
+cj
+cj
+cj
+cj
+cv
+cz
+cK
+cN
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+ab
+cT
+cT
+cT
+cT
+cT
+cT
+cX
+cX
+cX
+cX
+cX
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ac
+aJ
+aK
+aK
+aK
+br
+bv
+br
+aK
+aK
+aK
+aK
+ac
+cc
+aK
+cm
+ac
+cj
+cj
+cj
+cj
+cj
+cv
+cv
+cv
+cv
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+cT
+cT
+cT
+cT
+cT
+cX
+cX
+cX
+dg
+cX
+cX
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ac
+aJ
+aK
+aK
+aJ
+bs
+bv
+bs
+aJ
+aJ
+aK
+aJ
+ca
+aK
+aK
+cn
+ac
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+cT
+cT
+cT
+cT
+cT
+cX
+cX
+cX
+cX
+cX
+cT
+cT
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ay
+aK
+aK
+aK
+aJ
+ac
+ac
+ac
+ac
+aJ
+aK
+aJ
+ac
+cc
+aK
+aJ
+cs
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cO
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+cT
+cT
+cT
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ac
+aJ
+aK
+aK
+aJ
+ac
+ac
+ac
+ac
+aJ
+aK
+aJ
+ac
+cc
+aK
+aJ
+cs
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cP
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+cU
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ac
+aJ
+aK
+aK
+aJ
+ac
+ac
+ac
+ac
+aJ
+aK
+aJ
+ac
+cc
+aK
+aJ
+ac
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cO
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cU
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ac
+aJ
+aK
+aK
+aJ
+aJ
+aJ
+bB
+ac
+aJ
+aK
+aJ
+ac
+cc
+aK
+aJ
+ac
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cU
+cX
+cX
+dg
+cX
+cX
+cX
+cX
+cX
+cT
+cT
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+ab
+ac
+ae
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+ak
+ah
+ac
+aJ
+aK
+aK
+aK
+aK
+aK
+bC
+ac
+aJ
+aK
+aJ
+ac
+cc
+aK
+aJ
+ct
+cj
+cj
+cj
+cj
+cv
+cv
+cv
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cU
+cX
+cX
+cX
+cX
+cX
+cX
+cX
+cT
+cT
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(16,1,1) = {"
+ab
+ac
+af
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+al
+ah
+ac
+aJ
+aJ
+aJ
+aJ
+aJ
+aJ
+bD
+ac
+aJ
+aK
+aJ
+ac
+cc
+aK
+aJ
+ct
+cj
+cj
+cj
+cj
+cv
+cx
+cH
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+cU
+cX
+cX
+cX
+cX
+cX
+cT
+cT
+cT
+ab
+bu
+bu
+bu
+bu
+bu
+bu
+bu
+ab
+"}
+(17,1,1) = {"
+ab
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+am
+am
+am
+aL
+aS
+am
+bg
+bt
+bw
+am
+am
+aJ
+aK
+aJ
+ac
+cc
+aK
+co
+ac
+cj
+cj
+cj
+cj
+cw
+cy
+cC
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+cT
+cX
+cX
+cT
+cT
+cT
+cT
+ab
+ab
+ab
+bu
+bA
+bM
+bQ
+bM
+bW
+bu
+ab
+"}
+(18,1,1) = {"
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+am
+an
+az
+aM
+aT
+am
+bh
+aM
+bx
+bE
+am
+aJ
+aK
+aJ
+ac
+cc
+aK
+cp
+ac
+cj
+cj
+cj
+cj
+cv
+cz
+cI
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+cT
+cT
+cT
+cT
+ab
+ab
+ab
+ab
+ab
+ab
+bu
+bA
+bN
+bQ
+bN
+bW
+bu
+ab
+"}
+(19,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+ao
+aA
+aN
+aN
+bd
+aN
+aN
+aN
+bF
+am
+aJ
+aK
+aJ
+ac
+cc
+aK
+aJ
+cu
+cj
+cj
+cj
+cj
+cv
+cv
+cv
+cj
+cj
+cj
+cj
+cj
+cP
+cj
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bu
+bA
+bN
+bQ
+bN
+bW
+bu
+ab
+"}
+(20,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+ap
+aB
+aN
+aC
+be
+as
+aN
+by
+bG
+am
+aJ
+aK
+aJ
+ac
+cd
+ci
+ci
+cu
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cO
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bu
+bA
+bO
+bQ
+bO
+bW
+bu
+ab
+"}
+(21,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+ao
+aA
+aN
+aN
+bd
+aN
+aN
+aN
+aC
+am
+aJ
+aK
+aJ
+ac
+ac
+ac
+ac
+ac
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+cP
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ac
+ac
+ac
+ac
+do
+do
+do
+do
+do
+do
+do
+do
+bu
+bR
+bu
+bu
+bu
+ab
+"}
+(22,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+ap
+aB
+aN
+aC
+am
+as
+aN
+aN
+aC
+am
+aJ
+aK
+aJ
+aJ
+ac
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+ab
+cj
+cO
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cS
+ce
+aK
+aK
+aK
+dp
+dv
+dv
+dv
+dv
+dF
+dF
+do
+aJ
+aK
+aJ
+ac
+ab
+ab
+"}
+(23,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+aq
+aC
+as
+aU
+am
+as
+aN
+aN
+aC
+am
+aJ
+aK
+aK
+aK
+ce
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+cj
+cj
+cj
+cj
+ab
+ab
+cj
+cP
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cS
+br
+aK
+aK
+aJ
+do
+dv
+dv
+dv
+dD
+dG
+dJ
+do
+aJ
+aK
+aJ
+ac
+ab
+ab
+"}
+(24,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+ar
+aC
+as
+aV
+am
+bi
+aN
+aN
+bH
+am
+aJ
+aK
+aK
+aK
+br
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+ab
+ab
+ab
+cj
+cQ
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ac
+aJ
+aK
+aJ
+do
+dw
+dv
+dv
+dD
+dG
+dG
+do
+aJ
+aK
+aJ
+ac
+ab
+ab
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+as
+aC
+as
+aC
+am
+am
+aN
+bz
+am
+am
+aJ
+aK
+aK
+aJ
+ac
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ac
+aJ
+aK
+aJ
+do
+dx
+dv
+dv
+dD
+dH
+dG
+do
+aJ
+aK
+aJ
+ac
+ab
+ab
+"}
+(26,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+at
+aC
+as
+aW
+am
+bj
+aN
+aN
+bI
+am
+aJ
+aJ
+aK
+aJ
+ac
+cj
+cj
+cj
+cj
+cj
+cj
+cv
+cv
+cv
+cj
+cj
+ab
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ac
+aJ
+aK
+aJ
+do
+dy
+dv
+dv
+dv
+dI
+dI
+do
+aJ
+aK
+aJ
+ac
+ab
+ab
+"}
+(27,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+au
+aC
+as
+aX
+am
+bk
+aN
+aN
+bJ
+bP
+bP
+bP
+bX
+bP
+bP
+bP
+bP
+bP
+cj
+cj
+cj
+cv
+cx
+cB
+cj
+cj
+ab
+ab
+ab
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+ac
+aJ
+aK
+aJ
+do
+do
+do
+dv
+dE
+dv
+dv
+dK
+aK
+aK
+aJ
+ac
+ab
+ab
+"}
+(28,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+av
+aD
+aO
+aY
+am
+bl
+aN
+aN
+bK
+bP
+bS
+bT
+bY
+bZ
+bZ
+bT
+bS
+bP
+cj
+cj
+cj
+cw
+cy
+cC
+cj
+cj
+cj
+cj
+cO
+cj
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+cR
+ab
+ab
+ac
+aJ
+aK
+aJ
+aJ
+aJ
+do
+do
+do
+do
+do
+do
+aJ
+aJ
+aJ
+ac
+ab
+ab
+"}
+(29,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+aw
+aE
+aE
+aZ
+am
+bm
+aE
+aE
+bL
+bP
+bS
+bU
+bY
+bY
+bZ
+bU
+bS
+bP
+ab
+cj
+cj
+cv
+cz
+cD
+cj
+cj
+cj
+cj
+cP
+cj
+cj
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+ab
+ac
+aJ
+aK
+aJ
+aJ
+aJ
+ac
+ab
+ab
+ab
+ab
+ac
+ac
+ac
+ac
+ac
+ab
+ab
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+bP
+bS
+bU
+bZ
+bY
+bZ
+bU
+cq
+bP
+ab
+ab
+cj
+cv
+cv
+cv
+cj
+cj
+cj
+cj
+cO
+cj
+cj
+cj
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cV
+cV
+dh
+cV
+dq
+cY
+cV
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(31,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bP
+bS
+bU
+bZ
+bY
+bZ
+ck
+ck
+bP
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+cV
+cY
+di
+di
+di
+di
+cV
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(32,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+bP
+bS
+bU
+bZ
+bY
+cf
+cf
+cf
+bP
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cV
+cZ
+di
+cY
+dr
+di
+cV
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+bP
+bS
+bV
+bZ
+bY
+cg
+cl
+cl
+bP
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cV
+da
+di
+di
+di
+dz
+cV
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(34,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+bP
+bP
+bP
+bP
+bP
+bP
+bP
+bP
+bP
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cV
+db
+dj
+dn
+ds
+di
+cV
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(35,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cW
+dc
+dc
+dc
+dt
+dA
+cW
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(36,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cW
+dd
+dk
+dk
+dk
+dl
+cW
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(37,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cW
+de
+dl
+dl
+dl
+dB
+cW
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(38,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cW
+df
+dm
+dm
+du
+dC
+cW
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(39,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+cW
+cW
+cW
+cW
+cW
+cW
+cW
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(40,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

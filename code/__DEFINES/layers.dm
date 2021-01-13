@@ -106,6 +106,8 @@
 
 #define AREAS_LAYER 999 //for areas, so they appear above everything else on map file.
 
+#define ABOVE_LIGHTING_PLANE 16
+
 #define BELOW_FULLSCREEN_LAYER 16.9 //blip from motion detector
 #define FULLSCREEN_LAYER 17
 #define FULLSCREEN_WEATHER_LAYER 17.01 // Weather

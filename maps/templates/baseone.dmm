@@ -1,0 +1,5173 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/bunker01/caves)
+"ab" = (
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"ac" = (
+/obj/structure/ladder,
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"ad" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/caves)
+"ae" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/bathroom)
+"af" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/faxmachine{
+	department = "CLASSIFIED"
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/caves)
+"ag" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/tool/pen,
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "emeraldcorner";
+	tag = "icon-emerald (NORTH)"
+	},
+/area/adminlevel/bunker01/command)
+"ah" = (
+/obj/structure/filingcabinet/security,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/command)
+"ai" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/command)
+"aj" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/carpet{
+	dir = 9;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/command)
+"ak" = (
+/obj/structure/machinery/cm_vending/clothing/antag,
+/turf/open/floor/carpet{
+	dir = 1;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTH)"
+	},
+/area/adminlevel/bunker01/command)
+"al" = (
+/obj/structure/safe,
+/turf/open/floor/carpet{
+	dir = 5;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/bathroom)
+"am" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/bathroom)
+"an" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"ao" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 4;
+	name = "\improper Toilet"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"ap" = (
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aq" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"ar" = (
+/obj/structure/machinery/washing_machine,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"as" = (
+/obj/structure/machinery/washing_machine,
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"at" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/bedsheetbin{
+	pixel_y = 6
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"au" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/obj/structure/machinery/computer/guestpass{
+	dir = 4;
+	reason = "Visitor"
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "emerald";
+	tag = "icon-emerald (WEST)"
+	},
+/area/adminlevel/bunker01/caves)
+"av" = (
+/obj/structure/bed/chair/comfy{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/command)
+"aw" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/command)
+"ax" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	dir = 8;
+	name = "\improper Command Room";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/command)
+"ay" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/carpet{
+	dir = 8;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (WEST)"
+	},
+/area/adminlevel/bunker01/command)
+"az" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (NORTH)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/bunker01/command)
+"aA" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (SOUTHWEST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/carpet{
+	dir = 4;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (EAST)"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aB" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aF" = (
+/obj/structure/curtain/shower,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/caves)
+"aG" = (
+/obj/structure/machinery/shower{
+	dir = 8;
+	icon_state = "shower"
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/caves)
+"aH" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/computer/secure_data{
+	dir = 4;
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "emerald";
+	tag = "icon-emerald (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/caves)
+"aI" = (
+/obj/structure/machinery/power/apc/antag{
+	dir = 2;
+	pixel_x = 0
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "emeraldcorner";
+	tag = "icon-emeraldcorner (EAST)"
+	},
+/area/adminlevel/bunker01/command)
+"aJ" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/command)
+"aK" = (
+/obj/item/bedsheet/brown,
+/obj/structure/bed,
+/obj/structure/sign/safety/computer{
+	pixel_x = -32
+	},
+/turf/open/floor/carpet{
+	dir = 8;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (WEST)"
+	},
+/area/adminlevel/bunker01/command)
+"aL" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/adminlevel/bunker01/command)
+"aM" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/carpet{
+	dir = 4;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (EAST)"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aN" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aO" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (SOUTHWEST)"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aP" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aQ" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/caves)
+"aR" = (
+/obj/structure/sign/safety/ladder{
+	pixel_y = 32
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"aS" = (
+/obj/structure/surface/table/holotable/wood,
+/obj/item/clothing/mask/cigarette/cigar/havana,
+/obj/item/ashtray/glass,
+/turf/open/floor/carpet{
+	dir = 10;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (SOUTHWEST)"
+	},
+/area/adminlevel/bunker01/command)
+"aT" = (
+/obj/structure/closet/cabinet,
+/obj/item/storage/box/ids,
+/turf/open/floor/carpet{
+	icon_state = "carpetside"
+	},
+/area/adminlevel/bunker01/command)
+"aU" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/carpet{
+	dir = 6;
+	icon_state = "carpetside";
+	tag = "icon-carpetside (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aV" = (
+/obj/structure/sink{
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = -10
+	},
+/obj/structure/mirror{
+	pixel_y = -28
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aW" = (
+/obj/structure/mirror{
+	pixel_y = -28
+	},
+/obj/structure/sink{
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = -10
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aX" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bathroom)
+"aY" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves)
+"aZ" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/command)
+"ba" = (
+/obj/structure/ladder,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/command)
+"bb" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/command)
+"bc" = (
+/obj/structure/machinery/door/airlock/almayer/command{
+	dir = 1;
+	name = "\improper Leader's Bedroom";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/bedroom)
+"bd" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/bedroom)
+"be" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bf" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bg" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Bathroom"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bedroom)
+"bh" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/kitchen)
+"bi" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/kitchen)
+"bj" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/hydroponics)
+"bk" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves)
+"bl" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves)
+"bm" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"bn" = (
+/obj/structure/sign/safety/ladder{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"bo" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"bp" = (
+/obj/structure/machinery/power/apc/antag{
+	dir = 8;
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"bq" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/bedroom)
+"br" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bs" = (
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bt" = (
+/obj/structure/machinery/vending/cigarette/free,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bu" = (
+/obj/structure/machinery/vending/snack/packaged,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bv" = (
+/obj/structure/machinery/vending/coffee/simple,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bw" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bx" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"by" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/freezer/fridge/full,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"bz" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"bA" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/juicer,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"bB" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "blue";
+	tag = "icon-blue (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"bC" = (
+/obj/structure/surface/rack,
+/obj/item/storage/bag/plants,
+/obj/item/tool/shovel/spade,
+/obj/item/reagent_container/glass/bucket,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "blue";
+	tag = "icon-blue (NORTH)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"bD" = (
+/obj/structure/machinery/hydro_floodlight,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "blue";
+	tag = "icon-blue (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"bE" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/caves)
+"bF" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"bG" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/bedroom)
+"bH" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/power/apc/antag{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bI" = (
+/obj/structure/pipes/vents/pump,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bJ" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (WEST)"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bK" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Kitchen";
+	req_access_txt = "201"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bedroom)
+"bL" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (SOUTHWEST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"bM" = (
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"bN" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave,
+/obj/structure/machinery/power/apc/antag{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"bO" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "blue";
+	tag = "icon-blue (WEST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"bP" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/hydroponics)
+"bQ" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue";
+	tag = "icon-blue (EAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"bR" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"bS" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"bT" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"bU" = (
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/bedroom)
+"bV" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 4;
+	name = "\improper Bedroom";
+	req_access_txt = "201"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/bedroom)
+"bW" = (
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j1";
+	tag = "icon-pipe-j1 (WEST)"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/bed/chair,
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/bed/chair,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"bZ" = (
+/obj/structure/bed/chair,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"ca" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"cb" = (
+/obj/structure/disposalpipe/junction,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (EAST)"
+	},
+/obj/structure/sign/safety/galley{
+	pixel_x = 32
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"cc" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (NORTHEAST)"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"cd" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (NORTH)"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"ce" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"cf" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/microwave,
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"cg" = (
+/mob/living/simple_animal/chicken{
+	desc = "A chubby and friendly chicken, often sticking to the person being on kitchen duty. She looks somewhat lonely.";
+	emote_see = list("pecks at the ground","flaps its wings","clucks happily");
+	faction = list("CLF","UPP");
+	name = "\improper Charlie";
+	voice_name = "chicken"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "blue";
+	tag = "icon-blue (WEST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"ch" = (
+/obj/structure/pipes/vents/pump/on,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/hydroponics)
+"ci" = (
+/obj/structure/machinery/portable_atmospherics/hydroponics,
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue";
+	tag = "icon-blue (EAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"cj" = (
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
+"ck" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
+"cl" = (
+/obj/structure/bed,
+/obj/item/bedsheet/brown,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
+"cm" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/storage)
+"cn" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"co" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/bedroom)
+"cp" = (
+/obj/structure/bed/chair{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"cq" = (
+/obj/structure/surface/table/almayer,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"cr" = (
+/obj/structure/surface/table/almayer,
+/obj/item/trash/cigbutt,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"cs" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"ct" = (
+/obj/structure/machinery/vending/dinnerware,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bedroom)
+"cu" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/tool/kitchen/rollingpin,
+/obj/item/tool/kitchen/knife,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"cv" = (
+/obj/structure/machinery/processor,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"cw" = (
+/obj/structure/sign/safety/hydro,
+/turf/closed/wall,
+/area/adminlevel/bunker01/kitchen)
+"cx" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "blue";
+	tag = "icon-blue (WEST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"cy" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/hydroponics)
+"cz" = (
+/obj/structure/machinery/vending/hydroseeds,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "blue";
+	tag = "icon-blue (EAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"cA" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/storage)
+"cB" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/storage)
+"cC" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/bedroom)
+"cD" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ashtray/plastic,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"cE" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/light,
+/turf/open/floor/wood,
+/area/adminlevel/bunker01/bedroom)
+"cF" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/bedroom)
+"cG" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/sink{
+	dir = 1;
+	pixel_y = -10
+	},
+/turf/open/floor/prison{
+	dir = 2;
+	icon_state = "sterile_white";
+	tag = "icon-sterile_white"
+	},
+/area/adminlevel/bunker01/kitchen)
+"cH" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	name = "\improper Hydroponics";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/kitchen)
+"cI" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/hydroponics)
+"cJ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (NORTHWEST)"
+	},
+/obj/structure/machinery/power/apc/antag{
+	pixel_y = -24
+	},
+/turf/open/floor/almayer{
+	icon_state = "blue";
+	tag = "icon-blue"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"cK" = (
+/obj/structure/machinery/vending/hydronutrients,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "blue";
+	tag = "icon-blue (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/hydroponics)
+"cL" = (
+/obj/structure/surface/rack,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/briefcase/inflatable,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "green";
+	tag = "icon-green (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/caves)
+"cM" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"cN" = (
+/obj/structure/surface/rack,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/obj/item/tool/shovel/etool/folded,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"cO" = (
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"cP" = (
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"cQ" = (
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/storage)
+"cR" = (
+/obj/structure/machinery/recharge_station,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"cS" = (
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/bedroom)
+"cT" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 1;
+	name = "\improper Bedroom";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/bedroom)
+"cU" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "green";
+	tag = "icon-green (SOUTHWEST)"
+	},
+/area/adminlevel/bunker01/caves)
+"cV" = (
+/turf/open/floor/almayer{
+	icon_state = "green";
+	tag = "icon-green"
+	},
+/area/adminlevel/bunker01/storage)
+"cW" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "greencorner";
+	tag = "icon-greencorner (WEST)"
+	},
+/area/adminlevel/bunker01/storage)
+"cX" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "greencorner";
+	tag = "icon-greencorner (EAST)"
+	},
+/area/adminlevel/bunker01/storage)
+"cY" = (
+/obj/structure/machinery/power/apc/antag{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/storage)
+"cZ" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/mainroom)
+"da" = (
+/obj/structure/machinery/cm_vending/clothing/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"db" = (
+/obj/structure/machinery/cm_vending/clothing/antag,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dc" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dd" = (
+/obj/structure/sign/safety/breakroom{
+	pixel_y = 32
+	},
+/obj/structure/machinery/cm_vending/clothing/antag,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"de" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"df" = (
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/obj/structure/largecrate/supply/supplies/metal,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/caves)
+"dg" = (
+/obj/structure/largecrate/supply/supplies/plasteel,
+/obj/structure/largecrate/supply/supplies/plasteel,
+/obj/structure/largecrate/supply/supplies/plasteel,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"dh" = (
+/obj/structure/largecrate/supply/supplies/sandbags,
+/obj/structure/largecrate/supply/supplies/sandbags,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"di" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "green";
+	tag = "icon-green (SOUTHWEST)"
+	},
+/area/adminlevel/bunker01/storage)
+"dj" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "greencorner";
+	tag = "icon-greencorner (WEST)"
+	},
+/area/adminlevel/bunker01/storage)
+"dk" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (NORTH)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/storage)
+"dl" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/storage)
+"dm" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Tools";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/storage)
+"dn" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/storage)
+"do" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dp" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (SOUTHWEST)"
+	},
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dq" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"dr" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"ds" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"dt" = (
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"du" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/engineering)
+"dv" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/engineering)
+"dw" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/storage)
+"dx" = (
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "green";
+	tag = "icon-green (WEST)"
+	},
+/area/adminlevel/bunker01/storage)
+"dy" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/storage)
+"dz" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/adminlevel/bunker01/storage)
+"dA" = (
+/obj/structure/sign/safety/storage{
+	pixel_x = -32
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dC" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 5;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j1";
+	tag = "icon-pipe-j1 (WEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dD" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dE" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dF" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j1";
+	tag = "icon-pipe-j1 (WEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (SOUTHWEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dH" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Gear Storage";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dI" = (
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dJ" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dK" = (
+/obj/structure/machinery/power/smes/buildable/charged{
+	charge = 4e+006;
+	chargelevel = 50000;
+	charging = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/adminlevel/bunker01/engineering)
+"dL" = (
+/obj/structure/machinery/power/smes/buildable/charged{
+	charge = 4e+006;
+	chargelevel = 50000;
+	charging = 1
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/adminlevel/bunker01/engineering)
+"dM" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "green";
+	tag = "icon-green (SOUTHWEST)"
+	},
+/area/adminlevel/bunker01/storage)
+"dN" = (
+/obj/structure/machinery/autolathe/full,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/storage)
+"dO" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"dP" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dQ" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dR" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"dS" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dT" = (
+/obj/structure/machinery/power/terminal{
+	dir = 1;
+	icon_state = "term"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"dU" = (
+/obj/structure/machinery/power/terminal{
+	dir = 1;
+	icon_state = "term"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orange";
+	tag = "icon-orange (EAST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"dV" = (
+/obj/structure/sign/safety/electronics,
+/turf/closed/wall,
+/area/adminlevel/bunker01/storage)
+"dW" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	dir = 1;
+	name = "\improper Tools";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/storage)
+"dX" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dY" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"dZ" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (WEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"ea" = (
+/obj/structure/machinery/door/airlock/almayer/marine/requisitions{
+	name = "\improper Gear Storage";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"eb" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"ec" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (NORTHWEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"ed" = (
+/obj/structure/largecrate/supply/weapons/m56d,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"ee" = (
+/obj/structure/closet/crate/secure/mortar_ammo/mortar_kit,
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"ef" = (
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/mainroom)
+"eg" = (
+/obj/structure/closet/firecloset,
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "orange";
+	tag = "icon-orange (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"eh" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orangecorner";
+	tag = "icon-orangecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/engineering)
+"ei" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "orangecorner";
+	tag = "icon-orangecorner (EAST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"ej" = (
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "orange";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/engineering)
+"ek" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/engineering)
+"el" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "green";
+	tag = "icon-green (NORTH)"
+	},
+/area/adminlevel/bunker01/engineering)
+"em" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (WEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/engineering)
+"en" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/toolbox,
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "green";
+	tag = "icon-green (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"eo" = (
+/obj/structure/machinery/cm_vending/gear/antag_guns,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"ep" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24;
+	pixel_y = 0
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"eq" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/obj/structure/machinery/power/apc/antag{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"er" = (
+/obj/structure/largecrate/supply/supplies/flares,
+/obj/structure/window/reinforced{
+	dir = 8;
+	health = 80
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"es" = (
+/obj/structure/closet/crate/secure/mortar_ammo/full{
+	name = "\improper M402 mortar ammo crate"
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/adminlevel/bunker01/mainroom)
+"et" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/clothing/gloves/yellow,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/machinery/power/apc/antag{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"eu" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/engineering)
+"ev" = (
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/engineering)
+"ew" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/engineering)
+"ex" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "green";
+	tag = "icon-green (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/engineering)
+"ey" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"ez" = (
+/obj/structure/machinery/cm_vending/gear/antag,
+/obj/structure/window/reinforced{
+	dir = 4;
+	health = 80
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"eA" = (
+/obj/structure/surface/table/reinforced,
+/obj/effect/spawner/random/toolbox,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/adminlevel/bunker01/engineering)
+"eB" = (
+/obj/structure/machinery/power/geothermal{
+	buildstate = 4;
+	icon_state = "on100";
+	is_on = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/adminlevel/bunker01/engineering)
+"eC" = (
+/obj/structure/machinery/light/small{
+	pixel_y = 0
+	},
+/obj/structure/machinery/power/geothermal{
+	buildstate = 4;
+	icon_state = "on100";
+	is_on = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "orangefull";
+	tag = "icon-orangefull"
+	},
+/area/adminlevel/bunker01/engineering)
+"eD" = (
+/obj/structure/sign/safety/electronics,
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/engineering)
+"eE" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/security)
+"eF" = (
+/obj/structure/machinery/door/airlock/almayer/security{
+	dir = 1;
+	name = "\improper Security";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"eG" = (
+/obj/structure/machinery/light,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"eH" = (
+/obj/structure/disposalpipe/segment,
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/engineering)
+"eI" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/firecloset,
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "red";
+	tag = "icon-red (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/security)
+"eJ" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/security)
+"eK" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk,
+/turf/open/floor/almayer{
+	dir = 5;
+	icon_state = "red";
+	tag = "icon-red (NORTHEAST)"
+	},
+/area/adminlevel/bunker01/security)
+"eL" = (
+/obj/structure/machinery/power/apc/antag{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"eM" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (WEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"eN" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"eO" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"eP" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"eQ" = (
+/obj/structure/disposaloutlet,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/engineering)
+"eR" = (
+/obj/structure/toilet,
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"eS" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red";
+	tag = "icon-red (NORTH)"
+	},
+/area/adminlevel/bunker01/security)
+"eT" = (
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "redcorner";
+	tag = "icon-redcorner (NORTH)"
+	},
+/area/adminlevel/bunker01/security)
+"eU" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 8;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (WEST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/security)
+"eV" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (NORTH)"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j1";
+	tag = "icon-pipe-j1 (WEST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/security)
+"eW" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/security)
+"eX" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/security)
+"eY" = (
+/obj/structure/machinery/door/airlock/almayer/security{
+	name = "\improper Security";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"eZ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"fa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"fb" = (
+/obj/structure/sign/safety/medical{
+	pixel_y = -32
+	},
+/obj/structure/machinery/light,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"fc" = (
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j1";
+	tag = "icon-pipe-j1 (WEST)"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"fd" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"fe" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (NORTH)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"ff" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/mainroom)
+"fg" = (
+/obj/structure/machinery/door/airlock/multi_tile/secure{
+	dir = 1;
+	name = "\improper Entrance";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"fh" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"fi" = (
+/obj/structure/stairs{
+	dir = 8
+	},
+/obj/structure/machinery/light/small{
+	pixel_y = 0
+	},
+/obj/structure/pipes/standard/cap/hidden/supply{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/mainroom)
+"fj" = (
+/obj/structure/bed,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"fk" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"fl" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	name = "\improper Cell 3";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"fm" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 4;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (EAST)"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/security)
+"fn" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "redcorner";
+	tag = "icon-redcorner"
+	},
+/area/adminlevel/bunker01/security)
+"fo" = (
+/turf/open/floor/almayer{
+	icon_state = "red";
+	tag = "icon-red"
+	},
+/area/adminlevel/bunker01/security)
+"fp" = (
+/turf/open/floor/almayer{
+	dir = 6;
+	icon_state = "red";
+	tag = "icon-red (SOUTHEAST)"
+	},
+/area/adminlevel/bunker01/security)
+"fq" = (
+/obj/structure/sign/safety/hazard,
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/medbay)
+"fr" = (
+/obj/structure/machinery/smartfridge/secure/medbay,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fs" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"ft" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fu" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/recharger,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fv" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/recharger,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fw" = (
+/turf/closed/wall/r_wall,
+/area/adminlevel/bunker01/medbay)
+"fx" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/obj/structure/window/framed/colony/reinforced,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fy" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	name = "\improper Medbay";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (NORTH)"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fz" = (
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_medbay";
+	name = "\improper Medbay Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fA" = (
+/turf/closed/wall/rock/brown,
+/area/adminlevel/bunker01/mainroom)
+"fB" = (
+/obj/structure/machinery/power/apc/antag{
+	dir = 8;
+	pixel_x = -24
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"fC" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/security)
+"fD" = (
+/obj/structure/machinery/chem_master,
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fE" = (
+/turf/open/floor/almayer{
+	dir = 9;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTHWEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fF" = (
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fG" = (
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fH" = (
+/obj/structure/window/framed/colony,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fI" = (
+/obj/structure/machinery/bodyscanner,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fJ" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fK" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (NORTH)"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fL" = (
+/obj/structure/machinery/bodyscanner,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fM" = (
+/obj/structure/machinery/autodoc,
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fN" = (
+/obj/structure/machinery/autodoc_console,
+/obj/structure/sign/safety/autodoc{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fO" = (
+/obj/structure/machinery/autodoc,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fP" = (
+/obj/structure/machinery/autodoc_console,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fQ" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	name = "\improper Cell 2";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"fR" = (
+/obj/structure/pipes/standard/manifold/fourway/hidden/supply,
+/turf/open/floor/plating/plating_catwalk,
+/area/adminlevel/bunker01/security)
+"fS" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	name = "\improper Cell 1";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "redcorner";
+	tag = "icon-redcorner (EAST)"
+	},
+/area/adminlevel/bunker01/security)
+"fT" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "red";
+	tag = "icon-red (NORTH)"
+	},
+/area/adminlevel/bunker01/security)
+"fU" = (
+/obj/structure/bed,
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/turf/open/floor/almayer{
+	icon_state = "redfull";
+	tag = "icon-redfull"
+	},
+/area/adminlevel/bunker01/security)
+"fV" = (
+/obj/structure/machinery/chem_dispenser{
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"fW" = (
+/turf/open/floor/almayer{
+	dir = 10;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fX" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker/large,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/item/reagent_container/glass/beaker/bluespace,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fY" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1;
+	icon_state = "map-supply";
+	tag = "icon-map-supply (NORTH)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"fZ" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"ga" = (
+/obj/structure/machinery/door/airlock/almayer/medical/glass{
+	name = "\improper Chemistry";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gb" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gc" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (SOUTHWEST)"
+	},
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gd" = (
+/obj/structure/toilet{
+	dir = 1;
+	icon_state = "toilet00";
+	tag = "icon-toilet00 (NORTH)"
+	},
+/obj/structure/machinery/light/small{
+	pixel_y = 0
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"ge" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"gf" = (
+/obj/structure/bed/chair{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "red";
+	tag = "icon-red"
+	},
+/area/adminlevel/bunker01/security)
+"gg" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "red";
+	tag = "icon-red"
+	},
+/area/adminlevel/bunker01/security)
+"gh" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/almayer{
+	icon_state = "red";
+	tag = "icon-red"
+	},
+/area/adminlevel/bunker01/security)
+"gi" = (
+/obj/structure/toilet{
+	dir = 1;
+	icon_state = "toilet00";
+	tag = "icon-toilet00 (NORTH)"
+	},
+/obj/structure/machinery/light/small{
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	icon_state = "red";
+	tag = "icon-red"
+	},
+/area/adminlevel/bunker01/security)
+"gj" = (
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gk" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/storage/box/pillbottles,
+/obj/item/tool/hand_labeler,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gl" = (
+/obj/structure/surface/table/reinforced,
+/obj/structure/machinery/reagentgrinder,
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/machinery/door_control{
+	id = "bunker_medbay";
+	name = "Medbay Lockdown";
+	pixel_y = -23
+	},
+/obj/structure/machinery/light,
+/obj/item/stack/sheet/mineral/phoron{
+	amount = 25
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gm" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (NORTH)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gn" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"go" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gp" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gq" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gr" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/power/apc/antag{
+	dir = 4;
+	pixel_x = 24
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gs" = (
+/obj/structure/machinery/door/airlock/almayer/security{
+	dir = 1;
+	name = "\improper Security";
+	req_access_txt = "201"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"gt" = (
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/security)
+"gu" = (
+/turf/closed/wall,
+/area/adminlevel/bunker01/medbay)
+"gv" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
+	name = "\improper Medical Storage";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 1;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (NORTH)"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gw" = (
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gx" = (
+/obj/structure/machinery/iv_drip,
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gy" = (
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gz" = (
+/obj/structure/bed,
+/obj/structure/machinery/door_control{
+	id = "bunker_medbay";
+	name = "Medbay Lockdown";
+	pixel_y = -23
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gA" = (
+/obj/structure/bed,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gB" = (
+/obj/structure/machinery/autodoc,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gC" = (
+/obj/structure/machinery/autodoc_console,
+/obj/structure/sign/safety/autodoc{
+	pixel_y = -32
+	},
+/obj/structure/machinery/light,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gD" = (
+/obj/structure/machinery/autodoc_console,
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gE" = (
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"gF" = (
+/obj/structure/machinery/light/small{
+	dir = 1;
+	pixel_y = 20
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"gG" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/box/masks,
+/obj/item/storage/box/masks,
+/obj/item/storage/box/gloves,
+/obj/item/storage/box/gloves,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gH" = (
+/obj/structure/machinery/cm_vending/sorted/medical/blood/antag,
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gI" = (
+/obj/structure/window/framed/colony,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_or1_shutters";
+	name = "\improper Surgery Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	dir = 2;
+	icon_state = "green";
+	tag = "icon-green"
+	},
+/area/adminlevel/bunker01/medbay)
+"gJ" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	id_tag = "bunker_or1";
+	name = "\improper Operating Room 1";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gK" = (
+/obj/structure/window/framed/colony,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_or1_shutters";
+	name = "\improper Surgery Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gL" = (
+/obj/structure/window/framed/colony,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "bunker_or2_shutters";
+	name = "\improper Surgery Shutters"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gM" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	id_tag = "bunker_or2";
+	name = "\improper Operating Room 2";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gN" = (
+/obj/structure/machinery/door/airlock/almayer/medical{
+	dir = 1;
+	name = "\improper Crematorium";
+	req_access_txt = "201";
+	req_one_access = null
+	},
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag{
+	dir = 2
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gO" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"gP" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/firealarm{
+	pixel_y = 24
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/security)
+"gQ" = (
+/obj/structure/machinery/door/airlock/almayer/security{
+	name = "\improper Security";
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/firedoor/border_only/almayer/antag,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/medbay)
+"gR" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (EAST)"
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gS" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 10;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (SOUTHWEST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gT" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gU" = (
+/obj/structure/machinery/door_control{
+	id = "bunker_or1";
+	name = "Surgery Door Release";
+	pixel_x = -23
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gV" = (
+/obj/structure/machinery/bioprinter{
+	stored_metal = 1000
+	},
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"gW" = (
+/obj/structure/machinery/door_control{
+	id = "bunker_or2";
+	name = "Surgery Door Release";
+	pixel_x = -23
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (NORTH)"
+	},
+/area/adminlevel/bunker01/medbay)
+"gX" = (
+/obj/structure/morgue/crematorium{
+	dir = 2
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/medbay)
+"gY" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/medbay)
+"gZ" = (
+/obj/structure/sign/safety/ladder{
+	pixel_y = -32
+	},
+/turf/open/mars_cave,
+/area/adminlevel/bunker01/caves)
+"ha" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/item/storage/firstaid/adv{
+	pixel_x = 2;
+	pixel_y = -5
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"hb" = (
+/obj/structure/pipes/standard/manifold/hidden/supply,
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"hc" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8;
+	id_tag = "mining_outpost_pump"
+	},
+/obj/structure/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"hd" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"he" = (
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 9;
+	icon_state = "intact-supply";
+	tag = "icon-intact-supply (NORTHWEST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "dark_sterile";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"hf" = (
+/obj/structure/sink{
+	dir = 4;
+	icon_state = "sink";
+	pixel_x = 11;
+	pixel_y = 0
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"hg" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/medbay)
+"hh" = (
+/obj/structure/machinery/crema_switch{
+	pixel_x = 23;
+	pixel_y = 0;
+	req_access_txt = "201"
+	},
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/almayer,
+/area/adminlevel/bunker01/medbay)
+"hi" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/device/defibrillator,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/obj/item/reagent_container/spray/cleaner,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"hj" = (
+/obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"hk" = (
+/obj/structure/sign/safety/medical_supplies{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/antag,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"hl" = (
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"hm" = (
+/obj/structure/closet/secure_closet/medical2,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"hn" = (
+/obj/structure/machinery/iv_drip,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (WEST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"ho" = (
+/obj/structure/machinery/optable,
+/obj/structure/machinery/door_control{
+	id = "bunker_or1_shutters";
+	name = "Surgery Shutters";
+	pixel_y = -23
+	},
+/obj/item/tank/anesthetic,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+"hp" = (
+/obj/structure/surface/table/reinforced,
+/obj/item/storage/surgical_tray,
+/obj/item/reagent_container/spray/cleaner{
+	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
+	name = "Surgery Cleaner"
+	},
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "sterile_green_corner";
+	tag = "icon-sterile_green_corner (EAST)"
+	},
+/area/adminlevel/bunker01/medbay)
+"hq" = (
+/obj/structure/machinery/optable,
+/obj/structure/machinery/door_control{
+	id = "bunker_or2_shutters";
+	name = "Surgery Shutters";
+	pixel_y = -23
+	},
+/obj/item/tank/anesthetic,
+/turf/open/floor/almayer{
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile"
+	},
+/area/adminlevel/bunker01/medbay)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+aa
+aa
+aa
+ab
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+du
+du
+du
+du
+du
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+aa
+aa
+ab
+ab
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ad
+ad
+ad
+ad
+du
+du
+du
+eg
+et
+eA
+eH
+eQ
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ad
+ad
+ad
+ad
+ad
+ad
+cL
+cU
+df
+dv
+dK
+dT
+eh
+eu
+eB
+du
+eE
+eE
+eE
+eE
+eE
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ad
+ad
+bk
+aY
+aY
+cj
+cA
+cM
+cV
+dg
+dv
+dL
+dU
+ei
+eu
+eC
+du
+eE
+fj
+eE
+fj
+eE
+eE
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+ad
+ad
+ad
+ad
+aY
+bl
+bl
+bl
+ck
+cA
+cN
+cV
+dh
+cA
+cA
+cA
+ej
+eu
+eB
+du
+eR
+fk
+eE
+fk
+gd
+eE
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+af
+au
+aH
+ad
+aY
+bl
+bE
+bE
+cl
+cA
+cO
+cW
+di
+dw
+dw
+dV
+ek
+ev
+eD
+du
+eS
+fl
+eE
+fQ
+ge
+eE
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+aa
+ab
+ab
+ab
+ad
+ag
+av
+aI
+ai
+aZ
+bm
+bm
+bR
+cm
+cA
+cP
+cm
+dj
+dx
+dM
+cA
+el
+eu
+eE
+eI
+eT
+fk
+fB
+fk
+gf
+eE
+eE
+eE
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(11,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+ah
+aw
+aJ
+ai
+ba
+bm
+bF
+bS
+cl
+cA
+cQ
+cX
+dk
+dy
+dy
+dW
+em
+ew
+eF
+eJ
+eU
+fm
+fC
+fR
+gg
+gs
+gE
+eE
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+"}
+(12,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+ai
+ax
+ai
+ai
+bb
+bn
+bm
+bT
+cm
+cA
+cR
+cY
+dl
+dz
+dN
+cA
+en
+ex
+eE
+eK
+eV
+fn
+eE
+fS
+gh
+eE
+gE
+eE
+eE
+ab
+ab
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+aj
+ay
+aK
+aS
+bb
+bo
+bF
+bS
+cl
+cA
+cA
+cA
+dm
+cA
+cA
+cA
+dv
+dv
+eE
+eE
+eW
+fo
+eE
+fT
+gi
+eE
+gF
+gO
+eE
+ab
+ab
+ab
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+ak
+az
+aL
+aT
+bb
+bp
+bm
+bT
+cn
+cB
+cB
+cB
+dn
+dA
+dO
+dX
+dX
+dO
+dJ
+eE
+eX
+fp
+eE
+fU
+eE
+eE
+eE
+gP
+eE
+ab
+ab
+ab
+ab
+ab
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+al
+aA
+aM
+aU
+bc
+bq
+bG
+bU
+co
+cC
+cS
+cZ
+do
+dB
+dq
+dY
+dY
+dq
+eG
+eE
+eY
+eE
+eE
+eE
+eE
+gt
+eE
+fk
+eE
+ab
+ab
+ab
+ab
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+ab
+ab
+ae
+am
+am
+am
+am
+bd
+bd
+bd
+bV
+bd
+cC
+cC
+cZ
+dp
+dC
+dJ
+dJ
+dJ
+dJ
+dJ
+eL
+eZ
+fq
+fD
+fV
+fw
+fw
+fw
+gQ
+fw
+fw
+fw
+ab
+ab
+aa
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+ab
+ab
+ae
+an
+am
+an
+am
+be
+br
+bH
+bW
+cp
+cp
+bd
+da
+dq
+dD
+dP
+dP
+dP
+dP
+dP
+eM
+fa
+fr
+fE
+fW
+gj
+fH
+gG
+gR
+ha
+hi
+fw
+ab
+ab
+aa
+aa
+"}
+(18,1,1) = {"
+aa
+ab
+ab
+ab
+ae
+ao
+am
+ao
+am
+bf
+bs
+bI
+bX
+cq
+cD
+bd
+da
+dq
+dE
+dJ
+dJ
+dJ
+dJ
+dJ
+dQ
+dE
+fs
+fF
+fF
+gk
+fH
+gH
+gS
+hb
+hj
+fw
+ab
+ab
+ab
+aa
+"}
+(19,1,1) = {"
+aa
+ab
+ab
+ab
+ae
+ap
+aB
+ap
+am
+bd
+bt
+bs
+bY
+cq
+cE
+bd
+da
+dq
+dE
+dJ
+dq
+eo
+eo
+dq
+dJ
+dE
+ft
+fF
+fX
+gl
+gu
+gH
+fF
+fZ
+hk
+fw
+ab
+ab
+ab
+aa
+"}
+(20,1,1) = {"
+aa
+ab
+ab
+ab
+ae
+aq
+aC
+ap
+aV
+bd
+bu
+bs
+bZ
+cr
+cq
+bd
+da
+dq
+dE
+dJ
+dq
+dX
+dX
+dq
+dJ
+dE
+fu
+fF
+fY
+gm
+gv
+gm
+gm
+hb
+hl
+fw
+ab
+ab
+ab
+aa
+"}
+(21,1,1) = {"
+aa
+ab
+ab
+ab
+ae
+ar
+aD
+aN
+aW
+bd
+bv
+bs
+ca
+cs
+cs
+bd
+db
+dq
+dE
+dJ
+dq
+dY
+dY
+dq
+dJ
+dE
+fv
+fG
+fZ
+fG
+gw
+fG
+gT
+hc
+hm
+fw
+ab
+ab
+ab
+aa
+"}
+(22,1,1) = {"
+aa
+ab
+ab
+ab
+ad
+as
+aE
+aO
+aX
+bg
+bw
+bJ
+cb
+bw
+bw
+cT
+dc
+dr
+dF
+dQ
+dJ
+dJ
+dJ
+dJ
+dJ
+fb
+fw
+fH
+ga
+fH
+gu
+gu
+gu
+gu
+gu
+fw
+ab
+ab
+aa
+aa
+"}
+(23,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+at
+ap
+aP
+ap
+bd
+bd
+bK
+bd
+ct
+cF
+bd
+dd
+ds
+dG
+dR
+dZ
+ep
+ey
+dr
+dr
+fc
+fx
+fI
+fZ
+gn
+gx
+gI
+gU
+hd
+hn
+fw
+ab
+aa
+aa
+aa
+"}
+(24,1,1) = {"
+aa
+aa
+ab
+ab
+ad
+ad
+aF
+aQ
+aF
+bh
+bx
+bL
+cc
+bM
+bM
+bi
+cZ
+cZ
+dH
+cZ
+ea
+cZ
+cZ
+cZ
+dJ
+fd
+fx
+fJ
+fY
+go
+go
+gJ
+go
+he
+ho
+fw
+ab
+aa
+aa
+aa
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+ad
+aG
+aQ
+aG
+bh
+by
+bM
+cd
+cu
+cc
+bi
+de
+dt
+dI
+dS
+eb
+eq
+de
+cZ
+dJ
+fe
+fy
+fK
+gb
+gp
+gy
+gK
+gV
+hf
+hp
+fw
+ab
+ab
+aa
+aa
+"}
+(26,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+ad
+ad
+ad
+ad
+bi
+bz
+bM
+ce
+bM
+cG
+bi
+de
+dq
+dI
+dQ
+ec
+dq
+de
+cZ
+dJ
+eb
+fz
+fF
+fY
+gq
+gz
+gu
+gu
+gu
+gu
+fw
+ab
+ab
+aa
+aa
+"}
+(27,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+bi
+bA
+bN
+cf
+cv
+ce
+bi
+de
+dq
+dI
+dI
+dI
+dq
+ez
+cZ
+dJ
+eb
+fx
+fL
+fZ
+fF
+gA
+gL
+gW
+hd
+hn
+fw
+ab
+ab
+ab
+aa
+"}
+(28,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+aa
+bi
+bh
+bh
+bh
+cw
+cH
+bi
+de
+dq
+dJ
+dJ
+dJ
+er
+er
+cZ
+eN
+ff
+fx
+fJ
+fY
+go
+go
+gM
+go
+he
+hq
+fw
+ab
+ab
+ab
+aa
+"}
+(29,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bj
+bB
+bO
+cg
+cx
+cI
+bj
+de
+dq
+dJ
+dJ
+ed
+ed
+ed
+cZ
+dJ
+fg
+fw
+fM
+fZ
+fF
+gB
+gL
+gV
+hf
+hp
+fw
+ab
+ab
+aa
+aa
+"}
+(30,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bj
+bC
+bP
+ch
+cy
+cJ
+bj
+de
+ds
+dJ
+dJ
+ee
+es
+es
+cZ
+eO
+fh
+fw
+fN
+fY
+gq
+gC
+gu
+gu
+gu
+fw
+fw
+aa
+aa
+aa
+aa
+"}
+(31,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bj
+bD
+bQ
+ci
+cz
+cK
+bj
+cZ
+cZ
+cZ
+cZ
+cZ
+cZ
+cZ
+cZ
+eP
+fi
+fw
+fO
+fZ
+fF
+gB
+gu
+gX
+hg
+fw
+aa
+aa
+aa
+aa
+aa
+"}
+(32,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+bj
+bj
+bj
+bj
+bj
+bj
+bj
+aa
+aa
+aa
+aa
+aa
+dJ
+dJ
+dJ
+dJ
+dJ
+fw
+fP
+gc
+gr
+gD
+gN
+gY
+hh
+fw
+aa
+aa
+ab
+aa
+aa
+"}
+(33,1,1) = {"
+aa
+aa
+aa
+ab
+ab
+aa
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aR
+ab
+ab
+ef
+ef
+ef
+ef
+ef
+ef
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+fw
+aa
+ab
+ab
+ab
+aa
+"}
+(34,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ef
+ef
+ef
+ef
+ef
+ef
+fA
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+aa
+"}
+(35,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+aa
+aa
+aR
+ab
+ab
+ab
+ab
+ab
+aa
+ab
+ab
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+gZ
+aa
+aa
+ab
+ab
+ab
+ab
+aa
+"}
+(36,1,1) = {"
+aa
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+"}
+(37,1,1) = {"
+aa
+ac
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+ab
+ac
+aa
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+aa
+aa
+aa
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+aa
+ac
+aa
+"}
+(38,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}

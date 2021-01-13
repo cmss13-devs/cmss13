@@ -489,8 +489,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				if(announce_hacked && is_mainship_level(z))
 					announce_hacked = FALSE
 					SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
-					if(usr.detectable_by_ai())
-						ai_silent_announcement("DAMAGE REPORT: Structural damage detected at [get_area(src)], requesting Military Police supervision.")
 				. = TRUE
 			if("pulse")
 				if(!ismultitool(usr.get_active_hand()))

@@ -33,7 +33,7 @@
 //Enforces perspective layering like it's contemporary; windows.
 /obj/structure/machinery/door/window/update_icon(loc, direction)
 	if(direction)
-		dir = direction
+		setDir(direction)
 	switch(dir)
 		if(NORTH) layer = ABOVE_TABLE_LAYER
 		if(SOUTH) layer = ABOVE_MOB_LAYER
@@ -176,7 +176,7 @@
 				wa.name = "Wired Windoor Assembly"
 			if (src.base_state == "right" || src.base_state == "rightsecure")
 				wa.facing = "r"
-			wa.dir = src.dir
+			wa.setDir(src.dir)
 			wa.state = "02"
 			wa.update_icon()
 

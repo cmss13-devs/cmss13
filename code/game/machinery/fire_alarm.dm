@@ -224,7 +224,7 @@ FIRE ALARM
 	. = ..()
 
 	if(dir)
-		src.dir = dir
+		src.setDir(dir)
 
 	if(building)
 		buildstage = 0

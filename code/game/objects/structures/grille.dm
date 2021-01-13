@@ -37,7 +37,7 @@
 	//height=42
 	icon='icons/obj/structures/props/fence_ew.dmi'
 	icon_state = "fence-ew"
-	dir = 4
+	dir = EAST
 
 /obj/structure/grille/fence/north_south
 	//width=80

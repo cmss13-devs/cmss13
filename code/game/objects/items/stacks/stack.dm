@@ -158,7 +158,7 @@
 		var/atom/O = new R.result_type(usr.loc, usr)
 		usr.visible_message(SPAN_NOTICE("[usr] assembles \a [O]."),
 		SPAN_NOTICE("You assemble \a [O]."))
-		O.dir = usr.dir
+		O.setDir(usr.dir)
 		if(R.max_res_amount > 1)
 			var/obj/item/stack/new_item = O
 			new_item.amount = R.res_amount * multiplier

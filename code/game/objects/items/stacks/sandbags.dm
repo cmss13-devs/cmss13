@@ -121,6 +121,6 @@
 	var/obj/structure/barricade/sandbags/SB = new(user.loc, user, user.dir, build_stack)
 	user.visible_message(SPAN_NOTICE("[user] assembles a sandbag barricade."),
 	SPAN_NOTICE("You assemble a sandbag barricade."))
-	SB.dir = user.dir
+	SB.setDir(user.dir)
 	SB.add_fingerprint(user)
 	use(build_stack)

@@ -568,7 +568,7 @@ Additional game mode variables.
 		var/obj/structure/bed/nest/start_nest = new /obj/structure/bed/nest(original.loc) //Create a new nest for the host
 		original.statistic_exempt = TRUE
 		original.buckled = start_nest
-		original.dir = start_nest.dir
+		original.setDir(start_nest.dir)
 		original.update_canmove()
 		start_nest.buckled_mob = original
 		start_nest.afterbuckle(original)

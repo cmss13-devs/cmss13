@@ -226,9 +226,9 @@
 			icon_state = "[table_prefix]tabledir3"
 
 	if(dir_sum in CARDINAL_ALL_DIRS)
-		dir = dir_sum
+		setDir(dir_sum)
 	else
-		dir = SOUTH
+		setDir(SOUTH)
 
 /obj/structure/surface/table/BlockedPassDirs(atom/movable/mover, target_dir)
 	for(var/obj/structure/S in get_turf(mover))
@@ -409,7 +409,7 @@
 
 	projectile_coverage = flipped_projectile_coverage
 
-	dir = direction
+	setDir(direction)
 	if(dir != NORTH)
 		layer = FLY_LAYER
 	flipped = 1

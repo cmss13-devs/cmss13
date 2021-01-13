@@ -41,7 +41,7 @@
 	S.icon_state = icon_state
 	S.layer = layer
 	S.vehicle = I.exterior
-	S.dir = dir
+	S.setDir(dir)
 	S.update_icon()
 
 	qdel(src)
@@ -80,7 +80,7 @@
 	S.icon_state = icon_state
 	S.layer = layer
 	S.vehicle = I.exterior
-	S.dir = dir
+	S.setDir(dir)
 	S.update_icon()
 
 	qdel(src)

@@ -198,7 +198,7 @@ its easier to just keep the beam vertical.
 	//of range or to another z-level, then the beam will stop.  Otherwise it will
 	//continue to draw.
 
-		dir=get_dir(src,BeamTarget)	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
+		setDir(get_dir(src,BeamTarget))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
 
 		for(var/obj/effect/overlay/beam/O in orange(10,src))	//This section erases the previously drawn beam because I found it was easier to
 			if(O.BeamSource==src)				//just draw another instance of the beam instead of trying to manipulate all the
@@ -408,7 +408,7 @@ Parameters are passed from New.
 	T = locate(src.x + shift_x, src.y + shift_y, src.z)
 
 	T.appearance = src.appearance
-	T.dir = src.dir
+	T.setDir(src.dir)
 
 	clones_t.Add(src)
 	src.clone = T
@@ -478,3 +478,13 @@ Parameters are passed from New.
 		var/mouseparams = list2params(paramslist)
 		usr_client.Click(src, loc, TRUE, mouseparams)
 		return TRUE
+
+/**
+ * Hook for running code when a dir change occurs
+ *
+ * Not recommended to use, listen for the [COMSIG_ATOM_DIR_CHANGE] signal instead (sent by this proc)
+ */
+/atom/proc/setDir(newdir)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
+	dir = newdir

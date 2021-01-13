@@ -72,7 +72,7 @@
 				//Get rid of what we have there, we're overwriting it
 				qdel(captured_mob)
 			captured_mob = M
-			captured_mob.dir = SOUTH
+			captured_mob.setDir(SOUTH)
 			captured_mob.moveToNullspace()
 			var/matrix/MX = matrix()
 			captured_mob.apply_transform(MX)

@@ -332,7 +332,7 @@
 			SPAN_NOTICE("You deploy [src]."))
 		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
 		var/obj/structure/mortar/M = new /obj/structure/mortar(deploy_turf)
-		M.dir = user.dir
+		M.setDir(user.dir)
 		qdel(src)
 
 /obj/item/mortar_shell

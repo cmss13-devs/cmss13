@@ -298,7 +298,7 @@
 	set waitfor = FALSE
 
 	var/facing = get_cardinal_dir(src, T)
-	dir = facing
+	setDir(facing)
 
 	T = loc
 	for(var/i in 0 to range - 1)

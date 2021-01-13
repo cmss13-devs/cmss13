@@ -1,6 +1,6 @@
 /obj/vehicle/train
 	name = "train"
-	dir = 4
+	dir = EAST
 
 	move_delay = 5
 
@@ -113,7 +113,7 @@
 	//latch with src as the follower
 	lead = T
 	T.tow = src
-	dir = lead.dir
+	setDir(lead.dir)
 
 	if(user && display_to_chat)
 		to_chat(user, SPAN_NOTICE(" You hitch [src] to [T]."))

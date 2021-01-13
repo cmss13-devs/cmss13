@@ -414,7 +414,7 @@
 	name = "\improper Alpha Squad Leader Preparations"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -422,7 +422,7 @@
 	name = "\improper Alpha Squad Specialist Preparations"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -430,7 +430,7 @@
 	name = "\improper Alpha Squad Engineer Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -438,7 +438,7 @@
 	name = "\improper Alpha Squad Medic Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -446,7 +446,7 @@
 	name = "\improper Alpha Squad Smartgunner Preparations"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -462,7 +462,7 @@
 	name = "\improper Bravo Squad Leader Preparations"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -470,7 +470,7 @@
 	name = "\improper Bravo Squad Specialist Preparations"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -478,7 +478,7 @@
 	name = "\improper Bravo Squad Engineer Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -486,7 +486,7 @@
 	name = "\improper Bravo Squad Medic Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -494,7 +494,7 @@
 	name = "\improper Bravo Squad Smartgunner Preparations"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -510,7 +510,7 @@
 	name = "\improper Charlie Squad Leader Preparations"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -518,7 +518,7 @@
 	name = "\improper Charlie Squad Specialist Preparations"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -526,7 +526,7 @@
 	name = "\improper Charlie Squad Engineer Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -534,7 +534,7 @@
 	name = "\improper Charlie Squad Medic Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -542,7 +542,7 @@
 	name = "\improper Charlie Squad Smartgunner Preparations"
 	req_access = list(ACCESS_MARINE_SMARTPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -558,7 +558,7 @@
 	name = "\improper Delta Squad Leader Preparations"
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -566,7 +566,7 @@
 	name = "\improper Delta Squad Specialist Preparations"
 	req_access = list(ACCESS_MARINE_SPECPREP, ACCESS_MARINE_DELTA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -574,7 +574,7 @@
 	name = "\improper Delta Squad Engineer Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_DELTA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -582,7 +582,7 @@
 	name = "\improper Delta Squad Medic Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_DELTA)
 	req_one_access = list()
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -590,7 +590,7 @@
 	name = "\improper Delta Squad Smartgunner Preparations"
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_SMARTPREP)
-	dir = 2
+	dir = SOUTH
 	opacity = 0
 	glass = 1
 
@@ -655,4 +655,4 @@
 	glass = 0
 
 /obj/structure/machinery/door/airlock/prison/horizontal
-	dir = 2
+	dir = SOUTH

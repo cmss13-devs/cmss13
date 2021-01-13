@@ -119,7 +119,7 @@
 
 	while (duration > turn_delay)
 		sleep(turn_delay)
-		dir = turn(dir, spin_degree)
+		setDir(turn(dir, spin_degree))
 		duration -= turn_delay
 
 /atom/movable/proc/spin_circle(var/num_circles = 1, var/turn_delay = 1, var/clockwise = 0, var/cardinal_only = 1)
@@ -140,7 +140,7 @@
 
 	for (var/x in 0 to num_circles -1)
 		sleep(turn_delay)
-		dir = turn(dir, spin_degree)
+		setDir(turn(dir, spin_degree))
 
 
 //called when a mob tries to breathe while inside us.

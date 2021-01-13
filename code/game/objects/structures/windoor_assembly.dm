@@ -32,9 +32,9 @@ obj/structure/windoor_assembly/New(Loc, start_dir=NORTH, constructed=0)
 		anchored = 0
 	switch(start_dir)
 		if(NORTH, SOUTH, EAST, WEST)
-			dir = start_dir
+			setDir(start_dir)
 		else //If the user is facing northeast. northwest, southeast, southwest or north, default to north
-			dir = NORTH
+			setDir(NORTH)
 
 
 obj/structure/windoor_assembly/Destroy()
@@ -200,7 +200,7 @@ obj/structure/windoor_assembly/Destroy()
 						else
 							windoor.icon_state = "rightsecureopen"
 							windoor.base_state = "rightsecure"
-						windoor.dir = src.dir
+						windoor.setDir(src.dir)
 						windoor.density = 0
 
 						if(src.electronics.one_access)
@@ -218,7 +218,7 @@ obj/structure/windoor_assembly/Destroy()
 						else
 							windoor.icon_state = "rightopen"
 							windoor.base_state = "right"
-						windoor.dir = src.dir
+						windoor.setDir(src.dir)
 						windoor.density = 0
 
 						if(src.electronics.one_access)
@@ -249,7 +249,7 @@ obj/structure/windoor_assembly/Destroy()
 	if (src.anchored)
 		to_chat(usr, "It is fastened to the floor; therefore, you can't rotate it!")
 		return 0
-	src.dir = turn(src.dir, 270)
+	src.setDir(turn(src.dir, 270))
 	update_icon()
 	return
 

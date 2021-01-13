@@ -50,7 +50,7 @@
 	anchored = 0
 
 	if(start_dir)
-		dir = start_dir
+		setDir(start_dir)
 
 	if(is_full_window())
 		update_nearby_icons()
@@ -63,7 +63,7 @@
 		return
 	if(flags_atom & ON_BORDER)
 		if(direction)
-			dir = direction
+			setDir(direction)
 		switch(dir)
 			if(NORTH)
 				layer = BELOW_TABLE_LAYER
@@ -86,7 +86,7 @@
 /obj/structure/window/Move()
 	var/ini_dir = dir
 	. = ..()
-	dir = ini_dir
+	setDir(ini_dir)
 
 
 //create_debris creates debris like shards and rods. This also includes the window frame for explosions
@@ -305,7 +305,7 @@
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return 0
 
-	dir = turn(dir, 90)
+	setDir(turn(dir, 90))
 
 
 
@@ -320,7 +320,7 @@
 		to_chat(usr, SPAN_WARNING("It is fastened to the floor, you can't rotate it!"))
 		return 0
 
-	dir = turn(dir, 270)
+	setDir(turn(dir, 270))
 
 
 
@@ -517,14 +517,14 @@
 	if(window_frame)
 		var/obj/structure/window_frame/WF = new window_frame(loc)
 		WF.icon_state = "[WF.basestate][junction]_frame"
-		WF.dir = dir
+		WF.setDir(dir)
 	..()
 
 /obj/structure/window/framed/shatter_window(create_debris)
 	if(window_frame)
 		var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
 		new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
-		new_window_frame.dir = dir
+		new_window_frame.setDir(dir)
 	..()
 
 
@@ -532,7 +532,7 @@
 	if(window_frame)
 		var/obj/structure/window_frame/new_window_frame = new window_frame(loc, TRUE)
 		new_window_frame.icon_state = "[new_window_frame.basestate][junction]_frame"
-		new_window_frame.dir = dir
+		new_window_frame.setDir(dir)
 	qdel(src)
 
 /obj/structure/window/framed/almayer
@@ -542,7 +542,7 @@
 	basestate = "alm_rwindow"
 	health = 100 //Was 600
 	reinf = 1
-	dir = 5
+	dir = NORTHEAST
 	window_frame = /obj/structure/window_frame/almayer
 
 /obj/structure/window/framed/almayer/healthcheck(make_hit_sound = 1, make_shatter_sound = 1, create_debris = 1, mob/user, atom/movable/AM)
@@ -830,9 +830,9 @@
 	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
-			P.dir = 2
+			P.setDir(SOUTH)
 		else
-			P.dir = 4
+			P.setDir(EAST)
 	spawn(0)
 		P.close()
 
@@ -917,8 +917,8 @@
 	var/obj/structure/machinery/door/poddoor/shutters/almayer/pressure/P = new(get_turf(src))
 	switch(junction)
 		if(4,5,8,9,12)
-			P.dir = 2
+			P.setDir(SOUTH)
 		else
-			P.dir = 4
+			P.setDir(EAST)
 
 	INVOKE_ASYNC(P, /obj/structure/machinery/door.proc/close)

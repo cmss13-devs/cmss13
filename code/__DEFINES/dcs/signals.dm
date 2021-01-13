@@ -50,6 +50,9 @@
 /// From /atom/proc/Decorate
 #define COMSIG_ATOM_DECORATED "atom_decorated"
 
+///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
+#define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
+
 // /mob signals
 /// From /obj/structure/machinery/door/airlock/proc/take_damage
 #define COMSIG_MOB_DESTROY_AIRLOCK "mob_destroy_airlock"

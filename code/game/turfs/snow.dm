@@ -62,7 +62,7 @@
 //Update icon
 /turf/open/snow/update_icon(var/update_full, var/skip_sides)
 	icon_state = "snow_[bleed_layer]"
-	dir = pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST)
+	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 	switch(bleed_layer)
 		if(0)
 			name = "dirt floor"

@@ -186,7 +186,7 @@
 		if(M.id == gear_id)
 			spawn()
 				M.icon_state = "gear_moving"
-				M.dir = direction
+				M.setDir(direction)
 
 /datum/shuttle/ferry/hangar/proc/stop_gears()
 	for(var/obj/structure/machinery/gear/M in machines)

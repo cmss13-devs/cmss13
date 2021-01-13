@@ -164,28 +164,28 @@
 
 /turf/closed/ice_rock/northWall/Initialize(mapload)
 	. = ..()
-	dir = pick(NORTH,SOUTH,EAST,WEST)
+	setDir(pick(NORTH,SOUTH,EAST,WEST))
 
 /turf/closed/ice_rock/southWall
 	icon_state = "south_wall"
 
 /turf/closed/ice_rock/southWall/Initialize(mapload)
 	. = ..()
-	dir = pick(NORTH,SOUTH,EAST,WEST)
+	setDir(pick(NORTH,SOUTH,EAST,WEST))
 
 /turf/closed/ice_rock/westWall
 	icon_state = "west_wall"
 
 /turf/closed/ice_rock/westWall/Initialize(mapload)
 	. = ..()
-	dir = pick(NORTH,SOUTH,EAST,WEST)
+	setDir(pick(NORTH,SOUTH,EAST,WEST))
 
 /turf/closed/ice_rock/eastWall
 	icon_state = "east_wall"
 
 /turf/closed/ice_rock/eastWall/Initialize(mapload)
 	. = ..()
-	dir = pick(NORTH,SOUTH,EAST,WEST)
+	setDir(pick(NORTH,SOUTH,EAST,WEST))
 /turf/closed/ice_rock/cornerOverlay
 	icon_state = "corner_overlay"
 

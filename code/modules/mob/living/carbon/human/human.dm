@@ -1198,7 +1198,7 @@
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tl_prefix]"
 	else
-		hud_used.locate_leader.dir = get_dir(src,H)
+		hud_used.locate_leader.setDir(get_dir(src,H))
 		hud_used.locate_leader.icon_state = "trackon[tl_prefix]"
 	return
 
@@ -1219,7 +1219,7 @@
 	if(get_dist(src,N) < 1)
 		hud_used.locate_nuke.icon_state = "nuke_trackondirect"
 	else
-		hud_used.locate_nuke.dir = get_dir(src,N)
+		hud_used.locate_nuke.setDir(get_dir(src,N))
 		hud_used.locate_nuke.icon_state = "nuke_trackon"
 
 

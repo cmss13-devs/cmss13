@@ -189,7 +189,7 @@ bullets/shells. ~N
 	if(max_rounds >= current_rounds)
 		var/I = current_rounds*50 // For the metal.
 		matter = list("metal" = I)
-		dir = current_rounds + round(current_rounds/3)
+		setDir(current_rounds + round(current_rounds/3))
 
 /obj/item/ammo_magazine/handful/pickup(mob/user)
 	var/olddir = dir
@@ -199,7 +199,7 @@ bullets/shells. ~N
 /obj/item/ammo_magazine/handful/equipped(mob/user, slot)
 	var/thisDir = src.dir
 	..(user,slot)
-	dir = thisDir
+	setDir(thisDir)
 	return
 /*
 There aren't many ways to interact here.
@@ -248,7 +248,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 	throwforce = 1
 	w_class = SIZE_TINY
 	layer = LOWER_ITEM_LAYER //Below other objects
-	dir = 1 //Always north when it spawns.
+	dir = NORTH //Always north when it spawns.
 	flags_atom = FPRINT|CONDUCT|DIRLOCK
 	matter = list("metal" = 8) //tiny amount of metal
 	var/current_casings = 1 //This is manipulated in the procs that use these.
@@ -274,7 +274,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		var/I = current_casings*8 // For the metal.
 		matter = list("metal" = I)
 		var/base_direction = current_casings - (current_icon * 8)
-		dir = base_direction + round(base_direction)/3
+		setDir(base_direction + round(base_direction)/3)
 		switch(current_casings)
 			if(3 to 5) w_class = SIZE_SMALL //Slightly heavier.
 			if(9 to 10) w_class = SIZE_MEDIUM //Can't put it in your pockets and stuff.

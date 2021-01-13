@@ -18,7 +18,7 @@
 
 /obj/structure/barricade/snow/New(loc, mob/user, direction)
 	if(direction)
-		dir = direction
+		setDir(direction)
 	..(loc, user)
 
 

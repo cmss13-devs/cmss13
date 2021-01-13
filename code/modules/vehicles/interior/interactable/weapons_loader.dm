@@ -61,7 +61,7 @@
 	R.pixel_x = pixel_x
 	R.pixel_y = pixel_y
 	R.vehicle = I.exterior
-	R.dir = dir
+	R.setDir(dir)
 	R.update_icon()
 
 	qdel(src)

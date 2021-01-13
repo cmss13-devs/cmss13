@@ -116,7 +116,7 @@
 			forceMove(loc)
 
 		if(direction)
-			src.dir = direction
+			src.setDir(direction)
 
 		buildstage = 0
 		wiresexposed = 1

@@ -202,7 +202,7 @@
 	if (src && src.loc)
 		target.buckled = src
 		target.forceMove(src.loc)
-		target.dir = src.dir
+		target.setDir(dir)
 		target.update_canmove()
 		src.buckled_mob = target
 		src.add_fingerprint(user)

@@ -3,7 +3,7 @@
 	desc = "Used to control a linked teleportation Hub and Station."
 	icon_state = "teleport"
 	circuit = /obj/item/circuitboard/computer/teleporter
-	dir = 4
+	dir = EAST
 	var/obj/item/locked = null
 	var/id = null
 	var/one_time_use = 0 //Used for one-time-use teleport cards (such as clown planet coordinates.)
@@ -25,11 +25,11 @@
 
 	if(istype(station))
 		station.com = hub
-		station.dir = dir
+		station.setDir(dir)
 
 	if(istype(hub))
 		hub.com = src
-		hub.dir = dir
+		hub.setDir(dir)
 
 /obj/structure/machinery/computer/teleporter/attackby(I as obj, mob/living/user as mob)
 	if(istype(I, /obj/item/card/data/))
@@ -165,7 +165,7 @@
 	name = "teleporter hub"
 	desc = "It's the hub of a teleporting machine."
 	icon_state = "tele0"
-	dir = 4
+	dir = EAST
 	var/accurate = 0
 	use_power = 1
 	idle_power_usage = 10
@@ -300,7 +300,7 @@
 	name = "station"
 	desc = "It's the station thingy of a teleport thingy." //seriously, wtf.
 	icon_state = "controller"
-	dir = 4
+	dir = EAST
 	var/active = 0
 	var/engaged = 0
 	use_power = 1

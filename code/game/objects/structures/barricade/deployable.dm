@@ -140,7 +140,7 @@
 	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src]."),
 			SPAN_NOTICE("You finish deploying [src]."))
 	var/obj/structure/barricade/deployable/cade = new(user.loc)
-	cade.dir = user.dir
+	cade.setDir(user.dir)
 	cade.health = health
 	cade.maxhealth = maxhealth
 	qdel(src)

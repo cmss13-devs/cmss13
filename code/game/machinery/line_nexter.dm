@@ -7,7 +7,7 @@
 	icon_state = "turnstile"
 	anchored = 1
 	flags_atom = ON_BORDER
-	dir = 8
+	dir = WEST
 	var/last_use
 	var/id
 

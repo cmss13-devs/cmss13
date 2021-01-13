@@ -653,10 +653,10 @@ note dizziness decrements automatically in the mob's Life() proc.
 	var/newdir = FALSE
 	if(dir != ndir)
 		flags_atom &= ~DIRLOCK
-		dir = ndir
+		setDir(ndir)
 		newdir = TRUE
 	if(buckled && !buckled.anchored)
-		buckled.dir = ndir
+		buckled.setDir(ndir)
 		buckled.handle_rotation()
 	var/mob/living/mliv = src
 	if(istype(mliv))

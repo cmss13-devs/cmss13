@@ -60,7 +60,7 @@
 			var/old_dir = dir
 			success = try_move(direction)
 			// Keep dir when driving backwards
-			dir = old_dir
+			setDir(old_dir)
 		// Rotation/turning
 		else
 			success = try_rotate(turning_angle(dir, direction))
@@ -133,7 +133,7 @@
 	rotate_hardpoints(deg)
 	rotate_entrances(deg)
 	rotate_bounds(deg)
-	dir = turn(dir, deg)
+	setDir(turn(dir, deg))
 
 	last_move_dir = dir
 

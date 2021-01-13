@@ -253,9 +253,8 @@
 	if(SSticker.mode.latejoin_larva_drop && SSticker.mode.latejoin_tally >= SSticker.mode.latejoin_larva_drop)
 		SSticker.mode.latejoin_tally -= SSticker.mode.latejoin_larva_drop
 		for(var/datum/hive_status/hs in GLOB.hive_datum)
-			if (hs.living_xeno_queen)
-				hs.stored_larva++
-				hs.hive_ui.update_pooled_larva()
+			hs.stored_larva++
+			hs.hive_ui.update_pooled_larva()
 
 	if(character.mind && character.mind.player_entity)
 		var/datum/entity/player_entity/player = character.mind.player_entity

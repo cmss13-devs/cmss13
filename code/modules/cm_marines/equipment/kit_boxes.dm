@@ -212,11 +212,13 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 			new /obj/item/storage/box/spec/scout (T)
 			kits["Scout"] --
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
+			user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 			return TRUE
 		if("Demo")
 			new /obj/item/storage/box/spec/demolitionist (T)
 			kits["Demo"] --
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
+			user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
 			return TRUE
 	return FALSE
 

@@ -8,7 +8,20 @@
 /// trait points
 /datum/preferences/var/read_traits = FALSE
 /// The list of traits a human has
-/mob/living/carbon/human/var/list/datum/character_trait/traits
+/// Store as typepaths
+/mob/living/carbon/human/var/list/traits
+
+/** Global lists
+ * character_trait_groups should be defined BEFORE character_traits because of dependencies
+ * When trying to reference specific traits or trait groups, reference these lists, which
+ * store character traits and character trait groups by their type paths
+ *
+ * Example:
+ * GLOB.character_traits[/datum/character_trait/language/spanish] will get the
+ * "Speaks Spanish" character trait, which you can use to give or remove traits
+ */
+GLOBAL_REFERENCE_LIST_INDEXED(character_trait_groups, /datum/character_trait_group, type)
+GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 
 /// Character traits
 /// Similar to the traits from Project Zomboid

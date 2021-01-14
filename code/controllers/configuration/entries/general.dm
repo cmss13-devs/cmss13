@@ -209,6 +209,14 @@ Voting
 
 /datum/config_entry/flag/no_dead_vote
 
+// Gamemode to auto-switch to at the start of the round
+/datum/config_entry/string/gamemode_default
+	config_entry_value = "extended"
+
+// Rounds needed for gamemode vote
+/datum/config_entry/number/gamemode_rounds_needed
+	config_entry_value = 5
+
 /datum/config_entry/number/rounds_until_hard_restart
 	config_entry_value = -1 // -1 is disabled by default, 0 is every round, x is after so many rounds
 

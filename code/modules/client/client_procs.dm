@@ -335,6 +335,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	load_player_data()
 
+	view = world_view_size
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_LOGIN, src)
+
 	//////////////
 	//DISCONNECT//
 	//////////////

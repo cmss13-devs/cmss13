@@ -105,6 +105,8 @@ var/waiting_for_drop_votes = 0
 	var/ticks_passed = 0
 	var/drops_disabled = 0
 
+	votable = FALSE // borked
+
 /obj/effect/step_trigger/hell_hound_blocker/Trigger(mob/living/carbon/hellhound/H)
 	if(istype(H)) H.gib() //No mercy.
 

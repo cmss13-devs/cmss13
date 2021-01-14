@@ -5,6 +5,7 @@
 	required_players = 0 //otherwise... no zambies
 	latejoin_larva_drop = 0
 	flags_round_type = MODE_INFECTION //Apparently without this, the game mode checker ignores this as a potential legit game mode.
+	votable = FALSE // infection borked
 
 /datum/game_mode/infection/announce()
 	to_world("<B>The current game mode is - ZOMBIES!</B>")

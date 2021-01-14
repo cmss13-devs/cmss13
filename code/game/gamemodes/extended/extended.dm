@@ -3,6 +3,7 @@
 	config_tag = "extended"
 	required_players = 0
 	latejoin_larva_drop = 0
+	votable = FALSE
 
 /datum/game_mode/announce()
 	to_world("<B>The current game mode is - Extended!</B>")
@@ -22,7 +23,7 @@
 	return ..()
 
 /datum/game_mode/extended/check_finished()
-	if(round_finished) 
+	if(round_finished)
 		return TRUE
 
 /datum/game_mode/extended/check_win()

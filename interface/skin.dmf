@@ -707,7 +707,7 @@ window "preferencewindow"
 	elem "preferencewindow"
 		type = MAIN
 		pos = 281,0
-		size = 1000x1000
+		size = 1000x1250
 		anchor1 = none
 		anchor2 = none
 		background-color = none

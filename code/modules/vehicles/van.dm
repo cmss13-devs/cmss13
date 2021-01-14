@@ -39,7 +39,7 @@
 	movement_sound = 'sound/vehicles/tank_driving.ogg'
 	honk_sound = 'sound/vehicles/honk_2_truck.ogg'
 
-	luminosity = 4
+	luminosity = 8
 
 	max_momentum = 3
 

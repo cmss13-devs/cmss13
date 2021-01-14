@@ -17,6 +17,7 @@
 	var/trait_desc = "A character trait"
 	/// Whether the trait can be applied to mobs
 	/// Do not forget to override this var for any child types
+	/// Only set this to TRUE for "abstract" parent types
 	var/applyable = FALSE
 	/**
 	 * Trait groups determine whether this trait
@@ -90,6 +91,9 @@
 /datum/character_trait_group
 	/// For player prefs menu
 	var/trait_group_name = "Trait Group"
+
+	// CONSTRAINTS
+	// MODIFY THESE VARS FOR SETTING CONSTRAINTS FOR TRAIT GROUPS
 	/// Whether a mob can only have one
 	/// trait of this trait group
 	var/mutually_exclusive = FALSE
@@ -100,8 +104,11 @@
 	 * Override this variable if you want this
 	 * trait group to be constraining
 	 * Only need to override for the parent
+	 * Example, parent type /datum/character_trait_group/language,
+	 * set this var to /datum/character_trait_group/language
 	 */
 	var/base_type
+
 	/// A list of this group's traits populated in /datum/character_trait/New()
 	var/list/datum/character_trait/traits = list()
 

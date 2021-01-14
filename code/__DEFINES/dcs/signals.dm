@@ -20,6 +20,10 @@
 #define COMSIG_GLOB_XENO_DEATH "!xeno_death"
 #define COMSIG_GLOB_REMOVE_VOTE_BUTTON "!remove_vote_button"
 
+#define COMSIG_GLOB_ENTITY_ROUND_INIT "!entity_round_init"
+
+#define COMSIG_GLOB_CLIENT_LOGIN "!client_login"
+
 #define COMSIG_GLOB_MOB_LOGIN "!mob_login"
 
 //////////////////////////////////////////////////////////////////

@@ -1,0 +1,11 @@
+/**
+ * Copyright (c) 2020 watermelon (https://github.com/watermelon914)
+ * SPDX-License-Identifier: MIT
+*/
+
+@use '../colors.scss';
+
+.VoteMenu__Textbox {
+  background-color: colors.bg(colors.$primary);
+  line-height: 1.667em;
+}

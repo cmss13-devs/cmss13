@@ -80,14 +80,15 @@
 #define SS_INIT_EMERGENCY_SHUTTLE -19
 #define SS_INIT_ASSETS            -20
 #define SS_INIT_TICKER            -21
-#define SS_INIT_FINISH            -22
-#define SS_INIT_MINIMAP           -23
-#define SS_INIT_ADMIN             -24
-#define SS_INIT_DATABASE		  -25
-#define SS_INIT_ENTITYMANAGER	  -26
-#define SS_INIT_PLAYTIME    	  -27
-#define SS_INIT_OBJECTIVES         -31
-#define SS_INIT_MAPVIEW            -32
+#define SS_INIT_VOTE			  -23
+#define SS_INIT_FINISH            -24
+#define SS_INIT_MINIMAP           -25
+#define SS_INIT_ADMIN             -26
+#define SS_INIT_DATABASE		  -27
+#define SS_INIT_ENTITYMANAGER	  -28
+#define SS_INIT_PLAYTIME    	  -29
+#define SS_INIT_OBJECTIVES        -31
+#define SS_INIT_MAPVIEW           -32
 #define SS_INIT_LOBBYART          -33
 #define SS_INIT_STATPANELS			-98
 #define SS_INIT_CHAT			   -100 //Should be last to ensure chat remains smooth during init.

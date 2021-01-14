@@ -19,6 +19,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/login_music = null						//Music played in pregame lobby
 
 	var/delay_end = FALSE					//If set true, the round will not restart on it's own
+	var/delay_start = FALSE
 	var/admin_delay_notice = ""				//A message to display to anyone who tries to restart the world after a delay
 
 	var/time_left							//Pre-game timer
@@ -54,7 +55,21 @@ SUBSYSTEM_DEF(ticker)
 		var/music_options = splittext(all_music[key], " ")
 		login_music = list(music_options[1], music_options[2], music_options[3])
 
+	if(!SSperf_logging || !SSperf_logging.round)
+		RegisterSignal(SSdcs, COMSIG_GLOB_ENTITY_ROUND_INIT, .proc/try_do_round_vote)
+	else
+		try_do_round_vote(SSdcs, SSperf_logging.round)
+
 	return ..()
+
+/datum/controller/subsystem/ticker/proc/try_do_round_vote(var/dcs, var/datum/entity/mc_round/round)
+	SIGNAL_HANDLER
+
+	if(CONFIG_GET(number/gamemode_rounds_needed) == -1)
+		return
+
+	if(text2num(round.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
+		INVOKE_ASYNC(SSvote, /datum/controller/subsystem/vote/proc/initiate_vote, "gamemode", "SERVER")
 
 
 /datum/controller/subsystem/ticker/fire()
@@ -86,6 +101,10 @@ SUBSYSTEM_DEF(ticker)
 			//countdown
 			if(time_left < 0)
 				return
+
+			if(delay_start)
+				return
+
 			time_left -= wait
 
 			if(time_left <= 0)
@@ -192,6 +211,9 @@ SUBSYSTEM_DEF(ticker)
 	mode.initialize_emergency_calls()
 	mode.post_setup()
 
+	// Switch back to default automatically
+	save_mode(CONFIG_GET(string/gamemode_default))
+
 	if(round_statistics)
 		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.name]</B>")))
 
@@ -237,6 +259,7 @@ SUBSYSTEM_DEF(ticker)
 	login_music = SSticker.login_music
 
 	delay_end = SSticker.delay_end
+	delay_start = SSticker.delay_start
 
 	totalPlayers = SSticker.totalPlayers
 	totalPlayersReady = SSticker.totalPlayersReady

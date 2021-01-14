@@ -227,3 +227,9 @@ AUTOOOCMUTE
 ## or your package manager
 ## The default value assumes youtube-dl is in your system PATH
 # INVOKE_YOUTUBEDL youtube-dl
+
+## Rounds needed before a gamemode vote is casted. Set to -1 to disable
+GAMEMODE_ROUNDS_NEEDED 5
+
+## Default gamemode to auto-switch back to after a round has concluded
+GAMEMODE_DEFAULT extended

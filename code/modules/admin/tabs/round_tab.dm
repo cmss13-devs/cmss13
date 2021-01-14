@@ -148,18 +148,11 @@
 			[SPAN_CENTERBOLD("Staff-Only Alert: <EM>[usr.key]</EM> [SSticker.delay_end ? "delayed the round end" : "has made the round end normally"]")]
 			<hr>"})
 		return
-
-	going = !(going)
-	if (!going)
-		to_world("<hr>")
-		to_world("<span class='centerbold'>The game start has been delayed.</span>")
-		to_world("<hr>")
-		log_admin("[key_name(usr)] delayed the game.")
 	else
-		to_world("<hr>")
-		to_world("<span class='centerbold'>The game will start soon!</span>")
-		to_world("<hr>")
-		log_admin("[key_name(usr)] removed the delay.")
+		SSticker.delay_start = !SSticker.delay_start
+		message_staff("[SPAN_NOTICE("[key_name(usr)] [SSticker.delay_start ? "delayed the round start" : "has made the round start normally"].")]")
+		to_chat(world, SPAN_CENTERBOLD("The game start has been [SSticker.delay_start ? "delayed" : "continued"]."))
+		return
 
 /datum/admins/proc/startnow()
 	set name = "Start Round"

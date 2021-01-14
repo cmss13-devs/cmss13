@@ -72,6 +72,7 @@
 	var/list/whiskey_outpost_waves = list()
 
 	hardcore = TRUE
+	votable = FALSE // not fun
 
 /datum/game_mode/whiskey_outpost/announce()
 	return 1

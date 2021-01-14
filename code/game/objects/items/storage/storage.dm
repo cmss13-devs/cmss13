@@ -61,7 +61,7 @@
 	if(!mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
 		open(user)
 		return
-	..()
+	. = ..()
 
 /obj/item/storage/proc/return_inv()
 	RETURN_TYPE(/list)

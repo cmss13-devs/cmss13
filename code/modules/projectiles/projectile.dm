@@ -53,7 +53,6 @@
 
 	var/projectile_override_flags = 0
 
-	var/iff_group
 	var/is_shrapnel
 
 	var/weapon_source
@@ -61,8 +60,10 @@
 
 	var/mob/living/homing_target = null
 
-/obj/item/projectile/New(var/source, var/source_mob)
-	..()
+	var/list/datum/element/bullet_traits
+
+/obj/item/projectile/Initialize(var/source, var/source_mob)
+	. = ..()
 	path = list()
 	permutated = list()
 	weapon_source = source
@@ -111,9 +112,10 @@
 
 	// Apply bullet traits from ammo
 	for(var/entry in ammo.traits_to_give)
-		var/list/L = entry
+		// Prepend the bullet trait to the list
+		var/list/L = list(entry) + ammo.traits_to_give[entry]
 		// Need to use the proc instead of the wrapper because each entry is a list
-		_AddElement(L.Copy())
+		_AddElement(L)
 
 /obj/item/projectile/proc/calculate_damage()
 	if(effective_range_min && distance_travelled < effective_range_min)
@@ -123,7 +125,7 @@
 	return damage
 
 // Target, firer, shot from (i.e. the gun), projectile range, projectile speed, original target (who was aimed at, not where projectile is going towards), is_shrapnel (whether it should miss the firer or not)
-/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE, var/iff_group)
+/obj/item/projectile/proc/fire_at(atom/target, atom/F, atom/S, range = 30, speed = 1, atom/original_override, is_shrapnel = FALSE)
 	if(!original)
 		original = istype(original_override) ? original_override : target
 	src.is_shrapnel = is_shrapnel
@@ -140,9 +142,6 @@
 		qdel(src)
 		return
 	firer = F
-
-	if(!isnull(iff_group))
-		src.iff_group = iff_group
 
 	if(F && !is_shrapnel)
 		permutated += F //Don't hit the shooter (firer)
@@ -187,7 +186,9 @@
 			homing_projectile = FALSE
 		if(ishuman(ht))
 			var/mob/living/carbon/human/H = ht
-			if(!isnull(iff_group) && H.get_target_lock(iff_group))
+			if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, H) & COMPONENT_BULLET_NO_HIT\
+				|| runtime_iff_group && H.get_target_lock(runtime_iff_group)\
+			)
 				homing_target = null
 				homing_projectile = FALSE
 
@@ -335,7 +336,9 @@
 					continue
 				if(ishuman(dL))
 					var/mob/living/carbon/human/H = dL
-					if(!isnull(iff_group) && H.get_target_lock(iff_group))
+					if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, H) & COMPONENT_BULLET_NO_HIT\
+						|| runtime_iff_group && H.get_target_lock(runtime_iff_group)\
+					)
 						continue
 
 				if(ammo_flags & AMMO_SKIPS_ALIENS && isXeno(dL))
@@ -709,7 +712,9 @@
 	. = ..()
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(!isnull(P.iff_group) && get_target_lock(P.iff_group))
+		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_IFF, src) & COMPONENT_BULLET_NO_HIT\
+			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group)\
+		)
 			return FALSE
 		if(mobility_aura)
 			. -= mobility_aura * 5

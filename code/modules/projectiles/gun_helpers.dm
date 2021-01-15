@@ -342,18 +342,6 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			return TRUE
 	return FALSE
 
-/obj/item/weapon/gun/proc/check_iff()
-	iff_enabled_current = FALSE
-	for(var/slot in attachments)
-		var/obj/item/attachable/R = attachments[slot]
-		if(R && R.has_marine_iff)
-			iff_enabled_current = TRUE
-	if(iff_enabled)
-		iff_enabled_current = TRUE
-	if(in_chamber) //Hi, I'm an old bullet. I don't have a fucking IFF enabled yet.
-		qdel(in_chamber)
-		in_chamber = create_bullet(ammo, initial(name)) //OK
-
 /obj/item/weapon/gun/proc/can_attach_to_gun(mob/user, obj/item/attachable/attachment)
 	if(attachable_allowed && !(attachment.type in attachable_allowed) )
 		to_chat(user, SPAN_WARNING("[attachment] doesn't fit on [src]!"))

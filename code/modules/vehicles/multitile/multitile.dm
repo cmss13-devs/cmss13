@@ -203,7 +203,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 
 		for(var/i = 1 to amt_hardpoints)
 			var/image/I = hardpoint_images[i]
-			if(I)
+			// get_hardpoint_image() can return a list of images
+			if(istype(I))
 				I.layer = layer + (i*0.1)
 			overlays += I
 

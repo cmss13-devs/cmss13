@@ -2,8 +2,6 @@
 /obj/item/ammo_magazine/hardpoint
 	flags_magazine = 0 //No refilling
 
-	var/has_iff = FALSE	//this option will help to specify whether current ammo supports IFF or not.
-
 /obj/item/ammo_magazine/hardpoint/attackby(var/obj/item/O, var/mob/user)
 	if(O.type != type)
 		to_chat(user, SPAN_WARNING("You need another [initial(name)] to be able to transfer ammo."))

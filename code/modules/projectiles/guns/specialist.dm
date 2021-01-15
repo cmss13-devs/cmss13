@@ -33,8 +33,6 @@
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	map_specific_decoration = TRUE
-	iff_enabled = TRUE
-	iff_enabled_current = TRUE
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
@@ -46,6 +44,10 @@
 	S.Attach(src)
 	update_attachable(S.slot)
 
+/obj/item/weapon/gun/rifle/sniper/M42A/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /obj/item/weapon/gun/rifle/sniper/M42A/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 12, "rail_y" = 20, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
@@ -76,8 +78,6 @@
 	attachable_allowed = list(/obj/item/attachable/bipod)
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
-	iff_enabled = TRUE
-	iff_enabled_current = TRUE
 
 /obj/item/weapon/gun/rifle/sniper/M42B/handle_starting_attachment()
 	..()
@@ -102,6 +102,11 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_1
 
+/obj/item/weapon/gun/rifle/sniper/M42B/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
 /obj/item/weapon/gun/rifle/sniper/M42B/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 8)
@@ -122,8 +127,6 @@
 	zoomdevicename = "scope"
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/sniperbarrel)
-	iff_enabled = TRUE
-	iff_enabled_current = TRUE
 
 /obj/item/weapon/gun/rifle/sniper/elite/handle_starting_attachment()
 	..()
@@ -134,6 +137,10 @@
 	S.Attach(src)
 	update_attachable(S.slot)
 
+/obj/item/weapon/gun/rifle/sniper/elite/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /obj/item/weapon/gun/rifle/sniper/elite/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 18,"rail_x" = 15, "rail_y" = 19, "under_x" = 20, "under_y" = 15, "stock_x" = 20, "stock_y" = 15)
@@ -289,8 +296,7 @@
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/marine/armor_piercing //Toggled ammo type
 	var/shells_fired_max = 20 //Smartgun only; once you fire # of shells, it will attempt to reload automatically. If you start the reload, the counter resets.
 	var/shells_fired_now = 0 //The actual counter used. shells_fired_max is what it is compared to.
-	iff_enabled = TRUE //Begin with the safety on.
-	iff_enabled_current = TRUE
+	var/iff_enabled = TRUE //Begin with the safety on.
 	var/secondary_toggled = 0 //which ammo we use
 	var/recoil_compensation = 0
 	var/accuracy_improvement = 0
@@ -341,6 +347,11 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 
+/obj/item/weapon/gun/smartgun/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
+	))
+
 /obj/item/weapon/gun/smartgun/examine(mob/user)
 	..()
 	var/rounds = 0
@@ -349,17 +360,6 @@
 	var/message = "[rounds ? "Ammo counter shows [rounds] round\s remaining." : "It's dry."]"
 	to_chat(user, message)
 	to_chat(user, "The restriction system is [iff_enabled ? "<B>on</b>" : "<B>off</b>"].")
-
-/obj/item/weapon/gun/smartgun/check_iff()
-	..()
-	if(iff_enabled)
-		drain += 10
-		MD.iff_signal = initial(MD.iff_signal)
-	if(!iff_enabled)
-		drain -= 10
-		MD.iff_signal = null
-	if(!powerpack)
-		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/verb/vtoggle_lethal_mode()
 	set category = "Smartgun"
@@ -485,7 +485,16 @@
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
 	ammo = ammo_primary
-	check_iff()
+	if(iff_enabled)
+		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
+		drain += 10
+		MD.iff_signal = initial(MD.iff_signal)
+	if(!iff_enabled)
+		remove_bullet_trait("iff")
+		drain -= 10
+		MD.iff_signal = null
+	if(!powerpack)
+		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!src.powerpack)
@@ -1217,8 +1226,6 @@
 	flags_gun_features = GUN_INTERNAL_MAG
 	gun_category = GUN_CATEGORY_HANDGUN
 	attachable_allowed = list(/obj/item/attachable/scope/mini)
-	iff_enabled = TRUE
-	iff_enabled_current = TRUE
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
 
@@ -1243,6 +1250,10 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	recoil = RECOIL_AMOUNT_TIER_5
 
+/obj/item/weapon/gun/flare/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /obj/item/weapon/gun/flare/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired, reflex, dual_wield)
 	. = ..()

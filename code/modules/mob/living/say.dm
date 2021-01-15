@@ -80,14 +80,14 @@ var/list/department_radio_keys = list(
 
 
 /mob/living/proc/remove_speech_bubble(var/image/speech_bubble, var/list_of_mobs)
-	if(client) 
+	if(client)
 		client.images -= speech_bubble
 
 	for(var/mob/M in list_of_mobs)
-		if(M.client) 
+		if(M.client)
 			M.client.images -= speech_bubble
 
-	qdel(speech_bubble)
+	speech_bubble = null
 
 #define ENDING_PUNCT list(".", "-", "?", "!")
 
@@ -144,7 +144,7 @@ var/list/department_radio_keys = list(
 					listening |= M
 
 		var/speech_bubble_test = say_test(message)
-		var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")		
+		var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)
@@ -174,7 +174,7 @@ var/list/department_radio_keys = list(
 			log_say("[name]: [message] (CKEY: [key]) (JOB: [job])")
 	else
 		log_say("[name]: [message] (CKEY: [key])")
-		
+
 	return 1
 
 #undef ENDING_PUNCT

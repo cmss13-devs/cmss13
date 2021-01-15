@@ -406,7 +406,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 /obj/item/weapon/gun/proc/update_overlays(obj/item/attachable/A, slot)
 	var/image/I = attachable_overlays[slot]
 	overlays -= I
-	qdel(I)
+	attachable_overlays[slot] = null
 	if(A && !A.hidden) //Only updates if the attachment exists for that slot.
 		var/item_icon = A.icon_state
 		if(A.attach_icon)
@@ -422,7 +422,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	var/image/I = attachable_overlays["mag"]
 	if(istype(I))
 		overlays -= I
-		qdel(I)
+		attachable_overlays["mag"] = null
 	if(current_mag && current_mag.bonus_overlay)
 		I = image(current_mag.icon,src,current_mag.bonus_overlay)
 		attachable_overlays["mag"] = I
@@ -433,7 +433,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 /obj/item/weapon/gun/proc/update_special_overlay(new_icon_state)
 	overlays -= attachable_overlays["special"]
-	qdel(attachable_overlays["special"])
+	attachable_overlays["special"] = null
 	var/image/I = image(icon,src,new_icon_state)
 	attachable_overlays["special"] = I
 	overlays += I

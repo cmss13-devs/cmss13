@@ -24,7 +24,7 @@
 
 	New()
 		..()
-		QDEL_IN(src, MINUTES_2)
+		QDEL_IN(WEAKREF(src), MINUTES_2)
 
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"

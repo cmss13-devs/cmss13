@@ -10,51 +10,9 @@
 	set category = "Alien"
 	var/potential_queens = 0
 
-	if(evolving)
-		to_chat(src, SPAN_WARNING("You are already evolving!"))
+	if (!evolve_checks())
 		return
-
-	if(is_ventcrawling)
-		to_chat(src, SPAN_WARNING("This place is too constraining to evolve."))
-		return
-
-	if(!isturf(loc))
-		to_chat(src, SPAN_WARNING("You can't evolve here."))
-		return
-
-	if(hardcore)
-		to_chat(src, SPAN_WARNING("Nuh-uh."))
-		return
-
-	if(jobban_isbanned(src, "Alien"))
-		to_chat(src, SPAN_WARNING("You are jobbanned from aliens and cannot evolve. How did you even become an alien?"))
-		return
-
-	if(is_mob_incapacitated(TRUE))
-		to_chat(src, SPAN_WARNING("You can't evolve in your current state."))
-		return
-
-	if(handcuffed || legcuffed)
-		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to evolve."))
-		return
-
-	if(isXenoLarva(src)) //Special case for dealing with larvae
-		if(amount_grown < max_grown)
-			to_chat(src, SPAN_WARNING("You are not yet fully grown. Currently at: [amount_grown] / [max_grown]."))
-			return
-
-	if(isnull(caste.evolves_to))
-		to_chat(src, SPAN_WARNING("You are already the apex of form and function. Go forth and spread the hive!"))
-		return
-
-	if(health < maxHealth)
-		to_chat(src, SPAN_WARNING("You must be at full health to evolve."))
-		return
-
-	if (agility || fortify || crest_defense)
-		to_chat(src, SPAN_WARNING("You cannot evolve while in this stance."))
-		return
-
+	
 	//Debugging that should've been done
 
 	var/castepick = input("You are growing into a beautiful alien! It is time to choose a caste.") as null|anything in caste.evolves_to
@@ -64,8 +22,7 @@
 	if(!isturf(loc)) //qdel'd or inside something
 		return
 
-	if(is_mob_incapacitated(TRUE))
-		to_chat(src, SPAN_WARNING("You can't evolve in your current state."))
+	if (!evolve_checks())
 		return
 
 	if((!hive.living_xeno_queen) && castepick != "Queen" && !isXenoLarva(src))
@@ -239,6 +196,61 @@
 	if(new_xeno.mind && round_statistics)
 		round_statistics.track_new_participant(new_xeno.faction, -1) //so an evolved xeno doesn't count as two.
 	SSround_recording.recorder.track_player(new_xeno)
+
+/mob/living/carbon/Xenomorph/proc/evolve_checks()
+	if(evolving)
+		to_chat(src, SPAN_WARNING("You are already evolving!"))
+		return FALSE
+
+	if(is_ventcrawling)
+		to_chat(src, SPAN_WARNING("This place is too constraining to evolve."))
+		return FALSE
+
+	if(!isturf(loc))
+		to_chat(src, SPAN_WARNING("You can't evolve here."))
+		return FALSE
+
+	if(hardcore)
+		to_chat(src, SPAN_WARNING("Nuh-uh."))
+		return FALSE
+
+	if(jobban_isbanned(src, "Alien"))
+		to_chat(src, SPAN_WARNING("You are jobbanned from aliens and cannot evolve. How did you even become an alien?"))
+		return FALSE
+
+	if(is_mob_incapacitated(TRUE))
+		to_chat(src, SPAN_WARNING("You can't evolve in your current state."))
+		return FALSE
+
+	if(handcuffed || legcuffed)
+		to_chat(src, SPAN_WARNING("The restraints are too restricting to allow you to evolve."))
+		return FALSE
+
+	if(isXenoLarva(src)) //Special case for dealing with larvae
+		if(amount_grown < max_grown)
+			to_chat(src, SPAN_WARNING("You are not yet fully grown. Currently at: [amount_grown] / [max_grown]."))
+			return FALSE
+
+	if(isnull(caste.evolves_to))
+		to_chat(src, SPAN_WARNING("You are already the apex of form and function. Go forth and spread the hive!"))
+		return FALSE
+
+	if(health < maxHealth)
+		to_chat(src, SPAN_WARNING("You must be at full health to evolve."))
+		return FALSE
+
+	if (agility || fortify || crest_defense)
+		to_chat(src, SPAN_WARNING("You cannot evolve while in this stance."))
+		return FALSE
+
+	if(is_mob_incapacitated(TRUE))
+		to_chat(src, SPAN_WARNING("You can't evolve in your current state."))
+		return FALSE
+
+	if(!isturf(loc)) //qdel'd or inside something
+		return FALSE
+	
+	return TRUE
 
 // The queen de-evo, but on yourself. Only usable once
 /mob/living/carbon/Xenomorph/verb/Deevolve()

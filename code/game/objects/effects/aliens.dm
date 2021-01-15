@@ -54,7 +54,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 	var/stun_duration = 1
-	var/damage_amount = 25
+	var/damage_amount = 20
 	var/fire_level_to_extinguish = 13
 
 	var/time_to_live = 10

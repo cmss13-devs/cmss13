@@ -71,16 +71,6 @@
 			if(M.burn_damage_lower)
 				acid_damage = rand(M.burn_damage_lower, M.burn_damage_upper)
 
-			// Bonus damage for base praetorian acid
-			var/datum/effects/prae_acid_stacks/PAS = null
-			for (var/datum/effects/prae_acid_stacks/found in effects_list)
-				PAS = found
-				break
-
-			if (istype(PAS) && PAS.stack_count >= PAS.max_stacks)
-				PAS.on_proc()
-
-
 			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
 			if(M.frenzy_aura > 0)
 				damage += (M.frenzy_aura * 2)

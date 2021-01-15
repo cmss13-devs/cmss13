@@ -217,11 +217,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_dash
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
-	xeno_cooldown = 50
+	xeno_cooldown = 100
 	plasma_cost = 40
 
 	// Config options
-	distance = 4
+	distance = 6
 	knockdown = FALSE
 	slash = FALSE
 	freeze_self = FALSE

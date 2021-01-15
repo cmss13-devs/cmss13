@@ -4,7 +4,7 @@
 	flags = DEL_ON_DEATH | INF_DURATION // We always clean ourselves up
 
 	var/stack_count = 1
-	var/max_stacks = 3
+	var/max_stacks = 5
 	var/last_decrement_time = 0
 	var/time_between_decrements = 40
 	var/last_increment_time = 0
@@ -61,13 +61,16 @@
 
 	last_increment_time = world.time
 
+	if (stack_count == max_stacks)
+		on_proc()
+
 // What do to on proc
 /datum/effects/prae_acid_stacks/proc/on_proc()
 	if (!ishuman(affected_atom))
 		return
 
 	var/mob/living/carbon/human/H = affected_atom
-	H.apply_armoured_damage(proc_damage, ARMOR_BIO, BURN)
-	to_chat(H, SPAN_XENODANGER("You feel acid eat into your skin as you are slashed!"))
+	H.apply_damage(proc_damage, BURN)
+	to_chat(H, SPAN_XENODANGER("You feel acid eat into your skin!"))
 	qdel(src)
 	return

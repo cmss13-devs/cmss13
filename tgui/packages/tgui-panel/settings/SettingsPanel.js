@@ -5,6 +5,8 @@
  */
 
 import { toFixed } from 'common/math';
+
+import { useLocalState } from 'tgui/backend';
 import { useDispatch, useSelector } from 'common/redux';
 import { Box, Button, ColorBox, Divider, Dropdown, Flex, Input, LabeledList, NumberInput, Section, Tabs, TextArea } from 'tgui/components';
 import { ChatPageSettings } from '../chat';
@@ -57,6 +59,7 @@ export const SettingsGeneral = (props, context) => {
     highlightColor,
   } = useSelector(context, selectSettings);
   const dispatch = useDispatch(context);
+  const [freeFont, setFreeFont] = useLocalState(context, "freeFont", false);
   return (
     <Section fill>
       <LabeledList>
@@ -69,13 +72,34 @@ export const SettingsGeneral = (props, context) => {
             }))} />
         </LabeledList.Item>
         <LabeledList.Item label="Font style">
-          <Dropdown
-            selected={fontFamily}
-            options={FONTS}
-            width="350px"
-            onSelected={value => dispatch(updateSettings({
-              fontFamily: value,
-            }))} />
+          <Flex>
+            {!freeFont && (
+              <Dropdown
+                selected={fontFamily}
+                options={FONTS}
+                width="350px"
+                onSelected={value => dispatch(updateSettings({
+                  fontFamily: value,
+                }))} />
+            ) || (
+              <Input
+                value={fontFamily}
+                onChange={(e, value) => dispatch(updateSettings({
+                  fontFamily: value,
+                }))}
+                width="350px"
+              />
+            )}
+            <Button
+              content="Custom font"
+              icon={freeFont? "lock-open" : "lock"}
+              color={freeFont? "good" : "bad"}
+              ml={1}
+              onClick={() => {
+                setFreeFont(!freeFont);
+              }}
+            />
+          </Flex>
         </LabeledList.Item>
         <LabeledList.Item label="Font size">
           <NumberInput

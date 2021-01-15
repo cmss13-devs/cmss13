@@ -305,9 +305,9 @@
 	name = "squash-head pistol bullet"
 	debilitate = list(0,0,0,0,0,0,0,2)
 
-	accuracy = HIT_ACCURACY_TIER_3
-	damage = BULLET_DAMAGE_TIER_8
-	penetration= ARMOR_PENETRATION_TIER_5
+	accuracy = HIT_ACCURACY_TIER_4
+	damage = BULLET_DAMAGE_TIER_9
+	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /datum/ammo/bullet/pistol/mankey

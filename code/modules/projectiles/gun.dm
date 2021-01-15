@@ -22,10 +22,6 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_item = TWOHANDED
 
-	var/iff_enabled_current = FALSE
-	var/iff_enabled = FALSE
-	var/iff_group_cache
-
 	var/accepted_ammo = list()
 	var/muzzle_flash 	= "muzzle_flash"
 	var/muzzle_flash_lum = 3 //muzzle flash brightness
@@ -125,8 +121,9 @@
 
 	var/last_recoil_update = 0
 
-	/// A list in the format list(/datum/element/bullet_trait_to_give, ...args) that will be given to a projectile with the current ammo datum
-	var/list/traits_to_give
+	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+	/// that will be given to a projectile with the current ammo datum
+	var/list/list/traits_to_give
 
 
 //----------------------------------------------------------
@@ -197,6 +194,39 @@
 /// Populate traits_to_give in this proc
 /obj/item/weapon/gun/proc/set_bullet_traits()
 	return
+
+/// @bullet_trait_entries: A list of bullet trait entries
+/obj/item/weapon/gun/proc/add_bullet_traits(list/list/bullet_trait_entries)
+	LAZYADD(traits_to_give, bullet_trait_entries)
+	for(var/entry in bullet_trait_entries)
+		if(!in_chamber)
+			break
+		var/list/L
+		// Check if this is an ID'd bullet trait
+		if(istext(entry))
+			L = bullet_trait_entries[entry].Copy()
+		else
+			// Prepend the bullet trait to the list
+			L = list(entry) + bullet_trait_entries[entry]
+		// Apply bullet traits from gun to current projectile
+		// Need to use the proc instead of the wrapper because each entry is a list
+		in_chamber._AddElement(L)
+
+/// @bullet_traits: A list of bullet trait typepaths or ids
+/obj/item/weapon/gun/proc/remove_bullet_traits(list/bullet_traits)
+	for(var/entry in bullet_traits)
+		if(!LAZYISIN(traits_to_give, entry))
+			continue
+		var/list/L
+		if(istext(entry))
+			L = traits_to_give[entry].Copy()
+		else
+			L = list(entry) + traits_to_give[entry]
+		LAZYREMOVE(traits_to_give, entry)
+		if(in_chamber)
+			// Remove bullet traits of gun from current projectile
+			// Need to use the proc instead of the wrapper because each entry is a list
+			in_chamber._RemoveElement(L)
 
 /obj/item/weapon/gun/proc/recalculate_attachment_bonuses()
 	//Reset silencer mod
@@ -583,7 +613,6 @@
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/proc/replace_ammo(mob/user = null, var/obj/item/ammo_magazine/magazine)
-	reset_iff_group_cache()
 	if(!magazine.default_ammo)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading.")
 		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b>")
@@ -776,9 +805,15 @@ and you're good to go.
 
 		// Apply bullet traits from gun
 		for(var/entry in traits_to_give)
-			var/list/L = entry
+			var/list/L
+			// Check if this is an ID'd bullet trait
+			if(istext(entry))
+				L = traits_to_give[entry].Copy()
+			else
+				// Prepend the bullet trait to the list
+				L = list(entry) + traits_to_give[entry]
 			// Need to use the proc instead of the wrapper because each entry is a list
-			in_chamber._AddElement(L.Copy())
+			in_chamber._AddElement(L)
 
 		// Apply bullet traits from attachments
 		for(var/slot in attachments)
@@ -787,9 +822,10 @@ and you're good to go.
 
 			var/obj/item/attachable/AT = attachments[slot]
 			for(var/entry in AT.traits_to_give)
-				var/list/L = entry
+				// Prepend the bullet trait to the list
+				var/list/L = list(entry) + AT.traits_to_give[entry]
 				// Need to use the proc instead of the wrapper because each entry is a list
-				in_chamber._AddComponent(L.Copy())
+				in_chamber._AddElement(L)
 
 		current_mag.current_rounds-- //Subtract the round from the mag.
 		return in_chamber
@@ -928,6 +964,7 @@ and you're good to go.
 						recoil_comp++
 
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, reflex, dual_wield) //User can be passed as null.
+		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
 		var/scatter_mod = 0
 		var/burst_scatter_mod = 0
@@ -953,14 +990,9 @@ and you're good to go.
 		if(get_turf(target) != get_turf(user))
 			simulate_recoil(recoil_comp, user, target)
 
-			// Get IFF from our shooter if necessary,
-			var/iff_group_to_pass = null
-			if(iff_enabled_current)
-				iff_group_to_pass = get_user_iff_group(user)
-
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, projectile_to_fire?.ammo?.shell_speed, original_target, FALSE, iff_group_to_pass)
+			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, projectile_to_fire?.ammo?.shell_speed, original_target, FALSE)
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
@@ -990,21 +1022,6 @@ and you're good to go.
 			sleep(burst_delay)
 
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
-
-// We have a "cache" to avoid getting ID card iff every shot,
-// The cache is reset upon new magazines or when necessary.
-/obj/item/weapon/gun/proc/get_user_iff_group(var/mob/living/user)
-	if(!ishuman(user))
-		return user.faction_group
-
-	if(isnull(iff_group_cache))
-		var/mob/living/carbon/human/H = user
-		iff_group_cache = H.get_id_faction_group()
-
-	return iff_group_cache
-
-/obj/item/weapon/gun/proc/reset_iff_group_cache()
-	iff_group_cache = null
 
 #define EXECUTION_CHECK M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
 
@@ -1110,6 +1127,7 @@ and you're good to go.
 	user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"), null, null, null, CHAT_TYPE_WEAPON_USE)
 	user.track_shot(initial(name))
 	apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
+	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 	simulate_recoil(1, user)
 
 	if(projectile_to_fire.ammo.bonus_projectiles_amount)

@@ -95,9 +95,17 @@
 	//maximum amount of spare mags
 	var/max_clips = 0
 
+	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+	/// that will be given to a projectile fired from the hardpoint
+	var/list/list/traits_to_give
+
 //-----------------------------
 //------GENERAL PROCS----------
 //-----------------------------
+
+/obj/item/hardpoint/Initialize()
+	. = ..()
+	set_bullet_traits()
 
 /obj/item/hardpoint/Destroy()
 	if(owner)
@@ -108,6 +116,22 @@
 	QDEL_NULL(ammo)
 
 	return ..()
+
+/// Populate traits_to_give in this proc
+/obj/item/hardpoint/proc/set_bullet_traits()
+	return
+
+/obj/item/hardpoint/proc/generate_bullet(mob/user, turf/origin_turf)
+	var/obj/item/projectile/P = new(initial(name), user)
+	P.forceMove(origin_turf)
+	P.generate_bullet(new ammo.default_ammo)
+	// Apply bullet traits from gun
+	for(var/entry in traits_to_give)
+		// Prepend the bullet trait to the list
+		var/list/L = list(entry) + traits_to_give[entry]
+		// Need to use the proc instead of the wrapper because each entry is a list
+		P._AddElement(L)
+	return P
 
 /obj/item/hardpoint/proc/take_damage(var/damage)
 	health = max(0, health - damage * damage_multiplier)
@@ -476,13 +500,9 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	var/turf/origin_turf = get_turf(src)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
 
-	var/obj/item/projectile/P = new(initial(name), user)
-	P.forceMove(origin_turf)
-	P.generate_bullet(new ammo.default_ammo)
-	if(ammo.has_iff && owner.seats[VEHICLE_GUNNER])
-		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
-	else
-		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)
+	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
+	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])
+	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)
 
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(owner, A))

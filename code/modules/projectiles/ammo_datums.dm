@@ -40,8 +40,9 @@
 	var/effective_range_max	= EFFECTIVE_RANGE_OFF	//What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.
 	var/shell_speed 		= AMMO_SPEED_TIER_1 	// How fast the projectile moves.
 
-	/// A list in the format list(/datum/element/bullet_trait_to_give, ...args) that will be given to a projectile with the current ammo datum
-	var/list/traits_to_give
+	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+	/// that will be given to a projectile with the current ammo datum
+	var/list/list/traits_to_give
 
 /datum/ammo/New()
 	set_bullet_traits()
@@ -171,7 +172,7 @@
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
 		var/turf/new_target = get_angle_target_turf(curloc, final_angle, 30)
 
-		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original, iff_group = original_P.iff_group) //Fire!
+		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
 /datum/ammo/proc/drop_flame(turf/T, var/source, var/source_mob) // ~Art updated fire 20JAN17
 	if(!istype(T)) return
@@ -296,7 +297,7 @@
 /datum/ammo/bullet/pistol/incendiary/set_bullet_traits()
 	..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 // Used by VP78 and Auto 9
@@ -324,7 +325,7 @@
 /datum/ammo/bullet/pistol/mankey/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/bullet/pistol/mankey/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -537,7 +538,7 @@
 /datum/ammo/bullet/smg/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/bullet/smg/le
@@ -628,7 +629,7 @@
 /datum/ammo/bullet/rifle/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/bullet/rifle/m4ra
@@ -656,7 +657,7 @@
 /datum/ammo/bullet/rifle/m4ra/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/bullet/rifle/m4ra/impact
@@ -733,7 +734,7 @@
 /datum/ammo/bullet/shotgun/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/bullet/shotgun/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -865,7 +866,7 @@
 /datum/ammo/bullet/sniper/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/bullet/sniper/incendiary/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -1260,7 +1261,7 @@
 /datum/ammo/rocket/wp/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/rocket/wp/drop_flame(turf/T, var/source, var/source_mob)
@@ -2001,7 +2002,7 @@
 /datum/ammo/bullet/shrapnel/incendiary/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/bullet/shrapnel/light // weak shrapnel
@@ -2096,7 +2097,7 @@
 /datum/ammo/flamethrower/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/flamethrower/on_hit_mob(mob/M,obj/item/projectile/P)
@@ -2130,7 +2131,7 @@
 /datum/ammo/flamethrower/sentry_flamer/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/flamethrower/sentry_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
@@ -2153,7 +2154,7 @@
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
-		list(/datum/element/bullet_trait_incendiary)
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)

@@ -78,11 +78,11 @@ Defined in conflicts.dm of the #defines folder.
 
 	var/attachment_action_type
 
-	var/has_marine_iff = FALSE //adds IFF to bullets
 	var/hidden = FALSE //Render on gun?
 
-	/// A list in the format list(/datum/element/bullet_trait_to_give, ...args) that will be given to a projectile with the current ammo datum
-	var/list/traits_to_give
+	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+	/// that will be given to a projectile with the current ammo datum
+	var/list/list/traits_to_give
 
 /obj/item/attachable/Initialize(mapload, ...)
 	. = ..()
@@ -100,8 +100,6 @@ Defined in conflicts.dm of the #defines folder.
 		return TRUE
 	else
 		. = ..()
-
-
 
 /obj/item/attachable/proc/Attach(var/obj/item/weapon/gun/G)
 	if(!istype(G)) return //Guns only
@@ -148,7 +146,19 @@ Defined in conflicts.dm of the #defines folder.
 	if(sharp)
 		G.sharp = sharp
 
-	G.check_iff()
+	for(var/entry in traits_to_give)
+		if(!G.in_chamber)
+			break
+		var/list/L
+		// Check if this is an ID'd bullet trait
+		if(istext(entry))
+			L = traits_to_give[entry].Copy()
+		else
+			// Prepend the bullet trait to the list
+			L = list(entry) + traits_to_give[entry]
+		// Apply bullet traits from attachment to gun's current projectile
+		// Need to use the proc instead of the wrapper because each entry is a list
+		G.in_chamber._AddElement(L)
 
 /obj/item/attachable/proc/Detach(var/obj/item/weapon/gun/G)
 	if(!istype(G)) return //Guns only
@@ -170,7 +180,16 @@ Defined in conflicts.dm of the #defines folder.
 	if(sharp)
 		G.sharp = 0
 
-	G.check_iff()
+	for(var/entry in traits_to_give)
+		if(!G.in_chamber)
+			break
+		var/list/L
+		if(istext(entry))
+			L = traits_to_give[entry].Copy()
+		else
+			L = list(entry) + traits_to_give[entry]
+		// Remove bullet traits of attachment from gun's current projectile
+		G.in_chamber._RemoveElement(L)
 
 /obj/item/attachable/ui_action_click(mob/living/user, obj/item/weapon/gun/G)
 	if(G == user.get_active_hand())
@@ -681,7 +700,6 @@ Defined in conflicts.dm of the #defines folder.
 	zoom_offset = 6
 	zoom_viewsize = 7
 	pixel_shift_y = 15
-	has_marine_iff = TRUE
 	var/dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
 
 /obj/item/attachable/scope/mini_iff/New()
@@ -693,6 +711,11 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_1
 	delay_scoped_nerf = 0
 	damage_falloff_scoped_buff = 0
+
+/obj/item/attachable/scope/mini_iff/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /obj/item/attachable/scope/mini_iff/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
 	if(do_after(user, 8, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

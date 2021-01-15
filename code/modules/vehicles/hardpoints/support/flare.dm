@@ -23,3 +23,9 @@
 	max_clips = 3
 
 	use_muzzle_flash = FALSE
+
+/obj/item/hardpoint/support/flare_launcher/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))

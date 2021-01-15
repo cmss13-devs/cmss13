@@ -193,8 +193,7 @@
 	reload_sound = 'sound/weapons/handling/m41_reload.ogg'
 	unload_sound = 'sound/weapons/handling/m41_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/rifle/incendiary
-	iff_enabled = TRUE
-	iff_enabled_current = TRUE
+	var/iff_enabled = TRUE
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle/extended,
@@ -247,6 +246,10 @@
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	. = ..()
 	AddElement(/datum/element/magharness)
+	if(iff_enabled)
+		LAZYADD(traits_to_give, list(
+			BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)
+		))
 
 /obj/item/weapon/gun/rifle/m46c/handle_starting_attachment()
 	..()
@@ -313,7 +316,10 @@
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 
 	recalculate_attachment_bonuses()
-	check_iff()
+	if(iff_enabled)
+		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
+	else
+		remove_bullet_trait("iff")
 
 /obj/item/weapon/gun/rifle/m46c/recalculate_attachment_bonuses()
 	. = ..()

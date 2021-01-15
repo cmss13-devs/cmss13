@@ -26,6 +26,12 @@
 
 	use_muzzle_flash = FALSE
 
+/obj/item/hardpoint/primary/flamer/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
 /obj/item/hardpoint/primary/flamer/can_activate(var/mob/user, var/atom/A)
 	if(!..())
 		return FALSE
@@ -45,13 +51,9 @@
 
 	var/range = get_dist(origin_turf, A) + 1
 
-	var/obj/item/projectile/P = new(initial(name), user)
-	P.forceMove(origin_turf)
-	P.generate_bullet(new ammo.default_ammo)
-	if(ammo.has_iff && owner.seats[VEHICLE_GUNNER])
-		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, range < P.ammo.max_range ? range : P.ammo.max_range, P.ammo.shell_speed, iff_group = owner.seats[VEHICLE_GUNNER].faction_group)
-	else
-		P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, range < P.ammo.max_range ? range : P.ammo.max_range, P.ammo.shell_speed)
+	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
+	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])
+	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, range < P.ammo.max_range ? range : P.ammo.max_range, P.ammo.shell_speed)
 
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(owner, A))

@@ -216,3 +216,8 @@
 #define COMSIG_BULLET_ACT_HUMAN "bullet_act_human"
 /// Called when a bullet hits a xenomorph
 #define COMSIG_BULLET_ACT_XENO "bullet_act_xeno"
+/// Apply any effects to the bullet (primarily through bullet traits)
+/// based on the user
+#define COMSIG_BULLET_USER_EFFECTS "bullet_user_effects"
+/// Called when checking IFF as bullet scans for targets
+#define COMSIG_BULLET_CHECK_IFF "bullet_check_iff"

@@ -15,16 +15,18 @@ export const SETTINGS_TABS = [
   },
 ];
 
+export const FONTS_DISABLED = "Use CSS";
+
 export const FONTS = [
-  'Verdana, Geneva, sans-serif',
-  'Arial, Helvetica, sans-serif',
-  'Arial Black, Gadget, sans-serif',
-  'Comic Sans MS, cursive, sans-serif',
-  'Impact, Charcoal, sans-serif',
-  'Lucida Sans Unicode, Lucida Grande, sans-serif',
-  'Tahoma, Geneva, sans-serif',
-  'Trebuchet MS, Helvetica, sans-serif',
-  'Courier New, Courier, monospace',
-  'Lucida Console, Monaco, monospace',
-  'Papyrus, cursive, sans-serif',
+  FONTS_DISABLED,
+  'Verdana',
+  'Arial',
+  'Arial Black',
+  'Comic Sans MS',
+  'Impact',
+  'Lucida Sans Unicode',
+  'Tahoma',
+  'Trebuchet MS',
+  'Courier New',
+  'Lucida Console',
 ];

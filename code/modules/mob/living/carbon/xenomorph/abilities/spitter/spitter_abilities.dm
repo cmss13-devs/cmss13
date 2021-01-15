@@ -18,8 +18,8 @@
 	macro_path = /datum/action/xeno_action/verb/verb_spray_acid
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	
-	plasma_cost = 80
+
+	plasma_cost = 50
 	xeno_cooldown = 80
 
 	// Configurable options

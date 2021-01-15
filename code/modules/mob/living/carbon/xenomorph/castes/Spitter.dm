@@ -8,7 +8,7 @@
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_6
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
-	armor_deflection = XENO_NO_ARMOR
+	armor_deflection = XENO_ARMOR_MOD_MED
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_5
 
@@ -20,7 +20,7 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/spitter_base
 
-	spit_delay = 25
+	spit_delay = 40
 
 	tackle_min = 2
 	tackle_max = 6

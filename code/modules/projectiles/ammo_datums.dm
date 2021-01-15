@@ -1766,7 +1766,7 @@
 /datum/ammo/xeno/acid/medium
 	name = "acid spatter"
 
-	damage = BULLET_DAMAGE_TIER_4
+	damage = BULLET_DAMAGE_TIER_5
 	shell_speed = AMMO_SPEED_TIER_3
 	accuracy = HIT_ACCURACY_TIER_5*3
 	max_range = 6

@@ -32,7 +32,7 @@
 		for(var/mob/M in langchat_listeners)
 			if(M.client)
 				M.client.images -= langchat_image
-	QDEL_NULL(langchat_image)
+	langchat_image = null
 	langchat_listeners = null
 
 /mob/proc/langchat_make_image(message, var/list/listeners, language)
@@ -56,7 +56,7 @@
 	langchat_image.maptext_width = LANGCHAT_WIDTH
 	langchat_image.maptext_height = 64
 	langchat_image.maptext_x = LANGCHAT_X_OFFSET
-	
+
 	langchat_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK
 	langchat_image.alpha = 0
 	langchat_listeners = listeners
@@ -74,7 +74,7 @@
 	if(length(message) > LANGCHAT_LONGEST_TEXT)
 		text_to_display = copytext_char(message, 1, LANGCHAT_LONGEST_TEXT - 5) + "..."
 		text_left = "..." + copytext_char(message, LANGCHAT_LONGEST_TEXT - 5)
-	
+
 	langchat_drop_image()
 	var/timer = 6 SECONDS
 	if(text_left)
@@ -94,7 +94,7 @@
 	langchat_image.maptext_width = LANGCHAT_WIDTH * 2
 	langchat_image.maptext_height = 64
 	langchat_image.maptext_x = LANGCHAT_X_OFFSET
-	
+
 	langchat_image.maptext_y -= LANGCHAT_MESSAGE_POP_Y_SINK
 	langchat_image.alpha = 0
 	langchat_listeners = listeners

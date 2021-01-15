@@ -26,7 +26,7 @@
 	GLOB.living_mob_list -= src
 	pipes_shown = null
 
-	QDEL_NULL(attack_icon)
+	attack_icon = null
 	QDEL_NULL(event_movement)
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)

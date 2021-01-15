@@ -23,7 +23,7 @@
 /obj/item/clothing/accessory/Destroy()
 	if(has_suit)
 		has_suit.remove_accessory()
-	QDEL_NULL(inv_overlay)
+	inv_overlay = null
 	. = ..()
 
 /obj/item/clothing/accessory/proc/can_attach_to(var/mob/user, var/obj/item/clothing/C)

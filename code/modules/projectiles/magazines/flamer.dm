@@ -17,7 +17,7 @@
 	flags_magazine = AMMUNITION_HIDE_AMMO
 
 	var/max_intensity = 40
-	var/max_range = 6
+	var/max_range = 5
 	var/max_duration = 30
 
 /obj/item/ammo_magazine/flamer_tank/empty
@@ -129,7 +129,8 @@
 	else
 		to_chat(user, SPAN_NOTICE("Nothing."))
 
-/obj/item/ammo_magazine/flamer_tank/large	// Extra thicc tank
+// Pyro regular flamer tank just bigger than the base flamer tank.
+/obj/item/ammo_magazine/flamer_tank/large
 	name = "large incinerator tank"
 	desc = "A large fuel tank used to store fuel for use in the M240-T incinerator unit. Handle with care."
 	icon_state = "flametank_large_custom"
@@ -138,12 +139,13 @@
 	gun_type = /obj/item/weapon/gun/flamer/M240T
 
 	max_intensity = 80
-	max_range = 10
+	max_range = 5
 	max_duration = 50
 
 /obj/item/ammo_magazine/flamer_tank/large/empty
 	flamer_chem = null
 
+// This is gellie fuel. Green Flames.
 /obj/item/ammo_magazine/flamer_tank/gellied
 	name = "large incinerator tank (Gel)"
 	desc = "A large fuel tank full of heavier gel fuel. Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot. Handle with exceptional care."
@@ -151,14 +153,22 @@
 	flamer_chem = "napalmgel"
 	max_rounds = 200
 
+	max_range = 7
+
+// This is the green flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/B
 	name = "large incinerator tank (B)"
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel type B, a wide-spreading sticky combustable liquid chemical that burns up fast with a low temperature, for use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm B"
 	flamer_chem = "napalmb"
 
+	max_range = 6
+
+// This is the blue flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/X
 	name = "large incinerator tank (X)"
 	desc = "A large fuel tank of Ultra Thick Napthal Fuel type X, a sticky combustable liquid chemical that burns extremely hot, for use in the M240-T incinerator unit. Handle with care."
 	caliber = "Napalm X"
 	flamer_chem = "napalmx"
+
+	max_range = 6

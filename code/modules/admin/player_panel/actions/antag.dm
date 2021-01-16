@@ -55,9 +55,6 @@
 	if(!ishuman(target))
 		return
 
-	if(params["hivenumber"] > length(GLOB.hive_datum))
-		return
-
 	var/mob/living/carbon/human/H = target
 	var/datum/equipment_preset/preset = GLOB.gear_presets_list["Cultist - Xeno Cultist"]
 

@@ -80,6 +80,13 @@
 	GLOB.STUI.attack.Add("\[[time_stamp()]]INTERACT: [msg]<br>")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK
 
+
+/proc/log_overwatch(text)
+	if (CONFIG_GET(flag/log_overwatch))
+		diary << html_decode("\[[time_stamp()]]OVERWATCH: [text][log_end]")
+	GLOB.STUI.admin.Add("\[[time_stamp()]]OVERWATCH: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
+
 /proc/log_idmod(var/obj/item/card/id/target_id, var/msg)
 	if (CONFIG_GET(flag/log_idmod))
 		diary << html_decode("\[[time_stamp()]]ID MOD: [msg][log_end]")

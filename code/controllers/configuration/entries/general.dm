@@ -100,6 +100,8 @@ Administrative related.
 
 /datum/config_entry/flag/log_game
 
+/datum/config_entry/flag/log_overwatch
+
 /datum/config_entry/flag/log_interact
 
 /datum/config_entry/flag/log_idmod

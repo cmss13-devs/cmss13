@@ -18,9 +18,9 @@
 		burn_reagent = reagent
 	burn_stacks = stacks
 
-	RegisterSignal(target, COMSIG_BULLET_ACT_LIVING, .proc/ignite_living)
-	RegisterSignal(target, COMSIG_BULLET_ACT_HUMAN, .proc/ignite_human)
-	RegisterSignal(target, COMSIG_BULLET_ACT_XENO, .proc/ignite_xeno)
+	RegisterSignal(target, COMSIG_BULLET_ACT_LIVING, .proc/ignite_living, override = TRUE)
+	RegisterSignal(target, COMSIG_BULLET_ACT_HUMAN, .proc/ignite_human, override = TRUE)
+	RegisterSignal(target, COMSIG_BULLET_ACT_XENO, .proc/ignite_xeno, override = TRUE)
 
 /datum/element/bullet_trait_incendiary/Detach(datum/target)
 	UnregisterSignal(target, list(

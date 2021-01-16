@@ -983,10 +983,10 @@
 
 	accurate_range = 8
 	damage =  BULLET_DAMAGE_TIER_10
-	penetration = ARMOR_PENETRATION_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_6
 	accuracy = HIT_ACCURACY_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
-	max_range = 11
+	max_range = 12
 	effective_range_max = 8
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 

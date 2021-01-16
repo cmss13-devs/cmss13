@@ -1121,65 +1121,41 @@
 		return
 	return
 
-// HANDLING THE CLICK
-
-/obj/structure/machinery/m56d_hmg/auto/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
-	if(!operator) return HANDLE_CLICK_UNHANDLED
-	if(operator != user) return HANDLE_CLICK_UNHANDLED
-	if(istype(A,/obj/screen)) return HANDLE_CLICK_UNHANDLED
-	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || user.frozen)
-		user.unset_interaction()
-		return HANDLE_CLICK_UNHANDLED
-	if(user.get_active_hand() || user.get_inactive_hand())
-		return HANDLE_CLICK_UNHANDLED
-
-	target = A
-	if(!istype(target))
-		return HANDLE_CLICK_UNHANDLED
-
-	if(target.z != src.z || target.z == 0 || src.z == 0 || isnull(operator.loc) || isnull(src.loc))
-		return HANDLE_CLICK_UNHANDLED
-
-	if(get_dist(target,src.loc) > 15)
-		return HANDLE_CLICK_UNHANDLED
-
-	if(mods["middle"] || mods["shift"] || mods["alt"] || mods["ctrl"])
-		return HANDLE_CLICK_PASS_THRU
-
-	var/angle = get_dir(src,target)
-	//we can only fire in a 90 degree cone
-	if((dir & angle) && target.loc != src.loc && target.loc != operator.loc)
-
-		if(!rounds)
-			to_chat(user, SPAN_WARNING("<b>*click*</b>"))
-			playsound(src, 'sound/weapons/gun_empty.ogg', 30, 1, 5)
-		else
-			process_shot(user)
-		return HANDLE_CLICK_HANDLED
-
-	else
-		if(world.time > rotate_timer)
-			rotate_timer = world.time + 5
-			rotate_to(user, A)
-
-	return HANDLE_CLICK_UNHANDLED
-
-
 // AUTOMATIC FIRING
 
-/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_start(var/atom/A)
-	if(!ismob(operator))
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_start(client/source, atom/A, params)
+	SIGNAL_HANDLER
+	if(!(source.mob == operator) || !A)
 		return
 	var/mob/user = operator
 	target = A
 
-	auto_fire_repeat(user)
+	if(params["shift"] || params["ctrl"] || params["alt"])
+		return
 
-/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_stop(var/atom/A)
+	if(istype(A, /obj/screen))
+		return
+
+	if(user.get_active_hand() || user.get_inactive_hand())
+		return
+
+	if(!rounds)
+		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
+		playsound(src, 'sound/weapons/gun_empty.ogg', 30, 1, 5)
+		return
+
+	params = params
+	target = A
+
+	INVOKE_ASYNC(src, .proc/auto_fire_repeat, user)
+
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_stop(client/source, atom/A, params)
+	SIGNAL_HANDLER
 	target = null
 
-/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_new_target(var/atom/start, var/atom/hovered)
-	if(!ismob(operator))
+/obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_new_target(client/source, atom/start, atom/hovered, params)
+	SIGNAL_HANDLER
+	if(!(source.mob == operator))
 		return
 	var/mob/user = operator
 
@@ -1190,6 +1166,11 @@
 		return
 
 	target = hovered
+
+	var/angle = get_dir(src,target)
+	if((world.time > rotate_timer) && !((dir & angle) && target.loc != src.loc && target.loc != operator.loc))
+		rotate_timer = world.time + 5
+		rotate_to(user, target)
 
 /obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/user, var/atom/A)
 	if(!target) return
@@ -1218,13 +1199,8 @@
 			if(rounds)
 				overheat_value = overheat_value + 1
 				START_PROCESSING(SSobj, src)
-	else
-		rotate_to(user, A)
-		return
 
 	addtimer(CALLBACK(src, .proc/auto_fire_repeat, user), fire_delay)
-
-// SCATTER WAS SUPERBUGGED, REVISED M56E FIRING CODE TO AVOID FUTURE INCIDENTS
 
 /obj/structure/machinery/m56d_hmg/auto/handle_ammo_out(mob/user)
 	visible_message(SPAN_NOTICE(" [icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))

@@ -268,6 +268,12 @@
 	item_state = "ianshirt"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
+/obj/item/clothing/suit/webbing
+	name = "External webbing"
+	desc = "Designed to be worn over a jumpsuit rather than clipped on."
+	icon_state = "webbing"
+	item_state = "webbing"
+
 //Blue suit jacket toggle
 /obj/item/clothing/suit/suit/verb/toggle()
 	set name = "Toggle Jacket Buttons"

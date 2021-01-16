@@ -11,12 +11,12 @@
 	/// A cache of IFF groups for specific mobs
 	var/list/iff_group_cache
 
-/datum/element/bullet_trait_iff/Attach(datum/target, on_fire = TRUE, iff_group)
+/datum/element/bullet_trait_iff/Attach(datum/target, iff_group)
 	. = ..()
 	if(!istype(target, /obj/item/projectile))
 		return ELEMENT_INCOMPATIBLE
 
-	if(on_fire)
+	if(!iff_group)
 		RegisterSignal(target, COMSIG_BULLET_USER_EFFECTS, .proc/set_iff)
 	else
 		src.iff_group = iff_group

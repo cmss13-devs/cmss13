@@ -284,8 +284,8 @@
 		var/mob/living/carbon/human/H = M
 		H.h_style = "Bald"
 		H.f_style = "Shaved"
-		H.h_style = pick(hair_styles_list)
-		H.f_style = pick(facial_hair_styles_list)
+		H.h_style = pick(GLOB.hair_styles_list)
+		H.f_style = pick(GLOB.facial_hair_styles_list)
 		H.update_hair()
 		to_chat(M, SPAN_NOTICE("Your head feels different..."))
 

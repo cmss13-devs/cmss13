@@ -167,7 +167,7 @@ There are several things that need to be remembered:
 		return
 
 	if(f_style && !(wear_mask && (wear_mask.flags_inv_hide & HIDELOWHAIR)))
-		var/datum/sprite_accessory/facial_hair_style = facial_hair_styles_list[f_style]
+		var/datum/sprite_accessory/facial_hair_style = GLOB.facial_hair_styles_list[f_style]
 		if(facial_hair_style && facial_hair_style.species_allowed && (species.name in facial_hair_style.species_allowed))
 			var/image/facial_s = new/image("icon" = facial_hair_style.icon, "icon_state" = "[facial_hair_style.icon_state]_s")
 			facial_s.layer = -FACIAL_LAYER
@@ -177,7 +177,7 @@ There are several things that need to be remembered:
 			apply_overlay(FACIAL_LAYER)
 
 	if(h_style && !(head && head.flags_inv_hide & HIDETOPHAIR))
-		var/datum/sprite_accessory/hair_style = hair_styles_list[h_style]
+		var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[h_style]
 		if(hair_style && (species.name in hair_style.species_allowed))
 			var/image/hair_s = new/image("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
 			hair_s.layer = -HAIR_LAYER

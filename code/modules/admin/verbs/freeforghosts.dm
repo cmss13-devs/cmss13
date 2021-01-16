@@ -17,7 +17,7 @@
 	if(M.mind || M.client)
 		M.ghostize(FALSE)
 
-	freed_mob_list += M
+	GLOB.freed_mob_list += M
 
 /client/proc/free_all_mobs_in_view()
 	set name = "Free All Mobs"

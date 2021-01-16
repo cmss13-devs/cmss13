@@ -2,7 +2,7 @@
 	blood_type = pick(7;"O-", 38;"O+", 6;"A-", 34;"A+", 2;"B-", 9;"B+", 1;"AB-", 3;"AB+")
 	GLOB.human_mob_list += src
 	GLOB.alive_human_list += src
-	processable_human_list += src
+	SShuman.processable_human_list += src
 
 	if(!species)
 		if(new_species)
@@ -79,13 +79,13 @@
 	remove_from_all_mob_huds()
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
-	processable_human_list -= src
+	SShuman.processable_human_list -= src
 
 	. = ..()
 
 	if(agent_holder)
 		agent_holder.source_human = null
-		human_agent_list -= src
+		GLOB.human_agent_list -= src
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
@@ -1079,11 +1079,11 @@
 
 	var/datum/species/oldspecies = species
 
-	species = all_species[new_species]
+	species = GLOB.all_species[new_species]
 
 	// If an invalid new_species value is passed, just default to human
 	if (!istype(species))
-		species = all_species["Human"]
+		species = GLOB.all_species["Human"]
 
 	if(oldspecies)
 		//additional things to change when we're no longer that species

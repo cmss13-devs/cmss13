@@ -5,6 +5,7 @@ SUBSYSTEM_DEF(mob)
 	priority      = SS_PRIORITY_MOB
 
 	var/list/currentrun = list()
+	var/list/living_misc_mobs = list()
 
 /datum/controller/subsystem/mob/stat_entry(msg)
 	msg = "P:[living_misc_mobs.len]"

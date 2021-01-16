@@ -288,13 +288,13 @@
 	r_skin			= sanitize_integer(r_skin, 0, 255, initial(r_skin))
 	g_skin			= sanitize_integer(g_skin, 0, 255, initial(g_skin))
 	b_skin			= sanitize_integer(b_skin, 0, 255, initial(b_skin))
-	h_style			= sanitize_inlist(h_style, hair_styles_list, initial(h_style))
-	var/datum/sprite_accessory/HS = hair_styles_list[h_style]
+	h_style			= sanitize_inlist(h_style, GLOB.hair_styles_list, initial(h_style))
+	var/datum/sprite_accessory/HS = GLOB.hair_styles_list[h_style]
 	if(!HS.selectable)	// delete this
 		h_style = random_hair_style(gender, species)
 		save_character()
-	f_style			= sanitize_inlist(f_style, facial_hair_styles_list, initial(f_style))
-	var/datum/sprite_accessory/FS = facial_hair_styles_list[f_style]
+	f_style			= sanitize_inlist(f_style, GLOB.facial_hair_styles_list, initial(f_style))
+	var/datum/sprite_accessory/FS = GLOB.facial_hair_styles_list[f_style]
 	if(!FS.selectable)	// delete this
 		f_style = random_facial_hair_style(gender, species)
 		save_character()

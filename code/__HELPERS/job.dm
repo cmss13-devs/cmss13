@@ -237,7 +237,7 @@ var/global/list/wy_ranks = list(
 		else . = null
 
 /proc/get_role_uniforms(rank)
-	for(var/job_name in gear_presets_list)
-		var/datum/equipment_preset/job = gear_presets_list[job_name]
+	for(var/job_name in GLOB.gear_presets_list)
+		var/datum/equipment_preset/job = GLOB.gear_presets_list[job_name]
 		if(job.rank == rank)
 			return job.uniform_sets

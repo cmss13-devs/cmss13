@@ -6,7 +6,7 @@
 	. = ..()
 	GLOB.human_mob_list -= src
 	GLOB.alive_human_list -= src
-	processable_human_list -= src
+	SShuman.processable_human_list -= src
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src

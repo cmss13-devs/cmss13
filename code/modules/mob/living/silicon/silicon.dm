@@ -19,12 +19,12 @@
 
 /mob/living/silicon/Initialize()
 	. = ..()
-	living_misc_mobs += src
+	SSmob.living_misc_mobs += src
 	add_language("English")
 
 /mob/living/silicon/Destroy()
 	..()
-	living_misc_mobs -= src
+	SSmob.living_misc_mobs -= src
 
 /mob/living/silicon/proc/show_laws()
 	return
@@ -112,7 +112,7 @@
 
 /mob/living/silicon/add_language(var/language, var/can_speak=1)
 	if (..(language) && can_speak)
-		speech_synthesizer_langs.Add(all_languages[language])
+		speech_synthesizer_langs.Add(GLOB.all_languages[language])
 		return 1
 
 /mob/living/silicon/remove_language(var/rem_language)
@@ -186,7 +186,7 @@
 
 /mob/living/silicon/rejuvenate()
 	..()
-	living_misc_mobs += src
+	SSmob.living_misc_mobs += src
 
 /mob/living/silicon/ex_act(severity)
 	flash_eyes()

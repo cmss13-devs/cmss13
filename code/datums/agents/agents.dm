@@ -2,12 +2,12 @@
 Each human has an agent_holder, which contains this datum if they're an Agent, otherwise null.
 
 Creating an agent:
-	Make a new /datum/agent(human mob) with a human mob as args, 
+	Make a new /datum/agent(human mob) with a human mob as args,
 	if given a faction as a second arg, the agent will be of that faction, else random,
 	The agent is added to a global list human_agent_list
 
 Giving objectives to an agent:
-	Call give_objective(), 
+	Call give_objective(),
 	if given an arg of an objective typepath, it will be that objective else random
 */
 
@@ -39,7 +39,7 @@ Giving objectives to an agent:
 
 	log_game("[key_name(usr)] has been made an agent.")
 
-	LAZYADD(human_agent_list, source_human)
+	GLOB.human_agent_list += source_human
 
 	var/datum/action/human_action/activable/check_objectives/O = new()
 	O.give_action(source_human)
@@ -124,7 +124,7 @@ Giving objectives to an agent:
 
 /datum/agent/Destroy()
 	. = ..()
-	
+
 	source_human.agent_holder = null
 	LAZYREMOVE(source_human.contents, tools)
 	QDEL_NULL(tools)

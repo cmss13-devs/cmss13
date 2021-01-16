@@ -16,11 +16,9 @@
 	var/number_of_clues_to_generate = 1 //how many clues we generate for the objective(aka how many things will point to this objective)
 
 /datum/cm_objective/New()
-	cm_objectives += src
 	SSobjectives.add_objective(src)
 
 /datum/cm_objective/Destroy()
-	cm_objectives -= src
 	SSobjectives.remove_objective(src)
 	for(var/datum/cm_objective/R in required_objectives)
 		R.enables_objectives -= src

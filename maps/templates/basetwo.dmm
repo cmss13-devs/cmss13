@@ -1308,7 +1308,7 @@
 /area/adminlevel/bunker01/hydroponics)
 "dg" = (
 /obj/effect/alien/weeds/node/pylon/core{
-	hivenumber = 3
+	hivenumber = "xeno_hive_alpha"
 	},
 /turf/open/mars_cave,
 /area/adminlevel/bunker01/caves/xeno)

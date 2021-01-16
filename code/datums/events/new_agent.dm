@@ -18,7 +18,7 @@
 		amount_of_MPs += CMP.current_positions
 
 	// Check how many antags we have
-	if(length(human_agent_list) < (amount_of_MPs * AGENT_TO_MP_RATIO))
+	if(length(GLOB.human_agent_list) < (amount_of_MPs * AGENT_TO_MP_RATIO))
 		return TRUE
 
 	return FALSE

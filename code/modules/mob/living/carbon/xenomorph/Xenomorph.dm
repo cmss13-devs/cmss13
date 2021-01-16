@@ -320,7 +320,7 @@
 	see_in_dark = 8
 
 	if(caste && caste.spit_types && caste.spit_types.len)
-		ammo = ammo_list[caste.spit_types[1]]
+		ammo = GLOB.ammo_list[caste.spit_types[1]]
 
 	create_reagents(100)
 

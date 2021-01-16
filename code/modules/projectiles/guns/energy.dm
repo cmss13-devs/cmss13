@@ -176,7 +176,7 @@
 	return ..()
 
 /obj/item/weapon/gun/energy/plasmarifle/load_into_chamber()
-	ammo = ammo_list[charge_time < 15? /datum/ammo/energy/yautja/rifle/bolt : /datum/ammo/energy/yautja/rifle/blast]
+	ammo = GLOB.ammo_list[charge_time < 15? /datum/ammo/energy/yautja/rifle/bolt : /datum/ammo/energy/yautja/rifle/blast]
 	var/obj/item/projectile/P = create_bullet(ammo, initial(name))
 	P.SetLuminosity(1)
 	in_chamber = P
@@ -365,14 +365,14 @@
 			fire_delay = FIRE_DELAY_TIER_6 * 20
 			fire_sound = 'sound/weapons/pulse.ogg'
 			to_chat(user, SPAN_NOTICE("[src] is now set to fire heavy plasma spheres."))
-			ammo = ammo_list[/datum/ammo/energy/yautja/caster/sphere]
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
 		if(1)
 			mode = 0
 			charge_cost = 30
 			fire_delay = FIRE_DELAY_TIER_6
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
 			to_chat(user, SPAN_NOTICE("[src] is now set to fire light plasma bolts."))
-			ammo = ammo_list[/datum/ammo/energy/yautja/caster/bolt]
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
 
 /obj/item/weapon/gun/energy/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)

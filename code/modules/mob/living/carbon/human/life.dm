@@ -13,7 +13,7 @@
 		for (var/datum/data/record/R in GLOB.data_core.general)	// Change their status on the Crew Manifest to Deceased
 			if (R.fields["name"] == real_name)
 				R.fields["p_stat"] = "*Deceased*"
-		processable_human_list -= src
+		SShuman.processable_human_list -= src
 		if(hardcore)
 			qdel(src) //We just delete the corpse on WO to keep things simple and lag-free
 		return

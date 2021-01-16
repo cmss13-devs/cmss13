@@ -53,10 +53,11 @@ of predators), but can be added to include variant game modes (like humans vs. h
 /datum/game_mode/proc/announce_agents()
 	set waitfor = 0
 	sleep(SECONDS_2)
-	if(length(human_agent_list))
+	if(length(GLOB.human_agent_list))
 		var/dat = "<br>"
 		dat += SPAN_CENTERBOLD("The Agents were: <br>")
-		for(var/mob/living/carbon/human/H in human_agent_list)
+		for(var/i in GLOB.human_agent_list)
+			var/mob/living/carbon/human/H = i
 			if(!H.agent_holder)
 				continue
 

@@ -8,7 +8,8 @@
 		return FALSE
 
 	// Check that agents exist and alive
-	for(var/mob/living/carbon/human/H in human_agent_list)
+	for(var/i in GLOB.human_agent_list)
+		var/mob/living/carbon/human/H = i
 		if(H.stat == CONSCIOUS)
 			return TRUE
 
@@ -17,7 +18,8 @@
 /datum/round_event/objection_given/activate()
 	var/lowest_number = 100
 	var/mob/living/carbon/human/lowest_human
-	for(var/mob/living/carbon/human/H in human_agent_list)
+	for(var/i in GLOB.human_agent_list)
+		var/mob/living/carbon/human/H = i
 		if(!(H.stat == CONSCIOUS))
 			continue
 

@@ -4,9 +4,6 @@ var/list/CLFaxes = list()					//List of all CL faxes sent this round
 var/list/fax_contents = list() 				//List of fax contents to maintain it even if source paper is deleted
 var/list/USCMFaxes = list()					//List of all USCM faxes sent this round
 
-
-GLOBAL_LIST_EMPTY(custom_event_info_list)
-
 //Names of maps that can be compiled on
 var/list/DEFAULT_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_WHISKEY_OUTPOST, MAP_DESERT_DAM, MAP_ICE_COLONY, MAP_PRISON_STATION, MAP_CORSAT, MAP_SOROKYNE_STRATA, MAP_KUTJEVO)
 var/list/LOWPOP_NEXT_MAP_CANDIDATES = list(MAP_LV_624, MAP_BIG_RED, MAP_PRISON_STATION, MAP_KUTJEVO)
@@ -28,21 +25,33 @@ var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),
 
 var/readied_players = 0								//How many players are readied up in the lobby
 
-var/global/list/processable_human_list = list() //List of all humans to be processed by the SS
-
-var/global/list/human_agent_list
-var/global/list/other_factions_human_list
-
-var/global/list/living_misc_mobs = list() // anything that isnt a xeno or human
+GLOBAL_LIST_EMPTY_TYPED(human_agent_list, /mob/living/carbon/human)
+GLOBAL_LIST_EMPTY_TYPED(other_factions_human_list, /mob/living/carbon/human)
 
 var/global/list/ai_mob_list = list()				//List of all AIs
 
-var/global/list/freed_mob_list = list() 	// List of mobs freed for ghosts
+GLOBAL_LIST_EMPTY(freed_mob_list) 	// List of mobs freed for ghosts
 
 // Xeno stuff //
-GLOBAL_LIST_EMPTY(resin_constructions_list)
-GLOBAL_LIST_EMPTY_TYPED(resin_build_order_default, /datum/resin_construction)
-GLOBAL_LIST_EMPTY_TYPED(resin_build_order_hivelord, /datum/resin_construction)
+// Resin constructions parameters
+GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setup_resin_constructions())
+
+GLOBAL_LIST_INIT(resin_build_order_default, list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/nest,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/door,
+))
+GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
+	/datum/resin_construction/resin_turf/wall/resin_turf/thick,
+	/datum/resin_construction/resin_turf/membrane/thick,
+	/datum/resin_construction/resin_obj/nest,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/door/thick,
+))
 
 /// Xeno caste datums
 GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_name)
@@ -57,11 +66,11 @@ var/global/list/chemical_identified_list = list()	//List of all identified objec
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"omega" = list(),"tau" = list())
 
-var/global/list/surgery_steps = list()				//List of all surgery steps  |BS12
-var/global/list/ammo_list = list()					//List of all ammo types. Used by guns to tell the projectile how to act.
+GLOBAL_LIST_INIT_TYPED(surgery_steps, /datum/surgery_step, setup_surgeries())				//List of all surgery steps  |BS12
+GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo())					//List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title)					//List of all jobstypes, minus borg and AI
 
-var/global/list/datum/equipment_preset/gear_presets_list = list()
+GLOBAL_LIST_INIT_TYPED(gear_presets_list, /datum/equipment_preset, setup_gear_presets())
 
 var/global/list/active_areas = list()
 var/global/list/all_areas = list()
@@ -80,13 +89,10 @@ var/global/list/untracked_yautja_gear = list() // List of untracked loose pred g
 
 GLOBAL_LIST_EMPTY_TYPED(gun_cabinets, /obj/structure/closet/secure_closet/guncabinet)
 
-var/global/list/cm_objectives = list()
-
 //Languages/species/whitelist.
-var/global/list/all_species[0]
-var/global/list/all_languages[0]
-var/global/list/language_keys[0]					//table of say codes for all languages
-var/global/list/whitelisted_species = list("Human")
+GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
+GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)
+GLOBAL_LIST_INIT(language_keys, setup_language_keys())					//table of say codes for all languages
 var/global/list/synth_types = list("Synthetic","Second Generation Synthetic")
 
 //Xeno mutators
@@ -94,13 +100,15 @@ GLOBAL_REFERENCE_LIST_INDEXED_SORTED(xeno_mutator_list, /datum/xeno_mutator, nam
 
 //Xeno hives
 GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
-	new /datum/hive_status(),
-	new /datum/hive_status/corrupted(),
-	new /datum/hive_status/alpha(),
-	new /datum/hive_status/bravo(),
-	new /datum/hive_status/charlie(),
-	new /datum/hive_status/delta(),
+	XENO_HIVE_NORMAL = new /datum/hive_status(),
+	XENO_HIVE_CORRUPTED = new /datum/hive_status/corrupted(),
+	XENO_HIVE_ALPHA = new /datum/hive_status/alpha(),
+	XENO_HIVE_BRAVO = new /datum/hive_status/bravo(),
+	XENO_HIVE_CHARLIE = new /datum/hive_status/charlie(),
+	XENO_HIVE_DELTA = new /datum/hive_status/delta(),
 ))
+
+GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
 
 //DEFCON rewards / assets
 GLOBAL_REFERENCE_LIST_INDEXED_SORTED(defcon_reward_list, /datum/defcon_reward, name)
@@ -114,12 +122,9 @@ GLOBAL_REFERENCE_LIST_INDEXED(ethnicities_list, /datum/ethnicity, name)			// Sto
 	// Body Types
 GLOBAL_REFERENCE_LIST_INDEXED(body_types_list, /datum/body_type, name)			// Stores /datum/body_type indexed by name
 	//Hairstyles
-var/global/list/hair_styles_list = list()			//stores /datum/sprite_accessory/hair indexed by name
-var/global/list/hair_styles_male_list = list()
-var/global/list/hair_styles_female_list = list()
-var/global/list/facial_hair_styles_list = list()	//stores /datum/sprite_accessory/facial_hair indexed by name
-var/global/list/facial_hair_styles_male_list = list()
-var/global/list/facial_hair_styles_female_list = list()
+GLOBAL_REFERENCE_LIST_INDEXED(hair_styles_list, /datum/sprite_accessory/hair, name)			//stores /datum/sprite_accessory/hair indexed by name
+GLOBAL_REFERENCE_LIST_INDEXED(facial_hair_styles_list, /datum/sprite_accessory/facial_hair, name)	//stores /datum/sprite_accessory/facial_hair indexed by name
+
 	//Underwear
 var/global/list/underwear_m = list("Briefs") //Curse whoever made male/female underwear diffrent colours
 var/global/list/underwear_f = list("Briefs", "Panties")
@@ -159,128 +164,68 @@ var/global/list/paramslist_cache = list()
 		L[i] = text2num(L[i])
 	return L
 
-//////////////////////////
-/////Initial Building/////
-//////////////////////////
-
-
-
-/proc/makeDatumRefLists()
-	// Hair - Initialise all /datum/sprite_accessory/hair into an list indexed by hair-style name
-	hair_styles_list = list()
-	hair_styles_male_list = list()
-	hair_styles_female_list = list()
-	for(var/path in subtypesof(/datum/sprite_accessory/hair))
-		var/datum/sprite_accessory/hair/H = new path()
-		hair_styles_list[H.name] = H
-		switch(H.gender)
-			if(MALE)	hair_styles_male_list += H.name
-			if(FEMALE)	hair_styles_female_list += H.name
-			else
-				hair_styles_male_list += H.name
-				hair_styles_female_list += H.name
-
-	// Facial Hair - Initialise all /datum/sprite_accessory/facial_hair into an list indexed by facialhair-style name
-	facial_hair_styles_list = list()
-	facial_hair_styles_male_list = list()
-	facial_hair_styles_female_list = list()
-	for(var/path in subtypesof(/datum/sprite_accessory/facial_hair))
-		var/datum/sprite_accessory/facial_hair/H = new path()
-		facial_hair_styles_list[H.name] = H
-		switch(H.gender)
-			if(MALE)	facial_hair_styles_male_list += H.name
-			if(FEMALE)	facial_hair_styles_female_list += H.name
-			else
-				facial_hair_styles_male_list += H.name
-				facial_hair_styles_female_list += H.name
-
-	// Surgery Steps - Initialize all /datum/surgery_step into a list
-	surgery_steps = list()
-	for(var/T in subtypesof(/datum/surgery_step))
-		var/datum/surgery_step/S = new T
-		surgery_steps += S
-	sort_surgeries()
-
-	// Languages and species.
-	all_languages = list()
-	for(var/T in subtypesof(/datum/language))
-		var/datum/language/L = new T
-		all_languages[L.name] = L
-
-	language_keys = list()
-	for (var/language_name in all_languages)
-		var/datum/language/L = all_languages[language_name]
-		language_keys[":[lowertext(L.key)]"] = L
-		language_keys[".[lowertext(L.key)]"] = L
-		language_keys["#[lowertext(L.key)]"] = L
-
+/proc/setup_species()
 	var/rkey = 0
-	all_species = list()
-	whitelisted_species = list()
+	var/list/all_species = list()
 	for(var/T in subtypesof(/datum/species))
 		rkey++
 		var/datum/species/S = new T
 		S.race_key = rkey //Used in mob icon caching.
 		all_species[S.name] = S
+	return all_species
 
-		if(S.flags & IS_WHITELISTED)
-			whitelisted_species += S.name
-
-	// Our ammo stuff is initialized here.
+/proc/setup_ammo()
 	var/list/blacklist = list(/datum/ammo/energy, /datum/ammo/energy/yautja, /datum/ammo/energy/yautja/rifle, /datum/ammo/bullet/shotgun, /datum/ammo/xeno)
-	ammo_list = list()
+	var/list/ammo_list = list()
 	for(var/T in subtypesof(/datum/ammo) - blacklist)
 		var/datum/ammo/A = new T
 		ammo_list[A.type] = A
+	return ammo_list
 
-	// Resin constructions
+/proc/setup_resin_constructions()
+	var/list/resin_constructions_list = list()
 	for (var/T in subtypesof(/datum/resin_construction) - list(/datum/resin_construction/resin_obj, /datum/resin_construction/resin_turf))
 		var/datum/resin_construction/RC = new T
-		GLOB.resin_constructions_list[RC.name] = RC
-	GLOB.resin_constructions_list = sortAssocKeepList(GLOB.resin_constructions_list)
-	GLOB.resin_build_order_default += list(
-		GLOB.resin_constructions_list["Resin Wall"],
-		GLOB.resin_constructions_list["Resin Membrane"],
-		GLOB.resin_constructions_list["Resin Nest"],
-		GLOB.resin_constructions_list["Sticky Resin"],
-		GLOB.resin_constructions_list["Fast Resin"],
-		GLOB.resin_constructions_list["Resin Door"]
-	)
-	GLOB.resin_build_order_hivelord += list(
-		GLOB.resin_constructions_list["Thick Resin Wall"],
-		GLOB.resin_constructions_list["Thick Resin Membrane"],
-		GLOB.resin_constructions_list["Resin Nest"],
-		GLOB.resin_constructions_list["Sticky Resin"],
-		GLOB.resin_constructions_list["Fast Resin"],
-		GLOB.resin_constructions_list["Thick Resin Door"]
-	)
+		resin_constructions_list[T] = RC
+	return sortAssoc(resin_constructions_list)
 
-    // Equipment presets
-	gear_presets_list = list()
+/proc/setup_gear_presets()
+	var/list/gear_presets_list = list()
 	for(var/T in typesof(/datum/equipment_preset))
 		var/datum/equipment_preset/EP = T
 		if (!initial(EP.flags))
 			continue
 		EP = new T
 		gear_presets_list[EP.name] = EP
-	gear_presets_list = sortAssoc(gear_presets_list)
+	return sortAssoc(gear_presets_list)
 
+/proc/setup_language_keys()
+	var/list/language_keys = list()
+	for (var/language_name in subtypesof(/datum/language))
+		var/datum/language/L = language_name
+		language_keys[":[lowertext(initial(L.key))]"] = initial(L.name)
+		language_keys[".[lowertext(initial(L.key))]"] = initial(L.name)
+		language_keys["#[lowertext(initial(L.key))]"] = initial(L.name)
+	return language_keys
+
+/proc/setup_custom_event_info()
 	//faction event messages
+	var/list/custom_event_info_list = list()
 	var/datum/custom_event_info/CEI = new /datum/custom_event_info
 	CEI.faction = "Global"		//the old public one for whole server to see
-	GLOB.custom_event_info_list[CEI.faction] = CEI
+	custom_event_info_list[CEI.faction] = CEI
 	for(var/T in FACTION_LIST_HUMANOID)
 		CEI = new /datum/custom_event_info
 		CEI.faction = T
-		GLOB.custom_event_info_list[T] = CEI
+		custom_event_info_list[T] = CEI
 
 	var/datum/hive_status/hive
 	for(hive in GLOB.hive_datum)
 		CEI = new /datum/custom_event_info
 		CEI.faction = hive.internal_faction
-		GLOB.custom_event_info_list[hive.name] = CEI
+		custom_event_info_list[hive.name] = CEI
 
-	return 1
+	return custom_event_info_list
 
 /* // Uncomment to debug chemical reaction list.
 /client/verb/debug_chemical_list()

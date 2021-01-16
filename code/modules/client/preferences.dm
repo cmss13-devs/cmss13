@@ -1005,14 +1005,14 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("h_style")
 					var/list/valid_hairstyles = list()
-					for(var/hairstyle in hair_styles_list)
-						var/datum/sprite_accessory/S = hair_styles_list[hairstyle]
+					for(var/hairstyle in GLOB.hair_styles_list)
+						var/datum/sprite_accessory/S = GLOB.hair_styles_list[hairstyle]
 						if( !(species in S.species_allowed))
 							continue
 						if(!S.selectable)
 							continue
 
-						valid_hairstyles[hairstyle] = hair_styles_list[hairstyle]
+						valid_hairstyles[hairstyle] = GLOB.hair_styles_list[hairstyle]
 					valid_hairstyles = sortList(valid_hairstyles)
 
 					var/new_h_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in valid_hairstyles
@@ -1040,8 +1040,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("f_style")
 					var/list/valid_facialhairstyles = list()
-					for(var/facialhairstyle in facial_hair_styles_list)
-						var/datum/sprite_accessory/S = facial_hair_styles_list[facialhairstyle]
+					for(var/facialhairstyle in GLOB.facial_hair_styles_list)
+						var/datum/sprite_accessory/S = GLOB.facial_hair_styles_list[facialhairstyle]
 						if(gender == MALE && S.gender == FEMALE)
 							continue
 						if(gender == FEMALE && S.gender == MALE)
@@ -1051,7 +1051,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						if(!S.selectable)
 							continue
 
-						valid_facialhairstyles[facialhairstyle] = facial_hair_styles_list[facialhairstyle]
+						valid_facialhairstyles[facialhairstyle] = GLOB.facial_hair_styles_list[facialhairstyle]
 					valid_facialhairstyles = sortList(valid_facialhairstyles)
 
 					var/new_f_style = input(user, "Choose your character's facial-hair style:", "Character Preference")  as null|anything in valid_facialhairstyles

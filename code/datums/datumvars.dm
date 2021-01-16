@@ -711,7 +711,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species",all_species)
+		var/new_species = tgui_input_list(usr, "Please choose a new species.","Species",GLOB.all_species)
 
 		if(!new_species) return
 
@@ -800,7 +800,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob")
 			return
 
-		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", all_languages)
+		var/new_language = tgui_input_list(usr, "Please choose a language to add.","Language", GLOB.all_languages)
 
 		if(!new_language)
 			return

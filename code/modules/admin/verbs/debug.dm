@@ -529,13 +529,13 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	var/list/individual_counts = list()
 	for(var/datum/disease/M in active_diseases)
 		individual_counts["[M.type]"]++
-	for(var/mob/M in processable_human_list)
+	for(var/mob/M in SShuman.processable_human_list)
 		individual_counts["[M.type]"]++
 	for(var/obj/structure/machinery/M in processing_machines)
 		individual_counts["[M.type]"]++
 	for(var/datum/powernet/M in powernets)
 		individual_counts["[M.type]"]++
-	for(var/mob/M in living_misc_mobs)
+	for(var/mob/M in SSmob.living_misc_mobs)
 		individual_counts["[M.type]"]++
 	for(var/datum/nanoui/M in nanomanager.processing_uis)
 		individual_counts["[M.type]"]++

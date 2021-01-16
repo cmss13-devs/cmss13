@@ -384,7 +384,7 @@
 /obj/structure/machinery/m56d_hmg/New()
 	..()
 
-	ammo = ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
+	ammo = GLOB.ammo_list[ammo] //dunno how this works but just sliding this in from sentry-code.
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	update_icon()
 

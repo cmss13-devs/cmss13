@@ -33,7 +33,7 @@
 	sight |= SEE_MOBS
 	see_invisible = SEE_INVISIBLE_MINIMUM
 	see_in_dark = 8
-	living_misc_mobs += src
+	SSmob.living_misc_mobs += src
 	GLOB.hellhound_list += src
 
 	for(var/mob/dead/observer/M in GLOB.observer_list)
@@ -43,7 +43,7 @@
 
 /mob/living/carbon/hellhound/Destroy()
 	GLOB.hellhound_list -= src
-	living_misc_mobs -= src
+	SSmob.living_misc_mobs -= src
 	return ..()
 
 /mob/living/carbon/hellhound/Login()
@@ -259,4 +259,4 @@
 /mob/living/carbon/hellhound/rejuvenate()
 	..()
 	GLOB.hellhound_list += src
-	living_misc_mobs += src
+	SSmob.living_misc_mobs += src

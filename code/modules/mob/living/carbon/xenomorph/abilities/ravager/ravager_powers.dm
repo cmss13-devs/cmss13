@@ -505,7 +505,7 @@
 	var/turf/target = locate(A.x, A.y, A.z)
 	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, X.loc)
 
-	var/datum/ammo/ammoDatum = ammo_list[ammo_type]
+	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
 
 	P.generate_bullet(ammoDatum)
 

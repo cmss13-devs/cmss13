@@ -90,11 +90,11 @@
 	if(!X.check_state(1))
 		return
 	for(var/i in 1 to X.caste.spit_types.len)
-		if(X.ammo == ammo_list[X.caste.spit_types[i]])
+		if(X.ammo == GLOB.ammo_list[X.caste.spit_types[i]])
 			if(i == X.caste.spit_types.len)
-				X.ammo = ammo_list[X.caste.spit_types[1]]
+				X.ammo = GLOB.ammo_list[X.caste.spit_types[1]]
 			else
-				X.ammo = ammo_list[X.caste.spit_types[i+1]]
+				X.ammo = GLOB.ammo_list[X.caste.spit_types[i+1]]
 			break
 	to_chat(X, SPAN_NOTICE("You will now spit [X.ammo.name] ([X.ammo.spit_cost] plasma)."))
 	button.overlays.Cut()
@@ -128,7 +128,7 @@
 	if (X.selected_resin > length(X.resin_build_order))
 		X.selected_resin = 1
 
-	var/datum/resin_construction/RC = X.resin_build_order[X.selected_resin]
+	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.resin_build_order[X.selected_resin]]
 	to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
 	//update the button's overlay with new choice
 	button.overlays.Cut()

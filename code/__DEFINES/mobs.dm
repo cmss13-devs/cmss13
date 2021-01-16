@@ -117,12 +117,12 @@
 // =============================
 // hive types
 
-#define XENO_HIVE_NORMAL 1
-#define XENO_HIVE_CORRUPTED 2
-#define XENO_HIVE_ALPHA 3
-#define XENO_HIVE_BRAVO 4
-#define XENO_HIVE_CHARLIE 5
-#define XENO_HIVE_DELTA 6
+#define XENO_HIVE_NORMAL "xeno_hive_normal"
+#define XENO_HIVE_CORRUPTED "xeno_hive_corrupted"
+#define XENO_HIVE_ALPHA "xeno_hive_alpha"
+#define XENO_HIVE_BRAVO "xeno_hive_bravo"
+#define XENO_HIVE_CHARLIE "xeno_hive_charlie"
+#define XENO_HIVE_DELTA "xeno_hive_delta"
 
 //=================================================
 

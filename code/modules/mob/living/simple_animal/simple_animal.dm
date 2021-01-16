@@ -55,12 +55,12 @@
 
 /mob/living/simple_animal/Initialize()
 	. = ..()
-	living_misc_mobs += src
+	SSmob.living_misc_mobs += src
 	remove_verb(src, /mob/verb/observe)
 
 /mob/living/simple_animal/Destroy()
 	..()
-	living_misc_mobs -= src
+	SSmob.living_misc_mobs -= src
 
 /mob/living/simple_animal/Login()
 	if(src && src.client)
@@ -207,12 +207,12 @@
 /mob/living/simple_animal/death()
 	. = ..()
 	if(!.)	return //was already dead
-	living_misc_mobs -= src
+	SSmob.living_misc_mobs -= src
 	icon_state = icon_dead
 
 
 /mob/living/simple_animal/gib(var/cause = "gibbing")
-	living_misc_mobs -= src
+	SSmob.living_misc_mobs -= src
 	if(meat_amount && meat_type)
 		for(var/i = 0; i < meat_amount; i++)
 			new meat_type(src.loc)

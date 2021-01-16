@@ -1,10 +1,3 @@
-GLOBAL_DATUM_INIT(init, /datum/global_init, new)
-
-/*
-	Pre-map initialization stuff should go here.
-*/
-/datum/global_init/New()
-	makeDatumRefLists()
 
 var/world_view_size = 7
 var/lobby_view_size = 16

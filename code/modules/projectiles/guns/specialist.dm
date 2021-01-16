@@ -325,8 +325,8 @@
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	. = ..()
-	ammo_primary = ammo_list[ammo_primary]
-	ammo_secondary = ammo_list[ammo_secondary]
+	ammo_primary = GLOB.ammo_list[ammo_primary]
+	ammo_secondary = GLOB.ammo_list[ammo_secondary]
 	AddElement(/datum/element/magharness)
 	MD = new(src)
 

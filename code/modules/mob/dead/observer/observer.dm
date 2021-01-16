@@ -636,7 +636,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	var/choice = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", freed_mob_list)
+	var/choice = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", GLOB.freed_mob_list)
 	if(!choice || choice == "Cancel")
 		return
 
@@ -645,11 +645,11 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 
 	if(QDELETED(L) || L.client)
-		freed_mob_list -= L
+		GLOB.freed_mob_list -= L
 		to_chat(src, SPAN_WARNING("Something went wrong."))
 		return
 
-	freed_mob_list -= L
+	GLOB.freed_mob_list -= L
 	M.mind.transfer_to(L, TRUE)
 
 /mob/dead/verb/join_as_hellhound()

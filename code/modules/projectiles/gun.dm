@@ -145,8 +145,8 @@
 			update_icon()
 		else
 			current_mag = new current_mag(src, spawn_empty? 1:0)
-			ammo = current_mag.default_ammo ? ammo_list[current_mag.default_ammo] : ammo_list[/datum/ammo/bullet] //Latter should never happen, adding as a precaution.
-	else ammo = ammo_list[ammo] //If they don't have a mag, they fire off their own thing.
+			ammo = current_mag.default_ammo ? GLOB.ammo_list[current_mag.default_ammo] : GLOB.ammo_list[/datum/ammo/bullet] //Latter should never happen, adding as a precaution.
+	else ammo = GLOB.ammo_list[ammo] //If they don't have a mag, they fire off their own thing.
 
 	set_gun_attachment_offsets()
 	set_gun_config_values()
@@ -466,9 +466,9 @@
 		in_ammo = in_chamber.ammo
 	else if(current_mag && current_mag.current_rounds > 0)
 		if(istype(current_mag) && current_mag.chamber_contents[current_mag.chamber_position] != "empty")
-			in_ammo = ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
+			in_ammo = GLOB.ammo_list[current_mag.chamber_contents[current_mag.chamber_position]]
 			if(!istype(in_ammo))
-				in_ammo = ammo_list[current_mag.default_ammo]
+				in_ammo = GLOB.ammo_list[current_mag.default_ammo]
 		else if(!istype(current_mag) && ammo)
 			in_ammo = ammo
 
@@ -618,8 +618,8 @@
 	if(!magazine.default_ammo)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading.")
 		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b>")
-		ammo = ammo_list[/datum/ammo/bullet] //Looks like we're defaulting it.
-	else ammo = ammo_list[magazine.default_ammo]
+		ammo = GLOB.ammo_list[/datum/ammo/bullet] //Looks like we're defaulting it.
+	else ammo = GLOB.ammo_list[magazine.default_ammo]
 
 //Hardcoded and horrible
 /obj/item/weapon/gun/proc/cock_gun(mob/user)
@@ -836,7 +836,7 @@ and you're good to go.
 	if(!chambered)
 		to_chat(usr, "Something has gone horribly wrong. Ahelp the following: ERROR CODE I2: null ammo while create_bullet()")
 		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b>")
-		chambered = ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
+		chambered = GLOB.ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
 	var/weapon_source_mob
 	if(isliving(usr))
@@ -1136,7 +1136,7 @@ and you're good to go.
 		var/obj/item/projectile/BP
 		for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
 			BP = new /obj/item/projectile(initial(name), user, M.loc)
-			BP.generate_bullet(ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
+			BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 			BP.damage *= damage_buff
 			BP.ammo.on_hit_mob(M, BP)
 			M.bullet_act(BP)

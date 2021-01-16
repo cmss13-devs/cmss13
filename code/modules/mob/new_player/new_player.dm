@@ -163,7 +163,7 @@
 					to_chat(src, "You are currently not whitelisted to play [client.prefs.species].")
 					return
 
-				var/datum/species/S = all_species[client.prefs.species]
+				var/datum/species/S = GLOB.all_species[client.prefs.species]
 				if(!(S.flags & IS_WHITELISTED))
 					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
 					return
@@ -209,7 +209,7 @@
 					to_chat(src, alert("You are currently not whitelisted to play [client.prefs.species]."))
 					return 0
 
-				var/datum/species/S = all_species[client.prefs.species]
+				var/datum/species/S = GLOB.all_species[client.prefs.species]
 				if(!(S.flags & IS_WHITELISTED))
 					to_chat(src, alert("Your current species,[client.prefs.species], is not available for play on the station."))
 					return 0
@@ -348,7 +348,7 @@
 
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = all_species[client.prefs.species]
+		chosen_species = GLOB.all_species[client.prefs.species]
 	if(chosen_species)
 		// Have to recheck admin due to no usr at roundstart. Latejoins are fine though.
 		if(is_species_whitelisted(chosen_species) || has_admin_rights())
@@ -423,7 +423,7 @@
 /mob/new_player/get_species()
 	var/datum/species/chosen_species
 	if(client.prefs.species)
-		chosen_species = all_species[client.prefs.species]
+		chosen_species = GLOB.all_species[client.prefs.species]
 
 	if(!chosen_species)
 		return "Human"

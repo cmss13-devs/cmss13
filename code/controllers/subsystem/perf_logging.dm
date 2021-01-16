@@ -65,7 +65,7 @@ SUBSYSTEM_DEF(perf_logging)
 	timing_info.round_id = round.id
 	timing_info.round_time = current_timer
 	timing_info.client_count = length(GLOB.clients)
-	timing_info.human_count = length(processable_human_list)
+	timing_info.human_count = length(SShuman.processable_human_list)
 	timing_info.xeno_count = length(GLOB.xeno_mob_list)
 	timing_info.save()
 	timing_info.detach()

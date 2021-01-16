@@ -189,7 +189,7 @@ SUBSYSTEM_DEF(objectives)
 
 
 /datum/controller/subsystem/objectives/proc/connect_objectives()
-	for(var/datum/cm_objective/C in cm_objectives)
+	for(var/datum/cm_objective/C in objectives)
 		if(!(C in objectives))
 			objectives += C
 		if(C.objective_flags & OBJ_PROCESS_ON_DEMAND)

@@ -1168,7 +1168,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/New() //Let's make sure if something needs an ammo type, it spawns with one.
 	..()
 	if(ammo)
-		ammo = ammo_list[ammo]
+		ammo = GLOB.ammo_list[ammo]
 
 
 /obj/item/attachable/attached_gun/Destroy()

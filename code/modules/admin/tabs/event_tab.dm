@@ -628,11 +628,11 @@
 
 /datum/admins/var/create_humans_html = null
 /datum/admins/proc/create_humans(var/mob/user)
-	if(!gear_presets_list)
+	if(!GLOB.gear_presets_list)
 		return
 
 	if(!create_humans_html)
-		var/equipment_presets = jointext(gear_presets_list, ";")
+		var/equipment_presets = jointext(GLOB.gear_presets_list, ";")
 		create_humans_html = file2text('html/create_humans.html')
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 

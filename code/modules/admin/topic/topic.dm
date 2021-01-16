@@ -744,7 +744,9 @@
 			return
 
 		var/list/hives = list()
-		for(var/datum/hive_status/hive in GLOB.hive_datum)
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
 			hives += list("[hive.name]" = hive.hivenumber)
 
 		var/newhive = tgui_input_list(usr,"Select a hive.", "Infect Larva", hives)
@@ -786,8 +788,9 @@
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/list/hives = list();
-		for(var/datum/hive_status/hive in GLOB.hive_datum)
+		var/list/hives = list()
+		for(var/hivenumber in GLOB.hive_datum)
+			var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 			LAZYSET(hives, hive.name, hive)
 		LAZYSET(hives, "CANCEL", null)
 

@@ -491,7 +491,7 @@ var/list/datum/mob_hud/huds = list(
 	var/image/holder = hud_list[QUEEN_OVERWATCH_HUD]
 	holder.overlays.Cut()
 	holder.icon_state = "hudblank"
-	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum.len)
+	if (stat != DEAD && hivenumber && hivenumber <= GLOB.hive_datum)
 		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/mob/living/carbon/Xenomorph/Queen/Q = hive.living_xeno_queen
 		if (Q && Q.observed_xeno == src)

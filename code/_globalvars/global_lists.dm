@@ -220,7 +220,8 @@ var/global/list/paramslist_cache = list()
 		custom_event_info_list[T] = CEI
 
 	var/datum/hive_status/hive
-	for(hive in GLOB.hive_datum)
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
 		CEI = new /datum/custom_event_info
 		CEI.faction = hive.internal_faction
 		custom_event_info_list[hive.name] = CEI

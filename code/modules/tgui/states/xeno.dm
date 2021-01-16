@@ -9,8 +9,8 @@ GLOBAL_LIST_INIT(hive_state, setup_hive_states())
 
 /proc/setup_hive_states()
 	. = list()
-	for(var/H in GLOB.hive_datum)
-		var/datum/hive_status/hive = H
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		.[hive.internal_faction] = new/datum/ui_state/hive_state(hive.hivenumber)
 
 /datum/ui_state/hive_state
@@ -38,8 +38,8 @@ GLOBAL_LIST_INIT(hive_state_queen, setup_hive_queen_states())
 
 /proc/setup_hive_queen_states()
 	. = list()
-	for(var/H in GLOB.hive_datum)
-		var/datum/hive_status/hive = H
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		.[hive.internal_faction] = new/datum/ui_state/hive_state/queen(hive.hivenumber)
 
 /datum/ui_state/hive_state/queen/can_use_topic(src_object, mob/user)

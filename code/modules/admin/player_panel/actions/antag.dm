@@ -37,9 +37,6 @@
 	if(!isXeno(target))
 		return
 
-	if(params["hivenumber"] > length(GLOB.hive_datum))
-		return
-
 	var/mob/living/carbon/Xenomorph/X = target
 
 	X.set_hive_and_update(params["hivenumber"])

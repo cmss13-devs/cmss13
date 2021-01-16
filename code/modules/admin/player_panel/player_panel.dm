@@ -562,8 +562,8 @@ GLOBAL_LIST_INIT(pp_hives, pp_generate_hives())
 
 /proc/pp_generate_hives()
 	. = list()
-	for(var/I in GLOB.hive_datum)
-		var/datum/hive_status/H = I
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/H = GLOB.hive_datum[hivenumber]
 		.[H.name] = H.hivenumber
 
 GLOBAL_LIST_INIT(pp_limbs, list(

@@ -14,13 +14,17 @@ SUBSYSTEM_DEF(xevolution)
 	var/force_boost_power = FALSE // Debugging only
 
 /datum/controller/subsystem/xevolution/Initialize(start_timeofday)
-	for(var/datum/hive_status/HS in GLOB.hive_datum)
+	var/datum/hive_status/HS
+	for(var/hivenumber in GLOB.hive_datum)
+		HS = GLOB.hive_datum[hivenumber]
 		boost_power += HS.hivenumber
 		boost_power[HS.hivenumber] = 1
 	return ..()
 
 /datum/controller/subsystem/xevolution/fire(resumed = FALSE)
-	for(var/datum/hive_status/HS in GLOB.hive_datum)
+	var/datum/hive_status/HS
+	for(var/hivenumber in GLOB.hive_datum)
+		HS = GLOB.hive_datum[hivenumber]
 		if(!HS)
 			continue
 

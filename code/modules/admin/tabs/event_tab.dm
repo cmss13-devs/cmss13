@@ -285,7 +285,9 @@
 	to_chat(src, SSobjectives.get_objectives_progress())
 	to_chat(src, "<b>DEFCON:</b> [SSobjectives.get_scored_points()] / [SSobjectives.get_total_points()] points")
 
-	for(var/datum/hive_status/hive in GLOB.hive_datum)
+	var/datum/hive_status/hive
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
 		if(hive.xenocon_points)
 			to_chat(src, "<b>XENOCON [hive.hivenumber]:</b> [hive.xenocon_points] / [XENOCON_THRESHOLD] points")
 
@@ -412,7 +414,8 @@
 		return
 
 	var/list/hives = list()
-	for(var/datum/hive_status/hive in GLOB.hive_datum)
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		hives += list("[hive.name]" = hive.hivenumber)
 
 	hives += list("All Hives" = "everything")

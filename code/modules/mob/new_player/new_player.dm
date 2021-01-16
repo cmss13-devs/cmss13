@@ -263,6 +263,7 @@
 		SSticker.mode.latejoin_tally -= SSticker.mode.latejoin_larva_drop
 		var/datum/hive_status/HS
 		for(var/hivenumber in GLOB.hive_datum)
+			HS = GLOB.hive_datum[hivenumber]
 			if(length(HS.totalXenos))
 				HS.stored_larva++
 				HS.hive_ui.update_pooled_larva()

@@ -35,7 +35,7 @@
 							FACTION_ZOMBIE = 0
 							)
 
-	var/list/counted_xenos = list(0,0,0,0,0,0)
+	var/list/counted_xenos = list()
 
 	var/msg = "<b>Current Players:</b>\n"
 	var/list/Lines = list()
@@ -87,10 +87,9 @@
 								counted_humanoids[C.mob.faction]++
 						if(isXeno(C.mob))
 							var/mob/living/carbon/Xenomorph/X = C.mob
-							if(X.hivenumber > 0 && X.hivenumber <= 5)	//hard check to prevent admin version of who runtiming from non-standard hivenumbers created by bugs/admins
-								counted_xenos[X.hivenumber]++
+							counted_xenos[X.hivenumber]++
 							if(X.faction == FACTION_PREDALIEN)
-								counted_xenos[6]++
+								counted_xenos[FACTION_PREDALIEN]++
 							entry += " - <b><font color='red'>Xenomorph</font></b>"
 
 				entry += " (<A HREF='?_src_=admin_holder;adminmoreinfo;extra=\ref[C.mob]'>?</A>)"
@@ -119,19 +118,21 @@
 
 		show_fact = TRUE
 		var/datum/hive_status/hive
-		for(var/i = 1;i < LAZYLEN(counted_xenos); i++)
-			if(counted_xenos[i])
-				if(show_fact)
-					msg += "<br><br>Xenomorphs:"
-					show_fact = FALSE
-				hive = GLOB.hive_datum[i]
-				if(hive)
-					msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[i]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
-				else
-					msg += "<br><b style='color:#F00'>Error: no hive datum detected for [counted_xenos[i]]s Hive.</b>"
-				hive = null
-		if(counted_xenos[6])
-			msg += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[6]]</b>"
+		for(var/hivenumber in counted_xenos)
+			// Print predalien counts last
+			if(hivenumber == FACTION_PREDALIEN)
+				continue
+			if(show_fact)
+				msg += "<br><br>Xenomorphs:"
+				show_fact = FALSE
+			hive = GLOB.hive_datum[hivenumber]
+			if(hive)
+				msg += "<br><b style='color:[hive.color ? hive.color : "#8200FF"]'>[hive.name]: [counted_xenos[hivenumber]]</b> <b style='color:#4D0096'>(Queen: [hive.living_xeno_queen ? "Alive" : "Dead"])</b>"
+			else
+				msg += "<br><b style='color:#F00'>Error: no hive datum detected for [hivenumber].</b>"
+			hive = null
+		if(counted_xenos[FACTION_PREDALIEN])
+			msg += "<br><b style='color:#7ABA19'>Predaliens: [counted_xenos[FACTION_PREDALIEN]]</b>"
 
 	else
 		for(var/client/C in GLOB.clients)

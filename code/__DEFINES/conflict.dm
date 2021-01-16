@@ -109,7 +109,7 @@
 #define RESIN_MELEE_DAMAGE_MULTIPLIER	8.2
 #define RESIN_XENO_DAMAGE_MULTIPLIER    4
 
-#define RESIN_EXPLOSIVE_MULTIPLIER 0.5
+#define RESIN_EXPLOSIVE_MULTIPLIER 0.85
 
 //Projectile block probabilities for different types of cover
 #define PROJECTILE_COVERAGE_LOW			35

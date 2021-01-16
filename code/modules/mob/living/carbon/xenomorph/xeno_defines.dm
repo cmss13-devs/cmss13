@@ -72,7 +72,7 @@
 	var/can_hold_facehuggers = 0
 	var/can_hold_eggs = CANNOT_HOLD_EGGS
 
-	var/can_be_queen_healed = 1
+	var/can_be_queen_healed = TRUE
 
 	var/can_vent_crawl = 1
 

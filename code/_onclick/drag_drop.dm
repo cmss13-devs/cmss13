@@ -11,10 +11,14 @@
 
 	spawn(0)
 		if(over)
-			over.MouseDrop_T(src,usr)
+			over.MouseDrop_T(src, usr)
 	return
 
-// recieve a mousedrop
+/*
+	MouseDrop_T:
+
+	Called on the atom that you release mouse drag over. "dropping" is the atom being mouse dragged
+*/
 /atom/proc/MouseDrop_T(atom/dropping, mob/user)
 	if (dropping.flags_atom & NOINTERACT)
 		return

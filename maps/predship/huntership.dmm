@@ -343,14 +343,14 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
-/obj/item/legcuffs/yautja,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
+/obj/item/hunting_trap,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

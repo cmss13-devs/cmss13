@@ -198,3 +198,23 @@
 	else
 		hud_used.shrapnel_icon.name = ""
 		hud_used.shrapnel_icon.icon_state = "status_0"
+
+	var/is_tethering = is_tethering()
+	if(is_tethering)
+		hud_used.tethering_icon.name = "tethering"
+		hud_used.tethering_icon.icon_state = "status_tethering"
+		hud_used.tethering_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)
+		status_effect_placement++
+	else
+		hud_used.tethering_icon.name = ""
+		hud_used.tethering_icon.icon_state = "status_0"
+
+	var/is_tethered = is_tethered()
+	if(is_tethered)
+		hud_used.tethered_icon.name = "tethered"
+		hud_used.tethered_icon.icon_state = "status_tethered"
+		hud_used.tethered_icon.screen_loc = ui_datum.get_status_loc(status_effect_placement)
+		status_effect_placement++
+	else
+		hud_used.tethered_icon.name = ""
+		hud_used.tethered_icon.icon_state = "status_0"

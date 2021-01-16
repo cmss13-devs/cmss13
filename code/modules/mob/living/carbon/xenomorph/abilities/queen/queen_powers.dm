@@ -249,7 +249,7 @@
 		if(!X.can_not_harm(Xa))
 			continue
 
-		if(Xa.on_fire)
+		if(Xa.cannot_be_xeno_healed)
 			continue
 
 		if(Xa == X)

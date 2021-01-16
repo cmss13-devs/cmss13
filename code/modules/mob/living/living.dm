@@ -169,7 +169,7 @@
 		if (!buckled.anchored)
 			return buckled.Move(NewLoc, direct)
 		else
-			return 0
+			return FALSE
 
 	var/atom/movable/pullee = pulling
 	if(pullee && get_dist(src, pullee) > 1) //Is the pullee adjacent?

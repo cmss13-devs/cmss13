@@ -420,6 +420,10 @@
 
 	return dist
 
+// Beams
+/// For beams with an infinite duration (deletion is handled separately)
+#define BEAM_INFINITE_DURATION -1
+
 //Update this whenever you need to take advantage of more recent byond features
 #define MIN_COMPILER_VERSION 513
 #define MIN_COMPILER_BUILD 1514

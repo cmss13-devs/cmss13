@@ -38,7 +38,7 @@
 	//Emotes
 	var/recent_audio_emote = FALSE
 
-	var/on_fire = 0 //The "Are we on fire?" var
+	var/on_fire = FALSE //The "Are we on fire?" var
 	var/fire_stacks = 0 //Tracks how many stacks of fire we have on, max is
 	var/datum/reagent/fire_reagent
 

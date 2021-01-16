@@ -88,24 +88,23 @@
 #define COMSIG_MOB_APC_CUT_WIRE "mob_apc_cut_wire"
 /// From /obj/structure/machinery/power/apc/proc/pulse
 #define COMSIG_MOB_APC_POWER_PULSE "mob_apc_power_pulse"
-/// From /obj/structure/machinery/power/apc/proc/pulse
-#define COMSIG_MOB_FIRED_GUN "mob_fired_gun"
 /// From /projectiles/updated_projectiles/guns/proc/fire
-#define COMSIG_MOB_FIRED_GUN_ATTACHMENT "mob_fired_gun_attachment"
+#define COMSIG_MOB_FIRED_GUN "mob_fired_gun"
 /// From /projectiles/updated_projectiles/guns/proc/fire_attachment
-#define COMSIG_MOB_DEATH "mob_death"
+#define COMSIG_MOB_FIRED_GUN_ATTACHMENT "mob_fired_gun_attachment"
 /// From /mob/proc/death
-#define COMSIG_MOB_GETTING_UP "mob_getting_up"
+#define COMSIG_MOB_DEATH "mob_death"
 /// From /mob/proc/update_canmove()
-
-#define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
-/// from /mob/living/carbon/human/attack_alien()
-#define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
-/// from /mob/living/carbon/Xenomorph/attack_alien()
-
-
+#define COMSIG_MOB_GETTING_UP "mob_getting_up"
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
+/// From /mob/living/verb/resist()
+#define COMSIG_MOB_RESISTED "mob_resist"
+
+/// from /mob/living/carbon/human/attack_alien()
+#define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
+/// from /mob/living/carbon/Xenomorph/attack_alien()
+#define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
@@ -171,8 +170,11 @@
 /// From /atom/movable/proc/launch_towards
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"
 	#define COMPONENT_CANCEL_THROW (1<<0)
-//from base of atom/movable/Moved(): (/atom, dir, forced)
+///from base of atom/movable/Moved(): (/atom, dir, forced)
 #define COMSIG_MOVABLE_MOVED "movable_moved"
+/// From /atom/movable/Move(): (atom/NewLoc)
+#define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
+	#define COMPONENT_CANCEL_MOVE (1<<0)
 
 ///from /obj/item/device/agents/floppy_disk/proc/insert_drive
 #define COMSIG_AGENT_DISK_INSERTED "agent_disk_inserted"

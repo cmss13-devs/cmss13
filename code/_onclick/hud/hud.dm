@@ -30,6 +30,8 @@
 	var/obj/screen/slowed_icon
 	var/obj/screen/bleeding_icon
 	var/obj/screen/shrapnel_icon
+	var/obj/screen/tethering_icon
+	var/obj/screen/tethered_icon
 
 	var/obj/screen/module_store_icon
 
@@ -108,6 +110,8 @@
 	slowed_icon = null
 	shrapnel_icon = null
 	bleeding_icon = null
+	tethering_icon = null
+	tethered_icon = null
 
 	nutrition_icon = null
 

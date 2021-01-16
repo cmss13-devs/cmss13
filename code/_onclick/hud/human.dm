@@ -359,6 +359,16 @@
 	shrapnel_icon.icon_state = "status_0"
 	infodisplay += shrapnel_icon
 
+	tethering_icon = new /obj/screen()
+	tethering_icon.icon = ui_datum.ui_style_icon
+	tethering_icon.icon_state = "status_0"
+	infodisplay += tethering_icon
+
+	tethered_icon = new /obj/screen()
+	tethered_icon.icon = ui_datum.ui_style_icon
+	tethered_icon.icon_state = "status_0"
+	infodisplay += tethered_icon
+
 
 /mob/living/carbon/human/create_hud()
 	if(client && client.prefs && !hud_used)

@@ -22,6 +22,7 @@
 	is_intelligent = TRUE
 	tier = 1
 	attack_delay = -2
+	can_be_queen_healed = FALSE
 
 	behavior_delegate_type = /datum/behavior_delegate/predalien_base
 

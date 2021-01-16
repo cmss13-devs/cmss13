@@ -1088,7 +1088,7 @@
 /area/lv624/ground/sand6)
 "aeb" = (
 /obj/effect/spider/stickyweb,
-/obj/item/legcuffs/yautja{
+/obj/item/hunting_trap{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
@@ -8121,7 +8121,7 @@
 /area/lv624/ground/sand6)
 "aBi" = (
 /obj/structure/surface/table,
-/obj/item/legcuffs/yautja{
+/obj/item/hunting_trap{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},

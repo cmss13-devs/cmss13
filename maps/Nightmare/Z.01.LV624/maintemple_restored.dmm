@@ -13,7 +13,7 @@
 /turf/closed/wall/mineral/sandstone,
 /area/lv624/ground/caves/east1)
 "e" = (
-/obj/item/legcuffs/yautja{
+/obj/item/hunting_trap{
 	armed = 1;
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
@@ -75,7 +75,7 @@
 	},
 /area/lv624/ground/sand6)
 "m" = (
-/obj/item/legcuffs/yautja{
+/obj/item/hunting_trap{
 	armed = 1;
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
@@ -117,7 +117,7 @@
 /area/lv624/ground/sand6)
 "s" = (
 /obj/structure/surface/table,
-/obj/item/legcuffs/yautja{
+/obj/item/hunting_trap{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
@@ -174,7 +174,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/sand3)
 "z" = (
-/obj/item/legcuffs/yautja{
+/obj/item/hunting_trap{
 	armed = 1;
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"

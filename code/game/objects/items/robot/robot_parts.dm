@@ -197,7 +197,6 @@
 				var/datum/robot_component/cell_component = O.components["power cell"]
 				cell_component.wrapped = O.cell
 				cell_component.installed = 1
-
 			O.Namepick()
 
 			qdel(src)

@@ -852,7 +852,7 @@
 	/obj/item/attachable/burstfire_assembly,\
 	/obj/item/attachable/magnetic_harness,\
 	/obj/item/attachable/gyro,\
-	/obj/item/attachable/stock/smg/brace,\
+	/obj/item/attachable/stock/smg/collapsible/brace,\
 	/obj/item/attachable/quickfire,\
 	/obj/item/attachable/bipod,\
 	/obj/item/attachable/attached_gun/grenade,\

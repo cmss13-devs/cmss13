@@ -24,7 +24,7 @@
 
 	user.visible_message(SPAN_WARNING("[user] starts refilling [src]."), SPAN_WARNING("You start refilling [src]."))
 
-	if(!do_after(user, SECONDS_5, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(user, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		user.visible_message(SPAN_WARNING("[user] stops refilling [src]."), SPAN_WARNING("You stop refilling [src]."))
 		return
 

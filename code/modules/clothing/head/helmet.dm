@@ -368,7 +368,7 @@
 		if(M.current_rounds == 0)
 			ammo_level = "empty. Uh oh."
 		user.visible_message("[user] bashes [M] against their helmet", "You bash [M] against your helmet. It is [ammo_level]")
-		helmet_bash_cooldown = world.time + SECONDS_20
+		helmet_bash_cooldown = world.time + 20 SECONDS
 	else
 		..()
 		return pockets.attackby(W, user)

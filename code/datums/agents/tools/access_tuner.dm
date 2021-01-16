@@ -1,5 +1,5 @@
 /obj/item/device/multitool/antag
-    hack_speed = SECONDS_1
+    hack_speed = 1 SECONDS
 
 #define SHOW_HACK_MESSAGE user.visible_message(SPAN_DANGER("[user] hacks [target]."), SPAN_NOTICE("You hack [target]."))
 

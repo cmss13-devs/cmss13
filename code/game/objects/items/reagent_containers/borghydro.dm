@@ -11,7 +11,7 @@
 	var/mode = 1
 	var/charge_cost = 50
 	var/charge_tick = 0
-	var/recharge_time = SECONDS_2 //Time it takes for shots to recharge
+	var/recharge_time = 2 SECONDS //Time it takes for shots to recharge
 
 	var/list/reagent_ids = list("tricordrazine", "bicaridine", "kelotane", "dexalinp", "anti_toxin", "inaprovaline", "tramadol", "imidazoline", "spaceacillin", "quickclot")
 	var/list/reagent_volumes = list()

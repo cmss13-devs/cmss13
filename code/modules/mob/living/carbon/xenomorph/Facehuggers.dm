@@ -25,7 +25,7 @@
 	var/sterile = 0
 	var/strength = 5
 	var/attached = 0
-	var/lifecycle = SECONDS_10 //How long the hugger will survive outside of the egg, or carrier.
+	var/lifecycle = 10 SECONDS //How long the hugger will survive outside of the egg, or carrier.
 	var/leaping = 0 //Is actually attacking someone?
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/flags_embryo = NO_FLAGS
@@ -367,7 +367,7 @@
 	if(round_statistics && ishuman(target))
 		round_statistics.total_huggers_applied++
 
-/obj/item/clothing/mask/facehugger/proc/check_lifecycle(var/delay = SECONDS_5)
+/obj/item/clothing/mask/facehugger/proc/check_lifecycle(var/delay = 5 SECONDS)
 	if(lifecycle - delay <= 0)
 		if(isturf(loc))
 			var/obj/effect/alien/egg/E = locate() in loc
@@ -396,7 +396,7 @@
 		lifecycle -= delay
 		return TRUE
 
-/obj/item/clothing/mask/facehugger/proc/GoActive(var/delay = SECONDS_5)
+/obj/item/clothing/mask/facehugger/proc/GoActive(var/delay = 5 SECONDS)
 	set waitfor = 0
 
 	if(stat == DEAD)

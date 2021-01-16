@@ -15,7 +15,7 @@
 		/obj/item/device/analyzer/plant_analyzer,
 		/obj/item/seeds,/obj/item/reagent_container/glass/fertilizer,
 		/obj/item/tool/minihoe,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -78,7 +78,7 @@
 	armor_laser = CLOTHING_ARMOR_LOW
 
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	time_to_equip = SECONDS_2
+	time_to_equip = 2 SECONDS
 
 //Chaplain
 /obj/item/clothing/suit/nun
@@ -101,7 +101,7 @@
 	allowed = list (
 		/obj/item/tool/kitchen/knife,
 		/obj/item/tool/kitchen/knife/butcher,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -121,7 +121,7 @@
 	allowed = list (
 		/obj/item/tool/kitchen/knife,
 		/obj/item/tool/kitchen/knife/butcher,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -169,7 +169,7 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tool/lighter,
 		/obj/item/device/taperecorder,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -202,7 +202,7 @@
 		/obj/item/weapon/melee/baton,
 		/obj/item/handcuffs,
 		/obj/item/device/taperecorder,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -248,7 +248,7 @@
 		/obj/item/tool/wirecutters,
 		/obj/item/tool/wrench,
 		/obj/item/clothing/mask/gas,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -317,7 +317,7 @@
 		/obj/item/reagent_container/hypospray,
 		/obj/item/reagent_container/syringe,
 		/obj/item/device/healthanalyzer,
-		
+
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,

@@ -58,7 +58,7 @@
 		return
 
 	H.visible_message(SPAN_NOTICE("[H] starts to empty \the [src]..."), SPAN_NOTICE("You start to empty \the [src]..."))
-	if(!do_after(H, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(!do_after(H, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		H.visible_message(SPAN_WARNING("[H] stops emptying \the [src]..."), SPAN_WARNING("You stop emptying \the [src]..."))
 		return
 

@@ -1,4 +1,4 @@
-#define COOLDOWN_COMM_MESSAGE SECONDS_30
+#define COOLDOWN_COMM_MESSAGE 30 SECONDS
 
 /obj/structure/machinery/computer/groundside_operations
 	name = "groundside operations console"

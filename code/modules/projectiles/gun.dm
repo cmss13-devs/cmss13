@@ -534,15 +534,15 @@
 
 		"burst_scatter" = src.burst_scatter_mult,
 		"burst_amount" = burst_amount,
-		"firerate" = round(MINUTES_1 / rpm), // 3 minutes so that the values look greater than they actually are
-		"burst_firerate" = round(MINUTES_1 / burst_rpm),
+		"firerate" = round(1 MINUTES / rpm), // 3 minutes so that the values look greater than they actually are
+		"burst_firerate" = round(1 MINUTES / burst_rpm),
 
-		"firerate_second" = round(SECONDS_1 / rpm, 0.01),
-		"burst_firerate_second" = round(SECONDS_1 / burst_rpm, 0.01),
+		"firerate_second" = round(1 SECONDS / rpm, 0.01),
+		"burst_firerate_second" = round(1 SECONDS / burst_rpm, 0.01),
 
 		"recoil_max" = RECOIL_AMOUNT_TIER_1,
 		"scatter_max" = SCATTER_AMOUNT_TIER_1,
-		"firerate_max" = MINUTES_1 / FIRE_DELAY_TIER_10,
+		"firerate_max" = 1 MINUTES / FIRE_DELAY_TIER_10,
 		"damage_max" = BULLET_DAMAGE_TIER_20,
 		"accuracy_max" = 32,
 		"range_max" = 32,
@@ -1100,7 +1100,7 @@ and you're good to go.
 
 	else if(EXECUTION_CHECK) //Execution
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [M], steadying their aim."), SPAN_WARNING("You put [src] up to [M], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
-		if(!do_after(user, SECONDS_3, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
+		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
 			return FALSE
 	else if(user.a_intent != INTENT_HARM) //Thwack them
 		return ..()

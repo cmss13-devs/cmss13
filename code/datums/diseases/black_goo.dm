@@ -110,18 +110,18 @@
 /obj/item/weapon/zombie_claws/attack(mob/living/M, mob/living/carbon/human/user, def_zone)
 	if(iszombie(M))
 		return FALSE
-	
+
 	. = ..()
 	if(.)
 		playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, 5)
-	
+
 	if(isHumanStrict(M))
 		var/mob/living/carbon/human/H = M
 
 		for(var/datum/disease/black_goo/BG in H.viruses)
 			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is infected</B>")))
 			return .
-		
+
 		var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - H.getarmor(def_zone, ARMOR_BIO), 0)
 
 		if(prob(bio_protected))
@@ -144,7 +144,7 @@
 		user.visible_message(SPAN_DANGER("[user] jams their [name] into [O] and strains to rip it open."),
 		SPAN_DANGER("You jam your [name] into [O] and strain to rip it open."))
 		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, 1)
-		if(do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			if(!D.density)
 				return
 
@@ -160,7 +160,7 @@
 		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
 		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 		playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-		if(do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
+		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			user.visible_message(SPAN_DANGER("[user] forces [D] open with their [name]."),
 			SPAN_DANGER("You force [D] open with your [name]."))
 			D.Open()

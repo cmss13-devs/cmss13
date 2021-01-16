@@ -45,7 +45,7 @@
 	var/finished = 0
 	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
-	var/spawn_next_wave = MINUTES_10 / SECONDS_2 //Spawn first batch at ~10 minutes (we divide it by the game ticker time of 2 seconds)
+	var/spawn_next_wave = 10 MINUTES //Spawn first batch at ~10 minutes (we divide it by the game ticker time of 2 seconds)
 	var/xeno_wave = 1 //Which wave is it
 
 	var/wave_ticks_passed = 0 //Timer for xeno waves
@@ -60,7 +60,7 @@
 			//This will get populated with spawn_xenos() proc
 	var/list/spawnxeno = list()
 
-	var/next_supply = MINUTES_1 //At which wave does the next supply drop come?
+	var/next_supply = 1 MINUTES //At which wave does the next supply drop come?
 
 	var/ticks_passed = 0
 	var/lobby_time = 0 //Lobby time does not count for marine 1h win condition
@@ -133,27 +133,27 @@
 		//Cleaning stuff more aggresively
 		SSitem_cleanup.start_processing_time = 0
 		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
-		SSitem_cleanup.wait = MINUTES_1
-		SSitem_cleanup.next_fire = MINUTES_1
+		SSitem_cleanup.wait = 1 MINUTES
+		SSitem_cleanup.next_fire = 1 MINUTES
 		spawn(0)
 			//Deleting Almayer, for performance!
 			SSitem_cleanup.delete_almayer()
 	if(SSdefcon)
 		//Don't need DEFCON
-		SSdefcon.wait = MINUTES_30
+		SSdefcon.wait = 30 MINUTES
 	if(SSxenocon)
 		//Don't need XENOCON
-		SSxenocon.wait = MINUTES_30
+		SSxenocon.wait = 30 MINUTES
 
 
 //PROCCESS
-/datum/game_mode/whiskey_outpost/process()
+/datum/game_mode/whiskey_outpost/process(delta_time)
 	. = ..()
 	checkwin_counter++
 	ticks_passed++
 	wave_ticks_passed++
 
-	if(wave_ticks_passed >= spawn_next_wave)
+	if(wave_ticks_passed >= (spawn_next_wave/(delta_time SECONDS)))
 		if(count_xenos() < 50)//Checks braindead too, so we don't overpopulate! Also make sure its less than twice us in the world, so we advance waves/get more xenos the more marines survive.
 			wave_ticks_passed = 0
 			spawn_next_wo_wave = TRUE
@@ -169,7 +169,7 @@
 
 	if(world.time > next_supply)
 		place_whiskey_outpost_drop()
-		next_supply += MINUTES_2
+		next_supply += 2 MINUTES
 
 	if(checkwin_counter >= 10) //Only check win conditions every 10 ticks.
 		if(!finished && round_should_check_for_win)
@@ -202,7 +202,7 @@
 
 	if(C[1] == 0)
 		finished = 1 //Alien win
-	else if(world.time > HOURS_1 + MINUTES_20 + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
+	else if(world.time > 1 HOURS + 20 MINUTES + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
 		finished = 2 //Marine win
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
@@ -221,8 +221,8 @@
 	return xeno_count
 
 /datum/game_mode/whiskey_outpost/proc/pickovertime()
-	var/randomtime = ((rand(0,6)+rand(0,6)+rand(0,6)+rand(0,6))*SECONDS_50)
-	var/maxovertime = MINUTES_20
+	var/randomtime = ((rand(0,6)+rand(0,6)+rand(0,6)+rand(0,6))*50 SECONDS)
+	var/maxovertime = 20 MINUTES
 	if (randomtime >= maxovertime)
 		return maxovertime
 	return randomtime

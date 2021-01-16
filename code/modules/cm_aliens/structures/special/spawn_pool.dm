@@ -7,7 +7,7 @@
 	var/last_larva_time = 0
 	var/last_surge_time = 0
 	var/spawn_cooldown = 30 SECONDS
-	var/surge_cooldown = 1 MINUTE
+	var/surge_cooldown = 1 MINUTES
 	var/mob/melting_body
 
 	luminosity = 3
@@ -132,7 +132,7 @@
 		vis_contents.Cut()
 		QDEL_NULL(melting_body)
 	else
-		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), SECONDS_2)
+		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), 2 SECONDS)
 
 /obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
 	if(linked_hive.hardcore)

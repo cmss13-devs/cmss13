@@ -107,8 +107,8 @@
 
 	round_time_lobby = world.time
 
-	addtimer(CALLBACK(src, .proc/ares_online), SECONDS_5)
-	addtimer(CALLBACK(src, .proc/map_announcement), SECONDS_20)
+	addtimer(CALLBACK(src, .proc/ares_online), 5 SECONDS)
+	addtimer(CALLBACK(src, .proc/map_announcement), 20 SECONDS)
 
 	return ..()
 

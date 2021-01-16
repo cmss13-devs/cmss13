@@ -2,7 +2,7 @@ var/list/active_effects = list()
 
 SUBSYSTEM_DEF(effects)
 	name     = "Effects"
-	wait     = 1 SECOND
+	wait     = 1 SECONDS
 	flags    = SS_NO_INIT | SS_KEEP_TIMING
 	priority = SS_PRIORITY_DISEASE
 

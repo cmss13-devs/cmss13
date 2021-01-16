@@ -82,7 +82,7 @@
 
 /obj/effect/overlay/temp/point/big
 	icon_state = "big_arrow"
-	effect_duration = SECONDS_4
+	effect_duration = 4 SECONDS
 
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
@@ -285,7 +285,7 @@
 /obj/effect/overlay/temp/acid_pool_splash
 	name = "acid splash"
 	icon_state = "acidpoolsplash"
-	effect_duration = SECONDS_10
+	effect_duration = 10 SECONDS
 
 /obj/effect/overlay/temp/acid_pool_splash/Initialize(mapload, ...)
 	. = ..()

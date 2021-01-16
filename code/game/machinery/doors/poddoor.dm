@@ -51,7 +51,7 @@
 		pry_open(X)
 
 
-/obj/structure/machinery/door/poddoor/proc/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = SECONDS_4)
+/obj/structure/machinery/door/poddoor/proc/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
 	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),\
 	SPAN_XENONOTICE("You start prying [src] open."), max_distance = 3)
 

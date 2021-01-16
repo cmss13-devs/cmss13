@@ -1,11 +1,11 @@
-#define PREPTIME_BEFORE_EVENTS	MINUTES_20
-#define MAXIMUM_EXTRA_DELAY	MINUTES_10
+#define PREPTIME_BEFORE_EVENTS	20 MINUTES
+#define MAXIMUM_EXTRA_DELAY	10 MINUTES
 #define MAXIMUM_POP_FOR_EXTRA_DELAY 140
 #define MINIMUM_POP_FOR_EXTRA_DELAY 80
 
 SUBSYSTEM_DEF(events)
 	name     = "Events"
-	wait     = MINUTES_1
+	wait     = 1 MINUTES
 	flags	 = SS_NO_INIT
 	priority = SS_PRIORITY_EVENT
 
@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(events)
 	var/forced = FALSE
 
 	var/start_time = 0
-	var/delay_between_each_event = MINUTES_10
+	var/delay_between_each_event = 10 MINUTES
 	var/extra_delay_based_on_pop = 0
 	var/last_event_time = 0
 

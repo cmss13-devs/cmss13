@@ -5,7 +5,7 @@
     icon_state = "training_grenade"
     item_state = "grenade_training"
 
-    det_time = SECONDS_5
+    det_time = 5 SECONDS
     harmful = FALSE
 
     var/decoy_strength = 500

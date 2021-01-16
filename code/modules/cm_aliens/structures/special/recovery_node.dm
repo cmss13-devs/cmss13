@@ -6,7 +6,7 @@
 	icon_state = "recovery"
 	health = 400
 	var/heal_amount = 10
-	var/heal_cooldown = SECONDS_5
+	var/heal_cooldown = 5 SECONDS
 	var/last_healed
 
 /obj/effect/alien/resin/special/recovery/examine(mob/user)
@@ -14,7 +14,7 @@
 	if((isXeno(user) || isobserver(user)) && linked_hive)
 		var/message = "Recovers the health of adjacent Xenomorphs."
 		to_chat(user, message)
-	
+
 /obj/effect/alien/resin/special/recovery/process()
 	if(last_healed && world.time < last_healed + heal_cooldown)
 		return

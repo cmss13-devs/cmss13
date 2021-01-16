@@ -240,7 +240,7 @@
 		else if(issignaller(detonator.a_right) || issignaller(detonator.a_left))
 			overlays += new /obj/effect/overlay/danger
 			layer = INTERIOR_DOOR_LAYER
-			addtimer(CALLBACK(src, .proc/delayed_prime, target_turf), SECONDS_3)
+			addtimer(CALLBACK(src, .proc/delayed_prime, target_turf), 3 SECONDS)
 			return
 		else
 			. = ..()

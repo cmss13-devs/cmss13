@@ -18,7 +18,7 @@
 
 	matter = list("metal" = 50,"glass" = 20)
 
-	var/hack_speed = SECONDS_10 // Only used for vendors right now
+	var/hack_speed = 10 SECONDS // Only used for vendors right now
 	var/next_scan
 
 /obj/item/device/multitool/attack(mob/M as mob, mob/user as mob, def_zone)

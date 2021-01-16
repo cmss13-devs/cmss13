@@ -117,11 +117,6 @@
 /datum/shuttle/ferry/supply/proc/idle()
 	return (moving_status == SHUTTLE_IDLE)
 
-//returns the ETA in minutes
-/datum/shuttle/ferry/supply/proc/eta_minutes()
-	var/ticksleft = arrive_time - world.time
-	return round(ticksleft/MINUTES_1,1)
-
 /datum/shuttle/ferry/supply/proc/raise_railings()
 	var/effective = 0
 	for(var/obj/structure/machinery/door/poddoor/M in machines)

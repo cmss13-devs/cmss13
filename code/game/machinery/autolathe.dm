@@ -347,7 +347,7 @@
 	icon_state = "[base_state]_n"
 
 	playsound(src, 'sound/machines/print.ogg', 25)
-	sleep(SECONDS_5)
+	sleep(5 SECONDS)
 	playsound(src, 'sound/machines/print_off.ogg', 25)
 	icon_state = "[base_state]"
 
@@ -403,7 +403,7 @@
 			hacked = !hacked
 			visible_message(SPAN_NOTICE("A blue light flickers [hacked ? "on" : "off"] in the panel of \the [src]."))
 			update_printable()
-			addtimer(CALLBACK(src, .proc/flip_hacked), SECONDS_10)
+			addtimer(CALLBACK(src, .proc/flip_hacked), 10 SECONDS)
 		if (AUTOLATHE_WIRE_SHOCK)
 			shock(user, 50)
 			seconds_electrified = 10

@@ -123,8 +123,8 @@
 
 	return 1
 
-#define XENO_ARMOR_BREAK_PASS_TIME SECONDS_1 / 2
-#define XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME SECONDS_2
+#define XENO_ARMOR_BREAK_PASS_TIME 0.5 SECONDS
+#define XENO_ARMOR_BREAK_25PERCENT_IMMUNITY_TIME 2 SECONDS
 
 /mob/living/carbon/Xenomorph/var/armor_break_to_apply = 0
 /mob/living/carbon/Xenomorph/proc/apply_armorbreak(armorbreak = 0)

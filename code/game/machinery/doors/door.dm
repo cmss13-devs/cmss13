@@ -137,7 +137,7 @@
 	if(prob(40/severity))
 		if(secondsElectrified == 0)
 			secondsElectrified = -1
-			spawn(SECONDS_30)
+			spawn(30 SECONDS)
 				secondsElectrified = 0
 	..()
 

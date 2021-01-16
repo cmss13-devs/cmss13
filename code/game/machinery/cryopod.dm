@@ -172,7 +172,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 
 	var/mob/living/occupant = null //Person waiting to be despawned.
 	var/orient_right = null // Flips the sprite.
-	var/time_till_despawn = MINUTES_10 //10 minutes-ish safe period before being despawned.
+	var/time_till_despawn = 10 MINUTES //10 minutes-ish safe period before being despawned.
 	var/time_entered = 0 //Used to keep track of the safe period.
 	var/obj/item/device/radio/intercom/announce //Intercom for cryo announcements
 
@@ -188,8 +188,8 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 /obj/structure/machinery/cryopod/process()
 	if(occupant)
 		//if occupant ghosted, time till despawn is severely shorter
-		if(!occupant.key && time_till_despawn == MINUTES_10)
-			time_till_despawn -= MINUTES_8
+		if(!occupant.key && time_till_despawn == 10 MINUTES)
+			time_till_despawn -= 8 MINUTES
 		//Allow a ten minute gap between entering the pod and actually despawning.
 		if(world.time - time_entered < time_till_despawn)
 			return

@@ -824,7 +824,7 @@
 		if(APC_WIRE_IDSCAN) //Unlocks the APC for 30 seconds, if you have a better way to hack an APC I'm all ears
 			locked = 0
 			visible_message(SPAN_NOTICE("\The [src] emits a click."))
-			spawn(SECONDS_30)
+			spawn(30 SECONDS)
 				locked = 1
 				visible_message(SPAN_NOTICE("\The [src] emits a slight thunk."))
 
@@ -1187,7 +1187,7 @@
 	lighting = 0
 	equipment = 0
 	environ = 0
-	spawn(MINUTES_1)
+	spawn(1 MINUTES)
 		equipment = 3
 		environ = 3
 	..()

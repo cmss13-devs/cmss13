@@ -188,7 +188,7 @@
 
 				qdel(F)
 
-				addtimer(CALLBACK(src, .proc/replace_triggers), SECONDS_30)
+				addtimer(CALLBACK(src, .proc/replace_triggers), 30 SECONDS)
 			if(EGG_DESTROYED)
 				to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
 			if(EGG_GROWING, EGG_GROWN)

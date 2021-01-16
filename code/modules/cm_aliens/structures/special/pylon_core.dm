@@ -94,11 +94,11 @@
 	node_type = /obj/effect/alien/weeds/node/pylon/core
 	var/hardcore = FALSE
 
-	var/next_attacked_message = SECONDS_5
+	var/next_attacked_message = 5 SECONDS
 	var/last_attacked_message = 0
 
 	var/heal_amount = 100
-	var/heal_interval = SECONDS_10
+	var/heal_interval = 10 SECONDS
 	var/last_healed = 0
 
 	protection_level = TURF_PROTECTION_OB

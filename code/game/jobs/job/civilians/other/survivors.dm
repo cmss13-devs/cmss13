@@ -118,5 +118,5 @@
 	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
 
 AddTimelock(/datum/job/civilian/survivor, list(
-	JOB_SQUAD_ROLES = HOURS_3
+	JOB_SQUAD_ROLES = 3 HOURS
 ))

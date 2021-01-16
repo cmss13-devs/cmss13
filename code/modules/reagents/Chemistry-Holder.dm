@@ -198,8 +198,8 @@
 			BR.del_reagent(RG.id)
 
 	addtimer(CALLBACK(BR, /datum/reagents/proc/reaction, target, INGEST), 95)
-	addtimer(CALLBACK(BR, /datum/reagents/proc/trans_to, target, BR.total_volume), SECONDS_10)
-	QDEL_IN(B, SECONDS_10)
+	addtimer(CALLBACK(BR, /datum/reagents/proc/trans_to, target, BR.total_volume), 10 SECONDS)
+	QDEL_IN(B, 10 SECONDS)
 	return amount
 
 /datum/reagents/proc/set_source_mob(var/new_source_mob)
@@ -630,7 +630,7 @@
 		combust(sourceturf, radius, intensity, duration, supplemented, firecolor, smokerad) // TODO: Implement directional flames
 	if(exploded && sourceturf)
 		sourceturf.chemexploded = TRUE // to prevent grenade stacking
-		addtimer(CALLBACK(sourceturf, /turf.proc/reset_chemexploded), SECONDS_2)
+		addtimer(CALLBACK(sourceturf, /turf.proc/reset_chemexploded), 2 SECONDS)
 	trigger_volatiles = FALSE
 	return exploded
 

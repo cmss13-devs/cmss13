@@ -57,7 +57,7 @@
 	return !BD.used_shaman_ability
 
 /datum/action/xeno_action/activable/sacrifice_egg/proc/get_cooldown()
-	return SECONDS_10
+	return 10 SECONDS
 
 /datum/action/xeno_action/activable/sacrifice_egg/proc/get_gather_range()
 	return 4
@@ -207,7 +207,7 @@
 	var/maximum_range = 7
 	var/gain_per_xeno = 0.5
 	var/stun_timer = 2
-	var/stun_timeout = SECONDS_20
+	var/stun_timeout = 20 SECONDS
 
 /datum/action/xeno_action/verb/verb_egg_sacr_scream()
 	set category = "Alien"
@@ -407,7 +407,7 @@
 	visible_message(SPAN_XENOWARNING("\The [src] begins to emit madness-inducing pheromones."), \
 		SPAN_XENOWARNING("You begin to emit all pheromones."), null, 5)
 
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/egg_sacr_pheromones_disable), SECONDS_30)
+	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/Carrier.proc/egg_sacr_pheromones_disable), 30 SECONDS)
 
 	return TRUE
 

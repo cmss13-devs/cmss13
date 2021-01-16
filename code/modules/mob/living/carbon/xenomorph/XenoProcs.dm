@@ -588,7 +588,7 @@
 
 	. = TC.attempt_tackle(tackle_bonus)
 	if (!.)
-		TC.tackle_reset_id = addtimer(CALLBACK(src, .proc/reset_tackle, M), SECONDS_4, TIMER_UNIQUE | TIMER_STOPPABLE)
+		TC.tackle_reset_id = addtimer(CALLBACK(src, .proc/reset_tackle, M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		qdel(TC)
 		tackle_counter[M] = null

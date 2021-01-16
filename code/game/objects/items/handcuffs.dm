@@ -11,12 +11,12 @@
 	throw_speed = SPEED_SLOW
 	throw_range = 5
 	matter = list("metal" = 500)
-	
+
 	var/dispenser = 0
-	var/breakouttime = MINUTES_1 // 1 minute
+	var/breakouttime = 1 MINUTES // 1 minute
 	var/single_use = 0 //determines if handcuffs will be deleted on removal
 	var/cuff_sound = 'sound/weapons/handcuffs.ogg'
-	var/cuff_delay = SECONDS_4 //how many deciseconds it takes to cuff someone
+	var/cuff_delay = 4 SECONDS //how many deciseconds it takes to cuff someone
 
 /obj/item/handcuffs/attack(mob/living/carbon/C, mob/user)
 	if(!istype(C))
@@ -184,9 +184,9 @@
 	throw_speed = SPEED_SLOW
 	throw_range = 5
 	matter = list("metal" = 500)
-	
+
 	var/dispenser = 0
-	var/breakouttime = MINUTES_2 //2 minutes
+	var/breakouttime = 2 MINUTES //2 minutes
 
 /obj/item/restraints/attack(mob/living/carbon/C as mob, mob/user as mob)
 	if(!istype(C, /mob/living/carbon/Xenomorph))

@@ -535,7 +535,7 @@ This function completely restores a damaged organ to perfect condition.
 		// Internal wounds get worse over time. Low temperatures (cryo) stop them.
 		if(W.internal)
 			if(owner.bodytemperature < T0C && (owner.reagents.get_reagent_amount("cryoxadone") || owner.reagents.get_reagent_amount("clonexadone"))) // IB is healed in cryotubes
-				if(W.created + MINUTES_2 <= world.time)	// sped up healing due to cryo magics
+				if(W.created + 2 MINUTES <= world.time)	// sped up healing due to cryo magics
 					remove_all_bleeding(FALSE, TRUE)
 					wounds -= W
 					wound_disappeared = TRUE

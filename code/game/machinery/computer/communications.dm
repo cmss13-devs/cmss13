@@ -11,9 +11,9 @@
 #define STATE_DESTROY 11
 #define STATE_DEFCONLIST 12
 
-#define COOLDOWN_COMM_MESSAGE MINUTES_1
-#define COOLDOWN_COMM_REQUEST MINUTES_5
-#define COOLDOWN_COMM_CENTRAL SECONDS_30
+#define COOLDOWN_COMM_MESSAGE 1 MINUTES
+#define COOLDOWN_COMM_REQUEST 5 MINUTES
+#define COOLDOWN_COMM_CENTRAL 30 SECONDS
 
 //Note: Commented out procs are things I left alone and did not revise. Usually AI-related interactions.
 
@@ -201,7 +201,7 @@
 
 				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
-					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
+					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 					return FALSE
 
 				if(!SSticker.mode)
@@ -236,7 +236,7 @@
 
 				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
-					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
+					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 					return FALSE
 
 				if(!SSticker.mode)

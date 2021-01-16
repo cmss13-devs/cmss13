@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(clues)
 		if(!P || QDELETED(P))
 			continue
 
-		if(world.timeofday - P.created_time > 10 MINUTE)
+		if(world.timeofday - P.created_time > 10 MINUTES)
 			qdel(P)
 
 		if(MC_TICK_CHECK)

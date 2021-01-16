@@ -55,7 +55,7 @@
 				return
 			user.visible_message(SPAN_WARNING("[user] skillfully removes the vehicle clamp from [src]."), SPAN_NOTICE("You unlock the mechanism with your ID and skillfully remove the vehicle clamp from [src]."))
 		else
-			if(!do_after(user, SECONDS_30, INTERRUPT_ALL, BUSY_ICON_BUILD))
+			if(!do_after(user, 30 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return
 			user.visible_message(SPAN_WARNING("[user] clumsily removes the vehicle clamp from [src]."), SPAN_NOTICE("You manage to unlock vehicle clamp and take it off [src]."))
@@ -306,9 +306,9 @@
 		var/obj/item/grab/G = M.get_active_hand()
 		dragged_atom = G.grabbed_thing
 
-	var/enter_time = SECONDS_1
+	var/enter_time = 1 SECONDS
 	if(dragged_atom)
-		enter_time = SECONDS_2
+		enter_time = 2 SECONDS
 
 	to_chat(M, SPAN_NOTICE(enter_msg))
 	if(!do_after(M, enter_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))

@@ -7,7 +7,7 @@
 	icon_state = "eggmorph"
 	health = 300
 	var/last_spawned = 0
-	var/spawn_cooldown = SECONDS_20
+	var/spawn_cooldown = 20 SECONDS
 	var/stored_huggers = 0
 	var/huggers_to_grow = 0
 	var/huggers_per_corpse = 6

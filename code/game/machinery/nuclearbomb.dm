@@ -97,7 +97,7 @@ var/bomb_set = FALSE
 		if (isXenoQueen(user))
 			if(timing && bomb_set)
 				user.visible_message(SPAN_DANGER("[user] begins to defuse [src]."), SPAN_DANGER("You begin to defuse [src]. This will take some time..."))
-				if(do_after(user, SECONDS_5, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
+				if(do_after(user, 5 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 					disable()
 			return
 		ui_interact(user)

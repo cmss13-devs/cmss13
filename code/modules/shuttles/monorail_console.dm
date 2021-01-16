@@ -32,7 +32,7 @@
 			if(onboard && (isSynth(user) || user.job == "Pilot Officer"))
 				user.visible_message(SPAN_NOTICE("[user] starts to type on the [src]."),
 				SPAN_NOTICE("You try to take back the control over the monorail. It will take around 1 minute."))
-				if(do_after(user, MINUTES_1, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+				if(do_after(user, 1 MINUTES, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					if(user.lying)
 						return 0
 					shuttle.last_locked = world.time
@@ -45,14 +45,14 @@
 				return
 			else
 				if(world.time < shuttle.last_locked + MONORAIL_LOCK_COOLDOWN)
-					to_chat(user, SPAN_WARNING("You can't seem to re-enable remote control, some sort of safety cooldown is in place. Please wait another [round((shuttle.last_locked + MONORAIL_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again."))
+					to_chat(user, SPAN_WARNING("You can't seem to re-enable remote control, some sort of safety cooldown is in place. Please wait another [time_left_until(MONORAIL_LOCK_COOLDOWN, world.time, 1 MINUTES)] minutes before trying again."))
 				else
 					to_chat(user, SPAN_NOTICE("You interact with the pilot's console and re-enable remote control."))
 					shuttle.last_locked = world.time
 					shuttle.queen_locked = 0
 		if(shuttle.door_override)
 			if(world.time < shuttle.last_door_override + MONORAIL_LOCK_COOLDOWN)
-				to_chat(user, SPAN_WARNING("You can't seem to reverse the door override. Please wait another [round((shuttle.last_door_override + MONORAIL_LOCK_COOLDOWN - world.time)/MINUTES_1)] minutes before trying again."))
+				to_chat(user, SPAN_WARNING("You can't seem to reverse the door override. Please wait another [time_left_until(shuttle.last_door_override + MONORAIL_LOCK_COOLDOWN, world.time, 1 MINUTES)] minutes before trying again."))
 			else
 				to_chat(user, SPAN_NOTICE("You reverse the door override."))
 				shuttle.last_door_override = world.time

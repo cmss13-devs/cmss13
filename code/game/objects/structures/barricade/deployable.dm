@@ -70,7 +70,7 @@
 			user.visible_message(SPAN_NOTICE("[user] starts collapsing [src]."), \
 				SPAN_NOTICE("You begin collapsing [src]..."))
 			playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-			if(do_after(user, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 				collapse(usr)
 			else
 				to_chat(user, SPAN_WARNING("You stop collapsing [src]."))
@@ -91,7 +91,7 @@
 		usr.visible_message(SPAN_NOTICE("[usr] starts collapsing [src]."),
 			SPAN_NOTICE("You begin collapsing [src]."))
 		playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
-		if(do_after(usr, SECONDS_4, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
+		if(do_after(usr, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			collapse(usr)
 		else
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
@@ -140,7 +140,7 @@
 	user.visible_message(SPAN_NOTICE("[user] begins deploying [src]."),
 			SPAN_NOTICE("You begin deploying [src]."))
 	playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
-	if(!do_after(user, SECONDS_2, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	user.visible_message(SPAN_NOTICE("[user] has finished deploying [src]."),
 			SPAN_NOTICE("You finish deploying [src]."))

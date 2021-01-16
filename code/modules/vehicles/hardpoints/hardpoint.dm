@@ -422,7 +422,7 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	being_repaired = TRUE
 	playsound(get_turf(user), 'sound/items/weldingtool_weld.ogg', 25)
 	user.visible_message(SPAN_NOTICE("[user] starts repairing \the [name]."), SPAN_NOTICE("You start repairing \the [name]."))
-	if(!do_after(user, SECONDS_1 * needed_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = needed_time))
+	if(!do_after(user, 1 SECONDS * needed_time * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL, BUSY_ICON_FRIENDLY, numticks = needed_time))
 		user.visible_message(SPAN_NOTICE("[user] stops repairing \the [name]."), SPAN_NOTICE("You stop repairing \the [name]."))
 		being_repaired = FALSE
 		return

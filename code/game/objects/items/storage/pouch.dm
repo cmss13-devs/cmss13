@@ -106,7 +106,7 @@
 	storage_slots = 5
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	var/draw_cooldown = 0
-	var/draw_cooldown_interval = 1 SECOND
+	var/draw_cooldown_interval = 1 SECONDS
 
 /obj/item/storage/pouch/bayonet/Initialize()
 	. = ..()

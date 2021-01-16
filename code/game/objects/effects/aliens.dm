@@ -200,7 +200,7 @@
 	stun_duration = 2
 	damage_amount = 30
 	fire_level_to_extinguish = 18
-	time_to_live = SECONDS_3
+	time_to_live = 3 SECONDS
 	// Stuns for 2 seconds, lives for 3 seconds. Seems to stun longer than it lives for at 2 seconds
 
 /obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/M)

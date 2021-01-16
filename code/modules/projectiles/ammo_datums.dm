@@ -225,7 +225,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	stamina_damage = 300
 
-	var/knockout_period = SECONDS_10
+	var/knockout_period = 10 SECONDS
 
 	shrapnel_chance = 0
 
@@ -495,7 +495,7 @@
 	user.visible_message(SPAN_DANGER("[user] punches [C] with the nailgun, and nail their limb to [thick_surface]!"),
 		SPAN_DANGER("You punch [C] with the nailgun, and nail their limb to [thick_surface]!"))
 	C.update_canmove()
-	addtimer(CALLBACK(C, /mob.proc/unfreeze), SECONDS_3)
+	addtimer(CALLBACK(C, /mob.proc/unfreeze), 3 SECONDS)
 
 /datum/ammo/bullet/smg/nail/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_step(M.loc, P.dir)

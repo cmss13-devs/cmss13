@@ -40,7 +40,7 @@
 	var/text_to_display = message
 	if(length(text_to_display) > LANGCHAT_LONGEST_TEXT)
 		text_to_display = copytext_char(text_to_display, 1, LANGCHAT_LONGEST_TEXT + 1) + "..."
-	var/timer = (length(text_to_display) / LANGCHAT_LONGEST_TEXT) * SECONDS_4 + SECONDS_2
+	var/timer = (length(text_to_display) / LANGCHAT_LONGEST_TEXT) * 4 SECONDS + 2 SECONDS
 	text_to_display = "<span class='center [langchat_styles] langchat'>[text_to_display]</span>"
 	langchat_image = image(null, src)
 	langchat_image.layer = 20

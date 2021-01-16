@@ -12,7 +12,7 @@
 
 	indestructible = TRUE
 	var/defense_type = /obj/structure/machinery/defenses
-	var/deployment_time = SECONDS_3
+	var/deployment_time = 3 SECONDS
 
 /obj/item/defenses/handheld/examine(mob/user)
 	. = ..()
@@ -85,4 +85,4 @@
 	name = "handheld JIMA planted flag"
 	icon_state = "planted_flag_handheld"
 	defense_type = /obj/structure/machinery/defenses/planted_flag
-	deployment_time = SECONDS_1
+	deployment_time = 1 SECONDS

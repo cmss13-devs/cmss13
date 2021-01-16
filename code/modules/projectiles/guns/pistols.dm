@@ -418,7 +418,7 @@
 /obj/item/weapon/gun/pistol/vp78/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_4
-	burst_amount = BURST_AMOUNT_TIER_2
+	burst_amount = BURST_AMOUNT_TIER_3
 	burst_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT

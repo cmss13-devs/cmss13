@@ -4,8 +4,8 @@ GLOBAL_LIST_INIT(hive_alliable_factions, generate_alliable_factions())
 	. = list()
 	.["Xenomorph"] = list()
 
-	for(var/H in GLOB.hive_datum)
-		var/datum/hive_status/hive = H
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		.["Xenomorph"] += hive.internal_faction
 
 	.["Human"] = FACTION_LIST_HUMANOID

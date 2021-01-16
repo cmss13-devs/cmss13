@@ -251,7 +251,8 @@
 		return
 
 	var/list/hives = list()
-	for(var/datum/hive_status/hive in GLOB.hive_datum)
+	for(var/hivenumber in GLOB.hive_datum)
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		hives += list("[hive.name]" = hive.hivenumber)
 
 	var/newhive = tgui_input_list(src,"Select a hive.", "Change Hivenumber", hives)

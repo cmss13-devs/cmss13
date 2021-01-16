@@ -88,9 +88,12 @@
 	for(var/content in M.contents)
 		if(!istype(content, /obj/item/alien_embryo))
 			continue
+		// level is a number rather than a hivenumber, which are strings
+		var/hivenumber = GLOB.hive_datum[level]
+		var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 		var/obj/item/alien_embryo/A = content
-		A.hivenumber = level
-		A.faction = GLOB.hive_datum[level].internal_faction
+		A.hivenumber = hivenumber
+		A.faction = hive.internal_faction
 
 /datum/chem_property/special/ciphering/predator
 	name = PROPERTY_CIPHERING_PREDATOR

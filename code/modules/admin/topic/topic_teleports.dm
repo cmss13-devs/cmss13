@@ -113,7 +113,9 @@
 			else if(faction == "Xenomorphs")
 				faction = null
 				var/list/hives = list()
-				for(var/datum/hive_status/hive in GLOB.hive_datum)
+				var/datum/hive_status/hive
+				for(var/hivenumber in GLOB.hive_datum)
+					hive = GLOB.hive_datum[hivenumber]
 					hives += list("[hive.name]" = hive.hivenumber)
 
 				faction = tgui_input_list(owner, "Select hive you want to teleport to your location. Mobs in Thunderdome/CentComm areas won't be included.", "Hive Choice", "", hives)

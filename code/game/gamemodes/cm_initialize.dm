@@ -373,7 +373,9 @@ Additional game mode variables.
 			if(X.away_timer >= XENO_LEAVE_TIMER || (isXenoLarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA) ) available_xenos_non_ssd += X
 			available_xenos += X
 
-	for(var/datum/hive_status/hive in GLOB.hive_datum)
+	var/datum/hive_status/hive
+	for(var/hivenumber in GLOB.hive_datum)
+		hive = GLOB.hive_datum[hivenumber]
 		var/obj/effect/alien/resin/special/pool/SP = hive.spawn_pool
 		if(!isnull(SP) && SP.can_spawn_larva())
 			if(SSticker.mode && (SSticker.mode.flags_round_type & MODE_RANDOM_HIVE))

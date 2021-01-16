@@ -229,19 +229,21 @@ Additional game mode variables.
 #undef calculate_pred_max
 
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
+	set waitfor = FALSE
+
 	if(!pred_candidate.client) //Something went wrong.
 		message_admins(SPAN_WARNING("<b>Warning</b>: null client in transform_predator."))
 		log_debug("Null client in transform_predator.")
 		return
 
-	var/datum/entity/clan_player/clan_info = pred_candidate.client.clan_info
-	var/list/spawn_points = get_clan_spawnpoints(CLAN_SHIP_PUBLIC)
-	if(clan_info)
-		clan_info.sync()
-		if(clan_info.clan_id)
-			spawn_points = get_clan_spawnpoints(clan_info.clan_id)
-
-	if(!pred_candidate.mind)
+	var/clan_id = CLAN_SHIP_PUBLIC
+	var/datum/entity/clan_player/clan_info = pred_candidate?.client?.clan_info
+	clan_info?.sync()
+	if(clan_info?.clan_id)
+		clan_id = clan_info.clan_id
+	SSpredships.load_new(clan_id)
+	var/list/turf/spawn_points = SSpredships.get_clan_spawnpoints(clan_id)
+	if(!pred_candidate?.mind)
 		return
 
 	var/mob/living/carbon/human/yautja/new_predator = new(pick(spawn_points))

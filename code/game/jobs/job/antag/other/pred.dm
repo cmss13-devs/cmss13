@@ -33,12 +33,13 @@
 	var/mob/living/carbon/human/yautja/Y = new(NP.loc)
 	Y.lastarea = get_area(NP.loc)
 
-	var/datum/entity/clan_player/clan_info = NP.client.clan_info
-	var/list/spawn_points = get_clan_spawnpoints(CLAN_SHIP_PUBLIC)
-	if(clan_info)
-		clan_info.sync()
-		if(clan_info.clan_id)
-			spawn_points = get_clan_spawnpoints(clan_info.clan_id)
+	var/clan_id = CLAN_SHIP_PUBLIC
+	var/datum/entity/clan_player/clan_info = NP?.client?.clan_info
+	clan_info?.sync()
+	if(clan_info?.clan_id)
+		clan_id = clan_info.clan_id
+	SSpredships.load_new(clan_id)
+	var/list/turf/spawn_points = SSpredships.get_clan_spawnpoints(clan_id)
 
 	Y.forceMove(pick(spawn_points))
 	Y.job = NP.job

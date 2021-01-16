@@ -11,3 +11,6 @@
 // Helper defines for less ugly syntax (just need to put in a bullet trait entry)
 #define add_bullet_trait(entry) add_bullet_traits(list(##entry))
 #define remove_bullet_trait(entry) remove_bullet_traits(list(##entry))
+
+/// Helper define for directly changing a projectile's bullet traits
+#define GIVE_BULLET_TRAIT(projectile, trait, args...) projectile._AddElement(list(trait, ##args))

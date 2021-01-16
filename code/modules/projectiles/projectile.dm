@@ -60,8 +60,6 @@
 
 	var/mob/living/homing_target = null
 
-	var/list/datum/element/bullet_traits
-
 /obj/item/projectile/Initialize(var/source, var/source_mob)
 	. = ..()
 	path = list()

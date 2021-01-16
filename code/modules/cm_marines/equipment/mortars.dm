@@ -245,7 +245,8 @@
 			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."), \
 				SPAN_NOTICE("You undeploy [src]."))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-			new /obj/item/mortar_kit(loc)
+			var/obj/item/mortar_kit/M = new /obj/item/mortar_kit(loc)
+			M.name = src.name
 			qdel(src)
 
 	if(istype(O, /obj/item/tool/screwdriver))
@@ -332,6 +333,7 @@
 			SPAN_NOTICE("You deploy [src]."))
 		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)
 		var/obj/structure/mortar/M = new /obj/structure/mortar(deploy_turf)
+		M.name = src.name
 		M.setDir(user.dir)
 		qdel(src)
 

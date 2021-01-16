@@ -57,6 +57,7 @@
 	var/obj/structure/machinery/defenses/D = new defense_type(T, factions)
 	D.setDir(direction)
 	playsound(T, 'sound/mecha/mechmove01.ogg', 30, 1)
+	D.name = replacetext(src.name, "handheld ", "") //fixed
 	qdel(src)
 
 

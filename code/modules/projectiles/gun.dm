@@ -339,6 +339,7 @@
 		O.emp_act(severity)
 
 /obj/item/weapon/gun/equipped(mob/user, slot)
+	if(flags_item & NODROP)	return
 	if(slot != WEAR_L_HAND && slot != WEAR_R_HAND)
 		stop_aim()
 		if (user.client)
@@ -499,7 +500,7 @@
 			else
 				damage_armor_profile_armorbreak.Add("N/A")
 
-	var/rpm = max(fire_delay, 0.0001)
+	var/rpm = max(fire_delay, 1)
 	var/burst_rpm = max((fire_delay * 1.5 + (burst_amount - 1) * burst_delay)/max(burst_amount, 1), 0.0001)
 
 	var/list/data = list(
@@ -573,7 +574,8 @@
 
 	var/obj/item/I = user.get_inactive_hand()
 	if(I)
-		user.drop_inv_item_on_ground(I)
+		if(!user.drop_inv_item_on_ground(I))
+			return
 
 	if(ishuman(user))
 		var/check_hand = user.r_hand == src ? "l_hand" : "r_hand"

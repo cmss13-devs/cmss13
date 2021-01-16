@@ -175,6 +175,13 @@
 	item_state = "mgoggles"
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
+/obj/item/clothing/glasses/jensen
+	name = "Augmented sunglasses"
+	desc = "Augmented sunglasses with the HUD removed"
+	icon_state = "jensenshades"
+	item_state = "jensenshades"
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+
 /obj/item/clothing/glasses/mgoggles/prescription
 	name = "prescription marine ballistic goggles"
 	desc = "Standard issue USCM goggles. Mostly used to decorate one's helmet. Contains prescription lenses in case you weren't sure if they were lame or not."

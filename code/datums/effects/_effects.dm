@@ -1,6 +1,7 @@
 /*
 	What does it do?
-	This is used to apply effects to living/carbon mobs or objects. Effects are intended to be things such as fire, acid, slow or even stun.
+	This is used to apply effects to atoms. Effects are intended to be things such as fire, acid, slow or even stun.
+	By default, only affects mobs and objs, but can be modified to handle other atoms by changing the validate atoms proc.
 
 	How does it work?
 	Atom has a var/list/effects_list which is used to hold all the active effects on that atom.
@@ -46,6 +47,7 @@
 
 	affected_atom = A
 	LAZYADD(affected_atom.effects_list, src)
+	on_apply_effect()
 	def_zone = zone
 	if(from && istype(from))
 		source_mob = from
@@ -58,6 +60,9 @@
 
 	return FALSE
 
+/datum/effects/proc/on_apply_effect()
+	return
+
 /datum/effects/process()
 	if(!affected_atom || (duration <= 0 && !(flags & INF_DURATION)))
 		qdel(src)
@@ -65,8 +70,12 @@
 
 	if(iscarbon(affected_atom))
 		process_mob()
-	else if (isobj(affected_atom))
+	else if(isobj(affected_atom))
 		process_obj()
+	else if(isturf(affected_atom))
+		process_turf()
+	else
+		process_area()
 
 	duration--
 
@@ -102,6 +111,12 @@
 
 	if((flags & NO_PROCESS_ON_DEATH) && affected_obj.health <= 0)
 		return FALSE
+	return TRUE
+
+/datum/effects/proc/process_turf()
+	return TRUE
+
+/datum/effects/proc/process_area()
 	return TRUE
 
 /datum/effects/Destroy()

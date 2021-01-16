@@ -354,3 +354,13 @@
 	for(var/obj/item/alien_embryo/A in contents)
 		return TRUE
 	return FALSE
+
+/mob/living/carbon/human/proc/is_tethering()
+	for (var/datum/effects/tethering/TR in effects_list)
+		return TRUE
+	return FALSE
+
+/mob/living/carbon/human/proc/is_tethered()
+	for (var/datum/effects/tethered/TD in effects_list)
+		return TRUE
+	return FALSE

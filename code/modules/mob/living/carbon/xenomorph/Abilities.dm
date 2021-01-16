@@ -334,8 +334,8 @@
 		to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
 		return
 
-	if(target.on_fire)
-		to_chat(X, SPAN_XENOWARNING("You cannot give plasma to xenos that are on fire!"))
+	if(target.cannot_be_xeno_healed)
+		to_chat(X, SPAN_XENOWARNING("This xeno cannot be given plasma!"))
 		return
 
 	if(!check_and_use_plasma_owner())

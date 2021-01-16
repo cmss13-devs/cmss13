@@ -206,6 +206,7 @@
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/list/tackle_counter = list()
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
+	var/cannot_be_xeno_healed = FALSE // Ticker for whether xeno can be healed by Warden/Queen/etc
 
 
 	//////////////////////////////////////////////////////////////////
@@ -862,3 +863,13 @@
 		O.show_message(SPAN_DANGER("<B>[src] manages to remove [legcuffed]!</B>"), 1)
 	to_chat(src, SPAN_NOTICE(" You successfully remove [legcuffed]."))
 	drop_inv_item_on_ground(legcuffed)
+
+/mob/living/carbon/Xenomorph/IgniteMob()
+	. = ..()
+	if (.)
+		cannot_be_xeno_healed++
+
+/mob/living/carbon/Xenomorph/ExtinguishMob()
+	. = ..()
+	if (.)
+		cannot_be_xeno_healed--

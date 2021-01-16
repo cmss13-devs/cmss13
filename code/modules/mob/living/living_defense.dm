@@ -124,9 +124,11 @@
 
 /mob/living/proc/ExtinguishMob()
 	if(on_fire)
-		on_fire = 0
+		on_fire = FALSE
 		fire_stacks = 0
 		update_fire()
+		return TRUE
+	return FALSE
 
 /mob/living/proc/update_fire()
 	return

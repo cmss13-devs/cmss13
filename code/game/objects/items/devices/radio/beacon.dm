@@ -36,5 +36,4 @@
 
 /obj/item/device/radio/beacon/bacon //Probably a better way of doing this, I'm lazy.
 	proc/digest_delay()
-		spawn(MINUTES_1)
-			qdel(src)
+		QDEL_IN(src, 1 MINUTES)

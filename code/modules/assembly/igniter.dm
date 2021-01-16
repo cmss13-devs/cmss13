@@ -23,7 +23,7 @@
 			if(tank && !tank.exploding)
 				playsound(get_turf(tank), 'sound/machines/twobeep.ogg', 75, 1)
 				tank.exploding = TRUE
-				addtimer(CALLBACK(tank, /obj/structure/reagent_dispensers/fueltank/.proc/explode), SECONDS_3)
+				addtimer(CALLBACK(tank, /obj/structure/reagent_dispensers/fueltank/.proc/explode), 3 SECONDS)
 
 				tank.update_icon()
 

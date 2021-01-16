@@ -1,4 +1,4 @@
-#define UPGRADE_COOLDOWN	SECONDS_2
+#define UPGRADE_COOLDOWN	2 SECONDS
 
 /obj/item/grab
 	name = "grab"

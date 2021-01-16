@@ -267,7 +267,7 @@ proc/check_panel(mob/M)
 
 /obj/effect/fake_attacker/New()
 	..()
-	spawn(SECONDS_30)
+	spawn(30 SECONDS)
 		if(my_target)
 			my_target.hallucinations -= src
 		qdel(src)
@@ -344,7 +344,7 @@ proc/check_panel(mob/M)
 	O.name = "blood"
 	var/image/I = image('icons/effects/blood.dmi',O,"floor[rand(1,7)]",O.dir,1)
 	target << I
-	QDEL_IN(O, SECONDS_30)
+	QDEL_IN(O, 30 SECONDS)
 	return
 
 var/list/non_fakeattack_weapons = list(/obj/item/device/aicard,\

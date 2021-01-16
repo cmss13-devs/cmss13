@@ -304,7 +304,7 @@
 /obj/effect/alien/weeds/flamer_fire_act(dam)
 	. = ..()
 	if(!QDELETED(src))
-		QDEL_IN(src, rand(SECONDS_1, SECONDS_2)) // 1-2 seconds
+		QDEL_IN(src, rand(1 SECONDS, 2 SECONDS)) // 1-2 seconds
 
 /obj/effect/alien/weeds/acid_spray_act()
 	. = ..()

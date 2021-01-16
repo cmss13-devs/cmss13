@@ -55,7 +55,7 @@
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return
 
-	if(!do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_BUILD))
+	if(!do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_BUILD))
 		to_chat(user, SPAN_WARNING("Hold still while you're constructing a table!"))
 		return
 

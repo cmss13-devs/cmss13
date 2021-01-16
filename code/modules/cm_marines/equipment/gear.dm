@@ -79,11 +79,11 @@
 	return stored_units
 
 /obj/structure/closet/bodybag/tarp/open()
-	animate(src, alpha = 255, time = SECONDS_3, easing = QUAD_EASING)
+	animate(src, alpha = 255, time = 3 SECONDS, easing = QUAD_EASING)
 	. = ..()
 
 /obj/structure/closet/bodybag/tarp/close()
-	animate(src, alpha = 60, time = SECONDS_12, easing = QUAD_EASING)
+	animate(src, alpha = 60, time = 12 SECONDS, easing = QUAD_EASING)
 	. = ..()
 
 /obj/structure/closet/bodybag/tarp/dump_contents()

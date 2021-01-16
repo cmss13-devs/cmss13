@@ -262,11 +262,11 @@ var/global/maint_all_access = 1
 		gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
 
 	var/text_timeleft = "[timeleft * 0.01] minutes"
-	var/next_interval = MINUTES_1
-	if(timeleft <= MINUTES_1)
-		next_interval = SECONDS_55
+	var/next_interval = 1 MINUTES
+	if(timeleft <= 1 MINUTES)
+		next_interval = 55 SECONDS
 		text_timeleft = "[timeleft] minute"
-	if(timeleft <= SECONDS_5)
+	if(timeleft <= 5 SECONDS)
 		next_interval = timeleft
 		text_timeleft = "[timeleft] seconds"
 	var/input = "Station shutter locks lifting in [text_timeleft] per manual override."
@@ -290,4 +290,4 @@ var/global/maint_all_access = 1
 					visible_message(SPAN_NOTICE("[src] states: LOCKDOWN ALREADY LIFTED"))
 					return
 				gCM.round_status_flags |= ROUNDSTATUS_PODDOORS_OPEN // So we don't spam the message twice
-			timed_countdown(MINUTES_3)
+			timed_countdown(3 MINUTES)

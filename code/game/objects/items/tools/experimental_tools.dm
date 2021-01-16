@@ -14,7 +14,7 @@
 
 	ui_interact(user)
 
-	cooldown_to_use = world.time + SECONDS_2
+	cooldown_to_use = world.time + 2 SECONDS
 
 /obj/item/tool/crew_monitor/ui_interact(var/mob/user as mob)
 	user.set_interaction(src)
@@ -68,7 +68,7 @@
 		var/misc_text = ""
 
 		for(var/X in S.marines_list)
-			if(!X) 
+			if(!X)
 				continue //just to be safe
 			var/mob_name = "unknown"
 			var/mob_state = ""
@@ -92,7 +92,7 @@
 					role = H.job
 				else if(istype(H.wear_id, /obj/item/card/id)) //decapitated marine is mindless,
 					var/obj/item/card/id/ID = H.wear_id		//we use their ID to get their role.
-					if(ID.rank) 
+					if(ID.rank)
 						role = ID.rank
 
 				if(M_turf && (M_turf.z == user_turf.z))

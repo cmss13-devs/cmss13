@@ -118,10 +118,10 @@
 
 /obj/item/device/assembly/timer/ui_data(mob/user)
 	. = list()
-	.["current_time"] = time SECONDS_TO_DECISECONDS
+	.["current_time"] = time *0.1
 	.["is_timing"] = timing
 
 /obj/item/device/assembly/timer/ui_static_data(mob/user)
 	. = list()
-	.["min_time"] = TIMER_MINIMUM_TIME SECONDS_TO_DECISECONDS
-	.["max_time"] = TIMER_MAXIMUM_TIME SECONDS_TO_DECISECONDS
+	.["min_time"] = TIMER_MINIMUM_TIME * 0.1
+	.["max_time"] = TIMER_MAXIMUM_TIME * 0.1

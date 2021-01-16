@@ -70,7 +70,7 @@
         to_chat(H, SPAN_NOTICE("You start converting [target_mag] into a rubber magazine."))
         playsound(user.loc, "sound/machines/fax.ogg", 5)
 
-        if(!do_after(H, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mag, INTERRUPT_ALL))
+        if(!do_after(H, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, target_mag, INTERRUPT_ALL))
             return .
 
         to_chat(H, SPAN_NOTICE("You convert [target] into a rubber magazine."))

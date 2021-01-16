@@ -88,10 +88,10 @@
 
 		if(!(stat & BROKEN))
 			stat |= BROKEN
-			addtimer(CALLBACK(src, .proc/unbreak_doors), SECONDS_10)
+			addtimer(CALLBACK(src, .proc/unbreak_doors), 10 SECONDS)
 	else
 		. = ..(M)
-	
+
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/proc/unbreak_doors()
 	stat &= ~BROKEN
 

@@ -391,7 +391,7 @@
 	if(!ishuman(M))
 		return FALSE
 	var/mob/living/carbon/human/H = M
-	H.revive_grace_period += SECONDS_5 * potency
+	H.revive_grace_period += 5 SECONDS * potency
 	return TRUE
 
 /datum/chem_property/positive/antiparasitic

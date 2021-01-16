@@ -8,7 +8,7 @@
 	throwforce = 0
 	w_class = SIZE_MEDIUM
 
-	var/breakouttime = SECONDS_15
+	var/breakouttime = 15 SECONDS
 
 /obj/item/legcuffs/beartrap
 	name = "bear trap"

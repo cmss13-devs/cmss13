@@ -68,12 +68,12 @@
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
-			
+
 		if(isrobot(user)) //Cyborg modules that include drinks automatically refill themselves, but drain the borg's cell
 			var/mob/living/silicon/robot/bro = user
 			bro.cell.use(30)
 			var/refill = R.get_master_reagent_id()
-			spawn(MINUTES_1)
+			spawn(1 MINUTES)
 				R.add_reagent(refill, fillevel)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
@@ -100,7 +100,7 @@
 		if(!trans)
 			to_chat(user, SPAN_DANGER("You fail to fill [src] with reagents from [target]."))
 			return
-		
+
 		to_chat(user, SPAN_NOTICE(" You fill [src] with [trans] units of the contents of [target]."))
 
 	else if(target.is_open_container()) //Something like a glass. Player probably wants to transfer TO it.
@@ -130,7 +130,7 @@
 			to_chat(user, "Now synthesizing [trans] units of [refillName]...")
 
 
-			spawn(SECONDS_30)
+			spawn(30 SECONDS)
 				reagents.add_reagent(refill, trans)
 				to_chat(user, "Cyborg [src] refilled.")
 

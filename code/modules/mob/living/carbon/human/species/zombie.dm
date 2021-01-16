@@ -45,13 +45,13 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/zombie_eyes(H), WEAR_EYES, TRUE)
 
 	var/datum/disease/D
-	
+
 	for(var/datum/disease/black_goo/DD in H.viruses)
 		D = DD
 
-	if(!D) 
+	if(!D)
 		D = H.AddDisease(new /datum/disease/black_goo())
-	
+
 	D.stage = 5
 
 	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
@@ -64,7 +64,7 @@
 	if(H in to_revive)
 		deltimer(to_revive[H])
 		to_revive -= H
-	
+
 	var/datum/mob_hud/Hu = huds[MOB_HUD_MEDICAL_OBSERVER]
 	Hu.remove_hud_from(H)
 
@@ -81,7 +81,7 @@
 
 	if(H)
 		to_chat(H, SPAN_XENOWARNING("You fall... but your body is slowly regenerating itself."))
-		prepare_to_revive(H, MINUTES_1)
+		prepare_to_revive(H, 1 MINUTES)
 
 /datum/species/zombie/proc/prepare_to_revive(var/mob/living/carbon/human/H, var/time)
 	to_revive.Add(H)
@@ -100,4 +100,4 @@
 		H.visible_message(SPAN_WARNING("[H] rises from the ground!"))
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET, TRUE)
 
-		addtimer(CALLBACK(H, /mob/.proc/remove_jittery), SECONDS_3)
+		addtimer(CALLBACK(H, /mob/.proc/remove_jittery), 3 SECONDS)

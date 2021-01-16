@@ -83,12 +83,12 @@ Additional game mode variables.
 	var/roles_for_mode[] //Won't have a list if the instruction is set to 0.
 
 	//Bioscan related.
-	var/bioscan_current_interval = MINUTES_5//5 minutes in
-	var/bioscan_ongoing_interval = MINUTES_1//every 1 minute
+	var/bioscan_current_interval = 5 MINUTES//5 minutes in
+	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
 
-	var/lz_selection_timer = MINUTES_25 //25 minutes in
-	var/round_time_resin = MINUTES_40	//Time for when resin placing is allowed close to LZs
-	var/round_time_pooled_cutoff = MINUTES_25	//Time for when free pooled larvae stop spawning.
+	var/lz_selection_timer = 25 MINUTES //25 minutes in
+	var/round_time_resin = 40 MINUTES	//Time for when resin placing is allowed close to LZs
+	var/round_time_pooled_cutoff = 25 MINUTES	//Time for when free pooled larvae stop spawning.
 	var/resin_allow_finished
 
 	var/flags_round_type = NO_FLAGS
@@ -423,11 +423,9 @@ Additional game mode variables.
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
-				deathtime = MINUTES_5 //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-			var/deathtimeminutes = round(deathtime / MINUTES_1)
-			var/deathtimeseconds = round((deathtime - deathtimeminutes * MINUTES_1) / 10,1)
-			if(deathtime < MINUTES_5 && ( !xeno_candidate.client.admin_holder || !(xeno_candidate.client.admin_holder.rights & R_ADMIN)) )
-				var/message = "You have been dead for [deathtimeminutes >= 1 ? "[deathtimeminutes] minute\s and " : ""][deathtimeseconds] second\s."
+				deathtime = 5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+			if(deathtime < 5 MINUTES && ( !xeno_candidate.client.admin_holder || !(xeno_candidate.client.admin_holder.rights & R_ADMIN)) )
+				var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 				message = SPAN_WARNING("[message]")
 				to_chat(xeno_candidate, message)
 				to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))

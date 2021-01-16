@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(perf_logging)
 	flags = SS_BACKGROUND | SS_DISABLE_FOR_TESTING
 	priority = SS_PRIORITY_PERFLOGGING
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
-	var/wait_for_start = MINUTES_5
+	var/wait_for_start = 5 MINUTES
 	var/current_timer = 0
 	var/is_initialized = FALSE
 	var/datum/entity/mc_round/round

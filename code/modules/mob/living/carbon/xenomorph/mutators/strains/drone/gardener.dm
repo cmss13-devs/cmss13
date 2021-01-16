@@ -240,7 +240,7 @@
 		if(channel_in_progress)
 			return
 		channel_in_progress = TRUE
-		if(!do_after(X, SECONDS_1, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		if(!do_after(X, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			channel_in_progress = FALSE
 			return
 		channel_in_progress = FALSE

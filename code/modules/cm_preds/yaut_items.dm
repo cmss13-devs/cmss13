@@ -384,7 +384,7 @@
 
 	if(!SSpredships.is_clanship_loaded(clan))
 		return // Checking ship is valid
-	
+
 	// Getting an arrival point
 	var/turf/target_turf
 	if(clan == CLAN_SHIP_ALMAYER)
@@ -401,7 +401,7 @@
 	timer = 1
 	user.visible_message(SPAN_INFO("[user] starts becoming shimmery and indistinct..."))
 
-	if(do_after(user, SECONDS_10, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(do_after(user, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		// Display fancy animation for you and the person you might be pulling (Legacy)
 		user.visible_message(SPAN_WARNING("[icon2html(user, viewers(src))][user] disappears!"))
 		var/tele_time = animation_teleport_quick_out(user)
@@ -413,7 +413,7 @@
 		sleep(tele_time) // Animation delay
 		user.trainteleport(target_turf) // Actually teleports everyone, not just you + pulled
 
-		// Undo animations 
+		// Undo animations
 		animation_teleport_quick_in(user)
 		if(istype(M) && !QDELETED(M))
 			animation_teleport_quick_in(M)
@@ -516,7 +516,7 @@
 		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
 		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-		if(do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
+		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]."),
 			SPAN_DANGER("You force [D] open with the [name]."))
 			D.open(1)
@@ -528,7 +528,7 @@
 			user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
 			SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-			if(do_after(user, SECONDS_3, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
+			if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 				user.visible_message(SPAN_DANGER("[user] forces [D] open using the [name]."),
 				SPAN_DANGER("You force [D] open with your [name]."))
 				D.Open()
@@ -536,7 +536,7 @@
 			user.visible_message(SPAN_DANGER("[user] pushes [D] with their [name] to force it closed."),
 			SPAN_DANGER("You push [D] with your [name] to force it closed."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-			if(do_after(user, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !D.density)
+			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !D.density)
 				user.visible_message(SPAN_DANGER("[user] forces [D] closed using the [name]."),
 				SPAN_DANGER("You force [D] closed with your [name]."))
 				D.Close()
@@ -626,9 +626,9 @@
 	if(!on)
 		on = !on
 		timer = TRUE
-		addtimer(CALLBACK(src, .proc/stop_parry), SECONDS_3)
+		addtimer(CALLBACK(src, .proc/stop_parry), 3 SECONDS)
 		to_chat(user, SPAN_NOTICE("You get ready to parry with the [src]."))
-		addtimer(CALLBACK(src, .proc/parry_cooldown), SECONDS_8)
+		addtimer(CALLBACK(src, .proc/parry_cooldown), 8 SECONDS)
 
 	add_fingerprint(user)
 	return

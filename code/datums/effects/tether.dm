@@ -66,7 +66,7 @@
     flags = INF_DURATION
     var/datum/effects/tethering/tether
     var/resistable = FALSE
-    var/resist_time = SECONDS_15
+    var/resist_time = 15 SECONDS
 
 /datum/effects/tethered/New(var/atom/A, var/resistable)
     src.resistable = resistable

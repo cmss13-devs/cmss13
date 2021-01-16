@@ -544,10 +544,10 @@
 	var/delay
 
 	if(!arePowerSystemsOn())
-		delay = SECONDS_1
+		delay = 1 SECONDS
 		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, SOUND_FREQ_HIGH * 1.8)
 	else
-		delay = SECONDS_4
+		delay = 4 SECONDS
 		playsound(loc, 'sound/effects/metal_creaking.ogg', 25, TRUE)
 
 	M.visible_message(SPAN_WARNING("[M] digs into [src] and begins to pry it open."), \
@@ -665,7 +665,7 @@
 /datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M, shuttle_tag)
 	if(!queen_locked) //we have not hijacked it yet
 		if(world.time < SHUTTLE_LOCK_TIME_LOCK)
-			to_chat(M, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [round((SHUTTLE_LOCK_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
+			to_chat(M, SPAN_XENODANGER("You can't mobilize the strength to hijack the shuttle yet. Please wait another [time_left_until(SHUTTLE_LOCK_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 			return
 
 		var/message
@@ -679,7 +679,7 @@
 		last_locked = world.time
 		if(almayer_orbital_cannon)
 			almayer_orbital_cannon.is_disabled = TRUE
-			addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), MINUTES_10, TIMER_UNIQUE)
+			addtimer(CALLBACK(almayer_orbital_cannon, .obj/structure/orbital_cannon/proc/enable), 10 MINUTES, TIMER_UNIQUE)
 		queen_locked = 1
 
 /datum/shuttle/ferry/marine/proc/door_override(mob/living/carbon/Xenomorph/M, shuttle_tag)

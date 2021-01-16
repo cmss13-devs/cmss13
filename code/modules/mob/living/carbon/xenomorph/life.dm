@@ -1,6 +1,6 @@
 //Xenomorph Life - Colonial Marines - Apophis775 - Last Edit: 03JAN2015
 
-#define XENO_ARMOR_REGEN_DELAY SECONDS_30
+#define XENO_ARMOR_REGEN_DELAY 30 SECONDS
 /mob/living/carbon/Xenomorph/Life()
 	set invisibility = 0
 	set background = 1
@@ -356,7 +356,7 @@ updatehealth()
 				if(armor_integrity/armor_integrity_max < 0.3)
 					curve_factor /= 2
 
-				var/factor = ((armor_deflection / 60) * MINUTES_6 / SECONDS_2) // 60 armor is restored in 10 minutes in 2 seconds intervals
+				var/factor = ((armor_deflection / 60) * 3 MINUTES) // 60 armor is restored in 10 minutes in 2 seconds intervals
 				armor_integrity += 100*curve_factor/factor
 
 			if(armor_integrity > armor_integrity_max)

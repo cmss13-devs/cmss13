@@ -16,7 +16,7 @@
 		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
 			selected_ability.use_ability(A)
 			return TRUE
-	
+
 	if(mods["middle"] && !mods["shift"])
 		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
 			selected_ability.use_ability(A)
@@ -94,7 +94,7 @@
 
 	if(pulling != dropping || grab_level != GRAB_AGGRESSIVE || !ishuman(dropping) || !(a_intent & INTENT_GRAB))
 		return . = ..()
-	
+
 	if(!skillcheck(src, SKILL_POLICE, SKILL_POLICE_MP))
 		to_chat(src, SPAN_WARNING("You aren't trained to carry people!"))
 		return . = ..()
@@ -104,7 +104,7 @@
 	user.visible_message(SPAN_WARNING("[src] starts loading [target] onto their back."),\
 	SPAN_WARNING("You start loading [target] onto your back."))
 
-	if(!do_after(src, SECONDS_3 * get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_HOSTILE, pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+	if(!do_after(src, 3 SECONDS * get_skill_duration_multiplier(SKILL_CQC), INTERRUPT_ALL, BUSY_ICON_HOSTILE, pulling, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 		return
 
 	user.visible_message(SPAN_WARNING("[src] loads [target] onto their back."),\
@@ -119,6 +119,5 @@
 	target.update_transform(TRUE)
 
 	target.update_canmove()
-	
-		
-	
+
+

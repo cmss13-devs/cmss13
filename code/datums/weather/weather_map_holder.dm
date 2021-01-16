@@ -6,8 +6,8 @@
     var/name = "set this" // For VV
 
     // Weather SS configuration options
-    var/min_time_between_events = MINUTES_5 // Self explanatory
-    var/warn_time = SECONDS_30          // Warning time between the call to
+    var/min_time_between_events = 5 MINUTES // Self explanatory
+    var/warn_time = 30 SECONDS          // Warning time between the call to
     var/no_weather_turf_icon_state = "" // Icon state to set on the global VFX holder
                                         // when there's no weather.
     var/list/potential_weather_events   // List of types of possible weather events

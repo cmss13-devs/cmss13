@@ -166,7 +166,7 @@
 			message_staff(wrapped_message, TRUE)
 			log_message(message, sender.key, "All mentors")
 			to_chat(sender, "<font color='#009900'><b>Message to mentors:</b> </font>" + message)
-			addtimer(CALLBACK(src, .proc/repeat_message, sender, message, 1), MINUTES_5) //since the message has been sanitized we can set raw to 1 here.
+			addtimer(CALLBACK(src, .proc/repeat_message, sender, message, 1), 5 MINUTES) //since the message has been sanitized we can set raw to 1 here.
 			return
 	else if(sender == mentor)
 		recipient = author

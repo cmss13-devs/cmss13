@@ -69,11 +69,11 @@ var/datum/controller/supply/supply_controller = new()
 	if(collide_message_busy > world.time)
 		return
 
-	collide_message_busy = world.time + SECONDS_3
+	collide_message_busy = world.time + 3 SECONDS
 	C.visible_message(SPAN_NOTICE("[C] tries to go through \the [src]."), \
 	SPAN_NOTICE("You try to go through \the [src]."))
 
-	if(do_after(C, SECONDS_2, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+	if(do_after(C, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		C.forceMove(get_turf(src))
 
 /obj/structure/plasticflaps/ex_act(severity)

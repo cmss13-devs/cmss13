@@ -4,7 +4,7 @@
 
     knockdown = FALSE
 
-    distance = 5                    
+    distance = 5
     knockdown = FALSE                // Should we knock down the target?
     slash = FALSE                    // Do we slash upon reception?
     freeze_self = FALSE                // Should we freeze ourselves after the lunge?
@@ -34,7 +34,7 @@
 
     var/freeze_duration = 1.5 SECONDS
 
-    var/activation_delay = SECONDS_1
+    var/activation_delay = 1 SECONDS
     var/smash_sounds = list('sound/effects/alien_footstep_charge1.ogg', 'sound/effects/alien_footstep_charge2.ogg', 'sound/effects/alien_footstep_charge3.ogg')
 
 /datum/action/xeno_action/activable/devastate
@@ -46,7 +46,7 @@
     xeno_cooldown = 20 SECONDS
     plasma_cost = 110
 
-    var/activation_delay = SECONDS_1
+    var/activation_delay = 1 SECONDS
 
     var/base_damage = 25
     var/damage_scale = 10 // How much it scales by every kill

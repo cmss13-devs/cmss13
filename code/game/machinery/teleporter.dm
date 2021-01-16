@@ -205,7 +205,7 @@
 		s.set_up(5, 1, src)
 		s.start()
 		accurate = 1
-		spawn(MINUTES_5)	accurate = 0 //Accurate teleporting for 5 minutes
+		spawn(5 MINUTES)	accurate = 0 //Accurate teleporting for 5 minutes
 		for(var/mob/B in hearers(src, null))
 			B.show_message(SPAN_NOTICE("Test fire completed."))
 	return

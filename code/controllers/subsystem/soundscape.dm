@@ -1,12 +1,12 @@
 /*
 
 	Placeholder for something more elaborate, such as soundscapes being specific spots in the
-	maps 
+	maps
 
 */
 SUBSYSTEM_DEF(soundscape)
 	name = "Soundscape"
-	wait = 1 SECOND
+	wait = 1 SECONDS
 	priority = SS_PRIORITY_SOUNDSCAPE
 	var/list/currentrun = list()
 	flags = SS_NO_INIT
@@ -14,11 +14,11 @@ SUBSYSTEM_DEF(soundscape)
 /datum/controller/subsystem/soundscape/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = GLOB.clients.Copy()
-	
+
 	while(currentrun.len)
 		var/client/C = currentrun[currentrun.len]
 		currentrun.len--
-		
+
 		if(!C || !C.soundOutput)
 			continue
 

@@ -184,7 +184,7 @@
 	var/xeno_hostile_hud = FALSE // 'Hostile' HUD - the verb Xenos use to see tags, etc on humans
 	var/list/plasma_types = list() //The types of plasma the caste contains
 	var/list/xeno_shields = list() // List of /datum/xeno_shield that holds all active shields on the Xeno.
-	var/acid_splash_cooldown = SECONDS_5 //Time it takes between acid splash retaliate procs
+	var/acid_splash_cooldown = 5 SECONDS //Time it takes between acid splash retaliate procs
 	var/acid_splash_last //Last recorded time that an acid splash procced
 	var/interference = 0 // Stagger for predator weapons. Prevents hivemind usage, queen overwatching, etc.
 	var/mob/living/carbon/Xenomorph/observed_xeno // Overwatched xeno for xeno hivemind vision

@@ -13,11 +13,11 @@
     var/list/hive_cores = list()
 
     var/sudden_death = FALSE
-    var/time_until_sd = HOURS_1 + MINUTES_30
+    var/time_until_sd = 90 MINUTES
 
     var/list/current_hives = list()
 
-    var/hive_larva_interval_gain = MINUTES_5
+    var/hive_larva_interval_gain = 5 MINUTES
 
     var/round_time_larva_interval = 0
     var/round_time_sd = 0
@@ -114,17 +114,17 @@
         //Cleaning stuff more aggresively
         SSitem_cleanup.start_processing_time = 0
         SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
-        SSitem_cleanup.wait = MINUTES_1
-        SSitem_cleanup.next_fire = MINUTES_1
+        SSitem_cleanup.wait = 1 MINUTES
+        SSitem_cleanup.next_fire = 1 MINUTES
         spawn(0)
             //Deleting Almayer, for performance!
             SSitem_cleanup.delete_almayer()
     if(SSdefcon)
         //Don't need DEFCON
-        SSdefcon.wait = MINUTES_30
+        SSdefcon.wait = 30 MINUTES
     if(SSxenocon)
         //Don't need XENOCON
-        SSxenocon.wait = MINUTES_30
+        SSxenocon.wait = 30 MINUTES
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

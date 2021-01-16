@@ -304,7 +304,7 @@
 		to_chat(user, SPAN_WARNING("You need to wait [(V.next_honk - world.time) / 10] seconds."))
 		return
 
-	V.next_honk = world.time + SECONDS_10
+	V.next_honk = world.time + 10 SECONDS
 	to_chat(user, SPAN_NOTICE("You activate vehicle's horn."))
 	V.perform_honk()
 

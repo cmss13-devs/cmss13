@@ -420,7 +420,7 @@
 		/obj/item/attachable/bayonet
 	)
 	var/draw_cooldown = 0
-	var/draw_cooldown_interval = 1 SECOND
+	var/draw_cooldown_interval = 1 SECONDS
 
 /obj/item/storage/belt/knifepouch/Initialize()
 	. = ..()

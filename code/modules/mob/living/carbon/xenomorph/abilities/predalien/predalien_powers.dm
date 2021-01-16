@@ -29,7 +29,7 @@
             var/datum/behavior_delegate/predalien_base/P = X.behavior_delegate
             if(!istype(P))
                 continue
-            new /datum/effects/xeno_buff(C, X, ttl = (0.25 SECONDS * P.kills + SECONDS_3), bonus_damage = bonus_damage_scale * P.kills, bonus_speed = (bonus_speed_scale * P.kills))
+            new /datum/effects/xeno_buff(C, X, ttl = (0.25 SECONDS * P.kills + 3 SECONDS), bonus_damage = bonus_damage_scale * P.kills, bonus_speed = (bonus_speed_scale * P.kills))
 
 
     for(var/mob/M in view(X))
@@ -62,7 +62,7 @@
 
         var/real_cooldown = xeno_cooldown
 
-        xeno_cooldown = SECONDS_3
+        xeno_cooldown = 3 SECONDS
         apply_cooldown()
         xeno_cooldown = real_cooldown
         return

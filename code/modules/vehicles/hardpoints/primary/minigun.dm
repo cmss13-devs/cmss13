@@ -42,7 +42,7 @@
 
 	var/S = 'sound/weapons/vehicles/minigun_stop.ogg'
 	//check how much time since last shot. 2 seconds are grace period before minigun starts to lose rotation momentum
-	var/t = world.time - last_shot_time - SECONDS_2
+	var/t = world.time - last_shot_time - 2 SECONDS
 	t = round(t / 10)
 	if(t > 0)
 		chained_shots = max(chained_shots - t * 3, 1)	//we lose 3 chained_shots per second

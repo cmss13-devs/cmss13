@@ -38,7 +38,7 @@
 	plasma_cost = 50
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	action_type = XENO_ACTION_CLICK
-	xeno_cooldown = 0.5 SECOND
+	xeno_cooldown = 0.5 SECONDS
 
 	var/node_plant_cooldown = 7 SECONDS
 	var/node_plant_plasma_cost = 300

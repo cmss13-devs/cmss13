@@ -63,7 +63,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/next_point = 0
 
-	var/point_delay = 1 SECOND
+	var/point_delay = 1 SECONDS
 
 
 /mob/hologram/queen/Initialize(mapload, mob/living/carbon/Xenomorph/Queen/Q)
@@ -527,7 +527,7 @@
 		return
 
 	pslash_delay = TRUE
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown), SECONDS_30)
+	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_claw_toggle_cooldown), 30 SECONDS)
 
 	var/choice = tgui_input_list(usr, "Choose which level of slashing hosts to permit to your hive.","Harming", list("Allowed", "Restricted - Hosts of Interest", "Forbidden"))
 
@@ -676,7 +676,7 @@
 			return
 
 		use_plasma(200)
-		last_special = world.time + MINUTES_15
+		last_special = world.time + 15 MINUTES
 
 		visible_message(SPAN_XENODANGER("[src] viciously smashes and wrenches [victim] apart!"), \
 		SPAN_XENODANGER("You suddenly unleash pure anger on [victim], instantly wrenching \him apart!"))
@@ -770,7 +770,7 @@
 
 	egg_amount = 0
 	extra_build_dist = initial(extra_build_dist)
-	ovipositor_cooldown = world.time + MINUTES_5 //5 minutes
+	ovipositor_cooldown = world.time + 5 MINUTES //5 minutes
 	anchored = FALSE
 	update_canmove()
 

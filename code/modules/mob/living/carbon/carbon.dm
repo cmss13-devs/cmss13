@@ -155,9 +155,9 @@
 		else
 			Stun(6)//This should work for now, more is really silly and makes you lay there forever
 			KnockDown(6)
-		
+
 		count_niche_stat(STATISTICS_NICHE_SHOCK)
-		
+
 	else
 		src.visible_message(
 			SPAN_DANGER("[src] was mildly shocked by the [source]."), \
@@ -179,7 +179,7 @@
 		if(offhand && (offhand.flags_item & WIELDED))
 			to_chat(src, SPAN_WARNING("Your other hand is too busy holding \the [offhand.name]")) //So it's an offhand.
 			return
-		else 
+		else
 			wielded_item.unwield(src) //Get rid of it.
 	if(wielded_item && wielded_item.zoom) //Adding this here while we're at it
 		wielded_item.zoom(src)
@@ -255,7 +255,7 @@
 		if(hud_used && hud_used.throw_icon)
 			hud_used.throw_icon.icon_state = "act_throw_off"
 		return
-	
+
 	throw_mode = type
 	if(!hud_used || !hud_used.throw_icon)
 		return
@@ -324,7 +324,7 @@
 
 		if(throw_type == THROW_MODE_HIGH)
 			to_chat(src, SPAN_NOTICE("You prepare to perform a high toss."))
-			if(!do_after(src, SECONDS_1, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 				to_chat(src, SPAN_WARNING("You need to set up the high toss!"))
 				return
 			drop_inv_item_on_ground(I, TRUE)
@@ -434,7 +434,7 @@
 	if(istype(buckled, /obj/structure/bed/nest))
 		buckled.manual_unbuckle(src)
 		return
-		
+
 	if(handcuffed)
 		next_move = world.time + 100
 		last_special = world.time + 100

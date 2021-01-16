@@ -5,10 +5,10 @@
 #define STATE_DESTROY 5
 #define STATE_DEFCONLIST 6
 
-#define COOLDOWN_COMM_MESSAGE SECONDS_30
-#define COOLDOWN_COMM_REQUEST MINUTES_5
-#define COOLDOWN_COMM_CENTRAL SECONDS_30
-#define COOLDOWN_COMM_DESTRUCT MINUTES_5
+#define COOLDOWN_COMM_MESSAGE 30 SECONDS
+#define COOLDOWN_COMM_REQUEST 5 MINUTES
+#define COOLDOWN_COMM_CENTRAL 30 SECONDS
+#define COOLDOWN_COMM_DESTRUCT 5 MINUTES
 
 #define COMMAND_SHIP_ANNOUNCE		"Command Ship Announcement"
 
@@ -178,7 +178,7 @@
 			if(state == STATE_DISTRESS)
 				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
-					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
+					to_chat(usr, SPAN_WARNING("The distress beacon cannot be launched this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 					return FALSE
 
 				if(!SSticker.mode)
@@ -212,7 +212,7 @@
 			if(state == STATE_DESTROY)
 				//Comment to test
 				if(world.time < DISTRESS_TIME_LOCK)
-					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [round((DISTRESS_TIME_LOCK-world.time)/MINUTES_1)] minutes before trying again."))
+					to_chat(usr, SPAN_WARNING("The self destruct cannot be activated this early in the operation. Please wait another [time_left_until(DISTRESS_TIME_LOCK, world.time, 1 MINUTES)] minutes before trying again."))
 					return FALSE
 
 				if(!SSticker.mode)

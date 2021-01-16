@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(objectives)
 	var/datum/cm_objective/analyze_chems/chems
 	var/bonus_admin_points = 0 //bonus points given by admins, doesn't increase the point cap, but does increase points for easier rewards
 
-	var/nextDChatAnnouncement = MINUTES_5 //5 minutes in
+	var/nextDChatAnnouncement = 5 MINUTES //5 minutes in
 
 	var/corpses = 15
 
@@ -422,7 +422,7 @@ SUBSYSTEM_DEF(objectives)
 	answer["total_points"] = total_points
 
 	if(world.time > nextDChatAnnouncement)
-		nextDChatAnnouncement += MINUTES_5 //5 minutes
+		nextDChatAnnouncement += 5 MINUTES //5 minutes
 
 		for(var/i in GLOB.observer_list)
 			var/mob/M = i

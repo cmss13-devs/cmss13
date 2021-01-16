@@ -116,7 +116,7 @@
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 	else
 		playsound(loc, 'sound/machines/scanning.ogg', 25, 1)
-	if(do_after(user, SECONDS_3, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+	if(do_after(user, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
 		user.visible_message(SPAN_NOTICE("[user] finishes adjusting [src]'s firing angle and distance."),
 		SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
 		busy = 0
@@ -241,7 +241,7 @@
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] starts undeploying [src]."), \
 				SPAN_NOTICE("You start undeploying [src]."))
-		if(do_after(user, SECONDS_4, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] undeploys [src]."), \
 				SPAN_NOTICE("You undeploy [src]."))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
@@ -250,7 +250,7 @@
 			qdel(src)
 
 	if(istype(O, /obj/item/tool/screwdriver))
-		if(do_after(user, SECONDS_1, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."), \
 				SPAN_NOTICE("You toggle the targeting computer on [src]."))
 			computer_enabled = !computer_enabled
@@ -328,7 +328,7 @@
 	user.visible_message(SPAN_NOTICE("[user] starts deploying [src]."), \
 		SPAN_NOTICE("You start deploying [src]."))
 	playsound(deploy_turf, 'sound/items/Deconstruct.ogg', 25, 1)
-	if(do_after(user, SECONDS_4, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+	if(do_after(user, 4 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		user.visible_message(SPAN_NOTICE("[user] deploys [src]."), \
 			SPAN_NOTICE("You deploy [src]."))
 		playsound(deploy_turf, 'sound/weapons/gun_mortar_unpack.ogg', 25, 1)

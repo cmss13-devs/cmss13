@@ -2,7 +2,7 @@
     var/name
     var/construction_name // The name used in messages (to replace old resin2text proc)
     var/cost
-    var/build_time = SECONDS_2
+    var/build_time = 2 SECONDS
     var/pass_hivenumber = TRUE
 
 /datum/resin_construction/proc/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
@@ -76,7 +76,7 @@
     name = "Resin Wall"
     construction_name = "resin wall"
     cost = XENO_RESIN_WALL_COST
-    
+
     turf_path = /turf/closed/wall/resin
 
 /datum/resin_construction/resin_turf/wall/resin_turf/thick
@@ -92,7 +92,7 @@
     name = "Resin Membrane"
     construction_name = "resin membrane"
     cost = XENO_RESIN_MEMBRANE_COST
-    
+
     turf_path = /turf/closed/wall/resin/membrane
 
 /datum/resin_construction/resin_turf/membrane/thick
@@ -125,11 +125,11 @@
             else if(locate(/obj/structure/mineral_door/resin) in CT)
                 wall_support = TRUE
                 break
-    
+
     if(!wall_support)
         to_chat(X, SPAN_WARNING("Resin doors need a wall or resin door next to them to stand up."))
         return FALSE
-    
+
     return TRUE
 
 /datum/resin_construction/resin_obj/door/thick
@@ -151,7 +151,7 @@
 /datum/resin_construction/resin_obj/nest/can_build_here(var/turf/T, var/mob/living/carbon/Xenomorph/X)
     if (!..())
         return FALSE
-    
+
     var/obj/effect/alien/weeds/alien_weeds = locate() in T // No need to check if null, because if there are no weeds then parent call fails any way
     if(!(alien_weeds.weed_strength >= WEED_LEVEL_HIVE))
         to_chat(X, SPAN_WARNING("These weeds are not strong enough to hold the nest."))

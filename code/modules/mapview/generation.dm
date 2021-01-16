@@ -10,7 +10,7 @@
 /var/global/squad3updated = FALSE
 /var/global/squad4updated = FALSE
 /var/global/squad0updated = FALSE // echo squad go away, none of this old spooky code handles you anyway
-/var/global/refreshfrequency = MINUTES_1 // How often the map may update for each squad and the Queen. Anti-lag.
+/var/global/refreshfrequency = 1 MINUTES // How often the map may update for each squad and the Queen. Anti-lag.
 /var/global/list/map_sizes = list(list(),list(),list())
 
 /proc/generate_marine_mapview()

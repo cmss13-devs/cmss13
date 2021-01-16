@@ -136,7 +136,7 @@
 		var/deathtimeseconds = round((deathtime - deathtimeminutes * 600) / 10,1)
 		to_chat(usr, "You have been dead for[pluralcheck] [deathtimeseconds] seconds.")
 
-		if (deathtime < MINUTES_30 && !is_admin)
+		if (deathtime < 30 MINUTES && !is_admin)
 			to_chat(usr, "You must wait 30 minutes to respawn!")
 			return
 		else

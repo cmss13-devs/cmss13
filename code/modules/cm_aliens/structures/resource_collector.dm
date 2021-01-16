@@ -13,7 +13,7 @@
 	var/datum/hive_status/linked_hive
 	var/obj/structure/resource_node/connected_node
 	var/last_gathered_time
-	var/gather_cooldown = SECONDS_10
+	var/gather_cooldown = 10 SECONDS
 
 /obj/effect/alien/resin/collector/Initialize(mapload, hive_ref, new_node)
 	. = ..()

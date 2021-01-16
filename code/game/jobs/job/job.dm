@@ -22,7 +22,7 @@
 	//If you have use_timelocks config option enabled, this option will add a requirement for players to have the prerequisite roles have at least x minimum playtime before unlocking.
 	var/list/minimum_playtimes
 
-	var/minimum_playtime_as_job = HOURS_3
+	var/minimum_playtime_as_job = 3 HOURS
 
 	var/gear_preset //Gear preset name used for this job
 	var/list/gear_preset_whitelist = list()//Gear preset name used for council snowflakes ;)

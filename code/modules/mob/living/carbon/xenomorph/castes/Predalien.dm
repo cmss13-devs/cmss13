@@ -53,13 +53,13 @@
 		)
 	mutation_type = "Normal"
 
-	var/butcher_time = SECONDS_6
+	var/butcher_time = 6 SECONDS
 
 
 /mob/living/carbon/Xenomorph/Predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_predalien))
-	addtimer(CALLBACK(src, .proc/announce_spawn), SECONDS_3)
+	addtimer(CALLBACK(src, .proc/announce_spawn), 3 SECONDS)
 
 /mob/living/carbon/Xenomorph/Predalien/proc/announce_spawn()
 	if(!loc)

@@ -169,7 +169,7 @@
 
 /obj/item/device/assembly/prox_sensor/ui_data(mob/user)
 	. = list()
-	.["current_arm_time"] = time SECONDS_TO_DECISECONDS
+	.["current_arm_time"] = time *0.1
 	.["is_arming"] = timing
 
 	.["current_delay"] = delay
@@ -180,8 +180,8 @@
 	
 /obj/item/device/assembly/prox_sensor/ui_static_data(mob/user)
 	. = list()
-	.["min_time"] = PROXY_MINIMUM_TIME SECONDS_TO_DECISECONDS
-	.["max_time"] = PROXY_MAXIMUM_TIME SECONDS_TO_DECISECONDS
+	.["min_time"] = PROXY_MINIMUM_TIME *0.1
+	.["max_time"] = PROXY_MAXIMUM_TIME *0.1
 
 	.["min_range"] = PROXY_MINIMUM_RANGE
 	.["max_range"] = PROXY_MAXIMUM_RANGE

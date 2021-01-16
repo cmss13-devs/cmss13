@@ -342,7 +342,7 @@
 	damtype = "fire"
 	START_PROCESSING(SSobj, src)
 	faction = user.faction
-	addtimer(CALLBACK(src, .proc/activate_signal, user), SECONDS_5)
+	addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/living/carbon/human/user)
 	if(faction && cas_groups[faction])

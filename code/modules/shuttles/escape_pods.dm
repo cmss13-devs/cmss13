@@ -14,7 +14,7 @@ with the original.*/
 
 /datum/shuttle/ferry/marine/evacuation_pod
 	location = 0
-	warmup_time = SECONDS_5
+	warmup_time = 5 SECONDS
 	shuttle_tag = "Almayer Evac"
 	info_tag = "Almayer Evac"
 	sound_target = 18

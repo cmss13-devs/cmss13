@@ -114,7 +114,7 @@
 	if(last_reduction_update > world.time || amount <= reduction_pain) // Needed so pain meds cant spam us, neccesary evil.
 		return
 
-	last_reduction_update = world.time + SECONDS_10
+	last_reduction_update = world.time + 10 SECONDS
 	reduction_pain = amount
 
 	update_pain_level()

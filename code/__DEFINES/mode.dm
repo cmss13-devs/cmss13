@@ -1,12 +1,12 @@
 //=================================================
 //Self destruct, nuke, and evacuation.
-#define EVACUATION_TIME_LOCK 			HOURS_1
-#define DISTRESS_TIME_LOCK 				MINUTES_6
-#define SHUTTLE_TIME_LOCK 				MINUTES_15
-#define SHUTTLE_LOCK_COOLDOWN 			MINUTES_10
-#define MONORAIL_LOCK_COOLDOWN			MINUTES_3
-#define SHUTTLE_LOCK_TIME_LOCK 			MINUTES_1
-#define EVACUATION_AUTOMATIC_DEPARTURE 	MINUTES_10 //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.
+#define EVACUATION_TIME_LOCK 			1 HOURS
+#define DISTRESS_TIME_LOCK 				6 MINUTES
+#define SHUTTLE_TIME_LOCK 				15 MINUTES
+#define SHUTTLE_LOCK_COOLDOWN 			10 MINUTES
+#define MONORAIL_LOCK_COOLDOWN			3 MINUTES
+#define SHUTTLE_LOCK_TIME_LOCK 			1 MINUTES
+#define EVACUATION_AUTOMATIC_DEPARTURE 	10 MINUTES //All pods automatically depart in 10 minutes, unless they are full or unable to launch for some reason.
 #define EVACUATION_ESTIMATE_DEPARTURE 	((evac_time + EVACUATION_AUTOMATIC_DEPARTURE - world.time) * 0.1)
 
 #define EVACUATION_STATUS_STANDING_BY 0
@@ -25,7 +25,7 @@
 
 #define XENO_ROUNDSTART_PROGRESS_AMOUNT 			2
 #define XENO_ROUNDSTART_PROGRESS_TIME_1 			0
-#define XENO_ROUNDSTART_PROGRESS_TIME_2 			MINUTES_15
+#define XENO_ROUNDSTART_PROGRESS_TIME_2 			15 MINUTES
 //=================================================
 
 

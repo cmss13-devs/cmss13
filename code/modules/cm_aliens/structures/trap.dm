@@ -311,7 +311,7 @@
 			to_chat(user, SPAN_XENOWARNING("This facehugger is tainted."))
 			return
 
-		if (!do_after(user, SECONDS_3, INTERRUPT_ALL|INTERRUPT_DAZED, BUSY_ICON_HOSTILE))
+		if (!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DAZED, BUSY_ICON_HOSTILE))
 			return
 
 		set_state(RESIN_TRAP_HUGGER)

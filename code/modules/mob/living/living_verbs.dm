@@ -53,7 +53,7 @@
 		if (BB.opened)
 			return
 		visible_message("[BB] begins to wiggle violently!")
-		if(do_after(src, (5*SECONDS_1), INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
+		if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
 			BB.open()
 
 	//Breaking out of a locker?
@@ -77,7 +77,7 @@
 		for(var/mob/O in viewers(loc))
 			O.show_message(SPAN_DANGER("<B>The [loc] begins to shake violently!</B>"), 1)
 
-		if(!do_after(src, (breakout_time*MINUTES_1), INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST))
+		if(!do_after(src, (breakout_time*1 MINUTES), INTERRUPT_NO_NEEDHAND^INTERRUPT_RESIST))
 			return
 
 		if(!C || !src || stat != CONSCIOUS || loc != C || C.opened) //closet/user destroyed OR user dead/unconcious OR user no longer in closet OR closet opened

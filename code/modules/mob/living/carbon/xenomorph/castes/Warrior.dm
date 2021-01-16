@@ -126,8 +126,8 @@
 	if (stored_shield == stored_shield_max)
 		bound_xeno.add_xeno_shield(stored_shield, XENO_SHIELD_SOURCE_GENERIC)
 		bound_xeno.visible_message(SPAN_XENOWARNING("\The [bound_xeno] roars as it mauls its target, its exoskeleton shimmering for a second!"), SPAN_XENOHIGHDANGER("You feel your rage increase your resiliency to damage!"))
-		bound_xeno.xeno_jitter(SECONDS_1)
-		bound_xeno.flick_heal_overlay(SECONDS_2, "#FFA800")
+		bound_xeno.xeno_jitter(1 SECONDS)
+		bound_xeno.flick_heal_overlay(2 SECONDS, "#FFA800")
 		bound_xeno.emote("roar")
 		stored_shield = 0
 	else
@@ -140,9 +140,9 @@
 /datum/behavior_delegate/boxer
 	name = "Boxer Warrior Behavior Delegate"
 
-	var/ko_delay = SECONDS_5
+	var/ko_delay = 5 SECONDS
 	var/max_clear_head = 3
-	var/clear_head_delay = SECONDS_15
+	var/clear_head_delay = 15 SECONDS
 	var/clear_head = 3
 	var/next_clear_head_regen
 	var/clear_head_tickcancel
@@ -218,7 +218,7 @@
 	big_ko_icon.maptext_x = LANGCHAT_X_OFFSET
 	big_ko_icon.maptext = "<span class='center langchat langchat_bolditalicbig'>KO!</span>"
 	bound_xeno.client.images += big_ko_icon
-	addtimer(CALLBACK(src, .proc/remove_big_ko), SECONDS_2)
+	addtimer(CALLBACK(src, .proc/remove_big_ko), 2 SECONDS)
 
 /datum/behavior_delegate/boxer/proc/remove_big_ko()
 	if(bound_xeno.client && big_ko_icon)

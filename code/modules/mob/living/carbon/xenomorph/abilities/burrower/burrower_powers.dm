@@ -24,7 +24,7 @@
 	if(!burrow)
 		to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the ground."))
 		if(!do_after(src, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : SECONDS_5))
+			addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
 			return
 		// TODO Make immune to all damage here.
 		to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
@@ -35,7 +35,7 @@
 		density = FALSE
 		update_canmove()
 		update_icons()
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : SECONDS_5))
+		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		burrow_timer = world.time + 90		// How long we can be burrowed
 		process_burrow()
 		return
@@ -51,7 +51,7 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 	if(burrow)
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/process_burrow), SECONDS_1)
+		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/process_burrow), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
 
@@ -62,7 +62,7 @@
 	density = TRUE
 	for(var/mob/living/carbon/human/H in loc)
 		H.KnockDown(2)
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : SECONDS_5))
+	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_canmove()
 	update_icons()
 
@@ -111,7 +111,7 @@
 		tunnel = FALSE
 		to_chat(src, SPAN_NOTICE("You stop tunneling."))
 		used_tunnel = TRUE
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_tunnel_cooldown), (caste ? caste.tunnel_cooldown : SECONDS_5))
+		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_tunnel_cooldown), (caste ? caste.tunnel_cooldown : 5 SECONDS))
 		return
 
 	if(!T || T.density)
@@ -127,7 +127,7 @@
 		tunnel = FALSE
 		do_tunnel(T)
 	if(tunnel && T)
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/process_tunnel, T), SECONDS_1)
+		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/process_tunnel, T), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/do_tunnel(var/turf/T)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))

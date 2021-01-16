@@ -105,7 +105,7 @@
 	for(var/spawn_loc in GLOB.simulator_targets)
 		var/mob/living/carbon/human/dummy = new /mob/living/carbon/human(get_turf(spawn_loc))
 		dummy.name = "simulated human"
-		QDEL_IN(dummy,MINUTES_1)
+		QDEL_IN(dummy,1 MINUTES)
 
 	//Simply an explosive
 	if(istype(configuration,/obj/item/explosive))
@@ -125,7 +125,7 @@
 		if(O.warhead)
 			make_and_prime_explosive(O.warhead)
 
-	addtimer(CALLBACK(src, .proc/stop_cooling), MINUTES_2, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/stop_cooling), 2 MINUTES, TIMER_UNIQUE)
 
 /obj/structure/machinery/computer/demo_sim/proc/make_and_prime_explosive(var/obj/item/explosive/O)
 	var/obj/item/explosive/E = new O.type(simulation.loc)
@@ -133,7 +133,7 @@
 	E.prime(TRUE)
 	var/turf/sourceturf = get_turf(simulation)
 	sourceturf.chemexploded = FALSE //Make sure that this actually resets
-	QDEL_IN(E,MINUTES_1)
+	QDEL_IN(E,1 MINUTES)
 
 /obj/structure/machinery/computer/demo_sim/proc/stop_cooling()
 	cooling = FALSE

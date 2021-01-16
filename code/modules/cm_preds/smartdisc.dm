@@ -39,7 +39,7 @@
 	if(L)
 		throw_atom(L.loc, 4, SPEED_FAST, usr)
 	throw_atom(usr, 12, SPEED_SLOW, usr)
-	addtimer(CALLBACK(src, .proc/clear_boomerang), SECONDS_3)
+	addtimer(CALLBACK(src, .proc/clear_boomerang), 3 SECONDS)
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/proc/clear_boomerang()
 	icon_state = initial(icon_state)

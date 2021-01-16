@@ -66,6 +66,7 @@ var/internal_tick_usage = 0
 	if(!EvacuationAuthority)		EvacuationAuthority = new
 
 	change_tick_lag(CONFIG_GET(number/ticklag))
+	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 	Master.Initialize(10, FALSE, TRUE)
 

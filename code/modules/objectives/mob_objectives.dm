@@ -212,7 +212,7 @@
 	return "[get_loss_percentage()]% Losses"
 
 /datum/cm_objective/minimise_losses/get_point_value()
-	if(world.time < MINUTES_30)
+	if(world.time < 30 MINUTES)
 		//We don't count this objective for the first 30 minures
 		//Otherwise LV might get a lot of points before Marines drop due to tcomms being given for free...
 		return 0

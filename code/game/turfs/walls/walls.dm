@@ -444,7 +444,7 @@
 	var/amount_needed = acided_hole ? 3 : 1
 
 	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < (4*amount_needed-1))
-		to_chat(user, SPAN_WARNING("You require atleast [4*amount_needed] nails to complete this task!"))
+		to_chat(user, SPAN_WARNING("You require at least [4*amount_needed] nails to complete this task!"))
 		return FALSE
 
 	// Check if either hand has a metal stack by checking the weapon offhand
@@ -475,7 +475,7 @@
 
 	for(var/i = 1 to amount_needed)
 		var/soundchannel = playsound(src, NG.repair_sound, 25, 1)
-		if(!do_after(user, NG.nailing_speed, INTERRUPT_ALL|INTERRUPT_CLICK, BUSY_ICON_FRIENDLY, src))
+		if(!do_after(user, NG.nailing_speed, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 			playsound(src, null, channel = soundchannel)
 			return FALSE
 
@@ -485,8 +485,8 @@
 		to_chat(user, SPAN_WARNING("You seems to have misplaced the repair material!"))
 		return FALSE
 
-	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < 3)
-		to_chat(user, SPAN_WARNING("You require atleast [4*amount_needed] nails to complete this task!"))
+	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < (4*amount_needed-1))
+		to_chat(user, SPAN_WARNING("You require at least [4*amount_needed] nails to complete this task!"))
 		return FALSE
 
 	if(acided_hole)
@@ -498,7 +498,7 @@
 		take_damage(-repair_value*damage_cap)
 		to_chat(user, SPAN_WARNING("You reinforce the fissures in [src], raising its integrity!"))
 
-	material.use(1)
+	material.use(amount_needed)
 	NG.current_mag.current_rounds -= (4*amount_needed-1)
 	NG.in_chamber = null
 	NG.load_into_chamber()

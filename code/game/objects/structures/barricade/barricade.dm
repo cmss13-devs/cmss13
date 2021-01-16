@@ -385,7 +385,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 	var/obj/item/weapon/gun/smg/nailgun/NG = W
 
 	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < 3)
-		to_chat(user, SPAN_WARNING("You require atleast 4 nails to complete this task!"))
+		to_chat(user, SPAN_WARNING("You require at least 4 nails to complete this task!"))
 		return FALSE
 
 	// Check if either hand has a metal stack by checking the weapon offhand
@@ -411,7 +411,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return FALSE
 
 	var/soundchannel = playsound(src, NG.repair_sound, 25, 1)
-	if(!do_after(user, NG.nailing_speed, INTERRUPT_ALL|INTERRUPT_CLICK, BUSY_ICON_FRIENDLY, src))
+	if(!do_after(user, NG.nailing_speed, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 		playsound(src, null, channel = soundchannel)
 		return FALSE
 
@@ -420,7 +420,7 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		return FALSE
 
 	if(!NG.in_chamber || !NG.current_mag || NG.current_mag.current_rounds < 3)
-		to_chat(user, SPAN_WARNING("You require atleast 4 nails to complete this task!"))
+		to_chat(user, SPAN_WARNING("You require at least 4 nails to complete this task!"))
 		return FALSE
 
 	update_health(-repair_value*maxhealth)

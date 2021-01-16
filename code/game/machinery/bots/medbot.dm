@@ -30,10 +30,10 @@
 	var/heal_threshold = 10 //Start healing when they have this much damage in a category
 	var/use_beaker = 0 //Use reagents in beaker instead of default treatment agents.
 	//Setting which reagents to use to treat what by default. By id.
-	var/treatment_brute = "tricordrazine"
-	var/treatment_oxy = "tricordrazine"
-	var/treatment_fire = "tricordrazine"
-	var/treatment_tox = "tricordrazine"
+	var/treatment_brute = "bicaridine"
+	var/treatment_oxy = "dexalin"
+	var/treatment_fire = "kelotane"
+	var/treatment_tox = "anti_toxin"
 	var/treatment_virus = "spaceacillin"
 	var/declare_treatment = 0 //When attempting to treat a patient, should it notify everyone wearing medhuds?
 	var/shut_up = 0 //self explanatory :)
@@ -407,7 +407,9 @@
 		visible_message(SPAN_DANGER("<B>[src] is trying to inject [src.patient]!</B>"))
 		spawn(30)
 			if ((get_dist(src, src.patient) <= 1) && (src.on))
-				if(reagent_id == "internal_beaker" && reagent_glass && reagent_glass.reagents.total_volume)
+				if (!assess_patient(C))
+					visible_message(SPAN_DANGER("<B>[src] pulls the syringe away. Safety protocol engaged!</B>"))
+				else if (reagent_id == "internal_beaker" && reagent_glass && reagent_glass.reagents.total_volume)
 					src.reagent_glass.reagents.trans_to(src.patient,src.injection_amount) //Inject from beaker instead.
 					src.reagent_glass.reagents.reaction(src.patient, 2)
 				else

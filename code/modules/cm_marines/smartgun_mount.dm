@@ -118,6 +118,7 @@
 		M.gun_mounted = TRUE
 		M.anchored = TRUE
 		M.update_icon()
+		M.name = src.name
 		to_chat(user, SPAN_NOTICE("You deploy [src]."))
 		qdel(src)
 
@@ -161,7 +162,8 @@
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
 	to_chat(user, SPAN_NOTICE("You deploy [src]."))
-	new /obj/structure/machinery/m56d_post(user.loc)
+	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
+	M.name = src.name
 	qdel(src)
 
 
@@ -291,6 +293,7 @@
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
+				G.name = src.name
 				G.visible_message("[icon2html(G)] <B>[G] is now complete!</B>") //finished it for everyone to
 				G.setDir(dir) //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
@@ -443,6 +446,7 @@
 				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
+				HMG.name = src.name
 				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
 				HMG.has_mount = TRUE
 				HMG.update_icon()
@@ -883,7 +887,8 @@
 
 	if(!do_after(user, M2C_SETUP_TIME , INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 		return
-	var/obj/structure/machinery/m56d_hmg/auto/M = new /obj/structure/machinery/m56d_hmg/auto(user.loc)
+	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
+	M.name = src.name
 	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, 1)
@@ -1304,6 +1309,7 @@
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
 			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
 			var/obj/item/device/m2c_gun/HMG = new(src.loc)
+			HMG.name = src.name
 			HMG.rounds = src.rounds
 			HMG.overheat_value = round(0.5 * src.overheat_value)
 			if (HMG.overheat_value <= 10)

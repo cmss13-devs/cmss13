@@ -98,8 +98,10 @@
 
 		user.visible_message(SPAN_NOTICE("[user] disassembles [src]."), SPAN_NOTICE("You disassemble [src]."))
 
-		new handheld_type(loc)
+		var/obj/item/defenses/handheld/H = new handheld_type(loc)
 		playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
+		H.name = "handheld [src.name]" //fixed
+
 		qdel(src)
 		return
 

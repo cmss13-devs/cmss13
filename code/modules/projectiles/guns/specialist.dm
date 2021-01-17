@@ -230,25 +230,25 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/flashlight/grip,
 						/obj/item/attachable/bipod,
-						/obj/item/attachable/compensator)
+						/obj/item/attachable/compensator,
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/scope,
+						/obj/item/attachable/scope/mini,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex
+						)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
 
-/obj/item/weapon/gun/rifle/m4ra/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/scope/S = new(src)
-	S.hidden = TRUE // the gun's sprite already shows a scope
-	S.flags_attach_features &= ~ATTACH_REMOVABLE //Don't want it coming off.
-	S.Attach(src)
-	update_attachable(S.slot)
-
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 23, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
 //also logs for AA canno
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()

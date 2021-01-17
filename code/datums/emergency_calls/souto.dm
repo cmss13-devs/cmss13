@@ -4,7 +4,7 @@
 	name = "Souto Man"
 	mob_max = 1
 	mob_min = 1
-	arrival_message = "Incoming Transmission: 'Get ready to be: Souto'd! Souto Man wants to party with the man who sent in 10 Thousand souto cans to get me here!"
+	arrival_message = "Incoming Transmission: Give a round of applause for the marine who sent in ten-thousand Souto tabs to get me here! USS Almayer, Souto Man's here to party with YOU!"
 	objectives = "Party like it's 1999!"
 	probability = 0
 
@@ -19,8 +19,8 @@
 
 	arm_equipment(H, "Souto Man", TRUE, TRUE)
 
-	to_chat(H, "<font size='3'>\red You are Souto Man! You should bring awareness to souto!</font>")
-	to_chat(H, "Your job is to deliver your souto. Shoot those marines!")
+	to_chat(H, "<font size='3'>\red You are Souto Man! You should bring awareness to the Souto brand!</font>")
+	to_chat(H, "Your job is to party hard and share Souto. Make sure those marines are never thirsty again!")
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
 

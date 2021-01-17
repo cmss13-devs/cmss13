@@ -159,7 +159,7 @@
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
 
 /obj/item/clothing/shoes/souto
-	name = "\improper Souto Man boots"
+	name = "\improper Souto Man's boots. Harder than the kick of Souto Red."
 	desc = "Souto Man boots"
 	icon_state = "souto_man"
 	item_state = "souto_man"
@@ -172,6 +172,5 @@
 	armor_bio = CLOTHING_ARMOR_HARDCORE
 	armor_rad = CLOTHING_ARMOR_HARDCORE
 	armor_internaldamage = CLOTHING_ARMOR_HARDCORE
-	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP|NOSLIPPING
 	unacidable = TRUE

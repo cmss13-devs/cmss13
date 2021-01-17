@@ -501,8 +501,8 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("M3 Pattern Padless Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Ridged Marine Armor", 20, /obj/item/clothing/suit/storage/marine/padless_lines, VENDOR_ITEM_REGULAR),
 		list("M3 Pattern Skull Marine Armor", 20, /obj/item/clothing/suit/storage/marine/skull, VENDOR_ITEM_REGULAR),
-		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/class/heavy, VENDOR_ITEM_REGULAR),
-		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/class/light, VENDOR_ITEM_REGULAR),
+		list("M3-H Pattern Heavy Armor", 10, /obj/item/clothing/suit/storage/marine/heavy, VENDOR_ITEM_REGULAR),
+		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES", -1, null, null),
 		list("Marine Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, VENDOR_ITEM_REGULAR),

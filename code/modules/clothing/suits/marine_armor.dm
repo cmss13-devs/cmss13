@@ -115,6 +115,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	time_to_unequip = 20
 	time_to_equip = 20
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
+	var/armor_variation = 0
 
 /obj/item/clothing/suit/storage/marine/Initialize()
 	. = ..()
@@ -124,9 +125,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
 		else
 			name += " armor"
-	if(type == /obj/item/clothing/suit/storage/marine)
-		var/armor_variation = rand(1,6)
-		icon_state = "[armor_variation]"
+	if(armor_variation)
+		icon_state = replacetext(icon_state,"1","[rand(1,armor_variation)]")
 
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
@@ -445,40 +445,15 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 //===========================//PFC ARMOR CLASSES\\================================\\
 //=================================================================================\\
-/obj/item/clothing/suit/storage/marine/class //We need a separate type to handle the special icon states.
-	name = "\improper M3 pattern classed armor"
-	desc = "You shouldn't be seeing this."
-	icon_state = "1" //This should be the default icon state.
+/obj/item/clothing/suit/storage/marine/medium
+	armor_variation = 6
 
-	var/class = "H" //This variable should be what comes before the variation number (H6 -> H).
-
-/obj/item/clothing/suit/storage/marine/class/Initialize()
-	. = ..()
-	if(!(flags_atom & UNIQUE_ITEM_TYPE))
-		name = "[specialty]"
-		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
-			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
-		else
-			name += " armor"
-	if(istype(src, /obj/item/clothing/suit/storage/marine/class))
-		var/armor_variation = rand(1,6)
-		icon_state = "[class]" + "[armor_variation]"
-	armor_overlays = list("lamp") //Just one for now, can add more later.
-	update_icon()
-	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
-	pockets.bypass_w_limit = list(
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg,
-		/obj/item/ammo_magazine/sniper,
-	)
-	pockets.max_storage_space = 8
-
-/obj/item/clothing/suit/storage/marine/class/light
+/obj/item/clothing/suit/storage/marine/light
 	name = "\improper M3-L pattern light armor"
 	desc = "A lighter, cut down version of the standard M3 pattern armor. It sacrifices durability for more speed."
 	specialty = "\improper M3-L pattern light"
 	icon_state = "L1"
-	class = "L"
+	armor_variation = 6
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
@@ -490,13 +465,13 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 2
 	movement_compensation = SLOWDOWN_ARMOR_LIGHT
 
-/obj/item/clothing/suit/storage/marine/class/heavy
+/obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-H pattern heavy armor"
 	desc = "A heavier version of the standard M3 pattern armor, cladded with additional plates. It sacrifices speed for more durability."
 	specialty = "\improper M3-H pattern heavy"
 	icon_state = "H1"
+	armor_variation = 6
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
-	class = "H"
 	slowdown = SLOWDOWN_ARMOR_LOWHEAVY
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH

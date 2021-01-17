@@ -11,11 +11,11 @@
 					/obj/item/clothing/head/helmet/marine,
 					/obj/item/clothing/head/helmet/marine,
 					/obj/item/clothing/head/helmet/marine,
-					/obj/item/clothing/suit/storage/marine,
-					/obj/item/clothing/suit/storage/marine,
-					/obj/item/clothing/suit/storage/marine,
-					/obj/item/clothing/suit/storage/marine,
-					/obj/item/clothing/suit/storage/marine
+					/obj/item/clothing/suit/storage/marine/medium,
+					/obj/item/clothing/suit/storage/marine/medium,
+					/obj/item/clothing/suit/storage/marine/medium,
+					/obj/item/clothing/suit/storage/marine/medium,
+					/obj/item/clothing/suit/storage/marine/medium
 					)
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate

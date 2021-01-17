@@ -136,9 +136,6 @@
 	var/mob/living/carbon/human/user = usr
 	if(user.stat || user.is_mob_restrained())
 		return
-	if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-		to_chat(user, "You do not know how to configure these settings.")
-		return
 	if(href_list["inject_amount"])
 		acid_core.inject_amount = input("Set inject amount:","[src]") as num
 		if(acid_core.inject_amount < 1)

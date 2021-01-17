@@ -16,6 +16,7 @@
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
 	var/lock_overridable = TRUE
+	var/opening_stage = FALSE 
 
 /obj/item/storage/backpack/attack_hand(mob/user)
 	if(!is_accessible_by(user))
@@ -83,13 +84,26 @@
 		return
 	..()
 
+/obj/item/storage/backpack/close(mob/user)
+	UnregisterSignal(user, COMSIG_MOB_MOVE)
+	..()
+
 /obj/item/storage/backpack/proc/is_accessible_by(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!worn_accessible)
-			if(H.back == src)
-				to_chat(H, SPAN_NOTICE("You can't look in [src] while it's on your back."))
-				return FALSE
+			if(H.back == src && !opening_stage)
+				to_chat(H, SPAN_NOTICE("You begin to open [src], so you can check its contents."))
+				opening_stage = TRUE 
+				if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+					to_chat(H, SPAN_WARNING("You were interrupted!"))
+					opening_stage = FALSE 
+					return FALSE
+				RegisterSignal(user, COMSIG_MOB_MOVE, .proc/close)
+				opening_stage = FALSE 
+				return TRUE
+			else if(H.back == src && opening_stage)
+				return FALSE 
 
 		if(!QDELETED(locking_id))
 			var/obj/item/card/id/card = H.wear_id

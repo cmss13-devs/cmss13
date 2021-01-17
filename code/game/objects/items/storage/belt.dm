@@ -978,11 +978,12 @@
 
 /obj/item/storage/belt/souto
 	name = "\improper Souto belt"
-	desc = "A belt with break away souto cans. They cannot be put back."
+	desc = "Souto Man's trusty utility belt with break away Souto cans. They cannot be put back."
+	icon_state = "souto_man"
+	item_state = "souto_man"
 	flags_equip_slot = SLOT_WAIST
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
 	storage_slots = 8
-	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP
 	max_w_class = 0 //this belt cannot hold anything
 

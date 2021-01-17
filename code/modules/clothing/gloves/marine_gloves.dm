@@ -1,6 +1,4 @@
 
-
-
 //marine gloves
 
 /obj/item/clothing/gloves/marine
@@ -163,10 +161,9 @@
 
 /obj/item/clothing/gloves/marine/veteran/souto
 	name = "\improper Souto Man gloves"
-	desc = "The gloves worn by Souto Man. White as sugar."
+	desc = "The gloves worn by Souto Man. A grip stronger than the taste of Souto Cherry!"
 	icon_state = "souto_man"
 	item_state = "souto_man"
-	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP
 	armor_melee = CLOTHING_ARMOR_HARDCORE
 	armor_bullet = CLOTHING_ARMOR_HARDCORE

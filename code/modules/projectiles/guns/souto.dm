@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/souto
 	name = "\improper Souto Slinger Supremo"
-	desc = "The most feared weapon in the galaxy."
+	desc = "This appears to be a T-shirt cannon modified to fire cans of Souto at speeds fast enough to get them up into the top stands of a stadium. This can't be safe. Cobbled together in Havana."
 	icon_state = "supremo_w"
 	item_state = "supremo_w"
 	w_class = SIZE_SMALL
@@ -22,7 +22,7 @@
 /obj/item/weapon/gun/souto/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	if(!soutopack)
 		if(!link_soutopack(user))
-			to_chat(user, "You must equip the specialized Backpack Souto vending machine to use this Souto Slinger Supremo!")
+			to_chat(user, "You must equip the specialized Backpack Souto Vending Machine to use the Souto Slinger Supremo!")
 			click_empty(user)
 			unlink_soutopack()
 			return

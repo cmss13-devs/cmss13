@@ -348,11 +348,9 @@
 	access = get_freelancer_access()
 
 /datum/equipment_preset/other/souto/load_name(mob/living/carbon/human/H, var/randomise)
-	H.gender = pick(MALE,FEMALE)
-	var/datum/preferences/A = new()
-	A.randomize_appearance(H)
-	H.change_real_name(H, "Carlos Souto Man Cubano")
-	H.age = rand(17,45)
+	H.gender = MALE
+	H.change_real_name(H, "Souto Man")
+	H.age = 40
 
 /datum/equipment_preset/other/souto/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

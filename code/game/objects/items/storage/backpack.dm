@@ -661,12 +661,11 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	max_storage_space = 30
 
 /obj/item/storage/backpack/souto
-	name = "\improper back mounted Suoto vending machine"
+	name = "\improper back mounted Souto vending machine"
 	max_storage_space = 30
-	desc = "The loading mechanism for the Souto Slinger Supremo. And a portable souto vendor."
+	desc = "The loading mechanism for the Souto Slinger Supremo and a portable Souto vendor!"
 	icon_state = "supremo_pack"
 	storage_slots = null
-	flags_item = NODROP|DELONDROP
 	flags_inventory = CANTSTRIP
 	unacidable = TRUE
 	var/internal_mag = new /obj/item/ammo_magazine/internal/souto

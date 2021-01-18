@@ -225,7 +225,7 @@
 			to_chat(X, SPAN_XENOWARNING("There are no Xenomorph leaders. Overwatch a Xenomorph to make it a leader."))
 
 
-/datum/action/xeno_action/activable/queen_heal/use_ability(atom/A)
+/datum/action/xeno_action/activable/queen_heal/use_ability(atom/A, verbose)
 	var/mob/living/carbon/Xenomorph/Queen/X = owner
 	if(!X.check_state())
 		return
@@ -249,7 +249,9 @@
 		if(!X.can_not_harm(Xa))
 			continue
 
-		if(Xa.cannot_be_xeno_healed)
+		if(SEND_SIGNAL(Xa, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
+			if(verbose)
+				to_chat(X, SPAN_XENOMINORWARNING("You cannot heal [Xa]!"))
 			continue
 
 		if(Xa == X)

@@ -82,10 +82,10 @@
 	. = ..()
 	RegisterSignal(Q, COMSIG_MOB_PRE_CLICK, .proc/handle_overwatch)
 	RegisterSignal(Q, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, .proc/exit_hologram)
-	RegisterSignal(Q, COMSIG_XENOMORPH_OVERWATCH_XENO, .proc/start_watching)
+	RegisterSignal(Q, COMSIG_XENO_OVERWATCH_XENO, .proc/start_watching)
 	RegisterSignal(Q, list(
-		COMSIG_XENOMORPH_STOP_OVERWATCH,
-		COMSIG_XENOMORPH_STOP_OVERWATCH_XENO
+		COMSIG_XENO_STOP_OVERWATCH,
+		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), .proc/stop_watching)
 	RegisterSignal(src, COMSIG_TURF_ENTER, .proc/turf_weed_only)
 

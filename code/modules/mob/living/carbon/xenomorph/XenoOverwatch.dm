@@ -66,7 +66,7 @@
 		var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
 		observed_xeno = null
 
-		SEND_SIGNAL(src, COMSIG_XENOMORPH_STOP_OVERWATCH, oldXeno)
+		SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH, oldXeno)
 
 		if(oldXeno)
 			to_chat(src, SPAN_XENOWARNING("You stop watching [oldXeno]."))
@@ -103,13 +103,13 @@
 			var/mob/living/carbon/Xenomorph/oldXeno = observed_xeno
 			observed_xeno = null
 
-			SEND_SIGNAL(src, COMSIG_XENOMORPH_STOP_OVERWATCH_XENO, oldXeno)
+			SEND_SIGNAL(src, COMSIG_XENO_STOP_OVERWATCH_XENO, oldXeno)
 			oldXeno.hud_set_queen_overwatch()
 
 		observed_xeno = targetXeno
 
 		observed_xeno.hud_set_queen_overwatch()
-		SEND_SIGNAL(src, COMSIG_XENOMORPH_OVERWATCH_XENO, observed_xeno)
+		SEND_SIGNAL(src, COMSIG_XENO_OVERWATCH_XENO, observed_xeno)
 		src.add_movement_handler(new movement_event_handler(src))
 
 	src.reset_view()

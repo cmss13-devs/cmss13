@@ -263,9 +263,7 @@
 		if(!Xa.caste.can_be_queen_healed)
 			continue
 
-		if(Xa.health < Xa.maxHealth)
-			Xa.gain_health(75)
-		new /datum/effects/heal_over_time(Xa, Xa.maxHealth * 0.4, 2 SECONDS, 2)
+		new /datum/effects/heal_over_time(Xa, Xa.maxHealth * 0.3, 2 SECONDS, 2)
 		Xa.flick_heal_overlay(3 SECONDS, "#D9F500")	//it's already hard enough to gauge health without hp overlays!
 
 	apply_cooldown()

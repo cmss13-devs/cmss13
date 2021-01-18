@@ -44,7 +44,7 @@
 		shake_camera(H, 2, 1)
 
 	accumulative_health = min(max_shield, accumulative_health)
-	accumulative_health += baseline_shield
+	accumulative_health += main_empower_base_shield
 
 	X.add_xeno_shield(accumulative_health, XENO_SHIELD_SOURCE_RAVAGER)
 	X.overlay_shields()
@@ -57,7 +57,7 @@
 	if(!activated_once)
 		return
 
-	X.add_xeno_shield(initial_shield, XENO_SHIELD_SOURCE_RAVAGER)
+	X.add_xeno_shield(initial_activation_shield, XENO_SHIELD_SOURCE_RAVAGER)
 	X.overlay_shields()
 
 /datum/action/xeno_action/activable/empower/proc/timeout()

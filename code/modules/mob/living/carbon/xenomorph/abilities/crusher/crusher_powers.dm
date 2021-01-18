@@ -120,7 +120,7 @@
 	X.recalculate_armor()
 
 	addtimer(CALLBACK(src, .proc/remove_explosion_immunity), 25, TIMER_UNIQUE)
-	addtimer(CALLBACK(src, .proc/remove_shield), 100, TIMER_UNIQUE)
+	addtimer(CALLBACK(src, .proc/remove_shield), 70, TIMER_UNIQUE)
 
 	apply_cooldown()
 	..()

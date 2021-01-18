@@ -8,7 +8,7 @@
 	plasma_cost = 0
 	ability_primacy = XENO_PRIMARY_ACTION_1
 
-	var/armor_buff = 15
+	var/armor_buff = 10
 	var/speed_debuff = 1.5
 
 /datum/action/xeno_action/activable/headbutt

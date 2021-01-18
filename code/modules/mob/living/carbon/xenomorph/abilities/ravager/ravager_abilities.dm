@@ -7,14 +7,14 @@
 	action_type = XENO_ACTION_ACTIVATE
 	ability_primacy = XENO_PRIMARY_ACTION_1
 	plasma_cost = 50
-	xeno_cooldown = 180
+	xeno_cooldown = 220
 
 	// Config values (mutable)
 	var/empower_range = 3
 	var/max_shield = 300
-	var/baseline_shield = 75
+	var/main_empower_base_shield = 0
+	var/initial_activation_shield = 75
 	var/shield_per_human = 50
-	var/initial_shield = 100
 	var/time_until_timeout = 100
 
 	// State

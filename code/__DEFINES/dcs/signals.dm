@@ -103,8 +103,6 @@
 
 /// from /mob/living/carbon/human/attack_alien()
 #define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
-/// from /mob/living/carbon/Xenomorph/attack_alien()
-#define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
@@ -155,9 +153,13 @@
 #define COMSIG_HUMAN_BLOOD_CROSSED "human_blood_crossed"
 #define COMSIG_HUMAN_CLEAR_BLOODY_FEET "human_clear_bloody_feet"
 
-#define COMSIG_XENOMORPH_OVERWATCH_XENO "xenomorph_overwatch_xeno"
-#define COMSIG_XENOMORPH_STOP_OVERWATCH	"xenomorph_stop_overwatch"
-#define COMSIG_XENOMORPH_STOP_OVERWATCH_XENO "xenomorph_stop_overwatch_xeno"
+/// from /mob/living/carbon/Xenomorph/attack_alien()
+#define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"
+#define COMSIG_XENO_OVERWATCH_XENO "xeno_overwatch_xeno"
+#define COMSIG_XENO_STOP_OVERWATCH	"xeno_stop_overwatch"
+#define COMSIG_XENO_STOP_OVERWATCH_XENO "xeno_stop_overwatch_xeno"
+#define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
+	#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
 
 #define COMSIG_QUEEN_DISMOUNT_OVIPOSITOR "queen_dismount_ovipositor"
 

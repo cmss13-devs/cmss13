@@ -771,7 +771,7 @@
 	var/use_plasma = FALSE
 
 	if (curr_effect_type == WARDEN_HEAL_SHIELD)
-		if (targetXeno.cannot_be_xeno_healed)
+		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(X, SPAN_XENOWARNING("You cannot heal bolster the defenses of this xeno!"))
 			return
 
@@ -808,7 +808,7 @@
 		if (!X.Adjacent(A))
 			to_chat(X, SPAN_XENODANGER("You must be within touching distance of [targetXeno]!"))
 			return
-		if (targetXeno.cannot_be_xeno_healed)
+		if (SEND_SIGNAL(targetXeno, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 			to_chat(X, SPAN_XENOWARNING("You cannot heal this xeno!"))
 			return
 

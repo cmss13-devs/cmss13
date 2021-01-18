@@ -43,6 +43,7 @@
 #include "code\__DEFINES\defenses.dm"
 #include "code\__DEFINES\equipment.dm"
 #include "code\__DEFINES\event_system.dm"
+#include "code\__DEFINES\fire.dm"
 #include "code\__DEFINES\flags.dm"
 #include "code\__DEFINES\guns.dm"
 #include "code\__DEFINES\html.dm"

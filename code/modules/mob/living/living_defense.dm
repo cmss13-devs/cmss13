@@ -107,15 +107,15 @@
 //Mobs on Fire
 /mob/living/proc/IgniteMob(force)
 	if(!force && SEND_SIGNAL(src, COMSIG_LIVING_PREIGNITION) & COMPONENT_CANCEL_IGNITION)
-		return FALSE
+		return IGNITE_FAILED
 	if(fire_stacks > 0)
 		if(on_fire)
-			return TRUE
+			return IGNITE_ON_FIRE
 		on_fire = TRUE
 		to_chat(src, SPAN_DANGER("You are on fire! Use Resist to put yourself out!"))
 		update_fire()
-		return TRUE
-	return FALSE
+		return IGNITE_IGNITED
+	return IGNITE_FAILED
 
 /mob/living/carbon/human/IgniteMob()
 	. = ..()

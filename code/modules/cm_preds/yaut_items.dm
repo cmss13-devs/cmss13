@@ -1024,7 +1024,11 @@
 	if(isXeno(C))
 		var/mob/living/carbon/Xenomorph/X = C
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
-		X.cannot_be_xeno_healed++
+		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, .proc/block_heal)
+
+/obj/item/hunting_trap/proc/block_heal(mob/living/carbon/Xenomorph/xeno)
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_XENO_HEAL
 
 /obj/item/hunting_trap/Crossed(atom/movable/AM)
 	if(armed && ismob(AM))
@@ -1063,7 +1067,7 @@
 	if (trapped_mob)
 		if (isXeno(trapped_mob))
 			var/mob/living/carbon/Xenomorph/X = trapped_mob
-			X.cannot_be_xeno_healed--
+			UnregisterSignal(X, COMSIG_XENO_PRE_HEAL)
 		trapped_mob = null
 	cleanup_tether()
 

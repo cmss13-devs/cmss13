@@ -206,7 +206,6 @@
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/list/tackle_counter = list()
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
-	var/cannot_be_xeno_healed = FALSE // Ticker for whether xeno can be healed by Warden/Queen/etc
 
 
 	//////////////////////////////////////////////////////////////////
@@ -820,6 +819,7 @@
 			hive.hive_ui.update_all_xeno_data()
 
 	armor_integrity = 100
+	UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
 	..()
 	hud_update()
 	plasma_stored = plasma_max
@@ -866,10 +866,14 @@
 
 /mob/living/carbon/Xenomorph/IgniteMob()
 	. = ..()
-	if (.)
-		cannot_be_xeno_healed++
+	if (. & IGNITE_IGNITED)
+		RegisterSignal(src, COMSIG_XENO_PRE_HEAL, .proc/cancel_heal)
 
 /mob/living/carbon/Xenomorph/ExtinguishMob()
 	. = ..()
 	if (.)
-		cannot_be_xeno_healed--
+		UnregisterSignal(src, COMSIG_XENO_PRE_HEAL)
+
+/mob/living/carbon/Xenomorph/proc/cancel_heal()
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_XENO_HEAL

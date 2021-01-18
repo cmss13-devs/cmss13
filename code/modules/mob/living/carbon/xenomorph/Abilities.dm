@@ -334,7 +334,7 @@
 		to_chat(X, SPAN_XENOWARNING("This caste cannot be given plasma!"))
 		return
 
-	if(target.cannot_be_xeno_healed)
+	if(SEND_SIGNAL(target, COMSIG_XENO_PRE_HEAL) & COMPONENT_CANCEL_XENO_HEAL)
 		to_chat(X, SPAN_XENOWARNING("This xeno cannot be given plasma!"))
 		return
 

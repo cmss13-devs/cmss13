@@ -293,6 +293,8 @@
 
 	var/shield_cost = 100
 	var/shield_amount = 125
+	var/shield_duration = 1 MINUTES
+	var/shield_decay = 25
 
 	var/debuff_cost = 100
 

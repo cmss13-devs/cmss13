@@ -174,12 +174,12 @@
 	if(!X.fortify)
 		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
 		if(X.steelcrest)
-			X.armor_deflection_buff += 15
+			X.armor_deflection_buff += 10
 			X.armor_explosive_buff += 60
 			X.ability_speed_modifier += 3
 			X.damage_modifier -= XENO_DAMAGE_MOD_SMALL
 		else
-			X.armor_deflection_buff += 35
+			X.armor_deflection_buff += 30
 			X.armor_explosive_buff += 60
 			X.frozen = TRUE
 			X.anchored = TRUE
@@ -194,12 +194,12 @@
 		X.frozen = FALSE
 		X.anchored = FALSE
 		if(X.steelcrest)
-			X.armor_deflection_buff -= 15
+			X.armor_deflection_buff -= 10
 			X.armor_explosive_buff -= 60
 			X.ability_speed_modifier -= 3
 			X.damage_modifier += XENO_DAMAGE_MOD_SMALL
 		else
-			X.armor_deflection_buff -= 35
+			X.armor_deflection_buff -= 30
 			X.armor_explosive_buff -= 60
 			X.small_explosives_stun = TRUE
 		X.mob_size = MOB_SIZE_XENO //no longer knockback immune

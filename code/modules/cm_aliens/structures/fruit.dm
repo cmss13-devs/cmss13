@@ -164,7 +164,7 @@
 	consumed_icon_state = "fruit_spent_2"
 	flags = CAN_CONSUME_AT_FULL_HEALTH
 	var/overshield_amount = 200
-	var/shield_duration = 1.5 MINUTES
+	var/shield_duration = 1 MINUTES
 	var/shield_decay = 10
 
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/Xenomorph/recipient)

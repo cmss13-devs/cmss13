@@ -447,7 +447,7 @@
 	name = "\improper Smart Chemical Storage"
 	desc = "A refrigerated storage unit for medicine and chemical storage."
 	is_secure_fridge = TRUE
-	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY)
+	req_one_access = list(ACCESS_MARINE_CMO, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MEDPREP)
 	networked = TRUE
 
 /obj/structure/machinery/smartfridge/chemistry/accept_check(var/obj/item/O as obj)

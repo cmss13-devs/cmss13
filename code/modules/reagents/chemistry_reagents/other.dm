@@ -687,6 +687,7 @@
 	burncolor = "#D05006"
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
 
+// This is the regular flamer fuel and pyro regular flamer fuel.
 /datum/reagent/napalm/ut
 	name = "UT-Napthal Fuel"
 	id = "utnapthal"
@@ -698,14 +699,16 @@
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_5,
 		PROPERTY_DURATION 	= BURN_TIME_TIER_2,
-		PROPERTY_RADIUS 	= 6
+		PROPERTY_RADIUS 	= 5
 	)
 	. = ..()
 
+// This is gellie fuel. Green Flames.
 /datum/reagent/napalm/gel
 	name = "Napthal Gel"
 	id = "napalmgel"
 	description = "Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot."
+	flameshape = FLAMESHAPE_LINE
 	color = "#00ff00"
 	burncolor = "#00ff00"
 	properties = list()
@@ -714,10 +717,11 @@
 	properties = list(
 		PROPERTY_INTENSITY 	= BURN_LEVEL_TIER_2,
 		PROPERTY_DURATION 	= BURN_TIME_INSTANT,
-		PROPERTY_RADIUS 	= 6
+		PROPERTY_RADIUS 	= 7
 	)
 	. = ..()
 
+// This is the blue flamer fuel for the pyro.
 /datum/reagent/napalm/blue
 	name = "Napalm X"
 	id = "napalmx"
@@ -734,6 +738,7 @@
 	)
 	. = ..()
 
+// This is the green flamer fuel for the pyro.
 /datum/reagent/napalm/green
 	name = "Napalm B"
 	id = "napalmb"

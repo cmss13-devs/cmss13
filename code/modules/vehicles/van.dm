@@ -293,7 +293,12 @@
 	if(istype(A, /obj/structure/barricade/plasteel))
 		return ..()
 
-	if(istype(A, /obj/structure/barricade) || istype(A, /turf/closed/wall))
+	if(istype(A, /turf/closed/wall) || \
+	   istype(A, /obj/structure/barricade/sandbags) || \
+	   istype(A, /obj/structure/barricade/metal) || \
+	   istype(A, /obj/structure/barricade/deployable) || \
+	   istype(A, /obj/structure/machinery/cryopod)) //Can no longer runover cryopods
+
 		return FALSE
 
 	return ..()

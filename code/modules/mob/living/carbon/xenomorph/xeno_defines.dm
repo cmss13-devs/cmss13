@@ -169,8 +169,6 @@
 	var/construction_allowed = XENO_QUEEN //Who can place construction nodes for special structures
 	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
 	var/unnesting_allowed = FALSE
-	var/queen_time = 300 //5 minutes between queen deaths
-	var/xeno_queen_timer
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list

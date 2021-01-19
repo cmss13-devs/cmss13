@@ -174,13 +174,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-// Queen delay timer. No more instant evolves
-/datum/game_mode/xenovs/check_queen_status(var/queen_time, var/hivenumber)
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-
-	if(hive)
-		hive.xeno_queen_timer = world.time + 5 MINUTES
-
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
 /datum/game_mode/xenovs/process()
 	. = ..()

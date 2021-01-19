@@ -12,7 +12,7 @@
 
 	if (!evolve_checks())
 		return
-	
+
 	//Debugging that should've been done
 
 	var/castepick = tgui_input_list(usr, "You are growing into a beautiful alien! It is time to choose a caste.", "Evolve", caste.evolves_to)
@@ -41,10 +41,6 @@
 					return
 			else
 				to_chat(src, SPAN_WARNING("You require more plasma! Currently at: [plasma_stored] / 500."))
-				return
-
-			if(SSticker.mode && hive.xeno_queen_timer > world.time)
-				to_chat(src, SPAN_WARNING("You must wait about [round((hive.xeno_queen_timer-world.time) / (60 SECONDS))] minutes for the hive to recover from the previous Queen's death."))
 				return
 		else
 			to_chat(src, SPAN_WARNING("Nuh-uhh."))
@@ -249,7 +245,7 @@
 
 	if(!isturf(loc)) //qdel'd or inside something
 		return FALSE
-	
+
 	return TRUE
 
 // The queen de-evo, but on yourself. Only usable once

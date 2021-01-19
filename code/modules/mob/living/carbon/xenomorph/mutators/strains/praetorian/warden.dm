@@ -71,6 +71,8 @@
 			remove_internal_hitpoints(internal_hitpoints)
 
 /datum/behavior_delegate/praetorian_warden/melee_attack_additional_effects_self()
+	..()
+
 	add_internal_hitpoints(internal_hitpoints_per_attack)
 
 /datum/behavior_delegate/praetorian_warden/ranged_attack_additional_effects_target(var/atom/A)

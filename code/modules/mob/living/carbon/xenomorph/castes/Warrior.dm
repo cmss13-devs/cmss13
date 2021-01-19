@@ -123,6 +123,8 @@
 	var/stored_shield = 0
 
 /datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
+	..()
+
 	if (stored_shield == stored_shield_max)
 		bound_xeno.add_xeno_shield(stored_shield, XENO_SHIELD_SOURCE_GENERIC)
 		bound_xeno.visible_message(SPAN_XENOWARNING("\The [bound_xeno] roars as it mauls its target, its exoskeleton shimmering for a second!"), SPAN_XENOHIGHDANGER("You feel your rage increase your resiliency to damage!"))

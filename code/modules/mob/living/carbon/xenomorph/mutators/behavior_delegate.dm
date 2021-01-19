@@ -51,7 +51,7 @@
     return
 
 /datum/behavior_delegate/proc/melee_attack_additional_effects_self()
-    return
+    SEND_SIGNAL(bound_xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
 
 // Identical to the above 3 procs but for ranged attacks.
 // Technically speaking, these are called whenever a xeno projectile impacts

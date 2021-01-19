@@ -44,14 +44,12 @@
 /datum/action/proc/give_action(mob/L)
 	if(!L)
 		return
-	if(!L.actions)
-		L.actions = list()
 	if(owner)
 		if(owner == L)
 			return
 		remove_action(owner)
 	owner = L
-	L.actions.Add(src)
+	LAZYADD(L.actions, src)
 	if(L.client)
 		L.client.screen += button
 	L.update_action_buttons()

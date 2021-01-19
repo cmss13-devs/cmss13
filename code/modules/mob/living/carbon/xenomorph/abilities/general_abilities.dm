@@ -199,6 +199,7 @@
 
 	var/freeze_self = TRUE				// Should we freeze ourselves after the lunge?
 	var/freeze_time = 5					// 5 for runners, 15 for lurkers
+	var/freeze_timer_id = TIMER_ID_NULL	// Timer to cancel the end freeze if it can be cancelled earlier
 
 	var/windup = FALSE					// Is there a do_after before we pounce?
 	var/windup_duration = 20			// How long to wind up, if applicable
@@ -232,6 +233,13 @@
 // Additional effects to apply even if we don't hit anything
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
 	return
+
+/datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
+	var/mob/living/carbon/Xenomorph/X = owner
+	X.frozen = FALSE
+	X.update_canmove()
+	deltimer(freeze_timer_id)
+	freeze_timer_id = TIMER_ID_NULL
 
 /datum/action/xeno_action/onclick/toggle_long_range
 	name = "Toggle Long Range Sight"

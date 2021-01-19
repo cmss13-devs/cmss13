@@ -442,8 +442,8 @@
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
 
-	damage = BULLET_DAMAGE_TIER_5
-	penetration = ARMOR_PENETRATION_TIER_8
+	damage = BULLET_DAMAGE_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_6
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	shell_speed = AMMO_SPEED_TIER_4
 

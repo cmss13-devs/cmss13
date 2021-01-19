@@ -27,7 +27,7 @@ of predators), but can be added to include variant game modes (like humans vs. h
 */
 
 //If the queen is dead after a period of time, this will end the game.
-/datum/game_mode/proc/check_queen_status(queen_time)
+/datum/game_mode/proc/check_queen_status()
 	return
 
 //===================================================\\

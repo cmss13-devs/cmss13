@@ -152,11 +152,6 @@
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
 	if(!round_finished)
-		var/datum/hive_status/hive
-		for(var/hivenumber in GLOB.hive_datum)
-			hive = GLOB.hive_datum[hivenumber]
-			if(!hive.living_xeno_queen && hive.xeno_queen_timer && world.time>hive.xeno_queen_timer) xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
-
 		if(!active_lz && world.time > lz_selection_timer)
 			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
 				if(is_ground_level(default_console.z) && !default_console.onboard)
@@ -227,10 +222,8 @@
 		else if(!num_humans && !num_xenos)
 			round_finished = MODE_INFESTATION_DRAW_DEATH //Both were somehow destroyed.
 
-/datum/game_mode/colonialmarines/check_queen_status(var/queen_time, var/hivenumber)
+/datum/game_mode/colonialmarines/check_queen_status(var/hivenumber)
 	set waitfor = 0
-	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
-	hive.xeno_queen_timer = world.time + queen_time SECONDS
 	if(!(flags_round_type & MODE_INFESTATION)) return
 	xeno_queen_deaths += 1
 	var/num_last_deaths = xeno_queen_deaths

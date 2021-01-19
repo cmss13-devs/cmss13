@@ -43,6 +43,8 @@
 	var/dodge_activated = FALSE
 
 /datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_self()
+	..()
+
 	if (!istype(bound_xeno, /mob/living/carbon/Xenomorph))
 		return
 

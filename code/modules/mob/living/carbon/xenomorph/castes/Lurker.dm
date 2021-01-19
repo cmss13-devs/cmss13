@@ -2,8 +2,8 @@
 	caste_name = "Lurker"
 	tier = 2
 
-	melee_damage_lower = XENO_DAMAGE_TIER_3
-	melee_damage_upper = XENO_DAMAGE_TIER_5
+	melee_damage_lower = XENO_DAMAGE_TIER_4
+	melee_damage_upper = XENO_DAMAGE_TIER_4
 	max_health = XENO_HEALTH_TIER_5
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_4
@@ -92,12 +92,11 @@
 	return
 
 /datum/behavior_delegate/lurker_base/melee_attack_additional_effects_self()
+	..()
 
 	var/datum/action/xeno_action/onclick/lurker_invisibility/LIA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/lurker_invisibility)
 	if (LIA && istype(LIA))
 		LIA.invisibility_off()
-
-	return
 
 // What to do when we go invisible
 /datum/behavior_delegate/lurker_base/proc/on_invisibility()

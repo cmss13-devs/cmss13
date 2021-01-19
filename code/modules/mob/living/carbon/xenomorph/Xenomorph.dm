@@ -823,6 +823,8 @@
 	..()
 	hud_update()
 	plasma_stored = plasma_max
+	for(var/datum/action/xeno_action/XA in actions)
+		XA.end_cooldown()
 
 /mob/living/carbon/Xenomorph/proc/remove_action(var/action as text)
 	for(var/X in actions)

@@ -29,6 +29,26 @@
 			if (istype(LIA))
 				LIA.invisibility_off()
 
+/datum/action/xeno_action/activable/pounce/lurker/additional_effects(mob/living/L)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if (!istype(X))
+		return
+
+	if (X.mutation_type == LURKER_NORMAL)
+		RegisterSignal(X, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF, .proc/remove_freeze)
+
+/datum/action/xeno_action/activable/pounce/lurker/proc/remove_freeze(mob/living/carbon/Xenomorph/X)
+	SIGNAL_HANDLER
+
+	var/datum/behavior_delegate/lurker_base/BD = X.behavior_delegate
+	if (istype(BD))
+		UnregisterSignal(X, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
+		if (freeze_timer_id != TIMER_ID_NULL)
+			end_pounce_freeze()
+			deltimer(freeze_timer_id)
+			freeze_timer_id = TIMER_ID_NULL
+			to_chat(X, SPAN_XENONOTICE("Slashing frenzies you! You feel free to move immediately!"))
+
 /datum/action/xeno_action/onclick/lurker_invisibility
 	name = "Turn Invisible"
 	action_icon_state = "lurker_invisibility"

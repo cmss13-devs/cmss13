@@ -223,3 +223,6 @@
 #define COMSIG_BULLET_USER_EFFECTS "bullet_user_effects"
 /// Called when checking IFF as bullet scans for targets
 #define COMSIG_BULLET_CHECK_IFF "bullet_check_iff"
+
+/// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
+#define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"

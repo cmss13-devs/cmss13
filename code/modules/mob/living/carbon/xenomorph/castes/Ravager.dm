@@ -74,6 +74,8 @@
 	return original_damage + damage_per_shield_hp*shield_total
 
 /datum/behavior_delegate/ravager_base/melee_attack_additional_effects_self()
+	..()
+
 	var/datum/action/xeno_action/activable/pounce/charge/cAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pounce/charge)
 	if (!cAction.action_cooldown_check())
 		cAction.reduce_cooldown(slash_charge_cdr)

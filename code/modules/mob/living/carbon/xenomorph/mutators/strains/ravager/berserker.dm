@@ -58,6 +58,7 @@
 
 
 /datum/behavior_delegate/ravager_berserker/melee_attack_additional_effects_self()
+	..()
 
 	if (rage != max_rage && !rage_cooldown_start_time)
 		rage = rage + 1

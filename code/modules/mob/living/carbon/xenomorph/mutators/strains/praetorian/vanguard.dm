@@ -48,8 +48,9 @@
 	return
 
 /datum/behavior_delegate/praetorian_vanguard/melee_attack_additional_effects_self()
+	..()
+
 	last_combat_time = world.time
-	return
 
 /datum/behavior_delegate/praetorian_vanguard/proc/next_pierce_spin()
 	var/datum/action/xeno_action/activable/pierce/pAction = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/activable/pierce)

@@ -276,6 +276,8 @@
 
 		if(!status)
 			status = "OK"
+		if(org.status & LIMB_BROKEN)
+			status += " <b>(BROKEN)</b>"
 		if(org.status & LIMB_SPLINTED)
 			status += " <b>(SPLINTED)</b>"
 

@@ -77,8 +77,8 @@
 /obj/item/ammo_magazine/shotgun/flechette,
 /obj/item/ammo_magazine/shotgun/incendiary,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "l" = (
@@ -99,23 +99,23 @@
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "m" = (
 /obj/structure/target/syndicate,
 /turf/open/floor{
-	icon_state = "red";
-	dir = 5
+	dir = 5;
+	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
 "n" = (
 /obj/structure/machinery/deployable/barrier,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "o" = (
@@ -133,14 +133,14 @@
 /obj/item/explosive/grenade/flashbang,
 /obj/item/ammo_magazine/shotgun/beanbag,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "p" = (
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "q" = (
@@ -152,8 +152,8 @@
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "r" = (
@@ -161,21 +161,21 @@
 	dir = 8
 	},
 /turf/open/floor{
-	icon_state = "red";
-	dir = 5
+	dir = 5;
+	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
 "s" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "t" = (
 /turf/open/floor{
-	icon_state = "red";
-	dir = 5
+	dir = 5;
+	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
 "u" = (
@@ -186,8 +186,8 @@
 	start_charge = 0
 	},
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "w" = (
@@ -200,8 +200,8 @@
 /obj/item/ammo_magazine/smg/m39/extended,
 /obj/item/weapon/gun/smg/m39,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "y" = (
@@ -214,8 +214,8 @@
 /obj/item/ammo_magazine/revolver/cmb,
 /obj/item/ammo_magazine/revolver/cmb,
 /turf/open/floor{
-	icon_state = "red";
-	dir = 5
+	dir = 5;
+	icon_state = "red"
 	},
 /area/lv624/lazarus/security)
 "z" = (
@@ -224,8 +224,8 @@
 "A" = (
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "B" = (
@@ -234,8 +234,8 @@
 	name = "\improper Nexus Dome Armory"
 	},
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 "C" = (
@@ -246,9 +246,15 @@
 /obj/item/explosive/grenade/HE/PMC,
 /obj/item/explosive/grenade/HE/PMC,
 /obj/item/explosive/grenade/HE/PMC,
+/obj/structure/machinery/door_control{
+	id = "garage_blast";
+	name = "Garage Shutters";
+	pixel_x = -26;
+	range = 200
+	},
 /turf/open/floor{
-	icon_state = "cult";
-	dir = 2
+	dir = 2;
+	icon_state = "cult"
 	},
 /area/lv624/lazarus/armory)
 

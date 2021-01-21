@@ -241,15 +241,15 @@
 	var/waist_success = H.equip_to_slot_or_del(new /obj/item/storage/belt/grenade/large(H), WEAR_WAIST)
 	var/pouch_r_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_R_STORE)
 	var/pouch_l_success = H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive(H), WEAR_L_STORE)
-	var/gun_success = H.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/m92(H), WEAR_J_STORE)
+	var/gun_success = H.equip_to_slot_or_del(new /obj/item/weapon/gun/launcher/grenade/m92(H), WEAR_J_STORE)
 
 	// Now pump /everything/ full of HEFAs
 
 	// M92 launcher
 	if(gun_success)
-		var/obj/item/weapon/gun/launcher/m92/launcher = H.s_store
+		var/obj/item/weapon/gun/launcher/grenade/m92/launcher = H.s_store
 		launcher.name = "HEFA grenade launcher"
-		launcher.max_grenades = 10 // big buff
+		launcher.internal_slots = 10 // big buff
 
 		// give it a magharness
 		var/obj/item/attachable/magnetic_harness/magharn = new(launcher)
@@ -259,13 +259,12 @@
 		// the M92 New() proc sleeps off into the background 1 second after it's called, so the nades aren't actually in at this point in execution
 		spawn(5)
 			// hefa only no stinky nades
-			for(var/obj/item/explosive/grenade/G in launcher)
+			for(var/obj/item/explosive/grenade/G in launcher.cylinder)
 				qdel(G)
-				launcher.grenades -= G
-
-			for(var/i = 1 to launcher.max_grenades)
-				var/obj/item/explosive/grenade/HE/frag/frag = new(launcher)
-				launcher.grenades += frag
+			launcher.cylinder.storage_slots = launcher.internal_slots //need to adjust the internal storage as well.
+			for(var/i = 1 to launcher.internal_slots)
+				new /obj/item/explosive/grenade/HE/frag(launcher.cylinder)
+			launcher.fire_delay = FIRE_DELAY_TIER_4 //More HEFA per second, per second. Strictly speaking this is probably a nerf.
 
 	// Satchel
 	if(satchel_success)

@@ -253,7 +253,7 @@
 /area/prison/hangar_storage/main)
 "G" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/launcher/m81,
+/obj/item/weapon/gun/launcher/grenade/m81,
 /obj/item/storage/box/handcuffs,
 /obj/item/storage/box/handcuffs,
 /turf/open/floor/prison{

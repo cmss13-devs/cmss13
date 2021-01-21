@@ -21,32 +21,28 @@
 
 	used_burrow = TRUE
 
-	if(!burrow)
-		to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the ground."))
-		if(!do_after(src, 15, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
-			addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
-			return
-		// TODO Make immune to all damage here.
-		to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
-		burrow = TRUE
-		frozen = TRUE
-		invisibility = 101
-		anchored = TRUE
-		density = FALSE
-		update_canmove()
-		update_icons()
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
-		burrow_timer = world.time + 90		// How long we can be burrowed
-		process_burrow()
+	to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the ground."))
+	if(!do_after(src, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
+		addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
 		return
-
-	burrow_off()
+	// TODO Make immune to all damage here.
+	to_chat(src, SPAN_XENOWARNING("You burrow yourself into the ground."))
+	burrow = TRUE
+	frozen = TRUE
+	invisibility = 101
+	anchored = TRUE
+	density = FALSE
+	RegisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED, .proc/flamer_crossed_immune)
+	update_canmove()
+	update_icons()
+	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+	burrow_timer = world.time + 90		// How long we can be burrowed
+	process_burrow()
 
 /mob/living/carbon/Xenomorph/proc/process_burrow()
 	if(!burrow)
 		return
 	if(world.time > burrow_timer && !tunnel)
-		burrow = FALSE
 		burrow_off()
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
@@ -54,15 +50,16 @@
 		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/process_burrow), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
-
 	to_chat(src, SPAN_NOTICE("You resurface."))
+	burrow = FALSE
+	UnregisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED)
 	frozen = FALSE
 	invisibility = FALSE
 	anchored = FALSE
 	density = TRUE
 	for(var/mob/living/carbon/human/H in loc)
 		H.KnockDown(2)
-	addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
+	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
 	update_canmove()
 	update_icons()
 
@@ -134,7 +131,7 @@
 	anchored = FALSE
 	unfreeze()
 	forceMove(T)
-	burrow = FALSE
+	UnregisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED)
 	burrow_off()
 
 /mob/living/carbon/Xenomorph/proc/do_tunnel_cooldown()

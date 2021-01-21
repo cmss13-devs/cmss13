@@ -18,7 +18,7 @@
 
 	is_intelligent = 1
 	evolution_allowed = FALSE
-	fire_immune = TRUE
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_NO_IGNITE
 	caste_desc = "The biggest and baddest xeno. The Queen controls the hive and plants eggs"
 	spit_types = list(/datum/ammo/xeno/toxin/queen, /datum/ammo/xeno/acid/medium)
 	can_hold_facehuggers = 0

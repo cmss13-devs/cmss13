@@ -22,7 +22,7 @@
 	evolution_allowed = FALSE
 	deevolves_to = "Lurker"
 	caste_desc = "A brutal, devastating front-line attacker."
-	fire_immune = TRUE
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 	attack_delay = -1
 
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base

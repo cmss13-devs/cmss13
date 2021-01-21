@@ -66,7 +66,7 @@
 	if(istype(G))
 		G.Die()
 		drop_inv_item_on_ground(G)
-	if(!caste || !caste.fire_immune || fire_reagent.fire_penetrating)
+	if(!caste || (caste.fire_immunity & ~FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
 		apply_damage(dmg, BURN)
 
@@ -143,7 +143,7 @@
 	recovery_new = 0
 
 /mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
-	if(regular_update && health <= 0 && (!caste || caste.fire_immune || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
+	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure
 		var/turf/T = loc
 		if(istype(T))
 			if(!check_weeds_for_healing()) //In crit, damage is maximal if you're caught off weeds
@@ -315,9 +315,9 @@ updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/handle_environment()
 	var/turf/T = loc
-	var/recoveryActual = (!caste || caste.fire_immune || fire_stacks == 0) ? recovery_aura : 0
+	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || fire_stacks == 0) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
-	if(caste && !caste.fire_immune)
+	if(caste && (caste.fire_immunity & ~FIRE_IMMUNITY_NO_DAMAGE))
 		if(env_temperature > (T0C + 66))
 			apply_damage((env_temperature - (T0C + 66)) / 5, BURN) //Might be too high, check in testing.
 			updatehealth() //Make sure their actual health updates immediately

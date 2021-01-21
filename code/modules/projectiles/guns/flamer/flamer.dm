@@ -392,15 +392,7 @@
 		if(M.stat == DEAD)
 			continue
 
-		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/X = M
-			if(!X.caste)
-				CRASH("CASTE ERROR: flamer New() was called without a caste. (name: [X.name], disposed: [QDELETED(X)], health: [X.health])")
-			if(X.caste.fire_immune && !tied_reagent.fire_penetrating)
-				continue
-			if(X.burrow)
-				continue
-		else if(ishuman(M))
+		if(ishuman(M))
 			var/mob/living/carbon/human/H = M //fixed :s
 
 			if(weapon_source_mob)
@@ -470,7 +462,7 @@
 
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
-		if(X.caste.fire_immune && !tied_reagent.fire_penetrating)
+		if((X.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) && !tied_reagent.fire_penetrating)
 			return
 		if(X.burrow)
 			return
@@ -538,7 +530,6 @@
 					X.show_message(text(SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!")),1)
 					if(rand(1,100) < 70)
 						X.emote("roar")
-				continue
 			if(ishuman(I))
 				var/mob/living/carbon/human/H = I
 				if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))

@@ -659,7 +659,7 @@ Defined in conflicts.dm of the #defines folder.
 	damage_falloff_scoped_buff = -0.2 //has to be negative
 
 /obj/item/attachable/scope/mini/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(istype(G, /obj/item/weapon/gun/launcher/rocket) || istype(G, /obj/item/weapon/gun/launcher/m92))
+	if(istype(G, /obj/item/weapon/gun/launcher/rocket) || istype(G, /obj/item/weapon/gun/launcher/grenade/m92))
 		zoom_offset = 3
 		allows_movement	= 0
 		if(do_after(user, 25, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -673,12 +673,12 @@ Defined in conflicts.dm of the #defines folder.
 	. = ..()
 	if(G.zoom)
 		G.slowdown += dynamic_aim_slowdown
-		if(istype(G, /obj/item/weapon/gun/launcher/m92))
+		if(istype(G, /obj/item/weapon/gun/launcher/grenade/m92))
 			G.fire_delay += FIRE_DELAY_TIER_4
 
 /obj/item/attachable/scope/mini/remove_scoped_buff(mob/living/carbon/user, obj/item/weapon/gun/G)
 	G.slowdown -= dynamic_aim_slowdown
-	if(istype(G, /obj/item/weapon/gun/launcher/m92))
+	if(istype(G, /obj/item/weapon/gun/launcher/grenade/m92))
 		G.fire_delay -= FIRE_DELAY_TIER_4
 	..()
 

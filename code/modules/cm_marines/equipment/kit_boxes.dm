@@ -132,7 +132,7 @@
 /obj/item/storage/box/spec/heavy_grenadier/New()
 	..()
 	spawn(1)
-		new /obj/item/weapon/gun/launcher/m92(src)
+		new /obj/item/weapon/gun/launcher/grenade/m92(src)
 		new /obj/item/storage/belt/grenade/large/full(src)
 		new /obj/item/storage/backpack/marine/grenadepack(src)
 		new /obj/item/storage/backpack/marine/grenadepack(src)

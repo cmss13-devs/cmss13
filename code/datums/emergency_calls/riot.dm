@@ -64,8 +64,8 @@
 	new /obj/item/ammo_magazine/shotgun/buckshot(drop_spawn)
 
 	drop_spawn = get_spawn_point(1)
-	new /obj/item/weapon/gun/launcher/m81/riot(drop_spawn)
-	new /obj/item/weapon/gun/launcher/m81/riot(drop_spawn)
+	new /obj/item/weapon/gun/launcher/grenade/m81/riot(drop_spawn)
+	new /obj/item/weapon/gun/launcher/grenade/m81/riot(drop_spawn)
 	drop_spawn = get_spawn_point(1)
-	new /obj/item/weapon/gun/launcher/m81/riot(drop_spawn)
-	new /obj/item/weapon/gun/launcher/m81/riot(drop_spawn)
+	new /obj/item/weapon/gun/launcher/grenade/m81/riot(drop_spawn)
+	new /obj/item/weapon/gun/launcher/grenade/m81/riot(drop_spawn)

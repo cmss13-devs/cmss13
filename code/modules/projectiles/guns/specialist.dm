@@ -723,143 +723,228 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 
 
+
 //-------------------------------------------------------
-//GRENADE LAUNCHER
+//HEAVY WEAPONS
+
 /obj/item/weapon/gun/launcher
 	gun_category = GUN_CATEGORY_HEAVY
-	var/list/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade)
+	has_empty_icon = FALSE 
+	has_open_icon = FALSE
+	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
+	var/GL_has_empty_icon = TRUE
+	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
+	var/GL_has_open_icon = FALSE
 
-/obj/item/weapon/gun/launcher/proc/allowed_ammo_type(obj/item/I)
-	for(var/G in disallowed_grenade_types)
-		if(istype(I, G))
-			return 0
-	return 1
+	///Internal storage item used as magazine. Must be initialised to work! Set parameters by variables or it will inherit standard numbers from storage.dm. Got to call it *something* and 'magazine' or w/e would be confusing. If FALSE, is not active.
+	var/obj/item/storage/internal/cylinder = FALSE
+	///What single item to fill the storage with, if any. This does not respect w_class.
+	var/preload
+	///How many items can be inserted. "Null" = backpack-style size-based inventory. You'll have to set max_storage_space too if you do that, and arrange any initial contents. Iff you arrange to put in more items than the storage can hold, they can be taken out but not replaced.
+	var/internal_slots 
+	///how big an item can be inserted.
+	var/internal_max_w_class 
+	///the sfx played when the storage is opened.
+	var/use_sound = null 
+	///Whether clicking a held weapon with an empty hand will open its inventory or draw a munition out.
+	var/direct_draw = TRUE 
 
-/obj/item/weapon/gun/launcher/m92
-	name = "\improper M92 grenade launcher"
-	desc = "A heavy, 6-shot grenade launcher used by the Colonial Marines for area denial and big explosions."
-	icon_state = "m92"
-	item_state = "m92" //NEED TWO HANDED SPRITE
-	unacidable = TRUE
-	indestructible = 1
+/obj/item/weapon/gun/launcher/Initialize(mapload, spawn_empty) //If changing vars on init, be sure to do the parent proccall *after* the change.
+	. = ..()
+	if(cylinder)
+		cylinder = new/obj/item/storage/internal(src)
+		cylinder.storage_slots = internal_slots
+		cylinder.max_w_class = internal_max_w_class
+		cylinder.use_sound = use_sound
+		if(direct_draw)
+			cylinder.storage_flags ^= STORAGE_USING_DRAWING_METHOD
+		if(preload && !spawn_empty)	for(var/i = 1 to cylinder.storage_slots)
+			new preload(cylinder)
+		update_icon()
 
-	matter = list("metal" = 6000)
+/obj/item/weapon/gun/launcher/verb/toggle_draw_mode()
+	set name = "Switch Storage Drawing Method"
+	set category = "Object"
+	set src in usr
+	cylinder.storage_flags ^= STORAGE_USING_DRAWING_METHOD
+	if (cylinder.storage_flags & STORAGE_USING_DRAWING_METHOD)
+		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
+	else
+		to_chat(usr, "Clicking [src] with an empty hand now opens the internal storage menu.")
+
+//-------------------------------------------------------
+//GRENADE LAUNCHER
+
+/obj/item/weapon/gun/launcher/grenade //Parent item for GLs.
 	w_class = SIZE_LARGE
 	throw_speed = SPEED_SLOW
 	throw_range = 10
 	force = 5.0
-	wield_delay = WIELD_DELAY_SLOW
+
 	fire_sound = 'sound/weapons/armbomb.ogg'
 	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
-	var/list/grenades = new/list()
-	var/max_grenades = 6
-	var/is_lobbing = TRUE
+	reload_sound = 'sound/weapons/gun_shotgun_open2.ogg' //Played when inserting nade.
+	unload_sound = 'sound/weapons/gun_revolver_unload.ogg'
+
+	cylinder = TRUE //This weapon won't work otherwise.
+	preload = /obj/item/explosive/grenade/HE
+	internal_slots = 1 //This weapon must use slots.
+	internal_max_w_class = SIZE_MEDIUM //MEDIUM = M15.
+
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
-
-	flags_item = TWOHANDED|NO_CRYO_STORE
+	wield_delay = WIELD_DELAY_SLOW
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	map_specific_decoration = TRUE
-
-/obj/item/weapon/gun/launcher/m92/Initialize(mapload, spawn_empty)
-	. = ..()
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
-	grenades += new /obj/item/explosive/grenade/HE(src)
+	///Can you access the storage by clicking it, put things into it, or take things out? Meant for break-actions mostly but useful for any state where you want access to be toggleable. Make sure to call cylinder.hide_from(user) so they don't still have the screen open!
+	var/open_chamber = TRUE 
+	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
+	var/is_lobbing = FALSE
+	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
+	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade) 
+	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
+	var/valid_munitions = list(/obj/item/explosive/grenade)
 
 
-/obj/item/weapon/gun/launcher/m92/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
-
-
-/obj/item/weapon/gun/launcher/m92/set_gun_config_values()
+/obj/item/weapon/gun/launcher/grenade/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_4*4
-	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4 //Same as m37 shotgun.
 
 
-/obj/item/weapon/gun/launcher/m92/examine(mob/user)
+/obj/item/weapon/gun/launcher/grenade/on_pocket_insertion() //Plays load sfx whenever a nade is put into storage.
+	playsound(usr, reload_sound, 25, 1)
+	update_icon()
+
+/obj/item/weapon/gun/launcher/grenade/on_pocket_removal()
+	update_icon()
+
+/obj/item/weapon/gun/launcher/grenade/examine(mob/user) //Different treatment for single-shot VS multi-shot GLs.
 	..()
-	if(length(grenades))
-		if (get_dist(user, src) > 2 && user != loc) return
-		to_chat(user, SPAN_NOTICE(" It is loaded with <b>[length(grenades)] / [max_grenades]</b> grenades."))
+	if(get_dist(user, src) > 2 && user != loc)
+		return
+	if(length(cylinder.contents))
+		if(internal_slots == 1)
+			to_chat(user, SPAN_NOTICE("It is loaded with a grenade."))	
+		else
+			to_chat(user, SPAN_NOTICE("It is loaded with <b>[length(cylinder.contents)] / [internal_slots]</b> grenades."))
+	else
+		to_chat(user, SPAN_NOTICE("It is empty."))
 
-/obj/item/weapon/gun/launcher/m92/attackby(obj/item/I, mob/user)
+
+obj/item/weapon/gun/launcher/grenade/update_icon()
+	..()
+	var/GL_sprite = base_gun_icon
+	if(GL_has_empty_icon && !length(cylinder.contents))
+		GL_sprite += "_e"
+	if(GL_has_open_icon && open_chamber)
+		GL_sprite += "_o"
+	icon_state = GL_sprite
+
+	
+/obj/item/weapon/gun/launcher/grenade/attack_hand(mob/user)
+	if(!open_chamber || src != user.get_inactive_hand()) //Need to have the GL in your hands to open the cylinder.
+		return ..()
+	if(cylinder.handle_attack_hand(user))
+		..()
+
+
+/obj/item/weapon/gun/launcher/grenade/unload(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
+	if(!open_chamber)
+		to_chat(user, SPAN_WARNING("[src] is closed!"))	
+		return	
+	if(!length(cylinder.contents))
+		to_chat(user, SPAN_WARNING("It's empty!"))
+		return
+
+	var/obj/item/explosive/grenade/nade = cylinder.contents[length(cylinder.contents)] //Grab the last-inserted one. Or the only one, as the case may be.
+	cylinder.remove_from_storage(nade, user.loc)
+
+	if(drop_override || !user)
+		nade.forceMove(get_turf(src))
+	else
+		user.put_in_hands(nade)
+	
+	user.visible_message(SPAN_NOTICE("[user] unloads [nade] from [src]."),
+	SPAN_NOTICE("You unload [nade] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)	
+	playsound(user, unload_sound, 30, 1)
+
+
+/obj/item/weapon/gun/launcher/grenade/attackby(obj/item/I, mob/user)
 	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
 		attach_to_gun(user,I)
 		return
-	else if(!istype(I, /obj/item/explosive/grenade) || !allowed_ammo_type(I))
-		to_chat(user, SPAN_WARNING("[src] can't use this type of grenade!"))
+	return cylinder.attackby(I, user)
+
+
+/obj/item/weapon/gun/launcher/grenade/proc/allowed_ammo_type(obj/item/I)
+	for(var/G in disallowed_grenade_types) //Check for the bad stuff.
+		if(istype(I, G))
+			return FALSE
+	for(var/G in valid_munitions) //Check if it has a ticket.
+		if(istype(I, G))
+			return TRUE			
+
+
+/obj/item/weapon/gun/launcher/grenade/on_attackby(obj/item/explosive/grenade/I, mob/user) //the attack in question is on the internal container. Complete override - normal storage attackby cannot be silenced, and will always say "you put the x into y".
+	if(!open_chamber)
+		to_chat(user, SPAN_WARNING("[src] is closed!"))	
 		return
-
-	if(length(grenades) >= max_grenades)
-		to_chat(user, SPAN_WARNING("The grenade launcher cannot hold more grenades!"))
+	if(!istype(I))
+		to_chat(user, SPAN_WARNING("You can't load [I] into [src]!"))
 		return
+	if(!allowed_ammo_type(I))
+		to_chat(user, SPAN_WARNING("[src] can't fire this type of grenade!"))
+		return
+	if(length(cylinder.contents) >= internal_slots)
+		to_chat(user, SPAN_WARNING("[src] cannot hold more grenades!"))
+		return
+	if(!cylinder.can_be_inserted(I)) //Technically includes whether there's room for it, but the above gives a tailored message.
+		return
+	
+	user.visible_message(SPAN_NOTICE("[user] loads [I] into [src]."),
+	SPAN_NOTICE("You load [I] into the grenade launcher."), null, 4, CHAT_TYPE_COMBAT_ACTION)	
+	if(internal_slots > 1)
+		to_chat(user, SPAN_INFO("Now storing: [length(cylinder.contents) + 1] / [internal_slots] grenades."))
 
-	var/obj/item/explosive/grenade/G = I
-	if(!G.active && user.drop_inv_item_to_loc(I, src))
-		grenades += I
-		to_chat(user, SPAN_NOTICE("You put [I] in the grenade launcher."))
-		to_chat(user, SPAN_INFO("Now storing: [length(grenades)] / [max_grenades] grenades."))
+	cylinder.handle_item_insertion(I, TRUE, user)
+	
 
-/obj/item/weapon/gun/launcher/m92/afterattack(atom/target, mob/user, flag)
+/obj/item/weapon/gun/launcher/grenade/able_to_fire(mob/living/user) //Skillchecks and fire blockers go in the child items.
+	. = ..()
+	if(.)
+		if(!length(cylinder.contents))
+			to_chat(user, SPAN_WARNING("The [name] is empty."))
+			return FALSE
+		var/obj/item/G = cylinder.contents[1]
+		if(grenade_grief_check(G))
+			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
+			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			return FALSE
+
+
+/obj/item/weapon/gun/launcher/grenade/afterattack(atom/target, mob/user, flag) //Not actually after the attack. After click, more like.
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 2)
 			to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
 			return
-		if(length(grenades))
-			fire_grenade(target,user)
-			playsound(user.loc, cocked_sound, 25, 1)
-		else to_chat(user, SPAN_WARNING("The grenade launcher is empty."))
+		fire_grenade(target,user)
+		playsound(user.loc, cocked_sound, 25, 1)
+		
 
-//Doesn't use most of any of these. Listed for reference.
-/obj/item/weapon/gun/launcher/m92/load_into_chamber()
-	return
-
-/obj/item/weapon/gun/launcher/m92/reload_into_chamber()
-	return
-
-/obj/item/weapon/gun/launcher/m92/unload(mob/user)
-	if(length(grenades))
-		var/obj/item/explosive/grenade/nade = grenades[length(grenades)] //Grab the last one.
-		if(user)
-			user.put_in_hands(nade)
-			playsound(user, unload_sound, 25, 1)
-		else nade.forceMove(get_turf(src))
-		grenades -= nade
-	else to_chat(user, SPAN_WARNING("It's empty!"))
-
-/obj/item/weapon/gun/launcher/m92/able_to_fire(mob/living/user)
-	. = ..()
-	if (. && istype(user)) //Let's check all that other stuff first.
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return FALSE
-		if(length(grenades))
-			var/obj/item/explosive/grenade/G = grenades[1]
-			if(grenade_grief_check(G))
-				to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
-				msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
-				return FALSE
-
-/obj/item/weapon/gun/launcher/m92/proc/fire_grenade(atom/target, mob/user)
+/obj/item/weapon/gun/launcher/grenade/proc/fire_grenade(atom/target, mob/user)
 	set waitfor = 0
 	last_fired = world.time
-	for(var/mob/O in viewers(world_view_size, user))
-		O.show_message(SPAN_DANGER("[user] fired a grenade!"), 1)
-	to_chat(user, SPAN_WARNING("You fire the grenade launcher! [length(grenades)-1]/[max_grenades] grenades remaining"))
-	var/obj/item/explosive/grenade/F = grenades[1]
-	grenades -= F
-	F.forceMove(user.loc)
-	F.throw_range = 20
 
+	var/to_firer = "You fire the [name]!"
+	if(internal_slots > 1)
+		to_firer += " [length(cylinder.contents)-1]/[internal_slots] grenades remaining."
+	user.visible_message(SPAN_DANGER("[user] fired a grenade!"),
+	SPAN_WARNING("[to_firer]"), null, null, null, CHAT_TYPE_WEAPON_USE)
+
+	var/angle = round(Get_Angle(user,target))
+	muzzle_flash(angle,user)
+	simulate_recoil(0, user)
+
+	var/obj/item/explosive/grenade/F = cylinder.contents[1]
+	cylinder.remove_from_storage(F, user.loc)
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
 		pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
@@ -867,6 +952,7 @@
 	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")
 
+	F.throw_range = 20
 	F.det_time = min(10, F.det_time)
 	F.activate(user, FALSE)
 	F.forceMove(get_turf(src))
@@ -874,136 +960,88 @@
 	playsound(F.loc, fire_sound, 50, 1)
 
 
-/obj/item/weapon/gun/launcher/m81
-	name = "\improper M81 grenade launcher"
-	desc = "A lightweight, single-shot grenade launcher used by the Colonial Marines for area denial and big explosions."
-	icon_state = "m81"
-	item_state = "m81"
-
-	matter = list("metal" = 7000)
-	w_class = SIZE_LARGE
-	throw_speed = SPEED_SLOW
-	throw_range = 10
-	force = 5.0
-	wield_delay = WIELD_DELAY_SLOW
-	fire_sound = 'sound/weapons/armbomb.ogg'
-	cocked_sound = 'sound/weapons/gun_m92_cocked.ogg'
-	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
-	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	var/grenade
-	var/grenade_type_allowed = /obj/item/explosive/grenade
-	var/riot_version
-
-/obj/item/weapon/gun/launcher/m81/Initialize(mapload, spawn_empty)
-	. = ..()
-	if(!spawn_empty)
-		if(riot_version)
-			grenade = new /obj/item/explosive/grenade/custom/teargas(src)
-		else
-			grenade = new /obj/item/explosive/grenade/HE(src)
+//Doesn't use these. Listed for reference.
+/obj/item/weapon/gun/launcher/grenade/load_into_chamber()
+	return
+/obj/item/weapon/gun/launcher/grenade/reload_into_chamber()
+	return
 
 
-/obj/item/weapon/gun/launcher/m81/set_gun_attachment_offsets()
+//-------------------------------------------------------
+//M92 GRENADE LAUNCHER
+
+/obj/item/weapon/gun/launcher/grenade/m92
+	name = "\improper M92 grenade launcher"
+	desc = "A heavy, 6-shot grenade launcher used by the Colonial Marines for area denial and big explosions."
+	icon_state = "m92"
+	item_state = "m92"
+	unacidable = TRUE
+	indestructible = 1
+	matter = list("metal" = 6000)
+
+	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
+	flags_item = TWOHANDED|NO_CRYO_STORE
+	map_specific_decoration = TRUE
+	
+	is_lobbing = TRUE
+	internal_slots = 6
+	direct_draw = FALSE
+	
+/obj/item/weapon/gun/launcher/grenade/m92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 
-/obj/item/weapon/gun/launcher/m81/set_gun_config_values()
+/obj/item/weapon/gun/launcher/grenade/m92/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_4*4
+
+/obj/item/weapon/gun/launcher/grenade/m92/able_to_fire(mob/living/user)
+	. = ..()
+	if (. && istype(user))
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			return FALSE
+
+
+//-------------------------------------------------------
+//M81 GRENADE LAUNCHER
+
+/obj/item/weapon/gun/launcher/grenade/m81
+	name = "\improper M81 grenade launcher"
+	desc = "A lightweight, single-shot low-angle grenade launcher used by the Colonial Marines for area denial and big explosions."
+	icon_state = "m81"
+	item_state = "m81" //needs a wield sprite.
+	var/riot_version = FALSE
+
+	matter = list("metal" = 7000)
+
+/obj/item/weapon/gun/launcher/grenade/m81/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
+
+/obj/item/weapon/gun/launcher/grenade/m81/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_4 * 1.5
-	accuracy_mult = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_6
-	damage_mult = BASE_BULLET_DAMAGE_MULT
 
-
-/obj/item/weapon/gun/launcher/m81/examine(mob/user)
+/obj/item/weapon/gun/launcher/grenade/m81/on_pocket_removal()
 	..()
-	if(grenade)
-		if (get_dist(user, src) > 2 && user != loc) return
-		to_chat(user, SPAN_NOTICE(" It is loaded with a grenade."))
+	playsound(usr, unload_sound, 30, 1)
 
-/obj/item/weapon/gun/launcher/m81/attackby(obj/item/I, mob/user)
-	if(istype(I,/obj/item/attachable) && check_inactive_hand(user))
-		attach_to_gun(user,I)
-		return
-	else if(!istype(I, /obj/item/explosive/grenade) || !istype(I, grenade_type_allowed))
-		to_chat(user, SPAN_WARNING("[src] can't use this type of grenade!"))
-		return
-
-	if(grenade)
-		to_chat(user, SPAN_WARNING("The grenade launcher cannot hold more grenades!"))
-		return
-
-	var/obj/item/explosive/grenade/G = I
-	if(!G.active && user.drop_inv_item_to_loc(I, src))
-		grenade = I
-		to_chat(user, SPAN_NOTICE("You put [I] in the grenade launcher."))
-
-/obj/item/weapon/gun/launcher/m81/afterattack(atom/target, mob/user, flag)
-	if(able_to_fire(user))
-		if(get_dist(target,user) <= 2)
-			to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
-			return
-		if(grenade)
-			fire_grenade(target,user)
-			playsound(user.loc, cocked_sound, 25, 1)
-		else to_chat(user, SPAN_WARNING("The grenade launcher is empty."))
-
-//Doesn't use most of any of these. Listed for reference.
-/obj/item/weapon/gun/launcher/m81/load_into_chamber()
-	return
-
-/obj/item/weapon/gun/launcher/m81/reload_into_chamber()
-	return
-
-/obj/item/weapon/gun/launcher/m81/unload(mob/user)
-	if(grenade)
-		var/obj/item/explosive/grenade/nade = grenade
-		if(user)
-			user.put_in_hands(nade)
-			playsound(user, unload_sound, 25, 1)
-		else nade.forceMove(get_turf(src))
-		grenade = null
-	else to_chat(user, SPAN_WARNING("It's empty!"))
-
-/obj/item/weapon/gun/launcher/m81/able_to_fire(mob/living/user)
+/obj/item/weapon/gun/launcher/grenade/m81/able_to_fire(mob/living/user)
 	. = ..()
-	if (. && istype(user)) //Let's check all that other stuff first.
-		if(user.mind && user.skills)
-			if(riot_version)
-				if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
-					to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-					return 0
-			else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
-				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-				return 0
+	if (. && istype(user))
+		if(riot_version && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			return FALSE
+		else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+			return FALSE
 
 
-/obj/item/weapon/gun/launcher/m81/proc/fire_grenade(atom/target, mob/user)
-	set waitfor = 0
-	last_fired = world.time
-	user.visible_message(SPAN_DANGER("[user] fired a grenade!"), \
-							SPAN_WARNING("You fire the grenade launcher!"))
-	var/obj/item/explosive/grenade/F = grenade
-	grenade = null
-	F.forceMove(user.loc)
-	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
-	log_game("[key_name_admin(user)] used a grenade ([name]).")
-
-	F.throw_range = 20
-	F.det_time = min(10, F.det_time)
-	F.activate(user, FALSE)
-	F.forceMove(get_turf(src))
-	F.throw_atom(target, 20, SPEED_VERY_FAST, user)
-	playsound(F.loc, fire_sound, 50, 1)
-
-
-/obj/item/weapon/gun/launcher/m81/riot
+/obj/item/weapon/gun/launcher/grenade/m81/riot
 	name = "\improper M81 riot grenade launcher"
-	desc = "A lightweight, single-shot grenade launcher to launch tear gas grenades. Used by the Colonial Marines Military Police during riots."
-	grenade_type_allowed = /obj/item/explosive/grenade/custom
+	desc = "A lightweight, single-shot low-angle grenade launcher to launch tear gas grenades. Used by the Colonial Marines Military Police during riots."
+	valid_munitions = list(/obj/item/explosive/grenade/custom/teargas)
+	preload = /obj/item/explosive/grenade/custom/teargas
 	riot_version = TRUE
-
-
-
 
 //-------------------------------------------------------
 //M5 RPG

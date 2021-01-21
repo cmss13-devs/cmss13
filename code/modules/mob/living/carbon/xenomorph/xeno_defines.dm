@@ -36,7 +36,7 @@
 	var/tacklestrength_max = 3
 
 	var/armor_deflection = 0 //Chance of deflecting projectiles.
-	var/fire_immune = FALSE //Boolean
+	var/fire_immunity = FIRE_IMMUNITY_NONE
 
 	var/spit_delay = 60 //Delay timer for spitting
 

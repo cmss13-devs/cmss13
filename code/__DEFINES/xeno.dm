@@ -538,3 +538,7 @@
 #define HIVE_ALLIED_TO_HIVE(source_hive, target_hive) (source_hive == target_hive || GLOB.hive_datum[source_hive]?.faction_is_ally(GLOB.hive_datum[target_hive]?.internal_faction))
 
 #define QUEEN_SPAWN_TIMEOUT (2 MINUTES)
+
+#define FIRE_IMMUNITY_NONE		0
+#define FIRE_IMMUNITY_NO_DAMAGE	(1<<0)
+#define FIRE_IMMUNITY_NO_IGNITE	(1<<1)

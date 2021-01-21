@@ -66,7 +66,7 @@
 	if(istype(G))
 		G.Die()
 		drop_inv_item_on_ground(G)
-	if(!caste || (caste.fire_immunity & ~FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
+	if(!caste || !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE) || fire_reagent.fire_penetrating)
 		var/dmg = armor_damage_reduction(GLOB.xeno_fire, PASSIVE_BURN_DAM_CALC(fire_reagent.intensityfire, fire_reagent.durationfire, fire_stacks))
 		apply_damage(dmg, BURN)
 
@@ -317,7 +317,7 @@ updatehealth()
 	var/turf/T = loc
 	var/recoveryActual = (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || fire_stacks == 0) ? recovery_aura : 0
 	var/env_temperature = loc.return_temperature()
-	if(caste && (caste.fire_immunity & ~FIRE_IMMUNITY_NO_DAMAGE))
+	if(caste && !(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE))
 		if(env_temperature > (T0C + 66))
 			apply_damage((env_temperature - (T0C + 66)) / 5, BURN) //Might be too high, check in testing.
 			updatehealth() //Make sure their actual health updates immediately

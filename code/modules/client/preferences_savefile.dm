@@ -87,6 +87,7 @@
 	S["synth_status"]		>> synth_status
 
 	S["lang_chat_disabled"]	>> lang_chat_disabled
+	S["hear_vox"] >> hear_vox
 
 	S["swap_hand_default"]	>> swap_hand_default
 	S["swap_hand_hotkeymode"] >> swap_hand_hotkeymode
@@ -105,6 +106,7 @@
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
+	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type		= sanitize_text(synthetic_type, initial(synthetic_type))
@@ -178,6 +180,7 @@
 
 	S["swap_hand_default"]	<< swap_hand_default
 	S["swap_hand_hotkeymode"] << swap_hand_hotkeymode
+	S["hear_vox"] << hear_vox
 
 	return TRUE
 

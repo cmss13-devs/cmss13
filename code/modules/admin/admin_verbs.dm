@@ -50,7 +50,8 @@ var/list/admin_verbs_ban = list(
 )
 var/list/admin_verbs_sounds = list(
 	/client/proc/play_web_sound,
-	/client/proc/play_sound
+	/client/proc/play_sound,
+	/client/proc/cmd_admin_vox_panel,
 )
 var/list/admin_verbs_fun = list(
 	/client/proc/enable_event_mob_verbs,

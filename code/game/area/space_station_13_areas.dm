@@ -22,7 +22,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
-	ambience = list('sound/ambience/ambispace.ogg')
 	temperature = TCMB
 	pressure = 0
 	flags_atom = AREA_NOTUNNEL

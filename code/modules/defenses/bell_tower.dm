@@ -99,7 +99,7 @@
 	if(!linked_bell.flick_image)
 		linked_bell.flick_image = image('icons/obj/structures/machinery/defenses.dmi', icon_state = "bell_tower_alert")
 	linked_bell.flick_image.flick_overlay(linked_bell, 11)
-	playsound(loc, 'sound/misc/bell.wav', 50, 0, 50)
+	playsound(loc, 'sound/misc/bell.ogg', 50, 0, 50)
 	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
 	to_chat(M, SPAN_DANGER("The frequence of the noise slows you down!"))
 

@@ -223,7 +223,6 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(length(external_rsc_urls))
 		next_external_rsc = WRAP(next_external_rsc+1, 1, external_rsc_urls.len+1)
 		preload_rsc = external_rsc_urls[next_external_rsc]
-	else src.preload_rsc = 1 // If config.resource_urls is not set, preload like normal.
 
 	player_entity = setup_player_entity(ckey)
 

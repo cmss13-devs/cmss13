@@ -75,7 +75,7 @@
 	///world.time they connected
 	var/connection_time
 
-	preload_rsc = 0 // This is 0 so we can set it to an URL once the player logs in and have them download the resources from a different server.
+	preload_rsc = PRELOAD_RSC
 
 	var/datum/player_details/player_details //these persist between logins/logouts during the same round.
 

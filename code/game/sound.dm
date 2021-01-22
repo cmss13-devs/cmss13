@@ -178,8 +178,6 @@
 				S = pick('sound/effects/match.ogg')
 			if("punch")
 				S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
-			if("clownstep")
-				S = pick('sound/effects/clownstep1.ogg','sound/effects/clownstep2.ogg')
 			if("swing_hit")
 				S = pick('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg')
 			if("pageturn")

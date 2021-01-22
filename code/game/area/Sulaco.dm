@@ -13,7 +13,7 @@
 	soundscape_interval = 30 //seconds
 	is_resin_allowed = FALSE
 	flags_atom = AREA_NOTUNNEL
-	
+
 /area/shuttle/drop1/Enter(atom/movable/O, atom/oldloc)
 	if(istype(O, /obj/structure/barricade))
 		return FALSE
@@ -45,7 +45,6 @@
 
 /area/shuttle/drop1/ice_colony
 	name = "\improper Dropship Alamo"
-	ambience_exterior = AMBIENCE_ICE
 	icon_state = "shuttle"
 
 /area/shuttle/drop1/DesertDam
@@ -100,7 +99,6 @@
 
 /area/shuttle/drop2/ice_colony
 	name = "\improper Dropship Normandy"
-	ambience_exterior = AMBIENCE_ICE
 	icon_state = "shuttle2"
 
 /area/shuttle/drop2/DesertDam

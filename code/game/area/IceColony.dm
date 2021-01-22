@@ -31,7 +31,6 @@
 	power_light = FALSE
 	power_equip = FALSE
 	power_environ = FALSE
-	ambience = list('sound/ambience/ambispace.ogg')
 	temperature = ICE_COLONY_TEMPERATURE
 
 /*
@@ -47,7 +46,6 @@
 /area/ice_colony/exterior/surface
 	name = "\improper Ice Colony - Exterior Surface"
 	fake_zlevel = 1 // above ground
-	ambience_exterior = AMBIENCE_ICE
 	soundscape_playlist = SCAPE_PL_WIND
 
 //Equivalent of space. None of this area should be accessible. If these are valleys, make separate areas
@@ -186,7 +184,6 @@
 	icon_state = "clear"
 	ceiling = CEILING_METAL
 	fake_zlevel = 1 // above ground
-	ambience_exterior = AMBIENCE_ICE
 
 /*
  * Surface - Bar

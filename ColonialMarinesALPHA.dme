@@ -10,6 +10,7 @@
 #define DEBUG
 // END_PREFERENCES
 // BEGIN_INCLUDE
+#include "code\_compile_options.dm"
 #include "code\_macros.dm"
 #include "code\global.dm"
 #include "code\names.dm"
@@ -1839,6 +1840,10 @@
 #include "code\modules\vehicles\multitile\multitile_verbs.dm"
 #include "code\modules\vehicles\tank\interior.dm"
 #include "code\modules\vehicles\tank\tank.dm"
+#include "code\modules\vox\vox.dm"
+#include "code\modules\vox\vox_tgui.dm"
+#include "code\modules\vox\vox_sounds\vox.dm"
+#include "code\modules\vox\vox_sounds\vox_military.dm"
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_basemap.dm"

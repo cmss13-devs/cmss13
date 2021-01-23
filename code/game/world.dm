@@ -199,6 +199,10 @@ var/world_topic_spam_protect_time = world.timeofday
 		round_extra_data = "&message=[SSticker.mode.end_round_message()]"
 	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
 	
+	if(CONFIG_GET(flag/no_restarts))
+		shutdown()
+		return 
+
 	..(reason)
 
 

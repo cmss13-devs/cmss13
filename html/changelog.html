@@ -64,6 +64,14 @@
 	</tr>
 </table>
 
+			<h2 class="date">23 January 2021</h2>
+			<h3 class="author">Firartix updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">ASRS manifests are now cooler and hold extra information</li>
+				<li class="tweak">ASRS spawning reimplemented to be less quirky and more generic</li>
+				<li class="bugfix">reimplement causes the fueltank order crate to finally actually contain a fueltank</li>
+			</ul>
+
 			<h2 class="date">22 January 2021</h2>
 			<h3 class="author">Segrain updated:</h3>
 			<ul class="changes bgimages16">
@@ -1830,53 +1838,6 @@
 				<li class="bugfix">The reagent grinder no longer consumes more metal sheets than necessary to fill the beaker.</li>
 				<li class="bugfix">The Defcon message no longer mentions "ornaments" when buying Orbital Bombardment Ordnance.</li>
 				<li class="bugfix">You no longer try to "diffuse" the Nuclear Bomb when defusing it.</li>
-			</ul>
-
-			<h2 class="date">21 November 2020</h2>
-			<h3 class="author">BIgboyyo updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Adds another nightmare insert to LV.</li>
-			</ul>
-			<h3 class="author">Firartix updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Windows being exploded now count as destroyed for purpose of statistics and signal callbacks.</li>
-				<li class="bugfix">Fix typo with agent objective 'destroy windows' only firing on window frame destroy signal.</li>
-				<li class="bugfix">Added and switched over 'destroy window frame' signal to 'disassemble window frame' as that's what it did.</li>
-				<li class="bugfix">Fixed Sorokyne, Solaris and Kutjevo 'Reinforced Walls' being 3x more fragile instead of 3x stronger.</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Rangefinders and laser designators can now be switched between displaying coordinates in a popup window (current behaviour) or in chat (as it used to be). Defaults to popup window.</li>
-				<li class="rscadd">Examining rangefinders/designators now shows the last coordinates taken by rangefinder functionality.</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Dead queens are now listed at round end. Issues with living queens not being listed still need to be looked into.</li>
-			</ul>
-			<h3 class="author">TobiNerd updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">When using the Synthesis Simulator in AMPLIFY, SUPPRESS or RELATE mode, you now get 3 options for the new recipe component. The chosen component will either replace one of the existing recipe components or be added as an additional component. If you choose to add a rare component in this way you get 1 credit refunded.</li>
-				<li class="tweak">Tweaked the value of some of the neutral properties.</li>
-				<li class="tweak">The Synthesis Simulator will now display the expected new OD threshold of a chemical before running the simulation.</li>
-				<li class="experiment">Added a new mode to the Synthesis Simulator, CREATE mode. This mode allows researchers to create a new chemical from scratch.</li>
-				<li class="rscadd">When creating a new chemical, researchers get to choose the properties, OD, name, and the rarity of recipe components.</li>
-				<li class="rscadd">The cost of creating a new chemical is based on all of the following. The level of each property, the number of property slots used, the OD level and the rarity of each component. Basic, common, uncommon and rare components add a +7, +4, +1 and -5 modifier to the cost respectively. Negative properties and most neutral, depending on the value of the property, decrease the cost rather than increase it. A penalty cost is added for each property above level 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10). The minimum cost of creating a chemical is 5 credits.</li>
-				<li class="rscadd">The properties ATX, ACR, NGN, HPX, TXC and CRS are available for creation mode at round start. Scan chemicals in the XRF analyzer to make more properties available. Anomalous properties can not be added via create mode.</li>
-				<li class="wip">CREATE mode does not take into consideration whether the properties you enabled might conflict and cancel each other out. So don't try this, you'll just waste your credits.</li>
-				<li class="bugfix">Fixed an old bug with how we check if a recipe already exists. This was why researchers more often that they were supposed to, ended up with recipes of 4 or more components and why the simulator seemed biased towards adding more rare components.</li>
-			</ul>
-			<h3 class="author">Unknownity updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Synthetic survivors are now able to access the USCM Synthetic vendors again.</li>
-			</ul>
-			<h3 class="author">ghostsheet updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed med vendor not allowing health scan while hacked.</li>
-			</ul>
-			<h3 class="author">spookydonut updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Objectives no longer hold references preventing soft dels.</li>
-				<li class="tweak">Removes trailing slashes from typepaths</li>
 			</ul>
 </div>
 </body>

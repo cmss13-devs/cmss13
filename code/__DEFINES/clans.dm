@@ -81,5 +81,4 @@ var/global/list/clan_ranks_ordered = list(
             player_move_clans = (clan_info.permissions & CLAN_PERMISSION_ADMIN_MOVE)\
         )
 
-#define CLAN_SHIP_PUBLIC "Public"
-#define CLAN_SHIP_ALMAYER "Almayer"
+#define CLAN_SHIP_PUBLIC -1

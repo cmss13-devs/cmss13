@@ -6,6 +6,7 @@ SUBSYSTEM_DEF(predships)
 	var/datum/map_template/ship_template // Current ship template in use
 	var/list/list/managed_z              // Maps initating clan id to list(datum/space_level, list/turf(spawns))
 	var/list/turf/spawnpoints            // List of all spawn landmark locations
+	/* Note we map clan_id as string due to legacy code using them internally */
 
 /datum/controller/subsystem/predships/Initialize(timeofday)
 	if(!ship_template)
@@ -18,23 +19,23 @@ SUBSYSTEM_DEF(predships)
 
 /datum/controller/subsystem/predships/proc/get_clan_spawnpoints(clan_id)
 	RETURN_TYPE(/list/turf)
+	if(isnum(clan_id))
+		clan_id = "[clan_id]"
 	if(clan_id in managed_z)
 		return managed_z[clan_id][2]
 
 /datum/controller/subsystem/predships/proc/is_clanship_loaded(clan_id)
-	if(clan_id == CLAN_SHIP_ALMAYER) // Actually just means 'go to almayer'... bruh
-		var/list/shipz = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
-		if(length(shipz))
-			return TRUE
+	if(isnum(clan_id))
+		clan_id = "[clan_id]"
 	if((clan_id in managed_z) && managed_z[clan_id][2])
 		return TRUE
 	return FALSE
 
 /datum/controller/subsystem/predships/proc/load_new(initiating_clan_id)
 	RETURN_TYPE(/list)
-	if(!ship_template || !initiating_clan_id || isnum(initiating_clan_id))
-		return NONE
-	if(initiating_clan_id == CLAN_SHIP_ALMAYER) // Skychiefs already have a ship
+	if(isnum(initiating_clan_id))
+		initiating_clan_id = "[initiating_clan_id]"
+	if(!ship_template || !initiating_clan_id)
 		return NONE
 	if(initiating_clan_id in managed_z)
 		return managed_z[initiating_clan_id]

@@ -230,9 +230,8 @@ Additional game mode variables.
 /datum/game_mode/proc/transform_predator(mob/pred_candidate)
 	set waitfor = FALSE
 
-	if(!pred_candidate.client) //Something went wrong.
-		message_admins(SPAN_WARNING("<b>Warning</b>: null client in transform_predator."))
-		log_debug("Null client in transform_predator.")
+	if(!pred_candidate.client) // Legacy - probably due to spawn code sync sleeps
+		log_debug("Null client attempted to transform_predator")
 		return
 
 	var/clan_id = CLAN_SHIP_PUBLIC
@@ -241,11 +240,17 @@ Additional game mode variables.
 	if(clan_info?.clan_id)
 		clan_id = clan_info.clan_id
 	SSpredships.load_new(clan_id)
-	var/list/turf/spawn_points = SSpredships.get_clan_spawnpoints(clan_id)
-	if(!pred_candidate?.mind)
+	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
+	if(!isturf(spawn_point))
+		log_debug("Failed to find spawn point for pred ship in transform_predator - clan_id=[clan_id]")
+		to_chat(pred_candidate, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
+		return
+	if(!pred_candidate?.mind) // Legacy check
+		log_debug("Tried to spawn invalid pred player in transform_predator - new_player name=[pred_candidate]")
+		to_chat(pred_candidate, SPAN_WARNING("Could not setup character - you might want to tell someone about this."))
 		return
 
-	var/mob/living/carbon/human/yautja/new_predator = new(pick(spawn_points))
+	var/mob/living/carbon/human/yautja/new_predator = new(spawn_point)
 	pred_candidate.mind.transfer_to(new_predator, TRUE)
 	new_predator.client = pred_candidate.client
 

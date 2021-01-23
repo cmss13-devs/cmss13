@@ -29,6 +29,10 @@ Basics, the most important.
 
 /datum/config_entry/string/dburl
 
+// Shutdown instead of restarting
+/datum/config_entry/flag/no_restarts
+	config_entry_value = FALSE
+
 /// URL for the CentCom Galactic Ban DB API
 /datum/config_entry/string/centcom_ban_db
 

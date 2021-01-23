@@ -23,6 +23,15 @@
 	var/is_reinforced = 0
 	var/list/construction_options = list("One Direction", "Full Window")
 
+/obj/item/stack/sheet/glass/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/glass/medium_stack
+	amount = STACK_25
+
+/obj/item/stack/sheet/glass/large_stack
+	amount = STACK_50
+
 /obj/item/stack/sheet/glass/cyborg
 	matter = null
 

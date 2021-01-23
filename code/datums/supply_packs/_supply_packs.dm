@@ -31,7 +31,6 @@ var/list/all_supply_groups = list(
 	var/name = "Basic supply pack."
 	var/list/contains = list()
 	var/manifest = ""
-	var/amount = null
 	var/cost = RO_PRICE_NORMAL
 	var/containertype = null
 	var/containername = null

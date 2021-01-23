@@ -476,69 +476,121 @@ var/datum/controller/supply/supply_controller = new()
 
 //Buyin
 /datum/controller/supply/proc/buy()
-	if(!shoppinglist.len) return
+	var/area/area_shuttle = shuttle?.get_location_area()
+	if(!area_shuttle || !shoppinglist.len)	
+		return
 
-	var/area/area_shuttle = shuttle.get_location_area()
-	if(!area_shuttle)	return
-
-	var/list/clear_turfs = list()
-
+	// Try to find an available turf to place our package
+	var/list/turf/clear_turfs = list()
 	for(var/turf/T in area_shuttle)
-		if(T.density || T.contents.len)	continue
+		if(T.density || T.contents?.len)	
+			continue
 		clear_turfs += T
 
-	for(var/S in shoppinglist)
-		if(!clear_turfs.len)	break
-		var/i = rand(1,clear_turfs.len)
-		var/turf/pickedloc = clear_turfs[i]
-		clear_turfs.Cut(i,i+1)
+	for(var/datum/supply_order/order in shoppinglist)
+		// No space! Forget buying, it's no use.
+		if(!clear_turfs.len)
+			shoppinglist.Cut()
+			return
 
-		var/datum/supply_order/SO = S
-		var/datum/supply_packs/SP = SO.object
+		// Container generation
+		var/turf/target_turf = pick(clear_turfs)
+		clear_turfs.Remove(target_turf)
+		var/atom/container = target_turf
+		var/datum/supply_packs/package = order.object
+		if(package.containertype)
+			container = new package.containertype(target_turf)
+			if(package.containername)
+				container.name = package.containername
 
-		var/atom/A = new SP.containertype(pickedloc)
-		if(istype(A, /obj/structure/closet))
-			A.name = "[SP.containername]"
+		// Lock it up if it's something that can be
+		if(isobj(container) && package.access)
+			var/obj/lockable = container
+			lockable.req_access = list(package.access)
+		
+		// Contents generation
+		var/list/content_names = list()
+		var/list/content_types = package.contains
+		if(package.randomised_num_contained)
+			content_types = list()
+			for(var/i in 1 to package.randomised_num_contained)
+				content_types += pick(package.contains)
+		for(var/typepath in content_types)
+			var/atom/item = new typepath(container)
+			content_names += item.name
 
-			//supply manifest generation begin
-
-			var/obj/item/paper/manifest/slip = new /obj/item/paper/manifest(A)
-			slip.info = "<h3>Automatic Storage Retrieval Manifest</h3><hr><br>"
-			slip.info +="Order #[SO.ordernum]<br>"
-			slip.info +="[shoppinglist.len] PACKAGES IN THIS SHIPMENT<br>"
-			slip.info +="CONTENTS:<br><ul>"
-
-			//spawn the stuff, finish generating the manifest while you're at it
-			if(SP.access)
-				A:req_access = list()
-				A:req_access += text2num(SP.access)
-
-			var/list/contains
-			if(SP.randomised_num_contained)
-				contains = list()
-				if(SP.contains.len)
-					for(var/j=1,j<=SP.randomised_num_contained,j++)
-						contains += pick(SP.contains)
-			else
-				contains = SP.contains
-
-			for(var/typepath in contains)
-				if(!typepath)	continue
-				var/atom/B2 = new typepath(A)
-				if(SP.amount && B2:amount) B2:amount = SP.amount
-				slip.info += "<li>[B2.name]</li>" //add the item to the manifest
-
-			//manifest finalisation
-			slip.info += "</ul><br>"
-			slip.info += "CHECK CONTENTS AND STAMP BELOW THE LINE TO CONFIRM RECEIPT OF GOODS<hr>"
-			if (SP.contraband) slip.moveToNullspace()	//we are out of blanks for Form #44-D Ordering Illicit Drugs.
-
+		// Manifest generation
+		var/obj/item/paper/manifest/slip
+		if(!package.contraband) // I'm sorry boss i misplaced it...
+			slip = new /obj/item/paper/manifest(container)
+			slip.ordername = package.name
+			slip.ordernum = order.ordernum
+			slip.orderedby = order.orderedby
+			slip.approvedby = order.approvedby
+			slip.packages = content_names
+			slip.generate_contents()
 	shoppinglist.Cut()
-	return
 
 /obj/item/paper/manifest
 	name = "Supply Manifest"
+	var/ordername
+	var/ordernum
+	var/orderedby
+	var/approvedby
+	var/list/packages
 
+
+/obj/item/paper/manifest/read_paper(mob/user)
+	// Tossing ref in widow id as this allows us to read multiple manifests at same time
+	show_browser(user, "<BODY class='paper'>[info][stamps]</BODY>", null, "manifest\ref[src]", "size=550x650")
+	onclose(user, "manifest\ref[src]")
+
+/obj/item/paper/manifest/proc/generate_contents()
+	// You don't tell anyone this is inspired from player-made fax layouts, 
+	// or else, capiche ? Yes this is long, it's 80 col standard
+	info = "                                                                  \
+        <style>                                                               \
+            #container { width: 500px; min-height: 500px; margin: 25px auto;  \
+                    font-family: monospace; padding: 0; font-size: 130% }     \
+            #title { font-size: 250%; letter-spacing: 8px;                    \
+                    font-weight: bolder; margin: 20px auto }                  \
+            .header { font-size: 130%; text-align: center; }                  \
+            .important { font-variant: small-caps; font-size = 130%;          \
+                         font-weight: bolder; }                               \
+            .tablelabel { width: 150px; }                                     \
+            .field { font-style: italic; }                                    \
+            li { list-style-type: disc; list-style-position: inside; }        \
+            table { table-layout: fixed }                                     \
+        </style><div id='container'>                                          \
+        <div class='header'>                                                  \
+            <p id='title' class='important'>A.S.R.S.</p>                      \
+            <p class='important'>Automatic Storage Retrieval System</p>       \
+            <p class='field'>Order #[ordernum]</p>                            \
+        </div><hr><table>                                                     \
+        <colgroup>                                                            \
+            <col class='tablelabel important'>                                \
+            <col class='field'>                                               \
+        </colgroup>                                                           \
+        <tr><td>Shipment:</td>                                                \
+        <td>[ordername]</td></tr>                                             \
+        <tr><td>Ordered by:</td>                                              \
+        <td>[orderedby]</td></tr>                                             \
+        <tr><td>Approved by:</td>                                             \
+        <td>[approvedby]</td></tr>                                            \
+        <tr><td># packages:</td>                                              \
+        <td class='field'>[packages.len]</td></tr>                            \
+        </table><hr><p class='header important'>Contents</p>                  \
+        <ul class='field'>"
+
+	for(var/packagename in packages)
+		info += "<li>[packagename]</li>"
+
+	info += "                                                                 \
+        </ul><br/><hr><br/><p class='important header'>                       \
+            Please stamp below and return to confirm receipt of shipment      \
+        </p></div>"
+
+	name = "[name] - [ordername]"
 
 /obj/structure/machinery/computer/ordercomp/attack_remote(var/mob/user as mob)
 	return attack_hand(user)

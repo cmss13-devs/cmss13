@@ -136,6 +136,15 @@ var/global/list/datum/stack_recipe/wood_recipes = list ( \
 
 	stack_id = "wood plank"
 
+/obj/item/stack/sheet/wood/small_stack
+	amount = STACK_10
+
+/obj/item/stack/sheet/wood/medium_stack
+	amount = STACK_25
+
+/obj/item/stack/sheet/wood/large_stack
+	amount = STACK_50
+
 /obj/item/stack/sheet/wood/cyborg
 	name = "wooden plank"
 	desc = "One can only guess that this is a bunch of wood."

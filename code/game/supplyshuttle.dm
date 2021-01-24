@@ -529,6 +529,7 @@ var/datum/controller/supply/supply_controller = new()
 			slip.approvedby = order.approvedby
 			slip.packages = content_names
 			slip.generate_contents()
+			slip.update_icon()
 	shoppinglist.Cut()
 
 /obj/item/paper/manifest

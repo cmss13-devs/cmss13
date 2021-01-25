@@ -64,6 +64,15 @@
 	</tr>
 </table>
 
+			<h2 class="date">25 January 2021</h2>
+			<h3 class="author">Carlarc updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Breaking the spawn pool on hijack disables hijack surge.</li>
+				<li class="tweak">Hijack surge's pooled larva cooldown is now a minute and a half, reduced linearly over time up to a minimum of 30 seconds after 20 minutes.</li>
+				<li class="tweak">The reason behind this is because while the spawn pool currently punishes hell-holds, it also punishes basically everything: Either your push needs to instantly break the xenos or you get overwhelmed. Making it incremental, and break surge on destruction will give a incentive to pushing without punishing it.</li>
+				<li class="tweak">ERT shuttles' transit period and distress signal calling delay are now 30 seconds.</li>
+			</ul>
+
 			<h2 class="date">23 January 2021</h2>
 			<h3 class="author">Firartix updated:</h3>
 			<ul class="changes bgimages16">
@@ -1805,40 +1814,6 @@
 			<h3 class="author">alardun updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">Fixed a small runtime with container-less pressurized pouch being flushed</li>
-			</ul>
-
-			<h2 class="date">23 November 2020</h2>
-			<h3 class="author">Carlarc updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">CLF have default firearms skill now, instead of civilian skill.</li>
-			</ul>
-			<h3 class="author">Waltermeldron updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed xenomorphs being able to slash dead xenomorphs to buff themselves.</li>
-				<li class="tweak">Tweaked access restrictions on the nuke</li>
-			</ul>
-
-			<h2 class="date">22 November 2020</h2>
-			<h3 class="author">alardun updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added several new custom injectors for research to play with. Variants includes specialized medic injector with 6 doses, and EZ injector that can be used instantly by anyone, as well as different volume capacity. They may be found in their dedicated section of the medilathe. Thanks Dismas for the sprites.</li>
-				<li class="tweak">Autolathe queue limit raised from 5 to 6.</li>
-				<li class="rscadd">The reagent grinder can bottle and send its content to the smartfridge with the push of a button.</li>
-				<li class="tweak">The Research Souto vendor no longer requires swiping, but lost a couple (useless) choices.</li>
-				<li class="rscadd">The smartfridges aboard the Almayer are now networked together. You can transfer contents to and from the shared storage.</li>
-				<li class="rscadd">The turing dispenser can now be toggled to send its production directly to the smartfridge network as bottles.</li>
-				<li class="rscadd">The turing dispenser can now be toggled to send its production directly to the centrifuge for refilling vials or injectors.</li>
-				<li class="rscadd">The centrifuge can now be toggled to receive the turing production, autolabels injectors, and can switch between splitting (current behaviour) and distribute (Fill each container sequentially with the mixture).</li>
-				<li class="rscadd">Added a reagent tank to Medbay Chemistry and two in Research containment.</li>
-				<li class="rscadd">Added a new type of pouch, available in medic vendor, as well as a few in medical lockers, or produced at the medilathe. It is a reagent container with a capacity of 480 that can be refilled at reagents storage tanks and machinery and can refill custom autoinjectors (and only them). It also has space for one injector. The medic pouch is prefilled and also comes with one custom 15x6 injector. Thanks Dismas for the sprites.</li>
-				<li class="rscadd">Vial boxes can now tile-pickup vials and injectors from the floor.</li>
-				<li class="rscadd">Storages items will attempt to empty their contents into the disposal chute if they are not already empty. Clicking the chute with an empty storage will throw the object in the disposal chute.</li>
-				<li class="bugfix">Trying to offer a drink to the synthetic now properly notify you that it won't work.</li>
-				<li class="bugfix">Reagent grinder can no longer be operated from across the room.</li>
-				<li class="bugfix">Transmitted chem should no longer break upon being loaded in the next round.</li>
-				<li class="bugfix">The reagent grinder no longer consumes more metal sheets than necessary to fill the beaker.</li>
-				<li class="bugfix">The Defcon message no longer mentions "ornaments" when buying Orbital Bombardment Ordnance.</li>
-				<li class="bugfix">You no longer try to "diffuse" the Nuclear Bomb when defusing it.</li>
 			</ul>
 </div>
 </body>

@@ -3,7 +3,7 @@
 
 /datum/shuttle/ferry/ert
 	transit_direction = NORTH
-	move_time = DROPSHIP_TRANSIT_DURATION
+	move_time = ERT_SHUTTLE_TRANSIT_DURATION
 	var/use_umbilical = FALSE
 
 /datum/shuttle/ferry/ert/can_launch()

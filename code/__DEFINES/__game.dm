@@ -132,6 +132,7 @@
 #define ELEVATOR_TRANSIT_DURATION		5 SECONDS	// 5 seconds
 #define TRANSIT_POD_TRANSIT_DURATION	30 SECONDS 	// 30 seconds
 #define DROPSHIP_CRASH_TRANSIT_DURATION	3 MINUTES	// 180 seconds. 3 minutes
+#define ERT_SHUTTLE_TRANSIT_DURATION    30 SECONDS	// what are these comments for
 
 #define SHUTTLE_RECHARGE  2 MINUTES // 2 minutes
 #define ELEVATOR_RECHARGE 15 SECONDS  // 15 seconds

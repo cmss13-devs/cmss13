@@ -255,7 +255,7 @@ What a mess.*/
 
 			if("print_report")
 				var/obj/effect/decal/prints/D = scanner.found_prints
-				var/obj/item/paper/fingerprint/P = new /obj/item/paper/fingerprint(D.criminal_name, D.criminal_rank, D.criminal_rank, D.description)
+				var/obj/item/paper/fingerprint/P = new /obj/item/paper/fingerprint(src, D.criminal_name, D.criminal_rank, D.criminal_squad, D.description)
 				P.forceMove(loc)
 				P.name = "fingerprint report ([D.generate_clue()])"
 				playsound(loc, 'sound/machines/twobeep.ogg', 15, 1)

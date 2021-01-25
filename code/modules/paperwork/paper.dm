@@ -757,10 +757,11 @@
 
 /obj/item/paper/incident/Initialize()
 	. = ..()
-	info = {"\[center\]\[logo\]\[/center\]
-\[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
-\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
-\[barcode\]\[/center\]"}
+	var/template = {"\[center\]\[logo\]\[/center\]
+		\[center\]\[b\]\[i\]Encoded USCM Incident Report\[/b\]\[/i\]\[hr\]
+		\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
+		\[barcode\]\[/center\]"}
+	info = parsepencode(template, null, null, FALSE)
 
 /obj/item/paper/incident/Destroy()
 	incident = null
@@ -773,12 +774,13 @@
 
 /obj/item/paper/fingerprint/Initialize(mapload, var/criminal_name = "", var/criminal_rank = "", var/criminal_squad = "", var/description = "")
 	. = ..()
-	info = {"\[center\]\[logo\]\[/center\]
-			\[center\]\[b\]\[i\]Fingerprint Sample From [criminal_name]\[/b\]\[/i\]\[hr\]
-			\[small\]
-			Name: [criminal_name]\[br\]
-			Rank: [criminal_rank]\[br\]
-			Squad: [criminal_squad]\[br\]
-			Description [description]\[br\]
-			\[/small\]
-			\[/center\]"}
+	var/template = {"\[center\]\[logo\]\[/center\]
+		\[center\]\[b\]\[i\]Fingerprint Sample From [criminal_name]\[/b\]\[/i\]\[hr\]
+		\[small\]
+		Name: [criminal_name]\[br\]
+		Rank: [criminal_rank]\[br\]
+		Squad: [criminal_squad]\[br\]
+		Description [description]\[br\]
+		\[/small\]
+		\[/center\]"}
+	info = parsepencode(template, null, null, FALSE)

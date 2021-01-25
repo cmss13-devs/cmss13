@@ -300,8 +300,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "</a>"
 	dat += "<br><br>"
 	dat += "<h2><b><u>Background Information:</u></b></h2>"
-	dat += "<b>Citizenship</b>: <a href='byond://?src=\ref[user];preference=citizenship;task=input'>[citizenship]</a><br/>"
-	dat += "<b>Religion</b>: <a href='byond://?src=\ref[user];preference=religion;task=input'>[religion]</a><br/>"
+	dat += "<b>Citizenship</b>: <a href='?_src_=prefs;preference=citizenship;task=input'>[citizenship]</a><br/>"
+	dat += "<b>Religion</b>: <a href='?_src_=prefs;preference=religion;task=input'>[religion]</a><br/>"
 
 	dat += "<b>Corporate Relation:</b> <a href ='?_src_=prefs;preference=nt_relation;task=input'><b>[nanotrasen_relation]</b></a><br>"
 	dat += "<b>Preferred Squad:</b> <a href ='?_src_=prefs;preference=prefsquad;task=input'><b>[preferred_squad]</b></a><br>"
@@ -1184,12 +1184,12 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!skin_style_name) return
 
 				if("citizenship")
-					var/choice = tgui_input_list(user, "Please choose your current citizenship.", citizenship_choices)
+					var/choice = tgui_input_list(user, "Please choose your current citizenship.", "Citizenship selection", citizenship_choices)
 					if(choice)
 						citizenship = choice
 
 				if("religion")
-					var/choice = tgui_input_list(user, "Please choose a religion.", religion_choices + list("None","Other"))
+					var/choice = tgui_input_list(user, "Please choose a religion.", "Religion choice", religion_choices + list("None","Other"))
 					if(!choice)
 						return
 					if(choice == "Other")

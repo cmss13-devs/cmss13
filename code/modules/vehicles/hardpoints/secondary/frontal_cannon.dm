@@ -28,6 +28,12 @@
 		"8" = list(-62, -26)
 	)
 
+/obj/item/hardpoint/secondary/frontalcannon/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
+
 /obj/item/hardpoint/secondary/frontalcannon/fire(var/mob/user, var/atom/A)
 	if(ammo.current_rounds <= 0)
 		return

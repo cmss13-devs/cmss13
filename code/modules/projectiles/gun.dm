@@ -804,33 +804,34 @@ and you're good to go.
 /obj/item/weapon/gun/proc/ready_in_chamber()
 	if(current_mag && current_mag.current_rounds > 0)
 		in_chamber = create_bullet(ammo, initial(name))
-
-		// Apply bullet traits from gun
-		for(var/entry in traits_to_give)
-			var/list/L
-			// Check if this is an ID'd bullet trait
-			if(istext(entry))
-				L = traits_to_give[entry].Copy()
-			else
-				// Prepend the bullet trait to the list
-				L = list(entry) + traits_to_give[entry]
-			// Need to use the proc instead of the wrapper because each entry is a list
-			in_chamber._AddElement(L)
-
-		// Apply bullet traits from attachments
-		for(var/slot in attachments)
-			if(!attachments[slot])
-				continue
-
-			var/obj/item/attachable/AT = attachments[slot]
-			for(var/entry in AT.traits_to_give)
-				// Prepend the bullet trait to the list
-				var/list/L = list(entry) + AT.traits_to_give[entry]
-				// Need to use the proc instead of the wrapper because each entry is a list
-				in_chamber._AddElement(L)
-
+		apply_traits_to_in_chamber()
 		current_mag.current_rounds-- //Subtract the round from the mag.
 		return in_chamber
+
+/obj/item/weapon/gun/proc/apply_traits_to_in_chamber()
+	// Apply bullet traits from gun
+	for(var/entry in traits_to_give)
+		var/list/L
+		// Check if this is an ID'd bullet trait
+		if(istext(entry))
+			L = traits_to_give[entry].Copy()
+		else
+			// Prepend the bullet trait to the list
+			L = list(entry) + traits_to_give[entry]
+		// Need to use the proc instead of the wrapper because each entry is a list
+		in_chamber._AddElement(L)
+
+	// Apply bullet traits from attachments
+	for(var/slot in attachments)
+		if(!attachments[slot])
+			continue
+
+		var/obj/item/attachable/AT = attachments[slot]
+		for(var/entry in AT.traits_to_give)
+			// Prepend the bullet trait to the list
+			var/list/L = list(entry) + AT.traits_to_give[entry]
+			// Need to use the proc instead of the wrapper because each entry is a list
+			in_chamber._AddElement(L)
 
 /obj/item/weapon/gun/proc/create_bullet(var/datum/ammo/chambered, var/bullet_source)
 	if(!chambered)

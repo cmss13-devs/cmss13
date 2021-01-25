@@ -159,6 +159,7 @@
 			if(current_mag.chamber_contents[current_mag.chamber_position] == "bullet")
 				current_mag.current_rounds-- //Subtract the round from the mag.
 				in_chamber = create_bullet(ammo, initial(name))
+				apply_traits_to_in_chamber()
 				return in_chamber
 		else if(current_mag.chamber_closed)
 			unload(null)

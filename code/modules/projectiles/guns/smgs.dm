@@ -469,5 +469,5 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
 
-/obj/item/weapon/gun/smg/unique_action(mob/user)
+/obj/item/weapon/gun/smg/nailgun/unique_action(mob/user)
 	return //Yeah no.

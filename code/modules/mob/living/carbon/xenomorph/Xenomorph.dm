@@ -204,7 +204,7 @@
 	var/tileoffset = 0 // Zooming-out related vars
 	var/viewsize = 0
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
-	var/list/tackle_counter = list()
+	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 
 

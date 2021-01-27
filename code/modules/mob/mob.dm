@@ -627,6 +627,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 			add_temp_pass_flags(PASS_MOB_THRU)
 			drop_l_hand()
 			drop_r_hand()
+			SEND_SIGNAL(src, COMSIG_MOB_KNOCKED_DOWN)
 		else
 			density = TRUE
 			SEND_SIGNAL(src, COMSIG_MOB_GETTING_UP)
@@ -644,7 +645,7 @@ note dizziness decrements automatically in the mob's Life() proc.
 	else if(layer == LYING_DEAD_MOB_LAYER || layer == LYING_LIVING_MOB_LAYER)
 		layer = initial(layer)
 
-	SEND_SIGNAL(src, COMSIG_MOB_POST_UPDATE_CANMOVE, canmove, laid_down ,lying)
+	SEND_SIGNAL(src, COMSIG_MOB_POST_UPDATE_CANMOVE, canmove, laid_down, lying)
 
 	return canmove
 

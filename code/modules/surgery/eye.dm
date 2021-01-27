@@ -35,11 +35,15 @@
 /datum/surgery_step/eye/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts to separate the cornea on [target]'s eyes with \the [tool]."), \
 	SPAN_NOTICE("You start to separate the cornea on [target]'s eyes with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to separate the cornea on [key_name(target)]'s eyes with \the [tool].")
+
 	..()
 
 /datum/surgery_step/eye/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has separated the cornea on [target]'s eyes with \the [tool].") , \
 	SPAN_NOTICE("You have separated the cornea on [target]'s eyes with \the [tool]."),)
+	log_interact(user, target, "[key_name(user)] separated the cornea on [key_name(target)]'s eyes with \the [tool].")
+
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
 	E.eye_surgery_stage = 1
 	target.disabilities |= NEARSIGHTED // code\#define\mobs.dm
@@ -48,6 +52,8 @@
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, slicing [target]'s eyes with \the [tool]!") , \
 	SPAN_WARNING("Your hand slips, slicing [target]'s eyes with \the [tool]!") )
+	log_interact(user, target, "[key_name(user)] failed to separate the cornea on [key_name(target)]'s eyes with \the [tool].")
+
 	affected.createwound(CUT, 10)
 	E.take_damage(5, 0)
 	target.updatehealth()
@@ -67,11 +73,15 @@
 /datum/surgery_step/eye/lift_eyes/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts lifting the cornea from [target]'s eyes with \the [tool]."), \
 	SPAN_NOTICE("You start lifting the cornea from [target]'s eyes with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to lift the cornea from [key_name(target)]'s eyes with \the [tool].")
+
 	..()
 
 /datum/surgery_step/eye/lift_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has lifted the cornea from [target]'s eyes with \the [tool].") , \
 	SPAN_NOTICE("You have lifted the cornea from [target]'s eyes with \the [tool].") )
+	log_interact(user, target, "[key_name(user)] lifted the cornea from [key_name(target)]'s eyes with \the [tool].")
+
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
 	E.eye_surgery_stage = 2
 
@@ -79,6 +89,8 @@
 	var/datum/internal_organ/eyes/eyes = target.internal_organs_by_name["eyes"]
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, damaging [target]'s eyes with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to lift the cornea from [key_name(target)]'s eyes with \the [tool].")
+
 	target.apply_damage(10, BRUTE, affected)
 	eyes.take_damage(5, 0)
 	target.updatehealth()
@@ -97,11 +109,15 @@
 /datum/surgery_step/eye/mend_eyes/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts mending the nerves and lenses in [target]'s eyes with \the [tool]."), \
 	SPAN_NOTICE("You start mending the nerves and lenses in [target]'s eyes with the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to mend the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
+
 	..()
 
 /datum/surgery_step/eye/mend_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] mends the nerves and lenses in [target]'s with \the [tool].") ,	\
 	SPAN_NOTICE("You mend the nerves and lenses in [target]'s with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] mended the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
+
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_EYE)
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
 	E.eye_surgery_stage = 3
@@ -110,6 +126,8 @@
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, stabbing \the [tool] into [target]'s eye!"), \
 	SPAN_WARNING("Your hand slips, stabbing \the [tool] into [target]'s eye!"))
+	log_interact(user, target, "[key_name(user)] failed to mend the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
+
 	target.apply_damage(10, BRUTE, affected, sharp = 1)
 	E.take_damage(5, 0)
 	target.updatehealth()
@@ -122,7 +140,7 @@
     /obj/item/tool/lighter = 50,    \
     /obj/item/tool/weldingtool = 50
     )
-	
+
 	min_duration = CAUTERY_MIN_DURATION
 	max_duration = CAUTERY_MAX_DURATION
 	eye_step = 3
@@ -130,10 +148,14 @@
 /datum/surgery_step/eye/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] is beginning to cauterize the incision around [target]'s eyes with \the [tool].") , \
 	SPAN_NOTICE("You are beginning to cauterize the incision around [target]'s eyes with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] began to cauterize the incision around [key_name(target)]'s eyes with \the [tool].")
+
 
 /datum/surgery_step/eye/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] cauterizes the incision around [target]'s eyes with \the [tool]."), \
 	SPAN_NOTICE("You cauterize the incision around [target]'s eyes with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with \the [tool].")
+
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~BLIND
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
@@ -146,6 +168,8 @@
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s eyes with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, searing [target]'s eyes with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to cauterize the incision around [key_name(target)]'s eyes with \the [tool].")
+
 	target.apply_damage(5, BURN, affected)
 	E.take_damage(5, 0)
 	target.updatehealth()

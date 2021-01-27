@@ -24,12 +24,16 @@
 /datum/surgery_step/fix_vein/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts patching the damaged vein in [target]'s [affected.display_name] with \the [tool].") , \
 	SPAN_NOTICE("You start patching the damaged vein in [target]'s [affected.display_name] with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started patching the damaged vein in [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 	target.custom_pain("The pain in [affected.display_name] is unbearable!",1)
 	..()
 
 /datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has patched the damaged vein in [target]'s [affected.display_name] with \the [tool]."), \
 		SPAN_NOTICE("You have patched the damaged vein in [target]'s [affected.display_name] with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] patched the damaged vein in [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_IB)
 
 	for(var/datum/wound/W in affected.wounds)
@@ -46,5 +50,7 @@
 /datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!") , \
 	SPAN_WARNING("Your hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!"))
+	log_interact(user, target, "[key_name(user)] failed to patch the damaged vein in [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 	affected.take_damage(5, 0)
 	target.updatehealth()

@@ -33,6 +33,8 @@
 /datum/surgery_step/internal/remove_embryo/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts to pull something out from [target]'s ribcage with \the [tool]."), \
 					SPAN_NOTICE("You start to pull something out from [target]'s ribcage with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage with \the [tool].")
+
 	target.custom_pain("Something hurts horribly in your chest!",1)
 	..()
 
@@ -41,6 +43,8 @@
 	if(A)
 		user.visible_message(SPAN_WARNING("[user] rips a wriggling parasite out of [target]'s ribcage!"),
 							 SPAN_WARNING("You rip a wriggling parasite out of [target]'s ribcage!"))
+		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with \the [tool].")
+
 		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
 		var/mob/living/carbon/Xenomorph/Larva/L = locate() in target //the larva was fully grown, ready to burst.
 		if(L)
@@ -90,6 +94,8 @@
 		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
 			user.visible_message(SPAN_NOTICE("[user] starts treating damage to [target]'s [I.name] with [tool_name]."), \
 			SPAN_NOTICE("You start treating damage to [target]'s [I.name] with [tool_name].") )
+			log_interact(user, target, "[key_name(user)] started to treat damage to [key_name(target)]'s [I.name] with [tool_name].")
+
 
 	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
 	..()
@@ -105,6 +111,8 @@
 		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
 			user.visible_message(SPAN_NOTICE("[user] treats damage to [target]'s [I.name] with [tool_name]."), \
 			SPAN_NOTICE("You treat damage to [target]'s [I.name] with [tool_name].") )
+			log_interact(user, target, "[key_name(user)] treated damage to [key_name(target)]'s [I.name] with [tool_name].")
+
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			I.rejuvenate()
 
@@ -113,6 +121,8 @@
 /datum/surgery_step/internal/fix_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, getting mess and tearing the inside of [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, getting mess and tearing the inside of [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to treat damage to the inside of [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 	var/dam_amt = 2
 
 	if(istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
@@ -154,6 +164,8 @@
 		if(I && I.damage > 0 && I.robotic == ORGAN_ROBOT)
 			user.visible_message(SPAN_NOTICE("[user] starts mending the damage to [target]'s [I.name]'s mechanisms."), \
 			SPAN_NOTICE("You start mending the damage to [target]'s [I.name]'s mechanisms.") )
+			log_interact(user, target, "[key_name(user)] started to repair damage to [key_name(target)]'s [I.name]'s mechanisms.")
+
 
 	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
 	..()
@@ -163,11 +175,13 @@
 		if(I && I.damage > 0 && I.robotic == ORGAN_ROBOT)
 			user.visible_message(SPAN_NOTICE("[user] repairs [target]'s [I.name] with [tool]."), \
 			SPAN_NOTICE("You repair [target]'s [I.name] with [tool].") )
+			log_interact(user, target, "[key_name(user)] repaired damage to [key_name(target)]'s [I.name]'s mechanisms.")
 			I.damage = 0
 
 /datum/surgery_step/internal/fix_organ_robotic/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, gumming up the mechanisms inside of [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, gumming up the mechanisms inside of [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to repair damage inside of [key_name(target)]'s [affected.display_name] with \the [tool].")
 
 	target.apply_damage(5, TOX)
 	affected.createwound(CUT, 5)
@@ -223,12 +237,14 @@
 /datum/surgery_step/internal/detach_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts to separate [target]'s [affected.surgery_organ] with \the [tool]."), \
 	SPAN_NOTICE("You start to separate [target]'s [affected.surgery_organ] with \the [tool].") )
+	log_interact(user, target, "[key_name(user)] started to detatch [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
 	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
 	..()
 
 /datum/surgery_step/internal/detach_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has separated [target]'s [affected.surgery_organ] with \the [tool].") , \
 	SPAN_NOTICE("You have separated [target]'s [affected.surgery_organ] with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] detatched [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
 
 	var/datum/internal_organ/I = target.internal_organs_by_name[affected.surgery_organ]
 	I.cut_away = TRUE
@@ -237,6 +253,8 @@
 /datum/surgery_step/internal/detach_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to detatch [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
+
 	affected.createwound(CUT, rand(30, 50), 1)
 	affected.update_wounds()
 	affected.surgery_organ = null
@@ -287,12 +305,16 @@
 /datum/surgery_step/internal/remove_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts removing [target]'s [affected.surgery_organ] with \the [tool]."), \
 	SPAN_NOTICE("You start removing [target]'s [affected.surgery_organ] with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to remove [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
+
 	target.custom_pain("Someone's ripping out your [affected.surgery_organ]!", 1)
 	..()
 
 /datum/surgery_step/internal/remove_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has removed [target]'s [affected.surgery_organ] with \the [tool]."), \
 	SPAN_NOTICE("You have removed [target]'s [affected.surgery_organ] with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] removed [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
+
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REMOVE)
 
 	//Extract the organ!
@@ -325,6 +347,8 @@
 /datum/surgery_step/internal/remove_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to remove [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
+
 	affected.createwound(BRUISE, 20)
 	affected.update_wounds()
 	affected.surgery_organ = null
@@ -381,12 +405,16 @@
 /datum/surgery_step/internal/replace_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts transplanting \the [tool] into [target]'s [affected.display_name]."), \
 	SPAN_NOTICE("You start transplanting \the [tool] into [target]'s [affected.display_name]."))
+	log_interact(user, target, "[key_name(user)] started to transplant \the [tool] into [key_name(target)]'s [affected.display_name].")
+
 	target.custom_pain("Someone's rooting around in your [affected.display_name]!", 1)
 	..()
 
 /datum/surgery_step/internal/replace_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has transplanted \the [tool] into [target]'s [affected.display_name]."), \
 	SPAN_NOTICE("You have transplanted \the [tool] into [target]'s [affected.display_name]."))
+	log_interact(user, target, "[key_name(user)] transplanted \the [tool] into [key_name(target)]'s [affected.display_name].")
+
 	user.temp_drop_inv_item(tool)
 	var/obj/item/organ/O = tool
 
@@ -415,6 +443,8 @@
 /datum/surgery_step/internal/replace_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, damaging \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to transplant \the [tool] into [key_name(target)]'s [affected.display_name].")
+
 	var/obj/item/organ/I = tool
 	if(istype(I))
 		I.organ_data.take_damage(rand(3, 5), 0)
@@ -466,12 +496,16 @@
 /datum/surgery_step/internal/attach_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] begins reattaching [target]'s [affected.surgery_organ] with \the [tool]."), \
 	SPAN_NOTICE("You start reattaching [target]'s [affected.surgery_organ] with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to reattach [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
+
 	target.custom_pain("Someone's digging needles into your [affected.surgery_organ]!", 1)
 	..()
 
 /datum/surgery_step/internal/attach_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] has reattached [target]'s [affected.surgery_organ] with \the [tool].") , \
 	SPAN_NOTICE("You have reattached [target]'s [affected.surgery_organ] with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] reattached [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
+
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_ATTACH)
 
 	var/datum/internal_organ/I = target.internal_organs_by_name[affected.surgery_organ]
@@ -481,6 +515,8 @@
 /datum/surgery_step/internal/attach_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to reattach [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
+
 	affected.createwound(BRUISE, 20)
 	affected.update_wounds()
 	affected.surgery_organ = null

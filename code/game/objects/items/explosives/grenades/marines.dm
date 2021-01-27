@@ -245,7 +245,7 @@
 	var/shrapnel_type = /datum/ammo/bullet/shrapnel/incendiary
 
 /obj/item/explosive/grenade/incendiary/airburst/prime()
-	
+
 /obj/item/explosive/grenade/incendiary/airburst/launch_impact(atom/hit_atom)
 	..()
 	var/detonate = TRUE
@@ -282,6 +282,7 @@
 	det_time = 20
 	item_state = "grenade_smoke"
 	underslug_launchable = TRUE
+	harmful = FALSE
 	var/datum/effect_system/smoke_spread/bad/smoke
 
 /obj/item/explosive/grenade/smokebomb/New()

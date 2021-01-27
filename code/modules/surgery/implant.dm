@@ -51,6 +51,8 @@
 /datum/surgery_step/cavity/make_space/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts making some space inside [target]'s [get_cavity(affected)] cavity with \the [tool]."), \
 	SPAN_NOTICE("You start making some space inside [target]'s [get_cavity(affected)] cavity with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to make some space in [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 	target.custom_pain("The pain in your chest is living hell!", 1)
 	affected.cavity = 1
 	..()
@@ -58,10 +60,14 @@
 /datum/surgery_step/cavity/make_space/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] makes some space inside [target]'s [get_cavity(affected)] cavity with \the [tool]."), \
 	SPAN_NOTICE("You make some space inside [target]'s [get_cavity(affected)] cavity with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] made some space in [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 
 /datum/surgery_step/cavity/make_space/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to make some space in [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 	affected.createwound(CUT, 20)
 	affected.update_wounds()
 
@@ -85,6 +91,8 @@
 /datum/surgery_step/cavity/close_space/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts mending [target]'s [get_cavity(affected)] cavity wall with \the [tool]."), \
 	SPAN_NOTICE("You start mending [target]'s [get_cavity(affected)] cavity wall with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to mend [key_name(target)]'s [get_cavity(affected)] cavity wall with \the [tool].")
+
 	target.custom_pain("The pain in your chest is living hell!",1)
 	affected.cavity = 0
 	..()
@@ -92,10 +100,14 @@
 /datum/surgery_step/cavity/close_space/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] mends [target]'s [get_cavity(affected)] cavity walls with \the [tool]."), \
 	SPAN_NOTICE("You mend [target]'s [get_cavity(affected)] cavity walls with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s [get_cavity(affected)] cavity wall with \the [tool].")
+
 
 /datum/surgery_step/cavity/close_space/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [get_cavity(affected)] cavity wall with \the [tool].")
+
 	affected.createwound(CUT, 20)
 	affected.update_wounds()
 
@@ -115,14 +127,20 @@
 /datum/surgery_step/cavity/place_item/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts putting \the [tool] inside [target]'s [get_cavity(affected)] cavity."), \
 	SPAN_NOTICE("You start putting \the [tool] inside [target]'s [get_cavity(affected)] cavity.") )
+	log_interact(user, target, "[key_name(user)] started to put \the [tool] inside [key_name(target)]'s [get_cavity(affected)] cavity.")
+
 	target.custom_pain("The pain in your chest is living hell!",1)
 	..()
 
 /datum/surgery_step/cavity/place_item/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] puts \the [tool] inside [target]'s [get_cavity(affected)] cavity."), \
 	SPAN_NOTICE("You put \the [tool] inside [target]'s [get_cavity(affected)] cavity."))
+	log_interact(user, target, "[key_name(user)] put \the [tool] inside [key_name(target)]'s [get_cavity(affected)] cavity.")
+
 	if(tool.w_class > get_max_wclass(affected)/2 && prob(50))
 		to_chat(user, SPAN_WARNING("You tear some blood vessels trying to fit such a big object in this cavity."))
+		log_interact(user, target, "[key_name(user)] damaged some blood vessels while putting \the [tool] inside [key_name(target)]'s [get_cavity(affected)] cavity.")
+
 		var/datum/wound/internal_bleeding/I = new (0)
 		affected.add_bleeding(I, TRUE)
 		affected.wounds += I
@@ -134,6 +152,8 @@
 /datum/surgery_step/cavity/place_item/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] failed to put \the [tool] inside [key_name(target)]'s [get_cavity(affected)] cavity.")
+
 	affected.createwound(CUT, 20)
 	affected.update_wounds()
 
@@ -163,6 +183,8 @@
 /datum/surgery_step/cavity/implant_removal/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts poking around inside the incision on [target]'s [affected.display_name] with \the [tool]."), \
 	SPAN_NOTICE("You start poking around inside the incision on [target]'s [affected.display_name] with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started poking around inside the incision on [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 	target.custom_pain("The pain in your chest is living hell!", 1)
 	..()
 
@@ -172,6 +194,8 @@
 		var/obj/item/obj = affected.implants[1]
 		user.visible_message(SPAN_NOTICE("[user] takes something out of incision on [target]'s [affected.display_name] with \the [tool]."), \
 		SPAN_NOTICE("You take [obj] out of incision on [target]'s [affected.display_name]s with \the [tool]."))
+		log_interact(user, target, "[key_name(user)] removed [obj] from [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 		affected.implants -= obj
 
 		obj.forceMove(get_turf(target))
@@ -189,6 +213,8 @@
 	else if(affected.hidden)
 		user.visible_message(SPAN_NOTICE("[user] takes something out of incision on [target]'s [affected.display_name] with \the [tool]."), \
 		SPAN_NOTICE("You take something out of incision on [target]'s [affected.display_name]s with \the [tool]."))
+		log_interact(user, target, "[key_name(user)] removed something from [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 		affected.hidden.forceMove(get_turf(target))
 
 		affected.hidden.blood_color = target.get_blood_color()
@@ -198,10 +224,14 @@
 	else
 		user.visible_message(SPAN_NOTICE("[user] could not find anything inside [target]'s [affected.display_name], and pulls \the [tool] out."), \
 		SPAN_NOTICE("You could not find anything inside [target]'s [affected.display_name]."))
+		log_interact(user, target, "[key_name(user)] found nothing inside [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 
 /datum/surgery_step/cavity/implant_removal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, scraping tissue inside [target]'s [affected.display_name] with \the [tool]!"))
+	log_interact(user, target, "[key_name(user)] damaged the inside of [key_name(target)]'s [affected.display_name] with \the [tool].")
+
 	affected.createwound(CUT, 20)
 	if(affected.implants.len)
 		var/fail_prob = 10

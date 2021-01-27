@@ -70,6 +70,16 @@
 		diary << html_decode("\[[time_stamp()]]GAME: [text][log_end]")
 	GLOB.STUI.admin.Add("\[[time_stamp()]]GAME: [text]<br>")
 	GLOB.STUI.processing |= STUI_LOG_ADMIN
+
+/proc/log_interact(var/mob/living/carbon/origin, var/mob/living/carbon/target, var/msg)
+	if (CONFIG_GET(flag/log_interact))
+		diary << html_decode("\[[time_stamp()]]INTERACT: [msg][log_end]")
+	origin.attack_log += "\[[time_stamp()]\]<font color='green'> [msg] </font>"
+	target.attack_log += "\[[time_stamp()]\]<font color='green'> [msg] </font>"
+
+	GLOB.STUI.attack.Add("\[[time_stamp()]]INTERACT: [msg]<br>")
+	GLOB.STUI.processing |= STUI_LOG_ATTACK
+
 /proc/log_vote(text)
 	if (CONFIG_GET(flag/log_vote))
 		diary << html_decode("\[[time_stamp()]]VOTE: [text][log_end]")
@@ -79,16 +89,19 @@
 		diary << html_decode("\[[time_stamp()]]ACCESS: [text][log_end]")
 	GLOB.STUI.debug.Add("\[[time_stamp()]]ACCESS: [text]<br>")
 	GLOB.STUI.processing |= STUI_LOG_DEBUG
+
 /proc/log_say(text)
 	if (CONFIG_GET(flag/log_say))
 		diary << html_decode("\[[time_stamp()]]SAY: [text][log_end]")
 	GLOB.STUI.game.Add("\[[time_stamp()]]SAY: [text]<br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+
 /proc/log_hivemind(text)
 	if (CONFIG_GET(flag/log_hivemind))
 		diary << html_decode("\[[time_stamp()]]HIVEMIND: [text][log_end]")
 	GLOB.STUI.game.Add("\[[time_stamp()]]HIVEMIND: [text]<br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+
 /proc/log_ooc(text)
 	if (CONFIG_GET(flag/log_ooc))
 		diary << html_decode("\[[time_stamp()]]OOC: [text][log_end]")
@@ -98,16 +111,19 @@
 		diary << html_decode("\[[time_stamp()]]WHISPER: [text][log_end]")
 	GLOB.STUI.game.Add("\[[time_stamp()]]WHISPER: [text]<br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+
 /proc/log_emote(text)
 	if (CONFIG_GET(flag/log_emote))
 		diary << html_decode("\[[time_stamp()]]EMOTE: [text][log_end]")
 	GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#999999'>EMOTE: [text]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+
 /proc/log_attack(text)
 	if (CONFIG_GET(flag/log_attack))
 		diary << html_decode("\[[time_stamp()]]ATTACK: [text][log_end]")
 	GLOB.STUI.attack.Add("\[[time_stamp()]]ATTACK: [text]<br>")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK
+
 /proc/log_adminsay(text)
 	if (CONFIG_GET(flag/log_adminchat))
 		diary << html_decode("\[[time_stamp()]]ADMINSAY: [text][log_end]")

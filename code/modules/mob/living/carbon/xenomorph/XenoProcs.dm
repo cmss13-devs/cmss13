@@ -575,12 +575,11 @@
 		handle_ventcrawl(pipe)
 
 /mob/living/carbon/Xenomorph/proc/attempt_tackle(var/mob/M, var/tackle_mult = 1, var/tackle_min_offset = 0, var/tackle_max_offset = 0, var/tackle_bonus = 0)
-	var/datum/tackle_counter/TC
-	if (M in tackle_counter)
-		TC = tackle_counter[M]
-	else
+	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
+	if(!TC)
 		TC = new(tackle_min + tackle_min_offset, tackle_max + tackle_max_offset, tackle_chance*tackle_mult)
-		tackle_counter[M] = TC
+		LAZYSET(tackle_counter, M, TC)
+		RegisterSignal(M, COMSIG_MOB_KNOCKED_DOWN, .proc/tackle_handle_lying_changed)
 
 	if (TC.tackle_reset_id)
 		deltimer(TC.tackle_reset_id)
@@ -591,13 +590,18 @@
 		TC.tackle_reset_id = addtimer(CALLBACK(src, .proc/reset_tackle, M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
 		qdel(TC)
-		tackle_counter[M] = null
-		tackle_counter.Remove(M)
+		LAZYREMOVE(tackle_counter, M)
+
+/mob/living/carbon/Xenomorph/proc/tackle_handle_lying_changed(mob/M)
+	// Infected mobs do not have their tackle counter reset if
+	// they get knocked down or get up from a knockdown
+	if(M.status_flags & XENO_HOST)
+		return
+
+	reset_tackle(M)
 
 /mob/living/carbon/Xenomorph/proc/reset_tackle(var/mob/M)
-	var/datum/tackle_counter/TC
-	if (M in tackle_counter)
-		TC = tackle_counter[M]
+	var/datum/tackle_counter/TC = LAZYACCESS(tackle_counter, M)
+	if (TC)
 		qdel(TC)
-		tackle_counter[M] = null
-		tackle_counter.Remove(M)
+		LAZYREMOVE(tackle_counter, M)

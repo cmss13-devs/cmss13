@@ -96,13 +96,12 @@
 #define COMSIG_MOB_DEATH "mob_death"
 /// From /mob/proc/update_canmove()
 #define COMSIG_MOB_GETTING_UP "mob_getting_up"
+/// From /mob/proc/update_canmove()
+#define COMSIG_MOB_KNOCKED_DOWN "mob_knocked_down"
 /// For when a mob is dragged
 #define COMSIG_MOB_DRAGGED "mob_dragged"
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RESISTED "mob_resist"
-
-/// from /mob/living/carbon/human/attack_alien()
-#define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
@@ -152,6 +151,8 @@
 /// From /obj/effect/decal/cleanable/blood/Crossed(): (amount, bcolor, dry_time_left)
 #define COMSIG_HUMAN_BLOOD_CROSSED "human_blood_crossed"
 #define COMSIG_HUMAN_CLEAR_BLOODY_FEET "human_clear_bloody_feet"
+/// from /mob/living/carbon/human/attack_alien()
+#define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
 
 /// from /mob/living/carbon/Xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"

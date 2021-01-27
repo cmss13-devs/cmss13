@@ -350,6 +350,7 @@
 	icon_state = "weednode"
 	health = NODE_HEALTH_STANDARD
 	flags_atom = OPENCONTAINER
+	layer = ABOVE_BLOOD_LAYER
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()

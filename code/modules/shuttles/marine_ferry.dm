@@ -621,47 +621,26 @@
 
 		node_activator.trigger()
 
-/datum/shuttle/ferry/marine/close_doors(var/list/L)
+/datum/shuttle/ferry/marine/close_doors(var/list/turf/L)
+	for(var/turf/T in L) // For every turf
+		for(var/obj/structure/machinery/door/D in T) // For every relevant door there
+			if(!D.density && istype(D, /obj/structure/machinery/door/poddoor/shutters/transit))
+				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close) // Pod can't close if blocked
+			if(iselevator && istype(D, /obj/structure/machinery/door/airlock)) // Just close. Why is this here though...?
+				INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/close)
+			else if(istype(D, /obj/structure/machinery/door/airlock/dropship_hatch) || istype(D, /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear))
+				INVOKE_ASYNC(src, .proc/force_close_launch, D) // The whole shabang
 
-	var/i //iterator
-	var/turf/T
-
-	for(i in L)
-		T = i
-		if(!istype(T)) continue
-
-		//I know an iterator is faster, but this broke for some reason when I used it so I won't argue
-		for(var/obj/structure/machinery/door/poddoor/shutters/transit/ST in T)
-			if(!istype(ST)) continue
-			if(!ST.density)
-				//"But MadSnailDisease!", you say, "Don't use spawn! Use sleep() and waitfor instead!
-				//Well you would be right if close() were different, but alas it is not.
-				//Without spawn(), it closes each door one at a time.
-				//"Well then why not change the proc itself?"
-				//Excellent question!
-				//Because when you open doors by Collided() it would have you fly through before the animation is complete
-				INVOKE_ASYNC(ST, /obj/structure/machinery/door.proc/close)
-				break
-
-		//Elevators
-		if (iselevator)
-			for(var/obj/structure/machinery/door/airlock/A in T)
-				spawn(0)
-					A.unlock()
-					A.close(1)
-					A.lock()
-		else
-			for(var/obj/structure/machinery/door/airlock/dropship_hatch/M in T)
-				spawn(0)
-					M.unlock()
-					M.close(1)
-					M.lock()
-
-			for(var/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/D in T)
-				spawn(0)
-					D.unlock()
-					D.close(1)
-					D.lock()
+/datum/shuttle/ferry/marine/force_close_launch(var/obj/structure/machinery/door/AL)
+	if(!iselevator)
+		for(var/mob/M in AL.loc) // Bump all mobs outta the way for outside airlocks of shuttles
+			to_chat(M, SPAN_HIGHDANGER("You get thrown back as the dropship doors slam shut!"))
+			M.KnockDown(4)
+			for(var/turf/T in orange(1, AL)) // Forcemove to a non shuttle turf
+				if(!istype(T, /turf/open/shuttle) && !istype(T, /turf/closed/shuttle))
+					M.forceMove(T)
+					break
+	return ..() // Sleeps
 
 /datum/shuttle/ferry/marine/open_doors(var/list/L)
 	var/i //iterator

@@ -99,6 +99,7 @@
 
 //Actual code. lel
 /datum/shuttle/proc/close_doors(var/area/area)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!area || !istype(area)) //somehow
 		return
 
@@ -118,14 +119,14 @@
 			G.start()
 
 		for (var/obj/structure/machinery/door/airlock/D in area)//For elevators
-			spawn(0)
-				if (!D.density)
-					D.close()
-					D.lock()
-				else
-					D.lock()
+			INVOKE_ASYNC(src, .proc/force_close_launch, D)
 
-
+/datum/shuttle/proc/force_close_launch(var/obj/structure/machinery/door/airlock/AL) // whatever. SLEEPS
+	AL.safe = FALSE
+	AL.unlock()
+	AL.close()
+	AL.lock()
+	AL.safe = TRUE
 
 /datum/shuttle/proc/open_doors(var/area/area)
 	if(!area || !istype(area)) //somehow

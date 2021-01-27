@@ -609,16 +609,6 @@
 /obj/structure/machinery/door/airlock/dropship_hatch/ex_act(severity)
 	return
 
-/obj/structure/machinery/door/airlock/dropship_hatch/close(var/forced=0)
-	if(forced)
-		for(var/mob/living/L in loc)
-			step(L, pick(EAST,WEST)) // bump them off the tile
-		safe = 0 // in case anyone tries to run into the closing door~
-		..()
-		safe = 1 // without having to rewrite closing proc~spookydonut
-	else
-		..()
-
 /obj/structure/machinery/door/airlock/dropship_hatch/unlock()
 	if(is_loworbit_level(z)) // in flight
 		return

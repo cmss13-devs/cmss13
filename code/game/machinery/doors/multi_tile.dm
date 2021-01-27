@@ -183,16 +183,6 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/ex_act(severity)
 	return
 
-/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/close(var/forced=0)
-	if(forced)
-		for(var/turf/T in get_filler_turfs())
-			for(var/mob/living/L in T)
-				step(L, pick(NORTH,SOUTH)) // bump them off the tile
-		safe = 0 // in case anyone tries to run into the closing door~
-		..()
-		safe = 1 // without having to rewrite closing proc~spookydonut
-	else
-		..()
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/unlock()
 	if(is_loworbit_level(z))

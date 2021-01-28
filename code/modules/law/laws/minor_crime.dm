@@ -37,7 +37,7 @@
 /datum/law/minor_law/failure_to_follow_procedure
 	name = "Failure to Follow Procedure"
 	desc = "Failing to follow the regulations found in the Standard Operating Procedure."
-	special_punishment = "Demotion"
+	special_punishment = "Equipment Confiscation"
 	brig_time = 10
 
 /datum/law/minor_law/intoxication

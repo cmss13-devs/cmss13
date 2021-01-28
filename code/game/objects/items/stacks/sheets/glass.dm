@@ -79,7 +79,7 @@
 		return 0
 	var/title = "Sheet-[name]"
 	title += " ([src.amount] sheet\s left)"
-	switch(tgui_input_list(title, "What would you like to construct?", "Construct Object", construction_options))
+	switch(tgui_input_list(user, title, "What would you like to construct?", construction_options))
 		if("One Direction")
 			if(!src)	return 1
 			if(src.loc != user)	return 1

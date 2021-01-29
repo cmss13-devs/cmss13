@@ -164,31 +164,26 @@
 	if(selected)
 		switch(selected)
 			if(1)
-				qdel(marine_mapview_overlay_1)
 				marine_mapview_overlay_1 = newoverlay
 				squad1updated = TRUE
 				spawn(refreshfrequency)
 					squad1updated = FALSE
 			if(2)
-				qdel(marine_mapview_overlay_2)
 				marine_mapview_overlay_2 = newoverlay
 				squad2updated = TRUE
 				spawn(refreshfrequency)
 					squad2updated = FALSE
 			if(3)
-				qdel(marine_mapview_overlay_3)
 				marine_mapview_overlay_3 = newoverlay
 				squad3updated = TRUE
 				spawn(refreshfrequency)
 					squad3updated = FALSE
 			if(4)
-				qdel(marine_mapview_overlay_4)
 				marine_mapview_overlay_4 = newoverlay
 				squad4updated = TRUE
 				spawn(refreshfrequency)
 					squad4updated = FALSE
 	else
-		qdel(marine_mapview_overlay_5)
 		marine_mapview_overlay_5 = newoverlay
 		squad0updated = TRUE
 		spawn(refreshfrequency)

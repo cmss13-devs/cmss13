@@ -279,27 +279,22 @@ proc/check_panel(mob/M)
 		my_target.hallucinations -= src
 		my_target = null
 	weap = null
-	QDEL_NULL(currentimage)
-	QDEL_NULL(left)
-	QDEL_NULL(right)
-	QDEL_NULL(up)
-	QDEL_NULL(down)
+	currentimage = null
+	left = null
+	up = null
+	down = null
 	return ..()
 
 /obj/effect/fake_attacker
 	proc/updateimage()
 
 		if(src.dir == NORTH)
-			qdel(src.currentimage)
 			src.currentimage = new /image(up,src)
 		else if(src.dir == SOUTH)
-			qdel(src.currentimage)
 			src.currentimage = new /image(down,src)
 		else if(src.dir == EAST)
-			qdel(src.currentimage)
 			src.currentimage = new /image(right,src)
 		else if(src.dir == WEST)
-			qdel(src.currentimage)
 			src.currentimage = new /image(left,src)
 		my_target << currentimage
 

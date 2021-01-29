@@ -53,7 +53,6 @@
 	switch(covered)
 		if(0)
 			overlays -= I
-			qdel(I)
 		if(1) overlays += I
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)

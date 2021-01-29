@@ -815,3 +815,7 @@
 	if(!ovipositor)
 		return FALSE // can't range plant while not in ovi... but who the fuck cares, we can't plant anyways
 	return get_dist(src, T) <= egg_planting_range
+
+/mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
+	death(cause, 1)
+

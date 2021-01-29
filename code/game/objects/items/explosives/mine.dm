@@ -54,6 +54,10 @@
 	if(!..())
 		return
 
+	if(!detonator)
+		to_chat(user, SPAN_WARNING("[src] doesn't have a detonator!"))
+		return
+
 	if(check_for_obstacles(user))
 		return
 
@@ -124,7 +128,7 @@
 		return;
 
 	if(customizable && assembly_stage == ASSEMBLY_LOCKED)
-		if(!detonator || (isigniter(detonator.a_right) && isigniter(detonator.a_left)))
+		if(isigniter(detonator.a_right) && isigniter(detonator.a_left))
 			set_tripwire()
 			return
 		else

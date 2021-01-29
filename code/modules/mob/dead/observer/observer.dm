@@ -45,6 +45,7 @@
 	if(ismob(body))
 		T = get_turf(body)				//Where is the body located?
 		attack_log = body.attack_log	//preserve our attack logs by copying them to our ghost
+		life_kills_total = body.life_kills_total //kills also copy over
 
 		if(isHumanSynthStrict(body))
 			var/mob/living/carbon/human/H = body

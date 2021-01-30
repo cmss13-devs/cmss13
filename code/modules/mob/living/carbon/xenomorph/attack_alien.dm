@@ -9,7 +9,7 @@
 
 
 /mob/living/carbon/human/attack_alien(mob/living/carbon/Xenomorph/M, dam_bonus)
-	if(M.fortify && !M.steelcrest || M.burrow)
+	if(M.fortify || M.burrow)
 		return FALSE
 
 	//Reviewing the four primary intents
@@ -24,9 +24,6 @@
 
 		if(INTENT_GRAB)
 			if(M == src || anchored || buckled)
-				return FALSE
-
-			if(M.fortify)
 				return FALSE
 
 			if(check_shields(0, M.name)) // Blocking check
@@ -173,9 +170,6 @@
 				to_chat(M, SPAN_XENODANGER("You don't have the dexterity to tackle the headhunter with that thing on your leg!"))
 				return FALSE
 
-			if(M.fortify)
-				return FALSE
-
 			M.animation_attack_on(src)
 			if(check_shields(0, M.name)) // Blocking check
 				M.visible_message(SPAN_DANGER("[M]'s tackle is blocked by [src]'s shield!"), \
@@ -210,7 +204,7 @@
 
 //Every other type of nonhuman mob
 /mob/living/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.fortify && !M.steelcrest || M.burrow)
+	if(M.fortify || M.burrow)
 		return FALSE
 
 	switch(M.a_intent)
@@ -221,9 +215,6 @@
 
 		if(INTENT_GRAB)
 			if(M == src || anchored || buckled)
-				return FALSE
-
-			if(M.fortify)
 				return FALSE
 
 			if(Adjacent(M)) //Logic!
@@ -280,9 +271,6 @@
 			apply_damage(damage, BRUTE)
 
 		if(INTENT_DISARM)
-
-			if(M.fortify)
-				return FALSE
 
 			playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
 			M.visible_message(SPAN_WARNING("[M] shoves [src]!"), \

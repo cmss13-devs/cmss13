@@ -231,7 +231,7 @@
 
 /obj/item/reagent_container/pill/bicaridine
 	pill_desc = "A Bicaridine pill. Heals brute damage."
-	pill_initial_reagents = list("bicardine" = 15)
+	pill_initial_reagents = list("bicaridine" = 15)
 	pill_icon_class = "bica"
 
 /obj/item/reagent_container/pill/quickclot

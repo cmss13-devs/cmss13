@@ -5,10 +5,7 @@
 	allow_additional = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Engineer"
-
-/datum/job/marine/engineer/generate_entry_message()
 	entry_message_body = "You have the equipment and skill to build fortifications, reroute power lines, and bunker down. Your squaddies will look to you when it comes to construction in the field of battle."
-	return ..()
 
 /datum/job/marine/engineer/set_spawn_positions(var/count)
 	for(var/datum/squad/sq in RoleAuthority.squads)
@@ -46,4 +43,3 @@ AddTimelock(/datum/job/marine/engineer, list(
 	name = JOB_SQUAD_ENGI
 	icon_state = "engi_spawn"
 	job = /datum/job/marine/engineer
-

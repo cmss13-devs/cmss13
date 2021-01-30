@@ -6,10 +6,7 @@
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Specialist"
-
-/datum/job/marine/specialist/generate_entry_message()
 	entry_message_body = "You are the very rare and valuable weapon expert, trained to use special equipment. You can serve a variety of roles, so choose carefully."
-	return ..()
 
 /datum/job/marine/specialist/set_spawn_positions(var/count)
 	spawn_positions = spec_slot_formula(count)

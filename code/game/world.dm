@@ -51,7 +51,6 @@ var/internal_tick_usage = 0
 	//Emergency Fix
 	//end-emergency fix
 
-	update_status()
 	. = ..()
 
 	var/testing_locally = (world.params && world.params["local_test"])
@@ -69,6 +68,7 @@ var/internal_tick_usage = 0
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 	Master.Initialize(10, FALSE, TRUE)
+	update_status()
 
 	//Scramble the coords obsfucator
 	obfs_x = rand(-500, 500) //A number between -100 and 100

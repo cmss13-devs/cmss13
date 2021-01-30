@@ -531,7 +531,7 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	item_state = "welderbackpack"
 	var/max_fuel = 260
 	var/fuel_type = "fuel"
-	max_storage_space = 15
+	max_storage_space = 18
 	storage_slots = null
 	has_gamemode_skin = TRUE
 
@@ -599,6 +599,16 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 /obj/item/storage/backpack/marine/engineerpack/examine(mob/user)
 	..()
 	to_chat(user, "[reagents.total_volume] units of fuel left!")
+
+/obj/item/storage/backpack/marine/engineerpack/satchel
+	name = "\improper USCM technician welder-satchel"
+	desc = "A specialized satchel worn by USCM technicians and engineers. It carries two small fuel tanks for quick welder refueling and use."
+	icon_state = "satchel_marine_welder"
+	item_state = "satchel_marine_welder"
+	max_storage_space = 12
+	has_gamemode_skin = FALSE
+	max_fuel = 100
+	worn_accessible = TRUE
 
 // Pyrotechnician Spec backpack fuel tank
 /obj/item/storage/backpack/marine/engineerpack/flamethrower

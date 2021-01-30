@@ -37,7 +37,7 @@
 	if(dirt_amt)
 		overlays += I
 	else
-		qdel(I)
+		I = null
 
 
 

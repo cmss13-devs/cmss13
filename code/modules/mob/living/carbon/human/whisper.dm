@@ -116,8 +116,6 @@
 				if(M.client) M.client.images -= speech_bubble
 			for(var/mob/M in eavesdropping)
 				if(M.client) M.client.images -= speech_bubble
-		qdel(speech_bubble)
-
 
 	if (watching.len)
 		var/rendered = "<span class='game say'><span class='name'>[src.name]</span> whispers something.</span>"

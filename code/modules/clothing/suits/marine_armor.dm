@@ -142,9 +142,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/update_icon(mob/user)
 	var/image/I
-	I = armor_overlays["lamp"]
-	overlays -= I
-	qdel(I)
+	armor_overlays["lamp"] = null
 	if(flags_marine_armor & ARMOR_LAMP_OVERLAY)
 		if(flags_marine_armor & ARMOR_LAMP_ON)
 			I = image('icons/obj/items/clothing/cm_suits.dmi', src, "lamp-on")

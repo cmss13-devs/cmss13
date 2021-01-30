@@ -160,24 +160,34 @@
 
 
 /obj/item/storage/pouch/firstaid
-	name = "first-aid pouch"
-	desc = "It can contain autoinjectors, ointments, and bandages."
-	icon_state = "firstaid"
-	storage_slots = 4
-	can_hold = list(
-		/obj/item/stack/medical/ointment,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/skillless,
-		/obj/item/stack/medical/bruise_pack
-	)
+    name = "first-aid pouch"
+    desc = "It can contain autoinjectors, ointments, and bandages."
+    icon_state = "firstaid"
+    storage_slots = 4
+    can_hold = list(
+        /obj/item/stack/medical/ointment,
+        /obj/item/reagent_container/hypospray/autoinjector/skillless,
+        /obj/item/storage/pill_bottle/packet/tramadol,
+        /obj/item/storage/pill_bottle/packet/tricordrazine,
+        /obj/item/stack/medical/bruise_pack
+    )
 
 /obj/item/storage/pouch/firstaid/full
 	desc = "Contains a painkiller autoinjector, first-aid autoinjector, some ointment, and some bandages."
 
 /obj/item/storage/pouch/firstaid/full/fill_preset_inventory()
+    new /obj/item/stack/medical/ointment(src)
+    new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
+    new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+    new /obj/item/stack/medical/bruise_pack(src)
+
+/obj/item/storage/pouch/firstaid/pills
+	desc = "Contains painkillers, weak but broad-spectrum medicine, some ointment, and bandages."
+
+/obj/item/storage/pouch/firstaid/pills/fill_preset_inventory()
 	new /obj/item/stack/medical/ointment(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol(src)
-	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/storage/pill_bottle/packet/tramadol(src)
+	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
 /obj/item/storage/pouch/pistol

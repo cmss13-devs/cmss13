@@ -263,8 +263,14 @@ proc/listclearnulls(list/list)
 			return (result + L.Copy(Li, 0))
 	return (result + R.Copy(Ri, 0))
 
-
-
+/*
+ * Get a list of successive items from start to end
+ */
+/proc/init_list_range(end, start=1)
+	var/list/res = list()
+	for(var/i in start to end)
+		res += i
+	return res
 
 //Mergesort: any value in a list
 /proc/sortList(var/list/L)

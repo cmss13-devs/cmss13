@@ -13,10 +13,3 @@
         return FALSE
 
     . = ..()
-
-/obj/item/reagent_container/pill/stimulant
-
-/obj/item/reagent_container/pill/stimulant/Initialize()
-    ..()
-    icon_state = randomized_pill_icons[1]
-    reagents.add_reagent("antag_stimulant", 10)

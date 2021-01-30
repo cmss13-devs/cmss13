@@ -5,3 +5,5 @@ GLOBAL_LIST_INIT(bitflags, list((1<<0), (1<<1), (1<<2), (1<<3), (1<<4), (1<<5), 
 GLOBAL_VAR_INIT(master_mode, "Distress Signal")
 
 GLOBAL_VAR_INIT(timezoneOffset, 0)
+
+GLOBAL_LIST_INIT(pill_icon_mappings, map_pill_icons())

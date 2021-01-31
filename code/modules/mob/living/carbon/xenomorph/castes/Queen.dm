@@ -356,8 +356,6 @@
 	else
 		make_combat_effective()
 
-	STOP_PROCESSING(SShive_status, hive.hive_ui)
-
 /mob/living/carbon/Xenomorph/Queen/generate_name()
 	. = ..()
 
@@ -693,9 +691,6 @@
 /mob/living/carbon/Xenomorph/Queen/death(var/cause, var/gibbed)
 	. = ..()
 
-	// So observers get updated information
-	START_PROCESSING(SShive_status, hive.hive_ui)
-
 /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor()
 	if(ovipositor)
 		return //sanity check
@@ -740,8 +735,6 @@
 
 	xeno_message(SPAN_XENOANNOUNCE("The Queen has grown an ovipositor, evolution progress resumed."), 3, hivenumber)
 
-	START_PROCESSING(SShive_status, hive.hive_ui)
-
 /mob/living/carbon/Xenomorph/Queen/proc/dismount_ovipositor(instant_dismount)
 	set waitfor = 0
 	if(!instant_dismount)
@@ -783,8 +776,6 @@
 		xeno_message(SPAN_XENOANNOUNCE("The Queen has shed her ovipositor, evolution progress paused."), 3, hivenumber)
 
 	SEND_SIGNAL(src, COMSIG_QUEEN_DISMOUNT_OVIPOSITOR, instant_dismount)
-
-	STOP_PROCESSING(SShive_status, hive.hive_ui)
 
 /mob/living/carbon/Xenomorph/Queen/update_canmove()
 	. = ..()

@@ -322,8 +322,10 @@
 		mutators.reset_mutators()
 		SStracking.delete_leader("hive_[hivenumber]")
 		SStracking.stop_tracking("hive_[hivenumber]", living_xeno_queen)
+		SShive_status.wait = 10 SECONDS
 	else
 		SStracking.set_leader("hive_[hivenumber]", M)
+		SShive_status.wait = 2 SECONDS
 
 	living_xeno_queen = M
 
@@ -457,6 +459,7 @@
 			"tier" = X.tier, // This one is only important for sorting
 			"is_leader" = (IS_XENO_LEADER(X)),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
+			"caste_name" = X.caste_name
 		)
 
 	// Clear nulls from the xenos list
@@ -486,30 +489,35 @@
 		var/j = index
 
 		while(j > 1)
+			var/current = sorted_list[j]
+			var/prev = sorted_list[j-1]
+
 			// Queen comes first, always
-			if(sorted_list[j]["is_queen"])
+			if(current["is_queen"])
 				sorted_list.Swap(j-1, j)
 				j--
 				continue
 
-			var/info = sorted_list[j-1]
-
 			// don't muck up queen's slot
-			if(info["is_queen"])
+			if(prev["is_queen"])
 				j--
 				continue
 
 			// Leaders before normal xenos
-			if(!info["leader"] && sorted_list[j]["leader"])
+			if(!prev["is_leader"] && current["is_leader"])
 				sorted_list.Swap(j-1, j)
 				j--
 				continue
 
-			// Make sure we're only comparing leaders to leaders and non-leaders to non-leaders when sorting by tier
-			// This means we get leaders sorted by tier first, then non-leaders sorted by tier
+			// Make sure we're only comparing leaders to leaders and non-leaders to non-leaders when sorting
+			// This means we get leaders sorted first, then non-leaders sorted
+			// Sort by tier first, higher tiers over lower tiers, and then by name alphabetically
 
-			// Sort by tier otherwise, higher tiers first
-			if((sorted_list[j]["leader"] || !info["leader"]) && (info["tier"] < sorted_list[j]["tier"]))
+			// Could not think of an elegant way to write this
+			if(!(current["is_leader"]^prev["is_leader"])\
+				&& (prev["tier"] < current["tier"]\
+				|| prev["tier"] == current["tier"] && prev["caste_name"] > current["caste_name"]\
+			))
 				sorted_list.Swap(j-1, j)
 
 			j--
@@ -569,9 +577,23 @@
 
 	return xenos
 
-// Returns a list of slots for tier 2 and 3
+#define TIER_3 "3"
+#define TIER_2 "2"
+#define OPEN_SLOTS "open_slots"
+#define GUARANTEED_SLOTS "guaranteed_slots"
+
+// Returns an assoc list of open slots and guaranteed slots left
 /datum/hive_status/proc/get_tier_slots()
-	var/list/slots = list(0, 0)
+	var/list/slots = list(
+		TIER_3 = list(
+			OPEN_SLOTS = 0,
+			GUARANTEED_SLOTS = list(),
+		),
+		TIER_2 = list(
+			OPEN_SLOTS = 0,
+			GUARANTEED_SLOTS = list(),
+		),
+	)
 
 	var/pooled_factor = min(stored_larva, sqrt(4*stored_larva))
 	pooled_factor = round(pooled_factor)
@@ -579,26 +601,37 @@
 	var/used_tier_2_slots = length(tier_2_xenos)
 	var/used_tier_3_slots = length(tier_3_xenos)
 	for(var/caste_path in used_free_slots)
-		if(!used_free_slots[caste_path])
+		var/used_count = used_free_slots[caste_path]
+		if(!used_count)
 			continue
 		var/datum/caste_datum/C = caste_path
 		switch(initial(C.tier))
-			if(2) used_tier_2_slots--
-			if(3) used_tier_3_slots--
+			if(2) used_tier_2_slots -= used_count
+			if(3) used_tier_3_slots -= used_count
+
+	for(var/caste_path in free_slots)
+		var/slot_count = free_slots[caste_path]
+		if(!slot_count)
+			continue
+		var/datum/caste_datum/C = caste_path
+		switch(initial(C.tier))
+			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_name)] = slot_count
+			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_name)] = slot_count
 
 	var/effective_total = length(totalXenos) + pooled_factor
 
-	// no division by zero here, sir, nope.
-	if(!effective_total)
-		return slots
-
-	// Tier 3 slots are always 25% of the total xenos in the hive
-	slots[2] = max(0, Ceiling(0.25*length(totalXenos)/tier_slot_multiplier) - used_tier_3_slots)
-	// Tier 2 slots are between 25% and 50% of the hive, depending
+	// Tier 3 slots are always 20% of the total xenos in the hive
+	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*length(totalXenos)/tier_slot_multiplier) - used_tier_3_slots)
+	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[1] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
+
+#undef TIER_3
+#undef TIER_2
+#undef OPEN_SLOTS
+#undef GUARANTEED_SLOTS
 
 // returns if that location can be used to plant eggs
 /datum/hive_status/proc/in_egg_plant_range(var/turf/T)

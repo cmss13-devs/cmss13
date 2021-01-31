@@ -149,7 +149,7 @@
 
 /proc/log_announcement(text)
 	diary << html_decode("\[[time_stamp()]]ANNOUNCEMENT: [text][log_end]")
-	GLOB.STUI.debug.Add("\[[time_stamp()]]ANNOUNCEMENT: [text]<br>")
+	GLOB.STUI.admin.Add("\[[time_stamp()]]ANNOUNCEMENT: [text]<br>")
 
 /proc/log_mhelp(text)
 	diary << html_decode("\[[time_stamp()]]MENTORHELP: [text][log_end]")

@@ -19,9 +19,6 @@ var/list/admin_verbs_admin = list(
 	/client/proc/getserverlog,			/*allows us to fetch server logs (diary) for other days*/
 	/client/proc/cmd_admin_world_narrate,	/*sends text to all players with no padding*/
 	/client/proc/cmd_admin_create_centcom_report, //Messages from USCM command.
-	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
-	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
-	/client/proc/cmd_admin_create_predator_report, //Predator ship AI report
 	/client/proc/toggleprayers,			/*toggles prayers on/off*/
 	/client/proc/toggle_hear_radio,		/*toggles whether we hear the radio*/
 	/client/proc/event_panel,
@@ -65,6 +62,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/rerun_decorators,
 	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
+	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload
 )
 var/list/admin_verbs_spawn = list(
@@ -87,7 +85,6 @@ var/list/admin_verbs_debug = list(
     /client/proc/getruntimelog,                     /*allows us to access runtime logs to somebody*/
 	/client/proc/debug_role_authority,
 	/client/proc/cmd_debug_make_powernets,
-	/client/proc/cmd_debug_fire_ob,
 	/client/proc/cmd_debug_list_processing_items,
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
@@ -122,8 +119,6 @@ var/list/debug_verbs = list(
     /client/proc/Cell,
     /client/proc/cmd_assume_direct_control,
     /client/proc/ticklag,
-    /client/proc/cmd_admin_grantfullaccess,
-    /client/proc/cmd_admin_grantallskills,
     /client/proc/hide_debug_verbs,
     /client/proc/view_power_update_stats_area,
     /client/proc/view_power_update_stats_machines,
@@ -158,7 +153,9 @@ var/list/admin_mob_event_verbs_hideable = list(
 	/client/proc/cmd_assume_direct_control,
 	/client/proc/free_mob_for_ghosts,
 	/proc/possess,
-	/proc/release
+	/proc/release,
+    /client/proc/cmd_admin_grantfullaccess,
+    /client/proc/cmd_admin_grantallskills
 )
 
 //verbs which can be hidden - needs work
@@ -237,7 +234,10 @@ var/list/admin_verbs_mod = list(
 	/datum/admins/proc/show_player_panel,
 	/client/proc/show_objectives_status,
 	/client/proc/hide_admin_mob_verbs,
-	/client/proc/clear_mutineers
+	/client/proc/clear_mutineers,
+	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
+	/client/proc/cmd_admin_create_AI_shipwide_report,  //Allows creation of IC reports by the ships AI utilizing announcement code. Will be shown to every conscious human on Almayer z-level regardless of ARES and tcomms status.
+	/client/proc/cmd_admin_create_predator_report //Predator ship AI report
 )
 
 /client/proc/add_admin_verbs()

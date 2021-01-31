@@ -327,7 +327,7 @@
 	contains = list(
 					/obj/item/ammo_magazine/revolver/upp,
 					/obj/item/ammo_magazine/revolver/small,
-					/obj/item/ammo_magazine/revolver/mateba,
+					/obj/item/ammo_magazine/execution/mateba,
 					/obj/item/ammo_magazine/revolver/cmb,
 					/obj/item/ammo_magazine/pistol/heavy,
 					/obj/item/ammo_magazine/pistol/c99,

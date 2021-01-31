@@ -43,15 +43,6 @@
 	gun_type = /obj/item/weapon/gun/revolver/small
 
 
-/obj/item/ammo_magazine/revolver/mateba
-	name = "\improper Mateba speed loader (.454)"
-	default_ammo = /datum/ammo/bullet/revolver/highimpact
-	caliber = ".454"
-	icon_state = "mateba"
-	max_rounds = 6
-	gun_type = /obj/item/weapon/gun/revolver/mateba
-
-
 /obj/item/ammo_magazine/revolver/cmb
 	name = "\improper Spearhead speed loader (.357)"
 	default_ammo = /datum/ammo/bullet/revolver/small
@@ -59,6 +50,15 @@
 	icon_state = "spearhead"
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/cmb
+
+
+/obj/item/ammo_magazine/revolver/mateba
+	name = "\improper Mateba speed loader (.454)"
+	default_ammo = /datum/ammo/bullet/revolver/mateba
+	caliber = ".454"
+	icon_state = "mateba"
+	max_rounds = 6
+	gun_type = /obj/item/weapon/gun/revolver/mateba
 
 
 
@@ -101,17 +101,16 @@
 	gun_type = /obj/item/weapon/gun/revolver/small
 
 //-------------------------------------------------------
-//BURST REVOLVER //Mateba is pretty well known. The cylinder folds up instead of to the side.
-
-/obj/item/ammo_magazine/internal/revolver/mateba
-	default_ammo = /datum/ammo/bullet/revolver/highimpact
-	caliber = ".454"
-	gun_type = /obj/item/weapon/gun/revolver/mateba
-
-//-------------------------------------------------------
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.
 
 /obj/item/ammo_magazine/internal/revolver/cmb
 	default_ammo = /datum/ammo/bullet/revolver/small
 	caliber = ".357"
 	gun_type = /obj/item/weapon/gun/revolver/cmb
+
+//-------------------------------------------------------
+//MATEBA AUTOREVOLVER //Spearhead exists in Alien cannon.
+/obj/item/ammo_magazine/internal/revolver/mateba
+	default_ammo = /datum/ammo/bullet/revolver/mateba
+	caliber = ".454"
+	gun_type = /obj/item/weapon/gun/revolver/mateba

@@ -5,6 +5,10 @@
 #define STATE_DESTROY 5
 #define STATE_DEFCONLIST 6
 
+#define STATE_MESSAGELIST 7
+#define STATE_VIEWMESSAGE 8
+#define STATE_DELMESSAGE 9
+
 #define COOLDOWN_COMM_MESSAGE 30 SECONDS
 #define COOLDOWN_COMM_REQUEST 5 MINUTES
 #define COOLDOWN_COMM_CENTRAL 30 SECONDS
@@ -27,6 +31,11 @@
 	var/cooldown_request = 0
 	var/cooldown_destruct = 0
 	var/cooldown_central = 0
+
+	var/list/messagetitle = list()
+	var/list/messagetext = list()
+	var/currmsg = 0
+	var/aicurrmsg = 0
 
 /obj/structure/machinery/computer/almayer_control/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
@@ -63,6 +72,8 @@
 			dat += "<BR><A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A>"
 			dat += "<BR><hr>"
 
+
+			dat += "<BR><A HREF='?src=\ref[src];operation=messagelist'>Message list</A>"
 			dat += "<BR><A HREF='?src=\ref[src];operation=distress'>Send Distress Beacon</A>"
 			dat += "<BR><A HREF='?src=\ref[src];operation=destroy'>Activate Self Destruct</A>"
 			switch(EvacuationAuthority.evac_status)
@@ -89,6 +100,28 @@
 				if(!DR.cost)
 					continue
 				dat += "DEFCON [DR.minimum_defcon_level] - [DR.name]<BR>"
+
+		if(STATE_MESSAGELIST)
+			dat += "Messages:"
+			for(var/i = 1; i<=messagetitle.len; i++)
+				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[messagetitle[i]]</A>"
+
+		if(STATE_VIEWMESSAGE)
+			if (currmsg)
+				dat += "<B>[messagetitle[currmsg]]</B><BR><BR>[messagetext[currmsg]]"
+				dat += "<BR><BR><A HREF='?src=\ref[src];operation=delmessage'>Delete"
+			else
+				state = STATE_MESSAGELIST
+				attack_hand(user)
+				return FALSE
+
+		if(STATE_DELMESSAGE)
+			if (currmsg)
+				dat += "Are you sure you want to delete this message? <A HREF='?src=\ref[src];operation=delmessage2'>OK</A>|<A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A>"
+			else
+				state = STATE_MESSAGELIST
+				attack_hand(user)
+				return FALSE
 
 	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=almayer_control'>Close</A>"
 
@@ -131,9 +164,10 @@
 					signed = "[paygrade] [id.registered_name]"
 
 			shipwide_ai_announcement(input, COMMAND_SHIP_ANNOUNCE, signature = signed)
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/message_staff, "[key_name(usr)] has announced the following to the ship: [input]"), 20)
 			addtimer(CALLBACK(src, .proc/reactivate_announcement, usr), COOLDOWN_COMM_MESSAGE)
+			message_staff("[key_name(usr)] has made a shipwide annoucement.")
 			log_announcement("[key_name(usr)] has announced the following to the ship: [input]")
+
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)
@@ -240,6 +274,29 @@
 
 			state = STATE_DESTROY
 
+		if("messagelist")
+			currmsg = 0
+			state = STATE_MESSAGELIST
+
+		if("viewmessage")
+			state = STATE_VIEWMESSAGE
+			if (!currmsg)
+				if(href_list["message-num"]) 	currmsg = text2num(href_list["message-num"])
+				else 							state = STATE_MESSAGELIST
+
+		if("delmessage")
+			state = (currmsg) ? STATE_DELMESSAGE : STATE_MESSAGELIST
+
+		if("delmessage2")
+			if(currmsg)
+				var/title = messagetitle[currmsg]
+				var/text  = messagetext[currmsg]
+				messagetitle.Remove(title)
+				messagetext.Remove(text)
+				if(currmsg == aicurrmsg) aicurrmsg = 0
+				currmsg = 0
+			state = STATE_MESSAGELIST
+
 		if("messageUSCM")
 			if(world.time < cooldown_central + COOLDOWN_COMM_CENTRAL)
 				to_chat(usr, SPAN_WARNING("Arrays recycling.  Please stand by."))
@@ -295,3 +352,7 @@
 #undef COOLDOWN_COMM_MESSAGE
 #undef COOLDOWN_COMM_REQUEST
 #undef COOLDOWN_COMM_CENTRAL
+
+#undef STATE_MESSAGELIST
+#undef STATE_VIEWMESSAGE
+#undef STATE_DELMESSAGE

@@ -25,6 +25,7 @@
 
 		announcement_helper(message, title, targets, sound(get_sfx("queen"),wait = 0,volume = 50))
 
+
 //general marine announcement
 /proc/marine_announcement(var/message, var/title = COMMAND_ANNOUNCE, var/sound_to_play = sound('sound/misc/notice2.ogg'), var/faction_to_display = FACTION_MARINE, var/add_PMCs = TRUE, var/signature)
 	var/list/targets = GLOB.human_mob_list + GLOB.dead_mob_list

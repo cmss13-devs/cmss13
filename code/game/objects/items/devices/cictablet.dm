@@ -99,7 +99,7 @@
 			input += "<br><br><i>- Sent from USCM Command Tablet</i>"
 
 			marine_announcement(input)
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/message_staff, "[key_name(usr)] has announced the following: [input]"), 20)
+			message_staff("[key_name(usr)] has made a command annoucement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 			cooldown_message = world.time
 

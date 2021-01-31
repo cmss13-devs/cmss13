@@ -28,7 +28,7 @@
 			list("N-Y 7.62mm Revolver", 20, /obj/item/weapon/gun/revolver/upp, VENDOR_ITEM_REGULAR),
 
 			list("SIDEARM AMMUNITION", -1, null, null),
-			list("Highpower Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/automatic, VENDOR_ITEM_REGULAR),
+			list("Highpower Magazine (9mm)", 40, /obj/item/ammo_magazine/pistol/highpower, VENDOR_ITEM_REGULAR),
 			list("N-Y Speed Loader (7.62x38mmR)", 40, /obj/item/ammo_magazine/revolver/upp, VENDOR_ITEM_REGULAR),
 			list("PK-9 Magazine (.22 Hollowpoint)", 40, /obj/item/ammo_magazine/pistol/c99, VENDOR_ITEM_REGULAR),
 

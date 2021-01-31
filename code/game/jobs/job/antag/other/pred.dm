@@ -23,15 +23,9 @@
 	spawn_positions = max((round(count * PREDATOR_TO_MARINES_SPAWN_RATIO)), 4)
 	total_positions = spawn_positions
 
-/datum/job/antag/predator/spawn_in_player(var/mob/new_player/NP)
-	if(!istype(NP))
+/datum/job/antag/predator/spawn_in_player(mob/new_player/NP)
+	if(!NP?.client)
 		return
-
-	NP.spawning = TRUE
-	NP.close_spawn_windows()
-
-	var/mob/living/carbon/human/yautja/Y = new(NP.loc)
-	Y.lastarea = get_area(NP.loc)
 
 	var/clan_id = CLAN_SHIP_PUBLIC
 	var/datum/entity/clan_player/clan_info = NP?.client?.clan_info
@@ -39,9 +33,18 @@
 	if(clan_info?.clan_id)
 		clan_id = clan_info.clan_id
 	SSpredships.load_new(clan_id)
-	var/list/turf/spawn_points = SSpredships.get_clan_spawnpoints(clan_id)
+	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
+	if(!isturf(spawn_point))
+		log_debug("Failed to find spawn point for pred ship in JobAuthority - clan_id=[clan_id]")
+		to_chat(NP, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
+		return
 
-	Y.forceMove(pick(spawn_points))
+	NP.spawning = TRUE
+	NP.close_spawn_windows()
+	var/mob/living/carbon/human/yautja/Y = new(NP.loc)
+	Y.lastarea = get_area(NP.loc)
+
+	Y.forceMove(spawn_point)
 	Y.job = NP.job
 	Y.name = NP.real_name
 	Y.voice = NP.real_name

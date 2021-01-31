@@ -630,19 +630,20 @@ Defined in conflicts.dm of the #defines folder.
 	G.damage_falloff_mult -= damage_falloff_scoped_buff
 
 /obj/item/attachable/scope/activate_attachment(obj/item/weapon/gun/G, mob/living/carbon/user, turn_off)
-	if(turn_off)
+	if(turn_off || G.zoom)
 		if(G.zoom)
 			G.zoom(user, zoom_offset, zoom_viewsize, allows_movement)
-		return 1
+		return TRUE
 
-	if(!G.zoom && !(G.flags_item & WIELDED))
-		if(user)
-			to_chat(user, SPAN_WARNING("You must hold [G] with two hands to use [src]."))
-		return 0
-	else
-		G.zoom(user, zoom_offset, zoom_viewsize, allows_movement)
-		apply_scoped_buff(G,user)
-	return 1
+	if(!G.zoom)
+		if(!(G.flags_item & WIELDED))
+			if(user)
+				to_chat(user, SPAN_WARNING("You must hold [G] with two hands to use [src]."))
+			return FALSE
+		else
+			G.zoom(user, zoom_offset, zoom_viewsize, allows_movement)
+			apply_scoped_buff(G,user)
+	return TRUE
 
 /obj/item/attachable/scope/mini
 	name = "S4 2x telescopic mini-scope"

@@ -145,4 +145,14 @@ SUBSYSTEM_DEF(statpanels)
 	set hidden = TRUE
 
 	statbrowser_ready = TRUE
-	init_verbs()
+	init_statbrowser()
+
+/client/verb/open_statbrowser_options(current_fontsize as num|null)
+	set name = "Open Statbrowser Options"
+	set hidden = TRUE
+
+
+	var/datum/statbrowser_options/SM = statbrowser_options
+	if(!SM)
+		SM = statbrowser_options = new(src, current_fontsize)
+	SM.tgui_interact()

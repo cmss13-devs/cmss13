@@ -6,7 +6,7 @@
 #define from_file(file_entry, target_var)                   file_entry >> (target_var)
 #define close_browser(target, browser_name)                 target << browse(null, "window=[browser_name]")
 #define show_image(target, image)                           target << (image)
-#define send_rsc(target, rsc_content, rsc_name)             target << browse_rsc(rsc_content, rsc_name)
+#define send_rsc(target, args...)             				target << browse_rsc(##args)
 #define open_link(target, url)                              target << link(url)
 
 #define any2ref(x) ref(x)
@@ -79,3 +79,5 @@
 #define RECT new /datum/shape/rectangle
 #define QTREE new /datum/quadtree
 #define SEARCH_QTREE(qtree, shape_range, flags) qtree.query_range(shape_range, null, flags)
+
+#define HTML_FILE(contents) "<!DOCTYPE html><html><body>[contents]</body></html>"

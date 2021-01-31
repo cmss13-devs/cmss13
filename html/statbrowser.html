@@ -19,6 +19,11 @@
 		color: #abc6ec;
 	}
 
+	#window {
+		padding: 0;
+		margin: 0;
+	}
+
 	#menu {
 		background-color: #F0F0F0;
 		position: fixed;
@@ -69,7 +74,7 @@
 		background-color: #111;
 	}
 
-	.button-container {
+	.tab-container {
 		display: inline-flex;
 		flex-wrap: wrap-reverse;
 		flex-direction: row;
@@ -79,7 +84,7 @@
 		padding: 0 4px;
 	}
 
-	.button {
+	.tab, .options {
 		background-color: #dfdfdf;
 		border-color: #cecece;
 		border-width: 1px;
@@ -96,21 +101,25 @@
 		min-width: 40px;
 	}
 
-	.dark button {
+	.dark .tab,
+	.dark .options {
 		background-color: #444444;
 		border-color: #343434;
 		color: rgba(255, 255, 255, 0.7);
 	}
 
-	.button:hover {
+	.tab:hover,
+	.options:hover {
 		background-color: #ececec;
 	}
 
-	.dark button:hover {
+	.dark .tab:hover,
+	.dark .options:hover {
 		background-color:  #4d4d4d;
 	}
 
-	.button:active, .button.active {
+	.tab:active, .tab.active,
+	.options:active, .options.active {
 		background-color: #ffffff;
 		color: black;
 		border-top: 1px solid #cecece;
@@ -119,7 +128,8 @@
 		border-bottom: 1px solid #ffffff;
 	}
 
-	.dark .button:active, .dark .button.active {
+	.dark .tab:active, .dark .tab.active,
+	.dark .options:active, .dark .options.active {
 		background-color: #131313;
 		color: white;
 		border-top: 1px solid #343434;
@@ -141,13 +151,12 @@
 	.grid-item {
 		color: black;
 		width: 150px;
-		font-size: 11px;
-		line-height: 24px;
 		text-align: left;
 		min-width: 0;
 		min-height: 0;
 		white-space: pre-wrap;
 		padding-right: 12px; /* A little more than two spaces, to look good in IE8 where flex-justify does nothing */
+		margin-bottom: 12px;
 	}
 
 	.link {
@@ -175,19 +184,43 @@
 		image-rendering: pixelated;
 	}
 
-	.interview_panel_controls, .interview_panel_stats {
-		margin-bottom: 10px;
+	.options {
+		position: absolute;
+		right: 5px;
+		top: 0px;
+		padding: 4px 4px;
+		margin: 2px;
+	}
+
+	input {
+		border-width: 1px;
+		border-style: solid;
+		border-color: black;
+		background-color: #dfdfdf;
+		color: rgba(0, 0, 0, 0.7);
+	}
+
+	.dark input {
+		background-color: #444444;
+		color: rgba(255, 255, 255, 0.7);
+	}
+
+	.category_header {
+		margin-bottom: 4px;
+		font-weight: bold;
 	}
 </style>
 </head>
 <body>
-<ul id="menu" class="button-container"></ul>
+<div id="window">
+<ul id="menu" class="tab-container"></ul>
 <div id="under_menu"></div>
 <div id="statcontent"></div>
 <script>
 // Polyfills and compatibility ------------------------------------------------
 var decoder = decodeURIComponent || unescape;
 var addEventListenerKey = (document.addEventListener ? 'addEventListener' : 'attachEvent'); // IE8 handling for Wine users
+var removeEventListenerKey = (document.addEventListener ? 'removeEventListener' : 'detachEvent');
 var textContentKey = (typeof document.body.textContent != 'undefined') ? 'textContent' : 'innerText';
 if(!Array.prototype.includes) {
 	Array.prototype.includes = function(thing) {
@@ -297,6 +330,8 @@ if (window.location) {
 // Status panel implementation ------------------------------------------------
 var status_tab_parts = ["Loading..."];
 var current_tab = null;
+var local_fontsize = localStorage.getItem("fontsize");
+var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 11; // in px, also determines line height and category header sizes for the verb menus
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;
 var verb_tabs = [];
@@ -310,6 +345,18 @@ var menu = document.querySelector('#menu');
 var under_menu = document.querySelector('#under_menu');
 var statcontentdiv = document.querySelector('#statcontent');
 var storedimages = [];
+
+function createOptionsButton() {
+	var B = document.createElement("BUTTON");
+	B.onclick = function() {
+		open_options_menu();
+		this.blur();
+	};
+	B.id = "options";
+	B[textContentKey] = "Options";
+	B.className = "options";
+	document.getElementById("window").insertBefore(B, window.firstChild);
+}
 
 function createStatusTab(name) {
 	if (name.indexOf(".") != -1)
@@ -325,7 +372,7 @@ function createStatusTab(name) {
 	};
 	B.id = name;
 	B[textContentKey] = name;
-	B.className = "button";
+	B.className = "tab";
 	//ORDERING ALPHABETICALLY
 	B.style.order = name.charCodeAt(0);
 	if(name == "Status" || name == "MC")
@@ -475,9 +522,13 @@ function remove_verb_list(v) {
 		draw_verbs(current_tab);
 }
 
-// passes a 2D list of (verbcategory, verbname) creates tabs and adds verbs to respective list
-// example (IC, Say)
-function init_verbs(c, v) {
+// initializes the statbrowser
+// passes a 2D vector of (verbcategory, verbname)
+// creates tabs and adds verbs to respective list
+// example entry from 2D vector: (IC, Say)
+function init_statbrowser(c, v) {
+	document.getElementById("statcontent").style.fontSize = current_fontsize + "px";
+
 	wipe_verbs(); // remove all verb categories so we can replace them
 	checkStatusTab(); // remove all status tabs
 	verb_tabs = JSON.parse(c);
@@ -498,6 +549,7 @@ function init_verbs(c, v) {
 			draw_verbs(current_tab);
 		}
 	}
+	createOptionsButton();
 	SendTabsToByond();
 }
 
@@ -519,7 +571,10 @@ function TakeTabFromByond(tab) {
 }
 
 function update(global_data, ping_entry, other_entries) {
-	status_tab_parts = [ping_entry];
+	status_tab_parts = [];
+	if(ping_entry) {
+		status_tab_parts.push(ping_entry);
+	}
 	var parsed = JSON.parse(global_data);
 	for(var i = 0; i < parsed.length; i++) if(parsed[i] != null) status_tab_parts.push(parsed[i]);
 	parsed = JSON.parse(other_entries);
@@ -549,15 +604,15 @@ function remove_mc() {
 function tab_change(tab) {
 	if(tab == current_tab) return;
 	if(document.getElementById(current_tab))
-		document.getElementById(current_tab).className = "button"; // disable active on last button
+		document.getElementById(current_tab).className = "tab"; // disable active on last tab
 	current_tab = tab;
 	set_byond_tab(tab);
 	if(document.getElementById(tab))
-		document.getElementById(tab).className = "button active"; // make current button active
+		document.getElementById(tab).className = "tab active"; // make current tab active
 	var verb_tabs_thingy = (verb_tabs.includes(tab));
 	if(tab == "Status") {
 		draw_status();
-	} else if(tab == "MC") {
+	}else if(tab == "MC") {
 		draw_mc();
 	} else if(verb_tabs_thingy){
 		draw_verbs(tab);
@@ -565,7 +620,7 @@ function tab_change(tab) {
 		draw_debug();
 	}else if(tab == turfname) {
 		draw_listedturf();
-	} else {
+	}else {
 		statcontentdiv[textContentKey] = "Loading...";
 	}
 	window.location.href = "byond://winset?statbrowser.is-visible=true";
@@ -799,6 +854,7 @@ function draw_verbs(cat){
 			a.href = "byond://winset?command=" + command.replace(/\s/g, "-");
 			a[textContentKey] = command;
 			a.className = "grid-item";
+			a.style.lineHeight = (current_fontsize + 2) + "px";
 			(subCat ? additions[subCat] : table).appendChild(a);
 		}
 	}
@@ -811,8 +867,10 @@ function draw_verbs(cat){
 	for (var cat in additions) {
 		if (additions.hasOwnProperty(cat)) {
 			// do addition here
-			var header = document.createElement("h3");
+			var header = document.createElement("div");
+			header.className = "category_header";
 			header[textContentKey] = cat;
+			header.style.fontSize = (current_fontsize + 4) + "px";
 			content.appendChild(header);
 			content.appendChild(additions[cat]);
 		}
@@ -845,7 +903,10 @@ function set_style_sheet(sheet) {
 }
 
 document[addEventListenerKey]("click", function(e) {
-	window.location.href = "byond://winset?map.focus=true";
+	// Prevent unfocusing of inputs from clicking
+	if(e.target.nodeName !== "INPUT") {
+		window.location.href = "byond://winset?map.focus=true";
+	}
 });
 
 if(!current_tab) {
@@ -869,6 +930,17 @@ function create_debug(){
 	}
 }
 
+function open_options_menu() {
+	window.location.href = "byond://winset?command=Open-Statbrowser-Options " + current_fontsize;
+}
+
+function change_fontsize(new_fontsize) {
+	current_fontsize = new_fontsize;
+	localStorage.setItem("fontsize", current_fontsize.toString())
+	document.getElementById("statcontent").style.fontSize = current_fontsize + "px";
+	tab_change(current_tab); // Redraw the current tab
+}
+
 function getCookie(cname) {
 	var name = cname + '=';
 	var ca = document.cookie.split(';');
@@ -882,5 +954,6 @@ function getCookie(cname) {
 	return '';
 }
 </script>
+</div>
 </body>
 </html>

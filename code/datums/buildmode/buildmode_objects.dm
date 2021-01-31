@@ -99,15 +99,13 @@
     buildmode = BM
 
 /obj/effect/buildholder/Destroy()
-    . = ..()
+	QDEL_NULL(bm_help)
+	QDEL_NULL(bm_quit)
 
-    QDEL_NULL(bm_help)
-    QDEL_NULL(bm_help)
-    QDEL_NULL(bm_quit)
-
-    cl.buildmode = null
-    buildmode.master = null
-    QDEL_NULL(buildmode)
+	cl.buildmode = null
+	buildmode.master = null
+	QDEL_NULL(buildmode)
+	return ..()
 
 
 /obj/effect/buildholder/proc/next_mode()

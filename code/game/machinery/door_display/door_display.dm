@@ -207,7 +207,7 @@
 /obj/structure/machinery/door_display/research_cell/Destroy()
 	//Opening doors and shutters
 	ion_act()
-	..()
+	return ..()
 
 /obj/structure/machinery/door_display/research_cell/proc/ion_act()
 	//Open the doors up to let the xenos out

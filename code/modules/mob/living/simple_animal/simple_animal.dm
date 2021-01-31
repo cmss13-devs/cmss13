@@ -59,8 +59,8 @@
 	remove_verb(src, /mob/verb/observe)
 
 /mob/living/simple_animal/Destroy()
-	..()
 	SSmob.living_misc_mobs -= src
+	return ..()
 
 /mob/living/simple_animal/Login()
 	if(src && src.client)

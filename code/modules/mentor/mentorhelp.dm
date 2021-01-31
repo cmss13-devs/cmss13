@@ -37,7 +37,7 @@
 	author = null
 	mentor = null
 	history = null
-	..()
+	return ..()
 
 /*
  *    Helpers

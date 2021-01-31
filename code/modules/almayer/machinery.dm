@@ -227,7 +227,7 @@
 		close_browser(L,"marineminimap")
 		current_viewers -= L
 		continue
-	..()
+	return ..()
 
 /obj/structure/machinery/prop/almayer/CICmap/examine(mob/living/user)
 	if(ishuman(user) && get_dist(src,user) < 3 && powered())

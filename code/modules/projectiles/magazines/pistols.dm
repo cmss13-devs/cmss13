@@ -144,6 +144,18 @@
 	w_class = SIZE_TINY
 	gun_type = /obj/item/weapon/gun/pistol/holdout
 
+//-------------------------------------------------------
+//CLF FUNNY MEME PISTOL
+/obj/item/ammo_magazine/pistol/m43pistol
+	name = "M43 magazine (9mm)"
+	desc = "A small M43 magazine storing 7 9mm bullets. How is it even this small?"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = "9mm"
+	icon_state = "m4a3"
+	max_rounds = 7
+	w_class = SIZE_TINY
+	gun_type = /obj/item/weapon/gun/pistol/m43pistol
+
 
 //-------------------------------------------------------
 //.45 MARSHALS PISTOL //Inspired by the Browning Hipower

@@ -185,7 +185,7 @@
 	}
 
 	.options {
-		position: absolute;
+		position: fixed;
 		right: 5px;
 		top: 0px;
 		padding: 4px 4px;
@@ -601,8 +601,8 @@ function remove_mc() {
 		tab_change("Status");
 }
 
-function tab_change(tab) {
-	if(tab == current_tab) return;
+function tab_change(tab, force) {
+	if(!force && tab == current_tab) return;
 	if(document.getElementById(current_tab))
 		document.getElementById(current_tab).className = "tab"; // disable active on last tab
 	current_tab = tab;
@@ -935,10 +935,10 @@ function open_options_menu() {
 }
 
 function change_fontsize(new_fontsize) {
-	current_fontsize = new_fontsize;
+	current_fontsize = parseInt(new_fontsize);
 	localStorage.setItem("fontsize", current_fontsize.toString())
 	document.getElementById("statcontent").style.fontSize = current_fontsize + "px";
-	tab_change(current_tab); // Redraw the current tab
+	tab_change(current_tab, true); // Redraw the current tab
 }
 
 function getCookie(cname) {

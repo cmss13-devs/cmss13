@@ -1154,6 +1154,7 @@
 #include "code\modules\client\preferences_gear.dm"
 #include "code\modules\client\preferences_savefile.dm"
 #include "code\modules\client\preferences_toggles.dm"
+#include "code\modules\client\statbrowser_options.dm"
 #include "code\modules\clothing\clothing.dm"
 #include "code\modules\clothing\clothing_accessories.dm"
 #include "code\modules\clothing\officer_stuff.dm"

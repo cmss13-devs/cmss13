@@ -473,8 +473,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 
 	to_chat(src, SPAN_NOTICE("Fixed your swap hand macros!"))
 
-/// compiles a full list of verbs and sends it to the browser
-/client/proc/init_verbs()
+/**
+  * Compiles a full list of verbs to be sent to the browser
+  * Sends the 2D verbs vector of (verb category, verb name)
+  */
+/client/proc/init_statbrowser()
 	if(IsAdminAdvancedProcCall())
 		return
 	var/list/verblist = list()
@@ -484,7 +487,7 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 		for(var/AM in mob.contents)
 			var/atom/movable/thing = AM
 			verbstoprocess += thing.verbs
-	panel_tabs.Cut() // panel_tabs get reset in init_verbs on JS side anyway
+	panel_tabs.Cut() // panel_tabs get reset in init_statbrowser on JS side anyway
 	for(var/thing in verbstoprocess)
 		var/procpath/verb_to_init = thing
 		if(!verb_to_init)
@@ -495,14 +498,14 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 			continue
 		panel_tabs |= verb_to_init.category
 		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
-	src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
+	src << output("[url_encode(json_encode(panel_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_statbrowser")
 
 
 /client/verb/fix_stat_panel()
 	set name = "Fix Stat Panel"
 	set hidden = TRUE
 
-	init_verbs()
+	init_statbrowser()
 
 /client/proc/check_panel_loaded()
 	if(statbrowser_ready)

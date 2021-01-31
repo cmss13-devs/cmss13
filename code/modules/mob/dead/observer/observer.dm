@@ -212,7 +212,7 @@ Works together with spawning an observer, noted above.
 	mind = null
 
 	if(ghost.client)
-		ghost.client.init_verbs()
+		ghost.client.init_statbrowser()
 		ghost.client.change_view(world_view_size) //reset view range to default
 		ghost.client.pixel_x = 0 //recenters our view
 		ghost.client.pixel_y = 0
@@ -831,6 +831,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	. = ..()
 	. += ""
 	. += "Game Mode: [GLOB.master_mode]"
+	. += "DEFCON Level: [defcon_controller.current_defcon_level]"
 
 	if(SSticker.HasRoundStarted())
 		return

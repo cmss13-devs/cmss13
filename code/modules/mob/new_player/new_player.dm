@@ -273,7 +273,7 @@
 		if(player.get_playtime(STATISTIC_HUMAN) == 0 && player.get_playtime(STATISTIC_XENO) == 0)
 			msg_admin_niche("NEW PLAYER: <b>[key_name(character, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[character]'>?</A>)</b>. IP: [character.lastKnownIP], CID: [character.computer_id]")
 
-	character.client.init_verbs() // init verbs for the late join
+	character.client.init_statbrowser() // init verbs for the late join
 
 	qdel(src)
 
@@ -391,7 +391,7 @@
 
 	if(new_character.client)
 		new_character.client.change_view(world_view_size)
-		new_character.client.init_verbs()
+		new_character.client.init_statbrowser()
 
 	return new_character
 

@@ -624,7 +624,7 @@
 	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.20*length(totalXenos)/tier_slot_multiplier) - used_tier_3_slots)
 	// Tier 2 slots are between 30% and 50% of the hive, depending
 	// on how many T3s there are.
-	slots[TIER_3][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
+	slots[TIER_2][OPEN_SLOTS] = max(0, Ceiling(0.5*effective_total/tier_slot_multiplier) - used_tier_2_slots - used_tier_3_slots)
 
 	return slots
 

@@ -366,7 +366,7 @@
 	if(tier == 1 && (((used_tier_2_slots + used_tier_3_slots) / totalXenos) * hive.tier_slot_multiplier) >= 0.5 && castepick != "Queen")
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 2, wait for either more aliens to be born or someone to die."))
 		return FALSE
-	else if(tier == 2 && ((used_tier_3_slots / length(hive.totalXenos)) * hive.tier_slot_multiplier) >= 0.25 && castepick != "Queen")
+	else if(tier == 2 && ((used_tier_3_slots / length(hive.totalXenos)) * hive.tier_slot_multiplier) >= 0.20 && castepick != "Queen")
 		to_chat(src, SPAN_WARNING("The hive cannot support another Tier 3, wait for either more aliens to be born or someone to die."))
 		return FALSE
 	else if(!hive.living_xeno_queen && potential_queens == 1 && isXenoLarva(src) && castepick != "Drone")

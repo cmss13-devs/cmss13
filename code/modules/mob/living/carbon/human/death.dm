@@ -12,6 +12,8 @@
 
 	undefibbable = TRUE
 
+	GLOB.data_core.manifest_modify(real_name, null, null, "*Deceased*")
+
 	if(is_a_synth)
 		spawn_gibs()
 		return

@@ -788,6 +788,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(alert("Do you want to go DNR?", "Choose to go DNR", "Yes", "No") == "Yes")
 		can_reenter_corpse = FALSE
+		GLOB.data_core.manifest_modify(name, null, null, "*Deceased*")
 
 /mob/dead/observer/verb/edit_characters()
 	set category = "Ghost"

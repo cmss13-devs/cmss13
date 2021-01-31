@@ -54,10 +54,6 @@
 	if(!..())
 		return
 
-	if(!detonator)
-		to_chat(user, SPAN_WARNING("[src] doesn't have a detonator!"))
-		return
-
 	if(check_for_obstacles(user))
 		return
 
@@ -127,6 +123,10 @@
 		set_tripwire()
 		return;
 
+	if(!detonator)
+		active = TRUE
+		return
+
 	if(customizable && assembly_stage == ASSEMBLY_LOCKED)
 		if(isigniter(detonator.a_right) && isigniter(detonator.a_left))
 			set_tripwire()
@@ -160,7 +160,7 @@
 
 
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/carbon/human/H)
-	if(!active || triggered)
+	if(!active || triggered || (customizable && !detonator))
 		return
 	if(!isliving(H))
 		return

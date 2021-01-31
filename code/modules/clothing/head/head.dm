@@ -318,6 +318,17 @@
 	desc = "A kevlar reinforced beret with the USCM military police lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
 
+/obj/item/clothing/head/helmet/beret/marine/mp/provost
+	name = "\improper USCM provost beret"
+	icon_state = "beretwo"
+	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+
+/obj/item/clothing/head/helmet/beret/marine/mp/provost/senior
+	name = "\improper USCM senior provost beret"
+	icon_state = "coblackberet"
+	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+
+
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"
 	desc = "A beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."

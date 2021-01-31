@@ -3,7 +3,7 @@ var/list/department_radio_keys = list(
 	  ":h" = "department",	"#h" = "department",	".h" = "department",
 	  ":+" = "special",		"#+" = "special",		".+" = "special", //activate radio-specific special functions
 	  ":w" = "whisper",		"#w" = "whisper",		".w" = "whisper",
-	  ":t" = "Syndicate",	"#t" = "Syndicate",		".t" = "Syndicate",
+	  ":t" = "HighCom",		"#t" = "HighCom",		".t" = "HighCom",
 
 	  ":m" = "MedSci",		"#m" = "MedSci",		".m" = "MedSci",
 	  ":e" = "Engi", 		"#e" = "Engi",			".e" = "Engi",
@@ -24,7 +24,7 @@ var/list/department_radio_keys = list(
 	  ":I" = "intercom",	"#I" = "intercom",		".I" = "intercom",
 	  ":H" = "department",	"#H" = "department",	".H" = "department",
 	  ":W" = "whisper",		"#W" = "whisper",		".W" = "whisper",
-	  ":T" = "Syndicate",	"#T" = "Syndicate",		".T" = "Syndicate",
+	  ":T" = "HighCom",		"#T" = "HighCom",		".T" = "HighCom",
 
 	  ":M" = "MedSci",		"#M" = "MedSci",		".M" = "MedSci",
 	  ":E" = "Engi", 		"#E" = "Engi",			".E" = "Engi",

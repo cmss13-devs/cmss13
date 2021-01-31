@@ -639,9 +639,33 @@ var/list/datum/mob_hud/huds = list(
 			if("USCM Admiral")
 				marine_rk = "admiral"
 				border_rk = "command"
-			if("Pilot Officer") marine_rk = "po"
-			if("Intelligence Officer") marine_rk = "io"
-			if("Crewman") marine_rk = "tc"
+			if("Pilot Officer")
+				marine_rk = "po"
+			if("Intelligence Officer")
+				marine_rk = "io"
+			if("Crewman")
+				marine_rk = "tc"
+			if("Provost Officer")
+				marine_rk = "pvo"
+			if("Provost Enforcer")
+				marine_rk = "pvo"
+			if("Provost Team Leader")
+				marine_rk = "pvtml"
+			if("Provost Inspector")
+				marine_rk = "pvi"
+				border_rk = "command"
+			if("Provost Advisor")
+				marine_rk = "pva"
+				border_rk = "command"
+			if("Provost Marshall")
+				marine_rk = "pvm"
+				border_rk = "command"
+			if("Provost Sector Marshall")
+				marine_rk = "pvm"
+				border_rk = "command"
+			if("Provost Chief Marshall")
+				marine_rk = "pvm"
+				border_rk = "command"
 		if(marine_rk)
 			var/image/I = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad")
 			I.color = "#5A934A"

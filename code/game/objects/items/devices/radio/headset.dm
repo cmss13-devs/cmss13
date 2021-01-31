@@ -215,11 +215,6 @@
 	on = TRUE
 
 
-/obj/item/device/radio/headset/syndicate
-
-	keyslot1 = new /obj/item/device/encryptionkey/syndicate
-
-
 /obj/item/device/radio/headset/binary
 
 	keyslot1 = new /obj/item/device/encryptionkey/binary
@@ -613,3 +608,9 @@
 	icon_state = "wy_headset"
 	keyslot1 = new /obj/item/device/encryptionkey/public
 	keyslot2 = new /obj/item/device/encryptionkey/mcom
+
+/obj/item/device/radio/headset/almayer/highcom
+	name = "USCM High Command headset"
+	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :z - intelligence,  :t - HighCom"
+	icon_state = "mco_headset"
+	keyslot1 = new /obj/item/device/encryptionkey/highcom

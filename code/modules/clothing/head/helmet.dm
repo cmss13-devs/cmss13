@@ -643,6 +643,13 @@
 	specialty = "M10 pattern military police"
 	flags_atom = NO_SNOW_TYPE
 
+/obj/item/clothing/head/helmet/marine/mp/provost/marshall
+	name = "\improper Provost Marshall Cap"
+	desc = "The expensive headwear of a Provost Marshall. Contains shards of kevlar to keep it's valuable contents safe."
+	icon_state = "pvmarshalhat"
+	item_state = "pvmarshalhat"
+	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+
 //=============================//PMCS\\==================================\\
 //=======================================================================\\
 

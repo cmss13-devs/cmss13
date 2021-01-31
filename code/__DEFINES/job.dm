@@ -152,8 +152,37 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define CLF_JOB_LIST					list(JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)
 
 //-------- RESS --------//
-
 #define JOB_RESS_REPRESENTATIVE			"RESS Representative"
+
+#define JOB_RESS_YONTO					"RMC Yonto"
+#define JOB_RESS_SANTO					"RMC Santo"
+#define JOB_RESS_NITO					"RMC Nito"
+#define JOB_RESS_ITTO					"RMC Itto"
+
+#define RESS_COMMANDO_JOB_LIST			list(JOB_RESS_YONTO, JOB_RESS_SANTO, JOB_RESS_NITO, JOB_RESS_ITTO)
+
+#define JOB_RESS_SEAMAN					"RESS Seaman"
+#define JOB_RESS_LSEAMAN				"RESS Leading Seaman"
+#define JOB_RESS_SO						"RESS Standing Officer"
+#define JOB_RESS_WO						"RESS Warrant Officer"
+#define JOB_RESS_CPT					"RESS Captain"
+#define JOB_RESS_ADM					"RESS Admiral"
+#define JOB_RESS_GADM					"RESS Grand Admiral"
+#define JOB_RESS_ER						"RESS Emperor"
+
+#define RESS_OFFICER_JOB_LIST			list(JOB_RESS_SEAMAN, JOB_RESS_LSEAMAN, JOB_RESS_SO, JOB_RESS_WO, JOB_RESS_CPT, JOB_RESS_ADM, JOB_RESS_GADM, JOB_RESS_ER)
+
+//-------- PROVOST --------//
+#define JOB_PROVOST_OFFICER				"Provost Officer"
+#define JOB_PROVOST_ENFORCER			"Provost Enforcer"
+#define JOB_PROVOST_TML					"Provost Team Leader"
+#define JOB_PROVOST_ADVISOR				"Provost Advisor"
+#define JOB_PROVOST_INSPECTOR			"Provost Inspector"
+#define JOB_PROVOST_MARSHALL			"Provost Marshall"
+#define JOB_PROVOST_SMARSHALL			"Provost Sector Marshall"
+#define JOB_PROVOST_CMARSHALL			"Provost Chief Marshall"
+
+#define PROVOST_JOB_LIST				list(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHALL, JOB_PROVOST_SMARSHALL, JOB_PROVOST_CMARSHALL)
 
 //antag jobs supported by adaptive antag vendors
 #define VENDOR_ANTAG_JOBS				list(JOB_UPP_COMMANDO, JOB_UPP_COMMANDO_MEDIC, JOB_UPP_COMMANDO_LEADER, JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)

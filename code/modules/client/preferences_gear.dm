@@ -267,6 +267,12 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 4
 
+/datum/gear/m43pistol
+	display_name = "M43 Holdout Pistol"
+	path = /obj/item/storage/box/m43
+	slot = WEAR_IN_BACK
+	cost = 4
+
 /datum/gear/uno_reverse_red
 	display_name = "Uno Reverse - Red"
 	path = /obj/item/toy/handcard/uno_reverse_red

@@ -77,7 +77,9 @@
 	var/burst_amount 	= 1						//How many shots can the weapon shoot in burst? Anything less than 2 and you cannot toggle burst.
 	var/burst_delay 	= 1						//The delay in between shots. Lower = less delay = faster.
 	var/extra_delay 	= 0						//When burst-firing, this number is extra time before the weapon can fire again. Depends on number of rounds fired.
-
+	///When PB burst firing and handing off to /fire after a target moves out of range, this is how many bullets have been fired.
+	var/PB_burst_bullets_fired		= 0
+	
 	// Full auto
 	var/fa_firing = FALSE						//Whether or not the gun is firing full-auto
 	var/fa_shots = 0							//How many shots have been fired using full-auto. Used to figure out scatter
@@ -699,7 +701,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return
 
 	if(drop_override || !user) //If we want to drop it on the ground or there's no user.
-		current_mag.forceMove(get_turf(src) )//Drop it on the ground.
+		current_mag.forceMove(get_turf(src))//Drop it on the ground.
 	else
 		user.put_in_hands(current_mag)
 
@@ -915,7 +917,7 @@ and you're good to go.
 	var/check_for_attachment_fire = 0
 	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
 		check_for_attachment_fire = 1
-		if( !(active_attachable.flags_attach_features & ATTACH_PROJECTILE) ) //If it's unique projectile, this is where we fire it.
+		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
 			if(active_attachable.current_rounds <= 0)
 				click_empty(user) //If it's empty, let them know.
 				to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
@@ -938,6 +940,9 @@ and you're good to go.
 	if(!check_for_attachment_fire && (flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
 		bullets_to_fire = burst_amount
 		flags_gun_features |= GUN_BURST_FIRING
+		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
+			bullets_to_fire -= PB_burst_bullets_fired
+			PB_burst_bullets_fired = 0 //Don't need this anymore. The torch is passed.
 
 	var/bullets_fired
 	for(bullets_fired = 1 to bullets_to_fire)
@@ -949,7 +954,7 @@ and you're good to go.
 
 		//The gun should return the bullet that it already loaded from the end cycle of the last Fire().
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user) //Load a bullet in or check for existing one.
-		if(QDELETED(projectile_to_fire)) //If there is nothing to fire, click.
+		if(!projectile_to_fire) //If there is nothing to fire, click.
 			click_empty(user)
 			break
 
@@ -1012,11 +1017,8 @@ and you're good to go.
 			var/angle = round(Get_Angle(user,target))
 			muzzle_flash(angle,user)
 
-		if (bullets_fired == bullets_to_fire)
-			flags_gun_features &= ~GUN_BURST_FIRING // We are done burstfiring
-
 		//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
-		if(!reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty.
+		if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
 			click_empty(user)
 			break //Nothing else to do here, time to cancel out.
 
@@ -1107,56 +1109,114 @@ and you're good to go.
 		return ..()
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.
-	flags_gun_features &= ~GUN_BURST_FIRING
 	if(!able_to_fire(user)) //If you can't fire the gun in the first place, we're just going to hit them with it.
 		return ..()
 
-	if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
-		active_attachable.activate_attachment(src, null, TRUE)//No way.
-	var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
+	//The following relating to bursts was borrowed from Fire code.
+	var/check_for_attachment_fire = FALSE
+	if(active_attachable)
+		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+			check_for_attachment_fire = TRUE
+		else
+			active_attachable.activate_attachment(src, null, TRUE)//No way.
 
-	if(QDELETED(projectile_to_fire))
-		return ..()
 
-	//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
-	if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user)==-1)
-		return FALSE
-	var/damage_buff = BASE_BULLET_DAMAGE_MULT
-	//if target is lying or unconscious - add damage bonus
-	if(M.lying == 1 || M.stat == UNCONSCIOUS)
-		damage_buff += BULLET_DAMAGE_MULT_TIER_4
-	damage_buff *= damage_mult
-	projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
-	user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"), null, null, null, CHAT_TYPE_WEAPON_USE)
-	user.track_shot(initial(name))
-	apply_bullet_effects(projectile_to_fire, user) //We add any damage effects that we need.
-	SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
-	simulate_recoil(1, user)
+	var/bullets_to_fire = 1
+	///Instructs to handoff to Fire after exiting loop, if necessary.
+	var/handoff = FALSE
+	
+	if(!check_for_attachment_fire && (flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
+		bullets_to_fire = burst_amount
+		flags_gun_features |= GUN_BURST_FIRING
 
-	if(projectile_to_fire.ammo.bonus_projectiles_amount)
-		var/obj/item/projectile/BP
-		for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
-			BP = new /obj/item/projectile(initial(name), user, M.loc)
-			BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
-			BP.damage *= damage_buff
-			BP.ammo.on_hit_mob(M, BP)
-			M.bullet_act(BP)
-			qdel(BP)
+	var/bullets_fired
+	for(bullets_fired = 1 to bullets_to_fire)
+		if(loc != user)
+			break //If you drop it while bursting, for example.
 
-	projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
-	M.bullet_act(projectile_to_fire)
+		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
+			break
+		
+		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
+		if(!projectile_to_fire)
+			click_empty(user)
+			break
 
-	last_fired = world.time
-	SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+		//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
+		if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user)==-1)
+			return FALSE
+		var/damage_buff = BASE_BULLET_DAMAGE_MULT
+		//if target is lying or unconscious - add damage bonus
+		if(M.lying == 1 || M.stat == UNCONSCIOUS)
+			damage_buff += BULLET_DAMAGE_MULT_TIER_4
+		damage_buff *= damage_mult //damage_mult is a gun stat. Some guns don't have one that matters. It's also applied again, later on, in apply_bullet_effects. Some guns have no damage difference when PBing a standing targets. Some have a very big difference. It's not consistent or predictable for users.
+		projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
+		if(bullets_fired == 1) //First shot gives the PB message.
+			user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"), null, null, null, CHAT_TYPE_WEAPON_USE)
+					
+		user.track_shot(initial(name))
+		apply_bullet_effects(projectile_to_fire, user, bullets_fired) //We add any damage effects that we need.
+		
+		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
+		simulate_recoil(1, user)
 
-	if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
-		user.visible_message(SPAN_DANGER("[user] has executed [M] with [src]!"), SPAN_DANGER("You have executed [M] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
-		M.death()
+		if(projectile_to_fire.ammo.bonus_projectiles_amount)
+			var/obj/item/projectile/BP
+			for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
+				BP = new /obj/item/projectile(initial(name), user, M.loc)
+				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
+				BP.accuracy = round(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
+				BP.damage *= damage_buff
+				if(bullets_fired > 1)
+					BP.original = M //original == the original target of the projectile. If the target is downed and this isn't set, the projectile will try to fly over it. Of course, it isn't going anywhere, but it's the principle of the thing. Very embarrassing.
+					if(!BP.handle_mob(M) && M.lying) //This is the 'handle impact' proc for a flying projectile, including hit RNG, on_hit_mob and bullet_act. If it misses, it doesn't go anywhere. We'll pretend it slams into the ground or punches a hole in the ceiling, because trying to make it bypass the xeno or shoot from the tile beyond it is probably more spaghet than my life is worth.
+						if(BP.ammo.sound_bounce) 
+							playsound(M.loc, BP.ammo.sound_bounce, 35, 1)
+						M.visible_message(SPAN_AVOIDHARM("[BP] slams into [get_turf(M)]!"), //Managing to miss an immobile target flat on the ground deserves some recognition, don't you think?
+							SPAN_AVOIDHARM("[BP] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
+				else
+					BP.ammo.on_hit_mob(M, BP)
+					M.bullet_act(BP)
+				qdel(BP)
+				
+		if(bullets_fired > 1)
+			projectile_to_fire.original = M		
+			if(!projectile_to_fire.handle_mob(M) && M.lying)
+				if(projectile_to_fire.ammo.sound_bounce)
+					playsound(M.loc, projectile_to_fire.ammo.sound_bounce, 35, 1)										
+				M.visible_message(SPAN_AVOIDHARM("[projectile_to_fire] slams into [get_turf(M)]!"),
+					SPAN_AVOIDHARM("[projectile_to_fire] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		else
+			projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
+			M.bullet_act(projectile_to_fire)
 
-	if(!delete_bullet(projectile_to_fire))
-		qdel(projectile_to_fire)
+		last_fired = world.time
+		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 
-	reload_into_chamber(user) //Reload into the chamber if the gun supports it.
+		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
+			user.visible_message(SPAN_DANGER("[user] has executed [M] with [src]!"), SPAN_DANGER("You have executed [M] with [src]!"), message_flags = CHAT_TYPE_WEAPON_USE)
+			M.death()
+			bullets_to_fire = bullets_fired //Giant bursts are not compatible with precision killshots.
+
+		if(!delete_bullet(projectile_to_fire))
+			qdel(projectile_to_fire)
+
+		//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
+		if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
+			click_empty(user)
+			break //Nothing else to do here, time to cancel out.
+
+		if(bullets_fired < bullets_to_fire) // We still have some bullets to fire.
+			extra_delay = fire_delay * 0.5
+			sleep(burst_delay)
+		if(get_dist(user, M) > 1) //We can each move around while burst-PBing, but if we get too far from the target, we'll have to shoot at them normally.
+			PB_burst_bullets_fired = bullets_fired
+			handoff = TRUE
+			break
+
+	flags_gun_features &= ~GUN_BURST_FIRING
+	if(handoff)
+		Fire(get_turf(M), user, reflex = TRUE) //Reflex prevents dual-wielding.
 	return TRUE
 
 #undef EXECUTION_CHECK
@@ -1172,9 +1232,11 @@ and you're good to go.
 	Removed ishuman() check. There is no reason for it, as it just eats up more processing, and adding fingerprints during the fire cycle is silly.
 	Consequently, predators are able to fire while cloaked.
 	*/
+	
 	if(flags_gun_features & GUN_BURST_FIRING) return
 	if(world.time < guaranteed_delay_time) return
 	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0 || user.dazed)) return //We just put the gun up. Can't do it that fast
+
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser())
 			to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
@@ -1197,7 +1259,7 @@ and you're good to go.
 			to_chat(user, SPAN_WARNING("You need a more secure grip to fire this weapon!"))
 			return
 
-		if( (flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user) )
+		if((flags_gun_features & GUN_WY_RESTRICTED) && !wy_allowed_check(user))
 			return
 
 		//Has to be on the bottom of the stack to prevent delay when failing to fire the weapon for the first time.
@@ -1217,7 +1279,7 @@ and you're good to go.
 					added_delay += FIRE_DELAY_TIER_8 //untrained humans fire more slowly.
 		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
 			extra_delay = 0
-		else
+		else if(!PB_burst_bullets_fired) //Special delay exemption for handed-off PB bursts. It's the same burst, after all.
 			return
 	return 1
 

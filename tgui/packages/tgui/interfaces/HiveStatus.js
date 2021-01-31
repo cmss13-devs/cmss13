@@ -162,53 +162,101 @@ const XenoCounts = (props, context) => {
     <Flex
       direction="column-reverse"
     >
-      {xeno_counts.map((counts, tier) => (
-        <Flex.Item
-          key={tier}
-          mb={tier !== 0 ? 2 : 0}
-        >
-          <Flex
-            direction="column"
+      {xeno_counts.map((counts, tier) => {
+        let tier_str = tier.toString();
+        let guaranteed_slots;
+        // Check if there are guaranteed slots available for a given tier
+        if (tier_slots[tier_str]) {
+          guaranteed_slots = Object.keys(
+            tier_slots[tier_str].guaranteed_slots);
+          if (guaranteed_slots.length === 0) {
+            guaranteed_slots = null;
+          }
+        }
+        return (
+          <Flex.Item
+            key={tier}
+            mb={tier !== 0 ? 2 : 0}
           >
-            <Flex.Item>
-              <center>
-                <h1 className="whiteTitle">Tier {tier}</h1>
-                {tier >= 2
-                  && <span><i>{tier_slots[tier-2]} remaining slot{tier_slots[tier-2] !== 1 && "s"}</i></span>}
-              </center>
-            </Flex.Item>
-            <Flex.Item>
-              <center>
-                <Table className="xenoCountTable" collapsing>
-                  <Table.Row header>
-                    {Object.keys(counts).map((caste, i) => (
-                      <Table.Cell
-                        key={i}
-                        className="underlineCell"
-                        width={7}
-                      >
-                        {caste === 'Bloody Larva' ? 'Larva' : caste}
-                      </Table.Cell>
-                    ))}
-                  </Table.Row>
-                  <Table.Row className="xenoCountRow">
-                    {Object.keys(counts).map((caste, i) => (
-                      <Table.Cell key={i}
-                        className="xenoCountCell"
-                        backgroundColor={!!hive_color && hive_color}
-                        textAlign="center"
-                        width={7}
-                      >
-                        {counts[caste]}
-                      </Table.Cell>
-                    ))}
-                  </Table.Row>
-                </Table>
-              </center>
-            </Flex.Item>
-          </Flex>
-        </Flex.Item>
-      ))}
+            <Flex
+              direction="column"
+            >
+              <Flex.Item>
+                <center>
+                  <h1 className="whiteTitle">Tier {tier}</h1>
+                  {tier >= 2
+                    && (
+                      <i>
+                        <div>
+                          <span
+                            style={{
+                              "margin-right": "4px",
+                            }}
+                          >
+                            {tier_slots[tier_str].open_slots}
+                          </span>
+                          remaining slot
+                          {tier_slots[tier_str].open_slots !== 1 && "s"}
+                        </div>
+                        {guaranteed_slots && (
+                          <div>
+                            Guaranteed slots: {
+                              guaranteed_slots.map((caste_name, i) => (
+                                <Fragment key={i}>
+                                  <span
+                                    style={{
+                                      "margin-right": "4px",
+                                    }}
+                                  >
+                                    {tier_slots[tier_str]
+                                      .guaranteed_slots[caste_name]}
+                                  </span>
+                                  {caste_name}
+                                  {/* No comma at the end of the list*/}
+                                  {i === guaranteed_slots.length-1
+                                    ? ""
+                                    : ", "}
+                                </Fragment>
+                              ))
+                            }
+                          </div>
+                        )}
+                      </i>
+                    )}
+                </center>
+              </Flex.Item>
+              <Flex.Item>
+                <center>
+                  <Table className="xenoCountTable" collapsing>
+                    <Table.Row header>
+                      {Object.keys(counts).map((caste, i) => (
+                        <Table.Cell
+                          key={i}
+                          className="underlineCell"
+                          width={7}
+                        >
+                          {caste === 'Bloody Larva' ? 'Larva' : caste}
+                        </Table.Cell>
+                      ))}
+                    </Table.Row>
+                    <Table.Row className="xenoCountRow">
+                      {Object.keys(counts).map((caste, i) => (
+                        <Table.Cell key={i}
+                          className="xenoCountCell"
+                          backgroundColor={!!hive_color && hive_color}
+                          textAlign="center"
+                          width={7}
+                        >
+                          {counts[caste]}
+                        </Table.Cell>
+                      ))}
+                    </Table.Row>
+                  </Table>
+                </center>
+              </Flex.Item>
+            </Flex>
+          </Flex.Item>
+        ); })}
     </Flex>
   );
 };

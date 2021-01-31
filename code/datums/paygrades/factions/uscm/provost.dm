@@ -1,6 +1,5 @@
 /datum/paygrade/provost
 	name = "Provost Paygrade"
-	rank_pin = /obj/item/clothing/accessory/ranks
 
 /datum/paygrade/provost/officer
 	paygrade = "PvO"

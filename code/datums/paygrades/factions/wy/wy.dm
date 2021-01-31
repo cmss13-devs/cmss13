@@ -27,15 +27,15 @@ GLOBAL_LIST_INIT(wy_ranks, list(
 	"job_code_prefix" = list(
 		"X" = "",
 
-		"A" = "Trn",
-		"B" = "Jr. Exec",
-		"C" = "Exec",
-		"D" = "Sr. Exec",
-		"E" = "Exec. Spc",
-		"F" = "Exec. Suvp",
-		"G" = "Assis. Mng",
-		"H" = "Div. Mng",
-		"I" = "Chief. Exec",
+		"A" = "Trn.",
+		"B" = "Jr. Exec.",
+		"C" = "Exec.",
+		"D" = "Sr. Exec.",
+		"E" = "Exec. Spc.",
+		"F" = "Exec. Suvp.",
+		"G" = "Assis. Mng.",
+		"H" = "Div. Mng.",
+		"I" = "Chief. Exec.",
 		"J" = "Director"
 	)
 ))

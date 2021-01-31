@@ -209,7 +209,7 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 				manifest_inject(H)
 		return
 
-/obj/effect/datacore/proc/manifest_modify(name, assignment, rank)
+/obj/effect/datacore/proc/manifest_modify(name, assignment, rank, p_stat)
 	var/datum/data/record/foundrecord
 
 	for(var/datum/data/record/t in GLOB.data_core.general)
@@ -219,8 +219,12 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 				break
 
 	if(foundrecord)
-		foundrecord.fields["rank"] = assignment
-		foundrecord.fields["real_rank"] = rank
+		if(assignment)
+			foundrecord.fields["rank"] = assignment
+		if (rank)
+			foundrecord.fields["real_rank"] = rank
+		if (p_stat)
+			foundrecord.fields["p_stat"] = p_stat
 
 /obj/effect/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
 	var/assignment

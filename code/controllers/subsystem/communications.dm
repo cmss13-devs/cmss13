@@ -109,6 +109,7 @@ var/const/ERT_FREQ 		= 1342
 var/const/RUS_FREQ		= 1338
 var/const/DTH_FREQ 		= 1344
 var/const/AI_FREQ 		= 1447
+var/const/HC_FREQ		= 1240
 
 //Ship department channels
 var/const/COMM_FREQ 	= 1353
@@ -143,6 +144,7 @@ var/list/radiochannels = list(
 	"SpecOps" 		= DTH_FREQ,
 	"UPP" 			= RUS_FREQ,
 	"Colonist"		= DUT_FREQ,
+	"HighCom"		= HC_FREQ,
 
 	"Almayer"		= PUB_FREQ,
 	"Command"		= COMM_FREQ,
@@ -166,7 +168,7 @@ var/list/radiochannels = list(
 )
 
 // central command channels, i.e deathsquid & response teams
-var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ)
+var/list/CENT_FREQS = list(ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, HC_FREQ)
 
 // Antag channels, i.e. Syndicate
 var/list/ANTAG_FREQS = list(RUS_FREQ)

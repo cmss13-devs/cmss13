@@ -386,7 +386,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	item_state_slots = list(WEAR_JACKET = "co_officer")
 
 
-
 /obj/item/clothing/suit/storage/marine/smartgunner
 	name = "M56 combat harness"
 	desc = "A heavy protective vest designed to be worn with the M56 Smartgun System. \nIt has specially designed straps and reinforcement to carry the Smartgun and accessories."
@@ -1543,3 +1542,75 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	icon_state = "hefadier"
 	flags_atom = UNIQUE_ITEM_TYPE|NO_SNOW_TYPE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
+
+
+
+//=========================//PROVOST\\================================\\
+//=======================================================================\\
+/obj/item/clothing/suit/storage/marine/MP/provost
+	name = "\improper M3 pattern Provost armor"
+	desc = "A lighter Provost M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	icon_state = "pvlight"
+	item_state_slots = list(WEAR_JACKET = "pvlight")
+	w_class = SIZE_MEDIUM
+	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+
+/obj/item/clothing/suit/storage/marine/MP/provost/enforcer
+	name = "\improper M3 pattern Provost armor"
+	desc = "A standard Provost M3 Pattern Chestplate. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+	icon_state = "pvmedium"
+	item_state_slots = list(WEAR_JACKET = "pvmedium")
+
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/suit/storage/marine/MP/provost/tml
+	name = "\improper M3 pattern Senior Provost armor"
+	icon_state = "pvleader"
+	item_state_slots = list(WEAR_JACKET = "pvleader")
+	desc = "A more refined Provost M3 Pattern Chestplate for senior officers. Protects the chest from ballistic rounds, bladed objects and accidents. It has a small leather pouch strapped to it for limited storage."
+
+	slowdown = SLOWDOWN_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/suit/storage/marine/MP/provost/marshall
+	icon_state = "pvmarshal"
+	item_state_slots = list(WEAR_JACKET = "pvmarshal")
+	name = "\improper M3 pattern Provost Marshall armor"
+	desc = "A custom fit luxury armor suit for Provost Marshalls. Useful for letting your men know who is in charge when taking to the field."
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
+
+/obj/item/clothing/suit/storage/marine/MP/provost/marshall/chief
+	name = "\improper M3 pattern Provost Chief Marshall armor"

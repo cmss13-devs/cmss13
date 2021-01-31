@@ -170,7 +170,7 @@
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
-	desc = "A uniform typically worn by a first-lieutenant Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	desc = "A uniform typically worn by a commander Executive Officer in the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "executive officer"
@@ -301,6 +301,72 @@
 	worn_state = "marine_formal"
 	specialty = "marine dress"
 	flags_atom = NO_SNOW_TYPE
+
+//=========================//PROVOST\\================================\\
+//=======================================================================\\
+
+/obj/item/clothing/under/marine/mp/provost
+	rollable_sleeves = FALSE
+	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+
+	name = "\improper Provost Uniform"
+	desc = "The crisp uniform of a Provost Officer."
+	icon_state = "provost"
+	worn_state = "provost"
+
+	specialty = "provost"
+
+	suit_restricted = list(
+		/obj/item/clothing/suit/storage/marine/MP,
+		/obj/item/clothing/suit/armor/riot/marine,
+		/obj/item/clothing/suit/storage/jacket/marine/provost
+	)
+
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+
+/obj/item/clothing/under/marine/mp/provost/enforcer
+	name = "\improper Provost Enforcer Uniform"
+	desc = "The crisp uniform of a Provost Enforcer."
+
+/obj/item/clothing/under/marine/mp/provost/tml
+	name = "\improper Provost Team Leader Uniform"
+	desc = "The crisp uniform of a Provost Team Leader."
+	icon_state = "warden_jumpsuit"
+	worn_state = "warden_jumpsuit"
+
+/obj/item/clothing/under/marine/mp/provost/advisor
+	name = "\improper Provost Advisor Uniform"
+	desc = "The crisp uniform of a Provost Advisor."
+	icon_state = "warden_jumpsuit"
+	worn_state = "warden_jumpsuit"
+
+/obj/item/clothing/under/marine/mp/provost/inspector
+	name = "\improper Provost Inspector Uniform"
+	desc = "The crisp uniform of a Provost Inspector."
+	icon_state = "warden_jumpsuit"
+	worn_state = "warden_jumpsuit"
+
+/obj/item/clothing/under/marine/mp/provost/marshall
+	name = "\improper Provost Marshall Uniform"
+	desc = "The crisp uniform of a Provost Marshall."
+	icon_state = "WO_jumpsuit"
+	worn_state = "WO_jumpsuit"
+
+/obj/item/clothing/under/marine/mp/provost/marshall/sector
+	name = "\improper Provost Sector Marshall Uniform"
+	desc = "The crisp uniform of a Provost Sector Marshall."
+
+/obj/item/clothing/under/marine/mp/provost/marshall/chief
+	name = "\improper Provost Chief Marshall Uniform"
+	desc = "The crisp uniform of the Provost Chief Marshall."
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\

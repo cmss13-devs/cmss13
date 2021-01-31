@@ -312,6 +312,9 @@
 	name = "[initial(name)] ([rank_short])"
 	desc = "[initial(desc)] This one is for the rank <b>[get_paygrades(rank_short, 1)]</b>"
 
+/obj/item/clothing/accessory/ranks/e1
+	rank_short = "E1"
+
 /obj/item/clothing/accessory/ranks/e2
 	rank_short = "E2"
 

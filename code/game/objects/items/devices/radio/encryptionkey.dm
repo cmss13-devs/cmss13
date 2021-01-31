@@ -12,16 +12,12 @@
 	var/list/channels = list()
 
 
-/obj/item/device/encryptionkey/syndicate
-	icon_state = "cypherkey"
-	channels = list("Syndicate" = 1)
-	
 	syndie = 1//Signifies that it de-crypts Syndicate transmissions
 
 /obj/item/device/encryptionkey/binary
 	icon_state = "binary_key"
 	translate_binary = 1
-	
+
 
 
 /obj/item/device/encryptionkey/public
@@ -181,7 +177,7 @@
 
 /obj/item/device/encryptionkey/ert
 	name = "W-Y Radio Encryption Key"
-	icon_state = "wy_key"
+	icon_state = "cypherkey"
 	channels = list("Response Team" = 1, "Command" = 1, "MedSci" = 1, "Engi" = 1, "WY" = 1)
 
 /obj/item/device/encryptionkey/dutch
@@ -190,8 +186,8 @@
 	channels = list("Colonist" = 1)
 
 /obj/item/device/encryptionkey/PMC
-	name = "\improper Weston-Yamada Radio Encryption Key"
-	icon_state = "wy_key"
+	name = "\improper Weston-Yamada PMC Radio Encryption Key"
+	icon_state = "pmc_key"
 	channels = list("WY PMC" = 1, "WY" = 1)
 
 /obj/item/device/encryptionkey/bears
@@ -202,5 +198,10 @@
 
 /obj/item/device/encryptionkey/commando
 	name = "\improper WY Commando Radio Encryption K"
-	icon_state = "wy_key"
+	icon_state = "pmc_key"
 	channels = list("SpecOps" = 1, "WY" = 1)
+
+/obj/item/device/encryptionkey/highcom
+	name = "\improper USCM High Command Radio Encryption Key"
+	icon_state = "binary_key"
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1, "HighCom" = 1)

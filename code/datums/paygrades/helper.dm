@@ -11,7 +11,7 @@
 		var/division = GLOB.wy_ranks["division_code"][copytext_char(rank, 1, 2)]
 		var/job = GLOB.wy_ranks[size? "job_code_prefix" : "job_code"][copytext_char(rank, 2, 3)]
 
-		return trim("[division] [job]")
+		return "[division] [job] "
 
 	if(!(paygrade in GLOB.paygrades))
 		return paygrade
@@ -31,7 +31,7 @@
 
 	if(!(paygrade in GLOB.paygrades))
 		return null
-	
+
 	var/datum/paygrade/P = GLOB.paygrades[paygrade]
 
 	return P.rank_pin

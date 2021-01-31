@@ -41,7 +41,7 @@
 	assignment = JOB_UPP
 	rank = JOB_UPP
 	role_comm_title = "Pvt"
-	paygrade = "E1"
+	paygrade = "UE1"
 
 /datum/equipment_preset/upp/soldier/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -85,7 +85,7 @@
 	skills = /datum/skills/civilian/survivor/doctor
 	assignment = JOB_UPP
 	rank = JOB_UPP
-	paygrade = "E1"
+	paygrade = "UE1"
 
 /datum/equipment_preset/upp/survivor/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -164,7 +164,7 @@
 	assignment = JOB_UPP_ENGI
 	rank = JOB_UPP_ENGI
 	role_comm_title = "Sap"
-	paygrade = "E3"
+	paygrade = "UE2S"
 
 /datum/equipment_preset/upp/engineer/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
@@ -203,7 +203,7 @@
 	assignment = JOB_UPP_MEDIC
 	rank = JOB_UPP_MEDIC
 	role_comm_title = "Med"
-	paygrade = "E4"
+	paygrade = "UE2M"
 
 /datum/equipment_preset/upp/medic/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
@@ -246,7 +246,7 @@
 	assignment = JOB_UPP_SPECIALIST
 	rank = JOB_UPP_SPECIALIST
 	role_comm_title = "Szh"
-	paygrade = "E5"
+	paygrade = "UE3"
 
 /datum/equipment_preset/upp/specialist/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -284,7 +284,7 @@
 	assignment = JOB_UPP_LEADER
 	rank = JOB_UPP_LEADER
 	role_comm_title = "MSzh"
-	paygrade = "E5"
+	paygrade = "UE4"
 
 /datum/equipment_preset/upp/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -325,7 +325,7 @@
 	assignment = JOB_UPP_COMMANDO
 	rank = JOB_UPP_COMMANDO
 	role_comm_title = "JKdo"
-	paygrade = "E2"
+	paygrade = "UC1"
 	idtype = /obj/item/card/id/data
 	languages = list("Russian", "English", "Tactical Sign Language", "Spanish")
 
@@ -365,7 +365,7 @@
 	assignment = JOB_UPP_COMMANDO_MEDIC
 	rank = JOB_UPP_COMMANDO_MEDIC
 	role_comm_title = "2ndKdo"
-	paygrade = "E4"
+	paygrade = "UC2"
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
@@ -407,7 +407,7 @@
 	assignment = JOB_UPP_COMMANDO_LEADER
 	rank = JOB_UPP_COMMANDO_LEADER
 	role_comm_title = "1stKdo"
-	paygrade = "E6"
+	paygrade = "UC3"
 	idtype = /obj/item/card/id/silver
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/H)
@@ -446,7 +446,7 @@
 
 	assignment = JOB_UPP_CREWMAN
 	rank = JOB_UPP_CREWMAN
-	paygrade = "E7"
+	paygrade = "UE3"
 	role_comm_title = "TANK"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
@@ -474,16 +474,16 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/upp/fleet_admiral
-	name = "UPP Fleet Admiral" //Renamed from Fleet Admiral
+/datum/equipment_preset/upp/chairman
+	name = "UPP Chairman" //Renamed from Fleet Admiral
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/admiral
 	access = list()
-	assignment = "Fleet Admiral"
-	rank = "Fleet Admiral"
-	paygrade = "O9E"
-	role_comm_title = "FADM"
+	assignment = "Chairman of Progressive Peoples"
+	rank = "Chairman of Progressive Peoples"
+	paygrade = "UO4"
+	role_comm_title = "CPP"
 	minimum_age = 55
 	skills = /datum/skills/admiral
 
@@ -491,7 +491,7 @@
 	service_over = list(/obj/item/clothing/suit/hgpirate)
 	service_hat = list(/obj/item/clothing/head/hgpiratecap)
 
-/datum/equipment_preset/upp/fleet_admiral/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/chairman/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/soviet(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hgpiratecap(H), WEAR_HEAD)

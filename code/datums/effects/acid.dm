@@ -71,4 +71,4 @@
 	if(isobj(affected_atom))
 		var/obj/O = affected_atom
 		O.update_icon()
-	..()
+	return ..()

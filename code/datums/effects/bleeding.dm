@@ -47,7 +47,7 @@
 /datum/effects/bleeding/Destroy()
 	if(limb)
 		limb.bleeding_effects_list -= src
-	..()
+	return ..()
 
 
 /datum/effects/bleeding/external

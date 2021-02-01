@@ -23,7 +23,7 @@
 	for(var/obj/item/W in contents)
 		if(W.unacidable)
 			W.forceMove(loc)
-	..()
+	return ..()
 
 /obj/structure/filingcabinet/chestdrawer
 	name = "chest drawer"

@@ -73,7 +73,7 @@
 	QDEL_NULL(caster)
 	STOP_PROCESSING(SSobj, src)
 	remove_from_missing_pred_gear(src)
-	..()
+	return ..()
 
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
 	STOP_PROCESSING(SSobj, src)

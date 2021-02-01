@@ -425,7 +425,14 @@
 			def_zone = ran_zone()
 		hit_chance -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
 
+		#if DEBUG_HIT_CHANCE
+		to_world(SPAN_DEBUG("([L]) Hit chance: [hit_chance] | Roll: [hit_roll]"))
+		#endif
+
 		if(hit_chance > hit_roll)
+			#if DEBUG_HIT_CHANCE
+			to_world(SPAN_DEBUG("([L]) Hit."))
+			#endif
 			var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 			// If the ammo should hit the surface of the target and there is a mob blocking
@@ -460,6 +467,9 @@
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
+		#if DEBUG_HIT_CHANCE		
+		to_world(SPAN_DEBUG("([L]) Missed."))
+		#endif
 
 
 //----------------------------------------------------------
@@ -472,7 +482,7 @@
 
 /obj/item/projectile/proc/get_effective_accuracy()
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]; scatter:[scatter]; distance:[distance_travelled]</b>"))
+	to_world(SPAN_DEBUG("Base accuracy is <b>[accuracy]</b>; scatter: <b>[scatter]</b>; distance: <b>[distance_travelled]</b>"))
 	#endif
 
 	var/effective_accuracy = accuracy //We want a temporary variable so accuracy doesn't change every time the bullet misses.
@@ -483,10 +493,6 @@
 	else
 		effective_accuracy -= (ammo_flags & AMMO_SNIPER) ? (distance_travelled * 1.5) : (distance_travelled * 5) // Snipers have a smaller falloff constant due to longer max range
 
-	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("Final accuracy is <b>[.]</b>"))
-	#endif
-
 	effective_accuracy = max(5, effective_accuracy) //default hit chance is at least 5%.
 
 	if(ishuman(firer))
@@ -494,6 +500,10 @@
 		if(shooter_human.marksman_aura)
 			effective_accuracy += shooter_human.marksman_aura * 1.5 //Flat buff of 3 % accuracy per aura level
 			effective_accuracy += distance_travelled * 0.35 * shooter_human.marksman_aura //Flat buff to accuracy per tile travelled
+
+	#if DEBUG_HIT_CHANCE
+	to_world(SPAN_DEBUG("Final accuracy is <b>[effective_accuracy]</b>"))
+	#endif
 
 	return effective_accuracy
 
@@ -523,7 +533,7 @@
 	var/hitchance = min(projectile_coverage, (projectile_coverage * distance/distance_limit) + accuracy_factor * (1 - effective_accuracy/100))
 
 	#if DEBUG_HIT_CHANCE
-	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+	to_world(SPAN_DEBUG("([name] as cover) Distance travelled: [P.distance_travelled]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
 	#endif
 
 	return prob(hitchance)
@@ -534,7 +544,7 @@
 		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+		to_world(SPAN_DEBUG("([name]) Distance travelled: [P.distance_travelled]  |  Effective accuracy: [hitchance]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if(prob(hitchance))
@@ -572,7 +582,7 @@
 		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+		to_world(SPAN_DEBUG("([name]) Distance travelled: [P.distance_travelled]  |  Effective accuracy: [hitchance]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -630,7 +640,7 @@
 				hitchance -= 10
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+		to_world(SPAN_DEBUG("([name]) Distance travelled: [P.distance_travelled]  |  Effective accuracy: [hitchance]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )
@@ -651,7 +661,7 @@
 		var/hitchance = P.get_effective_accuracy()
 
 		#if DEBUG_HIT_CHANCE
-		to_world(SPAN_DEBUG("([name]) Distance travelled: [distance]  |  Effective accuracy: [effective_accuracy]  |  Hit chance: [hitchance]"))
+		to_world(SPAN_DEBUG("([P.name]) Distance travelled: [P.distance_travelled]  |  Effective accuracy: [hitchance]  |  Hit chance: [hitchance]"))
 		#endif
 
 		if( prob(hitchance) )

@@ -121,8 +121,8 @@
 		linked_hive.stored_larva++
 		for(var/mob/dead/observer/ghost in GLOB.observer_list)
 			to_chat(ghost, SPAN_DEADSAY("The hive has gained another pooled larva! Use the Join As Xeno verb to take it."))
-			if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
-				surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
+		if(surge_cooldown > 30 SECONDS) //mostly for sanity purposes
+			surge_cooldown = surge_cooldown - surge_incremental_reduction //ramps up over time
 
 /obj/effect/alien/resin/special/pool/proc/melt_body(var/iterations = 3)
 	if(!melting_body)

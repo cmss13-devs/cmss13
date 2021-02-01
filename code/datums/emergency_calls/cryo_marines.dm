@@ -27,17 +27,20 @@
 	if (medics < max_medics)
 		medics++
 		arm_equipment(H, "USCM (Cryo) Squad Medic", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are a medic in the USCM, you are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command. </B>")
+		to_chat(H, SPAN_ROLE_HEADER("You are a medic in the USCM"))
+		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	else if (heavies < max_heavies)
 		heavies++
 		arm_equipment(H, "USCM (Cryo) Squad Engineer", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are an engineer in the USCM, you are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command. </B>")
+		to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))
+		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	else
 		arm_equipment(H, "USCM (Cryo) Squad Marine (PFC)", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are a private in the USCM, you are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command. </B>")
+		to_chat(H, SPAN_ROLE_HEADER("You are a private in the USCM"))
+		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 
 	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 	RoleAuthority.randomize_squad(H, TRUE) //we force put people in squads so even if we have a max amount of medics / engis we still give them a squad
 	H.sec_hud_set_ID()
 	H.hud_set_squad()

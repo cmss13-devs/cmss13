@@ -20,10 +20,10 @@
 	arm_equipment(H, "Pizza", TRUE, TRUE)
 
 	var/pizzatxt = pick("Discount Pizza","Pizza Kingdom","Papa Pizza")
-	to_chat(H, "<font size='3'>\red You are a pizza deliverer! Your employer is the [pizzatxt] Corporation.</font>")
-	to_chat(H, "Your job is to deliver your pizzas. You're PRETTY sure this is the right place..")
+	to_chat(H, SPAN_ROLE_HEADER("You are a pizza deliverer! Your employer is the [pizzatxt] Corporation."))
+	to_chat(H, SPAN_ROLE_BODY("Your job is to deliver your pizzas. You're PRETTY sure this is the right place.."))
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/pizza/cryo

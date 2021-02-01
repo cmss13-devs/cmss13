@@ -19,10 +19,10 @@
 
 	arm_equipment(H, "Souto Man", TRUE, TRUE)
 
-	to_chat(H, "<font size='3'>\red You are Souto Man! You should bring awareness to the Souto brand!</font>")
-	to_chat(H, "Your job is to party hard and share Souto. Make sure those marines are never thirsty again!")
+	to_chat(H, SPAN_ROLE_HEADER("You are Souto Man! You should bring awareness to the Souto brand!"))
+	to_chat(H, SPAN_ROLE_BODY("Your job is to party hard and share Souto. Make sure those marines are never thirsty again!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 /datum/emergency_call/souto/cryo
 	name = "Souto Man (Cryo)"

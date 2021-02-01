@@ -22,19 +22,19 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, "Gladiator Leader", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are the leader of these holy warriors!</font>")
-		to_chat(H, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
-		to_chat(H, "<B> Follow any orders directly from the Higher Power!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are the leader of these holy warriors!"))
+		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
+		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
 	else if(heavies < max_heavies)
 		heavies++
 		arm_equipment(H, "Gladiator Champion", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are a champion of the holy warriors!</font>")
-		to_chat(H, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
-		to_chat(H, "<B> Follow any orders directly from the Higher Power!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are a champion of the holy warriors!"))
+		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
+		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
 	else
 		arm_equipment(H, "Gladiator", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are a holy warrior!</font>")
-		to_chat(H, "<B> You must clear out any traces of the unholy from this wretched place!</b>")
-		to_chat(H, "<B> Follow any orders directly from the Higher Power!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are a holy warrior!"))
+		to_chat(H, SPAN_ROLE_BODY("You must clear out any traces of the unholy from this wretched place!"))
+		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from the Higher Power!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

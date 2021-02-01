@@ -330,7 +330,16 @@ if (window.location) {
 // Status panel implementation ------------------------------------------------
 var status_tab_parts = ["Loading..."];
 var current_tab = null;
-var local_fontsize = localStorage.getItem("fontsize");
+var local_fontsize
+// Per `storage.js` for tgui:
+// Localstorage can sometimes throw an error, even if DOM storage is not
+// disabled in IE11 settings.
+// See: https://superuser.com/questions/1080011
+try {
+	local_fontsize = localStorage.getItem("fontsize");
+} catch(error) {
+	local_fontsize = 11;
+}
 var current_fontsize = local_fontsize ? parseInt(local_fontsize) : 11; // in px, also determines line height and category header sizes for the verb menus
 var mc_tab_parts = [["Loading...", ""]];
 var href_token = null;

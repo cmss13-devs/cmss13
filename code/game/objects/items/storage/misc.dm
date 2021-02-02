@@ -105,7 +105,7 @@
 		icon_state = "6_pack_[contents.len]"
 
 /obj/item/storage/box/m43
-	name = "M43-storing Box"
+	name = "M43-storing box"
 	desc = "A fairly decorated and ceremonial box containing a CLF M43 and a single additional magazine for it. I guess those CLF folk really care about their craftsmanship and prose rather than practicality, eh?"
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "m43case"

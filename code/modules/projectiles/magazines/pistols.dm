@@ -145,7 +145,7 @@
 	gun_type = /obj/item/weapon/gun/pistol/holdout
 
 //-------------------------------------------------------
-//CLF FUNNY MEME PISTOL
+//CLF HOLDOUT PISTOL
 /obj/item/ammo_magazine/pistol/m43pistol
 	name = "M43 magazine (9mm)"
 	desc = "A small M43 magazine storing 7 9mm bullets. How is it even this small?"

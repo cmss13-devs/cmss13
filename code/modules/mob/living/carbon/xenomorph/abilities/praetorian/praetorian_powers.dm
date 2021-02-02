@@ -735,7 +735,7 @@
 	grenade.source_mob = X
 	grenade.forceMove(get_turf(X))
 	grenade.throw_atom(A, 5, SPEED_SLOW, X, TRUE)
-	addtimer(CALLBACK(grenade, /obj/item/explosive/proc/prime), prime_delay)
+	addtimer(CALLBACK(grenade, /obj/item/explosive.proc/prime), prime_delay)
 
 	..()
 	return

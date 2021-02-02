@@ -1590,7 +1590,7 @@ var/list/WALLITEMS = list(
 
 /proc/flick_overlay(var/atom/target, overlay, time)
 	target.overlays += overlay
-	addtimer(CALLBACK(target, /proc/remove_timed_overlay, overlay), time)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/remove_timed_overlay, target, overlay), time)
 
 /proc/remove_timed_overlay(var/atom/target, overlay)
 	target.overlays -= overlay

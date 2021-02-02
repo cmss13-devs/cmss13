@@ -226,7 +226,7 @@
 		return
 
 	SetLuminosity(SENTRY_MUZZLELUM)
-	addtimer(CALLBACK(src, /atom/proc/SetLuminosity, -SENTRY_MUZZLELUM), 10)
+	addtimer(CALLBACK(src, /atom.proc/SetLuminosity, -SENTRY_MUZZLELUM), 10)
 
 	var/image_layer = layer + 0.1
 	var/offset = 13

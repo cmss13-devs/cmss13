@@ -71,7 +71,7 @@
 					if((mind.active && client != null) || immune_to_ssd) //This also checks whether a client is connected, if not, sleep is not reduced.
 						sleeping = max(sleeping - 1, 0)
 				if(prob(2) && health && !hal_crit)
-					addtimer(CALLBACK(src, /mob/proc/emote, "snore"))
+					addtimer(CALLBACK(src, .proc/emote, "snore"))
 			blinded = 1
 			stat = UNCONSCIOUS			
 		else

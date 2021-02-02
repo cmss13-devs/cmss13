@@ -47,7 +47,7 @@
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
 	if(burrow)
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/process_burrow), 1 SECONDS)
+		addtimer(CALLBACK(src, .proc/process_burrow), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
 	to_chat(src, SPAN_NOTICE("You resurface."))
@@ -108,7 +108,7 @@
 		tunnel = FALSE
 		to_chat(src, SPAN_NOTICE("You stop tunneling."))
 		used_tunnel = TRUE
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/do_tunnel_cooldown), (caste ? caste.tunnel_cooldown : 5 SECONDS))
+		addtimer(CALLBACK(src, .proc/do_tunnel_cooldown), (caste ? caste.tunnel_cooldown : 5 SECONDS))
 		return
 
 	if(!T || T.density)
@@ -124,7 +124,7 @@
 		tunnel = FALSE
 		do_tunnel(T)
 	if(tunnel && T)
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/process_tunnel, T), 1 SECONDS)
+		addtimer(CALLBACK(src, .proc/process_tunnel, T), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/do_tunnel(var/turf/T)
 	to_chat(src, SPAN_NOTICE("You tunnel to your destination."))

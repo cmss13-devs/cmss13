@@ -10,7 +10,7 @@
 
 /mob/proc/stun_callback_check()
 	if(stunned && stunned < recovery_constant)
-		stun_timer = addtimer(CALLBACK(src, /mob/proc/stun_callback), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
+		stun_timer = addtimer(CALLBACK(src, .proc/stun_callback), (stunned/recovery_constant) * 2 SECONDS, TIMER_OVERRIDE|TIMER_UNIQUE)
 		return
 
 	if(stun_timer != TIMER_ID_NULL)

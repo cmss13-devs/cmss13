@@ -122,7 +122,7 @@
 	return
 
 /obj/item/hardpoint/proc/generate_bullet(mob/user, turf/origin_turf)
-	var/obj/item/projectile/P = new(initial(name), user)
+	var/obj/item/projectile/P = new(src, initial(name), user)
 	P.forceMove(origin_turf)
 	P.generate_bullet(new ammo.default_ammo)
 	// Apply bullet traits from gun

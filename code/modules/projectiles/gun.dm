@@ -79,7 +79,7 @@
 	var/extra_delay 	= 0						//When burst-firing, this number is extra time before the weapon can fire again. Depends on number of rounds fired.
 	///When PB burst firing and handing off to /fire after a target moves out of range, this is how many bullets have been fired.
 	var/PB_burst_bullets_fired		= 0
-	
+
 	// Full auto
 	var/fa_firing = FALSE						//Whether or not the gun is firing full-auto
 	var/fa_shots = 0							//How many shots have been fired using full-auto. Used to figure out scatter
@@ -845,7 +845,7 @@ and you're good to go.
 	if(isliving(usr))
 		var/mob/M = usr
 		weapon_source_mob = M
-	var/obj/item/projectile/P = new /obj/item/projectile(bullet_source, weapon_source_mob, src)
+	var/obj/item/projectile/P = new /obj/item/projectile(src, bullet_source, weapon_source_mob)
 	P.generate_bullet(chambered, 0, NO_FLAGS)
 
 	return P
@@ -1124,7 +1124,7 @@ and you're good to go.
 	var/bullets_to_fire = 1
 	///Instructs to handoff to Fire after exiting loop, if necessary.
 	var/handoff = FALSE
-	
+
 	if(!check_for_attachment_fire && (flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
 		bullets_to_fire = burst_amount
 		flags_gun_features |= GUN_BURST_FIRING
@@ -1136,7 +1136,7 @@ and you're good to go.
 
 		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
 			break
-		
+
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
 		if(!projectile_to_fire)
 			click_empty(user)
@@ -1153,24 +1153,24 @@ and you're good to go.
 		projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 		if(bullets_fired == 1) //First shot gives the PB message.
 			user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"), null, null, null, CHAT_TYPE_WEAPON_USE)
-					
+
 		user.track_shot(initial(name))
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired) //We add any damage effects that we need.
-		
+
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 		simulate_recoil(1, user)
 
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)
 			var/obj/item/projectile/BP
 			for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
-				BP = new /obj/item/projectile(initial(name), user, M.loc)
+				BP = new /obj/item/projectile(M.loc, initial(name), user)
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 				BP.accuracy = round(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff
 				if(bullets_fired > 1)
 					BP.original = M //original == the original target of the projectile. If the target is downed and this isn't set, the projectile will try to fly over it. Of course, it isn't going anywhere, but it's the principle of the thing. Very embarrassing.
 					if(!BP.handle_mob(M) && M.lying) //This is the 'handle impact' proc for a flying projectile, including hit RNG, on_hit_mob and bullet_act. If it misses, it doesn't go anywhere. We'll pretend it slams into the ground or punches a hole in the ceiling, because trying to make it bypass the xeno or shoot from the tile beyond it is probably more spaghet than my life is worth.
-						if(BP.ammo.sound_bounce) 
+						if(BP.ammo.sound_bounce)
 							playsound(M.loc, BP.ammo.sound_bounce, 35, 1)
 						M.visible_message(SPAN_AVOIDHARM("[BP] slams into [get_turf(M)]!"), //Managing to miss an immobile target flat on the ground deserves some recognition, don't you think?
 							SPAN_AVOIDHARM("[BP] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
@@ -1178,12 +1178,12 @@ and you're good to go.
 					BP.ammo.on_hit_mob(M, BP)
 					M.bullet_act(BP)
 				qdel(BP)
-				
+
 		if(bullets_fired > 1)
-			projectile_to_fire.original = M		
+			projectile_to_fire.original = M
 			if(!projectile_to_fire.handle_mob(M) && M.lying)
 				if(projectile_to_fire.ammo.sound_bounce)
-					playsound(M.loc, projectile_to_fire.ammo.sound_bounce, 35, 1)										
+					playsound(M.loc, projectile_to_fire.ammo.sound_bounce, 35, 1)
 				M.visible_message(SPAN_AVOIDHARM("[projectile_to_fire] slams into [get_turf(M)]!"),
 					SPAN_AVOIDHARM("[projectile_to_fire] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 		else
@@ -1232,7 +1232,7 @@ and you're good to go.
 	Removed ishuman() check. There is no reason for it, as it just eats up more processing, and adding fingerprints during the fire cycle is silly.
 	Consequently, predators are able to fire while cloaked.
 	*/
-	
+
 	if(flags_gun_features & GUN_BURST_FIRING) return
 	if(world.time < guaranteed_delay_time) return
 	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0 || user.dazed)) return //We just put the gun up. Can't do it that fast

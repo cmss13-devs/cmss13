@@ -324,12 +324,12 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 //-------------------------------------------------------
-//CLF HOLDOUT PISTOL MEME
+//CLF HOLDOUT PISTOL
 /obj/item/weapon/gun/pistol/m43pistol
 	name = "M43 Hummingbird Pistol"
 	desc = "The M43 Hummingbird Pistol was produced in the mid-2170s as a cheap and concealable firearm for CLF Sleeper Cell agents for assassinations and ambushes, and is able to be concealed in shoes and workboots."
-	icon_state = "m43pistol"
-	item_state = "m43pistol"
+	icon_state = "m43"
+	item_state = "m43"
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED
 	fire_sound = 'sound/weapons/gun_m43.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/m43pistol

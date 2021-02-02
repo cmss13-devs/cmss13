@@ -17,7 +17,7 @@
 	result = "anfo"
 	required_reagents = list("ammonium_nitrate" = 2, "fuel" = 1)
 	result_amount = 2
-	sensitivity_threshold = 60
+	sensitivity_threshold = 60.001
 
 /datum/chemical_reaction/explosive/nitroglycerin
 	name = "nitroglycerin"
@@ -25,7 +25,7 @@
 	result = "nitroglycerin"
 	required_reagents = list("glycerol" = 1, "pacid" = 1, "sacid" = 1)
 	result_amount = 2
-	sensitivity_threshold = 5
+	sensitivity_threshold = 5.001
 
 /datum/chemical_reaction/emp_pulse
 	name = "EMP Pulse"

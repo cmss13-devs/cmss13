@@ -135,7 +135,7 @@
 		vis_contents.Cut()
 		QDEL_NULL(melting_body)
 	else
-		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool/proc/melt_body, iterations), 2 SECONDS)
+		addtimer(CALLBACK(src, /obj/effect/alien/resin/special/pool.proc/melt_body, iterations), 2 SECONDS)
 
 /obj/effect/alien/resin/special/pool/proc/can_spawn_larva()
 	if(linked_hive.hardcore)

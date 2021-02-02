@@ -86,7 +86,7 @@
 	throw_atom(target, 5, SPEED_VERY_FAST, src)
 	playsound(loc, 'sound/voice/shriek1.ogg', 25, 1)
 
-	addtimer(CALLBACK(src, /mob/living/carbon/human/proc/finish_leap, T), 5)
+	addtimer(CALLBACK(src, .proc/finish_leap, T), 5)
 
 /mob/living/carbon/human/proc/finish_leap(mob/living/T)
 	if(status_flags & LEAPING) status_flags &= ~LEAPING

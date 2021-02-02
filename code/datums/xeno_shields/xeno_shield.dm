@@ -76,7 +76,7 @@
 	new_shield.linked_xeno = src
 
 	if(duration > -1)
-		addtimer(CALLBACK(new_shield, /datum/xeno_shield/proc/begin_decay), duration)
+		addtimer(CALLBACK(new_shield, /datum/xeno_shield.proc/begin_decay), duration)
 
 	overlay_shields()
 	return new_shield

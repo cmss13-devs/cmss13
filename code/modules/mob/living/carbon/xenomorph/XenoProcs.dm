@@ -441,7 +441,7 @@
 	jitter_time--
 
 	if(jitter_time)
-		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph/proc/xeno_jitter, jitter_time), 1)
+		addtimer(CALLBACK(src, /mob/living/carbon/Xenomorph.proc/xeno_jitter, jitter_time), 1) // The fuck, use a processing SS, TODO FIXME AHH
 	else
 		//endwhile - reset the pixel offsets to zero
 		pixel_x = old_x

@@ -17,7 +17,6 @@
 #include "code\span_macros.dm"
 #include "code\stylesheet.dm"
 #include "code\__DEFINES\__game.dm"
-#include "code\__DEFINES\__rust_g.config.dm"
 #include "code\__DEFINES\__rust_g.dm"
 #include "code\__DEFINES\__spacemandmm.dm"
 #include "code\__DEFINES\_globals.dm"

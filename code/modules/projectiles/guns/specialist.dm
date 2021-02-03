@@ -291,9 +291,9 @@
 	wield_delay = WIELD_DELAY_FAST
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	var/powerpack = null
-	ammo = /datum/ammo/bullet/smartgun/marine
-	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun/marine //Toggled ammo type
-	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/marine/armor_piercing //Toggled ammo type
+	ammo = /datum/ammo/bullet/smartgun
+	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
+	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
 	var/shells_fired_max = 20 //Smartgun only; once you fire # of shells, it will attempt to reload automatically. If you start the reload, the counter resets.
 	var/shells_fired_now = 0 //The actual counter used. shells_fired_max is what it is compared to.
 	var/iff_enabled = TRUE //Begin with the safety on.
@@ -345,7 +345,7 @@
 	scatter = SCATTER_AMOUNT_TIER_6
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_3
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -480,11 +480,16 @@
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
+/obj/item/weapon/gun/smartgun/replace_ammo()
+	..()
+	ammo = secondary_toggled ? ammo_secondary : ammo_primary
+
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
 	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
 	ammo = ammo_primary
+	secondary_toggled = FALSE
 	if(iff_enabled)
 		add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 		drain += 10
@@ -531,12 +536,12 @@
 
 /obj/item/weapon/gun/smartgun/proc/recoil_compensation()
 	if(recoil_compensation)
-		src.scatter = SCATTER_AMOUNT_TIER_10
-		src.recoil = RECOIL_OFF
+		src.scatter -= SCATTER_AMOUNT_TIER_7
+		src.recoil -= RECOIL_AMOUNT_TIER_3
 		src.drain += 50
 	if(!recoil_compensation)
-		src.scatter = SCATTER_AMOUNT_TIER_6
-		src.recoil = RECOIL_AMOUNT_TIER_3
+		src.scatter += SCATTER_AMOUNT_TIER_7
+		src.recoil += RECOIL_AMOUNT_TIER_3
 		src.drain -= 50
 
 /obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
@@ -729,7 +734,7 @@
 
 /obj/item/weapon/gun/launcher
 	gun_category = GUN_CATEGORY_HEAVY
-	has_empty_icon = FALSE 
+	has_empty_icon = FALSE
 	has_open_icon = FALSE
 	///gun update_icon doesn't detect that guns with no magazine are loaded or not, and will always append _o or _e if possible.
 	var/GL_has_empty_icon = TRUE
@@ -741,13 +746,13 @@
 	///What single item to fill the storage with, if any. This does not respect w_class.
 	var/preload
 	///How many items can be inserted. "Null" = backpack-style size-based inventory. You'll have to set max_storage_space too if you do that, and arrange any initial contents. Iff you arrange to put in more items than the storage can hold, they can be taken out but not replaced.
-	var/internal_slots 
+	var/internal_slots
 	///how big an item can be inserted.
-	var/internal_max_w_class 
+	var/internal_max_w_class
 	///the sfx played when the storage is opened.
-	var/use_sound = null 
+	var/use_sound = null
 	///Whether clicking a held weapon with an empty hand will open its inventory or draw a munition out.
-	var/direct_draw = TRUE 
+	var/direct_draw = TRUE
 
 /obj/item/weapon/gun/launcher/Initialize(mapload, spawn_empty) //If changing vars on init, be sure to do the parent proccall *after* the change.
 	. = ..()
@@ -795,11 +800,11 @@
 	wield_delay = WIELD_DELAY_SLOW
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
 	///Can you access the storage by clicking it, put things into it, or take things out? Meant for break-actions mostly but useful for any state where you want access to be toggleable. Make sure to call cylinder.hide_from(user) so they don't still have the screen open!
-	var/open_chamber = TRUE 
+	var/open_chamber = TRUE
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
 	var/is_lobbing = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
-	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade) 
+	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade)
 	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
 	var/valid_munitions = list(/obj/item/explosive/grenade)
 
@@ -822,7 +827,7 @@
 		return
 	if(length(cylinder.contents))
 		if(internal_slots == 1)
-			to_chat(user, SPAN_NOTICE("It is loaded with a grenade."))	
+			to_chat(user, SPAN_NOTICE("It is loaded with a grenade."))
 		else
 			to_chat(user, SPAN_NOTICE("It is loaded with <b>[length(cylinder.contents)] / [internal_slots]</b> grenades."))
 	else
@@ -838,7 +843,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		GL_sprite += "_o"
 	icon_state = GL_sprite
 
-	
+
 /obj/item/weapon/gun/launcher/grenade/attack_hand(mob/user)
 	if(!open_chamber || src != user.get_inactive_hand()) //Need to have the GL in your hands to open the cylinder.
 		return ..()
@@ -848,8 +853,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 /obj/item/weapon/gun/launcher/grenade/unload(mob/user, reload_override = FALSE, drop_override = FALSE, loc_override = FALSE)
 	if(!open_chamber)
-		to_chat(user, SPAN_WARNING("[src] is closed!"))	
-		return	
+		to_chat(user, SPAN_WARNING("[src] is closed!"))
+		return
 	if(!length(cylinder.contents))
 		to_chat(user, SPAN_WARNING("It's empty!"))
 		return
@@ -861,9 +866,9 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		nade.forceMove(get_turf(src))
 	else
 		user.put_in_hands(nade)
-	
+
 	user.visible_message(SPAN_NOTICE("[user] unloads [nade] from [src]."),
-	SPAN_NOTICE("You unload [nade] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)	
+	SPAN_NOTICE("You unload [nade] from [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	playsound(user, unload_sound, 30, 1)
 
 
@@ -880,12 +885,12 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			return FALSE
 	for(var/G in valid_munitions) //Check if it has a ticket.
 		if(istype(I, G))
-			return TRUE			
+			return TRUE
 
 
 /obj/item/weapon/gun/launcher/grenade/on_attackby(obj/item/explosive/grenade/I, mob/user) //the attack in question is on the internal container. Complete override - normal storage attackby cannot be silenced, and will always say "you put the x into y".
 	if(!open_chamber)
-		to_chat(user, SPAN_WARNING("[src] is closed!"))	
+		to_chat(user, SPAN_WARNING("[src] is closed!"))
 		return
 	if(!istype(I))
 		to_chat(user, SPAN_WARNING("You can't load [I] into [src]!"))
@@ -898,14 +903,14 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		return
 	if(!cylinder.can_be_inserted(I)) //Technically includes whether there's room for it, but the above gives a tailored message.
 		return
-	
+
 	user.visible_message(SPAN_NOTICE("[user] loads [I] into [src]."),
-	SPAN_NOTICE("You load [I] into the grenade launcher."), null, 4, CHAT_TYPE_COMBAT_ACTION)	
+	SPAN_NOTICE("You load [I] into the grenade launcher."), null, 4, CHAT_TYPE_COMBAT_ACTION)
 	if(internal_slots > 1)
 		to_chat(user, SPAN_INFO("Now storing: [length(cylinder.contents) + 1] / [internal_slots] grenades."))
 
 	cylinder.handle_item_insertion(I, TRUE, user)
-	
+
 
 /obj/item/weapon/gun/launcher/grenade/able_to_fire(mob/living/user) //Skillchecks and fire blockers go in the child items.
 	. = ..()
@@ -927,7 +932,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			return
 		fire_grenade(target,user)
 		playsound(user.loc, cocked_sound, 25, 1)
-		
+
 
 /obj/item/weapon/gun/launcher/grenade/proc/fire_grenade(atom/target, mob/user)
 	set waitfor = 0
@@ -982,11 +987,11 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	attachable_allowed = list(/obj/item/attachable/magnetic_harness)
 	flags_item = TWOHANDED|NO_CRYO_STORE
 	map_specific_decoration = TRUE
-	
+
 	is_lobbing = TRUE
 	internal_slots = 6
 	direct_draw = FALSE
-	
+
 /obj/item/weapon/gun/launcher/grenade/m92/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 19, "stock_y" = 14)
 

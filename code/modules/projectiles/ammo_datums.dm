@@ -963,17 +963,7 @@
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
-	flags_ammo_behavior = AMMO_BALLISTIC
-	icon_state = "bullet"
-
-	accurate_range = 12
-	accuracy = HIT_ACCURACY_TIER_1
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_4
-	penetration = ARMOR_PENETRATION_TIER_8
-	damage_armor_punch = 1
-
-/datum/ammo/bullet/smartgun/marine/armor_piercing
+	name = "armor-piercing smartgun bullet"
 	icon_state = "bullet"
 
 	accurate_range = 12

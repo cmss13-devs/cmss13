@@ -94,7 +94,7 @@
 	max_rounds = 500 //Should be 500 in total.
 	icon_state = "m56_drum"
 	w_class = SIZE_MEDIUM
-	default_ammo = /datum/ammo/bullet/smartgun/marine
+	default_ammo = /datum/ammo/bullet/smartgun
 	gun_type = /obj/item/weapon/gun/smartgun
 
 /obj/item/ammo_magazine/smartgun/dirty

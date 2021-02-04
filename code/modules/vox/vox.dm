@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(vox_types)
 
-/proc/play_sound_vox(var/sentence, var/list/players, var/list/vox, var/client/caller, var/volume = 1)
+/proc/play_sound_vox(var/sentence, var/list/players, var/list/vox, var/client/caller, var/volume = 100)
 	if(!islist(players))
 		players = list(players)
 

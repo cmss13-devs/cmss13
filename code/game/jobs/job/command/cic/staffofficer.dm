@@ -6,6 +6,7 @@
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Staff Officer (SO)"
+	entry_message_body = "Your job is to monitor the marines, man the CIC, and listen to your superior officers. You are in charge of logistics and the overwatch system. You are also in line to take command after the executive officer."
 
 /datum/job/command/bridge/set_spawn_positions(var/count)
 	spawn_positions = so_slot_formula(count)
@@ -20,9 +21,7 @@
 			total_positions_so_far = positions
 	return positions
 
-
 /datum/job/command/bridge/generate_entry_message(mob/living/carbon/human/H)
-	entry_message_body = "Your job is to monitor the marines, man the CIC, and listen to your superior officers. You are in charge of logistics and the overwatch system. You are also in line to take command after the executive officer."
 	return ..()
 
 AddTimelock(/datum/job/command/bridge, list(

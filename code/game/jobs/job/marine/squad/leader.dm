@@ -5,10 +5,7 @@
 	supervisors = "the acting commanding officer"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Leader"
-
-/datum/job/marine/leader/generate_entry_message()
 	entry_message_body = "You are responsible for the men and women of your squad. Make sure they are on task, working together, and communicating. You are also in charge of communicating with command and letting them know about the situation first hand. Keep out of harm's way."
-	return ..()
 
 /datum/job/marine/leader/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD

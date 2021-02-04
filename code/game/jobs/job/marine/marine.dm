@@ -11,7 +11,7 @@
 	return ..()
 
 /datum/job/marine/generate_entry_conditions(mob/living/carbon/human/H)
-	entry_message_body = ..()
+	..()
 	if(flags_startup_parameters & ROLE_ADD_TO_MODE) H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW) //Start hungry for the default marine.
 
 /datum/timelock/squad

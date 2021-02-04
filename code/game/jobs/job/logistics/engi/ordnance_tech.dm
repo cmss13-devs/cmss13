@@ -9,6 +9,7 @@
 	selection_class = "job_ot"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
 	gear_preset = "USCM Ordnance Technician (OT)"
+	entry_message_body = "Your job is to maintain the integrity of the USCM weapons, munitions and equipment, including the orbital cannon. You can use the workshop in the portside hangar to construct new armaments for the marines. However you remain one of the more flexible roles on the ship and as such may receive other menial tasks from your superiors."
 
 /datum/job/logistics/tech/set_spawn_positions(var/count)
 	spawn_positions = ot_slot_formula(count)
@@ -22,10 +23,6 @@
 		else
 			total_positions_so_far = positions
 	return positions
-
-/datum/job/logistics/tech/generate_entry_message(mob/living/carbon/human/H)
-	entry_message_body = "Your job is to maintain the integrity of the USCM weapons, munitions and equipment, including the orbital cannon. You can use the workshop in the portside hangar to construct new armaments for the marines. However you remain one of the more flexible roles on the ship and as such may receive other menial tasks from your superiors."
-	return ..()
 
 AddTimelock(/datum/job/logistics/tech, list(
 	JOB_ENGINEER_ROLES = 1 HOURS

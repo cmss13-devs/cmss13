@@ -5,10 +5,7 @@
 	allow_additional = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Medic"
-
-/datum/job/marine/medic/generate_entry_message()
 	entry_message_body = "You must tend the wounds of your squad mates and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
-	return ..()
 
 /datum/job/marine/medic/set_spawn_positions(var/count)
 	for(var/datum/squad/sq in RoleAuthority.squads)

@@ -29,7 +29,7 @@
 
 	for(var/i=0;i<shrapnel_number;i++)
 
-		var/obj/item/projectile/S = new(shrapnel_source, shrapnel_source_mob)
+		var/obj/item/projectile/S = new(epicenter, shrapnel_source, shrapnel_source_mob)
 		S.generate_bullet(new shrapnel_type)
 
 		if(!(ignore_source_mob && mob_standing_on_turf == shrapnel_source_mob) && mob_standing_on_turf && prob(100*on_hit_coefficient)) //if a non-prone mob is on the same turf as the shrapnel explosion, some of the shrapnel hits him

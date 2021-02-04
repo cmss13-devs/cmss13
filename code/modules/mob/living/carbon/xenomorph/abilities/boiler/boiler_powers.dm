@@ -374,7 +374,7 @@
 	X.visible_message(SPAN_XENOWARNING("The [X] fires a blast of acid at [A]!"), SPAN_XENOWARNING("You fire a blast of acid at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, X.loc)
+	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, initial(X.caste_name), X)
 
 	var/datum/ammo/ammoDatum = new ammo_type()
 

@@ -503,7 +503,7 @@
 	X.visible_message(SPAN_XENOWARNING("The [X] fires their spikes at [A]!"), SPAN_XENOWARNING("You fire your spikes at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, initial(X.caste_name), X)
+	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, X.loc)
 
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
 

@@ -60,7 +60,7 @@
 
 	var/mob/living/homing_target = null
 
-/obj/item/projectile/Initialize(mapload, var/source, var/source_mob)
+/obj/item/projectile/Initialize(var/source, var/source_mob)
 	. = ..()
 	path = list()
 	permutated = list()
@@ -467,7 +467,7 @@
 			L.visible_message(SPAN_AVOIDHARM("[src] misses [L]!"),
 				SPAN_AVOIDHARM("[src] narrowly misses you!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
-		#if DEBUG_HIT_CHANCE
+		#if DEBUG_HIT_CHANCE		
 		to_world(SPAN_DEBUG("([L]) Missed."))
 		#endif
 

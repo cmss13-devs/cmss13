@@ -79,7 +79,7 @@
 	var/extra_delay 	= 0						//When burst-firing, this number is extra time before the weapon can fire again. Depends on number of rounds fired.
 	///When PB burst firing and handing off to /fire after a target moves out of range, this is how many bullets have been fired.
 	var/PB_burst_bullets_fired		= 0
-
+	
 	// Full auto
 	var/fa_firing = FALSE						//Whether or not the gun is firing full-auto
 	var/fa_shots = 0							//How many shots have been fired using full-auto. Used to figure out scatter
@@ -845,7 +845,7 @@ and you're good to go.
 	if(isliving(usr))
 		var/mob/M = usr
 		weapon_source_mob = M
-	var/obj/item/projectile/P = new /obj/item/projectile(src, bullet_source, weapon_source_mob)
+	var/obj/item/projectile/P = new /obj/item/projectile(bullet_source, weapon_source_mob, src)
 	P.generate_bullet(chambered, 0, NO_FLAGS)
 
 	return P
@@ -1163,7 +1163,7 @@ and you're good to go.
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)
 			var/obj/item/projectile/BP
 			for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
-				BP = new /obj/item/projectile(M.loc, initial(name), user)
+				BP = new /obj/item/projectile(initial(name), user, M.loc)
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 				BP.accuracy = round(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff

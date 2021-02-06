@@ -261,12 +261,9 @@
 	if(old_lead.job != JOB_SQUAD_LEADER || !leader_killed)
 		if(istype(old_lead.wear_ear, /obj/item/device/radio/headset/almayer/marine))
 			var/obj/item/device/radio/headset/almayer/marine/R = old_lead.wear_ear
-			if(istype(R.keyslot1, /obj/item/device/encryptionkey/squadlead))
-				QDEL_NULL(R.keyslot1)
-			else if(istype(R.keyslot2, /obj/item/device/encryptionkey/squadlead))
-				QDEL_NULL(R.keyslot2)
-			else if(istype(R.keyslot3, /obj/item/device/encryptionkey/squadlead))
-				QDEL_NULL(R.keyslot3)
+			for(var/obj/item/device/encryptionkey/squadlead/acting/key in R.keys)
+				R.keys -= key
+				qdel(key)
 			R.recalculateChannels()
 		if(istype(old_lead.wear_id, /obj/item/card/id))
 			var/obj/item/card/id/ID = old_lead.wear_id

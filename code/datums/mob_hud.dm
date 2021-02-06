@@ -598,6 +598,8 @@ var/list/datum/mob_hud/huds = list(
 		if(assigned_squad.squad_leader == src)
 			marine_rk = "leader"
 			langchat_styles = "langchat_bolded" // bold text for bold leaders
+		else
+			langchat_styles = initial(langchat_styles)
 
 		langchat_color = squad_colors_chat[assigned_squad.color]
 

@@ -1,4 +1,3 @@
-
 /obj/item/device/encryptionkey
 	name = "Standard Encryption Key"
 	desc = "An encryption key for a radio headset."
@@ -6,13 +5,11 @@
 	icon_state = "cypherkey"
 	item_state = ""
 	w_class = SIZE_TINY
-	var/translate_binary = 0
-	var/translate_hive = 0
-	var/syndie = 0
+	var/translate_binary = FALSE
+	var/translate_hive = FALSE
+	var/syndie = FALSE //Signifies that it de-crypts Syndicate transmissions
 	var/list/channels = list()
-
-
-	syndie = 1//Signifies that it de-crypts Syndicate transmissions
+	var/abstract = FALSE
 
 /obj/item/device/encryptionkey/binary
 	icon_state = "binary_key"
@@ -24,6 +21,7 @@
 	name = "Public Radio Encryption Key"
 	icon_state = "stripped_key"
 	channels = list("Almayer" = 1)
+	abstract = TRUE
 
 /obj/item/device/encryptionkey/public_civ
 	name = "Civillian Radio Encryption Key"
@@ -139,6 +137,9 @@
 	name = "\improper Squad Leader Radio Encryption Key"
 	icon_state = "sl_key"
 	channels = list("Command" = 1, "JTAC" = 1)
+
+/obj/item/device/encryptionkey/squadlead/acting
+	abstract = TRUE
 
 /obj/item/device/encryptionkey/alpha
 	name = "\improper Alpha Squad Radio Encryption Key"

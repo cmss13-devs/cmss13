@@ -231,17 +231,17 @@ var/world_topic_spam_protect_time = world.timeofday
 		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)] &#8212; [MAIN_SHIP_NAME]</b>"
 		s += "<br><img src=\"[CONFIG_GET(string/forumurl)]/byond_hub_logo.jpg\"></a>"
 		// s += "<a href=\"http://goo.gl/04C5lP\">Wiki</a>|<a href=\"http://goo.gl/hMmIKu\">Rules</a>"
-		if(SSticker)
-			if(master_mode)
-				s += "<br>Map: <b>[SSmapping.configs[GROUND_MAP].map_name]</b>"
-				if(SSticker.mode)
-					s += "<br>Mode: <b>[SSticker.mode.name]</b>"
-				s += "<br>Round time: <b>[duration2text()]</b>"
-		else
-			s += "<br>Map: <b>[SSmapping.configs[GROUND_MAP].map_name]</b>"
-		// s += enter_allowed ? "<br>Entering: <b>Enabled</b>" : "<br>Entering: <b>Disabled</b>"
 
-		status = s
+	if(SSmapping?.configs)
+		var/datum/map_config/MG = SSmapping.configs[GROUND_MAP]
+		if(MG?.map_name)
+			s += "<br>Map: <b>[SSmapping.configs[GROUND_MAP].map_name]</b>"
+
+	if(SSticker?.mode)
+		s += "<br>Mode: <b>[SSticker.mode.name]</b>"
+		s += "<br>Round time: <b>[duration2text()]</b>"
+
+	world.status = s
 
 #define FAILED_DB_CONNECTION_CUTOFF 1
 var/failed_db_connections = 0

@@ -8,6 +8,9 @@
 	/// State var to track the shoes (if any) of the humans
 	/// with this element
 	var/list/target_shoes
+	/// Whether the human has moved into the turf giving them bloody feet
+	/// Necessary because of how Crossed is called before Moved
+	var/list/entered_bloody_turf
 
 /datum/element/bloody_feet/Attach(datum/target, dry_time, obj/item/clothing/shoes, steps, bcolor)
 	. = ..()
@@ -19,6 +22,7 @@
 
 	var/mob/living/carbon/human/H = target
 	H.bloody_footsteps = steps_to_take
+	LAZYADD(entered_bloody_turf, target)
 
 	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/on_moved)
 	RegisterSignal(target, COMSIG_HUMAN_BLOOD_CROSSED, .proc/blood_crossed)
@@ -36,6 +40,7 @@
 		COMSIG_HUMAN_BLOOD_CROSSED,
 		COMSIG_HUMAN_CLEAR_BLOODY_FEET,
 	))
+	LAZYREMOVE(entered_bloody_turf, target)
 	if(LAZYACCESS(target_shoes, target))
 		UnregisterSignal(target_shoes[target], COMSIG_ITEM_DROPPED)
 		LAZYREMOVE(target_shoes, target)
@@ -51,8 +56,8 @@
 
 /datum/element/bloody_feet/proc/add_tracks(mob/living/carbon/human/target, oldLoc, direction)
 	// FIXME: This shit is retarded and Entered should be refactored
-	if(target.bloody_footsteps == steps_to_take)
-		target.bloody_footsteps--
+	if(LAZYISIN(entered_bloody_turf, target))
+		LAZYREMOVE(entered_bloody_turf, target)
 		return
 
 	var/turf/T_in = target.loc
@@ -78,9 +83,7 @@
 			FP = new(T_out)
 			FP.add_tracks(direction, color, TRUE)
 
-	// Need to do the value check first because
-	// of the Entered issue mentioned above
-	if(target.bloody_footsteps-- <= 0)
+	if(--target.bloody_footsteps <= 0)
 		Detach(target)
 
 /datum/element/bloody_feet/proc/on_shoes_removed(datum/target)

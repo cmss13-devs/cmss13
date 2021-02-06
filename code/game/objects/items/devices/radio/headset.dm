@@ -8,15 +8,18 @@
 	canhear_range = 0 // can't hear headsets from very far away
 
 	flags_equip_slot = SLOT_EAR
-	var/translate_binary = 0
-	var/translate_hive = 0
-	var/obj/item/device/encryptionkey/keyslot1 = null
-	var/obj/item/device/encryptionkey/keyslot2 = null
-	var/obj/item/device/encryptionkey/keyslot3 = null
+	var/translate_binary = FALSE
+	var/translate_hive = FALSE
+	var/maximum_keys = 3
+	var/list/initial_keys //Typepaths of objects to be created at initialisation.
+	var/list/keys //Actual objects.
 	maxf = 1489
 
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
+	keys = list()
+	for (var/key in initial_keys)
+		keys += new key(src)
 	recalculateChannels()
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
@@ -77,120 +80,61 @@
 		return
 
 	if(istype(W, /obj/item/tool/screwdriver))
-		if(keyslot1 || keyslot2 || keyslot3)
-
-
-			for(var/ch_name in channels)
-				SSradio.remove_object(src, radiochannels[ch_name])
-				secure_radio_connections[ch_name] = null
-
-
-			if(keyslot1)
-				var/turf/T = get_turf(user)
-				if(T)
-					keyslot1.forceMove(T)
-					keyslot1 = null
-
-
-
-			if(keyslot2)
-				var/turf/T = get_turf(user)
-				if(T)
-					keyslot2.forceMove(T)
-					keyslot2 = null
-
-			if(keyslot3)
-				var/turf/T = get_turf(user)
-				if(T)
-					keyslot3.forceMove(T)
-					keyslot3 = null
-
+		var/turf/T = get_turf(user)
+		if(!T)
+			to_chat(user, "You cannot do it here.")
+			return
+		var/removed_keys = FALSE
+		for (var/obj/item/device/encryptionkey/key in keys)
+			if(key.abstract)
+				continue
+			key.forceMove(T)
+			keys -= key
+			removed_keys = TRUE
+		if(removed_keys)
 			recalculateChannels()
 			to_chat(user, "You pop out the encryption keys in the headset!")
-
 		else
 			to_chat(user, "This headset doesn't have any encryption keys!  How useless...")
 
 	if(istype(W, /obj/item/device/encryptionkey/))
-		if(keyslot1 && keyslot2 && keyslot3)
+		var/keycount = 0
+		for (var/obj/item/device/encryptionkey/key in keys)
+			if(!key.abstract)
+				keycount++
+		if(keycount >= maximum_keys)
 			to_chat(user, "The headset can't hold another key!")
 			return
-
-		if(!keyslot1)
-			if(user.drop_held_item())
-				W.forceMove(src)
-				keyslot1 = W
-
-
-		if(!keyslot2)
-			if(user.drop_held_item())
-				W.forceMove(src)
-				keyslot2 = W
-		else
-			if(user.drop_held_item())
-				W.forceMove(src)
-				keyslot3 = W
-
-
-		recalculateChannels()
+		if(user.drop_held_item())
+			W.forceMove(src)
+			keys += W
+			recalculateChannels()
 
 	return
 
 
 /obj/item/device/radio/headset/proc/recalculateChannels()
+	for(var/ch_name in channels)
+		SSradio.remove_object(src, radiochannels[ch_name])
+		secure_radio_connections[ch_name] = null
 	channels = list()
-	translate_binary = 0
-	translate_hive = 0
-	syndie = 0
+	translate_binary = FALSE
+	translate_hive = FALSE
+	syndie = FALSE
 
-	if(keyslot1)
-		for(var/ch_name in keyslot1.channels)
+	for(var/i in keys)
+		var/obj/item/device/encryptionkey/key = i
+		for(var/ch_name in key.channels)
 			if(ch_name in channels)
 				continue
 			channels += ch_name
-			channels[ch_name] = keyslot1.channels[ch_name]
-
-		if(keyslot1.translate_binary)
-			translate_binary = 1
-
-		if(keyslot1.translate_hive)
-			translate_hive = 1
-
-		if(keyslot1.syndie)
-			syndie = 1
-
-	if(keyslot2)
-		for(var/ch_name in keyslot2.channels)
-			if(ch_name in channels)
-				continue
-			channels += ch_name
-			channels[ch_name] = keyslot2.channels[ch_name]
-
-		if(keyslot2.translate_binary)
-			translate_binary = 1
-
-		if(keyslot2.translate_hive)
-			translate_hive = 1
-
-		if(keyslot2.syndie)
-			syndie = 1
-
-	if(keyslot3)
-		for(var/ch_name in keyslot3.channels)
-			if(ch_name in channels)
-				continue
-			channels += ch_name
-			channels[ch_name] = keyslot3.channels[ch_name]
-
-		if(keyslot3.translate_binary)
-			translate_binary = 1
-
-		if(keyslot3.translate_hive)
-			translate_hive = 1
-
-		if(keyslot3.syndie)
-			syndie = 1
-
+			channels[ch_name] = key.channels[ch_name]
+		if(key.translate_binary)
+			translate_binary = TRUE
+		if(key.translate_hive)
+			translate_hive = TRUE
+		if(key.syndie)
+			syndie = TRUE
 
 	for (var/ch_name in channels)
 		secure_radio_connections[ch_name] = SSradio.add_object(src, radiochannels[ch_name],  RADIO_CHAT)
@@ -217,7 +161,7 @@
 
 /obj/item/device/radio/headset/binary
 
-	keyslot1 = new /obj/item/device/encryptionkey/binary
+	initial_keys = list(/obj/item/device/encryptionkey/binary)
 
 
 
@@ -227,7 +171,7 @@
 	icon = 'icons/obj/items/robot_component.dmi'
 	icon_state = "radio"
 	item_state = "headset"
-	keyslot1 = new /obj/item/device/encryptionkey/ai_integrated
+	initial_keys = list(/obj/item/device/encryptionkey/ai_integrated)
 	var/myAi = null    // Atlantis: Reference back to the AI which has this radio.
 	var/disabledAi = 0 // Atlantis: Used to manually disable AI's integrated radio via intellicard menu.
 
@@ -242,7 +186,7 @@
 	icon_state = "com_headset"
 	item_state = "headset"
 	freerange = 1
-	keyslot1 = new /obj/item/device/encryptionkey/ert
+	initial_keys = list(/obj/item/device/encryptionkey/ert)
 
 
 
@@ -255,7 +199,6 @@
 	icon_state = "generic_headset"
 	item_state = "headset"
 	frequency = PUB_FREQ
-	keyslot1 = new /obj/item/device/encryptionkey/public
 	var/headset_hud_on = 1
 
 
@@ -312,94 +255,95 @@
 	name = "chief engineer's headset"
 	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :e - engineering, :v - marine command, :m - medical, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "ce_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/ce
+	initial_keys = list(/obj/item/device/encryptionkey/ce)
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
 	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :m - medical, :v - marine command."
 	icon_state = "cmo_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/cmo
+	initial_keys = list(/obj/item/device/encryptionkey/cmo)
 
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
 	desc = "Useful for coordinating maintenance bars and orbital bombardments. Of robust and sturdy construction. To access the engineering channel, use :e."
 	icon_state = "eng_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/engi
+	initial_keys = list(/obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/chef
 	name = "kitchen radio headset"
 	desc = "Used by the onboard kitchen staff, filled with background noise of sizzling pots. Can coordinate with the supply channel, using :u."
 	icon_state = "req_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/req/ct
+	initial_keys = list(/obj/item/device/encryptionkey/req/ct)
 
 /obj/item/device/radio/headset/almayer/doc
 	name = "medical radio headset"
 	desc = "A headset used by the highly trained staff of the medbay. To access the medical channel, use :m."
 	icon_state = "med_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/med
+	initial_keys = list(/obj/item/device/encryptionkey/med)
 
 /obj/item/device/radio/headset/almayer/ct
 	name = "supply radio headset"
 	desc = "Used by the lowly Cargo Technicians of the USCM, light weight and portable. To access the supply channel, use :u."
 	icon_state = "req_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/req/ct
+	initial_keys = list(/obj/item/device/encryptionkey/req/ct)
 
 /obj/item/device/radio/headset/almayer/ro
 	desc = "A headset used by the RO for controlling their slave(s). Channels are as follows: :u - requisitions, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	name = "requisition officer radio headset"
 	icon_state = "ro_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/ro
+	initial_keys = list(/obj/item/device/encryptionkey/ro)
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
 	desc = "This is used by marine military police members. Channels are as follows: :p - military police, :v - marine command."
 	icon_state = "sec_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/mmpo
+	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
 
 /obj/item/device/radio/headset/almayer/cmpcom
 	name = "marine chief MP radio headset"
 	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :m - medbay, :e - engineering, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/cmpcom
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
 
 /obj/item/device/radio/headset/almayer/mcom
 	name = "marine command radio headset"
 	desc = "Used by CIC staff and higher-ups, features a non-standard brace. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence."
 	icon_state = "mcom_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/mcom
+	initial_keys = list(/obj/item/device/encryptionkey/mcom)
 
 /obj/item/device/radio/headset/almayer/po
 	name = "marine pilot radio headset"
 	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :j - JTAC, :z - intelligence."
-	keyslot1 = new /obj/item/device/encryptionkey/po
+	initial_keys = list(/obj/item/device/encryptionkey/po)
 
 /obj/item/device/radio/headset/almayer/intel
 	name = "marine intel radio headset"
 	desc = "Used by Intelligence Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :j - JTAC, :z - intelligence."
-	keyslot1 = new /obj/item/device/encryptionkey/po
+	initial_keys = list(/obj/item/device/encryptionkey/po)
 
 /obj/item/device/radio/headset/almayer/mcl
 	name = "corporate liaison radio headset"
 	desc = "Used by the CL to convince people to sign NDAs. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence, :y for WY."
 	icon_state = "wy_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/mcom/cl
+	initial_keys = list(/obj/item/device/encryptionkey/mcom/cl)
 
 /obj/item/device/radio/headset/almayer/rep
 	name = "representative radio headset"
 	desc = "This headset was the worst invention made, constant chatter comes from it."
 	icon_state = "wy_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/mcom/rep
+	initial_keys = list(/obj/item/device/encryptionkey/mcom/rep)
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
 	name = "marine commanding officer headset"
 	desc = "Issued only to Captains. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :z - intelligence"
 	icon_state = "mco_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/cmpcom/cdrcom
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 
 /obj/item/device/radio/headset/almayer/mcom/ai
-	keyslot1 = new /obj/item/device/encryptionkey/mcom/ai
+	initial_keys = list(/obj/item/device/encryptionkey/mcom/ai)
 
 /obj/item/device/radio/headset/almayer/marine
+	initial_keys = list(/obj/item/device/encryptionkey/public)
 
 /obj/item/device/radio/headset/almayer/marine/alpha
 	name = "marine alpha radio headset"
@@ -410,17 +354,17 @@
 /obj/item/device/radio/headset/almayer/marine/alpha/lead
 	name = "marine alpha leader radio headset"
 	desc = "This is used by the marine Alpha squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/squadlead
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
 
 /obj/item/device/radio/headset/almayer/marine/alpha/engi
 	name = "marine alpha engineer radio headset"
 	desc = "This is used by the marine Alpha combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/engi
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/alpha/med
 	name = "marine alpha medic radio headset"
 	desc = "This is used by the marine Alpha combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/med
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 
 
@@ -433,17 +377,17 @@
 /obj/item/device/radio/headset/almayer/marine/bravo/lead
 	name = "marine bravo leader radio headset"
 	desc = "This is used by the marine Bravo squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/squadlead
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
 
 /obj/item/device/radio/headset/almayer/marine/bravo/engi
 	name = "marine bravo engineer radio headset"
 	desc = "This is used by the marine Bravo combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/engi
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/bravo/med
 	name = "marine bravo medic radio headset"
 	desc = "This is used by the marine Bravo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/med
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 
 
@@ -456,17 +400,17 @@
 /obj/item/device/radio/headset/almayer/marine/charlie/lead
 	name = "marine charlie leader radio headset"
 	desc = "This is used by the marine Charlie squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/squadlead
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
 
 /obj/item/device/radio/headset/almayer/marine/charlie/engi
 	name = "marine charlie engineer radio headset"
 	desc = "This is used by the marine Charlie combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/engi
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/charlie/med
 	name = "marine charlie medic radio headset"
 	desc = "This is used by the marine Charlie combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/med
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 
 
@@ -479,17 +423,17 @@
 /obj/item/device/radio/headset/almayer/marine/delta/lead
 	name = "marine delta leader radio headset"
 	desc = "This is used by the marine Delta squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/squadlead
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
 
 /obj/item/device/radio/headset/almayer/marine/delta/engi
 	name = "marine delta engineer radio headset"
 	desc = "This is used by the marine Delta combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/engi
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/delta/med
 	name = "marine delta medic radio headset"
 	desc = "This is used by the marine Delta combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot1 = new /obj/item/device/encryptionkey/med
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 
 /* Echo squad cryo support, planned, but not yet implemented. Uncomment when needed.
@@ -552,13 +496,13 @@
 			switch(H.job)
 				if(JOB_SQUAD_LEADER)
 					name = "marine leader " + name
-					keyslot1 = new /obj/item/device/encryptionkey/squadlead(src)
+					keys += new /obj/item/device/encryptionkey/squadlead(src)
 				if(JOB_SQUAD_MEDIC)
 					name = "marine medic " + name
-					keyslot1 = new /obj/item/device/encryptionkey/med(src)
+					keys += new /obj/item/device/encryptionkey/med(src)
 				if(JOB_SQUAD_ENGI)
 					name = "marine engineer " + name
-					keyslot1 = new /obj/item/device/encryptionkey/engi(src)
+					keys += new /obj/item/device/encryptionkey/engi(src)
 				else
 					name = "marine " + name
 
@@ -581,21 +525,20 @@
 	name = "Colonist headset"
 	desc = "A special headset used by small groups of trained operatives. Or terrorists. To access the civillian common channel, use :h."
 	frequency = DUT_FREQ
-	keyslot1 = new /obj/item/device/encryptionkey/public_civ
+	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
 
 /obj/item/device/radio/headset/distress/PMC
 	name = "corporate headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence, :y - Corporate."
 	frequency = PMC_FREQ
 	icon_state = "wy_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/public
-	keyslot2 = new /obj/item/device/encryptionkey/mcom/cl
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom/cl)
 
 /obj/item/device/radio/headset/distress/bears
 	name = "UPP headset"
 	desc = "A special headset used by UPP military. To access the civillian common channel, use :h."
 	frequency = RUS_FREQ
-	keyslot1 = new /obj/item/device/encryptionkey/public_civ
+	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
 
 /obj/item/device/radio/headset/distress/bears/recalculateChannels()
 	..()
@@ -606,11 +549,10 @@
 	desc = "A special headset used by unidentified operatives. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence."
 	frequency = DTH_FREQ
 	icon_state = "wy_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/public
-	keyslot2 = new /obj/item/device/encryptionkey/mcom
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :z - intelligence,  :t - HighCom"
 	icon_state = "mco_headset"
-	keyslot1 = new /obj/item/device/encryptionkey/highcom
+	initial_keys = list(/obj/item/device/encryptionkey/highcom)

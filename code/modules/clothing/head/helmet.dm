@@ -426,8 +426,14 @@
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
 	var/protection_on = FALSE
+	///To remember the helmet's map variant-adjusted icon state
+	var/base_icon_state
 
 	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/head/helmet/marine/tech/Initialize()
+	. = ..()
+	base_icon_state = icon_state
 
 /obj/item/clothing/head/helmet/marine/tech/attack_self()
 	toggle()
@@ -441,13 +447,13 @@
 		if(protection_on)
 			flags_inventory &= ~(COVEREYES|COVERMOUTH)
 			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
-			icon_state = initial(icon_state)
+			icon_state = base_icon_state
 			eye_protection = 0
 			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
 		else
 			flags_inventory |= COVEREYES|COVERMOUTH
 			flags_inv_hide |= HIDEEYES|HIDEFACE
-			icon_state = "[initial(icon_state)]_on"
+			icon_state = "[base_icon_state]_on"
 			eye_protection = 2
 			to_chat(usr, "You <b>activate</b> the [src]'s welding screen.")
 

@@ -19,6 +19,9 @@ SUBSYSTEM_DEF(vote)
 	  * Pass the number of current round votes and carryover
 	  */
 	var/datum/callback/vote_adjustment_callback = null
+
+	/// Callback that runs when the vote ends
+	var/datum/callback/on_vote_end = null
 	/// Adjustments applied to the current round's votes
 	var/list/adjustments = list()
 	/// Current round votes
@@ -46,6 +49,9 @@ SUBSYSTEM_DEF(vote)
 	question = null
 	if(vote_adjustment_callback)
 		QDEL_NULL(vote_adjustment_callback)
+	if(on_vote_end)
+		on_vote_end.Invoke()
+		QDEL_NULL(on_vote_end)
 	adjustments.Cut()
 	choices.Cut()
 	carryover.Cut()
@@ -226,7 +232,7 @@ SUBSYSTEM_DEF(vote)
 
 		carryover[i] += vote.total_votes
 
-/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key)
+/datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end)
 	if(!mode)
 		if(started_time)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
@@ -315,6 +321,7 @@ SUBSYSTEM_DEF(vote)
 		mode = vote_type
 		initiator = initiator_key
 		started_time = world.time
+		on_vote_end = on_end
 		var/text = "[capitalize(mode)] vote started by [initiator]."
 		if(mode == "custom")
 			text += "<br>[question]"

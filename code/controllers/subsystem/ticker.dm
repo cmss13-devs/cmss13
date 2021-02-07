@@ -55,21 +55,7 @@ SUBSYSTEM_DEF(ticker)
 		var/music_options = splittext(all_music[key], " ")
 		login_music = list(music_options[1], music_options[2], music_options[3])
 
-	if(!SSperf_logging || !SSperf_logging.round)
-		RegisterSignal(SSdcs, COMSIG_GLOB_ENTITY_ROUND_INIT, .proc/try_do_round_vote)
-	else
-		try_do_round_vote(SSdcs, SSperf_logging.round)
-
 	return ..()
-
-/datum/controller/subsystem/ticker/proc/try_do_round_vote(var/dcs, var/datum/entity/mc_round/round)
-	SIGNAL_HANDLER
-
-	if(CONFIG_GET(number/gamemode_rounds_needed) == -1)
-		return
-
-	if(text2num(round.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
-		INVOKE_ASYNC(SSvote, /datum/controller/subsystem/vote/proc/initiate_vote, "gamemode", "SERVER")
 
 
 /datum/controller/subsystem/ticker/fire()
@@ -129,10 +115,26 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
-				addtimer(CALLBACK(SSvote, /datum/controller/subsystem/vote.proc/initiate_vote, "groundmap", "SERVER"), 3 SECONDS)
-				addtimer(CALLBACK(src, .proc/Reboot), 63 SECONDS)
+				if(text2num(SSperf_logging?.round?.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
+					addtimer(CALLBACK(
+						SSvote,
+						/datum/controller/subsystem/vote/proc/initiate_vote,
+						"gamemode",
+						"SERVER",
+						CALLBACK(src, .proc/handle_map_reboot)
+					), 3 SECONDS)
+				else
+					handle_map_reboot()
 				Master.SetRunLevel(RUNLEVEL_POSTGAME)
 
+/datum/controller/subsystem/ticker/proc/handle_map_reboot()
+	addtimer(CALLBACK(
+		SSvote,
+		/datum/controller/subsystem/vote/proc/initiate_vote,
+		"groundmap",
+		"SERVER",
+		CALLBACK(src, .proc/Reboot)
+	), 3 SECONDS)
 
 /datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, SPAN_BOLDNOTICE("Enjoy the game!"))

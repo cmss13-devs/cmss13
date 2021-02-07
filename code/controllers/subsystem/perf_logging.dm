@@ -25,7 +25,6 @@ SUBSYSTEM_DEF(perf_logging)
 	round.map_name = SSmapping.configs[GROUND_MAP].map_name
 	round.save()
 	round.sync()
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_ENTITY_ROUND_INIT, round)
 	if(!Master)
 		return // UH OH
 	controller_assoc = list()

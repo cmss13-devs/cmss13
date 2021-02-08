@@ -22,6 +22,9 @@ endmap
 map prison_station_fop
 endmap
 
+map fiorina_sciannex
+endmap
+
 map corsat
 	minplayers 130
 endmap

@@ -28,7 +28,8 @@
 #define MAP_ICE_COLONY "Ice Colony" // Highpop only
 #define MAP_LV_624 "LV-624"
 #define MAP_BIG_RED "Solaris Ridge"
-#define MAP_PRISON_STATION "Prison Station"
+#define MAP_PRISON_STATION "Fiorina Cellblocks"
+#define MAP_PRISON_STATION_V3 "Fiorina Science Annex"
 #define MAP_WHISKEY_OUTPOST "Whiskey Outpost" // Unused
 #define MAP_DESERT_DAM "Trijent Dam"  // Highpop only
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
@@ -283,6 +284,7 @@
 #define WALL_THICKRESIN "thickresin"
 #define WALL_MEMBRANE "membrane"
 #define WALL_THICKMEMBRANE "thickmembrane"
+#define WALL_BONE_RESIN "bone_resin"
 #define WALL_CAVE "cavewall"
 #define WALL_WOOD "wood"
 #define WALL_GOLD "gold"

@@ -15,6 +15,9 @@
 	floor_tile = null
 	intact_tile = 0
 
+/turf/open/floor/plating/prison
+	icon = 'icons/turf/floors/prison.dmi'
+
 /turf/open/floor/plating/almayer
 	icon = 'icons/turf/almayer.dmi'
 
@@ -405,12 +408,9 @@
 /turf/open/floor/prison/trim/red
 	icon_state = "darkred2"
 
-
-
-
-
-
-
+/turf/open/floor/prison/chapel_carpet
+	icon = 'icons/turf/floors/carpet_manual.dmi'//I dunno man, CM-ified carpet sprites are placed manually and I can't be bothered to write a new system for 'em.
+	icon_state = "single"
 
 ////// Mechbay /////////////////:
 /turf/open/floor/mech_bay_recharge_floor

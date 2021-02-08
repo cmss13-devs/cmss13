@@ -82,6 +82,7 @@
 	item_to_spawn()
 		return pick(prob(3);/obj/item/storage/toolbox/mechanical,\
 					prob(2);/obj/item/storage/toolbox/electrical,\
+					prob(2);/obj/item/storage/toolbox/mechanical/green,\
 					prob(1);/obj/item/storage/toolbox/emergency)
 
 

@@ -525,6 +525,8 @@
 						/obj/item/attachable/attached_gun/flamer,
 						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/attached_gun/shotgun,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/stock/m16
 						)
 	random_spawn_chance = 42
 	random_spawn_rail = list(
@@ -539,7 +541,8 @@
 							/obj/item/attachable/burstfire_assembly,
 							/obj/item/attachable/bipod,
 							/obj/item/attachable/attached_gun/extinguisher,
-							/obj/item/attachable/attached_gun/shotgun
+							/obj/item/attachable/attached_gun/shotgun,
+							/obj/item/attachable/lasersight
 									)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/suppressor,
@@ -550,8 +553,16 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
+/obj/item/weapon/gun/rifle/m16/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/m16/S = new(src)
+	S.hidden = FALSE
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
 /obj/item/weapon/gun/rifle/m16/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 22, "under_x" = 24, "under_y" = 14, "stock_x" = 27, "stock_y" = 12)
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 9, "rail_y" = 20, "under_x" = 22, "under_y" = 14, "stock_x" = 15, "stock_y" = 14)
 
 
 /obj/item/weapon/gun/rifle/m16/set_gun_config_values()

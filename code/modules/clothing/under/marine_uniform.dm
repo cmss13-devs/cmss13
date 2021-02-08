@@ -495,6 +495,14 @@
 
 ////// Civilians /////////
 
+/obj/item/clothing/under/marine/ua_riot
+	name = "\improper United American security uniform"
+	desc = "Overalls made of kevlon cover a snazzy blue dress shirt. UA branded security uniforms are notorious for their association with anti-union riot control teams."
+	icon_state = "ua_riot"
+	worn_state = "ua_riot"
+	flags_atom = NO_SNOW_TYPE
+	rollable_sleeves = FALSE
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/ua_riot)
 
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"

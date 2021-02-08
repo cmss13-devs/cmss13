@@ -80,6 +80,8 @@
 #define SLOWDOWN_ADS_SUPERWEAPON		2.75
 
 //Wield delays, in milliseconds. 10 is 1 second
+#define WIELD_DELAY_NONE			0
+#define WIELD_DELAY_MIN				1
 #define WIELD_DELAY_VERY_FAST		2
 #define WIELD_DELAY_FAST			4
 #define WIELD_DELAY_NORMAL			6

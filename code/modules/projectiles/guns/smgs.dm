@@ -135,6 +135,7 @@
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/angledgrip,
+						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/scope/mini)
@@ -148,6 +149,7 @@
 	random_spawn_underbarrel = list(
 							/obj/item/attachable/lasersight,
 							/obj/item/attachable/angledgrip,
+							/obj/item/attachable/verticalgrip,
 							)
 	random_spawn_muzzle = list(
 							/obj/item/attachable/extended_barrel
@@ -158,7 +160,7 @@
 
 
 /obj/item/weapon/gun/smg/mp5/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 19,"rail_x" = 12, "rail_y" = 21, "under_x" = 28, "under_y" = 17, "stock_x" = 28, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 19, "under_x" = 23, "under_y" = 15, "stock_x" = 28, "stock_y" = 17)
 
 /obj/item/weapon/gun/smg/mp5/set_gun_config_values()
 	..()

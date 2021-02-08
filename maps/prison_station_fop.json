@@ -1,6 +1,6 @@
 {
-    "map_name": "Prison Station",
-    "map_path": "map_files/Prison_Station_FOP",
+    "map_name": "Fiorina Cellblocks",
+    "map_path": "map_files/FOP_v2_Cellblocks",
     "map_file": "Prison_Station_FOP.dmm",
     "survivor_types": [
         "Survivor - Scientist",

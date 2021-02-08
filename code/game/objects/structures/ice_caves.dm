@@ -13,6 +13,9 @@
 	desc = "It is very thin."
 	opacity = 0
 
+/obj/structure/ice/thin/indestructible/ex_act(severity, direction)
+	return
+
 /obj/structure/ice/thin/single
 	icon_state = "Single"
 

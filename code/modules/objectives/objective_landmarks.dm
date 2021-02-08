@@ -43,19 +43,19 @@
 
 /obj/effect/landmark/objective_landmark/close
 	name = "Objective Landmark Close"
-	icon_state = "o_green"
+	icon_state = "intel_close"
 
 /obj/effect/landmark/objective_landmark/medium
 	name = "Objective Landmark Medium"
-	icon_state = "o_yellow"
+	icon_state = "intel_medium"
 
 /obj/effect/landmark/objective_landmark/far
 	name = "Objective Landmark Far"
-	icon_state = "o_red"
+	icon_state = "intel_far"
 
 /obj/effect/landmark/objective_landmark/science
 	name = "Objective Landmark Science"
-	icon_state = "o_blue"
+	icon_state = "intel_sci"
 
 var/list/objective_spawn_close = list()
 var/list/objective_spawn_medium = list()

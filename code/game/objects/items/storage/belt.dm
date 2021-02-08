@@ -335,6 +335,12 @@
 	else
 		return ..()
 
+/obj/item/storage/belt/marine/quackers
+	name = "Mr. Quackers"
+	desc = "What are we going to do today Mr. Quackers!?"
+	icon_state = "inflatable"
+	has_gamemode_skin = FALSE
+
 /obj/item/storage/belt/marine/upp
 	name = "\improper Type 41 pattern load rig"
 	desc = "The Type 41 load rig is the standard-issue load-bearing equipment of the UPP military. The primary function of this belt is to provide easy access to mags for the Type 71 during operations. Despite being designed for the Type 71 weapon system, the pouches are modular enough to fit other types of ammo and equipment."
@@ -388,10 +394,12 @@
 	max_w_class = SIZE_SMALL
 	max_storage_space = 28
 	can_hold = list(/obj/item/ammo_magazine/handful)
+	var/has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/shotgun/Initialize()
 	. = ..()
-	select_gamemode_skin(type)
+	if(has_gamemode_skin)
+		select_gamemode_skin(type)
 
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -404,6 +412,12 @@
 		dump_into(M,user)
 	else
 		return ..()
+
+/obj/item/storage/belt/shotgun/full/quackers
+	icon_state = "inflatable"
+	name = "Mrs. Quackers"
+	desc = "She always did have a meaner temper."
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/knifepouch
 	name="\improper M276 pattern knife rig"

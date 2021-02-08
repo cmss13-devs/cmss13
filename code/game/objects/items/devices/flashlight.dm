@@ -182,12 +182,34 @@
 	w_class = SIZE_LARGE
 	on = 1
 
+//Generic Candelabra
+/obj/item/device/flashlight/lamp/candelabra
+	name = "candelabra"
+	desc = "A firehazard that can be used to thwack things with impunity."
+	icon_state = "candelabra"
+	force = 15
+
 //Green-shaded desk lamp
 /obj/item/device/flashlight/lamp/green
 	desc = "A classic green-shaded desk lamp."
 	icon_state = "lampgreen"
 	item_state = "lampgreen"
 	brightness_on = 5
+
+/obj/item/device/flashlight/lamp/tripod
+	name = "tripod lamp"
+	desc = "An emergency light tube mounted onto a tripod. It seemingly lasts forever."
+	icon_state = "tripod_lamp"
+	brightness_on = 6//pretty good
+	w_class = SIZE_LARGE
+	on = 1
+
+//obj/item/device/flashlight/lamp/tripod/New() //start all tripod lamps as on.
+//	..()
+//	update_brightness()
+
+/obj/item/device/flashlight/lamp/tripod/grey
+	icon_state = "tripod_lamp_grey"
 
 /obj/item/device/flashlight/lamp/verb/toggle_light()
 	set name = "Toggle light"

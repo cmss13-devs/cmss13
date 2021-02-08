@@ -49,6 +49,11 @@
 			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE)
 			structures_to_delete += /obj/structure/machinery/defenses/sentry/premade
 
+		if(MAP_PRISON_STATION_V3)
+			monkey_types = list(/mob/living/carbon/human/monkey)
+			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE)
+			structures_to_delete += /obj/structure/machinery/defenses/sentry/premade
+
 		if(MAP_DESERT_DAM)
 			monkey_types = list(/mob/living/carbon/human/stok)
 			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE)

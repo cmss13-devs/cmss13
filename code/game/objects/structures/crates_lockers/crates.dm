@@ -294,15 +294,15 @@
 	icon_closed = "closed_supply"
 
 /obj/structure/closet/crate/trashcart
-	name = "Trash Cart"
+	name = "\improper trash cart"
 	desc = "A heavy, metal trashcart with wheels."
 	icon_state = "closed_trashcart"
 	icon_opened = "open_trashcart"
 	icon_closed = "closed_trashcart"
 
 /obj/structure/closet/crate/wayland
-	name = "Wayland crate"
-	desc = "A crate with a Wayland insignia on it."
+	name = "Weston Yamada crate"
+	desc = "A crate with a Weston Yamada insignia on it."
 	icon_state = "closed_wayland"
 	icon_opened = "open_wayland"
 	icon_closed = "closed_wayland"
@@ -317,10 +317,18 @@
 
 
 /obj/structure/closet/crate/miningcar
-	desc = "A mining car. This one doesn't work on rails, but has to be dragged."
-	name = "Mining car (not for rails)"
-	icon_state = "miningcar"
+	name = "\improper minecart"
+	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
+	icon_state = "closed_mcart"
 	density = 1
-	icon_opened = "miningcaropen"
-	icon_closed = "miningcar"
+	icon_opened = "open_mcart"
+	icon_closed = "closed_mcart"
+
+/obj/structure/closet/crate/miningcar/yellow
+	name = "\improper minecart"
+	desc = "Essentially a big metal bucket on wheels. This one has a modern plastic shroud."
+	icon_state = "closed_mcart_y"
+	density = 1
+	icon_opened = "open_mcart_y"
+	icon_closed = "closed_mcart_y"
 

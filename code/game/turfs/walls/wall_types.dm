@@ -351,8 +351,22 @@
 	color = "#9635aa"
 
 
+//BONE RESIN WALLS
 
+/turf/closed/wall/mineral/bone_resin //mineral wall because, reasons bro.
+	name = "skeletal resin"
+	icon = 'icons/turf/walls/prison/bone_resin.dmi'
+	icon_state = "bone_resin"
+	walltype = WALL_BONE_RESIN
+	hull = 1
+	indestructible = 1
+	desc = "A wall made of molted old resin. This place is more alive than you are."
 
+/turf/closed/wall/mineral/bone/is_weedable()
+    return FALSE
+
+/turf/closed/wall/mineral/bone/ex_act(severity, explosion_direction, source, mob/source_mob)
+	return
 
 //Misc walls
 
@@ -501,6 +515,8 @@
 	icon_state = "solaris_rock"
 	walltype = WALL_SOLARIS_ROCK
 	hull = 1
+
+
 
 //GREYBOX DEVELOPMENT WALLS
 

@@ -407,3 +407,30 @@
 	name="Odysseus Right Leg"
 	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
 	icon_state = "odysseus_r_leg"
+
+/obj/structure/prop/structure_lattice //instance me by direction for color variants
+	name = "structural lattice"
+	desc = "Like rebar, but in space."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "structure_lattice"
+	density = 1 //impassable by default
+
+
+/obj/structure/prop/resin_prop
+	name = "resin coated object"
+	desc = "Well, its useless now."
+	icon = 'icons/obj/resin_objects.dmi'
+	icon_state = "watertank"
+
+//industructible props
+/obj/structure/prop/invuln
+	name = "instanceable object"
+	desc = "this needs to be defined by a coder"
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "structure_lattice"
+	indestructible = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/invuln/ex_act(severity, direction)
+	return

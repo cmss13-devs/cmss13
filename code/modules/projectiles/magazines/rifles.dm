@@ -83,6 +83,7 @@
 	desc = "A 7.62x39mm MAR magazine, this one carries more rounds than the average magazine."
 	max_rounds = 60
 	bonus_overlay = "mar40_ex"
+	icon_state = "mar40_extended"
 
 
 

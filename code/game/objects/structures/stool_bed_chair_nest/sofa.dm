@@ -8,6 +8,13 @@
 
 //South facing couches. To-do, replicate NicBoone icons and make north facing icons. Non-double vertical couches.
 
+/obj/structure/bed/sofa/pews
+	name = "pews"
+	desc = "Smells like cedar."
+	icon_state = "pews"
+
+/obj/structure/bed/sofa/pews/flipped
+	icon_state = "pews_f"
 /obj/structure/bed/sofa/south/grey //center
     name = "Couch"
     icon_state = "couch_hori2"

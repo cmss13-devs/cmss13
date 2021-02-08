@@ -216,10 +216,6 @@
 		/obj/structure/window/framed/strata,
 		/obj/structure/machinery/door/airlock)
 
-/obj/structure/machinery/door/airlock/strata/New()
-	addtimer(CALLBACK(src, /atom.proc/relativewall_neighbours), 10)
-	..()
-
 /obj/structure/machinery/door/airlock/strata/autoname
 	autoname = TRUE
 
@@ -242,6 +238,21 @@
 	icon = 'icons/obj/structures/doors/strata/strata_mining.dmi'
 
 /obj/structure/machinery/door/airlock/strata/mining/autoname
+	autoname = TRUE
+
+//FIORINA PENITENTIARY (PRISON_FOP) MAINTENANCE HATCHES
+
+/obj/structure/machinery/door/airlock/prison_hatch
+	name = "\improper Maintenance Hatch"
+	icon = 'icons/obj/structures/doors/prison_FOP/prison_hatches.dmi'
+	openspeed = 5
+	req_access = null
+	req_one_access = null
+	tiles_with = list(
+		/obj/structure/window/framed/prison,
+		/obj/structure/machinery/door/airlock)
+	
+/obj/structure/machinery/door/airlock/prison_hatch/autoname
 	autoname = TRUE
 
 //ALMAYER AIRLOCKS

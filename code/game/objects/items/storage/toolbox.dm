@@ -32,6 +32,11 @@
 	icon_state = "blue"
 	item_state = "toolbox_blue"
 
+/obj/item/storage/toolbox/mechanical/green
+	name = "mechanical toolbox"
+	icon_state = "green"
+	item_state = "toolbox_green"
+
 /obj/item/storage/toolbox/mechanical/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wrench(src)

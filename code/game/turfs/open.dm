@@ -393,7 +393,8 @@
 	. = ..()
 	setDir(pick(NORTH,SOUTH,EAST,WEST,NORTHEAST,NORTHWEST,SOUTHEAST,SOUTHWEST))
 
-
+/turf/open/ice/noweed/is_weedable() //used for new prison ice block xenos
+	return FALSE
 
 
 

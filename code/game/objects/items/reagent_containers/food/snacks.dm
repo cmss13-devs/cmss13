@@ -3049,7 +3049,7 @@
 
 /obj/item/reagent_container/food/snacks/eat_bar
 	name = "MEAT Bar"
-	desc = "It is a vacuum sealed tube of suspicious meat. Artificially packed full of nutrients you can't pronounce."
+	desc = "It is a vacuum sealed tube of suspicious meat. Artificially packed full of nutrients you can't pronounce. The M is printed on the side, so it just reads EAT. Guess that's where the slogan comes from."
 	icon_state = "eat_bar"
 	bitesize = 2
 	w_class = SIZE_TINY

@@ -302,6 +302,7 @@
 						/obj/item/clothing/accessory/patch = "uscmpatch",
 						/obj/item/clothing/accessory/patch/falcon = "falconspatch",
 						/obj/item/ammo_magazine/handful = "bullet",
+						/obj/item/prop/helmetgarb/riot_shield = "helmet_riot_shield",
 
 						///// MEDICAL
 						/obj/item/stack/medical/bruise_pack ="brutepack",
@@ -737,6 +738,23 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDEMASK|HIDEALLHAIR
 	flags_marine_helmet = HELMET_DAMAGE_OVERLAY
 	unacidable = TRUE
+
+//FIORINA / UA RIOT CONTROL HELMET//
+
+/obj/item/clothing/head/helmet/marine/veteran/ua_riot
+	name = "\improper RC6 helmet"
+	desc = "The standard UA Riot Control 6 helmet is of odd design, lacking a face shield by default (mounting points are available). The distinct white pattern and red emblem are synonymous with oppression throughout the rim."
+	icon_state = "ua_riot"
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	specialty = "RC6 helmet"
+	flags_atom = NO_SNOW_TYPE
 
 //==========================//DISTRESS\\=================================\\
 //=======================================================================\\

@@ -87,3 +87,9 @@ var/list/objective_spawn_corpse
 
 /obj/effect/landmark/corpsespawner/colonist/burst
 	name = "Burst Colonist"
+
+/obj/effect/landmark/corpsespawner/ua_riot
+	name = "UA Officer"
+
+/obj/effect/landmark/corpsespawner/ua_riot/burst
+	name = "Burst UA Officer"

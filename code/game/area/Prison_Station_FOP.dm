@@ -1,6 +1,6 @@
 //Base Instance
 /area/prison
-	name = "Fiorina Orbital Penitentiary"
+	name = "Fiorina Orbital Penitentiary - Main Cellblock"
 	ceiling = CEILING_GLASS
 	ambience_exterior = AMBIENCE_ALMAYER
 	ceiling_muffle = FALSE

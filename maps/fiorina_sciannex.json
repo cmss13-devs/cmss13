@@ -1,0 +1,26 @@
+{
+    "map_name": "Fiorina Science Annex",
+    "map_path": "map_files/FOP_v3_Sciannex",
+    "map_file": "Fiorina_SciAnnex.dmm",
+    "survivor_types": [
+        "Survivor - Scientist",
+        "Survivor - Doctor",
+        "Survivor - Corporate Liaison",
+        "Survivor - Security",
+        "Survivor - Prisoner",
+        "Survivor - Prisoner",
+        "Survivor - Gang Leader",
+        "Survivor - Engineer"
+    ],
+    "defcon_triggers": [
+        3750,
+        2600,
+        1450,
+        875,
+        0.0
+    ],
+    "survivor_message": "You are a survivor of the attack on Fiorina Orbital Penitentiary. You worked or lived on the prison station, and managed to avoid the alien attacks... until now.",
+    "map_item_type": "/obj/item/map/FOP_map_v3",
+    "announce_text": "An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "traits": [{ "Ground": true }]
+}

@@ -873,6 +873,17 @@ Defined in conflicts.dm of the #defines folder.
 	//but at the same time you are slow when 2 handed
 	aim_speed_mod = CONFIG_GET(number/slowdown_med)
 
+/obj/item/attachable/stock/m16
+	name = "\improper M16 bump stock"
+	desc = "Technically illegal in the state of California."
+	icon_state = "m16_stock"
+	attach_icon = "m16_stock_a"
+	wield_delay_mod = WIELD_DELAY_MIN
+	flags_attach_features = NO_FLAGS
+
+/obj/item/attachable/stock/m16/New()//no stats, its cosmetic
+	..()
+
 /obj/item/attachable/stock/carbine
 	name = "\improper L42 synthetic stock"
 	desc = "A special issue stock made of sturdy, yet lightweight materials. Attaches to the L42A Battle Rifle. Not effective as a blunt force weapon."

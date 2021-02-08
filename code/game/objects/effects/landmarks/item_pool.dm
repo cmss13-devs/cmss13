@@ -35,7 +35,9 @@
 
 /obj/effect/landmark/item_pool_spawner/survivor_ammo
 	pool_name = "Survivor ammo pool"
+	icon_state = "ipool_surv_ammo"
 	quota = 3
 
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot
+	icon_state = "ipool_bubshot"
 	type_to_spawn = /obj/item/ammo_magazine/shotgun/buckshot

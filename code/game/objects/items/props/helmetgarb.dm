@@ -82,3 +82,8 @@
     name = "\improper Tickets to Space Jam"
     desc = "Two original, crisp, orange, tickets to the one and only Space Jam of 2188. And what a jam it was."
     icon_state = "tickets_to_space_jam"
+
+/obj/item/prop/helmetgarb/riot_shield
+	name = "\improper RC6 riot shield"
+	desc = "The complimentary, but sold separate face shield associated with the RC6 riot helmet."
+	icon_state = "helmet_riot_shield"

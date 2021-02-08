@@ -422,3 +422,52 @@
 	xenovictim = TRUE
 
 /datum/equipment_preset/corpse/colonist/doctor
+
+//UA riot control dudes
+/datum/equipment_preset/corpse/ua_riot
+	name = "Corpse - UA Officer"
+	assignment = "United Americas Riot Officer"
+	idtype = /obj/item/card/id/silver
+	xenovictim = FALSE
+	access = list(
+		ACCESS_CIVILIAN_PUBLIC,
+		ACCESS_CIVILIAN_LOGISTICS,
+		ACCESS_CIVILIAN_ENGINEERING,
+		ACCESS_CIVILIAN_RESEARCH,
+		ACCESS_CIVILIAN_BRIG,
+		ACCESS_CIVILIAN_MEDBAY,
+		ACCESS_CIVILIAN_COMMAND,
+		ACCESS_MARINE_MAINT,
+		ACCESS_WY_CORPORATE,
+	)
+
+/datum/equipment_preset/corpse/ua_riot/load_gear(mob/living/carbon/human/H)
+	var/random = rand(1,5)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/ua_riot(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/riot_shield(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/b92fs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/classic_baton(H), WEAR_WAIST)
+
+	switch(random)
+		if(1)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/security, WEAR_EYES)
+		if(2)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
+		if(3)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/aviator(H), WEAR_EYES)
+		if(4)
+			H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+		if(5)
+			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H), WEAR_IN_BACK)
+
+
+/datum/equipment_preset/corpse/ua_riot/burst
+	name = "Corpse - Burst UA Officer"
+	xenovictim = TRUE

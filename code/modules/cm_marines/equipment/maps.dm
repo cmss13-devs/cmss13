@@ -75,6 +75,12 @@
 	html_link = "images/4/4c/Map_Prison.png"
 	color = "#e88a10"
 
+/obj/item/map/FOP_map_v3
+	name = "\improper Fiorina Orbital Civilian Annex Map"
+	desc = "A scan produced by the the Almayer's sensor array of the Fiorina Orbital Penitentiary Civilian Annex. It appears to have broken off from the rest of the station and is now in free geo-sync orbit around the planet."
+	html_link = "images/4/4c/Map_Prison.png"//replace me
+	color = "#e88a10"
+
 /obj/item/map/desert_dam
 	name = "\improper Trijent Dam map"
 	desc = "An orbital scan printout of the Trijent Dam colony."
@@ -120,6 +126,11 @@
 			html_link = "images/9/9e/Solaris_Ridge.png"
 			color = "#e88a10"
 		if(MAP_PRISON_STATION)
+			name = "\improper Fiorina Orbital Penitentiary Map"
+			desc = "A labelled interior scan of Fiorina Orbital Penitentiary"
+			html_link = "images/4/4c/Map_Prison.png"
+			color = "#e88a10"
+		if(MAP_PRISON_STATION_V3)
 			name = "\improper Fiorina Orbital Penitentiary Map"
 			desc = "A labelled interior scan of Fiorina Orbital Penitentiary"
 			html_link = "images/4/4c/Map_Prison.png"

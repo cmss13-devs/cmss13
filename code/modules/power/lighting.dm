@@ -170,6 +170,19 @@
 	desc = "A small lighting fixture."
 	light_type = /obj/item/light_bulb/bulb
 
+
+/obj/structure/machinery/light/double
+	icon_state = "ptube1"
+	base_state = "ptube"
+	brightness = 6
+/obj/structure/machinery/light/double/blue
+	icon_state = "bptube1"
+	base_state = "bptube"
+/obj/structure/machinery/light/alt
+	icon_state = "ltube1"
+	base_state = "ltube"
+
+
 /obj/structure/machinery/light/spot
 	name = "spotlight"
 	fitting = "large tube"
@@ -629,6 +642,15 @@
 	icon_state = "fbulb"
 	base_state = "fbulb"
 	item_state = "egg4"
+	matter = list("glass" = 100)
+	brightness = 5
+
+/obj/item/light_bulb/tube/prison
+	name = "light tubes"
+	desc = "Replacement light tubes."
+	icon_state = "pbulb"
+	base_state = "pbulb"
+	item_state = "contvapour"
 	matter = list("glass" = 100)
 	brightness = 5
 

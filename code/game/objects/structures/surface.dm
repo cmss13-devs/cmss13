@@ -6,6 +6,10 @@
 		/obj/item/storage,
 		/obj/item/reagent_container/food/snacks
 	)
+	//add items there that behave like structures for whatever dumb reason
+	var/list/blacklisted_item_types = list(
+		/obj/item/device/radio/intercom
+	)
 
 /obj/structure/surface/Initialize()
 	. = ..()
@@ -34,8 +38,16 @@
 
 /obj/structure/surface/proc/attach_all()
 	for(var/obj/item/O in loc)
+		if(in_blacklist(O))
+			continue
 		attach_item(O, FALSE)
 	draw_item_overlays()
+
+/obj/structure/surface/proc/in_blacklist(var/obj/item/O)
+	for(var/allowed_type in blacklisted_item_types)
+		if(istype(O, allowed_type))
+			return TRUE
+	return FALSE
 
 /obj/structure/surface/proc/attach_item(var/obj/item/O, var/update = TRUE)
 	if(!O)
@@ -97,20 +109,6 @@
 		if(O.can_examine(user))
 			O.examine(user)
 		return TRUE
-	if(mods["alt"])
-		var/turf/T = get_turf(src)
-		if(T && user.TurfAdjacent(T) && LAZYLEN(T.contents))
-			user.tile_contents = contents.Copy()
-			LAZYADD(user.tile_contents, T.contents.Copy())
-			LAZYADD(user.tile_contents, T)
-
-			for(var/atom/A in user.tile_contents)
-				if (A.invisibility > user.see_invisible)
-					LAZYREMOVE(user.tile_contents, A)
-
-			if(LAZYLEN(user.tile_contents))
-				user.tile_contents_change = TRUE
-		return TRUE
 	..()
 
 /obj/structure/surface/proc/try_to_open_container(var/mob/user, mods)
@@ -126,6 +124,8 @@
 
 /obj/structure/surface/attack_hand(mob/user, click_data)
 	. = ..()
+	if(click_data["alt"])
+		return
 	var/obj/item/O = get_item(click_data)
 	if(!O)
 		return
@@ -135,7 +135,7 @@
 
 /obj/structure/surface/attackby(obj/item/W, mob/user, click_data)
 	var/obj/item/O = get_item(click_data)
-	if(!O || click_data["ctrl"])//holding the ALT key will force it to place the object
+	if(!O || click_data["ctrl"])//holding the ctrl key will force it to place the object
 		// Placing stuff on tables
 		if(user.drop_inv_item_to_loc(W, loc))
 			auto_align(W, click_data)

@@ -65,6 +65,12 @@ SUBSYSTEM_DEF(statpanels)
 						if(!target_image.loc || target_image.loc.loc != target_mob.listed_turf || !target_image.override)
 							continue
 						overrides += target_image.loc
+					for(var/tc in target_mob.listed_turf) //load items in surfaces
+						if(issurface(tc))
+							var/obj/structure/surface/S = tc
+							for(var/obj/item/I in S.contents)
+								turfitems[++turfitems.len] = list("[I.name]", REF(I), icon2html(I, target, sourceonly=TRUE))
+							break //there shouldn't ever be multiple surfaces in one turf
 					turfitems[++turfitems.len] = list("[target_mob.listed_turf]", REF(target_mob.listed_turf), icon2html(target_mob.listed_turf, target, sourceonly=TRUE))
 					for(var/tc in target_mob.listed_turf)
 						var/atom/movable/turf_content = tc

@@ -6,3 +6,4 @@
 #define isVehicle(X)                (istype(X, /obj/vehicle))
 #define isclient(X)                 (istype(X, /client))
 #define isStack(X)                  (istype(X, /obj/item/stack))
+#define issurface(X)                (istype(X, /obj/structure/surface))

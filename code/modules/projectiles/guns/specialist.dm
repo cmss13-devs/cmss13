@@ -1033,9 +1033,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/launcher/grenade/m81/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user))
-		if(riot_version && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
-			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return FALSE
+		if(riot_version)
+			if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+				return FALSE
 		else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE

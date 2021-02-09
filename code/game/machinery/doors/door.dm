@@ -205,7 +205,7 @@
 	if(!density)		return 1
 	if(operating > 0 || !loc)	return
 	if(!operating)		operating = 1
-
+	CHECK_TICK
 	do_animate("opening")
 	icon_state = "door0"
 	src.SetOpacity(0)
@@ -231,7 +231,7 @@
 	if(density)	return 1
 	if(operating > 0 || !loc)	return
 	operating = 1
-
+	CHECK_TICK
 	src.density = 1
 	src.layer = closed_layer
 	do_animate("closing")

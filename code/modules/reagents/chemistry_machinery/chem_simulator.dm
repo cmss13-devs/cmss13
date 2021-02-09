@@ -306,7 +306,7 @@
 		calculate_creation_cost()
 	else if(href_list["set_od"])
 		var/od_to_set = tgui_input_list(usr, "Set new OD:", "[src]", list(5,10,15,20,25,30,35,40,45,50,55,60))
-		if(!new_od_level)
+		if(!od_to_set)
 			return
 		new_od_level = od_to_set
 		creation_od_level = od_to_set

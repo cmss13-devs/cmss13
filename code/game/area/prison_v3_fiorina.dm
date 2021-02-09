@@ -14,7 +14,6 @@
 /area/fiorina/oob
 	name = "Fiorina - Out Of Bounds"
 	icon_state = "oob"
-	icon = 'icons/turf/area_kutjevo.dmi'
 	ceiling = CEILING_MAX
 	is_resin_allowed = FALSE
 	flags_atom = AREA_NOTUNNEL

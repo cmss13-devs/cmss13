@@ -47,11 +47,6 @@
 		/obj/item/hardpoint/locomotion/van_wheels
 	)
 
-	hardpoints = list(
-		HDPT_SUPPORT = null,
-		HDPT_WHEELS = null
-	)
-
 	turn_momentum_loss_factor = 1
 
 	req_access = list()

@@ -187,6 +187,7 @@
 		entry += "\n[message]"
 	diary << html_decode("\[[time_stamp()]]TGUI: [entry][log_end]")
 	GLOB.STUI.tgui.Add("\[[time_stamp()]]TGUI: [entry]<br>")
+	GLOB.STUI.processing |= STUI_LOG_TGUI
 
 //wrapper macros for easier grepping
 #define WRITE_LOG(log, text) rustg_log_write(log, text, "true")

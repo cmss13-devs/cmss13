@@ -102,28 +102,18 @@ SUBSYSTEM_DEF(objectives)
 		var/dest = pick(15;"close", 30;"medium", 5;"far", 50;"science")
 		spawn_objective_at_landmark(dest, /obj/item/storage/fancy/vials/random)
 
-/datum/controller/subsystem/objectives/proc/generate_corpses(var/corpses)
-	if(!objective_spawn_corpse)
-		return
-	if(corpses > LAZYLEN(objective_spawn_corpse))
-		corpses = LAZYLEN(objective_spawn_corpse)
-
-	var/obj/effect/landmark/corpsespawner/spawnpoint
-	for(var/i = 0 to corpses)
-		spawnpoint = pick_n_take(objective_spawn_corpse)
-
-		//Creates a mob and checks for gear in each slot before attempting to equip it.
-		var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint.loc)
-		M.create_hud() //Need to generate hud before we can equip anything apparently...
-		arm_equipment(M, "Corpse - [spawnpoint.name]", TRUE, FALSE)
-
-		qdel(spawnpoint)
+/datum/controller/subsystem/objectives/proc/generate_corpses(corpses)
+	var/list/obj/effect/landmark/corpsespawner/objective_spawn_corpse = GLOB.corpse_spawns.Copy()
+	while(corpses--)
 		if(!length(objective_spawn_corpse))
 			break
-
-	for(var/obj/effect/landmark/corpsespawner/C in objective_spawn_corpse)
-		qdel(C)
-	objective_spawn_corpse = null
+		var/obj/effect/landmark/corpsespawner/spawner = pick(objective_spawn_corpse)
+		var/turf/spawnpoint = get_turf(spawner)
+		if(spawnpoint) 
+			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
+			M.create_hud() //Need to generate hud before we can equip anything apparently...
+			arm_equipment(M, "Corpse - [spawner.name]", TRUE, FALSE)			
+		objective_spawn_corpse.Remove(spawner)
 
 /datum/controller/subsystem/objectives/proc/clear_objective_landmarks()
 	//Don't need them anymore, so we remove them

@@ -1,24 +1,19 @@
-
-var/list/objective_spawn_corpse
-
 ///////////////////// LANDMARK CORPSE ///////
 
 
 //These are meant for spawning on maps, namely Away Missions.
 
-//If someone can do this in a neater way, be my guest-Kor
-
 /obj/effect/landmark/corpsespawner
 	name = "Unknown"
 	icon_state = "corpse_spawner"
 
-/obj/effect/landmark/corpsespawner/New()
+/obj/effect/landmark/corpsespawner/Initialize(mapload, ...)
 	. = ..()
-	if(loc && !QDELETED(src)) //there's some issue with the code that calls this initialize twice,
-		LAZYADD(objective_spawn_corpse, src)	//once normally and once when the landmark is in null space, thus spawning a mob there
-												//this is a bandaid until it's properly fixed.
+	GLOB.corpse_spawns += src
 
-// I'll work on making a list of corpses people request for maps, or that I think will be commonly used. Syndicate operatives for example.
+/obj/effect/landmark/corpsespawner/Destroy()
+	GLOB.corpse_spawns -= src
+	return ..()
 
 /obj/effect/landmark/corpsespawner/realpirate
 	name = "Pirate"

@@ -17,8 +17,6 @@
 	var/charge = 0	// note %age conveted to actual charge in New
 	var/maxcharge = 1000
 	var/minor_fault = 0 //If not 100% reliable, it will build up faults.
-	var/construction_cost = list("metal"=750,"glass"=75)
-	var/construction_time=100
 	matter = list("metal" = 700, "glass" = 50)
 
 /obj/item/cell/Initialize()
@@ -158,7 +156,6 @@
 	icon_state = "scell"
 	maxcharge = 20000
 	matter = list("metal" = 700, "glass" = 70)
-	construction_cost = list("metal"=750,"glass"=100)
 
 /obj/item/cell/super/empty/Initialize()
 	. = ..()
@@ -170,7 +167,6 @@
 	icon_state = "hpcell"
 	maxcharge = 30000
 	matter = list("metal" = 700, "glass" = 80)
-	construction_cost = list("metal"=500,"glass"=150,"gold"=200,"silver"=200)
 
 /obj/item/cell/hyper/empty/Initialize()
 	. = ..()

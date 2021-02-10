@@ -8,7 +8,6 @@
 	flags_atom = AREA_NOTUNNEL
 	luminosity = TRUE
 	lighting_use_dynamic = FALSE
-	can_hellhound_enter = FALSE
 
 /area/adminlevel/bunker01/mainroom
 	name = "\improper Bunker Main Room"

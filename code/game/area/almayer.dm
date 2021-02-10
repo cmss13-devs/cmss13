@@ -3,7 +3,7 @@
 // Port = South | Starboard = North //
 /area/almayer
 	icon = 'icons/turf/area_almayer.dmi'
-	ambience = list('sound/ambience/shipambience.ogg')
+	//ambience = list('sound/ambience/shipambience.ogg')
 	icon_state = "almayer"
 	ceiling = CEILING_METAL
 	powernet_name = "almayer"

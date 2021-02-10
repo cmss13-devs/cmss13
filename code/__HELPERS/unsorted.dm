@@ -159,9 +159,7 @@
 			return A
 
 	// Check for atoms in adjacent turf EAST/WEST
-	if (mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
-		fd1 && fd1 != fdir
-	)
+	if (fd1 && fd1 != fdir)
 		T = get_step(start_turf, fd1)
 		if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 			blocking_dir |= fd1
@@ -180,9 +178,7 @@
 				break
 
 	// Check for atoms in adjacent turf NORTH/SOUTH
-	if (mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
-		fd2 && fd2 != fdir
-	)
+	if (fd2 && fd2 != fdir)
 		T = get_step(start_turf, fd2)
 		if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 			blocking_dir |= fd2

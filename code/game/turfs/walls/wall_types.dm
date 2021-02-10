@@ -359,7 +359,6 @@
 	icon_state = "bone_resin"
 	walltype = WALL_BONE_RESIN
 	hull = 1
-	indestructible = 1
 	desc = "A wall made of molted old resin. This place is more alive than you are."
 
 /turf/closed/wall/mineral/bone/is_weedable()

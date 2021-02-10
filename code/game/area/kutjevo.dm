@@ -190,46 +190,38 @@
 	name = "Kutjevo - Colony Building Interior"
 	ceiling = CEILING_UNDERGROUND_METAL_ALLOW_CAS
 	icon_state = "colony_int"
-	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_central
 	name = "Kutjevo - Central Colony Caves"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
-	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_central/mine_elevator
 	name = "Kutjevo - Central Colony Elevator"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	icon_state = "colony_caves_0"
-	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_north
 	name = "Kutjevo - North Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_1"
-	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_S_East
 	name = "Kutjevo - North East Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_2"
-	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_N_East
 	name = "Kutjevo - South East Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_2"
-	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_South
 	name = "Kutjevo - South Colony Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_3"
-	can_hellhound_enter = 0
 
 /area/kutjevo/interior/colony_South/power2
 	name = "Kutjevo - South Colony Treatment Plant"
 	ceiling = CEILING_DEEP_UNDERGROUND
 	icon_state = "colony_caves_3"
-	can_hellhound_enter = 0

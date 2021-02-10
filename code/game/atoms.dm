@@ -8,8 +8,6 @@
 	var/fingerprintslast = null
 
 	var/unacidable = FALSE
-	//determines whether or not the atom can be destroyed by an explosion
-	var/indestructible = FALSE
 	var/last_bumped = 0
 
 	// The cached datum for the permanent pass flags for any given atom
@@ -36,19 +34,12 @@
 	///Chemistry.
 	var/datum/reagents/reagents = null
 
-	//Detective Work, used for the duplicate data points kept in the scanners
-	var/list/original_atom
-
 	//Z-Level Transitions
 	var/atom/movable/clone/clone = null
 
 	// Bitflag of which test cases this atom is exempt from
 	// See #define/tests.dm
 	var/test_exemptions = 0
-
-	// Bitflag to test if this type can be ever decorated with anything
-	// This is here to optimze things we never want to decorate
-	var/decoratable = FALSE
 
 	// Whether the atom is an obstacle that should be considered for passing
 	var/can_block_movement = FALSE
@@ -75,6 +66,7 @@ directive is properly returned.
 /atom/Destroy()
 	QDEL_NULL(reagents)
 	QDEL_NULL(light)
+	fingerprintshidden = null
 	. = ..()
 
 //===========================================================================

@@ -6,8 +6,6 @@
 	desc = "Protected by FRM."
 	icon = 'icons/obj/module.dmi'
 	icon_state = "cyborg_upgrade"
-	var/construction_time = 120
-	var/construction_cost = list("metal"=10000)
 	var/locked = 0
 	var/require_module = 0
 	var/installed = 0
@@ -44,7 +42,6 @@
 /obj/item/robot/upgrade/flashproof
 	name = "Borg Flash-Supression"
 	desc = "A highly advanced, complicated system for supressing incoming flashes directed at the borg's optical processing system."
-	construction_cost = list("metal"=10000,"gold"=2000,"silver"=3000,"glass"=2000, "diamond"=5000)
 	icon_state = "cyborg_upgrade4"
 	require_module = 1
 
@@ -61,7 +58,6 @@
 /obj/item/robot/upgrade/restart
 	name = "Borg emergancy restart module"
 	desc = "Used to force a restart of a disabled-but-repaired borg, bringing it back online."
-	construction_cost = list("metal"=60000 , "glass"=5000)
 	icon_state = "cyborg_upgrade1"
 
 
@@ -82,7 +78,6 @@
 /obj/item/robot/upgrade/vtec
 	name = "Borg VTEC Module"
 	desc = "Used to kick in a borgs VTEC systems, increasing their speed."
-	construction_cost = list("metal"=80000 , "glass"=6000 , "gold"= 5000)
 	icon_state = "cyborg_upgrade2"
 	require_module = 1
 
@@ -97,7 +92,6 @@
 /obj/item/robot/upgrade/tasercooler
 	name = "Borg Rapid Taser Cooling Module"
 	desc = "Used to cool a mounted taser, increasing the potential current in it and thus its recharge rate.."
-	construction_cost = list("metal"=80000 , "glass"=6000 , "gold"= 2000, "diamond" = 500)
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
 
@@ -130,7 +124,6 @@
 /obj/item/robot/upgrade/jetpack
 	name = "Mining Borg Jetpack"
 	desc = "A carbon dioxide jetpack suitable for low-gravity mining operations"
-	construction_cost = list("metal"=10000,"phoron"=15000,"uranium" = 20000)
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
 

@@ -170,7 +170,7 @@
 /area/bigred/ground/exterior
 	name = "\improper underground"
 	icon_state = "blue-red"
-	ambience = list('sound/ambience/ambiatm1.ogg')
+	//ambience = list('sound/ambience/ambiatm1.ogg')
 
 /area/bigred/ground/exterior/north
 	name = "\improper northern facility exterior"

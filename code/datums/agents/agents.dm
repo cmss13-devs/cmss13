@@ -14,9 +14,8 @@ Giving objectives to an agent:
 /datum/agent
 	var/mob/living/carbon/human/source_human
 	var/obj/item/device/portable_vendor/antag/tools
+	var/list/datum/agent_objective/objectives_list
 	var/faction = FACTION_WY
-
-	var/objectives_list
 
 	var/frequency_code = 100
 
@@ -123,17 +122,12 @@ Giving objectives to an agent:
 	transmission.give_action(source_human)
 
 /datum/agent/Destroy()
-	. = ..()
-
-	source_human.agent_holder = null
-	LAZYREMOVE(source_human.contents, tools)
-	QDEL_NULL(tools)
-
-	if(objectives_list)
-		for(var/datum/agent_objective/O in objectives_list)
-			O.belonging_to_agent = null
-			qdel(O)
-
+	if(source_human)
+		GLOB.human_agent_list -= source_human
+		source_human.agent_holder = null
+	tools = null
+	QDEL_NULL_LIST(objectives_list)
+	return ..()
 
 /datum/action/human_action/activable/receive_objective
 	name = "Receive Incoming Transmission"

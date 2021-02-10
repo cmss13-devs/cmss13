@@ -236,7 +236,7 @@
 /area/yautja
 	name = "\improper Yautja Ship"
 	icon_state = "teleporter"
-	music = "signal"
+	//music = "signal"
 	ambience_exterior = AMBIENCE_YAUTJA
 
 	requires_power = FALSE

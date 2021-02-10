@@ -34,10 +34,6 @@
 #define LIGHTING_ICON 'icons/effects/ss13_dark_alpha6.dmi'	//Icon used for lighting shading effects
 #define LIGHTING_STATES 6
 
-#define DIRECTIONAL_LUM_OFFSET		2					//Used to tweak direcitonal luminosity
-#define DIRECTIONAL_LUM_GRADIENT 	0.2					//Used to tweak direcitonal luminosity
-#define DIRECTIONAL_LUM_MULT		1.5					//how much brighter directional luminosity is in the right direction
-
 /datum/light_source
 	var/atom/owner
 	var/changed = 1
@@ -121,7 +117,6 @@
 	var/datum/light_source/light
 	var/trueLuminosity = 0  // Typically 'luminosity' squared.  The builtin luminosity must remain linear.
 	                        // We may read it, but NEVER set it directly.
-	var/directional_lum = 0
 
 //Movable atoms with opacity when they are constructed will trigger nearby lights to update
 //Movable atoms with luminosity when they are constructed will create a light_source automatically
@@ -221,8 +216,6 @@
 /turf
 	var/lighting_lumcount = 0
 	var/lighting_changed = 0
-	var/color_lighting_lumcount = 0
-	var/chemexploded = FALSE
 
 /turf/open/space
 	lighting_lumcount = 4		//starlight
@@ -244,7 +237,7 @@
 	// replicate vars
 	for(var/V in Area.vars)
 		switch(V)
-			if ("contents","lighting_overlay", "color_overlay", "overlays")
+			if ("contents","lighting_overlay", "overlays")
 				continue
 			else
 				if(issaved(Area.vars[V])) A.vars[V] = Area.vars[V]
@@ -294,7 +287,6 @@
 	var/lighting_subarea = 0		//tracks whether we're a lighting sub-area
 	var/lighting_space = 0			// true for space-only lighting subareas
 	var/tagbase
-	var/image/color_overlay //Tracks the color image.
 
 /area/proc/SetLightLevel(light)
 	if(!src) return
@@ -367,5 +359,3 @@
 #undef LIGHTING_MAX_LUMINOSITY_STATIC
 #undef LIGHTING_MAX_LUMINOSITY_MOBILE
 #undef LIGHTING_MAX_LUMINOSITY_TURF
-#undef DIRECTIONAL_LUM_OFFSET
-#undef DIRECTIONAL_LUM_MULT

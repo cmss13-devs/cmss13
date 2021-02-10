@@ -2,7 +2,6 @@
 
 // ===
 /area
-	var/atmos = 1
 	var/atmosalm = 0
 	var/poweralm = 1
 
@@ -20,21 +19,16 @@
 	var/unique = TRUE
 
 	var/has_gravity = 1
-	var/list/apc = list()
-	var/list/area_machines = list() // list of machines only for master areas
-	var/no_air = null
 	var/area/master				// master area used for power calcluations
 								// (original area before splitting due to sd_DAL)
 	var/list/related			// the other areas of the same type as this
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = list()		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
-	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
 	var/statistic_exempt = FALSE
 
 	var/global/global_uid = 0
 	var/uid
-	var/can_hellhound_enter = 1
 	var/ceiling = CEILING_NONE //the material the ceiling is made of. Used for debris from airstrikes and orbital beacons in ceiling_debris()
 	var/fake_zlevel // for multilevel maps in the same z level
 	var/gas_type = GAS_TYPE_AIR
@@ -57,12 +51,8 @@
 	var/base_muffle = 0 //Ambience will always be muffled by this ammount at minimum
 						//NOTE: Values from 0 to -10000 ONLY. The rest won't work
 
-
-	var/music = null
-
 	//Power stuff
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
-	var/debug = 0
 	var/requires_power = 1
 	var/unlimited_power = 0
 	var/always_unpowered = 0	//this gets overriden to 1 for space in area/New()
@@ -394,13 +384,11 @@
 
 /area/proc/add_machine(var/obj/structure/machinery/M)
 	if(istype(M))
-		master.area_machines += M
 		use_power(M.calculate_current_power_usage(), M.power_channel)
 		M.power_change()
 
 /area/proc/remove_machine(var/obj/structure/machinery/M)
 	if(istype(M))
-		master.area_machines -= M
 		use_power(-M.calculate_current_power_usage(), M.power_channel)
 
 /area/proc/gravitychange(var/gravitystate = 0, var/area/A)

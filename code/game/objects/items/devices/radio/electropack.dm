@@ -11,6 +11,7 @@
 	matter = list("metal" = 10000,"glass" = 2500)
 
 	var/code = 2
+	var/mob_move_time = 0
 
 /obj/item/device/radio/electropack/attack_hand(mob/user as mob)
 	if(src == user.back)
@@ -67,12 +68,9 @@
 		var/mob/M = loc
 		var/turf/T = M.loc
 		if(istype(T, /turf))
-			if(!M.moved_recently && M.last_move_dir)
-				M.moved_recently = 1
+			if( (world.time - mob_move_time) >= (5 SECONDS) && M.last_move_dir)
+				mob_move_time = world.time
 				step(M, M.last_move_dir)
-				sleep(50)
-				if(M)
-					M.moved_recently = 0
 		to_chat(M, SPAN_DANGER("You feel a sharp shock!"))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(3, 1, M)

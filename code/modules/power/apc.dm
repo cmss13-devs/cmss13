@@ -136,7 +136,6 @@
 		init()
 	else
 		area = loc.loc:master
-		area.apc |= src
 		opened = APC_COVER_OPEN
 		operating = 0
 		name = "\improper [area.name] APC"
@@ -191,7 +190,6 @@
 		area = get_area_name(areastring)
 		name = "\improper [area.name] APC"
 
-	area.apc |= src
 	update_icon()
 	make_terminal()
 

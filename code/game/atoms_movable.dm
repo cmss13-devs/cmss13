@@ -8,9 +8,7 @@
 	var/throw_speed = SPEED_FAST // Speed that an atom will go when thrown by a carbon mob
 	var/throw_range = 7
 	var/cur_speed = MIN_SPEED // Current speed of an atom (account for speed when launched/thrown as well)
-	var/moved_recently = 0
 	var/mob/pulledby = null
-	var/diagonal_movement = DIAG_MOVE_DEFAULT 	// Type of diagonal movement (whether it checks for obstacles adjacent to start turf)
 	var/rebounds = FALSE
 	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
 

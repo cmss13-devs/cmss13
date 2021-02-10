@@ -50,7 +50,6 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Interior Above Ground Area"
 	icon_state = "ag_i"
 	requires_power = 1
-	can_hellhound_enter = 0
 	temperature = T20C //Nice and room temp
 	ceiling = CEILING_METAL
 
@@ -71,14 +70,12 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	name = "Interior Under Ground Area"
 	icon_state = "ug_i"
 	requires_power = 1
-	can_hellhound_enter = 0
 	temperature = T20C
 
 /area/strata/ug/exterior
 	name = "Exterior Under Ground Area"
 	icon_state = "ug_i"
 	requires_power = 1
-	can_hellhound_enter = 0
 	temperature = T20C
 	ceiling = CEILING_NONE
 

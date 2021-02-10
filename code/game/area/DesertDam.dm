@@ -638,7 +638,7 @@
 	power_equip = FALSE
 	power_environ = FALSE
 
-	ambience = list('sound/ambience/ambiatm1.ogg')
+	//ambience = list('sound/ambience/ambiatm1.ogg')
 
 /area/desert_dam/exterior/rock
 	name = "Rock"

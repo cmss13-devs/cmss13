@@ -87,11 +87,6 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define STASIS_IN_BAG 		1
 #define STASIS_IN_CRYO_CELL 2
 
-
-// How diagonal movement is checked
-#define DIAG_MOVE_DEFAULT	0 // Diagonal movement checks obstacles on the sides
-#define DIAG_MOVE_OLD		1 // Diagonal movement just check start turf and destination turf
-
 // Shuttle defines
 
 #define SHUTTLE_OPTIMIZE_FACTOR_RECHARGE 0.75

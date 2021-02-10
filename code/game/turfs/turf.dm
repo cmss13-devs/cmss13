@@ -44,6 +44,7 @@
 
 	var/list/baseturfs = /turf/baseturf_bottom
 	var/changing_turf = FALSE
+	var/chemexploded = FALSE // Prevents explosion stacking
 
 /turf/Initialize(mapload)
 	SHOULD_CALL_PARENT(FALSE) // this doesn't parent call for optimisation reasons
@@ -167,9 +168,7 @@
 	// if we are thrown, moved, dragged, or in any other way abused by code - check our diagonals
 	if(!mover.move_intentionally)
 		// Check objects in adjacent turf EAST/WEST
-		if(mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
-			fd1 && fd1 != fdir
-		)
+		if(fd1 && fd1 != fdir)
 			T = get_step(mover, fd1)
 			if (T.BlockedExitDirs(mover, fd2) || T.BlockedPassDirs(mover, fd1))
 				blocking_dir |= fd1
@@ -189,9 +188,7 @@
 						return FALSE
 
 		// Check for borders in adjacent turf NORTH/SOUTH
-		if(mover.diagonal_movement == DIAG_MOVE_DEFAULT && \
-			fd2 && fd2 != fdir
-		)
+		if(fd2 && fd2 != fdir)
 			T = get_step(mover, fd2)
 			if (T.BlockedExitDirs(mover, fd1) || T.BlockedPassDirs(mover, fd2))
 				blocking_dir |= fd2

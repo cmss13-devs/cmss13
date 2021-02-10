@@ -752,7 +752,7 @@
 
 	else if(wiresexposed == 1 && allcut == 0)
 		for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
-			cut(wire)
+			cut(wire, M)
 		update_icon()
 		visible_message(SPAN_DANGER("[src]'s wires snap apart in a rain of sparks!"), null, null, 5)
 	else

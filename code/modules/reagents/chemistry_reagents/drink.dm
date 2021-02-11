@@ -22,9 +22,8 @@
 	if(alien == IS_YAUTJA || alien == IS_HORROR || !holder)
 		return
 	M.nutrition += nutriment_factor
-	holder.remove_reagent(src.id, FOOD_METABOLISM)
 	// Drinks should be used up faster than other reagents.
-	holder.remove_reagent(src.id, FOOD_METABOLISM)
+	holder.remove_reagent(src.id, FOOD_METABOLISM * 2)
 	if(adj_dizzy)
 		M.dizziness = max(0,M.dizziness + adj_dizzy)
 	if(adj_drowsy)

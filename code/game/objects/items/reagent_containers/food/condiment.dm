@@ -22,27 +22,21 @@
 	return
 
 /obj/item/reagent_container/food/condiment/attack(mob/M as mob, mob/user as mob, def_zone)
-	var/datum/reagents/R = src.reagents
-
-	if(!R || !R.total_volume)
+	if(!reagents?.total_volume)
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
-		return 0
+		return FALSE
 
 	if(M == user)
 		to_chat(M, SPAN_NOTICE(" You swallow some of contents of the [src]."))
-		if(reagents.total_volume)
-			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, 10)
 
-		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-		return 1
 	else if(istype(M, /mob/living/carbon/human))
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 
-		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) 
+			return FALSE
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
@@ -53,14 +47,14 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [src.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
 		msg_admin_attack("[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+	else 
+		return FALSE
 
-		if(reagents.total_volume)
-			reagents.set_source_mob(user)
-			reagents.trans_to_ingest(M, 10)
-
-		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-		return 1
-	return 0
+	if(reagents.total_volume)
+		reagents.set_source_mob(user)
+		reagents.trans_to_ingest(M, 10)
+	playsound(M.loc,'sound/items/drink.ogg', 15, 1)
+	return TRUE
 
 /obj/item/reagent_container/food/condiment/attackby(obj/item/I as obj, mob/user as mob)
 	return

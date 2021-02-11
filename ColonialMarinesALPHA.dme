@@ -1691,6 +1691,7 @@
 #include "code\modules\reagents\Chemistry-Reactions.dm"
 #include "code\modules\reagents\Chemistry-Readme.dm"
 #include "code\modules\reagents\Chemistry-Reagents.dm"
+#include "code\modules\reagents\Chemistry-Vessel.dm"
 #include "code\modules\reagents\chemical_research\Chemical-Research.dm"
 #include "code\modules\reagents\chemical_research\generated_reagents.dm"
 #include "code\modules\reagents\chemistry_machinery\acid_harness.dm"

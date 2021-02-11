@@ -38,8 +38,9 @@
 	return //TODO: DEFERRED
 
 /mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
-	if(!reagents)
-		return
+	SHOULD_NOT_SLEEP(TRUE)
+	if(!reagents || undefibbable)
+		return // Double checking due to Life() funny background=1
 	for(var/datum/reagent/generated/R in reagents.reagent_list)
 		var/list/mods = list(	REAGENT_EFFECT		= TRUE,
 								REAGENT_BOOST 		= FALSE,

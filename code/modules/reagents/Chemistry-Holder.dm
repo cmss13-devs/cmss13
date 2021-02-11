@@ -29,6 +29,7 @@
 		global_prepare_properties()
 		global_prepare_reagents()
 
+// TODO - This should be 
 /proc/global_prepare_properties()
 	//Chemical Properties - Initialises all /datum/chem_property into a list indexed by property name
 	var/paths = typesof(/datum/chem_property)
@@ -89,15 +90,9 @@
 			D.add_to_filtered_list()
 
 /datum/reagents/Destroy()
-	. = ..()
-	for(var/datum/reagent/R in reagent_list)
-		R.holder = null
-	reagent_list = null
-	if(my_atom)
-		my_atom.reagents = null
-		my_atom = null
-
-
+	QDEL_NULL_LIST(reagent_list)
+	my_atom = null
+	return ..()
 
 /datum/reagents/proc/remove_any(var/amount=1)
 	var/total_transfered = 0
@@ -149,57 +144,45 @@
 
 	return the_id
 
-/datum/reagents/proc/trans_to(var/obj/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
-	if(!target )
-		return
-	if(!target.reagents || total_volume<=0)
-		return
-	if(target.reagents.locked || locked)
-		return
+/// Transfers to the reagents datum of an object
+/datum/reagents/proc/trans_to(atom/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/reaction = TRUE)
+	var/datum/reagents/R = target?.reagents
+	if(R && !locked && !R.locked && total_volume > 0)
+		return trans_to_datum(R, amount, multiplier, preserve_data, reaction)
 
-	var/datum/reagents/R = target.reagents
-	amount = min(min(amount, total_volume), R.maximum_volume-R.total_volume)
+/// Transfers to a reagent datum
+/datum/reagents/proc/trans_to_datum(datum/reagents/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/reaction = TRUE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
+	amount = min(min(amount, total_volume), target.maximum_volume-target.total_volume)
 	var/part = amount / total_volume
-	var/trans_data = null
 	for(var/datum/reagent/current_reagent in reagent_list)
-		if(!current_reagent)
-			continue
-
+		var/list/trans_data
 		var/current_reagent_transfer = current_reagent.volume * part
 		if(preserve_data)
 			trans_data = copy_data(current_reagent)
-
-		R.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1)	//safety checks on these so all chemicals are transferred
+		target.add_reagent(current_reagent.id, (current_reagent_transfer * multiplier), trans_data, safety = 1)	//safety checks on these so all chemicals are transferred
 		remove_reagent(current_reagent.id, current_reagent_transfer, safety = 1)							// to the target container before handling reactions
-
 	update_total()
-	R.update_total()
+	target.update_total()
 	if(reaction)
-		R.handle_reactions()
+		target.handle_reactions()
 		handle_reactions()
 	return amount
 
+/// Transfers to object as ingestion
 /datum/reagents/proc/trans_to_ingest(var/atom/movable/target, var/amount=1, var/multiplier=1, var/preserve_data=1) //For items ingested. A delay is added between ingestion and addition of the reagents
-	if(!target || !target.reagents || total_volume <= 0)
+	if(!target?.reagents || total_volume <= 0)
 		return
 
-	var/obj/item/reagent_container/glass/beaker/noreact/B = new /obj/item/reagent_container/glass/beaker/noreact //temporary holder
-	B.volume = 1000
-
-	var/datum/reagents/BR = B.reagents
+	var/datum/reagents/vessel/V = new(1000) //temporary holder
 	var/datum/reagents/R = target.reagents
-
 	amount = min(min(amount, total_volume), R.maximum_volume - R.total_volume)
+	trans_to_datum(V, amount, reaction = FALSE)
 
-	trans_to(B, amount)
-
-	for(var/datum/reagent/RG in BR.reagent_list) // If it can't be ingested, remove it.
+	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
-			BR.del_reagent(RG.id)
+			V.del_reagent(RG.id)
 
-	addtimer(CALLBACK(BR, /datum/reagents/proc/reaction, target, INGEST), 95)
-	addtimer(CALLBACK(BR, /datum/reagents/proc/trans_to, target, BR.total_volume), 10 SECONDS)
-	QDEL_IN(B, 10 SECONDS)
+	addtimer(CALLBACK(V, /datum/reagents/vessel.proc/inject_vessel, target, INGEST, TRUE, 0.5 SECONDS), 9.5 SECONDS)
 	return amount
 
 /datum/reagents/proc/set_source_mob(var/new_source_mob)
@@ -365,18 +348,14 @@
 			update_total()
 
 /datum/reagents/proc/del_reagent(var/reagent)
-	if(!my_atom)
-		return
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			R.on_delete()
 			reagent_list -= R
 			qdel(R)
 			update_total()
-			my_atom.on_reagent_change()
+			my_atom?.on_reagent_change()
 			return FALSE
-
-
 	return TRUE
 
 // Returns FALSE if the reagent is getting deleted
@@ -424,10 +403,11 @@
 		if(R.id == reagent)
 			R.volume += amount
 			update_total()
-			my_atom.on_reagent_change()
 
-			for(var/datum/chem_property/P in R.properties)
-				P.reagent_added(my_atom, R, R.volume)
+			if(my_atom)
+				my_atom.on_reagent_change()
+				for(var/datum/chem_property/P in R.properties)
+					P.reagent_added(my_atom, R, R.volume)
 
 			// mix dem viruses
 			if(R.data_properties && data)
@@ -469,11 +449,12 @@
 		SetViruses(R, new_data) // Includes setting data
 		reagent_list += R
 
-		for(var/datum/chem_property/P in D.properties)
-			P.reagent_added(my_atom, D, amount)
+		if(my_atom)
+			for(var/datum/chem_property/P in D.properties)
+				P.reagent_added(my_atom, D, amount)
 
 		update_total()
-		my_atom.on_reagent_change()
+		my_atom?.on_reagent_change()
 		if(!safety)
 			handle_reactions()
 		return FALSE
@@ -495,7 +476,7 @@
 			update_total()
 			if(!safety)//So it does not handle reactions when it need not to
 				handle_reactions()
-			my_atom.on_reagent_change()
+			my_atom?.on_reagent_change()
 			return FALSE
 
 	return TRUE
@@ -668,11 +649,10 @@
 
 		//Note: No need to log here as that is done in cell_explosion()
 		create_shrapnel(sourceturf, shards, dir, angle, shard_type, "chemical explosion", source_mob)
-		sleep(2) // So mobs aren't knocked down before getting hit by shrapnel
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
-			my_atom.loc.ex_act(ex_power)
+			addtimer(CALLBACK(my_atom.loc, /atom.proc/ex_act, ex_power), 0.2 SECONDS)
 			ex_power = ex_power / 2
-		cell_explosion(sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, "chemical explosion", source_mob) //TODO? support angle
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/cell_explosion, sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, "chemical_explosion", source_mob), 0.2 SECONDS)
 
 		exploded = TRUE // clears reagents after all reactions processed
 
@@ -728,8 +708,7 @@
 	R.color = firecolor
 
 	new /obj/flamer_fire(sourceturf, "chemical fire", source_mob, R, radius, FALSE, flameshape)
-	sleep(5)
-	playsound(sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)
 
 turf/proc/reset_chemexploded()
 	chemexploded = FALSE

@@ -31,6 +31,10 @@
 		verbs -= /obj/item/reagent_container/verb/set_APTFT //which objects actually uses it?
 	create_reagents(volume)
 
+/obj/item/reagent_container/Destroy()
+	possible_transfer_amounts = null
+	return ..()
+
 /obj/item/reagent_container/proc/display_contents(mob/user) // Used on examine for properly skilled people to see contents.
 	if(isXeno(user))
 		return

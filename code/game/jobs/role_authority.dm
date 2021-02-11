@@ -53,7 +53,10 @@ var/global/marines_assigned = 0
 											/datum/job/logistics,
 											/datum/job/logistics/tech,
 											/datum/job/marine,
-											/datum/job/antag)
+											/datum/job/antag,
+											/datum/job/distress,
+											/datum/job/distress/provost
+											)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
 	var/castes_all[] = subtypesof(/datum/caste_datum)
 

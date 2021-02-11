@@ -1,5 +1,6 @@
 /obj/item/reagent_container/food/drinks/cans
 	var/canopened = 0
+	gulp_size = 10
 
 /obj/item/reagent_container/food/drinks/cans/attack_self(mob/user as mob)
 	if (canopened == 0)
@@ -25,8 +26,6 @@
 		if(reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, gulp_size)
-			reagents.reaction(M, INGEST)
-			addtimer(CALLBACK(reagents, /datum/reagents.proc/trans_to, M, gulp_size), 5)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
 		return 1

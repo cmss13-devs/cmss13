@@ -100,9 +100,7 @@
 		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, reagents.total_volume)
-			qdel(src)
-		else
-			qdel(src)
+		qdel(src)
 
 		return 1
 

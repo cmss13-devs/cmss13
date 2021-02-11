@@ -20,7 +20,7 @@
 	var/spray_warning = FALSE //whether spraying that reagent creates an admin message.
 	//var/list/viruses = list()
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
-	var/last_source_mob
+	var/mob/last_source_mob
 	// For explosions
 	var/explosive = FALSE
 	var/power = 0
@@ -43,7 +43,7 @@
 	var/chemclass = CHEM_CLASS_NONE //Decides how rare the chem in the generation process
 	var/gen_tier = 0 //Decides the chance of the chem being good during generation
 	var/objective_value // How valuable it is to identify the chemical. (Only works on chemclass SPECIAL or ULTRA)
-	var/list/properties = list() //Decides properties
+	var/list/datum/chem_property/properties = list() //Decides properties
 	var/original_id //For tracing back
 	var/flags = 0 // Flags for misc. stuff
 
@@ -53,6 +53,13 @@
 	if(properties)
 		properties = properties_to_datums()
 	recalculate_variables()
+
+/datum/reagent/Destroy()
+	QDEL_NULL_LIST(properties)
+	data_properties = null
+	holder = null
+	last_source_mob = null
+	return ..()
 
 /datum/reagent/proc/recalculate_variables()
 	for(var/datum/chem_property/P in properties)

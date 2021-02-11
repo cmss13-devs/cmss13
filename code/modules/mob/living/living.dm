@@ -27,6 +27,7 @@
 	pipes_shown = null
 
 	attack_icon = null
+	QDEL_NULL(fire_reagent)
 	QDEL_NULL(event_movement)
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)

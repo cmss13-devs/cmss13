@@ -450,3 +450,11 @@ This maintains a list of ip addresses that are able to bypass topic filtering.
 /datum/config_entry/str_list/lobby_art_images
 
 /datum/config_entry/str_list/lobby_art_authors
+
+/// Force map bypassing configuration, and ignore map changes
+/datum/config_entry/flag/ephemeral_map_mode
+	config_entry_value = FALSE
+
+/// Map configuration file to use in ephemeral mode
+/datum/config_entry/string/ephemeral_ground_map
+	config_entry_value = "maps/testing.json"

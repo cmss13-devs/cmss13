@@ -18,22 +18,21 @@
 
 /datum/emergency_call/upp/print_backstory(mob/living/carbon/human/M)
 	to_chat(M, "")
-	to_chat(M, "<B>You grew up in relativly simple family in [pick(75;"Eurasia", 25;"a famished UPP colony")] with few belongings or luxuries. </B>")
-	to_chat(M, "<B>The family you grew up with were [pick(50;"getting by", 25;"impoverished", 25;"starving")] and you were one of [pick(10;"two", 20;"three", 20;"four", 30;"five", 20;"six")] children.</B>")
-	to_chat(M, "<B>You come from a long line of [pick(40;"crop-harvesters", 20;"soldiers", 20;"factory workers", 5;"scientists", 15;"engineers")], and quickly enlisted to improve your living conditions.</B>")
+	to_chat(M, SPAN_BOLD("You grew up in relativly simple family in [pick(75;"Eurasia", 25;"a famished UPP colony")] with few belongings or luxuries."))
+	to_chat(M, SPAN_BOLD("The family you grew up with were [pick(50;"getting by", 25;"impoverished", 25;"starving")] and you were one of [pick(10;"two", 20;"three", 20;"four", 30;"five", 20;"six")] children."))
+	to_chat(M, SPAN_BOLD("You come from a long line of [pick(40;"crop-harvesters", 20;"soldiers", 20;"factory workers", 5;"scientists", 15;"engineers")], and quickly enlisted to improve your living conditions."))
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, "<B>Following your enlistment UPP military at the age of 17 you were assigned to the 17th 'Smoldering Sons' battalion (six hundred strong) under the command of Colonel Ganbaatar. </B>")
-	to_chat(M, "<B>You were shipped off with the battalion to one of the UPP's most remote territories, a gas giant designated MV-35 in the Anglo-Japanese Arm, in the Tychon's Rift sector.  </B>")
+	to_chat(M, SPAN_BOLD("Following your enlistment UPP military at the age of 17 you were assigned to the 17th 'Smoldering Sons' battalion (six hundred strong) under the command of Colonel Ganbaatar."))
+	to_chat(M, SPAN_BOLD("You were shipped off with the battalion to one of the UPP's most remote territories, a gas giant designated MV-35 in the Anglo-Japanese Arm, in the Tychon's Rift sector."))
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, "<B>For the past 14 months, you and the rest of the Smoldering Sons have been stationed at MV-35's only facility, the helium refinery, Altai Station. </B>")
-	to_chat(M, "<B>As MV-35 and Altai Station are the only UPP-held zones in the Tychon's Rift sector for many lightyears, you have spent most of your military career holed up in crammed quarters in near darkness, waiting for supply shipments and transport escort deployments.</B>")
-	//to_chat(M, "<B>you have spent most of your military career holed up in crammed quarters in near darkness, waiting for supply shipments and transport escort deployments.</B>")
+	to_chat(M, SPAN_BOLD("For the past 14 months, you and the rest of the Smoldering Sons have been stationed at MV-35's only facility, the helium refinery, Altai Station."))
+	to_chat(M, SPAN_BOLD("As MV-35 and Altai Station are the only UPP-held zones in the Tychon's Rift sector for many lightyears, you have spent most of your military career holed up in crammed quarters in near darkness, waiting for supply shipments and transport escort deployments."))
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, "<B>With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has felt threatened in the sector. </B>")
-	to_chat(M, "<B>In an effort to protect the vunerable MV-35 from the emproaching UA/USCM imperialists, the leadership of your battalion has opted this the best opportunity to strike at the Falling Falcons to catch them off guard. </B>")
+	to_chat(M, SPAN_BOLD("With the recent arrival of the enemy USCM battalion the 'Falling Falcons' and their flagship, the [MAIN_SHIP_NAME], the UPP has felt threatened in the sector."))
+	to_chat(M, SPAN_BOLD("In an effort to protect the vunerable MV-35 from the emproaching UA/USCM imperialists, the leadership of your battalion has opted this the best opportunity to strike at the Falling Falcons to catch them off guard."))
 	to_chat(M, "")
 	to_chat(M, "")
 	to_chat(M, SPAN_WARNING(FONT_SIZE_BIG("Glory to Colonel Ganbaatar.")))
@@ -61,22 +60,22 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, "UPP Leader", TRUE, TRUE)
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		to_chat(H, SPAN_ROLE_HEADER("You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 	else if(medics < max_medics)
 		medics++
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		to_chat(H, SPAN_ROLE_HEADER("You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, "UPP Medic", TRUE, TRUE)
 	else if(heavies < max_heavies)
 		heavies++
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		to_chat(H, SPAN_ROLE_HEADER("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, "UPP Specialist", TRUE, TRUE)
 	else
-		to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!")))
+		to_chat(H, SPAN_ROLE_HEADER("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, "UPP Soldier", TRUE, TRUE)
 
 	print_backstory(H)
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
 

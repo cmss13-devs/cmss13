@@ -23,10 +23,11 @@
 
 	sleep(5)
 	arm_equipment(H, "USCM Vehicle Crewman (CRMN)", TRUE, TRUE)
-	to_chat(H, "<font size='3'>\red You are a vehicle crewman in the USCM, you are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command.</B>")
+	to_chat(H, SPAN_ROLE_HEADER("You are a vehicle crewman in the USCM"))
+	to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 
 	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 
 	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 

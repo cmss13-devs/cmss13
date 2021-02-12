@@ -29,28 +29,34 @@
 	if(!leader)
 		leader = H
 		arm_equipment(H, "USCM Cryo Squad Leader (Equipped)", TRUE, TRUE)
-		to_chat(H, SPAN_WARNING("You are a Squad leader in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. </B>"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a Squad leader in the USCM"))
+		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 	else if (heavies < max_heavies)
 		heavies++
 		if(prob(40))
 			arm_equipment(H, "USCM Cryo Smartgunner (Equipped)", TRUE, TRUE)
-			to_chat(H, SPAN_WARNING("You are a smartgunner in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>"))
+			to_chat(H, SPAN_ROLE_HEADER("You are a smartgunner in the USCM"))
+			to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 		else if(prob(20))
 			arm_equipment(H, "USCM Cryo Specialist (Equipped)", TRUE, TRUE)
-			to_chat(H, SPAN_WARNING("You are a specialist in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>"))
+			to_chat(H, SPAN_ROLE_HEADER("You are a specialist in the USCM"))
+			to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 		else
 			arm_equipment(H, "USCM Cryo Engineer (Equipped)", TRUE, TRUE)
-			to_chat(H, SPAN_WARNING("You are an engineer in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>"))
+			to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))
+			to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 	else if (medics < max_medics)
 		medics++
 		arm_equipment(H, "USCM Cryo Medic (Equipped)", TRUE, TRUE)
-		to_chat(H, SPAN_WARNING("You are a medic in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a medic in the USCM"))
+		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 	else
 		arm_equipment(H,"USCM Cryo Private (Equipped)", TRUE, TRUE)
-		to_chat(H, SPAN_WARNING("You are a private in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a private in the USCM"))
+		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 
 	sleep(10)
-	to_chat(H, "<B>Objectives:</b> [objectives]")
+	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 
 	RoleAuthority.randomize_squad(H)
 	H.sec_hud_set_ID()

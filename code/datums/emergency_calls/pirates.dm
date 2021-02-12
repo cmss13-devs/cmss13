@@ -21,11 +21,11 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, "Fun - Pirate Captain", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are the leader of these jolly pirates!</font>")
-		to_chat(H, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are the leader of these jolly pirates!"))
+		to_chat(H, SPAN_ROLE_BODY("Loot this place for all its worth! Take everything of value that's not nailed down!"))
 	else
 		arm_equipment(H, "Fun - Pirate", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are a jolly pirate! Yarr!</font>")
-		to_chat(H, "<B> Loot this place for all its worth! Take everything of value that's not nailed down!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are a jolly pirate! Yarr!"))
+		to_chat(H, SPAN_ROLE_BODY("Loot this place for all its worth! Take everything of value that's not nailed down!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

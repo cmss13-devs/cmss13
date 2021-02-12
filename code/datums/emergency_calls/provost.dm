@@ -19,22 +19,22 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, "Provost Inspector (PvI)", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are the leader of a Provost Inspection Team!</font>")
-		to_chat(H, "<B> Follow any orders directly from High Command!</b>")
-		to_chat(H, "<B> You only answer to Marine Law and High Command!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are the leader of a Provost Inspection Team!"))
+		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command!"))
+		to_chat(H, SPAN_ROLE_BODY("You only answer to Marine Law and High Command!"))
 	else
 		arm_equipment(H, "Provost Officer (PvO)", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are a member of a Provost Inspection Team!</font>")
-		to_chat(H, "<B> Follow any orders directly from High Command or your Inspector!</b>")
-		to_chat(H, "<B> You only answer to your superior, Marine Law and High Command!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are a member of a Provost Inspection Team!"))
+		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command or your Inspector!"))
+		to_chat(H, SPAN_ROLE_BODY("You only answer to your superior, Marine Law and High Command!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/provost_inspection/spawn_items()
 	var/turf/drop_spawn
 
-	drop_spawn = get_spawn_point(1)
+	drop_spawn = get_spawn_point(TRUE)
 	new /obj/item/storage/box/handcuffs(drop_spawn)
 	new /obj/item/storage/box/handcuffs(drop_spawn)
 
@@ -60,21 +60,21 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		arm_equipment(H, "Provost Team Leader (PvTML)", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are the leader of a Provost Enforcer Team!</font>")
-		to_chat(H, "<B> Follow any orders directly from High Command!</b>")
-		to_chat(H, "<B> You only answer to Marine Law and the Provost Marshall!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are the leader of a Provost Enforcer Team!"))
+		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command!"))
+		to_chat(H, SPAN_ROLE_BODY("You only answer to Marine Law and the Provost Marshall!"))
 	else
 		arm_equipment(H, "Provost Enforcer (PvE)", TRUE, TRUE)
-		to_chat(H, "<font size='3'>\red You are a member of a Provost Enforcer Team!</font>")
-		to_chat(H, "<B> Follow any orders directly from High Command or your Team Leader!</b>")
-		to_chat(H, "<B> You only answer to your superior, Marine Law and High Command!</b>")
+		to_chat(H, SPAN_ROLE_HEADER("You are a member of a Provost Enforcer Team!"))
+		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command or your Team Leader!"))
+		to_chat(H, SPAN_ROLE_BODY("You only answer to your superior, Marine Law and High Command!"))
 
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
 
 /datum/emergency_call/provost_enforcer/spawn_items()
 	var/turf/drop_spawn
 
-	drop_spawn = get_spawn_point(1)
+	drop_spawn = get_spawn_point(TRUE)
 	new /obj/item/storage/box/handcuffs(drop_spawn)
 	new /obj/item/storage/box/handcuffs(drop_spawn)

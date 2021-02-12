@@ -18,4 +18,4 @@
 	M.transfer_to(H, TRUE)
 
 	arm_equipment(H, "HEFA Knight - Melee", FALSE, TRUE)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<B>Objectives:</b> [objectives]"), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

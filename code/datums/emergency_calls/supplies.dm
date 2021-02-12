@@ -14,7 +14,7 @@
 	var/list/choices = list(0,1,2,3,4,5,6)
 
 	for(var/i = 1 to 4) //Spawns 4 random things.
-		drop_spawn = get_spawn_point(1)
+		drop_spawn = get_spawn_point(TRUE)
 		if(istype(drop_spawn))
 			var/obj/structure/closet/crate/weapon/W = new(drop_spawn)
 			switch(pick_n_take(choices))

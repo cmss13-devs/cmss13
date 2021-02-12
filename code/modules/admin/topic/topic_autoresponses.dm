@@ -13,7 +13,7 @@
 		to_chat(usr, "<b>This Adminhelp is not marked. You should mark ahelp first before autoresponding.</b>")
 		return
 
-	var/choice = tgui_input_list(usr, "Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", list ("--CANCEL--", "IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: Self-Solving Bug", "A: Intended Feature", "A: No plasma regen", "A: Devour as Xeno", "T: Tunnel", "J: Job bans", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "M: Macros", "C: Changelog", "G: Gitlab it", "H: Clear Cache"))
+	var/choice = tgui_input_list(usr, "Which autoresponse option do you want to send to the player?\n\n L - A webpage link.\n A - An answer to a common question.", "Autoresponse", list ("IC Issue", "Being Handled", "Fixed", "Thanks", "Marine Law", "L: Xeno Quickstart Guide", "L: Marine quickstart guide", "L: Current Map", "A: Self-Solving Bug", "A: Intended Feature", "A: No plasma regen", "A: Devour as Xeno", "T: Tunnel", "J: Job bans", "E: Event in progress", "R: Radios", "B: Binoculars", "D: Joining disabled", "M: Macros", "C: Changelog", "G: Gitlab it", "H: Clear Cache"))
 	var/msgplayer
 	switch(choice)
 		if("IC Issue")
@@ -74,4 +74,3 @@
 	ref_person.adminhelp_marked = 1 //Timer to prevent multiple clicks
 	spawn(1000) //This should be <= the Adminhelp cooldown in adminhelp.dm
 		if(ref_person)	ref_person.adminhelp_marked = 0
-

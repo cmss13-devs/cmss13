@@ -392,7 +392,7 @@ Additional game mode variables.
 
 	if(!available_xenos.len || (instant_join && !available_xenos_non_ssd.len))
 		to_chat(xeno_candidate, SPAN_WARNING("There aren't any available xenomorphs or pooled larvae. You can try getting spawned as a chestburster larva by toggling your Xenomorph candidacy in Preferences -> Toggle SpecialRole Candidacy."))
-		return 0
+		return FALSE
 
 	var/mob/living/carbon/Xenomorph/new_xeno
 	if(!instant_join)
@@ -402,6 +402,15 @@ Additional game mode variables.
 			var/datum/hive_status/H = pick(available_xenos[userInput]) //The list contains all available hives if we are to choose at random, only one element if we already chose a hive by its name.
 			var/obj/effect/alien/resin/special/pool/SP = H.spawn_pool
 			if(!isnull(SP) && SP.can_spawn_larva()) //isnull() is checked here, in case the spawn pool gets destroyed while the menu is open.
+				if(!xeno_bypass_timer)
+					var/deathtime = world.time - xeno_candidate.timeofdeath
+					if(isnewplayer(xeno_candidate))
+						deathtime = 5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+					if(deathtime <= 5 MINUTES && ( !xeno_candidate.client.admin_holder || !(xeno_candidate.client.admin_holder.rights & R_ADMIN)) )
+						var/message = SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)].")
+						to_chat(xeno_candidate, message)
+						to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
+						return FALSE
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/N = xeno_candidate
 					N.close_spawn_windows()
@@ -415,39 +424,39 @@ Additional game mode variables.
 			return FALSE
 		new_xeno = userInput
 
-		if(!xeno_candidate) //
-			return 0
+		if(!xeno_candidate)
+			return FALSE
 
 		if(!(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD)
 			to_chat(xeno_candidate, SPAN_WARNING("You cannot join if the xenomorph is dead."))
-			return 0
+			return FALSE
 
 		if(new_xeno.client)
 			to_chat(xeno_candidate, SPAN_WARNING("That xenomorph has been occupied."))
-			return 0
+			return FALSE
 
 		if(!xeno_bypass_timer)
 			var/deathtime = world.time - xeno_candidate.timeofdeath
 			if(istype(xeno_candidate, /mob/new_player))
 				deathtime = 5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-			if(deathtime < 5 MINUTES && ( !xeno_candidate.client.admin_holder || !(xeno_candidate.client.admin_holder.rights & R_ADMIN)) )
+			if(deathtime <= 5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 				var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 				message = SPAN_WARNING("[message]")
 				to_chat(xeno_candidate, message)
 				to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
-				return 0
+				return FALSE
 			if((!isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(new_xeno) && new_xeno.away_timer < XENO_LEAVE_TIMER_LARVA))
 				var/to_wait = XENO_LEAVE_TIMER - new_xeno.away_timer
 				if(isXenoLarva(new_xeno))
 					to_wait = XENO_LEAVE_TIMER_LARVA - new_xeno.away_timer
 				to_chat(xeno_candidate, SPAN_WARNING("That player hasn't been away long enough. Please wait [to_wait] second\s longer."))
-				return 0
+				return FALSE
 
 		if(alert(xeno_candidate, "Everything checks out. Are you sure you want to transfer yourself into [new_xeno]?", "Confirm Transfer", "Yes", "No") == "Yes")
 			if(new_xeno.client || !(new_xeno in GLOB.living_xeno_list) || new_xeno.stat == DEAD || !xeno_candidate) // Do it again, just in case
 				to_chat(xeno_candidate, SPAN_WARNING("That xenomorph can no longer be controlled. Please try another."))
-				return 0
-		else return 0
+				return FALSE
+		else return FALSE
 	else new_xeno = pick(available_xenos_non_ssd) //Just picks something at random.
 	if(istype(new_xeno) && xeno_candidate && xeno_candidate.client)
 		if(isnewplayer(xeno_candidate))

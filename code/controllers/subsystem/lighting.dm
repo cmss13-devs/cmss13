@@ -2,7 +2,7 @@ SUBSYSTEM_DEF(lighting)
 	name          = "Lighting"
 	init_order    = SS_INIT_LIGHTING
 	priority      = SS_PRIORITY_LIGHTING
-	wait          = 4
+	wait          = 0.4 SECONDS
 	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
 
 	var/list/datum/light_source/lights_current = list()
@@ -37,28 +37,32 @@ SUBSYSTEM_DEF(lighting)
 
 
 /datum/controller/subsystem/lighting/fire(resumed = FALSE)
-	if (!resumed)
-		lights_current = lights.Copy()
+	if(!resumed)
+		lights_current = lights
 		lights = list()
-		changed_turfs_current = changed_turfs.Copy()
+		changed_turfs_current = changed_turfs
 		changed_turfs = list()
 
 
-	while (lights_current.len)
+	while(lights_current.len)
 		var/datum/light_source/L = lights_current[lights_current.len]
 		lights_current.len--
-		if (!L)
+		if(!L)
 			continue
-		L.check()
-		if (MC_TICK_CHECK)
+		if(!L.owner || L.changed)
+			L.check()
+		if(MC_TICK_CHECK)
 			return
 
-	while (changed_turfs_current.len)
+	while(changed_turfs_current.len)
 		var/turf/T = changed_turfs_current[changed_turfs_current.len]
 		changed_turfs_current.len--
 		if(!T)
 			continue
 		if(T.lighting_changed)
-			T.shift_to_subarea()
+			if(T.lighting_lumcount != T.cached_lumcount)
+				T.cached_lumcount = T.lighting_lumcount
+				T.shift_to_subarea()
+			T.lighting_changed = FALSE
 		if (MC_TICK_CHECK)
 			return

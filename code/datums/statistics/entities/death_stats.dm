@@ -133,8 +133,6 @@
 	msg_admin_attack(observer_message, src.loc.x, src.loc.y, src.loc.z)
 
 	for(var/mob/dead/observer/g in GLOB.observer_list)
-		if(g.client && g.client.admin_holder && (g.client.admin_holder.rights & R_MOD) && (g.client.prefs.toggles_chat & CHAT_ATTACKLOGS))
-			continue
 		to_chat(g, SPAN_DEADSAY(observer_message + " (<a href='?src=\ref[g];jumptocoord=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)"))
 
 	if(round_statistics)

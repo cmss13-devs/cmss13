@@ -82,11 +82,13 @@
 
 /datum/behavior_delegate/ravager_berserker/on_life()
 	// Compute our current rage (demerit if necessary)
-	if (((last_slash_time + rage_decay_time) < world.time) && !(rage <= 0) && !rage_lock_start_time)
+	if (((last_slash_time + rage_decay_time) < world.time) && !(rage <= 0))
 		decrement_rage()
 
 // Handles internal state from decrementing rage
 /datum/behavior_delegate/ravager_berserker/proc/decrement_rage(amount = 1)
+	if (rage_lock_start_time)
+		return
 	var/real_amount = amount
 	if (amount > rage)
 		real_amount = rage

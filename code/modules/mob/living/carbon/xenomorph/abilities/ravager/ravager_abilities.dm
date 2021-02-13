@@ -59,7 +59,7 @@
 /datum/action/xeno_action/activable/apprehend
 	name = "Apprehend"
 	action_icon_state = "rav_enrage"
-	ability_name = "enrage"
+	ability_name = "apprehend"
 	macro_path = /datum/action/xeno_action/verb/verb_apprehend
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_1

@@ -33,6 +33,9 @@
 	update_icon()
 
 	if(drying_time)
+		if(mapload) // Don't use timer at all in mapload - as deleting long running timers during MC init causes issues (see /tg/ issue #56292)
+			dry()
+			return
 		dry_start_time = world.time
 		addtimer(CALLBACK(src, .proc/dry), drying_time * (amount+1))
 

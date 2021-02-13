@@ -39,7 +39,7 @@
 	var/source = null					//Damage source for statistics
 
 /datum/effects/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
-	if(!validate_atom(A))
+	if(!validate_atom(A) || QDELETED(A))
 		qdel(src)
 		return
 
@@ -64,7 +64,7 @@
 	return
 
 /datum/effects/process()
-	if(!affected_atom || (duration <= 0 && !(flags & INF_DURATION)))
+	if(QDELETED(affected_atom) || (duration <= 0 && !(flags & INF_DURATION)))
 		qdel(src)
 		return
 

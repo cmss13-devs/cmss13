@@ -46007,7 +46007,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig_cells)
 "lwC" = (
-/obj/effect/landmark/start/synthetic
+/obj/effect/landmark/start/synthetic,
 /turf/open/floor/plating,
 /area/almayer/command/cichallway)
 "lwJ" = (

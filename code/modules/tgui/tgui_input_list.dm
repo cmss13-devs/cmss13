@@ -113,11 +113,11 @@
 	if (timeout)
 		src.timeout = timeout
 		start_time = world.time
-		QDEL_IN(src, timeout)
+		QDEL_REF_IN(src, timeout)
 
 /datum/tgui_list_input/Destroy(force, ...)
 	SStgui.close_uis(src)
-	QDEL_NULL(buttons)
+	buttons = null
 	. = ..()
 
 /**
@@ -126,7 +126,7 @@
  */
 /datum/tgui_list_input/proc/wait()
 	while (!choice && !closed)
-		stoplag(1)
+		stoplag(0.2 SECONDS)
 
 /datum/tgui_list_input/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)

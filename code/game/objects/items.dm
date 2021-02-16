@@ -203,7 +203,8 @@ cases. Override_icon_state should be a list.*/
 		to_chat(user, desc)
 
 /obj/item/attack_hand(mob/user)
-	if (!user) return
+	if (!user)
+		return
 
 	if(anchored)
 		to_chat(user, "[src] is anchored to the ground.")

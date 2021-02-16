@@ -148,7 +148,7 @@
 	if (!linked_hive)
 		return
 
-	if(!CanHug(AM, linked_hive.hivenumber))
+	if(!can_hug(AM, linked_hive.hivenumber))
 		return
 
 	stored_huggers = max(0, stored_huggers - 1)

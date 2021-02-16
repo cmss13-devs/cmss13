@@ -283,11 +283,16 @@
 
 /datum/species/proc/handle_post_spawn(var/mob/living/carbon/human/H) //Handles anything not already covered by basic species assignment.
 	add_inherent_verbs(H)
+	apply_signals(H)
 
 	if(icobase_source)
 		icobase = get_icon_from_source(icobase_source)
 	if(deform_source)
 		deform = get_icon_from_source(deform_source)
+
+/// Apply signals to the human
+/datum/species/proc/apply_signals(var/mob/living/carbon/human/H)
+	return
 
 /datum/species/proc/handle_death(var/mob/living/carbon/human/H) //Handles any species-specific death events.
 /*

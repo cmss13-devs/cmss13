@@ -151,6 +151,9 @@
 #define COMSIG_HUMAN_CLEAR_BLOODY_FEET "human_clear_bloody_feet"
 /// from /mob/living/carbon/human/attack_alien()
 #define COMSIG_HUMAN_ALIEN_ATTACK "human_alien_attack"
+/// From /obj/item/clothing/mask/facehugger/proc/impregnate(): (obj/item/clothing/mask/facehugger/hugger)
+#define COMSIG_HUMAN_IMPREGNATE "human_impregnate"
+	#define COMPONENT_NO_IMPREGNATE (1<<0)
 
 /// from /mob/living/carbon/Xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"

@@ -133,7 +133,7 @@
 			if(instant_trigger)
 				child.leap_at_nearest_target()
 			else
-				child.GoIdle()
+				child.go_idle()
 
 /obj/effect/alien/egg/proc/replace_triggers()
 	if(isnull(loc) || status == EGG_DESTROYED)
@@ -225,7 +225,7 @@
 
 /obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
 	if(status == EGG_GROWN)
-		if(!CanHug(AM, hivenumber) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
+		if(!can_hug(AM, hivenumber) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
 		Burst(FALSE, TRUE, null)
 

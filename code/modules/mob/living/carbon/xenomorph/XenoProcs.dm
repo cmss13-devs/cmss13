@@ -605,3 +605,4 @@
 	if (TC)
 		qdel(TC)
 		LAZYREMOVE(tackle_counter, M)
+		UnregisterSignal(M, COMSIG_MOB_KNOCKED_DOWN)

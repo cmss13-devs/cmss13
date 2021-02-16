@@ -360,11 +360,10 @@
 			if (BD.rage == 0)
 				to_chat(X, SPAN_XENODANGER("You cannot eviscerate when you have 0 rage!"))
 				return
-			if (!BD.rage_lock_start_time)
-				BD.decrement_rage(BD.rage)
-			damage = damage_at_rage_levels[Clamp(BD.rage+1, 1, BD.max_rage)]
-			range = range_at_rage_levels[Clamp(BD.rage+1, 1, BD.max_rage)]
-			windup_reduction = windup_reduction_at_rage_levels[Clamp(BD.rage+1, 1, BD.max_rage)]
+			damage = damage_at_rage_levels[Clamp(BD.rage, 1, BD.max_rage)]
+			range = range_at_rage_levels[Clamp(BD.rage, 1, BD.max_rage)]
+			windup_reduction = windup_reduction_at_rage_levels[Clamp(BD.rage, 1, BD.max_rage)]
+			BD.decrement_rage(BD.rage)
 
 		apply_cooldown()
 

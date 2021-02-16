@@ -11,7 +11,6 @@ SUBSYSTEM_DEF(ticker)
 	var/bypass_checks = FALSE 				//Bypass mode init checks
 	var/setup_failed = FALSE 				//If the setup has failed at any point
 
-	var/start_immediately = FALSE //If true, there is no lobby phase, the game starts immediately.
 	var/setup_done = FALSE //All game setup done including mode post setup and
 
 	var/datum/game_mode/mode = null
@@ -57,6 +56,12 @@ SUBSYSTEM_DEF(ticker)
 
 	return ..()
 
+/datum/controller/subsystem/ticker/proc/force_start()
+	if(current_state != GAME_STATE_PREGAME)
+		return FALSE
+	current_state = GAME_STATE_SETTING_UP
+	Master.SetRunLevel(RUNLEVEL_SETUP)
+	return TRUE
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
@@ -80,24 +85,13 @@ SUBSYSTEM_DEF(ticker)
 				var/mob/new_player/player = i
 				if(player.ready) // TODO: port this     == PLAYER_READY_TO_PLAY)
 					++totalPlayersReady
-
-			if(start_immediately)
-				time_left = 0
-
-			//countdown
-			if(time_left < 0)
-				return
-
-			if(delay_start)
+			if(time_left < 0 || delay_start)
 				return
 
 			time_left -= wait
-
 			if(time_left <= 0)
 				current_state = GAME_STATE_SETTING_UP
 				Master.SetRunLevel(RUNLEVEL_SETUP)
-				if(start_immediately)
-					fire()
 
 		if(GAME_STATE_SETTING_UP)
 			setup_failed = !setup()
@@ -105,7 +99,6 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_STARTUP
 				time_left = null
 				start_at = world.time + (CONFIG_GET(number/lobby_countdown) * 10)
-				start_immediately = FALSE
 				Master.SetRunLevel(RUNLEVEL_LOBBY)
 
 		if(GAME_STATE_PLAYING)

@@ -101,22 +101,30 @@
 		user.client.screen += storage_end
 
 	user.s_active = src
-	LAZYDISTINCTADD(content_watchers, user)
+	add_to_watchers(user)
 	return
 
-/obj/item/storage/proc/hide_from(mob/user as mob)
-	if(!user.client)
-		return
+/obj/item/storage/proc/add_to_watchers(mob/user)
+	if(!(user in content_watchers))
+		LAZYADD(content_watchers, user)
+		RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/watcher_deleted)
 
-	user.client.screen -= src.boxes
-	user.client.screen -= storage_start
-	user.client.screen -= storage_continue
-	user.client.screen -= storage_end
-	user.client.screen -= src.closer
-	user.client.screen -= src.contents
+/obj/item/storage/proc/del_from_watchers(mob/watcher)
+	if(watcher in content_watchers)
+		LAZYREMOVE(content_watchers, watcher)
+		UnregisterSignal(watcher, COMSIG_PARENT_QDELETING)
+
+/obj/item/storage/proc/hide_from(mob/user as mob)
+	if(user.client)
+		user.client.screen -= src.boxes
+		user.client.screen -= storage_start
+		user.client.screen -= storage_continue
+		user.client.screen -= storage_end
+		user.client.screen -= src.closer
+		user.client.screen -= src.contents
 	if(user.s_active == src)
 		user.s_active = null
-	LAZYREMOVE(content_watchers, user)
+	del_from_watchers(user)
 	return
 
 /obj/item/storage/proc/can_see_content()
@@ -125,7 +133,7 @@
 		if(M.s_active == src && M.client)
 			lookers |= M
 		else
-			LAZYREMOVE(content_watchers, M)
+			del_from_watchers(M)
 	return lookers
 
 /obj/item/storage/proc/open(mob/user)
@@ -652,9 +660,21 @@ var/list/global/item_storage_box_cache = list()
 
 	update_icon()
 
+/*
+ * We need to do this separately from Destroy too...
+ * When a mob is deleted, it's first ghostize()ed,
+ * then its equipement is deleted. This means that client
+ * is already unset and can't be used for clearing 
+ * screen objects properly.
+ */
+/obj/item/storage/proc/watcher_deleted(mob/watcher)
+	SIGNAL_HANDLER
+	hide_from(watcher)
+
 /obj/item/storage/Destroy()
 	for(var/mob/M in content_watchers)
 		hide_from(M)
+	content_watchers = null
 	QDEL_NULL(boxes)
 	QDEL_NULL(storage_start)
 	QDEL_NULL(storage_continue)

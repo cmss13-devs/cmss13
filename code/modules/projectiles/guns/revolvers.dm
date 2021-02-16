@@ -209,12 +209,21 @@
 		if(2) animation_toss_flick(trick, pick(1,-1))
 
 	invisibility = 100
+	var/list/client/displayed_for = list()
 	for(var/mob/M in viewers(user))
-		M << trick
-	sleep(5)
+		var/client/C = M.client
+		if(C)
+			C.images += trick
+			displayed_for += C
+
+	sleep(6) // BOO
+
+	for(var/client/C in displayed_for)
+		C.images -= trick
 	trick = null
+	invisibility = 0
+
 	if(loc && user)
-		invisibility = 0
 		playsound(user, thud_sound, 25, 1)
 		if(user.get_inactive_hand())
 			user.visible_message("[user] catches [src] with the same hand!", SPAN_NOTICE("You catch [src] as it spins in to your hand!"), null, 3)

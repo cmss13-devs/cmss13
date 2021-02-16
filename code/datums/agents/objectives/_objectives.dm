@@ -41,8 +41,6 @@ Objective message,
 
 	generate_description()
 
-	create_objective_item()
-
 /datum/agent_objective/proc/generate_objective_message()
 	var/text = {"
 		[SPAN_ROLE_BODY("|______________________|")]
@@ -57,9 +55,6 @@ Objective message,
 
 /datum/agent_objective/proc/generate_description()
 	description = "You have no task."
-
-/datum/agent_objective/proc/create_objective_item()
-	return
 
 /datum/agent_objective/proc/check_completion_now()
 	if(terminated)
@@ -79,33 +74,26 @@ Objective message,
 
 	return TRUE
 
-/datum/agent_objective/Destroy()
-	. = ..()
-	
+/datum/agent_objective/Destroy()	
 	if(belonging_to_agent)
 		LAZYREMOVE(belonging_to_agent.objectives_list, src)
-
-	if(objective_item)
-		qdel(objective_item)
-		objective_item = null
-
+	belonging_to_agent = null
+	objective_item = null
+	return ..()
 
 /obj/item/paper/antag
 	name = "suspicious paper"
-	var/datum/agent_objective/objective
 
-/obj/item/paper/antag/New(var/datum/agent_objective/O)
-	if(!istype(O))
-		qdel(src)
-		return
+/obj/item/paper/antag/Initialize(mapload, datum/agent_objective/O)
+	if(mapload || !istype(O))
+		return INITIALIZE_HINT_QDEL
 
-	objective = O
-
-	var/mob/living/carbon/human/H = objective.belonging_to_agent.source_human
+	var/mob/living/carbon/human/H = O.belonging_to_agent.source_human
 	var/agent_id = add_zero(num2hex(H.gid), 6)
-
+	var/objective_id = rand(10, 55000)
 	var/signed_by = "V. K."
-	switch(objective.belonging_to_faction)
+
+	switch(O.belonging_to_faction)
 		if(FACTION_WY)
 			// Peter Jackson
 			signed_by = "P. J."
@@ -119,8 +107,6 @@ Objective message,
 			// Shiro Fox
 			signed_by = "S. F."
 
-	var/objective_id = rand(10, 55000)
-
 	info = {"\[hr\]
 			\[center\]\[large\]\[b\] Objective ID #[objective_id]\[/b\]\[/large\]
 
@@ -128,22 +114,15 @@ Objective message,
 			Agent ID: [agent_id]
 
 			\[hr\]
-			Description: [objective.description]
+			Description: [O.description]
 
 			Signed, \[i\][signed_by]\[/i\]
 
 			\[hr\]\[small\] This documentation is stricly for REDACTED only. The acquisition, copying and distribution of this file is strictly forbidden to person/s or entity/s outside of REDACTED. The person violating these regulations may find themselves in prison or permanently disappearing.
 			"}
 
-	..()
+	return ..()
 
 /obj/item/paper/antag/burnpaper(obj/item/P, mob/user)
 	to_chat(user, SPAN_DANGER("This looks too important to burn!"))
 	return
-
-/obj/item/paper/antag/Destroy()
-	. = ..()
-	
-	if(objective)
-		objective.objective_item = null
-		objective = null

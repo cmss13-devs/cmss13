@@ -83,9 +83,7 @@
 
 	. = ..()
 
-	if(agent_holder)
-		agent_holder.source_human = null
-		GLOB.human_agent_list -= src
+	QDEL_NULL(agent_holder)
 
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()

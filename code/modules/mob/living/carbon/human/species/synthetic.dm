@@ -45,6 +45,13 @@
 	GLOB.alive_human_list -= H
 	return ..()
 
+/datum/species/synthetic/apply_signals(var/mob/living/carbon/human/H)
+	RegisterSignal(H, COMSIG_HUMAN_IMPREGNATE, .proc/cancel_impregnate)
+
+/datum/species/synthetic/proc/cancel_impregnate(datum/source)
+	SIGNAL_HANDLER
+	return COMPONENT_NO_IMPREGNATE
+
 /datum/species/synthetic/second_gen_synthetic
 	name = "Second Generation Synthetic"
 	uses_ethnicity = FALSE //2nd gen uses generic human look
@@ -67,6 +74,6 @@
 	hair_color = "#000000"
 
 	knock_down_reduction = 3.5
-	stun_reduction = 3.5 
+	stun_reduction = 3.5
 
 	inherent_verbs = null

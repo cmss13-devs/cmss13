@@ -47,7 +47,7 @@
 
 /obj/effect/alien/resin/trap/proc/facehugger_die()
 	var/obj/item/clothing/mask/facehugger/FH = new (loc)
-	FH.Die()
+	FH.die()
 	trap_type = RESIN_TRAP_EMPTY
 	icon_state = "trap0"
 
@@ -77,7 +77,7 @@
 /obj/effect/alien/resin/trap/HasProximity(atom/movable/AM)
 	switch(trap_type)
 		if(RESIN_TRAP_HUGGER)
-			if(CanHug(AM, hivenumber) && !isYautja(AM) && !isSynth(AM))
+			if(can_hug(AM, hivenumber) && !isYautja(AM) && !isSynth(AM))
 				var/mob/living/L = AM
 				L.visible_message(SPAN_WARNING("[L] trips on [src]!"),\
 								SPAN_DANGER("You trip on [src]!"))

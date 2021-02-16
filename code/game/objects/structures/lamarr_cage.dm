@@ -83,8 +83,9 @@
 	sterile = 1
 	gender = FEMALE
 
-/obj/item/clothing/mask/facehugger/lamarr/Die()
-	if(stat == DEAD) return
+/obj/item/clothing/mask/facehugger/lamarr/die()
+	if(stat == DEAD)
+		return
 
 	icon_state = "[initial(icon_state)]_dead"
 	stat = DEAD
@@ -98,4 +99,3 @@
 
 	layer = BELOW_MOB_LAYER //so dead hugger appears below live hugger if stacked on same tile.
 	//override function prevents Lamarr from decaying like other huggers so you can keep it in your helmet, otherwise the code is identical.
-	return

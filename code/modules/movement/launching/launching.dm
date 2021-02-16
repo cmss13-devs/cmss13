@@ -28,7 +28,9 @@
 
 	for (var/path in collision_callbacks)
 		if (ispath(path) && istype(A, path))
-			if (isnull(highest_matching) || path > highest_matching)
+			// A is going to be of type `path` and `highest_matching`, so check whether
+			// `highest_matching` is a parent of `path` (lower in the type tree)
+			if (isnull(highest_matching) || !ispath(highest_matching, path))
 				highest_matching = path
 			matching += path
 
@@ -40,7 +42,7 @@
 		if (length(matching) == 0)
 			return null
 		var/list/matching_procs = list()
-		for (var/path in matching)
+		for(var/path in matching)
 			matching_procs += collision_callbacks[path]
 		return matching_procs
 
@@ -53,8 +55,8 @@
 
 	var/list/collision_callbacks = launch_metadata.get_collision_callbacks(hit_atom)
 	if (islist(collision_callbacks))
-		for (var/datum/callback/CB in collision_callbacks)
-			if (istype(CB, /datum/callback/dynamic))
+		for(var/datum/callback/CB in collision_callbacks)
+			if(istype(CB, /datum/callback/dynamic))
 				CB.Invoke(src, hit_atom)
 			else
 				CB.Invoke(hit_atom)

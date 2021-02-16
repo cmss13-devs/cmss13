@@ -221,12 +221,12 @@
 	if(istype(X.r_hand, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/FH = X.r_hand
 		if(FH.stat != DEAD)
-			FH.Die()
+			FH.die()
 
 	if(istype(X.l_hand, /obj/item/clothing/mask/facehugger))
 		var/obj/item/clothing/mask/facehugger/FH = X.l_hand
 		if(FH.stat != DEAD)
-			FH.Die()
+			FH.die()
 
 	playsound(X.loc, X.screech_sound_effect, 75, 0, status = 0)
 	X.visible_message(SPAN_XENOHIGHDANGER("[X] emits an ear-splitting guttural roar!"))

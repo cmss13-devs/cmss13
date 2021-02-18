@@ -36,9 +36,8 @@ import argparse
 from datetime import datetime, date, timedelta
 from time import time
 
-today = date.today()
-
 dateformat = "%d %B %Y"
+today = date.today()
 
 opt = argparse.ArgumentParser()
 opt.add_argument('-d', '--dry-run', dest='dryRun', default=False, action='store_true', help='Only parse changelogs and, if needed, the targetFile. (A .dry_changelog.yml will be output for debugging purposes.)')
@@ -150,9 +149,18 @@ for fileName in glob.glob(os.path.join(args.ymlDir, "*.yml")):
     with open(fileName, 'r') as f:
         cl = yaml.load(f)
         f.close()
-    if today not in all_changelog_entries:
-        all_changelog_entries[today] = {}
-    author_entries = all_changelog_entries[today].get(cl['author'], [])
+
+    try:
+        datematcher = re.compile(r'@([0-9]{2}-[0-9]{2}-[0-9]{4})$')
+        match_data  = datematcher.search(name)
+        datestr     = match_data.group(1)
+        target_date = datetime.strptime(datestr, "%d-%m-%Y").date()
+    except Exception:
+        target_date = today
+
+    if target_date not in all_changelog_entries:
+        all_changelog_entries[target_date] = {}
+    author_entries = all_changelog_entries[target_date].get(cl['author'], [])
     if len(cl['changes']):
         new = 0
         for change in cl['changes']:
@@ -163,7 +171,7 @@ for fileName in glob.glob(os.path.join(args.ymlDir, "*.yml")):
                     print('  {0}: Invalid prefix {1}'.format(fileName, change_type), file=sys.stderr)
                 author_entries += [change]
                 new += 1
-        all_changelog_entries[today][cl['author']] = author_entries
+        all_changelog_entries[target_date][cl['author']] = author_entries
         if new > 0:
             print('  Added {0} new changelog entries.'.format(new))
 

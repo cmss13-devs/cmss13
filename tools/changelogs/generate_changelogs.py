@@ -6,6 +6,7 @@
 
 from os import environ
 from sys import argv
+import datetime
 import dateutil.parser as dateparser
 
 from branch import Branch
@@ -29,7 +30,7 @@ def generate_changelogs(pid, branch, directory):
     # Show when the merge date of the MR we processed last run
     last_mr_date = working_branch.get_latest_mr_date()
     if last_mr_date:
-        print("Latest merge date:")
+        print("Latest update date:")
 
         last_processed_date = dateparser.parse(last_mr_date)
         print("    {} - {}".format(branch, last_processed_date.strftime(DATE_FORMAT)))
@@ -55,7 +56,9 @@ def generate_changelogs(pid, branch, directory):
     initial_latest_mr_date = dateparser.parse(working_branch.get_latest_mr_date())
 
     # Keep fetching changelogs until there are none left to parse
+    processed_miids = []
     while mrs:
+        stalling = True
         if status_code == 429:
             print("Rate limit hit for the API. Try running the script again later.")
             break
@@ -69,21 +72,24 @@ def generate_changelogs(pid, branch, directory):
             iid = merge_request.get("iid")
             title = merge_request.get("title")
 
-            # Check if this MR was merged later than the current most lately merged MR
-            latest_mr_date = dateparser.parse(working_branch.get_latest_mr_date())
+            # Push last update date forward
+            latest_update_date = dateparser.parse(working_branch.get_latest_mr_date())
+            mr_updated_date = dateparser.parse(merge_request.get("updated_at"))
+            if mr_updated_date > latest_update_date:
+                working_branch.set_latest_mr_date(merge_request.get("updated_at"))
+                stalling = False
+
+            # Check this wasn't already done, too
+            if iid in processed_miids: 
+                continue
+            processed_miids.append(iid)
+
+            # Check if this MR was merged later after our starting point
             if merge_request.get("merged_at") is None:
                 continue
             mr_merged_date = dateparser.parse(merge_request.get("merged_at"))
-
-            # This can happen if someone updates the MR between the script being run
-            # So this prevents re-processing processed MRs
-            if mr_merged_date < initial_latest_mr_date:
+            if mr_merged_date <= initial_latest_mr_date:
                 continue
-
-            # Update the latest MR date
-            if mr_merged_date > latest_mr_date:
-                working_branch.set_latest_mr_date(merge_request.get("merged_at"))
-
 
             # Find an author for the CL (this is for fallbacks)
             author = merge_request.get("author")
@@ -93,6 +99,7 @@ def generate_changelogs(pid, branch, directory):
 
             # Make the changelog
             print("Parsing MR #{}    {}".format(iid, title))
+            print("#{} was last updated {}".format(iid, mr_updated_date.strftime(DATE_FORMAT)))
             changelog = Changelog()
             success = changelog.parse_changelog(merge_request.get("description"))
             mrs_parsed += 1
@@ -110,7 +117,15 @@ def generate_changelogs(pid, branch, directory):
             print("Generated changelog for MR #{}    {}".format(iid, file_name))
             cls_generated += 1
 
+        # If we have no newer date, we bump time ahead and pray that someone didn't
+        # mass reference a MR and we'd have more than a few dozens updated same second...
+        # Look it's best i'll manage with this mess, branch.py needs proper pagination somehow
+        if stalling:
+            last_update_date = dateparser.parse(working_branch.get_latest_mr_date()) + datetime.timedelta(seconds = 1)
+            working_branch.set_latest_mr_date(last_update_date.isoformat())
+
         # Fetch new MRs to process
+        print("Requesting more MRs...")
         mrs, status_code = working_branch.fetch_new_mrs()
 
     print("--------------------")

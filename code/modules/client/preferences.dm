@@ -2,10 +2,10 @@
 
 var/list/preferences_datums = list()
 
-var/global/list/stylesheets = list(
-	"Modern" = 'html/browser/common.css',
-	"Legacy" = 'html/browser/legacy.css'
-)
+GLOBAL_LIST_INIT(stylesheets, list(
+	"Modern" = "common.css",
+	"Legacy" = "legacy.css"
+))
 
 var/const/MAX_SAVE_SLOTS = 10
 
@@ -1237,7 +1237,7 @@ var/const/MAX_SAVE_SLOTS = 10
 					UI_style_alpha = UI_style_alpha_new
 
 				if("stylesheet")
-					var/stylesheet_new = tgui_input_list(user, "Select a stylesheet to use (affects non-NanoUI interfaces)", "Select a stylesheet", stylesheets)
+					var/stylesheet_new = tgui_input_list(user, "Select a stylesheet to use (affects non-NanoUI interfaces)", "Select a stylesheet", GLOB.stylesheets)
 					stylesheet = stylesheet_new
 
 				if("ViewMC")

@@ -7,7 +7,7 @@ import requests
 import dateutil.parser as dateparser
 
 DEFAULT_DATE = "0001-01-1T00:00:00.000Z"
-LIST_MRS_URL = "https://gitlab.com/api/v4/projects/{}/merge_requests?scope=all&sort=asc&target_branch={}&state=merged"
+LIST_MRS_URL = "https://gitlab.com/api/v4/projects/{}/merge_requests?scope=all&order_by=updated_at&sort=asc&target_branch={}&state=merged"
 
 class Branch:
     '''
@@ -21,7 +21,7 @@ class Branch:
     # Name of the branch
     name = ""
 
-    # The date of the latest MR that was processed on this branch
+    # The LAST UPDATE DATE of the latest MR that was processed on this branch
     latest_mr_date = DEFAULT_DATE
 
     def __init__(self, pid, name):

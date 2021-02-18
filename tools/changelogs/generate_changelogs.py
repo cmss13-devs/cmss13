@@ -105,7 +105,7 @@ def generate_changelogs(pid, branch, directory):
                 changelog.set_author(user) # Fallback to gitlab username as CL author
 
             # make a YAML file for the changelog
-            file_name = "{}-merge_request-{}".format(user, merge_request.get("id"))
+            file_name = "{}-merge_request-{}@{}".format(user, merge_request.get("id"), mr_merged_date.date().strftime("%d-%m-%Y"))
             changelog.dump_yaml(file_name, directory)
             print("Generated changelog for MR #{}    {}".format(iid, file_name))
             cls_generated += 1

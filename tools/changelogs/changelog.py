@@ -90,7 +90,9 @@ class Changelog:
 
             comment_match = CL_REGEX_COMMENT_START.search(line)
             if comment_match:
-                in_comment = True
+                end_comment_match = CL_REGEX_COMMENT_END.search(line)
+                if not end_comment_match:
+                    in_comment = True
                 continue
 
             # Look for the start of the changelog

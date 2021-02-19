@@ -192,6 +192,6 @@ var/global/normal_ooc_colour = "#1c52f5"
 			ui.close()
 
 	log_tgui(src, "Closing all tgui windows.", context = "verb/fixnanoui")
-	var/closed_windows = SStgui.close_all_uis(usr)
+	var/closed_windows = SStgui.close_user_uis(usr)
 
 	to_chat(mob, SPAN_NOTICE("<b>All interfaces have been forcefully closed. Please try re-opening them. (Closed [closed_windows] windows)</b>"))

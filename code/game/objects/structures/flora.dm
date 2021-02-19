@@ -407,6 +407,7 @@ ICE GRASS
 	icon = 'icons/turf/ground_map.dmi'
 	density = 0
 	layer = ABOVE_XENO_LAYER
+	projectile_coverage = PROJECTILE_COVERAGE_NONE
 
 
 /obj/structure/flora/jungle/shrub

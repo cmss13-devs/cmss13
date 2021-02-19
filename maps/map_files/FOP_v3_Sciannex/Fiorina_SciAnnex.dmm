@@ -5169,12 +5169,6 @@
 /obj/item/ammo_magazine/pistol/automatic,
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
-"dbg" = (
-/obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
-	},
-/turf/closed/wall/r_wall/prison,
-/area/fiorina/station/flight_deck)
 "dbq" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/flashlight/lamp/candelabra{
@@ -6507,15 +6501,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/fiorina/station/flight_deck)
-"dJm" = (
-/obj/structure/prop/almayer/computers/mission_planning_system{
-	desc = "Its a telephone, and a computer. Woah.";
-	name = "\improper funny telephone booth";
-	pixel_x = 2;
-	pixel_y = 21
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/central_ring)
 "dKo" = (
 /obj/item/ammo_magazine/revolver/cmb{
 	current_rounds = 0
@@ -8763,12 +8748,14 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "fdK" = (
-/obj/vehicle/souto{
+/obj/effect/decal/cleanable/blood/oil,
+/obj/structure/prop/invuln{
 	desc = "The best ride in the universe. For the one and only Souto Man! Although, this one seems to have no fuel left.";
 	dir = 4;
+	icon = 'icons/obj/vehicles/vehicles.dmi';
+	icon_state = "soutomobile";
 	name = "Disabled Souto Mobile"
 	},
-/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/prison,
 /area/fiorina/station/park)
 "fdS" = (
@@ -15605,9 +15592,9 @@
 /area/fiorina/tumor/civres)
 "jiJ" = (
 /obj/structure/prop/almayer/computers/mission_planning_system{
+	density = 0;
 	desc = "Its a telephone, and a computer. Woah.";
 	name = "\improper funny telephone booth";
-	pixel_x = 2;
 	pixel_y = 21
 	},
 /turf/open/floor/prison,
@@ -39329,12 +39316,6 @@
 /obj/effect/landmark/objective_landmark/science,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
-"xgS" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
-	dir = 1
-	},
-/turf/closed/wall/prison,
-/area/fiorina/station/lowsec)
 "xhc" = (
 /turf/open/floor/prison{
 	dir = 4;
@@ -65896,7 +65877,7 @@ wyT
 wyT
 wyT
 wyT
-uGY
+nqN
 uGY
 uuL
 uuL
@@ -66740,7 +66721,7 @@ bFr
 gdt
 gdt
 gdt
-bis
+bFr
 gdt
 gdt
 gdt
@@ -66952,7 +66933,7 @@ bFr
 iKs
 iKs
 iKs
-bis
+bFr
 iKs
 iKs
 iKs
@@ -73918,7 +73899,7 @@ rsE
 jmG
 jmG
 lDC
-dJm
+itG
 tvI
 tvI
 tvI
@@ -78180,7 +78161,7 @@ pHu
 djx
 vei
 wBr
-xgS
+oFI
 vRA
 glD
 kqC
@@ -81762,15 +81743,15 @@ lHy
 dBa
 hfT
 hfT
-hfT
+rBF
 mlC
 mlC
 mlC
-nSx
+ecM
 mlC
 mlC
 mlC
-nSx
+ecM
 nSx
 lZL
 gCb
@@ -81974,7 +81955,7 @@ aRG
 aRG
 tih
 aRG
-dbg
+ezn
 rOa
 bQM
 bQM
@@ -81982,7 +81963,7 @@ rOa
 bQM
 bQM
 rOa
-nSx
+ecM
 nSx
 nrq
 uVQ
@@ -82186,15 +82167,15 @@ aRG
 qHZ
 aRG
 aRG
-hfT
+rBF
 dzl
 dzl
 dzl
-hfT
+rBF
 dzl
 dzl
 dzl
-nSx
+ecM
 nSx
 aah
 ckD

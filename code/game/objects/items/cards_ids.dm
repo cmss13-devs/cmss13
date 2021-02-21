@@ -86,15 +86,6 @@
 	. = ..()
 	screen_loc = null
 
-/obj/item/card/id/Initialize()
-	. = ..()
-	var/mob/living/carbon/human/H = loc
-	if(istype(H))
-		blood_type = H.blood_type
-	if(istype(H) && isnull(faction_group))
-		faction_group = H.faction_group
-
-
 /obj/item/card/id/attack_self(mob/user as mob)
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 

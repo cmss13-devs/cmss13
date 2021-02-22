@@ -98,7 +98,9 @@
 					to_chat(user, SPAN_NOTICE("This barricade is already upgraded."))
 					return
 				var/obj/item/stack/sheet/metal/M = W
-				upgrade = tgui_input_list(user, "Choose an upgrade to apply to the barricade", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_EXPLOSIVE, "cancel"))
+				upgrade = tgui_input_list(user, "Choose an upgrade to apply to the barricade", "Apply Upgrade", list(BARRICADE_UPGRADE_BURN, BARRICADE_UPGRADE_BRUTE, BARRICADE_UPGRADE_EXPLOSIVE))
+				if(!upgrade)
+					return
 				if(!user.Adjacent(src))
 					to_chat(user, SPAN_NOTICE("You are too far away!"))
 					return
@@ -124,8 +126,6 @@
 						explosive_multiplier = 0.5
 						upgraded = BARRICADE_UPGRADE_EXPLOSIVE
 						to_chat(user, SPAN_NOTICE("You applied an explosive upgrade."))
-					if("cancel")
-						return
 
 				M.use(2)
 				user.count_niche_stat(STATISTICS_NICHE_UPGRADE_CADES)

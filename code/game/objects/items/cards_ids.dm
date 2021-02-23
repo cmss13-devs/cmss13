@@ -81,6 +81,8 @@
 
 	var/pinned_on_uniform = TRUE //whether the id's onmob overlay only appear when wearing a uniform
 
+	var/modification_log = list()
+
 
 /obj/item/card/id/Destroy()
 	. = ..()

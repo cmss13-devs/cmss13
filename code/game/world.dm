@@ -106,7 +106,7 @@ var/internal_tick_usage = 0
 			sleep(10)
 
 		// Start the game ASAP
-		SSticker.current_state = GAME_STATE_SETTING_UP
+		SSticker.force_start()
 	return
 
 var/world_topic_spam_protect_ip = "0.0.0.0"

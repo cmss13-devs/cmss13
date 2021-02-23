@@ -1,29 +1,34 @@
 /client/proc/cmd_mentor_check_new_players()	//Allows mentors / admins to determine who the newer players are.
 	set category = "Admin"
 	set name = "Check new Players"
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only staff members may use this command.")
 
-	var/age = alert(src, "Age check", "Show accounts yonger then _____ days","7", "30" , "All")
+	if(!admin_holder)
+		to_chat(src, "You do not have permission to use this.")
+		return
+
+	if(!CLIENT_IS_STAFF(src))
+		if(!CLIENT_HAS_RIGHTS(src, R_MENTOR))
+			to_chat(src, "Only staff members have permission to use this.")
+			return
+		if(!CONFIG_GET(flag/mentor_tools))
+			to_chat(src, "Mentors do not have permission to use this.")
+	
+	var/age = alert(src, "Age check", "Show accounts up to how many days old ?", "7", "30" , "All")
 
 	if(age == "All")
 		age = 9999999
 	else
 		age = text2num(age)
 
-	var/missing_ages = 0
+	var/missing_ages = FALSE
 	var/msg = ""
-
-	var/highlight_special_characters = 1
-	if(is_mentor(usr.client))
-		highlight_special_characters = 0
 
 	for(var/client/C in GLOB.clients)
 		if(C.player_age == "Requires database")
 			missing_ages = 1
 			continue
 		if(C.player_age < age)
-			msg += "[key_name(C, 1, 1, highlight_special_characters)]: account is [C.player_age] days old<br>"
+			msg += "[key_name(C, 1, 1, CLIENT_IS_STAFF(src))]: account is [C.player_age] days old<br>"
 
 	if(missing_ages)
 		to_chat(src, "Some accounts did not have proper ages set in their clients.  This function requires database to be present")

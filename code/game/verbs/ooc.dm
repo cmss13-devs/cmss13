@@ -52,20 +52,22 @@ var/global/normal_ooc_colour = "#1c52f5"
 	log_ooc("[mob.name]/[key] : [msg]")
 	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT
-	var/display_colour = normal_ooc_colour
-	if(admin_holder && !admin_holder.fakekey && !AHOLD_IS_ONLY_MENTOR(admin_holder))
-		display_colour = "#2e78d9"	//light blue
-		if(admin_holder.rights & R_MOD && !(admin_holder.rights & R_ADMIN))
-			display_colour = "#184880"	//dark blue
-		if(admin_holder.rights & R_DEBUG && !(admin_holder.rights & R_ADMIN))
-			display_colour = "#1b521f"	//dark green
-		else if(admin_holder.rights & R_COLOR)
-			if(CONFIG_GET(flag/allow_admin_ooccolor))
-				display_colour = prefs.ooccolor
-			else
-				display_colour = "#b82e00"	//orange
-	if(donator)
+
+	var/display_colour = CONFIG_GET(string/ooc_color_normal)
+	if(admin_holder && !admin_holder.fakekey)
+		display_colour = CONFIG_GET(string/ooc_color_other)
+		if(admin_holder.rights & R_DEBUG)
+			display_colour = CONFIG_GET(string/ooc_color_debug)
+		if(admin_holder.rights & R_MOD)
+			display_colour = CONFIG_GET(string/ooc_color_mods)
+		if(admin_holder.rights & R_ADMIN)
+			display_colour = CONFIG_GET(string/ooc_color_admin)
+		if(admin_holder.rights & R_COLOR)
+			display_colour = prefs.ooccolor
+	else if(donator)
 		display_colour = prefs.ooccolor
+	if(!display_colour) // if invalid R_COLOR choice
+		display_colour = CONFIG_GET(string/ooc_color_default)
 
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)

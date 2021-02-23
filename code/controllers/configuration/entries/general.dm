@@ -116,6 +116,24 @@ Administrative related.
 
 /datum/config_entry/flag/allow_admin_ooccolor // Allows admins to customize their OOC color.
 
+/datum/config_entry/string/ooc_color_normal
+	config_entry_value = "#1c52f5"
+
+/datum/config_entry/string/ooc_color_other
+	config_entry_value = "#2e78d9"
+
+/datum/config_entry/string/ooc_color_mods
+	config_entry_value = "#ffbf00"
+
+/datum/config_entry/string/ooc_color_debug
+ 	config_entry_value = "#6bd1b4"
+
+/datum/config_entry/string/ooc_color_admin
+	config_entry_value = "#ff8000"
+
+/datum/config_entry/string/ooc_color_default
+	config_entry_value = "#b82e00"
+
 /datum/config_entry/flag/usewhitelist
 
 /datum/config_entry/flag/usealienwhitelist
@@ -145,9 +163,14 @@ Administrative related.
 
 /datum/config_entry/flag/autooocmute
 
+/datum/config_entry/flag/mentor_tools // Extra tooling for mentors that might otherwise be staff only
+	config_entry_value = FALSE
+
 /datum/config_entry/flag/show_mentors
+	config_entry_value = TRUE
 
 /datum/config_entry/flag/show_mods
+	config_entry_value = TRUE
 
 /datum/config_entry/flag/looc_enabled
 

@@ -185,20 +185,6 @@
 	if(istype(H))
 		H.regenerate_icons()
 
-
-/*
-	helper proc to test if someone is a mentor or not.  Got tired of writing this same check all over the place.
-*/
-/proc/is_mentor(client/C)
-	if(!istype(C))
-		return 0
-	if(!C.admin_holder)
-		return 0
-
-	if(AHOLD_IS_ONLY_MENTOR(C.admin_holder))
-		return 1
-	return 0
-
 /proc/ishost(whom)
 	if(!whom)
 		return 0

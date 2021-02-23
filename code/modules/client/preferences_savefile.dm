@@ -93,7 +93,7 @@
 	S["swap_hand_hotkeymode"] >> swap_hand_hotkeymode
 
 	//Sanitize
-	ooccolor		= sanitize_hexcolor(ooccolor, initial(ooccolor))
+	ooccolor		= sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
 	lastchangelog	= sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style		= sanitize_inlist(UI_style, list("white", "dark", "midnight", "orange", "old"), initial(UI_style))
 	be_special		= sanitize_integer(be_special, 0, 65535, initial(be_special))

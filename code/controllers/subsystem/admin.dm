@@ -32,11 +32,9 @@ SUBSYSTEM_DEF(admin)
 		if (MC_TICK_CHECK)
 			return
 
-	var/list/current_staff = get_staff_by_category()
-	current_staff = current_staff["admins"]
-	if(current_staff.len)
-		for(var/client/X in current_staff)
-			if(X.prefs.toggles_sound & SOUND_ADMINHELP)
-				sound_to(X, 'sound/effects/adminhelp_new.ogg')
-			to_chat(X, msg)
+	for(var/client/C in GLOB.admins)
+		if(C && C.admin_holder && (C.admin_holder.rights & R_MOD))
+			if(C.prefs.toggles_sound & SOUND_ADMINHELP)
+				sound_to(C, 'sound/effects/adminhelp_new.ogg')
+			to_chat(C, msg)
 	times_repeated++

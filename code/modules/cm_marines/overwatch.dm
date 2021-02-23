@@ -420,28 +420,27 @@
 			if(operator != usr)
 				if(operator && ishighersilicon(operator))
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("AI override in progress. Access denied.")]")
-				if(current_squad)
-					current_squad.overwatch_officer = usr
-				operator = usr
+					return
+				if(!current_squad || current_squad.assume_overwatch(usr))
+					operator = usr
 				if(ishighersilicon(usr))
 					to_chat(usr, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system AI override protocol successful.")]")
-					send_to_squad("Attention. [operator.name] has engaged overwatch system control override.")
+					current_squad?.send_squad_message("Attention. [operator.name] has engaged overwatch system control override.", displayed_icon = src)
 				else
 					var/mob/living/carbon/human/H = operator
 					var/obj/item/card/id/ID = H.get_idcard()
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Basic overwatch systems initialized. Welcome, [ID ? "[ID.rank] ":""][operator.name]. Please select a squad.")]")
-					send_to_squad("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].") //This checks for squad, so we don't need to.
+					current_squad?.send_squad_message("Attention. Your Overwatch officer is now [ID ? "[ID.rank] ":""][operator.name].", displayed_icon = src)
 		if("logout")
-			if(current_squad)
-				current_squad.overwatch_officer = null //Reset the squad's officer.
-			if(ishighersilicon(usr))
-				send_to_squad("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.")
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system control override disengaged.")]")
-			else
-				var/mob/living/carbon/human/H = operator
-				var/obj/item/card/id/ID = H.get_idcard()
-				send_to_squad("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.")
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
+			if(current_squad?.release_overwatch())
+				if(ishighersilicon(usr))
+					current_squad.send_squad_message("Attention. [operator.name] has released overwatch system control. Overwatch functions deactivated.", displayed_icon = src)
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_BOLDNOTICE("Overwatch system control override disengaged.")]")
+				else
+					var/mob/living/carbon/human/H = operator
+					var/obj/item/card/id/ID = H.get_idcard()
+					current_squad.send_squad_message("Attention. [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"] is no longer your Overwatch officer. Overwatch functions deactivated.", displayed_icon = src)
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Overwatch systems deactivated. Goodbye, [ID ? "[ID.rank] ":""][operator ? "[operator.name]":"sysadmin"].")]")
 			operator = null
 			current_squad = null
 			if(cam && !ishighersilicon(usr))
@@ -468,12 +467,13 @@
 						return
 					var/datum/squad/selected = get_squad_by_name(name_sel)
 					if(selected)
-						selected.overwatch_officer = usr //Link everything together, squad, console, and officer
-						current_squad = selected
-						send_to_squad("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.")
-						send_to_squad("Your Overwatch officer is: [operator.name].")
-						visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
-						attack_hand(usr)
+						//Link everything together, squad, console, and officer
+						if(selected.assume_overwatch(usr))
+							current_squad = selected
+							current_squad.send_squad_message("Attention - Your squad has been selected for Overwatch. Check your Status pane for objectives.", displayed_icon = src)
+							current_squad.send_squad_message("Your Overwatch officer is: [operator.name].", displayed_icon = src)
+							visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Tactical data for squad '[current_squad]' loaded. All tactical functions initialized.")]")
+							attack_hand(usr)
 					else
 						to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
 		if("message")

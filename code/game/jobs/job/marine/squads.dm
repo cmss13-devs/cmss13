@@ -104,6 +104,88 @@
 			drop_pad = S
 			break
 
+/// Sets an overwatch officer for the squad, returning TRUE on success
+/datum/squad/proc/assume_overwatch(mob/M)
+	var/mob/previous
+	if(overwatch_officer)
+		if(overwatch_officer == M)
+			return FALSE
+		previous = overwatch_officer
+		overwatch_officer = null
+		clear_ref_tracking(previous)
+	overwatch_officer = M
+	RegisterSignal(overwatch_officer, COMSIG_PARENT_QDELETING, .proc/personnel_deleted, override = TRUE)
+	return TRUE
+
+/// Explicitely relinquish overwatch control
+/datum/squad/proc/release_overwatch()
+	if(!overwatch_officer)
+		return FALSE
+	var/mob/operator = overwatch_officer
+	overwatch_officer = null
+	clear_ref_tracking(operator)
+	return TRUE
+
+/// Clear deletion signal as needed for mob - to call *after* removal
+/datum/squad/proc/clear_ref_tracking(mob/M)
+	if(!M) return FALSE
+	if(M in marines_list)
+		return FALSE
+	if(overwatch_officer == M)
+		return FALSE
+	UnregisterSignal(M, COMSIG_PARENT_QDELETING)
+	return TRUE
+
+/// Clear references in squad listing upon deletion. Zap also erases the kept records.
+/datum/squad/proc/personnel_deleted(mob/M, zap = FALSE)
+	SIGNAL_HANDLER
+	if(M == overwatch_officer)
+		overwatch_officer = null
+	if(M == squad_leader)
+		squad_leader = null
+	SStracking.stop_tracking(tracking_id, M)
+	if(zap)
+		marines_list.Remove(M)
+		return
+	var/idx = marines_list.Find(M)
+	if(idx)
+		marines_list[idx] = M.name // legacy behavior, replace mob ref index by name. very weird
+
+/*
+ * Send a text message to the squad members following legacy overwatch usage
+ *
+ * input_text: raw user input as text
+ * user: mob reference to whoever the message is sent on behalf of - adds sounds notification
+ * displayed_icon: /atom or /icon to display by the message in chat
+ * leader_only: if truthy sends only to the squad leader
+ */
+/datum/squad/proc/send_squad_message(input_text, mob/user, displayed_icon, leader_only = FALSE)
+	var/message = strip_html(input_text)
+	var/datum/sound_template/sfx
+	
+	if(user)
+		message = "[user.name] transmits: [FONT_SIZE_LARGE("<b>[message]<b>")]"
+		sfx = new()
+		sfx.file = 'sound/effects/radiostatic.ogg'
+		sfx.channel = get_free_channel()
+		sfx.y = 3
+	message = "[SPAN_BLUE("<B>[leader_only ? "SL " : ""]Overwatch:</b> [message]")]"
+
+	var/list/client/targets = list()
+	if(leader_only) 
+		targets = list(squad_leader)
+	else
+		for(var/mob/M in marines_list)
+			if(!M.stat && M.client)
+				targets += M.client
+
+	if(displayed_icon)
+		message = "[icon2html(displayed_icon, targets, dir = null)] [message]"
+	if(sfx)
+		SSsound.queue(sfx, targets)
+	to_chat(targets, html = message, type = MESSAGE_TYPE_RADIO)
+
+
 //Straight-up insert a marine into a squad.
 //This sets their ID, increments the total count, and so on. Everything else is done in job_controller.dm.
 //So it does not check if the squad is too full already, or randomize it, etc.
@@ -158,6 +240,7 @@
 			if(M.job == JOB_SQUAD_LEADER) //field promoted SL don't count as real ones
 				num_leaders++
 
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/personnel_deleted, override = TRUE)
 	if(assignment != JOB_SQUAD_LEADER)
 		SStracking.start_tracking(tracking_id, M)
 
@@ -203,10 +286,11 @@
 			if(fireteam_leaders[M.assigned_fireteam] == M)
 				unassign_ft_leader(M.assigned_fireteam, TRUE, FALSE)
 			unassign_fireteam(M, FALSE)
-		SStracking.stop_tracking(tracking_id, M)
 
 	count--
 	marines_list -= M
+	personnel_deleted(M, zap = TRUE) // Free all refs and Zap it entierly as this is on purpose
+	clear_ref_tracking(M)
 	update_free_mar()
 	update_squad_ui()
 	M.assigned_squad = null

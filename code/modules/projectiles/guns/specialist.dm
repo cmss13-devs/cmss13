@@ -888,7 +888,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			return TRUE
 
 
-/obj/item/weapon/gun/launcher/grenade/on_attackby(obj/item/explosive/grenade/I, mob/user) //the attack in question is on the internal container. Complete override - normal storage attackby cannot be silenced, and will always say "you put the x into y".
+/obj/item/weapon/gun/launcher/grenade/on_pocket_attackby(obj/item/explosive/grenade/I, mob/user) //the attack in question is on the internal container. Complete override - normal storage attackby cannot be silenced, and will always say "you put the x into y".
 	if(!open_chamber)
 		to_chat(user, SPAN_WARNING("[src] is closed!"))
 		return

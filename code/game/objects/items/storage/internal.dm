@@ -115,7 +115,7 @@
 	return 1
 
 /obj/item/storage/internal/attackby(obj/item/W as obj, mob/user as mob)
-	if(master_item.on_attackby(W,user))
+	if(master_item.on_pocket_attackby(W,user))
 		. = ..()
 
 /obj/item/storage/internal/Adjacent(var/atom/neighbor)
@@ -133,15 +133,15 @@
 
 
 //things to do when a user attempts to insert an item in the obj's internal pocket. Return TRUE if all good, to permit the obj to move along.
-/obj/item/proc/on_attackby()
+/obj/proc/on_pocket_attackby()
 	return TRUE
 
 //things to do when an item is inserted in the obj's internal pocket
-/obj/item/proc/on_pocket_insertion()
+/obj/proc/on_pocket_insertion()
 	return
 
 //things to do when an item is removed in the obj's internal pocket
-/obj/item/proc/on_pocket_removal()
+/obj/proc/on_pocket_removal()
 	return
 
 /obj/item/storage/internal/Destroy()

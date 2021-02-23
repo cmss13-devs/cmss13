@@ -72,7 +72,7 @@
 	if(!mission.records[weapon_id])
 		return -1
 	var/datum/cas_fire_mission_record/fmr = mission.records[weapon_id]
-	if(!fmr.offsets || !fmr.offsets[offset_step])
+	if(!fmr.offsets || isnull(fmr.offsets[offset_step]))
 		return -1
 	var/old_offset = fmr.offsets[offset_step]
 	fmr.offsets[offset_step] = offset

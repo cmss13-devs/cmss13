@@ -51,17 +51,6 @@
 	stamina = new /datum/stamina(src)
 
 /mob/living/carbon/human/Destroy()
-	if(assigned_squad)
-		SStracking.stop_tracking(assigned_squad.tracking_id, src)
-		var/n = assigned_squad.marines_list.Find(src)
-		if(n)
-			assigned_squad.marines_list[n] = name //mob reference replaced by name string
-		if(assigned_squad.squad_leader == src)
-			assigned_squad.squad_leader = null
-		if(assigned_squad.overwatch_officer == src)
-			assigned_squad.overwatch_officer = null
-		assigned_squad = null
-
 	if(internal_organs_by_name)
 		for(var/name in internal_organs_by_name)
 			var/datum/internal_organ/I = internal_organs_by_name[name]

@@ -112,7 +112,7 @@
 					for(var/A in target_id_card.access)
 						if(A in known_access_rights)
 							contents += "  [get_access_desc(A)]"
-			
+
 					var/obj/item/paper/P = new /obj/item/paper(src.loc)
 					P.name = "Access Report"
 					P.info += contents
@@ -131,9 +131,16 @@
 				return TRUE
 			return
 		if("PRG_eject")
+			var/origin_assignment
+			var/origin_name
 			if(target_id_card)
-				GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.assignment, target_id_card.rank)
-				target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+				if(target_id_card.registered_name != origin_name || target_id_card.assignment != origin_assignment)
+					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.assignment, target_id_card.rank)
+					target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
+					if(target_id_card.registered_name != origin_name)
+						log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>")
+					if(target_id_card.assignment != origin_assignment)
+						log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the assignment of the ID to the custom position '[target_id_card.assignment]'. </font>")
 				if(ishuman(user))
 					target_id_card.forceMove(user.loc)
 					if(!user.get_active_hand())
@@ -152,6 +159,8 @@
 						target_id_card = I
 						visible_message("<span class='bold'>[src]</span> states, \"CARD FOUND: Preparing ID modification protocol.\"")
 						update_static_data(user)
+						origin_assignment = target_id_card.assignment
+						origin_name = target_id_card.registered_name
 						return TRUE
 			return FALSE
 		if("PRG_terminate")
@@ -163,6 +172,7 @@
 				is_agent = target_id_card.fail_agent_objectives()
 			target_id_card.assignment = "Terminated"
 			target_id_card.access = list()
+			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] terminated the ID. </font>")
 			message_staff("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].[is_agent ? " They were an Agent." : ""]")
 			return TRUE
 		if("PRG_edit")
@@ -200,31 +210,37 @@
 				target_id_card.access |= new_access
 				target_id_card.assignment = target
 				target_id_card.rank = target
-			message_staff("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment [target_id_card.assignment].")
+			message_staff("[key_name_admin(usr)] gave the ID of [target_id_card.registered_name] the assignment '[target_id_card.assignment]'.")
 			return TRUE
 		if("PRG_access")
 			if(!authenticated)
 				return
+			var/access_type = params["access_target"]
 			if(params["access_target"] in factions)
 				if(!target_id_card.faction_group)
 					target_id_card.faction_group = list()
 				if(params["access_target"] in target_id_card.faction_group)
 					target_id_card.faction_group -= params["access_target"]
+					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked [access_type] IFF. </font>")
 				else
 					target_id_card.faction_group |= params["access_target"]
+					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted [access_type] IFF. </font>")
 				return TRUE
-			var/access_type = text2num(params["access_target"])
+			access_type = text2num(params["access_target"])
 			if(access_type in (is_centcom ? get_all_centcom_access() : get_all_accesses()))
 				if(access_type in target_id_card.access)
 					target_id_card.access -= access_type
+					log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked access '[access_type]'. </font>")
 				else
 					target_id_card.access |= access_type
+					log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted access '[access_type]'. </font>")
 				return TRUE
 		if("PRG_grantall")
 			if(!authenticated)
 				return
 			target_id_card.access |= (is_centcom ? get_all_centcom_access() : get_all_accesses())
 			target_id_card.faction_group |= factions
+			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted the ID all access and USCM IFF. </font>")
 			return TRUE
 		if("PRG_denyall")
 			if(!authenticated)
@@ -232,34 +248,42 @@
 			var/list/access = target_id_card.access
 			access.Cut()
 			target_id_card.faction_group -= factions
+			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] removed all accesses and USCM IFF. </font>")
 			return TRUE
 		if("PRG_grantregion")
 			if(!authenticated)
 				return
 			if(params["region"] == "Faction (IFF system)")
 				target_id_card.faction_group |= factions
+				log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted USCM IFF. </font>")
 				return TRUE
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
 			target_id_card.access |= get_region_accesses(region)
+			var/additions = get_region_accesses_name(region)
+			log_idmod(target_id_card, "<font color='green'> [key_name_admin(usr)] granted all [additions] accesses. </font>")
 			return TRUE
 		if("PRG_denyregion")
 			if(!authenticated)
 				return
 			if(params["region"] == "Faction (IFF system)")
 				target_id_card.faction_group -= factions
+				log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked USCM IFF. </font>")
 				return TRUE
 			var/region = text2num(params["region"])
 			if(isnull(region))
 				return
 			target_id_card.access -= get_region_accesses(region)
+			var/additions = get_region_accesses_name(region)
+			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] revoked all [additions] accesses. </font>")
 			return TRUE
 		if("PRG_account")
 			if(!authenticated)
 				return
 			var/account = text2num(params["account"])
 			target_id_card.associated_account_number = account
+			log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the account number to '[account]'. </font>")
 			return TRUE
 
 /obj/structure/machinery/computer/card/ui_static_data(mob/user)
@@ -322,7 +346,7 @@
 			"regid" = i,
 			"accesses" = accesses
 		))
-	
+
 	// Factions goes here
 	if(target_id_card && target_id_card.faction_group && isnull(target_id_card.faction_group))
 		target_id_card.faction_group = list()

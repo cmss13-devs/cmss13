@@ -80,6 +80,11 @@
 	GLOB.STUI.attack.Add("\[[time_stamp()]]INTERACT: [msg]<br>")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK
 
+/proc/log_idmod(var/obj/item/card/id/target_id, var/msg)
+	if (CONFIG_GET(flag/log_idmod))
+		diary << html_decode("\[[time_stamp()]]ID MOD: [msg][log_end]")
+	target_id.modification_log += "\[[time_stamp()]]: [msg]"
+
 /proc/log_vote(text)
 	if (CONFIG_GET(flag/log_vote))
 		diary << html_decode("\[[time_stamp()]]VOTE: [text][log_end]")

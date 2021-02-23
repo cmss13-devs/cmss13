@@ -102,6 +102,8 @@ Administrative related.
 
 /datum/config_entry/flag/log_interact
 
+/datum/config_entry/flag/log_idmod
+
 /datum/config_entry/flag/log_vote
 
 /datum/config_entry/flag/log_whisper

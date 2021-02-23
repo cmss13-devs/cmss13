@@ -42,11 +42,8 @@ var/global/list/ahelp_msgs = list()
 				current_mhelp.close(src)
 			return
 		current_mhelp = new(src)
-		current_mhelp.input_message(src)
-		if(!current_mhelp.ready)
-			// ... no question when opening ? nevermind then. outta here.
-			qdel(current_mhelp)
-			current_mhelp = null
+		if(!current_mhelp.broadcast_request(src))
+			QDEL_NULL(src)
 		return
 
 	var/selected_upper = uppertext(selected_type)
@@ -122,15 +119,14 @@ var/global/list/ahelp_msgs = list()
 	GLOB.STUI.processing |= STUI_LOG_STAFF_CHAT
 	msg = "<font color='#009900'><b>[selected_upper]: [get_options_bar(mob, 2, 1, 1, msg=original_msg)]:</b></font> <br>&emsp;<font color='#DA6200'><b>[msg]</font></b>"
 
-	var/list/list/current_staff = get_staff_by_category()
-	var/admin_number_afk = current_staff["afk"].len
-	var/list/admins = current_staff["admins"]
-
-	if(admins.len)
-		for(var/client/X in admins) // Admins get the full monty
-			if(X.prefs.toggles_sound & SOUND_ADMINHELP)
-				sound_to(X, 'sound/effects/adminhelp_new.ogg')
-			to_chat_spaced(X, type = MESSAGE_TYPE_ADMINPM, margin_bottom = 0.5, margin_top = 0.5, html = SPAN_PM(msg))
+	var/admins_non_afk = 0
+	for(var/client/C in GLOB.admins)
+		if(C && C.admin_holder && (C.admin_holder.rights & R_MOD))
+			if(!C.is_afk())
+				admins_non_afk++
+			if(C.prefs.toggles_sound & SOUND_ADMINHELP)
+				sound_to(C, 'sound/effects/adminhelp_new.ogg')
+			to_chat_spaced(C, type = MESSAGE_TYPE_ADMINPM, margin_bottom = 0.5, margin_top = 0.5, html = SPAN_PM(msg))
 
 	//show it to the person adminhelping too
 	to_chat_spaced(src, margin_bottom = 0.5, margin_top = 0.5, type = MESSAGE_TYPE_ADMINPM, html = SPAN_PM("<font color='#009900'><b>PM to Staff ([selected_type]):</font><br>&emsp;<font color='#DA6200'>[original_msg]</b></font>"))
@@ -139,35 +135,11 @@ var/global/list/ahelp_msgs = list()
 	remove_verb(src, /client/verb/adminhelp)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/add_verb, src, /client/verb/adminhelp), 2 MINUTES)
 
-	var/admin_number_present = admins.len - admin_number_afk
-	log_admin("HELP: [key_name(src)]: [original_msg] - heard by [admin_number_present] non-AFK staff.")
+	log_admin("HELP: [key_name(src)]: [original_msg] - heard by [admins_non_afk] non-AFK staff.")
 
 	unansweredAhelps["[src.computer_id]"] = msg //We are gonna do it by CID, since any other way really gets fucked over by ghosting etc
 
 	return
-
-/proc/get_staff_by_category()
-	var/list/mentoradmin_holders = list()
-	var/list/debugadmin_holders = list()
-	var/list/adminadmin_holders = list()
-	var/list/afk_staff = list()
-	var/list/staff = list("mentors","devs","admins","afk")
-	for(var/client/X in GLOB.admins)
-		if(AHOLD_IS_ONLY_MENTOR(X.admin_holder)) // we don't want to count admins twice. This list should be JUST mentors
-			mentoradmin_holders += X
-		if(R_DEBUG & X.admin_holder.rights) // Looking for anyone with +Debug which will be devs and host-tier permissions
-			debugadmin_holders += X
-		if(AHOLD_IS_MOD(X.admin_holder)) // just admins+ here please
-			adminadmin_holders += X
-			if(X.is_afk())
-				afk_staff += X
-	staff["mentors"] = mentoradmin_holders
-	staff["devs"] = debugadmin_holders
-	staff["admins"] = adminadmin_holders
-	staff["afk"] = afk_staff
-
-	return staff
-
 
 /proc/get_options_bar(whom, detail = 2, name = 0, link = 1, highlight_special = 1, msg = "")
 	if(!whom)

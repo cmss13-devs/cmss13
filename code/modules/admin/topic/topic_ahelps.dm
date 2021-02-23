@@ -100,9 +100,9 @@
 			ahelp_msgs.Remove(C)
 			C.current_mhelp = new(C)
 			if(msg)
-				C.current_mhelp.send_message(C, msg)
+				C.current_mhelp.broadcast_unhandled(msg, C)
 			else
-				C.current_mhelp.input_message(C)
+				C.current_mhelp.broadcast_request(C)
 
 			unansweredAhelps.Remove(C.computer_id) //It has been answered so take it off of the unanswered list
 			viewUnheardAhelps() //This SHOULD refresh the page

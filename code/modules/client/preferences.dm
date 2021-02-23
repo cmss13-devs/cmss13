@@ -28,7 +28,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	//game-preferences
 	var/lastchangelog = ""				// Saved changlog filesize to detect if there was a change
-	var/ooccolor = "#b82e00"
+	var/ooccolor
 	var/be_special = 0				// Special role selection
 	var/toggle_prefs = TOGGLE_MIDDLE_MOUSE_CLICK|TOGGLE_DIRECTIONAL_ATTACK // flags in #define/mode.dm
 	var/UI_style = "midnight"
@@ -161,6 +161,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			if(load_preferences())
 				if(load_character())
 					return
+	if(!ooccolor)
+		ooccolor = CONFIG_GET(string/ooc_color_default)
 	gender = pick(MALE, FEMALE)
 	real_name = random_name(gender)
 	gear = list()

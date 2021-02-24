@@ -110,7 +110,7 @@
 /obj/item/weapon/gun/rifle/sniper/M42B/afterattack(atom/target, mob/user, flag)
 	if(able_to_fire(user))
 		if(get_dist(target,user) <= 8)
-			to_chat(user, SPAN_WARNING("The [src] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
+			to_chat(user, SPAN_WARNING("The [src.name] beeps, indicating that the target is within an unsafe proximity to the rifle, refusing to fire."))
 			return
 		else ..()
 
@@ -159,7 +159,7 @@
 	if(.)
 		var/mob/living/carbon/human/PMC_sniper = user
 		if(PMC_sniper.lying == 0 && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC) && !istype(PMC_sniper.wear_suit,/obj/item/clothing/suit/storage/marine/veteran))
-			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
+			PMC_sniper.visible_message(SPAN_WARNING("[PMC_sniper] is blown backwards from the recoil of the [src.name]!"),SPAN_HIGHDANGER("You are knocked prone by the blowback!"))
 			step(PMC_sniper,turn(PMC_sniper.dir,180))
 			PMC_sniper.KnockDown(5)
 
@@ -294,8 +294,6 @@
 	ammo = /datum/ammo/bullet/smartgun
 	var/datum/ammo/ammo_primary = /datum/ammo/bullet/smartgun //Toggled ammo type
 	var/datum/ammo/ammo_secondary = /datum/ammo/bullet/smartgun/armor_piercing //Toggled ammo type
-	var/shells_fired_max = 20 //Smartgun only; once you fire # of shells, it will attempt to reload automatically. If you start the reload, the counter resets.
-	var/shells_fired_now = 0 //The actual counter used. shells_fired_max is what it is compared to.
 	var/iff_enabled = TRUE //Begin with the safety on.
 	var/secondary_toggled = 0 //which ammo we use
 	var/recoil_compensation = 0
@@ -303,7 +301,7 @@
 	var/auto_fire = 0
 	var/motion_detector = 0
 	var/drain = 11
-	var/range = 12
+	var/range = 7
 	var/angle = 2
 	var/list/angle_list = list(180,135,90,60,30)
 	var/obj/item/device/motiondetector/sg/MD
@@ -341,11 +339,18 @@
 	fa_delay = FIRE_DELAY_TIER_9
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_6
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
-	scatter = SCATTER_AMOUNT_TIER_6
+	if(accuracy_improvement)
+		accuracy_mult += HIT_ACCURACY_MULT_TIER_2
+	else
+		accuracy_mult += HIT_ACCURACY_MULT_TIER_1
+	if(recoil_compensation)
+		scatter = SCATTER_AMOUNT_TIER_10
+		recoil = RECOIL_OFF
+	else
+		scatter = SCATTER_AMOUNT_TIER_6
+		recoil = RECOIL_AMOUNT_TIER_3
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil = RECOIL_AMOUNT_TIER_3
 
 /obj/item/weapon/gun/smartgun/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -473,10 +478,10 @@
 
 /obj/item/weapon/gun/smartgun/proc/toggle_ammo_type(mob/user)
 	if(!iff_enabled)
-		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when the [src]'s fire restriction is disabled.")
+		to_chat(user, "[icon2html(src, usr)] Can't switch ammunition type when the [src.name]'s fire restriction is disabled.")
 		return
 	secondary_toggled = !secondary_toggled
-	to_chat(user, "[icon2html(src, usr)] You changed the [src]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
+	to_chat(user, "[icon2html(src, usr)] You changed the [src.name]'s ammo preparation procedures. You now fire [secondary_toggled ? "armor shredding rounds" : "highly precise rounds"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
@@ -485,7 +490,7 @@
 	ammo = secondary_toggled ? ammo_secondary : ammo_primary
 
 /obj/item/weapon/gun/smartgun/proc/toggle_lethal_mode(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
+	to_chat(user, "[icon2html(src, usr)] You [iff_enabled? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s fire restriction. You will [iff_enabled ? "harm anyone in your way" : "target through IFF"].")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	iff_enabled = !iff_enabled
 	ammo = ammo_primary
@@ -502,12 +507,12 @@
 		link_powerpack(usr)
 
 /obj/item/weapon/gun/smartgun/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
-	if(!src.powerpack)
+	if(!powerpack)
 		if(!link_powerpack(user))
 			click_empty(user)
 			unlink_powerpack()
 			return
-	if(src.powerpack)
+	if(powerpack)
 		var/obj/item/smartgun_powerpack/pp = user.back
 		if(istype(pp))
 			var/obj/item/cell/c = pp.pcell
@@ -521,59 +526,49 @@
 /obj/item/weapon/gun/smartgun/proc/link_powerpack(var/mob/user)
 	if(!QDELETED(user) && !QDELETED(user.back))
 		if(istype(user.back, /obj/item/smartgun_powerpack))
-			src.powerpack = user.back
+			powerpack = user.back
 			return TRUE
 	return FALSE
 
 /obj/item/weapon/gun/smartgun/proc/unlink_powerpack()
-	src.powerpack = null
+	powerpack = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_recoil_compensation(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src]'s recoil compensation.")
+	to_chat(user, "[icon2html(src, usr)] You [recoil_compensation? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s recoil compensation.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	recoil_compensation = !recoil_compensation
-	recoil_compensation()
-
-/obj/item/weapon/gun/smartgun/proc/recoil_compensation()
 	if(recoil_compensation)
-		src.scatter -= SCATTER_AMOUNT_TIER_7
-		src.recoil -= RECOIL_AMOUNT_TIER_3
-		src.drain += 50
-	if(!recoil_compensation)
-		src.scatter += SCATTER_AMOUNT_TIER_7
-		src.recoil += RECOIL_AMOUNT_TIER_3
-		src.drain -= 50
+		drain += 50
+	else
+		drain -= 50
+	recalculate_attachment_bonuses() //Includes set_gun_config_values() as well as attachments.
 
 /obj/item/weapon/gun/smartgun/proc/toggle_accuracy_improvement(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src]'s accuracy improvement.")
+	to_chat(user, "[icon2html(src, usr)] You [accuracy_improvement? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s accuracy improvement.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	accuracy_improvement = !accuracy_improvement
-	accuracy_improvement()
-
-/obj/item/weapon/gun/smartgun/proc/accuracy_improvement()
 	if(accuracy_improvement)
-		src.accuracy_mult += HIT_ACCURACY_MULT_TIER_1
-		src.drain += 50
-	if(!accuracy_improvement)
-		src.accuracy_mult -= HIT_ACCURACY_MULT_TIER_1
-		src.drain -= 50
+		drain += 50
+	else
+		drain -= 50
+	recalculate_attachment_bonuses()
 
 /obj/item/weapon/gun/smartgun/proc/toggle_auto_fire(mob/user)
 	if(!(flags_item & WIELDED))
-		to_chat(user, "[icon2html(src, usr)] You need to wield the [src] to enable autofire.")
+		to_chat(user, "[icon2html(src, usr)] You need to wield the [src.name] to enable autofire.")
 		return //Have to be actually be wielded.
-	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src]'s auto fire mode.")
+	to_chat(user, "[icon2html(src, usr)] You [auto_fire? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s auto fire mode.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	auto_fire = !auto_fire
 	auto_fire()
 
 /obj/item/weapon/gun/smartgun/proc/auto_fire()
 	if(auto_fire)
-		src.drain += 150
+		drain += 150
 		if(!motion_detector)
 			START_PROCESSING(SSobj, src)
 	if(!auto_fire)
-		src.drain -= 150
+		drain -= 150
 		if(!motion_detector)
 			STOP_PROCESSING(SSobj, src)
 
@@ -581,13 +576,7 @@
 	if(!auto_fire && !motion_detector)
 		STOP_PROCESSING(SSobj, src)
 	if(auto_fire)
-		if(ishuman(loc) && (flags_item & WIELDED))
-			var/human_user = loc
-			target = get_target(human_user)
-			process_shot(human_user)
-		else
-			auto_fire = 0
-			auto_fire()
+		auto_prefire()
 	if(motion_detector)
 		recycletime--
 		if(!recycletime)
@@ -599,6 +588,15 @@
 			return
 		long_range_cooldown = initial(long_range_cooldown)
 		MD.scan()
+
+/obj/item/weapon/gun/smartgun/proc/auto_prefire(var/warned) //To allow the autofire delay to properly check targets after waiting.
+	if(ishuman(loc) && (flags_item & WIELDED))
+		var/human_user = loc
+		target = get_target(human_user)
+		process_shot(human_user, warned)
+	else
+		auto_fire = FALSE
+		auto_fire()
 
 /obj/item/weapon/gun/smartgun/proc/get_target(var/mob/living/user)
 	var/list/conscious_targets = list()
@@ -669,38 +667,39 @@
 	else if(unconscious_targets.len)
 		. = pick(unconscious_targets)
 
-/obj/item/weapon/gun/smartgun/proc/process_shot(var/mob/living/user)
+/obj/item/weapon/gun/smartgun/proc/process_shot(var/mob/living/user, var/warned)
 	set waitfor = 0
 
 
-	if(!length(target))
+	if(!target)
 		return //Acquire our victim.
 
 	if(!ammo)
 		return
 
-	if(target && (world.time-last_fired >= 3))
-		if(world.time-last_fired >= 300) //if we haven't fired for a while, beep first
+	if(target && (world.time-last_fired >= 3)) //Practical firerate is limited mainly by process delay; this is just to make sure it doesn't fire too soon after a manual shot or slip a shot into an ongoing burst.
+		if(world.time-last_fired >= 300 && !warned) //if we haven't fired for a while, beep first
 			playsound(loc, 'sound/machines/twobeep.ogg', 50, 1)
-			sleep(3)
+			addtimer(CALLBACK(src, /obj/item/weapon/gun/smartgun/proc/auto_prefire, TRUE), 3)
+			return
 
 		Fire(target,user)
 
 	target = null
 
 /obj/item/weapon/gun/smartgun/proc/toggle_motion_detector(mob/user)
-	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src]'s motion detector.")
+	to_chat(user, "[icon2html(src, usr)] You [motion_detector? "<B>disable</b>" : "<B>enable</b>"] the [src.name]'s motion detector.")
 	playsound(loc,'sound/machines/click.ogg', 25, 1)
 	motion_detector = !motion_detector
 	motion_detector()
 
 /obj/item/weapon/gun/smartgun/proc/motion_detector()
 	if(motion_detector)
-		src.drain += 15
+		drain += 15
 		if(!auto_fire)
 			START_PROCESSING(SSobj, src)
 	if(!motion_detector)
-		src.drain -= 15
+		drain -= 15
 		if(!auto_fire)
 			STOP_PROCESSING(SSobj, src)
 
@@ -724,7 +723,8 @@
 	..()
 	burst_amount = BURST_AMOUNT_TIER_5
 	burst_delay = FIRE_DELAY_TIER_10
-	scatter = SCATTER_AMOUNT_TIER_8
+	if(!recoil_compensation)
+		scatter = SCATTER_AMOUNT_TIER_8
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 
 

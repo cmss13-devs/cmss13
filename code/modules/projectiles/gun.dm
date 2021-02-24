@@ -946,7 +946,7 @@ and you're good to go.
 
 	var/bullets_fired
 	for(bullets_fired = 1 to bullets_to_fire)
-		if(loc != user)
+		if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED))
 			break //If you drop it while bursting, for example.
 
 		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow

@@ -110,22 +110,22 @@
 
 	for(var/client/C in GLOB.admins)
 		var/formatted = msg
-		var/soundfile = 'sound/effects/mhelp.ogg'
+		var/soundfile
 
-		if(!C || C == sender || C == recipient)
+		if(!C || C == recipient)
 			continue
 
 		// Initial broadcast
 		else if(!staff_only && !recipient && CLIENT_HAS_RIGHTS(C, R_MENTOR))
 			formatted = wrap_message(formatted, sender)
-			if(CLIENT_IS_STAFF(C))
-				soundfile = 'sound/effects/adminhelp_new.ogg'
+			soundfile = 'sound/effects/mhelp.ogg'
 
 		// Staff eavesdrop
-		else if(CLIENT_IS_STAFF(C))
+		else if(CLIENT_HAS_RIGHTS(C, R_MENTOR) && CLIENT_IS_STAFF(C))
 			if(include_keys)
 				formatted = SPAN_NOTICE(key_name(sender, TRUE) + " -> " + key_name(recipient, TRUE) + ": ") + msg
-			soundfile = null
+
+		else continue
 
 		if(soundfile && with_sound && (C.prefs?.toggles_sound & SOUND_ADMINHELP))
 			sound_to(C, soundfile)

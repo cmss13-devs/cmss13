@@ -762,6 +762,7 @@
 		\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
 		\[barcode\]\[/center\]"}
 	info = parsepencode(template, null, null, FALSE)
+	update_icon()
 
 /obj/item/paper/incident/Destroy()
 	incident = null

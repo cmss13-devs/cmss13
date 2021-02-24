@@ -57,12 +57,7 @@
 		if(!incident.active_timer)
 			continue
 
-		var/time_left = get_time_left(I)
-		// Midnight rollover dont badly
-		if(time_left > 1e5)
-			incident.time_to_release = 0
-
-		if(world.timeofday > incident.time_to_release)
+		if(REALTIMEOFDAY > incident.time_to_release)
 			timer_end(I)
 
 	updateUsrDialog()
@@ -136,9 +131,9 @@
 	var/resuming = TRUE
 	if(!C.time_to_release)
 		resuming = FALSE
-		C.time_to_release = world.timeofday + C.brig_sentence * 600
+		C.time_to_release = REALTIMEOFDAY + C.brig_sentence * 600
 	else
-		C.time_to_release = world.timeofday + ((C.brig_sentence * 600) - C.time_served)
+		C.time_to_release = REALTIMEOFDAY + ((C.brig_sentence * 600) - C.time_served)
 
 	for(var/obj/structure/machinery/door/window/brigdoor/door in targets)
 		if(door.density)
@@ -165,7 +160,7 @@
 
 	C.active_timer = FALSE
 
-	C.time_served = (C.brig_sentence * 600) - (C.time_to_release - world.timeofday)
+	C.time_served = (C.brig_sentence * 600) - (C.time_to_release - REALTIMEOFDAY)
 	C.time_to_release = 0
 
 /obj/structure/machinery/brig_cell/proc/timer_pause(var/mob/living/user)
@@ -175,7 +170,7 @@
 	var/datum/crime_incident/C = current_report.incident
 
 	C.active_timer = FALSE
-	C.time_served = (C.brig_sentence * 600) - (C.time_to_release - world.timeofday)
+	C.time_served = (C.brig_sentence * 600) - (C.time_to_release - REALTIMEOFDAY)
 
 	log_admin("[key_name(user)] has paused the jail timer of [C.criminal_name], [C.charges_to_string()].")
 
@@ -184,14 +179,10 @@
 		return 0
 	var/datum/crime_incident/C = I.incident
 
-	var/time = (I.incident.time_to_release - world.timeofday)/10
-	if(time < 0)
-		time = 0
-
+	var/time = (I.incident.time_to_release - REALTIMEOFDAY)/10
 	if(!C.active_timer)
 		time = ((C.brig_sentence * 600) - C.time_served)/10
-
-	return time
+	return max(0, time)
 
 /obj/structure/machinery/brig_cell/proc/do_pardon(var/mob/user)
 	current_report.incident.pardoned = TRUE

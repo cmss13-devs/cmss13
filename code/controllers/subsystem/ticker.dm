@@ -51,9 +51,7 @@ SUBSYSTEM_DEF(ticker)
 	var/all_music = CONFIG_GET(keyed_list/lobby_music)
 	var/key = SAFEPICK(all_music)
 	if(key)
-		var/music_options = splittext(all_music[key], " ")
-		login_music = list(music_options[1], music_options[2], music_options[3])
-
+		login_music = file(all_music[key])
 	return ..()
 
 /datum/controller/subsystem/ticker/proc/force_start()

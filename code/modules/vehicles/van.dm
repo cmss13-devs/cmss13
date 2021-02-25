@@ -119,6 +119,20 @@
 	flags_atom = ON_BORDER|NOINTERACT
 	unacidable = TRUE
 
+/obj/structure/interior_wall/van/Initialize()
+	. = ..()
+	pixel_y = 0
+	//alpha = 255
+	layer = ABOVE_OBJ_LAYER
+
+	switch(dir)
+		if(NORTH)
+			pixel_y = 31
+			layer = INTERIOR_WALL_NORTH_LAYER
+		if(SOUTH)
+			alpha = 50
+			layer = INTERIOR_WALL_SOUTH_LAYER
+
 /*
 ** PRESETS
 */
@@ -269,17 +283,29 @@
 	icon_state = "van_right_3"
 	dir = SOUTH
 
+/obj/structure/interior_exit/vehicle/van/right/Initialize()
+	..()
+	alpha = 50
+
 /obj/structure/interior_exit/vehicle/van/backleft
 	name = "Van back exit"
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "van_back_2"
 	dir = WEST
 
+/obj/structure/interior_exit/vehicle/van/backleft/Initialize()
+	..()
+	pixel_x = 0
+
 /obj/structure/interior_exit/vehicle/van/backright
 	name = "Van back exit"
 	icon = 'icons/obj/vehicles/interiors/van.dmi'
 	icon_state = "van_back_1"
 	dir = WEST
+
+/obj/structure/interior_exit/vehicle/van/backright/Initialize()
+	..()
+	pixel_x = 0
 
 /obj/vehicle/multitile/van/Collide(var/atom/A)
 	if(!seats[VEHICLE_DRIVER])

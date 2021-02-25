@@ -115,6 +115,7 @@
 	W.rank = rank
 	W.registered_name = H.real_name
 	W.registered_gid = H.gid
+	W.blood_type = H.blood_type
 	W.paygrade = load_rank(H)
 	W.uniform_sets = uniform_sets
 	H.equip_to_slot_or_del(W, WEAR_ID)

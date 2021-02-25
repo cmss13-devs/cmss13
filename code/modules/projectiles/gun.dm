@@ -990,9 +990,11 @@ and you're good to go.
 
 		//Finally, make with the pew pew!
 		if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
-			to_chat(user, "Your gun is malfunctioning. Ahelp the following: ERROR CODE I1: projectile malfunctioned while firing.")
+			to_chat(user, "ERROR CODE I1: Gun malfunctionned due to invalid chambered projectile, clearing it. AHELP if this persists.")
 			log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b>")
 			flags_gun_features &= ~GUN_BURST_FIRING
+			in_chamber = null
+			click_empty(user)
 			return
 
 		if(get_turf(target) != get_turf(user))

@@ -20,9 +20,8 @@
 /obj/structure/machinery/conveyor/centcom_auto
 	id = "round_end_belt"
 
-	// create a conveyor
-/obj/structure/machinery/conveyor/New(loc, newdir, on = 0)
-	..(loc)
+/obj/structure/machinery/conveyor/Initialize(mapload, newdir, on, ...)
+	. = ..()
 	if(newdir)
 		setDir(newdir)
 	switch(dir)
@@ -51,7 +50,7 @@
 			forwards = WEST
 			backwards = NORTH
 	if(on)
-		operating = 1
+		operating = TRUE
 		setmove()
 
 /obj/structure/machinery/conveyor/proc/setmove()
@@ -190,15 +189,17 @@
 
 
 
-/obj/structure/machinery/conveyor_switch/New()
-	..()
+/obj/structure/machinery/conveyor_switch/Initialize(mapload, ...)
+	. = ..()
 	update()
+	return INITIALIZE_HINT_LATELOAD
 
-	spawn(5)		// allow map load
-		conveyors = list()
-		for(var/obj/structure/machinery/conveyor/C in machines)
-			if(C.id == id)
-				conveyors += C
+/obj/structure/machinery/conveyor_switch/LateInitialize()
+	. = ..()
+	conveyors = list()
+	for(var/obj/structure/machinery/conveyor/C in machines)
+		if(C.id == id)
+			conveyors += C
 	start_processing()
 
 // update the icon depending on the position

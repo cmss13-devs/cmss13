@@ -16,7 +16,16 @@
 	if(default)			return default
 	if(List && List.len)return List[1]
 
-
+/proc/sanitize_list(list/List, list/filter = list(null), default = list())
+	if(!islist(List))
+		return default
+	if(!islist(filter))
+		return List
+	. = list()
+	for(var/E in List)
+		if(E in filter)
+			continue
+		. += E
 
 //more specialised stuff
 /proc/sanitize_gender(gender,neuter=0,plural=0, default="male")

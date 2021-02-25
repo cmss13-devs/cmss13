@@ -321,8 +321,10 @@
 		disabilities = 0
 	if(!organ_data)
 		organ_data = list()
-	if(!gear)
-		gear = list()
+
+	gear = sanitize_list(gear)
+
+	traits = sanitize_list(traits)
 
 	//if(!skin_style) skin_style = "Default"
 

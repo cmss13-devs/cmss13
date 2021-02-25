@@ -7,6 +7,7 @@
 	var/atom/ref = null
 	var/window_options = "focus=0;can_close=1;can_minimize=1;can_maximize=0;can_resize=1;titlebar=1;" // window option is set using window_id
 	var/stylesheets[0]
+	var/stylesheet
 	var/scripts[0]
 	var/title_image
 	var/head_elements
@@ -18,8 +19,7 @@
 	var/static/datum/asset/simple/other/other_asset = get_asset_datum(/datum/asset/simple/other)
 
 
-/datum/browser/New(nuser, nwindow_id, ntitle = 0, stylesheet = 'html/browser/common.css', nwidth = 0, nheight = 0, var/atom/nref = null)
-
+/datum/browser/New(nuser, nwindow_id, ntitle = 0, nstylesheet = "common.css", nwidth = 0, nheight = 0, var/atom/nref = null)
 	user = nuser
 	window_id = nwindow_id
 	if (ntitle)
@@ -30,7 +30,7 @@
 		height = nheight
 	if (nref)
 		ref = nref
-	add_stylesheet("common", stylesheet) // this CSS sheet is common to all UIs
+	stylesheet = nstylesheet
 
 /datum/browser/proc/set_title(ntitle)
 	title = format_text(ntitle)
@@ -67,7 +67,7 @@
 	content += ncontent
 
 /datum/browser/proc/get_header()
-	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()["common.css"]]'>"
+	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()[stylesheet]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["search.js"]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["panels.css"]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
@@ -124,7 +124,7 @@
 		SSassets.transport.send_assets(user, scripts)
 
 	user << browse(get_content(), "window=[window_id];[window_size][window_options]")
-	
+
 	if (use_onclose)
 		setup_onclose()
 
@@ -168,24 +168,24 @@
 // then use 	: onclose(user, "fred")
 //
 // Optionally, specify the "ref" parameter as the controlled atom (usually src)
-// to pass a "close=1" parameter or a custom list of parameters to the atom's 
+// to pass a "close=1" parameter or a custom list of parameters to the atom's
 // Topic() proc for special handling.
 // Otherwise, the user mob's machine var will be reset directly.
 //
 /proc/onclose(user, windowid, var/atom/ref, var/list/params)
 	var/client/C = user
-	
+
 	if (ismob(user))
 		var/mob/M = user
 		C = M.client
 
 	if (!istype(C))
 		return
-	
+
 	var/ref_string = "null"
 	if (ref)
 		ref_string = "\ref[ref]"
-	
+
 	var/params_string = "null"
 	if (params)
 		params_string = ""
@@ -205,7 +205,7 @@
 /client/verb/windowclose(var/atomref as text|null, var/params as text|null)
 	set hidden = 1						// hide this verb from the user's panel
 	set name = ".windowclose"			// no autocomplete on cmd line
-	
+
 	if(atomref && atomref != "null")				// if passed a real atomref
 		var/hsrc = locate(atomref)	// find the reffed atom
 		if(hsrc)
@@ -216,9 +216,9 @@
 			if (params && params != "null")
 				param_string = params
 				param_list = params2list(params)
-			
+
 			// this will direct to the atom's Topic() proc via client.Topic()
-			Topic(param_string, param_list, hsrc)	
+			Topic(param_string, param_list, hsrc)
 			return
 
 	// no atomref specified (or not found)
@@ -229,20 +229,20 @@
 
 /proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null)
 	var/client/C = target
-	
+
 	if (ismob(target))
 		var/mob/M = target
 		C = M.client
-	
+
 	if (!istype(C))
 		return
 
 	var/stylesheet = C.prefs.stylesheet
-	if (!(stylesheet in stylesheets))
+	if (!(stylesheet in GLOB.stylesheets))
 		C.prefs.stylesheet = "Modern"
 		stylesheet = "Modern"
-	
-	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, stylesheets[stylesheet])
+
+	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet])
 	popup.set_content(browser_content)
 	if (window_options)
 		popup.set_window_options(window_options)

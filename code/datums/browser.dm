@@ -69,7 +69,6 @@
 /datum/browser/proc/get_header()
 	head_content += "<link rel='stylesheet' type='text/css' href='[common_asset.get_url_mappings()[stylesheet]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["search.js"]]'>"
-	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["panels.css"]]'>"
 	head_content += "<link rel='stylesheet' type='text/css' href='[other_asset.get_url_mappings()["loading.gif"]]'>"
 
 	for (var/file in stylesheets)

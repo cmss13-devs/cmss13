@@ -163,7 +163,7 @@ mob/living/carbon/proc/handle_hallucinations()
 						possible_points += F
 					if(possible_points.len)
 						var/turf/open/floor/target = pick(possible_points)
-						switch(rand(1,4))
+						switch(rand(1,3))
 							if(1)
 								halbody = image('icons/mob/humans/human.dmi',target,"husk_l",TURF_LAYER)
 							if(2,3)

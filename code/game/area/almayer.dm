@@ -462,7 +462,7 @@
 	name = "\improper Medical Research containment cells"
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
-	flags_atom = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
+	flags_atom = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL|AREA_CONTAINMENT
 
 /area/almayer/medical/containment/cell/cl
 	name = "\improper Containment"

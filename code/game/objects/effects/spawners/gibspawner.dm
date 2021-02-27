@@ -40,7 +40,7 @@
 /obj/effect/spawner/gibspawner/LateInitialize()
 	. = ..()
 	Gib(viruses,ml)
-	QDEL_IN(src, 1 SECONDS)
+	qdel(src)
 
 /obj/effect/spawner/gibspawner/proc/Gib(var/list/viruses = list(), var/mob/living/ml = null)
 	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)

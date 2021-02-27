@@ -1,0 +1,8 @@
+*
+!**/*.so
+!**/*.dll
+!*.rsc
+!*.dmb
+!maps/*
+!config/*
+!tools/*

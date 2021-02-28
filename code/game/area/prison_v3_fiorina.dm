@@ -68,9 +68,11 @@
 
 /area/fiorina/lz/near_lzI
 	name = "Fiorina - LZ1 Aux Port"
+	is_resin_allowed = FALSE
 
 /area/fiorina/lz/near_lzII
 	name = "Fiorina - LZ2 Prison Port"
+	is_resin_allowed = FALSE
 
 /area/fiorina/lz/console_I
 	name = "Fiorina - LZ1 Control Console"
@@ -85,10 +87,12 @@
 /area/shuttle/drop1/prison_v3
 	name = "Fiorina - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
+	is_resin_allowed = FALSE
 
 /area/shuttle/drop2/prison_v3
 	name = "Fiorina - Normandy Landing Zone"
 	icon_state = "shuttle2"
+	is_resin_allowed = FALSE
 
 //STATION AREAS AAAA
 /area/fiorina/station

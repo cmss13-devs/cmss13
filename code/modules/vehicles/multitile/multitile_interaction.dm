@@ -124,6 +124,8 @@
 		user.visible_message(SPAN_WARNING("[user] finishes tightening nuts and bolts on \the [src]."), SPAN_NOTICE("You finish tightening nuts and bolts on \the [src]."))
 
 		health = max_hp
+		if(!luminosity)
+			SetLuminosity(initial(luminosity))
 		toggle_cameras_status(TRUE)
 
 	update_icon()

@@ -786,7 +786,7 @@ function draw_listedturf() {
 	var table = document.createElement("table");
 	for(var i = 0; i < turfcontents.length; i++) {
 		var part = turfcontents[i];
-		if(storedimages[part[1]] == null && part[2]) {
+		if(part[2]) {
 			var img = document.createElement("img");
 			img.src = part[2];
 			img.id = part[1];

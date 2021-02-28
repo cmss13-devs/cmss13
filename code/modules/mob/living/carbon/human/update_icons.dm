@@ -79,11 +79,14 @@ There are several things that need to be remembered:
 	var/image/I = overlays_standing[cache_index]
 	if(I)
 		I.appearance_flags |= RESET_COLOR
+		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, I)
 		overlays += I
 
 /mob/living/carbon/human/remove_overlay(cache_index)
 	if(overlays_standing[cache_index])
-		overlays -= overlays_standing[cache_index]
+		var/image/I = overlays_standing[cache_index]
+		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_REMOVED, cache_index, I)
+		overlays -= I
 		overlays_standing[cache_index] = null
 
 

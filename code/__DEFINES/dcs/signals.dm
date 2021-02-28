@@ -154,6 +154,10 @@
 /// From /obj/item/clothing/mask/facehugger/proc/impregnate(): (obj/item/clothing/mask/facehugger/hugger)
 #define COMSIG_HUMAN_IMPREGNATE "human_impregnate"
 	#define COMPONENT_NO_IMPREGNATE (1<<0)
+/// From /mob/living/carbon/human/apply_overlay(): (cache_index, overlay_image)
+#define COMSIG_HUMAN_OVERLAY_APPLIED "human_overlay_applied"
+/// From /mob/living/carbon/human/remove_overlay(): (cache_index, overlay_image)
+#define COMSIG_HUMAN_OVERLAY_REMOVED "human_overlay_removed"
 
 /// from /mob/living/carbon/Xenomorph/attack_alien()
 #define COMSIG_XENO_ALIEN_ATTACK "xeno_alien_attack"

@@ -1,6 +1,6 @@
-image: docker:20
+image: docker:20.10.2
 include:
-  - template: 'Workflows/MergeRequest-Pipelines.gitlab-ci.yml'
+  - template: 'Workflows/Branch-Pipelines.gitlab-ci.yml'
 stages:
   - prepare
   - build
@@ -25,25 +25,25 @@ variables:
   # Resource settings
   BYOND_DOWNLOAD_URL: "https://secure.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip"
   SPDMM_DOWNLOAD_URL: "https://github.com/SpaceManiac/SpacemanDMM/releases/download/${SPDMM_VERSION}"
-  # Targets 
+  # Targets
   BYOND_INSTALL_DIR: "${CI_PROJECT_DIR}/ci-byond-inst"
   # CM_CHANGELOG_DEPLOY_KEY: set to a valid SSH key as GitLab deploy key to push changelog to repo when on main branch
   CM_CHANGELOG_DEPLOY_NAME: "ChangelogBot"
   CM_CHANGELOG_DEPLOY_MAIL: "changelogs@cm-ss13.com"
 
 .dind:
-  image: docker:20
+  image: docker:20.10.2
   services:
-    - docker:20-dind
+    - docker:20.10.2-dind
   before_script:
     - "[ $CI_REGISTRY ] && command -v docker && echo $CI_JOB_TOKEN | docker login --username gitlab-ci-token --password-stdin $CI_REGISTRY"
 
 # Prepare map files
-build:map-templates: 
+build:map-templates:
   stage: prepare
   image: $IMG_BUILD_PYTHON
   dependencies: []
-  script: 
+  script:
     - python3 tools/ci/template_dm_generator.py
   artifacts:
     name: 'map_template'
@@ -109,7 +109,7 @@ build:dm:
     - DreamMaker ${DM_PROJECT_NAME}.dme
   artifacts:
     name: 'binaries'
-    paths: 
+    paths:
       - "${DM_PROJECT_NAME}.dmb"
       - "${DM_PROJECT_NAME}.rsc"
     expose_as: 'DM Binaries'
@@ -137,7 +137,7 @@ test:dreamchecker:
     - ./dreamchecker --json
 
 # Build and push deployment container
-build:runner: 
+build:runner:
   stage: extra
   extends: .dind
   dependencies:
@@ -148,7 +148,7 @@ build:runner:
   script:
     - docker pull ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG} || true
     - docker build
-      --platform=linux/386 
+      --platform=linux/386
       --cache-from ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}
       --build-arg BUILDKIT_INLINE_CACHE=1
       --build-arg BYOND_BASE_IMAGE=${IMG_BUILD_CMBASE}
@@ -165,9 +165,9 @@ build:runner:
     - if: '$CI_REGISTRY_IMAGE'
 
 # Generate DM documentation
-report:dmdoc: 
+report:dmdoc:
   stage: extra
-  dependencies: 
+  dependencies:
     - 'build:map-templates'
   cache:
     key: "dmdoc-${SPDMM_VERSION}-${CI_COMMIT_REF_SLUG}"
@@ -179,12 +179,10 @@ report:dmdoc:
     - ./dmdoc-bin
   artifacts:
     name: ci_dmdoc
-    paths: 
+    paths:
       - 'dmdoc/'
     expose_as: 'DM Documentation'
     expire_in: '3 days'
-  rules: 
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
 
 report:maps:
   stage: extra
@@ -203,9 +201,9 @@ report:maps:
       - 'mapinfo.txt'
     expose_as: 'Map Info'
     expire_in: '7 days'
-  rules: 
+  rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
-      changes: 
+      changes:
         - "maps/**/*.dmm"
 
 report:map-renders:
@@ -222,20 +220,20 @@ report:map-renders:
     - find maps/map_files -iname "*.dmm" -exec dmm-tools minimap -o maps-renders {} \;
   artifacts:
     name: ci_map_renders
-    paths: 
+    paths:
       - 'maps-renders/'
     expose_as: 'Maps Renders'
     expire_in: '1 day'
-  rules: 
+  rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
-      changes: 
+      changes:
         - "maps/**/*.dmm"
 
 commit:changelog:
   stage: extra
   image: $IMG_BUILD_NODE
   interruptible: false
-  script: 
+  script:
     - eval `ssh-agent -s`
     - echo "$CM_CHANGELOG_DEPLOY_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - git config --local user.email ${CM_CHANGELOG_DEPLOY_MAIL}

@@ -19,68 +19,75 @@
 	var/obj/item/reagent_container/glass/beaker/vial/mag
 	var/injectSFX = 'sound/items/hypospray.ogg'
 	var/injectVOL = 60//was 50
+	var/starting_vial = /obj/item/reagent_container/glass/beaker/vial
 
 //Transfer amount switch//
 /obj/item/reagent_container/hypospray/clicked(var/mob/user, var/list/mods)
-	if(isnull(possible_transfer_amounts) || !(mods["alt"] && user.Adjacent(src)))//Autoinjectors aren't supposed to have toggleable transfer amounts
-		return ..()
-	amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
-	playsound(loc, 'sound/items/Screwdriver2.ogg', 20, 1, 3)
-	to_chat(user, SPAN_NOTICE("You set [src]'s dose to [amount_per_transfer_from_this] units."))
-	return TRUE
+	if(!isnull(possible_transfer_amounts) && mods["alt"] && ishuman(user) && !user.is_mob_incapacitated() && user.Adjacent(src)) //Autoinjectors aren't supposed to have toggleable transfer amounts.
+		amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
+		playsound(loc, 'sound/items/Screwdriver2.ogg', 20, 1, 3)
+		to_chat(user, SPAN_NOTICE("You set [src]'s dose to [amount_per_transfer_from_this] units."))
+		return TRUE
+	return ..()
 
 //Unloads the vial, transfers reagents back to it, but doesn't move the vial anywhere itself//
-/obj/item/reagent_container/hypospray/proc/hypounload(var/obj/item/reagent_container/glass/beaker/vial/VU)
-	flags_atom ^= OPENCONTAINER//So that reagents can't be added to the now-empty hypo.
+/obj/item/reagent_container/hypospray/proc/hypounload()
+	flags_atom ^= OPENCONTAINER //So that reagents can't be added to the now-empty hypo.
 	if(reagents.total_volume)
-		reagents.trans_to(VU, reagents.total_volume)//Might bug if a vial was varedited to hold more than 30u or a hypo edited to have a larger volume. Should still function but some reagents would vanish.
+		reagents.trans_to(mag, reagents.total_volume) //Might bug if a vial was varedited to hold more than 30u or a hypo edited to have a larger volume. Should still function but some reagents would vanish.
 	mag.update_icon()
 	mag = null
 	update_icon()
 
 //Loads the vial, transfers reagents to hypo, but does not move the vial anywhere itself.
-/obj/item/reagent_container/hypospray/proc/hypoload(var/obj/item/reagent_container/glass/beaker/vial/VL)
+/obj/item/reagent_container/hypospray/proc/hypoload(var/obj/item/reagent_container/glass/beaker/vial/V)
 	flags_atom |= OPENCONTAINER
 	playsound(loc, 'sound/weapons/handling/safety_toggle.ogg', 25, 1, 6)
-	if(VL.reagents.total_volume)
-		VL.reagents.trans_to(src, VL.reagents.total_volume)//Might bug if a vial was varedited to hold more than 30u or a hypo edited to have a larger volume. Should still function but some reagents would vanish.
-	mag = VL
+	if(V.reagents.total_volume)
+		V.reagents.trans_to(src, V.reagents.total_volume) //Might bug if a vial was varedited to hold more than 30u or a hypo edited to have a larger volume. Should still function but some reagents would vanish.
+	mag = V
 	update_icon()
 
 //Unloads vial, if any, to a hand or the floor, waits, loads in a defined new one. Early-aborts if user has no medical skills.
-/obj/item/reagent_container/hypospray/proc/hypotacreload(var/obj/item/reagent_container/glass/beaker/vial/VR, var/mob/living/carbon/human/HM)
-	if(!skillcheck(HM, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
-		to_chat(HM, SPAN_WARNING("You aren't experienced enough to load this any faster."))
+/obj/item/reagent_container/hypospray/proc/hypotacreload(var/obj/item/reagent_container/glass/beaker/vial/V, var/mob/living/carbon/human/H)
+	if(H.action_busy)
+		return
+	if(!skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+		to_chat(H, SPAN_WARNING("You aren't experienced enough to load this any faster."))
 		return
 	if(mag)
-		if(src == HM.get_active_hand())
-			HM.swap_hand()
-		HM.put_in_hands(mag)
+		if(src == H.get_active_hand() && !H.get_inactive_hand())
+			H.swap_hand()
+		H.put_in_hands(mag)
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 1, 6)
-		hypounload(mag)
-		to_chat(HM, SPAN_NOTICE("You begin swapping vials."))
-	if(do_after(HM, 1.25 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && !mag && get_dist(VR, src) <= 1)
-		HM.drop_inv_item_to_loc(VR, src)
-		hypoload(VR)
+		hypounload()
+		to_chat(H, SPAN_NOTICE("You begin swapping vials."))
+	else
+		to_chat(H, SPAN_NOTICE("You begin loading a vial into [src]."))	
+	if(do_after(H, 1.25 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && H.Adjacent(V))
+		if(isstorage(V.loc))
+			var/obj/item/storage/S = V.loc
+			S.remove_from_storage(V, src)
+		else
+			H.drop_inv_item_to_loc(V, src)
+		hypoload(V)
 
 /obj/item/reagent_container/hypospray/attackby(obj/item/B, mob/living/user)
-	if(istype(B,/obj/item/storage)) // If we're hit by a storage-level item, defer to the storage.
-		..(B, user)
-		return
-	if(magfed && !mag)//Is there a vial?
-		if(istype(B,/obj/item/reagent_container/glass/beaker/vial) && src == user.get_inactive_hand())//Is this a new vial being inserted into a hypospray held in the other hand?
+	if(magfed && !mag) //Is there a vial?
+		if(istype(B,/obj/item/reagent_container/glass/beaker/vial) && src == user.get_inactive_hand()) //Is this a new vial being inserted into a hypospray held in the other hand?
 			to_chat(user, SPAN_NOTICE("You add \the [B] to [src]."))
 			user.drop_inv_item_to_loc(B, src)
 			hypoload(B)
 		else
-			to_chat(user, SPAN_DANGER("[src] has no vial."))//Can't fill a hypo with no storage.
+			to_chat(user, SPAN_DANGER("[src] has no vial.")) //Can't fill a hypo with no storage.
 		return TRUE
+	return ..()
 
 /obj/item/reagent_container/hypospray/attack_hand(mob/user as mob)
 	if(mag && src == user.get_inactive_hand())
 		user.put_in_hands(mag)
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 1, 6)
-		hypounload(mag)
+		hypounload()
 		return
 	. = ..()
 
@@ -105,12 +112,11 @@
 		return
 	attack(user, user)
 	user.next_move += attack_speed
-	return
 
 /obj/item/reagent_container/hypospray/afterattack(obj/target, mob/user, proximity)
-	if(!magfed || !proximity)//Autoinjectors aren't supposed to be self-fillable or use vials.
+	if(!magfed || !proximity) //Autoinjectors aren't supposed to be self-fillable or use vials.
 		return
-	if(istype(target,/obj/structure/reagent_dispensers))//Stolen from beaker code, receive only - highly doubt anyone would intentionally use a hypo to fill a reagent tank.
+	if(istype(target,/obj/structure/reagent_dispensers)) //Stolen from beaker code, receive only - highly doubt anyone would intentionally use a hypo to fill a reagent tank.
 		if(!mag)
 			to_chat(user, SPAN_DANGER("[src] has no vial."))
 		else
@@ -125,34 +131,31 @@
 				else
 					to_chat(user, SPAN_NOTICE("You fill [src] with [amount_transferred] units from [B]."))
 		return
-
-//Tac reload, hypo initiating
-	if(istype(target,/obj/item/reagent_container/glass/beaker/vial))
-		hypotacreload(target,user)
+	//Tac reload, hypo initiating
+	if(istype(target, /obj/item/reagent_container/glass/beaker/vial))
+		hypotacreload(target, user)
 
 //Tac reload, click-drag from vial initiating
 /obj/item/reagent_container/hypospray/MouseDrop_T(atom/dropping, mob/living/carbon/human/user)
-	if(!magfed || !istype(dropping, /obj/item/reagent_container/glass/beaker/vial))//Autoinjectors don't use vials.
-		..()
-		return
-	if(!user.Adjacent(dropping) || !istype(user) || user.is_mob_incapacitated(TRUE))
-		return
-	if(src != user.r_hand && src != user.l_hand)
-		to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
-		return
-	hypotacreload(dropping,user)
+	if(magfed && istype(user) && istype(dropping, /obj/item/reagent_container/glass/beaker/vial) && user.Adjacent(dropping) && !user.is_mob_incapacitated(TRUE))
+		if(src == user.r_hand || src == user.l_hand)
+			hypotacreload(dropping,user)
+			return
+		else
+			to_chat(user, SPAN_WARNING("[src] must be in your hand to do that."))
+	. = ..()
 
 /obj/item/reagent_container/hypospray/examine(mob/user)
 	..()
 	if(magfed)
 		if(mag)
-			to_chat(user, SPAN_NOTICE("It is loaded with \a [mag], containing [reagents.total_volume] units."))
+			to_chat(user, SPAN_INFO("It is loaded with \a [mag], containing [reagents.total_volume] units."))
 		else
-			to_chat(user, SPAN_NOTICE("It is unloaded."))
-		to_chat(user, SPAN_NOTICE("It is set to administer [amount_per_transfer_from_this] units per dose."))
+			to_chat(user, SPAN_INFO("It is unloaded."))
+		to_chat(user, SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose."))
 
 /obj/item/reagent_container/hypospray/attack(mob/M, mob/living/user)
-	if(!mag && magfed)
+	if(magfed && !mag)
 		to_chat(user, SPAN_DANGER("[src] has no vial!"))
 		return
 	if(!reagents || !reagents.total_volume)
@@ -167,7 +170,7 @@
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 			return
 	else if(!skillcheck(user, SKILL_MEDICAL, skilllock))
-		to_chat(user, SPAN_WARNING("The [src] beeps and refuses to inject: Insufficient training or clearance!"))
+		to_chat(user, SPAN_WARNING("[src] beeps and refuses to inject: Insufficient training or clearance!"))
 		return
 	var/toxin = 0
 	for(var/datum/reagent/R in reagents.reagent_list)
@@ -209,27 +212,19 @@
 			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]'s [mag.name]."))
 		else
 			to_chat(user, SPAN_NOTICE("[trans] units injected. [reagents.total_volume] units remaining in [src]."))
-	return 1
+	return TRUE
 
 /obj/item/reagent_container/hypospray/Initialize()
 	. = ..()
-	if(magfed)//Autoinjectors don't need vials.
-		mag = new /obj/item/reagent_container/glass/beaker/vial(src)//No reagent transfer, vial's empty.
+	if(magfed)
+		mag = new starting_vial(src) //No reagent transfer, vial's empty.
+		if(mag.reagents.total_volume)
+			mag.reagents.trans_to(src, mag.reagents.total_volume)
 		update_icon()
 
 /obj/item/reagent_container/hypospray/tricordrazine
-
-/obj/item/reagent_container/hypospray/tricordrazine/Initialize()
-	. = ..()
-	mag = new /obj/item/reagent_container/glass/beaker/vial/tricordrazine(src)
-	if(mag.reagents.total_volume)
-		mag.reagents.trans_to(src, mag.reagents.total_volume)
+	starting_vial = /obj/item/reagent_container/glass/beaker/vial/tricordrazine
 
 /obj/item/reagent_container/hypospray/sedative
 	name = "Sedative Hypospray"
-
-/obj/item/reagent_container/hypospray/sedative/Initialize()
-	. = ..()
-	mag = new /obj/item/reagent_container/glass/beaker/vial/sedative(src)
-	if(mag.reagents.total_volume)
-		mag.reagents.trans_to(src, mag.reagents.total_volume)
+	starting_vial = /obj/item/reagent_container/glass/beaker/vial/sedative

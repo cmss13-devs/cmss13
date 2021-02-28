@@ -14,6 +14,7 @@
 	possible_transfer_amounts = null
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	magfed = FALSE
+	starting_vial = null
 	var/uses_left = 3
 	var/mixed_chem = FALSE
 
@@ -32,12 +33,6 @@
 		return
 	uses_left--
 	update_icon()
-
-
-/obj/item/reagent_container/hypospray/autoinjector/attackby(obj/item/W, mob/user)
-	if(isstorage(W))
-		..(W, user)
-	return
 
 /obj/item/reagent_container/hypospray/autoinjector/update_icon()
 	overlays.Cut()

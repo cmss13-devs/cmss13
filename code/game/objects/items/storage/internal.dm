@@ -109,9 +109,8 @@
 			open(user)
 		return 0
 
-	for(var/mob/M in range(1, master_item.loc))
-		if(M.s_active == src)
-			close(M)
+	for(var/mob/M in content_watchers)
+		close(M)
 	return 1
 
 /obj/item/storage/internal/attackby(obj/item/W as obj, mob/user as mob)

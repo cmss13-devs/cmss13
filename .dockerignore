@@ -6,3 +6,5 @@
 !maps/*
 !config/*
 !tools/*
+!map_config/*
+!nano/*

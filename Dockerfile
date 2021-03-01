@@ -16,8 +16,9 @@ FROM byond AS cm-runner
 ENV DREAMDAEMON_PORT=1400
 RUN mkdir -p /cm/data
 WORKDIR /cm
-COPY config config
+COPY map_config map_config
 COPY maps maps
+COPY nano nano
 ARG RUSTG_VERSION=0.4.7
 ARG RUSTG_URL=https://github.com/tgstation/rust-g/releases/download/${RUSTG_VERSION}/librust_g.so
 ADD ${RUSTG_URL} librust_g.so

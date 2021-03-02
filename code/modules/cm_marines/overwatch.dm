@@ -725,7 +725,7 @@
 	if(!current_squad)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No squad selected!")]")
 		return
-	var/mob/living/carbon/human/wanted_marine = tgui_input_list(usr, "Report a marine for insubordination", current_squad.marines_list)
+	var/mob/living/carbon/human/wanted_marine = tgui_input_list(usr, "Report a marine for insubordination", "Mark for Insubordination", current_squad.marines_list)
 	if(!wanted_marine)
 		return
 	if(!istype(wanted_marine))//gibbed/deleted, all we have is a name.
@@ -759,7 +759,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("No squad selected!")]")
 		return
 	var/datum/squad/S = current_squad
-	var/mob/living/carbon/human/transfer_marine = tgui_input_list(usr, "Choose marine to transfer", current_squad.marines_list)
+	var/mob/living/carbon/human/transfer_marine = tgui_input_list(usr, "Choose marine to transfer", "Transfer Marine", current_squad.marines_list)
 	if(!transfer_marine || S != current_squad) //don't change overwatched squad, idiot.
 		return
 
@@ -771,7 +771,7 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [transfer_marine] isn't wearing an ID.")]")
 		return
 
-	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", RoleAuthority.squads)
+	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", RoleAuthority.squads)
 	if(!new_squad || S != current_squad)
 		return
 

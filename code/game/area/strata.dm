@@ -44,7 +44,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 	is_resin_allowed = TRUE
 
 /area/strata/ag/exterior/restricted
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/strata/ag/interior
 	name = "Interior Above Ground Area"
@@ -55,7 +55,7 @@ However, this might break the tacmap. This entire system might be replaced by Sl
 
 /area/strata/ag/interior/restricted
 	is_resin_allowed = FALSE
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/strata/ag/interior/restricted/devroom
 	name = "Super Secret Credits Room"

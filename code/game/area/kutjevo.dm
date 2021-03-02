@@ -39,12 +39,12 @@
 	ceiling = CEILING_MAX
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/kutjevo/interior/oob/dev_room
 	name = "Kutjevo - Credits Room"
 	is_resin_allowed = FALSE
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 	icon_state = "kutjevo"
 
 //exterior map areas

@@ -154,7 +154,7 @@
 		return
 
 	var/area/xeno_area = get_area(X)
-	if(xeno_area.flags_atom & AREA_CONTAINMENT)
+	if(xeno_area.flags_area & AREA_CONTAINMENT)
 		to_chat(X, SPAN_XENOWARNING("You can't activate this here!"))
 		return
 

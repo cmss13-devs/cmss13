@@ -309,7 +309,7 @@
 /area/lv624/lazarus/secure_storage
 	name = "\improper Secure Storage"
 	icon_state = "storage"
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/lv624/lazarus/internal_affairs
 	name = "\improper Internal Affairs"
@@ -337,7 +337,7 @@
 /area/lv624/lazarus/relay
 	name = "\improper Secret Relay Room"
 	icon_state = "tcomsatcham"
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/lv624/landing/console
 	name = "\improper LZ1 'Nexus'"

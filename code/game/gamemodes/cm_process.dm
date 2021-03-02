@@ -208,7 +208,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 	for(var/mob/M in GLOB.living_xeno_list)
 		var/area/A = get_area(M)
-		if(A && A.flags_atom & AREA_AVOID_BIOSCAN || (A.flags_atom & AREA_AVOID_BIOSCAN && A.flags_atom & AREA_NOTUNNEL))
+		if(A?.flags_area & AREA_AVOID_BIOSCAN)
 			numXenosShip++
 			continue
 		var/atom/where = M
@@ -332,11 +332,11 @@ Only checks living mobs with a client attached.
 			else
 				var/area/A = get_area(M)
 				if(isXeno(M))
-					if (A.flags_atom & AREA_AVOID_BIOSCAN)
+					if (A.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
 				else if(iszombie(M))
-					if (A.flags_atom & AREA_AVOID_BIOSCAN)
+					if (A.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
 

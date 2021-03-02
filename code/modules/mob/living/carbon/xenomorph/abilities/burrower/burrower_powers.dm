@@ -93,7 +93,7 @@
 		return
 
 	var/area/A = get_area(T)
-	if(A.flags_atom & AREA_NOTUNNEL)
+	if(A.flags_area & AREA_NOTUNNEL)
 		to_chat(src, SPAN_XENOWARNING("There's no way to tunnel over there."))
 		return
 

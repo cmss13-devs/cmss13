@@ -823,12 +823,17 @@
 	icon_state = "roburger"
 	filling_color = "#CCCCCC"
 
-/obj/item/reagent_container/food/snacks/roburger/Initialize()
+/obj/item/reagent_container/food/snacks/roburger/Initialize(mapload, ...)
 	. = ..()
 	reagents.add_reagent("nutriment", 2)
+	bitesize = 2
+
+/// Vanilla roburger - the nanites turn people into cyborgs
+/obj/item/reagent_container/food/snacks/roburger/unsafe
+/obj/item/reagent_container/food/snacks/roburger/unsafe/Initialize(mapload, ...)
+	. = ..()
 	if(prob(5))
 		reagents.add_reagent("nanites", 2)
-	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/roburgerbig
 	name = "roburger"

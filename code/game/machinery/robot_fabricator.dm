@@ -101,8 +101,8 @@ Please wait until completion...</TT><BR>
 					build_time = 350
 					build_cost = 50000
 
-				if (6)
-					build_type = /obj/item/robot_parts/head
+				if (6) // Not a real robot head due to numerous issues with cyborg code currently. Still usable by admins
+					build_type = /obj/item/fake_robot_head
 					build_time = 350
 					build_cost = 50000
 
@@ -112,7 +112,7 @@ Please wait until completion...</TT><BR>
 					build_cost = 75000
 
 			var/building = build_type
-			if (building in typesof(/obj/item/robot_parts/))
+			if (building in subtypesof(/obj/item/robot_parts) + /obj/item/fake_robot_head)
 				if (src.metal_amount >= build_cost)
 					src.operating = 1
 					src.update_use_power(2)

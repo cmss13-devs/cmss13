@@ -186,9 +186,16 @@
 /datum/recipe/roburger
 	items = list(
 		/obj/item/reagent_container/food/snacks/flour,
-		/obj/item/robot_parts/head
+		/obj/item/fake_robot_head
 	)
 	result = /obj/item/reagent_container/food/snacks/roburger
+
+/datum/recipe/roburger_unsafe
+	items = list(
+		/obj/item/reagent_container/food/snacks/flour,
+		/obj/item/robot_parts/head
+	)
+	result = /obj/item/reagent_container/food/snacks/roburger/unsafe
 
 /datum/recipe/xenoburger
 	items = list(

@@ -1275,38 +1275,6 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
-"cD" = (
-/obj/structure/surface/table/reinforced/prison{
-	color = "#6b675e"
-	},
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/handcuffs,
-/obj/item/legcuffs{
-	pixel_y = 5
-	},
-/obj/item/legcuffs{
-	pixel_y = 5
-	},
-/obj/item/legcuffs{
-	pixel_y = 5
-	},
-/obj/item/legcuffs{
-	pixel_y = 5
-	},
-/obj/item/legcuffs{
-	pixel_y = 5
-	},
-/obj/item/legcuffs{
-	pixel_y = 5
-	},
-/turf/open/shuttle{
-	icon_state = "floor6"
-	},
-/area/yautja)
 "cE" = (
 /obj/structure/machinery/prop/almayer/CICmap{
 	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds.";
@@ -2573,6 +2541,38 @@
 	icon_state = "squareswood"
 	},
 /area/yautja)
+"Gr" = (
+/obj/structure/surface/table/reinforced/prison{
+	color = "#6b675e"
+	},
+/obj/item/legcuffs{
+	pixel_y = 5
+	},
+/obj/item/legcuffs{
+	pixel_y = 5
+	},
+/obj/item/legcuffs{
+	pixel_y = 5
+	},
+/obj/item/legcuffs{
+	pixel_y = 5
+	},
+/obj/item/legcuffs{
+	pixel_y = 5
+	},
+/obj/item/legcuffs{
+	pixel_y = 5
+	},
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/obj/item/handcuffs,
+/turf/open/shuttle{
+	icon_state = "floor6"
+	},
+/area/yautja)
 "GM" = (
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert_dug"
@@ -3025,13 +3025,12 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/structure/machinery/recharger,
-/obj/item/weapon/stunprod/improved,
-/obj/item/weapon/stunprod/improved,
-/obj/item/weapon/stunprod/improved,
-/obj/item/weapon/stunprod/improved,
-/obj/item/weapon/stunprod/improved,
-/obj/item/weapon/stunprod/improved,
+/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/melee/baton/cattleprod,
+/obj/item/weapon/melee/baton/cattleprod,
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -5143,7 +5142,7 @@ is
 cu
 bj
 cw
-cD
+Gr
 bj
 bL
 cS

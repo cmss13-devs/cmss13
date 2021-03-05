@@ -43,8 +43,7 @@
 #define	ITEM_ABSTRACT			(1<<6)	// The item is abstract (grab, powerloader_clamp, etc)
 #define ITEM_PREDATOR			(1<<7) // Specific predator item interactions.
 #define MOB_LOCK_ON_EQUIP		(1<<8)	// Lock this item to the mob that equips it up until permadeath
-#define BLOCK_KNOCKDOWN			(1<<9)	// Wearing this will stop you from being pushed over
-#define NO_CRYO_STORE			(1<<10) // This item deletes itself when put in cryo storage
+#define NO_CRYO_STORE			(1<<9) // This item deletes itself when put in cryo storage
 
 //==========================================================================================
 
@@ -90,6 +89,7 @@
 //To successfully stop taking all pressure damage you must have both a suit and head item with this flag.
 #define BLOCKSHARPOBJ 	(1<<8)  //From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
 #define NOPRESSUREDMAGE (1<<9) //This flag is used on the flags variable for SUIT and HEAD items which stop pressure damage.
+#define BLOCK_KNOCKDOWN (1<<10) //Suits only. Wearing this will stop you from being pushed over.
 //SUITS AND HELMETS====================================================================================
 
 

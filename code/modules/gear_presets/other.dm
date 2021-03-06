@@ -614,6 +614,7 @@
 	. = ..()
 	//Can't hug the dummy! Otherwise it's basically human...
 	H.huggable = FALSE
+	H.surgical_difficulty = SKILL_SURGERY_NOVICE //Nurses can practise surgery on it.
 
 /datum/equipment_preset/other/professor_dummy/load_gear(mob/living/carbon/human/H)
 	var/obj/item/device/professor_dummy_tablet/tablet = new /obj/item/device/professor_dummy_tablet(H)

@@ -58,7 +58,9 @@
 
 	var/list/options = list("Increase","Set to maximum","Set to minimum")
 
-	var/clearance_allowance = 6 - defcon_controller.current_defcon_level
+	var/datum/techtree/T = GET_TREE(TREE_MARINE)
+	// Tier 1 allows for CL2, Tier 2 allows for CL4 and Tier 3 allows for CL5
+	var/clearance_allowance = max(T.tier?.tier*2, 5)
 
 	var/can_give_x = FALSE
 	if(clearance_bypass)
@@ -121,7 +123,7 @@
 	var/list/data = list(
 		"rsc_credits" = chemical_data.rsc_credits,
 		"clearance_level" = chemical_data.clearance_level,
-		"broker_cost" = max(3*(chemical_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1),
+		"broker_cost" = max(3*(chemical_data.clearance_level + 1), 1),
 		"base_purchase_cost" = base_purchase_cost,
 		"research_documents" = chemical_data.research_documents,
 		"published_documents" = chemical_data.research_publications,
@@ -188,7 +190,7 @@
 		if(alert(usr,"The CL can swipe their ID card on the console to increase clearance for free, given enough DEFCON. Are you sure you want to spend research credits to increase the clearance immediately?","Warning","Yes","No") != "Yes")
 			return
 		if(chemical_data.clearance_level < 5)
-			var/cost = max(3*(chemical_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1)
+			var/cost = max(3*(chemical_data.clearance_level + 1), 1)
 			if(cost <= chemical_data.rsc_credits)
 				chemical_data.update_credits(cost * -1)
 				chemical_data.clearance_level++

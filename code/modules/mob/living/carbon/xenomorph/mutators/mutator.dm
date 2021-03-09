@@ -48,12 +48,11 @@
 	//
 	//	You're done!
 
-	// mutator_actions_to_remove should be a list of STRINGS of the NAMES of actions that need to be removed
-	// when a xeno takes the mutator.
-	// mutator_actions_to_add should be a list of PATHES of actions to be ADDED when the Xeno takes the mutator.
 	// Both should be set to null when their use is not necessary.
-	var/list/mutator_actions_to_remove = list()  //Actions to remove when the mutator is added (name)
-	var/list/mutator_actions_to_add = list()	 //Actions to add when the mutator is added (paths)
+	/// A list of PATHS of actions that need to be removed when a xeno takes the mutator.
+	var/list/mutator_actions_to_remove  //Actions to remove when the mutator is added
+	/// A list of PATHS of actions to be ADDED when the Xeno takes the mutator.
+	var/list/mutator_actions_to_add	 //Actions to add when the mutator is added
 
 	// Type of the behavior datum to add
 	var/behavior_delegate_type = null // Specify this on subtypes
@@ -82,13 +81,12 @@
 // Must be called at the end of any mutator that changes available actions
 // (read: Strains) apply_mutator proc for the mutator to work correctly.
 /datum/xeno_mutator/proc/mutator_update_actions(mob/living/carbon/Xenomorph/X)
-	if (mutator_actions_to_remove)
-		for (var/action_name in mutator_actions_to_remove)
-			X.remove_action(action_name)
-	if (mutator_actions_to_add)
-		for (var/action_datum in mutator_actions_to_add)
-			var/datum/action/xeno_action/A = new action_datum()
-			A.give_action(X)
+	if(mutator_actions_to_remove)
+		for(var/action_path in mutator_actions_to_remove)
+			remove_action(X, action_path)
+	if(mutator_actions_to_add)
+		for(var/action_path in mutator_actions_to_add)
+			give_action(X, action_path)
 
 // Substitutes the existing behavior delegate for the strain-defined one.
 /datum/xeno_mutator/proc/apply_behavior_holder(mob/living/carbon/Xenomorph/X)
@@ -98,5 +96,7 @@
 		message_admins("Null mob handed to apply_behavior_holder. Tell the devs.")
 
 	if (behavior_delegate_type)
+		if(X.behavior_delegate)
+			qdel(X.behavior_delegate)
 		X.behavior_delegate = new behavior_delegate_type()
 		X.behavior_delegate.bound_xeno = X

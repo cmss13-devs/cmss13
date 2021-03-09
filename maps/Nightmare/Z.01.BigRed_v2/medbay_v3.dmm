@@ -101,8 +101,8 @@
 /area/bigredv2/outside/medical)
 "aq" = (
 /obj/structure/closet/secure_closet/CMO,
-/obj/item/device/healthanalyzer/objective,
-/obj/item/disk/objective,
+/obj/item/device/healthanalyzer,
+
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
@@ -120,7 +120,7 @@
 "as" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/vents/pump,
-/obj/item/device/autopsy_scanner/objective,
+/obj/item/device/autopsy_scanner,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -259,7 +259,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 1
 	},
-/obj/item/document_objective/technical_manual,
+
 /turf/open/floor{
 	icon_state = "damaged2";
 	dir = 8
@@ -369,7 +369,7 @@
 	icon_state = "tube1";
 	dir = 4
 	},
-/obj/item/document_objective/report,
+
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
@@ -1430,7 +1430,7 @@
 /area/bigredv2/outside/medical)
 "dD" = (
 /obj/structure/surface/table,
-/obj/item/device/autopsy_scanner/objective,
+/obj/item/device/autopsy_scanner,
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
 	icon_state = "whitebluefull";
@@ -1609,7 +1609,7 @@
 /area/bigredv2/outside/medical)
 "ec" = (
 /obj/structure/closet/secure_closet/medical1,
-/obj/item/disk/objective,
+
 /turf/open/floor{
 	icon_state = "platingdmg1"
 	},
@@ -1795,7 +1795,7 @@
 /area/bigredv2/outside/medical)
 "ew" = (
 /obj/structure/surface/table,
-/obj/item/document_objective/paper,
+
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
 	icon_state = "whitebluefull";
@@ -1858,7 +1858,7 @@
 /area/bigredv2/outside/medical)
 "eD" = (
 /obj/structure/surface/table/reinforced,
-/obj/structure/machinery/computer/objective,
+
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -2109,7 +2109,7 @@
 "fh" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/trash/buritto,
-/obj/item/document_objective/folder,
+
 /turf/open/floor{
 	tag = "icon-whitegreenfull";
 	icon_state = "whitegreenfull";
@@ -2117,7 +2117,7 @@
 	},
 /area/bigredv2/outside/medical)
 "fi" = (
-/obj/item/disk/objective,
+
 /turf/open/floor{
 	tag = "icon-whitebluefull (NORTHEAST)";
 	icon_state = "whitebluefull";

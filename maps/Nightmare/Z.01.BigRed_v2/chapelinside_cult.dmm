@@ -438,7 +438,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/item/document_objective/paper,
+
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";
@@ -486,7 +486,7 @@
 /area/bigredv2/outside/chapel)
 "bd" = (
 /obj/structure/surface/table/woodentable,
-/obj/item/disk/objective,
+
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";

@@ -51,6 +51,14 @@
 	worn_state = "marine_engineer"
 	specialty = "USCM engineer"
 
+/obj/item/clothing/under/marine/officer/rto
+	name = "\improper marine rt operator uniform"
+	desc = "Tighter than a vice. Slicker than beard oil. Covered from head to toe in pouches, pockets, bags, straps, and belts. Clearly, you are not only the most intelligent of radio operators, but the most fashionable as well. This suit took an entire R&D team five days to develop. It is more expensive than the entire Almayer... probably."
+	icon_state = "marine_rto"
+	item_state = "marine_rto"
+	rollable_sleeves = FALSE
+	specialty = "marine rt operator"
+
 /obj/item/clothing/under/marine/sniper
 	name = "\improper USCM sniper uniform"
 	rollable_sleeves = FALSE
@@ -111,15 +119,6 @@
 	suit_restricted = null //so most officers can wear whatever suit they want
 	rollable_sleeves = FALSE
 	specialty = "marine officer"
-
-/obj/item/clothing/under/marine/officer/intel
-	name = "\improper marine intelligence officer sweatsuit"
-	desc = "Tighter than a vice. Slicker than beard oil. Covered from head to toe in pouches, pockets, bags, straps, and belts. Clearly, you are not only the most intelligent of intelligence officers, but the most fashionable as well. This suit took an entire R&D team five days to develop. It is more expensive than the entire Almayer... probably."
-	icon_state = "io"
-	item_state = "io"
-	worn_state = "io"
-	rollable_sleeves = FALSE
-	specialty = "marine intelligence officer"
 
 /obj/item/clothing/under/marine/officer/warrant
 	name = "\improper chief MP uniform"

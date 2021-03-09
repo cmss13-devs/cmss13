@@ -129,16 +129,6 @@
 	print_backstory(H)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives:</b> [objectives]")), 1 SECONDS)
-
-/datum/emergency_call/pmc/chem_retrieval/spawn_items()
-	var/turf/drop_spawn
-
-	//Giving them plenty of document pouches for those papers
-	for(var/i=0; i<6; i++)
-		drop_spawn = get_spawn_point(TRUE)
-		new /obj/item/storage/pouch/document(drop_spawn)
-		new /obj/item/storage/pouch/document(drop_spawn)
-
 /obj/effect/landmark/ert_spawns/distress_pmc
 	name = "Distress_PMC"
 

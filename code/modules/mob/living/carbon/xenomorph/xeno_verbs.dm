@@ -35,6 +35,39 @@
 
 	hive.faction_ui.tgui_interact(src)
 
+/mob/living/carbon/Xenomorph/verb/clear_built_structures()
+	set name = "Clear Built Structures"
+	set desc = "Clears your current built structures that are tied to you."
+	set category = "Alien"
+
+	if(!length(built_structures))
+		to_chat(usr, SPAN_WARNING("You don't have any built structures!"))
+		return
+
+	var/list/options = list()
+	for(var/i in built_structures)
+		var/atom/A = i
+		options[initial(A.name)] = i
+
+	var/input = tgui_input_list(usr, "Choose a structure type to clear", "Clear Built Structures", options)
+
+	if(!input)
+		return
+
+	var/type = options[input]
+
+	var/cleared_amount = 0
+	for(var/i in built_structures[type])
+		cleared_amount += 1
+		if(isturf(i))
+			var/turf/T = i
+			T.ScrapeAway()
+			continue
+		qdel(i)
+
+	to_chat(usr, SPAN_INFO("Destroyed [cleared_amount] of [input]."))
+
+
 /mob/living/carbon/Xenomorph/verb/toggle_xeno_mobhud()
 	set name = "Toggle Xeno Status HUD"
 	set desc = "Toggles the health and plasma HUD appearing above Xenomorphs."
@@ -97,3 +130,11 @@
 
 	if(observed_xeno)
 		overwatch(observed_xeno, TRUE)
+
+/mob/living/carbon/Xenomorph/verb/enter_tree()
+	set name = "Enter Techtree"
+	set desc = "Enter the Xenomorph techtree"
+	set category = "Alien.Techtree"
+
+	var/datum/techtree/T = GET_TREE(TREE_XENO)
+	T.enter_mob(src)

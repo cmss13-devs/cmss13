@@ -179,7 +179,7 @@ Also, the icon used for the beam will have to be vertical and 32x32.
 The math involved assumes that the icon is vertical to begin with so unless you want to adjust the math,
 its easier to just keep the beam vertical.
 */
-/atom/proc/Beam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi', time = 50, maxdistance = 10)
+/atom/proc/Beam(atom/BeamTarget,icon_state="b_beam",icon='icons/effects/beam.dmi', time = 50, maxdistance = 10, always_turn = TRUE)
 	set waitfor = FALSE
 
 	if (isnull(beams))
@@ -201,7 +201,8 @@ its easier to just keep the beam vertical.
 	//of range or to another z-level, then the beam will stop.  Otherwise it will
 	//continue to draw.
 
-		setDir(get_dir(src,BeamTarget))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
+		if(always_turn)
+			setDir(get_dir(src,BeamTarget))	//Causes the source of the beam to rotate to continuosly face the BeamTarget.
 
 		for(var/obj/effect/overlay/beam/O in orange(10,src))	//This section erases the previously drawn beam because I found it was easier to
 			if(O.BeamSource == src)				//just draw another instance of the beam instead of trying to manipulate all the
@@ -209,8 +210,8 @@ its easier to just keep the beam vertical.
 		var/Angle = round(Get_Angle(src,BeamTarget))
 		var/icon/I = new(icon,icon_state)
 		I.Turn(Angle)
-		var/DX = (32*BeamTarget.x + BeamTarget.pixel_x) - (32*x + pixel_x)
-		var/DY = (32*BeamTarget.y + BeamTarget.pixel_y) - (32*y + pixel_y)
+		var/DX = (32*BeamTarget.x - BeamTarget.pixel_x) - (32*x + pixel_x)
+		var/DY = (32*BeamTarget.y - BeamTarget.pixel_y) - (32*y + pixel_y)
 		var/N = 0
 		var/length = round(sqrt((DX)**2 + (DY)**2))
 		for(N, N < length, N += 32)
@@ -245,14 +246,15 @@ its easier to just keep the beam vertical.
 				for(var/a = 0, a >= Pixel_y, a -= 32)
 					X.y--
 					Pixel_y += 32
-			X.pixel_x = Pixel_x
-			X.pixel_y = Pixel_y
+			X.pixel_x = Pixel_x + pixel_x
+			X.pixel_y = Pixel_y + pixel_y
 		stoplag()
 
 	for(var/obj/effect/overlay/beam/O in orange(10,src))
 		if(O.BeamSource == src)
 			qdel(O)
 
+	return TRUE
 
 //All atoms
 /atom/verb/atom_examine()
@@ -280,6 +282,7 @@ its easier to just keep the beam vertical.
 	return
 
 /atom/proc/hitby(atom/movable/AM)
+	SEND_SIGNAL(src, COMSIG_ATOM_HITBY, AM)
 	return
 
 /atom/proc/add_hiddenprint(mob/living/M)

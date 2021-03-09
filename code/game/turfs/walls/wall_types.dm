@@ -579,6 +579,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
+	icon = null
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO
@@ -587,9 +588,15 @@
 	blend_objects = list(/obj/structure/mineral_door/resin)
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
+	flags_turf = TURF_ORGANIC
+
+/turf/closed/wall/resin/pillar
+	name = "resin pillar segment"
+	hull = TRUE
 
 /turf/closed/wall/resin/Initialize(mapload, ...)
-	icon = get_icon_from_source(CONFIG_GET(string/alien_structures))
+	if(!icon)
+		icon = get_icon_from_source(CONFIG_GET(string/alien_structures))
 	. = ..()
 
 /turf/closed/wall/resin/make_girder()
@@ -634,6 +641,58 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
 
+/turf/closed/wall/resin/reflective
+	name = "resin reflective wall"
+	desc = "Weird hardened slime solidified into a fine, smooth wall."
+	icon = 'icons/turf/walls/prison/bone_resin.dmi'
+	icon_state = "resin"
+	walltype = WALL_BONE_RESIN
+	damage_cap = HEALTH_WALL_XENO_MEMBRANE
+
+	// 75% chance of reflecting projectiles
+	var/chance_to_reflect = 75
+	var/reflect_range = 10
+
+	var/brute_multiplier = 0.3
+	var/explosive_multiplier = 0.3
+
+/turf/closed/wall/resin/reflective/bullet_act(obj/item/projectile/P)
+	if(src in P.permutated)
+		return
+
+	var/original_damage = P.damage
+	if(P.ammo.damage_type == BRUTE)
+		damage *= brute_multiplier
+
+	if(prob(chance_to_reflect))
+		if(P.runtime_iff_group)
+			// Bullet gets absorbed if it has IFF.
+			return
+
+		var/obj/item/projectile/new_proj = new(src)
+		new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
+		new_proj.damage = original_damage
+
+		// Move back to who fired you.
+		RegisterSignal(new_proj, COMSIG_BULLET_PRE_HANDLE_TURF, .proc/bullet_ignore_turf)
+		new_proj.permutated |= src
+		new_proj.accuracy = HIT_ACCURACY_TIER_MAX // Basically guaranteed chance of hitting who fired it
+
+		new_proj.fire_at(P.firer, P.firer, src, reflect_range,
+			speed = P.ammo.shell_speed, is_shrapnel = TRUE)
+
+		return TRUE
+	else
+		return ..()
+
+/turf/closed/wall/resin/reflective/proc/bullet_ignore_turf(obj/item/projectile/P, var/turf/T)
+	SIGNAL_HANDLER
+	if(T == src)
+		return COMPONENT_BULLET_PASS_THROUGH
+
+/turf/closed/wall/resin/reflective/ex_act(severity, explosion_direction, source, mob/source_mob)
+	return ..(severity * explosive_multiplier, explosion_direction, source, source_mob)
+
 //this one is only for map use
 /turf/closed/wall/resin/membrane/ondirt
 	baseturfs = /turf/open/gm/dirt
@@ -667,6 +726,9 @@
 
 
 /turf/closed/wall/resin/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, M) & COMPONENT_CANCEL_XENO_ATTACK)
+		return
+
 	if(isXenoLarva(M)) //Larvae can't do shit
 		return 0
 	else if(M.a_intent == INTENT_HELP)
@@ -694,6 +756,9 @@
 	to_chat(user, SPAN_WARNING("You scrape ineffectively at \the [src]."))
 
 /turf/closed/wall/resin/attackby(obj/item/W, mob/living/user)
+	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_ATTACKBY, W, user) & COMPONENT_CANCEL_ATTACKBY)
+		return
+
 	if(!(W.flags_item & NOBLUDGEON))
 		user.animation_attack_on(src)
 		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)

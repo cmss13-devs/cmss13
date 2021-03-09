@@ -35,7 +35,7 @@
 	response_disarm = "bops"
 	response_harm   = "kicks"
 
-/mob/living/simple_animal/corgi/Ian/Life()
+/mob/living/simple_animal/corgi/Ian/Life(delta_time)
 	..()
 
 	//Feeding, chasing food, FOOOOODDDD
@@ -179,7 +179,7 @@
 		return
 	..()
 
-/mob/living/simple_animal/corgi/Lisa/Life()
+/mob/living/simple_animal/corgi/Lisa/Life(delta_time)
 	..()
 
 	if(!stat && !resting && !buckled)

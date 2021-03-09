@@ -386,8 +386,8 @@ This function restores all limbs.
 	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE, var/mob/firer = null, \
 	var/force = FALSE
 )
-	if(protection_aura)
-		damage = round(damage * ((15 - protection_aura) / 15))
+	if(protection_aura && damage > 0)
+		damage = round(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura) / ORDER_HOLD_CALC_LEVEL))
 
 	//Handle other types of damage
 	if(damage < 0 || (damagetype != BRUTE) && (damagetype != BURN))
@@ -398,7 +398,9 @@ This function restores all limbs.
 		..(damage, damagetype, def_zone)
 		return TRUE
 
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	var/list/damagedata = list("damage" = damage)
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	damage = damagedata["damage"]
 
 	var/obj/limb/organ = null
 	if(isorgan(def_zone))

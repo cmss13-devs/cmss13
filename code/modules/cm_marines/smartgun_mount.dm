@@ -1317,7 +1317,7 @@
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/auto_fire_start)
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/auto_fire_stop)
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/auto_fire_new_target)
-	RegisterSignal(user, COMSIG_MOB_MOVE, .proc/disable_interaction)
+	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/disable_interaction)
 	RegisterSignal(user, COMSIG_MOB_POST_UPDATE_CANMOVE, .proc/disable_canmove_interaction)
 	operator = user
 
@@ -1328,7 +1328,7 @@
 /obj/structure/machinery/m56d_hmg/auto/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
 	UnregisterSignal(user, list(
-		COMSIG_MOB_MOVE,
+		COMSIG_MOVABLE_PRE_MOVE,
 		COMSIG_MOB_POST_UPDATE_CANMOVE
 	))
 	user.visible_message(SPAN_NOTICE("[user] releases [src]."),SPAN_NOTICE("You handle [src], letting the gun rest."))

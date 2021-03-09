@@ -276,9 +276,12 @@
 
 		if(!status)
 			status = "OK"
+
 		if(org.status & LIMB_BROKEN)
 			status += " <b>(BROKEN)</b>"
-		if(org.status & LIMB_SPLINTED)
+		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+			status += " <b>(NANOSPLINTED)</b>"
+		else if(org.status & LIMB_SPLINTED)
 			status += " <b>(SPLINTED)</b>"
 
 		to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")

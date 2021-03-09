@@ -251,7 +251,7 @@
 	tiles_with = list(
 		/obj/structure/window/framed/prison,
 		/obj/structure/machinery/door/airlock)
-	
+
 /obj/structure/machinery/door/airlock/prison_hatch/autoname
 	autoname = TRUE
 
@@ -603,7 +603,31 @@
 	opacity = 0
 	glass = 1
 
+//RTO doors, yes this is stupid
 
+/obj/structure/machinery/door/airlock/almayer/marine/alpha/rto
+	name = "\improper Alpha Squad Radio Telephone Operator Preparations"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_RTO_PREP)
+	dir = SOUTH
+
+/obj/structure/machinery/door/airlock/almayer/marine/bravo/rto
+	name = "\improper Bravo Squad Radio Telephone Operator Preparations"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_RTO_PREP)
+	dir = SOUTH
+
+/obj/structure/machinery/door/airlock/almayer/marine/charlie/rto
+	name = "\improper Charlie Squad Radio Telephone Operator Preparations"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_RTO_PREP)
+	dir = SOUTH
+
+/obj/structure/machinery/door/airlock/almayer/marine/delta/rto
+	name = "\improper Delta Squad Radio Telephone Operator Preparations"
+	req_access = list()
+	req_one_access = list(ACCESS_MARINE_RTO_PREP)
+	dir = SOUTH
 
 //DROPSHIP SIDE AIRLOCKS
 

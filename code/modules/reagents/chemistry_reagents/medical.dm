@@ -32,7 +32,7 @@
 	description = "Also known as Tylenol, this is a moderate long lasting painkiller that has been commonly available since 1950. Paracetamol is capable of both analgesic and antipyretic activity but no anti-inflammatory action. Overdosing on paracetamol is toxic, may induce hallucinations, and cause acute liver failure."
 	reagent_state = LIQUID
 	color = "#C855DC"
-	custom_metabolism = 0.025 // Lasts 10 minutes for 15 units
+	custom_metabolism = AMOUNT_PER_TIME(15, 10 MINUTES) // Lasts 10 minutes for 15 units
 	overdose = HIGH_REAGENTS_OVERDOSE
 	overdose_critical = HIGH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -44,7 +44,7 @@
 	description = "Tramadol is a centrally acting analgesic and is considered to be a relatively safe. The analgesic potency is claimed to be about one tenth that of morphine. It is used to treat both acute and chronic pain of moderate to (moderately) severe intensity. Tramadol is generally considered as a medicinal drug with a low potential for dependence relative to morphine. Overdosing on tramadol is highly toxic."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	custom_metabolism = 0.1 // Lasts 10 minutes for 15 units
+	custom_metabolism = AMOUNT_PER_TIME(15, 10 MINUTES) // Lasts 10 minutes for 15 units
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -56,7 +56,7 @@
 	description = "Oxycodone is an opioid agonist with addiction potential similar to that of morphine. It is approved for the treatment of patients with moderate to severe pain who are expected to need continuous opioids for an extended period of time. Overdosing on oxycodone can cause hallucinations, brain damage and be highly toxic."
 	reagent_state = LIQUID
 	color = "#C805DC"
-	custom_metabolism = 0.2 // Lasts 5 minutes for 15 units
+	custom_metabolism = AMOUNT_PER_TIME(15, 5 MINUTES) // Lasts 5 minutes for 15 units
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -184,7 +184,7 @@
 	description = "A controlled nervestimulant that treats hallucinations, drowsiness, improves reaction time and acts as a weak painkiller. Is mildly toxic and overdosing will cause extreme toxin damage."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = 0.1
+	custom_metabolism = AMOUNT_PER_TIME(1, 20 SECONDS)
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -196,7 +196,7 @@
 	description = "A chemical cocktail tailored to enhance or dampen specific neural processes."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = 0.4
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	overdose = 2
 	overdose_critical = 3
 	chemclass = CHEM_CLASS_RARE
@@ -209,7 +209,7 @@
 	description = "A stabilized variant of dylovene. Its toxin-cleansing properties are weakened and there are harmful side effects, but it does not react with other compounds to create toxin."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = 0.05
+	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -221,7 +221,7 @@
 	description = "An emergency radiation treatment, however it has extreme side effects."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = 1
+	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
 	overdose = MED_REAGENTS_OVERDOSE
 	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_ANTITOXIC = 1, PROPERTY_BIOCIDIC = 2)
@@ -232,7 +232,7 @@
 	description = "Alkysine is a drug used to lessen and heal the damage to neurological tissue after a catastrophic injury. Small amounts can repair extensive brain trauma. Functions as a very weak painkiller. Overdosing on alkysine is extremely toxic."
 	reagent_state = LIQUID
 	color = "#E89599"
-	custom_metabolism = 0.05
+	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -257,7 +257,7 @@
 	color = "#C845DC"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	custom_metabolism = 0.05
+	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_ORGANSTABILIZE = 4)
 
@@ -280,7 +280,7 @@
 	color = "#CC00FF"
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	custom_metabolism = 0.05
+	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS)
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_UNKNOWN = 6) //handled by blood code
 
@@ -292,7 +292,7 @@
 	color = "FFE703" // Yellow-ish
 	overdose = LOWM_REAGENTS_OVERDOSE
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
-	custom_metabolism = 0.4
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	chemclass = CHEM_CLASS_COMMON
 	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_ELECTROGENETIC = 4)
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE | REAGENT_NOT_INGESTIBLE
@@ -303,7 +303,7 @@
 	description = "A potent long lasting muscle stimulant. Increases heart rate dramatically, which may damage cardiac tissue. Highly addictive. Controlled substance."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = 0.2
+	custom_metabolism = AMOUNT_PER_TIME(1, 10 SECONDS)
 	overdose = LOW_REAGENTS_OVERDOSE
 	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -328,7 +328,7 @@
 	description = "A highly-potent, long-lasting combination CNS and muscle stimulant."
 	reagent_state = LIQUID
 	color = "#00ffff" // rgb: 200, 165, 220
-	custom_metabolism = 0.05 // 4x longer
+	custom_metabolism = AMOUNT_PER_TIME(1, 40 SECONDS) // 4x longer
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_RARE
@@ -378,7 +378,7 @@
 	description = "General use theta-lactam antibiotic. Prevents and cures mundane infections."
 	reagent_state = LIQUID
 	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	properties = list(PROPERTY_UNKNOWN = 1)
@@ -401,7 +401,7 @@
 	description = "A commonly prescribed psychostimulant that increases activity of the central nervous system. Often used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy. This drug improves performance primarily in the executive function in the prefrontal cortex (reasoning, inhibiting behaviors, organizing, problem solving, planning ect.)"
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PSYCHOSTIMULATING = 4)
@@ -412,7 +412,7 @@
 	description = "Citalopram is a drug used to treat depression, obsessive-compulsive disorder and panic disorder. It is considered safe for consumption and has been commonly available since 1998."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PSYCHOSTIMULATING = 2)
@@ -423,7 +423,7 @@
 	description = "Very powerful antidepressant used to treat: major depressive disorder (MDD), obsessive-compulsive disorder (OCD), social anxiety disorder (SAD), panic disorder, posttraumatic stress disorder (PTSD), generalized anxiety disorder (GAD) and prenmenstrual dysphoric disorder (PMDD). Prolonged use may have side effects."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	chemclass = CHEM_CLASS_UNCOMMON
 	properties = list(PROPERTY_PSYCHOSTIMULATING = 6, PROPERTY_HALLUCINOGENIC = 6)
@@ -434,6 +434,6 @@
 	description = "Destroy the zombie virus in living humans and prevents regeneration for those who have already turned."
 	reagent_state = LIQUID
 	color = "#C8A5DC"
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	data = 0
 	properties = list(PROPERTY_CURING = 2)

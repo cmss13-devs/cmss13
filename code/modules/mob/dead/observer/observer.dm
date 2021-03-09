@@ -174,7 +174,7 @@ Transfer_mind is there to check if mob is being deleted/not going to have a body
 Works together with spawning an observer, noted above.
 */
 
-/mob/dead/observer/Life()
+/mob/dead/observer/Life(delta_time)
 	..()
 	if(!loc) return
 	if(!client) return 0
@@ -640,11 +640,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	var/choice = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", GLOB.freed_mob_list)
-	if(!choice || choice == "Cancel")
+	var/mob/living/L = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", GLOB.freed_mob_list)
+	if(!L)
 		return
 
-	var/mob/living/L = choice
+	if(!(L in GLOB.freed_mob_list))
+		return
+
 	if(!istype(L))
 		return
 
@@ -831,7 +833,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	. = ..()
 	. += ""
 	. += "Game Mode: [GLOB.master_mode]"
-	. += "DEFCON Level: [defcon_controller.current_defcon_level]"
 
 	if(SSticker.HasRoundStarted())
 		return
@@ -847,7 +848,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	. += "Players: [SSticker.totalPlayers]"
 	if(client.admin_holder)
 		. += "Players Ready: [SSticker.totalPlayersReady]"
-	. += "DEFCON Level: [defcon_controller.current_defcon_level]"
 
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()

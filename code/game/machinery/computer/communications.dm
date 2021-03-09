@@ -88,11 +88,6 @@
 			current_mapviewer = usr
 			update_mapview()
 			return
-		if("defcon")
-			defcon_controller.list_and_purchase_rewards()
-			return
-
-		if("defconlist") state = STATE_DEFCONLIST
 
 		if("main") state = STATE_DEFAULT
 
@@ -359,13 +354,6 @@
 				dat += "<BR><A HREF='?src=\ref[src];operation=status'>Set status display</A>"
 				dat += "<BR><A HREF='?src=\ref[src];operation=messagelist'>Message list</A>"
 				dat += "<BR><A href='?src=\ref[src];operation=mapview'>Toggle Tactical Map</A>"
-				dat += "<BR><A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A>"
-				dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
-				dat += "<BR><hr>"
-				dat += "<BR>DEFCON [defcon_controller.current_defcon_level]: [defcon_controller.check_defcon_percentage()]%"
-				dat += "<BR>Threat assessment level: [defcon_controller.last_objectives_completion_percentage*100]%"
-				dat += "<BR>Remaining DEFCON asset budget: $[defcon_controller.remaining_reward_points * DEFCON_TO_MONEY_MULTIPLIER]."
-				dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
 				dat += "<BR><hr>"
 
 				if(authenticated == 2)
@@ -456,13 +444,6 @@
 			dat += "Current alert level: [get_security_level()]<BR>"
 			dat += "Confirm the change to: [num2seclevel(tmp_alertlevel)]<BR>"
 			dat += "<A HREF='?src=\ref[src];operation=swipeidseclevel'>Swipe ID</A> to confirm change.<BR>"
-
-		if(STATE_DEFCONLIST)
-			for(var/str in typesof(/datum/defcon_reward))
-				var/datum/defcon_reward/DR = new str
-				if(!DR.cost)
-					continue
-				dat += "DEFCON [DR.minimum_defcon_level] - [DR.name]<BR>"
 
 	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A>"
 	show_browser(user, dat, name, "communications")

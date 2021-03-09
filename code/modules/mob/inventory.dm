@@ -17,9 +17,13 @@
 	if(lying)			return 0
 	if(!istype(W))		return 0
 	if(!l_hand)
+		if(W.loc == src && !(W.flags_item & DELONDROP))
+			W.dropped(src)
+
 		W.forceMove(src)
 		l_hand = W
 		W.layer = ABOVE_HUD_LAYER
+		W.pickup(src)
 		W.equipped(src,WEAR_L_HAND)
 		update_inv_l_hand()
 		return 1
@@ -30,9 +34,13 @@
 	if(lying)			return 0
 	if(!istype(W))		return 0
 	if(!r_hand)
+		if(W.loc == src && !(W.flags_item & DELONDROP))
+			W.dropped(src)
+
 		W.forceMove(src)
 		r_hand = W
 		W.layer = ABOVE_HUD_LAYER
+		W.pickup(src)
 		W.equipped(src,WEAR_R_HAND)
 		update_inv_r_hand()
 		return 1

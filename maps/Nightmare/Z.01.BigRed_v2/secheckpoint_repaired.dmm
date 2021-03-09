@@ -134,7 +134,7 @@
 /area/bigred/ground/security)
 "t" = (
 /obj/structure/surface/table/almayer,
-/obj/item/disk/objective,
+
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "u" = (
@@ -344,7 +344,7 @@
 /area/bigred/ground/security)
 "W" = (
 /obj/structure/surface/table/almayer,
-/obj/item/document_objective/folder,
+
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
 "X" = (

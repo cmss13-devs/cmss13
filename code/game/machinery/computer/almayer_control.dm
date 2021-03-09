@@ -65,11 +65,6 @@
 			dat += GLOB.admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
 			dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 			dat += "<BR><hr>"
-			dat += "<BR>DEFCON [defcon_controller.current_defcon_level]: [defcon_controller.check_defcon_percentage()]%"
-			dat += "<BR>Threat assessment level: [defcon_controller.last_objectives_completion_percentage*100]%"
-			dat += "<BR>Remaining DEFCON asset budget: $[defcon_controller.remaining_reward_points * DEFCON_TO_MONEY_MULTIPLIER]."
-			dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
-			dat += "<BR><A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A>"
 			dat += "<BR><hr>"
 
 
@@ -93,13 +88,6 @@
 
 		if(STATE_DESTROY)
 			dat += "Are you sure you want to trigger the self destruct? This would mean abandoning ship. <A HREF='?src=\ref[src];operation=destroy'>Confirm</A>"
-
-		if(STATE_DEFCONLIST)
-			for(var/str in typesof(/datum/defcon_reward))
-				var/datum/defcon_reward/DR = new str
-				if(!DR.cost)
-					continue
-				dat += "DEFCON [DR.minimum_defcon_level] - [DR.name]<BR>"
 
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
@@ -137,13 +125,6 @@
 	switch(href_list["operation"])
 		if("main")
 			state = STATE_DEFAULT
-
-		if("defcon")
-			defcon_controller.list_and_purchase_rewards()
-			return
-
-		if("defconlist")
-			state = STATE_DEFCONLIST
 
 		if("ship_announce")
 			if(!is_announcement_active)

@@ -4,8 +4,14 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Warrior")
-	mutator_actions_to_remove = list("Fling","Lunge","Toggle Agility")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/jab, /datum/action/xeno_action/activable/uppercut)
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/fling,
+		/datum/action/xeno_action/activable/lunge,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/jab,
+		/datum/action/xeno_action/activable/uppercut,
+	)
 	behavior_delegate_type = /datum/behavior_delegate/boxer
 	keystone = TRUE
 
@@ -18,7 +24,7 @@
 	W.health_modifier += XENO_HEALTH_MOD_MED
 	W.armor_modifier += XENO_ARMOR_MOD_VERYSMALL
 	W.agility = FALSE
-	W.mutation_type = WARRIOR_BOXER	
+	W.mutation_type = WARRIOR_BOXER
 	apply_behavior_holder(W)
 	mutator_update_actions(W)
 	MS.recalculate_actions(description, flavor_description)

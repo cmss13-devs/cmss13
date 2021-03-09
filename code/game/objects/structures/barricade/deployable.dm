@@ -15,6 +15,7 @@
 	anchored = TRUE
 	repair_materials = list("metal" = 0.2, "plasteel" = 0.25)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
+	var/source_type
 
 /obj/structure/barricade/deployable/examine(mob/user)
 	..()
@@ -97,7 +98,7 @@
 			to_chat(usr, SPAN_WARNING("You stop collapsing [src]."))
 
 /obj/structure/barricade/deployable/proc/collapse(mob/living/carbon/human/user)
-	var/obj/item/folding_barricade/FB = new(loc)
+	var/obj/item/folding_barricade/FB = new source_type(loc)
 	FB.health = health
 	FB.maxhealth = maxhealth
 	if(istype(user))
@@ -148,4 +149,6 @@
 	cade.setDir(user.dir)
 	cade.health = health
 	cade.maxhealth = maxhealth
+
+	cade.source_type = type
 	qdel(src)

@@ -408,7 +408,9 @@
 			break
 		if(istype(e, /obj/limb/chest) && occ["lung_ruptured"])
 			lung_ruptured = "Lung ruptured:<br>"
-		if(e.status & LIMB_SPLINTED)
+		if(e.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+			splint = "Nanosplinted<br>"
+		else if(e.status & LIMB_SPLINTED)
 			splint = "Splinted<br>"
 		for(var/datum/effects/bleeding/external/E in e.bleeding_effects_list)
 			bled = "Bleeding<br>"
@@ -468,7 +470,7 @@
 			dat += SET_CLASS("No [organ_name] detected.", INTERFACE_RED)
 			dat += "<BR>"
 
-	if(occ["sdisabilities"] & BLIND)
+	if(occ["sdisabilities"] & DISABILITY_BLIND)
 		dat += SET_CLASS("Cataracts detected.", INTERFACE_RED)
 		dat += "<BR>"
 	if(occ["sdisabilities"] & NEARSIGHTED)

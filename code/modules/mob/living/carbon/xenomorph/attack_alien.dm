@@ -110,6 +110,13 @@
 						emote("roar")
 						return TRUE
 
+			var/n_damage = armor_damage_reduction(GLOB.marine_melee, damage, armor_block)
+
+			if(M.behavior_delegate)
+				n_damage = M.behavior_delegate.melee_attack_modify_damage(n_damage, src)
+
+			if(SEND_SIGNAL(src, COMSIG_HUMAN_XENO_ATTACK, n_damage) & COMPONENT_CANCEL_XENO_ATTACK) return
+
 			//The normal attack proceeds
 			playsound(loc, "alien_claw_flesh", 25, 1)
 			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
@@ -131,11 +138,6 @@
 				attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
 				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
 			log_attack("[key_name(M)] slashed [key_name(src)]")
-
-			var/n_damage = armor_damage_reduction(GLOB.marine_melee, damage, armor_block)
-
-			if(M.behavior_delegate)
-				n_damage = M.behavior_delegate.melee_attack_modify_damage(n_damage, src)
 
 			//nice messages so people know that armor works
 			if(n_damage <= 0.34*damage)

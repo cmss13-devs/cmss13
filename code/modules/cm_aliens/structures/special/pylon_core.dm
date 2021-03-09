@@ -107,14 +107,6 @@
 	. = ..()
 
 	// Pick the closest xeno resource activator
-	var/obj/effect/landmark/resource_node_activator/hive/start_activator
-	for(var/obj/effect/landmark/resource_node_activator/hive/node_activator in world)
-		if(!start_activator || get_dist(src, node_activator) < get_dist(src, start_activator))
-			start_activator = node_activator
-
-	// And grow the crystals tied to it
-	if(start_activator)
-		start_activator.trigger()
 
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)

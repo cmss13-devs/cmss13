@@ -7,6 +7,8 @@
 	name="beam"
 	icon='icons/effects/beam.dmi'
 	icon_state="b_beam"
+	mouse_opacity = FALSE
+	
 	var/tmp/atom/BeamSource
 	New()
 		..()

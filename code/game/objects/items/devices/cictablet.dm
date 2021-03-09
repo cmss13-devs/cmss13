@@ -43,22 +43,10 @@
 			dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
 			dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 			dat += "<BR><hr>"
-			dat += "<BR>DEFCON [defcon_controller.current_defcon_level]: [defcon_controller.check_defcon_percentage()]%"
-			dat += "<BR>Threat assessment level: [defcon_controller.last_objectives_completion_percentage*100]%"
-			dat += "<BR>Remaining DEFCON asset budget: $[defcon_controller.remaining_reward_points * DEFCON_TO_MONEY_MULTIPLIER]."
-			dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
-			dat += "<BR><A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A>"
 			switch(EvacuationAuthority.evac_status)
 				if(EVACUATION_STATUS_STANDING_BY)
 					dat += "<BR><hr>"
 					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
-
-		if(STATE_DEFCONLIST)
-			for(var/str in typesof(/datum/defcon_reward))
-				var/datum/defcon_reward/DR = new str
-				if(!DR.cost)
-					continue
-				dat += "DEFCON [DR.minimum_defcon_level] - [DR.name]<BR>"
 
 		if(STATE_EVACUATION)
 			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
@@ -75,14 +63,6 @@
 	usr.set_interaction(src)
 
 	switch(href_list["operation"])
-		if("defcon")
-			defcon_controller.list_and_purchase_rewards()
-			return
-
-		if("defconlist")
-			state = STATE_DEFCONLIST
-			interact(usr)
-
 		if("main")
 			state = STATE_DEFAULT
 			interact(usr)

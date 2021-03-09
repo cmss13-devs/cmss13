@@ -38,13 +38,13 @@
 	tier = 2
 	pull_speed = 2.0 // about what it was before, slightly faster
 
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/warrior_punch,
 		/datum/action/xeno_action/activable/lunge,
-		/datum/action/xeno_action/activable/fling
+		/datum/action/xeno_action/activable/fling,
 	)
 
 	mutation_type = WARRIOR_NORMAL
@@ -120,24 +120,29 @@
 
 	var/stored_shield_max = 160
 	var/stored_shield_per_slash = 40
-	var/stored_shield = 0
+	var/datum/component/shield_component
 
-/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
-	..()
+/datum/behavior_delegate/warrior_base/New()
+	. = ..()
 
-	if (stored_shield == stored_shield_max)
-		bound_xeno.add_xeno_shield(stored_shield, XENO_SHIELD_SOURCE_GENERIC)
-		bound_xeno.visible_message(SPAN_XENOWARNING("\The [bound_xeno] roars as it mauls its target, its exoskeleton shimmering for a second!"), SPAN_XENOHIGHDANGER("You feel your rage increase your resiliency to damage!"))
-		bound_xeno.xeno_jitter(1 SECONDS)
-		bound_xeno.flick_heal_overlay(2 SECONDS, "#FFA800")
-		bound_xeno.emote("roar")
-		stored_shield = 0
+/datum/behavior_delegate/warrior_base/add_to_xeno()
+	. = ..()
+	if(!shield_component)
+		shield_component = bound_xeno.AddComponent(\
+			/datum/component/shield_slash,\
+			stored_shield_max,\
+			stored_shield_per_slash,\
+			"Warrior Shield")
 	else
-		stored_shield += stored_shield_per_slash
+		bound_xeno.TakeComponent(shield_component)
 
-/datum/behavior_delegate/warrior_base/append_to_stat()
-	. = list()
-	. += "Stored Shield: [stored_shield]/[stored_shield_max]"
+/datum/behavior_delegate/warrior_base/remove_from_xeno()
+	shield_component.RemoveComponent()
+	return ..()
+
+/datum/behavior_delegate/warrior_base/Destroy(force, ...)
+	qdel(shield_component)
+	return ..()
 
 /datum/behavior_delegate/boxer
 	name = "Boxer Warrior Behavior Delegate"

@@ -2592,7 +2592,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/highsec/south/south)
 "ez" = (
-/obj/item/document_objective/paper,
+
 /turf/open/floor/prison{
 	tag = "icon-floor_plate (SOUTHWEST)";
 	icon_state = "floor_plate";

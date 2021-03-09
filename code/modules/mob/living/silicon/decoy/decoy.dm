@@ -20,10 +20,10 @@
 	bound_width = 96
 	var/obj/item/device/radio/headset/almayer/mcom/ai/ai_headset //The thing it speaks into.
 
-/mob/living/silicon/decoy/Life()
-	if(stat == DEAD) 
+/mob/living/silicon/decoy/Life(delta_time)
+	if(stat == DEAD)
 		return FALSE
-	if(health <= HEALTH_THRESHOLD_DEAD && stat != DEAD) 
+	if(health <= HEALTH_THRESHOLD_DEAD && stat != DEAD)
 		death()
 
 /mob/living/silicon/decoy/updatehealth()
@@ -35,7 +35,7 @@
 
 /mob/living/silicon/decoy/death(cause, gibbed, deathmessage = "sparks up and falls silent...")
 	set waitfor = 0
-	if(stat == DEAD) 
+	if(stat == DEAD)
 		return FALSE
 	icon_state = "hydra-off"
 	sleep(20)
@@ -43,7 +43,7 @@
 	return ..()
 
 /mob/living/silicon/decoy/say(message, new_sound) //General communication across the ship.
-	if(stat || !message) 
+	if(stat || !message)
 		return FALSE
 
 	message = trim(strip_html(message))

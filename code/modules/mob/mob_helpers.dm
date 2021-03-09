@@ -1,4 +1,4 @@
-#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DEAF) || A?:ear_deaf))
+#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
 #define areSameSpecies(A, B) 	(isliving(A) && isliving(B) && \
 									((isXeno(A) && isXeno(B)) || \
 										(ishuman(A) && ishuman(B) && !(isYautja(A) ^ isYautja(B))) \

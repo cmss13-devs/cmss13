@@ -2122,7 +2122,7 @@
 /area/prison/security/head)
 "caS" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/document_objective/report,
+
 /turf/open/floor/wood,
 /area/prison/parole/main)
 "caT" = (
@@ -2133,14 +2133,14 @@
 /turf/open/floor/carpet,
 /area/prison/security/head)
 "cbN" = (
-/obj/item/document_objective/paper,
+
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
 	},
 /area/prison/intake)
 "cbV" = (
-/obj/item/document_objective/paper,
+
 /turf/open/floor/prison,
 /area/prison/security)
 "cbW" = (
@@ -4450,7 +4450,7 @@
 /turf/open/floor/plating,
 /area/prison/security/briefing)
 "crG" = (
-/obj/item/document_objective/technical_manual,
+
 /turf/open/floor/prison{
 	tag = "icon-bright_clean2 (SOUTHWEST)";
 	icon_state = "bright_clean2";
@@ -4488,7 +4488,7 @@
 /area/prison/execution)
 "csS" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/document_objective/report,
+
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -4509,7 +4509,7 @@
 /area/prison/security/head)
 "cBm" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/document_objective/folder,
+
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -4518,7 +4518,7 @@
 /area/prison/intake)
 "cBq" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/disk/objective,
+
 /turf/open/floor/prison{
 	tag = "icon-darkredfull2 (SOUTHWEST)";
 	icon_state = "darkredfull2";
@@ -4530,21 +4530,21 @@
 /obj/item/tool/pen{
 	pixel_y = 4
 	},
-/obj/structure/machinery/computer/objective,
+
 /turf/open/floor/carpet,
 /area/prison/security/head)
 "cBy" = (
-/obj/item/document_objective/technical_manual,
+
 /turf/open/floor/prison,
 /area/prison/security/armory/riot)
 "cBz" = (
 /obj/structure/surface/rack,
-/obj/item/disk/objective,
+
 /turf/open/floor/prison,
 /area/prison/security/armory/lethal)
 "cBA" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/healthanalyzer/objective,
+/obj/item/device/healthanalyzer,
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";

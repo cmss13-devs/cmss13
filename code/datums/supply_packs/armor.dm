@@ -157,9 +157,8 @@
 	group = "Clothing"
 
 /datum/supply_packs/pouches_construction
-	name = "construction pouches crate (1x document, electronics, tools, construction)"
+	name = "construction pouches crate (1x electronics, tools, construction)"
 	contains = list(
-					/obj/item/storage/pouch/document,
 					/obj/item/storage/pouch/electronics,
                     /obj/item/storage/pouch/tools,
 					/obj/item/storage/pouch/construction

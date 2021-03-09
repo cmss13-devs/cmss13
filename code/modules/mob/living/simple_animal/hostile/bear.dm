@@ -45,7 +45,7 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "pokes"
 
-/mob/living/simple_animal/hostile/bear/Life()
+/mob/living/simple_animal/hostile/bear/Life(delta_time)
 	. =..()
 	if(!.)
 		return

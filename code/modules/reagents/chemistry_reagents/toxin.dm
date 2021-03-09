@@ -8,20 +8,20 @@
 	description = "General identification for many similar toxins, sometimes created as a byproduct through chemical reactions."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
-	custom_metabolism = 0.1
+	custom_metabolism = AMOUNT_PER_TIME(1, 20 SECONDS)
 	properties = list(PROPERTY_TOXIC = 1)// Toxins are really weak, but without being treated, last very long.
 
 /datum/reagent/toxin/hptoxin
 	name = "Toxin"
 	id = "hptoxin"
 	description = "A toxic chemical."
-	custom_metabolism = 1
+	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
 
 /datum/reagent/toxin/pttoxin
 	name = "Toxin"
 	id = "pttoxin"
 	description = "A toxic chemical."
-	custom_metabolism = 1
+	custom_metabolism = AMOUNT_PER_TIME(1, 2 SECONDS)
 
 /datum/reagent/toxin/sdtoxin
 	name = "Toxin"
@@ -77,7 +77,7 @@
 	description = "Cyanide is a naturally occuring toxic chemical, that has been used as a mean of killing for centuries because of its immediate effects. Symptoms include nausea, weakness, and difficulty breathing."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
-	custom_metabolism = 0.4
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_HYPOXEMIC = 4, PROPERTY_SEDATIVE = 1)
 
@@ -199,7 +199,7 @@
 	description = "An effective hypnotic used to treat insomnia. Concentrated soporific is used as a surgical anesthetic."
 	reagent_state = LIQUID
 	color = "#E895CC" // rgb: 232, 149, 204
-	custom_metabolism = 0.1
+	custom_metabolism = AMOUNT_PER_TIME(1, 20 SECONDS)
 	overdose = REAGENTS_OVERDOSE
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_COMMON
@@ -212,7 +212,7 @@
 	description = "Chloral hydrate was the first synthetically produced sedative-hypnotic drug. It is a powerful sedative which causes near instant sleepiness, but can be deadly in large quantities. Often used together with other anesthetics for surgical procedures."
 	reagent_state = SOLID
 	color = "#000067" // rgb: 0, 0, 103
-	custom_metabolism = 0.1 //Default 0.2
+	custom_metabolism = AMOUNT_PER_TIME(1, 20 SECONDS) //Default 0.2
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	chemclass = CHEM_CLASS_UNCOMMON
@@ -248,7 +248,7 @@
 	description = "An alcoholic beverage made from malted grains, hops, yeast, and water. The fermentation appears to be incomplete." //If the players manage to analyze this, they deserve to know something is wrong.
 	reagent_state = LIQUID
 	color = "#664300" // rgb: 102, 67, 0
-	custom_metabolism = 0.15 // Sleep toxins should always be consumed pretty fast
+	custom_metabolism = AMOUNT_PER_TIME(3, 40 SECONDS) // Sleep toxins should always be consumed pretty fast
 	overdose = REAGENTS_OVERDOSE/2
 	overdose_critical = REAGENTS_OVERDOSE_CRITICAL/2
 	properties = list(PROPERTY_ALCOHOLIC = 2, PROPERTY_TOXIC = 6)

@@ -369,3 +369,244 @@
 	playsound(X.loc, "alien_resin_build", 25)
 	new /obj/effect/alien/resin/trap(X.loc, X)
 	to_chat(X, SPAN_XENONOTICE("You place a resin hole on the weeds, it still needs a sister to fill it with acid."))
+
+/datum/action/xeno_action/activable/place_construction/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X.check_state())
+		return FALSE
+
+	//Make sure construction is unrestricted
+	if(X.hive && X.hive.construction_allowed == XENO_LEADER && X.hive_pos == NORMAL_XENO)
+		to_chat(X, SPAN_WARNING("Construction is currently restricted to Leaders only!"))
+		return FALSE
+	else if(X.hive && X.hive.construction_allowed == XENO_QUEEN && !istype(X.caste, /datum/caste_datum/queen))
+		to_chat(X, SPAN_WARNING("Construction is currently restricted to Queen only!"))
+		return FALSE
+
+	var/turf/T = get_turf(A)
+
+	var/area/AR = get_area(T)
+	if(isnull(AR) || !(AR.is_resin_allowed))
+		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return FALSE
+
+	var/choice = XENO_STRUCTURE_CORE
+	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
+		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help" + "cancel")
+	if(choice == "help")
+		var/message = "<br>Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
+		for(var/structure_name in X.hive.hive_structure_types)
+			message += "[get_xeno_structure_desc(structure_name)]<br>"
+		to_chat(X, SPAN_NOTICE(message))
+		return
+	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(400))
+		return FALSE
+	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return FALSE
+
+	if((choice == XENO_STRUCTURE_CORE) && isXenoQueen(X) && X.hive.has_structure(XENO_STRUCTURE_CORE))
+		if(X.hive.hive_location.hardcore)
+			to_chat(X, SPAN_WARNING("You can't rebuild this structure"))
+			return
+
+		if(alert(X, "Are you sure that you want to move the hive and destroy the old hive core?", , "Yes", "No") == "No")
+			return
+		qdel(X.hive.hive_location)
+	else if(!X.hive.can_build_structure(choice))
+		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
+		return FALSE
+
+	var/structure_type = X.hive.hive_structure_types[choice]
+	var/datum/construction_template/xenomorph/structure_template = new structure_type()
+
+	if(!X.hive.can_build_structure(structure_template.name) && !(choice == XENO_STRUCTURE_CORE))
+		to_chat(X, SPAN_WARNING("You cannot build any more [structure_template.name]!"))
+		qdel(structure_template)
+		return FALSE
+
+	if (QDELETED(T))
+		to_chat(X, SPAN_WARNING("You cannot build here!"))
+		qdel(structure_template)
+		return FALSE
+
+	var/queen_on_zlevel = !X.hive.living_xeno_queen || X.hive.living_xeno_queen.z == T.z
+	if(!queen_on_zlevel)
+		to_chat(X, SPAN_WARNING("Your link to the Queen is too weak here. She is on another world."))
+		qdel(structure_template)
+		return FALSE
+
+	if(!T.is_weedable())
+		to_chat(X, SPAN_WARNING("It's too early to be placing [structure_template.name] here!"))
+		qdel(structure_template)
+		return FALSE
+
+
+	if(structure_template.requires_node)
+		for(var/turf/TA in range(T, structure_template.block_range))
+			if(TA.density)
+				to_chat(X, SPAN_WARNING("You need more open space to build here."))
+				qdel(structure_template)
+				return FALSE
+
+		if(!X.check_alien_construction(T))
+			to_chat(X, SPAN_WARNING("You need more open space to build here."))
+			qdel(structure_template)
+			return FALSE
+		var/obj/effect/alien/weeds/alien_weeds = locate() in T
+		if(!alien_weeds || alien_weeds.weed_strength < WEED_LEVEL_HIVE || alien_weeds.linked_hive.hivenumber != X.hivenumber)
+			to_chat(X, SPAN_WARNING("You can only shape on [lowertext(GLOB.hive_datum[X.hivenumber].prefix)]hive weeds. Find a hive node or core before you start building!"))
+			qdel(structure_template)
+			return FALSE
+
+	X.use_plasma(400)
+	X.place_construction(T, structure_template)
+
+/datum/action/xeno_action/activable/xeno_spit/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(!X.check_state())
+		return
+
+	if(!isturf(X.loc))
+		to_chat(src, SPAN_WARNING("You can't spit from here!"))
+		return
+
+	if(!action_cooldown_check())
+		to_chat(src, SPAN_WARNING("You must wait for your spit glands to refill."))
+		return
+
+	var/turf/current_turf = get_turf(X)
+
+	if(!current_turf)
+		return
+
+	plasma_cost = X.ammo.spit_cost
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	xeno_cooldown = X.caste.spit_delay + X.ammo.added_spit_delay
+
+	X.visible_message(SPAN_XENOWARNING("[X] spits at [A]!"), \
+	SPAN_XENOWARNING("You spit at [A]!") )
+	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
+	playsound(X.loc, sound_to_play, 25, 1)
+
+	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, current_turf)
+	P.generate_bullet(X.ammo)
+	P.permutated += X
+	P.def_zone = X.get_limbzone_target()
+	P.fire_at(A, X, X, X.ammo.max_range, X.ammo.shell_speed)
+
+	apply_cooldown()
+	..()
+
+/datum/action/xeno_action/activable/bombard/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/X = owner
+
+	if (!istype(X) || !X.check_state() || !action_cooldown_check() || X.action_busy)
+		return FALSE
+
+	var/turf/T = get_turf(A)
+
+	if(isnull(T) || istype(T, /turf/closed) || !T.can_bombard(owner))
+		to_chat(X, SPAN_XENODANGER("You can't bombard that!"))
+		return FALSE
+
+	if (!check_plasma_owner())
+		return FALSE
+
+	if(T.z != X.z)
+		to_chat(X, SPAN_WARNING("That target is too far away!"))
+		return FALSE
+
+	var/atom/bombard_source = get_bombard_source()
+	if (!X.can_bombard_turf(T, range, bombard_source))
+		return FALSE
+
+	apply_cooldown()
+
+	X.visible_message(SPAN_XENODANGER("[X] digs itself into place!"), SPAN_XENODANGER("You dig yourself into place!"))
+	if (!do_after(X, activation_delay, interrupt_flags, BUSY_ICON_HOSTILE))
+		to_chat(X, SPAN_XENODANGER("You decide to cancel your bombard."))
+		return FALSE
+
+	if (!check_and_use_plasma_owner())
+		return FALSE
+
+	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
+	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)
+
+	recursive_spread(T, effect_range, effect_range)
+
+	return ..()
+
+/datum/action/xeno_action/activable/bombard/proc/recursive_spread(turf/T, dist_left, orig_depth)
+	if(!istype(T))
+		return
+	else if(dist_left == 0)
+		return
+	else if(istype(T, /turf/closed) || istype(T, /turf/open/space))
+		return
+	else if(!T.can_bombard(owner))
+		return
+
+	addtimer(CALLBACK(src, .proc/new_effect, T, owner), 2*(orig_depth - dist_left))
+
+	for(var/mob/living/L in T)
+		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
+
+	for(var/dirn in alldirs)
+		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth)
+
+
+/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/T, mob/living/carbon/Xenomorph/X)
+	if(!istype(T))
+		return
+
+	for(var/obj/effect/xenomorph/boiler_bombard/BB in T)
+		return
+
+	new effect_type(T, X)
+
+/datum/action/xeno_action/activable/bombard/proc/get_bombard_source()
+	return owner
+
+/turf/proc/can_bombard(var/mob/bombarder)
+	if(!can_be_dissolved() && density) return FALSE
+	for(var/atom/A in src)
+		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
+		if(ismob(A)) continue // Mobs shouldn't block boiler gas
+
+		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER)) return FALSE
+
+	return TRUE
+
+/mob/living/carbon/Xenomorph/proc/can_bombard_turf(var/atom/target, var/range = 5, var/atom/bombard_source) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
+	if(!bombard_source || !isturf(bombard_source.loc))
+		to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
+		return FALSE
+	var/turf/current = bombard_source.loc
+	var/turf/target_turf = get_turf(target)
+
+	if (get_dist_sqrd(current, target_turf) > (range*range))
+		to_chat(src, SPAN_XENODANGER("That is too far away!"))
+		return
+
+	. = TRUE
+	while(current != target_turf)
+		if(!current)
+			. = FALSE
+		if(!current.can_bombard(src))
+			. = FALSE
+		if(current.opacity)
+			. = FALSE
+		if(.)
+			for(var/atom/A in current)
+				if(A.opacity)
+					. = FALSE
+					break
+		if(!.)
+			to_chat(src, SPAN_XENODANGER("That target is obstructed!"))
+			return
+
+		current = get_step_towards(current, target_turf)

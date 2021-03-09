@@ -1,9 +1,6 @@
 //FLAGS BITMASK
 
 
-//turf-only flags
-#define NOJAUNT		1
-
 //==========================================================================================
 
 //flags_atom
@@ -44,6 +41,7 @@
 #define ITEM_PREDATOR			(1<<7) // Specific predator item interactions.
 #define MOB_LOCK_ON_EQUIP		(1<<8)	// Lock this item to the mob that equips it up until permadeath
 #define NO_CRYO_STORE			(1<<9) // This item deletes itself when put in cryo storage
+#define ITEM_OVERRIDE_NORTHFACE	(1<<10) // For backpacks if they should have unique layering functions
 
 //==========================================================================================
 

@@ -35,6 +35,18 @@
 	icon_state = "m39_le"
 	default_ammo = /datum/ammo/bullet/smg/rubber
 
+/obj/item/ammo_magazine/smg/m39/penetrating
+	name = "\improper M39 wall-piercing magazine (10x20mm)"
+	desc = "A 10x20mm caseless wall-piercing bullet submachinegun magazine, containing wall-piercing bullets. Designed to penetrate straight through objects and walls."
+	icon_state = "m39_penetrating"
+	default_ammo = /datum/ammo/bullet/smg/penetrating
+
+/obj/item/ammo_magazine/smg/m39/toxin
+	name = "\improper M39 toxin magazine (10x20mm)"
+	desc = "A 10x20mm caseless toxin bullet submachinegun magazine, containing toxin bullets. Great at stripping away armour and destroying biological structures."
+	icon_state = "m39_toxin"
+	default_ammo = /datum/ammo/bullet/smg/ap/toxin
+
 /obj/item/ammo_magazine/smg/m39/incendiary
 	name = "\improper M39 incendiary magazine (10x20mm)"
 	desc = "A 10x20mm caseless incendiary submachinegun magazine. Incendiary payload sets targets ablaze, but causes the gun to have low stopping power and strongly decreased accuracy."

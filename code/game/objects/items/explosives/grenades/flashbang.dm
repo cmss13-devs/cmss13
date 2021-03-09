@@ -102,7 +102,7 @@
 		if(!banglet && !(istype(src , /obj/item/explosive/grenade/flashbang/clusterbang)))
 			if (prob(M.ear_damage - 10 + 5))
 				to_chat(M, SPAN_WARNING("You can't hear anything!"))
-				M.sdisabilities |= DEAF
+				M.sdisabilities |= DISABILITY_DEAF
 	else
 		if (M.ear_damage >= 5)
 			to_chat(M, SPAN_WARNING("Your ears start to ring!"))

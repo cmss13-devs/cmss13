@@ -224,6 +224,8 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 	max_rounds = maximum_rounds
 	current_rounds = new_rounds
 	gun_type = new_gun_type
+	if(A.handful_color)
+		color = A.handful_color
 	update_icon()
 
 //----------------------------------------------------------------//

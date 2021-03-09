@@ -4,7 +4,13 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Carrier")
-	mutator_actions_to_remove = list("Use/Throw Facehugger","Emit Pheromones (30)","Plant Weeds (75)","Place resin hole (200)", "Retrieve Egg")
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/throw_hugger,
+		/datum/action/xeno_action/onclick/emit_pheromones,
+		/datum/action/xeno_action/onclick/plant_weeds,
+		/datum/action/xeno_action/onclick/place_trap,
+		/datum/action/xeno_action/activable/retrieve_egg,
+	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/sacrifice_egg/radius_remember,
 		/datum/action/xeno_action/activable/sacrifice_egg/radius_heal, //first macro

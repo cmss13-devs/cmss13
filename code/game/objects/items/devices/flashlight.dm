@@ -113,7 +113,7 @@
 							 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 
 		if(istype(M, /mob/living/carbon/human))	//robots and aliens are unaffected
-			if(M.stat == DEAD || M.sdisabilities & BLIND)	//mob is dead or fully blind
+			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND)	//mob is dead or fully blind
 				to_chat(user, SPAN_NOTICE("[M] pupils does not react to the light!"))
 			else	//they're okay!
 				M.flash_eyes()

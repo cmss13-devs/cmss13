@@ -220,7 +220,7 @@
 		//removes item's actions, may be readded once re-equipped to the new slot
 		for(var/X in W.actions)
 			var/datum/action/A = X
-			A.remove_action(src)
+			A.remove_from(src)
 
 	else if(W == r_hand)
 		if(W.flags_item & NODROP)
@@ -230,9 +230,11 @@
 		//removes item's actions, may be readded once re-equipped to the new slot
 		for(var/X in W.actions)
 			var/datum/action/A = X
-			A.remove_action(src)
+			A.remove_from(src)
 
 	W.screen_loc = null
+	if(W.loc != src)
+		W.pickup(src)
 	W.forceMove(src)
 	W.layer = ABOVE_HUD_LAYER
 

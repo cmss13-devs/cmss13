@@ -40,6 +40,7 @@
 	if(user)
 		to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 		src.add_fingerprint(user)
+	return TRUE
 
 /obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/C)
 	if(!has_suit)

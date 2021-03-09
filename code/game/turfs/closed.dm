@@ -8,7 +8,11 @@
 /turf/closed/get_explosion_resistance()
 	return 1000000
 
-
+/turf/closed/void
+	name = "void"
+	icon = 'icons/turf/floors/space.dmi'
+	icon_state = "black"
+	mouse_opacity = FALSE
 
 /turf/closed/mineral //mineral deposits
 	name = "Rock"

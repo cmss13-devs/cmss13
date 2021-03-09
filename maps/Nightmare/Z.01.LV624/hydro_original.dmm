@@ -24,7 +24,7 @@
 /area/lv624/lazarus/hydroponics)
 "la" = (
 /obj/structure/closet/crate/hydroponics/prespawned,
-/obj/item/document_objective/folder,
+
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -157,7 +157,7 @@
 /area/lv624/lazarus/hydroponics)
 "oy" = (
 /obj/structure/surface/table,
-/obj/item/disk/objective,
+
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -343,7 +343,7 @@
 	},
 /area/lv624/lazarus/hydroponics)
 "ro" = (
-/obj/item/document_objective/paper,
+
 /turf/open/floor{
 	dir = 1;
 	icon_state = "green"
@@ -388,7 +388,7 @@
 "rt" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light,
-/obj/item/disk/objective,
+
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"
@@ -397,7 +397,7 @@
 "ru" = (
 /obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
-/obj/item/document_objective/technical_manual,
+
 /turf/open/floor{
 	dir = 5;
 	icon_state = "green"

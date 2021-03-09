@@ -47,7 +47,7 @@
 
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
@@ -72,35 +72,6 @@
 		qdel(smoke)
 		smoke = null
 	. = ..()
-
-/turf/proc/can_bombard(var/mob/bombarder)
-	if(!can_be_dissolved() && density) return FALSE
-	for(var/atom/A in src)
-		if(istype(A, /obj/structure/machinery)) continue // Machinery shouldn't block boiler gas (e.g. computers)
-		if(ismob(A)) continue // Mobs shouldn't block boiler gas
-
-		if(A && A.unacidable && A.density && !(A.flags_atom & ON_BORDER)) return FALSE
-
-	return TRUE
-
-/mob/living/carbon/Xenomorph/Boiler/proc/can_bombard_turf(var/atom/target, var/length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
-	var/turf/current = get_turf(src)
-	var/turf/target_turf = get_turf(target)
-	var/steps = 0
-
-	while(current != target_turf)
-		if(steps > length) return FALSE
-		if(!current) return FALSE
-
-		if(!current.can_bombard(src)) return FALSE
-		if(current.opacity)	return FALSE
-		for(var/atom/A in current)
-			if(A.opacity) return FALSE
-
-		current = get_step_towards(current, target_turf)
-		steps++
-
-	return TRUE
 
 // No special behavior for boilers
 /datum/behavior_delegate/boiler_base

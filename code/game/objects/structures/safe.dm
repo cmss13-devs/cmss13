@@ -52,10 +52,6 @@ FLOOR SAFES
 	tumbler_2_pos = 0
 	tumbler_2_open = (rand(0,10) * 5)
 
-	if(is_ground_level(loc.z))
-		//adding an objective for cracking open the safe
-		new /datum/cm_objective/crack_safe(src)
-
 	for(var/obj/item/I in loc)
 		if(space >= maxspace)
 			return

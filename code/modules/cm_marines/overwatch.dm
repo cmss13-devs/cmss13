@@ -140,6 +140,8 @@
 	else
 		var/leader_text = ""
 		var/leader_count = 0
+		var/rto_text = ""
+		var/rto_count = 0
 		var/spec_text = ""
 		var/spec_count = 0
 		var/medic_text = ""
@@ -260,6 +262,9 @@
 				if(JOB_SQUAD_LEADER)
 					leader_text += marine_infos
 					leader_count++
+				if(JOB_SQUAD_RTO)
+					rto_text += marine_infos
+					rto_count++
 				if(JOB_SQUAD_SPECIALIST)
 					spec_text += marine_infos
 					spec_count++
@@ -279,6 +284,7 @@
 					misc_text += marine_infos
 
 		dat += "<b>[leader_count ? "Squad Leader Deployed" : SET_CLASS("No Squad Leader Deployed!", INTERFACE_RED)]</b><BR>"
+		dat += "<b>Squad RT Operators: [rto_count ? "[rto_count]" : SET_CLASS("No Squad RT Operators Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[spec_count ? "Squad Specialist Deployed" : SET_CLASS("No Specialist Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>[smart_count ? "Squad Smartgunner Deployed" : SET_CLASS("No Smartgunner Deployed!", INTERFACE_RED)]</b><BR>"
 		dat += "<b>Squad Medics: [medic_count] Deployed | Squad Engineers: [engi_count] Deployed</b><BR>"
@@ -805,7 +811,10 @@
 		if(JOB_SQUAD_SMARTGUN)
 			if(new_squad.num_smartgun == new_squad.max_smartgun)
 				no_place = TRUE
-
+		if(JOB_SQUAD_RTO)
+			if(new_squad.max_rto >= new_squad.max_rto)
+				no_place = TRUE
+				
 	if(no_place)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return

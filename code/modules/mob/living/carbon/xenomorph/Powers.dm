@@ -13,6 +13,12 @@
 		to_chat(src, SPAN_XENOWARNING("It's too tight in here to build."))
 		return FALSE
 
+	if(RC.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
+		var/current_amount = length(built_structures[RC.build_path])
+		if(current_amount >= RC.max_per_xeno)
+			to_chat(src, SPAN_XENOWARNING("You've already built the maximum possible structures you can!"))
+			return FALSE
+
 	var/turf/current_turf = get_turf(A)
 
 	if(extra_build_dist != IGNORE_BUILD_DISTANCE && get_dist(src, A) > src.caste.max_build_dist + extra_build_dist) // Hivelords have max_build_dist of 1, drones and queens 0
@@ -34,9 +40,9 @@
 				to_chat(src, SPAN_XENOWARNING("[WR] doesn't belong to your hive!"))
 				return FALSE
 
-			if(WR.walltype == WALL_RESIN)
+			if(WR.type == /turf/closed/wall/resin)
 				WR.ChangeTurf(/turf/closed/wall/resin/thick)
-			else if(WR.walltype == WALL_MEMBRANE)
+			else if(WR.type == /turf/closed/wall/resin/membrane)
 				WR.ChangeTurf(/turf/closed/wall/resin/membrane/thick)
 			else
 				to_chat(src, SPAN_XENOWARNING("[WR] can't be made thicker."))
@@ -99,9 +105,18 @@
 		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin = RC.build(current_turf, hivenumber)
+	if(RC.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
+		LAZYADD(built_structures[RC.build_path], new_resin)
+		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, .proc/remove_built_structure)
 
 	new_resin.add_hiddenprint(src) //so admins know who placed it
 	return TRUE
+
+/mob/living/carbon/Xenomorph/proc/remove_built_structure(var/atom/A)
+	SIGNAL_HANDLER
+	LAZYREMOVE(built_structures[A.type], A)
+	if(!built_structures[A.type])
+		built_structures -= A.type
 
 /mob/living/carbon/Xenomorph/proc/place_construction(var/turf/current_turf, var/datum/construction_template/xenomorph/structure_template)
 	if(!structure_template || !check_state() || action_busy)

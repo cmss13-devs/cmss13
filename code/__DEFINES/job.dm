@@ -13,9 +13,10 @@
 #define JOB_SQUAD_ENGI					"Squad Engineer"
 #define JOB_SQUAD_MEDIC					"Squad Medic"
 #define JOB_SQUAD_SPECIALIST			"Squad Specialist"
+#define JOB_SQUAD_RTO       			"Squad RT Operator"
 #define JOB_SQUAD_SMARTGUN				"Squad Smartgunner"
 #define JOB_SQUAD_ROLES					/datum/timelock/squad
-#define JOB_SQUAD_ROLES_LIST            list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN)
+#define JOB_SQUAD_ROLES_LIST            list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_RTO)
 
 var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 
@@ -44,7 +45,6 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_PILOT						"Pilot Officer"
 #define JOB_CREWMAN						"Vehicle Crewman"
-#define JOB_INTEL						"Intelligence Officer"
 
 #define JOB_POLICE						"Military Police"
 #define JOB_WARDEN						"Military Warden"
@@ -69,6 +69,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_XENO_ROLES                  /datum/timelock/xeno
 
 #define JOB_STOWAWAY					"Stowaway"
+
+#define JOB_ADMIRAL						"USCM Admiral"
 
 // Used to add a timelock to a job. Will be passed onto derivatives
 #define AddTimelock(Path, timelockList) \
@@ -119,6 +121,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_GUNNER					"PMC Support Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
 #define JOB_PMC_SNIPER					"PMC Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
 #define JOB_PMC_NINJA					"PMC Ninja"
+#define JOB_PMC_XENO_HANDLER            "PMC Xeno Handler"
 #define JOB_PMC_COMMANDO				"PMC Commando"
 #define JOB_PMC_LEADER					"PMC Leader"
 #define JOB_PMC_LEAD_INVEST				"PMC Lead Investigator"

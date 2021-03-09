@@ -325,7 +325,7 @@
 /area/bigredv2/outside/admin_building)
 "aV" = (
 /obj/structure/surface/table,
-/obj/item/document_objective/folder,
+
 /turf/open/floor{
 	tag = "icon-carpet15-15 (WEST)";
 	icon_state = "carpet15-15";

@@ -31,6 +31,7 @@
 	var/max_heavies = 1
 	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE
+	var/spawn_max_amount = FALSE
 
 	var/ert_message = "An emergency beacon has been activated"
 
@@ -181,7 +182,7 @@
 	if(SSticker.mode)
 		SSticker.mode.picked_calls -= src
 
-	if(candidates.len < mob_min)
+	if(candidates.len < mob_min && !spawn_max_amount)
 		message_staff("Aborting distress beacon, not enough candidates: found [candidates.len].")
 		members = list() //Empty the members list.
 		candidates = list()
@@ -232,14 +233,20 @@
 		if(shuttle && auto_shuttle_launch)
 			shuttle.launch()
 
+		var/i = 0
 		if(picked_candidates.len)
-			var/i = 0
 			for(var/datum/mind/M in picked_candidates)
 				members += M
 				i++
 				if(i > mob_max)
 					break //Some logic. Hopefully this will never happen..
 				create_member(M)
+			
+
+		if(spawn_max_amount && i < mob_max)
+			for(var/c in i to mob_max)
+				create_member()
+
 		candidates = list()
 
 /datum/emergency_call/proc/add_candidate(var/mob/M)

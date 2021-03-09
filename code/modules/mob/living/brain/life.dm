@@ -1,11 +1,11 @@
-/mob/living/brain/Life()
+/mob/living/brain/Life(delta_time)
 	set invisibility = 0
 	set background = 1
 	..()
 
 	if(stat != DEAD)
 		//Chemicals in the body
-		handle_chemicals_in_body()
+		handle_chemicals_in_body(delta_time)
 
 	//Apparently, the person who wrote this code designed it so that
 	//blinded get reset each cycle and then get activated later in the
@@ -47,11 +47,11 @@
 
 
 
-/mob/living/brain/proc/handle_chemicals_in_body()
+/mob/living/brain/proc/handle_chemicals_in_body(delta_time)
 
 	reagent_move_delay_modifier = 0
 
-	if(reagents) reagents.metabolize(src)
+	if(reagents) reagents.metabolize(src, delta_time=delta_time)
 
 	confused = max(0, confused - 1)
 	// decrement dizziness counter, clamped to 0

@@ -40,6 +40,9 @@
 	var/effective_range_max	= EFFECTIVE_RANGE_OFF	//What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.
 	var/shell_speed 		= AMMO_SPEED_TIER_1 	// How fast the projectile moves.
 
+	var/handful_type 		= /obj/item/ammo_magazine/handful
+	var/handful_color
+
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
@@ -260,6 +263,37 @@
 	penetration= ARMOR_PENETRATION_TIER_8
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/penetrating
+	name = "wall-piercing pistol bullet"
+	shrapnel_chance = 0
+
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/pistol/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/pistol/ap/toxin
+	name = "toxic submachinegun bullet"
+	var/acid_per_hit = 10
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
 /datum/ammo/bullet/pistol/le
 	name = "armor-shredding pistol bullet"
 
@@ -424,6 +458,25 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	shell_speed = AMMO_SPEED_TIER_4
 
+/datum/ammo/bullet/smg/ap/toxin
+	name = "toxic submachinegun bullet"
+	var/acid_per_hit = 5
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/smg/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/smg/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/smg/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
 /datum/ammo/bullet/smg/nail
 	name = "7x45mm plasteel nail"
 	icon_state = "nail-projectile"
@@ -518,6 +571,18 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/smg/penetrating
+	name = "wall-piercing submachinegun bullet"
+	shrapnel_chance = 0
+
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/smg/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
 /datum/ammo/bullet/smg/le
 	name = "armor-shredding submachinegun bullet"
 
@@ -576,6 +641,40 @@
 
 	damage = BULLET_DAMAGE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_8
+
+// Basically AP but better. Focused at taking out armour temporarily
+/datum/ammo/bullet/rifle/ap/toxin
+	name = "toxic rifle bullet"
+	var/acid_per_hit = 7
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
+
+/datum/ammo/bullet/rifle/penetrating
+	name = "wall-piercing rifle bullet"
+	shrapnel_chance = 0
+
+	// Completely ignore armour
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/rifle/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
 
 /datum/ammo/bullet/rifle/le
 	name = "armor-shredding rifle bullet"
@@ -770,6 +869,17 @@
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
 	pen_armor_punch = 0
+
+/datum/ammo/bullet/shotgun/buckshot/incendiary
+	name = "incendiary buckshot shell"
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/custom/incendiary
+	handful_color = "#ffa800"
+
+/datum/ammo/bullet/shotgun/buckshot/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M,P)
@@ -2141,6 +2251,42 @@
 	if(!istype(T))
 		return
 	var/datum/reagent/napalm/blue/R = new()
+	new /obj/flamer_fire(T, source, source_mob, R, 0)
+
+/datum/ammo/flamethrower/sentry_flamer/glob
+	var/datum/effect_system/smoke_spread/phosphorus/smoke
+
+/datum/ammo/flamethrower/sentry_flamer/glob/New()
+	. = ..()
+	smoke = new()
+
+/datum/ammo/flamethrower/sentry_flamer/glob/drop_flame(turf/T, source, source_mob)
+	if(!istype(T))
+		return
+	smoke.set_up(1, 0, T)
+	smoke.start()
+
+/datum/ammo/flamethrower/sentry_flamer/glob/Destroy()
+	qdel(smoke)
+	return ..()
+
+/datum/ammo/flamethrower/sentry_flamer/assault
+	name = "light fire"
+
+/datum/ammo/flamethrower/sentry_flamer/assault/drop_flame(turf/T, source, source_mob)
+	if(!istype(T))
+		return
+	var/datum/reagent/napalm/blue/R = new()
+	R.durationfire = BURN_TIME_INSTANT
+	new /obj/flamer_fire(T, source, source_mob, R, 0)
+
+/datum/ammo/flamethrower/sentry_flamer/mini
+	name = "normal fire"
+
+/datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, source, source_mob)
+	if(!istype(T))
+		return
+	var/datum/reagent/napalm/R = new()
 	new /obj/flamer_fire(T, source, source_mob, R, 0)
 
 /datum/ammo/flare

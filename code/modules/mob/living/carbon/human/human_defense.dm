@@ -343,17 +343,28 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return C.faction_group
 
-/mob/living/carbon/human/proc/get_target_lock(var/access_to_check)
+/mob/living/proc/get_target_lock(var/access_to_check)
 	if(isnull(access_to_check))
 		return
 
 	var/compare_group = faction_group
-	var/id_group = get_id_faction_group()
-	if(!isnull(id_group))
-		compare_group = id_group
 
 	if(!islist(access_to_check))
 		return access_to_check in compare_group
 
 	var/list/overlap = compare_group & access_to_check
+	return length(overlap)
+
+/mob/living/carbon/human/get_target_lock(var/access_to_check)
+	if(isnull(access_to_check))
+		return
+
+	var/id_group = get_id_faction_group()
+	if(!id_group)
+		return ..()
+
+	if(!islist(access_to_check))
+		return access_to_check in id_group
+
+	var/list/overlap = id_group & access_to_check
 	return length(overlap)

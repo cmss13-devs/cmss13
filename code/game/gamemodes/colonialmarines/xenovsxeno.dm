@@ -125,9 +125,6 @@
 		spawn(0)
 			//Deleting Almayer, for performance!
 			SSitem_cleanup.delete_almayer()
-	if(SSdefcon)
-		//Don't need DEFCON
-		SSdefcon.wait = 30 MINUTES
 	if(SSxenocon)
 		//Don't need XENOCON
 		SSxenocon.wait = 30 MINUTES

@@ -262,7 +262,7 @@
 		L.damage += 0.75*potency
 
 /datum/chem_property/negative/oculotoxic/process_overdose(mob/living/M, var/potency = 1)
-	M.sdisabilities |= BLIND
+	M.sdisabilities |= DISABILITY_BLIND
 
 /datum/chem_property/negative/oculotoxic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(0.5*potency, BRAIN)

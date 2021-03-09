@@ -90,38 +90,6 @@
 	name = "Secrete Thick Resin"
 	thick = TRUE
 
-
-/* Resolve this line once structures are resolved.
-// Morph Resin
-/datum/action/xeno_action/morph_resin
-	name = "Resin Morph (125)"
-	action_icon_state = "morph_resin"
-	plasma_cost = 125
-	macro_path = /datum/action/xeno_action/verb/verb_morph_resin
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/morph_resin/action_activate()
-	var/mob/living/carbon/Xenomorph/X = owner
-	var/choice = tgui_input_list(X, "Choose a pheromone", X.caste.structures_allowed + "help" + "cancel")
-	if(choice == "help")
-		var/message = "<br>Morphing into resin sacrifices your current body in order to create special structures that can benefit the hive, as follows:<br>"
-		for(var/structure_name in X.caste.structures_allowed)
-			message += "[get_xeno_structure_desc(structure_name)]<br>"
-		to_chat(X, SPAN_NOTICE(message))
-		return
-	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(plasma_cost))
-		return
-	var/answer = alert(X, "Are you sure you want to morph into [choice]? This will sacrifice your current body.", , "Yes", "No")
-	if(answer != "Yes")
-		return
-	if(!X.hive.can_build_structure(choice))
-		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
-		return
-	X.use_plasma(plasma_cost)
-	X.morph_resin(get_turf(X), X.caste.structures_allowed[choice])
-	..()
-*/
-
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
 	name = "Corrosive Acid (100)"
@@ -328,3 +296,37 @@
 	macro_path = /datum/action/xeno_action/verb/verb_resin_hole
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
+
+/datum/action/xeno_action/activable/place_construction
+	name = "Order Construction (400)"
+	action_icon_state = "morph_resin"
+	ability_name = "order construction"
+	macro_path = /datum/action/xeno_action/verb/place_construction
+	action_type = XENO_ACTION_CLICK
+
+/datum/action/xeno_action/activable/xeno_spit
+	name = "Xeno Spit"
+	action_icon_state = "xeno_spit"
+	ability_name = "xeno spit"
+	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
+	xeno_cooldown = 60 SECONDS
+
+/datum/action/xeno_action/activable/bombard
+	name = "Bombard"
+	ability_name = "bombard"
+	action_icon_state = "bombard"
+	plasma_cost = 75
+	macro_path = /datum/action/xeno_action/verb/verb_bombard
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 245
+
+	// Range and other config
+	var/effect_range = 3
+	var/effect_type = /obj/effect/xenomorph/boiler_bombard
+	var/activation_delay = 1.5 SECONDS
+	var/range = 15
+	var/interrupt_flags = INTERRUPT_ALL|BEHAVIOR_IMMOBILE

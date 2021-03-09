@@ -115,7 +115,7 @@
 "kh" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor{
@@ -131,7 +131,7 @@
 /area/lv624/lazarus/medbay)
 "lD" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/objective,
+
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -180,7 +180,7 @@
 /area/lv624/lazarus/medbay)
 "pp" = (
 /obj/structure/closet/wardrobe,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -197,7 +197,7 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/obj/effect/landmark/objective_landmark/science,
+
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -278,7 +278,7 @@
 /area/lv624/lazarus/medbay)
 "zD" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
@@ -358,7 +358,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/effect/landmark/objective_landmark/science,
+
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -475,7 +475,7 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/mask/surgical,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -490,7 +490,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen,
-/obj/effect/landmark/objective_landmark/science,
+
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -521,14 +521,14 @@
 /area/lv624/lazarus/medbay)
 "Px" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
+
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/lv624/lazarus/medbay)
 "PE" = (
 /obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/structure/machinery/light,
 /turf/open/floor{
 	dir = 8;
@@ -564,7 +564,7 @@
 "TC" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"

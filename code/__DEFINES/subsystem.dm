@@ -74,6 +74,7 @@
 #define SS_INIT_SHUTTLE            3.5
 #define SS_INIT_LANDMARK           3.2
 #define SS_INIT_MACHINES              3
+#define SS_INIT_TECHTREE           2.5
 #define SS_INIT_RADIO				2
 #define SS_INIT_TIMER              100
 #define SS_INIT_UNSPECIFIED        0
@@ -127,6 +128,7 @@
 #define SS_PRIORITY_MIDI       	   40
 #define SS_PRIORITY_ENTITY	       37
 #define SS_PRIORITY_DEFCON         35
+#define SS_PRIORITY_ACID_PILLAR	   34
 #define SS_PRIORITY_UNSPECIFIED    30
 #define SS_PRIORITY_ROUND_RECORDING 83
 #define SS_PRIORITY_PROCESS        25

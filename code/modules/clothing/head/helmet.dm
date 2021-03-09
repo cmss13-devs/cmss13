@@ -490,8 +490,8 @@
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	specialty = "M11 pattern leader"
 
-/obj/item/clothing/head/helmet/marine/intel
-	name = "\improper XM12 pattern intelligence helmet"
+/obj/item/clothing/head/helmet/marine/rto
+	name = "\improper XM12 pattern radio operator helmet"
 	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your intel work."
 	icon_state = "io"
 	item_state = "io"
@@ -502,7 +502,7 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	specialty = "XM12 pattern intel"
+	specialty = "XM12 pattern radio operator"
 
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"

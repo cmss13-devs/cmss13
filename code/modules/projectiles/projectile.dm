@@ -60,6 +60,8 @@
 
 	var/mob/living/homing_target = null
 
+	var/list/bullet_traits
+
 /obj/item/projectile/Initialize(var/source, var/source_mob)
 	. = ..()
 	path = list()
@@ -142,11 +144,11 @@
 	firer = F
 
 	if(F && !is_shrapnel)
-		permutated += F //Don't hit the shooter (firer)
+		permutated |= F //Don't hit the shooter (firer)
 	else if (S && is_shrapnel)
-		permutated += S
+		permutated |= S
 
-	permutated += src //Don't try to hit self.
+	permutated |= src //Don't try to hit self.
 	shot_from = S
 	in_flight = 1
 
@@ -287,15 +289,23 @@
 	if(T.density) // Handle wall hit
 		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
+		if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_TURF, T) & COMPONENT_BULLET_PASS_THROUGH)
+			return FALSE
+
+		if(T.bullet_act(src))
+			return TRUE
+
 		// If the ammo should hit the surface of the target and the next turf is dense
 		// The current turf is the "surface" of the target
 		if(ammo_flags & AMMO_STRIKES_SURFACE)
 			// We "hit" the current turf but strike the actual blockage
 			ammo.on_hit_turf(get_turf(src),src)
-			T.bullet_act(src)
 		else
 			ammo.on_hit_turf(T,src)
-			T.bullet_act(src)
+
+		if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_TURF, T) & COMPONENT_BULLET_PASS_THROUGH)
+			return FALSE
+
 		return TRUE
 
 	// Firer's turf, keep moving
@@ -332,12 +342,10 @@
 				var/mob/living/dL = dA
 				if(dL.is_dead())
 					continue
-				if(ishuman(dL))
-					var/mob/living/carbon/human/H = dL
-					if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, H) & COMPONENT_BULLET_NO_HIT\
-						|| runtime_iff_group && H.get_target_lock(runtime_iff_group)\
-					)
-						continue
+				if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, dL) & COMPONENT_BULLET_NO_HIT\
+					|| runtime_iff_group && dL.get_target_lock(runtime_iff_group)\
+				)
+					continue
 
 				if(ammo_flags & AMMO_SKIPS_ALIENS && isXeno(dL))
 					var/mob/living/carbon/Xenomorph/X = dL
@@ -381,7 +389,7 @@
 	// If we've already handled this atom, don't do it again
 	if(O in permutated)
 		return FALSE
-	permutated += O
+	permutated |= O
 
 	var/hit_chance = O.get_projectile_hit_boolean(src)
 	if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
@@ -407,13 +415,16 @@
 			ammo.on_hit_obj(O,src)
 			if(O && O.loc)
 				O.bullet_act(src)
-		return TRUE
+		. = TRUE
+
+	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_OBJ, O, .) & COMPONENT_BULLET_PASS_THROUGH)
+		return FALSE
 
 /obj/item/projectile/proc/handle_mob(mob/living/L)
 	// If we've already handled this atom, don't do it again
 	if(L in permutated)
 		return FALSE
-	permutated += L
+	permutated |= L
 
 	var/hit_chance = L.get_projectile_hit_chance(src)
 
@@ -460,7 +471,7 @@
 					if (X.behavior_delegate)
 						X.behavior_delegate.on_hitby_projectile(ammo)
 
-			return TRUE
+			. = TRUE
 		else if(!L.lying)
 			animatation_displace_reset(L)
 			if(ammo.sound_miss) playsound_client(L.client, ammo.sound_miss, get_turf(L), 75, TRUE)
@@ -471,6 +482,8 @@
 		to_world(SPAN_DEBUG("([L]) Missed."))
 		#endif
 
+	if(SEND_SIGNAL(src, COMSIG_BULLET_POST_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
+		return FALSE
 
 //----------------------------------------------------------
 				//				    	\\
@@ -736,6 +749,10 @@
 	. = ..()
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
+		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_IFF, src) & COMPONENT_BULLET_NO_HIT\
+			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
+			return FALSE
+
 		if(ammo_flags & AMMO_SKIPS_ALIENS)
 			var/mob/living/carbon/Xenomorph/X = P.firer
 			if(!istype(X))
@@ -837,6 +854,8 @@
 
 		damage_result = armor_damage_reduction(GLOB.marine_ranged, damage, armor, P.ammo.penetration)
 
+		if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result) & COMPONENT_CANCEL_BULLET_ACT) return
+
 		if(damage_result <= 5)
 			to_chat(src,SPAN_XENONOTICE("Your armor absorbs the force of [P]!"))
 		if(damage_result <= 3)
@@ -906,8 +925,23 @@
 	if(damage > 0 && !(ammo_flags & AMMO_IGNORE_ARMOR))
 		var/armor = armor_deflection + armor_deflection_buff
 
-		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
-		var/armor_punch = armor_break_calculation(GLOB.xeno_ranged, damage, armor, P.ammo.penetration, P.ammo.pen_armor_punch, P.ammo.damage_armor_punch, armor_integrity)
+		var/list/damagedata = list(
+			"damage" = damage,
+			"armor" = armor,
+			"penetration" = P.ammo.penetration,
+			"armour_break_pr_pen" = P.ammo.pen_armor_punch,
+			"armour_break_flat" = P.ammo.damage_armor_punch,
+			"armor_integrity" = armor_integrity
+		)
+		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE, damagedata)
+		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damage,
+			damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
+			damagedata["armour_break_flat"], damagedata["armor_integrity"])
+
+		var/armor_punch = armor_break_calculation(GLOB.xeno_ranged, damage,
+			damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
+			damagedata["armour_break_flat"], damagedata["armor_integrity"])
+
 		apply_armorbreak(armor_punch)
 
 		if(damage <= 3)
@@ -932,6 +966,9 @@
 	return TRUE
 
 /turf/bullet_act(obj/item/projectile/P)
+	if(SEND_SIGNAL(src, COMSIG_TURF_BULLET_ACT, P) & COMPONENT_BULLET_ACT_OVERRIDE)
+		return
+
 	if(!P || !density)
 		return //It's just an empty turf
 
@@ -946,8 +983,6 @@
 		var/mob/living/picked_mob = pick(mobs_list) //Hit a mob, if there is one.
 		if(istype(picked_mob))
 			picked_mob.bullet_act(P)
-			return TRUE
-	return TRUE
 
 // walls can get shot and damaged, but bullets (vs energy guns) do much less.
 /turf/closed/wall/bullet_act(obj/item/projectile/P)
@@ -972,8 +1007,6 @@
 	if(ammo_flags & AMMO_BALLISTIC)
 		current_bulletholes++
 	take_damage(damage, P.firer)
-	return TRUE
-
 
 /turf/closed/wall/almayer/research/containment/bullet_act(obj/item/projectile/P)
 	if(P)

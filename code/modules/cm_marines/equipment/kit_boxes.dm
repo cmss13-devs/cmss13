@@ -393,8 +393,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
 	new /obj/item/stack/fulton(src)
-	new /obj/item/storage/pouch/document/small(src)
-	new /obj/item/device/motiondetector/intel(src)
 	new /obj/item/device/encryptionkey/intel(src)
 
 /obj/item/storage/box/kit/mini_grenadier

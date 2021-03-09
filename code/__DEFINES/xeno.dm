@@ -29,6 +29,8 @@
 #define XENO_PRIMARY_ACTION_3 2          // Tertiary primary action
 #define XENO_PRIMARY_ACTION_4 3          // 4th primary action (rarely used)
 
+#define NO_ACTION_CHARGES -1	// This ability does not have a limit to how many times it can be used
+
 #define ACID_SPRAY_LINE 0
 #define ACID_SPRAY_CONE 1
 
@@ -43,8 +45,9 @@
 #define HUD_PLASMA_STATES_XENO 16
 #define HUD_ARMOR_STATES_XENO  10
 
-#define BUILD_TIME_MULT_XENO    1 // Multiplier for time taken for a xeno to place down a resin structure
-#define BUILD_TIME_MULT_HIVELORD     0.5
+#define BUILD_TIME_MULT_XENO        1.5 // Multiplier for time taken for a xeno to place down a resin structure
+#define BUILD_TIME_MULT_BUILDER	    1
+#define BUILD_TIME_MULT_HIVELORD    0.5
 
 #define IGNORE_BUILD_DISTANCE -1
 
@@ -249,6 +252,7 @@
 #define XENO_RESIN_BASE_COST 25
 #define XENO_RESIN_WALL_COST 95
 #define XENO_RESIN_WALL_THICK_COST 145
+#define XENO_RESIN_WALL_REFLECT_COST 145
 #define XENO_RESIN_DOOR_COST 95
 #define XENO_RESIN_DOOR_THICK_COST 120
 #define XENO_RESIN_MEMBRANE_COST 70
@@ -256,6 +260,10 @@
 #define XENO_RESIN_NEST_COST 70
 #define XENO_RESIN_STICKY_COST 30
 #define XENO_RESIN_FAST_COST 10
+#define XENO_RESIN_SPIKE_COST 100
+#define XENO_RESIN_ACID_PILLAR_COST 250
+
+#define RESIN_CONSTRUCTION_NO_MAX -1
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
@@ -507,6 +515,7 @@
 #define XENO_SHIELD_SOURCE_WARDEN_PRAE 5
 #define XENO_SHIELD_SOURCE_SHAMAN 6
 #define XENO_SHIELD_SOURCE_GARDENER 7
+#define XENO_SHIELD_SOURCE_OVERSHIELD_TECH 8
 
 // Caste name defines
 #define CASTE_LARVA "Larva"

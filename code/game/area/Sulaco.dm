@@ -124,6 +124,7 @@
 /area/shuttle/distress/start
 	name = "\improper Distress Shuttle"
 	icon_state = "away1"
+	flags_atom = AREA_ALLOW_XENO_JOIN
 
 /area/shuttle/distress/transit
 	name = "\improper Distress Shuttle Transit"

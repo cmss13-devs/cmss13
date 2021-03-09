@@ -43,14 +43,14 @@
 	mutation_type = RAVAGER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
 		/datum/action/xeno_action/activable/scissor_cut
-		)
+	)
 
 /mob/living/carbon/Xenomorph/Ravager/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()

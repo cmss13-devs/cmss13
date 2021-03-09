@@ -79,7 +79,7 @@
 	var/extra_delay 	= 0						//When burst-firing, this number is extra time before the weapon can fire again. Depends on number of rounds fired.
 	///When PB burst firing and handing off to /fire after a target moves out of range, this is how many bullets have been fired.
 	var/PB_burst_bullets_fired		= 0
-	
+
 	// Full auto
 	var/fa_firing = FALSE						//Whether or not the gun is firing full-auto
 	var/fa_shots = 0							//How many shots have been fired using full-auto. Used to figure out scatter
@@ -738,6 +738,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 				var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
 				new_handful.generate_handful(current_mag.default_ammo, current_mag.caliber, 8, 1, type)
 				new_handful.forceMove(get_turf(src))
+
 		in_chamber = null
 	else
 		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),
@@ -802,15 +803,7 @@ and you're good to go.
 	else
 		return ready_in_chamber()//We're not using the active attachable, we must use the active mag if there is one.
 
-
-/obj/item/weapon/gun/proc/ready_in_chamber()
-	if(current_mag && current_mag.current_rounds > 0)
-		in_chamber = create_bullet(ammo, initial(name))
-		apply_traits_to_in_chamber()
-		current_mag.current_rounds-- //Subtract the round from the mag.
-		return in_chamber
-
-/obj/item/weapon/gun/proc/apply_traits_to_in_chamber()
+/obj/item/weapon/gun/proc/apply_traits(var/obj/item/projectile/P)
 	// Apply bullet traits from gun
 	for(var/entry in traits_to_give)
 		var/list/L
@@ -821,7 +814,7 @@ and you're good to go.
 			// Prepend the bullet trait to the list
 			L = list(entry) + traits_to_give[entry]
 		// Need to use the proc instead of the wrapper because each entry is a list
-		in_chamber._AddElement(L)
+		P._AddElement(L)
 
 	// Apply bullet traits from attachments
 	for(var/slot in attachments)
@@ -833,7 +826,15 @@ and you're good to go.
 			// Prepend the bullet trait to the list
 			var/list/L = list(entry) + AT.traits_to_give[entry]
 			// Need to use the proc instead of the wrapper because each entry is a list
-			in_chamber._AddElement(L)
+			P._AddElement(L)
+
+/obj/item/weapon/gun/proc/ready_in_chamber()
+	if(current_mag && current_mag.current_rounds > 0)
+		in_chamber = create_bullet(ammo, initial(name))
+		apply_traits(in_chamber)
+		current_mag.current_rounds-- //Subtract the round from the mag.
+		return in_chamber
+
 
 /obj/item/weapon/gun/proc/create_bullet(var/datum/ammo/chambered, var/bullet_source)
 	if(!chambered)

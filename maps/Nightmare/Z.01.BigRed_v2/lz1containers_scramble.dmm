@@ -166,7 +166,7 @@
 "az" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/powercell,
-/obj/item/document_objective/folder,
+
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";

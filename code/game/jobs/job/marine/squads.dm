@@ -16,6 +16,8 @@
 	var/max_medics = 4 //Ditto, squad medics
 	var/max_specialists = 1
 	var/num_specialists = 0
+	var/max_rto = 2
+	var/num_rto = 0
 	var/max_smartgun = 1
 	var/num_smartgun = 0
 	var/max_leaders = 1
@@ -162,7 +164,7 @@
 /datum/squad/proc/send_squad_message(input_text, mob/user, displayed_icon, leader_only = FALSE)
 	var/message = strip_html(input_text)
 	var/datum/sound_template/sfx
-	
+
 	if(user)
 		message = "[user.name] transmits: [FONT_SIZE_LARGE("<b>[message]<b>")]"
 		sfx = new()
@@ -172,7 +174,7 @@
 	message = "[SPAN_BLUE("<B>[leader_only ? "SL " : ""]Overwatch:</b> [message]")]"
 
 	var/list/client/targets = list()
-	if(leader_only) 
+	if(leader_only)
 		targets = list(squad_leader)
 	else
 		for(var/mob/M in marines_list)
@@ -211,6 +213,9 @@
 		return 0	//No ID found
 
 	var/assignment = JOB_SQUAD_MARINE
+	var/paygrade
+
+	var/list/extra_access = list()
 
 	switch(M.job)
 		if(JOB_SQUAD_ENGI)
@@ -224,6 +229,16 @@
 		if(JOB_SQUAD_SPECIALIST)
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
+		if(JOB_SQUAD_RTO)
+			if(num_rto > 0)
+				assignment = "Assistant [JOB_SQUAD_RTO]"
+				paygrade = "E4"
+			else
+				paygrade = "E5"
+				assignment = JOB_SQUAD_RTO
+				extra_access += ACCESS_MARINE_RTO_DROP
+
+			num_rto++
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
 			num_smartgun++
@@ -251,8 +266,11 @@
 
 	marines_list += M
 	M.assigned_squad = src	//Add them to the squad
-	C.access += src.access	//Add their squad access to their ID
+	C.access += (src.access + extra_access)	//Add their squad access to their ID
 	C.assignment = "[name] [assignment]"
+
+	if(paygrade)
+		C.paygrade = paygrade
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
 	return 1
 
@@ -304,6 +322,8 @@
 			num_specialists--
 		if(JOB_SQUAD_SMARTGUN)
 			num_smartgun--
+		if(JOB_SQUAD_RTO)
+			num_rto--
 		if(JOB_SQUAD_LEADER)
 			num_leaders--
 
@@ -328,6 +348,10 @@
 			old_lead.comm_title = "Med"
 			if(old_lead.skills)
 				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
+		if(JOB_SQUAD_RTO)
+			old_lead.comm_title = "RTO"
+			if(old_lead.skills)
+				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_TRAINED)
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 			if(old_lead.skills)

@@ -1,6 +1,3 @@
-#define INJECTOR_USES 3
-#define INJECTOR_PERCENTAGE_OF_OD 0.5
-
 /obj/item/reagent_container/hypospray/autoinjector
 	name = "inaprovaline autoinjector"
 	var/chemname = "inaprovaline"
@@ -261,7 +258,3 @@
 	name = "Medic Autoinjector (M-L)"
 	volume = 180
 	amount_per_transfer_from_this = 30
-
-
-#undef INJECTOR_USES
-#undef INJECTOR_PERCENTAGE_OF_OD

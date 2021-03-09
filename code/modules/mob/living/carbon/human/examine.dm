@@ -1,5 +1,5 @@
 /mob/living/carbon/human/examine(mob/user)
-	if(user.sdisabilities & BLIND || user.blinded || user.stat==UNCONSCIOUS)
+	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
 		return
 

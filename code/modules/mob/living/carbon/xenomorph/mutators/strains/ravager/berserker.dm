@@ -5,12 +5,18 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Ravager")
-	mutator_actions_to_remove = list()
-	mutator_actions_to_add = list()
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/empower,
+		/datum/action/xeno_action/activable/pounce/charge,
+		/datum/action/xeno_action/activable/scissor_cut,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/apprehend,
+		/datum/action/xeno_action/activable/clothesline,
+		/datum/action/xeno_action/activable/eviscerate
+	)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/ravager_berserker
-	mutator_actions_to_remove = list("Empower", "Charge", "Scissor Cut")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/apprehend, /datum/action/xeno_action/activable/clothesline, /datum/action/xeno_action/activable/eviscerate)
 
 /datum/xeno_mutator/berserker/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()

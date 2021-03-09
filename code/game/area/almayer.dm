@@ -496,18 +496,8 @@
 	icon_state = "alpha"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/alpha/req
-	name = "\improper Squad Alpha Requisitions"
-	icon_state = "alpha"
-	fake_zlevel = 2 // lowerdeck
-
 /area/almayer/squads/bravo
 	name = "\improper Squad Bravo Preparation"
-	icon_state = "bravo"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/squads/bravo/req
-	name = "\improper Squad Bravo Requisitions"
 	icon_state = "bravo"
 	fake_zlevel = 2 // lowerdeck
 
@@ -516,19 +506,19 @@
 	icon_state = "charlie"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/charlie/req
-	name = "\improper Squad Charlie Requisitions"
-	icon_state = "charlie"
-	fake_zlevel = 2 // lowerdeck
-
 /area/almayer/squads/delta
 	name = "\improper Squad Delta Preparation"
 	icon_state = "delta"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/delta/req
-	name = "\improper Squad Delta Requisitions"
-	icon_state = "delta"
+/area/almayer/squads/alpha_bravo_shared
+	name = "\improper Alpha Bravo Equipment Preparation"
+	icon_state = "ab_shared"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/squads/charlie_delta_shared
+	name = "\improper Charlie Delta Equipment Preparation"
+	icon_state = "cd_shared"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/squads/req

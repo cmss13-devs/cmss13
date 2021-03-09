@@ -46,6 +46,18 @@
 	icon_state = "m41a_LE"
 	default_ammo = /datum/ammo/bullet/rifle/le
 
+/obj/item/ammo_magazine/rifle/penetrating
+	name = "\improper M41A wall-piercing magazine (10x24mm)"
+	desc = "A 10mm wall-piercing magazine."
+	icon_state = "m41a_penetrating"
+	default_ammo = /datum/ammo/bullet/rifle/penetrating
+
+/obj/item/ammo_magazine/rifle/toxin
+	name = "\improper M41A toxin magazine (10x24mm)"
+	desc = "A 10mm toxin magazine."
+	icon_state = "m41a_toxin"
+	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
+
 /obj/item/ammo_magazine/rifle/rubber
 	name = "M41A Rubber Magazine (10x24mm)"
 	desc = "A 10mm magazine filled with rubber bullets."
@@ -182,6 +194,18 @@
 	name = "L42A rubber magazine (10x24mm)"
 	icon_state = "l42mk1_le"
 	default_ammo = /datum/ammo/bullet/rifle/rubber
+
+/obj/item/ammo_magazine/rifle/l42a/penetrating
+	name = "\improper L42A wall-piercing magazine (10x24mm)"
+	desc = "A 10mm battle rifle wall-piercing magazine."
+	icon_state = "l42mk1_penetrating"
+	default_ammo = /datum/ammo/bullet/rifle/penetrating
+
+/obj/item/ammo_magazine/rifle/l42a/toxin
+	name = "\improper L42A toxin magazine (10x24mm)"
+	desc = "A 10mm battle rifle toxin magazine."
+	icon_state = "l42mk1_toxin"
+	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
 
 /obj/item/ammo_magazine/rifle/l42a/extended
 	name = "\improper L42A extended magazine (10x24mm)"

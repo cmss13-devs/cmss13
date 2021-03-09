@@ -29,7 +29,7 @@
 		global_prepare_properties()
 		global_prepare_reagents()
 
-// TODO - This should be 
+// TODO - This should be
 /proc/global_prepare_properties()
 	//Chemical Properties - Initialises all /datum/chem_property into a list indexed by property name
 	var/paths = typesof(/datum/chem_property)
@@ -236,10 +236,10 @@
 	//handle_reactions() Don't need to handle reactions on the source since you're (presumably isolating and) transferring a specific reagent.
 	return amount
 
-/datum/reagents/proc/metabolize(var/mob/M,var/alien)
+/datum/reagents/proc/metabolize(var/mob/M,var/alien, var/delta_time)
 	for(var/datum/reagent/R in reagent_list)
 		if(M && R)
-			R.on_mob_life(M, alien)
+			R.on_mob_life(M, alien, delta_time)
 	update_total()
 
 /datum/reagents/proc/handle_reactions()

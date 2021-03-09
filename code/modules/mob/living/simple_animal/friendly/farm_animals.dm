@@ -29,7 +29,7 @@
 	udder.my_atom = src
 	..()
 
-/mob/living/simple_animal/hostile/retaliate/goat/Life()
+/mob/living/simple_animal/hostile/retaliate/goat/Life(delta_time)
 	. = ..()
 	if(.)
 		//chance to go crazy and start wacking stuff
@@ -123,7 +123,7 @@
 	else
 		..()
 
-/mob/living/simple_animal/cow/Life()
+/mob/living/simple_animal/cow/Life(delta_time)
 	. = ..()
 	if(stat == CONSCIOUS)
 		if(udder && prob(5))
@@ -186,7 +186,7 @@
 	if (PF)
 		PF.flags_pass = PASS_UNDER
 
-/mob/living/simple_animal/chick/Life()
+/mob/living/simple_animal/chick/Life(delta_time)
 	. =..()
 	if(!.)
 		return
@@ -258,7 +258,7 @@ var/global/chicken_count = 0
 	else
 		..()
 
-/mob/living/simple_animal/chicken/Life()
+/mob/living/simple_animal/chicken/Life(delta_time)
 	. =..()
 	if(!.)
 		return

@@ -106,7 +106,9 @@ var/list/admin_verbs_debug = list(
 	/client/proc/sound_debug_query,
 	/client/proc/bulk_fetcher,
 	/client/proc/debug_game_history,
-	/client/proc/construct_env_dmm
+	/client/proc/construct_env_dmm,
+	/client/proc/enter_tree,
+	/client/proc/set_tree_points
 )
 
 var/list/admin_verbs_debug_advanced = list(
@@ -230,7 +232,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/show_player_panel,
-	/client/proc/show_objectives_status,
+	/datum/admins/proc/remove_marine_techtree_leader,
 	/client/proc/hide_admin_mob_verbs,
 	/client/proc/clear_mutineers,
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
@@ -278,7 +280,7 @@ var/list/admin_verbs_mod = list(
 /client/proc/add_admin_whitelists()
 	if(CLIENT_IS_STAFF(src) || CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
-		
+
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(
 		admin_verbs_default,

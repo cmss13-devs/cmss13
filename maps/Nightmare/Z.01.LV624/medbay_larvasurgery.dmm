@@ -39,7 +39,7 @@
 "an" = (
 /obj/structure/surface/table,
 /obj/item/clothing/glasses/hud/health,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/effect/landmark/crap_item,
 /obj/item/reagent_container/spray/cleaner,
 /turf/open/floor{
@@ -55,7 +55,7 @@
 	pixel_y = 3
 	},
 /obj/item/clothing/mask/surgical,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/structure/machinery/light{
 	dir = 1
 	},
@@ -318,7 +318,7 @@
 	pixel_y = 4
 	},
 /obj/item/tool/pen,
-/obj/effect/landmark/objective_landmark/science,
+
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -384,7 +384,7 @@
 "qr" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -425,7 +425,7 @@
 /area/lv624/lazarus/medbay)
 "us" = (
 /obj/structure/filingcabinet,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "whiteblue";
@@ -491,7 +491,7 @@
 	pixel_x = 3;
 	pixel_y = 3
 	},
-/obj/effect/landmark/objective_landmark/science,
+
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteblue";
@@ -507,7 +507,7 @@
 	pixel_x = 5;
 	pixel_y = 4
 	},
-/obj/effect/landmark/objective_landmark/science,
+
 /turf/open/floor{
 	icon_state = "whitebluefull";
 	tag = "icon-whitebluefull"
@@ -522,7 +522,7 @@
 /area/lv624/ground/jungle7)
 "Gu" = (
 /obj/structure/closet/wardrobe,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -552,7 +552,7 @@
 /area/lv624/lazarus/medbay)
 "Pi" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/objective,
+
 /obj/structure/machinery/light{
 	dir = 4
 	},
@@ -578,7 +578,7 @@
 /area/lv624/lazarus/medbay)
 "QQ" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
+
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 8;
@@ -593,7 +593,7 @@
 /area/lv624/lazarus/medbay)
 "Vq" = (
 /obj/structure/surface/table,
-/obj/effect/landmark/objective_landmark/science,
+
 /turf/open/floor{
 	icon_state = "whiteblue";
 	tag = "icon-whiteblue"

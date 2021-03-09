@@ -25,7 +25,7 @@
 	if (!evolve_checks())
 		return
 
-	if((!hive.living_xeno_queen) && castepick != "Queen" && !isXenoLarva(src))
+	if((!hive.living_xeno_queen) && castepick != "Queen" && !isXenoLarva(src) && !hive.allow_no_queen_actions)
 		to_chat(src, SPAN_WARNING("The Hive is shaken by the death of the last Queen. You can't find the strength to evolve."))
 		return
 

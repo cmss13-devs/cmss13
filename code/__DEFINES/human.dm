@@ -18,6 +18,7 @@
 #define LIMB_MUTATED 16 //limb is deformed by mutations
 #define LIMB_AMPUTATED 32 //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
 #define LIMB_REPAIRED 64 //we just repaired the bone, stops the gelling after setting
+#define LIMB_SPLINTED_INDESTRUCTIBLE 128 // Splint is indestructible
 
 ///////////////SURGERY DEFINES///////////////
 #define SPECIAL_SURGERY_INVALID	"special_surgery_invalid"
@@ -82,35 +83,41 @@
 #define COMMAND_ORDER_FOCUS 	"focus"
 #define COMMAND_ORDER_HOLD 		"hold"
 
+#define ORDER_HOLD_MAX_LEVEL    15
+#define ORDER_HOLD_CALC_LEVEL	20
+#define ORDER_MOVE_MAX_LEVEL    50
+#define ORDER_FOCUS_MAX_LEVEL   50
+
 //Human Overlays Indexes used in update_icons/////////
-#define UNDERWEAR_LAYER			37
-#define UNDERSHIRT_LAYER		36
-#define MUTANTRACE_LAYER		35
-#define DAMAGE_LAYER			34
-#define UNIFORM_LAYER			33
-#define TAIL_LAYER				32	//bs12 specific. this hack is probably gonna come back to haunt me
-#define ID_LAYER				31
-#define SHOES_LAYER				30
-#define GLOVES_LAYER			29
-#define MEDICAL_LAYER			28	//For splint and gauze overlays
-#define SUIT_LAYER				27
-#define SUIT_GARB_LAYER			26
-#define SUIT_SQUAD_LAYER		25
-#define GLASSES_LAYER			24
-#define BELT_LAYER				23
-#define SUIT_STORE_LAYER		22
-#define BACK_LAYER				21
-#define HAIR_LAYER				20
-#define FACIAL_LAYER			19
-#define EARS_LAYER				18
-#define FACEMASK_LAYER			17
-#define HEAD_LAYER				16
-#define HEAD_SQUAD_LAYER		15
-#define HEAD_GARB_LAYER_2		14	// These actual defines are unused but this space within the overlays list is
-#define HEAD_GARB_LAYER_3		13	//  |
-#define HEAD_GARB_LAYER_4		12	//  |
-#define HEAD_GARB_LAYER_5		11	// End here
-#define HEAD_GARB_LAYER			10
+#define UNDERWEAR_LAYER			38
+#define UNDERSHIRT_LAYER		37
+#define MUTANTRACE_LAYER		36
+#define DAMAGE_LAYER			35
+#define UNIFORM_LAYER			34
+#define TAIL_LAYER				33	//bs12 specific. this hack is probably gonna come back to haunt me
+#define ID_LAYER				32
+#define SHOES_LAYER				31
+#define GLOVES_LAYER			30
+#define MEDICAL_LAYER			29	//For splint and gauze overlays
+#define SUIT_LAYER				28
+#define SUIT_GARB_LAYER			27
+#define SUIT_SQUAD_LAYER		26
+#define GLASSES_LAYER			25
+#define BELT_LAYER				24
+#define SUIT_STORE_LAYER		23
+#define BACK_LAYER				22
+#define HAIR_LAYER				21
+#define FACIAL_LAYER			20
+#define EARS_LAYER				19
+#define FACEMASK_LAYER			18
+#define HEAD_LAYER				17
+#define HEAD_SQUAD_LAYER		16
+#define HEAD_GARB_LAYER_2		15	// These actual defines are unused but this space within the overlays list is
+#define HEAD_GARB_LAYER_3		14	//  |
+#define HEAD_GARB_LAYER_4		13	//  |
+#define HEAD_GARB_LAYER_5		12	// End here
+#define HEAD_GARB_LAYER			11
+#define BACK_FRONT_LAYER        10 // For backpacks when mob is facing north
 #define COLLAR_LAYER			9
 #define HANDCUFF_LAYER			8
 #define LEGCUFF_LAYER			7
@@ -120,5 +127,5 @@
 #define TARGETED_LAYER			3	//for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER				2	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
 #define EFFECTS_LAYER			1  //If you're hit by an acid DoT
-#define TOTAL_LAYERS			37
+#define TOTAL_LAYERS			38
 //////////////////////////////////

@@ -19,7 +19,7 @@ GLOBAL_LIST_EMPTY_TYPED(unlocked_droppod_techs, /datum/tech/droppod)
 
 	for(var/r in GLOB.radio_packs)
 		var/atom/radio_pack = r
-		playsound(get_turf(radio_pack), 'sound/items/bikehorn.ogg', 75, sound_range = 5)
+		playsound(get_turf(radio_pack), 'sound/effects/tech_notification.ogg', 75, TRUE, sound_range = 1)
 	return
 
 // Called as to whether on_pod_access should be called

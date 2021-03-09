@@ -4,7 +4,7 @@
 */
 
 // This just checks if A is the click catcher (i.e. the user clicked a black tile on their screen), then updates A and B to be what's "under" the black tile
-#define CONVERT_CLICK_CATCHER(A,B) if(istype(A,/obj/screen/click_catcher)) { var/list/mods = params2list(params); var/turf/TU = params2turf(mods["screen-loc"], get_turf(eye)); A = TU; B = TU }
+#define CONVERT_CLICK_CATCHER(A,B) if(istype(A,/obj/screen/click_catcher)) { var/list/mods = params2list(params); var/turf/TU = params2turf(mods["screen-loc"], get_turf(eye), src); A = TU; B = TU }
 
 /client
 	// Whether or not the player is holding their mouse click

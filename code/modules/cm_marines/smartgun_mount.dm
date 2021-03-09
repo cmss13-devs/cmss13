@@ -634,10 +634,14 @@
 
 // New proc for MGs and stuff replaced handle_manual_fire(). Same arguements though, so alls good.
 /obj/structure/machinery/m56d_hmg/handle_click(mob/living/carbon/human/user, atom/A, var/list/mods)
-	if(!operator) return HANDLE_CLICK_UNHANDLED
-	if(operator != user) return HANDLE_CLICK_UNHANDLED
-	if(istype(A,/obj/screen)) return HANDLE_CLICK_UNHANDLED
-	if(is_bursting) return HANDLE_CLICK_UNHANDLED
+	if(!operator)
+		return HANDLE_CLICK_UNHANDLED
+	if(operator != user)
+		return HANDLE_CLICK_UNHANDLED
+	if(istype(A,/obj/screen))
+		return HANDLE_CLICK_UNHANDLED
+	if(is_bursting)
+		return HANDLE_CLICK_UNHANDLED
 	if(user.lying || get_dist(user,src) > 1 || user.is_mob_incapacitated())
 		user.unset_interaction()
 		return HANDLE_CLICK_UNHANDLED
@@ -658,19 +662,25 @@
 	if(mods["middle"] || mods["shift"] || mods["alt"] || mods["ctrl"])
 		return HANDLE_CLICK_PASS_THRU
 
-	var/angle = get_dir(src,target)
+	var/angle = get_dir(src, target)
 	//we can only fire in a 90 degree cone
-	if((dir & angle) && target.loc != src.loc && target.loc != operator.loc)
-
-		if(!rounds)
-			to_chat(user, SPAN_WARNING("<b>*click*</b>"))
-			playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
-		else
-			process_shot(user)
-
-		return HANDLE_CLICK_HANDLED
-
+	if(target.loc != src.loc && target.loc != operator.loc)
+		if(dir & angle)
+			try_fire(user)
+			return HANDLE_CLICK_HANDLED
+		else if(handle_outside_cone(user))
+			return HANDLE_CLICK_HANDLED
 	return HANDLE_CLICK_UNHANDLED
+
+/obj/structure/machinery/m56d_hmg/proc/try_fire(mob/living/carbon/human/user)
+	if(!rounds)
+		to_chat(user, SPAN_WARNING("<b>*click*</b>"))
+		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
+	else
+		process_shot(user)
+
+/obj/structure/machinery/m56d_hmg/proc/handle_outside_cone(mob/living/carbon/human/user)
+	return FALSE
 
 /obj/structure/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
 	if(isnull(angle)) return
@@ -1136,6 +1146,10 @@
 	params = params
 	target = A
 
+	var/angle = get_dir(src, target)
+	if(world.time > rotate_timer && !((dir & angle) && target.loc != src.loc && target.loc != operator.loc))
+		rotate_timer = world.time + 0.5 SECONDS
+		rotate_to(user, target)
 	INVOKE_ASYNC(src, .proc/auto_fire_repeat, user)
 
 /obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_stop(client/source, atom/A, params)
@@ -1158,13 +1172,16 @@
 
 	var/angle = get_dir(src,target)
 	if((world.time > rotate_timer) && !((dir & angle) && target.loc != src.loc && target.loc != operator.loc))
-		rotate_timer = world.time + 5
+		rotate_timer = world.time + 0.5 SECONDS
 		rotate_to(user, target)
 
 /obj/structure/machinery/m56d_hmg/auto/proc/auto_fire_repeat(var/mob/user, var/atom/A)
-	if(!target) return
-	if(operator != user) return
-	if(fire_stopper) return
+	if(!target)
+		return
+	if(operator != user)
+		return
+	if(fire_stopper)
+		return
 	if(user.get_active_hand() || user.get_inactive_hand())
 		to_chat(usr, SPAN_WARNING("You need both your hands free to shoot [src]."))
 		return

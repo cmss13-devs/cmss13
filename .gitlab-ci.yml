@@ -235,7 +235,7 @@ commit:changelog:
   interruptible: false
   script:
     - eval `ssh-agent -s`
-    - echo "$CM_CHANGELOG_DEPLOY_KEY" | tr -d '\r' | ssh-add - > /dev/null
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
     - git config --local user.email ${CM_CHANGELOG_DEPLOY_MAIL}
     - git config --local user.name ${CM_CHANGELOG_DEPLOY_NAME}
     - git config --local push.default simple
@@ -244,6 +244,6 @@ commit:changelog:
     - git remote set-url origin "git@gitlab.com:${CI_PROJECT_PATH}.git"
     - GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git push -o ci.skip origin HEAD:${CI_COMMIT_BRANCH}
   rules:
-    - if: '$CM_CHANGELOG_DEPLOY_KEY && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
+    - if: '$SSH_PRIVATE_KEY && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
   dependencies:
     - report:changelog

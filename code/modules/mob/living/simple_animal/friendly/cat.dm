@@ -31,7 +31,7 @@
 	if (PF)
 		PF.flags_pass = PASS_FLAGS_CRAWLER
 
-/mob/living/simple_animal/cat/Life()
+/mob/living/simple_animal/cat/Life(delta_time)
 	//MICE!
 	if((src.loc) && isturf(src.loc))
 		if(!stat && !resting && !buckled)

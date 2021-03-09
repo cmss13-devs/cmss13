@@ -6,8 +6,17 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Praetorian")  	// Only bae
-	mutator_actions_to_remove = list("Acid Ball", "Dash", "Spray Acid")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/spray_acid/prae_warden, /datum/action/xeno_action/activable/warden_heal, /datum/action/xeno_action/onclick/prae_switch_heal_type, /datum/action/xeno_action/onclick/emit_pheromones)
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/pounce/base_prae_dash,
+		/datum/action/xeno_action/activable/prae_acid_ball,
+		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/spray_acid/prae_warden,
+		/datum/action/xeno_action/activable/warden_heal,
+		/datum/action/xeno_action/onclick/prae_switch_heal_type,
+		/datum/action/xeno_action/onclick/emit_pheromones
+	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 	keystone = TRUE
 

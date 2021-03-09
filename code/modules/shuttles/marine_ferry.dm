@@ -305,6 +305,10 @@
 
 	//END: Heavy lifting backend
 
+	if(SSticker && SSticker.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED))
+		SSticker.mode.flags_round_type |= MODE_DS_LANDED
+		SSticker.mode.ds_first_drop(src)
+
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		E.on_arrival()
@@ -313,21 +317,6 @@
 
 	if(!transit_gun_mission) //we're back where we started, no location change.
 		location = !location
-
-		// Arrived at the planet/offsite
-		if(location)
-			// Shuttle code is so fucking shitty that I can't be bothered to make anything better than this
-			// Begin growing LZ & primary resource plasmagas
-			for(var/obj/effect/landmark/resource_node_activator/node_activator in world)
-				if(istype(node_activator, /obj/effect/landmark/resource_node_activator/hive))
-					continue
-
-				var/lz_tag = (shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1" ? "lz1" : "lz2")
-				if(istype(node_activator, /obj/effect/landmark/resource_node_activator/landing) && \
-				((SSticker.mode.active_lz && SSticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
-					continue
-
-				node_activator.trigger()
 
 	transit_optimized = 0 //De-optimize the flight plans
 
@@ -605,21 +594,6 @@
 	moving_status = SHUTTLE_IDLE
 
 	location = !location
-
-	if(!location)
-		return
-
-	// Begin growing LZ & primary resource plasmagas
-	for(var/obj/effect/landmark/resource_node_activator/node_activator in world)
-		if(istype(node_activator, /obj/effect/landmark/resource_node_activator/hive))
-			continue
-
-		var/lz_tag = (shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1" ? "lz1" : "lz2")
-		if(istype(node_activator, /obj/effect/landmark/resource_node_activator/landing) && \
-		((SSticker.mode.active_lz && SSticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
-			continue
-
-		node_activator.trigger()
 
 /datum/shuttle/ferry/marine/close_doors(var/list/turf/L)
 	for(var/turf/T in L) // For every turf

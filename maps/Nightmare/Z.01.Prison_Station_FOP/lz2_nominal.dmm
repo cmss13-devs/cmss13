@@ -2117,7 +2117,7 @@
 	pixel_y = -24;
 	start_charge = 0
 	},
-/obj/structure/machinery/computer/objective,
+
 /turf/open/floor/prison{
 	tag = "icon-darkpurplefull2 (NORTHWEST)";
 	icon_state = "darkpurplefull2";
@@ -3305,7 +3305,7 @@
 /area/prison/hangar_storage/main)
 "aQw" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/device/healthanalyzer/objective,
+/obj/item/device/healthanalyzer,
 /turf/open/floor/carpet,
 /area/prison/research/RD)
 "aSl" = (
@@ -3328,7 +3328,7 @@
 	},
 /area/prison/toilet/research)
 "aSD" = (
-/obj/item/document_objective/paper,
+
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitepurple"

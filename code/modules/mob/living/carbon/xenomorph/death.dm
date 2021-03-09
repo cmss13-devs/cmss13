@@ -109,6 +109,10 @@
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
 
+	for(var/i in built_structures)
+		var/list/L = built_structures[i]
+		QDEL_NULL_LIST(L)
+
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
 /mob/living/carbon/Xenomorph/gib(var/cause = "gibbing")

@@ -7,7 +7,7 @@
 	set name = "Pounce"
 	set hidden = 1
 	var/action_name = "Pounce"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_plant_weeds()
 	set category = "Alien"
@@ -92,28 +92,28 @@
 	set name = "Xeno Spit"
 	set hidden = 1
 	var/action_name = "Xeno Spit"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_hide()
 	set category = "Alien"
 	set name = "Hide"
 	set hidden = 1
 	var/action_name = "Hide"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_pheremones()
 	set category = "Alien"
 	set name = "Emit Pheromones"
 	set hidden = 1
 	var/action_name = "Emit Pheromones (30)"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_transfer_plasma()
 	set category = "Alien"
 	set name = "Transfer Plasma"
 	set hidden = 1
 	var/action_name = "Transfer Plasma"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_toggle_long_range()
 	set category = "Alien"
@@ -122,63 +122,49 @@
 	var/action_name = "Toggle Long Range Sight"
 	if(isXenoRunner(src))
 		action_name = "Toggle Long Range Sight (10)"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_throw_facehugger()
-	set category = "Alien"
-	set name = "Throw Facehugger"
-	set hidden = 1
-	var/action_name = "Use/Throw Facehugger"
-	handle_xeno_macro(src, action_name) 
-
-/datum/action/xeno_action/verb/verb_retrieve_egg()
-	set category = "Alien"
-	set name = "Retrieve Egg"
-	set hidden = 1
-	var/action_name = "Retrieve Egg"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_resin_hole()
 	set category = "Alien"
 	set name = "Place resin hole"
 	set hidden = 1
 	var/action_name = "Place resin hole (200)"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_stomp()
 	set category = "Alien"
 	set name = "Stomp"
 	set hidden = 1
 	var/action_name = "Stomp (50)"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_toggle_charge()
 	set category = "Alien"
 	set name = "Toggle Charging"
 	set hidden = 1
 	var/action_name = "Toggle Charging"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_resin_walker()
 	set category = "Alien"
 	set name = "Resin Walker"
 	set hidden = 1
 	var/action_name = "Resin Walker (50)"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_dig_tunnel()
 	set category = "Alien"
 	set name = "Dig Tunnel"
 	set hidden = 1
 	var/action_name = "Dig Tunnel (200)"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_screech()
 	set category = "Alien"
 	set name = "Screech"
 	set hidden = 1
 	var/action_name = "Screech (250)"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 
 /datum/action/xeno_action/verb/verb_watch_xeno()
@@ -186,14 +172,14 @@
 	set name = "Watch Xenomorph"
 	set hidden = 1
 	var/action_name = "Watch Xenomorph"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_heal_xeno()
 	set category = "Alien"
 	set name = "Heal Xenomorph"
 	set hidden = 1
 	var/action_name = "Heal Xenomorph (600)"
-	handle_xeno_macro(src, action_name) 
+	handle_xeno_macro(src, action_name)
 
 /datum/action/xeno_action/verb/verb_plasma_xeno()
 	set category = "Alien"

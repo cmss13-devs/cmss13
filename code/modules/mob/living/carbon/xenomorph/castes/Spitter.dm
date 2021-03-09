@@ -39,7 +39,7 @@
 	old_x = -12
 
 	tier = 2
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
@@ -47,10 +47,10 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/onclick/spitter_frenzy,
 		/datum/action/xeno_action/activable/spray_acid/spitter,
-		)
+	)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
-		)
+	)
 	mutation_type = SPITTER_NORMAL
 
 /mob/living/carbon/Xenomorph/Spitter/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)

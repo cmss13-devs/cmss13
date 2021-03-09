@@ -642,29 +642,6 @@
 			to_chat(usr, SPAN_NOTICE("You flush the [src]."))
 			inner.reagents.clear_reagents()
 
-
-/obj/item/storage/pouch/document
-	name = "large document pouch"
-	desc = "It can contain papers, folders, disks, technical manuals, and clipboards."
-	icon_state = "document"
-	storage_slots = 21
-	max_w_class = SIZE_MEDIUM
-	max_storage_space = 21
-	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_CLICK_GATHER
-	can_hold = list(
-		/obj/item/paper,
-		/obj/item/clipboard,
-		/obj/item/document_objective/paper,
-		/obj/item/document_objective/report,
-		/obj/item/document_objective/folder,
-		/obj/item/disk/objective,
-		/obj/item/document_objective/technical_manual
-	)
-
-/obj/item/storage/pouch/document/small
-	name = "small document pouch"
-	storage_slots = 7
-
 /obj/item/storage/pouch/flare
 	name = "flare pouch"
 	desc = "A pouch designed to hold flares. Refillable with a M94 flare pack."

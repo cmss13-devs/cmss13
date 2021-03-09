@@ -22,6 +22,8 @@
 	var/req_access_txt = null
 	var/req_one_access_txt = null
 
+	var/flags_obj = NO_FLAGS
+
 /obj/Initialize(mapload, ...)
 	. = ..()
 	GLOB.object_list += src

@@ -1,7 +1,7 @@
 /obj/structure/machinery/defenses
 	name = "Don't see this"
 	desc = "Call for help."
-	icon = 'icons/obj/structures/machinery/defenses.dmi'
+	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
 	icon_state = "defense_base_off"
 	anchored = TRUE
 	unacidable = TRUE
@@ -17,11 +17,13 @@
 	var/defense_icon = "uac_sentry"
 	var/handheld_type = /obj/item/defenses/handheld
 	var/disassemble_time = 20
+	var/defense_type = "Normal"
 	var/static = FALSE
 	var/locked = FALSE
 
-/obj/structure/machinery/defenses/New(var/loc, var/faction)
-	..(loc)
+
+/obj/structure/machinery/defenses/Initialize(var/mapload, var/faction)
+	. = ..()
 	if(!isnull(faction))
 		if(islist(faction))
 			faction_group = faction
@@ -30,13 +32,9 @@
 
 /obj/structure/machinery/defenses/update_icon()
 	if(turned_on)
-		icon_state = "defense_base_on"
+		icon_state = "defense_base"
 	else
 		icon_state = "defense_base_off"
-	if(locked)
-		icon_state += "_locked"
-	else
-		icon_state += "_unlocked"
 
 /obj/structure/machinery/defenses/examine(mob/user)
 	. = ..()

@@ -73,10 +73,8 @@
 	if(scanning)
 		var/turf/mainloc = get_turf(src)
 		for(var/mob/living/M in range(range,mainloc))
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				if(H.get_target_lock(iff_signal))
-					continue
+			if(M.get_target_lock(iff_signal))
+				continue
 			HasProximity(M)
 
 	if(timing && (time >= 0))

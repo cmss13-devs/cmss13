@@ -107,13 +107,13 @@
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
 	if(potency > 1)
-		M.sdisabilities |= BLIND
+		M.sdisabilities |= DISABILITY_BLIND
 	else
 		M.disabilities |= NEARSIGHTED
 	if(potency > 2)
-		M.sdisabilities |= DEAF
+		M.sdisabilities |= DISABILITY_DEAF
 	if(potency > 3)
-		M.sdisabilities |= MUTE
+		M.sdisabilities |= DISABILITY_MUTE
 
 /datum/chem_property/neutral/neuroinhibiting/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, BRAIN)

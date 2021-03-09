@@ -1000,20 +1000,57 @@ var/datum/controller/supply/supply_controller = new()
 	var/tank_unlocked = TRUE
 	var/list/allowed_roles = list(JOB_CREWMAN)
 
-/obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
-	. = ..()
-	if(!VehicleElevatorConsole)
-		VehicleElevatorConsole = src
-	else
-		check_vehicle_lock()
+	var/list/vehicles
 
-/obj/structure/machinery/computer/supplycomp/vehicle/proc/check_vehicle_lock()
+/datum/vehicle_order
+	var/name = "vehicle order"
+
+	var/obj/vehicle/ordered_vehicle
+	var/unlocked = TRUE
+	var/failure_message = "<font color=\"red\"><b>Not enough resources were allocated to repair this vehicle during this operation.</b></font><br>"
+
+/datum/vehicle_order/proc/has_vehicle_lock()
+	return FALSE
+
+/datum/vehicle_order/proc/on_created(var/obj/vehicle/V)
+	return
+
+/datum/vehicle_order/tank
+	name = "M34A2 Longstreet Light Tank"
+	ordered_vehicle = /obj/vehicle/multitile/tank/decrepit
+
+/datum/vehicle_order/tank/has_vehicle_lock()
 	if(!SSticker.mode || istype(SSticker.mode, /datum/game_mode/extended))
-		return
+		return FALSE
+
 	var/datum/game_mode/GM = SSticker.mode
 
 	if(GM.marine_starting_num < TANK_POPLOCK)
-		tank_unlocked = FALSE
+		return TRUE
+/datum/vehicle_order/apc
+	name = "M577 Armored Personnel Carrier"
+	ordered_vehicle = /obj/vehicle/multitile/apc/decrepit
+
+/datum/vehicle_order/apc/med
+	name = "M577-MED Armored Personnel Carrier"
+	ordered_vehicle = /obj/vehicle/multitile/apc/medical/decrepit
+
+/datum/vehicle_order/apc/cmd
+	name = "M577-CMD Armored Personnel Carrier"
+	ordered_vehicle = /obj/vehicle/multitile/apc/command/decrepit
+
+/obj/structure/machinery/computer/supplycomp/vehicle/Initialize()
+	. = ..()
+
+	vehicles = list(
+		new/datum/vehicle_order/tank(),
+		new/datum/vehicle_order/apc(),
+		new/datum/vehicle_order/apc/med(),
+		new/datum/vehicle_order/apc/cmd()
+	)
+
+	if(!VehicleElevatorConsole)
+		VehicleElevatorConsole = src
 
 /obj/structure/machinery/computer/supplycomp/vehicle/attack_hand(var/mob/living/carbon/human/H as mob)
 	if(inoperable())
@@ -1058,13 +1095,14 @@ var/datum/controller/supply/supply_controller = new()
 		dat += "No vehicles are available for retrieval."
 	else
 		dat += "Available vehicles:<br>"
-		if(tank_unlocked)
-			dat += "<a href='?src=\ref[src];get_vehicle=tank'>M34A2 Longstreet Light Tank</a><br>"
-		else
-			dat += "<font color=\"red\"><b>Not enough resources were allocated to repair M34A2 Longstreet Light Tank during this operation.</b></font><br>"
-		dat += {"<a href='?src=\ref[src];get_vehicle=apc'>M577 Armored Personnel Carrier</a><br>
-		<a href='?src=\ref[src];get_vehicle=med_apc'>M577-MED Armored Personnel Carrier</a><br>
-		<a href='?src=\ref[src];get_vehicle=cmd_apc'>M577-CMD Armored Personnel Carrier</a><br>"}
+
+		for(var/d in vehicles)
+			var/datum/vehicle_order/VO = d
+
+			if(VO.has_vehicle_lock())
+				dat += VO.failure_message
+			else
+				dat += "<a href='?src=\ref[src];get_vehicle=\ref[VO]'>[VO.name]</a><br>"
 
 	show_browser(H, dat, "Automated Storage and Retrieval System", "computer", "size=575x450")
 
@@ -1080,8 +1118,16 @@ var/datum/controller/supply/supply_controller = new()
 		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
 		return
 	var/datum/shuttle/ferry/supply/vehicle/elevator = supply_controller.vehicle_elevator
+
 	if (!elevator)
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
+		return
+
+	if(elevator.locked)
+		return
+
+	if(!elevator.location)
+		elevator.launch(src)
 		return
 
 	if(ismaintdrone(usr))
@@ -1119,17 +1165,16 @@ var/datum/controller/supply/supply_controller = new()
 		var/turf/middle_turf = locate(min_x + Ceiling((max_x-min_x)/2) + 1, min_y + Ceiling((max_y-min_y)/2) + 1, z_coord)
 
 		var/obj/vehicle/multitile/ordered_vehicle
-		switch(href_list["get_vehicle"])
-			if("tank")
-				ordered_vehicle = new /obj/vehicle/multitile/tank/decrepit(middle_turf)
-			if("apc")
-				ordered_vehicle = new /obj/vehicle/multitile/apc/decrepit(middle_turf)
-			if("med_apc")
-				ordered_vehicle = new /obj/vehicle/multitile/apc/medical/decrepit(middle_turf)
-			if("cmd_apc")
-				ordered_vehicle = new /obj/vehicle/multitile/apc/command/decrepit(middle_turf)
 
+		var/datum/vehicle_order/VO = locate(href_list["get_vehicle"])
+
+		if(!VO) return
+		if(VO.has_vehicle_lock()) return
+
+		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
 		elevator.launch(src)
+
+		VO.on_created(ordered_vehicle)
 
 		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_VEHICLE_ORDERED, ordered_vehicle)
 		spent = TRUE

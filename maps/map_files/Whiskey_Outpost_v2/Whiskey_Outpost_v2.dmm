@@ -1512,7 +1512,7 @@
 /obj/item/storage/box/syringes,
 /obj/item/reagent_container/dropper,
 /obj/item/reagent_container/hypospray,
-/obj/item/weapon/gun/syringe,
+/obj/item/weapon/gun/pill,
 /obj/structure/machinery/light/small{
 	dir = 1
 	},

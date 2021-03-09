@@ -1077,7 +1077,7 @@
 	if(!isYautja(H))
 		to_chat(H, SPAN_WARNING("You do not know how to configure the trap."))
 		return
-	var/range = input(H, "Which range would you like to set the hunting trap to?") as null|anything in list(2, 3, 4, 5, 6, 7)
+	var/range = tgui_input_list(H, "Which range would you like to set the hunting trap to?", "Hunting Trap Range", list(2, 3, 4, 5, 6, 7))
 	if(isnull(range))
 		return
 	tether_range = range

@@ -218,6 +218,7 @@ SUBSYSTEM_DEF(ticker)
 	for(var/obj/structure/machinery/vending/V in machines)
 		INVOKE_ASYNC(V, /obj/structure/machinery/vending.proc/select_gamemode_equipment, mode.type)
 
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_POST_SETUP)
 	setup_done = TRUE
 
 
@@ -387,4 +388,3 @@ SUBSYSTEM_DEF(ticker)
 		for(var/mob/M in GLOB.player_list)
 			if(!istype(M,/mob/new_player))
 				to_chat(M, "Marine commanding officer position not forced on anyone.")
-

@@ -69,12 +69,12 @@
 
 	if(mods["shift"] && !mods["middle"])
 		if(selected_ability && client && client.prefs && !(client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK))
-			selected_ability.use_ability(A)
+			selected_ability.use_ability_wrapper(A)
 			return TRUE
 
 	if(mods["middle"] && !mods["shift"])
 		if(selected_ability && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_MIDDLE_MOUSE_CLICK)
-			selected_ability.use_ability(A)
+			selected_ability.use_ability_wrapper(A)
 			return TRUE
 
 	if(next_move >= world.time)

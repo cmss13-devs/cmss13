@@ -16,6 +16,18 @@
 	var/current_cooldown_start_time = 0
 	var/current_cooldown_duration = 0
 
+	var/charges = NO_ACTION_CHARGES
+
+/datum/action/xeno_action/New(Target, override_icon_state)
+	. = ..()
+	if(charges != NO_ACTION_CHARGES)
+		RegisterSignal(src, COMSIG_XENO_ACTION_USED, .proc/remove_charge)
+
+/datum/action/xeno_action/proc/remove_charge()
+	SIGNAL_HANDLER
+	charges--
+	if(!charges)
+		remove_from(owner)
 
 // Actually applies the effects of the action.
 // Circa 1/2020, effects for even non-activable abilities are moved
@@ -27,12 +39,12 @@
 // which use_ability invocations can modify using typechecks and typecasts where appropriate.
 /datum/action/xeno_action/proc/use_ability(atom/A)
 	if(!owner)
-		return
+		return FALSE
 	track_xeno_ability_stats()
 	for(var/X in owner.actions)
 		var/datum/action/act = X
 		act.update_button_icon()
-	return
+	return TRUE
 
 // Track statistics for this ability
 /datum/action/xeno_action/proc/track_xeno_ability_stats()
@@ -50,7 +62,7 @@
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
 
-/datum/action/xeno_action/give_action(mob/living/L)
+/datum/action/xeno_action/give_to(mob/living/L)
 	..()
 	if(macro_path)
 		add_verb(L, macro_path)
@@ -99,6 +111,12 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.use_plasma(plasma_to_check)
 
+/// A wrapper for use_ability that sends a signal
+/datum/action/xeno_action/proc/use_ability_wrapper(...)
+	// TODO: make hidden a part of can_use_action
+	if(!hidden && can_use_action() && use_ability(arglist(args)))
+		SEND_SIGNAL(src, COMSIG_XENO_ACTION_USED, owner)
+
 // Activable actions - most abilities in the game. Require Shift/Middle click to do their 'main' effects.
 // The action_activate code of these actions does NOT call use_ability.
 /datum/action/xeno_action/activable
@@ -123,8 +141,10 @@
 			X.selected_ability = null
 		button.icon_state = "template_on"
 		X.selected_ability = src
+		if(charges != NO_ACTION_CHARGES)
+			to_chat(X, SPAN_INFO("It has [charges] uses left."))
 
-/datum/action/xeno_action/activable/remove_action(mob/living/carbon/Xenomorph/X)
+/datum/action/xeno_action/activable/remove_from(mob/living/carbon/Xenomorph/X)
 	..()
 	if(X.selected_ability == src)
 		X.selected_ability = null
@@ -138,7 +158,7 @@
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/onclick/action_activate()
-	use_ability(null)
+	use_ability_wrapper(null)
 	return
 
 // Adds a cooldown to this

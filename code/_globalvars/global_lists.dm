@@ -44,6 +44,16 @@ GLOBAL_LIST_INIT(resin_build_order_default, list(
 	/datum/resin_construction/resin_obj/fast_resin,
 	/datum/resin_construction/resin_obj/door,
 ))
+
+GLOBAL_LIST_INIT(resin_build_order_drone, list(
+	/datum/resin_construction/resin_turf/wall,
+	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/nest,
+	/datum/resin_construction/resin_obj/sticky_resin,
+	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/door,
+))
+
 GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_turf/wall/resin_turf/thick,
 	/datum/resin_construction/resin_turf/membrane/thick,
@@ -106,12 +116,10 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_BRAVO = new /datum/hive_status/bravo(),
 	XENO_HIVE_CHARLIE = new /datum/hive_status/charlie(),
 	XENO_HIVE_DELTA = new /datum/hive_status/delta(),
+	XENO_HIVE_SUBMISSIVE = new /datum/hive_status/corrupted/submissive()
 ))
 
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())
-
-//DEFCON rewards / assets
-GLOBAL_REFERENCE_LIST_INDEXED_SORTED(defcon_reward_list, /datum/defcon_reward, name)
 
 // Posters
 GLOBAL_LIST_INIT(poster_designs, subtypesof(/datum/poster))

@@ -1,4 +1,4 @@
-/mob/living/carbon/Life()
+/mob/living/carbon/Life(delta_time)
 	..()
 
 	handle_fire() //Check if we're on fire

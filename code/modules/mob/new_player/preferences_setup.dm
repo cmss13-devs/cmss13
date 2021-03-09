@@ -223,6 +223,8 @@ datum/preferences/proc/job_pref_to_gear_preset()
 			return "USCM Cryo Specialist (Equipped)"
 		if(JOB_SQUAD_SMARTGUN)
 			return "USCM Cryo Smartgunner (Equipped)"
+		if(JOB_SQUAD_RTO)
+			return "USCM Cryo RT Operator (Equipped)"
 		if(JOB_CO)
 			return "USCM Captain (CO)"
 		if(JOB_SO)
@@ -243,8 +245,6 @@ datum/preferences/proc/job_pref_to_gear_preset()
 			return "USCM Military Warden (MW)"
 		if(JOB_CREWMAN)
 			return "USCM Vehicle Crewman (CRMN)"
-		if(JOB_INTEL)
-			return "USCM Intelligence Officer (IO)"
 		if(JOB_SEA)
 			return "USCM Senior Enlisted Advisor (SEA)"
 		if(JOB_CHIEF_ENGINEER)

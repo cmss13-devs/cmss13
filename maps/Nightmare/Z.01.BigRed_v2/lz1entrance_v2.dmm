@@ -194,7 +194,7 @@
 /area/bigredv2/outside/space_port)
 "aB" = (
 /obj/structure/filingcabinet,
-/obj/item/document_objective/report,
+
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkgreen2";
@@ -362,10 +362,6 @@
 /area/bigredv2/outside/space_port)
 "aT" = (
 /obj/structure/surface/table,
-/obj/structure/machinery/computer/objective{
-	dir = 8;
-	icon_state = "medlaptop"
-	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkgreen2";

@@ -6,13 +6,11 @@
 	idtype = /obj/item/card/id/pmc
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
+	languages = list("English")
 
 /datum/equipment_preset/pmc/New()
 	. = ..()
 	access = get_all_accesses() + get_all_centcom_access()
-
-/datum/equipment_preset/pmc/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English"))
 
 
 /datum/equipment_preset/pmc/load_name(mob/living/carbon/human/H, var/randomise)
@@ -299,7 +297,6 @@
 	H.equip_to_slot_or_del(new /obj/item/device/reagent_scanner, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_p90, WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/document, WEAR_R_STORE)
 
 //*****************************************************************************************************/
 
@@ -358,7 +355,47 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_sniper, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
 
-//*****************************************************************************************************/
+
+/*****************************************************************************************************/
+
+/datum/equipment_preset/pmc/xeno_handler
+    name = "Weston-Yamada PMC (Xeno Handler)"
+    flags = EQUIPMENT_PRESET_EXTRA
+
+    faction_group = FACTION_LIST_MARINE_WY
+
+    assignment = JOB_PMC_XENO_HANDLER
+    rank = JOB_PMC_XENO_HANDLER
+    paygrade = "PMC3"
+    role_comm_title = "Spc"
+    skills = /datum/skills/pmc/xeno_handler
+    languages = list("English", "Xenomorph")
+
+/datum/equipment_preset/pmc/xeno_handler/load_gear(mob/living/carbon/human/H)
+    H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_EAR)
+    H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
+    H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+    H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+    H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
+    H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
+    H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC, WEAR_FACE)
+
+    H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
+    H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
+    H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
+    H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton, WEAR_IN_BACK)
+    H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
+    H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88, WEAR_WAIST)
+    H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_R_STORE)
+
+    H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/m39/elite, WEAR_J_STORE)
+    H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39, WEAR_L_STORE)
+    H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39, WEAR_R_STORE)
+    H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
+    H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
+    H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/m39/ap, WEAR_IN_BACK)
+
+/*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/deathsquad
 	name = "Weston-Yamada Deathsquad"

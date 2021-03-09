@@ -1,4 +1,4 @@
-/mob/living/silicon/ai/Life()
+/mob/living/silicon/ai/Life(delta_time)
 	if (src.stat == 2)
 		return
 	else //I'm not removing that shitton of tabs, unneeded as they are. -- Urist

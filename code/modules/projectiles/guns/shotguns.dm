@@ -93,7 +93,8 @@ can cause issues with ammo types getting mixed up during the burst.
 		//While there is a much smaller way to do this,
 		//this is the most resource efficient way to do it.
 /obj/item/weapon/gun/shotgun/proc/retrieve_shell(selection)
-	var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+	var/datum/ammo/A = GLOB.ammo_list[selection]
+	var/obj/item/ammo_magazine/handful/new_handful = new A.handful_type()
 	new_handful.generate_handful(selection, "12g", 5, 1, /obj/item/weapon/gun/shotgun)
 	return new_handful
 

@@ -4,7 +4,11 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Hivelord")
-	mutator_actions_to_remove = list("Secrete Thick Resin", "Corrosive Acid (100)", "Resin Walker (50)")
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/secrete_resin/hivelord,
+		/datum/action/xeno_action/activable/corrosive_acid,
+		/datum/action/xeno_action/onclick/toggle_speed,
+	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/secrete_resin/remote, //third macro
 		/datum/action/xeno_action/onclick/toggle_speed, //fourth macro
@@ -29,7 +33,7 @@
 	MS.recalculate_actions(description, flavor_description)
 	H.recalculate_plasma()
 
-	H.resin_build_order = GLOB.resin_build_order_default
+	H.resin_build_order = GLOB.resin_build_order_drone
 
 /*
  *    Coerce Resin ability

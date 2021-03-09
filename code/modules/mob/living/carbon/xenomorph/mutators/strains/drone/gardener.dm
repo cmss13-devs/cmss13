@@ -4,7 +4,13 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Drone") //Only drone.
-	mutator_actions_to_remove = list("Secrete Resin","Choose Resin Structure", "Corrosive Acid (75)", "Transfer Plasma", "Order Construction (400)")
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/onclick/choose_resin,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
+		/datum/action/xeno_action/activable/transfer_plasma,
+		/datum/action/xeno_action/activable/place_construction,
+	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/resin_surge, //second macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, //third macro

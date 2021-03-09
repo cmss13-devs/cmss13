@@ -115,10 +115,9 @@
 		italics = 1
 		message_range = 2
 
-
 	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.
 
-	INVOKE_ASYNC(src, /mob/living/carbon/human/proc/say_to_radios, used_radios, message, message_mode, verb, speaking)
+	INVOKE_ASYNC(src, /mob/living/carbon/human.proc/say_to_radios, used_radios, message, message_mode, verb, speaking)
 
 /mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)
 	for(var/obj/item/device/radio/R in used_radios)
@@ -214,7 +213,7 @@
 	if(silent)
 		message = ""
 		handled = 1
-	if(sdisabilities & MUTE)
+	if(sdisabilities & DISABILITY_MUTE)
 		message = ""
 		handled = 1
 	if(wear_mask)

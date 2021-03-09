@@ -139,6 +139,9 @@
 	if(ishuman(A.loc))
 		return A.loc
 
+/obj/item/device/motiondetector/proc/apply_debuff(var/mob/M)
+	return
+
 /obj/item/device/motiondetector/proc/scan()
 	set waitfor = 0
 	if(scanning)
@@ -162,14 +165,14 @@
 	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 
 	for(var/A in ping_candidates)
-		var/mob/M = A	//do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
+		var/mob/living/M = A	//do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
 		if(isrobot(M)) continue
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.get_target_lock(iff_signal))
-				continue
+		if(M.get_target_lock(iff_signal))
+			continue
+
+		apply_debuff(M)
 		ping_count++
 		if(human_user)
 			show_blip(human_user, M)
@@ -227,91 +230,3 @@
 		sleep(12)
 		if(user.client)
 			user.client.screen -= DB
-
-/obj/item/device/motiondetector/intel
-	name = "data detector"
-	desc = "A device that detects objects that may be useful for intel gathering. You can switch modes with Alt+Click."
-	icon_state = "datadetector"
-	item_state = "data_detector"
-	blip_type = "data"
-	var/objects_to_detect = list(
-		/obj/item/document_objective,
-		/obj/item/disk/objective,
-		/obj/item/device/mass_spectrometer/adv/objective,
-		/obj/item/device/reagent_scanner/adv/objective,
-		/obj/item/device/healthanalyzer/objective,
-		/obj/item/device/autopsy_scanner/objective,
-		/obj/item/device/autopsy_scanner/objective,
-		/obj/item/paper/research_notes,
-		/obj/item/reagent_container/glass/beaker/vial/random,
-		/obj/item/storage/fancy/vials/random,
-		/obj/structure/machinery/computer/objective,
-		/obj/item/limb/head/synth,
-	)
-
-/obj/item/device/motiondetector/intel/update_icon()
-	if (active)
-		icon_state = "[initial(icon_state)]_on_[detector_mode]"
-	else
-		icon_state = "[initial(icon_state)]"
-
-/obj/item/device/motiondetector/intel/scan()
-	set waitfor = 0
-	if(scanning)
-		return
-	scanning = TRUE
-	var/mob/living/carbon/human/human_user
-	if(ishuman(loc))
-		human_user = loc
-
-	var/detected_sound = FALSE
-
-	for(var/obj/I in orange(detector_range, loc))
-		var/detected
-		for(var/DT in objects_to_detect)
-			if(istype(I, DT))
-				detected = TRUE
-			if(I.contents)
-				for(var/obj/item/CI in I.contents)
-					if(istype(CI, DT))
-						detected = TRUE
-						break
-			if(human_user && detected)
-				show_blip(human_user, I)
-			if(detected)
-				break
-
-		if(detected)
-			detected_sound = TRUE
-
-		CHECK_TICK
-
-	for(var/mob/M in orange(detector_range, loc))
-		var/detected
-		if(loc == null || M == null) continue
-		if(loc.z != M.z) continue
-		if(M == loc) continue //device user isn't detected
-		if((isXeno(M) || isYautja(M)) && M.stat == DEAD )
-			detected = TRUE
-		else if(ishuman(M) && M.stat == DEAD && M.contents.len)
-			for(var/obj/I in M.contents_twice())
-				for(var/DT in objects_to_detect)
-					if(istype(I, DT))
-						detected = TRUE
-						break
-				if(detected)
-					break
-
-		if(human_user && detected)
-			show_blip(human_user, M)
-			if(detected)
-				detected_sound = TRUE
-
-		CHECK_TICK
-
-	if(detected_sound)
-		playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)
-	else
-		playsound(loc, 'sound/items/detector.ogg', 50, 0, 7, 2)
-
-	scanning = FALSE

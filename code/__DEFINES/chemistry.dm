@@ -33,16 +33,16 @@
 
 
 // How many units of reagent are consumed per tick, by default.
-#define REAGENTS_METABOLISM 0.2
+#define REAGENTS_METABOLISM AMOUNT_PER_TIME(1, 20 SECONDS)
 // By defining the effect multiplier this way, it'll exactly adjust
 // all effects according to how they originally were with the 0.4 metabolism
 #define REAGENTS_EFFECT_MULTIPLIER REAGENTS_METABOLISM / 0.4
 
 #define REM REAGENTS_EFFECT_MULTIPLIER
 // Reagent metabolism defines.
-#define FOOD_METABOLISM 0.4
-#define ALCOHOL_METABOLISM 0.1
-#define RAPID_METABOLISM 1.0
+#define FOOD_METABOLISM AMOUNT_PER_TIME(1, 5 SECONDS)
+#define ALCOHOL_METABOLISM AMOUNT_PER_TIME(1, 20 SECONDS)
+#define RAPID_METABOLISM AMOUNT_PER_TIME(1, 2 SECONDS)
 
 // Factor of how fast mob nutrition decreases
 #define HUNGER_FACTOR 0.05
@@ -86,10 +86,11 @@
 #define PLASMA_ROYAL 			"royalplasma"
 
 // Flags for Reagent
-#define REAGENT_TYPE_MEDICAL	1 // Used to restrict recipes in the generator from employing all reagents of this type
-#define REAGENT_SCANNABLE		2 // Whether the reagent shows up on health analysers.
-#define REAGENT_NOT_INGESTIBLE	4 // Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
-#define REAGENT_CANNOT_OVERDOSE	8 // Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.
+#define REAGENT_TYPE_MEDICAL	(1<<0) // Used to restrict recipes in the generator from employing all reagents of this type
+#define REAGENT_SCANNABLE		(1<<1) // Whether the reagent shows up on health analysers.
+#define REAGENT_NOT_INGESTIBLE	(1<<2) // Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
+#define REAGENT_CANNOT_OVERDOSE	(1<<3) // Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.
+#define REAGENT_TYPE_STIMULANT  (1<<4)
 
 /*
 	properties defines
@@ -220,3 +221,7 @@
 #define PROPERTY_PAINING_PAIN_OD 	1
 #define PROPERTY_DEFIBRILLATING_PAIN_OD	1
 #define PROPERTY_CARDIOPEUTIC_PAIN_CRITICAL	3
+
+// Injectors
+#define INJECTOR_USES 3
+#define INJECTOR_PERCENTAGE_OF_OD 0.5

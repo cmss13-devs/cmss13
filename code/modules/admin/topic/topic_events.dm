@@ -59,16 +59,6 @@
 				return
 			message_staff("[key_name_admin(usr)] powered all ship reactors")
 			power_restore_ship_reactors()
-		if("decrease_defcon")
-			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
-				return
-			message_staff("[key_name_admin(usr)] decreased DEFCON level.")
-			defcon_controller.decrease_defcon_level()
-		if("give_defcon_points")
-			var/amount = input(usr, "How many points to add?") as num
-			if(amount != 0) //can add negative numbers too!
-				message_staff("[key_name_admin(usr)] added [amount] DEFCON points.")
-				SSobjectives.add_admin_points(amount)
 		if("change_clearance")
 			var/list/clearance_levels = list(0,1,2,3,4,5)
 			var/level = tgui_input_list(usr, "Select new clearance level:","Current level: [chemical_data.clearance_level]", clearance_levels)

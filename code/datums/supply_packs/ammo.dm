@@ -295,6 +295,17 @@
 	containername = "\improper sentry flamer ammo crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_sentry_shotgun
+	name = "UA 12-G sentry shotgun ammunition (x2)"
+	contains = list(
+					/obj/item/ammo_magazine/sentry/shotgun,
+					/obj/item/ammo_magazine/sentry/shotgun
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper sentry shotgun ammo crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_napalm
 	name = "UT-Napthal Fuel (x4)"
 	contains = list(

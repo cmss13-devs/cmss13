@@ -29,29 +29,29 @@
 	return
 
 /proc/handle_xeno_macro_activate(var/mob/living/carbon/Xenomorph/X, var/datum/action/xeno_action/A)
-	
+
 	var/datum/action/xeno_action/activable/activableA = A
 
 	if (!istype(A))
 		return
-	
+
 	if (activableA.can_use_action() && activableA.action_cooldown_check())
-		activableA.use_ability()
+		activableA.use_ability_wrapper()
 
 // Queue an action for the next click. This will always work but should only be used for actions that actually NEED an atom to work
 // Other ones should just use the activate proc
 /proc/handle_xeno_macro_actionqueue(var/mob/living/carbon/Xenomorph/X, var/datum/action/xeno_action/activable/A)
 	if (!istype(A))
 		return
-	
+
 	X.queued_action = A
 	to_chat(X, SPAN_WARNING("Your next click will use [A.name]!"))
-	
+
 	if(X.client)
 		X.client.mouse_pointer_icon = file("icons/mob/hud/mecha_mouse.dmi")
 
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_one()	
+/mob/living/carbon/Xenomorph/verb/xeno_primary_action_one()
 	set category = "Alien"
 	set name = "Xeno Primary Action One"
 	set hidden = 1
@@ -60,12 +60,14 @@
 		return
 	for (var/datum/action/xeno_action/XA in X.actions)
 		if (!istype(XA))
-			continue 
+			continue
+		if(XA.hidden)
+			continue
 		if (XA.ability_primacy == XENO_PRIMARY_ACTION_1)
 			handle_xeno_macro_datum(src, XA)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_two()	
+/mob/living/carbon/Xenomorph/verb/xeno_primary_action_two()
 	set category = "Alien"
 	set name = "Xeno Primary Action Two"
 	set hidden = 1
@@ -74,12 +76,14 @@
 		return
 	for (var/datum/action/xeno_action/XA in X.actions)
 		if (!istype(XA))
-			continue 
+			continue
+		if(XA.hidden)
+			continue
 		if (XA.ability_primacy == XENO_PRIMARY_ACTION_2)
 			handle_xeno_macro_datum(src, XA)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_three()	
+/mob/living/carbon/Xenomorph/verb/xeno_primary_action_three()
 	set category = "Alien"
 	set name = "Xeno Primary Action Three"
 	set hidden = 1
@@ -88,12 +92,14 @@
 		return
 	for (var/datum/action/xeno_action/XA in X.actions)
 		if (!istype(XA))
-			continue 
+			continue
+		if(XA.hidden)
+			continue
 		if (XA.ability_primacy == XENO_PRIMARY_ACTION_3)
 			handle_xeno_macro_datum(src, XA)
 			break
 
-/mob/living/carbon/Xenomorph/verb/xeno_primary_action_four()	
+/mob/living/carbon/Xenomorph/verb/xeno_primary_action_four()
 	set category = "Alien"
 	set name = "Xeno Primary Action Four"
 	set hidden = 1
@@ -102,7 +108,9 @@
 		return
 	for (var/datum/action/xeno_action/XA in X.actions)
 		if (!istype(XA))
-			continue 
+			continue
+		if(XA.hidden)
+			continue
 		if (XA.ability_primacy == XENO_PRIMARY_ACTION_4)
 			handle_xeno_macro_datum(src, XA)
 			break

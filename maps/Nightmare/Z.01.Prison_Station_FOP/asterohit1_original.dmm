@@ -2077,7 +2077,7 @@
 /area/prison/cellblock/protective)
 "cBl" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/disk/objective,
+
 /turf/open/floor/wood,
 /area/prison/library)
 

@@ -175,7 +175,7 @@
 	mobs_under += L
 	RegisterSignal(L, COMSIG_PARENT_QDELETING, .proc/remove_under_van)
 	RegisterSignal(L, COMSIG_MOB_LOGIN, .proc/add_client)
-	RegisterSignal(L, COMSIG_MOB_POST_MOVE, .proc/check_under_van)
+	RegisterSignal(L, COMSIG_MOVABLE_MOVED, .proc/check_under_van)
 
 	if(L.client)
 		add_client(L)
@@ -191,12 +191,12 @@
 	UnregisterSignal(L, list(
 		COMSIG_PARENT_QDELETING,
 		COMSIG_MOB_LOGIN,
-		COMSIG_MOB_POST_MOVE,
+		COMSIG_MOVABLE_MOVED,
 	))
 
-/obj/vehicle/multitile/van/proc/check_under_van(var/mob/M, var/turf/NewLoc, var/direction)
+/obj/vehicle/multitile/van/proc/check_under_van(var/mob/M, var/turf/oldloc, var/direction)
 	SIGNAL_HANDLER
-	if(!(NewLoc in locs))
+	if(!(M.loc in locs))
 		remove_under_van(M)
 
 /obj/vehicle/multitile/van/proc/add_client(var/mob/living/L)

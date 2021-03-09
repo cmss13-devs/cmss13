@@ -273,24 +273,6 @@
 		if("Cancel")
 			return
 
-/client/proc/show_objectives_status()
-	set name = "Objectives Status"
-	set desc = "Check the status of objectives."
-	set category = "Admin.Events"
-
-	if(!admin_holder || !(admin_holder.rights & R_MOD))
-		to_chat(src, "Only administrators may use this command.")
-		return
-
-	to_chat(src, SSobjectives.get_objectives_progress())
-	to_chat(src, "<b>DEFCON:</b> [SSobjectives.get_scored_points()] / [SSobjectives.get_total_points()] points")
-
-	var/datum/hive_status/hive
-	for(var/hivenumber in GLOB.hive_datum)
-		hive = GLOB.hive_datum[hivenumber]
-		if(hive.xenocon_points)
-			to_chat(src, "<b>XENOCON [hive.hivenumber]:</b> [hive.xenocon_points] / [XENOCON_THRESHOLD] points")
-
 /client/proc/award_medal()
 	if(!check_rights(R_ADMIN))
 		return
@@ -674,7 +656,7 @@
 			H.hud_set_squad()
 
 			for(var/datum/action/human_action/activable/mutineer/A in H.actions)
-				A.remove_action(H)
+				A.remove_from(H)
 
 /client/proc/cmd_fun_fire_ob()
 	set category = "Admin.Fun"

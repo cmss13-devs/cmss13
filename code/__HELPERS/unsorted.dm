@@ -1172,6 +1172,19 @@ var/global/image/action_blue_power_up
 	var/y_pos = null
 	var/z_pos = null
 
+/datum/coords/New(var/turf/location)
+	. = ..()
+	if(location)
+		x_pos = location.x
+		y_pos = location.y
+		z_pos = location.z
+
+/datum/coords/proc/get_turf_from_coord()
+	if(!x_pos || !y_pos || !z_pos)
+		return
+
+	return locate(x_pos, y_pos, z_pos)
+
 /area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
 	//Takes: Area. Optional: turf type to leave behind.
 	//Returns: Nothing.

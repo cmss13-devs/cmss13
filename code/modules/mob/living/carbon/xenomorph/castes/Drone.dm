@@ -12,6 +12,8 @@
 	evasion = XENO_EVASION_MEDIUM
 	speed = XENO_SPEED_TIER_7
 
+	build_time_mult = BUILD_TIME_MULT_BUILDER
+
 	caste_desc = "A builder of hives. Only drones may evolve into Queens."
 	evolves_to = list("Queen", "Burrower", "Carrier", "Hivelord") //Add more here seperated by commas
 	deevolves_to = "Larva"
@@ -27,6 +29,11 @@
 
 	aura_strength = 2
 
+/datum/caste_datum/drone/New()
+	. = ..()
+
+	resin_build_order = GLOB.resin_build_order_drone
+
 /mob/living/carbon/Xenomorph/Drone
 	caste_name = "Drone"
 	name = "Drone"
@@ -37,7 +44,7 @@
 	tier = 1
 	pixel_x = -12
 	old_x = -12
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,

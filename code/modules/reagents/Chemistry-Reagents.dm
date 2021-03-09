@@ -112,10 +112,10 @@
 	src = null
 	return
 
-/datum/reagent/proc/on_mob_life(mob/living/M, alien)
+/datum/reagent/proc/on_mob_life(mob/living/M, alien, var/delta_time)
 	if(alien == IS_HORROR || !holder)
 		return
-	holder.remove_reagent(id, custom_metabolism) //By default it slowly disappears.
+	holder.remove_reagent(id, custom_metabolism*delta_time) //By default it slowly disappears.
 
 	var/list/mods = handle_pre_processing(M)
 

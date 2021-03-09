@@ -16,7 +16,8 @@
 	gear_preset = "WO Dust Raider Squad Leader"
 
 AddTimelock(/datum/job/marine/leader, list(
-	JOB_SQUAD_ROLES = 10 HOURS
+	JOB_SQUAD_ROLES = 10 HOURS,
+	JOB_SQUAD_RTO = 3 HOURS
 ))
 
 /obj/effect/landmark/start/marine/leader

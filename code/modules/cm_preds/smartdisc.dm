@@ -224,7 +224,7 @@
 	var/list/L = hearers(src, dist)
 	return L
 
-/mob/living/simple_animal/hostile/smartdisc/Life()
+/mob/living/simple_animal/hostile/smartdisc/Life(delta_time)
 	. = ..()
 	if(!.)
 		walk(src, 0)

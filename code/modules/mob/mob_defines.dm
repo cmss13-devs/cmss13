@@ -203,6 +203,7 @@
 	can_block_movement = TRUE
 
 	appearance_flags = TILE_BOUND
+	var/mouse_icon = null
 
 	var/datum/player_panel/mob_panel
 
@@ -210,3 +211,6 @@
 	var/turf/listed_turf = null
 
 	var/list/list/item_verbs = list()
+
+	var/max_implants = 2
+	var/list/implants

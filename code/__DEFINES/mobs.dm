@@ -53,9 +53,9 @@
 //=================================================
 
 //sdisabilities
-#define BLIND			1
-#define MUTE			2
-#define DEAF			4
+#define DISABILITY_BLIND		(1<<0)
+#define DISABILITY_MUTE			(1<<1)
+#define DISABILITY_DEAF			(1<<2)
 //=================================================
 
 //mob/var/stat things
@@ -123,6 +123,7 @@
 #define XENO_HIVE_BRAVO "xeno_hive_bravo"
 #define XENO_HIVE_CHARLIE "xeno_hive_charlie"
 #define XENO_HIVE_DELTA "xeno_hive_delta"
+#define XENO_HIVE_SUBMISSIVE "xeno_hive_submissive"
 
 //=================================================
 

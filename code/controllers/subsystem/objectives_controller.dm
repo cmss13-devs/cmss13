@@ -6,7 +6,6 @@ SUBSYSTEM_DEF(objectives)
 	var/list/active_objectives = list()
 	var/list/inactive_objectives = list()
 	var/list/non_processing_objectives = list()
-	var/datum/cm_objective/communications/comms
 	var/datum/cm_objective/establish_power/power
 	var/datum/cm_objective/recover_corpses/marines/marines
 	var/datum/cm_objective/recover_corpses/xenos/xenos
@@ -25,7 +24,6 @@ SUBSYSTEM_DEF(objectives)
 	connect_objectives()
 	// Setup some global objectives
 	power = new /datum/cm_objective/establish_power
-	comms = new /datum/cm_objective/communications
 	marines = new /datum/cm_objective/recover_corpses/marines
 	xenos = new /datum/cm_objective/recover_corpses/xenos
 	contain = new /datum/cm_objective/contain
@@ -33,7 +31,6 @@ SUBSYSTEM_DEF(objectives)
 	//objectives_controller.add_objective(new /datum/cm_objective/minimise_losses/squad_marines)
 	add_objective(new /datum/cm_objective/recover_corpses/colonists)
 	active_objectives += power
-	active_objectives += comms
 
 	generate_corpses(corpses)
 
@@ -109,10 +106,10 @@ SUBSYSTEM_DEF(objectives)
 			break
 		var/obj/effect/landmark/corpsespawner/spawner = pick(objective_spawn_corpse)
 		var/turf/spawnpoint = get_turf(spawner)
-		if(spawnpoint) 
+		if(spawnpoint)
 			var/mob/living/carbon/human/M = new /mob/living/carbon/human(spawnpoint)
 			M.create_hud() //Need to generate hud before we can equip anything apparently...
-			arm_equipment(M, "Corpse - [spawner.name]", TRUE, FALSE)			
+			arm_equipment(M, "Corpse - [spawner.name]", TRUE, FALSE)
 		objective_spawn_corpse.Remove(spawner)
 
 /datum/controller/subsystem/objectives/proc/clear_objective_landmarks()
@@ -417,13 +414,8 @@ SUBSYSTEM_DEF(objectives)
 		for(var/i in GLOB.observer_list)
 			var/mob/M = i
 			//Announce the numbers to deadchat
-			to_chat(M, "<h2 class='alert'>DEFCON Level [defcon_controller.current_defcon_level]</h2>")
 			to_chat(M, SPAN_WARNING("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%)."))
 
-		message_staff("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%). DEFCON Level [defcon_controller.current_defcon_level].", 1)
+		message_staff("Objectives status: [scored_points] / [total_points] ([scored_points/total_points*100]%).", 1)
 
 	return answer
-
-/datum/controller/subsystem/objectives/proc/add_admin_points(var/amount)
-	bonus_admin_points += amount
-	defcon_controller.check_defcon_level()

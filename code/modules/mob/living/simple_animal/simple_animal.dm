@@ -70,7 +70,7 @@
 /mob/living/simple_animal/updatehealth()
 	return
 
-/mob/living/simple_animal/Life()
+/mob/living/simple_animal/Life(delta_time)
 
 	//Health
 	if(stat == DEAD)

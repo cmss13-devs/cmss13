@@ -214,7 +214,7 @@
 /area/bigredv2/outside/general_offices)
 "aQ" = (
 /obj/structure/surface/rack,
-/obj/item/document_objective/folder,
+
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -293,7 +293,7 @@
 /area/bigredv2/outside/general_offices)
 "bc" = (
 /obj/structure/surface/rack,
-/obj/item/device/mass_spectrometer/adv/objective,
+/obj/item/device/mass_spectrometer/adv,
 /turf/open/floor{
 	tag = "icon-dark";
 	icon_state = "dark";
@@ -460,7 +460,7 @@
 /area/bigredv2/outside/general_offices)
 "bz" = (
 /obj/structure/surface/table,
-/obj/item/document_objective/paper,
+
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
 "bA" = (
@@ -677,7 +677,7 @@
 /area/bigredv2/outside/general_offices)
 "ce" = (
 /obj/structure/surface/rack,
-/obj/item/disk/objective,
+
 /turf/open/shuttle/dropship{
 	tag = "icon-rasputin15";
 	icon_state = "rasputin15"
@@ -1532,7 +1532,7 @@
 "eF" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/document_objective/folder,
+
 /turf/open/floor,
 /area/bigredv2/outside/hydroponics)
 "eG" = (

@@ -1550,7 +1550,7 @@
 /turf/open/floor/plating,
 /area/prison/canteen)
 "cB" = (
-/obj/item/document_objective/paper,
+
 /turf/open/floor/prison{
 	tag = "icon-bright_clean (SOUTHWEST)";
 	icon_state = "bright_clean";

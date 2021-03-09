@@ -81,7 +81,7 @@
 /area/lv624/ground/sand6)
 "as" = (
 /obj/structure/surface/table,
-/obj/item/disk/objective,
+
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -89,7 +89,7 @@
 /area/lv624/ground/sand6)
 "at" = (
 /obj/structure/surface/table,
-/obj/item/document_objective/report,
+
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -227,7 +227,7 @@
 /area/lv624/ground/sand6)
 "aN" = (
 /obj/structure/surface/table,
-/obj/item/device/mass_spectrometer/adv/objective,
+/obj/item/device/mass_spectrometer/adv,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -251,7 +251,7 @@
 /area/lv624/ground/sand3)
 "aS" = (
 /obj/structure/surface/table,
-/obj/item/device/autopsy_scanner/objective,
+/obj/item/device/autopsy_scanner,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -277,7 +277,7 @@
 /area/lv624/ground/sand3)
 "aW" = (
 /obj/structure/surface/table,
-/obj/item/document_objective/technical_manual,
+
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"

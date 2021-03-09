@@ -1,7 +1,7 @@
 //Xenomorph Life - Colonial Marines - Apophis775 - Last Edit: 03JAN2015
 
 #define XENO_ARMOR_REGEN_DELAY 30 SECONDS
-/mob/living/carbon/Xenomorph/Life()
+/mob/living/carbon/Xenomorph/Life(delta_time)
 	set invisibility = 0
 	set background = 1
 
@@ -42,10 +42,12 @@
 		return
 	var/progress_amount = 1
 
-	if(SSxevolution && ((hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || (SSticker.round_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
+	var/no_queen_action = (hive.allow_no_queen_actions || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+
+	if(SSxevolution && (no_queen_action || (SSticker.round_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
 
-	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (SSticker.round_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
+	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && (no_queen_action || (SSticker.round_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)
 			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to evolve!")) //Makes this bold so the Xeno doesn't miss it

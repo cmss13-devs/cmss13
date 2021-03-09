@@ -125,6 +125,7 @@
 		return
 
 	RangedAttack(A, mods)
+	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
 /mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)

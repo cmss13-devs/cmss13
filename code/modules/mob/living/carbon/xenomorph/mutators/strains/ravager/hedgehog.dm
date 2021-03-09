@@ -5,8 +5,16 @@
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list("Ravager")  	// Only Ravager.
-	mutator_actions_to_remove = list("Empower", "Charge", "Scissor Cut")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/spike_shield, /datum/action/xeno_action/activable/rav_spikes, /datum/action/xeno_action/activable/spike_shed)
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/empower,
+		/datum/action/xeno_action/activable/pounce/charge,
+		/datum/action/xeno_action/activable/scissor_cut,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/spike_shield,
+		/datum/action/xeno_action/activable/rav_spikes,
+		/datum/action/xeno_action/activable/spike_shed,
+	)
 	behavior_delegate_type = /datum/behavior_delegate/ravager_hedgehog
 	keystone = TRUE
 

@@ -59,7 +59,7 @@
 
 	var/time_to_live = 10
 
-/obj/effect/xenomorph/spray/Initialize(mapload, new_source_name, mob/new_source_mob) //Self-deletes
+/obj/effect/xenomorph/spray/Initialize(mapload, new_source_name, mob/new_source_mob, var/hive) //Self-deletes
 	. = ..()
 
 	// Stats tracking
@@ -72,6 +72,9 @@
 		source_name = new_source_name
 	else
 		source_name = initial(name)
+
+	if(hive)
+		hivenumber = hive
 
 	// check what's in our turf
 	for(var/atom/atm in loc)
@@ -350,8 +353,6 @@
 			if(acid_t.contents.len) //Hopefully won't auto-delete things inside melted stuff..
 				for(var/mob/M in acid_t.contents)
 					if(acid_t.loc) M.forceMove(acid_t.loc)
-				for(var/obj/item/document_objective/O in acid_t.contents)
-					if(acid_t.loc) O.forceMove(acid_t.loc)
 			QDEL_NULL(acid_t)
 
 		qdel(src)

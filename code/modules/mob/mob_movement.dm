@@ -125,6 +125,11 @@
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
+	if(SEND_SIGNAL(mob, COMSIG_CLIENT_MOB_MOVE, n, direct) & COMPONENT_OVERRIDE_MOVE)
+		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
+		return
+
+
 	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || !mob.on_movement())
 		return
 
@@ -267,9 +272,3 @@
 
 /mob/proc/on_movement()
 	return TRUE
-
-/mob/Move(NewLoc, direction)
-	SEND_SIGNAL(src, COMSIG_MOB_MOVE, NewLoc, direction)
-	. = ..()
-	if(.)
-		SEND_SIGNAL(src, COMSIG_MOB_POST_MOVE, NewLoc, direction)

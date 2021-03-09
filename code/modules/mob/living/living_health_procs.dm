@@ -162,6 +162,7 @@
 
 /mob/living/proc/heal_all_damage()
 	// shut down various types of badness
+	heal_overall_damage(getBruteLoss(), getFireLoss())
 	setToxLoss(0)
 	setOxyLoss(0)
 	setCloneLoss(0)
@@ -184,7 +185,6 @@
 	paralyzed = 0
 	confused = 0
 	druggy = 0
-	heal_overall_damage(getBruteLoss(), getFireLoss())
 
 /mob/living/proc/regenerate_all_icons()
 	// make the icons look correct

@@ -201,6 +201,7 @@
 			// - Just display a garbled message -
 			else
 				heard_garbled += R
+		
 
 
 	/* ###### Begin formatting and sending the message ###### */
@@ -264,7 +265,6 @@
 			part_a = "<span class='deptradio'><span class='name'>"
 
 		// --- Filter the message; place it in quotes apply a verb ---
-
 
 		/* ###### Send the message ###### */
 

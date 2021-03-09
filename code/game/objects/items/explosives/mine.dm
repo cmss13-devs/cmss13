@@ -162,11 +162,11 @@
 /obj/item/explosive/mine/proc/try_to_prime(mob/living/carbon/human/H)
 	if(!active || triggered || (customizable && !detonator))
 		return
-	if(!isliving(H))
+	if(!istype(H))
 		return
 	if(H.stat == DEAD)
 		return
-	if((istype(H) && H.get_target_lock(iff_signal)) || isrobot(H))
+	if(H.get_target_lock(iff_signal) || isrobot(H))
 		return
 	H.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [H] moves in front of it."), \
 	SPAN_DANGER("[icon2html(src, H)] The [name] clicks as you move in front of it."), \

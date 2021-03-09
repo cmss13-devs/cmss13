@@ -389,7 +389,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(!is_ff && type != BURN && !(status & LIMB_ROBOT))
 		take_damage_internal_bleeding(damage)
 
-	if(status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
+	if(!(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
 		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
@@ -1002,36 +1002,30 @@ This function completely restores a damaged organ to perfect condition.
 	if(W)
 		W.forceMove(owner)
 
-/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target)
+/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, var/indestructible_splints = FALSE)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
-		if (target != user)
-			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				var/possessive = "[user == target ? "your" : "[target]'s"]"
-				var/possessive_their = "[user == target ? "their" : "[target]'s"]"
-				user.affected_message(target,
-					SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
-					SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
-					SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
-				status |= LIMB_SPLINTED
-				if(status & LIMB_BROKEN)
-					owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
-				else
-					owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
-				. = 1
-				owner.update_med_icon()
-		else
+		var/time_to_take = 5 SECONDS
+		if (target == user)
 			user.visible_message(SPAN_WARNING("[user] fumbles with the [S]"), SPAN_WARNING("You fumble with the [S]..."))
-			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				user.visible_message(
-				SPAN_WARNING("[user] successfully applies [S] to their [display_name]."),
-				SPAN_NOTICE("You successfully apply [S] to your [display_name]."))
-				status |= LIMB_SPLINTED
-				if(status & LIMB_BROKEN)
-					owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
-				else
-					owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
-				. = 1
-				owner.update_med_icon()
+			time_to_take = 15 SECONDS
+
+		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			var/possessive = "[user == target ? "your" : "[target]'s"]"
+			var/possessive_their = "[user == target ? "their" : "[target]'s"]"
+			user.affected_message(target,
+				SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
+				SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
+				SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
+			status |= LIMB_SPLINTED
+			if(indestructible_splints)
+				status |= LIMB_SPLINTED_INDESTRUCTIBLE
+
+			if(status & LIMB_BROKEN)
+				owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
+			else
+				owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+			. = TRUE
+			owner.update_med_icon()
 
 
 

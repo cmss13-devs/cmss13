@@ -47,7 +47,7 @@
 "af" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/document_objective/paper,
+
 /turf/open/floor{
 	tag = "icon-white";
 	icon_state = "white";
@@ -822,7 +822,7 @@
 	},
 /area/bigredv2/outside/marshall_office)
 "ca" = (
-/obj/item/document_objective/paper,
+
 /turf/open/floor{
 	tag = "icon-darkish";
 	icon_state = "darkish";
@@ -1204,7 +1204,7 @@
 /turf/open/floor,
 /area/bigredv2/outside/marshall_office)
 "cZ" = (
-/obj/item/document_objective/paper,
+
 /turf/open/floor{
 	icon_state = "dark"
 	},

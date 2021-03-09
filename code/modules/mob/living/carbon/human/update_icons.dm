@@ -538,7 +538,6 @@ There are several things that need to be remembered:
 		overlays_standing[FACEMASK_LAYER] = I
 		apply_overlay(FACEMASK_LAYER)
 
-
 /mob/living/carbon/human/update_inv_back()
 	remove_overlay(BACK_LAYER)
 	if(!back)
@@ -549,6 +548,9 @@ There are several things that need to be remembered:
 
 	var/image/I = back.get_mob_overlay(src, WEAR_BACK)
 	I.layer = -BACK_LAYER
+
+	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
+		I.layer = -BACK_FRONT_LAYER
 	overlays_standing[BACK_LAYER] = I
 	apply_overlay(BACK_LAYER)
 

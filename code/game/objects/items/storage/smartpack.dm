@@ -58,7 +58,7 @@
 	else
 		overlays += "+lamp_off"
 
-	if(user) 
+	if(user)
 		user.update_inv_back()
 
 	for(var/datum/action/A in actions)
@@ -75,11 +75,11 @@
 	var/light = "+lamp_on"
 	if(!light_state)
 		light = "+lamp_off"
-	
+
 	var/image/lamp = overlay_image('icons/mob/humans/onmob/back.dmi', light, color, RESET_COLOR)
 	ret.overlays += lamp
 
-	return ret 
+	return ret
 
 /obj/item/storage/backpack/marine/smartpack/pickup(var/mob/living/M)
 	if(isSynth(M))
@@ -87,8 +87,7 @@
 			if(locate(action_type) in M.actions)
 				continue
 
-			var/datum/action/human_action/smartpack/S = new action_type()
-			S.give_action(M)
+			give_action(M, action_type)
 	else
 		to_chat(M, SPAN_DANGER("[name] beeps, \"Unathorized user!\""))
 
@@ -99,7 +98,7 @@
 
 /obj/item/storage/backpack/marine/smartpack/dropped(var/mob/living/M)
 	for(var/datum/action/human_action/smartpack/S in M.actions)
-		S.remove_action(M)
+		S.remove_from(M)
 
 	if(light_state && loc != M)
 		toggle_light(M)
@@ -123,7 +122,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	if(H.back != src) 
+	if(H.back != src)
 		return
 
 	toggle_light(user)
@@ -132,15 +131,15 @@
 /obj/item/storage/backpack/marine/smartpack/proc/toggle_light(mob/user)
 	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
 	if(light_state) //Turn it off.
-		if(user) 
+		if(user)
 			user.SetLuminosity(-BACKPACK_LIGHT_LEVEL)
-		else 
+		else
 			SetLuminosity(0)
 		playsound(src,'sound/handling/click_2.ogg', 50, 1)
 	else //Turn it on.
-		if(user) 
+		if(user)
 			user.SetLuminosity(BACKPACK_LIGHT_LEVEL)
-		else 
+		else
 			SetLuminosity(BACKPACK_LIGHT_LEVEL)
 
 	light_state = !light_state

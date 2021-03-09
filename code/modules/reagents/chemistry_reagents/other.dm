@@ -106,7 +106,7 @@
 	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen. It is a vital component to all known forms of organic life, even though it provides no calories or organic nutrients. It is also an effective solvent and can be used for cleaning."
 	reagent_state = LIQUID
 	color = "#0064C8" // rgb: 0, 100, 200
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	chemclass = CHEM_CLASS_BASIC
 	chemfiresupp = TRUE
 	intensitymod = -3
@@ -145,7 +145,7 @@
 	description = "Liquid plastic. Not safe to eat."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	properties = list(PROPERTY_TOXIC = 1)
 
 /datum/reagent/space_drugs
@@ -181,7 +181,7 @@
 	burncolor = "#58daff"
 	burncolormod = 2
 	chemclass = CHEM_CLASS_BASIC
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/copper
 	name = "Copper"
@@ -193,7 +193,7 @@
 	burncolormod = 4
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/nitrogen
 	name = "Nitrogen"
@@ -203,7 +203,7 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 
 /datum/reagent/hydrogen
@@ -222,7 +222,7 @@
 	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/potassium
 	name = "Potassium"
@@ -232,7 +232,7 @@
 	color = "#A0A0A0" // rgb: 160, 160, 160
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/mercury
 	name = "Mercury"
@@ -252,7 +252,7 @@
 	color = "#BF8C00" // rgb: 191, 140, 0
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/carbon
 	name = "Carbon"
@@ -266,7 +266,7 @@
 	burncolormod = 3
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/carbon/reaction_turf(var/turf/T, var/volume)
 	src = null
@@ -308,7 +308,7 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/phosphorus
 	name = "Phosphorus"
@@ -324,7 +324,7 @@
 	burncolormod = 5
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/lithium
 	name = "Lithium"
@@ -359,7 +359,7 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemclass = CHEM_CLASS_RARE
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/radium
 	name = "Radium"
@@ -803,7 +803,7 @@
 	description = "An easily combustible hydrocarbon that can very rapidly expand a fire, even explosively at the right concentrations. It is used primarily as fuel to make heat and light or manufacturing of organic chemicals."
 	reagent_state = LIQUID
 	color = "#0064C8"
-	custom_metabolism = 0.4
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	chemfiresupp = TRUE
 	burncolor = "#00a5ff"
 	burncolormod = 1.5
@@ -850,7 +850,7 @@
 	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol. Despite being a highly volatile material, it is used for many medical purposes."
 	reagent_state = LIQUID
 	color = "#808080" // rgb: 128, 128, 128
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	explosive = TRUE
 	power = 1
 	falloff_modifier = -0.5
@@ -888,7 +888,7 @@
 	description = "A clear extracellular fluid separated from blood."
 	reagent_state = LIQUID
 	color = "#f1e8cf"
-	custom_metabolism = 0.4
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 
 /datum/reagent/plasma/pheromone
 	name = "Pheromone Plasma"

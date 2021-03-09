@@ -585,16 +585,16 @@ var/list/datum/mob_hud/huds = list(
 		else if(I)
 			_role = I.rank
 		switch(_role)
-			if("Squad Engineer") marine_rk = "engi"
-			if("Squad Specialist") marine_rk = "spec"
-			if("Squad Medic") marine_rk = "med"
-			if("Squad Smartgunner") marine_rk = "gun"
-			if("Executive Officer") marine_rk = "xo"
-			if("Commanding Officer") marine_rk = "co"
-			if("USCM Admiral") marine_rk = "admiral"
-			if("Pilot Officer") marine_rk = "po"
-			if("Intelligence Officer") marine_rk = "io"
-			if("Crewman") marine_rk = "tc"
+			if(JOB_SQUAD_ENGI) marine_rk = "engi"
+			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
+			if(JOB_SQUAD_RTO) marine_rk = "rto"
+			if(JOB_SQUAD_MEDIC) marine_rk = "med"
+			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
+			if(JOB_XO) marine_rk = "xo"
+			if(JOB_CO) marine_rk = "co"
+			if(JOB_ADMIRAL) marine_rk = "admiral"
+			if(JOB_PILOT) marine_rk = "po"
+			if(JOB_CREWMAN) marine_rk = "tc"
 		if(assigned_squad.squad_leader == src)
 			marine_rk = "leader"
 			langchat_styles = "langchat_bolded" // bold text for bold leaders
@@ -629,23 +629,21 @@ var/list/datum/mob_hud/huds = list(
 		else if(ID)
 			_role = ID.rank
 		switch(_role)
-			if("Executive Officer")
+			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"
-			if("Commanding Officer")
+			if(JOB_CO)
 				marine_rk = "co"
 				border_rk = "command"
-			if("Staff Officer")
+			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if("USCM Admiral")
+			if(JOB_ADMIRAL)
 				marine_rk = "admiral"
 				border_rk = "command"
-			if("Pilot Officer")
+			if(JOB_PILOT)
 				marine_rk = "po"
-			if("Intelligence Officer")
-				marine_rk = "io"
-			if("Crewman")
+			if(JOB_CREWMAN)
 				marine_rk = "tc"
 			if("Provost Officer")
 				marine_rk = "pvo"

@@ -1,16 +1,3 @@
-/obj/item/phone
-	name = "red phone"
-	desc = "Should anything ever go wrong..."
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "red_phone"
-	force = 3.0
-	throwforce = 2.0
-	throw_speed = SPEED_FAST
-	throw_range = 4
-	w_class = SIZE_SMALL
-	attack_verb = list("called", "rang")
-	hitsound = 'sound/weapons/ring.ogg'
-
 /obj/item/bananapeel
 	name = "banana peel"
 	desc = "A peel from a banana."

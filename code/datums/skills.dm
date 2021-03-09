@@ -62,12 +62,10 @@
 		for(var/action_type in subtypesof(/datum/action/human_action/issue_order))
 			if(locate(action_type) in M.actions)
 				continue
-
-			var/datum/action/human_action/issue_order/O = new action_type()
-			O.give_action(M)
+			give_action(M, action_type)
 	else
 		for(var/datum/action/human_action/issue_order/O in M.actions)
-			O.remove_action(M)
+			O.remove_from(M)
 
 /datum/skill/medical
 	skill_name = SKILL_MEDICAL
@@ -620,6 +618,15 @@ United States Colonial Marines
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED
 	)
 
+/datum/skills/rto
+	name = "Squad RT Operator"
+	skills = list(
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+	)
+
 /datum/skills/SL
 	name = "Squad Leader"
 	skills = list(
@@ -641,7 +648,6 @@ United States Colonial Marines
 		SKILL_MELEE_WEAPONS = SKILL_MELEE_TRAINED,
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
 	)
-
 
 /*
 -------------------------

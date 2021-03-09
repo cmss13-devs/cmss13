@@ -109,6 +109,30 @@ Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, e
 	icon_state = "shotgun buckshot shell"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 
+/obj/item/ammo_magazine/handful/shotgun/custom
+	name = "abstract handful custom type"
+	icon_state = "shell_greyscale"
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+
+/obj/item/ammo_magazine/handful/shotgun/custom/Initialize(mapload, spawn_empty)
+	. = ..()
+	update_icon()
+
+/obj/item/ammo_magazine/handful/shotgun/custom/update_icon()
+	overlays.Cut()
+	. = ..()
+	icon_state = "shell_greyscale"
+	var/image/I = image(icon, src, "+shell_base")
+	I.color = "#ffffff"
+	I.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += I
+
+/obj/item/ammo_magazine/handful/shotgun/custom/incendiary
+	name = "handful of incendiary buckshot shells (12g)"
+	color = "#ffa800"
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
+
+
 /obj/item/ammo_magazine/handful/shotgun/flechette
 	name = "handful of shotgun flechette shells (12g)"
 	icon_state = "shotgun flechette shell"

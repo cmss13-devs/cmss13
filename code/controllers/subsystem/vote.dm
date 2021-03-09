@@ -194,11 +194,10 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/handle_client_joining(var/dcs, var/client/C)
 	SIGNAL_HANDLER
 
-	var/datum/action/innate/vote/V = new
+	var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
 	if(question)
-		V.name = "Vote: [question]"
+		V.set_name("Vote: [question]")
 	C.player_details.player_actions += V
-	V.give_action(C.mob)
 
 /datum/controller/subsystem/vote/proc/submit_vote(vote)
 	if(mode)
@@ -332,11 +331,10 @@ SUBSYSTEM_DEF(vote)
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c
-			var/datum/action/innate/vote/V = new
+			var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
 			if(question)
-				V.name = "Vote: [question]"
+				V.set_name("Vote: [question]")
 			C.player_details.player_actions += V
-			V.give_action(C.mob)
 
 		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, .proc/handle_client_joining)
 		SStgui.update_uis(src)
@@ -367,7 +365,7 @@ SUBSYSTEM_DEF(vote)
 	name = "Vote!"
 	action_icon_state = "vote"
 
-/datum/action/innate/vote/give_action(mob/M)
+/datum/action/innate/vote/give_to(mob/M)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, .proc/remove_vote_action)
 
@@ -375,7 +373,7 @@ SUBSYSTEM_DEF(vote)
 	SIGNAL_HANDLER
 
 	if(remove_from_client())
-		remove_action(owner)
+		remove_from(owner)
 	qdel(src)
 
 /datum/action/innate/vote/action_activate()

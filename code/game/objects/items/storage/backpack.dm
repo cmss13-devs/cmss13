@@ -16,7 +16,7 @@
 	var/obj/item/card/id/locking_id = null
 	var/is_id_lockable = FALSE
 	var/lock_overridable = TRUE
-	var/opening_stage = FALSE 
+	var/opening_stage = FALSE
 
 /obj/item/storage/backpack/attack_hand(mob/user)
 	if(!is_accessible_by(user))
@@ -85,7 +85,7 @@
 	..()
 
 /obj/item/storage/backpack/close(mob/user)
-	UnregisterSignal(user, COMSIG_MOB_MOVE)
+	UnregisterSignal(user, COMSIG_MOVABLE_PRE_MOVE)
 	..()
 
 /obj/item/storage/backpack/proc/is_accessible_by(mob/user)
@@ -94,16 +94,16 @@
 		if(!worn_accessible)
 			if(H.back == src && !opening_stage)
 				to_chat(H, SPAN_NOTICE("You begin to open [src], so you can check its contents."))
-				opening_stage = TRUE 
+				opening_stage = TRUE
 				if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 					to_chat(H, SPAN_WARNING("You were interrupted!"))
-					opening_stage = FALSE 
+					opening_stage = FALSE
 					return FALSE
-				RegisterSignal(user, COMSIG_MOB_MOVE, .proc/close)
-				opening_stage = FALSE 
+				RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/close)
+				opening_stage = FALSE
 				return TRUE
 			else if(H.back == src && opening_stage)
-				return FALSE 
+				return FALSE
 
 		if(!QDELETED(locking_id))
 			var/obj/item/card/id/card = H.wear_id
@@ -357,11 +357,85 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	desc = "A heavy-duty chestrig used by some USCM technicians."
 	icon_state = "marinesatch_techi"
 
-/obj/item/storage/backpack/marine/satchel/intel
-	name = "\improper USCM lightweight expedition pack"
-	desc = "A heavy-duty IMP based backpack that can be slung around the front or to the side, and can quickly be accessed with only one hand. Usually issued to USCM intelligence officers."
-	icon_state = "marinesatch_io"
-	max_storage_space = 20
+GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/rto)
+
+/obj/item/storage/backpack/marine/satchel/rto
+	name = "\improper USCM Radio Telephone Pack"
+	desc = "A heavy-duty pack, used for telecommunications between central command. Commonly carried by RTOs."
+	icon_state = "rto_backpack"
+	has_gamemode_skin = FALSE
+
+	flags_item = ITEM_OVERRIDE_NORTHFACE
+
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer/rto)
+	var/obj/structure/transmitter/internal/internal_transmitter
+
+/obj/item/storage/backpack/marine/satchel/rto/Initialize()
+	. = ..()
+	internal_transmitter = new(src)
+
+	LAZYADD(actions, new /datum/action/human_action/activable/droppod())
+
+	GLOB.radio_packs += src
+
+/obj/item/storage/backpack/marine/satchel/rto/item_action_slot_check(mob/user, slot)
+	if(slot == WEAR_BACK)
+		return TRUE
+	return FALSE
+
+/obj/item/storage/backpack/marine/satchel/rto/forceMove(atom/dest)
+	. = ..()
+	if(isturf(dest))
+		internal_transmitter.set_tether_holder(src)
+	else
+		internal_transmitter.set_tether_holder(loc)
+
+/obj/item/storage/backpack/marine/satchel/rto/Destroy()
+	GLOB.radio_packs -= src
+	return ..()
+
+/obj/item/storage/backpack/marine/satchel/rto/pickup(mob/user)
+	. = ..()
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.comm_title)
+			internal_transmitter.phone_id = "[H.comm_title] [H]"
+		else if(H.job)
+			internal_transmitter.phone_id = "[H.job] [H]"
+		else
+			internal_transmitter.phone_id = "[H]"
+
+		if(H.assigned_squad)
+			internal_transmitter.phone_id += " ([H.assigned_squad.name])"
+	else
+		internal_transmitter.phone_id = "[user]"
+
+/obj/item/storage/backpack/marine/satchel/rto/dropped(mob/user)
+	. = ..()
+	internal_transmitter.phone_id = "[src]"
+
+/obj/item/storage/backpack/marine/satchel/rto/attack_hand(mob/user)
+	if(user.back == src)
+		internal_transmitter.attack_hand(user)
+	else if(internal_transmitter.get_calling_phone())
+		if(internal_transmitter.attached_to && internal_transmitter.attached_to.loc != internal_transmitter)
+			return . = ..()
+		internal_transmitter.attack_hand(user)
+	else
+		. = ..()
+
+/obj/item/storage/backpack/marine/satchel/rto/attackby(obj/item/W, mob/user)
+	if(internal_transmitter && internal_transmitter.attached_to == W)
+		internal_transmitter.attackby(W, user)
+	else
+		. = ..()
+
+/obj/item/storage/backpack/marine/satchel/rto/proc/new_droppod_tech_unlocked(datum/tech/N)
+	playsound(get_turf(loc), 'sound/machines/techpod/techpod_rto_notif.ogg', 100, FALSE, 1, 4)
+
+	if(ismob(loc))
+		var/mob/M = loc
+		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] New droppod available ([N.name])."))
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"

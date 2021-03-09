@@ -105,7 +105,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
-/obj/effect/landmark/objective_landmark/far,
+
 /obj/item/toy/farwadoll,
 /turf/open/floor/almayer{
 	dir = 9;
@@ -214,7 +214,7 @@
 /area/lv624/ground/caves/west1)
 "eS" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/plating{
 	dir = 8;
 	icon_state = "warnplate"
@@ -353,9 +353,9 @@
 /obj/item/paper/prison_station/pirate_note{
 	info = "<p>We're hit!</p><p>MAYDAY! MAYDAY! We have been hit by the -... .</p><p>We're on a planet somewhere, seems there is a colony to our south. Might head on over there and see if there is any USCM presence. Our ship is fucking busted beyond normal means of repair, still waiting for a damage assessment tho.</p><p>Coby and Ryan died today from their wounds... \"Fucking USCM.\" I'll have my revenge someday...</p><p>And the colonies will be freed one day from the oppressive regime of W-Y and USCM henchmen."
 	},
-/obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/objective_landmark/far,
+
+
+
 /turf/open/floor/almayer{
 	icon_state = "emerald";
 	tag = "icon-emerald"
@@ -437,7 +437,7 @@
 "jH" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/objective_landmark/far,
+
 /obj/item/toy/deck/uno{
 	pixel_x = -3;
 	pixel_y = 4
@@ -563,7 +563,7 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -638,7 +638,7 @@
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/ammo_magazine/shotgun/buckshot,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "orange";
@@ -688,7 +688,7 @@
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
 /obj/item/ammo_magazine/shotgun/slugs,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "orange";
@@ -752,7 +752,7 @@
 /area/lv624/lazarus/crashed_ship)
 "rp" = (
 /obj/structure/surface/table/woodentable,
-/obj/effect/landmark/objective_landmark/far,
+
 /obj/item/device/flashlight/lamp{
 	pixel_y = 3
 	},
@@ -808,7 +808,7 @@
 	pixel_y = 11
 	},
 /obj/item/clothing/glasses/welding,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/almayer{
 	dir = 6;
 	icon_state = "orange";
@@ -841,7 +841,7 @@
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "tV" = (
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/plating{
 	dir = 10;
 	icon_state = "warnplate"
@@ -1034,7 +1034,7 @@
 "xh" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/spawner/random/toolbox,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/almayer{
 	icon_state = "orangecorner";
 	tag = "icon-orangecorner"
@@ -1099,7 +1099,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
 /obj/item/toy/katana,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "green";
@@ -1134,7 +1134,7 @@
 /area/lv624/lazarus/crashed_ship)
 "zb" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/plating{
 	dir = 9;
 	icon_state = "warnplate"
@@ -1179,9 +1179,9 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/objective_landmark/far,
-/obj/effect/landmark/objective_landmark/far,
+
+
+
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "emerald";
@@ -1337,7 +1337,7 @@
 	pixel_y = 6
 	},
 /obj/item/ammo_magazine/shotgun/incendiary,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "DY" = (
@@ -1469,7 +1469,7 @@
 "GP" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/storage/firstaid/adv,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/wood,
 /area/lv624/lazarus/crashed_ship)
 "GT" = (
@@ -1793,7 +1793,7 @@
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
 /obj/item/ammo_magazine/pistol/heavy,
-/obj/effect/landmark/objective_landmark/far,
+
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "green";
@@ -2065,7 +2065,7 @@
 "Wa" = (
 /obj/structure/bed,
 /obj/item/bedsheet/yellow,
-/obj/effect/landmark/objective_landmark/far,
+
 /obj/item/handcuffs{
 	pixel_x = 4;
 	pixel_y = 4

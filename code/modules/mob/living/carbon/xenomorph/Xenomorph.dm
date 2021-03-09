@@ -147,6 +147,10 @@
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
 	var/leader_current_aura = "" //Pheromone type inherited from Queen
 
+	/// List of actions (typepaths) that a
+	/// xenomorph type is given upon spawn
+	var/base_actions
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Modifiers
@@ -206,6 +210,8 @@
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
+	/// The damage dealt by a xeno whenever they take damage near someone
+	var/acid_blood_damage = 12
 
 
 	//////////////////////////////////////////////////////////////////
@@ -242,7 +248,7 @@
 	var/list/current_placeable = list() // If we have current_placeable that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
 	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
-
+	var/list/built_structures = list()
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -355,6 +361,7 @@
 	if (caste)
 		behavior_delegate = new caste.behavior_delegate_type()
 		behavior_delegate.bound_xeno = src
+		behavior_delegate.add_to_xeno()
 		resin_build_order = caste.resin_build_order
 	else
 		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
@@ -379,6 +386,7 @@
 	job = caste.caste_name // Used for tracking the caste playtime
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
 	SIGNAL_HANDLER
@@ -571,6 +579,13 @@
 	queued_action = null
 
 	QDEL_NULL(mutators)
+	QDEL_NULL(behavior_delegate)
+
+	for(var/i in built_structures)
+		var/list/L = built_structures[i]
+		QDEL_NULL_LIST(L)
+
+	built_structures = null
 
 	. = ..()
 
@@ -829,12 +844,6 @@
 	plasma_stored = plasma_max
 	for(var/datum/action/xeno_action/XA in actions)
 		XA.end_cooldown()
-
-/mob/living/carbon/Xenomorph/proc/remove_action(var/action as text)
-	for(var/X in actions)
-		var/datum/action/A = X
-		if(A.name == action)
-			A.remove_action(src)
 
 /mob/living/carbon/Xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)

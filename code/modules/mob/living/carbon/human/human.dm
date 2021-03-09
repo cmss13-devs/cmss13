@@ -79,7 +79,6 @@
 
 	. += ""
 	. += "Security Level: [uppertext(get_security_level())]"
-	. += "DEFCON Level: [defcon_controller.current_defcon_level]"
 
 	if(!isnull(SSticker) && !isnull(SSticker.mode) && !isnull(SSticker.mode.active_lz) && !isnull(SSticker.mode.active_lz.loc) && !isnull(SSticker.mode.active_lz.loc.loc))
 		. += "Primary LZ: [SSticker.mode.active_lz.loc.loc.name]"
@@ -1216,6 +1215,10 @@
 	return
 
 /mob/living/carbon/human/update_sight()
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_UPDATE_SIGHT) & COMPONENT_OVERRIDE_UPDATE_SIGHT) return
+
+	sight &= ~BLIND // Never have blind on by default
+
 	if(stat == DEAD)
 		sight |= (SEE_TURFS|SEE_MOBS|SEE_OBJS)
 		see_in_dark = 8
@@ -1229,6 +1232,7 @@
 		else
 			see_invisible = SEE_INVISIBLE_LIVING
 
+	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
 
 
 
@@ -1331,7 +1335,7 @@
 			return
 		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
 			var/obj/limb/l = HT.get_limb(bodypart)
-			if(l && l.status & LIMB_SPLINTED)
+			if(l && (l.status & LIMB_SPLINTED) && !(l.status & LIMB_SPLINTED_INDESTRUCTIBLE))
 				if(HS == HT)
 					if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
 						same_arm_side = TRUE
@@ -1357,6 +1361,9 @@
 					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
 					W.add_fingerprint(HS)
 					for(var/obj/limb/l in to_splint)
+						if(l.status & LIMB_SPLINTED_INDESTRUCTIBLE) //Indestructible splints only removable via surgery
+							continue
+
 						amount_removed += 1
 						l.status &= ~LIMB_SPLINTED
 						pain.recalculate_pain()
@@ -1524,3 +1531,4 @@
 	if(species)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
+

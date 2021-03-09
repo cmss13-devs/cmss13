@@ -20,7 +20,7 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_mask
 
-/mob/living/simple_animal/crab/Life()
+/mob/living/simple_animal/crab/Life(delta_time)
 	..()
 	//CRAB movement
 	if(!ckey && !stat)

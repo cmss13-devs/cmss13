@@ -42,15 +42,15 @@
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
 	small_explosives_stun = FALSE
 
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/pounce/predalien,
 		/datum/action/xeno_action/activable/predalien_roar,
 		/datum/action/xeno_action/activable/smash,
-		/datum/action/xeno_action/activable/devastate
-		)
+		/datum/action/xeno_action/activable/devastate,
+	)
 	mutation_type = "Normal"
 
 	var/butcher_time = 6 SECONDS

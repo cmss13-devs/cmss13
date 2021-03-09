@@ -18,11 +18,18 @@
 #define COMSIG_GLOB_MARINE_DEATH "!marine_death"
 ///from /mob/living/carbon/Xenomorph/death
 #define COMSIG_GLOB_XENO_DEATH "!xeno_death"
+
+///from /mob/living/carbon/Xenomorph/Initialize
+#define COMSIG_GLOB_XENO_SPAWN "!xeno_spawn"
+
 #define COMSIG_GLOB_REMOVE_VOTE_BUTTON "!remove_vote_button"
 
 #define COMSIG_GLOB_CLIENT_LOGIN "!client_login"
 
 #define COMSIG_GLOB_MOB_LOGIN "!mob_login"
+
+///from /datum/controller/subsystem/ticker/PostSetup
+#define COMSIG_GLOB_POST_SETUP "!post_setup"
 
 //////////////////////////////////////////////////////////////////
 
@@ -38,8 +45,9 @@
 #define COMSIG_COMPONENT_ADDED "component_added"
 /// before a component is removed from a datum because of RemoveComponent: (/datum/component)
 #define COMSIG_COMPONENT_REMOVING "component_removing"
-/// before a datum's Destroy() is called: (force), returning a nonzero value will cancel the qdel operation
+/// before a datum's Destroy() is called: (force), returning a COMPONENT_ABORT_QDEL value will cancel the qdel operation
 #define COMSIG_PARENT_PREQDELETED "parent_preqdeleted"
+	#define COMPONENT_ABORT_QDEL (1<<0)
 /// just before a datum's Destroy() is called: (force), at this point none of the other components chose to interrupt qdel and Destroy will be called
 #define COMSIG_PARENT_QDELETING "parent_qdeleting"
 /// generic topic handler (usr, href_list)
@@ -117,6 +125,8 @@
 #define COMSIG_MOB_RESET_VIEW "mob_reset_view"
 	#define COMPONENT_OVERRIDE_VIEW	(1<<0)
 
+#define COMSIG_MOB_POST_CLICK "mob_post_click"
+
 // Return a nonzero value to cancel these actions
 #define COMSIG_BINOCULAR_ATTACK_SELF "binocular_attack_self"
 #define COMSIG_BINOCULAR_HANDLE_CLICK "binocular_handle_click"
@@ -140,6 +150,9 @@
 	#define COMPONENT_NO_IGNITE	(1<<1)
 /// From /obj/item/proc/unzoom
 #define COMSIG_LIVING_ZOOM_OUT "living_zoom_out"
+
+#define COMSIG_LIVING_SPEAK "living_speak"
+	#define COMPONENT_OVERRIDE_SPEAK (1<<0)
 
 /// From /obj/item/device/defibrillator/attack
 #define COMSIG_HUMAN_REVIVED "human_revived"
@@ -167,11 +180,48 @@
 #define COMSIG_XENO_PRE_HEAL "xeno_pre_heal"
 	#define COMPONENT_CANCEL_XENO_HEAL (1<<0)
 
+/// from /mob/living/carbon/Xenomorph/apply_armoured_damage(): (list/damagedata)
+#define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE "xeno_pre_calculate_armoured_damage"
+#define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
+
+/// from /mob/living/carbon/Xenomorph/get_status_tab_items(): (list/statdata)
+#define COMSIG_XENO_APPEND_TO_STAT "xeno_append_to_stat"
+
+/// from /mob/living/carbon/Xenomorph/movement_delay()
+#define COMSIG_XENO_MOVEMENT_DELAY "xeno_movement_delay"
+
+/// From /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor
+#define COMSIG_QUEEN_MOUNT_OVIPOSITOR "queen_mount_ovipositor"
+/// From /mob/living/carbon/Xenomorph/Queen/proc/dismount_ovipositor(): (instant_dismount)
 #define COMSIG_QUEEN_DISMOUNT_OVIPOSITOR "queen_dismount_ovipositor"
+
+#define COMSIG_HUMAN_BULLET_ACT "human_bullet_act"
+	#define COMPONENT_CANCEL_BULLET_ACT (1<<0)
+
+
+/// From /turf/closed/wall/resin/attack_alien(): (mob/living/carbon/Xenomorph/X)
+#define COMSIG_WALL_RESIN_XENO_ATTACK "wall_resin_attack_alien"
+
+#define COMSIG_HUMAN_XENO_ATTACK "human_attack_alien"
+	#define COMPONENT_CANCEL_XENO_ATTACK (1<<0)
+
+/// From /turf/closed/wall/resin/attackby(): (obj/item/I, mob/M)
+#define COMSIG_WALL_RESIN_ATTACKBY "wall_resin_attackby"
+	#define COMPONENT_CANCEL_ATTACKBY (1<<0)
+
+#define COMSIG_HUMAN_UPDATE_SIGHT "human_update_sight"
+	#define COMPONENT_OVERRIDE_UPDATE_SIGHT (1<<0)
+
+///from /mob/living/carbon/human/update_sight()
+#define COMSIG_HUMAN_POST_UPDATE_SIGHT "human_post_update_sight"
+///from /mob/living/carbon/human/movement_delay(): (list/movedata)
+#define COMSIG_HUMAN_POST_MOVE_DELAY "human_post_move_delay"
 
 // /obj/item signals
 ///from base of obj/item/dropped(): (mob/user)
 #define COMSIG_ITEM_DROPPED "item_drop"
+
+#define COMSIG_ITEM_EQUIPPED "item_equipped"
 ///from /obj/item/proc/unwield
 #define COMSIG_ITEM_UNWIELD "item_unwield"
 
@@ -202,8 +252,18 @@
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)
 	#define COMPONENT_TURF_DENY_MOVEMENT  (1<<1)
 
-#define COMSIG_MOB_MOVE	"mob_move"
-#define COMSIG_MOB_POST_MOVE "mob_post_move"
+/// Called when a bullet hits a turf
+#define COMSIG_TURF_BULLET_ACT "turf_bullet_act"
+	#define COMPONENT_BULLET_ACT_OVERRIDE (1<<0)
+
+///from /turf/Entered
+#define COMSIG_MOVABLE_TURF_ENTERED "movable_turf_entered"
+
+///from /turf/ChangeTurf
+#define COMSIG_ATOM_TURF_CHANGE "movable_turf_change"
+
+///from /atom/hitby(): (atom/movable/AM)
+#define COMSIG_ATOM_HITBY "atom_hitby"
 
 #define COMSIG_MOB_POST_UPDATE_CANMOVE "mob_can_move"
 
@@ -232,5 +292,29 @@
 /// Called when checking IFF as bullet scans for targets
 #define COMSIG_BULLET_CHECK_IFF "bullet_check_iff"
 
+/// From /obj/item/projectile/handle_mob(): (mob/living/target)
+#define COMSIG_BULLET_POST_HANDLE_MOB "bullet_post_handle_mob"
+/// From /obj/item/projectile/handle_obj(): (obj/target)
+#define COMSIG_BULLET_POST_HANDLE_OBJ "bullet_post_handle_obj"
+/// From /obj/item/projectile/scan_a_turf(): (turf/target)
+#define COMSIG_BULLET_POST_HANDLE_TURF "bullet_post_handle_turf"
+#define COMSIG_BULLET_PRE_HANDLE_TURF "bullet_pre_handle_turf"
+	#define COMPONENT_BULLET_PASS_THROUGH (1<<0)
+
 /// For any additional things that should happen when a xeno's melee_attack_additional_effects_self() proc is called
 #define COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF "xeno_slash_additional_effects_self"
+
+/// From /datum/action/proc/give_to(): (mob/owner)
+#define COMSIG_ACTION_GIVEN "action_given"
+/// From base of /datum/action/proc/remove_from(): (mob/owner)
+#define COMSIG_ACTION_REMOVED "action_removed"
+/// From base of /datum/action/proc/hide_from(): (mob/owner)
+#define COMSIG_ACTION_HIDDEN "action_hidden"
+/// From base of /datum/action/proc/unhide_from(): (mob/owner)
+#define COMSIG_ACTION_UNHIDDEN "action_unhidden"
+
+/// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
+#define COMSIG_XENO_ACTION_USED "xeno_action_used"
+
+/// From /mob/living/carbon/Xenomorph/proc/check_blood_splash()
+#define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"

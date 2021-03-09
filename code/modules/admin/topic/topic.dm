@@ -1553,11 +1553,6 @@
 
 		topic_events(href_list["events"])
 
-	else if(href_list["debug"])
-		if(!check_rights(R_DEBUG))
-			return
-		topic_debug(href_list["debug"])
-
 	else if(href_list["teleport"])
 		if(!check_rights(R_MOD))
 			return

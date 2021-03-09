@@ -34,7 +34,7 @@
 	"Did you notice a sign out in front of my house that said \"Dead Nigger Storage\"?")
 	stop_automated_movement = 1
 
-/mob/living/simple_animal/head/Life()
+/mob/living/simple_animal/head/Life(delta_time)
 	if(stat == DEAD)
 		if(health > 0)
 			icon_state = icon_living

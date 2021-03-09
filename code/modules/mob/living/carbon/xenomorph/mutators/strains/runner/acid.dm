@@ -7,8 +7,15 @@
 	caste_whitelist = list("Runner")
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/runner_acider
-	mutator_actions_to_remove = list("Pounce","Bone Spur","Toggle Long Range Sight")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/acider_acid, /datum/action/xeno_action/activable/acider_for_the_hive)
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/pounce/runner,
+		/datum/action/xeno_action/activable/runner_skillshot,
+		/datum/action/xeno_action/onclick/toggle_long_range/runner,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/acider_acid,
+		/datum/action/xeno_action/activable/acider_for_the_hive
+	)
 
 /datum/xeno_mutator/acider/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()

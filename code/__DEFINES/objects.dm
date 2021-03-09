@@ -146,3 +146,6 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 
 #define TOUCH 1
 #define INGEST 2
+
+/// Marks an object as organic. Used for alien structures and any other organic material
+#define OBJ_ORGANIC				(1<<0)

@@ -41,6 +41,7 @@ var/accuracy_mult_unwielded
 #define HIT_ACCURACY_TIER_8 	40
 #define HIT_ACCURACY_TIER_9 	45
 #define HIT_ACCURACY_TIER_10 	50
+#define HIT_ACCURACY_TIER_MAX	100
 
 #define BASE_ACCURACY_MULT 1
 #define HIT_ACCURACY_MULT_TIER_1 	0.05

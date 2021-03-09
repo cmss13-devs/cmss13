@@ -39,7 +39,7 @@
 
 	mob_size = MOB_SIZE_XENO_SMALL
 
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
@@ -47,10 +47,10 @@
 		/datum/action/xeno_action/activable/pounce/runner,
 		/datum/action/xeno_action/activable/runner_skillshot,
 		/datum/action/xeno_action/onclick/toggle_long_range/runner,
-		)
+	)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
-		)
+	)
 	mutation_type = RUNNER_NORMAL
 
 /mob/living/carbon/Xenomorph/Runner/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)

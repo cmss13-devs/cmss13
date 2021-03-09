@@ -28,7 +28,7 @@
 /area/bigredv2/outside/filtration_plant)
 "ag" = (
 /obj/structure/surface/table,
-/obj/item/disk/objective,
+
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "ah" = (
@@ -87,7 +87,7 @@
 	dir = 4;
 	layer = 2.4
 	},
-/obj/item/document_objective/paper,
+
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aq" = (
@@ -434,7 +434,7 @@
 "bB" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/surface/table,
-/obj/item/disk/objective,
+
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bD" = (

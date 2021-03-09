@@ -2497,7 +2497,7 @@
 /obj/item/tool/soap{
 	pixel_x = 5
 	},
-/obj/item/document_objective/report,
+
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";
@@ -2627,7 +2627,7 @@
 	pixel_x = 6;
 	pixel_y = 10
 	},
-/obj/item/device/healthanalyzer/objective,
+/obj/item/device/healthanalyzer,
 /turf/open/floor/prison{
 	tag = "icon-whitegreenfull (SOUTHWEST)";
 	icon_state = "whitegreenfull";

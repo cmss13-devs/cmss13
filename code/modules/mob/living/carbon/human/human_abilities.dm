@@ -13,7 +13,7 @@
 	action_icon_state = "order"
 	var/order_type = "help"
 
-/datum/action/human_action/issue_order/give_action(var/mob/living/L)
+/datum/action/human_action/issue_order/give_to(var/mob/living/L)
 	..()
 	if(!ishuman(L))
 		return
@@ -65,7 +65,7 @@
 		var/obj/item/storage/backpack/marine/smartpack/S = H.back
 		form_call(S, H)
 
-/datum/action/human_action/smartpack/give_action(var/mob/living/L)
+/datum/action/human_action/smartpack/give_to(var/mob/living/L)
 	..()
 	if(!ishuman(L))
 		return
@@ -146,7 +146,7 @@ CULT
 		button.icon_state = "template_on"
 		H.selected_ability = src
 
-/datum/action/human_action/activable/remove_action(mob/living/carbon/human/H)
+/datum/action/human_action/activable/remove_from(mob/living/carbon/human/H)
 	..()
 	if(H.selected_ability == src)
 		H.selected_ability = null
@@ -171,6 +171,112 @@ CULT
 	update_button_icon()
 
 	addtimer(CALLBACK(src, .proc/update_button_icon), amount)
+
+/datum/action/human_action/activable/droppod
+	name = "Call Droppod"
+	action_icon_state = "techpod_deploy"
+
+	var/obj/structure/droppod/tech/assigned_droppod
+
+/datum/action/human_action/activable/droppod/use_ability(atom/A)
+	. = ..()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	var/turf/T = get_turf(A)
+
+	if(!T)
+		return
+
+	if(assigned_droppod)
+		if(tgui_alert(H, "Do you want to recall the current pod?",\
+			"Recall Droppod", list("No", "Yes")) == "Yes")
+
+			if(!(assigned_droppod.droppod_flags & (DROPPOD_DROPPING|DROPPOD_RETURNING)))
+				assigned_droppod.return_back()
+			else
+				to_chat(H, SPAN_WARNING("It's too late to recall the droppod now!"))
+		return
+
+	if(!(T in view(H)))
+		to_chat(H, SPAN_WARNING("This target can't be seen!"))
+		return
+
+	if(get_dist(T, H) > 5)
+		to_chat(H, SPAN_WARNING("This target is too far away!"))
+		return
+
+	if(!(is_ground_level(T.z)))
+		to_chat(H, SPAN_WARNING("The droppod cannot land here!"))
+		return
+
+	if(protected_by_pylon(TURF_PROTECTION_CAS, T))
+		to_chat(H, SPAN_WARNING("The droppod cannot punch through an organic ceiling!"))
+		return
+
+	var/list/list_of_techs = list()
+
+	for(var/i in GLOB.unlocked_droppod_techs)
+		var/datum/tech/tech_to_use = i
+		list_of_techs += list("[tech_to_use.name]" = tech_to_use)
+
+	if(!list_of_techs.len)
+		to_chat(H, SPAN_WARNING("No droppods currently available."))
+		return
+
+	var/input = tgui_input_list(H, "Choose a tech to deploy at this location", "Tech deployment", list_of_techs)
+
+	if(!input)
+		return
+
+	var/datum/tech/tech_to_deploy = list_of_techs[input]
+
+	if(!tech_to_deploy)
+		return
+
+	var/area/turf_area = get_area(T)
+
+	if(!turf_area)
+		return
+
+	var/land_time = max(turf_area.ceiling, 1) * (20 SECONDS)
+
+	playsound(T, 'sound/effects/alert.ogg', 75)
+	assigned_droppod = new(T, land_time, tech_to_deploy)
+	var/list/to_send_to = H.assigned_squad?.marines_list
+	if(!to_send_to)
+		to_send_to = list(H)
+
+	for(var/M in to_send_to)
+		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
+
+	RegisterSignal(assigned_droppod, COMSIG_PARENT_QDELETING, .proc/handle_droppod_deleted)
+
+/datum/action/human_action/activable/droppod/proc/handle_droppod_deleted(var/obj/structure/droppod/tech/T)
+	SIGNAL_HANDLER
+	if(T != assigned_droppod)
+		return
+	assigned_droppod = null
+
+/datum/action/human_action/activable/droppod/Destroy()
+	if(assigned_droppod)
+		handle_droppod_deleted(assigned_droppod)
+
+	return ..()
+
+
+/datum/action/human_action/activable/droppod/give_to(user)
+	if(!ishuman(user))
+		return FALSE
+
+	var/mob/living/carbon/human/H = user
+
+	if(H.job != JOB_SQUAD_RTO)
+		return FALSE
+
+	return ..()
 
 /datum/action/human_action/activable/cult
 	name = "Activable Cult Ability"
@@ -239,7 +345,7 @@ CULT
 
 	H.visible_message(SPAN_HIGHDANGER("[H] puts on their robes."), SPAN_WARNING("You put on your robes."))
 	for(var/datum/action/human_action/activable/cult/obtain_equipment/O in H.actions)
-		O.remove_action(H)
+		O.remove_from(H)
 
 /datum/action/human_action/activable/cult_leader
 	name = "Activable Leader Ability"
@@ -427,7 +533,7 @@ CULT
 			to_chat(chosen, SPAN_HIGHDANGER("<hr>You are now a Mutineer!"))
 			to_chat(chosen, SPAN_DANGER("Please check the rules to see what you can and can't do as a mutineer.<hr>"))
 
-		converted.remove_action(H)
+		converted.remove_from(H)
 
 	message_staff("[key_name_admin(H)] has begun the mutiny.")
-	src.remove_action(H)
+	remove_from(H)

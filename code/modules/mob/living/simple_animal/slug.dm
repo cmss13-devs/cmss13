@@ -22,7 +22,7 @@
 	universal_speak = 0
 	universal_understand = 1
 
-/mob/living/simple_animal/alien_slug/Life()
+/mob/living/simple_animal/alien_slug/Life(delta_time)
 	. = ..()
 	if(!ckey && stat == CONSCIOUS && prob(0.5))
 		stat = UNCONSCIOUS

@@ -221,7 +221,7 @@
 	hardpoints -= old
 	old.owner = null
 
-	if(old.health <= 0)
+	if(old.health <= 0 && !old.gc_destroyed) // Make sure it's not already being deleted.
 		qdel(old)
 
 	update_icon()

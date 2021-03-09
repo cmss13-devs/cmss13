@@ -103,7 +103,6 @@
 					return
 			chemical_data.update_credits(2)
 			chemical_identified_list[S.id] = S.objective_value
-			defcon_controller.check_defcon_level()
 	else
 		report.name += "Analysis of ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"

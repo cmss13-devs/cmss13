@@ -253,6 +253,8 @@
 	max_amount = 5
 	stack_id = "splint"
 
+	var/indestructible_splints = FALSE
+
 /obj/item/stack/medical/splint/attack(mob/living/carbon/M, mob/user)
 	if(..()) return 1
 
@@ -296,6 +298,6 @@
 				,
 				SPAN_NOTICE("[user] starts splinting their [affecting.display_name]."))
 
-		if(affecting.apply_splints(src, user, M)) // Referenced in external organ helpers.
+		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.
 			use(1)
 			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)	

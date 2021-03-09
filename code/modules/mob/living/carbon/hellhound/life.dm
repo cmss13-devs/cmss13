@@ -1,4 +1,4 @@
-/mob/living/carbon/hellhound/Life()
+/mob/living/carbon/hellhound/Life(delta_time)
 	set invisibility = 0
 	set background = 1
 
@@ -7,7 +7,7 @@
 	if (stat != DEAD)
 
 		//Chemicals in the body
-		handle_chemicals_in_body()
+		handle_chemicals_in_body(delta_time)
 
 	blinded = null
 
@@ -28,14 +28,14 @@
 	updatehealth()
 	update_icons()
 
-/mob/living/carbon/hellhound/proc/handle_chemicals_in_body()
+/mob/living/carbon/hellhound/proc/handle_chemicals_in_body(delta_time)
 
 	reagent_move_delay_modifier = 0
 
 	recalculate_move_delay = TRUE
 
 	if(reagents && reagents.reagent_list.len)
-		reagents.metabolize(src)
+		reagents.metabolize(src, delta_time=delta_time)
 
 	if(confused)
 		confused = 0
@@ -89,7 +89,7 @@
 		if(regular_update)
 			sleeping = max(sleeping-1, 0)
 		blinded = 1
-		stat = UNCONSCIOUS		
+		stat = UNCONSCIOUS
 		if(regular_update && prob(10) && health && !hal_crit)
 			INVOKE_ASYNC(src, /mob.proc/emote, "snore")
 	else

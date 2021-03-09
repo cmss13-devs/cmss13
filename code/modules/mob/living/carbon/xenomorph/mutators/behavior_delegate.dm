@@ -29,6 +29,10 @@
     // The Xeno we handle mutator state for
     var/mob/living/carbon/Xenomorph/bound_xeno
 
+/datum/behavior_delegate/Destroy(force, ...)
+	remove_from_xeno()
+	bound_xeno = null
+	return ..()
 
 // Called during Xeno life
 // Handles anything that needs to be periodically ticked
@@ -40,6 +44,11 @@
 /datum/behavior_delegate/proc/append_to_stat()
     return list()
 
+/datum/behavior_delegate/proc/add_to_xeno()
+	return
+
+/datum/behavior_delegate/proc/remove_from_xeno()
+	return
 
 // Modifies the damage of a slash based on the current mutator state.
 // Do not override this proc unless you need to affect the rolled damage

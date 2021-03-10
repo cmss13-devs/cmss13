@@ -18223,9 +18223,6 @@
 "aWP" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/disk_reader{
-	dir = 1
-	},
 /turf/open/floor/corsat{
 	icon_state = "blue"
 	},
@@ -26571,14 +26568,6 @@
 	icon_state = "spiralplate"
 	},
 /area/corsat/omega/offices)
-"buf" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/disk_reader,
-/turf/open/floor/corsat{
-	dir = 1;
-	icon_state = "bluegrey"
-	},
-/area/corsat/sigma/southeast/datalab)
 "bug" = (
 /obj/structure/surface/table/almayer,
 /obj/item/phone,
@@ -26604,9 +26593,6 @@
 "buj" = (
 /obj/structure/machinery/light,
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/disk_reader{
-	dir = 1
-	},
 /turf/open/floor/corsat{
 	icon_state = "bluegrey"
 	},
@@ -60674,9 +60660,6 @@
 /area/corsat/theta/biodome/complex)
 "txK" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/disk_reader{
-	dir = 4
-	},
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "blue"
@@ -121370,7 +121353,7 @@ cJW
 gjj
 xvB
 att
-buf
+ixd
 buh
 aNs
 vjW

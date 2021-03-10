@@ -68,7 +68,7 @@
 	name = "M34A2 Longstreet Light Tank (LTB)"
 	ordered_vehicle = /obj/vehicle/multitile/tank/fixed_ltb
 
-/datum/vehicle_order/tank/has_vehicle_lock()
+/datum/vehicle_order/tank/ltb/has_vehicle_lock()
 	return FALSE
 
 /datum/vehicle_order/tank/ltb/on_created(var/obj/vehicle/multitile/tank/fixed_ltb/tank)

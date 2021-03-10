@@ -1,4 +1,4 @@
-#define SURVIVOR_TO_MARINES_SPAWN_RATIO 1/15
+#define SURVIVOR_TO_MARINES_SPAWN_RATIO 1/10
 
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
@@ -9,7 +9,7 @@
 	var/story_text
 
 /datum/job/civilian/survivor/set_spawn_positions(var/count)
-	spawn_positions = Clamp((round(count * SURVIVOR_TO_MARINES_SPAWN_RATIO)), 0, 8)
+	spawn_positions = Clamp((round(count * SURVIVOR_TO_MARINES_SPAWN_RATIO)), 2, 8)
 	total_positions = spawn_positions
 
 /datum/job/civilian/survivor/equip_job(mob/living/M)

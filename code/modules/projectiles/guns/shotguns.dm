@@ -426,7 +426,6 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
-						/obj/item/attachable/scope/mini, //What's the harm, right?
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/verticalgrip,
@@ -593,7 +592,6 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/compensator,
-						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/attached_gun/extinguisher,
 						/obj/item/attachable/attached_gun/flamer)

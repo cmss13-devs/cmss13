@@ -107,24 +107,22 @@
 
 /datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 6) //crazier version of knockback
 	if(!M || M == P.firer) return
-	if(P.distance_travelled > max_range || M.lying) shake_camera(M, 3, 2)
-	shake_camera(M, 3, 4)
+	if(P.distance_travelled > max_range || M.lying)
+		return
+	
 	if(isliving(M)) //This is pretty ugly, but what can you do.
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
 			if(target.mob_size >= MOB_SIZE_BIG)
-				target.apply_effect(0.3, DAZE)
-				target.apply_effect(2, SLOW)
 				return
+			to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+			shake_camera(M, 3, 4)
 			target.apply_effect(0.5, WEAKEN)
-			target.apply_effect(4, DAZE)
 			target.apply_effect(2, SUPERSLOW)
 			target.apply_effect(5, SLOW)
 		else
 			var/mob/living/target = M
 			if(!isYautja(M)) //Not predators.
-				target.apply_effect(5, DAZE)
 				target.apply_effect(5, SUPERSLOW)
 				target.apply_effect(8, SLOW)
 				to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
@@ -747,8 +745,7 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/item/projectile/P)
-	knockback(M, P, 32)	// Can knockback basically at max range
-	M.Daze(3)
+	heavy_knockback(M, P, 32)	// Can knockback basically at max range
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
@@ -768,14 +765,14 @@
 	impact_name = "slug"
 	impact_limbs = BODY_FLAG_HEAD
 
-	accurate_range = 12
-	max_range = 16
-	damage = BULLET_DAMAGE_TIER_11
-	penetration = ARMOR_PENETRATION_TIER_2
+	accurate_range = 6
+	max_range = 8
+	damage = BULLET_DAMAGE_TIER_14
+	penetration = ARMOR_PENETRATION_TIER_4
 	damage_armor_punch = 2
 
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/item/projectile/P)
-	heavy_knockback(M, P, 5)
+	heavy_knockback(M, P, 6)
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"

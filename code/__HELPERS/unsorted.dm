@@ -1136,16 +1136,13 @@ var/global/image/action_blue_power_up
 	if(A.vars.Find(lowertext(varname))) return 1
 	else return 0
 
-//Returns: all the areas in the world
-/proc/return_areas()
-	var/list/area/areas = list()
-	for(var/area/A in all_areas)
-		areas += A
-	return areas
-
-//Returns: all the areas in the world, sorted.
+//Returns: all the non-lighting areas in the world, sorted.
 /proc/return_sorted_areas()
-	return sortAtom(return_areas())
+	var/list/area/AL = list()
+	for(var/area/A in GLOB.sorted_areas)
+		if(!A.lighting_subarea)
+			AL += A
+	return AL
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all turfs in areas of that type of that type in the world.
@@ -1162,8 +1159,15 @@ var/global/image/action_blue_power_up
 
 	var/list/turfs = list()
 	var/area/A = GLOB.areas_by_type[areatype]
-	for(var/turf/T in A)
-		turfs += T
+
+	// Fix it up with /area/var/related due to lighting shenanigans
+	var/list/area/LA
+	if(!length(A.related))
+		LA = list(A)
+	else LA = A.related
+	for(var/area/Ai in LA)
+		for(var/turf/T in Ai)
+			turfs += T
 
 	return turfs
 

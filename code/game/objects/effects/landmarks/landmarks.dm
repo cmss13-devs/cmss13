@@ -9,16 +9,6 @@
 	..()
 	tag = "landmark*[name]"
 	invisibility = 101
-
-	switch(name)			//some of these are probably obsolete
-		if("HangarUpperElevator")
-			HangarUpperElevator = loc
-			qdel(src)
-
-		if("HangarLowerElevator")
-			HangarLowerElevator = loc
-			qdel(src)
-
 	return 1
 
 /obj/effect/landmark/Initialize(mapload, ...)

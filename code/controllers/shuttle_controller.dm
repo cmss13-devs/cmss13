@@ -43,27 +43,6 @@
 
 	supply_controller.shuttle = shuttle
 
-	// ASRS vehicle elevator
-	var/datum/shuttle/ferry/supply/vehicle/elevator
-	elevator = new()
-	elevator.location = 1
-	elevator.warmup_time = 1
-	elevator.move_time = ELEVATOR_TRANSIT_DURATION
-	for(var/area/A in all_areas)
-		if(A.type == /area/supply/dock_vehicle)
-			elevator.area_offsite = A
-			break
-
-	for(var/area/A in all_areas)
-		if(A.type == /area/supply/station_vehicle)
-			elevator.area_station = A
-			break
-
-	shuttles["Vehicle"] = elevator
-	process_shuttles += elevator
-
-	supply_controller.vehicle_elevator = elevator
-
 	var/datum/shuttle/ferry/marine/shuttle1 //Because I am using shuttle_tag, which is only defined under /datum/shuttle/ferry/marine
 	//ALMAYER DROPSHIP 1
 	shuttle1 = new

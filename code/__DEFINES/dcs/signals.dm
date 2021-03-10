@@ -62,6 +62,8 @@
 
 ///from base of atom/setDir(): (old_dir, new_dir). Called before the direction changes.
 #define COMSIG_ATOM_DIR_CHANGE "atom_dir_change"
+//from base of atom/movable/onTransitZ(): (old_z, new_z)
+#define COMSIG_MOVABLE_Z_CHANGED "movable_ztransit"
 
 // /mob signals
 /// From /obj/structure/machinery/door/airlock/proc/take_damage
@@ -318,3 +320,8 @@
 
 /// From /mob/living/carbon/Xenomorph/proc/check_blood_splash()
 #define COMSIG_XENO_DEAL_ACID_DAMAGE "xeno_deal_acid_damage"
+// shuttle
+/// shuttle mode change
+#define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
+/// shuttle crushing something
+#define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"

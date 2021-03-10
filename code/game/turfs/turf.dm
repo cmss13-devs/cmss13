@@ -693,7 +693,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 /turf/proc/empty(turf_type=/turf/open/space, baseturf_type, list/ignore_typecache, flags)
 	// Remove all atoms except observers, landmarks, docking ports
-	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark)) // shuttle TODO:
+	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port))
 	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContentsIgnoring(ignore_typecache), ignored_atoms)
 	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
@@ -702,3 +702,46 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 
 	if(turf_type)
 		ChangeTurf(turf_type, baseturf_type, flags)
+
+// Copy an existing turf and put it on top
+// Returns the new turf
+/turf/proc/CopyOnTop(turf/copytarget, ignore_bottom=1, depth=INFINITY, copy_air = FALSE)
+	var/list/new_baseturfs = list()
+	new_baseturfs += baseturfs
+	new_baseturfs += type
+
+	if(depth)
+		var/list/target_baseturfs
+		if(length(copytarget.baseturfs))
+			// with default inputs this would be Copy(clamp(2, -INFINITY, baseturfs.len))
+			// Don't forget a lower index is lower in the baseturfs stack, the bottom is baseturfs[1]
+			target_baseturfs = copytarget.baseturfs.Copy(clamp(1 + ignore_bottom, 1 + copytarget.baseturfs.len - depth, copytarget.baseturfs.len))
+		else if(!ignore_bottom)
+			target_baseturfs = list(copytarget.baseturfs)
+		if(target_baseturfs)
+			target_baseturfs -= new_baseturfs & GLOB.blacklisted_automated_baseturfs
+			new_baseturfs += target_baseturfs
+
+	var/turf/newT = copytarget.copyTurf(src, copy_air)
+	newT.baseturfs = new_baseturfs
+	return newT
+
+/turf/proc/copyTurf(turf/T)
+	if(T.type != type)
+		var/obj/O
+		if(underlays.len)	//we have underlays, which implies some sort of transparency, so we want to a snapshot of the previous turf as an underlay
+			O = new()
+			O.underlays.Add(T)
+		T.ChangeTurf(type)
+		if(underlays.len)
+			T.underlays = O.underlays
+	if(T.icon_state != icon_state)
+		T.icon_state = icon_state
+	if(T.icon != icon)
+		T.icon = icon
+	//if(color)
+	//	T.atom_colours = atom_colours.Copy()
+	//	T.update_atom_colour()
+	if(T.dir != dir)
+		T.setDir(dir)
+	return T

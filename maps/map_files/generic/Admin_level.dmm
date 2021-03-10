@@ -20,17 +20,9 @@
 	},
 /area/tdome)
 "ae" = (
-/obj/effect/decal/warning_stripes/permanent{
-	icon_state = "SE-out"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
-"af" = (
-/obj/effect/decal/warning_stripes/permanent{
-	icon_state = "S"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
+/obj/docking_port/stationary/vehicle_elevator/adminlevel,
+/turf/open/space/basic,
+/area/space)
 "ag" = (
 /obj/structure/window/framed/almayer/hull,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -43,18 +35,6 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome)
-"ah" = (
-/obj/effect/decal/warning_stripes/permanent{
-	icon_state = "N"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
-"ai" = (
-/obj/effect/decal/warning_stripes/permanent{
-	icon_state = "E"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
 "aj" = (
 /obj/structure/machinery/autolathe/full,
 /turf/open/floor/almayer{
@@ -66,42 +46,9 @@
 "ak" = (
 /turf/closed/wall/almayer/outer,
 /area/tdome/tdome1)
-"al" = (
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/supply/dock_vehicle)
-"am" = (
-/obj/effect/decal/warning_stripes/permanent{
-	icon_state = "SW-out"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
 "an" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/ert_station)
-"ao" = (
-/obj/effect/decal/warning_stripes/permanent{
-	icon_state = "W"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
-"ap" = (
-/obj/effect/decal/warning_stripes/permanent{
-	icon_state = "NE-out"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
-"aq" = (
-/obj/effect/decal/warning_stripes/permanent{
-	icon_state = "NW-out"
-	},
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
-"ar" = (
-/turf/open/floor/plating/plating_catwalk,
-/area/supply/dock_vehicle)
 "as" = (
 /turf/open/space/basic,
 /area/space)
@@ -14873,11 +14820,11 @@ aa
 aC
 aa
 fn
-ae
-ai
-ai
-ai
-ap
+as
+as
+as
+as
+as
 fn
 aa
 aa
@@ -15025,11 +14972,11 @@ aa
 aC
 aa
 fn
-af
-al
-al
-al
-ah
+as
+as
+as
+as
+as
 fn
 aa
 aC
@@ -15177,11 +15124,11 @@ aa
 aC
 aa
 fn
-af
-al
-ar
-al
-ah
+as
+as
+ae
+as
+as
 fn
 aa
 aC
@@ -15329,11 +15276,11 @@ aa
 aC
 aa
 fn
-af
-al
-al
-al
-ah
+as
+as
+as
+as
+as
 fn
 aa
 aC
@@ -15481,11 +15428,11 @@ aa
 aC
 aa
 fn
-am
-ao
-ao
-ao
-aq
+as
+as
+as
+as
+as
 fn
 aa
 aC

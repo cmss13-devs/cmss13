@@ -214,3 +214,5 @@
 
 	var/max_implants = 2
 	var/list/implants
+
+	var/move_on_shuttle = TRUE // Can move on the shuttle.

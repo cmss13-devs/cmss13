@@ -89,6 +89,9 @@
 /obj/effect/overlay/temp/point/big/greyscale
 	icon_state = "big_arrow_grey"
 
+/obj/effect/overlay/temp/point/big/greyscale
+	icon_state = "big_arrow_grey"
+
 /obj/effect/overlay/temp/point/big/queen
 	icon_state = "big_arrow_grey"
 	invisibility = INVISIBILITY_MAXIMUM

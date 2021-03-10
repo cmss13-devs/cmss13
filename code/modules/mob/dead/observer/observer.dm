@@ -319,7 +319,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
 		return
 
-	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", GLOB.sorted_areas)
+	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", return_sorted_areas())
 	if(!thearea)	return
 
 	var/list/L = list()

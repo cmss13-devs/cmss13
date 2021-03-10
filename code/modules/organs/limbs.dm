@@ -224,7 +224,7 @@
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
 		if(owner.pain.feels_pain)
-			owner.emote("scream") //Getting hit on broken hand hurts
+			INVOKE_ASYNC(owner, /mob.proc/emote, "scream") //Getting hit on broken hand hurts
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
 

@@ -116,27 +116,27 @@
 						length += emote_see.len
 					var/randomValue = rand(1,length)
 					if(randomValue <= speak.len)
-						say(pick(speak))
+						INVOKE_ASYNC(src, .proc/say, pick(speak))
 					else
 						randomValue -= speak.len
 						if(emote_see && randomValue <= emote_see.len)
-							emote(pick(emote_see),1)
+							INVOKE_ASYNC(src, .proc/emote, pick(emote_see),1)
 						else
-							emote(pick(emote_hear),2)
+							INVOKE_ASYNC(src, .proc/emote, pick(emote_hear),2)
 				else
-					say(pick(speak))
+					INVOKE_ASYNC(src, .proc/say, pick(speak))
 			else
 				if(!(emote_hear && emote_hear.len) && (emote_see && emote_see.len))
-					emote(pick(emote_see),1)
+					INVOKE_ASYNC(src, .proc/emote, pick(emote_see),1)
 				if((emote_hear && emote_hear.len) && !(emote_see && emote_see.len))
-					emote(pick(emote_hear),2)
+					INVOKE_ASYNC(src, .proc/emote, pick(emote_hear),2)
 				if((emote_hear && emote_hear.len) && (emote_see && emote_see.len))
 					var/length = emote_hear.len + emote_see.len
 					var/pick = rand(1,length)
 					if(pick <= emote_see.len)
-						emote(pick(emote_see),1)
+						INVOKE_ASYNC(src, .proc/emote, pick(emote_see),1)
 					else
-						emote(pick(emote_hear),2)
+						INVOKE_ASYNC(src, .proc/emote, pick(emote_hear),2)
 
 
 	//Atmos
@@ -356,7 +356,8 @@
 		return
 
 	if(copytext(message,1,2) == "*")
-		return emote(copytext(message,2))
+		INVOKE_ASYNC(src, .proc/emote, copytext(message,2))
+		return
 
 	if(stat)
 		return

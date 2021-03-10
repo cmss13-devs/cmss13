@@ -49,7 +49,7 @@
 			var/obj/effect/plantsegment/SV = locate(/obj/effect/plantsegment) in loc
 			qdel(SV)
 			if(prob(10))
-				say("Nom")
+				INVOKE_ASYNC(src, .proc/say, "Nom")
 
 		if(!pulledby)
 			for(var/direction in shuffle(list(1,2,4,8,5,6,9,10)))
@@ -69,7 +69,7 @@
 			var/obj/effect/plantsegment/SV = locate(/obj/effect/plantsegment) in loc
 			qdel(SV)
 			if(prob(10))
-				say("Nom")
+				INVOKE_ASYNC(src, .proc/say, "Nom")
 
 /mob/living/simple_animal/hostile/retaliate/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O

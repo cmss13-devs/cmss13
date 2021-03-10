@@ -167,6 +167,9 @@ build:runner:
 # Generate DM documentation
 report:dmdoc:
   stage: extra
+  image: 
+    name: alpine/git
+    entrypoint: [""]
   dependencies:
     - 'build:map-templates'
   cache:
@@ -186,6 +189,9 @@ report:dmdoc:
 
 report:maps:
   stage: extra
+  image: 
+    name: alpine/git
+    entrypoint: [""]
   dependencies: []
   cache:
     key: "dmm-tools-${SPDMM_VERSION}-${CI_COMMIT_REF_SLUG}"
@@ -194,20 +200,23 @@ report:maps:
   script:
     - "[ -f dmm-tools ] || wget -O dmm-tools ${SPDMM_DOWNLOAD_URL}/dmm-tools"
     - chmod u+x dmm-tools
-    - find maps -iname "*.dmm" -exec dmm-tools map-info --json {} \; | tee mapinfo.txt
+    - find maps -iname "*.dmm" -exec ./dmm-tools map-info --json {} \; | tee mapinfo.txt
   artifacts:
     name: ci_mapinfo
     paths:
       - 'mapinfo.txt'
-    expose_as: 'Map Info'
+    expose_as: 'Global Map Info'
     expire_in: '7 days'
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
       changes:
         - "maps/**/*.dmm"
 
-report:map-renders:
+report:maps-renders-full:
   stage: extra
+  image: 
+    name: alpine/git
+    entrypoint: [""]
   dependencies: []
   cache:
     key: "dmm-tools-${SPDMM_VERSION}-${CI_COMMIT_REF_SLUG}"
@@ -216,8 +225,7 @@ report:map-renders:
   script:
     - "[ -f dmm-tools ] || wget -O dmm-tools ${SPDMM_DOWNLOAD_URL}/dmm-tools"
     - chmod u+x dmm-tools
-    - mkdir -p map-renders
-    - find maps/map_files -iname "*.dmm" -exec dmm-tools minimap -o maps-renders {} \;
+    - ./dmm-tools minimap -o maps-renders $(git diff-tree -r --name-only --no-commit-id ${CI_COMMIT_BEFORE_SHA}..${CI_COMMIT_SHA} maps/map_files/*.dmm)
   artifacts:
     name: ci_map_renders
     paths:
@@ -225,13 +233,15 @@ report:map-renders:
     expose_as: 'Maps Renders'
     expire_in: '1 day'
   rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BEFORE_SHA'
       changes:
-        - "maps/**/*.dmm"
+        - "maps/map_files/*.dmm"
 
 commit:changelog:
   stage: extra
-  image: $IMG_BUILD_NODE
+  image: 
+    name: alpine/git
+    entrypoint: [""]
   interruptible: false
   script:
     - eval `ssh-agent -s`

@@ -1556,9 +1556,6 @@
 	},
 /area/fiorina/oob)
 "aOJ" = (
-/obj/structure/machinery/computer/disk_reader{
-	dir = 8
-	},
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
@@ -2594,13 +2591,6 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
-"buG" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/disk_reader,
-/turf/open/floor/prison{
-	icon_state = "bluefull"
-	},
-/area/fiorina/station/power_ring)
 "buO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/mask/surgical,
@@ -18741,17 +18731,6 @@
 	icon_state = "darkyellow2"
 	},
 /area/fiorina/station/flight_deck)
-"lnC" = (
-/obj/structure/machinery/computer/disk_reader{
-	dir = 1
-	},
-/obj/structure/surface/table/reinforced/prison,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "whitegreenfull";
-	tag = "icon-whitegreenfull (SOUTHWEST)"
-	},
-/area/fiorina/station/medbay)
 "lnU" = (
 /obj/item/stool,
 /turf/open/floor/prison{
@@ -19739,13 +19718,6 @@
 	tag = "icon-bright_clean2 (SOUTHWEST)"
 	},
 /area/fiorina/station/lowsec)
-"lWl" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/disk_reader,
-/turf/open/floor/prison{
-	icon_state = "redfull"
-	},
-/area/fiorina/station/security)
 "lWD" = (
 /obj/structure/machinery/light/double/blue{
 	dir = 4;
@@ -35618,7 +35590,6 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "vEm" = (
-/obj/structure/machinery/computer/disk_reader,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	icon_state = "darkpurplefull2";
@@ -68126,7 +68097,7 @@ kqz
 fPZ
 fPZ
 cxF
-lnC
+goA
 wmG
 iVC
 leq
@@ -72236,7 +72207,7 @@ xBI
 xBI
 xBI
 gIB
-lWl
+lgy
 qgA
 tHs
 sRV
@@ -77099,7 +77070,7 @@ avl
 iUy
 vbd
 duF
-buG
+whR
 lAS
 lAS
 lAS

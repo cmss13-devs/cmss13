@@ -1,6 +1,4 @@
 /proc/CreateGeneralRecord()
-	var/mob/living/carbon/human/dummy = new()
-	dummy.mind = new()
 	var/datum/data/record/G = new /datum/data/record()
 	G.fields["name"] = "New Record"
 	G.fields["id"] = text("[]", add_zero(num2hex(rand(1, 1.6777215E7)), 6))
@@ -18,8 +16,6 @@
 	G.fields["mob_faction"]	= "Unknown"
 	G.fields["religion"]	= "Unknown"
 	GLOB.data_core.general += G
-
-	qdel(dummy)
 	return G
 
 /proc/CreateSecurityRecord(var/name as text, var/id as text)

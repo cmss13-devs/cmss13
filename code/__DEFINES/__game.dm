@@ -139,7 +139,7 @@
 #define ELEVATOR_RECHARGE 15 SECONDS  // 15 seconds
 
 //Shuttle moving status
-#define SHUTTLE_IDLE		0
+//#define SHUTTLE_IDLE		0
 #define SHUTTLE_WARMUP		1
 #define SHUTTLE_INTRANSIT	2
 #define SHUTTLE_CRASHED		3

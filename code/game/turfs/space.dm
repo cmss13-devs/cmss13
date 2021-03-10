@@ -163,6 +163,10 @@
 /turf/open/space/transit
 	var/pushdirection // push things that get caught in the transit tile this direction
 
+/turf/open/space/transit/south
+
+/turf/open/space/transit/west
+
 //Overwrite because we dont want people building rods in space.
 /turf/open/space/transit/attackby(obj/O as obj, mob/user as mob)
 	return

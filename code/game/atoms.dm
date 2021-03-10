@@ -490,6 +490,10 @@ Parameters are passed from New.
 		usr_client.Click(src, loc, TRUE, mouseparams)
 		return TRUE
 
+///This proc is called on atoms when they are loaded into a shuttle
+/atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock, idnum, override=FALSE)
+	return
+
 /**
  * Hook for running code when a dir change occurs
  *

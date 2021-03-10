@@ -207,3 +207,6 @@
 #define SHELLEO_ERRORLEVEL 1
 #define SHELLEO_STDOUT 2
 #define SHELLEO_STDERR 3
+
+// Shuttles
+#define isshuttleturf(T) (length(T.baseturfs) && (/turf/baseturf_skipover/shuttle in T.baseturfs))

@@ -8,6 +8,8 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/map_templates = list()
 
+	var/list/shuttle_templates = list()
+
 	var/list/areas_in_z = list()
 
 	var/list/turf/unused_turfs = list()				//Not actually unused turfs they're unused but reserved for use for whatever requests them. "[zlevel_of_turf]" = list(turfs)
@@ -189,6 +191,8 @@ SUBSYSTEM_DEF(mapping)
 		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
 		map_templates[T.name] = T
 
+	preloadShuttleTemplates()
+
 /proc/generateMapList(filename)
 	. = list()
 	var/list/Lines = file2list(filename)
@@ -218,6 +222,15 @@ SUBSYSTEM_DEF(mapping)
 			continue
 
 		. += t
+
+/datum/controller/subsystem/mapping/proc/preloadShuttleTemplates()
+	for(var/item in subtypesof(/datum/map_template/shuttle))
+		var/datum/map_template/shuttle/shuttle_type = item
+
+		var/datum/map_template/shuttle/S = new shuttle_type()
+
+		shuttle_templates[S.shuttle_id] = S
+		map_templates[S.shuttle_id] = S
 
 /datum/controller/subsystem/mapping/proc/RequestBlockReservation(width, height, z, type = /datum/turf_reservation, turf_type_override)
 	UNTIL(initialized && !clearing_reserved_turfs)

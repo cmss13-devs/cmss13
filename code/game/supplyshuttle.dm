@@ -346,7 +346,6 @@ var/datum/controller/supply/supply_controller = new()
 	var/list/random_supply_packs = list()
 	//shuttle movement
 	var/datum/shuttle/ferry/supply/shuttle
-	var/datum/shuttle/ferry/supply/vehicle/vehicle_elevator
 
 	//dropship part fabricator's points, so we can reference them globally (mostly for DEFCON)
 	var/dropship_points = 10000 //gains roughly 18 points per minute | Original points of 5k doubled due to removal of prespawned ammo.
@@ -477,13 +476,13 @@ var/datum/controller/supply/supply_controller = new()
 //Buyin
 /datum/controller/supply/proc/buy()
 	var/area/area_shuttle = shuttle?.get_location_area()
-	if(!area_shuttle || !shoppinglist.len)	
+	if(!area_shuttle || !shoppinglist.len)
 		return
 
 	// Try to find an available turf to place our package
 	var/list/turf/clear_turfs = list()
 	for(var/turf/T in area_shuttle)
-		if(T.density || T.contents?.len)	
+		if(T.density || T.contents?.len)
 			continue
 		clear_turfs += T
 
@@ -507,7 +506,7 @@ var/datum/controller/supply/supply_controller = new()
 		if(isobj(container) && package.access)
 			var/obj/lockable = container
 			lockable.req_access = list(package.access)
-		
+
 		// Contents generation
 		var/list/content_names = list()
 		var/list/content_types = package.contains
@@ -547,7 +546,7 @@ var/datum/controller/supply/supply_controller = new()
 	onclose(user, "manifest\ref[src]")
 
 /obj/item/paper/manifest/proc/generate_contents()
-	// You don't tell anyone this is inspired from player-made fax layouts, 
+	// You don't tell anyone this is inspired from player-made fax layouts,
 	// or else, capiche ? Yes this is long, it's 80 col standard
 	info = "                                                                  \
         <style>                                                               \
@@ -1067,29 +1066,20 @@ var/datum/controller/supply/supply_controller = new()
 	H.set_interaction(src)
 	post_signal("supply_vehicle")
 
-	var/datum/shuttle/ferry/supply/elevator = supply_controller.vehicle_elevator
 	var/dat = ""
 
-	if(!elevator)
+	if(!SSshuttle.vehicle_elevator)
 		return
 
-	if(elevator)
-		dat += "Platform position: "
-		if (elevator.has_arrive_time())
-			dat += "Moving"
+	dat += "Platform position: "
+	if (SSshuttle.vehicle_elevator.timeLeft())
+		dat += "Moving"
+	else
+		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
+			dat += "Raised"
 		else
-			if(elevator.at_station())
-				if(elevator.docking_controller)
-					switch(elevator.docking_controller.get_docking_status())
-						if ("docked") dat += "Raised"
-						if ("undocked") dat += "Lowered"
-						if ("docking") dat += "Raising"
-						if ("undocking") dat += "Lowering"
-				else
-					dat += "Raised"
-			else
-				dat += "Lowered"
-		dat += "<br><hr>"
+			dat += "Lowered"
+	dat += "<br><hr>"
 
 	if(spent)
 		dat += "No vehicles are available for retrieval."
@@ -1117,17 +1107,12 @@ var/datum/controller/supply/supply_controller = new()
 	if(!supply_controller)
 		world.log << "## ERROR: Eek. The supply_controller controller datum is missing somehow."
 		return
-	var/datum/shuttle/ferry/supply/vehicle/elevator = supply_controller.vehicle_elevator
 
-	if (!elevator)
+	if (!SSshuttle.vehicle_elevator)
 		world.log << "## ERROR: Eek. The supply/elevator datum is missing somehow."
 		return
 
-	if(elevator.locked)
-		return
-
-	if(!elevator.location)
-		elevator.launch(src)
+	if(!is_admin_level(SSshuttle.vehicle_elevator.z))
 		return
 
 	if(ismaintdrone(usr))
@@ -1137,32 +1122,10 @@ var/datum/controller/supply/supply_controller = new()
 		usr.set_interaction(src)
 
 	if(href_list["get_vehicle"])
-		var/area/area_elevator = elevator.get_location_area()
-		if(!area_elevator)
+		if(is_mainship_level(SSshuttle.vehicle_elevator.z))
 			return
-
-		var/min_x = world.maxx+1
-		var/max_x = 0
-		var/min_y = world.maxx+1
-		var/max_y = 0
-		for(var/turf/T in area_elevator)
-			if(T.x < min_x)
-				min_x = T.x
-			if(T.y < min_y)
-				min_y = T.y
-			if(T.x > max_x)
-				max_x = T.x
-			if(T.y > max_y)
-				max_y = T.y
-
-		var/z_coord = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
-		if(length(z_coord))
-			z_coord = z_coord[1]
-		else
-			z_coord = 1 //fuck it
-
 		// dunno why the +1 is needed but the vehicles spawn off-center
-		var/turf/middle_turf = locate(min_x + Ceiling((max_x-min_x)/2) + 1, min_y + Ceiling((max_y-min_y)/2) + 1, z_coord)
+		var/turf/middle_turf = get_turf(SSshuttle.vehicle_elevator)
 
 		var/obj/vehicle/multitile/ordered_vehicle
 
@@ -1172,7 +1135,7 @@ var/datum/controller/supply/supply_controller = new()
 		if(VO.has_vehicle_lock()) return
 
 		ordered_vehicle = new VO.ordered_vehicle(middle_turf)
-		elevator.launch(src)
+		SSshuttle.vehicle_elevator.request(SSshuttle.getDock("almayer vehicle"))
 
 		VO.on_created(ordered_vehicle)
 

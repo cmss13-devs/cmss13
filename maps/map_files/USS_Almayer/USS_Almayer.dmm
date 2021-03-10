@@ -2153,6 +2153,17 @@
 	tag = "icon-orange (NORTHEAST)"
 	},
 /area/almayer/engineering/starboard_atmos)
+"afi" = (
+/obj/structure/pipes/standard/manifold/hidden/supply{
+	dir = 1
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "orange";
+	tag = "icon-orange (WEST)"
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/engineering_workshop)
 "afj" = (
 /obj/structure/machinery/portable_atmospherics/canister/empty,
 /turf/open/floor/engine,
@@ -2270,6 +2281,9 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
+"afz" = (
+/turf/open/floor/almayer/empty,
+/area/almayer/hallways/vehiclehangar)
 "afA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2290,6 +2304,10 @@
 	tag = "icon-blue (SOUTHEAST)"
 	},
 /area/almayer/living/basketball)
+"afC" = (
+/obj/docking_port/stationary/vehicle_elevator,
+/turf/open/floor/almayer/empty,
+/area/almayer/hallways/vehiclehangar)
 "afD" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -43762,9 +43780,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/surgery_hallway)
-"jqy" = (
-/turf/open/floor/almayer/empty,
-/area/supply/station_vehicle)
 "jre" = (
 /obj/structure/machinery/computer/arcade,
 /turf/open/floor/almayer{
@@ -49187,10 +49202,6 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/squads/req)
-"oTz" = (
-/obj/effect/landmark/vehicleelevator,
-/turf/open/floor/almayer/empty,
-/area/supply/station_vehicle)
 "oUO" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
@@ -71735,11 +71746,11 @@ bBB
 bNp
 pqQ
 nka
-jqy
-jqy
-jqy
-jqy
-jqy
+afz
+afz
+afz
+afz
+afz
 iDd
 bzv
 aaa
@@ -71938,11 +71949,11 @@ kCS
 hHJ
 iWL
 bkD
-jqy
-jqy
-jqy
-jqy
-jqy
+afz
+afz
+afz
+afz
+afz
 iDd
 bzv
 aKW
@@ -72141,11 +72152,11 @@ bzA
 bNp
 pqQ
 nka
-jqy
-jqy
-oTz
-jqy
-jqy
+afz
+afz
+afC
+afz
+afz
 bRx
 bzy
 bUc
@@ -72344,11 +72355,11 @@ bKh
 bNp
 pqQ
 fti
-jqy
-jqy
-jqy
-jqy
-jqy
+afz
+afz
+afz
+afz
+afz
 iDd
 bzy
 bUc
@@ -72547,11 +72558,11 @@ bBB
 bNp
 pqQ
 nka
-jqy
-jqy
-jqy
-jqy
-jqy
+afz
+afz
+afz
+afz
+afz
 iDd
 bzy
 bUc
@@ -108469,7 +108480,7 @@ ccW
 bKO
 bqa
 bqa
-asA
+afi
 bQa
 bRk
 bSm

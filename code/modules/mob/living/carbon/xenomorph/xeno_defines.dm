@@ -741,6 +741,13 @@
 			qdel(embryo)
 		potential_host.death("larva suicide")
 
+/datum/hive_status/proc/free_respawn(var/client/C)
+	stored_larva++
+	if(!spawn_pool || !spawn_pool.spawn_pooled_larva(C.mob))
+		stored_larva--
+	else
+		hive_ui.update_pooled_larva()
+
 /mob/living/carbon/proc/ally_of_hivenumber(var/hivenumber)
 	var/datum/hive_status/H = GLOB.hive_datum[hivenumber]
 	if(!H)

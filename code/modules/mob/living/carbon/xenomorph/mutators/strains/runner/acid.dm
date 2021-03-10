@@ -135,16 +135,8 @@
 		M.apply_damage(damage, BURN)
 	playsound(bound_xeno, 'sound/effects/blobattack.ogg', 75)
 	if(bound_xeno.client && bound_xeno.hive)
-		addtimer(CALLBACK(src, /datum/behavior_delegate/runner_acider.proc/do_respawn, bound_xeno.client, bound_xeno.hive), 5 SECONDS)
+		addtimer(CALLBACK(bound_xeno.hive, /datum/hive_status.proc/free_respawn, bound_xeno.client), 5 SECONDS)
 	bound_xeno.gib()
-
-
-/datum/behavior_delegate/runner_acider/proc/do_respawn(var/client/C, var/datum/hive_status/hive)
-	hive.stored_larva++
-	if(!hive.spawn_pool || !hive.spawn_pool.spawn_pooled_larva(C.mob))
-		hive.stored_larva--
-	else
-		hive.hive_ui.update_pooled_larva()
 
 /mob/living/carbon/Xenomorph/Runner/can_ventcrawl()
 	var/datum/behavior_delegate/runner_acider/BD = behavior_delegate

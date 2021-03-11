@@ -62,7 +62,7 @@ IN_USE						used for vending/denying
 
 	//restoring sprite to initial
 	overlays.Cut()
-	icon_state = initial(icon_state)	//shouldn't be needed but just in case
+	//icon_state = initial(icon_state)	//shouldn't be needed but just in case
 	var/matrix/A = matrix()
 	apply_transform(A)
 

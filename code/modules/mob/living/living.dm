@@ -268,7 +268,7 @@
 			if(GRAB_CHOKE)
 				grab_level_delay = 9
 
-		. += max(pull_speed + pull_delay + grab_level_delay, 0) //harder grab makes you slower
+		. += max(pull_speed + (pull_delay + reagent_move_delay_modifier) + grab_level_delay, 0) //harder grab makes you slower
 	move_delay = .
 
 

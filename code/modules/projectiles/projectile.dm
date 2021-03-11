@@ -848,7 +848,7 @@
 		var/armor //Damage types don't correspond to armor types. We are thus merging them.
 		switch(P.ammo.damage_type)
 			if(BRUTE) armor = ammo_flags & AMMO_ROCKET ? getarmor_organ(organ, ARMOR_BOMB) : getarmor_organ(organ, ARMOR_BULLET)
-			if(BURN) armor = ammo_flags & AMMO_ENERGY ? getarmor_organ(organ, ARMOR_ENERGY) : getarmor_organ(organ, ARMOR_LASER)
+			if(BURN) armor = ammo_flags & AMMO_ENERGY ? getarmor_organ(organ, ARMOR_ENERGY) : getarmor_organ(organ, ARMOR_BIO)
 			if(TOX, OXY, CLONE) armor = getarmor_organ(organ, ARMOR_BIO)
 			else armor = getarmor_organ(organ, ARMOR_ENERGY) //Won't be used, but just in case.
 

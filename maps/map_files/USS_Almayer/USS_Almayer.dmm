@@ -5279,8 +5279,9 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
 	name = "\improper Dropship Control Bubble";
-	req_access = list();
-	req_one_access = list(3,22,2,19)
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "3;22;2;19"
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/offices)
@@ -10172,7 +10173,6 @@
 /obj/structure/machinery/door_control{
 	id = "Hangar Lockdown";
 	name = "Hangar Lockdown";
-	pixel_y = 0;
 	req_one_access = list(3,19,22,2)
 	},
 /turf/open/floor/almayer,
@@ -19384,7 +19384,11 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bhZ" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit/two,
+/obj/structure/machinery/door/airlock/hatch/cockpit/two{
+	req_access = null;
+	req_access_txt = "22";
+	req_one_access = null
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -19429,7 +19433,11 @@
 	},
 /area/shuttle/drop1/sulaco)
 "bim" = (
-/obj/structure/machinery/door/airlock/hatch/cockpit,
+/obj/structure/machinery/door/airlock/hatch/cockpit{
+	req_access = null;
+	req_access_txt = "22";
+	req_one_access = null
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -20086,7 +20094,10 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	id_tag = "or02";
-	name = "Operating Theatre 2"
+	name = "Operating Theatre 2";
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "2;8;19"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -20980,7 +20991,10 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
 	id_tag = "tc01";
-	name = "\improper Treatment Center"
+	name = "\improper Treatment Center";
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "2;8;19"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -21625,7 +21639,9 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
-	name = "\improper Medical Bay"
+	name = "\improper Medical Bay";
+	req_access = null;
+	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -33808,7 +33824,6 @@
 	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 1;
 	id = "DeployWorkR";
 	name = "\improper Workshop Shutters"
 	},
@@ -38623,8 +38638,9 @@
 /obj/structure/machinery/door/airlock/almayer/security{
 	dir = 2;
 	name = "\improper Dropship Control Bubble";
-	req_access = list();
-	req_one_access = list(3,22,2,19)
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "3;22;2;19"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/living/offices)
@@ -42321,7 +42337,9 @@
 /area/almayer/lifeboat/boat1)
 "gln" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Medical Bay"
+	name = "\improper Medical Bay";
+	req_access = null;
+	req_one_access = null
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -45490,7 +45508,8 @@
 /area/almayer/squads/req)
 "iyq" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
-	name = "\improper Medical Bay"
+	name = "\improper Medical Bay";
+	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 1
@@ -46005,7 +46024,10 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	id_tag = "or01";
-	name = "Operating Theatre 1"
+	name = "Operating Theatre 1";
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "2;8;19"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;
@@ -52699,6 +52721,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Chemistry Laboratory";
+	req_access = null;
 	req_access_txt = "20";
 	req_one_access = null
 	},
@@ -53898,6 +53921,7 @@
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 2;
 	name = "\improper Medical Storage";
+	req_access = null;
 	req_access_txt = "20";
 	req_one_access = null
 	},
@@ -58608,7 +58632,9 @@
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
-	name = "\improper Medical Bay"
+	name = "\improper Medical Bay";
+	req_access = null;
+	req_one_access = null
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -59521,7 +59547,6 @@
 	name = "\improper Hangar Lockdown Blast Door"
 	},
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	dir = 1;
 	id = "DeployWorkR";
 	name = "\improper Workshop Shutters"
 	},
@@ -61368,7 +61393,10 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor{
 	dir = 2;
 	id_tag = "tc02";
-	name = "\improper Treatment Center"
+	name = "\improper Treatment Center";
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "2;8;19"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer{
@@ -62804,7 +62832,10 @@
 /obj/structure/machinery/door/airlock/almayer/medical{
 	dir = 1;
 	id_tag = "or03";
-	name = "Operating Theatre 3"
+	name = "Operating Theatre 3";
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "2;8;19"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer{
 	dir = 2;

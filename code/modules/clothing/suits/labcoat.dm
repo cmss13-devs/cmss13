@@ -140,7 +140,7 @@
 	name = "snow suit"
 	desc = "A standard snow suit. It can protect the wearer from extreme cold."
 	icon = 'icons/obj/items/clothing/suits.dmi'
-	icon_state = "snowsuit_alpha"
+	icon_state = "snowsuit"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
@@ -157,24 +157,39 @@
 
 /obj/item/clothing/suit/storage/snow_suit/doctor
 	name = "doctor's snow suit"
-	icon_state = "snowsuit_doctor"
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
-	armor_rad = CLOTHING_ARMOR_NONE
-	armor_internaldamage = CLOTHING_ARMOR_LOW
 
-/obj/item/clothing/suit/storage/snow_suit/engineer
-	name = "engineer's snow suit"
-	icon_state = "snowsuit_engineer"
+/obj/item/clothing/suit/storage/snow_suit/survivor
+	name = "robust snow suit"
+	desc = "A snow suit. It can protect the wearer from extreme cold. This one seems to have been modified somewhat, and can both holster a gun and fit magazines."
+	icon_state = "snowsuit" //needs new cool sprite
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW //<- this one is different
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/melee/baseballbat,
+		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
+
+/obj/item/clothing/suit/storage/snow_suit/survivor/Initialize()
+	. = ..()
+	pockets.max_w_class = SIZE_SMALL //Can contain small items AND rifle magazines.
+	pockets.bypass_w_limit = list(
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/sniper,
+	)
+	pockets.max_storage_space = 8

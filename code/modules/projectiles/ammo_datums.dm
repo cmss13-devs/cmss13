@@ -109,7 +109,7 @@
 	if(!M || M == P.firer) return
 	if(P.distance_travelled > max_range || M.lying)
 		return
-	
+
 	if(isliving(M)) //This is pretty ugly, but what can you do.
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
@@ -274,7 +274,7 @@
 	))
 
 /datum/ammo/bullet/pistol/ap/toxin
-	name = "toxic submachinegun bullet"
+	name = "toxic pistol bullet"
 	var/acid_per_hit = 10
 	var/organic_damage_mult = 3
 
@@ -342,6 +342,51 @@
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/squash/toxin
+	name = "toxic squash-head pistol bullet"
+	var/acid_per_hit = 10
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/pistol/squash/penetrating
+	name = "wall-piercing squash-head pistol bullet"
+	shrapnel_chance = 0
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/pistol/squash/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/pistol/squash/incendiary
+	name = "incendiary squash-head pistol bullet"
+	damage_type = BURN
+	shrapnel_chance = 0
+	flags_ammo_behavior = AMMO_BALLISTIC
+	accuracy = HIT_ACCURACY_TIER_3
+	damage = BULLET_DAMAGE_TIER_7
+
+/datum/ammo/bullet/pistol/squash/incendiary/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+
 /datum/ammo/bullet/pistol/mankey
 	name = "live monkey"
 	icon_state = "monkey1"
@@ -405,6 +450,47 @@
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
+
+/datum/ammo/bullet/revolver/incendiary
+	name = "incendiary revolver bullet"
+	damage = BULLET_DAMAGE_TIER_8
+
+/datum/ammo/bullet/revolver/incendiary/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+/datum/ammo/bullet/revolver/marksman/toxin
+	name = "toxic revolver bullet"
+	var/acid_per_hit = 10
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/revolver/penetrating
+	name = "wall-piercing revolver bullet"
+	shrapnel_chance = 0
+
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/revolver/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"

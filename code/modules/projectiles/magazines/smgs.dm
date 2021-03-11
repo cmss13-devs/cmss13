@@ -23,6 +23,7 @@
 	desc = "A 10x20mm caseless armor-piercing submachinegun magazine. The bullet tips are made out of high-density material, allowing them to pierce straight through armor, but also reducing the raw stopping power and velocity of the ammunition."
 	icon_state = "m39_AP"
 	default_ammo = /datum/ammo/bullet/smg/ap
+
 /obj/item/ammo_magazine/smg/m39/le
 	name = "\improper M39 LE magazine (10x20mm)"
 	desc = "A 10x20mm caseless light-explosive submachinegun magazine containing special light explosive rounds, designed to rapidly decimate armor, at the cost of vastly reduced damage and penetration."

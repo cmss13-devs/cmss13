@@ -75,6 +75,23 @@
 	gun_type = /obj/item/weapon/gun/rifle/m41aMK1
 	default_ammo = /datum/ammo/bullet/rifle/ap
 
+/obj/item/ammo_magazine/rifle/m41aMK1/incendiary
+	name = "\improper M41A MK1  magazine (10x24mm)"
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains incendiary bullets."
+	icon_state = "m41a_mk1_incendiary"
+	default_ammo = /datum/ammo/bullet/rifle/incendiary
+
+/obj/item/ammo_magazine/rifle/m41aMK1/toxin
+	name = "\improper M41A MK1  magazine (10x24mm)"
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains toxic bullets."
+	icon_state = "m41a_mk1_toxin"
+	default_ammo = /datum/ammo/bullet/rifle/ap/toxin
+
+/obj/item/ammo_magazine/rifle/m41aMK1/penetrating
+	name = "\improper M41A MK1  magazine (10x24mm)"
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains wall-piercing bullets."
+	icon_state = "m41a_mk1_penetrating"
+	default_ammo = /datum/ammo/bullet/rifle/penetrating
 
 
 //-------------------------------------------------------

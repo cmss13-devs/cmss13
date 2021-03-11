@@ -27,9 +27,9 @@
 	var/rigged = 0
 	var/spam_flag = 0
 
-	var/const/deffont = "Verdana"
-	var/const/signfont = "Times New Roman"
-	var/const/crayonfont = "Comic Sans MS"
+	var/deffont = "Verdana"
+	var/signfont = "Times New Roman"
+	var/crayonfont = "Comic Sans MS"
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 

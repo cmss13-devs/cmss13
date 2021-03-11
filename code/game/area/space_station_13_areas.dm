@@ -34,6 +34,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "\improper Admin room"
 	icon_state = "start"
 
+/area/admin/droppod
+	lighting_use_dynamic = FALSE
+
+/area/admin/droppod/holding
+	name = "\improper Admin Supply Drops Droppod"
+
+/area/admin/droppod/loading
+	name = "\improper Admin Supply Drops Loading"
+
 //Defined for fulton recovery storage
 /area/space/highalt
 	name = "High Altitude"

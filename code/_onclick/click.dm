@@ -45,6 +45,9 @@
 	if (mods["drag"])
 		return
 
+	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
+		return
+
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 

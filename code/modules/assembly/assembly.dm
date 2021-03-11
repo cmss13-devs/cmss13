@@ -1,3 +1,9 @@
+#define WIRE_ASSEMBLY_RECEIVE 1				//Allows Pulsed(0) to call Activate()
+#define WIRE_ASSEMBLY_PULSE 2				//Allows Pulse(0) to act on the holder
+#define WIRE_ASSEMBLY_PULSE_SPECIAL 4		//Allows Pulse(0) to act on the holders special assembly
+#define WIRE_RADIO_RECEIVE 8		//Allows Pulsed(1) to call Activate()
+#define WIRE_RADIO_PULSE 16			//Allows Pulse(1) to send a radio message
+
 /obj/item/device/assembly
 	name = "assembly"
 	desc = "A small electronic device that should never exist."
@@ -15,13 +21,7 @@
 	var/list/attached_overlays = null
 	var/obj/item/device/assembly_holder/holder = null
 	var/cooldown = 0//To prevent spam
-	var/wires = WIRE_RECEIVE|WIRE_PULSE
-
-	var/const/WIRE_RECEIVE = 1				//Allows Pulsed(0) to call Activate()
-	var/const/WIRE_PULSE = 2				//Allows Pulse(0) to act on the holder
-	var/const/WIRE_PULSE_SPECIAL = 4		//Allows Pulse(0) to act on the holders special assembly
-	var/const/WIRE_RADIO_RECEIVE = 8		//Allows Pulsed(1) to call Activate()
-	var/const/WIRE_RADIO_PULSE = 16			//Allows Pulse(1) to send a radio message
+	var/wires = WIRE_ASSEMBLY_RECEIVE|WIRE_ASSEMBLY_PULSE
 
 /obj/item/device/assembly/ui_state()
 	return GLOB.deep_inventory_state
@@ -41,16 +41,16 @@
 	return 1
 
 /obj/item/device/assembly/proc/pulsed(var/radio = 0)						//Called when another assembly acts on this one, var/radio will determine where it came from for wire calcs
-	if(holder && (wires & WIRE_RECEIVE))
+	if(holder && (wires & WIRE_ASSEMBLY_RECEIVE))
 		activate()
 	if(radio && (wires & WIRE_RADIO_RECEIVE))
 		activate()
 	return 1
 
 /obj/item/device/assembly/proc/pulse(var/radio = 0)							//Called when this device attempts to act on another device, var/radio determines if it was sent via radio or direct
-	if(holder && (wires & WIRE_PULSE))
+	if(holder && (wires & WIRE_ASSEMBLY_PULSE))
 		holder.process_activation(src, 1, 0)
-	if(holder && (wires & WIRE_PULSE_SPECIAL))
+	if(holder && (wires & WIRE_ASSEMBLY_PULSE_SPECIAL))
 		holder.process_activation(src, 0, 1)
 	return 1
 

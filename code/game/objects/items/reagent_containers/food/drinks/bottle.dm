@@ -7,7 +7,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 100
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
-	var/const/duration = 13 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
+	var/duration = 13 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
 	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 
 /obj/item/reagent_container/food/drinks/bottle/proc/smash(mob/living/target as mob, mob/living/user as mob)

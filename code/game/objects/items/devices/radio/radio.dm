@@ -1,5 +1,3 @@
-
-
 /obj/item/device/radio
 	icon = 'icons/obj/items/radio.dmi'
 	name = "station bounced radio"
@@ -29,12 +27,6 @@
 	w_class = SIZE_SMALL
 
 	matter = list("glass" = 25,"metal" = 75)
-
-	var/const/WIRE_SIGNAL = 1 //sends a signal, like to set off a bomb or electrocute someone
-	var/const/WIRE_RECEIVE = 2
-	var/const/WIRE_TRANSMIT = 4
-	var/const/TRANSMISSION_DELAY = 5 // only 2/second/radio
-	var/const/FREQ_LISTENING = 1
 		//FREQ_BROADCASTING = 2
 
 	var/agent_unlocked = FALSE

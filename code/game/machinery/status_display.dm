@@ -4,6 +4,15 @@
 // Use to show shuttle ETA/ETD times
 // Alert status
 // And arbitrary messages set by comms computer
+
+#define CHARS_PER_LINE 5
+#define STATUS_DISPLAY_BLANK 0
+#define STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME 1
+#define STATUS_DISPLAY_MESSAGE 2
+#define STATUS_DISPLAY_ALERT 3
+#define STATUS_DISPLAY_TIME 4
+#define STATUS_DISPLAY_CUSTOM 99
+
 /obj/structure/machinery/status_display
 	icon = 'icons/obj/structures/machinery/status_display.dmi'
 	icon_state = "frame"
@@ -32,14 +41,6 @@
 
 	maptext_height = 26
 	maptext_width = 32
-
-	var/const/CHARS_PER_LINE = 5
-	var/const/STATUS_DISPLAY_BLANK = 0
-	var/const/STATUS_DISPLAY_TRANSFER_SHUTTLE_TIME = 1
-	var/const/STATUS_DISPLAY_MESSAGE = 2
-	var/const/STATUS_DISPLAY_ALERT = 3
-	var/const/STATUS_DISPLAY_TIME = 4
-	var/const/STATUS_DISPLAY_CUSTOM = 99
 
 /obj/structure/machinery/status_display/Initialize()
 	. = ..()

@@ -270,7 +270,6 @@
 		return 0
 	if(!(target_mob in ListTargets(5)) || prob(20) || target_mob.stat)
 		stance = HOSTILE_STANCE_IDLE
-		sleep(1)
 		return 0
 	if(get_dist(src, target_mob) <= 1)	//Attacking
 		AttackingTarget()

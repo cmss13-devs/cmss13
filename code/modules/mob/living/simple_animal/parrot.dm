@@ -349,7 +349,7 @@
 			//Search for item to steal
 			parrot_interest = search_for_item()
 			if(parrot_interest)
-				emote("looks in [parrot_interest]'s direction and takes flight")
+				INVOKE_ASYNC(src, .proc/emote, "looks in [parrot_interest]'s direction and takes flight")
 				parrot_state = PARROT_SWOOP|PARROT_STEAL
 				icon_state = "parrot_fly"
 			return
@@ -371,7 +371,7 @@
 			if(AM)
 				if(istype(AM, /obj/item) || isliving(AM))	//If stealable item
 					parrot_interest = AM
-					emote("turns and flies towards [parrot_interest]")
+					INVOKE_ASYNC(src, .proc/emote, "turns and flies towards [parrot_interest]")
 					parrot_state = PARROT_SWOOP|PARROT_STEAL
 					return
 				else	//Else it's a perch
@@ -432,7 +432,7 @@
 
 		if(in_range(src, parrot_perch))
 			src.forceMove(parrot_perch.loc)
-			drop_parrot_held_item()
+			INVOKE_ASYNC(src, .proc/drop_parrot_held_item)
 			parrot_state = PARROT_PERCH
 			icon_state = "parrot_sit"
 			return
@@ -485,11 +485,11 @@
 				var/obj/limb/affecting = H.get_limb(ran_zone(pick(parrot_dam_zone)))
 
 				H.apply_damage(damage, BRUTE, affecting, sharp=1)
-				emote(pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
+				INVOKE_ASYNC(src, .proc/emote, pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
 
 			else
 				L.apply_damage(damage, BRUTE)
-				emote(pick("pecks at [L]", "claws [L]"))
+				INVOKE_ASYNC(src, .proc/emote, pick("pecks at [L]", "claws [L]"))
 			return
 
 		//Otherwise, fly towards the mob!
@@ -501,7 +501,7 @@
 		walk(src,0)
 		parrot_interest = null
 		parrot_perch = null
-		drop_parrot_held_item()
+		INVOKE_ASYNC(src, .proc/drop_parrot_held_item)
 		parrot_state = PARROT_WANDER
 		return
 

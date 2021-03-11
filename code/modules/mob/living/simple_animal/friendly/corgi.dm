@@ -37,7 +37,9 @@
 
 /mob/living/simple_animal/corgi/Ian/Life(delta_time)
 	..()
+	INVOKE_ASYNC(src, .proc/look_for_food)
 
+/mob/living/simple_animal/corgi/Ian/proc/look_for_food()
 	//Feeding, chasing food, FOOOOODDDD
 	if(!stat && !resting && !buckled)
 		turns_since_scan++
@@ -77,10 +79,10 @@
 						movement_target.attack_animal(src)
 					else if(ishuman(movement_target.loc) )
 						if(prob(20))
-							emote("stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
+							INVOKE_ASYNC(src, .proc/emote, "stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
 
 		if(prob(1))
-			emote(pick("dances around","chases its tail"))
+			INVOKE_ASYNC(src, .proc/emote, pick("dances around","chases its tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					setDir(i)
@@ -205,7 +207,7 @@
 
 
 		if(prob(1))
-			emote(pick("dances around","chases her tail"))
+			INVOKE_ASYNC(src, .proc/emote, pick("dances around","chases her tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					setDir(i)

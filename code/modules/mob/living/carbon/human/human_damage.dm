@@ -393,7 +393,7 @@ This function restores all limbs.
 	if(damage < 0 || (damagetype != BRUTE) && (damagetype != BURN))
 		if(damagetype == HALLOSS && pain.feels_pain)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
-				emote("pain")
+				INVOKE_ASYNC(src, .proc/emote, "pain")
 
 		..(damage, damagetype, def_zone)
 		return TRUE

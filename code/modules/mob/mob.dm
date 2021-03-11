@@ -185,6 +185,7 @@
 	SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc, direct)
 
 /mob/proc/Life(delta_time)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
 	else

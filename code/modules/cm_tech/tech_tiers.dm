@@ -30,7 +30,6 @@
 	color = "#00FF00"
 	disabled_color = "#007d00"
 
-	max_techs = 3
 /datum/tier/one_transition_two
 	name = "Tier 1 to Tier 2 transition"
 	tier = 1
@@ -45,8 +44,6 @@
 	disabled_color = "#7d5300"
 
 
-	max_techs = 3
-
 /datum/tier/two_transition_three
 	name = "Tier 2 to Tier 3 transition"
 	tier = 2
@@ -60,7 +57,6 @@
 	color = "#FF0000"
 	disabled_color = "#7d0000"
 
-	max_techs = 3
 /datum/tier/three_transition_four
 	name = "Tier 3 to Tier 4 transition"
 	tier = 3

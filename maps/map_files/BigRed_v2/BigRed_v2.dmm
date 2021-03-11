@@ -29051,7 +29051,7 @@
 	},
 /area/bigredv2/caves/eta/living)
 "bEz" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/bed/chair/comfy/orange,
 /turf/open/floor,
 /area/bigredv2/caves/eta/living)
 "bEA" = (
@@ -29122,7 +29122,7 @@
 /turf/open/floor,
 /area/bigredv2/caves/eta/living)
 "bEI" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green{

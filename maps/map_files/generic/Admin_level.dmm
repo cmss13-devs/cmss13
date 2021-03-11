@@ -116,7 +116,6 @@
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/tool/kitchen/knife,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -259,7 +258,6 @@
 "bp" = (
 /obj/structure/closet/secure_closet/freezer/fridge/full,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -450,6 +448,22 @@
 	},
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/space)
+"cJ" = (
+/turf/open/space/transit/east/shuttlespace_ew7,
+/area/space)
+"cU" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew4,
+/area/space)
 "dg" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod9)
@@ -524,6 +538,19 @@
 "dQ" = (
 /turf/open/space,
 /area/shuttle/distress/transit_upp)
+"dR" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew7,
+/area/space)
 "ej" = (
 /turf/open/floor/plating/plating_catwalk,
 /area/supply/dock)
@@ -541,7 +568,6 @@
 "ex" = (
 /obj/structure/bed/chair/wood/wings{
 	dir = 1;
-	icon_state = "wooden_chair_wings";
 	tag = "icon-wooden_chair_wings (NORTH)"
 	},
 /turf/open/floor/wood,
@@ -1152,6 +1178,9 @@
 	icon_state = "upp5"
 	},
 /area/shuttle/distress/start_upp)
+"ii" = (
+/turf/open/space/transit/east/shuttlespace_ew10,
+/area/space)
 "in" = (
 /obj/structure/machinery/door/airlock/almayer/generic,
 /obj/structure/machinery/door/poddoor/shutters/transit{
@@ -1750,9 +1779,7 @@
 /area/shuttle/distress/start_big)
 "kA" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
@@ -1817,8 +1844,7 @@
 /area/shuttle/distress/start_big)
 "kI" = (
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -1852,8 +1878,7 @@
 /obj/item/tank/anesthetic,
 /obj/item/clothing/mask/breath/medical,
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -1995,9 +2020,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/communications,
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/open/floor{
 	dir = 8;
@@ -2035,15 +2058,12 @@
 "lh" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /obj/item/device/radio/intercom{
-	anyai = 1;
 	freerange = 1;
 	name = "General Listening Channel";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2122,9 +2142,7 @@
 /area/shuttle/distress/start_big)
 "lr" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/security,
@@ -2348,7 +2366,6 @@
 /area/shuttle/distress/start_big)
 "lO" = (
 /obj/structure/machinery/door/airlock/almayer/command{
-	dir = 4;
 	name = "Bridge"
 	},
 /turf/open/floor/plating/almayer,
@@ -2418,7 +2435,6 @@
 "lU" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4;
-	icon_state = "officechair_white";
 	tag = ""
 	},
 /obj/effect/decal/warning_stripes{
@@ -2611,8 +2627,7 @@
 "mi" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2674,9 +2689,7 @@
 /area/shuttle/distress/start_big)
 "mp" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/med_data/laptop,
@@ -2719,9 +2732,7 @@
 /area/shuttle/distress/start_big)
 "mu" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/surface/table/almayer,
 /obj/item/ammo_magazine/pistol/mod88{
@@ -2816,7 +2827,6 @@
 	},
 /obj/structure/machinery/shower{
 	dir = 4;
-	icon_state = "shower";
 	tag = "icon-shower (EAST)"
 	},
 /obj/item/tool/soap,
@@ -2864,8 +2874,7 @@
 /obj/item/tool/extinguisher,
 /obj/item/tool/extinguisher,
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2882,9 +2891,7 @@
 "mH" = (
 /obj/structure/closet,
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -2908,7 +2915,6 @@
 /area/shuttle/distress/start_big)
 "mJ" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 4;
 	name = "Restroom"
 	},
 /turf/open/floor/plating/almayer,
@@ -2967,9 +2973,7 @@
 /area/shuttle/distress/start_big)
 "mO" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1";
-	pixel_y = 0
+	dir = 8
 	},
 /obj/structure/largecrate/random/case/double,
 /turf/open/floor/almayer{
@@ -2987,19 +2991,76 @@
 "mQ" = (
 /obj/structure/toilet{
 	dir = 1;
-	icon_state = "toilet00";
 	tag = "icon-toilet00 (NORTH)"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
 	},
 /area/shuttle/distress/start_big)
+"mX" = (
+/turf/open/space/basic,
+/area/almayer/lifeboat/boat2/space)
+"ne" = (
+/turf/open/space/transit/east/shuttlespace_ew8,
+/area/space)
+"nB" = (
+/turf/open/space/transit/east/shuttlespace_ew4,
+/area/space)
+"ok" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew6,
+/area/space)
 "op" = (
 /turf/open/floor/almayer{
 	icon_state = "carpet14-10";
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"oQ" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew1,
+/area/space)
+"ql" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew8,
+/area/space)
 "qz" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/binoculars{
@@ -3017,6 +3078,19 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdomeobserve)
+"sy" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew5,
+/area/space)
 "tx" = (
 /obj/structure/machinery/hologram/holopad,
 /turf/open/floor/carpet,
@@ -3024,19 +3098,33 @@
 "tY" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"uc" = (
+/turf/open/space,
+/area/almayer/lifeboat/boat1/space)
 "ug" = (
 /obj/structure/machinery/shower,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"uJ" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew13,
+/area/space)
 "uK" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/almayer{
@@ -3058,7 +3146,6 @@
 "vD" = (
 /obj/structure/bed/chair{
 	dir = 8;
-	icon_state = "chair";
 	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -3066,6 +3153,19 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"vH" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew15,
+/area/space)
 "vO" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/almayer{
@@ -3098,6 +3198,35 @@
 "wW" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/adminlevel/ert_station)
+"xr" = (
+/turf/open/space/basic,
+/area/almayer/lifeboat/boat1/space)
+"xw" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew3,
+/area/space)
+"xJ" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew11,
+/area/space)
 "xO" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
@@ -3109,12 +3238,14 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"xX" = (
+/turf/open/space/transit/east/shuttlespace_ew12,
+/area/space)
 "yk" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/book/manual/chef_recipes,
 /obj/item/clothing/head/chefhat,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3195,7 +3326,6 @@
 "zZ" = (
 /obj/structure/machinery/door/window/southleft,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3221,18 +3351,18 @@
 	tag = "icon-sterile"
 	},
 /area/shuttle/distress/start_big)
+"AH" = (
+/turf/open/space/transit/east/shuttlespace_ew1,
+/area/space)
 "AL" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /obj/structure/mirror{
 	pixel_x = 30
 	},
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3289,7 +3419,6 @@
 	density = 0
 	},
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3316,7 +3445,6 @@
 	pixel_y = 6
 	},
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3329,15 +3457,15 @@
 	tag = "icon-sterile_green_side (NORTH)"
 	},
 /area/adminlevel/ert_station)
+"Db" = (
+/turf/open/space/transit/east/shuttlespace_ew11,
+/area/space)
 "Do" = (
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3374,6 +3502,19 @@
 	tag = "icon-blue (NORTHEAST)"
 	},
 /area/tdome/tdome1)
+"Ef" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew9,
+/area/space)
 "En" = (
 /obj/structure/machinery/cm_vending/sorted/medical/no_access{
 	req_access = null
@@ -3401,7 +3542,6 @@
 	density = 0
 	},
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3433,6 +3573,9 @@
 "FB" = (
 /turf/open/floor/plating,
 /area/adminlevel/ert_station)
+"FI" = (
+/turf/open/space/transit/east/shuttlespace_ew3,
+/area/space)
 "FJ" = (
 /obj/structure/surface/rack,
 /turf/open/floor/almayer{
@@ -3447,6 +3590,19 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Gm" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew12,
+/area/space)
 "Gq" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -3457,11 +3613,13 @@
 "Gv" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
 /area/adminlevel/ert_station)
+"Gw" = (
+/turf/open/space/transit/east/shuttlespace_ew14,
+/area/space)
 "GB" = (
 /turf/open/floor/almayer{
 	dir = 1;
@@ -3482,6 +3640,22 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/ert_station)
+"GD" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew10,
+/area/space)
+"GE" = (
+/turf/open/space/transit/east/shuttlespace_ew9,
+/area/space)
 "GH" = (
 /obj/structure/janitorialcart,
 /obj/item/tool/mop,
@@ -3492,13 +3666,15 @@
 	tag = "icon-orange (WEST)"
 	},
 /area/adminlevel/ert_station)
+"GM" = (
+/turf/open/space/transit/east/shuttlespace_ew2,
+/area/space)
 "GT" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/chem_dispenser/beer{
 	density = 0
 	},
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3533,7 +3709,6 @@
 "Iq" = (
 /obj/structure/machinery/processor,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3541,7 +3716,6 @@
 "ID" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3565,6 +3739,9 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Ji" = (
+/turf/open/space/transit/east/shuttlespace_ew13,
+/area/space)
 "Js" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -3585,7 +3762,6 @@
 "JT" = (
 /obj/structure/curtain/shower,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3624,10 +3800,8 @@
 /obj/structure/machinery/door/airlock/almayer/generic{
 	damage_cap = 50000;
 	id_tag = null;
-	locked = 0;
 	name = "\improper Hangar";
-	no_panel = 1;
-	stat = 0
+	no_panel = 1
 	},
 /turf/open/floor/almayer{
 	icon_plating = "tcomms";
@@ -3668,9 +3842,7 @@
 	},
 /obj/structure/sink{
 	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
+	pixel_x = 11
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor"
@@ -3744,7 +3916,6 @@
 /area/shuttle/distress/start_big)
 "MB" = (
 /turf/open/floor/almayer{
-	dir = 2;
 	icon_state = "silver";
 	tag = "icon-sterile"
 	},
@@ -3760,7 +3931,6 @@
 "Ni" = (
 /obj/structure/toilet,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3777,7 +3947,6 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/microwave,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -3785,9 +3954,7 @@
 "NP" = (
 /obj/structure/sink{
 	dir = 8;
-	icon_state = "sink";
-	pixel_x = -11;
-	pixel_y = 0
+	pixel_x = -11
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -3834,8 +4001,7 @@
 /area/adminlevel/ert_station)
 "Oj" = (
 /obj/structure/bed/chair/office/dark{
-	dir = 8;
-	icon_state = "officechair_dark"
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -3844,8 +4010,7 @@
 /area/adminlevel/ert_station)
 "On" = (
 /obj/structure/disposaloutlet{
-	dir = 4;
-	icon_state = "outlet"
+	dir = 4
 	},
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -3922,6 +4087,9 @@
 	tag = "icon-sterile_green_corner (NORTH)"
 	},
 /area/tdome)
+"PK" = (
+/turf/open/space/transit/east/shuttlespace_ew15,
+/area/space)
 "PY" = (
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
@@ -3964,7 +4132,6 @@
 /area/centcom/control)
 "QJ" = (
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -4060,6 +4227,9 @@
 	tag = "icon-red (NORTHEAST)"
 	},
 /area/adminlevel/ert_station)
+"Sr" = (
+/turf/open/space,
+/area/almayer/lifeboat/boat2/space)
 "ST" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
@@ -4110,6 +4280,22 @@
 "TF" = (
 /turf/open/space/transit/north/shuttlespace_ns4,
 /area/almayer/evacuation/stranded/pod17)
+"TH" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew2,
+/area/space)
+"TS" = (
+/turf/open/space/transit/east/shuttlespace_ew6,
+/area/space)
 "TU" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 28
@@ -4144,6 +4330,9 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"Uz" = (
+/turf/open/space/transit/east/shuttlespace_ew5,
+/area/space)
 "UE" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
@@ -4153,6 +4342,19 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/adminlevel/ert_station)
+"UW" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew14,
+/area/space)
 "Vp" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -4196,6 +4398,19 @@
 	tag = "icon-sterile"
 	},
 /area/adminlevel/ert_station)
+"VQ" = (
+/obj/effect/step_trigger/teleporter/random{
+	affect_ghosts = 1;
+	name = "escapeshuttle_leave";
+	teleport_x = 25;
+	teleport_x_offset = 245;
+	teleport_y = 25;
+	teleport_y_offset = 245;
+	teleport_z = 1;
+	teleport_z_offset = 1
+	},
+/turf/open/space/transit/east/shuttlespace_ew6,
+/area/space)
 "VT" = (
 /turf/open/floor/almayer{
 	dir = 8;
@@ -4276,7 +4491,6 @@
 "Xi" = (
 /obj/structure/machinery/door/window/northright,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -4318,7 +4532,6 @@
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/juicer,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -4419,7 +4632,6 @@
 "ZU" = (
 /obj/structure/machinery/disposal,
 /turf/open/floor/prison{
-	dir = 2;
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
 	},
@@ -14226,38 +14438,38 @@ fR
 gh
 ds
 aa
-aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
+oQ
 bS
 aN
 aP
@@ -14378,38 +14590,38 @@ fR
 QA
 fn
 aa
-aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+TH
+GM
+GM
+GM
+GM
+TH
+TH
+TH
+TH
+TH
+TH
+TH
+TH
+TH
+GM
+GM
+GM
+GM
+GM
+TH
+TH
+TH
+TH
+TH
+TH
+TH
+TH
+TH
+GM
+GM
+GM
+GM
 Ou
 bT
 aT
@@ -14530,41 +14742,41 @@ fR
 fR
 fn
 aa
-aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+xw
+FI
+FI
+FI
+FI
+xw
+uc
+uc
+uc
+uc
+uc
+uc
+uc
+xw
+FI
+FI
+FI
+FI
+FI
+xw
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+xw
+FI
+FI
+FI
+FI
+xw
+as
+as
 aa
 aa
 aa
@@ -14682,41 +14894,41 @@ fn
 fn
 ds
 aa
-aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+cU
+nB
+nB
+nB
+nB
+cU
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+cU
+nB
+nB
+nB
+nB
+nB
+cU
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+cU
+nB
+nB
+nB
+nB
+cU
+as
+as
 aa
 aa
 aa
@@ -14834,41 +15046,41 @@ aa
 aa
 aa
 aa
-aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+sy
+Uz
+Uz
+Uz
+Uz
+sy
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+sy
+Uz
+Uz
+Uz
+Uz
+Uz
+sy
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+sy
+Uz
+Uz
+Uz
+Uz
+sy
+as
+as
 aa
 aa
 aa
@@ -14986,41 +15198,41 @@ aC
 aC
 aC
 aC
-aC
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+VQ
+TS
+TS
+TS
+TS
+VQ
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+VQ
+TS
+TS
+TS
+TS
+TS
+VQ
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+VQ
+TS
+TS
+TS
+TS
+VQ
+as
+as
 aa
 aa
 aa
@@ -15138,42 +15350,42 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+dR
+cJ
+cJ
+cJ
+cJ
+dR
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+dR
+cJ
+cJ
+cJ
+cJ
+cJ
+dR
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+dR
+cJ
+cJ
+cJ
+cJ
+dR
+as
+as
+as
 aa
 aa
 aa
@@ -15290,42 +15502,42 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ql
+ne
+ne
+ne
+ne
+ql
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+ql
+ne
+ne
+ne
+ne
+ne
+ql
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+ql
+ne
+ne
+ne
+ne
+ql
+as
+as
+as
 aa
 aa
 aa
@@ -15442,42 +15654,42 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ef
+GE
+GE
+GE
+GE
+Ef
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+Ef
+GE
+GE
+GE
+GE
+GE
+Ef
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+Ef
+GE
+GE
+GE
+GE
+Ef
+as
+as
+as
 aa
 aa
 aa
@@ -15594,42 +15806,42 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+GD
+ii
+ii
+ii
+ii
+GD
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+GD
+ii
+ii
+ii
+ii
+ii
+GD
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+GD
+ii
+ii
+ii
+ii
+GD
+as
+as
+as
 aa
 aa
 aa
@@ -15746,42 +15958,42 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+xJ
+Db
+Db
+Db
+Db
+xJ
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+xJ
+Db
+Db
+Db
+Db
+Db
+xJ
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+xJ
+Db
+Db
+Db
+Db
+xJ
+as
+as
+as
 aa
 aa
 aa
@@ -15898,39 +16110,39 @@ aa
 aa
 aa
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+Gm
+xX
+xX
+xX
+xX
+Gm
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+Gm
+xX
+xX
+xX
+xX
+xX
+Gm
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+Gm
+xX
+xX
+xX
+xX
+Gm
 as
 as
 as
@@ -16050,39 +16262,39 @@ aa
 aa
 aa
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+uJ
+Ji
+Ji
+Ji
+Ji
+uJ
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+uJ
+Ji
+Ji
+Ji
+Ji
+Ji
+uJ
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+uJ
+Ji
+Ji
+Ji
+Ji
+uJ
 as
 as
 as
@@ -16202,39 +16414,39 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+UW
+Gw
+Gw
+Gw
+Gw
+UW
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+UW
+Gw
+Gw
+Gw
+Gw
+Gw
+UW
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+UW
+Gw
+Gw
+Gw
+Gw
+UW
 as
 as
 as
@@ -16354,39 +16566,39 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+vH
+PK
+PK
+PK
+PK
+vH
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+vH
+PK
+PK
+PK
+PK
+PK
+vH
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+vH
+PK
+PK
+PK
+PK
+vH
 as
 as
 as
@@ -16506,39 +16718,39 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+oQ
+AH
+AH
+AH
+AH
+oQ
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+oQ
+AH
+AH
+AH
+AH
+AH
+oQ
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+oQ
+AH
+AH
+AH
+AH
+oQ
 as
 as
 as
@@ -16658,39 +16870,39 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+TH
+GM
+GM
+GM
+GM
+TH
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+TH
+GM
+GM
+GM
+GM
+GM
+TH
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+TH
+GM
+GM
+GM
+GM
+TH
 as
 as
 as
@@ -16810,39 +17022,39 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+xw
+FI
+FI
+FI
+FI
+xw
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+xw
+FI
+FI
+FI
+FI
+FI
+xw
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+xw
+FI
+FI
+FI
+FI
+xw
 as
 as
 as
@@ -16962,39 +17174,39 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+cU
+nB
+nB
+nB
+nB
+cU
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+cU
+nB
+nB
+nB
+nB
+nB
+cU
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+cU
+nB
+nB
+nB
+nB
+cU
 as
 as
 as
@@ -17114,39 +17326,39 @@ as
 as
 as
 as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
-as
+sy
+Uz
+Uz
+Uz
+Uz
+sy
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+sy
+Uz
+Uz
+Uz
+Uz
+Uz
+sy
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+sy
+Uz
+Uz
+Uz
+Uz
+sy
 as
 as
 as
@@ -17266,6 +17478,93 @@ as
 as
 as
 as
+VQ
+TS
+TS
+TS
+TS
+VQ
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+VQ
+TS
+TS
+TS
+TS
+TS
+VQ
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+VQ
+TS
+TS
+TS
+TS
+VQ
+as
+as
+as
+as
+as
+as
+as
+as
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(86,1,1) = {"
 as
 as
 as
@@ -17307,48 +17606,2241 @@ as
 as
 as
 as
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+dR
+cJ
+cJ
+cJ
+cJ
+dR
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+dR
+cJ
+cJ
+cJ
+cJ
+cJ
+dR
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+dR
+cJ
+cJ
+cJ
+cJ
+dR
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(87,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+ql
+ne
+ne
+ne
+ne
+ql
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+ql
+ne
+ne
+ne
+ne
+ne
+ql
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+ql
+ne
+ne
+ne
+ne
+ql
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(88,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+Ef
+GE
+GE
+GE
+GE
+Ef
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+Ef
+GE
+GE
+GE
+GE
+GE
+Ef
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+Ef
+GE
+GE
+GE
+GE
+Ef
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(89,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+GD
+ii
+ii
+ii
+ii
+GD
+xr
+xr
+xr
+xr
+xr
+xr
+xr
+GD
+ii
+ii
+ii
+ii
+ii
+GD
+mX
+mX
+mX
+mX
+mX
+mX
+mX
+GD
+ii
+ii
+ii
+ii
+GD
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(90,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+xJ
+Db
+Db
+Db
+Db
+xJ
+uc
+uc
+uc
+uc
+uc
+uc
+uc
+xJ
+Db
+Db
+Db
+Db
+Db
+xJ
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+xJ
+Db
+Db
+Db
+Db
+xJ
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(91,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+Gm
+xX
+xX
+xX
+xX
+Gm
+uc
+uc
+uc
+uc
+uc
+uc
+uc
+Gm
+xX
+xX
+xX
+xX
+xX
+Gm
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+Gm
+xX
+xX
+xX
+xX
+Gm
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(92,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+uJ
+Ji
+Ji
+Ji
+Ji
+uJ
+uc
+uc
+uc
+uc
+uc
+uc
+uc
+uJ
+Ji
+Ji
+Ji
+Ji
+Ji
+uJ
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+uJ
+Ji
+Ji
+Ji
+Ji
+uJ
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(93,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+UW
+Gw
+Gw
+Gw
+Gw
+UW
+UW
+uc
+uc
+uc
+uc
+uc
+UW
+UW
+Gw
+Gw
+Gw
+Gw
+Gw
+UW
+UW
+Sr
+Sr
+Sr
+Sr
+Sr
+UW
+UW
+Gw
+Gw
+Gw
+Gw
+UW
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(94,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+vH
+PK
+PK
+PK
+PK
+PK
+vH
+vH
+vH
+vH
+vH
+vH
+vH
+PK
+PK
+PK
+PK
+PK
+PK
+PK
+vH
+vH
+vH
+vH
+vH
+vH
+vH
+PK
+PK
+PK
+PK
+PK
+vH
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(95,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+oQ
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+AH
+oQ
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(96,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+TH
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+GM
+TH
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(97,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+xw
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+FI
+xw
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(98,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+cU
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+nB
+cU
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(99,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+sy
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+Uz
+sy
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+"}
+(100,1,1) = {"
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+ok
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+ok
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+VQ
+ok
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
+as
 "}

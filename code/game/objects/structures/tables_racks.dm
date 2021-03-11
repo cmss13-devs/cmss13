@@ -535,6 +535,30 @@
 	icon_state = "prisontable"
 	table_prefix = "prison"
 
+/obj/structure/surface/table/reinforced/almayer_blend
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "reqStable" //instance, this is a static table for req.
+	table_prefix = "reqS"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall)
+
+/obj/structure/surface/table/reinforced/almayer_blend/north
+	icon_state = "reqNtable"
+	table_prefix = "reqN"
+
+/obj/structure/surface/table/reinforced/almayer_blend/flip(var/direction)
+	return 0
+
+/obj/structure/surface/table/reinforced/almayer_B
+	desc = "A square metal surface resting on its fat metal bottom. You can't flip something that doesn't have legs."
+	icon_state = "req_table" //this one actually auto-tiles, but has no flipped state!
+	table_prefix = "req_"
+
+/obj/structure/surface/table/reinforced/almayer_B/flip(var/direction)
+	return 0
+
 /obj/structure/surface/table/almayer
 	icon_state = "almtable"
 	table_prefix = "alm"

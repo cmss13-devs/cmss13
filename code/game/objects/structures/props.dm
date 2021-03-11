@@ -434,3 +434,12 @@
 
 /obj/structure/prop/invuln/ex_act(severity, direction)
 	return
+
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder
+	density = 0
+	name = "non-functional hatch"
+	desc = "You'll need more than a prybar for this one."
+	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
+
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
+	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'

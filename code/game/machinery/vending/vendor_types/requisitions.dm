@@ -132,6 +132,12 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
+	icon_state = "req_guns_wall"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall/almayer)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
@@ -317,6 +323,12 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend
+		icon_state = "req_ammo_wall"
+		tiles_with = list(
+			/obj/structure/window/framed/almayer,
+			/obj/structure/machinery/door/airlock,
+			/turf/closed/wall/almayer)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad
 	name = "\improper ColMarTech Automated Munition Squad Vendor"
@@ -429,6 +441,13 @@
 			else
 				T = loc
 	return T
+
+/obj/structure/machinery/cm_vending/sorted/attachments/blend
+	icon_state = "req_attach_wall"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall/almayer)
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"

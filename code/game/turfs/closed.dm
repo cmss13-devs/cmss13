@@ -236,8 +236,19 @@
 	icon = 'icons/turf/escapepods.dmi'
 	icon_state = "wall0"
 
+/turf/closed/shuttle/lifeboat
+	name = "Lifeboat"
+	desc = "Separates you from certain death."
+	icon = 'icons/turf/lifeboat.dmi'
+	icon_state = "2,0"
 
+/turf/closed/shuttle/lifeboat/transparent
+	icon_state = "window1"
+	opacity = 0
 
+//INSERT EXPLOSION CODE
+/turf/closed/shuttle/lifeboat/proc/transform_crash()
+	new /turf/open/shuttle/lifeboat(src)
 
 // Elevator walls (directional)
 /turf/closed/shuttle/elevator

@@ -197,7 +197,25 @@
 	name = "\improper Normandy cargo door"
 	icon = 'icons/obj/structures/doors/dropship2_cargo.dmi'
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat
+	name = "Lifeboat docking hatch"
+	icon = 'icons/obj/structures/doors/lifeboatdoors.dmi'
+	safe = FALSE
+	autoclose = FALSE
+	locked = TRUE
+	var/obj/structure/machinery/door/airlock/sis_lock
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/LateInitialize()
+	. = ..()
+	if(id)
+		for(var/obj/structure/machinery/door/airlock/A in machines)
+			if(A.id_tag == id)
+				sis_lock = A
+				break
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat/Destroy()
+	sis_lock = null
+	. = ..()
 
 
 // Elevator door

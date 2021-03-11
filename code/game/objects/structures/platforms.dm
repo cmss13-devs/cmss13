@@ -55,7 +55,7 @@ obj/structure/platform_decoration
 	anchored = TRUE
 	density = 0
 	throwpass = TRUE
-	layer = 3.5
+	layer = OBJ_LAYER
 	breakable = FALSE
 	flags_atom = ON_BORDER
 	unacidable = TRUE
@@ -64,13 +64,13 @@ obj/structure/platform_decoration
 	. = ..()
 	switch(dir)
 		if (NORTH)
-			layer = ABOVE_MOB_LAYER+0.1
+			layer = ABOVE_MOB_LAYER+0.2
 		if (SOUTH)
-			layer = ABOVE_MOB_LAYER+0.1
+			layer = ABOVE_MOB_LAYER+0.2
 		if (SOUTHEAST)
-			layer = ABOVE_MOB_LAYER+0.1
+			layer = ABOVE_MOB_LAYER+0.2
 		if (SOUTHWEST)
-			layer = ABOVE_MOB_LAYER+0.1
+			layer = ABOVE_MOB_LAYER+0.2
 
 /obj/structure/platform_decoration/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

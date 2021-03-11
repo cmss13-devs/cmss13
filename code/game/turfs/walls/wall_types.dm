@@ -17,6 +17,17 @@
 	opacity = 1
 	density = 1
 
+	tiles_with = list(
+		/turf/closed/wall,
+		/obj/structure/window/framed,
+		/obj/structure/window_frame,
+		/obj/structure/girder,
+		/obj/structure/machinery/door,
+		/obj/structure/machinery/cm_vending/sorted/attachments/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend,
+		/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
+		)
+
 /turf/closed/wall/almayer/update_icon()
 	..()
 	if(special_icon)

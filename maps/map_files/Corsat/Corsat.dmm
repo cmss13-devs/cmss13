@@ -25410,7 +25410,7 @@
 /turf/open/floor/corsat,
 /area/corsat/inaccessible)
 "bqq" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/bed/chair/comfy/orange,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "carpet14-10";

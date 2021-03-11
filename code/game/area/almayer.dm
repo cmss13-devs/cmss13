@@ -142,6 +142,11 @@
 	icon_state = "portatmos"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/engineering/laundry
+	name = "\improper Laundry Room"
+	icon_state = "laundry"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/shipboard/navigation
 	name = "\improper Astronavigational Deck"
 	icon_state = "astronavigation"
@@ -541,6 +546,46 @@
 	icon_state = "selfdestruct"
 	requires_power = 0
 	flags_area = AREA_NOTUNNEL
+
+/area/almayer/lifeboat_pumps
+	name = "Lifeboat Fuel Pumps"
+	icon_state = "lifeboat_pump"
+	requires_power = 0
+	fake_zlevel = 1
+
+/area/almayer/lifeboat_pumps/north1
+	name = "North West Lifeboat Fuel Pump"
+
+/area/almayer/lifeboat_pumps/north2
+	name = "North East Lifeboat Fuel Pump"
+
+/area/almayer/lifeboat_pumps/south1
+	name = "South West Lifeboat Fuel Pump"
+
+/area/almayer/lifeboat_pumps/south2
+	name = "South East Lifeboat Fuel Pump"
+
+/area/almayer/command/lifeboat
+	name = "\improper Lifeboat Docking Port"
+	icon_state = "selfdestruct"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/lifeboat
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+	requires_power = 0
+	fake_zlevel = 1 // upperdeck
+	flags_atom = AREA_NOTUNNEL
+
+/area/almayer/lifeboat/boat1
+	name = "\improper Starboard Lifeboat Shuttle"
+
+/area/almayer/lifeboat/boat2
+	name = "\improper Port Lifeboat Shuttle"
+
+/area/almayer/lifeboat/boat1/space
+
+/area/almayer/lifeboat/boat2/space
 
 /area/almayer/evacuation
 	icon = 'icons/turf/areas.dmi'

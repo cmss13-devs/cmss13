@@ -931,16 +931,24 @@
 	},
 /area/yautja)
 "bU" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 4;
-	id = "Prisoner Cell 1"
+/obj/structure/machinery/door_control{
+	id = "Cell Lockdown 1";
+	name = "Cell Lockdown 1";
+	pixel_x = -25;
+	pixel_y = 9;
+	req_access_txt = null
 	},
-/turf/closed/wall/huntership,
+/turf/open/shuttle{
+	icon_state = "floor6"
+	},
 /area/yautja)
 "bV" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 8;
-	id = "Prisoner Cell 4"
+/obj/structure/machinery/door_control{
+	id = "Cell Lockdown 4";
+	name = "Cell Lockdown 4";
+	pixel_x = -7;
+	pixel_y = 9;
+	req_access_txt = null
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -948,6 +956,11 @@
 /obj/structure/machinery/door/airlock/strata/autoname{
 	name = "\improper Prisoner Cell 1";
 	opacity = 0
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Cell Lockdown 1";
+	name = "\improper Cell Shutters"
 	},
 /turf/open/shuttle{
 	icon_state = "floor6"
@@ -957,6 +970,11 @@
 /obj/structure/machinery/door/airlock/strata/autoname{
 	name = "\improper Prisoner Cell 4";
 	opacity = 0
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Cell Lockdown 4";
+	name = "\improper Cell Shutters"
 	},
 /turf/open/shuttle{
 	icon_state = "floor6"
@@ -984,11 +1002,16 @@
 	},
 /area/yautja)
 "cb" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 4;
-	id = "Prisoner Cell 2"
+/obj/structure/machinery/door_control{
+	id = "Cell Lockdown 2";
+	name = "Cell Lockdown 2";
+	pixel_x = -25;
+	pixel_y = 9;
+	req_access_txt = null
 	},
-/turf/closed/wall/huntership,
+/turf/open/shuttle{
+	icon_state = "floor6"
+	},
 /area/yautja)
 "cc" = (
 /obj/structure/barricade/handrail/strata{
@@ -1019,6 +1042,11 @@
 	name = "\improper Prisoner Cell 2";
 	opacity = 0
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Cell Lockdown 2";
+	name = "\improper Cell Shutters"
+	},
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -1028,21 +1056,34 @@
 	name = "\improper Prisoner Cell 5";
 	opacity = 0
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Cell Lockdown 5";
+	name = "\improper Cell Shutters"
+	},
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
 /area/yautja)
 "cg" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 4;
-	id = "Prisoner Cell 3"
+/obj/structure/machinery/door_control{
+	id = "Cell Lockdown 3";
+	name = "Cell Lockdown 3";
+	pixel_x = -25;
+	pixel_y = 9;
+	req_access_txt = null
 	},
-/turf/closed/wall/huntership,
+/turf/open/shuttle{
+	icon_state = "floor6"
+	},
 /area/yautja)
 "ch" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 8;
-	id = "Prisoner Cell 6"
+/obj/structure/machinery/door_control{
+	id = "Cell Lockdown 6";
+	name = "Cell Lockdown 6";
+	pixel_x = -7;
+	pixel_y = 9;
+	req_access_txt = null
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -1068,6 +1109,11 @@
 	name = "\improper Prisoner Cell 3";
 	opacity = 0
 	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Cell Lockdown 3";
+	name = "\improper Cell Shutters"
+	},
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -1076,6 +1122,11 @@
 /obj/structure/machinery/door/airlock/strata/autoname{
 	name = "\improper Prisoner Cell 6";
 	opacity = 0
+	},
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Cell Lockdown 6";
+	name = "\improper Cell Shutters"
 	},
 /turf/open/shuttle{
 	icon_state = "floor6"
@@ -1668,9 +1719,12 @@
 	},
 /area/yautja)
 "dm" = (
-/obj/structure/machinery/door_display/research_cell{
-	dir = 8;
-	id = "Prisoner Cell 5"
+/obj/structure/machinery/door_control{
+	id = "Cell Lockdown 5";
+	name = "Cell Lockdown 5";
+	pixel_x = -7;
+	pixel_y = 9;
+	req_access_txt = null
 	},
 /turf/closed/wall/huntership,
 /area/yautja)
@@ -5290,13 +5344,13 @@ cP
 bj
 bW
 fq
-bU
+bj
 ce
 fq
-cb
+bj
 cm
 fq
-cg
+bj
 bj
 bj
 av
@@ -5362,13 +5416,13 @@ aw
 bj
 cP
 cP
+bU
 cP
 cP
+cb
 cP
 cP
-cP
-cP
-cP
+cg
 cP
 bj
 Cz

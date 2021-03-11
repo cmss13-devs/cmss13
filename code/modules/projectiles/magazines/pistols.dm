@@ -67,9 +67,25 @@
 	max_rounds = 19
 	gun_type = /obj/item/weapon/gun/pistol/mod88
 
+/obj/item/ammo_magazine/pistol/mod88/toxin
+	name = "\improper 88M4 toxic magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/toxin
+	icon_state = "88m4_mag_toxin"
+
+/obj/item/ammo_magazine/pistol/mod88/penetrating
+	name = "\improper 88M4 wall-piercing magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/penetrating
+	icon_state = "88m4_mag_penetrating"
+
+/obj/item/ammo_magazine/pistol/mod88/incendiary
+	name = "\improper 88M4 incendiary magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/incendiary
+	icon_state = "88m4_mag_incendiary"
+
 /obj/item/ammo_magazine/pistol/mod88/rubber
 	name = "\improper 88M4 rubber magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/rubber
+
 
 //-------------------------------------------------------
 //VP78
@@ -81,6 +97,21 @@
 	icon_state = "vp78" //PLACEHOLDER
 	max_rounds = 14
 	gun_type = /obj/item/weapon/gun/pistol/vp78
+
+/obj/item/ammo_magazine/pistol/vp78/toxin
+	name = "\improper VP78 toxic magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/toxin
+	icon_state = "vp78_toxin"
+
+/obj/item/ammo_magazine/pistol/vp78/penetrating
+	name = "\improper VP78 wall-piercing magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/penetrating
+	icon_state = "vp78_penetrating"
+
+/obj/item/ammo_magazine/pistol/vp78/incendiary
+	name = "\improper VP78 incendiary magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/incendiary
+	icon_state = "vp78_incendiary"
 
 
 //-------------------------------------------------------

@@ -25,6 +25,21 @@
 	caliber = ".44"
 	icon_state = "h_m44"
 
+/obj/item/ammo_magazine/revolver/incendiary
+	name = "\improper M44 incendiary speed loader (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/incendiary
+	icon_state = "m44_incendiary"
+
+/obj/item/ammo_magazine/revolver/marksman/toxin
+	name = "\improper M44 toxic speed loader (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/marksman/toxin
+	icon_state = "m44_toxin"
+
+/obj/item/ammo_magazine/revolver/penetrating
+	name = "\improper M44 wall-piercing speed loader (.44)"
+	default_ammo = /datum/ammo/bullet/revolver/penetrating
+	icon_state = "m44_penetrating"
+
 
 /obj/item/ammo_magazine/revolver/upp
 	name = "\improper N-Y speed loader (7.62x38mmR)"

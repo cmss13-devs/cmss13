@@ -618,6 +618,10 @@
 	icon = 'icons/turf/escapepods.dmi'
 	icon_state = "floor3"
 
+/turf/open/shuttle/lifeboat
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "plating"
+	allow_construction = FALSE
 
 // Elevator floors
 /turf/open/shuttle/elevator

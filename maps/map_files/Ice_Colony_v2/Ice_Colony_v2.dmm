@@ -8044,7 +8044,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "auE" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
 /turf/open/floor{
@@ -8077,7 +8077,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "auH" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
 /turf/open/floor{
@@ -8823,7 +8823,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "awl" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/bed/chair/comfy/orange,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkgreencorners2";
@@ -8847,7 +8847,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "awo" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/bed/chair/comfy/orange,
 /turf/open/floor{
 	icon_state = "darkgreencorners2";
 	tag = "icon-darkgreencorners2"
@@ -13686,7 +13686,7 @@
 	pixel_y = -24;
 	start_charge = 0
 	},
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -13703,7 +13703,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/control/pv2)
 "aIC" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
 /obj/structure/machinery/power/apc{
@@ -13749,13 +13749,13 @@
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIL" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
 /turf/open/floor/wood,
 /area/ice_colony/surface/command/crisis)
 "aIM" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -31310,7 +31310,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "bFl" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/bed/chair/comfy/orange,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -31337,7 +31337,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "bFp" = (
-/obj/structure/bed/chair/comfy/brown,
+/obj/structure/bed/chair/comfy/orange,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;

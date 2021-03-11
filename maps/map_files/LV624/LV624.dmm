@@ -4097,7 +4097,6 @@
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -4178,9 +4177,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "aoO" = (
-/obj/item/reagent_container/glass/bucket{
-	pixel_y = 0
-	},
+/obj/item/reagent_container/glass/bucket,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -4324,7 +4321,6 @@
 	freerange = 1;
 	frequency = 1469;
 	name = "General Listening Channel";
-	pixel_x = 0;
 	pixel_y = 28
 	},
 /turf/open/floor{
@@ -4722,9 +4718,7 @@
 /obj/item/reagent_container/glass/bucket{
 	pixel_y = -3
 	},
-/obj/item/reagent_container/glass/bucket{
-	pixel_y = 0
-	},
+/obj/item/reagent_container/glass/bucket,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -4764,10 +4758,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /obj/structure/machinery/light,
-/obj/item/reagent_container/glass/fertilizer{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/reagent_container/glass/fertilizer,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "green"
@@ -5646,10 +5637,7 @@
 	pixel_x = 6;
 	pixel_y = 2
 	},
-/obj/item/reagent_container/glass/fertilizer{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/reagent_container/glass/fertilizer,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	dir = 9;
@@ -8684,7 +8672,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle9)
 "aDp" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 1
 	},
 /obj/effect/landmark/survivor_spawn,
@@ -16361,8 +16349,7 @@
 /area/lv624/ground/jungle9)
 "dCL" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle{
-	pixel_x = 2;
-	pixel_y = 0
+	pixel_x = 2
 	},
 /turf/open/floor{
 	icon_state = "white"
@@ -16544,7 +16531,6 @@
 "ffb" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 2;
-	icon_state = "door_closed";
 	name = "Hydroponics"
 	},
 /turf/open/floor{
@@ -16748,10 +16734,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/sand9)
 "hbF" = (
-/obj/item/tool/kitchen/utensil/fork{
-	pixel_x = 0;
-	pixel_y = 0
-	},
+/obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor{
 	icon_state = "white"
 	},
@@ -17178,8 +17161,7 @@
 /obj/structure/surface/table,
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 9;

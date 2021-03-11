@@ -19617,7 +19617,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "beF" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 4
 	},
 /turf/open/floor{
@@ -19634,7 +19634,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "beH" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 8
 	},
 /turf/open/floor{
@@ -39098,7 +39098,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "cnz" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/orange{
 	dir = 8
 	},
 /turf/open/floor/carpet,

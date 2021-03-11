@@ -7,7 +7,7 @@
 	name = "Suit Storage Unit"
 	desc = "An industrial U-Stor-It Storage unit designed to accomodate all kinds of space suits. Its on-board equipment also allows the user to decontaminate the contents through a UV-ray purging cycle. There's a warning label dangling from the control pad, reading \"STRICTLY NO BIOLOGICALS IN THE CONFINES OF THE UNIT\"."
 	icon = 'icons/obj/structures/machinery/suitstorage.dmi'
-	icon_state = "suitstorage000000100" //order is: [has helmet][has suit][has human][is open][is locked][is UV cycling][is powered][is dirty/broken] [is superUVcycling]
+	icon_state = "closed" //order is: [has helmet][has suit][has human][is open][is locked][is UV cycling][is powered][is dirty/broken] [is superUVcycling]
 	anchored = TRUE
 	density = TRUE
 	var/obj/item/clothing/suit/space/inserted_suit
@@ -302,5 +302,17 @@
 /obj/structure/machinery/suit_storage_unit/standard_unit
 	starting_suit_type = /obj/item/clothing/suit/space
 	starting_helmet_type = /obj/item/clothing/head/helmet/space
+	starting_mask_type = /obj/item/clothing/mask/breath
+	starting_tank_type = /obj/item/tank/oxygen
+
+/obj/structure/machinery/suit_storage_unit/compression_suit
+	starting_suit_type = /obj/item/clothing/suit/space/compression
+	starting_helmet_type = /obj/item/clothing/head/helmet/space/compression
+	starting_mask_type = /obj/item/clothing/mask/breath
+	starting_tank_type = /obj/item/tank/oxygen
+
+/obj/structure/machinery/suit_storage_unit/compression_suit/uscm
+	starting_suit_type = /obj/item/clothing/suit/space/compression/uscm
+	starting_helmet_type = /obj/item/clothing/head/helmet/space/compression/uscm
 	starting_mask_type = /obj/item/clothing/mask/breath
 	starting_tank_type = /obj/item/tank/oxygen

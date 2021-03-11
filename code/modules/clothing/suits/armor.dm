@@ -145,8 +145,8 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0.7
-	time_to_unequip = 20
-	time_to_equip = 20
+	time_to_unequip = 5
+	time_to_equip = 10
 
 /obj/item/clothing/suit/armor/bulletproof/badge
 	icon_state = "bulletproofbadge"

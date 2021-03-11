@@ -44,6 +44,7 @@
 	var/scrappable = TRUE
 
 	var/armor_hitsound = 'sound/effects/metalhit.ogg'
+	var/armor_shattersound = 'sound/effects/metal_shatter.ogg'
 
 /obj/item/clothing/accessory/health/Initialize(mapload, ...)
 	base_icon_state = icon_state
@@ -119,6 +120,7 @@
 	update_icon()
 	if(!armor_health && damage_to_nullify)
 		user.show_message(SPAN_WARNING("You feel [src] break apart."), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
+		playsound(user, armor_shattersound, 35, 1)
 
 	if(damage_to_nullify)
 		playsound(user, armor_hitsound, 25, 1)
@@ -173,6 +175,8 @@
 
 	armor_health = 100
 	armor_maxhealth = 100
+
+	armor_shattersound = 'sound/effects/ceramic_shatter.ogg'
 
 /obj/item/clothing/accessory/health/scrap
 	name = "scrap metal"

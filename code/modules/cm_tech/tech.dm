@@ -47,7 +47,7 @@
 		return
 
 	var/datum/tier/t_target = holder.tree_tiers[tier.type]
-	if(LAZYLEN(holder.unlocked_techs[tier.type]) >= t_target.max_techs)
+	if(t_target.max_techs != INFINITE_TECHS && LAZYLEN(holder.unlocked_techs[tier.type]) >= t_target.max_techs)
 		to_chat(M, SPAN_WARNING("You can't purchase any more techs of this tier!"))
 		return
 

@@ -71,11 +71,14 @@
 	close_sound = 'sound/items/zip.ogg'
 	var/item_path = /obj/item/bodybag
 	density = 0
-	storage_capacity = (mob_size * 2) - 1
 	anchored = 0
 	drag_delay = 2 //slightly easier than to drag the body directly.
 	var/obj/structure/bed/roller/roller_buckled //the roller bed this bodybag is attached to.
 	store_items = FALSE
+
+/obj/structure/closet/bodybag/Initialize()
+	. = ..()
+	storage_capacity = (mob_size * 2) - 1
 
 /obj/structure/closet/bodybag/proc/update_name()
 	if(opened)

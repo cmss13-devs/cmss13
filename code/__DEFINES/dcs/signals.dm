@@ -40,6 +40,9 @@
 #define COMSIG_CLIENT_KEY_DOWN "client_key_down"
 #define COMSIG_CLIENT_KEY_UP "client_key_up"
 
+///from /mob/do_click(): (atom/A, list/mods)
+#define COMSIG_CLIENT_PRE_CLICK "client_pre_click"
+
 // /datum signals
 /// when a component is added to a datum: (/datum/component)
 #define COMSIG_COMPONENT_ADDED "component_added"
@@ -124,7 +127,9 @@
 #define COMSIG_HUMAN_TAKE_DAMAGE "human_take_damage"
 	#define COMPONENT_BLOCK_DAMAGE (1<<0)
 
+///Called in /mob/reset_view(): (atom/A)
 #define COMSIG_MOB_RESET_VIEW "mob_reset_view"
+#define COMSIG_CLIENT_RESET_VIEW "client_reset_view"
 	#define COMPONENT_OVERRIDE_VIEW	(1<<0)
 
 #define COMSIG_MOB_POST_CLICK "mob_post_click"

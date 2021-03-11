@@ -195,7 +195,8 @@ CULT
 			"Recall Droppod", list("No", "Yes")) == "Yes")
 
 			if(!(assigned_droppod.droppod_flags & (DROPPOD_DROPPING|DROPPOD_RETURNING)))
-				assigned_droppod.return_back()
+				message_staff("[key_name_admin(H)] recalled a tech droppod at [get_area(assigned_droppod)].")
+				assigned_droppod.recall()
 			else
 				to_chat(H, SPAN_WARNING("It's too late to recall the droppod now!"))
 		return
@@ -244,11 +245,14 @@ CULT
 	var/land_time = max(turf_area.ceiling, 1) * (20 SECONDS)
 
 	playsound(T, 'sound/effects/alert.ogg', 75)
-	assigned_droppod = new(T, land_time, tech_to_deploy)
+	assigned_droppod = new(T, tech_to_deploy)
+	assigned_droppod.drop_time = land_time
+	assigned_droppod.launch(T)
 	var/list/to_send_to = H.assigned_squad?.marines_list
 	if(!to_send_to)
 		to_send_to = list(H)
 
+	message_staff("[key_name_admin(H)] called a tech droppod down at [get_area(assigned_droppod)].", T.x, T.y, T.z)
 	for(var/M in to_send_to)
 		to_chat(M, SPAN_BLUE("<b>SUPPLY DROP REQUEST:</b> Droppod requested at LONGITUDE: [obfuscate_x(T.x)], LATITUDE: [obfuscate_y(T.y)]. ETA [Floor(land_time*0.1)] seconds."))
 

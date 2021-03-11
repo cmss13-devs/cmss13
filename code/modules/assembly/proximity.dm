@@ -5,7 +5,7 @@
 	matter = list("metal" = 800, "glass" = 200, "waste" = 50)
 
 
-	wires = WIRE_PULSE
+	wires = WIRE_ASSEMBLY_PULSE
 
 	secured = 0
 
@@ -156,7 +156,7 @@
 			scanning = text2num(params["armed"])
 			update_icon()
 			. = TRUE
-		
+
 		if("set_delay")
 			delay = clamp(text2num(params["value"]), PROXY_MINIMUM_DELAY, PROXY_MAXIMUM_DELAY)
 			. = TRUE
@@ -174,8 +174,8 @@
 	.["current_range"] = range
 
 	.["armed"] = scanning
-	
-	
+
+
 /obj/item/device/assembly/prox_sensor/ui_static_data(mob/user)
 	. = list()
 	.["min_time"] = PROXY_MINIMUM_TIME *0.1

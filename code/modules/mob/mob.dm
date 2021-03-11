@@ -290,6 +290,8 @@
 				client.eye = loc
 
 		client.mouse_pointer_icon = mouse_icon
+
+		SEND_SIGNAL(client, COMSIG_CLIENT_RESET_VIEW, A)
 	return
 
 

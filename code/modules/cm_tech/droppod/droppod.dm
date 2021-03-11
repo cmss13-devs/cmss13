@@ -5,8 +5,6 @@
 	icon_state = "techpod_closed"
 	health = 350
 
-	invisibility = 101
-
 	climbable = TRUE
 	climb_delay = 2
 
@@ -18,25 +16,32 @@
 	var/land_damage = 5000
 	var/tiles_to_take = 15
 
-	var/drop_time = 2 SECONDS
-	var/return_time = 2 SECONDS
-	var/time_until_return = 2 MINUTES
+	var/drop_time = 0
+	var/dropping_time = 2 SECONDS
+	var/open_time = 3 SECONDS
+
+	var/open_sound = 'sound/machines/techpod/techpod_open.ogg'
+	var/close_sound = 'sound/machines/techpod/techpod_toggle.ogg'
+	var/landing_sound = 'sound/machines/techpod/techpod_drilling.ogg'
+	var/land_sound = 'sound/machines/techpod/techpod_hit.ogg'
 
 	layer = ABOVE_FLY_LAYER
+	var/land_layer = MOB_LAYER
 	appearance_flags = TILE_BOUND | KEEP_TOGETHER
 
 	var/obj/effect/warning/droppod/warning_zone
 
-/obj/structure/droppod/Initialize(mapload, var/time_to_drop = 0)
-	. = ..()
-	warn_turf(loc)
-	addtimer(CALLBACK(src, .proc/drop_on_target, loc), time_to_drop)
-	addtimer(CALLBACK(src, .proc/play_landing_sound, loc), time_to_drop + drop_time - 3.8 SECONDS) // Sound file is 4 seconds long
+/obj/structure/droppod/proc/launch(var/turf/T)
+	if(!forceMove(T))
+		return
 
+	invisibility = 101
+	droppod_flags &= ~(DROPPOD_RETURNING|DROPPOD_DROPPED|DROPPOD_DROPPING)
+
+	warn_turf(loc)
+	addtimer(CALLBACK(src, .proc/drop_on_target, loc), drop_time)
 	update_icon()
 
-/obj/structure/droppod/proc/play_landing_sound(var/turf/loc)
-	playsound(loc, 'sound/machines/techpod/techpod_drill.ogg', 100, TRUE, 15)
 
 /obj/structure/droppod/Destroy()
 	if(warning_zone)
@@ -99,9 +104,15 @@
 	. = ..()
 
 /obj/structure/droppod/proc/open(mob/user)
-	playsound(loc, 'sound/machines/techpod/techpod_open.ogg', sound_range = 8)
+	playsound(loc, open_sound, sound_range = 8)
 
 	droppod_flags |= DROPPOD_OPEN
+	update_icon()
+
+/obj/structure/droppod/proc/close(mob/user)
+	playsound(loc, close_sound, sound_range = 8)
+
+	droppod_flags &= ~DROPPOD_OPEN
 	update_icon()
 
 /obj/structure/droppod/proc/warn_turf(var/turf/T)
@@ -113,46 +124,52 @@
 /obj/structure/droppod/proc/drop_on_target(var/turf/T)
 	droppod_flags |= DROPPOD_DROPPING
 
-	invisibility = FALSE
+	invisibility = 0
 
 	pixel_y = 32*tiles_to_take
-	animate(src, pixel_y = 0, time = drop_time, easing = LINEAR_EASING)
+	playsound(loc, landing_sound, 100, TRUE, 15)
+	animate(src, pixel_y = 0, time = dropping_time, easing = LINEAR_EASING)
 
-	addtimer(CALLBACK(src, .proc/land, T), drop_time)
+	addtimer(CALLBACK(src, .proc/land, T), dropping_time)
 
 /obj/structure/droppod/proc/land(var/turf/T)
-	playsound(T, 'sound/machines/techpod/techpod_hit.ogg', 100, 75, sound_range = 15)
+	playsound(T, land_sound, 100, FALSE, sound_range = 15)
 
 	if(warning_zone)
 		qdel(warning_zone)
 		warning_zone = null
 
 	droppod_flags &= ~DROPPOD_DROPPING
-	layer = MOB_LAYER
-
-	for(var/mob/M in T)
-		M.gib(initial(name))
-
-	for(var/obj/structure/O in T)
-		O.update_health(-land_damage)
-
-	for(var/mob/M in view(7, T))
-		shake_camera(M, 4, 5)
+	layer = land_layer
 
 	forceMove(T)
 
-	density = TRUE
 	droppod_flags |= DROPPOD_DROPPED
 	update_icon()
 
-	addtimer(CALLBACK(src, .proc/open), 3 SECONDS)
-	addtimer(CALLBACK(src, .proc/return_back), time_until_return)
+	post_land()
 
-/obj/structure/droppod/proc/return_back()
+/obj/structure/droppod/proc/post_land()
+	density = TRUE
+	for(var/mob/M in loc)
+		M.gib(initial(name))
+
+	for(var/obj/structure/O in loc)
+		O.update_health(-land_damage)
+
+	for(var/mob/M in view(7, loc))
+		shake_camera(M, 4, 5)
+
+	addtimer(CALLBACK(src, .proc/open), open_time)
+
+/obj/structure/droppod/proc/recall()
 	if(droppod_flags & DROPPOD_RETURNING)
 		return
 
-	droppod_flags &= ~(DROPPOD_DROPPED|DROPPOD_OPEN)
+	if(droppod_flags & DROPPOD_OPEN)
+		close()
+
+	droppod_flags &= ~(DROPPOD_DROPPED)
 	droppod_flags |= DROPPOD_RETURNING
 
 	update_icon()
@@ -162,5 +179,8 @@
 	anchored = TRUE
 
 	var/pixels_to_take = 32*tiles_to_take
-	animate(src, pixel_y = pixels_to_take, time = return_time, easing = QUAD_EASING)
-	QDEL_IN(src, return_time)
+	animate(src, pixel_y = pixels_to_take, time = dropping_time, easing = QUAD_EASING)
+	addtimer(CALLBACK(src, .proc/post_recall), dropping_time)
+
+/obj/structure/droppod/proc/post_recall()
+	qdel(src)

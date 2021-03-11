@@ -23,7 +23,7 @@
 
 	anchored = 1 //Yep
 
-	var/const/mob_size = 15
+	var/mob_size = 15
 
 /obj/structure/closet/Initialize()
 	. = ..()

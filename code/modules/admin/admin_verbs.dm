@@ -64,7 +64,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
 	/client/proc/cmd_fun_fire_ob,
-	/client/proc/map_template_upload
+	/client/proc/map_template_upload,
+	/client/proc/enable_podlauncher
 )
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,

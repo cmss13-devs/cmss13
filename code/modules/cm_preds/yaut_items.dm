@@ -1016,11 +1016,11 @@
 	C.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(C)] was caught in \a [src] at [get_location_in_text(C)].</font>")
 	log_attack("[key_name(C)] was caught in \a [src] at [get_location_in_text(C)].")
 
-	C.KnockDown(2)
 	if(ishuman(C))
 		C.emote("pain")
 	if(isXeno(C))
 		var/mob/living/carbon/Xenomorph/X = C
+		C.emote("needhelp")
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, .proc/block_heal)
 

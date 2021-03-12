@@ -344,7 +344,7 @@
 	move_delay = 50000
 	next_move = world.time + move_delay
 	update_icon()
-	message_admins("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
+	message_staff("[key_name(user)] ([user.job]) attached vehicle clamp to [src]")
 
 /obj/vehicle/multitile/proc/detach_clamp(mob/user)
 	clamped = FALSE
@@ -358,7 +358,7 @@
 	for(var/obj/item/vehicle_clamp/TC in src)
 		if(user)
 			TC.forceMove(get_turf(user))
-			message_admins("[key_name(user)] ([user.job]) detached vehicle clamp from [src]")
+			message_staff("[key_name(user)] ([user.job]) detached vehicle clamp from [src]")
 		else
 			TC.forceMove(get_turf(src))
 	update_icon()

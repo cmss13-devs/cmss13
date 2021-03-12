@@ -225,7 +225,7 @@ report:maps-renders-full:
   script:
     - "[ -f dmm-tools ] || wget -O dmm-tools ${SPDMM_DOWNLOAD_URL}/dmm-tools"
     - chmod u+x dmm-tools
-    - ./dmm-tools minimap -o maps-renders $(git diff-tree -r --name-only --no-commit-id ${CI_COMMIT_BEFORE_SHA}..${CI_COMMIT_SHA} maps/map_files/*.dmm)
+    - ./dmm-tools minimap -o maps-renders $(git diff-tree -r --name-only --no-commit-id ${CI_COMMIT_BEFORE_SHA}..${CI_COMMIT_SHA} maps/*.dmm)
   artifacts:
     name: ci_map_renders
     paths:
@@ -235,7 +235,7 @@ report:maps-renders-full:
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BEFORE_SHA'
       changes:
-        - "maps/map_files/*.dmm"
+        - "maps/**/*.dmm"
 
 commit:changelog:
   stage: extra

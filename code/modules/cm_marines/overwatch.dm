@@ -295,7 +295,7 @@
 		dat += "<table id='marine_list' border='2px' style='width: 100%; border-collapse: collapse;' align='center'><tr>"
 		dat += "<th>Name</th><th>Role</th><th>State</th><th>Location</th><th>SL Distance</th><th>Filter</th></tr>"
 		if(!living_marines_sorting)
-			dat += leader_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
+			dat += leader_text + rto_text + spec_text + medic_text + engi_text + smart_text + marine_text + misc_text
 		else
 			dat += conscious_text + unconscious_text + dead_text
 		dat += "</table>"
@@ -818,7 +818,7 @@
 		if(JOB_SQUAD_RTO)
 			if(new_squad.max_rto >= new_squad.max_rto)
 				no_place = TRUE
-				
+
 	if(no_place)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return

@@ -7,3 +7,6 @@ GLOBAL_VAR_INIT(master_mode, "Distress Signal")
 GLOBAL_VAR_INIT(timezoneOffset, 0)
 
 GLOBAL_LIST_INIT(pill_icon_mappings, map_pill_icons())
+
+/// In-round override to default OOC color
+GLOBAL_VAR(ooc_color_override)

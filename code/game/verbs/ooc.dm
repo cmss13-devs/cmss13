@@ -1,6 +1,3 @@
-
-var/global/normal_ooc_colour = "#1c52f5"
-
 /client/verb/ooc(msg as text)
 	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC.OOC"
@@ -53,7 +50,9 @@ var/global/normal_ooc_colour = "#1c52f5"
 	GLOB.STUI.ooc.Add("\[[time_stamp()]] <font color='#display_colour'>OOC: [mob.name]/[key]: [msg]</font><br>")
 	GLOB.STUI.processing |= STUI_LOG_OOC_CHAT
 
-	var/display_colour = CONFIG_GET(string/ooc_color_normal)
+	var/display_colour = GLOB.ooc_color_override
+	if(!display_colour)
+		display_colour = CONFIG_GET(string/ooc_color_normal)
 	if(admin_holder && !admin_holder.fakekey)
 		display_colour = CONFIG_GET(string/ooc_color_other)
 		if(admin_holder.rights & R_DEBUG)
@@ -81,7 +80,7 @@ var/global/normal_ooc_colour = "#1c52f5"
 	set name = "OOC Text Color - Global"
 	set desc = "Set to yellow for eye burning goodness."
 	set category = "OOC.OOC"
-	normal_ooc_colour = newColor
+	GLOB.ooc_color_override = newColor
 
 
 /client/verb/looc(msg as text)

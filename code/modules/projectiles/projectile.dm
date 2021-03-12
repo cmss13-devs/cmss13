@@ -433,7 +433,7 @@
 		var/hit_roll = rand(1,100)
 
 		if(original != L || hit_roll > hit_chance-base_miss_chance[def_zone]-20)	// If hit roll is high or the firer wasn't aiming at this mob, we still hit but now we might hit the wrong body part
-			def_zone = ran_zone()
+			def_zone = rand_zone()
 		hit_chance -= base_miss_chance[def_zone] // Reduce accuracy based on spot.
 
 		#if DEBUG_HIT_CHANCE

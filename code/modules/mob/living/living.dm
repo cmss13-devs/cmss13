@@ -141,7 +141,7 @@
 
 
 /mob/living/proc/get_limbzone_target()
-	return ran_zone(zone_selected)
+	return rand_zone(zone_selected)
 
 
 

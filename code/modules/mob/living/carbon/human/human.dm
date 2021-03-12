@@ -214,7 +214,7 @@
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
-		var/obj/limb/affecting = get_limb(ran_zone(dam_zone))
+		var/obj/limb/affecting = get_limb(rand_zone(dam_zone))
 		apply_damage(damage, BRUTE, affecting)
 
 

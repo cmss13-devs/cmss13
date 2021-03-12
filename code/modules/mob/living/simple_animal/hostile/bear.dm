@@ -134,7 +134,7 @@
 	if(ishuman(target_mob))
 		var/mob/living/carbon/human/H = target_mob
 		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
-		var/obj/limb/affecting = H.get_limb(ran_zone(dam_zone))
+		var/obj/limb/affecting = H.get_limb(rand_zone(dam_zone))
 		H.apply_damage(damage, BRUTE, affecting, sharp=1, edge=1)
 		return H
 	else if(isliving(target_mob))

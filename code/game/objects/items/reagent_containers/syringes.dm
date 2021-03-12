@@ -248,7 +248,7 @@
 
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		var/target_zone = ran_zone(check_zone(user.zone_selected, target))
+		var/target_zone = rand_zone(check_zone(user.zone_selected, target))
 		var/obj/limb/affecting = H.get_limb(target_zone)
 
 		if (!affecting)

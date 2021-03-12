@@ -361,7 +361,7 @@ This function restores all limbs.
 	if(def_zone)
 		target_limb = get_limb(check_zone(def_zone))
 	else
-		target_limb = get_limb(check_zone(ran_zone()))
+		target_limb = get_limb(check_zone(rand_zone()))
 	if(isnull(target_limb))
 		return FALSE
 
@@ -407,7 +407,7 @@ This function restores all limbs.
 		organ = def_zone
 	else
 		if(!def_zone)
-			def_zone = ran_zone(def_zone)
+			def_zone = rand_zone(def_zone)
 		organ = get_limb(check_zone(def_zone))
 	if(!organ)
 		return FALSE

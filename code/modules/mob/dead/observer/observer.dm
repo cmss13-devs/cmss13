@@ -38,7 +38,6 @@
 	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = 100
-	add_verb(src, /mob/dead/observer/proc/dead_tele)
 	GLOB.observer_list += src
 
 	var/turf/T
@@ -310,9 +309,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	qdel(src)
 	return TRUE
 
-/mob/dead/observer/proc/dead_tele()
+/mob/dead/observer/verb/dead_teleport_area()
 	set category = "Ghost"
-	set name = "Teleport"
+	set name = "Teleport to Area"
 	set desc= "Teleport to a location"
 
 	if(!istype(usr, /mob/dead/observer))
@@ -436,9 +435,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		z = tz
 		sleep(15)
 
-/mob/dead/observer/verb/jumptomob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
+/mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
-	set name = "Jump to Mob"
+	set name = "Teleport to Mob"
 	set desc = "Teleport to a mob"
 
 	if(istype(usr, /mob/dead/observer)) //Make sure they're an observer!

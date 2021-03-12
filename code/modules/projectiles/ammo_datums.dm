@@ -1219,16 +1219,15 @@
 
 /datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
 	name = "heavy machinegun bullet"
-	icon_state 	= "bullet"
 
 	accurate_range = 8
 	damage =  BULLET_DAMAGE_TIER_10
 	penetration = ARMOR_PENETRATION_TIER_6
-	accuracy = HIT_ACCURACY_TIER_6
-	shell_speed = AMMO_SPEED_TIER_4
-	max_range = 12
-	effective_range_max = 8
-	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	accuracy = HIT_ACCURACY_TIER_8
+	shell_speed = AMMO_SPEED_TIER_2
+	max_range = 14
+	effective_range_max = 7
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"

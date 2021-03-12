@@ -1269,7 +1269,7 @@
 #include "code\modules\cm_tech\techs\marine\tier2\enhanced_antibiologicals.dm"
 #include "code\modules\cm_tech\techs\marine\tier2\orbital_ammo.dm"
 #include "code\modules\cm_tech\techs\marine\tier3\cryorine.dm"
-#include "code\modules\cm_tech\techs\marine\tier3\ltb_tank.dm"
+#include "code\modules\cm_tech\techs\marine\tier3\tank.dm"
 #include "code\modules\cm_tech\techs\marine\tier3\railgun.dm"
 #include "code\modules\cm_tech\techs\marine\tier3\xeno_handler.dm"
 #include "code\modules\cm_tech\techs\xeno\tier1\blockade.dm"

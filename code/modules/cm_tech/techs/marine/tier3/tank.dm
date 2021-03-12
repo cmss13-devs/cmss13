@@ -1,6 +1,6 @@
-/datum/tech/ltb
+/datum/tech/tank
 	name = "Armored Support"
-	desc = "Gives the marines the LTB tank and 2 kits to make vehicle crewmen. The kits will be delivered by ASRS."
+	desc = "Gives the marines the ability to send a tank up by ASRS and 2 kits to make vehicle crewmen, freeing the vehicle vendors. The kits will be delivered by ASRS."
 	icon_state = "ltb"
 
 	flags = TREE_FLAG_MARINE
@@ -10,36 +10,39 @@
 
 	var/list/to_order
 
-/datum/tech/ltb/New()
+/datum/tech/tank/New()
 	. = ..()
 	// I have to write this abomination because of ASRS
 	var/datum/supply_packs/VK = /datum/supply_packs/vc_kit
-	var/datum/supply_packs/ALC =  /datum/supply_packs/ammo_ltb_cannon
-	var/datum/supply_packs/AGL = /datum/supply_packs/ammo_glauncher
 
 	to_order = list(
-		initial(VK.name),
-		initial(ALC.name),
-		initial(AGL.name)
+		initial(VK.name)
 	)
 
-
-/datum/tech/ltb/on_unlock()
+/datum/tech/tank/on_unlock()
 	. = ..()
 
 	var/obj/structure/machinery/computer/supplycomp/vehicle/comp = VehicleElevatorConsole
+	var/obj/structure/machinery/cm_vending/gear/vehicle_crew/gearcomp = VehicleGearConsole
 
-	if(!comp)
+	if(!comp || !gearcomp)
 		return
 
 	comp.spent = FALSE
 	QDEL_NULL_LIST(comp.vehicles)
 	comp.vehicles = list(
-		new/datum/vehicle_order/tank/ltb()
+		new /datum/vehicle_order/tank()
 	)
 	comp.allowed_roles = null
 	comp.req_access = list()
 	comp.req_one_access = list()
+	comp.spent = FALSE
+
+	gearcomp.req_access = list()
+	gearcomp.req_one_access = list()
+	gearcomp.vendor_role = list()
+	gearcomp.selected_vehicle = "TANK"
+	gearcomp.available_categories = VEHICLE_ALL_AVAILABLE
 
 	for(var/order in to_order)
 		var/datum/supply_order/O = new /datum/supply_order()
@@ -64,16 +67,6 @@
 	group = "Operations"
 	iteration_needed = null
 
-/datum/vehicle_order/tank/ltb
-	name = "M34A2 Longstreet Light Tank (LTB)"
-	ordered_vehicle = /obj/vehicle/multitile/tank/fixed_ltb
-
-/datum/vehicle_order/tank/ltb/has_vehicle_lock()
-	return FALSE
-
-/datum/vehicle_order/tank/ltb/on_created(var/obj/vehicle/multitile/tank/fixed_ltb/tank)
-	tank.req_one_access = list()
-
 /obj/item/pamphlet/vc
 	name = "vehicle training manual"
 	desc = "A manual used to quickly impart vital knowledge on driving vehicles."
@@ -82,17 +75,3 @@
 	secondary_skill = SKILL_ENGINEER
 
 	bypass_pamphlet_limit = TRUE
-
-/obj/vehicle/multitile/tank/fixed_ltb/load_hardpoints(var/obj/vehicle/multitile/R)
-	..()
-
-	add_hardpoint(new /obj/item/hardpoint/support/artillery_module)
-	add_hardpoint(new /obj/item/hardpoint/armor/ballistic)
-	add_hardpoint(new /obj/item/hardpoint/locomotion/treads)
-
-	var/obj/item/hardpoint/holder/tank_turret/T = locate() in hardpoints
-	if(!T)
-		return
-
-	T.add_hardpoint(new /obj/item/hardpoint/primary/cannon)
-	T.add_hardpoint(new /obj/item/hardpoint/secondary/grenade_launcher)

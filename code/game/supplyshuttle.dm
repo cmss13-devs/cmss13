@@ -996,7 +996,7 @@ var/datum/controller/supply/supply_controller = new()
 	req_access = list(ACCESS_MARINE_CREWMAN)
 	// Can only retrieve one vehicle per round
 	var/spent = FALSE
-	var/tank_unlocked = TRUE
+	var/tank_unlocked = FALSE
 	var/list/allowed_roles = list(JOB_CREWMAN)
 
 	var/list/vehicles
@@ -1019,13 +1019,11 @@ var/datum/controller/supply/supply_controller = new()
 	ordered_vehicle = /obj/vehicle/multitile/tank/decrepit
 
 /datum/vehicle_order/tank/has_vehicle_lock()
-	if(!SSticker.mode || istype(SSticker.mode, /datum/game_mode/extended))
-		return FALSE
+	return
 
-	var/datum/game_mode/GM = SSticker.mode
+/datum/vehicle_order/tank/on_created(var/obj/vehicle/multitile/tank/decrepit/tank)
+	tank.req_one_access = list()
 
-	if(GM.marine_starting_num < TANK_POPLOCK)
-		return TRUE
 /datum/vehicle_order/apc
 	name = "M577 Armored Personnel Carrier"
 	ordered_vehicle = /obj/vehicle/multitile/apc/decrepit
@@ -1042,7 +1040,6 @@ var/datum/controller/supply/supply_controller = new()
 	. = ..()
 
 	vehicles = list(
-		new/datum/vehicle_order/tank(),
 		new/datum/vehicle_order/apc(),
 		new/datum/vehicle_order/apc/med(),
 		new/datum/vehicle_order/apc/cmd()

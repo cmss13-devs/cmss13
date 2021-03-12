@@ -844,7 +844,6 @@
 /obj/item/device/m2c_gun
 	name = "\improper M2C heavy machine gun"
 	desc = "The disassembled M2C HMG, with its telescopic tripods folded up and unable to fire."
-	unacidable = TRUE
 	w_class = SIZE_HUGE
 	flags_equip_slot = SLOT_BACK
 	icon = 'icons/turf/whiskeyoutpost.dmi'
@@ -933,7 +932,6 @@
 		user.visible_message(SPAN_NOTICE("[user] field recovers [src], restoring it back to its original state."), \
 			SPAN_NOTICE("You repair [src] back to a functional state."))
 		broken_gun = FALSE
-		unacidable = TRUE
 		health = 110
 		update_icon()
 		return

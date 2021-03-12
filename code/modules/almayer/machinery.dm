@@ -299,14 +299,6 @@
 	if(hacked)
 		overlays += "+hacked"
 
-/obj/structure/prop/almayer/computers/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/device/agents/floppy_disk))
-		var/obj/item/device/agents/floppy_disk/D = W
-		D.insert_drive(user, src)
-		return
-
-	. = ..()
-
 /obj/structure/prop/almayer/computers/mission_planning_system
 	name = "\improper MPS IV computer"
 	desc = "The Mission Planning System IV (MPS IV), a enhancement in mission planning and charting for dropship pilots across the USCM. Fully capable of customizing their flight paths and loadouts to suit their combat needs."

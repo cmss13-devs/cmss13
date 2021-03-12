@@ -25,7 +25,6 @@ var/global/list/custom_huds_list = list("midnight" = new /datum/custom_hud(),
 
 var/readied_players = 0								//How many players are readied up in the lobby
 
-GLOBAL_LIST_EMPTY_TYPED(human_agent_list, /mob/living/carbon/human)
 GLOBAL_LIST_EMPTY_TYPED(other_factions_human_list, /mob/living/carbon/human)
 
 var/global/list/ai_mob_list = list()				//List of all AIs

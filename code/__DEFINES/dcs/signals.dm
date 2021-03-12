@@ -236,16 +236,10 @@
 #define COMSIG_MOVABLE_PRE_MOVE "movable_pre_move"
 	#define COMPONENT_CANCEL_MOVE (1<<0)
 
-///from /obj/item/device/agents/floppy_disk/proc/insert_drive
-#define COMSIG_AGENT_DISK_INSERTED "agent_disk_inserted"
 ///from /obj/item/reagent_container/food/snacks/proc/On_Consume
 #define COMSIG_SNACK_EATEN "snack_eaten"
 ///from /turf/closed/wall/proc/place_poster
 #define COMSIG_POSTER_PLACED "poster_placed"
-///from /obj/item/device/agents/tracking_device/proc/plant_tracker
-#define COMSIG_TRACKING_PLANTED "tracking_planted"
-///from /obj/item/device/agents/tracking_device/attackby
-#define COMSIG_TRACKING_DISARMED "tracking_disarmed"
 
 #define COMSIG_CLIENT_MOB_MOVE	"client_mob_move"
 	#define COMPONENT_OVERRIDE_MOVE	(1<<0)

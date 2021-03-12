@@ -8757,7 +8757,6 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/lifeboat_pumps/south1)
 "awa" = (
-/obj/effect/landmark/ert_spawns/distress_agent,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -9015,7 +9014,6 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/obj/effect/landmark/ert_spawns/distress_agent,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -9107,7 +9105,6 @@
 /area/almayer/living/pilotbunks)
 "axa" = (
 /obj/structure/bed/chair,
-/obj/effect/landmark/ert_spawns/distress_agent,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin3";
 	tag = "icon-rasputin3"
@@ -24789,7 +24786,6 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
 	},
-/obj/item/folded_medical_sheet,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";
@@ -28611,7 +28607,6 @@
 "bNR" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/fancy/cigar,
-/obj/item/tally_book,
 /turf/open/floor/almayer,
 /area/almayer/squads/req)
 "bNS" = (
@@ -43982,7 +43977,6 @@
 	dir = 8;
 	tag = "icon-map-supply (WEST)"
 	},
-/obj/item/golden_cup,
 /turf/open/floor/almayer,
 /area/almayer/command/cic)
 "hvw" = (
@@ -52558,7 +52552,6 @@
 /obj/item/reagent_container/food/snacks/mre_pack/xmas2,
 /obj/item/reagent_container/food/snacks/mre_pack/xmas1,
 /obj/item/reagent_container/food/snacks/mre_pack/xmas3,
-/obj/item/folded_medical_sheet,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -55199,7 +55192,6 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 8
 	},
-/obj/item/device/healthanalyzer/golden,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "sterile_green_side";

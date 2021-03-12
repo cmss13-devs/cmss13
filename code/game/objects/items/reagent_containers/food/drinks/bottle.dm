@@ -320,6 +320,14 @@
 /obj/item/reagent_container/food/drinks/bottle/orangejuice/Initialize()
 	. = ..()
 	reagents.add_reagent("orangejuice", 100)
+	var/probability = rand(0, 101)
+	switch(probability)
+		if(0 to 49)
+			desc = "Full of vitamins and deliciousness! Contains NO pulp!"
+		if(50 to 100)
+			desc = "Full of vitamins and deliciousness! Contains pulp!"
+		else
+			desc = "Full of vitamins and deliciousness! Contains 100% pulp!"
 
 /obj/item/reagent_container/food/drinks/bottle/cream
 	name = "Milk Cream"

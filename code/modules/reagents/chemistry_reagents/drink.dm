@@ -47,10 +47,12 @@
 	description = "Both delicious AND rich in Vitamin C, what more do you need?"
 	color = "#E78108" // rgb: 231, 129, 8
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.getOxyLoss() && prob(30)) M.apply_damage(-1, OXY)
+/datum/reagent/drink/orangejuice/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	if(M.getOxyLoss() && prob(30))
+		M.apply_damage(-1, OXY)
 
 /datum/reagent/drink/tomatojuice
 	name = "Tomato Juice"

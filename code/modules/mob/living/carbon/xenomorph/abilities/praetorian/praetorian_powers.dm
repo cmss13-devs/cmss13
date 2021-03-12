@@ -169,7 +169,7 @@
 
 		X.visible_message(SPAN_XENODANGER("[X] smashes [A] with its claws, pinning them to the ground!"), SPAN_XENOHIGHDANGER("You smash [A] with your claws, pinning them to the ground!"))
 
-		H.frozen = 1
+		H.frozen = TRUE
 		H.update_canmove()
 
 		if (ishuman(H))
@@ -243,21 +243,22 @@
 
 	var/throw_target_turf = get_step(X.loc, facing)
 
-	X.frozen = 1
+	X.frozen = TRUE
 	X.update_canmove()
 	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, null, null, FALSE, 1, FALSE, 1))
 		to_chat(X, SPAN_XENOWARNING("You cancel your abduct."))
+		apply_cooldown()
 
 		for (var/obj/effect/xenomorph/xeno_telegraph/XT in telegraph_atom_list)
 			telegraph_atom_list -= XT
 			qdel(XT)
 
-		X.frozen = 0
+		X.frozen = FALSE
 		X.update_canmove()
 
 		return
 
-	X.frozen = 0
+	X.frozen = FALSE
 	X.update_canmove()
 
 	playsound(get_turf(X), 'sound/effects/bang.ogg', 25, 0)
@@ -286,7 +287,7 @@
 			new /datum/effects/xeno_slow(H, X, , ,25)
 		else if (LAZYLEN(targets) == 2)
 
-			H.frozen = 1
+			H.frozen = TRUE
 			H.update_canmove()
 			if (ishuman(H))
 				var/mob/living/carbon/human/Hu = H
@@ -344,7 +345,7 @@
 
 	if (H.frozen || H.slowed || H.knocked_down)
 		H.apply_damage(get_xeno_damage_slash(H, damage), BRUTE, L? L.name : "chest")
-		H.frozen = 1
+		H.frozen = TRUE
 		H.update_canmove()
 
 		if (ishuman(H))
@@ -360,8 +361,8 @@
 			SFA.reduce_cooldown(50)
 		if(SFB && SFB.action_cooldown_check())
 			SFB.reduce_cooldown(50)
-		else
-			H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
+	else
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
 		step_away(H, X, 2)
 
 

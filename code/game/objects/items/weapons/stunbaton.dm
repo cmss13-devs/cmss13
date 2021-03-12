@@ -37,11 +37,11 @@
 /obj/item/weapon/melee/baton/proc/deductcharge(var/chrgdeductamt)
 	if(bcell)
 		if(bcell.use(chrgdeductamt))
-			return 1
+			return TRUE
 		else
 			status = 0
 			update_icon()
-			return 0
+			return FALSE
 
 /obj/item/weapon/melee/baton/update_icon()
 	if(status)
@@ -143,7 +143,7 @@
 	var/target_zone = check_zone(user.zone_selected)
 	if(user.a_intent == INTENT_HARM)
 		if (!..())	//item/attack() does it's own messaging and logs
-			return 0	// item/attack() will return 1 if they hit, 0 if they missed.
+			return FALSE	// item/attack() will return TRUE if they hit, 0 if they missed.
 
 		if(!status)
 			return TRUE
@@ -154,25 +154,22 @@
 			user.lastattacked = L	//are these used at all, if we have logs?
 			L.lastattacker = user
 
-			if (user != L) // Attacking yourself can't miss
-				target_zone = get_zone_with_miss_chance(user.zone_selected, L)
-
-			if(!target_zone)
+			if(!target_zone) //shouldn't ever happen
 				L.visible_message(SPAN_DANGER("<B>[user] misses [L] with \the [src]!"))
-				return 0
+				return FALSE
 
 			var/mob/living/carbon/human/H = L
 			var/obj/limb/affecting = H.get_limb(target_zone)
 			if (affecting)
 				if(!status)
 					L.visible_message(SPAN_WARNING("[L] has been prodded in the [affecting.display_name] with [src] by [user]. Luckily it was off."))
-					return 1
+					return TRUE
 				else
 					H.visible_message(SPAN_DANGER("[L] has been prodded in the [affecting.display_name] with [src] by [user]!"))
 		else
 			if(!status)
 				L.visible_message(SPAN_WARNING("[L] has been prodded with [src] by [user]. Luckily it was off."))
-				return 1
+				return TRUE
 			else
 				L.visible_message(SPAN_DANGER("[L] has been prodded with [src] by [user]!"))
 
@@ -195,7 +192,7 @@
 
 	deductcharge(hitcost)
 
-	return 1
+	return TRUE
 
 /obj/item/weapon/melee/baton/emp_act(severity)
 	if(bcell)

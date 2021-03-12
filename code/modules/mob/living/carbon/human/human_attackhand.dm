@@ -90,29 +90,21 @@
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "punch")
 
-			var/max_dmg = 5
+			var/extra_cqc_dmg = 0 //soft maximum of 5, this damage is added onto the final value depending on how much cqc skill you have
 			if(M.skills)
-				max_dmg += M.skills.get_skill_level(SKILL_CQC)
-			var/damage = rand(0, max_dmg)
-			if(!damage)
-				playsound(loc, attack.miss_sound, 25, 1)
-				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5)
-				return
+				extra_cqc_dmg = M.skills?.get_skill_level(SKILL_CQC)
+			var/raw_damage = 0 //final value, gets absorbed by the armor and then deals the leftover to the mob
 
-			var/obj/limb/affecting = get_limb(ran_zone(M.zone_selected))
+			var/obj/limb/affecting = get_limb(rand_zone(M.zone_selected))
 			var/armor = getarmor(affecting, ARMOR_MELEE)
 
 			playsound(loc, attack.attack_sound, 25, 1)
 
 			visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
-			if(damage >= 5 && prob(50))
-				visible_message(SPAN_DANGER("[M] has weakened [src]!"), null, null, 5)
-				apply_effect(3, WEAKEN)
 
-			damage += attack.damage
-			damage = armor_damage_reduction(GLOB.marine_melee, damage, armor, 0) // no penetration frm punches
-			apply_damage(damage, BRUTE, affecting, sharp=attack.sharp, edge=attack.edge)
-
+			raw_damage = attack.damage + extra_cqc_dmg
+			var/final_damage = armor_damage_reduction(GLOB.marine_melee, raw_damage, armor, FALSE) // no penetration from punches
+			apply_damage(final_damage, BRUTE, affecting, sharp=attack.sharp, edge = attack.edge)
 
 		if(INTENT_DISARM)
 			if(M == src)

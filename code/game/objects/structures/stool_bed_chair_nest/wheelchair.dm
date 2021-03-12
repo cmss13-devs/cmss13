@@ -73,7 +73,7 @@
 		var/mob/living/occupant = buckled_mob
 		unbuckle()
 
-		var/def_zone = ran_zone()
+		var/def_zone = rand_zone()
 		occupant.throw_atom(A, 3, propelled)
 		occupant.apply_effect(6, STUN)
 		occupant.apply_effect(6, WEAKEN)
@@ -82,7 +82,7 @@
 		playsound(src.loc, 'sound/weapons/punch1.ogg', 25, 1)
 		if(ishuman(A) && !isYautja(A))
 			var/mob/living/victim = A
-			def_zone = ran_zone()
+			def_zone = rand_zone()
 			victim.apply_effect(6, STUN)
 			victim.apply_effect(6, WEAKEN)
 			victim.apply_effect(6, STUTTER)

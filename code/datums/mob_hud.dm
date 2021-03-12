@@ -167,10 +167,6 @@ var/list/datum/mob_hud/huds = list(
 
 /datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
 	var/faction = target.faction
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(H.agent_holder)
-			faction = H.agent_holder.faction
 	if(isobserver(target))
 		faction = faction_to_check
 

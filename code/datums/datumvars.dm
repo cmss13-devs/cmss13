@@ -213,11 +213,6 @@
 			body += "<option value='?_src_=vars;edit_skill=\ref[D]'>Edit Skills</option>"
 			body += "<option value='?_src_=vars;setspecies=\ref[D]'>Set Species</option>"
 			body += "<option value='?_src_=vars;selectequipment=\ref[D]'>Select Equipment</option>"
-			var/mob/living/carbon/human/H = D
-			if(H.agent_holder)
-				body += "<option value='?_src_=vars;giveagentobjective=\ref[D]'>Give Agent Objective</option>"
-			else
-				body += "<option value='?_src_=vars;createagent=\ref[D]'>Make Agent</option>"
 		if(iscarbon(D))
 			body += "<option value='?_src_=vars;changehivenumber=\ref[D]'>Change Hivenumber</option>"
 		body += "<option value>---</option>"
@@ -754,42 +749,6 @@ body
 
 		H.skills.set_skill(selected_skill, new_skill_level)
 		to_chat(usr, "[H]'s [selected_skill] skill is now set to [new_skill_level].")
-
-	else if(href_list["createagent"])
-		if(!check_rights(R_DEBUG|R_ADMIN))
-			return
-
-		var/mob/living/carbon/human/H = locate(href_list["createagent"])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-			return
-
-		var/faction = tgui_input_list(src,"Select the agent faction", "Create Agent", list("Random") + FACTION_LIST_AGENT)
-		if(!faction)
-			return
-
-		if(faction == "Random")
-			new /datum/agent(H)
-		else
-			new /datum/agent(H, faction)
-
-	else if(href_list["giveagentobjective"])
-		if(!check_rights(R_DEBUG|R_ADMIN))
-			return
-
-		var/mob/living/carbon/human/H = locate(href_list["giveagentobjective"])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-			return
-
-		var/objective = tgui_input_list(src,"Select an objective", "Give Agent Objective", list("Random") + OBJECTIVES_TO_PICK_FROM)
-		if(objective == "Cancel")
-			return
-
-		if(objective == "Random")
-			H.agent_holder.give_objective()
-		else
-			H.agent_holder.give_objective(objective)
 
 	else if(href_list["addlanguage"])
 		if(!check_rights(R_SPAWN))

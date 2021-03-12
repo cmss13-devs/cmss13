@@ -1575,13 +1575,6 @@
 
 		topic_ahelps(href_list)
 
-	else if(href_list["agent"] == "showobjectives")
-		if(!check_rights(R_MOD))
-			return
-
-		var/mob/M = locate(href_list["extra"])
-		show_agent_objectives(M)
-
 	// player info stuff
 
 	if(href_list["add_player_info"])

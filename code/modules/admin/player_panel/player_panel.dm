@@ -239,12 +239,6 @@
 		M_key = replacetext(M_key, "\"", "")
 		M_key = replacetext(M_key, "\\", "")
 
-		var/extra_info = ""
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.agent_holder)
-				extra_info = "(<font color='red'>Agent</font>)"
-
 		//output for each mob
 		dat += {"
 			<tr id='data[i]' name='[i]' onClick="addToLocked('item[i]','data[i]','notice_span[i]')">
@@ -253,7 +247,7 @@
 					<a id='link[i]'
 					onmouseover='expand("item[i]","[M_job]","[M_name]","[M_rname]","--unused--","[M_key]","[M.lastKnownIP]","\ref[M]")'
 					>
-					<b id='search[i]'>[M_name] - [M_rname] - [M_key] ([M_job])[extra_info]</b>
+					<b id='search[i]'>[M_name] - [M_rname] - [M_key] ([M_job])</b>
 					</a>
 					<br><span id='item[i]'></span>
 				</td>
@@ -333,20 +327,6 @@
 	dat += "Current Game Mode: <B>[SSticker.mode.name]</B><BR>"
 	dat += "Round Duration: <B>[round(world.time / 36000)]:[add_zero(world.time / 600 % 60, 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B><BR>"
 
-	if(length(GLOB.human_agent_list))
-		dat += "<br><table cellspacing=5><tr><td><B>Agents</B></td><td></td><td></td></tr>"
-		for(var/i in GLOB.human_agent_list)
-			var/mob/living/carbon/human/H = i
-			var/location = get_area(H.loc)
-			if(H)
-				dat += "<tr><td><A href='?src=\ref[usr];priv_msg=\ref[H]'>[H.real_name]</a>[H.client ? "" : " <i>(logged out)</i>"][H.stat == DEAD ? " <b><font color=red>(DEAD)</font></b>" : ""]</td>"
-				dat += "<td>[location]</td>"
-				dat += "<td>[H.agent_holder.faction]</td>"
-				dat += "<td><a href='?src=\ref[usr];track=\ref[H]'>F</a></td>"
-				dat += "<td><a href='?src=\ref[src];ahelp=adminplayeropts;extra=\ref[H]'>PP</a></td>"
-				dat += "<td><a href='?src=\ref[src];agent=showobjectives;extra=\ref[H]'>Show Objective</a></td></tr>"
-		dat += "</table>"
-
 	if(length(GLOB.other_factions_human_list))
 		dat += "<br><table cellspacing=5><tr><td><B>Other human factions</B></td><td></td><td></td></tr>"
 		for(var/i in GLOB.other_factions_human_list)
@@ -398,17 +378,6 @@
 
 	dat += "</body></html>"
 	show_browser(usr, dat, "Antagonists", "antagonists", "size=600x500")
-
-/datum/admins/proc/show_agent_objectives(var/mob/living/carbon/human/H)
-	if(!istype(H))
-		return
-
-	var/dat = "<html><body><h1><B>Objectives of [H.real_name]</B></h1>"
-	for(var/datum/agent_objective/O in H.agent_holder.objectives_list)
-		dat += "[O.description] <br><br>"
-
-	dat += "</body></html>"
-	show_browser(usr, dat, "Objectives", "objectives", "size=600x500")
 
 /datum/admins/proc/check_round_status()
 	if (SSticker.current_state >= GAME_STATE_PLAYING)

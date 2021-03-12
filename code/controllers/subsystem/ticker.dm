@@ -188,9 +188,6 @@ SUBSYSTEM_DEF(ticker)
 
 	begin_game_recording()
 
-	if((master_mode == "Distress Signal") && SSevents)
-		SSevents.Initialize()
-
 	setup_economy()
 
 	shuttle_controller.setup_shuttle_docks()

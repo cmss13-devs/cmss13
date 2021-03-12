@@ -301,7 +301,6 @@
 	show_end_statistics(end_icon)
 
 	declare_completion_announce_fallen_soldiers()
-	announce_agents()
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()

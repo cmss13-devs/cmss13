@@ -72,8 +72,6 @@
 
 	. = ..()
 
-	QDEL_NULL(agent_holder)
-
 /mob/living/carbon/human/get_status_tab_items()
 	. = ..()
 

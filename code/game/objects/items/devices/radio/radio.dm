@@ -29,8 +29,6 @@
 	matter = list("glass" = 25,"metal" = 75)
 		//FREQ_BROADCASTING = 2
 
-	var/agent_unlocked = FALSE
-
 /obj/item/device/radio
 	var/datum/radio_frequency/radio_connection
 	var/list/datum/radio_frequency/secure_radio_connections = new
@@ -99,11 +97,6 @@
 		dat+=text_sec_channel(ch_name, channels[ch_name])
 	dat += "</table>"
 	dat += "<br>"
-	dat += "Special Frequency[agent_unlocked ? " (ACTIVATED)" : ""]:"
-	dat += "<A href='byond://?src=\ref[src];special_frequency=1'>Call</A>"
-	if(agent_unlocked)
-		dat += "<A href='byond://?src=\ref[src];special_frequency_reset=1'>Reset</A>"
-	dat += "<br><br>"
 	dat += {"[text_wires()]</TT></body></html>"}
 	show_browser(user, dat, name, "radio")
 	return
@@ -174,38 +167,6 @@
 			wires &= ~t1
 		else
 			wires |= t1
-
-	if (href_list["special_frequency"])
-		if(!ishuman(usr))
-			return
-
-		var/mob/living/carbon/human/H = usr
-		if(!agent_unlocked)
-			var/special_freq = input(usr, "What frequency do you want to tune it to?") as num|null
-			if(!special_freq)
-				return
-
-			if(H.agent_holder && H.agent_holder.frequency_code != special_freq || !H.agent_holder)
-				to_chat(usr, SPAN_NOTICE("The frequency tuned to doesn't respond."))
-				return
-
-			agent_unlocked = TRUE
-
-		//open up the vendor shit
-		if(!H.agent_holder || !H.agent_holder.tools)
-			return
-
-		H.agent_holder.tools.attack_self(usr)
-		attack_self(usr)
-		return
-
-	if (href_list["special_frequency_reset"])
-		if(!agent_unlocked)
-			return
-
-		agent_unlocked = FALSE
-		attack_self(usr)
-		return
 
 	if (!( master ))
 		if (istype(loc, /mob))

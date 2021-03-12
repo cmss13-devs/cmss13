@@ -50,28 +50,6 @@ of predators), but can be added to include variant game modes (like humans vs. h
 				dat += "[fallen_list[i]].<br>"
 		to_world("[dat]")
 
-/datum/game_mode/proc/announce_agents()
-	set waitfor = 0
-	sleep(2 SECONDS)
-	if(length(GLOB.human_agent_list))
-		var/dat = "<br>"
-		dat += SPAN_CENTERBOLD("The Agents were: <br>")
-		for(var/i in GLOB.human_agent_list)
-			var/mob/living/carbon/human/H = i
-			if(!H.agent_holder)
-				continue
-
-			dat += "[SPAN_BOLD("[H]")] was being blackmailed by [H.agent_holder.faction], with the following objectives: <br>"
-			for(var/datum/agent_objective/O in H.agent_holder.objectives_list)
-				dat += "- [O.description]"
-				if(O.check_completion_round_end())
-					dat += " [SPAN_BOLD("[SPAN_GREEN("(COMPLETED)")]")] <br>"
-				else
-					dat += " [SPAN_BOLD("[SPAN_RED("(FAILED)")]")] <br>"
-			dat += "<br>"
-
-		to_world("[dat]")
-
 
 /datum/game_mode/proc/declare_completion_announce_xenomorphs()
 	set waitfor = 0

@@ -76,5 +76,5 @@
 	// This fucker has a history of playing on a banned account.
 	if(found)
 		var/msg = "[key_name(client)] has a banned account in connection history! (Matched: [found["ckey"]], [found["address"]], [found["computer_id"]])"
-		message_admins(msg)
+		message_staff(msg)
 		log_admin_private(msg)

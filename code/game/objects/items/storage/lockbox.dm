@@ -50,14 +50,14 @@
 
 
 /obj/item/storage/lockbox/loyalty
-	name = "\improper lockbox of W-Y implants"
+	name = "\improper W-Y equipment lockbox"
 	req_access = list(ACCESS_WY_CORPORATE)
 
 /obj/item/storage/lockbox/loyalty/fill_preset_inventory()
-	new /obj/item/implantcase/loyalty(src)
-	new /obj/item/implantcase/loyalty(src)
-	new /obj/item/implantcase/loyalty(src)
-	new /obj/item/implanter/loyalty(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88(src)
+	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
+	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
 
 
 /obj/item/storage/lockbox/clusterbang

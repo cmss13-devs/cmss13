@@ -139,7 +139,7 @@
 		plant_target.overlays -= overlay
 		qdel(overlay)
 		plant_target.contents -= src
-		forceMove(get_turf(plant_target.loc))
+		forceMove(get_turf(plant_target))
 	plant_target = null
 	if(customizable)
 		if(active) //deactivate
@@ -222,7 +222,7 @@
 			plant_target.overlays -= overlay
 			qdel(overlay)
 			plant_target.contents -= src
-			forceMove(plant_target.loc)
+			forceMove(plant_target)
 		if(ismob(plant_target))
 			var/mob/M = plant_target
 			M.last_damage_source = initial(name)

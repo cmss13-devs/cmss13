@@ -6,7 +6,7 @@
 
 	heat_source = 1000 //Can ignite Thermite.
 	secured = 1
-	wires = WIRE_RECEIVE
+	wires = WIRE_ASSEMBLY_RECEIVE
 
 /obj/item/device/assembly/igniter/activate()
 	if(!..())

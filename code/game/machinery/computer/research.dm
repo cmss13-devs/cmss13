@@ -60,7 +60,7 @@
 
 	var/datum/techtree/T = GET_TREE(TREE_MARINE)
 	// Tier 1 allows for CL2, Tier 2 allows for CL4 and Tier 3 allows for CL5
-	var/clearance_allowance = max(T.tier?.tier*2, 5)
+	var/clearance_allowance = min(T.tier?.tier*2, 5)
 
 	var/can_give_x = FALSE
 	if(clearance_bypass)

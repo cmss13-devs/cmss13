@@ -198,6 +198,8 @@
 		switch(falloff_shape)
 			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL)
 				new_falloff += new_falloff * dir_falloff
+			if(EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF)
+				new_falloff += (new_falloff*0.5) * dir_falloff
 
 		var/datum/automata_cell/explosion/E = propagate(dir)
 		if(E)

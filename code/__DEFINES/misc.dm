@@ -24,8 +24,9 @@
 
 // What kind of function to use for Explosions falling off.
 
-#define EXPLOSION_FALLOFF_SHAPE_LINEAR          0
-#define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL     1
+#define EXPLOSION_FALLOFF_SHAPE_LINEAR              0
+#define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL         1
+#define EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF    2
 
 //area flags
 

@@ -52,12 +52,12 @@
 
 /obj/item/explosive/grenade/HE/PMC
 	name = "\improper M12 blast grenade"
-	desc = "A high-explosive grenade produced for private security firms. It explodes 3 seconds after the pin has been pulled."
+	desc = "A high-explosive grenade produced for private security firms. It explodes around 3 seconds after the pin has been pulled."
 	icon_state = "grenade_pmc"
 	item_state = "grenade_ex"
 	underslug_launchable = FALSE
-	explosion_power = 130
-	falloff_mode = EXPLOSION_FALLOFF_SHAPE_LINEAR
+	explosion_power = 200
+	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF
 
 
 

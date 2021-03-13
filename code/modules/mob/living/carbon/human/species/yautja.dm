@@ -129,21 +129,21 @@
 	for(var/obj/limb/L in H.limbs)
 		switch(L.name)
 			if("groin","chest")
-				L.min_broken_damage = 80
-				L.max_damage = 200
-				L.time_to_knit = 1200 // 10 mins
+				L.min_broken_damage = 140
+				L.max_damage = 140
+				L.time_to_knit = 1200 // 2 minutes, time is in tenths of a second
 			if("head")
-				L.min_broken_damage = 70
-				L.max_damage = 90
-				L.time_to_knit = 1200 // 10 mins
-			if("l_hand","r_hand","r_foot","l_foot")
-				L.min_broken_damage = 40
-				L.max_damage = 60
-				L.time_to_knit = 600 // 5 mins
-			if("r_leg","r_arm","l_leg","l_arm")
-				L.min_broken_damage = 60
+				L.min_broken_damage = 80
 				L.max_damage = 80
-				L.time_to_knit = 600 // 5 mins
+				L.time_to_knit = 1200 // 2 minutes, time is in tenths of a second
+			if("l_hand","r_hand","r_foot","l_foot")
+				L.min_broken_damage = 55
+				L.max_damage = 55
+				L.time_to_knit = 600 // 1 minute, time is in tenths of a second
+			if("r_leg","r_arm","l_leg","l_arm")
+				L.min_broken_damage = 75
+				L.max_damage = 75
+				L.time_to_knit = 600 // 1 minute, time is in tenths of a second
 
 
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]

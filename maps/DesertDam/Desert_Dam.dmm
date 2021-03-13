@@ -19623,7 +19623,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "beF" = (
-/obj/structure/bed/chair/comfy/orange{
+/obj/structure/bed/chair/comfy/brown{
 	dir = 4
 	},
 /turf/open/floor{
@@ -19640,7 +19640,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "beH" = (
-/obj/structure/bed/chair/comfy/orange{
+/obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
 /turf/open/floor{
@@ -39104,7 +39104,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "cnz" = (
-/obj/structure/bed/chair/comfy/orange{
+/obj/structure/bed/chair/comfy/brown{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -42819,11 +42819,9 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cyP" = (
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/gm/river/desert/shallow_edge/covered{
-	dir = 8
-	},
-/area/desert_dam/exterior/river/riverside_south)
+/obj/effect/blocker/toxic_water/Group_2,
+/turf/open/gm/river/desert/shallow_edge/covered,
+/area/desert_dam/exterior/river/riverside_central_north)
 "cyQ" = (
 /obj/structure/flora/grass/desert/heavy{
 	icon_state = "heavygrass_5"
@@ -54014,10 +54012,6 @@
 	icon_state = "cement_sunbleached1"
 	},
 /area/desert_dam/exterior/valley/valley_medical)
-"dob" = (
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/gm/river/desert/shallow/covered,
-/area/desert_dam/exterior/river/riverside_south)
 "dof" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -91441,10 +91435,10 @@ cvK
 cvL
 cyR
 cAf
-cyP
-cyP
-chn
-cyP
+czV
+czV
+czV
+czV
 cAf
 cAi
 chn
@@ -91677,8 +91671,8 @@ cho
 cho
 czV
 cho
-cho
-cho
+czV
+czV
 cho
 cho
 cho
@@ -91911,8 +91905,8 @@ cho
 cho
 cho
 cho
-cho
-cho
+czV
+czV
 cho
 cho
 cho
@@ -92054,7 +92048,7 @@ agY
 ahg
 ahg
 ahI
-aIS
+cyP
 agY
 aix
 aZg
@@ -92145,8 +92139,8 @@ cho
 cho
 cho
 cho
-cho
-cho
+czV
+czV
 cho
 cho
 cho
@@ -92286,10 +92280,10 @@ aJy
 aJy
 aJy
 ahi
-aJy
-aJy
-aJy
-aJy
+bTi
+bTi
+bTi
+bTi
 aJy
 aWZ
 aIS
@@ -92378,8 +92372,8 @@ cho
 cho
 cho
 cho
-cho
-cho
+czV
+czV
 czV
 cho
 cho
@@ -92519,11 +92513,11 @@ aJy
 aJy
 aJy
 aJy
+bTi
+bTi
 aJy
 aJy
-aJy
-aJy
-aJy
+bTi
 aJy
 aJy
 aJy
@@ -92612,7 +92606,7 @@ cho
 cho
 cho
 cho
-cho
+czV
 czV
 cCR
 cAf
@@ -92753,11 +92747,11 @@ aJy
 aJy
 aJy
 aJy
+bTi
+bTi
 aJy
 aJy
-aJy
-aJy
-aJy
+bTi
 aJy
 aJy
 aJy
@@ -92987,11 +92981,11 @@ aJy
 aJy
 aJy
 aJy
-aJy
-aJy
+bTi
 bTi
 aJy
 aJy
+bTi
 aJy
 aJy
 aJy
@@ -93223,9 +93217,9 @@ bOw
 bPl
 bYF
 bYF
-bYF
-aUl
-aUl
+aJy
+aJy
+bTi
 aJy
 aJy
 aJy
@@ -101566,10 +101560,10 @@ chn
 chn
 cyR
 cAf
-cyP
-clE
-dob
-dob
+czV
+czV
+czV
+czV
 cAf
 cAi
 chU
@@ -101800,10 +101794,10 @@ cho
 cho
 cho
 cho
-cho
-cjQ
-chn
-cyP
+czV
+czV
+czV
+czV
 cho
 cho
 cho
@@ -102034,10 +102028,10 @@ cho
 cho
 cho
 cho
+czV
 cho
 cho
-cho
-cho
+czV
 cho
 cho
 cho
@@ -102268,10 +102262,10 @@ cho
 cho
 cho
 cho
+czV
 cho
 cho
-cho
-cho
+czV
 cho
 cho
 cho
@@ -102503,9 +102497,9 @@ cho
 cho
 cho
 czV
-cho
-cho
-cho
+czV
+czV
+czV
 cho
 cho
 cho
@@ -102738,7 +102732,7 @@ cho
 cho
 czV
 czV
-cho
+czV
 czV
 cAf
 cAj
@@ -103586,9 +103580,9 @@ bjG
 bjG
 aXp
 cIa
-dib
-dib
-dib
+aof
+aof
+aof
 cYw
 dlJ
 aXp
@@ -103820,10 +103814,10 @@ biP
 blN
 bbF
 cIa
+aof
 dib
 dib
-dib
-dLu
+aof
 diL
 biz
 biP
@@ -104053,11 +104047,11 @@ biP
 biP
 bjr
 bbF
-dEY
+aof
+aof
 dib
 dib
-dib
-dLu
+aof
 diL
 bjh
 biP
@@ -104287,10 +104281,10 @@ biQ
 biQ
 biQ
 bbT
-dEY
-dib
-dib
-dib
+aof
+aof
+aof
+aof
 cYw
 dmz
 bbT

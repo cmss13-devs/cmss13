@@ -58,6 +58,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 		list("Armor", 0, /obj/item/clothing/suit/storage/marine/rto, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/marine, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Radio Telephone Pack", 0, /obj/item/storage/backpack/marine/satchel/rto, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
+		list("Laser Designator",0,/obj/item/device/binoculars/range/designator,MARINE_CAN_BUY_ESSENTIALS,VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
@@ -118,24 +119,24 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 	squad_tag = SQUAD_NAME_1
 	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_ALPHA)
 	gloves_type = /obj/item/clothing/gloves/marine/alpha
-	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/lead
+	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/bravo
 	squad_tag = SQUAD_NAME_2
 	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_BRAVO)
 	gloves_type = /obj/item/clothing/gloves/marine/bravo
-	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/lead
+	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/charlie
 	squad_tag = SQUAD_NAME_3
 	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_CHARLIE)
 	gloves_type = /obj/item/clothing/gloves/marine/charlie
-	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/lead
+	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/delta
 	squad_tag = SQUAD_NAME_4
 	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_DELTA)
 	gloves_type = /obj/item/clothing/gloves/marine/delta
-	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
+	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/rto
 
 //------------ESSENTIAL SETS---------------

@@ -116,7 +116,7 @@
 
 	var/acquisition_time = target_acquisition_delay
 	if(user.skills)
-		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_LEADERSHIP))
+		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_JTAC))
 
 	var/datum/squad/S = user.assigned_squad
 
@@ -241,7 +241,7 @@
 
 	var/acquisition_time = target_acquisition_delay
 	if(user.skills)
-		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_LEADERSHIP))
+		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_JTAC))
 
 	var/datum/squad/S = user.assigned_squad
 

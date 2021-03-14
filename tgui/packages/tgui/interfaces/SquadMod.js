@@ -1,9 +1,6 @@
-import { Fragment } from 'inferno';
-import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Section, NoticeBox } from '../components';
+import { useBackend } from '../backend';
+import { Box, Button, Stack, Section, NoticeBox } from '../components';
 import { Window } from '../layouts';
-import { map } from 'common/collections';
-import { COLORS } from '../constants';
 
 export const SquadMod = (props, context) => {
   const { act, data } = useBackend(context);
@@ -24,46 +21,55 @@ export const SquadMod = (props, context) => {
   return (
     <Window
       width={400}
-      height={300}
-      resizable>
-      <Window.Content scrollable>
-        <Box>
-          <Button
-            fluid
-            icon="eject"
-            content={id_name}
-            onClick={() => act('PRG_eject')} />
-          {(!has_id) && (
-            <NoticeBox>
-              Insert ID of person, that you want transfer.
-            </NoticeBox>
-          )}
-          {(!human) && (
-            <NoticeBox>
-              Ask or force person, to place hand on my scanner.
-            </NoticeBox>
-          )}
-          {(human) && (
-            <NoticeBox>
-              Selected for sqaud transfer: {human}
-            </NoticeBox>
-          )}
-          {(human && has_id) && (
-            <Section
-              title="Squad Transfer">
-              {squads.map(entry => (
-                <Button
-                  key={entry.name}
-                  fluid
-                  content={entry.name}
-                  color={COLORS_SPECTRUM[entry.color]}
-                  onClick={() => act('PRG_squad', {
-                    name: entry.name,
-                  })} />
-              ))}
-            </Section>
-          )}
-        </Box>
+      height={300}>
+      <Window.Content>
+        <Section>
+          <Stack vertical>
+            <Stack.Item>
+              <Button
+                fluid
+                icon="eject"
+                content={id_name}
+                onClick={() => act('PRG_eject')} />
+            </Stack.Item>
+            {(!has_id) && (
+              <Stack.Item>
+                <NoticeBox>
+                  Insert ID of person, that you want transfer.
+                </NoticeBox>
+              </Stack.Item>
+            )}
+            {(!human) && (
+              <Stack.Item>
+                <NoticeBox>
+                  Ask or force person, to place hand on my scanner.
+                </NoticeBox>
+              </Stack.Item>
+            )}
+            {(!!human) && (
+              <Stack.Item>
+                <NoticeBox>
+                  Selected for sqaud transfer: {human}
+                </NoticeBox>
+              </Stack.Item>
+            )}
+          </Stack>
+        </Section>
+        {!!(human && has_id) && (
+          <Section
+            title="Squad Transfer">
+            {squads.map(entry => (
+              <Button
+                key={entry.name}
+                fluid
+                content={entry.name}
+                color={COLORS_SPECTRUM[entry.color]}
+                onClick={() => act('PRG_squad', {
+                  name: entry.name,
+                })} />
+            ))}
+          </Section>
+        )}
       </Window.Content>
     </Window>
   );

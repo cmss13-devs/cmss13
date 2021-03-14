@@ -225,26 +225,26 @@
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 
 obj/item/storage/pill_bottle/packet
-    name = "\improper pill packet"
-    desc = "Containts pills. Once you take them out they don't go back in."
-    icon_state = "pill_packet"
-    storage_slots = 4
-    max_w_class = 0
-    max_storage_space = 4
-    skilllock = 0
-    storage_flags = STORAGE_FLAGS_BOX
+	name = "\improper pill packet"
+	desc = "Containts pills. Once you take them out they don't go back in."
+	icon_state = "pill_packet"
+	storage_slots = 4
+	max_w_class = 0
+	max_storage_space = 4
+	skilllock = 0
+	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
-    name = "Tricordazine pill packet"
-    icon_state = "tricordrazine_packet"
-    desc = "This packet contains Tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
-    
+	name = "Tricordazine pill packet"
+	icon_state = "tricordrazine_packet"
+	desc = "This packet contains Tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
+	
 /obj/item/storage/pill_bottle/packet/tramadol
-    name = "Tramadol pill packet"
-    icon_state = "tramadol_packet"
-    desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
+	name = "Tramadol pill packet"
+	icon_state = "tramadol_packet"
+	desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
 
 /obj/item/storage/pill_bottle/fill_preset_inventory()
 	if(pill_type_to_fill)

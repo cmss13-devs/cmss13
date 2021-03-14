@@ -104,6 +104,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_BULLET_ACT)
 
 /obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/user, damage)
+	SIGNAL_HANDLER
 	var/damage_to_nullify = armor_health
 	armor_health = max(armor_health - damage*projectile_durability_mult, 0)
 
@@ -114,6 +115,7 @@
 		return COMPONENT_CANCEL_BULLET_ACT
 
 /obj/item/clothing/accessory/health/proc/take_slash_damage(mob/living/user, damage)
+	SIGNAL_HANDLER
 	var/damage_to_nullify = armor_health
 	armor_health = max(armor_health - damage*slash_durability_mult, 0)
 

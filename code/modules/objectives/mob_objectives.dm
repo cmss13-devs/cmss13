@@ -318,6 +318,7 @@
 	corpses -= H
 
 /datum/cm_objective/recover_corpses/marines/proc/handle_marine_deaths(datum/source, mob/living/carbon/human/H, gibbed)
+	SIGNAL_HANDLER
 	if(!istype(H))
 		return TRUE
 	if(!istype(H.assigned_squad) || gibbed)
@@ -357,6 +358,7 @@
 	return "[get_point_value()]pts Recovered"
 
 /datum/cm_objective/recover_corpses/xenos/proc/handle_xeno_deaths(datum/source, mob/living/X, gibbed)
+	SIGNAL_HANDLER
 	if(!istype(X) || gibbed)
 		return TRUE
 	if(isXeno(X) || isYautja(X))

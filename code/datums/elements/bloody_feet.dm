@@ -96,4 +96,5 @@
 	target.AddElement(/datum/element/bloody_feet, dry_time_left, target.shoes, amount, bcolor)
 
 /datum/element/bloody_feet/proc/clear_blood(datum/target)
+	SIGNAL_HANDLER
 	Detach(target)

@@ -1055,6 +1055,7 @@
 		tether_effect = null
 
 /obj/item/hunting_trap/proc/disarm(var/mob/user)
+	SIGNAL_HANDLER
 	armed = FALSE
 	anchored = FALSE
 	icon_state = "yauttrap[armed]"

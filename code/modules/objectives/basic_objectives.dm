@@ -22,6 +22,7 @@
 	return ..()
 
 /datum/cm_objective/retrieve_item/proc/clean_up_ref()
+	SIGNAL_HANDLER
 	target_item = null
 	fail()
 

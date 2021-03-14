@@ -311,6 +311,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	reset_tether()
 
 /obj/item/phone/proc/reset_tether()
+	SIGNAL_HANDLER
 	if (tether_effect)
 		UnregisterSignal(tether_effect, COMSIG_PARENT_QDELETING)
 		if(!QDESTROYING(tether_effect))

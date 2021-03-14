@@ -148,6 +148,7 @@
 	show_to(user)
 
 /obj/item/storage/proc/close(mob/user)
+	SIGNAL_HANDLER
 
 	hide_from(user)
 	user.s_active = null

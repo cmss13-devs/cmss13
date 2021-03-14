@@ -849,6 +849,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 
 /obj/item/clothing/suit/storage/marine/ghillie/proc/deactivate_camouflage(mob/user)
+	SIGNAL_HANDLER
 	var/mob/living/carbon/human/H = user
 	if(!istype(H))
 		return FALSE

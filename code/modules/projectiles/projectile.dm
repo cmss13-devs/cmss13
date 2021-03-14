@@ -983,14 +983,12 @@
 		var/mob/living/picked_mob = pick(mobs_list) //Hit a mob, if there is one.
 		if(istype(picked_mob))
 			picked_mob.bullet_act(P)
-			return TRUE
-	return TRUE
+			return
+	return
 
 // walls can get shot and damaged, but bullets (vs energy guns) do much less.
 /turf/closed/wall/bullet_act(obj/item/projectile/P)
 	. = ..()
-	if(!.)
-		return
 	var/damage = P.damage
 	if(damage < 1)
 		return
@@ -1005,8 +1003,6 @@
 				damage = round(damage * 7)
 			else if(ammo_flags & AMMO_ANTISTRUCT) // Railgun does extra damage to turfs
 				damage = round(damage * ANTISTRUCT_DMG_MULT_WALL)
-		else
-			return FALSE
 	if(ammo_flags & AMMO_BALLISTIC)
 		current_bulletholes++
 	take_damage(damage, P.firer)

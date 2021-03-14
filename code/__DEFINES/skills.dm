@@ -16,6 +16,7 @@
 #define SKILL_POLICE         "police"
 #define SKILL_POWERLOADER    "powerloader"
 #define SKILL_VEHICLE        "vehicles"
+#define SKILL_JTAC           "jtac"
 
 //firearms skill (general knowledge of guns) (hidden skill)
 //increase or decrase accuracy, recoil, and firing delay of rifles and smgs.
@@ -104,6 +105,14 @@
 #define SKILL_LEAD_TRAINED          2 //SL
 #define SKILL_LEAD_EXPERT           3 //SOs
 #define SKILL_LEAD_MASTER           4 //XO, CO
+
+
+//JTAC skill
+#define SKILL_JTAC_NOVICE			0 //Anyone but those following.
+#define SKILL_JTAC_BEGINNER			1 //All non-Standard Marines
+#define SKILL_JTAC_TRAINED			2 //SL
+#define SKILL_JTAC_EXPERT			3 //SOs
+#define SKILL_JTAC_MASTER			4 //XO, CO
 
 
 //melee_weapons skill

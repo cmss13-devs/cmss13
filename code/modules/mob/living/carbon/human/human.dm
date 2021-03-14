@@ -1300,6 +1300,7 @@
 		dat += "Police: [usr.skills.get_skill_level(SKILL_POLICE)]<br/>"
 		dat += "Powerloader: [usr.skills.get_skill_level(SKILL_POWERLOADER)]<br/>"
 		dat += "Vehicles: [usr.skills.get_skill_level(SKILL_VEHICLE)]<br/>"
+		dat += "JTAC: [usr.skills.get_skill_level(SKILL_JTAC)]<br/>"
 
 	show_browser(src, dat, "Skills", "checkskills")
 	return

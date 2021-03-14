@@ -58,7 +58,7 @@ build:tgui:
   dependencies: []
   script:
     - chmod u+x tgui/bin/tgui
-    - tgui/bin/tgui --ci
+    - tgui/bin/tgui
   artifacts:
     name: 'tgui_bundle'
     paths:
@@ -167,7 +167,7 @@ build:runner:
 # Generate DM documentation
 report:dmdoc:
   stage: extra
-  image: 
+  image:
     name: alpine/git
     entrypoint: [""]
   dependencies:
@@ -189,7 +189,7 @@ report:dmdoc:
 
 report:maps:
   stage: extra
-  image: 
+  image:
     name: alpine/git
     entrypoint: [""]
   dependencies: []
@@ -214,7 +214,7 @@ report:maps:
 
 report:maps-renders-full:
   stage: extra
-  image: 
+  image:
     name: alpine/git
     entrypoint: [""]
   dependencies: []
@@ -239,7 +239,7 @@ report:maps-renders-full:
 
 commit:changelog:
   stage: extra
-  image: 
+  image:
     name: alpine/git
     entrypoint: [""]
   interruptible: false

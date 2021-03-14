@@ -3,7 +3,6 @@
 node_modules
 *.log
 package-lock.json
-package.json
 
 ## Yarn stuff
 /.pnp.*
@@ -12,6 +11,7 @@ package.json
 !/.yarn/plugins
 !/.yarn/sdks
 !/.yarn/versions
+!/.yarn/lock.yml
 
 ## Build artifacts
 /public/.tmp/**/*

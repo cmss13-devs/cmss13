@@ -422,6 +422,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 50 MINUTES
 	chem_volume = 20
 
+/obj/item/clothing/mask/cigarette/cigar/classic
+	name = "classic cigar"
+	desc = "This thing is covered with dust and what seems to be toolbox residue. For the old-fashioned."
+	icon_state = "cigar2_off"
+	icon_on = "cigar2_on"
+	icon_off = "cigar2_off"
+	smoketime = 120 MINUTES
+
 /obj/item/clothing/mask/cigarette/cigar/tarbacks
 	name = "\improper Tarback cigar"
 	desc = "Tarbacks by Reisland Tobacco. The Surgeon General has declared that smoking Tarbacks can be hazardous to one’s health. Reisland Tobacco has declared that the Surgeon General is a bitch. Rolled in Columbia."

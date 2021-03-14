@@ -18,12 +18,25 @@
 	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stack_id //used to determine if two stacks are of the same kind.
 	attack_speed = 3	//makes collect stacks off the floor and such less of a pain
+	var/amount_sprites = FALSE //does it have sprites for extra amount, like metal, plasteel, or wood
 
 /obj/item/stack/Initialize(mapload, var/amount = null)
 	. = ..()
 	if(amount)
 		src.amount = amount
+	update_icon()
 
+/obj/item/stack/update_icon()
+	..()
+	if(!amount_sprites)
+		return
+	icon_state = initial(icon_state) //if it has only one sheet, it is the singular sprite
+	if(amount > 1)
+		icon_state = "[initial(icon_state)]-2" //if it's bigger, use the 2 sheets sprite
+	if(amount >= (max_amount * (1/2)))
+		icon_state = "[initial(icon_state)]-3" //if it's equal or more than half of max amount, use 3 sheets
+	if(amount >= max_amount)
+		icon_state = "[initial(icon_state)]-4" //otherwise use max sheet sprite
 
 /obj/item/stack/Destroy()
 	if (usr && usr.interactee == src)
@@ -163,6 +176,7 @@
 			var/obj/item/stack/new_item = O
 			new_item.amount = R.res_amount * multiplier
 		amount -= R.req_amount * multiplier
+		update_icon()
 
 		if(amount <= 0)
 			var/oldsrc = src
@@ -216,6 +230,7 @@
 	if(used > amount) //If it's larger than what we have, no go.
 		return 0
 	amount -= used
+	update_icon()
 	if(amount <= 0)
 		if(usr && loc == usr)
 			usr.temp_drop_inv_item(src)
@@ -224,10 +239,10 @@
 
 /obj/item/stack/proc/add(var/extra)
 	if(amount + extra > max_amount)
-		return 0
-	else
-		amount += extra
-	return 1
+		return FALSE
+	amount += extra
+	update_icon()
+	return TRUE
 
 /obj/item/stack/proc/get_amount()
 	return amount

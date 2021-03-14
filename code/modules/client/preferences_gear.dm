@@ -116,10 +116,16 @@ var/global/list/gear_datums = list()
 	slot = WEAR_EYES
 
 /datum/gear/cigar
-	display_name = "Cigar"
+	display_name = "Premium Cigar"
 	path = /obj/item/clothing/mask/cigarette/cigar
 	slot = WEAR_FACE
 	cost = 2
+
+/datum/gear/classic_cigar
+	display_name = "Classic Cigar"
+	path = /obj/item/clothing/mask/cigarette/cigar/classic
+	slot = WEAR_FACE
+	cost = 3
 
 /datum/gear/cigarette
 	display_name = "Cigarette"

@@ -286,7 +286,10 @@
 /datum/pain/proc/oxyloss_drag(mob/living/source, mob/puller)
 	SIGNAL_HANDLER
 	if(isXeno(puller) && source.stat == UNCONSCIOUS)
-		source.apply_damage(20, OXY)
+		if(source.get_species())
+			var/mob/living/carbon/human/H = source
+			if(H.species.flags & HAS_HARDCRIT)
+				source.apply_damage(20, OXY)
 
 /datum/pain/proc/handle_devour(mob/living/source)
 	SIGNAL_HANDLER

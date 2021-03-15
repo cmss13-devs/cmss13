@@ -17,7 +17,7 @@
 	if (!X.check_state() || X.agility)
 		return
 
-	if(!isHumanStrict(A) && !ismonkey(A) && (!isXeno(A) || X.can_not_harm(A))) // Can't do isXenoOrHuman because it checks for whether it is strictly human
+	if(X.can_not_harm(A) || !ismob(A))
 		apply_cooldown_override(click_miss_cooldown)
 		return
 

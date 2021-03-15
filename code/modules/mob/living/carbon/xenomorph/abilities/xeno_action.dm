@@ -173,8 +173,15 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	// Uh oh! STINKY! already on cooldown
 	if (cooldown_timer_id != TIMER_ID_NULL)
+	/* 
+		Debug log disabled due to our historical inability at doing anything meaningful about it
+		And to make room for ones that matter more in regard to our ability to fix.
+		The whole of ability code is fucked up, the 'SHOULD NEVER BE OVERRIDEN' note above is 
+		completely ignored as about 20 procs override it ALREADY...
+		This is broken beyond repair and should just be reimplemented
 		log_debug("Xeno action [src] tried to go on cooldown while already on cooldown.")
 		log_admin("Xeno action [src] tried to go on cooldown while already on cooldown.")
+		*/
 		return
 
 	// First determine the appopriate cooldown
@@ -220,8 +227,10 @@
 // is called when a cooldown ends prematurely and otherwise.
 /datum/action/xeno_action/proc/on_cooldown_end()
 	if (cooldown_timer_id == TIMER_ID_NULL)
+		/* See notes above in apply_cooldown()
 		log_debug("Xeno action [src] tried to go off cooldown while already off cooldown.")
 		log_admin("Xeno action [src] tried to go off cooldown while already off cooldown.")
+		*/
 		return
 
 	cooldown_timer_id = TIMER_ID_NULL
@@ -234,8 +243,10 @@
 // Immediately force-ends the current cooldown.
 /datum/action/xeno_action/proc/end_cooldown()
 	if (cooldown_timer_id == TIMER_ID_NULL)
+		/* See notes above in apply_cooldown()
 		log_debug("Xeno action [src] tried to force end cooldown while already off cooldown.")
 		log_admin("Xeno action [src] tried to force end cooldown while already off cooldown.")
+		*/
 		return
 
 	deltimer(cooldown_timer_id)
@@ -250,8 +261,10 @@
 // an existing timer by ID. So we just delete it and add a new one if necessary
 /datum/action/xeno_action/proc/reduce_cooldown(amount)
 	if (cooldown_timer_id == TIMER_ID_NULL)
+		/* See notes above in apply_cooldown()
 		log_debug("Xeno action [src] tried to force end cooldown while already off cooldown.")
 		log_admin("Xeno action [src] tried to force end cooldown while already off cooldown.")
+		*/
 		return
 
 	// Unconditionally delete the first timer

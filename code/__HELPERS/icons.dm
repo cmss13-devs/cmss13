@@ -664,14 +664,27 @@ proc/sort_atoms_by_layer(var/list/atoms)
 
 //Costlier version of icon2html() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_icon2html(thing, target, sourceonly = FALSE)
+	SHOULD_NOT_SLEEP(TRUE) // Sanity, for purpose of debugging with REALTIMEOFDAY below only
 	if (!thing)
 		return
 
+	var/start_time = REALTIMEOFDAY
 	if (isicon(thing))
-		return icon2html(thing, target)
+		. = icon2html(thing, target)
+	else
+		var/icon/I = getFlatIcon(thing)
+		. = icon2html(I, target, sourceonly = sourceonly)
 
-	var/icon/I = getFlatIcon(thing)
-	return icon2html(I, target, sourceonly = sourceonly)
+	/* Debugguing due to gamebreaking performance in the Blend calls made by getFlatIcon (think 200ms+ per icon) and overtimes */
+	if(istype(thing, /atom))
+		var/atom/D = thing
+		log_debug("costly_icon2html called on ref=[REF(D)], instance=[D], type=[D.type], with [length(D.overlays)] overlays, finished in [(REALTIMEOFDAY-start_time) / 10]s")
+	else if(isicon(thing))
+		var/icon/D = thing
+		log_debug("costly_icon2html called on icon ref=[REF(D)], instance=[D] finished in [(REALTIMEOFDAY-start_time) / 10]s")
+	else
+		var/datum/D = thing
+		log_debug("costly_icon2html called on unknown ref=[REF(D)], instance=[D], type=[D.type]")
 
 /// Generate a filename for this asset
 /// The same asset will always lead to the same asset name

@@ -231,7 +231,13 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
-
+/obj/item/weapon/melee/twohanded/spear/hunter
+	name = "hunter spear"
+	desc = "A spear of exquisite design, used by an ancient civilisation."
+	icon_state = "spearhunter"
+	item_state = "spearhunter"
+	force = MELEE_FORCE_TIER_3
+	force_wielded = MELEE_FORCE_TIER_7
 
 /obj/item/weapon/melee/twohanded/glaive
 	name = "war glaive"

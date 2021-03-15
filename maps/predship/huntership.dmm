@@ -2006,22 +2006,14 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/melee/twohanded/spear{
-	name = "hunter spear"
-	},
-/obj/item/weapon/melee/twohanded/spear{
-	name = "hunter spear"
-	},
-/obj/item/weapon/melee/twohanded/spear{
-	name = "hunter spear"
-	},
-/obj/item/weapon/melee/twohanded/spear{
-	name = "hunter spear"
-	},
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4;
 	pixel_y = 22
 	},
+/obj/item/weapon/melee/twohanded/spear/hunter,
+/obj/item/weapon/melee/twohanded/spear/hunter,
+/obj/item/weapon/melee/twohanded/spear/hunter,
+/obj/item/weapon/melee/twohanded/spear/hunter,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"

@@ -71,7 +71,6 @@ GLOBAL_LIST_EMPTY(roundstart_leaders)
 
 	var/area/A = RN.controlled_area
 	if(!A)
-		log_debug("[RN] passed as argument for on_node_gained. (Tech Tree: [name])")
 		return
 
 	A.requires_power = FALSE
@@ -92,7 +91,6 @@ GLOBAL_LIST_EMPTY(roundstart_leaders)
 
 	var/area/A = RN.controlled_area
 	if(!A)
-		log_debug("[RN] passed as argument for on_node_gained. (Tech Tree: [name])")
 		return
 
 	A.requires_power = TRUE
@@ -106,7 +104,6 @@ GLOBAL_LIST_EMPTY(roundstart_leaders)
 
 	var/area/A = RN.controlled_area
 	if(!A)
-		log_debug("[RN] passed as argument for on_node_gained. (Tech Tree: [name])")
 		return
 
 	for(var/mob/living/carbon/human/H in A)

@@ -42,9 +42,17 @@
 		WS.round_id = round_id
 		WS.save() // save it
 		return // we are done here
+
+	/* 
+		Debug log disabled due to our historical inability at doing anything meaningful about it
+		And to make room for ones that matter more in regard to our ability to fix.
+		This is stil an issue and occurs regularly on live game... including before people use vendors.
+	
 	if(result_length > 1) // oh shit oh fuck our DB is bad, what the fuck
 		log_debug("DATABASE: vending_stat result_length was larger than 1")
 		return
+	*/
+
 	var/datum/entity/vending_stat/WS = stats[1] // we ensured this is the only item
 	WS.count += bump_by // add the thing
 	WS.save() // say we wanna save it

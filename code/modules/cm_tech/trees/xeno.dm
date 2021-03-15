@@ -60,7 +60,6 @@
 
 	var/area/A = RN.controlled_area
 	if(!A)
-		log_debug("[RN] passed as argument for on_node_gained. (Tech Tree: [name])")
 		return
 
 	for(var/turf/closed/wall/resin/R in A)
@@ -79,7 +78,6 @@
 
 	var/area/A = RN.controlled_area
 	if(!A)
-		log_debug("[RN] passed as argument for on_node_gained. (Tech Tree: [name])")
 		return
 
 	for(var/turf/closed/wall/resin/R in A)
@@ -97,7 +95,6 @@
 
 	var/area/A = RN.controlled_area
 	if(!A)
-		log_debug("[RN] passed as argument for on_process. (Tech Tree: [name])")
 		return
 
 	for(var/mob/living/carbon/Xenomorph/X in A)

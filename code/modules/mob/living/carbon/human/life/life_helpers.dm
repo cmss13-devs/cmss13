@@ -213,8 +213,6 @@
 		if(istype(G,/obj/item/clothing/glasses/night))
 			see_invisible = SEE_INVISIBLE_MINIMUM
 
-
-
 /mob/living/carbon/human/handle_silent()
 	if(..())
 		speech_problem_flag = 1
@@ -233,29 +231,31 @@
 
 /mob/living/carbon/human/handle_dazed()
 	if(dazed)
-		var/skill = 1
-		if(skills)
-			skill += (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.2
-		AdjustDazed(-skill)
+		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
+
+		var/final_reduction = skill_resistance + 1
+		AdjustDazed(-final_reduction)
 	if(dazed)
 		speech_problem_flag = 1
 	return dazed
 
 /mob/living/carbon/human/handle_knocked_down()
-	if(knocked_down && client)
-		var/skill = species.knock_down_reduction
-		if(skills)
-			skill += (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1
-		knocked_down = max(knocked_down - skill, 0)
+	if(knocked_down)
+		var/species_resistance = species.knock_down_reduction
+		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
+
+		var/final_reduction = species_resistance + skill_resistance
+		knocked_down = max(knocked_down - final_reduction, 0)
 		knocked_down_callback_check()
 	return knocked_down
 
 /mob/living/carbon/human/handle_knocked_out()
-	if(knocked_out && client)
-		var/skill = species.knock_out_reduction
-		if(skills)
-			skill += (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1
-		knocked_out = max(knocked_out - skill, 0)
+	if(knocked_out)
+		var/species_resistance = species.knock_out_reduction
+		var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
+
+		var/final_reduction = species_resistance + skill_resistance
+		knocked_out = max(knocked_out - final_reduction, 0)
 		knocked_out_callback_check()
 	return knocked_out
 
@@ -269,37 +269,37 @@
 // This is here because sometimes our stun comes too early and tick is about to start, so we need to compensate
 // this is the best place to do it, tho name might be a bit misleading I guess
 /mob/living/carbon/human/stun_clock_adjustment()
-	var/skill = species.knock_down_reduction
-	if(skills)
-		skill += (skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
+	var/species_resistance = species.knock_down_reduction
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
 
-	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
+	var/final_reduction = species_resistance + skill_resistance
+	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction
 	if(stunned > shift_left)
-		stunned += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
+		stunned += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction - shift_left
 
 /mob/living/carbon/human/knockdown_clock_adjustment()
 	if(!species)
 		return FALSE
 
-	var/skill = species.knock_down_reduction
-	if(skills)
-		skill += (skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
+	var/species_resistance = species.knock_down_reduction
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
 
-	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
+	var/final_reduction = species_resistance + skill_resistance
+	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction
 	if(knocked_down > shift_left)
-		knocked_down += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
+		knocked_down += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction - shift_left
 
 /mob/living/carbon/human/knockout_clock_adjustment()
 	if(!species)
 		return FALSE
 
-	var/skill = species.knock_out_reduction
-	if(skills)
-		skill += (skills.get_skill_level(SKILL_ENDURANCE)-1) * 0.1
+	var/species_resistance = species.knock_out_reduction
+	var/skill_resistance = skills ? (skills.get_skill_level(SKILL_ENDURANCE)-1)*0.1 : 0
 
-	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill
+	var/final_reduction = species_resistance + skill_resistance
+	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction
 	if(knocked_out > shift_left)
-		knocked_out += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * skill - shift_left
+		knocked_out += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction - shift_left
 
 /mob/living/carbon/human/proc/handle_revive()
 	SEND_SIGNAL(src, COMSIG_HUMAN_REVIVED)

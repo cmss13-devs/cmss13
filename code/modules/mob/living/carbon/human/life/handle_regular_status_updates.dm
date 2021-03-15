@@ -48,7 +48,7 @@
 		if(regular_update && ((getOxyLoss() > 50)))
 			KnockOut(3)	
 		
-		if(isHumanStrict(src) && HEALTH_THRESHOLD_CRIT > health)
+		if((src.species.flags & HAS_HARDCRIT) && HEALTH_THRESHOLD_CRIT > health)
 			var/already_in_crit = FALSE
 			for(var/datum/effects/crit/C in effects_list)
 				already_in_crit = TRUE

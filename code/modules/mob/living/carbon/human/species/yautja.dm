@@ -5,7 +5,7 @@
 	burn_mod = 0.65
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
-	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_SCAN|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL
+	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja
@@ -17,7 +17,7 @@
 	death_message = "clicks in agony and falls still, motionless and completely lifeless..."
 	darksight = 5
 	slowdown = -0.5
-
+	total_health = 150 //more health than regular humans, makes up for hardcrit reintroduction
 	timed_hug = FALSE
 
 	heat_level_1 = 500
@@ -31,8 +31,8 @@
 		/mob/living/carbon/human/proc/remove_from_hunt
 		)
 
-	knock_down_reduction = 2
-	stun_reduction = 2
+	knock_down_reduction = 4
+	stun_reduction = 4
 
 		//Set their special slot priority
 

@@ -188,10 +188,12 @@ SUBSYSTEM_DEF(objectives)
 		N.activate()
 
 /datum/controller/subsystem/objectives/proc/pre_round_start()
+	SIGNAL_HANDLER
 	for(var/datum/cm_objective/O in objectives)
 		O.pre_round_start()
 
 /datum/controller/subsystem/objectives/proc/post_round_start()
+	SIGNAL_HANDLER
 	for(var/datum/cm_objective/O in objectives)
 		O.post_round_start()
 

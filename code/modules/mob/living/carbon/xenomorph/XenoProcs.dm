@@ -615,6 +615,7 @@
 		LAZYREMOVE(tackle_counter, M)
 
 /mob/living/carbon/Xenomorph/proc/tackle_handle_lying_changed(mob/M)
+	SIGNAL_HANDLER
 	// Infected mobs do not have their tackle counter reset if
 	// they get knocked down or get up from a knockdown
 	if(M.status_flags & XENO_HOST)

@@ -139,6 +139,7 @@ GLOBAL_LIST_EMPTY(roundstart_leaders)
 	remove_leader()
 
 /datum/techtree/marine/proc/cleanup_dead_leader(var/mob/living/carbon/human/H)
+	SIGNAL_HANDLER
 	if(dead_leader == H)
 		dead_leader = null
 

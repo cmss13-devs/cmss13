@@ -58,6 +58,7 @@
 	return iff_group
 
 /datum/element/bullet_trait_iff/proc/reset_iff_group_cache(mob/living/carbon/human/user)
+	SIGNAL_HANDLER
 	if(!user)
 		iff_group_cache = null
 	else

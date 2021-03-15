@@ -334,9 +334,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central1)
 "abw" = (
-/obj/structure/mineral_door/resin,
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
+/obj/effect/landmark/structure_spawner/xenos/door,
+/turf/closed/wall/resin/membrane/ondirt,
 /area/lv624/ground/caves/central1)
 "aby" = (
 /obj/effect/landmark/xeno_hive_spawn,
@@ -12566,6 +12565,7 @@
 "aPC" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/grown/banana,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor{
 	icon_state = "bar"
 	},
@@ -15184,6 +15184,8 @@
 "aXZ" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/tool,
+/obj/item/clothing/glasses/welding,
+/obj/item/clothing/glasses/welding,
 /turf/open/floor{
 	icon_state = "dark"
 	},
@@ -15527,12 +15529,14 @@
 "aZg" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/light/small,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
 /area/lv624/lazarus/captain)
 "aZh" = (
 /obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "brown"
@@ -17683,6 +17687,12 @@
 	icon_state = "bar"
 	},
 /area/lv624/lazarus/canteen)
+"oFK" = (
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/plating{
+	icon_state = "warnplate"
+	},
+/area/lv624/lazarus/garage)
 "oHx" = (
 /obj/structure/flora/bush/ausbushes/pointybush,
 /turf/open/gm/grass,
@@ -30351,7 +30361,7 @@ hOZ
 pCO
 mCo
 pCO
-mCo
+oFK
 pCO
 mCo
 pCO
@@ -37060,7 +37070,7 @@ abl
 abl
 abl
 abl
-abp
+abw
 abA
 abA
 abA
@@ -39574,7 +39584,7 @@ abl
 abl
 abl
 abl
-tdX
+qVG
 abl
 abl
 abl
@@ -39800,9 +39810,9 @@ abm
 abm
 abm
 tdX
-abl
-abl
-abl
+tdX
+qVG
+qVG
 abl
 abl
 abl
@@ -40032,7 +40042,7 @@ abl
 abl
 abl
 abl
-abm
+abl
 abm
 abm
 abm
@@ -40261,7 +40271,7 @@ abl
 abl
 abl
 abl
-abm
+abl
 abm
 abm
 abm
@@ -40489,7 +40499,7 @@ abl
 abl
 abv
 abl
-abm
+abl
 abm
 abm
 abm
@@ -40946,7 +40956,7 @@ abl
 abl
 abl
 abl
-abm
+abl
 abm
 abm
 abm
@@ -41174,7 +41184,7 @@ abl
 abl
 abl
 abl
-abm
+abl
 abm
 abm
 abm
@@ -41403,7 +41413,7 @@ abl
 abl
 abl
 abl
-abm
+abl
 abm
 abm
 abm
@@ -41624,11 +41634,11 @@ abm
 abm
 abm
 abm
+abm
+abm
+abm
+abm
 abl
-abl
-abm
-abm
-abm
 abl
 abl
 abv
@@ -41853,11 +41863,11 @@ abm
 abm
 abl
 abl
+abm
+abm
+abm
 abl
 abl
-abm
-abm
-abm
 abl
 abl
 abl
@@ -42082,10 +42092,10 @@ abl
 abl
 abl
 abl
+abm
+abm
+abm
 abl
-abm
-abm
-abm
 abl
 abl
 abl
@@ -42317,7 +42327,7 @@ abl
 abl
 abl
 abl
-abm
+abl
 abm
 abm
 abm
@@ -42545,7 +42555,7 @@ abl
 abl
 abl
 abl
-abm
+abl
 abm
 abm
 abm
@@ -42767,12 +42777,12 @@ abl
 abl
 abl
 abl
-abr
+tdX
 abl
-abm
-abm
-abm
-abm
+abl
+abl
+abl
+abl
 abl
 ydz
 abl
@@ -42995,7 +43005,7 @@ abl
 abl
 abl
 abl
-abw
+any
 abl
 abl
 abl
@@ -43223,7 +43233,7 @@ abm
 abl
 abl
 abl
-abr
+tdX
 abl
 abl
 abl
@@ -43451,7 +43461,7 @@ abm
 abl
 abl
 abl
-abr
+tdX
 abl
 abl
 abl

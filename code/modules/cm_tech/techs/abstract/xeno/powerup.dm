@@ -13,15 +13,6 @@
 
 	var/xenos_required = TRUE
 
-/datum/tech/xeno/powerup/check_tier_level(var/mob/M)
-	. = ..()
-	if(!.)
-		return FALSE
-	if(holder.tier.tier != tier.tier)
-		to_chat(M, SPAN_WARNING("You can only buy powerup techs for the current tier level!"))
-		return FALSE
-	return TRUE
-
 /datum/tech/xeno/powerup/can_unlock(mob/M)
 	. = ..()
 	if(next_purchase > world.time)

@@ -6,6 +6,10 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad RT Operator"
 
+/datum/job/marine/rto/generate_entry_conditions(mob/living/carbon/human/H)
+	. = ..()
+	H.important_radio_channels += JTAC_FREQ
+
 AddTimelock(/datum/job/marine/rto, list(
 	JOB_SQUAD_ROLES = 8 HOURS
 ))

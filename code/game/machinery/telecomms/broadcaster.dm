@@ -201,7 +201,7 @@
 			// - Just display a garbled message -
 			else
 				heard_garbled += R
-		
+
 
 
 	/* ###### Begin formatting and sending the message ###### */
@@ -263,6 +263,9 @@
 		// If all else fails and it's a dept_freq, color me purple!
 		else if (display_freq in DEPT_FREQS)
 			part_a = "<span class='deptradio'><span class='name'>"
+
+		if(display_freq in M.important_radio_channels)
+			command = 3
 
 		// --- Filter the message; place it in quotes apply a verb ---
 

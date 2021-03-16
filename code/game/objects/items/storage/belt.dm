@@ -990,3 +990,9 @@
 /obj/item/storage/belt/souto/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/reagent_container/food/drinks/cans/souto/classic(src)
+
+/obj/item/storage/belt/souto/update_icon()
+	var/mob/living/carbon/human/user = loc
+	item_state = "souto_man[length(contents)]"
+	if(istype(user))
+		user.update_inv_belt() //Makes sure the onmob updates.

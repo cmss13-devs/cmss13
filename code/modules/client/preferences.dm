@@ -143,10 +143,13 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/lang_chat_disabled = FALSE
 
-	var/swap_hand_default = "Ctrl+X"
-	var/swap_hand_hotkeymode = "X"
 	var/key_buf // A buffer for setting macro keybinds
 	var/list/key_mod_buf // A buffer for macro modifiers
+
+	var/hotkeys = TRUE
+	var/list/key_bindings = list()
+
+	var/datum/tgui_macro/macros
 
 	var/tgui_fancy = TRUE
 	var/tgui_lock = FALSE
@@ -154,6 +157,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/hear_vox = TRUE
 
 /datum/preferences/New(client/C)
+	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
+	macros = new(C, src)
 	if(istype(C))
 		owner = C
 		if(!IsGuestKey(C.key))
@@ -166,6 +171,10 @@ var/const/MAX_SAVE_SLOTS = 10
 	gender = pick(MALE, FEMALE)
 	real_name = random_name(gender)
 	gear = list()
+
+/datum/preferences/proc/client_reconnected(var/client/C)
+	owner = C
+	macros.owner = C
 
 /datum/preferences/Del()
 	. = ..()
@@ -364,8 +373,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles_chat & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</b></a><br>"
 	dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles_chat & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearest Speakers"]</b></a><br>"
 	dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
-	dat += "<b>Swap Hand Macro (default mode):</b> <a href='?_src_=prefs;preference=swap_hand_default'><b>[swap_hand_default]</b></a><br>"
-	dat += "<b>Swap Hand Macro (hotkey mode):</b> <a href='?_src_=prefs;preference=swap_hand_hotkeymode'><b>[swap_hand_hotkeymode]</b></a><br>"
+	dat += "<b>Macros</b> <a href='?_src_=prefs;preference=viewmacros'><b>View Macros</b></a><br>"
+	dat += "<b>Hotkey mode:</b> <a href='?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 	dat += "<b>Toggle Being Able to Hurt Yourself: \
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "On" : "Off"]</b></a><br>"
 	dat += "<b>Toggle Help Intent Safety: \
@@ -622,8 +631,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	return TRUE
 
 /datum/preferences/proc/process_link(mob/user, list/href_list)
-	if(!istype(user, /mob/new_player) && !istype(user, /mob/dead/observer)) return
-
 	var/whitelist_flags = RoleAuthority.roles_whitelist[user.ckey]
 
 	switch(href_list["preference"])
@@ -751,6 +758,13 @@ var/const/MAX_SAVE_SLOTS = 10
 
 						gen_record = genmsg
 						SetRecords(user)
+
+		if("hotkeys")
+			hotkeys = !hotkeys
+			if(hotkeys)
+				winset(user, null, "input.focus=true")
+			else
+				winset(user, null, "input.focus=true")
 
 		if("traits")
 			switch(href_list["task"])
@@ -1284,23 +1298,8 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("ghost_hivemind")
 					toggles_chat ^= CHAT_GHOSTHIVEMIND
 
-				if("swap_hand_default")
-					owner.runtime_macro_remove(swap_hand_default, "default")
-
-					swap_hand_default = read_key()
-					if (!swap_hand_default)
-						swap_hand_default = "CTRL+X"
-
-					owner.runtime_macro_insert(swap_hand_default, "default", ".SwapMobHand")
-
-				if("swap_hand_hotkeymode")
-					owner.runtime_macro_remove(swap_hand_hotkeymode, "hotkeymode")
-
-					swap_hand_hotkeymode = read_key()
-					if (!swap_hand_hotkeymode)
-						swap_hand_hotkeymode = "X"
-
-					owner.runtime_macro_insert(swap_hand_hotkeymode, "hotkeymode", ".SwapMobHand")
+				if("viewmacros")
+					macros.tgui_interact(usr)
 
 				if("toggle_prefs")
 					var/flag = text2num(href_list["flag"])

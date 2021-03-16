@@ -791,13 +791,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		can_reenter_corpse = FALSE
 		GLOB.data_core.manifest_modify(name, null, null, "*Deceased*")
 
-/mob/dead/observer/verb/edit_characters()
-	set category = "Ghost"
-	set name = "Edit Characters"
-	set desc = "Edit your characters in your preferences."
-
-	client.prefs.ShowChoices(src)
-
 /mob/dead/observer/verb/view_stats()
 	set category = "Ghost.View"
 	set name = "View Playtimes"

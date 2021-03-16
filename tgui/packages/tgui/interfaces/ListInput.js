@@ -9,8 +9,13 @@ import { clamp01 } from 'common/math';
 import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Section, Input, Stack } from '../components';
 import { Window } from '../layouts';
+import { globalEvents } from '../events.js';
 
 let lastScrollTime = 0;
+
+const prohibitPassthrough = key => {
+  key.event.preventDefault();
+};
 
 export const ListInput = (props, context) => {
   const { act, data } = useBackend(context);
@@ -135,6 +140,15 @@ export const ListInput = (props, context) => {
                   color="transparent"
                   id={button}
                   selected={selectedButton === button}
+                  onFocus={() => {
+                    globalEvents.on('keydown', prohibitPassthrough);
+                  }}
+                  onBlur={() => {
+                    globalEvents.off('keydown', prohibitPassthrough);
+                  }}
+                  onComponentWillUnmount={() => {
+                    globalEvents.off('keydown', prohibitPassthrough);
+                  }}
                   onClick={() => {
                     if (selectedButton === button) {
                       act("choose", { choice: button });

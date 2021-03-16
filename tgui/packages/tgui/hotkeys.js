@@ -65,7 +65,6 @@ const keyCodeToByond = keyCode => {
  */
 const handlePassthrough = key => {
   // In addition to F5, support reloading with Ctrl+R and Ctrl+F5
-  /*
   if (key.ctrl && (key.code === KEY_F5 || key.code === KEY_R)) {
     location.reload();
     return;
@@ -103,7 +102,7 @@ const handlePassthrough = key => {
     const command = `KeyUp "${byondKeyCode}"`;
     logger.debug(command);
     return Byond.command(command);
-  } */
+  }
 };
 
 /**
@@ -111,32 +110,32 @@ const handlePassthrough = key => {
  * passed through to BYOND.
  */
 export const acquireHotKey = keyCode => {
-  // hotKeysAcquired.push(keyCode);
+  hotKeysAcquired.push(keyCode);
 };
 
 /**
  * Makes the hotkey available to BYOND again.
  */
 export const releaseHotKey = keyCode => {
-  /* const index = hotKeysAcquired.indexOf(keyCode);
+  const index = hotKeysAcquired.indexOf(keyCode);
   if (index >= 0) {
     hotKeysAcquired.splice(index, 1);
-  } */
+  }
 };
 
 export const releaseHeldKeys = () => {
-  /* for (let byondKeyCode of Object.keys(keyState)) {
+  for (let byondKeyCode of Object.keys(keyState)) {
     if (keyState[byondKeyCode]) {
       keyState[byondKeyCode] = false;
       logger.log(`releasing key "${byondKeyCode}"`);
       Byond.command(`KeyUp "${byondKeyCode}"`);
     }
-  } */
+  }
 };
 
 export const setupHotKeys = () => {
   // Read macros
-  /* Byond.winget('default.*').then(data => {
+  Byond.winget('default.*').then(data => {
     // Group each macro by ref
     const groupedByRef = {};
     for (let key of Object.keys(data)) {
@@ -157,6 +156,9 @@ export const setupHotKeys = () => {
       .replace(escapedQuotRegex, '"');
     for (let ref of Object.keys(groupedByRef)) {
       const macro = groupedByRef[ref];
+      if (!macro.name || !macro.command) continue;
+
+
       const byondKeyName = unescape(macro.name);
       byondMacros[byondKeyName] = unescape(macro.command);
     }
@@ -168,5 +170,5 @@ export const setupHotKeys = () => {
   });
   globalEvents.on('key', key => {
     handlePassthrough(key);
-  }); */
+  });
 };

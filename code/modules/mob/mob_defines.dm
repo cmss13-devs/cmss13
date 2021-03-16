@@ -203,6 +203,8 @@
 
 	var/datum/player_panel/mob_panel
 
+	var/datum/focus
+
 	///the current turf being examined in the stat panel
 	var/turf/listed_turf = null
 

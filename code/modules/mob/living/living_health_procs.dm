@@ -196,3 +196,10 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		H.update_body()
+
+/mob/living/keybind_face_direction(direction)
+	if(!canface())
+		return
+	if(stat >= UNCONSCIOUS)
+		return
+	return ..()

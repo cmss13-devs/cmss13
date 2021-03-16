@@ -63,6 +63,9 @@
 /client/proc/togglebuildmodeself()
 	set name = "Buildmode"
 	set category = "Admin.Events"
+	if(!check_rights(R_ADMIN))
+		return
+
 	if(src.mob)
 		togglebuildmode(src.mob)
 

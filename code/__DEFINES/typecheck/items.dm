@@ -7,6 +7,7 @@
 #define iscrowbar(O) (istype(O, /obj/item/tool/crowbar))
 #define iswire(O) (istype(O, /obj/item/stack/cable_coil))
 #define isweapon(O)		(O && is_type_in_list(O, weapons))
+#define isgun(O)		(istype(O, /obj/item/weapon/gun))
 #define istool(O)		(O && is_type_in_list(O, common_tools))
 #define ispowerclamp(O) (istype(O, /obj/item/powerloader_clamp))
 #define isstorage(O) 	(istype(O, /obj/item/storage))

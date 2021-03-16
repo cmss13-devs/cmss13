@@ -52,6 +52,8 @@
 		current_area.Entered(src)
 	if(!isnull(current_area) && current_area.statistic_exempt)
 		statistic_exempt = TRUE
+
+	set_focus(src)
 	prepare_huds()
 
 	create_player_panel()

@@ -203,9 +203,3 @@
 	set hidden = 1
 	var/action_name = "Order Construction (400)"
 	handle_xeno_macro(src, action_name)
-
-/datum/action/xeno_action/verb/verb_xeno_resting()
-	set category = "IC" // To make it like the human Rest verb
-	set name = "Rest"
-	var/action_name = "Rest"
-	handle_xeno_macro(src, action_name)

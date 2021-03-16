@@ -62,27 +62,24 @@
 	..()
 	return
 
+/mob/living/carbon/Xenomorph/lay_down()
+	if(hardcore)
+		to_chat(src, SPAN_WARNING("No time to rest, must KILL!"))
+		return
+
+	if(fortify)
+		to_chat(src, SPAN_WARNING("You cannot rest while fortified!"))
+		return
+
+	if(burrow)
+		to_chat(src, SPAN_WARNING("You cannot rest while burrowed!"))
+		return
+
+	return ..()
+
 /datum/action/xeno_action/onclick/xeno_resting/use_ability(atom/A)
-
 	var/mob/living/carbon/Xenomorph/X = owner
-
-	if(X.hardcore)
-		to_chat(X, SPAN_WARNING("No time to rest, must KILL!"))
-		return
-
-	if(isXenoDefender(X) && X.fortify)
-		to_chat(X, SPAN_WARNING("You cannot rest while fortified!"))
-		return
-
-	if(isXenoBurrower(X) && X.burrow)
-		to_chat(X, SPAN_WARNING("You cannot rest while burrowed!"))
-		return
-
-	if(!X.resting)
-		X.KnockDown(1, TRUE) //so that the mob immediately falls over
-
-	X.resting = !X.resting
-	to_chat(X, SPAN_NOTICE(" You are now [X.resting ? "resting" : "getting up"]. "))
+	X.lay_down()
 
 // Shift spits
 /datum/action/xeno_action/onclick/shift_spits/use_ability(atom/A)

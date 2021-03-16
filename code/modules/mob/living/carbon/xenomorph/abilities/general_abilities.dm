@@ -21,22 +21,7 @@
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"
 	action_icon_state = "resting"
-	macro_path = /datum/action/xeno_action/verb/verb_xeno_resting
 	action_type = XENO_ACTION_CLICK
-
-//resting action can be done even when lying down
-/datum/action/xeno_action/onclick/xeno_resting/can_use_action()
-	var/mob/living/carbon/Xenomorph/X = owner
-
-	if (!X || X.buckled || X.fortify || X.crest_defense)
-		return
-
-	if (istype(X, /mob/living/carbon/Xenomorph/Burrower))
-		var/mob/living/carbon/Xenomorph/Burrower/B = X
-		if (B.burrow)
-			return
-
-	return 1
 
 // Shift Spits
 /datum/action/xeno_action/onclick/shift_spits

@@ -131,53 +131,7 @@ Admin:
 	if(admin_holder)
 		to_chat(src, admin)
 
-///Max length of a keypress command before it's considered to be a forged packet/bogus command
-#define MAX_KEYPRESS_COMMANDLENGTH 16
-///Max amount of keypress messages per second over two seconds before client is autokicked
-#define MAX_KEYPRESS_AUTOKICK 50
-///Length of held key rolling buffer
-#define HELD_KEY_BUFFER_LENGTH 15
-
 /client/var/client_keysend_amount = 0
 /client/var/next_keysend_reset = 0
 /client/var/next_keysend_trip_reset = 0
 /client/var/keysend_tripped = FALSE
-
-// Clients aren't datums so we have to define these procs indpendently.
-// These verbs are called for all key press and release events
-/client/verb/keyDown(_key as text)
-	set instant = TRUE
-	set hidden = TRUE
-
-	client_keysend_amount += 1
-
-	var/cache = client_keysend_amount
-
-	if(keysend_tripped && next_keysend_trip_reset <= world.time)
-		keysend_tripped = FALSE
-
-	if(next_keysend_reset <= world.time)
-		client_keysend_amount = 0
-		next_keysend_reset = world.time + (1 SECONDS)
-
-	//The "tripped" system is to confirm that flooding is still happening after one spike
-	//not entirely sure how byond commands interact in relation to lag
-	//don't want to kick people if a lag spike results in a huge flood of commands being sent
-	if(cache >= MAX_KEYPRESS_AUTOKICK)
-		if(!keysend_tripped)
-			keysend_tripped = TRUE
-			next_keysend_trip_reset = world.time + (2 SECONDS)
-		else
-			message_staff("Client [ckey] was just autokicked for flooding keysends; likely abuse but potentially lagspike.")
-			QDEL_IN(src, 1)
-			return
-
-	///Check if the key is short enough to even be a real key
-	if(LAZYLEN(_key) > MAX_KEYPRESS_COMMANDLENGTH)
-		message_staff("Client [ckey] just attempted to send an invalid keypress. Keymessage was over [MAX_KEYPRESS_COMMANDLENGTH] characters, autokicking due to likely abuse.")
-		QDEL_IN(src, 1)
-		return
-
-/client/verb/keyUp(_key as text)
-	set instant = TRUE
-	set hidden = TRUE

@@ -309,7 +309,7 @@
 
 	hud_set_order()
 
-/mob/living/carbon/human/verb/lay_down()
+/mob/living/verb/lay_down()
 	set name = "Rest"
 	set category = "IC"
 

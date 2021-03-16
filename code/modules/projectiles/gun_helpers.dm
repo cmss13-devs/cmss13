@@ -868,6 +868,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		src.flags_gun_features ^= GUN_AUTO_EJECTOR
 		to_chat(usr, SPAN_INFO("You toggle the auto ejector [src.flags_gun_features & GUN_AUTO_EJECTOR ? "on" : "off"]"))
 
+
 /obj/item/weapon/gun/verb/toggle_underbarrel_attachment_verb()
 	set category = "Weapons"
 	set name = "Toggle Underbarrel Attachment"

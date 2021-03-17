@@ -86,6 +86,7 @@ SUBSYSTEM_DEF(statpanels)
 							if(!(REF(turf_content) in cached_images))
 								cached_images += REF(turf_content)
 								turf_content.RegisterSignal(turf_content, COMSIG_PARENT_QDELETING, /atom/.proc/remove_from_cache_qdeleting) // we reset cache if anything in it gets deleted
+								/* Uncomment below to re-enable generation of icons with overlays. THIS IS VERY PERFORMANCE INTENSIVE.
 								if(ismob(turf_content) || length(turf_content.overlays) > 2)
 									if(ishuman(turf_content))
 										turf_content.RegisterSignal(turf_content, list(
@@ -95,6 +96,8 @@ SUBSYSTEM_DEF(statpanels)
 									turfitems[++turfitems.len] = list("[turf_content.name]", REF(turf_content), costly_icon2html(turf_content, target, sourceonly = TRUE))
 								else
 									turfitems[++turfitems.len] = list("[turf_content.name]", REF(turf_content), icon2html(turf_content, target, sourceonly=TRUE))
+								*/
+								turfitems[++turfitems.len] = list("[turf_content.name]", REF(turf_content), icon2html(turf_content, target, sourceonly=TRUE))
 							else
 								turfitems[++turfitems.len] = list("[turf_content.name]", REF(turf_content))
 						else

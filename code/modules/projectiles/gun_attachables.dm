@@ -135,10 +135,14 @@ Defined in conflicts.dm of the #defines folder.
 		G.fire_sound = "gun_silenced"
 
 	if(attachment_action_type)
+		var/given_action = FALSE
 		if(isliving(G.loc))
 			var/mob/living/L = G.loc
 			if(G == L.l_hand || G == L.r_hand)
 				give_action(L, attachment_action_type, src, G)
+				given_action = TRUE
+		if(!given_action)
+			new attachment_action_type(src, G)
 
 	// Sharp attachments (bayonet) make weapons sharp as well.
 	if(sharp)

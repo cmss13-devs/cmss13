@@ -314,6 +314,16 @@
 /// From base of /datum/action/proc/unhide_from(): (mob/owner)
 #define COMSIG_ACTION_UNHIDDEN "action_unhidden"
 
+
+/// From /obj/structure/proc/do_climb(var/mob/living/user, mods)
+#define COMSIG_LIVING_CLIMB_STRUCTURE "climb_over_structure"
+/// From /mob/living/carbon/human/MouseDrop_T(atom/dropping, mob/user)
+//this is a jank way to use signals, but you would need to rework the entire proc otherwise
+#define COMSIG_HUMAN_CARRY "fireman_carry"
+	#define COMPONENT_CARRY_ALLOW (1<<0)
+/// From /obj/item/grab/attack_self(mob/user)
+#define COMSIG_MOB_GRAB_UPGRADE "grab_upgrade"
+
 /// From /datum/action/xeno_action/proc/use_ability_wrapper(): (mob/owner)
 #define COMSIG_XENO_ACTION_USED "xeno_action_used"
 

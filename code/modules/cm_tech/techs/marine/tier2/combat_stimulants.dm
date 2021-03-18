@@ -91,18 +91,25 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	flags = REAGENT_SCANNABLE | REAGENT_TYPE_STIMULANT
+	var/speed = 2
+	var/jitter = 2
 
-/datum/reagent/stimulant/on_mob_life(mob/living/M, alien)
+/datum/reagent/stimulant/on_mob_life(mob/living/M, alien, delta_time)
 	. = ..()
 	// Stimulants drain faster for each stimulant in the drug.
 	// Having 2 stimulants means the duration will be 2x shorter, having 3 will be 3x shorter, etc
-	for(var/i in holder.reagent_list)
-		if(i == src)
-			continue
+	if(holder)
+		for(var/i in holder.reagent_list)
+			if(i == src)
+				continue
 
-		var/datum/reagent/R = i
-		if(R.flags & REAGENT_TYPE_STIMULANT)
-			holder.remove_reagent(R, custom_metabolism)
+			var/datum/reagent/R = i
+			if(R.flags & REAGENT_TYPE_STIMULANT)
+				holder.remove_reagent(R, custom_metabolism)
+
+	for(var/i in 1 to round(speed*delta_time))
+		animate(M, pixel_x = rand(-jitter, jitter), pixel_y = rand(-jitter, jitter), time = delta_time/speed)
+		animate(M, pixel_x = 0, pixel_y = 0, time = (delta_time/speed) * 0.5) //to reset
 
 /datum/reagent/stimulant/speed_stimulant
 	name = "Speed Stimulant"

@@ -117,15 +117,14 @@
 	if(!can_climb(user))
 		return
 
-	var/list/climbdata = list("climb_delay" = .)
+	var/list/climbdata = list("climb_delay" = climb_delay)
 	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)
-	climb_delay = climbdata["climb_delay"]
+	var/final_climb_delay = climbdata["climb_delay"] //so it doesn't set structure's climb_delay to permanently be modified
 
-	var/climb_over_string = climb_delay < 1 SECONDS ? "vaulting over" : "climbing onto"
-
+	var/climb_over_string = final_climb_delay < 1 SECONDS ? "vaulting over" : "climbing onto"
 	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
 
-	if(!do_after(user, climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
 
 	if(!can_climb(user))
@@ -137,8 +136,9 @@
 		if(user.loc == TT)
 			TT = get_turf(src)
 
-	var/climb_string = climb_delay < 1 SECONDS ? "[user] vaults over \the [src]!" : "[user] climbs onto \the [src]!"
+	var/climb_string = final_climb_delay < 1 SECONDS ? "[user] vaults over \the [src]!" : "[user] climbs onto \the [src]!"
 	user.visible_message(SPAN_WARNING(climb_string))
+
 	user.forceMove(TT)
 
 /obj/structure/proc/structure_shaken()

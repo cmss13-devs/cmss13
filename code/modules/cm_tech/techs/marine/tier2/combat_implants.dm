@@ -189,7 +189,7 @@
 
 /obj/item/device/internal_implant/agility
 	var/move_delay_mult  = 0.94
-	var/climb_delay_mult = 0.25
+	var/climb_delay_mult = 0.20
 	var/carry_delay_mult = 0.25
 	var/grab_delay_mult  = 0.30
 

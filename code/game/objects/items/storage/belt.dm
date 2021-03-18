@@ -331,7 +331,7 @@
 /obj/item/storage/belt/marine/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_into(M,user)
+		dump_ammo_to(M,user, M.transfer_handful_amount)
 	else
 		return ..()
 
@@ -409,7 +409,7 @@
 /obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_into(M,user)
+		dump_ammo_to(M, user, M.transfer_handful_amount)
 	else
 		return ..()
 

@@ -98,9 +98,9 @@
 /obj/item/storage/box/shotgun/buckshot
 	name = "incendiary buckshot kit"
 	can_hold = list(
-		/obj/item/ammo_magazine/handful/shotgun/custom/incendiary
+		/obj/item/ammo_magazine/handful/shotgun/custom_color/incendiary
 	)
-	to_hold = /obj/item/ammo_magazine/handful/shotgun/custom/incendiary
+	to_hold = /obj/item/ammo_magazine/handful/shotgun/custom_color/incendiary
 
 /obj/item/storage/box/shotgun/slug
 	name = "incendiary slug kit"

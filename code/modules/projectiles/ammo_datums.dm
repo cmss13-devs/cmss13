@@ -42,6 +42,8 @@
 
 	var/handful_type 		= /obj/item/ammo_magazine/handful
 	var/handful_color
+	var/handful_state = "bullet" //custom handful sprite, for shotgun shells or etc.
+	var/multiple_handful_name //so handfuls say 'buckshot shells' not 'shell'
 
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile with the current ammo datum
@@ -848,6 +850,7 @@
 
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
+	handful_state = "slug_shell"
 	impact_name = "slug"
 	impact_limbs = BODY_FLAG_HEAD
 
@@ -862,6 +865,7 @@
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
+	handful_state = "beanbag_slug"
 	icon_state = "beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	sound_override = 'sound/weapons/gun_shotgun_small.ogg'
@@ -882,6 +886,7 @@
 
 /datum/ammo/bullet/shotgun/incendiary
 	name = "incendiary slug"
+	handful_state = "incendiary_slug"
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC
 
@@ -908,8 +913,9 @@
 
 
 /datum/ammo/bullet/shotgun/flechette
-	name = "shotgun flechette shell"
+	name = "flechette shell"
 	icon_state = "flechette"
+	handful_state = "flechette_shell"
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/flechette_spread
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -920,6 +926,7 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_7
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	multiple_handful_name = TRUE
 
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
@@ -935,8 +942,10 @@
 	scatter = SCATTER_AMOUNT_TIER_5
 
 /datum/ammo/bullet/shotgun/buckshot
-	name = "shotgun buckshot shell"
+	name = "buckshot shell"
 	icon_state = "buckshot"
+	handful_state = "buckshot_shell"
+	multiple_handful_name = TRUE
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/spread
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_5
@@ -955,7 +964,7 @@
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary
 	name = "incendiary buckshot shell"
-	handful_type = /obj/item/ammo_magazine/handful/shotgun/custom/incendiary
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/custom_color/incendiary
 	handful_color = "#ffa800"
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary/set_bullet_traits()

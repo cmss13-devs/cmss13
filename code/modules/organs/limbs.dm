@@ -909,7 +909,7 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
 			SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
 			SPAN_HIGHDANGER("You hear a sickening crack!"))
-		playsound(owner,"bone_break", 45, 1)
+		playsound(owner, "bone_break", 45, TRUE)
 		start_processing()
 
 		status |= LIMB_BROKEN

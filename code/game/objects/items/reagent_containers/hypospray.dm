@@ -18,7 +18,7 @@
 	var/magfed = TRUE
 	var/obj/item/reagent_container/glass/beaker/vial/mag
 	var/injectSFX = 'sound/items/hypospray.ogg'
-	var/injectVOL = 60//was 50
+	var/injectVOL = 60 //was 50
 	var/starting_vial = /obj/item/reagent_container/glass/beaker/vial
 
 //Transfer amount switch//

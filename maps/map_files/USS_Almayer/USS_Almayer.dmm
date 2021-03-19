@@ -61624,8 +61624,8 @@
 	},
 /obj/item/trash/ucigbutt{
 	desc = "A handful of rounds to reload on the go.";
-	icon = 'icons/obj/items/weapons/guns/ammo.dmi';
-	icon_state = "bullet";
+	icon = 'icons/obj/items/weapons/guns/handful.dmi';
+	icon_state = "bullet_2";
 	name = "handful of pistol bullets (9mm)";
 	pixel_x = -8;
 	pixel_y = 30

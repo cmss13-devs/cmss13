@@ -146,7 +146,7 @@
 	can_hold = list(
 		/obj/item/device/flashlight,
 		/obj/item/tool/crowbar,
-		/obj/item/reagent_container/pill,
+		/obj/item/storage/pill_bottle/packet,
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/sheet/metal
 	)

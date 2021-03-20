@@ -349,38 +349,6 @@
 	new /mob/hologram/queen(owner.loc, owner)
 	qdel(src)
 
-/datum/action/xeno_action/activable/secrete_resin/ovipositor/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X)
-		return FALSE
-
-	// Account for the do_after in the resin building proc when checking cooldown
-	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.resin_build_order[X.selected_resin]]
-	var/total_build_time = RC.build_time*X.caste.build_time_mult
-	return (world.time >= last_use + (total_build_time + cooldown))
-
-/datum/action/xeno_action/activable/secrete_resin/ovipositor/use_ability(atom/A)
-	if(!action_cooldown_check())
-		return
-
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X)
-		return
-
-	var/turf/T = get_turf(A)
-	if(!T)
-		return
-
-	if(!..())
-		return
-
-	last_use = world.time
-
-	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.resin_build_order[X.selected_resin]]
-	T.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [RC.construction_name]!"), null, 5)
-	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [RC.construction_name]."))
-	playsound(T, "alien_resin_build", 25)
-
 /datum/action/xeno_action/activable/expand_weeds
 	var/list/recently_built_turfs
 

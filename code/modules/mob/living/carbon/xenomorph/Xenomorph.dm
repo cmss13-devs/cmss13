@@ -238,7 +238,7 @@
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
 	var/list/resin_build_order
-	var/selected_resin = 1 // Which resin structure to build when we secrete resin, defaults to 1 (first element)
+	var/selected_resin // Which resin structure to build when we secrete resin, defaults to null.
 	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/obj/structure/tunnel/start_dig = null

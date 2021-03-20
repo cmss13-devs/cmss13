@@ -38,28 +38,28 @@ GLOBAL_LIST_INIT_TYPED(resin_constructions_list, /datum/resin_construction, setu
 GLOBAL_LIST_INIT(resin_build_order_default, list(
 	/datum/resin_construction/resin_turf/wall,
 	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/door,
 	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
-	/datum/resin_construction/resin_obj/door,
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_turf/wall,
 	/datum/resin_construction/resin_turf/membrane,
+	/datum/resin_construction/resin_obj/door,
 	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
-	/datum/resin_construction/resin_obj/door,
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
-	/datum/resin_construction/resin_turf/wall/resin_turf/thick,
+	/datum/resin_construction/resin_turf/wall/thick,
 	/datum/resin_construction/resin_turf/membrane/thick,
+	/datum/resin_construction/resin_obj/door/thick,
 	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
-	/datum/resin_construction/resin_obj/door/thick,
 ))
 
 /// Xeno caste datums

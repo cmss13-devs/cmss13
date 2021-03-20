@@ -714,7 +714,7 @@
 		/datum/action/xeno_action/onclick/queen_order,
 		/datum/action/xeno_action/onclick/choose_resin,
 		/datum/action/xeno_action/activable/expand_weeds,
-		/datum/action/xeno_action/activable/secrete_resin/ovipositor,
+		/datum/action/xeno_action/activable/secrete_resin/remote/queen,
 		/datum/action/xeno_action/activable/place_construction,
 		/datum/action/xeno_action/onclick/deevolve,
 		/datum/action/xeno_action/onclick/banish,

@@ -1,5 +1,8 @@
 /mob/living/carbon/Xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE)
-	var/datum/resin_construction/RC = GLOB.resin_constructions_list[resin_build_order[selected_resin]]
+	if(!selected_resin)
+		return
+
+	var/datum/resin_construction/RC = GLOB.resin_constructions_list[selected_resin]
 
 	var/total_resin_cost = XENO_RESIN_BASE_COST + RC.cost // Live, diet, shit code, repeat
 

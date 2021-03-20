@@ -66,7 +66,7 @@ const keyCodeToByond = keyCode => {
 const handlePassthrough = key => {
   // In addition to F5, support reloading with Ctrl+R and Ctrl+F5
   if (key.ctrl && (key.code === KEY_F5 || key.code === KEY_R)) {
-    location.reload();
+    if (!key.event.defaultPrevented) location.reload();
     return;
   }
   // Prevent passthrough on Ctrl+F

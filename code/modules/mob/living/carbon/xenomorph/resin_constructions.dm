@@ -1,5 +1,6 @@
 /datum/resin_construction
 	var/name
+	var/desc
 	var/construction_name // The name used in messages (to replace old resin2text proc)
 	var/cost
 	var/build_time = 2 SECONDS
@@ -71,13 +72,15 @@
 // Resin Walls
 /datum/resin_construction/resin_turf/wall
 	name = "Resin Wall"
+	desc = "A resin wall, able to block passage."
 	construction_name = "resin wall"
 	cost = XENO_RESIN_WALL_COST
 
 	build_path = /turf/closed/wall/resin
 
-/datum/resin_construction/resin_turf/wall/resin_turf/thick
+/datum/resin_construction/resin_turf/wall/thick
 	name = "Thick Resin Wall"
+	desc = "A thick resin wall, stronger than regular walls."
 	construction_name = "thick resin wall"
 	cost = XENO_RESIN_WALL_THICK_COST
 
@@ -85,6 +88,7 @@
 
 /datum/resin_construction/resin_turf/wall/reflective
 	name = "Reflective Resin Wall"
+	desc = "A reflective resin wall, able to reflect any and all projectiles back to the shooter."
 	construction_name = "reflective resin wall"
 	cost = XENO_RESIN_WALL_REFLECT_COST
 	max_per_xeno = 5
@@ -94,6 +98,7 @@
 // Resin Membrane
 /datum/resin_construction/resin_turf/membrane
 	name = "Resin Membrane"
+	desc = "Resin membrane that can be seen through."
 	construction_name = "resin membrane"
 	cost = XENO_RESIN_MEMBRANE_COST
 
@@ -101,6 +106,7 @@
 
 /datum/resin_construction/resin_turf/membrane/thick
 	name = "Thick Resin Membrane"
+	desc = "Strong resin membrane that can be seen through."
 	construction_name = "thick resin membrane"
 	cost = XENO_RESIN_MEMBRANE_THICK_COST
 
@@ -110,6 +116,7 @@
 // Resin Doors
 /datum/resin_construction/resin_obj/door
 	name = "Resin Door"
+	desc = "A resin door that only sisters may pass."
 	construction_name = "resin door"
 	cost = XENO_RESIN_DOOR_COST
 
@@ -138,6 +145,7 @@
 
 /datum/resin_construction/resin_obj/door/thick
 	name = "Thick Resin Door"
+	desc = "A thick resin door, which is more durable, that only sisters may pass."
 	construction_name = "thick resin door"
 	cost = XENO_RESIN_DOOR_THICK_COST
 
@@ -147,6 +155,7 @@
 // Resin Nests
 /datum/resin_construction/resin_obj/nest
 	name = "Resin Nest"
+	desc = "A resin nest used to contain any infected hosts."
 	construction_name = "resin nest"
 	cost = XENO_RESIN_NEST_COST
 
@@ -167,6 +176,7 @@
 // Sticky Resin
 /datum/resin_construction/resin_obj/sticky_resin
 	name = "Sticky Resin"
+	desc = "Resin that slows down any tallhosts when they walk over it."
 	construction_name = "sticky resin"
 	cost = XENO_RESIN_STICKY_COST
 
@@ -176,6 +186,7 @@
 // Fast Resin
 /datum/resin_construction/resin_obj/fast_resin
 	name = "Fast Resin"
+	desc = "Resin that speeds up other sisters when they walk over it."
 	construction_name = "fast resin"
 	cost = XENO_RESIN_FAST_COST
 
@@ -183,6 +194,7 @@
 
 /datum/resin_construction/resin_obj/resin_spike
 	name = "Resin Spike"
+	desc = "Resin that harms any tallhosts when they walk over it."
 	construction_name = "resin spike"
 	cost = XENO_RESIN_SPIKE_COST
 	max_per_xeno = 8
@@ -191,6 +203,7 @@
 
 /datum/resin_construction/resin_obj/acid_pillar
 	name = "Acid Pillar"
+	desc = "A tall, green pillar that is capable of firing at multiple targets at once. Fires weak acid."
 	construction_name = "acid pillar"
 	cost = XENO_RESIN_ACID_PILLAR_COST
 	max_per_xeno = 1

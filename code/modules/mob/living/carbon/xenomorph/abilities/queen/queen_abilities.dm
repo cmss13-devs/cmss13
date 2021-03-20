@@ -56,18 +56,13 @@
 	action_icon_state = "xeno_readmit"
 	plasma_cost = 100
 
-/datum/action/xeno_action/activable/secrete_resin/ovipositor
+/datum/action/xeno_action/activable/secrete_resin/remote/queen
 	name = "Projected Resin (100)"
 	action_icon_state = "secrete_resin"
 	ability_name = "projected resin"
-	var/last_use = 0
 	plasma_cost = 100
 	cooldown = 20
-	thick = FALSE
-	make_message = FALSE
 
-	macro_path = /datum/action/xeno_action/verb/verb_projected_resin
-	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/eye

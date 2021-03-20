@@ -121,18 +121,81 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!X.check_state())
 		return
-	X.selected_resin++
-	if (X.selected_resin > length(X.resin_build_order))
-		X.selected_resin = 1
 
-	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.resin_build_order[X.selected_resin]]
-	to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
-	//update the button's overlay with new choice
-	button.overlays.Cut()
-	button.overlays += image('icons/mob/hud/actions.dmi', button, RC.construction_name)
+	tgui_interact(X)
+	return ..()
 
-	..()
-	return
+/datum/action/xeno_action/onclick/choose_resin/ui_assets(mob/user)
+	return list(
+		get_asset_datum(/datum/asset/spritesheet/choose_resin),
+	)
+
+/datum/action/xeno_action/onclick/choose_resin/ui_static_data(mob/user)
+	var/mob/living/carbon/Xenomorph/X = user
+	if(!istype(X))
+		return
+
+	. = list()
+
+	var/list/constructions = list()
+	for(var/type in X.resin_build_order)
+		var/list/entry = list()
+		var/datum/resin_construction/RC = GLOB.resin_constructions_list[type]
+
+		entry["name"] = RC.name
+		entry["desc"] = RC.desc
+		entry["image"] = replacetext(RC.construction_name, " ", "-")
+		entry["plasma_cost"] = RC.cost
+		entry["max_per_xeno"] = RC.max_per_xeno
+		entry["id"] = "[type]"
+		constructions += list(entry)
+
+	.["constructions"] = constructions
+
+/datum/action/xeno_action/onclick/choose_resin/ui_data(mob/user)
+	var/mob/living/carbon/Xenomorph/X = user
+	if(!istype(X))
+		return
+
+	. = list()
+	.["selected_resin"] = X.selected_resin
+
+
+/datum/action/xeno_action/onclick/choose_resin/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ChooseResin", "Choose Resin")
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/datum/action/xeno_action/onclick/choose_resin/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/action/xeno_action/onclick/choose_resin/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	var/mob/living/carbon/Xenomorph/X = usr
+	if(!istype(X))
+		return
+
+	switch(action)
+		if("choose_resin")
+			var/selected_type = text2path(params["type"])
+			if(!(selected_type in X.resin_build_order))
+				return
+
+			var/datum/resin_construction/RC = GLOB.resin_constructions_list[selected_type]
+			to_chat(X, SPAN_NOTICE("You will now build <b>[RC.construction_name]\s</b> when secreting resin."))
+			//update the button's overlay with new choice
+			button.overlays.Cut()
+			button.overlays += image('icons/mob/hud/actions.dmi', button, RC.construction_name)
+			X.selected_resin = selected_type
+			. = TRUE
+		if("refresh_ui")
+			. = TRUE
+
 
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)

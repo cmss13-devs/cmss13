@@ -48,7 +48,7 @@
 // Choose Resin
 /datum/action/xeno_action/onclick/choose_resin
 	name = "Choose Resin Structure"
-	action_icon_state = "resin wall"
+	action_icon_state = "retrieve_egg"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_choose_resin_structure
 	action_type = XENO_ACTION_CLICK

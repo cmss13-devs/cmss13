@@ -49,6 +49,8 @@
 	thick = FALSE
 	make_message = FALSE
 
+	var/require_los = TRUE
+
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
 
@@ -57,10 +59,11 @@
 	if(!X)
 		return FALSE
 
-	// Account for the do_after in the resin building proc when checking cooldown
-	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.resin_build_order[X.selected_resin]]
-	var/total_build_time = RC.build_time*X.caste.build_time_mult
-	return (world.time >= last_use + (total_build_time + cooldown))
+	if(X.selected_resin)
+		// Account for the do_after in the resin building proc when checking cooldown
+		var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.selected_resin]
+		var/total_build_time = RC.build_time*X.caste.build_time_mult
+		return (world.time >= last_use + (total_build_time + cooldown))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/A)
 	if(!action_cooldown_check())
@@ -69,20 +72,25 @@
 	var/turf/T = get_turf(A)
 	if(!T)
 		return
-	var/list/line_turfs = getline(get_turf(owner), T)
 
-	for(var/turf/LT in line_turfs)
-		if(LT.density)
-			to_chat(owner, "You need a clear line of sight to do this!")
-			return
+	if(require_los)
+		var/list/line_turfs = getline(get_turf(owner), T)
+
+		for(var/turf/LT in line_turfs)
+			if(LT.density)
+				to_chat(owner, "You need a clear line of sight to do this!")
+				return
 
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(!..())
 		return
 
+	if(!X.selected_resin)
+		return
+
 	last_use = world.time
 
-	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.resin_build_order[X.selected_resin]]
+	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.selected_resin]
 	T.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [RC.construction_name]!"), null, 5)
 	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [RC.construction_name]."))
 	playsound(T, "alien_resin_build", 25)

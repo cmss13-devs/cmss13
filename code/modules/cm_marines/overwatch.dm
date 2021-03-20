@@ -781,9 +781,10 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [transfer_marine] isn't wearing an ID.")]")
 		return
 
-	var/datum/squad/new_squad = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", RoleAuthority.squads)
-	if(!new_squad || S != current_squad)
+	var/new_squad_name = tgui_input_list(usr, "Choose the marine's new squad", "Squad Selection", ROLES_SQUAD_ALL)
+	if(!new_squad_name || S != current_squad)
 		return
+	var/datum/squad/new_squad = get_squad_by_name(new_squad_name)
 
 	if(!istype(transfer_marine) || !transfer_marine.mind || transfer_marine.stat == DEAD)
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[transfer_marine] is KIA.")]")

@@ -131,11 +131,6 @@
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
 		return
 
-	if(SEND_SIGNAL(mob, COMSIG_CLIENT_MOB_MOVE, n, direct) & COMPONENT_OVERRIDE_MOVE)
-		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
-		return
-
-
 	if(!mob.canmove || mob.is_mob_incapacitated(TRUE) || !mob.on_movement())
 		return
 

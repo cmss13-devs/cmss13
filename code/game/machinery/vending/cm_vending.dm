@@ -437,7 +437,8 @@ IN_USE						used for vending/denying
 	if(vend_delay)
 		overlays.Cut()
 		icon_state = "[initial(icon_state)]_deny"
-	sleep(15)
+	sleep(1.5 SECONDS)
+	icon_state = initial(icon_state)
 	stat &= ~IN_USE
 	update_icon()
 	return

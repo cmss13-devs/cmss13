@@ -1028,26 +1028,21 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/stock/smg/collapsible/brace
 	name = "\improper submachinegun arm brace"
-	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing more accurate at the expense of fire rate. Wielding the weapon with this stock attached confers a major inaccuracy and recoil debuff."
+	desc = "A specialized stock for use on an M39 submachine gun. It makes one handing more accurate at the expense of burst amount. Wielding the weapon with this stock attached confers a major inaccuracy and recoil debuff."
 	size_mod = 1
 	icon_state = "smg_brace"
 	attach_icon = "smg_brace_a"
 	pixel_shift_x = 43
 	pixel_shift_y = 11
-	collapse_delay = 15
+	collapse_delay = 2.5 SECONDS
 	activated = FALSE
 	deploy_message = list("unlock","lock")
 
 /obj/item/attachable/stock/smg/collapsible/brace/New()
 	..()
-	//Makes stuff better when one handed by a LOT.
-	burst_scatter_mod = -SCATTER_AMOUNT_TIER_10
-	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
-	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
-	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_3
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
+	//Emulates two-handing an SMG.
+	burst_mod = -BURST_AMOUNT_TIER_3 //2 shots instead of 5.
 
-	delay_mod = FIRE_DELAY_TIER_9
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
 	scatter_mod = SCATTER_AMOUNT_TIER_8
 	recoil_mod = RECOIL_AMOUNT_TIER_2
@@ -1057,13 +1052,26 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/stock/smg/collapsible/brace/apply_on_weapon(obj/item/weapon/gun/G)
 	if(activated)
 		G.flags_item |= NODROP
+		accuracy_mod = -HIT_ACCURACY_MULT_TIER_3
+		scatter_mod = SCATTER_AMOUNT_TIER_8
+		recoil_mod = RECOIL_AMOUNT_TIER_2 //Hurts pretty bad if it's wielded.
+		accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
+		recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
+		movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4 //Does well if it isn't.
 		icon_state = "smg_brace_on"
 		attach_icon = "smg_brace_a_on"
 	else
 		G.flags_item &= ~NODROP
+		accuracy_mod = 0
+		scatter_mod = 0
+		recoil_mod = 0
+		accuracy_unwielded_mod = 0
+		recoil_unwielded_mod = 0
+		movement_acc_penalty_mod = 0 //Does pretty much nothing if it's not activated.
 		icon_state = "smg_brace"
 		attach_icon = "smg_brace_a"
 
+	G.recalculate_attachment_bonuses()
 	G.update_overlays(src, "stock")
 
 /obj/item/attachable/stock/revolver

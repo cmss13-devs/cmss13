@@ -853,6 +853,9 @@ var/datum/controller/supply/supply_controller = new()
 		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
 		if(!istype(P))	return
 
+		if((P.hidden && !hacked) || (P.contraband && !can_order_contraband) || !P.buyable)
+			return
+
 		var/timeout = world.time + 600
 		//var/reason = copytext(sanitize(input(usr,"Reason:","Why do you require this item?","") as null|text),1,MAX_MESSAGE_LEN)
 		var/reason = "*None Provided*"

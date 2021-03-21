@@ -481,7 +481,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper M68 Thermal Cloak"
 	desc = "The lightweight thermal dampeners and optical camouflage provided by this cloak are weaker than those found in standard USCM ghillie suits. In exchange, the cloak can be worn over combat armor and offers the wearer high manueverability and adaptability to many environments."
 	icon_state = "scout_cloak"
-	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S, /obj/item/clothing/head/helmet/marine/scout) //Need to wear Scout armor and helmet to equip this.
+	uniform_restricted = list(/obj/item/clothing/suit/storage/marine/M3S) //Need to wear Scout armor and helmet to equip this.
 	has_gamemode_skin = FALSE //same sprite for all gamemode.
 	var/camo_active = FALSE
 	var/camo_alpha = 10

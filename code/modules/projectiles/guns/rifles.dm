@@ -205,9 +205,14 @@
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/rifle/extended,
-		/obj/item/ammo_magazine/rifle/incendiary,
 		/obj/item/ammo_magazine/rifle/ap,
-		/obj/item/ammo_magazine/rifle/m41aMK1
+		/obj/item/ammo_magazine/rifle/incendiary,
+		/obj/item/ammo_magazine/rifle/toxin,
+		/obj/item/ammo_magazine/rifle/penetrating,
+		/obj/item/ammo_magazine/rifle/m41aMK1,
+		/obj/item/ammo_magazine/rifle/m41aMK1/incendiary,
+		/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
+		/obj/item/ammo_magazine/rifle/m41aMK1/penetrating,
 	)
 	//somewhere in between the mk1 and mk2
 	attachable_allowed = list(
@@ -289,12 +294,19 @@
 	. = ..()
 	if(is_locked && linked_human && linked_human != user)
 		if(linked_human.is_revivable() || linked_human.stat != DEAD)
-			to_chat(user, SPAN_WARNING("[icon2html(src)] A red light flashes at the side of [src]."))
+			to_chat(user, SPAN_WARNING("[icon2html(src)] Trigger locked by [src]. Unauthorized user."))
+			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
 			return FALSE
 
 		linked_human = null
 		is_locked = FALSE
 		UnregisterSignal(linked_human, COMSIG_PARENT_QDELETING)
+
+/obj/item/weapon/gun/rifle/m46c/pickup(user)
+	if(!linked_human)
+		src.name_after_co(user, src)
+		to_chat(usr, SPAN_NOTICE("[icon2html(src)] You pick up [src], registering you as its owner."))
+	..()
 
 /obj/item/weapon/gun/rifle/m46c/verb/toggle_lock()
 	set category = "Weapons"
@@ -302,7 +314,7 @@
 	set src in usr
 
 	if(usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src)] A red light flashes at the side of [src]."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by [src]. Unauthorized user."))
 		return
 
 	is_locked = !is_locked
@@ -316,7 +328,7 @@
 	set src in usr
 
 	if(is_locked && linked_human && usr != linked_human)
-		to_chat(usr, SPAN_WARNING("[icon2html(src)] A red light flashes at the side of [src]."))
+		to_chat(usr, SPAN_WARNING("[icon2html(src)] Action denied by [src]. Unauthorized user."))
 		return
 
 	iff_enabled = !iff_enabled
@@ -340,9 +352,20 @@
 
 
 /obj/item/weapon/gun/rifle/m46c/proc/name_after_co(var/mob/living/carbon/human/H, var/obj/item/weapon/gun/rifle/m46c/I)
-	I.desc = "A prototype M46C, an experimental rifle platform built to outperform the standard M41A. Back issue only. Uses standard MK1 & MK2 rifle magazines. Property of [H.real_name]."
 	linked_human = H
 	RegisterSignal(linked_human, COMSIG_PARENT_QDELETING, .proc/remove_idlock)
+
+/obj/item/weapon/gun/rifle/m46c/examine()
+	..()
+	if(linked_human)
+		if(is_locked)
+			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human]."))
+		else
+			to_chat(usr, SPAN_NOTICE("It is registered to [linked_human] but has its fire restrictions unlocked."))
+	else
+		to_chat(usr, SPAN_NOTICE("It's unregistered. Pick it up to register you as its owner."))
+	if(!iff_enabled)
+		to_chat(usr, SPAN_WARNING("Its IFF restrictions are disabled."))
 
 /obj/item/weapon/gun/rifle/m46c/proc/remove_idlock()
 	SIGNAL_HANDLER

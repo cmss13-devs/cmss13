@@ -655,6 +655,9 @@ var/datum/controller/supply/supply_controller = new()
 		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
 		if(!istype(P))	return
 
+		if(P.hidden || P.contraband || !P.buyable)
+			return
+
 		var/timeout = world.time + 600
 		var/reason = strip_html(input(usr,"Reason:","Why do you require this item?","") as null|text)
 		if(world.time > timeout)	return

@@ -1213,7 +1213,7 @@ This function completely restores a damaged organ to perfect condition.
 	overlays += eyes
 
 	if(owner.lip_style && (owner.species && owner.species.flags & HAS_LIPS))
-		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "camo_[owner.lip_style]_s")
+		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "paint_[owner.lip_style]")
 		overlays += lips
 
 /obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/mob/attack_source = null)

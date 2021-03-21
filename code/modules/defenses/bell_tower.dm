@@ -194,7 +194,7 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-	if(!M.x && !M.y && !M.z)
+	if(M.stat == DEAD || (!M.x && !M.y && !M.z))
 		return
 
 	var/list/targets = SSquadtree.players_in_range(RECT(M.x, M.y, area_range, area_range), M.z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER)

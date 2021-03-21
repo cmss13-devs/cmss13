@@ -11,6 +11,8 @@
 	var/area_range = PLANTED_FLAG_RANGE
 	var/buff_intensity = PLANTED_FLAG_BUFF
 
+	can_be_near_defense = TRUE
+
 
 /obj/structure/machinery/defenses/planted_flag/Initialize()
 	. = ..()
@@ -84,6 +86,8 @@
 	LAZYINITLIST(flags_in_range)
 
 	for(var/obj/structure/machinery/defenses/planted_flag/warbanner/WB in range(area_range))
+		if(WB == src)
+			continue
 		WB.flags_in_range.Add(src)
 		flags_in_range.Add(WB)
 

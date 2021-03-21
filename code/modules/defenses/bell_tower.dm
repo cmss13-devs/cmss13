@@ -10,6 +10,8 @@
 	var/image/flick_image
 	handheld_type = /obj/item/defenses/handheld/bell_tower
 
+	can_be_near_defense = TRUE
+
 
 /obj/structure/machinery/defenses/bell_tower/Initialize()
 	. = ..()

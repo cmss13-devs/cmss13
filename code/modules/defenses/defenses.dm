@@ -22,6 +22,7 @@
 	var/locked = FALSE
 
 	var/defense_check_range = 2
+	var/can_be_near_defense = FALSE
 
 
 /obj/structure/machinery/defenses/Initialize(var/mapload, var/faction)
@@ -177,10 +178,11 @@
 			return
 
 	if(!turned_on)
-		for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
-			if(def != src && def.turned_on)
-				to_chat(user, SPAN_WARNING("This is too close to a [def.name]!"))
-				return
+		if(!can_be_near_defense)
+			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
+				if(def != src && def.turned_on && !def.can_be_near_defense)
+					to_chat(user, SPAN_WARNING("This is too close to a [def.name]!"))
+					return
 
 		power_on()
 	else

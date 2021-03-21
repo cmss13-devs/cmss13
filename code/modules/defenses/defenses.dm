@@ -21,6 +21,8 @@
 	var/static = FALSE
 	var/locked = FALSE
 
+	var/defense_check_range = 2
+
 
 /obj/structure/machinery/defenses/Initialize(var/mapload, var/faction)
 	. = ..()
@@ -175,10 +177,15 @@
 			return
 
 	if(!turned_on)
+		for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
+			if(def != src && def.turned_on)
+				to_chat(user, SPAN_WARNING("This is too close to a [def.name]!"))
+				return
+
 		power_on()
 	else
 		power_off()
-	return
+
 
 /obj/structure/machinery/defenses/proc/power_on_action(var/mob/user)
 	return

@@ -63,6 +63,8 @@
 	plasma_cost = 100
 	cooldown = 20
 
+	require_los = FALSE
+
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/onclick/eye

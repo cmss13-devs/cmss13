@@ -82,6 +82,7 @@ report:changelog:
       - 'html/changelog.html'
       - 'html/changelog.css'
       - 'html/changelogs/.all_changelog.yml'
+      - "${CI_PROJECT_ID}.txt"
     expose_as: 'Changelogs'
     expire_in: '3 days'
   rules:
@@ -249,7 +250,7 @@ commit:changelog:
     - git config --local user.email ${CM_CHANGELOG_DEPLOY_MAIL}
     - git config --local user.name ${CM_CHANGELOG_DEPLOY_NAME}
     - git config --local push.default simple
-    - git add html/changelog*
+    - git add html/changelog* ${CI_PROJECT_ID}.txt
     - git commit -m "changelog-${CI_COMMIT_BRANCH}"
     - git remote set-url origin "git@gitlab.com:${CI_PROJECT_PATH}.git"
     - GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git push -o ci.skip origin HEAD:${CI_COMMIT_BRANCH}

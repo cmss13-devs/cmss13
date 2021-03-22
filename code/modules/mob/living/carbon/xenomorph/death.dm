@@ -67,7 +67,7 @@
 						break
 				hive.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
-					INVOKE_ASYNC(SSticker, /datum/game_mode.proc/check_queen_status, hivenumber)
+					INVOKE_ASYNC(SSticker.mode, /datum/game_mode.proc/check_queen_status, hivenumber)
 					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else

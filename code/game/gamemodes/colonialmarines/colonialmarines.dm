@@ -165,6 +165,15 @@
 		next_passive_increase = world.time + passive_increase_interval
 
 	if(!round_finished)
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(!hive.xeno_queen_timer)
+				continue
+
+			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
+				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+
 		if(!active_lz && world.time > lz_selection_timer)
 			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
 				if(is_ground_level(default_console.z) && !default_console.onboard)

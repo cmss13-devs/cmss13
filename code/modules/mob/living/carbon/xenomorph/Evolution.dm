@@ -35,6 +35,10 @@
 
 	if(castepick == "Queen") //Special case for dealing with queenae
 		if(!hardcore)
+			if(SSticker.mode && hive.xeno_queen_timer > world.time)
+				to_chat(src, SPAN_WARNING("You must wait about [DisplayTimeText(hive.xeno_queen_timer - world.time, 1)] for the hive to recover from the previous Queen's death."))
+				return
+
 			if(plasma_stored >= 500)
 				if(hive.living_xeno_queen)
 					to_chat(src, SPAN_WARNING("There already is a living Queen."))

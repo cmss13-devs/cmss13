@@ -1,4 +1,5 @@
-#define XENO_QUEEN_AGE_TIME	(15 MINUTES)
+#define XENO_QUEEN_AGE_TIME	(10 MINUTES)
+#define XENO_QUEEN_DEATH_DELAY (5 MINUTES)
 #define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
 
 /datum/caste_datum/queen
@@ -691,7 +692,10 @@
 		stop_pulling()
 
 /mob/living/carbon/Xenomorph/Queen/death(var/cause, var/gibbed)
-	. = ..()
+	if(hive.living_xeno_queen == src)
+		hive.xeno_queen_timer = world.time + XENO_QUEEN_DEATH_DELAY
+	return ..()
+
 
 /mob/living/carbon/Xenomorph/Queen/proc/mount_ovipositor()
 	if(ovipositor)

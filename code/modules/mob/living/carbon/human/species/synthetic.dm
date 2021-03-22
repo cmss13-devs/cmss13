@@ -67,7 +67,7 @@
 
 	pain_type = /datum/pain/synthetic/early_synthetic
 	rarity_value = 1.5
-	slowdown = 1.4
+	slowdown = 0.45
 	total_health = 200 //But more durable
 	insulated = 1
 

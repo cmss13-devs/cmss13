@@ -80,6 +80,8 @@
 
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)
 	affected.status &= ~LIMB_BROKEN
+	if(affected.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+		new /obj/item/stack/medical/splint/nano(get_turf(target), 1)
 	affected.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 	affected.status |= LIMB_REPAIRED
 	affected.bone_repair_stage = 0

@@ -9,10 +9,16 @@
 	required_points = 15
 	tier = /datum/tier/one
 
+/datum/tech/droppod/item/medic_czsp/on_unlock()
+	. = ..()
+	var/datum/supply_packs/SP = /datum/supply_packs/upgraded_medical_kits
+	SP = supply_controller.supply_packs[initial(SP.name)]
+	SP.buyable = TRUE
+
 /datum/tech/droppod/item/medic_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
 
-	if(H.job == JOB_SQUAD_MEDIC)
+	if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		.["Medical CZSP"] = /obj/item/storage/box/combat_zone_support_package
 	else
 		var/type_to_add = /obj/item/stack/medical/bruise_pack
@@ -30,9 +36,9 @@
 
 /obj/item/storage/box/combat_zone_support_package/Initialize()
 	. = ..()
-	new/obj/item/storage/box/medic_upgraded_kits(src)
-	new/obj/item/stack/medical/splint/nano(src)
-	new /obj/item/weapon/gun/pill(src)
+	new /obj/item/storage/box/medic_upgraded_kits(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/device/defibrillator/upgraded(src)
 
 
 /obj/item/storage/box/medic_upgraded_kits
@@ -53,8 +59,8 @@
 
 	icon_state = "burnkit_upgraded"
 
-	max_amount = 6
-	amount = 6
+	max_amount = 10
+	amount = 10
 
 /obj/item/stack/medical/advanced/ointment/upgraded/Initialize(mapload, ...)
 	. = ..()
@@ -67,8 +73,8 @@
 
 	icon_state = "traumakit_upgraded"
 
-	max_amount = 6
-	amount = 6
+	max_amount = 10
+	amount = 10
 
 /obj/item/stack/medical/advanced/bruise_pack/upgraded/Initialize(mapload, ...)
 	. = ..()
@@ -81,10 +87,17 @@
 	icon_state = "nanosplint"
 
 	indestructible_splints = TRUE
-	amount = 3
-	max_amount = 3
+	amount = 5
+	max_amount = 5
 
 	stack_id = "nano splint"
+
+/obj/item/device/defibrillator/upgraded
+	name = "upgraded emergency defibrillator"
+
+	blocked_by_suit = FALSE
+	heart_damage_to_deal = 0
+	damage_threshold = 35
 
 /obj/item/ammo_magazine/internal/pillgun
 	name = "pill tube"

@@ -244,8 +244,7 @@
 		if(beaker)
 			if(beaker.reagents.total_volume < beaker.reagents.maximum_volume)
 				for(var/datum/reagent/x in occupant.reagents.reagent_list)
-					occupant.reagents.trans_to(beaker, 3)
-
+					occupant.reagents.remove_reagent(x.id, 3)
 
 	updateUsrDialog()
 

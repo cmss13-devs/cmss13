@@ -67,7 +67,7 @@
 		decloak(H) //Continue on to damage.
 	else if(rand(0,100) < 20)
 		decloak(H)
-		return COMPONENT_BULLET_NO_HIT //Absorb one free bullet.
+		return COMPONENT_CANCEL_BULLET_ACT //Absorb one free bullet.
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	QDEL_NULL(caster)

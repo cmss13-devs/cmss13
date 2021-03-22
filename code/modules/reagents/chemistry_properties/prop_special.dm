@@ -50,6 +50,27 @@
 /datum/chem_property/special/hypergenetic/process_critical(mob/living/M, var/potency = 1)
 	M.take_limb_damage(3*potency,3*potency)
 
+
+/datum/chem_property/special/organhealing
+	name = PROPERTY_ORGAN_HEALING
+	code = "OHG"
+	description = "Regenerates all types of cell membranes mending damage in all organs."
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_MEDICINE
+
+/datum/chem_property/special/organhealing/process(mob/living/M, var/potency = 1)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	for(var/datum/internal_organ/O in H.internal_organs)
+		M.apply_internal_damage(-potency, O)
+
+/datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1)
+	M.adjustCloneLoss(2*potency)
+
+/datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1)
+	M.take_limb_damage(3*potency,3*potency)
+
 /datum/chem_property/special/DNA_Disintegrating
 	name = PROPERTY_DNA_DISINTEGRATING
 	code = "DDI"

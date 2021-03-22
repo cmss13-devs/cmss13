@@ -289,6 +289,11 @@
 	else if (h_number)
 		hivenumber = h_number
 
+	set_languages(list("Xenomorph", "Hivemind"))
+	if(oldXeno)
+		for(var/datum/language/L in oldXeno.languages)
+			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
+
 	// Well, not yet, technically
 	var/datum/hive_status/in_hive = GLOB.hive_datum[hivenumber]
 	if(in_hive)
@@ -310,11 +315,6 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
-
-	set_languages(list("Xenomorph", "Hivemind"))
-	if(oldXeno)
-		for(var/datum/language/L in oldXeno.languages)
-			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
 
 	add_inherent_verbs()
 	add_abilities()
@@ -614,6 +614,9 @@
 
 /mob/living/carbon/Xenomorph/pull_response(mob/puller)
 	if(stat != DEAD && has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
+		var/mob/living/carbon/human/H = puller
+		if(H.ally_of_hivenumber(hivenumber))
+			return TRUE
 		puller.KnockDown(rand(caste.tacklestrength_min,caste.tacklestrength_max))
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))

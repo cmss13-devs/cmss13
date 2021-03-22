@@ -835,6 +835,7 @@
 	ignore_slots = TRUE
 
 	var/mob/living/carbon/human/leader
+	var/list/allied_factions
 
 /datum/hive_status/corrupted/submissive/New()
 	. = ..()
@@ -857,22 +858,29 @@
 	if(H == leader)
 		leader = null
 
+	var/list/faction_groups = H.faction_group
+	if(faction_groups)
+		allied_factions = faction_groups.Copy()
+		if(!(H.faction in allied_factions))
+			allied_factions += H.faction
+
 /datum/hive_status/corrupted/submissive/add_xeno(mob/living/carbon/Xenomorph/X)
 	. = ..()
-	if(leader)
-		X.faction_group = leader.faction_group
+	X.faction_group = allied_factions
 
 /datum/hive_status/corrupted/submissive/remove_xeno(mob/living/carbon/Xenomorph/X, hard)
 	. = ..()
 	X.faction_group = list(X.faction)
 
 /datum/hive_status/corrupted/submissive/is_ally(mob/living/carbon/C)
-	if(!leader)
-		return ..()
+	if(leader)
+		if(C.faction in leader.faction_group)
+			return TRUE
 
-	if(leader.faction_group && (C.faction in leader.faction_group))
-		return TRUE
-	else if(C.faction == leader.faction)
-		return TRUE
+		if(C.faction == leader.faction)
+			return TRUE
+	else
+		if(C.faction in allied_factions)
+			return TRUE
 
 	return ..()

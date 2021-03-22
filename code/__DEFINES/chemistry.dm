@@ -168,6 +168,7 @@
 #define PROPERTY_CIPHERING			"ciphering"
 #define PROPERTY_CIPHERING_PREDATOR "cross-ciphering"
 //Admin Only Properties
+#define PROPERTY_ORGAN_HEALING "organ-healing"
 #define PROPERTY_CROSSMETABOLIZING	"cross-metabolizing"
 #define PROPERTY_EMBRYONIC			"embryonic"
 #define PROPERTY_TRANSFORMING		"transforming"

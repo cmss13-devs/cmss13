@@ -159,17 +159,17 @@
 	try_to_prime(AM)
 
 
-/obj/item/explosive/mine/proc/try_to_prime(mob/living/carbon/human/H)
+/obj/item/explosive/mine/proc/try_to_prime(mob/living/L)
 	if(!active || triggered || (customizable && !detonator))
 		return
-	if(!istype(H))
+	if(!istype(L))
 		return
-	if(H.stat == DEAD)
+	if(L.stat == DEAD)
 		return
-	if(H.get_target_lock(iff_signal) || isrobot(H))
+	if(L.get_target_lock(iff_signal) || isrobot(L))
 		return
-	H.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [H] moves in front of it."), \
-	SPAN_DANGER("[icon2html(src, H)] The [name] clicks as you move in front of it."), \
+	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
+	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
 
 	triggered = TRUE

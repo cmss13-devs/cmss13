@@ -385,6 +385,8 @@
 							if(!surgery) break
 							S.limb_ref.heal_damage(S.limb_ref.brute_dam - 20,0)
 						if(!surgery) break
+						if(S.limb_ref.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+							new /obj/item/stack/medical/splint/nano(loc, 1)
 						S.limb_ref.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 						S.limb_ref.status |= LIMB_REPAIRED
 						S.limb_ref.perma_injury = 0

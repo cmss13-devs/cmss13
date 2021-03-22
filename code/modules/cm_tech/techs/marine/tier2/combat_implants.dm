@@ -16,7 +16,7 @@
 	. = ..()
 
 	.["Nightvision Implant"] = /obj/item/device/implanter/nvg
-	.["Self-Revive Implant"] = /obj/item/device/implanter/self_revive
+	.["Rejuvenation Implant"] = /obj/item/device/implanter/rejuv
 	.["Agility Implant"] = /obj/item/device/implanter/agility
 	.["Subdermal Armor"] = /obj/item/device/implanter/subdermal_armor
 
@@ -123,34 +123,50 @@
 
 /obj/item/device/implanter/nvg
 	name = "nightvision implant"
-	desc = "This implant will give you night vision."
+	desc = "This implant will give you night vision. These implants get damaged on death."
 	implant_type = /obj/item/device/internal_implant/nvg
 	implant_string = "your pupils dilating to unsettling levels."
+
+/obj/item/device/internal_implant/nvg
+	var/implant_health = 2
 
 /obj/item/device/internal_implant/nvg/on_implanted(var/mob/living/M)
 	. = ..()
 	RegisterSignal(M, COMSIG_HUMAN_POST_UPDATE_SIGHT, .proc/give_nvg)
+	RegisterSignal(M, COMSIG_MOB_DEATH, .proc/remove_health)
 	give_nvg(M)
+
+/obj/item/device/internal_implant/nvg/proc/remove_health(var/mob/living/M)
+	SIGNAL_HANDLER
+	implant_health -= 1
+	if(implant_health <= 0)
+		UnregisterSignal(M, list(
+			COMSIG_HUMAN_POST_UPDATE_SIGHT,
+			COMSIG_MOB_DEATH
+		))
+		to_chat(M, SPAN_WARNING("Everything feels a lot darker."))
+	else
+		to_chat(M, SPAN_WARNING("You feel the effects of the nightvision implant waning."))
 
 /obj/item/device/internal_implant/nvg/proc/give_nvg(var/mob/living/M)
 	SIGNAL_HANDLER
 	M.see_invisible = SEE_INVISIBLE_MINIMUM
 
-/obj/item/device/implanter/self_revive
-	name = "self-revive implant"
+/obj/item/device/implanter/rejuv
+	name = "rejuvenation implant"
 	desc = "This implant will automatically activate at the brink of death. When activated, it will expend itself, greatly healing you, and giving you a stimulant that speeds you up significantly and dulls all pain."
-	implant_type = /obj/item/device/internal_implant/self_revive
+	implant_type = /obj/item/device/internal_implant/rejuv
 	implant_string = "something beating next to your heart." //spooky second heart deep lore
 
-/obj/item/device/internal_implant/self_revive
-	// Heal 130 points of damage
-	var/heal_amt = 130
-	var/temp_pain_reduction = PAIN_REDUCTION_FULL
+/obj/item/device/internal_implant/rejuv
+	var/list/stimulant_to_inject = list(
+		"speed_stimulant",
+		"brain_stimulant",
+		"oxycodone"
+	)
+	var/inject_amt = 3
 
-	var/stimulant_to_inject = "speed_stimulant"
-	var/inject_amt = 1
-
-/obj/item/device/internal_implant/self_revive/on_implanted(mob/living/M)
+/obj/item/device/internal_implant/rejuv/on_implanted(mob/living/M)
 	. = ..()
 	RegisterSignal(M, list(
 		COMSIG_MOB_TAKE_DAMAGE,
@@ -158,9 +174,9 @@
 		COMSIG_XENO_TAKE_DAMAGE
 	), .proc/check_revive)
 
-/obj/item/device/internal_implant/self_revive/proc/check_revive(var/mob/living/M, list/damagedata, damagetype)
+/obj/item/device/internal_implant/rejuv/proc/check_revive(var/mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER
-	if((M.health - damagedata["damage"]) <= HEALTH_THRESHOLD_DEAD)
+	if((M.health - damagedata["damage"]) <= HEALTH_THRESHOLD_CRIT)
 		UnregisterSignal(M, list(
 			COMSIG_MOB_TAKE_DAMAGE,
 			COMSIG_HUMAN_TAKE_DAMAGE,
@@ -169,13 +185,11 @@
 
 		INVOKE_ASYNC(src, .proc/revive, M)
 
-/obj/item/device/internal_implant/self_revive/proc/revive(var/mob/living/M)
-	M.apply_damage(-heal_amt, BURN)
-	M.apply_damage(-heal_amt, BRUTE)
-	M.apply_damage(-M.getOxyLoss(), OXY)
+/obj/item/device/internal_implant/rejuv/proc/revive(var/mob/living/M)
+	M.heal_all_damage()
 
-	M.pain.apply_pain_reduction(temp_pain_reduction)
-	M.reagents.add_reagent(stimulant_to_inject, inject_amt)
+	for(var/i in stimulant_to_inject)
+		M.reagents.add_reagent(i, inject_amt)
 
 /obj/item/device/implanter/agility
 	name = "agility implant"
@@ -225,7 +239,9 @@
 	implant_string = "your skin becoming significantly harder.. That's going to hurt in a decade."
 
 /obj/item/device/internal_implant/subdermal_armor
-	var/damage_mult = 0.75
+	var/burn_damage_mult = 0.9
+	var/brute_damage_mult = 0.85
+	var/bone_break_mult = 0.25
 
 /obj/item/device/internal_implant/subdermal_armor/on_implanted(mob/living/M)
 	. = ..()
@@ -234,8 +250,15 @@
 		COMSIG_HUMAN_TAKE_DAMAGE,
 		COMSIG_XENO_TAKE_DAMAGE
 	), .proc/handle_damage)
+	RegisterSignal(M, COMSIG_HUMAN_BONEBREAK_PROBABILITY, .proc/handle_bonebreak)
 
 /obj/item/device/internal_implant/subdermal_armor/proc/handle_damage(var/mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER
-	if(damagetype == BRUTE || damagetype == BURN)
-		damagedata["damage"] *= damage_mult
+	if(damagetype == BRUTE)
+		damagedata["damage"] *= brute_damage_mult
+	else if(damagetype == BURN)
+		damagedata["damage"] *= burn_damage_mult
+
+/obj/item/device/internal_implant/subdermal_armor/proc/handle_bonebreak(var/mob/living/M, list/bonedata)
+	SIGNAL_HANDLER
+	bonedata["bonebreak_probability"] *= bone_break_mult

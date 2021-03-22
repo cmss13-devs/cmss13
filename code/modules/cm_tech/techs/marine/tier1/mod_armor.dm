@@ -17,8 +17,8 @@
 /datum/tech/droppod/item/modular_armor_upgrade/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
 
-	.["Ceramic Plate (High Health, Less Durable)"] = /obj/item/clothing/accessory/health/ceramic_plate
-	.["Metal Plate (Durable, Less Health)"] = /obj/item/clothing/accessory/health
+	.["Ceramic Plate"] = /obj/item/clothing/accessory/health/ceramic_plate
+	.["Metal Plate"] = /obj/item/clothing/accessory/health
 
 /obj/item/clothing/accessory/health
 	name = "armor plate"
@@ -32,6 +32,7 @@
 	var/armor_health = 10
 	var/armor_maxhealth = 10
 
+	var/take_slash_damage = TRUE
 	var/slash_durability_mult = 0.25
 	var/projectile_durability_mult = 0.1
 
@@ -92,7 +93,8 @@
 	SIGNAL_HANDLER
 
 	if(slot == WEAR_BODY)
-		RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, .proc/take_slash_damage)
+		if(take_slash_damage)
+			RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, .proc/take_slash_damage)
 		RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, .proc/take_bullet_damage)
 	else
 		unassign_signals(S, user)
@@ -100,11 +102,16 @@
 /obj/item/clothing/accessory/health/proc/unassign_signals(obj/item/clothing/S, mob/living/user)
 	SIGNAL_HANDLER
 
-	UnregisterSignal(user, COMSIG_HUMAN_XENO_ATTACK)
-	UnregisterSignal(user, COMSIG_HUMAN_BULLET_ACT)
+	UnregisterSignal(user, list(
+		COMSIG_HUMAN_XENO_ATTACK,
+		COMSIG_HUMAN_BULLET_ACT
+	))
 
-/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/user, damage)
+/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/user, damage, ammo_flags)
 	SIGNAL_HANDLER
+	if(damage <= 0 || (ammo_flags & AMMO_IGNORE_ARMOR))
+		return
+
 	var/damage_to_nullify = armor_health
 	armor_health = max(armor_health - damage*projectile_durability_mult, 0)
 
@@ -159,26 +166,30 @@
 		return ..()
 
 	if(!H.armor_health && !armor_health)
-		new/obj/item/clothing/accessory/health/scrap(get_turf(I))
+		new /obj/item/clothing/accessory/health/scrap(get_turf(user))
 
 		qdel(H)
 		qdel(src)
 
 /obj/item/clothing/accessory/health/ceramic_plate
 	name = "ceramic plate"
-	desc = "A strong plate, able to protect the user from a large amount of damage."
+	desc = "A strong plate, able to protect the user from a large amount of bullets. Ineffective against sharp objects."
 
 	icon_state = "ceramic2"
 
-	slash_durability_mult = 10 // One hit
-	projectile_durability_mult = 0.5
-
+	take_slash_damage = FALSE
 	scrappable = FALSE
 
 	armor_health = 100
 	armor_maxhealth = 100
 
 	armor_shattersound = 'sound/effects/ceramic_shatter.ogg'
+
+/obj/item/clothing/accessory/health/ceramic_plate/take_bullet_damage(var/mob/living/user, damage, ammo_flags)
+	if(ammo_flags & AMMO_XENO_ACID)
+		return
+
+	return ..()
 
 /obj/item/clothing/accessory/health/scrap
 	name = "scrap metal"

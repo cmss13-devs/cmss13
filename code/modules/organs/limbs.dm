@@ -898,11 +898,18 @@ This function completely restores a damaged organ to perfect condition.
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
 		return
-	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE || owner.species.flags & SPECIAL_BONEBREAK || !owner.skills) //stops division by zero
-		bonebreak_probability = 100
+
+	if((owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE) || owner.species.flags & SPECIAL_BONEBREAK || !owner.skills) //stops division by zero
+		bonebreak_probability = 0
+
 	//if the chance was not set by what called fracture(), the endurance check is done instead
-	if(!bonebreak_probability) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.
+	if(bonebreak_probability == null) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.
 		bonebreak_probability = 100 / Clamp(owner.skills.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
+
+	var/list/bonebreak_data = list("bonebreak_probability" = bonebreak_probability)
+	SEND_SIGNAL(owner, COMSIG_HUMAN_BONEBREAK_PROBABILITY, bonebreak_data)
+	bonebreak_probability = bonebreak_data["bonebreak_probability"]
+
 	if(prob(bonebreak_probability))
 		owner.recalculate_move_delay = TRUE
 		owner.visible_message(\

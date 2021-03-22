@@ -14,7 +14,7 @@
 	. = ..()
 
 	.["Speed Stimulant"] = /obj/item/storage/pouch/stimulant_injector/speed
-	.["Endurance Stimulant"] = /obj/item/storage/pouch/stimulant_injector/endurance
+	.["Redemption Stimulant"] = /obj/item/storage/pouch/stimulant_injector/redemption
 	.["Brain Stimulant"] = /obj/item/storage/pouch/stimulant_injector/brain
 
 /obj/item/storage/pouch/stimulant_injector
@@ -43,8 +43,9 @@
 /obj/item/storage/pouch/stimulant_injector/brain
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
 
-/obj/item/storage/pouch/stimulant_injector/endurance
-	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/endurance_stimulant
+/obj/item/storage/pouch/stimulant_injector/redemption
+	storage_slots = 1
+	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
 
 /obj/item/reagent_container/hypospray/autoinjector/stimulant
 	icon_state = "stimpack"
@@ -79,9 +80,11 @@
 	chemname = "brain_stimulant"
 	desc = "A stimpack loaded with an experimental CNS stimulant. Extremely nerve-stimulating. Lasts 5 minutes."
 
-/obj/item/reagent_container/hypospray/autoinjector/stimulant/endurance_stimulant
-	name = "endurance stimulant autoinjector"
-	chemname = "endurance_stimulant"
+/obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
+	amount_per_transfer_from_this = 5
+	volume = 5
+	name = "redemption stimulant autoinjector"
+	chemname = "redemption_stimulant"
 	desc = "A stimpack loaded with an experimental bone, organ and muscle stimulant. Significantly increases what a human can take before they go down. Lasts 5 minutes."
 
 /datum/reagent/stimulant
@@ -91,7 +94,8 @@
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
 	chemclass = CHEM_CLASS_SPECIAL
 	flags = REAGENT_SCANNABLE | REAGENT_TYPE_STIMULANT
-	var/speed = 2
+	var/jitter_speed = 0.3 SECONDS
+	var/jitter_per_amount = 2
 	var/jitter = 2
 
 /datum/reagent/stimulant/on_mob_life(mob/living/M, alien, delta_time)
@@ -107,17 +111,21 @@
 			if(R.flags & REAGENT_TYPE_STIMULANT)
 				holder.remove_reagent(R, custom_metabolism)
 
-	for(var/i in 1 to round(speed*delta_time))
-		animate(M, pixel_x = rand(-jitter, jitter), pixel_y = rand(-jitter, jitter), time = delta_time/speed)
-		animate(M, pixel_x = 0, pixel_y = 0, time = (delta_time/speed) * 0.5) //to reset
+	// We multiply delta_time by 1.5 so that it looks like it is consistent.
+	var/time_per_animate = (jitter_speed/(jitter_per_amount + 2))
+
+	animate(M, pixel_x = rand(-jitter, jitter), pixel_y = rand(-jitter, jitter), time = time_per_animate, flags=ANIMATION_END_NOW)
+	for(var/i in 1 to jitter_per_amount)
+		animate(pixel_x = rand(-jitter, jitter), pixel_y = rand(-jitter, jitter), time = time_per_animate)
+	animate(pixel_x = 0, pixel_y = 0, time = time_per_animate)
 
 /datum/reagent/stimulant/speed_stimulant
 	name = "Speed Stimulant"
 	id = "speed_stimulant"
-	description = "A highly experimental performance enhancement stimulant. Not as strong as ultrazine, however, it is not addictive."
+	description = "A highly experimental performance enhancement stimulant. It is not addictive."
 	color = "#ffff00"
 	properties = list(
-		PROPERTY_MUSCLESTIMULATING = 30,
+		PROPERTY_MUSCLESTIMULATING = 40,
 		PROPERTY_PAINKILLING = 3
 	)
 
@@ -132,9 +140,11 @@
 		PROPERTY_NEUROSHIELDING = 1
 	)
 
-/datum/reagent/stimulant/endurance_stimulant
-	name = "Endurance Stimulant"
-	id = "endurance_stimulant"
+/datum/reagent/stimulant/redemption_stimulant
+	name = "Redemption Stimulant"
+	id = "redemption_stimulant"
+	overdose = LOW_REAGENTS_OVERDOSE
+	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
 	description = {"\
 		A highly experimental bone, organ and muscle stimulant.\
 		Increases the durability of skin and bones as well as nullifying any pain.\
@@ -142,9 +152,11 @@
 		During the metabolism of this drug, dysfunctional organs will work normally."}
 	color = "#00ffa8"
 	properties = list(
-		PROPERTY_NERVESTIMULATING = 5,
-		PROPERTY_MUSCLESTIMULATING = 5,
+		PROPERTY_NERVESTIMULATING = 2,
+		PROPERTY_MUSCLESTIMULATING = 2,
 		PROPERTY_PAINKILLING = 100,
+		PROPERTY_BONEMENDING = 100,
+		PROPERTY_ORGAN_HEALING = 100,
 		PROPERTY_HYPERDENSIFICATING = 1,
-		PROPERTY_ORGANSTABILIZE = 1
+		PROPERTY_ORGANSTABILIZE = 1,
 	)

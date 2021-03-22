@@ -186,7 +186,7 @@
 			homing_projectile = FALSE
 		if(ishuman(ht))
 			var/mob/living/carbon/human/H = ht
-			if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, H) & COMPONENT_BULLET_NO_HIT\
+			if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, H) & COMPONENT_CANCEL_BULLET_ACT\
 				|| runtime_iff_group && H.get_target_lock(runtime_iff_group)\
 			)
 				homing_target = null
@@ -342,7 +342,7 @@
 				var/mob/living/dL = dA
 				if(dL.is_dead())
 					continue
-				if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, dL) & COMPONENT_BULLET_NO_HIT\
+				if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, dL) & COMPONENT_CANCEL_BULLET_ACT\
 					|| runtime_iff_group && dL.get_target_lock(runtime_iff_group)\
 				)
 					continue
@@ -733,7 +733,7 @@
 	. = ..()
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_IFF, src) & COMPONENT_BULLET_NO_HIT\
+		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_IFF, src) & COMPONENT_CANCEL_BULLET_ACT\
 			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group)\
 		)
 			return FALSE
@@ -749,7 +749,7 @@
 	. = ..()
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_IFF, src) & COMPONENT_BULLET_NO_HIT\
+		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_IFF, src) & COMPONENT_CANCEL_BULLET_ACT\
 			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
 			return FALSE
 
@@ -825,7 +825,7 @@
 	var/damage = P.calculate_damage()
 	var/damage_result = damage
 
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_PRE_BULLET_ACT, P) & COMPONENT_BULLET_NO_HIT)
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_PRE_BULLET_ACT, P) & COMPONENT_CANCEL_BULLET_ACT)
 		return
 
 	flash_weak_pain()
@@ -854,8 +854,6 @@
 
 		damage_result = armor_damage_reduction(GLOB.marine_ranged, damage, armor, P.ammo.penetration)
 
-		if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result) & COMPONENT_CANCEL_BULLET_ACT) return
-
 		if(damage_result <= 5)
 			to_chat(src,SPAN_XENONOTICE("Your armor absorbs the force of [P]!"))
 		if(damage_result <= 3)
@@ -867,6 +865,9 @@
 	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
 		if(species.name != "Yautja" && !(species.flags & IS_SYNTHETIC)) apply_effects(arglist(P.ammo.debilitate))
+
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result, ammo_flags) & COMPONENT_CANCEL_BULLET_ACT)
+		return
 
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 
@@ -895,7 +896,7 @@
 				if(!stat && pain.feels_pain)
 					emote("scream")
 					to_chat(src, SPAN_HIGHDANGER("You scream in pain as the impact sends <B>shrapnel</b> into the wound!"))
-	SEND_SIGNAL(P, COMSIG_BULLET_ACT_HUMAN, src, damage, damage_result)
+	SEND_SIGNAL(P, COMSIG_POST_BULLET_ACT_HUMAN, src, damage, damage_result)
 
 //Deal with xeno bullets.
 /mob/living/carbon/Xenomorph/bullet_act(obj/item/projectile/P)

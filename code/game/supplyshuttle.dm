@@ -854,6 +854,7 @@ var/datum/controller/supply/supply_controller = new()
 
 		//Find the correct supply_pack datum
 		var/datum/supply_packs/P = supply_controller.supply_packs[href_list["doorder"]]
+
 		if(!istype(P))	return
 
 		if((P.hidden && !hacked) || (P.contraband && !can_order_contraband) || !P.buyable)

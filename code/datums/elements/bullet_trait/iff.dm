@@ -34,7 +34,7 @@
 	SIGNAL_HANDLER
 
 	if(projectile_target.get_target_lock(iff_group))
-		return COMPONENT_BULLET_NO_HIT
+		return COMPONENT_CANCEL_BULLET_ACT
 
 /datum/element/bullet_trait_iff/proc/set_iff(datum/target, mob/living/carbon/human/firer)
 	SIGNAL_HANDLER

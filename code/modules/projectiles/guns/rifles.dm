@@ -97,6 +97,10 @@
 /obj/item/weapon/gun/rifle/m41a/stripped
 	starting_attachment_types = list()
 
+
+/obj/item/weapon/gun/rifle/m41a/training
+	current_mag = /obj/item/ammo_magazine/rifle/rubber
+
 //-------------------------------------------------------
 //M41A PMC VARIANT
 
@@ -1000,6 +1004,10 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
 	damage_falloff_mult = 0
 	scatter = SCATTER_AMOUNT_TIER_8
+
+
+/obj/item/weapon/gun/rifle/l42a/training
+	current_mag = /obj/item/ammo_magazine/rifle/l42a/rubber
 
 //-------------------------------------------------------
 //-------------------------------------------------------

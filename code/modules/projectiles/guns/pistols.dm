@@ -77,6 +77,10 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 
+/obj/item/weapon/gun/pistol/m4a3/training
+	current_mag = /obj/item/ammo_magazine/pistol/rubber
+
+
 /obj/item/weapon/gun/pistol/m4a3/custom
 	name = "\improper M4A3 custom pistol"
 	desc = "An M4A3 Service Pistol, the standard issue sidearm of the Colonial Marines. Uses 9mm pistol rounds. This one has an ivory-colored grip and has a slide carefully polished yearly by a team of orphan children. Looks like it belongs to a low-ranking officer."
@@ -416,6 +420,10 @@
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_7
 	scatter_unwielded = SCATTER_AMOUNT_TIER_7
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_4
+
+
+/obj/item/weapon/gun/pistol/mod88/training
+	current_mag = /obj/item/ammo_magazine/pistol/mod88/rubber
 
 //-------------------------------------------------------
 //VP78 - the only pistol viable as a primary.

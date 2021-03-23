@@ -354,9 +354,18 @@
 		throw_range = initial(throw_range)
 		w_class = initial(w_class)
 
-
 /obj/item/explosive/grenade/HE/training/flamer_fire_act()
 	return
+
+
+/obj/item/explosive/grenade/HE/m15/rubber
+	name = "\improper M15 rubber pellet grenade"
+	desc = "A relatively harmless version of the M15 grenade designed for riot control and combat exercises."
+	icon_state = "rubber_grenade"
+	item_state = "rubber_grenade"
+	explosion_power = 0
+	shrapnel_type = /datum/ammo/bullet/shrapnel/rubber
+
 
 /obj/item/explosive/grenade/HE/holy_hand_grenade
 	name = "\improper Holy Hand Grenade of Antioch"

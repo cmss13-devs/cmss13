@@ -319,6 +319,33 @@
 	penetration= ARMOR_PENETRATION_TIER_2
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/heavy/highimpact
+	name = "heavy high-impact pistol bullet"
+
+/datum/ammo/bullet/pistol/heavy/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
+	knockback(M, P, 4)
+
+/datum/ammo/bullet/pistol/heavy/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
+		return ..()
+
+	var/mob/living/carbon/human/H = M
+	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
+
+	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
+		return -1
+
+	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
+	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
+		SPAN_HIGHDANGER("You were Executed!"))
+
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
+
+	var/area/A = get_area(H)
+
+	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
+
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
 	damage_type = BURN
@@ -509,6 +536,66 @@
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_2
+	var/explosive = FALSE
+
+/datum/ammo/bullet/revolver/mateba/highimpact
+	name = ".454 heavy high-impact revolver bullet"
+	impact_name = "mateba"
+	impact_limbs = BODY_FLAG_HEAD
+	debilitate = list(0,2,0,0,0,1,0,0)
+
+	damage = BULLET_DAMAGE_TIER_11
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_2
+
+/datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
+	knockback(M, P, 4)
+
+/datum/ammo/bullet/revolver/mateba/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
+		return ..()
+
+	var/mob/living/carbon/human/H = M
+	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
+
+	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
+		return -1
+
+	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
+	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
+		SPAN_HIGHDANGER("You were Executed!"))
+
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
+
+	var/area/A = get_area(H)
+
+	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
+
+	if(explosive)
+		H.gib()
+
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
+	name = ".454 heavy explosive revolver bullet"
+	damage = BULLET_DAMAGE_TIER_20
+	damage_var_low = PROJECTILE_VARIANCE_TIER_10
+	damage_var_high = PROJECTILE_VARIANCE_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_10
+	explosive = TRUE
+
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
+	..()
+	cell_explosion(get_turf(M), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
+	..()
+	cell_explosion(get_turf(O), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
+	..()
+	if(T.density)
+		cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
 
 /*
 //================================================
@@ -1264,42 +1351,6 @@
 	damage = BULLET_DAMAGE_TIER_5
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
-
-//Changed so it can be used in multiple weapons.
-/datum/ammo/bullet/execution
-	name = "high-impact execution round"
-	impact_name = "mateba"
-	impact_limbs = BODY_FLAG_HEAD
-	debilitate = list(0,2,0,0,0,1,0,0)
-
-	damage = BULLET_DAMAGE_TIER_9
-	damage_var_low = PROJECTILE_VARIANCE_TIER_8
-	damage_var_high = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_2
-	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
-
-/datum/ammo/bullet/execution/on_hit_mob(mob/M, obj/item/projectile/P)
-	knockback(M, P, 4)
-
-/datum/ammo/bullet/execution/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
-		return ..()
-	var/mob/living/carbon/human/H = M
-	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
-
-	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
-		return -1
-
-	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
-	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
-		SPAN_HIGHDANGER("You were Executed!"))
-
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
-
-	var/area/A = get_area(H)
-
-	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
-	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
 
 /*
 //================================================

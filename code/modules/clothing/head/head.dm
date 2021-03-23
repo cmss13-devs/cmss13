@@ -444,6 +444,9 @@
 	name = "\improper Black Beret"
 	desc = "Worn by officers of special units."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 	icon_state = "ivan_beret"
 	item_state = "ivan_beret"
 	siemens_coefficient = 2.0

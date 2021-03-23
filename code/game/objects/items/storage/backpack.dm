@@ -182,13 +182,17 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 /obj/item/storage/backpack/santabag
 	name = "Santa's Gift Bag"
 	desc = "Space Santa uses this to deliver toys to all the nice children in space in Christmas! Wow, it's pretty big!"
-	icon_state = "giftbag0"
+	icon_state = "giftbag"
 	item_state = "giftbag"
 	w_class = SIZE_LARGE
-	storage_slots = null
-	max_w_class = SIZE_MEDIUM
-	max_storage_space = 400 // can store a ton of shit!
+	storage_slots = 30
+	max_w_class = SIZE_MASSIVE
+	worn_accessible = TRUE
 
+/obj/item/storage/backpack/santabag/Initialize()
+	. = ..()
+	for(var/total_storage_slots in 1 to storage_slots)
+		new /obj/item/m_gift(src)
 
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
@@ -509,7 +513,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(!ishuman(usr))
 		return
 	var/mob/living/carbon/human/H = usr
-	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
+	if(!skillcheck(H, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
 		to_chat(H, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 
@@ -755,8 +759,22 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "The Armory"
 	desc = "From the formless void, there springs an entity - More primordial than the elements themselves. In it's wake, there will follow a storm."
 	icon_state = "ivan_bag"
-	storage_slots = null
-	max_storage_space = 30
+	storage_slots = 28
+	worn_accessible = TRUE
+	max_w_class = SIZE_MASSIVE
+	can_hold = list(
+		/obj/item/weapon
+	)
+
+/obj/item/storage/backpack/ivan/Initialize()
+	. = ..()
+	var/list/template_guns = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver, /obj/item/weapon/gun/shotgun, /obj/item/weapon/gun/rifle, /obj/item/weapon/gun/smg, /obj/item/weapon/gun/energy, /obj/item/weapon/gun/launcher, /obj/item/weapon/gun/rifle/sniper)
+	var/list/bad_guns = typesof(/obj/item/weapon/gun/pill) + /obj/item/weapon/gun/souto + /obj/item/weapon/gun/energy/plasma_caster //guns that don't work for some reason
+	var/list/emplacements = list(/obj/item/device/m2c_gun , /obj/item/device/m56d_gun/mounted)
+	var/random_gun = pick(subtypesof(/obj/item/weapon/gun) - (template_guns + bad_guns) + emplacements)
+	for(var/total_storage_slots in 1 to storage_slots) //minus templates
+		new random_gun(src)
+		random_gun = pick(subtypesof(/obj/item/weapon/gun) - (template_guns + bad_guns) + emplacements)
 
 /obj/item/storage/backpack/souto
 	name = "\improper back mounted Souto vending machine"

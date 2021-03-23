@@ -282,7 +282,7 @@
 		if(!current_mag || !current_mag.current_rounds)
 			return FALSE
 
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS,  SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS,  SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 

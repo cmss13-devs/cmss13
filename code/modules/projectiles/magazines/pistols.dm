@@ -137,7 +137,10 @@
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/heavy
 
-
+/obj/item/ammo_magazine/pistol/heavy/highimpact
+	name = "\improper High Impact Desert Eagle magazine (.50)"
+	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact
+	icon_state = "deagleE" //PLACEHOLDER
 
 //-------------------------------------------------------
 //MAUSER MERC PISTOL //Inspired by the Makarov.

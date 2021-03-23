@@ -25,9 +25,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("High Impact Mateba Speedloader (.454)", 20, /obj/item/ammo_magazine/execution/mateba, null, VENDOR_ITEM_REGULAR),
+		list("High Impact Mateba Speedloader (.454)", 20, /obj/item/ammo_magazine/revolver/mateba/highimpact, null, VENDOR_ITEM_REGULAR),
 		list("Mateba Speedloader (.454)", 10, /obj/item/ammo_magazine/revolver/mateba, null, VENDOR_ITEM_REGULAR),
-		list("High Impact Desert Eagle Magazine (.50)", 25, /obj/item/ammo_magazine/execution/heavy, null, VENDOR_ITEM_REGULAR),
+		list("High Impact Desert Eagle Magazine (.50)", 25, /obj/item/ammo_magazine/pistol/heavy/highimpact, null, VENDOR_ITEM_REGULAR),
 		list("Desert Eagle Magazine (.50)", 10, /obj/item/ammo_magazine/pistol/heavy, null, VENDOR_ITEM_REGULAR),
 		list("M1911 Magazine (.45)", 10, /obj/item/ammo_magazine/pistol/m1911, null, VENDOR_ITEM_REGULAR),
 

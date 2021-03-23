@@ -168,7 +168,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	icon_state = "deliverycrate"
 
 /obj/item/spec_kit/attack_self(mob/user)
-	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED))
+	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a specialist!"))
 		return
 	if(select_and_spawn(user))

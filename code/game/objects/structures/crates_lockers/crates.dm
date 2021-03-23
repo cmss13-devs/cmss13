@@ -313,7 +313,58 @@
 	icon_state = "closed_weapons"
 	icon_opened = "open_weapons"
 	icon_closed = "closed_weapons"
+	var/obj/item/weapon_type
+	var/obj/item/ammo_type
+	var/ammo_count = 5
 
+/obj/structure/closet/crate/weapon/Initialize()
+	. = ..()
+	if(ammo_type)
+		for(var/t=0,t<ammo_count,t++)
+			new ammo_type(src)
+	if(weapon_type)
+		new weapon_type(src)
+
+
+	/* * * * * * * * * * * * * *
+	 * Training weapon crates. *
+	 * * * * * * * * * * * * * */
+
+/obj/structure/closet/crate/weapon/training/m41a
+	name = "training M41A MK2 crate"
+	desc = "A crate with an M41A MK2 rifle and nonlethal ammunition for it. Intended for use in combat exercises."
+	weapon_type = /obj/item/weapon/gun/rifle/m41a/training
+	ammo_type = /obj/item/ammo_magazine/rifle/rubber
+
+/obj/structure/closet/crate/weapon/training/l42a
+	name = "training L42A crate"
+	desc = "A crate with an L42A battle rifle and nonlethal ammunition for it. Intended for use in combat exercises."
+	weapon_type = /obj/item/weapon/gun/rifle/l42a/training
+	ammo_type = /obj/item/ammo_magazine/rifle/l42a/rubber
+
+/obj/structure/closet/crate/weapon/training/m39
+	name = "training M39 crate"
+	desc = "A crate with an M39 submachine gun and nonlethal ammunition for it. Intended for use in combat exercises."
+	weapon_type = /obj/item/weapon/gun/smg/m39/training
+	ammo_type = /obj/item/ammo_magazine/smg/m39/rubber
+
+/obj/structure/closet/crate/weapon/training/m4a3
+	name = "training M4A3 crate"
+	desc = "A crate with an M4A3 pistol and nonlethal ammunition for it. Intended for use in combat exercises."
+	weapon_type = /obj/item/weapon/gun/pistol/m4a3/training
+	ammo_type = /obj/item/ammo_magazine/pistol/rubber
+
+/obj/structure/closet/crate/weapon/training/mod88
+	name = "training 88 mod 4 crate"
+	desc = "A crate with an 88 mod 4 pistol and nonlethal ammunition for it. Intended for use in combat exercises."
+	weapon_type = /obj/item/weapon/gun/pistol/mod88/training
+	ammo_type = /obj/item/ammo_magazine/pistol/mod88/rubber
+
+/obj/structure/closet/crate/weapon/training/grenade
+	name = "rubber pellet M15 grenades crate"
+	desc = "A crate with multiple nonlethal M15 grenades. Intended for use in combat exercises and riot control."
+	ammo_type = /obj/item/explosive/grenade/HE/m15/rubber
+	ammo_count = 6
 
 
 /obj/structure/closet/crate/miningcar

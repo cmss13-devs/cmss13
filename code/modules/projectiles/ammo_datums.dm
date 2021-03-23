@@ -2194,6 +2194,15 @@
 		B.health -= rand(2, 5)
 		B.update_health(1)
 
+/datum/ammo/bullet/shrapnel/rubber
+	name = "rubber pellets"
+	icon_state = "rubber_pellets"
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+
+	damage = BULLET_DAMAGE_OFF
+	stamina_damage = BULLET_DAMAGE_TIER_5
+	shrapnel_chance = 0
+
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks

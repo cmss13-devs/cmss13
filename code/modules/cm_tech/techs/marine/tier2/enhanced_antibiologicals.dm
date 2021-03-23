@@ -69,6 +69,7 @@
 
 /obj/item/ammo_kit/incendiary
 	name = "incendiary ammo kit"
+	desc = "Converts magazines into incendiary ammo."
 	icon_state = "soapsyndie"
 
 /obj/item/ammo_kit/incendiary/get_convert_map()
@@ -97,6 +98,7 @@
 
 /obj/item/storage/box/shotgun/buckshot
 	name = "incendiary buckshot kit"
+	desc = "A box containing 5 handfuls of incendiary buckshot."
 	can_hold = list(
 		/obj/item/ammo_magazine/handful/shotgun/custom_color/incendiary
 	)
@@ -104,6 +106,7 @@
 
 /obj/item/storage/box/shotgun/slug
 	name = "incendiary slug kit"
+	desc = "A box containing 5 handfuls of incendiary slugs."
 	can_hold = list(
 		/obj/item/ammo_magazine/handful/shotgun/incendiary
 	)
@@ -111,6 +114,7 @@
 
 /obj/item/ammo_kit/penetrating
 	name = "wall-piercing ammo kit"
+	desc = "Converts magazines into wall-piercing ammo."
 	icon_state = "soapnt"
 
 /obj/item/ammo_kit/penetrating/get_convert_map()
@@ -126,6 +130,7 @@
 
 /obj/item/ammo_kit/toxin
 	name = "toxin ammo kit"
+	desc = "Converts magazines into toxin ammo."
 	icon_state = "soapdeluxe"
 
 /obj/item/ammo_kit/toxin/get_convert_map()

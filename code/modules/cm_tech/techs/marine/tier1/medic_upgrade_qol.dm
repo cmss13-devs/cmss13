@@ -9,6 +9,25 @@
 	required_points = 15
 	tier = /datum/tier/one
 
+/datum/tech/droppod/item/medic_czsp/pre_item_stats(mob/user)
+	. = ..()
+	var/datum/supply_packs/SP = /datum/supply_packs/upgraded_medical_kits
+
+	. += list(
+		list(
+			"content" = "Restricted usecase",
+			"color" = "orange",
+			"icon" = "exclamation-triangle",
+			"tooltip" = "Only usable by medics."
+		),
+		list(
+			"content" = "Requisition Unlock",
+			"color" = "orange",
+			"icon" = "unlock",
+			"tooltip" = "Unlocks the option to purchase [initial(SP.name)]"
+		)
+	)
+
 /datum/tech/droppod/item/medic_czsp/on_unlock()
 	. = ..()
 	var/datum/supply_packs/SP = /datum/supply_packs/upgraded_medical_kits
@@ -18,7 +37,7 @@
 /datum/tech/droppod/item/medic_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
 
-	if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+	if(!H || skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 		.["Medical CZSP"] = /obj/item/storage/box/combat_zone_support_package
 	else
 		var/type_to_add = /obj/item/stack/medical/bruise_pack
@@ -31,7 +50,8 @@
 		.["Random Medical Item"] = type_to_add
 
 /obj/item/storage/box/combat_zone_support_package
-	name = "medical czsp"
+	name = "Medical CZSP"
+	desc = "Contains upgraded medical kits, nanosplints and an upgraded medkit."
 	storage_slots = 3
 
 /obj/item/storage/box/combat_zone_support_package/Initialize()

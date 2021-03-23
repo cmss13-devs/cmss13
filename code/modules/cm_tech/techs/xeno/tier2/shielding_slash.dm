@@ -11,6 +11,21 @@
 	var/shield_per_slash = 20
 	tier = /datum/tier/two
 
+/datum/tech/xeno/shielding_slash/ui_static_data(mob/user)
+	. = ..()
+	.["stats"] += list(
+		list(
+			"content" = "Slashes required to activate: [round(max_shield/shield_per_slash)]",
+			"color" = "red",
+			"icon" = "angry"
+		),
+		list(
+			"content" = "Shield gained on activation: [max_shield]",
+			"color" = "orange",
+			"icon" = "shield-alt"
+		)
+	)
+
 /datum/tech/xeno/shielding_slash/on_unlock(datum/techtree/tree)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, .proc/give_shielding_slash)

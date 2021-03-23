@@ -88,6 +88,14 @@
 		"desc" = desc,
 	)
 
+	if(tech_flags & TECH_FLAG_MULTIUSE)
+		.["stats"] += list(list(
+			"content" = "Repurchasable",
+			"color" = "grey",
+			"icon" = "cart-plus",
+			"tooltip" = "Can be purchased multiple times."
+		))
+
 /datum/tech/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)

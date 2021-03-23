@@ -19,7 +19,7 @@
 
 /obj/item/storage/pouch/stimulant_injector
 	name = "stimulant pouch"
-	desc = "Holds stimulant injectors."
+	desc = "A pouch that holds stimulant injectors."
 	icon = 'icons/obj/items/clothing/pouches.dmi'
 	icon_state = "stimulant"
 	w_class = SIZE_LARGE //does not fit in backpack
@@ -38,12 +38,15 @@
 		new stimulant_type(src)
 
 /obj/item/storage/pouch/stimulant_injector/speed
+	desc = "A pouch that holds speed stimulant injectors."
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant
 
 /obj/item/storage/pouch/stimulant_injector/brain
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant
+	desc = "A pouch that holds brain stimulant injectors."
 
 /obj/item/storage/pouch/stimulant_injector/redemption
+	desc = "A pouch that holds redemption stimulant injectors."
 	storage_slots = 1
 	stimulant_type = /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant
 

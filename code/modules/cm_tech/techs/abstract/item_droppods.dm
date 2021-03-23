@@ -11,6 +11,27 @@
 		WEAR_IN_R_STORE
 	)
 	var/options_to_give = 1
+	var/restricted_usecase = FALSE
+
+/datum/tech/droppod/item/proc/pre_item_stats()
+	return list(list(
+		"content" = "Quantity to give: [options_to_give]",
+		"color" = "orange",
+		"icon" = "warehouse"
+	))
+
+/datum/tech/droppod/item/ui_static_data(mob/user)
+	. = ..()
+	.["stats"] += pre_item_stats()
+	var/list/data = get_options()
+	for(var/i in data)
+		var/obj/item/A = data[i]
+		.["stats"] += list(list(
+			"content" = "Item: [i]",
+			"color" = "green",
+			"icon" = "arrow-alt-circle-right",
+			"tooltip" = "[initial(A.desc)]"
+		))
 
 /datum/tech/droppod/item/proc/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	return list()

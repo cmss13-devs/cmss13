@@ -309,6 +309,24 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	qdel(src)
 	return TRUE
 
+/mob/dead/observer/verb/enter_tech_tree()
+	set category = "Ghost"
+	set name = "Teleport to Techtree"
+
+	var/list/trees = list()
+
+	for(var/T in SStechtree.trees)
+		trees += list("[T]" = SStechtree.trees[T])
+
+	var/value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
+
+	if(!value)
+		return
+
+	var/datum/techtree/tree = trees[value]
+
+	forceMove(tree.entrance)
+
 /mob/dead/observer/verb/dead_teleport_area()
 	set category = "Ghost"
 	set name = "Teleport to Area"

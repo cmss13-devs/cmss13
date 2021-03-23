@@ -9,6 +9,16 @@
 	var/charges_to_give = 5
 	tier = /datum/tier/three
 
+/datum/tech/xeno/powerup/artillery_blob/ui_static_data(mob/user)
+	. = ..()
+	.["stats"] += list(
+		list(
+			"content" = "Charges Given: [charges_to_give]",
+			"color" = "green",
+			"icon" = "exchange-alt"
+		)
+	)
+
 /datum/tech/xeno/powerup/artillery_blob/apply_powerup(mob/living/carbon/Xenomorph/target)
 	var/datum/action/xeno_action/B = get_xeno_action_by_type(target, /datum/action/xeno_action/activable/bombard/queen)
 

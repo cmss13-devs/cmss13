@@ -9,6 +9,15 @@
 	tier = /datum/tier/three
 	var/acid_damage_mult = 2
 
+/datum/tech/xeno/acidic_blood/ui_static_data(mob/user)
+	. = ..()
+	.["stats"] += list(
+		list(
+			"content" = "Acid Blood Damage Increase: [(acid_damage_mult-1)*100]%",
+			"color" = "xeno",
+			"icon" = "biohazard"
+		)
+	)
 
 /datum/tech/xeno/acidic_blood/on_unlock(datum/techtree/tree)
 	. = ..()

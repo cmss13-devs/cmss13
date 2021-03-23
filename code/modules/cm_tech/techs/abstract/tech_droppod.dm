@@ -10,7 +10,12 @@ GLOBAL_LIST_EMPTY_TYPED(unlocked_droppod_techs, /datum/tech/droppod)
 
 /datum/tech/droppod/ui_static_data(mob/user)
 	. = ..()
-	.["desc"] += "\nRequires an RTO; deployed via droppod."
+	.["stats"] += list(list(
+		"content" = "Deployed via droppod",
+		"color" = "grey",
+		"icon" = "shipping-fast",
+		"tooltip" = "RTOs can call down droppods using their telephone backpack."
+	))
 
 /datum/tech/droppod/on_unlock()
 	. = ..()

@@ -255,7 +255,7 @@
 		log_tgui(user, "Error: Zombie window detected, closing.",
 			window = window,
 			src_object = src_object)
-		//close(can_be_suspended = FALSE)
+		close(can_be_suspended = FALSE)
 		return
 	// Update through a normal call to ui_interact
 	if(status != UI_DISABLED && (autoupdate || force))

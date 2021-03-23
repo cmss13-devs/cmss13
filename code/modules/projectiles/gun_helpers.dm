@@ -179,6 +179,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				"WY Agent",
 				"Corporate Liaison",
 				"Event",
+				"UPP Armsmaster", //this rank is for the Fun - Ivan preset, it allows him to use the PMC guns randomly generated from his backpack
 			) return TRUE
 		switch(user.faction)
 			if(

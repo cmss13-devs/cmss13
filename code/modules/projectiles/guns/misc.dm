@@ -44,7 +44,7 @@
 	if(!skillcheck(user, SKILL_FIREARMS, SKILL_FIREARMS_DEFAULT))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return 0
-	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
+	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_UPP)
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return 0
 
@@ -97,7 +97,7 @@
 
 /obj/item/weapon/gun/m60/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	fire_delay = FIRE_DELAY_TIER_10
 	burst_amount = 5
 	burst_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
@@ -108,9 +108,6 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	empty_sound = 'sound/weapons/gun_empty.ogg'
-
-/obj/item/weapon/gun/m60/toggle_burst()
-	to_chat(usr, SPAN_WARNING("This weapon can only fire in bursts!"))
 
 //Spike launcher
 

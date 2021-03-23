@@ -465,7 +465,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 
 /client/proc/cmd_admin_grantallskills(var/mob/M in GLOB.mob_list)
 	set category = null
-	set name = "Grant All Skills"
+	set name = "Give Null Skills"
 
 	if(!check_rights(R_DEBUG|R_ADMIN))
 		return
@@ -478,7 +478,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 	else
 		alert("Invalid mob")
 
-	message_staff("[key_name_admin(usr)] has granted [M.key] all skills.")
+	message_staff("[key_name_admin(usr)] has given [M.key] null skills.")
 
 /client/proc/cmd_assume_direct_control(var/mob/M in GLOB.mob_list)
 	set name = "Control Mob"

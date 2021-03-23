@@ -358,13 +358,27 @@
 
 //Crazy Ivan's belt reskin
 /obj/item/storage/belt/marine/upp/ivan
-	name = "\improper Type 42 pattern load rig"
-	desc = "A modified variant of the standard-issue 41 pattern load rig."
+	name = "The Rack"
+	desc = "From the formless void, there springs an entity - More primordial than the elements themselves. In it's wake, there will follow a storm."
 	icon_state = "korovin_holster"
 	item_state = "ivan_belt"
-	storage_slots = 15
-	max_storage_space = 40
+	storage_slots = 56
+	max_storage_space = 56
 	has_gamemode_skin = FALSE
+	max_w_class = SIZE_MASSIVE
+	can_hold = list(
+		/obj/item/ammo_magazine
+	)
+
+/obj/item/storage/belt/marine/upp/ivan/Initialize()
+	. = ..()
+	var/list/bad_mags = typesof(/obj/item/ammo_magazine/hardpoint) + /obj/item/ammo_magazine/handful + /obj/item/ammo_magazine/flamer_tank/empty + /obj/item/ammo_magazine/rocket/custom + /obj/item/ammo_magazine/smg
+	var/list/sentry_mags = typesof(/obj/item/ammo_magazine/sentry) + /obj/item/ammo_magazine/sentry_flamer
+	var/list/internal_mags = (typesof(/obj/item/ammo_magazine/internal) + /obj/item/ammo_magazine/handful)
+	var/random_mag = pick(subtypesof(/obj/item/ammo_magazine) - (internal_mags + bad_mags + sentry_mags))
+	for(var/total_storage_slots in 1 to storage_slots) //minus templates
+		new random_mag(src)
+		random_mag = pick(subtypesof(/obj/item/ammo_magazine) - (internal_mags + bad_mags + sentry_mags))
 
 // M56E HMG gunner belt
 /obj/item/storage/belt/marine/m2c
@@ -604,6 +618,7 @@
 		gun_underlay = image(icon, src, current_gun.base_gun_icon)
 		gun_underlay.pixel_x = icon_x
 		gun_underlay.pixel_y = icon_y
+		gun_underlay.color = current_gun.color
 		icon_state += "_g"
 		item_state = icon_state
 		underlays += gun_underlay
@@ -657,7 +672,7 @@
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/execution/heavy
+		/obj/item/ammo_magazine/pistol/heavy/highimpact
 	)
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
@@ -730,8 +745,8 @@
 
 /obj/item/storage/belt/gun/m4a3/heavy/co/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/heavy/co(src)
-	new /obj/item/ammo_magazine/execution/heavy(src)
-	new /obj/item/ammo_magazine/execution/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/highimpact(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
 	new /obj/item/ammo_magazine/pistol/heavy(src)
@@ -783,14 +798,14 @@
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(
 		/obj/item/weapon/gun/revolver/mateba,
-		/obj/item/ammo_magazine/execution/mateba,
+		/obj/item/ammo_magazine/revolver/mateba/highimpact,
 		/obj/item/ammo_magazine/revolver/mateba
 	)
 
 /obj/item/storage/belt/gun/mateba/full/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba(src)
-	new /obj/item/ammo_magazine/execution/mateba(src)
-	new /obj/item/ammo_magazine/execution/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
@@ -808,8 +823,8 @@
 
 /obj/item/storage/belt/gun/mateba/cmateba/full/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/cmateba(src)
-	new /obj/item/ammo_magazine/execution/mateba(src)
-	new /obj/item/ammo_magazine/execution/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
@@ -826,11 +841,20 @@
 
 /obj/item/storage/belt/gun/mateba/admiral/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)
-	new /obj/item/ammo_magazine/execution/mateba(src)
-	new /obj/item/ammo_magazine/execution/mateba(src)
-	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/mateba/admiral/santa/fill_preset_inventory()
+	var/obj/item/weapon/gun/revolver/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral/santa(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/korovin

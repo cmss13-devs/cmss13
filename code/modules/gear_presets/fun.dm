@@ -363,3 +363,99 @@
 	// Webbing
 	for(var/i = 1 to W.slots)
 		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_ACCESSORY)
+
+/datum/equipment_preset/fun/santa
+	name = "Fun - Santa"
+	paygrade = "O8"
+	flags = EQUIPMENT_PRESET_EXTRA
+	skills = /datum/skills/everything
+	faction = FACTION_MARINE
+	faction_group = FACTION_LIST_MARINE
+	assignment = "Santa"
+
+	skills = null
+	idtype = /obj/item/card/id/admiral
+
+/datum/equipment_preset/fun/santa/New()
+	. = ..()
+	access = get_all_accesses() + get_all_centcom_access()
+
+/datum/equipment_preset/fun/santa/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = MALE
+	H.change_real_name(H, "Santa")
+
+	H.age = 270 //he is old
+	H.r_hair = 0
+	H.g_hair = 0
+	H.b_hair = 0
+
+/datum/equipment_preset/fun/santa/load_gear(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/santabag(H), WEAR_BACK)
+	//pack filled with gifts
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
+	//body
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/santa(H), WEAR_JACKET)
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H), WEAR_L_STORE)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/space/santahat(H), WEAR_HEAD)
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral/santa(H), WEAR_WAIST)
+
+	H.set_species("Human Hero") //Santa is STRONG.
+
+/datum/equipment_preset/upp/ivan
+	name = "Fun - Ivan"
+	flags = EQUIPMENT_PRESET_EXTRA
+	skills = /datum/skills/everything
+	assignment = "UPP Armsmaster"
+	rank = "UPP Armsmaster"
+	role_comm_title = null
+
+/datum/equipment_preset/upp/ivan/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = MALE
+	H.change_real_name(H, "Ivan")
+	H.f_style = "Shaved"
+	H.h_style = "Shaved Head"
+	H.ethnicity = "Scandinavian"
+	H.r_hair = 165
+	H.g_hair = 42
+	H.b_hair = 42
+
+/datum/equipment_preset/upp/ivan/load_gear(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/ivan, WEAR_BACK)
+	//back filled with random guns, it's awesome
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	//body + webbing
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	var/obj/item/clothing/accessory/storage/webbing/W = new()
+	UPP.attach_accessory(H, W)
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/ivan, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/m60, WEAR_J_STORE)
+	//webbing
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/m60, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/m60, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/m60, WEAR_IN_ACCESSORY)
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/frt_kit/full, WEAR_R_STORE)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet, WEAR_HEAD)
+	//limb
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/ivan, WEAR_WAIST)
+	//belt filled with random magazines, it's cool
+
+	H.set_species("Human Hero") //Ivan is STRONG.

@@ -66,7 +66,6 @@
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/cmb
 
-
 /obj/item/ammo_magazine/revolver/mateba
 	name = "\improper Mateba speed loader (.454)"
 	default_ammo = /datum/ammo/bullet/revolver/mateba
@@ -75,8 +74,16 @@
 	max_rounds = 6
 	gun_type = /obj/item/weapon/gun/revolver/mateba
 
+/obj/item/ammo_magazine/revolver/mateba/highimpact
+	name = "\improper High Impact Mateba speed loader (.454)"
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
+	icon_state = "matebaE"
 
-
+/obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie
+	name = "\improper Mateba explosive speed loader (.454)"
+	desc = "A label on it reads: WARNING: EXTREMELY DANGEROUS. DO NOT FIRE UNDER ANY CIRCUMSTANCES."
+	icon_state = "mateba_explosive"
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive
 
 //INTERNAL MAGAZINES
 
@@ -116,16 +123,20 @@
 	gun_type = /obj/item/weapon/gun/revolver/small
 
 //-------------------------------------------------------
+//BURST REVOLVER //Mateba is pretty well known. The cylinder folds up instead of to the side.
+
+/obj/item/ammo_magazine/internal/revolver/mateba
+	default_ammo = /datum/ammo/bullet/revolver
+	caliber = ".454"
+	gun_type = /obj/item/weapon/gun/revolver/mateba
+
+/obj/item/ammo_magazine/internal/revolver/mateba/explosive
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive
+
+//-------------------------------------------------------
 //MARSHALS REVOLVER //Spearhead exists in Alien cannon.
 
 /obj/item/ammo_magazine/internal/revolver/cmb
 	default_ammo = /datum/ammo/bullet/revolver/small
 	caliber = ".357"
 	gun_type = /obj/item/weapon/gun/revolver/cmb
-
-//-------------------------------------------------------
-//MATEBA AUTOREVOLVER //Spearhead exists in Alien cannon.
-/obj/item/ammo_magazine/internal/revolver/mateba
-	default_ammo = /datum/ammo/bullet/revolver/mateba
-	caliber = ".454"
-	gun_type = /obj/item/weapon/gun/revolver/mateba

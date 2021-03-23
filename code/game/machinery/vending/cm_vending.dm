@@ -515,7 +515,7 @@ IN_USE						used for vending/denying
 						to_chat(H, SPAN_WARNING("Only specialists can take specialist sets."))
 						vend_fail()
 						return
-					else if(!H.skills || H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_TRAINED)
+					else if(!H.skills || H.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ALL)
 						to_chat(H, SPAN_WARNING("You already have a specialization."))
 						vend_fail()
 						return

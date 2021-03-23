@@ -13,7 +13,7 @@
 	icon_state = "santa"
 	item_state = "santa"
 	slowdown = 0
-	allowed = list(/obj/item) //for stuffing exta special presents
+	allowed = list(/obj/item) //for stuffing extra special presents
 
 //Space pirate outfit
 /obj/item/clothing/head/helmet/space/pirate

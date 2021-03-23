@@ -14,6 +14,23 @@
 	/// Amount to heal xenos per second by if they're not on weeds
 	var/heal_amt_per_second = AMOUNT_PER_TIME(50, 30 SECONDS)
 
+/datum/tech/xeno/endurance/ui_static_data(mob/user)
+	. = ..()
+	.["stats"] += list(list(
+		"content" = "Offweed Speed Increase: [(1-offweed_speed_mult)*100]%",
+		"color" = "xeno",
+		"icon" = "tachometer-alt"
+	))
+
+	if(heal_amt_per_second)
+		.["stats"] += list(list(
+			"content" = "Heal per second: [1/heal_amt_per_second]",
+			"color" = "green",
+			"icon" = "syringe"
+		))
+
+
+
 /datum/tech/xeno/endurance/on_unlock(mob/M)
 	. = ..()
 

@@ -14,6 +14,16 @@
 
 	unlocked = TRUE
 
+/datum/tech/repeatable/ui_static_data(mob/user)
+	. = ..()
+	if(increase_per_purchase)
+		.["stats"] += list(list(
+			"content" = "Incremental Price: +[increase_per_purchase] per purchase",
+			"color" = "orange",
+			"icon" = "dollar-sign",
+			"tooltip" = "Increases the cost of this tech whenever it is purchased by [increase_per_purchase]."
+		))
+
 /datum/tech/repeatable/can_unlock(mob/M)
 	. = ..()
 	if(!.)

@@ -21,7 +21,7 @@
 
 	var/bonus_wall_health = 100
 
-	ui_theme = "xeno"
+	ui_theme = "hive_status"
 	background_icon = "xeno_background"
 	background_icon_locked = "xeno"
 

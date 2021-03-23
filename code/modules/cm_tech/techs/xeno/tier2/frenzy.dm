@@ -12,6 +12,16 @@
 	var/active = FALSE
 	xenos_required = FALSE
 
+/datum/tech/xeno/powerup/frenzy/ui_static_data(mob/user)
+	. = ..()
+	.["stats"] += list(
+		list(
+			"content" = "Duration: [DisplayTimeText(frenzy_duration, 1)]",
+			"color" = "grey",
+			"icon" = "clock"
+		)
+	)
+
 /datum/tech/xeno/powerup/frenzy/can_unlock(mob/M, datum/techtree/tree)
 	. = ..()
 	if(!.)

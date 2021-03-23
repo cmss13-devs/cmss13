@@ -10,9 +10,19 @@
 	required_points = 15
 	tier = /datum/tier/one
 
+/datum/tech/droppod/item/engi_czsp/pre_item_stats(mob/user)
+	. = ..()
+	. += list(list(
+		"content" = "Restricted usecase",
+		"color" = "orange",
+		"icon" = "exclamation-triangle",
+		"tooltip" = "Only usable by [JOB_SQUAD_ENGI]."
+	))
+
+
 /datum/tech/droppod/item/engi_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()
-	if(H.job == JOB_SQUAD_ENGI)
+	if(!H || H.job == JOB_SQUAD_ENGI)
 		.["Engineering Upgrade Kit"] = /obj/item/engi_upgrade_kit
 	else
 		.["Random Tool"] = pick(common_tools)
@@ -20,7 +30,7 @@
 
 /obj/item/engi_upgrade_kit
 	name = "engineering upgrade kit"
-	desc = "It seems to be a kit to upgrade an engineer's structure"
+	desc = "A kit used to upgrade the defenses of an engineer's sentry."
 
 	icon = 'icons/obj/items/pro_case.dmi'
 	icon_state = "pro_case_large"

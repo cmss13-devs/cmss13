@@ -12,6 +12,22 @@
 		/datum/resin_construction/resin_obj/acid_pillar
 	)
 
+/datum/tech/xeno/structures/ui_static_data(mob/user)
+	. = ..()
+	var/list/structures = list()
+
+	for(var/i in constructions_to_add)
+		var/datum/resin_construction/RC = i
+		structures += list(list(
+			"content" = "Construct: [initial(RC.name)]",
+			"color" = "green",
+			"tooltip" = initial(RC.desc),
+			"icon" = "plus"
+		))
+
+	.["stats"] += structures
+
+
 /datum/tech/xeno/structures/on_unlock(datum/techtree/tree)
 	. = ..()
 

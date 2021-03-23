@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, Flex, Section, Box, Icon } from '../components';
+import { Button, Stack, Section, Box } from '../components';
 import { Window } from '../layouts';
 
 export const TechNode = (props, context) => {
@@ -7,6 +7,7 @@ export const TechNode = (props, context) => {
   const {
     total_points, unlocked, theme,
     cost, name, desc, extra_buttons,
+    stats,
   } = data;
 
   return (
@@ -16,46 +17,65 @@ export const TechNode = (props, context) => {
       theme={theme}
     >
       <Window.Content>
-        <Flex direction="column" height="100%">
-          <Flex.Item grow={1}>
-            <Section title="Information">
-              <Flex direction="column">
-                <Flex.Item>
+        <Stack vertical height="100%">
+          <Stack.Item grow>
+            <Section title="Information" fill scrollable>
+              <Stack vertical>
+                <Stack.Item>
                   <Label label="Name" content={name} />
-                </Flex.Item>
-                <Flex.Item mt={1}>
+                </Stack.Item>
+                <Stack.Item>
                   <Label label="Description" content={desc} />
-                </Flex.Item>
-                <Flex.Item mt={1}>
+                </Stack.Item>
+                <Stack.Item>
                   <Label label="Cost" content={cost} />
-                </Flex.Item>
-              </Flex>
+                </Stack.Item>
+                {!!stats && (
+                  <Stack.Item>
+                    <Label label="Statistics" content={(
+                      <Stack vertical>
+                        {stats.map((stat, i) => (
+                          <Stack.Item key={i}>
+                            <Button
+                              content={stat.content}
+                              color={stat.color}
+                              icon={stat.icon}
+                              tooltip={stat.tooltip}
+                              tooltipPosition="top"
+                            />
+                          </Stack.Item>
+                        ))}
+                      </Stack>
+                    )} />
+                  </Stack.Item>
+                )}
+              </Stack>
             </Section>
-          </Flex.Item>
-          <Flex.Item mt={1}>
+          </Stack.Item>
+          <Stack.Item>
             <Section>
-              <Flex>
-                <Flex.Item grow={1}>
+              <Stack>
+                <Stack.Item grow>
                   <Label label="Current Points" content={Math.round(total_points*10)/10} />
-                </Flex.Item>
+                </Stack.Item>
                 {!!extra_buttons && (
-                  <Flex.Item>
-                    <Flex>
+                  <Stack.Item>
+                    <Stack>
                       {extra_buttons.map(val => (
-                        <Flex.Item key={val}>
+                        <Stack.Item key={val}>
                           <Button.Checkbox
                             checked={val.enabled}
                             content={val.name}
                             onClick={() => act(val.action, val)}
                           />
-                        </Flex.Item>
+                        </Stack.Item>
                       ))}
-                    </Flex>
-                  </Flex.Item>
+                    </Stack>
+                  </Stack.Item>
                 )}
-              </Flex>
-              <Flex mt={1} direction="column">
-                <Flex.Item grow={1}>
+              </Stack>
+              <Stack mt={1} vertical>
+                <Stack.Item grow>
                   {!!unlocked && (
                     <Box
                       textAlign="center"
@@ -76,11 +96,11 @@ export const TechNode = (props, context) => {
                       onClick={() => act("purchase")}
                     />
                   )}
-                </Flex.Item>
-              </Flex>
+                </Stack.Item>
+              </Stack>
             </Section>
-          </Flex.Item>
-        </Flex>
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
   );
@@ -90,13 +110,13 @@ export const Label = (props, context) => {
   const { label, content, ...rest } = props;
 
   return (
-    <Flex {...rest}>
-      <Flex.Item width="25%">
+    <Stack {...rest}>
+      <Stack.Item width="25%">
         <Box color="label">{label}:</Box>
-      </Flex.Item>
-      <Flex.Item width="75%">
+      </Stack.Item>
+      <Stack.Item width="75%">
         <Box className="TechNode__content">{content}</Box>
-      </Flex.Item>
-    </Flex>
+      </Stack.Item>
+    </Stack>
   );
 };

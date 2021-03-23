@@ -12,8 +12,20 @@
 	var/amount_to_give = 6
 	tier = /datum/tier/three
 
+/datum/tech/xeno/powerup/revive/ui_static_data(mob/user)
+	. = ..()
+	.["stats"] += list(
+		list(
+			"content" = "Amount Given: [amount_to_give]",
+			"color" = "green",
+			"icon" = "shopping-bag"
+		)
+	)
+
 /datum/tech/xeno/powerup/revive/can_unlock(mob/M)
 	. = ..()
+	if(!.)
+		return
 	if(!hive.living_xeno_queen?.ovipositor)
 		to_chat(M, SPAN_XENOWARNING("The Queen must be on her ovipositor to apply this tech!"))
 		return FALSE

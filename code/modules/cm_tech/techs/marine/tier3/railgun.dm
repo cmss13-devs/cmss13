@@ -10,6 +10,27 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	required_points = 20
 	tier = /datum/tier/three
+	var/obj/structure/machinery/computer/railgun/railgun_type = /obj/structure/machinery/computer/railgun
+
+/datum/tech/railgun/ui_static_data(mob/user)
+	. = ..()
+	.["stats"] += list(
+		list(
+			"content" = "Maximum Ammo: [initial(railgun_type.max_ammo)]",
+			"color" = "green",
+			"icon" = "warehouse"
+		),
+		list(
+			"content" = "Ammo Recharge Time: [DisplayTimeText(initial(railgun_type.ammo_recharge_time), 1)]",
+			"color" = "green",
+			"icon" = "battery-three-quarters"
+		),
+		list(
+			"content" = "Devastation Range: [initial(railgun_type.range)]",
+			"color" = "red",
+			"icon" = "bomb"
+		)
+	)
 
 /datum/tech/railgun/on_unlock()
 	. = ..()
@@ -20,7 +41,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		if(!T)
 			continue
 
-		var/obj/structure/machinery/computer/railgun/RG = new(T)
+		var/obj/structure/machinery/computer/railgun/RG = new railgun_type(T)
 		RG.dir = RCL.direction
 
 /datum/railgun_computer_location

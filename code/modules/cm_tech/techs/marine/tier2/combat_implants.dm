@@ -234,7 +234,7 @@
 
 /obj/item/device/implanter/subdermal_armor
 	name = "subdermal armor implant"
-	desc = "This implant will grant you armor under the skin, reducing incoming damage by a quarter."
+	desc = "This implant will grant you armor under the skin, reducing incoming damage and strengthening bones."
 	implant_type = /obj/item/device/internal_implant/subdermal_armor
 	implant_string = "your skin becoming significantly harder.. That's going to hurt in a decade."
 

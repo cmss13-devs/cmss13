@@ -74,6 +74,7 @@ FORENSIC SCANNER
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	flags_item = NOBLUDGEON
 	throwforce = 3
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST

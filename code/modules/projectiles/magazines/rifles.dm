@@ -256,3 +256,15 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/rifle/hunting
 	w_class = SIZE_SMALL
+
+//--------------------------------------------------------
+//Default bolt action rifle ammo
+/obj/item/ammo_magazine/rifle/boltaction
+	name = "\improper Bolt Action magazine (7.62mm)"
+	desc = "Bolt action magazine, simple really."
+	caliber = "7.62mm"
+	icon_state = "hunting"
+	default_ammo = /datum/ammo/bullet/rifle
+	max_rounds = 10
+	gun_type = /obj/item/weapon/gun/boltaction
+	w_class = SIZE_SMALL

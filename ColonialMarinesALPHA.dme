@@ -1713,6 +1713,7 @@
 #include "code\modules\projectiles\gun_helpers.dm"
 #include "code\modules\projectiles\projectile.dm"
 #include "code\modules\projectiles\targeting.dm"
+#include "code\modules\projectiles\guns\boltaction.dm"
 #include "code\modules\projectiles\guns\energy.dm"
 #include "code\modules\projectiles\guns\misc.dm"
 #include "code\modules\projectiles\guns\pistols.dm"

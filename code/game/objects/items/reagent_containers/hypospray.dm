@@ -13,6 +13,7 @@
 	possible_transfer_amounts = list(5,10,15,30)
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_equip_slot = SLOT_WAIST
+	flags_item = NOBLUDGEON
 	matter = list("plastic" = 1250, "glass" = 250)
 	var/skilllock = SKILL_MEDICAL_TRAINED
 	var/magfed = TRUE
@@ -63,7 +64,7 @@
 		hypounload()
 		to_chat(H, SPAN_NOTICE("You begin swapping vials."))
 	else
-		to_chat(H, SPAN_NOTICE("You begin loading a vial into [src]."))	
+		to_chat(H, SPAN_NOTICE("You begin loading a vial into [src]."))
 	if(do_after(H, 1.25 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && H.Adjacent(V))
 		if(isstorage(V.loc))
 			var/obj/item/storage/S = V.loc

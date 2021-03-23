@@ -90,6 +90,9 @@
 /datum/techtree/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
 
+	if(user.stat == DEAD)
+		return UI_UPDATE
+
 	if(has_access(user, TREE_ACCESS_MODIFY))
 		return UI_INTERACTIVE
 

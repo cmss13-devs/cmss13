@@ -82,11 +82,34 @@ FORENSIC SCANNER
 
 	var/mode = 1
 	var/hud_mode = 1
+	var/last_scan
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
-	M.health_scan(user, FALSE, mode, hud_mode)
+	last_scan = M.health_scan(user, FALSE, mode, hud_mode)
 	src.add_fingerprint(user)
 	return
+
+/obj/item/device/healthanalyzer/attack_self(mob/user)
+	if (!last_scan)
+		user.show_message("No previous scan found.")
+		return
+
+	switch (hud_mode)
+		if (1)
+			var/dat = last_scan
+			dat = replacetext(dat, "\n", "<br>")
+			dat = replacetext(dat, "\t", "&emsp;")
+			dat = replacetext(dat, "class='warning'", "class='[INTERFACE_RED]'")
+			dat = replacetext(dat, "class='scanner'", "class='[INTERFACE_RED]'")
+			dat = replacetext(dat, "class='scannerb'", "style='font-weight: bold;' class='[INTERFACE_RED]'")
+			dat = replacetext(dat, "class='scannerburn'", "class='[INTERFACE_ORANGE]'")
+			dat = replacetext(dat, "class='scannerburnb'", "style='font-weight: bold;' class='[INTERFACE_ORANGE]'")
+			show_browser(user, dat, name, "handscanner", "size=500x400")
+		if (0)
+			user.show_message(last_scan)
+
+	return
+
 
 /obj/item/device/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"

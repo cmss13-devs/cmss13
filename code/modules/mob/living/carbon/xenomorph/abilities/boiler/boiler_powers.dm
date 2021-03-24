@@ -224,10 +224,13 @@
 
 		if (trap_found)
 			continue
+
+		var/obj/effect/alien/resin/boilertrap/BT
 		if(empowered)
-			new /obj/effect/alien/resin/boilertrap/empowered(T, X, trap_ttl)
+			BT = new /obj/effect/alien/resin/boilertrap/empowered(T, X)
 		else
-			new /obj/effect/alien/resin/boilertrap/(T, X, trap_ttl)
+			BT = new /obj/effect/alien/resin/boilertrap/(T, X)
+		QDEL_IN(BT, trap_ttl)
 
 	if(empowered)
 		empowered = FALSE

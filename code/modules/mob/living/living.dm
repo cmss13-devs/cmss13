@@ -737,6 +737,8 @@
 	else
 		user.show_message(dat, 1)
 
+	return dat
+
 /mob/living/create_clone_movable(shift_x, shift_y)
 	..()
 	src.clone.hud_list = new /list(src.hud_list.len)

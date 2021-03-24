@@ -23,6 +23,11 @@
 	action_icon_state = "resting"
 	action_type = XENO_ACTION_CLICK
 
+/datum/action/xeno_action/onclick/xeno_resting/can_use_action()
+	var/mob/living/carbon/Xenomorph/X = owner
+	if(X && !X.buckled && !X.is_mob_incapacitated())
+		return TRUE
+
 // Shift Spits
 /datum/action/xeno_action/onclick/shift_spits
 	name = "Toggle Spit Type"

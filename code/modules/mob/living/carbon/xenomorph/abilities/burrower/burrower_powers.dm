@@ -88,6 +88,10 @@
 		to_chat(src, SPAN_XENOWARNING("You can't tunnel into a solid wall!"))
 		return
 
+	if(istype(T, /turf/open/space))
+		to_chat(src, SPAN_XENOWARNING("You make tunnels, not wormholes!"))
+		return
+
 	if(clone) //Prevents tunnels in Z transition areas
 		to_chat(src, SPAN_XENOWARNING("You make tunnels, not wormholes!"))
 		return

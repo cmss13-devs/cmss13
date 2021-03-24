@@ -493,7 +493,7 @@
 			if(empowered)
 				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_name))
 			var/found = null
-			for (var/datum/effects/xeno_freeze/F in H.effects_list)
+			for (var/datum/effects/boiler_trap/F in H.effects_list)
 				if (F.source_mob == linked_xeno)
 					found = F
 					break

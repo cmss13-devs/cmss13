@@ -356,6 +356,16 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/list/overlap = compare_group & access_to_check
 	return length(overlap)
 
+/mob/living/carbon/human/freeze()
+	. = ..()
+	if(.)
+		update_xeno_hostile_hud()
+
+/mob/living/carbon/human/unfreeze()
+	. = ..()
+	if(.)
+		update_xeno_hostile_hud()
+
 /mob/living/carbon/human/get_target_lock(var/access_to_check)
 	if(isnull(access_to_check))
 		return

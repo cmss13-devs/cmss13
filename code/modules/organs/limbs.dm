@@ -317,9 +317,13 @@
 
 		// heal brute damage
 		if(W.damage_type == CUT || W.damage_type == BRUISE)
+			var/old_brute = brute
 			brute = W.heal_damage(brute)
+			owner.pain.apply_pain(brute - old_brute)
 		else if(W.damage_type == BURN)
+			var/old_burn = burn
 			burn = W.heal_damage(burn)
+			owner.pain.apply_pain(burn - old_burn)
 
 	if(internal)
 		owner.pain.apply_pain(-PAIN_BONE_BREAK)

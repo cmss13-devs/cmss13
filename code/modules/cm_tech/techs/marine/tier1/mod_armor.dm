@@ -139,7 +139,7 @@
 	if(!has_suit)
 		return
 
-	unassign_signals(user)
+	unassign_signals(C, user)
 
 	UnregisterSignal(C, list(
 		COMSIG_ITEM_EQUIPPED,

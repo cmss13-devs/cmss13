@@ -397,13 +397,11 @@
 			if(iscarbon(usr))
 				var/mob/living/carbon/C = user
 				C.activate_hand("r")
-				user.next_move = world.time+2
 			return 1
 		if("l_hand")
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.activate_hand("l")
-				user.next_move = world.time+2
 			return 1
 		if("swap")
 			user.swap_hand()
@@ -415,7 +413,6 @@
 			if(user.attack_ui(slot_id))
 				user.update_inv_l_hand(0)
 				user.update_inv_r_hand(0)
-				user.next_move = world.time+6
 				return 1
 	return 0
 

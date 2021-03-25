@@ -280,33 +280,35 @@ var/list/global/item_storage_box_cache = list()
 	src.closer.screen_loc = "4:[storage_width+19],2:16"
 	return
 
-/obj/screen/storage/clicked(var/mob/user, var/list/mods)
-	if(user.is_mob_incapacitated(TRUE))
-		return 1
+/obj/screen/storage/clicked(var/mob/user, var/list/mods) //Much of this is replicated do_click behaviour.
+	if(user.is_mob_incapacitated() || !isturf(user.loc))
+		return TRUE
+	if(world.time <= user.next_move)
+		return TRUE
+	user.next_move = world.time
 
-	// Placing something in the storage screen
 	if(master)
 		var/obj/item/storage/S = master
 		var/obj/item/I = user.get_active_hand()
-		if(I)
-			if (master.attackby(I, user))
-				user.next_move = world.time + 2
-			return 1
+		// Placing something in the storage screen
+		if(I && !mods["alt"] && !mods["shift"] && !mods["ctrl"]) //These mods should be caught later on and either examine or do nothing.
+			if(master.Adjacent(user)) //Throwing a storage item (or, possibly, other people pulling it away) doesn't close its screen.
+				user.click_adjacent(master, I, mods)
+			return TRUE
 
-		// Taking something out of the storage screen (including clicking on item border overlay)
+		// examining or taking something out of the storage screen by clicking on item border overlay
 		var/list/screen_loc_params = splittext(mods["screen-loc"], ",")
 		var/list/screen_loc_X = splittext(screen_loc_params[1],":")
 		var/click_x = text2num(screen_loc_X[1])*32+text2num(screen_loc_X[2]) - 144
 
 		for(var/i in 1 to length(S.click_border_start))
-			if (S.click_border_start[i] <= click_x && click_x <= S.click_border_end[i])
+			if(S.click_border_start[i] <= click_x && click_x <= S.click_border_end[i])
 				I = LAZYACCESS(S.contents, i)
-				if (I)
-					if (I.clicked(user, mods))
-						return 1
-
-					I.attack_hand(user)
-					return 1
+				if(I && I.Adjacent(user)) //Catches pulling items out of nested storage.
+					if(I.clicked(user, mods)) //Examine, alt-click etc.
+						return TRUE
+					user.click_adjacent(I, null, mods)
+					return TRUE
 	return 0
 
 

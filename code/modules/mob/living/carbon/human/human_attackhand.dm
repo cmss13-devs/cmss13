@@ -6,7 +6,6 @@
 		visible_message(SPAN_DANGER("<B>[M] attempted to touch [src]!</B>"), null, null, 5)
 		return 0
 
-	M.next_move += 7 //Adds some lag to the 'attack'. This will add up to 10
 	switch(M.a_intent)
 		if(INTENT_HELP)
 

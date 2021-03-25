@@ -75,8 +75,8 @@
 		RestrainedClickOn(A)
 		return
 
-	// Throwing stuff, can't throw on inventory items nor screen objects
-	if (throw_mode && A.loc != src && !istype(A, /obj/screen))
+	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
+	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /obj/screen))
 		throw_item(A)
 		return
 
@@ -133,21 +133,21 @@
 
 /mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
 	if(W)
-		if(W.attack_speed && A.loc != src)
-			next_move += W.attack_speed
+		if(W.attack_speed && A.loc != src && !isstorage(A.loc))
+			if(issurface(A))
+				next_move += 2
+			else
+				next_move += W.attack_speed
 		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
-				next_move += 4
 				UnarmedAttack(A, 1, mods)
 				return
 
 			W.afterattack(A, src, 1, mods)
 	else
-		if(A.loc != src)
+		if(!isitem(A) && !issurface(A))
 			next_move += 4
-		else
-			next_move += 0.5
 		UnarmedAttack(A, 1, mods)
 	return
 

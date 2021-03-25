@@ -832,6 +832,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		COMSIG_MOB_FIRED_GUN_ATTACHMENT)
 		, .proc/fade_in)
 	RegisterSignal(H, COMSIG_MOB_DEATH, .proc/deactivate_camouflage)
+	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, .proc/deactivate_camouflage)
 	RegisterSignal(H, COMSIG_MOB_GETTING_UP, .proc/fix_density)
 	ghillie_movement = new /datum/event_handler/ghillie_movement()
 	ghillie_movement.gs = src
@@ -870,6 +871,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	UnregisterSignal(H, COMSIG_MOB_FIRED_GUN_ATTACHMENT)
 	UnregisterSignal(H, COMSIG_MOB_DEATH)
 	UnregisterSignal(H, COMSIG_MOB_GETTING_UP)
+	UnregisterSignal(H, COMSIG_HUMAN_EXTINGUISH)
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(H)

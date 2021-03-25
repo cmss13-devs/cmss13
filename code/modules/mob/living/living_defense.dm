@@ -130,6 +130,10 @@
 		return TRUE
 	return FALSE
 
+/mob/living/carbon/human/ExtinguishMob()
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_HUMAN_EXTINGUISH)
+
 /mob/living/proc/update_fire()
 	return
 

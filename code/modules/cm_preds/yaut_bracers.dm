@@ -31,6 +31,7 @@
 	var/inject_timer = 0
 	var/disc_timer = 0
 	var/cloak_timer = 0
+	var/cloak_cooldown
 	var/upgrades = 0 //Set to two, so admins can give preds shittier ones for young blood events or whatever. //Changed it back to 0 since it was breaking spawn-equipment and the translator -retrokinesis
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/combistick_cooldown = 0 //Let's add a cooldown for Yank Combistick so that it can't be spammed.
@@ -396,13 +397,25 @@
 		if(exploding)
 			to_chat(M, SPAN_WARNING("Your bracer is much too busy violently exploding to activate the cloaking device."))
 			return 0
+
+		if(cloak_cooldown && cloak_cooldown > world.time)
+			to_chat(M, SPAN_WARNING("Your cloak is malfunctioning and can't be enabled right now!"))
+			return
+
 		if(cloak_timer)
 			if(prob(50))
-				to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[cloak_timer]</b> ticks."))
+				to_chat(M, SPAN_WARNING("Your cloaking device is still recharging! Time left: <B>[cloak_timer]</b> seconds."))
 			return 0
-		if(!drain_power(M,50)) return
-		cloaked = 1
+
+		if(!drain_power(M,50))
+			return
+
+
+		cloaked = TRUE
+
+		RegisterSignal(M, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
 		RegisterSignal(M, COMSIG_HUMAN_PRE_BULLET_ACT, .proc/bullet_hit)
+
 		to_chat(M, SPAN_NOTICE("You are now invisible to normal detection."))
 		log_game("[key_name_admin(usr)] has enabled their cloaking device.")
 		for(var/mob/O in oviewers(M))
@@ -414,14 +427,28 @@
 		SA.remove_from_hud(M)
 		var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
 		XI.remove_from_hud(M)
-		spawn(1)
-			anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
+		anim(M.loc,M,'icons/mob/mob.dmi',,"cloak",,M.dir)
 
 	return 1
 
-/obj/item/clothing/gloves/yautja/proc/decloak(var/mob/user)
+/obj/item/clothing/gloves/yautja/proc/wrapper_fizzle_camouflage()
+	SIGNAL_HANDLER
+	var/mob/wearer = src.loc
+	wearer.visible_message(SPAN_DANGER("[wearer]'s cloak fizzles out!"), SPAN_DANGER("Your cloak fizzles out!"))
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(5, 4, src)
+	sparks.start()
+	decloak(wearer, TRUE)
+
+/obj/item/clothing/gloves/yautja/proc/decloak(var/mob/user, forced)
 	if(!user) return
+
+	UnregisterSignal(user, COMSIG_HUMAN_EXTINGUISH)
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
+
+	if(forced)
+		cloak_cooldown = world.time + 20 SECONDS
+
 	to_chat(user, "Your cloaking device deactivates.")
 	cloaked = 0
 	log_game("[key_name_admin(usr)] has disabled their cloaking device.")
@@ -436,9 +463,8 @@
 	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(user)
 
-	spawn(1)
-		if(user)
-			anim(user.loc,user,'icons/mob/mob.dmi',,"uncloak",,user.dir)
+	if(user)
+		anim(user.loc,user,'icons/mob/mob.dmi',,"uncloak",,user.dir)
 
 
 /obj/item/clothing/gloves/yautja/verb/caster()

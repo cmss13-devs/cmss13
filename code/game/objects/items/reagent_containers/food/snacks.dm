@@ -3110,7 +3110,8 @@
 	name = "CHUNK box"
 	desc = "A bar of \"The <b>CHUNK</b>\" brand chocolate. <i>\"The densest chocolate permitted to exist according to federal law. We are legally required to ask you not to use this blunt object for anything other than nutrition.\"</i>"
 	icon_state = "chunk"
-	force = 10 //LEGAL LIMIT OF CHOCOLATE
+	force = 15 //LEGAL LIMIT OF CHOCOLATE
+	throwforce = 10
 	bitesize = 2
 	wrapper = /obj/item/trash/chunk
 

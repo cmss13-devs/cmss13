@@ -9,6 +9,8 @@ default:
   interruptible: true
 
 variables:
+  GIT_DEPTH: "20"
+  GIT_FETCH_EXTRA_FLAGS: "--no-tags"
   # CI environment settings
   DOCKER_BUILDKIT: 1
   DOCKER_DRIVER: "overlay2"
@@ -21,7 +23,6 @@ variables:
   BYOND_MAJOR: "513"
   BYOND_MINOR: "1539"
   SPDMM_VERSION: "suite-1.6"
-  RUSTG_VERSION: "0.4.7" # For packaging in runner container
   # Resource settings
   BYOND_DOWNLOAD_URL: "https://secure.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip"
   SPDMM_DOWNLOAD_URL: "https://github.com/SpaceManiac/SpacemanDMM/releases/download/${SPDMM_VERSION}"
@@ -56,6 +57,12 @@ build:tgui:
   stage: prepare
   image: $IMG_BUILD_NODE
   dependencies: []
+  cache:
+    key: "tgui-deps"
+    paths:
+      - 'tgui/.yarn/cache'
+  variables:
+    CACHE_FALLBACK_KEY: "tgui-deps"
   script:
     - chmod u+x tgui/bin/tgui
     - tgui/bin/tgui
@@ -96,7 +103,7 @@ build:dm:
     - 'build:tgui'
     - 'report:changelog'
   cache:
-    key: "byond-${BYOND_MAJOR}.${BYOND_MINOR}-${CI_COMMIT_REF_SLUG}"
+    key: "byond-${BYOND_MAJOR}.${BYOND_MINOR}"
     paths:
       - byond.zip
   script:
@@ -117,22 +124,17 @@ build:dm:
     expire_in: '7 days'
 
 # Run tests
-test:json:
+tests:
   stage: build
   image: $IMG_BUILD_PYTHON
-  dependencies: []
-  script:
-    - find . -iname "*.json" -not -path "*/node_modules/*" -exec python3 ./tools/json_verifier.py {} \;
-
-test:dreamchecker:
-  stage: build
   dependencies:
     - 'build:map-templates'
   cache:
-    key: "dreamchecker-${SPDMM_VERSION}-${CI_COMMIT_REF_SLUG}"
+    key: "dreamchecker-${SPDMM_VERSION}"
     paths:
       - dreamchecker
   script:
+    - find . -iname "*.json" -not -path "*/node_modules/*" -exec python3 ./tools/json_verifier.py {} \;
     - "[ -f dreamchecker ] || wget -O dreamchecker ${SPDMM_DOWNLOAD_URL}/dreamchecker"
     - chmod u+x dreamchecker
     - ./dreamchecker --json
@@ -147,21 +149,22 @@ build:runner:
     - 'build:tgui'
     - 'report:changelog'
   script:
-    - docker pull ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG} || true
+    - docker pull ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:latest || docker pull ${CI_REGISTRY_IMAGE}/${CI_DEFAULT_BRANCH}:latest || true
     - docker build
       --platform=linux/386
-      --cache-from ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}
+      --cache-from ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:latest
+      --cache-from ${CI_REGISTRY_IMAGE}/${CI_DEFAULT_BRANCH}:latest
       --build-arg BUILDKIT_INLINE_CACHE=1
       --build-arg BYOND_BASE_IMAGE=${IMG_BUILD_CMBASE}
       --build-arg BYOND_MAJOR
       --build-arg BYOND_MINOR
       --build-arg BYOND_DOWNLOAD_URL
       --build-arg DM_PROJECT_NAME
-      --tag ${CI_REGISTRY_IMAGE}:${CI_PIPELINE_ID}
-      --tag ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG}
+      --tag ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:${CI_PIPELINE_ID}
+      --tag ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:latest
       --target cm-runner .
-    - docker push ${CI_REGISTRY_IMAGE}:${CI_PIPELINE_ID}
-    - docker push ${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_SLUG} || true
+    - docker push ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:${CI_PIPELINE_ID}
+    - docker push ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:latest || true
   rules:
     - if: '$CI_REGISTRY_IMAGE'
 
@@ -174,7 +177,7 @@ report:dmdoc:
   dependencies:
     - 'build:map-templates'
   cache:
-    key: "dmdoc-${SPDMM_VERSION}-${CI_COMMIT_REF_SLUG}"
+    key: "dmdoc-${SPDMM_VERSION}"
     paths:
       - dmdoc-bin
   script:
@@ -187,52 +190,34 @@ report:dmdoc:
       - 'dmdoc/'
     expose_as: 'DM Documentation'
     expire_in: '3 days'
-
-report:maps:
-  stage: extra
-  image:
-    name: alpine/git
-    entrypoint: [""]
-  dependencies: []
-  cache:
-    key: "dmm-tools-${SPDMM_VERSION}-${CI_COMMIT_REF_SLUG}"
-    paths:
-      - dmm-tools
-  script:
-    - "[ -f dmm-tools ] || wget -O dmm-tools ${SPDMM_DOWNLOAD_URL}/dmm-tools"
-    - chmod u+x dmm-tools
-    - find maps -iname "*.dmm" -exec ./dmm-tools map-info --json {} \; | tee mapinfo.txt
-  artifacts:
-    name: ci_mapinfo
-    paths:
-      - 'mapinfo.txt'
-    expose_as: 'Global Map Info'
-    expire_in: '7 days'
   rules:
-    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"'
-      changes:
-        - "maps/**/*.dmm"
+    - changes:
+      - "*.dm"
 
-report:maps-renders-full:
+# Reports effective map changes on same branch, using dmm-tools to render full map file
+report:map-changed-report:
   stage: extra
   image:
     name: alpine/git
     entrypoint: [""]
   dependencies: []
   cache:
-    key: "dmm-tools-${SPDMM_VERSION}-${CI_COMMIT_REF_SLUG}"
+    key: "dmm-tools-${SPDMM_VERSION}"
     paths:
       - dmm-tools
   script:
+    - CHANGED_MAP_FILES=`git diff-tree -r --name-only --no-commit-id ${CI_COMMIT_BEFORE_SHA}..${CI_COMMIT_SHA} maps/*.dmm`
     - "[ -f dmm-tools ] || wget -O dmm-tools ${SPDMM_DOWNLOAD_URL}/dmm-tools"
     - chmod u+x dmm-tools
-    - ./dmm-tools minimap -o maps-renders $(git diff-tree -r --name-only --no-commit-id ${CI_COMMIT_BEFORE_SHA}..${CI_COMMIT_SHA} maps/*.dmm)
+    - ./dmm-tools map-info --json ${CHANGED_MAP_FILES} > mapinfo.txt
+    - ./dmm-tools minimap -o maps-renders ${CHANGED_MAP_FILES}
   artifacts:
-    name: ci_map_renders
+    name: ci_map_changes
     paths:
       - 'maps-renders/'
-    expose_as: 'Maps Renders'
-    expire_in: '1 day'
+      - 'mapinfo.txt'
+    expose_as: 'Maps Changes'
+    expire_in: '1 days'
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BEFORE_SHA'
       changes:

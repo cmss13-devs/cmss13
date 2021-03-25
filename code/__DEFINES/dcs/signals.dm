@@ -149,6 +149,9 @@
 #define COMSIG_LIVING_PREIGNITION "living_preignition"
 	#define COMPONENT_CANCEL_IGNITION (1<<0)
 
+/// From /mob/living/carbon/human/ExtinguishMob()
+#define COMSIG_HUMAN_EXTINGUISH "human_extinguish"
+
 /// From /obj/flamer_fire/Crossed
 #define COMSIG_LIVING_FLAMER_CROSSED "living_flamer_crossed"
 /// From /obj/flamer_fire/Initialize

@@ -288,7 +288,7 @@
 					var/obj/item/clothing/gloves/yautja/Y = H.gloves
 					if(Y && istype(Y) && Y.cloaked)
 						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
-						Y.decloak(H)
+						Y.decloak(H, TRUE)
 
 		else if(isXeno(C))
 			river_slowdown = 1.3

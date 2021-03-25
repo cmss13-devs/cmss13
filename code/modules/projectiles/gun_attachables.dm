@@ -1489,7 +1489,7 @@ Defined in conflicts.dm of the #defines folder.
 		return internal_extinguisher.afterattack(target, user)
 
 /obj/item/attachable/attached_gun/extinguisher/proc/initialize_internal_extinguisher()
-	internal_extinguisher = new /obj/item/tool/extinguisher/mini()
+	internal_extinguisher = new /obj/item/tool/extinguisher/mini/integrated_flamer()
 	internal_extinguisher.safety = FALSE
 	internal_extinguisher.create_reagents(internal_extinguisher.max_water)
 	internal_extinguisher.reagents.add_reagent("water", internal_extinguisher.max_water)
@@ -1497,7 +1497,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/attached_gun/extinguisher/pyro
 	name = "HME-88B underbarrel extinguisher"
 	desc = "An experimental Taiho-Technologies HME-88B underbarrel extinguisher integrated with a select few gun models. It is capable of putting out the strongest of flames. Point at flame before applying pressure."
-	flags_attach_features = ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE
+	flags_attach_features = ATTACH_ACTIVATION|ATTACH_WEAPON|ATTACH_MELEE //not removable
 
 /obj/item/attachable/attached_gun/extinguisher/pyro/initialize_internal_extinguisher()
 	internal_extinguisher = new /obj/item/tool/extinguisher/pyro()

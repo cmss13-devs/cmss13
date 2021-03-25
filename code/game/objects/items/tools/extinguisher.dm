@@ -31,9 +31,12 @@
 	hitsound = null	//it is much lighter, after all.
 	throwforce = 2
 	w_class = SIZE_SMALL
-	force = 3.0
+	force = 3
 	max_water = 30
 	sprite_name = "miniFE"
+
+/obj/item/tool/extinguisher/mini/integrated_flamer
+	max_water = 60
 
 // A solely internal extinguisher
 /obj/item/tool/extinguisher/pyro
@@ -76,7 +79,7 @@
 
 	if(safety || (!isturf(target) && !isturf(target.loc)))
 		return ..()
-	
+
 	if(src.reagents.total_volume < 1)
 		to_chat(usr, SPAN_DANGER("\The [src] is empty."))
 		return

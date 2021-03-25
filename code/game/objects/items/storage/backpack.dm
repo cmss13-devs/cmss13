@@ -486,6 +486,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	var/camo_active = FALSE
 	var/camo_alpha = 10
 	var/allow_gun_usage = FALSE
+	var/cloak_cooldown
 
 	actions_types = list(/datum/action/item_action/specialist/toggle_cloak)
 
@@ -521,7 +522,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 		deactivate_camouflage(H)
 		return
 
+	if(cloak_cooldown && cloak_cooldown > world.time)
+		to_chat(H, SPAN_WARNING("Your cloak is malfunctioning and can't be enabled right now!"))
+		return
+
 	RegisterSignal(H, COMSIG_GRENADE_PRE_PRIME, .proc/cloak_grenade_callback)
+	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, .proc/wrapper_fizzle_camouflage)
 
 	camo_active = TRUE
 	H.visible_message(SPAN_DANGER("[H] vanishes into thin air!"), SPAN_NOTICE("You activate your cloak's camouflage."), max_distance = 4)
@@ -538,13 +544,28 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	XI.remove_from_hud(H)
 
 	anim(H.loc, H, 'icons/mob/mob.dmi', null, "cloak", null, H.dir)
+	return TRUE
 
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/wrapper_fizzle_camouflage()
+	SIGNAL_HANDLER
+	var/mob/wearer = src.loc
+	wearer.visible_message(SPAN_DANGER("[wearer]'s cloak fizzles out!"), SPAN_DANGER("Your cloak fizzles out!"))
+	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+	sparks.set_up(5, 4, src)
+	sparks.start()
+	deactivate_camouflage(wearer, TRUE, TRUE)
 
-/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(var/mob/living/carbon/human/H, var/anim = TRUE)
+/obj/item/storage/backpack/marine/satchel/scout_cloak/proc/deactivate_camouflage(var/mob/living/carbon/human/H, var/anim = TRUE, var/forced)
 	if(!istype(H))
 		return FALSE
 
-	UnregisterSignal(H, COMSIG_GRENADE_PRE_PRIME)
+	UnregisterSignal(H, list(
+	COMSIG_GRENADE_PRE_PRIME,
+	COMSIG_HUMAN_EXTINGUISH
+	))
+
+	if(forced)
+		cloak_cooldown = world.time + 10 SECONDS
 
 	camo_active = FALSE
 	H.visible_message(SPAN_DANGER("[H] shimmers into existence!"), SPAN_WARNING("Your cloak's camouflage has deactivated!"), max_distance = 4)
@@ -561,7 +582,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(anim)
 		anim(H.loc, H,'icons/mob/mob.dmi', null, "uncloak", null, H.dir)
 
-	addtimer(CALLBACK(src, .proc/allow_shooting, H), 5)
+	addtimer(CALLBACK(src, .proc/allow_shooting, H), 0.5 SECONDS)
 
 // This proc is to cancel priming grenades in /obj/item/explosive/grenade/attack_self()
 /obj/item/storage/backpack/marine/satchel/scout_cloak/proc/cloak_grenade_callback(mob/user)

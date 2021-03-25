@@ -4,6 +4,7 @@
 
 /datum/keybinding/mob/stop_pulling
 	hotkey_keys = list("H", "Delete")
+	classic_keys = list("Delete")
 	name = "stop_pulling"
 	full_name = "Stop pulling"
 	description = ""
@@ -22,6 +23,7 @@
 
 /datum/keybinding/mob/swap_hands
 	hotkey_keys = list("X", "Northeast") // PAGEUP
+	classic_keys = list("X", "Northeast")
 	name = "swap_hands"
 	full_name = "Swap hands"
 	description = ""
@@ -37,6 +39,7 @@
 
 /datum/keybinding/mob/activate_inhand
 	hotkey_keys = list("Z", "Southeast") // Southeast = PAGEDOWN
+	classic_keys = list("Y", "Z", "Ctrl+Y", "Ctrl+Z")
 	name = "activate_inhand"
 	full_name = "Activate in-hand"
 	description = "Uses whatever item you have inhand"
@@ -52,6 +55,7 @@
 
 /datum/keybinding/mob/drop_item
 	hotkey_keys = list("Q")
+	classic_keys = list()
 	name = "drop_item"
 	full_name = "Drop Item"
 	description = ""
@@ -71,6 +75,7 @@
 
 /datum/keybinding/mob/target_head_cycle
 	hotkey_keys = list("Numpad8")
+	classic_keys = list("Numpad8")
 	name = "target_head_cycle"
 	full_name = "Target: Cycle Head"
 	description = "Pressing this key targets the head, and continued presses will cycle to the eyes and mouth. This will impact where you hit people, and can be used for surgery."
@@ -85,6 +90,7 @@
 
 /datum/keybinding/mob/target_r_arm
 	hotkey_keys = list("Numpad4")
+	classic_keys = list("Numpad4")
 	name = "target_r_arm"
 	full_name = "Target: right arm"
 	description = "Pressing this key targets the right arm. This will impact where you hit people, and can be used for surgery."
@@ -99,6 +105,7 @@
 
 /datum/keybinding/mob/target_body_chest
 	hotkey_keys = list("Numpad5")
+	classic_keys = list("Numpad5")
 	name = "target_body_chest"
 	full_name = "Target: Body"
 	description = "Pressing this key targets the body. This will impact where you hit people, and can be used for surgery."
@@ -113,6 +120,7 @@
 
 /datum/keybinding/mob/target_left_arm
 	hotkey_keys = list("Numpad6")
+	classic_keys = list("Numpad6")
 	name = "target_left_arm"
 	full_name = "Target: left arm"
 	description = "Pressing this key targets the body. This will impact where you hit people, and can be used for surgery."
@@ -127,6 +135,7 @@
 
 /datum/keybinding/mob/target_right_leg
 	hotkey_keys = list("Numpad1")
+	classic_keys = list("Numpad1")
 	name = "target_right_leg"
 	full_name = "Target: Right leg"
 	description = "Pressing this key targets the right leg. This will impact where you hit people, and can be used for surgery."
@@ -141,6 +150,7 @@
 
 /datum/keybinding/mob/target_body_groin
 	hotkey_keys = list("Numpad2")
+	classic_keys = list("Numpad2")
 	name = "target_body_groin"
 	full_name = "Target: Groin"
 	description = "Pressing this key targets the groin. This will impact where you hit people, and can be used for surgery."
@@ -155,6 +165,7 @@
 
 /datum/keybinding/mob/target_left_leg
 	hotkey_keys = list("Numpad3")
+	classic_keys = list("Numpad3")
 	name = "target_left_leg"
 	full_name = "Target: left leg"
 	description = "Pressing this key targets the left leg. This will impact where you hit people, and can be used for surgery."
@@ -169,8 +180,9 @@
 
 /datum/keybinding/mob/prevent_movement
 	hotkey_keys = list("Ctrl", "Alt")
+	classic_keys = list("Ctrl", "Alt")
 	name = "block_movement"
-	full_name = "Block movement"
+	full_name = "Face / Block movement"
 	description = "Prevents you from moving"
 	keybind_signal = COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN
 

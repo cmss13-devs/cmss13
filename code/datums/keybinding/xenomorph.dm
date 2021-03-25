@@ -7,6 +7,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_one
 	hotkey_keys = list("Shift+C")
+	classic_keys = list()
 	name = "primary_attack_one"
 	full_name = "Primary Attack One"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_ONE
@@ -21,6 +22,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_two
 	hotkey_keys = list("Shift+F")
+	classic_keys = list()
 	name = "primary_attack_two"
 	full_name = "Primary Attack Two"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_TWO
@@ -35,6 +37,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_three
 	hotkey_keys = list("Shift+R")
+	classic_keys = list()
 	name = "primary_attack_three"
 	full_name = "Primary Attack Three"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_THREE
@@ -49,6 +52,7 @@
 
 /datum/keybinding/xenomorph/primary_attack_four
 	hotkey_keys = list("Shift+T")
+	classic_keys = list()
 	name = "primary_attack_four"
 	full_name = "Primary Attack Four"
 	keybind_signal = COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR

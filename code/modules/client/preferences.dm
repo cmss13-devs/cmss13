@@ -360,6 +360,12 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += " <a href='byond://?src=\ref[user];preference=loadout;task=input'>Add</a>"
 		if(gear && gear.len)
 			dat += " <a href='byond://?src=\ref[user];preference=loadout;task=clear'>Clear</a>"
+
+	dat += "<br><br>"
+	dat += "<h2><b><u>Input Settings:</u></b></h2>"
+	dat += "<b>Mode</b> <a href='?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "Hotkeys mode" : "Send to chat"]</a><br>"
+	dat += "<a href='?_src_=prefs;preference=viewmacros'><b>View Keybinds</b></a><br>"
+
 	dat += "</div>"
 
 	dat += "<div id='column3'>"
@@ -373,8 +379,6 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Ghost Sight:</b> <a href='?_src_=prefs;preference=ghost_sight'><b>[(toggles_chat & CHAT_GHOSTSIGHT) ? "All Emotes" : "Nearest Creatures"]</b></a><br>"
 	dat += "<b>Ghost Radio:</b> <a href='?_src_=prefs;preference=ghost_radio'><b>[(toggles_chat & CHAT_GHOSTRADIO) ? "All Chatter" : "Nearest Speakers"]</b></a><br>"
 	dat += "<b>Ghost Hivemind:</b> <a href='?_src_=prefs;preference=ghost_hivemind'><b>[(toggles_chat & CHAT_GHOSTHIVEMIND) ? "Show Hivemind" : "Hide Hivemind"]</b></a><br>"
-	dat += "<b>Macros</b> <a href='?_src_=prefs;preference=viewmacros'><b>View Macros</b></a><br>"
-	dat += "<b>Hotkey mode:</b> <a href='?_src_=prefs;preference=hotkeys'>[(hotkeys) ? "Hotkeys" : "Default"]</a><br>"
 	dat += "<b>Toggle Being Able to Hurt Yourself: \
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_IGNORE_SELF]'><b>[toggle_prefs & TOGGLE_IGNORE_SELF ? "On" : "Off"]</b></a><br>"
 	dat += "<b>Toggle Help Intent Safety: \
@@ -764,7 +768,7 @@ var/const/MAX_SAVE_SLOTS = 10
 			if(hotkeys)
 				winset(user, null, "input.focus=true")
 			else
-				winset(user, null, "input.focus=true")
+				winset(user, null, "input.focus=false")
 
 		if("traits")
 			switch(href_list["task"])

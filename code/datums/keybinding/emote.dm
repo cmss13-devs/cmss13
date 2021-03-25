@@ -6,6 +6,7 @@
 
 /datum/keybinding/emote/proc/link_to_emote(datum/emote/faketype)
 	hotkey_keys = list()
+	classic_keys = list("F4")
 	emote_key = initial(faketype.key)
 	name = initial(faketype.key)
 	full_name = capitalize(initial(faketype.key))

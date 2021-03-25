@@ -18,7 +18,8 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 /datum/tgui_macro/New(var/client/C, var/datum/preferences/P)
 	. = ..()
 	owner = C
-	C?.set_macros()
+	if(C)
+		INVOKE_ASYNC(C, /client/proc/set_macros)
 	prefs = P
 
 /datum/tgui_macro/ui_data(mob/user)
@@ -70,7 +71,7 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 					kbinds[old_key] -= kb_name
 					if(!length(kbinds[old_key]))
 						kbinds -= old_key
-				owner.set_macros()
+				INVOKE_ASYNC(owner, /client/proc/set_macros)
 				prefs.save_preferences()
 				return
 
@@ -94,7 +95,7 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 			kbinds[full_key] = sortList(kbinds[full_key])
 
 			prefs.save_preferences()
-			owner.set_macros()
+			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			return TRUE
 		if("clear_keybind")
 			var/list/kbinds = prefs.key_bindings
@@ -117,6 +118,6 @@ GLOBAL_LIST_INIT(ui_data_keybindings, generate_keybind_ui_data())
 				return TRUE
 			prefs.hotkeys = (choice == "Hotkey")
 			prefs.key_bindings = (prefs.hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
-			owner.set_macros()
+			INVOKE_ASYNC(owner, /client/proc/set_macros)
 			prefs.save_preferences()
 			return TRUE

@@ -4,6 +4,7 @@
 
 /datum/keybinding/movement/north
 	hotkey_keys = list("W", "North")
+	classic_keys = list("W", "North")
 	name = "North"
 	full_name = "Move North"
 	description = "Moves your character north"
@@ -11,8 +12,9 @@
 
 /datum/keybinding/movement/northface
 	hotkey_keys = list("Alt+North", "Alt+W")
+	classic_keys = list("Alt+North", "Alt+W")
 	name = "face_north"
-	full_name = "Face North"
+	full_name = "Lock Face North"
 	description = "Face north"
 	keybind_signal = COMSIG_KB_MOVEMENT_FACE_NORTH_DOWN
 
@@ -25,6 +27,7 @@
 
 /datum/keybinding/movement/south
 	hotkey_keys = list("S", "South")
+	classic_keys = list("S", "South")
 	name = "South"
 	full_name = "Move South"
 	description = "Moves your character south"
@@ -32,8 +35,9 @@
 
 /datum/keybinding/movement/southface
 	hotkey_keys = list("Alt+South", "Alt+S")
+	classic_keys = list("Alt+South", "Alt+S")
 	name = "face_south"
-	full_name = "Face South"
+	full_name = "Lock Face South"
 	description = "Face south"
 	keybind_signal = COMSIG_KB_MOVEMENT_FACE_SOUTH_DOWN
 
@@ -45,6 +49,7 @@
 	return TRUE
 /datum/keybinding/movement/west
 	hotkey_keys = list("A", "West")
+	classic_keys = list("A", "West")
 	name = "West"
 	full_name = "Move West"
 	description = "Moves your character left"
@@ -52,8 +57,9 @@
 
 /datum/keybinding/movement/westface
 	hotkey_keys = list("Alt+West", "Alt+A")
+	classic_keys = list("Alt+West", "Alt+A")
 	name = "face_west"
-	full_name = "Face West"
+	full_name = "Lock Face West"
 	description = "Face west"
 	keybind_signal = COMSIG_KB_MOVEMENT_FACE_WEST_DOWN
 
@@ -66,6 +72,7 @@
 
 /datum/keybinding/movement/east
 	hotkey_keys = list("D", "East")
+	classic_keys = list("D", "East")
 	name = "East"
 	full_name = "Move East"
 	description = "Moves your character east"
@@ -73,8 +80,9 @@
 
 /datum/keybinding/movement/eastface
 	hotkey_keys = list("Alt+East", "Alt+D")
+	classic_keys = list("Alt+East", "Alt+D")
 	name = "face_east"
-	full_name = "Face East"
+	full_name = "Lock Face East"
 	description = "Face east"
 	keybind_signal = COMSIG_KB_MOVEMENT_FACE_EAST_DOWN
 

@@ -53,6 +53,11 @@
 		if(BARRICADE_BSTATE_MOVABLE)
 			to_chat(user, SPAN_INFO("The protection panel has been removed and the anchor bolts loosened. It's ready to be taken apart."))
 
+/obj/structure/barricade/plasteel/weld_cade(obj/item/W, mob/user)
+	busy = TRUE
+	..()
+	busy = FALSE
+
 /obj/structure/barricade/plasteel/attackby(obj/item/W, mob/user)
 	if(iswelder(W))
 		if(busy || tool_cooldown > world.time)
@@ -70,20 +75,7 @@
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
-		if(WT.remove_fuel(1, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
-			SPAN_NOTICE("You begin repairing the damage to [src]."))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			busy = 1
-			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-				busy = 0
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
-				SPAN_NOTICE("You repair [src]."))
-				update_health(-200)
-				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			else
-				busy = 0
-				WT.remove_fuel(-1)
+		weld_cade(WT, user)
 		return
 
 	if(try_nailgun_usage(W, user))

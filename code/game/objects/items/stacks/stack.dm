@@ -155,10 +155,12 @@
 				return
 
 		if(R.time)
-			if(usr.action_busy) return
+			if(usr.action_busy)
+				return
+			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
 			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
 				SPAN_NOTICE("You start assembling \a [R.title]."))
-			if(!do_after(usr, max(R.time * usr.get_skill_duration_multiplier(SKILL_CONSTRUCTION), R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(usr, max(R.time * time_mult, R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			//check again after some time has passed

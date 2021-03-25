@@ -1,12 +1,4 @@
 macro "default"
-	elem
-		name = "Tab"
-		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
-
-macro "hotkeymode"
-	elem
-		name = "Tab"
-		command = ".winset \"mainwindow.macro=default hotkey_toggle.is-checked=false input.focus=true\""
 
 menu "menu"
 	elem
@@ -186,20 +178,10 @@ window "mainwindow"
 		left = "mapwindow"
 		right = "infowindow"
 		is-vert = true
-	elem "hotkey_toggle"
-		type = BUTTON
-		pos = 560,420
-		size = 80x20
-		anchor1 = 100,100
-		anchor2 = none
-		saved-params = ""
-		text = "Hotkey Toggle"
-		command = ".winset \"mainwindow.macro!=default ? mainwindow.macro=default hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
-		button-type = pushbox
 	elem "input"
 		type = INPUT
 		pos = 3,420
-		size = 437x20
+		size = 517x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		background-color = #d3b5b5
@@ -208,7 +190,7 @@ window "mainwindow"
 		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = 520,420
+		pos = 600,420
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -218,7 +200,7 @@ window "mainwindow"
 		button-type = pushbox
 	elem "oocbutton"
 		type = BUTTON
-		pos = 480,420
+		pos = 560,420
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -228,7 +210,7 @@ window "mainwindow"
 		button-type = pushbox
 	elem "mebutton"
 		type = BUTTON
-		pos = 440,420
+		pos = 520,420
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none

@@ -5,6 +5,7 @@
 
 /datum/keybinding/client/admin_help
 	hotkey_keys = list("F1")
+	classic_keys = list("F1")
 	name = "admin_help"
 	full_name = "Admin Help"
 	description = "Ask an admin for help."
@@ -20,6 +21,7 @@
 
 /datum/keybinding/client/screenshot
 	hotkey_keys = list("F2")
+	classic_keys = list()
 	name = "screenshot"
 	full_name = "Screenshot"
 	description = "Take a screenshot."
@@ -34,6 +36,7 @@
 
 /datum/keybinding/client/minimal_hud
 	hotkey_keys = list("F12")
+	classic_keys = list("F12")
 	name = "minimal_hud"
 	full_name = "Minimal HUD"
 	description = "Hide most HUD features"

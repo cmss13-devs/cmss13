@@ -13,7 +13,7 @@
 		CRASH("Keybind [src] called unredefined down() without a keybind_signal.")
 
 	// Default keys to the master "hotkey_keys"
-	if(LAZYLEN(hotkey_keys) && !LAZYLEN(classic_keys))
+	if(LAZYLEN(hotkey_keys) && !islist(classic_keys))
 		classic_keys = hotkey_keys.Copy()
 
 /datum/keybinding/proc/down(client/user)

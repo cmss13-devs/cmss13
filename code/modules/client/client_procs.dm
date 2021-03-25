@@ -269,11 +269,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	view = world_view_size
 	. = ..()	//calls mob.Login()
 
-	runtime_macro_insert("Northeast", "hotkeymode", ".SwapMobHand")
-	runtime_macro_insert("Northeast", "default", ".SwapMobHand")
-
 	if(SSinput.initialized)
-		set_macros()
+		INVOKE_ASYNC(src, /client/proc/set_macros)
 
 	// Version check below if we ever need to start checking against BYOND versions again.
 
@@ -525,8 +522,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 				if("South")
 					movement_keys[key] = SOUTH
 				if("Say")
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=.say")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"say\\n.typing\"")
 				if("OOC")
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=ooc")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
 				if("Me")
-					winset(src, "default-[REF(key)]", "parent=default;name=[key];command=.me")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")

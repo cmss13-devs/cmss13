@@ -101,6 +101,7 @@
 
 	S["lang_chat_disabled"]	>> lang_chat_disabled
 	S["hear_vox"] >> hear_vox
+	S["hotkeys"] >> hotkeys
 
 	//Sanitize
 	ooccolor		= sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -131,6 +132,7 @@
 	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	key_bindings 		= sanitize_keybindings(key_bindings)
 	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
+	hotkeys  			= sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	vars["fps"] = fps
 
 	if(remembered_key_bindings)
@@ -201,6 +203,7 @@
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["key_bindings"] << key_bindings
+	S["hotkeys"] << hotkeys
 
 	S["hear_vox"] << hear_vox
 

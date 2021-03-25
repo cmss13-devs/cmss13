@@ -7,6 +7,7 @@
 
 /datum/keybinding/carbon/toggle_throw_mode
 	hotkey_keys = list("R", "Southwest") // END
+	classic_keys =list("R", "Southwest")
 	name = "toggle_throw_mode"
 	full_name = "Toggle throw mode"
 	description = "Toggle throwing the current item or not."
@@ -24,6 +25,7 @@
 
 /datum/keybinding/carbon/toggle_throw_mode/high
 	hotkey_keys = list("Ctrl+R", "Ctrl+Southwest") // END
+	classic_keys = list("Ctrl+R", "Ctrl+Southwest")
 	name = "toggle_high_throw_mode"
 	full_name = "Toggle high throw mode"
 	description = "Toggle throwing the current item or not. This one does a high throw."
@@ -33,6 +35,7 @@
 
 /datum/keybinding/carbon/select_help_intent
 	hotkey_keys = list("1")
+	classic_keys = list("1")
 	name = "select_help_intent"
 	full_name = "Select help intent"
 	description = ""
@@ -49,6 +52,7 @@
 
 /datum/keybinding/carbon/select_disarm_intent
 	hotkey_keys = list("2")
+	classic_keys = list("2")
 	name = "select_disarm_intent"
 	full_name = "Select disarm intent"
 	description = ""
@@ -65,6 +69,7 @@
 
 /datum/keybinding/carbon/select_grab_intent
 	hotkey_keys = list("3")
+	classic_keys = list("3")
 	name = "select_grab_intent"
 	full_name = "Select grab intent"
 	description = ""
@@ -81,6 +86,7 @@
 
 /datum/keybinding/carbon/select_harm_intent
 	hotkey_keys = list("4")
+	classic_keys = list("4")
 	name = "select_harm_intent"
 	full_name = "Select harm intent"
 	description = ""
@@ -96,6 +102,7 @@
 
 /datum/keybinding/carbon/give
 	hotkey_keys = list("G")
+	classic_keys = list()
 	name = "Give_Item"
 	full_name = "Give item"
 	description = "Give the item you're currently holding"

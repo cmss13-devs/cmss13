@@ -7,6 +7,7 @@
 
 /datum/keybinding/admin/admin_say
 	hotkey_keys = list("F3")
+	classic_keys = list("F5")
 	name = "admin_say"
 	full_name = "Admin say"
 	description = "Talk with other admins."
@@ -21,6 +22,7 @@
 
 /datum/keybinding/admin/mod_say
 	hotkey_keys = list()
+	classic_keys = list()
 	name = "mod_say"
 	full_name = "Mod say"
 	description = "Talk with other mods."
@@ -35,6 +37,7 @@
 
 /datum/keybinding/admin/mentor_say
 	hotkey_keys = list()
+	classic_keys = list()
 	name = "mentor_say"
 	full_name = "Mentor say"
 	description = "Talk with other mentors."
@@ -49,6 +52,7 @@
 
 /datum/keybinding/admin/admin_ghost
 	hotkey_keys = list("F5")
+	classic_keys = list()
 	name = "admin_ghost"
 	full_name = "Aghost"
 	description = "Go ghost"
@@ -63,6 +67,7 @@
 
 /datum/keybinding/admin/player_panel_new
 	hotkey_keys = list("F6")
+	classic_keys = list("F6")
 	name = "player_panel_new"
 	full_name = "Player Panel New"
 	description = "Opens up the new player panel"
@@ -77,6 +82,7 @@
 
 /datum/keybinding/admin/toggle_buildmode_self
 	hotkey_keys = list("F7")
+	classic_keys = list()
 	name = "toggle_buildmode_self"
 	full_name = "Toggle Buildmode Self"
 	description = "Toggles buildmode"
@@ -91,6 +97,7 @@
 
 /datum/keybinding/admin/stealthmode
 	hotkey_keys = list("F8")
+	classic_keys = list("F8")
 	name = "stealth_mode"
 	full_name = "Stealth mode"
 	description = "Enters stealth mode"
@@ -105,6 +112,7 @@
 
 /datum/keybinding/admin/deadsay
 	hotkey_keys = list("F10")
+	classic_keys = list()
 	name = "dsay"
 	full_name = "deadsay"
 	description = "Allows you to send a message to dead chat"
@@ -119,6 +127,7 @@
 
 /datum/keybinding/admin/deadmin
 	hotkey_keys = list()
+	classic_keys = list()
 	name = "deadmin"
 	full_name = "Deadmin"
 	description = "Shed your admin powers"
@@ -133,6 +142,7 @@
 
 /datum/keybinding/admin/readmin
 	hotkey_keys = list()
+	classic_keys = list()
 	name = "readmin"
 	full_name = "Readmin"
 	description = "Regain your admin powers"

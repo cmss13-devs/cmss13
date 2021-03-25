@@ -34,7 +34,7 @@ SUBSYSTEM_DEF(input)
 	var/list/clients = GLOB.clients
 	for(var/i in 1 to clients.len)
 		var/client/user = clients[i]
-		user.set_macros()
+		INVOKE_ASYNC(user, /client/proc/set_macros)
 
 /datum/controller/subsystem/input/fire()
 	var/list/clients = GLOB.clients // Let's sing the list cache song

@@ -527,3 +527,5 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=ooc")
 				if("Me")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
+				if("Whisper")
+					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")

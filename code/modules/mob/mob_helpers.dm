@@ -436,6 +436,3 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
-		else
-			if(isYautja(src) || (isSynth(src) && !isEarlySynthetic(src)))
-				return DURATION_MULTIPLIER_TIER_3 //Acceleration for things that don't fall under skills

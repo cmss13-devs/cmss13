@@ -15,6 +15,7 @@
 	destroyed_stack_amount = 0
 	can_wire = FALSE
 	bullet_divider = 2
+	metallic = FALSE
 
 /obj/structure/barricade/snow/New(loc, mob/user, direction)
 	if(direction)
@@ -78,6 +79,7 @@
 	can_wire = FALSE
 	bullet_divider = 2
 	repair_materials = list("wood" = 1)
+	metallic = FALSE
 
 /obj/structure/barricade/wooden/attackby(obj/item/W as obj, mob/user as mob)
 	for(var/obj/effect/xenomorph/acid/A in src.loc)

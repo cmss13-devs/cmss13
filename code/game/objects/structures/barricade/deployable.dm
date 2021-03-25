@@ -31,18 +31,9 @@
 			to_chat(user, SPAN_WARNING("[src] doesn't need repairs."))
 			return
 
-		if(WT.remove_fuel(1, user))
-			user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
-			SPAN_NOTICE("You begin repairing the damage to [src]."))
-			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
-				user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
-				SPAN_NOTICE("You repair [src]."))
-				update_health(-100)
-				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-			else
-				WT.remove_fuel(-1)
+		weld_cade(WT, user)
 		return
+
 	else if(iswrench(W))
 		if(user.action_busy)
 			return

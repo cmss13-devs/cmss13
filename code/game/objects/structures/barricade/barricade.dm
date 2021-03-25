@@ -13,6 +13,8 @@
 	var/destroyed_stack_amount //to specify a non-zero amount of stack to drop when destroyed
 	health = 100 //Pretty tough. Changes sprites at 300 and 150
 	var/maxhealth = 100 //Basic code functions
+	 /// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
+	var/starting_maxhealth = 100
 	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
 	var/barricade_resistance = 5 //How much force an item needs to even damage it at all.
 	var/barricade_hitsound
@@ -30,12 +32,14 @@
 	var/burn_multiplier = 1
 	var/explosive_multiplier = 1
 	var/repair_materials = list()
+	var/metallic = TRUE
 
 /obj/structure/barricade/Initialize(mapload, mob/user)
 	. = ..()
 	if(user)
 		user.count_niche_stat(STATISTICS_NICHE_CADES)
 	addtimer(CALLBACK(src, .proc/update_icon), 0)
+	starting_maxhealth = maxhealth
 
 /obj/structure/barricade/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -262,9 +266,9 @@
 		if(!deconstruct && destroyed_stack_amount)
 			stack_amt = destroyed_stack_amount
 		else
-			stack_amt = round(stack_amount * (health/maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
+			stack_amt = round(stack_amount * (health/starting_maxhealth)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 		if(upgraded)
-			stack_amt += round(2 * (health/maxhealth))
+			stack_amt += round(2 * (health/starting_maxhealth))
 
 		if(stack_amt)
 			new stack_type (loc, stack_amt)
@@ -344,6 +348,28 @@ obj/structure/barricade/proc/take_damage(var/damage)
 		if(25 to 50) damage_state = BARRICADE_DMG_MODERATE
 		if(50 to 75) damage_state = BARRICADE_DMG_SLIGHT
 		if(75 to INFINITY) damage_state = BARRICADE_DMG_NONE
+
+/obj/structure/barricade/proc/weld_cade(obj/item/tool/weldingtool/WT, mob/user)
+	if(!metallic)
+		return FALSE
+
+	if(!(WT.remove_fuel(2, user)))
+		return FALSE
+
+	user.visible_message(SPAN_NOTICE("[user] begins repairing damage to [src]."),
+	SPAN_NOTICE("You begin repairing the damage to [src]."))
+	playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+
+	var/welding_time = skillcheck(user, SKILL_CONSTRUCTION, 2) ? 5 SECONDS : 10 SECONDS
+	if(!do_after(user, welding_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
+		return FALSE
+
+	user.visible_message(SPAN_NOTICE("[user] repairs some damage on [src]."),
+	SPAN_NOTICE("You repair [src]."))
+	user.count_niche_stat(STATISTICS_NICHE_REPAIR_CADES)
+	update_health(-200)
+	playsound(src.loc, 'sound/items/Welder2.ogg', 25, TRUE)
+	return TRUE
 
 /obj/structure/barricade/verb/count_rotate()
 	set name = "Rotate Barricade Counter-Clockwise"

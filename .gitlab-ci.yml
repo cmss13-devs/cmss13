@@ -206,7 +206,7 @@ report:map-changed-report:
     paths:
       - dmm-tools
   script:
-    - CHANGED_MAP_FILES=`git diff-tree -r --name-only --no-commit-id ${CI_COMMIT_BEFORE_SHA}..${CI_COMMIT_SHA} maps/*.dmm`
+    - CHANGED_MAP_FILES=`git diff-tree -r --diff-filter=d --name-only --no-commit-id ${CI_COMMIT_BEFORE_SHA}..${CI_COMMIT_SHA} maps/*.dmm`
     - "[ -f dmm-tools ] || wget -O dmm-tools ${SPDMM_DOWNLOAD_URL}/dmm-tools"
     - chmod u+x dmm-tools
     - ./dmm-tools map-info --json ${CHANGED_MAP_FILES} > mapinfo.txt
@@ -217,7 +217,7 @@ report:map-changed-report:
       - 'maps-renders/'
       - 'mapinfo.txt'
     expose_as: 'Maps Changes'
-    expire_in: '1 days'
+    expire_in: '7 days'
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BEFORE_SHA'
       changes:

@@ -4,6 +4,7 @@
 */
 /mob/living/proc/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
 	apply_damage(damage, damage_type, def_zone)
+	return damage
 
 /*
 	apply_damage(a,b,c)

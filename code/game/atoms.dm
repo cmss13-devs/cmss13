@@ -394,9 +394,7 @@ Parameters are passed from New.
 		pass_flags_cache[type] = pass_flags
 	else
 		initialize_pass_flags()
-
-	if(!mapload)
-		Decorate()
+	Decorate(mapload)
 
 	return INITIALIZE_HINT_NORMAL
 

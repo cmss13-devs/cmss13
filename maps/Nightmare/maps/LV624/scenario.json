@@ -1,0 +1,20 @@
+[
+{
+	"type": "pick", "name": "LV624 Potential Path",
+	"choices": [
+		{ "type": "def", "values": { "mainpath": "left"   } },
+		{ "type": "def", "values": { "mainpath": "bridge" } },
+		{ "type": "def", "values": { "mainpath": "right"  } }
+	]
+},
+{
+	"type": "pick", "name": "LV624 Global Event",
+	"weights": [ 2, 4, 2, 2 ],
+	"choices": [
+		{ "type": "def", "values": { "lvevent": "none"       } },
+		{ "type": "def", "values": { "lvevent": "last_stand" } },
+		{ "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "bridge"  } },
+		{ "type": "def", "values": { "lvevent": "fallen_ship", "mainpath": "right" } }
+	]
+}
+]

@@ -1,6 +1,6 @@
 {
     "map_name": "CORSAT",
-    "map_path": "map_files/Corsat",
+    "map_path": "CORSAT",
     "map_file": "Corsat.dmm",
     "environment_traits": {
         "Lockdown": true,
@@ -32,5 +32,9 @@
         "neaera",
         "stok"
     ],
-    "traits": [{ "Ground": true }]
+	"traits": [{ "Ground": true }],
+	"nightmare": {
+		"scenario": "maps/Nightmare/maps/CORSAT/scenario.json",
+		"mapgen": "maps/Nightmare/maps/CORSAT/mapgen.json"
+	}
 }

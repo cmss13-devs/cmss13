@@ -133,7 +133,7 @@ var/datum/test_manager/test_executor = new
 		sleep(10)
 
 	// Start the game
-	SSticker.force_start()
+	SSticker.request_start()
 
 	// Wait for the game to start
 	while(SSticker.current_state != GAME_STATE_PLAYING)

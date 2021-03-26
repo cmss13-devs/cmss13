@@ -85,6 +85,8 @@
 		round_time_river = rand(-100,100)
 		flags_round_type |= MODE_FOG_ACTIVATED
 
+	..()
+
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
@@ -92,8 +94,6 @@
 		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
 		T = new(t)
 		T.id = "hole[i]"
-
-	..()
 	return TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////

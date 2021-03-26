@@ -11,138 +11,161 @@
 	always_unpowered = 1 //Will this mess things up? God only knows
 
 //Jungle
-/area/lv624/ground/jungle1
+/area/lv624/ground/jungle/south_east_jungle
 	name ="\improper Southeast Jungle"
 	icon_state = "southeast"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/jungle2
-	name ="\improper Southern Jungle"
+/area/lv624/ground/jungle/south_central_jungle
+	name ="\improper Southern Central Jungle"
 	icon_state = "south"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/jungle3
+/area/lv624/ground/jungle/south_west_jungle
 	name ="\improper Southwest Jungle"
 	icon_state = "southwest"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/jungle4
+/area/lv624/ground/jungle/west_jungle
 	name ="\improper Western Jungle"
 	icon_state = "west"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/jungle5
+/area/lv624/ground/jungle/east_jungle
 	name ="\improper Eastern Jungle"
 	icon_state = "east"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/jungle6
+/area/lv624/ground/jungle/north_west_jungle
 	name ="\improper Northwest Jungle"
 	icon_state = "northwest"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/jungle7
+/area/lv624/ground/jungle/north_jungle
 	name ="\improper Northern Jungle"
 	icon_state = "north"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/jungle8
+/area/lv624/ground/jungle/north_east_jungle
 	name ="\improper Northeast Jungle"
 	icon_state = "northeast"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/jungle9
+/area/lv624/ground/jungle/central_jungle
 	name ="\improper Central Jungle"
 	icon_state = "central"
 	//ambience = list('sound/ambience/jungle_amb1.ogg')
 
-//Sand
-/area/lv624/ground/sand1
+/area/lv624/ground/jungle/west_central_jungle
+	name ="\improper West Central Jungle"
+	icon_state = "west"
+	//ambience = list('sound/ambience/jungle_amb1.ogg')
+
+/area/lv624/ground/jungle/east_central_jungle
+	name ="\improper East Central Jungle"
+	icon_state = "east"
+	//ambience = list('sound/ambience/jungle_amb1.ogg')
+
+
+//The Barrens
+/area/lv624/ground/barrens
+	name = "\improper Barrens"
+	icon_state = "yellow"
+	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lv624/ground/barrens/west_barrens
 	name = "\improper Western Barrens"
 	icon_state = "west"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
-/area/lv624/ground/sand2
-	name = "\improper Central Barrens"
-	icon_state = "red"
-	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
-
-/area/lv624/ground/sand3
+/area/lv624/ground/barrens/east_barrens
 	name = "\improper Eastern Barrens"
 	icon_state = "east"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
-/area/lv624/ground/sand4
-	name = "\improper North Western Barrens"
-	icon_state = "northwest"
-	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
-
-/area/lv624/ground/sand5
-	name = "\improper North Central Barrens"
+/area/lv624/ground/barrens/containers
+	name = "\improper Containers"
 	icon_state = "blue-red"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
-/area/lv624/ground/sand6
+/area/lv624/ground/barrens/north_east_barrens
 	name = "\improper North Eastern Barrens"
 	icon_state = "northeast"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
-/area/lv624/ground/sand7
+/area/lv624/ground/barrens/south_west_barrens
 	name = "\improper South Western Barrens"
 	icon_state = "southwest"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
-/area/lv624/ground/sand8
-	name = "\improper South Central Barrens"
+/area/lv624/ground/barrens/central_barrens
+	name = "\improper Central Barrens"
 	icon_state = "away1"
 	//ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
-/area/lv624/ground/sand9
+/area/lv624/ground/barrens/south_eastern_barrens
 	name = "\improper South Eastern Barrens"
 	icon_state = "southeast"
 //	ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
 
-/area/lv624/ground/river1
-	name = "\improper Western River"
+/area/lv624/ground/barrens/south_eastern_jungle_barrens
+	name = "\improper South East Jungle Barrens"
+	icon_state = "southeast"
+//	ambience = list('sound/ambience/ambimine.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambisin4.ogg')
+
+/area/lv624/ground/river
+	name = "\improper River"
 	icon_state = "blueold"
 //	ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/river2
+/area/lv624/ground/river/west_river
+	name = "\improper Western River"
+	icon_state = "blueold"
+//	ambience = list('sound/ambience/jungle_amb1.ogg')
+/area/lv624/ground/river/central_river
 	name = "\improper Central River"
 	icon_state = "purple"
 //	ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/river3
+/area/lv624/ground/river/east_river
 	name = "\improper Eastern River"
 	icon_state = "bluenew"
 //	ambience = list('sound/ambience/jungle_amb1.ogg')
 
-/area/lv624/ground/compound
+
+//Colony Areas
+/area/lv624/ground/colony
 	name = "\improper Weston-Yamada Compound"
 	icon_state = "green"
 
-/area/lv624/ground/compound/ne
-	name = "\improper Northeast W-Y Compound"
-	icon_state = "northeast"
-
-/area/lv624/ground/compound/n
-	name = "\improper Northern W-Y Compound"
+/area/lv624/ground/colony/north_nexus_road
+	name = "\improper North Nexus Road"
 	icon_state = "north"
 
-/area/lv624/ground/compound/c
-	name = "\improper Central W-Y Compound"
-	icon_state = "purple"
+/area/lv624/ground/colony/south_medbay_road
+	name = "\improper South Medbay Road"
+	icon_state = "south"
 
-/area/lv624/ground/compound/se
-	name = "\improper Southeast W-Y Compound"
-	icon_state = "southeast"
+/area/lv624/ground/colony/south_nexus_road
+	name = "\improper South Nexus Road"
+	icon_state = "south"
 
-/area/lv624/ground/compound/sw
-	name = "\improper Southwest W-Y Compound"
-	icon_state = "southwest"
+/area/lv624/ground/colony/west_nexus_road
+	name = "\improper West Nexus Road"
+	icon_state = "west"
+
+/area/lv624/ground/colony/north_tcomms_road
+	name = "\improper North T-Comms Road"
+	icon_state = "north"
+
+/area/lv624/ground/colony/west_tcomms_road
+	name = "\improper West T-Comms Road"
+	icon_state = "west"
 
 //	ambience = list('sound/ambience/jungle_amb1.ogg')
 
+
+//The Caves
 /area/lv624/ground/caves //Does not actually exist
 	name ="\improper Caves"
 	icon_state = "cave"
@@ -153,34 +176,45 @@
 	ceiling = CEILING_UNDERGROUND_BLOCK_CAS
 	sound_environment = 6
 
-//Caves
-/area/lv624/ground/caves/west1
+/area/lv624/ground/caves/west_caves
 	name ="\improper Western Caves"
 	icon_state = "away1"
 
-/area/lv624/ground/caves/east1
+/area/lv624/ground/caves/south_west_caves
+	name ="\improper South Western Caves"
+	icon_state = "red"
+
+/area/lv624/ground/caves/east_caves
 	name ="\improper Eastern Caves"
 	icon_state = "away"
 
-/area/lv624/ground/caves/central1
+/area/lv624/ground/caves/central_caves
 	name ="\improper Central Caves"
 	icon_state = "away4" //meh
 
-/area/lv624/ground/caves/west2
+/area/lv624/ground/caves/north_west_caves
 	name ="\improper North Western Caves"
 	icon_state = "cave"
 
-/area/lv624/ground/caves/east2
+/area/lv624/ground/caves/north_east_caves
 	name ="\improper North Eastern Caves"
 	icon_state = "cave"
 
-/area/lv624/ground/caves/central2
+/area/lv624/ground/caves/north_central_caves
 	name ="\improper North Central Caves"
 	icon_state = "away3" //meh
 
-/area/lv624/ground/caves/central3
+/area/lv624/ground/caves/south_central_caves
 	name ="\improper South Central Caves"
 	icon_state = "away2" //meh
+
+/area/lv624/ground/caves/south_east_caves
+	name ="\improper South East Caves"
+	icon_state = "away2" //meh
+
+/area/lv624/ground/caves/sand_temple
+	name = "\improper Sand Temple"
+	icon_state = "bluenew"
 
 //Lazarus landing
 /area/lv624/lazarus
@@ -207,23 +241,10 @@
 	name = "vehicle garage"
 	icon_state = "green"
 
-/area/lv624/lazarus/atmos
-	name = "\improper Atmospherics"
+/area/lv624/lazarus/yggdrasil
+	name = "\improper Yggdrasil Tree"
 	icon_state = "atmos"
 	ceiling = CEILING_GLASS
-
-/area/lv624/lazarus/atmos/outside
-	name = "\improper Atmospherics Area"
-	icon_state = "purple"
-	ceiling = CEILING_NONE
-
-/area/lv624/lazarus/hallway_one
-	name = "\improper Hallway"
-	icon_state = "green"
-
-/area/lv624/lazarus/hallway_two
-	name = "\improper Hallway"
-	icon_state = "purple"
 
 /area/lv624/lazarus/medbay
 	name = "\improper Medbay"
@@ -311,11 +332,6 @@
 	icon_state = "storage"
 	flags_area = AREA_NOTUNNEL
 
-/area/lv624/lazarus/internal_affairs
-	name = "\improper Internal Affairs"
-	icon_state = "law"
-	is_resin_allowed = FALSE
-
 /area/lv624/lazarus/robotics
 	name = "\improper Robotics"
 	icon_state = "ass_line"
@@ -334,11 +350,6 @@
 	icon_state = "hydro"
 	ceiling = CEILING_GLASS
 
-/area/lv624/lazarus/relay
-	name = "\improper Secret Relay Room"
-	icon_state = "tcomsatcham"
-	flags_area = AREA_NOTUNNEL
-
 /area/lv624/landing/console
 	name = "\improper LZ1 'Nexus'"
 	icon_state = "tcomsatcham"
@@ -351,4 +362,8 @@
 
 /area/lv624/lazarus/crashed_ship
 	name = "\improper Crashed Ship"
+	icon_state = "syndie-ship"
+
+/area/lv624/lazarus/crashed_ship_containers
+	name = "\improper Crashed Ship Containers"
 	icon_state = "syndie-ship"

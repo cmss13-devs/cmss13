@@ -1,0 +1,214 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"e" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"f" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/river/east_river)
+"i" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/east_river)
+"j" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/river/east_river)
+"k" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/river/east_river)
+"l" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/lv624/ground/river/east_river)
+"m" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river/east_river)
+"n" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/lv624/ground/river/east_river)
+"o" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/east_river)
+"p" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/river/east_river)
+"q" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/east_river)
+"r" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle/east_jungle)
+"s" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/river/east_river)
+"v" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/river/east_river)
+"y" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river/east_river)
+"A" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/east_jungle)
+"B" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/east_jungle)
+"C" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_jungle)
+"D" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/east_jungle)
+"F" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/east_jungle)
+"K" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
+"P" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_jungle)
+"W" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_jungle)
+"Z" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 9
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_jungle)
+
+(1,1,1) = {"
+K
+m
+l
+l
+l
+n
+l
+l
+l
+l
+y
+A
+C
+P
+W
+"}
+(2,1,1) = {"
+K
+f
+f
+f
+i
+f
+f
+f
+f
+f
+q
+A
+C
+F
+Z
+"}
+(3,1,1) = {"
+K
+f
+i
+f
+f
+f
+f
+o
+f
+p
+f
+A
+C
+D
+D
+"}
+(4,1,1) = {"
+b
+j
+j
+j
+j
+s
+j
+j
+j
+j
+j
+r
+B
+B
+B
+"}
+(5,1,1) = {"
+e
+k
+k
+v
+k
+k
+k
+k
+k
+v
+k
+B
+B
+B
+B
+"}

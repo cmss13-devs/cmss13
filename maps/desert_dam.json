@@ -1,6 +1,6 @@
 {
     "map_name": "Trijent Dam",
-    "map_path": "map_files/Desert_Dam",
+    "map_path": "DesertDam",
     "map_file": "Desert_Dam.dmm",
     "survivor_types": [
         "Survivor - Scientist",
@@ -24,5 +24,8 @@
     "monkey_types": [
         "stok"
 	],
-	"traits": [{ "Ground": true }]
+	"traits": [{ "Ground": true }],
+	"nightmare": {
+		"mapgen": "maps/Nightmare/maps/DesertDam/mapgen.json"
+	}
 }

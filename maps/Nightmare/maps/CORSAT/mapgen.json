@@ -1,0 +1,38 @@
+[
+	{
+		"type": "map_insert",
+		"landmark": "lockdown-gamma-north",
+		"path": "CORSAT/standalone/lockdown_gammanorth.dmm",
+		"when": { "corsat-path": "gamma-north" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "lockdown-gamma-control",
+		"path": "CORSAT/standalone/lockdown_gammacontrol.dmm",
+		"when": { "corsat-path": "gamma-control" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "lockdown-theta-east",
+		"path": "CORSAT/standalone/lockdown_thetaeast.dmm",
+		"when": { "corsat-path": "theta-east" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "lockdown-theta-control",
+		"path": "CORSAT/standalone/lockdown_thetacontrol.dmm",
+		"when": { "corsat-path": "theta-control" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "lockdown-highsec",
+		"path": "CORSAT/standalone/lockdown_highsec.dmm",
+		"when": { "corsat-path": "highsec" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "dome-sigma",
+		"path": "CORSAT/standalone/sigma_ice.dmm",
+		"when": { "dome-sigma": "ice" }
+	}
+]

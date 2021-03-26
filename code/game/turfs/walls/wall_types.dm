@@ -317,6 +317,7 @@
 	desc = "A wall with sandstone plating."
 	mineral = "sandstone"
 	color = "#c6a480"
+	baseturfs = /turf/open/gm/dirt
 
 /turf/closed/wall/mineral/uranium
 	name = "uranium wall"
@@ -427,6 +428,7 @@
 	icon = 'icons/turf/walls/wood.dmi'
 	icon_state = "wood"
 	walltype = WALL_WOOD
+	baseturfs = /turf/open/floor/wood
 
 /turf/closed/wall/wood/update_icon()
 	..()
@@ -611,7 +613,7 @@
 	. = ..()
 
 /turf/closed/wall/resin/make_girder()
-	ScrapeAway()
+	return
 
 /turf/closed/wall/resin/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
 	take_damage(dam)
@@ -800,8 +802,11 @@
 	var/duration = 5 SECONDS
 
 
-/turf/closed/wall/resin/weak/Initialize(...)
+/turf/closed/wall/resin/weak/Initialize(mapload, ...)
 	. = ..()
+	if(mapload)
+		ScrapeAway()
+		return
 	addtimer(CALLBACK(src, .proc/ScrapeAway), duration)
 
 

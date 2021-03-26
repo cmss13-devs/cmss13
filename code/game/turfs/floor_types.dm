@@ -283,6 +283,7 @@
 	intact_tile = 0
 	breakable_tile = FALSE
 	burnable_tile = FALSE
+	baseturfs = /turf/open/floor
 
 /turf/open/floor/engine/make_plating()
 	return
@@ -298,9 +299,9 @@
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			new /obj/item/stack/rods(src, 2)
-			ChangeTurf(/turf/open/floor)
-			var/turf/open/floor/F = src
-			F.make_plating()
+			var/turf/open/floor/F = ScrapeAway()
+			if(istype(/turf/open/floor, F))
+				F.make_plating()
 
 
 /turf/open/floor/engine/ex_act(severity)

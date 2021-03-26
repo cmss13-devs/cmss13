@@ -6,6 +6,8 @@ GLOBAL_LIST_EMPTY_TYPED(areas_by_type, /area)
 GLOBAL_DATUM(supply_elevator, /turf)
 GLOBAL_DATUM(vehicle_elevator, /turf)
 
+GLOBAL_REFERENCE_LIST_INDEXED(nmreaders, /datum/nmreader, name)
+
 GLOBAL_LIST_EMPTY(spawns_by_job)
 GLOBAL_LIST_EMPTY(queen_spawns)
 GLOBAL_LIST_EMPTY(xeno_spawns)
@@ -35,6 +37,7 @@ GLOBAL_LIST_EMPTY(map_items)
 GLOBAL_LIST_EMPTY(xeno_tunnels)
 GLOBAL_LIST_EMPTY(crap_items)
 GLOBAL_LIST_EMPTY(good_items)
+GLOBAL_LIST_EMPTY_TYPED(structure_spawners, /obj/effect/landmark/structure_spawner)
 GLOBAL_LIST_EMPTY(hunter_primaries)
 GLOBAL_LIST_EMPTY(hunter_secondaries)
 
@@ -48,3 +51,4 @@ GLOBAL_LIST_EMPTY(simulator_cameras)
 GLOBAL_LIST_EMPTY(teleporter_landmarks)
 
 GLOBAL_LIST_INIT(cardinals, list(NORTH, SOUTH, EAST, WEST))
+GLOBAL_LIST_EMPTY(nightmare_landmarks)

@@ -1,0 +1,409 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/gm/river,
+/area/lv624/ground/river/central_river)
+"ab" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	dir = 9;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/river/central_river)
+"ac" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/lv624/ground/river/central_river)
+"ad" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	dir = 5;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/river/central_river)
+"ae" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/river/central_river)
+"af" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	dir = 4;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/river/central_river)
+"ag" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	dir = 10;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/river/central_river)
+"ah" = (
+/obj/structure/fence,
+/turf/open/floor/plating{
+	dir = 6;
+	icon_state = "warnplate"
+	},
+/area/lv624/ground/river/central_river)
+"ai" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/river/central_river)
+"aj" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_jungle)
+"ak" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/north_jungle)
+"al" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/river/central_river)
+"dC" = (
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river/central_river)
+"iW" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/river/central_river)
+"jr" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast,
+/area/lv624/ground/river/central_river)
+"jT" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 2;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river/central_river)
+"km" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river/central_river)
+"lS" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/north_jungle)
+"lW" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/lv624/ground/river/central_river)
+"lY" = (
+/turf/open/floor/plating{
+	dir = 2;
+	icon_state = "asteroidwarning"
+	},
+/area/lv624/ground/river/central_river)
+"mq" = (
+/obj/structure/machinery/colony_floodlight,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/central_river)
+"mr" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/central_river)
+"ms" = (
+/obj/structure/flora/jungle/planttop1,
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/central_river)
+"mD" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/north_jungle)
+"mE" = (
+/obj/structure/flora/jungle/plantbot1,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/north_east_jungle)
+"pF" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/lv624/ground/river/central_river)
+"qL" = (
+/obj/effect/spawner/gibspawner/human,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/river/central_river)
+"xB" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/north_jungle)
+"yj" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river/central_river)
+"yu" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_jungle)
+"BW" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/river/central_river)
+"DX" = (
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/river/central_river)
+"EG" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/north_east_jungle)
+"Pz" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/north_east_jungle)
+"Uh" = (
+/obj/effect/landmark/corpsespawner/miner,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidfloor"
+	},
+/area/lv624/ground/river/central_river)
+"VN" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_east_jungle)
+"Wb" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/north_east_jungle)
+"Yw" = (
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "asteroidwarning"
+	},
+/area/lv624/ground/river/central_river)
+
+(1,1,1) = {"
+jr
+km
+aa
+aa
+aa
+aa
+aa
+aa
+pF
+ai
+mD
+aj
+aj
+"}
+(2,1,1) = {"
+jr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+pF
+mr
+lS
+aj
+aj
+"}
+(3,1,1) = {"
+jr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+lW
+ai
+lS
+aj
+aj
+"}
+(4,1,1) = {"
+jr
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+lW
+ai
+xB
+aj
+yu
+"}
+(5,1,1) = {"
+jr
+km
+km
+km
+km
+km
+km
+km
+lW
+mq
+lS
+ak
+yu
+"}
+(6,1,1) = {"
+ab
+ae
+ae
+ae
+ae
+ae
+ae
+ae
+ag
+ai
+lS
+aj
+aj
+"}
+(7,1,1) = {"
+ac
+al
+Uh
+DX
+DX
+DX
+iW
+DX
+lY
+ai
+lS
+aj
+ak
+"}
+(8,1,1) = {"
+Yw
+DX
+DX
+DX
+BW
+al
+al
+qL
+lY
+ai
+lS
+aj
+aj
+"}
+(9,1,1) = {"
+Yw
+DX
+iW
+DX
+DX
+DX
+DX
+DX
+lY
+ai
+lS
+aj
+aj
+"}
+(10,1,1) = {"
+ad
+af
+af
+af
+af
+af
+af
+af
+ah
+ai
+lS
+aj
+aj
+"}
+(11,1,1) = {"
+jr
+km
+km
+km
+km
+km
+km
+km
+lW
+mq
+lS
+aj
+aj
+"}
+(12,1,1) = {"
+jT
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+pF
+mr
+Wb
+VN
+Pz
+"}
+(13,1,1) = {"
+km
+aa
+aa
+aa
+aa
+aa
+aa
+dC
+yj
+ms
+mE
+EG
+Pz
+"}

@@ -1,0 +1,17 @@
+[
+	{ "type": "map_sprinkle", "path": "LV624/sprinkles/" },
+	{ "type": "map_variations",   "landmark": "lv-centralcaves", "path": "LV624/centralcaves/",                "chance": 0.6 },
+	{ "type": "map_variations",   "landmark": "crashed-ship",    "path": "LV624/crashedship/",                 "chance": 0.6 },
+	{ "type": "map_variations",   "landmark": "storage-crashed-ship", "path": "LV624/storage-crashed-ship/",   "chance": 0.6 },
+	{ "type": "map_variations",   "landmark": "lv-medbay",       "path": "LV624/medbay/",                      "chance": 0.4 },
+	{ "type": "map_variations",   "landmark": "lv-science",      "path": "LV624/science/",                     "chance": 0.5 },
+	{ "type": "map_variations",   "landmark": "armory",          "path": "LV624/armory/",                      "chance": 0.4 },
+	{ "type": "map_variations",   "landmark": "maintemple",      "path": "LV624/maintemple/",                  "chance": 0.4 },
+	{ "type": "branch", "nodes": [
+		{ "type": "map_insert",  "landmark": "sandtemple-jungle", "path": "LV624/standalone/sandtemple-jungle.dmm" },
+		{ "type": "map_insert",  "landmark": "sandtemple-lz1",    "path": "LV624/standalone/sandtemple-se.dmm" }
+	], "chance": 0.5 },
+	{ "type": "map_insert", "landmark": "cargospecial1", "path": "LV624/cargospecial/cargospecial1_mines.dmm", "chance": 0.1 },
+	{ "type": "map_insert", "landmark": "cargospecial2", "path": "LV624/cargospecial/cargospecial2_weapons.dmm", "chance": 0.1 },
+	{ "type": "map_insert", "landmark": "cargospecial3", "path": "LV624/cargospecial/cargospecial3_gear.dmm", "chance": 0.1 }
+]

@@ -237,7 +237,7 @@
 	else if(W && istype(T, /turf/open) && W.hivenumber == X.hivenumber)
 		X.visible_message(SPAN_XENODANGER("\The [X] surges the resin, creating an unstable wall!"), \
 		SPAN_XENONOTICE("You surge the resin, creating an unstable wall!"), null, 5)
-		T.ChangeTurf("/turf/closed/wall/resin/weak")
+		T.PlaceOnTop(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = T
 		weak_wall.hivenumber = X.hivenumber
 		set_hive_data(weak_wall, X.hivenumber)

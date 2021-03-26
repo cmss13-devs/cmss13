@@ -339,7 +339,7 @@
 				new /obj/effect/acid_hole (W)
 			else
 				var/turf/T = acid_t
-				T.ChangeTurf(/turf/open/floor/plating)
+				T.ScrapeAway()
 		else if (istype(acid_t, /obj/structure/girder))
 			var/obj/structure/girder/G = acid_t
 			G.dismantle()

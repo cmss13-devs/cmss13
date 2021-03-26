@@ -1,0 +1,42 @@
+[
+	{
+		"type": "map_insert",
+		"landmark": "clfship",
+		"chance": 0.2,
+		"path": "LV624/standalone/clfship.dmm",
+		"when": { "lvevent": "fallen_ship" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "lv-skylight",
+		"chance": 0.15,
+		"path": "LV624/standalone/laststand.dmm",
+		"when": { "lvevent": "last_stand" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "lv-leftsidepass",
+		"chance": 0.7,
+		"path": "LV624/standalone/leftsidepass.dmm",
+		"when": { "mainpath": "left" }
+	},
+	{
+		"type": "pick", "name": "Bridge gap variation",
+		"choices": [
+			{ "type": "map_insert", "landmark": "lv-bridge-nofog", "path": "LV624/standalone/lv-bridge-nofog.dmm" },
+			{ "type": "map_insert", "landmark": "lv-bridge-east",  "path": "LV624/standalone/lv-bridge-east.dmm"  }
+		], "chance": 0.6,
+		"when": { "mainpath": "bridge" }
+	},
+	{
+		"type": "map_insert",
+		"landmark": "lv-rightsidepass",
+		"chance": 0.7,
+		"path": "LV624/standalone/rightsidepass.dmm",
+		"when": { "mainpath": "right" }
+	},
+	{
+		"type": "include", "name": "Standalone variations",
+		"file": "maps/LV624/mapgen_variations.json"
+	}
+]

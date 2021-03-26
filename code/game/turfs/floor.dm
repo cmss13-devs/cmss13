@@ -1,8 +1,6 @@
 
 //actual built floors, not natural ground
 /turf/open/floor
-	//Note to coders, the 'intact_tile' var can no longer be used to determine if the floor is a plating or not.
-	//Use the is_plating(), is_plasteel_floor() and is_light_floor() procs instead. --Errorage
 	name = "floor"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "floor"
@@ -207,7 +205,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 		icon_state = "carpet-broken"
 		broken = 1
 	else if(is_grass_floor())
-		icon_state = "sand[pick("1", "2", "3")]"
+		icon_state = "grass[pick("1", "2", "3")]"
 		broken = 1
 
 /turf/open/floor/proc/burn_tile()
@@ -230,7 +228,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 		icon_state = "carpet-broken"
 		burnt = 1
 	else if(is_grass_floor())
-		icon_state = "sand[pick("1", "2", "3")]"
+		icon_state = "grass[pick("1", "2", "3")]"
 		burnt = 1
 
 //This proc will delete the floor_tile and the update_iocn() proc will then change the icon_state of the turf

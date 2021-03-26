@@ -28,6 +28,9 @@
 
 #define COMSIG_GLOB_MOB_LOGIN "!mob_login"
 
+///from /datum/nmcontext/proc/run_steps
+#define COMSIG_GLOB_NIGHTMARE_SETUP_DONE "!nightmare_setup_done"
+
 ///from /datum/controller/subsystem/ticker/PostSetup
 #define COMSIG_GLOB_POST_SETUP "!post_setup"
 

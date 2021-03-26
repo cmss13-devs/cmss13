@@ -224,7 +224,7 @@
 			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
-			T.ChangeTurf(/turf/closed/wall)
+			T.PlaceOnTop(/turf/closed/wall)
 			SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall)
 			qdel(src)
 		return TRUE
@@ -263,7 +263,7 @@
 			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
-			T.ChangeTurf(/turf/closed/wall/r_wall)
+			T.PlaceOnTop(/turf/closed/wall/r_wall)
 			qdel(src)
 		return TRUE
 

@@ -12339,7 +12339,7 @@
 /area/prison/residential/north)
 "aFi" = (
 /obj/structure/pipes/vents/scrubber,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -30691,7 +30691,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellow"
@@ -44980,7 +44980,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "yellow"
@@ -46909,7 +46909,7 @@
 /area/prison/residential/north)
 "djE" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "djN" = (
@@ -47314,7 +47314,7 @@
 /turf/open/floor/wood,
 /area/prison/residential/north)
 "eHA" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "yellow"
@@ -48013,7 +48013,7 @@
 	},
 /area/prison/cellblock/mediumsec/west)
 "gQP" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -48279,7 +48279,7 @@
 	},
 /area/prison/residential/north)
 "hHy" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "yellow"
@@ -48418,7 +48418,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 8
 	},
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -48694,7 +48694,7 @@
 /area/prison/maintenance/residential/access/south)
 "iGo" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "iGI" = (
@@ -48798,7 +48798,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -49382,7 +49382,7 @@
 /area/prison/cellblock/mediumsec/east)
 "kue" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -49709,7 +49709,7 @@
 /area/prison/cellblock/protective)
 "lCQ" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "lDd" = (
@@ -50279,7 +50279,7 @@
 	},
 /area/prison/residential/central)
 "npb" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -50354,7 +50354,7 @@
 /area/prison/cellblock/highsec/south/north)
 "nGR" = (
 /obj/structure/flora/bush/ausbushes/ppflowers,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "nIx" = (
@@ -50419,7 +50419,7 @@
 /area/prison/residential/north)
 "nNc" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -50523,7 +50523,7 @@
 /area/prison/cellblock/lowsec/nw)
 "obV" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellow"
@@ -50571,7 +50571,7 @@
 /area/prison/storage/medsec)
 "old" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "yellow"
@@ -50725,7 +50725,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -50890,7 +50890,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/organic/grass,
 /area/prison/residential/south)
 "oXr" = (
@@ -51318,7 +51318,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean2";
@@ -51574,7 +51574,7 @@
 /area/prison/cellblock/mediumsec/east)
 "rsG" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -51623,7 +51623,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	icon_state = "yellow"
 	},
@@ -51765,7 +51765,7 @@
 /turf/open/floor/plating,
 /area/prison/maintenance/residential/sw)
 "soD" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/mediumsec/south)
 "spV" = (
@@ -51861,7 +51861,7 @@
 	},
 /area/prison/canteen)
 "sGc" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "yellow"
@@ -52203,7 +52203,7 @@
 /area/prison/hanger/research)
 "tAi" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -52346,7 +52346,7 @@
 /area/prison/residential/north)
 "tVW" = (
 /obj/structure/flora/bush/ausbushes/var3/brflowers,
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/organic/grass,
 /area/prison/residential/north)
 "tWR" = (
@@ -52621,7 +52621,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -52841,7 +52841,7 @@
 /area/prison/cellblock/protective)
 "vwO" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/supply,
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/prison/cellblock/mediumsec/south)
 "vxy" = (
@@ -53362,7 +53362,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 4
 	},
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"

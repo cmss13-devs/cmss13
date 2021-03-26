@@ -100,6 +100,7 @@
 #define SS_PRIORITY_TIMER          700
 #define SS_PRIORITY_SOUND          250
 #define SS_PRIORITY_TICKER         200
+#define SS_PRIORITY_NIGHTMARE      180
 #define SS_PRIORITY_MAPVIEW		   170
 #define SS_PRIORITY_QUADTREE       160
 #define SS_PRIORITY_CHAT		   155

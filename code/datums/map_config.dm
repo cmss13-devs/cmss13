@@ -16,6 +16,8 @@
 	var/map_name = "LV624"
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
+	/// Hash of nightmare parser types to config file paths
+	var/list/nightmare
 
 	var/traits = null
 	var/space_empty_levels = 1
@@ -219,6 +221,12 @@
 		if(!map_item_type)
 			log_world("map_config map_item_type is not a proper typepath!")
 			return
+
+	if(json["nightmare"])
+		if(!islist(json["nightmare"]))
+			log_world("map_config nightmare is not a list!")
+			return			
+		nightmare = json["nightmare"]
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]

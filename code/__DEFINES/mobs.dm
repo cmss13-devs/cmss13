@@ -113,6 +113,7 @@
 #define PERMANENTLY_DEAD	(1<<17)
 #define CANDAZE				(1<<18)
 #define CANSLOW				(1<<19)
+#define NO_PERMANENT_DAMAGE	(1<<20)
 
 // =============================
 // hive types

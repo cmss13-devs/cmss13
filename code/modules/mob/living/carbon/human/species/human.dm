@@ -7,20 +7,29 @@
 	mob_flags = KNOWS_TECHNOLOGY
 	uses_ethnicity = TRUE
 
-//Slightly tougher humans.
+//Tougher humans, basically action movie protagonists.
 /datum/species/human/hero
 	name = "Human Hero"
 	name_plural = "Human Heroes"
-	brute_mod = 0.55
-	burn_mod = 0.55
+	brute_mod = 0.5
+	burn_mod = 0.5
 	unarmed_type = /datum/unarmed_attack/punch/strong
-
+	pain_type = /datum/pain/human_hero
+	darksight = 5
 	cold_level_1 = 220
 	cold_level_2 = 180
 	cold_level_3 = 80
 	heat_level_1 = 390
 	heat_level_2 = 480
 	heat_level_3 = 1100
+	knock_down_reduction = 2
+	stun_reduction = 2
+
+/datum/species/human/hero/handle_post_spawn(var/mob/living/carbon/human/H)
+	H.universal_understand = TRUE
+	H.status_flags |= NO_PERMANENT_DAMAGE //John Wick doesn't get internal bleeding from a grazing gunshot
+	H.status_flags &= ~(CANSLOW|CANKNOCKOUT|CANDAZE|CANSTUN)
+	return ..()
 
 //Various horrors that spawn in and haunt the living.
 /datum/species/human/spook

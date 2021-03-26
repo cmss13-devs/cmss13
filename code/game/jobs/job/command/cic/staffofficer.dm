@@ -19,6 +19,8 @@
 			positions = total_positions_so_far
 		else
 			total_positions_so_far = positions
+	else
+		total_positions_so_far = positions
 	return positions
 
 /datum/job/command/bridge/generate_entry_message(mob/living/carbon/human/H)

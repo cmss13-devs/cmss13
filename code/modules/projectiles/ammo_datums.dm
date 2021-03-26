@@ -1532,11 +1532,6 @@
 	landingSmoke.start()
 	landingSmoke = null
 
-	var/shard_type = /datum/ammo/bullet/shrapnel/incendiary
-	var/shard_amount = 12
-	create_shrapnel(T, shard_amount, , ,shard_type, source, source_mob)
-
-
 /datum/ammo/rocket/wp/on_hit_mob(mob/M,obj/item/projectile/P)
 	drop_flame(get_turf(M))
 

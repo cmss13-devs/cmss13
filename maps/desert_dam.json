@@ -3,13 +3,13 @@
     "map_path": "map_files/Desert_Dam",
     "map_file": "Desert_Dam.dmm",
     "survivor_types": [
-        "Survivor - Scientist",
         "Survivor - Doctor",
-        "Survivor - Chef",
+        "Survivor - Roughneck Rifle",
+        "Survivor - Roughneck M16",
         "Survivor - Chaplain",
-        "Survivor - Miner",
-        "Survivor - Engineer",
-        "Survivor - Trucker",
+        "Survivor - Interstellar Commerce Commission Liaison",
+        "Survivor - Dam Maintenance Technician",
+        "Survivor - Hydro Electric Engineer",
         "Survivor - Colonial Marshall"
     ],
     "defcon_triggers": [

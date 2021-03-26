@@ -126,8 +126,3 @@
 	desc = "It's not very colourful."
 	icon_state = "mime"
 	rollable_sleeves = FALSE
-
-/obj/item/clothing/under/rank/miner
-	desc = "It's a snappy jumpsuit with a sturdy set of overalls. It is very dirty."
-	name = "shaft miner's jumpsuit"
-	icon_state = "miner"

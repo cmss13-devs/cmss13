@@ -3,14 +3,15 @@
     "map_path": "map_files/FOP_v3_Sciannex",
     "map_file": "Fiorina_SciAnnex.dmm",
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Corporate Liaison",
-        "Survivor - Security",
+        "Survivor - Florina Researcher",
+        "Survivor - Florina Doctor",
+        "Survivor - Interstellar Human Rights Observer",
+        "Survivor - Florina Prison Guard",
+        "Survivor - United Americas Riot Officer",
         "Survivor - Prisoner",
         "Survivor - Prisoner",
         "Survivor - Gang Leader",
-        "Survivor - Engineer"
+        "Survivor - Florina Engineer"
     ],
     "defcon_triggers": [
         3750,

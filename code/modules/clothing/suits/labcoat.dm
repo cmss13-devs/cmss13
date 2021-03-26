@@ -131,10 +131,37 @@
 	icon_state = "sciencecoat"
 	item_state = "sciencecoat"
 
-
-
-
-
+/obj/item/clothing/suit/storage/snow_suit/soviet
+	name = "Soviet Snow Suit"
+	desc = "A winter coat made in the UPP. This wintercoat was made from the fur of local wildlife who donated their fur for the greater good of the UPP."
+	icon_state = "sovietcoat"
+	item_state = "sovietcoat"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	blood_overlay_type = "armor"
+	siemens_coefficient = 0.7
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/melee/baseballbat,
+		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
 
 /obj/item/clothing/suit/storage/snow_suit
 	name = "snow suit"

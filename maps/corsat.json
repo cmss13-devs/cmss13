@@ -7,13 +7,13 @@
         "COLD": true
     },
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Scientist",
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Security",
-        "Survivor - Corporate Liaison",
-        "Survivor - Engineer"
+        "Survivor - CORSAT Strata Researcher",
+        "Survivor - CORSAT Strata Researcher",
+        "Survivor - PMC",
+        "Survivor - Survivor - CORSAT Doctor",
+        "Survivor - CORSAT Security Gaurd",
+        "Survivor - Interstellar Commerce Commission Liaison CORSAT",
+        "Survivor - Corsat Station Engineer"
     ],
     "defcon_triggers": [
         3300,

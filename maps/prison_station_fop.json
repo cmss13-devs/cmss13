@@ -3,14 +3,14 @@
     "map_path": "map_files/FOP_v2_Cellblocks",
     "map_file": "Prison_Station_FOP.dmm",
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Corporate Liaison",
-        "Survivor - Security",
+        "Survivor - Florina Researcher",
+        "Survivor - Florina Doctor",
+        "Survivor - Interstellar Human Rights Observer",
+        "Survivor - Florina Prison Guard",
         "Survivor - Prisoner",
         "Survivor - Prisoner",
         "Survivor - Gang Leader",
-        "Survivor - Engineer"
+        "Survivor - Florina Engineer"
     ],
     "defcon_triggers": [
         3750,

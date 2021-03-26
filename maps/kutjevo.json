@@ -3,14 +3,11 @@
     "map_path": "map_files/Kutjevo",
     "map_file": "Kutjevo.dmm",
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Chef",
+        "Survivor - Kutjevo Doctor",
         "Survivor - Chaplain",
-        "Survivor - Miner",
-        "Survivor - Engineer",
+        "Survivor - Kutjevo Engineer",
         "Survivor - Trucker",
-        "Survivor - Colonial Marshall"
+        "Survivor - Kutjevo Security Gaurd"
     ],
     "defcon_triggers": [
         4250,

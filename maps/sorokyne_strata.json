@@ -7,10 +7,11 @@
     },
     "weather_holder": "/datum/weather_ss_map_holder/sorokyne",
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Security",
-        "Survivor - Engineer"
+        "Survivor - Sorokyne Strata Researcher",
+        "Survivor - Sorokyne Strata Doctor",
+        "Survivor - Sorokyne Strata Political Prisioner",
+        "Survivor - Sorokyne Strata Security",
+        "Survivor - Interstellar Human Rights Observer"
     ],
     "defcon_triggers": [
         3750,

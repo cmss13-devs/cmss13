@@ -5,11 +5,10 @@
     "survivor_types": [
         "Survivor - Scientist",
         "Survivor - Doctor",
-        "Survivor - Chef",
         "Survivor - Chaplain",
-        "Survivor - Miner",
         "Survivor - Engineer",
         "Survivor - Trucker",
+        "Survivor - Security",
         "Survivor - Colonial Marshall"
     ],
     "map_item_type": "/obj/item/map/lazarus_landing_map",

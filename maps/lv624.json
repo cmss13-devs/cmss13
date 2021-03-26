@@ -1,7 +1,7 @@
 {
     "map_name": "LV-624",
-    "map_path": "map_files/LV624",
-    "map_file": "LV624.dmm",
+    "map_path": "LV624",
+	"map_file": "LV624.dmm",
     "survivor_types": [
         "Survivor - Scientist",
         "Survivor - Doctor",
@@ -20,5 +20,9 @@
         "stok"
     ],
     "environment_traits": { "Fog": true },
-    "traits": [{ "Ground": true }]
+	"traits": [{ "Ground": true }],
+	"nightmare": {
+		"scenario": "maps/Nightmare/maps/LV624/scenario.json",
+		"mapgen": "maps/Nightmare/maps/LV624/mapgen.json"
+	}
 }

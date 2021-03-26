@@ -1,0 +1,90 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_jungle)
+"b" = (
+/obj/structure/largecrate/random/barrel/blue,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"n" = (
+/turf/closed/wall,
+/area/lv624/lazarus/quartstorage)
+"o" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/east_jungle)
+"p" = (
+/obj/structure/window/framed/colony/reinforced,
+/turf/open/floor/plating,
+/area/lv624/lazarus/quartstorage)
+"q" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/largecrate,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"r" = (
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"s" = (
+/obj/structure/largecrate/supply/weapons/hpr,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"t" = (
+/obj/structure/largecrate/supply/explosives/mines{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"u" = (
+/obj/structure/window_frame/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/quartstorage)
+"v" = (
+/obj/structure/largecrate,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"I" = (
+/obj/item/defenses/handheld/sentry/flamer,
+/obj/structure/closet/crate,
+/obj/item/defenses/handheld/sentry,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+
+(1,1,1) = {"
+n
+n
+q
+v
+I
+"}
+(2,1,1) = {"
+a
+p
+b
+r
+r
+"}
+(3,1,1) = {"
+a
+p
+s
+r
+r
+"}
+(4,1,1) = {"
+a
+p
+t
+r
+v
+"}
+(5,1,1) = {"
+o
+n
+u
+p
+p
+"}

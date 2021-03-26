@@ -396,7 +396,7 @@
 	},
 /area/fiorina/station/central_ring)
 "ajq" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "ajr" = (
@@ -478,7 +478,7 @@
 	},
 /area/fiorina/tumor/servers)
 "akN" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "alr" = (
@@ -1417,7 +1417,7 @@
 	},
 /area/fiorina/station/lowsec)
 "aKW" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -1449,7 +1449,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/maintenance)
 "aMg" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "whitegreen"
@@ -1643,7 +1643,7 @@
 	},
 /area/fiorina/station/flight_deck)
 "aQM" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkbrown2"
@@ -2452,7 +2452,7 @@
 	},
 /area/fiorina/station/flight_deck)
 "bpG" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -3107,7 +3107,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security/wardens)
 "bMd" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -3323,7 +3323,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "bST" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/alien/weeds/node,
 /turf/open/floor/prison{
 	dir = 8;
@@ -6798,7 +6798,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "eer" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "eev" = (
@@ -9176,7 +9176,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "fBn" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "fBp" = (
@@ -10300,7 +10300,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/medbay)
 "gjX" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "gkd" = (
@@ -12385,7 +12385,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/security)
 "hwn" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"
@@ -12723,7 +12723,7 @@
 	},
 /area/fiorina/station/power_ring)
 "hIo" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrown2"
@@ -14167,7 +14167,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "iDE" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
 	},
@@ -15703,7 +15703,7 @@
 	},
 /area/fiorina/lz/near_lzI)
 "jyM" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "jyP" = (
@@ -15807,7 +15807,7 @@
 	},
 /area/fiorina/station/flight_deck)
 "jCA" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/organic/grass{
 	desc = "It'll get in your shoes no matter what you do.";
 	name = "astroturf"
@@ -15845,7 +15845,7 @@
 	},
 /area/fiorina/station/research_cells)
 "jDj" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -15898,7 +15898,7 @@
 	},
 /area/fiorina/station/medbay)
 "jEf" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -16018,7 +16018,7 @@
 	},
 /area/fiorina/station/lowsec)
 "jHn" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	icon_state = "whitegreen"
 	},
@@ -16677,7 +16677,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "kbT" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "kcn" = (
@@ -17045,7 +17045,7 @@
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
 "knh" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "knt" = (
@@ -19760,7 +19760,7 @@
 /turf/open/floor/prison/chapel_carpet,
 /area/fiorina/maintenance)
 "lXO" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "whitegreen"
@@ -22698,7 +22698,7 @@
 	},
 /area/fiorina/station/botany)
 "nIq" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkbrowncorners2"
@@ -22811,7 +22811,7 @@
 	},
 /area/fiorina/station/power_ring)
 "nLE" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "nLV" = (
@@ -22820,7 +22820,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "nMZ" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -22877,7 +22877,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "nPO" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "whitegreen"
@@ -22980,7 +22980,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "nUr" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	dir = 5;
 	icon_state = "whitegreen"
@@ -23324,7 +23324,7 @@
 	},
 /area/fiorina/station/medbay)
 "ogM" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "ogX" = (
@@ -23518,7 +23518,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "olT" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -23562,7 +23562,7 @@
 	},
 /area/fiorina/station/park)
 "omD" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/structure/cable/heavyduty{
 	icon_state = "4-8"
 	},
@@ -24849,7 +24849,7 @@
 	},
 /area/fiorina/station/power_ring)
 "peY" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "darkbrown2"
@@ -25223,7 +25223,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "psO" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	dir = 8;
 	icon_state = "whitegreen"
@@ -29203,7 +29203,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "rKS" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "rKX" = (
@@ -29696,7 +29696,7 @@
 	},
 /area/fiorina/station/power_ring)
 "rZr" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreen"
@@ -29951,7 +29951,7 @@
 	},
 /area/fiorina/station/central_ring)
 "sgb" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "whitegreen"
@@ -31177,7 +31177,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "sVi" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "sVv" = (
@@ -32769,7 +32769,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "tQn" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -35932,7 +35932,7 @@
 	},
 /area/fiorina/lz/near_lzI)
 "vOP" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -37681,7 +37681,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "wVu" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/prison{
 	icon_state = "darkbrownfull2";
 	tag = "icon-darkbrownfull2"
@@ -39029,7 +39029,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "xKj" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/aux_engi)
 "xKX" = (
@@ -39220,7 +39220,7 @@
 	},
 /area/fiorina/station/power_ring)
 "xRh" = (
-/obj/effect/landmark/structure_spawner/xenos/door,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/ice_lab)
 "xSd" = (
@@ -39516,7 +39516,7 @@
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/lz/near_lzII)
 "ybm" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "ybR" = (

@@ -59,7 +59,7 @@
 
 // Subtype encompassing all resin constructions that are of type /turf
 /datum/resin_construction/resin_turf/build(var/turf/T, var/hivenumber)
-	T.ChangeTurf(build_path)
+	T.PlaceOnTop(build_path)
 
 	var/turf/closed/wall/resin/W = T
 	if (istype(W) && pass_hivenumber)

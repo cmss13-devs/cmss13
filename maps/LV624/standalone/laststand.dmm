@@ -1,0 +1,732 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/north_central_caves)
+"ac" = (
+/obj/structure/largecrate/supply/ammo/shotgun,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ad" = (
+/obj/structure/closet/crate/freezer/rations,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ae" = (
+/obj/structure/largecrate/supply/ammo/shotgun,
+/obj/structure/largecrate/supply/ammo/shotgun{
+	pixel_y = 8
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"ah" = (
+/turf/closed/wall/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ai" = (
+/obj/effect/landmark/survivor_spawner/lv624_skylight{
+	pixel_x = -1
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aj" = (
+/obj/structure/largecrate/supply/explosives/mines{
+	unacidable = 1;
+	unslashable = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ak" = (
+/turf/open/floor/wood{
+	icon_state = "wood-broken"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"al" = (
+/obj/structure/bed/alien,
+/obj/item/storage/pouch/flare/full,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"am" = (
+/obj/structure/kitchenspike,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"an" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/tool/kitchen/knife/butcher{
+	pixel_x = -7
+	},
+/obj/item/tool/kitchen/knife/butcher,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood{
+	icon_state = "wood-broken4"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"ao" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/meat/human{
+	pixel_y = 6
+	},
+/obj/item/reagent_container/food/snacks/meat/human{
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/snacks/meat/human{
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ap" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aq" = (
+/obj/structure/closet/crate,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ar" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/pump/cmb{
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"at" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/tool/candle,
+/obj/item/tool/match{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/turf/open/floor/carpet{
+	icon_state = "bcarpet08"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"au" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/shotgun/double,
+/obj/item/weapon/gun/shotgun/double{
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aw" = (
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"ay" = (
+/obj/structure/closet/cabinet,
+/turf/open/floor/wood{
+	icon_state = "wood-broken"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aA" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aB" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/flashlight/lantern,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aC" = (
+/turf/open/floor/wood{
+	icon_state = "wood-broken4"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aD" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/caves/north_central_caves)
+"aE" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/weapon/gun/rifle/mar40,
+/obj/item/weapon/gun/rifle/mar40{
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aG" = (
+/obj/structure/bed/chair/wood/normal,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aH" = (
+/obj/effect/landmark/survivor_spawner/lv624_skylight{
+	pixel_x = -1
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aI" = (
+/obj/structure/bed/chair/wheelchair,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aJ" = (
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aK" = (
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aL" = (
+/obj/structure/curtain/red,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aM" = (
+/obj/structure/bed/alien,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aN" = (
+/obj/structure/closet/crate,
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aP" = (
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aQ" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/tool/candle,
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet{
+	icon_state = "bcarpet01"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aR" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/carpet{
+	icon_state = "bcarpet02"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aS" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/tool/candle,
+/turf/open/floor/carpet{
+	icon_state = "bcarpet03"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aU" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/chef,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aV" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"aW" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"aZ" = (
+/obj/structure/window_frame/wood,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"ba" = (
+/obj/item/weapon/gun/rifle/m41aMK1,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"bb" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/security/lawyer,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"bc" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"bd" = (
+/obj/structure/closet/crate,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/obj/item/ammo_magazine/shotgun/incendiary,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"bf" = (
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"bg" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"fH" = (
+/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"jP" = (
+/obj/item/weapon/gun/rifle/m41aMK1,
+/obj/item/ammo_magazine/rifle/m41aMK1,
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"jQ" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"lJ" = (
+/obj/structure/curtain/red,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"lP" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/structure/machinery/microwave{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"mu" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/reagent_container/food/snacks/tomatomeat,
+/obj/item/reagent_container/food/snacks/tomatomeat{
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/snacks/tomatomeat{
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"oj" = (
+/obj/item/storage/firstaid,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"oA" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/flashlight/lantern{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/carpet{
+	icon_state = "bcarpet09"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"pH" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/stack/sheet/metal{
+	amount = 30;
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"pS" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/landmark/corpsespawner/security,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"qW" = (
+/obj/structure/bed/alien,
+/obj/structure/barricade/sandbags/wired,
+/obj/item/storage/pouch/flare/full,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"rq" = (
+/obj/structure/closet/cabinet,
+/obj/structure/barricade/sandbags/wired{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"tb" = (
+/obj/structure/barricade/plasteel/wired,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"EY" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/carpet{
+	icon_state = "bcarpet07"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"Ic" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"Lu" = (
+/obj/effect/landmark/crap_item,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+"Ms" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"ND" = (
+/obj/structure/surface/table/woodentable/poor,
+/obj/item/device/flashlight/lantern,
+/obj/structure/barricade/sandbags/wired,
+/obj/item/weapon/melee/baseballbat/metal,
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"OT" = (
+/obj/structure/kitchenspike,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood{
+	icon_state = "wood-broken"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"Td" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/wood{
+	icon_state = "wood-broken"
+	},
+/area/lv624/ground/caves/north_central_caves)
+"UM" = (
+/obj/structure/bed/alien,
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor/wood,
+/area/lv624/ground/caves/north_central_caves)
+
+(1,1,1) = {"
+aa
+ah
+ah
+ah
+ah
+ah
+ah
+ah
+aD
+aD
+"}
+(2,1,1) = {"
+aa
+ah
+am
+aP
+bf
+bf
+OT
+ah
+aD
+aD
+"}
+(3,1,1) = {"
+aa
+ah
+an
+bg
+aK
+bf
+mu
+ah
+aD
+aD
+"}
+(4,1,1) = {"
+aa
+ah
+ao
+bf
+aC
+bf
+lP
+ah
+aD
+aD
+"}
+(5,1,1) = {"
+aa
+ah
+ap
+bf
+aP
+ba
+pH
+ah
+ah
+ah
+"}
+(6,1,1) = {"
+aa
+ah
+aq
+bf
+aw
+aK
+bf
+bf
+bf
+ah
+"}
+(7,1,1) = {"
+aa
+ah
+ar
+aC
+bf
+bg
+bf
+aP
+aA
+aZ
+"}
+(8,1,1) = {"
+ah
+ah
+au
+aE
+bf
+bf
+aC
+bg
+aA
+aZ
+"}
+(9,1,1) = {"
+ah
+ae
+bf
+aP
+bf
+bb
+bf
+jP
+aA
+aZ
+"}
+(10,1,1) = {"
+ah
+ac
+bf
+bf
+bf
+bc
+oj
+bf
+bf
+ah
+"}
+(11,1,1) = {"
+ah
+ad
+aw
+bf
+bg
+aK
+bf
+ak
+tb
+lJ
+"}
+(12,1,1) = {"
+ah
+aH
+bf
+bf
+aP
+bd
+bf
+bf
+bf
+ah
+"}
+(13,1,1) = {"
+ah
+aH
+bf
+aG
+aQ
+EY
+Ic
+pS
+aA
+aZ
+"}
+(14,1,1) = {"
+ah
+aH
+ak
+aG
+aR
+at
+Ic
+aV
+aA
+aZ
+"}
+(15,1,1) = {"
+ah
+ai
+bg
+aG
+aS
+oA
+Ic
+Lu
+Ms
+aZ
+"}
+(16,1,1) = {"
+ah
+aH
+bf
+aP
+bf
+ak
+bf
+bf
+bf
+ah
+"}
+(17,1,1) = {"
+ah
+aH
+bf
+aV
+aU
+fH
+bf
+aw
+bf
+ah
+"}
+(18,1,1) = {"
+ah
+bf
+ak
+bf
+aV
+jQ
+bc
+bf
+aA
+aZ
+"}
+(19,1,1) = {"
+ah
+ak
+bf
+aI
+ak
+bf
+bf
+aK
+aA
+aZ
+"}
+(20,1,1) = {"
+ah
+aj
+bf
+bf
+bf
+bf
+bf
+bf
+Td
+aZ
+"}
+(21,1,1) = {"
+ah
+ah
+ah
+ah
+aL
+ah
+aL
+ah
+ah
+ah
+"}
+(22,1,1) = {"
+aa
+ah
+al
+bf
+aC
+ah
+aP
+bf
+UM
+aZ
+"}
+(23,1,1) = {"
+aa
+ah
+ay
+bf
+aN
+ah
+bg
+bf
+ND
+aZ
+"}
+(24,1,1) = {"
+aa
+ah
+aM
+bf
+aW
+ah
+bf
+ak
+qW
+aZ
+"}
+(25,1,1) = {"
+aa
+ah
+aB
+aJ
+aJ
+lJ
+aJ
+aJ
+rq
+aZ
+"}
+(26,1,1) = {"
+aa
+ah
+ah
+aZ
+aZ
+ah
+aZ
+aZ
+ah
+ah
+"}

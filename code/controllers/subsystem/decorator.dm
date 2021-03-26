@@ -1,8 +1,16 @@
 // our atom declaration should not be hardcoded for this SS existance.
 // if this subsystem is deleted, stuff still works
 // That's why we define this here
-/atom/proc/Decorate()
+/atom/proc/Decorate(deferable = FALSE)
+	// Case 1: Early init - Skip it, we'll decorate everything during our init
+	if(!SSdecorator.decoratable)
+		return
 	if(SSdecorator.registered_decorators[type])
+		// Case 2: Deferable, usually non-init mapload - have SS do it later
+		if(deferable)
+			SSdecorator.decoratable += WEAKREF(src)
+			return
+		// Case 3: In-round spawning, just do it now
 		SSdecorator.decorate(src)
 	flags_atom |= ATOM_DECORATED
 	SEND_SIGNAL(src, COMSIG_ATOM_DECORATED)
@@ -11,14 +19,14 @@ SUBSYSTEM_DEF(decorator)
 	name = "Decorator"
 	init_order = SS_INIT_DECORATOR
 	priority = SS_PRIORITY_DECORATOR
-	flags = SS_NO_FIRE
+	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
+	flags = SS_BACKGROUND
+	wait = 5 SECONDS
 
-	can_fire = FALSE
-
-	var/list/currentrun = list()
-	var/list/decoratable = list()
 	var/list/registered_decorators = list()
 	var/list/datum/decorator/active_decorators = list()
+	var/list/datum/weakref/decoratable // List of things to decorate asynchronously
+	var/list/datum/weakref/currentrun = list()
 
 /datum/controller/subsystem/decorator/Initialize()
 	var/list/all_decors = typesof(/datum/decorator) - list(/datum/decorator) - typesof(/datum/decorator/manual)
@@ -38,11 +46,30 @@ SUBSYSTEM_DEF(decorator)
 	for(var/i in registered_decorators)
 		registered_decorators[i] = sortDecorators(registered_decorators[i])
 
+	decoratable = list() // Put any extras here from there on
 	for(var/atom/object in world)
 		if(!(object.flags_atom & ATOM_DECORATED))
-			object.Decorate()
+			object.Decorate(deferable = FALSE)
 		CHECK_TICK
 	return ..()
+
+/datum/controller/subsystem/decorator/fire(resumed)
+	if(Master.map_loading || !initialized)
+		return
+
+	if(!resumed && !length(currentrun))
+		var/swap = decoratable
+		decoratable = currentrun
+		decoratable.Cut()
+		currentrun = swap
+
+	while(length(currentrun))
+		var/datum/weakref/ref = currentrun[currentrun.len]
+		currentrun.len--
+		var/atom/A = ref?.resolve()
+		if(A) A.Decorate(deferable = FALSE)
+		if(MC_TICK_CHECK)
+			return
 
 /datum/controller/subsystem/decorator/proc/add_decorator(decor_type, ...)
 	var/list/arguments = list()

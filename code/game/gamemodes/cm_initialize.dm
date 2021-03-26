@@ -508,7 +508,10 @@ Additional game mode variables.
 			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
 	return TRUE
 
+/// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
 /datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
+	RETURN_TYPE(/turf)
+
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
@@ -521,7 +524,7 @@ Additional game mode variables.
 	// Make the list pretty
 	var/list/spawn_list_names = list()
 	var/list/spawn_list_map = list()
-	for(var/T in GLOB.queen_spawns)
+	for(var/obj/effect/landmark/queen_spawn/T in GLOB.queen_spawns)
 		var/area/A = get_area(T)
 		spawn_list_names += A.name
 		spawn_list_map[A.name] = T
@@ -529,23 +532,20 @@ Additional game mode variables.
 	var/spawn_name = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_names, QUEEN_SPAWN_TIMEOUT)
 
 	var/turf/QS
+	var/obj/effect/landmark/queen_spawn/QSI
 	if(spawn_name)
-		. = spawn_list_map[spawn_name]
-		QS = get_turf(.)
+		QSI = spawn_list_map[spawn_name]
+		QS = get_turf(QSI)
 
 	// Pick a random one if nothing was picked
 	if(isnull(QS))
-		. = pick(GLOB.queen_spawns)
-		QS = get_turf(.)
+		QSI = pick(GLOB.queen_spawns)
+		QS = get_turf(QSI)
 		// Support maps without queen spawns
 		if(isnull(QS))
 			QS = get_turf(pick(GLOB.xeno_spawns))
-
-	for(var/obj/effect/landmark/structure_spawner/xenos/X in get_area(QS))
-		new X.path_to_spawn(X.loc)
-		qdel(X)
-
 	transform_queen(ghost_mind, QS, hivenumber)
+	return QS
 
 /datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL)
 	var/mob/living/original = ghost_mind.current

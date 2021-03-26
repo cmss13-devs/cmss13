@@ -31115,7 +31115,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "cgq" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "cgu" = (
@@ -33957,7 +33957,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "daq" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "dbg" = (
@@ -34263,7 +34263,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/aerodrome_to_jungle)
 "dEB" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirtgrassborder/weedable{
 	icon_state = "grassdirt_corner"
 	},
@@ -35143,7 +35143,7 @@
 /area/strata/ag/interior/landingzone_checkpoint)
 "eSs" = (
 /obj/effect/decal/cleanable/blood/oil,
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -35208,7 +35208,7 @@
 	},
 /area/strata/ag/interior/landingzone_checkpoint)
 "eVI" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/auto_turf/snow/layer1,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "eWy" = (
@@ -35899,7 +35899,7 @@
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "gfa" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "gfC" = (
@@ -36021,7 +36021,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/tearlake)
 "gjP" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"
@@ -36315,7 +36315,7 @@
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "gOo" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "gOu" = (
@@ -36367,7 +36367,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "gRn" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "gRK" = (
@@ -36783,7 +36783,7 @@
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "hEr" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -36850,7 +36850,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/tearlake_west)
 "hHK" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 8;
 	icon_state = "grassdirt_corner2"
@@ -37593,7 +37593,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "iYG" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirtgrassborder/weedable{
 	icon_state = "grassdirt_corner"
 	},
@@ -38010,11 +38010,11 @@
 	},
 /area/strata/ag/interior/outpost/canteen)
 "jLb" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "jLP" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 1;
 	icon_state = "grassdirt_corner2"
@@ -38459,12 +38459,12 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/nearlz2)
 "kxN" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "kyf" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/ice,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "kyr" = (
@@ -39125,7 +39125,7 @@
 /area/strata/ug/interior/jungle/deep/east_engi)
 "lzt" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "lzT" = (
@@ -39559,7 +39559,7 @@
 /turf/open/gm/river,
 /area/strata/ag/exterior/marsh/water)
 "miy" = (
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "miL" = (
@@ -39988,7 +39988,7 @@
 	},
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "mOR" = (
-/obj/effect/landmark/structure_spawner/xenos/core,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
 /turf/open/gm/grass/weedable,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "mPj" = (
@@ -39997,7 +39997,7 @@
 	},
 /area/strata/ag/interior/outpost/engi/drome/shuttle)
 "mQd" = (
-/obj/effect/landmark/structure_spawner/xenos/pool,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "mQe" = (
@@ -40149,7 +40149,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "nfK" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/closed/wall/resin/membrane/strata/on_tiles,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "nhv" = (
@@ -40459,7 +40459,7 @@
 	},
 /area/strata/ag/interior/engi_shed/one)
 "nQE" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 4;
 	icon_state = "grassdirt_corner"
@@ -40528,7 +40528,7 @@
 	icon_state = "xgibdown1";
 	tag = "icon-xgibdown1"
 	},
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/ice,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "nUX" = (
@@ -40610,7 +40610,7 @@
 /area/strata/ag/exterior/marsh/crash)
 "odi" = (
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "odr" = (
@@ -40715,7 +40715,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/med1)
 "onq" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/ice,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "onr" = (
@@ -41175,7 +41175,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/east_engi)
 "pdv" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 4
 	},
@@ -41184,7 +41184,7 @@
 /obj/structure/flora/bush/ausbushes/grassybush{
 	icon_state = "fullgrass_1"
 	},
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/east_carp)
 "pfz" = (
@@ -41439,7 +41439,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "pwk" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirtgrassborder/weedable{
 	dir = 4
 	},
@@ -41845,7 +41845,7 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "qcB" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirtgrassborder/weedable{
 	icon_state = "grassdirt_corner2"
 	},
@@ -42099,7 +42099,7 @@
 	},
 /area/strata/ug/interior/outpost/jung/dorms/sec2)
 "qBd" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/tearlake)
 "qBg" = (
@@ -42147,7 +42147,7 @@
 	icon_state = "xgibdown1";
 	tag = "icon-xgibdown1"
 	},
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "qIt" = (
@@ -42267,7 +42267,7 @@
 /obj/structure/barricade/handrail/strata{
 	dir = 1
 	},
-/obj/effect/landmark/structure_spawner/xenos/nest,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -43001,7 +43001,7 @@
 	},
 /area/strata/ag/interior/outpost/maint/aerodrome_to_jungle)
 "seb" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "sgq" = (
@@ -43241,7 +43241,7 @@
 /area/strata/ag/exterior/paths/southresearch)
 "sxT" = (
 /obj/item/stack/rods,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/ice,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "sya" = (
@@ -45581,7 +45581,7 @@
 /area/strata/ag/exterior/paths/southresearch)
 "wgB" = (
 /obj/effect/alien/weeds/node,
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "wgI" = (
@@ -46257,7 +46257,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/bball)
 "xzL" = (
-/obj/effect/landmark/structure_spawner/xenos/wall,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/floor/strata{
 	dir = 10;
 	icon_state = "multi_tiles"

@@ -1,0 +1,516 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"ab" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/coast,
+/area/lv624/ground/river/west_river)
+"ac" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"ad" = (
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/lv624/ground/river/west_river)
+"ae" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"af" = (
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"ag" = (
+/obj/effect/alien/weeds/node,
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"ah" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"ai" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river/west_river)
+"aj" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"al" = (
+/obj/structure/flora/bush/ausbushes/palebush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"am" = (
+/obj/structure/flora/bush/ausbushes/var3/sunnybush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"ao" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river/west_river)
+"aq" = (
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river/west_river)
+"ar" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river/west_river)
+"as" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirt,
+/area/lv624/ground/jungle/west_jungle)
+"at" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/river/west_river)
+"au" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/west_jungle)
+"av" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aw" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"ax" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"ay" = (
+/obj/structure/flora/bush/ausbushes/ausbush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"az" = (
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aA" = (
+/obj/structure/flora/bush/ausbushes/var3/stalkybush,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aB" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8;
+	icon_state = "grassdirt_corner"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aC" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2";
+	icon_tag = "light_2"
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aD" = (
+/obj/structure/flora/jungle/vines,
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aE" = (
+/obj/structure/flora/bush/ausbushes/pointybush,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/west_jungle)
+"aF" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 6
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aG" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass{
+	icon_state = "grass2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aH" = (
+/obj/structure/flora/bush/ausbushes/var3/ywflowers,
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/west_jungle)
+"aI" = (
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 10
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/west_jungle)
+"aJ" = (
+/obj/structure/flora/bush/ausbushes/var3/leafybush,
+
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/west_jungle)
+"aK" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 4
+	},
+/area/lv624/ground/jungle/west_jungle)
+"aU" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/river/west_river)
+"aV" = (
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/west_jungle)
+"aX" = (
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river/west_river)
+"bc" = (
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"bf" = (
+/obj/structure/flora/bush/ausbushes/grassybush,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"bh" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"bi" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"bm" = (
+/turf/open/gm/coast{
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/river/west_river)
+"bt" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/lv624/ground/river/west_river)
+"bx" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_west_barrens)
+"bz" = (
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/river/west_river)
+"bL" = (
+/turf/open/gm/coast,
+/area/lv624/ground/river/west_river)
+"bN" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"bV" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/dirtgrassborder{
+	dir = 1
+	},
+/area/lv624/ground/jungle/west_jungle)
+"gX" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/river/west_river)
+"kE" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/jungle/west_jungle)
+"qG" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/west_river)
+"ve" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/river,
+/area/lv624/ground/jungle/west_jungle)
+"zW" = (
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/lv624/ground/jungle/west_jungle)
+"Dw" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/jungle/west_jungle)
+"ES" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/river/west_river)
+"FJ" = (
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"JC" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/south_west_caves)
+"KD" = (
+/turf/open/gm/river,
+/area/lv624/ground/jungle/west_jungle)
+"Ms" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/lv624/ground/jungle/west_jungle)
+"Ok" = (
+/obj/structure/flora/jungle/plantbot1{
+	icon_state = "alienplant1";
+	luminosity = 2
+	},
+/turf/open/gm/river,
+/area/lv624/ground/river/west_river)
+"Oz" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/barrens/south_west_barrens)
+"VA" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/river/west_river)
+"Za" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/jungle/west_jungle)
+
+(1,1,1) = {"
+JC
+JC
+JC
+JC
+Oz
+Oz
+gX
+aU
+aU
+aU
+aU
+Dw
+Dw
+"}
+(2,1,1) = {"
+JC
+JC
+JC
+JC
+aa
+bi
+ES
+ES
+VA
+ES
+ES
+au
+aC
+"}
+(3,1,1) = {"
+JC
+JC
+JC
+bi
+ag
+bi
+ES
+ES
+ES
+ES
+qG
+au
+aD
+"}
+(4,1,1) = {"
+JC
+JC
+bh
+bi
+bi
+bi
+ai
+ad
+ad
+aq
+at
+ax
+aE
+"}
+(5,1,1) = {"
+JC
+JC
+bi
+bi
+bz
+ad
+bm
+bc
+bc
+bt
+au
+ay
+az
+"}
+(6,1,1) = {"
+JC
+JC
+bi
+bi
+bL
+bc
+aj
+bc
+bc
+bt
+au
+Za
+aV
+"}
+(7,1,1) = {"
+JC
+bi
+bx
+bi
+bL
+bc
+bc
+Ok
+FJ
+bt
+bV
+Za
+aF
+"}
+(8,1,1) = {"
+bi
+bi
+bh
+aa
+bL
+bc
+bc
+bc
+am
+bt
+au
+az
+aG
+"}
+(9,1,1) = {"
+bx
+bi
+bi
+bz
+bm
+bc
+bc
+bc
+bc
+bt
+au
+aA
+aH
+"}
+(10,1,1) = {"
+bf
+bi
+ac
+bL
+bc
+Ok
+al
+bc
+aX
+ar
+bV
+aV
+aF
+"}
+(11,1,1) = {"
+aa
+bz
+ad
+bm
+bc
+bN
+bc
+bc
+bt
+as
+av
+aB
+aI
+"}
+(12,1,1) = {"
+bi
+bL
+bc
+bc
+bc
+bc
+bN
+bc
+ao
+zW
+aw
+au
+aJ
+"}
+(13,1,1) = {"
+bx
+bL
+ae
+bc
+bc
+bc
+bc
+bc
+bc
+ve
+Ms
+av
+aK
+"}
+(14,1,1) = {"
+bi
+ab
+af
+af
+af
+ah
+af
+af
+KD
+KD
+kE
+zW
+zW
+"}

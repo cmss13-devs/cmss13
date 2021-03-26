@@ -1,0 +1,19 @@
+[
+	{ "type": "map_sprinkle", "path": "BigRed/sprinkles/" },
+	{ "type": "pick",     "chance": 0.40, "choices": [
+		{ "type": "map_insert", "landmark": "crashlanding-offices", "path": "BigRed/standalone/crashlanding-offices.dmm" },
+		{ "type": "map_insert", "landmark": "crashlanding-eva",   "path": "BigRed/standalone/crashlanding-eva.dmm" }
+	]},
+	{ "type": "pick",     "chance": 0.50, "weights": [3, 2], "choices": [
+		{ "type": "map_insert", "landmark": "lambda-graveyard", "path": "BigRed/standalone/lambda-graveyard.dmm" },
+		{ "type": "map_insert", "landmark": "lambda-cavein",   "path": "BigRed/standalone/lambda-cavein.dmm" }
+	]},
+	{ "type": "pick",     "chance": 0.50, "choices": [
+		{ "type": "map_insert", "landmark": "lambda-cave-mushroom", "path": "BigRed/standalone/lambda-cave_mushroom.dmm" },
+		{ "type": "map_insert", "landmark": "lambda-cave-extratunnel",   "path": "BigRed/standalone/lambda-cave_extratunnel.dmm" }
+	]},
+	{ "type": "pick",     "chance": 0.50, "weights": [3, 1], "choices": [
+		{ "type": "map_insert", "landmark": "medbay-passage", "path": "BigRed/standalone/medbay-passage.dmm" },
+		{ "type": "map_insert", "landmark": "medbay-v3",   "path": "BigRed/standalone/medbay-v3.dmm" }
+	]}
+]

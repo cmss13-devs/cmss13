@@ -62,6 +62,8 @@ var/global/list/cleanable_decal_cache = list()
 	if(overlayed_image)
 		cleanable_turf.overlays -= overlayed_image
 		overlayed_image = null
+	if(!length(cleanable_turf?.cleanables[cleanable_type]))
+		return
 	QDEL_NULL(cleanable_turf.cleanables[cleanable_type])
 	LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)
 

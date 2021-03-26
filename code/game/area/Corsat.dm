@@ -190,6 +190,10 @@
 	icon_state = "sigma_biodome"
 	always_unpowered = 1
 
+// Ice Nightmare insert variation. COLD!
+/area/corsat/sigma/biodome/ice
+	temperature = SOROKYNE_TEMPERATURE
+
 /area/corsat/sigma/biodome/testgrounds
 	name = "\improper Sigma Biodome Testing Grounds"
 	icon_state = "sigma_testgrounds"

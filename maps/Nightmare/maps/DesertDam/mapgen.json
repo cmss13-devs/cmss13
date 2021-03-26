@@ -1,0 +1,13 @@
+[
+	{ "type": "pick", "choices": [
+		{ "type": "map_insert",  "landmark": "green-east-bridge", "path": "DesertDam/greenriver/bridgerepaired.dmm" },
+		{ "type": "map_insert",  "landmark": "green-new-bridge", "path": "DesertDam/greenriver/newbridge.dmm" }
+	], "chance": 0.5 },
+	{ "type": "pick", "weights":[1, 1, 1, 1, 2], "choices": [
+		{ "type": "map_insert",  "landmark": "purple-center-bridge", "path": "DesertDam/purpleriver/bridgerepaired.dmm" },
+		{ "type": "map_insert",  "landmark": "purple-center-bridge", "path": "DesertDam/purpleriver/bridgedamaged.dmm" },
+		{ "type": "map_insert",  "landmark": "purple-south-bridge", "path": "DesertDam/purpleriver/bridgedamaged.dmm" },
+		{ "type": "map_insert",  "landmark": "purple-south-bridge", "path": "DesertDam/purpleriver/bridgerepaired.dmm" },
+		{ "type": "map_insert",  "landmark": "purple-new-bridge", "path": "DesertDam/purpleriver/newbridge.dmm" }
+	], "chance": 0.6 }
+]

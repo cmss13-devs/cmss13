@@ -1,0 +1,1853 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/north_east_barrens)
+"ac" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"ae" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"ag" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"ah" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"aj" = (
+/obj/item/stack/sheet/mineral/sandstone{
+	amount = 50
+	},
+/obj/structure/surface/table,
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb1"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"an" = (
+/obj/structure/machinery/door/airlock/sandstone,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"ap" = (
+/obj/effect/decal/remains/xeno,
+/obj/structure/surface/table,
+/obj/effect/landmark/good_item,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"aq" = (
+/obj/effect/alien/weeds/node,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"ar" = (
+/obj/structure/surface/table,
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb2"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"as" = (
+/obj/effect/decal/remains/xeno,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/south_east_caves)
+"at" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"av" = (
+/obj/effect/spider/stickyweb,
+/obj/item/hunting_trap{
+	desc = "A bizarre alien device used for trapping and killing prey.";
+	name = "Alien Mine"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"ay" = (
+/obj/structure/machinery/door/airlock/sandstone{
+	desc = "This strange temple is covered in runes. It looks extremely ancient.";
+	icon_state = "door_locked";
+	locked = 1;
+	name = "Strange Temple"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"az" = (
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/caves/sand_temple)
+"aA" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aB" = (
+/turf/open/gm/river,
+/area/lv624/ground/caves/sand_temple)
+"aC" = (
+/turf/open/gm/coast,
+/area/lv624/ground/caves/sand_temple)
+"aD" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "stickyweb2"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"aE" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb2"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aF" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = 10;
+	pixel_y = -10
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aG" = (
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/caves/sand_temple)
+"aH" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
+	},
+/obj/item/weapon/melee/twohanded/glaive/damaged,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aJ" = (
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/lv624/ground/caves/sand_temple)
+"aK" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/caves/sand_temple)
+"aL" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "stickyweb2"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aP" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aQ" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"aR" = (
+/turf/closed/wall/mineral/sandstone,
+/area/lv624/ground/caves/sand_temple)
+"aS" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "stickyweb2"
+	},
+
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aT" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/sand_temple)
+"aU" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb2"
+	},
+
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aX" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"aY" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/crap_item,
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"aZ" = (
+/obj/structure/surface/table,
+
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"ba" = (
+/obj/structure/surface/table,
+
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"bb" = (
+/obj/structure/kitchenspike{
+	icon_state = "spikebloodygreen"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"bc" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/crap_item,
+/obj/item/hunting_trap{
+	desc = "A bizarre alien device used for trapping and killing prey.";
+	name = "Alien Mine"
+	},
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"bd" = (
+/obj/structure/surface/table,
+/obj/item/weapon/melee/harpoon/yautja{
+	name = "Alien Harpoon"
+	},
+/obj/item/weapon/melee/harpoon/yautja{
+	name = "Alien Harpoon"
+	},
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb2"
+	},
+
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"be" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
+	},
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb1"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"bp" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/gm/river,
+/area/lv624/ground/caves/sand_temple)
+"bV" = (
+/obj/structure/surface/table,
+/obj/item/stack/sheet/mineral/sandstone{
+	amount = 50
+	},
+/obj/item/weapon/melee/twohanded/glaive/damaged,
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"cH" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb2"
+	},
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"eQ" = (
+/turf/open/gm/coast{
+	dir = 2;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/caves/sand_temple)
+"gf" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"gR" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/crap_item,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"hg" = (
+/obj/effect/decal/remains/xeno,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"hI" = (
+/turf/open/gm/coast{
+	dir = 9;
+	tag = "icon-beach (NORTHWEST)"
+	},
+/area/lv624/ground/caves/sand_temple)
+"jY" = (
+/obj/structure/surface/table,
+
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"kb" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"le" = (
+/obj/structure/blocker/forcefield/vehicles,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"ls" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/caves/sand_temple)
+"lP" = (
+/turf/open/gm/coast{
+	dir = 8
+	},
+/area/lv624/ground/caves/sand_temple)
+"lS" = (
+/obj/structure/surface/table,
+/obj/item/stack/sheet/mineral/sandstone{
+	amount = 50
+	},
+/obj/item/hunting_trap{
+	desc = "A bizarre alien device used for trapping and killing prey.";
+	name = "Alien Mine"
+	},
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"mp" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/structure/blocker/forcefield/vehicles,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"mv" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"ni" = (
+/obj/effect/landmark/monkey_spawn,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"og" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/mineral/sandstone,
+/area/lv624/ground/caves/sand_temple)
+"os" = (
+/obj/item/tool/pickaxe,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"oB" = (
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/caves/sand_temple)
+"oP" = (
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"pE" = (
+/obj/item/weapon/melee/twohanded/spear{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/turf/open/gm/coast{
+	dir = 1;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/caves/sand_temple)
+"pH" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/caves/sand_temple)
+"sC" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb1"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"tY" = (
+/obj/structure/machinery/door/airlock/sandstone,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"uN" = (
+/obj/structure/flora/bush/ausbushes/grassybush{
+	pixel_x = -16;
+	pixel_y = 13
+	},
+/turf/open/gm/coast{
+	dir = 6;
+	tag = "icon-beach (SOUTHEAST)"
+	},
+/area/lv624/ground/caves/sand_temple)
+"uO" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"vn" = (
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area/lv624/ground/barrens/south_eastern_barrens)
+"xK" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/lv624/ground/caves/sand_temple)
+"yf" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/crap_item,
+/obj/item/weapon/melee/harpoon,
+/obj/item/hunting_trap{
+	desc = "A bizarre alien device used for trapping and killing prey.";
+	name = "Alien Mine"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"yF" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"za" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"zD" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"zI" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
+	},
+/obj/item/weapon/melee/twohanded/spear,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"zW" = (
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/lv624/ground/caves/sand_temple)
+"CJ" = (
+/obj/effect/alien/weeds/node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"Dq" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb2"
+	},
+/turf/open/floor{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"EY" = (
+/turf/open/floor{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"IA" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb1"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"IS" = (
+/turf/closed/wall/rock/brown,
+/area/lv624/ground/caves/south_east_caves)
+"JE" = (
+/obj/effect/decal/remains/xeno,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"JM" = (
+/obj/structure/surface/table,
+/obj/item/device/mass_spectrometer/adv,
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb2"
+	},
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"Kw" = (
+
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_barrens)
+"NL" = (
+/obj/structure/flora/bush/ausbushes/ppflowers,
+/turf/open/gm/river,
+/area/lv624/ground/caves/sand_temple)
+"OH" = (
+/obj/structure/flora/bush/ausbushes/palebush{
+	pixel_x = 10;
+	pixel_y = -5
+	},
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner2"
+	},
+/area/lv624/ground/caves/sand_temple)
+"OV" = (
+/obj/structure/surface/table,
+/obj/item/device/autopsy_scanner,
+
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"Pd" = (
+/obj/effect/landmark/crap_item,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"Ps" = (
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"Pt" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
+	},
+/obj/effect/spider/stickyweb{
+	icon_state = "cobweb2"
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"PG" = (
+/obj/structure/surface/table,
+/obj/item/hunting_trap{
+	desc = "A bizarre alien device used for trapping and killing prey.";
+	name = "Alien Mine"
+	},
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"PV" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"Qc" = (
+/obj/structure/showcase{
+	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
+	icon_state = "yaut";
+	name = "alien sarcophagus"
+	},
+/obj/item/weapon/melee/unathiknife,
+/turf/open/floor{
+	color = "#6b675e";
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"QD" = (
+/obj/effect/landmark/hunter_primary,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"SZ" = (
+/obj/effect/spider/stickyweb{
+	icon_state = "stickyweb2"
+	},
+/obj/structure/kitchenspike,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"TQ" = (
+
+/turf/open/floor{
+	dir = 4;
+	icon_state = "whiteyellowfull"
+	},
+/area/lv624/ground/caves/sand_temple)
+"WG" = (
+/obj/item/weapon/melee/twohanded/spear{
+	pixel_x = -6;
+	pixel_y = -6
+	},
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+"XJ" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/south_east_caves)
+"YQ" = (
+
+/turf/open/gm/dirt,
+/area/lv624/ground/caves/sand_temple)
+
+(1,1,1) = {"
+aa
+aa
+aa
+aa
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aX
+aP
+aP
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aT
+aT
+aT
+aP
+aP
+aT
+aT
+aT
+aT
+IA
+aP
+aP
+aP
+aP
+aP
+aT
+aT
+aT
+aT
+aT
+aP
+aP
+aT
+"}
+(4,1,1) = {"
+aa
+aa
+aT
+aT
+aT
+aL
+aP
+aP
+aP
+aT
+aT
+IA
+aP
+aP
+aP
+aP
+Pd
+aP
+aP
+aT
+aT
+aT
+IA
+aP
+aP
+mp
+"}
+(5,1,1) = {"
+aa
+aT
+aT
+aT
+aT
+aT
+aP
+JE
+aX
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aT
+aP
+aP
+aX
+aP
+mp
+"}
+(6,1,1) = {"
+aT
+aT
+aT
+aT
+aT
+IA
+aP
+aP
+aP
+aP
+aP
+aP
+aP
+aX
+aP
+aP
+aP
+aP
+aX
+aP
+aP
+aP
+aP
+aP
+aP
+mp
+"}
+(7,1,1) = {"
+aT
+aT
+aT
+aT
+aT
+aP
+aP
+aQ
+aP
+aP
+aQ
+aQ
+aP
+aQ
+aQ
+aP
+aP
+aQ
+aQ
+aP
+aP
+aP
+YQ
+aP
+aP
+aT
+"}
+(8,1,1) = {"
+aT
+aj
+aP
+aQ
+aP
+aP
+aX
+aQ
+aR
+tY
+aP
+aP
+aR
+aR
+aR
+aR
+tY
+aR
+aP
+JE
+aP
+aP
+aP
+aP
+aP
+aT
+"}
+(9,1,1) = {"
+aT
+ap
+aQ
+aX
+aP
+aQ
+aP
+aQ
+aR
+aQ
+aP
+aQ
+bV
+lS
+aQ
+aP
+aP
+aR
+aQ
+aQ
+aQ
+aP
+aP
+aP
+aP
+aT
+"}
+(10,1,1) = {"
+og
+ar
+aQ
+aP
+aP
+aQ
+aR
+aR
+aP
+EY
+aQ
+aQ
+aP
+aQ
+aP
+aQ
+EY
+aP
+aP
+aR
+aQ
+aP
+aX
+aP
+aP
+aT
+"}
+(11,1,1) = {"
+og
+aR
+aR
+aQ
+aR
+aQ
+tY
+EY
+aQ
+WG
+JE
+oB
+aJ
+aJ
+zW
+aP
+JE
+EY
+EY
+tY
+aQ
+aR
+JE
+aP
+aP
+aT
+"}
+(12,1,1) = {"
+hg
+Ps
+av
+ay
+aQ
+aP
+aR
+EY
+aP
+aA
+aF
+aC
+aB
+aB
+aK
+zW
+aP
+aQ
+aP
+aR
+aX
+aP
+aR
+aP
+aP
+aT
+"}
+(13,1,1) = {"
+XJ
+as
+aD
+aQ
+aE
+aX
+aR
+aY
+aQ
+oB
+aJ
+eQ
+NL
+aB
+aB
+xK
+aP
+aQ
+EY
+aP
+aP
+YQ
+aP
+aP
+aP
+aT
+"}
+(14,1,1) = {"
+Ps
+XJ
+aR
+aR
+aR
+aQ
+aR
+aZ
+aQ
+aC
+aB
+aB
+aB
+aB
+aB
+aK
+zW
+aP
+PG
+aR
+aQ
+aP
+aP
+aP
+JE
+aT
+"}
+(15,1,1) = {"
+Ps
+as
+og
+aT
+aT
+aQ
+aP
+aQ
+aP
+aC
+aB
+aB
+hI
+pE
+bp
+aB
+xK
+aQ
+mv
+aR
+JE
+aP
+aP
+aP
+aX
+aT
+"}
+(16,1,1) = {"
+Ps
+Ps
+og
+aT
+aT
+aQ
+aP
+aP
+aQ
+aC
+NL
+bp
+aK
+uN
+aB
+aB
+xK
+aQ
+jY
+aR
+aQ
+aP
+aP
+Pd
+aP
+aP
+"}
+(17,1,1) = {"
+ac
+Ps
+hg
+aT
+aP
+aP
+aR
+ba
+aQ
+az
+aG
+aB
+aB
+aB
+aB
+OH
+ls
+aQ
+EY
+aP
+aP
+aR
+aP
+aP
+aP
+aP
+"}
+(18,1,1) = {"
+Ps
+at
+XJ
+aR
+aP
+aq
+aR
+EY
+aQ
+JE
+az
+lP
+aG
+NL
+aB
+xK
+aP
+aQ
+aP
+aR
+aP
+aP
+aP
+aR
+aP
+aT
+"}
+(19,1,1) = {"
+Ps
+ac
+XJ
+aR
+aQ
+aQ
+tY
+aQ
+aP
+aQ
+aP
+aP
+az
+lP
+lP
+pH
+aQ
+uO
+TQ
+tY
+aP
+aR
+aP
+aP
+aP
+aT
+"}
+(20,1,1) = {"
+Ps
+Ps
+XJ
+aR
+aQ
+aP
+aR
+aR
+aR
+EY
+za
+aQ
+aP
+aQ
+aQ
+aQ
+aP
+aP
+aR
+aR
+aP
+aP
+aX
+aP
+aP
+aT
+"}
+(21,1,1) = {"
+Ps
+Ps
+XJ
+aT
+aQ
+aP
+aP
+aP
+aP
+aQ
+EY
+EY
+aP
+aQ
+aP
+aQ
+aQ
+aP
+YQ
+aP
+aP
+aP
+aP
+aP
+aT
+aT
+"}
+(22,1,1) = {"
+le
+le
+aT
+aT
+aP
+JE
+aX
+aR
+aR
+tY
+aR
+aR
+tY
+aQ
+aR
+aR
+tY
+aR
+aR
+aP
+aX
+aP
+aT
+aT
+aT
+aT
+"}
+(23,1,1) = {"
+IS
+IS
+aT
+aT
+aQ
+aP
+aP
+aR
+bb
+aP
+aQ
+aP
+aQ
+aP
+aR
+SZ
+aQ
+aP
+aP
+aP
+aP
+aT
+aT
+aT
+aT
+aT
+"}
+(24,1,1) = {"
+IS
+IS
+aT
+aD
+aQ
+aP
+aQ
+aR
+bc
+aP
+EY
+aR
+aP
+aQ
+aP
+aQ
+aP
+aQ
+aR
+aP
+aP
+aT
+aT
+yF
+aT
+aT
+"}
+(25,1,1) = {"
+IS
+IS
+aT
+aQ
+aP
+aX
+aP
+aR
+bd
+aQ
+yf
+aR
+aQ
+aP
+aR
+JM
+gR
+OV
+aR
+aP
+aP
+mp
+CJ
+yF
+yF
+aT
+"}
+(26,1,1) = {"
+IS
+IS
+aT
+aP
+aQ
+aP
+aP
+aR
+aR
+aP
+aR
+aP
+aQ
+EY
+aR
+aP
+aR
+aR
+aR
+aX
+aP
+mp
+yF
+yF
+yF
+yF
+"}
+(27,1,1) = {"
+IS
+IS
+aT
+aT
+aT
+aP
+aP
+aP
+aP
+aX
+aP
+aP
+aQ
+aP
+aP
+aP
+aP
+aP
+aP
+QD
+aP
+mp
+yF
+yF
+yF
+CJ
+"}
+(28,1,1) = {"
+ah
+IS
+aT
+aT
+aT
+aT
+aP
+aT
+aP
+aP
+aP
+aP
+aX
+aP
+QD
+aP
+aX
+aP
+aP
+aP
+aT
+aT
+yF
+Kw
+yF
+yF
+"}
+(29,1,1) = {"
+ag
+IS
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aP
+aP
+aP
+aQ
+aP
+aP
+aP
+aP
+aP
+aP
+aT
+aT
+yF
+yF
+yF
+yF
+ni
+"}
+(30,1,1) = {"
+ag
+ah
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aR
+tY
+tY
+aR
+aT
+YQ
+aP
+aP
+aT
+aT
+yF
+yF
+kb
+yF
+yF
+"}
+(31,1,1) = {"
+ah
+IS
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aR
+aP
+aQ
+aT
+aT
+aT
+YQ
+aT
+aT
+aT
+aT
+yF
+yF
+yF
+yF
+"}
+(32,1,1) = {"
+ag
+ah
+aT
+aT
+aT
+aT
+aT
+aT
+be
+TQ
+aT
+aR
+aQ
+aP
+aP
+PV
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+yF
+"}
+(33,1,1) = {"
+ae
+ah
+aT
+aT
+aT
+aR
+aR
+aT
+aR
+tY
+aR
+aR
+EY
+aP
+aP
+YQ
+aT
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+CJ
+yF
+"}
+(34,1,1) = {"
+ag
+ah
+aT
+aR
+aR
+aS
+EY
+aR
+YQ
+aQ
+aR
+sC
+aP
+EY
+aP
+zI
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+"}
+(35,1,1) = {"
+ah
+IS
+aT
+aR
+aH
+aQ
+aP
+tY
+aQ
+aP
+tY
+aP
+aQ
+os
+aP
+aP
+aT
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+yF
+yF
+"}
+(36,1,1) = {"
+IS
+IS
+aT
+aT
+aT
+aU
+aP
+aR
+aP
+aP
+aR
+Dq
+aP
+aP
+aQ
+Qc
+aT
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+yF
+yF
+"}
+(37,1,1) = {"
+IS
+IS
+aT
+aT
+aT
+aT
+aR
+aR
+aR
+an
+aR
+aR
+aQ
+aP
+aP
+aP
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+yF
+yF
+zD
+"}
+(38,1,1) = {"
+IS
+IS
+aT
+aT
+aT
+aT
+aT
+aT
+Pt
+YQ
+aT
+aR
+cH
+aQ
+EY
+gf
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+yF
+CJ
+yF
+"}
+(39,1,1) = {"
+IS
+IS
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aR
+aR
+aR
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+yF
+yF
+yF
+"}
+(40,1,1) = {"
+IS
+IS
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+yF
+yF
+yF
+yF
+yF
+"}
+(41,1,1) = {"
+IS
+IS
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+vn
+vn
+vn
+vn
+"}
+(42,1,1) = {"
+IS
+IS
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+aT
+oP
+oP
+oP
+oP
+"}

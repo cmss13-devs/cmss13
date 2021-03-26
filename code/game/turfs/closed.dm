@@ -36,12 +36,13 @@
 	icon = 'icons/turf/ground_map.dmi'
 	icon_state = "wall2"
 	desc = "Some thick jungle."
+	baseturfs = /turf/open/gm/grass
 
 	//Not yet
 /turf/closed/gm/ex_act(severity)
 	switch(severity)
 		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			ChangeTurf(/turf/open/gm/grass)
+			ScrapeAway()
 
 
 /turf/closed/gm/dense

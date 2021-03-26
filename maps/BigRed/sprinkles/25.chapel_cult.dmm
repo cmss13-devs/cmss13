@@ -1,0 +1,730 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/chapel)
+"ac" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "Chapel";
+	name = "\improper Chapel Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/chapel)
+"ad" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	dir = 4;
+	name = "\improper Chapel"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"ae" = (
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"af" = (
+/obj/structure/closet/wardrobe/chaplain_black,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"ag" = (
+/obj/item/tool/candle,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"ah" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"ai" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aj" = (
+/obj/item/changestone,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"ak" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 6
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"al" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/item/tool/candle,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"an" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/obj/effect/decal/cleanable/blood{
+	layer = 3;
+	pixel_x = 24
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"ao" = (
+/obj/structure/window/framed/solaris,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	dir = 4;
+	id = "Chapel";
+	name = "\improper Chapel Shutters"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/chapel)
+"ap" = (
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"aq" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "rampbottom";
+	tag = "icon-rampbottom"
+	},
+/area/bigredv2/outside/chapel)
+"as" = (
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"at" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"au" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"av" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/turf/open/floor{
+	dir = 4;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aw" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"ax" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"ay" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"az" = (
+/obj/item/tool/candle,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aA" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aB" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/tool/candle,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aC" = (
+/obj/item/tool/candle{
+	icon_state = "candle2"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aD" = (
+/obj/structure/surface/table/woodentable,
+/obj/item/weapon/melee/chainofcommand,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"aE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aF" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor{
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aG" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aH" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aI" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/turf/open/floor{
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aJ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/turf/open/floor{
+	dir = 8;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aK" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aL" = (
+/turf/open/floor{
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"aN" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/blood,
+/obj/item/clothing/head/cardborg,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"aO" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/surface/table/woodentable,
+/obj/item/storage/bible,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"aP" = (
+/obj/item/tool/candle{
+	icon_state = "candle3";
+	item_state = "candle3"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"aR" = (
+/obj/item/organ/heart,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"aS" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aT" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/item/tool/candle{
+	icon_state = "candle3"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aU" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/obj/item/tool/candle,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aX" = (
+/obj/structure/pipes/vents/pump{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"aZ" = (
+/obj/structure/surface/table/woodentable,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"ba" = (
+/obj/structure/bed/chair/wood/normal{
+	dir = 8;
+	icon_state = "wooden_chair";
+	tag = ""
+	},
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"bc" = (
+/obj/effect/decal/cleanable/blood{
+	layer = 3;
+	pixel_x = 24
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"be" = (
+/turf/open/floor{
+	dir = 2;
+	icon_state = "rampbottom";
+	tag = "icon-rampbottom"
+	},
+/area/bigredv2/outside/chapel)
+"bh" = (
+/obj/item/tool/candle,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"bi" = (
+/obj/item/tool/candle,
+/turf/open/floor{
+	icon_state = "chapel"
+	},
+/area/bigredv2/outside/chapel)
+"bj" = (
+/obj/structure/surface/table/woodentable,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"bk" = (
+/obj/structure/machinery/door_control{
+	id = "Chapel";
+	name = "Storm Shutters";
+	pixel_x = -32;
+	unacidable = 1;
+	unslashable = 1
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+"bl" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"bm" = (
+/obj/structure/machinery/power/apc,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"bp" = (
+/obj/structure/machinery/alarm{
+	dir = 1;
+	icon_state = "alarm0";
+	pixel_y = -30;
+	tag = "icon-alarm0 (NORTH)"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "darkish";
+	tag = "icon-darkish"
+	},
+/area/bigredv2/outside/chapel)
+"bq" = (
+/obj/item/tool/candle{
+	icon_state = "candle4"
+	},
+/turf/open/floor{
+	dir = 2;
+	icon_state = "cult"
+	},
+/area/bigredv2/outside/chapel)
+
+(1,1,1) = {"
+ab
+ab
+ao
+ao
+ao
+ao
+ao
+ab
+ab
+"}
+(2,1,1) = {"
+ab
+af
+ap
+aP
+aR
+bq
+ap
+bk
+ab
+"}
+(3,1,1) = {"
+ac
+ae
+aq
+au
+aN
+au
+be
+ae
+ab
+"}
+(4,1,1) = {"
+ac
+ae
+aZ
+aD
+aO
+aZ
+aZ
+ae
+ab
+"}
+(5,1,1) = {"
+ab
+aC
+ah
+as
+aE
+ah
+as
+bl
+ab
+"}
+(6,1,1) = {"
+ac
+ag
+at
+aF
+aW
+at
+aF
+ae
+ab
+"}
+(7,1,1) = {"
+ac
+ae
+ay
+aG
+aT
+ay
+aG
+ae
+ab
+"}
+(8,1,1) = {"
+ab
+ae
+av
+aF
+aS
+ba
+aI
+ae
+ab
+"}
+(9,1,1) = {"
+ac
+ai
+aw
+aH
+aW
+ay
+aH
+ae
+ab
+"}
+(10,1,1) = {"
+ac
+aj
+av
+aI
+aW
+at
+aF
+bm
+ab
+"}
+(11,1,1) = {"
+ab
+ak
+ax
+aJ
+aU
+ay
+aH
+ae
+ab
+"}
+(12,1,1) = {"
+ac
+al
+av
+aI
+aS
+av
+aI
+aC
+ab
+"}
+(13,1,1) = {"
+ac
+al
+ay
+aH
+aW
+ay
+aH
+ag
+ab
+"}
+(14,1,1) = {"
+ab
+aW
+av
+aI
+aW
+av
+aI
+bl
+ab
+"}
+(15,1,1) = {"
+ad
+an
+az
+aK
+aS
+bc
+bh
+ae
+ab
+"}
+(16,1,1) = {"
+ae
+ae
+aA
+aL
+aX
+aA
+bi
+ae
+ab
+"}
+(17,1,1) = {"
+ab
+ae
+aB
+aB
+ae
+bj
+bj
+bp
+ab
+"}

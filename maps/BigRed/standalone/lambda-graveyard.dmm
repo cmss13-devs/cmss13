@@ -1,0 +1,329 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"b" = (
+/obj/structure/prop/dam/wide_boulder/boulder1,
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"c" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_13";
+	tag = "icon-mars_dirt_13"
+	},
+/area/bigredv2/outside/se)
+"d" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_10";
+	tag = "icon-mars_dirt_10"
+	},
+/area/bigredv2/outside/se)
+"e" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_14";
+	tag = "icon-mars_dirt_14"
+	},
+/area/bigredv2/outside/se)
+"f" = (
+/obj/item/stool,
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"g" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_11";
+	tag = "icon-mars_dirt_11"
+	},
+/area/bigredv2/outside/se)
+"h" = (
+/obj/structure/flora/bush/ausbushes{
+	cut_level = 1
+	},
+/turf/open/mars{
+	icon_state = "mars_dirt_14";
+	tag = "icon-mars_dirt_14"
+	},
+/area/bigredv2/outside/se)
+"i" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_12";
+	tag = "icon-mars_dirt_12"
+	},
+/area/bigredv2/outside/se)
+"j" = (
+/obj/item/trash/cigbutt{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/obj/item/trash/cigbutt,
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"k" = (
+/obj/item/reagent_container/food/drinks/bottle/rum{
+	pixel_x = 5;
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/revolver/small,
+/obj/item/reagent_container/food/drinks/bottle/rum,
+/obj/effect/landmark/corpsespawner/clown,
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"l" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_8";
+	tag = "icon-mars_dirt_8"
+	},
+/area/bigredv2/outside/se)
+"m" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_3";
+	tag = "icon-mars_dirt_3"
+	},
+/area/bigredv2/outside/se)
+"n" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_9";
+	tag = "icon-mars_dirt_9"
+	},
+/area/bigredv2/outside/se)
+"o" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/outside/se)
+"p" = (
+/obj/structure/prop/dam/large_boulder/boulder2,
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"q" = (
+/obj/structure/prop/dam/gravestone,
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"r" = (
+/obj/effect/landmark/yautja_teleport,
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"s" = (
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
+"t" = (
+/obj/structure/fence,
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"D" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+D
+"}
+(2,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+s
+"}
+(3,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(4,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(5,1,1) = {"
+b
+a
+a
+o
+o
+o
+o
+a
+a
+a
+"}
+(6,1,1) = {"
+a
+a
+a
+o
+o
+o
+o
+o
+o
+a
+"}
+(7,1,1) = {"
+a
+a
+a
+a
+o
+o
+o
+o
+o
+o
+"}
+(8,1,1) = {"
+c
+g
+l
+a
+a
+a
+q
+a
+a
+t
+"}
+(9,1,1) = {"
+d
+h
+m
+a
+a
+a
+a
+a
+a
+t
+"}
+(10,1,1) = {"
+e
+i
+n
+a
+a
+a
+a
+q
+a
+t
+"}
+(11,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+t
+"}
+(12,1,1) = {"
+a
+a
+a
+a
+o
+q
+a
+a
+a
+t
+"}
+(13,1,1) = {"
+a
+a
+a
+o
+o
+q
+a
+a
+r
+t
+"}
+(14,1,1) = {"
+a
+a
+o
+o
+o
+a
+a
+a
+a
+t
+"}
+(15,1,1) = {"
+a
+j
+o
+o
+q
+a
+a
+a
+a
+t
+"}
+(16,1,1) = {"
+f
+k
+o
+q
+a
+a
+a
+a
+s
+s
+"}
+(17,1,1) = {"
+a
+a
+p
+a
+a
+a
+q
+a
+s
+s
+"}
+(18,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+s
+s
+"}

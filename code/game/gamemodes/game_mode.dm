@@ -59,6 +59,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 ///Attempts to select players for special roles the mode might have.
 /datum/game_mode/proc/pre_setup()
 	SHOULD_CALL_PARENT(TRUE)
+	setup_structures()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 	setup_round_stats()
 	return 1
@@ -66,10 +67,17 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 /datum/game_mode/proc/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
 	return
 
+/// Spawn structures relevant to the game mode setup, done before actual game setup. By default try to setup everything.
+/datum/game_mode/proc/setup_structures()
+	for(var/obj/effect/landmark/structure_spawner/setup/SS in GLOB.structure_spawners)
+		SS.apply()
+
 ///post_setup()
 ///Everyone should now be on the station and have their normal gear.  This is the place to give the special roles extra things
 /datum/game_mode/proc/post_setup()
 	SHOULD_CALL_PARENT(TRUE)
+	for(var/obj/effect/landmark/structure_spawner/SS in GLOB.structure_spawners)
+		SS.post_setup()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_POSTSETUP)
 	spawn (ROUNDSTART_LOGOUT_REPORT_TIME)
 		display_roundstart_logout_report()

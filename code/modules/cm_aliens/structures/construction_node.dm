@@ -26,7 +26,7 @@
 		linked_hive.remove_construction(src)
 	template = null
 	linked_hive = null
-	. = ..()
+	return ..()
 
 /obj/effect/alien/resin/construction/update_icon()
 	..()

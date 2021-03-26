@@ -306,6 +306,12 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	if (damage > 5)
 		last_damage_source = initial(AM.name)
+		animation_flash_color(src)
+		var/obj/item/I = O
+		if(istype(I) && I.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.
+			playsound(loc, 'sound/effects/spike_hit.ogg', 20, TRUE, 5, falloff = 2)
+		else
+			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, 5, falloff = 2)
 
 	if (ismob(LM.thrower))
 		var/mob/M = LM.thrower

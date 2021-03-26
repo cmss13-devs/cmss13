@@ -374,6 +374,8 @@ This function restores all limbs.
 	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
 	apply_damage(modified_damage, damage_type, target_limb)
 
+	return modified_damage
+
 /*
 	Describes how human mobs get damage applied.
 	Less clear vars:

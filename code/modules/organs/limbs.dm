@@ -285,7 +285,8 @@
 	src.update_damages()
 
 	//If limb was damaged before and took enough damage, try to cut or tear it off
-	if(old_brute_dam > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss)
+	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
+	if(old_brute_dam > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
 		var/obj/item/clothing/head/helmet/H = owner.head
 		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner))\
 			&& CONFIG_GET(flag/limbs_can_break)\
@@ -901,6 +902,12 @@ This function completely restores a damaged organ to perfect condition.
 		if (knitting_time != -1)
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
+		return
+
+	if(owner.species.flags & NO_PERMANENT_DAMAGE)
+		owner.visible_message(\
+			SPAN_WARNING("[owner] withstands the blow!"),
+			SPAN_WARNING("Your [display_name] withstands the blow!"))
 		return
 
 	if((owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE) || owner.species.flags & SPECIAL_BONEBREAK || !owner.skills) //stops division by zero

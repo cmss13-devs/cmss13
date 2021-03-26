@@ -550,7 +550,8 @@ GLOBAL_LIST_INIT(pp_status_flags, list(
 	"Push" = CANPUSH,
 	"Slow" = CANSLOW,
 	"Daze" = CANDAZE,
-	"Godmode" = GODMODE
+	"Godmode" = GODMODE,
+	"No Permanent Damage" = NO_PERMANENT_DAMAGE
 ))
 
 /datum/player_panel/ui_static_data(mob/user)

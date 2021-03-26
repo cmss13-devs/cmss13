@@ -392,6 +392,7 @@
 #include "code\datums\langchat\langchat.dm"
 #include "code\datums\pain\_pain.dm"
 #include "code\datums\pain\pain_human.dm"
+#include "code\datums\pain\pain_human_hero.dm"
 #include "code\datums\pain\pain_monkey.dm"
 #include "code\datums\pain\pain_synthetic.dm"
 #include "code\datums\pain\pain_xeno.dm"

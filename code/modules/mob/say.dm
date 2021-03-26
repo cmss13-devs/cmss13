@@ -89,17 +89,15 @@
 		to_chat(usr, SPAN_DANGER("You have deadchat muted."))
 		return
 
-	var/rendered = "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>"
-
 	for(var/mob/M in GLOB.player_list)
 		if(istype(M, /mob/new_player))
 			continue
 		if(M.client && (M.stat == DEAD || isobserver(M)) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD))
-			to_chat(M, rendered)
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name](<a href='byond://?src=\ref[M];track=\ref[src]'>follow</a>)</span> says, <span class='message'>\"[message]\"</span></span>")
 			continue
 
 		if(M.client && M.client.admin_holder && (M.client.admin_holder.rights & R_MOD) && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD) ) // Show the message to admins/mods with deadchat toggled on
-			to_chat(M, rendered)	//Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
+			to_chat(M, "<span class='game deadsay'><span class='prefix'>DEAD:</span> <span class='name'>[name]</span> says, <span class='message'>\"[message]\"</span></span>")	//Admins can hear deadchat, if they choose to, no matter if they're blind/deaf or not.
 
 	usr.talked = 1
 	addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_SAY_DELAY, TIMER_UNIQUE)

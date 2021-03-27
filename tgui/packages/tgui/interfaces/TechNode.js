@@ -1,12 +1,30 @@
 import { useBackend } from '../backend';
-import { Button, Stack, Section, Box } from '../components';
+import { Button, Stack, Section, Box, Slider } from '../components';
 import { Window } from '../layouts';
 
 export const TechNode = (props, context) => {
   const { act, data } = useBackend(context);
+  if (data.stats_dynamic) {
+    if (data.stats) {
+      if (data.original_stats) data.stats = data.original_stats;
+      else data.original_stats = data.stats;
+
+      data.stats = data.stats.concat(data.stats_dynamic || []);
+    } else {
+      data.original_stats = [];
+      data.stats = data.stats_dynamic;
+    }
+  }
+
   const {
-    total_points, unlocked, theme,
-    cost, name, desc, extra_buttons,
+    total_points,
+    unlocked,
+    theme,
+    cost,
+    name,
+    desc,
+    extra_buttons,
+    extra_sliders,
     stats,
   } = data;
 
@@ -67,6 +85,26 @@ export const TechNode = (props, context) => {
                             checked={val.enabled}
                             content={val.name}
                             onClick={() => act(val.action, val)}
+                          />
+                        </Stack.Item>
+                      ))}
+                    </Stack>
+                  </Stack.Item>
+                )}
+                {!!extra_sliders && (
+                  <Stack.Item>
+                    <Stack>
+                      {extra_sliders.map(val => (
+                        <Stack.Item key={val}>
+                          <Slider
+                            value={val.value}
+                            unit={val.unit}
+                            stepPixelSize={5}
+                            step={val.step}
+                            minValue={val.minValue}
+                            maxValue={val.maxValue}
+                            onChange={(e, value) =>
+                              act(val.action, { value: value })}
                           />
                         </Stack.Item>
                       ))}

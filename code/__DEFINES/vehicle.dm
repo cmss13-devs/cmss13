@@ -40,6 +40,8 @@
 
 #define HDPT_OFFSET_EMPTY list(NORTH = list(0, 0), SOUTH = list(0, 0), EAST = list(0, 0), WEST = list(0, 0))
 
-#define TOGGLE_SHIFT_CLICK_GUNNER			1 	// Toggle between Shift click and MMB click for gunner
+/// Toggle between Shift click and MMB click for gunner
+#define VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER (1<<0)
+#define VEHICLE_WEAK (1<<1)
 
 #define TANK_POPLOCK				90	//

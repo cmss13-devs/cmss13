@@ -19,7 +19,6 @@
 	)
 
 /datum/tech/xeno/powerup/overshield/apply_powerup(mob/living/carbon/Xenomorph/target)
-	// placeholder values for overshield amount and time
 	target.add_xeno_shield(shield_amount, XENO_SHIELD_SOURCE_OVERSHIELD_TECH)
 
 /datum/tech/xeno/powerup/overshield/get_applicable_xenos(var/mob/user)

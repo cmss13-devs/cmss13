@@ -178,7 +178,8 @@
 	var/turf/T = loc
 	. = ..()
 	if(. && pulling && pulling == pullee) //we were pulling a thing and didn't lose it during our move.
-		if(pulling.anchored)
+		var/data = SEND_SIGNAL(pulling, COMSIG_MOVABLE_PULLED, src)
+		if(!(data & COMPONENT_IGNORE_ANCHORED) && pulling.anchored)
 			stop_pulling()
 			return
 
@@ -222,7 +223,7 @@
 	// Check if we're still pulling something
 	if(pulling)
 		SEND_SIGNAL(pulling, COMSIG_MOB_DRAGGED, src)
-	
+
 	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
 		update_inv_back()
 

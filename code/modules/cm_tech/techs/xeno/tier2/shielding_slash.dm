@@ -8,7 +8,7 @@
 
 	required_points = 25
 	var/max_shield = 160
-	var/shield_per_slash = 20
+	var/shield_per_slash = 25
 	tier = /datum/tier/two
 
 /datum/tech/xeno/shielding_slash/ui_static_data(mob/user)

@@ -428,6 +428,13 @@
 	else
 		linked_hive = GLOB.hive_datum[hivenumber]
 
+	for(var/obj/effect/alien/weeds/W in loc)
+		if(W != src)
+			if(W.weed_strength > WEED_LEVEL_HIVE)
+				qdel(src)
+				return
+			qdel(W) //replaces the previous weed
+			break
 
 	. = ..(mapload, src)
 
@@ -444,13 +451,6 @@
 
 	create_reagents(30)
 	reagents.add_reagent(PLASMA_PURPLE,30)
-	for(var/obj/effect/alien/weeds/W in loc)
-		if(W != src)
-			if(W.weed_strength > WEED_LEVEL_HIVE)
-				qdel(src)
-				return
-			qdel(W) //replaces the previous weed
-			break
 
 /obj/effect/alien/weeds/node/Destroy()
 	// When the node is removed, weeds should start dying out

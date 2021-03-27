@@ -73,6 +73,8 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
+	plasma_cost = 1
+
 /datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
 	ability_primacy = XENO_PRIMARY_ACTION_4
 

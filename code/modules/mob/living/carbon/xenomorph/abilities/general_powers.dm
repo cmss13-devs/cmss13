@@ -168,6 +168,10 @@
 		ui.set_autoupdate(FALSE)
 		ui.open()
 
+/datum/action/xeno_action/onclick/choose_resin/Destroy()
+	SStgui.close_uis(src)
+	return ..()
+
 /datum/action/xeno_action/onclick/choose_resin/ui_state(mob/user)
 	return GLOB.always_state
 
@@ -200,7 +204,7 @@
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
-	. = X.build_resin(A, thick, make_message)
+	. = X.build_resin(A, thick, make_message, plasma_cost != 0)
 	..()
 	return
 

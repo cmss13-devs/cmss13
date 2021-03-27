@@ -189,6 +189,10 @@
 
 		var/icon_file = 'icons/mob/hud/actions.dmi'
 		var/icon_state = initial(RC.construction_name)
+		var/icon_name = replacetext(icon_state, " ", "-")
+
+		if (sprites[icon_name])
+			continue
 
 		var/icon_states_list = icon_states(icon_file)
 		if(!(icon_state in icon_states_list))
@@ -203,9 +207,9 @@
 			icon_state = ""
 
 		var/icon/iconNormal = icon(icon_file, icon_state, SOUTH)
-		Insert(replacetext(icon_state, " ", "-"), iconNormal)
+		Insert(icon_name, iconNormal)
 
 		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
 		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
-		Insert("[replacetext(icon_state, " ", "-")]_big", iconBig)
+		Insert("[icon_name]_big", iconBig)
 	return ..()

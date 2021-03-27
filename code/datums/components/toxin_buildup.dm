@@ -4,6 +4,9 @@
 	var/toxic_buildup_dissipation = AMOUNT_PER_TIME(5, 10 SECONDS)
 	var/max_buildup = 75
 
+	var/max_alpha = 35
+	var/glow_color = "#00ff00"
+
 /datum/component/toxic_buildup/Initialize(var/toxic_buildup, var/toxic_buildup_dissipation = AMOUNT_PER_TIME(1, 3 SECONDS), var/max_buildup = 75)
 	. = ..()
 	src.toxic_buildup = toxic_buildup
@@ -29,6 +32,14 @@
 	if(toxic_buildup <= 0)
 		qdel(src)
 
+	var/color = glow_color
+	var/intensity = toxic_buildup/max_buildup
+	color += num2text(max_alpha*intensity, 2, 16)
+
+	if(parent)
+		var/atom/A = parent
+		A.add_filter("toxic_buildup", 2, list("type" = "outline", "color" = color, "size" = 1))
+
 /datum/component/toxic_buildup/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
 	RegisterSignal(parent, list(
@@ -44,6 +55,8 @@
 		COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE,
 		COMSIG_XENO_APPEND_TO_STAT
 	))
+	var/atom/A = parent
+	A.remove_filter("toxic_buildup")
 
 /datum/component/toxic_buildup/proc/stat_append(var/mob/M, var/list/L)
 	SIGNAL_HANDLER

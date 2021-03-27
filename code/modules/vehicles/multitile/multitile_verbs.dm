@@ -109,8 +109,8 @@
 			seat = vehicle_seat
 			break
 	if(seat == VEHICLE_GUNNER)
-		V.vehicle_flags ^= TOGGLE_SHIFT_CLICK_GUNNER
-		to_chat(usr, SPAN_NOTICE("You will fire not selected weapon with [(V.vehicle_flags & TOGGLE_SHIFT_CLICK_GUNNER) ? "Shift + Click" : "Middle Mouse Button click"] now, if possible."))
+		V.vehicle_flags ^= VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER
+		to_chat(usr, SPAN_NOTICE("You will fire not selected weapon with [(V.vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER) ? "Shift + Click" : "Middle Mouse Button click"] now, if possible."))
 	return
 
 //opens vehicle status window with HP and ammo of hardpoints

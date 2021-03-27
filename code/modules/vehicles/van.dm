@@ -28,6 +28,8 @@
 		"back_right" = list(0, 2)
 	)
 
+	vehicle_flags = VEHICLE_WEAK
+
 	interior_capacity = 8
 
 	misc_multipliers = list(

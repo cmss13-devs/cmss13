@@ -265,7 +265,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 		to_chat(M, SPAN_WARNING("[icon2html(src)] Observation area was blocked. Switched to a viewable location."))
 
 	RegisterSignal(M, COMSIG_HUMAN_UPDATE_SIGHT, .proc/see_only_turf)
-	RegisterSignal(src, COMSIG_TURF_ENTER, .proc/allow_turf_entry)
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, .proc/allow_turf_entry)
 	M.update_sight()
 
 /mob/hologram/railgun/Destroy()

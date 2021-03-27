@@ -42,6 +42,21 @@
 		playsound(O, 'sound/effects/metal_crash.ogg', 35)
 		O.tip_over()
 
+	else if(istype(A, /obj/structure/alien/movable_wall))
+		var/obj/structure/alien/movable_wall/MW = A
+		playsound(MW, 'sound/effects/metal_crash.ogg', 35)
+		take_damage_type(5, "blunt", MW)
+
+		if(!(vehicle_flags & VEHICLE_WEAK))
+			return FALSE
+
+		if(MW.group)
+			MW.take_damage(wall_ram_damage)
+			MW.group.try_move_in_direction(get_dir(loc, get_turf(MW)))
+			return FALSE
+		else
+			qdel(MW)
+
 	else if(isobj(A) && !istype(A, /obj/vehicle))
 		var/obj/O = A
 		if(O.unacidable)
@@ -87,7 +102,7 @@
 		if(W.hull)
 			return FALSE
 
-		W.take_damage(30)
+		W.take_damage(wall_ram_damage)
 		take_damage_type(10, "blunt", W)
 		playsound(W, 'sound/effects/metal_crash.ogg', 35)
 		return FALSE

@@ -374,14 +374,12 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	anchored = TRUE
 
-	var/list/mob/living/targets
 	var/firing_cooldown = 2 SECONDS
 
 	var/acid_type = /obj/effect/xenomorph/spray/weak
 
 	var/list/mob/living/carbon/next_fire
 	var/range = 5
-	var/datum/shape/rectangle/range_bounds
 
 /obj/effect/alien/resin/acid_pillar/Initialize(mapload, hive)
 	. = ..()
@@ -389,61 +387,48 @@
 		hivenumber = hive
 	set_hive_data(src, hivenumber)
 	START_PROCESSING(SSprocessing, src)
-	range_bounds = RECT(x, y, range*2, range*2)
 
-/obj/effect/alien/resin/acid_pillar/proc/acquire_target(var/list/mobs)
-	for(var/mob/living/carbon/C in mobs)
-		if(!can_target(C))
-			continue
 
-		RegisterSignal(C, COMSIG_PARENT_QDELETING, .proc/remove_target, TRUE)
-		LAZYOR(targets, C)
-
-/obj/effect/alien/resin/acid_pillar/proc/remove_target(var/mob/living/carbon/M)
-	SIGNAL_HANDLER
-	UnregisterSignal(M, COMSIG_PARENT_QDELETING)
-	LAZYREMOVE(targets, M)
-
-/obj/effect/alien/resin/acid_pillar/proc/can_target(var/mob/living/carbon/C)
+/obj/effect/alien/resin/acid_pillar/proc/can_target(var/mob/living/carbon/C, var/position_to_get = 0)
 	if(get_dist(src, C) > range)
 		return FALSE
 
 	if(C.stat == DEAD)
 		return FALSE
 
-	if(C.lying)
+	if(C.ally_of_hivenumber(hivenumber))
+		if(!C.on_fire)
+			return FALSE
+	else if(C.lying)
 		return FALSE
 
-	if(C.ally_of_hivenumber(hivenumber) && !C.on_fire)
-		return FALSE
-
-	var/turf/current_turf = get_step(loc, get_dir(loc, C))
+	var/turf/current_turf
 	var/turf/last_turf = loc
 	var/atom/temp_atom = new acid_type()
+	var/current_pos = 1
 	for(var/i in getline(src, C))
 		current_turf = i
 		if(LinkBlocked(temp_atom, last_turf, current_turf))
 			qdel(temp_atom)
 			return FALSE
 		last_turf = i
+
+		if(current_pos == position_to_get)
+			. = i
+		current_pos += 1
 	qdel(temp_atom)
 
-	return TRUE
+	if(!.)
+		return TRUE
 
 /obj/effect/alien/resin/acid_pillar/process()
-	acquire_target(SSquadtree.players_in_range(range_bounds, z, QTREE_SCAN_MOBS | QTREE_EXCLUDE_OBSERVER))
-
-	if(!targets)
-		return
-
-	for(var/i in targets)
-		var/mob/living/carbon/C = i
+	for(var/mob/living/carbon/C in urange(range, get_turf(loc)))
 		if(!can_target(C))
-			remove_target(C)
 			continue
 
-		var/last_fired = LAZYACCESS(next_fire, C)
-		if(last_fired && last_fired > world.time)
+		var/can_fire = LAZYACCESS(next_fire, C)
+
+		if(can_fire && can_fire > world.time)
 			continue
 
 		SSacid_pillar.queue_attack(src, C)
@@ -452,35 +437,92 @@
 	if(QDELETED(src))
 		return FALSE
 
-	if(!can_target(info.target))
+	var/turf/next_turf = can_target(info.target, info.distance_travelled+2)
+
+	if(!isturf(next_turf))
 		return FALSE
 
 	if(info.distance_travelled > range)
 		return FALSE
 
 	var/mob/living/carbon/C = info.target
-	var/turf/current_turf = info.current_turf
 
-	current_turf = get_step(current_turf, get_dir(current_turf, C))
+	var/turf/potential_turf = get_step_towards(info.current_turf, C)
+
+	if(!potential_turf.density)
+		next_turf = potential_turf
+
 	info.distance_travelled += 1
-	info.current_turf = current_turf
+	info.current_turf = next_turf
 
-	new acid_type(current_turf, name, null, hivenumber)
+	new acid_type(next_turf, name, null, hivenumber)
 
-	if(get_dist(current_turf, C) == 0)
+	if(get_dist(next_turf, C) == 0)
 		LAZYSET(next_fire, info.target, world.time + firing_cooldown)
+		RegisterSignal(info.target, COMSIG_PARENT_QDELETING, .proc/cleanup_next_fire, TRUE)
 		return FALSE
 
 	return TRUE
 
+/obj/effect/alien/resin/acid_pillar/proc/cleanup_next_fire(var/datum/D)
+	SIGNAL_HANDLER
+	LAZYREMOVE(next_fire, D)
+
 /obj/effect/alien/resin/acid_pillar/Destroy()
-	QDEL_NULL(range_bounds)
+	STOP_PROCESSING(SSprocessing, src)
 	next_fire = null
-	targets   = null
 	return ..()
 
 /obj/effect/alien/resin/acid_pillar/get_projectile_hit_boolean(obj/item/projectile/P)
 	return TRUE
+
+/obj/effect/alien/resin/acid_pillar/strong
+	name = "acid pillar"
+	desc = "A resin pillar that is oozing with acid."
+	icon = 'icons/obj/structures/alien/structures64x64.dmi'
+	icon_state = "resin_pillar_strong"
+
+	pixel_x = -16
+	pixel_y = -16
+	firing_cooldown = 6 SECONDS
+
+	acid_type = /obj/effect/xenomorph/spray/strong
+
+/obj/effect/alien/resin/shield_pillar
+	name = "shield pillar"
+	desc = "A resin pillar that is oozing with acid."
+	icon = 'icons/obj/structures/alien/structures64x64.dmi'
+	icon_state = "pillar_shield"
+
+	pixel_x = -16
+	pixel_y = -16
+
+	health = HEALTH_RESIN_XENO_SHIELD_PILLAR
+	var/hivenumber = XENO_HIVE_NORMAL
+	anchored = TRUE
+
+	var/decay_rate = AMOUNT_PER_TIME(1, 5 SECONDS)
+	var/shield_to_give = 25
+	var/range = 2
+
+/obj/effect/alien/resin/shield_pillar/Initialize(mapload, hive)
+	. = ..()
+	if (hive)
+		hivenumber = hive
+	set_hive_data(src, hivenumber)
+	START_PROCESSING(SSshield_pillar, src)
+
+/obj/effect/alien/resin/shield_pillar/process()
+	for(var/mob/living/carbon/Xenomorph/X in urange(range, src))
+		if(X.hivenumber != hivenumber)
+			continue
+		X.add_xeno_shield(shield_to_give, XENO_SHIELD_SOURCE_SHIELD_PILLAR, decay_amount_per_second = 1, add_shield_on = TRUE, duration = 1 SECONDS)
+		X.flick_heal_overlay(1 SECONDS, "#ffa800")
+		X.xeno_jitter(15)
+
+/obj/effect/alien/resin/shield_pillar/Destroy()
+	STOP_PROCESSING(SSshield_pillar, src)
+	return ..()
 
 /obj/effect/alien/resin/resin_pillar
 	name = "resin pillar"
@@ -625,3 +667,142 @@
 		return
 
 	return ..()
+
+/obj/item/explosive/grenade/alien
+	name = "alien grenade"
+	desc = "an alien grenade."
+	icon_state = "neuro_nade_greyscale"
+	item_state = "neuro_nade_greyscale"
+
+	has_iff = FALSE
+
+	dangerous = TRUE
+	rebounds = FALSE
+	throw_speed = SPEED_SLOW
+	throw_range = 4
+
+	arm_sound = 'sound/effects/blobattack.ogg'
+	var/xeno_throw_time = 1 SECONDS
+
+	var/can_prime = FALSE
+
+	var/hivenumber = XENO_HIVE_NORMAL
+
+/obj/item/explosive/grenade/alien/Initialize(mapload, hivenumber)
+	. = ..()
+	src.hivenumber = hivenumber
+
+/obj/item/explosive/grenade/alien/try_to_throw(var/mob/living/user)
+	if(isXeno(user))
+		to_chat(user, SPAN_NOTICE("You prepare to throw [src]."))
+		if(!do_after(user, xeno_throw_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
+			return TRUE
+		activate(user)
+
+/obj/item/explosive/grenade/alien/can_use_grenade(mob/user)
+	if(!isXeno(user))
+		to_chat(user, SPAN_WARNING("You don't know how to activate this!"))
+		return FALSE
+
+	to_chat(user, SPAN_XENOWARNING("You need to throw this to activate it!"))
+	return FALSE
+
+/obj/item/explosive/grenade/alien/update_icon()
+	. = ..()
+
+	icon_state = initial(icon_state)
+
+	if(active)
+		var/image/I = image(icon, src, "+neuro_nade_active")
+		I.appearance_flags |= RESET_COLOR|KEEP_APART
+		overlays += I
+
+
+/obj/item/explosive/grenade/alien/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(!active)
+		attack_hand(M)
+
+/obj/item/explosive/grenade/alien/acid
+	name = "acid grenade"
+	desc = "Sprays acid projectiles outwards when detonated."
+
+	color = "#00ff00"
+
+	var/range = 2
+	var/acid_type = /obj/effect/xenomorph/spray/weak
+
+/obj/item/explosive/grenade/alien/acid/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE
+
+/obj/item/explosive/grenade/alien/acid/prime(force)
+	active = FALSE
+	var/datum/automata_cell/acid/E = new /datum/automata_cell/acid(get_turf(loc))
+
+	// something went wrong :(
+	if(QDELETED(E))
+		return
+
+	E.range = range
+	E.acid_type = acid_type
+	E.hivenumber = hivenumber
+	qdel(src)
+
+
+/datum/automata_cell/acid
+	neighbor_type = NEIGHBORS_NONE
+
+	var/obj/effect/xenomorph/spray/acid_type = /obj/effect/xenomorph/spray/weak
+
+	// Which direction is the explosion traveling?
+	// Note that this will be null for the epicenter
+	var/hivenumber = XENO_HIVE_NORMAL
+	var/direction = null
+	var/range = 0
+
+	var/delay = 2
+
+
+/datum/automata_cell/acid/proc/get_propagation_dirs()
+	. = list()
+
+	// If the cell is the epicenter, propagate in all directions
+	if(isnull(direction))
+		return alldirs
+
+	if(direction in cardinal)
+		. += list(direction, turn(direction, 45), turn(direction, -45))
+	else
+		. += direction
+
+/datum/automata_cell/acid/update_state(var/list/turf/neighbors)
+	if(delay > 0)
+		delay--
+		return
+
+	var/atom/temp = new acid_type()
+
+	if(LinkBlocked(temp, get_step(in_turf, turn(direction, 180)), in_turf))
+		QDEL_NULL(temp)
+		qdel(src)
+		return
+	QDEL_NULL(temp)
+
+	new acid_type(in_turf, null, null, hivenumber)
+
+	// Range has been reached
+	if(range <= 0)
+		qdel(src)
+		return
+
+	// Propagate the explosion
+	var/list/to_spread = get_propagation_dirs()
+	for(var/dir in to_spread)
+		var/datum/automata_cell/acid/E = propagate(dir)
+		if(E)
+			E.range = range - 1
+			// Set the direction the explosion is traveling in
+			E.direction = dir
+			E.acid_type = /obj/effect/xenomorph/spray/weak
+
+	// We've done our duty, now die pls
+	qdel(src)

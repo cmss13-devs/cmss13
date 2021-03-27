@@ -43,6 +43,9 @@
 #define COMSIG_CLIENT_KEY_DOWN "client_key_down"
 #define COMSIG_CLIENT_KEY_UP "client_key_up"
 
+///from /datum/controller/subsystem/radio/get_available_tcomm_zs(): (list/tcomms)
+#define COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS "ssradio_get_available_tcomms_zs"
+
 ///from /mob/do_click(): (atom/A, list/mods)
 #define COMSIG_CLIENT_PRE_CLICK "client_pre_click"
 
@@ -254,6 +257,7 @@
 #define COMSIG_CLIENT_MOB_MOVE	"client_mob_move"
 	#define COMPONENT_OVERRIDE_MOVE	(1<<0)
 
+#define COMSIG_MOVABLE_TURF_ENTER "movable_turf_enter"
 #define COMSIG_TURF_ENTER "turf_enter"
 	#define COMPONENT_TURF_ALLOW_MOVEMENT (1<<0)
 	#define COMPONENT_TURF_DENY_MOVEMENT  (1<<1)
@@ -277,6 +281,13 @@
 	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+
+///from /mob/living/carbon/Xenomorph/start_pulling(): (mob/living/carbon/Xenomorph/X)
+#define COMSIG_MOVABLE_XENO_START_PULLING "movable_xeno_start_pulling"
+	#define COMPONENT_ALLOW_PULL (1<<0)
+
+#define COMSIG_MOVABLE_PULLED "movable_pulled"
+	#define COMPONENT_IGNORE_ANCHORED (1<<0)
 
 #define COMSIG_MOVABLE_PRE_LAUNCH "movable_pre_launch"
 	#define COMPONENT_LAUNCH_CANCEL (1<<0)

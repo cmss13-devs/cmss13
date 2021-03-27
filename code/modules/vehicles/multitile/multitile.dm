@@ -82,6 +82,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	// How many people can fit inside
 	var/interior_capacity = 2
 
+	var/wall_ram_damage = 30
+
 	//vehicles with this off will be ignored by tacmap.
 	var/visible_in_tacmap = TRUE
 

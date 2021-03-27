@@ -4,8 +4,8 @@
 
 	flags = TREE_FLAG_XENO
 
-	required_points = 5
-	var/charges_to_give = 2
+	required_points = 2
+	var/charges_to_give = 1
 	tier = /datum/tier/one
 
 /datum/tech/xeno/powerup/blockade/ui_static_data(mob/user)

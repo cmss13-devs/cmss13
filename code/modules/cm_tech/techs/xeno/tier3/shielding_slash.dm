@@ -6,10 +6,10 @@
 
 	flags = TREE_FLAG_XENO
 
-	required_points = 25
-	var/max_shield = 160
-	var/shield_per_slash = 25
-	tier = /datum/tier/two
+	required_points = 20
+	var/max_shield = 240
+	var/shield_per_slash = 40
+	tier = /datum/tier/three
 
 /datum/tech/xeno/shielding_slash/ui_static_data(mob/user)
 	. = ..()

@@ -532,7 +532,7 @@
 				status_bar = "TARGET PROPERTY CAN NOT BE SIMULATED"
 				return FALSE
 	if(mode == MODE_RELATE)
-		if(target && target.data.properties.len < 2)
+		if(target && length(target.data.properties) < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
 			return FALSE
 		if(reference && target)

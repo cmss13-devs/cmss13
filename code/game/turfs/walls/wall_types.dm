@@ -657,6 +657,8 @@
 /datum/movable_wall_group
 	var/list/obj/structure/alien/movable_wall/walls
 
+	var/push_delay = 4
+	var/next_push = 0
 	var/is_moving = FALSE
 
 /datum/movable_wall_group/New(var/list/datum/movable_wall_group/merge)
@@ -728,8 +730,20 @@
 				var/mob/M = A
 				M.stop_pulling()
 
-			if(!(A in forget) && !A.anchored && !A.Move(get_step(T, dir), dir) && A.density)
+			if((A in forget) || A.anchored)
+				continue
+
+			if(ismob(A))
+				var/mob/M = A
+				if(M.stat == DEAD)
+					continue
+
+				var/result = M.Move(get_step(T, dir), dir)
+				if(A.density && !result)
+					failed = TRUE
+			else if(A.density && !A.Move(get_step(T, dir), dir))
 				failed = TRUE
+
 	is_moving = FALSE
 
 	if(failed || !on_weeds)
@@ -739,6 +753,7 @@
 		MW = i
 		T = get_step(MW, dir)
 		MW.forceMove(T)
+	next_push = world.time + push_delay
 
 	return TRUE
 
@@ -763,7 +778,6 @@
 
 	var/turf/tied_turf
 	var/list/wall_connections = list("0", "0", "0", "0")
-	var/push_delay = 4
 	drag_delay = 4
 
 
@@ -852,6 +866,10 @@
 /obj/structure/alien/movable_wall/get_projectile_hit_boolean(obj/item/projectile/P)
 	return TRUE
 
+/obj/structure/alien/movable_wall/bullet_act(obj/item/projectile/P)
+	. = ..()
+	take_damage(P.damage)
+
 /obj/structure/alien/movable_wall/proc/recalculate_structure()
 	var/list/found_structures = list()
 	var/current_walls = 0
@@ -893,6 +911,9 @@
 	update_tied_turf(loc)
 
 /obj/structure/alien/movable_wall/proc/check_for_move(var/turf/T, atom/movable/mover)
+	if(group.next_push > world.time)
+		return
+
 	var/target_dir = get_dir(mover, T)
 
 	if(isXeno(mover))
@@ -904,7 +925,6 @@
 			X.stop_pulling()
 
 		if(group.try_move_in_direction(target_dir, list(mover)))
-			X.next_move_slowdown = max(push_delay, X.next_move_slowdown)
 			return COMPONENT_TURF_ALLOW_MOVEMENT
 
 /obj/structure/alien/movable_wall/Move(NewLoc, direct)

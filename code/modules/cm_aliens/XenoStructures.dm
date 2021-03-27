@@ -501,8 +501,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	anchored = TRUE
 
-	var/decay_rate = AMOUNT_PER_TIME(1, 5 SECONDS)
-	var/shield_to_give = 25
+	var/decay_rate = AMOUNT_PER_TIME(1, 10 SECONDS)
+	var/shield_to_give = 50
 	var/range = 2
 
 /obj/effect/alien/resin/shield_pillar/Initialize(mapload, hive)
@@ -803,6 +803,7 @@
 			// Set the direction the explosion is traveling in
 			E.direction = dir
 			E.acid_type = /obj/effect/xenomorph/spray/weak
+			E.hivenumber = hivenumber
 
 	// We've done our duty, now die pls
 	qdel(src)

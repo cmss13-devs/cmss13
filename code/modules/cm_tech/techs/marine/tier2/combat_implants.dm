@@ -1,6 +1,7 @@
 /datum/tech/droppod/item/combat_implants
 	name = "Combat Implants"
 	desc = "Marines get access to combat implants to improve their ability to function."
+	icon_state = "implants"
 
 	droppod_name = "Implants"
 
@@ -35,15 +36,16 @@
 
 /obj/item/storage/box/implant
 	name = "implant box"
-	desc = "A box with, typically containing implanters."
-	icon_state = "implant"
+	desc = "A sterile metal lockbox housing hypodermic implant injectors."
+	icon_state = "implantbox"
+	use_sound = "toolbox"
 	storage_slots = 5
 	can_hold = list(/obj/item/device/implanter)
 	w_class = SIZE_SMALL
 
 /obj/item/device/implanter
 	name = "implanter"
-	desc = "Used to inject an implant into someone."
+	desc = "An injector that drives an implant into your body. The injection stings quite badly."
 	icon = 'icons/obj/items/devices.dmi'
 	icon_state = "implanter"
 

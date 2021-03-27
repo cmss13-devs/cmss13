@@ -1,7 +1,7 @@
 /datum/tech/droppod/item/combat_stimulants
 	name = "Combat Stimulants"
 	desc = "Marines get access to combat stimulants to assist them in their activities."
-
+	icon_state = "stimulants"
 	droppod_name = "Stimulants"
 	flags = TREE_FLAG_MARINE
 

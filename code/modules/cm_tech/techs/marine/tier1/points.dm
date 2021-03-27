@@ -1,5 +1,6 @@
 /datum/tech/repeatable/req_points
 	name = "Requisition Budget Increase"
+	icon_state = "budget_req"
 	desc = "Distributes resources to requisitions for spending."
 
 	announce_name = "Additional Supply Budget"
@@ -19,6 +20,7 @@
 
 /datum/tech/repeatable/dropship_points
 	name = "Dropship Budget Increase"
+	icon_state = "budget_ds"
 	desc = "Distributes resources to the dropship fabricator."
 
 	announce_name = "Additional Dropship Part Fabricator Points"

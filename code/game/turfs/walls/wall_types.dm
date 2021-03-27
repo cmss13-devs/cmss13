@@ -666,14 +666,19 @@
 	for(var/i in merge)
 		var/datum/movable_wall_group/MWG = i
 		for(var/wall in MWG.walls)
-			MWG.remove_structure(wall, TRUE)
 			add_structure(wall)
 
 /datum/movable_wall_group/proc/add_structure(var/obj/structure/alien/movable_wall/MW)
+	if(MW.group)
+		MW.group.remove_structure(MW, TRUE)
 	LAZYOR(walls, MW)
 	MW.group = src
 	MW.update_connections(TRUE)
 	MW.update_icon()
+
+/datum/movable_wall_group/Destroy(force)
+	QDEL_NULL_LIST(walls)
+	return ..()
 
 /datum/movable_wall_group/proc/remove_structure(var/obj/structure/alien/movable_wall/MW, var/merge)
 	LAZYREMOVE(walls, MW)
@@ -683,21 +688,23 @@
 	else if(!merge)
 		var/obj/structure/alien/movable_wall/current
 		var/obj/structure/alien/movable_wall/connected
-		for(var/i in walls)
+		var/list/current_walls = walls.Copy()
+		for(var/i in current_walls)
 			current = i
 			if(!current.group || current.group == src)
-				current.group = new()
-				current.group.add_structure(current)
+				var/datum/movable_wall_group/MWG = new()
+				MWG.add_structure(current)
 
 			for(var/dir in cardinal)
 				connected = locate() in get_step(current, dir)
-				if(connected in walls)
+				if(connected in current_walls)
 					if(connected.group == src)
 						current.group.add_structure(connected)
 					else if(connected.group != current.group)
 						new /datum/movable_wall_group(list(current.group, connected.group))
-		walls.Cut()
-		qdel(src)
+
+		if(!QDELETED(src))
+			qdel(src)
 
 
 /datum/movable_wall_group/proc/try_move_in_direction(var/dir, var/list/forget)
@@ -794,6 +801,9 @@
 	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, .proc/allow_xeno_drag)
 	RegisterSignal(src, COMSIG_MOVABLE_PULLED, .proc/continue_allowing_drag)
 
+/obj/structure/alien/movable_wall/ex_act(severity, direction)
+	take_damage(severity)
+
 /obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, var/mob/living/L)
 	if(isXeno(L))
 		return COMPONENT_IGNORE_ANCHORED
@@ -886,12 +896,14 @@
 	if(current_walls > max_walls)
 		found_structures = null
 
-	group = new(found_structures)
-	group.add_structure(src)
+	var/datum/movable_wall_group/MWG = new(found_structures)
+	MWG.add_structure(src)
 
 /obj/structure/alien/movable_wall/Destroy()
-	if(group)
+	if(!QDELETED(group))
 		group.remove_structure(src)
+	else
+		group = null
 
 	return ..()
 

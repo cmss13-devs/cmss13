@@ -1,7 +1,7 @@
 /datum/tech/droppod/item/enhanced_antibiologicals
 	name = "Enhanced Antibiologicals"
 	desc = "Marines get access to limited-use kits that can convert ammo magazines into the specified ammo."
-
+	icon_state = "ammo"
 	droppod_name = "Ammo Kits"
 	flags = TREE_FLAG_MARINE
 
@@ -21,8 +21,9 @@
 
 /obj/item/ammo_kit
 	name = "ammo kit"
+	icon = 'icons/obj/items/devices.dmi'
 	desc = "An ammo kit used to convert regular ammo magazines of various weapons into a different variation."
-	icon_state = "soap"
+	icon_state = "kit_generic"
 
 	var/list/convert_map
 	var/uses = 5
@@ -69,8 +70,8 @@
 
 /obj/item/ammo_kit/incendiary
 	name = "incendiary ammo kit"
+	icon_state = "kit_incendiary"
 	desc = "Converts magazines into incendiary ammo."
-	icon_state = "soapsyndie"
 
 /obj/item/ammo_kit/incendiary/get_convert_map()
 	. = ..()
@@ -85,8 +86,8 @@
 
 /obj/item/storage/box/shotgun
 	name = "incendiary shotgun kit"
-	desc = "A kit containing shotgun shells"
-	icon_state = "box_of_doom"
+	desc = "A kit containing incendiary shotgun shells."
+	icon_state = "incenbuck"
 	storage_slots = 5
 	var/amount = 5
 	var/to_hold
@@ -107,6 +108,7 @@
 /obj/item/storage/box/shotgun/slug
 	name = "incendiary slug kit"
 	desc = "A box containing 5 handfuls of incendiary slugs."
+	icon_state = "incenslug"
 	can_hold = list(
 		/obj/item/ammo_magazine/handful/shotgun/incendiary
 	)
@@ -114,8 +116,8 @@
 
 /obj/item/ammo_kit/penetrating
 	name = "wall-piercing ammo kit"
+	icon_state = "kit_penetrating"
 	desc = "Converts magazines into wall-piercing ammo."
-	icon_state = "soapnt"
 
 /obj/item/ammo_kit/penetrating/get_convert_map()
 	. = ..()
@@ -130,8 +132,8 @@
 
 /obj/item/ammo_kit/toxin
 	name = "toxin ammo kit"
+	icon_state = "kit_toxin"
 	desc = "Converts magazines into toxin ammo."
-	icon_state = "soapdeluxe"
 
 /obj/item/ammo_kit/toxin/get_convert_map()
 	. = ..()

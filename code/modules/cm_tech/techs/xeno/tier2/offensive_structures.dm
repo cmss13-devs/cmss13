@@ -1,10 +1,10 @@
 /datum/tech/xeno/structures/offensive
 	name = "Offensive Structures"
-	desc = "Unlock offensive structures to use to attack people with. Upgrades the acid pillar to a stronger variation."
+	desc = "Unlock offensive structures to use to attack people with."
 
 	flags = TREE_FLAG_XENO
 
-	required_points = 25
+	required_points = 20
 	tier = /datum/tier/two
 	constructions_to_add = list(
 		/datum/resin_construction/resin_obj/shield_dispenser,

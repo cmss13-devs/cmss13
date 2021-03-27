@@ -33,6 +33,22 @@
 	keybind_signal = COMSIG_KB_CARBON_TOGGLETHROWMODE_HIGH_DOWN
 	throw_mode = THROW_MODE_HIGH
 
+/datum/keybinding/carbon/cycle_intent
+	hotkey_keys = list()
+	classic_keys = list("Insert")
+	name = "cycle_intent"
+	full_name = "Cycle Intent"
+	description = "Cycle currently selected intent"
+	category = CATEGORY_CARBON
+	keybind_signal = COMSIG_KB_CARBON_CYCLEINTENT_DOWN
+
+/datum/keybinding/carbon/cycle_intent/down(client/user)
+	. = ..()
+	if(.)
+		return
+	user.mob?.a_intent_change(NONE)
+	return TRUE
+
 /datum/keybinding/carbon/select_help_intent
 	hotkey_keys = list("1")
 	classic_keys = list("1")

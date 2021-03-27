@@ -20,6 +20,7 @@
 #define COMSIG_KB_CARBON_HOLDRUNMOVEINTENT_UP "keybinding_carbon_holdrunmoveintent_up"
 #define COMSIG_KB_CARBON_TOGGLETHROWMODE_DOWN "keybinding_carbon_togglethrowmode_down"
 #define COMSIG_KB_CARBON_TOGGLETHROWMODE_HIGH_DOWN "keybinding_carbon_togglethrowmode_high_down"
+#define COMSIG_KB_CARBON_CYCLEINTENT_DOWN "keybinding_carbon_cycleintent_down"
 #define COMSIG_KB_CARBON_SELECTHELPINTENT_DOWN "keybinding_carbon_selecthelpintent_down"
 #define COMSIG_KB_CARBON_SELECTDISARMINTENT_DOWN "keybinding_carbon_selectdisarmintent_down"
 #define COMSIG_KB_CARBON_SELECTGRABINTENT_DOWN "keybinding_carbon_selectgrabintent_down"
@@ -35,6 +36,7 @@
 #define COMSIG_KB_CLIENT_OOC_DOWN "keybinding_client_ooc_down"
 #define COMSIG_KB_CLIENT_SAY_DOWN "keybinding_client_say_down"
 #define COMSIG_KB_CLIENT_ME_DOWN "keybinding_client_me_down"
+#define COMSIG_KB_CLIENT_WHISPER_DOWN "keybinding_client_whisper_down"
 
 //Human
 #define COMSIG_KB_HUMAN_QUICKEQUIP_DOWN "keybinding_human_quickequip_down"

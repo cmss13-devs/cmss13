@@ -21,3 +21,10 @@
 	name = "Me"
 	full_name = "Custom Emote (/Me)"
 	keybind_signal = COMSIG_KB_CLIENT_ME_DOWN
+
+/datum/keybinding/client/communication/whisper
+	hotkey_keys = list()
+	classic_keys = list()
+	name = "Whisper"
+	full_name = "IC Whisper"
+	keybind_signal = COMSIG_KB_CLIENT_WHISPER_DOWN

@@ -104,7 +104,8 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 	return 1
 
 /proc/IsAdminAdvancedProcCall()
-	return usr?.client && GLOB.AdminProcCaller == usr.client.ckey
+	if(usr)
+		return usr?.client && GLOB.AdminProcCaller == usr.client.ckey
 
 /proc/WrapAdminProcCall(datum/target, procname, list/arguments)
 	if(target && procname == "Del")

@@ -182,9 +182,6 @@
 	. += speed
 	move_delay = .
 
-/mob/Move(NewLoc, direct)
-	. = ..()
-	SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_MOVE, NewLoc, direct)
 
 /mob/proc/Life(delta_time)
 	SHOULD_NOT_SLEEP(TRUE)
@@ -436,8 +433,6 @@
 				client.recalculate_move_delay()
 
 			return
-		else
-			stop_pulling()
 
 	var/mob/M
 	if(ismob(AM))
@@ -452,6 +447,18 @@
 	var/pull_response = AM.pull_response(src)
 	if(!pull_response) // If I'm not allowed to pull you I won't. Stop here.
 		return FALSE
+
+	return do_pull(AM, lunge, no_msg)
+
+/mob/living/proc/do_pull(atom/movable/clone/AM, lunge, no_msg)
+	if(pulling)
+		stop_pulling()
+
+	var/mob/M
+	if(ismob(AM))
+		M = AM
+	else if(istype(AM, /obj))
+		AM.add_fingerprint(src)
 
 	pulling = AM
 	AM.pulledby = src

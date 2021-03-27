@@ -91,7 +91,7 @@
 		COMSIG_XENO_STOP_OVERWATCH,
 		COMSIG_XENO_STOP_OVERWATCH_XENO
 	), .proc/stop_watching)
-	RegisterSignal(src, COMSIG_TURF_ENTER, .proc/turf_weed_only)
+	RegisterSignal(src, COMSIG_MOVABLE_TURF_ENTER, .proc/turf_weed_only)
 
 	// Default colour
 	if(Q.hive.color)

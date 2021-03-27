@@ -49,9 +49,9 @@
 	START_PROCESSING(SSobj, src)
 	processing = TRUE
 
-/datum/xeno_shield/process()
+/datum/xeno_shield/process(delta_time)
 	..()
-	amount = max(amount - decay_amount_per_second, 0)
+	amount = max(amount - decay_amount_per_second * delta_time, 0)
 	if (amount <= 0)
 		on_removal()
 		qdel(src)
@@ -59,11 +59,18 @@
 
 // Add a shield or replace the existing one on a Xeno
 // Use the type var if you need to construct a shield with different on hit behavior, damage reduction, etc.
-/mob/living/carbon/Xenomorph/proc/add_xeno_shield(amount, shield_source, type = /datum/xeno_shield, duration = -1, decay_amount_per_second = 1)
+/mob/living/carbon/Xenomorph/proc/add_xeno_shield(\
+	amount, shield_source, type = /datum/xeno_shield, \
+	duration = -1, decay_amount_per_second = 1, \
+	add_shield_on = FALSE, max_shield = 200)
 	for (var/datum/xeno_shield/curr_shield in xeno_shields)
 		if (shield_source == curr_shield.shield_source)
 			// New shield from the same source? increment amount if we can
-			curr_shield.amount = max(curr_shield.amount, amount)
+			if(add_shield_on)
+				curr_shield.amount = min(curr_shield.amount + amount, max_shield)
+			else
+				curr_shield.amount = max(curr_shield.amount, amount)
+
 			return
 
 	var/datum/xeno_shield/new_shield = new type()

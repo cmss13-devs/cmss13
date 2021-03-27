@@ -155,8 +155,8 @@
 	var/time_taken = 6 SECONDS
 	charges = 0
 
-	var/brittle_time = 30 SECONDS
-	var/decay_time = 30 SECONDS
+	var/brittle_time = 45 SECONDS
+	var/decay_time = 45 SECONDS
 
 /datum/action/xeno_action/activable/blockade/give_to(mob/living/carbon/Xenomorph/Queen/Q)
 	. = ..()

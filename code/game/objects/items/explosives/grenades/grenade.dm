@@ -18,43 +18,52 @@
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
+	var/has_iff = TRUE
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
 	det_time = rand(det_time - 5, det_time + 5)
 
-/obj/item/explosive/grenade/attack_self(mob/user)
-	if(active)
-		return
+/obj/item/explosive/grenade/proc/can_use_grenade(mob/user)
 	if(!hand_throwable)
 		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
-		return
+		return FALSE
+
 	if(!user.IsAdvancedToolUser())
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
-		return
+		return FALSE
 
 	if(harmful && isSynth(user))
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+		return FALSE
+
+	return TRUE
+
+/obj/item/explosive/grenade/attack_self(mob/user)
+	if(active)
+		return
+
+	if(!can_use_grenade(user))
 		return
 
 	. = ..()
 
 	if(!. || isnull(loc))
 		return
-	
-	if(grenade_grief_check(src))
+
+	if(has_iff && grenade_grief_check(src))
 		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from priming the grenade!"))
 		// Let staff know, in case someone's actually about to try to grief
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
-	
-	if(SEND_SIGNAL(user, COMSIG_GRENADE_PRE_PRIME) & COMPONENT_GRENADE_PRIME_CANCEL)			
+
+	if(SEND_SIGNAL(user, COMSIG_GRENADE_PRE_PRIME) & COMPONENT_GRENADE_PRIME_CANCEL)
 		return
 
 	add_fingerprint(user)
 
 	activate(user)
-		
+
 	source_mob = user
 
 	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \

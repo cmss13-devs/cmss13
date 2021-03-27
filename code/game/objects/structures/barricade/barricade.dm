@@ -45,7 +45,7 @@
 	..()
 	if (PF)
 		PF.flags_can_pass_all = NONE
-		PF.flags_can_pass_front = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
+		PF.flags_can_pass_front = NONE
 		PF.flags_can_pass_behind = PASS_OVER^(PASS_OVER_ACID_SPRAY|PASS_OVER_THROW_MOB)
 	flags_can_pass_front_temp = PASS_OVER_THROW_MOB
 	flags_can_pass_behind_temp = PASS_OVER_THROW_MOB

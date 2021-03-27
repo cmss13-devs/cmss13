@@ -244,13 +244,13 @@
 
 	if(seat == VEHICLE_GUNNER)
 		if(mods["shift"] && !mods["middle"])
-			if(vehicle_flags & TOGGLE_SHIFT_CLICK_GUNNER)
+			if(vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER)
 				shoot_other_weapon(user, seat, A)
 			else
 				A.examine(user)
 			return
 		if(mods["middle"] && !mods["shift"])
-			if(!(vehicle_flags & TOGGLE_SHIFT_CLICK_GUNNER))
+			if(!(vehicle_flags & VEHICLE_TOGGLE_SHIFT_CLICK_GUNNER))
 				shoot_other_weapon(user, seat, A)
 			return
 		if(mods["alt"])

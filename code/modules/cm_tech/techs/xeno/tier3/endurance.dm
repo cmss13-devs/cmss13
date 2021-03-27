@@ -12,7 +12,7 @@
 	var/offweed_speed_mult = 0.95
 
 	/// Amount to heal xenos per second by if they're not on weeds
-	var/heal_amt_per_second = AMOUNT_PER_TIME(50, 30 SECONDS)
+	var/heal_amt_per_second = AMOUNT_PER_TIME(50, 15 SECONDS)
 
 /datum/tech/xeno/endurance/ui_static_data(mob/user)
 	. = ..()

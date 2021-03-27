@@ -45,7 +45,8 @@
 #define HUD_PLASMA_STATES_XENO 16
 #define HUD_ARMOR_STATES_XENO  10
 
-#define BUILD_TIME_MULT_XENO        1.5 // Multiplier for time taken for a xeno to place down a resin structure
+/// Multiplier for time taken for a xeno to place down a resin structure
+#define BUILD_TIME_MULT_XENO        1 
 #define BUILD_TIME_MULT_BUILDER	    1
 #define BUILD_TIME_MULT_HIVELORD    0.5
 
@@ -253,6 +254,7 @@
 #define XENO_RESIN_WALL_COST 95
 #define XENO_RESIN_WALL_THICK_COST 145
 #define XENO_RESIN_WALL_REFLECT_COST 145
+#define XENO_RESIN_WALL_MOVABLE_COST 145
 #define XENO_RESIN_DOOR_COST 95
 #define XENO_RESIN_DOOR_THICK_COST 120
 #define XENO_RESIN_MEMBRANE_COST 70
@@ -262,6 +264,8 @@
 #define XENO_RESIN_FAST_COST 10
 #define XENO_RESIN_SPIKE_COST 100
 #define XENO_RESIN_ACID_PILLAR_COST 250
+#define XENO_RESIN_SHIELD_PILLAR_COST 250
+#define XENO_RESIN_ACID_GRENADE_COST 500
 
 #define RESIN_CONSTRUCTION_NO_MAX -1
 
@@ -515,7 +519,7 @@
 #define XENO_SHIELD_SOURCE_WARDEN_PRAE 5
 #define XENO_SHIELD_SOURCE_SHAMAN 6
 #define XENO_SHIELD_SOURCE_GARDENER 7
-#define XENO_SHIELD_SOURCE_OVERSHIELD_TECH 8
+#define XENO_SHIELD_SOURCE_SHIELD_PILLAR 8
 
 // Caste name defines
 #define CASTE_LARVA "Larva"

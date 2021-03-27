@@ -322,6 +322,9 @@
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
 
+		if(thrown_thing.try_to_throw(src))
+			return
+
 		if(throw_type == THROW_MODE_HIGH)
 			to_chat(src, SPAN_NOTICE("You prepare to perform a high toss."))
 			if(!do_after(src, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

@@ -4,6 +4,7 @@
 	icon_state = "alert_greyscale"
 	anchored = TRUE
 
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = ABOVE_OBJ_LAYER
 
 /obj/effect/warning/droppod
@@ -13,3 +14,8 @@
 /obj/effect/warning/alien
 	name = "alien warning"
 	color = "#a800ff"
+
+/obj/effect/warning/alien/weak
+	name = "weak alien warning"
+	color = "#a800ff"
+	alpha = 127

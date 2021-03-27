@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE)
+/mob/living/carbon/Xenomorph/proc/build_resin(var/atom/A, var/thick = FALSE, var/message = TRUE, var/use_plasma = TRUE)
 	if(!selected_resin)
 		return
 
@@ -10,7 +10,7 @@
 		return FALSE
 	if(!check_state())
 		return FALSE
-	if(!check_plasma(total_resin_cost))
+	if(use_plasma && !check_plasma(total_resin_cost))
 		return FALSE
 	if(GLOB.interior_manager.interior_z == z)
 		to_chat(src, SPAN_XENOWARNING("It's too tight in here to build."))
@@ -75,7 +75,8 @@
 			if(message)
 				visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and thickens [A]."), \
 					SPAN_XENONOTICE("You regurgitate some resin and thicken [A], using [total_resin_cost] plasma"), null, 5)
-				use_plasma(total_resin_cost)
+				if(use_plasma)
+					use_plasma(total_resin_cost)
 				playsound(loc, "alien_resin_build", 25)
 			A.add_hiddenprint(src) //so admins know who thickened the walls
 			return TRUE
@@ -85,23 +86,36 @@
 
 	var/wait_time = RC.build_time * caste.build_time_mult
 
-	var/obj/effect/alien/weeds/alien_weeds = locate() in current_turf
+	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
+	if(!alien_weeds)
+		return
+
+	var/obj/warning
+	var/succeeded = TRUE
+	if(RC.build_overlay_icon)
+		warning = new RC.build_overlay_icon(current_turf)
+
 	alien_weeds.secreting = TRUE
 	alien_weeds.update_icon()
 
 	if(!do_after(src, wait_time, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, alien_weeds))
+		succeeded = FALSE
+
+	if(warning)
+		qdel(warning)
+
+	if(alien_weeds)
 		alien_weeds.secreting = FALSE
 		alien_weeds.update_icon()
 
+	if(!succeeded)
 		return FALSE
-
-	alien_weeds.secreting = FALSE
-	alien_weeds.update_icon()
 
 	if (!RC.can_build_here(current_turf, src))
 		return FALSE
 
-	use_plasma(total_resin_cost)
+	if(use_plasma)
+		use_plasma(total_resin_cost)
 	if(message)
 		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [RC.construction_name]!"), \
 			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [RC.construction_name], using a total [total_resin_cost] plasma."), null, 5)

@@ -13,6 +13,17 @@
 		/datum/action/xeno_action/activable/secrete_resin
 	)
 
+/datum/tech/xeno/build_distribution/ui_static_data(mob/user)
+	. = ..()
+	for(var/i in actions_to_give)
+		var/datum/action/A = i
+		.["stats"] += list(list(
+			"content" = "Ability: [initial(A.name)]",
+			"color" = "green",
+			"icon" = "plus"
+		))
+
+
 /datum/tech/xeno/build_distribution/on_unlock()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, .proc/give_build_ability)
@@ -29,10 +40,6 @@
 	if(X.hivenumber != hivenumber)
 		return
 
-	// Exclude xenos with no plasma
-	if(X.plasma_max == 0)
-		return
-
 	if(X.tier == 0)
 		return
 
@@ -41,4 +48,5 @@
 			var/datum/action/xeno_action/XA = give_action(X, typepath)
 
 			// No need to give this ability a macro as it is an additional ability
+			XA.plasma_cost = 0
 			XA.ability_primacy = null

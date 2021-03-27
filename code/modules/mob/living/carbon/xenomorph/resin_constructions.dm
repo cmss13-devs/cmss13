@@ -6,6 +6,9 @@
 	var/build_time = 2 SECONDS
 	var/pass_hivenumber = TRUE
 
+	var/build_overlay_icon
+
+	var/range_between_constructions
 	var/build_path
 	var/max_per_xeno = RESIN_CONSTRUCTION_NO_MAX
 
@@ -43,6 +46,13 @@
 
 	if(!X.check_alien_construction(T))
 		return FALSE
+
+	if(range_between_constructions)
+		for(var/i in urange(range_between_constructions, T))
+			var/atom/A = i
+			if(A.type == build_path)
+				to_chat(X, SPAN_WARNING("This is too close to another similar structure!"))
+				return FALSE
 
 	return TRUE
 
@@ -197,7 +207,7 @@
 	desc = "Resin that harms any tallhosts when they walk over it."
 	construction_name = "resin spike"
 	cost = XENO_RESIN_SPIKE_COST
-	max_per_xeno = 8
+	max_per_xeno = 15
 
 	build_path = /obj/effect/alien/resin/spike
 
@@ -208,16 +218,65 @@
 	cost = XENO_RESIN_ACID_PILLAR_COST
 	max_per_xeno = 1
 
+	build_overlay_icon = /obj/effect/warning/alien/weak
+
 	build_path = /obj/effect/alien/resin/acid_pillar
 	build_time = 12 SECONDS
 
-	var/unique_range = 5
+	range_between_constructions = 5
 
-/datum/resin_construction/resin_obj/acid_pillar/can_build_here(turf/T, mob/living/carbon/Xenomorph/X)
+/datum/resin_construction/resin_obj/shield_dispenser
+	name = "Shield Pillar"
+	desc = "A tall, strange pillar that gives shield to the interacter. Has a hefty cooldown."
+	construction_name = "shield pillar"
+	cost = XENO_RESIN_SHIELD_PILLAR_COST
+	max_per_xeno = 1
+
+	build_path = /obj/effect/alien/resin/shield_pillar
+	build_time = 12 SECONDS
+
+/datum/resin_construction/resin_obj/shield_dispenser/New()
 	. = ..()
-	if(!.)
-		return
-	for(var/i in range(unique_range, T))
-		if(istype(i, build_path))
-			to_chat(X, SPAN_WARNING("This is too close to another similar structure!"))
-			return FALSE
+	var/obj/effect/alien/resin/shield_pillar/SP = build_path
+	range_between_constructions = initial(SP.range)*2
+
+/datum/resin_construction/resin_obj/grenade
+	name = "Resin Acid Grenade"
+	desc = "An acid grenade."
+	construction_name = "acid grenade"
+	cost = XENO_RESIN_ACID_GRENADE_COST
+	max_per_xeno = 1
+
+	build_path = /obj/item/explosive/grenade/alien/acid
+	build_time = 6 SECONDS
+
+/datum/resin_construction/resin_obj/movable
+	construction_name = "resin wall"
+
+	max_per_xeno = 7
+	cost = XENO_RESIN_WALL_MOVABLE_COST
+	build_time = 3 SECONDS
+
+/datum/resin_construction/resin_obj/movable/wall
+	name = "Movable Resin Wall"
+	desc = "A resin wall that can be moved onto any adjacent tile, as long as there are weeds."
+	construction_name = "resin wall"
+	build_path = /obj/structure/alien/movable_wall
+
+/datum/resin_construction/resin_obj/movable/membrane
+	name = "Movable Resin Membrane"
+	desc = "A resin membrane that can be moved onto any adjacent tile, as long as there are weeds."
+	construction_name = "resin wall"
+	build_path = /obj/structure/alien/movable_wall/membrane
+
+/datum/resin_construction/resin_obj/movable/thick_wall
+	name = "Movable Thick Resin Wall"
+	desc = "A thick resin wall that can be moved onto any adjacent tile, as long as there are weeds."
+	construction_name = "thick resin wall"
+	build_path = /obj/structure/alien/movable_wall/thick
+
+/datum/resin_construction/resin_obj/movable/thick_membrane
+	name = "Movable Thick Membrane Wall"
+	desc = "A thick resin membrane that can be moved onto any adjacent tile, as long as there are weeds."
+	construction_name = "thick resin membrane"
+	build_path = /obj/structure/alien/movable_wall/membrane/thick

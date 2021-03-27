@@ -654,6 +654,292 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_GLASS
 
+/datum/movable_wall_group
+	var/list/obj/structure/alien/movable_wall/walls
+
+	var/is_moving = FALSE
+
+/datum/movable_wall_group/New(var/list/datum/movable_wall_group/merge)
+	. = ..()
+	for(var/i in merge)
+		var/datum/movable_wall_group/MWG = i
+		for(var/wall in MWG.walls)
+			MWG.remove_structure(wall, TRUE)
+			add_structure(wall)
+
+/datum/movable_wall_group/proc/add_structure(var/obj/structure/alien/movable_wall/MW)
+	LAZYOR(walls, MW)
+	MW.group = src
+	MW.update_connections(TRUE)
+	MW.update_icon()
+
+/datum/movable_wall_group/proc/remove_structure(var/obj/structure/alien/movable_wall/MW, var/merge)
+	LAZYREMOVE(walls, MW)
+	MW.group = null
+	if(!walls)
+		qdel(src)
+	else if(!merge)
+		var/obj/structure/alien/movable_wall/current
+		var/obj/structure/alien/movable_wall/connected
+		for(var/i in walls)
+			current = i
+			if(!current.group || current.group == src)
+				current.group = new()
+				current.group.add_structure(current)
+
+			for(var/dir in cardinal)
+				connected = locate() in get_step(current, dir)
+				if(connected in walls)
+					if(connected.group == src)
+						current.group.add_structure(connected)
+					else if(connected.group != current.group)
+						new /datum/movable_wall_group(list(current.group, connected.group))
+		walls.Cut()
+		qdel(src)
+
+
+/datum/movable_wall_group/proc/try_move_in_direction(var/dir, var/list/forget)
+	var/turf/T
+	var/obj/structure/alien/movable_wall/MW
+	var/failed = FALSE
+	var/on_weeds = FALSE
+
+	if(is_moving)
+		return FALSE
+
+	is_moving = TRUE
+	for(var/i in walls)
+		MW = i
+		T = get_step(MW, dir)
+
+		if(T.weeds)
+			on_weeds = TRUE
+
+		if(LinkBlocked(MW, MW.loc, T, forget=forget))
+			failed = TRUE
+
+		for(var/a in T)
+			var/atom/movable/A = a
+
+			if(A.loc != T)
+				continue
+
+			if(MW.pulledby == A)
+				var/mob/M = A
+				M.stop_pulling()
+
+			if(!(A in forget) && !A.anchored && !A.Move(get_step(T, dir), dir) && A.density)
+				failed = TRUE
+	is_moving = FALSE
+
+	if(failed || !on_weeds)
+		return FALSE
+
+	for(var/i in walls)
+		MW = i
+		T = get_step(MW, dir)
+		MW.forceMove(T)
+
+	return TRUE
+
+
+// Not a turf because it is movable, but still very much an obstacle/wall.
+/obj/structure/alien/movable_wall
+	name = "shifting resin wall"
+	desc = "A resin wall that can shift about."
+	icon = 'icons/turf/walls/xeno.dmi'
+	health = HEALTH_WALL_XENO
+	icon_state = "resin"
+	var/wall_type = "resin"
+
+	flags_obj = OBJ_ORGANIC
+
+	var/max_walls = 7
+	var/datum/movable_wall_group/group
+
+	density = TRUE
+	anchored = TRUE
+	opacity = TRUE
+
+	var/turf/tied_turf
+	var/list/wall_connections = list("0", "0", "0", "0")
+	var/push_delay = 4
+	drag_delay = 4
+
+
+	var/hivenumber = XENO_HIVE_NORMAL
+
+/obj/structure/alien/movable_wall/Initialize(mapload, hive)
+	. = ..()
+	if(hive)
+		hivenumber = hive
+		set_hive_data(src, hive)
+	recalculate_structure()
+	update_tied_turf(loc)
+	RegisterSignal(src, COMSIG_ATOM_TURF_CHANGE, .proc/update_tied_turf)
+	RegisterSignal(src, COMSIG_MOVABLE_XENO_START_PULLING, .proc/allow_xeno_drag)
+	RegisterSignal(src, COMSIG_MOVABLE_PULLED, .proc/continue_allowing_drag)
+
+/obj/structure/alien/movable_wall/proc/continue_allowing_drag(_, var/mob/living/L)
+	if(isXeno(L))
+		return COMPONENT_IGNORE_ANCHORED
+
+/obj/structure/alien/movable_wall/proc/allow_xeno_drag(_, var/mob/living/carbon/Xenomorph/X)
+	return COMPONENT_ALLOW_PULL
+
+/obj/structure/alien/movable_wall/update_icon()
+	overlays.Cut()
+
+	icon_state = "blank"
+	var/image/I
+
+	for(var/i = 1 to 4)
+		I = image(icon, "[wall_type][wall_connections[i]]", dir = 1<<(i-1))
+		overlays += I
+
+	if(health < initial(health))
+		var/image/img = image(icon = 'icons/turf/walls/walls.dmi', icon_state = "overlay_damage")
+		img.blend_mode = BLEND_MULTIPLY
+		img.alpha = ((1-health/initial(health)) * 255)
+		overlays += img
+
+/obj/structure/alien/movable_wall/proc/update_connections(propagate = FALSE)
+	var/list/wall_dirs = list()
+
+	for(var/dir in alldirs)
+		var/obj/structure/alien/movable_wall/MW = locate() in get_step(src, dir)
+		if(!(MW in group.walls))
+			continue
+
+		wall_dirs |= dir
+		if(propagate)
+			MW.update_connections()
+			MW.update_icon()
+
+	wall_connections = dirs_to_corner_states(wall_dirs)
+
+/obj/structure/alien/movable_wall/proc/take_damage(var/damage)
+	health -= damage
+	if(health <= 0)
+		qdel(src)
+	else
+		update_icon()
+
+/obj/structure/alien/movable_wall/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(isXenoLarva(M))
+		return FALSE
+
+	if(M.a_intent == INTENT_HELP)
+		return FALSE
+
+	M.animation_attack_on(src)
+	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+	SPAN_XENONOTICE("You claw \the [src]."))
+	playsound(src, "alien_resin_break", 25)
+	if (M.hivenumber == hivenumber)
+		take_damage(Ceiling(HEALTH_WALL_XENO/4)) //Four hits for a regular wall
+	else
+		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
+
+/obj/structure/alien/movable_wall/attackby(obj/item/W, mob/living/user)
+	if(!(W.flags_item & NOBLUDGEON))
+		user.animation_attack_on(src)
+		take_damage(W.force*RESIN_MELEE_DAMAGE_MULTIPLIER, user)
+		playsound(src, "alien_resin_break", 25)
+	else
+		return attack_hand(user)
+
+/obj/structure/alien/movable_wall/get_projectile_hit_boolean(obj/item/projectile/P)
+	return TRUE
+
+/obj/structure/alien/movable_wall/proc/recalculate_structure()
+	var/list/found_structures = list()
+	var/current_walls = 0
+	for(var/i in cardinal)
+		var/turf/T = get_step(src, i)
+		var/obj/structure/alien/movable_wall/MW = locate() in T
+		if(!MW)
+			continue
+
+		if(MW.group && !(MW.group in found_structures))
+			found_structures += MW.group
+			current_walls += length(MW.group.walls)
+
+	if(current_walls > max_walls)
+		found_structures = null
+
+	group = new(found_structures)
+	group.add_structure(src)
+
+/obj/structure/alien/movable_wall/Destroy()
+	if(group)
+		group.remove_structure(src)
+
+	return ..()
+
+/obj/structure/alien/movable_wall/proc/update_tied_turf(var/turf/T)
+	SIGNAL_HANDLER
+
+	if(!T)
+		return
+
+	if(tied_turf)
+		UnregisterSignal(tied_turf, COMSIG_TURF_ENTER)
+	RegisterSignal(T, COMSIG_TURF_ENTER, .proc/check_for_move)
+	tied_turf = T
+
+/obj/structure/alien/movable_wall/forceMove(atom/dest)
+	. = ..()
+	update_tied_turf(loc)
+
+/obj/structure/alien/movable_wall/proc/check_for_move(var/turf/T, atom/movable/mover)
+	var/target_dir = get_dir(mover, T)
+
+	if(isXeno(mover))
+		var/mob/living/carbon/Xenomorph/X = mover
+		if(X.hivenumber != hivenumber || X.throwing)
+			return
+
+		if(X.pulling == src)
+			X.stop_pulling()
+
+		if(group.try_move_in_direction(target_dir, list(mover)))
+			X.next_move_slowdown = max(push_delay, X.next_move_slowdown)
+			return COMPONENT_TURF_ALLOW_MOVEMENT
+
+/obj/structure/alien/movable_wall/Move(NewLoc, direct)
+	if(!(direct in cardinal))
+		return
+	group.try_move_in_direction(direct)
+
+/obj/structure/alien/movable_wall/BlockedPassDirs(atom/movable/mover, target_dir)
+	if(!group)
+		return ..()
+
+	if(mover in group.walls)
+		return NO_BLOCKED_MOVEMENT
+
+	return ..()
+
+/obj/structure/alien/movable_wall/membrane
+	name = "shifting resin membrane"
+	health = HEALTH_WALL_XENO_MEMBRANE
+	icon_state = "membrane"
+	wall_type = "membrane"
+
+	opacity = FALSE
+
+/obj/structure/alien/movable_wall/thick
+	name = "shifting thick resin wall"
+	health = HEALTH_WALL_XENO_THICK
+	icon_state = "thickresin"
+	wall_type = "thickresin"
+
+/obj/structure/alien/movable_wall/membrane/thick
+	name = "shifting thick resin membrane"
+	health = HEALTH_WALL_XENO_MEMBRANE_THICK
+	icon_state = "thickmembrane"
+	wall_type = "thickmembrane"
 /turf/closed/wall/resin/reflective
 	name = "resin reflective wall"
 	desc = "Weird hardened slime solidified into a fine, smooth wall."

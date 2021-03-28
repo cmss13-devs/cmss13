@@ -37,7 +37,7 @@
 /obj/item/ammo_magazine/pistol/penetrating
 	name = "\improper M4A3 wall-piercing magazine (9mm)"
 	icon_state = "m4a3_penetrating"
-	default_ammo = /datum/ammo/bullet/pistol/penetrating
+	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 
 /obj/item/ammo_magazine/pistol/toxin
 	name = "\improper M4A3 toxin magazine (9mm)"
@@ -74,7 +74,7 @@
 
 /obj/item/ammo_magazine/pistol/mod88/penetrating
 	name = "\improper 88M4 wall-piercing magazine (9mm)"
-	default_ammo = /datum/ammo/bullet/pistol/penetrating
+	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	icon_state = "88m4_mag_penetrating"
 
 /obj/item/ammo_magazine/pistol/mod88/incendiary

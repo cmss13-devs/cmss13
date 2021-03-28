@@ -263,13 +263,14 @@
 	penetration= ARMOR_PENETRATION_TIER_8
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-/datum/ammo/bullet/pistol/penetrating
+/datum/ammo/bullet/pistol/ap/penetrating
 	name = "wall-piercing pistol bullet"
 	shrapnel_chance = 0
 
+	damage = BULLET_DAMAGE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_10
 
-/datum/ammo/bullet/pistol/penetrating/set_bullet_traits()
+/datum/ammo/bullet/pistol/ap/penetrating/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
@@ -744,13 +745,14 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/bullet/smg/penetrating
+/datum/ammo/bullet/smg/ap/penetrating
 	name = "wall-piercing submachinegun bullet"
 	shrapnel_chance = 0
 
+	damage = BULLET_DAMAGE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_10
 
-/datum/ammo/bullet/smg/penetrating/set_bullet_traits()
+/datum/ammo/bullet/smg/ap/penetrating/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
@@ -836,14 +838,14 @@
 		P.damage *= organic_damage_mult
 
 
-/datum/ammo/bullet/rifle/penetrating
+/datum/ammo/bullet/rifle/ap/penetrating
 	name = "wall-piercing rifle bullet"
 	shrapnel_chance = 0
 
-	// Completely ignore armour
+	damage = BULLET_DAMAGE_TIER_7
 	penetration = ARMOR_PENETRATION_TIER_10
 
-/datum/ammo/bullet/rifle/penetrating/set_bullet_traits()
+/datum/ammo/bullet/rifle/ap/penetrating/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)

@@ -40,7 +40,7 @@
 	name = "\improper M39 wall-piercing magazine (10x20mm)"
 	desc = "A 10x20mm caseless wall-piercing bullet submachinegun magazine, containing wall-piercing bullets. Designed to penetrate straight through objects and walls."
 	icon_state = "m39_penetrating"
-	default_ammo = /datum/ammo/bullet/smg/penetrating
+	default_ammo = /datum/ammo/bullet/smg/ap/penetrating
 
 /obj/item/ammo_magazine/smg/m39/toxin
 	name = "\improper M39 toxin magazine (10x20mm)"

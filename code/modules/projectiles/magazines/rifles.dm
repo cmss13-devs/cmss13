@@ -50,7 +50,7 @@
 	name = "\improper M41A wall-piercing magazine (10x24mm)"
 	desc = "A 10mm wall-piercing magazine."
 	icon_state = "m41a_penetrating"
-	default_ammo = /datum/ammo/bullet/rifle/penetrating
+	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 
 /obj/item/ammo_magazine/rifle/toxin
 	name = "\improper M41A toxin magazine (10x24mm)"
@@ -91,7 +91,7 @@
 	name = "\improper M41A MK1  magazine (10x24mm)"
 	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains wall-piercing bullets."
 	icon_state = "m41a_mk1_penetrating"
-	default_ammo = /datum/ammo/bullet/rifle/penetrating
+	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 
 
 //-------------------------------------------------------
@@ -216,7 +216,7 @@
 	name = "\improper L42A wall-piercing magazine (10x24mm)"
 	desc = "A 10mm battle rifle wall-piercing magazine."
 	icon_state = "l42mk1_penetrating"
-	default_ammo = /datum/ammo/bullet/rifle/penetrating
+	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 
 /obj/item/ammo_magazine/rifle/l42a/toxin
 	name = "\improper L42A toxin magazine (10x24mm)"

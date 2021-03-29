@@ -19080,6 +19080,13 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/building/water_treatment_two/hallway)
+"bcQ" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_central_north)
 "bcT" = (
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/administration/meetingrooom)
@@ -19623,7 +19630,7 @@
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/overseer_office)
 "beF" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/beige{
 	dir = 4
 	},
 /turf/open/floor{
@@ -19640,7 +19647,7 @@
 	},
 /area/desert_dam/exterior/river/riverside_east)
 "beH" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
 /turf/open/floor{
@@ -39104,7 +39111,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_dam)
 "cnz" = (
-/obj/structure/bed/chair/comfy/brown{
+/obj/structure/bed/chair/comfy/beige{
 	dir = 8
 	},
 /turf/open/floor/carpet,
@@ -44262,17 +44269,22 @@
 	},
 /area/desert_dam/interior/dam_interior/CE_office)
 "cCR" = (
-/obj/effect/blocker/toxic_water/Group_1,
-/turf/open/gm/river/desert/shallow_corner/covered{
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/gm/river/desert/shallow_edge/covered{
 	dir = 4
 	},
-/area/desert_dam/exterior/river/riverside_south)
+/area/desert_dam/exterior/river/riverside_central_north)
 "cCS" = (
-/obj/effect/blocker/toxic_water/Group_1,
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/wooden,
 /turf/open/gm/river/desert/shallow_edge/covered{
-	dir = 6
+	dir = 4
 	},
-/area/desert_dam/exterior/river/riverside_south)
+/area/desert_dam/exterior/river/riverside_central_north)
 "cCT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/asphalt/cement{
@@ -54272,6 +54284,13 @@
 	tag = "icon-sterile_white"
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
+"dqJ" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/barricade/wooden{
+	dir = 1
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_south)
 "dqO" = (
 /obj/structure/bed/chair/office/light{
 	dir = 8
@@ -63144,6 +63163,16 @@
 	tag = "icon-whitegreenfull (SOUTHWEST)"
 	},
 /area/desert_dam/building/water_treatment_one/floodgate_control)
+"ees" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/river/riverside_south)
 "eet" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	name = "\improper Treatment Breakroom"
@@ -64020,6 +64049,13 @@
 	},
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_labs)
+"hEU" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_south)
 "hOA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -64707,6 +64743,12 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/asphalt/cement_sunbleached,
 /area/desert_dam/exterior/valley/valley_crashsite)
+"olL" = (
+/obj/structure/barricade/wooden{
+	dir = 4
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_cargo)
 "ooW" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached13"
@@ -65011,6 +65053,13 @@
 /obj/structure/surface/table/woodentable,
 /turf/open/floor/wood,
 /area/desert_dam/building/administration/meetingrooom)
+"qkJ" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal4"
+	},
+/obj/item/stack/sheet/wood/medium_stack,
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_dam)
 "qlx" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/structure/blocker/forcefield/vehicles,
@@ -65430,6 +65479,11 @@
 	tag = "icon-bright_clean (SOUTHWEST)"
 	},
 /area/desert_dam/building/hydroponics/hydroponics_loading)
+"thp" = (
+/obj/effect/blocker/toxic_water/Group_1,
+/obj/item/stack/sheet/wood/medium_stack,
+/turf/open/gm/river/desert/deep/covered,
+/area/desert_dam/exterior/river/riverside_south)
 "tlh" = (
 /obj/effect/decal/sand_overlay/sand1,
 /obj/structure/desertdam/decals/road_edge{
@@ -65938,6 +65992,13 @@
 /obj/item/tool/pen,
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_one/floodgate_control)
+"xMr" = (
+/obj/effect/blocker/toxic_water/Group_2,
+/obj/structure/barricade/wooden{
+	dir = 8
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/river/riverside_central_north)
 "xNB" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
@@ -90733,7 +90794,7 @@ bVE
 bVE
 bVD
 coE
-bir
+qkJ
 biP
 crx
 csG
@@ -90969,7 +91030,7 @@ bmK
 bhk
 bir
 biP
-crx
+olL
 csG
 ctK
 cuP
@@ -91202,7 +91263,7 @@ cmr
 cxW
 coF
 dfc
-dgD
+ees
 dNR
 dTH
 coF
@@ -91435,8 +91496,8 @@ cvK
 cvL
 cyR
 cAf
-czV
-czV
+hEU
+hEU
 czV
 czV
 cAf
@@ -91670,8 +91731,8 @@ chU
 cho
 cho
 czV
-cho
-czV
+dqJ
+thp
 czV
 cho
 cho
@@ -91903,10 +91964,10 @@ cho
 cho
 cho
 cho
-cho
+czV
 cho
 czV
-czV
+cho
 cho
 cho
 cho
@@ -92137,8 +92198,8 @@ cho
 cho
 cho
 cho
-cho
-cho
+czV
+czV
 czV
 czV
 cho
@@ -92371,11 +92432,11 @@ cho
 cho
 cho
 cho
+czV
+czV
 cho
 czV
 czV
-czV
-cho
 cho
 cho
 cho
@@ -92515,7 +92576,7 @@ aJy
 aJy
 bTi
 bTi
-aJy
+bTi
 aJy
 bTi
 aJy
@@ -92605,10 +92666,10 @@ cho
 cho
 cho
 cho
+czV
+czV
 cho
-czV
-czV
-cCR
+cho
 cAf
 cAj
 chp
@@ -92748,9 +92809,9 @@ aJy
 aJy
 aJy
 bTi
+aJy
 bTi
-aJy
-aJy
+bTi
 bTi
 aJy
 aJy
@@ -92842,7 +92903,7 @@ cAf
 czX
 czX
 czX
-cCS
+cho
 cAf
 cAk
 cAl
@@ -92983,7 +93044,7 @@ aJy
 aJy
 bTi
 bTi
-aJy
+bTi
 aJy
 bTi
 aJy
@@ -93215,10 +93276,10 @@ aUl
 aUl
 bOw
 bPl
-bYF
-bYF
-aJy
-aJy
+cCR
+cCS
+bTi
+bcQ
 bTi
 aJy
 aJy
@@ -93451,7 +93512,7 @@ bOx
 bPl
 bRs
 cEe
-cEe
+xMr
 djZ
 bPl
 aiA
@@ -102030,7 +102091,7 @@ cho
 cho
 czV
 cho
-cho
+czV
 czV
 cho
 cho
@@ -102263,8 +102324,8 @@ cho
 cho
 cho
 czV
-cho
-cho
+czV
+czV
 czV
 cho
 cho
@@ -102498,7 +102559,7 @@ cho
 cho
 czV
 czV
-czV
+cho
 czV
 cho
 cho
@@ -102966,7 +103027,7 @@ czB
 cAf
 czX
 czX
-czX
+cho
 czX
 cAf
 cAk
@@ -103814,8 +103875,8 @@ biP
 blN
 bbF
 cIa
-aof
 dib
+aof
 dib
 aof
 diL
@@ -104281,7 +104342,7 @@ biQ
 biQ
 biQ
 bbT
-aof
+dib
 aof
 aof
 aof

@@ -371,6 +371,10 @@ var/list/global/item_storage_box_cache = list()
 		if(L.mode)
 			return 0
 
+	if(W.heat_source && !isigniter(W))
+		to_chat(usr, SPAN_ALERT("[W] is on fire!"))
+		return
+
 	if(storage_slots != null && contents.len >= storage_slots)
 		if(!stop_messages)
 			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))

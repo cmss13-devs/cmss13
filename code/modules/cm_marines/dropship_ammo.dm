@@ -258,36 +258,6 @@
 		explosion(impact,3,4,4,6, , , , initial(name), source_mob) //tighter blast radius, but more devastating near center
 		qdel(src)
 
-
-/obj/structure/ship_ammo/rocket/fatty
-	name = "\improper SM-17 'Fatty'"
-	desc = "The SM-17 'Fatty' is a cluster-bomb type ordnance that only requires laser-guidance when first launched."
-	icon_state = "fatty"
-	ammo_id = "f"
-	travelling_time = 70 //slower but deadly accurate, even if laser guidance is stopped mid-travel.
-	max_inaccuracy = 1
-	point_cost = 450
-	fire_mission_delay = 0 //0 means unusable
-	warning_sound = 'sound/weapons/gun_mortar_travel.ogg'
-	warning_sound_volume = 100
-
-/obj/structure/ship_ammo/rocket/fatty/detonate_on(turf/impact)
-	set waitfor = 0
-	impact.ceiling_debris_check(2)
-	spawn(5)
-		explosion(impact,1,2,3, , , , , initial(name), source_mob) //first explosion is small to trick xenos into thinking its a minirocket.
-	sleep(20)
-	var/list/impact_coords = list(list(-3,3),list(0,4),list(3,3),list(-4,0),list(4,0),list(-3,-3),list(0,-4), list(3,-3))
-	var/turf/T
-	var/list/coords
-	for(var/i=1 to 8)
-		coords = impact_coords[i]
-		T = locate(impact.x+coords[1],impact.y+coords[2],impact.z)
-		T.ceiling_debris_check(2)
-		spawn(5)
-			explosion(T,1,2,3, , , , , initial(name), source_mob)
-	qdel(src)
-
 /obj/structure/ship_ammo/rocket/napalm
 	name = "\improper XN-99 'Napalm'"
 	desc = "The XN-99 'Napalm' is an incendiary rocket used to turn specific targeted areas into giant balls of fire for a long time."

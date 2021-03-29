@@ -104,8 +104,9 @@
 	return
 
 /obj/structure/prop/dam/torii/attackby(obj/item/W, mob/user)
-	..()
 	var/L
+	if(lit)
+		return
 	if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())
@@ -157,9 +158,9 @@
 		if(W.heat_source > 200)
 			L = 1
 	if(L)
-		visible_message("[user] quietly goes from lantern to lantern on to torri, lighting the wicks in each one.")
+		visible_message("[user] quietly goes from lantern to lantern on the torii, lighting the wicks in each one.")
+		lit = TRUE
 		Update()
-	return
 
 /obj/structure/prop/dam/gravestone
 	name = "grave marker"

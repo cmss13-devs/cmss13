@@ -30,9 +30,8 @@
 		toggle_lock(card, H)
 		return
 
-	if (use_sound)
+	if (..() && use_sound)
 		playsound(src.loc, src.use_sound, 15, 1, 6)
-	..()
 
 /obj/item/storage/backpack/proc/toggle_lock(obj/item/card/id/card, mob/living/carbon/human/H)
 	if(QDELETED(locking_id))

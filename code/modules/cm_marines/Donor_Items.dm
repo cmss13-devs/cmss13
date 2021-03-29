@@ -8,7 +8,7 @@
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "state"
 	item_state = "state"
-	flags_atom = UNIQUE_ITEM_TYPE
+	flags_atom = NO_NAME_OVERRIDE
 	//DON'T GRAB STUFF BETWEEN THIS LINE
 	icon = 'icons/obj/items/clothing/suits.dmi'
 	icon_override = 'icons/mob/humans/onmob/suit_0.dmi'  //Don't fuck with this in the future please.
@@ -440,7 +440,7 @@
 	icon_override = 'icons/mob/humans/onmob/head_0.dmi'
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
-	flags_atom = UNIQUE_ITEM_TYPE
+	flags_atom = NO_NAME_OVERRIDE
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_marine_helmet = HELMET_STORE_GARB
 
@@ -868,7 +868,7 @@
 /obj/item/clothing/under/marine/fluff
 	name = "ITEM NAME"
 	desc = "ITEM DESCRIPTION.  DONOR ITEM" //Add UNIQUE if Unique
-	flags_atom = UNIQUE_ITEM_TYPE
+	flags_atom = NO_NAME_OVERRIDE
 	icon_state = "state"
 	item_state = null
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature

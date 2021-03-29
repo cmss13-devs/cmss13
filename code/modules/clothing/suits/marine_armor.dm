@@ -117,9 +117,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	equip_sounds = list('sound/handling/putting_on_armor1.ogg')
 	var/armor_variation = 0
 
+	//speciality does NOTHING if you have NO_NAME_OVERRIDE
+
 /obj/item/clothing/suit/storage/marine/Initialize()
 	. = ..()
-	if(!(flags_atom & UNIQUE_ITEM_TYPE))
+	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 			name += " snow armor" //Leave marine out so that armors don't have to have "Marine" appended (see: admirals).
@@ -466,14 +468,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/light/vest
 	name = "\improper M3-VL pattern ballistics vest"
 	desc = "Up until 2189 USCM non-combat personnel were issued non-standardized ballistics vests, though the lack of IMP compatibility and suit lamps proved time and time again inefficient. This modified M3-L shell is the result of a 6 year R&D program; It provides utility, protection, AND comfort to all USCM non-combat personnel."
-	specialty = "\improper M3-VL pattern vest"
 	icon_state = "VL"
 	storage_slots = 1
-	time_to_unequip = 5
-	time_to_equip = 10
-	flags_atom = NO_SNOW_TYPE|FPRINT|CONDUCT
+	time_to_unequip = 0.5 SECONDS
+	time_to_equip = 1 SECONDS
+	flags_atom = NO_SNOW_TYPE|FPRINT|CONDUCT|NO_NAME_OVERRIDE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY //No squad colors when wearing this since it'd look funny.
-
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -483,7 +483,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0.7
-	uniform_restricted = list(/obj/item/clothing/under)
+	uniform_restricted = null
 
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-H pattern heavy armor"
@@ -1076,7 +1076,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/veteran
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE //Let's make these keep their name and icon.
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make these keep their name and icon.
 
 /obj/item/clothing/suit/storage/marine/veteran/PMC
 	name = "\improper M4 pattern PMC armor"
@@ -1092,7 +1092,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 2
 	slowdown = SLOWDOWN_ARMOR_LIGHT
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	allowed = list(/obj/item/weapon/gun,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/device/flashlight,
@@ -1138,7 +1138,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "A modification of the standard Armat Systems M3 armor. Hooked up with harnesses and straps allowing the user to carry an M56 Smartgun."
 	icon_state = "heavy_armor"
 	flags_inventory = BLOCK_KNOCKDOWN
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
@@ -1236,7 +1236,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 //=====================================================================\\
 
 /obj/item/clothing/suit/storage/marine/faction
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
@@ -1566,7 +1566,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	desc = "A thick piece of armor adorning a HEFA. Usually seen on a HEFA knight."
 	specialty = "HEFA Knight"
 	icon_state = "hefadier"
-	flags_atom = UNIQUE_ITEM_TYPE|NO_SNOW_TYPE
+	flags_atom = NO_NAME_OVERRIDE|NO_SNOW_TYPE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY
 
 
@@ -1579,7 +1579,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	icon_state = "pvlight"
 	item_state_slots = list(WEAR_JACKET = "pvlight")
 	w_class = SIZE_MEDIUM
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -1661,4 +1661,4 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 3
-	uniform_restricted = list(/obj/item/clothing/under/marine/ua_riot)
+	uniform_restricted = null

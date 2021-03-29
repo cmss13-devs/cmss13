@@ -108,9 +108,8 @@
 		var/mob/living/carbon/human/H = M
 		var/obj/item/clothing/under/U = H.w_uniform
 
-		//some clothes can only be worn when wearing specific uniforms
 		if(uniform_restricted && (!is_type_in_list(U, uniform_restricted) || !U))
-			to_chat(H, SPAN_WARNING("Your [U ? "[U.name]":"naked body"] doesn't allow you to wear this [name].")) //Note : Duplicate warning, commenting
+			to_chat(H, SPAN_WARNING("Your [U ? "[U.name]":"naked body"] doesn't allow you to wear this [name]."))
 			return 0
 
 	return 1

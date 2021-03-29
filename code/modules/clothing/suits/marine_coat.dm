@@ -90,7 +90,7 @@
 /obj/item/clothing/suit/storage/jacket/marine/provost
 	name = "\improper Provost Coat"
 	desc = "The crisp coat of a Provost Officer."
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	icon_state = "provost_coat"
 
 /obj/item/clothing/suit/storage/jacket/marine/provost/advisor

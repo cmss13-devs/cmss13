@@ -20,9 +20,11 @@
 	var/specialty = "USCM" //Makes it so that we can see the right name in the vendor.
 	layer = UPPER_ITEM_LAYER
 
+	//speciality does NOTHING if you have NO_NAME_OVERRIDE
+
 /obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature), override_icon_state[] 	= null)
 	. = ..()
-	if(!(flags_atom & UNIQUE_ITEM_TYPE))
+	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
 			name += " snow uniform"
@@ -306,7 +308,7 @@
 
 /obj/item/clothing/under/marine/mp/provost
 	rollable_sleeves = FALSE
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 	name = "\improper Provost Uniform"
 	desc = "The crisp uniform of a Provost Officer."
@@ -372,7 +374,7 @@
 
 /obj/item/clothing/under/marine/veteran
 	rollable_sleeves = FALSE
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE //Let's make them keep their original name.
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 
 /obj/item/clothing/under/marine/veteran/PMC
 	name = "\improper PMC fatigues"
@@ -499,9 +501,9 @@
 	desc = "Overalls made of kevlon cover a snazzy blue dress shirt. UA branded security uniforms are notorious for their association with anti-union riot control teams."
 	icon_state = "ua_riot"
 	worn_state = "ua_riot"
-	flags_atom = NO_SNOW_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 	rollable_sleeves = FALSE
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/ua_riot)
+	suit_restricted = null
 
 /obj/item/clothing/under/pizza
 	name = "pizza delivery uniform"

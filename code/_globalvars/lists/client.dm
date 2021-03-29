@@ -14,6 +14,7 @@ GLOBAL_LIST_INIT(_kbMap, list(
 	"END" = "Southwest",
 	"PAGEDOWN" = "Southeast",
 	"SPACEBAR" = "Space",
+	"ENTER" = "Return",
 	"ALT" = "Alt",
 	"SHIFT" = "Shift",
 	"CONTROL" = "Ctrl"

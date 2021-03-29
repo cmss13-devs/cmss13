@@ -23,7 +23,6 @@
 "cJ" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/lantern,
-
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "cP" = (
@@ -34,17 +33,6 @@
 	name = "Alien Mine"
 	},
 /turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"fg" = (
-/obj/structure/showcase{
-	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
-	icon_state = "yaut";
-	name = "alien sarcophagus"
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
 /area/lv624/ground/caves/sand_temple)
 "fH" = (
 /obj/effect/spider/stickyweb{
@@ -63,7 +51,6 @@
 	name = "alien sarcophagus"
 	},
 /obj/item/weapon/melee/twohanded/glaive/damaged,
-
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -89,9 +76,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/caves/sand_temple)
-"jn" = (
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
 "jZ" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
@@ -106,7 +90,6 @@
 /obj/item/stack/sheet/mineral/sandstone{
 	amount = 50
 	},
-
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -118,17 +101,12 @@
 	dir = 8;
 	icon_state = "cobweb1"
 	},
-
 /turf/open/floor{
 	color = "#6b675e";
 	dir = 4;
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/caves/sand_temple)
-"lj" = (
-
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_eastern_barrens)
 "lV" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/dirt,
@@ -155,7 +133,6 @@
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
-
 /turf/open/floor{
 	color = "#6b675e";
 	dir = 4;
@@ -168,7 +145,6 @@
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
-
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	color = "#6b675e";
@@ -193,17 +169,10 @@
 	icon_state = "yaut";
 	name = "alien sarcophagus"
 	},
-
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "ra" = (
 /obj/effect/landmark/monkey_spawn,
-/turf/open/gm/dirt,
-/area/lv624/ground/caves/sand_temple)
-"ru" = (
-/obj/structure/surface/table,
-
-/obj/effect/landmark/crap_item,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "sn" = (
@@ -270,16 +239,6 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/lv624/ground/caves/sand_temple)
-"yu" = (
-/obj/structure/surface/table,
-
-/obj/item/weapon/melee/twohanded/spear,
-/turf/open/floor{
-	color = "#6b675e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
-/area/lv624/ground/caves/sand_temple)
 "Ar" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_east_caves)
@@ -322,7 +281,6 @@
 /obj/effect/spider/stickyweb{
 	icon_state = "cobweb2"
 	},
-
 /obj/item/weapon/melee/twohanded/spear,
 /turf/open/floor{
 	color = "#6b675e";
@@ -364,7 +322,6 @@
 /obj/item/stack/sheet/mineral/sandstone{
 	amount = 50
 	},
-
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "FQ" = (
@@ -391,7 +348,6 @@
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
-
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -402,7 +358,6 @@
 /obj/item/stack/sheet/mineral/sandstone{
 	amount = 50
 	},
-
 /turf/open/floor{
 	color = "#6b675e";
 	dir = 4;
@@ -504,7 +459,6 @@
 	icon_state = "yaut";
 	name = "alien sarcophagus"
 	},
-
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -530,13 +484,11 @@
 	name = "alien sarcophagus"
 	},
 /obj/effect/spider/stickyweb,
-
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Sj" = (
 /obj/structure/surface/table,
 /obj/item/device/flashlight/lantern,
-
 /turf/open/floor{
 	color = "#6b675e";
 	dir = 4;
@@ -558,7 +510,6 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Uc" = (
-
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/sand_temple)
 "Uf" = (
@@ -588,7 +539,6 @@
 	dir = 1;
 	icon_state = "cobweb1"
 	},
-
 /turf/open/floor{
 	color = "#6b675e";
 	dir = 4;
@@ -605,7 +555,6 @@
 /area/lv624/ground/caves/sand_temple)
 "VL" = (
 /obj/structure/kitchenspike,
-
 /turf/open/floor{
 	dir = 4;
 	icon_state = "whiteyellowfull"
@@ -644,7 +593,6 @@
 /area/lv624/ground/caves/sand_temple)
 "WU" = (
 /obj/effect/spider/stickyweb,
-
 /turf/open/floor{
 	color = "#6b675e";
 	dir = 4;
@@ -676,7 +624,6 @@
 /obj/effect/spider/stickyweb{
 	icon_state = "cobweb1"
 	},
-
 /turf/open/floor{
 	color = "#6b675e";
 	dir = 4;
@@ -741,8 +688,8 @@ DC
 DC
 DC
 DC
-jn
-jn
+Uc
+Uc
 DC
 DC
 DC
@@ -761,24 +708,24 @@ DC
 DC
 DC
 DC
-jn
-jn
+Uc
+Uc
 DC
 DC
 DC
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 DC
 DC
 DC
 DC
-jn
-jn
+Uc
+Uc
 DC
 "}
 (4,1,1) = {"
@@ -787,26 +734,26 @@ mk
 DC
 DC
 DC
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 Vg
-jn
-jn
+Uc
+Uc
 DC
 DC
 DC
-jn
-jn
-jn
+Uc
+Uc
+Uc
 CT
 "}
 (5,1,1) = {"
@@ -815,26 +762,26 @@ DC
 DC
 DC
 DC
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
 Uc
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 CT
 "}
 (6,1,1) = {"
@@ -843,26 +790,26 @@ DC
 DC
 DC
 DC
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
 KK
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
 KK
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 CT
 "}
 (7,1,1) = {"
@@ -870,82 +817,82 @@ DC
 DC
 DC
 DC
-jn
-jn
-jn
 Uc
-jn
+Uc
+Uc
+Uc
+Uc
 Dx
-jn
-jn
+Uc
+Uc
 Vg
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 KK
-jn
-jn
-jn
+Uc
+Uc
+Uc
 DC
 "}
 (8,1,1) = {"
 DC
 to
 Dh
-jn
-jn
+Uc
+Uc
 KK
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 Dx
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 "}
 (9,1,1) = {"
 DC
 mD
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
 Ds
 Ds
 Ds
-jn
-jn
+Uc
+Uc
 Ds
 Ds
 Dh
 wW
 Ds
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 DC
 "}
@@ -953,10 +900,10 @@ DC
 Bq
 wG
 Dh
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
 Ds
 Xy
 Ds
@@ -967,12 +914,12 @@ TD
 TD
 TD
 Ds
-jn
-jn
+Uc
+Uc
 Uc
 Dx
-jn
-jn
+Uc
+Uc
 DC
 DC
 DC
@@ -987,19 +934,19 @@ Di
 Ds
 Ds
 TD
-jn
+Uc
 VD
 Zf
 TD
 Dh
-jn
+Uc
 MP
 Ds
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 DC
 DC
@@ -1013,22 +960,22 @@ Di
 TD
 TD
 Dh
-jn
+Uc
 TD
 TD
-jn
-jn
+Uc
+Uc
 La
 Dh
 Dx
 Zw
 Ds
 La
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 DC
 DC
@@ -1036,29 +983,29 @@ DC
 (13,1,1) = {"
 hg
 jZ
-jn
+Uc
 wW
 TD
-jn
+Uc
 Dh
 Dh
 TD
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
 Dh
-jn
+Uc
 Ds
 Ds
 Ds
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 "}
 (14,1,1) = {"
@@ -1067,26 +1014,26 @@ Nt
 Bq
 Ds
 TD
-jn
-jn
+Uc
+Uc
 Dh
 TD
 TD
 TD
-jn
-jn
-jn
+Uc
+Uc
+Uc
 Dh
 Dh
 Dh
 cJ
 IN
-jn
-jn
+Uc
+Uc
 au
-jn
-jn
-jn
+Uc
+Uc
+Uc
 DC
 "}
 (15,1,1) = {"
@@ -1095,7 +1042,7 @@ Vq
 Bq
 FK
 Dh
-jn
+Uc
 Dh
 Dx
 Jx
@@ -1103,47 +1050,47 @@ kg
 Dh
 Hw
 TD
-jn
+Uc
 TD
 ra
 Dh
 Dh
 YY
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
 KK
-jn
+Uc
 DC
 "}
 (16,1,1) = {"
 hg
 hg
 Bq
-ru
+Fc
 Dh
 La
-jn
-jn
+Uc
+Uc
 Dt
 Dh
 La
 Dh
-jn
-jn
+Uc
+Uc
 TD
 TD
 Dh
-jn
+Uc
 IN
-jn
-jn
+Uc
+Uc
 Ds
-jn
+Uc
 Ds
-jn
-jn
+Uc
+Uc
 "}
 (17,1,1) = {"
 nn
@@ -1152,26 +1099,26 @@ Bq
 Bq
 TD
 Dh
-jn
-jn
+Uc
+Uc
 nM
 Dh
-jn
-jn
+Uc
+Uc
 TD
-jn
-jn
+Uc
+Uc
 TD
-jn
+Uc
 nT
 YY
-jn
-jn
-jn
+Uc
+Uc
+Uc
 La
 Dx
-jn
-jn
+Uc
+Uc
 "}
 (18,1,1) = {"
 hg
@@ -1181,24 +1128,24 @@ Bq
 HB
 TD
 TD
-jn
+Uc
 nM
 Hw
 HN
 Zu
 Dh
-jn
+Uc
 EK
 Ds
 Ds
 Ds
 Ds
-jn
-jn
+Uc
+Uc
 Ds
 Uc
 Ds
-jn
+Uc
 DC
 "}
 (19,1,1) = {"
@@ -1207,26 +1154,26 @@ nn
 hg
 Bq
 Dm
-yu
+Ws
 TD
-jn
-jn
+Uc
+Uc
 TD
-jn
-jn
+Uc
+Uc
 Dh
 Dh
 Ds
 Ds
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 "}
 (20,1,1) = {"
@@ -1236,24 +1183,24 @@ hg
 Bq
 Ds
 TD
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
 Dh
-jn
-jn
+Uc
+Uc
 La
 wW
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
 KK
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
 lV
 DC
 "}
@@ -1264,24 +1211,24 @@ hg
 DC
 Ds
 TD
-jn
-jn
+Uc
+Uc
 Dh
-jn
+Uc
 Dh
-jn
+Uc
 Dh
 Dx
 wW
-jn
-jn
+Uc
+Uc
 La
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 DC
 "}
@@ -1293,21 +1240,21 @@ DC
 Ds
 xx
 TD
-jn
-jn
+Uc
+Uc
 Dh
 Dh
 Dh
 EK
 Ds
 Ds
-jn
-jn
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 DC
 DC
 DC
@@ -1321,19 +1268,19 @@ DC
 Ds
 Ds
 TD
-jn
+Uc
 TD
 TD
 Ds
 Ds
 Ds
 Ds
-jn
-jn
-jn
+Uc
+Uc
+Uc
 KK
-jn
-jn
+Uc
+Uc
 Dx
 DC
 DC
@@ -1348,22 +1295,22 @@ DC
 DC
 DC
 Ds
-jn
-jn
-jn
+Uc
+Uc
+Uc
 TD
 IN
 La
 JX
 Ds
 Ds
-jn
-jn
-jn
-jn
-jn
-DC
-DC
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
+CT
 DC
 DK
 DC
@@ -1377,20 +1324,20 @@ DC
 DC
 Ds
 bd
-jn
+Uc
 TD
 PF
 YY
-jn
-jn
-jn
+Uc
+Uc
+Uc
 YY
 Uc
-jn
-jn
-jn
+Uc
+Uc
+Uc
 KK
-jn
+Uc
 CT
 Nd
 DK
@@ -1405,20 +1352,20 @@ DC
 DC
 Ds
 Sj
-jn
+Uc
 Dh
 Fc
 YY
-jn
+Uc
 Tr
 La
 IN
-jn
-jn
-jn
-DC
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
+Uc
 CT
 DK
 DK
@@ -1437,16 +1384,16 @@ TD
 Dx
 Kw
 IN
-jn
-jn
+Uc
+Uc
 Ds
 Ds
 TD
 Dh
 Ds
-DC
+Ds
 HG
-jn
+Uc
 CT
 DK
 DK
@@ -1461,23 +1408,23 @@ DC
 DC
 Ds
 tI
-jn
+Uc
 Dh
-jn
+Uc
 IN
-jn
-jn
+Uc
+Uc
 YY
 Jx
 Dh
-jn
+Uc
 TD
 Ds
 DC
 DC
 DC
 DK
-lj
+DK
 DK
 DK
 "}
@@ -1489,17 +1436,17 @@ DC
 DC
 Ds
 TD
-jn
-jn
+Uc
+Uc
 MP
 Ds
 tI
-jn
+Uc
 IN
-jn
-jn
+Uc
+Uc
 Dh
-jn
+Uc
 Ds
 DC
 DC
@@ -1518,15 +1465,15 @@ Ds
 Ds
 Ds
 TD
-jn
+Uc
 Ds
 Ds
 Ds
 La
 YY
 tI
-jn
-jn
+Uc
+Uc
 Dh
 Ds
 DC
@@ -1545,9 +1492,9 @@ Ds
 Ds
 Uf
 Vg
-jn
+Uc
 TD
-jn
+Uc
 cP
 Ds
 Ds
@@ -1572,9 +1519,9 @@ DC
 Ds
 pK
 TD
-jn
-jn
-jn
+Uc
+Uc
+Uc
 ra
 TD
 fP
@@ -1582,7 +1529,7 @@ Ds
 Ds
 TD
 XI
-jn
+Uc
 TD
 Ds
 DC
@@ -1599,18 +1546,18 @@ ck
 DC
 Ds
 TD
-jn
-jn
-jn
+Uc
+Uc
+Uc
 Dh
-jn
+Uc
 Dx
-jn
+Uc
 Ds
 WU
 TD
 jj
-jn
+Uc
 Dh
 Ds
 DC
@@ -1627,16 +1574,16 @@ ck
 DC
 Ds
 Gy
-jn
+Uc
 Dh
-jn
-jn
+Uc
+Uc
 TD
 Dh
-fg
+Od
 Ds
-jn
-jn
+Uc
+Uc
 VJ
 XI
 Dx
@@ -1658,15 +1605,15 @@ sn
 TD
 TD
 Dh
-jn
+Uc
 TD
-jn
+Uc
 Wx
 Ds
 TD
-jn
-jn
-jn
+Uc
+Uc
+Uc
 Dh
 Ds
 DC
@@ -1683,15 +1630,15 @@ Ar
 DC
 Ds
 Od
-jn
-jn
-jn
-jn
-jn
+Uc
+Uc
+Uc
+Uc
+Uc
 TD
 QM
 Ds
-jn
+Uc
 La
 Dh
 Dh
@@ -1713,7 +1660,7 @@ Ds
 Ds
 Dh
 Dh
-jn
+Uc
 Dh
 TD
 EK
@@ -1741,15 +1688,15 @@ DC
 Ds
 Ds
 Wh
-jn
-jn
+Uc
+Uc
 Od
 Ds
 Ds
 DC
 VL
-jn
-jn
+Uc
+Uc
 Ds
 Ds
 DC
@@ -1798,7 +1745,7 @@ DC
 DC
 Ds
 TD
-jn
+Uc
 LZ
 FQ
 FQ

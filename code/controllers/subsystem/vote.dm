@@ -284,7 +284,8 @@ SUBSYSTEM_DEF(vote)
 					return FALSE
 				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, .proc/carry_over_callback))
 
-				vote_adjustment_callback = CALLBACK(src, .proc/map_vote_adjustment)
+				if(CONFIG_GET(flag/vote_adjustment_callback))
+					vote_adjustment_callback = CALLBACK(src, .proc/map_vote_adjustment)
 			if("shipmap")
 				question = "Ship map vote"
 				var/list/maps = list()
@@ -343,7 +344,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/proc/map_vote_adjustment(current_votes, carry_over, total_votes)
 	// Get 10% of the total map votes and remove them from the pool
-	var/total_vote_adjustment = round(total_votes * 0.1)
+	var/total_vote_adjustment = round(total_votes * CONFIG_GET(number/vote_adjustment_callback))
 
 	// Do not remove more votes than were made for the map
 	return -(min(current_votes, total_vote_adjustment))

@@ -20,6 +20,7 @@ map bigredv2
 endmap
 
 map prison_station_fop
+	voteweight 0
 endmap
 
 map fiorina_sciannex
@@ -27,6 +28,7 @@ endmap
 
 map corsat
 	minplayers 130
+	voteweight 0
 endmap
 
 map desert_dam
@@ -43,6 +45,7 @@ endmap
 
 map sorokyne_strata
 	minplayers 130
+	disabled
 endmap
 
 map whiskey_outpost_v2

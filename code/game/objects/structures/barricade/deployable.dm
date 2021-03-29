@@ -4,8 +4,10 @@
 	icon_state = "folding_0"
 	health = 350
 	maxhealth = 350
+	burn_multiplier = 1.5
+	brute_multiplier = 1
 	crusher_resistant = TRUE
-	barricade_resistance = 15
+	force_level_absorption = 15
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "folding"
 	can_wire = FALSE

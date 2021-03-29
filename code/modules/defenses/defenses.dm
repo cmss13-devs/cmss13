@@ -84,12 +84,12 @@
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 
-		if(health < health_max)
-			to_chat(user, SPAN_WARNING("[src] is too damaged to disassemble. Repair it with a welder first."))
+		if(health < health_max * 0.5)
+			to_chat(user, SPAN_WARNING("[src] is too damaged to pick up!"))
 			return
 
 		if(static)
-			to_chat(user, SPAN_WARNING("[src] is not meant to be removed."))
+			to_chat(user, SPAN_WARNING("[src] is bolted to the ground!"))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."), SPAN_NOTICE("You begin disassembling [src]."))
@@ -102,7 +102,7 @@
 		var/obj/item/defenses/handheld/H = new handheld_type(loc)
 		playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
 		H.name = "handheld [src.name]" //fixed
-
+		H.obj_health = health
 		qdel(src)
 		return
 

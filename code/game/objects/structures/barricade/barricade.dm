@@ -16,7 +16,7 @@
 	 /// Used for calculating some stuff related to maxhealth as it constantly changes due to e.g. barbed wire. set to 100 to avoid possible divisions by zero
 	var/starting_maxhealth = 100
 	var/crusher_resistant = TRUE //Whether a crusher can ram through it.
-	var/barricade_resistance = 5 //How much force an item needs to even damage it at all.
+	var/force_level_absorption = 5 //How much force an item needs to even damage it at all.
 	var/barricade_hitsound
 	var/barricade_type = "barricade" //"metal", "plasteel", etc.
 	var/can_change_dmg_state = TRUE
@@ -24,7 +24,6 @@
 	var/closed = FALSE
 	var/can_wire = FALSE
 	var/is_wired = FALSE
-	var/bullet_divider = 10
 	flags_barrier = HANDLE_BARRIER_CHANCE
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	var/upgraded
@@ -107,12 +106,14 @@
 
 /obj/structure/barricade/hitby(atom/movable/AM)
 	if(AM.throwing && is_wired)
-		if(iscarbon(AM) && !isXenoCrusher(AM))
+		if(iscarbon(AM))
 			var/mob/living/carbon/C = AM
-			C.visible_message(SPAN_DANGER("The barbed wire slices into [C]!"),
-			SPAN_DANGER("The barbed wire slices into you!"))
-			C.apply_damage(10)
-			C.KnockDown(2) //Leaping into barbed wire is VERY bad
+			if(C.mob_size <= MOB_SIZE_XENO)
+				C.visible_message(SPAN_DANGER("The barbed wire slices into [C]!"),
+				SPAN_DANGER("The barbed wire slices into you!"))
+				C.apply_damage(10)
+				C.KnockDown(2) //Leaping into barbed wire is VERY bad
+				playsound(C, "bonk", 75, FALSE)
 	..()
 
 /obj/structure/barricade/Collided(atom/movable/AM)
@@ -125,11 +126,14 @@
 			return
 
 		if(crusher_resistant)
-			take_damage( 100 )
+			visible_message(SPAN_DANGER("[C] smashes into [src]!"))
+			take_damage(150)
+			playsound(src, barricade_hitsound, 25, TRUE)
 
 		else if(!C.stat)
 			visible_message(SPAN_DANGER("[C] smashes through [src]!"))
 			destroy()
+			playsound(src, barricade_hitsound, 25, TRUE)
 
 /*
  *	Checks whether an atom can leave its current turf through the barricade.
@@ -234,7 +238,7 @@
 				new/obj/item/stack/barbed_wire( src.loc )
 		return
 
-	if(W.force > barricade_resistance)
+	if(W.force > force_level_absorption)
 		..()
 		if(barricade_hitsound)
 			playsound(src, barricade_hitsound, 25, 1)
@@ -254,7 +258,7 @@
 	else if(P.ammo.flags_ammo_behavior & AMMO_ANTISTRUCT)
 		take_damage(P.damage * ANTISTRUCT_DMG_MULT_BARRICADES)
 
-	take_damage(round(P.damage/bullet_divider))
+	take_damage(P.damage)
 
 	return TRUE
 
@@ -285,7 +289,7 @@
 		var/location = get_turf(src)
 		handle_debris(severity, direction)
 		if(prob(50)) // no message spam pls
-			src.visible_message(SPAN_WARNING("[src] blows apart in the explosion, sending shards flying!"))
+			visible_message(SPAN_WARNING("[src] blows apart in the explosion, sending shards flying!"))
 		qdel(src)
 		create_shrapnel(location, rand(2,5), direction, , /datum/ammo/bullet/shrapnel/light)
 	else
@@ -309,8 +313,10 @@
 		setDir(WEST)
 	update_icon()
 
-obj/structure/barricade/acid_spray_act()
-	take_damage(rand(20, 30) * burn_multiplier)
+/obj/structure/barricade/acid_spray_act()
+	take_damage(25 * burn_multiplier)
+	visible_message(SPAN_WARNING("[src] is hit by the acid spray!"))
+	new /datum/effects/acid(src, null, null)
 
 /obj/structure/barricade/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
 	take_damage(dam * burn_multiplier)
@@ -318,7 +324,7 @@ obj/structure/barricade/acid_spray_act()
 /obj/structure/barricade/proc/hit_barricade(obj/item/I)
 	take_damage(I.force * 0.5 * brute_multiplier)
 
-obj/structure/barricade/proc/take_damage(var/damage)
+/obj/structure/barricade/proc/take_damage(var/damage)
 	for(var/obj/structure/barricade/B in get_step(src,dir)) //discourage double-stacking barricades by removing health from opposing barricade
 		if(B.dir == reverse_direction(dir))
 			B.update_health(damage)

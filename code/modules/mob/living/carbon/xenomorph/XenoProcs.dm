@@ -276,20 +276,24 @@
 		if(ishuman(M) && (M.dir in reverse_nearby_direction(dir)))
 			var/mob/living/carbon/human/H = M
 			if(H.check_shields(15, "the pounce")) //Human shield block.
-				KnockDown(3)
+				visible_message(SPAN_DANGER("[src] slams into [H]!"),
+					SPAN_XENODANGER("You slam into [H]!"), null, 5)
+				KnockDown(1)
 				throwing = FALSE //Reset throwing manually.
+				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
 			if(isYautja(H))
 				if(H.check_shields(0, "the pounce", 1))
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
-					KnockDown(5)
+					KnockDown(3)
 					throwing = FALSE
+					playsound(H, "bonk", 75, FALSE)
 					return
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 					visible_message(SPAN_DANGER("[H] body slams [src]!"),
 						SPAN_XENODANGER("[H] body slams you!"), null, 5)
-					KnockDown(4)
+					KnockDown(3)
 					throwing = FALSE
 					return
 			if(isEarlySynthetic(H) && prob(60))

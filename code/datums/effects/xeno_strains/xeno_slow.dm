@@ -12,7 +12,7 @@
 	duration = null
 	flags = DEL_ON_DEATH | INF_DURATION
 
-/datum/effects/xeno_slow/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 35)
+/datum/effects/xeno_slow/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest", ttl = 3.5 SECONDS)
 	. = ..(A, from, last_dmg_source, zone)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, src), ttl)

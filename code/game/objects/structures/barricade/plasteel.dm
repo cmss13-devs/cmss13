@@ -4,8 +4,10 @@
 	icon_state = "plasteel_closed_0"
 	health = 800
 	maxhealth = 800
+	burn_multiplier = 1.5
+	brute_multiplier = 1
 	crusher_resistant = TRUE
-	barricade_resistance = 20
+	force_level_absorption = 20
 	stack_type = /obj/item/stack/sheet/plasteel
 	debris = list(/obj/item/stack/sheet/plasteel)
 	stack_amount = 10

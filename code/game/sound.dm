@@ -182,6 +182,8 @@
 				S = pick('sound/effects/zippo_open.ogg')
 			if("zippo_close")
 				S = pick('sound/effects/zippo_close.ogg')
+			if("bonk") //somewhat quiet, increase volume
+				S = pick('sound/machines/bonk.ogg')
 			if("match")
 				S = pick('sound/effects/match.ogg')
 			if("punch")

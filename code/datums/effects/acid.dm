@@ -6,7 +6,7 @@
 	mob_icon_state_path = "human_acid"
 	var/original_duration = 50			//Set to 50 for safety reasons if something fails
 	var/damage_in_total_human = 25
-	var/damage_in_total_obj = 50
+	var/damage_in_total_obj = 75
 	var/acid_multiplier = 1
 
 /datum/effects/acid/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")

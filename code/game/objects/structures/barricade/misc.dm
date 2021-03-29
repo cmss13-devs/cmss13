@@ -14,7 +14,6 @@
 	stack_amount = 3
 	destroyed_stack_amount = 0
 	can_wire = FALSE
-	bullet_divider = 2
 	metallic = FALSE
 
 /obj/structure/barricade/snow/New(loc, mob/user, direction)
@@ -77,7 +76,6 @@
 	can_change_dmg_state = 0
 	barricade_type = "wooden"
 	can_wire = FALSE
-	bullet_divider = 2
 	repair_materials = list("wood" = 1)
 	metallic = FALSE
 

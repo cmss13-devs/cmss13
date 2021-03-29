@@ -125,8 +125,8 @@
 		else
 			var/mob/living/target = M
 			if(!isYautja(M)) //Not predators.
-				target.apply_effect(5, SUPERSLOW)
-				target.apply_effect(8, SLOW)
+				target.apply_effect(1, SUPERSLOW)
+				target.apply_effect(2, SLOW)
 				to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
 			target.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
 	step_away(M,P)
@@ -2039,6 +2039,7 @@
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid spatter"
 
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
 	max_range = 4

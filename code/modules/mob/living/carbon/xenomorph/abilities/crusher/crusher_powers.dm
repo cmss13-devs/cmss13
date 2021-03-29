@@ -8,7 +8,7 @@
 		if(X.can_not_harm(H))
 			continue
 
-		new /datum/effects/xeno_slow(H, X, null, null, 35)
+		new /datum/effects/xeno_slow(H, X, null, null, 3.5 SECONDS)
 		to_chat(H, SPAN_XENODANGER("You are slowed as the impact of [X] shakes the ground!"))
 
 /datum/action/xeno_action/activable/pounce/crusher_charge/additional_effects(mob/living/L)

@@ -331,7 +331,7 @@
 
 	if(++ticks >= strength_t)
 		visible_message(SPAN_XENODANGER("[acid_t] collapses under its own weight into a puddle of goop and undigested debris!"))
-		playsound(src, "acid_hit", 25)
+		playsound(src, "acid_hit", 25, TRUE)
 
 		if(istype(acid_t, /turf))
 			if(istype(acid_t, /turf/closed/wall))

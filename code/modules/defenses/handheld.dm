@@ -15,11 +15,14 @@
 	var/deployment_time = 3 SECONDS
 
 	var/list/upgrade_list
+	var/obj_health = 200
+	var/obj_health_max = 200
 
 /obj/item/defenses/handheld/examine(mob/user)
 	. = ..()
 
 	to_chat(user, SPAN_INFO("It is ready for deployment."))
+	to_chat(user, SPAN_INFO("It has [SPAN_HELPFUL("[obj_health]/[obj_health_max]")] health."))
 
 /obj/item/defenses/handheld/attack_self(var/mob/living/carbon/human/user)
 	if(!istype(user))
@@ -61,6 +64,7 @@
 	D.setDir(direction)
 	playsound(T, 'sound/mecha/mechmove01.ogg', 30, 1)
 	D.name = replacetext(src.name, "handheld ", "") //fixed
+	D.health = obj_health
 	qdel(src)
 
 
@@ -156,6 +160,8 @@
 	icon = 'icons/obj/structures/machinery/defenses/tesla.dmi'
 	icon_state = "Normal tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil
+	obj_health = 150
+	obj_health_max = 150
 
 
 /obj/item/defenses/handheld/tesla_coil/stun
@@ -167,6 +173,8 @@
 	icon_state = "Micro tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil/micro
 	deployment_time = 0.75 SECONDS
+	obj_health = 75
+	obj_health_max = 75
 
 /obj/item/defenses/handheld/tesla_coil/Initialize(mapload, ...)
 	. = ..()

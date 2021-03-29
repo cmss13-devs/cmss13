@@ -1,4 +1,3 @@
-
 // Vanguard shields rapidly decay after the first hit.
 /datum/xeno_shield/vanguard
 	var/hit_yet = FALSE
@@ -37,7 +36,7 @@
 		amount -= 50
 
 		notify_xeno()
-		sleep(1)
+		sleep(0.4 SECONDS)
 
 	if (amount <= 0)
 		if (linked_xeno && istype(linked_xeno, /mob/living/carbon/Xenomorph))

@@ -11,6 +11,16 @@
 	darkness_view = 7
 	fullscreen_vision = /obj/screen/fullscreen/nvg
 
+/obj/item/clothing/glasses/night/helmet //for the integrated NVGs that are in helmetgarb code
+	name = "\improper M2 night vision goggles"
+	desc = "The actual goggle part of the M2 night vision system."
+	icon_state = "stub" //our actual icon is a part of our helmet.
+	item_state = null
+	vision_flags = SEE_TURFS
+	darkness_view = 12
+	flags_item = NODROP|DELONDROP|ITEM_ABSTRACT
+	flags_inventory = CANTSTRIP
+
 /obj/item/clothing/glasses/night/M4RA
 	name = "\improper M4RA Battle sight"
 	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings. Click it to toggle."

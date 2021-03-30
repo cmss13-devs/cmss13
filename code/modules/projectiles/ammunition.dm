@@ -188,7 +188,7 @@ bullets/shells. ~N
 	flags_magazine = AMMUNITION_HANDFUL
 	attack_speed = 3 // should make reloading less painful
 
-/obj/item/ammo_magazine/handful/shotgun/custom_color/Initialize(mapload, spawn_empty)
+/obj/item/ammo_magazine/handful/Initialize(mapload, spawn_empty)
 	. = ..()
 	update_icon()
 

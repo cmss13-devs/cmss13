@@ -412,8 +412,44 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 
 /datum/gear/lucky_feather
-	display_name = "Lucky Feather"
+	display_name = "Lucky Feather - Red"
 	path = /obj/item/prop/helmetgarb/lucky_feather
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/lucky_feather
+	display_name = "Lucky Feather - Blue"
+	path = /obj/item/prop/helmetgarb/lucky_feather/blue
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/lucky_feather
+	display_name = "Lucky Feather - Purple"
+	path = /obj/item/prop/helmetgarb/lucky_feather/purple
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/lucky_feather
+	display_name = "Lucky Feather - Yellow"
+	path = /obj/item/prop/helmetgarb/lucky_feather/yellow
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/helmet_gasmask
+	display_name = "M5 integrated gasmask"
+	path = /obj/item/prop/helmetgarb/helmet_gasmask
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/trimmed_wire
+	display_name = "Trimmed Barbed Wire"
+	path = /obj/item/prop/helmetgarb/trimmed_wire
+	cost = 2
+	slot = WEAR_IN_BACK
+
+/datum/gear/bullet_pipe
+	display_name = "10x99mm XM42B casing pipe"
+	path = /obj/item/prop/helmetgarb/bullet_pipe
 	cost = 1
 	slot = WEAR_IN_BACK
 
@@ -438,6 +474,12 @@ var/global/list/gear_datums = list()
 /datum/gear/flair_uscm
 	display_name = "USCM Flair"
 	path = /obj/item/prop/helmetgarb/flair_uscm
+	cost = 1
+	slot = WEAR_IN_BACK
+
+/datum/gear/broken_nvgs
+	display_name = "Broken Night Vision Goggles"
+	path = /obj/item/prop/helmetgarb/helmet_nvg
 	cost = 1
 	slot = WEAR_IN_BACK
 

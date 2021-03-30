@@ -65,6 +65,7 @@
 				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
+
 	else if(isAI(src))
 		return 0
 

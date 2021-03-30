@@ -122,10 +122,10 @@
 	unacidable = TRUE
 	flags_item = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE
 
-/obj/item/clothing/gloves/marine/veteran/PMC
+/obj/item/clothing/gloves/marine/veteran
 	name = "armored gloves"
-	desc = "Armored gloves used in special operations. They are also insulated against electrical shock."
-	icon_state = "black"
+	desc = "Non-standard kevlon fiber gloves. They're insulated and heavily armored."
+	icon_state = "veteran"
 	item_state = "bgloves"
 	siemens_coefficient = 0
 	armor_melee = CLOTHING_ARMOR_HIGH
@@ -136,6 +136,12 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+/obj/item/clothing/gloves/marine/veteran/PMC
+	name = "\improper WY PMC gloves"
+	icon_state = "PMC"
+	item_state = "PMC"
+	desc = "Standard issue kevlon fiber gloves manufactured for and by Weston-Yamada PMC dispatch division. They are insulated against electrical shock."
 
 /obj/item/clothing/gloves/marine/veteran/PMC/commando
 	name = "\improper M5X gauntlets"

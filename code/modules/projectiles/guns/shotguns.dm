@@ -257,6 +257,43 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/combat/riot
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
 
+//MARSOC MK210, an earlier developmental variant of the MK211 tactical used by the USCM MARSOC.
+/obj/item/weapon/gun/shotgun/combat/marsoc
+	name = "\improper MK210 tactical shotgun"
+	desc = "Way back in 2168, W-Y began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM MARSOC division wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic and made of stamped medal. Truly an engineering marvel."
+	icon_state = "mk210"
+	item_state = "mk210"
+
+	fire_sound = 'sound/weapons/gun_shotgun_automatic.ogg'
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
+
+	flags_equip_slot = SLOT_WAIST|SLOT_BACK
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON
+	fa_delay = FIRE_DELAY_TIER_6
+
+/obj/item/weapon/gun/shotgun/combat/marsoc/Initialize(mapload, spawn_empty)
+	. = ..()
+	if(current_mag && current_mag.current_rounds > 0)
+		load_into_chamber()
+
+/obj/item/weapon/gun/shotgun/combat/marsoc/handle_starting_attachment()
+	return
+
+/obj/item/weapon/gun/shotgun/combat/marsoc/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)
+
+/obj/item/weapon/gun/shotgun/combat/marsoc/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_5*2
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3 - HIT_ACCURACY_MULT_TIER_5
+	scatter = SCATTER_AMOUNT_TIER_6
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_6
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_4
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
 //-------------------------------------------------------
 //DOUBLE SHOTTY
 

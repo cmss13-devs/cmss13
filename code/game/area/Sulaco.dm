@@ -121,6 +121,10 @@
 
 //DISTRESS SHUTTLES
 
+/area/shuttle/distress
+	lighting_use_dynamic = FALSE
+	unique = TRUE
+
 /area/shuttle/distress/start
 	name = "\improper Distress Shuttle"
 	icon_state = "away1"

@@ -47,6 +47,12 @@
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
 
+/obj/item/tool/screwdriver/tactical
+	name = "tactical screwdriver"
+	desc = "Sharp, matte black, and deadly. In a pinch this will substitute for a pencil in a fight."
+	force = MELEE_FORCE_TIER_2
+	throwforce = MELEE_FORCE_NORMAL
+
 /obj/item/tool/screwdriver/Initialize()
 	. = ..()
 	switch(pick("red","blue","purple","brown","green","cyan","yellow"))
@@ -75,6 +81,10 @@
 	if (prob(75))
 		src.pixel_y = rand(0, 16)
 	return
+
+/obj/item/tool/screwdriver/tactical/Initialize()
+	. = ..()
+	icon_state = "tac_screwdriver"
 
 /obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M))
@@ -113,6 +123,10 @@
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
 
+/obj/item/tool/wirecutters/tactical
+	name = "tactical wirecutters"
+	desc = "This heavy-duty pair seems more fit for cutting barbed wire, but it'll work splendidly on electrical wires."
+	icon_state = "tac_cutters"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
@@ -443,9 +457,12 @@
 	icon_state = "red_crowbar"
 	item_state = "red_crowbar"
 
-
-
-
+/obj/item/tool/crowbar/tactical
+	name = "tactical prybar"
+	desc = "Holding this makes you want to raid a townhouse filled with terrorists. Also doubles as a blunt weapon."
+	icon_state = "tac_prybar"
+	force = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_NORMAL
 
 /*
  Welding backpack

@@ -447,6 +447,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/marsoc
 	name = "\improper USCM MARSOC tactical rucksack"
+	icon_state = "tacrucksack"
 	desc = "With a backpack like this, you'll forget you're on a hell march designed to kill you."
 	worn_accessible = TRUE
 	max_storage_space = 30

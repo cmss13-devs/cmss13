@@ -378,7 +378,7 @@
 
 /obj/item/clothing/under/marine/veteran/marsoc
 	name = "MARSOC tactical operator uniform"
-	desc = "Looks cool."
+	desc = "A black uniform for elite Marine operators. So this is where all their money goes."
 	rollable_sleeves = TRUE
 	icon_state = "marsoc"
 	worn_state = "marsoc"

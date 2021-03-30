@@ -1060,7 +1060,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 	unacidable = TRUE
-	specialty = "MARSOC M3 Armor"
+	specialty = "MARSOC M3 pattern"
 	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_SNOW_TYPE
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)

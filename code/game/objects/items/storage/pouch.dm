@@ -391,11 +391,37 @@
 		/obj/item/storage/syringe_case,
 	)
 
+
 /obj/item/storage/pouch/medical/frt_kit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
+
+/obj/item/storage/pouch/medical/socmed
+	name = "tactical medical pouch"
+	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection."
+	icon_state = "socmed"
+	storage_slots = 10
+	can_hold = list(
+		/obj/item/stack/medical,
+		/obj/item/storage/pill_bottle,
+		/obj/item/device/healthanalyzer,
+		/obj/item/reagent_container/hypospray,
+		/obj/item/tool/extinguisher/mini,
+	)
+
+/obj/item/storage/pouch/medical/socmed/full/fill_preset_inventory()
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/stack/medical/splint/nano(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+	new /obj/item/tool/extinguisher/mini(src)
 
 /obj/item/storage/pouch/vials
 	name = "vial pouch"
@@ -726,6 +752,12 @@
 	)
 	bypass_w_limit = list(/obj/item/tool/shovel/etool)
 
+/obj/item/storage/pouch/tools/tactical
+	name = "tactical tools pouch"
+	desc = "This particular toolkit full of sharp, heavy objects was designed for breaking into things rather than fixing them. Still does the latter pretty well, though."
+	icon_state = "soctools"
+	storage_slots = 6
+
 /obj/item/storage/pouch/tools/full/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
 	new /obj/item/tool/wirecutters(src)
@@ -749,3 +781,10 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool/hugetank(src)
 	new /obj/item/tool/extinguisher/mini(src)
+
+/obj/item/storage/pouch/tools/tactical/full/fill_preset_inventory()
+	new /obj/item/tool/screwdriver/tactical(src)
+	new /obj/item/tool/wirecutters/tactical(src)
+	new /obj/item/tool/crowbar/tactical(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/tool/wrench(src)

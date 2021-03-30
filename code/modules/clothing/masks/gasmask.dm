@@ -44,6 +44,11 @@
 	flags_inv_hide = HIDEEARS|HIDEFACE|HIDEALLHAIR
 	flags_equip_slot = SLOT_FACE
 
+/obj/item/clothing/mask/gas/PMC/marsoc
+	name = "\improper MARSOC armored balaclava"
+	desc = "Designed for maximum protection -- and badassery. Provides protection against facial attacks, filters toxins, and conceals the wearer's identity."
+	icon_state = "balaclava"
+
 /obj/item/clothing/mask/gas/PMC/upp
 	name = "\improper UPP armored commando balaclava"
 	icon_state = "upp_mask"

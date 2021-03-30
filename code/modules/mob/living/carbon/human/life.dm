@@ -1,9 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
 /mob/living/carbon/human/Life(delta_time)
-	set invisibility = 0
-	set background = 1
-
 	if(monkeyizing)
 		return
 	if(!loc) //Fixing a null error that occurs when the mob isn't found in the world -- TLE

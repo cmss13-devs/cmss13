@@ -349,7 +349,6 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	storage_slots = null
 	max_storage_space = 15
 
-
 /obj/item/storage/backpack/marine/satchel/medic
 	name = "\improper USCM medic satchel"
 	desc = "A heavy-duty satchel used by USCM medics. It sacrifices capacity for usability. A small patch is sown to the top flap."
@@ -445,6 +444,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A specially designed smock with pockets for all your sniper needs."
 	icon_state = "smock"
 	worn_accessible = TRUE
+
+/obj/item/storage/backpack/marine/marsoc
+	name = "\improper USCM MARSOC tactical rucksack"
+	desc = "With a backpack like this, you'll forget you're on a hell march designed to kill you."
+	worn_accessible = TRUE
+	max_storage_space = 30
 
 /obj/item/storage/backpack/marine/rocketpack
 	name = "\improper USCM IMP M22 rocket bags"

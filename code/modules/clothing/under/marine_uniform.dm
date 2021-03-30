@@ -376,6 +376,15 @@
 	rollable_sleeves = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 
+/obj/item/clothing/under/marine/veteran/marsoc
+	name = "MARSOC tactical operator uniform"
+	desc = "Looks cool."
+	rollable_sleeves = TRUE
+	icon_state = "marsoc"
+	worn_state = "marsoc"
+	specialty = "marsoc uniform"
+	flags_item = NO_SNOW_TYPE
+
 /obj/item/clothing/under/marine/veteran/PMC
 	name = "\improper PMC fatigues"
 	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weston-Yamada corporation is emblazed on the suit."

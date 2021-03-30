@@ -633,3 +633,16 @@
 		qdel(TC)
 		LAZYREMOVE(tackle_counter, M)
 		UnregisterSignal(M, COMSIG_MOB_KNOCKED_DOWN)
+
+
+/mob/living/carbon/Xenomorph/burn_skin(burn_amount)
+	if(burrow)
+		return FALSE
+
+	if(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)
+		burn_amount *= 0.5
+
+	apply_damage(burn_amount, BURN)
+	to_chat(src, SPAN_DANGER("Your flesh, it melts!"))
+	updatehealth()
+	return TRUE

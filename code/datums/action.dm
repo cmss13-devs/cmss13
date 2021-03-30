@@ -153,6 +153,8 @@
 	name = "Use [target]"
 	button.name = name
 
+	update_button_icon()
+
 /datum/action/item_action/Destroy()
 	LAZYREMOVE(holder_item.actions, src)
 	holder_item = null

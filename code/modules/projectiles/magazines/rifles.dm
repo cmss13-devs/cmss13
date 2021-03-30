@@ -93,6 +93,21 @@
 	icon_state = "m41a_mk1_penetrating"
 	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 
+//-------------------------------------------------------
+//M40-SD AKA MARSOC RIFLE FROM HELL (It's an EM-2, a prototype of the real world L85A1 way back from the 1940s. We've given it a blue plastic shell and an integral suppressor)
+/obj/item/ammo_magazine/rifle/m40_sd
+	name = "\improper M40-SD magazine (10x24mm)"
+	desc = "A stubby and wide, high capacity double stack magazine used in the M40-SD pulse rifle. Fires 10x24mm Armor Piercing rounds, holding up to 60 + 1 in the chamber."
+	icon_state = "m40_sd"
+	max_rounds = 60
+	gun_type = /obj/item/weapon/gun/rifle/m41a/elite/m40_sd
+	default_ammo = /datum/ammo/bullet/rifle/ap
+
+/obj/item/ammo_magazine/rifle/m41aMK1/penetrating
+	name = "\improper M41A MK1  magazine (10x24mm)"
+	desc = "A long rectangular box of rounds that is only compatible with the older M41A MK1. Holds up to 95 rounds plus 1 in the chamber. This one contains wall-piercing bullets."
+	icon_state = "m41a_mk1_penetrating"
+	default_ammo = /datum/ammo/bullet/rifle/ap/penetrating
 
 //-------------------------------------------------------
 //MAR-40 AK CLONE //AK47 and FN FAL together as one.

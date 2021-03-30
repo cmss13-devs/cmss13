@@ -53,3 +53,41 @@
 		arm_equipment(H, "Weston-Yamada Deathsquad", TRUE, TRUE)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
+
+// MARSOC commandos - USCM Deathsquad. Event only
+/datum/emergency_call/marsoc
+	name = "MARSOC Operatives"
+	mob_max = 8
+	mob_min = 5
+	probability = 0
+	shuttle_id = "Distress_PMC"
+	name_of_spawn = "Distress_PMC"
+
+	var/operator_team_designation
+	var/curr_operator_number = 1
+
+// DEATH SQUAD--------------------------------------------------------------------------------
+/datum/emergency_call/marsoc/create_member(datum/mind/M)
+
+	if (!operator_team_designation)
+		operator_team_designation = pick(nato_phonetic_alphabet)
+
+	var/turf/spawn_loc = get_spawn_point()
+
+	if(!istype(spawn_loc))
+		return //Didn't find a useable spawn point.
+
+	var/mob/living/carbon/human/H = new(spawn_loc)
+	M.transfer_to(H, TRUE)
+	H.set_skills(/datum/skills/commando/deathsquad)
+
+	var/operator_name = "[operator_team_designation]-[curr_operator_number]"
+	H.change_real_name(H, operator_name)
+
+	to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an elite MARSOC Operative, the best of the best.")))
+	to_chat(H, "<B> You are absolutely loyal to High Command and must follow their directives.</b>")
+	to_chat(H, "<B> Execute the mission assigned to you with extreme prejudice!</b>")
+	arm_equipment(H, "MARSOC Operator", TRUE, TRUE)
+
+	curr_operator_number++
+	return

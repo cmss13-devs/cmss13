@@ -472,7 +472,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	storage_slots = 1
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
-	flags_atom = NO_SNOW_TYPE|FPRINT|CONDUCT|NO_NAME_OVERRIDE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY //No squad colors when wearing this since it'd look funny.
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -1046,6 +1046,22 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		return FALSE
 
 	return TRUE
+
+/obj/item/clothing/suit/storage/marine/marsoc
+	name = "\improper MARSOC commando armor"
+	desc = "A heavily customized suit of M3 armor. Used by MARSOC operators."
+	icon_state = "marsoc"
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	unacidable = TRUE
+	specialty = "MARSOC M3 Armor"
+	flags_atom = MOB_LOCK_ON_EQUIP|NO_CRYO_STORE|NO_SNOW_TYPE
 
 /datum/action/item_action/specialist/aimed_shot/proc/check_shot_is_blocked(var/mob/firer, var/mob/target, obj/item/projectile/P)
 	var/list/turf/path = getline2(firer, target, include_from_atom = FALSE)
@@ -1661,4 +1677,6 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	storage_slots = 3
-	uniform_restricted = null
+	uniform_restricted = list(/obj/item/clothing/under/marine/ua_riot)
+	flags_atom = NO_SNOW_TYPE
+

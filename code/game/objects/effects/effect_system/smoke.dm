@@ -195,8 +195,9 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/phosphorus
-	time_to_live = 10
-	smokeranking = SMOKE_RANK_HIGH
+	time_to_live = 3
+	smokeranking = SMOKE_RANK_MED
+	var/next_cough = 2 SECONDS
 
 /obj/effect/particle_effect/smoke/phosphorus/Move()
 	. = ..()
@@ -205,26 +206,25 @@
 
 /obj/effect/particle_effect/smoke/phosphorus/affect(var/mob/living/carbon/M)
 	..()
-	if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
-		return
-	else
-		if(prob(20))
-			M.drop_held_item()
-		M.apply_damage(1, OXY)
-		M.updatehealth()
-		if(M.coughedtime != 1)
-			M.coughedtime = 1
-			if(ishuman(M)) //Humans only to avoid issues
+	if(ishuman(M))
+		if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
+			return
+		else
+			if(prob(20))
+				M.drop_held_item()
+			M.apply_damage(1, OXY)
+			M.updatehealth()
+			if(M.coughedtime < world.time)
 				M.emote("cough")
-			spawn (20)
-				M.coughedtime = 0
+				M.coughedtime = world.time + next_cough
 
-	M.last_damage_source = source
-	M.last_damage_mob = source_mob
-	M.burn_skin(5)
+		M.last_damage_source = source
+		M.last_damage_mob = source_mob
+	M.burn_skin(50)
 	M.adjust_fire_stacks(5)
 	M.IgniteMob()
 	M.updatehealth()
+
 
 //////////////////////////////////////
 // FLASHBANG SMOKE

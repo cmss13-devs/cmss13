@@ -178,27 +178,9 @@ CULT
 
 	var/obj/structure/droppod/tech/assigned_droppod
 
-/datum/action/human_action/activable/droppod/use_ability(atom/A)
-	. = ..()
-	if(!can_use_action())
-		return
-
+/datum/action/human_action/activable/droppod/proc/can_deploy_droppod(var/turf/T)
 	var/mob/living/carbon/human/H = owner
-
-	var/turf/T = get_turf(A)
-
-	if(!T)
-		return
-
 	if(assigned_droppod)
-		if(tgui_alert(H, "Do you want to recall the current pod?",\
-			"Recall Droppod", list("No", "Yes")) == "Yes")
-
-			if(!(assigned_droppod.droppod_flags & (DROPPOD_DROPPING|DROPPOD_RETURNING)))
-				message_staff("[key_name_admin(H)] recalled a tech droppod at [get_area(assigned_droppod)].")
-				assigned_droppod.recall()
-			else
-				to_chat(H, SPAN_WARNING("It's too late to recall the droppod now!"))
 		return
 
 	if(!(T in view(H)))
@@ -217,6 +199,37 @@ CULT
 		to_chat(H, SPAN_WARNING("The droppod cannot punch through an organic ceiling!"))
 		return
 
+	return TRUE
+
+
+/datum/action/human_action/activable/droppod/use_ability(atom/A)
+	. = ..()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	var/turf/T = get_turf(A)
+
+	if(!T)
+		return
+
+	if(assigned_droppod)
+		if(tgui_alert(H, "Do you want to recall the current pod?",\
+			"Recall Droppod", list("No", "Yes")) == "Yes")
+			if(!assigned_droppod)
+				return
+
+			if(!(assigned_droppod.droppod_flags & (DROPPOD_DROPPING|DROPPOD_RETURNING)))
+				message_staff("[key_name_admin(H)] recalled a tech droppod at [get_area(assigned_droppod)].")
+				assigned_droppod.recall()
+			else
+				to_chat(H, SPAN_WARNING("It's too late to recall the droppod now!"))
+		return
+
+	if(!can_deploy_droppod(T))
+		return
+
 	var/list/list_of_techs = list()
 
 	for(var/i in GLOB.unlocked_droppod_techs)
@@ -228,6 +241,9 @@ CULT
 		return
 
 	var/input = tgui_input_list(H, "Choose a tech to deploy at this location", "Tech deployment", list_of_techs)
+
+	if(!can_deploy_droppod(T))
+		return
 
 	if(!input)
 		return

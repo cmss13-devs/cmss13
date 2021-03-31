@@ -311,3 +311,12 @@ SUBSYSTEM_DEF(mapping)
 	for(var/B in areas)
 		var/area/A = B
 		A.reg_in_areas_in_z()
+
+/// Gets a name for the marine ship as per the enabled ship map configuration
+/datum/controller/subsystem/mapping/proc/get_main_ship_name()
+	if(!configs)
+		return MAIN_SHIP_DEFAULT_NAME
+	var/datum/map_config/MC = configs[SHIP_MAP]
+	if(!MC)
+		return MAIN_SHIP_DEFAULT_NAME
+	return MC.map_name

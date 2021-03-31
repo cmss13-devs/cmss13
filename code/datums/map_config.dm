@@ -208,7 +208,7 @@
 		force_mode = json["force_mode"]
 
 	if(json["announce_text"])
-		announce_text = replacetext(json["announce_text"], "###SHIPNAME###", MAIN_SHIP_NAME)
+		announce_text = json["announce_text"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])
@@ -225,7 +225,7 @@
 	if(json["nightmare"])
 		if(!islist(json["nightmare"]))
 			log_world("map_config nightmare is not a list!")
-			return			
+			return
 		nightmare = json["nightmare"]
 
 	if(islist(json["environment_traits"]))

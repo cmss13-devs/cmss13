@@ -365,6 +365,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	name = "\improper USCM Radio Telephone Pack"
 	desc = "A heavy-duty pack, used for telecommunications between central command. Commonly carried by RTOs."
 	icon_state = "rto_backpack"
+	item_state = "rto_backpack"
 	has_gamemode_skin = FALSE
 
 	flags_item = ITEM_OVERRIDE_NORTHFACE
@@ -372,13 +373,40 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer/rto)
 	var/obj/structure/transmitter/internal/internal_transmitter
 
+	var/base_icon_state
+
 /obj/item/storage/backpack/marine/satchel/rto/Initialize()
 	. = ..()
 	internal_transmitter = new(src)
+	internal_transmitter.relay_obj = src
+	internal_transmitter.phone_category = "RTO"
+	internal_transmitter.enabled = FALSE
+
+	base_icon_state = icon_state
+	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
 
 	LAZYADD(actions, new /datum/action/human_action/activable/droppod())
 
 	GLOB.radio_packs += src
+
+/obj/item/storage/backpack/marine/satchel/rto/proc/check_for_ringing()
+	SIGNAL_HANDLER
+	update_icon()
+
+/obj/item/storage/backpack/marine/satchel/rto/update_icon()
+	. = ..()
+	if(!internal_transmitter)
+		return
+
+	if(!internal_transmitter.attached_to \
+		|| internal_transmitter.attached_to.loc != internal_transmitter)
+		icon_state = "[base_icon_state]_ear"
+		return
+
+	if(internal_transmitter.caller)
+		icon_state = "[base_icon_state]_ring"
+	else
+		icon_state = base_icon_state
 
 /obj/item/storage/backpack/marine/satchel/rto/item_action_slot_check(mob/user, slot)
 	if(slot == WEAR_BACK)
@@ -394,6 +422,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/marine/satchel/rto/Destroy()
 	GLOB.radio_packs -= src
+	qdel(internal_transmitter)
 	return ..()
 
 /obj/item/storage/backpack/marine/satchel/rto/pickup(mob/user)
@@ -412,9 +441,12 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	else
 		internal_transmitter.phone_id = "[user]"
 
+	internal_transmitter.enabled = TRUE
+
 /obj/item/storage/backpack/marine/satchel/rto/dropped(mob/user)
 	. = ..()
 	internal_transmitter.phone_id = "[src]"
+	internal_transmitter.enabled = FALSE
 
 /obj/item/storage/backpack/marine/satchel/rto/attack_hand(mob/user)
 	if(user.back == src)
@@ -438,6 +470,16 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	if(ismob(loc))
 		var/mob/M = loc
 		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] New droppod available ([N.name])."))
+
+/obj/item/storage/backpack/marine/satchel/rto/small
+	name = "\improper USCM Small Radio Telephone Pack"
+	max_storage_space = 10
+
+	uniform_restricted = null
+
+/obj/item/storage/backpack/marine/satchel/rto/small/Initialize()
+	. = ..()
+	internal_transmitter.phone_category = "Marine"
 
 /obj/item/storage/backpack/marine/smock
 	name = "\improper M3 sniper's smock"

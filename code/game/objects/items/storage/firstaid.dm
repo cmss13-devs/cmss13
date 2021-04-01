@@ -223,11 +223,13 @@
 	max_storage_space = 16
 	var/skilllock = 1
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
+	var/bottle_lid = TRUE //Whether it shows a visual lid when opened or closed.
 
 obj/item/storage/pill_bottle/packet
 	name = "\improper pill packet"
-	desc = "Containts pills. Once you take them out they don't go back in."
+	desc = "Contains pills. Once you take them out, they don't go back in."
 	icon_state = "pill_packet"
+	bottle_lid = FALSE
 	storage_slots = 4
 	max_w_class = 0
 	max_storage_space = 4
@@ -252,6 +254,8 @@ obj/item/storage/pill_bottle/packet
 			new pill_type_to_fill(src)
 
 /obj/item/storage/pill_bottle/update_icon()
+	if(!bottle_lid)
+		return
 	overlays.Cut()
 	if(content_watchers || !length(contents))
 		overlays += "pills_open"

@@ -35,25 +35,25 @@
 	if(locked)
 		if (istype(W, /obj/item/tool/screwdriver))
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-				src.open =! src.open
-				var/msg_open_status = "[src.open ? "open" : "close"]"
+				open =! open
+				var/msg_open_status = "[open ? "open" : "close"]"
 				user.show_message(SPAN_NOTICE("You [msg_open_status	] the service panel."))
 			return
-		if ((istype(W, /obj/item/device/multitool)) && (src.open == 1)&& (!src.l_hacking))
+		if ((istype(W, /obj/item/device/multitool)) && (open == 1)&& (!l_hacking))
 			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), 1)
-			src.l_hacking = 1
+			l_hacking = 1
 			if (do_after(usr, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				if (prob(40))
-					src.l_setshort = 1
-					src.l_set = 0
+					l_setshort = 1
+					l_set = 0
 					user.show_message(text(SPAN_DANGER("Internal memory reset.  Please give it a few seconds to reinitialize.")), 1)
 					sleep(80)
-					src.l_setshort = 0
-					src.l_hacking = 0
+					l_setshort = 0
+					l_hacking = 0
 				else
 					user.show_message(text(SPAN_DANGER("Unable to reset internal memory.")), 1)
-					src.l_hacking = 0
-			else	src.l_hacking = 0
+					l_hacking = 0
+			else	l_hacking = 0
 			return
 		//At this point you have exhausted all the special things to do when locked
 		// ... but it's still locked.
@@ -65,21 +65,21 @@
 
 /obj/item/storage/secure/MouseDrop(over_object, src_location, over_location)
 	if (locked)
-		src.add_fingerprint(usr)
+		add_fingerprint(usr)
 		return
 	..()
 
 
 /obj/item/storage/secure/attack_self(mob/user as mob)
 	user.set_interaction(src)
-	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (src.locked ? "LOCKED" : "UNLOCKED"))
+	var/dat = text("<TT><B>[]</B><BR>\n\nLock Status: []",src, (locked ? "LOCKED" : "UNLOCKED"))
 	var/message = "Code"
-	if ((src.l_set == 0) && (!src.l_setshort))
+	if ((l_set == 0) && (!l_setshort))
 		dat += text("<p>\n<b>5-DIGIT PASSCODE NOT SET.<br>ENTER NEW PASSCODE.</b>")
-	if (src.l_setshort)
+	if (l_setshort)
 		dat += text("<p>\n<font color=red><b>ALERT: MEMORY SYSTEM ERROR - 6040 201</b></font>")
-	message = text("[]", src.code)
-	if (!src.locked)
+	message = text("[]", code)
+	if (!locked)
 		message = "*****"
 	dat += text("<HR>\n>[]<BR>\n<A href='?src=\ref[];type=1'>1</A>-<A href='?src=\ref[];type=2'>2</A>-<A href='?src=\ref[];type=3'>3</A><BR>\n<A href='?src=\ref[];type=4'>4</A>-<A href='?src=\ref[];type=5'>5</A>-<A href='?src=\ref[];type=6'>6</A><BR>\n<A href='?src=\ref[];type=7'>7</A>-<A href='?src=\ref[];type=8'>8</A>-<A href='?src=\ref[];type=9'>9</A><BR>\n<A href='?src=\ref[];type=R'>R</A>-<A href='?src=\ref[];type=0'>0</A>-<A href='?src=\ref[];type=E'>E</A><BR>\n</TT>", message, src, src, src, src, src, src, src, src, src, src, src, src)
 	user << browse(dat, "window=caselock;size=300x280")
@@ -90,30 +90,30 @@
 		return
 	if (href_list["type"])
 		if (href_list["type"] == "E")
-			if ((src.l_set == 0) && (length(src.code) == 5) && (!src.l_setshort) && (src.code != "ERROR"))
-				src.l_code = src.code
-				src.l_set = 1
-			else if ((src.code == src.l_code) && (src.l_set == 1))
-				src.locked = 0
-				src.overlays = null
+			if ((l_set == 0) && (length(code) == 5) && (!l_setshort) && (code != "ERROR"))
+				l_code = code
+				l_set = 1
+			else if ((code == l_code) && (l_set == 1))
+				locked = 0
+				overlays = null
 				overlays += image('icons/obj/items/storage.dmi', icon_opened)
-				src.code = null
+				code = null
 			else
-				src.code = "ERROR"
+				code = "ERROR"
 		else
-			if ((href_list["type"] == "R") && (!src.l_setshort))
-				src.locked = 1
-				src.overlays = null
-				src.code = null
-				src.close(usr)
+			if ((href_list["type"] == "R") && (!l_setshort))
+				locked = 1
+				overlays = null
+				code = null
+				storage_close(usr)
 			else
-				src.code += text("[]", href_list["type"])
-				if (length(src.code) > 5)
-					src.code = "ERROR"
-		src.add_fingerprint(usr)
-		for(var/mob/M in viewers(1, src.loc))
+				code += text("[]", href_list["type"])
+				if (length(code) > 5)
+					code = "ERROR"
+		add_fingerprint(usr)
+		for(var/mob/M in viewers(1, loc))
 			if ((M.client && M.interactee == src))
-				src.attack_self(M)
+				attack_self(M)
 			return
 	return
 
@@ -137,17 +137,16 @@
 	new /obj/item/tool/pen(src)
 
 /obj/item/storage/secure/briefcase/attack_hand(mob/user as mob)
-	if ((src.loc == user) && (src.locked == 1))
-		to_chat(usr, SPAN_DANGER("[src] is locked and cannot be opened!"))
-	else if ((src.loc == user) && (!src.locked))
-		src.open(usr)
+	if (loc == user)
+		if (locked)
+			to_chat(usr, SPAN_DANGER("[src] is locked and cannot be opened!"))
+		else
+			open(usr)
 	else
 		..()
-		for(var/mob/M in range(1))
-			if (M.s_active == src)
-				src.close(M)
-	src.add_fingerprint(user)
-	return
+		for(var/mob/M in content_watchers)
+			storage_close(M)
+	add_fingerprint(user)
 
 // -----------------------------
 //        Secure Safe

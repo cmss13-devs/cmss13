@@ -34,7 +34,7 @@
 	update_icon()
 
 /obj/item/storage/firstaid/update_icon()
-	if(!length(contents))
+	if(content_watchers || !length(contents))
 		icon_state = "kit_empty"
 	else
 		icon_state = icon_full
@@ -251,6 +251,13 @@ obj/item/storage/pill_bottle/packet
 		for(var/i=1 to max_storage_space)
 			new pill_type_to_fill(src)
 
+/obj/item/storage/pill_bottle/update_icon()
+	overlays.Cut()
+	if(content_watchers || !length(contents))
+		overlays += "pills_open"
+	else
+		overlays += "pills_closed"
+
 /obj/item/storage/pill_bottle/examine(mob/user)
 	..()
 	var/pills_amount = contents.len
@@ -258,17 +265,17 @@ obj/item/storage/pill_bottle/packet
 		var/percentage_filled = round(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
 			if(80 to 101)
-				to_chat(user, SPAN_INFO("The [src] seems fairly full."))
+				to_chat(user, SPAN_INFO("The [name] seems fairly full."))
 			if(60 to 79)
-				to_chat(user, SPAN_INFO("The [src] feels more than half full."))
+				to_chat(user, SPAN_INFO("The [name] feels more than half full."))
 			if(40 to 59)
-				to_chat(user, SPAN_INFO("The [src] seems to be around half full."))
+				to_chat(user, SPAN_INFO("The [name] seems to be around half full."))
 			if(20 to 39)
-				to_chat(user, SPAN_INFO("The [src] feels less than half full."))
+				to_chat(user, SPAN_INFO("The [name] feels less than half full."))
 			if(0 to 19)
-				to_chat(user, SPAN_INFO("The [src] feels like it's nearly empty!"))
+				to_chat(user, SPAN_INFO("The [name] feels like it's nearly empty!"))
 	else
-		to_chat(user, SPAN_INFO("The [src] is empty."))
+		to_chat(user, SPAN_INFO("The [name] is empty."))
 
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
@@ -281,16 +288,26 @@ obj/item/storage/pill_bottle/packet
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		if(user.put_in_inactive_hand(I))
-			playsound(src.loc, src.use_sound, 10, 1, 3)
+			playsound(loc, use_sound, 10, TRUE, 3)
 			remove_from_storage(I,user)
-			to_chat(user, SPAN_NOTICE("You take a pill out of \the [src]."))
+			to_chat(user, SPAN_NOTICE("You take a pill out of the [name]."))
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.swap_hand()
 			return
 	else
-		to_chat(user, SPAN_WARNING("\The [src] is empty."))
+		to_chat(user, SPAN_WARNING("The [name] is empty."))
 		return
+
+
+/obj/item/storage/pill_bottle/attackby(var/obj/item/storage/pill_bottle/W, mob/user)
+	if(istype(W))
+		if((skilllock || W.skilllock) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+			error_idlock(user)
+			return
+		dump_into(W,user)
+	else
+		return ..()
 
 
 /obj/item/storage/pill_bottle/open(mob/user)
@@ -326,10 +343,10 @@ obj/item/storage/pill_bottle/packet
 					var/obj/item/I = contents[1]
 					if(user.put_in_active_hand(I))
 						remove_from_storage(I,user)
-						to_chat(user, SPAN_NOTICE("You take a pill out of \the [src]."))
+						to_chat(user, SPAN_NOTICE("You take a pill out of the [name]."))
 						return 1
 				else
-					to_chat(user, SPAN_WARNING("\The [src] is empty."))
+					to_chat(user, SPAN_WARNING("The [name] is empty."))
 					return 0
 			else
 				return 0

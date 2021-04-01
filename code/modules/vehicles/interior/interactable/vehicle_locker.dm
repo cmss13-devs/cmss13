@@ -21,11 +21,12 @@
 
 /obj/structure/vehicle_locker/Initialize()
 	. = ..()
-	container = new/obj/item/storage/internal(src)
+	container = new(src)
 	container.storage_slots = null
 	container.max_w_class = SIZE_MEDIUM
 	container.w_class = SIZE_MASSIVE
 	container.max_storage_space = 40
+	container.use_sound = null
 	container.bypass_w_limit = list(/obj/item/weapon/gun,
 									/obj/item/storage/sparepouch,
 									/obj/item/storage/large_holster/machete,
@@ -62,7 +63,8 @@
 		H.visible_message(SPAN_WARNING("[H] stops emptying \the [src]..."), SPAN_WARNING("You stop emptying \the [src]..."))
 		return
 
-	container.hide_from(H)
+	for(var/mob/M in container.content_watchers)
+		container.storage_close(M)
 	for (var/obj/item/I in container.contents)
 		container.remove_from_storage(I, T)
 	H.visible_message(SPAN_NOTICE("[H] empties \the [src]."), SPAN_NOTICE("You empty \the [src]."))
@@ -124,3 +126,13 @@
 	container.hear_talk(M, msg)
 	..()
 
+//Cosmetically opens/closes the the locker when its storage window is accessed or closed. Only makes sound when not already open/closed.
+/obj/structure/vehicle_locker/on_pocket_open(first_open)
+	if(first_open)
+		icon_state = "locker_open"
+		playsound(src.loc, 'sound/handling/hinge_squeak1.ogg', 25, TRUE, 3)
+
+/obj/structure/vehicle_locker/on_pocket_close(watchers)
+	if(!watchers)
+		icon_state = "locker"
+		playsound(src.loc, "toolbox", 25, TRUE, 3)

@@ -55,6 +55,9 @@
 	if(client)
 		client.change_view(world_view_size) //just so we never get stuck with a large view somehow
 
+	if(s_active) //Close inventory screens.
+		s_active.storage_close(src)
+
 	hide_fullscreens()
 
 	update_sight()

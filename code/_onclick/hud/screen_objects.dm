@@ -45,7 +45,7 @@
 	if(master)
 		if(isstorage(master))
 			var/obj/item/storage/S = master
-			S.close(user)
+			S.storage_close(user)
 	return TRUE
 
 

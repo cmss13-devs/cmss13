@@ -46,7 +46,7 @@ They're all essentially identical when it comes to getting the job done.
 	GLOB.ammo_magazine_list -= src
 	return ..()
 
-/obj/item/ammo_magazine/update_icon(var/round_diff = 0) //inhand sprites only get their icon update called when picked back up or removed from storage, known issue.
+/obj/item/ammo_magazine/update_icon(var/round_diff = 0)
 	if(current_rounds <= 0)
 		icon_state = base_mag_icon + "_e"
 		item_state = base_mag_item + "_e"
@@ -54,6 +54,12 @@ They're all essentially identical when it comes to getting the job done.
 	else if(current_rounds - round_diff <= 0)
 		icon_state = base_mag_icon
 		item_state = base_mag_item //to-do, unique magazine inhands for majority firearms.
+	if(iscarbon(loc))
+		var/mob/living/carbon/C = loc
+		if(C.r_hand == src)
+			C.update_inv_r_hand()
+		else if(C.l_hand == src)
+			C.update_inv_l_hand()
 
 /obj/item/ammo_magazine/examine(mob/user)
 	..()

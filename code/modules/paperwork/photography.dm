@@ -104,7 +104,7 @@
 			return
 		if(over_object == usr && in_range(src, usr) || usr.contents.Find(src))
 			if(usr.s_active)
-				usr.s_active.close(usr)
+				usr.s_active.storage_close(usr)
 			show_to(usr)
 			return
 	return

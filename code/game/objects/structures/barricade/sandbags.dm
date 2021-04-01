@@ -98,6 +98,13 @@
 	else
 		. = ..()
 
+/obj/structure/barricade/destroy(deconstruct)
+	if(deconstruct && is_wired)
+		new /obj/item/stack/barbed_wire(loc)
+	if(stack_type && health > 0)
+		new stack_type(loc, stack_amount)
+	qdel(src)
+
 /obj/structure/barricade/sandbags/proc/increment_build_stage()
 	switch(build_stage)
 		if(BARRICADE_SANDBAG_1)

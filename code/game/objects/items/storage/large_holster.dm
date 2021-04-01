@@ -15,11 +15,16 @@
 
 
 /obj/item/storage/large_holster/update_icon()
-	var/mob/user = loc
+	var/mob/living/carbon/human/user = loc
 	icon_state = "[base_icon][contents.len?"_full":""]"
 	item_state = icon_state
-	if(istype(user)) user.update_inv_back()
-	if(istype(user)) user.update_inv_s_store()
+	if(istype(user))
+		if(src == user.back)
+			user.update_inv_back()
+		else if(src == user.belt)
+			user.update_inv_belt()
+		else if(src == user.s_store)
+			user.update_inv_s_store()
 
 
 /obj/item/storage/large_holster/equipped(mob/user, slot)
@@ -34,14 +39,14 @@
 /obj/item/storage/large_holster/handle_item_insertion(obj/item/W, prevent_warning = 0)
 	. = ..()
 	if(. && drawSound)
-		playsound(src,drawSound, 15, 1)
+		playsound(src, drawSound, 15, TRUE)
 	return 1
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
 /obj/item/storage/large_holster/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..()
 	if(. && drawSound)
-		playsound(src,drawSound, 15, 1)
+		playsound(src, drawSound, 15, TRUE)
 
 
 
@@ -50,7 +55,7 @@
 
 /obj/item/storage/large_holster/m37
 	name = "\improper L44 M37A2 scabbard"
-	desc = "A large leather holster allowing the storage of an M37A2 Shotgun. It contains harnesses that allow it to be secured to the back for easy storage."
+	desc = "A large leather holster fitted for USCM-issue shotguns. It has harnesses that allow it to be secured to the back for easy storage."
 	icon_state = "m37_holster"
 	can_hold = list(
 		/obj/item/weapon/gun/shotgun/pump,
@@ -80,7 +85,7 @@
 
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
-	desc = "A large, vibrantly colored katana scabbard used to carry a japanese sword. It can be strapped to the back or the armor. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
+	desc = "A large, vibrantly colored katana scabbard used to carry a japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
 	base_icon = "katana_holster"
 	icon_state = "katana_holster"
 	force = 12
@@ -231,7 +236,7 @@
 		A.update_button_icon()
 
 	to_chat(user, "You switch the fuel tank to <b>[active_fuel.caliber]</b>")
-	playsound(src,'sound/machines/click.ogg', 25, 1)
+	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
 	F.current_mag = active_fuel
 	F.update_icon()
 
@@ -276,7 +281,7 @@
 	to_chat(user, "The newly inserted [new_fuel.caliber] contains: [round(new_fuel.get_ammo_percent())]% fuel.")
 	user.temp_drop_inv_item(new_fuel)
 	new_fuel.moveToNullspace() //necessary to not confuse the storage system
-	playsound(src,'sound/machines/click.ogg', 25, 1)
+	playsound(src, 'sound/machines/click.ogg', 25, TRUE)
 	// If the fuel being switched is the active one, set it as new_fuel until it gets toggled
 	if(istype(new_fuel, active_fuel))
 		active_fuel = new_fuel

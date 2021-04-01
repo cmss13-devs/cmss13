@@ -1247,10 +1247,10 @@ This function completely restores a damaged organ to perfect condition.
 		return
 	if(type == "brute")
 		owner.visible_message(SPAN_DANGER("You hear a sickening cracking sound coming from \the [owner]'s face."),	\
-		SPAN_DANGER("<b>Your face becomes unrecognizible mangled mess!</b>"),	\
+		SPAN_DANGER("<b>Your face becomes an unrecognizible mangled mess!</b>"),	\
 		SPAN_DANGER("You hear a sickening crack."))
 	else
-		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into mangled mess!"),	\
+		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into a mangled mess!"),	\
 		SPAN_DANGER("<b>Your face melts off!</b>"),	\
 		SPAN_DANGER("You hear a sickening sizzle."))
 	disfigured = 1

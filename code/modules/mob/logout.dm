@@ -10,7 +10,7 @@
 		message_staff("Admin logout: [key_name(src)]")
 
 	if(s_active)
-		s_active.hide_from(src)
+		s_active.storage_close(src)
 	..()
 
 	var/datum/entity/player/P = get_player_from_key(logging_ckey)

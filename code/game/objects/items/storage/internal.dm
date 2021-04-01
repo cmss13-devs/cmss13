@@ -110,7 +110,7 @@
 		return 0
 
 	for(var/mob/M in content_watchers)
-		close(M)
+		storage_close(M)
 	return 1
 
 /obj/item/storage/internal/attackby(obj/item/W as obj, mob/user as mob)
@@ -120,16 +120,32 @@
 /obj/item/storage/internal/Adjacent(var/atom/neighbor)
 	return master_item.Adjacent(neighbor)
 
+/obj/item/storage/internal/open(mob/user)
+	var/first_open
+	if(!content_watchers)
+		first_open = TRUE
+	..()
+	master_item.on_pocket_open(first_open)
+
+/obj/item/storage/internal/storage_close(mob/user)
+	..()
+	master_item.on_pocket_close(content_watchers)
 
 /obj/item/storage/internal/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
 	. = ..()
 	master_item.on_pocket_insertion()
 
-
 /obj/item/storage/internal/remove_from_storage(obj/item/W as obj, atom/new_location)
 	. = ..()
 	master_item.on_pocket_removal()
 
+//things to do when the obj's internal pocket is accessed. Passes content_watchers for easier checks.
+/obj/proc/on_pocket_open(first_open)
+	return
+
+//things to do when the obj's internal pocket's UI window is closed. Passes content_watchers for easier checks.
+/obj/proc/on_pocket_close(watchers)
+	return
 
 //things to do when a user attempts to insert an item in the obj's internal pocket. Return TRUE if all good, to permit the obj to move along.
 /obj/proc/on_pocket_attackby()

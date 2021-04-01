@@ -32,7 +32,6 @@
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
 
 
-
 /obj/item/storage/MouseDrop(obj/over_object as obj)
 	if(CAN_PICKUP(usr, src))
 		if(over_object == usr) // this must come before the screen objects only block
@@ -114,6 +113,7 @@
 		LAZYREMOVE(content_watchers, watcher)
 		UnregisterSignal(watcher, COMSIG_PARENT_QDELETING)
 
+///Used to hide the storage's inventory screen.
 /obj/item/storage/proc/hide_from(mob/user as mob)
 	if(user.client)
 		user.client.screen -= src.boxes
@@ -125,7 +125,6 @@
 	if(user.s_active == src)
 		user.s_active = null
 	del_from_watchers(user)
-	return
 
 /obj/item/storage/proc/can_see_content()
 	var/list/lookers = list()
@@ -137,22 +136,24 @@
 	return lookers
 
 /obj/item/storage/proc/open(mob/user)
+	if(user.s_active == src) //Spam prevention.
+		return
 	if(!opened)
 		orient2hud()
 		opened = 1
 	if (use_sound)
-		playsound(src.loc, src.use_sound, 25, 1, 3)
+		playsound(loc, use_sound, 25, TRUE, 3)
 
 	if (user.s_active)
-		user.s_active.close(user)
+		user.s_active.storage_close(user)
 	show_to(user)
+	update_icon()
 
-/obj/item/storage/proc/close(mob/user)
+///Used to close the storage item. Used a lot - if tying it to special effects, use a content_watchers check to make sure it's closed properly and no-one's looking inside.
+/obj/item/storage/proc/storage_close(mob/user)
 	SIGNAL_HANDLER
-
 	hide_from(user)
-	user.s_active = null
-	return
+	update_icon()
 
 //This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
 //The numbers are calculated from the bottom-left The bottom-left slot being 1,1.
@@ -357,6 +358,19 @@ var/list/global/item_storage_box_cache = list()
 		slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
+///Returns TRUE if there is room for the given item. W_class_override allows checking for just a generic W_class, meant for checking shotgun handfuls without having to spawn and delete one just to check.
+/obj/item/storage/proc/has_room(obj/item/W as obj, W_class_override = null)
+	if(storage_slots != null && contents.len < storage_slots)
+		return TRUE //At least one open slot.
+	//calculate storage space only for containers that don't have slots
+	if (storage_slots == null)
+		var/sum_storage_cost = W_class_override ? W_class_override : W.get_storage_cost() //Takes the override if there is one, the given item otherwise.
+		for(var/obj/item/I in contents)
+			sum_storage_cost += I.get_storage_cost() //Adds up the combined storage costs which will be in the storage item if the item is added to it.
+
+		if(sum_storage_cost <= max_storage_space) //Adding this item won't exceed the maximum.
+			return TRUE
+
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
 /obj/item/storage/proc/can_be_inserted(obj/item/W as obj, stop_messages = 0)
@@ -374,11 +388,6 @@ var/list/global/item_storage_box_cache = list()
 	if(W.heat_source && !isigniter(W))
 		to_chat(usr, SPAN_ALERT("[W] is on fire!"))
 		return
-
-	if(storage_slots != null && contents.len >= storage_slots)
-		if(!stop_messages)
-			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
-		return 0 //Storage item is full
 
 	if(can_hold.len)
 		var/ok = 0
@@ -411,16 +420,11 @@ var/list/global/item_storage_box_cache = list()
 			to_chat(usr, SPAN_NOTICE("[W] is too long for this [src]."))
 		return 0
 
-	//calculate storage space only for containers that don't have slots
-	if (storage_slots == null)
-		var/sum_storage_cost = W.get_storage_cost()
-		for(var/obj/item/I in contents)
-			sum_storage_cost += I.get_storage_cost() //Adds up the combined storage costs which will be in the storage item if the item is added to it.
-
-		if(sum_storage_cost > max_storage_space)
-			if(!stop_messages)
-				to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
-			return 0
+	//Checks if there is room for the item.
+	if(!has_room(W))
+		if(!stop_messages)
+			to_chat(usr, SPAN_NOTICE("[src] is full, make some space."))
+		return 0
 
 	if(W.w_class >= src.w_class && (isstorage(W)))
 		if(!istype(src, /obj/item/storage/backpack/holding))	//bohs should be able to hold backpacks again. The override for putting a boh in a boh is in backpack.dm.
@@ -512,7 +516,7 @@ var/list/global/item_storage_box_cache = list()
 	else
 		..()
 		for(var/mob/M in content_watchers)
-			close(M)
+			storage_close(M)
 	add_fingerprint(user)
 
 /obj/item/storage/verb/toggle_gathering_mode()
@@ -550,15 +554,10 @@ var/list/global/item_storage_box_cache = list()
 	set category = "Object"
 	set src in usr
 	var/mob/living/carbon/human/H = usr
-	if (!ishuman(H) || loc != H || H.is_mob_restrained())
-		return
-
 	empty(H, get_turf(H))
 
 /obj/item/storage/proc/empty(var/mob/user, var/turf/T)
-	if (!ishuman(user) || loc != user || user.is_mob_restrained())
-		return
-	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
+	if (!(storage_flags & STORAGE_ALLOW_EMPTY) || !ishuman(user) || loc != user || user.is_mob_incapacitated())
 		return
 
 	if (!isturf(T) || get_dist(src, T) > 1)
@@ -568,73 +567,81 @@ var/list/global/item_storage_box_cache = list()
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return
 
+	if(!length(contents))
+		to_chat(user, SPAN_WARNING("[src] is already empty."))
+		return
+
 	if (!(storage_flags & STORAGE_QUICK_EMPTY))
 		user.visible_message(SPAN_NOTICE("[user] starts to empty \the [src]..."),
 			SPAN_NOTICE("You start to empty \the [src]..."))
 		if (!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 			return
 
-	hide_from(user)
+	storage_close(user)
 	for (var/obj/item/I in contents)
 		remove_from_storage(I, T)
 	user.visible_message(SPAN_NOTICE("[user] empties \the [src]."),
 		SPAN_NOTICE("You empty \the [src]."))
 
+
+///Despite the name, this is called by the *recipient*. Meant for topping things up with known items -- doesn't run checks on a transferred item beyond whether there's room for it. This one is for ammo.
 /obj/item/storage/proc/dump_ammo_to(obj/item/ammo_magazine/ammo_dumping, mob/user, var/amount_to_dump = 5) //amount_to_dump should never actually need to be used as default value
 	if(user.action_busy)
 		return
 
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
-		if(ammo_dumping.current_rounds != 0)
-			if(contents.len < storage_slots)
-				to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
-				if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-					return
-				for(var/i = 1 to handfuls)
-					if(contents.len < storage_slots)
-						//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
-						//All this because shell types are instances and not their own objects :)
-						
-						var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
-						var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
-						new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
-						ammo_dumping.current_rounds -= transferred_handfuls
-						handle_item_insertion(new_handful, TRUE,user)
-						update_icon(-transferred_handfuls)
-					else
-						break
-				playsound(user.loc, "rustle", 15, TRUE, 6)
-				ammo_dumping.update_icon()
-			else
-				to_chat(user, SPAN_WARNING("[src] is full."))
-		else
+		if(ammo_dumping.current_rounds <= 0)
 			to_chat(user, SPAN_WARNING("[ammo_dumping] is empty."))
+			return
+		if(!has_room(null, SIZE_SMALL)) //SIZE_SMALL = shell handful W_class.
+			to_chat(user, SPAN_WARNING("[src] is full."))
+			return
+
+		to_chat(user, SPAN_NOTICE("You start refilling [src] with [ammo_dumping]."))
+		if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			return
+		for(var/i = 1 to handfuls)
+			if(!has_room(null, SIZE_SMALL))
+				break
+			//Hijacked from /obj/item/ammo_magazine/proc/create_handful because it had to be handled differently
+			//All this because shell types are instances and not their own objects :)
+			var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
+			var/transferred_handfuls = min(ammo_dumping.current_rounds, amount_to_dump)
+			new_handful.generate_handful(ammo_dumping.default_ammo, ammo_dumping.caliber, amount_to_dump, transferred_handfuls, ammo_dumping.gun_type)
+			ammo_dumping.current_rounds -= transferred_handfuls
+			handle_item_insertion(new_handful, TRUE, user)
+			ammo_dumping.update_icon(-transferred_handfuls)
+
+		playsound(user.loc, "rustle", 15, TRUE, 6)
+		ammo_dumping.update_icon()
 	return TRUE
 
+
+///Despite the name, this is called by the *recipient*. Meant for topping things up with known items -- doesn't run checks on a transferred item beyond whether there's room for it. This one is for storage items.
 /obj/item/storage/proc/dump_into(obj/item/storage/M, mob/user)
 	if(user.action_busy)
 		return
 
-	if(M.contents.len)
-		if(contents.len < storage_slots)
-			to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
-
-			if(!do_after(user, 15, INTERRUPT_ALL, BUSY_ICON_GENERIC))
-				return
-
-			for(var/obj/item/I in M)
-				if(contents.len < storage_slots)
-					M.remove_from_storage(I)
-					handle_item_insertion(I, 1, user) //quiet insertion
-				else
-					break
-			playsound(user.loc, "rustle", 15, 1, 6)
-		else
-			to_chat(user, SPAN_WARNING("[src] is full."))
-	else
+	if(!M.contents.len)
 		to_chat(user, SPAN_WARNING("[M] is empty."))
+		return
+	if(!has_room(M.contents[1])) //Does it have room for the first item to be inserted?
+		to_chat(user, SPAN_WARNING("[src] is full."))
+		return
+	
+	to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
+	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+		return
+	for(var/obj/item/I in M)
+		if(!has_room(I))
+			break
+		M.remove_from_storage(I)
+		handle_item_insertion(I, TRUE, user) //quiet insertion
+		
+	playsound(user.loc, "rustle", 15, TRUE, 6)
 	return TRUE
+
 
 /obj/item/storage/Initialize()
 	. = ..()
@@ -646,6 +653,7 @@ var/list/global/item_storage_box_cache = list()
 
 	if (!(storage_flags & STORAGE_ALLOW_EMPTY))
 		verbs -= /obj/item/storage/verb/empty_verb
+		verbs -= /obj/item/storage/verb/toggle_click_empty
 
 	boxes = new
 	boxes.name = "storage"
@@ -681,7 +689,7 @@ var/list/global/item_storage_box_cache = list()
  */
 /obj/item/storage/proc/watcher_deleted(mob/watcher)
 	SIGNAL_HANDLER
-	hide_from(watcher)
+	storage_close(watcher)
 
 /obj/item/storage/Destroy()
 	for(var/mob/M in content_watchers)
@@ -704,21 +712,17 @@ var/list/global/item_storage_box_cache = list()
 	..()
 
 /obj/item/storage/attack_self(mob/user)
-	//Clicking on itself will empty it, if it has the verb to do that.
-	if (storage_flags & STORAGE_ALLOW_EMPTY)
+	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
+	if(contents.len)
 		empty(user)
 		return
 
 	//Otherwise we'll try to fold it.
-	if ( contents.len )
-		return
-
 	if(!foldable)
 		return
 
 	// Close any open UI windows first
-	for (var/mob/M in content_watchers)
-		close(M)
+	storage_close(user)
 
 	if(ispath(foldable))
 		new foldable(get_turf(src))

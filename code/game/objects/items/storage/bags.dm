@@ -210,9 +210,7 @@
 			S.amount -= stacksize
 		if(!S.amount)
 			qdel(S) // todo: there's probably something missing here
-	orient2hud(user)
-	if(user.s_active)
-		user.s_active.show_to(user)
+	storage_close(user)
 	update_icon()
 
 // Instead of removing

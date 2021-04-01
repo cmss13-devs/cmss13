@@ -9,10 +9,12 @@
 	storage_slots = 1
 	storage_flags = STORAGE_FLAGS_POUCH
 
-
-/obj/item/storage/pouch/update_icon()
+///Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
+/obj/item/storage/pouch/update_icon(flap = TRUE)
 	overlays.Cut()
 	if(!contents.len)
+		return TRUE //For the pistol pouch to know it's empty.
+	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
 	else if(contents.len <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
@@ -39,7 +41,7 @@
 
 /obj/item/storage/pouch/general
 	name = "light general pouch"
-	desc = "A general purpose pouch used to carry small items and ammo magazines."
+	desc = "A general-purpose pouch used to carry small items and ammo magazines."
 	icon_state = "small_drop"
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	bypass_w_limit = list(
@@ -77,7 +79,7 @@
 
 /obj/item/storage/pouch/flamertank
 	name = "fuel tank strap pouch"
-	desc = "Two rings straps that loop around M240 variety napalm tanks. Handle with care."
+	desc = "Two ring straps to loop around M240-pattern napalm tanks. Handle with care."
 	storage_slots = 2
 	icon_state = "fueltank_pouch"
 	storage_flags = STORAGE_FLAGS_POUCH
@@ -91,9 +93,8 @@
 					)
 
 /obj/item/storage/pouch/general/large/m39ap/fill_preset_inventory()
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/pouch/bayonet
 	name = "bayonet sheath"
@@ -107,39 +108,38 @@
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 	var/draw_cooldown = 0
 	var/draw_cooldown_interval = 1 SECONDS
+	var/default_knife_type = /obj/item/weapon/melee/throwing_knife
 
 /obj/item/storage/pouch/bayonet/Initialize()
 	. = ..()
 	for(var/total_storage_slots in 1 to storage_slots)
-		new /obj/item/weapon/melee/throwing_knife(src)
+		new default_knife_type(src)
 
-/obj/item/storage/pouch/bayonet/upp/Initialize()
-	. = ..()
-	for(var/total_storage_slots in 1 to storage_slots)
-		new /obj/item/attachable/bayonet/upp(src)
+/obj/item/storage/pouch/bayonet/upp
+	default_knife_type = /obj/item/attachable/bayonet/upp
 
 /obj/item/storage/pouch/bayonet/handle_item_insertion(obj/item/W, prevent_warning = 0)
 	. = ..()
 	if(.)
-		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/storage/pouch/bayonet/remove_from_storage(obj/item/W, atom/new_location)
 	. = ..()
 	if(.)
-		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/storage/pouch/bayonet/attack_hand(mob/user)
 	if(draw_cooldown < world.time)
 		..()
 		draw_cooldown = world.time + draw_cooldown_interval
-		playsound(src,'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
+		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
 		return 0
 
 /obj/item/storage/pouch/survival
 	name = "survival pouch"
-	desc = "It can contain flashlights, a pill, a crowbar, metal sheets, and some bandages."
+	desc = "It can carry flashlights, a pill, a crowbar, metal sheets, and some bandages."
 	icon_state = "survival"
 	storage_slots = 5
 	max_w_class = SIZE_MEDIUM
@@ -160,7 +160,7 @@
 
 /obj/item/storage/pouch/firstaid
 	name = "first-aid pouch"
-	desc = "It can contain autoinjectors, ointments, and bandages."
+	desc = "It can carry basic autoinjectors, ointments, and bandages."
 	icon_state = "firstaid"
 	storage_slots = 4
 	can_hold = list(
@@ -191,19 +191,61 @@
 
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"
-	desc = "It can contain a pistol. Useful for emergencies."
+	desc = "You could carry a pistol in this; more importantly, you could draw it quickly. Useful for emergencies."
 	icon_state = "pistol"
+	use_sound = null
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver/m44,/obj/item/weapon/gun/flare)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
 
+	///Display code pulled from belt.dm gun belt. Can shave quite a lot off because this pouch can only hold one item at a time.
+	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
+	var/image/gun_underlay //The underlay we will use.
+	var/sheatheSound = 'sound/weapons/gun_pistol_sheathe.ogg'
+	var/drawSound = 'sound/weapons/gun_pistol_draw.ogg'
+	var/icon_x = 0
+	var/icon_y = -3
 
+/obj/item/storage/pouch/pistol/Destroy()
+	gun_underlay = null
+	QDEL_NULL(current_gun)
+	. = ..()
+
+/obj/item/storage/pouch/pistol/can_be_inserted(obj/item/W, stop_messages) //A little more detailed than just 'the pouch is full'.
+	if(length(contents))
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
+		return
+	return ..()
+
+
+/obj/item/storage/pouch/pistol/update_icon(flap = FALSE) //The pistol is an underlay, showing the empty sprite would just look ugly. Parent handles holster flap; gun underlay only needs to be updated if the gun changes.
+	. = ..()
+	if(.) // . = empty pouch
+		if(current_gun) //If the pouch is empty but a gun is recorded, remove its record and the overlay and play a draw sfx.
+			current_gun = null
+			playsound(src, sheatheSound, 15, TRUE)
+			underlays -= gun_underlay
+			gun_underlay = null
+	else
+		if(length(contents) && !current_gun) //If there's something in the pouch but no gun is recorded, add a record and overlay and play a holster sfx.
+			for(var/obj/item/weapon/gun/G in contents)
+				current_gun = G
+			playsound(src, drawSound, 15, TRUE)
+			gun_underlay = image('icons/obj/items/clothing/belts.dmi', current_gun.base_gun_icon)
+			if(!istype(current_gun,/obj/item/weapon/gun/pistol)) //This is a multirole container, and flareguns and *especially* the M44 don't line up with the sprites automatic pistols use.
+				gun_underlay.pixel_x = icon_x + 1
+				gun_underlay.pixel_y = icon_y + 3	
+			else		
+				gun_underlay.pixel_x = icon_x
+				gun_underlay.pixel_y = icon_y
+			underlays += gun_underlay
 
 //// MAGAZINE POUCHES /////
 
 /obj/item/storage/pouch/magazine
 	name = "magazine pouch"
-	desc = "It can contain ammo magazines."
+	desc = "It can carry magazines."
 	icon_state = "medium_ammo_mag"
 	max_w_class = SIZE_MEDIUM
 	storage_slots = 3
@@ -229,7 +271,7 @@
 
 /obj/item/storage/pouch/magazine/large
 	name = "large magazine pouch"
-	desc = "It can contain many ammo magazines."
+	desc = "It can carry many magazines."
 	icon_state = "large_ammo_mag"
 	storage_slots = 4
 
@@ -239,7 +281,7 @@
 
 /obj/item/storage/pouch/magazine/pistol
 	name = "pistol magazine pouch"
-	desc = "It can contain pistol ammo magazines and revolver speedloaders."
+	desc = "It can carry pistol magazines and revolver speedloaders."
 	max_w_class = SIZE_SMALL
 	icon_state = "pistol_mag"
 	storage_slots = 3
@@ -251,81 +293,62 @@
 
 /obj/item/storage/pouch/magazine/pistol/large
 	name = "large pistol magazine pouch"
-	desc = "It can contain many pistol ammo magazines and revolver speedloaders."
+	desc = "It can carry many pistol magazines or revolver speedloaders."
 	storage_slots = 6
 	icon_state = "large_pistol_mag"
 
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
-	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new /obj/item/ammo_magazine/revolver/mateba(src)
-	new /obj/item/ammo_magazine/revolver/mateba(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/revolver/mateba(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mod88/fill_preset_inventory()
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88(src)
-	new /obj/item/ammo_magazine/pistol/mod88(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/pistol/mod88(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_vp78/fill_preset_inventory()
-	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/pistol/vp78(src)
-	new /obj/item/ammo_magazine/pistol/vp78(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/pistol/vp78(src)
 
 /obj/item/storage/pouch/magazine/upp/fill_preset_inventory()
-	new /obj/item/ammo_magazine/rifle/type71(src)
-	new /obj/item/ammo_magazine/rifle/type71(src)
-	new /obj/item/ammo_magazine/rifle/type71(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/pouch/magazine/large/upp/fill_preset_inventory()
-	new /obj/item/ammo_magazine/rifle/type71(src)
-	new /obj/item/ammo_magazine/rifle/type71(src)
-	new /obj/item/ammo_magazine/rifle/type71(src)
-	new /obj/item/ammo_magazine/rifle/type71(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/type71(src)
 
 /obj/item/storage/pouch/magazine/upp_smg/fill_preset_inventory()
-	new /obj/item/ammo_magazine/smg/skorpion(src)
-	new /obj/item/ammo_magazine/smg/skorpion(src)
-	new /obj/item/ammo_magazine/smg/skorpion(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/skorpion(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_m39/fill_preset_inventory()
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
-	new /obj/item/ammo_magazine/smg/m39/ap(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/m39/ap(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_p90/fill_preset_inventory()
-	new /obj/item/ammo_magazine/smg/fp9000(src)
-	new /obj/item/ammo_magazine/smg/fp9000(src)
-	new /obj/item/ammo_magazine/smg/fp9000(src)
-	new /obj/item/ammo_magazine/smg/fp9000(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smg/fp9000(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_lmg/fill_preset_inventory()
-	new /obj/item/ammo_magazine/rifle/lmg(src)
-	new /obj/item/ammo_magazine/rifle/lmg(src)
-	new /obj/item/ammo_magazine/rifle/lmg(src)
-	new /obj/item/ammo_magazine/rifle/lmg(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/lmg(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sniper/fill_preset_inventory()
-	new /obj/item/ammo_magazine/sniper/elite(src)
-	new /obj/item/ammo_magazine/sniper/elite(src)
-	new /obj/item/ammo_magazine/sniper/elite(src)
-	new /obj/item/ammo_magazine/sniper/elite(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/sniper/elite(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_rifle/fill_preset_inventory()
-	new /obj/item/ammo_magazine/rifle/ap(src)
-	new /obj/item/ammo_magazine/rifle/ap(src)
-	new /obj/item/ammo_magazine/rifle/ap(src)
-	new /obj/item/ammo_magazine/rifle/ap(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/ap(src)
 
 /obj/item/storage/pouch/magazine/large/pmc_sg/fill_preset_inventory()
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
-	new /obj/item/ammo_magazine/smartgun/dirty(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/smartgun/dirty(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
-	desc = "It can contain grenades, plastic explosives, mine boxes, and other explosives."
+	desc = "It can carry grenades, plastic explosives, mine boxes, and other explosives."
 	icon_state = "large_explosive"
 	storage_slots = 3
 	max_w_class = SIZE_MEDIUM
@@ -344,18 +367,16 @@
 		return ..()
 
 /obj/item/storage/pouch/explosive/full/fill_preset_inventory()
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
-	new /obj/item/explosive/grenade/HE(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
-	new /obj/item/explosive/plastic(src)
-	new /obj/item/explosive/plastic(src)
-	new /obj/item/explosive/plastic(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/explosive/plastic(src)
 
 /obj/item/storage/pouch/medical
 	name = "medical pouch"
-	desc = "It can contain small medical supplies."
+	desc = "It can carry small medical supplies."
 	icon_state = "medical"
 	storage_slots = 3
 
@@ -473,18 +494,14 @@
 
 /obj/item/storage/pouch/syringe
 	name = "syringe pouch"
-	desc = "It can contain syringes."
+	desc = "It can carry syringes."
 	icon_state = "syringe"
 	storage_slots = 6
 	can_hold = list(/obj/item/reagent_container/syringe)
 
 /obj/item/storage/pouch/syringe/full/fill_preset_inventory()
-	new /obj/item/reagent_container/syringe(src)
-	new /obj/item/reagent_container/syringe(src)
-	new /obj/item/reagent_container/syringe(src)
-	new /obj/item/reagent_container/syringe(src)
-	new /obj/item/reagent_container/syringe(src)
-	new /obj/item/reagent_container/syringe(src)
+	for(var/i = 1 to storage_slots)
+		new /obj/item/reagent_container/syringe(src)
 
 /obj/item/storage/pouch/medkit
 	name = "medkit pouch"
@@ -558,7 +575,7 @@
 			var/uses_left = A.reagents.total_volume / A.amount_per_transfer_from_this
 			uses_left = round(uses_left) == uses_left ? uses_left : round(uses_left) + 1
 			A.uses_left = uses_left
-			playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+			playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 			A.update_icon()
 		return ..()
 	else if(istype(W, /obj/item/reagent_container/hypospray/autoinjector))
@@ -600,7 +617,7 @@
 		return
 
 	O.reagents.trans_to(inner, amt_to_remove)
-	playsound(loc, 'sound/effects/refill.ogg', 25, 1, 3)
+	playsound(loc, 'sound/effects/refill.ogg', 25, TRUE, 3)
 
 	to_chat(user, SPAN_NOTICE("You refill the [src]."))
 	update_icon()
@@ -610,7 +627,9 @@
 	display_contents(user)
 
 /obj/item/storage/pouch/pressurized_reagent_canister/update_icon()
-	..()
+	overlays.Cut()
+	if(length(contents))
+		overlays += "+[icon_state]_full"
 	if(inner)
 		overlays += "+[icon_state]_loaded"
 
@@ -665,7 +684,7 @@
 
 /obj/item/storage/pouch/flare
 	name = "flare pouch"
-	desc = "A pouch designed to hold flares. Refillable with a M94 flare pack."
+	desc = "A pouch designed to hold flares. Refillable with an M94 flare pack."
 	max_w_class = SIZE_SMALL
 	storage_slots = 8
 	max_storage_space = 8

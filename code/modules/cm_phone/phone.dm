@@ -479,7 +479,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		reset_tether()
 
 /obj/item/phone/proc/do_zlevel_check()
-	if(!loc.z || !attached_to.z)
+	if(!attached_to || !loc.z || !attached_to.z)
 		return FALSE
 
 	if(zlevel_transfer)

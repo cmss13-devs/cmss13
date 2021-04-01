@@ -1303,8 +1303,9 @@
 /obj/structure/transmitter{
 	dir = 4;
 	name = "Starboard Railgun Control Telephone";
+	phone_category = "Command";
 	phone_id = "Starboard Railgun Control";
-	pixel_x = -26
+	pixel_x = -16
 	},
 /obj/item/device/binoculars,
 /turf/open/floor/almayer{
@@ -7016,8 +7017,9 @@
 /obj/structure/transmitter{
 	dir = 8;
 	name = "OT Telephone";
+	phone_category = "Almayer";
 	phone_id = "Ordnance Tech";
-	pixel_x = 23
+	pixel_x = 14
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -9666,8 +9668,9 @@
 /obj/structure/transmitter{
 	dir = 4;
 	name = "Bravo Overwatch Telephone";
+	phone_category = "Command";
 	phone_id = "Bravo Overwatch";
-	pixel_x = -28;
+	pixel_x = -16;
 	pixel_y = -4
 	},
 /turf/open/floor/almayer{
@@ -10957,8 +10960,9 @@
 /obj/structure/transmitter{
 	dir = 4;
 	name = "Charlie Overwatch Telephone";
+	phone_category = "Command";
 	phone_id = "Charlie Overwatch";
-	pixel_x = -26;
+	pixel_x = -16;
 	pixel_y = 6
 	},
 /turf/open/floor/almayer{
@@ -14577,6 +14581,7 @@
 /obj/structure/surface/rack,
 /obj/structure/transmitter{
 	name = "Brig Telephone";
+	phone_category = "Almayer";
 	phone_id = "Brig";
 	pixel_y = 30
 	},
@@ -18210,6 +18215,7 @@
 /obj/structure/machinery/computer/dropship_weapons/dropship2,
 /obj/structure/transmitter{
 	name = "Normandy Telephone";
+	phone_category = "Dropship";
 	phone_id = "Normandy";
 	pixel_x = 14;
 	pixel_y = 14
@@ -18287,6 +18293,7 @@
 /obj/structure/machinery/computer/dropship_weapons/dropship1,
 /obj/structure/transmitter{
 	name = "Alamo Telephone";
+	phone_category = "Dropship";
 	phone_id = "Alamo";
 	pixel_x = 14;
 	pixel_y = 14
@@ -22638,8 +22645,9 @@
 /obj/structure/transmitter{
 	dir = 4;
 	name = "Port Railgun Control Telephone";
+	phone_category = "Command";
 	phone_id = "Port Railgun Control";
-	pixel_x = -26
+	pixel_x = -16
 	},
 /obj/item/storage/fancy/cigarettes/emeraldgreen,
 /turf/open/floor/almayer{
@@ -35003,8 +35011,9 @@
 /obj/structure/transmitter{
 	dir = 4;
 	name = "Kitchen Telephone";
+	phone_category = "Almayer";
 	phone_id = "Kitchen";
-	pixel_x = -26;
+	pixel_x = -16;
 	pixel_y = 6
 	},
 /turf/open/floor/almayer{
@@ -38926,7 +38935,8 @@
 "ecx" = (
 /obj/structure/transmitter{
 	name = "Researcher Office Telephone";
-	phone_id = "Researcher Office";
+	phone_category = "Almayer";
+	phone_id = "Research";
 	pixel_y = 29
 	},
 /turf/open/floor/strata{
@@ -40211,8 +40221,9 @@
 /obj/structure/transmitter{
 	dir = 4;
 	name = "Delta Overwatch Telephone";
+	phone_category = "Command";
 	phone_id = "Delta Overwatch";
-	pixel_x = -26;
+	pixel_x = -16;
 	pixel_y = 6
 	},
 /turf/open/floor/almayer{
@@ -42324,8 +42335,9 @@
 /obj/structure/transmitter{
 	dir = 4;
 	name = "Commanding Officer's Office Telephone";
+	phone_category = "Offices";
 	phone_id = "Commanding Officer's Office";
-	pixel_x = -26;
+	pixel_x = -16;
 	pixel_y = 6
 	},
 /turf/open/floor/strata{
@@ -42915,8 +42927,9 @@
 /obj/structure/transmitter{
 	dir = 4;
 	name = "Alpha Overwatch Telephone";
+	phone_category = "Command";
 	phone_id = "Alpha Overwatch";
-	pixel_x = -28;
+	pixel_x = -16;
 	pixel_y = -4
 	},
 /obj/item/ashtray/glass,
@@ -47744,6 +47757,7 @@
 	},
 /obj/structure/transmitter{
 	name = "CMO Office Telephone";
+	phone_category = "Offices";
 	phone_id = "CMO Office";
 	pixel_y = 29
 	},
@@ -52778,6 +52792,7 @@
 /obj/structure/surface/table/woodentable,
 /obj/structure/transmitter{
 	name = "CL Office Telephone";
+	phone_category = "Almayer";
 	phone_id = "CL Office";
 	pixel_x = -8;
 	pixel_y = 3
@@ -55704,6 +55719,7 @@
 /obj/structure/machinery/iv_drip,
 /obj/structure/transmitter{
 	name = "Medical Telephone";
+	phone_category = "Almayer";
 	phone_id = "Medical";
 	pixel_y = 30
 	},
@@ -58660,6 +58676,7 @@
 "rTY" = (
 /obj/structure/transmitter{
 	name = "Requisition Telephone";
+	phone_category = "Almayer";
 	phone_id = "Requisition";
 	pixel_y = 30
 	},
@@ -60491,6 +60508,7 @@
 	},
 /obj/structure/transmitter{
 	name = "CE Office Telephone";
+	phone_category = "Offices";
 	phone_id = "CE Office";
 	pixel_x = -8;
 	pixel_y = 29
@@ -64713,6 +64731,7 @@
 "wbX" = (
 /obj/structure/transmitter{
 	name = "Combat Information Center Telephone";
+	phone_category = "Command";
 	phone_id = "Combat Information Center";
 	pixel_y = 29
 	},

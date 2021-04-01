@@ -350,3 +350,6 @@
 #define COMSIG_SHUTTLE_SETMODE "shuttle_setmode"
 /// shuttle crushing something
 #define COMSIG_MOVABLE_SHUTTLE_CRUSH "movable_shuttle_crush"
+
+/// from /obj/structure/transmitter/update_icon()
+#define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"

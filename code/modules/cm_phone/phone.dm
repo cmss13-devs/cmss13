@@ -5,7 +5,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "wall_phone"
 
+	var/phone_category = "Uncategorised"
+	var/phone_color = "white"
 	var/phone_id = "Telephone"
+	var/phone_icon
 
 	var/obj/item/phone/attached_to
 	var/atom/tether_holder
@@ -20,16 +23,17 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/range = 7
 
 	var/enabled = TRUE
+	var/callable = TRUE
 
-/obj/structure/transmitter/update_icon()
-	. = ..()
-	if(attached_to.loc != src)
-		icon_state = "wall_phone_ear"
-	else
-		icon_state = "wall_phone"
+	var/base_icon_state
+
+/obj/structure/transmitter/hidden
+	callable = FALSE
 
 /obj/structure/transmitter/Initialize(mapload, ...)
 	. = ..()
+	base_icon_state = icon_state
+
 	attached_to = new phone_type(src)
 	RegisterSignal(attached_to, COMSIG_PARENT_PREQDELETED, .proc/override_delete)
 	update_icon()
@@ -38,6 +42,18 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		return
 
 	GLOB.transmitters += src
+
+/obj/structure/transmitter/update_icon()
+	. = ..()
+	SEND_SIGNAL(src, COMSIG_TRANSMITTER_UPDATE_ICON)
+	if(attached_to.loc != src)
+		icon_state = "[base_icon_state]_ear"
+		return
+
+	if(caller)
+		icon_state = "[base_icon_state]_ring"
+	else
+		icon_state = base_icon_state
 
 /obj/structure/transmitter/proc/override_delete()
 	SIGNAL_HANDLER
@@ -55,8 +71,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 /proc/get_transmitters()
 	var/list/phone_list = list()
 
-	for(var/obj/structure/transmitter/T in GLOB.transmitters)
-		if(TRANSMITTER_UNAVAILABLE(T)) // Phone not available
+	for(var/t in GLOB.transmitters)
+		var/obj/structure/transmitter/T = t
+		if(TRANSMITTER_UNAVAILABLE(T) || !T.callable) // Phone not available
 			continue
 
 		var/id = T.phone_id
@@ -66,9 +83,79 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			num_id++
 
 		T.phone_id = id
-		phone_list += list("[id]" = T)
+		phone_list[id] = T
 
 	return phone_list
+
+/obj/structure/transmitter/ui_status(mob/user, datum/ui_state/state)
+	. = ..()
+	if(TRANSMITTER_UNAVAILABLE(src))
+		return UI_CLOSE
+
+/obj/structure/transmitter/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	if(TRANSMITTER_UNAVAILABLE(src))
+		return
+
+	if(!ishuman(usr))
+		return
+
+	var/mob/living/carbon/human/user = usr
+
+	switch(action)
+		if("call_phone")
+			call_phone(user, params["phone_id"])
+			. = TRUE
+			SStgui.close_uis(src)
+
+	update_icon()
+
+/obj/structure/transmitter/ui_static_data(mob/user)
+	. = list()
+
+	.["available_transmitters"] = get_transmitters() - list(phone_id)
+	var/list/transmitters = list()
+	for(var/i in GLOB.transmitters)
+		var/obj/structure/transmitter/T = i
+		transmitters += list(list(
+			"phone_category" = T.phone_category,
+			"phone_color" = T.phone_color,
+			"phone_id" = T.phone_id,
+			"phone_icon" = T.phone_icon
+		))
+
+	.["transmitters"] = transmitters
+
+/obj/structure/transmitter/proc/call_phone(var/mob/living/carbon/human/user, calling_phone_id)
+	var/list/transmitters = get_transmitters()
+	transmitters -= phone_id
+
+	if(!length(transmitters) || !(calling_phone_id in transmitters))
+		to_chat(user, SPAN_PURPLE("[icon2html(src, user)] No transmitters could be located to call!"))
+		return
+
+	var/obj/structure/transmitter/T = transmitters[calling_phone_id]
+	if(!istype(T) || QDELETED(T))
+		transmitters -= T
+		CRASH("Qdelled/improper atom inside transmitters list! (istype returned: [istype(T)], QDELETED returned: [QDELETED(T)])")
+
+	if(TRANSMITTER_UNAVAILABLE(T))
+		return
+
+	calling = T
+	T.caller = src
+	T.update_icon()
+
+	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
+	playsound(get_turf(user), "rtb_handset")
+
+	START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSobj, T)
+
+	user.put_in_active_hand(attached_to)
 
 /obj/structure/transmitter/attack_hand(mob/user)
 	. = ..()
@@ -83,51 +170,29 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		return
 
 	if(!get_calling_phone())
-		var/list/transmitters = get_transmitters()
-		transmitters -= phone_id
+		tgui_interact(user)
+		return
 
-		if(!transmitters.len)
-			to_chat(user, SPAN_PURPLE("[icon2html(src, user)] No transmitters could be located to call!"))
-			return
+	var/obj/structure/transmitter/T = get_calling_phone()
 
-		var/to_call = tgui_input_list(user, "Select a station to call", "Call list", transmitters)
+	if(T.attached_to && ismob(T.attached_to.loc))
+		var/mob/M = T.attached_to.loc
+		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has picked up."))
 
-		if(!to_call)
-			return
+	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Picked up a call from [T.phone_id]."))
+	playsound(get_turf(user), "rtb_handset")
 
-		var/obj/structure/transmitter/T = transmitters[to_call]
-		if(!istype(T) || QDELETED(T))
-			transmitters -= T
-			CRASH("Qdelled/improper atom inside transmitters list! (istype returned: [istype(T)], QDELETED returned: [QDELETED(T)])")
-
-		if(TRANSMITTER_UNAVAILABLE(T))
-			return
-
-		calling = T
-		T.caller = src
-
-		to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [to_call].."))
-		playsound(get_turf(user), "rtb_handset")
-
-		START_PROCESSING(SSobj, src)
-		START_PROCESSING(SSobj, T)
-	else
-		var/obj/structure/transmitter/T = get_calling_phone()
-
-		if(T.attached_to && ismob(T.attached_to.loc))
-			var/mob/M = T.attached_to.loc
-			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has picked up."))
-
-		to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Picked up a call from [T.phone_id]."))
-		playsound(get_turf(user), "rtb_handset")
-
-	var/mob/living/carbon/human/H = user
-
-	H.put_in_active_hand(attached_to)
-
+	user.put_in_active_hand(attached_to)
 	update_icon()
 
+
 #undef TRANSMITTER_UNAVAILABLE
+
+/obj/structure/transmitter/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PhoneMenu", phone_id)
+		ui.open()
 
 /obj/structure/transmitter/proc/set_tether_holder(var/atom/A)
 	tether_holder = A
@@ -147,14 +212,16 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You have hung up on [T.phone_id]."))
 
 	if(calling)
-		STOP_PROCESSING(SSobj, src)
 		calling.caller = null
 		calling = null
 
 	if(caller)
-		STOP_PROCESSING(SSobj, src)
 		caller.calling = null
 		caller = null
+
+	if(T)
+		T.update_icon()
+		STOP_PROCESSING(SSobj, T)
 
 	STOP_PROCESSING(SSobj, src)
 
@@ -193,9 +260,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		playsound(get_turf(M), "rtb_handset", 100, FALSE, 7)
 
 	attached_to.forceMove(src)
-	update_icon()
-
 	reset_call()
+
+	update_icon()
 
 /obj/structure/transmitter/proc/get_calling_phone()
 	if(calling)
@@ -236,6 +303,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 			attached_to = null
 
 	GLOB.transmitters -= src
+	SStgui.close_uis(src)
 
 	reset_call()
 	return ..()
@@ -251,6 +319,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	var/datum/effects/tethering/tether_effect
 
 	var/raised = FALSE
+	var/zlevel_transfer = FALSE
+	var/zlevel_transfer_timer = TIMER_ID_NULL
+	var/zlevel_transfer_timeout = 5 SECONDS
 
 /obj/item/phone/Initialize(mapload)
 	. = ..()
@@ -317,7 +388,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if(!QDESTROYING(tether_effect))
 			qdel(tether_effect)
 		tether_effect = null
-	on_beam_removed()
+	if(!do_zlevel_check())
+		on_beam_removed()
 
 /obj/item/phone/attack_hand(mob/user)
 	if(attached_to && get_dist(user, attached_to) > attached_to.range)
@@ -381,7 +453,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 		var/obj/item/device/radio/R = H.wear_ear
 		if(istype(R))
-			R.on = TRUE
+			R.on = FALSE
 
 	H.update_inv_r_hand()
 	H.update_inv_l_hand()
@@ -405,3 +477,37 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	. = ..()
 	if(.)
 		reset_tether()
+
+/obj/item/phone/proc/do_zlevel_check()
+	if(!loc.z || !attached_to.z)
+		return FALSE
+
+	if(zlevel_transfer)
+		if(loc.z == attached_to.z)
+			zlevel_transfer = FALSE
+			if(zlevel_transfer_timer)
+				deltimer(zlevel_transfer_timer)
+			UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
+			return FALSE
+		return TRUE
+
+	if(attached_to && loc.z != attached_to.z)
+		zlevel_transfer = TRUE
+		zlevel_transfer_timer = addtimer(CALLBACK(src, .proc/try_doing_tether), zlevel_transfer_timeout, TIMER_UNIQUE|TIMER_STOPPABLE)
+		RegisterSignal(attached_to, COMSIG_MOVABLE_MOVED, .proc/transmitter_move_handler)
+		return TRUE
+	return FALSE
+
+/obj/item/phone/proc/transmitter_move_handler(var/datum/source)
+	SIGNAL_HANDLER
+	zlevel_transfer = FALSE
+	if(zlevel_transfer_timer)
+		deltimer(zlevel_transfer_timer)
+	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
+	reset_tether()
+
+/obj/item/phone/proc/try_doing_tether()
+	zlevel_transfer_timer = TIMER_ID_NULL
+	zlevel_transfer = FALSE
+	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
+	reset_tether()

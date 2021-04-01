@@ -23,39 +23,36 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 
 /datum/controller/subsystem/database_query_manager
 	name          = "Database QM"
-	wait		  = 1 // CALL US AS OFTEN AS YOU CAN, GAME!
+	wait		  = 1
 	init_order    = SS_INIT_DATABASE
-	priority      = SS_PRIORITY_DATABASE
-	runlevels = RUNLEVELS_DEFAULT|RUNLEVEL_LOBBY
+	priority      = SS_PRIORITY_DATABASE // Low prio SS_TICKER
+	flags         = SS_TICKER
+
 	var/datum/db/connection/connection
 	var/datum/db/connection_settings/settings
-	var/list/datum/db/query_response/queries
 
-	var/list/datum/db/query_response/all_queries
-	var/list/datum/db/query_response/rejected_queries
-
-	var/list/datum/db/query_response/currentrun
+	/// Maximum amount of queries that can be ran concurrently
+	var/max_concurrent_queries = 25
+	/// Queries currently being handled by database driver
+	var/list/datum/db/query_response/queries_active
+	/// Queries left to handle during controller firing
+	var/list/datum/db/query_response/queries_current
+	/// Queries pending execution, mapped to complete arguments
+	var/list/datum/db/query_response/queries_standby
+	/// Queries pending execution that will be handled this controller firing
+	var/list/datum/db/query_response/queries_new
 
 	var/list/query_texts
-
 	var/in_progress = 0
 	var/in_callback = 0
-
-	var/in_progress_tally = 0
-	var/in_callback_tally = 0
-
 	var/last_query_id = 0
 
-	var/debug_mode = FALSE
-
 /datum/controller/subsystem/database_query_manager/New()
-	queries = list()
-	currentrun = list()
-	all_queries = list()
-	rejected_queries = list()
+	queries_active = list()
+	queries_current = list()
+	queries_standby = list()
 	var/list/result = loadsql("config/dbconfig.txt")
 	settings = connection_settings_from_config(result)
-	debug_mode = settings.debug_mode
 	NEW_SS_GLOBAL(SSdatabase)
 
 /datum/controller/subsystem/database_query_manager/Initialize()
@@ -65,48 +62,78 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 
 /datum/controller/subsystem/database_query_manager/stat_entry(msg)
 	var/text = (connection && connection.status == DB_CONNECTION_READY) ? ("READY") : ("PREPPING")
-	msg = "[text], Q:[queries.len]; P:[currentrun.len]; C:[in_callback]"
+	msg = "[text], AQ:[queries_active.len]; SQ:[queries_standby.len]; P:[queries_current.len]; C:[in_callback]"
 	return ..()
 
 /datum/controller/subsystem/database_query_manager/fire(resumed = FALSE)
-	if (!resumed)
-		connection.keep()
-		currentrun = queries.Copy()
-		in_progress_tally = 0
-		in_callback_tally = 0
 	if(connection.status != DB_CONNECTION_READY)
 		return
-	while (currentrun.len)
-		var/datum/db/query_response/Q = currentrun[currentrun.len]
-		if (!Q || QDELETED(Q))
-			queries -= Q
-			continue
-		in_progress_tally++
-		if(Q.process())
-			queries -= Q
-			if(Q.status == DB_QUERY_BROKEN)
-				rejected_queries += Q
-			in_callback_tally++
-		currentrun.len--
-		if (MC_TICK_CHECK)
+
+	if(!resumed)
+		if(!length(queries_active) && !length(queries_standby))
 			return
-	in_progress = in_progress_tally
-	in_callback = in_callback_tally
+		connection.keep()
+		queries_current = queries_active.Copy()
+		queries_new = null
+
+	// First handle the already running queries
+	while(length(queries_current))
+		var/datum/db/query_response/Q = popleft(queries_current)
+		if(!process_query(Q))
+			queries_active -= Q
+		if(MC_TICK_CHECK)
+			return
+
+	// Then strap on extra new queries as possible
+	if(isnull(queries_new))
+		if(!length(queries_standby))
+			return
+		queries_new = queries_standby.Copy(1, min(length(queries_standby), max_concurrent_queries) + 1)
+
+	while(length(queries_new) && length(queries_active) < max_concurrent_queries)
+		var/datum/db/query_response/Q = queries_new[1]
+		var/list/ar = queries_new[Q]
+		queries_standby.Remove(Q)
+		queries_new.Remove(Q)
+		create_queued_query(Q, ar)
+		if(MC_TICK_CHECK)
+			return
+
+/// Helper proc for query processing used in fire() - returns TRUE if not done yet
+/datum/controller/subsystem/database_query_manager/proc/process_query(datum/db/query_response/Q)
+	PRIVATE_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	if(QDELETED(Q))
+		return FALSE
+	if(Q.process(world.tick_lag))
+		queries_active -= Q
+		return FALSE
+	return TRUE
+
+/// Helper proc for handling queued new queries
+/datum/controller/subsystem/database_query_manager/proc/create_queued_query(datum/db/query_response/Q, qtargs)
+	PRIVATE_PROC(TRUE)
+	SHOULD_NOT_SLEEP(TRUE)
+	RETURN_TYPE(/datum/db/query)
+	if(!Q.unique_query_id)
+		Q.unique_query_id = last_query_id++
+	var/datum/db/query/RQ
+	if(islist(qtargs))
+		RQ = connection.query(arglist(qtargs))
+	else
+		RQ = connection.query(qtargs)
+	Q.query = RQ
+	queries_active += Q
+	return RQ
 
 /datum/controller/subsystem/database_query_manager/proc/create_query(query_text, success_callback, fail_callback, unique_query_id)
 	var/datum/db/query_response/qr = new()
-	qr.query = connection.query(query_text)
 	qr.query_text = query_text
 	qr.success_callback = success_callback
 	qr.fail_callback = fail_callback
 	if(unique_query_id)
 		qr.unique_query_id = unique_query_id
-	else
-		qr.unique_query_id = last_query_id
-		last_query_id++
-	queries += qr
-	if(debug_mode)
-		all_queries += qr
+	queries_standby[qr] = query_text
 
 // if DB supports this
 /datum/controller/subsystem/database_query_manager/proc/create_parametric_query(query_text, parameters, success_callback, fail_callback, unique_query_id)
@@ -115,18 +142,12 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	prs.Add(query_text)
 	if(parameters)
 		prs.Add(parameters)
-	qr.query = connection.query(arglist(prs))
 	qr.query_text = query_text
 	qr.success_callback = success_callback
 	qr.fail_callback = fail_callback
 	if(unique_query_id)
 		qr.unique_query_id = unique_query_id
-	else
-		qr.unique_query_id = last_query_id
-		last_query_id++
-	queries += qr
-	if(debug_mode)
-		all_queries += qr
+	queries_standby[qr] = prs
 
 // Do not use this if you don't know why this exists
 /datum/controller/subsystem/database_query_manager/proc/create_query_sync(query_text, success_callback, fail_callback)
@@ -135,8 +156,6 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	qr.query_text = query_text
 	qr.success_callback = success_callback
 	qr.fail_callback = fail_callback
-	if(debug_mode)
-		all_queries += qr
 	UNTIL(qr.process())
 	return qr
 
@@ -150,13 +169,8 @@ var/datum/controller/subsystem/database_query_manager/SSdatabase
 	qr.query_text = query_text
 	qr.success_callback = success_callback
 	qr.fail_callback = fail_callback
-	if(debug_mode)
-		all_queries += qr
 	UNTIL(qr.process())
 	return qr
-
-/datum/controller/subsystem/database_query_manager/proc/get_query_text(qid)
-	to_chat(usr, queries[qid].query)
 
 /proc/loadsql(filename)
 	var/list/Lines = file2list(filename)

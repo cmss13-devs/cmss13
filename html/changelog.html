@@ -77,6 +77,31 @@
 			<ul class="changes bgimages16">
 				<li class="bugfix">Deconstructing sandbag barricades once again yields correct quantity of sandbags.</li>
 			</ul>
+			<h3 class="author">Vanagandr updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Numerous changes to storage items, mostly cosmetic.</li>
+				<li class="rscadd">Accessing a storage item now visibly opens it, if it has open/close sprites. Closing the inventory window also closes the item. This applies to backpacks, satchels, belts, pouches, G8s, first-aid kits, pill bottles, and the vehicle internal storage locker. Looks pretty good generally; a bit weird on first aid kits, but the consistency is worth it I think.</li>
+				<li class="rscdel">An item that can't be dumped out will no longer show an unusable Toggle Tile Dumping verb.</li>
+				<li class="tweak">Attempting to empty an already empty item now fails. Didn't make sense you could keep dumping it out over and over when there was nothing in it.</li>
+				<li class="tweak">Activating a storage item in hand will attempt to empty it automatically, if that's possible. If it's empty and can be folded, activating it will attempt to fold it.</li>
+				<li class="tweak">You can no longer spam storage opening sounds.</li>
+				<li class="tweak">Inventory storage now closes when you die, to prevent cute bugs with items that suddenly pop closed when the owner finally gets around to ghosting or logging out.</li>
+				<li class="tweak">Opening/closing vehicle storage lockers plays SFX.</li>
+				<li class="tweak">Renamed storage 'close()' proc to 'storage_close()' so that looking for the damned thing in the code isn't like pulling teeth.</li>
+				<li class="rscadd">You can now dump pills from one pill bottle to another. Just click on one while holding the one you want to dump out.</li>
+				<li class="imageadd">Adds open/closed overlays for pill bottles. Also shows when empty.</li>
+				<li class="rscadd">The pistol pouch now visually displays holstered guns.</li>
+				<li class="tweak">The UPP knife pouch spawned with 10 knives but could only hold 5. Modified it to be loaded with 5 UPP bayonets instead of the usual throwing knives, in line with what appeared to be the original intention.</li>
+				<li class="tweak">Gunbelts adjusted - ones that can take both automatic pistols and the M44 now use different sprite coords for each, vastly improving appearance. Tweaked mortarbelt base coords.</li>
+				<li class="tweak">Extended when-equipped mouse opacity changes (letting a click anywhere on its 32x32 area count as a direct click) on belts to include belts worn on armour (gunbelt only, I believe) and the G8 pouch generally, which for whatever reason is not actually a Belt-type item.</li>
+				<li class="rscadd">Lockable backpacks open when clicked like other packs, and when doing so display an unlocked overlay whether locked or not.</li>
+				<li class="bugfix">Fixed the Smartpack not properly displaying contents overlays.</li>
+				<li class="bugfix">Fixed the delay in opening a worn backpack running twice.</li>
+				<li class="bugfix">Fixed dead people being able to spam attempts to empty inventory items. It didn't dump out, but did send messages.</li>
+				<li class="bugfix">Emptying a magazine while holding it in your hand now updates its on-mob sprite, if it has one.</li>
+				<li class="tweak">Floorbots and secure storage code tweaked and cleaned up a little.</li>
+				<li class="spellcheck">adjusted description text for many pouches, backpacks, belts, scabbards. Particularly some belts where the M276 description had been copied but insufficiently tweaked. Also fixes a couple typos elsewhere.</li>
+			</ul>
 			<h3 class="author">Waltermeldron updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Moved the phone UI to a separate TGUI panel.</li>

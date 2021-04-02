@@ -188,6 +188,24 @@
 	remove_from_missing_pred_gear(src)
 	return ..()
 
+/obj/item/clothing/cape/eldercape/verb/recolor()
+	set name = "Dye Cape"
+	set desc = "Allows you to add a custom color to your cape. Single use."
+	set src in usr
+
+	if(color)
+		to_chat(usr, "Your cape is already dyed!")
+		return
+
+	var/new_color = input(usr, "Choose your cape's colour. \nMeme colours may result in action taken by the council. \nSINGLE USE ONLY.", "Dye your cape") as color|null
+	if(!new_color)
+		return
+
+	color = new_color
+	log_game("[key_name(usr)] has changed their cape color to '[color]'")
+	icon_state = "cape_elder_n"
+	to_chat(usr, "Your cape has been dyed!")
+
 /obj/item/clothing/shoes/yautja
 	name = "clan greaves"
 	icon_state = "y-boots1"

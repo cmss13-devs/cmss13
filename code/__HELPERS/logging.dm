@@ -62,7 +62,7 @@
 	GLOB.STUI?.processing |= STUI_LOG_DEBUG
 	for(var/client/C in GLOB.admins)
 		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
-			to_chat(C, "DEBUG: [text]")
+			to_chat(C, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
 
 
 /proc/log_game(text)

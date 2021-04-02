@@ -59,6 +59,9 @@
 
 	var/time_to_live = 10
 
+/obj/effect/xenomorph/spray/no_stun
+	stun_duration = 0
+
 /obj/effect/xenomorph/spray/Initialize(mapload, new_source_name, mob/new_source_mob, var/hive) //Self-deletes
 	. = ..()
 
@@ -205,6 +208,9 @@
 	fire_level_to_extinguish = 18
 	time_to_live = 3 SECONDS
 	// Stuns for 2 seconds, lives for 3 seconds. Seems to stun longer than it lives for at 2 seconds
+
+/obj/effect/xenomorph/spray/strong/no_stun
+	stun_duration = 0
 
 /obj/effect/xenomorph/spray/weak/apply_spray(mob/living/carbon/M)
 	if(ishuman(M))

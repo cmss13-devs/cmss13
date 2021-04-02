@@ -5,9 +5,9 @@
 
 	flags = TREE_FLAG_XENO
 
-	required_points = 25
+	required_points = 30
 	tier = /datum/tier/three
-	var/acid_damage_mult = 2
+	var/acid_damage_mult = 3
 
 /datum/tech/xeno/acidic_blood/ui_static_data(mob/user)
 	. = ..()

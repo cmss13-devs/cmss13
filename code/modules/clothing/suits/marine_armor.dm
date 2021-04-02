@@ -831,9 +831,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		COMSIG_MOB_FIRED_GUN,
 		COMSIG_MOB_FIRED_GUN_ATTACHMENT)
 		, .proc/fade_in)
-	RegisterSignal(H, COMSIG_MOB_DEATH, .proc/deactivate_camouflage)
-	RegisterSignal(H, COMSIG_HUMAN_EXTINGUISH, .proc/deactivate_camouflage)
-	RegisterSignal(H, COMSIG_MOB_GETTING_UP, .proc/fix_density)
+	RegisterSignal(H, list(
+		COMSIG_MOB_DEATH,
+		COMSIG_HUMAN_EXTINGUISH
+	), .proc/deactivate_camouflage)
+	RegisterSignal(H, COMSIG_MOB_POST_UPDATE_CANMOVE, .proc/fix_density)
 	ghillie_movement = new /datum/event_handler/ghillie_movement()
 	ghillie_movement.gs = src
 	camo_active = TRUE
@@ -860,23 +862,28 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	if(!camo_active)
 		return
 
-	H.visible_message(SPAN_DANGER("[H]'s camouflage fails!"), SPAN_WARNING("Your camouflage fails!"), max_distance = 4)
+	UnregisterSignal(H, list(
+		COMSIG_MOB_FIRED_GUN,
+		COMSIG_MOB_FIRED_GUN_ATTACHMENT,
+		COMSIG_MOB_DEATH,
+		COMSIG_MOB_POST_UPDATE_CANMOVE,
+		COMSIG_HUMAN_EXTINGUISH
+	))
 
 	camo_active = FALSE
 	animate(H, alpha = initial(H.alpha), flags = ANIMATION_END_NOW)
 	H.FF_hit_evade = initial(H.FF_hit_evade)
-	H.density = initial(H.density)
 	H.remove_movement_handler(ghillie_movement)
-	UnregisterSignal(H, COMSIG_MOB_FIRED_GUN)
-	UnregisterSignal(H, COMSIG_MOB_FIRED_GUN_ATTACHMENT)
-	UnregisterSignal(H, COMSIG_MOB_DEATH)
-	UnregisterSignal(H, COMSIG_MOB_GETTING_UP)
-	UnregisterSignal(H, COMSIG_HUMAN_EXTINGUISH)
+	if(!H.lying)
+		H.density = TRUE
+	H.update_canmove()
 
 	var/datum/mob_hud/security/advanced/SA = huds[MOB_HUD_SECURITY_ADVANCED]
 	SA.add_to_hud(H)
 	var/datum/mob_hud/xeno_infection/XI = huds[MOB_HUD_XENO_INFECTION]
 	XI.add_to_hud(H)
+
+	H.visible_message(SPAN_DANGER("[H]'s camouflage fails!"), SPAN_WARNING("Your camouflage fails!"), max_distance = 4)
 
 /obj/item/clothing/suit/storage/marine/ghillie/proc/fade_in(mob/user)
 	SIGNAL_HANDLER

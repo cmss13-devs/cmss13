@@ -849,6 +849,15 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new_gun.on_enter_storage(src)
 
+/obj/item/storage/belt/gun/mateba/admiral/impact/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new_gun.on_enter_storage(src)
+
 /obj/item/storage/belt/gun/mateba/admiral/santa/fill_preset_inventory()
 	var/obj/item/weapon/gun/revolver/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral/santa(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)

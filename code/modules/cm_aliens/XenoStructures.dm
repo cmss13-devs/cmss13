@@ -722,14 +722,18 @@
 	if(!active)
 		attack_hand(M)
 
+/obj/item/explosive/grenade/alien/verb_pickup()
+	if(isXeno(usr))
+		attack_alien(usr)
+	return
+
 /obj/item/explosive/grenade/alien/acid
 	name = "acid grenade"
 	desc = "Sprays acid projectiles outwards when detonated."
 
 	color = "#00ff00"
 
-	var/range = 2
-	var/acid_type = /obj/effect/xenomorph/spray/weak
+	var/range = 3
 
 /obj/item/explosive/grenade/alien/acid/get_projectile_hit_boolean(obj/item/projectile/P)
 	return FALSE
@@ -743,7 +747,6 @@
 		return
 
 	E.range = range
-	E.acid_type = acid_type
 	E.hivenumber = hivenumber
 	qdel(src)
 
@@ -751,7 +754,7 @@
 /datum/automata_cell/acid
 	neighbor_type = NEIGHBORS_NONE
 
-	var/obj/effect/xenomorph/spray/acid_type = /obj/effect/xenomorph/spray/weak
+	var/obj/effect/xenomorph/spray/acid_type = /obj/effect/xenomorph/spray/strong/no_stun
 
 	// Which direction is the explosion traveling?
 	// Note that this will be null for the epicenter
@@ -802,7 +805,18 @@
 			E.range = range - 1
 			// Set the direction the explosion is traveling in
 			E.direction = dir
-			E.acid_type = /obj/effect/xenomorph/spray/weak
+
+			if(dir in diagonals)
+				E.range -= 1
+
+			switch(E.range)
+				if(-INFINITY to 0)
+					E.acid_type = /obj/effect/xenomorph/spray/weak
+				if(1)
+					E.acid_type = /obj/effect/xenomorph/spray/no_stun
+				if(2 to INFINITY)
+					E.acid_type = /obj/effect/xenomorph/spray/strong/no_stun
+
 			E.hivenumber = hivenumber
 
 	// We've done our duty, now die pls

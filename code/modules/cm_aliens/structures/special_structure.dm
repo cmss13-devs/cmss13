@@ -58,7 +58,7 @@
 	if(!linked_hive.add_special_structure(src))
 		return INITIALIZE_HINT_QDEL
 
-	fast_objects.Add(src)
+	START_PROCESSING(SSfastobj, src)
 	update_icon()
 
 /obj/effect/alien/resin/special/Destroy()
@@ -67,7 +67,7 @@
 		if(linked_hive.living_xeno_queen)
 			xeno_message("Hive: \A [name] has been destroyed at [sanitize(get_area(src))]!", 3, linked_hive.hivenumber)
 	linked_hive = null
-	fast_objects.Remove(src)
+	STOP_PROCESSING(SSfastobj, src)
 
 	for(var/obj/effect/build_blocker/SP in blocks)
 		blocks -= SP

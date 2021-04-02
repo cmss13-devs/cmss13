@@ -61,7 +61,7 @@
 	description = "Quickly puts an item in the best slot available"
 	keybind_signal = COMSIG_KB_HUMAN_QUICK_EQUIP_DOWN
 
-/datum/keybinding/human/quick_equip_tertiary/down(client/user)
+/datum/keybinding/human/quick_equip_inventory/down(client/user)
 	. = ..()
 	if(.)
 		return

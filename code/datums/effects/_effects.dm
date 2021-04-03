@@ -42,8 +42,7 @@
 	if(!validate_atom(A) || QDELETED(A))
 		qdel(src)
 		return
-
-	active_effects += src
+	START_PROCESSING(SSeffects, src)
 
 	affected_atom = A
 	LAZYADD(affected_atom.effects_list, src)
@@ -123,7 +122,7 @@
 	if(affected_atom)
 		LAZYREMOVE(affected_atom.effects_list, src)
 		affected_atom = null
-	active_effects -= src
+	STOP_PROCESSING(SSeffects, src)
 	. = ..()
 
 

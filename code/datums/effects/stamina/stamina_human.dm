@@ -34,13 +34,11 @@
 
     return TRUE
 
-/datum/effects/stamina/human/tier1 
+/datum/effects/stamina/human/tier1
 
 /datum/effects/stamina/human/tier1/process_mob()
-    . = ..()
-
-    active_effects -= src
-    return FALSE
+	. = ..()
+	return PROCESS_KILL
 
 /datum/effects/stamina/human/tier2
     pain_message = "You feel very tired."

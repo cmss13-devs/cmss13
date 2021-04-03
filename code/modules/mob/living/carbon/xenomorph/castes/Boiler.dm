@@ -1,5 +1,5 @@
 /datum/caste_datum/boiler
-	caste_name = "Boiler"
+	caste_type = XENO_CASTE_BOILER
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -15,7 +15,7 @@
 	behavior_delegate_type = /datum/behavior_delegate/boiler_base
 
 	evolution_allowed = FALSE
-	deevolves_to = "Spitter"
+	deevolves_to = XENO_CASTE_SPITTER
 	spit_delay = 35
 	caste_desc = "Gross!"
 	acid_level = 3
@@ -28,8 +28,8 @@
 	tacklestrength_max = 4
 
 /mob/living/carbon/Xenomorph/Boiler
-	caste_name = "Boiler"
-	name = "Boiler"
+	caste_type = XENO_CASTE_BOILER
+	name = XENO_CASTE_BOILER
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
 	icon_size = 64
 	icon_state = "Boiler Walking"

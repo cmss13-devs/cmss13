@@ -3,7 +3,7 @@
 	description = "In exchange for your ability to fling and use agility mode, you gain KO meter and ability to resist stuns. Your punches no longer break bones but remove cooldown from Job. Jab lets you close in and confuse your opponents while resetting Punch cooldown. Your slashes and abilities build up KO meter that later let's you deal damage, knockback, heal, and restore your stun resistance depending on how much KO meter you gained."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Warrior")
+	caste_whitelist = list(XENO_CASTE_WARRIOR)
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/fling,
 		/datum/action/xeno_action/activable/lunge,

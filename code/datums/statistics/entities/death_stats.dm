@@ -46,15 +46,15 @@
 		xeno_stats.total_deaths += 1
 
 		// Update caste-specific stats
-		if(X.caste_name)
+		if(X.caste_type)
 			var/datum/entity/player_stats/caste/caste_stats
-			if(xeno_stats.caste_stats_list[X.caste_name])
-				caste_stats = xeno_stats.caste_stats_list[X.caste_name]
+			if(xeno_stats.caste_stats_list[X.caste_type])
+				caste_stats = xeno_stats.caste_stats_list[X.caste_type]
 			else
 				caste_stats = new()
 				caste_stats.player = xeno_stats
-				caste_stats.name = X.caste_name
-				xeno_stats.caste_stats_list[X.caste_name] = caste_stats
+				caste_stats.name = X.caste_type
+				xeno_stats.caste_stats_list[X.caste_type] = caste_stats
 			caste_stats.total_deaths += 1
 		return
 
@@ -169,7 +169,7 @@
 				M.client.add_honor(max(life_kills_total, 1))
 
 /mob/living/carbon/Xenomorph/track_mob_death(var/cause, var/cause_mob)
-	. = ..(cause, cause_mob, caste_name)
+	. = ..(cause, cause_mob, caste_type)
 	if(statistic_exempt)
 		return
 	if(mind)
@@ -181,7 +181,7 @@
 			return
 		var/mob/M = cause_mob
 		if(!M.statistic_exempt && M != src)
-			M.count_xeno_kill(caste_name, cause)
+			M.count_xeno_kill(caste_type, cause)
 			M.life_kills_total += 1
 			if(isYautja(M) && M.client)
 				M.client.add_honor(max(life_kills_total, 1))

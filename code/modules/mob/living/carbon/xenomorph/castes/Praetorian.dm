@@ -1,5 +1,5 @@
 /datum/caste_datum/praetorian
-	caste_name = "Praetorian"
+	caste_type = XENO_CASTE_PRAETORIAN
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_5
@@ -13,7 +13,7 @@
 	speed = XENO_SPEED_TIER_6
 
 	evolution_allowed = FALSE
-	deevolves_to = "Warrior"
+	deevolves_to = XENO_CASTE_WARRIOR
 	caste_desc = "The warleader of the hive."
 	spit_types = list(/datum/ammo/xeno/acid/praetorian)
 	acid_level = 2
@@ -28,8 +28,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_base
 
 /mob/living/carbon/Xenomorph/Praetorian
-	caste_name = "Praetorian"
-	name = "Praetorian"
+	caste_type = XENO_CASTE_PRAETORIAN
+	name = XENO_CASTE_PRAETORIAN
 	desc = "A huge, looming beast of an alien."
 	icon_size = 64
 	icon_state = "Praetorian Walking"

@@ -59,7 +59,7 @@
 	if(isXeno(M))
 		// Xeno role = their caste
 		var/mob/living/carbon/Xenomorph/X = M
-		player_role = X.caste_name
+		player_role = X.caste_type
 
 		// Xeno name = their caste, pre-/postfix and number (because upgrades changes their name)
 		var/name_prefix = ""

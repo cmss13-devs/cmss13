@@ -54,12 +54,12 @@
 
 	var/evolve_progress
 
-	if(caste_name == "Bloody Larva" || caste_name == "Predalien Larva")
+	if(caste_type == (XENO_CASTE_LARVA|XENO_CASTE_PREDALIEN_LARVA))
 		evolve_progress = "[round(amount_grown)]/[max_grown]"
 	else if(hive && !hive.allow_no_queen_actions)
 		if(!hive.living_xeno_queen)
 			evolve_progress = "NO QUEEN"
-		else if(!hive.living_xeno_queen.ovipositor && !caste_name == "Queen")
+		else if(!hive.living_xeno_queen.ovipositor && !caste_type == XENO_CASTE_QUEEN)
 			evolve_progress = "NO OVIPOSITOR"
 
 	if(!evolve_progress)
@@ -117,7 +117,7 @@
 	if(hive)
 		if(!hive.living_xeno_queen)
 			. += "Queen's Location: NO QUEEN"
-		else if(!(caste_name == "Queen"))
+		else if(!(caste_type == XENO_CASTE_QUEEN))
 			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
 
 		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
@@ -152,7 +152,7 @@
 		if(is_mob_incapacitated() || lying || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
-		else if(!(caste_name == "Queen") && observed_xeno)
+		else if(!(caste_type == XENO_CASTE_QUEEN) && observed_xeno)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 	else
 		if(is_mob_incapacitated() || buckled)

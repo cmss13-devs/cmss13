@@ -5,7 +5,7 @@
 	flavor_description = "Dread it. Run from it. The Hive still arrives. Or, more accurately, you do."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Praetorian")
+	caste_whitelist = list(XENO_CASTE_PRAETORIAN)
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,

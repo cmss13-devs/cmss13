@@ -1,5 +1,5 @@
 /datum/caste_datum/crusher
-	caste_name = "Crusher"
+	caste_type = XENO_CASTE_CRUSHER
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_5
@@ -20,12 +20,12 @@
 	tackle_chance = 25
 
 	evolution_allowed = FALSE
-	deevolves_to = "Warrior"
+	deevolves_to = XENO_CASTE_WARRIOR
 	caste_desc = "A huge tanky xenomorph."
 
 /mob/living/carbon/Xenomorph/Crusher
-	caste_name = "Crusher"
-	name = "Crusher"
+	caste_type = XENO_CASTE_CRUSHER
+	name = XENO_CASTE_CRUSHER
 	desc = "A huge alien with an enormous armored head crest."
 	icon_size = 64
 	icon_state = "Crusher Walking"

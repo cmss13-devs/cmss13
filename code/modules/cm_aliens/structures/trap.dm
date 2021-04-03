@@ -25,7 +25,7 @@
 	if(X)
 		created_by = X.ckey
 		hivenumber = X.hivenumber
-		source_name = X.caste_name
+		source_name = X.caste_type
 		source_mob = X
 
 	set_hive_data(src, hivenumber)

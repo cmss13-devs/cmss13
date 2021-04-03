@@ -63,7 +63,7 @@ GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 ))
 
 /// Xeno caste datums
-GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_name)
+GLOBAL_REFERENCE_LIST_INDEXED(xeno_datum_list, /datum/caste_datum, caste_type)
 
 //Chem Stuff
 var/global/list/chemical_reactions_filtered_list	//List of all /datum/chemical_reaction datums filtered by reaction components. Used during chemical reactions

@@ -284,7 +284,7 @@ Additional game mode variables.
 	for(var/datum/mind/A in possible_queens)
 		var/mob/living/original = A.current
 		var/client/client = GLOB.directory[A.ckey]
-		if(jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
+		if(jobban_isbanned(original, XENO_CASTE_QUEEN) || !can_play_special_job(client, XENO_CASTE_QUEEN))
 			LAZYREMOVE(possible_queens, A)
 
 	if(LAZYLEN(possible_queens)) // Pink one of the people who want to be Queen and put them in

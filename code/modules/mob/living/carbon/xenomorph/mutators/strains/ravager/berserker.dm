@@ -4,7 +4,7 @@
 	flavor_description = "Crush and butcher, maim and rage, until the tallhosts are finished."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Ravager")
+	caste_whitelist = list(XENO_CASTE_RAVAGER)
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/empower,
 		/datum/action/xeno_action/activable/pounce/charge,

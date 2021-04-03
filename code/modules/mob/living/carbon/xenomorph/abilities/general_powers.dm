@@ -555,7 +555,7 @@
 	var/sound_to_play = pick(1, 2) == 1 ? 'sound/voice/alien_spitacid.ogg' : 'sound/voice/alien_spitacid2.ogg'
 	playsound(X.loc, sound_to_play, 25, 1)
 
-	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, current_turf)
+	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_type), X, current_turf)
 	P.generate_bullet(X.ammo)
 	P.permutated += X
 	P.def_zone = X.get_limbzone_target()

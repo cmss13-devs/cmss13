@@ -35,88 +35,88 @@ GLOBAL_LIST_INIT(pp_transformables, list(
   ),
   "Alien Tier 1" = list(
 	list(
-	  name = "Runner",
+	  name = XENO_CASTE_RUNNER,
 	  key = /mob/living/carbon/Xenomorph/Runner,
 	  color = "purple"
 	),
 	list(
-	  name = "Drone",
+	  name = XENO_CASTE_DRONE,
 	  key = /mob/living/carbon/Xenomorph/Drone,
 	  color = "purple"
 	),
 	list(
-	  name = "Sentinel",
+	  name = XENO_CASTE_SENTINEL,
 	  key = /mob/living/carbon/Xenomorph/Sentinel,
 	  color = "purple"
 	),
 	list(
-	  name = "Defender",
+	  name = XENO_CASTE_DEFENDER,
 	  key = /mob/living/carbon/Xenomorph/Defender,
 	  color = "purple"
 	)
   ),
   "Alien Tier 2" = list(
 	list(
-	  name = "Lurker",
+	  name = XENO_CASTE_LURKER,
 	  key = /mob/living/carbon/Xenomorph/Lurker,
 	  color = "purple"
 	),
 	list(
-	  name = "Warrior",
+	  name = XENO_CASTE_WARRIOR,
 	  key = /mob/living/carbon/Xenomorph/Warrior,
 	  color = "purple"
 	),
 	list(
-	  name = "Spitter",
+	  name = XENO_CASTE_SPITTER,
 	  key = /mob/living/carbon/Xenomorph/Spitter,
 	  color = "purple"
 	),
 	list(
-	  name = "Burrower",
+	  name = XENO_CASTE_BURROWER,
 	  key = /mob/living/carbon/Xenomorph/Burrower,
 	  color = "purple"
 	),
 	list(
-	  name = "Hivelord",
+	  name = XENO_CASTE_HIVELORD,
 	  key = /mob/living/carbon/Xenomorph/Hivelord,
 	  color = "purple"
 	),
 	list(
-	  name = "Carrier",
+	  name = XENO_CASTE_CARRIER,
 	  key = /mob/living/carbon/Xenomorph/Carrier,
 	  color = "purple"
 	)
   ),
   "Alien Tier 3" = list(
 	list(
-	  name = "Ravager",
+	  name = XENO_CASTE_RAVAGER,
 	  key = /mob/living/carbon/Xenomorph/Ravager,
 	  color = "purple"
 	),
 	list(
-	  name = "Praetorian",
+	  name = XENO_CASTE_PRAETORIAN,
 	  key = /mob/living/carbon/Xenomorph/Praetorian,
 	  color = "purple"
 	),
 	list(
-	  name = "Boiler",
+	  name = XENO_CASTE_BOILER,
 	  key = /mob/living/carbon/Xenomorph/Boiler,
 	  color = "purple"
 	),
 	list(
-	  name = "Crusher",
+	  name = XENO_CASTE_CRUSHER,
 	  key = /mob/living/carbon/Xenomorph/Crusher,
 	  color = "purple"
 	)
   ),
   "Alien Tier 4" = list(
 	list(
-	  name = "Queen",
+	  name = XENO_CASTE_QUEEN,
 	  key = /mob/living/carbon/Xenomorph/Queen,
 	  color = "purple"
 	),
 	list(
-	  name = "Predalien",
+	  name = XENO_CASTE_BURROWER,
 	  key = /mob/living/carbon/Xenomorph/Predalien,
 	  color = "purple"
 	)

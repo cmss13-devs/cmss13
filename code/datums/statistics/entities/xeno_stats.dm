@@ -45,7 +45,7 @@
 		xeno_stats.total_rounds_played += 1
 		xeno_stats.round_played = TRUE
 	xeno_stats.total_playtime += life_time_total
-	xeno_stats.track_caste_playtime(caste_name, life_time_total)
+	xeno_stats.track_caste_playtime(caste_type, life_time_total)
 	xeno_stats.recalculate_top_caste()
 	xeno_stats.recalculate_nemesis()
 	..()
@@ -94,12 +94,12 @@
 		R.count_human_kill(job_name, cause)
 	recalculate_top_caste()
 
-/datum/entity/player_stats/xeno/count_personal_xeno_kill(var/caste_name, var/cause, var/caste)
+/datum/entity/player_stats/xeno/count_personal_xeno_kill(var/caste_type, var/cause, var/caste)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
-	S.count_xeno_kill(caste_name, cause)
+	S.count_xeno_kill(caste_type, cause)
 	if(round_statistics)
 		var/datum/entity/player_stats/caste/R = round_statistics.setup_caste_stats(caste)
-		R.count_xeno_kill(caste_name, cause)
+		R.count_xeno_kill(caste_type, cause)
 	recalculate_top_caste()
 
 //*****************
@@ -124,8 +124,8 @@
 	if(statistic_exempt || !client || !mind)
 		return
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
-	if(caste_name && !isnull(xeno_stats))
-		xeno_stats.track_personal_abilities_used(caste_name, ability, amount)
+	if(caste_type && !isnull(xeno_stats))
+		xeno_stats.track_personal_abilities_used(caste_type, ability, amount)
 
 /datum/entity/player_stats/xeno/count_personal_steps_walked(var/caste, var/amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
@@ -141,8 +141,8 @@
 	if(isnull(xeno_stats))
 		return
 	xeno_stats.steps_walked += amount
-	if(caste_name)
-		xeno_stats.count_personal_steps_walked(caste_name, amount)
+	if(caste_type)
+		xeno_stats.count_personal_steps_walked(caste_type, amount)
 
 /datum/entity/player_stats/xeno/proc/count_personal_slashes(var/caste, var/amount = 1)
 	var/datum/entity/player_stats/caste/S = setup_caste_stats(caste)
@@ -158,7 +158,7 @@
 	if(isnull(xeno_stats))
 		return
 	xeno_stats.total_hits += amount
-	if(caste_name)
-		xeno_stats.count_personal_slashes(caste_name, amount)
+	if(caste_type)
+		xeno_stats.count_personal_slashes(caste_type, amount)
 	if(round_statistics)
 		round_statistics.total_slashes += amount

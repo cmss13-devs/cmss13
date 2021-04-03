@@ -135,7 +135,7 @@
 	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution
 
 	//Naming variables
-	var/caste_name = "Drone"
+	var/caste_type = "Drone"
 	var/nicknumber = 0 //The number after the name. Saved right here so it transfers between castes.
 
 	//This list of inherent verbs lets us take any proc basically anywhere and add them.
@@ -368,7 +368,7 @@
 
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
-		var/selected_caste = GLOB.xeno_datum_list[caste_name]?.type
+		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
 		if(free_slots)
 			hive.free_slots[selected_caste] -= 1
@@ -383,7 +383,7 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
-	job = caste.caste_name // Used for tracking the caste playtime
+	job = caste.caste_type // Used for tracking the caste playtime
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
@@ -408,8 +408,8 @@
 	stamina = new /datum/stamina/none(src)
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
-	if(caste_name && GLOB.xeno_datum_list[caste_name])
-		caste = GLOB.xeno_datum_list[caste_name]
+	if(caste_type && GLOB.xeno_datum_list[caste_type])
+		caste = GLOB.xeno_datum_list[caste_type]
 	else
 		to_world("something went very wrong")
 		return
@@ -493,7 +493,7 @@
 	if(isXenoPredalien(src))
 		name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 	else if(caste)
-		name = "[name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+		name = "[name_prefix][age_prefix][caste.caste_type] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -549,7 +549,7 @@
 
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
-		var/selected_caste = GLOB.xeno_datum_list[caste_name]?.type
+		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		var/used_slots = LAZYACCESS(hive.used_free_slots, selected_caste)
 		if(used_slots)
 			hive.used_free_slots[selected_caste] -= 1

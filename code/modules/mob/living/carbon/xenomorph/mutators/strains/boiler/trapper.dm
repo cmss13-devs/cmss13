@@ -5,7 +5,7 @@
 	flavor_description = "I love the smell of burnin' tallhost flesh in the Mornin'."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Boiler") //Only boiler.
+	caste_whitelist = list(XENO_CASTE_BOILER) //Only boiler.
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
 		/datum/action/xeno_action/activable/bombard,

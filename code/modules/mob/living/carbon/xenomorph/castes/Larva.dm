@@ -1,5 +1,5 @@
 /datum/caste_datum/larva
-	caste_name = "Bloody Larva"
+	caste_type = XENO_CASTE_LARVA
 	tier = 0
 	plasma_gain = 0.1
 	plasma_max = 10
@@ -9,17 +9,17 @@
 	caste_desc = "D'awwwww, so cute!"
 	speed = XENO_SPEED_TIER_10
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
-	evolves_to = list("Drone", "Runner", "Sentinel", "Defender") //Add sentinel etc here
+	evolves_to = XENO_T1_CASTES
 
 	can_be_revived = FALSE
 
 /datum/caste_datum/larva/predalien
-	caste_name = "Predalien Larva"
-	evolves_to = list("Predalien")
+	caste_type = XENO_CASTE_PREDALIEN_LARVA
+	evolves_to = list(XENO_CASTE_PREDALIEN)
 
 /mob/living/carbon/Xenomorph/Larva
-	name = "Bloody Larva"
-	caste_name = "Bloody Larva"
+	name = XENO_CASTE_LARVA
+	caste_type = XENO_CASTE_LARVA
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
 	icon_size = 32
@@ -64,7 +64,7 @@
 
 /mob/living/carbon/Xenomorph/Larva/predalien
 	icon_state = "Predalien Larva"
-	caste_name = "Predalien Larva"
+	caste_type = XENO_CASTE_PREDALIEN_LARVA
 
 /mob/living/carbon/Xenomorph/Larva/predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()

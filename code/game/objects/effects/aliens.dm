@@ -497,7 +497,7 @@
 			H.apply_armoured_damage(damage * XVX_ACID_DAMAGEMULT * xeno_empower_modifier, ARMOR_BIO, BURN)
 		else
 			if(empowered)
-				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_name))
+				new /datum/effects/acid(H, linked_xeno, initial(linked_xeno.caste_type))
 			var/found = null
 			for (var/datum/effects/boiler_trap/F in H.effects_list)
 				if (F.source_mob == linked_xeno)

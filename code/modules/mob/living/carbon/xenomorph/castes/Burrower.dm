@@ -1,6 +1,6 @@
 //burrower is COMBAT support
 /datum/caste_datum/burrower
-	caste_name = "Burrower"
+	caste_type = XENO_CASTE_BURROWER
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_2
@@ -14,7 +14,7 @@
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
-	deevolves_to = "Drone"
+	deevolves_to = XENO_CASTE_DRONE
 	caste_desc = "A digger and trapper."
 	acid_level = 2
 	weed_level = WEED_LEVEL_STANDARD
@@ -32,8 +32,8 @@
 	tremor_cooldown = 450
 
 /mob/living/carbon/Xenomorph/Burrower
-	caste_name = "Burrower"
-	name = "Burrower"
+	caste_type = XENO_CASTE_BURROWER
+	name = XENO_CASTE_BURROWER
 	desc = "A beefy, alien with sharp claws."
 	icon_size = 64
 	icon_state = "Burrower Walking"

@@ -521,28 +521,33 @@
 #define XENO_SHIELD_SOURCE_GARDENER 7
 #define XENO_SHIELD_SOURCE_SHIELD_PILLAR 8
 
-// Caste name defines
-#define CASTE_LARVA "Larva"
-
-#define CASTE_RUNNER "Runner"
-#define CASTE_LURKER "Lurker"
-#define CASTE_RAVAGER "Ravager"
-
-#define CASTE_SENTINEL "Sentinel"
-#define CASTE_SPITTER "Spitter"
-#define CASTE_BOILER "Boiler"
-
-#define CASTE_DEFENDER "Defender"
-#define CASTE_WARRIOR "Warrior"
-#define CASTE_CRUSHER "Crusher"
-#define CASTE_PRAETORIAN "Praetorian"
-
-#define CASTE_DRONE "Drone"
-#define CASTE_HIVELORD "Hivelord"
-#define CASTE_CARRIER "Carrier"
-#define CASTE_BURROWER "Burrower"
-
-#define CASTE_QUEEN "Queen"
+//XENO CASTES
+#define XENO_CASTE_LARVA             "Bloody Larva"
+#define XENO_CASTE_PREDALIEN_LARVA   "Predalien Larva"
+//t1
+#define XENO_CASTE_DRONE             "Drone"
+#define XENO_CASTE_RUNNER            "Runner"
+#define XENO_CASTE_SENTINEL          "Sentinel"
+#define XENO_CASTE_DEFENDER          "Defender"
+#define XENO_T1_CASTES               list(XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER)
+//t2
+#define XENO_CASTE_BURROWER          "Burrower"
+#define XENO_CASTE_CARRIER           "Carrier"
+#define XENO_CASTE_HIVELORD          "Hivelord"
+#define XENO_CASTE_LURKER            "Lurker"
+#define XENO_CASTE_WARRIOR           "Warrior"
+#define XENO_CASTE_SPITTER           "Spitter"
+#define XENO_T2_CASTES               list(XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER)
+//t3
+#define XENO_CASTE_BOILER            "Boiler"
+#define XENO_CASTE_PRAETORIAN        "Praetorian"
+#define XENO_CASTE_CRUSHER           "Crusher"
+#define XENO_CASTE_RAVAGER           "Ravager"
+#define XENO_T3_CASTES               list(XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER)
+//special
+#define XENO_CASTE_QUEEN             "Queen"
+#define XENO_CASTE_PREDALIEN         "Predalien"
+#define XENO_SPECIAL_CASTES          list(XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN)
 
 // Checks if two hives are allied to each other.
 // PARAMETERS:

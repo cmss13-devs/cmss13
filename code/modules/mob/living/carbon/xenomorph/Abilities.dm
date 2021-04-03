@@ -293,7 +293,7 @@
 			to_chat(X, SPAN_XENOWARNING("You cannot deevolve xenomorphs to larva."))
 			return
 
-		var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_name] to [newcaste]?", , "Yes", "No")
+		var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_type] to [newcaste]?", , "Yes", "No")
 		if(confirm == "No")
 			return
 
@@ -319,21 +319,21 @@
 		var/xeno_type
 
 		switch(newcaste)
-			if("Runner")
+			if(XENO_CASTE_RUNNER)
 				xeno_type = /mob/living/carbon/Xenomorph/Runner
-			if("Drone")
+			if(XENO_CASTE_DRONE)
 				xeno_type = /mob/living/carbon/Xenomorph/Drone
-			if("Sentinel")
+			if(XENO_CASTE_SENTINEL)
 				xeno_type = /mob/living/carbon/Xenomorph/Sentinel
-			if("Spitter")
+			if(XENO_CASTE_SPITTER)
 				xeno_type = /mob/living/carbon/Xenomorph/Spitter
-			if("Lurker")
+			if(XENO_CASTE_LURKER)
 				xeno_type = /mob/living/carbon/Xenomorph/Lurker
-			if("Warrior")
+			if(XENO_CASTE_WARRIOR)
 				xeno_type = /mob/living/carbon/Xenomorph/Warrior
-			if("Defender")
+			if(XENO_CASTE_DEFENDER)
 				xeno_type = /mob/living/carbon/Xenomorph/Defender
-			if("Burrower")
+			if(XENO_CASTE_BURROWER)
 				xeno_type = /mob/living/carbon/Xenomorph/Burrower
 
 		//From there, the new xeno exists, hopefully
@@ -362,7 +362,7 @@
 		if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
 			remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)
 
-		new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [T]."), \
+		new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [T]."), \
 		SPAN_XENODANGER("[X] makes you regress into your previous form."))
 
 		if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)

@@ -1,5 +1,5 @@
 /datum/caste_datum/ravager
-	caste_name = "Ravager"
+	caste_type = XENO_CASTE_RAVAGER
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
@@ -20,7 +20,7 @@
 	tacklestrength_max = 5
 
 	evolution_allowed = FALSE
-	deevolves_to = "Lurker"
+	deevolves_to = XENO_CASTE_LURKER
 	caste_desc = "A brutal, devastating front-line attacker."
 	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
 	attack_delay = -1
@@ -28,8 +28,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
 
 /mob/living/carbon/Xenomorph/Ravager
-	caste_name = "Ravager"
-	name = "Ravager"
+	caste_type = XENO_CASTE_RAVAGER
+	name = XENO_CASTE_RAVAGER
 	desc = "A huge, nasty red alien with enormous scythed claws."
 	icon_size = 64
 	icon_state = "Ravager Walking"

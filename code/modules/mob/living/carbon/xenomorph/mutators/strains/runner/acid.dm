@@ -4,7 +4,7 @@
 	flavor_description = "Burn their walls, maim their face!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Runner")
+	caste_whitelist = list(XENO_CASTE_RUNNER)
 	keystone = TRUE
 	behavior_delegate_type = /datum/behavior_delegate/runner_acider
 	mutator_actions_to_remove = list(
@@ -79,7 +79,7 @@
 	if(acid)
 		modify_acid(acid_slash_regen)
 		qdel(acid)
-	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_name))
+	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
 
 /datum/behavior_delegate/runner_acider/on_life()
 	modify_acid(acid_passive_regen)
@@ -114,7 +114,7 @@
 			new caboom_struct_acid_type(get_turf(O), O)
 			continue
 		if(istype(O, /mob))
-			new /datum/effects/acid(O, bound_xeno, initial(bound_xeno.caste_name))
+			new /datum/effects/acid(O, bound_xeno, initial(bound_xeno.caste_type))
 			continue
 	var/x = bound_xeno.x
 	var/y = bound_xeno.y

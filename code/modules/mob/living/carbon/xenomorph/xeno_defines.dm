@@ -1,7 +1,7 @@
 
 // Actual caste datum basedef
 /datum/caste_datum
-	var/caste_name = ""
+	var/caste_type = ""
 	var/display_name = ""
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
@@ -430,10 +430,10 @@
 	// Every caste is manually defined here so you get
 	var/list/xeno_counts = list(
 		// Yes, Queen is technically considered to be tier 0
-		list("Bloody Larva" = 0, "Queen" = 0),
-		list("Drone" = 0, "Runner" = 0, "Sentinel" = 0, "Defender" = 0),
-		list("Hivelord" = 0, "Burrower" = 0, "Carrier" = 0, "Lurker" = 0, "Spitter" = 0, "Warrior" = 0),
-		list("Boiler" = 0, "Crusher" = 0, "Praetorian" = 0, "Ravager" = 0)
+		list(XENO_CASTE_LARVA = 0, "Queen" = 0),
+		list(XENO_CASTE_DRONE = 0, XENO_CASTE_RUNNER = 0, XENO_CASTE_SENTINEL = 0, XENO_CASTE_DEFENDER = 0),
+		list(XENO_CASTE_HIVELORD = 0, XENO_CASTE_BURROWER = 0, XENO_CASTE_CARRIER = 0, XENO_CASTE_LURKER = 0, XENO_CASTE_SPITTER = 0, XENO_CASTE_WARRIOR = 0),
+		list(XENO_CASTE_BOILER = 0, XENO_CASTE_CRUSHER = 0, XENO_CASTE_PRAETORIAN = 0, XENO_CASTE_RAVAGER = 0)
 	)
 
 	for(var/mob/living/carbon/Xenomorph/X in totalXenos)
@@ -444,7 +444,7 @@
 				continue
 
 		if(X.caste)
-			xeno_counts[X.caste.tier+1][X.caste.caste_name]++
+			xeno_counts[X.caste.tier+1][X.caste.caste_type]++
 
 	return xeno_counts
 
@@ -469,7 +469,7 @@
 			"tier" = X.tier, // This one is only important for sorting
 			"is_leader" = (IS_XENO_LEADER(X)),
 			"is_queen" = istype(X.caste, /datum/caste_datum/queen),
-			"caste_name" = X.caste_name
+			"caste_type" = X.caste_type
 		)
 
 	// Clear nulls from the xenos list
@@ -526,7 +526,7 @@
 			// Could not think of an elegant way to write this
 			if(!(current["is_leader"]^prev["is_leader"])\
 				&& (prev["tier"] < current["tier"]\
-				|| prev["tier"] == current["tier"] && prev["caste_name"] > current["caste_name"]\
+				|| prev["tier"] == current["tier"] && prev["caste_type"] > current["caste_type"]\
 			))
 				sorted_list.Swap(j-1, j)
 
@@ -629,8 +629,8 @@
 			continue
 		var/datum/caste_datum/C = caste_path
 		switch(initial(C.tier))
-			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_name)] = slot_count
-			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_name)] = slot_count
+			if(2) slots[TIER_2][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
+			if(3) slots[TIER_3][GUARANTEED_SLOTS][initial(C.caste_type)] = slot_count
 
 	var/effective_total = length(totalXenos) + pooled_factor
 

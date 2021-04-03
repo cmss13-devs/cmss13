@@ -31,7 +31,7 @@
 	xeno_throw_human(H, X, X.dir, 3)
 
 	L.last_damage_mob = X
-	L.last_damage_source = initial(X.caste_name)
+	L.last_damage_source = initial(X.caste_type)
 	return
 
 // This ties the pounce/throwing backend into the old collision backend
@@ -79,7 +79,7 @@
 
 		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
 		H.last_damage_mob = X
-		H.last_damage_source = initial(X.caste_name)
+		H.last_damage_source = initial(X.caste_type)
 
 	for (var/mob/living/carbon/H in orange(distance, get_turf(X)))
 		if (H.stat == DEAD || X.can_not_harm(H))

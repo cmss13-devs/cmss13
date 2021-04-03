@@ -97,7 +97,7 @@
 	H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
 	H.apply_effect(weaken_power, WEAKEN)
 	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_name)
+	H.last_damage_source = initial(X.caste_type)
 	shake_camera(H, 2, 1)
 
 	var/facing = get_dir(X, H)
@@ -154,7 +154,7 @@
 		return
 
 	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_name)
+	H.last_damage_source = initial(X.caste_type)
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
 	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
@@ -259,7 +259,7 @@
 		return
 
 	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_name)
+	H.last_damage_source = initial(X.caste_type)
 	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] with a powerful jab!"), \
 	SPAN_XENOWARNING("You hit [H] with a powerful jab!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
@@ -329,7 +329,7 @@
 		WP.apply_cooldown_override(WP.xeno_cooldown)
 
 	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_name)
+	H.last_damage_source = initial(X.caste_type)
 
 	var/ko_counter = BD.ko_counter
 

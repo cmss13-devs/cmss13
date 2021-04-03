@@ -3,7 +3,7 @@
 #define YOUNG_QUEEN_HEALTH_MULTIPLIER 0.5
 
 /datum/caste_datum/queen
-	caste_name = "Queen"
+	caste_type = XENO_CASTE_QUEEN
 	tier = 0
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -231,7 +231,7 @@
 	return ..()
 
 /mob/living/carbon/Xenomorph/Queen
-	caste_name = "Queen"
+	caste_type = "Queen"
 	name = "Queen"
 	desc = "A huge, looming alien creature. The biggest and the baddest."
 	icon_size = 64

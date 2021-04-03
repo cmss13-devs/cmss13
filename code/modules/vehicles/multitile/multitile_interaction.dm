@@ -151,41 +151,45 @@
 
 	user.forceMove(middle)
 
-/obj/vehicle/multitile/attack_alien(var/mob/living/carbon/Xenomorph/M, var/dam_bonus)
+/obj/vehicle/multitile/attack_alien(var/mob/living/carbon/Xenomorph/X, var/dam_bonus)
 	// If they're on help intent, attempt to enter the vehicle
-	if(M.a_intent == INTENT_HELP)
-		handle_player_entrance(M)
+	if(X.a_intent == INTENT_HELP)
+		handle_player_entrance(X)
 		return
 
 	// If the vehicle is completely broken, xenos can enter from anywhere
 	if(health <= 0)
-		handle_player_entrance(M)
+		handle_player_entrance(X)
 
-	if(M.mob_size < mob_size_required_to_hit)
-		to_chat(M, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
+	if(X.mob_size < mob_size_required_to_hit)
+		to_chat(X, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
 		return FALSE
 
-	var/damage = (rand(M.melee_damage_lower, M.melee_damage_upper) + dam_bonus) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
+	var/damage = (rand(X.melee_damage_lower, X.melee_damage_upper) + dam_bonus) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
 
 	//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
-	if(M.frenzy_aura > 0)
-		damage += (M.frenzy_aura * 2)
+	if(X.frenzy_aura > 0)
+		damage += (X.frenzy_aura * 2)
 
-	M.animation_attack_on(src)
+	X.animation_attack_on(src)
 
 	//Somehow we will deal no damage on this attack
 	if(!damage)
-		playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-		M.animation_attack_on(src)
-		M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
+		playsound(X.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+		X.animation_attack_on(src)
+		X.visible_message(SPAN_DANGER("\The [X] lunges at [src]!"), \
 		SPAN_DANGER("You lunge at [src]!"))
 		return 0
 
-	M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
+	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"))
-	playsound(M.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
+	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
-	take_damage_type(damage * ( (M.caste == "Ravager") ? 2 : 1 ), "slash", M) //Ravs do a bitchin double damage
+	var/damage_mult = 1
+	if(X.caste == XENO_CASTE_RAVAGER)
+		damage_mult = 2
+
+	take_damage_type(damage * damage_mult, "slash", X) //Ravs do a heckin double damage
 
 	healthcheck()
 

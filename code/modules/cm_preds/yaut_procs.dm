@@ -119,7 +119,7 @@
 				visible_message("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat.","You slice off a few of \the [T]'s limbs, making sure to get the finest cuts.")
 				if(xeno_victim && isturf(xeno_victim.loc))
 					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
-					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_name] steak"
+					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
 				else if(victim && isturf(victim.loc))
 					victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
@@ -134,7 +134,7 @@
 				visible_message("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces.","You rip open \the [T]'s ribcage and start tearing the tastiest bits out.")
 				if(xeno_victim && isturf(xeno_victim.loc))
 					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
-					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_name] tenderloin"
+					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
 				else if(victim && isturf(T.loc))
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] tenderloin"
@@ -151,9 +151,9 @@
 					visible_message("<b>[src] flenses the last of [victim]'s exoskeleton, revealing only bones!</b>.","<b>You flense the last of [victim]'s exoskeleton clean off!</b>")
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 					var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
-					xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
-					xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
-					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
+					xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+					xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
 
 				else if(victim && isturf(T.loc))
 					visible_message("<b>[src] reaches down and rips out \the [T]'s spinal cord and skull!</b>.","<b>You firmly grip the revealed spinal column and rip [T]'s head off!</b>")

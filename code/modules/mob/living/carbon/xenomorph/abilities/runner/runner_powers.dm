@@ -15,7 +15,7 @@
 	X.visible_message(SPAN_XENOWARNING("[X] fires a burst of bone chips at [A]!"), SPAN_XENOWARNING("You fire a burst of bone chips at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, X.loc)
+	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_type), X, X.loc)
 
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
 

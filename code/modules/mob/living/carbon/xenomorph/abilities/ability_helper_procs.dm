@@ -310,7 +310,7 @@
 			AM.acid_spray_act(src)
 			return
 		T = next_turf
-		var/obj/effect/xenomorph/spray/S = new spray_type(T, initial(src.caste_name), src)
+		var/obj/effect/xenomorph/spray/S = new spray_type(T, initial(src.caste_type), src)
 		do_acid_spray_cone_normal(T, i, facing, S, spray_type)
 		sleep(2)
 
@@ -344,7 +344,7 @@
 				normal_density_flag = TRUE
 			else
 				normal_turf = next_normal_turf
-				left_S = new spray_type(normal_turf, initial(src.caste_name), src)
+				left_S = new spray_type(normal_turf, initial(src.caste_type), src)
 
 
 		if(!inverse_normal_density_flag)
@@ -356,7 +356,7 @@
 				inverse_normal_density_flag = TRUE
 			else
 				inverse_normal_turf = next_inverse_normal_turf
-				right_S = new spray_type(inverse_normal_turf, initial(src.caste_name), src)
+				right_S = new spray_type(inverse_normal_turf, initial(src.caste_type), src)
 
 
 /mob/living/carbon/Xenomorph/proc/do_acid_spray_line(list/turflist, spray_path = /obj/effect/xenomorph/spray, distance_max = 5)
@@ -385,7 +385,7 @@
 			break
 
 		prev_turf = T
-		new spray_path(T, initial(src.caste_name), src)
+		new spray_path(T, initial(src.caste_type), src)
 		sleep(2)
 
 

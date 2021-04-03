@@ -336,7 +336,7 @@
 		return
 
 	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_name)
+	H.last_damage_source = initial(X.caste_type)
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
 	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
@@ -555,7 +555,7 @@
 	X.flick_attack_overlay(A, "slash")
 
 	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_name)
+	H.last_damage_source = initial(X.caste_type)
 	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 	playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 

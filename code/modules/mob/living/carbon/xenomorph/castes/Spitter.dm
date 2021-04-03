@@ -1,5 +1,5 @@
 /datum/caste_datum/spitter
-	caste_name = "Spitter"
+	caste_type = XENO_CASTE_SPITTER
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -14,8 +14,8 @@
 
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid/medium)
-	evolves_to = list("Boiler")
-	deevolves_to = "Sentinel"
+	evolves_to = list(XENO_CASTE_BOILER)
+	deevolves_to = XENO_CASTE_SENTINEL
 	acid_level = 2
 
 	behavior_delegate_type = /datum/behavior_delegate/spitter_base
@@ -29,8 +29,8 @@
 	tacklestrength_max = 5
 
 /mob/living/carbon/Xenomorph/Spitter
-	caste_name = "Spitter"
-	name = "Spitter"
+	caste_type = XENO_CASTE_SPITTER
+	name = XENO_CASTE_SPITTER
 	desc = "A gross, oozing alien of some kind."
 	icon_size = 48
 	icon_state = "Spitter Walking"
@@ -77,7 +77,7 @@
 	dot_cooldown_atoms += A
 	addtimer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)
 
-	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_name))
+	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
 
 	if (ismob(A))
 		var/datum/action/xeno_action/onclick/spitter_frenzy/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spitter_frenzy)

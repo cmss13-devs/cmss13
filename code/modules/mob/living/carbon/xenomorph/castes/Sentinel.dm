@@ -1,5 +1,5 @@
 /datum/caste_datum/sentinel
-	caste_name = "Sentinel"
+	caste_type = XENO_CASTE_SENTINEL
 	tier = 1
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
@@ -14,7 +14,7 @@
 
 	caste_desc = "A weak ranged combat alien."
 	spit_types = list(/datum/ammo/xeno/toxin, /datum/ammo/xeno/toxin/burst)
-	evolves_to = list("Spitter")
+	evolves_to = list(XENO_CASTE_SPITTER)
 	deevolves_to = "Larva"
 	acid_level = 1
 
@@ -27,8 +27,8 @@
 	spit_delay = 20
 
 /mob/living/carbon/Xenomorph/Sentinel
-	caste_name = "Sentinel"
-	name = "Sentinel"
+	caste_type = XENO_CASTE_SENTINEL
+	name = XENO_CASTE_SENTINEL
 	desc = "A slithery, spitting kind of alien."
 	icon_size = 48
 	icon_state = "Sentinel Walking"

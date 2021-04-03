@@ -3,7 +3,7 @@
 	description = "You trade a small amount of your already weak damage and your tail swipe for slightly increased headbutt knockback and damage, and the ability to slowly move, slash, and headbutt while fortified."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Defender")
+	caste_whitelist = list(XENO_CASTE_DEFENDER)
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/onclick/tail_sweep,
 	)

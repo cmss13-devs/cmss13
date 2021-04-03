@@ -2,7 +2,7 @@
 #define isXeno(A) (istype(A, /mob/living/carbon/Xenomorph))
 
 #define isXenoOrHuman(A) (isXeno(A) || ishuman(A))
-
+//ask walter if i should turn into castechecks
 #define isXenoBoiler(A) (istype(A, /mob/living/carbon/Xenomorph/Boiler))
 #define isXenoCarrier(A) (istype(A, /mob/living/carbon/Xenomorph/Carrier))
 #define isXenoCrusher(A) (istype(A, /mob/living/carbon/Xenomorph/Crusher))

@@ -5,7 +5,7 @@
 	flavor_description = "You are the Queen's scalpel. Don't think you are. Know you are."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Praetorian")  	// Only bae
+	caste_whitelist = list(XENO_CASTE_PRAETORIAN)  	// Only bae
 	mutator_actions_to_remove = list(
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,

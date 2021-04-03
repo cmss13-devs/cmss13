@@ -123,16 +123,16 @@
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
-	switch(caste.caste_name) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
-		if("Boiler")
+	switch(caste.caste_type) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
+		if(XENO_CASTE_BOILER)
 			var/mob/living/carbon/Xenomorph/Boiler/B = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
 			B.smoke.set_up(2, 0, get_turf(src))
 			B.smoke.start()
 			remains.icon_state = "gibbed-a-corpse"
-		if("Runner")
+		if(XENO_CASTE_RUNNER)
 			remains.icon_state = "gibbed-a-corpse-runner"
-		if("Bloody Larva","Predalien Larva")
+		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
 			remains.icon_state = "larva_gib_corpse"
 		else
 			remains.icon_state = "gibbed-a-corpse"
@@ -146,10 +146,10 @@
 	var/icon_path = get_icon_from_source(CONFIG_GET(string/alien_gib_48x48))
 	if(mob_size >= MOB_SIZE_BIG)
 		icon_path = get_icon_from_source(CONFIG_GET(string/alien_gib_64x64))
-	switch(caste.caste_name)
-		if("Runner")
+	switch(caste.caste_type)
+		if(XENO_CASTE_RUNNER)
 			to_flick = "gibbed-a-runner"
-		if("Bloody Larva","Predalien Larva")
+		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
 			to_flick = "larva_gib"
 	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon_path)
 

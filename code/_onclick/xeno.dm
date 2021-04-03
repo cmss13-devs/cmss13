@@ -26,7 +26,7 @@
 			target = alt
 	target = target.handle_barriers(src, , (PASS_MOB_THRU_XENO|PASS_TYPE_CRAWLER)) // Checks if target will be attacked by the current alien OR if the blocker will be attacked
 	target.attack_alien(src)
-	track_slashes(caste_name)
+	track_slashes(caste_type)
 	next_move = world.time + (10 + caste.attack_delay + attack_speed_modifier) //Adds some lag to the 'attack'
 	return TRUE
 

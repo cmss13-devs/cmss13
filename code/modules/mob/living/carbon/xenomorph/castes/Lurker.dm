@@ -1,5 +1,5 @@
 /datum/caste_datum/lurker
-	caste_name = "Lurker"
+	caste_type = XENO_CASTE_LURKER
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -16,15 +16,15 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/lurker_base
 
-	deevolves_to = "Runner"
+	deevolves_to = XENO_CASTE_RUNNER
 	caste_desc = "A fast, powerful backline combatant."
-	evolves_to = list("Ravager")
+	evolves_to = list(XENO_CASTE_RAVAGER)
 
 	heal_resting = 1.5
 
 /mob/living/carbon/Xenomorph/Lurker
-	caste_name = "Lurker"
-	name = "Lurker"
+	caste_type = XENO_CASTE_LURKER
+	name = XENO_CASTE_LURKER
 	desc = "A beefy, fast alien with sharp claws."
 	icon_size = 48
 	icon_state = "Lurker Walking"

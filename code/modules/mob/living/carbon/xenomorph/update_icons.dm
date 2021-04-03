@@ -29,14 +29,14 @@
 	if(!caste)
 		return
 	if(stat == DEAD)
-		icon_state = "[mutation_type] [caste.caste_name] Dead"
+		icon_state = "[mutation_type] [caste.caste_type] Dead"
 	else if(lying)
 		if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
-			icon_state = "[mutation_type] [caste.caste_name] Sleeping"
+			icon_state = "[mutation_type] [caste.caste_type] Sleeping"
 		else
-			icon_state = "[mutation_type] [caste.caste_name] Knocked Down"
+			icon_state = "[mutation_type] [caste.caste_type] Knocked Down"
 	else
-		icon_state = "[mutation_type] [caste.caste_name] Running"
+		icon_state = "[mutation_type] [caste.caste_type] Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
 
@@ -88,7 +88,7 @@
 /mob/living/carbon/Xenomorph/proc/update_inv_resource()
 	remove_overlay(X_RESOURCE_LAYER)
 	if(crystal_stored)
-		overlays_standing[X_RESOURCE_LAYER] = image("icon" = icon, "icon_state" = "[caste_name]_resources", "layer" =-X_RESOURCE_LAYER)
+		overlays_standing[X_RESOURCE_LAYER] = image("icon" = icon, "icon_state" = "[caste_type]_resources", "layer" =-X_RESOURCE_LAYER)
 		apply_overlay(X_RESOURCE_LAYER)
 
 //Call when target overlay should be added/removed

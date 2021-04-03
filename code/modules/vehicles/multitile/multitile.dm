@@ -322,4 +322,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	if(all_broken)
 		toggle_cameras_status()
 		handle_all_modules_broken()
+
+	//vehicle is dead, no more lights
+	if(health <= 0 && luminosity)
+		SetLuminosity(0)
 	update_icon()

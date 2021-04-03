@@ -417,23 +417,17 @@ var/global/list/gear_datums = list()
 	cost = 1
 	slot = WEAR_IN_BACK
 
-/datum/gear/lucky_feather
+/datum/gear/lucky_feather/blue
 	display_name = "Lucky Feather - Blue"
 	path = /obj/item/prop/helmetgarb/lucky_feather/blue
-	cost = 1
-	slot = WEAR_IN_BACK
 
-/datum/gear/lucky_feather
+/datum/gear/lucky_feather/purple
 	display_name = "Lucky Feather - Purple"
 	path = /obj/item/prop/helmetgarb/lucky_feather/purple
-	cost = 1
-	slot = WEAR_IN_BACK
 
-/datum/gear/lucky_feather
+/datum/gear/lucky_feather/yellow
 	display_name = "Lucky Feather - Yellow"
 	path = /obj/item/prop/helmetgarb/lucky_feather/yellow
-	cost = 1
-	slot = WEAR_IN_BACK
 
 /datum/gear/helmet_gasmask
 	display_name = "M5 integrated gasmask"

@@ -57,21 +57,22 @@
 	name = "\improper Red Lucky Feather"
 	desc = "It is a riotous red color, made of really crummy plastic and synthetic threading, you know, the same sort of material every every Corporate Liaison's spine is made of."
 	icon_state = "lucky_feather"
+	color = "red"
 
 /obj/item/prop/helmetgarb/lucky_feather/blue
 	name = "\improper Blue Lucky Feather"
 	desc = "It is a brilliant blue color. You think you might have seen a bluejay in a holo-theatre once."
-	icon_state = "lucky_feather_blue"
+	color = "blue"
 
 /obj/item/prop/helmetgarb/lucky_feather/purple
 	name = "\improper Purple Lucky Feather"
 	desc = "It is a plucky purple color. Legend has it a station AI known as Shakespeare simulated 1000 monkeys typing gibberish in order to replicate the actual works of shakespeare. Art critics are on the fence if this is the first instance of true artificial abstract art."
-	icon_state = "lucky_feather_purple"
+	color = "purple"
 
 /obj/item/prop/helmetgarb/lucky_feather/yellow
-	name = "\improper Yellow Feather"
+	name = "\improper Yellow Lucky Feather"
 	desc = "It is an unyielding yellow color. They say the New Kansas colony produces more carpenters per capita than any other colony in all of UA controlled space."
-	icon_state = "lucky_feather_yellow"
+	color = "yellow"
 
 /obj/item/prop/helmetgarb/helmet_nvg
 	name = "\improper old M2 night vision goggles"

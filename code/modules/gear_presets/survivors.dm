@@ -870,7 +870,7 @@
 //*****************************CORSAT Survivors*******************************************************/
 
 /datum/equipment_preset/survivor/corsat_scientist
-	name = "Survivor - CORSAT Resaercher"
+	name = "Survivor - CORSAT Researcher"
 	assignment = "CORSAT Researcher"
 	skills = /datum/skills/civilian/survivor/scientist
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
@@ -937,8 +937,8 @@
 //*****************************CORSAT Survivors*******************************************************/
 
 /datum/equipment_preset/survivor/corsat_security
-	name = "Survivor - CORSAT Security Gaurd"
-	assignment = "CORSAT Security Gaurd"
+	name = "Survivor - CORSAT Security Guard"
+	assignment = "CORSAT Security Guard"
 	skills = /datum/skills/civilian/survivor/marshall
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl

@@ -115,10 +115,19 @@
 			if(M.behavior_delegate)
 				n_damage = M.behavior_delegate.melee_attack_modify_damage(n_damage, src)
 
-			if(SEND_SIGNAL(src, COMSIG_HUMAN_XENO_ATTACK, n_damage) & COMPONENT_CANCEL_XENO_ATTACK) return
+			if(M.behavior_delegate)
+				var/datum/behavior_delegate/MD = M.behavior_delegate
+				MD.melee_attack_additional_effects_target(src)
+				MD.melee_attack_additional_effects_self()
+
+			var/slash_noise = "alien_claw_flesh"
+			var/list/slashdata = list("n_damage" = n_damage, "slash_noise" = slash_noise)
+			SEND_SIGNAL(src, COMSIG_HUMAN_XENO_ATTACK, slashdata)
+			var/f_damage = slashdata["n_damage"]
+			slash_noise = slashdata["slash_noise"]
 
 			//The normal attack proceeds
-			playsound(loc, "alien_claw_flesh", 25, 1)
+			playsound(loc, slash_noise, 25, TRUE)
 			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
@@ -140,27 +149,22 @@
 			log_attack("[key_name(M)] slashed [key_name(src)]")
 
 			//nice messages so people know that armor works
-			if(n_damage <= 0.34*damage)
-				show_message(SPAN_WARNING("Your armor absorbs the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
-			else if(n_damage <= 0.67*damage)
-				show_message(SPAN_WARNING("Your armor softens the blow!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
+			if(f_damage <= 0.34*damage)
+				to_chat(src, SPAN_WARNING("Your armor absorbs the blow!"))
+			else if(f_damage <= 0.67*damage)
+				to_chat(src, SPAN_WARNING("Your armor softens the blow!"))
 
-			apply_damage(n_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
+			apply_damage(f_damage, BRUTE, affecting, sharp = 1, edge = 1) //This should slicey dicey
 			if(acid_damage)
 				playsound(loc, "acid_hit", 25, 1)
 				var/armor_block_acid = getarmor(affecting, ARMOR_BIO)
 				var/n_acid_damage = armor_damage_reduction(GLOB.marine_melee, acid_damage, armor_block_acid)
 				//nice messages so people know that armor works
 				if(n_acid_damage <= 0.34*acid_damage)
-					show_message(SPAN_WARNING("Your armor protects your from acid!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
+					to_chat(src, SPAN_WARNING("Your armor absorbs the acid!"))
 				else if(n_acid_damage <= 0.67*acid_damage)
-					show_message(SPAN_WARNING("Your armor reduces the effect of the acid!"), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
+					to_chat(src, SPAN_WARNING("Your armor softens the acid!"))
 				apply_damage(n_acid_damage, BURN, affecting) //Burn damage
-
-			if(M.behavior_delegate)
-				var/datum/behavior_delegate/MD = M.behavior_delegate
-				MD.melee_attack_additional_effects_target(src)
-				MD.melee_attack_additional_effects_self()
 
 			SEND_SIGNAL(M, COMSIG_HUMAN_ALIEN_ATTACK, src)
 

@@ -1238,7 +1238,7 @@ and you're good to go.
 
 	if(flags_gun_features & GUN_BURST_FIRING) return
 	if(world.time < guaranteed_delay_time) return
-	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0 || user.dazed)) return //We just put the gun up. Can't do it that fast
+	if((world.time < wield_time || world.time < pull_time) && (delay_style & WEAPON_DELAY_NO_FIRE > 0)) return //We just put the gun up. Can't do it that fast
 
 	if(ismob(user)) //Could be an object firing the gun.
 		if(!user.IsAdvancedToolUser())

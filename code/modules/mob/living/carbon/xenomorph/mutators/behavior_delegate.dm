@@ -9,25 +9,25 @@
 // One of these is instanced onto every xeno and is also used to track all additional state needed by the strain itself.
 //
 // A brief flowchart
-//      xeno New() -OR- strain applicator
-//                |
-//             constructs
-//               \/
-//         behavior_delegate
-//           attack procs  <- called by attacking code
-//           other stuff   <- called in xeno Life, etc
-//           constant variables <- used as balancing values for strains, etc
-//           state variables    <- used to store all strain-unique state associated with THIS xeno.
+//	  xeno New() -OR- strain applicator
+//				|
+//			 constructs
+//			   \/
+//		 behavior_delegate
+//		   attack procs  <- called by attacking code
+//		   other stuff   <- called in xeno Life, etc
+//		   constant variables <- used as balancing values for strains, etc
+//		   state variables	<- used to store all strain-unique state associated with THIS xeno.
 //
 //
 ///////////////////////////////////
 /datum/behavior_delegate
 
-    // Userfriendly name of the mutator
-    var/name = "Set This"
+	// Userfriendly name of the mutator
+	var/name = "Set This"
 
-    // The Xeno we handle mutator state for
-    var/mob/living/carbon/Xenomorph/bound_xeno
+	// The Xeno we handle mutator state for
+	var/mob/living/carbon/Xenomorph/bound_xeno
 
 /datum/behavior_delegate/Destroy(force, ...)
 	remove_from_xeno()
@@ -38,11 +38,11 @@
 // Handles anything that needs to be periodically ticked
 // for this mutator to function
 /datum/behavior_delegate/proc/on_life()
-    return
+	return
 
 // Returns any extra information to display via stat.
 /datum/behavior_delegate/proc/append_to_stat()
-    return list()
+	return list()
 
 /datum/behavior_delegate/proc/add_to_xeno()
 	return
@@ -54,13 +54,13 @@
 // Do not override this proc unless you need to affect the rolled damage
 // of an attack before it happens
 /datum/behavior_delegate/proc/melee_attack_modify_damage(original_damage, atom/A = null)
-    return original_damage
+	return original_damage
 
 /datum/behavior_delegate/proc/melee_attack_additional_effects_target(atom/A)
-    return
+	return
 
 /datum/behavior_delegate/proc/melee_attack_additional_effects_self()
-    SEND_SIGNAL(bound_xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
+	SEND_SIGNAL(bound_xeno, COMSIG_XENO_SLASH_ADDITIONAL_EFFECTS_SELF)
 
 // Identical to the above 3 procs but for ranged attacks.
 // Technically speaking, these are called whenever a xeno projectile impacts
@@ -69,24 +69,24 @@
 // adding damage to a projectile in the actual proc is highly nontrivial
 
 /datum/behavior_delegate/proc/ranged_attack_on_hit()
-    return
+	return
 
 /datum/behavior_delegate/proc/ranged_attack_additional_effects_target(atom/A)
-    return
+	return
 
 /datum/behavior_delegate/proc/ranged_attack_additional_effects_self()
-    return
+	return
 
 // Any special behaviors on reception of a projectile attack
 /datum/behavior_delegate/proc/on_hitby_projectile(ammo)
-    return
+	return
 
 // Behaviour when killing people
 
 /datum/behavior_delegate/proc/on_kill_mob(mob/M)
-    return
+	return
 
 // Handling specific behavior
 
 /datum/behavior_delegate/proc/handle_slash(mob/M)
-    return
+	return

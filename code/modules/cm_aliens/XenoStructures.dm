@@ -209,7 +209,7 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 
 	flags_obj = OBJ_ORGANIC
-
+	layer = DOOR_CLOSED_LAYER
 	tiles_with = list(/obj/structure/mineral_door/resin)
 
 /obj/structure/mineral_door/resin/Initialize(mapload, hive)
@@ -270,7 +270,7 @@
 	state = 1
 	update_icon()
 	isSwitchingStates = 0
-
+	layer = DOOR_OPEN_LAYER
 	spawn(close_delay)
 		if(!isSwitchingStates && state == 1)
 			Close()
@@ -292,6 +292,7 @@
 	state = 0
 	update_icon()
 	isSwitchingStates = 0
+	layer = DOOR_CLOSED_LAYER
 	for(var/turf/turf in locs)
 		if(locate(/mob/living) in turf)
 			Open()

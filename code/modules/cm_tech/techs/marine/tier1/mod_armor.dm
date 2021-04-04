@@ -121,19 +121,20 @@
 		playsound(user, armor_hitsound, 25, 1)
 		return COMPONENT_CANCEL_BULLET_ACT
 
-/obj/item/clothing/accessory/health/proc/take_slash_damage(mob/living/user, damage)
+/obj/item/clothing/accessory/health/proc/take_slash_damage(mob/living/user, list/slashdata)
 	SIGNAL_HANDLER
+	var/armor_damage = slashdata["n_damage"]
 	var/damage_to_nullify = armor_health
-	armor_health = max(armor_health - damage*slash_durability_mult, 0)
+	armor_health = max(armor_health - armor_damage*slash_durability_mult, 0)
 
 	update_icon()
 	if(!armor_health && damage_to_nullify)
 		user.show_message(SPAN_WARNING("You feel [src] break apart."), null, null, null, CHAT_TYPE_ARMOR_DAMAGE)
-		playsound(user, armor_shattersound, 35, 1)
+		playsound(user, armor_shattersound, 50, TRUE)
 
 	if(damage_to_nullify)
-		playsound(user, armor_hitsound, 25, 1)
-		return COMPONENT_CANCEL_XENO_ATTACK
+		slashdata["n_damage"] = 0
+		slashdata["slash_noise"] = armor_hitsound
 
 /obj/item/clothing/accessory/health/on_removed(mob/living/user, obj/item/clothing/C)
 	if(!has_suit)
@@ -170,6 +171,8 @@
 
 		qdel(H)
 		qdel(src)
+
+/obj/item/clothing/accessory/health/metal_plate
 
 /obj/item/clothing/accessory/health/ceramic_plate
 	name = "ceramic plate"

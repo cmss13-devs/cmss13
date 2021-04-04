@@ -71,4 +71,7 @@
 
 	next_slash_buffed = FALSE
 	H.apply_armoured_damage(get_xeno_damage_slash(total_bonus_damage), ARMOR_MELEE, BRUTE)
+	if(total_bonus_damage)
+		H.visible_message(SPAN_DANGER("[bound_xeno] tears into [H]!"))
+		playsound(bound_xeno, 'sound/weapons/alien_tail_attack.ogg', 25, TRUE)
 	return

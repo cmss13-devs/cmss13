@@ -95,7 +95,7 @@
 	custom_metabolism = AMOUNT_PER_TIME(1, 1 MINUTES) // Consumes 1 unit per minute.
 	overdose = LOWH_REAGENTS_OVERDOSE
 	overdose_critical = LOWH_REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_SPECIAL
+	chemclass = CHEM_CLASS_NONE
 	flags = REAGENT_SCANNABLE | REAGENT_TYPE_STIMULANT
 	var/jitter_speed = 0.3 SECONDS
 	var/jitter_per_amount = 2

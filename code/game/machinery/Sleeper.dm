@@ -103,20 +103,15 @@
 				for(var/chemical in connected.available_chemicals)
 					dat += "[connected.available_chemicals[chemical]]: [occupant.reagents.get_reagent_amount(chemical)] units<br>"
 			dat += "<A href='?src=\ref[src];refresh=1'>Refresh Meter Readings</A><BR>"
-			if(connected.beaker)
-				dat += "<HR><A href='?src=\ref[src];removebeaker=1'>Remove Beaker</A><BR>"
-				if(ishuman(occupant))
-					if(connected.filtering)
-						dat += "<A href='?src=\ref[src];togglefilter=1'>Stop Dialysis</A><BR>"
-						dat += "Output Beaker has [connected.beaker.reagents.maximum_volume - connected.beaker.reagents.total_volume] units of free space remaining<BR><HR>"
-					else
-						dat += "<HR><A href='?src=\ref[src];togglefilter=1'>Start Dialysis</A><BR>"
-						dat += "Output Beaker has [connected.beaker.reagents.maximum_volume - connected.beaker.reagents.total_volume] units of free space remaining<BR><HR>"
-				else
-					dat += "<HR>Dialysis Disabled - Non-human present.<BR><HR>"
 
+			if(ishuman(occupant))
+				if(connected.filtering)
+					dat += "<A href='?src=\ref[src];togglefilter=1'>Stop Dialysis</A><BR>"
+				else
+					dat += "<HR><A href='?src=\ref[src];togglefilter=1'>Start Dialysis</A><BR>"
+				dat += "Occupant has [occupant.reagents.total_volume] units of chemicals remaining<BR><HR>"
 			else
-				dat += "<HR>No Dialysis Output Beaker is present.<BR><HR>"
+				dat += "<HR>Dialysis Disabled - Non-human present.<BR><HR>"
 
 			for(var/chemical in connected.available_chemicals)
 				dat += "Inject [connected.available_chemicals[chemical]]: "
@@ -153,9 +148,6 @@
 					updateUsrDialog()
 		if (href_list["refresh"])
 			updateUsrDialog()
-		if (href_list["removebeaker"])
-			connected.remove_beaker()
-			updateUsrDialog()
 		if (href_list["togglefilter"])
 			connected.toggle_filter()
 			updateUsrDialog()
@@ -187,9 +179,9 @@
 	var/mob/living/carbon/human/occupant = null
 	var/available_chemicals = list("inaprovaline" = "Inaprovaline", "paracetamol" = "Paracetamol", "anti_toxin" = "Dylovene", "dexalin" = "Dexalin", "tricordrazine" = "Tricordrazine")
 	var/amounts = list(5, 10)
-	var/obj/item/reagent_container/glass/beaker = null
-	var/filtering = 0
+	var/filtering = FALSE
 	var/obj/structure/machinery/sleep_console/connected
+	var/reagent_removed_per_second = AMOUNT_PER_TIME(3, 1 SECONDS)
 
 	use_power = 1
 	idle_power_usage = 15
@@ -198,7 +190,6 @@
 
 /obj/structure/machinery/sleeper/Initialize()
 	. = ..()
-	beaker = new /obj/item/reagent_container/glass/beaker/large()
 	connect_sleeper_console()
 
 /obj/structure/machinery/sleeper/proc/connect_sleeper_console()
@@ -231,37 +222,19 @@
 /obj/structure/machinery/sleeper/allow_drop()
 	return 0
 
-
-/obj/structure/machinery/sleeper/on_stored_atom_del(atom/movable/AM)
-	if(AM == beaker)
-		beaker = null
-
-/obj/structure/machinery/sleeper/process()
+/obj/structure/machinery/sleeper/process(delta_time)
 	if (inoperable())
 		return
 
-	if(filtering > 0)
-		if(beaker)
-			if(beaker.reagents.total_volume < beaker.reagents.maximum_volume)
-				for(var/datum/reagent/x in occupant.reagents.reagent_list)
-					occupant.reagents.remove_reagent(x.id, 3)
+	if(filtering)
+		for(var/datum/reagent/x in occupant.reagents.reagent_list)
+			occupant.reagents.remove_reagent(x.id, reagent_removed_per_second*delta_time)
 
 	updateUsrDialog()
 
 
 /obj/structure/machinery/sleeper/attackby(var/obj/item/W, var/mob/living/user)
-	if(istype(W, /obj/item/reagent_container/glass))
-		if(!beaker)
-			if(user.drop_inv_item_to_loc(W, src))
-				beaker = W
-				user.visible_message("[user] adds \a [W] to \the [src]!", "You add \a [W] to \the [src]!")
-				updateUsrDialog()
-			return
-		else
-			to_chat(user, SPAN_WARNING("The sleeper has a beaker already."))
-			return
-
-	else if(istype(W, /obj/item/grab))
+	if(istype(W, /obj/item/grab))
 		if(isXeno(user)) return
 		var/obj/item/grab/G = W
 		if(!ismob(G.grabbed_thing))
@@ -310,24 +283,23 @@
 
 /obj/structure/machinery/sleeper/proc/toggle_filter()
 	if(!occupant)
-		filtering = 0
+		filtering = FALSE
 		return
 	if(filtering)
-		filtering = 0
+		filtering = FALSE
 	else
-		filtering = 1
+		filtering = TRUE
 
 /obj/structure/machinery/sleeper/proc/go_in_sleeper(mob/M)
 	M.forceMove(src)
 	update_use_power(2)
 	occupant = M
-	start_processing()
-	connected.start_processing()
+	START_PROCESSING(SSobj, src)
+	START_PROCESSING(SSobj, connected)
 	update_icon()
 	//prevents occupant's belonging from landing inside the machine
 	for(var/obj/O in src)
-		if(O != beaker)
-			O.forceMove(loc)
+		O.forceMove(loc)
 
 
 /obj/structure/machinery/sleeper/proc/go_out()
@@ -337,8 +309,8 @@
 		return
 	occupant.forceMove(loc)
 	occupant = null
-	stop_processing()
-	connected.stop_processing()
+	STOP_PROCESSING(SSobj, src)
+	STOP_PROCESSING(SSobj, connected)
 	update_use_power(1)
 	update_icon()
 
@@ -382,10 +354,6 @@
 		to_chat(user, "[]\t -Burn Severity %: []", (occupant.getFireLoss() < 60 ? SPAN_NOTICE("") : SPAN_DANGER("")), occupant.getFireLoss())
 		to_chat(user, SPAN_NOTICE(" Expected time till occupant can safely awake: (note: If health is below 20% these times are inaccurate)"))
 		to_chat(user, SPAN_NOTICE(" \t [occupant.knocked_out / 5] second\s (if around 1 or 2 the sleeper is keeping them asleep.)"))
-		if(beaker)
-			to_chat(user, SPAN_NOTICE(" \t Dialysis Output Beaker has [beaker.reagents.maximum_volume - beaker.reagents.total_volume] of free space remaining."))
-		else
-			to_chat(user, SPAN_NOTICE(" No Dialysis Output Beaker loaded."))
 	else
 		to_chat(user, SPAN_NOTICE(" There is no one inside!"))
 	return
@@ -398,19 +366,6 @@
 	if(usr.is_mob_incapacitated())
 		return
 	go_out()
-	add_fingerprint(usr)
-
-
-/obj/structure/machinery/sleeper/verb/remove_beaker()
-	set name = "Remove Beaker"
-	set category = "Object"
-	set src in oview(1)
-	if(usr.is_mob_incapacitated())
-		return
-	if(beaker)
-		filtering = 0
-		beaker.forceMove(usr.loc)
-		beaker = null
 	add_fingerprint(usr)
 
 

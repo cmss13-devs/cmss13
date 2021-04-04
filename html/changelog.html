@@ -64,6 +64,12 @@
 	</tr>
 </table>
 
+			<h2 class="date">04 April 2021</h2>
+			<h3 class="author">Segrain updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Status panel for xenomorphs once again works properly.</li>
+			</ul>
+
 			<h2 class="date">03 April 2021</h2>
 			<h3 class="author">Carlarc updated:</h3>
 			<ul class="changes bgimages16">
@@ -1297,96 +1303,6 @@
 			<ul class="changes bgimages16">
 				<li class="bugfix">CO has their mateba back</li>
 				<li class="bugfix">Provost Inspector and USCM Admiral have their headsets updated correctly</li>
-			</ul>
-
-			<h2 class="date">31 January 2021</h2>
-			<h3 class="author">Firartix updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">BYOND status now updates *after* map init as we now didn't know map yet, generating an error in world/New.</li>
-				<li class="bugfix">Fix incorrect handling of clan IDs when handling hunter ships</li>
-				<li class="bugfix">Added proper checks and error messages on failures during pred spawning</li>
-			</ul>
-			<h3 class="author">Paulrpg updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Gibbed marines now show as *Deceased* on view crew manifest, inline with non-gibbed marines.</li>
-				<li class="bugfix">Gibbed marines show as Dead on overwatch console</li>
-				<li class="bugfix">DNR marines will be flagged as *Deceased* immediately on view crew manifest</li>
-			</ul>
-			<h3 class="author">Sigil updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Default req claymores can be planted again.</li>
-				<li class="tweak">You can now deploy mines without detonators, although they still won't actually do anything. So check that there's an assembly inside before planting.</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Scopes should properly remove their buffs from a gun after unscoping via a UI button or a verb.</li>
-				<li class="bugfix">Fixed how evolving calculates the number of open slots.</li>
-				<li class="bugfix">Hive status displays the correct number of T2s and T3s now.</li>
-				<li class="rscadd">Queen can no longer be gibbed.</li>
-				<li class="tweak">Hive status displays the amount of guaranteed slots left.</li>
-				<li class="tweak">Hive status will now update every 2 seconds when queen is alive and every 10 seconds when queen is dead.</li>
-				<li class="tweak">Converted spaces to tabs in the hive_status.dm file.</li>
-				<li class="bugfix">Reverted an accidental hidden buff that made T3 slots equal to 25% of the total hive count rather than 20%.</li>
-				<li class="bugfix">Fixes stat panel options menu.</li>
-				<li class="tweak">Modified the formatting of the statbrowser tabs. Verbs should no longer have weird line spacing and the spacing between verbs and categories is reduced.</li>
-				<li class="tweak">Can now set the fontsize for the contents of statbrowser tabs, but not the tabs themselves.</li>
-				<li class="tweak">Added HTML_FILE define for when you're directly writing out an HTML file in code. For example, this is applicable for the browsers we have in-game.</li>
-				<li class="tweak">Modified the send_rsc define to accept variable arguments (should only be one or two if you are using it correctly).</li>
-				<li class="tweak">Status panel for observers shows DEFCON level.</li>
-			</ul>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Weapons set to burst can now be fired point-blank.</li>
-				<li class="rscadd">The burst will track the target as long as you remain within one tile of it. If you move apart, any remaining shots in the burst will lose lock and be fired normally towards its most recent position.</li>
-				<li class="rscadd">While the first shot in a PB is still perfectly accurate, subsequent shots in a burst check accuracy as usual. At PB range, this mostly only matters to people trying to onehand massively inaccurate weapons. Shotgun pellets still count as the first shot.</li>
-				<li class="rscadd">Missed PB burst projectiles fly safely into the ground or ceiling -- unless, as mentioned above, you move apart. If the target is prone and you move away from it, the fact that the bullets are not tracking it means that they will fly over its head.</li>
-				<li class="rscadd">Pointblank behaviour is based upon the bullet fired, bonus damage against prone targets, and an inconsistent damage buff that depends on which specific gun you're using. If a gun does not do something on a normal hit, it won't do it on a PB.  Unless the ammo is specifically coded to do so, I.E. the nailgun or battlefield execution. Buckshot stunning on point-blank is a characteristic of buckshot, not point-blanks.</li>
-				<li class="bugfix">Attempting to PB with an unloaded gun now goes *click*. Will hopefully clear up some "Why didn't my gun go off?" situations.</li>
-				<li class="bugfix">Firing an underbarrel shotgun from an unloaded gun should no longer display *click* unnecessarily.</li>
-				<li class="bugfix">A bullet flyby sfx was using the wrong filepath, and should now be audible.</li>
-			</ul>
-			<h3 class="author">Waltermeldron updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Toned down the sizes of some messages.</li>
-				<li class="tweak">Mentor chat can now be filtered by unticking the `Mod Chat` option</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the CO Gear Vendor</li>
-				<li class="rscadd">Added the CO Weapons Vendor</li>
-				<li class="wip">Vendors not present in the map yet.</li>
-				<li class="rscadd">Gave the CO a choice between three sidearms and three primaries. (Mateba (BE), Desert Eagle (BE), M1911) & (M46C, M16, FN FP9000)</li>
-				<li class="tweak">Changed the pathing for the mateba magazine to isolate BE ammo.</li>
-				<li class="rscadd">Added a standard mateba speedloader alongside the high-impact execution one.</li>
-				<li class="tweak">Rebalanced the Deagle stats.</li>
-				<li class="tweak">Removed the Golden Deagle from appearing normally. FOR NOW.</li>
-				<li class="rscadd">Added a subtype to the deagle for COs specifically.</li>
-				<li class="rscadd">Added high-impact deagle magazine. This only works in the new deagle subtype.</li>
-				<li class="soundadd">Added a deagle specific firesound.</li>
-				<li class="bugfix">CL ranks display correctly</li>
-				<li class="tweak">UPP have their proper ranks now</li>
-				<li class="rscadd">WalterMeldron Reworked the Paygrade System.</li>
-				<li class="rscadd">Added the UPP lore ranks and assigned them to their roles.</li>
-				<li class="rscadd">Added the RESS lore ranks and Job Defines.</li>
-				<li class="rscadd">Added Provost Ranks and Job Defines.</li>
-				<li class="rscadd">Added two Provost ERTs, Investigation and Enforcer teams.</li>
-				<li class="rscadd">Provost Equipment Presets.</li>
-				<li class="rscadd">USCM High Command Radio, Encryption Key and Radio Channel. Accessible via :T</li>
-				<li class="tweak">Changed the encryption key for PMC radios to have a unique name to tell apart from CL dispensed keys.</li>
-				<li class="tweak">Changed UPP Spy preset to use the correct paygrade and the standard issue tech satchel.</li>
-				<li class="tweak">All jobs Captain or higher can now MECHANICALLY pardon. This includes Provost Inspectors and Marshalls.</li>
-				<li class="imageadd">Sprites for Provost equipment by Nauticall</li>
-				<li class="tweak">Gives Admins the ability to fire OBs.</li>
-				<li class="tweak">Admins can now give mobs all skills and/or all access.</li>
-				<li class="tweak">Mods can use ARES again.</li>
-				<li class="tweak">Command Announcements now log directly to server file.</li>
-				<li class="rscadd">ARES messages now log to server file.</li>
-				<li class="rscadd">ARES messages now log to the almayer control console as they used to with communications console.</li>
-				<li class="tweak">High Command reports (if for the USCM) now print at the almayer control console.</li>
-			</ul>
-			<h3 class="author">optimisticdude updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added CLF M43 Holdout Pistol in Personal Cosmetics. The case comes with 1 loaded pistol and 1 additional magazine.</li>
 			</ul>
 </div>
 </body>

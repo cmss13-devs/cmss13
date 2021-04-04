@@ -49,3 +49,44 @@
 	SSvote.initiate_vote("groundmap", usr.ckey)
 	log_admin("[key_name(usr)] started a groundmap vote.")
 	message_admins("[key_name_admin(usr)] started a groundmap vote.")
+
+/datum/admins/proc/change_ship_map()
+    set category = "Server"
+    set name = "M: Change Ship Map"
+
+    if(!check_rights(R_SERVER))
+        return
+
+    var/list/maprotatechoices = list()
+    for(var/map in config.maplist[SHIP_MAP])
+        var/datum/map_config/VM = config.maplist[SHIP_MAP][map]
+        var/mapname = VM.map_name
+        if(VM == config.defaultmaps[SHIP_MAP])
+            mapname += " (Default)"
+
+        if(VM.config_min_users > 0 || VM.config_max_users > 0)
+            mapname += " \["
+            if(VM.config_min_users > 0)
+                mapname += "[VM.config_min_users]"
+            else
+                mapname += "0"
+            mapname += "-"
+            if(VM.config_max_users > 0)
+                mapname += "[VM.config_max_users]"
+            else
+                mapname += "inf"
+            mapname += "\]"
+
+        maprotatechoices[mapname] = VM
+
+    var/chosenmap = tgui_input_list(usr, "Choose a ship map to change to", "Change Ship Map", maprotatechoices)
+    if(!chosenmap)
+        return
+
+    var/datum/map_config/VM = maprotatechoices[chosenmap]
+    if(!SSmapping.changemap(VM, SHIP_MAP))
+        to_chat(usr, "<span class='warning'>Failed to change the ship map.</span>")
+        return
+
+    log_admin("[key_name(usr)] changed the ship map to [VM.map_name].")
+    message_admins("[key_name_admin(usr)] changed the ship map to [VM.map_name].")

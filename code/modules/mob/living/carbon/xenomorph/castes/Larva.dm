@@ -42,6 +42,7 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl
 		)
 	mutation_type = "Normal"
+	var/poolable = TRUE //Can it be safely pooled if it has no player?
 
 /mob/living/carbon/Xenomorph/Larva/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
@@ -65,6 +66,7 @@
 /mob/living/carbon/Xenomorph/Larva/predalien
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
+	poolable = FALSE //Not interchangeable with regular larvas in the pool.
 
 /mob/living/carbon/Xenomorph/Larva/predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()

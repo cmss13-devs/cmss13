@@ -1,10 +1,10 @@
 /obj/structure/machinery/space_heater
-	anchored = 0
-	density = 0
+	name = "space heater"
+	desc = "It's an electric space heater. It heats the room through radiation with electricity."
 	icon = 'icons/obj/structures/machinery/atmos.dmi'
 	icon_state = "sheater0"
-	name = "space heater"
-	desc = "Made by Space Amish using traditional space techniques, this heater is guaranteed not to set the station on fire."
+	anchored = FALSE
+	density = 0
 	var/obj/item/cell/cell
 	var/on = 0
 	var/open = 0
@@ -12,7 +12,6 @@
 	var/heating_power = 40000
 
 	flags_atom = FPRINT
-
 
 /obj/structure/machinery/space_heater/Initialize()
 	. = ..()
@@ -169,3 +168,14 @@
 			on = 0
 			stop_processing()
 			update_icon()
+
+/obj/structure/machinery/space_heater/radiator
+	name = "radiator"
+	desc = "It's a radiator. It heats the room through convection with hot water."
+	icon_state = "radiator"
+	anchored = TRUE
+
+/obj/structure/machinery/space_heater/radiator/red
+	name = "radiator"
+	desc = "It's a radiator. It heats the room through convection with hot water. This one has a red handle."
+	icon_state = "radiator-r"

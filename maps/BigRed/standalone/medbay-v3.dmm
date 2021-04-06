@@ -1829,7 +1829,7 @@
 	},
 /area/bigredv2/outside/medical)
 "eA" = (
-/obj/structure/sign/safety/medical_supplies{
+/obj/structure/sign/safety/medical{
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/dirt,

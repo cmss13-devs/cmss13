@@ -1096,7 +1096,7 @@
 	},
 /area/strata/ug/interior/jungle/deep/structures/res)
 "adh" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "adi" = (
@@ -5054,7 +5054,7 @@
 /turf/open/auto_turf/snow/layer1,
 /area/strata/ag/exterior/paths/cabin_area)
 "anU" = (
-/obj/structure/sign/safety/medical_supplies,
+/obj/structure/sign/safety/medical,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/canteen/personal_storage)
 "anV" = (
@@ -11748,7 +11748,7 @@
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/outpost/engi)
 "aGq" = (
-/obj/structure/sign/safety/computer,
+/obj/structure/sign/safety/terminal,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/engi_shed/six)
 "aGr" = (
@@ -12688,7 +12688,7 @@
 	},
 /area/strata/ag/interior/outpost/engi)
 "aJd" = (
-/obj/structure/sign/safety/computer,
+/obj/structure/sign/safety/terminal,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/engi)
 "aJe" = (
@@ -14148,7 +14148,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "aNh" = (
-/obj/structure/sign/safety/computer,
+/obj/structure/sign/safety/terminal,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/admin)
 "aNi" = (
@@ -20523,7 +20523,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "bfN" = (
-/obj/structure/sign/safety/radio,
+/obj/structure/sign/safety/radio_rad,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/admin)
 "bfO" = (
@@ -20556,7 +20556,7 @@
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/maint/med3)
 "bfS" = (
-/obj/structure/sign/safety/maintenance,
+/obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/maint/med3)
 "bfU" = (
@@ -24291,7 +24291,7 @@
 /turf/open/auto_turf/snow/layer2,
 /area/strata/ag/exterior/marsh/crash)
 "brG" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "brH" = (
@@ -24518,7 +24518,7 @@
 	},
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsz" = (
-/obj/structure/sign/safety/maintenance,
+/obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bsA" = (
@@ -25369,7 +25369,7 @@
 	},
 /area/strata/ag/interior/outpost/admin)
 "bvm" = (
-/obj/structure/sign/safety/maintenance,
+/obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/maint/aerodrome_to_admin)
 "bvn" = (
@@ -26536,7 +26536,7 @@
 	},
 /area/strata/ag/exterior/paths/cabin_area/minehead)
 "bAq" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/nearlz1)
 "bAr" = (
@@ -27418,7 +27418,7 @@
 	},
 /area/strata/ag/exterior/research_decks/west)
 "bGo" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/exterior/research_decks/north)
 "bGq" = (
@@ -28409,7 +28409,7 @@
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/exterior/research_decks/south)
 "bNq" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/exterior/paths/north_outpost)
 "bNM" = (
@@ -29257,7 +29257,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "bUJ" = (
-/obj/structure/sign/safety/maintenance,
+/obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/outpost/med)
 "bUK" = (
@@ -30009,7 +30009,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/lower_cafeteria)
 "bZH" = (
-/obj/structure/sign/safety/breakroom,
+/obj/structure/sign/safety/galley,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/canteen)
 "bZI" = (
@@ -30949,7 +30949,7 @@
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/dorms/maintenance)
 "cft" = (
-/obj/structure/sign/safety/maintenance,
+/obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/engi/drome)
 "cfv" = (
@@ -39680,7 +39680,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "mpr" = (
-/obj/structure/sign/safety/maintenance,
+/obj/structure/sign/safety/maint,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "mqs" = (

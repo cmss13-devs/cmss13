@@ -725,7 +725,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/obj/structure/sign/safety/high_radiation{
+/obj/structure/sign/safety/high_rad{
 	pixel_x = 32
 	},
 /turf/open/floor,
@@ -748,7 +748,7 @@
 	dir = 8;
 	icon_state = "tube1"
 	},
-/obj/structure/sign/safety/high_radiation{
+/obj/structure/sign/safety/high_rad{
 	pixel_x = -32
 	},
 /turf/open/floor,

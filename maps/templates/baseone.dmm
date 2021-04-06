@@ -347,7 +347,7 @@
 "aK" = (
 /obj/item/bedsheet/brown,
 /obj/structure/bed,
-/obj/structure/sign/safety/computer{
+/obj/structure/sign/safety/terminal{
 	pixel_x = -32
 	},
 /turf/open/floor/carpet{
@@ -1076,7 +1076,7 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "cw" = (
-/obj/structure/sign/safety/hydro,
+/obj/structure/sign/safety/biolab,
 /turf/closed/wall,
 /area/adminlevel/bunker01/kitchen)
 "cx" = (
@@ -1353,7 +1353,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/adminlevel/bunker01/mainroom)
 "dd" = (
-/obj/structure/sign/safety/breakroom{
+/obj/structure/sign/safety/galley{
 	pixel_y = 32
 	},
 /obj/structure/machinery/cm_vending/clothing/antag,
@@ -3503,7 +3503,7 @@
 	},
 /area/adminlevel/bunker01/medbay)
 "hk" = (
-/obj/structure/sign/safety/medical_supplies{
+/obj/structure/sign/safety/medical{
 	pixel_x = 0;
 	pixel_y = -32
 	},

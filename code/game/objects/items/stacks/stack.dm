@@ -279,12 +279,11 @@
 	return
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	..()
 	if (istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
 		if(S.stack_id == stack_id) //same stack type
 			if (S.amount >= max_amount)
-				to_chat(user, SPAN_NOTICE("That stack is full!"))
+				to_chat(user, SPAN_NOTICE("The stack is full!"))
 				return 1
 			var/to_transfer
 			if (user.get_inactive_hand()==src)

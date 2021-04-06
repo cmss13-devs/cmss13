@@ -240,15 +240,11 @@ cases. Override_icon_state should be a list.*/
 		var/obj/item/storage/S = W
 		if(S.storage_flags & STORAGE_CLICK_GATHER && isturf(loc))
 			if(S.storage_flags & STORAGE_GATHER_SIMULTAENOUSLY) //Mode is set to collect all items on a tile and we clicked on a valid one.
-				var/list/rejections = list()
 				var/success = 0
 				var/failure = 0
 
 				for(var/obj/item/I in src.loc)
-					if(I.type in rejections) // To limit bag spamming: any given type only complains once
-						continue
-					if(!S.can_be_inserted(I))	// Note can_be_inserted still makes noise when the answer is no
-						rejections += I.type	// therefore full bags are still a little spammy
+					if(!S.can_be_inserted(I, TRUE))
 						failure = 1
 						continue
 					success = 1

@@ -180,17 +180,51 @@
 /area/almayer/shipboard/brig
 	name = "\improper Brig"
 	icon_state = "brig"
-	fake_zlevel = 1
+	fake_zlevel = 1 //upperdeck
 
-/area/almayer/shipboard/brig_cells
+/area/almayer/shipboard/brig/lobby
+	name = "\improper Brig Lobby"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/armory
+	name = "\improper Brig Armory"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/main_office_perma
+	name = "\improper Brig Main Office and Perma"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/secondary_office
+	name = "\improper Brig Secondary Office"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/surgery
+	name = "\improper Brig Surgery"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/general_equipment
+	name = "\improper Brig General Equipment"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/evidence_storage
+	name = "\improper Brig Evidence Storage"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/execution
+	name = "\improper Brig Execution Room"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/cic_hallway
+	name = "\improper Brig CiC Hallway"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/cells
 	name = "\improper Brig Cells"
 	icon_state = "brigcells"
-	fake_zlevel = 1
 
-/area/almayer/shipboard/chief_mp_office
+/area/almayer/shipboard/brig/chief_mp_office
 	name = "\improper Brig Chief MP Office"
 	icon_state = "chiefmpoffice"
-	fake_zlevel = 1
 
 /area/almayer/shipboard/sea_office
 	name = "\improper Senior Enlisted Advisor Office"
@@ -276,11 +310,6 @@
 	icon_state = "starboard"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hull/under_hull
-	name = "\improper Hull Under"
-	icon_state = "lowerhull"
-	fake_zlevel = 3
-
 /area/almayer/hull/lower_hull
 	name = "\improper Hull Lower"
 	icon_state = "lowerhull"
@@ -290,6 +319,54 @@
 	name = "\improper Hull Upper"
 	icon_state = "upperhull"
 	fake_zlevel = 1 // upperdeck
+
+/area/almayer/hull/upper_hull/u_f_s
+	name = "\improper Upper Fore-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_m_s
+	name = "\improper Upper Midship-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_a_s
+	name = "\improper Upper Aft-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_f_p
+	name = "\improper Upper Fore-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_m_p
+	name = "\improper Upper Midship-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_a_p
+	name = "\improper Upper Aft-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_f_s
+	name = "\improper Lower Fore-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_m_s
+	name = "\improper Lower Midship-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_a_s
+	name = "\improper Lower Aft-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_f_p
+	name = "\improper Lower Fore-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_m_p
+	name = "\improper Lower Midship-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_a_p
+	name = "\improper Lower Aft-Port Hull"
+	icon_state = "upperhull"
 
 /area/almayer/living/cryo_cells
 	name = "\improper Cryo Cells"
@@ -396,8 +473,8 @@
 	icon_state = "officerrnr"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/medical/lower_medical
-	name = "\improper Medical Lower"
+/area/almayer/medical/lower_medical_lobby
+	name = "\improper Medical Lower Lobby"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
@@ -489,8 +566,8 @@
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 50
 
-/area/almayer/medical/surgery_hallway
-	name = "\improper Medical Surgical Hallway"
+/area/almayer/medical/lower_medical_medbay
+	name = "\improper Medical Lower Medbay"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC

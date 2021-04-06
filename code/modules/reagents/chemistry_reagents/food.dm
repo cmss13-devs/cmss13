@@ -14,6 +14,67 @@
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
 
+/datum/reagent/nutriment/egg
+	name = "Egg"
+	id = "egg"
+	description = "The contents of an egg. Salmonella not included."
+
+/datum/reagent/nutriment/tofu
+	name = "Tofu"
+	id = "tofu"
+	description = "Meat substitute."
+
+/datum/reagent/nutriment/cheese
+	name = "Cheese"
+	id = "cheese"
+	description = "This used to be milk."
+
+/datum/reagent/nutriment/meat
+	name = "Meat Protein"
+	id = "meatprotein"
+	description = "Proteins found in various types of meat."
+
+/datum/reagent/nutriment/meat/fish
+	name = "Fish Meat"
+	id = "fishmeat"
+	description = "It used to swim."
+
+/datum/reagent/nutriment/grown
+	name = "Plant Matter"
+	id = "plantmatter"
+	description = "Some sort of plant."
+
+/datum/reagent/nutriment/grown/vegetable
+	name = "Vegetable"
+	id = "vegetable"
+	description = "Some sort of vegetable."
+
+/datum/reagent/nutriment/grown/fruit
+	name = "Fruit"
+	id = "fruit"
+	description = "Some sort of fruit."
+
+/datum/reagent/nutriment/grown/mushroom
+	name = "Mushroom"
+	id = "mushroom"
+	description = "Some sort of fungus."
+
+/datum/reagent/nutriment/dough
+	name = "Dough"
+	id = "dough"
+	description = "Wet flour."
+
+/datum/reagent/nutriment/dough/bread
+	name = "Bread"
+	id = "bread"
+	description = "Cooked bread."
+
+/datum/reagent/nutriment/dough/noodles
+	name = "Noodles"
+	id = "noodles"
+	description = "Cooked noodles."
+
+
 /datum/reagent/lipozine
 	name = "Lipozine" // The anti-nutriment.
 	id = "lipozine"

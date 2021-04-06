@@ -185,6 +185,7 @@
 	required_reagents = list("cola" = 6, "uranium" = 1)
 	result_amount = 6
 
+
 /datum/chemical_reaction/moonshine
 	name = "Moonshine"
 	id = "moonshine"
@@ -192,6 +193,22 @@
 	required_reagents = list("nutriment" = 10)
 	required_catalysts = list("enzyme" = 5)
 	result_amount = 10
+
+/datum/chemical_reaction/moonshine/plantmatter
+	required_reagents = list("plantmatter" = 10)
+
+/datum/chemical_reaction/moonshine/vegetable
+	required_reagents = list("vegetable" = 10)
+
+/datum/chemical_reaction/moonshine/fruit
+	required_reagents = list("fruit" = 10)
+
+/datum/chemical_reaction/moonshine/mushroom
+	required_reagents = list("mushroom" = 10)
+
+/datum/chemical_reaction/moonshine/bread
+	required_reagents = list("bread" = 10)
+
 
 /datum/chemical_reaction/grenadine
 	name = "Grenadine Syrup"

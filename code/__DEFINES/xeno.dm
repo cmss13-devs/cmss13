@@ -1,7 +1,5 @@
 #define XENOCON_THRESHOLD 6000
 
-#define XENO_HIVE_EVOLUTION_FREETIME 3000 // 5 minutes of free evolution
-
 #define TUNNEL_MOVEMENT_XENO_DELAY 20
 #define TUNNEL_MOVEMENT_BIG_XENO_DELAY 60
 #define TUNNEL_MOVEMENT_LARVA_DELAY 5
@@ -46,7 +44,7 @@
 #define HUD_ARMOR_STATES_XENO  10
 
 /// Multiplier for time taken for a xeno to place down a resin structure
-#define BUILD_TIME_MULT_XENO        1 
+#define BUILD_TIME_MULT_XENO        1
 #define BUILD_TIME_MULT_BUILDER	    1
 #define BUILD_TIME_MULT_HIVELORD    0.5
 

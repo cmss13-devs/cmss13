@@ -209,6 +209,7 @@
 	var/evolution_bonus = 0
 
 	var/allow_no_queen_actions = FALSE
+	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
 	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
 	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
 

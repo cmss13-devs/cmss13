@@ -354,14 +354,14 @@
 	)
 	result = /obj/item/reagent_container/food/snacks/eggplantparm
 
-/datum/recipe/soylenviridians
+/datum/recipe/soylentviridians
 	items = list(
 		/obj/item/reagent_container/food/snacks/flour,
 		/obj/item/reagent_container/food/snacks/flour,
 		/obj/item/reagent_container/food/snacks/flour,
 		/obj/item/reagent_container/food/snacks/grown/soybeans
 	)
-	result = /obj/item/reagent_container/food/snacks/soylenviridians
+	result = /obj/item/reagent_container/food/snacks/soylentviridians
 
 /datum/recipe/soylentgreen
 	items = list(

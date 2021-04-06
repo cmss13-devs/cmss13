@@ -178,6 +178,8 @@
 	amount = min(min(amount, total_volume), R.maximum_volume - R.total_volume)
 	trans_to_datum(V, amount, reaction = FALSE)
 
+	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
+
 	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
 			V.del_reagent(RG.id)

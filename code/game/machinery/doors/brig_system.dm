@@ -375,3 +375,7 @@
 /obj/structure/machinery/brig_cell/cell_3
 	name = "Cell 3"
 	id = "Cell 3"
+
+/obj/structure/machinery/brig_cell/cell_4
+	name = "Cell 4"
+	id = "Cell 4"

@@ -3270,7 +3270,7 @@
 /area/kutjevo/interior/colony_South)
 "kM" = (
 /obj/item/storage/briefcase,
-/obj/structure/sign/safety/medical_supplies{
+/obj/structure/sign/safety/medical{
 	pixel_y = 32
 	},
 /obj/structure/stairs/perspective/kutjevo{

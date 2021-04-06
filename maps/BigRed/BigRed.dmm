@@ -171,7 +171,7 @@
 /area/bigredv2/outside/space_port)
 "aax" = (
 /obj/structure/filingcabinet,
-/obj/structure/sign/safety/vent{
+/obj/structure/sign/safety/HVAC{
 	pixel_x = -32
 	},
 /turf/open/floor{
@@ -2921,7 +2921,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "ahD" = (
-/obj/structure/sign/safety/medical_supplies{
+/obj/structure/sign/safety/medical{
 	pixel_y = -32
 	},
 /turf/open/floor{
@@ -3804,7 +3804,7 @@
 /area/bigredv2/outside/n)
 "ajU" = (
 /obj/structure/machinery/light/small,
-/obj/structure/sign/safety/maintenance{
+/obj/structure/sign/safety/maint{
 	pixel_y = -32
 	},
 /turf/open/floor/plating,
@@ -5126,7 +5126,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "anw" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/breakroom)
 "anx" = (
@@ -6498,7 +6498,7 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "arc" = (
-/obj/structure/sign/safety/medical_supplies{
+/obj/structure/sign/safety/medical{
 	pixel_x = 32
 	},
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -7224,7 +7224,7 @@
 	},
 /area/bigredv2/outside/general_offices)
 "asV" = (
-/obj/structure/sign/safety/EVA{
+/obj/structure/sign/safety/airlock{
 	pixel_y = 32
 	},
 /turf/open/floor{
@@ -7789,7 +7789,7 @@
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/w)
 "auo" = (
-/obj/structure/sign/safety/maintenance{
+/obj/structure/sign/safety/maint{
 	pixel_y = 32
 	},
 /turf/open/floor{
@@ -10485,7 +10485,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aBh" = (
-/obj/structure/sign/safety/breakroom{
+/obj/structure/sign/safety/galley{
 	pixel_x = 32
 	},
 /turf/open/floor{
@@ -11463,7 +11463,7 @@
 	},
 /area/bigredv2/outside/medical)
 "aDG" = (
-/obj/structure/sign/safety/medical_supplies{
+/obj/structure/sign/safety/medical{
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -13408,7 +13408,7 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "aIA" = (
-/obj/structure/sign/safety/hydro{
+/obj/structure/sign/safety/biolab{
 	pixel_y = 32
 	},
 /obj/structure/machinery/alarm{
@@ -13981,7 +13981,7 @@
 /area/bigredv2/caves/lambda/research)
 "aJO" = (
 /obj/structure/machinery/light,
-/obj/structure/sign/safety/rad_hazard{
+/obj/structure/sign/safety/rad_haz{
 	pixel_y = -32
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -17360,7 +17360,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aRV" = (
-/obj/structure/sign/safety/computer{
+/obj/structure/sign/safety/terminal{
 	pixel_y = -32
 	},
 /turf/open/floor{
@@ -19388,7 +19388,7 @@
 	},
 /area/bigredv2/outside/admin_building)
 "aXg" = (
-/obj/structure/sign/safety/computer{
+/obj/structure/sign/safety/terminal{
 	pixel_y = 32
 	},
 /obj/effect/landmark/good_item,
@@ -20151,7 +20151,7 @@
 	},
 /area/bigredv2/outside/office_complex)
 "aZG" = (
-/obj/structure/sign/safety/breakroom{
+/obj/structure/sign/safety/galley{
 	pixel_x = 32
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -23575,7 +23575,7 @@
 	},
 /area/bigredv2/outside/c)
 "bkf" = (
-/obj/structure/sign/safety/atmospherics{
+/obj/structure/sign/safety/distribution_pipes{
 	pixel_y = -32
 	},
 /turf/open/mars,
@@ -24053,7 +24053,7 @@
 "bmb" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/safety/atmospherics{
+/obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 32
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -25353,7 +25353,7 @@
 	},
 /area/bigredv2/outside/sw)
 "brI" = (
-/obj/structure/sign/safety/breakroom{
+/obj/structure/sign/safety/galley{
 	pixel_x = -32
 	},
 /obj/item/stack/sheet/metal{

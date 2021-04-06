@@ -672,7 +672,7 @@
 	},
 /area/bigredv2/outside/s)
 "cn" = (
-/obj/structure/sign/safety/atmospherics{
+/obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 32
 	},
 /turf/closed/wall/solaris/reinforced,
@@ -721,7 +721,7 @@
 /area/bigredv2/outside/filtration_plant)
 "tB" = (
 /obj/structure/closet/firecloset/full,
-/obj/structure/sign/safety/atmospherics{
+/obj/structure/sign/safety/distribution_pipes{
 	pixel_x = 32
 	},
 /turf/open/floor,

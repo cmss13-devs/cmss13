@@ -6182,7 +6182,7 @@
 	},
 /area/fiorina/station/civres_blue)
 "dHd" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/civres)
 "dHp" = (
@@ -12817,7 +12817,7 @@
 	},
 /area/fiorina/lz/near_lzII)
 "hLM" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/fiorina/tumor/fiberbush)
 "hLO" = (

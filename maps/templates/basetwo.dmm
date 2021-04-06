@@ -1413,7 +1413,7 @@
 	},
 /area/adminlevel/bunker01/kitchen)
 "dt" = (
-/obj/structure/sign/safety/hydro,
+/obj/structure/sign/safety/biolab,
 /turf/closed/wall,
 /area/adminlevel/bunker01/hydroponics)
 "du" = (

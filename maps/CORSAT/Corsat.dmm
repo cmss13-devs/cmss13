@@ -24676,7 +24676,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/hangar)
 "bnM" = (
-/obj/structure/sign/safety/medical_supplies,
+/obj/structure/sign/safety/medical,
 /turf/closed/wall/almayer/white,
 /area/corsat/gamma/medbay)
 "bnN" = (
@@ -24842,11 +24842,11 @@
 /turf/closed/wall/r_wall/biodome/biodome_unmeltable,
 /area/corsat/sigma/south/complex)
 "box" = (
-/obj/structure/sign/safety/radio,
+/obj/structure/sign/safety/radio_rad,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/southeast/telecomm)
 "boy" = (
-/obj/structure/sign/safety/computer,
+/obj/structure/sign/safety/terminal,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/southeast/telecomm)
 "boz" = (
@@ -24884,7 +24884,7 @@
 	},
 /area/corsat/gamma/security)
 "boE" = (
-/obj/structure/sign/safety/hydro{
+/obj/structure/sign/safety/biolab{
 	pixel_y = 32
 	},
 /turf/open/floor/corsat{
@@ -24893,7 +24893,7 @@
 	},
 /area/corsat/theta/biodome/hydrowest)
 "boF" = (
-/obj/structure/sign/safety/hydro{
+/obj/structure/sign/safety/biolab{
 	pixel_y = 32
 	},
 /turf/open/floor/corsat{
@@ -24902,7 +24902,7 @@
 	},
 /area/corsat/theta/biodome/hydroeast)
 "boG" = (
-/obj/structure/sign/safety/hydro{
+/obj/structure/sign/safety/biolab{
 	pixel_y = -32
 	},
 /turf/open/floor/corsat{
@@ -24910,7 +24910,7 @@
 	},
 /area/corsat/theta/biodome/hydrowest)
 "boH" = (
-/obj/structure/sign/safety/hydro{
+/obj/structure/sign/safety/biolab{
 	pixel_y = -32
 	},
 /turf/open/floor/corsat{
@@ -26697,7 +26697,7 @@
 	},
 /area/corsat/gamma/cargo)
 "buB" = (
-/obj/structure/sign/safety/atmospherics{
+/obj/structure/sign/safety/distribution_pipes{
 	desc = "A sign that denotes the proximity of a life support system."
 	},
 /turf/closed/wall/biodome,
@@ -50556,7 +50556,7 @@
 	},
 /area/corsat/gamma/hangar)
 "mab" = (
-/obj/structure/sign/safety/high_radiation{
+/obj/structure/sign/safety/high_rad{
 	pixel_x = 32
 	},
 /turf/open/floor/corsat{

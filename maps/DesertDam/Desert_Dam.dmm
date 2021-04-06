@@ -21,7 +21,7 @@
 /turf/open/desert/desert_shore/desert_shore1,
 /area/desert_dam/exterior/river/riverside_east)
 "aad" = (
-/obj/structure/sign/safety/blast_door,
+/obj/structure/sign/safety/bulkhead_door,
 /turf/closed/wall/r_wall,
 /area/desert_dam/exterior/rock)
 "aae" = (

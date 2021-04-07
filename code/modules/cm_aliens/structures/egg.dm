@@ -28,7 +28,7 @@
 
 /obj/effect/alien/egg/Destroy()
 	. = ..()
-	delete_egg_triggers()
+	QDEL_NULL_LIST(egg_triggers)
 
 /obj/effect/alien/egg/ex_act(severity)
 	Burst(TRUE)//any explosion destroys the egg.
@@ -94,28 +94,29 @@
 	var/x_coords = list(-1,-1,-1,0,0,1,1,1)
 	var/y_coords = list(1,0,-1,1,-1,1,0,-1)
 	var/turf/target_turf
-	for(var/atom/trigger in egg_triggers)
+	for(var/trigger in egg_triggers)
 		var/obj/effect/egg_trigger/ET = trigger
 		target_turf = locate(x+x_coords[i],y+y_coords[i], z)
 		if(target_turf)
 			ET.forceMove(target_turf)
 			i++
 
-/obj/effect/alien/egg/proc/delete_egg_triggers()
-	QDEL_NULL_LIST(egg_triggers)
-	egg_triggers = list()
+/obj/effect/alien/egg/proc/hide_egg_triggers()
+	for(var/trigger in egg_triggers)
+		var/obj/effect/egg_trigger/ET = trigger
+		ET.moveToNullspace()
 
 /obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/Xenomorph/X = null) //drops and kills the hugger if any is remaining
 	set waitfor = 0
 	if(kill && status != EGG_DESTROYED)
-		delete_egg_triggers()
+		hide_egg_triggers()
 		status = EGG_DESTROYED
 		icon_state = "Egg Exploded"
 		flick("Egg Exploding", src)
 		playsound(src.loc, "sound/effects/alien_egg_burst.ogg", 25)
 	else if(status == EGG_GROWN || status == EGG_GROWING)
 		status = EGG_BURSTING
-		delete_egg_triggers()
+		hide_egg_triggers()
 		icon_state = "Egg Opened"
 		flick("Egg Opening", src)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
@@ -134,13 +135,6 @@
 				child.leap_at_nearest_target()
 			else
 				child.go_idle()
-
-/obj/effect/alien/egg/proc/replace_triggers()
-	if(isnull(loc) || status == EGG_DESTROYED)
-		return
-
-	create_egg_triggers()
-	deploy_egg_triggers()
 
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
 	..()
@@ -188,7 +182,7 @@
 
 				qdel(F)
 
-				addtimer(CALLBACK(src, .proc/replace_triggers), 30 SECONDS)
+				addtimer(CALLBACK(src, .proc/deploy_egg_triggers), 30 SECONDS)
 			if(EGG_DESTROYED)
 				to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
 			if(EGG_GROWING, EGG_GROWN)

@@ -21392,9 +21392,9 @@
 "bsf" = (
 /obj/structure/largecrate/random,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -34381,6 +34381,26 @@
 	tag = "icon-green (SOUTHWEST)"
 	},
 /area/almayer/hallways/starboard_hallway)
+"cqn" = (
+/obj/structure/machinery/door/poddoor/almayer/locked{
+	dir = 4;
+	id = "Cell 4"
+	},
+/obj/structure/machinery/door/airlock/almayer/generic/autoname,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/door/poddoor/almayer/open{
+	dir = 4;
+	id = "courtyard_cells";
+	name = "\improper Courtyard Lockdown Shutter"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/shipboard/brig/cells)
 "cqz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -34567,9 +34587,9 @@
 "cvP" = (
 /obj/structure/machinery/vending/security,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -34702,7 +34722,7 @@
 /area/almayer/shipboard/brig/secondary_office)
 "czJ" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -35500,7 +35520,9 @@
 	},
 /area/almayer/engineering/engineering_workshop/hangar)
 "cUi" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/machinery/bodyscanner{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_side";
@@ -35981,6 +36003,9 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_m_s)
+"dgZ" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/general_equipment)
 "dhF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -36481,9 +36506,9 @@
 /area/almayer/hallways/aft_hallway)
 "drf" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "redcorner";
@@ -38863,7 +38888,7 @@
 /area/almayer/command/cichallway)
 "ext" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -40518,7 +40543,7 @@
 /area/almayer/hull/upper_hull/u_a_p)
 "flP" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -40529,6 +40554,11 @@
 /area/almayer/hull/upper_hull/u_f_p)
 "flW" = (
 /obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light{
+	dir = 4;
+	invisibility = 101;
+	tag = "icon-tube1 (EAST)"
+	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
@@ -41003,9 +41033,9 @@
 "fwF" = (
 /obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -42933,9 +42963,6 @@
 	},
 /area/almayer/command/cichallway)
 "gtt" = (
-/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
-	pixel_y = 25
-	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -44477,7 +44504,7 @@
 	},
 /obj/item/device/binoculars,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -45248,6 +45275,14 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/squads/req)
+"hAi" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "isolationchamber 3";
+	name = "\improper Isolation Chamber One"
+	},
+/turf/open/floor/plating,
+/area/almayer/shipboard/brig/main_office_perma)
 "hAz" = (
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
@@ -45516,6 +45551,18 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
+"hGO" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/light{
+	dir = 8;
+	invisibility = 101
+	},
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "silver";
+	tag = "icon-silver (WEST)"
+	},
+/area/almayer/living/briefing)
 "hGZ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/almayer{
@@ -46007,7 +46054,7 @@
 /turf/closed/wall/almayer/outer,
 /area/almayer/hull/lower_hull/l_a_p)
 "hTu" = (
-/obj/structure/machinery/disposal,
+/obj/structure/machinery/light,
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "hTT" = (
@@ -46998,7 +47045,7 @@
 "iuT" = (
 /obj/structure/closet/emcloset,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -47231,6 +47278,20 @@
 	tag = "icon-orange (NORTH)"
 	},
 /area/almayer/hallways/stern_hallway)
+"iBf" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	name = "\improper Security Isolation"
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "isolationchamber 2";
+	name = "\improper Isolation Chamber One"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/brig/main_office_perma)
 "iBt" = (
 /turf/closed/shuttle/escapepod{
 	icon_state = "wall7";
@@ -47252,6 +47313,9 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/command/cichallway)
+"iCb" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/secondary_office)
 "iCu" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
 	dir = 2;
@@ -47303,9 +47367,6 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/vehiclehangar)
 "iDi" = (
-/obj/structure/machinery/power/apc/almayer{
-	dir = 8
-	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
@@ -47856,6 +47917,13 @@
 	tag = "icon-emerald (NORTHWEST)"
 	},
 /area/almayer/living/port_emb)
+"iQx" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor/almayer,
+/area/almayer/hull/lower_hull/l_f_p)
 "iQQ" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "3,6"
@@ -49246,7 +49314,7 @@
 	tag = "icon-intact-supply (SOUTHEAST)"
 	},
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -51030,6 +51098,9 @@
 /obj/structure/machinery/computer/secure_data{
 	dir = 8
 	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med{
+	pixel_y = 25
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -51660,7 +51731,7 @@
 /area/almayer/living/port_emb)
 "kPo" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -52506,7 +52577,7 @@
 /area/almayer/medical/containment)
 "lmW" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -55464,6 +55535,16 @@
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
+"mRc" = (
+/obj/structure/largecrate/random/barrel/white,
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "mRl" = (
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 8;
@@ -55678,9 +55759,9 @@
 /area/almayer/hallways/hangar)
 "mWe" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "red";
@@ -57699,6 +57780,20 @@
 	tag = "icon-green"
 	},
 /area/almayer/hallways/starboard_hallway)
+"nWy" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	name = "\improper Security Isolation"
+	},
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "isolationchamber 3";
+	name = "\improper Isolation Chamber One"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/shipboard/brig/main_office_perma)
 "nXm" = (
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -58472,6 +58567,10 @@
 	pixel_x = -8;
 	pixel_y = 6
 	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
 "oqS" = (
@@ -58573,9 +58672,9 @@
 "osT" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
@@ -58622,7 +58721,7 @@
 /area/almayer/lifeboat_pumps/south1)
 "ouV" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -59293,6 +59392,10 @@
 "oMM" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/emails,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
 /turf/open/floor/strata{
 	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
 	icon = 'icons/turf/floors/floors.dmi';
@@ -59603,9 +59706,9 @@
 /area/almayer/medical/lower_medical_lobby)
 "oWg" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 5;
@@ -61011,13 +61114,6 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/obj/structure/machinery/iv_drip,
-/obj/structure/transmitter{
-	name = "Medical Telephone";
-	phone_category = "Almayer";
-	phone_id = "Medical";
-	pixel_y = 30
-	},
 /turf/open/floor/almayer{
 	icon_state = "blue";
 	tag = "icon-blue"
@@ -61314,6 +61410,21 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/hydroponics)
+"pTP" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/simple/hidden/supply{
+	dir = 4;
+	tag = "icon-intact-supply (EAST)"
+	},
+/obj/structure/machinery/power/apc/almayer,
+/turf/open/floor/almayer{
+	dir = 8;
+	icon_state = "redcorner";
+	tag = "icon-redcorner (WEST)"
+	},
+/area/almayer/shipboard/brig/lobby)
 "pTT" = (
 /obj/structure/platform{
 	dir = 4
@@ -61757,6 +61868,14 @@
 	icon_state = "mono"
 	},
 /area/almayer/lifeboat_pumps/north2)
+"qce" = (
+/obj/structure/largecrate/random/barrel/red,
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 "qck" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/security/wooden_tv{
@@ -62852,6 +62971,14 @@
 	icon_state = "1,2"
 	},
 /area/almayer/lifeboat/boat1)
+"qIf" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/almayer{
+	id = "isolationchamber 2";
+	name = "\improper Isolation Chamber One"
+	},
+/turf/open/floor/plating,
+/area/almayer/shipboard/brig/main_office_perma)
 "qJf" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
 /obj/item/weapon/gun/shotgun/combat,
@@ -63191,6 +63318,22 @@
 "qRe" = (
 /obj/structure/closet/secure_closet{
 	name = "\improper Lethal Injection Locker"
+	},
+/obj/item/reagent_container/hypospray/autoinjector/quickclot{
+	desc = "An autoinjector loaded with a mixture of quickclot meant for lethal injections. INSTRUCTIONS: INJECT PERSON TO BE EXECUTED WITH TWO FULL INJECTORS.";
+	name = "LETHAL INJECTION, USE TWO FULL INJECTORS."
+	},
+/obj/item/reagent_container/hypospray/autoinjector/quickclot{
+	desc = "An autoinjector loaded with a mixture of quickclot meant for lethal injections. INSTRUCTIONS: INJECT PERSON TO BE EXECUTED WITH TWO FULL INJECTORS.";
+	name = "LETHAL INJECTION, USE TWO FULL INJECTORS."
+	},
+/obj/item/reagent_container/hypospray/autoinjector/quickclot{
+	desc = "An autoinjector loaded with a mixture of quickclot meant for lethal injections. INSTRUCTIONS: INJECT PERSON TO BE EXECUTED WITH TWO FULL INJECTORS.";
+	name = "LETHAL INJECTION, USE TWO FULL INJECTORS."
+	},
+/obj/item/reagent_container/hypospray/autoinjector/quickclot{
+	desc = "An autoinjector loaded with a mixture of quickclot meant for lethal injections. INSTRUCTIONS: INJECT PERSON TO BE EXECUTED WITH TWO FULL INJECTORS.";
+	name = "LETHAL INJECTION, USE TWO FULL INJECTORS."
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -65248,6 +65391,9 @@
 	tag = "icon-red (WEST)"
 	},
 /area/almayer/shipboard/port_missiles)
+"rVZ" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/execution)
 "rWb" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/almayer/white/outer_tile,
@@ -67774,7 +67920,7 @@
 	tag = "icon-SW-out"
 	},
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -68333,6 +68479,9 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hallways/hangar)
+"txT" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/main_office_perma)
 "tyb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 4;
@@ -69281,6 +69430,9 @@
 	tag = "icon-redfull"
 	},
 /area/almayer/squads/req)
+"tXs" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/evidence_storage)
 "tXG" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/door/window/eastright{
@@ -69786,7 +69938,7 @@
 "ulf" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
+	dir = 4;
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
@@ -70285,6 +70437,7 @@
 /obj/structure/pipes/standard/manifold/hidden/supply{
 	dir = 1
 	},
+/obj/item/gift,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "uvZ" = (
@@ -72720,6 +72873,9 @@
 	tag = "icon-sterile_green_corner (WEST)"
 	},
 /area/almayer/medical/containment)
+"vBm" = (
+/turf/closed/wall/almayer/reinforced,
+/area/almayer/shipboard/brig/armory)
 "vBp" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
@@ -74019,9 +74175,9 @@
 /area/almayer/living/grunt_rnr)
 "wiN" = (
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -74522,6 +74678,9 @@
 "wvU" = (
 /obj/structure/machinery/recharge_station,
 /obj/effect/decal/cleanable/cobweb2,
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"
@@ -76490,9 +76649,9 @@
 /obj/structure/disposalpipe/trunk,
 /obj/structure/machinery/disposal,
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -78414,6 +78573,14 @@
 	icon_state = "mono"
 	},
 /area/almayer/command/computerlab)
+"ylY" = (
+/obj/structure/largecrate/random/case/small,
+/obj/structure/machinery/light/small,
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/lower_hull/l_m_s)
 
 (1,1,1) = {"
 aaa
@@ -86374,7 +86541,7 @@ aaf
 pCi
 pCi
 myT
-pcW
+rVZ
 xNK
 wIC
 cDd
@@ -86577,7 +86744,7 @@ pCi
 pCi
 cpf
 cos
-pcW
+rVZ
 tJp
 wIC
 cDd
@@ -86780,7 +86947,7 @@ wcn
 tng
 hGD
 wzx
-pcW
+rVZ
 rZW
 wIC
 uXt
@@ -86978,12 +87145,12 @@ rPC
 wcn
 rPC
 vWx
-tRX
+age
 dPY
 wcn
 wcn
 tYB
-pcW
+rVZ
 wQF
 pZm
 eLL
@@ -87004,7 +87171,7 @@ lBf
 mnm
 mnm
 iqx
-pUJ
+qFl
 mKf
 mnm
 mnm
@@ -87179,14 +87346,14 @@ pCi
 pCi
 rPC
 wcn
-lSG
-lSG
-lSG
-lSG
-lSG
+txT
+txT
+txT
+txT
+txT
 qmC
-lSG
-pcW
+txT
+rVZ
 pcW
 pcW
 tYo
@@ -87207,9 +87374,9 @@ lBf
 lBf
 lBf
 lBf
-lBf
-lBf
-lBf
+tsM
+tsM
+tsM
 kIV
 mnm
 xEF
@@ -87382,7 +87549,7 @@ pCi
 ext
 rPC
 mUQ
-lSG
+txT
 pkQ
 ulf
 iRX
@@ -87412,7 +87579,7 @@ lBf
 uns
 cDp
 eyV
-lBf
+tsM
 dAb
 mnm
 kIV
@@ -87585,7 +87752,7 @@ pCi
 rPC
 wcn
 fuB
-lSG
+txT
 kbn
 eNa
 eNa
@@ -87615,7 +87782,7 @@ lBf
 xGh
 see
 wDs
-lBf
+tsM
 ukt
 mnm
 kIV
@@ -87787,8 +87954,8 @@ aag
 pCi
 wcn
 rPC
-tRX
-lSG
+age
+txT
 izf
 gdA
 rZh
@@ -87818,8 +87985,8 @@ lBf
 lBf
 mNK
 lBf
-lBf
-lBf
+tsM
+tsM
 kIV
 mnm
 xEF
@@ -87990,8 +88157,8 @@ aag
 ahE
 wcn
 rPC
-lSG
-lSG
+txT
+txT
 lSG
 lSG
 lSG
@@ -88022,7 +88189,7 @@ vsJ
 pVs
 ezc
 qLt
-lBf
+tsM
 kIV
 mnm
 ils
@@ -88193,11 +88360,11 @@ aag
 ahE
 rPC
 wcn
-lSG
+txT
 pkQ
 ulf
 iRX
-vnz
+qIf
 sUh
 uAy
 fQO
@@ -88225,7 +88392,7 @@ thL
 thL
 thL
 pWr
-lBf
+tsM
 uqa
 mnm
 ils
@@ -88396,11 +88563,11 @@ aag
 ahE
 nBc
 wcn
-lSG
+txT
 kbn
 eNa
 eNa
-fcY
+iBf
 jYZ
 kSM
 cZu
@@ -88599,11 +88766,11 @@ aag
 pCi
 mUQ
 aou
-lSG
+txT
 olA
 gdA
 rZh
-vnz
+qIf
 psv
 nwA
 eip
@@ -88802,7 +88969,7 @@ aag
 pCi
 hKi
 rPC
-lSG
+txT
 lSG
 lSG
 lSG
@@ -89005,11 +89172,11 @@ aag
 ahE
 nnF
 rPC
-lSG
+txT
 pkQ
 ulf
 iRX
-vnz
+hAi
 wOA
 llP
 fpf
@@ -89208,11 +89375,11 @@ aag
 ahE
 hUg
 wcn
-lSG
+txT
 kbn
 eNa
 eNa
-fcY
+nWy
 jYZ
 aTq
 uTZ
@@ -89411,11 +89578,11 @@ aag
 ahE
 rPC
 wcn
-lSG
+txT
 sAi
 gdA
 rZh
-vnz
+hAi
 urJ
 gtI
 gtI
@@ -89443,7 +89610,7 @@ thL
 oxZ
 thL
 eKz
-lBf
+tsM
 fQk
 kIV
 ils
@@ -89614,7 +89781,7 @@ aag
 pCi
 wcn
 wcn
-eDM
+vBm
 eDM
 eDM
 eDM
@@ -89646,7 +89813,7 @@ thL
 thL
 iZU
 nhG
-lBf
+tsM
 mnm
 mnm
 xEF
@@ -89817,7 +89984,7 @@ aag
 pCi
 rPC
 rwS
-eDM
+vBm
 kTc
 uqo
 wVw
@@ -89849,7 +90016,7 @@ xdP
 xYj
 xdP
 qRW
-lBf
+tsM
 lmk
 kIV
 xEF
@@ -90020,7 +90187,7 @@ aag
 ahE
 rPC
 nfI
-eDM
+vBm
 omu
 jQL
 sYB
@@ -90050,9 +90217,9 @@ lBf
 cZs
 lBf
 lBf
-cZs
+cqn
 lBf
-lBf
+tsM
 mnm
 kIV
 ils
@@ -90223,7 +90390,7 @@ aag
 ahE
 rPC
 heV
-eDM
+vBm
 omu
 jQL
 ktn
@@ -90255,7 +90422,7 @@ pFg
 lBf
 nlH
 wHY
-lBf
+tsM
 kIV
 fQk
 ils
@@ -90426,7 +90593,7 @@ aag
 ahE
 wcn
 nBc
-eDM
+vBm
 mAr
 jQL
 xoS
@@ -90458,7 +90625,7 @@ gug
 hIi
 qFu
 gug
-lBf
+tsM
 kIV
 mKf
 ils
@@ -90629,7 +90796,7 @@ aag
 pCi
 wcn
 wcn
-eDM
+vBm
 mAr
 jQL
 fsT
@@ -90661,7 +90828,7 @@ lBf
 bhS
 dEg
 lBf
-lBf
+tsM
 kIV
 hFW
 xEF
@@ -90832,7 +90999,7 @@ aag
 pCi
 rPC
 wcn
-eDM
+vBm
 uZY
 jQL
 jQL
@@ -90864,7 +91031,7 @@ rQY
 rQY
 qFu
 rQY
-lBf
+tsM
 kIV
 mnm
 xEF
@@ -91035,7 +91202,7 @@ aag
 pCi
 rPC
 aou
-eDM
+vBm
 xUi
 jQL
 fsT
@@ -91053,7 +91220,7 @@ rZX
 fNx
 hwG
 czc
-pUq
+pTP
 lBf
 kEv
 gZd
@@ -91067,7 +91234,7 @@ jhI
 vsJ
 gZd
 wzC
-lBf
+tsM
 lmk
 kIV
 xEF
@@ -91238,7 +91405,7 @@ pCi
 pCi
 wcn
 tYB
-eDM
+vBm
 noo
 noo
 noo
@@ -91270,7 +91437,7 @@ iTI
 icS
 qFu
 xEe
-lBf
+tsM
 xCj
 kIV
 xEF
@@ -91441,7 +91608,7 @@ pCi
 msV
 rPC
 naf
-fSp
+dgZ
 vcG
 lYZ
 olv
@@ -91473,7 +91640,7 @@ ctT
 ctT
 rSB
 vNN
-lBf
+tsM
 lTK
 mnm
 kIV
@@ -91643,8 +91810,8 @@ aad
 pCi
 dSA
 rPC
-fSp
-fSp
+dgZ
+dgZ
 geX
 tFv
 pGT
@@ -91676,8 +91843,8 @@ oxc
 oxc
 oxc
 jiL
-jiL
-jiL
+iCb
+iCb
 mnm
 kIV
 xEF
@@ -91846,7 +92013,7 @@ aad
 pCi
 wcn
 rPC
-fSp
+dgZ
 eaf
 bEv
 tWg
@@ -91880,7 +92047,7 @@ khQ
 odX
 odX
 iAu
-jiL
+iCb
 kIV
 lre
 xEF
@@ -92049,7 +92216,7 @@ aag
 pCi
 mNR
 wcn
-fSp
+dgZ
 eaf
 bEv
 fLn
@@ -92083,7 +92250,7 @@ cuY
 dzh
 iCz
 xQD
-jiL
+iCb
 kIV
 rQU
 xEF
@@ -92252,7 +92419,7 @@ aag
 pCi
 tCb
 aou
-fSp
+dgZ
 avq
 bEv
 fLn
@@ -92286,7 +92453,7 @@ kHq
 fEZ
 iCz
 xxE
-jiL
+iCb
 inC
 mKf
 xEF
@@ -92455,7 +92622,7 @@ aag
 pCi
 rPC
 wcn
-fSp
+dgZ
 eaf
 bEv
 qRo
@@ -92489,7 +92656,7 @@ eWr
 gEM
 rlw
 vko
-jiL
+iCb
 kIV
 fQk
 xEF
@@ -92658,7 +92825,7 @@ aag
 pCi
 wcn
 rPC
-fSp
+dgZ
 eaf
 vez
 mWe
@@ -92692,7 +92859,7 @@ mVs
 ooR
 txv
 iOf
-jiL
+iCb
 mnm
 sIk
 xEF
@@ -92861,10 +93028,10 @@ aag
 pCi
 nfI
 rPC
-fSp
-fSp
-fSp
-fSp
+dgZ
+dgZ
+dgZ
+dgZ
 fSp
 fSp
 vlQ
@@ -92892,10 +93059,10 @@ oxc
 tVj
 okM
 oxc
-jiL
-jiL
-jiL
-jiL
+iCb
+iCb
+iCb
+iCb
 mnm
 hPT
 xEF
@@ -93067,7 +93234,7 @@ wcn
 wcn
 uNg
 rPC
-wri
+tXs
 wri
 wri
 uzx
@@ -93095,7 +93262,7 @@ xvw
 cXZ
 odX
 djm
-jiL
+iCb
 kIV
 hUc
 mnm
@@ -93270,7 +93437,7 @@ aly
 aly
 aly
 wcn
-wri
+tXs
 pvW
 snt
 phK
@@ -93298,7 +93465,7 @@ dAu
 oog
 fHG
 czB
-jiL
+iCb
 mnm
 awC
 awC
@@ -93473,7 +93640,7 @@ giZ
 rpp
 aly
 wcn
-wri
+tXs
 bzv
 sVy
 qau
@@ -93501,7 +93668,7 @@ dAu
 gPP
 rtD
 wfL
-jiL
+iCb
 mnm
 awC
 mlp
@@ -93676,7 +93843,7 @@ adu
 iKI
 aly
 wcn
-wri
+tXs
 pvW
 kEx
 vAI
@@ -93704,7 +93871,7 @@ dAu
 gRW
 qaJ
 czB
-jiL
+iCb
 mnm
 awC
 lQq
@@ -93879,8 +94046,8 @@ adu
 iKI
 aly
 rPC
-wri
-wri
+tXs
+tXs
 eht
 xeG
 pvW
@@ -93907,7 +94074,7 @@ jiL
 jiL
 jiL
 jiL
-jiL
+iCb
 kIV
 awC
 pLW
@@ -94083,7 +94250,7 @@ oqA
 aly
 qCy
 msV
-wri
+tXs
 jVo
 erx
 pvW
@@ -94286,7 +94453,7 @@ iKI
 aly
 rPC
 wcn
-wri
+tXs
 uIP
 bRH
 osT
@@ -94487,9 +94654,9 @@ adu
 adu
 iKI
 aly
-tRX
+age
 uzm
-wri
+tXs
 wri
 wri
 wri
@@ -95836,12 +96003,12 @@ bGF
 bHB
 aYt
 bcm
-sXE
+iQx
 kCT
 iuu
 fHc
 kpY
-kCT
+hTu
 mzo
 bRF
 vRz
@@ -96653,7 +96820,7 @@ kCT
 xVj
 vox
 kCT
-kCT
+hTu
 mzo
 oFG
 vRz
@@ -97465,7 +97632,7 @@ kCT
 kCT
 kCT
 dlp
-kCT
+hTu
 mzo
 vot
 vRz
@@ -113459,7 +113626,7 @@ aSm
 glr
 aLf
 aLf
-bPS
+ylY
 nsY
 nNT
 fBA
@@ -113861,7 +114028,7 @@ aKW
 aKW
 aSm
 aLf
-aLF
+mRc
 xCN
 aSm
 aSm
@@ -114474,7 +114641,7 @@ aSm
 aLf
 aSm
 aLf
-bPU
+qce
 nsY
 wpz
 oEX
@@ -116121,7 +116288,7 @@ bDP
 bDP
 beH
 moQ
-caO
+hGO
 fvf
 beH
 bDP
@@ -117339,7 +117506,7 @@ kFs
 bqZ
 bqZ
 bqZ
-bqZ
+kFs
 bqZ
 bqZ
 bqZ

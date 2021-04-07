@@ -125,6 +125,7 @@
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [S.name]."))
 		S.amount = S.max_amount
+		S.update_icon()
 	else
 		. = ..()
 

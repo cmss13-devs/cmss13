@@ -699,12 +699,9 @@
 	)
 
 /obj/item/storage/pouch/construction/full/fill_preset_inventory()
-	var/obj/item/stack/sheet/plasteel/PLAS = new /obj/item/stack/sheet/plasteel(src)
-	PLAS.amount = 50
-	var/obj/item/stack/sheet/metal/MET = new /obj/item/stack/sheet/metal(src)
-	MET.amount = 50
-	var/obj/item/stack/sandbags_empty/SND1 = new /obj/item/stack/sandbags_empty(src)
-	SND1.amount = 50
+	new /obj/item/stack/sheet/plasteel(src, 50)
+	new /obj/item/stack/sheet/metal(src, 50)
+	new /obj/item/stack/sandbags_empty(src, 50)
 
 /obj/item/storage/pouch/tools
 	name = "tools pouch"

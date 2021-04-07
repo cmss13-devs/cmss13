@@ -20,23 +20,49 @@
 	attack_speed = 3	//makes collect stacks off the floor and such less of a pain
 	var/amount_sprites = FALSE //does it have sprites for extra amount, like metal, plasteel, or wood
 
+	//Coords for contents display, to make it play nice with inventory borders.
+	maptext_x = 4
+	maptext_y = 3
+
 /obj/item/stack/Initialize(mapload, var/amount = null)
 	. = ..()
 	if(amount)
 		src.amount = amount
 	update_icon()
 
+/*Check the location of the stack, and if it's in a storage item or a mob's inventory, display the number of items in the stack.
+Also change the icon to reflect the amount of sheets, if possible.*/
 /obj/item/stack/update_icon()
 	..()
+	if(isstorage(loc) || ismob(loc))
+		maptext = "<span class='langchat'>[(amount > 1)? "[amount]" : ""]</span>"
+	else
+		maptext = ""
+
 	if(!amount_sprites)
 		return
-	icon_state = initial(icon_state) //if it has only one sheet, it is the singular sprite
-	if(amount > 1)
-		icon_state = "[initial(icon_state)]-2" //if it's bigger, use the 2 sheets sprite
-	if(amount >= (max_amount * (1/2)))
-		icon_state = "[initial(icon_state)]-3" //if it's equal or more than half of max amount, use 3 sheets
-	if(amount >= max_amount)
+	if(amount == 1)
+		icon_state = initial(icon_state) //if it has only one sheet, it is the singular sprite
+	else if(amount < max_amount * 0.5)
+		icon_state = "[initial(icon_state)]-2" //if it's less than half the max amount, use the 2 sheets sprite
+	else if(amount < max_amount)
+		icon_state = "[initial(icon_state)]-3" //if it's equal or more than half of max amount, but less than the maximum, use 3 sheets
+	else
 		icon_state = "[initial(icon_state)]-4" //otherwise use max sheet sprite
+
+/obj/item/stack/equipped() //Used when entering a mob's hands.
+	..()
+	update_icon()
+
+/obj/item/stack/on_exit_storage()
+	..()
+	if(ismob(loc))
+		return
+	update_icon()
+
+/obj/item/stack/dropped() //Also used when inserted into storage items.
+	..()
+	update_icon()
 
 /obj/item/stack/Destroy()
 	if (usr && usr.interactee == src)

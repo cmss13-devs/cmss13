@@ -80,6 +80,7 @@
 	storage_slots = 50
 	max_storage_space = 200 //Doesn't matter what this is, so long as it's more or equal to storage_slots * ore.w_class
 	max_w_class = SIZE_MEDIUM
+	storage_flags = STORAGE_FLAGS_BAG | STORAGE_CONTENT_NUM_DISPLAY
 	can_hold = list(/obj/item/ore)
 
 
@@ -95,6 +96,7 @@
 	max_storage_space = 200 //Doesn't matter what this is, so long as it's more or equal to storage_slots * plants.w_class
 	max_w_class = SIZE_MEDIUM
 	w_class = SIZE_SMALL
+	storage_flags = STORAGE_FLAGS_BAG | STORAGE_CONTENT_NUM_DISPLAY
 	can_hold = list(
 		/obj/item/reagent_container/food/snacks/grown,
 		/obj/item/seeds,
@@ -117,7 +119,7 @@
 	var/capacity = 300; //the number of sheets it can carry.
 	w_class = SIZE_MEDIUM
 
-	storage_flags = STORAGE_FLAGS_BAG|STORAGE_QUICK_EMPTY
+	storage_flags = STORAGE_FLAGS_BAG | STORAGE_CONTENT_NUM_DISPLAY
 
 /obj/item/storage/bag/sheetsnatcher/Initialize()
 	. = ..()
@@ -177,6 +179,9 @@
 
 // Sets up numbered display to show the stack size of each stored mineral
 // NOTE: numbered display is turned off currently because it's broken
+
+//Turned numbered display on. Appears to work as intended, despite above comment -- Vanagandr.
+
 /obj/item/storage/bag/sheetsnatcher/orient2hud()
 	var/adjusted_contents = contents.len
 
@@ -195,7 +200,7 @@
 	var/col_count = min(7,storage_slots) -1
 	if (adjusted_contents > 7)
 		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
-	src.slot_orient_objs(row_num, col_count, numbered_contents)
+	slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
 

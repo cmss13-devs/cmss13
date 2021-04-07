@@ -155,23 +155,6 @@
 	hide_from(user)
 	update_icon()
 
-//This proc draws out the inventory and places the items on it. tx and ty are the upper left tile and mx, my are the bottm right.
-//The numbers are calculated from the bottom-left The bottom-left slot being 1,1.
-/obj/item/storage/proc/orient_objs(tx, ty, mx, my)
-	var/cx = tx
-	var/cy = ty
-	boxes.screen_loc = "[tx]:,[ty] to [mx],[my]"
-	for (var/obj/O in contents)
-		O.screen_loc = "[cx],[cy]"
-		O.layer = ABOVE_HUD_LAYER
-		cx++
-		if (cx > mx)
-			cx = tx
-			cy--
-	closer.screen_loc = "[mx+1],[my]"
-	if (storage_flags & STORAGE_SHOW_FULLNESS)
-		boxes.update_fullness(src)
-
 //This proc draws out the inventory and places the items on it. It uses the standard position.
 /obj/item/storage/proc/slot_orient_objs(var/rows, var/cols, var/list/obj/item/display_contents)
 	var/cx = 4
@@ -192,7 +175,6 @@
 		for (var/obj/O in contents)
 			O.mouse_opacity = 2 //So storage items that start with contents get the opacity trick.
 			O.screen_loc = "[cx]:16,[cy]:16"
-			O.maptext = ""
 			O.layer = ABOVE_HUD_LAYER
 			cx++
 			if (cx > (4+cols))
@@ -275,7 +257,6 @@ var/list/global/item_storage_box_cache = list()
 		storage_start.overlays += src.stored_end
 
 		O.screen_loc = "4:[round((startpoint+endpoint)/2)+2],2:16"
-		O.maptext = ""
 		O.layer = ABOVE_HUD_LAYER
 
 	src.closer.screen_loc = "4:[storage_width+19],2:16"
@@ -349,7 +330,7 @@ var/list/global/item_storage_box_cache = list()
 				numbered_contents.Add( new/datum/numbered_display(I) )
 
 	if (storage_slots == null)
-		src.space_orient_objs(numbered_contents)
+		space_orient_objs(numbered_contents)
 	else
 		var/row_num = 0
 		var/col_count = min(7,storage_slots) -1
@@ -485,7 +466,7 @@ var/list/global/item_storage_box_cache = list()
 	orient2hud()
 	for(var/mob/M in can_see_content())
 		show_to(M)
-	if(W.maptext)
+	if(W.maptext && (storage_flags & STORAGE_CONTENT_NUM_DISPLAY))
 		W.maptext = ""
 	W.on_exit_storage(src)
 	update_icon()

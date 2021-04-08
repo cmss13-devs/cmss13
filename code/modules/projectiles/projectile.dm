@@ -119,7 +119,7 @@
 
 /obj/item/projectile/proc/calculate_damage()
 	if(effective_range_min && distance_travelled < effective_range_min)
-		return max(0, damage - round((effective_range_min - distance_travelled) * damage_falloff))
+		return max(0, damage - round((effective_range_min - distance_travelled) * damage_buildup))
 	else if(distance_travelled > effective_range_max)
 		return max(0, damage - round((distance_travelled - effective_range_max) * damage_falloff))
 	return damage

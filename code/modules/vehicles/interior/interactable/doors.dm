@@ -28,7 +28,8 @@
 		var/obj/item/grab/G = M.get_active_hand()
 		dragged_atom = G.grabbed_thing
 
-	var/exit_time = 1 SECONDS
+	var/obj/vehicle/multitile/V = interior.exterior
+	var/exit_time = V.entrance_speed SECONDS
 	if(dragged_atom)
 		exit_time = 2 SECONDS
 
@@ -51,7 +52,7 @@
 
 /obj/structure/interior_exit/attack_alien(var/mob/living/carbon/Xenomorph/M, var/dam_bonus)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
-	if(!do_after(M, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))
 		return
 
@@ -83,6 +84,7 @@
 			pixel_y = 31
 			layer = INTERIOR_WALL_NORTH_LAYER
 		if(SOUTH)
+			alpha = 150
 			layer = INTERIOR_WALL_SOUTH_LAYER
 		if(WEST)
 			pixel_x = 3
@@ -105,7 +107,8 @@
 		var/obj/item/grab/G = M.get_active_hand()
 		dragged_atom = G.grabbed_thing
 
-	var/exit_time = 1 SECONDS
+	var/obj/vehicle/multitile/V = interior.exterior
+	var/exit_time = V.entrance_speed SECONDS
 	if(dragged_atom)
 		exit_time = 2 SECONDS
 
@@ -130,7 +133,7 @@
 
 /obj/structure/interior_exit/vehicle/attack_alien(var/mob/living/carbon/Xenomorph/M, var/dam_bonus)
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
-	if(!do_after(M, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))
 		return
 

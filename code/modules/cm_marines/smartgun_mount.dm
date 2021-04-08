@@ -875,6 +875,9 @@
 /obj/item/device/m2c_gun/attack_self(mob/user)
 	if(!ishuman(user))
 		return FALSE
+	if(user.z == GLOB.interior_manager.interior_z)
+		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return
 	var/turf/rotate_check = get_step(user.loc, turn(user.dir,180))
 	var/turf/open/OT = usr.loc
 	var/list/ACR = range(anti_cadehugger_range, user.loc)

@@ -30,7 +30,9 @@
 
 	vehicle_flags = VEHICLE_WEAK
 
-	interior_capacity = 8
+	passengers_slots = 8
+	xenos_slots = 2
+	list/datum/role_served_slots/role_reserved_slots = list()
 
 	misc_multipliers = list(
 		"move" = 0.5, // fucking annoying how this is the only way to modify speed

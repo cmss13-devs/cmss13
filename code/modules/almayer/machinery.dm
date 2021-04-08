@@ -241,7 +241,7 @@
 			overlay_marine_mapview()
 		to_chat(user, SPAN_NOTICE("You start looking at the map."))
 		user << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		show_browser(user, "<img src=marine_minimap.png>", "CIC Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 		onclose(user, "marineminimap", src, list("close" = 1, "viewer" = "\ref[user]"))
 		return
 	..()
@@ -257,7 +257,7 @@
 			continue
 
 		L << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		show_browser(L, "<img src=marine_minimap.png>", "CIC Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
+		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
 		onclose(L, "marineminimap", src, list("close" = 1, "viewer" = "\ref[L]"))
 
 

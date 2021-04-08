@@ -632,3 +632,13 @@
 	icon_state = "floor_grating"
 
 
+//vehicle interior floors
+/turf/open/shuttle/vehicle
+	name = "floor"
+	icon = 'icons/turf/vehicle_interior.dmi'
+	icon_state = "floor_0"
+
+//vehicle interior floors
+/turf/open/shuttle/vehicle/med
+	name = "floor"
+	icon_state = "dark_sterile"

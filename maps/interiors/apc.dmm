@@ -1,201 +1,350 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 2
+/obj/structure/interior_wall_full/apc{
+	icon_state = "rear_3"
 	},
-/obj/structure/interior_wall/apc{
-	dir = 8;
-	icon_state = "apc_back_3"
-	},
-/obj/structure/interior_wall/apc{
-	dir = 1;
-	icon_state = "apc_left_1";
-	pixel_y = 31
-	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	pixel_y = 28
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin14"
-	},
-/area/vehicle/apc)
+/turf/open/void/vehicle,
+/area/space)
 "b" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 2
+/obj/structure/bed/chair/vehicle{
+	dir = 1
 	},
-/obj/structure/interior_wall/apc{
-	dir = 1;
-	icon_state = "apc_left_2";
-	pixel_y = 31
-	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	pixel_y = 28
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin14"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
 "c" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_5"
+	},
+/area/vehicle/apc)
+"d" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_8_1"
+	},
+/area/vehicle/apc)
+"e" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "rear_4"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"f" = (
+/obj/structure/bed/chair/vehicle{
+	dir = 4
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	alpha = 100;
+	pixel_y = -2
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_12"
+	},
+/area/vehicle/apc)
+"h" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "rear_wheel_R"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_14"
+	},
+/area/space)
+"j" = (
+/turf/open/void/vehicle,
+/area/space)
+"k" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "rear_wheel_L"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_13"
+	},
+/area/space)
+"l" = (
+/obj/structure/interior_wall_full/apc{
+	alpha = 100;
+	icon_state = "wall_door_front";
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"m" = (
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat/armor{
+	dir = 4
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_9_1"
+	},
+/area/vehicle/apc)
+"n" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "front_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"o" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "front_wheel_L"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_13"
+	},
+/area/space)
+"p" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"q" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "front_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"r" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "corner_inverse_L_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"s" = (
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_13"
+	},
+/area/vehicle/apc)
+"t" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "rear_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"u" = (
+/obj/effect/landmark/interior/spawn/weapons_loader,
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_6"
+	},
+/area/vehicle/apc)
+"v" = (
+/obj/structure/bed/chair/vehicle,
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_9_1"
+	},
+/area/vehicle/apc)
+"w" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	tag = "left"
 	},
-/obj/structure/interior_wall/apc{
-	dir = 1;
-	icon_state = "apc_left_3";
-	pixel_y = 31
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin3";
-	icon_state = "rasputin3"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_11"
 	},
 /area/vehicle/apc)
-"d" = (
-/obj/structure/interior_wall/apc{
-	dir = 4;
-	icon_state = "apc_front_3"
+"x" = (
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_14"
 	},
-/obj/structure/interior_wall/apc{
-	dir = 1;
-	icon_state = "apc_left_4";
-	pixel_y = 31
+/area/vehicle/apc)
+"z" = (
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_0_1_15"
 	},
-/obj/effect/landmark/interior/spawn/vehicle_gunner_seat{
-	icon_state = "comfychair";
+/area/vehicle/apc)
+"A" = (
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_6"
+	},
+/area/vehicle/apc)
+"B" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "corner_inverse_R_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"C" = (
+/obj/structure/bed/chair/vehicle,
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_5"
+	},
+/area/vehicle/apc)
+"E" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "corner_small_R"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"I" = (
+/obj/structure/bed/chair/vehicle{
 	dir = 4
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_y = 28
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_11"
+	},
+/area/vehicle/apc)
+"L" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "corner_small_L"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"M" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "front_4"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"O" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "door_back"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"Q" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "wall_5"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"R" = (
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_5"
+	},
+/area/vehicle/apc)
+"S" = (
+/obj/structure/interior_wall_full/apc{
+	alpha = 100;
+	icon_state = "door_front";
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"U" = (
+/obj/structure/bed/chair/vehicle,
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_13"
+	},
+/area/vehicle/apc)
+"V" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "wall"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"W" = (
 /obj/structure/vehicle_locker{
-	pixel_y = 28;
-	pixel_x = -2
+	layer = 5.21;
+	pixel_y = 28
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin14"
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
+	dir = 4
 	},
-/area/vehicle/apc)
-"e" = (
-/obj/structure/interior_wall/apc{
-	dir = 8;
-	icon_state = "apc_back_2"
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin5";
-	icon_state = "rasputin5"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_8_1"
 	},
 /area/vehicle/apc)
-"f" = (
-/obj/structure/interior_wall/apc{
-	dir = 4;
-	icon_state = "apc_front_2"
+"X" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "front_wheel_R"
 	},
-/obj/effect/landmark/interior/spawn/weapons_loader,
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin5";
-	icon_state = "rasputin5"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_14"
 	},
-/area/vehicle/apc)
-"g" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 1
-	},
-/obj/structure/interior_wall/apc{
-	dir = 8;
-	icon_state = "apc_back_1"
-	},
-/obj/structure/interior_wall/apc{
-	alpha = 50;
-	icon_state = "apc_right_1"
-	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	alpha = 100;
-	pixel_y = -2
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin14"
-	},
-/area/vehicle/apc)
-"h" = (
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin15";
-	icon_state = "rasputin12"
-	},
-/area/vehicle/apc)
-"i" = (
-/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
-	dir = 1
-	},
-/obj/structure/interior_wall/apc{
-	alpha = 50;
-	icon_state = "apc_right_2"
-	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	alpha = 100;
-	pixel_y = -2
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin14"
-	},
-/area/vehicle/apc)
-"j" = (
+/area/space)
+"Y" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	tag = "right"
 	},
-/obj/structure/interior_wall/apc{
-	alpha = 50;
-	icon_state = "apc_right_3"
-	},
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin3";
-	icon_state = "rasputin3"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_12"
 	},
 /area/vehicle/apc)
-"k" = (
-/turf/open/shuttle/dropship{
-	tag = "icon-rasputin5";
-	icon_state = "rasputin5"
+"Z" = (
+/obj/structure/interior_wall_full/apc{
+	icon_state = "rear_1"
 	},
-/area/vehicle/apc)
-"l" = (
-/obj/structure/interior_wall/apc{
-	alpha = 50;
-	icon_state = "apc_right_4"
-	},
-/obj/structure/interior_wall/apc{
-	dir = 4;
-	icon_state = "apc_front_1"
-	},
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
-	dir = 4
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin14"
-	},
-/area/vehicle/apc)
+/turf/open/void/vehicle,
+/area/space)
 
 (1,1,1) = {"
+j
+L
+Z
+t
 a
 e
-g
+j
 "}
 (2,1,1) = {"
+j
+Q
+U
+s
 b
 k
-i
+j
 "}
 (3,1,1) = {"
+L
+r
+C
+R
 c
 h
 j
 "}
 (4,1,1) = {"
+V
+I
+v
+R
 d
 f
 l
+"}
+(5,1,1) = {"
+O
+w
+A
+z
+A
+Y
+S
+"}
+(6,1,1) = {"
+E
+B
+U
+x
+b
+o
+j
+"}
+(7,1,1) = {"
+j
+V
+W
+u
+m
+X
+j
+"}
+(8,1,1) = {"
+j
+E
+p
+q
+n
+M
+j
 "}

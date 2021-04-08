@@ -1,3 +1,14 @@
+/// special role slots datum. Stores category name, roles, amount of taken slots and total slots.
+/datum/role_reserved_slots
+	/// category name for roles
+	var/category_name = ""
+	/// roles, that fit this category. Don't put same role in more than one category, only first found is checked.
+	var/list/roles = list()
+	/// amount of slots taken.
+	var/taken = 0
+	/// total amount of slots.
+	var/total = 0
+
 /datum/interior
 	// Name of the map containing the interior
 	// Doubles as just a general name
@@ -24,14 +35,17 @@
 	// A list of entry/exit markers in the interior
 	var/list/entrance_markers = list()
 
-	// How many grunga bungas can fit inside the vehicle?
-	var/human_capacity = 2
-	// How many xenos can fit inside the vehicle?
-	var/xeno_capacity = 2
-	// How many unga dungas are inside the vehicle?
-	var/humans_inside = 0
-	// How many xenos are inside the vehicle?
-	var/xenos_inside = 0
+	//check multitile.dm for detailed explanation
+	//common passenger slots
+	var/passengers_slots = 2
+	//common passenger slots taken
+	var/passengers_taken_slots = 0
+	//xenos passenger slots
+	var/xenos_slots = 2
+	//xenos passenger slots taken
+	var/xenos_taken_slots = 0
+	//special roles passenger slots, kept in datums
+	var/list/role_reserved_slots = list()
 
 /datum/interior/New(var/atom/E)
 	. = ..()
@@ -75,6 +89,8 @@
 	find_entrances()
 	handle_landmarks()
 
+	update_passenger_settings()
+
 	ready = TRUE
 
 /datum/interior/proc/get_passengers()
@@ -92,24 +108,53 @@
 					LAZYADD(passengers, M)
 	return passengers
 
+//syncronizes vehicles passenger settings to interior and resets taken slots
+/datum/interior/proc/update_passenger_settings()
+	var/obj/vehicle/multitile/V = exterior
+	passengers_slots = V.passengers_slots
+	xenos_slots = V.xenos_slots
+	passengers_taken_slots = 0
+	xenos_taken_slots = 0
+
+	if(V.role_reserved_slots.len)
+		role_reserved_slots = list()
+		role_reserved_slots = V.role_reserved_slots.Copy()
+		for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
+			RRS.taken = 0
+
 /datum/interior/proc/update_passenger_count()
-	humans_inside = 0
-	xenos_inside = 0
+	//If someone changed vehicle's capacity, we want interior to also accept these changes.
+	update_passenger_settings()
 
 	if(!ready)
 		return
 
 	for(var/mob/living/M in get_passengers())
 		if(ishuman(M))
+			//whether we put human in some category
+			var/role_slot_taken = FALSE
 			var/mob/living/carbon/human/H = M
 			if(!H.is_revivable())
 				continue
-			humans_inside++
+
+			//if we have any special roles slots, we check them first
+			if(role_reserved_slots.len)
+				for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
+					//check each category if it has our role. We stop after we find role to avoid checking others.
+					if(RRS.roles.Find(H.job))
+						RRS.taken++
+						role_slot_taken = TRUE
+						break
+			//if no special slot is taken, we will check for common passengers
+			if(!role_slot_taken)
+				passengers_taken_slots++
+
 		else if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
 			if(X.stat == DEAD)
 				continue
-			xenos_inside++
+			xenos_taken_slots++
+
 
 // Moves the atom to the interior
 /datum/interior/proc/enter(var/atom/movable/A, var/entrance_used)
@@ -119,25 +164,58 @@
 	if(!A)
 		return
 
-	if(istype(A, /obj/structure/barricade))
+	if(istype(A, /obj/structure/barricade) || istype(A, /obj/structure/machinery/defenses) || istype(A, /obj/structure/machinery/m56d_post))
 		return FALSE
 
 	// Ensure we have an accurate count before trying to enter
 	update_passenger_count()
 
-	var/humans_entering = ishuman(A)
-	var/xenos_entering = isXeno(A)
-	for(var/mob/living/M in A)
-		if(ishuman(M))
-			humans_entering++
-		else if(isXeno(M))
-			xenos_entering++
+	var/mob/living/M
+	if(ismob(A))
+		M = A
+	else
+		var/mobs_amount = 0
+		for(M in A)
+			mobs_amount++
+			//it's much easier to deny entering with many mobs rather than to juggle them around
+			M = A
+			if(mobs_amount > 1)
+				exterior.visible_message(SPAN_WARNING("\The [A] is too bulky to fit with so many creatures inside."))
+				return FALSE
 
-	// Xenos don't count towards the passenger limit
-	if((humans_entering + humans_inside > human_capacity) || (xenos_entering + xenos_inside > xeno_capacity))
-		if(ismob(A))
-			to_chat(A, SPAN_WARNING("There's no more space inside!"))
-		return FALSE
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.is_revivable())
+			//whether we put human in some category
+			var/role_slot_taken = FALSE
+			//if we have any special roles slots, we check them first
+			if(role_reserved_slots.len)
+				for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
+					//check each category if it has our role. We stop after we find role to avoid checking others.
+					if(RRS.roles.Find(H.job))
+						//if we have slots for this category, take it
+						if(RRS.taken < RRS.total)
+							RRS.taken++
+							role_slot_taken = TRUE
+						break
+			//if no special slot is taken, we will check for common passengers
+			if(!role_slot_taken)
+				if(passengers_taken_slots < passengers_slots)
+					//even if somehow mob moving will fail further down in proc, extra slot taken won't matter, since next update_passenger_count() will fix it
+					passengers_taken_slots++
+				else
+					if(M.stat == CONSCIOUS)
+						to_chat(M, SPAN_WARNING("There's no more space inside!"))
+					return FALSE
+
+	else if(isXeno(M))
+		if(M.stat != DEAD)
+			if(xenos_taken_slots < xenos_slots)
+				xenos_taken_slots++
+			else
+				if(M.stat == CONSCIOUS)
+					to_chat(M, SPAN_WARNING("There's no more space inside!"))
+				return FALSE
 
 	// If no entrance is specified drop them in the middle of the interior
 	if(!entrance_used)

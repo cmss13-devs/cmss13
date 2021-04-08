@@ -79,13 +79,23 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	// Map file name of the vehicle interior
 	var/interior_map = null
 	var/datum/interior/interior = null
-	// How many people can fit inside
-	var/interior_capacity = 2
+
+	//common passenger slots
+	var/passengers_slots = 2
+	//xenos passenger slots
+	var/xenos_slots = 2
+	//Special roles categories slots. These allow to set specific roles in categories with their own slots.
+	//For example, (list(JOB_CREWMAN, JOB_UPP_CREWMAN) = 2) means that USCM and UPP crewman will always have 2 slots reserved for them.
+	//Only first encounter of job will be checked for slots, so don't put job in more than one category.
+	var/list/role_reserved_slots = list()
 
 	var/wall_ram_damage = 30
 
 	//vehicles with this off will be ignored by tacmap.
 	var/visible_in_tacmap = TRUE
+
+	//Amount of seconds spent on entering/leaving. Always the same when dragging stuff (2 seconds) and for xenos (1 second)
+	var/entrance_speed = 1
 
 	// Whether or not entering the vehicle is ID restricted to crewmen only. Toggleable by the driver
 	var/door_locked = TRUE
@@ -139,9 +149,6 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 			qdel(src)
 			return
 
-		interior.human_capacity = interior_capacity
-		interior.xeno_capacity = interior_capacity
-
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
@@ -155,6 +162,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	update_icon()
 
 	initialize_cameras()
+
+	load_role_reserved_slots()
 
 	GLOB.all_multi_vehicles += src
 
@@ -223,8 +232,12 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		H.examine(user, TRUE)
 	if(clamped)
 		to_chat(user, "There is a vehicle clamp attached.")
-	if(isXeno(user) && interior && interior.humans_inside > 0)
-		to_chat(user, "You can sense approximately [interior.humans_inside] hosts inside.")
+	if(isXeno(user) && interior)
+		var/passengers_amount = interior.passengers_taken_slots
+		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
+			passengers_amount += RRS.taken
+		if(passengers_amount > 0)
+			to_chat(user, "You can sense approximately [passengers_amount] hosts inside.")
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return
@@ -308,6 +321,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		return interior.get_passengers()
 	return null
 
+/obj/vehicle/multitile/proc/load_role_reserved_slots()
+	return
 
 //Special armored vic healthcheck that mainly updates the hardpoint states
 /obj/vehicle/multitile/healthcheck()

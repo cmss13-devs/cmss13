@@ -76,6 +76,7 @@ require only minor tweaks.
 // must correspond to _basemap.dm for things to work correctly
 #define DEFAULT_MAP_TRAITS list(\
 	DECLARE_LEVEL("CentCom", ZTRAITS_ADMIN),\
+	DECLARE_LEVEL("Chinook", ZTRAITS_ADMIN),\
 	DECLARE_LEVEL("LowOrbit", ZTRAITS_LOWORBIT),\
 )
 

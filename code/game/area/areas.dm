@@ -15,7 +15,7 @@
 	var/lightswitch = 1
 
 	/// Bitfield of special area features
-	var/flags_area = NO_FLAGS     
+	var/flags_area = NO_FLAGS
 
 	var/flags_alarm_state = NO_FLAGS
 

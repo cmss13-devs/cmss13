@@ -559,6 +559,15 @@
 /obj/structure/surface/table/reinforced/almayer_B/flip(var/direction)
 	return 0
 
+/obj/structure/surface/table/reinforced/black
+	name = "black table"
+	desc = "A sleek black metal table. Its legs are securely bolted to the floor."
+	icon_state = "blacktable" //this one actually auto-tiles, but has no flipped state!
+	table_prefix = "black"
+
+/obj/structure/surface/table/reinforced/black/flip(var/direction)
+	return FALSE
+
 /obj/structure/surface/table/almayer
 	icon_state = "almtable"
 	table_prefix = "alm"

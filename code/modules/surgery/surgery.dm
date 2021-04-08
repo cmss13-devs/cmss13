@@ -74,8 +74,8 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 		return FALSE
 	if(user.action_busy) //already doing an action
 		return TRUE
-	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no idea how to do surgery..."))
+	if(!skillcheck(user, SKILL_SURGERY, M.surgical_difficulty))
+		to_chat(user, SPAN_WARNING("You have no idea how to do surgery on [M]..."))
 		return TRUE
 	var/obj/limb/affected = M.get_limb(user.zone_selected)
 	if(!affected)

@@ -15,6 +15,7 @@
 	var/butchery_progress = 0
 	var/list/internal_organs = list()
 	var/huggable = TRUE //can apply Facehuggers (still checks proc/can_hug())
+	var/surgical_difficulty = SKILL_SURGERY_TRAINED //The level of surgical skill required to operate on this mob.
 
 	//blood.dm
 	blood_volume = BLOOD_VOLUME_NORMAL

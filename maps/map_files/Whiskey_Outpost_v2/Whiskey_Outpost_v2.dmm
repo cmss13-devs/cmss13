@@ -806,7 +806,7 @@
 	},
 /area/whiskey_outpost/inside/hospital)
 "ci" = (
-/obj/structure/sign/chemistry,
+/obj/structure/sign/safety/chem_lab,
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/hospital)
 "cj" = (

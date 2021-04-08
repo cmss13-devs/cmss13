@@ -318,9 +318,7 @@
 	},
 /area/bigredv2/outside/virology)
 "aY" = (
-/obj/structure/sign/biohazard{
-	pixel_y = -32
-	},
+/obj/structure/sign/safety/biohazard,
 /turf/open/floor{
 	tag = "icon-asteroidwarning";
 	icon_state = "asteroidwarning"

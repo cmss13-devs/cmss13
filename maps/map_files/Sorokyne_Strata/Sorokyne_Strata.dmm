@@ -2509,7 +2509,7 @@
 	},
 /area/strata/ag/interior/dorms/canteen)
 "agN" = (
-/obj/structure/sign/fire,
+/obj/structure/sign/safety/fire_haz,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/dorms/canteen)
 "agO" = (
@@ -7468,7 +7468,7 @@
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/engi_shed/three)
 "auv" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/dorms/maintenance)
 "auw" = (
@@ -9338,11 +9338,15 @@
 /area/strata/ag/interior/dorms)
 "azE" = (
 /obj/structure/pipes/standard/simple/hidden/cyan,
+/obj/structure/sign/safety/medical{
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/med_cryo{
+	pixel_x = 32;
+	pixel_y = 7
+	},
 /turf/open/floor/strata,
-/area/strata/ag/interior/dorms)
-"azF" = (
-/obj/structure/sign/greencross,
-/turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/dorms)
 "azG" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -14346,7 +14350,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "aNL" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/dorms/south)
 "aNM" = (
@@ -20583,7 +20587,7 @@
 /turf/closed/wall/strata_ice,
 /area/strata/ag/interior/outpost/admin)
 "bfX" = (
-/obj/structure/sign/fire,
+/obj/structure/sign/safety/fire_haz,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/admin)
 "bfY" = (
@@ -22268,7 +22272,7 @@
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/gen/foyer)
 "blc" = (
-/obj/structure/sign/greencross,
+/obj/structure/sign/safety/medical,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/gen/foyer)
 "bld" = (
@@ -29777,7 +29781,7 @@
 	},
 /area/strata/ag/interior/dorms)
 "bXY" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/interior/engi_shed/three)
 "bXZ" = (
@@ -32591,7 +32595,7 @@
 	},
 /area/strata/ag/interior/dorms/hive)
 "cpd" = (
-/obj/structure/sign/fire,
+/obj/structure/sign/safety/fire_haz,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/canteen/bar)
 "cpe" = (
@@ -35978,7 +35982,7 @@
 	},
 /area/strata/ag/interior/outpost/med)
 "ghV" = (
-/obj/structure/sign/greencross,
+/obj/structure/sign/safety/medical,
 /turf/closed/wall/strata_outpost_bare,
 /area/strata/ag/interior/outpost/med)
 "gif" = (
@@ -37847,7 +37851,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/interior/restricted/devroom)
 "jww" = (
-/obj/structure/sign/biohazard,
+/obj/structure/sign/safety/biohazard,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/exterior)
 "jwS" = (
@@ -39346,7 +39350,7 @@
 /turf/open/floor/greengrid,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "lTG" = (
-/obj/structure/sign/biohazard,
+/obj/structure/sign/safety/biohazard,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/exterior/tcomms/tcomms_deck)
 "lTW" = (
@@ -46347,7 +46351,7 @@
 /turf/open/gm/dirt,
 /area/strata/ug/interior/jungle/deep/south_engi)
 "xFH" = (
-/obj/structure/sign/biohazard,
+/obj/structure/sign/safety/biohazard,
 /turf/closed/wall/strata_outpost_ribbed,
 /area/strata/ag/exterior/nearlz2)
 "xFR" = (
@@ -53375,7 +53379,7 @@ ctC
 avt
 bZV
 ctC
-azF
+ctC
 aBm
 cbW
 ctC

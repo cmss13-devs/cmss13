@@ -418,9 +418,7 @@
 "bz" = (
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
-/obj/structure/sign/biohazard{
-	pixel_x = -30
-	},
+/obj/structure/sign/safety/biohazard,
 
 /turf/open/floor{
 	dir = 5;

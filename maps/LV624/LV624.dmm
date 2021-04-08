@@ -4457,8 +4457,8 @@
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle)
 "avp" = (
-/obj/structure/sign/science{
-	pixel_x = 30
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = 40
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/north_west_jungle)
@@ -5468,9 +5468,7 @@
 "ayJ" = (
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
-/obj/structure/sign/biohazard{
-	pixel_x = -30
-	},
+/obj/structure/sign/safety/biohazard,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "whitepurple"
@@ -5950,8 +5948,9 @@
 	},
 /area/lv624/lazarus/robotics)
 "aAo" = (
-/obj/structure/sign/science{
-	pixel_y = 30
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = 8;
+	pixel_y = 32
 	},
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -5966,8 +5965,9 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_tcomms_road)
 "aAr" = (
-/obj/structure/sign/science{
-	pixel_y = 30
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = 7;
+	pixel_y = 32
 	},
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder{
@@ -8972,14 +8972,11 @@
 	},
 /area/lv624/lazarus/yggdrasil)
 "aKj" = (
-/obj/structure/sign/atmosplaque{
-	pixel_y = 30
+/obj/structure/flora/grass/tallgrass/jungle/corner{
+	dir = 1
 	},
-/obj/structure/flora/jungle/vines/heavy,
-/turf/open/gm/grass{
-	icon_state = "grass2"
-	},
-/area/lv624/lazarus/yggdrasil)
+/turf/open/gm/grass,
+/area)
 "aKk" = (
 /obj/structure/flora/jungle/plantbot1,
 /obj/structure/flora/jungle/vines/heavy,
@@ -11108,8 +11105,8 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_central_jungle)
 "aSo" = (
-/turf/closed/wall,
-/area/lv624/lazarus/comms)
+/turf/open/gm/grass,
+/area)
 "aSq" = (
 /obj/structure/machinery/power/apc{
 	dir = 8;
@@ -11321,7 +11318,6 @@
 /turf/closed/wall/r_wall,
 /area/lv624/lazarus/secure_storage)
 "aTg" = (
-/obj/structure/sign/atmosplaque,
 /turf/closed/wall,
 /area/lv624/lazarus/comms)
 "aTh" = (
@@ -11901,9 +11897,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aVk" = (
-/obj/structure/sign/directions/engineering{
-	pixel_x = -28
-	},
+/obj/structure/sign/safety/maint,
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
 /area/lv624/ground/colony/south_nexus_road)
@@ -12326,12 +12320,7 @@
 	},
 /area/lv624/lazarus/engineering)
 "aWE" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'HIGH VOLTAGE'";
-	icon_state = "shock";
-	name = "HIGH VOLTAGE";
-	pixel_y = -32
-	},
+/obj/structure/sign/safety/high_voltage,
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/extinguisher,
 /obj/effect/spawner/random/powercell,
@@ -12675,8 +12664,8 @@
 /turf/open/floor/greengrid,
 /area/lv624/lazarus/secure_storage)
 "aXH" = (
-/obj/structure/sign/securearea{
-	pixel_x = -30
+/obj/structure/sign/safety/restrictedarea{
+	pixel_x = 8
 	},
 /obj/effect/decal/remains/xeno,
 /obj/structure/fence,
@@ -12863,9 +12852,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_west_jungle)
 "aYw" = (
-/obj/structure/sign/electricshock{
-	pixel_y = 30
-	},
+/obj/structure/sign/safety/high_voltage,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_central_jungle)
 "aYx" = (
@@ -13615,6 +13602,12 @@
 /obj/effect/landmark/corpsespawner/security,
 /turf/open/floor/wood,
 /area/lv624/ground/caves/north_central_caves)
+"bLs" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder{
+	dir = 8
+	},
+/area)
 "bMu" = (
 /turf/open/gm/dirtgrassborder{
 	dir = 4
@@ -13969,6 +13962,10 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"daz" = (
+/obj/structure/fence,
+/turf/open/gm/dirtgrassborder,
+/area)
 "dbA" = (
 /obj/structure/xenoautopsy/tank,
 /turf/open/shuttle{
@@ -16837,6 +16834,9 @@
 	icon_state = "warning"
 	},
 /area/lv624/lazarus/landing_zones/lz2)
+"mRZ" = (
+/turf/open/gm/dirt,
+/area)
 "mSo" = (
 /turf/open/gm/coast{
 	dir = 1;
@@ -18409,6 +18409,10 @@
 	icon_state = "grassdirt_corner"
 	},
 /area/lv624/ground/jungle/west_central_jungle)
+"rWC" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/gm/dirt,
+/area)
 "rWW" = (
 /obj/structure/flora/bush/ausbushes/grassybush,
 /turf/open/gm/river,
@@ -19610,6 +19614,12 @@
 "whU" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_east_caves)
+"wjT" = (
+/obj/structure/sign/safety/analysis_lab{
+	pixel_x = 40
+	},
+/turf/open/gm/grass,
+/area/lv624/ground/jungle/north_west_jungle)
 "wkE" = (
 /obj/structure/flora/bush/ausbushes/var3/sunnybush,
 /turf/open/gm/grass,
@@ -20079,6 +20089,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/east_caves)
+"xTb" = (
+/obj/structure/flora/bush/ausbushes/var3/fullgrass,
+/turf/open/gm/grass,
+/area)
 "xTT" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_west_jungle)
@@ -34935,7 +34949,7 @@ nuW
 pYq
 eny
 eny
-oAD
+aKj
 psh
 psh
 psh
@@ -35620,7 +35634,7 @@ psh
 mvr
 psh
 psh
-psh
+aSo
 psh
 psh
 axD
@@ -35850,7 +35864,7 @@ avp
 psh
 psh
 awF
-avp
+wjT
 psh
 tLQ
 psh
@@ -36084,8 +36098,8 @@ psh
 psh
 wqO
 jHd
-psh
-uiN
+aSo
+daz
 aBx
 byY
 byY
@@ -36312,8 +36326,8 @@ atO
 atO
 asT
 psh
-psh
-uiN
+aSo
+daz
 byY
 byY
 byY
@@ -36347,7 +36361,7 @@ aTg
 aQn
 aQn
 aQn
-aSo
+aTg
 aWd
 aSd
 aWY
@@ -36540,8 +36554,8 @@ ayp
 axF
 asU
 psh
-cGb
-uiN
+xTb
+daz
 byY
 byY
 byY
@@ -36570,13 +36584,13 @@ aPt
 aPt
 aRf
 aQn
-aSo
-aSo
+aTg
+aTg
 aTI
 aQn
 aVb
-aSo
-aSo
+aTg
+aTg
 aQn
 aWZ
 aPt
@@ -36768,8 +36782,8 @@ ayq
 axF
 asU
 psh
-psh
-uiN
+aSo
+daz
 byY
 byY
 byY
@@ -36996,8 +37010,8 @@ axF
 ayI
 asU
 nVG
-psh
-uiN
+aSo
+daz
 byY
 byY
 byY
@@ -37029,7 +37043,7 @@ aQn
 aQn
 aQn
 aQn
-aSo
+aTg
 aQn
 aQn
 aQn
@@ -37452,8 +37466,8 @@ aum
 ayJ
 avB
 asU
-byY
-byY
+mRZ
+mRZ
 aAq
 ylL
 byY
@@ -37482,13 +37496,13 @@ aPt
 aPt
 aZk
 aQn
-aSo
-aSo
+aTg
+aTg
 aTI
 aQn
 aVb
-aSo
-aSo
+aTg
+aTg
 aTG
 aXa
 aPt
@@ -37680,8 +37694,8 @@ atp
 ayK
 atp
 asV
-byY
-byY
+mRZ
+mRZ
 byY
 byY
 aCo
@@ -37711,11 +37725,11 @@ aPT
 aRi
 aSe
 aSK
-aSo
+aTg
 aTJ
 aQn
 aQn
-aSo
+aTg
 aWe
 aWx
 aZc
@@ -37908,8 +37922,8 @@ aum
 aum
 azh
 asU
-aAq
-byY
+rWC
+mRZ
 byY
 byY
 byY
@@ -38137,7 +38151,7 @@ atU
 asT
 asT
 aAr
-naR
+bLs
 naR
 naR
 naR
@@ -39522,7 +39536,7 @@ hEu
 hEu
 aIO
 aIO
-aKj
+aQo
 aKE
 aLe
 aLe

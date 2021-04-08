@@ -4092,9 +4092,7 @@
 	},
 /area/fiorina/station/research_cells)
 "cua" = (
-/obj/structure/sign/fire{
-	pixel_y = 32
-	},
+/obj/structure/sign/safety/fire_haz,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -16828,9 +16826,6 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "kfA" = (
-/obj/structure/sign/atmosplaque{
-	pixel_y = 32
-	},
 /turf/open/floor/prison{
 	icon_state = "bluefull"
 	},
@@ -21915,9 +21910,7 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/flight_deck)
 "nib" = (
-/obj/structure/sign/fire{
-	pixel_y = -32
-	},
+/obj/structure/sign/safety/fire_haz,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "nip" = (

@@ -51,55 +51,9 @@
 		qdel(src)
 	else ..()
 
-/obj/structure/sign/double/map
-	name = "station map"
-	desc = "A framed picture of the station."
-
-/obj/structure/sign/double/map/left
-	icon_state = "map-left"
-
-/obj/structure/sign/double/map/right
-	icon_state = "map-right"
-
-/obj/structure/sign/securearea
-	name = "\improper SECURE AREA"
-	desc = "A warning sign which reads 'SECURE AREA'."
-	icon_state = "securearea"
-
-/obj/structure/sign/biohazard
-	name = "\improper BIOHAZARD"
-	desc = "A warning sign which reads 'BIOHAZARD'."
-	icon_state = "bio"
-
-/obj/structure/sign/electricshock
-	name = "\improper HIGH VOLTAGE"
-	desc = "A warning sign which reads 'HIGH VOLTAGE'."
-	icon_state = "shock"
-
-/obj/structure/sign/examroom
-	name = "\improper EXAM"
-	desc = "A guidance sign which reads 'EXAM ROOM'."
-	icon_state = "examroom"
-
-/obj/structure/sign/vacuum
-	name = "\improper HARD VACUUM AHEAD"
-	desc = "A warning sign which reads 'HARD VACUUM AHEAD'."
-	icon_state = "space"
-
-/obj/structure/sign/deathsposal
-	name = "\improper DISPOSAL LEADS TO SPACE"
-	desc = "A warning sign which reads 'DISPOSAL LEADS TO SPACE'."
-	icon_state = "deathsposal"
-
-/obj/structure/sign/pods
-	name = "\improper ESCAPE PODS"
-	desc = "A warning sign which reads 'ESCAPE PODS'."
-	icon_state = "pods"
-
-/obj/structure/sign/fire
-	name = "\improper DANGER: FIRE"
-	desc = "A warning sign which reads 'DANGER: FIRE'."
-	icon_state = "fire"
+/////////////////////////
+///Miscellaneous Signs///
+/////////////////////////
 
 /obj/structure/sign/nosmoking_1
 	name = "\improper NO SMOKING"
@@ -111,16 +65,6 @@
 	desc = "A warning sign which reads 'NO SMOKING'."
 	icon_state = "nosmoking2"
 
-/obj/structure/sign/redcross
-	name = "medbay"
-	desc = "The Intergalactic symbol of Medical institutions. You'll probably get help here."
-	icon_state = "redcross"
-
-/obj/structure/sign/greencross
-	name = "medbay"
-	desc = "The Intergalactic symbol of Medical institutions. You'll probably get help here."
-	icon_state = "greencross"
-
 /obj/structure/sign/goldenplaque
 	name = "The Most Robust Men Award for Robustness"
 	desc = "To be Robust is not an action or a way of life, but a mental state. Only those with the force of Will strong enough to act during a crisis, saving friend from foe, are truly Robust. Stay Robust my friends."
@@ -131,10 +75,10 @@
 	desc = "Next to the extremely long list of names and job titles, there is a drawing of a little child. The child appears to be retarded. Beneath the image, someone has scratched the word \"PACKETS\""
 	icon_state = "kiddieplaque"
 
-/obj/structure/sign/atmosplaque
-	name = "\improper FEA Atmospherics Division plaque"
-	desc = "This plaque commemorates the fall of the Atmos FEA division. For all the charred, dizzy, and brittle men who have died in its hands."
-	icon_state = "atmosplaque"
+/obj/structure/sign/arcturianstopsign
+	name = "\improper Arcturian stop sign"
+	desc = "This is the Arcturian stop sign that some Bravos from First Platoon stole on the last shore leave."
+	icon_state = "arcturian_stop_sign"
 
 /obj/structure/sign/double/maltesefalcon	//The sign is 64x32, so it needs two tiles. ;3
 	name = "The Maltese Falcon"
@@ -146,45 +90,22 @@
 /obj/structure/sign/double/maltesefalcon/right
 	icon_state = "maltesefalcon-right"
 
-/obj/structure/sign/science			//These 3 have multiple types, just var-edit the icon_state to whatever one you want on the map
-	name = "\improper SCIENCE!"
-	desc = "A warning sign which reads 'SCIENCE!'."
-	icon_state = "science1"
+/////////////
+///Banners///
+/////////////
 
-/obj/structure/sign/chemistry
-	name = "\improper CHEMISTRY"
-	desc = "A warning sign which reads 'CHEMISTRY'."
-	icon_state = "chemistry1"
+/obj/structure/sign/banners
+	icon = 'icons/obj/structures/props/banners.dmi'
 
-/obj/structure/sign/botany
-	name = "\improper HYDROPONICS"
-	desc = "A warning sign which reads 'HYDROPONICS'."
-	icon_state = "hydro1"
+/obj/structure/sign/banners/happybirthdaysteve
+	name = "\improper Happy Birthday Steve banner"
+	desc = "A depressing looking paper banner wishing someone named Steve a happy birth ay."
+	icon_state = "birthdaysteve"
 
-/obj/structure/sign/directions/science
-	name = "\improper Science department"
-	desc = "A direction sign, pointing out which way the Science department is."
-	icon_state = "direction_sci"
-
-/obj/structure/sign/directions/engineering
-	name = "\improper Engineering department"
-	desc = "A direction sign, pointing out which way the Engineering department is."
-	icon_state = "direction_eng"
-
-/obj/structure/sign/directions/security
-	name = "\improper Security department"
-	desc = "A direction sign, pointing out which way the Security department is."
-	icon_state = "direction_sec"
-
-/obj/structure/sign/directions/medical
-	name = "\improper Medical Bay"
-	desc = "A direction sign, pointing out which way the Medical Bay is."
-	icon_state = "direction_med"
-
-/obj/structure/sign/directions/evac
-	name = "\improper Escape Arm"
-	desc = "A direction sign, pointing out which way the escape shuttle dock is."
-	icon_state = "direction_evac"
+/obj/structure/sign/banners/maximumeffort
+	name = "\improper Maximum Effort banner"
+	desc = "This banner depicts Delta Squad's motto. The Marines of Delta Squad adopted it after picking an old bomber movie for movie night a while back."
+	icon_state = "maximumeffort"
 
 ///////////////////////
 ///SEMIOTIC STANDARD///
@@ -193,7 +114,7 @@
 /obj/structure/sign/safety
 	name = "sign"
 	icon = 'icons/obj/structures/props/Semiotic_Standard.dmi'
-	desc = "A sign denoting Semiotic Standard.The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
+	desc = "A sign denoting Semiotic Standard. The Interstellar Commerce Commission requires that these symbols be placed pretty much everywhere for your safety."
 	anchored = 1
 	opacity = 0
 	density = 0
@@ -201,312 +122,357 @@
 /obj/structure/sign/safety/airlock
 	name = "airlock semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an airlock."
-	icon_state = "Airlock"
+	icon_state = "airlock"
 
 /obj/structure/sign/safety/ammunition
 	name = "ammunition storage semiotic"
 	desc = "Semiotic Standard denoting the nearby storage of ammunition."
-	icon_state = "Ammo"
+	icon_state = "ammo"
 
 /obj/structure/sign/safety/analysis_lab
 	name = "analysis laboratory semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an analysis laboratory."
-	icon_state = "Analysis_Lab"
-
-/obj/structure/sign/safety/autoopenclose
-	name = "automatic opener/closer semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of an automatic shutoff valve."
-	icon_state = "AutoOpenClose"
+	icon_state = "analysislab"
 
 /obj/structure/sign/safety/autodoc
 	name = "autodoc semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an autodoc."
-	icon_state = "Autodoc"
+	icon_state = "autodoc"
+
+/obj/structure/sign/safety/autoopenclose
+	name = "automatic opener/closer semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of an automatic shutoff valve."
+	icon_state = "autoopenclose"
+
+/obj/structure/sign/safety/bathmens
+	name = "men's bathroom semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a men's bathroom."
+	icon_state = "bathmens"
+
+/obj/structure/sign/safety/bathunisex
+	name = "unisex bathroom semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a unisex bathroom."
+	icon_state = "bathunisex"
+
+/obj/structure/sign/safety/bathwomens
+	name = "women's bathroom semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a women's bathroom."
+	icon_state = "bathwomens"
+
+/obj/structure/sign/safety/biohazard
+	name = "biohazard semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a biohazard."
+	icon_state = "biohazard"
 
 /obj/structure/sign/safety/biolab
 	name = "biological laboratory semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a biological laboratory."
-	icon_state = "BioLab"
+	icon_state = "biolab"
 
 /obj/structure/sign/safety/bridge
 	name = "bridge semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a starship's bridge."
-	icon_state = "Bridge"
+	icon_state = "bridge"
 
 /obj/structure/sign/safety/bulkhead_door
 	name = "bulkhead door semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a bulkhead door."
-	icon_state = "Bulkhead_Door"
+	icon_state = "bulkheaddoor"
 
 /obj/structure/sign/safety/chem_lab
 	name = "chemical laboratory semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a chemical laboratory."
-	icon_state = "Chem_Lab"
+	icon_state = "chemlab"
 
 /obj/structure/sign/safety/coffee
 	name = "coffee semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of coffee: the lifeblood of any starship crew."
-	icon_state = "Coffee"
+	icon_state = "coffee"
 
 /obj/structure/sign/safety/commline_connection
 	name = "point of connection for a communication line semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a comm line connection."
-	icon_state = "Commline_Connection"
+	icon_state = "commlineconnection"
 
 /obj/structure/sign/safety/conference_room
 	name = "conference room semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a conference room."
-	icon_state = "Conf_Room"
+	icon_state = "confroom"
 
 /obj/structure/sign/safety/cryo
 	name = "cryogenic vault semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a cryogenics vault."
-	icon_state = "Cryo"
+	icon_state = "cryo"
+
+/obj/structure/sign/safety/debark_lounge
+	name = "debarkation lounge semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a debarkation lounge."
+	icon_state = "debarkationlounge"
 
 /obj/structure/sign/safety/distribution_pipes
 	name = "distribution pipes semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a distribution pipeline."
-	icon_state = "Dist_Pipe"
+	icon_state = "distpipe"
 
 /obj/structure/sign/safety/east
 	name = "\improper East semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of something to the East."
-	icon_state = "East"
+	icon_state = "east"
 
 /obj/structure/sign/safety/electronics
 	name = "astronic systems semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of astronic systems. That's a fancy way of saying electrical systems."
-	icon_state = "Astronics"
+	icon_state = "astronics"
 
 /obj/structure/sign/safety/elevator
 	name = "elevator semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an elevator."
-	icon_state = "Elevator"
+	icon_state = "elevator"
 
 /obj/structure/sign/safety/exhaust
 	name = "exhaust semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an engine or generator exhaust."
-	icon_state = "Exhaust"
+	icon_state = "exhaust"
+
+/obj/structure/sign/safety/fire_haz
+	name = "fire hazard semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a fire hazard."
+	icon_state = "firehaz"
+
+/obj/structure/sign/safety/firingrange
+	name = "firing range semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a live ammunition firing range."
+	icon_state = "firingrange"
 
 /obj/structure/sign/safety/food_storage
 	name = "organic storage (foodstuffs) semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of unrefriderated food storage."
-	icon_state = "Food_Storage"
+	icon_state = "foodstorage"
 
 /obj/structure/sign/safety/galley
 	name = "galley semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a galley."
-	icon_state = "Galley"
+	icon_state = "galley"
 
 /obj/structure/sign/safety/hazard
 	name = "hazard semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a hazard. Watch out."
-	icon_state = "Hazard"
+	icon_state = "hazard"
 
 /obj/structure/sign/safety/high_rad
 	name = "high radioactivity semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an area of high radioactivity."
-	icon_state = "High_Rad"
+	icon_state = "highrad"
 
 /obj/structure/sign/safety/high_voltage
 	name = "high voltage semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a high voltage electrical current."
-	icon_state = "High_Voltage"
+	icon_state = "highvoltage"
 
 /obj/structure/sign/safety/hvac
 	name = "\improper HVAC semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of...an HVAC system. This sign must have been updated to the new standard."
-	icon_state = "HVAC"
+	icon_state = "hvac"
 
 /obj/structure/sign/safety/hvac_old
 	name = "\improper HVAC semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an HVAC system. This sign is still using the old standard."
-	icon_state = "HVAC-Old"
+	icon_state = "hvacold"
 
 /obj/structure/sign/safety/intercom
 	name = "intercom semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an intercom."
-	icon_state = "Comm"
+	icon_state = "comm"
 
 /obj/structure/sign/safety/ladder
 	name = "ladder semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a ladder."
-	icon_state = "Ladder"
+	icon_state = "ladder"
 
 /obj/structure/sign/safety/laser
 	name = "laser semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of lasers. It's usually not as cool as it sounds."
-	icon_state = "Laser"
+	icon_state = "laser"
 
 /obj/structure/sign/safety/life_support
 	name = "life support system semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a life support system."
-	icon_state = "Life_Support"
+	icon_state = "lifesupport"
 
 /obj/structure/sign/safety/maint
 	name = "maintenace semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of maintenance access."
-	icon_state = "Maint"
+	icon_state = "maint"
 
 /obj/structure/sign/safety/manualopenclose
 	name = "manual opener/closer semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a manual shutoff valve."
-	icon_state = "ManualOpenClose"
+	icon_state = "manualopenclose"
 
 /obj/structure/sign/safety/med_cryo
 	name = "medical cryostasis vault semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a medical cryostasis vault."
-	icon_state = "Med_Cryo"
+	icon_state = "medcryo"
 
 /obj/structure/sign/safety/med_life_support
 	name = "medical life support semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a life support system for a medbay."
-	icon_state = "Med_Life_Support"
+	icon_state = "medlifesupport"
 
 /obj/structure/sign/safety/medical
 	name = "medical semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a medbay."
-	icon_state = "Medical"
+	icon_state = "medical"
 
 /obj/structure/sign/safety/nonpress
 	name = "non-pressurized area beyond semiotic"
 	desc = "Semiotic Standard denoting that the area beyond isn't pressurized."
-	icon_state = "Non-Press_Area"
+	icon_state = "nonpressarea"
 
 /obj/structure/sign/safety/nonpress_ag
 	name = "zrtificial gravity area, non-pressurized, suit required semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an area with artificial gravity lacking in pressurization."
-	icon_state = "Non-Press_AG"
+	icon_state = "nonpressag"
 
 /obj/structure/sign/safety/nonpress_0g
 	name = "non-pressurized area, no gravity, suit required semiotic"
 	desc = "Semiotic Standard denoting that the area beyond isn't pressurized and has no artificial gravity."
-	icon_state = "Non-Press_Zero-G"
+	icon_state = "nonpresszerog"
 
 /obj/structure/sign/safety/north
 	name = "\improper North semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of something to the North."
-	icon_state = "North"
+	icon_state = "north"
 
 /obj/structure/sign/safety/opens_up
 	name = "opens upwards semiotic"
 	desc = "Semiotic Standard denoting the nearby door opens upwards."
-	icon_state = "Opens_Up"
+	icon_state = "opensup"
 
 /obj/structure/sign/safety/outpatient
 	name = "outpatient clinic semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an outpatient clinic."
-	icon_state = "Outpatient"
+	icon_state = "outpatient"
 
-/obj/structure/sign/safety/photonics
+/obj/structure/sign/safety/fibre_optics
 	name = "photonics systems (fibre optics) semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of fibre optics lines."
-	icon_state = "Fibre_Optic"
+	icon_state = "fibreoptic"
 
 /obj/structure/sign/safety/press_area_ag
 	name = "pressurized with artificial gravity semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a pressurized area without artificial gravity."
-	icon_state = "Press_Area_AG"
+	icon_state = "pressareaag"
 
 /obj/structure/sign/safety/press_area
 	name = "pressurized area semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a pressurized area."
-	icon_state = "Press_Area"
+	icon_state = "pressarea"
 
 /obj/structure/sign/safety/rad_haz
 	name = "radiation hazard semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a radiation hazard."
-	icon_state = "Rad_Haz"
+	icon_state = "radhaz"
 
 /obj/structure/sign/safety/rad_shield
 	name = "area shielded from radiation semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an area shielded from radiation."
-	icon_state = "Rad_Shield"
+	icon_state = "radshield"
 
 /obj/structure/sign/safety/radio_rad
 	name = "radiation of radio waves semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of radiation from a radio tower."
-	icon_state = "Radio_Rad"
+	icon_state = "radiorad"
 
 /obj/structure/sign/safety/reception
 	name = "reception semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a reception area."
-	icon_state = "Reception"
+	icon_state = "reception"
 
 /obj/structure/sign/safety/reduction
 	name = "reduction dilation of area semiotic"
 	desc = "Semiotic Standard denoting that the area gets smaller ahead."
-	icon_state = "Reduction"
+	icon_state = "reduction"
 
 /obj/structure/sign/safety/ref_bio_storage
 	name = "refridgerated biological storage semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of refridgerated biological storage."
-	icon_state = "Ref_Bio_Storage"
+	icon_state = "refbiostorage"
 
 /obj/structure/sign/safety/ref_chem_storage
 	name = "refridgerated chemical storage semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of refridgerated chemical storage."
-	icon_state = "Ref_Chem_Storage"
+	icon_state = "refchemstorage"
+
+/obj/structure/sign/safety/restrictedarea
+	name = "restricted area semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a restricted area."
+	icon_state = "restrictedarea"
 
 /obj/structure/sign/safety/fridge
 	name = "refridgerated storage (organic foodstuffs) semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a fridge."
-	icon_state = "Fridge"
+	icon_state = "fridge"
 
 /obj/structure/sign/safety/refridgeration
 	name = "refridgeration semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of non-food refridgeration."
-	icon_state = "Refridgeration"
+	icon_state = "refridgeration"
 
 /obj/structure/sign/safety/rewire
 	name = "rewire system semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a rewire system."
-	icon_state = "Rewire"
+	icon_state = "rewire"
+
+/obj/structure/sign/safety/security
+	name = "security semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of law enforcement."
+	icon_state = "security"
 
 /obj/structure/sign/safety/south
 	name = "\improper South semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of something to the South."
-	icon_state = "South"
+	icon_state = "south"
 
 /obj/structure/sign/safety/storage
 	name = "storage semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a general dry storage room."
-	icon_state = "Storage"
+	icon_state = "storage"
 
 /obj/structure/sign/safety/suit_storage
 	name = "pressure suit locker semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a pressure suit storage locker."
-	icon_state = "Suit_Storage"
+	icon_state = "suitstorage"
 
 /obj/structure/sign/safety/synth_storage
 	name = "synthetic storage semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a synthetic storage room."
-	icon_state = "Synth_Storage"
+	icon_state = "synthstorage"
 
 /obj/structure/sign/safety/terminal
 	name = "computer terminal semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a computer terminal."
-	icon_state = "Terminal"
+	icon_state = "terminal"
 
 /obj/structure/sign/safety/tram
 	name = "tram line semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a tram line."
-	icon_state = "Tram_Line"
+	icon_state = "tramline"
 
 /obj/structure/sign/safety/twilight_zone_terminator
 	name = "twilight zone terminator semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a twilight zone terminator. It's way less cool than it sounds."
-	icon_state = "Twilight_Zone_Terminator"
+	icon_state = "twilightzoneterminator"
 
 /obj/structure/sign/safety/west
 	name = "\improper West semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of something to the West."
-	icon_state = "West"
+	icon_state = "west"
 
 /obj/structure/sign/safety/zero_g
 	name = "artificial gravity absent semiotic"
 	desc = "Semiotic Standard denoting the nearby lack of artificial gravity."
-	icon_state = "Zero_G"
+	icon_state = "zerog"
 
 //////////////////
 ///Marine signs///

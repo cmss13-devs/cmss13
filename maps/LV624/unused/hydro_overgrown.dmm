@@ -273,7 +273,7 @@
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
 "anH" = (
-/obj/structure/sign/botany,
+/obj/structure/sign/safety/biolab,
 /turf/closed/wall,
 /area/lv624/lazarus/hydroponics)
 "anI" = (
@@ -852,7 +852,7 @@
 /turf/open/gm/dirtgrassborder,
 /area/lv624/lazarus/hydroponics)
 "aZx" = (
-/obj/structure/sign/botany,
+/obj/structure/sign/safety/biolab,
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
 	pixel_x = 0;

@@ -558,7 +558,7 @@
 /obj/structure/disposalpipe/up{
 	dir = 1
 	},
-/obj/structure/sign/deathsposal{
+/obj/structure/sign/safety/nonpress{
 	pixel_x = 30
 	},
 /turf/open/floor/prison{
@@ -1167,7 +1167,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/structure/sign/deathsposal{
+/obj/structure/sign/safety/nonpress{
 	pixel_x = -30
 	},
 /turf/open/floor/prison{
@@ -3932,7 +3932,7 @@
 	icon_state = "NE-out";
 	tag = "icon-NE-out"
 	},
-/obj/structure/sign/vacuum{
+/obj/structure/sign/safety/nonpress_0g{
 	pixel_y = 30
 	},
 /turf/open/floor/prison,
@@ -5331,7 +5331,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/obj/structure/sign/vacuum{
+/obj/structure/sign/safety/nonpress_0g{
 	pixel_x = 30
 	},
 /turf/open/floor/plating,
@@ -7463,7 +7463,7 @@
 	},
 /area/prison/research)
 "asd" = (
-/obj/structure/sign/vacuum{
+/obj/structure/sign/safety/nonpress_0g{
 	pixel_y = 30
 	},
 /turf/open/floor/prison{
@@ -11133,7 +11133,7 @@
 	},
 /area/prison/medbay)
 "aBS" = (
-/obj/structure/sign/greencross,
+/obj/structure/sign/safety/medical,
 /turf/closed/wall/prison,
 /area/prison/medbay)
 "aBT" = (
@@ -11577,7 +11577,7 @@
 	},
 /area/prison/medbay/foyer)
 "aDj" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/prison,
 /area/prison/research)
 "aDk" = (
@@ -19418,7 +19418,7 @@
 	},
 /area/prison/hallway/staff)
 "aYO" = (
-/obj/structure/sign/vacuum{
+/obj/structure/sign/safety/nonpress_0g{
 	pixel_y = 30
 	},
 /obj/structure/machinery/light{
@@ -22051,7 +22051,7 @@
 	},
 /area/prison/hallway/entrance)
 "bfS" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/hanger/main)
 "bfT" = (
@@ -27969,7 +27969,7 @@
 	},
 /area/prison/hallway/central/west)
 "bvQ" = (
-/obj/structure/sign/vacuum{
+/obj/structure/sign/safety/nonpress_0g{
 	pixel_y = -30
 	},
 /turf/open/floor/prison{
@@ -27996,7 +27996,7 @@
 	icon_state = "E";
 	tag = "icon-E"
 	},
-/obj/structure/sign/vacuum{
+/obj/structure/sign/safety/nonpress_0g{
 	pixel_y = -30
 	},
 /turf/open/floor/prison,
@@ -48832,7 +48832,7 @@
 	},
 /area/prison/research)
 "jdx" = (
-/obj/structure/sign/greencross,
+/obj/structure/sign/safety/medical,
 /turf/closed/wall/r_wall/prison_unmeltable,
 /area/prison/medbay/foyer)
 "jeD" = (

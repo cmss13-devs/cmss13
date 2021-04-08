@@ -28953,6 +28953,9 @@
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
 	},
+/obj/structure/sign/safety/twilight_zone_terminator{
+	pixel_x = -17
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -36440,6 +36443,16 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/hull/lower_hull/l_f_s)
+"dpO" = (
+/obj/structure/machinery/cm_vending/clothing/marine/delta,
+/obj/structure/sign/banners/maximumeffort{
+	pixel_y = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/squads/delta)
 "dpV" = (
 /obj/structure/machinery/firealarm{
 	dir = 4;
@@ -36448,10 +36461,7 @@
 /turf/open/floor/almayer,
 /area/almayer/command/corporateliason)
 "dqb" = (
-/obj/structure/sign/directions/security{
-	dir = 8;
-	pixel_x = -32
-	},
+/obj/structure/sign/safety/security,
 /turf/open/floor/almayer,
 /area/almayer/lifeboat_pumps/south1)
 "dqd" = (
@@ -40821,9 +40831,8 @@
 	},
 /area/almayer/shipboard/brig/armory)
 "fsV" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'LIVE AMMUNITION RANGE'.";
-	name = "\improper FIRING RANGE";
+/obj/structure/sign/safety/firingrange{
+	pixel_x = 8;
 	pixel_y = 32
 	},
 /turf/open/floor/plating/almayer,
@@ -48695,9 +48704,8 @@
 	},
 /area/almayer/living/grunt_rnr)
 "jiw" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'LIVE AMMUNITION RANGE'.";
-	name = "\improper FIRING RANGE";
+/obj/structure/sign/safety/firingrange{
+	pixel_x = 8;
 	pixel_y = -32
 	},
 /turf/open/floor/plating/almayer,
@@ -61737,8 +61745,7 @@
 	pixel_x = -12;
 	pixel_y = 16
 	},
-/obj/structure/sign/directions/security{
-	dir = 8;
+/obj/structure/sign/safety/security{
 	pixel_x = -32
 	},
 /turf/open/floor/almayer,
@@ -74079,6 +74086,9 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/living/briefing)
+"wgc" = (
+/turf/closed/wall/almayer,
+/area)
 "wgk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -76213,6 +76223,9 @@
 	},
 /obj/item/storage/box/mousetraps{
 	pixel_y = 12
+	},
+/obj/structure/sign/arcturianstopsign{
+	pixel_y = 32
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -114845,7 +114858,7 @@ vUi
 bPU
 qEW
 qEW
-nsY
+wgc
 xgS
 dbn
 qvC
@@ -119153,7 +119166,7 @@ chN
 cje
 bFh
 bJC
-cks
+dpO
 ckR
 cli
 coj

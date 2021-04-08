@@ -437,9 +437,7 @@
 "bf" = (
 /obj/item/storage/box/beakers,
 /obj/structure/surface/table,
-/obj/structure/sign/biohazard{
-	pixel_x = -30
-	},
+/obj/structure/sign/safety/biohazard,
 
 /obj/effect/landmark/crap_item,
 /turf/open/floor{

@@ -24511,7 +24511,7 @@
 	},
 /area/corsat/omega/complex)
 "bnl" = (
-/obj/structure/sign/electricshock,
+/obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/engineering/core)
 "bnm" = (
@@ -24583,9 +24583,7 @@
 	},
 /area/corsat/gamma/canteen)
 "bnz" = (
-/obj/structure/sign/biohazard{
-	pixel_y = -32
-	},
+/obj/structure/sign/safety/biohazard,
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/reagentgrinder,
 /obj/item/stack/sheet/mineral/phoron/small_stack,
@@ -24612,9 +24610,7 @@
 	},
 /area/corsat/gamma/biodome/virology)
 "bnC" = (
-/obj/structure/sign/biohazard{
-	pixel_y = -32
-	},
+/obj/structure/sign/safety/biohazard,
 /turf/open/floor/corsat{
 	icon_state = "purplewhite"
 	},
@@ -24650,13 +24646,11 @@
 /turf/closed/wall/almayer/white,
 /area/corsat/gamma/medbay)
 "bnH" = (
-/obj/structure/sign/biohazard,
+/obj/structure/sign/safety/biohazard,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/biodome/virology)
 "bnI" = (
-/obj/structure/sign/biohazard{
-	pixel_y = -30
-	},
+/obj/structure/sign/safety/biohazard,
 /obj/structure/machinery/space_heater,
 /turf/open/floor/corsat{
 	dir = 8;
@@ -24694,7 +24688,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/gamma/biodome)
 "bnQ" = (
-/obj/structure/sign/chemistry{
+/obj/structure/sign/safety/chem_lab{
 	pixel_y = -30
 	},
 /turf/open/floor/corsat{
@@ -24826,7 +24820,7 @@
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/theta/biodome)
 "bou" = (
-/obj/structure/sign/electricshock,
+/obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/r_wall/biodome,
 /area/corsat/sigma/southeast/generator)
 "bov" = (
@@ -26469,9 +26463,7 @@
 	},
 /area/corsat/gamma/hangar/office)
 "btT" = (
-/obj/structure/sign/biohazard{
-	pixel_y = 32
-	},
+/obj/structure/sign/safety/biohazard,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "purplewhitecorner"
@@ -37418,10 +37410,7 @@
 	},
 /area/corsat/sigma/south/complex)
 "cut" = (
-/obj/structure/sign/botany{
-	pixel_x = -30;
-	pixel_y = -16
-	},
+/obj/structure/sign/safety/biolab,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "darkgreencorner"
@@ -50492,9 +50481,7 @@
 	},
 /area/corsat/omega/complex)
 "lYt" = (
-/obj/structure/sign/electricshock{
-	pixel_x = 30
-	},
+/obj/structure/sign/safety/high_voltage,
 /obj/structure/platform{
 	dir = 8
 	},
@@ -50649,9 +50636,7 @@
 	},
 /area/corsat/theta/biodome/complex)
 "mey" = (
-/obj/structure/sign/biohazard{
-	pixel_y = -32
-	},
+/obj/structure/sign/safety/biohazard,
 /obj/structure/surface/table/almayer,
 /turf/open/floor/corsat{
 	dir = 4;
@@ -56274,9 +56259,7 @@
 	},
 /area/corsat/sigma/southeast/dataoffice)
 "qmT" = (
-/obj/structure/sign/biohazard{
-	pixel_y = 32
-	},
+/obj/structure/sign/safety/biohazard,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "purplewhitecorner"

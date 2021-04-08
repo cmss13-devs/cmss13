@@ -7523,6 +7523,10 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
+"yy" = (
+/obj/structure/surface/table/gamblingtable,
+/turf/open/floor/kutjevo/tan,
+/area/space)
 "yz" = (
 /obj/structure/window/framed/kutjevo/reinforced/hull,
 /turf/open/floor/plating/kutjevo,
@@ -12545,6 +12549,12 @@
 "ON" = (
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
+"OO" = (
+/obj/structure/sign/banners/happybirthdaysteve{
+	pixel_y = -4
+	},
+/turf/closed/wall/kutjevo/colony,
+/area/kutjevo/interior/construction)
 "OP" = (
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor/kutjevo/grey/plate,
@@ -36265,7 +36275,7 @@ UB
 dj
 hb
 dj
-VK
+OO
 oC
 fI
 fI
@@ -36435,7 +36445,7 @@ Yq
 VK
 oC
 mg
-vh
+yy
 vh
 Kt
 qC

@@ -4721,7 +4721,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_biology)
 "anJ" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
@@ -4917,7 +4917,7 @@
 /turf/closed/shuttle/transit/horizontal,
 /area/shuttle/tri_trans1/alpha)
 "aon" = (
-/obj/structure/sign/directions/science,
+/obj/structure/sign/safety/analysis_lab,
 /turf/closed/shuttle/transit/horizontal,
 /area/shuttle/tri_trans1/alpha)
 "aoo" = (
@@ -7450,7 +7450,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_lobby)
 "auW" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
@@ -10629,7 +10629,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "aEc" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
@@ -13566,7 +13566,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_medical)
 "aMu" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
@@ -14163,7 +14163,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "aNY" = (
-/obj/structure/sign/securearea,
+/obj/structure/sign/safety/restrictedarea,
 /turf/closed/wall/hangar{
 	name = "reinforced metal wall"
 	},
@@ -14376,7 +14376,7 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/purification)
 "aOF" = (
-/obj/structure/sign/directions/medical,
+/obj/structure/sign/safety/medical,
 /turf/closed/shuttle/transit/horizontal,
 /area/shuttle/tri_trans2/alpha)
 "aOG" = (

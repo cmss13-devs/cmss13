@@ -8111,7 +8111,7 @@
 	},
 /area/ice_colony/surface/hydroponics/lobby)
 "auL" = (
-/obj/structure/sign/botany,
+/obj/structure/sign/safety/biolab,
 /turf/closed/wall/r_wall,
 /area/ice_colony/surface/hydroponics/lobby)
 "auM" = (
@@ -22762,7 +22762,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/maintenance/north)
 "bif" = (
-/obj/structure/sign/electricshock,
+/obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/hangar)
 "big" = (
@@ -25776,7 +25776,7 @@
 /turf/open/ice,
 /area/ice_colony/exterior/underground/caves)
 "bqT" = (
-/obj/structure/sign/greencross,
+/obj/structure/sign/safety/medical,
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/medical/lobby)
 "bqU" = (
@@ -26865,7 +26865,7 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/engineering/substation)
 "btA" = (
-/obj/structure/sign/electricshock,
+/obj/structure/sign/safety/high_voltage,
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/engineering/substation)
 "btB" = (

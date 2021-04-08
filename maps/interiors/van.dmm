@@ -17,9 +17,8 @@
 	name = "back left entrance marker";
 	tag = "back_left"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_13"
 	},
 /area/vehicle/van)
 "c" = (
@@ -33,17 +32,11 @@
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	pixel_y = 29
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_5"
 	},
 /area/vehicle/van)
 "d" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1;
-	icon_state = "comfychair";
-	tag = "icon-comfychair (NORTH)"
-	},
 /obj/structure/interior_wall/van{
 	dir = 8;
 	icon_state = "van_back_2"
@@ -59,17 +52,15 @@
 	name = "back right entrance marker";
 	tag = "back_right"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/obj/structure/bed/chair/comfy{
+	dir = 1;
+	tag = "icon-comfychair (NORTH)"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_13"
 	},
 /area/vehicle/van)
 "f" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1;
-	icon_state = "comfychair";
-	tag = "icon-comfychair (NORTH)"
-	},
 /obj/structure/interior_wall/van{
 	alpha = 50;
 	icon_state = "van_right_2";
@@ -78,9 +69,12 @@
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	dir = 1
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/obj/structure/bed/chair/comfy{
+	dir = 1;
+	tag = "icon-comfychair (NORTH)"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_5"
 	},
 /area/vehicle/van)
 "h" = (
@@ -91,9 +85,8 @@
 	layer = 2;
 	pixel_y = 31
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_14"
 	},
 /area/vehicle/van)
 "G" = (
@@ -116,9 +109,8 @@
 	name = "left entrance marker";
 	tag = "left"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_11"
 	},
 /area/vehicle/van)
 "J" = (
@@ -140,25 +132,22 @@
 	name = "right entrance marker";
 	tag = "right"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_12"
 	},
 /area/vehicle/van)
 "N" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1;
-	icon_state = "comfychair";
-	tag = "icon-comfychair (NORTH)"
-	},
 /obj/structure/interior_wall/van{
 	alpha = 50;
 	icon_state = "van_right_2";
 	layer = 4
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/obj/structure/bed/chair/comfy{
+	dir = 1;
+	tag = "icon-comfychair (NORTH)"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_14"
 	},
 /area/vehicle/van)
 "O" = (

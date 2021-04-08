@@ -146,9 +146,7 @@
 		else
 			dat += "<font color=\"red\">[resist * 100]% [i] </font>"
 
-	dat +="<br>"
-	V.interior.update_passenger_count()
-	dat += "Passenger capacity: [V.interior.humans_inside]/[V.interior.human_capacity].<br>"
+	dat += "<br>"
 
 	if(V.health <= 0)
 		dat += "Hull integrity: <font color=\"red\">\[CRITICAL FAILURE\]</font>"
@@ -162,6 +160,19 @@
 		LAZYREMOVE(hps, H)
 	for(var/obj/item/hardpoint/H in hps)
 		dat += H.get_hardpoint_info()
+
+	dat += "<hr>"
+
+	if(V.health <= 0)
+		dat += "Doors locks: <font color=\"red\">BROKEN</font>.<br>"
+	else
+		dat += "Doors locks: [V.door_locked ? "<font color=\"green\">Enabled</font>" : "<font color=\"red\">Disabled</font>"].<br>"
+
+	V.interior.update_passenger_count()
+	dat += "Common passengers capacity: [V.interior.passengers_taken_slots]/[V.interior.passengers_slots].<br>"
+
+	for(var/datum/role_reserved_slots/RRS in V.interior.role_reserved_slots)
+		dat += "[RRS.category_name] passengers capacity: [RRS.taken]/[RRS.total].<br>"
 
 	show_browser(user, dat, "Vehicle Status Info", "vehicle_info")
 	onclose(user, "vehicle_info")

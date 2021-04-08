@@ -46,6 +46,9 @@
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return TRUE
+	if(user.z == GLOB.interior_manager.interior_z)
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return TRUE
 
 
 

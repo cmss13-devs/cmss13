@@ -62,6 +62,23 @@
 		detach_clamp(user)
 		return
 
+	//try to fit something in vehicle without getting in ourselves
+	if(istype(O, /obj/item/grab) && user.a_intent == INTENT_HELP && ishuman(user))
+		var/mob_x = user.x - src.x
+		var/mob_y = user.y - src.y
+		for(var/entrance in entrances)
+			var/entrance_coord = entrances[entrance]
+			if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
+				var/obj/item/grab/G = O
+				var/atom/dragged_atom = G.grabbed_thing
+				if(istype(/obj/item/explosive/grenade, dragged_atom))
+					var/obj/item/explosive/grenade/nade = dragged_atom
+					if(!nade.active)		//very creative, but no.
+						break
+				handle_fitting_pulled_atom(user, dragged_atom)
+				return
+		to_chat(user, SPAN_INFO("In order to try fitting pulled object into vehicle without getting in, stand at the entrance and click on vehicle with pulled object on [SPAN_HELPFUL("HELP")] intent."))
+
 	if(user.a_intent != INTENT_HARM)
 		handle_player_entrance(user)
 		return
@@ -137,7 +154,7 @@
 	for(var/entrance in entrances)
 		var/entrance_coord = entrances[entrance]
 		if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
-			handle_player_entrance(user, entrance)
+			handle_player_entrance(user)
 			return
 	. = ..()
 
@@ -279,11 +296,6 @@
 /obj/vehicle/multitile/proc/handle_player_entrance(var/mob/M)
 	if(!M || M.client == null) return
 
-	// xenos bypass door locks
-	if(door_locked && !allowed(M) && !isXeno(M))
-		to_chat(M, SPAN_DANGER("\The [src] is locked!"))
-		return
-
 	var/mob_x = M.x - src.x
 	var/mob_y = M.y - src.y
 	var/entrance_used = null
@@ -292,6 +304,15 @@
 		if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
 			entrance_used = entrance
 			break
+
+	var/enter_time = 0
+	// door locks break when hull is destroyed and xenos bypass door locks
+	if(door_locked && !allowed(M) && health > 0)
+		if(isXeno(M))
+			enter_time = 3 SECONDS
+		else
+			to_chat(M, SPAN_DANGER("\The [src] is locked!"))
+			return
 
 	// Only xenos can force their way in without doors, and only when the frame is completely broken
 	if(!entrance_used && health > 0)
@@ -312,9 +333,12 @@
 		var/obj/item/grab/G = M.get_active_hand()
 		dragged_atom = G.grabbed_thing
 
-	var/enter_time = 1 SECONDS
-	if(dragged_atom)
-		enter_time = 2 SECONDS
+	if(!enter_time)
+		enter_time = entrance_speed SECONDS
+		if(dragged_atom)
+			enter_time = 2 SECONDS
+		if(isXeno(M))	//Xenos are not as fast as marines, but not affected by dragging when doors are unlocked
+			enter_time = 1 SECONDS
 
 	to_chat(M, SPAN_NOTICE(enter_msg))
 	if(!do_after(M, enter_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
@@ -341,6 +365,49 @@
 		var/success = interior.enter(dragged_atom, entrance_used)
 		if(!success)
 			to_chat(M, SPAN_NOTICE("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
+
+/obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/M, var/atom/dragged_atom)
+	if(!ishuman(M))
+		return
+
+	if(health > 0 && door_locked && !allowed(M))
+		to_chat(M, SPAN_DANGER("\The [src] is locked!"))
+		return
+
+	var/mob_x = M.x - src.x
+	var/mob_y = M.y - src.y
+	var/entrance_used = null
+	for(var/entrance in entrances)
+		var/entrance_coord = entrances[entrance]
+		if(mob_x == entrance_coord[1] && mob_y == entrance_coord[2])
+			entrance_used = entrance
+			break
+
+	to_chat(M, SPAN_NOTICE("You start trying to fit [dragged_atom] into \the [src]..."))
+	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+		return
+	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
+		return
+
+	var/atom/currently_dragged
+
+	if(istype(M.get_inactive_hand(), /obj/item/grab))
+		var/obj/item/grab/G = M.get_inactive_hand()
+		currently_dragged = G.grabbed_thing
+	else if(istype(M.get_active_hand(), /obj/item/grab))
+		var/obj/item/grab/G = M.get_active_hand()
+		currently_dragged = G.grabbed_thing
+
+	if(currently_dragged != dragged_atom)
+		to_chat(M, SPAN_WARNING("You stop fiting [dragged_atom] inside \the [src]!"))
+		return
+
+	var/success = interior.enter(dragged_atom, entrance_used)
+	if(success)
+		to_chat(M, SPAN_NOTICE("You succesfully fit [dragged_atom] inside \the [src]."))
+	else
+		to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src]."))
+	return
 
 //CLAMP procs, unsafe proc, checks are done before calling it
 /obj/vehicle/multitile/proc/attach_clamp(obj/item/vehicle_clamp/O, mob/user)

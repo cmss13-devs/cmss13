@@ -1,3 +1,5 @@
+GLOBAL_LIST_EMPTY(command_apc_list)
+
 /obj/vehicle/multitile/apc
 	name = "\improper M577 Armored Personnel Carrier"
 	desc = "A giant piece of armor with four big wheels, you know what to do. Entrance on the sides."
@@ -14,11 +16,16 @@
 	bound_y = -32
 
 	interior_map = "apc"
-	interior_capacity = 10
+
+	passengers_slots = 12
+	xenos_slots = 8
+
 	entrances = list(
 		"left" = list(2, 0),
 		"right" = list(-2, 0)
 	)
+
+	entrance_speed = 0.5
 
 	required_skill = SKILL_VEHICLE_LARGE
 
@@ -54,6 +61,13 @@
 		"blunt" = 0.9,
 		"abstract" = 1.0
 	)
+
+/obj/vehicle/multitile/apc/load_role_reserved_slots()
+	var/datum/role_reserved_slots/RRS = new
+	RRS.category_name = "Crewmen"
+	RRS.roles = list(JOB_CREWMAN, JOB_UPP_CREWMAN)
+	RRS.total = 2
+	role_reserved_slots += RRS
 
 /obj/vehicle/multitile/apc/add_seated_verbs(var/mob/living/M, var/seat)
 	if(!M.client)
@@ -95,7 +109,9 @@
 			/obj/vehicle/multitile/proc/toggle_shift_click,
 		))
 
-/obj/structure/interior_wall/apc
+// Special interior objects
+
+/obj/structure/interior_wall_full/apc
 	name = "\improper APC interior wall"
 	icon = 'icons/obj/vehicles/interiors/apc.dmi'
 	icon_state = "apc_right_1"
@@ -141,7 +157,21 @@
 	icon_state = "apc_base_med"
 
 	interior_map = "apc_med"
-	interior_capacity = 5
+
+	passengers_slots = 4
+
+/obj/vehicle/multitile/apc/medical/load_role_reserved_slots()
+	var/datum/role_reserved_slots/RRS = new
+	RRS.category_name = "Crewmen"
+	RRS.roles = list(JOB_CREWMAN, JOB_UPP_CREWMAN)
+	RRS.total = 2
+	role_reserved_slots += RRS
+
+	RRS = new
+	RRS.category_name = "Medical Support"
+	RRS.roles = list(JOB_CMO, JOB_DOCTOR, JOB_RESEARCHER, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER)
+	RRS.total = 1
+	role_reserved_slots += RRS
 
 /obj/vehicle/multitile/apc/medical/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
 	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
@@ -165,7 +195,29 @@
 	desc = "A giant piece of armor with four big wheels and a command station inside, you know what to do. Entrance on the sides."
 
 	interior_map = "apc_command"
-	interior_capacity = 5
+
+	passengers_slots = 8
+
+/obj/vehicle/multitile/apc/command/Initialize()
+	. = ..()
+	GLOB.command_apc_list += src
+
+/obj/vehicle/multitile/apc/command/Destroy()
+	GLOB.command_apc_list -= src
+	return ..()
+
+/obj/vehicle/multitile/apc/command/load_role_reserved_slots()
+	var/datum/role_reserved_slots/RRS = new
+	RRS.category_name = "Crewmen"
+	RRS.roles = list(JOB_CREWMAN, JOB_UPP_CREWMAN)
+	RRS.total = 2
+	role_reserved_slots += RRS
+
+	RRS = new
+	RRS.category_name = "Command Staff"
+	RRS.roles = list(JOB_COMMAND_ROLES_LIST)
+	RRS.total = 1
+	role_reserved_slots += RRS
 
 /obj/vehicle/multitile/apc/command/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
 	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)

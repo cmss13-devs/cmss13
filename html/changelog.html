@@ -65,6 +65,31 @@
 </table>
 
 			<h2 class="date">08 April 2021</h2>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="maptweak">Reworked and improved APC variants interiors.</li>
+				<li class="rscadd">Reworked passenger system for vehicles. In addition to common passenger and xeno slots, vehicle now can contain passenger slots dedicated to specific roles. For example, APC has 2 Crewmen slots, meaning only humans with Vehicle Crewman job can occupy these passenger slots.</li>
+				<li class="spellcheck">Changed CIC Map Table name to Tactical Map Table.</li>
+				<li class="rscadd">CMD APC now has inbuilt sensor tower with limited range. Destroying vehicle's hull breaks it.</li>
+				<li class="tweak">Vehicle's Get Status Info verb now shows passenger slots in details.</li>
+				<li class="rscadd">Added separate floors for vehicle interiors. Changed floor in tank, APC and van interiors to new floor type.</li>
+				<li class="imageadd">Added edited dropship floor sprites for vehicle interiors.</li>
+				<li class="rscadd">Added new type of vehicle walls to replace current one due to problems with them. Only for APC for now.</li>
+				<li class="imageadd">Added a lot of edited sprites for APC new walls.</li>
+				<li class="tweak">Armored vehicles (tank, APC) use tank's driver and gunner seats now. Unarmored vehicles (vans and others) keep using comfy seats.</li>
+				<li class="rscadd">Added new APC passenger seats. Can be fixed with a welding tool.</li>
+				<li class="imageadd">Added new APC passenger seats sprites by Nauticall.</li>
+				<li class="tweak">Vehicle storage unit now can be accessed by UPP Crewmen (for events).</li>
+				<li class="rscadd">Added medical version of vehicle storage unit - wall-mounted surgery kit storage. This locker can only be accessed by some medical roles who can perform surgery, it comes pre-filled with surgical tools. Those with access can use Remove Surgical Tray verb that will spawn surgical tray and all current instruments in locker will be moved there. Locker cannot be used while it's missing surgical tray. Clickon locker with surgical tray to install it back.</li>
+				<li class="rscadd">Standing at vehicle entrance and clicking on vehicle with pulled object on HELP intent will attempt to fit pulled object into vehicle without user entering. This action takes 1 second. Still requires doors to be unlocked or appropriate access and enough passenger slots, in case it's alive mob.</li>
+				<li class="tweak">Changed entering/exiting time for vehicles. Default time is 1 second. Pulling something increases it to 2 seconds. Xenos always wait 1 second. APC entering/exiting time is 0.5 seconds.</li>
+				<li class="tweak">Door locks changes: 1. Xenos now require 3 seconds to bypass doorlocks. 2. Door locks stop working when hull is broken.</li>
+				<li class="tweak">Vehicle's Get Status Info verb now shows vehicle lock's status.</li>
+				<li class="tweak">Clicking on driver/gunner seats as a xeno will unbuckle the mob now.</li>
+				<li class="bugfix">Fixed being able to deploy mines in vehicle interior.</li>
+				<li class="bugfix">Fixed being able to pull and deploy M56D and it's tripod into vehicle interior.</li>
+				<li class="bugfix">Fixed being able to pull handheld defenses into vehicle interior.</li>
+			</ul>
 			<h3 class="author">monkeysfist updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Added two banners: Maximum Effort and Happy Birth ay Steve</li>

@@ -215,7 +215,7 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	RRS = new
 	RRS.category_name = "Command Staff"
-	RRS.roles = list(JOB_COMMAND_ROLES_LIST)
+	RRS.roles = JOB_COMMAND_ROLES_LIST
 	RRS.total = 1
 	role_reserved_slots += RRS
 

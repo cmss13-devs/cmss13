@@ -104,6 +104,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 /datum/character_trait_group
 	/// For player prefs menu
 	var/trait_group_name = "Trait Group"
+	var/group_visible = TRUE //Set this to false so the group doesn't show up in preferences
 
 	// CONSTRAINTS
 	// MODIFY THESE VARS FOR SETTING CONSTRAINTS FOR TRAIT GROUPS
@@ -132,6 +133,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 		stack_trace("Defined a constraining character trait group without setting base_type for [type]")
 		base_type = type
 
+
 /datum/character_trait_group/proc/can_give_trait(datum/preferences/target)
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -142,7 +144,7 @@ GLOBAL_REFERENCE_LIST_INDEXED(character_traits, /datum/character_trait, type)
 		return
 	var/count = 0
 	for(var/trait in target.traits)
-		var/datum/character_trait/CT = trait
+		var/datum/character_trait/CT = GLOB.character_traits[trait]
 		if(istype(CT.trait_group, base_type))
 			if(mutually_exclusive)
 				return FALSE

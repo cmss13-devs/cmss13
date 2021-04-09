@@ -57,8 +57,8 @@
 /datum/supply_packs/vc_kit
 	name = "Vehicle Crewman Kits"
 	contains = list(
-		/obj/item/pamphlet/vc,
-		/obj/item/pamphlet/vc
+		/obj/item/pamphlet/skill/vc,
+		/obj/item/pamphlet/skill/vc
 	)
 	cost = 0
 	containertype = /obj/structure/closet/crate/supply
@@ -67,11 +67,9 @@
 	group = "Operations"
 	iteration_needed = null
 
-/obj/item/pamphlet/vc
+/obj/item/pamphlet/skill/vc
 	name = "vehicle training manual"
 	desc = "A manual used to quickly impart vital knowledge on driving vehicles."
-	skill_increment = SKILL_VEHICLE_CREWMAN
-	skill_to_increment = SKILL_VEHICLE
-	secondary_skill = SKILL_ENGINEER
-
+	icon_state = "pamphlet_vehicle"
+	trait = /datum/character_trait/skills/vc
 	bypass_pamphlet_limit = TRUE

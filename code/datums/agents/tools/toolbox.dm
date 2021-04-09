@@ -20,14 +20,11 @@
     new /obj/item/device/multitool(src)
     new /obj/item/pamphlet/engineer/antag(src)
 
-/obj/item/pamphlet/engineer/antag
+/obj/item/pamphlet/skill/engineer/antag
     name = "suspicious looking pamphlet"
     desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia. This one is written in code-speak."
-    icon_state = "pamphlet_construction"
-    skill_to_increment = SKILL_ENGINEER
-    secondary_skill = SKILL_CONSTRUCTION
+    trait = /datum/character_trait/skills/miniengie/antag
     bypass_pamphlet_limit = TRUE
-    skill_increment = SKILL_ENGINEER_ENGI
 
 /obj/item/pamphlet/engineer/antag/attack_self(mob/living/carbon/human/user)
     if(!user.skills || !istype(user))

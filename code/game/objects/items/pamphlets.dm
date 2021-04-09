@@ -7,78 +7,73 @@
 	w_class = SIZE_TINY
 	throw_speed = SPEED_FAST
 	throw_range = 20
-	var/skill_increment = 1 //The skill level we want to go to.
-	var/skill_to_increment = SKILL_CQC //The skill we want to increase.
-	var/secondary_skill //If there's a second skill we want a single pamphlet to increase.
-
+	var/datum/character_trait/trait = /datum/character_trait
+	var/flavour_text = "You read over the pamphlet a few times, learning a new skill."
 	var/bypass_pamphlet_limit = FALSE
 
+obj/item/pamphlet/Initialize()
+	. = ..()
+
+	trait = GLOB.character_traits[trait]
+
 /obj/item/pamphlet/attack_self(mob/living/carbon/human/user)
-	if(!user.skills || !istype(user))
-		return
-	if(user.has_used_pamphlet == TRUE && !bypass_pamphlet_limit)
-		to_chat(usr, SPAN_WARNING("You've already used a pamphlet!"))
-		return
-	var/needs_primary = !skillcheck(user, skill_to_increment, skill_increment)
-	var/needs_secondary = FALSE
-	if(secondary_skill)
-		needs_secondary = !skillcheck(user, secondary_skill, skill_increment)
-	if(!(needs_primary || needs_secondary))
-		to_chat(usr, SPAN_WARNING("You don't need this, you're already trained!"))
+	if(!user.traits || !istype(user))
 		return
 
-	to_chat(usr, SPAN_NOTICE("You read over the pamphlet a few times, learning a new skill."))
-	if(needs_primary)
-		user.skills.set_skill(skill_to_increment, skill_increment)
-	if(needs_secondary)
-		user.skills.set_skill(secondary_skill, skill_increment)
+	if(trait in user.traits)
+		to_chat(user, SPAN_WARNING("You know this already!"))
+		return
+
+	if(user.has_used_pamphlet == TRUE && !bypass_pamphlet_limit)
+		to_chat(user, SPAN_WARNING("You've already used a pamphlet!"))
+		return
+
+	to_chat(user, SPAN_NOTICE(flavour_text))
+
+	trait.apply_trait(user)
+
 	if(!bypass_pamphlet_limit)
 		user.has_used_pamphlet = TRUE
 
 	qdel(src)
 
-/obj/item/pamphlet/medical
+
+/obj/item/pamphlet/skill/medical
 	name = "medical instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has a medical insignia."
 	icon_state = "pamphlet_medical"
-	skill_to_increment = SKILL_MEDICAL
+	trait = /datum/character_trait/skills/medical
 
-/obj/item/pamphlet/engineer
+/obj/item/pamphlet/skill/engineer
 	name = "engineer instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering insignia."
 	icon_state = "pamphlet_construction"
-	skill_to_increment = SKILL_CONSTRUCTION
-	secondary_skill = SKILL_ENGINEER
+	trait = /datum/character_trait/skills/miniengie
 
-/obj/item/pamphlet/engineer/machinegunner
+/obj/item/pamphlet/skill/jtac
+	name = "JTAC instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a radio on it."
+	icon_state = "pamphlet_jtac"
+	trait = /datum/character_trait/skills/jtac
+
+/obj/item/pamphlet/skill/machinegunner
 	name = "heavy machinegunner instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has an engineering and a machinegun insignia."
 	icon_state = "pamphlet_machinegunner"
-	skill_to_increment = SKILL_ENGINEER
+	trait = /datum/character_trait/skills/engineering
 	bypass_pamphlet_limit = TRUE
 
-/obj/item/pamphlet/powerloader
+/obj/item/pamphlet/skill/powerloader
 	name = "powerloader instructional pamphlet"
 	desc = "A pamphlet used to quickly impart vital knowledge. This one has a powerloader insignia. The title reads 'Moving freight and squishing heads - a practical guide to Caterpillar P-5000 Work Loader'."
-	skill_to_increment = SKILL_POWERLOADER
-	skill_increment = SKILL_POWERLOADER_TRAINED
+	icon_state = "pamphlet_powerloader"
+	trait = /datum/character_trait/skills/powerloader
 	bypass_pamphlet_limit = TRUE //it's really not necessary to stop people from learning powerloader skill
+
 
 /obj/item/pamphlet/language
 	name = "translation pamphlet"
 	desc = "A pamphlet used by lazy USCM interpreters to quickly learn new languages on the spot."
-	var/language_type = "English"
-	var/flavour_learning = "You go over the pamphlet, learning a new language."
+	flavour_text = "You go over the pamphlet, learning a new language."
 
 	bypass_pamphlet_limit = TRUE
-
-/obj/item/pamphlet/language/attack_self(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-
-	if(!user.add_language(language_type))
-		to_chat(user, SPAN_WARNING("You are already familiar with this language, no need to read this piece of literature here."))
-		return
-
-	to_chat(user, SPAN_NOTICE("[flavour_learning]"))
-	qdel(src)

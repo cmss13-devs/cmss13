@@ -159,6 +159,18 @@
 		return
 	return S.set_skill(new_level, owner)
 
+/datum/skills/proc/increment_skill(var/skill, var/increment, var/cap)
+	var/datum/skill/S = skills[skill]
+	if(!S)
+		return
+	return S.set_skill(min(cap,S.skill_level+increment), owner)
+
+/datum/skills/proc/decrement_skill(var/skill, var/increment)
+	var/datum/skill/S = skills[skill]
+	if(!S)
+		return
+	return S.set_skill(max(0,S.skill_level-increment), owner)
+
 // Checks if the skillset is AT LEAST skilled enough to pass a skillcheck for the given skill level
 /datum/skills/proc/is_skilled(var/skill, var/req_level, var/is_explicit = FALSE)
 	var/datum/skill/S = get_skill(skill)

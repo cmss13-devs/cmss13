@@ -1639,6 +1639,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/i = 1
 	for(var/trait_group in GLOB.character_trait_groups)
 		var/datum/character_trait_group/CTG = GLOB.character_trait_groups[trait_group]
+		if(!CTG.group_visible)
+			continue
 		var/button_class = ""
 		if(!character_trait_group && i == 1 || character_trait_group == trait_group)
 			button_class = "class='linkOn'"

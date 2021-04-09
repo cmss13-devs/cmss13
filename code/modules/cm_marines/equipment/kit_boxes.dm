@@ -274,7 +274,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/storage/pouch/tools/tank(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/pamphlet/engineer/machinegunner(src)
+	new /obj/item/pamphlet/skill/machinegunner(src)
 
 /obj/item/storage/box/kit/update_icon()
 	if(!length(contents))
@@ -347,7 +347,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_engineer/fill_preset_inventory()
 	new /obj/item/storage/backpack/marine/engineerpack(src)
-	new /obj/item/pamphlet/engineer(src)
+	new /obj/item/pamphlet/skill/engineer(src)
 	new /obj/item/clothing/gloves/marine/insulated(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/clothing/glasses/welding(src)
@@ -363,7 +363,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	overlays += image('icons/obj/items/pro_case.dmi', "+medic")
 
 /obj/item/storage/box/kit/mini_medic/fill_preset_inventory()
-	new /obj/item/pamphlet/medical(src)
+	new /obj/item/pamphlet/skill/medical(src)
 	new /obj/item/storage/pouch/medical/frt_kit/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
 	new /obj/item/clothing/glasses/hud/sensor(src)

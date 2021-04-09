@@ -344,7 +344,9 @@
 	if(!do_after(M, enter_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
 
-	if(mob_x != M.x - src.x || mob_y != M.y - src.y)
+	var/entrance_coord = entrances[entrance_used]
+	if(mob_x != entrance_coord[1] || mob_y != entrance_coord[2])
+		to_chat(M, SPAN_WARNING("\The [src] moved!"))
 		return
 
 	//Dragged stuff comes with us only if properly waited 2 seconds. No cheating!

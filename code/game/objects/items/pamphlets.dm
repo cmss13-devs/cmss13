@@ -17,7 +17,7 @@ obj/item/pamphlet/Initialize()
 	trait = GLOB.character_traits[trait]
 
 /obj/item/pamphlet/attack_self(mob/living/carbon/human/user)
-	if(!user.traits || !istype(user))
+	if(!istype(user))
 		return
 
 	if(trait in user.traits)
@@ -77,3 +77,4 @@ obj/item/pamphlet/Initialize()
 	flavour_text = "You go over the pamphlet, learning a new language."
 
 	bypass_pamphlet_limit = TRUE
+

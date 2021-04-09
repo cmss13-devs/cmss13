@@ -161,7 +161,7 @@
 
 /datum/skills/proc/increment_skill(var/skill, var/increment, var/cap)
 	var/datum/skill/S = skills[skill]
-	if(!S)
+	if(!S || skillcheck(owner, skill, cap))
 		return
 	return S.set_skill(min(cap,S.skill_level+increment), owner)
 

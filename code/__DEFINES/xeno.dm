@@ -29,6 +29,9 @@
 #define XENO_PRIMARY_ACTION_3 2          // Tertiary primary action
 #define XENO_PRIMARY_ACTION_4 3          // 4th primary action (rarely used)
 
+#define XENO_CORROSIVE_ACID 4 //Macro for covering things in acid, universal ability
+#define XENO_TECH_SECRETE_RESIN 5 //Macro for T1 build distrib secreting macro
+
 #define NO_ACTION_CHARGES -1	// This ability does not have a limit to how many times it can be used
 
 #define ACID_SPRAY_LINE 0

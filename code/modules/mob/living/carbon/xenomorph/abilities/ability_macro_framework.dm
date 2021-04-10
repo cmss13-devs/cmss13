@@ -114,3 +114,35 @@
 		if (XA.ability_primacy == XENO_PRIMARY_ACTION_4)
 			handle_xeno_macro_datum(src, XA)
 			break
+
+/mob/living/carbon/Xenomorph/verb/m_corrosive_acid()
+	set category = "Alien"
+	set name = "Corrosive Acid"
+	set hidden = TRUE
+	var/mob/living/carbon/Xenomorph/X = src
+	if(X.mob_size < MOB_SIZE_XENO_SMALL)
+		return
+	for(var/datum/action/xeno_action/XA in X.actions)
+		if(!istype(XA))
+			continue
+		if(XA.hidden)
+			continue
+		if(XA.ability_primacy == XENO_CORROSIVE_ACID)
+			handle_xeno_macro_datum(src, XA)
+			break
+
+/mob/living/carbon/Xenomorph/verb/tech_secrete_resin()
+	set category = "Alien"
+	set name = "Secrete Resin (Tech)"
+	set hidden = TRUE
+	var/mob/living/carbon/Xenomorph/X = src
+	if (!istype(X))
+		return
+	for (var/datum/action/xeno_action/XA in X.actions)
+		if (!istype(XA))
+			continue
+		if(XA.hidden)
+			continue
+		if (XA.ability_primacy == XENO_TECH_SECRETE_RESIN)
+			handle_xeno_macro_datum(src, XA)
+			break

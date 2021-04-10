@@ -38,7 +38,7 @@
 	return TRUE
 
 /datum/keybinding/human/quick_equip_tertiary
-	hotkey_keys = list("Shift+R")
+	hotkey_keys = list("Ctrl+E", "Alt+E")
 	classic_keys = list("Ctrl+E", "Alt+E")
 	name = "quick_equip_tertiary"
 	full_name = "Unholster tertiary"

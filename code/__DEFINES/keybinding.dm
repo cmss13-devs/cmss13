@@ -109,3 +109,6 @@
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_TWO "keybinding_xeno_primary_attack_two"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_THREE "keybinding_xeno_primary_attack_three"
 #define COMSIG_KB_XENO_PRIMARY_ATTACK_FOUR "keybinding_xeno_primary_attack_four"
+
+#define COMSIG_KB_XENO_CORROSIVE_ACID "keybinding_xeno_corrosive_acid"
+#define COMSIG_KB_XENO_TECH_SECRETE_RESIN "keybinding_xeno_tech_secrete_resin"

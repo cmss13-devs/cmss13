@@ -36,7 +36,7 @@
 
 /datum/reagent/nutriment/meat/fish
 	name = "Fish Meat"
-	id = "fishmeat"
+	id = "fish"
 	description = "It used to swim."
 
 /datum/reagent/nutriment/grown

@@ -9,7 +9,7 @@
 /obj/structure/machinery/bodyscanner{
 	icon_state = "sleeper_0"
 	},
-/turf/open/shuttle/vehicle{
+/turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_11"
 	},
 /area/vehicle/apc)
@@ -19,7 +19,7 @@
 	icon_state = "triagedecaldir"
 	},
 /obj/structure/machinery/body_scanconsole,
-/turf/open/shuttle/vehicle{
+/turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_1"
 	},
 /area/vehicle/apc)
@@ -32,9 +32,7 @@
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecaldir"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile"
-	},
+/turf/open/shuttle/vehicle/med,
 /area/vehicle/apc)
 "e" = (
 /obj/structure/interior_wall_full/apc{
@@ -92,7 +90,7 @@
 	pixel_y = 28
 	},
 /obj/item/tank/anesthetic,
-/turf/open/shuttle/vehicle{
+/turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_2"
 	},
 /area/vehicle/apc)
@@ -135,9 +133,7 @@
 /turf/open/void/vehicle,
 /area/space)
 "w" = (
-/turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile"
-	},
+/turf/open/shuttle/vehicle/med,
 /area/vehicle/apc)
 "y" = (
 /obj/effect/landmark/interior/spawn/entrance{
@@ -162,7 +158,7 @@
 /area/vehicle/apc)
 "B" = (
 /obj/structure/machinery/cm_vending/sorted/medical,
-/turf/open/shuttle/vehicle{
+/turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_12"
 	},
 /area/vehicle/apc)
@@ -182,9 +178,7 @@
 /obj/structure/bed/chair/comfy{
 	dir = 4
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile"
-	},
+/turf/open/shuttle/vehicle/med,
 /area/vehicle/apc)
 "E" = (
 /obj/structure/vehicle_locker{
@@ -230,7 +224,7 @@
 /area/vehicle/apc)
 "J" = (
 /obj/structure/machinery/cm_vending/sorted/medical/blood,
-/turf/open/shuttle/vehicle{
+/turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_6"
 	},
 /area/vehicle/apc)
@@ -264,9 +258,7 @@
 	dir = 1;
 	icon_state = "triagedecaldir"
 	},
-/turf/open/shuttle/vehicle{
-	icon_state = "dark_sterile"
-	},
+/turf/open/shuttle/vehicle/med,
 /area/vehicle/apc)
 "P" = (
 /obj/structure/interior_wall_full/apc{

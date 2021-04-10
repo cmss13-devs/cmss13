@@ -111,7 +111,7 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 							if(PAIN_REDUCTION_HEAVY to PAIN_REDUCTION_FULL)
 								multipler += SURGERY_MULTIPLIER_LARGE
 					var/turf/T = get_turf(M)
-					if(istype(T, /turf/open/shuttle/dropship) || istypestrict(T, /turf/open/shuttle/vehicle))
+					if(istype(T, /turf/open/shuttle/dropship) || istype(T, /turf/open/shuttle/vehicle) && !istype(T, /turf/open/shuttle/vehicle/med))
 						multipler -= SURGERY_MULTIPLIER_HUGE
 					multipler = Clamp(multipler, 0, 1)
 

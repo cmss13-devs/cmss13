@@ -157,7 +157,7 @@
 	},
 /area/vehicle/apc)
 "B" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/machinery/cm_vending/sorted/medical/blood,
 /turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_12"
 	},
@@ -223,7 +223,7 @@
 	},
 /area/vehicle/apc)
 "J" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/machinery/cm_vending/sorted/medical,
 /turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_6"
 	},

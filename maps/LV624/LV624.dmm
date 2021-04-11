@@ -2690,7 +2690,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
 	},
-/turf/closed/wall/strata_ice/jungle,
+/turf/open/gm/grass,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "alR" = (
 /obj/structure/disposalpipe/junction,
@@ -4457,11 +4457,10 @@
 /turf/open/floor/wood,
 /area/lv624/ground/jungle/west_jungle)
 "avp" = (
-/obj/structure/sign/safety/analysis_lab{
-	pixel_x = 40
-	},
+/obj/structure/flora/jungle/vines,
+/obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
-/area/lv624/ground/jungle/north_west_jungle)
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "avq" = (
 /obj/structure/machinery/door/airlock/almayer/research{
 	dir = 1;
@@ -15971,14 +15970,9 @@
 	},
 /area/lv624/lazarus/landing_zones/lz2)
 "jQW" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/structure/blocker/forcefield/vehicles,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/floor{
-	dir = 2;
-	icon_state = "cult"
-	},
-/area/lv624/ground/caves/south_west_caves)
+/obj/structure/flora/jungle/vines/heavy,
+/turf/closed/wall/strata_ice/jungle,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "jRm" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/colony/north_nexus_road)
@@ -22358,7 +22352,7 @@ tOS
 gwP
 gwP
 gwP
-jQW
+esp
 nBh
 nBh
 cCe
@@ -22586,7 +22580,7 @@ gwP
 gwP
 gwP
 tOS
-jQW
+esp
 nBh
 nBh
 eVH
@@ -22814,7 +22808,7 @@ gwP
 gwP
 gwP
 gwP
-jQW
+esp
 nBh
 cCe
 nBh
@@ -35860,7 +35854,7 @@ psh
 psh
 psh
 psh
-avp
+wjT
 psh
 psh
 awF
@@ -57025,8 +57019,8 @@ xhC
 txp
 tqe
 alP
-uve
-vty
+jQW
+tqe
 vty
 vty
 ydp
@@ -57254,7 +57248,7 @@ uve
 uve
 tqe
 tqe
-txp
+hbK
 uve
 vty
 vty
@@ -57480,7 +57474,7 @@ dGc
 dNj
 uve
 uve
-rwg
+avp
 tqe
 rwg
 uve
@@ -58173,7 +58167,7 @@ vty
 uve
 txp
 fHz
-fHz
+moM
 tqe
 uve
 uve

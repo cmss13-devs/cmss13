@@ -11,7 +11,7 @@ mob/var/next_pain_time = 0
 mob/living/carbon/proc/pain(var/partname, var/amount, var/force, var/burning = 0)
 	if(stat >= DEAD || (world.time < next_pain_time && !force)) 
 		return
-	if(pain.reduction_pain < 0) 
+	if(pain.reduction_pain > 0) 
 		return //any pain reduction
 
 	var/msg
@@ -64,7 +64,7 @@ mob/living/carbon/human/proc/custom_pain(message, flash_strength)
 		return
 	if(!pain.feels_pain) 
 		return
-	if(pain.reduction_pain <= PAIN_REDUCTION_HEAVY) 
+	if(pain.reduction_pain >= PAIN_REDUCTION_HEAVY) 
 		return //anything as or more powerful than tramadol
 
 	var/msg = SPAN_DANGER("[message]")
@@ -81,7 +81,7 @@ mob/living/carbon/human/proc/handle_pain()
 		return 	// not when sleeping
 	if(!pain.feels_pain) 
 		return
-	if(pain.reduction_pain <= PAIN_REDUCTION_HEAVY) 
+	if(pain.reduction_pain >= PAIN_REDUCTION_HEAVY) 
 		return //anything as or more powerful than tramadol
 
 	var/maxdam = 0
@@ -95,26 +95,25 @@ mob/living/carbon/human/proc/handle_pain()
 		if(E.status & (LIMB_DESTROYED)) 
 			continue
 
-		dam = E.get_damage()
-		if(E.status & LIMB_BROKEN & LIMB_SPLINTED)
-			dam -= E.min_broken_damage //If they have a splinted body part, and it's broken, we want to subtract bone break damage.
+		//If the body part is broken and splinted, we don't want to include bone break damage, which get_damage() does if it's more than raw damage.
+		if((E.status & LIMB_BROKEN) && (E.status & LIMB_SPLINTED))
+			dam = E.brute_dam + E.burn_dam
+		else
+			dam = E.get_damage()
+
 		// make the choice of the organ depend on damage,
 		// but also sometimes use one of the less damaged ones
-		if(dam > maxdam && (maxdam == 0 || prob(70)) )
+		if(dam > maxdam && (maxdam == 0 || prob(70)))
 			damaged_organ = E
 			maxdam = dam
-	
-	if(maxdam == 0)
-		return
 
-	if(damaged_organ)
-		pain(damaged_organ.display_name, maxdam, 0)
-
+	if(maxdam > 0 && damaged_organ)
+		pain(damaged_organ.display_name, maxdam, 0, on_fire)
 
 	// Damage to internal organs hurts a lot.
 	var/obj/limb/parent
 	for(var/datum/internal_organ/I in internal_organs)
-		if(I.damage > 2) if(prob(2))
+		if(I.damage > 2 && prob(2))
 			parent = get_limb(I.parent_limb)
 			custom_pain("You feel a sharp pain in your [parent.display_name]!", 1)
 

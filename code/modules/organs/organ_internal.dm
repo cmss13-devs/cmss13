@@ -127,7 +127,9 @@
 
 /datum/internal_organ/lungs/process()
 	..()
-	if(is_bruised() && !owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+		return
+	if(is_bruised())
 		if(prob(2))
 			spawn owner.emote("me", 1, "coughs up blood!")
 			owner.drip(10)
@@ -192,11 +194,12 @@
 				owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
 
 		//Deal toxin damage if damaged
-		if(!owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
-			if(is_bruised() && prob(25))
-				owner.apply_damage(0.1 * (damage/2), TOX)
-			else if(is_broken() && prob(50))
-				owner.apply_damage(0.3 * (damage/2), TOX)
+		if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+			return
+		if(is_bruised() && prob(25))
+			owner.apply_damage(0.1 * (damage/2), TOX)
+		else if(is_broken() && prob(50))
+			owner.apply_damage(0.3 * (damage/2), TOX)
 
 /datum/internal_organ/liver/prosthetic
 	robotic = ORGAN_ROBOT
@@ -211,11 +214,12 @@
 /datum/internal_organ/kidneys/process()
 	..()
 	//Deal toxin damage if damaged
-	if(!owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
-		if(is_bruised() && prob(25))
-			owner.apply_damage(0.1 * (damage/3), TOX)
-		else if(is_broken() && prob(50))
-			owner.apply_damage(0.2 * (damage/3), TOX)
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+		return
+	if(is_bruised() && prob(25))
+		owner.apply_damage(0.1 * (damage/3), TOX)
+	else if(is_broken() && prob(50))
+		owner.apply_damage(0.2 * (damage/3), TOX)
 
 /datum/internal_organ/kidneys/prosthetic
 	robotic = ORGAN_ROBOT
@@ -246,11 +250,12 @@
 
 /datum/internal_organ/eyes/process() //Eye damage replaces the old eye_stat var.
 	..()
-	if(!owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
-		if(is_bruised())
-			owner.eye_blurry = 20
-		if(is_broken())
-			owner.eye_blind = 20
+	if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
+		return
+	if(is_bruised())
+		owner.eye_blurry = 20
+	if(is_broken())
+		owner.eye_blind = 20
 
 /datum/internal_organ/eyes/prosthetic
 	robotic = ORGAN_ROBOT

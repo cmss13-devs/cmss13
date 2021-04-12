@@ -934,7 +934,7 @@ This function completely restores a damaged organ to perfect condition.
 		status &= ~LIMB_REPAIRED
 		owner.pain.apply_pain(PAIN_BONE_BREAK)
 		broken_description = pick("broken","fracture","hairline fracture")
-		perma_injury = brute_dam
+		perma_injury = min_broken_damage
 	else
 		owner.visible_message(\
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
@@ -966,8 +966,9 @@ This function completely restores a damaged organ to perfect condition.
 	src.status &= ~LIMB_MUTATED
 	owner.update_body()
 
-/obj/limb/proc/get_damage()	//returns total damage
-	return max(brute_dam + burn_dam - perma_injury, perma_injury)	//could use health?
+///Returns total damage, or, if broken, the minimum fracture threshold, whichever is higher.
+/obj/limb/proc/get_damage()
+	return max(brute_dam + burn_dam, perma_injury)	//could use health?
 
 
 /obj/limb/proc/is_usable()

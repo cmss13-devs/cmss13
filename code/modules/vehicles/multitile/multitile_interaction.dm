@@ -79,6 +79,26 @@
 				return
 		to_chat(user, SPAN_INFO("In order to try fitting pulled object into vehicle without getting in, stand at the entrance and click on vehicle with pulled object on [SPAN_HELPFUL("HELP")] intent."))
 
+	if(istype(O, /obj/item/device/motiondetector))
+
+		user.visible_message(SPAN_WARNING("[user] fumbles with \the [O] aimed at \the [src]."), SPAN_NOTICE("You start recalibrating \the [O] to scan \the [src]'s interior for abnormal activity."))
+		if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			user.visible_message(SPAN_WARNING("[user] stops fumbling with \the [O]."), SPAN_WARNING("You stop trying to scan \the [src]'s interior."))
+			return
+		if(get_dist(src, user) > 2)
+			to_chat(user, SPAN_WARNING("You are too far from \the [src]."))
+			return
+
+		user.visible_message(SPAN_WARNING("[user] finishes fumbling with \the [O]."), SPAN_NOTICE("You finish recalibrating \the [O] and scanning \the [src]'s interior for abnormal activity."))
+
+		interior.update_passenger_count()
+		var/obj/item/device/motiondetector/MD = O
+		if(interior.xenos_taken_slots)
+			MD.show_blip(user, src)
+			playsound(user, pick('sound/items/detector_ping_1.ogg', 'sound/items/detector_ping_2.ogg', 'sound/items/detector_ping_3.ogg', 'sound/items/detector_ping_4.ogg'), 60, FALSE, 7, 2)
+		else
+			playsound(user, 'sound/items/detector.ogg', 60, FALSE, 7, 2)
+
 	if(user.a_intent != INTENT_HARM)
 		handle_player_entrance(user)
 		return

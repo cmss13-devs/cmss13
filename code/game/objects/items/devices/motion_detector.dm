@@ -2,6 +2,8 @@
 #define MOTION_DETECTOR_LONG	0
 #define MOTION_DETECTOR_SHORT	1
 
+#define MOTION_DETECTOR_RANGE_LONG	14
+#define MOTION_DETECTOR_RANGE_SHORT	7
 
 /obj/effect/detector_blip
 	icon = 'icons/obj/items/marine-items.dmi'
@@ -10,7 +12,7 @@
 
 /obj/item/device/motiondetector
 	name = "motion detector"
-	desc = "A device that detects movement, but ignores marines. The screen will show the amount of unidentified movement detected (up to 9). You can switch modes with Alt+Click."
+	desc = "A device that detects movement, but ignores marines."
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "detector"
 	item_state = "motion_detector"
@@ -29,6 +31,11 @@
 	actions_types = list(/datum/action/item_action)
 	var/scanning = FALSE // controls if MD is in process of scan
 	var/datum/shape/rectangle/range_bounds
+
+/obj/item/device/motiondetector/examine()
+	. = ..()
+	var/msg = "Blue bubble-like indicators on your HUD will show pings locations or direction to them. The device screen will show the amount of unidentified movements detected (up to 9). Has two modes: slow long-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_LONG] tiles)")] and fast short-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_SHORT] tiles)")]. Use [SPAN_HELPFUL("Alt + Click")] on the device to switch between modes. Using the device on the adjacent multitile vehicle will start the process of recalibrating and scanning vehicle interior for unidentified movements inside."
+	to_chat(usr, SPAN_INFO(msg))
 
 /obj/item/device/motiondetector/New()
 	range_bounds = new //Just creating a rectangle datum
@@ -193,7 +200,7 @@
 
 	return ping_count
 
-/obj/item/device/motiondetector/proc/show_blip(mob/user, mob/target, var/blip_icon)
+/obj/item/device/motiondetector/proc/show_blip(var/mob/user, var/atom/target, var/blip_icon)
 	set waitfor = 0
 	if(user && user.client)
 
@@ -230,3 +237,7 @@
 		sleep(12)
 		if(user.client)
 			user.client.screen -= DB
+
+#undef MOTION_DETECTOR_RANGE_LONG
+#undef MOTION_DETECTOR_RANGE_SHORT
+

@@ -324,6 +324,11 @@
 		if (isYautja(loc))
 			//it's actually yautja holding the item, ignore!
 			continue
+		if (ishuman(loc))
+			var/mob/living/carbon/human/l = loc
+			if(l.hunter_data.thralled && !(l.hunter_data.dishonored || l.stat == DEAD))
+			//it's actually a thrall holding the item, ignore!
+				continue
 		if(is_loworbit_level(loc.z))
 			gear_low_orbit++
 		else if(is_mainship_level(loc.z))

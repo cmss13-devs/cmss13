@@ -114,7 +114,9 @@
 		H.add_hud_to(user)
 		H = huds[MOB_HUD_XENO_STATUS]
 		H.add_hud_to(user)
-		H = huds[MOB_HUD_PRED_CLAN]
+		H = huds[MOB_HUD_HUNTER_CLAN]
+		H.add_hud_to(user)
+		H = huds[MOB_HUD_HUNTER]
 		H.add_hud_to(user)
 		add_vision(user)
 	..()
@@ -131,7 +133,9 @@
 		H.remove_hud_from(mob)
 		H = huds[MOB_HUD_XENO_STATUS]
 		H.remove_hud_from(mob)
-		H = huds[MOB_HUD_PRED_CLAN]
+		H = huds[MOB_HUD_HUNTER_CLAN]
+		H.remove_hud_from(mob)
+		H = huds[MOB_HUD_HUNTER]
 		H.remove_hud_from(mob)
 	add_to_missing_pred_gear(src)
 	..()

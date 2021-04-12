@@ -1,3 +1,9 @@
+/mob/living/carbon/Initialize()
+	. = ..()
+	hunter_data = new /datum/huntdata
+	hunter_data.name = "[src.real_name]'s Hunter Data"
+	hunter_data.owner = src
+
 /mob/living/carbon/Life(delta_time)
 	..()
 
@@ -16,6 +22,10 @@
 
 	if(legcuffed)
 		QDEL_NULL(legcuffed)
+
+	if(hunter_data)
+		hunter_data.clean_data()
+		hunter_data = null
 
 	stomach_contents.Cut() //movable atom's Dispose() deletes all content, we clear stomach_contents to be safe.
 

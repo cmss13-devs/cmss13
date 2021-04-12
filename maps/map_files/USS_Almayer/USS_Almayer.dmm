@@ -5753,7 +5753,7 @@
 	desc = "A window, that is also a door. A windoor if you will. This one is stronger.";
 	health = 500;
 	name = "Reinforced Glass door";
-	req_one_access_txt = "2;33"
+	req_one_access_txt = "2;35"
 	},
 /turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop/hangar)

@@ -7,6 +7,17 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
+/mob/living/carbon/human/proc/message_thrall(var/msg)
+	if(!hunter_data.thrall)
+		return
+
+	var/mob/living/carbon/T = hunter_data.thrall
+
+	for(var/obj/item/clothing/gloves/yautja/G in T.contents)
+		to_chat(T, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
+		if(G.notification_sound)
+			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+
 //Update the power display thing. This is called in Life()
 /mob/living/carbon/human/proc/update_power_display(var/perc)
 	if(hud_used && hud_used.pred_power_icon)
@@ -172,11 +183,11 @@
 					T.drop_inv_item_on_ground(T.legcuffed)
 				T.butchery_progress = 5 //Won't really matter.
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
-				if(yautja_hunted_prey == T)
+				if(hunter_data.prey == T)
 					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
 					emote("roar")
 					message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
-					yautja_hunted_prey = null
+					hunter_data.prey = null
 				else
 					to_chat(src, SPAN_NOTICE("You finish butchering!"))
 				qdel(T)
@@ -223,11 +234,11 @@
 			H.get_limb(limb).droplimb(1, 0, "butchering")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 			H.butchery_progress = 0
-			if(yautja_hunted_prey == T)
+			if(hunter_data.prey == T)
 				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
 				emote("roar")
 				message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
-				yautja_hunted_prey = null
+				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
 
@@ -310,65 +321,3 @@
 			to_chat(src, SPAN_NOTICE("[Y] hum as their support systems come online."))
 			Y.verbs += /obj/item/clothing/gloves/yautja/proc/translate
 		remove_verb(src, /mob/living/carbon/human/proc/pred_buy)
-
-// Mark for Hunt verbs
-// Add prey for hunt
-/mob/living/carbon/human/proc/mark_for_hunt()
-	set category = "Yautja"
-	set name = "Mark for Hunt"
-	set desc = "Mark your next prey for the Hunt."
-
-	if(is_mob_incapacitated())
-		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
-		return
-
-	// Only one prey per pred
-	if(yautja_hunted_prey)
-		to_chat(src, SPAN_DANGER("You're already hunting something."))
-		return
-
-	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
-		return
-
-	// List all possible preys
-	// We only target living humans and xenos
-	var/list/target_list = list()
-	for(var/mob/living/prey in view(7, src))
-		if((isHumanStrict(prey) || isXeno(prey)) && prey.stat != DEAD)
-			target_list += prey
-
-	var/mob/living/M = tgui_input_list(usr, "Target", "Choose a prey.", target_list)
-	if(!M) return
-	yautja_hunted_prey = M
-
-	// Notify the pred
-	to_chat(src, SPAN_YAUTJABOLD("You have chosen [yautja_hunted_prey] as your next prey."))
-
-	// Notify other preds
-	message_all_yautja("[real_name] has chosen [yautja_hunted_prey] ([max(yautja_hunted_prey.life_kills_total, 1)] honor) as their next target at \the [get_area_name(src)].")
-
-	// Notify the staff
-	message_staff(WRAP_STAFF_LOG(src, "has marked [key_name(yautja_hunted_prey)] for the Hunt in [get_area(src)] ([x],[y],[z])."), x, y, z)
-
-// Removing prey from hunt (i.e. it died, it bugged, it left the game, etc.)
-/mob/living/carbon/human/proc/remove_from_hunt()
-	set category = "Yautja"
-	set name = "Remove from Hunt"
-	set desc = "Remove your prey from your active Hunt."
-
-	if(is_mob_incapacitated())
-		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
-		return
-
-	if(!yautja_hunted_prey)
-		to_chat(src, SPAN_DANGER("You're not hunting anything right now."))
-		return
-
-	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
-		return
-	if (alert(usr, "Are you sure you want to abandon this prey?", "Remove from Hunt:", "Yes", "No") != "Yes")
-		return
-	to_chat(src, SPAN_YAUTJABOLD("You have removed [yautja_hunted_prey] from your hunt."))
-	yautja_hunted_prey = null

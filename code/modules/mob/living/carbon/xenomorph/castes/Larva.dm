@@ -71,6 +71,10 @@
 /mob/living/carbon/Xenomorph/Larva/predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_hunter_embryo))
+	hunter_data.dishonored = TRUE
+	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
+	hunter_data.dishonored_set = src
+	hud_set_hunter()
 
 /mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

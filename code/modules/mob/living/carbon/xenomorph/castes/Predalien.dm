@@ -60,6 +60,10 @@
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_predalien))
 	addtimer(CALLBACK(src, .proc/announce_spawn), 3 SECONDS)
+	hunter_data.dishonored = TRUE
+	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
+	hunter_data.dishonored_set = src
+	hud_set_hunter()
 
 /mob/living/carbon/Xenomorph/Predalien/proc/announce_spawn()
 	if(!loc)

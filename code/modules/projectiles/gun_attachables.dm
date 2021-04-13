@@ -1,4 +1,3 @@
-
 //Gun attachable items code. Lets you add various effects to firearms.
 //Some attachables are hardcoded in the projectile firing system, like grenade launchers, flamethrowers.
 /*
@@ -263,6 +262,7 @@ Defined in conflicts.dm of the #defines folder.
 	throw_range = 6
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
 
@@ -296,6 +296,7 @@ Defined in conflicts.dm of the #defines folder.
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_INSTANT
 	throw_range = 7
+	attack_speed = 9
 
 /obj/item/attachable/extended_barrel
 	name = "extended barrel"

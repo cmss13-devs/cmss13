@@ -12,6 +12,7 @@
 	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
 
 /obj/item/weapon/melee/claymore/mercsword
 	name = "combat sword"
@@ -83,6 +84,7 @@
 	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
 
 //To do: replace the toys.
 /obj/item/weapon/melee/katana/replica

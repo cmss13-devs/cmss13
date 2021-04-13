@@ -345,6 +345,9 @@
 /mob/living/carbon/Xenomorph/Queen/Delta
 	hivenumber = XENO_HIVE_DELTA
 
+/mob/living/carbon/Xenomorph/Queen/combat_ready
+	queen_aged = TRUE
+
 /mob/living/carbon/Xenomorph/Queen/Initialize()
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
@@ -354,7 +357,7 @@
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 
-	if(hive.dynamic_evolution)
+	if(hive.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
 	else
 		make_combat_effective()

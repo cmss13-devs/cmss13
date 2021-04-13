@@ -111,12 +111,17 @@ GLOBAL_LIST_INIT(pp_transformables, list(
   ),
   "Alien Tier 4" = list(
 	list(
-	  name = XENO_CASTE_QUEEN,
+	  name = XENO_CASTE_QUEEN+" (Young)",
 	  key = /mob/living/carbon/Xenomorph/Queen,
 	  color = "purple"
 	),
 	list(
-	  name = XENO_CASTE_BURROWER,
+	  name = XENO_CASTE_QUEEN+" (Mature)",
+	  key = /mob/living/carbon/Xenomorph/Queen/combat_ready,
+	  color = "purple"
+	),
+	list(
+	  name = XENO_CASTE_PREDALIEN,
 	  key = /mob/living/carbon/Xenomorph/Predalien,
 	  color = "purple"
 	)

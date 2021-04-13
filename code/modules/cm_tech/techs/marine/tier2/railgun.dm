@@ -9,7 +9,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	flags = TREE_FLAG_MARINE
 
 	required_points = 20
-	tier = /datum/tier/three
+	tier = /datum/tier/two
 	var/obj/structure/machinery/computer/railgun/railgun_type = /obj/structure/machinery/computer/railgun
 
 /datum/tech/railgun/ui_static_data(mob/user)

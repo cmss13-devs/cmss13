@@ -172,6 +172,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Shaft Miner's Jumpsuit", 12, /obj/item/clothing/under/rank/miner, null, VENDOR_ITEM_REGULAR),
 		list("USCM Service Uniform", 12, /obj/item/clothing/under/marine/officer/bridge, null, VENDOR_ITEM_REGULAR),
 		list("Worker Overalls", 12, /obj/item/clothing/under/rank/worker_overalls, null, VENDOR_ITEM_REGULAR),
+		list("Engineer Uniform", 12, /obj/item/clothing/under/marine/officer/engi, null, VENDOR_ITEM_REGULAR),
 
 		list("GLASSES", 0, null, null, null),
 		list("Augmented Sunglasses", 12, /obj/item/clothing/glasses/jensen, null, VENDOR_ITEM_REGULAR),
@@ -233,6 +234,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("USCM Service Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine, null, VENDOR_ITEM_REGULAR),
 		list("Waistcoat", 12, /obj/item/clothing/suit/storage/wcoat, null, VENDOR_ITEM_REGULAR),
 		list("Holiday Priest", 12, /obj/item/clothing/suit/holidaypriest, null, VENDOR_ITEM_REGULAR),
+		list("RO Jacket", 12, /obj/item/clothing/suit/storage/RO, null, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACK", 0, null, null, null),
 		list("Backpack, Industrial", 12, /obj/item/storage/backpack/industrial, null, VENDOR_ITEM_REGULAR),

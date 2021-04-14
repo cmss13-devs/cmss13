@@ -21,6 +21,14 @@
 	var/injectSFX = 'sound/items/hypospray.ogg'
 	var/injectVOL = 60 //was 50
 	var/starting_vial = /obj/item/reagent_container/glass/beaker/vial
+	var/next_inject = 0
+	var/inject_cd = 0.75 SECONDS
+
+/obj/item/reagent_container/hypospray/attack_self(mob/user)
+	if(next_inject > world.time)
+		return
+	next_inject = world.time + inject_cd
+	attack(user, user)
 
 //Transfer amount switch//
 /obj/item/reagent_container/hypospray/clicked(var/mob/user, var/list/mods)
@@ -107,12 +115,6 @@
 		magfill.icon_state = "hypo-[rounded_vol]"
 		magfill.color = mix_color_from_reagents(reagents.reagent_list)
 		overlays += magfill
-
-/obj/item/reagent_container/hypospray/attack_self(mob/user as mob)
-	if (world.time <= user.next_move)
-		return
-	attack(user, user)
-	user.next_move += attack_speed
 
 /obj/item/reagent_container/hypospray/afterattack(obj/target, mob/user, proximity)
 	if(!magfed || !proximity) //Autoinjectors aren't supposed to be self-fillable or use vials.

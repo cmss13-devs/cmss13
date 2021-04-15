@@ -20180,6 +20180,7 @@
 /obj/item/reagent_container/dropper,
 /obj/item/reagent_container/glass/beaker/cryoxadone,
 /obj/item/reagent_container/glass/beaker/cryoxadone,
+/obj/item/reagent_container/glass/beaker/cryoxadone,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -21899,14 +21900,6 @@
 	},
 /area/almayer/hull/lower_hull/l_m_s)
 "bur" = (
-/obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/transmitter{
-	dir = 4;
-	name = "Port Railgun Control Telephone";
-	phone_category = "Command";
-	phone_id = "Port Railgun Control";
-	pixel_x = -16
-	},
 /obj/structure/prop/almayer/missile_tube,
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -34760,6 +34753,7 @@
 	phone_id = "Medical Lower";
 	pixel_x = 23
 	},
+/obj/item/clipboard,
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_side";
 	tag = "icon-sterile"
@@ -35254,15 +35248,12 @@
 /turf/open/floor/almayer,
 /area/almayer/living/grunt_rnr)
 "cOi" = (
-/obj/structure/machinery/light/small,
-/obj/structure/largecrate/guns/merc{
-	name = "\improper dodgey crate"
-	},
+/obj/effect/landmark/yautja_teleport,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
 	},
-/area/almayer/hull/lower_hull/l_f_p)
+/area/almayer/hull/upper_hull/u_a_p)
 "cOs" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 2;
@@ -38902,6 +38893,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (EAST)"
 	},
+/obj/structure/largecrate/random/case/small,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -40123,13 +40115,8 @@
 	},
 /area/almayer/hull/upper_hull/u_a_p)
 "eZX" = (
-/obj/structure/largecrate/guns/merc{
-	name = "\improper dodgey crate"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_f_p)
 "fau" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -40887,11 +40874,6 @@
 	pixel_x = -4;
 	pixel_y = -4
 	},
-/obj/structure/machinery/camera/autoname/almayer{
-	dir = 8;
-	name = "ship-grade camera";
-	tag = "icon-camera (EAST)"
-	},
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "green";
@@ -41212,7 +41194,7 @@
 /area/almayer/command/corporateliason)
 "fAt" = (
 /obj/structure/largecrate/guns/merc{
-	name = "\improper dodgey crate"
+	name = "\improper dodgy crate"
 	},
 /turf/open/floor/plating,
 /area/almayer/hull/lower_hull/l_f_p)
@@ -41668,6 +41650,7 @@
 "fKt" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
 /obj/structure/prop/dam/crane{
+	bound_height = 32;
 	climbable = 1;
 	layer = 3.5;
 	pixel_y = -23
@@ -42298,9 +42281,9 @@
 	tag = "icon-intact-supply (NORTH)"
 	},
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -43509,9 +43492,6 @@
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
 "gCd" = (
-/obj/structure/largecrate/guns/merc{
-	name = "\improper dodgey crate"
-	},
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -48805,6 +48785,10 @@
 	pixel_x = 6;
 	pixel_y = 6
 	},
+/obj/item/storage/box/ids{
+	pixel_x = -4;
+	pixel_y = 6
+	},
 /obj/item/storage/box/handcuffs,
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -49798,9 +49782,6 @@
 /obj/structure/machinery/light/small{
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
-	},
-/obj/structure/largecrate/guns/merc{
-	name = "\improper dodgey crate"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -55693,9 +55674,6 @@
 	dir = 8;
 	tag = "icon-bulb1 (WEST)"
 	},
-/obj/structure/largecrate/guns/merc{
-	name = "\improper dodgey crate"
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -57841,10 +57819,15 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "nYz" = (
 /obj/structure/surface/table/almayer,
-/obj/item/device/taperecorder,
-/obj/item/tool/stamp{
-	pixel_x = 2
+/obj/item/storage/box/ids{
+	pixel_x = -4;
+	pixel_y = 6
 	},
+/obj/item/tool/stamp{
+	pixel_x = 3;
+	pixel_y = 10
+	},
+/obj/item/device/taperecorder,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -61897,9 +61880,9 @@
 	dir = 8
 	},
 /obj/structure/machinery/camera/autoname/almayer{
-	dir = 4;
+	dir = 8;
 	name = "ship-grade camera";
-	tag = "icon-camera (WEST)"
+	tag = ""
 	},
 /turf/open/floor/almayer{
 	dir = 6;
@@ -72941,9 +72924,7 @@
 	projectile_coverage = 0;
 	unacidable = 1
 	},
-/obj/effect/landmark/start{
-	name = "Synthetic"
-	},
+/obj/effect/landmark/start/synthetic,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_f_s)
 "vEx" = (
@@ -76606,15 +76587,6 @@
 	allow_construction = 0
 	},
 /area/almayer/hallways/starboard_hallway)
-"xpR" = (
-/obj/structure/largecrate/guns/merc{
-	name = "\improper dodgey crate"
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/hull/lower_hull/l_m_s)
 "xpT" = (
 /obj/structure/pipes/vents/pump{
 	dir = 8
@@ -89721,7 +89693,7 @@ amg
 rAD
 bBA
 nqU
-eZX
+vhq
 vRz
 aag
 ajZ
@@ -91756,7 +91728,7 @@ piO
 vhq
 nqU
 nqU
-cOi
+rSK
 vRz
 aag
 ajZ
@@ -92768,7 +92740,7 @@ afz
 iDd
 bzy
 cey
-nqU
+eZX
 mzo
 vhq
 eXo
@@ -92971,7 +92943,7 @@ afz
 iDd
 bzy
 vhq
-nqU
+wqE
 mzo
 vhq
 nqU
@@ -112833,7 +112805,7 @@ hhw
 aLF
 bPV
 lGO
-xpR
+aSm
 bPU
 bPS
 hhw
@@ -124348,7 +124320,7 @@ cxo
 wwD
 oda
 ldN
-cxo
+cOi
 qMu
 aag
 aag

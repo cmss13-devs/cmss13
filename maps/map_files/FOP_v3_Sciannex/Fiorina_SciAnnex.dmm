@@ -9775,7 +9775,7 @@
 	pixel_x = -2;
 	pixel_y = 11
 	},
-/obj/item/golden_cup{
+/obj/item/reagent_container/food/drinks/golden_cup{
 	desc = "A sign of hunger for water. What idiot decided this was a good idea?";
 	pixel_x = 6;
 	pixel_y = 2
@@ -17305,7 +17305,7 @@
 /area/fiorina/station/medbay)
 "kvd" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/golden_cup,
+/obj/item/reagent_container/food/drinks/golden_cup,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -17920,11 +17920,6 @@
 /obj/structure/machinery/door/airlock/prison_hatch/autoname,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
-"kNq" = (
-/turf/open/floor/prison{
-	icon_state = "bluefull"
-	},
-/area/fiorina/station/power_ring)
 "kNs" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison/chapel_carpet{
@@ -21186,7 +21181,7 @@
 	},
 /area/fiorina/station/botany)
 "mOr" = (
-/obj/item/poster/propaganda,
+/obj/item/poster,
 /turf/open/floor/prison{
 	dir = 9;
 	icon_state = "whitepurple"
@@ -26307,6 +26302,10 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/lz/near_lzII)
+"qcK" = (
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/floor/prison,
+/area/fiorina/lz/near_lzI)
 "qcM" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/skills{
@@ -26524,7 +26523,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "qgC" = (
-/obj/item/golden_cup,
+/obj/item/reagent_container/food/drinks/golden_cup,
 /turf/open/space,
 /area/fiorina/oob)
 "qgS" = (
@@ -26842,7 +26841,7 @@
 	},
 /obj/structure/surface/rack,
 /obj/item/poster,
-/obj/item/poster/propaganda,
+/obj/item/poster,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -28859,7 +28858,7 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "rAa" = (
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	dir = 10;
@@ -31204,7 +31203,7 @@
 /area/fiorina/station/medbay)
 "sVD" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "whitegreenfull";
@@ -34302,7 +34301,7 @@
 	},
 /area/fiorina/station/botany)
 "uSo" = (
-/obj/item/poster/propaganda,
+/obj/item/poster,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -75372,8 +75371,8 @@ xri
 iUy
 goG
 oJs
-kNq
-kNq
+kfA
+kfA
 fWC
 goG
 hxy
@@ -75584,8 +75583,8 @@ goG
 goG
 vMK
 lKt
-kNq
-kNq
+kfA
+kfA
 slG
 vMK
 vMK
@@ -75794,11 +75793,11 @@ duF
 jao
 qcM
 dvs
-kNq
-kNq
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
+kfA
+kfA
 bVY
 vMK
 goG
@@ -77084,8 +77083,8 @@ mxQ
 oYM
 nVq
 rev
-kNq
-kNq
+kfA
+kfA
 tyQ
 sTV
 tdA
@@ -77937,9 +77936,9 @@ vEK
 fKv
 kcz
 aWo
-kNq
+kfA
 atE
-kNq
+kfA
 lAS
 lAS
 oYM
@@ -78542,7 +78541,7 @@ boh
 oYM
 nVq
 rev
-kNq
+kfA
 nVq
 rev
 oYM
@@ -78754,15 +78753,15 @@ lAS
 oYM
 nVq
 rev
-kNq
+kfA
 nVq
 rev
 oYM
 lAS
 sPk
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
 mxQ
 oXS
 fUr
@@ -78981,11 +78980,11 @@ rbK
 tUs
 tUs
 uZX
-kNq
-kNq
+kfA
+kfA
 ppb
-kNq
-kNq
+kfA
+kfA
 tUs
 vjl
 mxQ
@@ -79209,9 +79208,9 @@ vEK
 sTV
 pVv
 oYM
-kNq
+kfA
 atE
-kNq
+kfA
 lAS
 lAS
 oYM
@@ -79405,11 +79404,11 @@ rzt
 rzt
 rzt
 bzO
-kNq
-kNq
+kfA
+kfA
 deW
-kNq
-kNq
+kfA
+kfA
 mxQ
 sfw
 sfw
@@ -79830,9 +79829,9 @@ rzt
 rzt
 bzO
 tJR
-kNq
+kfA
 oYM
-kNq
+kfA
 wcW
 mxQ
 lAS
@@ -80042,9 +80041,9 @@ prP
 jqH
 oYM
 tUs
-kNq
+kfA
 ppb
-kNq
+kfA
 tUs
 vDO
 atE
@@ -80466,9 +80465,9 @@ tUs
 uZX
 oYM
 tUs
-kNq
+kfA
 deW
-kNq
+kfA
 tUs
 mxQ
 sfw
@@ -80481,9 +80480,9 @@ aRk
 fKv
 pVv
 oYM
-kNq
+kfA
 atE
-kNq
+kfA
 lAS
 lAS
 oYM
@@ -80874,18 +80873,18 @@ mxQ
 mxQ
 mxQ
 nPa
-kNq
+kfA
 lAS
 lAS
 oYM
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 oYM
 lAS
 lAS
-kNq
+kfA
 vWs
 mxQ
 mxQ
@@ -81083,24 +81082,24 @@ kZy
 mxQ
 mxQ
 mxQ
-kNq
-kNq
+kfA
+kfA
 eCA
 lAS
 oYM
 oYM
 lAS
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 lAS
 oYM
 oYM
 lAS
 lAS
-kNq
-kNq
+kfA
+kfA
 mxQ
 mxQ
 mxQ
@@ -81294,7 +81293,7 @@ cLu
 wBX
 mxQ
 nPa
-kNq
+kfA
 lAS
 lAS
 oYM
@@ -81304,7 +81303,7 @@ lAS
 lAS
 oYM
 jax
-kNq
+kfA
 oYM
 lAS
 lAS
@@ -81313,7 +81312,7 @@ oYM
 oYM
 lAS
 eCA
-kNq
+kfA
 dxJ
 mxQ
 mxQ
@@ -81505,7 +81504,7 @@ mxQ
 tUs
 mxQ
 mxQ
-kNq
+kfA
 lAS
 oYM
 oYM
@@ -81526,7 +81525,7 @@ bPS
 oYM
 oYM
 lAS
-kNq
+kfA
 mxQ
 mxQ
 uLr
@@ -81716,7 +81715,7 @@ dIq
 vDO
 tUs
 vDO
-kNq
+kfA
 lAS
 oYM
 lAS
@@ -81739,7 +81738,7 @@ lAS
 lAS
 oYM
 lAS
-kNq
+kfA
 mxQ
 sfw
 lAS
@@ -81753,9 +81752,9 @@ vEK
 sTV
 pVv
 oYM
-kNq
+kfA
 atE
-kNq
+kfA
 oYM
 oYM
 oYM
@@ -81928,7 +81927,7 @@ dIq
 bzO
 mxQ
 mxQ
-kNq
+kfA
 lAS
 oYM
 lAS
@@ -81939,8 +81938,8 @@ mxQ
 jjg
 mxQ
 eBC
-kNq
-kNq
+kfA
+kfA
 ers
 mxQ
 jjg
@@ -81951,7 +81950,7 @@ uOb
 lAS
 oYM
 lAS
-kNq
+kfA
 mxQ
 mxQ
 mxQ
@@ -82139,7 +82138,7 @@ aRG
 xbB
 bzO
 mxQ
-kNq
+kfA
 eCA
 oYM
 xoF
@@ -82151,8 +82150,8 @@ mxQ
 jMz
 lXf
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 nyk
 swh
@@ -82164,7 +82163,7 @@ lAS
 bPS
 wqx
 eCA
-kNq
+kfA
 bzO
 bzO
 oeG
@@ -82351,7 +82350,7 @@ dxO
 jLS
 bzO
 bzO
-kNq
+kfA
 lAS
 oYM
 lAS
@@ -82363,7 +82362,7 @@ beV
 rQP
 rev
 oYM
-kNq
+kfA
 ycN
 oYM
 nVq
@@ -82575,8 +82574,8 @@ oYM
 oYM
 lXf
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 klb
 vDK
@@ -82787,8 +82786,8 @@ oYM
 oYM
 rvW
 cDZ
-kNq
-kNq
+kfA
+kfA
 vjR
 doQ
 upM
@@ -83000,7 +82999,7 @@ xMT
 fOw
 qOG
 roS
-kNq
+kfA
 vDK
 dvV
 lqi
@@ -83411,32 +83410,32 @@ xng
 xng
 xng
 fBd
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
 ubT
 xyK
-kNq
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
+kfA
 ufX
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
 cvp
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
 iCR
 nVH
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
 amx
 nbv
 nbv
@@ -83623,32 +83622,32 @@ dxO
 dxO
 dxO
 wpp
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
 wPL
 gbn
-kNq
-kNq
+kfA
+kfA
 roS
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
+kfA
 jYd
 mBV
-kNq
-kNq
-kNq
+kfA
+kfA
+kfA
 amx
 nLl
 nLl
@@ -83848,7 +83847,7 @@ rhF
 rhF
 mxQ
 jxa
-kNq
+kfA
 tuB
 kAo
 tLd
@@ -84059,8 +84058,8 @@ xUz
 xUz
 pRG
 oYM
-kNq
-kNq
+kfA
+kfA
 xLI
 dZc
 beV
@@ -84271,7 +84270,7 @@ oYM
 oYM
 xUz
 oYM
-kNq
+kfA
 kaE
 wAv
 beV
@@ -84483,8 +84482,8 @@ oYM
 oYM
 lLU
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 beV
 oYM
@@ -84683,7 +84682,7 @@ aRG
 uhb
 rBF
 bzO
-kNq
+kfA
 lAS
 oYM
 lAS
@@ -84695,8 +84694,8 @@ oiu
 oiu
 rev
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 nVq
 lXf
@@ -84907,8 +84906,8 @@ mxQ
 swh
 joS
 dMm
-kNq
-kNq
+kfA
+kfA
 oYM
 pON
 mLE
@@ -84920,7 +84919,7 @@ lAS
 snO
 oYM
 lAS
-kNq
+kfA
 bzO
 bzO
 oYM
@@ -85108,7 +85107,7 @@ xnW
 rBF
 bzO
 mxQ
-kNq
+kfA
 lAS
 oYM
 lAS
@@ -85119,8 +85118,8 @@ mxQ
 jjg
 mxQ
 eRH
-kNq
-kNq
+kfA
+kfA
 fKF
 mxQ
 jjg
@@ -85131,7 +85130,7 @@ ncQ
 lAS
 oYM
 lAS
-kNq
+kfA
 mxQ
 mxQ
 mxQ
@@ -85320,7 +85319,7 @@ gCY
 pFi
 tUs
 mxQ
-kNq
+kfA
 lAS
 oYM
 lAS
@@ -85343,7 +85342,7 @@ lAS
 lAS
 oYM
 eCA
-kNq
+kfA
 mxQ
 tUs
 vDO
@@ -85533,7 +85532,7 @@ mny
 tUs
 mxQ
 mxQ
-kNq
+kfA
 lAS
 oYM
 oYM
@@ -85554,7 +85553,7 @@ snO
 oYM
 oYM
 lAS
-kNq
+kfA
 mxQ
 mxQ
 tUs
@@ -85746,7 +85745,7 @@ cLu
 kVk
 mxQ
 nPa
-kNq
+kfA
 lAS
 lAS
 oYM
@@ -85755,8 +85754,8 @@ lAS
 lAS
 lAS
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 lAS
 lAS
@@ -85765,7 +85764,7 @@ oYM
 oYM
 lAS
 lAS
-kNq
+kfA
 pzG
 mxQ
 cZr
@@ -85960,23 +85959,23 @@ mxQ
 mxQ
 mxQ
 xjv
-kNq
+kfA
 eCA
 lAS
 oYM
 oYM
 lAS
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 lAS
 oYM
 oYM
 lAS
 eCA
-kNq
-kNq
+kfA
+kfA
 mxQ
 iyf
 mxQ
@@ -86174,19 +86173,19 @@ mxQ
 iyf
 mxQ
 nPa
-kNq
+kfA
 lAS
 lAS
 oYM
 oYM
-kNq
-kNq
+kfA
+kfA
 oYM
 oYM
 lAS
 lAS
-kNq
-kNq
+kfA
+kfA
 mxQ
 mxQ
 mxQ
@@ -88251,7 +88250,7 @@ hKI
 hKI
 hKI
 hKI
-hKI
+qcK
 hKI
 hKI
 iJf
@@ -88931,10 +88930,10 @@ ctb
 xnp
 xnp
 pIK
-kNq
+kfA
 aMz
-kNq
-kNq
+kfA
+kfA
 bzO
 rzt
 rzt

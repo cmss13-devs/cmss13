@@ -55,7 +55,7 @@
 /obj/item/storage/pouch/general/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
 		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_into(M,user)
+		dump_ammo_to(M,user, M.transfer_handful_amount)
 	else if(istype(W, /obj/item/storage/box/nade_box))
 		var/obj/item/storage/box/nade_box/M = W
 		dump_into(M,user)
@@ -235,8 +235,8 @@
 			gun_underlay = image('icons/obj/items/clothing/belts.dmi', current_gun.base_gun_icon)
 			if(!istype(current_gun,/obj/item/weapon/gun/pistol)) //This is a multirole container, and flareguns and *especially* the M44 don't line up with the sprites automatic pistols use.
 				gun_underlay.pixel_x = icon_x + 1
-				gun_underlay.pixel_y = icon_y + 3	
-			else		
+				gun_underlay.pixel_y = icon_y + 3
+			else
 				gun_underlay.pixel_x = icon_x
 				gun_underlay.pixel_y = icon_y
 			underlays += gun_underlay

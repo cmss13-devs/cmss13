@@ -352,6 +352,17 @@ var/list/global/item_storage_box_cache = list()
 		if(sum_storage_cost <= max_storage_space) //Adding this item won't exceed the maximum.
 			return TRUE
 
+/obj/item/storage/proc/can_hold_type(type_to_hold)
+	for(var/A in cant_hold)
+		if(ispath(type_to_hold, A))
+			return FALSE
+	if(length(can_hold))
+		for(var/A in can_hold)
+			if(ispath(type_to_hold, A))
+				return TRUE
+		return FALSE
+	return TRUE
+
 //This proc return 1 if the item can be picked up and 0 if it can't.
 //Set the stop_messages to stop it from printing messages
 /obj/item/storage/proc/can_be_inserted(obj/item/W as obj, stop_messages = 0)
@@ -370,24 +381,10 @@ var/list/global/item_storage_box_cache = list()
 		to_chat(usr, SPAN_ALERT("[W] is on fire!"))
 		return
 
-	if(can_hold.len)
-		var/ok = 0
-		for(var/A in can_hold)
-			if(istype(W, A))
-				ok = 1
-				break
-		if(!ok)
-			if(!stop_messages)
-				if (istype(W, /obj/item/tool/hand_labeler))
-					return 0
-				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
-			return 0
-
-	for(var/A in cant_hold) //Check for specific items which this container can't hold.
-		if(istype(W, A))
-			if(!stop_messages)
-				to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
-			return 0
+	if(!can_hold_type(W.type))
+		if(!stop_messages)
+			to_chat(usr, SPAN_NOTICE("[src] cannot hold [W]."))
+		return
 
 	var/w_limit_bypassed = 0
 	if(bypass_w_limit.len)
@@ -571,6 +568,9 @@ var/list/global/item_storage_box_cache = list()
 		return
 
 	if(ammo_dumping.flags_magazine & AMMUNITION_HANDFUL_BOX)
+		if(!can_hold_type(/obj/item/ammo_magazine/handful))
+			to_chat(user, SPAN_WARNING("[src] cannot hold loose handfuls."))
+			return
 		var/handfuls = round(ammo_dumping.current_rounds / amount_to_dump, 1) //The number of handfuls, we round up because we still want the last one that isn't full
 		if(ammo_dumping.current_rounds <= 0)
 			to_chat(user, SPAN_WARNING("[ammo_dumping] is empty."))
@@ -610,7 +610,7 @@ var/list/global/item_storage_box_cache = list()
 	if(!has_room(M.contents[1])) //Does it have room for the first item to be inserted?
 		to_chat(user, SPAN_WARNING("[src] is full."))
 		return
-	
+
 	to_chat(user, SPAN_NOTICE("You start refilling [src] with [M]."))
 	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		return
@@ -619,7 +619,7 @@ var/list/global/item_storage_box_cache = list()
 			break
 		M.remove_from_storage(I)
 		handle_item_insertion(I, TRUE, user) //quiet insertion
-		
+
 	playsound(user.loc, "rustle", 15, TRUE, 6)
 	return TRUE
 
@@ -665,7 +665,7 @@ var/list/global/item_storage_box_cache = list()
  * We need to do this separately from Destroy too...
  * When a mob is deleted, it's first ghostize()ed,
  * then its equipement is deleted. This means that client
- * is already unset and can't be used for clearing 
+ * is already unset and can't be used for clearing
  * screen objects properly.
  */
 /obj/item/storage/proc/watcher_deleted(mob/watcher)

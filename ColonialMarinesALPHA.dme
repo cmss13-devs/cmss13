@@ -888,6 +888,7 @@
 #include "code\game\objects\items\robot\robot_parts.dm"
 #include "code\game\objects\items\robot\robot_upgrades.dm"
 #include "code\game\objects\items\stacks\barbed_wire.dm"
+#include "code\game\objects\items\stacks\predator.dm"
 #include "code\game\objects\items\stacks\cable_coil.dm"
 #include "code\game\objects\items\stacks\catwalk.dm"
 #include "code\game\objects\items\stacks\flags.dm"

@@ -155,17 +155,105 @@
 	unacidable = TRUE
 
 /obj/item/weapon/melee/yautja_knife/attack_self(mob/living/carbon/human/user)
-	if(!isYautja(user))
-		return
-	if(!hasorgans(user))
-		return
-
 	dig_out_shrapnel(user)
 
 /obj/item/weapon/melee/yautja_knife/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
 
+/obj/item/weapon/melee/yautja_knife/attack(mob/living/mob_victim, mob/living/carbon/human/user)
+	. =..()
+	if(!.)
+		return
+
+	if(!isSpeciesYautja(user))
+		return
+
+	if(mob_victim.mob_size != MOB_SIZE_HUMAN)
+		return
+
+	var/mob/living/carbon/human/victim
+	victim = mob_victim
+	if(victim.stat != DEAD || victim.status_flags & PERMANENTLY_DEAD)
+		return
+
+	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+		return
+
+	if(isSpeciesYautja(victim))
+		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
+		return
+
+	if(isSpeciesSynth(victim))
+		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
+		return
+
+	to_chat(user, SPAN_WARNING("You start flaying [victim].."))
+	playsound(loc, 'sound/weapons/pierce.ogg', 25)
+	if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+		to_chat(user, SPAN_WARNING("You prepare the skin, cutting the flesh off in vital places."))
+		playsound(loc, 'sound/weapons/slash.ogg', 25)
+		create_leftovers(victim, has_meat = TRUE, skin_amount = 0)
+		for(var/L in victim.limbs)
+			victim.apply_damage(15, BRUTE, L, sharp = FALSE)
+		victim.add_flay_overlay(stage = 1)
+
+		if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+			var/obj/limb/head/v_head = victim.get_limb("head")
+			if(v_head) //they might be beheaded
+				to_chat(user, SPAN_WARNING("You slam \the [src] into [victim]'s scalp, ripping it from the head, pocketing the scalp on yourself afterwards."))
+				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
+				victim.apply_damage(10, BRUTE, v_head, sharp = FALSE)
+				v_head.disfigured = TRUE
+				victim.h_style = "Bald"
+				victim.update_hair() //tear the hair off with the scalp
+			playsound(loc, 'sound/weapons/slashmiss.ogg', 25)
+
+			if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+				to_chat(user, SPAN_WARNING("You jab \the [src] into the flesh cuts, using them to tear off most of the skin, the remainder skin hanging off the flesh."))
+				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
+				create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
+				for(var/L in victim.limbs)
+					victim.apply_damage(18, BRUTE, L, sharp = FALSE)
+				victim.remove_overlay(UNDERWEAR_LAYER)
+				victim.f_style = "Shaved"
+				victim.update_hair() //then rip the beard off along the skin
+				victim.add_flay_overlay(stage = 2)
+
+				if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+					to_chat(user, SPAN_WARNING("You completely flay [victim], sloppily ripping most remaining flesh and skin off the body. Use rope to hang them from the ceiling."))
+					playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
+					create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
+					for(var/L in victim.limbs)
+						victim.apply_damage(22, BRUTE, L, sharp = FALSE)
+					for(var/obj/item/I in victim)
+						victim.drop_inv_item_to_loc(I, victim.loc, FALSE, TRUE)
+
+					victim.status_flags |= PERMANENTLY_DEAD
+					victim.add_flay_overlay(stage = 3)
+
+#define FLAY_LAYER 35.5
+
+/mob/living/carbon/human/proc/add_flay_overlay(var/stage = 1)
+	remove_overlay(FLAY_LAYER)
+	var/image/flay_icon = new /image('icons/mob/humans/dam_human.dmi', "human_[stage]")
+	flay_icon.layer = -FLAY_LAYER
+	overlays_standing[FLAY_LAYER] = flay_icon
+	apply_overlay(FLAY_LAYER)
+
+#undef FLAY_LAYER
+
+/obj/item/weapon/melee/yautja_knife/proc/create_leftovers(mob/living/victim, var/has_meat, var/skin_amount)
+	if(has_meat)
+		var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
+		meat.name = "raw [victim.name] steak"
+
+	if(skin_amount)
+		var/obj/item/stack/sheet/animalhide/human/hide = new /obj/item/stack/sheet/animalhide/human(victim.loc)
+		hide.name = "[victim.name]-hide"
+		hide.singular_name = "[victim.name]-hide"
+		hide.stack_id = "[victim.name]-hide"
+		hide.amount = skin_amount
 
 /obj/item/proc/dig_out_shrapnel_check(var/mob/living/target, var/mob/living/carbon/human/user) //for digging shrapnel out of OTHER people, not yourself
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && ishuman(user) && ishuman(target) && user.a_intent == INTENT_HELP) //Squad medics and above

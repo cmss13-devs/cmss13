@@ -454,6 +454,9 @@
 	if(pulling)
 		stop_pulling()
 
+	if(SEND_SIGNAL(AM, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
+		return
+
 	var/mob/M
 	if(ismob(AM))
 		M = AM

@@ -3,6 +3,9 @@
 */
 
 /datum/species
+	 ///Used for isx(y) checking of species groups
+	var/group
+
 	var/name                                             // Species name.
 	var/name_plural
 

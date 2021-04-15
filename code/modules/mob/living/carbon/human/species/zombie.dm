@@ -1,5 +1,6 @@
 /datum/species/zombie
-	name= "Zombie"
+	group = SPECIES_HUMAN
+	name = "Zombie"
 	name_plural = "Zombies"
 	slowdown = 1
 	blood_color = "#333333"

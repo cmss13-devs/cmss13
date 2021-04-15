@@ -419,7 +419,7 @@
 
 /obj/structure/prop/resin_prop
 	name = "resin coated object"
-	desc = "Well, its useless now."
+	desc = "Well, it's useless now."
 	icon = 'icons/obj/resin_objects.dmi'
 	icon_state = "watertank"
 
@@ -444,3 +444,20 @@
 
 /obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
 	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
+
+/obj/structure/prop/brazier
+	name = "brazier"
+	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "brazier"
+	density = TRUE
+
+/obj/structure/prop/brazier/Initialize()
+	. = ..()
+	SetLuminosity(4)
+
+/obj/structure/prop/brazier/torch
+	name = "torch"
+	desc = "It's a torch."
+	icon_state = "torch"
+	density = FALSE

@@ -1,4 +1,5 @@
 /datum/species/human
+	group = SPECIES_HUMAN
 	name = "Human"
 	name_plural = "Humans"
 	primitive = /mob/living/carbon/human/monkey

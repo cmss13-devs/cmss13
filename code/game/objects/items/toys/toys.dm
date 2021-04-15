@@ -461,6 +461,11 @@
 							 SPAN_NOTICE("You hug [src]. Dawwww... "))
 		last_hug_time = world.time + 50 //5 second cooldown
 
+/obj/item/toy/farwadoll/pred
+	name = "strange plush doll"
+	desc = "A plush doll depicting some sort of tall humanoid biped..?"
+	w_class = SIZE_TINY
+	icon_state = "predplush"
 
 /obj/item/computer3_part
 	name = "computer part"

@@ -30,6 +30,13 @@
 	else
 		overlays += "+[icon_state]_full"
 
+/obj/item/storage/belt/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_ammo_to(M,user, M.transfer_handful_amount)
+	else
+		return ..()
+
 /obj/item/storage/belt/champion
 	name = "championship belt"
 	desc = "Proves to the world that you are the strongest!"
@@ -313,7 +320,7 @@
 /obj/item/storage/belt/marine/m41a/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle (src)
-	
+
 /obj/item/storage/belt/marine/m41amk1/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/m41aMK1 (src)
@@ -321,13 +328,6 @@
 /obj/item/storage/belt/marine/m39/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39 (src)
-
-/obj/item/storage/belt/marine/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M,user, M.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/belt/marine/quackers
 	name = "Mr. Quackers"
@@ -413,13 +413,6 @@
 	for(var/i = 1 to storage_slots)
 		var/obj/item/ammo_magazine/handful/H = new(src)
 		H.generate_handful(/datum/ammo/bullet/shotgun/slug, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
-
-/obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/ammo_magazine/shotgun))
-		var/obj/item/ammo_magazine/shotgun/M = W
-		dump_ammo_to(M, user, M.transfer_handful_amount)
-	else
-		return ..()
 
 /obj/item/storage/belt/shotgun/full/quackers
 	icon_state = "inflatable"
@@ -633,7 +626,7 @@
 		if(mixed_pistols && !istype(current_gun,/obj/item/weapon/gun/pistol)) //The M44 doesn't line up with the sprites automatic pistols use. These numbers mostly work with the flare pistol, mateba, and smartpistol as well.
 			gun_underlay.pixel_x = icon_x + 1
 			gun_underlay.pixel_y = icon_y + 3
-		else		
+		else
 			gun_underlay.pixel_x = icon_x
 			gun_underlay.pixel_y = icon_y
 		gun_underlay.color = current_gun.color

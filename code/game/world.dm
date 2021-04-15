@@ -224,19 +224,15 @@ var/world_topic_spam_protect_time = world.timeofday
 	join_motd = file2text("config/motd.txt")
 
 /world/proc/update_status()
-	//Note: Hub content is limited to 254 characters, including HTML/CSS. Image width is limited to 450 pixels.
+	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.
 	var/s = ""
 
-	if (CONFIG_GET(string/servername))
-		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)] &#8212; [MAIN_SHIP_NAME]</b>"
-		s += "<br><img src=\"[CONFIG_GET(string/forumurl)]/byond_hub_logo.jpg\"></a>"
-		// s += "<a href=\"http://goo.gl/04C5lP\">Wiki</a>|<a href=\"http://goo.gl/hMmIKu\">Rules</a>"
+	if(CONFIG_GET(string/servername))
+		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)]</b>"
 
 	if(SSmapping?.configs)
 		var/datum/map_config/MG = SSmapping.configs[GROUND_MAP]
-		var/datum/map_config/MS = SSmapping.configs[SHIP_MAP]
-		s += "<br>Maps | [MS?.map_name ? "<b>[MS.map_name]</b> | " : ""][MG?.map_name ? "<b>[MG.map_name]</b>" : ""]"
-
+		s += "<br>Map: [MG?.map_name ? "<b>[MG.map_name]</b>" : ""]"
 	if(SSticker?.mode)
 		s += "<br>Mode: <b>[SSticker.mode.name]</b>"
 		s += "<br>Round time: <b>[duration2text()]</b>"

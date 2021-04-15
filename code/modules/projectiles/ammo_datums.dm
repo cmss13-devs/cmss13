@@ -96,7 +96,6 @@
 			if(isXeno(M))
 				var/mob/living/carbon/Xenomorph/target = M
 				if(target.mob_size >= MOB_SIZE_BIG)
-					target.apply_effect(2, SLOW)
 					return //Big xenos are not affected.
 				target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
 				target.apply_effect(1, SUPERSLOW)

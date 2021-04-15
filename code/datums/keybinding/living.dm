@@ -22,7 +22,7 @@
 	return TRUE
 
 /datum/keybinding/living/rest
-	hotkey_keys = list("U")
+	hotkey_keys = list("Shift+R")
 	classic_keys = list()
 	name = "rest"
 	full_name = "Rest"

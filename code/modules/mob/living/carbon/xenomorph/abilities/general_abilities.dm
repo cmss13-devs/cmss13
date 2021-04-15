@@ -91,6 +91,7 @@
 	var/level = 2 //level of the acid strength
 	var/acid_type = /obj/effect/xenomorph/acid
 	macro_path = /datum/action/xeno_action/verb/verb_corrosive_acid
+	ability_primacy = XENO_CORROSIVE_ACID
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/corrosive_acid/New()

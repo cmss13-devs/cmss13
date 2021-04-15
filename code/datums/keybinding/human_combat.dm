@@ -27,7 +27,7 @@
 	return TRUE
 
 /datum/keybinding/human/combat/toggle_burst_fire
-	hotkey_keys = list()
+	hotkey_keys = list("Ctrl+Space")
 	classic_keys = list()
 	name = "toggle_burst_fire"
 	full_name = "Toggle Burst Fire"
@@ -75,7 +75,7 @@
 	return TRUE
 
 /datum/keybinding/human/combat/underbarrel
-	hotkey_keys = list("Shift+C")
+	hotkey_keys = list("Shift+Space")
 	classic_keys = list()
 	name = "toggle_underbarrel_attachment"
 	full_name = "Toggle Underbarrel Attachment"
@@ -91,7 +91,7 @@
 	return TRUE
 
 /datum/keybinding/human/combat/unique_action
-	hotkey_keys = list("Shift+F")
+	hotkey_keys = list("Space")
 	classic_keys = list()
 	name = "unique_action"
 	full_name = "Unique Action"
@@ -155,7 +155,7 @@
 	return TRUE
 
 /datum/keybinding/human/combat/attachment_rail
-	hotkey_keys = list()
+	hotkey_keys = list("Shift+G")
 	classic_keys = list()
 	name = "toggle_rail_attachment"
 	full_name = "Toggle Rail Attachment"

@@ -29,6 +29,9 @@
 	if(flags_item & NOBLUDGEON)
 		return FALSE
 
+	if(SEND_SIGNAL(M, COMSIG_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK)
+		return
+
 	if (!istype(M)) // not sure if this is the right thing...
 		return FALSE
 

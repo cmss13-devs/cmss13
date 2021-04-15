@@ -56,7 +56,7 @@
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,6), elder_restricted = 0)
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), elder_restricted = 0)
 	. = ..()
 	if(elder_restricted)
 		armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -89,7 +89,7 @@
 				icon_state = "halfarmor_elder"
 				item_state_slots = list(WEAR_JACKET = "halfarmor_elder")
 	else
-		if(armor_number > 6)
+		if(armor_number > 7)
 			armor_number = 1
 		if(armor_number) //Don't change full armor number
 			icon_state = "halfarmor[armor_number]"
@@ -229,9 +229,9 @@
 	items_allowed = list(/obj/item/weapon/melee/yautja_knife, /obj/item/weapon/gun/energy/plasmapistol)
 	var/bootnumber = 1
 
-/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,3))
+/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4))
 	..()
-	var/boot_input[] = list(1,2,3)
+	var/boot_input[] = list(1,2,3,4)
 	if(boot_number in boot_input)
 		icon_state = "y-boots[boot_number]"
 
@@ -381,7 +381,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = list("Public" = -1, "Ooman Ship" = "Ooman")
+	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
 	if(!isYautja(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
@@ -399,12 +399,12 @@
 			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
 
 	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
-	if(clan != "Ooman" && !SSpredships.is_clanship_loaded(clan))
+	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
 		return // Checking ship is valid
 
 	// Getting an arrival point
 	var/turf/target_turf
-	if(clan == "Ooman")
+	if(clan == "Human")
 		var/obj/effect/landmark/yautja_teleport/pickedYT = pick(GLOB.mainship_yautja_teleports)
 		target_turf = get_turf(pickedYT)
 	else

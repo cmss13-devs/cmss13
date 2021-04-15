@@ -1,4 +1,5 @@
 /datum/species/synthetic
+	group = SPECIES_SYNTHETIC
 	name = "Synthetic"
 	name_plural = "synthetics"
 	uses_ethnicity = TRUE //Uses ethnic presets

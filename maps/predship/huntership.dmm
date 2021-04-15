@@ -338,6 +338,13 @@
 	icon_state = "whiteyellowfull"
 	},
 /area/yautja)
+"aB" = (
+/obj/structure/closet/coffin/predator,
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
 "aC" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -503,21 +510,11 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -754,26 +751,11 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs";
-	pixel_y = 4
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs";
-	pixel_y = 4
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs";
-	pixel_y = 4
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs";
-	pixel_y = 4
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs";
-	pixel_y = 4
-	},
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1580,6 +1562,7 @@
 /obj/structure/closet/crate{
 	color = "#6b675e"
 	},
+/obj/item/stack/yautja_rope,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1732,6 +1715,12 @@
 /turf/open/gm/dirtgrassborder{
 	dir = 1
 	},
+/area/yautja)
+"dS" = (
+/obj/structure/prop/brazier/torch{
+	pixel_y = -2
+	},
+/turf/closed/wall/mineral/sandstone,
 /area/yautja)
 "eg" = (
 /obj/structure/barricade/handrail/strata{
@@ -2087,6 +2076,8 @@
 	desc = "A modular belt with various clips. This version lacks any hunting functionality, and is commonly used by engineers to transport important tools.";
 	name = "\improper Yautja toolbelt"
 	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2737,42 +2728,18 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
-	name = "soothing herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
-	name = "mending herbs"
-	},
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/advanced/bruise_pack/predator,
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
@@ -3197,6 +3164,19 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
+/turf/open/floor/corsat{
+	dir = 1;
+	icon_state = "squareswood"
+	},
+/area/yautja)
+"ZR" = (
+/obj/structure/surface/rack{
+	color = "#6b675e";
+	layer = 2.79
+	},
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
+/obj/item/stack/yautja_rope,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -5082,7 +5062,7 @@ aa
 ac
 bj
 af
-af
+ZR
 aV
 bn
 bj
@@ -5226,7 +5206,7 @@ aa
 ad
 bj
 ag
-ag
+dS
 cP
 bL
 bj
@@ -5729,7 +5709,7 @@ aa
 aa
 ae
 bj
-ag
+dS
 ap
 cP
 bL
@@ -6234,7 +6214,7 @@ aa
 ac
 bj
 ag
-ag
+dS
 cP
 bL
 bj
@@ -6378,7 +6358,7 @@ aa
 ad
 bj
 af
-af
+ZR
 aV
 bn
 bj
@@ -6894,7 +6874,7 @@ aL
 bL
 JH
 bL
-bL
+aB
 bj
 cP
 XP
@@ -6966,7 +6946,7 @@ co
 bL
 JH
 bL
-bL
+aB
 bj
 cP
 bc
@@ -7110,7 +7090,7 @@ aL
 bL
 JH
 bL
-bL
+aB
 bj
 cP
 cP
@@ -7182,7 +7162,7 @@ JH
 JH
 JH
 bL
-bL
+aB
 bj
 cG
 ME

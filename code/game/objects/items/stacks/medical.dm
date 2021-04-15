@@ -179,23 +179,23 @@
 			else
 				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
 
-/obj/item/stack/medical/advanced/bruise_pack/tajaran
-	name = "\improper S'rendarr's Hand leaf"
-	singular_name = "S'rendarr's Hand leaf"
+/obj/item/stack/medical/advanced/bruise_pack/predator
+	name = "mending herbs"
+	singular_name = "mending herb"
 	desc = "A poultice made of soft leaves that is rubbed on bruises."
-	icon = 'icons/obj/items/harvest.dmi'
-	icon_state = "shandp"
+	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon_state = "brute_herbs"
 	heal_brute = 15
-	stack_id = "Hand leaf"
+	stack_id = "mending herbs"
 
-/obj/item/stack/medical/advanced/ointment/tajaran
-	name = "\improper Messa's Tear petals"
-	singular_name = "Messa's Tear petal"
+/obj/item/stack/medical/advanced/ointment/predator
+	name = "soothing herbs"
+	singular_name = "soothing herb"
 	desc = "A poultice made of cold, blue petals that is rubbed on burns."
-	icon = 'icons/obj/items/harvest.dmi'
-	icon_state = "mtearp"
+	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon_state = "burn_herbs"
 	heal_burn = 15
-	stack_id = "Tear petals"
+	stack_id = "soothing herbs"
 
 /obj/item/stack/medical/advanced/ointment
 	name = "advanced burn kit"

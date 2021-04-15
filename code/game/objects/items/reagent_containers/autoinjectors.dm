@@ -143,6 +143,7 @@
 	name = "unusual crystal"
 	chemname = "thwei"
 	desc = "A strange glowing crystal with a spike at one end."
+	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "crystal"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE

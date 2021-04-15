@@ -363,4 +363,5 @@ var/list/default_onmob_icons = list(
 // species names
 #define SPECIES_HUMAN "Human"
 #define SPECIES_YAUTJA "Yautja"
+#define SPECIES_SYNTHETIC "Synthetic"
 #define SPECIES_MONKEY "Monkey"

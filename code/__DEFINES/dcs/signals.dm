@@ -133,6 +133,9 @@
 #define COMSIG_HUMAN_TAKE_DAMAGE "human_take_damage"
 	#define COMPONENT_BLOCK_DAMAGE (1<<0)
 
+#define COMSIG_ITEM_ATTEMPT_ATTACK "item_attempt_attack"
+	#define COMPONENT_CANCEL_ATTACK (1<<0)
+
 ///Called in /mob/reset_view(): (atom/A)
 #define COMSIG_MOB_RESET_VIEW "mob_reset_view"
 #define COMSIG_CLIENT_RESET_VIEW "client_reset_view"
@@ -281,6 +284,9 @@
 	#define COMPONENT_GRENADE_PRIME_CANCEL	(1<<0)
 
 #define COMSIG_ITEM_PICKUP "item_pickup"
+
+#define COMSIG_ATTEMPT_MOB_PULL "attempt_mob_pull"
+	#define COMPONENT_CANCEL_MOB_PULL (1<<0)
 
 ///from /mob/living/carbon/Xenomorph/start_pulling(): (mob/living/carbon/Xenomorph/X)
 #define COMSIG_MOVABLE_XENO_START_PULLING "movable_xeno_start_pulling"

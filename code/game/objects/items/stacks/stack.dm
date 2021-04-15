@@ -28,6 +28,8 @@
 	. = ..()
 	if(amount)
 		src.amount = amount
+	if(!singular_name)
+		singular_name = name
 	update_icon()
 
 /*Check the location of the stack, and if it's in a storage item or a mob's inventory, display the number of items in the stack.

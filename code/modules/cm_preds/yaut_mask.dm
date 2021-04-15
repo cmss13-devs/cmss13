@@ -30,11 +30,11 @@
 	time_to_unequip = 20
 	unequip_sounds = list('sound/items/air_release.ogg')
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,11), elder_restricted = 0)
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), elder_restricted = 0)
 	..()
 	forceMove(location)
 
-	var/mask_input[] = list(1,2,3,4,5,6,7,8,9,10,11)
+	var/mask_input[] = list(1,2,3,4,5,6,7,8,9,10,11,12)
 	if(mask_number in mask_input)
 		icon_state = "pred_mask[mask_number]"
 		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]")

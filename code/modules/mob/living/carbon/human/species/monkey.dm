@@ -1,4 +1,5 @@
 /datum/species/monkey
+	group = SPECIES_MONKEY
 	name = "Monkey"
 	name_plural = "Monkeys"
 	icobase = 'icons/mob/humans/species/monkeys/r_monkey.dmi'

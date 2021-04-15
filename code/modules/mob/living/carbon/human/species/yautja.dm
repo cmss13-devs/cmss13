@@ -1,4 +1,5 @@
 /datum/species/yautja
+	group = SPECIES_YAUTJA
 	name = "Yautja"
 	name_plural = "Yautja"
 	brute_mod = 0.33 //Beefy!

@@ -443,3 +443,17 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/attachable/quickfire(src)
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/smartpistol(src)
+
+/obj/item/storage/box/kit/honorguard/New()
+  ..()
+  overlays += image('icons/obj/items/pro_case.dmi', "+honor_guard")
+
+/obj/item/storage/box/kit/honorguard/fill_preset_inventory()
+  new /obj/item/storage/pill_bottle/packet/oxycodone(src)
+  new /obj/item/storage/pill_bottle/packet/kelotane(src)
+  new /obj/item/storage/pill_bottle/packet/bicardine(src)
+  new /obj/item/weapon/gun/shotgun/combat/guard(src)
+  new /obj/item/storage/pouch/general/large(src)
+  new /obj/item/ammo_magazine/shotgun/buckshot(src)
+  new /obj/item/ammo_magazine/shotgun/buckshot(src)
+

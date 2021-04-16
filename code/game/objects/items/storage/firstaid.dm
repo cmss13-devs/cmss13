@@ -241,12 +241,30 @@ obj/item/storage/pill_bottle/packet
 	icon_state = "tricordrazine_packet"
 	desc = "This packet contains Tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
-	
+
 /obj/item/storage/pill_bottle/packet/tramadol
 	name = "Tramadol pill packet"
 	icon_state = "tramadol_packet"
 	desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
+
+/obj/item/storage/pill_bottle/packet/bicardine
+    name = "Bicardine pill packet"
+    icon_state = "bicardine_packet"
+    desc = "This packet contains Bicardine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
+
+/obj/item/storage/pill_bottle/packet/kelotane
+    name = "kelotane pill packet"
+    icon_state = "kelotane_packet"
+    desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
+
+/obj/item/storage/pill_bottle/packet/oxycodone
+    name = "oxycodone pill packet"
+    icon_state = "oxycodone_packet"
+    desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
 
 /obj/item/storage/pill_bottle/fill_preset_inventory()
 	if(pill_type_to_fill)

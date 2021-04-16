@@ -5,7 +5,7 @@
 /// Amount of random icon variations for pills in total
 #define PILL_ICON_CHOICES 21
 /* Pill icon classes to generate mappings for */
-#define PILL_ICON_CLASSES list("bica", "kelo", "dex", "para", "tram", "atox", "tox", "inap", "peri", "spac", "drug", "stim", "alky", "imi", "qc", "tric", "psych")
+#define PILL_ICON_CLASSES list("bica", "kelo", "dex", "para", "tram", "atox", "tox", "inap", "peri", "spac", "drug", "stim", "alky", "imi", "qc", "tric", "psych", "oxy")
 
 /*
 	reagents defines

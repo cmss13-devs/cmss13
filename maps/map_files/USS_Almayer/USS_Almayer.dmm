@@ -3261,6 +3261,8 @@
 /area/almayer/medical/upper_medical)
 "ajm" = (
 /obj/structure/closet/secure_closet/securecom,
+/obj/item/storage/box/kit/honorguard,
+/obj/item/storage/box/kit/honorguard,
 /turf/open/floor/almayer{
 	icon_state = "redfull";
 	tag = "icon-redfull"

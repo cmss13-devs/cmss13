@@ -24,7 +24,7 @@
 	volume = 60
 	var/pill_desc = "An unknown pill." // The real description of the pill, shown when examined by a medically trained person
 	var/pill_icon_class = "random"     // Pills with the same icon class share icons
-	var/list/pill_initial_reagents     // Defaults reagents if any	
+	var/list/pill_initial_reagents     // Defaults reagents if any
 
 /obj/item/reagent_container/pill/Initialize(mapload, ...)
 	. = ..()
@@ -35,7 +35,7 @@
 
 /obj/item/reagent_container/pill/update_icon()
 	. = ..()
-	if(!icon_state) 
+	if(!icon_state)
 		icon_state = GLOB.pill_icon_mappings[pill_icon_class]
 
 /obj/item/reagent_container/pill/examine(mob/user)
@@ -162,6 +162,11 @@
 	pill_desc = "A Kelotane pill. Used to treat burns."
 	pill_initial_reagents = list("kelotane" = 15)
 	pill_icon_class = "kelo"
+	
+/obj/item/reagent_container/pill/oxycodone
+    pill_desc = "A Oxycodone pill. A powerful painkiller."
+    pill_initial_reagents = list("oxycodone" = 15)
+    pill_icon_class = "oxy"
 
 /obj/item/reagent_container/pill/paracetamol
 	pill_desc = "A Paracetamol pill. Painkiller for the ages."

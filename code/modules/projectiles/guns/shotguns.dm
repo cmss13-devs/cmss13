@@ -19,11 +19,18 @@ can cause issues with ammo types getting mixed up during the burst.
 	wield_delay = WIELD_DELAY_NORMAL //Shotguns are as hard to pull up as a rifle. They're quite bulky afterall
 	has_empty_icon = FALSE
 	has_open_icon = FALSE
+	var/gauge = "12g"
 
 /obj/item/weapon/gun/shotgun/Initialize(mapload, spawn_empty)
 	. = ..()
 	if(current_mag)
 		replace_tube(current_mag.current_rounds) //Populate the chamber.
+
+/obj/item/weapon/gun/shotgun/examine(mob/user)
+	. = ..()
+	if(flags_gun_features & GUN_AMMO_COUNTER && user)
+		var/chambered = in_chamber ? TRUE : FALSE
+		to_chat(user, "It has [current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] rounds remaining.")
 
 /obj/item/weapon/gun/shotgun/set_gun_config_values()
 	..()
@@ -56,8 +63,12 @@ can cause issues with ammo types getting mixed up during the burst.
 		update_icon()	//This is not needed for now. Maybe we'll have loaded sprites at some point, but I doubt it. Also doesn't play well with double barrel.
 		ready_in_chamber()
 		cock_gun(user)
-	if(user) playsound(user, reload_sound, 25, 1)
-	return 1
+	if(user)
+		playsound(user, reload_sound, 25, TRUE)
+		if(flags_gun_features & GUN_AMMO_COUNTER)
+			var/chambered = in_chamber ? TRUE : FALSE
+			to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+	return TRUE
 
 /obj/item/weapon/gun/shotgun/proc/empty_chamber(mob/user)
 	if(!current_mag)
@@ -66,10 +77,14 @@ can cause issues with ammo types getting mixed up during the burst.
 		if(in_chamber)
 			in_chamber = null
 			var/obj/item/ammo_magazine/handful/new_handful = retrieve_shell(ammo.type)
-			playsound(user, reload_sound, 25, 1)
+			playsound(user, reload_sound, 25, TRUE)
 			new_handful.forceMove(get_turf(src))
+			if(flags_gun_features & GUN_AMMO_COUNTER && user)
+				var/chambered = in_chamber ? TRUE : FALSE //useless, but for consistency
+				to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
 		else
-			if(user) to_chat(user, SPAN_WARNING("[src] is already empty."))
+			if(user)
+				to_chat(user, SPAN_WARNING("[src] is already empty."))
 		return
 
 	unload_shell(user)
@@ -95,7 +110,7 @@ can cause issues with ammo types getting mixed up during the burst.
 /obj/item/weapon/gun/shotgun/proc/retrieve_shell(selection)
 	var/datum/ammo/A = GLOB.ammo_list[selection]
 	var/obj/item/ammo_magazine/handful/new_handful = new A.handful_type()
-	new_handful.generate_handful(selection, "12g", 5, 1, /obj/item/weapon/gun/shotgun)
+	new_handful.generate_handful(selection, gauge, 5, 1, /obj/item/weapon/gun/shotgun)
 	return new_handful
 
 /obj/item/weapon/gun/shotgun/proc/check_chamber_position()
@@ -301,6 +316,111 @@ can cause issues with ammo types getting mixed up during the burst.
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+
+//-------------------------------------------------------
+//TYPE 23. SEMI-AUTO UPP SHOTGUN, BASED ON KS-23
+
+/obj/item/weapon/gun/shotgun/type23
+	name = "\improper Type 23 riot shotgun"
+	desc = "As UPP soldiers frequently reported being outmatched by enemy combatants, UPP High Command commissioned a large amount of Type 23 shotguns, originally used for quelling defector colony riots. This slow semi-automatic shotgun chambers 8 gauge, and packs a mean punch."
+	icon_state = "type23"
+	item_state = "type23"
+	fire_sound = 'sound/weapons/gun_type23.ogg' //not perfect, too small
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23
+	attachable_allowed = list(
+						//Rail
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/magnetic_harness,
+						//Muzzle
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/bayonet/upp,
+						//Underbarrel
+						/obj/item/attachable/verticalgrip,
+						/obj/item/attachable/flashlight/grip,
+						/obj/item/attachable/attached_gun/flamer,
+						/obj/item/attachable/attached_gun/extinguisher,
+						/obj/item/attachable/burstfire_assembly, //what could possibly go wrong?
+						//Stock
+						/obj/item/attachable/stock/type23
+						)
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_INTERNAL_MAG
+	flags_equip_slot = SLOT_BACK
+	map_specific_decoration = FALSE
+	gauge = "8g"
+	starting_attachment_types = list(/obj/item/attachable/stock/type23)
+
+/obj/item/weapon/gun/shotgun/type23/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 19,"rail_x" = 13, "rail_y" = 21, "under_x" = 24, "under_y" = 15, "stock_x" = 1, "stock_y" = 16)
+
+/obj/item/weapon/gun/shotgun/type23/set_gun_config_values()
+	..()
+	fire_delay = 2.5 SECONDS
+	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_4
+	scatter_unwielded = SCATTER_AMOUNT_TIER_1
+	damage_mult = BASE_BULLET_DAMAGE_MULT
+	recoil = RECOIL_AMOUNT_TIER_1
+	recoil_unwielded = RECOIL_AMOUNT_TIER_1
+
+/obj/item/weapon/gun/shotgun/type23/breacher
+	random_spawn_chance = 100
+	random_rail_chance = 100
+	random_spawn_rail = list(
+							/obj/item/attachable/magnetic_harness,
+							/obj/item/attachable/flashlight
+							)
+	random_muzzle_chance = 100
+	random_spawn_muzzle = list(
+							/obj/item/attachable/bayonet/upp,
+							)
+	random_under_chance = 40
+	random_spawn_under = list(
+							/obj/item/attachable/verticalgrip,
+							)
+
+/obj/item/weapon/gun/shotgun/type23/breacher/slug
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/slug
+
+/obj/item/weapon/gun/shotgun/type23/breacher/flechette
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/flechette
+
+/obj/item/weapon/gun/shotgun/type23/dual
+	random_spawn_chance = 100
+	random_rail_chance = 100
+	random_spawn_rail = list(
+							/obj/item/attachable/magnetic_harness,
+							)
+	random_muzzle_chance = 80
+	random_spawn_muzzle = list(
+							/obj/item/attachable/bayonet/upp,
+							/obj/item/attachable/heavy_barrel
+							)
+	random_under_chance = 100
+	random_spawn_under = list(
+							/obj/item/attachable/flashlight/grip,
+							/obj/item/attachable/verticalgrip,
+							)
+
+/obj/item/weapon/gun/shotgun/type23/dragon
+	current_mag = /obj/item/ammo_magazine/internal/shotgun/type23/dragonsbreath
+	random_spawn_chance = 100
+	random_rail_chance = 100
+	random_spawn_rail = list(
+							/obj/item/attachable/magnetic_harness,
+							)
+	random_muzzle_chance = 70
+	random_spawn_muzzle = list(
+							/obj/item/attachable/bayonet/upp,
+							/obj/item/attachable/heavy_barrel
+							)
+	random_under_chance = 100
+	random_spawn_under = list(
+							/obj/item/attachable/attached_gun/extinguisher,
+							)
 
 //-------------------------------------------------------
 //DOUBLE SHOTTY

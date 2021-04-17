@@ -30,7 +30,7 @@
 			return
 
 		for(var/obj/item/hardpoint/locomotion/Loco in hardpoints)
-			if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+			if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				user.visible_message(SPAN_WARNING("[user] starts attaching the vehicle clamp to [src]."), SPAN_NOTICE("You start attaching the vehicle clamp to [src]."))
 				if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_BUILD))
 					user.visible_message(SPAN_WARNING("[user] stops attaching the vehicle clamp to [src]."), SPAN_WARNING("You stop attaching the vehicle clamp to [src]."))
@@ -49,7 +49,7 @@
 			return
 
 		user.visible_message(SPAN_WARNING("[user] starts removing the vehicle clamp from [src]."), SPAN_NOTICE("You start removing the vehicle clamp from [src]."))
-		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+		if(skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_BUILD))
 				user.visible_message(SPAN_WARNING("[user] stops removing the vehicle clamp from [src]."), SPAN_WARNING("You stop removing the vehicle clamp from [src]."))
 				return

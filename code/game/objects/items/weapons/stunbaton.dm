@@ -111,7 +111,7 @@
 		..()
 
 /obj/item/weapon/melee/baton/attack_self(mob/user)
-	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	if(bcell && bcell.charge > hitcost)
@@ -129,7 +129,7 @@
 
 
 /obj/item/weapon/melee/baton/attack(mob/M, mob/user)
-	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 

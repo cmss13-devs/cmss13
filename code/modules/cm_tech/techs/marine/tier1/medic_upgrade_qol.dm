@@ -117,7 +117,7 @@
 
 	blocked_by_suit = FALSE
 	heart_damage_to_deal = 0
-	damage_threshold = 35
+	damage_heal_threshold = 35
 
 /obj/item/ammo_magazine/internal/pillgun
 	name = "pill tube"

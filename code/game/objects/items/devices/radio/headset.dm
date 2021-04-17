@@ -562,13 +562,13 @@
 	icon_state = "wy_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom/cl)
 
-/obj/item/device/radio/headset/distress/bears
+/obj/item/device/radio/headset/distress/UPP
 	name = "UPP headset"
 	desc = "A special headset used by UPP military. To access the civillian common channel, use :h."
 	frequency = RUS_FREQ
 	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
 
-/obj/item/device/radio/headset/distress/bears/recalculateChannels()
+/obj/item/device/radio/headset/distress/UPP/recalculateChannels()
 	..()
 	syndie = 1
 

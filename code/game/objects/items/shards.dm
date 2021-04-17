@@ -100,6 +100,14 @@
 		organ.take_damage(damage_on_move * count, 0, 0)
 		embedded_mob.pain.apply_pain(damage_on_move * count)
 
+/obj/item/shard/shrapnel/nagant
+	name = "small shrapnel"
+	desc = "Some shrapnel that used to be embedded on someone's skin."
+	damage_on_move = 2
+
+/obj/item/shard/shrapnel/nagant/bits
+	name = "tiny shrapnel"
+	damage_on_move = 0.5
 
 /obj/item/shard/shrapnel/bone_chips
 	name = "bone shrapnel chips"

@@ -434,13 +434,13 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/ivan, WEAR_BACK)
 	//back filled with random guns, it's awesome
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	//body + webbing
 	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	UPP.attach_accessory(H, W)
 	H.equip_to_slot_or_del(UPP, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/ivan, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/jacket/ivan, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/m60, WEAR_J_STORE)
 	//webbing
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/m60, WEAR_IN_ACCESSORY)
@@ -452,7 +452,7 @@
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet, WEAR_HEAD)
 	//limb
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	//waist
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/ivan, WEAR_WAIST)

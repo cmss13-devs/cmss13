@@ -126,7 +126,7 @@
 	name = "armored gloves"
 	desc = "Non-standard kevlon fiber gloves. They're insulated and heavily armored."
 	icon_state = "veteran"
-	item_state = "bgloves"
+	item_state = "veteran"
 	siemens_coefficient = 0
 	armor_melee = CLOTHING_ARMOR_HIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
@@ -135,7 +135,13 @@
 	armor_bomb = CLOTHING_ARMOR_MEDIUM
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+
+/obj/item/clothing/gloves/marine/veteran/insulated
+	name = "insulated armored gloves"
+	desc = "Non-standard kevlon fiber gloves. These are apparently ESPECIALLY insulated."
+	icon_state = "insulated"
+	item_state = "insulated"
 
 /obj/item/clothing/gloves/marine/veteran/PMC
 	name = "\improper WY PMC gloves"

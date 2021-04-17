@@ -13,7 +13,7 @@
 	var/blocked_by_suit = TRUE
 	var/heart_damage_to_deal = 5
 	var/ready = 0
-	var/damage_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
+	var/damage_heal_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	var/charge_cost = 66 //How much energy is used.
 	var/obj/item/cell/dcell = null
@@ -190,10 +190,10 @@
 
 
 	//At this point, the defibrillator is ready to work
-	H.apply_damage(-damage_threshold, BRUTE)
-	H.apply_damage(-damage_threshold, BURN)
-	H.apply_damage(-damage_threshold, TOX)
-	H.apply_damage(-damage_threshold, CLONE)
+	H.apply_damage(-damage_heal_threshold, BRUTE)
+	H.apply_damage(-damage_heal_threshold, BURN)
+	H.apply_damage(-damage_heal_threshold, TOX)
+	H.apply_damage(-damage_heal_threshold, CLONE)
 	H.apply_damage(-H.getOxyLoss(), OXY)
 	H.updatehealth() //Needed for the check to register properly
 
@@ -214,10 +214,12 @@
 
 /obj/item/device/defibrillator/compact
 	name = "compact defibrillator"
-	desc = "A compact defibrillator not tested to be reliable. Success is not guaranteed on use."
+	desc = "A compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
-	w_class = SIZE_SMALL
-
-	charge_cost = 132 //How much energy is used.
+	w_class = SIZE_MEDIUM
+	blocked_by_suit = FALSE
+	heart_damage_to_deal = 0
+	damage_heal_threshold = 40
+	charge_cost = 198

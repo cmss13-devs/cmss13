@@ -348,7 +348,7 @@
 					/obj/item/ammo_magazine/pistol/mod88,
 					/obj/item/ammo_magazine/pistol/vp78,
 					/obj/item/ammo_magazine/smg/mp7,
-					/obj/item/ammo_magazine/smg/skorpion,
+					/obj/item/ammo_magazine/pistol/skorpion,
 					/obj/item/ammo_magazine/smg/ppsh,
 					/obj/item/ammo_magazine/smg/ppsh/extended,
 					/obj/item/ammo_magazine/smg/uzi,

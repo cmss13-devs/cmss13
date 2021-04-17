@@ -122,7 +122,7 @@
 				w_uniform.add_fingerprint(M)
 
 			//Accidental gun discharge
-			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_MP))
+			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED))
 				if (istype(r_hand,/obj/item/weapon/gun) || istype(l_hand,/obj/item/weapon/gun))
 					var/obj/item/weapon/gun/W = null
 					var/chance = 0

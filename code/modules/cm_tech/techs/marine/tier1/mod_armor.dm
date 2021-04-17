@@ -34,7 +34,8 @@
 
 	var/take_slash_damage = TRUE
 	var/slash_durability_mult = 0.25
-	var/projectile_durability_mult = 0.1
+	var/FF_projectile_durability_mult = 0.1
+	var/hostile_projectile_durability_mult = 1
 
 	var/list/health_states = list(
 		0,
@@ -107,18 +108,24 @@
 		COMSIG_HUMAN_BULLET_ACT
 	))
 
-/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/user, damage, ammo_flags)
+/obj/item/clothing/accessory/health/proc/take_bullet_damage(mob/living/carbon/human/user, damage, ammo_flags, obj/item/projectile/P)
 	SIGNAL_HANDLER
 	if(damage <= 0 || (ammo_flags & AMMO_IGNORE_ARMOR))
 		return
 
 	var/damage_to_nullify = armor_health
-	armor_health = max(armor_health - damage*projectile_durability_mult, 0)
+	var/final_proj_mult = FF_projectile_durability_mult
+
+	var/mob/living/carbon/human/pfirer = P.firer
+	if(user.faction != pfirer.faction)
+		final_proj_mult = hostile_projectile_durability_mult
+
+	armor_health = max(armor_health - damage*final_proj_mult, 0)
 
 	update_icon()
 
 	if(damage_to_nullify)
-		playsound(user, armor_hitsound, 25, 1)
+		playsound(user, armor_hitsound, 25, TRUE)
 		return COMPONENT_CANCEL_BULLET_ACT
 
 /obj/item/clothing/accessory/health/proc/take_slash_damage(mob/living/user, list/slashdata)
@@ -182,6 +189,7 @@
 
 	take_slash_damage = FALSE
 	scrappable = FALSE
+	FF_projectile_durability_mult = 0.1
 
 	armor_health = 100
 	armor_maxhealth = 100

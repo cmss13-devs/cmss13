@@ -87,17 +87,6 @@
 	gun_type = /obj/item/weapon/gun/smg/mp7
 	max_rounds = 30 //Also comes in 20 and 40.
 
-//-------------------------------------------------------
-//SKORPION //Based on the same thing.
-
-/obj/item/ammo_magazine/smg/skorpion
-	name = "\improper CZ-81 magazine (.32ACP)"
-	desc = "A .32ACP caliber magazine for the CZ-81."
-	caliber = ".32ACP"
-	icon_state = "skorpion" //PLACEHOLDER
-	gun_type = /obj/item/weapon/gun/smg/skorpion
-	max_rounds = 30 //Can also be 10.
-
 
 //-------------------------------------------------------
 //PPSH //Based on the PPSh-41.

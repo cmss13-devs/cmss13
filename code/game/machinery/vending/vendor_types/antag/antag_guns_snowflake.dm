@@ -14,20 +14,19 @@
 		FACTION_UPP = list(
 
 			list("PRIMARY FIREARMS", 0, null, null, null),
-			list("CZ-81 Submachinegun", 20, /obj/item/weapon/gun/smg/skorpion/upp, null, VENDOR_ITEM_REGULAR),
-			list("Type 71 Flamethrower Pulse Rifle", 30, /obj/item/weapon/gun/rifle/type71/flamer, null, VENDOR_ITEM_REGULAR),
+			list("CZ-81 Machine Pistol", 20, /obj/item/weapon/gun/pistol/skorpion/upp, null, VENDOR_ITEM_REGULAR),
 			list("Type 71 Pulse Rifle", 30, /obj/item/weapon/gun/rifle/type71, null, VENDOR_ITEM_REGULAR),
 			list("Type 71 Pulse Rifle Carbine", 30, /obj/item/weapon/gun/rifle/type71/carbine, null, VENDOR_ITEM_REGULAR),
 
 			list("PRIMARY AMMUNITION", 0, null, null, null),
-			list("CZ-81 Magazine (.32ACP)", 5, /obj/item/ammo_magazine/smg/skorpion, null, VENDOR_ITEM_REGULAR),
+			list("CZ-81 Magazine (.32ACP)", 5, /obj/item/ammo_magazine/pistol/skorpion, null, VENDOR_ITEM_REGULAR),
 			list("Type 71 AP Magazine (5.45x39mm)", 15, /obj/item/ammo_magazine/rifle/type71/ap, null, VENDOR_ITEM_REGULAR),
 			list("Type 71 Magazine (5.45x39mm)", 5, /obj/item/ammo_magazine/rifle/type71, null, VENDOR_ITEM_REGULAR),
 
 			list("SIDEARMS", 0, null, null, null),
 			list("Highpower Automag", 15, /obj/item/weapon/gun/pistol/highpower, null, VENDOR_ITEM_REGULAR),
 			list("Korovin PK-9 Pistol", 15, /obj/item/weapon/gun/pistol/c99/upp, null, VENDOR_ITEM_REGULAR),
-			list("N-Y 7.62mm Revolver", 15, /obj/item/weapon/gun/revolver/upp, null, VENDOR_ITEM_REGULAR),
+			list("N-Y 7.62mm Revolver", 15, /obj/item/weapon/gun/revolver/nagant, null, VENDOR_ITEM_REGULAR),
 
 			list("SIDEARM AMMUNITION", 0, null, null, null),
 			list("Highpower Magazine (9mm)", 5, /obj/item/ammo_magazine/pistol/highpower, null, VENDOR_ITEM_REGULAR),
@@ -56,7 +55,7 @@
 
 			list("PRIMARY FIREARMS", 0, null, null, null),
 			list("Basira-Armstrong Rifle", 30, /obj/item/weapon/gun/rifle/hunting, null, VENDOR_ITEM_REGULAR),
-			list("CZ-81 Submachinegun", 20, /obj/item/ammo_magazine/smg/skorpion, null, VENDOR_ITEM_REGULAR),
+			list("CZ-81 Machine Pistol", 20, /obj/item/ammo_magazine/pistol/skorpion, null, VENDOR_ITEM_REGULAR),
 			list("Double Barrel Shotgun", 30, /obj/item/weapon/gun/shotgun/double, null, VENDOR_ITEM_REGULAR),
 			list("HG 37-12 Pump Shotgun", 30, /obj/item/weapon/gun/shotgun/double/sawn, null, VENDOR_ITEM_REGULAR),
 			list("M16 Rifle", 30, /obj/item/weapon/gun/rifle/m16, null, VENDOR_ITEM_REGULAR),
@@ -72,7 +71,7 @@
 			list("Box Of Buckshot Shells", 10, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
 			list("Box Of Flechette Shells", 10, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
 			list("Box Of Shotgun Slugs", 10, /obj/item/ammo_magazine/shotgun, null, VENDOR_ITEM_REGULAR),
-			list("CZ-81 Magazine (.32ACP)", 5, /obj/item/ammo_magazine/smg/skorpion, null, VENDOR_ITEM_REGULAR),
+			list("CZ-81 Magazine (.32ACP)", 5, /obj/item/ammo_magazine/pistol/skorpion, null, VENDOR_ITEM_REGULAR),
 			list("M16 AP Magazine (5.56x45mm)", 15, /obj/item/ammo_magazine/rifle/m16/ap, null, VENDOR_ITEM_REGULAR),
 			list("M16 Magazine (5.56x45mm)", 5, /obj/item/ammo_magazine/rifle/m16, null, VENDOR_ITEM_REGULAR),
 			list("MAC-15 Magazine (9mm)", 5, /obj/item/ammo_magazine/smg/uzi, null, VENDOR_ITEM_REGULAR),

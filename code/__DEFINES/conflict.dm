@@ -43,9 +43,10 @@
 #define GUN_WIELDED_FIRING_ONLY	(1<<13)
 #define GUN_HAS_FULL_AUTO		(1<<14)
 #define GUN_FULL_AUTO_ON		(1<<15)
-#define GUN_ONE_HAND_WIELDED	(1<<16) //removes one-hand accuracy penalty
+#define GUN_ONE_HAND_WIELDED	(1<<16) //removes unwielded penalties, the configs will do nothing
 #define GUN_ANTIQUE 			(1<<17)
 #define GUN_RECOIL_BUILDUP		(1<<18)
+#define GUN_INTERNAL_SILENCED	(1<<19) //suppressor doesnt override sound
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1
@@ -71,8 +72,9 @@
 #define SLOWDOWN_ARMOR_HEAVY		1
 #define SLOWDOWN_ARMOR_VERY_HEAVY	1.15
 
-#define SLOWDOWN_ADS_SMG				0.35
-#define SLOWDOWN_ADS_SHOTGUN			0.75 //anything below that doesn't change anything.
+#define SLOWDOWN_ADS_QUICK				0.35
+#define SLOWDOWN_ADS_VERSATILE			0.50
+#define SLOWDOWN_ADS_SHOTGUN			0.75
 #define SLOWDOWN_ADS_RIFLE				1
 #define SLOWDOWN_ADS_SCOPE				1.20
 #define SLOWDOWN_ADS_LMG				1.75

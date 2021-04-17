@@ -45,58 +45,335 @@
 
 /datum/equipment_preset/upp/soldier/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP, WEAR_HEAD)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+
+	load_upp_soldier(H, UPP)
+
+/datum/equipment_preset/upp/soldier/proc/load_upp_soldier(mob/living/carbon/human/H, obj/item/clothing/under/marine/veteran/UPP/UPP)
+	var/percentage = rand(1, 100)
+	switch(percentage)
+		//most UPP are rifleman, most others are breachers, some have both primaries.
+		if(1 to 66)
+			load_upp_rifleman(H, UPP)
+		if(67 to 85)
+			load_upp_breacher(H, UPP)
+		else
+			load_upp_double(H, UPP)
+
+/datum/equipment_preset/upp/soldier/proc/load_upp_rifleman(mob/living/carbon/human/H)
+	//back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //.75
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //1.5
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK) //2.25
+	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, WEAR_IN_BACK) //3.25
+	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, WEAR_IN_BACK) //4.25
+	//body
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/rifleman, WEAR_J_STORE)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/full, WEAR_WAIST)
+	//rpocket
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_R_STORE)
+	//lpocket
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+/datum/equipment_preset/upp/soldier/proc/load_upp_breacher(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //.75
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //1.5
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher/mini, WEAR_IN_BACK) //2.25
+	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, WEAR_IN_BACK) //3.25
+	H.equip_to_slot_or_del(new /obj/item/storage/box/m94, WEAR_IN_BACK) //4.25
+	//waist
+	var/gunbelt = prob(50) ? /obj/item/storage/belt/gun/type47/NY : /obj/item/storage/belt/gun/type47/PK9
+	H.equip_to_slot_or_del(new gunbelt, WEAR_WAIST)
+	pick_ammotype(H)
 
-	spawn_weapon(/obj/item/weapon/gun/rifle/type71, /obj/item/ammo_magazine/rifle/type71, H, 0, 12)
+/datum/equipment_preset/upp/soldier/proc/pick_ammotype(mob/living/carbon/human/H)
+	var/percentage = rand(1, 100)
+	switch(percentage)
+		if(1 to 33)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/breacher, WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/heavybuck, WEAR_L_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/heavybuck, WEAR_R_STORE)
+		if(34 to 66)
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/breacher/slug, WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/heavyslug, WEAR_L_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/heavyslug, WEAR_R_STORE)
+		else
+			H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/breacher/flechette, WEAR_J_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/heavyflechette, WEAR_L_STORE)
+			H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/heavyflechette, WEAR_R_STORE)
+
+/datum/equipment_preset/upp/soldier/proc/load_upp_double(mob/living/carbon/human/H, obj/item/clothing/under/marine/veteran/UPP/UPP)
+	//back
+	var/rifle = prob(50) ? /obj/item/weapon/gun/rifle/type71/dual : /obj/item/weapon/gun/rifle/type71/carbine/dual
+	H.equip_to_slot_or_del(new rifle, WEAR_BACK)
+	//body
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/dual, WEAR_J_STORE)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/full, WEAR_WAIST)
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/shotgun/heavybuck, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/upp/soldier/cryo
-	name = "UPP Cryo Soldier"
-
-/datum/equipment_preset/upp/soldier/cryo/load_gear(mob/living/carbon/human/H)
-	return
-
 //*****************************************************************************************************/
-
-/datum/equipment_preset/upp/survivor
-	name = "UPP Survivor"
+/datum/equipment_preset/upp/medic
+	name = "UPP Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id
-	skills = /datum/skills/civilian/survivor/doctor
-	assignment = JOB_UPP
-	rank = JOB_UPP
-	paygrade = "UE1"
+	skills = /datum/skills/upp/combat_medic
+	assignment = JOB_UPP_MEDIC
+	rank = JOB_UPP_MEDIC
+	role_comm_title = "Med"
+	paygrade = "UE2M"
 
-/datum/equipment_preset/upp/survivor/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
+/datum/equipment_preset/upp/medic/load_gear(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact, WEAR_IN_BACK) //1
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK) //2
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK) //2.33
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //2.66
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3.33
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
+	//body
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/tricordrazine, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/skorpion/upp/medic, WEAR_J_STORE)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	//póckets
+	var/obj/item/storage/pouch/magazine/pistol/large/ppouch = new()
+	H.equip_to_slot_or_del(ppouch, WEAR_R_STORE)
+	for(var/i = 1 to ppouch.storage_slots)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/skorpion, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/frt_kit/full, WEAR_L_STORE)
+
+/datum/equipment_preset/upp/sapper
+	name = "UPP Sapper"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp/combat_engineer
+	assignment = JOB_UPP_ENGI
+	rank = JOB_UPP_ENGI
+	role_comm_title = "Sap"
+	paygrade = "UE2S"
+
+/datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/H)
+	//Sappers should have lots of gear and whatnot that helps them attack or siege marines
+	//But that'll need a lot of effort so for now they are just soldiers with a toolbox.
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //.33
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //.66
+	H.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK) //1.66
+	H.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK) //2.66
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas, WEAR_FACE)
+	//head
+	var/headgear = prob(70) ? /obj/item/clothing/head/helmet/marine/veteran/UPP/V : /obj/item/clothing/head/uppcap/ushanka
+	H.equip_to_slot_or_del(new headgear, WEAR_HEAD)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	var/obj/item/clothing/accessory/storage/black_vest/W = new()
+	UPP.attach_accessory(H, W)
+	W.hold.storage_slots = 7
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/wrench, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/wirecutters, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_ACCESSORY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/sapper, WEAR_J_STORE)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/sapper(H), WEAR_WAIST)
+	//limb
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/insulated(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/upp/specialist
+	name = "UPP Specialist"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp/specialist
+	assignment = JOB_UPP_SPECIALIST
+	rank = JOB_UPP_SPECIALIST
+	role_comm_title = "Szh"
+	paygrade = "UE3"
+
+/datum/equipment_preset/upp/specialist/load_gear(mob/living/carbon/human/H)
+	//back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK) //1
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //1.33
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //1.66
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK) //2
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK) //2.33
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK) //2.66
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy, WEAR_HEAD)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, WEAR_JACKET)
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+
+	var/obj/item/device/internal_implant/subdermal_armor/implant = new()
+	implant.on_implanted(H)
+
+	load_specialist(H, UPP)
+
+/datum/equipment_preset/upp/specialist/proc/load_specialist(mob/living/carbon/human/H, obj/item/clothing/under/marine/veteran/UPP/UPP)
+	if(prob(50))
+		//body
+		H.equip_to_slot_or_del(new /obj/item/weapon/gun/minigun/upp, WEAR_J_STORE)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/minigun, WEAR_IN_JACKET)
+		//waist
+		H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY/shrapnel, WEAR_WAIST)
+	else
+		//body
+		var/obj/item/clothing/accessory/storage/black_vest/W = new()
+		UPP.attach_accessory(H, W)
+		for(var/i = 1 to W.slots)
+			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath, WEAR_IN_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/dragon, WEAR_J_STORE)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath, WEAR_IN_JACKET)
+		//waist
+		H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY, WEAR_WAIST)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/upp/leader
+	name = "UPP Leader"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp/SL
+	assignment = JOB_UPP_LEADER
+	rank = JOB_UPP_LEADER
+	role_comm_title = "MSzh"
+	paygrade = "UE4"
+
+/datum/equipment_preset/upp/leader/load_gear(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/device/jima, WEAR_BACK)
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	var/obj/item/clothing/accessory/storage/webbing/W = new()
+	UPP.attach_accessory(H, W)
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71/ap, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/flamer, WEAR_J_STORE)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/NY/shrapnel, WEAR_WAIST)
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flamertank, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/upp/sapper/survivor
+	name = "Upp Sapper (Survivor)"
+
+/datum/equipment_preset/upp/sapper/survivor/load_gear(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/nagant, WEAR_IN_BACK) //1
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/upp, WEAR_IN_BACK) //1.3
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/upp, WEAR_IN_BACK) //1.6
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/upp, WEAR_IN_BACK) //2
+	H.equip_to_slot_or_del(new /obj/item/device/motiondetector/hacked, WEAR_IN_BACK) //3
+	H.equip_to_slot_or_del(new /obj/item/defenses/handheld/sentry/mini, WEAR_IN_BACK) //4
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas, WEAR_FACE)
+	//head
+	var/headgear = prob(70) ? /obj/item/clothing/head/helmet/marine/veteran/UPP/V : /obj/item/clothing/head/uppcap/ushanka
+	H.equip_to_slot_or_del(new headgear, WEAR_HEAD)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	var/obj/item/clothing/accessory/storage/black_vest/W = new()
+	UPP.attach_accessory(H, W)
+	W.hold.storage_slots = 7
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/wrench, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/wirecutters, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/dual, WEAR_J_STORE)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/upp/heavybuck(H), WEAR_WAIST)
+	//limb
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/insulated(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
 
 //*****************************************************************************************************/
 
@@ -134,188 +411,112 @@
 
 /datum/equipment_preset/upp/synth/load_gear(mob/living/carbon/human/H)
 	load_name(H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71, WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/upp, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/synth, WEAR_L_STORE)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/upp/engineer
-	name = "UPP Engineer"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	skills = /datum/skills/upp/combat_engineer
-	assignment = JOB_UPP_ENGI
-	rank = JOB_UPP_ENGI
-	role_comm_title = "Sap"
-	paygrade = "UE2S"
-
-/datum/equipment_preset/upp/engineer/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/shovel/etool/folded(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
-
-	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 6)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/upp/engineer/cryo
-	name = "UPP Cryo Engineer"
-
-/datum/equipment_preset/upp/engineer/cryo/load_gear(mob/living/carbon/human/H)
-	return
-
-//*****************************************************************************************************/
-/datum/equipment_preset/upp/medic
-	name = "UPP Medic"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-	skills = /datum/skills/upp/combat_medic
-	assignment = JOB_UPP_MEDIC
-	rank = JOB_UPP_MEDIC
-	role_comm_title = "Med"
-	paygrade = "UE2M"
-
-/datum/equipment_preset/upp/medic/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
+	//back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/healthanalyzer, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/fire, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pill_bottle/tramadol/skillless, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
-
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator/compact, WEAR_IN_BACK) //1
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK) //2
+	H.equip_to_slot_or_del(new /obj/item/roller, WEAR_IN_BACK) //2.33
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //2.66
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK) //3.33
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
-
-	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 6)
+	//head
+	var/hat = pick(/obj/item/clothing/head/uppcap, /obj/item/clothing/head/uppcap/beret, /obj/item/clothing/head/uppcap/ushanka)
+	H.equip_to_slot_or_del(new hat, WEAR_HEAD)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/UPP = new()
+	var/obj/item/clothing/accessory/storage/black_vest/W = new()
+	UPP.attach_accessory(H, W)
+	W.hold.storage_slots = 7
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/tool/screwdriver, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/wrench, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/tool/wirecutters, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/stack/cable_coil, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/device/multitool, WEAR_IN_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/jacket, WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/tricordrazine, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/tricordrazine, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/skorpion/upp/medic, WEAR_J_STORE)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	//póckets
+	var/obj/item/storage/pouch/magazine/pistol/large/ppouch = new()
+	H.equip_to_slot_or_del(ppouch, WEAR_R_STORE)
+	for(var/i = 1 to ppouch.storage_slots)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/skorpion, WEAR_IN_R_STORE)
+	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/frt_kit/full, WEAR_L_STORE)
 
 //*****************************************************************************************************/
-/datum/equipment_preset/upp/medic/cryo
-	name = "UPP Cryo Medic"
 
-/datum/equipment_preset/upp/medic/cryo/load_gear(mob/living/carbon/human/H)
-	return
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/upp/specialist
-	name = "UPP Specialist"
+/datum/equipment_preset/upp/conscript
+	//meme role
+	name = "UPP Conscript"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/upp/specialist
-	assignment = JOB_UPP_SPECIALIST
-	rank = JOB_UPP_SPECIALIST
-	role_comm_title = "Szh"
-	paygrade = "UE3"
+	skills = /datum/skills/upp
+	assignment = JOB_UPP_CONSCRIPT
+	rank = JOB_UPP_CONSCRIPT
+	role_comm_title = "Cons"
+	paygrade = "UE0"
 
-/datum/equipment_preset/upp/specialist/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/conscript/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/UPP/heavy, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/standard, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	//back
+	var/maybebackpack = prob(20) ? pick(/obj/item/storage/backpack/lightpack/upp, /obj/item/storage/backpack/lightpack) : null
+	if(maybebackpack)
+		H.equip_to_slot_or_del(new maybebackpack, WEAR_BACK) //what in back?
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/upp, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
+	//head
+	var/maybehat = prob(66) ? pick(/obj/item/clothing/head/uppcap, /obj/item/clothing/head/uppcap/beret, /obj/item/clothing/head/ushanka, /obj/item/clothing/head/uppcap/ushanka) : null
+	if(maybehat)
+		H.equip_to_slot_or_del(new maybehat, WEAR_HEAD)
 
-	spawn_weapon(/obj/item/weapon/gun/minigun/upp, /obj/item/ammo_magazine/minigun, H, 0, 5)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
 
-//*****************************************************************************************************/
+	var/maybejacket = prob(50) ? pick(/obj/item/clothing/suit/storage/marine/faction/UPP/jacket, /obj/item/clothing/suit/storage/snow_suit/soviet) : null
+	if(maybejacket)
+		H.equip_to_slot_or_del(new maybejacket, WEAR_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/stack/medical/bruise_pack, WEAR_IN_JACKET)
+		H.equip_to_slot_or_del(new /obj/item/reagent_container/food/drinks/bottle/vodka, WEAR_IN_JACKET)
+		//limit of snowcoat
+		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_JACKET)
 
-/datum/equipment_preset/upp/specialist/cryo
-	name = "UPP Cryo Specialist"
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	var/maybegloves = prob(80) ? pick(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/veteran, /obj/item/clothing/gloves/combat) : null
+	if(maybegloves)
+		H.equip_to_slot_or_del(new maybegloves, WEAR_HANDS)
 
-/datum/equipment_preset/upp/specialist/cryo/load_gear(mob/living/carbon/human/H)
-	return
+	//gun
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/type71/carbine, WEAR_R_HAND)
 
-//*****************************************************************************************************/
+	//webbing or belt?
+	if(prob(30))
+		var/obj/item/clothing/accessory/storage/webbing/W = new()
+		UPP.attach_accessory(H, W)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_ACCESSORY)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/type71, WEAR_IN_ACCESSORY)
+	else if(prob(30))
+		H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/scarce, WEAR_WAIST)
+	//if you fail the rolls you must scavenge the ammo from your fallen brethren
 
-/datum/equipment_preset/upp/leader
-	name = "UPP Leader"
-	flags = EQUIPMENT_PRESET_EXTRA
+	if(prob(10))
+		//sometimes Ivan smiles upon the corps
+		H.set_species("Human Hero")
 
-	skills = /datum/skills/upp/SL
-	assignment = JOB_UPP_LEADER
-	rank = JOB_UPP_LEADER
-	role_comm_title = "MSzh"
-	paygrade = "UE4"
-
-/datum/equipment_preset/upp/leader/load_gear(mob/living/carbon/human/H)
-	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
-
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/standard, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full, WEAR_L_STORE)
-
-	spawn_weapon(/obj/item/weapon/gun/rifle/type71/flamer, /obj/item/ammo_magazine/rifle/type71, H, 0, 8)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/upp/leader/cryo
-	name = "UPP Cryo Leader"
-
-/datum/equipment_preset/upp/leader/cryo/load_gear(mob/living/carbon/human/H)
-	return
-
-//*****************************************************************************************************/
 
 /datum/equipment_preset/upp/commando
 	name = "UPP Commando"
@@ -331,14 +532,14 @@
 
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/commando, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/tranq, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9/tranq, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/upp, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
 
@@ -369,13 +570,13 @@
 
 /datum/equipment_preset/upp/commando/medic/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP/medic, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/commando, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/upp, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
 
@@ -390,7 +591,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
 
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/upp, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_L_STORE)
 
 	H.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_BACK)
@@ -412,17 +613,17 @@
 
 /datum/equipment_preset/upp/commando/leader/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP/commando, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/beret, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/scout_cloak/upp, WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/upp, WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles/upp, WEAR_EYES)
 
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/tranq, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9/tranq, WEAR_WAIST)
 
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus/upp, WEAR_IN_BACK)
@@ -430,7 +631,7 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/crowbar, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/upp, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_L_STORE)
 
 	H.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs, WEAR_IN_BACK)
@@ -454,16 +655,16 @@
 /datum/equipment_preset/upp/tank/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/UPP(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/korovin/standard(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/PK9(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/UPP(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/tool/weldpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(pick(new /obj/item/clothing/head/helmet/UPP, new /obj/item/clothing/head/uppcap/beret), WEAR_HEAD)
+	H.equip_to_slot_or_del(pick(new /obj/item/clothing/head/helmet/marine/veteran/UPP, new /obj/item/clothing/head/uppcap/beret), WEAR_HEAD)
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 3)
 
@@ -497,7 +698,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hgpiratecap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/hgpirate(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)

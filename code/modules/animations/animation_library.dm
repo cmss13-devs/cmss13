@@ -146,7 +146,7 @@ proc/animation_destruction_knock_fade(atom/A, speed = 7, x_n = rand(10,18), y_n 
 	return speed*2
 
 /*
-//Wip animation. Needs byond 511 parallel animation to look nice.
+//Work in progress animation. Needs byond 511 parallel animation to look nice.
 proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 	A.flags_atom |= NOINTERACT
 	A.mouse_opacity = 0

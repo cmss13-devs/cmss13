@@ -20,7 +20,7 @@
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
 	gun_category = GUN_CATEGORY_HANDGUN
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
-	movement_acc_penalty_mult = 3
+	movement_onehanded_acc_penalty_mult = 3
 	has_empty_icon = FALSE
 	has_open_icon = TRUE
 	current_mag = /obj/item/ammo_magazine/internal/revolver
@@ -40,7 +40,7 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-	movement_acc_penalty_mult = 3
+	movement_onehanded_acc_penalty_mult = 3
 
 /obj/item/weapon/gun/revolver/examine(mob/user)
 	..()
@@ -350,7 +350,7 @@
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
 
-/obj/item/weapon/gun/revolver/upp
+/obj/item/weapon/gun/revolver/nagant
 	name = "\improper N-Y 7.62mm revolver"
 	desc = "The Nagant-Yamasaki 7.62 is an effective killing machine designed by a consortion of shady Not-Americans. It is frequently found in the hands of criminals or mercenaries."
 	icon_state = "ny762"
@@ -359,22 +359,43 @@
 	fire_sound = 'sound/weapons/gun_pistol_medium.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp
 	force = 8
-	attachable_allowed = list(/obj/item/attachable/compensator)
+	attachable_allowed = list(
+						//Rail
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/quickfire,
+						/obj/item/attachable/scope,
+						/obj/item/attachable/scope/mini,
+						//Muzzle
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/compensator,
+						//Underbarrel
+						/obj/item/attachable/lasersight
+						)
 
-/obj/item/weapon/gun/revolver/upp/set_gun_attachment_offsets()
+/obj/item/weapon/gun/revolver/nagant/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
 
-/obj/item/weapon/gun/revolver/upp/set_gun_config_values()
+/obj/item/weapon/gun/revolver/nagant/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_8
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
 	recoil = 0
 	recoil_unwielded = 0
 
+/obj/item/weapon/gun/revolver/nagant/shrapnel
+	current_mag = /obj/item/ammo_magazine/internal/revolver/upp/shrapnel
+	random_spawn_chance = 100
+	random_under_chance = 100
+	random_spawn_under = list(
+							/obj/item/attachable/lasersight,
+							)
 
 //-------------------------------------------------------
 //357 REVOLVER //Based on the generic S&W 357.

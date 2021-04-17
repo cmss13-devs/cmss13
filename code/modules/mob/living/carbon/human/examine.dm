@@ -489,7 +489,7 @@
 		switch(hudtype)
 			if("security")
 				//only MPs can use the security HUD glasses's functionalities
-				if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP))
+				if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED))
 					return istype(H.glasses, /obj/item/clothing/glasses/hud/security) || istype(H.glasses, /obj/item/clothing/glasses/sunglasses/sechud)
 			if("medical")
 				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

@@ -145,22 +145,20 @@
 //-------------------------------------------------------
 //MAUSER MERC PISTOL //Inspired by the Makarov.
 
-/obj/item/ammo_magazine/pistol/c99t
-	name = "\improper PK-9 magazine (.22 tranq)"
-	default_ammo = /datum/ammo/bullet/pistol/tranq
-	caliber = ".22"
-	icon_state = "pk-9_tranq"
+
+
+/obj/item/ammo_magazine/pistol/c99
+	name = "\improper PK-9 magazine (.380)"
+	default_ammo = /datum/ammo/bullet/pistol
+	caliber = ".380"
+	icon_state = "pk-9"
 	max_rounds = 8
 	gun_type = /obj/item/weapon/gun/pistol/c99
 
-/obj/item/ammo_magazine/pistol/c99
-	name = "\improper PK-9 magazine (.22 hollowpoint)"
-	default_ammo = /datum/ammo/bullet/pistol/hollow
-	caliber = ".22"
-	icon_state = "pk-9"
-	max_rounds = 12
-	gun_type = /obj/item/weapon/gun/pistol/c99
-
+/obj/item/ammo_magazine/pistol/c99/tranq
+	name = "\improper PK-9 tranquilizer magazine (.380)"
+	default_ammo = /datum/ammo/bullet/pistol/tranq
+	icon_state = "pk-9_tranq"
 
 //-------------------------------------------------------
 //KT-42 //Inspired by the .44 Auto Mag pistol
@@ -250,3 +248,14 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 	icon_state = "smartpistol"
 	max_rounds = 15
 	gun_type = /obj/item/weapon/gun/pistol/smart
+
+//-------------------------------------------------------
+//SKORPION //Based on the same thing.
+
+/obj/item/ammo_magazine/pistol/skorpion
+	name = "\improper CZ-81 20-round magazine (.32ACP)"
+	desc = "A .32ACP caliber magazine for the CZ-81."
+	caliber = ".32ACP"
+	icon_state = "skorpion" //PLACEHOLDER
+	gun_type = /obj/item/weapon/gun/pistol/skorpion
+	max_rounds = 20

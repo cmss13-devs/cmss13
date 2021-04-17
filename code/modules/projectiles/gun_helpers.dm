@@ -414,6 +414,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		attachable_overlays["mag"] = null
 	if(current_mag && current_mag.bonus_overlay)
 		I = image(current_mag.icon,src,current_mag.bonus_overlay)
+		I.pixel_x += bonus_overlay_x
+		I.pixel_y += bonus_overlay_y
 		attachable_overlays["mag"] = I
 		overlays += I
 	else

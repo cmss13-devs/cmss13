@@ -130,6 +130,16 @@
 			target.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
 	step_away(M,P)
 
+/datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, var/max_range = 2)
+	if(!M || M == P.firer || P.distance_travelled > max_range)
+		return
+
+	if(M.mob_size >= MOB_SIZE_BIG)
+		return //too big to push
+
+	to_chat(M, SPAN_XENODANGER("You are pushed back by the sudden impact!"))
+	step_away(M,P)
+
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage
 	if(!target || !P) return
 	for(var/mob/living/carbon/M in orange(range,target))
@@ -223,27 +233,12 @@
 	name = "light pistol bullet"
 
 /datum/ammo/bullet/pistol/tranq
-	name = "tranq bullet"
+	name = "tranquilizer bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	stamina_damage = 300
-
-	var/knockout_period = 10 SECONDS
-
-	shrapnel_chance = 0
-
-/datum/ammo/bullet/pistol/tranq/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	if(isliving(M))
-		var/mob/living/L = M
-		if(L.stamina)
-			L.stamina.apply_rest_period(knockout_period)
+	stamina_damage = 30
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
 //Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.
-//Runners are critted in 7 shots by normal m4a3 ammo, 5 shots with hollowpoint (230hp)
-//Lurkers are critted in 12 shots by normal m4a3 ammo, 9 shots with hollowpoint (450hp)
-//Drones are critted in 10 shots by normal m4a3 ammo, 11 shots with hollowpoint (330hp)
-//Hollowpoint shots to kill reduced by 1 using m4a3 custom, 2 for drone.
 
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
@@ -520,6 +515,40 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
+
+/datum/ammo/bullet/revolver/nagant
+	name = "nagant revolver bullet"
+	damage = BULLET_DAMAGE_TIER_8
+
+
+/datum/ammo/bullet/revolver/nagant/shrapnel
+	name = "shrapnel shot"
+	debilitate = list(0,0,0,0,0,0,0,0)
+	icon_state = "shrapnelshot"
+	bonus_projectiles_type = /datum/ammo/bullet/revolver/nagant/shrapnel_bits
+
+	max_range = 6
+	damage = BULLET_DAMAGE_TIER_5 // + TIER_4 * 3
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	penetration	= ARMOR_PENETRATION_TIER_6
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	shrapnel_chance = 100
+	shrapnel_type = /obj/item/shard/shrapnel/nagant
+	//roughly 35 or so damage
+
+/datum/ammo/bullet/revolver/nagant/shrapnel/on_hit_mob(mob/M, obj/item/projectile/P)
+	pushback(M, P, 1)
+
+/datum/ammo/bullet/revolver/nagant/shrapnel_bits
+	name = "small shrapnel"
+	icon_state = "shrapnelshot_bit"
+
+	max_range = 6
+	damage = BULLET_DAMAGE_TIER_4
+	penetration	= ARMOR_PENETRATION_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_1
+	bonus_projectiles_amount = 0
+	shrapnel_type = /obj/item/shard/shrapnel/nagant/bits
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
@@ -816,6 +845,19 @@
 	damage = BULLET_DAMAGE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_8
 
+/datum/ammo/bullet/rifle/type71
+	name = "heavy rifle bullet"
+
+	damage = BULLET_DAMAGE_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_2
+
+/datum/ammo/bullet/rifle/type71/ap
+	name = "heavy armor-piercing rifle bullet"
+
+	damage = BULLET_DAMAGE_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_10
+
+
 // Basically AP but better. Focused at taking out armour temporarily
 /datum/ammo/bullet/rifle/ap/toxin
 	name = "toxic rifle bullet"
@@ -1091,6 +1133,121 @@
 /datum/ammo/bullet/shotgun/spread/masterkey
 	damage = BULLET_DAMAGE_TIER_4
 
+/*
+					8 GAUGE SHOTGUN AMMO
+*/
+
+/datum/ammo/bullet/shotgun/heavy/buckshot
+	name = "heavy buckshot shell"
+	icon_state = "buckshot"
+	handful_state = "heavy_buckshot"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/spread
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	accurate_range = 3
+	max_range = 3
+	damage = BULLET_DAMAGE_TIER_18
+	damage_falloff = DAMAGE_FALLOFF_TIER_8
+	penetration	= 0
+	shell_speed = AMMO_SPEED_TIER_2
+	damage_armor_punch = 0
+	pen_armor_punch = 0
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
+	knockback(M,P)
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/spread
+	name = "additional heavy buckshot"
+	max_range = 4
+	scatter = SCATTER_AMOUNT_TIER_1
+	bonus_projectiles_amount = 0
+
+//basically the same
+/datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
+	name = "dragon's breath shell"
+	handful_state = "heavy_dragonsbreath"
+	multiple_handful_name = TRUE
+	damage_type = BURN
+	damage = BULLET_DAMAGE_TIER_15
+	accurate_range = 3
+	max_range = 4
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
+	name = "additional dragon's breath"
+	bonus_projectiles_amount = 0
+	accurate_range = 4
+	max_range = 5 //make use of the ablaze property
+
+
+/datum/ammo/bullet/shotgun/heavy/slug
+	name = "heavy shotgun slug"
+	handful_state = "heavy_slug"
+	impact_name = "slug"
+	impact_limbs = BODY_FLAG_HEAD
+
+	accurate_range = 7
+	max_range = 8
+	damage = BULLET_DAMAGE_TIER_20 //ouch.
+	penetration = ARMOR_PENETRATION_TIER_6
+	damage_armor_punch = 2
+
+/datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/item/projectile/P)
+	heavy_knockback(M, P, 7)
+
+/datum/ammo/bullet/shotgun/heavy/beanbag
+	name = "heavy beanbag slug"
+	icon_state = "beanbag"
+	handful_state = "heavy_beanbag"
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+
+	max_range = 7
+	shrapnel_chance = 0
+	damage = BULLET_DAMAGE_OFF
+	stamina_damage = BULLET_DAMAGE_TIER_20
+	accuracy = HIT_ACCURACY_TIER_2
+	shell_speed = AMMO_SPEED_TIER_2
+
+/datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(!M || M == P.firer)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		shake_camera(H, 2, 1)
+
+/datum/ammo/bullet/shotgun/heavy/flechette
+	name = "heavy flechette shell"
+	icon_state = "flechette"
+	handful_state = "heavy_flechette"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/flechette_spread
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_3
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_3
+	max_range = 12
+	damage = BULLET_DAMAGE_TIER_10
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	penetration	= ARMOR_PENETRATION_TIER_10
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
+
+/datum/ammo/bullet/shotgun/heavy/flechette_spread
+	name = "additional heavy flechette"
+	icon_state = "flechette"
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	max_range = 12
+	damage = BULLET_DAMAGE_TIER_10
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	penetration	= ARMOR_PENETRATION_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_4
 
 /*
 //================================================

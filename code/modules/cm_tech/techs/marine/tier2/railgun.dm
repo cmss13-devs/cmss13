@@ -83,7 +83,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 
 	var/max_ammo = 10
 	var/ammo = 10
-	var/ammo_recharge_time = 15 SECONDS
+	var/ammo_recharge_time = 30 SECONDS
 
 	var/fire_cooldown = 1.5 SECONDS
 	var/next_fire = 0

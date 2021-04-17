@@ -578,17 +578,19 @@
 /obj/item/clothing/gloves/yautja/proc/activate_suicide_internal(var/forced = FALSE)
 	if(!usr) return
 	var/mob/living/carbon/human/M = usr
-	if(!istype(M)) return
 	if(cloaked)
 		to_chat(M, SPAN_WARNING("Not while you're cloaked. It might disrupt the sequence."))
 		return
 	if(!M.stat == CONSCIOUS)
 		to_chat(M, SPAN_WARNING("Not while you're unconcious..."))
 		return
+	if(M.health < HEALTH_THRESHOLD_CRIT)
+		to_chat(M, SPAN_WARNING("As you fall into unconsciousness you fail to activate your self-destruct device before you collapse."))
+		return
 	if(M.stat == DEAD)
 		to_chat(M, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(!forced && !isYautja(usr))
+	if(!forced && !isSpeciesYautja(M))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))

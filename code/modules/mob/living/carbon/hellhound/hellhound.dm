@@ -66,18 +66,6 @@
 		else
 			visible_message("[src] sniffs at [H].", "You sniff at [H].")
 		return
-	else if(a_intent == INTENT_DISARM)
-		if(isYautja(H))
-			visible_message("[src] shoves [H].", "You shove [H].")
-			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-		else
-			if (!(H.knocked_out ))
-				H.KnockOut(3)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-				for(var/mob/O in viewers(src, null))
-					if ((O.client && !( O.blinded )))
-						O.show_message(SPAN_DANGER("<B>[src] knocks down [H]!</B>"), 1)
-		return
 	else if(a_intent == INTENT_GRAB)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 		for(var/mob/O in viewers(src, null))
@@ -101,15 +89,6 @@
 	if(a_intent == INTENT_HELP)
 		visible_message("[src] growls at [X].", "You growl at [X].")
 		return
-	else if(a_intent == INTENT_DISARM)
-		if (!(X.knocked_out ) && X.mob_size < MOB_SIZE_BIG)
-			if(prob(40))
-				X.KnockOut(4)
-				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-				visible_message(SPAN_DANGER("[src] knocks down [X]!"),SPAN_DANGER("You knock down [X]!"))
-				return
-		visible_message(SPAN_DANGER("[src] shoves at [X]!"),SPAN_DANGER("You shove at [X]!"))
-		return
 	else if(a_intent == INTENT_GRAB)
 		playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
 		visible_message(SPAN_DANGER("<B>[src] grabs [X] in their jaws!</B>"),SPAN_DANGER("<B>You grab [X] in your jaws!</b>"))
@@ -129,8 +108,6 @@
 		visible_message("[src] growls at [H].", "You growl at [H].")
 		return
 	else if(a_intent == INTENT_DISARM)
-		if(istype(H,/mob/living/carbon/hellhound))
-			return
 		visible_message(SPAN_DANGER("[src] shoves at [H]!"),SPAN_DANGER("You shove at [H]!"))
 		return
 	else if(a_intent == INTENT_GRAB)

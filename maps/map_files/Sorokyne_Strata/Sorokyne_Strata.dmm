@@ -69,7 +69,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "aap" = (
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/floor/strata{
 	dir = 10;
@@ -1135,7 +1135,7 @@
 "adm" = (
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs/core,
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/interior/outpost/gen/bball/nest)
 "adn" = (
@@ -6008,7 +6008,7 @@
 "aqz" = (
 /obj/structure/surface/rack,
 /obj/item/folding_barricade,
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -6407,7 +6407,7 @@
 	dir = 8
 	},
 /obj/item/folding_barricade,
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -25394,7 +25394,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/strata/ag/exterior/marsh)
 "bvt" = (
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
@@ -25911,7 +25911,7 @@
 /area/strata/ag/exterior/nearlz2)
 "bxr" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -28911,7 +28911,7 @@
 	},
 /area/strata/ag/interior/research_decks/security)
 "bRT" = (
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	icon_state = "floor2"
 	},
@@ -31205,7 +31205,7 @@
 /obj/effect/landmark/wo_supplies/storage/belts/medical,
 /obj/item/dogtag,
 /obj/item/clothing/suit/armor/riot,
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "white_cyan2"
@@ -31525,7 +31525,7 @@
 	},
 /area/strata/ag/interior/outpost/canteen/bar)
 "cjj" = (
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/structure/pipes/standard/simple/hidden/cyan,
 /turf/open/floor/strata{
 	dir = 4;
@@ -42428,7 +42428,7 @@
 /turf/open/floor/strata,
 /area/strata/ag/exterior/research_decks/south)
 "qYZ" = (
-/obj/item/weapon/gun/rifle/type71/flamer,
+/obj/item/weapon/gun/rifle/type71/carbine,
 /obj/effect/decal/cleanable/blood/gibs/core,
 /turf/open/ice,
 /area/strata/ag/exterior/paths/southresearch)

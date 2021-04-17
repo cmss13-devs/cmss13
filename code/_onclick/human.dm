@@ -100,7 +100,7 @@
 	var/signal_flags = SEND_SIGNAL(user, COMSIG_HUMAN_CARRY, carrydata)
 	carry_delay = carrydata["carry_delay"]
 
-	if(!skillcheck(src, SKILL_POLICE, SKILL_POLICE_MP) && !(signal_flags & COMPONENT_CARRY_ALLOW))
+	if(!skillcheck(src, SKILL_POLICE, SKILL_POLICE_SKILLED) && !(signal_flags & COMPONENT_CARRY_ALLOW))
 		to_chat(src, SPAN_WARNING("You aren't trained to carry people!"))
 		return . = ..()
 

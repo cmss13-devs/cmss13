@@ -3119,19 +3119,17 @@
 	name = "\improper UPP ration"
 	desc = "A sealed, freeze-dried, compressed package containing a single item of food. Commonplace in the UPP military, especially those units stationed on far-flung colonies. This one is stamped for consumption by the UPP's 'Smoldering Sons' battalion and was packaged in 2179."
 	icon_state = "upp_ration"
-	bitesize = 1
-	package = 1
+	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/upp/Initialize()
 	. = ..()
-	reagents.add_reagent("nutriment", 2)
-	reagents.add_reagent("sodiumchloride", 3)
+	reagents.add_reagent("nutriment", 8)
 
-/obj/item/reagent_container/food/snacks/upp/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/upp/attack_self(mob/user)
 	if(package)
-		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
+		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, TRUE)
 		to_chat(user, SPAN_NOTICE("You tear off the ration seal and pull out the contents!"))
-		package = 0
+		package = FALSE
 		var/variation = rand(1,2)
 		desc = "An extremely dried item of food, with little flavoring or coloration. Looks to be prepped for long term storage, but will expire without the packaging. Best to eat it now to avoid waste. At least things are equal."
 		switch(variation)

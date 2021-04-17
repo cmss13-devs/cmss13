@@ -608,6 +608,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		var/obj/item/weapon/gun/G = C
 		for(var/slot in G.attachments)
 			if(istype(G.attachments[slot], /obj/item/attachable/bayonet))
+				var/obj/item/attachable/bayonet/a_bayonet = G.attachments[slot]
 				if(arePowerSystemsOn())
 					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
 				else if(locked)
@@ -617,12 +618,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				else if(!operating)
 					spawn(0)
 						if(density)
-							to_chat(user, SPAN_NOTICE("You start forcing the airlock open with [G.attachments[slot]]."))
-							if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+							to_chat(user, SPAN_NOTICE("You start forcing the airlock open with [a_bayonet]."))
+							if(do_after(user, a_bayonet.pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 								open(1)
 						else
-							to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with [G.attachments[slot]]."))
-							if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+							to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with [a_bayonet]."))
+							if(do_after(user, a_bayonet.pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 								close(1)
 
 	else if(C.pry_capable)

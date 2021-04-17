@@ -12,16 +12,16 @@
 
 		JOB_UPP = list(
 			list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-			list("Boots", 0, /obj/item/clothing/shoes/marine/upp_knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+			list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 			list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 			list("UM5 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 			list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-			list("Headset", 0, /obj/item/device/radio/headset/distress/bears, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+			list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 			list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 			list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 			list("HELMET", 0, null, null, null),
-			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 			list("BELT (CHOOSE 1)", 0, null, null, null),
 			list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -53,18 +53,18 @@
 
 		JOB_UPP_ENGI = list(
 			list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-			list("Boots", 0, /obj/item/clothing/shoes/marine/upp_knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+			list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 			list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 			list("UM5 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 			list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-			list("Headset", 0, /obj/item/device/radio/headset/distress/bears, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+			list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 			list("Welding Goggles", 0, /obj/item/clothing/glasses/welding, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 			list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 			list("Welderpack", 0, /obj/item/storage/backpack/marine/engineerpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 			list("HELMET (CHOOSE 1)", 0, null, null, null),
 			list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 			list("BELT (Choose 1)", 0, null, null, null),
 			list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -90,18 +90,18 @@
 
 		JOB_UPP_MEDIC = list(
 			list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-			list("Boots", 0, /obj/item/clothing/shoes/marine/upp_knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+			list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 			list("Medic Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP/medic, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 			list("UM5 Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 			list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-			list("Headset", 0, /obj/item/device/radio/headset/distress/bears, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+			list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 			list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 			list("Combat Pack", 0, /obj/item/storage/backpack/lightpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 			list("HealthMate HUD", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 
 			list("HELMET (CHOOSE 1)", 0, null, null, null),
 			list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 			list("BELT", 0, null, null, null),
 			list("Type 41 Lifesaver Bag", 0, /obj/item/storage/belt/medical/lifesaver/upp/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),
@@ -134,16 +134,16 @@
 
 		JOB_UPP_SPECIALIST = list(
 			list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-			list("Boots", 0, /obj/item/clothing/shoes/marine/upp_knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+			list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 			list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 			list("UH7 Heavy Plated Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 			list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-			list("Headset", 0, /obj/item/device/radio/headset/distress/bears, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+			list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 			list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 			list("Combat Pack", 0, /obj/item/storage/backpack/lightpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 			list("HELMET", 0, null, null, null),
-			list("UM7 Helmet", 0, /obj/item/clothing/head/helmet/UPP/heavy, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+			list("UM7 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 			list("BELT (CHOOSE 1)", 0, null, null, null),
 			list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
@@ -175,17 +175,17 @@
 
 		JOB_UPP_LEADER = list(
 			list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-			list("Boots", 0, /obj/item/clothing/shoes/marine/upp_knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+			list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 			list("Fatigues", 0, /obj/item/clothing/under/marine/veteran/UPP, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 			list("UH7 Heavy Plated Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
 			list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-			list("Headset", 0, /obj/item/device/radio/headset/distress/bears, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+			list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 			list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 			list("Combat Pack", 0, /obj/item/storage/backpack/lightpack/upp, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 
 			list("HELMET (CHOOSE 1)", 0, null, null, null),
 			list("Armored Beret", 0, /obj/item/clothing/head/uppcap/beret, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 			list("BELT (CHOOSE 1)", 0, null, null, null),
 			list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -221,10 +221,10 @@
 
 		JOB_UPP_COMMANDO = list(
 			list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-			list("Boots", 0, /obj/item/clothing/shoes/marine/upp_knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+			list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 			list("Fatigues", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 			list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-			list("Headset", 0, /obj/item/device/radio/headset/distress/bears, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+			list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 			list("Night Vision Goggles", 0, /obj/item/clothing/glasses/night/m42_night_goggles/upp, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 			list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 			list("UM5CU Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -233,11 +233,11 @@
 
 			list("HELMET (CHOOSE 1)", 0, null, null, null),
 			list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 			list("BELT (CHOOSE 1)", 0, null, null, null),
 			list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-			list("Type 41 Pistol Holster Rig", 0, /obj/item/storage/belt/gun/korovin/tranq, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+			list("Type 41 Pistol Holster Rig", 0, /obj/item/storage/belt/gun/type47/PK9/tranq, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 			list("POUCHES (CHOOSE 2)", 0, null, null, null),
 			list("Auto-Injector Pouch", 0, /obj/item/storage/pouch/autoinjector, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
@@ -267,10 +267,10 @@
 
 		JOB_UPP_COMMANDO_LEADER = list(
 			list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-			list("Boots", 0, /obj/item/clothing/shoes/marine/upp_knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+			list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 			list("Fatigues", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 			list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-			list("Headset", 0, /obj/item/device/radio/headset/distress/bears, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+			list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 			list("Night Vision Goggles", 0, /obj/item/clothing/glasses/night/m42_night_goggles/upp, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 			list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
 			list("UM5CU Personal Armor", 0, /obj/item/clothing/suit/storage/marine/faction/UPP/commando, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -279,11 +279,11 @@
 
 			list("HELMET (CHOOSE 1)", 0, null, null, null),
 			list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 			list("BELT (CHOOSE 1)", 0, null, null, null),
 			list("Type 41 Ammo Load Rig", 0, /obj/item/storage/belt/marine/upp, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-			list("Type 41 Pistol Holster Rig", 0, /obj/item/storage/belt/gun/korovin/tranq, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+			list("Type 41 Pistol Holster Rig", 0, /obj/item/storage/belt/gun/type47/PK9/tranq, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 
 			list("POUCHES (CHOOSE 2)", 0, null, null, null),
 			list("Auto-Injector Pouch", 0, /obj/item/storage/pouch/autoinjector, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
@@ -313,10 +313,10 @@
 
 		JOB_UPP_COMMANDO_MEDIC = list(
 			list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-			list("Boots", 0, /obj/item/clothing/shoes/marine/upp_knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+			list("Boots", 0, /obj/item/clothing/shoes/marine/upp, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 			list("Fatigues Medic", 0, /obj/item/clothing/under/marine/veteran/UPP/medic, MARINE_CAN_BUY_UNIFORM, VENDOR_ITEM_MANDATORY),
 			list("Gloves", 0, /obj/item/clothing/gloves/marine/veteran/PMC, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
-			list("Headset", 0, /obj/item/device/radio/headset/distress/bears, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
+			list("Headset", 0, /obj/item/device/radio/headset/distress/UPP, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 			list("HealthMate HUD", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 			list("Night Vision Goggles", 0, /obj/item/clothing/glasses/night/m42_night_goggles/upp, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_MANDATORY),
 			list("Ration", 0, /obj/item/reagent_container/food/snacks/upp, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
@@ -326,7 +326,7 @@
 
 			list("HELMET (CHOOSE 1)", 0, null, null, null),
 			list("Armored Cap", 0, /obj/item/clothing/head/uppcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
-			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+			list("UM4 Helmet", 0, /obj/item/clothing/head/helmet/marine/veteran/UPP, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 
 			list("BELT", 0, null, null, null),
 			list("Type 41 Lifesaver Bag", 0, /obj/item/storage/belt/medical/lifesaver/upp/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_MANDATORY),

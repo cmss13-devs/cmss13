@@ -212,18 +212,23 @@
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
 	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/stack/medical/splint(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
 	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
 	new /obj/item/storage/pill_bottle/dexalin(src)
 	new /obj/item/storage/pill_bottle/antitox(src)
-	new /obj/item/storage/pill_bottle/kelotane(src)
 	new /obj/item/storage/pill_bottle/inaprovaline(src)
 	new /obj/item/storage/pill_bottle/tramadol(src)
 	new /obj/item/storage/pill_bottle/peridaxon(src)
 	new /obj/item/storage/pill_bottle/quickclot(src)
-	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/belt/security
 	name = "\improper M276 pattern security rig"
@@ -347,6 +352,18 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/type71(src)
 
+/obj/item/storage/belt/marine/upp/scarce/fill_preset_inventory()
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
+
+/obj/item/storage/belt/marine/upp/sapper/fill_preset_inventory()
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+	new /obj/item/ammo_magazine/rifle/type71/ap(src)
+
 //Crazy Ivan's belt reskin
 /obj/item/storage/belt/marine/upp/ivan
 	name = "The Rack"
@@ -413,6 +430,28 @@
 	for(var/i = 1 to storage_slots)
 		var/obj/item/ammo_magazine/handful/H = new(src)
 		H.generate_handful(/datum/ammo/bullet/shotgun/slug, "12g", 5, 5, /obj/item/weapon/gun/shotgun)
+
+/obj/item/storage/belt/shotgun/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_ammo_to(M, user, M.transfer_handful_amount)
+	else
+		return ..()
+
+/obj/item/storage/belt/shotgun/upp
+	name = "\improper Type 42 pattern shotgun shell loading rig"
+	desc = "An ammunition belt designed to hold shotgun shells, primarily for the Type 23 shotgun."
+	icon_state = "shotgunbelt" //placeholder
+	item_state = "marinebelt"
+	storage_slots = 10
+
+/obj/item/storage/belt/shotgun/upp/heavybuck/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot(src)
+
+/obj/item/storage/belt/shotgun/upp/heavyslug/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
 
 /obj/item/storage/belt/shotgun/full/quackers
 	icon_state = "inflatable"
@@ -860,27 +899,43 @@
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
 	new_gun.on_enter_storage(src)
 
-/obj/item/storage/belt/gun/korovin
-	name = "\improper Type 41 pistol holster rig"
-	desc = "A modification of the standard UPP pouch rig to carry a single Korovin PK-9 pistol. It also contains side pouches that can store .22 magazines, either hollowpoints or tranquilizers."
+/obj/item/storage/belt/gun/type47
+	name = "\improper Type 47 pistol holster rig"
+	desc = "This UPP-designed sidearm rig can very snugly and securely fit either a Nagant-Yamasaki revolver or a Korovin PK-9, and both their magazines or speedloaders. However, it lacks versatility in stored weaponry."
 	icon_state = "korovin_holster"
 	item_state = "korovin_holster"
+	storage_slots = 7
 	can_hold = list(
 		/obj/item/weapon/gun/pistol/c99,
 		/obj/item/ammo_magazine/pistol/c99,
-		/obj/item/ammo_magazine/pistol/c99t
+		/obj/item/ammo_magazine/pistol/c99/tranq,
+		/obj/item/weapon/gun/revolver/nagant,
+		/obj/item/ammo_magazine/revolver/upp,
+		/obj/item/ammo_magazine/revolver/upp/shrapnel
 	)
 
-/obj/item/storage/belt/gun/korovin/standard/fill_preset_inventory()
+/obj/item/storage/belt/gun/type47/PK9/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/c99/upp(src)
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/pistol/c99(src)
 	new_gun.on_enter_storage(src)
 
-/obj/item/storage/belt/gun/korovin/tranq/fill_preset_inventory()
+/obj/item/storage/belt/gun/type47/PK9/tranq/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/c99/upp/tranq(src)
 	for(var/i = 1 to storage_slots - 1)
-		new /obj/item/ammo_magazine/pistol/c99t(src)
+		new /obj/item/ammo_magazine/pistol/c99/tranq(src)
+	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/type47/NY/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/nagant(src)
+	for(var/total_storage_slots in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/upp(src)
+	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/type47/NY/shrapnel/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/nagant/shrapnel(src)
+	for(var/total_storage_slots in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/upp/shrapnel(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/smartpistol

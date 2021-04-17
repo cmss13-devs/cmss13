@@ -866,10 +866,10 @@
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
 		if(species.name != "Yautja" && !(species.flags & IS_SYNTHETIC)) apply_effects(arglist(P.ammo.debilitate))
 
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result, ammo_flags) & COMPONENT_CANCEL_BULLET_ACT)
-		return
-
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
+
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
+		return
 
 	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
 		. = TRUE

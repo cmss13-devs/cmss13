@@ -134,7 +134,7 @@
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/victim = M
 			var/trained_human = FALSE
-			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_MP))
+			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				trained_human = TRUE
 
 			if(trained_human)

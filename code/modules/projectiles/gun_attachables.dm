@@ -57,14 +57,14 @@ Defined in conflicts.dm of the #defines folder.
 	var/recoil_mod 		= 0 //If positive, adds recoil, if negative, lowers it. Recoil can't go below 0.
 	var/recoil_unwielded_mod = 0 //same as above but for onehanded firing.
 	var/burst_scatter_mod = 0 //Modifier to scatter from wielded burst fire, works off a multiplier.
-	var/silence_mod 	= 0 //Adds silenced to weapon
+	var/suppress_firesound 	= FALSE //Adds silenced to weapon
 	var/light_mod 		= 0 //Adds an x-brightness flashlight to the weapon, which can be toggled on and off.
 	var/delay_mod 		= 0 //Changes firing delay. Cannot go below 0.
 	var/burst_mod 		= 0 //Changes burst rate. 1 == 0.
 	var/size_mod 		= 0 //Increases the weight class.
 	var/aim_speed_mod	= 0 //Changes the aiming speed slowdown of the wearer by this value.
 	var/wield_delay_mod	= 0 //How long ADS takes (time before firing)
-	var/movement_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
+	var/movement_onehanded_acc_penalty_mod = 0 //Modifies accuracy/scatter penalty when firing onehanded while moving.
 
 	var/activation_sound = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 	var/deactivation_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'
@@ -128,10 +128,11 @@ Defined in conflicts.dm of the #defines folder.
 		G.flags_gun_features &= ~GUN_BURST_ON //Remove burst if they can no longer use it.
 	G.update_force_list() //This updates the gun to use proper force verbs.
 
-	if(silence_mod)
+	if(suppress_firesound)
 		G.flags_gun_features |= GUN_SILENCED
 		G.muzzle_flash = null
-		G.fire_sound = "gun_silenced"
+		if(!(G.flags_gun_features & GUN_INTERNAL_SILENCED))
+			G.fire_sound = "gun_silenced"
 
 	if(attachment_action_type)
 		var/given_action = FALSE
@@ -218,7 +219,7 @@ Defined in conflicts.dm of the #defines folder.
 	desc = "A small tube with exhaust ports to expel noise and gas.\nDoes not completely silence a weapon, but does make it much quieter and a little more accurate and stable at the cost of slightly reduced damage."
 	icon_state = "suppressor"
 	slot = "muzzle"
-	silence_mod = 1
+	suppress_firesound = TRUE
 	pixel_shift_y = 16
 	attach_icon = "suppressor_a"
 
@@ -271,6 +272,7 @@ Defined in conflicts.dm of the #defines folder.
 	slot = "muzzle"
 	pixel_shift_x = 14 //Below the muzzle.
 	pixel_shift_y = 18
+	var/pry_delay = 3 SECONDS
 
 /obj/item/attachable/bayonet/New()
 	..()
@@ -290,13 +292,13 @@ Defined in conflicts.dm of the #defines folder.
 
 /obj/item/attachable/bayonet/upp
 	name = "\improper Type 80 bayonet"
+	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
 	icon_state = "upp_bayonet"
 	item_state = "combat_knife"
-	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
 	throw_speed = SPEED_INSTANT
 	throw_range = 7
-	attack_speed = 9
+	pry_delay = 1 SECONDS
 
 /obj/item/attachable/extended_barrel
 	name = "extended barrel"
@@ -328,7 +330,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
 
 /obj/item/attachable/heavy_barrel/Attach(obj/item/weapon/gun/G)
-	if(istype(G, /obj/item/weapon/gun/shotgun))
+	if(istype(G, /obj/item/weapon/gun/shotgun/pump))
 		damage_mod = BULLET_DAMAGE_MULT_TIER_1
 	else
 		damage_mod = BULLET_DAMAGE_MULT_TIER_6
@@ -474,7 +476,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
-	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 
 /obj/item/attachable/reflex
 	name = "S6 reflex sight"
@@ -489,7 +491,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	burst_scatter_mod = -1
-	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 
 
 /obj/item/attachable/flashlight
@@ -626,7 +628,7 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	delay_mod = FIRE_DELAY_TIER_10
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_1
-	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
+	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	accuracy_unwielded_mod = 0
 
 	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_7 + HIT_ACCURACY_MULT_TIER_1 //to compensate initial debuff
@@ -722,7 +724,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/scope/mini_iff/New()
 	..()
 	damage_mod = -BULLET_DAMAGE_MULT_TIER_4
-	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
+	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_6
 	accuracy_unwielded_mod = 0
 
 	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_1
@@ -784,7 +786,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
@@ -821,7 +823,26 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
+	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
+	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
+
+/obj/item/attachable/stock/type23
+	name = "\improper Type 23 standard stock"
+	desc = "A stamped metal stock with internal recoil springs designed to absorb the ridiculous kick the 8 Gauge shotgun causes when fired. Not recommended to remove."
+	icon_state = "type23_stock"
+	pixel_shift_x = 15
+	pixel_shift_y = 15
+
+/obj/item/attachable/stock/type23/New()
+	..()
+	//2h
+	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
+	recoil_mod = -RECOIL_AMOUNT_TIER_4
+	scatter_mod = -SCATTER_AMOUNT_TIER_8
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	//1h
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
@@ -840,7 +861,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	delay_mod = FIRE_DELAY_TIER_7
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1
 	recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_10
@@ -859,7 +880,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
@@ -883,7 +904,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_4
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
@@ -919,7 +940,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_6
 	recoil_mod = -RECOIL_AMOUNT_TIER_4
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
@@ -951,7 +972,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -RECOIL_AMOUNT_TIER_3
 	scatter_mod = -SCATTER_AMOUNT_TIER_6
 	delay_mod = 0
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	aim_speed_mod = CONFIG_GET(number/slowdown_low)
 
 
@@ -980,7 +1001,7 @@ Defined in conflicts.dm of the #defines folder.
 	scatter_mod = -SCATTER_AMOUNT_TIER_8
 	wield_delay_mod = WIELD_DELAY_FAST
 	delay_mod = 0
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	//it makes stuff much worse when one handed
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
@@ -995,7 +1016,7 @@ Defined in conflicts.dm of the #defines folder.
 		size_mod = 1
 		aim_speed_mod = CONFIG_GET(number/slowdown_low)
 		wield_delay_mod = WIELD_DELAY_FAST
-		movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_4
 		icon_state = "smgstockc"
@@ -1007,7 +1028,7 @@ Defined in conflicts.dm of the #defines folder.
 		size_mod = 0
 		aim_speed_mod = 0
 		wield_delay_mod = 0
-		movement_acc_penalty_mod = 0
+		movement_onehanded_acc_penalty_mod = 0
 		accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 		recoil_unwielded_mod = RECOIL_AMOUNT_TIER_5
 		icon_state = "smgstockcc"
@@ -1074,7 +1095,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_mod = RECOIL_AMOUNT_TIER_2 //Hurts pretty bad if it's wielded.
 		accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_4
 		recoil_unwielded_mod = -RECOIL_AMOUNT_TIER_4
-		movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4 //Does well if it isn't.
+		movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4 //Does well if it isn't.
 		icon_state = "smg_brace_on"
 		attach_icon = "smg_brace_a_on"
 	else
@@ -1084,7 +1105,7 @@ Defined in conflicts.dm of the #defines folder.
 		recoil_mod = 0
 		accuracy_unwielded_mod = 0
 		recoil_unwielded_mod = 0
-		movement_acc_penalty_mod = 0 //Does pretty much nothing if it's not activated.
+		movement_onehanded_acc_penalty_mod = 0 //Does pretty much nothing if it's not activated.
 		icon_state = "smg_brace"
 		attach_icon = "smg_brace_a"
 
@@ -1355,6 +1376,8 @@ Defined in conflicts.dm of the #defines folder.
 	fire_sound = 'sound/weapons/gun_flamethrower3.ogg'
 	activation_sound = 'sound/weapons/handling/gun_underbarrel_flamer_activate.ogg'
 	flags_attach_features = ATTACH_REMOVABLE|ATTACH_ACTIVATION|ATTACH_RELOADABLE|ATTACH_WEAPON
+	var/burn_level = BURN_LEVEL_TIER_1
+	var/burn_duration = BURN_TIME_TIER_1
 
 /obj/item/attachable/attached_gun/flamer/New()
 	..()
@@ -1431,11 +1454,18 @@ Defined in conflicts.dm of the #defines folder.
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
 		var/datum/reagent/napalm/ut/R = new()
 
-		R.intensityfire = BURN_LEVEL_TIER_1
-		R.durationfire = BURN_TIME_TIER_1
+		R.intensityfire = burn_level
+		R.durationfire = burn_duration
 
 		new/obj/flamer_fire(T, initial(name), user, R)
 
+/obj/item/attachable/attached_gun/flamer/integrated
+	name = "integrated flamethrower"
+	current_rounds = 50
+	max_rounds = 50
+	max_range = 6
+	burn_level = BURN_LEVEL_TIER_5
+	burn_duration = BURN_TIME_TIER_2
 
 /obj/item/attachable/attached_gun/shotgun
 	name = "\improper U7 underbarrel shotgun"
@@ -1537,7 +1567,7 @@ Defined in conflicts.dm of the #defines folder.
 	recoil_mod = -RECOIL_AMOUNT_TIER_5
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	burst_scatter_mod = -2
-	movement_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_3
 	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_10
 
@@ -1574,7 +1604,7 @@ Defined in conflicts.dm of the #defines folder.
 	delay_mod = FIRE_DELAY_TIER_9
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	burst_scatter_mod = -2
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_3
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_3
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_6
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_3
 
@@ -1598,7 +1628,7 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/lasersight/New()
 	..()
 	accuracy_mod = HIT_ACCURACY_MULT_TIER_1
-	movement_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
+	movement_onehanded_acc_penalty_mod = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_5
 	scatter_mod = -SCATTER_AMOUNT_TIER_10
 	scatter_unwielded_mod = -SCATTER_AMOUNT_TIER_9
 	accuracy_unwielded_mod = HIT_ACCURACY_MULT_TIER_1

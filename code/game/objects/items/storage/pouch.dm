@@ -189,6 +189,27 @@
 	new /obj/item/storage/pill_bottle/packet/tricordrazine(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 
+/obj/item/storage/pouch/firstaid/ert
+	desc = "It can contain autoinjectors, ointments, and bandages. This one has some extra stuff."
+	icon_state = "firstaid"
+	storage_slots = 5
+	can_hold = list(
+		/obj/item/stack/medical/ointment,
+		/obj/item/reagent_container/hypospray/autoinjector/skillless,
+		/obj/item/storage/pill_bottle/packet/tramadol,
+		/obj/item/storage/pill_bottle/packet/tricordrazine,
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/splint,
+		/obj/item/reagent_container/hypospray/autoinjector/emergency
+	)
+
+/obj/item/storage/pouch/firstaid/ert/fill_preset_inventory()
+	new /obj/item/stack/medical/ointment(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/skillless(src)
+	new /obj/item/stack/medical/bruise_pack(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
+
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"
 	desc = "You could carry a pistol in this; more importantly, you could draw it quickly. Useful for emergencies."
@@ -318,10 +339,6 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/rifle/type71(src)
 
-/obj/item/storage/pouch/magazine/upp_smg/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
-		new /obj/item/ammo_magazine/smg/skorpion(src)
-
 /obj/item/storage/pouch/magazine/large/pmc_m39/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39/ap(src)
@@ -345,6 +362,37 @@
 /obj/item/storage/pouch/magazine/large/pmc_sg/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smartgun/dirty(src)
+
+/obj/item/storage/pouch/shotgun
+	name = "shotgun shell pouch"
+	desc = "It can contain handfuls of shells, or bullets if you choose to for some reason."
+	icon_state = "large_shotshells"
+	max_w_class = SIZE_SMALL
+	storage_slots = 5
+	bypass_w_limit = list()
+	can_hold = list(
+		/obj/item/ammo_magazine/handful
+	)
+
+/obj/item/storage/pouch/shotgun/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/ammo_magazine/shotgun))
+		var/obj/item/ammo_magazine/shotgun/M = W
+		dump_ammo_to(M, user, M.transfer_handful_amount)
+	else
+		return ..()
+
+/obj/item/storage/pouch/shotgun/heavybuck/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot(src)
+
+/obj/item/storage/pouch/shotgun/heavyslug/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+
+
+/obj/item/storage/pouch/shotgun/heavyflechette/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"
@@ -371,6 +419,10 @@
 		new /obj/item/explosive/grenade/HE(src)
 
 /obj/item/storage/pouch/explosive/upp/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/explosive/grenade/HE/upp(src)
+
+/obj/item/storage/pouch/explosive/C4/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/explosive/plastic(src)
 

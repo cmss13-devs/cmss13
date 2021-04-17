@@ -375,7 +375,7 @@ CULT
 		return
 	var/mob/living/carbon/human/Hu = owner
 
-	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP)))
+	if(H.skills && (skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT) || skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED)))
 		to_chat(Hu, SPAN_WARNING("This mind is too strong to target with your abilities."))
 		return
 

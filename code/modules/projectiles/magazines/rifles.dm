@@ -174,20 +174,16 @@
 	desc = "A 5.45x39mm high-capacity casket magazine for the Type 71 rifle."
 	caliber = "5.45x39mm"
 	icon_state = "type_71"
-	default_ammo = /datum/ammo/bullet/rifle
+	default_ammo = /datum/ammo/bullet/rifle/type71
 	max_rounds = 60
 	gun_type = /obj/item/weapon/gun/rifle/type71
-	w_class = SIZE_MEDIUM
 
 /obj/item/ammo_magazine/rifle/type71/ap
 	name = "\improper Type 71 AP magazine (5.45x39mm)"
 	desc = "A 5.45x39mm high-capacity casket magazine containing armor piercing rounds for the Type 71 rifle."
-	caliber = "5.45x39mm"
 	icon_state = "type_71_ap"
-	default_ammo = /datum/ammo/bullet/rifle/ap
-	max_rounds = 60
-	gun_type = /obj/item/weapon/gun/rifle/type71
-	w_class = SIZE_MEDIUM
+	default_ammo = /datum/ammo/bullet/rifle/type71/ap
+	bonus_overlay = "type71_ap"
 
 //-------------------------------------------------------
 //USCM L42A Battle Rifle

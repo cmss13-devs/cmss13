@@ -3,11 +3,15 @@
 //UPP Strike Team
 /datum/emergency_call/upp
 	name = "UPP Naval Infantry (Squad)"
-	mob_max = 7
+	mob_max = 9
 	probability = 10
 	shuttle_id = "Distress_UPP"
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_upp
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_upp/item
+	//1 leader, 1 engineer, 2 medics, 1 specialist, 5 soldiers
+	max_medics = 2
+	max_engineers = 1
+	max_heavies = 1
 	hostility = TRUE
 
 /datum/emergency_call/upp/New()
@@ -65,9 +69,13 @@
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, "UPP Medic", TRUE, TRUE)
+	else if(engineers < engineers)
+		engineers++
+		to_chat(H, SPAN_ROLE_HEADER("You are a sapper of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
+		arm_equipment(H, "UPP Sapper", TRUE, TRUE)
 	else if(heavies < max_heavies)
 		heavies++
-		to_chat(H, SPAN_ROLE_HEADER("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
+		to_chat(H, SPAN_ROLE_HEADER("You are a sergeant of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 		arm_equipment(H, "UPP Specialist", TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a soldier of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
@@ -81,11 +89,12 @@
 
 /datum/emergency_call/upp/platoon
 	name = "UPP Naval Infantry (Platoon)"
-	mob_min = 8
+	mob_min = 4
 	mob_max = 30
 	probability = 0
-	max_medics = 2
+	max_medics = 3
 	max_heavies = 2
+	max_engineers = 2
 
 /obj/effect/landmark/ert_spawns/distress_upp
 	name = "Distress_UPP"

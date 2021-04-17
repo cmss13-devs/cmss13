@@ -84,8 +84,8 @@
 	//they will see messages for them putting guns and explosives into their backpack...
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/c99/upp/tranq(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99/tranq(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99/tranq(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/chameleon(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)

@@ -32,7 +32,7 @@
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT
 	damage_mult = BASE_BULLET_DAMAGE_MULT
-	movement_acc_penalty_mult = 0
+	movement_onehanded_acc_penalty_mult = 0
 	scatter = 0
 	scatter_unwielded = 0
 
@@ -66,7 +66,7 @@
 /obj/item/weapon/gun/energy/taser/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 

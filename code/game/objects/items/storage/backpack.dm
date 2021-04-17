@@ -863,6 +863,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	desc = "A UPP military standard-issue Union Combat Pack MK3."
 	icon_state = "satchel_upp"
 	worn_accessible = TRUE
+	max_storage_space = 15
 
 //UPP engineer welderpack
 /obj/item/storage/backpack/marine/engineerpack/upp
@@ -872,6 +873,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	has_gamemode_skin = FALSE
 	worn_accessible = TRUE
 	max_fuel = 180
+	max_storage_space = 12
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/upp
 	name = "\improper V86 Thermal Cloak"

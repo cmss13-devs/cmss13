@@ -836,43 +836,90 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_DAMAGE_OVERLAY|HELMET_STORE_GARB
 
-/obj/item/clothing/head/helmet/UPP
+// UPP Are very powerful against bullets (marines) but middling against melee (xenos)
+/obj/item/clothing/head/helmet/marine/veteran/UPP
 	name = "\improper UM4 helmet"
-	desc = "A skirted helmet designed for use with the UM/UH system."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	icon_state = "upp_helmet1"
+	desc = "Using highly skilled manufacturing techniques this UM4 helmet manages to be very resistant to ballistics damage, at the cost of its huge weight causing an extreme stress on the occupant's head that will most likely cause neck problems."
+	icon_state = "upp_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+
+/obj/item/clothing/head/helmet/marine/veteran/UPP/V
+	name = "\improper UM4-V helmet"
+	desc = "This version of the UM4 helmet has a ballistic-glass visor, increasing resistance against attacks significantly but by some reports hindering sight in the process."
+	icon_state = "upp_helmet_visor"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_HIGH
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
 
-/obj/item/clothing/head/helmet/UPP/heavy
+/obj/item/clothing/head/helmet/marine/veteran/UPP/heavy
 	name = "\improper UH7 helmet"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	desc = "Like the UM4, this helmet is very resistant to ballistic damage, but both its flaws and benefits have been doubled. The few UPP Zhergeants that have lived past age 30 have all needed to retire from terminal neck problems caused from the stress of wearing this helmet."
 	icon_state = "upp_helmet_heavy"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	unacidable = TRUE
-	anti_hug = 3
+	armor_internaldamage = CLOTHING_ARMOR_HIGHPLUS
+
+/obj/item/clothing/head/uppcap
+	name = "\improper UL2 UPP cap"
+	desc = "UPP headgear issued to soldiers when they're not expected to face combat, and may be requested by officers and above."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	icon_state = "upp_cap"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+	siemens_coefficient = 2.0
+	flags_armor_protection = BODY_FLAG_HEAD
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	flags_cold_protection = BODY_FLAG_HEAD
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	flags_inventory = BLOCKSHARPOBJ
+	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/uppcap/beret
+	name = "\improper UL3 UPP beret"
+	icon_state = "upp_beret"
 
+/obj/item/clothing/head/uppcap/ushanka
+	name = "\improper UL8 UPP ushanka"
+	icon_state = "upp_ushanka"
+	actions_types = list(/datum/action/item_action/toggle)
+	var/flaps_up = FALSE
+
+/obj/item/clothing/head/uppcap/ushanka/attack_self(mob/user)
+	if(flaps_up)
+		to_chat(user, SPAN_INFO("You move the ear flaps back."))
+		icon_state = "upp_ushanka"
+		flaps_up = FALSE
+	else
+		to_chat(user, SPAN_INFO("You move the ear flaps out of the way."))
+		icon_state = "upp_ushanka_u"
+		flaps_up = TRUE
+	update_icon()
 
 //head rag
 

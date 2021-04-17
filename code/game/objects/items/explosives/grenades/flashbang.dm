@@ -10,7 +10,7 @@
 
 
 /obj/item/explosive/grenade/flashbang/attack_self(mob/user)
-	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return
 	..()
@@ -46,7 +46,7 @@
 	var/trained_human = FALSE
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_MP))
+		if(skillcheck(H, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			trained_human = TRUE
 
 		var/list/protections = list(H.glasses, H.wear_mask, H.head)

@@ -439,11 +439,12 @@
 	icon_state = "upp_uniform"
 	worn_state = "upp_uniform"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	has_sensor = 0
-	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/storage/marine/smartgunner/UPP, /obj/item/clothing/suit/gimmick/jason)
+	has_sensor = FALSE
+	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet)
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
 	name = "\improper UPP medic fatigues"
+	desc = "A set of medic UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_medic"
 	worn_state = "upp_uniform_medic"
 

@@ -7,8 +7,8 @@
 	fire_sound = 'sound/weapons/gun_m39.ogg'
 	force = 5
 	w_class = SIZE_LARGE
-	movement_acc_penalty_mult = 4
-	aim_slowdown = SLOWDOWN_ADS_SMG
+	movement_onehanded_acc_penalty_mult = 4
+	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
 	attachable_allowed = list(
 						/obj/item/attachable/suppressor,
@@ -30,7 +30,7 @@
 
 /obj/item/weapon/gun/smg/set_gun_config_values()
 	..()
-	movement_acc_penalty_mult = 4
+	movement_onehanded_acc_penalty_mult = 4
 
 //-------------------------------------------------------
 //M39 SMG
@@ -106,7 +106,7 @@
 							/obj/item/attachable/flashlight/grip,
 							/obj/item/attachable/magnetic_harness,
 							)
-	random_spawn_underbarrel = list(
+	random_spawn_under = list(
 							/obj/item/attachable/lasersight,
 							)
 
@@ -149,7 +149,7 @@
 							/obj/item/attachable/flashlight,
 							/obj/item/attachable/magnetic_harness,
 							)
-	random_spawn_underbarrel = list(
+	random_spawn_under = list(
 							/obj/item/attachable/lasersight,
 							/obj/item/attachable/angledgrip,
 							/obj/item/attachable/verticalgrip,
@@ -206,7 +206,7 @@
 							/obj/item/attachable/flashlight,
 							/obj/item/attachable/magnetic_harness,
 							)
-	random_spawn_underbarrel = list(
+	random_spawn_under = list(
 							/obj/item/attachable/lasersight
 							)
 
@@ -229,57 +229,6 @@
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-
-//-------------------------------------------------------
-//SKORPION //Based on the same thing.
-
-/obj/item/weapon/gun/smg/skorpion
-	name = "\improper CZ-81 submachinegun"
-	desc = "A robust, 20th century firearm that's a combination of pistol and submachinegun. Fires .32ACP caliber rounds from a 20 round magazine."
-	icon_state = "skorpion"
-	item_state = "skorpion"
-
-	fire_sound = 'sound/weapons/gun_skorpion.ogg'
-	current_mag = /obj/item/ammo_magazine/smg/skorpion
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK
-
-	attachable_allowed = list(
-						/obj/item/attachable/lasersight,
-						/obj/item/attachable/reflex,
-						/obj/item/attachable/suppressor,
-						)
-	random_spawn_chance = 33
-	random_spawn_rail = list(
-							/obj/item/attachable/reflex/
-							)
-	random_spawn_underbarrel = list(
-							/obj/item/attachable/lasersight
-							)
-
-
-/obj/item/weapon/gun/smg/skorpion/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 29, "muzzle_y" = 18,"rail_x" = 16, "rail_y" = 21, "under_x" = 23, "under_y" = 15, "stock_x" = 23, "stock_y" = 15)
-
-
-
-/obj/item/weapon/gun/smg/skorpion/set_gun_config_values()
-	..()
-	fire_delay = FIRE_DELAY_TIER_10
-	burst_delay = FIRE_DELAY_TIER_10
-	burst_amount = BURST_AMOUNT_TIER_3
-
-	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_1 - HIT_ACCURACY_MULT_TIER_5
-	scatter = SCATTER_AMOUNT_TIER_6
-	burst_scatter_mult = SCATTER_AMOUNT_TIER_8
-	scatter_unwielded = SCATTER_AMOUNT_TIER_5
-	damage_mult = BASE_BULLET_DAMAGE_MULT
-	recoil_unwielded = RECOIL_AMOUNT_TIER_5
-
-
-/obj/item/weapon/gun/smg/skorpion/upp
-	icon_state = "skorpion_u"
-	item_state = "skorpion_u"
 
 //-------------------------------------------------------
 //PPSH //Based on the PPSh-41.
@@ -336,7 +285,7 @@
 	random_spawn_rail = list(
 							/obj/item/attachable/reflex/
 							)
-	random_spawn_underbarrel = list(
+	random_spawn_under = list(
 							/obj/item/attachable/lasersight
 							)
 
@@ -379,7 +328,7 @@
 						/obj/item/attachable/heavy_barrel,
 						)
 	random_spawn_chance = 65
-	random_spawn_underbarrel = list(
+	random_spawn_under = list(
 							/obj/item/attachable/lasersight,
 							)
 	random_spawn_muzzle = list(
@@ -428,7 +377,7 @@
 							/obj/item/attachable/flashlight,
 							/obj/item/attachable/magnetic_harness,
 							)
-	random_spawn_underbarrel = list(
+	random_spawn_under = list(
 							/obj/item/attachable/lasersight,
 							)
 
@@ -453,8 +402,8 @@
 	fire_sound = 'sound/weapons/nailgun_fire.ogg'
 	force = 5
 	w_class = SIZE_MEDIUM
-	movement_acc_penalty_mult = 4
-	aim_slowdown = SLOWDOWN_ADS_SMG
+	movement_onehanded_acc_penalty_mult = 4
+	aim_slowdown = SLOWDOWN_ADS_QUICK
 	wield_delay = WIELD_DELAY_VERY_FAST
 	attachable_allowed = list()
 

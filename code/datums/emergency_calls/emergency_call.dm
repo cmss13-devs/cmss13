@@ -26,8 +26,10 @@
 	var/item_spawn = /obj/effect/landmark/ert_spawns/distress/item
 	var/mob/living/carbon/leader = null //Who's leading these miscreants
 	var/medics = 0
+	var/engineers = 0
 	var/heavies = 0
 	var/max_medics = 1
+	var/max_engineers = 1
 	var/max_heavies = 1
 	var/shuttle_id = "Distress" //Empty shuttle ID means we're not using shuttles (aka spawn straight into cryo)
 	var/auto_shuttle_launch = FALSE

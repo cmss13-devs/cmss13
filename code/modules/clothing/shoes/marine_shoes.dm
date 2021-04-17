@@ -33,6 +33,22 @@
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 
+/obj/item/clothing/shoes/marine/upp
+	name = "military combat boots"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/clothing/shoes/marine/upp/New()
+	..()
+	stored_item = new /obj/item/attachable/bayonet/upp(src)
+	update_icon()
+
 /obj/item/clothing/shoes/marine/upp_knife/New()
 	..()
 	stored_item = new /obj/item/attachable/bayonet/upp(src)

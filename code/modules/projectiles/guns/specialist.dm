@@ -1032,7 +1032,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	. = ..()
 	if (. && istype(user))
 		if(riot_version)
-			if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+			if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return FALSE
 		else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)

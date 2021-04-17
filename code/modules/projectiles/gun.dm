@@ -59,7 +59,7 @@
 	var/recoil_unwielded 				= 0
 	var/scatter_unwielded 				= 0
 
-	var/movement_acc_penalty_mult = 5				//Multiplier. Increased and decreased through attachments. Multiplies the accuracy/scatter penalty of the projectile when firing onehanded while moving.
+	var/movement_onehanded_acc_penalty_mult = 5				//Multiplier. Increased and decreased through attachments. Multiplies the accuracy/scatter penalty of the projectile when firing onehanded while moving.
 
 	var/fire_delay = 0							//For regular shots, how long to wait before firing again.
 	var/last_fired = 0							//When it was last fired, related to world.time.
@@ -86,6 +86,7 @@
 	var/fa_scatter_peak = 8						//How many full-auto shots to get to max scatter?
 	var/fa_max_scatter = 5						//How bad does the scatter get on full auto?
 	var/fa_delay = 2.5							//The delay when firing full-auto
+
 	var/atom/fa_target = null					//The atom we're shooting at while full-autoing
 	var/fa_params = null						//Click parameters to use when firing full-auto
 
@@ -101,11 +102,15 @@
 	var/attachable_overlays[] = null			//List of overlays so we can switch them in an out, instead of using Cut() on overlays.
 	var/attachable_offset[] = null				//Is a list, see examples of from the other files. Initiated on New() because lists don't initial() properly.
 	var/list/attachable_allowed = list()		//Must be the exact path to the attachment present in the list. Empty list for a default.
+	var/random_spawn_chance = 50				//Chance for random attachments to spawn in general.
+	var/random_rail_chance = 100				//Chance for random spawn to give this gun a rail attachment.
 	var/list/random_spawn_rail = list() 		//Used when a gun will have a chance to spawn with attachments.
+	var/random_muzzle_chance = 100				//Chance for random spawn to give this gun a muzzle attachment.
 	var/list/random_spawn_muzzle = list()  		//Used when a gun will have a chance to spawn with attachments.
-	var/list/random_spawn_underbarrel = list()  //Used when a gun will have a chance to spawn with attachments.
+	var/random_under_chance = 100			//Chance for random spawn to give this gun a underbarrel attachment.
+	var/list/random_spawn_under = list()  //Used when a gun will have a chance to spawn with attachments.
+	var/random_stock_chance = 100				//Chance for random spawn to give this gun a stock attachment.
 	var/list/random_spawn_stock = list()  		//Used when a gun will have a chance to spawn with attachments.
-	var/random_spawn_chance = 50				//Chance for an attachment to spawn in each slot.
 	var/obj/item/attachable/attached_gun/active_attachable = null //This will link to one of the attachments, or remain null.
 	var/list/starting_attachment_types = null //What attachments this gun starts with THAT CAN BE REMOVED. Important to avoid nuking the attachments on restocking! Added on New()
 
@@ -115,6 +120,8 @@
 	var/base_gun_icon //the default gun icon_state. change to reskin the gun
 	var/has_empty_icon = TRUE // whether gun has icon state of (base_gun_icon)_e
 	var/has_open_icon = FALSE // whether gun has icon state of (base_gun_icon)_o
+	var/bonus_overlay_x = 0
+	var/bonus_overlay_y = 0
 
 	var/recoil_loss_per_second = 10 // How much recoil_buildup is lost per second. Builds up as time passes, and is set to 0 when a single shot is fired
 	var/recoil_buildup = 0 // The recoil on a dynamic recoil gun
@@ -155,7 +162,7 @@
 	set_bullet_traits()
 	update_force_list() //This gives the gun some unique attack verbs for attacking.
 	handle_starting_attachment()
-	handle_random_attachments(random_spawn_chance)
+	handle_random_attachments()
 	GLOB.gun_list += src
 
 
@@ -182,7 +189,7 @@
 	damage_buildup_mult = DAMAGE_BUILDUP_TIER_1
 	recoil = RECOIL_OFF
 	recoil_unwielded = RECOIL_OFF
-	movement_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1
+	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1
 
 	effective_range_min = EFFECTIVE_RANGE_OFF
 	effective_range_max = EFFECTIVE_RANGE_OFF
@@ -263,19 +270,25 @@
 		recoil_unwielded += R.recoil_unwielded_mod
 		aim_slowdown += R.aim_speed_mod
 		wield_delay += R.wield_delay_mod
-		movement_acc_penalty_mult += R.movement_acc_penalty_mod
+		movement_onehanded_acc_penalty_mult += R.movement_onehanded_acc_penalty_mod
 		force += R.melee_mod
 		w_class += R.size_mod
 
-		if(R.silence_mod)
+		if(R.suppress_firesound)
 			flags_gun_features |= GUN_SILENCED
 			muzzle_flash = null
-			fire_sound = "gun_silenced"
+			if(!(flags_gun_features & GUN_INTERNAL_SILENCED))
+				fire_sound = "gun_silenced"
 
-/obj/item/weapon/gun/proc/handle_random_attachments(var/randchance)
+/obj/item/weapon/gun/proc/handle_random_attachments()
 	var/attachmentchoice
 
-	if(prob(randchance) && !attachments["rail"]) // Rail
+	var/randchance = random_spawn_chance
+	if(!prob(randchance))
+		return
+
+	var/railchance = random_rail_chance
+	if(prob(railchance) && !attachments["rail"]) // Rail
 		attachmentchoice = SAFEPICK(random_spawn_rail)
 		if(attachmentchoice)
 			var/obj/item/attachable/R = new attachmentchoice(src)
@@ -283,7 +296,8 @@
 			update_attachable(R.slot)
 			attachmentchoice = FALSE
 
-	if(prob(randchance) && !attachments["muzzle"]) // Muzzle
+	var/muzzlechance = random_muzzle_chance
+	if(prob(muzzlechance) && !attachments["muzzle"]) // Muzzle
 		attachmentchoice = SAFEPICK(random_spawn_muzzle)
 		if(attachmentchoice)
 			var/obj/item/attachable/M = new attachmentchoice(src)
@@ -291,15 +305,17 @@
 			update_attachable(M.slot)
 			attachmentchoice = FALSE
 
-	if(prob(randchance) && !attachments["under"]) // Underbarrel
-		attachmentchoice = SAFEPICK(random_spawn_underbarrel)
+	var/underchance = random_under_chance
+	if(prob(underchance) && !attachments["under"]) // Underbarrel
+		attachmentchoice = SAFEPICK(random_spawn_under)
 		if(attachmentchoice)
 			var/obj/item/attachable/U = new attachmentchoice(src)
 			U.Attach(src)
 			update_attachable(U.slot)
 			attachmentchoice = FALSE
 
-	if(prob(randchance) && !attachments["stock"]) // Stock
+	var/stockchance = random_stock_chance
+	if(prob(stockchance) && !attachments["stock"]) // Stock
 		attachmentchoice = SAFEPICK(random_spawn_stock)
 		if(attachmentchoice)
 			var/obj/item/attachable/S = new attachmentchoice(src)
@@ -627,8 +643,11 @@
 /obj/item/weapon/gun/proc/cock_gun(mob/user)
 	set waitfor = 0
 	if(cocked_sound)
-		sleep(3)
-		if(user && loc) playsound(user, cocked_sound, 25, 1)
+		addtimer(CALLBACK(src, .proc/cock_sound, user), 0.5 SECONDS)
+
+/obj/item/weapon/gun/proc/cock_sound(mob/user)
+	if(user && loc)
+		playsound(user, cocked_sound, 25, TRUE)
 
 /*
 Reload a gun using a magazine.
@@ -743,6 +762,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	else
 		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),
 		SPAN_NOTICE("You cock [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
+	display_ammo(user)
 	ready_in_chamber() //This will already check for everything else, loading the next bullet.
 
 
@@ -1007,6 +1027,7 @@ and you're good to go.
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 			last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
+			
 
 			if(flags_gun_features & GUN_FULL_AUTO_ON)
 				fa_shots++
@@ -1030,6 +1051,7 @@ and you're good to go.
 			sleep(burst_delay)
 
 	flags_gun_features &= ~GUN_BURST_FIRING // We always want to turn off bursting when we're done, mainly for when we break early mid-burstfire.
+	display_ammo(user)
 
 #define EXECUTION_CHECK M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
 
@@ -1218,8 +1240,11 @@ and you're good to go.
 			break
 
 	flags_gun_features &= ~GUN_BURST_FIRING
+	display_ammo(user)
+
 	if(handoff)
 		Fire(get_turf(M), user, reflex = TRUE) //Reflex prevents dual-wielding.
+
 	return TRUE
 
 #undef EXECUTION_CHECK
@@ -1293,6 +1318,11 @@ and you're good to go.
 	else
 		playsound(src, 'sound/weapons/gun_empty.ogg', 25, 1, 5)
 
+/obj/item/weapon/gun/proc/display_ammo(mob/user)
+	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
+		var/chambered = in_chamber ? TRUE : FALSE
+		to_chat(user, SPAN_DANGER("[current_mag.current_rounds][chambered ? "+1" : ""] / [current_mag.max_rounds] ROUNDS REMAINING"))
+
 //This proc applies some bonus effects to the shot/makes the message when a bullet is actually fired.
 /obj/item/weapon/gun/proc/apply_bullet_effects(obj/item/projectile/projectile_to_fire, mob/user, bullets_fired = 1, reflex = 0, dual_wield = 0)
 	var/actual_sound = fire_sound
@@ -1307,8 +1337,8 @@ and you're good to go.
 		gun_scatter = scatter
 	else if(user && world.time - user.l_move_time < 5) //moved during the last half second
 		//accuracy and scatter penalty if the user fires unwielded right after moving
-		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_acc_penalty_mult * HIT_ACCURACY_MULT_TIER_3))
-		gun_scatter += max(0, movement_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
+		gun_accuracy_mult = max(0.1, gun_accuracy_mult - max(0,movement_onehanded_acc_penalty_mult * HIT_ACCURACY_MULT_TIER_3))
+		gun_scatter += max(0, movement_onehanded_acc_penalty_mult * SCATTER_AMOUNT_TIER_10)
 
 	if(dual_wield) //akimbo firing gives terrible accuracy
 		gun_accuracy_mult = max(0.1, gun_accuracy_mult - 0.1*rand(3,5))
@@ -1359,8 +1389,6 @@ and you're good to go.
 			if(active_attachable.fire_sound) //If we're firing from an attachment, use that noise instead.
 				playsound(user, active_attachable.fire_sound, 50)
 		else
-			if(current_mag && flags_gun_features & GUN_AMMO_COUNTER && bullets_fired == 1)
-				to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
 			if(!(flags_gun_features & GUN_SILENCED))
 				if (firing_sndfreq && fire_rattle)
 					playsound(user, fire_rattle, 60, FALSE)//if the gun has a unique 'mag rattle' SFX play that instead of pitch shifting.

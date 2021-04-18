@@ -38,12 +38,8 @@ FIRE ALARM
 
 	if(stat & BROKEN)
 		icon_state = "firex"
-	else if(stat & NOPOWER)
+	else if(stat & NOPOWER & (security_level != SEC_LEVEL_RED))
 		icon_state = "firep"
-	else if(!src.detecting)
-		icon_state = "fire1"
-	else
-		icon_state = "fire0"
 
 /obj/structure/machinery/firealarm/fire_act(temperature, volume)
 	if(src.detecting)

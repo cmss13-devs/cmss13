@@ -230,6 +230,29 @@
 
 	message_staff("[key_name_admin(usr)] admin-called a [choice == "Randomize" ? "randomized ":""]distress beacon: [chosen_ert.name]")
 
+/datum/admins/proc/admin_force_evacuation()
+	set name = "Trigger Evacuation"
+	set desc = "Triggers emergency evacuation."
+	set category = "Admin.Events"
+
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+	set_security_level(SEC_LEVEL_RED)
+	EvacuationAuthority.initiate_evacuation()
+
+	message_staff("[key_name_admin(usr)] forced an emergency evacuation.")
+
+/datum/admins/proc/admin_cancel_evacuation()
+	set name = "Cancel Evacuation"
+	set desc = "Cancels emergency evacuation."
+	set category = "Admin.Events"
+
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+	EvacuationAuthority.cancel_evacuation()
+
+	message_staff("[key_name_admin(usr)] canceled an emergency evacuation.")
+
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self Destruct"
 	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
@@ -549,6 +572,8 @@
 		<A href='?src=\ref[src];events=securitylevel'>Set Security Level</A><BR>
 		<A href='?src=\ref[src];events=distress'>Send a Distress Beacon</A><BR>
 		<A href='?src=\ref[src];events=selfdestruct'>Activate Self-Destruct</A><BR>
+		<A href='?src=\ref[src];events=evacuation_start'>Trigger Evacuation</A><BR>
+		<A href='?src=\ref[src];events=evacuation_cancel'>Cancel Evacuation</A><BR>
 		<BR>
 		<B>Research</B><BR>
 		<A href='?src=\ref[src];events=change_clearance'>Change Research Clearance</A><BR>

@@ -96,8 +96,6 @@ var/global/list/grenade_antigrief_exempt_areas = list(
 var/global/list/yautja_gear = list() // list of loose pred gear
 var/global/list/untracked_yautja_gear = list() // List of untracked loose pred gear
 
-GLOBAL_LIST_EMPTY_TYPED(gun_cabinets, /obj/structure/closet/secure_closet/guncabinet)
-
 //Languages/species/whitelist.
 GLOBAL_LIST_INIT_TYPED(all_species, /datum/species, setup_species())
 GLOBAL_REFERENCE_LIST_INDEXED(all_languages, /datum/language, name)

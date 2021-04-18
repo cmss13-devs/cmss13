@@ -396,12 +396,12 @@
 		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 		// If we are a xeno shooting something
-		if (istype(ammo, /datum/ammo/xeno) && isXeno(firer))
+		if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && ammo.apply_delegate)
 			var/mob/living/carbon/Xenomorph/X = firer
 			if (X.behavior_delegate)
 				var/datum/behavior_delegate/MD = X.behavior_delegate
 				MD.ranged_attack_additional_effects_target(O)
-				MD.ranged_attack_additional_effects_self()
+				MD.ranged_attack_additional_effects_self(O)
 
 		// If the ammo should hit the surface of the target and there is an object blocking
 		// The current turf is the "surface" of the target
@@ -458,12 +458,12 @@
 				ammo.on_hit_mob(L,src)
 
 				// If we are a xeno shooting something
-				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD)
+				if (istype(ammo, /datum/ammo/xeno) && isXeno(firer) && L.stat != DEAD && ammo.apply_delegate)
 					var/mob/living/carbon/Xenomorph/X = firer
 					if (X.behavior_delegate)
 						var/datum/behavior_delegate/MD = X.behavior_delegate
 						MD.ranged_attack_additional_effects_target(L)
-						MD.ranged_attack_additional_effects_self()
+						MD.ranged_attack_additional_effects_self(L)
 
 				// If the thing we're hitting is a Xeno
 				if (istype(L, /mob/living/carbon/Xenomorph))

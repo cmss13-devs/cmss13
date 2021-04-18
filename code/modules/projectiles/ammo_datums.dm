@@ -45,6 +45,9 @@
 	var/handful_state = "bullet" //custom handful sprite, for shotgun shells or etc.
 	var/multiple_handful_name //so handfuls say 'buckshot shells' not 'shell'
 
+	/// Does this apply xenomorph behaviour delegate?
+	var/apply_delegate = TRUE
+
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile with the current ammo datum
 	var/list/list/traits_to_give
@@ -2183,11 +2186,9 @@
 	name = "acid splash"
 
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
-	accuracy = HIT_ACCURACY_TIER_5*3
-	max_range = 7
-	damage = BULLET_DAMAGE_TIER_5
-	damage_var_low = PROJECTILE_VARIANCE_TIER_6
-	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	accuracy = HIT_ACCURACY_TIER_10 + HIT_ACCURACY_TIER_5
+	max_range = 8
+	damage = BULLET_DAMAGE_TIER_6
 	shell_speed = AMMO_SPEED_TIER_2
 	added_spit_delay = 0
 
@@ -2205,6 +2206,8 @@
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	shell_speed = AMMO_SPEED_TIER_1
 	scatter = SCATTER_AMOUNT_TIER_6
+
+	apply_delegate = FALSE
 
 /datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/item/projectile/P)
 	if (!ishuman(M))

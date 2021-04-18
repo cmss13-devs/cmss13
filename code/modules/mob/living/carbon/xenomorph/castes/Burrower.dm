@@ -20,9 +20,9 @@
 	weed_level = WEED_LEVEL_STANDARD
 	evolution_allowed = FALSE
 
-	tackle_min = 2
-	tackle_max = 4
-	tackle_chance = 50
+	tackle_min = 3
+	tackle_max = 5
+	tackle_chance = 40
 	tacklestrength_min = 4
 	tacklestrength_max = 5
 

@@ -1,4 +1,4 @@
-/datum/action/xeno_action/onclick/toggle_crest_defense/use_ability(atom/A)
+/datum/action/xeno_action/onclick/toggle_crest/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 	if (!istype(X))
 		return
@@ -17,14 +17,14 @@
 
 	if(X.crest_defense)
 		to_chat(X, SPAN_XENOWARNING("You lower your crest."))
-		X.armor_deflection_buff += armor_buff
 		X.ability_speed_modifier += speed_debuff
+		X.armor_deflection_buff += armor_buff
 		X.mob_size = MOB_SIZE_BIG //knockback immune
 		X.update_icons()
 	else
 		to_chat(X, SPAN_XENOWARNING("You raise your crest."))
-		X.armor_deflection_buff -= armor_buff
 		X.ability_speed_modifier -= speed_debuff
+		X.armor_deflection_buff -= armor_buff
 		X.mob_size = MOB_SIZE_XENO //no longer knockback immune
 		X.update_icons()
 
@@ -60,12 +60,12 @@
 
 	var/distance = get_dist(X, H)
 
-	var/max_distance = 1 + (X.crest_defense * 2)
+	var/max_distance = 3 - (X.crest_defense * 2)
 
 	if(distance > max_distance)
 		return
 
-	if(X.crest_defense)
+	if(!X.crest_defense)
 		X.throw_atom(get_step_towards(H, X), 3, SPEED_SLOW, X)
 
 	if(!X.Adjacent(H))
@@ -83,7 +83,7 @@
 		H.apply_armoured_damage(get_xeno_damage_slash(H, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
 	var/facing = get_dir(X, H)
-	var/headbutt_distance = 3 - (X.crest_defense * 2) - (X.fortify * 2)
+	var/headbutt_distance = 1 + (X.crest_defense * 2) + (X.fortify * 2)
 	var/turf/T = get_turf(X)
 	var/turf/temp = get_turf(X)
 

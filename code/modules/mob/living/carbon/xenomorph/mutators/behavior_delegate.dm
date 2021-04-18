@@ -74,7 +74,7 @@
 /datum/behavior_delegate/proc/ranged_attack_additional_effects_target(atom/A)
 	return
 
-/datum/behavior_delegate/proc/ranged_attack_additional_effects_self()
+/datum/behavior_delegate/proc/ranged_attack_additional_effects_self(atom/A)
 	return
 
 // Any special behaviors on reception of a projectile attack

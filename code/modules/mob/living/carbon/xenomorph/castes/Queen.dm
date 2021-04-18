@@ -231,8 +231,8 @@
 	return ..()
 
 /mob/living/carbon/Xenomorph/Queen
-	caste_type = "Queen"
-	name = "Queen"
+	caste_type = XENO_CASTE_QUEEN
+	name = XENO_CASTE_QUEEN
 	desc = "A huge, looming alien creature. The biggest and the baddest."
 	icon_size = 64
 	icon_state = "Queen Walking"

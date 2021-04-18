@@ -550,10 +550,6 @@
 		<A href='?src=\ref[src];events=distress'>Send a Distress Beacon</A><BR>
 		<A href='?src=\ref[src];events=selfdestruct'>Activate Self-Destruct</A><BR>
 		<BR>
-		<B>Defcon</B><BR>
-		<A href='?src=\ref[src];events=decrease_defcon'>Decrease DEFCON level</A><BR>
-		<A href='?src=\ref[src];events=give_defcon_points'>Give DEFCON points</A><BR>
-		<BR>
 		<B>Research</B><BR>
 		<A href='?src=\ref[src];events=change_clearance'>Change Research Clearance</A><BR>
 		<A href='?src=\ref[src];events=give_research_credits'>Give Research Credits</A><BR>

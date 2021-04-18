@@ -8,6 +8,14 @@
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
 			admin_force_selfdestruct()
+		if("evacuation_start")
+			if(alert(usr, "Are you sure you want to trigger an evacuation?", "Confirmation", "Yes", "No") == "No")
+				return
+			admin_force_evacuation()
+		if("evacuation_cancel")
+			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
+				return
+			admin_cancel_evacuation()
 		if("medal")
 			owner.award_medal()
 		if("pmcguns")

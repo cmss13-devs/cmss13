@@ -32,8 +32,7 @@
 				security_level = SEC_LEVEL_GREEN
 				for(var/obj/structure/machinery/firealarm/FA in machines)
 					if(is_mainship_level(FA.z))
-						FA.overlays = list()
-						FA.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_green")
+						FA.icon_state = "fire0"
 				for(var/obj/structure/machinery/status_display/SD in machines)
 					if(is_mainship_level(SD.z))
 						SD.set_picture("default")
@@ -47,11 +46,10 @@
 				security_level = SEC_LEVEL_BLUE
 				for(var/obj/structure/machinery/firealarm/FA in machines)
 					if(is_mainship_level(FA.z))
-						FA.overlays = list()
-						FA.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_blue")
+						FA.icon_state = "fireblue"
 				for(var/obj/structure/machinery/status_display/SD in machines)
 					if(is_mainship_level(SD.z))
-						SD.set_picture("default")
+						SD.set_picture("bluealert")
 			if(SEC_LEVEL_RED)
 				if(security_level < SEC_LEVEL_RED)
 					if(announce)
@@ -64,8 +62,7 @@
 
 				for(var/obj/structure/machinery/firealarm/FA in machines)
 					if(is_mainship_level(FA.z))
-						FA.overlays = list()
-						FA.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_red")
+						FA.icon_state = "firered"
 				for(var/obj/structure/machinery/status_display/SD in machines)
 					if(is_mainship_level(SD.z))
 						SD.set_picture("redalert")
@@ -77,8 +74,7 @@
 				security_level = SEC_LEVEL_DELTA
 				for(var/obj/structure/machinery/firealarm/FA in machines)
 					if(is_mainship_level(FA.z))
-						FA.overlays = list()
-						FA.overlays += image('icons/obj/structures/machinery/monitors.dmi', "overlay_delta")
+						FA.icon_state = "firered"
 				for(var/obj/structure/machinery/status_display/SD in machines)
 					if(is_mainship_level(SD.z))
 						SD.set_picture("redalert")

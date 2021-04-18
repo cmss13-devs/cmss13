@@ -56,16 +56,15 @@
 
 	if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
 		evolve_progress = "[round(amount_grown)]/[max_grown]"
-	else if(hive && !hive.allow_no_queen_actions)
-		if(!hive.living_xeno_queen)
-			evolve_progress = "NO QUEEN"
-		else if(!hive.living_xeno_queen.ovipositor && caste_type != XENO_CASTE_QUEEN)
-			evolve_progress = "NO OVIPOSITOR"
-
-	if(!evolve_progress)
+	else if(caste && caste.evolution_allowed)
 		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
+		if(hive && !hive.allow_no_queen_actions)
+			if(!hive.living_xeno_queen)
+				evolve_progress += " (NO QUEEN)"
+			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
+				evolve_progress += " (NO OVIPOSITOR)"
 
-	if(caste && caste.evolution_allowed)
+	if(evolve_progress)
 		. += "Evolve Progress: [evolve_progress]"
 
 	. += ""

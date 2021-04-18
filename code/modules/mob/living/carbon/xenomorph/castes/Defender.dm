@@ -3,7 +3,7 @@
 	caste_desc = "A sturdy front line combatant."
 	tier = 1
 
-	melee_damage_lower = XENO_DAMAGE_TIER_3
+	melee_damage_lower = XENO_DAMAGE_TIER_2
 	melee_damage_upper = XENO_DAMAGE_TIER_3
 	max_health = XENO_HEALTH_TIER_5
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
@@ -34,7 +34,7 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/onclick/toggle_crest_defense,
+		/datum/action/xeno_action/onclick/toggle_crest,
 		/datum/action/xeno_action/activable/headbutt,
 		/datum/action/xeno_action/onclick/tail_sweep,
 		/datum/action/xeno_action/activable/fortify

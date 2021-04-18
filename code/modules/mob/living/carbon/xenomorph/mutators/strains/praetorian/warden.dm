@@ -30,7 +30,6 @@
 	// Make a 'halftank'
 	P.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	P.armor_modifier -= XENO_ARMOR_MOD_VERYLARGE
 
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)
@@ -89,6 +88,10 @@
 		add_internal_hitpoints(internal_hitpoints_per_attack)
 
 /datum/behavior_delegate/praetorian_warden/proc/add_internal_hitpoints(amount)
+	if (amount > 0)
+		if (internal_hitpoints >= internal_hitpoints_max)
+			return
+		to_chat(bound_xeno, SPAN_XENODANGER("You feel your resources of health increase!"))
 	internal_hitpoints = Clamp(internal_hitpoints + amount, 0, internal_hitpoints_max)
 
 /datum/behavior_delegate/praetorian_warden/proc/remove_internal_hitpoints(amount)

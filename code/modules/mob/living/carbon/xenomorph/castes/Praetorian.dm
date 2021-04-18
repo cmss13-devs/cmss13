@@ -58,6 +58,8 @@
 
 /datum/behavior_delegate/praetorian_base
 	name = "Base Praetorian Behavior Delegate"
+	 ///reward for hitting shots instead of spamming acid ball
+	var/reward_shield = 15
 
 /datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_target(atom/A)
 	if (!ishuman(A))
@@ -76,3 +78,10 @@
 	else
 		PAS.increment_stack_count()
 		return
+
+/datum/behavior_delegate/praetorian_base/ranged_attack_additional_effects_self(atom/A)
+	if(!ismob(A))
+		return
+	bound_xeno.add_xeno_shield(reward_shield, XENO_SHIELD_SOURCE_BASE_PRAE, add_shield_on = TRUE, max_shield = 45)
+	to_chat(bound_xeno, SPAN_NOTICE("Your exoskeleton shimmers for a fraction of a second as the acid coats your target."))
+	return

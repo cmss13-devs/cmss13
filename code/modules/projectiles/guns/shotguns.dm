@@ -276,8 +276,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	desc = "The Weston-Yamada MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Gaurds"
 	icon_state = "mp221"
 	item_state = "mp221"
-	starting_attachment_types = list(/obj/item/attachable/bayonet)
-	starting_attachment_types = list(/obj/item/attachable/magnetic_harness)
+	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/bayonet)
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/buckshot
 
 //MARSOC MK210, an earlier developmental variant of the MK211 tactical used by the USCM MARSOC.

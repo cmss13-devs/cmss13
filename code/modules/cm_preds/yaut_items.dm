@@ -544,7 +544,7 @@
 			user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
 			SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-			if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
+			if(do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 				user.visible_message(SPAN_DANGER("[user] forces [D] open using the [name]."),
 				SPAN_DANGER("You force [D] open with your [name]."))
 				D.Open()

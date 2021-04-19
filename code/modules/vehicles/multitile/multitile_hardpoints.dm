@@ -109,6 +109,12 @@
 		user.visible_message(SPAN_WARNING("[user] stops installing \the [HP] on \the [src]."), SPAN_WARNING("You stop installing \the [HP] on \the [src]."))
 		return
 
+	//check to prevent putting two modules on same slot
+	for(var/obj/item/hardpoint/H in hardpoints)
+		if(HP.slot == H.slot)
+			to_chat(user, SPAN_WARNING("There is already something installed there!"))
+			return
+
 	user.visible_message(SPAN_NOTICE("[user] installs \the [HP] on \the [src]."), SPAN_NOTICE("You install \the [HP] on \the [src]."))
 
 	if(ispowerclamp(O))

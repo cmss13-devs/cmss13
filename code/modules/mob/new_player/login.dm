@@ -1,6 +1,4 @@
 /mob/new_player/Login()
-	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
-
 	if(!mind)
 		mind = new /datum/mind(key, ckey)
 		mind.active = 1

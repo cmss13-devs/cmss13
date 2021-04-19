@@ -116,7 +116,6 @@
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
-		/obj/item/attachable/quickfire,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/rifle,
 		/obj/item/attachable/scope)

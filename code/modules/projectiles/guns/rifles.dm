@@ -49,7 +49,6 @@
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/reddot,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
 						/obj/item/attachable/angledgrip,
@@ -81,7 +80,7 @@
 
 /obj/item/weapon/gun/rifle/m41a/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
+	fire_delay = FIRE_DELAY_TIER_9
 	burst_amount = BURST_AMOUNT_TIER_3
 	burst_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4 + 2*HIT_ACCURACY_MULT_TIER_1
@@ -1007,7 +1006,6 @@
 	/obj/item/attachable/bayonet,\
 	/obj/item/attachable/bayonet/upp,\
 	/obj/item/attachable/reddot,\
-	/obj/item/attachable/quickfire,\
 	/obj/item/attachable/reflex,\
 	/obj/item/attachable/verticalgrip,\
 	/obj/item/attachable/angledgrip,\
@@ -1051,7 +1049,6 @@
 	/obj/item/attachable/magnetic_harness,\
 	/obj/item/attachable/gyro,\
 	/obj/item/attachable/stock/smg/collapsible/brace,\
-	/obj/item/attachable/quickfire,\
 	/obj/item/attachable/bipod,\
 	/obj/item/attachable/attached_gun/grenade,\
 	/obj/item/attachable/attached_gun/flamer,\
@@ -1137,7 +1134,6 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -1164,7 +1160,7 @@
 
 /obj/item/weapon/gun/rifle/l42a/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_6
+	fire_delay = FIRE_DELAY_TIER_8
 	burst_amount = 0
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_5
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4

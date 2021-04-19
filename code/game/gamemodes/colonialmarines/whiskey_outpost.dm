@@ -665,7 +665,7 @@
 								/obj/item/attachable/extended_barrel,/obj/item/attachable/verticalgrip, /obj/item/attachable/angledgrip,
 								/obj/item/attachable/gyro, /obj/item/attachable/bipod)
 	var/list/attachment_2 = list(/obj/item/attachable/stock/smg, /obj/item/attachable/stock/shotgun, /obj/item/attachable/stock/rifle, /obj/item/attachable/magnetic_harness,
-								/obj/item/attachable/quickfire, /obj/item/attachable/heavy_barrel, /obj/item/attachable/scope, /obj/item/attachable/quickfire,
+								/obj/item/attachable/heavy_barrel, /obj/item/attachable/scope,
 								/obj/item/attachable/scope/mini)
 
 /obj/item/storage/box/attachments/fill_preset_inventory()

@@ -297,7 +297,6 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/stock/revolver,
@@ -312,7 +311,7 @@
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
+	fire_delay = FIRE_DELAY_TIER_7
 	accuracy_mult = BASE_ACCURACY_MULT
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_8
@@ -456,7 +455,6 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/mateba,
 						/obj/item/attachable/mateba/long,
@@ -522,7 +520,6 @@
 					/obj/item/attachable/reflex,
 					/obj/item/attachable/flashlight,
 					/obj/item/attachable/heavy_barrel,
-					/obj/item/attachable/quickfire,
 					/obj/item/attachable/compensator,
 					/obj/item/attachable/mateba/dark,
 					/obj/item/attachable/mateba/long/dark,
@@ -544,7 +541,7 @@
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/explosive
 	color = "#FF0000"
 	fire_sound = 'sound/voice/alien_queen_xmas.ogg'
-	starting_attachment_types = list(/obj/item/attachable/heavy_barrel, /obj/item/attachable/quickfire)
+	starting_attachment_types = list(/obj/item/attachable/heavy_barrel)
 
 /obj/item/weapon/gun/revolver/mateba/engraved
 	name = "\improper engraved Mateba autorevolver"
@@ -576,7 +573,6 @@
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/compensator)
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_attachment_offsets()

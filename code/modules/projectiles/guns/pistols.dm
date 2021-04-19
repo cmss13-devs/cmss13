@@ -22,7 +22,6 @@
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/burstfire_assembly)
 
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED //For easy reference.
@@ -168,7 +167,6 @@
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/compensator)
 
@@ -317,7 +315,6 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/burstfire_assembly)
 
@@ -419,7 +416,7 @@
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_7
+	fire_delay = FIRE_DELAY_TIER_9
 	burst_amount = BURST_AMOUNT_TIER_3
 	burst_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT
@@ -559,7 +556,7 @@ It is a modified Beretta 93R, and can fire three round burst or single fire. Whe
 
 /obj/item/weapon/gun/pistol/smart/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	fire_delay = FIRE_DELAY_TIER_10
 	burst_amount = BURST_AMOUNT_TIER_3
 	burst_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT

@@ -440,7 +440,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/attachable/extended_barrel(src)
-	new /obj/item/attachable/quickfire(src)
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/smartpistol(src)
 

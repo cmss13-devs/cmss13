@@ -389,7 +389,7 @@
 	unacidable = TRUE
 
 /obj/structure/prop/almayer/name_stencil
-	name = MAIN_SHIP_NAME
+	name = "USS Almayer"
 	desc = "The name of the ship stenciled on the hull."
 	icon = 'icons/obj/structures/props/almayer_props64.dmi'
 	icon_state = "almayer0"

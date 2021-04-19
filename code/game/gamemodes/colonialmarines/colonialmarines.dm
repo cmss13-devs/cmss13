@@ -142,7 +142,8 @@
 
 /datum/game_mode/colonialmarines/proc/map_announcement()
 	if(SSmapping.configs[GROUND_MAP].announce_text)
-		marine_announcement(SSmapping.configs[GROUND_MAP].announce_text, "[MAIN_SHIP_NAME]")
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////

@@ -363,7 +363,6 @@
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/scope,
 						/obj/item/attachable/scope/mini,
 						//Muzzle

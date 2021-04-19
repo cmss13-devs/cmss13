@@ -787,7 +787,6 @@
 						/obj/item/attachable/scope,
 						/obj/item/attachable/scope/mini,
 						/obj/item/attachable/reddot,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/reflex,
 						//Muzzle
 						/obj/item/attachable/suppressor,
@@ -907,7 +906,6 @@
 							/obj/item/attachable/flashlight,
 							/obj/item/attachable/magnetic_harness,
 							/obj/item/attachable/scope/mini,
-							/obj/item/attachable/quickfire,
 							)
 	random_muzzle_chance = 100
 	random_spawn_muzzle = list(

@@ -21,7 +21,6 @@
 				if(0)
 					new /obj/item/weapon/gun/pistol/m4a3(W)
 					new /obj/item/weapon/gun/pistol/m1911(W)
-					new /obj/item/attachable/quickfire(W)
 					new /obj/item/attachable/burstfire_assembly(W)
 					new /obj/item/attachable/compensator(W)
 					new /obj/item/attachable/extended_barrel(W)

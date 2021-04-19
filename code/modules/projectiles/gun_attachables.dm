@@ -567,23 +567,6 @@ Defined in conflicts.dm of the #defines folder.
 		to_chat(user, SPAN_NOTICE("Hold on there cowboy, that grip is bolted on. You are unable to modify it."))
 	return
 
-/obj/item/attachable/quickfire
-	name = "quickfire adapter"
-	desc = "An enhanced and upgraded autoloading mechanism to fire rounds more quickly. \nHowever, it also reduces accuracy and the number of bullets fired on burst."
-	slot = "rail"
-	icon_state = "autoloader"
-	attach_icon = "autoloader_a"
-
-/obj/item/attachable/quickfire/New()
-	..()
-	accuracy_mod = -HIT_ACCURACY_MULT_TIER_5
-	scatter_mod = SCATTER_AMOUNT_TIER_9
-	delay_mod = -FIRE_DELAY_TIER_9
-	burst_mod = -BURST_AMOUNT_TIER_1
-	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_4
-	scatter_unwielded_mod = SCATTER_AMOUNT_TIER_6
-
-
 /obj/item/attachable/magnetic_harness
 	name = "magnetic harness"
 	desc = "A magnetically attached harness kit that attaches to the rail mount of a weapon. When dropped, the weapon will sling to any set of USCM armor."

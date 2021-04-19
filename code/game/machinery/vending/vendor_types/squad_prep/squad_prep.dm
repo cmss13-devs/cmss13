@@ -144,7 +144,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M37 Wooden Stock", 15, /obj/item/attachable/stock/shotgun, null, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 15, /obj/item/attachable/stock/smg, null, VENDOR_ITEM_REGULAR),
 		list("M41A Solid Stock", 15, /obj/item/attachable/stock/rifle, null, VENDOR_ITEM_REGULAR),
-		list("Quickfire Adapter", 15, /obj/item/attachable/quickfire, null, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 15, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),
 		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
 		list("Reflex Sight", 15, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),

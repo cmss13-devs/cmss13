@@ -44,14 +44,12 @@
 				/obj/item/attachable/gyro,
 				/obj/item/attachable/verticalgrip,
 				/obj/item/attachable/angledgrip,
-				/obj/item/attachable/quickfire,
 				/obj/item/attachable/scope/mini)
 
 /obj/effect/landmark/wo_supplies/attachments/rare
 	amount = list(0,2)
 	stuff = list(/obj/item/attachable/heavy_barrel,
 				/obj/item/attachable/scope,
-				/obj/item/attachable/quickfire,
 				/obj/item/attachable/gyro)
 
 

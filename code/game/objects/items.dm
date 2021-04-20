@@ -474,6 +474,11 @@ cases. Override_icon_state should be a list.*/
 				if(w_class <= SIZE_SMALL || (flags_equip_slot & SLOT_STORE))
 					return 1
 				return FALSE
+			if(WEAR_ACCESSORY)
+				for(var/obj/item/clothing/C in H.contents)
+					if(C.can_attach_accessory(src))
+						return TRUE
+				return FALSE
 			if(WEAR_J_STORE)
 				if(H.s_store)
 					return FALSE
@@ -502,10 +507,15 @@ cases. Override_icon_state should be a list.*/
 				return 1
 			if(WEAR_IN_ACCESSORY)
 				if(H.w_uniform)
-					for(var/obj/item/clothing/accessory/storage/T in H.w_uniform.accessories)
-						var/obj/item/storage/internal/I = T.hold
-						if(I.can_be_inserted(src, 1))
-							return 1
+					for(var/A in H.w_uniform.accessories)
+						if(istype(A, /obj/item/clothing/accessory/storage))
+							var/obj/item/clothing/accessory/storage/S = A
+							if(S.hold.can_be_inserted(src, TRUE))
+								return TRUE
+						else if(istype(A, /obj/item/clothing/accessory/holster))
+							var/obj/item/clothing/accessory/holster/AH = A
+							if(!(AH.holstered) && AH.can_holster(src))
+								return TRUE
 				return FALSE
 			if(WEAR_IN_JACKET)
 				if(H.wear_suit)

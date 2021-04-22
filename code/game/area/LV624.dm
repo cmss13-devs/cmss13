@@ -216,6 +216,11 @@
 	name = "\improper Sand Temple"
 	icon_state = "bluenew"
 
+/area/lv624/ground/caves/sand_temple/powered
+	name = "\improper Sand Temple - Powered"
+	icon_state = "green"
+	requires_power = FALSE
+
 //Lazarus landing
 /area/lv624/lazarus
 	name = "\improper Lazarus"

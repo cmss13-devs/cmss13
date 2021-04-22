@@ -142,6 +142,16 @@ obj/structure/platform_decoration
 	desc = "A collection of stones and rocks that provide ample grappling and vaulting opportunity. Indicates a change in elevation. You could probably climb it."
 
 /obj/structure/platform_decoration/kutjevo/rock
-	icon_state = "kutjevo_rock_deco"
 	name = "raised rock corner"
 	desc = "A collection of stones and rocks that cap the edge of some conveniently 1 meter long lengths of perfectly climbable chest high walls."
+	icon_state = "kutjevo_rock_deco"
+
+/obj/structure/platform/sandstone
+	name = "sandstone platform"
+	desc = "A platform supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
+	icon_state = "sandstone"
+
+/obj/structure/platform_decoration/sandstone
+	name = "sandstone platform corner"
+	desc = "A platform corner supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
+	icon_state = "sandstone_deco"

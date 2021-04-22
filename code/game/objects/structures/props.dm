@@ -454,7 +454,7 @@
 
 /obj/structure/prop/brazier/Initialize()
 	. = ..()
-	SetLuminosity(4)
+	SetLuminosity(6)
 
 /obj/structure/prop/brazier/torch
 	name = "torch"

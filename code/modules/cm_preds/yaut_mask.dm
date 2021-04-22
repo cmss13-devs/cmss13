@@ -68,14 +68,17 @@
 	set desc = "Toggle your mask visor sights. You must only be wearing a type of Yautja visor for this to work."
 	set category = "Yautja"
 	set src in usr
-	if(!usr || usr.stat) return
+	if(!usr || usr.stat)
+		return
 	var/mob/living/carbon/human/M = usr
-	if(!istype(M)) return
+	if(!istype(M))
+		return
 	if(M.species && M.species.name != "Yautja")
 		to_chat(M, SPAN_WARNING("You have no idea how to work these things!"))
 		return
 	current_goggles++
-	if(current_goggles > 3) current_goggles = 0
+	if(current_goggles > 3)
+		current_goggles = 0
 	add_vision(M)
 
 /obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user)
@@ -121,22 +124,22 @@
 		add_vision(user)
 	..()
 
-/obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/mob) //Clear the gogglors if the helmet is removed.
-	if(istype(mob) && mob.wear_mask == src) //inventory reference is only cleared after dropped().
-		var/obj/item/G = mob.glasses
+/obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/user) //Clear the gogglors if the helmet is removed.
+	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
+		var/obj/item/G = user.glasses
 		if(G)
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
-				mob.temp_drop_inv_item(G)
+				user.temp_drop_inv_item(G)
 				qdel(G)
-				mob.update_inv_glasses()
+				user.update_inv_glasses()
 		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
-		H.remove_hud_from(mob)
+		H.remove_hud_from(user)
 		H = huds[MOB_HUD_XENO_STATUS]
-		H.remove_hud_from(mob)
+		H.remove_hud_from(user)
 		H = huds[MOB_HUD_HUNTER_CLAN]
-		H.remove_hud_from(mob)
+		H.remove_hud_from(user)
 		H = huds[MOB_HUD_HUNTER]
-		H.remove_hud_from(mob)
+		H.remove_hud_from(user)
 	add_to_missing_pred_gear(src)
 	..()
 
@@ -148,3 +151,39 @@
 /obj/item/clothing/mask/gas/yautja/Destroy()
 	remove_from_missing_pred_gear(src)
 	return ..()
+
+//flavor, not a subtype
+/obj/item/clothing/mask/yautja_flavor
+	name = "stone clan mask"
+	desc = "A beautifully designed face mask, ornate but non-functional and made entirely of stone."
+	icon_state = "pred_mask1"
+	item_state = "helmet"
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
+	flags_cold_protection = BODY_FLAG_HEAD
+	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDELOWHAIR
+	flags_item = ITEM_PREDATOR
+	unacidable = TRUE
+	item_state_slots = list(WEAR_FACE = "pred_mask1")
+	var/map_random = FALSE
+
+/obj/item/clothing/mask/yautja_flavor/Initialize(mapload, ...)
+	. = ..()
+	if(mapload && !map_random)
+		return
+
+	var/list/possible_masks = list(1,2,3,4,5,6,7,8,9,10,11) //12
+	var/mask_number = rand(1,11)
+	if(mask_number in possible_masks)
+		icon_state = "pred_mask[mask_number]"
+		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]")
+
+/obj/item/clothing/mask/yautja_flavor/map_random
+	map_random = TRUE

@@ -22,6 +22,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "ae" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor/kutjevo/colors/cyan/edge{
 	dir = 1
 	},
@@ -303,6 +304,10 @@
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/scrubland)
+"be" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany)
 "bf" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -1783,6 +1788,7 @@
 	pixel_x = 8;
 	pixel_y = 13
 	},
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/kutjevo/colors/orange/edge,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "fT" = (
@@ -3332,7 +3338,18 @@
 /area/kutjevo/interior/colony_central)
 "kV" = (
 /obj/structure/surface/table/almayer,
-/obj/item/weapon/gun/shotgun/combat,
+/obj/item/weapon/gun/shotgun/combat{
+	layer = 3.1;
+	pixel_y = -5
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -10;
+	pixel_y = 5
+	},
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "kW" = (
@@ -3790,6 +3807,7 @@
 	dir = 1;
 	pixel_y = 20
 	},
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
 "mw" = (
@@ -4984,6 +5002,10 @@
 /obj/structure/machinery/door/poddoor/shutters/almayer,
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med)
+"ql" = (
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/runoff_bridge)
 "qm" = (
 /turf/open/floor/kutjevo/colors,
 /area/kutjevo/interior/complex/med/pano)
@@ -5967,6 +5989,7 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/kutjevo/colors/red,
 /area/kutjevo/interior/complex/botany)
 "to" = (
@@ -5975,6 +5998,10 @@
 	dir = 1
 	},
 /area/kutjevo/interior/oob)
+"tp" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/kutjevo/colors/cyan,
+/area/kutjevo/interior/complex/med/auto_doc)
 "tq" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/engineering_construction,
@@ -6360,6 +6387,13 @@
 	dir = 8
 	},
 /area/kutjevo/interior/complex/med/operating)
+"uz" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/interior/complex/botany)
 "uA" = (
 /obj/structure/flora/bush/ausbushes/grassybush{
 	pixel_x = 5;
@@ -8834,9 +8868,17 @@
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
+"CG" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/kutjevo/tan/multi_tiles,
+/area/kutjevo/exterior/runoff_bridge)
 "CH" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/med/locks)
+"CI" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/kutjevo/colors/cyan/tile,
+/area/kutjevo/interior/complex/med/cells)
 "CJ" = (
 /obj/structure/largecrate/guns/merc,
 /turf/open/auto_turf/sand/layer0,
@@ -9093,12 +9135,11 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/complex_border/botany_medical_cave)
 "Dy" = (
-/obj/structure/bed/chair{
-	dir = 8;
-	tag = "icon-chair (WEST)"
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
+/turf/open/floor/kutjevo/colors/cyan/inner_corner{
+	dir = 1
 	},
-/turf/open/floor/kutjevo/colors/cyan,
-/area/kutjevo/interior/complex/med/auto_doc)
+/area/kutjevo/interior/complex/med/operating)
 "Dz" = (
 /obj/item/clothing/suit/armor/vest/security,
 /obj/item/clothing/suit/armor/vest/security,
@@ -10079,6 +10120,10 @@
 	},
 /turf/open/floor/kutjevo/colors/green/tile,
 /area/kutjevo/interior/complex/botany)
+"GM" = (
+/obj/item/ammo_magazine/shotgun/buckshot,
+/turf/open/floor/kutjevo/tan,
+/area/kutjevo/interior/complex/med)
 "GN" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics{
 	draw_warnings = 0;
@@ -12912,9 +12957,6 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "PX" = (
-/obj/structure/bed/chair{
-	dir = 4
-	},
 /turf/open/floor/kutjevo/colors/cyan/inner_corner,
 /area/kutjevo/interior/complex/med/auto_doc)
 "PY" = (
@@ -13187,6 +13229,12 @@
 	dir = 10
 	},
 /area/kutjevo/interior/construction)
+"QR" = (
+/obj/item/prop/helmetgarb/spent_buckshot,
+/turf/open/floor/kutjevo/tan/multi_tiles{
+	dir = 1
+	},
+/area/kutjevo/exterior/runoff_bridge)
 "QS" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = -28
@@ -14612,6 +14660,10 @@
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
+"Vx" = (
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/turf/open/floor/kutjevo/colors/green,
+/area/kutjevo/interior/complex/botany)
 "Vy" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -15140,6 +15192,7 @@
 	},
 /area/kutjevo/interior/construction)
 "Xe" = (
+/obj/structure/machinery/cm_vending/sorted/medical/no_access,
 /turf/open/floor/kutjevo/tiles,
 /area/kutjevo/interior/complex/med/operating)
 "Xf" = (
@@ -28485,9 +28538,9 @@ Mn
 Mn
 OA
 Lf
+ql
 Ps
-Ps
-Ps
+lM
 Lf
 OA
 Mn
@@ -28651,7 +28704,7 @@ Uq
 wF
 zW
 ed
-Lf
+QR
 Ps
 Ps
 Ps
@@ -28819,8 +28872,8 @@ rt
 jh
 ed
 Lf
-Ps
-Ps
+ha
+CG
 Ps
 Lf
 OW
@@ -30273,7 +30326,7 @@ JT
 OE
 OE
 zt
-nR
+tp
 BK
 BK
 BK
@@ -31611,7 +31664,7 @@ ye
 BK
 BK
 jc
-Dy
+jc
 lb
 Oa
 pT
@@ -31761,7 +31814,7 @@ jd
 mW
 qV
 xV
-RJ
+Dy
 PC
 rg
 TU
@@ -31971,11 +32024,11 @@ SR
 SR
 SR
 SR
-JW
+uz
 SU
 YL
-Qm
-Jm
+be
+Vx
 Qm
 YL
 yI
@@ -32143,7 +32196,7 @@ YL
 KB
 Gq
 Jm
-Qm
+be
 Qv
 YL
 YL
@@ -33108,7 +33161,7 @@ ji
 rg
 ak
 xg
-Ej
+CI
 Ej
 oT
 Nv
@@ -34961,7 +35014,7 @@ Dw
 RK
 qk
 ky
-Zr
+GM
 ky
 jz
 hC

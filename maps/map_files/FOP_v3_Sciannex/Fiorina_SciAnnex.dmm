@@ -525,14 +525,12 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "ami" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
+/obj/item/stack/sandbags/large_stack,
 /turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+	dir = 8;
+	icon_state = "darkyellow2"
 	},
-/area/fiorina/lz/near_lzI)
+/area/fiorina/station/flight_deck)
 "amj" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "sheater0"
@@ -687,6 +685,9 @@
 	dir = 4;
 	icon_state = "gib6";
 	tag = "icon-gib6"
+	},
+/obj/item/stack/sheet/metal{
+	amount = 5
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -1623,17 +1624,14 @@
 	},
 /area/fiorina/tumor/servers)
 "aQE" = (
-/obj/structure/barricade/sandbags{
-	icon_state = "sandbag_0";
-	layer = 2.97;
-	pixel_y = -14
+/obj/item/stack/sheet/metal{
+	amount = 5
 	},
 /turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
+	dir = 1;
+	icon_state = "darkyellow2"
 	},
-/area/fiorina/station/disco)
+/area/fiorina/lz/near_lzI)
 "aQK" = (
 /obj/item/trash/uscm_mre,
 /obj/effect/landmark/corpsespawner/ua_riot,
@@ -6190,22 +6188,14 @@
 	},
 /area/fiorina/station/lowsec)
 "dIa" = (
-/obj/structure/platform{
-	dir = 8
-	},
-/obj/structure/barricade/metal/wired,
-/obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
-	icon_state = "engineering_h";
-	layer = 2.5;
-	pixel_y = -11
+/obj/item/stack/sheet/metal{
+	amount = 5
 	},
 /turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
+	dir = 9;
+	icon_state = "darkyellow2"
 	},
-/area/fiorina/station/flight_deck)
+/area/fiorina/lz/near_lzI)
 "dIi" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_full"
@@ -8753,10 +8743,6 @@
 	dir = 4;
 	icon_state = "sandbag_0";
 	pixel_y = 2
-	},
-/obj/structure/barricade/sandbags{
-	icon_state = "sandbag_0";
-	pixel_y = -14
 	},
 /turf/open/floor/prison,
 /area/fiorina/station/flight_deck)
@@ -18344,20 +18330,13 @@
 	},
 /area/fiorina/station/lowsec)
 "lbe" = (
-/obj/structure/barricade/sandbags{
-	dir = 1;
-	icon_state = "sandbag_0"
-	},
-/obj/structure/barricade/sandbags{
-	dir = 8;
-	icon_state = "sandbag_0";
-	pixel_y = -9
+/obj/item/stack/sheet/metal{
+	amount = 5
 	},
 /turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
+	icon_state = "darkyellow2"
 	},
-/area/fiorina/station/flight_deck)
+/area/fiorina/lz/near_lzI)
 "lbk" = (
 /obj/effect/spawner/random/tech_supply,
 /obj/structure/machinery/light/double/blue{
@@ -19572,16 +19551,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/park)
-"lQz" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
-	},
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
-/area/fiorina/lz/near_lzI)
 "lQZ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/emails{
@@ -19839,12 +19808,14 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "mbe" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib3"
 	},
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/prison,
-/area/fiorina/lz/near_lzI)
+/turf/open/floor/prison{
+	dir = 8;
+	icon_state = "darkyellow2"
+	},
+/area/fiorina/station/flight_deck)
 "mbg" = (
 /obj/structure/machinery/light/double/blue,
 /turf/open/floor/plating/plating_catwalk/prison,
@@ -20243,10 +20214,7 @@
 	},
 /area/fiorina/station/flight_deck)
 "mki" = (
-/obj/structure/barricade/sandbags{
-	icon_state = "sandbag_0";
-	pixel_y = -14
-	},
+/obj/item/stack/sandbags_empty/half,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "darkyellow2"
@@ -23084,11 +23052,15 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "nZT" = (
-/obj/structure/barricade/metal/wired{
-	dir = 4
+/obj/effect/decal/cleanable/blood/xeno{
+	icon_state = "xgib3"
 	},
-/turf/open/floor/prison,
-/area/fiorina/lz/near_lzI)
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate (SOUTHWEST)"
+	},
+/area/fiorina/station/flight_deck)
 "oan" = (
 /obj/item/trash/semki,
 /turf/open/floor/prison,
@@ -24313,9 +24285,6 @@
 /obj/structure/barricade/metal/wired{
 	dir = 1
 	},
-/obj/structure/barricade/metal/wired{
-	dir = 8
-	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -25254,7 +25223,9 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/obj/structure/barricade/metal/wired,
+/obj/item/stack/sheet/metal{
+	amount = 5
+	},
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -25425,6 +25396,9 @@
 /area/fiorina/station/research_cells)
 "pzV" = (
 /obj/item/ammo_box/magazine/M16,
+/obj/item/stack/sheet/metal{
+	amount = 5
+	},
 /turf/open/floor/prison{
 	dir = 6;
 	icon_state = "darkyellow2"
@@ -25446,12 +25420,14 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "pAt" = (
-/obj/structure/barricade/metal/wired,
 /obj/effect/decal{
 	icon = 'icons/obj/items/policetape.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
+	},
+/obj/item/stack/sheet/metal{
+	amount = 5
 	},
 /turf/open/floor/prison{
 	dir = 8;
@@ -26184,10 +26160,7 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "pYp" = (
-/obj/structure/barricade/sandbags{
-	dir = 8;
-	icon_state = "sandbag_0"
-	},
+/obj/item/stack/sandbags/large_stack,
 /turf/open/floor/prison{
 	dir = 1;
 	icon_state = "darkyellow2"
@@ -28016,7 +27989,6 @@
 	},
 /area/fiorina/station/botany)
 "qWa" = (
-/obj/structure/barricade/metal/wired,
 /obj/item/weapon/gun/rifle/m16,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
@@ -29676,7 +29648,6 @@
 /obj/structure/barricade/metal/wired{
 	dir = 8
 	},
-/obj/structure/barricade/metal/wired,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -30563,19 +30534,6 @@
 	icon_state = "greenblue"
 	},
 /area/fiorina/station/botany)
-"sAU" = (
-/obj/structure/barricade/metal/wired,
-/obj/effect/decal{
-	icon = 'icons/obj/items/policetape.dmi';
-	icon_state = "engineering_h";
-	layer = 2.5;
-	pixel_y = -11
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkyellow2"
-	},
-/area/fiorina/station/flight_deck)
 "sBl" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/glass/bottle/spaceacillin{
@@ -33303,15 +33261,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/servers)
-"uif" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
-	dir = 1
-	},
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
-	dir = 1
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/central_ring)
 "uix" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor/prison,
@@ -33904,13 +33853,13 @@
 	},
 /area/fiorina/station/medbay)
 "uCu" = (
-/obj/structure/barricade/metal/wired,
 /obj/effect/decal{
 	icon = 'icons/obj/items/policetape.dmi';
 	icon_state = "engineering_h";
 	layer = 2.5;
 	pixel_y = -11
 	},
+/obj/structure/barricade/metal/wired,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "floor_plate";
@@ -34867,11 +34816,6 @@
 	},
 /area/fiorina/station/park)
 "viH" = (
-/obj/structure/barricade/sandbags{
-	dir = 8;
-	icon_state = "sandbag_0";
-	pixel_y = 2
-	},
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor/prison{
 	dir = 6;
@@ -35915,14 +35859,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/power_ring)
-"vOK" = (
-/obj/structure/barricade/metal/wired,
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
-	},
-/area/fiorina/lz/near_lzI)
 "vOP" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/floor/prison{
@@ -37593,21 +37529,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzI)
-"wRQ" = (
-/obj/structure/barricade/sandbags{
-	dir = 8;
-	icon_state = "sandbag_0"
-	},
-/obj/structure/barricade/sandbags{
-	icon_state = "sandbag_0";
-	pixel_y = -14
-	},
-/turf/open/floor/prison{
-	dir = 10;
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate (SOUTHWEST)"
-	},
-/area/fiorina/station/flight_deck)
 "wRW" = (
 /obj/structure/prop/resin_prop{
 	dir = 1;
@@ -39512,8 +39433,8 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/fiberbush)
 "ybR" = (
-/obj/structure/barricade/metal/wired{
-	dir = 1
+/obj/item/stack/sheet/metal{
+	amount = 5
 	},
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -69614,7 +69535,7 @@ tvI
 jfm
 hZY
 dvY
-uif
+fdV
 cME
 cME
 cME
@@ -84036,7 +83957,7 @@ vAi
 mNJ
 bVk
 oan
-wXf
+nZT
 jOO
 ere
 pOd
@@ -84237,8 +84158,8 @@ mQZ
 iOJ
 ozh
 rsW
-aQE
-gCb
+mQZ
+iOJ
 viH
 eJP
 bEX
@@ -84430,7 +84351,7 @@ dpt
 wXf
 jLs
 pYp
-wRQ
+wXf
 xbB
 dzl
 bQM
@@ -84651,7 +84572,7 @@ lRT
 xDw
 lRT
 dzk
-vOK
+cfN
 hlK
 vTT
 bIX
@@ -84669,7 +84590,7 @@ fGM
 vpk
 bhX
 aRG
-aRG
+vAi
 fpl
 aRG
 wXf
@@ -84850,7 +84771,7 @@ xng
 xng
 xng
 dJl
-xng
+ami
 xng
 vea
 bsJ
@@ -84863,7 +84784,7 @@ aag
 jgW
 lHL
 ggh
-vOK
+cfN
 vsq
 ltV
 vTT
@@ -84872,7 +84793,7 @@ vTB
 vTB
 vTB
 vTB
-dIa
+bQh
 vTB
 bQh
 vTB
@@ -85062,7 +84983,7 @@ pOd
 pOd
 pOd
 pOd
-lbe
+pOd
 skO
 gxL
 pOd
@@ -85073,9 +84994,9 @@ kLQ
 qHC
 qHC
 ybR
-ami
 qHC
-lQz
+qHC
+ybR
 qHC
 xZk
 sEi
@@ -85094,7 +85015,7 @@ hWJ
 xng
 iah
 xng
-xng
+mbe
 xng
 xng
 bsJ
@@ -85298,7 +85219,7 @@ dxO
 dxO
 mjD
 dxO
-sAU
+mjD
 rmG
 mjD
 dxO
@@ -85497,7 +85418,7 @@ lRT
 iJf
 qHC
 doB
-tRa
+dIa
 ltV
 aBm
 qHC
@@ -85920,7 +85841,7 @@ kjo
 eBs
 iJf
 qWa
-iJf
+aQE
 iJf
 hlK
 hlK
@@ -85939,7 +85860,7 @@ bQM
 dzl
 dzl
 bVk
-aRG
+vAi
 kwm
 cll
 qmO
@@ -86555,12 +86476,12 @@ rXT
 uxY
 lRT
 aKc
-bGr
+ybR
 iJf
 joD
 hlK
-xmM
-qHC
+hlK
+ybR
 iRy
 xDw
 bTo
@@ -86770,7 +86691,7 @@ fye
 fsf
 iJf
 iJf
-hlK
+lbe
 cWU
 gxx
 tGF
@@ -88039,8 +87960,8 @@ hKI
 hjW
 rMP
 fxY
-nZT
-mbe
+hKI
+hKI
 iJf
 hlK
 hKI

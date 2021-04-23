@@ -124,6 +124,7 @@
 #define XENO_HIVE_BRAVO "xeno_hive_bravo"
 #define XENO_HIVE_CHARLIE "xeno_hive_charlie"
 #define XENO_HIVE_DELTA "xeno_hive_delta"
+#define XENO_HIVE_FERAL "xeno_hive_feral"
 #define XENO_HIVE_SUBMISSIVE "xeno_hive_submissive"
 
 //=================================================

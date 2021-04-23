@@ -3,7 +3,7 @@
 /datum/emergency_call/xenos
 	name = "Xenomorphs (Squad)"
 	mob_max = 7
-	probability = 10
+	probability = 5
 	auto_shuttle_launch = TRUE //because xenos can't use the shuttle console.
 	hostility = TRUE
 

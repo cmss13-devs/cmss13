@@ -345,6 +345,7 @@
 #include "code\datums\emergency_calls\deus_vult.dm"
 #include "code\datums\emergency_calls\dutch.dm"
 #include "code\datums\emergency_calls\emergency_call.dm"
+#include "code\datums\emergency_calls\feral_xenos.dm"
 #include "code\datums\emergency_calls\hefa_knight.dm"
 #include "code\datums\emergency_calls\mercs.dm"
 #include "code\datums\emergency_calls\pirates.dm"

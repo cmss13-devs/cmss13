@@ -31,11 +31,11 @@
 						return
 					if(!SSticker.mode.xeno_bypass_timer)
 						var/deathtime = world.time - timeofdeath
-						if(deathtime < 5 MINUTES)
+						if(deathtime < 2.5 MINUTES)
 							var/message = "You have been dead for [DisplayTimeText(deathtime)]."
 							message = SPAN_WARNING("[message]")
 							to_chat(src, message)
-							to_chat(src, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
+							to_chat(src, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
 							return 0
 						if((!isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER) || (isXenoLarva(X) && X.away_timer < XENO_LEAVE_TIMER_LARVA))
 							var/to_wait = XENO_LEAVE_TIMER - X.away_timer

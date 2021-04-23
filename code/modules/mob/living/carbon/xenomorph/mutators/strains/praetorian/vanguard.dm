@@ -10,6 +10,7 @@
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+		/datum/action/xeno_action/activable/corrosive_acid,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/pierce,
@@ -28,6 +29,7 @@
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	P.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
 	P.health_modifier -= XENO_HEALTH_MOD_VERYLARGE
+	P.claw_type = CLAW_TYPE_SHARP
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)
 	P.recalculate_everything()

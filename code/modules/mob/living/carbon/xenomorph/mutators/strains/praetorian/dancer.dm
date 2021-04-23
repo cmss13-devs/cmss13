@@ -29,7 +29,7 @@
 	P.armor_modifier -= XENO_ARMOR_MOD_VERYSMALL
 	P.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
 	P.plasma_types = list(PLASMA_CATECHOLAMINE)
-	P.claw_type = CLAW_TYPE_VERY_SHARP
+	P.claw_type = CLAW_TYPE_SHARP
 
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)

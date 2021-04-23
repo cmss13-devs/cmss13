@@ -11,6 +11,7 @@
 		/datum/action/xeno_action/activable/pounce/base_prae_dash,
 		/datum/action/xeno_action/activable/prae_acid_ball,
 		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+		/datum/action/xeno_action/activable/corrosive_acid,
 	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/prae_abduct,
@@ -32,6 +33,7 @@
 	P.small_explosives_stun = FALSE
 	P.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	P.plasma_types = list(PLASMA_NEUROTOXIN, PLASMA_CHITIN)
+	P.claw_type = CLAW_TYPE_SHARP
 
 	mutator_update_actions(P)
 

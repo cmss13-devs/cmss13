@@ -465,7 +465,7 @@
 
 
 	if(isYautja(user))
-		to_chat(user, SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor."))
+		to_chat(user, SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey."))
 		if(src.hunter_data.hunted)
 			to_chat(user, SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name]."))
 

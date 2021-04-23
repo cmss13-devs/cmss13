@@ -65,7 +65,7 @@
 	if(linked_hive)
 		linked_hive.remove_special_structure(src)
 		if(linked_hive.living_xeno_queen)
-			xeno_message("Hive: \A [name] has been destroyed at [sanitize(get_area(src))]!", 3, linked_hive.hivenumber)
+			xeno_message("Hive: \A [name] has been destroyed at [sanitize(get_area_name(src))]!", 3, linked_hive.hivenumber)
 	linked_hive = null
 	STOP_PROCESSING(SSfastobj, src)
 

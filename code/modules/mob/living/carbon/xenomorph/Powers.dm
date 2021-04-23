@@ -139,7 +139,7 @@
 	if(!structure_template || !check_state() || action_busy)
 		return
 
-	var/area/current_area = get_area(current_turf)
+	var/current_area_name = get_area_name(current_turf)
 	var/obj/effect/alien/resin/construction/new_structure = new(current_turf, hive)
 	new_structure.set_template(structure_template)
 	hive.add_construction(new_structure)
@@ -149,4 +149,4 @@
 	playsound(new_structure, "alien_resin_build", 25)
 
 	if(hive.living_xeno_queen)
-		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize(current_area)]!", 3, hivenumber)
+		xeno_message("Hive: A new <b>[structure_template]<b> construction has been designated at [sanitize(current_area_name)]!", 3, hivenumber)

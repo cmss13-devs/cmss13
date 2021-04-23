@@ -344,7 +344,9 @@ var/list/datum/mob_hud/huds = list(
 		holder2.icon_state = "hudsynth"
 		holder3.icon_state = "hudsynth"
 	else
-		var/revive_enabled = check_tod() && is_revivable()
+		var/revive_enabled = stat == DEAD && check_tod() && is_revivable()
+		if(stat == DEAD)
+			revive_enabled = check_tod() && is_revivable()
 		var/datum/internal_organ/heart/heart = islist(internal_organs_by_name) ? internal_organs_by_name["heart"] : null
 
 		var/holder2_set = 0

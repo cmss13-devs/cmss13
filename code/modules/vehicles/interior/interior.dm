@@ -134,7 +134,7 @@
 			//whether we put human in some category
 			var/role_slot_taken = FALSE
 			var/mob/living/carbon/human/H = M
-			if(!H.is_revivable())
+			if(H.stat == DEAD && !H.is_revivable())
 				continue
 
 			//if we have any special roles slots, we check them first
@@ -185,7 +185,7 @@
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.is_revivable())
+		if(H.stat != DEAD || H.is_revivable())
 			//whether we put human in some category
 			var/role_slot_taken = FALSE
 			//if we have any special roles slots, we check them first

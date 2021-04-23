@@ -91,8 +91,9 @@
 	if(isnull(internal_organs_by_name) || isnull(internal_organs_by_name["heart"]))
 		return FALSE
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
+	var/obj/limb/head = get_limb("head")
 
-	if(!get_limb("head") || !heart || heart.is_broken() || !has_brain() || chestburst || status_flags & PERMANENTLY_DEAD)
+	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || heart.is_broken() || !has_brain() || status_flags & PERMANENTLY_DEAD)
 		return FALSE
 	return TRUE
 

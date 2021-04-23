@@ -825,6 +825,18 @@
 
 	dynamic_evolution = FALSE
 
+/datum/hive_status/feral
+	name = "Feral Hive"
+	hivenumber = XENO_HIVE_FERAL
+	prefix = "Feral "
+	color = "#828296"
+	ui_color = "#828296"
+
+	dynamic_evolution = FALSE
+	allow_no_queen_actions = TRUE
+	allow_queen_evolve = FALSE
+	ignore_slots = TRUE
+
 /datum/hive_status/corrupted/submissive
 	name = "Submissive Hive"
 	hivenumber = XENO_HIVE_SUBMISSIVE

@@ -23,6 +23,21 @@ FIRE ALARM
 	var/wiresexposed = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
 
+/obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
+	. = ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+
+/obj/structure/machinery/firealarm/proc/sec_changed(datum/source, new_sec)
+	SIGNAL_HANDLER
+	switch(new_sec)
+		if(SEC_LEVEL_GREEN)
+			icon_state = "fire0"
+		if(SEC_LEVEL_BLUE)
+			icon_state = "fireblue"
+		if(SEC_LEVEL_RED, SEC_LEVEL_DELTA)
+			icon_state = "firered"
+
 /obj/structure/machinery/firealarm/update_icon()
 
 	if(wiresexposed)

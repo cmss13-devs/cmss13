@@ -304,7 +304,7 @@
 			if(!level_selected)
 				return
 
-			set_security_level(level_selected)
+			set_security_level(seclevel2num(level_selected))
 
 			log_game("[key_name(usr)] has changed the security level to [get_security_level()].")
 			message_staff("[key_name_admin(usr)] has changed the security level to [get_security_level()].")

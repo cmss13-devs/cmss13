@@ -34,6 +34,9 @@
 ///from /datum/controller/subsystem/ticker/PostSetup
 #define COMSIG_GLOB_POST_SETUP "!post_setup"
 
+///from /proc/set_security_level
+#define COMSIG_GLOB_SECURITY_LEVEL_CHANGED "!security_level_changed"
+
 //////////////////////////////////////////////////////////////////
 
 #define COMSIG_CLIENT_LMB_DOWN "client_lmb_down"

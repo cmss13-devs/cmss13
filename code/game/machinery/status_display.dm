@@ -46,6 +46,17 @@
 	. = ..()
 	set_picture("default")
 
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+
+/obj/structure/machinery/status_display/proc/sec_changed(datum/source, new_sec)
+	SIGNAL_HANDLER
+	switch(new_sec)
+		if(SEC_LEVEL_GREEN, SEC_LEVEL_BLUE)
+			set_picture("default")
+		if(SEC_LEVEL_RED, SEC_LEVEL_DELTA)
+			set_picture("redalert")
+
 /obj/structure/machinery/status_display/emp_act(severity)
 	if(inoperable())
 		..(severity)

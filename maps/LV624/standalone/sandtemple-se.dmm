@@ -16,10 +16,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "br" = (
 /obj/structure/flora/bush/ausbushes/var3/ywflowers,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "cC" = (
 /obj/structure/flora/jungle/vines,
@@ -31,7 +28,7 @@
 	pixel_x = 0;
 	pixel_y = 0
 	},
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "gO" = (
 /obj/structure/flora/jungle/vines{
@@ -50,10 +47,7 @@
 	icon_state = "light_2";
 	pixel_y = -22
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "jc" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -105,14 +99,11 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "un" = (
 /obj/structure/flora/bush/ausbushes/reedbush,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "ur" = (
 /obj/structure/flora/jungle/vines{
@@ -127,6 +118,9 @@
 	},
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
+"xk" = (
+/turf/closed/wall/mineral/sandstone/runed/decor,
+/area/lv624/ground/jungle/south_east_jungle)
 "yg" = (
 /obj/structure/flora/jungle/vines/heavy{
 	icon_state = "heavy_6";
@@ -136,10 +130,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "zg" = (
 /obj/structure/flora/jungle/vines{
@@ -150,10 +141,7 @@
 /area/lv624/lazarus/landing_zones/lz1)
 "Be" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "CW" = (
 /obj/structure/flora/jungle/vines/heavy{
@@ -168,10 +156,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "LV" = (
 /turf/open/gm/grass,
@@ -197,10 +182,7 @@
 	pixel_x = 0;
 	pixel_y = 26
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "UA" = (
 /obj/structure/flora/jungle/vines{
@@ -214,7 +196,7 @@
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
 "Wl" = (
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "Wp" = (
 /obj/structure/flora/jungle/vines{
@@ -235,7 +217,7 @@
 	icon_state = "light_2";
 	pixel_y = -22
 	},
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "WQ" = (
 /turf/open/gm/dirtgrassborder{
@@ -246,10 +228,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/jungle/south_east_jungle)
 "Xy" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "Xz" = (
 /obj/effect/landmark/monkey_spawn,
@@ -275,7 +254,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "XS" = (
 /obj/structure/flora/jungle/vines/heavy,
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/lv624/ground/jungle/south_east_jungle)
 "Ya" = (
 /obj/effect/landmark/lv624/xeno_tunnel,
@@ -391,7 +370,7 @@ YD
 YD
 qo
 UA
-Wl
+xk
 EZ
 Xl
 Xy
@@ -413,7 +392,7 @@ Xy
 Xy
 Xy
 un
-Wl
+xk
 rA
 aK
 "}
@@ -439,7 +418,7 @@ qo
 qo
 qo
 qo
-Wl
+xk
 EZ
 Xy
 Xy
@@ -522,7 +501,7 @@ aK
 Wl
 Wl
 Wl
-Wl
+xk
 Wl
 qo
 qo

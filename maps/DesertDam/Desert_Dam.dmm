@@ -8316,7 +8316,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "axp" = (
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "axq" = (
 /obj/effect/decal/sand_overlay/sand2/corner2{
@@ -8551,10 +8551,7 @@
 	},
 /area/desert_dam/interior/lab_northeast/east_lab_west_hallway)
 "ayc" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "ayd" = (
 /obj/structure/showcase{
@@ -8636,10 +8633,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "ayq" = (
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "ayr" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -8715,10 +8709,7 @@
 /obj/item/weapon/melee/harpoon/yautja{
 	name = "Alien Harpoon"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "ayD" = (
 /turf/open/desert/rock/deep/transition,
@@ -8821,10 +8812,7 @@
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "ayS" = (
 /turf/open/floor/prison{
@@ -8999,10 +8987,7 @@
 "azn" = (
 /obj/effect/decal/remains/xeno,
 /obj/effect/landmark/yautja_teleport,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "azo" = (
 /turf/open/floor/prison{
@@ -9101,10 +9086,7 @@
 "azC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "azD" = (
 /obj/structure/machinery/colony_floodlight,
@@ -9169,10 +9151,7 @@
 /area/desert_dam/exterior/valley/valley_crashsite)
 "azL" = (
 /obj/effect/decal/remains/xeno,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "azM" = (
 /obj/effect/decal/sand_overlay/sand2{
@@ -9277,10 +9256,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aAd" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aAe" = (
 /turf/open/desert/excavation/component8,
@@ -9373,7 +9349,7 @@
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aAv" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aAw" = (
 /obj/structure/flora/bush/desert/cactus/multiple{
@@ -9647,13 +9623,8 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aBm" = (
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aBn" = (
 /obj/effect/decal/warning_stripes{
@@ -9667,17 +9638,11 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aBo" = (
-/obj/structure/machinery/door/airlock/sandstone{
-	desc = "This strange temple is covered in runes. It looks extremely ancient.";
-	icon_state = "door_locked";
-	locked = 1;
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/airlock/sandstone/runed{
 	name = "Strange Temple"
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aBp" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
@@ -9751,16 +9716,10 @@
 /turf/open/desert/excavation/component9,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "aBz" = (
-/obj/structure/machinery/door/airlock/sandstone{
-	desc = "This strange temple is covered in runes. It looks extremely ancient.";
-	icon_state = "door_locked";
-	locked = 1;
+/obj/structure/machinery/door/airlock/sandstone/runed{
 	name = "Strange Temple"
 	},
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aBA" = (
 /turf/open/desert/excavation/component9{
@@ -9785,10 +9744,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aBF" = (
 /obj/structure/stairs{
@@ -9842,9 +9798,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
 "aBL" = (
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/desert/rock,
 /area/desert_dam/interior/caves/east_caves)
 "aBN" = (
@@ -9873,14 +9827,9 @@
 	},
 /area/desert_dam/interior/caves/east_caves)
 "aBS" = (
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
 /obj/structure/surface/table,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aBT" = (
 /obj/structure/disposalpipe/segment,
@@ -9892,18 +9841,12 @@
 /obj/effect/decal/remains/xeno,
 /obj/structure/surface/table,
 /obj/effect/landmark/good_item,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aBV" = (
 /obj/structure/surface/table,
 /obj/item/weapon/melee/harpoon,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/east_caves)
 "aBW" = (
 /turf/open/gm/river/desert/shallow_edge{

@@ -36,11 +36,10 @@
 	matter = list("plastic" = 7500)
 	var/used = 0
 
-/obj/item/bodybag/cryobag/New(loc, obj/structure/closet/bodybag/cryobag/CB)
-	..()
+/obj/item/bodybag/cryobag/Initialize(mapload, obj/structure/closet/bodybag/cryobag/CB)
+	. = ..()
 	if(CB)
 		used = CB.used
-
 
 /obj/item/storage/box/bodybags
 	name = "body bags"
@@ -222,6 +221,14 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
+/obj/structure/closet/bodybag/cryobag/update_icon()
+	. = ..()
+	// Bump up a living player in the bag to layer of an actual corpse and not just an accidentally coverable prop
+	if(stasis_mob)
+		layer = LYING_BETWEEN_MOB_LAYER
+	else
+		layer = initial(layer)
+
 /obj/structure/closet/bodybag/cryobag/open()
 	var/mob/living/L = locate() in contents
 	if(L)
@@ -255,6 +262,7 @@
 	if(H)
 		stasis_mob = H
 		START_PROCESSING(SSobj, src)
+		update_icon()
 
 /obj/structure/closet/bodybag/cryobag/process()
 	used++

@@ -43,7 +43,7 @@
 #define GUN_WIELDED_FIRING_ONLY	(1<<13)
 #define GUN_HAS_FULL_AUTO		(1<<14)
 #define GUN_FULL_AUTO_ON		(1<<15)
-#define GUN_ONE_HAND_WIELDED	(1<<16) //removes unwielded penalties, the configs will do nothing
+#define GUN_ONE_HAND_WIELDED	(1<<16) //removes unwielded accuracy and scatter penalties (not recoil)
 #define GUN_ANTIQUE 			(1<<17)
 #define GUN_RECOIL_BUILDUP		(1<<18)
 #define GUN_INTERNAL_SILENCED	(1<<19) //suppressor doesnt override sound

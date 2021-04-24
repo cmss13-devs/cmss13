@@ -34,7 +34,7 @@
 		select_gamemode_skin(type, override_icon_state, new_protection)
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
-	if(!skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		to_chat(user, SPAN_WARNING("The sensors in your uniform can't be modified."))
 		return
 	. = ..()

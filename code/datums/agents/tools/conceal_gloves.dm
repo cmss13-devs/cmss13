@@ -16,7 +16,7 @@
     hide_prints = TRUE
 
 /obj/item/clothing/gloves/antag/mob_can_equip(mob/user, slot)
-    if(!skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+    if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
         to_chat(user, SPAN_WARNING("It wouldn't be wise to put these gloves on!"))
         return FALSE
     . = ..()

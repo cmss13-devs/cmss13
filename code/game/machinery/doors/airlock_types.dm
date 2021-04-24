@@ -180,8 +180,6 @@
 	icon = 'icons/obj/structures/doors/Doorphoron.dmi'
 	mineral = "phoron"
 
-
-
 /obj/structure/machinery/door/airlock/sandstone
 	name = "\improper Sandstone Airlock"
 	icon = 'icons/obj/structures/doors/Doorsand.dmi'

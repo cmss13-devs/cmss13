@@ -2,6 +2,7 @@
 Mineral Sheets
 	Contains:
 		- Sandstone
+		- Runed Sandstone
 		- Diamond
 		- Uranium
 		- Phoron
@@ -14,47 +15,54 @@ Mineral Sheets
 		- Osmium
 */
 
-var/global/list/datum/stack_recipe/sandstone_recipes = list ( \
+GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	new/datum/stack_recipe("pile of dirt", /obj/structure/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("sandstone door", /obj/structure/mineral_door/sandstone, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("sandstone wall", /turf/closed/wall/mineral/sandstone, 5, time = 50, skill_req = SKILL_CONSTRUCTION_ENGI, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("sandstone floor", /turf/open/floor/sandstone, 5, on_floor = 0), \
-	)
+	new/datum/stack_recipe("sandstone wall", /turf/closed/wall/mineral/sandstone, 5, time = 50, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("sandstone floor", /turf/open/floor/sandstone/runed, 1, on_floor = 0), \
+	))
 
-var/global/list/datum/stack_recipe/silver_recipes = list ( \
+GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
+	new/datum/stack_recipe("temple door", /obj/structure/machinery/door/airlock/sandstone/runed, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("temple wall", /turf/closed/wall/mineral/sandstone/runed, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
+	new/datum/stack_recipe("temple floor", /turf/open/floor/sandstone/runed, 1, on_floor = 0), \
+	))
+
+GLOBAL_LIST_INIT(silver_recipes, list ( \
 	new/datum/stack_recipe("silver door", /obj/structure/mineral_door/silver, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("silver beaker", /obj/item/reagent_container/glass/beaker/silver, 3, time = 30, skill_req = SKILL_CONSTRUCTION_TRAINED), \
-	)
+	new/datum/stack_recipe("silver beaker", /obj/item/reagent_container/glass/beaker/silver, 3, time = 30, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_TRAINED), \
+	))
 
-var/global/list/datum/stack_recipe/diamond_recipes = list ( \
+GLOBAL_LIST_INIT(diamond_recipes, list ( \
 	new/datum/stack_recipe("diamond door", /obj/structure/mineral_door/transparent/diamond, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	)
+	))
 
-var/global/list/datum/stack_recipe/uranium_recipes = list ( \
+GLOBAL_LIST_INIT(uranium_recipes, list ( \
 	new/datum/stack_recipe("uranium door", /obj/structure/mineral_door/uranium, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	)
+	))
 
-var/global/list/datum/stack_recipe/gold_recipes = list ( \
+GLOBAL_LIST_INIT(gold_recipes, list ( \
 	new/datum/stack_recipe("golden door", /obj/structure/mineral_door/gold, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	)
+	))
 
-var/global/list/datum/stack_recipe/phoron_recipes = list ( \
+GLOBAL_LIST_INIT(phoron_recipes, list ( \
 	new/datum/stack_recipe("phoron door", /obj/structure/mineral_door/transparent/phoron, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	)
+	))
 
-var/global/list/datum/stack_recipe/plastic_recipes = list ( \
+GLOBAL_LIST_INIT(plastic_recipes, list ( \
 	new/datum/stack_recipe("plastic crate", /obj/structure/closet/crate/plastic, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("plastic ashtray", /obj/item/ashtray/plastic, 2, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("plastic fork", /obj/item/tool/kitchen/utensil/pfork, 1, on_floor = 1), \
 	new/datum/stack_recipe("plastic spoon", /obj/item/tool/kitchen/utensil/pspoon, 1, on_floor = 1), \
 	new/datum/stack_recipe("plastic knife", /obj/item/tool/kitchen/utensil/pknife, 1, on_floor = 1), \
 	new/datum/stack_recipe("plastic bag", /obj/item/storage/bag/plasticbag, 3, on_floor = 1), \
-	)
+	))
 
-var/global/list/datum/stack_recipe/iron_recipes = list ( \
+GLOBAL_LIST_INIT(iron_recipes, list ( \
 	new/datum/stack_recipe("iron door", /obj/structure/mineral_door/iron, 20, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	null, \
-)
+))
 
 /obj/item/stack/sheet/mineral
 	force = 5.0
@@ -81,7 +89,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 
 /obj/item/stack/sheet/mineral/iron/Initialize()
 	. = ..()
-	recipes = iron_recipes
+	recipes = GLOB.iron_recipes
 
 /obj/item/stack/sheet/mineral/sandstone
 	name = "sandstone brick"
@@ -96,7 +104,24 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 
 /obj/item/stack/sheet/mineral/sandstone/Initialize()
 	. = ..()
-	recipes = sandstone_recipes
+	recipes = GLOB.sandstone_recipes
+
+/obj/item/stack/sheet/mineral/sandstone/runed
+	name = "runed sandstone brick"
+	desc = "Sandstone is a combination of sand and stone. A common building material for primitive civilisations, can still make a good enough wall."
+	singular_name = "runed sandstone brick"
+	icon_state = "sheet-runedsandstone"
+
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack
+	amount = STACK_50
+
+/obj/item/stack/sheet/mineral/sandstone/runed/Initialize()
+	. = ..()
+	recipes = GLOB.runedsandstone_recipes
+
+/obj/item/stack/sheet/mineral/sandstone/runed/attack_self(mob/user as mob)
+	if(isYautja(user))
+		list_recipes(user)
 
 /obj/item/stack/sheet/mineral/diamond
 	name = "diamond"
@@ -111,7 +136,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 
 /obj/item/stack/sheet/mineral/diamond/Initialize()
 	. = ..()
-	recipes = diamond_recipes
+	recipes = GLOB.diamond_recipes
 
 /obj/item/stack/sheet/mineral/uranium
 	name = "uranium"
@@ -125,7 +150,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 
 /obj/item/stack/sheet/mineral/uranium/Initialize()
 	. = ..()
-	recipes = uranium_recipes
+	recipes = GLOB.uranium_recipes
 
 /obj/item/stack/sheet/mineral/uranium/small_stack
 	amount = STACK_10
@@ -158,7 +183,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 
 /obj/item/stack/sheet/mineral/plastic/Initialize()
 	. = ..()
-	recipes = plastic_recipes
+	recipes = GLOB.plastic_recipes
 
 /obj/item/stack/sheet/mineral/plastic/small_stack
 	amount = STACK_10
@@ -182,7 +207,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 
 /obj/item/stack/sheet/mineral/gold/Initialize()
 	. = ..()
-	recipes = gold_recipes
+	recipes = GLOB.gold_recipes
 
 /obj/item/stack/sheet/mineral/gold/small_stack
 	amount = STACK_5
@@ -199,7 +224,7 @@ var/global/list/datum/stack_recipe/iron_recipes = list ( \
 
 /obj/item/stack/sheet/mineral/silver/Initialize()
 	. = ..()
-	recipes = silver_recipes
+	recipes = GLOB.silver_recipes
 
 /obj/item/stack/sheet/mineral/silver/small_stack
 	amount = STACK_10

@@ -528,7 +528,11 @@
 
 	if(istype(A, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/D = A
-		if(D.operating || !D.density) return
+		if(D.operating || !D.density || D.locked)
+			return FALSE
+		if(D.heavy)
+			to_chat(usr, SPAN_DANGER("[D] is too heavy to be forced open."))
+			return FALSE
 		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
 		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
 		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)

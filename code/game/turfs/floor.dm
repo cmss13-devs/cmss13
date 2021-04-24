@@ -508,3 +508,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 /turf/open/floor/sandstone
 	name = "sandstone floor"
 	icon_state = "whiteyellowfull"
+
+/turf/open/floor/sandstone/runed
+	name = "sandstone temple floor"
+	icon_state = "runedsandstone"

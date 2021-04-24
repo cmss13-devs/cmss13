@@ -137,7 +137,9 @@
 		var/obj/structure/machinery/door/airlock/D = O
 		if(!D.density)
 			return
-
+		if(D.heavy)
+			to_chat(usr, SPAN_DANGER("[D] is too heavy to be forced open."))
+			return FALSE
 		if(user.action_busy || user.a_intent == INTENT_HARM)
 			return
 

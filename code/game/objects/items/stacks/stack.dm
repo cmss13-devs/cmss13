@@ -152,13 +152,13 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			recipes_list = srl.recipes
 		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
 		var/multiplier = text2num(href_list["multiplier"])
-		if(!isnum(multiplier))	
+		if(!isnum(multiplier))
 			return
 		multiplier = round(multiplier)
 		if(multiplier < 1)
 			return  //href exploit protection
-		if(R.skill_req) 
-			if(ishuman(usr) && !skillcheck(usr, SKILL_CONSTRUCTION, R.skill_req))
+		if(R.skill_lvl)
+			if(ishuman(usr) && !skillcheck(usr, R.skill_req, R.skill_lvl))
 				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
 				return
 		if(amount < R.req_amount * multiplier)
@@ -349,9 +349,10 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	var/min_time = 0
 	var/one_per_turf = 0
 	var/on_floor = 0
-	var/skill_req = 0 //whether only people with sufficient construction skill can build this.
+	var/skill_req = SKILL_CONSTRUCTION
+	var/skill_lvl = 0 //whether only people with sufficient construction skill can build this.
 
-/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, skill_req = 0, min_time = 0)
+/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, skill_req, skill_lvl = 0, min_time = 0)
 	src.title = title
 	src.result_type = result_type
 	src.req_amount = req_amount
@@ -362,6 +363,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	src.one_per_turf = one_per_turf
 	src.on_floor = on_floor
 	src.skill_req = skill_req
+	src.skill_lvl = skill_lvl
 
 /*
  * Recipe list datum

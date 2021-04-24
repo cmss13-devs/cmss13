@@ -506,7 +506,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					if(getAssembly(target_wire))
 						return TRUE
 
-					if(!skillcheck(usr, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+					if(!skillcheckexplicit(usr, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 						to_chat(usr, SPAN_WARNING("You don't seem to know how to perform this action."))
 						return TRUE
 

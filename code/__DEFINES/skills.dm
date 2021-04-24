@@ -82,8 +82,9 @@
 
 //antag skill
 #define SKILL_ANTAG_DEFAULT 0
-#define SKILL_ANTAG_TRAINED 1
-#define SKILL_ANTAG_MAX 1
+#define SKILL_ANTAG_AGENT 1
+#define SKILL_ANTAG_HUNTER 2
+#define SKILL_ANTAG_MAX 2
 
 //police skill, hidden
 #define SKILL_POLICE_DEFAULT 0

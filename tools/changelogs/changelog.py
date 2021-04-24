@@ -106,26 +106,19 @@ class Changelog:
                     # The author is captured first by the regex
                     self.author = cl_start_match.group(1)
             else:
-                cl_entry_match = CL_REGEX_ENTRY.search(line)
-                if not cl_entry_match:
-                    continue
-
-                # The first capture group contains the changelog type
-                # The second capture contains the log message
-                match_groups = (cl_entry_match.group(1), cl_entry_match.group(2))
-                if(match_groups[0] and match_groups[1]):
-                    # Add the change to the changelog
-                    self.add_change(match_groups[0], match_groups[1])
-                    continue
-
                 # This might be the end of the changelog
                 cl_end_match = CL_REGEX_END.search(line)
-                if not cl_end_match:
-                    continue
-
-                # Check if the end of CL regex gave a match
-                if cl_end_match.group(0):
+                if cl_end_match and cl_end_match.group(0):
                     break
+
+                cl_entry_match = CL_REGEX_ENTRY.search(line)
+                if cl_entry_match:
+                    # The first capture group contains the changelog type
+                    # The second capture contains the log message
+                    match_groups = (cl_entry_match.group(1), cl_entry_match.group(2))
+                    if(match_groups[0] and match_groups[1]):
+                        # Add the change to the changelog
+                        self.add_change(match_groups[0], match_groups[1])
 
         # in_cl still holds whether or not we're in a CL
         # So if in_cl is true, we found and parsed a changelog

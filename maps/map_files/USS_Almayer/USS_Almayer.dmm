@@ -48715,10 +48715,10 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/eastright{
 	dir = 8;
-	req_access_txt = "19"
+	req_access_txt = "8"
 	},
 /obj/structure/machinery/door/window/eastleft{
-	req_access_txt = "19"
+	req_access_txt = "8"
 	},
 /obj/item/book/manual/medical_diagnostics_manual,
 /obj/item/device/megaphone,

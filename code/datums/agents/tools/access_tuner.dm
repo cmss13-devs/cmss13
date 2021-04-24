@@ -4,7 +4,7 @@
 #define SHOW_HACK_MESSAGE user.visible_message(SPAN_DANGER("[user] hacks [target]."), SPAN_NOTICE("You hack [target]."))
 
 /obj/item/device/multitool/antag/afterattack(atom/target, mob/user, flag)
-    if(!skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+    if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
         return . = ..()
 
     if(istype(target, /obj/structure/machinery/door/airlock))

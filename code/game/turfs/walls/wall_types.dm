@@ -319,6 +319,23 @@
 	color = "#c6a480"
 	baseturfs = /turf/open/gm/dirt
 
+/turf/closed/wall/mineral/sandstone/runed
+	name = "sandstone temple wall"
+	desc = "A heavy wall of sandstone."
+	mineral = "runed sandstone"
+	color = "#b29082"
+	damage_cap = HEALTH_WALL_REINFORCED//Strong, but only available to Hunters, can can still be blown up or melted by boilers.
+
+/turf/closed/wall/mineral/sandstone/runed/decor
+	name = "runed sandstone temple wall"
+	desc = "A heavy wall of sandstone with elegant carvings and runes inscribed upon its face."
+	icon = 'icons/turf/walls/runedstone.dmi'
+	icon_state = "runedstone"
+	walltype = "runedstone"
+
+/turf/closed/wall/mineral/sandstone/runed/can_be_dissolved()
+	return 2
+
 /turf/closed/wall/mineral/uranium
 	name = "uranium wall"
 	desc = "A wall with uranium plating. This is probably a bad idea."

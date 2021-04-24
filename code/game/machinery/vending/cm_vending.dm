@@ -346,7 +346,7 @@ IN_USE						used for vending/denying
 	else if(ismultitool(W))
 		var/obj/item/device/multitool/MT = W
 
-		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && !skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 			to_chat(user, SPAN_WARNING("You do not understand how tweak access requirements in [src]."))
 			return FALSE
 		if(stat != WORKING)

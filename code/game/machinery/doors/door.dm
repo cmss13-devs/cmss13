@@ -24,6 +24,8 @@
 	var/heat_proof = 0 // For glass airlocks/opacity firedoors
 	var/air_properties_vary_with_direction = 0
 	var/turf/filler //Fixes double door opacity issue
+	/// Stops it being forced open by Hunters & Zombies.
+	var/heavy
 
 
 	//Multi-tile doors

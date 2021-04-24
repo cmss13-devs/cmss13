@@ -656,6 +656,7 @@
 #include "code\game\machinery\doors\multi_tile.dm"
 #include "code\game\machinery\doors\poddoor.dm"
 #include "code\game\machinery\doors\railing.dm"
+#include "code\game\machinery\doors\runed_sandstone.dm"
 #include "code\game\machinery\doors\shutters.dm"
 #include "code\game\machinery\doors\unpowered.dm"
 #include "code\game\machinery\doors\windowdoor.dm"

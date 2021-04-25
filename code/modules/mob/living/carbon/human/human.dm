@@ -1239,23 +1239,17 @@
 /mob/living/carbon/human/update_tint()
 	var/tint_level = VISION_IMPAIR_NONE
 
-	if(istype(head, /obj/item/clothing/head/welding))
-		var/obj/item/clothing/head/welding/O = head
-		if(!O.up)
-			tint_level = VISION_IMPAIR_MAX
+	if(head && head.vision_impair)
+		tint_level += head.vision_impair
 
-	else if(istype(head, /obj/item/clothing/head/helmet/marine/tech))
-		var/obj/item/clothing/head/helmet/marine/tech/O = head
-		if(O.protection_on)
-			tint_level = VISION_IMPAIR_MAX
+	if(glasses && glasses.vision_impair)
+		tint_level += glasses.vision_impair
 
-	if(glasses && glasses.has_tint && glasses.active)
-		tint_level = VISION_IMPAIR_MAX
+	if(wear_mask && wear_mask.vision_impair)
+		tint_level += wear_mask.vision_impair
 
-	if(istype(wear_mask, /obj/item/clothing/mask/gas))
-		var/obj/item/clothing/mask/gas/G = wear_mask
-		if(G.vision_impair && tint_level < G.vision_impair)
-			tint_level = G.vision_impair
+	if(tint_level > VISION_IMPAIR_STRONG)
+		tint_level = VISION_IMPAIR_STRONG
 
 	if(tint_level)
 		overlay_fullscreen("tint", /obj/screen/fullscreen/impaired, tint_level)

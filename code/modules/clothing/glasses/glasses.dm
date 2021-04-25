@@ -223,6 +223,9 @@
 	flags_inv_hide = HIDEEYES
 	eye_protection = 2
 	has_tint = TRUE
+	vision_impair = VISION_IMPAIR_MAX
+	var/vision_impair_on = VISION_IMPAIR_MAX
+	var/vision_impair_off = VISION_IMPAIR_NONE
 
 /obj/item/clothing/glasses/welding/attack_self()
 	toggle()
@@ -235,6 +238,7 @@
 	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
 		if(active)
 			active = 0
+			vision_impair = vision_impair_off
 			flags_inventory &= ~COVEREYES
 			flags_inv_hide &= ~HIDEEYES
 			flags_armor_protection &= ~BODY_FLAG_EYES
@@ -243,6 +247,7 @@
 			to_chat(usr, "You push [src] up out of your face.")
 		else
 			active = 1
+			vision_impair = vision_impair_on
 			flags_inventory |= COVEREYES
 			flags_inv_hide |= HIDEEYES
 			flags_armor_protection |= BODY_FLAG_EYES
@@ -267,6 +272,9 @@
 	desc = "Welding goggles made from more expensive materials, strangely smells like potatoes."
 	icon_state = "rwelding-g"
 	item_state = "rwelding-g"
+	vision_impair = VISION_IMPAIR_WEAK
+	vision_impair_on = VISION_IMPAIR_WEAK
+	vision_impair_off = VISION_IMPAIR_NONE
 
 //sunglasses
 

@@ -76,6 +76,9 @@
 	var/list/equip_sounds = list() //Sounds played when this item is equipped
 	var/list/unequip_sounds = list() //Same but when unequipped
 
+	 ///Vision impairing effect if worn on head/mask/glasses.
+	var/vision_impair = VISION_IMPAIR_NONE
+
 	var/map_specific_decoration = FALSE
 	var/blood_color = "" //color of the blood on us if there's any.
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm

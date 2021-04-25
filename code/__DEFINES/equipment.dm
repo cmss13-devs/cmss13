@@ -91,14 +91,22 @@
 //SUITS AND HELMETS====================================================================================
 
 
-//GASMASK IMPAIRMENT LEVELS===========================================================================
+//VISION IMPAIRMENT LEVELS===========================================================================
 #define VISION_IMPAIR_NONE		0	//No visual impairment
-#define VISION_IMPAIR_MIN		1	//2 tiles of partial impairment
-#define VISION_IMPAIR_WEAK		2	//3 tiles of partial impairment
-#define VISION_IMPAIR_MED		3	//1 tile of full and 2 of partial impairment
-#define VISION_IMPAIR_STRONG	4	//2 tiles of full and 2 of partial impairment
-#define VISION_IMPAIR_MAX		5	//3 tiles of full and 2 of partial impairment (original one)
-//GASMASK IMPAIRMENT LEVELS===========================================================================
+/// 1 tile of partial impairment
+#define VISION_IMPAIR_MIN               1
+/// 2 tiles of partial impairment
+#define VISION_IMPAIR_WEAK              2
+/// 3 tiles of partial impairment
+#define VISION_IMPAIR_MED               3
+/// 1 tile of full and 2 of partial impairment
+#define VISION_IMPAIR_HIGH              4
+/// 2 tiles of full and 2 of partial impairment 
+#define VISION_IMPAIR_STRONG            5
+/// 3 tiles of full and 2 of partial impairment (original one)
+#define VISION_IMPAIR_MAX               6
+//VISION IMPAIRMENT LEVELS===========================================================================
+
 
 
 

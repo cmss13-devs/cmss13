@@ -53,7 +53,8 @@
 	var/time_to_take = 3 SECONDS
 
 /obj/item/stack/revival_jelly/attack_alien(mob/living/carbon/Xenomorph/M)
-	attack_hand(M)
+	attack_hand(M) //This has a .2 second delay of its own.
+	return XENO_NO_DELAY_ACTION
 
 /obj/item/stack/revival_jelly/proc/can_revive(var/required_jelly, var/mob/living/carbon/Xenomorph/X, var/mob/living/user)
 	if(user.action_busy)

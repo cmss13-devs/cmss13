@@ -139,12 +139,12 @@
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		take_damage((max_health / XENO_HITS_TO_DESTROY_WINDOW_FRAME) + 1)
-		return
+		return XENO_ATTACK_ACTION
 	else if (reinforced && user.claw_type >= CLAW_TYPE_SHARP)
 		user.animation_attack_on(src)
 		playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
 		take_damage((max_health / XENO_HITS_TO_DESTROY_R_WINDOW_FRAME) + 1)
-		return
+		return XENO_ATTACK_ACTION
 
 	. = ..()
 

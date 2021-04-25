@@ -49,8 +49,9 @@
 		return ..()
 	if(!template)
 		to_chat(M, SPAN_XENOWARNING("There is no template!"))
-		return
-	template.add_crystal(M)
+	else
+		template.add_crystal(M) //This proc handles attack delay itself.
+	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/construction/proc/set_template(var/datum/construction_template/xenomorph/new_template)
 	if(!istype(new_template) || !linked_hive)

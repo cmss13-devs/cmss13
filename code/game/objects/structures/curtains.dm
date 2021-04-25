@@ -26,6 +26,7 @@
 	M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), \
 	SPAN_DANGER("You slice [src] apart!"), null, 5)
 	qdel(src)
+	return XENO_ATTACK_ACTION
 
 /obj/structure/curtain/proc/toggle()
 	opacity = !opacity

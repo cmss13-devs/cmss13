@@ -261,25 +261,26 @@
 	if(!tree)
 		if(!isXenoBuilder(M))
 			to_chat(M, SPAN_XENOWARNING("You can't build onto [src]."))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		if(!active)
 			to_chat(M, SPAN_XENOWARNING("[src] isn't active right now!"))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		if(M.action_busy)
 			to_chat(M, SPAN_WARNING("You're already performing an action!"))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		M.visible_message(SPAN_DANGER("[M] starts secreting resin over [src]."),\
 		SPAN_XENONOTICE("You begin to connect [src] to the hive."), max_distance = 3)
+		xeno_attack_delay(M)
 
 		if(!do_after(M, time_to_build, BEHAVIOR_IMMOBILE|INTERRUPT_ALL, BUSY_ICON_BUILD, src, INTERRUPT_ALL))
 			to_chat(M, SPAN_XENOWARNING("You decide not to connect [src] to the hive."))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		if(tree)
-			return
+			return XENO_NO_DELAY_ACTION
 
 		M.visible_message(SPAN_DANGER("[M] secretes resin over [src]."),\
 		SPAN_XENONOTICE("You connect [src] to the hive."), max_distance = 3)
@@ -291,16 +292,17 @@
 
 		M.animation_attack_on(src)
 		take_damage(rand(M.melee_damage_lower, M.melee_damage_upper))
+		return XENO_ATTACK_ACTION
 	else
 		if(M.action_busy)
 			to_chat(M, SPAN_WARNING("You're already performing an action!"))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		var/to_heal = (max_health - health)
 
 		if(!to_heal)
 			to_chat(M, SPAN_WARNING("[src] is already at full health!"))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		var/plasma_to_use = RESOURCE_PLASMA_PER_REPAIR * to_heal
 
@@ -309,10 +311,11 @@
 			to_chat(M, SPAN_XENOWARNING("Your repairs on [src] will require significantly more work."))
 
 		if(!M.plasma_stored)
-			return
+			return XENO_NO_DELAY_ACTION
 
 		M.visible_message(SPAN_XENONOTICE("[M] begins secreting resin over [src]."),\
 		SPAN_XENONOTICE("You start repairing the damage to [src]."), max_distance = 3)
+		xeno_attack_delay(M)
 
 		if(do_after(M, time_to_repair, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src, INTERRUPT_ALL) && M.plasma_stored)
 			M.visible_message(SPAN_XENONOTICE("[M] finishes secreting resin over [src]."),\
@@ -325,4 +328,4 @@
 			M.use_plasma(plasma_to_use)
 		else
 			to_chat(M, SPAN_NOTICE("You fail to repair [src]."))
-			return
+	return XENO_NO_DELAY_ACTION

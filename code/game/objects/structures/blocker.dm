@@ -39,14 +39,15 @@
 	opacity = 1
 
 /obj/structure/blocker/fog/New()
-    ..()
-    dir  = pick(CARDINAL_DIRS)
+	..()
+	dir  = pick(CARDINAL_DIRS)
 
 /obj/structure/blocker/fog/attack_hand(mob/M)
-    to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
+	to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
 
 /obj/structure/blocker/fog/attack_alien(M)
-    return attack_hand(M)
+	attack_hand(M)
+	return XENO_NONCOMBAT_ACTION
 
 
 /obj/structure/blocker/forcefield

@@ -59,7 +59,7 @@
 
 /obj/effect/alien/resin/boilertrap/attack_alien(mob/living/carbon/Xenomorph/X)
 	to_chat(X, SPAN_XENOWARNING("Best not to meddle with that trap."))
-	return
+	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/boilertrap/Crossed(atom/A)
 	if (isXeno(A))

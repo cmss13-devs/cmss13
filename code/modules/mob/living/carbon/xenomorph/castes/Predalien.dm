@@ -116,6 +116,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			return TRUE
 
 		playsound(X.loc, 'sound/weapons/slice.ogg', 25)
+		xeno_attack_delay(X)
 
 		if(!do_after(X, X.butcher_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M))
 			to_chat(X, SPAN_XENONOTICE("You decide not to butcher [M]"))

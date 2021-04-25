@@ -132,11 +132,13 @@
 /obj/item/xeno_egg/attack_alien(mob/living/carbon/Xenomorph/user)
 	if(user.caste.can_hold_eggs == CAN_HOLD_ONE_HAND)
 		attack_hand(user)
+		return XENO_NO_DELAY_ACTION
 	if(user.caste.can_hold_eggs == CAN_HOLD_TWO_HANDS)
 		if(user.r_hand || user.l_hand)
 			to_chat(user, SPAN_XENOWARNING("You need two hands to hold [src]."))
 		else
 			attack_hand(user)
+		return XENO_NO_DELAY_ACTION
 
 /obj/item/xeno_egg/fire_act(exposed_temperature, exposed_volume)
 	if(exposed_temperature > 300)

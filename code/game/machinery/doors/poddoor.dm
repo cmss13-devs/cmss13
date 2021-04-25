@@ -48,8 +48,8 @@
 
 /obj/structure/machinery/door/poddoor/attack_alien(mob/living/carbon/Xenomorph/X)
 	if((stat & NOPOWER) && density && !operating && !unacidable)
-		pry_open(X)
-
+		INVOKE_ASYNC(src, .proc/pry_open, X)
+		return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/door/poddoor/proc/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
 	X.visible_message(SPAN_DANGER("[X] begins prying [src] open."),\
@@ -65,6 +65,7 @@
 	SPAN_XENONOTICE("You pry open [src]."), max_distance = 3)
 
 	open()
+	return TRUE
 
 
 /obj/structure/machinery/door/poddoor/try_to_activate_door(mob/user)

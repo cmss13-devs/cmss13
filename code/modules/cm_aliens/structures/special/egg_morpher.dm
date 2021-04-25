@@ -165,7 +165,7 @@
 		to_chat(M, SPAN_XENONOTICE("You retrieve a child."))
 		stored_huggers = max(0, stored_huggers - 1)
 		new /obj/item/clothing/mask/facehugger(loc, linked_hive.hivenumber)
-		return
+		return XENO_NONCOMBAT_ACTION
 	..()
 
 #undef EGGMORPG_RANGE

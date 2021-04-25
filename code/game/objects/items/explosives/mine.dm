@@ -198,10 +198,13 @@
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(triggered) //Mine is already set to go off
-		return
+		return XENO_NO_DELAY_ACTION
 
 	if(M.a_intent == INTENT_HELP)
-		return
+		to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+		return XENO_NO_DELAY_ACTION
+
+	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"), \
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
@@ -215,7 +218,7 @@
 	prime()
 	if(!QDELETED(src))
 		disarm()
-
+	return XENO_ATTACK_ACTION
 
 /obj/item/explosive/mine/flamer_fire_act() //adding mine explosions
 	prime()

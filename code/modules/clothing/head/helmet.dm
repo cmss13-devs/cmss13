@@ -447,6 +447,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	var/base_icon_state
 
 	actions_types = list(/datum/action/item_action/toggle)
+	vision_impair = VISION_IMPAIR_NONE
 
 /obj/item/clothing/head/helmet/marine/tech/Initialize()
 	. = ..()
@@ -462,12 +463,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
 		if(protection_on)
+			vision_impair = VISION_IMPAIR_NONE
 			flags_inventory &= ~(COVEREYES|COVERMOUTH)
 			flags_inv_hide &= ~(HIDEEYES|HIDEFACE)
 			icon_state = base_icon_state
 			eye_protection = 0
 			to_chat(usr, "You <b>deactivate</b> the [src]'s welding screen.")
 		else
+			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH
 			flags_inv_hide |= HIDEEYES|HIDEFACE
 			icon_state = "[base_icon_state]_on"

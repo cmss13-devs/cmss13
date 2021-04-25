@@ -59,7 +59,6 @@
 						/obj/item/attachable/bipod,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/stock/rifle,
 						/obj/item/attachable/attached_gun/grenade,

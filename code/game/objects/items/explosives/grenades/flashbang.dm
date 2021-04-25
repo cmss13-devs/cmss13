@@ -2,7 +2,7 @@
 	name = "flashbang"
 	icon_state = "flashbang"
 	item_state = "grenade_flashbang"
-	
+
 	var/banglet = 0
 	harmful = FALSE
 
@@ -120,18 +120,22 @@
 		if(prob(35))
 			again++
 			numspawned --
-
+	var/turf/T = get_turf(src)
 	for(,numspawned > 0, numspawned--)
 		spawn(0)
-			new /obj/item/explosive/grenade/flashbang/cluster(src.loc)//Launches flashbangs
-			playsound(src.loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
+			new /obj/item/explosive/grenade/flashbang/cluster(T)//Launches flashbangs
+			playsound(T, 'sound/weapons/armbomb.ogg', 25, 1, 6)
 
 	for(,again > 0, again--)
 		spawn(0)
-			new /obj/item/explosive/grenade/flashbang/clusterbang/segment(src.loc)//Creates a 'segment' that launches a few more flashbangs
-			playsound(src.loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
+			new /obj/item/explosive/grenade/flashbang/clusterbang/segment(T)//Creates a 'segment' that launches a few more flashbangs
+			playsound(T, 'sound/weapons/armbomb.ogg', 25, 1, 6)
 
 	qdel(src)
+
+/obj/item/explosive/grenade/flashbang/clusterbang/primed/Initialize()
+	..()
+	prime()
 
 /obj/item/explosive/grenade/flashbang/clusterbang/segment
 	desc = "A smaller segment of a clusterbang. Better run."
@@ -154,11 +158,11 @@
 	for(var/more = numspawned,more > 0,more--)
 		if(prob(35))
 			numspawned --
-
+	var/turf/T = get_turf(src)
 	for(,numspawned > 0, numspawned--)
 		spawn(0)
-			new /obj/item/explosive/grenade/flashbang/cluster(src.loc)
-			playsound(src.loc, 'sound/weapons/armbomb.ogg', 25, 1, 6)
+			new /obj/item/explosive/grenade/flashbang/cluster(T)
+			playsound(T, 'sound/weapons/armbomb.ogg', 25, 1, 6)
 	qdel(src)
 
 /obj/item/explosive/grenade/flashbang/cluster

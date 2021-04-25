@@ -112,19 +112,23 @@
 	if(X.a_intent == INTENT_HELP && X.can_not_harm(bound_xeno))
 		if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && X.health >= X.caste.max_health)
 			to_chat(X, SPAN_XENODANGER("You are at full health! This would be a waste..."))
-			return
+			return XENO_NO_DELAY_ACTION
 		if(mature)
 			to_chat(X, SPAN_XENOWARNING("You prepare to consume [name]."))
+			xeno_noncombat_delay(X)
 			if(!do_after(X, consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-				return
+				return XENO_NO_DELAY_ACTION
 			consume_effect(X)
 		else
 			to_chat(X, SPAN_XENOWARNING("[name] isn't ripe yet. You need to wait a little longer."))
 	if(X.a_intent == INTENT_HARM && isXenoBuilder(X) || !X.can_not_harm(bound_xeno))
-		to_chat(X, SPAN_XENODANGER("You remove [name]!"))
+		X.animation_attack_on(src)
+		X.visible_message(SPAN_XENODANGER("[X] removes [name]!"),
+		SPAN_XENODANGER("You remove [name]!"))
 		playsound(loc, "alien_resin_break", 25)
 		qdel(src)
-	return
+		return XENO_ATTACK_ACTION
+	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/fruit/Destroy()
 	delete_fruit()

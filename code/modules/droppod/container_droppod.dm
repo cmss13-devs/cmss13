@@ -105,6 +105,7 @@
 
 	to_chat(M, SPAN_XENONOTICE("You slash open [src]!"))
 	open(M)
+	return XENO_ATTACK_ACTION
 
 /obj/structure/droppod/container/attack_hand(mob/user)
 	if(!can_be_opened || !(droppod_flags & DROPPOD_DROPPED))

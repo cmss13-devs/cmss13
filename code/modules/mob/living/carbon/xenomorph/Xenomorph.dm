@@ -611,7 +611,7 @@
 	var/atom/A = AM.handle_barriers(src)
 	if(A != AM)
 		A.attack_alien(src)
-		next_move = world.time + (10 + caste.attack_delay + attack_speed_modifier)
+		xeno_attack_delay(src)
 		return FALSE
 	return ..()
 

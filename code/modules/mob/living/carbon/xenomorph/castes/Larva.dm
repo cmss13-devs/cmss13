@@ -82,10 +82,6 @@
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
 
-/mob/living/carbon/Xenomorph/Larva/UnarmedAttack(atom/A)
-	a_intent = INTENT_HELP //Forces help intent for all interactions.
-	. = ..()
-
 //Larva Progression.. Most of this stuff is obsolete.
 /mob/living/carbon/Xenomorph/Larva/update_progression()
 	var/progress_amount = 1

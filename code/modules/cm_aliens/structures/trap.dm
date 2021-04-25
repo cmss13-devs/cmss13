@@ -188,97 +188,99 @@
 
 /obj/effect/alien/resin/trap/attack_alien(mob/living/carbon/Xenomorph/X)
 	if(X.hivenumber != hivenumber)
-		..()
-		return
+		return ..()
 
 	var/trap_acid_level = 0
 	if(trap_type >= RESIN_TRAP_ACID1)
 		trap_acid_level = 1 + trap_type - RESIN_TRAP_ACID1
-	if(X.a_intent != INTENT_HARM)
-		if(trap_type == RESIN_TRAP_HUGGER)
-			if(X.caste.can_hold_facehuggers)
-				set_state()
-				var/obj/item/clothing/mask/facehugger/F = new (loc, hivenumber)
-				X.put_in_active_hand(F)
-				to_chat(X, SPAN_XENONOTICE("You remove the facehugger from [src]."))
-			else
-				to_chat(X, SPAN_XENONOTICE("This one is occupied with a child."))
-			return
+	if(X.a_intent == INTENT_HARM && trap_type == RESIN_TRAP_EMPTY)
+		return ..()
 
-		if((!X.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY)
-			to_chat(X, SPAN_XENONOTICE("Better not risk setting this off."))
-			return
-
-		if(!X.acid_level)
-			to_chat(X, SPAN_XENONOTICE("You can't secrete any acid into \the [src]"))
-			return
-
-		if(trap_acid_level >= X.acid_level)
-			to_chat(X, SPAN_XENONOTICE("It already has good acid in."))
-			return
-
-		if(isXenoBoiler(X))
-			var/mob/living/carbon/Xenomorph/Boiler/B = X
-
-			if(!B.check_plasma(200))
-				to_chat(B, SPAN_XENOWARNING("You must produce more plasma before doing this."))
-				return
-
-			to_chat(X, SPAN_XENONOTICE("You begin charging the resin hole with acid gas."))
-			if(!do_after(B, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
-				return
-
-			if(trap_type != RESIN_TRAP_EMPTY)
-				return
-
-			if(!B.check_plasma(200))
-				return
-
-			if(B.ammo.type == /datum/ammo/xeno/boiler_gas)
-				smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
-			else
-				smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
-
-			setup_tripwires()
-			B.use_plasma(200)
-			playsound(loc, 'sound/effects/refill.ogg', 25, 1)
-			set_state(RESIN_TRAP_GAS)
-			B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin hole with acid gas!"), \
-			SPAN_XENOWARNING("You pressurise the resin hole with acid gas!"), null, 5)
-			return
+	if(trap_type == RESIN_TRAP_HUGGER)
+		if(X.caste.can_hold_facehuggers)
+			set_state()
+			var/obj/item/clothing/mask/facehugger/F = new (loc, hivenumber)
+			X.put_in_active_hand(F)
+			to_chat(X, SPAN_XENONOTICE("You remove the facehugger from [src]."))
+			return XENO_NONCOMBAT_ACTION
 		else
-			//Non-boiler acid types
-			var/acid_cost = 70
-			if(X.acid_level == 2)
-				acid_cost = 100
-			else if(X.acid_level == 3)
-				acid_cost = 200
+			to_chat(X, SPAN_XENONOTICE("[src] is occupied by a child."))
+			return XENO_NO_DELAY_ACTION
 
-			if (!X.check_plasma(acid_cost))
-				to_chat(X, SPAN_XENOWARNING("You must produce more plasma before doing this."))
-				return
+	if((!X.acid_level || trap_type == RESIN_TRAP_GAS) && trap_type != RESIN_TRAP_EMPTY)
+		to_chat(X, SPAN_XENONOTICE("Better not risk setting this off."))
+		return XENO_NO_DELAY_ACTION
 
-			to_chat(X, SPAN_XENONOTICE("You begin charging the resin hole with acid."))
-			if(!do_after(X, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
-				return
+	if(!X.acid_level)
+		to_chat(X, SPAN_XENONOTICE("You can't secrete any acid into \the [src]"))
+		return XENO_NO_DELAY_ACTION
 
-			if (!X.check_plasma(acid_cost))
-				return
+	if(trap_acid_level >= X.acid_level)
+		to_chat(X, SPAN_XENONOTICE("It already has good acid in."))
+		return XENO_NO_DELAY_ACTION
 
-			X.use_plasma(acid_cost)
-			setup_tripwires()
-			playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+	if(isXenoBoiler(X))
+		var/mob/living/carbon/Xenomorph/Boiler/B = X
 
-			if(isXenoBurrower(X))
-				set_state(RESIN_TRAP_ACID3)
-			else
-				set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
+		if(!B.check_plasma(200))
+			to_chat(B, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+			return XENO_NO_DELAY_ACTION
 
-			X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin hole with acid!"), \
-			SPAN_XENOWARNING("You pressurise the resin hole with acid!"), null, 5)
-			return
-	else if(trap_type == RESIN_TRAP_EMPTY)
-		..()
+		to_chat(X, SPAN_XENONOTICE("You begin charging the resin hole with acid gas."))
+		xeno_attack_delay(X)
+		if(!do_after(B, 30, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+			return XENO_NO_DELAY_ACTION
+
+		if(trap_type != RESIN_TRAP_EMPTY)
+			return XENO_NO_DELAY_ACTION
+
+		if(!B.check_plasma(200))
+			return XENO_NO_DELAY_ACTION
+
+		if(B.ammo.type == /datum/ammo/xeno/boiler_gas)
+			smoke_system = new /datum/effect_system/smoke_spread/xeno_weaken()
+		else
+			smoke_system = new /datum/effect_system/smoke_spread/xeno_acid()
+
+		setup_tripwires()
+		B.use_plasma(200)
+		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+		set_state(RESIN_TRAP_GAS)
+		B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin hole with acid gas!"), \
+		SPAN_XENOWARNING("You pressurise the resin hole with acid gas!"), null, 5)
+	else
+		//Non-boiler acid types
+		var/acid_cost = 70
+		if(X.acid_level == 2)
+			acid_cost = 100
+		else if(X.acid_level == 3)
+			acid_cost = 200
+
+		if (!X.check_plasma(acid_cost))
+			to_chat(X, SPAN_XENOWARNING("You must produce more plasma before doing this."))
+			return XENO_NO_DELAY_ACTION
+
+		to_chat(X, SPAN_XENONOTICE("You begin charging the resin hole with acid."))
+		xeno_attack_delay(X)
+		if(!do_after(X, 3 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, src))
+			return XENO_NO_DELAY_ACTION
+
+		if (!X.check_plasma(acid_cost))
+			return XENO_NO_DELAY_ACTION
+
+		X.use_plasma(acid_cost)
+		setup_tripwires()
+		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
+
+		if(isXenoBurrower(X))
+			set_state(RESIN_TRAP_ACID3)
+		else
+			set_state(RESIN_TRAP_ACID1 + X.acid_level - 1)
+
+		X.visible_message(SPAN_XENOWARNING("\The [X] pressurises the resin hole with acid!"), \
+		SPAN_XENOWARNING("You pressurise the resin hole with acid!"), null, 5)
+	return XENO_NO_DELAY_ACTION
+
 
 /obj/effect/alien/resin/trap/proc/setup_tripwires()
 	clear_tripwires()

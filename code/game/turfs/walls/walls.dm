@@ -93,8 +93,8 @@
 
 /turf/closed/wall/attack_alien(mob/living/carbon/Xenomorph/user)
 	if(acided_hole && user.mob_size >= MOB_SIZE_BIG)
-		acided_hole.expand_hole(user)
-		return
+		acided_hole.expand_hole(user) //This proc applies the attack delay itself.
+		return XENO_NO_DELAY_ACTION
 
 	if(!hull && user.claw_type >= claws_minimum && !acided_hole)
 		user.animation_attack_on(src)
@@ -121,7 +121,7 @@
 			new /obj/effect/acid_hole(src)
 		else
 			take_damage(damage_cap / XENO_HITS_TO_DESTROY_WALL)
-		return
+		return XENO_ATTACK_ACTION
 
 	. = ..()
 

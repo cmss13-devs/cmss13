@@ -54,9 +54,9 @@
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))
-		return
-
-	interior.exit(M)
+	else
+		interior.exit(M)
+	return XENO_NO_DELAY_ACTION
 
 /obj/structure/interior_exit/vehicle/attackby(var/obj/item/O, var/mob/M)
 	attack_hand(M)
@@ -135,6 +135,6 @@
 	to_chat(M, SPAN_NOTICE("You start climbing out of \the [interior.exterior]."))
 	if(!do_after(M, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Something has interrupted you."))
-		return
-
-	interior.exit(M, get_exit_turf())
+	else
+		interior.exit(M, get_exit_turf())
+	return XENO_NO_DELAY_ACTION

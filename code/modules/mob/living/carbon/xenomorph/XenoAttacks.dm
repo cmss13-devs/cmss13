@@ -70,104 +70,104 @@
 //Actually just used for eating people.
 /mob/living/carbon/Xenomorph/attack_alien(mob/living/carbon/Xenomorph/M)
 	if (M.fortify || M.burrow)
-		return 0
+		return XENO_NO_DELAY_ACTION
 
-	if(src != M)
-		if(isXenoLarva(M)) //Larvas can't eat people
-			M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
-			SPAN_DANGER("You nudge your head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
-			return 0
+	if(isXenoLarva(M)) //Larvas can't eat people
+		M.visible_message(SPAN_DANGER("[M] nudges its head against \the [src]."), \
+		SPAN_DANGER("You nudge your head against \the [src]."), null, null, CHAT_TYPE_XENO_FLUFF)
+		return
 
-		switch(M.a_intent)
-			if(INTENT_HELP)
-				if(on_fire)
-					extinguish_mob(M)
-				else if(M.zone_selected == "head")
-					M.attempt_headbutt(src)
-				else if(M.zone_selected == "groin")
-					M.attempt_tailswipe(src)
-				else
-					M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its scythe-like arm."), \
-					SPAN_NOTICE("You caress \the [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
+	switch(M.a_intent)
+		if(INTENT_HELP)
+			if(on_fire)
+				extinguish_mob(M)
+			else if(M.zone_selected == "head")
+				M.attempt_headbutt(src)
+				return XENO_NONCOMBAT_ACTION
+			else if(M.zone_selected == "groin")
+				M.attempt_tailswipe(src)
+				return XENO_NONCOMBAT_ACTION
+			else
+				M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its scythe-like arm."), \
+				SPAN_NOTICE("You caress \the [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
-			if(INTENT_GRAB)
-				if(M == src || anchored)
-					return 0
+		if(INTENT_GRAB)
+			if(M == src || anchored)
+				return XENO_NO_DELAY_ACTION
 
-				if(Adjacent(M)) //Logic!
-					M.start_pulling(src)
+			if(Adjacent(M)) //Logic!
+				M.start_pulling(src)
 
-					M.visible_message(SPAN_WARNING("[M] grabs \the [src]!"), \
-					SPAN_WARNING("You grab \the [src]!"), null, 5, CHAT_TYPE_XENO_FLUFF)
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
+				M.visible_message(SPAN_WARNING("[M] grabs \the [src]!"), \
+				SPAN_WARNING("You grab \the [src]!"), null, 5, CHAT_TYPE_XENO_FLUFF)
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
-			if(INTENT_HARM)
-				if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
-					return
+		if(INTENT_HARM)
+			if(M.behavior_delegate && M.behavior_delegate.handle_slash(src))
+				return XENO_NO_DELAY_ACTION
 
-				if(stat == DEAD)
-					to_chat(M, SPAN_WARNING("[src] is dead, why would you want to touch it?"))
-					return FALSE
+			if(stat == DEAD)
+				to_chat(M, SPAN_WARNING("[src] is dead, why would you want to touch it?"))
+				return XENO_NO_DELAY_ACTION
 
-				M.animation_attack_on(src)
-				if(M.can_not_harm(src))
-					M.visible_message(SPAN_WARNING("\The [M] nibbles \the [src]."), \
-					SPAN_WARNING("You nibble \the [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
-					return TRUE
+			if(M.can_not_harm(src))
+				return XENO_NO_DELAY_ACTION
 
+			M.animation_attack_on(src)
 
-				// copypasted from attack_alien.dm
-				//From this point, we are certain a full attack will go out. Calculate damage and modifiers
-				var/damage = get_xeno_damage_slash(src, rand(M.melee_damage_lower, M.melee_damage_upper))
+			// copypasted from attack_alien.dm
+			//From this point, we are certain a full attack will go out. Calculate damage and modifiers
+			M.track_slashes(M.caste_type) //Adds to slash stat.
+			var/damage = get_xeno_damage_slash(src, rand(M.melee_damage_lower, M.melee_damage_upper))
 
-				if(M.behavior_delegate)
-					damage = M.behavior_delegate.melee_attack_modify_damage(damage, src)
+			if(M.behavior_delegate)
+				damage = M.behavior_delegate.melee_attack_modify_damage(damage, src)
 
-				//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
-				if(M.frenzy_aura > 0)
-					damage += (M.frenzy_aura * 2)
+			//Frenzy auras stack in a way, then the raw value is multipled by two to get the additive modifier
+			if(M.frenzy_aura > 0)
+				damage += (M.frenzy_aura * 2)
 
-				//Somehow we will deal no damage on this attack
-				if(!damage)
-					playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
-					M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
-					SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-					return 0
+			//Somehow we will deal no damage on this attack
+			if(!damage)
+				playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+				M.visible_message(SPAN_DANGER("\The [M] lunges at [src]!"), \
+				SPAN_DANGER("You lunge at [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				return XENO_ATTACK_ACTION
 
-				M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
-				SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-				last_damage_source = initial(M.name)
-				last_damage_mob = M
-				src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
-				M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
-				log_attack("[key_name(M)] slashed [key_name(src)]")
+			M.visible_message(SPAN_DANGER("\The [M] slashes [src]!"), \
+			SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+			last_damage_source = initial(M.name)
+			last_damage_mob = M
+			src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)]</font>")
+			M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)]</font>")
+			log_attack("[key_name(M)] slashed [key_name(src)]")
 
-				M.flick_attack_overlay(src, "slash")
-				playsound(loc, "alien_claw_flesh", 25, 1)
-				apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
+			M.flick_attack_overlay(src, "slash")
+			playsound(loc, "alien_claw_flesh", 25, 1)
+			apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, effectiveness_mult = XVX_ARMOR_EFFECTIVEMULT)
 
-				if(M.behavior_delegate)
-					var/datum/behavior_delegate/MD = M.behavior_delegate
-					MD.melee_attack_additional_effects_target(src)
-					MD.melee_attack_additional_effects_self()
+			if(M.behavior_delegate)
+				var/datum/behavior_delegate/MD = M.behavior_delegate
+				MD.melee_attack_additional_effects_target(src)
+				MD.melee_attack_additional_effects_self()
 
-				SEND_SIGNAL(M, COMSIG_XENO_ALIEN_ATTACK, src)
+			SEND_SIGNAL(M, COMSIG_XENO_ALIEN_ATTACK, src)
 
-			if(INTENT_DISARM)
-				M.animation_attack_on(src)
-				M.flick_attack_overlay(src, "disarm")
-				if(!(isXenoQueen(M)) || M.hivenumber != src.hivenumber)
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
-					M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
-					SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-					if(ismonkey(src))
-						KnockDown(8)
-				else
-					playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
-					M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
-					SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-					src.KnockDown(1)
-		return 1
+		if(INTENT_DISARM)
+			M.animation_attack_on(src)
+			M.flick_attack_overlay(src, "disarm")
+			if(!(isXenoQueen(M)) || M.hivenumber != src.hivenumber)
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1)
+				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src]!"), \
+				SPAN_WARNING("You shove \the [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				if(ismonkey(src))
+					KnockDown(8)
+			else
+				playsound(loc, 'sound/weapons/alien_knockdown.ogg', 25, 1)
+				M.visible_message(SPAN_WARNING("\The [M] shoves \the [src] out of her way!"), \
+				SPAN_WARNING("You shove \the [src] out of your way!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+				src.KnockDown(1)
+	return XENO_ATTACK_ACTION
 
 /mob/living/carbon/Xenomorph/proc/attempt_headbutt(var/mob/living/carbon/Xenomorph/target)
 	//Responding to a raised head

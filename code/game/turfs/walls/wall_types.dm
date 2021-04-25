@@ -854,7 +854,7 @@
 		return FALSE
 
 	if(M.a_intent == INTENT_HELP)
-		return FALSE
+		return XENO_NO_DELAY_ACTION
 
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
@@ -864,6 +864,7 @@
 		take_damage(Ceiling(HEALTH_WALL_XENO/4)) //Four hits for a regular wall
 	else
 		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
+	return XENO_ATTACK_ACTION
 
 /obj/structure/alien/movable_wall/attackby(obj/item/W, mob/living/user)
 	if(!(W.flags_item & NOBLUDGEON))
@@ -1058,21 +1059,22 @@
 
 /turf/closed/wall/resin/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(SEND_SIGNAL(src, COMSIG_WALL_RESIN_XENO_ATTACK, M) & COMPONENT_CANCEL_XENO_ATTACK)
-		return
+		return XENO_NO_DELAY_ACTION
 
 	if(isXenoLarva(M)) //Larvae can't do shit
-		return 0
-	else if(M.a_intent == INTENT_HELP)
-		return 0
+		return
+	if(M.a_intent == INTENT_HELP)
+		return XENO_NO_DELAY_ACTION
+
+	M.animation_attack_on(src)
+	M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
+	SPAN_XENONOTICE("You claw \the [src]."))
+	playsound(src, "alien_resin_break", 25)
+	if (M.hivenumber == hivenumber)
+		take_damage(Ceiling(HEALTH_WALL_XENO/4)) //Four hits for a regular wall
 	else
-		M.animation_attack_on(src)
-		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
-		SPAN_XENONOTICE("You claw \the [src]."))
-		playsound(src, "alien_resin_break", 25)
-		if (M.hivenumber == hivenumber)
-			take_damage(Ceiling(HEALTH_WALL_XENO/4)) //Four hits for a regular wall
-		else
-			take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
+		take_damage(M.melee_damage_lower*RESIN_XENO_DAMAGE_MULTIPLIER)
+	return XENO_ATTACK_ACTION
 
 
 /turf/closed/wall/resin/attack_animal(mob/living/M)

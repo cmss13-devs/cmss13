@@ -138,27 +138,27 @@
 
 //Digging up snow
 /turf/open/auto_turf/snow/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == INTENT_HELP)
-		return FALSE
-
-	if(!bleed_layer)
-		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
-		return FALSE
+	if(M.a_intent == INTENT_HARM) //Missed slash.
+		return
+	if(M.a_intent == INTENT_HELP || !bleed_layer)
+		return XENO_NO_DELAY_ACTION
 
 	M.visible_message(SPAN_NOTICE("[M] starts clearing out the [name]."), SPAN_NOTICE("You start clearing out the [name]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+	xeno_attack_delay(M)
 	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		return FALSE
+		return XENO_NO_DELAY_ACTION
 
 	if(!bleed_layer)
 		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
-		return
+		return XENO_NO_DELAY_ACTION
 
 	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
 	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	var/new_layer = bleed_layer - 1
 	changing_layer(new_layer)
+	return XENO_NO_DELAY_ACTION
 
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
 	if(bleed_layer > 0)

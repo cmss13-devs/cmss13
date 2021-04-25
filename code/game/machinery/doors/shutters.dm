@@ -84,13 +84,16 @@
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoQueen(M) && density && !operating)
-		pry_open(M)
-
-		if(!(stat & BROKEN))
-			stat |= BROKEN
-			addtimer(CALLBACK(src, .proc/unbreak_doors), 10 SECONDS)
+		INVOKE_ASYNC(src, .proc/pry_open, M)
+		return XENO_ATTACK_ACTION
 	else
 		. = ..(M)
+
+/obj/structure/machinery/door/poddoor/shutters/almayer/containment/pry_open(var/mob/living/carbon/Xenomorph/X, var/time = 4 SECONDS)
+	. = ..()
+	if(. && !(stat & BROKEN))
+		stat |= BROKEN
+		addtimer(CALLBACK(src, .proc/unbreak_doors), 10 SECONDS)
 
 /obj/structure/machinery/door/poddoor/shutters/almayer/containment/proc/unbreak_doors()
 	stat &= ~BROKEN

@@ -192,15 +192,16 @@
 	// If they're on help intent, attempt to enter the vehicle
 	if(X.a_intent == INTENT_HELP)
 		handle_player_entrance(X)
-		return
+		return XENO_NO_DELAY_ACTION
 
 	// If the vehicle is completely broken, xenos can enter from anywhere
 	if(health <= 0)
 		handle_player_entrance(X)
+		return XENO_NO_DELAY_ACTION
 
 	if(X.mob_size < mob_size_required_to_hit)
 		to_chat(X, SPAN_XENOWARNING("You're too small to do any significant damage to this vehicle!"))
-		return FALSE
+		return XENO_NO_DELAY_ACTION
 
 	var/damage = (rand(X.melee_damage_lower, X.melee_damage_upper) + dam_bonus) * XENO_UNIVERSAL_VEHICLE_DAMAGEMULT
 
@@ -216,7 +217,7 @@
 		X.animation_attack_on(src)
 		X.visible_message(SPAN_DANGER("\The [X] lunges at [src]!"), \
 		SPAN_DANGER("You lunge at [src]!"))
-		return 0
+		return XENO_ATTACK_ACTION
 
 	X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"))
@@ -229,6 +230,7 @@
 	take_damage_type(damage * damage_mult, "slash", X) //Ravs do a heckin double damage
 
 	healthcheck()
+	return XENO_ATTACK_ACTION
 
 //Differentiates between damage types from different bullets
 //Applies a linear transformation to bullet damage that will generally decrease damage done

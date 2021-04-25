@@ -223,9 +223,12 @@
 
 /obj/structure/bed/chair/dropship/passenger/attack_alien(mob/living/user)
 	if(chair_state != DROPSHIP_CHAIR_BROKEN)
+		playsound(loc, 'sound/effects/metalhit.ogg', 25, 1)
+		user.animation_attack_on(src)
 		user.visible_message(SPAN_WARNING("[user] smashes \the [src], shearing the bolts!"),
 		SPAN_WARNING("You smash \the [src], shearing the bolts!"))
 		fold_down(1)
+		return XENO_ATTACK_ACTION
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair/attackby(obj/item/W, mob/living/user)
 	if(istype(W,/obj/item/tool/wrench) && chair_state == DROPSHIP_CHAIR_BROKEN)

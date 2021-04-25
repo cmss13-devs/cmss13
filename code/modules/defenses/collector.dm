@@ -134,6 +134,7 @@ var/global/list/faction_phoron_stored_list = list(
 		M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
 		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/collector/proc/break_down()
 	var/turf/T = get_turf(src)

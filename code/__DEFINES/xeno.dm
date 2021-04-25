@@ -8,6 +8,22 @@
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
 
+// Defines for action types and click delays used by xenomorph/UnarmedAttack() and attack_alien().
+
+/// Full attack delay.
+#define XENO_ATTACK_ACTION 1
+/// Noticeable but shorter than full delay.
+#define XENO_NONCOMBAT_ACTION 2
+/// No delay at all.
+#define XENO_NO_DELAY_ACTION 3
+
+/// Usually 1 second delay.
+#define xeno_attack_delay(X) (X.next_move = world.time + (10 + X.caste.attack_delay + X.attack_speed_modifier))
+/// 0.4 seconds, legacy 'open hand clicked something adjacent' delay.
+#define xeno_noncombat_delay(X) (X.next_move = world.time + 4)
+/// Usually half a second's delay.
+#define xeno_miss_delay(X) (X.next_move = world.time + ((10 + X.caste.attack_delay + X.attack_speed_modifier) * 0.5))
+
 // Determines how xenos interact with walls, normal nothing, sharp can destroy normal walls and window frame, very sharp reinforced ones.
 #define CLAW_TYPE_NORMAL 		1
 #define CLAW_TYPE_SHARP 		2

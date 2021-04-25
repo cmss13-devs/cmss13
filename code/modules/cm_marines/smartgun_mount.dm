@@ -218,13 +218,16 @@
 		to_chat(user, "The M56D isn't screwed into the mount. Use a <b>screwdriver</b> to finish the job.")
 
 /obj/structure/machinery/m56d_post/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(isXenoLarva(M)) return //Larvae can't do shit
+	if(isXenoLarva(M))
+		return //Larvae can't do shit
+
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
 	M.animation_attack_on(src)
 	M.flick_attack_overlay(src, "slash")
 	playsound(loc, "alien_claw_metal", 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_post/MouseDrop(over_object, src_location, over_location) //Drag the tripod onto you to fold it.
 	if(!ishuman(usr))
@@ -533,13 +536,16 @@
 	return 1
 
 /obj/structure/machinery/m56d_hmg/attack_alien(mob/living/carbon/Xenomorph/M) // Those Ayy lmaos.
-	if(isXenoLarva(M)) return //Larvae can't do shit
+	if(isXenoLarva(M))
+		return //Larvae can't do shit
+
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"),
 	SPAN_DANGER("You slash [src]!"))
 	M.animation_attack_on(src)
 	M.flick_attack_overlay(src, "slash")
 	playsound(loc, "alien_claw_metal", 25)
 	update_health(rand(M.melee_damage_lower,M.melee_damage_upper))
+	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/m56d_hmg/proc/load_into_chamber()
 	if(in_chamber) return 1 //Already set!

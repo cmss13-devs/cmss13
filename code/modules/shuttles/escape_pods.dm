@@ -373,17 +373,19 @@ As such, a new tracker datum must be constructed to follow proper child inherita
 	attack_alien(mob/living/carbon/Xenomorph/user)
 		if(being_forced)
 			to_chat(user, SPAN_XENOWARNING("It's being forced open already!"))
-			return FALSE
+			return XENO_NO_DELAY_ACTION
 
 		if(!occupant)
 			to_chat(user, SPAN_XENOWARNING("There is nothing of interest in there."))
-			return FALSE
+			return XENO_NO_DELAY_ACTION
 
 		being_forced = !being_forced
-		visible_message(SPAN_WARNING("[user] begins to pry the [src]'s cover!"), null, null, 3)
+		xeno_attack_delay(user)
+		visible_message(SPAN_WARNING("[user] begins to pry \the [src]'s cover!"), null, null, 3)
 		playsound(src,'sound/effects/metal_creaking.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_HOSTILE)) go_out() //Force the occupant out.
 		being_forced = !being_forced
+		return XENO_NO_DELAY_ACTION
 
 /obj/structure/machinery/cryopod/evacuation/proc/move_mob_inside(mob/M)
 	if(occupant)

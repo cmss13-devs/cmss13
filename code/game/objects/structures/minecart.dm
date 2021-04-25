@@ -56,4 +56,4 @@
 		destroy()
 	else
 		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
-
+	return XENO_ATTACK_ACTION

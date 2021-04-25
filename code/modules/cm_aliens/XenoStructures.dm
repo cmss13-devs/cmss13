@@ -65,11 +65,12 @@
 
 /obj/effect/alien/resin/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoLarva(M)) //Larvae can't do shit
-		return 0
+		return
+
 	if(M.a_intent == INTENT_HELP)
-		M.visible_message(SPAN_WARNING("\The [M] creepily taps on [src] with its huge claw."), \
-			SPAN_WARNING("You creepily tap on [src]."), null, 5)
+		return XENO_NO_DELAY_ACTION
 	else
+		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src]!"), \
 		SPAN_XENONOTICE("You claw \the [src]."))
 		if(istype(src, /obj/effect/alien/resin/sticky))
@@ -79,6 +80,7 @@
 
 		health -= (M.melee_damage_upper + 50) //Beef up the damage a bit
 		healthcheck()
+	return XENO_ATTACK_ACTION
 
 /obj/effect/alien/resin/attack_animal(mob/living/M as mob)
 	M.visible_message(SPAN_DANGER("[M] tears \the [src]!"), \
@@ -656,7 +658,7 @@
 		M.animation_attack_on(src)
 		M.visible_message(SPAN_XENONOTICE("\The [M] claws \the [src], but the slash bounces off!"), \
 		SPAN_XENONOTICE("You claw \the [src], but the slash bounces off!"))
-		return
+		return XENO_ATTACK_ACTION
 
 	return ..()
 
@@ -722,6 +724,9 @@
 /obj/item/explosive/grenade/alien/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!active)
 		attack_hand(M)
+	else
+		to_chat(M, SPAN_XENOWARNING("It's about to burst!"))
+	return XENO_NO_DELAY_ACTION
 
 /obj/item/explosive/grenade/alien/verb_pickup()
 	if(isXeno(usr))

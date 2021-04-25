@@ -92,14 +92,15 @@
 		user.animation_attack_on(src)
 		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
 		die()
-		return
+		return XENO_ATTACK_ACTION
 
 	if(user.caste.can_hold_facehuggers)
 		if(user.on_fire)
 			to_chat(user, SPAN_WARNING("Touching \the [src] while you're on fire would burn it!"))
-			return
-		// TODO: Refactor how pickups work so you do not need to go through attack_hand
-		attack_hand(user)//Not a carrier, or already full? Just pick it up.
+		else
+			// TODO: Refactor how pickups work so you do not need to go through attack_hand
+			attack_hand(user)//Not a carrier, or already full? Just pick it up.
+		return XENO_NO_DELAY_ACTION
 
 /obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
 	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M)))

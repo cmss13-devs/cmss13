@@ -499,10 +499,10 @@
 
 /turf/closed/wall/strata_ice/jungle
 	name = "jungle vegetation"
-	icon = 'icons/turf/walls/strata_ice.dmi'
-	icon_state = "strata_jungle"
+	icon = 'icons/turf/walls/jungle_veg.dmi'
+	icon_state = "jungle_veg"
 	desc = "Exceptionally dense vegetation that you can't see through."
-	walltype = WALL_STRATA_JUNGLE //Not a metal wall
+	walltype = WALL_JUNGLE_UPDATED //Not a metal wall
 	hull = 1
 
 /turf/closed/wall/strata_outpost_ribbed //this guy is our reinforced replacement

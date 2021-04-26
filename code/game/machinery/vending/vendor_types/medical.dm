@@ -1,8 +1,8 @@
 //------------SORTED MEDICAL VENDORS---------------
 
 /obj/structure/machinery/cm_vending/sorted/medical
-	name = "\improper WestonMed Plus"
-	desc = "Medical Pharmaceutical dispenser. Provided by W-Y Pharmaceuticals Division(TM)."
+	name = "\improper Wey-Med Plus"
+	desc = "Medical Pharmaceutical dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "med"
 	req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
 
@@ -194,8 +194,8 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry
-	name = "\improper WestonChem Plus"
-	desc = "Medical chemistry dispenser. Provided by W-Y Pharmaceuticals Division(TM)."
+	name = "\improper Wey-Chem Plus"
+	desc = "Medical chemistry dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "chem"
 
 	healthscan = FALSE

@@ -5,7 +5,7 @@
 		alert("Invalid mob")
 		return
 
-	var/rank_list = list("Custom", "Weston-Yamada") + RoleAuthority.roles_by_name
+	var/rank_list = list("Custom", "Weyland-Yutani") + RoleAuthority.roles_by_name
 
 	var/newrank = tgui_input_list(usr, "Select new rank for [H]", "Change the mob's rank and skills", rank_list)
 	if (!newrank)
@@ -39,7 +39,7 @@
 		H.faction = new_faction
 	else
 		switch(newrank)
-			if("Weston-Yamada")
+			if("Weyland-Yutani")
 				var/code = "WY-"
 
 				var/divisions = get_named_wy_ranks("division_code")

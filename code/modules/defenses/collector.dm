@@ -10,7 +10,7 @@ var/global/list/faction_phoron_stored_list = list(
 
 /obj/item/collector
 	name = "deployable collector"
-	desc = "The newest technology from Weston-Yamada, a portable collector of the precious resource phoron. Phoron is used as fuel for the generators."
+	desc = "The newest technology from Weyland-Yutani, a portable collector of the precious resource phoron. Phoron is used as fuel for the generators."
 	icon = 'icons/obj/structures/machinery/defenses.dmi'
 	icon_state = "collector"
 	w_class = SIZE_TINY

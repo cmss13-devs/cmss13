@@ -196,7 +196,7 @@ var/waiting_for_drop_votes = 0
 
 	spawn(10)
 		to_world("<B>The current game mode is - HUNTER GAMES!</B>")
-		to_world("You have been dropped off on a Weston-Yamada colony overrun with alien Predators who have turned it into a game preserve..")
+		to_world("You have been dropped off on a Weyland-Yutani colony overrun with alien Predators who have turned it into a game preserve..")
 		to_world("And you are both the hunter and the hunted!")
 		to_world("Be the <B>last survivor</b> and <B>win glory</B>! Fight in any way you can! Team up or be a loner, it's up to you.")
 		to_world("Be warned though - if someone hasn't died in 3 minutes, the watching Predators get irritated!")

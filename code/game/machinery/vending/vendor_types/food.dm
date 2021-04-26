@@ -60,7 +60,7 @@
 			list("Red Star Vodka", 5, /obj/item/reagent_container/food/drinks/bottle/vodka, VENDOR_ITEM_REGULAR),
 			list("Robert Robust's Coffee Liqueur", 5, /obj/item/reagent_container/food/drinks/bottle/kahlua, VENDOR_ITEM_REGULAR),
 			list("Uncle Git's Special Reserve", 5, /obj/item/reagent_container/food/drinks/bottle/whiskey, VENDOR_ITEM_REGULAR),
-			list("Weston-Yamada Aspen Beer", 20, /obj/item/reagent_container/food/drinks/cans/aspen, VENDOR_ITEM_REGULAR),
+			list("Weyland-Yutani Aspen Beer", 20, /obj/item/reagent_container/food/drinks/cans/aspen, VENDOR_ITEM_REGULAR),
 
 			list("NON-ALCOHOL", -1, null, null),
 			list("Duke Purple Tea", 10, /obj/item/reagent_container/food/drinks/tea, VENDOR_ITEM_REGULAR),

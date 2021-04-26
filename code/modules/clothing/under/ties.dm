@@ -212,7 +212,7 @@
 
 /obj/item/clothing/accessory/medal/silver/security
 	name = "robust security award"
-	desc = "An award for distinguished combat and sacrifice in defence of W-Y's commercial interests. Often awarded to security staff."
+	desc = "An award for distinguished combat and sacrifice in defence of Wey-Yu's commercial interests. Often awarded to security staff."
 
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"
@@ -221,7 +221,7 @@
 
 /obj/item/clothing/accessory/medal/gold/captain
 	name = "medal of captaincy"
-	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of a captain to W-Y, and their undisputable authority over their crew."
+	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of a captain to Wey-Yu, and their undisputable authority over their crew."
 
 /obj/item/clothing/accessory/medal/gold/heroism
 	name = "medal of exceptional heroism"
@@ -669,7 +669,7 @@
 		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
 		return
 	if(isliving(user))
-		user.visible_message(SPAN_DANGER("[user] displays their W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."),SPAN_DANGER("You display your W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."))
+		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
 /obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/card/id))

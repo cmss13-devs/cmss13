@@ -230,6 +230,6 @@
 
 /obj/item/clothing/under/suit_jacket/trainee
 	name = "trainee's uniform"
-	desc = "It's a uniform that has a W-Y insignia on it with the words \"Trainee\" stamped below."
+	desc = "It's a uniform that has a Wey-Yu insignia on it with the words \"Trainee\" stamped below."
 	icon_state = "trainee_uniform"
 	item_state = "trainee_uniform"

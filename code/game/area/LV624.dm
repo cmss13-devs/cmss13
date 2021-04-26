@@ -135,7 +135,7 @@
 
 //Colony Areas
 /area/lv624/ground/colony
-	name = "\improper Weston-Yamada Compound"
+	name = "\improper Weyland-Yutani Compound"
 	icon_state = "green"
 
 /area/lv624/ground/colony/north_nexus_road

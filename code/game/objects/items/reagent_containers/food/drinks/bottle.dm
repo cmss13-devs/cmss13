@@ -128,8 +128,8 @@
 	reagents.add_reagent("whiskey", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/sake
-	name = "\improper Weston-Yamada Sake"
-	desc = "Sake made with ancient techniques passed down for thousands of years. Fermented in Iowa by the Weston-Yamada Corporation."
+	name = "\improper Weyland-Yutani Sake"
+	desc = "Sake made with ancient techniques passed down for thousands of years. Fermented in Iowa by the Weyland-Yutani Corporation."
 	icon_state = "sakebottle"
 	center_of_mass = "x=17;y=7"
 

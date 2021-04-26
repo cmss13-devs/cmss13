@@ -7,7 +7,7 @@
 	unacidable = FALSE
 	density = TRUE
 	var/enemy_name = "Fury Fuhrer"
-	var/temp = "Sponsored by Weston-Yamada and the United States Colonial Marines" //Temporary message, for attack messages, etc
+	var/temp = "Sponsored by Weyland-Yutani and the United States Colonial Marines" //Temporary message, for attack messages, etc
 	var/player_hp = 30 //Player health/attack points
 	var/player_mp = 10
 	var/enemy_hp = 50 //Enemy health/attack points

@@ -257,7 +257,7 @@
 
 /obj/structure/largecrate/supply/supplies/water
 	name = "\improper WY Bottled Water crate (x50)"
-	desc = "A crate containing fifty Weston-Yamada Bottled Spring Water bottles."
+	desc = "A crate containing fifty Weyland-Yutani Bottled Spring Water bottles."
 	supplies = list(/obj/item/reagent_container/food/drinks/cans/waterbottle = 50)
 
 /obj/structure/largecrate/supply/powerloader
@@ -310,8 +310,8 @@
 	supplies = list(/obj/structure/machinery/optable = 1, /obj/item/storage/surgical_tray = 1, /obj/item/tank/anesthetic = 2, /obj/item/reagent_container/spray/cleaner = 1)
 
 /obj/structure/largecrate/supply/medicine/medivend
-	name = "\improper WestonMed Plus crate (x1)"
-	desc = "A crate containing one Weston Plus medical vendor."
+	name = "\improper Wey-Med Plus crate (x1)"
+	desc = "A crate containing one Weyland Plus medical vendor."
 	supplies = list(/obj/structure/machinery/cm_vending/sorted/medical = 1)
 
 

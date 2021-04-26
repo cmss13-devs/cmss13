@@ -107,7 +107,7 @@
 //------COLONY-SPECIFIC VENDORS-------
 
 /obj/structure/machinery/cm_vending/sorted/tech/science
-	name = "\improper W-Y SciVend"
+	name = "\improper Wey-Yu SciVend"
 	desc = "Vendor containing basic equipment for your experiments."
 	icon_state = "robotics"
 	req_access = list(ACCESS_MARINE_RESEARCH)

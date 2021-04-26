@@ -96,7 +96,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/cola
 	name = "\improper Fruit-Beer"
-	desc = "In theory, Mango flavored root beer sounds like a pretty good idea. Weston-Yamada has disproved yet another theory with its latest line of cola. Canned by the Weston-Yamada Corporation."
+	desc = "In theory, Mango flavored root beer sounds like a pretty good idea. Weyland-Yutani has disproved yet another theory with its latest line of cola. Canned by the Weyland-Yutani Corporation."
 	icon_state = "fruit_beer"
 	center_of_mass = "x=16;y=10"
 
@@ -105,8 +105,8 @@
 	reagents.add_reagent("cola", 30)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle
-	name = "\improper Weston-Yamada Bottled Spring Water"
-	desc = "Overpriced 'Spring' water. Bottled by the Weston-Yamada Corporation."
+	name = "\improper Weyland-Yutani Bottled Spring Water"
+	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
 	center_of_mass = "x=15;y=8"
 
@@ -397,8 +397,8 @@
 	reagents.add_reagent("water", 25)
 
 /obj/item/reagent_container/food/drinks/cans/aspen
-	name = "\improper Weston-Yamada Aspen Beer"
-	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weston-Yamada Corporation."
+	name = "\improper Weyland-Yutani Aspen Beer"
+	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	icon_state = "6_pack_1"
 	center_of_mass = "x=16;y=10"
 

@@ -38,7 +38,7 @@
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weston-Yamada PMC (Standard)"
+	assignment = "Weyland-Yutani PMC (Standard)"
 	rank = JOB_PMC
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
@@ -61,10 +61,10 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_standard
-	name = "Weston-Yamada PMC (Standard)"
+	name = "Weyland-Yutani PMC (Standard)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weston-Yamada PMC (Standard)"
+	assignment = "Weyland-Yutani PMC (Standard)"
 	rank = JOB_PMC
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
@@ -113,10 +113,10 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_detainer
-	name = "Weston-Yamada PMC (Detainer)"
+	name = "Weyland-Yutani PMC (Detainer)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weston-Yamada PMC (Detainer)"
+	assignment = "Weyland-Yutani PMC (Detainer)"
 	rank = JOB_PMC
 	paygrade = "PMC1"
 	skills = /datum/skills/pmc
@@ -150,10 +150,10 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_medic
-	name = "Weston-Yamada PMC (Medic)"
+	name = "Weyland-Yutani PMC (Medic)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	assignment = "Weston-Yamada PMC (Medic)"
+	assignment = "Weyland-Yutani PMC (Medic)"
 	rank = "PMC Medic"
 	paygrade = "PMC2M" //Fixed from PMC2 to PMC2M to display properly.
 	skills = /datum/skills/pmc/medic
@@ -192,7 +192,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/pmc_med_investigator
-	name = "Weston-Yamada PMC (Medical Investigator)"
+	name = "Weyland-Yutani PMC (Medical Investigator)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_INVESTIGATOR
@@ -236,7 +236,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_leader
-	name = "Weston-Yamada PMC (Leader)"
+	name = "Weyland-Yutani PMC (Leader)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_LEADER
@@ -277,7 +277,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_lead_investigator
-	name = "Weston-Yamada PMC (Lead Investigator)"
+	name = "Weyland-Yutani PMC (Lead Investigator)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_LEAD_INVEST
@@ -309,7 +309,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_gunner
-	name = "Weston-Yamada PMC (Gunner)"
+	name = "Weyland-Yutani PMC (Gunner)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_GUNNER
@@ -337,7 +337,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/pmc_sniper
-	name = "Weston-Yamada PMC (Sniper)"
+	name = "Weyland-Yutani PMC (Sniper)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	assignment = JOB_PMC_SNIPER
@@ -367,7 +367,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/xeno_handler
-    name = "Weston-Yamada PMC (Xeno Handler)"
+    name = "Weyland-Yutani PMC (Xeno Handler)"
     flags = EQUIPMENT_PRESET_EXTRA
 
     faction_group = FACTION_LIST_MARINE_WY
@@ -406,7 +406,7 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/deathsquad
-	name = "Weston-Yamada Deathsquad"
+	name = "Weyland-Yutani Deathsquad"
 	flags = EQUIPMENT_PRESET_EXTRA
 	uses_special_name = TRUE //We always use a codename!
 	faction = FACTION_DEATHSQUAD
@@ -462,7 +462,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/pmc/deathsquad/medic
-	name = "Weston-Yamada Deathsquad Medic"
+	name = "Weyland-Yutani Deathsquad Medic"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Deathsquad Medic"
 	role_comm_title = "CCM"
@@ -500,7 +500,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/deathsquad/terminator
-	name = "Weston-Yamada Deathsquad Terminator"
+	name = "Weyland-Yutani Deathsquad Terminator"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Deathsquad Terminator"
 	role_comm_title = "CCT"
@@ -523,7 +523,7 @@
 
 //*****************************************************************************************************/
 /datum/equipment_preset/pmc/deathsquad/leader
-	name = "Weston-Yamada Deathsquad Leader"
+	name = "Weyland-Yutani Deathsquad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 	assignment = "Deathsquad Leader"
 	role_comm_title = "LCC"

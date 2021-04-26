@@ -185,7 +185,7 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 		switch(screen)
 			if(0)
 				dat += "Welcome to Newscasting Unit #[src.unit_no].<BR> Interface & News networks Operational."
-				dat += "<BR><FONT SIZE=1>Property of Weston-Yamada</FONT>"
+				dat += "<BR><FONT SIZE=1>Property of Weyland-Yutani</FONT>"
 				if(news_network.wanted_issue)
 					dat+= "<HR><A href='?src=\ref[src];view_wanted=1'>Read Wanted Issue</A>"
 				dat+= "<HR><BR><A href='?src=\ref[src];create_channel=1'>Create Feed Channel</A>"

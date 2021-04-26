@@ -1,7 +1,7 @@
 
-//Weston-Yamada commandos. Friendly to USCM, hostile to xenos.
+//Weyland-Yutani commandos. Friendly to USCM, hostile to xenos.
 /datum/emergency_call/pmc
-	name = "Weston-Yamada PMC (Squad)"
+	name = "Weyland-Yutani PMC (Squad)"
 	mob_max = 6
 	probability = 25
 	shuttle_id = "Distress_PMC"
@@ -14,7 +14,7 @@
 /datum/emergency_call/pmc/New()
 	..()
 	arrival_message = "[MAIN_SHIP_NAME], this is USCSS Royce responding to your distress call. We are boarding. Any hostile actions will be met with lethal force."
-	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME] Captain, and eliminate any hostile threats. Do not damage W-Y property."
+	objectives = "Secure the Corporate Liaison and the [MAIN_SHIP_NAME] Captain, and eliminate any hostile threats. Do not damage Wey-Yu property."
 
 
 /datum/emergency_call/pmc/create_member(datum/mind/M)
@@ -28,23 +28,23 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weston-Yamada squad leader!"))
-		arm_equipment(mob, "Weston-Yamada PMC (Leader)", TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
+		arm_equipment(mob, "Weyland-Yutani PMC (Leader)", TRUE, TRUE)
 	else if(medics < max_medics)
 		medics++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weston-Yamada medic!"))
-		arm_equipment(mob, "Weston-Yamada PMC (Medic)", TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani medic!"))
+		arm_equipment(mob, "Weyland-Yutani PMC (Medic)", TRUE, TRUE)
 	else if(heavies < max_heavies*ERT_PMC_GUNNER_FRACTION)
 		heavies++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weston-Yamada heavy gunner!"))
-		arm_equipment(mob, "Weston-Yamada PMC (Gunner)", TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani heavy gunner!"))
+		arm_equipment(mob, "Weyland-Yutani PMC (Gunner)", TRUE, TRUE)
 	else if(heavies < max_heavies)
 		heavies++
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weston-Yamada sniper!"))
-		arm_equipment(mob, "Weston-Yamada PMC (Sniper)", TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani sniper!"))
+		arm_equipment(mob, "Weyland-Yutani PMC (Sniper)", TRUE, TRUE)
 	else
-		to_chat(mob, SPAN_ROLE_HEADER("You are a Weston-Yamada mercenary!"))
-		arm_equipment(mob, "Weston-Yamada PMC (Standard)", TRUE, TRUE)
+		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani mercenary!"))
+		arm_equipment(mob, "Weyland-Yutani PMC (Standard)", TRUE, TRUE)
 
 	print_backstory(mob)
 
@@ -53,23 +53,23 @@
 
 /datum/emergency_call/pmc/print_backstory(mob/living/carbon/human/M)
 	to_chat(M, SPAN_BOLD("You were born [pick(75;"in Europe", 15;"in Asia", 10;"on Mars")] to a [pick(75;"well-off", 15;"well-established", 10;"average")] family."))
-	to_chat(M, SPAN_BOLD("Joining the ranks of Weston-Yamada has proven to be very profitable for you."))
+	to_chat(M, SPAN_BOLD("Joining the ranks of Weyland-Yutani has proven to be very profitable for you."))
 	to_chat(M, SPAN_BOLD("While you are officially an employee, much of your work is off the books. You work as a skilled mercenary."))
 	to_chat(M, SPAN_BOLD("You are [pick(50;"unaware of the xenomorph threat", 15;"acutely aware of the xenomorph threat", 10;"well-informed of the xenomorph threat")]"))
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, SPAN_BOLD("You are part of  Weston-Yamada Task Force Oberon that arrived in 2182 following the UA withdrawl of the Tychon's Rift sector."))
-	to_chat(M, SPAN_BOLD("Task-force Oberon is stationed aboard the USCSS Royce, a powerful Weston-Yamada cruiser that patrols the outer edges of Tychon's Rift. "))
-	to_chat(M, SPAN_BOLD("Under the directive of Weston-Yamada board member Johan Almric, you act as private security for Weston-Yamada science teams."))
+	to_chat(M, SPAN_BOLD("You are part of  Weyland-Yutani Task Force Oberon that arrived in 2182 following the UA withdrawl of the Tychon's Rift sector."))
+	to_chat(M, SPAN_BOLD("Task-force Oberon is stationed aboard the USCSS Royce, a powerful Weyland-Yutani cruiser that patrols the outer edges of Tychon's Rift. "))
+	to_chat(M, SPAN_BOLD("Under the directive of Weyland-Yutani board member Johan Almric, you act as private security for Weyland-Yutani science teams."))
 	to_chat(M, SPAN_BOLD("The USCSS Royce contains a crew of roughly two hundred PMCs, and one hundred scientists and support personnel."))
 	to_chat(M, "")
 	to_chat(M, "")
-	to_chat(M, SPAN_BOLD("Ensure no damage is incurred against Weston-Yamada. Make sure the CL is safe."))
-	to_chat(M, SPAN_BOLD("Deny Weston-Yamada's involvement and do not trust the UA/USCM forces."))
+	to_chat(M, SPAN_BOLD("Ensure no damage is incurred against Weyland-Yutani. Make sure the CL is safe."))
+	to_chat(M, SPAN_BOLD("Deny Weyland-Yutani's involvement and do not trust the UA/USCM forces."))
 
 
 /datum/emergency_call/pmc/platoon
-	name = "Weston-Yamada PMC (Platoon)"
+	name = "Weyland-Yutani PMC (Platoon)"
 	mob_min = 8
 	mob_max = 25
 	probability = 0
@@ -77,7 +77,7 @@
 	max_heavies = 4
 
 /datum/emergency_call/pmc/chem_retrieval
-	name = "Weston-Yamada PMC (Chemical Investigation Squad)"
+	name = "Weyland-Yutani PMC (Chemical Investigation Squad)"
 	mob_max = 6
 	mob_min = 2
 	probability = 0
@@ -112,19 +112,19 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weston-Yamada squad leader!"))
-		arm_equipment(H, "Weston-Yamada PMC (Lead Investigator)", TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
+		arm_equipment(H, "Weyland-Yutani PMC (Lead Investigator)", TRUE, TRUE)
 	else if(medics < max_medics)
 		medics++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weston-Yamada medical investigator!"))
-		arm_equipment(H, "Weston-Yamada PMC (Medical Investigator)", TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani medical investigator!"))
+		arm_equipment(H, "Weyland-Yutani PMC (Medical Investigator)", TRUE, TRUE)
 	else if(heavies < max_heavies)
 		heavies++
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weston-Yamada heavy gunner!"))
-		arm_equipment(H, "Weston-Yamada PMC (Gunner)", TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani heavy gunner!"))
+		arm_equipment(H, "Weyland-Yutani PMC (Gunner)", TRUE, TRUE)
 	else
-		to_chat(H, SPAN_ROLE_HEADER("You are a Weston-Yamada detainer!"))
-		arm_equipment(H, "Weston-Yamada PMC (Detainer)", TRUE, TRUE)
+		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani detainer!"))
+		arm_equipment(H, "Weyland-Yutani PMC (Detainer)", TRUE, TRUE)
 
 	print_backstory(H)
 

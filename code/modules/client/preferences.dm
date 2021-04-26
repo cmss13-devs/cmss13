@@ -1121,7 +1121,7 @@ var/const/MAX_SAVE_SLOTS = 10
 						backbag = backbaglist.Find(new_backbag)
 
 				if("nt_relation")
-					var/new_relation = input(user, "Choose your relation to the Weston-Yamada company. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
+					var/new_relation = input(user, "Choose your relation to the Weyland-Yutani company. Note that this represents what others can find out about your character by researching your background, not what your character actually thinks.", "Character Preference")  as null|anything in list("Loyal", "Supportive", "Neutral", "Skeptical", "Opposed")
 					if(new_relation)
 						nanotrasen_relation = new_relation
 

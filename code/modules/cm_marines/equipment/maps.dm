@@ -149,7 +149,7 @@
 			//did only the basics todo change later
 		if(MAP_SOROKYNE_STRATA)
 			name = "\improper Sorokyne Strata map"
-			desc = "A map of the Weston-Yamada colony Sorokyne Outpost, commonly known as Sorokyne Strata."
+			desc = "A map of the Weyland-Yutani colony Sorokyne Outpost, commonly known as Sorokyne Strata."
 			html_link = "images/1/1c/Sorokyne_map.png"
 			color = "cyan"
 		if (MAP_CORSAT)

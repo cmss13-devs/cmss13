@@ -120,7 +120,7 @@
 
 /obj/structure/machinery/shower
 	name = "shower"
-	desc = "The HS-451. Installed in the 2050s by the Weston Hygiene Division."
+	desc = "The HS-451. Installed in the 2050s by the Weyland Hygiene Division."
 	icon = 'icons/obj/structures/props/watercloset.dmi'
 	icon_state = "shower"
 	density = 0

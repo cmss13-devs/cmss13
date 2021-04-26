@@ -101,8 +101,8 @@
 	name = "director's jacket"
 
 /obj/item/clothing/suit/armor/vest/security
-	name = "W-Y security armor"
-	desc = "An armored vest that protects against some damage. This one has a Weston-Yamada corporate badge."
+	name = "Wey-Yu security armor"
+	desc = "An armored vest that protects against some damage. This one has a Weyland-Yutani corporate badge."
 	icon_state = "armorsec"
 	item_state = "armor"
 

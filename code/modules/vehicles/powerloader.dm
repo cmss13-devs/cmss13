@@ -1,7 +1,7 @@
 /obj/vehicle/powerloader
 	name = "\improper Caterpillar P-5000 Work Loader"
 	icon = 'icons/obj/vehicles/powerloader.dmi'
-	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weston Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
+	desc = "The Caterpillar P-5000 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere."
 	icon_state = "powerloader_open"
 	layer = POWERLOADER_LAYER //so the top appears above windows and wall mounts
 	anchored = 1

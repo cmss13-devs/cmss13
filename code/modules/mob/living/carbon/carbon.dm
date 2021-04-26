@@ -322,8 +322,13 @@
 	else //real item in hand, not a grab
 		thrown_thing = I
 
+
+
 	//actually throw it!
 	if(thrown_thing)
+
+		if(!(thrown_thing.try_to_throw(src)))
+			return
 		visible_message(SPAN_WARNING("[src] has thrown [thrown_thing]."), null, null, 5)
 
 		if(!lastarea)
@@ -331,9 +336,6 @@
 		if((istype(loc, /turf/open/space)) || !lastarea.has_gravity)
 			inertia_dir = get_dir(target, src)
 			step(src, inertia_dir)
-
-		if(thrown_thing.try_to_throw(src))
-			return
 
 		if(throw_type == THROW_MODE_HIGH)
 			to_chat(src, SPAN_NOTICE("You prepare to perform a high toss."))

@@ -108,7 +108,7 @@
 		launch_towards(LM)
 
 /atom/movable/proc/try_to_throw(var/mob/living/user)
-	return
+	return TRUE
 
 // Proc for throwing items (should only really be used for throw)
 /atom/movable/proc/throw_atom(var/atom/target, var/range, var/speed = 0, var/atom/thrower, var/spin, var/launch_type = NORMAL_LAUNCH, var/pass_flags = NO_FLAGS)

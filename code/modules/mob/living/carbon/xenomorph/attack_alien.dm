@@ -123,7 +123,7 @@
 
 			var/slash_noise = "alien_claw_flesh"
 			var/list/slashdata = list("n_damage" = n_damage, "slash_noise" = slash_noise)
-			SEND_SIGNAL(src, COMSIG_HUMAN_XENO_ATTACK, slashdata)
+			SEND_SIGNAL(src, COMSIG_HUMAN_XENO_ATTACK, slashdata, M)
 			var/f_damage = slashdata["n_damage"]
 			slash_noise = slashdata["slash_noise"]
 

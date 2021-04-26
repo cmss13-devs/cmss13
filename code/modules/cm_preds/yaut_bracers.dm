@@ -34,7 +34,6 @@
 	var/cloak_cooldown
 	var/upgrades = 0 //Set to two, so admins can give preds shittier ones for young blood events or whatever. //Changed it back to 0 since it was breaking spawn-equipment and the translator -retrokinesis
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
-	var/combistick_cooldown = 0 //Let's add a cooldown for Yank Combistick so that it can't be spammed.
 	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
 
 /obj/item/clothing/gloves/yautja/Initialize(mapload, ...)
@@ -827,12 +826,6 @@
 			. = activate_random_verb()
 			return
 
-	if(combistick_cooldown)
-		to_chat(usr, SPAN_WARNING("Wait a bit before yanking the chain again!"))
-		return
-
-
-
 	for(var/obj/item/weapon/melee/combistick/C in range(7))
 		if(usr.get_active_hand() == C || usr.get_inactive_hand() == C) //Check if THIS combistick is in our hands already.
 			continue
@@ -840,17 +833,12 @@
 			if(!drain_power(usr,70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
 				return
 			usr.visible_message(SPAN_WARNING("<b>[usr] yanks [C]'s chain back!</b>"), SPAN_WARNING("<b>You yank [C]'s chain back!</b>"))
-			combistick_cooldown = 1
 		else if(usr.put_in_inactive_hand(C))///...Try putting it in our inactive hand.
 			if(!drain_power(usr,70)) //We should only drain power if we actually yank the chain back. Failed attempts can quickly drain the charge away.
 				return
 			usr.visible_message(SPAN_WARNING("<b>[usr] yanks [C]'s chain back!</b>"), SPAN_WARNING("<b>You yank [C]'s chain back!</b>"))
-			combistick_cooldown = 1
 		else //If neither hand can hold it, you must not have a free hand.
 			to_chat(usr, SPAN_WARNING("You need a free hand to do this!</b>"))
-
-	if(combistick_cooldown)
-		addtimer(VARSET_CALLBACK(src, combistick_cooldown, FALSE), 3 SECONDS)
 
 /obj/item/clothing/gloves/yautja/proc/translate()
 	set name = "Translator"

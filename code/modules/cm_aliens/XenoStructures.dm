@@ -699,8 +699,9 @@
 	if(isXeno(user))
 		to_chat(user, SPAN_NOTICE("You prepare to throw [src]."))
 		if(!do_after(user, xeno_throw_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-			return TRUE
+			return FALSE
 		activate(user)
+		return TRUE
 
 /obj/item/explosive/grenade/alien/can_use_grenade(mob/user)
 	if(!isXeno(user))

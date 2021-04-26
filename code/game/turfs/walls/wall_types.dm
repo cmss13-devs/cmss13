@@ -1013,8 +1013,8 @@
 		damage *= brute_multiplier
 
 	if(prob(chance_to_reflect))
-		if(P.runtime_iff_group)
-			// Bullet gets absorbed if it has IFF.
+		if(P.runtime_iff_group || P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT)
+			// Bullet gets absorbed if it has IFF or can't be reflected.
 			return
 
 		var/obj/item/projectile/new_proj = new(src)

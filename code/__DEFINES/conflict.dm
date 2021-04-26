@@ -25,6 +25,8 @@
 #define AMMO_HITS_TARGET_TURF	(1<<17) // Whether or not the bullet hits the target that was clicked or if it keeps travelling
 #define AMMO_ALWAYS_FF			(1<<18)
 #define AMMO_HOMING				(1<<19) // If the bullet target is a mob, it will correct its trajectory toward the mob.
+/// Can't be deflected
+#define AMMO_NO_DEFLECT			(1<<20)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)

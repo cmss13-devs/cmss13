@@ -303,6 +303,7 @@
 	frequency = YAUT_FREQ
 	unacidable = TRUE
 	ignore_z = TRUE
+
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking = "Sainja")
 	if(!isYautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
@@ -596,7 +597,6 @@
 	add_to_missing_pred_gear(src)
 	..()
 
-
 /obj/item/weapon/melee/yautja_sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggresive and lethal hunters."
@@ -609,14 +609,16 @@
 	throwforce = MELEE_FORCE_TIER_5
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
-	var/on = FALSE
-	var/timer = FALSE
 	embeddable = FALSE
 	w_class = SIZE_LARGE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	attack_speed = 9
+	attack_speed = 0.9 SECONDS
 	unacidable = TRUE
+	var/parrying
+	var/parrying_duration = 3 SECONDS
+	var/cur_parrying_cooldown
+	var/parrying_delay = 11 SECONDS // effectively 8, starts counting on activation
 
 /obj/item/weapon/melee/yautja_sword/Destroy()
 	remove_from_missing_pred_gear(src)
@@ -626,7 +628,10 @@
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/melee/yautja_sword/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/weapon/melee/yautja_sword/attack(mob/living/target, mob/living/carbon/human/user, def_zone, var/riposte)
+	if(parrying && !riposte)
+		to_chat(user, SPAN_WARNING("You're a bit busy concentrating to hit something."))
+		return
 	. = ..()
 	if(!.)
 		return
@@ -639,32 +644,116 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/weapon/melee/yautja_sword/unique_action(mob/living/user)
-	if(user.get_active_hand() != src)
+/obj/item/weapon/melee/yautja_sword/attack_self(mob/living/carbon/human/user)
+	if(!isSpeciesYautja(user))
+		if(do_after(user, 0.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			var/wield_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+			if(!prob(wield_chance))
+				user.visible_message(SPAN_DANGER("[user] tries to hold \the [src] steadily but drops it!"),SPAN_DANGER("You focus on \the [src], attempting to hold it steadily, but its heavy weight makes you lose your grip!"))
+				user.hand ? user.drop_l_hand() : user.drop_r_hand()
+				return
+	if(cur_parrying_cooldown > world.time)
+		to_chat(user, SPAN_WARNING("You've attempted to parry too soon, you must wait a bit before regaining your focus."))
 		return
-	if(timer) return
-	if(!on)
-		on = !on
-		timer = TRUE
-		addtimer(CALLBACK(src, .proc/stop_parry), 3 SECONDS)
-		to_chat(user, SPAN_NOTICE("You get ready to parry with the [src]."))
-		addtimer(CALLBACK(src, .proc/parry_cooldown), 8 SECONDS)
+	cur_parrying_cooldown = world.time + parrying_delay
+	parry(user)
 
-	add_fingerprint(user)
-	return
+/obj/item/weapon/melee/yautja_sword/proc/parry(mob/living/carbon/human/user)
+	user.visible_message(SPAN_HIGHDANGER("[user] starts holding \the [src] steadily..."),SPAN_DANGER("You focus on \the [src], holding it to parry any incoming attacks."))
+	flags_item |= NODROP
+	parrying = TRUE
 
-/obj/item/weapon/melee/yautja_sword/proc/stop_parry()
-	if(on)
-		on = !on
-		if(isYautja(src.loc))
-			var/mob/living/user = loc
-			to_chat(user, SPAN_NOTICE("You lower the [src]."))
+	var/filt_color = COLOR_WHITE
+	var/filt_alpha = 70
+	filt_color += num2text(filt_alpha, 2, 16)
+	user.add_filter("parry_sword", 1, list("type" = "outline", "color" = filt_color, "size" = 2))
 
-/obj/item/weapon/melee/yautja_sword/proc/parry_cooldown()
-	timer = FALSE
-	if(isYautja(src.loc))
-		var/mob/living/user = loc
-		to_chat(user, SPAN_NOTICE("You lower the [src]."))
+	RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, .proc/deflect_bullet)
+	RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, .proc/riposte_slash)
+	RegisterSignal(user, COMSIG_ITEM_ATTEMPT_ATTACK, .proc/riposte_melee)
+	addtimer(CALLBACK(src, .proc/end_parry, user), parrying_duration)
+
+/obj/item/weapon/melee/yautja_sword/proc/deflect_bullet(mob/living/carbon/human/user, var/x, var/y, obj/item/projectile/P)
+	SIGNAL_HANDLER
+	var/parry_chance = 100
+	if(!isSpeciesYautja(user))
+		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+
+	if(P.ammo.flags_ammo_behavior & AMMO_NO_DEFLECT || P.projectile_override_flags & AMMO_NO_DEFLECT)
+		return
+
+	if(!prob(parry_chance))
+		user.visible_message(SPAN_DANGER("[user] fails to deflect \the [P]!"),SPAN_DANGER("You fail to deflect \the [P]!"))
+		return
+
+	if(!P.runtime_iff_group)
+		user.visible_message(SPAN_DANGER("[user] blocks \the [P] and deflects it back at [P.firer]!"),SPAN_DANGER("You parry \the [P] and deflect it at [P.firer]!"))
+
+		var/obj/item/projectile/new_proj = new(src)
+		new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING|AMMO_NO_DEFLECT)
+		new_proj.firer = user
+
+		// Move back to who fired you.
+		new_proj.jank_wrapper()
+
+		new_proj.fire_at(P.firer, user, src, 10, speed = P.ammo.shell_speed)
+	return COMPONENT_CANCEL_BULLET_ACT
+
+/obj/item/weapon/melee/yautja_sword/proc/riposte_slash(mob/living/carbon/human/user, list/slashdata, var/mob/living/carbon/Xenomorph/X)
+	SIGNAL_HANDLER
+	if(user.is_mob_incapacitated())
+		return
+
+	var/parry_chance = 100
+	if(!isSpeciesYautja(user))
+		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+
+	if(!prob(parry_chance))
+		user.visible_message(SPAN_DANGER("[user] fails to block the slash!"),SPAN_DANGER("You fail to parry the slash!"))
+		return
+
+	user.visible_message(SPAN_DANGER("[user] blocks the slash and counterattacks!"),SPAN_DANGER("You parry the slash and initiate a riposte attack!"))
+	slashdata["n_damage"] = 0
+	attack(X, user, riposte = TRUE)
+
+/obj/item/weapon/melee/yautja_sword/proc/riposte_melee(mob/living/carbon/human/user, var/mob/living/carbon/human/target)
+	SIGNAL_HANDLER
+	if(user.is_mob_incapacitated())
+		return
+	
+	if(user == target)
+		return
+
+	var/parry_chance = 100
+	if(!isSpeciesYautja(user))
+		parry_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
+
+	if(!prob(parry_chance))
+		user.visible_message(SPAN_DANGER("[user] fails to block the slash!"),SPAN_DANGER("You fail to parry the slash!"))
+		return
+
+	target.animation_attack_on(user)
+	user.visible_message(SPAN_DANGER("[user] blocks the slash and counterattacks!"),SPAN_DANGER("You parry the slash and initiate a riposte attack!"))
+	attack(target, user, check_zone(user.zone_selected), riposte = TRUE)
+	return COMPONENT_CANCEL_ATTACK
+
+/obj/item/weapon/melee/yautja_sword/proc/end_parry(mob/living/carbon/human/user)
+	user.visible_message(SPAN_HIGHDANGER("[user] lowers \the [src]."),SPAN_DANGER("You lower \the [src], no longer parrying."))
+	flags_item &= ~NODROP
+	parrying = FALSE
+
+	user.remove_filter("parry_sword")
+
+	UnregisterSignal(user, list(COMSIG_HUMAN_XENO_ATTACK, COMSIG_HUMAN_BULLET_ACT, COMSIG_ITEM_ATTEMPT_ATTACK))
+
+/obj/item/projectile/proc/jank_wrapper()
+	RegisterSignal(src, COMSIG_BULLET_PRE_HANDLE_MOB, .proc/bullet_ignore_mob)
+
+/obj/item/projectile/proc/bullet_ignore_mob(var/mob/M)
+	SIGNAL_HANDLER
+	if(M == firer)
+		return COMPONENT_BULLET_PASS_THROUGH
+
 /obj/item/weapon/melee/yautja_scythe
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
@@ -725,14 +814,26 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 4
 	unacidable = TRUE
+	force = MELEE_FORCE_TIER_6
 	throwforce = MELEE_FORCE_TIER_6
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = TRUE
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("speared", "stabbed", "impaled")
 	var/on = 1
-	var/timer = 0
+	var/charged
 
+	var/force_wielded = MELEE_FORCE_TIER_6
+	var/force_unwielded = MELEE_FORCE_TIER_2
+	var/force_storage = MELEE_FORCE_TIER_1
+
+/obj/item/weapon/melee/combistick/try_to_throw(mob/living/user)
+	if(!charged)
+		to_chat(user, SPAN_WARNING("Your combistick refuses to leave your hand. You must charge it with blood from prey before throwing it."))
+		return FALSE
+	charged = FALSE
+	remove_filter("combistick_charge")
+	return TRUE
 
 /obj/item/weapon/melee/combistick/IsShield()
 	return on
@@ -760,46 +861,48 @@
 /obj/item/weapon/melee/combistick/attack_self(mob/user)
 	..()
 	if(on)
-		if(flags_item & WIELDED) unwield(user)
-		else 				wield(user)
+		if(flags_item & WIELDED)
+			unwield(user)
+		else
+			wield(user)
 	else
 		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
 
 
 /obj/item/weapon/melee/combistick/wield(var/mob/user)
-	..()
-	force = MELEE_FORCE_TIER_6
+	. = ..()
+	if(!.)
+		return
+	force = force_wielded
 	update_icon()
 
 /obj/item/weapon/melee/combistick/unwield(mob/user)
-	..()
-	force = MELEE_FORCE_TIER_3
+	. = ..()
+	if(!.)
+		return
+	force = force_unwielded
 	update_icon()
 
 /obj/item/weapon/melee/combistick/update_icon()
 	if(flags_item & WIELDED)
 		item_state = "combistick_w"
-	else item_state = "combistick"
+	else
+		item_state = "combistick"
 
 /obj/item/weapon/melee/combistick/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)
 		return
-	if(timer) return
-	on = !on
 	if(on)
 		user.visible_message(SPAN_INFO("With a flick of their wrist, [user] extends [src]."),\
 		SPAN_NOTICE("You extend [src]."),\
 		"You hear blades extending.")
-		playsound(src,'sound/handling/combistick_open.ogg', 50, 1, 3)
+		playsound(src,'sound/handling/combistick_open.ogg', 50, TRUE, 3)
 		icon_state = initial(icon_state)
 		flags_equip_slot = initial(flags_equip_slot)
 		flags_item |= TWOHANDED
 		w_class = SIZE_LARGE
-		force = MELEE_FORCE_TIER_6
-		throwforce = MELEE_FORCE_TIER_6
+		force = force_unwielded
 		attack_verb = list("speared", "stabbed", "impaled")
-		timer = 1
-		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
 
 		if(blood_overlay && blood_color)
 			overlays.Cut()
@@ -807,37 +910,48 @@
 	else
 		unwield(user)
 		to_chat(user, SPAN_NOTICE("You collapse [src] for storage."))
-		playsound(src, 'sound/handling/combistick_close.ogg', 50, 1, 3)
+		playsound(src, 'sound/handling/combistick_close.ogg', 50, TRUE, 3)
 		icon_state = initial(icon_state) + "_f"
 		flags_equip_slot = SLOT_STORE
 		flags_item &= ~TWOHANDED
 		w_class = SIZE_TINY
-		force = MELEE_FORCE_TIER_1
-		throwforce = MELEE_FORCE_TIER_6
+		force = force_storage
 		attack_verb = list("thwacked", "smacked")
-		timer = 1
-		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
 		overlays.Cut()
 
 	if(istype(user,/mob/living/carbon/human))
 		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand(0)
+		H.update_inv_l_hand()
 		H.update_inv_r_hand()
 
 	add_fingerprint(user)
 
 	return
 
-/obj/item/weapon/melee/combistick/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	if(isYautja(user) && isXeno(target))
+/obj/item/weapon/melee/combistick/attack(mob/living/target, mob/living/carbon/human/user)
+	. = ..()
+	if(!.)
+		return
+	if(isSpeciesYautja(user) && isXeno(target))
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
-	..()
 
-/obj/item/weapon/melee/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
-	if(!isYautja(user))
+	if(target == user || target.stat == DEAD)
+		to_chat(user, SPAN_DANGER("You think you're smart?")) //very funny
+		return
+
+	if(!charged)
+		to_chat(user, SPAN_DANGER("Your combistick's reservoir fills up with your opponent's blood! You may now throw it!"))
+		charged = TRUE
+		var/color = target.get_blood_color()
+		var/alpha = 70
+		color += num2text(alpha, 2, 16)
+		add_filter("combistick_charge", 1, list("type" = "outline", "color" = color, "size" = 2))
+
+/obj/item/weapon/melee/combistick/attack_hand(mob/living/carbon/human/user) //Prevents marines from instantly picking it up via pickup macros.
+	if(!isSpeciesYautja(user))
 		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
-		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			..()
 	else ..()
 
@@ -876,9 +990,9 @@
 		check_eye(user)
 		return ..()
 
-	attack_self(mob/user)
+	attack_self(mob/living/carbon/human/user)
 		if(!active)
-			if(!isYautja(user))
+			if(!isSpeciesYautja(user))
 				to_chat(user, "What's this thing?")
 				return
 			to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
@@ -888,7 +1002,7 @@
 				var/mob/living/carbon/C = user
 				C.toggle_throw_mode(THROW_MODE_NORMAL)
 		else
-			if(!isYautja(user)) return
+			if(!isSpeciesYautja(user)) return
 			activated_turf = get_turf(user)
 			display_camera(user)
 		return
@@ -996,7 +1110,7 @@
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
 		var/mob/living/carbon/human/H = user
 		var/wait_time = 3 SECONDS
-		if(!isYautja(H))
+		if(!isSpeciesYautja(H))
 			wait_time = rand(5 SECONDS, 10 SECONDS)
 		if(!do_after(user, wait_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
@@ -1009,7 +1123,7 @@
 		user.drop_held_item()
 
 /obj/item/hunting_trap/attack_hand(mob/living/carbon/human/user)
-	if(isYautja(user))
+	if(isSpeciesYautja(user))
 		disarm(user)
 	//Humans and synths don't know how to handle those traps!
 	if(isHumanSynthStrict(user) && armed)
@@ -1097,7 +1211,7 @@
 	set category = "Object"
 
 	var/mob/living/carbon/human/H = usr
-	if(!isYautja(H))
+	if(!isSpeciesYautja(H))
 		to_chat(H, SPAN_WARNING("You do not know how to configure the trap."))
 		return
 	var/range = tgui_input_list(H, "Which range would you like to set the hunting trap to?", "Hunting Trap Range", list(2, 3, 4, 5, 6, 7))

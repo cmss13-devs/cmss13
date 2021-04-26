@@ -422,6 +422,10 @@
 
 /obj/item/projectile/proc/handle_mob(mob/living/L)
 	// If we've already handled this atom, don't do it again
+
+	if(SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_MOB, L, .) & COMPONENT_BULLET_PASS_THROUGH)
+		return FALSE
+
 	if(L in permutated)
 		return FALSE
 	permutated |= L
@@ -864,7 +868,8 @@
 
 	if(P.ammo.debilitate && stat != DEAD && ( damage || ( ammo_flags & AMMO_IGNORE_RESIST) ) )  //They can't be dead and damage must be inflicted (or it's a xeno toxin).
 		//Predators and synths are immune to these effects to cut down on the stun spam. This should later be moved to their apply_effects proc, but right now they're just humans.
-		if(species.name != "Yautja" && !(species.flags & IS_SYNTHETIC)) apply_effects(arglist(P.ammo.debilitate))
+		if(!isSpeciesYautja(src) && !isSpeciesSynth(src))
+			apply_effects(arglist(P.ammo.debilitate))
 
 	bullet_message(P) //We still want this, regardless of whether or not the bullet did damage. For griefers and such.
 

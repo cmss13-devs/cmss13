@@ -319,6 +319,8 @@
 #define COMSIG_BULLET_CHECK_IFF "bullet_check_iff"
 
 /// From /obj/item/projectile/handle_mob(): (mob/living/target)
+#define COMSIG_BULLET_PRE_HANDLE_MOB "bullet_pre_handle_mob"
+/// From /obj/item/projectile/handle_mob(): (mob/living/target)
 #define COMSIG_BULLET_POST_HANDLE_MOB "bullet_post_handle_mob"
 /// From /obj/item/projectile/handle_obj(): (obj/target)
 #define COMSIG_BULLET_POST_HANDLE_OBJ "bullet_post_handle_obj"

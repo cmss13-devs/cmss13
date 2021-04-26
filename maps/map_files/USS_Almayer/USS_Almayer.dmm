@@ -3122,10 +3122,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "aiL" = (
-/obj/effect/attach_point/weapon/dropship1{
-	dir = 1;
-	gimbal = -1
-	},
+/obj/effect/attach_point/weapon/dropship1/left_fore,
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "84"
 	},
@@ -3801,10 +3798,7 @@
 	},
 /area/almayer/evacuation/pod7)
 "akG" = (
-/obj/effect/attach_point/weapon/dropship1{
-	dir = 1;
-	gimbal = 1
-	},
+/obj/effect/attach_point/weapon/dropship1/right_fore,
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "91"
 	},
@@ -5514,11 +5508,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "apn" = (
-/obj/effect/attach_point/weapon/dropship1{
-	dir = 8;
-	gimbal = -1;
-	icon_state = "equip_base_l_wing"
-	},
+/obj/effect/attach_point/weapon/dropship1/left_wing,
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "61"
 	},
@@ -5592,11 +5582,7 @@
 	},
 /area/almayer/hallways/aft_hallway)
 "apy" = (
-/obj/effect/attach_point/weapon/dropship1{
-	dir = 4;
-	gimbal = 1;
-	icon_state = "equip_base_r_wing"
-	},
+/obj/effect/attach_point/weapon/dropship1/right_wing,
 /turf/closed/shuttle/dropship1/transparent{
 	icon_state = "65"
 	},
@@ -18226,10 +18212,7 @@
 	},
 /area/almayer/hallways/hangar)
 "bfM" = (
-/obj/effect/attach_point/weapon/dropship2{
-	dir = 1;
-	gimbal = -1
-	},
+/obj/effect/attach_point/weapon/dropship2/left_fore,
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "84"
 	},
@@ -18298,10 +18281,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bfU" = (
-/obj/effect/attach_point/weapon/dropship2{
-	dir = 1;
-	gimbal = 1
-	},
+/obj/effect/attach_point/weapon/dropship2/right_fore,
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "91"
 	},
@@ -20247,11 +20227,7 @@
 	},
 /area/almayer/squads/bravo)
 "bnv" = (
-/obj/effect/attach_point/weapon/dropship2{
-	dir = 8;
-	gimbal = -1;
-	icon_state = "equip_base_l_wing"
-	},
+/obj/effect/attach_point/weapon/dropship2/left_wing,
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "61"
 	},
@@ -20272,11 +20248,7 @@
 	},
 /area/shuttle/drop2/sulaco)
 "bnz" = (
-/obj/effect/attach_point/weapon/dropship2{
-	dir = 4;
-	gimbal = 1;
-	icon_state = "equip_base_r_wing"
-	},
+/obj/effect/attach_point/weapon/dropship2/right_wing,
 /turf/closed/shuttle/dropship2/transparent{
 	icon_state = "65"
 	},

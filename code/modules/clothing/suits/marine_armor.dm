@@ -781,11 +781,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/current_camo = FULL_CAMOUFLAGE_ALPHA
 	var/camouflage_break = 5 SECONDS
 	var/camouflage_enter_delay = 4 SECONDS
-	var/aiming_time = 1.25 SECONDS
+	var/aiming_time = 1.5 SECONDS
 	var/datum/event_handler/ghillie_movement/ghillie_movement
 
 	var/aimed_shot_cooldown
-	var/aimed_shot_cooldown_delay = 1.5 SECONDS
+	var/aimed_shot_cooldown_delay = 2.5 SECONDS
 
 	actions_types = list(/datum/action/item_action/toggle, \
 	 					 /datum/action/item_action/specialist/prepare_position, \
@@ -992,19 +992,24 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		return
 
 	GS.aimed_shot_cooldown = world.time + GS.aimed_shot_cooldown_delay
+
+	 ///Add a decisecond to the default 1.5 seconds for each two tiles to hit.
+	var/distance = round(get_dist(M, H) * 0.5)
+	var/f_aiming_time = GS.aiming_time + distance
+
 	var/image/I = image(icon = 'icons/effects/Targeted.dmi', icon_state = "locking-sniper", dir = get_cardinal_dir(M, H))
 	M.overlays += I
 	if(H.client)
 		playsound_client(H.client, 'sound/weapons/TargetOn.ogg', H, 50)
 	playsound(M, 'sound/weapons/TargetOn.ogg', 70, FALSE, 8, falloff = 0.4)
 
-	if(!do_after(H, GS.aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
+	if(!do_after(H, f_aiming_time, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, NO_BUSY_ICON))
 		M.overlays -= I
 		return
 
 	M.overlays -= I
 
-	if(!check_can_use(M))
+	if(!check_can_use(M, TRUE))
 		return
 
 	var/obj/item/weapon/gun/rifle/sniper/G = istype(H.l_hand, /obj/item/weapon/gun/rifle/sniper/M42A) ? H.l_hand : H.r_hand
@@ -1013,8 +1018,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	P.projectile_override_flags |= AMMO_HOMING
 	G.Fire(M, H)
 
-/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M)
+/datum/action/item_action/specialist/aimed_shot/proc/check_can_use(var/mob/M, var/cover_lose_focus)
 	var/mob/living/carbon/human/H = owner
+	var/obj/item/clothing/suit/storage/marine/ghillie/GS = holder_item
+
 	if(!can_use_action())
 		return FALSE
 
@@ -1050,6 +1057,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/obj/item/projectile/P = G.in_chamber
 	if(check_shot_is_blocked(H, M, P))
 		to_chat(H, SPAN_WARNING("Something is in the way, or you're out of range!"))
+		if(cover_lose_focus)
+			to_chat(H, SPAN_WARNING("You lose focus."))
+			GS.aimed_shot_cooldown = world.time + GS.aimed_shot_cooldown_delay * 0.5
 		return FALSE
 
 	return TRUE

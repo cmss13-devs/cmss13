@@ -387,7 +387,7 @@
 
 /obj/item/clothing/under/marine/veteran/PMC
 	name = "\improper PMC fatigues"
-	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weston-Yamada corporation is emblazed on the suit."
+	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit."
 	icon_state = "pmc_jumpsuit"
 	worn_state = "pmc_jumpsuit"
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
@@ -405,13 +405,13 @@
 
 /obj/item/clothing/under/marine/veteran/PMC/leader
 	name = "\improper PMC command fatigues"
-	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weston-Yamada corporation is emblazed on the suit. This particular suit looks like it belongs to a high-ranking officer."
+	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_jumpsuit"
 	worn_state = "officer_jumpsuit"
 
 /obj/item/clothing/under/marine/veteran/PMC/commando
 	name = "\improper PMC commando uniform"
-	desc = "An armored uniform worn by Weston-Yamada elite commandos. It is well protected while remaining light and comfortable."
+	desc = "An armored uniform worn by Weyland-Yutani elite commandos. It is well protected while remaining light and comfortable."
 	icon_state = "commando_jumpsuit"
 	worn_state = "commando_jumpsuit"
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -560,7 +560,7 @@
 
 /obj/item/clothing/under/liaison_suit
 	name = "liaison's tan suit"
-	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weston-Yamada corporation. Expertly crafted to make you look like a prick."
+	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
 	icon_state = "liaison_regular"
 	worn_state = "liaison_regular"
 
@@ -572,13 +572,13 @@
 
 /obj/item/clothing/under/liaison_suit/formal
 	name = "liaison's white suit"
-	desc = "A formal, white suit. Looks like something you'd wear to a funeral, a Weston-Yamada corporate dinner, or both. Stiff as a board, but makes you feel like rolling out of a Rolls-Royce."
+	desc = "A formal, white suit. Looks like something you'd wear to a funeral, a Weyland-Yutani corporate dinner, or both. Stiff as a board, but makes you feel like rolling out of a Rolls-Royce."
 	icon_state = "liaison_formal"
 	worn_state = "liaison_formal"
 
 /obj/item/clothing/under/liaison_suit/suspenders
 	name = "liaison's attire"
-	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weston-Yamada employees who ask the tough questions. Smells faintly of cigars and bad acting."
+	desc = "A collared shirt, complimented by a pair of suspenders. Worn by Weyland-Yutani employees who ask the tough questions. Smells faintly of cigars and bad acting."
 	icon_state = "liaison_suspenders"
 	worn_state = "liaison_suspenders"
 
@@ -590,12 +590,12 @@
 
 /obj/item/clothing/under/stowaway
 	name = "dirty suit"
-	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weston-Yamada corporation. Expertly crafted to make you look like a prick."
+	desc = "A stiff, stylish tan suit commonly worn by businessmen from the Weyland-Yutani corporation. Expertly crafted to make you look like a prick."
 	icon_state = "stowaway_uniform"
 	worn_state = "stowaway_uniform"
 
 /obj/item/clothing/under/rank/chef/exec
-	name = "\improper Weston-Yamada suit"
+	name = "\improper Weyland-Yutani suit"
 	desc = "A formal white undersuit."
 	rollable_sleeves = FALSE
 

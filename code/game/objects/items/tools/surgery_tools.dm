@@ -226,7 +226,7 @@
 //XENO AUTOPSY TOOL
 
 /obj/item/tool/surgery/WYautopsy
-	name = "Weston Brand Automatic Autopsy System(TM)"
+	name = "Weyland Brand Automatic Autopsy System(TM)"
 	desc = "Putting the FUN back in Autopsy.  This little gadget performs an entire autopsy of whatever strange life form you've found in about 30 seconds."
 	icon_state = "scalpel_laser2_on"
 	damtype = "fire"

@@ -231,8 +231,8 @@
 
 
 /obj/item/device/portable_vendor/corporate
-	name = "\improper Weston-Yamada Automated Storage Briefcase"
-	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items. This one has the Weston-Yamada logo stamped on its side."
+	name = "\improper Weyland-Yutani Automated Storage Briefcase"
+	desc = "A suitcase-sized automated storage and retrieval system. Designed to efficiently store and selectively dispense small items. This one has the Weyland-Yutani logo stamped on its side."
 
 	req_access = list(ACCESS_WY_CORPORATE)
 	req_role = "Corporate Liaison"
@@ -248,11 +248,11 @@
 		list("WY Encryption Key", 5, /obj/item/device/encryptionkey/WY, "white", "WY private comms encryption key, for conducting private business."),
 
 		list("Cigars", 5, /obj/item/storage/fancy/cigar, "white", "Case of premium cigars, untampered."),
-		list("Cigarettes", 5, /obj/item/storage/fancy/cigarettes/wypacket, "white", "Weston-Yamada Gold packet, for the more sophisticated taste."),
+		list("Cigarettes", 5, /obj/item/storage/fancy/cigarettes/wypacket, "white", "Weyland-Yutani Gold packet, for the more sophisticated taste."),
 		list("Zippo", 5, /obj/item/tool/lighter/zippo, "white", "A Zippo lighter, for those smoking in style."),
 
-		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weston-Yamada Sake, for a proper business dinner."),
-		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weston-Yamada Aspen Beer, for a more casual night."),
+		list("Sake", 5, /obj/item/reagent_container/food/drinks/bottle/sake, "white", "Weyland-Yutani Sake, for a proper business dinner."),
+		list("Beer", 5, /obj/item/reagent_container/food/drinks/cans/aspen, "white", "Weyland-Yutani Aspen Beer, for a more casual night."),
 		list("Drinking Glass", 1, /obj/item/reagent_container/food/drinks/drinkingglass, "white", "A Drinking Glass, because you have class."),
 
 		list("SATIONARY", 0, null, null, null),

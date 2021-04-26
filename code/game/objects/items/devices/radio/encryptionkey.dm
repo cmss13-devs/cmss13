@@ -163,7 +163,7 @@
 
 //For CL and their Marine goons
 /obj/item/device/encryptionkey/WY
-	name = "\improper Weston-Yamada encryption key"
+	name = "\improper Weyland-Yutani encryption key"
 	icon_state = "wy_key"
 	channels = list("WY" = 1)
 
@@ -177,7 +177,7 @@
 //ERT, PMC
 
 /obj/item/device/encryptionkey/ert
-	name = "W-Y Radio Encryption Key"
+	name = "Wey-Yu Radio Encryption Key"
 	icon_state = "cypherkey"
 	channels = list("Response Team" = 1, "Command" = 1, "MedSci" = 1, "Engi" = 1, "WY" = 1)
 
@@ -187,7 +187,7 @@
 	channels = list("Colonist" = 1)
 
 /obj/item/device/encryptionkey/PMC
-	name = "\improper Weston-Yamada PMC Radio Encryption Key"
+	name = "\improper Weyland-Yutani PMC Radio Encryption Key"
 	icon_state = "pmc_key"
 	channels = list("WY PMC" = 1, "WY" = 1)
 

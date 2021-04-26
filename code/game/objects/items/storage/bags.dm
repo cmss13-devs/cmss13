@@ -114,7 +114,7 @@
 	icon = 'icons/obj/structures/props/mining.dmi'
 	icon_state = "sheetsnatcher"
 	name = "Sheet Snatcher"
-	desc = "A patented Yamada storage system designed for any kind of mineral sheet."
+	desc = "A patented Yutani storage system designed for any kind of mineral sheet."
 
 	var/capacity = 300; //the number of sheets it can carry.
 	w_class = SIZE_MEDIUM

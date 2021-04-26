@@ -216,7 +216,7 @@ can cause issues with ammo types getting mixed up during the burst.
 
 /obj/item/weapon/gun/shotgun/combat
 	name = "\improper MK221 tactical shotgun"
-	desc = "The Weston-Yamada MK221 Shotgun, a semi-automatic shotgun with a quick fire rate."
+	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate."
 	icon_state = "mk221"
 	item_state = "mk221"
 
@@ -273,7 +273,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
 
 /obj/item/weapon/gun/shotgun/combat/guard
-	desc = "The Weston-Yamada MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Gaurds"
+	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a red handle to signify its use with Military Police Honor Gaurds"
 	icon_state = "mp221"
 	item_state = "mp221"
 	starting_attachment_types = list(/obj/item/attachable/magnetic_harness, /obj/item/attachable/bayonet)
@@ -282,7 +282,7 @@ can cause issues with ammo types getting mixed up during the burst.
 //MARSOC MK210, an earlier developmental variant of the MK211 tactical used by the USCM MARSOC.
 /obj/item/weapon/gun/shotgun/combat/marsoc
 	name = "\improper MK210 tactical shotgun"
-	desc = "Way back in 2168, W-Y began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM MARSOC division wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic and made of stamped medal. Truly an engineering marvel."
+	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM MARSOC division wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic and made of stamped medal. Truly an engineering marvel."
 	icon_state = "mk210"
 	item_state = "mk210"
 

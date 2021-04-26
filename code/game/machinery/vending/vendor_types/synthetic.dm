@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 /obj/structure/machinery/cm_vending/clothing/synth/snowflake
 	name = "\improper Snowflake Vendor"
-	desc = "A vendor with a large snowflake on it. Provided by W-Y Fashion Division(TM)."
+	desc = "A vendor with a large snowflake on it. Provided by Wey-Yu Fashion Division(TM)."
 	icon_state = "snowflake"
 	use_points = TRUE
 	show_points = TRUE

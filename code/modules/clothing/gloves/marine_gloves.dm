@@ -147,7 +147,7 @@
 	name = "\improper WY PMC gloves"
 	icon_state = "PMC"
 	item_state = "PMC"
-	desc = "Standard issue kevlon fiber gloves manufactured for and by Weston-Yamada PMC dispatch division. They are insulated against electrical shock."
+	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 
 /obj/item/clothing/gloves/marine/veteran/PMC/commando
 	name = "\improper M5X gauntlets"

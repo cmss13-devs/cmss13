@@ -582,7 +582,7 @@
 		if(!random_chem)
 			random_chem = pick(chemical_gen_classes_list["T1"])
 		C = chemical_reagents_list["[random_chem]"]
-	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Experiment Notes</I><HR><H2>"
+	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
@@ -606,19 +606,19 @@
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			if(C.get_property(PROPERTY_EXPLOSIVE))
 				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
-			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("test")
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 			txt += "Note for [name]</H2></center>"
 			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
-			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("grant")
 			if(!grant)
 				grant = rand(2,4)
 			name = "Research Grant"
-			txt += "Weston-Yamada Research Grant</H2></center>"
-			txt += "Dear valued researcher. Weston-Yamada has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weston-Yamada research data terminal to receive the benefits.<BR>\n"
-			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+			txt += "Weyland-Yutani Research Grant</H2></center>"
+			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 	info = txt
 
 /obj/item/paper/research_notes/bad

@@ -335,7 +335,7 @@ the implant may become unstable and either pre-maturely inject the subject or si
 	get_data()
 		var/dat = {"
 <b>Implant Specifications:</b><BR>
-<b>Name:</b> Weston-Yamada Employee Management Implant<BR>
+<b>Name:</b> Weyland-Yutani Employee Management Implant<BR>
 <b>Life:</b> Ten years.<BR>
 <b>Important Notes:</b> Personnel injected are marked as WY property and are subject to WY overwatch.<BR>
 <HR>

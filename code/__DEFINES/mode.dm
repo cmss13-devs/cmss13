@@ -185,7 +185,7 @@ var/global/list/whitelist_hierarchy = list(WHITELIST_NORMAL, WHITELIST_COUNCIL, 
 #define FACTION_SURVIVOR "Survivor"
 #define FACTION_UPP "UPP"
 #define FACTION_RESS "RESS"
-#define FACTION_WY "W-Y"
+#define FACTION_WY "Wey-Yu"
 #define FACTION_CLF "CLF"
 #define FACTION_PMC "PMC"
 #define FACTION_DEATHSQUAD "Death Squad"

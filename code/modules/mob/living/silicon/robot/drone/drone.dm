@@ -77,7 +77,7 @@
 	decompiler = locate(/obj/item/device/matter_decompiler) in src.module
 
 	//Some tidying-up.
-	flavor_text = "This is an XP-45 Engineering Drone, one of the many fancy things that come out of the Weston-Yamada Research Department. It's designed to assist both ship repairs as well as ground missions. Shiny!"
+	flavor_text = "This is an XP-45 Engineering Drone, one of the many fancy things that come out of the Weyland-Yutani Research Department. It's designed to assist both ship repairs as well as ground missions. Shiny!"
 	update_icons()
 
 /mob/living/silicon/robot/drone/initialize_pass_flags(var/datum/pass_flags_container/PF)

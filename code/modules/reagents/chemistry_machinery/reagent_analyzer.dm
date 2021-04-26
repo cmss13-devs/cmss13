@@ -105,7 +105,7 @@
 			chemical_identified_list[S.id] = S.objective_value
 	else
 		report.name += "Analysis of ERROR"
-		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
+		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"
 	report.info += "<BR><HR><font size = \"1\"><I>This report was automatically printed by the A-XRF Scanner.<BR>The USS Almayer, [time2text(world.timeofday, "MM/DD")]/[game_year], [worldtime2text()]</I></font><BR>\n<span class=\"paper_field\"></span>"
@@ -116,7 +116,7 @@
 
 	report.name = "Analysis of [name]"
 
-	report.info += "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
+	report.info += "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Automated A-XRF Report</I><HR><H2>Analysis of [name]</H2></center>"
 	if(sample_number)
 		report.info += "<B>Results for sample:</B> #[sample_number]<BR>\n"
 	report.generate(src, admin_spawned)

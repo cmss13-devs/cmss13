@@ -544,7 +544,7 @@
 	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves_research
-	name = "\improper W-Y Research Lab Caves"
+	name = "\improper Wey-Yu Research Lab Caves"
 	icon_state = "caves_research"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	sound_environment = 6

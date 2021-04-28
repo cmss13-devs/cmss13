@@ -3,20 +3,6 @@
 	icon = 'icons/effects/warning_stripes.dmi'
 	layer = WEED_LAYER
 	mouse_opacity = 0
-	var/permanent = FALSE
-
-/obj/effect/decal/warning_stripes/Initialize()
-	. = ..()
-	if(!permanent)
-		loc.overlays += image(icon, icon_state=icon_state, dir=dir, layer=layer)
-		return INITIALIZE_HINT_QDEL
-
-/obj/effect/decal/warning_stripes/permanent
-	permanent = TRUE
-
-/obj/effect/decal/warning_stripes/permanent/Initialize()
-	. = ..()
-	loc.overlays += src
 
 /obj/effect/decal/warning_stripes/asteroid
 	icon_state = "warning"
@@ -27,11 +13,6 @@
 	unacidable = TRUE
 	icon = 'icons/turf/overlays.dmi'
 	layer = TURF_LAYER
-
-/obj/effect/decal/sand_overlay/Initialize()
-	. = ..()
-	loc.overlays += image(icon, icon_state=icon_state, dir=dir)
-	qdel(src)
 
 /obj/effect/decal/sand_overlay/sand1
 	icon_state = "sand1_s"

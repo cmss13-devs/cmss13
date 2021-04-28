@@ -2,12 +2,6 @@
 	icon = 'icons/effects/kutjevo_decals.dmi'
 	layer = TURF_LAYER
 
-/obj/effect/decal/kutjevo_decals/Initialize()
-	. = ..()
-
-	loc.overlays += src
-	return INITIALIZE_HINT_QDEL
-
 /obj/effect/decal/kutjevo_decals/catwalk
 	icon = 'icons/turf/floors/kutjevo/kutjevo_floor.dmi'
 	icon_state = "catwalk"

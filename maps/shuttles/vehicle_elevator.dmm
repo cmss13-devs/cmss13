@@ -1,24 +1,24 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/effect/decal/warning_stripes/permanent{
+/obj/effect/decal/warning_stripes{
 	icon_state = "SE-out"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/shuttle/vehicle_elevator)
 "b" = (
-/obj/effect/decal/warning_stripes/permanent{
+/obj/effect/decal/warning_stripes{
 	icon_state = "S"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/shuttle/vehicle_elevator)
 "c" = (
-/obj/effect/decal/warning_stripes/permanent{
+/obj/effect/decal/warning_stripes{
 	icon_state = "SW-out"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/shuttle/vehicle_elevator)
 "d" = (
-/obj/effect/decal/warning_stripes/permanent{
+/obj/effect/decal/warning_stripes{
 	icon_state = "E"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -30,7 +30,7 @@
 	},
 /area/shuttle/vehicle_elevator)
 "f" = (
-/obj/effect/decal/warning_stripes/permanent{
+/obj/effect/decal/warning_stripes{
 	icon_state = "W"
 	},
 /turf/open/floor/plating/plating_catwalk,
@@ -40,19 +40,19 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/shuttle/vehicle_elevator)
 "h" = (
-/obj/effect/decal/warning_stripes/permanent{
+/obj/effect/decal/warning_stripes{
 	icon_state = "NE-out"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/shuttle/vehicle_elevator)
 "i" = (
-/obj/effect/decal/warning_stripes/permanent{
+/obj/effect/decal/warning_stripes{
 	icon_state = "N"
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/shuttle/vehicle_elevator)
 "j" = (
-/obj/effect/decal/warning_stripes/permanent{
+/obj/effect/decal/warning_stripes{
 	icon_state = "NW-out"
 	},
 /turf/open/floor/plating/plating_catwalk,

@@ -20,12 +20,6 @@
 	to_chat(user, SPAN_NOTICE("[src] sifts through your fingers."))
 	qdel(src)
 
-/obj/effect/decal/cleanable/greenglow
-
-	New()
-		..()
-		QDEL_IN(WEAKREF(src), 2 MINUTES)
-
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
 	desc = "Someone should clean that up."
@@ -58,9 +52,15 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "greenglow"
 
+/obj/effect/decal/cleanable/greenglow/Initialize(mapload, ...)
+	if(mapload)
+		return INITIALIZE_HINT_QDEL
+	. = ..()
+	QDEL_IN(WEAKREF(src), 2 MINUTES)
+
 /obj/effect/decal/cleanable/greenglow/Destroy()
 	SetLuminosity(0)
-	. = ..()
+	return ..()
 
 /obj/effect/decal/cleanable/cobweb
 	name = "cobweb"

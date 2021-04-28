@@ -14,7 +14,7 @@
 	},
 /area/vehicle/apc)
 "c" = (
-/obj/effect/decal/medical_decals/permanent{
+/obj/effect/decal/medical_decals{
 	dir = 4;
 	icon_state = "triagedecaldir"
 	},
@@ -29,7 +29,7 @@
 	},
 /obj/structure/bed/roller,
 /obj/structure/machinery/iv_drip,
-/obj/effect/decal/medical_decals/permanent{
+/obj/effect/decal/medical_decals{
 	icon_state = "triagedecaldir"
 	},
 /turf/open/shuttle/vehicle/med,
@@ -80,7 +80,7 @@
 /turf/open/void/vehicle,
 /area/space)
 "m" = (
-/obj/effect/decal/medical_decals/permanent{
+/obj/effect/decal/medical_decals{
 	dir = 4;
 	icon_state = "triagedecaldir"
 	},
@@ -95,7 +95,7 @@
 	},
 /area/vehicle/apc)
 "o" = (
-/obj/effect/decal/medical_decals/permanent{
+/obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltop"
 	},
 /turf/open/shuttle/vehicle{
@@ -171,7 +171,7 @@
 	},
 /area/space)
 "D" = (
-/obj/effect/decal/medical_decals/permanent{
+/obj/effect/decal/medical_decals{
 	dir = 4;
 	icon_state = "triagedecaldir"
 	},
@@ -254,7 +254,7 @@
 	},
 /obj/structure/bed/roller,
 /obj/structure/machinery/iv_drip,
-/obj/effect/decal/medical_decals/permanent{
+/obj/effect/decal/medical_decals{
 	dir = 1;
 	icon_state = "triagedecaldir"
 	},
@@ -267,7 +267,7 @@
 /turf/open/void/vehicle,
 /area/space)
 "Q" = (
-/obj/effect/decal/medical_decals/permanent{
+/obj/effect/decal/medical_decals{
 	icon_state = "triagedecalbottom"
 	},
 /turf/open/shuttle/vehicle{

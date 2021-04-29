@@ -15,9 +15,9 @@
 
 #define CLAN_PERMISSION_ALL (CLAN_PERMISSION_USER_ALL|CLAN_PERMISSION_ADMIN_ALL)
 
-#define CLAN_RANK_UNBLOODED     "Unblooded" // Doesn't belong to a clan
-#define CLAN_RANK_YOUNG         "Young Blood" // Recruit phase
-#define CLAN_RANK_BLOODED       "Blooded"
+#define CLAN_RANK_UNBLOODED     "Unblooded" // Unused for the moment
+#define CLAN_RANK_YOUNG         "Young Blood" // Clanless
+#define CLAN_RANK_BLOODED       "Blooded" // New to the clan
 #define CLAN_RANK_ELITE         "Elite"
 #define CLAN_RANK_ELDER         "Elder"
 #define CLAN_RANK_LEADER        "Clan Leader"
@@ -28,10 +28,10 @@
 #define CLAN_LIMIT_SIZE 2 // Scales with clan size
 
 var/global/list/datum/rank/clan_ranks = list(
-    CLAN_RANK_UNBLOODED = new /datum/rank/unblooded(), 
-    CLAN_RANK_YOUNG = new /datum/rank/young(), 
-    CLAN_RANK_BLOODED = new /datum/rank/blooded(), 
-    CLAN_RANK_ELITE = new /datum/rank/elite(), 
+    CLAN_RANK_UNBLOODED = new /datum/rank/unblooded(),
+    CLAN_RANK_YOUNG = new /datum/rank/young(),
+    CLAN_RANK_BLOODED = new /datum/rank/blooded(),
+    CLAN_RANK_ELITE = new /datum/rank/elite(),
     CLAN_RANK_ELDER = new /datum/rank/elder(),
     CLAN_RANK_LEADER = new /datum/rank/leader(),
     CLAN_RANK_ADMIN = new /datum/rank/ancient()
@@ -67,7 +67,7 @@ var/global/list/clan_ranks_ordered = list(
 
 #define NO_CLAN_LIST list(\
             clan_id = null,\
-            clan_name = "Players without a clan",\
+            clan_name = "Clanless",\
             clan_description = "This is a list of players without a clan",\
             clan_honor = null,\
             clan_keys = list(),\

@@ -8,6 +8,7 @@
 	attack_verb = list("whipped", "lashed", "disciplined")
 	w_class = SIZE_LARGE
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
+	cant_hold = list(/obj/item/weapon/melee/throwing_knife)
 
 /obj/item/storage/belt/equipped(mob/user, slot)
 	if(slot == WEAR_WAIST || slot == WEAR_J_STORE) //Gunbelts can be worn on several armours.

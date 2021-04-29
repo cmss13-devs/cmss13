@@ -189,7 +189,7 @@
 
 	take_slash_damage = FALSE
 	scrappable = FALSE
-	FF_projectile_durability_mult = 0.1
+	FF_projectile_durability_mult = 0.3
 
 	armor_health = 100
 	armor_maxhealth = 100

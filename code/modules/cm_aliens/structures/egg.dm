@@ -51,16 +51,12 @@
 
 	switch(status)
 		if(EGG_BURST, EGG_DESTROYED)
-			if(M.caste.can_hold_eggs)
-				M.animation_attack_on(src)
-				M.visible_message(SPAN_XENONOTICE("\The [M] clears the hatched egg."), \
-				SPAN_XENONOTICE("You clear the hatched egg."))
-				playsound(src.loc, "alien_resin_break", 25)
-				M.plasma_stored++
-				qdel(src)
-				return XENO_ATTACK_ACTION
-			else
-				return
+			M.animation_attack_on(src)
+			M.visible_message(SPAN_XENONOTICE("\The [M] clears the hatched egg."), \
+			SPAN_XENONOTICE("You clear the hatched egg."))
+			playsound(src.loc, "alien_resin_break", 25)
+			qdel(src)
+			return XENO_NONCOMBAT_ACTION
 		if(EGG_GROWING)
 			to_chat(M, SPAN_XENOWARNING("The child is not developed yet."))
 			return XENO_NO_DELAY_ACTION

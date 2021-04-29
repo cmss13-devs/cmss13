@@ -226,7 +226,7 @@
 		mob.unset_interaction()
 	return
 
-/proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null)
+/proc/show_browser(var/target, var/browser_content, var/browser_name, var/id = null, var/window_options = null, closeref)
 	var/client/C = target
 
 	if (ismob(target))
@@ -241,7 +241,7 @@
 		C.prefs.stylesheet = "Modern"
 		stylesheet = "Modern"
 
-	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet])
+	var/datum/browser/popup = new(C, id ? id : browser_name, browser_name, GLOB.stylesheets[stylesheet], nref = closeref)
 	popup.set_content(browser_content)
 	if (window_options)
 		popup.set_window_options(window_options)

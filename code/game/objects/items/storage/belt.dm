@@ -473,6 +473,7 @@
 		/obj/item/weapon/melee/throwing_knife,
 		/obj/item/attachable/bayonet
 	)
+	cant_hold = list()
 	var/draw_cooldown = 0
 	var/draw_cooldown_interval = 1 SECONDS
 

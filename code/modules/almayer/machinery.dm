@@ -241,8 +241,7 @@
 			overlay_marine_mapview()
 		to_chat(user, SPAN_NOTICE("You start looking at the map."))
 		user << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
-		onclose(user, "marineminimap", src, list("close" = 1, "viewer" = "\ref[user]"))
+		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
 		return
 	..()
 
@@ -257,21 +256,17 @@
 			continue
 
 		L << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
-		onclose(L, "marineminimap", src, list("close" = 1, "viewer" = "\ref[L]"))
+		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
 
 
 /obj/structure/machinery/prop/almayer/CICmap/Topic(href, href_list)
 	. = ..()
 	if(.)
 		return
-	if (href_list["close"])
-		var/mob/living/L = locate(href_list["viewer"])
-		if (!L)
-			return
-		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
-		close_browser(L, "marineminimap")
-		current_viewers -= L
+	if(href_list["close"] && usr)
+		to_chat(usr, SPAN_NOTICE("You stop looking at the map."))
+		close_browser(usr, "marineminimap")
+		current_viewers -= usr
 
 //Nonpower using props
 

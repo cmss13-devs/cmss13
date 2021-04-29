@@ -64,7 +64,6 @@
 				dat += get_orbital_bombardment_control_text()
 
 	show_browser(user, dat, "Overwatch Console", "overwatch", "size=550x550")
-	onclose(user, "overwatch")
 	return
 
 /obj/structure/machinery/computer/overwatch/proc/get_base_menu_text()
@@ -361,10 +360,9 @@
 	return dat
 
 /obj/structure/machinery/computer/overwatch/proc/update_mapview(var/close = 0)
-	if(close || !current_squad || (current_mapviewer && !Adjacent(current_mapviewer)))
-		if(current_mapviewer)
-			close_browser(current_mapviewer, "marineminimap")
-			current_mapviewer = null
+	if(close || !current_squad || !current_mapviewer || !Adjacent(current_mapviewer))
+		close_browser(current_mapviewer, "marineminimap")
+		current_mapviewer = null
 		return
 	var/icon/O
 	switch(current_squad.color)
@@ -386,19 +384,17 @@
 			O = marine_mapview_overlay_4
 	if(O)
 		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
-		onclose(current_mapviewer, "marineminimap", src)
+		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/overwatch/Topic(href, href_list)
-	if(..())
-		return
-
-	if(href_list["close"]) // For closing minimaps
+	if(href_list["close"])
 		if(current_mapviewer)
 			close_browser(current_mapviewer, "marineminimap")
-			current_mapviewer = null
+		current_mapviewer = null
 		return
 
+	if(..())
+		return
 	if(!href_list["operation"])
 		return
 

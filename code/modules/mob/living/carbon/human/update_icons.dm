@@ -94,20 +94,25 @@ There are several things that need to be remembered:
 	if(lying == lying_prev && !force)
 		return
 	lying_prev = lying
+	var/matrix/M = matrix()
+	var/matrix/L = matrix() //Counter-rotation for langchat text.
 	if(lying)
-		var/matrix/M = matrix()
 		if(pulledby && pulledby.grab_level >= GRAB_CARRY)
 			M.Turn(90)
+			L.Turn(270)
 		else
 			if(prob(50))
 				M.Turn(90)
+				L.Turn(270)
 			else
 				M.Turn(270)
+				L.Turn(90)
 			M.Translate(rand(-10,10),rand(-10,10))
 		apply_transform(M)
+		langchat_image.transform = L
 	else
-		var/matrix/M = matrix()
 		apply_transform(M)
+		langchat_image.transform = L
 
 /mob/living/carbon/human/UpdateDamageIcon()
 	for(var/obj/limb/O in limbs)

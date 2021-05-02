@@ -53,10 +53,10 @@
 // Modifies the damage of a slash based on the current mutator state.
 // Do not override this proc unless you need to affect the rolled damage
 // of an attack before it happens
-/datum/behavior_delegate/proc/melee_attack_modify_damage(original_damage, atom/A = null)
+/datum/behavior_delegate/proc/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
 	return original_damage
 
-/datum/behavior_delegate/proc/melee_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/proc/melee_attack_additional_effects_target(mob/living/carbon/A)
 	return
 
 /datum/behavior_delegate/proc/melee_attack_additional_effects_self()

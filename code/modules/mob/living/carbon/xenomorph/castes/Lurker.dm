@@ -67,7 +67,7 @@
 	var/next_slash_buffed = FALSE
 	var/can_go_invisible = TRUE
 
-/datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, atom/A = null)
+/datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
 	if (!isXenoOrHuman(A))
 		return original_damage
 
@@ -81,7 +81,7 @@
 
 	return original_damage
 
-/datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 	if (!isXenoOrHuman(A))
 		return
 

@@ -77,7 +77,7 @@
 		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer move through creatures!"))
 
 
-/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/A)
 	if (!isXenoOrHuman(A))
 		return
 

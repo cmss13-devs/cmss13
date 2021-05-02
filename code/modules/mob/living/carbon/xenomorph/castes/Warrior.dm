@@ -181,7 +181,7 @@
 		clear_head++
 		next_clear_head_regen = wt + clear_head_delay
 
-/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(atom/A, ko_boost = 0.5)
+/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(mob/living/carbon/A, ko_boost = 0.5)
 	if(!ismob(A))
 		return
 	if(punching_bag != A)

@@ -60,7 +60,7 @@
 		if (!isXenoOrHuman(H) || X.can_not_harm(H))
 			continue
 
-		if (H.stat)
+		if (H.stat == DEAD)
 			continue
 
 		X.flick_attack_overlay(H, "slash")
@@ -368,35 +368,6 @@
 
 	shake_camera(H, 2, 1)
 
-
-
-	apply_cooldown()
-	..()
-	return
-
-/datum/action/xeno_action/onclick/crush/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/X = owner
-
-	if (!istype(X))
-		return
-
-	if (!action_cooldown_check())
-		return
-
-	if (!check_and_use_plasma_owner())
-		return
-
-	// This one is more tightly coupled than I'd like
-	// but as it stands, everything to do with slashes is bound up onto the behavior datums.
-	if (X.mutation_type != PRAETORIAN_OPPRESSOR)
-		return
-
-	var/datum/behavior_delegate/oppressor_praetorian/BD = X.behavior_delegate
-	if (istype(BD))
-		BD.next_slash_buffed = TRUE
-
-	X.next_move = world.time + 1 // Autoattack reset
-	to_chat(X, SPAN_XENOHIGHDANGER("Your click delay has been reset and your next slash will deal additional damage!"))
 
 
 	apply_cooldown()

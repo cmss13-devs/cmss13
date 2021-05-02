@@ -47,8 +47,8 @@
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
-		/datum/action/xeno_action/activable/empower,
 		/datum/action/xeno_action/activable/pounce/charge,
+		/datum/action/xeno_action/activable/empower,
 		/datum/action/xeno_action/activable/scissor_cut
 	)
 
@@ -58,20 +58,20 @@
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
-	var/damage_per_shield_hp = 0.10
-	var/shield_decay_time = 150 // Time in deciseconds before our shield decays
-	var/slash_charge_cdr = 20 // Amount to reduce charge cooldown by per slash
-	var/min_shield_buffed_abilities = 150
+	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays
+	var/slash_charge_cdr = 4 SECONDS // Amount to reduce charge cooldown by per slash
 	var/knockdown_amount = 2
 	var/fling_distance = 3
+	var/empower_targets = 0
+	var/super_empower_threshold = 3
+	var/dmg_buff_per_target = 2
 
-/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, atom/A = null)
-	var/shield_total = 0
-	for (var/datum/xeno_shield/XS in bound_xeno.xeno_shields)
-		if (XS.shield_source == XENO_SHIELD_SOURCE_RAVAGER)
-			shield_total += XS.amount
+/datum/behavior_delegate/ravager_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
+	var/damage_plus
+	if(empower_targets)
+		damage_plus = dmg_buff_per_target * empower_targets
 
-	return original_damage + damage_per_shield_hp*shield_total
+	return original_damage + damage_plus
 
 /datum/behavior_delegate/ravager_base/melee_attack_additional_effects_self()
 	..()
@@ -88,7 +88,7 @@
 			shield_total += XS.amount
 
 	. += "Empower Shield: [shield_total]"
-	. += "Bonus Slash Damage: [shield_total*damage_per_shield_hp]"
+	. += "Bonus Slash Damage: [dmg_buff_per_target * empower_targets]"
 
 /datum/behavior_delegate/ravager_base/on_life()
 	var/datum/xeno_shield/rav_shield

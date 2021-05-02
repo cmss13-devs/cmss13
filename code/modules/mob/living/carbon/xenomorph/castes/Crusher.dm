@@ -218,7 +218,7 @@
 
 	var/aoe_slash_damage_reduction = 0.40
 
-/datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 
 	if (!isXenoOrHuman(A))
 		return

@@ -67,7 +67,7 @@
 	if(caboom_trigger)
 		. += "FOR THE HIVE!: in [caboom_left] seconds"
 
-/datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/runner_acider/melee_attack_additional_effects_target(mob/living/carbon/A)
 	if (ishuman(A))
 		var/mob/living/carbon/human/H = A
 		if (H.stat == DEAD)

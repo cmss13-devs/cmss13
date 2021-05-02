@@ -131,7 +131,7 @@
 	plasma_cost = 55
 
 	// Configurables
-	var/damage = 40
+	var/damage = 20
 
 
 // This one is more tightly coupled than I'd like, but oh well

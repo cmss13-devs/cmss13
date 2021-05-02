@@ -315,10 +315,10 @@
 		frozen = TRUE
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, .proc/unfreeze), pounceAction.freeze_time, TIMER_STOPPABLE)
 
+	pounceAction.additional_effects(M)
+
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
-
-	pounceAction.additional_effects(M)
 
 	throwing = FALSE //Reset throwing since something was hit.
 

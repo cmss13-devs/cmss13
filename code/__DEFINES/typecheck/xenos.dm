@@ -45,11 +45,11 @@
 	A.name = "[lowertext(hive.prefix)][A.name]"
 
 /proc/get_xeno_stun_duration(var/mob/A, duration)
-	if(isXeno(A))
+	if(isCarbonSizeXeno(A))
 		return duration * XVX_STUN_LENGTHMULT
 	return duration
 
 /proc/get_xeno_damage_slash(var/mob/A, damage)
-	if(isXeno(A))
+	if(isCarbonSizeXeno(A))
 		return damage * XVX_SLASH_DAMAGEMULT
 	return damage

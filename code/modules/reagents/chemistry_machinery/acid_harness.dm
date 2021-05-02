@@ -73,8 +73,9 @@
 	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/on_removed(mob/living/user, obj/item/clothing/C)
-	acid_core.user = null
 	. = ..()
+	if(.)
+		acid_core.user = null
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = TRUE)
 	var/list/data = list(

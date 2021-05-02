@@ -55,7 +55,7 @@
 
 	set_focus(src)
 	prepare_huds()
-
+	langchat_make_image()
 	create_player_panel()
 
 	return ..()

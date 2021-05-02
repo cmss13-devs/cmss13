@@ -7,6 +7,11 @@
 	reagent_tag = IS_YAUTJA
 	mob_flags = KNOWS_TECHNOLOGY
 	flags = IS_WHITELISTED|HAS_SKIN_COLOR|NO_CLONE_LOSS|NO_POISON|NO_NEURO|SPECIAL_BONEBREAK|NO_SHRAPNEL|HAS_HARDCRIT
+	mob_inherent_traits = list(
+		TRAIT_YAUTJA_TECH,
+		TRAIT_SUPER_STRONG,
+		TRAIT_FOREIGN_BIO
+		)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
 	pain_type = /datum/pain/yautja
@@ -129,6 +134,7 @@
 		H.hunter_data.thrall = null
 
 /datum/species/yautja/post_species_loss(mob/living/carbon/human/H)
+	..()
 	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
 	A.add_to_hud(H)
 	H.blood_type = pick("A+","A-","B+","B-","O-","O+","AB+","AB-")

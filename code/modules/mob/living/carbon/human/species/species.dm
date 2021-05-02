@@ -102,6 +102,8 @@
 	var/melee_allowed = TRUE
 
 	var/mob_flags = NO_FLAGS // The mob flags to give their mob
+	 /// Status traits to give to the mob.
+	var/list/mob_inherent_traits
 
 /datum/species/New()
 	if(unarmed_type)
@@ -272,9 +274,10 @@
 		to_chat(H, SPAN_NOTICE("You were left hanging!"))
 	H.flags_emote &= ~EMOTING_FIST_BUMP
 
-//special things to change after we're no longer that species
+//things to change after we're no longer that species
 /datum/species/proc/post_species_loss(mob/living/carbon/human/H)
-	return
+	for(var/T in mob_inherent_traits)
+		REMOVE_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)

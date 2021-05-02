@@ -1,0 +1,117 @@
+//shamelessly ripped from TG
+#define SIGNAL_ADDTRAIT(trait_ref) "addtrait [trait_ref]"
+#define SIGNAL_REMOVETRAIT(trait_ref) "removetrait [trait_ref]"
+
+// trait accessor defines
+//here be dragons
+#define ADD_TRAIT(target, trait, source) \
+	do { \
+		var/list/_L; \
+		if (!target.status_traits) { \
+			target.status_traits = list(); \
+			_L = target.status_traits; \
+			_L[trait] = list(source); \
+			SEND_SIGNAL(target, SIGNAL_ADDTRAIT(trait), trait); \
+		} else { \
+			_L = target.status_traits; \
+			if (_L[trait]) { \
+				_L[trait] |= list(source); \
+			} else { \
+				_L[trait] = list(source); \
+				SEND_SIGNAL(target, SIGNAL_ADDTRAIT(trait), trait); \
+			} \
+		} \
+	} while (0)
+#define REMOVE_TRAIT(target, trait, sources) \
+	do { \
+		var/list/_L = target.status_traits; \
+		var/list/_S; \
+		if (sources && !islist(sources)) { \
+			_S = list(sources); \
+		} else { \
+			_S = sources\
+		}; \
+		if (_L && _L[trait]) { \
+			for (var/_T in _L[trait]) { \
+				if ((!_S && (_T != TRAIT_SOURCE_QUIRK)) || (_T in _S)) { \
+					_L[trait] -= _T \
+				} \
+			};\
+			if (!length(_L[trait])) { \
+				_L -= trait; \
+				SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(trait), trait); \
+			}; \
+			if (!length(_L)) { \
+				target.status_traits = null \
+			}; \
+		} \
+	} while (0)
+#define REMOVE_TRAITS_NOT_IN(target, sources) \
+	do { \
+		var/list/_L = target.status_traits; \
+		var/list/_S = sources; \
+		if (_L) { \
+			for (var/_T in _L) { \
+				_L[_T] &= _S;\
+				if (!length(_L[_T])) { \
+					_L -= _T; \
+					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T), _T); \
+					}; \
+				};\
+			if (!length(_L)) { \
+				target.status_traits = null\
+			};\
+		}\
+	} while (0)
+
+#define REMOVE_TRAITS_IN(target, sources) \
+	do { \
+		var/list/_L = target.status_traits; \
+		var/list/_S = sources; \
+		if (sources && !islist(sources)) { \
+			_S = list(sources); \
+		} else { \
+			_S = sources\
+		}; \
+		if (_L) { \
+			for (var/_T in _L) { \
+				_L[_T] -= _S;\
+				if (!length(_L[_T])) { \
+					_L -= _T; \
+					SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(_T)); \
+					}; \
+				};\
+			if (!length(_L)) { \
+				target.status_traits = null\
+			};\
+		}\
+	} while (0)
+
+#define HAS_TRAIT(target, trait) (target.status_traits ? (target.status_traits[trait] ? TRUE : FALSE) : FALSE)
+#define HAS_TRAIT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (source in target.status_traits[trait]) : FALSE) : FALSE)
+#define HAS_TRAIT_FROM_ONLY(target, trait, source) (\
+	target.status_traits ?\
+		(target.status_traits[trait] ?\
+			((source in target.status_traits[trait]) && (length(target.status_traits) == 1))\
+			: FALSE)\
+		: FALSE)
+#define HAS_TRAIT_NOT_FROM(target, trait, source) (target.status_traits ? (target.status_traits[trait] ? (length(target.status_traits[trait] - source) > 0) : FALSE) : FALSE)
+
+//mob traits
+/// Example trait
+// #define TRAIT_X "t_x"
+ /// Knowledge of Yautja technology
+#define TRAIT_YAUTJA_TECH "t_yautja_tech"
+ /// Absolutely RIPPED. Can do misc. heavyweight stuff others can't. (Yautja, Synths)
+#define TRAIT_SUPER_STRONG "t_super_strong"
+ /// Foreign biology. Basic medHUDs won't show the mob. (Yautja, Zombies)
+#define TRAIT_FOREIGN_BIO "t_foreign_bio"
+
+//trait SOURCES
+/// Example trait source
+// #define TRAIT_SOURCE_Y "t_s_y"
+#define TRAIT_SOURCE_GENERIC "t_s_generic"
+ ///Status trait coming from species. .human/species_gain()
+#define TRAIT_SOURCE_SPECIES "t_s_species"
+ ///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
+#define TRAIT_SOURCE_QUIRK "t_s_quirk"

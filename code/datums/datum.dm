@@ -19,6 +19,8 @@
 
 	/// Active timers with this datum as the target
 	var/list/active_timers
+	/// Status traits attached.
+	var/list/status_traits
 
 	/**
 	  * Components attached to this datum

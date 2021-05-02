@@ -589,7 +589,7 @@
 	if(M.stat == DEAD)
 		to_chat(M, SPAN_WARNING("Little too late for that now!"))
 		return
-	if(!forced && !isSpeciesYautja(M))
+	if(!forced && !HAS_TRAIT(M, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))

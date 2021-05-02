@@ -57,7 +57,7 @@
 		if(Adjacent(M) && M.stat)
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/Q = M
-				if(Q.species && Q.species.name == "Yautja")
+				if(Q.species && isSameSpecies(Q, src))
 					continue
 			choices += M
 

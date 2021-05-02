@@ -135,7 +135,7 @@
 
 	var/job = null					// Internal job title used when mob is spawned. Preds are "Predator", Xenos are "Xenomorph", Marines have their actual job title
 	var/comm_title = ""
-	var/faction = FACTION_NEUTRAL //Used for checking whether hostile simple animals will attack you, possibly more stuff later
+	var/faction = FACTION_NEUTRAL
 	var/faction_group
 
 	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)

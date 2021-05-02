@@ -329,8 +329,7 @@
 	now_pushing = TRUE
 	var/mob/living/L = AM
 
-	// For now a kind of hacky check for if you are performing an action that stops you from being pushed by teammates
-	if(L.status_flags & IMMOBILE_ACTION && areSameSpecies(src, L) && src.mob_size <= L.mob_size)
+	if(L.status_flags & IMMOBILE_ACTION && src.faction == L.faction && src.mob_size <= L.mob_size)
 		now_pushing = FALSE
 		return
 

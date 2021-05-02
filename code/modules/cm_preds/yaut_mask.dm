@@ -73,7 +73,7 @@
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M))
 		return
-	if(M.species && M.species.name != "Yautja")
+	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH))
 		to_chat(M, SPAN_WARNING("You have no idea how to work these things!"))
 		return
 	current_goggles++

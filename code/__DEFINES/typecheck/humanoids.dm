@@ -15,7 +15,8 @@
 #define isEarlySynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/early_synthetic))
 #define hasorgans(A) ishuman(A)
 
-//Specic group checks, use instead of typechecks
+//Specic group checks, use instead of typechecks (but use traits instead)
+#define isSameSpecies(A, B) (A.species?.group == B.species?.group)
 #define isSpeciesHuman(A) (A.species?.group == SPECIES_HUMAN)
 #define isSpeciesMonkey(A) (A.species?.group == SPECIES_MONKEY)
 #define isSpeciesYautja(A) (A.species?.group == SPECIES_YAUTJA)

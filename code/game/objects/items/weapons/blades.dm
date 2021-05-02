@@ -166,10 +166,8 @@
 	if(!.)
 		return
 
-	if(!isSpeciesYautja(user))
-		return
-
 	if(mob_victim.mob_size != MOB_SIZE_HUMAN)
+		to_chat(user, SPAN_WARNING("You're not sure how to do that."))
 		return
 
 	var/mob/living/carbon/human/victim
@@ -180,7 +178,11 @@
 	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 		return
 
-	if(isSpeciesYautja(victim))
+	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire [victim] apart. Also, that's kind of fucked up.")) //look at this dumbass
+		return
+
+	if(isSameSpecies(user, victim))
 		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
 		return
 

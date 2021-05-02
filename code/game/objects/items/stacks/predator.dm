@@ -19,7 +19,8 @@
 	if(!.)
 		return
 
-	if(!isSpeciesYautja(user))
+	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
+		to_chat(user, SPAN_WARNING("You're not strong enough to lift [mob_victim] up with a rope. Also, that's kind of fucked up."))
 		return
 
 	if(mob_victim.mob_size != MOB_SIZE_HUMAN)
@@ -30,10 +31,6 @@
 		return
 
 	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
-		return
-
-	if(isSpeciesYautja(victim))
-		to_chat(user, SPAN_HIGHDANGER("ARE YOU OUT OF YOUR MIND!?"))
 		return
 
 	to_chat(user, SPAN_NOTICE("You start securing the rope to the ceiling..."))

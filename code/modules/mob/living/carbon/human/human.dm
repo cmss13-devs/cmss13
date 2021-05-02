@@ -1074,6 +1074,8 @@
 		oldspecies.post_species_loss(src)
 
 	mob_flags = species.mob_flags
+	for(var/T in species.mob_inherent_traits)
+		ADD_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 	species.create_organs(src)
 

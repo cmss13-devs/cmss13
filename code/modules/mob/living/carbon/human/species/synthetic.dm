@@ -7,6 +7,7 @@
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	pain_type = /datum/pain/synthetic
 	stamina_type = /datum/stamina/none
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 	rarity_value = 2
 
 	total_health = 150 //more health than regular humans

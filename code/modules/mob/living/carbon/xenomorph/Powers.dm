@@ -121,7 +121,7 @@
 		use_plasma(total_resin_cost)
 	if(message)
 		visible_message(SPAN_XENONOTICE("[src] regurgitates a thick substance and shapes it into \a [RC.construction_name]!"), \
-			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [RC.construction_name][use_plasma ? ", using a total [total_resin_cost] plasma" : ""]."), null, 5)
+			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [RC.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
 		playsound(loc, "alien_resin_build", 25)
 
 	var/atom/new_resin = RC.build(current_turf, hivenumber)

@@ -75,6 +75,9 @@
 /obj/item/storage/backpack/open(mob/user)
 	if(!is_accessible_by(user))
 		return
+	if(locking_id && !compare_id(user))//if id locked we the user's id against the locker's
+		to_chat(user, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
+		return
 	..()
 
 /obj/item/storage/backpack/storage_close(mob/user)
@@ -85,19 +88,13 @@
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(!worn_accessible)
-			if(H.back == src && !user.action_busy) //On back + not doing any timed actions?
+			if(H.back == src && !user.action_busy) //Not doing any timed actions?
 				to_chat(H, SPAN_NOTICE("You begin to open [src], so you can check its contents."))
 				if(!do_after(user, 2 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC)) //Timed opening.
 					to_chat(H, SPAN_WARNING("You were interrupted!"))
 					return FALSE
 				RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/storage_close) //Continue along the proc and allow opening if not locked; close on movement.
 			else if(H.back == src) //On back and doing timed actions?
-				return FALSE 
-
-		if(!QDELETED(locking_id))
-			var/obj/item/card/id/card = H.wear_id
-			if(!card || locking_id.registered_name != card.registered_name)
-				to_chat(H, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
 				return FALSE
 	return TRUE
 
@@ -107,7 +104,17 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 		if(H.back == src && !worn_accessible && !content_watchers) //Backpack on back needs to be opened; if it's already opened, it can be emptied immediately.
 			if(!is_accessible_by(user))
 				return
+	if(locking_id && !compare_id(user))//if id locked we the user's id against the locker's
+		to_chat(user, SPAN_NOTICE("[src] is locked by [locking_id.registered_name]'s ID! You decide to leave it alone."))
+		return
 	..()
+
+//Returns true if the user's id matches the lock's
+obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
+	var/obj/item/card/id/card = H.wear_id
+	if(!card || locking_id.registered_name != card.registered_name)
+		return FALSE
+	else return TRUE
 
 /obj/item/storage/backpack/update_icon()
 	overlays.Cut()

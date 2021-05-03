@@ -103,7 +103,11 @@
 	src.add_fingerprint(user)
 	if(master_item.loc == user || master_item.loc.loc == user) // loc.loc for webbings/accessories
 		if(storage_flags & STORAGE_USING_DRAWING_METHOD && ishuman(user) && contents.len)
-			var/obj/item/I = contents[contents.len]
+			var/obj/item/I
+			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
+				I = contents[1]
+			else
+				I = contents[contents.len]
 			I.attack_hand(user)
 		else
 			open(user)

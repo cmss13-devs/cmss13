@@ -1842,3 +1842,4 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		M.overlays.Cut()
 		M.regenerate_icons()
 	return O
+

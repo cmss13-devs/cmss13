@@ -769,11 +769,8 @@
 	set name = "Switch Storage Drawing Method"
 	set category = "Object"
 	set src in usr
-	cylinder.storage_flags ^= STORAGE_USING_DRAWING_METHOD
-	if (cylinder.storage_flags & STORAGE_USING_DRAWING_METHOD)
-		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
-	else
-		to_chat(usr, "Clicking [src] with an empty hand now opens the internal storage menu.")
+
+	cylinder.storage_draw_logic(src.name)
 
 //-------------------------------------------------------
 //GRENADE LAUNCHER

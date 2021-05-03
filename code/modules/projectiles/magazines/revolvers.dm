@@ -73,6 +73,7 @@
 
 /obj/item/ammo_magazine/revolver/mateba
 	name = "\improper Mateba speed loader (.454)"
+	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This standard-variant is optimized for anti-armor."
 	default_ammo = /datum/ammo/bullet/revolver/mateba
 	caliber = ".454"
 	icon_state = "mateba"
@@ -81,12 +82,13 @@
 
 /obj/item/ammo_magazine/revolver/mateba/highimpact
 	name = "\improper High Impact Mateba speed loader (.454)"
+	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. Packs a devastating punch. This high impact variant is optimized for anti-personnel. Don't fire this at anyone you want to stay alive."
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
 	icon_state = "matebaE"
-
-/obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie
+	
+/obj/item/ammo_magazine/revolver/mateba/highimpact/explosive
 	name = "\improper Mateba explosive speed loader (.454)"
-	desc = "A label on it reads: WARNING: EXTREMELY DANGEROUS. DO NOT FIRE UNDER ANY CIRCUMSTANCES."
+	desc = "A formidable .454 speedloader, made exclusively for the Mateba autorevolver. There's an impact charge built into the bullet tip. Firing this at anything will result in a powerful explosion. Use with EXTREME caution."
 	icon_state = "mateba_explosive"
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive
 
@@ -138,6 +140,9 @@
 	default_ammo = /datum/ammo/bullet/revolver
 	caliber = ".454"
 	gun_type = /obj/item/weapon/gun/revolver/mateba
+
+/obj/item/ammo_magazine/internal/revolver/mateba/impact
+	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact
 
 /obj/item/ammo_magazine/internal/revolver/mateba/explosive
 	default_ammo = /datum/ammo/bullet/revolver/mateba/highimpact/explosive

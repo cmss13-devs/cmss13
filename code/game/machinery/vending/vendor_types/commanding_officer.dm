@@ -39,7 +39,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 
 /obj/structure/machinery/cm_vending/gear/commanding_officer
 	name = "\improper ColMarTech Commanding Officer Weapon Rack"
-	desc = "An automated gear rack for the Commanding Officer."
+	desc = "An automated weapons rack for the Commanding Officer. It features a robust selection of weaponry meant only for the USCM's top officers."
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = list(JOB_CO)
 	icon_state = "guns"
@@ -62,25 +62,36 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("Mateba autorevolver custom", 0, /obj/effect/essentials_set/cmateba, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("Desert Eagle", 0, /obj/item/storage/belt/gun/m4a3/heavy/co, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-		list("M1911 pistol", 0, /obj/item/storage/belt/gun/m4a3/m1911, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M4A3 Custom pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+
+		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
+		list("Commanding Officer's M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
+		list("Commanding Officer's M10 Helmet", 0, /obj/item/clothing/head/helmet/marine/CO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
+		list("Commanding Officer's Gloves", 0, /obj/item/clothing/gloves/marine/techofficer/commander, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
+		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
+
+		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
+		list("Sunglasses", 0, /obj/item/clothing/glasses/sunglasses, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Large Shades", 0, /obj/item/clothing/glasses/sunglasses/big, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("First-Aid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Medkit Pouch", 0, /obj/item/storage/pouch/medkit, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Sidearm Pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-
+		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
-
-		list("Combat Equipment (TAKE ALL)", 0, null, null, null),
-		list("Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
-		list("Helmet", 0, /obj/item/clothing/head/helmet/marine/CO, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_MANDATORY),
 
 		list("MASK (CHOOSE 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
@@ -96,7 +107,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 /obj/structure/machinery/cm_vending/clothing/commanding_officer/Initialize(mapload, ...)
 	. = ..()
 	listed_products = GLOB.cm_vending_clothing_commanding_officer
-
 
 /obj/effect/essentials_set/cmateba
 	spawned_gear_list = list(

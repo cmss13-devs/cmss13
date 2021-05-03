@@ -564,10 +564,10 @@
 	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
-	damage = BULLET_DAMAGE_TIER_11
+	damage = BULLET_DAMAGE_TIER_12
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_2
+	penetration = ARMOR_PENETRATION_TIER_4
 	var/explosive = FALSE
 
 /datum/ammo/bullet/revolver/mateba/highimpact
@@ -575,10 +575,6 @@
 	impact_name = "mateba"
 	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
-
-	damage = BULLET_DAMAGE_TIER_11
-	damage_var_low = PROJECTILE_VARIANCE_TIER_8
-	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_2
 
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
@@ -588,6 +584,10 @@
 	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
 		return ..()
 
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
+		return ..()
+
 	var/mob/living/carbon/human/H = M
 	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
 
@@ -595,7 +595,7 @@
 		return -1
 
 	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
-	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
+	H.visible_message(SPAN_HIGHDANGER("[M] WAS EXECUTED!"), \
 		SPAN_HIGHDANGER("You were Executed!"))
 
 	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)

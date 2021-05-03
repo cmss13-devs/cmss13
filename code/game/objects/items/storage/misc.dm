@@ -58,22 +58,29 @@
 	icon = 'icons/obj/items/storage.dmi'
 	icon_state = "matebacase"
 	name = "mateba customization kit case"
-	desc = "A wooden case used for storing the tools and parts needed to customize a mateba revolver. Comes with three barrel lengths and the necessary key to swap them out."
-	storage_slots = 4
+	desc = "A wooden case used for storing the tools and parts needed to customize a Mateba revolver. Comes with three barrel lengths and the necessary key to swap them out."
+	storage_slots = 5
 	can_hold = list(/obj/item/attachable/mateba, /obj/item/weapon/gun/revolver/mateba, /obj/item/weapon/mateba_key)
 
 /obj/item/storage/mateba_case/captain/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short(src)
+	new /obj/item/attachable/mateba(src)
 	new /obj/item/attachable/mateba/long(src)
 	new /obj/item/weapon/mateba_key(src)
 
-/obj/item/storage/mateba_case/commodore
+/obj/item/storage/mateba_case/captain/commodore
 	icon_state = "c_matebacase"
-	name = "engraved mateba customization kit case"
-	desc = "An ebony black case used for storing the tools and parts needed to customize a mateba revolver. This variant is made for engraved Matebas and comes with golden barrel attachments."
+	name = "commodore's mateba customization kit case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is custom-made for commodores."
 
-/obj/item/storage/mateba_case/commodore/fill_preset_inventory()
+/obj/item/storage/mateba_case/admiral
+	icon_state = "c_matebacase"
+	name = "admiral's mateba customization kit case"
+	desc = "A black-ebony case used for storing the tools and parts needed to customize a Mateba revolver. This variant is made for admiral-grade golden Matebas and comes with golden barrel attachments."
+
+/obj/item/storage/mateba_case/admiral/fill_preset_inventory()
 	new /obj/item/attachable/mateba/short/dark(src)
+	new /obj/item/attachable/mateba/dark(src)
 	new /obj/item/attachable/mateba/long/dark(src)
 	new /obj/item/weapon/mateba_key(src)
 

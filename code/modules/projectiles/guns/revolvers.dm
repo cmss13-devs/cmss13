@@ -456,6 +456,9 @@
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
 
+	var/mob/living/carbon/human/linked_human
+	var/is_locked = TRUE
+
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/mateba_key))
 		if(attachments["special"])
@@ -506,9 +509,10 @@
 
 /obj/item/weapon/gun/revolver/mateba/admiral
 	name = "\improper engraved Mateba autorevolver custom"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This version is snubnosed, engraved with gold, tinted black, and highly customized for a high-ranking official. It uses heavy .454 rounds."
+	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This version is finished in a luxurious and flashy gold trim. Looks like it was custom-made for a high-ranking official. It uses heavy .454 rounds."
 	icon_state = "amateba"
 	item_state = "amateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	attachable_allowed = list(
 					/obj/item/attachable/reddot,
 					/obj/item/attachable/reflex,
@@ -539,15 +543,17 @@
 
 /obj/item/weapon/gun/revolver/mateba/engraved
 	name = "\improper engraved Mateba autorevolver"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. We have all heard of it, but on this version you glance a scratched engraving, barely readable. Is it your name?"
+	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This one is finished in an extremely slick black and gold. For when style matters most."
 	icon_state = "aamateba"
 	item_state = "aamateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 
 /obj/item/weapon/gun/revolver/mateba/cmateba
 	name = "\improper Mateba autorevolver custom"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds. This version is a limited edition produced for the USCM, and issued in extremely small amounts. Was a mail-order item back in 2172, and is highly sought after by officers across many different battalions. This one is stamped 'Major Ike Saker, 7th 'Falling Falcons' Battalion.'"
+	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds. This version is a limited edition produced for the USCM, and issued in extremely small amounts. Was a mail-order item back in 2172, and is highly sought after by officers across many different battalions."
 	icon_state = "cmateba"
 	item_state = "cmateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	map_specific_decoration = TRUE
 
 //-------------------------------------------------------

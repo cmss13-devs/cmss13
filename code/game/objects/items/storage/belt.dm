@@ -860,13 +860,31 @@
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/cmateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new /obj/item/ammo_magazine/revolver/mateba(src)
+	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/mateba/commodore
+	name = "commodore's M276 pattern Mateba holster rig"
+	desc = "The M276 is the standard load-bearing equipment of the USCM. \
+	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
+	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
+
+	icon_state = "amateba_holster"
+	item_state = "amateba_holster"
+
+/obj/item/storage/belt/gun/mateba/commodore/full/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/engraved(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new /obj/item/ammo_magazine/revolver/mateba(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/mateba/admiral
-	name = "engraved M276 pattern Mateba holster rig"
+	name = "admiral's M276 pattern Mateba holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. \
 	It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, \
 	along with five small pouches for speedloaders. This specific one is tinted black and engraved with gold, heavily customized for a high-ranking official."
@@ -876,8 +894,8 @@
 
 /obj/item/storage/belt/gun/mateba/admiral/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral(src)
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 	new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
@@ -894,11 +912,11 @@
 
 /obj/item/storage/belt/gun/mateba/admiral/santa/fill_preset_inventory()
 	var/obj/item/weapon/gun/revolver/new_gun = new /obj/item/weapon/gun/revolver/mateba/admiral/santa(src)
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
-	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosvie(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
+	new /obj/item/ammo_magazine/revolver/mateba/highimpact/explosive(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/type47

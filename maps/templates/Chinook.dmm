@@ -595,7 +595,7 @@
 /area/adminlevel/chinook/sec)
 "bR" = (
 /obj/structure/surface/table/reinforced/black,
-/obj/item/storage/mateba_case/commodore{
+/obj/item/storage/mateba_case/admiral{
 	pixel_y = 4
 	},
 /turf/open/floor/almayer,

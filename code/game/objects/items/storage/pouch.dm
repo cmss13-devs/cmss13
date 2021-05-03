@@ -320,6 +320,13 @@
 	storage_slots = 6
 	icon_state = "large_pistol_mag"
 
+/obj/item/storage/pouch/magazine/pistol/large/mateba/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/revolver/mateba(src)
+
+/obj/item/storage/pouch/magazine/pistol/large/mateba/impact/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/revolver/mateba/highimpact(src)
 
 /obj/item/storage/pouch/magazine/pistol/pmc_mateba/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)

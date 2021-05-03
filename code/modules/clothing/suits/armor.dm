@@ -89,17 +89,6 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 
-/obj/item/clothing/suit/armor/vest/admiral
-	name = "admiral's jacket"
-	desc = "An armoured jacket with gold regalia"
-	icon_state = "admiral_jacket"
-	item_state = "admiral_jacket"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	w_class = SIZE_MEDIUM
-
-/obj/item/clothing/suit/armor/vest/admiral/executive
-	name = "director's jacket"
-
 /obj/item/clothing/suit/armor/vest/security
 	name = "Wey-Yu security armor"
 	desc = "An armored vest that protects against some damage. This one has a Weyland-Yutani corporate badge."

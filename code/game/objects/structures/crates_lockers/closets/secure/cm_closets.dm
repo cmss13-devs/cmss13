@@ -15,19 +15,10 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/commander/Initialize()
 	. = ..()
-	new /obj/item/storage/mateba_case/captain(src)
 	new /obj/item/storage/backpack/mcommander(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
-	new /obj/item/device/radio/headset/almayer/mcom/cdrcom(src)
 	new /obj/item/clothing/suit/storage/jacket/marine/dress/officer(src)
 	new /obj/item/clothing/head/marine/peaked/captain(src)
-	//new /obj/item/clothing/head/cmcap/co/formal/white(src)
-	//new /obj/item/clothing/head/cmcap/co/formal/black(src)
-	//new /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber(src)
-	//new /obj/item/clothing/under/marine/officer/formal/white(src)
-	//new /obj/item/clothing/under/marine/officer/formal/black(src)
-	//new /obj/item/clothing/under/marine/officer/dining(src)
-	//new /obj/item/clothing/under/marine/officer/casual(src)
 
 /obj/structure/closet/secure_closet/securecom
 	name = "commanding officer's secure box"

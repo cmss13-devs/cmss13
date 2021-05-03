@@ -263,6 +263,8 @@ obj/item/storage/backpack/empty(mob/user, turf/T)
 	new /obj/item/storage/wallet/random( src )
 
 /obj/item/storage/backpack/satchel/lockable
+	name = "secure leather satchel"
+	desc = "A very fancy satchel made of fine leather. It's got a lock on it."
 	is_id_lockable = TRUE
 
 /obj/item/storage/backpack/satchel/lockable/liaison

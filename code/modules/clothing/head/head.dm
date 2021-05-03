@@ -339,7 +339,7 @@
 	)
 
 /obj/item/clothing/head/beret/marine/commander/dress
-	name = "marine captain dress beret"
+	name = "marine captain white beret"
 	icon_state = "codressberet"
 	desc = "A white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
 

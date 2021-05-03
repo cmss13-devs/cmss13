@@ -487,7 +487,11 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/attack_hand(mob/user)
 	if (loc == user)
 		if(storage_flags & STORAGE_USING_DRAWING_METHOD && ishuman(user) && contents.len)
-			var/obj/item/I = contents[contents.len]
+			var/obj/item/I
+			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
+				I = contents[1]
+			else
+				I = contents[contents.len]
 			I.attack_hand(user)
 		else
 			open(user)
@@ -511,11 +515,9 @@ var/list/global/item_storage_box_cache = list()
 	set name = "Switch Storage Drawing Method"
 	set category = "Object"
 	set src in usr
-	storage_flags ^= STORAGE_USING_DRAWING_METHOD
-	if (storage_flags & STORAGE_USING_DRAWING_METHOD)
-		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
-	else
-		to_chat(usr, "Clicking [src] with an empty hand now opens the pouch storage menu.")
+
+	storage_draw_logic(src.name)
+
 
 /obj/item/storage/verb/toggle_click_empty()
 	set name = "Toggle Tile Dumping"

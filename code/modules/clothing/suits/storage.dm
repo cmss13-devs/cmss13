@@ -37,21 +37,23 @@
 	set name = "Switch Storage Drawing Method"
 	set category = "Object"
 	set src in usr
-	var/toggled = FALSE // Only for the message
 
 	if(!istype(src, /obj/item/clothing/suit/storage)) // This will trigger on uniforms, for webbings etc
 		for(var/obj/item/clothing/accessory/storage/A in accessories)
-			A.hold.storage_flags ^= STORAGE_USING_DRAWING_METHOD
-
-			if(A.hold.storage_flags & STORAGE_USING_DRAWING_METHOD) // Just for the message
-				toggled = TRUE
+			if(A.hold.storage_flags)
+				A.hold.storage_draw_logic(A.name)
+				break
 	else
-		pockets.storage_flags ^= STORAGE_USING_DRAWING_METHOD
+		pockets.storage_draw_logic(src.name)
 
-		if(pockets.storage_flags & STORAGE_USING_DRAWING_METHOD)
-			toggled = TRUE
-
-	if(toggled)
-		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
+// Decides the storage flags when Switch Storage Draw Method gets called
+/obj/item/storage/proc/storage_draw_logic(var/name)
+	if (!(storage_flags & STORAGE_USING_DRAWING_METHOD))
+		storage_flags |= STORAGE_USING_DRAWING_METHOD
+		to_chat(usr, "Clicking [name] with an empty hand now puts the last stored item in your hand.")
+	else if(!(storage_flags & STORAGE_USING_FIFO_DRAWING))
+		storage_flags |= STORAGE_USING_FIFO_DRAWING
+		to_chat(usr, "Clicking [name] with an empty hand now puts the first stored item in your hand.")
 	else
-		to_chat(usr, "Clicking [src] with an empty hand now opens the storage menu.")
+		storage_flags &= ~(STORAGE_USING_DRAWING_METHOD|STORAGE_USING_FIFO_DRAWING)
+		to_chat(usr, "Clicking [name] with an empty hand now opens the pouch storage menu.")

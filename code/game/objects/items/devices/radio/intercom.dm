@@ -10,6 +10,7 @@
 	var/anyai = 1
 	var/list/mob/living/silicon/ai/ai
 	var/last_tick //used to delay the powercheck
+	volume = RADIO_VOLUME_RAISED
 
 	appearance_flags = TILE_BOUND
 

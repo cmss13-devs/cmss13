@@ -317,6 +317,10 @@
 /obj/item/device/radio/headset/yautja/attackby()
 	return
 
+/obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
+	name = "\improper Elder Communicator"
+	volume = RADIO_VOLUME_CRITICAL
+
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."

@@ -82,7 +82,8 @@
 /proc/Broadcast_Message(var/datum/radio_frequency/connection, var/mob/M,
 						var/vmask, var/vmessage, var/obj/item/device/radio/radio,
 						var/message, var/name, var/job, var/realname, var/vname,
-						var/data, var/compression, var/list/level, var/freq, var/verbage = "says", var/datum/language/speaking = null)
+						var/data, var/compression, var/list/level, var/freq, var/verbage = "says",
+						var/datum/language/speaking = null, var/volume = RADIO_VOLUME_QUIET)
 
 	/* ###### Prepare the radio connection ###### */
 	var/display_freq = freq
@@ -137,15 +138,15 @@
 	var/list/heard_garbled	= list() // garbled message (ie "f*c* **u, **i*er!")
 	var/list/heard_gibberish= list() // completely screwed over message (ie "F%! (O*# *#!<>&**%!")
 
-	var/command = 0 //Is this a commander? This var actually sets the message size. 2 is normal, 3 is big, 4 is OMGHUGE
-
 	if(M)
 		if(isAI(M))
-			command = 3
+			volume = RADIO_VOLUME_CRITICAL
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
-				command = 3
+			if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_EXPERT))
+				volume = max(volume, RADIO_VOLUME_CRITICAL)
+			else if(skillcheck(H, SKILL_LEADERSHIP, SKILL_LEAD_TRAINED))
+				volume = max(volume, RADIO_VOLUME_IMPORTANT)
 
 			comm_title = H.comm_title //Set up [CO] and stuff after frequency
 			if(H.assigned_squad)
@@ -160,7 +161,7 @@
 
 
 		else if(istype(M,/mob/living/silicon/decoy/ship_ai))
-			command = 3
+			volume = RADIO_VOLUME_CRITICAL
 
 	for (var/mob/R in receive)
 		/* --- Loop through the receivers and categorize them --- */
@@ -265,7 +266,7 @@
 			part_a = "<span class='deptradio'><span class='name'>"
 
 		if(display_freq in M.important_radio_channels)
-			command = 3
+			volume = RADIO_VOLUME_IMPORTANT
 
 		// --- Filter the message; place it in quotes apply a verb ---
 
@@ -274,12 +275,12 @@
 	  	/* --- Process all the mobs that heard a masked voice (understood) --- */
 		if (length(heard_masked))
 			for (var/mob/R in heard_masked)
-				R.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name, command)
+				R.hear_radio(message,verbage, speaking, part_a, part_b, M, 0, name, volume)
 
 		/* --- Process all the mobs that heard the voice normally (understood) --- */
 		if (length(heard_normal))
 			for (var/mob/R in heard_normal)
-				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname, command)
+				R.hear_radio(message, verbage, speaking, part_a, part_b, M, 0, realname, volume)
 
 		/* --- Process all the mobs that heard the voice normally (did not understand) --- */
 		if (length(heard_voice))

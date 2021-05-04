@@ -264,12 +264,14 @@
 	desc = "The headset of the guy in charge of spooling engines, managing MTs, and tearing up the floor for scrap metal. Of robust and sturdy construction. Channels are as follows: :e - engineering, :v - marine command, :m - medical, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "ce_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ce)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/cmo
 	name = "chief medical officer's headset"
 	desc = "A headset issued to the top brass of medical professionals. Channels are as follows: :m - medical, :v - marine command."
 	icon_state = "cmo_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmo)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mt
 	name = "engineering radio headset"
@@ -300,6 +302,7 @@
 	name = "requisition officer radio headset"
 	icon_state = "ro_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/ro)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mmpo
 	name = "marine military police radio headset"
@@ -312,17 +315,20 @@
 	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :m - medbay, :e - engineering, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom
 	name = "marine command radio headset"
 	desc = "Used by CIC staff and higher-ups, features a non-standard brace. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :z - intelligence."
 	icon_state = "mcom_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/po
 	name = "marine pilot radio headset"
 	desc = "Used by Pilot Officers. Channels are as follows: :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :j - JTAC, :z - intelligence."
 	initial_keys = list(/obj/item/device/encryptionkey/po)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/intel
 	name = "marine intel radio headset"
@@ -346,9 +352,11 @@
 	desc = "Issued only to Captains. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :z - intelligence"
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/mcom/ai
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/ai)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine
 	initial_keys = list(/obj/item/device/encryptionkey/public)
@@ -363,11 +371,13 @@
 	name = "marine alpha leader radio headset"
 	desc = "This is used by the marine Alpha squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine/alpha/rto
 	name = "marine alpha RTO radio headset"
 	desc = "This is used by the marine Alpha RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/alpha/engi
 	name = "marine alpha engineer radio headset"
@@ -391,11 +401,13 @@
 	name = "marine bravo leader radio headset"
 	desc = "This is used by the marine Bravo squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine/bravo/rto
 	name = "marine bravo RTO radio headset"
 	desc = "This is used by the marine Bravo RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/bravo/engi
 	name = "marine bravo engineer radio headset"
@@ -419,11 +431,13 @@
 	name = "marine charlie leader radio headset"
 	desc = "This is used by the marine Charlie squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine/charlie/rto
 	name = "marine charlie RTO radio headset"
 	desc = "This is used by the marine Charlie RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/charlie/engi
 	name = "marine charlie engineer radio headset"
@@ -447,11 +461,13 @@
 	name = "marine delta leader radio headset"
 	desc = "This is used by the marine Delta squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
+	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine/delta/rto
 	name = "marine delta RTO radio headset"
 	desc = "This is used by the marine Delta RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/delta/engi
 	name = "marine delta engineer radio headset"
@@ -475,6 +491,13 @@
 	name = "marine echo leader radio headset"
 	desc = "This is used by the marine Echo squad leader. Channels are as follows: :v - marine command. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	keyslot2 = new /obj/item/device/encryptionkey/squadlead
+	volume = RADIO_VOLUME_CRITICAL
+
+/obj/item/device/radio/headset/almayer/marine/echo/rto
+	name = "marine echo RTO radio headset"
+	desc = "This is used by the marine Echo RTO. Channels are as follows: :u - requisitions, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/jtac)
+	volume = RADIO_VOLUME_RAISED
 
 /obj/item/device/radio/headset/almayer/marine/echo/engi
 	name = "marine echo engineer radio headset"
@@ -525,6 +548,7 @@
 				if(JOB_SQUAD_LEADER)
 					name = "marine leader " + name
 					keys += new /obj/item/device/encryptionkey/squadlead(src)
+					volume = RADIO_VOLUME_CRITICAL
 				if(JOB_SQUAD_MEDIC)
 					name = "marine medic " + name
 					keys += new /obj/item/device/encryptionkey/med(src)
@@ -584,3 +608,4 @@
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :z - intelligence,  :t - HighCom"
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
+	volume = RADIO_VOLUME_CRITICAL

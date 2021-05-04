@@ -19,6 +19,7 @@
 	var/subspace_transmission = 0
 	var/syndie = 0//Holder to see if it's a syndicate encrpyed radio
 	var/maxf = 1499
+	var/volume = RADIO_VOLUME_QUIET
 //			"Example" = FREQ_LISTENING|FREQ_BROADCASTING
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -290,7 +291,7 @@
 
 	Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 					  src, message, displayname, jobname, real_name, M.voice_name,
-					  filter_type, 0, target_zs, connection.frequency, verb, speaking)
+					  filter_type, 0, target_zs, connection.frequency, verb, speaking, volume)
 
 
 /obj/item/device/radio/proc/get_target_zs()

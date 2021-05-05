@@ -712,7 +712,7 @@
 /obj/item/weapon/gun/rifle/m16/dutch/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
-//5% more damage on Dutch's M16s so they can actually hurt Predators
+
 
 //-------------------------------------------------------
 //M41AE2 HEAVY PULSE RIFLE

@@ -709,7 +709,7 @@
 
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_ANTIQUE
 
-/obj/item/weapon/gun/rifle/m16/set_gun_config_values()
+/obj/item/weapon/gun/rifle/m16/dutch/set_gun_config_values()
 	..()
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_7
 //5% more damage on Dutch's M16s so they can actually hurt Predators

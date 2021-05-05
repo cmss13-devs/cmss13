@@ -336,6 +336,7 @@
 #include "code\datums\elements\bloody_feet.dm"
 #include "code\datums\elements\magharness.dm"
 #include "code\datums\elements\bullet_trait\iff.dm"
+#include "code\datums\elements\bullet_trait\ignored_range.dm"
 #include "code\datums\elements\bullet_trait\incendiary.dm"
 #include "code\datums\elements\bullet_trait\penetrating.dm"
 #include "code\datums\emergency_calls\clf.dm"

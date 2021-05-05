@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "rear_3"
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_2"
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -30,8 +30,8 @@
 	},
 /area/vehicle/apc)
 "e" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "rear_4"
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_1"
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -47,8 +47,17 @@
 	icon_state = "floor_3_12"
 	},
 /area/vehicle/apc)
+"g" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_R"
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "front_5"
+	},
+/turf/open/void/vehicle,
+/area/space)
 "h" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_R"
 	},
 /turf/open/shuttle/vehicle{
@@ -59,7 +68,7 @@
 /turf/open/void/vehicle,
 /area/space)
 "k" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_L"
 	},
 /turf/open/shuttle/vehicle{
@@ -67,9 +76,10 @@
 	},
 /area/space)
 "l" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	alpha = 100;
 	icon_state = "wall_door_front";
+	layer = 5.2;
 	pixel_y = 32
 	},
 /turf/open/void/vehicle,
@@ -83,13 +93,13 @@
 	},
 /area/vehicle/apc)
 "n" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "front_3"
+/obj/structure/interior_wall/apc{
+	icon_state = "front_2"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "o" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_L"
 	},
 /turf/open/shuttle/vehicle{
@@ -97,20 +107,21 @@
 	},
 /area/space)
 "p" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "front_1"
+/obj/structure/interior_wall/apc{
+	icon_state = "front_4"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "q" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "front_2"
+/obj/structure/interior_wall/apc{
+	icon_state = "front_3"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "r" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "corner_inverse_L_1"
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_inverse_L_1";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -120,8 +131,8 @@
 	},
 /area/vehicle/apc)
 "t" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "rear_2"
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_3"
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -152,6 +163,12 @@
 	icon_state = "floor_1_14"
 	},
 /area/vehicle/apc)
+"y" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_6"
+	},
+/turf/open/void/vehicle,
+/area/space)
 "z" = (
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_0_1_15"
@@ -163,8 +180,9 @@
 	},
 /area/vehicle/apc)
 "B" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "corner_inverse_R_2"
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_inverse_R";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -174,12 +192,39 @@
 	icon_state = "floor_3_5"
 	},
 /area/vehicle/apc)
-"E" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "corner_small_R"
+"D" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)
+"E" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_R";
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
+"H" = (
+/obj/structure/bed/chair/vehicle,
+/obj/structure/transmitter{
+	layer = 3.1;
+	name = "APC Telephone";
+	phone_category = "Vehicles";
+	phone_id = "M577 APC";
+	pixel_x = -1;
+	pixel_y = 32
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_13"
+	},
+/area/vehicle/apc)
 "I" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 4
@@ -191,27 +236,57 @@
 	icon_state = "floor_3_11"
 	},
 /area/vehicle/apc)
+"J" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_L";
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_back_top_2";
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
 "L" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "corner_small_L"
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_5"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "M" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "front_4"
+/obj/structure/interior_wall/apc{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"N" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_1";
+	pixel_x = 1;
+	pixel_y = -4
 	},
 /turf/open/void/vehicle,
 /area/space)
 "O" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "door_back"
 	},
 /turf/open/void/vehicle,
 /area/space)
+"P" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_6"
+	},
+/turf/open/void/vehicle,
+/area/space)
 "Q" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "wall_5"
+/obj/structure/interior_wall/apc{
+	icon_state = "wall_5";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -221,10 +296,19 @@
 	},
 /area/vehicle/apc)
 "S" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	alpha = 100;
 	icon_state = "door_front";
+	layer = 5.2;
 	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"T" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_back_top_1";
+	pixel_x = -4;
+	pixel_y = -4
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -235,25 +319,25 @@
 	},
 /area/vehicle/apc)
 "V" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "wall"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "W" = (
+/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
+	dir = 4
+	},
 /obj/structure/vehicle_locker{
 	layer = 5.21;
 	pixel_y = 28
-	},
-/obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
-	dir = 4
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
 	},
 /area/vehicle/apc)
 "X" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_R"
 	},
 /turf/open/shuttle/vehicle{
@@ -262,6 +346,7 @@
 /area/space)
 "Y" = (
 /obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	tag = "right"
 	},
@@ -270,14 +355,14 @@
 	},
 /area/vehicle/apc)
 "Z" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "rear_1"
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_4"
 	},
 /turf/open/void/vehicle,
 /area/space)
 
 (1,1,1) = {"
-j
+P
 L
 Z
 t
@@ -286,7 +371,7 @@ e
 j
 "}
 (2,1,1) = {"
-j
+T
 Q
 U
 s
@@ -295,7 +380,7 @@ k
 j
 "}
 (3,1,1) = {"
-L
+J
 r
 C
 R
@@ -324,15 +409,15 @@ S
 (6,1,1) = {"
 E
 B
-U
+H
 x
 b
 o
 j
 "}
 (7,1,1) = {"
-j
-V
+N
+D
 W
 u
 m
@@ -340,8 +425,8 @@ X
 j
 "}
 (8,1,1) = {"
-j
-E
+y
+g
 p
 q
 n

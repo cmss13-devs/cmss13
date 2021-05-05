@@ -110,33 +110,6 @@
 
 	return ..()
 
-/obj/structure/interior_wall/van
-	name = "van interior wall"
-	desc = "An interior wall."
-	icon = 'icons/obj/vehicles/interiors/van.dmi'
-	icon_state = "van_right_1"
-	density = 1
-	opacity = 0
-	anchored = 1
-	mouse_opacity = 0
-	layer = WINDOW_LAYER
-	flags_atom = ON_BORDER|NOINTERACT
-	unacidable = TRUE
-
-/obj/structure/interior_wall/van/Initialize()
-	. = ..()
-	pixel_y = 0
-	//alpha = 255
-	layer = ABOVE_OBJ_LAYER
-
-	switch(dir)
-		if(NORTH)
-			pixel_y = 31
-			layer = INTERIOR_WALL_NORTH_LAYER
-		if(SOUTH)
-			alpha = 50
-			layer = INTERIOR_WALL_SOUTH_LAYER
-
 /*
 ** PRESETS
 */
@@ -275,41 +248,8 @@
 /obj/vehicle/multitile/van/decrepit/load_damage(var/obj/vehicle/multitile/R)
 	take_damage_type(1e8, "abstract") //OOF.ogg
 
-
-/obj/structure/interior_exit/vehicle/van/left
-	name = "Van left door"
-	icon = 'icons/obj/vehicles/interiors/van.dmi'
-	icon_state = "van_left_3"
-
-/obj/structure/interior_exit/vehicle/van/right
-	name = "Van right door"
-	icon = 'icons/obj/vehicles/interiors/van.dmi'
-	icon_state = "van_right_3"
-	dir = SOUTH
-
-/obj/structure/interior_exit/vehicle/van/right/Initialize()
-	..()
-	alpha = 50
-
-/obj/structure/interior_exit/vehicle/van/backleft
-	name = "Van back exit"
-	icon = 'icons/obj/vehicles/interiors/van.dmi'
-	icon_state = "van_back_2"
-	dir = WEST
-
-/obj/structure/interior_exit/vehicle/van/backleft/Initialize()
-	..()
-	pixel_x = 0
-
-/obj/structure/interior_exit/vehicle/van/backright
-	name = "Van back exit"
-	icon = 'icons/obj/vehicles/interiors/van.dmi'
-	icon_state = "van_back_1"
-	dir = WEST
-
-/obj/structure/interior_exit/vehicle/van/backright/Initialize()
-	..()
-	pixel_x = 0
+/obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/item/projectile/P)
+	return FALSE
 
 /obj/vehicle/multitile/van/Collide(var/atom/A)
 	if(!seats[VEHICLE_DRIVER])
@@ -327,6 +267,3 @@
 		return FALSE
 
 	return ..()
-
-/obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/item/projectile/P)
-	return FALSE

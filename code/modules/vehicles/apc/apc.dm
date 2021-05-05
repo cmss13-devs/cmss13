@@ -109,18 +109,6 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 			/obj/vehicle/multitile/proc/toggle_shift_click,
 		))
 
-// Special interior objects
-
-/obj/structure/interior_wall_full/apc
-	name = "\improper APC interior wall"
-	icon = 'icons/obj/vehicles/interiors/apc.dmi'
-	icon_state = "apc_right_1"
-
-/obj/structure/interior_exit/vehicle/apc
-	name = "APC door"
-	icon = 'icons/obj/vehicles/interiors/apc.dmi'
-	icon_state = "exit_door"
-
 /obj/vehicle/multitile/apc/initialize_cameras(var/change_tag = FALSE)
 	if(!camera_int)
 		camera_int = new /obj/structure/machinery/camera/vehicle(src)

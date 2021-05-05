@@ -31,6 +31,7 @@
 	E.interior = I
 	E.entrance_id = tag
 	E.setDir(dir)
+	E.alpha = alpha
 	E.update_icon()
 	// Don't qdel this because it's used for entering as well
 
@@ -43,6 +44,7 @@
 	E.interior = I
 	E.entrance_id = tag
 	E.setDir(dir)
+	E.alpha = alpha
 	E.update_icon()
 
 // Driver's seat spawner
@@ -60,6 +62,7 @@
 	S.layer = layer
 	S.vehicle = I.exterior
 	S.setDir(dir)
+	S.alpha = alpha
 	S.update_icon()
 	S.handle_rotation()
 
@@ -80,6 +83,7 @@
 	S.layer = layer
 	S.vehicle = I.exterior
 	S.setDir(dir)
+	S.alpha = alpha
 	S.update_icon()
 	S.handle_rotation()
 
@@ -99,6 +103,7 @@
 	S.vehicle = I.exterior
 	S.setDir(dir)
 	S.update_icon()
+	S.alpha = alpha
 	S.handle_rotation()
 
 	qdel(src)
@@ -116,6 +121,7 @@
 	S.icon_state = icon_state
 	S.vehicle = I.exterior
 	S.setDir(dir)
+	S.alpha = alpha
 	S.update_icon()
 	S.handle_rotation()
 

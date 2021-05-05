@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "rear_3"
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_2"
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -35,13 +35,13 @@
 /turf/open/shuttle/vehicle/med,
 /area/vehicle/apc)
 "e" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "rear_4"
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_1"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "f" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_L"
 	},
 /turf/open/shuttle/vehicle{
@@ -49,7 +49,7 @@
 	},
 /area/space)
 "g" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "rear_wheel_R"
 	},
 /turf/open/shuttle/vehicle{
@@ -68,13 +68,20 @@
 	icon_state = "floor_3"
 	},
 /area/vehicle/apc)
+"j" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_6"
+	},
+/turf/open/void/vehicle,
+/area/space)
 "k" = (
 /turf/open/void/vehicle,
 /area/space)
 "l" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	alpha = 100;
 	icon_state = "wall_door_front";
+	layer = 5.2;
 	pixel_y = 32
 	},
 /turf/open/void/vehicle,
@@ -94,6 +101,14 @@
 	icon_state = "dark_sterile_green_2"
 	},
 /area/vehicle/apc)
+"n" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_back_top_1";
+	pixel_x = -4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
 "o" = (
 /obj/effect/decal/medical_decals{
 	icon_state = "triagedecaltop"
@@ -103,38 +118,72 @@
 	},
 /area/vehicle/apc)
 "p" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "wall"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "q" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_R";
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_2";
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
+"r" = (
+/obj/structure/interior_wall/apc{
 	icon_state = "corner_small_R"
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "front_5"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"s" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "front_6"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "t" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "rear_2"
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_3"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "u" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "corner_small_L"
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_L";
+	opacity = 0
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_back_top_2";
+	pixel_x = -4;
+	pixel_y = -4
 	},
 /turf/open/void/vehicle,
 /area/space)
 "v" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "front_2"
+/obj/structure/interior_wall/apc{
+	icon_state = "front_3"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "w" = (
 /turf/open/shuttle/vehicle/med,
 /area/vehicle/apc)
+"x" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wall";
+	opacity = 0
+	},
+/turf/open/void/vehicle,
+/area/space)
 "y" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
@@ -145,6 +194,14 @@
 	icon_state = "floor_1_11"
 	},
 /area/vehicle/apc)
+"z" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "wheel_front_top_1";
+	pixel_x = 1;
+	pixel_y = -4
+	},
+/turf/open/void/vehicle,
+/area/space)
 "A" = (
 /obj/structure/bed/chair/vehicle{
 	dir = 4
@@ -163,7 +220,7 @@
 	},
 /area/vehicle/apc)
 "C" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_L"
 	},
 /turf/open/shuttle/vehicle{
@@ -193,21 +250,22 @@
 	},
 /area/vehicle/apc)
 "F" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "front_3"
+/obj/structure/interior_wall/apc{
+	icon_state = "front_2"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "G" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	alpha = 100;
 	icon_state = "door_front";
+	layer = 5.2;
 	pixel_y = 32
 	},
 /turf/open/void/vehicle,
 /area/space)
 "H" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "front_wheel_R"
 	},
 /turf/open/shuttle/vehicle{
@@ -230,6 +288,7 @@
 /area/vehicle/apc)
 "K" = (
 /obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
 	tag = "right"
 	},
@@ -243,8 +302,18 @@
 	},
 /area/vehicle/apc)
 "M" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "corner_inverse_L"
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_inverse_L";
+	opacity = 0
+	},
+/turf/open/void/vehicle,
+/area/space)
+"N" = (
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_small_L"
+	},
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_5"
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -261,7 +330,7 @@
 /turf/open/shuttle/vehicle/med,
 /area/vehicle/apc)
 "P" = (
-/obj/structure/interior_wall_full/apc{
+/obj/structure/interior_wall/apc{
 	icon_state = "door_back"
 	},
 /turf/open/void/vehicle,
@@ -281,8 +350,8 @@
 	},
 /area/vehicle/apc)
 "S" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "front_1"
+/obj/structure/interior_wall/apc{
+	icon_state = "front_4"
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -292,8 +361,8 @@
 	},
 /area/vehicle/apc)
 "U" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "front_4"
+/obj/structure/interior_wall/apc{
+	icon_state = "front_1"
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -307,32 +376,42 @@
 /area/vehicle/apc)
 "W" = (
 /obj/structure/bed/chair/vehicle,
+/obj/structure/transmitter{
+	layer = 3.1;
+	name = "APC Telephone";
+	phone_category = "Vehicles";
+	phone_id = "M577-MED APC";
+	pixel_x = -1;
+	pixel_y = 32
+	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
 "X" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "wall_3"
+/obj/structure/interior_wall/apc{
+	icon_state = "wall_3";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)
 "Y" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "rear_1"
+/obj/structure/interior_wall/apc{
+	icon_state = "rear_4"
 	},
 /turf/open/void/vehicle,
 /area/space)
 "Z" = (
-/obj/structure/interior_wall_full/apc{
-	icon_state = "corner_inverse_R_2"
+/obj/structure/interior_wall/apc{
+	icon_state = "corner_inverse_R";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)
 
 (1,1,1) = {"
-k
-u
+j
+N
 Y
 t
 a
@@ -340,7 +419,7 @@ e
 k
 "}
 (2,1,1) = {"
-k
+n
 X
 B
 J
@@ -385,8 +464,8 @@ C
 k
 "}
 (7,1,1) = {"
-k
-p
+z
+x
 E
 R
 I
@@ -394,8 +473,8 @@ H
 k
 "}
 (8,1,1) = {"
-k
-q
+s
+r
 S
 v
 F

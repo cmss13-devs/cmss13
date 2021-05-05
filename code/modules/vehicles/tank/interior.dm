@@ -1,12 +1,10 @@
+// Tank interior stuff
+
 // Wall
 /obj/structure/interior_wall/tank
-	name = "tank interior wall"
+	name = "\improper tank interior wall"
 	icon = 'icons/obj/vehicles/interiors/tank.dmi'
-	icon_state = "tank_right_1"
-
-	unacidable = TRUE
-	unslashable = TRUE
-	indestructible = TRUE
+	icon_state = "wall"
 
 // Props
 /obj/structure/prop/tank

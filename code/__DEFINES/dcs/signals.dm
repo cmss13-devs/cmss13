@@ -315,8 +315,9 @@
 /// Apply any effects to the bullet (primarily through bullet traits)
 /// based on the user
 #define COMSIG_BULLET_USER_EFFECTS "bullet_user_effects"
-/// Called when checking IFF as bullet scans for targets
-#define COMSIG_BULLET_CHECK_IFF "bullet_check_iff"
+/// Called when checking whether bullet should skip mob for whatever reasons (like IFF)
+#define COMSIG_BULLET_CHECK_MOB_SKIPPING "bullet_check_mob_skipping"
+	#define COMPONENT_SKIP_MOB (1<<0)
 
 /// From /obj/item/projectile/handle_mob(): (mob/living/target)
 #define COMSIG_BULLET_PRE_HANDLE_MOB "bullet_pre_handle_mob"

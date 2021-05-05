@@ -186,7 +186,7 @@
 			homing_projectile = FALSE
 		if(ishuman(ht))
 			var/mob/living/carbon/human/H = ht
-			if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, H) & COMPONENT_CANCEL_BULLET_ACT\
+			if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_MOB_SKIPPING, H) & COMPONENT_SKIP_MOB\
 				|| runtime_iff_group && H.get_target_lock(runtime_iff_group)\
 			)
 				homing_target = null
@@ -342,7 +342,7 @@
 				var/mob/living/dL = dA
 				if(dL.is_dead())
 					continue
-				if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_IFF, dL) & COMPONENT_CANCEL_BULLET_ACT\
+				if(SEND_SIGNAL(src, COMSIG_BULLET_CHECK_MOB_SKIPPING, dL) & COMPONENT_SKIP_MOB\
 					|| runtime_iff_group && dL.get_target_lock(runtime_iff_group)\
 				)
 					continue
@@ -737,7 +737,7 @@
 	. = ..()
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_IFF, src) & COMPONENT_CANCEL_BULLET_ACT\
+		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
 			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group)\
 		)
 			return FALSE
@@ -753,7 +753,7 @@
 	. = ..()
 	if(.)
 		var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_IFF, src) & COMPONENT_CANCEL_BULLET_ACT\
+		if(SEND_SIGNAL(P, COMSIG_BULLET_CHECK_MOB_SKIPPING, src) & COMPONENT_SKIP_MOB\
 			|| P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
 			return FALSE
 

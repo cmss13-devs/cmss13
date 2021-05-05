@@ -128,6 +128,10 @@
 	name = "Kutjevo Complex - Botany East Hall"
 	icon_state = "botany1"
 
+/area/kutjevo/interior/complex/botany/east_tech
+	name = "Kutjevo Complex - Powerplant Access Hall"
+	icon_state = "botany1"
+
 /area/kutjevo/interior/complex/botany/locks
 	name = "Kutjevo Complex - Botany Stormlocks"
 	icon_state = "botany0"

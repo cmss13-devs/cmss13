@@ -206,7 +206,6 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	. = X.build_resin(A, thick, make_message, plasma_cost != 0)
 	..()
-	return
 
 // Destructive Acid
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)
@@ -470,7 +469,7 @@
 
 	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
-		
+
 	if(structure_template.requires_node)
 		for(var/turf/TA in range(T, structure_template.block_range))
 			if(TA.density)

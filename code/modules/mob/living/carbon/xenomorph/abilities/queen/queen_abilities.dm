@@ -61,11 +61,37 @@
 	action_icon_state = "secrete_resin"
 	ability_name = "projected resin"
 	plasma_cost = 100
-	cooldown = 20
-
+	xeno_cooldown = 2 SECONDS
 	require_los = FALSE
-
 	ability_primacy = XENO_PRIMARY_ACTION_4
+
+	var/boosted = FALSE
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/New(Target, override_icon_state)
+	. = ..()
+	RegisterSignal(src, COMSIG_ACTION_GIVEN, .proc/on_give)
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/on_give(datum/source, mob/living/L)
+	SSticker.OnRoundstart(CALLBACK(src, .proc/apply_queen_build_boost))
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/apply_queen_build_boost()
+	var/boost_duration = 30 MINUTES
+	// In the event secrete_resin is given after round start
+	if(SSticker.round_start_time)
+		boost_duration = (30 MINUTES) - (world.time - SSticker.round_start_time)
+	if(boost_duration > 0)
+		boosted = TRUE
+		xeno_cooldown = 0
+		plasma_cost = 0
+		addtimer(CALLBACK(src, .proc/disable_boost), boost_duration)
+
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/proc/disable_boost()
+	xeno_cooldown = 2 SECONDS
+	plasma_cost = 100
+	boosted = FALSE
+
+	if(owner)
+		to_chat(owner, SPAN_XENODANGER("Your boosted building has been disabled!"))
 
 /datum/action/xeno_action/onclick/eye
 	name = "Enter Eye Form"

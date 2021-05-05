@@ -84,12 +84,7 @@
 			pixel_y = 31
 			layer = INTERIOR_WALL_NORTH_LAYER
 		if(SOUTH)
-			alpha = 150
 			layer = INTERIOR_WALL_SOUTH_LAYER
-		if(WEST)
-			pixel_x = 3
-		if(EAST)
-			pixel_x = -3
 
 /obj/structure/interior_exit/vehicle/proc/get_exit_turf()
 	var/obj/vehicle/multitile/V = interior.exterior

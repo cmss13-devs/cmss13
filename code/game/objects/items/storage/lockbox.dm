@@ -60,10 +60,10 @@
 	new /obj/item/ammo_magazine/pistol/mod88/rubber(src)
 
 
-/obj/item/storage/lockbox/clusterbang
-	name = "lockbox of clusterbangs"
+/obj/item/storage/lockbox/cluster
+	name = "lockbox of cluster flashbangs"
 	desc = "You have a bad feeling about opening this."
 	req_access = list(ACCESS_MARINE_BRIG)
 
 /obj/item/storage/lockbox/clusterbang/fill_preset_inventory()
-	new /obj/item/explosive/grenade/flashbang/clusterbang(src)
+	new /obj/item/explosive/grenade/flashbang/cluster(src)

@@ -37,7 +37,7 @@
 /turf/closed/wall/cult,
 /area/yautja)
 "ag" = (
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed,
 /area/yautja)
 "ah" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -49,11 +49,7 @@
 	dir = 4;
 	health = 80
 	},
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "ai" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -69,11 +65,7 @@
 	dir = 4;
 	health = 80
 	},
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "aj" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -85,11 +77,7 @@
 	dir = 8;
 	health = 80
 	},
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "ak" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -101,11 +89,7 @@
 	dir = 4;
 	health = 80
 	},
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "al" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -121,11 +105,7 @@
 	dir = 4;
 	health = 80
 	},
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "am" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -137,11 +117,7 @@
 	dir = 8;
 	health = 80
 	},
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "an" = (
 /obj/structure/machinery/autodoc{
@@ -185,7 +161,7 @@
 /area/yautja)
 "ap" = (
 /obj/structure/stairs/perspective{
-	color = "#dbb58f"
+	color = "#b29082"
 	},
 /turf/open/shuttle{
 	icon_state = "floor6"
@@ -261,11 +237,7 @@
 /obj/item/clothing/mask/gas/yautja,
 /obj/item/clothing/suit/armor/yautja,
 /obj/item/clothing/shoes/yautja,
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "av" = (
 /obj/structure/surface/table/reinforced/prison{
@@ -293,11 +265,7 @@
 /obj/item/clothing/mask/gas/yautja,
 /obj/item/clothing/suit/armor/yautja,
 /obj/item/clothing/shoes/yautja,
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "ay" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -309,11 +277,7 @@
 /obj/item/clothing/mask/gas/yautja,
 /obj/item/clothing/suit/armor/yautja,
 /obj/item/clothing/shoes/yautja,
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "az" = (
 /obj/structure/window/phoronreinforced{
@@ -332,11 +296,7 @@
 /obj/item/clothing/mask/gas/yautja,
 /obj/item/clothing/suit/armor/yautja,
 /obj/item/clothing/shoes/yautja,
-/turf/open/floor{
-	color = "#8c857e";
-	dir = 4;
-	icon_state = "whiteyellowfull"
-	},
+/turf/open/floor/sandstone/runed,
 /area/yautja)
 "aB" = (
 /obj/structure/closet/crate/critter,
@@ -1491,21 +1451,11 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
-/obj/item/stack/sheet/mineral/sandstone{
-	amount = 50
-	},
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/runed/large_stack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1765,7 +1715,7 @@
 /obj/structure/prop/brazier/torch{
 	pixel_y = -2
 	},
-/turf/closed/wall/mineral/sandstone,
+/turf/closed/wall/mineral/sandstone/runed/decor,
 /area/yautja)
 "eg" = (
 /obj/structure/barricade/handrail/strata{
@@ -2777,6 +2727,12 @@
 	icon_state = "desert_dug"
 	},
 /area/yautja)
+"GP" = (
+/obj/structure/prop/brazier/torch{
+	pixel_y = -2
+	},
+/turf/closed/wall/mineral/sandstone/runed,
+/area/yautja)
 "GY" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -3356,6 +3312,9 @@
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},
+/area/yautja)
+"YM" = (
+/turf/closed/wall/mineral/sandstone/runed/decor,
 /area/yautja)
 "Zi" = (
 /obj/structure/sink{
@@ -5446,7 +5405,7 @@ aa
 ad
 bj
 ag
-dS
+GP
 cP
 bL
 bj
@@ -5661,7 +5620,7 @@ aa
 aa
 ad
 bj
-ag
+YM
 ap
 cP
 bL
@@ -6237,7 +6196,7 @@ aa
 aa
 ac
 bj
-ag
+YM
 ap
 cP
 bL
@@ -6454,7 +6413,7 @@ aa
 ac
 bj
 ag
-dS
+GP
 cP
 bL
 bj

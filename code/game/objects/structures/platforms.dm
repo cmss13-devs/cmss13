@@ -146,12 +146,28 @@ obj/structure/platform_decoration
 	desc = "A collection of stones and rocks that cap the edge of some conveniently 1 meter long lengths of perfectly climbable chest high walls."
 	icon_state = "kutjevo_rock_deco"
 
-/obj/structure/platform/sandstone
+
+/obj/structure/platform/mineral
+	icon_state = "stone"
+/obj/structure/platform_decoration/mineral
+	icon_state = "stone_deco"
+
+/obj/structure/platform/mineral/sandstone
 	name = "sandstone platform"
 	desc = "A platform supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
-	icon_state = "sandstone"
+	color = "#c6a480"
 
-/obj/structure/platform_decoration/sandstone
+/obj/structure/platform/mineral/sandstone/runed
+	name = "sandstone temple platform"
+	color = "#b29082"
+
+
+
+/obj/structure/platform_decoration/mineral/sandstone
 	name = "sandstone platform corner"
 	desc = "A platform corner supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
-	icon_state = "sandstone_deco"
+	color = "#c6a480"
+
+/obj/structure/platform_decoration/mineral/sandstone/runed
+	name = "sandstone temple platform corner"
+	color = "#b29082"

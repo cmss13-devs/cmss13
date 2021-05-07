@@ -58,7 +58,6 @@
 						/obj/item/attachable/bayonet/upp,
 						/obj/item/attachable/heavy_barrel,
 						/obj/item/attachable/scope/mini,
-						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/magnetic_harness,
 						/obj/item/attachable/gyro,
 						/obj/item/attachable/stock/smg/collapsible/brace)

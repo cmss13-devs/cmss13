@@ -837,10 +837,10 @@
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
 
-/datum/hive_status/corrupted/submissive
-	name = "Submissive Hive"
-	hivenumber = XENO_HIVE_SUBMISSIVE
-	prefix = "Submissive "
+/datum/hive_status/corrupted/tamed
+	name = "Tamed Hive"
+	hivenumber = XENO_HIVE_TAMED
+	prefix = "Tamed "
 	color = "#80ff80"
 
 	dynamic_evolution = FALSE
@@ -851,12 +851,12 @@
 	var/mob/living/carbon/human/leader
 	var/list/allied_factions
 
-/datum/hive_status/corrupted/submissive/New()
+/datum/hive_status/corrupted/tamed/New()
 	. = ..()
 	hive_structures_limit[XENO_STRUCTURE_EGGMORPH] = 0
 	hive_structures_limit[XENO_STRUCTURE_EVOPOD] = 0
 
-/datum/hive_status/corrupted/submissive/proc/make_leader(var/mob/living/carbon/human/H)
+/datum/hive_status/corrupted/tamed/proc/make_leader(var/mob/living/carbon/human/H)
 	if(!istype(H))
 		return
 
@@ -866,7 +866,7 @@
 	leader = H
 	RegisterSignal(leader, COMSIG_PARENT_QDELETING, .proc/handle_qdelete)
 
-/datum/hive_status/corrupted/submissive/proc/handle_qdelete(var/mob/living/carbon/human/H)
+/datum/hive_status/corrupted/tamed/proc/handle_qdelete(var/mob/living/carbon/human/H)
 	SIGNAL_HANDLER
 
 	if(H == leader)
@@ -878,15 +878,15 @@
 		if(!(H.faction in allied_factions))
 			allied_factions += H.faction
 
-/datum/hive_status/corrupted/submissive/add_xeno(mob/living/carbon/Xenomorph/X)
+/datum/hive_status/corrupted/tamed/add_xeno(mob/living/carbon/Xenomorph/X)
 	. = ..()
 	X.faction_group = allied_factions
 
-/datum/hive_status/corrupted/submissive/remove_xeno(mob/living/carbon/Xenomorph/X, hard)
+/datum/hive_status/corrupted/tamed/remove_xeno(mob/living/carbon/Xenomorph/X, hard)
 	. = ..()
 	X.faction_group = list(X.faction)
 
-/datum/hive_status/corrupted/submissive/is_ally(mob/living/carbon/C)
+/datum/hive_status/corrupted/tamed/is_ally(mob/living/carbon/C)
 	if(leader)
 		if(C.faction in leader.faction_group)
 			return TRUE

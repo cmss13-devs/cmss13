@@ -32,7 +32,7 @@
 /datum/emergency_call/xeno_handler/spawn_items()
 	var/turf/drop_spawn	= get_spawn_point(TRUE)
 	if(istype(drop_spawn))
-		new /obj/effect/alien/weeds/node(drop_spawn, null, null, GLOB.hive_datum[XENO_HIVE_SUBMISSIVE]) //drop some weeds for xeno plasma regen.
+		new /obj/effect/alien/weeds/node(drop_spawn, null, null, GLOB.hive_datum[XENO_HIVE_TAMED]) //drop some weeds for xeno plasma regen.
 
 /datum/emergency_call/xeno_handler/create_member(datum/mind/M)
 	var/turf/spawn_loc = get_spawn_point()
@@ -40,7 +40,7 @@
 	if(!istype(spawn_loc))
 		return //Didn't find a useable spawn point.
 
-	var/datum/hive_status/corrupted/submissive/hive = GLOB.hive_datum[XENO_HIVE_SUBMISSIVE]
+	var/datum/hive_status/corrupted/tamed/hive = GLOB.hive_datum[XENO_HIVE_TAMED]
 
 	var/mob/living/carbon/new_mob
 	if(!leader)
@@ -54,7 +54,7 @@
 
 	else
 		var/picked = pick(/mob/living/carbon/Xenomorph/Drone, /mob/living/carbon/Xenomorph/Spitter, /mob/living/carbon/Xenomorph/Lurker)
-		new_mob = new picked(spawn_loc, null, XENO_HIVE_SUBMISSIVE)
+		new_mob = new picked(spawn_loc, null, XENO_HIVE_TAMED)
 
 	if(M)
 		M.transfer_to(new_mob, TRUE)

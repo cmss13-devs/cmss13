@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT_TYPED(hive_datum, /datum/hive_status, list(
 	XENO_HIVE_CHARLIE = new /datum/hive_status/charlie(),
 	XENO_HIVE_DELTA = new /datum/hive_status/delta(),
 	XENO_HIVE_FERAL = new /datum/hive_status/feral(),
-	XENO_HIVE_SUBMISSIVE = new /datum/hive_status/corrupted/submissive()
+	XENO_HIVE_TAMED = new /datum/hive_status/corrupted/tamed()
 ))
 
 GLOBAL_LIST_INIT(custom_event_info_list, setup_custom_event_info())

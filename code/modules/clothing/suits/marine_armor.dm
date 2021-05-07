@@ -187,19 +187,21 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	return ..()
 
 /obj/item/clothing/suit/storage/marine/attack_self(mob/user)
+	..()
+
 	if(!isturf(user.loc))
 		to_chat(user, SPAN_WARNING("You cannot turn the light on while in [user.loc].")) //To prevent some lighting anomalities.
 		return
-
 	if(flashlight_cooldown > world.time)
 		return
+	if(!ishuman(user))
+		return
 
-	if(!ishuman(user)) return
 	var/mob/living/carbon/human/H = user
-	if(H.wear_suit != src) return
+	if(H.wear_suit != src)
+		return
 
 	toggle_armor_light(user)
-	return 1
 
 /obj/item/clothing/suit/storage/marine/item_action_slot_check(mob/user, slot)
 	if(!ishuman(user)) return FALSE

@@ -89,9 +89,10 @@
 	..()
 
 /obj/item/clothing/glasses/attack_self(mob/user)
+	..()
+
 	if(!toggleable)
 		return
-
 	if(!can_use_active_effect(user))
 		to_chat(user, SPAN_WARNING("You have no idea how to use [src]."))
 		return
@@ -228,6 +229,7 @@
 	var/vision_impair_off = VISION_IMPAIR_NONE
 
 /obj/item/clothing/glasses/welding/attack_self()
+	..()
 	toggle()
 
 /obj/item/clothing/glasses/welding/verb/toggle()

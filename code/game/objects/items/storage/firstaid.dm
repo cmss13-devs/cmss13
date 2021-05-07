@@ -40,6 +40,8 @@
 		icon_state = icon_full
 
 /obj/item/storage/firstaid/attack_self(mob/living/user)
+	..()
+
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		C.swap_hand()
@@ -301,6 +303,8 @@ obj/item/storage/pill_bottle/packet
 
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
+	..()
+
 	if(user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need an empty hand to take out a pill."))
 		return

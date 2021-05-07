@@ -358,6 +358,8 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 
 /obj/item/weapon/gun/energy/plasma_caster/attack_self(mob/living/user)
+	..()
+
 	switch(mode)
 		if(0)
 			mode = 1

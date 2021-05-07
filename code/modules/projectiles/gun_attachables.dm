@@ -283,6 +283,8 @@ Defined in conflicts.dm of the #defines folder.
 		..()
 
 /obj/item/attachable/bayonet/attack_self(mob/living/carbon/human/user)
+	..()
+
 	if(!ishuman(user))
 		return
 	if(!hasorgans(user))

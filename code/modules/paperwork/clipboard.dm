@@ -59,7 +59,9 @@
 
 	return
 
-/obj/item/clipboard/attack_self(mob/user as mob)
+/obj/item/clipboard/attack_self(mob/user)
+	..()
+
 	var/dat
 	if(haspen)
 		dat += "<A href='?src=\ref[src];pen=1'>Remove Pen</A><BR><HR>"

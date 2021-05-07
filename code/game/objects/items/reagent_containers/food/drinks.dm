@@ -15,24 +15,20 @@
 	if (gulp_size < 5) gulp_size = 5
 	else gulp_size = max(round(reagents.total_volume / 5), 5)
 
-/obj/item/reagent_container/food/drinks/attack_self(mob/user as mob)
-	return
-
-/obj/item/reagent_container/food/drinks/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_container/food/drinks/attack(mob/M, mob/user, def_zone)
 	var/datum/reagents/R = src.reagents
 	var/fillevel = gulp_size
 
 	if(!R.total_volume || !R)
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
-		return 0
+		return FALSE
 
 	if(M == user)
-
 		if(istype(M,/mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(H.species.flags & IS_SYNTHETIC)
 				to_chat(H, SPAN_DANGER("You have a monitor for a head, where do you think you're going to put that?"))
-				return
+				return FALSE
 
 		to_chat(M, SPAN_NOTICE(" You swallow a gulp from \the [src]."))
 		if(reagents.total_volume)
@@ -40,20 +36,20 @@
 			reagents.trans_to_ingest(M, gulp_size)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-		return 1
-	else if( istype(M, /mob/living/carbon/human) )
-
+		return TRUE
+	else if(istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if(H.species.flags & IS_SYNTHETIC)
 			to_chat(user, SPAN_DANGER("They have a monitor for a head, where do you think you're going to put that?"))
-			return
+			return FALSE
 
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>start feeding</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 
-		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) return
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M))
+			return FALSE
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
 			SPAN_HELPFUL("[user] <b>fed</b> you <b>[src]</b>."),
@@ -77,9 +73,9 @@
 				R.add_reagent(refill, fillevel)
 
 		playsound(M.loc,'sound/items/drink.ogg', 15, 1)
-		return 1
+		return TRUE
 
-	return 0
+	return FALSE
 
 
 /obj/item/reagent_container/food/drinks/afterattack(obj/target, mob/user, proximity)

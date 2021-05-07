@@ -2,15 +2,15 @@
 	var/canopened = 0
 	gulp_size = 10
 
-/obj/item/reagent_container/food/drinks/cans/attack_self(mob/user as mob)
-	if (canopened == 0)
+/obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
+	..()
+
+	if (canopened == FALSE)
 		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
-		canopened = 1
-	else
-		return
+		canopened = TRUE
 
-/obj/item/reagent_container/food/drinks/cans/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_container/food/drinks/cans/attack(mob/M, mob/user, def_zone)
 	if (canopened == 0)
 		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 		return

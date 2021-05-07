@@ -9,7 +9,7 @@
 	edge = 0
 	throwforce = 7
 	w_class = SIZE_MEDIUM
-	
+
 	attack_verb = list("beaten")
 	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_ARMORY, ACCESS_MARINE_COMMANDER, ACCESS_WY_CORPORATE, ACCESS_WY_PMC_GREEN, ACCESS_CIVILIAN_BRIG)
 	var/stunforce = 50
@@ -111,6 +111,8 @@
 		..()
 
 /obj/item/weapon/melee/baton/attack_self(mob/user)
+	..()
+
 	if(has_user_lock && !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 		return

@@ -15,13 +15,10 @@
 	center_of_mass = "x=16;y=6"
 	volume = 50
 
-/obj/item/reagent_container/food/condiment/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/user)
 	return
 
-/obj/item/reagent_container/food/condiment/attack_self(mob/user as mob)
-	return
-
-/obj/item/reagent_container/food/condiment/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_container/food/condiment/attack(mob/M, mob/user, def_zone)
 	if(!reagents?.total_volume)
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return FALSE
@@ -35,7 +32,7 @@
 			SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 			SPAN_NOTICE("[user] starts feeding [user == M ? "themselves" : "[M]"] [src]."))
 
-		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M)) 
+		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M))
 			return FALSE
 		user.affected_message(M,
 			SPAN_HELPFUL("You <b>fed</b> [user == M ? "yourself" : "[M]"] <b>[src]</b>."),
@@ -47,7 +44,7 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [user.name] ([user.ckey]) Reagents: [rgt_list_text]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [src.name] by [M.name] ([M.ckey]) Reagents: [rgt_list_text]</font>")
 		msg_admin_attack("[user.name] ([user.ckey]) fed [M.name] ([M.ckey]) with [src.name] (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
-	else 
+	else
 		return FALSE
 
 	if(reagents.total_volume)

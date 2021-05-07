@@ -38,7 +38,8 @@
 	display_contents(user)
 
 
-/obj/item/reagent_container/syringe/attack_self(mob/user as mob)
+/obj/item/reagent_container/syringe/attack_self(mob/user)
+	..()
 
 	switch(mode)
 		if(SYRINGE_DRAW)
@@ -53,7 +54,7 @@
 	..()
 	update_icon()
 
-/obj/item/reagent_container/syringe/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/reagent_container/syringe/attackby(obj/item/I, mob/user)
 	return
 
 /obj/item/reagent_container/syringe/afterattack(obj/target, mob/user, proximity)
@@ -300,105 +301,105 @@
 	volume = 50
 	var/mode = SYRINGE_DRAW
 
-	on_reagent_change()
-		update_icon()
-
-	pickup(mob/user)
-		..()
-		update_icon()
-
-	dropped(mob/user)
-		..()
-		update_icon()
-
-	attack_self(mob/user as mob)
-		mode = !mode
-		update_icon()
-
-	attack_hand()
-		..()
-		update_icon()
-
-	attackby(obj/item/I as obj, mob/user as mob)
-
-		return
-
-	afterattack(obj/target, mob/user , flag)
-		if(!target.reagents) return
-
-		switch(mode)
-			if(SYRINGE_DRAW)
-
-				if(reagents.total_volume >= reagents.maximum_volume)
-					to_chat(user, SPAN_DANGER("The syringe is full."))
-					return
-
-				if(ismob(target))
-					if(istype(target, /mob/living/carbon))//I Do not want it to suck 50 units out of people
-						to_chat(usr, "This needle isn't designed for drawing blood.")
-						return
-				else //if not mob
-					if(!target.reagents.total_volume)
-						to_chat(user, SPAN_DANGER("[target] is empty."))
-						return
-
-					if(!target.is_open_container() && !istype(target,/obj/structure/reagent_dispensers))
-						to_chat(user, SPAN_DANGER("You cannot directly remove reagents from this object."))
-						return
-
-					var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
-
-					if(!trans)
-						to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
-						return
-
-					to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
-				if (reagents.total_volume >= reagents.maximum_volume)
-					mode=!mode
-					update_icon()
-
-			if(SYRINGE_INJECT)
-				if(!reagents.total_volume)
-					to_chat(user, SPAN_DANGER("The Syringe is empty."))
-					return
-				if(istype(target, /obj/item/implantcase/chem))
-					return
-				if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_container/food))
-					to_chat(user, SPAN_DANGER("You cannot directly fill this object."))
-					return
-				if(target.reagents.total_volume >= target.reagents.maximum_volume)
-					to_chat(user, SPAN_DANGER("[target] is full."))
-					return
-
-				if(ismob(target) && target != user)
-					user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target] with a giant syringe!</B>"))
-					if(!do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
-					user.visible_message(SPAN_DANGER("[user] injects [target] with a giant syringe!"))
-					src.reagents.reaction(target, INGEST)
-				if(ismob(target) && target == user)
-					src.reagents.reaction(target, INGEST)
-				spawn(5)
-					var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
-					to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
-					if (reagents.total_volume >= reagents.maximum_volume && mode==SYRINGE_INJECT)
-						mode = SYRINGE_DRAW
-						update_icon()
-		return
-
-
+/obj/item/reagent_container/ld50_syringe/on_reagent_change()
 	update_icon()
-		var/rounded_vol = round(reagents.total_volume,50)
-		if(ismob(loc))
-			var/mode_t
-			switch(mode)
-				if (SYRINGE_DRAW)
-					mode_t = "d"
-				if (SYRINGE_INJECT)
-					mode_t = "i"
-			icon_state = "[mode_t][rounded_vol]"
-		else
-			icon_state = "[rounded_vol]"
-		item_state = "syringe_[rounded_vol]"
+
+/obj/item/reagent_container/ld50_syringe/pickup(mob/user)
+	..()
+	update_icon()
+
+/obj/item/reagent_container/ld50_syringe/dropped(mob/user)
+	..()
+	update_icon()
+
+/obj/item/reagent_container/ld50_syringe/attack_self(mob/user)
+	..()
+	mode = !mode
+	update_icon()
+
+/obj/item/reagent_container/ld50_syringe/attack_hand()
+	..()
+	update_icon()
+
+/obj/item/reagent_container/ld50_syringe/attackby(obj/item/I, mob/user)
+	return
+
+/obj/item/reagent_container/ld50_syringe/afterattack(obj/target, mob/user , flag)
+	if(!target.reagents) return
+
+	switch(mode)
+		if(SYRINGE_DRAW)
+
+			if(reagents.total_volume >= reagents.maximum_volume)
+				to_chat(user, SPAN_DANGER("The syringe is full."))
+				return
+
+			if(ismob(target))
+				if(istype(target, /mob/living/carbon))//I Do not want it to suck 50 units out of people
+					to_chat(usr, "This needle isn't designed for drawing blood.")
+					return
+			else //if not mob
+				if(!target.reagents.total_volume)
+					to_chat(user, SPAN_DANGER("[target] is empty."))
+					return
+
+				if(!target.is_open_container() && !istype(target,/obj/structure/reagent_dispensers))
+					to_chat(user, SPAN_DANGER("You cannot directly remove reagents from this object."))
+					return
+
+				var/trans = target.reagents.trans_to(src, amount_per_transfer_from_this) // transfer from, transfer to - who cares?
+
+				if(!trans)
+					to_chat(user, SPAN_DANGER("You fail to remove reagents from [target]."))
+					return
+
+				to_chat(user, SPAN_NOTICE(" You fill the syringe with [trans] units of the solution."))
+			if (reagents.total_volume >= reagents.maximum_volume)
+				mode=!mode
+				update_icon()
+
+		if(SYRINGE_INJECT)
+			if(!reagents.total_volume)
+				to_chat(user, SPAN_DANGER("The Syringe is empty."))
+				return
+			if(istype(target, /obj/item/implantcase/chem))
+				return
+			if(!target.is_open_container() && !ismob(target) && !istype(target, /obj/item/reagent_container/food))
+				to_chat(user, SPAN_DANGER("You cannot directly fill this object."))
+				return
+			if(target.reagents.total_volume >= target.reagents.maximum_volume)
+				to_chat(user, SPAN_DANGER("[target] is full."))
+				return
+
+			if(ismob(target) && target != user)
+				user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target] with a giant syringe!</B>"))
+				if(!do_after(user, 300, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL)) return
+				user.visible_message(SPAN_DANGER("[user] injects [target] with a giant syringe!"))
+				src.reagents.reaction(target, INGEST)
+			if(ismob(target) && target == user)
+				src.reagents.reaction(target, INGEST)
+			spawn(5)
+				var/trans = src.reagents.trans_to(target, amount_per_transfer_from_this)
+				to_chat(user, SPAN_NOTICE(" You inject [trans] units of the solution. The syringe now contains [src.reagents.total_volume] units."))
+				if (reagents.total_volume >= reagents.maximum_volume && mode==SYRINGE_INJECT)
+					mode = SYRINGE_DRAW
+					update_icon()
+	return
+
+
+/obj/item/reagent_container/ld50_syringe/update_icon()
+	var/rounded_vol = round(reagents.total_volume,50)
+	if(ismob(loc))
+		var/mode_t
+		switch(mode)
+			if (SYRINGE_DRAW)
+				mode_t = "d"
+			if (SYRINGE_INJECT)
+				mode_t = "i"
+		icon_state = "[mode_t][rounded_vol]"
+	else
+		icon_state = "[rounded_vol]"
+	item_state = "syringe_[rounded_vol]"
 
 
 ////////////////////////////////////////////////////////////////////////////////

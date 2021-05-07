@@ -1,7 +1,8 @@
 
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user,list/mods)

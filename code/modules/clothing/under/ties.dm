@@ -543,7 +543,7 @@
 	if (hold.handle_mousedrop(usr, over_object))
 		..(over_object)
 
-/obj/item/clothing/accessory/storage/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/accessory/storage/attackby(obj/item/W, mob/user)
 	return hold.attackby(W, user)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
@@ -554,7 +554,8 @@
 	hold.hear_talk(M, msg)
 	..()
 
-/obj/item/clothing/accessory/storage/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/storage/attack_self(mob/user)
+	..()
 	to_chat(user, SPAN_NOTICE("You empty [src]."))
 	var/turf/T = get_turf(src)
 	hold.storage_close(usr)
@@ -678,14 +679,16 @@
 	icon_state = "holobadge-cord"
 	flags_equip_slot = SLOT_FACE
 
-/obj/item/clothing/accessory/holobadge/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/holobadge/attack_self(mob/user)
+	..()
+
 	if(!stored_name)
 		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
 		return
 	if(isliving(user))
 		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
-/obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null

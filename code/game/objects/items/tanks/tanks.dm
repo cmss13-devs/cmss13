@@ -67,7 +67,9 @@
 		src.add_fingerprint(user)
 
 
-/obj/item/tank/attack_self(mob/user as mob)
+/obj/item/tank/attack_self(mob/user)
+	..()
+
 	if (pressure == 0)
 		return
 

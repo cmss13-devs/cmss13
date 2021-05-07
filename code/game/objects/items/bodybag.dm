@@ -9,6 +9,7 @@
 	var/unfolded_path = /obj/structure/closet/bodybag
 
 /obj/item/bodybag/attack_self(mob/user)
+	..()
 	deploy_bodybag(user, user.loc)
 
 /obj/item/bodybag/afterattack(atom/target, mob/user, proximity)

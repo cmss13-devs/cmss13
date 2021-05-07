@@ -66,7 +66,9 @@
 	if(warhead && locked && warhead.detonator)
 		warhead.prime()
 
-/obj/item/mortar_shell/custom/attack_self(mob/user as mob)
+/obj/item/mortar_shell/custom/attack_self(mob/user)
+	..()
+
 	if(locked)
 		return
 
@@ -79,7 +81,7 @@
 	icon_state = initial(icon_state)
 	desc = initial(desc) + "\n Contains[fuel?" fuel":""][warhead?" and warhead":""]."
 
-/obj/item/mortar_shell/custom/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/mortar_shell/custom/attackby(obj/item/W as obj, mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return

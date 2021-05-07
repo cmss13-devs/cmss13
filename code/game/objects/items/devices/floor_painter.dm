@@ -80,9 +80,9 @@
 		else
 			to_chat(usr, "You can't paint that!")
 
-/obj/item/device/floor_painter/attack_self(mob/user as mob)
+/obj/item/device/floor_painter/attack_self(mob/user)
+	..()
 	var/type = tgui_input_list(usr, "What type of floor?", "Floor painter", list("solid", "corner", "opposite corners", "side/three corners", "special", "letters"))
-
 	tile_dir_mode = 0
 
 	switch(type)

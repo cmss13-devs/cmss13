@@ -9,35 +9,26 @@
 	icon_state = "hydro"
 	item_state = "analyzer"
 
-/obj/item/device/analyzer/plant_analyzer/attack_self(mob/user as mob)
-	return 0
-
 /obj/item/device/analyzer/plant_analyzer/afterattack(obj/target, mob/user, flag)
-	if(!flag) return
+	if(!flag)
+		return
 
 	var/datum/seed/grown_seed
 	var/datum/reagents/grown_reagents
 	if(istype(target,/obj/structure/surface/rack) || istype(target,/obj/structure/surface/table))
 		return ..()
 	else if(istype(target,/obj/item/reagent_container/food/snacks/grown))
-
 		var/obj/item/reagent_container/food/snacks/grown/G = target
 		grown_seed = seed_types[G.plantname]
 		grown_reagents = G.reagents
-
 	else if(istype(target,/obj/item/grown))
-
 		var/obj/item/grown/G = target
 		grown_seed = seed_types[G.plantname]
 		grown_reagents = G.reagents
-
 	else if(istype(target,/obj/item/seeds))
-
 		var/obj/item/seeds/S = target
 		grown_seed = S.seed
-
 	else if(istype(target,/obj/structure/machinery/portable_atmospherics/hydroponics))
-
 		var/obj/structure/machinery/portable_atmospherics/hydroponics/H = target
 		grown_seed = H.seed
 		grown_reagents = H.reagents
@@ -47,9 +38,7 @@
 		return
 
 	var/dat = "<h3>Plant data for [target]</h3>"
-
 	dat += "<h2>General Data</h2>"
-
 	dat += "<table>"
 	dat += "<tr><td><b>Endurance</b></td><td>[grown_seed.endurance]</td></tr>"
 	dat += "<tr><td><b>Yield</b></td><td>[grown_seed.yield]</td></tr>"
@@ -61,7 +50,6 @@
 
 	if(grown_reagents && grown_reagents.reagent_list && grown_reagents.reagent_list.len)
 		dat += "<h2>Reagent Data</h2>"
-
 		dat += "<br>This sample contains: "
 		for(var/datum/reagent/R in grown_reagents.reagent_list)
 			dat += "<br>- [R.name], [grown_reagents.get_reagent_amount(R.id)] unit(s)"

@@ -207,6 +207,7 @@ obj/structure/bed/Destroy()
 	var/rollertype = /obj/structure/bed/roller
 
 /obj/item/roller/attack_self(mob/user)
+	..()
 	deploy_roller(user, user.loc)
 
 /obj/item/roller/afterattack(obj/target, mob/user, proximity)
@@ -244,7 +245,8 @@ obj/structure/bed/Destroy()
 	. = ..()
 	held = new /obj/item/roller(src)
 
-/obj/item/roller_holder/attack_self(mob/user as mob)
+/obj/item/roller_holder/attack_self(mob/user)
+	..()
 
 	if(!held)
 		to_chat(user, SPAN_WARNING("The rack is empty."))

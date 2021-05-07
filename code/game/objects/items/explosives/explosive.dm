@@ -38,7 +38,9 @@
 	creator = null
 	. = ..()
 
-/obj/item/explosive/attack_self(mob/user as mob)
+/obj/item/explosive/attack_self(mob/user)
+	..()
+
 	if(customizable && assembly_stage <= ASSEMBLY_UNLOCKED)
 		if(detonator)
 			detonator.detached()

@@ -93,6 +93,7 @@
 
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
+	..()
 	to_chat(usr, "It has [uses] lights remaining.")
 
 /obj/item/device/lightreplacer/update_icon()

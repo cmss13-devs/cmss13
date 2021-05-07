@@ -160,6 +160,8 @@
 
 
 /obj/item/device/taperecorder/attack_self(mob/user)
+	..()
+
 	if(recording == 0 && playing == 0)
 		if(usr.stat)
 			return

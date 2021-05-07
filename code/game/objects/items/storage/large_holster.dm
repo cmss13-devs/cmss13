@@ -207,6 +207,7 @@
 
 
 /obj/item/storage/large_holster/fuelpack/attack_self(mob/user)
+	..()
 	do_toggle_fuel(user)
 
 /obj/item/storage/large_holster/fuelpack/proc/do_toggle_fuel(var/mob/user)

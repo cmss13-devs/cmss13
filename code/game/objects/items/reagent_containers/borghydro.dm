@@ -67,7 +67,8 @@
 
 	return
 
-/obj/item/reagent_container/borghypo/attack_self(mob/user as mob)
+/obj/item/reagent_container/borghypo/attack_self(mob/user)
+	..()
 	var/selection = tgui_input_list(usr, "Please select a reagent:", "Reagent", reagent_ids)
 	if(!selection) return
 	var/datum/reagent/R = chemical_reagents_list[selection]

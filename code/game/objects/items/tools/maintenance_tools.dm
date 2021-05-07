@@ -239,7 +239,8 @@
 		return ..()
 
 /obj/item/tool/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!welding)
 			O.reagents.trans_to(src, max_fuel)
@@ -260,12 +261,11 @@
 		if(isliving(O))
 			var/mob/living/L = O
 			L.IgniteMob()
-	return
 
 
-/obj/item/tool/weldingtool/attack_self(mob/user as mob)
+/obj/item/tool/weldingtool/attack_self(mob/user)
+	..()
 	toggle()
-	return
 
 //Returns the amount of fuel in the welder
 /obj/item/tool/weldingtool/proc/get_fuel()
@@ -275,7 +275,7 @@
 
 
 //Removes fuel from the blowtorch. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M)
 	if(!welding || !check_fuel())
 		return 0
 	if(get_fuel() >= amount)

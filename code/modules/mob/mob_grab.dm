@@ -47,7 +47,7 @@
 
 
 /obj/item/grab/attack_self(mob/user)
-
+	..()
 	var/grab_delay = UPGRADE_COOLDOWN
 	var/list/grabdata = list("grab_delay" = grab_delay)
 	SEND_SIGNAL(user, COMSIG_MOB_GRAB_UPGRADE, grabdata)

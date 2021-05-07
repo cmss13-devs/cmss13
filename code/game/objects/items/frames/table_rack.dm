@@ -46,6 +46,7 @@
 			to_chat(user, SPAN_WARNING("You need at least two wood sheets to swap the metal parts of [src]."))
 
 /obj/item/frame/table/attack_self(mob/user)
+	..()
 
 	var/obj/structure/blocker/anti_cade/AC = locate(/obj/structure/blocker/anti_cade) in usr.loc  // for M2C HMG, look at smartgun_mount.dm
 	if(AC)
@@ -165,13 +166,14 @@
 	flags_atom = FPRINT|CONDUCT
 	matter = list("metal" = 3750) //A big storage shelf, takes five sheets to build
 
-/obj/item/frame/rack/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/frame/rack/attackby(obj/item/W, mob/user)
 	..()
 	if(istype(W, /obj/item/tool/wrench))
 		new /obj/item/stack/sheet/metal(get_turf(src))
 		qdel(src)
 
-/obj/item/frame/rack/attack_self(mob/user as mob)
+/obj/item/frame/rack/attack_self(mob/user)
+	..()
 
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))

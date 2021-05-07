@@ -69,6 +69,8 @@
 	D.move_towards(A, 3, spray_size)
 
 /obj/item/reagent_container/spray/attack_self(var/mob/user)
+	..()
+
 	if(!possible_transfer_amounts)
 		return
 	amount_per_transfer_from_this = next_in_list(amount_per_transfer_from_this, possible_transfer_amounts)
@@ -128,6 +130,7 @@
 		to_chat(user, "The safety is [safety ? "on" : "off"].")
 
 /obj/item/reagent_container/spray/pepper/attack_self(mob/user)
+	..()
 	safety = !safety
 	to_chat(user, SPAN_NOTICE("You switch the safety [safety ? "on" : "off"]."))
 

@@ -10,12 +10,12 @@
 	var/volume = 60
 	var/spamcheck = 0
 
-/obj/item/device/whistle/attack_self(mob/user as mob)
+/obj/item/device/whistle/attack_self(mob/user)
+	..()
 	whistle_playsound(user)
 	add_fingerprint(user)
-	return
 
-/obj/item/device/whistle/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/device/whistle/attackby(obj/item/W, mob/user)
 	if(user.wear_mask == src)
 		whistle_playsound(user)
 	else
@@ -27,7 +27,7 @@
 	else
 		..()
 
-/obj/item/device/whistle/proc/whistle_playsound(mob/user as mob)
+/obj/item/device/whistle/proc/whistle_playsound(mob/user)
 	if (spamcheck)
 		return
 
@@ -37,7 +37,7 @@
 	spamcheck = 1
 	addtimer(VARSET_CALLBACK(src, spamcheck, FALSE), 3 SECONDS)
 
-/obj/item/device/whistle/MouseDrop(obj/over_object as obj)
+/obj/item/device/whistle/MouseDrop(obj/over_object)
 	if(ishuman(usr) || isrobot(usr))
 
 		if(!usr.is_mob_restrained() && !usr.stat && usr.wear_mask == src)
@@ -62,7 +62,9 @@
 	var/spamcheck = 0
 	var/insults = 0//just in case
 
-/obj/item/device/hailer/attack_self(mob/living/carbon/user as mob)
+/obj/item/device/hailer/attack_self(mob/living/carbon/user)
+	..()
+
 	if (spamcheck)
 		return
 

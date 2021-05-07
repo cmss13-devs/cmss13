@@ -204,6 +204,7 @@
 	else icon_state = "loader_clamp"
 
 /obj/item/powerloader_clamp/attack_self(mob/user)
+	..()
 	if(linked_powerloader)
 		linked_powerloader.unbuckle()
 

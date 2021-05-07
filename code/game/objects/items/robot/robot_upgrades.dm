@@ -39,10 +39,11 @@
 /obj/item/robot/upgrade/rename
 	name = "robot reclassification board"
 	desc = "Used to rename a cyborg."
-	icon_state = "cyborg_upgrade1"	
+	icon_state = "cyborg_upgrade1"
 	var/heldname = "default name"
 
-/obj/item/robot/upgrade/rename/attack_self(mob/user as mob)
+/obj/item/robot/upgrade/rename/attack_self(mob/user)
+	..()
 	heldname = stripped_input(user, "Enter new robot name", "Robot Reclassification", heldname, MAX_NAME_LEN)
 
 /obj/item/robot/upgrade/rename/action(var/mob/living/silicon/robot/R)

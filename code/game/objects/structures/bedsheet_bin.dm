@@ -17,7 +17,8 @@ LINEN BINS
 	w_class = SIZE_SMALL
 
 
-/obj/item/bedsheet/attack_self(mob/user as mob)
+/obj/item/bedsheet/attack_self(mob/user)
+	..()
 	user.drop_held_item()
 	if(layer == initial(layer))
 		layer = ABOVE_MOB_LAYER

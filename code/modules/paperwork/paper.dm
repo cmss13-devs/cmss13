@@ -96,8 +96,8 @@
 	return
 
 /obj/item/paper/attack_self(mob/living/user)
+	..()
 	examine(user)
-	return
 
 /obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
 	var/dist

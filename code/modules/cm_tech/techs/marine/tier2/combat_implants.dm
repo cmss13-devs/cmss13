@@ -84,8 +84,8 @@
 	implant(M, self_inject)
 
 /obj/item/device/implanter/attack_self(mob/user)
+	..()
 	implant(user, TRUE)
-	return
 
 /obj/item/device/implanter/proc/implant(var/mob/M, var/self_inject)
 	if(uses <= 0)

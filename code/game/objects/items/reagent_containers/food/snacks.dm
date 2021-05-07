@@ -32,12 +32,13 @@
 		qdel(src)
 	return
 
-/obj/item/reagent_container/food/snacks/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/attack_self(mob/user)
+	..()
+
 	if (world.time <= user.next_move)
 		return
 	attack(user, user, "head")//zone does not matter
 	user.next_move += attack_speed
-	return
 
 /obj/item/reagent_container/food/snacks/attack(mob/M, mob/user, def_zone)
 	if(reagents && !reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
@@ -1559,6 +1560,8 @@
 	..()
 
 /obj/item/reagent_container/food/snacks/monkeycube/attack_self(mob/user)
+	..()
+
 	if(package)
 		icon_state = "monkeycube"
 		desc = "Just add water!"
@@ -2763,15 +2766,15 @@
 		return
 	..()
 
-/obj/item/pizzabox/attack_self( mob/user as mob )
+/obj/item/pizzabox/attack_self(mob/user)
+	..()
 
-	if( boxes.len > 0 )
+	if(length(boxes) > 0)
 		return
 
 	open = !open
-
-	if( open && pizza )
-		ismessy = 1
+	if(open && pizza)
+		ismessy = TRUE
 
 	update_icon()
 
@@ -3067,7 +3070,9 @@
 	reagents.add_reagent("bread", 5)
 	reagents.add_reagent("meatprotein", 5)
 
-/obj/item/reagent_container/food/snacks/packaged_burrito/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/packaged_burrito/attack_self(mob/user)
+	..()
+
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy burrito!"))
@@ -3088,7 +3093,9 @@
 	reagents.add_reagent("sodiumchloride", 2)
 
 
-/obj/item/reagent_container/food/snacks/packaged_burger/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/packaged_burger/attack_self(mob/user)
+	..()
+
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hamburger!"))
@@ -3108,7 +3115,9 @@
 	reagents.add_reagent("meatprotein", 1)
 	reagents.add_reagent("sodiumchloride", 2)
 
-/obj/item/reagent_container/food/snacks/packaged_hdogs/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/packaged_hdogs/attack_self(mob/user)
+	..()
+
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You pull off the wrapping from the squishy hotdog!"))
@@ -3126,6 +3135,8 @@
 	reagents.add_reagent("nutriment", 8)
 
 /obj/item/reagent_container/food/snacks/upp/attack_self(mob/user)
+	..()
+
 	if(package)
 		playsound(src.loc,'sound/effects/pageturn2.ogg', 15, TRUE)
 		to_chat(user, SPAN_NOTICE("You tear off the ration seal and pull out the contents!"))
@@ -3174,7 +3185,9 @@
 	bitesize = 3
 	var/obj/item/trash/wrapper = null //Why this and not trash? Because it pulls the wrapper off when you unwrap it as a trash item.
 
-/obj/item/reagent_container/food/snacks/wrapped/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/wrapped/attack_self(mob/user)
+	..()
+
 	if(package)
 		to_chat(user, SPAN_NOTICE("You pull open the package of [src]!"))
 		playsound(loc,'sound/effects/pageturn2.ogg', 15, 1)

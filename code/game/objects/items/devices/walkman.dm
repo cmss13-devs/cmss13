@@ -47,6 +47,8 @@
 				to_chat(user,SPAN_WARNING("Remove the other tape first!"))
 
 /obj/item/device/walkman/attack_self(mob/user)
+	..()
+
 	if(!current_listener)
 		current_listener = user
 		START_PROCESSING(SSobj, src)
@@ -303,6 +305,8 @@
 	var/id = 1
 
 /obj/item/device/cassette_tape/attack_self(mob/user)
+	..()
+
 	if(flipped == TRUE)
 		flipped = FALSE
 		icon_state = side1_icon

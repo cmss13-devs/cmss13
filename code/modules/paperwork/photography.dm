@@ -33,6 +33,7 @@
 	var/photo_size = 3
 
 /obj/item/photo/attack_self(mob/user)
+	..()
 	examine(user)
 
 /obj/item/photo/attackby(obj/item/P as obj, mob/user as mob)
@@ -138,19 +139,19 @@
 		size = nsize
 		to_chat(usr, SPAN_NOTICE("Camera will now take [size]x[size] photos."))
 
-/obj/item/device/camera/attack(mob/living/carbon/human/M as mob, mob/user as mob)
+/obj/item/device/camera/attack(mob/living/carbon/human/M, mob/user)
 	return
 
-/obj/item/device/camera/attack_self(mob/user as mob)
+/obj/item/device/camera/attack_self(mob/user)
+	..()
 	on = !on
 	if(on)
 		src.icon_state = icon_on
 	else
 		src.icon_state = icon_off
 	to_chat(user, "You switch the camera [on ? "on" : "off"].")
-	return
 
-/obj/item/device/camera/attackby(obj/item/I as obj, mob/user as mob)
+/obj/item/device/camera/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/device/camera_film))
 		if(pictures_left)
 			to_chat(user, SPAN_NOTICE("[src] still has some film in it!"))

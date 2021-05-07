@@ -56,12 +56,12 @@
 	..()
 	to_chat(user, "It contains [reagents.total_volume] units of water left!")
 
-/obj/item/tool/extinguisher/attack_self(mob/user as mob)
+/obj/item/tool/extinguisher/attack_self(mob/user)
+	..()
 	safety = !safety
 	src.icon_state = "[sprite_name][!safety]"
 	src.desc = "The safety is [safety ? "on" : "off"]."
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
-	return
 
 /obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user, def_zone)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
@@ -163,7 +163,7 @@
 	reagents.trans_to(W, 1)
 	for(var/b in 0 to (5-1))
 		step_towards(W, target)
-		if (!W || QDELETED(W)) 
+		if (!W || QDELETED(W))
 			return
 		else if (!W.reagents || get_turf(W) == T)
 			break
@@ -191,7 +191,7 @@
 			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
 				atm.extinguish_acid()
 		T = get_turf(W)
-		if(T == target) 
+		if(T == target)
 			break
 		sleep(2)
 	qdel(W)

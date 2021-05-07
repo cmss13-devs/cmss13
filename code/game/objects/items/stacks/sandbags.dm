@@ -70,15 +70,14 @@
 	amount = 25
 
 /obj/item/stack/sandbags/attack_self(mob/living/user)
+	..()
 	add_fingerprint(user)
 
-	if(!istype(user.loc,/turf)) 
-		return 0
-
+	if(!isturf(user.loc))
+		return
 	if(istype(user.loc, /turf/open/shuttle))
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropships and personnel."))
 		return
-
 	if(!istype(user.loc, /turf/open))
 		var/turf/open/OT = user.loc
 		if(!OT.allow_construction)
@@ -97,8 +96,8 @@
 				to_chat(user, SPAN_WARNING("You need a clear, open area to build the sandbag barricade!"))
 				return
 		if(AC)
-			to_chat(usr, SPAN_WARNING("The [O.name] cannot be built here!")) 
-			return	
+			to_chat(usr, SPAN_WARNING("The [O.name] cannot be built here!"))
+			return
 
 	if(user.action_busy)
 		return
@@ -108,7 +107,7 @@
 
 	if(!do_after(user, 10, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
-		
+
 	for(var/obj/O in user.loc) //Objects, we don't care about mobs. Turfs are checked elsewhere
 		if(O.density)
 			if(!(O.flags_atom & ON_BORDER) || O.dir == user.dir)

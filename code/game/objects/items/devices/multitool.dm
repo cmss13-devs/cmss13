@@ -31,6 +31,8 @@
 	. = ..()
 
 /obj/item/device/multitool/attack_self(mob/user)
+	..()
+
 	if(world.time < next_scan || !ishuman(user) || !skillcheck(user,SKILL_ENGINEER,SKILL_ENGINEER_TRAINED))
 		return
 

@@ -15,6 +15,7 @@
 	src.icon_state = "datadisk[diskcolor]"
 
 /obj/item/disk/data/attack_self(mob/user as mob)
+	..()
 	src.read_only = !src.read_only
 	to_chat(user, "You flip the write-protect tab to [src.read_only ? "protected" : "unprotected"].")
 

@@ -71,7 +71,7 @@
 
 	if(content_watchers) //If someone's looking inside it, don't close the flap.
 		return
-	
+
 	var/sum_storage_cost = 0
 	for(var/obj/item/I in contents)
 		sum_storage_cost += I.get_storage_cost()
@@ -131,6 +131,8 @@
 	. = ..()
 
 /obj/item/storage/backpack/marine/smartpack/attack_self(mob/user)
+	..()
+
 	if(!isturf(user.loc) || flashlight_cooldown > world.time || !ishuman(user))
 		return
 

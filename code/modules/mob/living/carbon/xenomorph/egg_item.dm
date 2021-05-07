@@ -117,14 +117,18 @@
 			break
 
 /obj/item/xeno_egg/attack_self(mob/user)
-	if(isXeno(user))
-		var/mob/living/carbon/Xenomorph/X = user
-		if(isXenoCarrier(X))
-			var/mob/living/carbon/Xenomorph/Carrier/C = X
-			C.store_egg(src)
-		else
-			var/turf/T = get_turf(user)
-			plant_egg(user, T)
+	..()
+
+	if(!isXeno(user))
+		return
+
+	var/mob/living/carbon/Xenomorph/X = user
+	if(isXenoCarrier(X))
+		var/mob/living/carbon/Xenomorph/Carrier/C = X
+		C.store_egg(src)
+	else
+		var/turf/T = get_turf(user)
+		plant_egg(user, T)
 
 
 

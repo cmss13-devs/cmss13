@@ -155,6 +155,7 @@
 	unacidable = TRUE
 
 /obj/item/weapon/melee/yautja_knife/attack_self(mob/living/carbon/human/user)
+	..()
 	dig_out_shrapnel(user)
 
 /obj/item/weapon/melee/yautja_knife/dropped(mob/living/user)

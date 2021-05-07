@@ -456,9 +456,6 @@
 		return
 	. = ..()
 
-/obj/item/reagent_container/glass/pressurized_canister/attack_self()
-	return
-
 /obj/item/reagent_container/glass/pressurized_canister/set_APTFT()
 	to_chat(usr, SPAN_WARNING("[src] has no transfer control valve! Use a dispenser to fill it!"))
 	return
@@ -559,10 +556,7 @@
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
 
-/obj/item/reagent_container/glass/rag/attack_self(mob/user as mob)
-	return
-
-/obj/item/reagent_container/glass/rag/attack(atom/target as obj|turf|area, mob/user as mob , flag)
+/obj/item/reagent_container/glass/rag/attack(atom/target, mob/user , flag)
 	if(ismob(target) && target.reagents && reagents.total_volume)
 		user.visible_message(SPAN_DANGER("\The [target] has been smothered with \the [src] by \the [user]!"), SPAN_DANGER("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise")
 		src.reagents.reaction(target, TOUCH)

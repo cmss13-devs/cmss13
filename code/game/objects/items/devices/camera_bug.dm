@@ -7,6 +7,8 @@
 	throw_range = 20
 
 /obj/item/device/camera_bug/attack_self(mob/usr as mob)
+	..()
+
 	var/list/cameras = new/list()
 	for (var/obj/structure/machinery/camera/C in cameranet.cameras)
 		if (C.bugged && C.status)

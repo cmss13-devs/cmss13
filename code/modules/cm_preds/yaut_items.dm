@@ -380,7 +380,9 @@
 	..()
 
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
-	set waitfor = 0
+	set waitfor = FALSE
+
+	..()
 
 	if(!ishuman(user))
 		return
@@ -567,6 +569,8 @@
 				D.Close()
 
 /obj/item/weapon/wristblades/attack_self(mob/user)
+	..()
+
 	for(var/obj/item/clothing/gloves/yautja/Y in user.contents)
 		Y.wristblades()
 
@@ -643,12 +647,13 @@
 		var/mob/living/carbon/Xenomorph/X = target
 		X.interference = 30
 
-/obj/item/weapon/melee/yautja_sword/pickup(mob/living/user as mob)
+/obj/item/weapon/melee/yautja_sword/pickup(mob/living/user)
 	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
 /obj/item/weapon/melee/yautja_sword/attack_self(mob/living/carbon/human/user)
+	..()
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
 		if(do_after(user, 0.5 SECONDS, INTERRUPT_INCAPACITATED, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			var/wield_chance = 50 * max(1, user.skills.get_skill_level(SKILL_MELEE_WEAPONS))
@@ -724,7 +729,7 @@
 	SIGNAL_HANDLER
 	if(user.is_mob_incapacitated())
 		return
-	
+
 	if(user == target)
 		return
 
@@ -990,78 +995,77 @@
 	var/obj/structure/machinery/camera/current = null
 	var/turf/activated_turf = null
 
-	dropped(mob/user)
-		check_eye(user)
-		return ..()
+/obj/item/explosive/grenade/spawnergrenade/hellhound/dropped(mob/user)
+	check_eye(user)
+	return ..()
 
-	attack_self(mob/living/carbon/human/user)
-		if(!active)
-			if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
-				to_chat(user, "What's this thing?")
-				return
-			to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
-			activate(user)
-			add_fingerprint(user)
-			if(iscarbon(user))
-				var/mob/living/carbon/C = user
-				C.toggle_throw_mode(THROW_MODE_NORMAL)
-		else
-			if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH)) return
-			activated_turf = get_turf(user)
-			display_camera(user)
-		return
-
-	activate(mob/user)
-		if(active)
+/obj/item/explosive/grenade/spawnergrenade/hellhound/attack_self(mob/living/carbon/human/user)
+	..()
+	if(!active)
+		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+			to_chat(user, "What's this thing?")
 			return
-
-		if(user)
-			msg_admin_attack("[key_name(user)] primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-		icon_state = initial(icon_state) + "_active"
-		active = 1
-		update_icon()
-		addtimer(CALLBACK(src, .proc/prime), det_time)
-
-	prime()
-		if(spawner_type && deliveryamt)
-			// Make a quick flash
-			var/turf/T = get_turf(src)
-			if(ispath(spawner_type))
-				new spawner_type(T)
-//		qdel(src)
-		return
-
-	check_eye(mob/user)
-		if (user.is_mob_incapacitated() || user.blinded )
-			user.unset_interaction()
-		else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
-			user.unset_interaction()
-
-
-	proc/display_camera(var/mob/user as mob)
-		var/list/L = list()
-		for(var/mob/living/carbon/hellhound/H in GLOB.hellhound_list)
-			L += H.real_name
-		L["Cancel"] = "Cancel"
-
-		var/choice = tgui_input_list(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View", L)
-		if(!choice || choice == "Cancel" || isnull(choice))
-			user.unset_interaction()
-			to_chat(user, "Stopping camera feed.")
+		to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
+		activate(user)
+		add_fingerprint(user)
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.toggle_throw_mode(THROW_MODE_NORMAL)
+	else
+		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 			return
+		activated_turf = get_turf(user)
+		display_camera(user)
 
-		for(var/mob/living/carbon/hellhound/Q in GLOB.hellhound_list)
-			if(Q.real_name == choice)
-				current = Q.camera
-				break
-
-		if(istype(current))
-			to_chat(user, "Switching feed..")
-			user.set_interaction(current)
-
-		else
-			to_chat(user, "Something went wrong with the camera feed.")
+/obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
+	if(active)
 		return
+
+	if(user)
+		msg_admin_attack("[key_name(user)] primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+	icon_state = initial(icon_state) + "_active"
+	active = 1
+	update_icon()
+	addtimer(CALLBACK(src, .proc/prime), det_time)
+
+/obj/item/explosive/grenade/spawnergrenade/hellhound/prime()
+	if(spawner_type && deliveryamt)
+		// Make a quick flash
+		var/turf/T = get_turf(src)
+		if(ispath(spawner_type))
+			new spawner_type(T)
+	return
+
+/obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)
+	if (user.is_mob_incapacitated() || user.blinded )
+		user.unset_interaction()
+	else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
+		user.unset_interaction()
+
+
+/obj/item/explosive/grenade/spawnergrenade/hellhound/proc/display_camera(var/mob/user as mob)
+	var/list/L = list()
+	for(var/mob/living/carbon/hellhound/H in GLOB.hellhound_list)
+		L += H.real_name
+	L["Cancel"] = "Cancel"
+
+	var/choice = tgui_input_list(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View", L)
+	if(!choice || choice == "Cancel" || isnull(choice))
+		user.unset_interaction()
+		to_chat(user, "Stopping camera feed.")
+		return
+
+	for(var/mob/living/carbon/hellhound/Q in GLOB.hellhound_list)
+		if(Q.real_name == choice)
+			current = Q.camera
+			break
+
+	if(istype(current))
+		to_chat(user, "Switching feed..")
+		user.set_interaction(current)
+
+	else
+		to_chat(user, "Something went wrong with the camera feed.")
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/New()
 	. = ..()

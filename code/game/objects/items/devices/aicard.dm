@@ -31,8 +31,11 @@
 		to_chat(user, "<b>ERROR ERROR ERROR</b>")
 
 /obj/item/device/aicard/attack_self(mob/user)
+	..()
+
 	if (!in_range(src, user))
 		return
+
 	user.set_interaction(src)
 	var/dat = "<TT><B>Intelicard</B><BR>"
 	for(var/mob/living/silicon/ai/A in src)

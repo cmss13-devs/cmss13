@@ -375,7 +375,7 @@
 				if(!input)
 					return
 
-				if(input == "Remove from clans" && target.clan_id)
+				if(input == "Remove from clan" && target.clan_id)
 					target.clan_id = null
 					target.clan_rank = clan_ranks_ordered[CLAN_RANK_YOUNG]
 					to_chat(src, SPAN_NOTICE("Removed [player_name] from their clan."))

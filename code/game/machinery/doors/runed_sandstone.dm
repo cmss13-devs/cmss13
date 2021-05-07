@@ -104,7 +104,7 @@
 	CHECK_TICK
 	do_animate("opening")
 	icon_state = "door0"
-	src.SetOpacity(0)
+	src.SetOpacity(FALSE)
 	sleep(openspeed)
 	src.layer = open_layer
 	src.density = FALSE
@@ -132,6 +132,7 @@
 	operating = TRUE
 	CHECK_TICK
 	src.density = TRUE
+	src.SetOpacity(TRUE)
 	src.layer = closed_layer
 	do_animate("closing")
 	sleep(openspeed)

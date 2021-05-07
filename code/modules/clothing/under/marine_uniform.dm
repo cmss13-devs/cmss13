@@ -72,16 +72,13 @@
 	worn_state = "marine_tanker"
 	rollable_sleeves = FALSE
 	specialty = "USCM tanker"
-	flags_atom = NO_SNOW_TYPE//They have object sprites but no on mobbies, someone get around to fixing this
 
-/*
 /obj/item/clothing/under/marine/tanker/New(loc,expected_type 		= type,
 	new_name[] 			= list(MAP_ICE_COLONY = "\improper USCM tanker snow uniform"),
 	new_protection[] 	= list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature),
 	override_icon_state[]		= list(MAP_ICE_COLONY = "s_marine_tanker")
 	)
 	..(loc,expected_type, override_icon_state, new_name, new_protection)
-*/
 
 /obj/item/clothing/under/marine/chef
 	name = "\improper USCM mess sergeant uniform"
@@ -158,7 +155,7 @@
 	worn_state = "marine_tanker"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker)
 	specialty = "vehicle crewman"
-	flags_atom = NO_SNOW_TYPE
+	rollable_sleeves = TRUE
 	item_state_slots = list(WEAR_BODY = "marine_tanker")
 
 /obj/item/clothing/under/marine/officer/bridge

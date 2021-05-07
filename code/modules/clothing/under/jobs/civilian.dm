@@ -26,15 +26,14 @@
 	desc = "It's a black jumpsuit, often worn by religious folk."
 	name = "chaplain's jumpsuit"
 	icon_state = "chaplain"
-	item_state = "bl_suit"
+	item_state = "chaplain"
 	rollable_sleeves = FALSE
 
-/obj/item/clothing/under/rank/priest_robe
+/obj/item/clothing/suit/priest_robe
 	name = "priest robes"
 	desc = "A long dress with a purple scarf, often worn by religious folk."
 	icon_state = "priest_robe"
-	item_state = "bl_suit"
-	rollable_sleeves = FALSE
+	item_state = "priest_robe"
 
 /obj/item/clothing/under/rank/worker_overalls
 	name = "worker overalls"

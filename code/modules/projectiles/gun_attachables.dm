@@ -332,7 +332,7 @@ Defined in conflicts.dm of the #defines folder.
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_7
 
 /obj/item/attachable/heavy_barrel/Attach(obj/item/weapon/gun/G)
-	if(istype(G, /obj/item/weapon/gun/shotgun/pump))
+	if(G.gun_category == GUN_CATEGORY_SHOTGUN)
 		damage_mod = BULLET_DAMAGE_MULT_TIER_1
 	else
 		damage_mod = BULLET_DAMAGE_MULT_TIER_6

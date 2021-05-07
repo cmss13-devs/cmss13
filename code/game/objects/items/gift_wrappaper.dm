@@ -24,7 +24,8 @@
 		icon_state = "gift[pick(1, 2, 3)]"
 	return
 
-/obj/item/gift/attack_self(mob/user as mob)
+/obj/item/gift/attack_self(mob/user)
+	..()
 	user.drop_held_item()
 	if(gift)
 		user.put_in_active_hand(gift)
@@ -60,7 +61,9 @@
 
 	qdel(src)
 
-/obj/item/a_gift/attack_self(mob/M as mob)
+/obj/item/a_gift/attack_self(mob/M)
+	..()
+
 	var/gift_type = pick(
 		/obj/item/storage/wallet,
 		/obj/item/storage/photo_album,

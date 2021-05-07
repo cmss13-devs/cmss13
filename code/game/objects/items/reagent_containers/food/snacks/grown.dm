@@ -159,7 +159,9 @@
 	filling_color = "#70C470"
 	plantname = "mtear"
 
-/obj/item/reagent_container/food/snacks/grown/mtear/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/grown/mtear/attack_self(mob/user)
+	..()
+
 	if(istype(user.loc,/turf/open/space))
 		return
 	var/obj/item/stack/medical/advanced/ointment/predator/poultice = new /obj/item/stack/medical/advanced/ointment/predator(user.loc)
@@ -169,7 +171,9 @@
 
 	to_chat(user, SPAN_NOTICE("You mash the petals into a poultice."))
 
-/obj/item/reagent_container/food/snacks/grown/shand/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/grown/shand/attack_self(mob/user)
+	..()
+
 	if(istype(user.loc,/turf/open/space))
 		return
 	var/obj/item/stack/medical/advanced/bruise_pack/predator/poultice = new /obj/item/stack/medical/advanced/bruise_pack/predator(user.loc)
@@ -401,7 +405,9 @@
 	potency = 30
 	plantname = "killertomato"
 
-/obj/item/reagent_container/food/snacks/grown/killertomato/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/grown/killertomato/attack_self(mob/user)
+	..()
+
 	if(istype(user.loc,/turf/open/space))
 		return
 	new /mob/living/simple_animal/tomato(user.loc)
@@ -543,7 +549,9 @@
 	potency = 30
 	plantname = "glowshroom"
 
-/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/attack_self(mob/user as mob)
+/obj/item/reagent_container/food/snacks/grown/mushroom/glowshroom/attack_self(mob/user)
+	..()
+
 	if(istype(user.loc,/turf/open/space))
 		return
 	var/obj/effect/glowshroom/planted = new /obj/effect/glowshroom(user.loc)

@@ -11,7 +11,7 @@
 	var/status = 0
 	var/mob/foundmob = "" //Used in throwing proc.
 
-	
+
 
 /obj/item/weapon/stunprod/update_icon()
 	if(status)
@@ -19,7 +19,8 @@
 	else
 		icon_state = "stunbaton"
 
-/obj/item/weapon/stunprod/attack_self(mob/user as mob)
+/obj/item/weapon/stunprod/attack_self(mob/user)
+	..()
 	if(charges > 0)
 		status = !status
 		to_chat(user, SPAN_NOTICE("\The [src] is now [status ? "on" : "off"]."))

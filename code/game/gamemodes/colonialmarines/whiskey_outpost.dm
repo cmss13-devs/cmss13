@@ -517,7 +517,10 @@
 	var/supply_drop = 0 //0 = Regular ammo, 1 = Rocket, 2 = Smartgun, 3 = Sniper, 4 = Explosives + GL
 
 /obj/item/device/whiskey_supply_beacon/attack_self(mob/user)
-	if(!ishuman(user)) return
+	..()
+
+	if(!ishuman(user))
+		return
 	if(!user.mind)
 		to_chat(user, "It doesn't seem to do anything for you.")
 		return

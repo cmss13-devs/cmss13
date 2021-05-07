@@ -18,7 +18,9 @@
 		icon_state = "gift[pick(1, 2, 3)]"
 	return
 
-/obj/item/m_gift/attack_self(mob/M as mob)
+/obj/item/m_gift/attack_self(mob/M)
+	..()
+
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(H.opened_gift == 1)

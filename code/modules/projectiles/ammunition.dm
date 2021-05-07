@@ -382,7 +382,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			to_chat(user, SPAN_INFO("It feels almost full."))
 
 /obj/item/ammo_box/magazine/attack_self(mob/living/user)
-	if(contents.len)
+	..()
+
+	if(length(contents))
 		if(!handfuls)
 			deploy_ammo_box(user, user.loc)
 			return
@@ -937,6 +939,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		to_chat(user, "It's empty.")
 
 /obj/item/ammo_box/rounds/attack_self(mob/living/user)
+	..()
 	if(bullet_amount < 1)
 		unfold_box(user.loc)
 

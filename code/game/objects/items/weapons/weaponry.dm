@@ -78,6 +78,8 @@
 
 
 /obj/item/weapon/melee/butterfly/attack_self(mob/user)
+	..()
+
 	active = !active
 	if(active)
 		to_chat(user, SPAN_NOTICE("You flip out your [src]."))

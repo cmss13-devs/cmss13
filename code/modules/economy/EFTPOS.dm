@@ -81,7 +81,8 @@
 	D.wrapped = R
 	D.name = "small parcel - 'EFTPOS access code'"
 
-/obj/item/device/eftpos/attack_self(mob/user as mob)
+/obj/item/device/eftpos/attack_self(mob/user)
+	..()
 	if(get_dist(src,user) <= 1)
 		var/dat = "<i>This terminal is</i> [machine_id]. <i>Report this code when contacting NanoTrasen IT Support</i><br>"
 		if(transaction_locked)

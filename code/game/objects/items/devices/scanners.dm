@@ -26,7 +26,7 @@ FORENSIC SCANNER
 	return ..()
 
 /obj/item/device/t_scanner/attack_self(mob/user)
-
+	..()
 	on = !on
 	icon_state = "t-ray[on]"
 
@@ -91,6 +91,8 @@ FORENSIC SCANNER
 	return
 
 /obj/item/device/healthanalyzer/attack_self(mob/user)
+	..()
+
 	if (!last_scan)
 		user.show_message("No previous scan found.")
 		return
@@ -151,6 +153,7 @@ FORENSIC SCANNER
 
 
 /obj/item/device/analyzer/attack_self(mob/user as mob)
+	..()
 
 	if (user.stat)
 		return
@@ -206,7 +209,9 @@ FORENSIC SCANNER
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/device/mass_spectrometer/attack_self(mob/user as mob)
+/obj/item/device/mass_spectrometer/attack_self(mob/user)
+	..()
+
 	if (user.stat)
 		return
 	if (crit_fail)
@@ -215,7 +220,6 @@ FORENSIC SCANNER
 	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	return
 
 
 /obj/item/device/mass_spectrometer/adv
@@ -372,7 +376,9 @@ FORENSIC SCANNER
 				rad_potential += R.radiusmod * R.volume
 	return dat
 
-/obj/item/device/demo_scanner/attack_self(mob/user as mob)
+/obj/item/device/demo_scanner/attack_self(mob/user)
+	..()
+
 	if(!dat)
 		to_chat(user, SPAN_NOTICE("No scan data available."))
 		return

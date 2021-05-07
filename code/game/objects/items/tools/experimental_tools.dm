@@ -9,6 +9,8 @@
 	var/cooldown_to_use = 0
 
 /obj/item/tool/crew_monitor/attack_self(var/mob/user)
+	..()
+
 	if(cooldown_to_use > world.time)
 		return
 

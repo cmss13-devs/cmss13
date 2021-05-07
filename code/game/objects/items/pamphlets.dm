@@ -17,6 +17,8 @@ obj/item/pamphlet/Initialize()
 	trait = GLOB.character_traits[trait]
 
 /obj/item/pamphlet/attack_self(mob/living/carbon/human/user)
+	..()
+
 	if(!istype(user))
 		return
 

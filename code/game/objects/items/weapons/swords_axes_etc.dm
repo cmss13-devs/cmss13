@@ -26,7 +26,7 @@
 	force = MELEE_FORCE_WEAK
 
 /obj/item/weapon/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
-	if(!..()) 
+	if(!..())
 		return
 
 	if(M.stuttering < 8)
@@ -48,6 +48,8 @@
 
 
 /obj/item/weapon/melee/telebaton/attack_self(mob/user as mob)
+	..()
+
 	on = !on
 	if(on)
 		user.visible_message(SPAN_DANGER("With a flick of their wrist, [user] extends their telescopic baton."),\
@@ -86,12 +88,11 @@
  * Energy Shield
  */
 /obj/item/weapon/shield/energy/IsShield()
-	if(active)
-		return 1
-	else
-		return 0
+	return active
 
-/obj/item/weapon/shield/energy/attack_self(mob/living/user as mob)
+/obj/item/weapon/shield/energy/attack_self(mob/living/user)
+	..()
+
 	active = !active
 	if (active)
 		force = 10

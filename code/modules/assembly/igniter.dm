@@ -12,7 +12,7 @@
 	if(!..())
 		return FALSE//Cooldown check
 
-	if(holder) 
+	if(holder)
 		if(istype(holder.loc,/obj/item/explosive))
 			var/obj/item/explosive/explosive = holder.loc
 			explosive.prime()
@@ -34,6 +34,6 @@
 	return TRUE
 
 /obj/item/device/assembly/igniter/attack_self(mob/user as mob)
+	..()
 	activate()
 	add_fingerprint(user)
-	return

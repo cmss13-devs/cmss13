@@ -24,10 +24,13 @@
 	var/cooldown_message = 0
 
 /obj/item/device/cotablet/attack_self(mob/user as mob)
+	..()
+
 	if(src.allowed(user))
 		user.set_interaction(src)
 		interact(user)
-	else to_chat(user, SPAN_DANGER("Access denied."))
+	else
+		to_chat(user, SPAN_DANGER("Access denied."))
 
 /obj/item/device/cotablet/interact(mob/user as mob)
 	if(!on)

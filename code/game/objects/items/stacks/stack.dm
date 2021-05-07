@@ -75,10 +75,11 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 	..()
 	to_chat(user, "There are [amount] [singular_name]\s in the stack.")
 
-/obj/item/stack/attack_self(mob/user as mob)
+/obj/item/stack/attack_self(mob/user)
+	..()
 	list_recipes(user)
 
-/obj/item/stack/proc/list_recipes(mob/user as mob, recipes_sublist)
+/obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
 	if(!recipes)
 		return
 	if(!src || amount <= 0)

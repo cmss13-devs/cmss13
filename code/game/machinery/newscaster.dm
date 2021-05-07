@@ -766,83 +766,85 @@ var/list/obj/structure/machinery/newscaster/allCasters = list() //Global list th
 	var/scribble_page = null
 
 obj/item/newspaper/attack_self(mob/user as mob)
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		var/dat
-		src.pages = 0
-		switch(screen)
-			if(0) //Cover
-				dat+="<DIV ALIGN='center'><B><FONT SIZE=6>The Griffon</FONT></B></div>"
-				dat+="<DIV ALIGN='center'><FONT SIZE=2>Nanotrasen-standard newspaper, for use on Nanotrasen� Space Facilities</FONT></div><HR>"
-				if(!length(src.news_content))
-					if(src.important_message)
-						dat+="Contents:<BR><ul><B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [src.pages+2]\]</FONT><BR></ul>"
-					else
-						dat+="<I>Other than the title, the rest of the newspaper is unprinted...</I>"
+	..()
+	if(!ishuman(user))
+		to_chat(user, "The paper is full of intelligible symbols!")
+		return
+
+	var/mob/living/carbon/human/human_user = user
+	var/dat
+	src.pages = 0
+	switch(screen)
+		if(0) //Cover
+			dat+="<DIV ALIGN='center'><B><FONT SIZE=6>The Griffon</FONT></B></div>"
+			dat+="<DIV ALIGN='center'><FONT SIZE=2>Nanotrasen-standard newspaper, for use on Nanotrasen� Space Facilities</FONT></div><HR>"
+			if(!length(src.news_content))
+				if(src.important_message)
+					dat+="Contents:<BR><ul><B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [src.pages+2]\]</FONT><BR></ul>"
 				else
-					dat+="Contents:<BR><ul>"
-					for(var/datum/feed_channel/NP in src.news_content)
-						src.pages++
-					if(src.important_message)
-						dat+="<B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [src.pages+2]\]</FONT><BR>"
-					var/temp_page=0
-					for(var/datum/feed_channel/NP in src.news_content)
-						temp_page++
-						dat+="<B>[NP.channel_name]</B> <FONT SIZE=2>\[page [temp_page+1]\]</FONT><BR>"
-					dat+="</ul>"
-				if(scribble_page==curr_page)
-					dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
-				dat+= "<HR><DIV STYLE='float:right;'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV> <div style='float:left;'><A href='?src=\ref[human_user];mach_close=newspaper_main'>Done reading</A></DIV>"
-			if(1) // X channel pages inbetween.
-				for(var/datum/feed_channel/NP in src.news_content)
-					src.pages++ //Let's get it right again.
-				var/datum/feed_channel/C = src.news_content[src.curr_page]
-				dat+="<FONT SIZE=4><B>[C.channel_name]</B></FONT><FONT SIZE=1> \[created by: <FONT COLOR='maroon'>[C.author]</FONT>\]</FONT><BR><BR>"
-				if(C.censored)
-					dat+="This channel was deemed dangerous to the general welfare of the station and therefore marked with a <B><FONT COLOR='red'>D-Notice</B></FONT>. Its contents were not transferred to the newspaper at the time of printing."
-				else
-					if(!length(C.messages))
-						dat+="No Feed stories stem from this channel..."
-					else
-						dat+="<ul>"
-						var/i = 0
-						for(var/datum/feed_message/MESSAGE in C.messages)
-							i++
-							dat+="-[MESSAGE.body] <BR>"
-							if(MESSAGE.img)
-								user << browse_rsc(MESSAGE.img, "tmp_photo[i].png")
-								dat+="<img src='tmp_photo[i].png' width = '180'><BR>"
-							dat+="<FONT SIZE=1>\[[MESSAGE.message_type] by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR><BR>"
-						dat+="</ul>"
-				if(scribble_page==curr_page)
-					dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
-				dat+= "<BR><HR><DIV STYLE='float:left;'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV> <DIV STYLE='float:right;'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV>"
-			if(2) //Last page
+					dat+="<I>Other than the title, the rest of the newspaper is unprinted...</I>"
+			else
+				dat+="Contents:<BR><ul>"
 				for(var/datum/feed_channel/NP in src.news_content)
 					src.pages++
-				if(src.important_message!=null)
-					dat+="<DIV STYLE='float:center;'><FONT SIZE=4><B>Wanted Issue:</B></FONT SIZE></DIV><BR><BR>"
-					dat+="<B>Criminal name</B>: <FONT COLOR='maroon'>[important_message.author]</FONT><BR>"
-					dat+="<B>Description</B>: [important_message.body]<BR>"
-					dat+="<B>Photo:</B>: "
-					if(important_message.img)
-						user << browse_rsc(important_message.img, "tmp_photow.png")
-						dat+="<BR><img src='tmp_photow.png' width = '180'>"
-					else
-						dat+="None"
-				else
-					dat+="<I>Apart from some uninteresting Classified ads, there's nothing on this page...</I>"
-				if(scribble_page==curr_page)
-					dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
-				dat+= "<HR><DIV STYLE='float:left;'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+				if(src.important_message)
+					dat+="<B><FONT COLOR='red'>**</FONT>Important Security Announcement<FONT COLOR='red'>**</FONT></B> <FONT SIZE=2>\[page [src.pages+2]\]</FONT><BR>"
+				var/temp_page=0
+				for(var/datum/feed_channel/NP in src.news_content)
+					temp_page++
+					dat+="<B>[NP.channel_name]</B> <FONT SIZE=2>\[page [temp_page+1]\]</FONT><BR>"
+				dat+="</ul>"
+			if(scribble_page==curr_page)
+				dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
+			dat+= "<HR><DIV STYLE='float:right;'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV> <div style='float:left;'><A href='?src=\ref[human_user];mach_close=newspaper_main'>Done reading</A></DIV>"
+		if(1) // X channel pages inbetween.
+			for(var/datum/feed_channel/NP in src.news_content)
+				src.pages++ //Let's get it right again.
+			var/datum/feed_channel/C = src.news_content[src.curr_page]
+			dat+="<FONT SIZE=4><B>[C.channel_name]</B></FONT><FONT SIZE=1> \[created by: <FONT COLOR='maroon'>[C.author]</FONT>\]</FONT><BR><BR>"
+			if(C.censored)
+				dat+="This channel was deemed dangerous to the general welfare of the station and therefore marked with a <B><FONT COLOR='red'>D-Notice</B></FONT>. Its contents were not transferred to the newspaper at the time of printing."
 			else
-				dat+="I'm sorry to break your immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
+				if(!length(C.messages))
+					dat+="No Feed stories stem from this channel..."
+				else
+					dat+="<ul>"
+					var/i = 0
+					for(var/datum/feed_message/MESSAGE in C.messages)
+						i++
+						dat+="-[MESSAGE.body] <BR>"
+						if(MESSAGE.img)
+							user << browse_rsc(MESSAGE.img, "tmp_photo[i].png")
+							dat+="<img src='tmp_photo[i].png' width = '180'><BR>"
+						dat+="<FONT SIZE=1>\[[MESSAGE.message_type] by <FONT COLOR='maroon'>[MESSAGE.author]</FONT>\]</FONT><BR><BR>"
+					dat+="</ul>"
+			if(scribble_page==curr_page)
+				dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
+			dat+= "<BR><HR><DIV STYLE='float:left;'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV> <DIV STYLE='float:right;'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV>"
+		if(2) //Last page
+			for(var/datum/feed_channel/NP in src.news_content)
+				src.pages++
+			if(src.important_message!=null)
+				dat+="<DIV STYLE='float:center;'><FONT SIZE=4><B>Wanted Issue:</B></FONT SIZE></DIV><BR><BR>"
+				dat+="<B>Criminal name</B>: <FONT COLOR='maroon'>[important_message.author]</FONT><BR>"
+				dat+="<B>Description</B>: [important_message.body]<BR>"
+				dat+="<B>Photo:</B>: "
+				if(important_message.img)
+					user << browse_rsc(important_message.img, "tmp_photow.png")
+					dat+="<BR><img src='tmp_photow.png' width = '180'>"
+				else
+					dat+="None"
+			else
+				dat+="<I>Apart from some uninteresting Classified ads, there's nothing on this page...</I>"
+			if(scribble_page==curr_page)
+				dat+="<BR><I>There is a small scribble near the end of this page... It reads: \"[src.scribble]\"</I>"
+			dat+= "<HR><DIV STYLE='float:left;'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+		else
+			dat+="I'm sorry to break your immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
 
-		dat+="<BR><HR><div align='center'>[src.curr_page+1]</div>"
-		human_user << browse(dat, "window=newspaper_main;size=300x400")
-		onclose(human_user, "newspaper_main")
-	else
-		to_chat(user, "The paper is full of intelligible symbols!")
+	dat+="<BR><HR><div align='center'>[src.curr_page+1]</div>"
+	human_user << browse(dat, "window=newspaper_main;size=300x400")
+	onclose(human_user, "newspaper_main")
 
 
 obj/item/newspaper/Topic(href, href_list)

@@ -2,7 +2,7 @@
 	name = "shield"
 	var/base_icon_state = "shield"
 	var/passive_block = 15 // Percentage chance used in prob() to block incoming attack
-	var/readied_block = 30 
+	var/readied_block = 30
 	var/readied_slowdown = SLOWDOWN_ARMOR_VERY_LIGHT // Walking around in a readied shield stance slows you! The armor defs are a useful existing reference point.
 	var/shield_readied = FALSE
 
@@ -41,7 +41,7 @@
 	if(shield_readied)
 		lower_shield(user)
 	..()
-	
+
 /obj/item/weapon/shield/riot
 	name = "riot shield"
 	desc = "A shield adept at blocking blunt objects from connecting with the torso of the shield wielder."
@@ -51,7 +51,7 @@
 	base_icon_state = "riot"
 	flags_equip_slot = SLOT_BACK
 	force = 15
-	passive_block = 20 
+	passive_block = 20
 	readied_block = 40
 	readied_slowdown = SLOWDOWN_ARMOR_LIGHT
 	throwforce = 5.0
@@ -59,7 +59,7 @@
 	throw_range = 4
 	w_class = SIZE_LARGE
 	matter = list("glass" = 7500, "metal" = 1000)
-	
+
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
@@ -67,6 +67,7 @@
 	return 1
 
 /obj/item/weapon/shield/riot/attack_self(var/mob/user)
+	..()
 	toggle_shield(user)
 
 /obj/item/weapon/shield/riot/attackby(obj/item/W as obj, mob/user as mob)
@@ -91,6 +92,6 @@
 	throw_speed = SPEED_FAST
 	throw_range = 4
 	w_class = SIZE_SMALL
-	
+
 	attack_verb = list("shoved", "bashed")
 	var/active = 0

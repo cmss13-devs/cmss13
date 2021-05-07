@@ -695,6 +695,8 @@ var/list/global/item_storage_box_cache = list()
 	..()
 
 /obj/item/storage/attack_self(mob/user)
+	..()
+
 	//Clicking on itself will empty it, if it has contents and the verb to do that. Contents but no verb means nothing happens.
 	if(contents.len)
 		empty(user)

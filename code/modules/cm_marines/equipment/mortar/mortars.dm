@@ -317,6 +317,7 @@
 			qdel(src)
 
 /obj/item/mortar_kit/attack_self(mob/user)
+	..()
 	var/turf/deploy_turf = get_turf(user)
 	if(!deploy_turf)
 		return

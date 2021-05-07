@@ -33,6 +33,8 @@
 
 
 /obj/item/device/portable_vendor/attack_self(mob/user)
+	..()
+
 	if(!ishuman(user))
 		return
 

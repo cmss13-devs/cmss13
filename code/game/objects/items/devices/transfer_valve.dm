@@ -57,20 +57,19 @@
 		log_game("[key_name_admin(user)] attached a [item] to a transfer valve.")
 		attacher = user
 		nanomanager.update_uis(src) // update all UIs attached to src
-	return
 
 
-/obj/item/device/transfer_valve/HasProximity(atom/movable/AM as mob|obj)
-	if(!attached_device)	return
+/obj/item/device/transfer_valve/HasProximity(atom/movable/AM)
+	if(!attached_device)
+		return
 	attached_device.HasProximity(AM)
-	return
 
 
-/obj/item/device/transfer_valve/attack_self(mob/user as mob)
+/obj/item/device/transfer_valve/attack_self(mob/user)
+	..()
 	ui_interact(user)
 
 /obj/item/device/transfer_valve/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-
 	// this is the data which will be sent to the ui
 	var/data[0]
 	data["attachmentOne"] = tank_one ? tank_one.name : null

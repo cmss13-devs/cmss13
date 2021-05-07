@@ -83,6 +83,8 @@
 	return ..()
 
 /obj/item/device/motiondetector/attack_self(mob/user)
+	..()
+
 	if(ishuman(user))
 		toggle_active(user, active)
 

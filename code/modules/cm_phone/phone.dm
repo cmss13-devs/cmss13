@@ -428,6 +428,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	RegisterSignal(tether_effect, COMSIG_PARENT_QDELETING, .proc/reset_tether)
 
 /obj/item/phone/attack_self(mob/user)
+	..()
 	if(raised)
 		set_raised(FALSE, user)
 		to_chat(user, SPAN_NOTICE("You lower [src]."))

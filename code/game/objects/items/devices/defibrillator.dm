@@ -60,6 +60,8 @@
 
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
+	..()
+
 	if(defib_cooldown > world.time)
 		return
 

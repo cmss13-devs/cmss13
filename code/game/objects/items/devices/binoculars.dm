@@ -19,11 +19,12 @@
 	select_gamemode_skin(type)
 
 /obj/item/device/binoculars/attack_self(mob/user)
+	..()
+
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
-		return FALSE
+		return
 
 	zoom(user, 11, 12)
-	return TRUE
 
 /obj/item/device/binoculars/on_set_interaction(var/mob/user)
 	flags_atom |= RELAY_CLICK

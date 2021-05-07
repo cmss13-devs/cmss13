@@ -117,7 +117,9 @@
 	if (PF)
 		PF.flags_can_pass_front &= ~PASS_OVER_THROW_MOB
 
-/obj/item/folding_barricade/attack_self(mob/user as mob)
+/obj/item/folding_barricade/attack_self(mob/user)
+	..()
+
 	for(var/obj/structure/barricade/B in loc)
 		if(B != src && B.dir == dir)
 			to_chat(user, SPAN_WARNING("There's already a barricade here."))

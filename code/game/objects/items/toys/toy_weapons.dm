@@ -210,28 +210,29 @@
 	flags_item = NOSHIELD
 	attack_verb = list("attacked", "struck", "hit")
 
-	attack_self(mob/user as mob)
-		src.active = !( src.active )
-		if (src.active)
-			to_chat(user, SPAN_NOTICE(" You extend the plastic blade with a quick flick of your wrist."))
-			playsound(user, 'sound/weapons/saberon.ogg', 15, 1)
-			src.icon_state = "swordblue"
-			src.item_state = "swordblue"
-			src.w_class = SIZE_LARGE
-		else
-			to_chat(user, SPAN_NOTICE(" You push the plastic blade back down into the handle."))
-			playsound(user, 'sound/weapons/saberoff.ogg', 15, 1)
-			src.icon_state = "sword0"
-			src.item_state = "sword0"
-			src.w_class = SIZE_SMALL
+/obj/item/toy/sword/attack_self(mob/user)
+	..()
 
-		if(istype(user,/mob/living/carbon/human))
-			var/mob/living/carbon/human/H = user
-			H.update_inv_l_hand(0)
-			H.update_inv_r_hand()
+	active = !active
+	if (active)
+		to_chat(user, SPAN_NOTICE(" You extend the plastic blade with a quick flick of your wrist."))
+		playsound(user, 'sound/weapons/saberon.ogg', 15, 1)
+		icon_state = "swordblue"
+		item_state = "swordblue"
+		w_class = SIZE_LARGE
+	else
+		to_chat(user, SPAN_NOTICE(" You push the plastic blade back down into the handle."))
+		playsound(user, 'sound/weapons/saberoff.ogg', 15, 1)
+		icon_state = "sword0"
+		item_state = "sword0"
+		w_class = SIZE_SMALL
 
-		src.add_fingerprint(user)
-		return
+	if(istype(user,/mob/living/carbon/human))
+		var/mob/living/carbon/human/H = user
+		H.update_inv_l_hand(0)
+		H.update_inv_r_hand()
+
+	add_fingerprint(user)
 
 /obj/item/toy/katana
 	name = "replica katana"

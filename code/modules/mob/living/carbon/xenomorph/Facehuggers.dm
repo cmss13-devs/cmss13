@@ -124,6 +124,8 @@
 
 // TODO: make this use signals
 /obj/item/clothing/mask/facehugger/attack_self(mob/user)
+	..()
+
 	if(isXenoCarrier(user))
 		var/mob/living/carbon/Xenomorph/Carrier/C = user
 		C.store_hugger(src)

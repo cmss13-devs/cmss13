@@ -241,10 +241,12 @@
 // /obj/item signals
 ///from base of obj/item/dropped(): (mob/user)
 #define COMSIG_ITEM_DROPPED "item_drop"
-
+/// From base of /obj/item/proc/equipped(): (mob/user, slot)
 #define COMSIG_ITEM_EQUIPPED "item_equipped"
 ///from /obj/item/proc/unwield
 #define COMSIG_ITEM_UNWIELD "item_unwield"
+/// From base of /obj/item/proc/attack_self(): (mob/user)
+#define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 
 /// From /atom/movable/proc/launch_towards
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"

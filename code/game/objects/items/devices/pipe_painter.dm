@@ -28,7 +28,8 @@
 
 	P.change_color(pipe_colors[mode])
 
-/obj/item/device/pipe_painter/attack_self(mob/user as mob)
+/obj/item/device/pipe_painter/attack_self(mob/user)
+	..()
 	mode = tgui_input_list(usr, "Which colour do you want to use?", "Pipe painter", modes)
 
 /obj/item/device/pipe_painter/examine(mob/user)

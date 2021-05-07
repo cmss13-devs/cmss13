@@ -25,6 +25,8 @@
 	var/inject_cd = 0.75 SECONDS
 
 /obj/item/reagent_container/hypospray/attack_self(mob/user)
+	..()
+
 	if(next_inject > world.time)
 		return
 	next_inject = world.time + inject_cd

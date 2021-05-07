@@ -119,98 +119,99 @@
 	var/nameset = 0
 	var/tag_x
 
-	attack_self(mob/user as mob)
-		if (src.wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
-			wrapped.forceMove(user.loc)
-			if(ishuman(user))
-				user.put_in_hands(wrapped)
-			else
-				wrapped.forceMove(get_turf(src))
+/obj/item/smallDelivery/attack_self(mob/user)
+	..()
 
-		qdel(src)
-		return
+	if (src.wrapped) //sometimes items can disappear. For example, bombs. --rastaf0
+		wrapped.forceMove(user.loc)
+		if(ishuman(user))
+			user.put_in_hands(wrapped)
+		else
+			wrapped.forceMove(get_turf(src))
 
-	attackby(obj/item/W as obj, mob/user as mob)
-		if(istype(W, /obj/item/device/destTagger))
-			var/obj/item/device/destTagger/O = W
-			if(O.currTag)
-				if(src.sortTag != O.currTag)
-					to_chat(user, SPAN_NOTICE("You have labeled the destination as [O.currTag]."))
-					if(!src.sortTag)
-						src.sortTag = O.currTag
-						update_icon()
-					else
-						src.sortTag = O.currTag
-					playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
+	qdel(src)
+
+/obj/item/smallDelivery/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/device/destTagger))
+		var/obj/item/device/destTagger/O = W
+		if(O.currTag)
+			if(src.sortTag != O.currTag)
+				to_chat(user, SPAN_NOTICE("You have labeled the destination as [O.currTag]."))
+				if(!src.sortTag)
+					src.sortTag = O.currTag
+					update_icon()
 				else
-					to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
+					src.sortTag = O.currTag
+				playsound(src.loc, 'sound/machines/twobeep.ogg', 25, 1)
 			else
-				to_chat(user, SPAN_WARNING("You need to set a destination first!"))
+				to_chat(user, SPAN_WARNING("The package is already labeled for [O.currTag]."))
+		else
+			to_chat(user, SPAN_WARNING("You need to set a destination first!"))
 
-		else if(istype(W, /obj/item/tool/pen))
-			switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
-				if("Title")
-					var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
-					if(!str || !length(str))
-						to_chat(usr, SPAN_WARNING(" Invalid text."))
-						return
-					user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
-					SPAN_NOTICE("You title \the [src]: \"[str]\""),\
-					"You hear someone scribbling a note.")
-					name = "[name] ([str])"
-					if(!examtext && !nameset)
-						nameset = 1
-						update_icon()
-					else
-						nameset = 1
+	else if(istype(W, /obj/item/tool/pen))
+		switch(alert("What would you like to alter?",,"Title","Description", "Cancel"))
+			if("Title")
+				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
+				if(!str || !length(str))
+					to_chat(usr, SPAN_WARNING(" Invalid text."))
+					return
+				user.visible_message("\The [user] titles \the [src] with \a [W], marking down: \"[str]\"",\
+				SPAN_NOTICE("You title \the [src]: \"[str]\""),\
+				"You hear someone scribbling a note.")
+				name = "[name] ([str])"
+				if(!examtext && !nameset)
+					nameset = 1
+					update_icon()
+				else
+					nameset = 1
 
-				if("Description")
-					var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
-					if(!str || !length(str))
-						to_chat(usr, SPAN_DANGER("Invalid text."))
-						return
-					if(!examtext && !nameset)
-						examtext = str
-						update_icon()
-					else
-						examtext = str
-					user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",\
-					SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
-					"You hear someone scribbling a note.")
-		return
+			if("Description")
+				var/str = trim(strip_html(input(usr,"Label text?","Set label","")))
+				if(!str || !length(str))
+					to_chat(usr, SPAN_DANGER("Invalid text."))
+					return
+				if(!examtext && !nameset)
+					examtext = str
+					update_icon()
+				else
+					examtext = str
+				user.visible_message("\The [user] labels \the [src] with \a [W], scribbling down: \"[examtext]\"",\
+				SPAN_NOTICE("You label \the [src]: \"[examtext]\""),\
+				"You hear someone scribbling a note.")
+	return
 
-	update_icon()
-		overlays = new()
-		if((nameset || examtext) && icon_state != "deliverycrate1")
-			var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_label")
-			if(icon_state == "deliverycrate5")
-				I.pixel_y = -1
-			overlays += I
-		if(src.sortTag)
-			var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_tag")
-			switch(icon_state)
-				if("deliverycrate1")
-					I.pixel_y = -5
-				if("deliverycrate2")
-					I.pixel_y = -2
-				if("deliverycrate3")
-					I.pixel_y = 0
-				if("deliverycrate4")
-					if(tag_x == null)
-						tag_x = rand(0,5)
-					I.pixel_x = tag_x
-					I.pixel_y = 3
-				if("deliverycrate5")
-					I.pixel_y = -3
-			overlays += I
+/obj/item/smallDelivery/update_icon()
+	overlays = new()
+	if((nameset || examtext) && icon_state != "deliverycrate1")
+		var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_label")
+		if(icon_state == "deliverycrate5")
+			I.pixel_y = -1
+		overlays += I
+	if(src.sortTag)
+		var/image/I = new/image('icons/obj/items/storage.dmi',"delivery_tag")
+		switch(icon_state)
+			if("deliverycrate1")
+				I.pixel_y = -5
+			if("deliverycrate2")
+				I.pixel_y = -2
+			if("deliverycrate3")
+				I.pixel_y = 0
+			if("deliverycrate4")
+				if(tag_x == null)
+					tag_x = rand(0,5)
+				I.pixel_x = tag_x
+				I.pixel_y = 3
+			if("deliverycrate5")
+				I.pixel_y = -3
+		overlays += I
 
-	examine(mob/user)
-		..()
-		if(get_dist(src, user) <= 4)
-			if(sortTag)
-				to_chat(user, SPAN_NOTICE("It is labeled \"[sortTag]\""))
-			if(examtext)
-				to_chat(user, SPAN_NOTICE("It has a note attached which reads, \"[examtext]\""))
+/obj/item/smallDelivery/examine(mob/user)
+	..()
+	if(get_dist(src, user) <= 4)
+		if(sortTag)
+			to_chat(user, SPAN_NOTICE("It is labeled \"[sortTag]\""))
+		if(examtext)
+			to_chat(user, SPAN_NOTICE("It has a note attached which reads, \"[examtext]\""))
 
 /obj/item/packageWrap
 	name = "package wrapper"
@@ -220,92 +221,92 @@
 	var/amount = 25.0
 
 
-	afterattack(var/obj/target as obj, mob/user as mob, proximity)
-		if(!proximity) return
-		if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
-			return
-		if(istype(target, /obj/item/smallDelivery) || istype(target,/obj/structure/bigDelivery) \
-		|| istype(target, /obj/item/gift) || istype(target, /obj/item/evidencebag))
-			return
-		if(target.anchored)
-			return
-		if(target in user)
-			return
-		if(user in target) //no wrapping closets that you are inside - it's not physically possible
-			return
-
-		user.attack_log += text("\[[time_stamp()]\] <font color='blue'>Has used [src.name] on \ref[target]</font>")
-
-
-		if (istype(target, /obj/item) && !(isstorage(target) && !istype(target,/obj/item/storage/box)))
-			var/obj/item/O = target
-			if (src.amount > 1)
-				var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc))	//Aaannd wrap it up!
-				if(!istype(O.loc, /turf))
-					if(user.client)
-						user.client.screen -= O
-				P.wrapped = O
-				O.forceMove(P)
-				P.w_class = O.w_class
-				var/i = round(P.w_class)
-				if(i in list(1,2,3,4,5))
-					P.icon_state = "deliverycrate[i]"
-					switch(i)
-						if(1) P.name = "tiny parcel"
-						if(3) P.name = "normal-sized parcel"
-						if(4) P.name = "large parcel"
-						if(5) P.name = "huge parcel"
-				if(i < 1)
-					P.icon_state = "deliverycrate1"
-					P.name = "tiny parcel"
-				if(i > 5)
-					P.icon_state = "deliverycrate5"
-					P.name = "huge parcel"
-				P.add_fingerprint(usr)
-				O.add_fingerprint(usr)
-				src.add_fingerprint(usr)
-				src.amount -= 1
-				user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
-				"You hear someone taping paper around a small object.")
-		else if (istype(target, /obj/structure/closet/crate))
-			var/obj/structure/closet/crate/O = target
-			if (src.amount > 3 && !O.opened)
-				var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
-				P.icon_state = "deliverycrate"
-				P.wrapped = O
-				O.forceMove(P)
-				src.amount -= 3
-				user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
-				"You hear someone taping paper around a large object.")
-			else if(src.amount < 3)
-				to_chat(user, SPAN_WARNING("You need more paper."))
-		else if (istype (target, /obj/structure/closet))
-			var/obj/structure/closet/O = target
-			if (src.amount > 3 && !O.opened)
-				var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
-				P.wrapped = O
-				O.welded = 1
-				O.forceMove(P)
-				src.amount -= 3
-				user.visible_message("\The [user] wraps \a [target] with \a [src].",\
-				SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
-				"You hear someone taping paper around a large object.")
-			else if(src.amount < 3)
-				to_chat(user, SPAN_WARNING("You need more paper."))
-		else
-			to_chat(user, SPAN_NOTICE(" The object you are trying to wrap is unsuitable for the sorting machinery!"))
-		if (src.amount <= 0)
-			new /obj/item/trash/c_tube( src.loc )
-			qdel(src)
-			return
+/obj/item/packageWrap/afterattack(var/obj/target as obj, mob/user as mob, proximity)
+	if(!proximity) return
+	if(!istype(target))	//this really shouldn't be necessary (but it is).	-Pete
+		return
+	if(istype(target, /obj/item/smallDelivery) || istype(target,/obj/structure/bigDelivery) \
+	|| istype(target, /obj/item/gift) || istype(target, /obj/item/evidencebag))
+		return
+	if(target.anchored)
+		return
+	if(target in user)
+		return
+	if(user in target) //no wrapping closets that you are inside - it's not physically possible
 		return
 
-	examine(mob/user)
-		..()
-		if(get_dist(src, user) < 2)
-			to_chat(user, SPAN_NOTICE(" There are [amount] units of package wrap left!"))
+	user.attack_log += text("\[[time_stamp()]\] <font color='blue'>Has used [src.name] on \ref[target]</font>")
+
+
+	if (istype(target, /obj/item) && !(isstorage(target) && !istype(target,/obj/item/storage/box)))
+		var/obj/item/O = target
+		if (src.amount > 1)
+			var/obj/item/smallDelivery/P = new /obj/item/smallDelivery(get_turf(O.loc))	//Aaannd wrap it up!
+			if(!istype(O.loc, /turf))
+				if(user.client)
+					user.client.screen -= O
+			P.wrapped = O
+			O.forceMove(P)
+			P.w_class = O.w_class
+			var/i = round(P.w_class)
+			if(i in list(1,2,3,4,5))
+				P.icon_state = "deliverycrate[i]"
+				switch(i)
+					if(1) P.name = "tiny parcel"
+					if(3) P.name = "normal-sized parcel"
+					if(4) P.name = "large parcel"
+					if(5) P.name = "huge parcel"
+			if(i < 1)
+				P.icon_state = "deliverycrate1"
+				P.name = "tiny parcel"
+			if(i > 5)
+				P.icon_state = "deliverycrate5"
+				P.name = "huge parcel"
+			P.add_fingerprint(usr)
+			O.add_fingerprint(usr)
+			src.add_fingerprint(usr)
+			src.amount -= 1
+			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
+			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+			"You hear someone taping paper around a small object.")
+	else if (istype(target, /obj/structure/closet/crate))
+		var/obj/structure/closet/crate/O = target
+		if (src.amount > 3 && !O.opened)
+			var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
+			P.icon_state = "deliverycrate"
+			P.wrapped = O
+			O.forceMove(P)
+			src.amount -= 3
+			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
+			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+			"You hear someone taping paper around a large object.")
+		else if(src.amount < 3)
+			to_chat(user, SPAN_WARNING("You need more paper."))
+	else if (istype (target, /obj/structure/closet))
+		var/obj/structure/closet/O = target
+		if (src.amount > 3 && !O.opened)
+			var/obj/structure/bigDelivery/P = new /obj/structure/bigDelivery(get_turf(O.loc))
+			P.wrapped = O
+			O.welded = 1
+			O.forceMove(P)
+			src.amount -= 3
+			user.visible_message("\The [user] wraps \a [target] with \a [src].",\
+			SPAN_NOTICE("You wrap \the [target], leaving [amount] units of paper on \the [src]."),\
+			"You hear someone taping paper around a large object.")
+		else if(src.amount < 3)
+			to_chat(user, SPAN_WARNING("You need more paper."))
+	else
+		to_chat(user, SPAN_NOTICE(" The object you are trying to wrap is unsuitable for the sorting machinery!"))
+	if (src.amount <= 0)
+		new /obj/item/trash/c_tube( src.loc )
+		qdel(src)
+		return
+	return
+
+/obj/item/packageWrap/examine(mob/user)
+	..()
+	if(get_dist(src, user) < 2)
+		to_chat(user, SPAN_NOTICE(" There are [amount] units of package wrap left!"))
 
 
 /obj/item/device/destTagger
@@ -319,33 +320,33 @@
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
 
-	proc/openwindow(mob/user as mob)
-		var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
+/obj/item/device/destTagger/proc/openwindow(mob/user)
+	var/dat = "<tt><center><h1><b>TagMaster 2.3</b></h1></center>"
 
-		dat += "<table style='width:100%; padding:4px;'><tr>"
-		for(var/i = 1, i <= tagger_locations.len, i++)
-			dat += "<td><a href='?src=\ref[src];nextTag=[tagger_locations[i]]'>[tagger_locations[i]]</a></td>"
+	dat += "<table style='width:100%; padding:4px;'><tr>"
+	for(var/i = 1, i <= tagger_locations.len, i++)
+		dat += "<td><a href='?src=\ref[src];nextTag=[tagger_locations[i]]'>[tagger_locations[i]]</a></td>"
 
-			if (i%4==0)
-				dat += "</tr><tr>"
+		if (i%4==0)
+			dat += "</tr><tr>"
 
-		dat += "</tr></table><br>Current Selection: [currTag ? currTag : "None"]</tt>"
+	dat += "</tr></table><br>Current Selection: [currTag ? currTag : "None"]</tt>"
 
-		user << browse(dat, "window=destTagScreen;size=450x350")
-		onclose(user, "destTagScreen")
+	user << browse(dat, "window=destTagScreen;size=450x350")
+	onclose(user, "destTagScreen")
 
-	attack_self(mob/user as mob)
-		openwindow(user)
+/obj/item/device/destTagger/attack_self(mob/user)
+	..()
+	openwindow(user)
+
+/obj/item/device/destTagger/Topic(href, href_list)
+	. = ..()
+	if(.)
 		return
-
-	Topic(href, href_list)
-		. = ..()
-		if(.)
-			return
-		src.add_fingerprint(usr)
-		if(href_list["nextTag"] && (href_list["nextTag"] in tagger_locations))
-			src.currTag = href_list["nextTag"]
-		openwindow(usr)
+	src.add_fingerprint(usr)
+	if(href_list["nextTag"] && (href_list["nextTag"] in tagger_locations))
+		src.currTag = href_list["nextTag"]
+	openwindow(usr)
 
 /obj/structure/machinery/disposal/deliveryChute
 	name = "Delivery chute"
@@ -355,90 +356,90 @@
 
 	var/c_mode = 0
 
-	New()
-		..()
-		spawn(5)
-			trunk = locate() in src.loc
-			if(trunk)
-				trunk.linked = src	// link the pipe trunk to self
+/obj/structure/machinery/disposal/deliveryChute/New()
+	..()
+	spawn(5)
+		trunk = locate() in src.loc
+		if(trunk)
+			trunk.linked = src	// link the pipe trunk to self
 
-	interact()
-		return
+/obj/structure/machinery/disposal/deliveryChute/interact()
+	return
 
+/obj/structure/machinery/disposal/deliveryChute/update()
+	return
+
+/obj/structure/machinery/disposal/deliveryChute/Collided(var/atom/movable/AM) //Go straight into the chute
+	if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect))	return
+	switch(dir)
+		if(NORTH)
+			if(AM.loc.y != src.loc.y+1) return
+		if(EAST)
+			if(AM.loc.x != src.loc.x+1) return
+		if(SOUTH)
+			if(AM.loc.y != src.loc.y-1) return
+		if(WEST)
+			if(AM.loc.x != src.loc.x-1) return
+
+	if(istype(AM, /obj))
+		var/obj/O = AM
+		O.forceMove(src)
+	else if(istype(AM, /mob))
+		var/mob/M = AM
+		M.forceMove(src)
+	src.flush()
+
+/obj/structure/machinery/disposal/deliveryChute/flush()
+	flushing = 1
+	flick("intake-closing", src)
+	var/obj/structure/disposalholder/H = new()	// virtual holder object which actually
+												// travels through the pipes.
+
+	sleep(10)
+	playsound(src, 'sound/machines/disposalflush.ogg', 25, 0)
+	sleep(5) // wait for animation to finish
+
+	H.init(src)	// copy the contents of disposer to holder
+
+	H.start(src) // start the holder processing movement
+	flushing = 0
+	// now reset disposal state
+	flush = 0
+	if(mode == 2)	// if was ready,
+		mode = 1	// switch to charging
 	update()
+	return
+
+/obj/structure/machinery/disposal/deliveryChute/attackby(var/obj/item/I, var/mob/user)
+	if(!I || !user)
 		return
 
-	Collided(var/atom/movable/AM) //Go straight into the chute
-		if(istype(AM, /obj/item/projectile) || istype(AM, /obj/effect))	return
-		switch(dir)
-			if(NORTH)
-				if(AM.loc.y != src.loc.y+1) return
-			if(EAST)
-				if(AM.loc.x != src.loc.x+1) return
-			if(SOUTH)
-				if(AM.loc.y != src.loc.y-1) return
-			if(WEST)
-				if(AM.loc.x != src.loc.x-1) return
-
-		if(istype(AM, /obj))
-			var/obj/O = AM
-			O.forceMove(src)
-		else if(istype(AM, /mob))
-			var/mob/M = AM
-			M.forceMove(src)
-		src.flush()
-
-	flush()
-		flushing = 1
-		flick("intake-closing", src)
-		var/obj/structure/disposalholder/H = new()	// virtual holder object which actually
-													// travels through the pipes.
-
-		sleep(10)
-		playsound(src, 'sound/machines/disposalflush.ogg', 25, 0)
-		sleep(5) // wait for animation to finish
-
-		H.init(src)	// copy the contents of disposer to holder
-
-		H.start(src) // start the holder processing movement
-		flushing = 0
-		// now reset disposal state
-		flush = 0
-		if(mode == 2)	// if was ready,
-			mode = 1	// switch to charging
-		update()
-		return
-
-	attackby(var/obj/item/I, var/mob/user)
-		if(!I || !user)
+	if(istype(I, /obj/item/tool/screwdriver))
+		if(c_mode==0)
+			c_mode=1
+			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			to_chat(user, "You remove the screws around the power connection.")
 			return
-
-		if(istype(I, /obj/item/tool/screwdriver))
-			if(c_mode==0)
-				c_mode=1
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, "You remove the screws around the power connection.")
-				return
-			else if(c_mode==1)
-				c_mode=0
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
-				to_chat(user, "You attach the screws around the power connection.")
-				return
-		else if(istype(I,/obj/item/tool/weldingtool) && c_mode==1)
-			var/obj/item/tool/weldingtool/W = I
-			if(W.remove_fuel(0,user))
-				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
-				to_chat(user, "You start slicing the floorweld off the delivery chute.")
-				if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-					if(!src || !W.isOn()) return
-					to_chat(user, "You sliced the floorweld off the delivery chute.")
-					var/obj/structure/disposalconstruct/C = new (src.loc)
-					C.ptype = 8 // 8 =  Delivery chute
-					C.update()
-					C.anchored = 1
-					C.density = 1
-					qdel(src)
-				return
-			else
-				to_chat(user, "You need more welding fuel to complete this task.")
-				return
+		else if(c_mode==1)
+			c_mode=0
+			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
+			to_chat(user, "You attach the screws around the power connection.")
+			return
+	else if(istype(I,/obj/item/tool/weldingtool) && c_mode==1)
+		var/obj/item/tool/weldingtool/W = I
+		if(W.remove_fuel(0,user))
+			playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
+			to_chat(user, "You start slicing the floorweld off the delivery chute.")
+			if(do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+				if(!src || !W.isOn()) return
+				to_chat(user, "You sliced the floorweld off the delivery chute.")
+				var/obj/structure/disposalconstruct/C = new (src.loc)
+				C.ptype = 8 // 8 =  Delivery chute
+				C.update()
+				C.anchored = 1
+				C.density = 1
+				qdel(src)
+			return
+		else
+			to_chat(user, "You need more welding fuel to complete this task.")
+			return

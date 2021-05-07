@@ -25,6 +25,8 @@
 	to_chat(user, SPAN_INFO("It has [SPAN_HELPFUL("[obj_health]/[obj_health_max]")] health."))
 
 /obj/item/defenses/handheld/attack_self(var/mob/living/carbon/human/user)
+	..()
+
 	if(!istype(user))
 		return
 

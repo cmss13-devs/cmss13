@@ -18,6 +18,7 @@
 	var/obj/item/store	//What's in the book?
 
 /obj/item/book/attack_self(var/mob/user as mob)
+	..()
 	if(carved)
 		if(store)
 			to_chat(user, SPAN_NOTICE("[store] falls out of [title]!"))

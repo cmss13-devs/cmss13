@@ -89,10 +89,9 @@
 	screen_loc = null
 
 /obj/item/card/id/attack_self(mob/user as mob)
+	..()
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
-
 	src.add_fingerprint(user)
-	return
 
 /obj/item/card/id/GetAccess()
 	return access

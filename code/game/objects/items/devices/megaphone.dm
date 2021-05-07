@@ -11,7 +11,9 @@
 	var/list/insultmsg = list("FUCK EVERYONE!", "I'M A TATER!", "ALL SECURITY TO SHOOT ME ON SIGHT!", "I HAVE A BOMB!", "CAPTAIN IS A COMDOM!", "FOR THE SYNDICATE!")
 
 /obj/item/device/megaphone/attack_self(mob/living/user)
-	if (user.client)
+	..()
+
+	if(user.client)
 		if(user.client.prefs.muted & MUTE_IC)
 			to_chat(src, SPAN_DANGER("You cannot speak in IC (muted)."))
 			return

@@ -557,6 +557,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	. = ..()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/attack_self(mob/user)
+	..()
 	camouflage()
 
 /obj/item/storage/backpack/marine/satchel/scout_cloak/verb/camouflage()

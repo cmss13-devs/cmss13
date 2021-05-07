@@ -78,7 +78,7 @@
 	icon = 'icons/obj/items/stock_parts.dmi'
 	icon_state = "capacitor"
 	desc = "A debug item for research."
-	
+
 /obj/item/moneybag
 	icon = 'icons/obj/items/storage.dmi'
 	name = "Money bag"
@@ -166,7 +166,9 @@
 	return
 
 
-/obj/item/evidencebag/attack_self(mob/user as mob)
+/obj/item/evidencebag/attack_self(mob/user)
+	..()
+
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\

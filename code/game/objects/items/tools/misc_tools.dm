@@ -65,7 +65,8 @@
 
 	labels_left--
 
-/obj/item/tool/hand_labeler/attack_self(mob/user as mob)
+/obj/item/tool/hand_labeler/attack_self(mob/user)
+	..()
 	mode = !mode
 	icon_state = "labeler[mode]"
 	if(mode)
@@ -149,6 +150,7 @@
 	var/clicky = FALSE
 
 /obj/item/tool/pen/attack_self(mob/living/carbon/human/user)
+	..()
 	on = !on
 	to_chat(user, SPAN_WARNING("You click the pen [on? "on": "off"]."))
 	if(clicky)

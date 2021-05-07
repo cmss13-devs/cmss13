@@ -119,7 +119,9 @@ GLOBAL_LIST_INIT(iron_recipes, list ( \
 	. = ..()
 	recipes = GLOB.runedsandstone_recipes
 
-/obj/item/stack/sheet/mineral/sandstone/runed/attack_self(mob/user as mob)
+/obj/item/stack/sheet/mineral/sandstone/runed/attack_self(mob/user)
+	..()
+
 	if(isYautja(user))
 		list_recipes(user)
 

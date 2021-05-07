@@ -104,23 +104,27 @@
 		return
 
 /obj/item/device/m56d_gun/attack_self(mob/user)
+	..()
+
 	if(!ishuman(user))
-		return FALSE
+		return
 	if(!has_mount)
-		return FALSE
+		return
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
-	if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
-		M.setDir(user.dir) // Make sure we face the right direction
-		M.gun_rounds = src.rounds //Inherit the amount of ammo we had.
-		M.gun_mounted = TRUE
-		M.anchored = TRUE
-		M.update_icon()
-		M.name = src.name
-		to_chat(user, SPAN_NOTICE("You deploy [src]."))
-		qdel(src)
+	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+		return
+
+	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
+	M.setDir(user.dir) // Make sure we face the right direction
+	M.gun_rounds = src.rounds //Inherit the amount of ammo we had.
+	M.gun_mounted = TRUE
+	M.anchored = TRUE
+	M.update_icon()
+	M.name = src.name
+	to_chat(user, SPAN_NOTICE("You deploy [src]."))
+	qdel(src)
 
 
 /obj/item/device/m56d_gun/mounted
@@ -155,7 +159,10 @@
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "folded_mount"
 
-/obj/item/device/m56d_post/attack_self(mob/user) //click the tripod to unfold it.
+/// Causes the tripod to unfold
+/obj/item/device/m56d_post/attack_self(mob/user)
+	..()
+
 	if(!ishuman(usr))
 		return
 	if(user.z == GLOB.interior_manager.interior_z)
@@ -879,12 +886,15 @@
 	icon_state = icon_name
 
 /obj/item/device/m2c_gun/attack_self(mob/user)
+	..()
+
 	if(!ishuman(user))
-		return FALSE
+		return
 	if(user.z == GLOB.interior_manager.interior_z)
 		to_chat(usr, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
 		return
-	var/turf/rotate_check = get_step(user.loc, turn(user.dir,180))
+
+	var/turf/rotate_check = get_step(user.loc, turn(user.dir, 180))
 	var/turf/open/OT = usr.loc
 	var/list/ACR = range(anti_cadehugger_range, user.loc)
 	if(OT.density)
@@ -902,14 +912,14 @@
 	if(!(user.alpha > 60))
 		to_chat(user, SPAN_WARNING("You can't set this up while cloaked!"))
 		return
-
 	if(!do_after(user, M2C_SETUP_TIME , INTERRUPT_ALL, BUSY_ICON_FRIENDLY, src))
 		return
+
 	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
 	M.name = src.name
 	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
-	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, 1)
+	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
 	to_chat(user, SPAN_NOTICE("You deploy [M]."))
 	if((rounds > 0) && !user.get_inactive_hand())
 		user.set_interaction(M)

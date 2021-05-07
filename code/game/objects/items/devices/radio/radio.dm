@@ -71,6 +71,7 @@
 
 
 /obj/item/device/radio/attack_self(mob/user as mob)
+	..()
 	user.set_interaction(src)
 	interact(user)
 

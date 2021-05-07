@@ -24,6 +24,7 @@
 	qdel(src)
 
 /obj/item/stool/attack_self(mob/user)
+	..()
 	deploy_stool(user)
 
 

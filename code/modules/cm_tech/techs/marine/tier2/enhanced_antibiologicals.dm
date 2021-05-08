@@ -101,9 +101,9 @@
 	name = "incendiary buckshot kit"
 	desc = "A box containing 5 handfuls of incendiary buckshot."
 	can_hold = list(
-		/obj/item/ammo_magazine/handful/shotgun/custom_color/incendiary
+		/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
 	)
-	to_hold = /obj/item/ammo_magazine/handful/shotgun/custom_color/incendiary
+	to_hold = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
 
 /obj/item/storage/box/shotgun/slug
 	name = "incendiary slug kit"

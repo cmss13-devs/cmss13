@@ -50,9 +50,9 @@
 				return XENO_NO_DELAY_ACTION
 
 			if(M.caste && !M.caste.is_intelligent)
-				if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
+				if(HAS_TRAIT(src, TRAIT_NESTED) && (status_flags & XENO_HOST))
 					for(var/obj/item/alien_embryo/embryo in src)
-						if(embryo.hivenumber == M.hivenumber)
+						if(HIVE_ALLIED_TO_HIVE(M.hivenumber, embryo.hivenumber))
 							to_chat(M, SPAN_WARNING("You should not harm this host! It has a sister inside."))
 							return XENO_NO_DELAY_ACTION
 
@@ -137,7 +137,7 @@
 
 			//Logging, including anti-rulebreak logging
 			if(status_flags & XENO_HOST && stat != DEAD)
-				if(istype(buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
+				if(HAS_TRAIT(src, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
 					attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(M)] while they were infected and nested</B></font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(src)] while they were infected and nested</B></font>")
 					msg_admin_ff("[key_name(M)] slashed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
@@ -233,21 +233,6 @@
 					M.visible_message(SPAN_WARNING("[M] nibbles [src]."), \
 					SPAN_WARNING("You nibble [src]."), null, 5, CHAT_TYPE_XENO_FLUFF)
 					return XENO_ATTACK_ACTION
-
-			if(M.caste && !M.caste.is_intelligent)
-				if(istype(buckled, /obj/structure/bed/nest) && (status_flags & XENO_HOST))
-					for(var/obj/item/alien_embryo/embryo in src)
-						if(HIVE_ALLIED_TO_HIVE(M.hivenumber, embryo.hivenumber))
-							to_chat(M, SPAN_WARNING("You should not harm this host! It has a sister inside."))
-							return XENO_NO_DELAY_ACTION
-
-			if(isSilicon(src) && stat != DEAD) //A bit of visual flavor for attacking Cyborgs. Sparks!
-				var/datum/effect_system/spark_spread/spark_system
-				spark_system = new /datum/effect_system/spark_spread()
-				spark_system.set_up(5, 0, src)
-				spark_system.attach(src)
-				spark_system.start(src)
-				playsound(loc, "alien_claw_metal", 25, 1)
 
 			// copypasted from attack_alien.dm
 			//From this point, we are certain a full attack will go out. Calculate damage and modifiers

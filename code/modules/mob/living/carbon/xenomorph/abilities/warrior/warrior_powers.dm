@@ -79,7 +79,7 @@
 
 	var/mob/living/carbon/H = A
 	if(H.stat == DEAD) return
-	if(istype(H.buckled, /obj/structure/bed/nest))
+	if(HAS_TRAIT(H, TRAIT_NESTED))
 		return
 
 	if(H == X.pulling)
@@ -142,7 +142,7 @@
 		return
 
 	if(H.stat == DEAD) return
-	if(istype(H.buckled, /obj/structure/bed/nest)) return
+	if(HAS_TRAIT(H, TRAIT_NESTED)) return
 
 	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
 
@@ -244,7 +244,7 @@
 
 	var/mob/living/carbon/H = A
 	if(H.stat == DEAD) return
-	if(istype(H.buckled, /obj/structure/bed/nest)) return
+	if(HAS_TRAIT(H, TRAIT_NESTED)) return
 
 	if (!check_and_use_plasma_owner())
 		return
@@ -307,7 +307,7 @@
 	var/mob/living/carbon/H = BD.punching_bag
 	if(H.stat == DEAD)
 		return
-	if(istype(H.buckled, /obj/structure/bed/nest))
+	if(HAS_TRAIT(H, TRAIT_NESTED))
 		return
 
 	if (!check_and_use_plasma_owner())

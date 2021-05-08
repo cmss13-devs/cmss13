@@ -2032,7 +2032,7 @@
 		if(isXeno(M) && isXeno(firer) && M:hivenumber == firer:hivenumber)
 			continue
 
-		if(istype(M.buckled, /obj/structure/bed/nest))
+		if(HAS_TRAIT(M, TRAIT_NESTED))
 			continue
 
 		hit_someone = TRUE
@@ -2170,7 +2170,7 @@
 /datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && istype(C.buckled, /obj/structure/bed/nest) || C.stat == DEAD)
+		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
 			return
 	..()
 
@@ -2294,7 +2294,7 @@
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && istype(C.buckled, /obj/structure/bed/nest) || C.stat == DEAD)
+		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
 			return
 	drop_nade(get_turf(P), P)
 

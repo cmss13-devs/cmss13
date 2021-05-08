@@ -288,7 +288,7 @@
 		return
 	if(M.stat == DEAD)
 		return
-	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
+	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
 		return
 
 	M.last_damage_source = source
@@ -338,7 +338,7 @@
 		return
 	if(M.stat == DEAD)
 		return
-	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
+	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -395,7 +395,7 @@
 		return
 	if(M.stat == DEAD)
 		return
-	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
+	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
 		return
 
 	var/effect_amt = round(6 + amount*6)

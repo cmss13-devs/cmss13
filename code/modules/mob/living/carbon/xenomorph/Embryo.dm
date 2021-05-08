@@ -80,7 +80,7 @@
 				counter += 0.33 * hive.larva_gestation_multiplier
 			else if(stage == 4)
 				counter += 0.11 * hive.larva_gestation_multiplier
-		else if(istype(affected_mob.buckled, /obj/structure/bed/nest)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
+		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
 			counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
 		else
 			if(stage < 5)

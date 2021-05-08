@@ -141,6 +141,7 @@
 			return
 
 	do_buckle(M, user)
+	ADD_TRAIT(M, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	if(!M.mind || !ishuman(M))
 		return
 
@@ -177,6 +178,7 @@
 	resisting_ready = FALSE
 	buckled_mob.pixel_y = 0
 	buckled_mob.old_y = 0
+	REMOVE_TRAIT(buckled_mob, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
 	var/mob/living/carbon/human/H = buckled_mob
 
 	. = ..()

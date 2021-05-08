@@ -446,9 +446,6 @@
 		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 
 /mob/living/carbon/resist_buckle()
-	if(istype(buckled, /obj/structure/bed/nest))
-		buckled.manual_unbuckle(src)
-		return
 
 	if(handcuffed)
 		next_move = world.time + 100

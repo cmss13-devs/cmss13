@@ -161,12 +161,12 @@
 	implant_string = "something beating next to your heart." //spooky second heart deep lore
 
 /obj/item/device/internal_implant/rejuv
+	/// Assoc list where the keys are the reagent ids of the reagents to be injected and the values are the amount to be injected
 	var/list/stimulant_to_inject = list(
-		"speed_stimulant",
-		"brain_stimulant",
-		"oxycodone"
+		"speed_stimulant" = 0.5,
+		"redemption_stimulant" = 3,
+		"oxycodone" = 3,
 	)
-	var/inject_amt = 3
 
 /obj/item/device/internal_implant/rejuv/on_implanted(mob/living/M)
 	. = ..()
@@ -191,7 +191,9 @@
 	M.heal_all_damage()
 
 	for(var/i in stimulant_to_inject)
-		M.reagents.add_reagent(i, inject_amt)
+		var/reagent_id = i
+		var/injection_amt = stimulant_to_inject[i]
+		M.reagents.add_reagent(reagent_id, injection_amt)
 
 /obj/item/device/implanter/agility
 	name = "agility implant"

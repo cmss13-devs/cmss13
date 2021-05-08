@@ -282,7 +282,7 @@ can cause issues with ammo types getting mixed up during the burst.
 //MARSOC MK210, an earlier developmental variant of the MK211 tactical used by the USCM MARSOC.
 /obj/item/weapon/gun/shotgun/combat/marsoc
 	name = "\improper MK210 tactical shotgun"
-	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM MARSOC division wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic and made of stamped medal. Truly an engineering marvel."
+	desc = "Way back in 2168, Wey-Yu began testing the MK221. The USCM picked up an early prototype, and later adopted it with a limited military contract. But the USCM MARSOC division wasn't satisfied, and iterated on the early prototypes they had access to; eventually, their internal armorers and tinkerers produced the MK210, a lightweight folding shotgun that snaps to the belt. And to boot, it's fully automatic, made of stamped medal, and keeps the UGL. Truly an engineering marvel."
 	icon_state = "mk210"
 	item_state = "mk210"
 
@@ -292,14 +292,31 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON
 	fa_delay = FIRE_DELAY_TIER_6
+	auto_magharness = TRUE
 
 /obj/item/weapon/gun/shotgun/combat/marsoc/Initialize(mapload, spawn_empty)
 	. = ..()
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
-/obj/item/weapon/gun/shotgun/combat/marsoc/handle_starting_attachment()
-	return
+/obj/item/weapon/gun/shotgun/combat/marsoc/harness_return(var/mob/living/carbon/human/user)
+	if (!loc || !user)
+		return
+	if (!isturf(loc))
+		return
+	if (!harness_check(user))
+		return
+
+	if (user.equip_to_slot_if_possible(src, WEAR_WAIST))
+		to_chat(user, SPAN_WARNING("[src] snaps into place on your waist."))
+		return
+
+	var/obj/item/I = user.wear_suit
+	if(user.equip_to_slot_if_possible(src, WEAR_J_STORE))
+		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
+
+/*obj/item/weapon/gun/shotgun/combat/marsoc/handle_starting_attachment()
+	return */ //we keep the UGL
 
 /obj/item/weapon/gun/shotgun/combat/marsoc/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 19,"rail_x" = 10, "rail_y" = 21, "under_x" = 14, "under_y" = 16, "stock_x" = 14, "stock_y" = 16)

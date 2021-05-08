@@ -560,20 +560,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/marsoc
-	name = "MARSOC Operator"
-	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_MARINE
-	assignment = "MARSOC Operator"
-	uses_special_name = TRUE
-	rank = JOB_MARSOC
-	role_comm_title = "Op."
-	skills = /datum/skills/commando/deathsquad
-	idtype = /obj/item/card/id/dogtag
-
-/datum/equipment_preset/marsoc/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Tactical Sign Language"))
-
 /datum/equipment_preset/uscm/rto_equipped
 	name = "USCM Cryo RT Operator (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -601,6 +587,20 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 
+/datum/equipment_preset/marsoc
+	name = "MARSOC Operator"
+	flags = EQUIPMENT_PRESET_EXTRA
+	faction = FACTION_MARINE
+	assignment = "MARSOC Operator"
+	uses_special_name = TRUE
+	rank = JOB_MARSOC
+	role_comm_title = "Op."
+	skills = /datum/skills/commando/deathsquad
+	idtype = /obj/item/card/id/dogtag
+
+/datum/equipment_preset/marsoc/load_languages(mob/living/carbon/human/H)
+	H.set_languages(list("English", "Tactical Sign Language"))
+
 /datum/equipment_preset/marsoc/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE
 	H.change_real_name(H, "[pick(nato_phonetic_alphabet)]")
@@ -611,45 +611,41 @@
 	access = get_all_accesses() + get_all_centcom_access()
 
 /datum/equipment_preset/marsoc/load_gear(mob/living/carbon/human/H)
-
-	// uniform + webbing
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/marsoc, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/super, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/super, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/super, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/motiondetector, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/health/ceramic_plate, WEAR_IN_BACK)
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/marsoc, WEAR_FACE)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/marsoc, WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_nvg/functional, WEAR_IN_HELMET)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_HELMET)
+	//uniform
 	var/obj/item/clothing/under/marine/veteran/marsoc/M = new()
 	var/obj/item/clothing/accessory/storage/black_vest/W = new()
 	M.attach_accessory(H, W)
 	H.equip_to_slot_or_del(M, WEAR_BODY)
-
-	// Armor and basics
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom, WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/marsoc, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/marsoc, WEAR_JACKET)
+	for(var/i = 1 to W.slots)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
+	//jacket
+	var/obj/item/clothing/suit/storage/marine/marsoc/armor = new()
+	H.equip_to_slot_or_del(armor, WEAR_JACKET)
+	for(var/i = 1 to armor.storage_slots)
+		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/m40_sd, WEAR_J_STORE)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/marsoc, WEAR_WAIST)
+	//limbs
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/marsoc, WEAR_BACK)
+	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/socmed/full, WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tactical/full, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/PMC/marsoc, WEAR_FACE)
-
-	// Ammo and consumables
-	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/helmet_nvg/functional, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/PMC, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/explosive/plastic, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m40_sd, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant, WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot, WEAR_IN_ACCESSORY)
-
-	// Gubs
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/combat/marsoc, WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/m41a/elite/m40_sd, WEAR_J_STORE)
-

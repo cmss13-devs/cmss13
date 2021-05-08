@@ -176,6 +176,7 @@
 #define WEAR_IN_BELT        "in_belt"
 #define WEAR_IN_SCABBARD    "in_scabbard"
 #define WEAR_IN_J_STORE     "in_j_store"
+#define WEAR_IN_HELMET      "in_helmet"
 #define WEAR_IN_L_STORE     "in_l_store"
 #define WEAR_IN_R_STORE     "in_r_store"
 #define WEAR_IN_SHOES		"in_shoes"
@@ -207,6 +208,7 @@
 		WEAR_J_STORE,\
 		WEAR_IN_ACCESSORY,\
 		WEAR_IN_JACKET,\
+		WEAR_IN_HELMET,\
 		WEAR_L_STORE,\
 		WEAR_R_STORE,\
 		WEAR_IN_BACK\

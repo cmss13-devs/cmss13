@@ -295,6 +295,11 @@
 			if(istype(S) && S.pockets.storage_slots)
 				W.forceMove(S.pockets)
 				equipped = 1
+		if(WEAR_IN_HELMET)
+			var/obj/item/clothing/head/helmet/marine/HM = src.head
+			if(istype(HM) && HM.pockets.storage_slots)
+				W.forceMove(HM.pockets)
+				equipped = TRUE
 		if(WEAR_IN_BELT)
 			if(src.belt && isstorage(src.belt))
 				var/obj/item/storage/B = src.belt

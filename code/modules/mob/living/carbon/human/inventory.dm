@@ -57,6 +57,8 @@
 			return has_limb("l_hand") && has_limb("r_hand")
 		if(WEAR_HEAD)
 			return has_limb("head")
+		if(WEAR_IN_HELMET)
+			return has_limb("head")
 		if(WEAR_FEET)
 			return has_limb("r_foot") && has_limb("l_foot")
 		if(WEAR_JACKET)
@@ -356,6 +358,13 @@
 			if(istype(S) && S.pockets.storage_slots)
 				wear_suit.attackby(W, src)
 				wear_suit.update_icon()
+
+		if(WEAR_IN_HELMET)
+			var/obj/item/clothing/head/helmet/marine/HM = src.head
+			if(istype(HM) && HM.pockets.storage_slots)
+				head.attackby(W)
+				head.update_icon()
+
 		if(WEAR_IN_ACCESSORY)
 			var/obj/item/clothing/accessory/A = W
 			if(istype(A))
@@ -366,6 +375,7 @@
 			else
 				w_uniform.attackby(W,src)
 			update_inv_w_uniform()
+
 		if(WEAR_IN_BELT)
 			belt.attackby(W,src)
 			belt.update_icon()

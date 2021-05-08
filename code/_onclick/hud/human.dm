@@ -58,6 +58,9 @@
 	if(WEAR_JACKET in equip_slots)
 		equip_slots |= WEAR_IN_JACKET
 
+	if(WEAR_HEAD in equip_slots)
+		equip_slots |= WEAR_IN_HELMET
+
 	if(WEAR_FEET in equip_slots)
 		equip_slots |= WEAR_IN_SHOES
 

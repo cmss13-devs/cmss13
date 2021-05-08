@@ -484,7 +484,7 @@
 	name = "tactical medical pouch"
 	desc = "A heavy pouch containing everything one needs to get themselves back on their feet. Quite the selection."
 	icon_state = "socmed"
-	storage_slots = 10
+	storage_slots = 13
 	can_hold = list(
 		/obj/item/stack/medical,
 		/obj/item/storage/pill_bottle,
@@ -504,6 +504,9 @@
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 	new /obj/item/tool/extinguisher/mini(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/brain_stimulant(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/redemption_stimulant(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/stimulant/speed_stimulant(src)
 
 /obj/item/storage/pouch/vials
 	name = "vial pouch"
@@ -833,7 +836,7 @@
 	name = "tactical tools pouch"
 	desc = "This particular toolkit full of sharp, heavy objects was designed for breaking into things rather than fixing them. Still does the latter pretty well, though."
 	icon_state = "soctools"
-	storage_slots = 6
+	storage_slots = 8
 
 /obj/item/storage/pouch/tools/full/fill_preset_inventory()
 	new /obj/item/tool/screwdriver(src)
@@ -863,5 +866,9 @@
 	new /obj/item/tool/screwdriver/tactical(src)
 	new /obj/item/tool/wirecutters/tactical(src)
 	new /obj/item/tool/crowbar/tactical(src)
+	new /obj/item/stack/cable_coil(src)
 	new /obj/item/device/multitool(src)
 	new /obj/item/tool/wrench(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
+

@@ -50,6 +50,14 @@
 	if(fire_resistance<=0)
 		prime()
 
+/obj/item/explosive/grenade/HE/super
+	name = "\improper M40/2 HEDP grenade"
+	desc = "High-Explosive Dual-Purpose. A small, but deceptively strong blast grenade that has been phasing out the M15 HE grenades alongside the M40 HEFA. This version is stronger."
+	icon_state = "m40_2"
+	item_state = "grenade_hedp2"
+	explosion_power = 150
+	explosion_falloff = 40
+
 /obj/item/explosive/grenade/HE/PMC
 	name = "\improper M12 blast grenade"
 	desc = "A high-explosive grenade produced for private security firms. It explodes around 3 seconds after the pin has been pulled."
@@ -58,8 +66,6 @@
 	underslug_launchable = FALSE
 	explosion_power = 200
 	falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL_HALF
-
-
 
 /obj/item/explosive/grenade/HE/stick
 	name = "\improper Webley Mk15 stick grenade"

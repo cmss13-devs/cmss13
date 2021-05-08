@@ -161,6 +161,9 @@
 		SPAN_WARNING("You stop setting up the paddles on [H]'s chest"))
 		return
 
+	if(!check_revive(H, user))
+		return
+
 	//Do this now, order doesn't matter
 	sparks.start()
 	dcell.use(charge_cost)
@@ -170,9 +173,6 @@
 		SPAN_HELPFUL("You shock <b>[H]</b> with the paddles."))
 	H.visible_message(SPAN_DANGER("[H]'s body convulses a bit."))
 	defib_cooldown = world.time + 10 //1 second cooldown before you can shock again
-
-	if(!check_revive(H, user))
-		return
 
 	var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
 	if(heart && prob(25))

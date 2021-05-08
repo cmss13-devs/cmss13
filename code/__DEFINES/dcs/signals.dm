@@ -369,3 +369,8 @@
 
 /// from /obj/structure/transmitter/update_icon()
 #define COMSIG_TRANSMITTER_UPDATE_ICON "transmitter_update_icon"
+
+/// From /obj/effect/alien/weeds/Initialize()
+#define COMSIG_WEEDNODE_GROWTH_COMPLETE "weednode_growth_complete"
+/// From /obj/effect/alien/weeds/proc/on_weed_expand()
+#define COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER "weednode_cannot_expand_further"

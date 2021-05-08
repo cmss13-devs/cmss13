@@ -102,6 +102,8 @@
 			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
+			if(is_mainship_level(z))
+				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
 			playsound(src, "shatter", 50, 1)
 		shatter_window(create_debris)
@@ -170,7 +172,7 @@
 			anchored = 0
 			update_nearby_icons()
 			step(src, get_dir(AM, src))
-	healthcheck()
+	healthcheck(user = AM.launch_metadata.thrower)
 
 /obj/structure/window/attack_hand(mob/user as mob)
 	if(user.a_intent == INTENT_HARM && ishuman(user))
@@ -544,13 +546,6 @@
 	reinf = 1
 	dir = NORTHEAST
 	window_frame = /obj/structure/window_frame/almayer
-
-/obj/structure/window/framed/almayer/healthcheck(make_hit_sound = 1, make_shatter_sound = 1, create_debris = 1, mob/user, atom/movable/AM)
-	if(health <= 0)
-		if(user && is_mainship_level(z))
-			SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
-
-	. = ..()
 
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"

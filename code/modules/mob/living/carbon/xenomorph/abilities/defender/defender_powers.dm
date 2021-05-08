@@ -78,7 +78,7 @@
 	X.visible_message(SPAN_XENOWARNING("[X] rams [H] with its armored crest!"), \
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
-	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !istype(H.buckled, /obj/structure/bed/nest)) )
+	if(H.stat != DEAD && (!(H.status_flags & XENO_HOST) || !HAS_TRAIT(H, TRAIT_NESTED)) )
 		var/h_damage = 20 + (X.crest_defense * 10) + (X.steelcrest * 7.5) //20 or 30, plus 7.5
 		H.apply_armoured_damage(get_xeno_damage_slash(H, h_damage), ARMOR_MELEE, BRUTE, "chest", 5)
 
@@ -132,7 +132,7 @@
 	for(var/mob/living/carbon/H in orange(sweep_range, get_turf(X)))
 		if (!isXenoOrHuman(H) || X.can_not_harm(H)) continue
 		if(H.stat == DEAD) continue
-		if(istype(H.buckled, /obj/structure/bed/nest)) continue
+		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
 		step_away(H, X, sweep_range, 2)
 		H.last_damage_mob = X
 		H.last_damage_source = initial(X.caste_type)

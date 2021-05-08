@@ -207,8 +207,8 @@
 	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
 		return 1
 
-	if (istype(buckled, /obj/structure/bed/nest))
-		return 1
+	if (HAS_TRAIT(src, TRAIT_NESTED))
+		return TRUE
 
 	return 0
 

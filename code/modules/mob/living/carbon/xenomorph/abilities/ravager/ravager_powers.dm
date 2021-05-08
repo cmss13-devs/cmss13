@@ -43,7 +43,7 @@
 	for(var/mob/living/carbon/H in mobs_in_range)
 		if(X.can_not_harm(H))
 			continue
-		if(H.stat == DEAD || istype(H.buckled, /obj/structure/bed/nest))
+		if(H.stat == DEAD || HAS_TRAIT(H, TRAIT_NESTED))
 			continue
 		if(empower_targets >= max_targets)
 			break

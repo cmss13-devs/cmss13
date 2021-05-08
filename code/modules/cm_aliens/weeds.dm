@@ -1,14 +1,10 @@
-#define WEED_BASE_GROW_SPEED (10 SECONDS)
-#define WEED_BASE_DECAY_SPEED (20 SECONDS)
-
-
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
 	icon_state = "base"
 
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	layer = WEED_LAYER
 	unacidable = TRUE
 	health = WEED_HEALTH_STANDARD
@@ -44,8 +40,11 @@
 
 	update_icon()
 	update_neighbours()
-	if(node && node.loc && (get_dist(node, src) < node.node_range) && !hibernate)
-		addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
+	if(node && node.loc)
+		if(get_dist(node, src) >= node.node_range)
+			SEND_SIGNAL(parent, COMSIG_WEEDNODE_GROWTH_COMPLETE)
+		else if(!hibernate)
+			addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
 
 	var/turf/T = get_turf(src)
 	T.weeds = src
@@ -69,7 +68,8 @@
 		PF.flags_pass = PASS_FLAGS_WEEDS
 
 /obj/effect/alien/weeds/proc/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
-	return
+	if(!length(new_weeds) && parent)
+		SEND_SIGNAL(parent, COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER)
 
 /obj/effect/alien/weeds/weak
 	name = "weak weeds"
@@ -95,6 +95,7 @@
 	update_icon()
 
 /obj/effect/alien/weeds/node/weak/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
+	..()
 	var/atom/to_copy = /obj/effect/alien/weeds/weak
 	for(var/i in new_weeds)
 		var/obj/effect/alien/weeds/W = i
@@ -188,7 +189,6 @@
 
 		weeds.Add(new /obj/effect/alien/weeds(T, node))
 
-
 	on_weed_expand(src, weeds)
 	if(parent)
 		parent.on_weed_expand(src, weeds)
@@ -275,16 +275,7 @@
 /obj/effect/alien/weeds/ex_act(severity)
 	if(indestructible)
 		return
-
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if(prob(50))
-				qdel(src)
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if(prob(70))
-				qdel(src)
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
 /obj/effect/alien/weeds/attack_alien(mob/living/carbon/Xenomorph/X)
 	if(!indestructible && !HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
@@ -292,8 +283,7 @@
 		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5)
 		playsound(loc, "alien_resin_break", 25)
-		health -= X.melee_damage_lower*WEED_XENO_DAMAGEMULT
-		healthcheck()
+		take_damage(X.melee_damage_lower*WEED_XENO_DAMAGEMULT)
 		return XENO_ATTACK_ACTION
 
 
@@ -323,14 +313,14 @@
 
 	user.animation_attack_on(src)
 
-	health -= damage
-	healthcheck()
+	take_damage(damage)
 	return TRUE //don't call afterattack
 
-/obj/effect/alien/weeds/proc/healthcheck()
+/obj/effect/alien/weeds/proc/take_damage(var/damage)
 	if(indestructible)
 		return
 
+	health -= damage
 	if(health <= 0)
 		qdel(src)
 
@@ -347,8 +337,7 @@
 		return
 
 	. = ..()
-	health -= 20 * WEED_XENO_DAMAGEMULT
-	healthcheck()
+	take_damage(20 * WEED_XENO_DAMAGEMULT)
 
 /obj/effect/alien/weeds/weedwall
 	layer = RESIN_STRUCTURE_LAYER
@@ -387,7 +376,8 @@
 	name = "purple sac"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
-	health = NODE_HEALTH_STANDARD
+	// Weed nodes start out with normal weed health and become stronger once they've stopped spreading
+	health = NODE_HEALTH_GROWING
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
 	var/static/staticnode
@@ -450,7 +440,12 @@
 			name = "hive node sac"
 
 	create_reagents(30)
-	reagents.add_reagent(PLASMA_PURPLE,30)
+	reagents.add_reagent(PLASMA_PURPLE, 30)
+
+	RegisterSignal(src, list(
+		COMSIG_WEEDNODE_GROWTH_COMPLETE,
+		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
+	), .proc/complete_growth)
 
 /obj/effect/alien/weeds/node/Destroy()
 	// When the node is removed, weeds should start dying out
@@ -458,9 +453,18 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 10)) // Slight variation whilst decaying
+		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()
+
+/obj/effect/alien/weeds/node/proc/complete_growth()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(src, list(
+		COMSIG_WEEDNODE_GROWTH_COMPLETE,
+		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
+	))
+	health = NODE_HEALTH_STANDARD
 
 /obj/effect/alien/weeds/node/feral
 	hivenumber = XENO_HIVE_FERAL

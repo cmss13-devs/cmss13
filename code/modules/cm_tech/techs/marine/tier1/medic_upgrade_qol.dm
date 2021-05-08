@@ -50,19 +50,24 @@
 		.["Random Medical Item"] = type_to_add
 
 /obj/item/storage/box/combat_zone_support_package
-	name = "Medical CZSP"
-	desc = "Contains upgraded medical kits, nanosplints and an upgraded medkit."
-	storage_slots = 3
+	name = "medical combat support kit"
+	use_sound = "toolbox"
+	desc = "Contains upgraded medical kits, nanosplints and an upgraded defibrillator."
+	icon_state = "medicbox"
+	storage_slots = 4
 
 /obj/item/storage/box/combat_zone_support_package/Initialize()
 	. = ..()
-	new /obj/item/storage/box/medic_upgraded_kits(src)
+	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
+	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
 	new /obj/item/stack/medical/splint/nano(src)
 	new /obj/item/device/defibrillator/upgraded(src)
 
 
 /obj/item/storage/box/medic_upgraded_kits
 	name = "medical upgrade kit"
+	icon_state = "upgradedkitbox"
+	desc = "This kit holds upgraded trauma and burn kits, for critical injuries."
 	max_w_class = SIZE_MEDIUM
 
 	storage_slots = 2
@@ -73,11 +78,12 @@
 	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
 
 /obj/item/stack/medical/advanced/ointment/upgraded
-	name = "upgraded advance burn kit"
-	singular_name = "upgraded advance burn kit"
+	name = "upgraded burn kit"
+	singular_name = "upgraded burn kit"
 	stack_id = "upgraded advanced burn kit"
 
 	icon_state = "burnkit_upgraded"
+	desc = "An upgraded advanced burn treatment kit. Three times as effective as standard-issue, and non-replenishible. Use sparingly on only the most critical burns."
 
 	max_amount = 10
 	amount = 10
@@ -87,11 +93,12 @@
 	heal_burn = initial(heal_burn) * 3 // 3x stronger
 
 /obj/item/stack/medical/advanced/bruise_pack/upgraded
-	name = "upgraded advance trauma kit"
-	singular_name = "upgraded advance trauma kit"
+	name = "upgraded trauma kit"
+	singular_name = "upgraded trauma kit"
 	stack_id = "upgraded advanced trauma kit"
 
 	icon_state = "traumakit_upgraded"
+	desc = "An upgraded advanced trauma treatment kit. Three times as effective as standard-issue, and non-replenishible. Use sparingly on only the most critical wounds."
 
 	max_amount = 10
 	amount = 10
@@ -105,6 +112,7 @@
 	singular_name = "nano splint"
 
 	icon_state = "nanosplint"
+	desc = "Advanced technology allows these splints to hold bones in place while being flexible and damage-resistant. These aren't plentiful, so use them sparingly on critical areas."
 
 	indestructible_splints = TRUE
 	amount = 5
@@ -114,6 +122,8 @@
 
 /obj/item/device/defibrillator/upgraded
 	name = "upgraded emergency defibrillator"
+	icon_state = "adv_defib"
+	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant."
 
 	blocked_by_suit = FALSE
 	heart_damage_to_deal = 0

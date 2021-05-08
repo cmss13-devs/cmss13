@@ -134,6 +134,12 @@ Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, e
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 	handful_state = "buckshot_shell"
 
+/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
+	name = "handful of incendiary buckshot shells (12g)"
+	icon_state = "incen_buckshot_5"
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
+	handful_state = "incen_buckshot"
+
 /obj/item/ammo_magazine/handful/shotgun/custom_color
 	name = "abstract handful custom type"
 	icon_state = "shell_greyscale_5"
@@ -161,11 +167,6 @@ Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, e
 	I.color = "#ffffff"
 	I.appearance_flags = RESET_COLOR|KEEP_APART
 	overlays += I
-
-/obj/item/ammo_magazine/handful/shotgun/custom_color/incendiary
-	name = "handful of incendiary buckshot shells (12g)"
-	color = "#ffa800"
-	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
 
 /obj/item/ammo_magazine/handful/shotgun/heavy
 	name = "handful of heavy shotgun slugs (8g)"

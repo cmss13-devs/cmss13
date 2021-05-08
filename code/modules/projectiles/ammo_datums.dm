@@ -1097,8 +1097,7 @@
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary
 	name = "incendiary buckshot shell"
-	handful_type = /obj/item/ammo_magazine/handful/shotgun/custom_color/incendiary
-	handful_color = "#ffa800"
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary/set_bullet_traits()
 	. = ..()

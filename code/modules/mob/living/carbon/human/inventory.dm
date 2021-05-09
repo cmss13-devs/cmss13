@@ -362,8 +362,8 @@
 		if(WEAR_IN_HELMET)
 			var/obj/item/clothing/head/helmet/marine/HM = src.head
 			if(istype(HM) && HM.pockets.storage_slots)
-				head.attackby(W)
-				head.update_icon()
+				HM.pockets.attackby(W, src)
+				HM.update_icon()
 
 		if(WEAR_IN_ACCESSORY)
 			var/obj/item/clothing/accessory/A = W

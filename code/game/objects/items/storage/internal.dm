@@ -3,14 +3,14 @@
 /obj/item/storage/internal
 	var/obj/item/master_item
 
-/obj/item/storage/internal/New(obj/item/MI)
+/obj/item/storage/internal/Initialize(mapload, obj/item/MI)
+	. = ..()
 	if(!MI)
 		CRASH("Internal storage was created without a valid master item! ([loc], [usr])")
 	master_item = MI
 	forceMove(master_item)
 	name = master_item.name
 	verbs -= /obj/item/verb/verb_pickup	//make sure this is never picked up.
-	..()
 
 /obj/item/storage/internal/attack_hand()
 	return		//make sure this is never picked up

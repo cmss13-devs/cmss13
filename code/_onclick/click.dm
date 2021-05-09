@@ -111,17 +111,6 @@
 		click_adjacent(A, W, mods)
 		return
 
-	if(A.loc)
-		var/obj/structure/surface/S
-		if(istype(A.loc, /obj/structure/surface))
-			S = A.loc
-		else if(A.loc.loc && istype(A.loc.loc, /obj/structure/surface))//for items inside storage containers
-			S = A.loc.loc
-		if(S && S.Adjacent(src))
-			click_adjacent(A, W, mods)
-			S.draw_item_overlays()
-			return
-
 	// If not standing next to the atom clicked.
 	if(W)
 		W.afterattack(A, src, 0, mods)
@@ -133,11 +122,9 @@
 
 /mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
 	if(W)
-		if(W.attack_speed && A.loc != src && !isstorage(A.loc))
-			if(issurface(A))
-				next_move += 2
-			else
-				next_move += W.attack_speed
+		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
+			next_move += W.attack_speed
+
 		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
@@ -149,7 +136,6 @@
 		if(!isitem(A) && !issurface(A))
 			next_move += 4
 		UnarmedAttack(A, 1, mods)
-	return
 
 
 /*	OLD DESCRIPTION

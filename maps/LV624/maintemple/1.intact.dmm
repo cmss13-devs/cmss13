@@ -6,7 +6,7 @@
 /obj/effect/decal/remains/xeno{
 	pixel_y = 31
 	},
-/obj/item/weapon/gun/energy/plasma_caster{
+/obj/item/weapon/gun/energy/yautja/plasma_caster{
 	anchored = 1;
 	desc = "A powerful, shoulder-mounted energy weapon. This one is damaged beyond use.";
 	name = "damaged plasma caster"
@@ -255,7 +255,7 @@
 	icon_state = "Synthetic_Template";
 	name = "massive statue"
 	},
-/obj/item/weapon/melee/combistick{
+/obj/item/weapon/melee/yautja/combistick{
 	anchored = 1;
 	color = "#FFE55C";
 	desc = "This ancient and frayed gilded spear almost gleans with its razor-sharp edge.";
@@ -369,7 +369,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/twohanded/spear/hunter,
+/obj/item/weapon/melee/twohanded/yautja/spear,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -403,16 +403,16 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/yautja_knife{
+/obj/item/weapon/melee/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = -10
 	},
-/obj/item/weapon/melee/yautja_knife{
+/obj/item/weapon/melee/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger"
 	},
-/obj/item/weapon/melee/yautja_knife{
+/obj/item/weapon/melee/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = 9
@@ -431,7 +431,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "hD" = (
-/obj/item/weapon/melee/yautja_knife,
+/obj/item/weapon/melee/yautja/knife,
 /turf/open/gm/dirtgrassborder{
 	icon_state = "desert2"
 	},
@@ -458,7 +458,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ig" = (
 /obj/structure/morgue/sarcophagus,
-/obj/item/weapon/melee/twohanded/glaive/damaged{
+/obj/item/weapon/melee/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
 /turf/open/floor/corsat{

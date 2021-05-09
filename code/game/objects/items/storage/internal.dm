@@ -16,7 +16,7 @@
 	return		//make sure this is never picked up
 
 /obj/item/storage/internal/mob_can_equip()
-	return 0	//make sure this is never picked up
+	return FALSE	//make sure this is never picked up
 
 //Helper procs to cleanly implement internal storages - storage items that provide inventory slots for other items.
 //These procs are completely optional, it is up to the master item to decide when it's storage get's opened by calling open()
@@ -38,17 +38,16 @@
 
 		if(over_object == user && Adjacent(user)) //This must come before the screen objects only block
 			open(user)
-			return 0
+			return FALSE
 
 		if(istype(master_item, /obj/item) && master_item.flags_item & NODROP) return
 
 		if(!istype(over_object, /obj/screen))
-			return 1
+			return TRUE
 
 		//Makes sure master_item is equipped before putting it in hand, so that we can't drag it into our hand from miles away.
-		//There's got to be a better way of doing this...
-		if(master_item.loc != user || (master_item.loc && master_item.loc.loc == user))
-			return 0
+		if(!user.contains(master_item))
+			return FALSE
 
 		if(!user.is_mob_restrained() && !user.stat)
 			switch(over_object.name)
@@ -79,29 +78,30 @@
 						user.drop_inv_item_on_ground(master_item)
 						user.put_in_l_hand(master_item)
 			master_item.add_fingerprint(user)
-			return 0
-	return 0
+			return FALSE
+	return FALSE
 
 //Items that use internal storage have the option of calling this to emulate default storage attack_hand behaviour.
 //Returns 1 if the master item's parent's attack_hand() should be called, 0 otherwise.
 //It's strange, but no other way of doing it without the ability to call another proc's parent, really.
 /obj/item/storage/internal/proc/handle_attack_hand(mob/user as mob)
 	if(user.lying)
-		return 0
+		return FALSE
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.l_store == master_item && !H.get_active_hand())	//Prevents opening if it's in a pocket.
 			H.put_in_hands(master_item)
 			H.l_store = null
-			return 0
+			return FALSE
 		if(H.r_store == master_item && !H.get_active_hand())
 			H.put_in_hands(master_item)
 			H.r_store = null
-			return 0
+			return FALSE
 
 	src.add_fingerprint(user)
-	if(master_item.loc == user || master_item.loc.loc == user) // loc.loc for webbings/accessories
+	//Checks that it's in the user's inventory somewhere - not safe with items inside storage without additional checks on master_item's end.
+	if(user.contains(master_item))
 		if(storage_flags & STORAGE_USING_DRAWING_METHOD && ishuman(user) && contents.len)
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
@@ -111,11 +111,11 @@
 			I.attack_hand(user)
 		else
 			open(user)
-		return 0
+		return FALSE
 
 	for(var/mob/M in content_watchers)
 		storage_close(M)
-	return 1
+	return TRUE
 
 /obj/item/storage/internal/attackby(obj/item/W as obj, mob/user as mob)
 	if(master_item.on_pocket_attackby(W,user))

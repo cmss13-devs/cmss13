@@ -115,9 +115,9 @@
 	else
 		//If it isn't on the floor. Do some checks to see if it's in our hands or a box. Otherwise give up.
 		if(istype(I.loc,/obj/item/storage))	//in a container.
-			var/sdepth = I.storage_depth(user)
-			if (sdepth == -1 || sdepth > 1)
-				return	//too deeply nested to access
+			var/depth = I.get_storage_depth_to(user)
+			if (!depth || depth > 2)
+				return	//too deeply nested to access or not being carried by the user.
 
 			var/obj/item/storage/U = I.loc
 			user.client.screen -= I

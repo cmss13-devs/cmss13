@@ -265,15 +265,15 @@ var/list/global/item_storage_box_cache = list()
 /obj/screen/storage/clicked(var/mob/user, var/list/mods) //Much of this is replicated do_click behaviour.
 	if(user.is_mob_incapacitated() || !isturf(user.loc))
 		return TRUE
-	if(world.time <= user.next_move)
-		return TRUE
-	user.next_move = world.time
 
 	if(master)
 		var/obj/item/storage/S = master
 		var/obj/item/I = user.get_active_hand()
 		// Placing something in the storage screen
 		if(I && !mods["alt"] && !mods["shift"] && !mods["ctrl"]) //These mods should be caught later on and either examine or do nothing.
+			if(world.time <= user.next_move && master.loc != user) //Click delay doesn't apply to clicking items in your first-layer inventory.
+				return TRUE
+			user.next_move = world.time
 			if(master.Adjacent(user)) //Throwing a storage item (or, possibly, other people pulling it away) doesn't close its screen.
 				user.click_adjacent(master, I, mods)
 			return TRUE
@@ -289,9 +289,12 @@ var/list/global/item_storage_box_cache = list()
 				if(I && I.Adjacent(user)) //Catches pulling items out of nested storage.
 					if(I.clicked(user, mods)) //Examine, alt-click etc.
 						return TRUE
+					if(world.time <= user.next_move) //Clicking an item in storage respects click delays.
+						return TRUE
+					user.next_move = world.time
 					user.click_adjacent(I, null, mods)
 					return TRUE
-	return 0
+	return FALSE
 
 
 /datum/numbered_display
@@ -736,38 +739,34 @@ var/list/global/item_storage_box_cache = list()
 /obj/item/storage/proc/fill_preset_inventory()
 	return
 
-//Returns the storage depth of an atom. This is the number of storage items the atom is contained in before reaching toplevel (the area).
-//Returns -1 if the atom was not found on container.
-/atom/proc/storage_depth(atom/container)
-	var/depth = 0
+/**Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.
+Returning 1 == directly inside the container's contents, 2 == inside something which is itself inside the container, etc.
+An alternative to loc.loc; looked at another way, the number it returns is the number of loc checks before reaching the target.
+Returns FALSE if the atom isn't somewhere inside the container's contents.**/
+/atom/proc/get_storage_depth_to(atom/container)
 	var/atom/cur_atom = src
+	. = 1
 
-	while (cur_atom && !(cur_atom in container.contents))
-		if (isarea(cur_atom))
-			return -1
-		if (isstorage(cur_atom.loc))
-			depth++
+	while(cur_atom && cur_atom.loc != container)
+		if(isarea(cur_atom))
+			return FALSE
+		.++
 		cur_atom = cur_atom.loc
 
-	if (!cur_atom)
-		return -1	//inside something with a null loc.
+	if(!cur_atom)
+		return FALSE	//inside something with a null loc.
 
-	return depth
-
-//Like storage depth, but returns the depth to the nearest turf
-//Returns -1 if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).
-/atom/proc/storage_depth_turf()
-	var/depth = 0
+/**Like get storage depth to, but returns the depth to the nearest turf, inclusively
+Returns FALSE if no top level turf (a loc was null somewhere, or a non-turf atom's loc was an area somehow).**/
+/atom/proc/get_storage_depth_turf()
 	var/atom/cur_atom = src
+	. = 1
 
-	while (cur_atom && !isturf(cur_atom))
-		if (isarea(cur_atom))
-			return -1
-		if (isstorage(cur_atom.loc))
-			depth++
+	while(cur_atom && !isturf(cur_atom))
+		if(isarea(cur_atom))
+			return FALSE
+		.++
 		cur_atom = cur_atom.loc
 
-	if (!cur_atom)
-		return -1	//inside something with a null loc.
-
-	return depth
+	if(!cur_atom)
+		return FALSE

@@ -141,6 +141,7 @@
 		// Placing stuff on tables
 		if(user.drop_inv_item_to_loc(W, loc))
 			auto_align(W, click_data)
+			user.next_move = world.time + 2
 			return TRUE
 	else if(!O.attackby(W, user))
 		W.afterattack(O, user, TRUE)

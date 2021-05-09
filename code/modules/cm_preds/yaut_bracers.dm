@@ -21,7 +21,7 @@
 	min_cold_protection_temperature = GLOVES_min_cold_protection_temperature
 	max_heat_protection_temperature = GLOVES_max_heat_protection_temperature
 	unacidable = TRUE
-	var/obj/item/weapon/gun/energy/plasma_caster/caster
+	var/obj/item/weapon/gun/energy/yautja/plasma_caster/caster
 	var/charge = 3000
 	var/charge_max = 3000
 	var/cloaked = 0
@@ -491,8 +491,8 @@
 		if (option == 1)
 			. = activate_random_verb()
 			return
-	var/obj/item/weapon/gun/energy/plasma_caster/R = usr.r_hand
-	var/obj/item/weapon/gun/energy/plasma_caster/L = usr.l_hand
+	var/obj/item/weapon/gun/energy/yautja/plasma_caster/R = usr.r_hand
+	var/obj/item/weapon/gun/energy/yautja/plasma_caster/L = usr.l_hand
 	if(!istype(R) && !istype(L))
 		caster_active = 0
 	if(caster_active) //Turn it off.
@@ -522,7 +522,7 @@
 			return
 		if(!drain_power(usr,50)) return
 
-		var/obj/item/weapon/gun/energy/plasma_caster/W = caster
+		var/obj/item/weapon/gun/energy/yautja/plasma_caster/W = caster
 		if(!istype(W))
 			W = new(usr)
 		usr.put_in_active_hand(W)
@@ -826,7 +826,7 @@
 			. = activate_random_verb()
 			return
 
-	for(var/obj/item/weapon/melee/combistick/C in range(7))
+	for(var/obj/item/weapon/melee/yautja/combistick/C in range(7))
 		if(usr.get_active_hand() == C || usr.get_inactive_hand() == C) //Check if THIS combistick is in our hands already.
 			continue
 		else if(usr.put_in_active_hand(C))//Try putting it in our active hand, or, if it's full...

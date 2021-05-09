@@ -486,7 +486,7 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/weapon/melee/yautja_knife,
+/obj/item/weapon/melee/yautja/knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/corsat{
@@ -636,7 +636,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/gun/energy/plasma_caster{
+/obj/item/weapon/gun/energy/yautja/plasma_caster{
 	anchored = 1;
 	desc = "A powerful, shoulder-mounted energy weapon. This one is damaged beyond use.";
 	name = "damaged plasma caster"
@@ -2062,10 +2062,10 @@
 	dir = 4;
 	pixel_y = 22
 	},
-/obj/item/weapon/melee/twohanded/spear/hunter,
-/obj/item/weapon/melee/twohanded/spear/hunter,
-/obj/item/weapon/melee/twohanded/spear/hunter,
-/obj/item/weapon/melee/twohanded/spear/hunter,
+/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/melee/twohanded/yautja/spear,
+/obj/item/weapon/melee/twohanded/yautja/spear,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"
@@ -2147,7 +2147,7 @@
 	},
 /area/yautja)
 "oO" = (
-/obj/item/weapon/yautja_chain{
+/obj/item/weapon/melee/yautja/chain{
 	anchored = 1;
 	name = "Houndmaster's Discipline Whip";
 	pixel_x = -3;
@@ -2884,7 +2884,7 @@
 	},
 /area/yautja)
 "JL" = (
-/obj/item/weapon/melee/yautja_knife{
+/obj/item/weapon/melee/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = 25
@@ -3061,7 +3061,7 @@
 	},
 /area/yautja)
 "QF" = (
-/obj/item/weapon/melee/yautja_knife{
+/obj/item/weapon/melee/yautja/knife{
 	color = "#FFE55C";
 	name = "sacred ceremonial dagger";
 	pixel_x = -25

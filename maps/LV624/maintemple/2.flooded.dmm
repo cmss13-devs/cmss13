@@ -16,7 +16,7 @@
 /obj/effect/decal/remains/xeno{
 	pixel_y = 31
 	},
-/obj/item/weapon/gun/energy/plasma_caster{
+/obj/item/weapon/gun/energy/yautja/plasma_caster{
 	anchored = 1;
 	desc = "A powerful, shoulder-mounted energy weapon. This one is damaged beyond use.";
 	name = "damaged plasma caster"
@@ -339,7 +339,7 @@
 /area/lv624/ground/caves/sand_temple)
 "ig" = (
 /obj/structure/morgue/sarcophagus,
-/obj/item/weapon/melee/twohanded/glaive/damaged{
+/obj/item/weapon/melee/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
 /turf/open/floor/corsat{
@@ -1312,7 +1312,7 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "Ff" = (
-/obj/item/weapon/melee/twohanded/spear/hunter,
+/obj/item/weapon/melee/twohanded/yautja/spear,
 /obj/structure/platform_decoration/mineral/sandstone/runed{
 	dir = 4
 	},

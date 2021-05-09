@@ -293,15 +293,15 @@
 
 		switch(msel)
 			if("The Lumbering Glaive")
-				new /obj/item/weapon/melee/twohanded/glaive(src.loc)
+				new /obj/item/weapon/melee/twohanded/yautja/glaive(src.loc)
 			if("The Rending Chain-Whip")
-				new /obj/item/weapon/yautja_chain(src.loc)
+				new /obj/item/weapon/melee/yautja/chain(src.loc)
 			if("The Piercing Hunting Sword")
-				new /obj/item/weapon/melee/yautja_sword(src.loc)
+				new /obj/item/weapon/melee/yautja/sword(src.loc)
 			if("The Cleaving War-Scythe")
-				new /obj/item/weapon/melee/yautja_scythe(src.loc)
+				new /obj/item/weapon/melee/yautja/scythe(src.loc)
 			if("The Adaptive Combi-Stick")
-				new /obj/item/weapon/melee/combistick(src.loc)
+				new /obj/item/weapon/melee/yautja/combistick(src.loc)
 
 		var/choice = mother_0
 		var/i = 0
@@ -310,7 +310,7 @@
 				if("The Fleeting Spike Launcher")
 					new /obj/item/weapon/gun/launcher/spike(src.loc)
 				if("The Swift Plasma Pistol")
-					new /obj/item/weapon/gun/energy/plasmapistol(src.loc)
+					new /obj/item/weapon/gun/energy/yautja/plasmapistol(src.loc)
 				if("The Purifying Smart-Disc")
 					new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
 				if("The Formidable Plate Armor")

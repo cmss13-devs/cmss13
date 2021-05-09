@@ -92,6 +92,7 @@
 #define UNDERWEAR_LAYER			38
 #define UNDERSHIRT_LAYER		37
 #define MUTANTRACE_LAYER		36
+#define FLAY_LAYER 				35.5 //For use by Hunter Flay
 #define DAMAGE_LAYER			35
 #define UNIFORM_LAYER			34
 #define TAIL_LAYER				33	//bs12 specific. this hack is probably gonna come back to haunt me

@@ -68,7 +68,7 @@
 /obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/weapon/melee/yautja_knife,
+/obj/item/weapon/melee/yautja/knife,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -641,7 +641,7 @@
 /area/yautja)
 "ce" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/yautja_knife,
+/obj/item/weapon/melee/yautja/knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/holofloor{

@@ -16155,7 +16155,7 @@
 /obj/effect/decal/remains/xeno{
 	pixel_y = 31
 	},
-/obj/item/weapon/gun/energy/plasma_caster{
+/obj/item/weapon/gun/energy/yautja/plasma_caster{
 	anchored = 1;
 	desc = "A powerful, shoulder-mounted energy weapon. This one is damaged beyond use.";
 	name = "damaged plasma caster"
@@ -18352,7 +18352,7 @@
 /area/lv624/ground/barrens/east_barrens)
 "off" = (
 /obj/structure/morgue/sarcophagus,
-/obj/item/weapon/melee/twohanded/glaive/damaged{
+/obj/item/weapon/melee/twohanded/yautja/glaive/damaged{
 	name = "damaged war glaive"
 	},
 /turf/open/floor/corsat{
@@ -20737,7 +20737,7 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/weapon/melee/twohanded/spear/hunter,
+/obj/item/weapon/melee/twohanded/yautja/spear,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

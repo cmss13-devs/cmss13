@@ -513,21 +513,20 @@
 
 //Ties that can store stuff
 
-/obj/item/storage/internal/accessory
-	storage_slots = 3
-
 /obj/item/clothing/accessory/storage
 	name = "load bearing equipment"
 	desc = "Used to hold things when you don't have enough hands."
 	icon_state = "webbing"
 	w_class = SIZE_LARGE //too big to store in other pouches
-	var/obj/item/storage/internal/hold = /obj/item/storage/internal/accessory
+	var/slots = 3
+	var/obj/item/storage/internal/hold
 	slot = ACCESSORY_SLOT_UTILITY
 	high_visibility = TRUE
 
-/obj/item/clothing/accessory/storage/Initialize()
-	. = ..()
-	hold = new hold(src)
+/obj/item/clothing/accessory/storage/New()
+	..()
+	hold = new/obj/item/storage/internal(src)
+	hold.storage_slots = slots
 
 /obj/item/clothing/accessory/storage/Destroy()
 	QDEL_NULL(hold)
@@ -574,27 +573,25 @@
 	if(.)
 		C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
-/obj/item/storage/internal/accessory/webbing
-	bypass_w_limit = list(
+/obj/item/clothing/accessory/storage/webbing
+	name = "webbing"
+	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden."
+	icon_state = "webbing"
+	slots = 3
+
+/obj/item/clothing/accessory/storage/webbing/New()
+	..()
+	hold.bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
 	)
 
-/obj/item/clothing/accessory/storage/webbing
-	name = "webbing"
-	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden."
-	icon_state = "webbing"
-	hold = /obj/item/storage/internal/accessory/webbing
-
-/obj/item/storage/internal/accessory/black_vest
-	storage_slots = 5
-
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"
 	desc = "Robust black synthcotton vest with lots of pockets to hold whatever you need, but cannot hold in hands."
 	icon_state = "vest_black"
-	hold = /obj/item/storage/internal/accessory/black_vest
+	slots = 5
 
 /obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/B, mob/living/user)
 	if(iswirecutter(B) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
@@ -633,27 +630,29 @@
 	name = "brown webbing vest"
 	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
 	icon_state = "vest_brown"
+	slots = 5
 
-/obj/item/storage/internal/accessory/knifeharness
-	storage_slots = 2
-	max_storage_space = 4
-	can_hold = list(
+
+/obj/item/clothing/accessory/storage/knifeharness
+	name = "decorated harness"
+	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
+	icon_state = "unathiharness2"
+	slots = 2
+
+/obj/item/clothing/accessory/storage/knifeharness/New()
+	..()
+	hold.max_storage_space = 4
+	hold.can_hold = list(
 		/obj/item/weapon/melee/unathiknife,
 		/obj/item/tool/kitchen/utensil/knife,
 		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 	)
 
-/obj/item/storage/internal/accessory/knifeharness/Initialize(mapload, obj/item/MI)
-	. = ..()
-	new /obj/item/weapon/melee/unathiknife(src)
-	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/melee/unathiknife(hold)
+	new /obj/item/weapon/melee/unathiknife(hold)
 
-/obj/item/clothing/accessory/storage/knifeharness
-	name = "decorated harness"
-	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
-	icon_state = "unathiharness2"
-	hold = /obj/item/storage/internal/accessory/knifeharness
+
 
 
 

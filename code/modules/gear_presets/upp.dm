@@ -280,7 +280,7 @@
 		//body
 		var/obj/item/clothing/accessory/storage/black_vest/W = new()
 		UPP.attach_accessory(H, W)
-		for(var/i in 1 to W.hold.storage_slots)
+		for(var/i = 1 to W.slots)
 			H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath, WEAR_IN_ACCESSORY)
 		H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/type23/dragon, WEAR_J_STORE)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath, WEAR_IN_JACKET)

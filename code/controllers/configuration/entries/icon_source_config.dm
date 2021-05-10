@@ -61,6 +61,9 @@
 /datum/config_entry/string/alien_structures
 	config_entry_value = "icons/mob/hostiles/structures.dmi"
 
+/datum/config_entry/string/alien_wounds
+	config_entry_value = "icons/mob/hostiles/wounds.dmi"
+
 /datum/config_entry/string/alien_structures_64x64
 	config_entry_value = "icons/mob/hostiles/structures64x64.dmi"
 

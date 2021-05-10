@@ -39,6 +39,7 @@
 		icon_state = "[mutation_type] [caste.caste_type] Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_wounds()
 
 /mob/living/carbon/Xenomorph/regenerate_icons()
 	..()
@@ -183,6 +184,53 @@
 	overlays_standing[X_HEAD_LAYER] = shield
 	apply_overlay(X_HEAD_LAYER)
 	addtimer(CALLBACK(src, .proc/remove_overlay, X_HEAD_LAYER), 20)
+
+/mob/living/carbon/Xenomorph/proc/handle_special_state()
+	return FALSE
+
+/mob/living/carbon/Xenomorph/proc/handle_special_wound_states()
+	return FALSE
+
+// Shamelessly inspired from the equivalent proc on TGCM
+/mob/living/carbon/Xenomorph/proc/update_wounds()
+	var/health_threshold
+	wound_icon_carrier.layer = layer + 0.01
+	health_threshold = CEILING((health * 4) / (maxHealth), 1) //From 1 to 4, in 25% chunks
+	if(health > HEALTH_THRESHOLD_DEAD)
+		if(health_threshold > 3)
+			wound_icon_carrier.icon_state = "none"
+		else if(lying)
+			if((resting || sleeping) && (!knocked_down && !knocked_out && health > 0))
+				wound_icon_carrier.icon_state = "[caste.caste_type]_rest_[health_threshold]"
+			else
+				wound_icon_carrier.icon_state = "[caste.caste_type]_downed_[health_threshold]"
+		else if(!handle_special_state())
+			wound_icon_carrier.icon_state = "[caste.caste_type]_walk_[health_threshold]"
+		else
+			wound_icon_carrier.icon_state = handle_special_wound_states(health_threshold)
+
+
+///Used to display the xeno wounds without rapidly switching overlays
+/atom/movable/vis_obj/xeno_wounds
+	var/mob/living/carbon/Xenomorph/wound_owner
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+
+/atom/movable/vis_obj/xeno_wounds/Initialize(mapload, mob/living/carbon/Xenomorph/owner)
+	. = ..()
+	if(owner)
+		wound_owner = owner
+		RegisterSignal(owner, COMSIG_ATOM_DIR_CHANGE, .proc/on_dir_change)
+
+/atom/movable/vis_obj/xeno_wounds/Destroy()
+	if(wound_owner)
+		UnregisterSignal(wound_owner, COMSIG_ATOM_DIR_CHANGE)
+		wound_owner = null
+	return ..()
+
+/atom/movable/vis_obj/xeno_wounds/proc/on_dir_change(mob/living/carbon/Xenomorph/source, olddir, newdir)
+	SIGNAL_HANDLER
+	dir = newdir
 
 //Xeno Overlays Indexes//////////
 #undef X_HEAD_LAYER

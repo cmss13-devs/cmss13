@@ -812,6 +812,18 @@
 		icon_state = "[mutation_type] Queen Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_wounds()
+
+
+/mob/living/carbon/Xenomorph/Queen/handle_special_state()
+	if(ovipositor)
+		return TRUE
+	return FALSE
+
+/mob/living/carbon/Xenomorph/Queen/handle_special_wound_states(severity)
+	. = ..()
+	if(ovipositor)
+		return "Queen_ovipositor_[severity]" // I don't actually have it, but maybe one day.
 
 /mob/living/carbon/Xenomorph/Queen/proc/in_egg_plant_range(var/turf/T)
 	if(!ovipositor)

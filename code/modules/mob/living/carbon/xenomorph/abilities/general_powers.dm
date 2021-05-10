@@ -274,6 +274,7 @@
 
 	if(X.layer == XENO_HIDING_LAYER) //Xeno is currently hiding, unhide him
 		X.layer = MOB_LAYER
+		X.update_wounds()
 
 	if(isXenoRavager(X))
 		X.emote("roar")
@@ -382,6 +383,7 @@
 	else
 		X.layer = MOB_LAYER
 		to_chat(X, SPAN_NOTICE("You have stopped hiding."))
+	X.update_wounds()
 
 
 /datum/action/xeno_action/onclick/place_trap/use_ability(atom/A)

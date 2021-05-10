@@ -22,6 +22,7 @@ GLOBAL_LIST_INIT(icon_source_files, list(
 	"icons/mob/hostiles/overlay_effects64x64.dmi" = 'icons/mob/hostiles/overlay_effects64x64.dmi',
 	"icons/mob/hostiles/Effects.dmi" = 'icons/mob/hostiles/Effects.dmi',
 	"icons/mob/hostiles/weeds.dmi" = 'icons/mob/hostiles/weeds.dmi',
+	"icons/mob/hostiles/wounds.dmi" = 'icons/mob/hostiles/wounds.dmi',
 ))
 
 /proc/get_icon_from_source(source_name)

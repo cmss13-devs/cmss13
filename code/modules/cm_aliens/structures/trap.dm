@@ -31,6 +31,15 @@
 	set_hive_data(src, hivenumber)
 	..()
 
+/obj/effect/alien/resin/trap/Initialize()
+	. = ..()
+
+	var/obj/effect/alien/weeds/node/WD = locate() in loc
+	if(WD)
+		WD.RegisterSignal(src, COMSIG_PARENT_PREQDELETED, /obj/effect/alien/weeds/node/proc/trap_destroyed)
+		WD.overlay_node = FALSE
+		WD.overlays -= WD.staticnode
+
 /obj/effect/alien/resin/trap/examine(mob/user)
 	if(!isXeno(user))
 		return ..()

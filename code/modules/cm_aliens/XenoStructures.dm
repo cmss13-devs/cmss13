@@ -4,15 +4,10 @@
 /obj/effect/alien
 	name = "alien thing"
 	desc = "theres something alien about this"
-	icon = null
+	icon = 'icons/mob/hostiles/Effects.dmi'
 	unacidable = TRUE
 	health = 1
 	flags_obj = OBJ_ORGANIC
-
-/obj/effect/alien/Initialize(mapload, ...)
-	. = ..()
-	if(!icon)
-		icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 
 /*
  * Resin
@@ -204,6 +199,7 @@
 //Resin Doors
 /obj/structure/mineral_door/resin
 	name = "resin door"
+	icon = 'icons/mob/hostiles/Effects.dmi'
 	mineralType = "resin"
 	hardness = 1.5
 	health = HEALTH_DOOR_XENO
@@ -216,7 +212,6 @@
 
 /obj/structure/mineral_door/resin/Initialize(mapload, hive)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 	relativewall()
 	relativewall_neighbours()
 	for(var/turf/closed/wall/W in orange(1))

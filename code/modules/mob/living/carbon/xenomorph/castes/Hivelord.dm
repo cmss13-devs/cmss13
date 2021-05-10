@@ -40,6 +40,7 @@
 	caste_type = XENO_CASTE_HIVELORD
 	name = XENO_CASTE_HIVELORD
 	desc = "A builder of really big hives."
+	icon = 'icons/mob/hostiles/hivelord.dmi'
 	icon_size = 64
 	icon_state = "Hivelord Walking"
 	plasma_types = list(PLASMA_PURPLE,PLASMA_PHEROMONE)
@@ -62,7 +63,3 @@
 		/datum/action/xeno_action/onclick/toggle_speed //fourth macro
 		)
 	mutation_type = HIVELORD_NORMAL
-
-/mob/living/carbon/Xenomorph/Hivelord/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_hivelord))

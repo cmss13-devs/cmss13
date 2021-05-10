@@ -55,6 +55,7 @@
 
 /mob/living/simple_animal/hostile/alien/ravager
 	name = "alien ravager"
+	icon = 'icons/mob/hostiles/ravager.dmi'
 	icon_state = "Ravager Running"
 	icon_living = "Ravager Running"
 	icon_dead = "Ravager Dead"
@@ -62,10 +63,6 @@
 	melee_damage_upper = 35
 	maxHealth = 200
 	health = 200
-
-/mob/living/simple_animal/hostile/alien/ravager/Initialize()
-	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_ravager))
 
 /obj/item/projectile/neurotox
 	damage = 30

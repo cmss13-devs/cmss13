@@ -31,6 +31,7 @@
 	caste_type = XENO_CASTE_BOILER
 	name = XENO_CASTE_BOILER
 	desc = "A huge, grotesque xenomorph covered in glowing, oozing acid slime."
+	icon = 'icons/mob/hostiles/boiler.dmi'
 	icon_size = 64
 	icon_state = "Boiler Walking"
 	plasma_types = list(PLASMA_NEUROTOXIN)
@@ -60,7 +61,6 @@
 
 /mob/living/carbon/Xenomorph/Boiler/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_boiler))
 	smoke = new /datum/effect_system/smoke_spread/xeno_acid
 	smoke.attach(src)
 	smoke.cause_data = create_cause_data(initial(caste_type), src)

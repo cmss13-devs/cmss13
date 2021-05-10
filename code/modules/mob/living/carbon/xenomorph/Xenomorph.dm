@@ -287,8 +287,6 @@
 
 	wound_icon_carrier = new(null, src)
 	vis_contents += wound_icon_carrier
-	wound_icon_carrier.icon = get_icon_from_source(CONFIG_GET(string/alien_wounds))
-
 
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber

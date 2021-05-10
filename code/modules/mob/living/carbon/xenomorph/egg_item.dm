@@ -2,6 +2,7 @@
 /obj/item/xeno_egg
 	name = "egg"
 	desc = "Some sort of egg."
+	icon = 'icons/mob/hostiles/Effects.dmi'
 	icon_state = "egg_item"
 	w_class = SIZE_MASSIVE
 	flags_atom = OPENCONTAINER
@@ -23,7 +24,6 @@
 
 	set_hive_data(src, hivenumber)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 
 /obj/item/xeno_egg/examine(mob/user)
 	..()

@@ -1,6 +1,7 @@
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
+	icon = 'icons/mob/hostiles/weeds.dmi'
 	icon_state = "base"
 
 	anchored = TRUE
@@ -23,7 +24,6 @@
 
 /obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_weeds))
 	if(node)
 		linked_hive = node.linked_hive
 		weed_strength = node.weed_strength
@@ -264,11 +264,11 @@
 		var/image/secretion
 
 		if(icon_dir >= 0)
-			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete[icon_dir]")
+			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete[icon_dir]")
 		else if(icon_dir == -15)
-			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete_base")
+			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete_base")
 		else
-			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete_dir[-icon_dir]")
+			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete_dir[-icon_dir]")
 
 		overlays += secretion
 
@@ -433,7 +433,7 @@
 	. = ..(mapload, src)
 
 	if(!staticnode)
-		staticnode = image(get_icon_from_source(CONFIG_GET(string/alien_weeds)), "weednode", ABOVE_OBJ_LAYER)
+		staticnode = image('icons/mob/hostiles/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
 
 	var/obj/effect/alien/resin/trap/TR = locate() in loc
 	if(TR)

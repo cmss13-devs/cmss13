@@ -609,7 +609,7 @@
 /turf/closed/wall/resin
 	name = "resin wall"
 	desc = "Weird slime solidified into a wall."
-	icon = null
+	icon = 'icons/mob/hostiles/structures.dmi'
 	icon_state = "resin"
 	walltype = WALL_RESIN
 	damage_cap = HEALTH_WALL_XENO
@@ -623,11 +623,6 @@
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
 	hull = TRUE
-
-/turf/closed/wall/resin/Initialize(mapload, ...)
-	if(!icon)
-		icon = get_icon_from_source(CONFIG_GET(string/alien_structures))
-	. = ..()
 
 /turf/closed/wall/resin/make_girder()
 	return

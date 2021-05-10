@@ -61,3 +61,18 @@
 		icon_state = "[mutation_type] Defender Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_wounds()
+
+/mob/living/carbon/Xenomorph/Defender/handle_special_state()
+	if(fortify)
+		return TRUE
+	if(crest_defense)
+		return TRUE
+	return FALSE
+
+/mob/living/carbon/Xenomorph/Defender/handle_special_wound_states(severity)
+	. = ..()
+	if(fortify)
+		return "Defender_fortify_[severity]"
+	if(crest_defense)
+		return "Defender_crest_[severity]"

@@ -58,11 +58,8 @@
 	. = ..()
 	if (flags_atom & DIRLOCK)
 		setDir(old_dir)
-	else
-		if (old_dir & EAST|WEST) // Can no longer face NW/NE/SW/SE after moving/being moved
-			dir &= NORTH|SOUTH
-		else
-			dir &= EAST|WEST
+	else if(old_dir != direct)
+		setDir(direct)
 	l_move_time = world.time
 	if ((oldloc != loc && oldloc && oldloc.z == z))
 		last_move_dir = get_dir(oldloc, loc)

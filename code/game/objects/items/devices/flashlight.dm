@@ -51,16 +51,18 @@
 
 	if(!toggleable)
 		to_chat(user, SPAN_WARNING("You cannot toggle \the [src.name] on or off."))
-		return
+		return FALSE
 	if(!isturf(user.loc))
 		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalities.
-		return
+		return FALSE
 
 	on = !on
 	update_brightness(user)
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
+
+	return TRUE
 
 /obj/item/device/flashlight/proc/turn_off_light(mob/bearer)
 	if(on)
@@ -276,9 +278,9 @@
 	// Usual checks
 	if(!fuel)
 		to_chat(user, SPAN_NOTICE("It's out of fuel."))
-		return
+		return FALSE
 	if(on)
-		return
+		return FALSE
 
 	. = ..()
 	// All good, turn it on.
@@ -347,38 +349,14 @@
 	fuel = rand(80, 100)
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
-	..()
-
 	if(!istype(user))
 		return
-	// Usual checks
-	if(!fuel)
-		to_chat(user, SPAN_NOTICE("It's out of fuel."))
-		return
-	if(on)
-		return
 
-	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalities.
-		return 0
-	on = !on
-	update_brightness(user)
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
-	// All good, turn it on.
-	user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
-	force = on_damage
-	heat_source = 1500
-	damtype = "fire"
-	START_PROCESSING(SSobj, src)
-	// Enable throw mode to be consistent with normal flare
-	var/mob/living/carbon/U = user
-	if(istype(U) && !U.throw_mode)
-		U.toggle_throw_mode(THROW_MODE_NORMAL)
+	. = ..()
 
-	faction = user.faction
-	addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
+	if(.)
+		faction = user.faction
+		addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/living/carbon/human/user)
 	if(faction && cas_groups[faction])

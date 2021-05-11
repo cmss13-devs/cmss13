@@ -121,6 +121,9 @@
 // The action_activate code of these actions does NOT call use_ability.
 /datum/action/xeno_action/activable
 
+/datum/action/xeno_action/activable/can_use_action()
+	return TRUE
+
 // Called when the action is clicked on.
 // For non-activable Xeno actions, this is used to
 // actually DO the action.

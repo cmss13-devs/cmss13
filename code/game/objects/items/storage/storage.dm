@@ -540,7 +540,7 @@ var/list/global/item_storage_box_cache = list()
 	empty(H, get_turf(H))
 
 /obj/item/storage/proc/empty(var/mob/user, var/turf/T)
-	if (!(storage_flags & STORAGE_ALLOW_EMPTY) || !ishuman(user) || loc != user || user.is_mob_incapacitated())
+	if (!(storage_flags & STORAGE_ALLOW_EMPTY) || !ishuman(user) || !(user.l_hand == src || user.r_hand == src) || user.is_mob_incapacitated())
 		return
 
 	if (!isturf(T) || get_dist(src, T) > 1)

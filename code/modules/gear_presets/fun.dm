@@ -268,37 +268,37 @@
 
 	// Satchel
 	if(satchel_success)
-		for(var/i = 1 to 7)
+		for(var/i in 1 to 7)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_BACK)
 
 	// Belt
 	if(waist_success)
 		var/obj/item/storage/belt/grenade/large/belt = H.belt
 		belt.name = "M42 HEFA rig Mk. XVII"
-		for(var/i = 1 to belt.storage_slots)
+		for(var/i in 1 to belt.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.belt), WEAR_IN_BELT)
 
 	// Armor/suit
 	if(jacket_success)
 		var/obj/item/clothing/suit/storage/marine/M3G/armor = H.wear_suit
 		armor.name = "HEFA Knight armor"
-		for(var/i = 1 to armor.storage_slots)
+		for(var/i in 1 to armor.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.wear_suit), WEAR_IN_JACKET)
 
 	// Pouches
 	if(pouch_r_success)
 		var/obj/item/storage/pouch/explosive/pouch = H.r_store
 		pouch.name = "HEFA pouch"
-		for(var/i = 1 to pouch.storage_slots)
+		for(var/i in 1 to pouch.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.r_store), WEAR_IN_R_STORE)
 	if(pouch_l_success)
 		var/obj/item/storage/pouch/explosive/pouch = H.l_store
 		pouch.name = "HEFA pouch"
-		for(var/i = 1 to pouch.storage_slots)
+		for(var/i in 1 to pouch.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.l_store), WEAR_IN_L_STORE)
 
 	// Webbing
-	for(var/i = 1 to W.slots)
+	for(var/i in 1 to W.hold.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_ACCESSORY)
 
 /datum/equipment_preset/fun/hefa/melee
@@ -331,37 +331,37 @@
 	if(satchel_success)
 		var/obj/item/storage/backpack/marine/satchel = H.back
 		satchel.name = "HEFA storage bag"
-		for(var/i = 1 to 7)
+		for(var/i in 1 to 7)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_BACK)
 
 	// Belt
 	if(waist_success)
 		var/obj/item/storage/belt/grenade/large/belt = H.belt
 		belt.name = "M42 HEFA rig Mk. XVII"
-		for(var/i = 1 to belt.storage_slots)
+		for(var/i in 1 to belt.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.belt), WEAR_IN_BELT)
 
 	// Armor/suit
 	if(jacket_success)
 		var/obj/item/clothing/suit/storage/marine/M3G/armor = H.wear_suit
 		armor.name = "HEFA Knight armor"
-		for(var/i = 1 to armor.storage_slots)
+		for(var/i in 1 to armor.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.wear_suit), WEAR_IN_JACKET)
 
 	// Pouches
 	if(pouch_r_success)
 		var/obj/item/storage/pouch/explosive/pouch = H.r_store
 		pouch.name = "HEFA pouch"
-		for(var/i = 1 to pouch.storage_slots)
+		for(var/i in 1 to pouch.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.r_store), WEAR_IN_R_STORE)
 	if(pouch_l_success)
 		var/obj/item/storage/pouch/explosive/pouch = H.l_store
 		pouch.name = "HEFA pouch"
-		for(var/i = 1 to pouch.storage_slots)
+		for(var/i in 1 to pouch.storage_slots)
 			H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.l_store), WEAR_IN_L_STORE)
 
 	// Webbing
-	for(var/i = 1 to W.slots)
+	for(var/i in 1 to W.hold.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/frag(H.back), WEAR_IN_ACCESSORY)
 
 /datum/equipment_preset/fun/santa

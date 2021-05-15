@@ -19,6 +19,8 @@
 /datum/nmreader/proc/parse_file(filepath)
 	RETURN_TYPE(/list/datum/nmnode)
 	var/data = file(filepath)
+	if(!data)
+		CRASH("Failed to read [filepath] in nightmare parsing")
 	if(data) data = file2text(data)
 	if(data) data = json_decode(data)
 	if(!data || !islist(data))

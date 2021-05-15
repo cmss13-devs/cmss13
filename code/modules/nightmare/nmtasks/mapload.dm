@@ -31,6 +31,7 @@
 		pmap = new(file(filepath))
 		if(!pmap?.bounds)
 			logself("File Loading failed", TRUE, "ERROR")
+			stack_trace("File Loading failed in nmtask maploading")
 			return NM_TASK_ERROR
 		if(isnull(pmap.bounds[1]))
 			logself("Map Parsing failed", TRUE, "ERROR")

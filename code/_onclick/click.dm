@@ -1,3 +1,5 @@
+// Enables a tool to test ingame click rate.
+#define DEBUG_CLICK_RATE	0
 
 // 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
@@ -29,10 +31,10 @@
 				do_click(TU, location, params)
 		return
 
-	if (world.time <= next_click)
+	if (world.time < next_click)
 		return
 
-	next_click = world.time + 1
+	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
 	var/list/mods = params2list(params)
 
 	if (!clicked_something)
@@ -316,3 +318,40 @@
 		viewX = text2num(viewrangelist[1])
 		viewY = text2num(viewrangelist[2])
 	return list(viewX, viewY)
+
+
+#if DEBUG_CLICK_RATE
+/obj/item/clickrate_test
+	name = "clickrate tester"
+	icon_state = "game_kit"
+	var/started_testing
+	var/clicks
+	var/manual = FALSE //To test the maximum rate the code permits. Set to TRUE and to get actual ingame maximums.
+
+/obj/item/clickrate_test/attack_self(mob/user)
+	if(!started_testing)
+		to_world(SPAN_DEBUG("Hadn't tested."))
+		return
+	var/test_time = (world.time - started_testing) * 0.1 //in seconds
+	
+	to_world(SPAN_DEBUG("We did <b>[clicks]</b> clicks over <b>[test_time]</b> seconds, for an average clicks-per-second of <b>[clicks / test_time]</b>."))
+	started_testing = 0
+	clicks = 0
+
+/obj/item/clickrate_test/afterattack(atom/A, mob/living/user, flag, params)
+	if(flag)
+		to_world(SPAN_DEBUG("Too close, click something at range."))
+		return
+	if(!started_testing)
+		started_testing = world.time
+		if(!manual)
+			autoclick(user, A, params)
+	clicks++
+
+/obj/item/clickrate_test/proc/autoclick(mob/user, atom/A, params)
+	if(clicks >= 20)
+		attack_self(user)
+		return
+	user.do_click(A, null, params)
+	addtimer(CALLBACK(src, .proc/autoclick, user, A, params), 0.1)
+#endif

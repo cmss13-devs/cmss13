@@ -227,7 +227,8 @@
 	accepted_ammo = list(
 		/obj/item/ammo_magazine/rifle/m41aMK1,
 		/obj/item/ammo_magazine/rifle/ap,
-		/obj/item/ammo_magazine/rifle
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/rifle/extended
 	)
 
 

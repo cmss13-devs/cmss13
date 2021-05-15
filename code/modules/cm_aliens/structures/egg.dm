@@ -122,7 +122,7 @@
 		icon_state = "Egg Opened"
 		flick("Egg Opening", src)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
-		sleep(10)
+		sleep(1 SECONDS)
 		if(loc && status != EGG_DESTROYED)
 			status = EGG_BURST
 			var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
@@ -134,7 +134,8 @@
 				X.put_in_hands(child)
 				return
 			if(instant_trigger)
-				child.leap_at_nearest_target()
+				if(!child.leap_at_nearest_target())
+					child.return_to_egg(src)
 			else
 				child.go_idle()
 

@@ -204,12 +204,12 @@
 
 /obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target()
 	if(!isturf(loc))
-		return
+		return FALSE
 
 	for(var/mob/living/M in loc)
 		if(can_hug(M, hivenumber))
 			attach(M)
-			return
+			return TRUE
 
 	var/mob/living/target
 	for(var/mob/living/M in view(3, src))
@@ -218,12 +218,13 @@
 		target = M
 		break
 	if(!target)
-		return
+		return FALSE
 
 	target.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [target]!"), \
 	SPAN_WARNING("The scuttling [src] leaps at [target]!"))
 	leaping = TRUE
 	throw_atom(target, 3, SPEED_FAST)
+	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/attach(mob/living/M)
 	if(attached || !can_hug(M, hivenumber))
@@ -330,11 +331,7 @@
 	if(isturf(loc))
 		var/obj/effect/alien/egg/E = locate() in loc
 		if(E && E.status == EGG_BURST)
-			visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
-			E.status = EGG_GROWN
-			E.icon_state = "Egg"
-			E.deploy_egg_triggers()
-			qdel(src)
+			return_to_egg(E)
 			return
 		var/obj/effect/alien/resin/trap/T = locate() in loc
 		if(T && T.trap_type == RESIN_TRAP_EMPTY)
@@ -406,6 +403,13 @@
 
 /obj/item/clothing/mask/facehugger/flamer_fire_act()
 	die()
+
+/obj/item/clothing/mask/facehugger/proc/return_to_egg(obj/effect/alien/egg/E)
+	visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
+	E.status = EGG_GROWN
+	E.icon_state = "Egg"
+	E.deploy_egg_triggers()
+	qdel(src)
 
 /**
  * Human hugger handling

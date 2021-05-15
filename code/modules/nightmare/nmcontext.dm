@@ -33,8 +33,7 @@
 		var/datum/nmreader/reader = GLOB.nmreaders[name]
 		var/datum/nmnode/tree = reader?.load_file(allconfigs[name])
 		if(!tree)
-			log_debug("NIGHTMARE: Failed to load step: [name] -> [allconfigs[name]]")
-			continue
+			CRASH("NIGHTMARE: Failed to load step: [name] -> [allconfigs[name]]")
 		steps[name] = tree
 		. = TRUE
 

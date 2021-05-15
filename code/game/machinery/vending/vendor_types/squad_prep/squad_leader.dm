@@ -180,9 +180,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/map/current_map,
-		/obj/item/weapon/gun/flamer/underextinguisher,
-		/obj/item/ammo_magazine/flamer_tank,
-		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/storage/box/kit/mini_pyro,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/box/zipcuffs
 	)

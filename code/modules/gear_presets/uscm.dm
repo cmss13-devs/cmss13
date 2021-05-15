@@ -525,18 +525,12 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/specialist_equipped
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm/specialist_equipped/sniper
 	name = "USCM Sniper Specialist (Equipped)"
-	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
-	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
-	assignment = JOB_SQUAD_SPECIALIST
-	rank = JOB_SQUAD_SPECIALIST
-	paygrade = "E5"
-	role_comm_title = "Spc"
-	skills = /datum/skills/specialist
-
-/datum/equipment_preset/uscm/specialist_equipped/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/uscm/specialist_equipped/sniper/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smock(H), WEAR_BACK)

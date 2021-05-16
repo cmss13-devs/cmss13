@@ -28,7 +28,7 @@
 
 	var/mob/living/carbon/Xenomorph/Praetorian/P = MS.xeno
 	P.speed_modifier += XENO_SPEED_FASTMOD_TIER_3
-	P.health_modifier -= XENO_HEALTH_MOD_VERYLARGE
+	P.health_modifier -= XENO_HEALTH_MOD_MED
 	P.claw_type = CLAW_TYPE_SHARP
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)

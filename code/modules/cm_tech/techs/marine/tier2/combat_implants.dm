@@ -165,7 +165,6 @@
 	var/list/stimulant_to_inject = list(
 		"speed_stimulant" = 0.5,
 		"redemption_stimulant" = 3,
-		"oxycodone" = 3,
 	)
 
 /obj/item/device/internal_implant/rejuv/on_implanted(mob/living/M)

@@ -3,7 +3,7 @@
 	tier = 1
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_2
-	max_health = XENO_HEALTH_TIER_7
+	max_health = XENO_HEALTH_TIER_5
 	plasma_gain = XENO_PLASMA_GAIN_TIER_8
 	plasma_max = XENO_PLASMA_TIER_10
 	crystal_max = XENO_CRYSTAL_LOW

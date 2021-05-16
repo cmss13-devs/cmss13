@@ -1419,6 +1419,11 @@
 			return
 		return create_mob(usr)
 
+	else if(href_list["send_tip"])
+		if(!check_rights(R_SPAWN))
+			return
+		return send_tip(usr)
+
 	else if(href_list["object_list"])			//this is the laggiest thing ever
 		if(!check_rights(R_SPAWN))
 			return

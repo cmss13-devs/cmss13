@@ -1843,3 +1843,8 @@ GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
 		M.regenerate_icons()
 	return O
 
+/proc/convert_to_json_text(var/json_file_string)
+	var/json_file = file(json_file_string)
+	json_file = file2text(json_file)
+	json_file = json_decode(json_file)
+	return json_file

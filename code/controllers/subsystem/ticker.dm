@@ -41,6 +41,9 @@ SUBSYSTEM_DEF(ticker)
 
 	var/automatic_delay_end = FALSE
 
+	 ///If we have already done tip of the round.
+	var/tipped
+
 	var/totalPlayers = 0					//used for pregame stats on statpanel
 	var/totalPlayersReady = 0				//used for pregame stats on statpanel
 	var/datum/nmcontext/NM
@@ -86,6 +89,11 @@ SUBSYSTEM_DEF(ticker)
 				return
 
 			time_left -= wait
+
+			if(time_left <= 40 SECONDS && !tipped)
+				send_tip_of_the_round()
+				tipped = TRUE
+
 			if(time_left <= 0)
 				request_start()
 
@@ -424,3 +432,18 @@ SUBSYSTEM_DEF(ticker)
 		for(var/mob/M in GLOB.player_list)
 			if(!istype(M,/mob/new_player))
 				to_chat(M, "Marine commanding officer position not forced on anyone.")
+
+/datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
+	var/message
+	var/tip_file = pick("strings/xenotips.txt", "strings/marinetips.txt", "strings/metatips.txt", 15;"strings/memetips.txt")
+	var/list/tip_list = file2list(tip_file)
+	if(length(tip_file))
+		message = pick(tip_list)
+	else
+		CRASH("send_tip_of_the_round() failed somewhere")
+
+	if(message)
+		to_chat(world, "<span class='purple'><b>Tip of the round: </b>[html_encode(message)]</span>")
+		return TRUE
+	else
+		return FALSE

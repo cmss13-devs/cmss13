@@ -782,7 +782,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	var/current_camo = FULL_CAMOUFLAGE_ALPHA
 	var/camouflage_break = 5 SECONDS
 	var/camouflage_enter_delay = 4 SECONDS
-	var/aiming_time = 1.5 SECONDS
+	var/aiming_time = 1.25 SECONDS
 	var/datum/event_handler/ghillie_movement/ghillie_movement
 
 	var/aimed_shot_cooldown

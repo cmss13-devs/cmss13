@@ -4,7 +4,7 @@
 
 	melee_damage_lower = XENO_DAMAGE_TIER_6
 	melee_damage_upper = XENO_DAMAGE_TIER_6
-	max_health = XENO_HEALTH_TIER_8
+	max_health = XENO_HEALTH_TIER_12
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_PLASMA_TIER_3
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_8

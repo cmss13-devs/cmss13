@@ -28,7 +28,7 @@
 	R.mutation_type = RAVAGER_HEDGEHOG
 	R.plasma_max = 0
 	R.small_explosives_stun = FALSE
-	R.health_modifier -= XENO_HEALTH_MOD_MED
+	R.health_modifier -= XENO_HEALTH_MOD_SMALL
 	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_8
 
 	apply_behavior_holder(R)

@@ -1,4 +1,4 @@
-#define TIMER_MINIMUM_TIME (2 SECONDS)
+#define TIMER_MINIMUM_TIME (3 SECONDS)
 #define TIMER_MAXIMUM_TIME (120 SECONDS)
 
 /obj/item/device/assembly/timer
@@ -13,7 +13,7 @@
 	secured = 0
 
 	var/timing = 0
-	var/time = 4 SECONDS
+	var/time = 3 SECONDS
 
 /obj/item/device/assembly/timer/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -89,7 +89,6 @@
 		ui = new(user, src, "Timer", "Timer Assembly")
 		ui.open()
 		ui.set_autoupdate(timing)
-
 
 
 /obj/item/device/assembly/timer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

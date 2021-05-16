@@ -40,7 +40,6 @@
 
 /obj/item/explosive/attack_self(mob/user)
 	..()
-
 	if(customizable && assembly_stage <= ASSEMBLY_UNLOCKED)
 		if(detonator)
 			detonator.detached()
@@ -79,7 +78,7 @@
 /obj/item/explosive/attackby(obj/item/W as obj, mob/user as mob)
 	if(!customizable || active)
 		return
-	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
+	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_MASTER))
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
 	if(istype(W,/obj/item/device/assembly_holder) && (!assembly_stage || assembly_stage == ASSEMBLY_UNLOCKED))

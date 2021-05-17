@@ -1,6 +1,6 @@
 {
     "map_name": "CORSAT",
-    "map_path": "CORSAT",
+    "map_path": "map_files/CORSAT",
     "map_file": "Corsat.dmm",
     "environment_traits": {
         "Lockdown": true,

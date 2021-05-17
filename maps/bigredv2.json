@@ -1,6 +1,6 @@
 {
     "map_name": "Solaris Ridge",
-    "map_path": "BigRed",
+    "map_path": "map_files/BigRed",
     "map_file": "BigRed.dmm",
     "survivor_types": [
         "Survivor - Scientist",

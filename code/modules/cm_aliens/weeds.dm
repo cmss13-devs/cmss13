@@ -381,6 +381,7 @@
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
 	var/static/staticnode
+	var/overlay_node = TRUE
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
@@ -405,6 +406,12 @@
 
 /obj/effect/alien/weeds/node/update_icon()
 	..()
+	if(overlay_node)
+		overlays += staticnode
+
+/obj/effect/alien/weeds/node/proc/trap_destroyed()
+	SIGNAL_HANDLER
+	overlay_node = TRUE
 	overlays += staticnode
 
 /obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X, datum/hive_status/hive)
@@ -427,7 +434,15 @@
 
 	if(!staticnode)
 		staticnode = image(get_icon_from_source(CONFIG_GET(string/alien_weeds)), "weednode", ABOVE_OBJ_LAYER)
-	overlays += staticnode
+
+	var/obj/effect/alien/resin/trap/TR = locate() in loc
+	if(TR)
+		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, .proc/trap_destroyed)
+		overlay_node = FALSE
+		overlays -= staticnode
+	else
+		overlay_node = TRUE
+		overlays += staticnode
 
 	if(X)
 		add_hiddenprint(X)

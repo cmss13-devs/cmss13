@@ -61,7 +61,7 @@
 	. = ..()
 	update_icon()
 
-	if(istype(loc, /obj/item/weapon/gun/))
+	if(isgun(loc))
 		var/obj/item/weapon/gun/G = loc
 		if(G.current_mag == src)
 			G.update_icon()

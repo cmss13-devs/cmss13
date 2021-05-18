@@ -437,7 +437,7 @@
 		to_chat(user, SPAN_DANGER("There is already a [holstered] holstered here!"))
 		return
 
-	if (!istype(I, /obj/item/weapon/gun))
+	if (!isgun(I))
 		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
 		return
 
@@ -533,8 +533,13 @@
 	QDEL_NULL(hold)
 	return ..()
 
-/obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
-	if (!isnull(hold) && hold.handle_attack_hand(user))
+/obj/item/clothing/accessory/storage/clicked(var/mob/user, var/list/mods)
+	if(mods["alt"] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		return
+	. = ..()
+
+/obj/item/clothing/accessory/storage/attack_hand(mob/user as mob, mods)
+	if (!isnull(hold) && hold.handle_attack_hand(user, mods))
 		..(user)
 
 /obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
@@ -567,11 +572,13 @@
 /obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/C, mob/living/user)
 	. = ..()
 	if(.)
+		C.w_class = w_class //To prevent monkey business.
 		C.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
 /obj/item/clothing/accessory/storage/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
 	if(.)
+		C.w_class = initial(C.w_class)
 		C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
 /obj/item/storage/internal/accessory/webbing

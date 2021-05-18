@@ -244,7 +244,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
-	else if(istype(W, /obj/item/weapon/gun))
+	else if(isgun(W))
 		var/obj/item/weapon/gun/G = W
 		for(var/slot in G.attachments)
 			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
@@ -500,7 +500,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
-	else if(istype(W, /obj/item/weapon/gun))
+	else if(isgun(W))
 		var/obj/item/weapon/gun/G = W
 		for(var/slot in G.attachments)
 			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))

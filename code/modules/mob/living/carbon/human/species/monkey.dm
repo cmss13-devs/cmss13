@@ -51,7 +51,7 @@
 	if(held && prob(1))
 		var/turf/T = get_random_turf_in_range(H, 7, 2)
 		if(T)
-			if(istype(held, /obj/item/weapon/gun) && prob(80))
+			if(isgun(held) && prob(80))
 				var/obj/item/weapon/gun/G = held
 				G.Fire(T, H)
 			else if(prob(80) && H.equip_to_appropriate_slot(held, 0))

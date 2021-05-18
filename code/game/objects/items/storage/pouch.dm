@@ -130,7 +130,7 @@
 	if(.)
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/storage/pouch/bayonet/attack_hand(mob/user)
+/obj/item/storage/pouch/bayonet/attack_hand(mob/user, mods)
 	if(draw_cooldown < world.time)
 		..()
 		draw_cooldown = world.time + draw_cooldown_interval

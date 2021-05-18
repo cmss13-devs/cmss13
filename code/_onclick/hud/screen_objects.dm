@@ -148,7 +148,7 @@
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 		return 1
-	if(!istype(user.get_held_item(),/obj/item/weapon/gun))
+	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
 		return 1
 	user.AllowTargetMove()
@@ -179,7 +179,7 @@
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 		return 1
-	if(!istype(user.get_held_item(),/obj/item/weapon/gun))
+	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
 		return 1
 	user.AllowTargetRun()
@@ -209,7 +209,7 @@
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 		return 1
-	if(!istype(user.get_held_item(),/obj/item/weapon/gun))
+	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
 		return 1
 	user.AllowTargetClick()

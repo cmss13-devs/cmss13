@@ -9,12 +9,12 @@
 	pockets.max_w_class = SIZE_SMALL		//fit only small items
 	pockets.max_storage_space = 4
 
-/obj/item/clothing/suit/storage/attack_hand(mob/user)
+/obj/item/clothing/suit/storage/attack_hand(mob/user, mods)
 	if(loc != user)
 		..(user) // If it's in a box (e.g. SG or spec gear), don't click the pockets pls
 		return
 
-	if(pockets.handle_attack_hand(user))
+	if(pockets.handle_attack_hand(user, mods))
 		..(user)
 
 /obj/item/clothing/suit/storage/MouseDrop(obj/over_object)
@@ -56,4 +56,4 @@
 		to_chat(usr, "Clicking [name] with an empty hand now puts the first stored item in your hand.")
 	else
 		storage_flags &= ~(STORAGE_USING_DRAWING_METHOD|STORAGE_USING_FIFO_DRAWING)
-		to_chat(usr, "Clicking [name] with an empty hand now opens the pouch storage menu.")
+		to_chat(usr, "Clicking [name] with an empty hand now opens the storage menu. Holding Alt will draw the last stored item instead.")

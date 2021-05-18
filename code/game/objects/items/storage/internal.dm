@@ -83,7 +83,7 @@
 //Items that use internal storage have the option of calling this to emulate default storage attack_hand behaviour.
 //Returns 1 if the master item's parent's attack_hand() should be called, 0 otherwise.
 //It's strange, but no other way of doing it without the ability to call another proc's parent, really.
-/obj/item/storage/internal/proc/handle_attack_hand(mob/user as mob)
+/obj/item/storage/internal/proc/handle_attack_hand(mob/user as mob, mods)
 	if(user.lying)
 		return FALSE
 
@@ -98,15 +98,15 @@
 			H.r_store = null
 			return FALSE
 
-	src.add_fingerprint(user)
+	master_item.add_fingerprint(user)
 	//Checks that it's in the user's inventory somewhere - not safe with items inside storage without additional checks on master_item's end.
 	if(user.contains(master_item))
-		if(storage_flags & STORAGE_USING_DRAWING_METHOD && ishuman(user) && contents.len)
+		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents))
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
 				I = contents[1]
 			else
-				I = contents[contents.len]
+				I = contents[length(contents)]
 			I.attack_hand(user)
 		else
 			open(user)

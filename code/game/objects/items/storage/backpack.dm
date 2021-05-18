@@ -720,7 +720,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 				to_chat(user, SPAN_NOTICE("You refill [FT] with [lowertext(FT.caliber)]."))
 				FT.update_icon()
 				return
-		else if(istype(W, /obj/item/weapon/gun))
+		else if(isgun(W))
 			var/obj/item/weapon/gun/G = W
 			for(var/slot in G.attachments)
 				if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
@@ -801,7 +801,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	storage_slots = 3
 	worn_accessible = TRUE
 	can_hold = list(/obj/item/ammo_magazine/flamer_tank, /obj/item/tool/extinguisher)
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
+	storage_flags = STORAGE_FLAGS_POUCH
 
 //----------OTHER FACTIONS AND ERTS----------
 

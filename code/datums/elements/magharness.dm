@@ -3,7 +3,7 @@
 
 /datum/element/magharness/Attach(datum/target)
 	. = ..()
-	if(!istype(target, /obj/item/weapon/gun))
+	if(!isgun(target))
 		return ELEMENT_INCOMPATIBLE
 	RegisterSignal(target, COMSIG_MOVABLE_PRE_THROW, .proc/cancel_throw)
 	RegisterSignal(target, COMSIG_ITEM_DROPPED, .proc/dropped)

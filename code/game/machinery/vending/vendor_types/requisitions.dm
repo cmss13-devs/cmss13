@@ -106,7 +106,7 @@
 	var/list/R
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
-			if(istype(item_to_stock, /obj/item/weapon/gun))
+			if(isgun(item_to_stock))
 				var/obj/item/weapon/gun/G = item_to_stock
 				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
 					to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))

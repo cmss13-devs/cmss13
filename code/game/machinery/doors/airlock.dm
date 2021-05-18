@@ -604,7 +604,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else if(istype(C, /obj/item/device/multitool))
 		return attack_hand(user)
 
-	else if(istype(C, /obj/item/weapon/gun))
+	else if(isgun(C))
 		var/obj/item/weapon/gun/G = C
 		for(var/slot in G.attachments)
 			if(istype(G.attachments[slot], /obj/item/attachable/bayonet))

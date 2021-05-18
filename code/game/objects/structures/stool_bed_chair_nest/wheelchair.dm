@@ -47,7 +47,7 @@
 			var/pull_delay = driver.pulling.get_pull_drag_delay() * driver.get_pull_miltiplier()
 			move_delay += max(driver.pull_speed + pull_delay + 3*driver.grab_level, 0) //harder grab makes you slower
 
-		if(istype(driver.get_active_hand(), /obj/item/weapon/gun)) //Wheelchair user has a gun out, so obviously can't move
+		if(isgun(driver.get_active_hand())) //Wheelchair user has a gun out, so obviously can't move
 			return
 
 		if(driver.next_move_slowdown)

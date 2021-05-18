@@ -217,7 +217,7 @@ cases. Override_icon_state should be a list.*/
 		if(src.clone && !src.clone.Adjacent(user)) // Is the clone adjacent?
 			return
 
-	if(istype(loc, /obj/item/weapon/gun)) // more alt-click hijinx
+	if(isgun(loc)) // more alt-click hijinx
 		return
 
 	if(isstorage(loc))

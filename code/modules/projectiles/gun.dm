@@ -354,6 +354,10 @@
 	attachments = null
 	attachable_overlays = null
 	GLOB.gun_list -= src
+
+	var/obj/item/storage/belt/gun/gun_belt = loc //These use a var to prevent inserting more than one pistol, so the gun must be removed to clear it.
+	if(istype(gun_belt))
+		gun_belt.remove_from_storage(src, null)
 	. = ..()
 
 /obj/item/weapon/gun/emp_act(severity)
@@ -989,7 +993,7 @@ and you're good to go.
 		if(bullets_fired == 1 && !reflex && !dual_wield)
 			if(user)
 				var/obj/item/IH = user.get_inactive_hand()
-				if(istype(IH, /obj/item/weapon/gun))
+				if(isgun(IH))
 					var/obj/item/weapon/gun/OG = IH
 					if(!(OG.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && OG.gun_category == gun_category)
 						OG.Fire(target,user,params, 0, TRUE)

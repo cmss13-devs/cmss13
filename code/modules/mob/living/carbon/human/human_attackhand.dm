@@ -123,15 +123,15 @@
 
 			//Accidental gun discharge
 			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED))
-				if (istype(r_hand,/obj/item/weapon/gun) || istype(l_hand,/obj/item/weapon/gun))
+				if (isgun(r_hand) || isgun(l_hand))
 					var/obj/item/weapon/gun/W = null
 					var/chance = 0
 
-					if (istype(l_hand,/obj/item/weapon/gun))
+					if (isgun(l_hand))
 						W = l_hand
 						chance = hand ? 40 : 20
 
-					if (istype(r_hand,/obj/item/weapon/gun))
+					if (isgun(r_hand))
 						W = r_hand
 						chance = !hand ? 40 : 20
 

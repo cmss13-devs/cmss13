@@ -7,7 +7,7 @@
 	flags_equip_slot = SLOT_WAIST
 	attack_verb = list("whipped", "lashed", "disciplined")
 	w_class = SIZE_LARGE
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_ALLOW_DRAWING_METHOD_TOGGLE
+	storage_flags = STORAGE_FLAGS_POUCH
 	cant_hold = list(/obj/item/weapon/melee/throwing_knife)
 
 /obj/item/storage/belt/equipped(mob/user, slot)
@@ -22,11 +22,11 @@
 ///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
 /obj/item/storage/belt/update_icon(flap = TRUE)
 	overlays.Cut()
-	if(!contents.len)
+	if(!length(contents))
 		return
 	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
-	else if(contents.len <= storage_slots * 0.5)
+	else if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
 		overlays += "+[icon_state]_full"
@@ -498,7 +498,7 @@
 	if(.)
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/storage/belt/knifepouch/attack_hand(mob/user)
+/obj/item/storage/belt/knifepouch/attack_hand(mob/user, mods)
 	if(draw_cooldown < world.time)
 		..()
 		draw_cooldown = world.time + draw_cooldown_interval
@@ -589,11 +589,11 @@
 
 /obj/item/storage/sparepouch/update_icon()
 	overlays.Cut()
-	if(!contents.len)
+	if(!length(contents))
 		return
 	if(content_watchers)
 		return
-	else if(contents.len <= storage_slots * 0.5)
+	else if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
 		overlays += "+[icon_state]_full"
@@ -630,11 +630,11 @@
 	var/icon_state_text = icon_state
 	if(current_gun)
 		icon_state_text = copytext(icon_state,1,-2)
-	if((!(contents.len - 1) && current_gun) || (!contents.len && !current_gun))
+	if((!(length(contents) - 1) && current_gun) || (!length(contents) && !current_gun))
 		return
 	if(content_watchers)
 		return
-	else if(contents.len <= storage_slots * 0.5)
+	else if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state_text]_half"
 	else
 		overlays += "+[icon_state_text]_full"
@@ -645,11 +645,18 @@
 	. = ..()
 
 
-/obj/item/storage/belt/gun/attack_hand(mob/user)
+/obj/item/storage/belt/gun/attack_hand(mob/user, mods)
 	if(current_gun && ishuman(user) && loc == user)
-		current_gun.attack_hand(user)
-	else
-		..()
+		if(mods["alt"] && length(contents) > 1) //Withdraw the most recently inserted magazine, if possible.
+			var/obj/item/I = contents[length(contents)]
+			if(isgun(I))
+				I = contents[length(contents) - 1]
+			I.attack_hand(user)
+		else
+			current_gun.attack_hand(user)
+		return
+
+	..()
 
 
 /obj/item/storage/belt/gun/proc/update_gun_icon() //We do not want to use regular update_icon as it's called for every item inserted. Not worth the icon math.
@@ -690,14 +697,14 @@
 //There are only two types here that can be inserted, and they are mutually exclusive. We only track the gun.
 /obj/item/storage/belt/gun/can_be_inserted(obj/item/W, stop_messages) //We don't need to stop messages, but it can be left in.
 	if( ..() ) //If the parent did their thing, this should be fine. It pretty much handles all the checks.
-		if(istype(W,/obj/item/weapon/gun))
+		if(isgun(W))
 			if(current_gun)
 				if(!stop_messages)
 					to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
 				return
 		else //Must be ammo.
 			var/ammo_slots = storage_slots - 1 //We have a slot reserved for the gun
-			var/ammo_stored = contents.len
+			var/ammo_stored = length(contents)
 			if(current_gun)
 				ammo_stored -= 1
 			if(ammo_stored >= ammo_slots)

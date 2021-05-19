@@ -647,7 +647,7 @@
 
 /obj/item/storage/belt/gun/attack_hand(mob/user, mods)
 	if(current_gun && ishuman(user) && loc == user)
-		if(mods["alt"] && length(contents) > 1) //Withdraw the most recently inserted magazine, if possible.
+		if(mods && mods["alt"] && length(contents) > 1) //Withdraw the most recently inserted magazine, if possible.
 			var/obj/item/I = contents[length(contents)]
 			if(isgun(I))
 				I = contents[length(contents) - 1]

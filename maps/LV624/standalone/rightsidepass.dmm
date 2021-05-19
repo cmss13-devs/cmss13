@@ -1,9 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ae" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert3"
-	},
-/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "bw" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast{
@@ -21,9 +16,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "cR" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert"
-	},
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/closed/wall/strata_ice/jungle,
 /area/lv624/ground/river/east_river)
 "df" = (
 /turf/closed/wall/strata_ice/jungle,
@@ -108,11 +102,6 @@
 /obj/structure/flora/bush/ausbushes/reedbush,
 /turf/open/gm/river,
 /area/lv624/ground/river/east_river)
-"rT" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert"
-	},
-/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "sa" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 10
@@ -126,7 +115,7 @@
 /area/lv624/ground/jungle/east_jungle)
 "tn" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert_dug"
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
@@ -137,15 +126,15 @@
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "tN" = (
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert3"
 	},
-/area/lv624/ground/river/east_river)
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "tT" = (
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/east_jungle)
 "ww" = (
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert2"
 	},
 /area/lv624/ground/river/east_river)
@@ -273,7 +262,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/river/east_river)
 "PZ" = (
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert0"
 	},
 /area/lv624/ground/jungle/east_jungle)
@@ -305,7 +294,7 @@
 	},
 /area/lv624/ground/jungle/east_jungle)
 "Wq" = (
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert2"
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
@@ -359,7 +348,7 @@ tT
 (2,1,1) = {"
 cG
 cG
-ae
+tN
 tJ
 lJ
 TQ
@@ -407,7 +396,7 @@ cG
 cG
 cG
 cG
-PV
+cG
 Cf
 TQ
 TQ
@@ -449,7 +438,7 @@ CA
 ci
 cG
 cG
-rT
+cG
 Wq
 cG
 tN
@@ -457,7 +446,7 @@ PV
 PV
 PV
 ww
-Qz
+PV
 Qz
 Qz
 NJ
@@ -474,12 +463,12 @@ zT
 ci
 cG
 cG
-cR
-cR
+cG
 PV
-cR
 PV
-Qz
+PV
+PV
+PV
 WK
 DA
 VF
@@ -496,12 +485,12 @@ oA
 Xq
 qk
 qk
-FQ
+qk
 lm
 FQ
 FQ
 FQ
-DA
+FQ
 Qp
 tT
 tT
@@ -518,12 +507,12 @@ df
 df
 df
 pf
+df
 nG
 nG
 nG
 nG
-nG
-mK
+cR
 sn
 mK
 sn

@@ -3620,10 +3620,11 @@
 	},
 /area/lv624/ground/river/east_river)
 "arT" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert"
+/obj/structure/flora/bush/ausbushes/reedbush,
+/turf/open/gm/dirt{
+	icon_state = "desert2"
 	},
-/area/lv624/ground/river/east_river)
+/area/lv624/ground/barrens/south_eastern_barrens)
 "arU" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
 /turf/open/gm/river,
@@ -14514,11 +14515,10 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "dTm" = (
-/obj/effect/landmark/lv624/fog_blocker,
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert2"
+/turf/open/gm/dirt{
+	icon_state = "desert1"
 	},
-/area/lv624/ground/river/east_river)
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "dVH" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/river/central_river)
@@ -14904,7 +14904,7 @@
 /area/lv624/ground/jungle/south_east_jungle)
 "eNQ" = (
 /obj/structure/flora/bush/ausbushes/var3/fullgrass,
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert_dug"
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
@@ -14913,7 +14913,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/east_barrens)
 "ePp" = (
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert3"
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
@@ -16192,8 +16192,8 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "izv" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert"
+/turf/open/gm/dirt{
+	icon_state = "desert0"
 	},
 /area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "izX" = (
@@ -16380,10 +16380,10 @@
 	},
 /area/lv624/ground/jungle/south_central_jungle)
 "iVg" = (
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert2"
 	},
-/area/lv624/ground/river/east_river)
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "iWC" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirt,
@@ -16514,8 +16514,9 @@
 /turf/open/gm/grass,
 /area/lv624/lazarus/landing_zones/lz1)
 "jum" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert0"
+/obj/effect/landmark/lv624/fog_blocker,
+/turf/open/gm/dirt{
+	icon_state = "desert1"
 	},
 /area/lv624/ground/river/east_river)
 "jwW" = (
@@ -17527,7 +17528,7 @@
 	},
 /area/lv624/lazarus/medbay)
 "mjm" = (
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert3"
 	},
 /area/lv624/ground/river/east_river)
@@ -18912,10 +18913,10 @@
 /turf/open/gm/grass,
 /area/lv624/ground/colony/west_tcomms_road)
 "pmz" = (
-/turf/open/gm/dirtgrassborder{
+/turf/open/gm/dirt{
 	icon_state = "desert2"
 	},
-/area/lv624/ground/barrens/south_eastern_jungle_barrens)
+/area/lv624/ground/river/east_river)
 "por" = (
 /obj/structure/flora/grass/tallgrass/jungle/corner{
 	dir = 3
@@ -21362,10 +21363,10 @@
 	},
 /area/lv624/lazarus/quartstorage)
 "vIt" = (
-/turf/open/gm/dirtgrassborder{
-	icon_state = "desert1"
+/turf/open/gm/dirt{
+	icon_state = "desert0"
 	},
-/area/lv624/ground/barrens/south_eastern_jungle_barrens)
+/area/lv624/ground/river/east_river)
 "vJs" = (
 /obj/structure/flora/grass/tallgrass/jungle,
 /obj/item/bananapeel,
@@ -56114,7 +56115,7 @@ iOz
 ttZ
 mVg
 gTM
-jic
+arT
 ajw
 ajI
 ajI
@@ -57939,7 +57940,7 @@ obC
 vty
 vty
 iJs
-vIt
+hba
 hIh
 uxT
 uxT
@@ -58167,7 +58168,7 @@ vty
 glS
 vty
 iJs
-hba
+dTm
 hba
 hba
 hba
@@ -58626,8 +58627,8 @@ iJs
 hba
 hba
 nWe
-vIt
 hba
+ePp
 hba
 hba
 mOA
@@ -58859,7 +58860,7 @@ hba
 hba
 nWe
 hba
-pmz
+hba
 ajw
 ajI
 ajI
@@ -59085,7 +59086,7 @@ ePV
 dKg
 syc
 hba
-hba
+izv
 hba
 hba
 ajw
@@ -59543,7 +59544,7 @@ vty
 uve
 iJs
 hba
-hba
+izv
 ajw
 ajI
 ajI
@@ -60227,8 +60228,8 @@ uve
 uve
 iJs
 hba
+iVg
 hba
-ePp
 hIh
 kJm
 qcz
@@ -60687,7 +60688,7 @@ hba
 nWe
 hba
 hba
-mqJ
+jum
 ogM
 oHu
 ajI
@@ -60696,7 +60697,7 @@ wkt
 efX
 efX
 hWj
-ogM
+pmz
 mqJ
 cCr
 dLY
@@ -60922,8 +60923,8 @@ fXD
 efX
 tZa
 ogM
+vIt
 ogM
-jum
 ogM
 mqJ
 cCr
@@ -61142,14 +61143,14 @@ koM
 mPt
 hba
 hba
-izv
-dTm
+hba
+mqJ
 ogM
 mjm
 ogM
 ogM
+pmz
 ogM
-iVg
 ogM
 ogM
 ogM
@@ -61373,10 +61374,10 @@ pxs
 mPt
 mqJ
 ogM
-arT
-arT
 ogM
-arT
+ogM
+ogM
+ogM
 ogM
 ogM
 ygn

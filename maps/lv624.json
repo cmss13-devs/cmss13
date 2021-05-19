@@ -1,6 +1,6 @@
 {
     "map_name": "LV-624",
-    "map_path": "LV624",
+    "map_path": "map_files/LV624",
 	"map_file": "LV624.dmm",
     "survivor_types": [
         "Survivor - Scientist",

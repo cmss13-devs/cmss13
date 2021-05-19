@@ -1,6 +1,6 @@
 {
     "map_name": "Trijent Dam",
-    "map_path": "DesertDam",
+    "map_path": "map_files/DesertDam",
     "map_file": "Desert_Dam.dmm",
     "survivor_types": [
         "Survivor - Doctor",

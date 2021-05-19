@@ -1413,15 +1413,16 @@ Defined in conflicts.dm of the #defines folder.
 			break
 
 		current_rounds--
+		var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
 		if(T.density)
-			T.flamer_fire_act()
+			T.flamer_fire_act(0, cause_data)
 			stop_at_turf = TRUE
 		else if(prev_T)
 			var/atom/movable/temp = new/obj/flamer_fire()
 			var/atom/movable/AM = LinkBlocked(temp, prev_T, T)
 			qdel(temp)
 			if(AM)
-				AM.flamer_fire_act()
+				AM.flamer_fire_act(0, cause_data)
 				if (AM.flags_atom & ON_BORDER)
 					break
 				stop_at_turf = TRUE
@@ -1442,7 +1443,7 @@ Defined in conflicts.dm of the #defines folder.
 		R.intensityfire = burn_level
 		R.durationfire = burn_duration
 
-		new/obj/flamer_fire(T, initial(name), user, R)
+		new/obj/flamer_fire(T, create_cause_data(initial(name), user), R)
 
 /obj/item/attachable/attached_gun/flamer/integrated
 	name = "integrated flamethrower"

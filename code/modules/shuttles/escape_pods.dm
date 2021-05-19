@@ -139,7 +139,7 @@ for(var/obj/structure/machinery/cryopod/evacuation/C in cryo_cells) C.go_out()
 	sleep(31)
 	if(!check_passengers())
 		evacuation_program.dock_state = STATE_BROKEN
-		explosion(evacuation_program.master, -1, -1, 3, 4, , , ,"escape pod malfunction")
+		explosion(evacuation_program.master, -1, -1, 3, 4, , , , create_cause_data("escape pod malfunction"))
 		sleep(25)
 		staging_area.initialize_power_and_lighting(TRUE) //We want to reinitilize power usage and turn off everything.
 

@@ -1,7 +1,7 @@
 
 //Now that this has been replaced entirely by D.O.R.E.C, we just need something that translates old explosion calls into a D.O.R.E.C approximation
 
-/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = 0, flame_range = 0, var/explosion_source = "explosion", var/explosion_source_mob)
+/proc/explosion(turf/epicenter, devastation_range, heavy_impact_range, light_impact_range, flash_range, adminlog = 1, z_transfer = 0, flame_range = 0, var/datum/cause_data/explosion_cause_data)
 	var/power = 0
 
 	if(devastation_range > 0)
@@ -15,7 +15,7 @@
 
 	var/falloff = power/(light_impact_range+2) // +1 would give the same range. +2 gives a bit of extra range now that explosions are blocked by walls
 
-	cell_explosion(epicenter, power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, explosion_source, explosion_source_mob)
+	cell_explosion(epicenter, power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, explosion_cause_data)
 
 
 

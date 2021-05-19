@@ -154,14 +154,14 @@
 
 	if(health <= crit_health - warding_aura * 20) //dead
 		if(prob(gib_chance + 0.5*(crit_health - health)))
-			INVOKE_ASYNC(src, .proc/gib, last_damage_source)
+			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
 		else
-			death(last_damage_source)
+			death(last_damage_data)
 		return
 
 	else if(health <= 0) //in crit
 		if(hardcore)
-			INVOKE_ASYNC(src, .proc/gib, last_damage_source)
+			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
 		else
 			stat = UNCONSCIOUS
 			blinded = 1

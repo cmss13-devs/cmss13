@@ -335,8 +335,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_type)
+	H.last_damage_data = create_cause_data(X.caste_type, X)
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
 	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
@@ -525,8 +524,7 @@
 	X.animation_attack_on(A)
 	X.flick_attack_overlay(A, "slash")
 
-	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_type)
+	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
 	playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 
@@ -704,7 +702,7 @@
 	to_chat(X, SPAN_XENOWARNING("You lob a compressed ball of acid into the air!"))
 
 	var/obj/item/explosive/grenade/xeno_acid_grenade/grenade = new /obj/item/explosive/grenade/xeno_acid_grenade
-	grenade.source_mob = X
+	grenade.cause_data = create_cause_data(initial(X.caste_type), X)
 	grenade.forceMove(get_turf(X))
 	grenade.throw_atom(A, 5, SPEED_SLOW, X, TRUE)
 	addtimer(CALLBACK(grenade, /obj/item/explosive.proc/prime), prime_delay)

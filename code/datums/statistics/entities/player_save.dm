@@ -16,7 +16,7 @@
 		log_debug("STATISTICS: stats failed to save for [ckey] in [path] (save_loaded: [save_loaded])")
 		return FALSE
 	var/savefile/S = new /savefile(path)
-	if(!S)					
+	if(!S)
 		return FALSE
 	S.cd = "/"
 
@@ -71,7 +71,7 @@
 			new_nemesis.name = save_nemesis["name"]
 			new_nemesis.value = save_nemesis["value"]
 			human_stats.nemesis = new_nemesis
-		
+
 		if(human_save["humans_killed"])
 			var/save_humans_killed = human_save["humans_killed"]
 			var/list/new_humans_killed_list = new()
@@ -81,7 +81,7 @@
 				new_human_killed.value = save_kill["value"]
 				new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
 			human_stats.humans_killed = new_humans_killed_list
-		
+
 		if(human_save["xenos_killed"])
 			var/save_xeno_killed = human_save["xenos_killed"]
 			var/list/new_xenos_killed_list = new()
@@ -110,36 +110,6 @@
 				new_medal_list += new_medal
 			human_stats.medal_list = new_medal_list
 
-		if(human_save["death_list"])
-			var/save_death_list = human_save["death_list"]
-			var/list/new_death_list = new()
-			for(var/save_death in save_death_list)
-				var/datum/entity/death_stats/new_death = new()
-				new_death.player = src
-				new_death.mob_name = save_death["mob_name"]
-				new_death.job_name = save_death["job_name"]
-				new_death.area_name = save_death["area_name"]
-				new_death.cause_name = save_death["cause_name"]
-				new_death.total_kills = save_death["total_kills"]
-				new_death.time_of_death = text2duration(save_death["time_of_death"])
-				new_death.steps_walked = save_death["steps_walked"]
-				new_death.total_time_alive = text2duration(save_death["total_time_alive"])
-				new_death.x = save_death["x"]
-				new_death.y = save_death["y"]
-				new_death.z = save_death["z"]
-	
-				if(save_death["total_damage"])
-					var/save_death_damage = save_death["total_damage"]
-					var/list/new_damage_list = new()
-					for(var/save_damage in save_death_damage)
-						var/datum/entity/statistic/new_death_damage = new()
-						new_death_damage.name = save_damage["name"]
-						new_death_damage.value = save_damage["value"]
-						new_damage_list["[new_death_damage.name]"] = new_death_damage
-					new_death.total_damage = new_damage_list
-				new_death_list += new_death
-			human_stats.death_list = new_death_list
-
 		if(human_save["weapon_stats_list"])
 			var/save_weapon_list = human_save["weapon_stats_list"]
 			var/list/new_weapon_list = new()
@@ -152,7 +122,7 @@
 				new_weapon.total_shots = save_weapon["total_shots"]
 				new_weapon.total_shots_hit = save_weapon["total_shots_hit"]
 				new_weapon.total_friendly_fire = save_weapon["total_friendly_fire"]
-	
+
 				if(save_weapon["humans_killed"])
 					var/save_humans_killed = save_weapon["humans_killed"]
 					var/list/new_humans_killed_list = new()
@@ -162,7 +132,7 @@
 						new_human_killed.value = save_kill["value"]
 						new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
 					new_weapon.humans_killed = new_humans_killed_list
-				
+
 				if(save_weapon["xenos_killed"])
 					var/save_xeno_killed = save_weapon["xenos_killed"]
 					var/list/new_xenos_killed_list = new()
@@ -172,7 +142,7 @@
 						new_xeno_killed.value = save_kill["value"]
 						new_xenos_killed_list["[new_xeno_killed.name]"] = new_xeno_killed
 					new_weapon.xenos_killed = new_xenos_killed_list
-				
+
 				if(save_weapon["niche_stats"])
 					var/save_niche_stats = save_weapon["niche_stats"]
 					var/list/new_niche_stat_list = new()
@@ -185,7 +155,7 @@
 
 				new_weapon_list["[new_weapon.name]"] = new_weapon
 			human_stats.weapon_stats_list = new_weapon_list
-			
+
 		if(human_save["job_stats_list"])
 			var/save_job_list = human_save["job_stats_list"]
 			var/list/new_job_list = new()
@@ -221,7 +191,7 @@
 						new_human_killed.value = save_kill["value"]
 						new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
 					new_job.humans_killed = new_humans_killed_list
-				
+
 				if(save_job["xenos_killed"])
 					var/save_xeno_killed = save_job["xenos_killed"]
 					var/list/new_xenos_killed_list = new()
@@ -242,35 +212,6 @@
 						new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
 					new_job.niche_stats = new_niche_stat_list
 
-				if(save_job["death_list"])
-					var/save_death_list = save_job["death_list"]
-					var/list/new_death_list = new()
-					for(var/save_death in save_death_list)
-						var/datum/entity/death_stats/new_death = new()
-						new_death.player = src
-						new_death.mob_name = save_death["mob_name"]
-						new_death.job_name = save_death["job_name"]
-						new_death.area_name = save_death["area_name"]
-						new_death.cause_name = save_death["cause_name"]
-						new_death.total_kills = save_death["total_kills"]
-						new_death.time_of_death = text2duration(save_death["time_of_death"])
-						new_death.steps_walked = save_death["steps_walked"]
-						new_death.total_time_alive = text2duration(save_death["total_time_alive"])
-						new_death.x = save_death["x"]
-						new_death.y = save_death["y"]
-						new_death.z = save_death["z"]
-			
-						if(save_death["total_damage"])
-							var/save_death_damage = save_death["total_damage"]
-							var/list/new_damage_list = new()
-							for(var/save_damage in save_death_damage)
-								var/datum/entity/statistic/new_death_damage = new()
-								new_death_damage.name = save_damage["name"]
-								new_death_damage.value = save_damage["value"]
-								new_damage_list["[new_death_damage.name]"] = new_death_damage
-							new_death.total_damage = new_damage_list
-						new_death_list += new_death
-					new_job.death_list = new_death_list
 				new_job_list["[new_job.name]"] = new_job
 			human_stats.job_stats_list = new_job_list
 
@@ -294,7 +235,7 @@
 			new_nemesis.name = save_nemesis["name"]
 			new_nemesis.value = save_nemesis["value"]
 			xeno_stats.nemesis = new_nemesis
-	
+
 		if(xeno_save["humans_killed"])
 			var/save_humans_killed = xeno_save["humans_killed"]
 			var/list/new_humans_killed_list = new()
@@ -304,7 +245,7 @@
 				new_human_killed.value = save_kill["value"]
 				new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
 			xeno_stats.humans_killed = new_humans_killed_list
-		
+
 		if(xeno_save["xenos_killed"])
 			var/save_xeno_killed = xeno_save["xenos_killed"]
 			var/list/new_xenos_killed_list = new()
@@ -324,36 +265,6 @@
 				new_niche_stat.value = save_niche["value"]
 				new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
 			xeno_stats.niche_stats = new_niche_stat_list
-
-		if(xeno_save["death_list"])
-			var/save_death_list = xeno_save["death_list"]
-			var/list/new_death_list = new()
-			for(var/save_death in save_death_list)
-				var/datum/entity/death_stats/new_death = new()
-				new_death.player = src
-				new_death.mob_name = save_death["mob_name"]
-				new_death.job_name = save_death["job_name"]
-				new_death.area_name = save_death["area_name"]
-				new_death.cause_name = save_death["cause_name"]
-				new_death.total_kills = save_death["total_kills"]
-				new_death.time_of_death = text2duration(save_death["time_of_death"])
-				new_death.steps_walked = save_death["steps_walked"]
-				new_death.total_time_alive = text2duration(save_death["total_time_alive"])
-				new_death.x = save_death["x"]
-				new_death.y = save_death["y"]
-				new_death.z = save_death["z"]
-	
-				if(save_death["total_damage"])
-					var/save_death_damage = save_death["total_damage"]
-					var/list/new_damage_list = new()
-					for(var/save_damage in save_death_damage)
-						var/datum/entity/statistic/new_death_damage = new()
-						new_death_damage.name = save_damage["name"]
-						new_death_damage.value = save_damage["value"]
-						new_damage_list["[new_death_damage.name]"] = new_death_damage
-					new_death.total_damage = new_damage_list
-				new_death_list += new_death
-			xeno_stats.death_list = new_death_list
 
 		if(xeno_save["caste_stats_list"])
 			var/save_caste_list = xeno_save["caste_stats_list"]
@@ -385,7 +296,7 @@
 						new_ability_used.value = save_ability["value"]
 						new_abilities_used_list["[new_ability_used.name]"] = new_ability_used
 					new_caste.abilities_used = new_abilities_used_list
-				
+
 				if(save_caste["humans_killed"])
 					var/save_humans_killed = save_caste["humans_killed"]
 					var/list/new_humans_killed_list = new()
@@ -395,7 +306,7 @@
 						new_human_killed.value = save_kill["value"]
 						new_humans_killed_list["[new_human_killed.name]"] = new_human_killed
 					new_caste.humans_killed = new_humans_killed_list
-				
+
 				if(save_caste["xenos_killed"])
 					var/save_xeno_killed = save_caste["xenos_killed"]
 					var/list/new_xenos_killed_list = new()
@@ -416,35 +327,6 @@
 						new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
 					new_caste.niche_stats = new_niche_stat_list
 
-				if(save_caste["death_list"])
-					var/save_death_list = save_caste["death_list"]
-					var/list/new_death_list = new()
-					for(var/save_death in save_death_list)
-						var/datum/entity/death_stats/new_death = new()
-						new_death.player = src
-						new_death.mob_name = save_death["mob_name"]
-						new_death.job_name = save_death["job_name"]
-						new_death.area_name = save_death["area_name"]
-						new_death.cause_name = save_death["cause_name"]
-						new_death.total_kills = save_death["total_kills"]
-						new_death.time_of_death = text2duration(save_death["time_of_death"])
-						new_death.steps_walked = save_death["steps_walked"]
-						new_death.total_time_alive = text2duration(save_death["total_time_alive"])
-						new_death.x = save_death["x"]
-						new_death.y = save_death["y"]
-						new_death.z = save_death["z"]
-			
-						if(save_death["total_damage"])
-							var/save_death_damage = save_death["total_damage"]
-							var/list/new_damage_list = new()
-							for(var/save_damage in save_death_damage)
-								var/datum/entity/statistic/new_death_damage = new()
-								new_death_damage.name = save_damage["name"]
-								new_death_damage.value = save_damage["value"]
-								new_damage_list["[new_death_damage.name]"] = new_death_damage
-							new_death.total_damage = new_damage_list
-						new_death_list += new_death
-					new_caste.death_list = new_death_list
 				new_caste_list["[new_caste.name]"] = new_caste
 			xeno_stats.caste_stats_list = new_caste_list
 

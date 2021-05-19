@@ -55,7 +55,7 @@
 
 	updatehealth()
 	if(health < -100 || !has_brain())
-		death(last_damage_source)
+		death(last_damage_data)
 		blinded = 1
 		stat = DEAD
 		silent = 0

@@ -560,7 +560,8 @@
 		update_icon() //make sure the user can see the lack of ammo.
 		return 0 //Out of ammo.
 
-	in_chamber = new /obj/item/projectile(initial(name), null, loc) //New bullet!
+	var/datum/cause_data/cause_data = create_cause_data(initial(name))
+	in_chamber = new /obj/item/projectile(loc, cause_data) //New bullet!
 	in_chamber.generate_bullet(ammo)
 	return 1
 
@@ -620,7 +621,7 @@
 				final_angle += rand(-total_scatter_angle, total_scatter_angle)
 				target = get_angle_target_turf(T, final_angle, 30)
 
-			in_chamber.weapon_source_mob = user
+			in_chamber.weapon_cause_data = create_cause_data(initial(name), user)
 			in_chamber.setDir(dir)
 			in_chamber.def_zone = pick("chest","chest","chest","head")
 			playsound(loc,gun_noise, 50, 1)

@@ -41,12 +41,12 @@
 		else if(isliving(object))
 			var/mob/living/M = object
 			if(gib_on_land)
-				M.gib("[src]")
+				M.gib(create_cause_data("[src]", null))
 			else
 				M.apply_damage(land_damage, BRUTE)
 
 	if(land_exp_power)
-		cell_explosion(loc, land_exp_power, land_exp_falloff, explosion_source = "[src]")
+		cell_explosion(loc, land_exp_power, land_exp_falloff, create_cause_data("[src]"))
 
 	if(should_recall)
 		addtimer(CALLBACK(src, .proc/recall), return_time)

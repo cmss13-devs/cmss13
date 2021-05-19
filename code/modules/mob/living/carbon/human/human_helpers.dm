@@ -364,3 +364,6 @@
 	for (var/datum/effects/tethered/TD in effects_list)
 		return TRUE
 	return FALSE
+
+/mob/living/carbon/human/get_role_name()
+	return get_actual_job_name(src)

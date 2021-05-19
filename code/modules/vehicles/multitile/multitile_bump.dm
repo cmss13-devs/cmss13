@@ -199,8 +199,7 @@
 		mob_moved = step(L, last_move_dir)
 
 	playsound(loc, "punch", 25, 1)
-	L.last_damage_mob = seats[VEHICLE_DRIVER]
-	L.last_damage_source = "[initial(name)] roadkill"
+	L.last_damage_data = create_cause_data("[initial(name)] roadkill", seats[VEHICLE_DRIVER])
 	L.visible_message(SPAN_DANGER("[src] rams [L]!"), SPAN_DANGER("[src] rams you! Get out of the way!"))
 
 	var/list/slots = get_activatable_hardpoints()

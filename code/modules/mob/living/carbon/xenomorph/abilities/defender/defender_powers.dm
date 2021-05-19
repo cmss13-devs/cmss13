@@ -73,8 +73,7 @@
 
 	apply_cooldown()
 
-	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_type)
+	H.last_damage_data = create_cause_data(X.caste_type, X)
 	X.visible_message(SPAN_XENOWARNING("[X] rams [H] with its armored crest!"), \
 	SPAN_XENOWARNING("You ram [H] with your armored crest!"))
 
@@ -134,8 +133,7 @@
 		if(H.stat == DEAD) continue
 		if(HAS_TRAIT(H, TRAIT_NESTED)) continue
 		step_away(H, X, sweep_range, 2)
-		H.last_damage_mob = X
-		H.last_damage_source = initial(X.caste_type)
+		H.last_damage_data = create_cause_data(X.caste_type, X)
 		H.apply_armoured_damage(get_xeno_damage_slash(H, 15), ARMOR_MELEE, BRUTE)
 		shake_camera(H, 2, 1)
 

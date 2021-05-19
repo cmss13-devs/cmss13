@@ -91,9 +91,10 @@
 /mob/living/simple_animal/corgi/death()
 	. = ..()
 	if(!.)	return //was already dead
-	if(last_damage_mob)
-		var/mob/user = last_damage_mob
-		user.count_niche_stat(STATISTICS_NICHE_CORGI)
+	if(last_damage_data)
+		var/mob/user = last_damage_data.resolve_mob()
+		if(user)
+			user.count_niche_stat(STATISTICS_NICHE_CORGI)
 
 /obj/item/reagent_container/food/snacks/meat/corgi
 	name = "Corgi meat"

@@ -1018,7 +1018,7 @@
 			// Bullet gets absorbed if it has IFF or can't be reflected.
 			return
 
-		var/obj/item/projectile/new_proj = new(src)
+		var/obj/item/projectile/new_proj = new(src, create_cause_data(initial(name)))
 		new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
 		new_proj.damage = original_damage
 

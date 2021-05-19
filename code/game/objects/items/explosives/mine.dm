@@ -79,7 +79,7 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
 		SPAN_NOTICE("You finish deploying [src]."))
 
-	source_mob = user
+	cause_data = create_cause_data(initial(name), user)
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
 	user.drop_inv_item_on_ground(src)
@@ -186,9 +186,9 @@
 	set waitfor = 0
 
 	if(!customizable)
-		create_shrapnel(loc, 12, dir, angle, , initial(name), source_mob)
+		create_shrapnel(loc, 12, dir, angle, , cause_data)
 		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
-		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, initial(name), source_mob)
+		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
 	else
 		. = ..()
@@ -220,7 +220,8 @@
 		disarm()
 	return XENO_ATTACK_ACTION
 
-/obj/item/explosive/mine/flamer_fire_act() //adding mine explosions
+/obj/item/explosive/mine/flamer_fire_act(damage, flame_cause_data) //adding mine explosions
+	cause_data = flame_cause_data
 	prime()
 	if(!QDELETED(src))
 		disarm()

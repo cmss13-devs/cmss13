@@ -23,7 +23,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	flags_atom = FPRINT|CONDUCT
-	
+
 	attack_verb = list("attacked", "stabbed", "poked")
 	sharp = 0
 	var/loaded      //Descriptive string for currently loaded food object.
@@ -127,7 +127,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
-	
+
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 
 /*
@@ -144,7 +144,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 6
 	matter = list("metal" = 12000)
-	
+
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_ACCURATE
 	edge = 1
@@ -170,8 +170,7 @@
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked") //I think the rollingpin attackby will end up ignoring this anyway.
 
 /obj/item/tool/kitchen/rollingpin/attack(mob/living/M as mob, mob/living/user as mob)
-	M.last_damage_source = initial(name)
-	M.last_damage_mob = user
+	M.last_damage_data = create_cause_data(initial(name), user)
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [key_name(M)]</font>")
 	msg_admin_attack("[key_name(user)] used the [src.name] to attack [key_name(M)] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)

@@ -96,8 +96,7 @@
 	playsound(H,'sound/weapons/alien_claw_block.ogg', 75, 1)
 	H.apply_effect(get_xeno_stun_duration(H, stun_power), STUN)
 	H.apply_effect(weaken_power, WEAKEN)
-	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_type)
+	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	shake_camera(H, 2, 1)
 
 	var/facing = get_dir(X, H)
@@ -153,8 +152,7 @@
 	if (!check_and_use_plasma_owner())
 		return
 
-	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_type)
+	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"), \
 	SPAN_XENOWARNING("You hit [H] in the [L? L.display_name : "chest"] with a devastatingly powerful punch!"))
@@ -258,8 +256,7 @@
 	if (!X.Adjacent(H))
 		return
 
-	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_type)
+	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 	X.visible_message(SPAN_XENOWARNING("\The [X] hits [H] with a powerful jab!"), \
 	SPAN_XENOWARNING("You hit [H] with a powerful jab!"))
 	var/S = pick('sound/weapons/punch1.ogg','sound/weapons/punch2.ogg','sound/weapons/punch3.ogg','sound/weapons/punch4.ogg')
@@ -328,8 +325,7 @@
 	if (istype(WP))
 		WP.apply_cooldown_override(WP.xeno_cooldown)
 
-	H.last_damage_mob = X
-	H.last_damage_source = initial(X.caste_type)
+	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
 
 	var/ko_counter = BD.ko_counter
 

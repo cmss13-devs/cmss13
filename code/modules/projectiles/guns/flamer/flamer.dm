@@ -186,7 +186,7 @@
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(to_fire, initial(name), user, R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user))
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user))
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
@@ -318,15 +318,14 @@
 
 	var/flame_icon = "dynamic"
 	var/flameshape = FLAMESHAPE_DEFAULT // diagonal square shape
-	var/weapon_source
-	var/weapon_source_mob
+	var/datum/cause_data/weapon_cause_data
 	var/turf/target_clicked
 
 	var/datum/reagent/tied_reagent
 	var/datum/reagents/tied_reagents
 	var/datum/callback/to_call
 
-/obj/flamer_fire/Initialize(mapload, var/source, var/source_mob, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C)
+/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C)
 	. = ..()
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
@@ -346,8 +345,11 @@
 	tied_reagents = obj_reagents
 
 	target_clicked = target
-	weapon_source = source
-	weapon_source_mob = source_mob
+
+	if(cause_data)
+		weapon_cause_data = cause_data
+	else
+		weapon_cause_data = create_cause_data(initial(name), null)
 
 	icon_state = "[flame_icon]_2"
 
@@ -395,21 +397,22 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M //fixed :s
 
-			if(weapon_source_mob)
-				var/mob/user = weapon_source_mob
-				var/area/thearea = get_area(user)
-				if(user.faction == H.faction && !thearea?.statistic_exempt)
-					H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-					user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-					if(weapon_source)
-						H.track_friendly_fire(weapon_source)
-					msg_admin_ff("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
-				else
-					H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-					user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-					msg_admin_attack("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-				if(weapon_source)
-					H.track_shot_hit(weapon_source, H)
+			if(weapon_cause_data)
+				var/mob/user = weapon_cause_data.resolve_mob()
+				if(user)
+					var/area/thearea = get_area(user)
+					if(user.faction == H.faction && !thearea?.statistic_exempt)
+						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						if(weapon_cause_data.cause_name)
+							H.track_friendly_fire(weapon_cause_data.cause_name)
+						msg_admin_ff("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
+					else
+						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						msg_admin_attack("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+				if(weapon_cause_data.cause_name)
+					H.track_shot_hit(weapon_cause_data.cause_name, H)
 
 		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
@@ -419,7 +422,7 @@
 		if(sig_result & COMPONENT_NO_BURN)
 			continue
 
-		M.last_damage_mob = weapon_source_mob
+		M.last_damage_data = weapon_cause_data
 		M.apply_damage(burn_dam, BURN)
 
 		var/msg = "Augh! You are roasted by the flames!"
@@ -428,13 +431,10 @@
 		else
 			to_chat(M, SPAN_HIGHDANGER(msg))
 
-		if(weapon_source)
-			M.last_damage_source = weapon_source
-		else
-			M.last_damage_source = initial(name)
-		if(weapon_source_mob)
-			var/mob/SM = weapon_source_mob
-			SM.track_shot_hit(weapon_source)
+		if(weapon_cause_data)
+			var/mob/SM = weapon_cause_data.resolve_mob()
+			if(istype(SM))
+				SM.track_shot_hit(weapon_cause_data.cause_name)
 
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
@@ -473,12 +473,7 @@
 	if(sig_result & COMPONENT_NO_BURN)
 		return
 
-	if(weapon_source)
-		M.last_damage_source = weapon_source
-	else
-		M.last_damage_source = initial(name)
-
-	M.last_damage_mob = weapon_source_mob
+	M.last_damage_data = weapon_cause_data
 	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
 	to_chat(M, SPAN_DANGER("You are burned!"))
 	if(isXeno(M))
@@ -543,13 +538,13 @@
 				X.updatehealth()
 		if(isobj(i))
 			var/obj/O = i
-			O.flamer_fire_act()
+			O.flamer_fire_act(0, weapon_cause_data)
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
 	firelevel -= 2 //reduce the intensity by 2 per tick
 	return
 
-/proc/fire_spread_recur(var/turf/target, var/source, var/source_mob, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
+/proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
 	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
@@ -558,7 +553,7 @@
 		R.durationfire = fire_lvl
 
 		R.burncolor = f_color
-		new/obj/flamer_fire(target, source, source_mob, R)
+		new/obj/flamer_fire(target, cause_data, R)
 
 	for(var/spread_direction in alldirs)
 
@@ -594,16 +589,16 @@
 			continue
 
 		spawn(0)
-			fire_spread_recur(T, source, source_mob, spread_power, spread_direction, fire_lvl, burn_lvl, f_color)
+			fire_spread_recur(T, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color)
 
-/proc/fire_spread(var/turf/target, var/source, var/source_mob, range, fire_lvl, burn_lvl, f_color)
+/proc/fire_spread(var/turf/target, var/datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color)
 	var/datum/reagent/R = new()
 	R.intensityfire = burn_lvl
 	R.durationfire = fire_lvl
 
 	R.burncolor = f_color
 
-	new/obj/flamer_fire(target, source, source_mob, R)
+	new/obj/flamer_fire(target, cause_data, R)
 	for(var/direction in alldirs)
 		var/spread_power = range
 		switch(direction)
@@ -612,4 +607,4 @@
 			else
 				spread_power -= 1.414 //diagonal spreading
 		var/turf/T = get_step(target, direction)
-		fire_spread_recur(T, source, source_mob, spread_power, direction, fire_lvl, burn_lvl, f_color)
+		fire_spread_recur(T, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color)

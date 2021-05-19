@@ -223,7 +223,7 @@
 
 	sleep(5)
 
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "defense explosion")
+	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("defense explosion"))
 	if(!QDELETED(src))
 		qdel(src)
 

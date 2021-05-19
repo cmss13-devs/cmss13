@@ -23,7 +23,7 @@
 	detach_all()
 	. = ..()
 
-/obj/structure/surface/ex_act(severity, direction)
+/obj/structure/surface/ex_act(severity, direction, datum/cause_data/cause_data)
 	health -= severity
 	if(health <= 0)
 		var/location = get_turf(src)
@@ -33,7 +33,7 @@
 			O.explosion_throw(severity, direction)
 		qdel(src)
 		if(prob(66))
-			create_shrapnel(location, rand(1,4), direction, , /datum/ammo/bullet/shrapnel/light)
+			create_shrapnel(location, rand(1,4), direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 		return TRUE
 
 /obj/structure/surface/proc/attach_all()
@@ -97,7 +97,7 @@
 /obj/structure/surface/proc/draw_item_overlays()
     overlays.Cut()
     for(var/obj/item/O in contents)
-        var/image/I = image(O.icon) 
+        var/image/I = image(O.icon)
         I.appearance = O.appearance
         I.appearance_flags = RESET_COLOR
         I.overlays = O.overlays

@@ -100,8 +100,7 @@
 				M.apply_damage(power,BURN)
 				to_chat(M, SPAN_WARNING("It burns!"))
 		if(power > 5)
-			M.last_damage_source = initial(name)
-			M.last_damage_mob = user
+			M.last_damage_data = create_cause_data(initial(name), user)
 			user.track_hit(initial(name))
 			if(user.faction == M.faction)
 				user.track_friendly_fire(initial(name))

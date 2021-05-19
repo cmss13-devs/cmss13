@@ -416,6 +416,7 @@
 #include "code\datums\paygrades\factions\wy\wy.dm"
 #include "code\datums\stamina\_stamina.dm"
 #include "code\datums\stamina\none.dm"
+#include "code\datums\statistics\cause_data.dm"
 #include "code\datums\statistics\entities\caste_stats.dm"
 #include "code\datums\statistics\entities\death_stats.dm"
 #include "code\datums\statistics\entities\human_stats.dm"

@@ -15,8 +15,7 @@
 		return ..()
 
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been carded with [src.name] by [user.name] ([user.ckey])</font>")
-	M.last_damage_source = initial(name)
-	M.last_damage_mob = user
+	M.last_damage_data = create_cause_data(initial(name), user)
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to card [M.name] ([M.ckey])</font>")
 	msg_admin_attack("[user.name] ([user.ckey]) used the [src.name] to card [M.name] ([M.ckey]) in [get_area(user)] ([user.x],[user.y],[user.z]).", user.x, user.y, user.z)
 

@@ -44,8 +44,7 @@
 		return FALSE
 
 	var/mob/living/carbon/affected_mob = affected_atom
-	affected_mob.last_damage_source = source
-	affected_mob.last_damage_mob = source_mob
+	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_armoured_damage((damage_in_total_human * acid_multiplier)/original_duration, ARMOR_BIO, BURN, def_zone, 40)
 
 	return TRUE

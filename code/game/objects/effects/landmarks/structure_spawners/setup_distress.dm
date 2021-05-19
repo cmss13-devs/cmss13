@@ -24,3 +24,8 @@
 	name = "Distress Xeno nest spawner"
 	icon_state = "nest"
 	path_to_spawn = /obj/structure/bed/nest
+
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node
+	name = "Distress Xeno weed node spawner"
+	icon_state = "weednode"
+	path_to_spawn = /obj/effect/alien/weeds/node

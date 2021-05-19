@@ -29354,6 +29354,14 @@
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
+"cpc" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
+	},
+/area/bigredv2/caves_se)
 "cqj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -29367,6 +29375,23 @@
 	tag = "icon-mars_cave_18"
 	},
 /area/bigredv2/caves_virology)
+"csC" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor{
+	icon_state = "dark";
+	tag = "icon-dark"
+	},
+/area/bigredv2/caves/eta/research)
+"ctT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor{
+	icon_state = "darkyellowcorners2";
+	tag = "icon-darkyellowcorners2"
+	},
+/area/bigredv2/caves/eta/living)
 "cuF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -29459,6 +29484,14 @@
 	tag = "icon-asteroidwarning"
 	},
 /area/bigredv2/outside/c)
+"cVL" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_11";
+	tag = "icon-mars_cave_11"
+	},
+/area/bigredv2/caves_se)
 "cVY" = (
 /turf/open/mars,
 /area/bigredv2/outside/space_port_lz2)
@@ -29521,11 +29554,13 @@
 	},
 /area)
 "dEr" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/mars_cave{
-	icon_state = "mars_dirt_4";
-	tag = "icon-mars_dirt_4"
+	icon_state = "mars_cave_7";
+	tag = "icon-mars_cave_7"
 	},
-/area)
+/area/bigredv2/caves_se)
 "dIz" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8";
@@ -29853,6 +29888,15 @@
 	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves_virology)
+"fLA" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor{
+	icon_state = "dark";
+	tag = "icon-dark"
+	},
+/area/bigredv2/caves/eta/living)
 "fOK" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -29987,6 +30031,14 @@
 	tag = "icon-mars_cave_4"
 	},
 /area/bigredv2/caves_virology)
+"gNz" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_10";
+	tag = "icon-mars_cave_10"
+	},
+/area/bigredv2/caves_se)
 "gNH" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves)
@@ -30279,6 +30331,15 @@
 	tag = "icon-darkgreencorners2"
 	},
 /area/bigredv2/caves/eta/research)
+"iDW" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkyellowcorners2";
+	tag = "icon-darkyellowcorners2 (WEST)"
+	},
+/area/bigredv2/caves/eta/living)
 "iGK" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_sw)
@@ -30944,6 +31005,15 @@
 	tag = "icon-mars_cave_17"
 	},
 /area/bigredv2/caves_north)
+"mHp" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_se)
 "mMf" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_11";
@@ -31216,6 +31286,15 @@
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
 /area/bigredv2/outside/cargo)
+"oKc" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "darkgreencorners2";
+	tag = "icon-darkgreencorners2 (WEST)"
+	},
+/area/bigredv2/caves/eta/research)
 "oOk" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -31828,6 +31907,14 @@
 	},
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
+"sIP" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_5";
+	tag = "icon-mars_cave_5"
+	},
+/area/bigredv2/caves_se)
 "sJq" = (
 /obj/structure/fence,
 /turf/open/floor{
@@ -32036,6 +32123,14 @@
 	tag = "icon-mars_cave_4"
 	},
 /area/bigredv2/caves_se)
+"ufB" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
+/turf/open/floor{
+	icon_state = "darkgreencorners2";
+	tag = "icon-darkgreencorners2"
+	},
+/area/bigredv2/caves/eta/research)
 "ujC" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -32285,6 +32380,14 @@
 	tag = "icon-mars_cave_9"
 	},
 /area/bigredv2/caves_north)
+"vFS" = (
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/floor{
+	icon_state = "dark";
+	tag = "icon-dark"
+	},
+/area/bigredv2/caves/eta/living)
 "vKv" = (
 /turf/open/floor{
 	dir = 8;
@@ -49289,7 +49392,7 @@ alu
 aJk
 aKl
 aIn
-dEr
+aIn
 apC
 apC
 aOF
@@ -55666,7 +55769,7 @@ bwU
 bwU
 bwU
 aBA
-bxY
+oKc
 bxY
 bxY
 bxY
@@ -55695,7 +55798,7 @@ bCX
 bDs
 bCX
 bCX
-bCX
+iDW
 bDT
 bDW
 bDW
@@ -55883,7 +55986,7 @@ bxl
 bwV
 bwV
 bwI
-xpl
+csC
 bxA
 bxo
 byP
@@ -55912,7 +56015,7 @@ bDn
 qwx
 qwx
 bDG
-qwx
+fLA
 bCY
 xzs
 bEh
@@ -56100,7 +56203,7 @@ bwW
 bxx
 bwW
 aBA
-bya
+ufB
 bya
 bya
 byQ
@@ -56129,7 +56232,7 @@ ioS
 bDt
 sbQ
 ioS
-ioS
+vFS
 sbQ
 bDX
 aDX
@@ -56346,7 +56449,7 @@ bCZ
 bCZ
 bDz
 bDH
-bDN
+ctT
 sbQ
 knN
 aDv
@@ -66298,15 +66401,15 @@ aao
 aao
 aao
 aao
-fRH
-tgL
-nBa
-nBa
-nBa
+gNz
+cpc
+bLA
+bLA
+bLA
 aao
-bTW
-nBa
-uPm
+dEr
+bLA
+sIP
 aao
 aao
 aao
@@ -66517,7 +66620,7 @@ aao
 aao
 bTW
 nBa
-nBa
+jGd
 nBa
 nBa
 aao
@@ -69098,8 +69201,8 @@ aao
 aao
 aao
 aao
-gCE
-gCE
+nBa
+nBa
 nBa
 nBa
 bTW
@@ -69314,9 +69417,9 @@ aao
 aao
 aao
 aao
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
 nBa
 jGd
 bTW
@@ -69531,9 +69634,9 @@ aao
 aao
 aao
 gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -69748,9 +69851,9 @@ aao
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
 nBa
 tgL
 nBa
@@ -69965,9 +70068,9 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
 gtX
 nBa
 nBa
@@ -70182,8 +70285,8 @@ gCE
 gCE
 wWK
 ecK
-gCE
-qFY
+bLA
+uPm
 aao
 aao
 bTW
@@ -70399,8 +70502,8 @@ gCE
 gCE
 sON
 gCE
-gCE
-ohD
+bLA
+sLr
 aao
 aao
 bTW
@@ -70616,7 +70719,7 @@ gCE
 rAs
 gCE
 gCE
-ohD
+cVL
 aao
 aao
 aao
@@ -71035,7 +71138,7 @@ gCE
 gCE
 gCE
 gCE
-gCE
+wWK
 gCE
 gCE
 gCE
@@ -71050,9 +71153,9 @@ gCE
 gCE
 gCE
 gCE
-sfI
+bvR
 aao
-sON
+fRH
 tgL
 nBa
 nBa
@@ -71267,9 +71370,9 @@ gCE
 gCE
 gCE
 gCE
-gCE
-rAs
-gCE
+bLA
+tgL
+nBa
 nBa
 nBa
 nBa
@@ -71464,7 +71567,7 @@ gCE
 waJ
 gCE
 gCE
-gCE
+wWK
 qFY
 gCE
 gCE
@@ -71484,9 +71587,9 @@ gCE
 gCE
 gCE
 sBu
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
 nBa
 jGd
 nBa
@@ -71701,9 +71804,9 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
 nBa
 nBa
 uPm
@@ -71918,9 +72021,9 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
 nBa
 nBa
 sLr
@@ -72135,9 +72238,9 @@ gpg
 gpg
 gpg
 gCE
-gCE
-wWK
-gCE
+bLA
+jGd
+nBa
 nBa
 sLr
 nBa
@@ -72351,10 +72454,10 @@ aao
 aao
 aao
 aao
-ecK
-gCE
-gCE
-gCE
+dEr
+bLA
+nBa
+nBa
 uPm
 nBa
 nBa
@@ -72568,10 +72671,10 @@ aao
 aao
 aao
 aao
-ecK
-gpg
-gpg
-gpg
+bTW
+gtX
+gtX
+gtX
 sLr
 nBa
 nBa
@@ -73231,7 +73334,7 @@ nBa
 nBa
 nBa
 nBa
-nBa
+jGd
 nBa
 nBa
 nBa
@@ -73628,7 +73731,7 @@ gCE
 gCE
 gCE
 gCE
-gCE
+wWK
 gCE
 gCE
 gCE
@@ -74521,10 +74624,10 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 jGd
@@ -74538,7 +74641,7 @@ aao
 aao
 aao
 nBa
-nBa
+jGd
 nBa
 nBa
 nBa
@@ -74738,10 +74841,10 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -74955,10 +75058,10 @@ gCE
 gCE
 gCE
 wWK
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -75172,10 +75275,10 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -75389,10 +75492,10 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -75606,10 +75709,10 @@ aao
 aao
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -75823,10 +75926,10 @@ aao
 aao
 aao
 aao
-gCE
-gCE
-wWK
-gCE
+bLA
+nBa
+jGd
+nBa
 nBa
 nBa
 nBa
@@ -76041,9 +76144,9 @@ aao
 aao
 aao
 aao
-gCE
-gCE
-gCE
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -76258,9 +76361,9 @@ aao
 aao
 aao
 aao
-gCE
-gCE
-gCE
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -76474,10 +76577,10 @@ aao
 aao
 aao
 aao
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -76691,10 +76794,10 @@ aao
 aao
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 jGd
@@ -76708,7 +76811,7 @@ nBa
 nBa
 nBa
 nBa
-nBa
+jGd
 nBa
 aao
 aao
@@ -76908,10 +77011,10 @@ aao
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -77125,10 +77228,10 @@ gCE
 gCE
 gCE
 gCE
-wWK
-gCE
-gCE
-gCE
+mHp
+nBa
+nBa
+nBa
 nBa
 nBa
 nBa
@@ -77342,10 +77445,10 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 aao
 aao
 aao
@@ -77559,10 +77662,10 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
+nBa
 aao
 aao
 aao
@@ -77776,9 +77879,9 @@ gCE
 gCE
 gCE
 gCE
-gCE
-gCE
-gCE
+bLA
+nBa
+nBa
 aao
 aao
 aao
@@ -77993,7 +78096,7 @@ gCE
 gCE
 gCE
 gCE
-gCE
+bLA
 aao
 aao
 aao

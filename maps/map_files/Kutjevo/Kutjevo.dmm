@@ -322,6 +322,7 @@
 /area/kutjevo/interior/complex/botany)
 "bc" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "bd" = (
@@ -411,6 +412,7 @@
 /area/kutjevo/interior/complex/botany)
 "bt" = (
 /obj/structure/platform/kutjevo/rock,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "bu" = (
@@ -605,9 +607,9 @@
 	},
 /area/kutjevo/interior/construction)
 "cb" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/almayer/research/containment/floor1,
-/area/kutjevo/interior/colony_South/power2)
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/auto_turf/sand/layer2,
+/area/kutjevo/interior/colony_north)
 "cc" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 1;
@@ -693,7 +695,7 @@
 /turf/open/floor/kutjevo/colors/purple,
 /area/kutjevo/interior/construction)
 "cp" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_S_East)
 "cq" = (
@@ -987,7 +989,7 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_South/power2)
 "dm" = (
 /obj/structure/platform/kutjevo{
 	dir = 1
@@ -1214,7 +1216,7 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/construction)
 "ea" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "ec" = (
@@ -1354,10 +1356,6 @@
 	},
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/lz_river)
-"ew" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/interior/colony_South)
 "ex" = (
 /obj/structure/flora/grass/tallgrass/desert/corner{
 	dir = 6
@@ -1500,6 +1498,7 @@
 /area/kutjevo/interior/complex/botany)
 "eR" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "eS" = (
@@ -1562,7 +1561,7 @@
 	},
 /area/kutjevo/exterior/runoff_bridge)
 "fc" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_South)
 "fd" = (
@@ -1618,10 +1617,8 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
 "fn" = (
-/obj/effect/landmark/xeno_spawn,
-/obj/effect/alien/weeds/node,
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/colony_N_East)
+/turf/open/floor/kutjevo/grey/plate,
+/area/kutjevo/interior/colony_north)
 "fo" = (
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
@@ -1784,6 +1781,7 @@
 /area/kutjevo/exterior/runoff_bridge)
 "fM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "fN" = (
@@ -1909,9 +1907,9 @@
 /turf/open/asphalt/cement_sunbleached,
 /area/kutjevo/exterior/scrubland)
 "gg" = (
-/obj/effect/alien/weeds/node,
-/turf/open/floor/kutjevo/tan/multi_tiles,
-/area/kutjevo/interior/colony_South/power2)
+/obj/structure/lattice,
+/turf/open/floor/plating/kutjevo,
+/area/kutjevo/interior/colony_north)
 "gh" = (
 /obj/structure/window/reinforced,
 /obj/structure/surface/table/reinforced/prison,
@@ -1971,10 +1969,6 @@
 /obj/item/ammo_magazine/rifle/m16,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
-"gr" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_South)
 "gs" = (
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed,
 /obj/effect/decal/medical_decals{
@@ -2109,7 +2103,7 @@
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "gM" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South)
 "gN" = (
@@ -2588,10 +2582,6 @@
 	},
 /turf/open/floor/kutjevo/colors/cyan/tile,
 /area/kutjevo/interior/complex/med/auto_doc)
-"in" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_north)
 "io" = (
 /obj/structure/prop/dam/boulder/boulder3,
 /turf/open/auto_turf/sand/layer0,
@@ -2655,6 +2645,7 @@
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "ix" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "iy" = (
@@ -2713,7 +2704,7 @@
 	},
 /area/kutjevo/interior/colony_north)
 "iG" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "iH" = (
@@ -2736,7 +2727,7 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/power)
 "iL" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "iM" = (
@@ -3028,7 +3019,7 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_river)
 "jN" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_N_East)
 "jP" = (
@@ -3266,7 +3257,7 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "kE" = (
 /obj/structure/platform/kutjevo/rock,
 /turf/open/gm/river/desert/shallow_edge{
@@ -3316,7 +3307,7 @@
 /area/kutjevo/interior/construction)
 "kL" = (
 /turf/open/gm/river/desert/deep/covered,
-/area/kutjevo/interior/colony_South)
+/area/kutjevo/interior/colony_South/power2)
 "kM" = (
 /obj/item/storage/briefcase,
 /obj/structure/sign/safety/medical{
@@ -3356,7 +3347,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "kQ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "kR" = (
@@ -3456,6 +3447,12 @@
 "lh" = (
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South)
+"li" = (
+/obj/structure/platform/kutjevo/rock{
+	dir = 4
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "lj" = (
 /obj/structure/platform_decoration/kutjevo/rock{
 	dir = 4
@@ -3700,8 +3697,9 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/construction)
 "lY" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "lZ" = (
@@ -4067,11 +4065,6 @@
 	dir = 1
 	},
 /area/kutjevo/interior/power)
-"ng" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/alien/weeds/node,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_S_East)
 "nh" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 1;
@@ -4798,6 +4791,7 @@
 /area/kutjevo/interior/complex/botany/east_tech)
 "ps" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "pt" = (
@@ -5406,6 +5400,7 @@
 "rl" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "rm" = (
@@ -5426,7 +5421,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "rq" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
@@ -5475,8 +5470,9 @@
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
 "rw" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "rx" = (
@@ -5837,10 +5833,6 @@
 	},
 /turf/open/gm/grass/weedable,
 /area/kutjevo/exterior/complex_border/med_park)
-"sE" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_N_East)
 "sF" = (
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 4;
@@ -5862,7 +5854,7 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "sJ" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/machinery/light{
@@ -5874,6 +5866,7 @@
 /area/kutjevo/interior/oob)
 "sK" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "sL" = (
@@ -6087,7 +6080,7 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "tr" = (
 /obj/structure/machinery/computer/guestpass{
 	dir = 4
@@ -6919,8 +6912,9 @@
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/oob)
 "vV" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "vW" = (
@@ -7129,7 +7123,7 @@
 /area/kutjevo/interior/complex/botany/east_tech)
 "wJ" = (
 /obj/effect/landmark/xeno_spawn,
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_S_East)
 "wK" = (
@@ -7386,7 +7380,7 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "xA" = (
 /obj/effect/decal/cleanable/blood/xeno{
 	icon_state = "xgib2"
@@ -7605,8 +7599,9 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "yj" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/closed/wall/resin/thick,
 /area/kutjevo/interior/colony_South)
 "yk" = (
@@ -7841,8 +7836,8 @@
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/exterior/scrubland)
 "yZ" = (
-/obj/structure/mineral_door/resin/thick,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "za" = (
@@ -8272,8 +8267,9 @@
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/exterior/runoff_bridge)
 "Ao" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "Ap" = (
@@ -8281,6 +8277,7 @@
 /area/kutjevo/interior/colony_north)
 "Aq" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "Ar" = (
@@ -8364,7 +8361,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/oob)
 "AD" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "AE" = (
@@ -8401,7 +8398,7 @@
 /turf/open/floor/kutjevo/colors/orange,
 /area/kutjevo/interior/foremans_office)
 "AK" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "AL" = (
@@ -8426,7 +8423,7 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "AP" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 1
@@ -8464,9 +8461,10 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/complex/botany)
 "AU" = (
-/obj/structure/platform_decoration/kutjevo/rock,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/exterior/runoff_dunes)
+/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
+/turf/open/auto_turf/sand/layer0,
+/area/kutjevo/interior/colony_S_East)
 "AV" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/kutjevo/colors/purple/inner_corner{
@@ -8522,10 +8520,9 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
 "Bd" = (
-/obj/effect/landmark/xeno_spawn,
-/obj/effect/alien/weeds/node,
-/turf/open/auto_turf/sand/layer1,
-/area/kutjevo/interior/colony_north)
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/colony_central)
 "Be" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
@@ -8627,11 +8624,12 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/complex/med)
 "Bv" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_central)
 "Bw" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
 "Bx" = (
@@ -9012,6 +9010,7 @@
 /area/kutjevo/interior/colony_South/power2)
 "CF" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "CG" = (
@@ -9057,6 +9056,7 @@
 /area/kutjevo/interior/oob/dev_room)
 "CO" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "CP" = (
@@ -9721,7 +9721,7 @@
 /area/kutjevo/interior/complex/med)
 "EZ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "Fa" = (
@@ -9740,8 +9740,9 @@
 	},
 /area/kutjevo/interior/oob)
 "Fd" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "Fe" = (
@@ -9751,7 +9752,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/runoff_dunes)
 "Ff" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /obj/effect/landmark/xeno_spawn,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
@@ -9895,10 +9896,6 @@
 	},
 /turf/open/floor/kutjevo/grey/plate,
 /area/kutjevo/interior/construction)
-"FF" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/colony_N_East)
 "FG" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/stairs/perspective/kutjevo{
@@ -10499,6 +10496,7 @@
 /area/kutjevo/interior/oob/dev_room)
 "HC" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_nest,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_nest,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "HD" = (
@@ -10645,7 +10643,7 @@
 "Ia" = (
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "Ib" = (
 /obj/item/device/flashlight/lamp/tripod/grey,
 /turf/open/auto_turf/sand/layer0,
@@ -10930,7 +10928,7 @@
 /area/kutjevo/interior/complex/med/cells)
 "IT" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_N_East)
 "IU" = (
@@ -10980,7 +10978,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "Jd" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South)
 "Je" = (
@@ -11109,7 +11107,7 @@
 	},
 /obj/structure/blocker/invisible_wall,
 /turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "JB" = (
 /obj/structure/barricade/handrail/kutjevo,
 /turf/open/floor/kutjevo/multi_tiles{
@@ -11159,7 +11157,7 @@
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/scrubland)
 "JK" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_South)
 "JL" = (
@@ -11309,7 +11307,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating/kutjevo,
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "Kk" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
@@ -11321,10 +11319,9 @@
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South/power2)
 "Km" = (
-/obj/effect/landmark/xeno_spawn,
-/obj/effect/alien/weeds/node,
-/turf/open/auto_turf/sand/layer0,
-/area/kutjevo/interior/colony_north)
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/floor/kutjevo/colors/orange,
+/area/kutjevo/interior/colony_South/power2)
 "Kn" = (
 /obj/structure/blocker/invisible_wall,
 /obj/structure/window/framed/kutjevo/reinforced/hull,
@@ -11511,9 +11508,11 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "KW" = (
-/obj/effect/alien/weeds/node,
-/turf/open/auto_turf/sand/layer2,
-/area/kutjevo/interior/colony_north)
+/obj/structure/flora/grass/desert{
+	icon_state = "lightgrass_2"
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "KX" = (
 /obj/structure/largecrate/random/case/double,
 /obj/structure/machinery/light{
@@ -11675,7 +11674,7 @@
 	},
 /area/kutjevo/interior/colony_central)
 "Lx" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_N_East)
 "Ly" = (
@@ -11866,6 +11865,7 @@
 /area/kutjevo/interior/complex/botany/east_tech)
 "Mc" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "Md" = (
@@ -12600,6 +12600,7 @@
 /area/kutjevo/interior/complex/med)
 "Or" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer2,
 /area/kutjevo/interior/colony_S_East)
 "Os" = (
@@ -13330,7 +13331,7 @@
 /area/kutjevo/exterior/lz_dunes)
 "QJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_N_East)
 "QK" = (
@@ -13386,7 +13387,7 @@
 /turf/open/floor/kutjevo/multi_tiles{
 	dir = 10
 	},
-/area/kutjevo/interior/colony_central)
+/area/kutjevo/interior/colony_South/power2)
 "QU" = (
 /obj/structure/flora/grass/desert{
 	icon_state = "lightgrass_9"
@@ -13971,6 +13972,12 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet,
 /area/kutjevo/interior/oob)
+"SO" = (
+/obj/structure/platform_decoration/kutjevo/rock{
+	dir = 8
+	},
+/turf/open/auto_turf/sand/layer1,
+/area/kutjevo/exterior/stonyfields)
 "SP" = (
 /turf/open/gm/river/desert/deep{
 	icon = 'icons/turf/floors/desert_water_toxic.dmi'
@@ -14271,6 +14278,7 @@
 /area/kutjevo/exterior/runoff_bridge)
 "TL" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_South)
 "TM" = (
@@ -14993,6 +15001,7 @@
 "VW" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_north)
 "VX" = (
@@ -15442,6 +15451,7 @@
 /area/kutjevo/exterior/scrubland)
 "Xo" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "Xp" = (
@@ -15852,7 +15862,7 @@
 /turf/open/floor/kutjevo/plate,
 /area/kutjevo/interior/colony_central)
 "YE" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/interior/colony_north)
 "YF" = (
@@ -15876,6 +15886,7 @@
 "YJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/interior/colony_S_East)
 "YK" = (
@@ -16181,7 +16192,7 @@
 /area/kutjevo/interior/oob)
 "ZN" = (
 /obj/structure/blocker/invisible_wall,
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/carpet,
 /area/kutjevo/interior/oob)
 "ZO" = (
@@ -27261,8 +27272,8 @@ QY
 eD
 QY
 eD
-aT
-QY
+iW
+Fi
 Yt
 Yt
 Fi
@@ -27428,8 +27439,8 @@ QY
 eD
 QY
 eD
-eD
-QY
+ma
+Fi
 Yt
 Yt
 Fi
@@ -27595,8 +27606,8 @@ QY
 QY
 aT
 eD
-eD
-QY
+ma
+Fi
 Yt
 Yt
 Fi
@@ -27610,7 +27621,7 @@ Fi
 Fi
 Fi
 Fi
-Ax
+fK
 fK
 fK
 fK
@@ -27762,8 +27773,8 @@ QY
 eD
 eD
 aT
-eD
-QY
+ma
+Fi
 Yt
 Yt
 Fi
@@ -27777,8 +27788,8 @@ Fi
 Fi
 Fi
 Fi
-Ax
-Ax
+fK
+fK
 fK
 fK
 fK
@@ -27929,8 +27940,8 @@ QY
 eD
 eD
 QY
-QY
-QY
+Fi
+Fi
 Fi
 IJ
 ma
@@ -27944,9 +27955,9 @@ iW
 Fi
 Fi
 Fi
-Ax
-Ax
-Ax
+fK
+fK
+fK
 fK
 fK
 fK
@@ -28095,25 +28106,25 @@ WL
 QY
 eD
 QY
-QY
-aT
-QY
+Fi
+iW
+Fi
 Fi
 Yt
 ma
 Fi
 Fi
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
 iW
 iW
 Fi
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -28262,25 +28273,25 @@ WL
 QY
 QY
 QY
-aT
-QY
-QY
+iW
+Fi
+Fi
 Fi
 ma
 ma
 Fi
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
 Fi
 Fi
 ma
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -28429,26 +28440,26 @@ XC
 QY
 QY
 QY
-QY
-QY
-QY
+Fi
+Fi
+Fi
 Fi
 Yt
 ma
 Fi
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
 ma
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -28596,26 +28607,26 @@ eD
 QY
 QY
 aT
-QY
-aT
-QY
+Fi
+iW
+Fi
 Fi
 ma
 ma
 Fi
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -28762,27 +28773,27 @@ QY
 QY
 QY
 QY
-QY
-QY
-QY
-QY
+Fi
+Fi
+Fi
+Fi
 ma
 ma
 ma
 ma
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -28929,27 +28940,27 @@ QY
 QY
 QY
 QY
-QY
-QY
-QY
-QY
+Fi
+Fi
+Fi
+Fi
 Fi
 ma
 ma
 ma
 Kq
 hf
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -29095,28 +29106,28 @@ QY
 QY
 QY
 QY
-Ub
-QY
-QY
-QY
-QY
+KW
+Fi
+Fi
+Fi
+Fi
 Fi
 Fi
 Fi
 ma
 fg
 hf
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -29261,29 +29272,29 @@ eD
 QY
 QY
 eD
-eD
-QY
-QY
-QY
-QY
-QY
+ma
+Fi
+Fi
+Fi
+Fi
+Fi
 Fi
 Fi
 Fi
 kZ
 fg
 hf
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -29427,30 +29438,30 @@ aT
 aT
 aT
 eD
-QY
-QY
-eD
-eD
-eD
-QY
-QY
+Fi
+Fi
+ma
+ma
+ma
+Fi
+Fi
 Fi
 Fi
 Fi
 ma
 fg
 hf
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -29594,30 +29605,30 @@ ma
 ma
 Ax
 Ax
-QY
-eD
-QY
-QY
-AU
-lZ
-iB
+Fi
+ma
+Fi
+Fi
+YC
+li
+SO
 Fi
 Fi
 Fi
 ma
 Kq
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -29773,18 +29784,18 @@ Fi
 Fi
 ma
 Kq
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -29939,19 +29950,19 @@ iW
 Fi
 ma
 Fi
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -30105,20 +30116,20 @@ pA
 Fi
 ma
 Fi
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -30273,19 +30284,19 @@ Fi
 ma
 Fi
 ma
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 ap
@@ -30440,18 +30451,18 @@ Fi
 ma
 Fi
 ma
-Ax
-Ax
+fK
+fK
 RD
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -30610,14 +30621,14 @@ ma
 ma
 Af
 xW
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -30777,14 +30788,14 @@ ma
 ma
 fg
 hf
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -30944,13 +30955,13 @@ ma
 ma
 Kq
 hf
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -31111,12 +31122,12 @@ Fi
 Fi
 Kq
 hf
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -31277,12 +31288,12 @@ Fi
 Fi
 Fi
 EX
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -31444,12 +31455,12 @@ Fi
 Fi
 Fi
 Fi
-Ax
-Ax
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -31611,10 +31622,10 @@ Fi
 Fi
 Fi
 Fi
-Ax
-Ax
-Ax
-Ax
+fK
+fK
+fK
+fK
 fK
 fK
 fK
@@ -31778,8 +31789,8 @@ Fi
 ma
 kc
 ma
-Ax
-Ax
+fK
+fK
 fK
 fK
 fK
@@ -39177,11 +39188,11 @@ rm
 rm
 rm
 rm
-bY
-da
-UB
-UB
-da
+ZG
+fn
+wG
+wG
+fn
 rm
 rm
 rm
@@ -39344,11 +39355,11 @@ rm
 rm
 rm
 wG
-da
-UB
-UB
-da
-da
+fn
+wG
+wG
+fn
+fn
 rm
 rm
 rm
@@ -39511,10 +39522,10 @@ rm
 rm
 wG
 ZG
-da
-oS
-dZ
-da
+fn
+ez
+Ap
+fn
 rm
 rm
 rm
@@ -39678,10 +39689,10 @@ rm
 Ap
 ZG
 ZG
-UB
-UB
-dP
-da
+wG
+wG
+gg
+fn
 rm
 rm
 rm
@@ -39845,9 +39856,9 @@ rm
 YY
 ZG
 ZG
-UB
-UB
-dP
+wG
+wG
+gg
 rm
 rm
 rm
@@ -40012,9 +40023,9 @@ ZG
 ZG
 ZG
 ZG
-bY
-UB
-dP
+ZG
+wG
+gg
 rm
 rm
 rm
@@ -40179,8 +40190,8 @@ ZG
 ZG
 YY
 ZG
-UB
-da
+wG
+fn
 rm
 rm
 rm
@@ -40503,7 +40514,7 @@ fK
 fK
 fK
 Ap
-ZG
+ea
 ZG
 ZG
 Ap
@@ -41169,7 +41180,7 @@ fK
 fK
 fK
 YY
-KW
+Ap
 ZG
 ZG
 ZG
@@ -41337,11 +41348,11 @@ fK
 YY
 Ap
 ZG
+ea
 ZG
 ZG
 ZG
-ZG
-YY
+YE
 ZG
 ZG
 Ap
@@ -41512,7 +41523,7 @@ YY
 ZG
 ZG
 ZG
-Ap
+cb
 ZG
 rm
 ZG
@@ -41671,7 +41682,7 @@ fK
 CO
 CO
 EZ
-in
+EZ
 rm
 rm
 YY
@@ -41754,10 +41765,10 @@ oK
 JF
 NM
 pZ
-cb
+Rf
 pZ
 LT
-iG
+LT
 Ht
 fK
 fK
@@ -41924,10 +41935,10 @@ Hh
 ws
 Hh
 LT
-LT
+iG
 LT
 Ht
-gr
+kQ
 ct
 Ht
 Ht
@@ -42094,7 +42105,7 @@ LT
 LT
 ct
 ct
-gr
+kQ
 ct
 Ht
 Ht
@@ -42162,7 +42173,7 @@ fK
 fK
 fK
 fK
-YE
+YY
 YY
 ZG
 ea
@@ -42171,7 +42182,7 @@ YY
 ea
 ZG
 ZG
-YE
+YY
 ZG
 YY
 ea
@@ -42182,7 +42193,7 @@ MT
 YY
 ZG
 ZG
-ZG
+ea
 ZG
 ZG
 ZG
@@ -42255,16 +42266,16 @@ gm
 Tn
 Tn
 Hh
-gg
+gm
 Hh
 LT
-iG
+LT
 ct
 ct
 kQ
+JK
 ct
-ct
-fc
+Ht
 ct
 ct
 JK
@@ -42422,7 +42433,7 @@ oK
 JF
 JF
 pZ
-JF
+Km
 Hh
 LT
 LT
@@ -42593,7 +42604,7 @@ ws
 Hh
 LT
 LT
-ct
+JK
 Np
 Np
 Np
@@ -42666,16 +42677,16 @@ ZG
 ea
 ZG
 ZG
-ea
+ZG
 ZG
 ez
-ea
+ZG
 ZG
 ZG
 ea
 ZG
 YY
-ea
+ZG
 YY
 rm
 rm
@@ -42756,10 +42767,10 @@ oK
 JF
 NM
 Hh
-cb
+Rf
 pZ
 LT
-iG
+LT
 LT
 Np
 Np
@@ -42768,7 +42779,7 @@ Np
 iG
 LT
 Ht
-JK
+ct
 ct
 ct
 fK
@@ -42925,9 +42936,9 @@ iE
 wE
 wE
 wE
-gr
-gr
-gr
+kQ
+kQ
+kQ
 Np
 Np
 Np
@@ -43011,7 +43022,7 @@ ZG
 ZG
 ZG
 YY
-in
+EZ
 YY
 Ap
 YY
@@ -43020,7 +43031,7 @@ Ap
 ZG
 ZG
 ZG
-ZG
+ea
 ZG
 ZG
 ZG
@@ -43101,7 +43112,7 @@ Np
 Np
 LT
 LT
-ct
+JK
 rl
 bc
 ct
@@ -43161,22 +43172,22 @@ fK
 YE
 YY
 ZG
-ea
 ZG
-ZG
-YE
-ZG
-ZG
-ea
 ZG
 ZG
 YE
-YY
-YY
-ea
+ZG
+ZG
+ZG
+ZG
 ZG
 YY
-ea
+YY
+YY
+ZG
+ZG
+YY
+ZG
 ZG
 CO
 ea
@@ -43263,16 +43274,16 @@ LT
 JK
 ct
 ct
-iG
+LT
 ct
 ct
-fc
+Ht
 Ht
 ct
-JK
 ct
 ct
-JK
+ct
+ct
 uL
 fK
 fK
@@ -43345,12 +43356,12 @@ YY
 YY
 YY
 ZG
-in
+EZ
 ZG
 ZG
 ZG
 ZG
-ZG
+ea
 ZG
 ZG
 ZG
@@ -43408,8 +43419,8 @@ JA
 Ia
 Ia
 rp
-qg
-qg
+kL
+kL
 kL
 dl
 iq
@@ -43432,13 +43443,13 @@ ct
 ct
 ct
 ct
+fc
 Ht
-Ht
 ct
 ct
 ct
 ct
-ct
+JK
 ct
 uL
 fK
@@ -43662,7 +43673,7 @@ fK
 YE
 ZG
 ZG
-ea
+ZG
 rm
 rm
 rm
@@ -43671,7 +43682,7 @@ rm
 YE
 ZG
 ZG
-YE
+YY
 YY
 YY
 YE
@@ -43773,7 +43784,7 @@ ct
 JK
 ct
 ct
-JK
+ct
 uL
 fK
 fK
@@ -43836,8 +43847,8 @@ rm
 rm
 rm
 CO
-in
-in
+EZ
+EZ
 CO
 rm
 rm
@@ -43858,7 +43869,7 @@ YY
 YY
 Ap
 ZG
-ZG
+ea
 ZG
 ZG
 rm
@@ -43994,9 +44005,9 @@ fK
 fK
 fK
 fK
-in
-in
-in
+EZ
+EZ
+EZ
 rm
 rm
 rm
@@ -44166,10 +44177,10 @@ ZG
 YE
 YY
 YY
-YE
+YY
 ZG
 ZG
-ea
+ZG
 ZG
 ZG
 YE
@@ -44253,7 +44264,7 @@ ct
 ct
 ct
 LT
-LT
+iG
 ct
 Np
 Np
@@ -44265,13 +44276,13 @@ Ht
 JK
 ct
 ct
-JK
+ct
+ct
 ct
 ct
 JK
 ct
 ct
-JK
 ct
 ct
 JK
@@ -44333,7 +44344,7 @@ ZG
 ZG
 YY
 ZG
-ZG
+ea
 ZG
 fM
 fM
@@ -44363,7 +44374,7 @@ YY
 YY
 ZG
 ZG
-ZG
+ea
 ZG
 ZG
 ZG
@@ -44515,7 +44526,7 @@ rm
 YY
 YY
 ZG
-ZG
+ea
 YY
 rm
 rm
@@ -44579,7 +44590,7 @@ Lw
 Lw
 Lw
 VD
-ct
+JK
 LT
 ct
 ct
@@ -44667,7 +44678,7 @@ fM
 Ao
 ZG
 ZG
-ea
+ZG
 ZG
 YY
 ea
@@ -44751,7 +44762,7 @@ lh
 ct
 ct
 ct
-Ht
+fc
 LT
 Ht
 ct
@@ -44760,22 +44771,22 @@ Np
 Np
 Np
 Np
-iG
+LT
 Ht
 ct
-JK
 ct
 ct
-JK
 ct
 ct
-JK
+ct
+ct
+ct
 ct
 DQ
-JK
+ct
 ct
 HC
-JK
+ct
 ct
 Ff
 TL
@@ -44928,7 +44939,7 @@ Np
 Np
 Np
 ct
-ct
+JK
 ct
 ct
 bc
@@ -45106,7 +45117,7 @@ ct
 ct
 OZ
 ct
-ct
+JK
 ct
 ct
 LT
@@ -45159,13 +45170,13 @@ fK
 fK
 fK
 fK
-Bd
+VR
 ZG
 ZG
-ea
 ZG
 ZG
-ea
+ZG
+ZG
 ZG
 ZG
 ea
@@ -45261,19 +45272,19 @@ Np
 Np
 Np
 LT
-JK
 ct
-ct
-JK
 ct
 ct
 JK
 ct
 ct
+ct
+ct
+ct
 JK
 ct
 ct
-JK
+ct
 ct
 ct
 iG
@@ -45359,7 +45370,7 @@ YY
 YY
 YY
 YY
-YY
+YE
 YY
 Ap
 rm
@@ -45495,7 +45506,7 @@ fK
 cd
 ZG
 ZG
-ZG
+ea
 ZG
 ZG
 ZG
@@ -45515,7 +45526,7 @@ rm
 rm
 MT
 ZG
-ZG
+ea
 ZG
 YY
 YY
@@ -45660,16 +45671,16 @@ fK
 fK
 fK
 cd
-ea
+ZG
+ZG
+ZG
+ZG
 ZG
 ZG
 ea
 ZG
 ZG
-ea
 ZG
-ZG
-ea
 ZG
 ZG
 YE
@@ -45765,13 +45776,13 @@ sy
 iG
 ct
 ct
-fc
+Ht
 ct
 ct
 JK
 ct
 ct
-JK
+ct
 ct
 ct
 JK
@@ -45918,7 +45929,7 @@ CU
 Np
 Np
 ct
-ct
+JK
 ct
 Ht
 ct
@@ -46089,13 +46100,13 @@ ct
 ct
 ct
 ct
-ct
+JK
 ct
 ct
 Ht
 Ki
 Ht
-ew
+gM
 ct
 bc
 bc
@@ -46164,16 +46175,16 @@ cd
 ea
 ZG
 ZG
-ea
-ix
 ZG
+ix
 ea
+ZG
 ZG
 qb
 ea
 ZG
 ZG
-YE
+YY
 rm
 rm
 rm
@@ -46186,7 +46197,7 @@ rm
 ZG
 ZG
 ZG
-ZG
+ea
 ZG
 Ap
 YY
@@ -46197,7 +46208,7 @@ rm
 rm
 rm
 YY
-YY
+YE
 rm
 rm
 rm
@@ -46260,22 +46271,22 @@ ct
 ct
 ct
 ct
-Jd
+lh
 ct
-ew
-JK
+gM
+ct
 ct
 ct
 JK
 ct
 Ht
-JK
 ct
 ct
-JK
+ct
+ct
 bc
 bc
-JK
+ct
 ct
 LT
 Ff
@@ -46416,7 +46427,7 @@ CU
 Uj
 xE
 xE
-ct
+xE
 ct
 ct
 ct
@@ -46426,10 +46437,10 @@ ct
 ct
 ct
 ct
-ct
+JK
 Ki
 ct
-ew
+gM
 ct
 ct
 ct
@@ -46444,7 +46455,7 @@ bc
 bc
 ct
 ct
-LT
+iG
 fK
 fK
 fK
@@ -46583,7 +46594,7 @@ Uj
 ny
 Xa
 xE
-sy
+Xa
 ct
 ct
 ct
@@ -46662,20 +46673,20 @@ fK
 fK
 fK
 fK
-Km
+cd
+ZG
+ZG
+ZG
+ZG
+ZG
+ZG
+ZG
+ZG
+ZG
+ZG
 ZG
 ZG
 ea
-ZG
-ZG
-ea
-ZG
-ZG
-ea
-ZG
-ZG
-ea
-ZG
 ZG
 EZ
 ZG
@@ -46693,7 +46704,7 @@ ZG
 ZG
 YY
 YY
-Ap
+cb
 Ap
 Ap
 rm
@@ -46752,21 +46763,21 @@ FS
 xE
 FS
 ct
-ct
-ct
-ct
-Np
-Np
-LT
-ct
-ct
-ct
 JK
 ct
 ct
+Np
+Np
+iG
+ct
+ct
+ct
+ct
+ct
+ct
 sy
-ew
-ew
+gM
+gM
 gM
 sy
 sy
@@ -46776,7 +46787,7 @@ LT
 fc
 ct
 ct
-JK
+ct
 fK
 fK
 fK
@@ -46831,7 +46842,7 @@ fK
 fK
 fK
 cd
-ZG
+ea
 ZG
 ZG
 ZG
@@ -46844,7 +46855,7 @@ fM
 fM
 ZG
 ZG
-in
+EZ
 ZG
 ZG
 ZG
@@ -46929,7 +46940,7 @@ ct
 ct
 ct
 ct
-ct
+JK
 ct
 Ki
 ct
@@ -47011,7 +47022,7 @@ fM
 fM
 ZG
 ZG
-in
+EZ
 ZG
 ZG
 ZG
@@ -47038,7 +47049,7 @@ ZG
 ZG
 YY
 Ap
-ZG
+ea
 YY
 YY
 Uj
@@ -47166,22 +47177,22 @@ fK
 fK
 fK
 cd
-Bd
+VR
 VR
 ZG
 ea
 ZG
 ZG
-ea
 ZG
 ZG
-ea
+ZG
+ZG
 ZG
 YY
 CO
 ZG
 ZG
-ea
+ZG
 ZG
 ZG
 YE
@@ -47201,7 +47212,7 @@ ZG
 ZG
 ez
 ZG
-ZG
+ea
 YY
 YY
 ZG
@@ -47235,7 +47246,7 @@ xE
 Uj
 FS
 xE
-FS
+Bd
 xE
 FS
 xE
@@ -47244,7 +47255,7 @@ Uj
 xE
 xE
 xE
-xE
+Bv
 xE
 xE
 xE
@@ -47262,10 +47273,10 @@ LT
 LT
 ct
 ct
-JK
 ct
 ct
-JK
+ct
+ct
 Ht
 Ht
 fc
@@ -47274,7 +47285,7 @@ Np
 Np
 Np
 Np
-JK
+ct
 Ht
 ct
 iG
@@ -47340,7 +47351,7 @@ cd
 VR
 ZG
 ZG
-ZG
+ea
 ZG
 ZG
 YY
@@ -47354,7 +47365,7 @@ ZG
 ZG
 ZG
 ZG
-in
+EZ
 ZG
 ZG
 ZG
@@ -47387,7 +47398,7 @@ Uj
 Uj
 Uj
 ny
-xE
+Bv
 xE
 xE
 xE
@@ -47419,7 +47430,7 @@ xE
 xE
 xE
 xE
-xE
+ct
 LT
 ct
 ct
@@ -47427,7 +47438,7 @@ ct
 ct
 ct
 ct
-ct
+JK
 ct
 ct
 ct
@@ -47512,23 +47523,23 @@ ZG
 ZG
 ZG
 ZG
-in
+EZ
+ZG
+ZG
+ea
+ZG
+ZG
+ZG
+ZG
+ZG
+EZ
 ZG
 ZG
 ZG
 ZG
 ZG
 ZG
-ZG
-ZG
-in
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
-ZG
+ea
 ZG
 ZG
 ZG
@@ -47559,12 +47570,12 @@ xE
 xE
 xE
 xE
+Bv
 xE
 xE
 xE
 xE
-xE
-xE
+Bv
 xE
 xE
 UN
@@ -47574,7 +47585,7 @@ xE
 UN
 xE
 xE
-xE
+Bv
 xE
 xE
 xE
@@ -47599,7 +47610,7 @@ ct
 ct
 ct
 ct
-Ht
+fc
 Ht
 Ht
 Np
@@ -47676,22 +47687,22 @@ fK
 fK
 fK
 YY
-YE
+YY
 ZG
 ZG
 EZ
 ZG
 ZG
-ea
 ZG
 ZG
-ea
+ZG
+ZG
 ZG
 ZG
 EZ
 YY
 YY
-YE
+YY
 ZG
 ZG
 ZG
@@ -47714,7 +47725,7 @@ QG
 Uj
 xE
 xE
-Bv
+xE
 xE
 CU
 CU
@@ -47766,7 +47777,7 @@ ct
 JK
 ct
 LT
-fc
+Ht
 Ht
 Ht
 Np
@@ -47854,7 +47865,7 @@ ZG
 YY
 ZG
 YY
-ZG
+ea
 fK
 fK
 fK
@@ -47923,7 +47934,7 @@ Xa
 Xa
 LT
 Ht
-ct
+JK
 ct
 ct
 ct
@@ -48033,7 +48044,7 @@ or
 ZG
 ZG
 ZG
-ZG
+ea
 tM
 ZG
 ZG
@@ -48048,8 +48059,8 @@ QG
 QG
 Bw
 Bw
-sE
-sE
+QJ
+QJ
 CU
 CU
 CU
@@ -48109,8 +48120,8 @@ Np
 Np
 Np
 Np
-gr
-gr
+kQ
+kQ
 Mc
 fK
 fK
@@ -48249,7 +48260,7 @@ Uj
 xE
 xE
 xE
-xE
+Bv
 Uj
 CU
 Xa
@@ -48276,7 +48287,7 @@ Np
 Np
 Np
 Np
-JK
+ct
 ct
 LT
 fK
@@ -48556,7 +48567,7 @@ KV
 KV
 Bi
 KV
-sE
+QJ
 xE
 xE
 xE
@@ -48611,7 +48622,7 @@ Np
 Np
 LT
 ct
-ct
+JK
 LT
 fK
 fK
@@ -48716,14 +48727,14 @@ ES
 RR
 Bi
 KV
-iL
 KV
-KV
-iL
 KV
 KV
 iL
-sE
+KV
+KV
+KV
+QJ
 xE
 Bv
 xE
@@ -48761,7 +48772,7 @@ Ht
 ct
 sy
 Ki
-lh
+Jd
 Ki
 sy
 Ht
@@ -48777,7 +48788,7 @@ Np
 Np
 ct
 ct
-JK
+ct
 ct
 fK
 fK
@@ -48890,7 +48901,7 @@ KV
 KV
 KV
 KV
-sE
+QJ
 xE
 xE
 xE
@@ -49085,7 +49096,7 @@ xE
 xE
 xE
 xE
-xE
+Bv
 xE
 xE
 xE
@@ -49110,7 +49121,7 @@ Np
 ct
 ct
 ct
-ct
+JK
 ct
 fK
 fK
@@ -49202,10 +49213,10 @@ fK
 fK
 fK
 fK
-Lx
 Bi
 Bi
-iL
+Bi
+KV
 Bi
 QG
 QG
@@ -49220,7 +49231,7 @@ KV
 iL
 KV
 KV
-jN
+au
 KV
 KV
 Lx
@@ -49235,7 +49246,7 @@ xE
 ex
 Yu
 xE
-xE
+Bv
 xE
 xE
 xE
@@ -49244,7 +49255,7 @@ xE
 xE
 kb
 xE
-xE
+Bv
 Uj
 xE
 gy
@@ -49258,7 +49269,7 @@ gy
 xE
 Bs
 ct
-ct
+JK
 ct
 ct
 ct
@@ -49275,10 +49286,10 @@ Np
 Np
 LT
 ct
-JK
 ct
 ct
-iG
+ct
+LT
 fK
 fK
 fK
@@ -49430,7 +49441,7 @@ LT
 Ht
 ct
 ct
-ct
+JK
 ct
 ct
 Ht
@@ -49442,7 +49453,7 @@ Np
 Np
 Np
 LT
-ct
+JK
 ct
 ct
 fK
@@ -49540,7 +49551,7 @@ Bi
 Bi
 sK
 sK
-Bi
+Lx
 QG
 QG
 QG
@@ -49573,7 +49584,7 @@ xE
 xE
 xE
 xE
-xE
+Bv
 xE
 xE
 kb
@@ -49582,7 +49593,7 @@ xE
 xE
 xE
 xE
-xE
+Bv
 xE
 xE
 xE
@@ -49715,13 +49726,13 @@ QG
 QG
 QG
 Bi
-Lx
+Bi
 KV
 KV
-iL
 KV
 KV
-Lx
+KV
+Bi
 Bi
 QG
 QG
@@ -49732,7 +49743,7 @@ TV
 Bi
 ny
 ny
-xE
+Bv
 xE
 xE
 xE
@@ -49768,14 +49779,14 @@ ct
 ct
 XD
 ct
-ct
+JK
 LT
 LT
 LT
 LT
 Np
 Np
-gr
+kQ
 kQ
 Mc
 fK
@@ -50054,7 +50065,7 @@ KV
 sK
 sK
 KV
-KV
+iL
 Bi
 QG
 QG
@@ -50107,7 +50118,7 @@ ct
 ct
 ct
 ct
-ct
+JK
 ct
 ct
 ct
@@ -50204,7 +50215,7 @@ fK
 fK
 fK
 au
-iL
+KV
 KV
 QG
 QG
@@ -50215,8 +50226,8 @@ sK
 KV
 QJ
 KV
-KV
 iL
+KV
 KV
 sK
 rw
@@ -50277,7 +50288,7 @@ LT
 LT
 LT
 ct
-JK
+ct
 ct
 ct
 fK
@@ -50380,7 +50391,7 @@ KV
 sK
 sK
 KV
-sE
+QJ
 KV
 KV
 Bi
@@ -50405,7 +50416,7 @@ LQ
 LQ
 LQ
 LQ
-zs
+AU
 ow
 ow
 ow
@@ -50547,7 +50558,7 @@ KV
 KV
 KV
 KV
-sE
+QJ
 Bi
 QG
 Bi
@@ -50573,7 +50584,7 @@ Xg
 AD
 LQ
 yZ
-AD
+LQ
 LQ
 LQ
 cp
@@ -50600,7 +50611,7 @@ jE
 jE
 LT
 LT
-ct
+JK
 ct
 ct
 ct
@@ -50708,19 +50719,19 @@ au
 iL
 KV
 KV
-iL
-KV
 KV
 iL
 KV
-Bi
+KV
+KV
+Lx
 QG
 QG
 QG
 Bi
 KV
-KV
 iL
+KV
 KV
 Bi
 Bi
@@ -50739,7 +50750,7 @@ QG
 ow
 Xg
 LQ
-pH
+yZ
 LQ
 LQ
 LQ
@@ -50779,7 +50790,7 @@ Np
 Np
 LT
 ct
-ct
+JK
 ct
 ct
 fK
@@ -50906,7 +50917,7 @@ QG
 ow
 LQ
 LQ
-zs
+AU
 LQ
 LQ
 LQ
@@ -50929,7 +50940,7 @@ jE
 ow
 LQ
 LQ
-pH
+yZ
 ct
 ct
 ct
@@ -51053,9 +51064,9 @@ Bi
 QG
 QG
 Bw
-sE
-sE
-sE
+QJ
+QJ
+QJ
 QG
 QG
 QG
@@ -51077,27 +51088,27 @@ QG
 AD
 LQ
 LQ
-AD
+LQ
 Xg
 LQ
-cp
+ow
 Xg
 Xg
 AK
 Xg
 Xg
-AK
+Xg
 jE
 jE
 jE
 ow
 LQ
+LQ
+LQ
+LQ
 AD
-LQ
-LQ
-AD
-pH
-LQ
+yZ
+ct
 ct
 JK
 ct
@@ -51206,22 +51217,22 @@ fK
 fK
 es
 KV
-iL
 KV
 KV
-iL
 KV
 KV
-iL
+KV
+KV
+KV
 sK
 sK
-iL
+KV
 au
 au
 Lx
 Bi
 KV
-iL
+KV
 Bi
 QG
 QG
@@ -51263,15 +51274,15 @@ LQ
 LQ
 LQ
 LQ
-pH
-LQ
-LQ
+yZ
 ct
 ct
 ct
 ct
 ct
 ct
+ct
+JK
 ct
 ct
 ct
@@ -51283,7 +51294,7 @@ LT
 ct
 ct
 ct
-LT
+iG
 LT
 fK
 fK
@@ -51430,9 +51441,9 @@ Xo
 Xo
 LQ
 LQ
-zs
-ow
-LQ
+AU
+LT
+ct
 ct
 ct
 ct
@@ -51549,7 +51560,7 @@ KV
 KV
 KV
 KV
-KV
+iL
 KV
 KV
 KV
@@ -51578,16 +51589,16 @@ ow
 AD
 LQ
 ow
-cp
+ow
 Xo
 LQ
 AD
 LQ
 LQ
-AD
 LQ
 LQ
-AD
+LQ
+LQ
 LQ
 LQ
 AD
@@ -51596,7 +51607,7 @@ LQ
 lY
 Xo
 LQ
-cp
+ow
 fK
 fK
 fK
@@ -51610,7 +51621,7 @@ LT
 LT
 LT
 ct
-ct
+JK
 ct
 ct
 ct
@@ -51710,16 +51721,16 @@ KV
 iL
 KV
 KV
-iL
 KV
 KV
-iL
 KV
 KV
-iL
 KV
 KV
-iL
+KV
+KV
+KV
+KV
 sK
 sK
 Lx
@@ -51948,7 +51959,7 @@ LT
 ct
 ct
 ct
-ct
+JK
 ct
 ct
 Ht
@@ -52074,10 +52085,10 @@ QG
 QG
 QG
 QG
-zs
-pH
-ng
-pH
+AU
+yZ
+yZ
+yZ
 jE
 jE
 jE
@@ -52085,13 +52096,13 @@ jE
 cp
 ow
 Xg
-AD
+LQ
 LQ
 ow
 jE
 jE
 ow
-AD
+LQ
 LQ
 LQ
 AD
@@ -52208,22 +52219,22 @@ fK
 fK
 fK
 Cz
-iL
 KV
-KV
-iL
-KV
-KV
-Lx
 KV
 KV
 iL
 KV
 KV
+Bi
+KV
+KV
+KV
+KV
+KV
 iL
 KV
 KV
-iL
+KV
 Bi
 Bi
 QG
@@ -52393,7 +52404,7 @@ sK
 KV
 KV
 KV
-sE
+QJ
 Bi
 Bi
 QG
@@ -52560,24 +52571,24 @@ sK
 KV
 KV
 KV
-sE
+QJ
 KV
 KV
 KV
 Bi
 Bi
 Bi
-KV
-KV
-KV
 KV
 iL
+KV
+KV
+KV
 Bi
 Bw
 AD
 LQ
 LQ
-AD
+LQ
 LQ
 LQ
 jE
@@ -52586,13 +52597,13 @@ jE
 cp
 LQ
 LQ
-AD
+LQ
 ow
 ow
 jE
 jE
 jE
-cp
+ow
 LQ
 LQ
 AD
@@ -52709,19 +52720,19 @@ fK
 fK
 fK
 fK
-fn
+es
 au
 KV
-iL
 KV
-KV
-iL
 KV
 KV
 iL
 KV
 KV
-iL
+KV
+KV
+KV
+KV
 KV
 KV
 jN
@@ -52730,7 +52741,7 @@ au
 IT
 KV
 KV
-iL
+KV
 KV
 KV
 KV
@@ -52740,14 +52751,14 @@ au
 au
 KV
 KV
-sE
+QJ
 LQ
 LQ
 Xo
 Xo
 LQ
 LQ
-zs
+AU
 ow
 ow
 LQ
@@ -52894,7 +52905,7 @@ Bi
 QG
 Bi
 au
-FF
+IT
 au
 KV
 KV
@@ -52907,14 +52918,14 @@ KV
 KV
 KV
 KV
-sE
+QJ
 LQ
 LQ
 Xo
 Xo
 LQ
 LQ
-pH
+yZ
 LQ
 LQ
 LQ
@@ -53064,7 +53075,7 @@ QG
 QG
 au
 au
-au
+jN
 KV
 KV
 KV
@@ -53075,16 +53086,16 @@ KV
 iL
 Bi
 Bw
-cp
+ow
 Xg
 LQ
 AD
 Xg
 Xg
-ng
+yZ
 LQ
 LQ
-AD
+LQ
 Xo
 Xo
 AD
@@ -53096,7 +53107,7 @@ LQ
 AK
 Xo
 Xo
-AD
+LQ
 LQ
 ow
 fK
@@ -53213,10 +53224,10 @@ fK
 fK
 es
 es
-fn
+es
 au
 KV
-iL
+KV
 KV
 KV
 iL
@@ -53588,16 +53599,16 @@ ow
 AD
 Xo
 Xo
-AD
 LQ
 LQ
-AD
+LQ
+LQ
 ow
 LQ
 AD
 LQ
 Xg
-AD
+LQ
 LQ
 LQ
 wJ
@@ -53723,10 +53734,10 @@ fK
 Lx
 Bi
 KV
-iL
 KV
 KV
-iL
+KV
+KV
 Bw
 KV
 iL
@@ -53894,7 +53905,7 @@ KV
 KV
 KV
 KV
-sE
+QJ
 KV
 KV
 KV
@@ -54061,7 +54072,7 @@ KV
 KV
 KV
 KV
-sE
+QJ
 KV
 KV
 KV
@@ -54086,7 +54097,7 @@ QG
 QG
 QG
 ow
-AD
+LQ
 LQ
 LQ
 AD
@@ -54095,13 +54106,13 @@ LQ
 AD
 KQ
 LQ
-AD
+LQ
 LQ
 LQ
 AD
 LQ
 ps
-AD
+LQ
 vE
 fK
 fK
@@ -54230,7 +54241,7 @@ Bi
 iL
 Bw
 KV
-iL
+KV
 KV
 KV
 au
@@ -54399,7 +54410,7 @@ fK
 KV
 Bi
 KV
-KV
+iL
 KV
 KV
 KV
@@ -54574,7 +54585,7 @@ KV
 KV
 KV
 KV
-au
+jN
 au
 KV
 Bi
@@ -54584,22 +54595,22 @@ QG
 QG
 QG
 ow
-AK
+Xg
 LQ
 LQ
 AD
 LQ
 LQ
-AD
+LQ
+LQ
+LQ
+LQ
 LQ
 LQ
 AD
 LQ
 LQ
-AD
 LQ
-LQ
-AD
 LQ
 LQ
 AD
@@ -54737,7 +54748,7 @@ Bi
 Bi
 KV
 KV
-KV
+iL
 KV
 KV
 KV
@@ -54914,7 +54925,7 @@ au
 au
 KV
 KV
-sE
+QJ
 Xg
 LQ
 LQ
@@ -55081,14 +55092,14 @@ KV
 KV
 iL
 KV
-sE
-AD
+QJ
+LQ
 Xo
 Xo
 AD
 LQ
 LQ
-AD
+LQ
 LQ
 LQ
 AD
@@ -55097,13 +55108,13 @@ Xg
 wJ
 vE
 vE
+LQ
+LQ
+LQ
 AD
 LQ
 LQ
-AD
-LQ
-LQ
-wJ
+vE
 fK
 fK
 fK
@@ -55248,7 +55259,7 @@ KV
 KV
 KV
 KV
-sE
+QJ
 LQ
 Xo
 Xo
@@ -55583,16 +55594,16 @@ Bi
 Lx
 fK
 fK
-cp
+ow
 LQ
 LQ
-AK
+Xg
 Xg
 Xg
 AK
 ow
 ow
-cp
+ow
 fK
 fK
 fK

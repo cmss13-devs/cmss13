@@ -452,7 +452,7 @@ body
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
 
-		if(!M.client || !M.client.admin_holder || !M.client.admin_holder.rights & R_MOD)
+		if(!M.client || !M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD))
 			to_chat(usr, "This can only be used on people with +MOD permissions")
 			return
 

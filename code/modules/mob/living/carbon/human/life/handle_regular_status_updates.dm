@@ -46,8 +46,8 @@
 
 		//UNCONSCIOUS. NO-ONE IS HOME
 		if(regular_update && ((getOxyLoss() > 50)))
-			KnockOut(3)	
-		
+			KnockOut(3)
+
 		if((src.species.flags & HAS_HARDCRIT) && HEALTH_THRESHOLD_CRIT > health)
 			var/already_in_crit = FALSE
 			for(var/datum/effects/crit/C in effects_list)
@@ -73,7 +73,7 @@
 				if(prob(2) && health && !hal_crit)
 					addtimer(CALLBACK(src, .proc/emote, "snore"))
 			blinded = 1
-			stat = UNCONSCIOUS			
+			stat = UNCONSCIOUS
 		else
 			stat = CONSCIOUS
 
@@ -99,12 +99,12 @@
 
 		//Ears
 		if(ear_deaf) //Deafness, heals slowly over time
-			if(client && client.soundOutput && !client.soundOutput.status_flags & EAR_DEAF_MUTE)
+			if(client && client.soundOutput && !(client.soundOutput.status_flags & EAR_DEAF_MUTE))
 				client.soundOutput.status_flags |= EAR_DEAF_MUTE
 				client.soundOutput.apply_status()
 
 			ear_deaf = max(ear_deaf - 1, 0)
-			
+
 			if(!ear_deaf && client && client.soundOutput)
 				client.soundOutput.status_flags ^= EAR_DEAF_MUTE
 				client.soundOutput.apply_status()

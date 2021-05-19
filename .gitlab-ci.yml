@@ -22,7 +22,7 @@ variables:
   IMG_BUILD_NODE: "node:15-buster"
   BYOND_MAJOR: "513"
   BYOND_MINOR: "1539"
-  SPDMM_VERSION: "suite-1.6"
+  SPDMM_VERSION: "suite-1.7"
   # Resource settings
   BYOND_DOWNLOAD_URL: "https://secure.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip"
   SPDMM_DOWNLOAD_URL: "https://github.com/SpaceManiac/SpacemanDMM/releases/download/${SPDMM_VERSION}"

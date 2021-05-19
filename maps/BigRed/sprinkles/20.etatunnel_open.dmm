@@ -70,13 +70,14 @@
 /area/bigredv2/caves_research)
 "q" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_sw)
 "r" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -111,7 +112,7 @@
 	},
 /area/bigredv2/caves_research)
 "H" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -199,7 +200,7 @@ g
 O
 O
 O
-O
+H
 O
 O
 a
@@ -267,7 +268,7 @@ O
 O
 O
 O
-O
+H
 O
 O
 a
@@ -358,7 +359,7 @@ a
 O
 O
 O
-O
+H
 O
 O
 a
@@ -468,7 +469,7 @@ a
 a
 O
 O
-O
+H
 O
 O
 a
@@ -555,7 +556,7 @@ a
 a
 O
 O
-O
+H
 O
 O
 a

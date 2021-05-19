@@ -78,6 +78,12 @@
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/outside/w)
+"U" = (
+/turf/open/mars{
+	icon_state = "mars_dirt_13";
+	tag = "icon-mars_dirt_13"
+	},
+/area/bigredv2/outside/w)
 
 (1,1,1) = {"
 b
@@ -118,7 +124,7 @@ c
 d
 d
 g
-d
+g
 g
 g
 c
@@ -129,8 +135,8 @@ d
 d
 d
 d
-i
-j
+U
+m
 m
 o
 "}
@@ -152,8 +158,8 @@ f
 f
 f
 f
-f
-f
+h
+h
 h
 "}
 (8,1,1) = {"

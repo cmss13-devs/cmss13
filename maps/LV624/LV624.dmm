@@ -18347,6 +18347,10 @@
 	},
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/south_eastern_barrens)
+"nWe" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/south_eastern_jungle_barrens)
 "nWw" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -21525,6 +21529,10 @@
 "whU" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/caves/south_east_caves)
+"wib" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/gm/dirt,
+/area/lv624/ground/barrens/containers)
 "wjT" = (
 /obj/structure/sign/safety/analysis_lab{
 	pixel_x = 40
@@ -24892,7 +24900,7 @@ ane
 ane
 ane
 ane
-oyx
+fEU
 oyx
 aZa
 aYR
@@ -51058,7 +51066,7 @@ qRj
 pDt
 pDt
 xNK
-xNK
+wib
 xNK
 xNK
 xNK
@@ -51927,7 +51935,7 @@ pUm
 pUm
 pUm
 acg
-acg
+aaN
 acg
 pUm
 pUm
@@ -52904,7 +52912,7 @@ xch
 xch
 xch
 xch
-xch
+rGZ
 xch
 xch
 xch
@@ -56334,7 +56342,7 @@ sIM
 nsF
 kZs
 ekJ
-xch
+rGZ
 ajw
 alz
 ajI
@@ -57475,7 +57483,7 @@ vty
 vty
 koM
 mPt
-hba
+nWe
 ajw
 ajI
 ajI
@@ -58617,7 +58625,7 @@ vty
 iJs
 hba
 hba
-hba
+nWe
 vIt
 hba
 hba
@@ -58849,7 +58857,7 @@ mPt
 hba
 hba
 hba
-hba
+nWe
 hba
 pmz
 ajw
@@ -59762,7 +59770,7 @@ git
 uve
 uve
 iJs
-hba
+nWe
 hba
 ajw
 qcz
@@ -60676,7 +60684,7 @@ uve
 uve
 iJs
 hba
-hba
+nWe
 hba
 hba
 mqJ

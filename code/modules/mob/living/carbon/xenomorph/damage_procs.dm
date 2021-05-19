@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/ex_act(var/severity, var/direction, var/source, var/source_mob, pierce=0)
+/mob/living/carbon/Xenomorph/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data, pierce=0)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -8,7 +8,7 @@
 
 	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
 		for(var/mob/M in stomach_contents)
-			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, source, source_mob, pierce)
+			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, cause_data, pierce)
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -21,17 +21,14 @@
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)
 
-	if(source)
-		last_damage_source = source
-	if(source_mob)
-		last_damage_mob = source_mob
+	last_damage_data = cause_data
 
 	last_hit_time = world.time
 
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
-		gib(source)
-		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, source, source_mob)
+		gib(cause_data)
+		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, cause_data)
 		return
 	if (damage >= 0)
 		b_loss += damage * 0.5

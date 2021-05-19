@@ -364,7 +364,7 @@ its easier to just keep the beam vertical.
 
 
 //Generalized Fire Proc.
-/atom/proc/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1)
+/atom/proc/flamer_fire_act(var/dam = BURN_LEVEL_TIER_1, var/datum/cause_data/flame_cause_data)
 	return
 
 /atom/proc/acid_spray_act()

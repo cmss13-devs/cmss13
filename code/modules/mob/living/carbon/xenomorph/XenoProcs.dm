@@ -565,8 +565,7 @@
 		SPAN_XENOWARNING("[M]'s [L.display_name] bones snap with a satisfying crunch!"))
 		L.take_damage(rand(15,25), 0, 0)
 		L.fracture(100)
-	M.last_damage_source = initial(name)
-	M.last_damage_mob = src
+	M.last_damage_data = create_cause_data(initial(caste_type), src)
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress</font>")
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
 	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress")
@@ -645,3 +644,6 @@
 	to_chat(src, SPAN_DANGER("Your flesh, it melts!"))
 	updatehealth()
 	return TRUE
+
+/mob/living/carbon/Xenomorph/get_role_name()
+	return caste_type

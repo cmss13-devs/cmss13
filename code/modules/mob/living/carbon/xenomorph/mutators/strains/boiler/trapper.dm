@@ -76,9 +76,9 @@
 		return
 
 	var/mob/living/carbon/human/H = A
-	var/datum/effects/boiler_trap/found = null 
+	var/datum/effects/boiler_trap/found = null
 	for (var/datum/effects/boiler_trap/F in H.effects_list)
-		if (F.source_mob == bound_xeno)
+		if (F.cause_data?.resolve_mob() == bound_xeno)
 			found = F
 			break
 

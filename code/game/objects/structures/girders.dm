@@ -310,13 +310,13 @@
 		return
 	return ..()
 
-/obj/structure/girder/ex_act(severity, direction)
+/obj/structure/girder/ex_act(severity, direction, datum/cause_data/cause_data)
 	health -= severity
 	if(health <= 0)
 		var/location = get_turf(src)
 		handle_debris(severity, direction)
 		qdel(src)
-		create_shrapnel(location, rand(2,5), direction, 45, /datum/ammo/bullet/shrapnel/light) // Shards go flying
+		create_shrapnel(location, rand(2,5), direction, 45, /datum/ammo/bullet/shrapnel/light, cause_data) // Shards go flying
 	else
 		update_state()
 

@@ -22,8 +22,7 @@
 
 	interactee = null
 
-	last_damage_source = null
-	last_damage_mob = null
+	last_damage_data = null
 
 	QDEL_NULL(mob_panel)
 
@@ -993,3 +992,6 @@ mob/proc/yank_out_object()
 /// Adds this list to the output to the stat browser
 /mob/proc/get_status_tab_items()
 	. = list()
+
+/mob/proc/get_role_name()
+	return

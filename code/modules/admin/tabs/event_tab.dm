@@ -79,15 +79,16 @@
 	var/list/choices = list("Small Bomb", "Medium Bomb", "Big Bomb", "Custom Bomb")
 	var/list/falloff_shape_choices = list("CANCEL", "Linear", "Exponential")
 	var/choice = tgui_input_list(usr, "What size explosion would you like to produce?", "Drop Bomb", choices)
+	var/datum/cause_data/cause_data = create_cause_data("divine intervention")
 	switch(choice)
 		if(null)
 			return 0
 		if("Small Bomb")
-			explosion(epicenter, 1, 2, 3, 3)
+			explosion(epicenter, 1, 2, 3, 3, , , , cause_data)
 		if("Medium Bomb")
-			explosion(epicenter, 2, 3, 4, 4)
+			explosion(epicenter, 2, 3, 4, 4, , , , cause_data)
 		if("Big Bomb")
-			explosion(epicenter, 3, 5, 7, 5)
+			explosion(epicenter, 3, 5, 7, 5, , , , cause_data)
 		if("Custom Bomb")
 			var/power = input(src, "Power?", "Power?") as num
 			if(!power)
@@ -107,7 +108,7 @@
 
 			if(power > custom_limit)
 				return
-			cell_explosion(epicenter, power, falloff, explosion_shape)
+			cell_explosion(epicenter, power, falloff, explosion_shape, null, cause_data)
 			message_staff("[key_name(src, TRUE)] dropped a custom cell bomb with power [power], falloff [falloff] and falloff_shape [shape_choice]!")
 	message_staff("[ckey] used 'Drop Bomb' at [epicenter.loc].")
 

@@ -55,21 +55,18 @@
 
 	var/is_shrapnel
 
-	var/weapon_source
-	var/weapon_source_mob
+	var/datum/cause_data/weapon_cause_data
 
 	var/mob/living/homing_target = null
 
 	var/list/bullet_traits
 
-/obj/item/projectile/Initialize(var/source, var/source_mob)
-	. = ..()
+/obj/item/projectile/Initialize(mapload, var/datum/cause_data/cause_data)
+	. = ..(mapload)
 	path = list()
 	permutated = list()
-	weapon_source = source
-	weapon_source_mob = source_mob
-	if(source_mob)
-		firer = source_mob
+	weapon_cause_data = cause_data
+	firer = cause_data?.resolve_mob()
 
 /obj/item/projectile/Destroy()
 	in_flight = 0
@@ -80,9 +77,8 @@
 	starting = null
 	permutated = null
 	path = null
+	weapon_cause_data = null
 	firer = null
-	weapon_source = null
-	weapon_source_mob = null
 	return ..()
 
 /obj/item/projectile/Collided(atom/movable/AM)
@@ -159,9 +155,9 @@
 		round_statistics.total_projectiles_fired++
 		if(ammo.bonus_projectiles_amount)
 			round_statistics.total_projectiles_fired += ammo.bonus_projectiles_amount
-	if(firer && ismob(firer))
+	if(firer && ismob(firer) && weapon_cause_data)
 		var/mob/M = firer
-		M.track_shot(weapon_source)
+		M.track_shot(weapon_cause_data.cause_name)
 
 	//If we have the the right kind of ammo, we can fire several projectiles at once.
 	if(ammo.bonus_projectiles_amount && ammo.bonus_projectiles_type)
@@ -822,9 +818,10 @@
 			return -1
 
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
-	if(ismob(P.weapon_source_mob))
-		var/mob/M = P.weapon_source_mob
-		M.track_shot_hit(P.weapon_source, src)
+	if(P.weapon_cause_data && P.weapon_cause_data.cause_name)
+		var/mob/M = P.weapon_cause_data.resolve_mob()
+		if(istype(M))
+			M.track_shot_hit(P.weapon_cause_data.cause_name, src)
 
 	var/damage = P.calculate_damage()
 	var/damage_result = damage
@@ -922,9 +919,10 @@
 			damage *= XVX_PROJECTILE_DAMAGEMULT
 			damage_result = damage
 
-	if(ismob(P.weapon_source_mob))
-		var/mob/M = P.weapon_source_mob
-		M.track_shot_hit(P.weapon_source, src)
+	if(P.weapon_cause_data && P.weapon_cause_data.cause_name)
+		var/mob/M = P.weapon_cause_data.resolve_mob()
+		if(istype(M))
+			M.track_shot_hit(P.weapon_cause_data.cause_name, src)
 
 	flash_weak_pain()
 
@@ -1080,31 +1078,23 @@
 		visible_message(SPAN_DANGER("[name] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
 						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
-	if(P.weapon_source)
-		last_damage_source = "[P.weapon_source]"
-	else
-		last_damage_source = initial(P.name)
+	last_damage_data = P.weapon_cause_data
 	if(P.firer && ismob(P.firer))
 		var/mob/firingMob = P.firer
-		if(P.weapon_source_mob)
-			last_damage_mob = P.weapon_source_mob
 		var/area/A = get_area(src)
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
 			attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			round_statistics.total_friendly_fire_instances++
 			msg_admin_ff("[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)")
-			if(ishuman(firingMob) && P.weapon_source)
+			if(ishuman(firingMob) && P.weapon_cause_data)
 				var/mob/living/carbon/human/H = firingMob
-				H.track_friendly_fire(P.weapon_source)
+				H.track_friendly_fire(P.weapon_cause_data.cause_name)
 		else
 			attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
 		return
-
-	if(P.weapon_source_mob)
-		last_damage_mob = P.weapon_source_mob
 
 	attack_log += "\[[time_stamp()]\] <b>SOMETHING??</b> shot <b>[key_name(src)]</b> with a <b>[P]</b>"
 	msg_admin_attack("SOMETHING?? shot [key_name(src)] with a [P] in [get_area(src)] ([loc.x],[loc.y],[loc.z]).", loc.x, loc.y, loc.z)

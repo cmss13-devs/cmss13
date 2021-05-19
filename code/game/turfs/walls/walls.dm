@@ -205,26 +205,27 @@
 
 	ScrapeAway()
 
-/turf/closed/wall/ex_act(severity, explosion_direction, source, mob/source_mob)
+/turf/closed/wall/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	if(hull)
 		return
 	var/location = get_step(get_turf(src), explosion_direction) // shrapnel will just collide with the wall otherwise
 	var/exp_damage = severity*EXPLOSION_DAMAGE_MULTIPLIER_WALL
+	var/mob/M = cause_data.resolve_mob()
 
 	if ( damage + exp_damage > damage_cap*2 )
-		if(source_mob)
-			SEND_SIGNAL(source_mob, COMSIG_MOB_EXPLODED_WALL, src)
+		if(M)
+			SEND_SIGNAL(M, COMSIG_MOB_EXPLODED_WALL, src)
 		dismantle_wall(FALSE, TRUE)
 		if(!istype(src, /turf/closed/wall/resin))
-			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
+			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 	else
 		if(!istype(src, /turf/closed/wall/resin) && prob(25))
 			if(prob(50)) // prevents spam in close corridors etc
 				src.visible_message(SPAN_WARNING("The explosion causes shards to spall off of [src]!"))
-			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/spall)
+			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/spall, cause_data)
 		else
 			exp_damage *= RESIN_EXPLOSIVE_MULTIPLIER
-		take_damage(exp_damage, source_mob)
+		take_damage(exp_damage, M)
 
 	return
 

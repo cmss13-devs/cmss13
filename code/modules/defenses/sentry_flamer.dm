@@ -11,7 +11,7 @@
 	. = ..()
 
 /obj/structure/machinery/defenses/sentry/flamer/actual_fire(var/atom/A)
-	var/obj/item/projectile/P = new(initial(name), owner_mob)
+	var/obj/item/projectile/P = new(create_cause_data(initial(name), owner_mob))
 	P.generate_bullet(new ammo.default_ammo)
 	GIVE_BULLET_TRAIT(P, /datum/element/bullet_trait_iff, faction_group)
 	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null, FALSE)
@@ -29,8 +29,8 @@
 
 	if(ammo.current_rounds != 0)
 		var/datum/reagent/napalm/blue/R = new()
-		new /obj/flamer_fire(loc, "sentry explosion", null, R, 2)
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "sentry explosion")
+		new /obj/flamer_fire(loc, create_cause_data("sentry explosion"), R, 2)
+	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("sentry explosion"))
 	if(!QDELETED(src))
 		qdel(src)
 
@@ -47,7 +47,7 @@
 	visible_message("[icon2html(src, viewers(src))] [SPAN_WARNING("The [name] starts spitting out sparks and smoke!")]")
 	playsound(loc, 'sound/mecha/critdestrsyndi.ogg', 25, 1)
 
-	cell_explosion(loc, 10, 10, null, "sentry explosion")
+	cell_explosion(loc, 10, 10, null, create_cause_data("sentry explosion"))
 	if(!QDELETED(src))
 		qdel(src)
 

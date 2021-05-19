@@ -304,6 +304,8 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/damage = armor_damage_reduction(GLOB.marine_melee, impact_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
 	apply_damage(damage, dtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
 
+	var/last_damage_source = null
+	var/last_damage_mob = null
 	if (damage > 5)
 		last_damage_source = initial(AM.name)
 		animation_flash_color(src)
@@ -326,6 +328,9 @@ Contains most of the procs that are called when a mob is attacked by something
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
 				msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+
+	if(last_damage_source)
+		last_damage_data = create_cause_data(last_damage_source, last_damage_mob)
 
 	//thrown weapon embedded object code.
 	if (dtype == BRUTE && istype(O,/obj/item))

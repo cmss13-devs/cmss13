@@ -12,8 +12,7 @@
 	max_storage_space = 16
 
 /obj/item/storage/briefcase/attack(mob/living/M as mob, mob/living/user as mob)
-	M.last_damage_source = initial(name)
-	M.last_damage_mob = user
+	M.last_damage_data = create_cause_data(initial(name), user)
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been attacked with [src.name] by [key_name(user)]</font>")
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [key_name(M)]</font>")
 	msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [src.name] (INTENT: [uppertext(intent_text(user.a_intent))]) in [user.loc.name] ([get_area(user)],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)

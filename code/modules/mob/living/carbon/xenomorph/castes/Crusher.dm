@@ -243,8 +243,7 @@
 
 		bound_xeno.flick_attack_overlay(H, "slash")
 
-		H.last_damage_source = initial(bound_xeno.name)
-		H.last_damage_mob = bound_xeno
+		H.last_damage_data = create_cause_data(initial(bound_xeno.name), bound_xeno)
 
 		//Logging, including anti-rulebreak logging
 		if(H.status_flags & XENO_HOST && H.stat != DEAD)

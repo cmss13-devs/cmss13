@@ -870,11 +870,11 @@ and you're good to go.
 		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b>")
 		chambered = GLOB.ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
-	var/weapon_source_mob
+	var/weapon_source_mob = null
 	if(isliving(usr))
 		var/mob/M = usr
 		weapon_source_mob = M
-	var/obj/item/projectile/P = new /obj/item/projectile(bullet_source, weapon_source_mob, src)
+	var/obj/item/projectile/P = new /obj/item/projectile(src, create_cause_data(bullet_source, weapon_source_mob))
 	P.generate_bullet(chambered, 0, NO_FLAGS)
 
 	return P
@@ -1095,6 +1095,7 @@ and you're good to go.
 			playsound(user, actual_sound, sound_volume, 1)
 			simulate_recoil(2, user)
 			var/t = "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
+			var/datum/cause_data/cause_data = create_cause_data("suicide by [initial(name)]")
 			if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
 				t += " after playing Russian Roulette"
 				user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
@@ -1113,10 +1114,9 @@ and you're good to go.
 					if(ishuman(user) && user == M)
 						var/mob/living/carbon/human/HM = user
 						HM.undefibbable = TRUE //can't be defibbed back from self inflicted gunshot to head
-					user.death("suicide by [initial(name)]")
+					user.death(cause_data)
 					msg_admin_ff("[key_name(user)] committed suicide with \a [name] in [get_area(user)] [ffl]")
-			M.last_damage_source = initial(name)
-			M.last_damage_mob = null
+			M.last_damage_data = cause_data
 			user.attack_log += t //Apply the attack log.
 			last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
@@ -1195,7 +1195,7 @@ and you're good to go.
 		if(projectile_to_fire.ammo.bonus_projectiles_amount)
 			var/obj/item/projectile/BP
 			for(var/i in 1 to projectile_to_fire.ammo.bonus_projectiles_amount)
-				BP = new /obj/item/projectile(initial(name), user, M.loc)
+				BP = new /obj/item/projectile(M.loc, create_cause_data(initial(name), user))
 				BP.generate_bullet(GLOB.ammo_list[projectile_to_fire.ammo.bonus_projectiles_type], 0, NO_FLAGS)
 				BP.accuracy = round(BP.accuracy * projectile_to_fire.accuracy/initial(projectile_to_fire.accuracy)) //Modifies accuracy of pellets per fire_bonus_projectiles.
 				BP.damage *= damage_buff

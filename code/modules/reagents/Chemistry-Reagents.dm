@@ -20,7 +20,7 @@
 	var/spray_warning = FALSE //whether spraying that reagent creates an admin message.
 	//var/list/viruses = list()
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
-	var/mob/last_source_mob
+	var/datum/weakref/last_source_mob
 	// For explosions
 	var/explosive = FALSE
 	var/power = 0
@@ -162,8 +162,7 @@
 			if(overdose_critical && volume > overdose_critical)
 				P.process_critical(M, potency)
 			var/overdose_message = "[name] overdose"
-			M.last_damage_source = overdose_message
-			M.last_damage_mob = last_source_mob
+			M.last_damage_data = create_cause_data(overdose_message, last_source_mob.resolve())
 
 	if(mods[REAGENT_PURGE])
 		holder.remove_all_type(/datum/reagent,2*mods[REAGENT_PURGE])

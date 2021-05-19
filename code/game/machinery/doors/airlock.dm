@@ -131,13 +131,13 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 	qdel(src)
 
-/obj/structure/machinery/door/airlock/ex_act(severity, explosion_direction)
+/obj/structure/machinery/door/airlock/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR
 	var/location = get_turf(src)
 	if(!density)
 		exp_damage *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
 	if(take_damage(exp_damage)) // destroyed by explosion, shards go flying
-		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
+		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 
 /obj/structure/machinery/door/airlock/get_explosion_resistance()
 	if(density)

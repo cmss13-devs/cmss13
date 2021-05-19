@@ -185,7 +185,7 @@
 						var/list/injected = list()
 						for(var/datum/reagent/R in src.reagents.reagent_list)
 							injected += R.name
-							R.last_source_mob = user
+							R.last_source_mob = WEAKREF(user)
 						var/contained = english_list(injected)
 						M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
 						user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")

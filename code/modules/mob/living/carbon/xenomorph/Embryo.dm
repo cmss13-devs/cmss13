@@ -250,8 +250,7 @@
 	else
 		if(ishuman(victim))
 			var/mob/living/carbon/human/H = victim
-			H.last_damage_source = "chestbursting"
-			H.last_damage_mob = null
+			H.last_damage_data = create_cause_data("chestbursting", null)
 			var/datum/internal_organ/O
 			var/i
 			for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.

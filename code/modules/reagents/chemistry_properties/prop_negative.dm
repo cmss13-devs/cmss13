@@ -4,8 +4,7 @@
 	value = -2
 
 /datum/chem_property/negative/process(mob/living/M, var/potency = 1)
-	M.last_damage_source = "Harmful substance"
-	M.last_damage_mob = holder.last_source_mob
+	M.last_damage_data = create_cause_data("Harmful substance", holder.last_source_mob?.resolve())
 
 /datum/chem_property/negative/hypoxemic
 	name = PROPERTY_HYPOXEMIC
@@ -131,7 +130,7 @@
 	M.drowsyness = min(M.drowsyness + potency,15*potency)
 	M.reagent_move_delay_modifier += potency
 	M.recalculate_move_delay = TRUE
-	if(prob(10)) 
+	if(prob(10))
 		M.emote(pick("yawn","gasp"))
 
 /datum/chem_property/negative/hemolytic/process_critical(mob/living/M, var/potency = 1)

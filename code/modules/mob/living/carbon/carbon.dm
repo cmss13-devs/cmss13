@@ -64,14 +64,13 @@
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
-				last_damage_source = "chestbursting"
-				last_damage_mob = user
-				gib("chestbursting")
+				last_damage_data = create_cause_data("chestbursting", user)
+				gib(last_damage_data)
 	else if(!chestburst && (status_flags & XENO_HOST) && isXenoLarva(user))
 		var/mob/living/carbon/Xenomorph/Larva/L = user
 		L.chest_burst(src)
 
-/mob/living/carbon/ex_act(var/severity, var/direction, var/source, var/source_mob)
+/mob/living/carbon/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -79,13 +78,10 @@
 	if(severity >= 30)
 		flash_eyes()
 
-	if(source)
-		last_damage_source = source
-	if(source_mob)
-		last_damage_mob = source_mob
+	last_damage_data = cause_data
 
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
-		gib(source)
+		gib(cause_data)
 		return
 
 	apply_damage(severity, BRUTE)
@@ -460,3 +456,20 @@
 			buckled.manual_unbuckle(src)
 	else
 		buckled.manual_unbuckle(src)
+
+/mob/living/carbon/examine(mob/user)
+	. = ..()
+	if(isYautja(user))
+		to_chat(user, SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor."))
+		if(src.hunter_data.hunted)
+			to_chat(user, SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name]."))
+
+		if(src.hunter_data.dishonored)
+			to_chat(user, SPAN_RED("[src] was marked as dishonorable for '[src.hunter_data.dishonored_reason]'."))
+		else if(src.hunter_data.honored)
+			to_chat(user, SPAN_GREEN("[src] was honored for '[src.hunter_data.honored_reason]'."))
+
+		if(src.hunter_data.thralled)
+			to_chat(user, SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'."))
+		else if(src.hunter_data.gear)
+			to_chat(user, SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set]."))

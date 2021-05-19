@@ -72,7 +72,7 @@
 		return
 
 	user.drop_held_item()
-	source_mob = user
+	cause_data = create_cause_data(initial(name), user)
 	plant_target = target
 	icon_state = overlay_image
 
@@ -225,8 +225,7 @@
 			forceMove(plant_target)
 		if(ismob(plant_target))
 			var/mob/M = plant_target
-			M.last_damage_source = initial(name)
-			M.last_damage_mob = source_mob
+			M.last_damage_data = cause_data
 
 		target_turf = get_turf(plant_target)
 	else
@@ -246,26 +245,26 @@
 			. = ..()
 		if(!QDELETED(src))
 			overlays.Cut()
-			cell_explosion(target_turf, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+			cell_explosion(target_turf, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			qdel(src)
 		return
-	plant_target.ex_act(1000, , initial(name), source_mob)
+	plant_target.ex_act(1000, , cause_data)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
 		if(W.hull)
 			continue
-		W.ex_act(1000, , initial(name), source_mob)
+		W.ex_act(1000, , cause_data)
 
 	for(var/obj/structure/window/W in orange(1, target_turf))
 		if(W.not_damageable)
 			continue
 
-		W.ex_act(1000, , initial(name), source_mob)
+		W.ex_act(1000, , cause_data)
 
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
-		D.ex_act(1000, , initial(name), source_mob)
+		D.ex_act(1000, , cause_data)
 
-	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 	qdel(src)
 

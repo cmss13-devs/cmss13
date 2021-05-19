@@ -54,7 +54,7 @@
 
 /datum/entity/player_stats/proc/recalculate_nemesis()
 	var/list/causes = list()
-	for(var/datum/entity/death_stats/stat_entity in death_list)
+	for(var/datum/entity/statistic/death/stat_entity in death_list)
 		if(!stat_entity.cause_name)
 			continue
 		causes["[stat_entity.cause_name]"] += 1

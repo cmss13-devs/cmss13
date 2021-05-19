@@ -31,10 +31,10 @@
 /obj/item/explosive/grenade/HE/prime()
 	set waitfor = 0
 	if(shrapnel_count)
-		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, initial(name), source_mob)
+		create_shrapnel(loc, shrapnel_count, , ,shrapnel_type, cause_data)
 		sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 	apply_explosion_overlay()
-	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, initial(name), source_mob)
+	cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, null, cause_data)
 	qdel(src)
 
 
@@ -45,9 +45,10 @@
 	flick("grenade", O)
 	QDEL_IN(O, 7)
 
-/obj/item/explosive/grenade/HE/flamer_fire_act()
+/obj/item/explosive/grenade/HE/flamer_fire_act(damage, flame_cause_data)
 	fire_resistance--
 	if(fire_resistance<=0)
+		cause_data = flame_cause_data
 		prime()
 
 /obj/item/explosive/grenade/HE/super
@@ -161,16 +162,16 @@
 	if(active && detonate) // Active, and we reached our destination.
 		if(hit_turf)
 			for(var/mob/M in hit_turf)
-				create_shrapnel(loc, direct_hit_shrapnel, last_move_dir , dispersion_angle ,shrapnel_type, initial(name), source_mob, FALSE, 100)
+				create_shrapnel(loc, direct_hit_shrapnel, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
 				M.Superslow(3.0)
 				shrapnel_count -= direct_hit_shrapnel
 				continue
 		if(shrapnel_count)
-			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, initial(name), source_mob, FALSE, 0)
+			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 		apply_explosion_overlay()
 		if(explosion_power)
-			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, initial(name), source_mob)
+			cell_explosion(loc, explosion_power, explosion_falloff, falloff_mode, last_move_dir, cause_data)
 		qdel(src)
 /*
 //================================================
@@ -193,11 +194,11 @@
 	var/radius = 2
 
 /obj/item/explosive/grenade/incendiary/prime()
-	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, initial(name), source_mob, radius, get_turf(src), flame_level, burn_level, flameshape, null)
+	INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, null)
 	playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 	qdel(src)
 
-/proc/flame_radius(var/source, var/source_mob, var/radius = 1, var/turf/T, var/flame_level = 14, var/burn_level = 15, var/flameshape = FLAMESHAPE_DEFAULT, var/target)
+/proc/flame_radius(var/datum/cause_data/cause_data, var/radius = 1, var/turf/T, var/flame_level = 14, var/burn_level = 15, var/flameshape = FLAMESHAPE_DEFAULT, var/target)
 	if(!istype(T))
 		return
 	var/datum/reagent/R = new /datum/reagent/napalm/ut()
@@ -210,7 +211,7 @@
 	R.intensityfire = burn_level
 	R.rangefire = radius
 
-	new /obj/flamer_fire(T, source, source_mob, R, R.rangefire, null, flameshape, target)
+	new /obj/flamer_fire(T, cause_data, R, R.rangefire, null, flameshape, target)
 
 /obj/item/explosive/grenade/incendiary/molotov
 	name = "\improper improvised firebomb"
@@ -266,12 +267,12 @@
 		var/angle = dir2angle(last_move_dir)
 		var/turf/target = locate(src.loc.x + sin(angle)*radius, src.loc.y + cos(angle)*radius, src.loc.z)
 		if(shrapnel_count)
-			create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, initial(name), source_mob, FALSE, 0)
+			create_shrapnel(loc, shrapnel_count, last_move_dir , 30 ,shrapnel_type, cause_data, FALSE, 0)
 		if(target)
-			INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, initial(name), source_mob, radius, get_turf(src), flame_level, burn_level, flameshape, target)
+			INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, flameshape, target)
 		else
 			//Not stellar, but if we can't find a direction, fall back to HIDP behaviour.
-			INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, initial(name), source_mob, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
+			INVOKE_ASYNC(GLOBAL_PROC, .proc/flame_radius, cause_data, radius, get_turf(src), flame_level, burn_level, FLAMESHAPE_DEFAULT, target)
 		playsound(src.loc, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 		qdel(src)
 

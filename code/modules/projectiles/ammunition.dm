@@ -148,11 +148,11 @@ They're all essentially identical when it comes to getting the job done.
 	gun_type = source.gun_type
 
 //~Art interjecting here for explosion when using flamer procs.
-/obj/item/ammo_magazine/flamer_fire_act()
+/obj/item/ammo_magazine/flamer_fire_act(damage, flame_cause_data)
 	switch(current_rounds)
 		if(0) return
-		if(1 to 100) explosion(loc,  -1, -1, 0, 2) //blow it up.
-		else explosion(loc,  -1, -1, 1, 2) //blow it up HARDER
+		if(1 to 100) explosion(loc,  -1, -1, 0, 2, , , , flame_cause_data) //blow it up.
+		else explosion(loc,  -1, -1, 1, 2, , , , flame_cause_data) //blow it up HARDER
 	qdel(src)
 
 //Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.
@@ -1044,11 +1044,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				qdel(AM)
 
 //explosion when using flamer procs.
-/obj/item/ammo_box/rounds/flamer_fire_act()
+/obj/item/ammo_box/rounds/flamer_fire_act(damage, flame_cause_data)
 	switch(bullet_amount)
 		if(0) return
-		if(1 to 100) explosion(loc,  0, 0, 1, 2) //blow it up.
-		else explosion(loc,  0, 0, 2, 3) //blow it up HARDER
+		if(1 to 100) explosion(loc,  0, 0, 1, 2, , , , flame_cause_data) //blow it up.
+		else explosion(loc,  0, 0, 2, 3, , , , flame_cause_data) //blow it up HARDER
 	qdel(src)
 
 /obj/item/ammo_box/rounds/ap

@@ -206,7 +206,7 @@ GLOBAL_DATUM(railgun_eye_location, /datum/coords)
 	if(firer)
 		firer.images -= to_remove
 		playsound(T, 'sound/machines/railgun/railgun_impact.ogg', sound_range = 75)
-		cell_explosion(T, power, power/range, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "railgun", firer.mob)
+		cell_explosion(T, power, power/range, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("railgun", firer.mob))
 
 /obj/structure/machinery/computer/railgun/proc/remove_current_operator()
 	SIGNAL_HANDLER

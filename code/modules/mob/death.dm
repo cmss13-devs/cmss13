@@ -38,7 +38,7 @@
 /mob/proc/dust_animation()
 	return
 
-/mob/proc/death(var/cause, var/gibbed = 0, var/deathmessage = "seizes up and falls limp...")
+/mob/proc/death(var/datum/cause_data/cause_data, var/gibbed = 0, var/deathmessage = "seizes up and falls limp...")
 	if(stat == DEAD)
 		return 0
 
@@ -81,16 +81,22 @@
 		record_playtime(client.player_data, job, type)
 
 	track_death_calculations()
-	track_mob_death(cause, last_damage_mob)
 
-	if(isXeno(last_damage_mob))
-		var/mob/living/carbon/Xenomorph/X = last_damage_mob
-		X.behavior_delegate.on_kill_mob(src)
+	track_mob_death(cause_data)
+	if(cause_data)
+		var/mob/cause_mob = cause_data.resolve_mob()
+		if(cause_mob)
+			if(isYautja(cause_mob) && cause_mob.client)
+				cause_mob.client.add_honor(max(life_kills_total, 1))
+
+			if(isXeno(cause_mob))
+				var/mob/living/carbon/Xenomorph/X = cause_mob
+				X.behavior_delegate.on_kill_mob(src)
 
 	med_hud_set_health()
 	med_hud_set_armor()
 	med_hud_set_status()
 
 	update_icons()
-	SEND_SIGNAL(src, COMSIG_MOB_DEATH, cause, gibbed, deathmessage)
+	SEND_SIGNAL(src, COMSIG_MOB_DEATH, cause_data?.resolve_mob(), gibbed, deathmessage)
 	return 1

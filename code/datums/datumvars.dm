@@ -558,7 +558,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
 			return
 
-		cell_explosion(A, 150, 100)
+		cell_explosion(A, 150, 100, , create_cause_data("divine intervention"))
 		message_staff("[key_name(src, TRUE)] has exploded [A]!")
 		href_list["datumrefresh"] = href_list["explode"]
 

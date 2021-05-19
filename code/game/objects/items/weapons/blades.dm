@@ -66,10 +66,11 @@
 	var/turf/epicenter = get_turf(user)
 	epicenter = get_step(epicenter, user.dir)
 
-	create_shrapnel(epicenter, 48, dir, , /datum/ammo/bullet/shrapnel, initial(name), user)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
+	create_shrapnel(epicenter, 48, dir, , /datum/ammo/bullet/shrapnel, cause_data)
 	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 	apply_explosion_overlay()
-	cell_explosion(epicenter, 40, 18, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, initial(name), user)
+	cell_explosion(epicenter, 40, 18, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, cause_data)
 	qdel(src)
 
 /obj/item/weapon/melee/katana

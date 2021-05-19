@@ -183,8 +183,7 @@
 	var/clicked_something 	// a list of booleans for if a mob did a specific click
 							// only left click, shift click, right click, and middle click
 
-	var/last_damage_source // for tracking whatever damaged us last, mainly for stat tracking
-	var/last_damage_mob // for tracking last hits on mob death, for kill stat tracking and moderation
+	var/datum/cause_data/last_damage_data // for tracking whatever damaged us last
 
 	var/ambience_playing = FALSE
 

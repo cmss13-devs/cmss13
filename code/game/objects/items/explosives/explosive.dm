@@ -4,7 +4,7 @@
 /obj/item/explosive
 	var/active = FALSE
 	var/customizable = FALSE
-	var/source_mob
+	var/datum/cause_data/cause_data
 	var/creator
 	//Below is used for customization
 	var/obj/item/device/assembly_holder/detonator = null
@@ -34,7 +34,7 @@
 		reagents.vars[limit] = reaction_limits[limit]
 
 /obj/item/explosive/Destroy()
-	source_mob = null
+	cause_data = null
 	creator = null
 	. = ..()
 
@@ -55,7 +55,7 @@
 			current_container_volume = 0
 		desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
 		return
-	source_mob = user
+	cause_data = create_cause_data(initial(name), user)
 	return TRUE
 
 /obj/item/explosive/update_icon()
@@ -176,9 +176,10 @@
 			reagent_list_text += " [R.volume] [R.name], "
 		i++
 
-	if(source_mob)//so we don't message for simulations
-		msg_admin_niche("[key_name(source_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
-		reagents.source_mob = source_mob
+	var/mob/cause_mob = cause_data.resolve_mob()
+	reagents.source_mob = cause_mob
+	if(cause_mob) //so we don't message for simulations
+		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
 
 	if(containers.len < 2)
 		reagents.trigger_volatiles = TRUE //Explode on the first transfer

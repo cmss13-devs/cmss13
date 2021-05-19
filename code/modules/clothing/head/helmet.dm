@@ -1082,10 +1082,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 // Values nabbed from the HEFA nade
 /obj/item/clothing/head/helmet/marine/specialist/hefa/proc/boom()
 	// TODO: knock down user so the shrapnel isn't all taken by the user
-	create_shrapnel(loc, 48, , ,/datum/ammo/bullet/shrapnel, initial(name), activator)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), activator)
+	create_shrapnel(loc, 48, , ,/datum/ammo/bullet/shrapnel, cause_data)
 	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 	apply_explosion_overlay()
-	cell_explosion(loc, 40, 18, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), activator)
+	cell_explosion(loc, 40, 18, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 	qdel(src)
 
 

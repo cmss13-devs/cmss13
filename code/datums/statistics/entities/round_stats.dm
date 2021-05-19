@@ -1,7 +1,7 @@
 /datum/entity/round_stats
 	var/name = "round"
 	var/datum/entity/map_stats/current_map = null // reference to current map
-	var/list/datum/entity/death_stats/death_stats_list = list()
+	var/list/datum/entity/statistic/death/death_stats_list = list()
 
 	var/game_mode = null
 
@@ -186,13 +186,19 @@
 	var/datum/entity/statistic/S = total_deaths["[faction]"]
 	S.value += amount
 
-/datum/entity/round_stats/proc/track_death(var/datum/entity/death_stats/new_death, var/faction)
+/datum/entity/round_stats/proc/track_death(var/datum/entity/statistic/death/new_death)
 	if(new_death)
 		death_stats_list.Insert(1, new_death)
 		var/list/damage_list = list()
-		for(var/damage_iteration in new_death.total_damage)
-			var/datum/entity/statistic/D = new_death.total_damage[damage_iteration]
-			damage_list += list(list("name" = D.name, "value" = D.value))
+
+		if(new_death.total_brute > 0)
+			damage_list += list(list("name" = "brute", "value" = new_death.total_brute))
+		if(new_death.total_burn > 0)
+			damage_list += list(list("name" = "burn", "value" = new_death.total_burn))
+		if(new_death.total_oxy > 0)
+			damage_list += list(list("name" = "oxy", "value" = new_death.total_oxy))
+		if(new_death.total_tox > 0)
+			damage_list += list(list("name" = "tox", "value" = new_death.total_tox))
 
 		var/new_time_of_death
 		if(new_death.time_of_death)
@@ -203,7 +209,7 @@
 
 		var/death = list(list(
 			"mob_name" = sanitize(new_death.mob_name),
-			"job_name" = new_death.job_name,
+			"job_name" = new_death.role_name,
 			"area_name" = sanitize(new_death.area_name),
 			"cause_name" = sanitize(new_death.cause_name),
 			"total_kills" = new_death.total_kills,
@@ -221,7 +227,7 @@
 		if(new_death_list.len > STATISTICS_DEATH_LIST_LEN)
 			new_death_list.Cut(STATISTICS_DEATH_LIST_LEN+1, new_death_list.len)
 		death_data["death_stats_list"] = new_death_list
-	track_dead_participant(faction)
+	track_dead_participant(new_death.faction_name)
 
 /datum/entity/round_stats/proc/log_round_statistics()
 	if(!round_stats)

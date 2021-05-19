@@ -16,7 +16,7 @@
 	icon_state = "mortar_ammo_he"
 
 /obj/item/mortar_shell/he/detonate(var/turf/T)
-	explosion(T, 0, 3, 5, 7, , , , initial(name), source_mob)
+	explosion(T, 0, 3, 5, 7, , , , create_cause_data(initial(name), source_mob))
 
 /obj/item/mortar_shell/frag
 	name = "\improper 80mm fragmentation mortar shell"
@@ -24,9 +24,10 @@
 	icon_state = "mortar_ammo_frag"
 
 /obj/item/mortar_shell/frag/detonate(var/turf/T)
-	create_shrapnel(T, 60, shrapnel_source = initial(name), shrapnel_source_mob = source_mob)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	create_shrapnel(T, 60, , , cause_data)
 	sleep(2)
-	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 /obj/item/mortar_shell/incendiary
 	name = "\improper 80mm incendiary mortar shell"
@@ -34,8 +35,9 @@
 	icon_state = "mortar_ammo_inc"
 
 /obj/item/mortar_shell/incendiary/detonate(var/turf/T)
-	explosion(T, 0, 2, 4, 7, , , , initial(name), source_mob)
-	flame_radius(initial(name), source_mob, 5, T)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	explosion(T, 0, 2, 4, 7, , , , cause_data)
+	flame_radius(cause_data, 5, T)
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
 /obj/item/mortar_shell/flare

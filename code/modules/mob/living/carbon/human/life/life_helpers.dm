@@ -312,8 +312,7 @@
 	life_time_start = world.time
 	life_time_total = 0
 	life_steps_total = 0
-	last_damage_mob = null
-	last_damage_source = null
+	last_damage_data = null
 	statistic_tracked = FALSE
 	tod = null
 	stat = UNCONSCIOUS

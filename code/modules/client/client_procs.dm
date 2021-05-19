@@ -417,13 +417,13 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	P.ckey = ckey
 	P.name = ckey
 	player_entities["[ckey]"] = P
-	P.setup_save(ckey)
+	// P.setup_save(ckey)
 	return P
 
 /proc/save_player_entities()
 	for(var/key_ref in player_entities)
-		var/datum/entity/player_entity/P = player_entities["[key_ref]"]
-		P.save_statistics()
+		// var/datum/entity/player_entity/P = player_entities["[key_ref]"]
+		// P.save_statistics()
 	log_debug("STATISTICS: Statistics saving complete.")
 	message_staff("STATISTICS: Statistics saving complete.")
 

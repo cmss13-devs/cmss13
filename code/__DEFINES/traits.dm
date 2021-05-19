@@ -107,6 +107,8 @@
 #define TRAIT_SUPER_STRONG "t_super_strong"
  /// Foreign biology. Basic medHUDs won't show the mob. (Yautja, Zombies)
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
+ /// Eye color changes on intent. (G1 Synths)
+#define TRAIT_INTENT_EYES "t_intent_eyes"
  /// If the mob is nested.
 #define TRAIT_NESTED "t_nested"
 

@@ -63,6 +63,7 @@
 	name_plural = "Early Synthetics"
 	uses_ethnicity = FALSE
 	burn_mod = 0.80 // a little bit of resistance
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
 
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'

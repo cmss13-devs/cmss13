@@ -173,7 +173,7 @@
 		var/gen_value
 		for(var/i=0;i<gen_tier+1;i++)
 			if(i == 0) //The first property is random to offset the value balance
-				if(gen_tier > 3 || (gen_tier == 3 && prob(30)))
+				if(gen_tier > 3 || (gen_tier == 3 && prob(50)))
 					gen_value = add_property(null,null,0,TRUE) //Give rare property
 				else
 					gen_value = add_property()
@@ -181,21 +181,23 @@
 				break
 			else
 				gen_value += add_property(0,0, gen_tier - gen_value - 1) //add property based on our offset from the prefered balance
+		while(LAZYLEN(properties) < gen_tier + 1) //We lost properties somewhere to conflicts, so add a random one until we're full
+			add_property()
 
 	//OD ratios
 	overdose = 5
 	for(var/i=1;i<=rand(1,11);i++) //We add 5 units to the overdose per cycle, min 5u, max 60u
-		if(prob(40))//Deviating from 5 gets exponentially more rare.
+		if(prob(70))//Deviating from 5 gets exponentially more rare.
 			overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
-		if(prob(20))
+		if(prob(40))
 			overdose_critical += 5
 
 	//Metabolism
 	var/direction = rand(0,1) //the direction we deviate from 0.2
 	for(var/i=1;i<=rand(1,8);i++) //min of 0.01 (barely metabolizes, but chance is 0.00065%, so it deserves to be this miraculous) to max 0.4 (neuraline)
-		if(prob(40)) //Deviating from 0.2 gets exponentially more rare
+		if(prob(75)) //Deviating from 0.2 gets exponentially more rare
 			if(direction)
 				custom_metabolism += 0.025
 			else
@@ -218,24 +220,24 @@
 		level = my_level
 	else
 		level = rand(0,100)
-		if(level<=25)
-			level = 1 //25%
-		else if(level<=46)
-			level = 2 //21%
-		else if(level<=64)
-			level = 3 //18%
-		else if(level<=79)
-			level = 4 //15%
-		else if(level<=89)
+		if(level<=20)
+			level = 1 //20%
+		else if(level<=40)
+			level = 2 //20%
+		else if(level<=60)
+			level = 3 //20%
+		else if(level<=75)
+			level = 4 //25%
+		else if(level<=85)
 			level = 5 //10%
+		else if(level<=90)
+			level = 6 //5%
 		else if(level<=95)
-			level = 6 //7%
-		else if(level<=98)
-			level = 7 //3%
+			level = 7 //5%
 		else
-			level = 8 //2%
+			level = 8 //5%
 		//We limit how potent chems can be. So something that is just level 8 healing doesn't spawn too regularly.
-		level = min(level, gen_tier + 2)
+		level = min(level, gen_tier + 3)
 
 	//Determine properties
 	if(my_property)
@@ -256,23 +258,23 @@
 	else
 		switch(gen_tier)
 			if(1)
-				if(roll<=35)
+				if(roll<=30)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=75)
+				else if (roll<=60)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
 			if(2)
-				if(roll<=30)
+				if(roll<=25)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=65)
+				else if (roll<=45)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
 			if(3)
-				if(roll<=20)
+				if(roll<=15)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=50)
+				else if (roll<=40)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])

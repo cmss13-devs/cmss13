@@ -38,12 +38,10 @@
 	WireColorToFlag = randomCameraWires()
 	assembly = new(src)
 	assembly.state = 4
-	/* // Use this to look for cameras that have the same c_tag.
-	for(var/obj/structure/machinery/camera/C in cameranet.cameras)
-		var/list/tempnetwork = C.network&src.network
-		if(C != src && C.c_tag == src.c_tag && tempnetwork.len)
-			world.log << "[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]"
-	*/
+
+	if(mapload && is_ground_level(z))
+		network = list("colony")
+
 	if(!src.network || src.network.len < 1)
 		if(loc)
 			error("[src.name] in [get_area(src)] (x:[src.x] y:[src.y] z:[src.z] has errored. [src.network?"Empty network list":"Null network list"]")

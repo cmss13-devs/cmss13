@@ -17,12 +17,16 @@
 	var/obj/screen/map_view/cam_screen
 	var/obj/screen/background/cam_background
 
-/obj/structure/machinery/computer/security/Initialize()
+/obj/structure/machinery/computer/security/Initialize(mapload)
 	. = ..()
 	// Map name has to start and end with an A-Z character,
 	// and definitely NOT with a square bracket or even a number.
 	// I wasted 6 hours on this. :agony:
 	map_name = "camera_console_[REF(src)]_map"
+
+	if(mapload && is_ground_level(z))
+		network = list("colony")
+
 	// Convert networks to lowercase
 	for(var/i in network)
 		network -= i

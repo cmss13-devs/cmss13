@@ -278,6 +278,9 @@
 				return
 
 /obj/item/projectile/proc/scan_a_turf(turf/T, proj_dir)
+	//Not actually flying? Should not be hitting anything.
+	if(!in_flight)
+		return FALSE
 	// Not a turf, keep moving
 	if(!istype(T))
 		return FALSE

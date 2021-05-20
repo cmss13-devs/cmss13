@@ -276,9 +276,10 @@ var/list/global/item_storage_box_cache = list()
 	if(master)
 		var/obj/item/storage/S = master
 		var/obj/item/I = user.get_active_hand()
+		var/user_carried_master = user.contains(master)
 		// Placing something in the storage screen
 		if(I && !mods["alt"] && !mods["shift"] && !mods["ctrl"]) //These mods should be caught later on and either examine or do nothing.
-			if(world.time <= user.next_move && master.loc != user) //Click delay doesn't apply to clicking items in your first-layer inventory.
+			if(world.time <= user.next_move && !user_carried_master) //Click delay doesn't apply to clicking items in your first-layer inventory.
 				return TRUE
 			user.next_move = world.time
 			if(master.Adjacent(user)) //Throwing a storage item (or, possibly, other people pulling it away) doesn't close its screen.

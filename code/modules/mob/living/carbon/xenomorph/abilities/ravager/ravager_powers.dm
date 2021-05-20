@@ -32,25 +32,26 @@
 	X.visible_message(SPAN_XENOWARNING("[X] gets empowered by the surrounding enemies!"), SPAN_XENOWARNING("You feel a rush of power from the surrounding enemies!"))
 	X.create_empower()
 
-	var/list/mobs_in_range = orange(empower_range, X)
+	var/list/mobs_in_range = oviewers(empower_range, X)
 	// Spook patrol
 	X.emote("tail")
 
 	var/accumulative_health = 0
 	var/list/telegraph_atom_list = list()
-	
+
 	var/empower_targets
-	for(var/mob/living/carbon/H in mobs_in_range)
-		if(X.can_not_harm(H))
-			continue
-		if(H.stat == DEAD || HAS_TRAIT(H, TRAIT_NESTED))
-			continue
+	for(var/mob/M as anything in mobs_in_range)
 		if(empower_targets >= max_targets)
 			break
+		if(M.stat == DEAD || HAS_TRAIT(M, TRAIT_NESTED))
+			continue
+		if(X.can_not_harm(M))
+			continue
+
 		empower_targets++
 		accumulative_health += shield_per_human
-		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(H.loc, 1 SECONDS)
-		shake_camera(H, 2, 1)
+		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/red(M.loc, 1 SECONDS)
+		shake_camera(M, 2, 1)
 
 	accumulative_health += main_empower_base_shield
 
@@ -71,7 +72,17 @@
 	color += num2text(alpha, 2, 16)
 	X.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
 
-	addtimer(CALLBACK(src, .proc/remove_superbuff, X, BD), 5 SECONDS)
+	addtimer(CALLBACK(src, .proc/weaken_superbuff, X, BD), 3.5 SECONDS)
+
+/datum/action/xeno_action/activable/empower/proc/weaken_superbuff(var/mob/living/carbon/Xenomorph/X, var/datum/behavior_delegate/ravager_base/BD)
+
+	X.remove_filter("empower_rage")
+	var/color = "#FF0000"
+	var/alpha = 35
+	color += num2text(alpha, 2, 16)
+	X.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
+
+	addtimer(CALLBACK(src, .proc/remove_superbuff, X, BD), 1.5 SECONDS)
 
 /datum/action/xeno_action/activable/empower/proc/remove_superbuff(var/mob/living/carbon/Xenomorph/X, var/datum/behavior_delegate/ravager_base/BD)
 	BD.empower_targets = 0

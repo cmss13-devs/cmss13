@@ -525,7 +525,7 @@
 	if (shuttle.in_transit_time_left < firemission_envelope.get_total_duration())
 		to_chat(usr, "Not enough time to complete the Fire Mission")
 		return
-	if (!shuttle.transit_gun_mission | shuttle.moving_status != SHUTTLE_INTRANSIT)
+	if (!shuttle.transit_gun_mission || shuttle.moving_status != SHUTTLE_INTRANSIT)
 		to_chat(usr, "Has to be in Fly By mode")
 		return
 

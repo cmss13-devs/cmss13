@@ -251,7 +251,7 @@ Quick adjacency (to turf):
 	// Make sure pass flags are removed
 	A.remove_temp_pass_flags(pass_flags)
 
-	if (!!blockers["fd1"].len^!!fd1 || !!blockers["fd2"].len^!!fd2) // This means that for a given direction it did not have a blocker
+	if ((fd1 && !blockers["fd1"].len) || (fd2 && !blockers["fd2"].len)) // This means that for a given direction it did not have a blocker
 		return src
 
 	if (blockers["fd1"].len || blockers["fd2"].len)

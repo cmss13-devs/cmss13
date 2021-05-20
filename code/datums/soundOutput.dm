@@ -78,7 +78,7 @@
 
 	S.echo = list(muffle)
 	S.file = ambience
-	if(!owner.prefs.toggles_sound & SOUND_AMBIENCE)
+	if(!(owner.prefs.toggles_sound & SOUND_AMBIENCE))
 		S.status |= SOUND_MUTE
 	sound_to(owner, S)
 

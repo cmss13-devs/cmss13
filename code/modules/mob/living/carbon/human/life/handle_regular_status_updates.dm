@@ -99,7 +99,7 @@
 
 		//Ears
 		if(ear_deaf) //Deafness, heals slowly over time
-			if(client && client.soundOutput && !client.soundOutput.status_flags & EAR_DEAF_MUTE)
+			if(client && client.soundOutput && !(client.soundOutput.status_flags & EAR_DEAF_MUTE))
 				client.soundOutput.status_flags |= EAR_DEAF_MUTE
 				client.soundOutput.apply_status()
 

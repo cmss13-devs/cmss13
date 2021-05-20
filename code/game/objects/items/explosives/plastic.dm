@@ -135,7 +135,7 @@
 /obj/item/explosive/plastic/proc/disarm()
 	pixel_x = 0
 	pixel_y = 0
-	if(plant_target && !istype(plant_target, /obj/structure/window) & !istype(plant_target, /turf/closed))
+	if(plant_target && !istype(plant_target, /obj/structure/window) && !istype(plant_target, /turf/closed))
 		plant_target.overlays -= overlay
 		qdel(overlay)
 		plant_target.contents -= src
@@ -218,7 +218,7 @@
 		return
 	var/turf/target_turf
 	if(!force)
-		if(!istype(plant_target, /obj/structure/window) & !istype(plant_target, /turf/closed))
+		if(!istype(plant_target, /obj/structure/window) && !istype(plant_target, /turf/closed))
 			plant_target.overlays -= overlay
 			qdel(overlay)
 			plant_target.contents -= src

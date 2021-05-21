@@ -872,3 +872,78 @@
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
 
+/obj/item/storage/pouch/sling
+	name = "sling strap"
+	desc = "Keeps a single item attached to a strap."
+	storage_slots = 1
+	max_w_class = SIZE_MEDIUM
+	icon_state = "unused4"
+	can_hold = list(/obj/item/device, /obj/item/tool)
+	bypass_w_limit = list(/obj/item/tool/shovel/etool)
+	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	var/sling_range = 1
+	var/obj/item/slung
+
+/obj/item/storage/pouch/sling/examine(mob/user)
+	..()
+	if(slung && slung.loc != src)
+		to_chat(user, "\the [slung] is attached to the sling.")
+
+/obj/item/storage/pouch/sling/can_be_inserted(obj/item/I, stop_messages = FALSE)
+	if(slung)
+		if(slung != I)
+			if(!stop_messages)
+				to_chat(usr, SPAN_WARNING("\the [slung] is already attached to the sling."))
+			return FALSE
+	else if(SEND_SIGNAL(I, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[I] is already attached to another sling."))
+		return FALSE
+	return ..()
+
+/obj/item/storage/pouch/sling/handle_item_insertion(obj/item/I, prevent_warning = FALSE, mob/user)
+	if(!slung)
+		slung = I
+		slung.AddElement(/datum/element/drop_retrieval/pouch_sling, src)
+		if(!prevent_warning)
+			to_chat(user, SPAN_NOTICE("You attach the sling to [I]."))
+	return ..()
+
+/obj/item/storage/pouch/sling/attack_self(mob/user)
+	if(slung)
+		to_chat(user, SPAN_NOTICE("You retract the sling from [slung]."))
+		unsling()
+		return
+	return ..()
+
+/obj/item/storage/pouch/sling/proc/unsling()
+	if(!slung)
+		return
+	slung.RemoveElement(/datum/element/drop_retrieval/pouch_sling, src)
+	slung = null
+
+/obj/item/storage/pouch/sling/proc/sling_return(var/mob/living/carbon/human/user)
+	if(!slung || !slung.loc)
+		return FALSE
+	if(slung.loc == user)
+		return TRUE
+	if(!isturf(slung.loc))
+		return FALSE
+	if(get_dist(slung, src) > sling_range)
+		return FALSE
+	if(handle_item_insertion(slung))
+		if(user)
+			to_chat(user, SPAN_NOTICE("[slung] snaps back into [src]."))
+		return TRUE
+
+/obj/item/storage/pouch/sling/proc/attempt_retrieval(var/mob/living/carbon/human/user)
+	if(sling_return(user))
+		return
+	unsling()
+	if(user && src.loc == user)
+		to_chat(user, SPAN_WARNING("The sling of your [src] snaps back empty!"))
+
+/obj/item/storage/pouch/sling/proc/handle_retrieval(mob/living/carbon/human/user)
+	if(slung && slung.loc == src)
+		return
+	addtimer(CALLBACK(src, .proc/attempt_retrieval, user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)

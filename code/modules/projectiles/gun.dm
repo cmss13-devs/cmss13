@@ -130,7 +130,7 @@
 
 	var/last_recoil_update = 0
 
-	var/auto_magharness = FALSE
+	var/auto_retrieval_slot
 
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile with the current ammo datum
@@ -166,8 +166,8 @@
 	handle_starting_attachment()
 	handle_random_attachments()
 	GLOB.gun_list += src
-	if(auto_magharness)
-		AddElement(/datum/element/magharness)
+	if(auto_retrieval_slot)
+		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
 
 
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()

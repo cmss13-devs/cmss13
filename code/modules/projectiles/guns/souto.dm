@@ -12,6 +12,7 @@
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_INTERNAL_MAG|GUN_AMMO_COUNTER
 	var/obj/item/storage/backpack/souto/soutopack
 	current_mag = null
+	auto_retrieval_slot = WEAR_IN_BACK
 
 /obj/item/weapon/gun/souto/set_gun_config_values()
 	. = ..()
@@ -76,19 +77,12 @@
 /obj/item/weapon/gun/souto/proc/unlink_soutopack()
 	soutopack = null
 
-/obj/item/weapon/gun/souto/harness_check(mob/living/carbon/human/user)
-	harness_return(user)
-
-/obj/item/weapon/gun/souto/harness_return(mob/living/carbon/human/user)
-	set waitfor = 0
-	sleep(3)
-	if(loc && user)
-		if(istype(user.back, /obj/item/storage/backpack/souto) && isturf(loc))
-			var/obj/item/I = user.back
-			user.equip_to_slot_if_possible(src, WEAR_IN_BACK)
-			if(src in user.back)
-				to_chat(user, SPAN_WARNING("[src] snaps into the [I]."))
-			user.update_inv_back()
+/obj/item/weapon/gun/souto/retrieval_check(var/mob/living/carbon/human/user, var/retrieval_slot)
+	if(retrieval_slot == WEAR_IN_BACK)
+		if(istype(user.back, /obj/item/storage/backpack/souto))
+			return TRUE
+		return FALSE
+	return ..()
 
 /obj/item/ammo_magazine/internal/souto
 	name = "\improper Souto Slinger Supremo internal magazine"

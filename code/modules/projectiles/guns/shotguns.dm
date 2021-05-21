@@ -292,28 +292,18 @@ can cause issues with ammo types getting mixed up during the burst.
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_HAS_FULL_AUTO|GUN_FULL_AUTO_ON
 	fa_delay = FIRE_DELAY_TIER_6
-	auto_magharness = TRUE
+	auto_retrieval_slot = WEAR_J_STORE
 
 /obj/item/weapon/gun/shotgun/combat/marsoc/Initialize(mapload, spawn_empty)
 	. = ..()
 	if(current_mag && current_mag.current_rounds > 0)
 		load_into_chamber()
 
-/obj/item/weapon/gun/shotgun/combat/marsoc/harness_return(var/mob/living/carbon/human/user)
-	if (!loc || !user)
-		return
-	if (!isturf(loc))
-		return
-	if (!harness_check(user))
-		return
-
-	if (user.equip_to_slot_if_possible(src, WEAR_WAIST))
-		to_chat(user, SPAN_WARNING("[src] snaps into place on your waist."))
-		return
-
-	var/obj/item/I = user.wear_suit
-	if(user.equip_to_slot_if_possible(src, WEAR_J_STORE))
-		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
+/obj/item/weapon/gun/shotgun/combat/marsoc/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
+	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
+		if(..(user, WEAR_WAIST)) //...first try to put it onto the waist.
+			return TRUE
+	return ..()
 
 /*obj/item/weapon/gun/shotgun/combat/marsoc/handle_starting_attachment()
 	return */ //we keep the UGL

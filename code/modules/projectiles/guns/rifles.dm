@@ -328,13 +328,13 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	unacidable = TRUE
 	indestructible = TRUE
+	auto_retrieval_slot = WEAR_J_STORE
 
 	var/mob/living/carbon/human/linked_human
 	var/is_locked = TRUE
 
 /obj/item/weapon/gun/rifle/m46c/Initialize(mapload, ...)
 	. = ..()
-	AddElement(/datum/element/magharness)
 	if(iff_enabled)
 		LAZYADD(traits_to_give, list(
 			BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff)

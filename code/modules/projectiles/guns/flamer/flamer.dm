@@ -220,29 +220,19 @@
 		fuelpack = null
 	. = ..()
 
-/obj/item/weapon/gun/flamer/M240T/harness_check(var/mob/living/carbon/human/user)
-	var/obj/item/storage/large_holster/fuelpack/FP = user.back
-	if(istype(FP) && !(FP.contents.len))
-		return TRUE
+/obj/item/weapon/gun/flamer/M240T/retrieval_check(var/mob/living/carbon/human/user, var/retrieval_slot)
+	if(retrieval_slot == WEAR_IN_SCABBARD)
+		var/obj/item/storage/large_holster/fuelpack/FP = user.back
+		if(istype(FP) && !length(FP.contents))
+			return TRUE
+		return FALSE
+	return ..()
 
-	. = ..()
-
-/obj/item/weapon/gun/flamer/M240T/harness_return(var/mob/living/carbon/human/user)
-	if (!loc || !user)
-		return
-	if (!isturf(loc))
-		return
-	if (!harness_check(user))
-		return
-
-	var/obj/item/storage/large_holster/fuelpack/FP = user.back
-	if (istype(FP) && user.equip_to_slot_if_possible(src, WEAR_IN_SCABBARD))
-		to_chat(user, SPAN_WARNING("[src] snaps into place on [FP]."))
-		return
-
-	var/obj/item/I = user.wear_suit
-	if(user.equip_to_slot_if_possible(src, WEAR_J_STORE))
-		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
+/obj/item/weapon/gun/flamer/M240T/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
+	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
+		if(..(user, WEAR_IN_SCABBARD)) //...first try to put it onto the Broiler.
+			return TRUE
+	return ..()
 
 /obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)

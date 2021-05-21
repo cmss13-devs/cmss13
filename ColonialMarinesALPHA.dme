@@ -334,7 +334,7 @@
 #include "code\datums\effects\xeno_strains\xeno_structure_reinforcement.dm"
 #include "code\datums\elements\_element.dm"
 #include "code\datums\elements\bloody_feet.dm"
-#include "code\datums\elements\magharness.dm"
+#include "code\datums\elements\drop_retrieval.dm"
 #include "code\datums\elements\bullet_trait\iff.dm"
 #include "code\datums\elements\bullet_trait\ignored_range.dm"
 #include "code\datums\elements\bullet_trait\incendiary.dm"

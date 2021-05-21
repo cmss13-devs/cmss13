@@ -194,33 +194,43 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	to_chat(user, SPAN_WARNING("[src] flashes a warning sign indicating unauthorized use!"))
 
 // Checks whether there is anything to put your harness
-/obj/item/weapon/gun/proc/harness_check(var/mob/living/carbon/human/user)
-	var/obj/item/I = user.wear_suit
-	if(!istype(I, /obj/item/clothing/suit/storage/marine))
-		return FALSE
-
+/obj/item/weapon/gun/proc/retrieval_check(var/mob/living/carbon/human/user, var/retrieval_slot)
+	if(retrieval_slot == WEAR_J_STORE)
+		var/obj/item/I = user.wear_suit
+		if(!istype(I, /obj/item/clothing/suit/storage/marine))
+			return FALSE
 	return TRUE
 
-/obj/item/weapon/gun/proc/harness_return(var/mob/living/carbon/human/user)
+/obj/item/weapon/gun/proc/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
 	if (!loc || !user)
-		return
+		return FALSE
 	if (!isturf(loc))
-		return
-	if (!harness_check(user))
-		return
+		return FALSE
+	if(!retrieval_check(user, retrieval_slot))
+		return FALSE
+	if(!user.equip_to_slot_if_possible(src, retrieval_slot, disable_warning = TRUE))
+		return FALSE
+	var/message
+	switch(retrieval_slot)
+		if(WEAR_BACK)
+			message = "[src] snaps into place on your back."
+		if(WEAR_IN_BACK)
+			message = "[src] snaps back into [user.back]."
+		if(WEAR_IN_SCABBARD)
+			message = "[src] snaps into place on [user.back]."
+		if(WEAR_WAIST)
+			message = "[src] snaps into place on your waist."
+		if(WEAR_J_STORE)
+			message = "[src] snaps into place on [user.wear_suit]."
+	to_chat(user, SPAN_NOTICE(message))
+	return TRUE
 
-	var/obj/item/I = user.wear_suit
-	if(user.equip_to_slot_if_possible(src, WEAR_J_STORE))
-		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
-
-/obj/item/weapon/gun/proc/handle_harness(mob/living/carbon/human/user)
+/obj/item/weapon/gun/proc/handle_retrieval(mob/living/carbon/human/user, var/retrieval_slot)
 	if (!ishuman(user))
 		return
-
-	if (!harness_check(user))
+	if (!retrieval_check(user, retrieval_slot))
 		return
-
-	addtimer(CALLBACK(src, .proc/harness_return, user), 3, TIMER_UNIQUE|TIMER_OVERRIDE)
+	addtimer(CALLBACK(src, .proc/retrieve_to_slot, user, retrieval_slot), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
 
 /obj/item/weapon/gun/attack_self(mob/user)
 	..()
@@ -344,9 +354,8 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 	return FALSE
 
 /obj/item/weapon/gun/proc/can_attach_to_gun(mob/user, obj/item/attachable/attachment)
-	if(attachable_allowed && !(attachment.type in attachable_allowed) )
-		to_chat(user, SPAN_WARNING("[attachment] doesn't fit on [src]!"))
-		return 0
+	if(!attachment.can_be_attached_to_gun(user, src))
+		return FALSE
 
 	//Checks if they can attach the thing in the first place, like with fixed attachments.
 	if(attachments[attachment.slot])

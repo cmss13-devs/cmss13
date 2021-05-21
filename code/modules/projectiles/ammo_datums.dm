@@ -693,73 +693,49 @@
 	shell_speed = AMMO_SPEED_TIER_4
 
 
-/datum/ammo/bullet/smg/nail/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-	if(!user || user.a_intent != INTENT_HARM)
-		return ..()
-	if(!istype(M, /mob/living/carbon))
-		return ..()
+/datum/ammo/bullet/smg/nail/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+	if(!L || L == P.firer || L.lying)
+		return
 
-	var/mob/living/carbon/C = M
-	if(isXeno(C))
-		var/mob/living/carbon/Xenomorph/X = C
+	if(isCarbonSizeXeno(L))
+		var/mob/living/carbon/Xenomorph/X = L
 		if(X.tier != 1) // 0 is queen!
-			return ..()
-	if(isYautja(C) || C.stat == DEAD)
-		return ..()
-	if(C.frozen)
-		to_chat(user, SPAN_DANGER("[C] struggles and avoids being nailed further!"))
-		return ..()
+			return
+
+	if(L.frozen)
+		to_chat(user, SPAN_DANGER("[L] struggles and avoids being nailed further!"))
+		return
+
 	//Check for presence of solid surface behind
-	var/turf/T = get_step(C, user.dir)
-	if(!T || T.z != C.z)
-		return ..() //Welp we tried boy, pack it up.
+	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(user, L)))
+	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
+		return
 
-	var/thick_surface = null
-	if(T.density || T.opacity)
-		thick_surface = T
-	else
-		for(var/obj/O in T)
-			if(O.get_projectile_hit_boolean(P))
-				thick_surface = O
-				break
+	L.frozen = TRUE
+	user.visible_message(SPAN_DANGER("[user] punches [L] with the nailgun and nails their limb to [thick_surface]!"),
+		SPAN_DANGER("You punch [L] with the nailgun and nail their limb to [thick_surface]!"))
+	L.update_canmove()
+	addtimer(CALLBACK(L, /mob.proc/unfreeze), 3 SECONDS)
 
-	if(!thick_surface)
-		return ..()
+/datum/ammo/bullet/smg/nail/on_hit_mob(mob/living/L, obj/item/projectile/P)
+	if(!L || L == P.firer || L.lying)
+		return
 
-	C.frozen = TRUE
-	user.visible_message(SPAN_DANGER("[user] punches [C] with the nailgun, and nail their limb to [thick_surface]!"),
-		SPAN_DANGER("You punch [C] with the nailgun, and nail their limb to [thick_surface]!"))
-	C.update_canmove()
-	addtimer(CALLBACK(C, /mob.proc/unfreeze), 3 SECONDS)
+	L.AdjustSlowed(1) //Slow on hit.
+	L.recalculate_move_delay = TRUE
 
-/datum/ammo/bullet/smg/nail/on_hit_mob(mob/M, obj/item/projectile/P)
-	var/turf/T = get_step(M.loc, P.dir)
+	//If there's an obstacle on the far side, superslow and do extra damage.
+	if(isCarbonSizeXeno(L)) //Unless they're a strong xeno.
+		var/mob/living/carbon/Xenomorph/X = L
+		if(X.tier != 1) // 0 is queen!
+			return
 
-	var/thick_surface = FALSE
-	if(!istype(M, /mob/living/carbon))
-		return FALSE
+	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(P.loc ? P : P.firer, L)))
+	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
+		return
 
-	var/mob/living/carbon/C = M
-	C.AdjustSlowed(1) //Slow on hit.
-
-	if(!T || T.z != C.z)
-		return FALSE //Welp we tried boy, pack it up. Slow applied, but no further
-
-	if(T.density || T.opacity)
-		thick_surface = TRUE
-	else
-		for(var/obj/O in T)
-			if(O.get_projectile_hit_boolean(P))
-				thick_surface = TRUE
-				break
-
-	if(!thick_surface)
-		C.recalculate_move_delay = TRUE
-		return FALSE
-
-	C.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	C.AdjustSuperslowed(3) //Superslows if there`s an obstacle behind
-	C.recalculate_move_delay = TRUE
+	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+	L.AdjustSuperslowed(3) 
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"

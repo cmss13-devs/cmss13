@@ -1155,8 +1155,6 @@ and you're good to go.
 
 
 	var/bullets_to_fire = 1
-	///Instructs to handoff to Fire after exiting loop, if necessary.
-	var/handoff = FALSE
 
 	if(!check_for_attachment_fire && (flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
 		bullets_to_fire = burst_amount
@@ -1241,15 +1239,14 @@ and you're good to go.
 		if(bullets_fired < bullets_to_fire) // We still have some bullets to fire.
 			extra_delay = fire_delay * 0.5
 			sleep(burst_delay)
-		if(get_dist(user, M) > 1) //We can each move around while burst-PBing, but if we get too far from the target, we'll have to shoot at them normally.
-			PB_burst_bullets_fired = bullets_fired
-			handoff = TRUE
-			break
+			if(get_dist(user, M) > 1) //We can each move around while burst-PBing, but if we get too far from the target, we'll have to shoot at them normally.
+				PB_burst_bullets_fired = bullets_fired
+				break
 
 	flags_gun_features &= ~GUN_BURST_FIRING
 	display_ammo(user)
 
-	if(handoff)
+	if(PB_burst_bullets_fired)
 		Fire(get_turf(M), user, reflex = TRUE) //Reflex prevents dual-wielding.
 
 	return TRUE

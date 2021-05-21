@@ -871,8 +871,8 @@ and you're good to go.
 		chambered = GLOB.ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
 	var/weapon_source_mob = null
-	if(isliving(usr))
-		var/mob/M = usr
+	if(isliving(loc))
+		var/mob/M = loc
 		weapon_source_mob = M
 	var/obj/item/projectile/P = new /obj/item/projectile(src, create_cause_data(bullet_source, weapon_source_mob))
 	P.generate_bullet(chambered, 0, NO_FLAGS)

@@ -319,13 +319,13 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
+	auto_retrieval_slot = WEAR_J_STORE
 
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	. = ..()
 	ammo_primary = GLOB.ammo_list[ammo_primary]
 	ammo_secondary = GLOB.ammo_list[ammo_secondary]
-	AddElement(/datum/element/magharness)
 	MD = new(src)
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()

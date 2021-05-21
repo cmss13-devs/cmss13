@@ -99,6 +99,12 @@ Defined in conflicts.dm of the #defines folder.
 	else
 		. = ..()
 
+/obj/item/attachable/proc/can_be_attached_to_gun(var/mob/user, var/obj/item/weapon/gun/G)
+	if(G.attachable_allowed && !(type in G.attachable_allowed) )
+		to_chat(user, SPAN_WARNING("[src] doesn't fit on [G]!"))
+		return FALSE
+	return TRUE
+
 /obj/item/attachable/proc/Attach(var/obj/item/weapon/gun/G)
 	if(!istype(G)) return //Guns only
 
@@ -578,19 +584,35 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "magnetic_a"
 	slot = "rail"
 	pixel_shift_x = 13
+	var/retrieval_slot = WEAR_J_STORE
 
 /obj/item/attachable/magnetic_harness/New()
 	..()
 	accuracy_mod = -HIT_ACCURACY_MULT_TIER_1
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
+/obj/item/attachable/magnetic_harness/can_be_attached_to_gun(var/mob/user, var/obj/item/weapon/gun/G)
+	if(SEND_SIGNAL(G, COMSIG_DROP_RETRIEVAL_CHECK) & COMPONENT_DROP_RETRIEVAL_PRESENT)
+		to_chat(user, SPAN_WARNING("[G] already has a retrieval system installed!"))
+		return FALSE
+	return ..()
+
 /obj/item/attachable/magnetic_harness/Attach(var/obj/item/weapon/gun/G)
 	. = ..()
-	G.AddElement(/datum/element/magharness)
+	G.AddElement(/datum/element/drop_retrieval/gun, retrieval_slot)
 
 /obj/item/attachable/magnetic_harness/Detach(var/obj/item/weapon/gun/G)
 	. = ..()
-	G.RemoveElement(/datum/element/magharness)
+	G.RemoveElement(/datum/element/drop_retrieval/gun, retrieval_slot)
+
+/obj/item/attachable/magnetic_harness/lever_sling
+	name = "R4T magnetic sling"
+	desc = "A custom sling designed for comfortable holstering of a 19th century lever action rifle, for some reason. Contains magnets specifically built to make sure the lever-action rifle never drops from your back, however they somewhat get in the way of the grip."
+	icon_state = "r4t-sling"
+	attach_icon = "r4t-sling_a"
+	slot = "under"
+	wield_delay_mod = WIELD_DELAY_VERY_FAST
+	retrieval_slot = WEAR_BACK
 
 /obj/item/attachable/scope
 	name = "S8 4x telescopic scope"

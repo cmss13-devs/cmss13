@@ -248,6 +248,10 @@
 /// From base of /obj/item/proc/attack_self(): (mob/user)
 #define COMSIG_ITEM_ATTACK_SELF "item_attack_self"
 
+/// From /datum/element/drop_retrieval usage: /obj/item/attachable/magnetic_harness/can_be_attached_to_gun(), /obj/item/storage/pouch/sling/can_be_inserted() (/obj/item/I)
+#define COMSIG_DROP_RETRIEVAL_CHECK "drop_retrieval_check"
+	#define COMPONENT_DROP_RETRIEVAL_PRESENT (1<<0)
+
 /// From /atom/movable/proc/launch_towards
 #define COMSIG_MOVABLE_PRE_THROW "movable_pre_throw"
 	#define COMPONENT_CANCEL_THROW (1<<0)

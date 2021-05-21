@@ -162,7 +162,7 @@
 			if(overdose_critical && volume > overdose_critical)
 				P.process_critical(M, potency)
 			var/overdose_message = "[name] overdose"
-			M.last_damage_data = create_cause_data(overdose_message, last_source_mob.resolve())
+			M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
 
 	if(mods[REAGENT_PURGE])
 		holder.remove_all_type(/datum/reagent,2*mods[REAGENT_PURGE])

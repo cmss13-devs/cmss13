@@ -173,7 +173,7 @@
 		user.attack_log += "\[[time_stamp()]\] Gibbed <b>[key_name(occupant)]</b>"
 		msg_admin_attack("[key_name(user)] gibbed [key_name(occupant)] in [user.loc.name] ([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
 
-		src.occupant.death("gibber", 1)
+		src.occupant.death(create_cause_data("gibber", user), TRUE)
 		src.occupant.ghostize()
 
 	else if( istype(src.occupant, /mob/living/carbon/) || istype(src.occupant, /mob/living/simple_animal/ ) )
@@ -208,7 +208,7 @@
 			user.attack_log += "\[[time_stamp()]\] Gibbed <b>[key_name(occupant)]</b>"
 			msg_admin_attack("[key_name(user)] gibbed [key_name(occupant)] in [user.loc.name] ([user.x], [user.y], [user.z]).", user.x, user.y, user.z)
 
-		src.occupant.death("gibber", 1)
+		src.occupant.death(create_cause_data("gibber", user), TRUE)
 		src.occupant.ghostize()
 
 	QDEL_NULL(occupant)

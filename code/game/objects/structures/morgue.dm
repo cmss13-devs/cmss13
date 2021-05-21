@@ -203,7 +203,7 @@
 
 			user.attack_log +="\[[time_stamp()]\] Cremated <b>[key_name(M)]</b>"
 			msg_admin_attack("\[[time_stamp()]\] <b>[key_name(user)]</b> cremated <b>[key_name(M)]</b> in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
-			M.death("cremation", 1)
+			M.death(create_cause_data("cremation", user), TRUE)
 			M.ghostize()
 			qdel(M)
 

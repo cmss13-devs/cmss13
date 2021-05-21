@@ -262,7 +262,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 				if(T.z in z_levels)
 					if(istype(M.loc, /obj/structure/closet/secure_closet/freezer/fridge))
 						continue
-					M.death("nuclear explosion")
+					M.death(create_cause_data("nuclear explosion"))
 				else
 					if(play_anim)
 						M.client.screen -= C //those who managed to escape the z level at last second shouldn't have their view obstructed.

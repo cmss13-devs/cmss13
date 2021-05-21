@@ -314,7 +314,7 @@
 				if("The Purifying Smart-Disc")
 					new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
 				if("The Formidable Plate Armor")
-					new /obj/item/clothing/suit/armor/yautja/full(src.loc)
+					new /obj/item/clothing/suit/armor/yautja/full(src.loc, 0,  src.client.prefs.predator_armor_material)
 			choice = mother_1
 
 		if(Y.upgrades > 0)

@@ -23,14 +23,17 @@
 /obj/item/clothing/suit/armor/yautja
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
-	icon_state = "halfarmor1"
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "halfarmor1_ebony"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
+
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -51,17 +54,9 @@
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), elder_restricted = 0)
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
 	. = ..()
 	if(elder_restricted)
-		armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_bullet = CLOTHING_ARMOR_HIGH
-		armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_bomb = CLOTHING_ARMOR_HIGH
-		armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 		switch(armor_number)
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
@@ -87,8 +82,8 @@
 		if(armor_number > 7)
 			armor_number = 1
 		if(armor_number) //Don't change full armor number
-			icon_state = "halfarmor[armor_number]"
-			item_state_slots = list(WEAR_JACKET = "halfarmor[armor_number]")
+			icon_state = "halfarmor[armor_number]_[armor_material]"
+			item_state_slots = list(WEAR_JACKET = "halfarmor[armor_number]_[armor_material]")
 
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -96,7 +91,7 @@
 /obj/item/clothing/suit/armor/yautja/full
 	name = "heavy clan armor"
 	desc = "A suit of armor with heavy padding. It looks old, yet functional."
-	icon_state = "fullarmor"
+	icon_state = "fullarmor_ebony"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_HIGH
@@ -117,8 +112,10 @@
 			/obj/item/storage/backpack/yautja,
 			/obj/item/weapon/melee/twohanded/yautja)
 
-/obj/item/clothing/suit/armor/yautja/full/Initialize(mapload, armor_number)
+/obj/item/clothing/suit/armor/yautja/full/Initialize(mapload, armor_number, armor_material)
 	. = ..(mapload, 0)
+	icon_state = "fullarmor_[armor_material]"
+	item_state_slots = list(WEAR_JACKET = "fullarmor_[armor_material]")
 
 /obj/item/clothing/suit/armor/yautja/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -139,8 +136,13 @@
 /obj/item/clothing/cape/eldercape
 	name = "\improper Yautja Cape"
 	desc = "A battle-worn cape passed down by elder Yautja. Councillors who've proven themselves worthy may also be rewarded with one of these capes."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "cape_elder"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
@@ -198,8 +200,15 @@
 
 /obj/item/clothing/shoes/yautja
 	name = "clan greaves"
-	icon_state = "y-boots1"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	icon_state = "y-boots1_ebony"
+
+
 	unacidable = TRUE
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
@@ -219,11 +228,11 @@
 	items_allowed = list(/obj/item/weapon/melee/yautja/knife, /obj/item/weapon/gun/energy/yautja/plasmapistol)
 	var/bootnumber = 1
 
-/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4))
+/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
 	..()
-	var/boot_input[] = list(1,2,3,4)
-	if(boot_number in boot_input)
-		icon_state = "y-boots[boot_number]"
+	if(boot_number > 4)
+		boot_number = 1
+	icon_state = "y-boots[boot_number]_[armor_material]"
 
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -243,9 +252,14 @@
 
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
-	icon = 'icons/obj/items/clothing/uniforms.dmi'
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "mesh_shirt"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS //Does not cover the head though.
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
@@ -321,8 +335,14 @@
 /obj/item/storage/backpack/yautja
 	name = "hunting pouch"
 	desc = "A Yautja hunting pouch worn around the waist, made from a thick tanned hide. Capable of holding various devices and tools and used for the transport of trophies."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "beltbag"
+	item_state = "beltbag_w"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = SIZE_MEDIUM
 	flags_item = ITEM_PREDATOR
@@ -346,8 +366,10 @@
 /obj/item/device/yautja_teleporter
 	name = "relay beacon"
 	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "teleporter"
+
 	flags_item = ITEM_PREDATOR
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
@@ -471,7 +493,7 @@
 	spawner_type = /mob/living/carbon/hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "hellnade"
 	w_class = SIZE_TINY
 	det_time = 30
@@ -571,7 +593,7 @@
 	name = "hunting trap"
 	throw_speed = SPEED_FAST
 	throw_range = 2
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "yauttrap0"
 	desc = "A bizarre Yautja device used for trapping and killing prey."
 	var/armed = 0
@@ -714,12 +736,14 @@
 /obj/item/clothing/suit/armor/yautja_flavor
 	name = "stone clan armor"
 	desc = "A suit of armor made entirely out of stone. Looks incredibly heavy."
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
-	icon_state = "fullarmor"
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "fullarmor_ebony"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
+
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -734,21 +758,22 @@
 	siemens_coefficient = 0.1
 	allowed = list(/obj/item/weapon/melee/harpoon,
 			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/yautja/plasmarifle,
-			/obj/item/weapon/gun/energy/yautja/plasmapistol,
-			/obj/item/weapon/melee/yautja/chain,
-			/obj/item/weapon/melee/yautja/knife,
-			/obj/item/weapon/melee/yautja/sword,
-			/obj/item/weapon/melee/yautja/scythe,
-			/obj/item/weapon/melee/yautja/combistick,
-			/obj/item/weapon/melee/twohanded/yautja/glaive)
+			/obj/item/weapon/gun/energy/yautja,
+			/obj/item/weapon/melee/yautja,
+			/obj/item/weapon/melee/twohanded/yautja)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 
 /obj/item/clothing/shoes/yautja_flavor
 	name = "stone clan greaves"
-	icon_state = "y-boots2"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through cement because they're incredibly heavy."
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	icon_state = "y-boots2_ebony"
+
 	unacidable = TRUE
 	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS|BODY_FLAG_GROIN
 	armor_melee = CLOTHING_ARMOR_MEDIUM

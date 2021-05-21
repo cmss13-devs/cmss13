@@ -46,7 +46,7 @@
 	singular_name = "medical gauze"
 	desc = "Some sterile gauze to wrap around bloody stumps and lacerations."
 	icon_state = "brutepack"
-	
+
 	stack_id = "bruise pack"
 
 /obj/item/stack/medical/bruise_pack/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -90,7 +90,7 @@
 	singular_name = "ointment"
 	icon_state = "ointment"
 	heal_burn = 1
-	
+
 	stack_id = "ointment"
 
 /obj/item/stack/medical/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -119,7 +119,7 @@
 					SPAN_HELPFUL("[user] <b>salves the wounds</b> on your <b>[affecting.display_name]</b>."),
 					SPAN_NOTICE("[user] salves the wounds [possessive_their] [affecting.display_name]."))
 				use(1)
-				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)				
+				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 		else
 			if (H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
 				if (do_surgery(H,user,src))
@@ -134,7 +134,7 @@
 	desc = "An advanced trauma kit for severe injuries."
 	icon_state = "traumakit"
 	heal_brute = 12
-	
+
 	stack_id = "advanced bruise pack"
 
 
@@ -183,7 +183,7 @@
 	name = "mending herbs"
 	singular_name = "mending herb"
 	desc = "A poultice made of soft leaves that is rubbed on bruises."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "brute_herbs"
 	heal_brute = 15
 	stack_id = "mending herbs"
@@ -192,7 +192,7 @@
 	name = "soothing herbs"
 	singular_name = "soothing herb"
 	desc = "A poultice made of cold, blue petals that is rubbed on burns."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "burn_herbs"
 	heal_burn = 15
 	stack_id = "soothing herbs"
@@ -203,7 +203,7 @@
 	desc = "An advanced treatment kit for severe burns."
 	icon_state = "burnkit"
 	heal_burn = 12
-	
+
 	stack_id = "advanced burn kit"
 
 /obj/item/stack/medical/advanced/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -300,4 +300,4 @@
 
 		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.
 			use(1)
-			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)	
+			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)

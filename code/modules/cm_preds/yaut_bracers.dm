@@ -1,8 +1,12 @@
 /obj/item/clothing/gloves/yautja
 	name = "clan bracers"
 	desc = "An extremely complex, yet simple-to-operate set of armored bracers worn by the Yautja. It has many functions, activate them to use some."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "bracer"
+	item_icons = list(
+		WEAR_HANDS = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
 
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05

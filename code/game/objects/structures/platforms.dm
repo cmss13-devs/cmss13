@@ -50,7 +50,7 @@
 obj/structure/platform_decoration
 	name = "platform"
 	desc = "A square metal surface resting on four legs."
-	icon = 'icons/obj/structures/props//platforms.dmi'
+	icon = 'icons/obj/structures/props/platforms.dmi'
 	icon_state = "platform_deco"
 	anchored = TRUE
 	density = 0

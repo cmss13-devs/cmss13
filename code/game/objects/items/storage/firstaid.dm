@@ -20,6 +20,7 @@
 		/obj/item/explosive/grenade,
 		/obj/item/tool
 	) //to prevent powergaming.
+	storage_flags = STORAGE_FLAGS_BOX
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
 
@@ -219,7 +220,7 @@
 		/obj/item/toy/dice,
 		/obj/item/paper
 	)
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16

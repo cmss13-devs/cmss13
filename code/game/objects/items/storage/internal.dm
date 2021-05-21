@@ -1,14 +1,14 @@
 //A storage item intended to be used by other items to provide storage functionality.
 //Types that use this should consider overriding emp_act() and hear_talk(), unless they shield their contents somehow.
 /obj/item/storage/internal
-	var/obj/item/master_item
+	var/obj/master_object
 
 /obj/item/storage/internal/Initialize(mapload)
 	. = ..()
-	if(!isitem(loc))
-		CRASH("Internal storage was created without a valid master item! ([loc], [usr])")
-	master_item = loc
-	name = master_item.name
+	if(!isobj(loc))
+		CRASH("Internal storage was created without a valid master object! ([loc], [usr])")
+	master_object = loc
+	name = master_object.name
 	verbs -= /obj/item/verb/verb_pickup	//make sure this is never picked up.
 
 /obj/item/storage/internal/attack_hand()
@@ -32,14 +32,18 @@
 		if(user.lying) //Can't use your inventory when lying
 			return
 
-		if(QDELETED(master_item))
+		if(QDELETED(master_object))
 			return
 
 		if(over_object == user && Adjacent(user)) //This must come before the screen objects only block
 			open(user)
 			return FALSE
 
-		if(istype(master_item, /obj/item) && master_item.flags_item & NODROP) return
+		if(!isitem(master_object)) //Everything after this point is for doffing worn items with internal storage pockets.
+			return FALSE //If we are not in an item, do nothing more.
+		
+		var/obj/item/master_item = master_object
+		if(master_item.flags_item & NODROP) return
 
 		if(!istype(over_object, /obj/screen))
 			return TRUE
@@ -89,18 +93,18 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		if(H.l_store == master_item && !H.get_active_hand())	//Prevents opening if it's in a pocket.
-			H.put_in_hands(master_item)
+		if(H.l_store == master_object && !H.get_active_hand())	//Prevents opening if it's in a pocket.
+			H.put_in_hands(master_object)
 			H.l_store = null
 			return FALSE
-		if(H.r_store == master_item && !H.get_active_hand())
-			H.put_in_hands(master_item)
+		if(H.r_store == master_object && !H.get_active_hand())
+			H.put_in_hands(master_object)
 			H.r_store = null
 			return FALSE
 
-	master_item.add_fingerprint(user)
-	//Checks that it's in the user's inventory somewhere - not safe with items inside storage without additional checks on master_item's end.
-	if(user.contains(master_item))
+	master_object.add_fingerprint(user)
+	//Checks that it's in the user's inventory somewhere - not safe with items inside storage without additional checks on master_object's end.
+	if(user.contains(master_object))
 		if((mods && mods["alt"] || storage_flags & STORAGE_USING_DRAWING_METHOD) && ishuman(user) && length(contents))
 			var/obj/item/I
 			if(storage_flags & STORAGE_USING_FIFO_DRAWING)
@@ -117,30 +121,30 @@
 	return TRUE
 
 /obj/item/storage/internal/attackby(obj/item/W as obj, mob/user as mob)
-	if(master_item.on_pocket_attackby(W,user))
+	if(master_object.on_pocket_attackby(W,user))
 		. = ..()
 
 /obj/item/storage/internal/Adjacent(var/atom/neighbor)
-	return master_item.Adjacent(neighbor)
+	return master_object.Adjacent(neighbor)
 
 /obj/item/storage/internal/open(mob/user)
 	var/first_open
 	if(!content_watchers)
 		first_open = TRUE
 	..()
-	master_item.on_pocket_open(first_open)
+	master_object.on_pocket_open(first_open)
 
 /obj/item/storage/internal/storage_close(mob/user)
 	..()
-	master_item.on_pocket_close(content_watchers)
+	master_object.on_pocket_close(content_watchers)
 
 /obj/item/storage/internal/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
 	. = ..()
-	master_item.on_pocket_insertion()
+	master_object.on_pocket_insertion()
 
 /obj/item/storage/internal/remove_from_storage(obj/item/W as obj, atom/new_location)
 	. = ..()
-	master_item.on_pocket_removal()
+	master_object.on_pocket_removal()
 
 //things to do when the obj's internal pocket is accessed. Passes content_watchers for easier checks.
 /obj/proc/on_pocket_open(first_open)
@@ -164,4 +168,4 @@
 
 /obj/item/storage/internal/Destroy()
 	. = ..()
-	master_item = null
+	master_object = null

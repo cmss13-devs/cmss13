@@ -92,12 +92,12 @@
 
 	remove_attached_item()
 
-	attached_item = S.master_item
+	attached_item = S.master_object
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/remove_attached_item)
-	activation = new /datum/action/item_action/toggle(src, S.master_item)
+	activation = new /datum/action/item_action/toggle(src, S.master_object)
 
-	if(ismob(S.master_item.loc))
-		activation.give_to(S.master_item.loc)
+	if(ismob(S.master_object.loc))
+		activation.give_to(S.master_object.loc)
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_exit_storage(obj/item/storage/S)
 	remove_attached_item()

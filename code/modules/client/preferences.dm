@@ -56,6 +56,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1
 	var/predator_boot_type = 1
+	var/predator_armor_material = "ebony"
 
 
 	//WL Council preferences.
@@ -424,6 +425,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<b>Mask style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'>([predator_mask_type])</a><br>"
 		dat += "<b>Armor style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'>([predator_armor_type])</a><br>"
 		dat += "<b>Greave style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'>([predator_boot_type])</a><br><br>"
+		dat += "<b>Armor Material:</b> <a href='?_src_=prefs;preference=pred_armor_mat;task=input'>[predator_armor_material]</a><br><br>"
 		dat += "<b>Yautja whitelist status:</b> <a href='?_src_=prefs;preference=yautja_status;task=input'>[yautja_status]</a><br>"
 		dat += "</div>"
 
@@ -879,6 +881,12 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("pred_boot_type")
 					var/new_predator_boot_type = input(user, "Choose your greaves type:\n(1-4)", "Greave Selection") as num|null
 					if(new_predator_boot_type) predator_boot_type = round(text2num(new_predator_boot_type))
+				if("pred_armor_mat")
+					var/list/options = list("ebony", "silver", "bronze")
+					var/new_pred_armor_mat = tgui_input_list(user, "Choose your armour material:", "Armor Material", options)
+					if(!new_pred_armor_mat)
+						return
+					predator_armor_material = new_pred_armor_mat
 
 				if("commander_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)

@@ -65,9 +65,15 @@
 /obj/item/weapon/melee/harpoon/yautja
 	name = "large harpoon"
 	desc = "A huge metal spike, with a hook at the end. It's carved with mysterious alien writing."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "spike"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
 	item_state = "harpoon"
+
 	embeddable = FALSE
 	attack_verb = list("jabbed","stabbed","ripped", "skewered")
 	throw_range = 4
@@ -85,9 +91,15 @@
 /obj/item/weapon/wristblades
 	name = "wrist blades"
 	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "wrist"
 	item_state = "wristblade"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
 	w_class = SIZE_HUGE
 	edge = TRUE
 	sharp = IS_SHARP_ITEM_ACCURATE
@@ -164,10 +176,17 @@
 /*#########################################
 ########### One Handed Weapons ############
 #########################################*/
+/obj/item/weapon/melee/yautja
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
 /obj/item/weapon/melee/yautja/chain
 	name = "chainwhip"
 	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "whip"
 	item_state = "whip"
 	flags_atom = FPRINT|CONDUCT
@@ -193,7 +212,6 @@
 /obj/item/weapon/melee/yautja/sword
 	name = "clan sword"
 	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggresive and lethal hunters."
-	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "clansword"
 	flags_atom = FPRINT|CONDUCT
 	flags_item = ITEM_PREDATOR
@@ -340,7 +358,6 @@
 /obj/item/weapon/melee/yautja/scythe
 	name = "double war scythe"
 	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
-	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "predscythe"
 	item_state = "scythe"
 	flags_atom = FPRINT|CONDUCT
@@ -373,7 +390,6 @@
 /obj/item/weapon/melee/yautja/combistick
 	name = "combi-stick"
 	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
-	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "combistick"
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_BACK
@@ -530,7 +546,6 @@
 /obj/item/weapon/melee/yautja/knife
 	name = "ceremonial dagger"
 	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
-	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "predknife"
 	item_state = "knife"
 	flags_atom = FPRINT|CONDUCT
@@ -648,6 +663,13 @@
 /*#########################################
 ########### Two Handed Weapons ############
 #########################################*/
+/obj/item/weapon/melee/twohanded/yautja
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
 
 /obj/item/weapon/melee/twohanded/yautja/spear
 	name = "hunter spear"
@@ -659,10 +681,9 @@
 
 /obj/item/weapon/melee/twohanded/yautja/glaive
 	name = "war glaive"
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
 	icon_state = "glaive"
 	item_state = "glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
 	force = MELEE_FORCE_TIER_3
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
@@ -706,9 +727,16 @@
 /obj/item/weapon/gun/launcher/spike
 	name = "spike launcher"
 	desc = "A compact Yautja device in the shape of a crescent. It can rapidly fire damaging spikes and automatically recharges."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "spikelauncher"
 	item_state = "spikelauncher"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
 	muzzle_flash = null // TO DO, add a decent one.
 
 	unacidable = TRUE
@@ -782,13 +810,19 @@
 	return 1
 
 
+/obj/item/weapon/gun/energy/yautja
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+
 /obj/item/weapon/gun/energy/yautja/plasmarifle
 	name = "plasma rifle"
 	desc = "A long-barreled heavy plasma weapon capable of taking down large game. It has a mounted scope for distant shots and an integrated battery."
-	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "plasmarifle"
 	item_state = "plasmarifle"
-
 	unacidable = TRUE
 	fire_sound = 'sound/weapons/pred_plasma_shot.ogg'
 	ammo = /datum/ammo/energy/yautja/rifle/bolt
@@ -887,14 +921,9 @@
 			update_icon()
 	else to_chat(user, SPAN_WARNING("The weapon's not charged enough with ambient energy!"))
 
-
-
-
-
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
 	desc = "A plasma pistol capable of rapid fire. It has an integrated battery."
-	icon = 'icons/obj/items/weapons/predator.dmi'
 	icon_state = "plasmapistol"
 	item_state = "plasmapistol"
 
@@ -974,11 +1003,10 @@
 
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "plasma"
-	item_state = "plasma_wear"
 	name = "plasma caster"
 	desc = "A powerful, shoulder-mounted energy weapon."
+	icon_state = "plasma"
+	item_state = "plasma_wear"
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
 	ammo = /datum/ammo/energy/yautja/caster/bolt
 	muzzle_flash = null // TO DO, add a decent one.

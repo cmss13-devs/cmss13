@@ -2,9 +2,14 @@
 /obj/item/clothing/mask/gas/yautja
 	name = "clan mask"
 	desc = "A beautifully designed metallic face mask, both ornate and functional."
-	icon = 'icons/obj/items/clothing/masks.dmi'
-	icon_state = "pred_mask1"
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
+
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -26,18 +31,18 @@
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
 	anti_hug = 100
-	item_state_slots = list(WEAR_FACE = "pred_mask1")
+	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
 	time_to_unequip = 20
 	unequip_sounds = list('sound/items/air_release.ogg')
 
-/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), elder_restricted = 0)
+/obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", elder_restricted = 0)
 	..()
 	forceMove(location)
 
-	var/mask_input[] = list(1,2,3,4,5,6,7,8,9,10,11,12)
-	if(mask_number in mask_input)
-		icon_state = "pred_mask[mask_number]"
-		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]")
+	if(mask_number > 12)
+		mask_number = 1
+	icon_state = "pred_mask[mask_number]_[armor_material]"
+	item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]_[armor_material]")
 	if(elder_restricted) //Not possible for non-elders.
 		switch(mask_number)
 			if(1341)
@@ -156,8 +161,13 @@
 /obj/item/clothing/mask/yautja_flavor
 	name = "stone clan mask"
 	desc = "A beautifully designed face mask, ornate but non-functional and made entirely of stone."
-	icon_state = "pred_mask1"
-	item_state = "helmet"
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	icon_state = "pred_mask1_ebony"
+
 	armor_melee = CLOTHING_ARMOR_LOW
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_NONE
@@ -171,7 +181,7 @@
 	flags_inv_hide = HIDEEARS|HIDEEYES|HIDEFACE|HIDELOWHAIR
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
-	item_state_slots = list(WEAR_FACE = "pred_mask1")
+	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
 	var/map_random = FALSE
 
 /obj/item/clothing/mask/yautja_flavor/Initialize(mapload, ...)
@@ -182,8 +192,8 @@
 	var/list/possible_masks = list(1,2,3,4,5,6,7,8,9,10,11) //12
 	var/mask_number = rand(1,11)
 	if(mask_number in possible_masks)
-		icon_state = "pred_mask[mask_number]"
-		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]")
+		icon_state = "pred_mask[mask_number]_ebony"
+		item_state_slots = list(WEAR_FACE = "pred_mask[mask_number]_ebony")
 
 /obj/item/clothing/mask/yautja_flavor/map_random
 	map_random = TRUE

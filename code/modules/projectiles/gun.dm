@@ -782,10 +782,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
-	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
-		return active_attachable.fire_attachment(A, src, user)
 	if(flag)
-		return ..() //It's adjacent, is the user, or is on the user's person
+		return FALSE //It's adjacent, is the user, or is on the user's person
 	if(!istype(A))
 		return FALSE
 	// If firing full-auto, the firing starts when the mouse is clicked, not when it's released
@@ -953,8 +951,8 @@ and you're good to go.
 				to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
 				active_attachable.activate_attachment(src, null, TRUE)
 			else
-				active_attachable.fire_attachment(target,src,user) //Fire it.
-				last_fired = world.time
+				active_attachable.fire_attachment(target, src, user) //Fire it.
+				active_attachable.last_fired = world.time
 			return
 			//If there's more to the attachment, it will be processed farther down, through in_chamber and regular bullet act.
 
@@ -1033,7 +1031,11 @@ and you're good to go.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
 			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, projectile_to_fire?.ammo?.shell_speed, original_target, FALSE)
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-			last_fired = world.time
+			
+			if(check_for_attachment_fire)
+				active_attachable.last_fired = world.time
+			else
+				last_fired = world.time
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 
 
@@ -1064,12 +1066,17 @@ and you're good to go.
 #define EXECUTION_CHECK M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
 
 /obj/item/weapon/gun/attack(mob/living/M, mob/living/user, def_zone)
+	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
+		active_attachable.last_fired = world.time
+		active_attachable.fire_attachment(M, src, user)
+		return TRUE
+
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
 
 	if(M == user && user.zone_selected == "mouth")
 		if(!able_to_fire(user))
-			return
+			return TRUE
 
 		var/ffl = " (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)"
 
@@ -1083,7 +1090,7 @@ and you're good to go.
 		if(!do_after(user, 40, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			M.visible_message(SPAN_NOTICE("[user] decided life was worth living."))
 			flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
-			return
+			return TRUE
 
 		if(active_attachable && !(active_attachable.flags_attach_features & ATTACH_PROJECTILE))
 			active_attachable.activate_attachment(src, null, TRUE)//We're not firing off a nade into our mouth.
@@ -1118,7 +1125,7 @@ and you're good to go.
 					msg_admin_ff("[key_name(user)] committed suicide with \a [name] in [get_area(user)] [ffl]")
 			M.last_damage_data = cause_data
 			user.attack_log += t //Apply the attack log.
-			last_fired = world.time
+			last_fired = world.time //This is incorrect if firing an attached undershotgun, but the user is too dead to care.
 			SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 
 			projectile_to_fire.play_damage_effect(user)
@@ -1132,12 +1139,12 @@ and you're good to go.
 				msg_admin_niche("[key_name(user)] played live Russian Roulette with \a [name] in [get_area(user)] [ffl]") //someone might want to know anyway...
 
 		flags_gun_features ^= GUN_CAN_POINTBLANK //Reset this.
-		return
+		return TRUE
 
 	else if(EXECUTION_CHECK) //Execution
 		user.visible_message(SPAN_DANGER("[user] puts [src] up to [M], steadying their aim."), SPAN_WARNING("You put [src] up to [M], steadying your aim."),null, null, CHAT_TYPE_COMBAT_ACTION)
 		if(!do_after(user, 3 SECONDS, INTERRUPT_ALL|INTERRUPT_DIFF_INTENT, BUSY_ICON_HOSTILE))
-			return FALSE
+			return TRUE
 	else if(user.a_intent != INTENT_HARM) //Thwack them
 		return ..()
 
@@ -1222,7 +1229,11 @@ and you're good to go.
 			projectile_to_fire.ammo.on_hit_mob(M, projectile_to_fire)
 			M.bullet_act(projectile_to_fire)
 
-		last_fired = world.time
+		if(check_for_attachment_fire)
+			active_attachable.last_fired = world.time
+		else
+			last_fired = world.time
+
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, src, projectile_to_fire)
 
 		if(EXECUTION_CHECK) //Continue execution if on the correct intent. Accounts for change via the earlier do_after
@@ -1304,19 +1315,21 @@ and you're good to go.
 		if(fa_firing)
 			return TRUE
 
-		var/added_delay = fire_delay
-		if(active_attachable)
-			if(active_attachable.attachment_firing_delay)
-				added_delay = active_attachable.attachment_firing_delay
-		else
-			if(user && user.skills)
-				if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
-					added_delay += FIRE_DELAY_TIER_8 //untrained humans fire more slowly.
-		if(world.time >= last_fired + added_delay + extra_delay) //check the last time it was fired.
+		var/next_shot
+
+		if(user && user.skills && user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
+			next_shot += FIRE_DELAY_TIER_8 //untrained humans fire more slowly.
+
+		if(active_attachable) //Underbarrel attached weapon?
+			next_shot += active_attachable.last_fired + active_attachable.attachment_firing_delay
+		else	//Normal fire.
+			next_shot += last_fired + fire_delay
+	
+		if(world.time >= next_shot + extra_delay) //check the last time it was fired.
 			extra_delay = 0
 		else if(!PB_burst_bullets_fired) //Special delay exemption for handed-off PB bursts. It's the same burst, after all.
 			return
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/proc/click_empty(mob/user)
 	if(user)

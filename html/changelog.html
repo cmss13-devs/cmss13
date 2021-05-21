@@ -81,6 +81,9 @@
 			<ul class="changes bgimages16">
 				<li class="tweak">Being shot while wearing a ceramic plate now has the impact flash effect.</li>
 				<li class="bugfix">The nailgun can now PB-staple mobs to surfaces or inflict superslow at angles other than the cardinal, and detects those surfaces much more consistently. Anything bigger than a T1 was and is exempt.</li>
+				<li class="tweak">Modified PB backend a bit for efficiency, shouldn't have any visible effect. Any issues would probably be with the under-extinguisher failing to fire, but testing shows no issues.</li>
+				<li class="rscadd">Attachable guns now track their own last-fired time, fixing them sometimes having enormous fire delays when activated after firing the host gun. This also means firing an underbarrel attachment doesn't put the main gun on cooldown.</li>
+				<li class="bugfix">You can now extinguish yourself or others using melee clicks with an activated underbarrel extinguisher.</li>
 			</ul>
 			<h3 class="author">forest2001 updated:</h3>
 			<ul class="changes bgimages16">

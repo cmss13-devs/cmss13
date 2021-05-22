@@ -1449,7 +1449,7 @@ Defined in conflicts.dm of the #defines folder.
 				if (AM.flags_atom & ON_BORDER)
 					break
 				stop_at_turf = TRUE
-		flame_turf(T)
+		flame_turf(T, user)
 		if (stop_at_turf)
 			break
 		distance++

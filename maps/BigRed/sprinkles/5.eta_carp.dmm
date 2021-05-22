@@ -209,19 +209,27 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "G" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_22";
 	tag = "icon-mars_cave_22"
 	},
 /area/bigredv2/caves/eta/xenobiology)
-"P" = (
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
-/turf/open/floor{
-	icon_state = "dark";
-	tag = "icon-dark"
+"H" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7";
+	tag = "icon-mars_cave_7"
 	},
+/area/bigredv2/caves/eta/xenobiology)
+"O" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/bigredv2/caves/eta/xenobiology)
+"P" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/mars,
+/area/bigredv2/caves/eta/xenobiology)
+"X" = (
+/turf/open/floor/plating,
 /area/bigredv2/caves/eta/xenobiology)
 
 (1,1,1) = {"
@@ -251,7 +259,7 @@ g
 b
 z
 B
-g
+P
 b
 "}
 (3,1,1) = {"
@@ -282,7 +290,7 @@ b
 g
 D
 F
-b
+O
 "}
 (5,1,1) = {"
 b
@@ -296,8 +304,8 @@ i
 b
 i
 q
-i
-b
+X
+O
 "}
 (6,1,1) = {"
 c
@@ -311,8 +319,8 @@ j
 c
 j
 r
-j
-b
+O
+H
 "}
 (7,1,1) = {"
 d
@@ -327,7 +335,7 @@ d
 d
 k
 d
-b
+H
 "}
 (8,1,1) = {"
 e
@@ -341,8 +349,8 @@ k
 r
 k
 r
-P
-b
+r
+O
 "}
 (9,1,1) = {"
 f
@@ -356,8 +364,8 @@ l
 y
 A
 r
-A
-G
+l
+X
 "}
 (10,1,1) = {"
 c

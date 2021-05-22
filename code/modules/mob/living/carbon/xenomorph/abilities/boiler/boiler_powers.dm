@@ -165,7 +165,7 @@
 		return
 
 	if (X && !QDELETED(X))
-		var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(X), 1, X, X)
+		var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(X), 1, create_cause_data(initial(X.caste_type), X))
 		S.time_to_live = smoke_duration
 		S.spread_speed = spread_speed
 	else

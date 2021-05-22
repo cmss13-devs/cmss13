@@ -34,12 +34,10 @@
 		health = 100 - getOxyLoss() - getToxLoss() - getFireLoss() - getBruteLoss()
 
 /mob/living/silicon/decoy/death(cause, gibbed, deathmessage = "sparks up and falls silent...")
-	set waitfor = 0
 	if(stat == DEAD)
 		return FALSE
 	icon_state = "hydra-off"
-	sleep(20)
-	explosion(loc, -1, 0, 8, 12)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/explosion, loc, -1, 0, 8, 12), 2 SECONDS)
 	return ..()
 
 /mob/living/silicon/decoy/say(message, new_sound) //General communication across the ship.

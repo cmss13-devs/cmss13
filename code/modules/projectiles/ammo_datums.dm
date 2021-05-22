@@ -91,15 +91,17 @@
 
 /datum/ammo/proc/knockback(mob/M, obj/item/projectile/P, var/max_range = 2)
 	if(!M || M == P.firer) return
-	if(P.distance_travelled > max_range || M.lying) shake_camera(M, 2, 1) //Two tiles away or more, basically.
+	if(P.distance_travelled > max_range || M.lying)
+		return //Two tiles away or more, basically.
+
+	if(M.mob_size >= MOB_SIZE_BIG)
+		return //Big xenos are not affected.
 
 	else //One tile away or less.
 		shake_camera(M, 3, 4)
 		if(isliving(M)) //This is pretty ugly, but what can you do.
-			if(isXeno(M))
+			if(isCarbonSizeXeno(M))
 				var/mob/living/carbon/Xenomorph/target = M
-				if(target.mob_size >= MOB_SIZE_BIG)
-					return //Big xenos are not affected.
 				target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
 				target.apply_effect(1, SUPERSLOW)
 				target.apply_effect(2, SLOW)
@@ -114,13 +116,14 @@
 	if(P.distance_travelled > max_range || M.lying)
 		return
 
+	if(M.mob_size >= MOB_SIZE_BIG)
+		return
+
+	shake_camera(M, 3, 4)
 	if(isliving(M)) //This is pretty ugly, but what can you do.
-		if(isXeno(M))
+		if(isCarbonSizeXeno(M))
 			var/mob/living/carbon/Xenomorph/target = M
-			if(target.mob_size >= MOB_SIZE_BIG)
-				return
 			to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-			shake_camera(M, 3, 4)
 			target.apply_effect(0.5, WEAKEN)
 			target.apply_effect(2, SUPERSLOW)
 			target.apply_effect(5, SLOW)

@@ -458,7 +458,7 @@
 	info.distance_travelled += 1
 	info.current_turf = next_turf
 
-	new acid_type(next_turf, name, null, hivenumber)
+	new acid_type(next_turf, create_cause_data(initial(name)), hivenumber)
 
 	if(get_dist(next_turf, C) == 0)
 		LAZYSET(next_fire, info.target, world.time + firing_cooldown)
@@ -755,6 +755,7 @@
 
 	E.range = range
 	E.hivenumber = hivenumber
+	E.source = initial(name)
 	qdel(src)
 
 
@@ -766,6 +767,7 @@
 	// Which direction is the explosion traveling?
 	// Note that this will be null for the epicenter
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/source
 	var/direction = null
 	var/range = 0
 
@@ -797,7 +799,7 @@
 		return
 	QDEL_NULL(temp)
 
-	new acid_type(in_turf, null, null, hivenumber)
+	new acid_type(in_turf, create_cause_data(source), hivenumber)
 
 	// Range has been reached
 	if(range <= 0)
@@ -825,6 +827,7 @@
 					E.acid_type = /obj/effect/xenomorph/spray/strong/no_stun
 
 			E.hivenumber = hivenumber
+			E.source = source
 
 	// We've done our duty, now die pls
 	qdel(src)

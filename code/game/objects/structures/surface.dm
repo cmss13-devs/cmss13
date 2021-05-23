@@ -126,7 +126,7 @@
 
 /obj/structure/surface/attack_hand(mob/user, click_data)
 	. = ..()
-	if(click_data["alt"])
+	if(click_data && click_data["alt"])
 		return
 	var/obj/item/O = get_item(click_data)
 	if(!O)

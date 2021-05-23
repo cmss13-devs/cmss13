@@ -16,7 +16,7 @@
 
 /datum/equipment_preset/corpse/load_status(mob/living/carbon/human/H)
 	. = ..(H)
-	H.death("existing", 1) //Kills the new mob
+	H.death(create_cause_data("existing"), TRUE) //Kills the new mob
 	H.apply_damage(100, BRUTE)
 	H.apply_damage(100, BRUTE)
 	H.apply_damage(100, BRUTE)

@@ -57,7 +57,7 @@
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel extremely [word]"))
 			if(0 to BLOOD_VOLUME_SURVIVE)
-				death("blood loss")
+				death(create_cause_data("blood loss"))
 
 		// Without enough blood you slowly go hungry.
 		if(blood_volume < BLOOD_VOLUME_SAFE)

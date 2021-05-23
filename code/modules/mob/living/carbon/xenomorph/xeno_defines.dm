@@ -742,7 +742,7 @@
 			continue
 		for(var/obj/item/alien_embryo/embryo in potential_host)
 			qdel(embryo)
-		potential_host.death("larva suicide")
+		potential_host.death(create_cause_data("larva suicide"))
 
 /datum/hive_status/proc/free_respawn(var/client/C)
 	stored_larva++

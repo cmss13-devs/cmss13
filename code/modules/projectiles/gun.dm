@@ -1107,7 +1107,7 @@ and you're good to go.
 				t += " after playing Russian Roulette"
 				user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
 				user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
-				user.death("russian roulette with \a [name]")
+				user.death(create_cause_data("russian roulette with \a [name]", user))
 				msg_admin_ff("[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]")
 				to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
 				user.ghostize(0) //No return.

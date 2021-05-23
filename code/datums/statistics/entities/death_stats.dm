@@ -83,6 +83,10 @@
 	new_death.cause_role_name = cause_data.role
 	new_death.cause_faction_name = cause_data.faction
 
+	var/mob/cause_mob = cause_data.resolve_mob()
+	if(cause_mob)
+		cause_mob.life_kills_total += 1
+
 	if(getBruteLoss())
 		new_death.total_brute = round(getBruteLoss())
 	if(getFireLoss())

@@ -71,7 +71,7 @@
 			user.visible_message(SPAN_DANGER("[user] puts [M] on the table."))
 		return
 
-	if (istype(W, /obj/item/tool/wrench))
+	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		to_chat(user, "It's a holotable!  There are no bolts!")
 		return
 
@@ -258,6 +258,6 @@
 	return
 
 /obj/structure/surface/rack/holorack/attackby(obj/item/W as obj, mob/user as mob)
-	if (istype(W, /obj/item/tool/wrench))
+	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		to_chat(user, "It's a holorack!  You can't unwrench it!")
 		return

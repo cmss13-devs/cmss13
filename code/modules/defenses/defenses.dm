@@ -79,7 +79,7 @@
 	if(QDELETED(O))
 		return
 
-	if(ismultitool(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
@@ -106,7 +106,7 @@
 		qdel(src)
 		return
 
-	if(iswrench(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(anchored)
 			if(turned_on)
 				to_chat(user, SPAN_WARNING("[src] is currently active. The motors will prevent you from unanchoring it safely."))

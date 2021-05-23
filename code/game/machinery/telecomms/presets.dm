@@ -130,7 +130,7 @@
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
-	else if(ismultitool(I))
+	else if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		return
 	else return ..()
 

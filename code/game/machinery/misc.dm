@@ -230,7 +230,7 @@ var/list/alldepartments = list()
 			user.drop_inv_item_to_loc(idcard, src)
 			scan = idcard
 
-	else if(istype(O, /obj/item/tool/wrench))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))

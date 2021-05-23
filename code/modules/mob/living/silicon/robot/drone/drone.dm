@@ -117,7 +117,7 @@
 		to_chat(user, SPAN_DANGER("The maintenance drone chassis not compatible with \the [W]."))
 		return
 
-	else if (istype(W, /obj/item/tool/crowbar))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		to_chat(user, "The machine is hermetically sealed. You can't open the case.")
 		return
 

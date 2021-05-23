@@ -200,7 +200,7 @@
 
 
 /obj/structure/machinery/power/smes/attackby(var/obj/item/W as obj, var/mob/user as mob)
-	if(istype(W, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!open_hatch)
 			open_hatch = 1
 			to_chat(user, SPAN_NOTICE("You open the maintenance hatch of [src]."))
@@ -233,7 +233,7 @@
 		stat = 0
 		return 0
 
-	else if(istype(W, /obj/item/tool/wirecutters) && terminal && !building_terminal)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && terminal && !building_terminal)
 		building_terminal = 1
 		var/turf/tempTDir = terminal.loc
 		if (istype(tempTDir))

@@ -120,7 +120,7 @@
 		if(user.drop_inv_item_to_loc(C, src))
 			cell = C
 			updateDialog()
-	else if(istype(I,/obj/item/tool/screwdriver))
+	else if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		if(locked)
 			to_chat(user, SPAN_NOTICE(" The maintenance hatch cannot be opened or closed while the controls are locked."))
 			return
@@ -135,7 +135,7 @@
 			icon_state = "mulebot0"
 
 		updateDialog()
-	else if (istype(I, /obj/item/tool/wrench))
+	else if (HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if (src.health < maxhealth)
 			src.health = min(maxhealth, src.health+25)
 			user.visible_message(
@@ -384,20 +384,23 @@
 
 
 			if("wirecut")
-				if(istype(usr.get_active_hand(), /obj/item/tool/wirecutters))
+				var/obj/item/held_item = usr.get_held_item()
+				if (held_item && HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 					var/wirebit = text2num(href_list["wire"])
 					wires &= ~wirebit
 				else
 					to_chat(usr, SPAN_NOTICE(" You need wirecutters!"))
 			if("wiremend")
-				if(istype(usr.get_active_hand(), /obj/item/tool/wirecutters))
+				var/obj/item/held_item = usr.get_held_item()
+				if (held_item && HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 					var/wirebit = text2num(href_list["wire"])
 					wires |= wirebit
 				else
 					to_chat(usr, SPAN_NOTICE(" You need wirecutters!"))
 
 			if("wirepulse")
-				if(istype(usr.get_active_hand(), /obj/item/device/multitool))
+				var/obj/item/held_item = usr.get_held_item()
+				if (held_item && HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 					switch(href_list["wire"])
 						if("1","2")
 							to_chat(usr, SPAN_NOTICE(" [icon2html(src, usr)] The charge light flickers."))

@@ -190,7 +190,7 @@
 	if (..())
 
 		// Charged above 1% and safeties are enabled.
-		if((charge > (capacity/100)) && safeties_enabled && (!istype(W, /obj/item/device/multitool)))
+		if((charge > (capacity/100)) && safeties_enabled && !HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 			to_chat(user, SPAN_WARNING("Safety circuit of [src] is preventing modifications while it's charged!"))
 			return
 
@@ -206,7 +206,7 @@
 			failure_probability = 0
 
 		// Crowbar - Disassemble the SMES.
-		if(istype(W, /obj/item/tool/crowbar))
+		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 			if (terminal)
 				to_chat(user, SPAN_WARNING("You have to disassemble the terminal first!"))
 				return
@@ -247,7 +247,7 @@
 				to_chat(usr, SPAN_DANGER("You can't insert more coils to this SMES unit!"))
 
 		// Multitool - Toggle the safeties.
-		else if(istype(W, /obj/item/device/multitool))
+		else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 			safeties_enabled = !safeties_enabled
 			to_chat(user, SPAN_WARNING("You [safeties_enabled ? "connected" : "disconnected"] the safety circuit."))
 			src.visible_message("[icon2html(src, viewers(src))] <b>[src]</b> beeps: \"Caution. Safety circuit has been: [safeties_enabled ? "re-enabled" : "disabled. Please excercise caution."]\"")

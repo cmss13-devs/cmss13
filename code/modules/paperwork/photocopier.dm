@@ -170,7 +170,7 @@
 					updateUsrDialog()
 			else
 				to_chat(user, SPAN_NOTICE("This cartridge is not yet ready for replacement! Use up the rest of the toner."))
-		else if(istype(O, /obj/item/tool/wrench))
+		else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			anchored = !anchored
 			to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))

@@ -381,7 +381,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 		return
 
-	if(istype(C, /obj/item/tool/screwdriver) && is_wood_floor())
+	if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER) && is_wood_floor())
 		if(broken || burnt)
 			return
 		else

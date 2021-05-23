@@ -87,7 +87,7 @@
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You do not know how to tinker with [name]."))
 		return
-	if(istype(W,/obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!warhead)
 			to_chat(user, SPAN_NOTICE("[name] must contain a warhead to do that!"))
 			return

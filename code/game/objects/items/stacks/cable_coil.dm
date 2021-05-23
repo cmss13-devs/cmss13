@@ -77,7 +77,7 @@
 		to_chat(usr, SPAN_NOTICE("\blue You cannot do that."))
 
 /obj/item/stack/cable_coil/attackby(obj/item/W, mob/user)
-	if( istype(W, /obj/item/tool/wirecutters) && src.amount > 1)
+	if( HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && src.amount > 1)
 		src.amount--
 		new/obj/item/stack/cable_coil(user.loc, 1,color)
 		to_chat(user, SPAN_NOTICE("You cut a piece off the cable coil."))

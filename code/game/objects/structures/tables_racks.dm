@@ -281,7 +281,7 @@
 				SPAN_DANGER("You throw [M] on [src]."))
 		return
 
-	if(istype(W, /obj/item/tool/wrench))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		user.visible_message(SPAN_NOTICE("[user] starts disassembling [src]."),
 		SPAN_NOTICE("You start disassembling [src]."))
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
@@ -525,7 +525,7 @@
 			return
 		return
 
-	if(istype(W, /obj/item/tool/wrench))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(status == 2)
 			return
 	..()
@@ -613,7 +613,7 @@
 		step(I, get_dir(I, src))
 
 /obj/structure/surface/rack/attackby(obj/item/W, mob/user, click_data)
-	if(istype(W, /obj/item/tool/wrench))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		destroy(1)
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		return

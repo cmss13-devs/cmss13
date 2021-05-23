@@ -13,7 +13,7 @@
 /obj/structure/computerframe/attackby(obj/item/P as obj, mob/user as mob)
 	switch(state)
 		if(0)
-			if(istype(P, /obj/item/tool/wrench))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You wrench the frame into place."))
@@ -31,7 +31,7 @@
 					new /obj/item/stack/sheet/metal( src.loc, 5 )
 					qdel(src)
 		if(1)
-			if(istype(P, /obj/item/tool/wrench))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You unfasten the frame."))
@@ -45,7 +45,7 @@
 					circuit = P
 					P.forceMove(src)
 
-			if(istype(P, /obj/item/tool/screwdriver) && circuit)
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && circuit)
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You screw the circuit board into place."))
 				src.state = 2
@@ -58,7 +58,7 @@
 				circuit.forceMove(loc)
 				src.circuit = null
 		if(2)
-			if(istype(P, /obj/item/tool/screwdriver) && circuit)
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && circuit)
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You unfasten the circuit board."))
 				src.state = 1
@@ -76,7 +76,7 @@
 						state = 3
 						icon_state = "3"
 		if(3)
-			if(istype(P, /obj/item/tool/wirecutters))
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You remove the cables."))
 				src.state = 2
@@ -103,7 +103,7 @@
 				src.state = 3
 				src.icon_state = "3"
 				new /obj/item/stack/sheet/glass( src.loc, 2 )
-			if(istype(P, /obj/item/tool/screwdriver))
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You connect the monitor."))
 				var/B = new src.circuit.build_path ( src.loc )

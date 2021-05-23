@@ -72,7 +72,7 @@
 	if(contents.len > 0) //TODO: several items at once? several different items?
 		to_chat(user, SPAN_DANGER("Something is already in the processing chamber."))
 		return 1
-	if(iswrench(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
 	var/obj/what = O

@@ -45,7 +45,7 @@
 			destroy()
 
 /obj/structure/attackby(obj/item/W, mob/user)
-	if(iswrench(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		toggle_anchored(W, user)
 		return TRUE
 	..()

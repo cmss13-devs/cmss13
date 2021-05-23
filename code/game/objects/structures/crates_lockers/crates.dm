@@ -108,7 +108,7 @@
 			user.drop_held_item()
 			W.forceMove(src)
 			return
-	else if(istype(W, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(rigged)
 			to_chat(user, SPAN_NOTICE("You cut away the wiring."))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)

@@ -10,11 +10,12 @@
 						//also useful for items with many icon_state values when you don't want to make an inhand sprite for each value.
 	var/r_speed = 1.0
 	var/force = 0
-	var/damtype = "brute"
+	var/damtype = BRUTE
 	var/embeddable = TRUE //FALSE if unembeddable
 	var/embedded_organ = null
 	var/attack_speed = 11  //+3, Adds up to 10.  Added an extra 4 removed from /mob/proc/do_click()
-	var/list/attack_verb = list() //Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	 ///Used in attackby() to say how something was attacked "[x] has been [z.attack_verb] by [y] with [z]"
+	var/list/attack_verb
 
 	health = null
 

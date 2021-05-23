@@ -56,7 +56,7 @@
 				return
 
 		if(WALL_STATE_SCREW)
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				user.visible_message(SPAN_NOTICE("[user] begins removing the support lines."),
 				SPAN_NOTICE("You begin removing the support lines."))
 				playsound(src, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -67,7 +67,7 @@
 				return
 
 		if(WALL_STATE_WIRECUTTER)
-			if(iswirecutter(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 				user.visible_message(SPAN_NOTICE("[user] begins uncrimping the hydraulic lines."),
 				SPAN_NOTICE("You begin uncrimping the hydraulic lines."))
 				playsound(src, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -78,7 +78,7 @@
 				return
 
 		if(WALL_STATE_WRENCH)
-			if(iswrench(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				user.visible_message(SPAN_NOTICE("[user] starts loosening the anchoring bolts securing the support rods."),
 				SPAN_NOTICE("You start loosening the anchoring bolts securing the support rods."))
 				playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
@@ -89,7 +89,7 @@
 				return
 
 		if(WALL_STATE_CROWBAR)
-			if(iscrowbar(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				user.visible_message(SPAN_NOTICE("[user] struggles to pry apart the connecting rods."),
 				SPAN_NOTICE("You struggle to pry apart the connecting rods."))
 				playsound(src, 'sound/items/Crowbar.ogg', 25, 1)

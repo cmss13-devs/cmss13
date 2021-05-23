@@ -81,7 +81,7 @@
 	if(droppod_flags & DROPPOD_STRIPPED)
 		return . = ..()
 
-	if(iscrowbar(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		visible_message(SPAN_NOTICE("[H] begins to pry off the external plating on [src]."))
 		playsound(loc, 'sound/items/Crowbar.ogg', 75)
 

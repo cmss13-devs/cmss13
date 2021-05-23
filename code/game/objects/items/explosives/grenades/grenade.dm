@@ -109,7 +109,7 @@
 
 
 /obj/item/explosive/grenade/attackby(obj/item/W as obj, mob/user as mob)
-	if(isscrewdriver(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		switch(det_time)
 			if ("1")
 				det_time = 10

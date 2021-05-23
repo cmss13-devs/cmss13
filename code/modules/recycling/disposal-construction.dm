@@ -205,7 +205,7 @@
 
 		var/obj/structure/disposalpipe/CP = locate() in T
 
-		if(istype(I, /obj/item/tool/wrench))
+		if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 			if(anchored)
 				anchored = 0
 				if(ispipe)

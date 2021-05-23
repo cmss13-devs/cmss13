@@ -98,7 +98,7 @@
 			SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WINDOW, window_type)
 			qdel(src)
 
-	else if(istype(W, /obj/item/tool/wrench))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(buildstacktype)
 			to_chat(user, SPAN_NOTICE(" You start to deconstruct [src]."))
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)

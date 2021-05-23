@@ -73,7 +73,7 @@
 
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/attackby(var/obj/item/I as obj, var/mob/user as mob)
-	if(istype(I, /obj/item/tool/wrench))
+	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if(on)
 			to_chat(user, SPAN_NOTICE(" Turn it off first!"))
 			return
@@ -87,7 +87,7 @@
 	//doesn't use power cells
 	if(istype(I, /obj/item/cell))
 		return
-	if (istype(I, /obj/item/tool/screwdriver))
+	if (HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		return
 
 	//doesn't hold tanks
@@ -101,7 +101,7 @@
 	name = "Stationary Air Scrubber"
 
 /obj/structure/machinery/portable_atmospherics/powered/scrubber/huge/stationary/attackby(var/obj/item/I as obj, var/mob/user as mob)
-	if(istype(I, /obj/item/tool/wrench))
+	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		to_chat(user, SPAN_NOTICE(" The bolts are too tight for you to unscrew!"))
 		return
 

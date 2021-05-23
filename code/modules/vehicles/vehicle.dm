@@ -52,12 +52,12 @@
 			. = step(src, direction)
 
 /obj/vehicle/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!locked)
 			open = !open
 			update_icon()
 			to_chat(user, SPAN_NOTICE("Maintenance panel is now [open ? "opened" : "closed"]."))
-	else if(istype(W, /obj/item/tool/crowbar) && cell && open)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && cell && open)
 		remove_cell(user)
 
 	else if(istype(W, /obj/item/cell) && !cell && open)

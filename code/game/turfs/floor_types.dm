@@ -60,7 +60,7 @@
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if (istype(W, /obj/item/tool/crowbar))
+	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(usr.loc)
 			R.add_to_stacks(usr)
@@ -293,7 +293,7 @@
 		return
 	if(!user)
 		return
-	if(istype(C, /obj/item/tool/wrench))
+	if(HAS_TRAIT(C, TRAIT_TOOL_WRENCH))
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
 		SPAN_NOTICE("You start removing [src]'s protective cover."))
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)

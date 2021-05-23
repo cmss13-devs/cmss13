@@ -193,7 +193,7 @@
 	var/mob/living/carbon/human/H = user
 
 	if(!tree)
-		if(!iswrench(W))
+		if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 			return
 
 		if(!active)

@@ -120,7 +120,7 @@
 	..()
 
 /obj/item/device/assembly_holder/attackby(obj/item/W as obj, mob/user as mob)
-	if(isscrewdriver(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!a_left || !a_right)
 			to_chat(user, SPAN_DANGER("BUG:Assembly part missing, please report this!"))
 			return

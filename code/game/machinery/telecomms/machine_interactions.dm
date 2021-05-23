@@ -28,25 +28,25 @@
 
 	switch(construct_op)
 		if(0)
-			if(istype(P, /obj/item/tool/screwdriver) && deconstructable)
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && deconstructable)
 				to_chat(user, "You unfasten the bolts.")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				construct_op ++
 		if(1)
-			if(istype(P, /obj/item/tool/screwdriver))
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				to_chat(user, "You fasten the bolts.")
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				construct_op --
-			if(istype(P, /obj/item/tool/wrench))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				to_chat(user, "You dislodge the external plating.")
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op ++
 		if(2)
-			if(istype(P, /obj/item/tool/wrench))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				to_chat(user, "You secure the external plating.")
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				construct_op --
-			if(istype(P, /obj/item/tool/wirecutters))
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 				to_chat(user, "You remove the cables.")
 				construct_op ++
@@ -107,7 +107,8 @@
 			to_chat(user, SPAN_WARNING("You stare at [src] cluelessly..."))
 			return
 		// istype returns false if the value is null
-		if(!istype(user.get_active_hand(), /obj/item/device/multitool))
+		var/obj/item/held_item = user.get_active_hand()
+		if(!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 			return
 
 	if(inoperable())
@@ -187,13 +188,15 @@
 
 	var/obj/item/device/multitool/P = null
 	// Let's double check
-	if(!ishighersilicon(user) && istype(user.get_active_hand(), /obj/item/device/multitool))
+	var/obj/item/held_item = user.get_active_hand()
+	if(!ishighersilicon(user) && held_item && HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 		P = user.get_active_hand()
 	else if(isAI(user))
 		var/mob/living/silicon/ai/U = user
 		P = U.aiMulti
 	else if(isborg(user) && in_range(user, src))
-		if(istype(user.get_active_hand(), /obj/item/device/multitool))
+		var/obj/item/borg_held_item = user.get_active_hand()
+		if(held_item && HAS_TRAIT(borg_held_item, TRAIT_TOOL_MULTITOOL))
 			P = user.get_active_hand()
 	return P
 
@@ -277,7 +280,8 @@
 	if(.)
 		return
 	if(!ishighersilicon(usr))
-		if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
+		var/obj/item/held_item = usr.get_held_item()
+		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 			return
 
 	if(inoperable())

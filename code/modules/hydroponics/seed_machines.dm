@@ -99,13 +99,13 @@
 			to_chat(user, "You load [W] into [src].")
 		return
 
-	if(istype(W,/obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		open = !open
 		to_chat(user, SPAN_NOTICE(" You [open ? "open" : "close"] the maintenance panel."))
 		return
 
 	if(open)
-		if(istype(W, /obj/item/tool/crowbar))
+		if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 			dismantle()
 			return
 

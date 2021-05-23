@@ -111,6 +111,13 @@
 #define TRAIT_INTENT_EYES "t_intent_eyes"
  /// If the mob is nested.
 #define TRAIT_NESTED "t_nested"
+//-- item traits --
+// TOOL TRAITS
+#define TRAIT_TOOL_SCREWDRIVER "t_tool_screwdriver"
+#define TRAIT_TOOL_CROWBAR "t_tool_crowbar"
+#define TRAIT_TOOL_WIRECUTTERS "t_tool_wirecutters"
+#define TRAIT_TOOL_WRENCH "t_tool_wrench"
+#define TRAIT_TOOL_MULTITOOL "t_tool_multitool"
 
 //trait SOURCES
 /// Example trait source
@@ -121,5 +128,7 @@
 #define TRAIT_SOURCE_SPECIES "t_s_species"
  ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
+ ///Status trait coming from tools
+#define TRAIT_SOURCE_TOOL "t_s_tool"
  ///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"

@@ -99,7 +99,7 @@
 		else
 			to_chat(user, SPAN_NOTICE("[src] already has a cell."))
 
-	else if(istype(W, /obj/item/tool/screwdriver))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(bcell)
 			bcell.updateicon()
 			bcell.forceMove(get_turf(src.loc))

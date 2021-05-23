@@ -108,7 +108,7 @@
 		addtimer(CALLBACK(src, .proc/prime), timer * 10)
 
 /obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
-	if(ismultitool(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
 				return

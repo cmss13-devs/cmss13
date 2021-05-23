@@ -60,11 +60,11 @@
 //********************/
 
 /obj/structure/machinery/smartfridge/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(iswrench(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
 
-	if(istype(O, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		panel_open = !panel_open
 		to_chat(user, "You [panel_open ? "open" : "close"] the maintenance panel.")
 		overlays.Cut()
@@ -73,7 +73,7 @@
 		nanomanager.update_uis(src)
 		return
 
-	if(istype(O, /obj/item/device/multitool)||istype(O, /obj/item/tool/wirecutters))
+	if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL)||HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		if(panel_open)
 			attack_hand(user)
 		return
@@ -282,7 +282,8 @@
 
 	if (panel_open)
 		if (href_list["cutwire"])
-			if (!( istype(usr.get_active_hand(), /obj/item/tool/wirecutters) ))
+			var/obj/item/held_item = usr.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 				to_chat(user, "You need wirecutters!")
 				return TRUE
 
@@ -294,7 +295,8 @@
 			return TRUE
 
 		if (href_list["pulsewire"])
-			if (!istype(usr.get_active_hand(), /obj/item/device/multitool))
+			var/obj/item/held_item = usr.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(usr, "You need a multitool!")
 				return TRUE
 

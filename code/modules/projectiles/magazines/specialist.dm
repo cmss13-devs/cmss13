@@ -253,7 +253,7 @@
 	if(current_rounds <= 0)
 		to_chat(user, SPAN_WARNING("The rocket tube has been used already."))
 		return
-	if(istype(W,/obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!warhead)
 			to_chat(user, SPAN_NOTICE("[name] must contain a warhead to do that!"))
 			return

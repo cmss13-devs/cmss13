@@ -253,7 +253,7 @@
 	if(!ishuman(user)) //first make sure theres no funkiness
 		return
 
-	if(istype(O,/obj/item/tool/wrench)) //rotate the mount
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) //rotate the mount
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[user] rotates [src]."),SPAN_NOTICE("You rotate [src]."))
 		setDir(turn(dir, -90))
@@ -291,7 +291,7 @@
 			update_icon()
 		return
 
-	if(istype(O,/obj/item/tool/screwdriver))
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		if(gun_mounted)
 			to_chat(user, "You're securing the M56D into place...")
 
@@ -432,7 +432,7 @@
 	if(QDELETED(O))
 		return
 
-	if(istype(O,/obj/item/tool/wrench)) // Let us rotate this stuff.
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) // Let us rotate this stuff.
 		if(locked)
 			to_chat(user, "This one is anchored in place and cannot be rotated.")
 			return
@@ -442,7 +442,7 @@
 			setDir(turn(dir, -90))
 		return
 
-	if(isscrewdriver(O)) // Lets take it apart.
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // Lets take it apart.
 		if(locked)
 			to_chat(user, "This one cannot be disassembled.")
 		else

@@ -37,7 +37,7 @@
 			user.visible_message(SPAN_NOTICE("[user] opens the panel on [src] and inserts [C]."), SPAN_NOTICE("You open the panel on [src] and insert [C]."))
 		return
 
-	if(istype(I, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		if(!cell)
 			to_chat(user, SPAN_DANGER("There is no power cell installed."))
 			return

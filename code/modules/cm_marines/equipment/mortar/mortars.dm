@@ -213,7 +213,7 @@
 
 			addtimer(CALLBACK(src, .proc/handle_shell, T, mortar_shell), travel_time)
 
-	if(istype(O, /obj/item/tool/wrench))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to undeploy [src]."))
 			return
@@ -237,7 +237,7 @@
 			M.name = src.name
 			qdel(src)
 
-	if(istype(O, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		if(do_after(user, 1 SECONDS, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			user.visible_message(SPAN_NOTICE("[user] toggles the targeting computer on [src]."), \
 				SPAN_NOTICE("You toggle the targeting computer on [src]."))

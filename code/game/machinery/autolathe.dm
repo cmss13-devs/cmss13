@@ -75,7 +75,7 @@
 	update_printable()
 
 /obj/structure/machinery/autolathe/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if (istype(O, /obj/item/tool/screwdriver))
+	if (HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		if (!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 			return
@@ -86,7 +86,7 @@
 
 	if (panel_open)
 		//Don't eat multitools or wirecutters used on an open lathe.
-		if(istype(O, /obj/item/device/multitool) || istype(O, /obj/item/tool/wirecutters))
+		if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 			attack_hand(user)
 			return
 
@@ -250,8 +250,8 @@
 		if (!skillcheck(usr, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 			return
-
-		if (!iswirecutter(usr.get_active_hand()))
+		var/obj/item/held_item = usr.get_held_item()
+		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 			to_chat(usr, "You need wirecutters!")
 			return
 
@@ -267,7 +267,8 @@
 			to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 			return 0
 
-		if (!ismultitool(usr.get_active_hand()))
+		var/obj/item/held_item = usr.get_held_item()
+		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 			to_chat(usr, "You need a multitool!")
 			return
 

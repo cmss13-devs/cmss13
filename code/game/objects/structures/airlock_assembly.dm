@@ -57,7 +57,7 @@
 		created_name = t
 		return
 
-	if(iscrowbar(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		to_chat(user, SPAN_NOTICE("You start pulling [src] apart."))
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -70,7 +70,7 @@
 
 	switch(state)
 		if(STATE_STANDARD)
-			if(iswrench(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You start [anchored? "un" : ""]securing the airlock assembly!"))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -117,7 +117,7 @@
 				return
 
 		if(STATE_WIRES)
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("You start securing the circuit"))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

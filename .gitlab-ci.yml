@@ -192,7 +192,7 @@ report:dmdoc:
     expire_in: '3 days'
   rules:
     - changes:
-      - "*.dm"
+      - "**/*.dm"
 
 # Reports effective map changes on same branch, using dmm-tools to render full map file
 report:map-changed-report:

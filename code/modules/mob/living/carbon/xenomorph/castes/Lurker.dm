@@ -87,7 +87,7 @@
 
 	var/mob/living/carbon/H = A
 	if (H.knocked_down)
-		new /datum/effects/xeno_slow(H, bound_xeno, null, null, get_xeno_stun_duration(slash_slow_duration))
+		new /datum/effects/xeno_slow(H, bound_xeno, null, null, get_xeno_stun_duration(H, slash_slow_duration))
 
 	return
 

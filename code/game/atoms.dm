@@ -558,12 +558,16 @@ Parameters are passed from New.
 	if(!filter_data)
 		return
 
+	var/found = FALSE
 	var/list/names = islist(name_or_names) ? name_or_names : list(name_or_names)
 
 	for(var/name in names)
 		if(filter_data[name])
 			filter_data -= name
-	update_filters()
+			found = TRUE
+
+	if(found)
+		update_filters()
 
 /atom/proc/clear_filters()
 	filter_data = null

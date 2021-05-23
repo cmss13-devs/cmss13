@@ -157,7 +157,7 @@
 			else
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 				return FALSE
-	else if(istype(O,/obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		if(buildstate == 2 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s wiring."),
@@ -176,7 +176,7 @@
 				SPAN_NOTICE("You secure [src]'s wiring."))
 				update_icon()
 				return TRUE
-	else if(iswrench(O))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(buildstate == 3 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				user.visible_message(SPAN_NOTICE("[user] fumbles around figuring out [src]'s tubing and plating."),
@@ -196,7 +196,7 @@
 				SPAN_NOTICE("You repair [src]'s tubing and plating."))
 				update_icon()
 				return TRUE
-	else if(iscrowbar(O))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
 		if(buildstate)
 			to_chat(user, SPAN_WARNING("You must repair the generator before working with its fuel cell."))
 			return

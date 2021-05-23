@@ -100,7 +100,7 @@
 /obj/structure/girder/proc/change_state(var/obj/item/W, var/mob/user)
 	switch(state)
 		if(STATE_STANDARD)
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("Now unsecuring support struts."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -151,7 +151,7 @@
 		if(STATE_REINFORCED_WALL)
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
-			if(iscrowbar(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("Now securing the girder..."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -168,7 +168,7 @@
 	if(!(state == STATE_DISMANTLING))
 		return FALSE
 
-	else if(iswirecutter(W) && step_state == STATE_SCREWDRIVER)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && step_state == STATE_SCREWDRIVER)
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("Now removing support struts."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -177,7 +177,7 @@
 		step_state = STATE_WIRECUTTER
 		return TRUE
 
-	else if(iscrowbar(W) && step_state == STATE_WIRECUTTER)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && step_state == STATE_WIRECUTTER)
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("Now dislodging the girder..."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -189,7 +189,7 @@
 		update_icon()
 		return TRUE
 
-	else if(iswrench(W) && step_state == STATE_WIRECUTTER)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && step_state == STATE_WIRECUTTER)
 		to_chat(user, SPAN_NOTICE("You start wrenching it apart."))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -204,7 +204,7 @@
 	if(!(state == STATE_WALL))
 		return FALSE
 
-	if(isscrewdriver(W) && step_state == STATE_METAL)
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && step_state == STATE_METAL)
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("You are attaching the metal to the internal structure."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
@@ -243,7 +243,7 @@
 			to_chat(user, SPAN_NOTICE("You failed to strengthen the connection rods. You need more rods."))
 		return TRUE
 
-	if(isscrewdriver(W) && step_state == STATE_RODS)
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && step_state == STATE_RODS)
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("You are attaching the plasteel to the internal structure."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))

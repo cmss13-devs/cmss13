@@ -16,7 +16,7 @@ var/global/list/faction_phoron_stored_list = list(
 	w_class = SIZE_TINY
 
 /obj/item/collector/attackby(var/obj/item/O, var/mob/user)
-	if(iscrowbar(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
 		user.visible_message(SPAN_NOTICE("[user] pulls [src] apart."), SPAN_NOTICE("You pull [src] apart."))
 		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		new /obj/item/stack/sheet/metal(loc, DEFENSE_METAL_COST)
@@ -84,7 +84,7 @@ var/global/list/faction_phoron_stored_list = list(
 		break_down()
 
 /obj/structure/machinery/collector/attackby(var/obj/item/O, var/mob/user)
-	if(iscrowbar(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
 		user.visible_message(SPAN_NOTICE("[user] begins pulling apart [src]."), SPAN_NOTICE("You begin pulling apart [src]."))
 
 		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))

@@ -42,7 +42,7 @@ obj/structure/sign/poster/New(var/serial)
 	..()
 
 obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/wirecutters))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(ruined)
 			to_chat(user, SPAN_NOTICE("You remove the remnants of the poster."))

@@ -477,7 +477,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 		switch(action)
 			if("cut")
-				if(!iswirecutter(usr.get_active_hand()))
+				var/obj/item/held_item = usr.get_held_item()
+				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 					to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 					return TRUE
 
@@ -491,7 +492,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
 				. = TRUE
 			if("pulse")
-				if(!ismultitool(usr.get_active_hand()))
+				var/obj/item/held_item = usr.get_held_item()
+				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 					to_chat(usr, SPAN_WARNING("You need a multitool!"))
 					return TRUE
 
@@ -589,7 +591,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				update_icon()
 		return
 
-	else if(istype(C, /obj/item/tool/screwdriver))
+	else if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER))
 		if(no_panel)
 			to_chat(user, SPAN_WARNING("\The [src] has no panel to open!"))
 			return
@@ -598,10 +600,10 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] [src]'s panel."))
 		update_icon()
 
-	else if(istype(C, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(C, TRAIT_TOOL_WIRECUTTERS))
 		return attack_hand(user)
 
-	else if(istype(C, /obj/item/device/multitool))
+	else if(HAS_TRAIT(C, TRAIT_TOOL_MULTITOOL))
 		return attack_hand(user)
 
 	else if(isgun(C))

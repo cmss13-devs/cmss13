@@ -220,7 +220,7 @@ display round(lastgen) and phorontank amount
 		return
 	else if(!active)
 
-		if(istype(O, /obj/item/tool/wrench))
+		if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 
 			if(!anchored)
 				connect_to_network()
@@ -232,7 +232,7 @@ display round(lastgen) and phorontank amount
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 			anchored = !anchored
 
-		else if(istype(O, /obj/item/tool/screwdriver))
+		else if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 			open = !open
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			if(open)

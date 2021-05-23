@@ -41,7 +41,7 @@
 
 /obj/structure/machinery/light_construct/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
-	if (istype(W, /obj/item/tool/wrench))
+	if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if (src.stage == 1)
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			to_chat(usr, "You begin deconstructing [src].")
@@ -60,7 +60,7 @@
 			to_chat(usr, "You have to unscrew the case first.")
 			return
 
-	if(istype(W, /obj/item/tool/wirecutters))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if (src.stage != 2) return
 		src.stage = 1
 		switch(fixture_type)
@@ -88,7 +88,7 @@
 				"You add wires to [src].")
 		return
 
-	if(istype(W, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if (src.stage == 2)
 			switch(fixture_type)
 				if ("tube")
@@ -381,7 +381,7 @@
 
 	// attempt to stick weapon into light socket
 	else if(status == LIGHT_EMPTY)
-		if(istype(W, /obj/item/tool/screwdriver)) //If it's a screwdriver open it.
+		if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) //If it's a screwdriver open it.
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			user.visible_message("[user.name] opens [src]'s casing.", \
 				"You open [src]'s casing.", "You hear a noise.")

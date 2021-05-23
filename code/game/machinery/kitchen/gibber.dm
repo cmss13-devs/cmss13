@@ -87,7 +87,7 @@
 		to_chat(user, SPAN_WARNING("The gibber is full, empty it first!"))
 		return
 
-	if(iswrench(G))
+	if(HAS_TRAIT(G, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
 

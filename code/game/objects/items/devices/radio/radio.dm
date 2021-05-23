@@ -163,7 +163,8 @@
 				channels[chan_name] |= FREQ_LISTENING
 	else if (href_list["wires"])
 		var/t1 = text2num(href_list["wires"])
-		if (!( istype(usr.get_active_hand(), /obj/item/tool/wirecutters) ))
+		var/obj/item/held_item = usr.get_held_item()
+		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 			return
 		if (wires & t1)
 			wires &= ~t1
@@ -401,7 +402,7 @@
 /obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	user.set_interaction(src)
-	if (!( istype(W, /obj/item/tool/screwdriver) ))
+	if (!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		return
 	b_stat = !( b_stat )
 	if(!istype(src, /obj/item/device/radio/beacon))
@@ -445,10 +446,10 @@
 /obj/item/device/radio/borg/attackby(obj/item/W as obj, mob/user as mob)
 //	..()
 	user.set_interaction(src)
-	if (!( istype(W, /obj/item/tool/screwdriver) || (istype(W, /obj/item/device/encryptionkey/ ))))
+	if (!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
 		return
 
-	if(istype(W, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(keyslot)
 
 

@@ -203,7 +203,7 @@
 
 	else
 		..()
-		if (health < maxhealth && !istype(W, /obj/item/tool/screwdriver) && W.force)
+		if (health < maxhealth && !HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && W.force)
 			step_to(src, (get_step_away(src,user)))
 
 /obj/structure/machinery/bot/medbot/process()

@@ -414,7 +414,7 @@
 	if(!I || !user)
 		return
 
-	if(istype(I, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		if(c_mode==0)
 			c_mode=1
 			playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)

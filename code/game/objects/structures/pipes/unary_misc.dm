@@ -18,7 +18,7 @@
 		icon_state = "freezer_0"
 
 /obj/structure/pipes/unary/freezer/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
 		return
@@ -66,7 +66,7 @@
 
 //dismantling code. copied from autolathe
 /obj/structure/pipes/unary/heater/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(istype(O, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		opened = !opened
 		to_chat(user, "You [opened ? "open" : "close"] the maintenance hatch of [src].")
 		return

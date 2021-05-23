@@ -142,7 +142,7 @@ obj/structure/bed/Destroy()
 
 
 /obj/structure/bed/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/tool/wrench))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(buildstacktype)
 			playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 			new buildstacktype(loc, buildstackamount)

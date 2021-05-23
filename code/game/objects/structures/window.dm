@@ -246,7 +246,7 @@
 
 	if(W.flags_item & NOBLUDGEON) return
 
-	if(istype(W, /obj/item/tool/screwdriver) && !not_deconstructable)
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && !not_deconstructable)
 		if(reinf && state >= 1)
 			state = 3 - state
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -264,7 +264,7 @@
 		else if(static_frame && state == 0)
 			SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_WINDOW, src)
 			disassemble_window()
-	else if(istype(W, /obj/item/tool/crowbar) && reinf && state <= 1 && !not_deconstructable)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && reinf && state <= 1 && !not_deconstructable)
 		state = 1 - state
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		to_chat(user, (state ? SPAN_NOTICE("You have pried the window into the frame.") : SPAN_NOTICE("You have pried the window out of the frame.")))

@@ -43,7 +43,7 @@
 	. = ..()
 
 /obj/structure/pipes/attackby(var/obj/item/W, var/mob/user)
-	if(!iswrench(W))
+	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return ..()
 
 	var/turf/T = src.loc

@@ -136,7 +136,7 @@
 		qdel(src)
 		update_icon(user)
 
-	else if(istype(I, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(I, TRAIT_TOOL_WIRECUTTERS))
 		var/obj/item/weapon/melee/baton/cattleprod/P = new /obj/item/weapon/melee/baton/cattleprod
 
 		user.put_in_hands(P)

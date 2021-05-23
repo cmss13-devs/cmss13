@@ -47,7 +47,7 @@
 /obj/effect/spresent/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 
-	if (!istype(W, /obj/item/tool/wirecutters))
+	if (!HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(user, SPAN_NOTICE(" I need wirecutters for that."))
 		return
 
@@ -127,7 +127,9 @@
 	if (!( locate(/obj/structure/surface/table, src.loc) ))
 		to_chat(user, SPAN_NOTICE(" You MUST put the paper on a table!"))
 	if (W.w_class < 4)
-		if ((istype(user.l_hand, /obj/item/tool/wirecutters) || istype(user.r_hand, /obj/item/tool/wirecutters)))
+		var/obj/item/left_item = user.l_hand
+		var/obj/item/right_item = user.r_hand
+		if ( (left_item && HAS_TRAIT(left_item, TRAIT_TOOL_WIRECUTTERS)) || (right_item && HAS_TRAIT(right_item, TRAIT_TOOL_WIRECUTTERS)) )
 			var/a_used = 2 ** (src.w_class - 1)
 			if (src.amount < a_used)
 				to_chat(user, SPAN_NOTICE(" You need more paper!"))

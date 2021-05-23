@@ -105,7 +105,7 @@
 			src.name = "body bag"
 	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
 		return
-	else if(istype(W, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
 		src.name = "body bag"
 		src.overlays.Cut()

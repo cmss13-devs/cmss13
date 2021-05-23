@@ -35,7 +35,7 @@
 
 
 /obj/structure/machinery/juicer/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(iswrench(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 	if (istype(O,/obj/item/reagent_container/glass) || \
 		istype(O,/obj/item/reagent_container/food/drinks/drinkingglass))

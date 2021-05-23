@@ -12,7 +12,7 @@
 /obj/structure/AIcore/attackby(obj/item/P as obj, mob/user as mob)
 	switch(state)
 		if(0)
-			if(istype(P, /obj/item/tool/wrench))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You wrench the frame into place."))
@@ -30,7 +30,7 @@
 					new /obj/item/stack/sheet/plasteel( loc, 4)
 					qdel(src)
 		if(1)
-			if(istype(P, /obj/item/tool/wrench))
+			if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 					to_chat(user, SPAN_NOTICE(" You unfasten the frame."))
@@ -43,7 +43,7 @@
 					icon_state = "1"
 					circuit = P
 					P.forceMove(src)
-			if(istype(P, /obj/item/tool/screwdriver) && circuit)
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && circuit)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You screw the circuit board into place."))
 				state = 2
@@ -56,7 +56,7 @@
 				circuit.forceMove(loc)
 				circuit = null
 		if(2)
-			if(istype(P, /obj/item/tool/screwdriver) && circuit)
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER) && circuit)
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You unfasten the circuit board."))
 				state = 1
@@ -75,7 +75,7 @@
 						to_chat(user, SPAN_NOTICE("You add cables to the frame."))
 				return
 		if(3)
-			if(istype(P, /obj/item/tool/wirecutters))
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				if (brain)
 					to_chat(user, "Get that brain out of there first")
 				else
@@ -137,7 +137,7 @@
 				new /obj/item/stack/sheet/glass/reinforced( loc, 2 )
 				return
 
-			if(istype(P, /obj/item/tool/screwdriver))
+			if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You connect the monitor."))
 				var/mob/living/silicon/ai/A = new /mob/living/silicon/ai (loc, brain)

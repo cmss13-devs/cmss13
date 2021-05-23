@@ -71,7 +71,7 @@
 	icon_state = "wm_[state][panel]"
 
 /obj/structure/machinery/washing_machine/attackby(obj/item/W as obj, mob/user as mob)
-	/*if(istype(W,/obj/item/tool/screwdriver))
+	/*if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		panel = !panel
 		to_chat(user, SPAN_NOTICE(" you [panel ? "))open" : "close"] the [src]'s maintenance panel"*/
 	if(istype(W,/obj/item/toy/crayon) ||istype(W,/obj/item/tool/stamp))

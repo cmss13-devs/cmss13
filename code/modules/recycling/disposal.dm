@@ -52,7 +52,7 @@
 
 	add_fingerprint(user)
 	if(mode <= 0) //It's off
-		if(istype(I, /obj/item/tool/screwdriver))
+		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 			if(contents.len > 0)
 				to_chat(user, SPAN_WARNING("Eject the contents first!"))
 				return
@@ -1361,7 +1361,7 @@
 	if(!I || !user)
 		return
 	add_fingerprint(user)
-	if(istype(I, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		if(mode == 0)
 			mode = 1
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)

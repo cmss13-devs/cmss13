@@ -124,7 +124,7 @@
 		return
 
 	//Securing/Unsecuring
-	if(iswrench(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(immobile)
 			to_chat(user, SPAN_WARNING("[src] is completely welded in place. You can't move it without damaging it."))
 			return
@@ -133,7 +133,7 @@
 		return
 
 	// Rotation
-	if(isscrewdriver(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		if(immobile)
 			to_chat(user, SPAN_WARNING("[src] is completely welded in place. You can't move it without damaging it."))
 			return

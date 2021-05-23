@@ -94,7 +94,7 @@
 	if(T.intact_tile)
 		return
 
-	if(istype(W, /obj/item/tool/wirecutters))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 
 ///// Z-Level Stuff
 		if(src.d1 == 12 || src.d2 == 12)

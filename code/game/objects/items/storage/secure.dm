@@ -33,13 +33,13 @@
 
 /obj/item/storage/secure/attackby(obj/item/W as obj, mob/user as mob)
 	if(locked)
-		if (istype(W, /obj/item/tool/screwdriver))
+		if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 			if (do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				open =! open
 				var/msg_open_status = "[open ? "open" : "close"]"
 				user.show_message(SPAN_NOTICE("You [msg_open_status	] the service panel."))
 			return
-		if ((istype(W, /obj/item/device/multitool)) && (open == 1)&& (!l_hacking))
+		if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) && open == 1 && !l_hacking)
 			user.show_message(text(SPAN_DANGER("Now attempting to reset internal memory, please hold.")), 1)
 			l_hacking = 1
 			if (do_after(usr, 100, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

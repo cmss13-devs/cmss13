@@ -75,7 +75,7 @@
 		updateUsrDialog()
 		return
 /*
-	if(istype(I, /obj/item/tool/wrench))
+	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		if(anchored)
 			to_chat(user, SPAN_NOTICE("You lean down and unwrench [src]."))
 			anchored = 0

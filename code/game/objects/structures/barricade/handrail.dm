@@ -74,7 +74,7 @@
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Non-reinforced. Wrench to unsecure. Screwdriver to disassemble into metal. 1 metal to reinforce.
-			if(iswrench(W)) // Make unsecure
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH)) // Make unsecure
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -106,7 +106,7 @@
 				return
 
 		if(BARRICADE_BSTATE_UNSECURED) 
-			if(iswrench(W)) // Secure again
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH)) // Secure again
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -120,7 +120,7 @@
 				build_state = BARRICADE_BSTATE_SECURED
 				update_icon()
 				return
-			if(isscrewdriver(W)) // Disassemble into metal
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER)) // Disassemble into metal
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -138,7 +138,7 @@
 			
 		if(BARRICADE_BSTATE_FORTIFIED) 
 			if(reinforced)
-				if(iscrowbar(W)) // Un-reinforce
+				if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR)) // Un-reinforce
 					if(user.action_busy)
 						return
 					if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))

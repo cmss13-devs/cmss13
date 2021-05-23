@@ -260,7 +260,7 @@ IN_USE						used for vending/denying
 	if(stat & TIPPED_OVER)
 		to_chat(user, SPAN_WARNING("You need to set [src] back upright first."))
 		return
-	if(isscrewdriver(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
@@ -287,7 +287,7 @@ IN_USE						used for vending/denying
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
-	else if(iswirecutter(W))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
@@ -348,7 +348,7 @@ IN_USE						used for vending/denying
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
-	else if(ismultitool(W))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		var/obj/item/device/multitool/MT = W
 
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI) && !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))

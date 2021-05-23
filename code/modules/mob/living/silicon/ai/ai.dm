@@ -568,7 +568,7 @@ var/list/ai_verbs_default = list(
 
 
 /mob/living/silicon/ai/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/wrench))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(anchored)
 			user.visible_message(SPAN_NOTICE("\The [user] starts to unbolt \the [src] from the plating..."))
 			if(!do_after(user, 40, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

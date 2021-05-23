@@ -175,7 +175,7 @@
 		to_chat(user, SPAN_WARNING("You're already peforming an action!"))
 		return
 
-	/*if (istype(W,/obj/item/tool/wrench))
+	/*if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		user.visible_message("[user] wrenches [src]'s faucet [modded ? "closed" : "open"].", \
 			"You wrench [src]'s faucet [modded ? "closed" : "open"]")
 		modded = modded ? 0 : 1
@@ -232,7 +232,7 @@
 		reinforced = TRUE
 		update_icon()
 
-	else if(istype(W, /obj/item/tool/crowbar))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 
 		user.visible_message(SPAN_DANGER("[user] begins to remove the shielding from [src]."),\
 		SPAN_NOTICE("You begin to remove the shielding from [src]."))

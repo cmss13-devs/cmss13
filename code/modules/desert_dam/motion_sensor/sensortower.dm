@@ -126,7 +126,7 @@
 			else
 				to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 				return
-	else if(iswirecutter(O))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		if(buildstate == 2 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))
@@ -143,7 +143,7 @@
 				SPAN_NOTICE("You secure [src]'s wiring."))
 				update_icon()
 				return TRUE
-	else if(iswrench(O))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(buildstate == 3 && !is_on)
 			if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 				to_chat(user, SPAN_WARNING("You have no clue how to repair this thing."))

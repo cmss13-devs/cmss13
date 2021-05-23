@@ -27,7 +27,7 @@
 
 		if(0)
 			// State 0
-			if(iswrench(W) && isturf(src.loc))
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && isturf(src.loc))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				to_chat(user, "You wrench the assembly into place.")
 				anchored = 1
@@ -45,7 +45,7 @@
 					state = 2
 				return
 
-			else if(iswrench(W))
+			else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				to_chat(user, "You unattach the assembly from it's place.")
 				anchored = 0
@@ -75,7 +75,7 @@
 
 		if(3)
 			// State 3
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 
 				var/input = strip_html(input(usr, "Which networks would you like to connect this camera to? Seperate networks with a comma. No Spaces!\nFor example: military, Security,Secret ", "Set Network", "military"))
@@ -116,7 +116,7 @@
 							break
 				return
 
-			else if(iswirecutter(W))
+			else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 
 				new/obj/item/stack/cable_coil(get_turf(src), 2)
 				playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
@@ -133,7 +133,7 @@
 		return
 
 	// Taking out upgrades
-	else if(iscrowbar(W) && upgrades.len)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && upgrades.len)
 		var/obj/U = locate(/obj) in upgrades
 		if(U)
 			to_chat(user, "You unattach an upgrade from the assembly.")

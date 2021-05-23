@@ -66,7 +66,7 @@
 
 	switch(build_state)
 		if(BARRICADE_BSTATE_SECURED) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
 					return
@@ -122,7 +122,7 @@
 				update_icon()
 				return
 
-			if(ismultitool(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 					to_chat(user, SPAN_WARNING("You are not trained to touch [src]..."))
 					return
@@ -141,7 +141,7 @@
 				return
 
 		if(BARRICADE_BSTATE_UNSECURED) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -153,7 +153,7 @@
 				SPAN_NOTICE("You set [src]'s protection panel back."))
 				build_state = BARRICADE_BSTATE_SECURED
 				return
-			if(iswrench(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -168,7 +168,7 @@
 				update_icon() //unanchored changes layer
 				return
 		if(BARRICADE_BSTATE_MOVABLE) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to resecure anchor bolts
-			if(iswrench(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
@@ -186,7 +186,7 @@
 				anchored = TRUE
 				update_icon() //unanchored changes layer
 				return
-			if(iscrowbar(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				if(user.action_busy)
 					return
 				if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))

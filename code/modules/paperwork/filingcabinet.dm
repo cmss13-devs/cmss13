@@ -43,7 +43,7 @@
 
 
 /obj/structure/filingcabinet/attackby(obj/item/P as obj, mob/user as mob)
-	if(iswrench(P))
+	if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 		..()
 	else
 		for(var/allowed_type in allowed_types)

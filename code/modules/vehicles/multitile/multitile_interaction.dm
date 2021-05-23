@@ -14,12 +14,12 @@
 			return
 
 	// Are we trying to remove stuff?
-	if(iscrowbar(O) || ispowerclamp(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR) || ispowerclamp(O))
 		uninstall_hardpoint(O, user)
 		return
 
 	// Are we trying to repair the frame?
-	if(iswelder(O) || iswrench(O))
+	if(iswelder(O) || HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		handle_repairs(O, user)
 		return
 
@@ -44,7 +44,7 @@
 		return
 
 	// Are we trying to remove a vehicle clamp?
-	if(isscrewdriver(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER))
 		if(!clamped)
 			return
 
@@ -148,7 +148,7 @@
 		health = min(max_hp * 0.75, health + max_hp * 0.25)
 	// For health >= 75% tighten some fuckin' bolts or some shit i don't know i'm not a mechanic
 	else
-		if(!iswrench(O))
+		if(!HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 			to_chat(user, SPAN_NOTICE("The frame is structurally sound, but there are a lot of loose nuts and bolts. Try using a wrench."))
 			return
 

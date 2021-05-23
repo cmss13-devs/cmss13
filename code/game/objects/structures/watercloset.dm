@@ -163,7 +163,7 @@
 /obj/structure/machinery/shower/attackby(obj/item/I as obj, mob/user as mob)
 	if(I.type == /obj/item/device/analyzer)
 		to_chat(user, SPAN_NOTICE("The water temperature seems to be [watertemp]."))
-	if(istype(I, /obj/item/tool/wrench))
+	if(HAS_TRAIT(I, TRAIT_TOOL_WRENCH))
 		to_chat(user, SPAN_NOTICE("You begin to adjust the temperature valve with \the [I]."))
 		if(do_after(user, 50, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			switch(watertemp)

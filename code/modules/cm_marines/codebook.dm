@@ -21,6 +21,6 @@
 
 
 /obj/item/book/codebook/attackby(obj/item/W, mob/living/user)
-	if(istype(W, /obj/item/tool/kitchen/knife) || istype(W, /obj/item/tool/wirecutters))
+	if(istype(W, /obj/item/tool/kitchen/knife) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		return
 	..()

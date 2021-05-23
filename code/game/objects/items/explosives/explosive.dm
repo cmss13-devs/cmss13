@@ -103,7 +103,7 @@
 		assembly_stage = ASSEMBLY_UNLOCKED
 		desc = initial(desc) + "\n Contains [containers.len] containers[detonator?" and detonator":""]"
 		update_icon()
-	else if(istype(W,/obj/item/tool/screwdriver))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(assembly_stage == ASSEMBLY_UNLOCKED)
 			if(containers.len)
 				to_chat(user, SPAN_NOTICE("You lock the assembly."))

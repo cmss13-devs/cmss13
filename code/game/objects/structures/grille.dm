@@ -117,12 +117,12 @@
 	return 1
 
 /obj/structure/grille/attackby(obj/item/W as obj, mob/user as mob)
-	if(iswirecutter(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(!shock(user, 100))
 			playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 			handle_debris()
 			qdel(src)
-	else if(isscrewdriver(W) && istype(loc, /turf/open))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && istype(loc, /turf/open))
 		if(!shock(user, 90))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 			anchored = !anchored

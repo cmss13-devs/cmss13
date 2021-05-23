@@ -57,7 +57,7 @@
 	healthcheck()
 
 /obj/structure/machinery/bot/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!locked)
 			open = !open
 			to_chat(user, SPAN_NOTICE("Maintenance panel is now [src.open ? "opened" : "closed"]."))

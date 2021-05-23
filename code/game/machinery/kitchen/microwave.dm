@@ -59,11 +59,11 @@
 //********************/
 
 /obj/structure/machinery/microwave/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(iswrench(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		. = ..()
 		return
 	if(broken > 0)
-		if(broken == 2 && istype(O, /obj/item/tool/screwdriver)) // If it's broken and they're using a screwdriver
+		if(broken == 2 && HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
 				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
 				SPAN_NOTICE("You start to fix part of the microwave.") \
@@ -74,7 +74,7 @@
 					SPAN_NOTICE("You have fixed part of the microwave.") \
 				)
 				src.broken = 1 // Fix it a bit
-		else if(src.broken == 1 && istype(O, /obj/item/tool/wrench)) // If it's broken and they're doing the wrench
+		else if(src.broken == 1 && HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) // If it's broken and they're doing the wrench
 			user.visible_message( \
 				SPAN_NOTICE("[user] starts to fix part of the microwave."), \
 				SPAN_NOTICE("You start to fix part of the microwave.") \

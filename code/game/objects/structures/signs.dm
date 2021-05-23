@@ -10,7 +10,7 @@
 	return
 
 /obj/structure/sign/attackby(obj/item/tool as obj, mob/user as mob)	//deconstruction
-	if(istype(tool, /obj/item/tool/screwdriver) && !istype(src, /obj/structure/sign/double))
+	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && !istype(src, /obj/structure/sign/double))
 		to_chat(user, "You unfasten the sign with your [tool].")
 		var/obj/item/sign/S = new(src.loc)
 		S.name = name
@@ -30,7 +30,7 @@
 	var/sign_state = ""
 
 /obj/item/sign/attackby(obj/item/tool as obj, mob/user as mob)	//construction
-	if(istype(tool, /obj/item/tool/screwdriver) && isturf(user.loc))
+	if(HAS_TRAIT(tool, TRAIT_TOOL_SCREWDRIVER) && isturf(user.loc))
 		var/direction = tgui_input_list(usr, "In which direction?", "Select direction.", list("North", "East", "South", "West", "Cancel"))
 		if(direction == "Cancel") return
 		var/obj/structure/sign/S = new(user.loc)

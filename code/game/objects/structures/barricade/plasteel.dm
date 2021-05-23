@@ -90,7 +90,7 @@
 
 	switch(build_state)
 		if(2) //Fully constructed step. Use screwdriver to remove the protection panels to reveal the bolts
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -108,7 +108,7 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_UNSECURED
 				return
-			if(iscrowbar(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 					to_chat(user, SPAN_WARNING("You are not trained to modify [src]..."))
 					return
@@ -125,7 +125,7 @@
 						cade.update_icon()
 				update_icon()
 		if(1) //Protection panel removed step. Screwdriver to put the panel back, wrench to unsecure the anchor bolts
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -138,7 +138,7 @@
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				build_state = BARRICADE_BSTATE_SECURED
 				return
-			if(iswrench(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -155,7 +155,7 @@
 				return
 
 		if(0) //Anchor bolts loosened step. Apply crowbar to unseat the panel and take apart the whole thing. Apply wrench to rescure anchor bolts
-			if(iswrench(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10
@@ -170,7 +170,7 @@
 				build_state = BARRICADE_BSTATE_UNSECURED
 				update_icon() //unanchored changes layer
 				return
-			if(iscrowbar(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				if(busy || tool_cooldown > world.time)
 					return
 				tool_cooldown = world.time + 10

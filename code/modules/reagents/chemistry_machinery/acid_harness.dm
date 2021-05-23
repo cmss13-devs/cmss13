@@ -60,7 +60,7 @@
 		acid_core.user = loc.loc
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/attackby(obj/item/B, mob/living/user)
-	if(ismultitool(B))
+	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		ui_interact(user)
 		return
 	. = ..()

@@ -108,7 +108,7 @@
 				return 1
 
 /obj/item/clothing/gloves/boxing/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/tool/wirecutters) || istype(W, /obj/item/tool/surgery/scalpel))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || istype(W, /obj/item/tool/surgery/scalpel))
 		to_chat(user, SPAN_NOTICE("It would be a great dishonor to cut open these fine boxing gloves."))	//Nope
 		return
 	..()

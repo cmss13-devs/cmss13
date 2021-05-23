@@ -328,7 +328,7 @@
 		to_chat(user, "<b>!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!</b>")
 
 /obj/structure/largecrate/machine/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar) && dir_needed)
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && dir_needed)
 		var/turf/next_turf = get_step(src, dir_needed)
 		if(next_turf.density)
 			to_chat(user, SPAN_WARNING("You can't open the crate here, there's not enough room!"))
@@ -345,7 +345,7 @@
 	dir_needed = 0
 
 /obj/structure/largecrate/machine/recycler/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/turf/T = get_turf(loc)
 		if(istype(T, /turf/open))
 			new /obj/structure/machinery/wo_recycler (T)
@@ -356,7 +356,7 @@
 	desc = "A crate containing one autodoc."
 
 /obj/structure/largecrate/machine/autodoc/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/turf/T = get_turf(loc)
 		if(istype(T, /turf/open))
 			var/obj/structure/machinery/autodoc/event/E = new (T)
@@ -371,7 +371,7 @@
 	desc = "A crate containing one medical bodyscanner."
 
 /obj/structure/largecrate/supply/machine/bodyscanner/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/turf/T = get_turf(loc)
 		if(istype(T, /turf/open))
 			var/obj/structure/machinery/bodyscanner/E = new (T)
@@ -385,7 +385,7 @@
 	desc = "A crate containing one medical sleeper."
 
 /obj/structure/largecrate/machine/sleeper/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/turf/T = get_turf(loc)
 		if(istype(T, /turf/open))
 			var/obj/structure/machinery/sleeper/E = new (T)

@@ -216,7 +216,7 @@
 				update_icon()
 		return
 
-	if(istype(W, /obj/item/tool/wirecutters))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(is_wired)
 			user.visible_message(SPAN_NOTICE("[user] begin removing the barbed wire on [src]."),
 			SPAN_NOTICE("You begin removing the barbed wire on [src]."))

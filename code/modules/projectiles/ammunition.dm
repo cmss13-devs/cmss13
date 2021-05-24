@@ -1025,6 +1025,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			update_icon()
 
 		else if(AM.flags_magazine & AMMUNITION_HANDFUL)
+			if(default_ammo != AM.default_ammo)
+				to_chat(user, SPAN_WARNING("Those aren't the same rounds. Better not mix them up."))
+				return
 			if(caliber != AM.caliber)
 				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
 				return

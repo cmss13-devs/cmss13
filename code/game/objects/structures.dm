@@ -137,6 +137,10 @@
 			TT = get_turf(src)
 
 	var/climb_string = final_climb_delay < 1 SECONDS ? "[user] vaults over \the [src]!" : "[user] climbs onto \the [src]!"
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(skillcheck(H, SKILL_ENDURANCE, SKILL_ENDURANCE_MASTER))
+			climb_string = "[user] tactically vaults over \the [src]!"
 	user.visible_message(SPAN_WARNING(climb_string))
 
 	user.forceMove(TT)

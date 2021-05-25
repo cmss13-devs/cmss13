@@ -75,12 +75,14 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"
-	desc = "Dress Jacket worn by Commanding Officer's of the USCM."
+	desc = "Dress Jacket worn by Commanding Officers of the USCM."
 	icon_state = "co_jacket"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
 	name = "commanding officer bomber jacket"
-	desc = "A Bomber Jacket resembling those worn by Pilots of old. A classic, Stylish choice for those in the higher ranks."
+	desc = "A bomber jacket resembling those worn by airmen of old. A classic, stylish choice for those in the higher ranks."
 	icon_state = "co_bomber"
 
 /obj/item/clothing/suit/storage/jacket/marine/admiral
@@ -108,6 +110,7 @@
 	desc = "The crisp coat of a Provost Officer."
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	icon_state = "provost_coat"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
 /obj/item/clothing/suit/storage/jacket/marine/provost/advisor
 	name = "\improper Provost Advisor Jacket"

@@ -50,6 +50,7 @@
 			/obj/item/weapon/melee/twohanded/yautja)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), elder_restricted = 0)
 	. = ..()

@@ -11,7 +11,7 @@
 	set category = "IC"
 
 	if(usr.talked == 2)
-		to_chat(usr, SPAN_DANGER("Your spam has been consumed for it's nutritional value."))
+		to_chat(usr, SPAN_DANGER("Your spam has been consumed for its nutritional value."))
 		return
 	if((usr.talked == 1) && (usr.chatWarn >= 5))
 		usr.talked = 2

@@ -33,7 +33,7 @@
 
 		if(istype(loc,/obj/item/clothing/under))
 			var/obj/item/clothing/under/C = loc
-			if(on_rolled["down"] && C.rolled_sleeves)
+			if(on_rolled["down"] && (C.rolled_sleeves || C.item_state_slots[WEAR_BODY] == "[C.worn_state]_df") && !findtext(C.icon_state, "s_marine")) //_df == sleeves cut off. findtext is because marine snow uniforms roll their collar instead of sleeves. s_marine... states also exist for tanker uniforms but those do not have rollable/cuttable sleeves.
 				tmp_icon_state = on_rolled["down"]
 
 		var/use_sprite_sheet = accessory_icons[slot]
@@ -57,7 +57,7 @@
 			if(!user.drop_held_item())
 				return
 			attach_accessory(user, A)
-			return
+			return TRUE //For some suit/storage items which both allow attaching accessories and also have their own internal storage.
 		else
 			to_chat(user, SPAN_WARNING("You cannot attach more accessories of this type to [src]."))
 		return
@@ -72,9 +72,12 @@
 /obj/item/clothing/attack_hand(var/mob/user, mods)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(LAZYLEN(accessories) && src.loc == user)
+		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armour vests with medals, but can't hurt in general.
 		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attack_hand(user, mods)
-		return
+			if(A.attack_hand(user, mods))
+				delegated = TRUE
+		if(delegated)
+			return
 	return ..()
 
 
@@ -97,12 +100,12 @@
  *  user is the user doing the attaching. Can be null, such as when attaching
  *  items on spawn
  */
-/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A)
+/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A, var/silent)
 	if(!A.can_attach_to(user, src))
 		return
 
 	LAZYADD(accessories, A)
-	A.on_attached(src, user)
+	A.on_attached(src, user, silent)
 	if(A.removable)
 		verbs += /obj/item/clothing/proc/removetie_verb
 	update_clothing_icon()

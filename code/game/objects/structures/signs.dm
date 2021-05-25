@@ -229,6 +229,11 @@
 	desc = "Semiotic Standard denoting the nearby presence of an elevator."
 	icon_state = "elevator"
 
+/obj/structure/sign/safety/escapepod
+	name = "escape pod semiotic"
+	desc = "Semiotic Standard denoting an escape pod."
+	icon_state = "escapepod"
+
 /obj/structure/sign/safety/exhaust
 	name = "exhaust semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an engine or generator exhaust."
@@ -434,6 +439,11 @@
 	desc = "Semiotic Standard denoting the nearby presence of something to the South."
 	icon_state = "south"
 
+/obj/structure/sign/safety/stairs
+	name = "stairs semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of a staircase."
+	icon_state = "stairs"
+
 /obj/structure/sign/safety/storage
 	name = "storage semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of a general dry storage room."
@@ -464,15 +474,70 @@
 	desc = "Semiotic Standard denoting the nearby presence of a twilight zone terminator. It's way less cool than it sounds."
 	icon_state = "twilightzoneterminator"
 
-/obj/structure/sign/safety/west
-	name = "\improper West semiotic"
-	desc = "Semiotic Standard denoting the nearby presence of something to the West."
-	icon_state = "west"
+/obj/structure/sign/safety/water
+	name = "water semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of water."
+	icon_state = "water"
+
+/obj/structure/sign/safety/waterhazard
+	name = "water hazard semiotic"
+	desc = "Semiotic Standard denoting a water hazard. Keep electronics away."
+	icon_state = "water"
 
 /obj/structure/sign/safety/zero_g
 	name = "artificial gravity absent semiotic"
 	desc = "Semiotic Standard denoting the nearby lack of artificial gravity."
 	icon_state = "zerog"
+
+/obj/structure/sign/safety/zero
+	name = "zero semiotic"
+	desc = "A number. This one is 0."
+	icon_state = "0"
+
+/obj/structure/sign/safety/one
+	name = "one semiotic"
+	desc = "A number. This one is 1."
+	icon_state = "1"
+
+/obj/structure/sign/safety/two
+	name = "two semiotic"
+	desc = "A number. This one is 2."
+	icon_state = "2"
+
+/obj/structure/sign/safety/three
+	name = "three semiotic"
+	desc = "A number. This one is 3."
+	icon_state = "3"
+
+/obj/structure/sign/safety/four
+	name = "four semiotic"
+	desc = "A number. This one is 4."
+	icon_state = "4"
+
+/obj/structure/sign/safety/five
+	name = "five semiotic"
+	desc = "A number. This one is 5."
+	icon_state = "5"
+
+/obj/structure/sign/safety/six
+	name = "six semiotic"
+	desc = "A number. This one is 6."
+	icon_state = "6"
+
+/obj/structure/sign/safety/seven
+	name = "seven semiotic"
+	desc = "A number. This one is 7."
+	icon_state = "7"
+
+/obj/structure/sign/safety/eight
+	name = "eight semiotic"
+	desc = "A number. This one is 8."
+	icon_state = "8"
+
+/obj/structure/sign/safety/nine
+	name = "nine semiotic"
+	desc = "A number. This one is 9."
+	icon_state = "9"
 
 //////////////////
 ///Marine signs///

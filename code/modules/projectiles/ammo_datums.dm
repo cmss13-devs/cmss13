@@ -793,6 +793,7 @@
 	name = "rifle bullet"
 
 	damage = BULLET_DAMAGE_TIER_8
+	penetration = ARMOR_PENETRATION_TIER_1
 	accurate_range = 16
 	accuracy = HIT_ACCURACY_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_10

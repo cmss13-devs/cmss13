@@ -297,16 +297,18 @@
 	minimum_age = 40
 	skills = /datum/skills/commander
 
-	utility_hat = list(/obj/item/clothing/head/beret/cm)
-	utility_extra = list(/obj/item/clothing/head/cmcap)
+	utility_under = /obj/item/clothing/under/marine
+	utility_hat = list(/obj/item/clothing/head/cmcap)
+	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
 
-	service_hat = list(/obj/item/clothing/head/beret/cm)
+	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	service_extra = list(/obj/item/clothing/under/marine/officer/casual, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black)
 
-	dress_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black, /obj/item/clothing/under/marine/officer/dining)
+	dress_under = list(/obj/item/clothing/under/marine/officer/dining,/obj/item/clothing/under/marine/dress)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal/white, /obj/item/clothing/head/cmcap/co/formal/black)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal/white, /obj/item/clothing/head/cmcap/co/formal/black)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer)
 
@@ -350,6 +352,10 @@
 /datum/equipment_preset/uscm_ship/commander/commodore/plus
 	name = "USCM Commodore (CO++)"
 	idtype = /obj/item/card/id/admiral
+
+/datum/equipment_preset/uscm_ship/commander/commodore/plus/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdrechief(H), WEAR_HEAD)
+	. = ..()
 
 //*****************************************************************************************************/
 

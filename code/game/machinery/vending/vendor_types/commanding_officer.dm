@@ -6,35 +6,57 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("FN FP9000", 0, /obj/item/weapon/gun/smg/fp9000, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 		list("M16 rifle", 0, /obj/item/weapon/gun/rifle/m16, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 
+		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
+		list("Mateba Autorevolver", 0, /obj/effect/essentials_set/cmateba, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("Desert Eagle", 0, /obj/item/storage/belt/gun/m4a3/heavy/co, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
+		list("M4A3 Custom Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+
 		list("PRIMARY AMMUNITION", 0, null, null, null),
-		list("M41aMK1 Magazine", 40, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_RECOMMENDED),
+		list("M41A MK1 Magazine", 40, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_RECOMMENDED),
 		list("M41A Extended Magazine", 30, /obj/item/ammo_magazine/rifle/extended, null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine", 20, /obj/item/ammo_magazine/rifle/ap, null, VENDOR_ITEM_REGULAR),
 		list("FN FP9000 Magazine", 20, /obj/item/ammo_magazine/smg/fp9000, null, VENDOR_ITEM_REGULAR),
-		list("M16 Magazine", 20, /obj/item/ammo_magazine/rifle/m16, null, VENDOR_ITEM_REGULAR),
+		list("M16 Magazine", 15, /obj/item/ammo_magazine/rifle/m16, null, VENDOR_ITEM_REGULAR),
 		list("M16 AP Magazine", 20, /obj/item/ammo_magazine/rifle/m16/ap, null, VENDOR_ITEM_REGULAR),
+
+		list("SIDEARM AMMUNITION", 0, null, null, null),
+		list("High Impact Mateba Speedloader (.454)", 20, /obj/item/ammo_magazine/revolver/mateba/highimpact, null, VENDOR_ITEM_REGULAR),
+		list("Mateba Speedloader (.454)", 10, /obj/item/ammo_magazine/revolver/mateba, null, VENDOR_ITEM_REGULAR),
+		list("High Impact Desert Eagle Magazine (.50)", 20, /obj/item/ammo_magazine/pistol/heavy/highimpact, null, VENDOR_ITEM_REGULAR),
+		list("Desert Eagle Magazine (.50)", 10, /obj/item/ammo_magazine/pistol/heavy, null, VENDOR_ITEM_REGULAR),
+		list("M4A3 Magazine (9mm)", 10, /obj/item/ammo_magazine/pistol, null, VENDOR_ITEM_REGULAR),
+		list("VP78 Magazine (9mm)", 10, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 
 		list("SHOTGUN AMMUNITION", 0, null, null, null),
 		list("Buckshot Shells", 20, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
 		list("Shotgun Slugs", 20, /obj/item/ammo_magazine/shotgun/slugs, null, VENDOR_ITEM_REGULAR),
-		list("Flechette Shells", 25, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
+		list("Flechette Shells", 20, /obj/item/ammo_magazine/shotgun/flechette, null, VENDOR_ITEM_REGULAR),
 
 		list("SPECIAL AMMUNITION", 0, null, null, null),
 		list("M41A Incendiary Magazine", 65, /obj/item/ammo_magazine/rifle/incendiary, null, VENDOR_ITEM_REGULAR),
 		list("M41A Rubber Shot Magazine", 10, /obj/item/ammo_magazine/rifle/rubber, null, VENDOR_ITEM_REGULAR),
 		list("Beanbag Slugs", 10, /obj/item/ammo_magazine/shotgun/beanbag, null, VENDOR_ITEM_REGULAR),
 
-		list("SIDEARM AMMUNITION", 0, null, null, null),
-		list("High Impact Mateba Speedloader (.454)", 20, /obj/item/ammo_magazine/revolver/mateba/highimpact, null, VENDOR_ITEM_REGULAR),
-		list("Mateba Speedloader (.454)", 10, /obj/item/ammo_magazine/revolver/mateba, null, VENDOR_ITEM_REGULAR),
-		list("High Impact Desert Eagle Magazine (.50)", 25, /obj/item/ammo_magazine/pistol/heavy/highimpact, null, VENDOR_ITEM_REGULAR),
-		list("Desert Eagle Magazine (.50)", 10, /obj/item/ammo_magazine/pistol/heavy, null, VENDOR_ITEM_REGULAR),
-		list("M1911 Magazine (.45)", 10, /obj/item/ammo_magazine/pistol/m1911, null, VENDOR_ITEM_REGULAR),
+		list("RAIL ATTACHMENTS", 0, null, null, null),
+		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
+		list("Reflex Sight", 15, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
+		list("S4 2x Telescopic Mini-Scope", 15, /obj/item/attachable/scope/mini, null, VENDOR_ITEM_REGULAR),
+		list("S8 4x Telescopic Scope", 15, /obj/item/attachable/scope, null, VENDOR_ITEM_REGULAR),
 
-		list("GUN ATTACHMENTS (CHOOSE 1)", 0, null, null, null),
-		list("Laser Sight", 0, /obj/item/attachable/lasersight, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Red-Dot Sight", 0, /obj/item/attachable/reddot, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 0, /obj/item/attachable/reflex, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_REGULAR),
+		list("UNDERBARREL ATTACHMENTS", 0, null, null, null),
+		list("Laser Sight", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
+		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
+		list("Vertical Grip", 15, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Grenade Launcher", 15, /obj/item/attachable/attached_gun/grenade, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Shotgun", 15, /obj/item/attachable/attached_gun/shotgun, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Extinguisher", 15, /obj/item/attachable/attached_gun/extinguisher, null, VENDOR_ITEM_REGULAR),
+		list("Underbarrel Flamethrower", 15, /obj/item/attachable/attached_gun/flamer, null, VENDOR_ITEM_REGULAR),
+
+		list("BARREL ATTACHMENTS", 0, null, null, null),
+		list("Suppressor", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
+		list("Extended Barrel", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
+		list("Recoil Compensator", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/structure/machinery/cm_vending/gear/commanding_officer
@@ -54,16 +76,9 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 
 GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("STANDARD EQUIPMENT (TAKE ALL)", 0, null, null, null),
-		list("Gloves", 0, /obj/item/clothing/gloves/marine/techofficer/commander, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 		list("Satchel", 0, /obj/item/storage/backpack/satchel/lockable, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_MANDATORY),
 		list("MRE", 0, /obj/item/storage/box/MRE, MARINE_CAN_BUY_MRE, VENDOR_ITEM_MANDATORY),
-
-		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
-		list("Mateba autorevolver custom", 0, /obj/effect/essentials_set/cmateba, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-		list("Desert Eagle", 0, /obj/item/storage/belt/gun/m4a3/heavy/co, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-		list("M4A3 Custom pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("COMBAT EQUIPMENT (TAKE ALL)", 0, null, null, null),
 		list("Commanding Officer's M3 Armor", 0, /obj/item/clothing/suit/storage/marine/MP/CO, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_MANDATORY),
@@ -71,31 +86,25 @@ GLOBAL_LIST_INIT(cm_vending_clothing_commanding_officer, list(
 		list("Commanding Officer's Gloves", 0, /obj/item/clothing/gloves/marine/techofficer/commander, MARINE_CAN_BUY_GLOVES, VENDOR_ITEM_MANDATORY),
 		list("Marine Combat Boots", 0, /obj/item/clothing/shoes/marine/knife, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_MANDATORY),
 
-		list("EYEWEAR (CHOOSE 1)", 0, null, null, null),
-		list("Sunglasses", 0, /obj/item/clothing/glasses/sunglasses, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
-		list("Large Shades", 0, /obj/item/clothing/glasses/sunglasses/big, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
-		list("Aviator Shades", 0, /obj/item/clothing/glasses/sunglasses/aviator, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
-		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
-		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
-
-		list("POUCHES (CHOOSE 2)", 0, null, null, null),
-		list("First-Aid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Medkit Pouch", 0, /obj/item/storage/pouch/medkit, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Sidearm Pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		
 		list("ACCESSORIES (CHOOSE 1)", 0, null, null, null),
 		list("Brown Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest/brown_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_RECOMMENDED),
 		list("Black Webbing Vest", 0, /obj/item/clothing/accessory/storage/black_vest, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", 0, /obj/item/clothing/accessory/holster, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 		list("Webbing", 0, /obj/item/clothing/accessory/storage/webbing, MARINE_CAN_BUY_ACCESSORY, VENDOR_ITEM_REGULAR),
 
-		list("MASK (CHOOSE 1)", 0, null, null, null),
-		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
-		list("Heat Absorbent Coif", 0, /obj/item/clothing/mask/rebreather/scarf, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR)
+		list("HUDS (CHOOSE 1)", 0, null, null, null),
+		list("Security HUD Glasses", 0, /obj/item/clothing/glasses/sunglasses/sechud, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+		list("Medical HUD Glasses", 0, /obj/item/clothing/glasses/hud/health, MARINE_CAN_BUY_GLASSES, VENDOR_ITEM_REGULAR),
+
+		list("POUCHES (CHOOSE 2)", 0, null, null, null),
+		list("First-Aid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Medkit Pouch", 0, /obj/item/storage/pouch/medkit, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Autoinjector Pouch", 0, /obj/item/storage/pouch/autoinjector, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Sidearm Pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Tools Pouch (Full)", 0, /obj/item/storage/pouch/tools/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 	))
 
 /obj/structure/machinery/cm_vending/clothing/commanding_officer

@@ -106,23 +106,33 @@
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic
 	name = "\improper Airlock"
 	icon = 'icons/obj/structures/doors/2x1generic.dmi'
-	opacity = 0
-	glass = 1
+	opacity = FALSE
+	glass = TRUE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor
 	name = "\improper Medical Airlock"
 	icon = 'icons/obj/structures/doors/2x1medidoor.dmi'
-	opacity = 0
-	glass = 1
+	opacity = FALSE
+	glass = TRUE
 	req_access = list()
 	req_one_access = list(ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_MEDBAY, ACCESS_MARINE_BRIDGE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/medidoor/solid
+	icon = 'icons/obj/structures/doors/2x1medidoor_solid.dmi'
+	opacity = TRUE
+	glass = FALSE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor
 	name = "\improper Command Airlock"
 	icon = 'icons/obj/structures/doors/2x1comdoor.dmi'
-	opacity = 0
-	glass = 1
+	opacity = FALSE
+	glass = TRUE
 	req_access = list(ACCESS_MARINE_BRIDGE)
+
+/obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor/solid
+	icon = 'icons/obj/structures/doors/2x1comdoor_solid.dmi'
+	opacity = TRUE
+	glass = FALSE
 
 /obj/structure/machinery/door/airlock/multi_tile/almayer/handle_multidoor()
 	if(!(width > 1)) return //Bubblewrap
@@ -197,9 +207,15 @@
 	name = "\improper Normandy cargo door"
 	icon = 'icons/obj/structures/doors/dropship2_cargo.dmi'
 
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/blastdoor
+	name = "bulkhead blast door"
+	icon = 'icons/obj/structures/doors/almayerblastdoor.dmi'
+	desc = "A heavyset bulkhead door. Built to withstand explosions, gunshots, and extreme pressure. Chances are you're not getting through this."
+
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat
-	name = "Lifeboat docking hatch"
+	name = "lifeboat docking hatch"
 	icon = 'icons/obj/structures/doors/lifeboatdoors.dmi'
+	desc = "A heavyset bulkhead for a lifeboat."
 	safe = FALSE
 	autoclose = FALSE
 	locked = TRUE

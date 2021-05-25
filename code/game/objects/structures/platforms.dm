@@ -37,6 +37,11 @@
 	if (PF)
 		PF.flags_can_pass_all = PASS_OVER
 
+/obj/structure/platform/Collided(atom/movable/AM)
+	do_climb(AM)
+
+	..()
+
 /obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)
 	var/obj/structure/S = locate(/obj/structure) in get_turf(mover)
 	if(S && S.climbable && !(S.flags_atom & ON_BORDER) && climbable && isliving(mover)) //Climbable objects allow you to universally climb over others

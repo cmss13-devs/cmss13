@@ -52457,6 +52457,7 @@
 /obj/item/storage/belt/medical/lifesaver/full,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/device/radio/marine,
+/obj/item/clothing/accessory/storage/surg_vest,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_side";

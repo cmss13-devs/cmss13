@@ -641,6 +641,21 @@
 	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
 	icon_state = "vest_brown"
 
+/obj/item/storage/internal/accessory/surg_vest
+	storage_slots = 12
+	can_hold = list(
+		/obj/item/tool/surgery,
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/stack/nanopaste
+	)
+
+/obj/item/clothing/accessory/storage/surg_vest
+	name = "surgical webbing vest"
+	desc = "Greenish synthcotton vest purpose-made for holding surgical tools."
+	icon_state = "vest_surg"
+	hold = /obj/item/storage/internal/accessory/surg_vest
+
+
 /obj/item/storage/internal/accessory/knifeharness
 	storage_slots = 2
 	max_storage_space = 4

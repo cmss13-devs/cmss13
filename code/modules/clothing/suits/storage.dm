@@ -22,8 +22,9 @@
 		..(over_object)
 
 /obj/item/clothing/suit/storage/attackby(obj/item/W, mob/user)
-	..()
-	return pockets.attackby(W, user)
+	. = ..()
+	if(!.) //To prevent bugs with accessories being moved into storage slots after being attached.
+		return pockets.attackby(W, user)
 
 /obj/item/clothing/suit/storage/emp_act(severity)
 	pockets.emp_act(severity)

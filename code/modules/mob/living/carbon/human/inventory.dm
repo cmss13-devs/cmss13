@@ -340,6 +340,7 @@
 					C.attach_accessory(src, A)
 					break
 			update_inv_w_uniform()
+			update_inv_wear_suit()
 		if(WEAR_J_STORE)
 			s_store = W
 			W.equipped(src, slot)

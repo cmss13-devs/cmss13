@@ -117,7 +117,7 @@
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>salve the wounds</b> on [possessive] <b>[affecting.display_name]</b>."),
 					SPAN_HELPFUL("[user] <b>salves the wounds</b> on your <b>[affecting.display_name]</b>."),
-					SPAN_NOTICE("[user] salves the wounds [possessive_their] [affecting.display_name]."))
+					SPAN_NOTICE("[user] salves the wounds on [possessive_their] [affecting.display_name]."))
 				use(1)
 				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 		else

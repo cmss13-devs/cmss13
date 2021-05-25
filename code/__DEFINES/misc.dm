@@ -63,7 +63,7 @@
 #define INTERRUPT_RESIST            (1<<6)  // Allows timed actions to be cancelled upon hitting resist, on by default
 #define INTERRUPT_DIFF_SELECT_ZONE  (1<<7)  // By default not in INTERRUPT_ALL (too niche)
 #define INTERRUPT_OUT_OF_RANGE      (1<<8)  // By default not in INTERRUPT_ALL, should not be used in conjunction with INTERRUPT_DIFF_TURF
-#define INTERRUPT_DIFF_INTENT       (1<<9)  // By default not in INTERRUPT_ALL (too niche)
+#define INTERRUPT_DIFF_INTENT       (1<<9)  // By default not in INTERRUPT_ALL (too niche) (Doesn't actually exist.)
 #define INTERRUPT_LCLICK            (1<<10)  // Mainly for boiler globs
 #define INTERRUPT_RCLICK            (1<<11)
 #define INTERRUPT_SHIFTCLICK        (1<<12)

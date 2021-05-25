@@ -133,11 +133,7 @@
 	if(method == TOUCH)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/victim = M
-			var/trained_human = FALSE
 			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_SKILLED))
-				trained_human = TRUE
-
-			if(trained_human)
 				victim.eye_blurry = max(M.eye_blurry, 5)
 				to_chat(victim, SPAN_WARNING("Your training protects you from the pepperspray!"))
 				return

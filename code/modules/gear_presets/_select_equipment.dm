@@ -200,7 +200,9 @@
 			medal.recipient_name = H.real_name
 			medal.recipient_rank = current_rank
 
-			if(H.w_uniform && H.w_uniform.can_attach_accessory(medal))
+			if(H.wear_suit && H.wear_suit.can_attach_accessory(medal))
+				H.wear_suit.attach_accessory(H, medal)
+			else if(H.w_uniform && H.w_uniform.can_attach_accessory(medal))
 				H.w_uniform.attach_accessory(H, medal)
 			else
 				if(!H.equip_to_slot_if_possible(medal, WEAR_IN_BACK))

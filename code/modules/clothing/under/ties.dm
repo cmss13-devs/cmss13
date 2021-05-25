@@ -30,7 +30,7 @@
 	return TRUE
 
 //when user attached an accessory to S
-/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user)
+/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	if(!istype(S))
 		return
 	has_suit = S
@@ -38,7 +38,8 @@
 	has_suit.overlays += get_inv_overlay()
 
 	if(user)
-		to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
+		if(!silent)
+			to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 		src.add_fingerprint(user)
 	return TRUE
 
@@ -61,7 +62,7 @@
 //default attack_hand behaviour
 /obj/item/clothing/accessory/attack_hand(mob/user as mob)
 	if(has_suit)
-		return	//we aren't an object on the ground so don't call parent
+		return	//we aren't an object on the ground so don't call parent. If overriding to give special functions to a host item, return TRUE so that the host doesn't continue its own attack_hand.
 	..()
 
 ///Extra text to append when attached to another clothing item and the host clothing is examined.
@@ -131,7 +132,7 @@
 	slot = ACCESSORY_SLOT_MEDAL
 	high_visibility = TRUE
 
-/obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user)
+/obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
 	if(.)
 		RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
@@ -148,39 +149,82 @@
 		UnregisterSignal(C, COMSIG_ITEM_PICKUP)
 
 /obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(istype(H) && istype(user) && user.a_intent == INTENT_HELP)
-		if(H.w_uniform)
-			var/obj/item/clothing/under/U = H.w_uniform
-			if(recipient_name != H.real_name)
-				to_chat(user, SPAN_WARNING("[src] isn't awarded to [H]."))
-				return
-			if(user != H)
-				user.visible_message("[user] starts pinning [src] on [H]'s [U.name].", \
-				SPAN_NOTICE("You start pinning [src] on [H]'s [U.name]."))
-				if(user.action_busy)
-					return
-				if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, H))
-					return
-				user.drop_held_item()
-				U.attach_accessory(user, src)
-				H.update_inv_w_uniform()
-				if(user == H)
-					user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [U.name]."),
-					SPAN_NOTICE("You pin [src] to your [U.name]."))
-				else
-					user.visible_message("[user] pins [src] on [H]'s [U.name].", \
-					SPAN_NOTICE("You pin [src] on [H]'s [U.name]."))
-		else
-			to_chat(user, SPAN_WARNING("[src] needs a uniform to be pinned to."))
-	else
+	if(!(istype(H) && istype(user)))
 		return ..()
+	if(recipient_name != H.real_name)
+		to_chat(user, SPAN_WARNING("[src] wasn't awarded to [H]."))
+		return
+
+	var/obj/item/clothing/U
+	if(H.wear_suit && H.wear_suit.can_attach_accessory(src)) //Prioritises topmost garment, IE service jackets, if possible.
+		U = H.wear_suit
+	else
+		U = H.w_uniform //Will be null if no uniform. That this allows medal ceremonies in which the hero is wearing no pants is correct and just.
+	if(!U)
+		if(user == H)
+			to_chat(user, SPAN_WARNING("You aren't wearing anything you can pin [src] to."))
+		else
+			to_chat(user, SPAN_WARNING("[H] isn't wearing anything you can pin [src] to."))
+		return
+
+	if(user == H)
+		user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [U.name]."),
+		SPAN_NOTICE("You pin [src] to your [U.name]."))
+
+	else
+		if(user.action_busy)
+			return
+		if(user.a_intent != INTENT_HARM)
+			user.affected_message(H,
+			SPAN_NOTICE("You start to pin [src] onto [H]."),
+			SPAN_NOTICE("[user] starts to pin [src] onto you."),
+			SPAN_NOTICE("[user] starts to pin [src] onto [H]."))
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, H))
+				return
+			if(!(U == H.w_uniform || U == H.wear_suit))
+				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to it."))
+				return
+			user.affected_message(H,
+			SPAN_NOTICE("You pin [src] to [H]'s [U.name]."),
+			SPAN_NOTICE("[user] pins [src] to your [U.name]."),
+			SPAN_NOTICE("[user] pins [src] to [H]'s [U.name]."))
+
+		else
+			user.affected_message(H,
+			SPAN_ALERT("You start to pin [src] to [H]."),
+			SPAN_ALERT("[user] starts to pin [src] to you."),
+			SPAN_ALERT("[user] starts to pin [src] to [H]."))
+			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H))
+				return
+			if(!(U == H.w_uniform || U == H.wear_suit))
+				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to \him."))
+				return
+			user.affected_message(H,
+			SPAN_DANGER("You slam the [src.name]'s pin through [H]'s [U.name] and into \his chest."),
+			SPAN_DANGER("[user] slams the [src.name]'s pin through your [U.name] and into your chest!"),
+			SPAN_DANGER("[user] slams the [src.name]'s pin through [H]'s [U.name] and into \his chest."))
+
+			/*Some duplication from punch code due to attack message and damage stats.
+			This does cut damage and awarding multiple medals like this to the same person will cause bleeding.*/
+			H.last_damage_data = create_cause_data("macho bullshit", user)
+			user.animation_attack_on(H)
+			user.flick_attack_overlay(H, "punch")
+			playsound(user.loc, "punch", 25, 1)
+			H.apply_damage(5, BRUTE, "chest", 1)
+
+			if(!H.stat && H.pain.feels_pain)
+				if(prob(35))
+					INVOKE_ASYNC(H, /mob.proc/emote, "pain")
+				else
+					INVOKE_ASYNC(H, /mob.proc/emote, "me", 1, "winces.")
+
+	if(U.can_attach_accessory(src) && user.drop_held_item()) 
+		U.attach_accessory(H, src, TRUE)
 
 /obj/item/clothing/accessory/medal/can_attach_to(mob/user, obj/item/clothing/C)
 	if(user.real_name != recipient_name)
 		return FALSE
-
 	return TRUE
-
 
 /obj/item/clothing/accessory/medal/examine(mob/user)
 	..()
@@ -472,7 +516,7 @@
 	if (has_suit)	//if we are part of a suit
 		if (holstered)
 			unholster(user)
-		return
+		return TRUE
 
 	..(user)
 
@@ -541,6 +585,7 @@
 /obj/item/clothing/accessory/storage/attack_hand(mob/user as mob, mods)
 	if (!isnull(hold) && hold.handle_attack_hand(user, mods))
 		..(user)
+	return TRUE
 
 /obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
 	if (has_suit || hold)
@@ -569,7 +614,7 @@
 		hold.remove_from_storage(I, T)
 	src.add_fingerprint(user)
 
-/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/C, mob/living/user)
+/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/C, mob/living/user, silent)
 	. = ..()
 	if(.)
 		C.w_class = w_class //To prevent monkey business.

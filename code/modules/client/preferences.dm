@@ -157,6 +157,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/hear_vox = TRUE
 
+	var/hide_statusbar
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
@@ -406,6 +408,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Color</b>: <a href='?_src_=prefs;preference=UIcolor'><b>[UI_style_color]</b> <table style='display:inline;' bgcolor='[UI_style_color]'><tr><td>__</td></tr></table></a><br>"
 	dat += "<b>Alpha</b>: <a href='?_src_=prefs;preference=UIalpha'><b>[UI_style_alpha]</b></a><br><br>"
 	dat += "<b>Stylesheet</b>: <a href='?_src_=prefs;preference=stylesheet'><b>[stylesheet]</b></a><br>"
+	dat += "<b>Hide Statusbar</b>: <a href='?_src_=prefs;preference=hide_statusbar'><b>[hide_statusbar ? "TRUE" : "FALSE"]</b></a><br>"
 	if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)
 		dat += "<b>View Master Controller Tab: <a href='?_src_=prefs;preference=ViewMC'><b>[View_MC ? "TRUE" : "FALSE"]</b></a>"
 	dat += "</div>"
@@ -1268,6 +1271,11 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("stylesheet")
 					var/stylesheet_new = tgui_input_list(user, "Select a stylesheet to use (affects non-NanoUI interfaces)", "Select a stylesheet", GLOB.stylesheets)
 					stylesheet = stylesheet_new
+
+				if("hide_statusbar")
+					hide_statusbar = !hide_statusbar
+					if(hide_statusbar)
+						winset(owner, "atom_name", "text=\"\"")
 
 				if("ViewMC")
 					if(user.client.admin_holder && user.client.admin_holder.rights & R_DEBUG)

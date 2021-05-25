@@ -354,6 +354,11 @@
 	desc = "A blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
 	icon_state = "cdreberet"
 
+/obj/item/clothing/head/beret/marine/commander/cdrechief
+	name = "marine commodore-in-chief beret"
+	desc = "A dark blue beret signifying the Chief of all Commodores. Rumors about the commodore-in-chief position being simply an alias for an Admiral have been declared as false."
+	icon_state = "cdrechiefberet"
+
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
 	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."

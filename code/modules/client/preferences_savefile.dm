@@ -101,6 +101,7 @@
 
 	S["lang_chat_disabled"]	>> lang_chat_disabled
 	S["hear_vox"] >> hear_vox
+	S["hide_statusbar"] >> hide_statusbar
 	S["hotkeys"] >> hotkeys
 
 	//Sanitize
@@ -118,6 +119,7 @@
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
+	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type		= sanitize_text(synthetic_type, initial(synthetic_type))
@@ -206,6 +208,8 @@
 	S["hotkeys"] << hotkeys
 
 	S["hear_vox"] << hear_vox
+
+	S["hide_statusbar"] << hide_statusbar
 
 	return TRUE
 

@@ -165,22 +165,34 @@ window "mainwindow"
 		saved-params = "pos;size;is-minimized;is-maximized"
 		title = "CM-SS13 - USS Almayer"
 		is-maximized = true
+		statusbar = false
 		icon = 'icons\\ss13_64.png'
 		macro = "default"
 		menu = "menu"
 	elem "split"
 		type = CHILD
 		pos = 3,0
-		size = 634x417
+		size = 634x400
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
 		left = "mapwindow"
 		right = "infowindow"
 		is-vert = true
+	elem "atom_name"
+		type = LABEL
+		pos = 3,420
+		size = 634x20
+		align = left
+		anchor1 = 0,100
+		anchor2 = 100,100
+		background-color = none
+		font-size = 10
+		saved-params = ""
+		text = ""
 	elem "input"
 		type = INPUT
-		pos = 3,420
+		pos = 3,401
 		size = 517x20
 		anchor1 = 0,100
 		anchor2 = 100,100
@@ -190,7 +202,7 @@ window "mainwindow"
 		saved-params = "command"
 	elem "saybutton"
 		type = BUTTON
-		pos = 600,420
+		pos = 600,400
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -200,7 +212,7 @@ window "mainwindow"
 		button-type = pushbox
 	elem "oocbutton"
 		type = BUTTON
-		pos = 560,420
+		pos = 560,400
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -210,7 +222,7 @@ window "mainwindow"
 		button-type = pushbox
 	elem "mebutton"
 		type = BUTTON
-		pos = 520,420
+		pos = 520,400
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -231,7 +243,7 @@ window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
 		pos = 0,0
-		size = 640x480
+		size = 640x400
 		anchor1 = none
 		anchor2 = none
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -239,7 +251,7 @@ window "mapwindow"
 	elem "map"
 		type = MAP
 		pos = 0,0
-		size = 640x480
+		size = 640x400
 		anchor1 = 0,0
 		anchor2 = 100,100
 		font-family = "Arial"
@@ -253,7 +265,7 @@ window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
 		pos = 281,0
-		size = 640x480
+		size = 640x400
 		anchor1 = none
 		anchor2 = none
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -266,7 +278,7 @@ window "outputwindow"
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
-		size = 640x480
+		size = 640x400
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #ffffff
@@ -277,7 +289,7 @@ window "outputwindow"
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
-		size = 640x480
+		size = 640x400
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
@@ -287,7 +299,7 @@ window "infowindow"
 	elem "infowindow"
 		type = MAIN
 		pos = 281,0
-		size = 640x480
+		size = 640x400
 		anchor1 = none
 		anchor2 = none
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -296,7 +308,7 @@ window "infowindow"
 	elem "info"
 		type = CHILD
 		pos = 0,30
-		size = 640x445
+		size = 640x370
 		anchor1 = 0,0
 		anchor2 = 100,100
 		saved-params = "splitter"
@@ -405,7 +417,7 @@ window "statwindow"
 	elem "statwindow"
 		type = MAIN
 		pos = 372,0
-		size = 640x480
+		size = 640x400
 		anchor1 = none
 		anchor2 = none
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -413,7 +425,7 @@ window "statwindow"
 	elem "statbrowser"
 		type = BROWSER
 		pos = 0,0
-		size = 640x480
+		size = 640x400
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-visible = false

@@ -13,34 +13,12 @@
 	animate(X, alpha = alpha_amount, time = 0.1 SECONDS, easing = QUAD_EASING)
 	X.update_icons() // callback to make the icon_state indicate invisibility is in lurker/update_icon
 
-	var/min_dist_found = 100000
-	for (var/i in GLOB.living_xeno_list) // O(N) search because theres no faster way
-																	  // possibly worstcase O(N^2) because sqrt could be expensive on floats (quirky byond), and ordinary sqrt is in O(N^(1/2))
-		var/mob/living/carbon/Xenomorph/targetX = i
-
-		if (targetX == X)
-			continue
-
-		var/curr_dist = get_dist_euclidian(X, targetX)
-		if (curr_dist < min_dist_found)
-			min_dist_found = curr_dist
-
-	var/nearest_xeno_speed_buff = (min_dist_found/10)*speed_buff_pct_per_ten_tiles*speed_buff_mod_max
-	nearest_xeno_speed_buff = Clamp(nearest_xeno_speed_buff, 0, speed_buff_mod_max)
-
-	if (nearest_xeno_speed_buff >= speed_buff_mod_max/2)
-		to_chat(X, SPAN_XENODANGER("You can move much faster and remain stealthy at this distance from your allies!"))
-	else
-		to_chat(X, SPAN_XENODANGER("You can move slightly faster and remain stealthy at this distance from your allies!"))
-
-	X.speed_modifier -= (speed_buff + nearest_xeno_speed_buff)
-	curr_speed_buff = (speed_buff + nearest_xeno_speed_buff)
+	X.speed_modifier -= speed_buff
 	X.recalculate_speed()
 
 	if (X.mutation_type == LURKER_NORMAL)
 		var/datum/behavior_delegate/lurker_base/BD = X.behavior_delegate
-		if (istype(BD))
-			BD.on_invisibility()
+		BD.on_invisibility()
 
 	// if we go off early, this also works fine.
 	invis_timer_id = addtimer(CALLBACK(src, .proc/invisibility_off), duration, TIMER_STOPPABLE)
@@ -65,8 +43,7 @@
 
 		X.update_icons()
 
-		X.speed_modifier += curr_speed_buff
-		curr_speed_buff = 0
+		X.speed_modifier += speed_buff
 		X.recalculate_speed()
 
 		if (X.mutation_type == LURKER_NORMAL)

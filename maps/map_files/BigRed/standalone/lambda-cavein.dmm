@@ -120,10 +120,7 @@
 /obj/structure/machinery/door_control{
 	id = "Kitchen";
 	name = "Storm Shutters";
-	pixel_x = 32;
-	pixel_y = 0;
-	unacidable = 1;
-	unslashable = 1
+	pixel_x = 32
 	},
 /turf/open/floor{
 	icon_state = "yellowfull";
@@ -141,7 +138,6 @@
 "ay" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	dir = 4;
 	name = "\improper Library"
 	},
 /turf/open/floor{
@@ -168,7 +164,7 @@
 /area/bigredv2/caves)
 "aC" = (
 /obj/effect/landmark/crap_item,
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
@@ -247,8 +243,7 @@
 /area/bigredv2/caves_lambda)
 "aO" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -314,8 +309,7 @@
 /area/bigredv2/outside/e)
 "aW" = (
 /obj/structure/barricade/wooden{
-	dir = 8;
-	icon_state = "wooden"
+	dir = 8
 	},
 /turf/open/floor{
 	dir = 1;
@@ -346,22 +340,9 @@
 	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/outside/e)
-"ba" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigredv2/outside/e)
 "bb" = (
-/obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -392,8 +373,7 @@
 /area/bigredv2/outside/e)
 "bf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -412,8 +392,7 @@
 "bh" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -434,12 +413,10 @@
 "bk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/barricade/wooden{
-	dir = 8;
-	icon_state = "wooden"
+	dir = 8
 	},
 /turf/open/floor{
 	dir = 1;
@@ -450,8 +427,7 @@
 "bn" = (
 /obj/item/tool/pickaxe,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -460,8 +436,7 @@
 /area/bigredv2/outside/e)
 "bo" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -471,8 +446,7 @@
 "bp" = (
 /obj/structure/machinery/light,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -481,8 +455,7 @@
 /area/bigredv2/outside/e)
 "br" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/closed/wall/rock/orange,
 /area/bigredv2/caves)
@@ -561,8 +534,7 @@
 "bE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -572,8 +544,7 @@
 /area/bigredv2/outside/e)
 "bF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -641,7 +612,7 @@
 /turf/open/mars_cave,
 /area/bigredv2/caves_east)
 "cy" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -665,8 +636,7 @@
 /area/bigredv2/outside/se)
 "cJ" = (
 /obj/structure/barricade/wooden{
-	dir = 8;
-	icon_state = "wooden"
+	dir = 8
 	},
 /turf/open/mars,
 /area/bigredv2/outside/se)
@@ -801,8 +771,7 @@
 "oy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -844,6 +813,13 @@
 	tag = "icon-asteroidwarning (NORTHEAST)"
 	},
 /area/bigredv2/caves_east)
+"uz" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
+	},
+/area/bigredv2/outside/e)
 "wj" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -852,8 +828,7 @@
 /area/bigredv2/outside/e)
 "xD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -1453,7 +1428,7 @@ an
 aa
 aS
 aW
-ba
+bb
 wj
 aa
 an
@@ -1484,7 +1459,7 @@ aa
 aS
 aR
 bb
-wj
+uz
 aa
 an
 an
@@ -1744,7 +1719,7 @@ ap
 ap
 bH
 bO
-bO
+cy
 bO
 ap
 "}
@@ -1821,7 +1796,7 @@ ap
 ap
 bI
 bO
-bO
+cy
 bO
 bO
 bO
@@ -1836,7 +1811,7 @@ ap
 ap
 cU
 cn
-bO
+cy
 "}
 (33,1,1) = {"
 ar

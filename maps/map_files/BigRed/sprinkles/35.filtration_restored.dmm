@@ -60,11 +60,9 @@
 /area/bigredv2/outside/se)
 "an" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 4;
 	name = "\improper Atmospherics Condenser Storage";
 	req_one_access = null
 	},
@@ -72,16 +70,14 @@
 /area/bigredv2/outside/filtration_plant)
 "ap" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "aq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -346,20 +342,17 @@
 "bm" = (
 /obj/effect/landmark/crap_item,
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bn" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
-	dir = 4;
 	name = "\improper Filtration Facility";
 	req_one_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
@@ -370,8 +363,7 @@
 /area/bigredv2/outside/filtration_plant)
 "bp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/item/frame/table,
 /turf/open/floor,
@@ -458,9 +450,7 @@
 /obj/structure/machinery/door_control{
 	id = "FiltrationShutters";
 	name = "Airlock Shutters";
-	pixel_x = -32;
-	unacidable = 1;
-	unslashable = 1
+	pixel_x = -32
 	},
 /obj/structure/machinery/light,
 /turf/open/floor,
@@ -489,10 +479,7 @@
 /obj/structure/machinery/door_control{
 	id = "FiltrationShutters";
 	name = "Airlock Shutters";
-	pixel_x = 0;
-	pixel_y = 25;
-	unacidable = 1;
-	unslashable = 1
+	pixel_y = 25
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)

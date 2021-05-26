@@ -7,11 +7,11 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "g" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "h" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/central_caves)
 "k" = (
@@ -32,7 +32,7 @@
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
 "o" = (
-/obj/effect/alien/weeds/node,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/north_east_barrens)
 "q" = (
@@ -69,10 +69,6 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_membrane,
 /turf/open/gm/dirt,
 /area/lv624/ground/caves/south_central_caves)
-"U" = (
-/obj/effect/alien/weeds/node,
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/west_barrens)
 "Y" = (
 /turf/open/gm/dirt,
 /area/lv624/ground/barrens/west_barrens)
@@ -121,7 +117,7 @@ l
 l
 l
 y
-U
+Y
 "}
 (3,1,1) = {"
 f

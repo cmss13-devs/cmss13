@@ -304,7 +304,7 @@ Defined in conflicts.dm of the #defines folder.
 	icon_state = "upp_bayonet"
 	item_state = "combat_knife"
 	throwforce = MELEE_FORCE_TIER_10 //doubled by throwspeed to 100
-	throw_speed = SPEED_INSTANT
+	throw_speed = SPEED_REALLY_FAST
 	throw_range = 7
 	pry_delay = 1 SECONDS
 

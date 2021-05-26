@@ -658,6 +658,25 @@
 					to_chat(M, "[icon2html(src, M)] [SPAN_BLUE("<B>SL Overwatch:</b> [nametext][text]")]")
 					return
 
+// Alerts all groundside marines about the incoming OB
+/obj/structure/machinery/computer/overwatch/proc/alert_ob(var/turf/target)
+	var/area/ob_area = get_area(target)
+	if(!ob_area)
+		return
+	var/ob_type = almayer_orbital_cannon.tray.warhead ? almayer_orbital_cannon.tray.warhead.warhead_kind : "UNKNOWN"
+
+	for(var/datum/squad/S in RoleAuthority.squads)
+		if(!S.usable)
+			continue
+		for(var/mob/living/carbon/human/M in S.marines_list)
+			if(!is_ground_level(M.z))
+				continue
+			if(M.stat != CONSCIOUS || !M.client)
+				continue
+			playsound_client(M.client, 'sound/effects/ob_alert.ogg', M)
+			to_chat(M, SPAN_HIGHDANGER("Orbital bombardment launch command detected!"))
+			to_chat(M, SPAN_DANGER("Launch command informs [ob_type] warhead. Estimated impact area: [ob_area.name]"))
+
 /obj/structure/machinery/computer/overwatch/proc/change_lead()
 	if(!usr || usr != operator)
 		return
@@ -883,10 +902,8 @@
 	//All set, let's do this.
 	busy = 1
 	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Orbital bombardment request for squad '[current_squad]' accepted. Orbital cannons are now calibrating.")]")
-	send_to_squad("Initializing fire coordinates.")
 	playsound(T,'sound/effects/alert.ogg', 25, 1)  //Placeholder
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/send_to_squad, "Transmitting beacon feed."), 2 SECONDS)
-	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/send_to_squad, "Calibrating trajectory window."), 4 SECONDS)
+	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/alert_ob, T), 2 SECONDS)
 	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/begin_fire), 6 SECONDS)
 	addtimer(CALLBACK(src, /obj/structure/machinery/computer/overwatch.proc/fire_bombard, user, A, T), 6 SECONDS + 6)
 

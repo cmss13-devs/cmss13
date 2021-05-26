@@ -329,8 +329,8 @@
 			continue
 		if (ishuman(loc))
 			var/mob/living/carbon/human/l = loc
-			if(l.hunter_data.thralled && !(l.hunter_data.dishonored || l.stat == DEAD))
-			//it's actually a thrall holding the item, ignore!
+			if((l.hunter_data.honored || l.hunter_data.thralled) && !(l.hunter_data.dishonored || l.stat == DEAD))
+			//it's actually a thrall holding the item or a gift, ignore!
 				continue
 		if(is_loworbit_level(loc.z))
 			gear_low_orbit++

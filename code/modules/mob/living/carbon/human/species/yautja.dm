@@ -125,11 +125,11 @@
 		M.hud_set_hunter()
 
 	// Notify all yautja so they start the gear recovery
-	message_all_yautja("[H] has died at \the [get_area_name(H)].")
+	message_all_yautja("[H.real_name] has died at \the [get_area_name(H)].")
 
 	if(H.hunter_data.thrall)
 		var/mob/living/carbon/T = H.hunter_data.thrall
-		message_all_yautja("[H]'s Thrall, [T] is now masterless.")
+		message_all_yautja("[H.real_name]'s Thrall, [T.real_name] is now masterless.")
 		H.message_thrall("Your master has fallen!")
 		H.hunter_data.thrall = null
 

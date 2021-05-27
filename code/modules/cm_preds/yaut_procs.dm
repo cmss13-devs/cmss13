@@ -44,7 +44,7 @@
 				hud_used.pred_power_icon.icon_state = "powerbar10"
 
 /mob/living/carbon/human/proc/butcher()
-	set category = "Yautja"
+	set category = "Yautja.Misc"
 	set name = "Butcher"
 	set desc = "Butcher a corpse you're standing on for its tasty meats."
 
@@ -255,7 +255,7 @@
 	lighting_use_dynamic = FALSE
 
 /mob/living/carbon/human/proc/pred_buy()
-	set category = "Yautja"
+	set category = "Yautja.Misc"
 	set name = "Claim Equipment"
 	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
 
@@ -317,7 +317,4 @@
 					new /obj/item/clothing/suit/armor/yautja/full(src.loc, 0,  src.client.prefs.predator_armor_material)
 			choice = mother_1
 
-		if(Y.upgrades > 0)
-			to_chat(src, SPAN_NOTICE("[Y] hum as their support systems come online."))
-			Y.verbs += /obj/item/clothing/gloves/yautja/proc/translate
 		remove_verb(src, /mob/living/carbon/human/proc/pred_buy)

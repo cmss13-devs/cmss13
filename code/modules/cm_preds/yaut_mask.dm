@@ -61,7 +61,7 @@
 /obj/item/clothing/mask/gas/yautja/verb/toggle_zoom()
 	set name = "Toggle Mask Zoom"
 	set desc = "Toggle your mask's zoom function."
-	set category = "Yautja"
+	set category = "Yautja.Utility"
 	set src in usr
 	if(!usr || usr.stat)
 		return
@@ -71,7 +71,7 @@
 /obj/item/clothing/mask/gas/yautja/verb/togglesight()
 	set name = "Toggle Mask Visors"
 	set desc = "Toggle your mask visor sights. You must only be wearing a type of Yautja visor for this to work."
-	set category = "Yautja"
+	set category = "Yautja.Utility"
 	set src in usr
 	if(!usr || usr.stat)
 		return

@@ -459,7 +459,7 @@
 /obj/item/device/yautja_teleporter/verb/add_tele_loc()
 	set name = "Add Teleporter Destination"
 	set desc = "Adds this location to the teleporter."
-	set category = "Yautja"
+	set category = "Yautja.Utility"
 	set src in usr
 	if(!usr || usr.stat || !is_ground_level(usr.z))
 		return

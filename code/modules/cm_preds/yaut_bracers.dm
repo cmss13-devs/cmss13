@@ -232,7 +232,7 @@
 /obj/item/clothing/gloves/yautja/verb/toggle_notification_sound()
 	set name = "Toggle Bracer Sound"
 	set desc = "Toggle your bracer's notification sound."
-	set category = "Yautja"
+	set category = "Yautja.Misc"
 	set src in usr
 	notification_sound = !notification_sound
 	to_chat(usr, SPAN_NOTICE("The bracer's sound is now turned [notification_sound ? "on" : "off"]."))
@@ -241,7 +241,7 @@
 /obj/item/clothing/gloves/yautja/verb/wristblades()
 	set name = "Use Wrist Blades"
 	set desc = "Extend your wrist blades. They cannot be dropped, but can be retracted."
-	set category = "Yautja"
+	set category = "Yautja.Weapons"
 	set src in usr
 	. = wristblades_internal(FALSE)
 
@@ -296,7 +296,7 @@
 /obj/item/clothing/gloves/yautja/verb/track_gear()
 	set name = "Track Yautja Gear"
 	set desc = "Find Yauja Gear."
-	set category = "Yautja"
+	set category = "Yautja.Tracker"
 	set src in usr
 	. = track_gear_internal(FALSE)
 
@@ -377,7 +377,7 @@
 /obj/item/clothing/gloves/yautja/verb/cloaker()
 	set name = "Toggle Cloaking Device"
 	set desc = "Activate your suit's cloaking device. It will malfunction if the suit takes damage or gets excessively wet."
-	set category = "Yautja"
+	set category = "Yautja.Utility"
 	set src in usr
 	. = cloaker_internal(FALSE)
 
@@ -478,7 +478,7 @@
 /obj/item/clothing/gloves/yautja/verb/caster()
 	set name = "Use Plasma Caster"
 	set desc = "Activate your plasma caster. If it is dropped it will retract back into your armor."
-	set category = "Yautja"
+	set category = "Yautja.Weapons"
 	set src in usr
 	. = caster_internal(FALSE)
 
@@ -562,14 +562,14 @@
 /obj/item/clothing/gloves/yautja/verb/activate_suicide()
 	set name = "Final Countdown (!)"
 	set desc = "Activate the explosive device implanted into your bracers. You have failed! Show some honor!"
-	set category = "Yautja"
+	set category = "Yautja.Misc"
 	set src in usr
 	. = activate_suicide_internal(FALSE)
 
 /obj/item/clothing/gloves/yautja/verb/change_explosion_type()
 	set name = "Change Explosion Type"
 	set desc = "Changes your bracer explosion to either only gib you or be a big explosion."
-	set category = "Yautja"
+	set category = "Yautja.Misc"
 	set src in usr
 	if(alert("Which explosion type do you want?","Explosive Bracers", "Small", "Big") == "Big")
 		explosion_type = 0
@@ -672,7 +672,7 @@
 
 /obj/item/clothing/gloves/yautja/verb/injectors()
 	set name = "Create Self-Heal Crystal"
-	set category = "Yautja"
+	set category = "Yautja.Utility"
 	set desc = "Create a focus crystal to energize your natural healing processes."
 	set src in usr
 	. = injectors_internal(FALSE)
@@ -717,7 +717,7 @@
 
 /obj/item/clothing/gloves/yautja/verb/call_disk()
 	set name = "Call Smart-Disc"
-	set category = "Yautja"
+	set category = "Yautja.Weapons"
 	set desc = "Call back your smart-disc, if it's in range. If not you'll have to go retrieve it."
 	set src in usr
 	. = call_disk_internal(FALSE)
@@ -760,7 +760,7 @@
 
 /obj/item/clothing/gloves/yautja/verb/remove_tracked_item()
 	set name = "Remove item from tracker"
-	set category = "Yautja"
+	set category = "Yautja.Tracker"
 	set desc = "Removes an item from all yautja tracking."
 	set src in usr
 	. = remove_tracked_item_internal(FALSE)
@@ -787,7 +787,7 @@
 
 /obj/item/clothing/gloves/yautja/verb/add_tracked_item()
 	set name = "Add item to tracker"
-	set category = "Yautja"
+	set category = "Yautja.Tracker"
 	set desc = "Adds an item to all yautja tracking."
 	set src in usr
 	. = add_tracked_item_internal(FALSE)
@@ -813,7 +813,7 @@
 
 /obj/item/clothing/gloves/yautja/verb/call_combi()
 	set name = "Yank Combi-stick"
-	set category = "Yautja"
+	set category = "Yautja.Weapons"
 	set desc = "Yank on your combi-stick's chain, if it's in range. Otherwise... recover it yourself."
 	set src in usr
 	. = call_combi_internal(FALSE)
@@ -848,7 +848,8 @@
 /obj/item/clothing/gloves/yautja/proc/translate()
 	set name = "Translator"
 	set desc = "Emit a message from your bracer to those nearby."
-	set category = "Yautja"
+	set category = "Yautja.Utility"
+	set src in usr
 	. = translate_internal(FALSE)
 
 /obj/item/clothing/gloves/yautja/proc/translate_internal(var/forced = FALSE)

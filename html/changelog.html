@@ -64,6 +64,12 @@
 	</tr>
 </table>
 
+			<h2 class="date">27 May 2021</h2>
+			<h3 class="author">Nanu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Nerfed the UPP throwing knife slightly as Marines can start with it.</li>
+			</ul>
+
 			<h2 class="date">26 May 2021</h2>
 			<h3 class="author">Atebite updated:</h3>
 			<ul class="changes bgimages16">
@@ -1343,49 +1349,6 @@
 			<h3 class="author">Vanagandr updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Being injured by a thrown object now has impact flash and sound effects.</li>
-			</ul>
-
-			<h2 class="date">25 March 2021</h2>
-			<h3 class="author">Carlarc updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Extinguishers can now decloak. This causes a 10 second cooldown on marine cloaks and 20 second cooldown on the predator cloak.</li>
-				<li class="tweak">Walking on water cloaked as a predator also causes cooldown.</li>
-				<li class="tweak">Increased underbarrel extinguisher capacity to 60.</li>
-				<li class="tweak">CHUNK bar force from 10 to 15, throwforce 10.</li>
-				<li class="rscdel">Extra construction skill no longer thirds welding time or building time. Attempting to fix a barricade at less than engineer skill takes twice as long.</li>
-				<li class="rscdel">Extra construction skill no longer thirds welding time. Attempting to fix a barricade at less than engineer skill takes twice as long.</li>
-			</ul>
-			<h3 class="author">Carnage0681 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Acid Runner health increased to 330, from 230.</li>
-			</ul>
-			<h3 class="author">Firartix updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added default classic keybindings based on previous CM13 keybinds</li>
-				<li class="tweak">Typing indicator was modified to allow for original faster client-side handling - it will now display the typing bubble for 5 seconds regarldess of prompt being open.</li>
-				<li class="tweak">Removed skin Hotkey Toggle as it conflicts with new system's Hotkey Mode</li>
-				<li class="tweak">Added Quick Equip Keybind, renamed previous ones to Unholster</li>
-				<li class="tweak">Reworded several input related configuration entries for clarity</li>
-				<li class="tweak">Input preferences now have their own section in character setup</li>
-				<li class="bugfix">Hotkeys Mode setting should now save properly</li>
-				<li class="bugfix">Removed leftover handler for old Swap Hand macro</li>
-				<li class="bugfix">An empty list of keys in classic keys will not use hotkeys keys as default anymore</li>
-				<li class="tweak">Optimized various aspects of the CI Pipeline</li>
-				<li class="tweak">Pinned linux rustg library dependency in repository to match Windows one</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Admins' mass teleport no longer breaks future bioscans.</li>
-			</ul>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Removed attack_speed delay when clicking one item with another when in storage (backpacks pouches etc.). Delay varied based on attacking item.</li>
-				<li class="tweak">Reduced delay when putting items on tables/racks. Delay varied based on item, is now 0.2 seconds.</li>
-				<li class="tweak">Removed extra delay when picking up an item not in first-layer inventory (in backpack, on table, on floor etc.). Total delay was 0.6 seconds, is now 0.2. The pickup verb 0.8 second delay was not changed.</li>
-				<li class="tweak">Removed extra delay when clicking things in inventory with an open hand. If an item in pocket, clothing, opening a pouch etc. total delay was 0.05 seconds, now 0; if drawing item from fast-draw toggled pouches etc. total delay was 0.25 seconds, is now 0.2.</li>
-				<li class="bugfix">Clicking the inventory spacers in slotless storage items (satchels, backpacks, some boxes) now behaves exactly the same as clicking the item sprites directly. With the item-removal click delays now 0.2s across the board, the main effect of this is that you can't pull things (M15...) out of your satchel while resting or in a xeno stomach.</li>
-				<li class="bugfix">Can't attempt to throw stuff at objects inside storage items anymore.</li>
-				<li class="bugfix">Updated mob/../carbon attackhand to add the attack delay to the *attacker* rather than the victim. Originally they all had this code but humans and xenos were updated to their current state while /carbon was left unchanged. Being punched/disarmed should no longer add action delay to you. Note that this is for human -> human or human -> xeno attacks with an open hand; this had nothing to do with xeno -> human attacks.</li>
 			</ul>
 </div>
 </body>

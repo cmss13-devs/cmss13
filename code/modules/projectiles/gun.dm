@@ -782,6 +782,9 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 //----------------------------------------------------------
 
 /obj/item/weapon/gun/afterattack(atom/A, mob/living/user, flag, params)
+	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
+		active_attachable.fire_attachment(A, src, user)
+		return TRUE
 	if(flag)
 		return FALSE //It's adjacent, is the user, or is on the user's person
 	if(!istype(A))

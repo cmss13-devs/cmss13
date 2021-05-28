@@ -130,16 +130,16 @@
 	H.limbs += new /obj/limb/head(H, C, H)
 	var/obj/limb/arm/l_arm/LA = new(H, C, H)
 	H.limbs += LA
+	H.limbs += new /obj/limb/hand/l_hand(H, LA, H)
 	var/obj/limb/arm/r_arm/RA = new(H, C, H)
 	H.limbs += RA
+	H.limbs += new /obj/limb/hand/r_hand(H, RA, H)
 	var/obj/limb/leg/l_leg/LL = new(H, G, H)
 	H.limbs += LL
+	H.limbs += new /obj/limb/foot/l_foot(H, LL, H)
 	var/obj/limb/leg/r_leg/RL = new(H, G, H)
 	H.limbs += RL
-	H.limbs +=  new /obj/limb/hand/l_hand(H, LA, H)
-	H.limbs +=  new /obj/limb/hand/r_hand(H, RA, H)
-	H.limbs +=  new /obj/limb/foot/l_foot(H, LL, H)
-	H.limbs +=  new /obj/limb/foot/r_foot(H, RL, H)
+	H.limbs += new /obj/limb/foot/r_foot(H, RL, H)
 
 	for(var/organ in has_organ)
 		var/organ_type = has_organ[organ]

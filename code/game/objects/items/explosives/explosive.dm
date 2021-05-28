@@ -111,6 +111,7 @@
 				to_chat(user, SPAN_NOTICE("You lock the empty assembly."))
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 0, 6)
 			creator = user
+			cause_data = create_cause_data(initial(name), user)
 			assembly_stage = ASSEMBLY_LOCKED
 		else if(assembly_stage == ASSEMBLY_LOCKED)
 			to_chat(user, SPAN_NOTICE("You unlock the assembly."))
@@ -176,9 +177,9 @@
 			reagent_list_text += " [R.volume] [R.name], "
 		i++
 
-	var/mob/cause_mob = cause_data.resolve_mob()
-	reagents.source_mob = cause_mob
+	var/mob/cause_mob = cause_data?.resolve_mob()
 	if(cause_mob) //so we don't message for simulations
+		reagents.source_mob = WEAKREF(cause_mob)
 		msg_admin_niche("[key_name(cause_mob)] detonated custom explosive by [key_name(creator)]: [name] (REAGENTS: [reagent_list_text]) in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>)", loc.x, loc.y, loc.z)
 
 	if(containers.len < 2)
@@ -209,6 +210,7 @@
 		QDEL_IN(src, 50) //To make sure all reagents can work correctly before deleting the grenade.
 
 /obj/item/explosive/proc/make_copy_of(var/obj/item/explosive/other)
+	cause_data = other.cause_data
 	assembly_stage = other.assembly_stage
 	falloff_mode = other.falloff_mode
 	for(var/obj/item/reagent_container/other_container in other.containers)

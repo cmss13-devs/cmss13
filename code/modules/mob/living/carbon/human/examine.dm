@@ -1,4 +1,8 @@
 /mob/living/carbon/human/examine(mob/user)
+	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
+		to_chat(user, desc)
+		return
+
 	if(user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat==UNCONSCIOUS)
 		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
 		return

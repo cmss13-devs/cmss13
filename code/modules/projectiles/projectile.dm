@@ -81,6 +81,15 @@
 	firer = null
 	return ..()
 
+/obj/item/projectile/proc/apply_bullet_trait(list/entry)
+	bullet_traits += list(entry.Copy())
+	// Need to use the proc instead of the wrapper because each entry is a list
+	_AddElement(entry)
+
+/obj/item/projectile/proc/give_bullet_traits(obj/item/projectile/to_give)
+	for(var/list/entry in bullet_traits)
+		to_give.apply_bullet_trait(entry.Copy())
+
 /obj/item/projectile/Collided(atom/movable/AM)
 	if(AM && !(AM in permutated))
 		scan_a_turf(AM.loc)
@@ -108,10 +117,15 @@
 
 	// Apply bullet traits from ammo
 	for(var/entry in ammo.traits_to_give)
-		// Prepend the bullet trait to the list
-		var/list/L = list(entry) + ammo.traits_to_give[entry]
+		var/list/L
+		// Check if this is an ID'd bullet trait
+		if(istext(entry))
+			L = ammo.traits_to_give[entry].Copy()
+		else
+			// Prepend the bullet trait to the list
+			L = list(entry) + ammo.traits_to_give[entry]
 		// Need to use the proc instead of the wrapper because each entry is a list
-		_AddElement(L)
+		apply_bullet_trait(L)
 
 /obj/item/projectile/proc/calculate_damage()
 	if(effective_range_min && distance_travelled < effective_range_min)
@@ -391,7 +405,8 @@
 	permutated |= O
 
 	var/hit_chance = O.get_projectile_hit_boolean(src)
-	if( hit_chance ) // Calculated from combination of both ammo accuracy and gun accuracy
+	if(hit_chance) // Calculated from combination of both ammo accuracy and gun accuracy
+		SEND_SIGNAL(src, COMSIG_BULLET_PRE_HANDLE_OBJ, O)
 		var/ammo_flags = ammo.flags_ammo_behavior | projectile_override_flags
 
 		// If we are a xeno shooting something

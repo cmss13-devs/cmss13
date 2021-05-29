@@ -331,10 +331,13 @@
 #define COMSIG_BULLET_PRE_HANDLE_MOB "bullet_pre_handle_mob"
 /// From /obj/item/projectile/handle_mob(): (mob/living/target)
 #define COMSIG_BULLET_POST_HANDLE_MOB "bullet_post_handle_mob"
-/// From /obj/item/projectile/handle_obj(): (obj/target)
+/// From /obj/item/projectile/handle_obj(): (obj/target, did_hit)
 #define COMSIG_BULLET_POST_HANDLE_OBJ "bullet_post_handle_obj"
+/// From /obj/item/projectile/handle_obj(): (obj/target)
+#define COMSIG_BULLET_PRE_HANDLE_OBJ "bullet_pre_handle_obj"
 /// From /obj/item/projectile/scan_a_turf(): (turf/target)
 #define COMSIG_BULLET_POST_HANDLE_TURF "bullet_post_handle_turf"
+/// From /obj/item/projectile/scan_a_turf(): (turf/target)
 #define COMSIG_BULLET_PRE_HANDLE_TURF "bullet_pre_handle_turf"
 	#define COMPONENT_BULLET_PASS_THROUGH (1<<0)
 

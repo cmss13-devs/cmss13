@@ -7,8 +7,8 @@
 	density = 1
 	throwpass = TRUE
 	climbable = 1 //Small enough to vault over, but you do need to vault over it
-	health = 200
-	var/max_health = 200
+	health = 600
+	var/max_health = 600
 	var/obj/item/stack/sheet/sheet_type = /obj/item/stack/sheet/glass/reinforced
 	var/obj/structure/window/framed/almayer/window_type = /obj/structure/window/framed/almayer
 	var/basestate = "window"
@@ -147,6 +147,11 @@
 		return XENO_ATTACK_ACTION
 
 	. = ..()
+
+/obj/structure/window_frame/bullet_act(obj/item/projectile/P)
+	bullet_ping(P)
+	take_damage(P.damage)
+	return TRUE
 
 /obj/structure/window_frame/proc/take_damage(var/damage)
 	health = max(0, (health - damage))

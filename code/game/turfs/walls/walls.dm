@@ -219,12 +219,12 @@
 		if(!istype(src, /turf/closed/wall/resin))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 	else
-		if(!istype(src, /turf/closed/wall/resin) && prob(25))
+		if(istype(src, /turf/closed/wall/resin))
+			exp_damage *= RESIN_EXPLOSIVE_MULTIPLIER
+		else if (prob(25))
 			if(prob(50)) // prevents spam in close corridors etc
 				src.visible_message(SPAN_WARNING("The explosion causes shards to spall off of [src]!"))
 			create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/spall, cause_data)
-		else
-			exp_damage *= RESIN_EXPLOSIVE_MULTIPLIER
 		take_damage(exp_damage, M)
 
 	return

@@ -510,6 +510,10 @@
 
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
+	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
+		to_chat(user, desc)
+		return
+
 	if(isXeno(user) && caste && caste.caste_desc)
 		to_chat(user, caste.caste_desc)
 

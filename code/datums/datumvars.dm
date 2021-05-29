@@ -215,6 +215,8 @@
 			body += "<option value='?_src_=vars;selectequipment=\ref[D]'>Select Equipment</option>"
 		if(iscarbon(D))
 			body += "<option value='?_src_=vars;changehivenumber=\ref[D]'>Change Hivenumber</option>"
+			body += "<option value='?_src_=vars;addtrait=\ref[D]'>Add Trait</option>"
+			body += "<option value='?_src_=vars;removetrait=\ref[D]'>Remove Trait</option>"
 		body += "<option value>---</option>"
 		body += "<option value='?_src_=vars;gib=\ref[D]'>Gib</option>"
 	if(isobj(D))
@@ -1046,6 +1048,39 @@ body
 		if(amount != 0)
 			message_staff("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] ")
 			href_list["datumrefresh"] = href_list["mobToDamage"]
+
+	else if(href_list["addtrait"])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_SPAWN))
+			return
+
+		var/mob/living/carbon/C = locate(href_list["addtrait"])
+		if(!istype(C))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+			return
+		var/trait_new = tgui_input_list(usr, "Select a trait to add", "Trait", GLOB.mob_traits)
+		if(!trait_new)
+			return
+		ADD_TRAIT(C, trait_new, TRAIT_SOURCE_ADMIN)
+		message_staff("TRAIT: [key_name(usr)] added trait '[trait_new]' to [key_name(C)]")
+		if(trait_new == TRAIT_CRAWLER)
+			add_verb(C, /mob/living/proc/ventcrawl)
+
+	else if(href_list["removetrait"])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_SPAWN))
+			return
+
+		var/mob/living/carbon/C = locate(href_list["removetrait"])
+		if(!istype(C))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+			return
+
+		var/trait_old = tgui_input_list(usr, "Select a trait to remove", "Trait", C.status_traits)
+		if(!trait_old)
+			return
+		REMOVE_TRAIT(C, trait_old, null)
+		message_staff("TRAIT: [key_name(usr)] removed trait '[trait_old]' from [key_name(C)]")
+		if(trait_old == TRAIT_CRAWLER)
+			remove_verb(C, /mob/living/proc/ventcrawl)
 
 	else if(href_list["setmatrix"])
 		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN|R_VAREDIT))

@@ -111,6 +111,10 @@
 #define TRAIT_INTENT_EYES "t_intent_eyes"
  /// If the mob is nested.
 #define TRAIT_NESTED "t_nested"
+ /// If the mob can crawl through pipes equipped
+#define TRAIT_CRAWLER "t_crawler"
+ /// If the mob is hidden from examination
+#define TRAIT_SIMPLE_DESC "t_simple_desc"
 //-- item traits --
 // TOOL TRAITS
 #define TRAIT_TOOL_SCREWDRIVER "t_tool_screwdriver"
@@ -118,6 +122,17 @@
 #define TRAIT_TOOL_WIRECUTTERS "t_tool_wirecutters"
 #define TRAIT_TOOL_WRENCH "t_tool_wrench"
 #define TRAIT_TOOL_MULTITOOL "t_tool_multitool"
+
+//List of all traits
+GLOBAL_LIST_INIT(mob_traits, list(
+	TRAIT_YAUTJA_TECH,
+	TRAIT_SUPER_STRONG,
+	TRAIT_FOREIGN_BIO,
+	TRAIT_INTENT_EYES,
+	TRAIT_NESTED,
+	TRAIT_CRAWLER,
+	TRAIT_SIMPLE_DESC
+))
 
 //trait SOURCES
 /// Example trait source
@@ -132,3 +147,5 @@
 #define TRAIT_SOURCE_TOOL "t_s_tool"
  ///Status trait coming from roundstart quirks (that don't exist yet). Unremovable by REMOVE_TRAIT
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
+ ///Status trait forced by staff
+#define TRAIT_SOURCE_ADMIN "t_s_admin"

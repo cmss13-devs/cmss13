@@ -80,3 +80,6 @@
 	stun_reduction = 3.5
 
 	inherent_verbs = null
+
+/datum/species/synthetic/event
+	name = "Event Synthetic" //To prevent any conflicts with natural spawns for events.

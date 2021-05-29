@@ -182,3 +182,13 @@
 	key = "d"
 	flags = RESTRICTED|HIVEMIND
 	drone_only = 1
+
+/datum/language/event_hivemind
+	name = "Telepath Implant"
+	desc = "An event only language that provides a hivemind for it's users."
+	speech_verb = "resonates"
+	ask_verb = "resonates"
+	exclaim_verb = "resonates"
+	colour = "tajaran"
+	key = "7"
+	flags = RESTRICTED|HIVEMIND

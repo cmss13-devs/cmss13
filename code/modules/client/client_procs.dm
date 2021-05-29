@@ -38,7 +38,8 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	/client/proc/toggle_auto_eject_to_hand,
 	/client/proc/toggle_eject_to_hand,
 	/client/proc/toggle_automatic_punctuation,
-	/client/proc/toggle_middle_mouse_click
+	/client/proc/toggle_middle_mouse_click,
+	/client/proc/toggle_clickdrag_override
 ))
 
 /client/Topic(href, href_list, hsrc)

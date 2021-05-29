@@ -1,7 +1,7 @@
 // Enables a tool to test ingame click rate.
 #define DEBUG_CLICK_RATE	0
 
-// 1 decisecond click delay (above and beyond mob/next_move)
+/// 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
 /*
 	client/Click is called every time a client clicks anywhere, it should never be overridden.
@@ -18,15 +18,19 @@
 */
 
 /client/Click(atom/A, location, control, params)
-	if (control)	// No .click macros allowed
+	if (control && !ignore_next_click)	// No .click macros allowed, and only one click per mousedown.
+		ignore_next_click = TRUE
 		return usr.do_click(A, location, params)
 
 /mob/proc/do_click(atom/A, location, params)
+	// We'll be sending a lot of signals and things later on, this will save time.
+	if(!client)
+		return
 	// No clicking on atoms with the NOINTERACT flag
 	if ((A.flags_atom & NOINTERACT))
 		if (istype(A, /obj/screen/click_catcher))
 			var/list/mods = params2list(params)
-			var/turf/TU = params2turf(mods["screen-loc"], get_turf(usr.client ? usr.client.eye : usr), usr.client)
+			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
 			if (TU)
 				do_click(TU, location, params)
 		return
@@ -94,7 +98,7 @@
 		return
 
 	//Self-harm preference. isXeno check because xeno clicks on self are redirected to the turf below the pointer.
-	if (A == src && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+	if (A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 		if (world.time % 3)
 			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
 		return

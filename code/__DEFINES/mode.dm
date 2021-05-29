@@ -53,17 +53,19 @@
 #define BE_ALIEN_AFTER_DEATH	1
 #define BE_AGENT				2
 
-#define TOGGLE_IGNORE_SELF					1 	// Determines whether you will not hurt yourself when clicking yourself
-#define TOGGLE_HELP_INTENT_SAFETY			2 	// Determines whether help intent will be completely harmless
-#define TOGGLE_MIDDLE_MOUSE_CLICK			4 	// This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking
-#define TOGGLE_DIRECTIONAL_ATTACK			8 	// This toggles whether attacks for xeno use directional attacks
-#define TOGGLE_AUTO_EJECT_MAGAZINE_OFF		16 	// This toggles whether guns with auto ejectors will not auto eject their magazines
-												// MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
-#define TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND	32	// This toggles whether guns with auto ejectors will cause you to unwield your gun and put the empty magazine in your hand
-												// MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
-#define TOGGLE_EJECT_MAGAZINE_TO_HAND		64	// This toggles whether manuallyejecting magazines from guns will cause you to unwield your gun
-												// and put the empty magazine in your hand
-#define TOGGLE_AUTOMATIC_PUNCTUATION		128 // Whether your sentences will automatically be punctuated with a period
+#define TOGGLE_IGNORE_SELF					(1<<0) // Determines whether you will not hurt yourself when clicking yourself
+#define TOGGLE_HELP_INTENT_SAFETY			(1<<1) // Determines whether help intent will be completely harmless
+#define TOGGLE_MIDDLE_MOUSE_CLICK			(1<<2) // This toggles whether selected ability for xeno uses middle mouse clicking or shift clicking
+#define TOGGLE_DIRECTIONAL_ATTACK			(1<<3) // This toggles whether attacks for xeno use directional attacks
+#define TOGGLE_AUTO_EJECT_MAGAZINE_OFF		(1<<4) // This toggles whether guns with auto ejectors will not auto eject their magazines
+                                                   // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND
+#define TOGGLE_AUTO_EJECT_MAGAZINE_TO_HAND	(1<<5) // This toggles whether guns with auto ejectors will cause you to unwield your gun and put the empty magazine in your hand
+                                                   // MUTUALLY EXCLUSIVE TO TOGGLE_AUTO_EJECT_MAGAZINE
+#define TOGGLE_EJECT_MAGAZINE_TO_HAND		(1<<6) // This toggles whether manuallyejecting magazines from guns will cause you to unwield your gun
+                                                   // and put the empty magazine in your hand
+#define TOGGLE_AUTOMATIC_PUNCTUATION		(1<<7) // Whether your sentences will automatically be punctuated with a period
+
+#define TOGGLE_COMBAT_CLICKDRAG_OVERRIDE	(1<<8) // Whether disarm/harm intents cause clicks to trigger immediately when the mouse button is depressed.
 
 //=================================================
 

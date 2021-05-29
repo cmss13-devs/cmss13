@@ -3,7 +3,7 @@ var/list/department_radio_keys = list(
 	  ":h" = "department",	"#h" = "department",	".h" = "department",
 	  ":+" = "special",		"#+" = "special",		".+" = "special", //activate radio-specific special functions
 	  ":w" = "whisper",		"#w" = "whisper",		".w" = "whisper",
-	  ":t" = "HighCom",		"#t" = "HighCom",		".t" = "HighCom",
+	  ":z" = "HighCom",		"#z" = "HighCom",		".z" = "HighCom",
 
 	  ":m" = "MedSci",		"#m" = "MedSci",		".m" = "MedSci",
 	  ":e" = "Engi", 		"#e" = "Engi",			".e" = "Engi",
@@ -16,7 +16,7 @@ var/list/department_radio_keys = list(
 	  ":p" = "MP",			"#p" = "MP",			".p" = "MP",
 	  ":u" = "Req",			"#u" = "Req",			".u" = "Req",
 	  ":j" = "JTAC",		"#j" = "JTAC",			".j" = "JTAC",
-	  ":z" = "Intel",		"#z" = "Intel",			".z" = "Intel",
+	  ":t" = "Tactics",		"#t" = "Tactics",		".t" = "Tactics",
 	  ":y" = "WY",			"#y" = "WY",			".y" = "WY",
 
 	  ":R" = "right ear",	"#R" = "right ear",		".R" = "right ear",
@@ -24,7 +24,7 @@ var/list/department_radio_keys = list(
 	  ":I" = "intercom",	"#I" = "intercom",		".I" = "intercom",
 	  ":H" = "department",	"#H" = "department",	".H" = "department",
 	  ":W" = "whisper",		"#W" = "whisper",		".W" = "whisper",
-	  ":T" = "HighCom",		"#T" = "HighCom",		".T" = "HighCom",
+	  ":Z" = "HighCom",		"#Z" = "HighCom",		".Z" = "HighCom",
 
 	  ":M" = "MedSci",		"#M" = "MedSci",		".M" = "MedSci",
 	  ":E" = "Engi", 		"#E" = "Engi",			".E" = "Engi",
@@ -37,7 +37,7 @@ var/list/department_radio_keys = list(
 	  ":P" = "MP",			"#P" = "MP",			".P" = "MP",
 	  ":U" = "Req",			"#U" = "Req",			".U" = "Req",
 	  ":J" = "JTAC",		"#J" = "JTAC",			".J" = "JTAC",
-	  ":Z" = "Intel",		"#Z" = "Intel",			".Z" = "Intel",
+	  ":T" = "Tactics",		"#T" = "Tactics",		".T" = "Tactics",
 	  ":Y" = "WY",			"#Y" = "WY",			".Y" = "WY",
 
 	  //kinda localization -- rastaf0

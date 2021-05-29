@@ -246,7 +246,7 @@
 			part_a = "<span class='supradio'><span class='name'>"
 		else if (display_freq == JTAC_FREQ)
 			part_a = "<span class='jtacradio'><span class='name'>"
-		else if (display_freq == INTEL_FREQ)
+		else if (display_freq == TACTICS_FREQ)
 			part_a = "<span class='intelradio'><span class='name'>"
 		else if (display_freq == WY_FREQ)
 			part_a = "<span class='wyradio'><span class='name'>"

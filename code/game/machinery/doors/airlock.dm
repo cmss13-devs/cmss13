@@ -148,14 +148,14 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else
 		return FALSE
 
-/obj/structure/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)
-	bullet_ping(Proj)
-	if(Proj.ammo.damage)
-		if(Proj.ammo.flags_ammo_behavior & AMMO_ROCKET)
-			take_damage(Proj.ammo.damage * 4, Proj.firer) // rockets wreck airlocks
+/obj/structure/machinery/door/airlock/bullet_act(var/obj/item/projectile/P)
+	bullet_ping(P)
+	if(P.damage)
+		if(P.ammo.flags_ammo_behavior & AMMO_ROCKET)
+			take_damage(P.damage * 4, P.firer) // rockets wreck airlocks
 			return TRUE
 		else
-			take_damage(Proj.ammo.damage, Proj.firer)
+			take_damage(P.damage, P.firer)
 			return TRUE
 	return FALSE
 

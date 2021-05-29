@@ -165,8 +165,7 @@ Defined in conflicts.dm of the #defines folder.
 			// Prepend the bullet trait to the list
 			L = list(entry) + traits_to_give[entry]
 		// Apply bullet traits from attachment to gun's current projectile
-		// Need to use the proc instead of the wrapper because each entry is a list
-		G.in_chamber._AddElement(L)
+		G.in_chamber.apply_bullet_trait(L)
 
 /obj/item/attachable/proc/Detach(var/obj/item/weapon/gun/G)
 	if(!istype(G)) return //Guns only
@@ -1232,6 +1231,10 @@ Defined in conflicts.dm of the #defines folder.
 	var/gun_deactivate_sound = 'sound/weapons/handling/gun_underbarrel_deactivate.ogg'//allows us to give the attached gun unique activate and de-activate sounds. Not used yet.
 	var/gun_activate_sound  = 'sound/weapons/handling/gun_underbarrel_activate.ogg'
 
+	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
+	/// that will be given to the projectiles of the attached gun
+	var/list/list/traits_to_give_attached
+
 /obj/item/attachable/attached_gun/New() //Let's make sure if something needs an ammo type, it spawns with one.
 	..()
 	if(ammo)
@@ -1480,10 +1483,10 @@ Defined in conflicts.dm of the #defines folder.
 	name = "\improper U7 underbarrel shotgun"
 	icon_state = "masterkey"
 	attach_icon = "masterkey_a"
-	desc = "An ARMAT U7 tactical shotgun. Attaches to the underbarrel of most weapons. Only capable of loading up to three buckshot shells."
+	desc = "An ARMAT U7 tactical shotgun. Attaches to the underbarrel of most weapons. Only capable of loading up to five buckshot shells. Specialized for breaching into buildings."
 	w_class = SIZE_MEDIUM
-	max_rounds = 3
-	current_rounds = 3
+	max_rounds = 5
+	current_rounds = 5
 	ammo = /datum/ammo/bullet/shotgun/buckshot/masterkey
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_shotgun_u7.ogg'
@@ -1498,6 +1501,12 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	if(current_rounds > 0) 	to_chat(user, "It has [current_rounds] shell\s left.")
 	else 					to_chat(user, "It's empty.")
+
+/obj/item/attachable/attached_gun/shotgun/set_bullet_traits()
+	LAZYADD(traits_to_give_attached, list(
+		BULLET_TRAIT_ENTRY_ID("breaching", /datum/element/bullet_trait_damage_boost, 10.8, GLOB.damage_boost_breaching),
+		BULLET_TRAIT_ENTRY_ID("pylons", /datum/element/bullet_trait_damage_boost, 5, GLOB.damage_boost_pylons),
+	))
 
 /obj/item/attachable/attached_gun/shotgun/reload_attachment(obj/item/ammo_magazine/handful/mag, mob/user)
 	if(istype(mag) && mag.flags_magazine & AMMUNITION_HANDFUL)

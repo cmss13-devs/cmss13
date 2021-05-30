@@ -39,9 +39,8 @@
 	if(!istype(T))
 		return
 
-	if(!T.weeds)
-		if(oldloc.weeds)
-			M.remove_filter("weed_damage_mult")
+	if(!T.weeds || T.weeds.hivenumber != hivenumber)
+		M.remove_filter("weed_damage_mult")
 		return
 
 	if(M.get_filter("weed_damage_mult"))

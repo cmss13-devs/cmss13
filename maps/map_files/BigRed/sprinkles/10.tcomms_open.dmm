@@ -6,11 +6,9 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
 "c" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	dir = 8;
+	icon_state = "damaged5"
 	},
 /area/bigredv2/outside/telecomm)
 "d" = (
@@ -30,12 +28,6 @@
 	},
 /area/bigredv2/outside/telecomm)
 "f" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "damaged5"
-	},
-/area/bigredv2/outside/telecomm)
-"g" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	dir = 1;
@@ -43,7 +35,7 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/telecomm)
-"h" = (
+"g" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -51,17 +43,17 @@
 	icon_state = "damaged4"
 	},
 /area/bigredv2/outside/telecomm)
-"i" = (
+"h" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/tracks,
-/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
-	dir = 8;
-	icon_state = "damaged5"
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/telecomm)
 "j" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/tracks,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -69,15 +61,15 @@
 	},
 /area/bigredv2/outside/telecomm)
 "k" = (
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged4"
 	},
 /area/bigredv2/outside/telecomm)
 "l" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged5"
@@ -88,66 +80,58 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "damaged4"
+	icon_state = "damaged5"
 	},
 /area/bigredv2/outside/telecomm)
 "n" = (
-/obj/effect/landmark/hunter_primary,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "damaged5"
+	icon_state = "damaged4"
 	},
 /area/bigredv2/outside/telecomm)
 "o" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/telecomm)
-"p" = (
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
 	},
 /area/bigredv2/outside/telecomm)
-"q" = (
+"p" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "damaged4"
+	},
+/area/bigredv2/outside/telecomm)
+"q" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged3"
 	},
 /area/bigredv2/outside/telecomm)
 "r" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/blood/tracks,
-/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "damaged4"
 	},
 /area/bigredv2/outside/telecomm)
 "s" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor{
 	dir = 8;
-	icon_state = "damaged4"
+	icon_state = "damaged5"
 	},
 /area/bigredv2/outside/telecomm)
 "t" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
-	},
-/area/bigredv2/outside/telecomm)
-"u" = (
-/obj/structure/sign/safety/hazard,
+/obj/effect/decal/cleanable/dirt,
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
-"v" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "platingdmg1"
-	},
-/area/bigredv2/outside/telecomm)
-"w" = (
+"u" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/tracks,
 /obj/effect/decal/cleanable/blood/drip,
@@ -155,12 +139,22 @@
 	icon_state = "platingdmg1"
 	},
 /area/bigredv2/outside/telecomm)
-"x" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
+"v" = (
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
-/area/bigredv2/caves_virology)
+/area/bigredv2/outside/telecomm)
+"w" = (
+/obj/structure/sign/safety/hazard,
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/telecomm)
+"x" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "platingdmg1"
+	},
+/area/bigredv2/outside/telecomm)
 "y" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -169,11 +163,10 @@
 	},
 /area/bigredv2/caves_virology)
 "z" = (
-/obj/effect/decal/cleanable/blood/drip,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
+	icon_state = "mars_cave_6";
+	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves_virology)
 "A" = (
@@ -183,53 +176,38 @@
 	},
 /area/bigredv2/caves_virology)
 "B" = (
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/caves_virology)
-"C" = (
-/obj/effect/decal/cleanable/blood/xeno,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/caves_virology)
-"D" = (
-/turf/open/mars_cave,
-/area/bigredv2/caves_virology)
-"E" = (
-/obj/effect/decal/cleanable/blood/xeno,
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/caves_virology)
+"C" = (
+/turf/open/mars_cave,
+/area/bigredv2/caves_virology)
+"D" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigred/ground/garage_workshop)
+"E" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/mars_cave,
+/area/bigredv2/caves_virology)
 "F" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_virology)
+"G" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23";
 	tag = "icon-mars_cave_23"
 	},
 /area/bigredv2/caves_virology)
-"G" = (
+"U" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
 	tag = "icon-mars_cave_5"
-	},
-/area/bigredv2/caves_virology)
-"U" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_6";
-	tag = "icon-mars_cave_6"
-	},
-/area/bigredv2/caves_virology)
-"X" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_virology)
 
@@ -247,132 +225,106 @@ a
 a
 "}
 (2,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+b
+b
+b
+b
+t
+b
+z
+B
+A
+A
+A
 "}
 (3,1,1) = {"
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
-a
+j
+j
+j
+n
+q
+w
+y
+A
+A
+B
+G
 "}
 (4,1,1) = {"
-b
-b
-b
-b
+d
+e
+g
+s
 o
-b
-U
 x
+y
 A
 A
 A
+U
 "}
 (5,1,1) = {"
+e
 c
-c
-c
+m
 k
 p
 u
 y
 A
 A
-E
-F
+A
+A
 "}
 (6,1,1) = {"
-d
 e
+f
 h
 l
 q
-v
+b
 y
-B
 A
-B
-G
+A
+A
+A
 "}
 (7,1,1) = {"
 e
-f
-i
-m
+e
+j
+e
 r
-w
-z
-B
+b
+a
 A
-A
+C
+C
 C
 "}
 (8,1,1) = {"
 e
-g
+e
 j
-n
-p
-b
-y
-C
-A
-A
-A
+e
+v
+w
+a
+a
+E
+F
+F
 "}
 (9,1,1) = {"
-e
-e
-c
-e
-s
+b
+b
+b
+b
+b
 b
 a
-A
+a
 D
 D
 D
-"}
-(10,1,1) = {"
-e
-e
-c
-e
-t
-u
-a
-A
-A
-A
-A
-"}
-(11,1,1) = {"
-b
-b
-b
-b
-b
-b
-a
-a
-a
-X
-X
 "}

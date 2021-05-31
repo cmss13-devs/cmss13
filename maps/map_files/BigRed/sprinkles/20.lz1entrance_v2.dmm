@@ -105,7 +105,6 @@
 /area/bigredv2/outside/space_port)
 "ar" = (
 /obj/structure/noticeboard{
-	pixel_x = 0;
 	pixel_y = 30
 	},
 /turf/open/floor{
@@ -147,7 +146,6 @@
 /area/bigredv2/outside/space_port)
 "aw" = (
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -158,18 +156,15 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "ay" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -179,7 +174,6 @@
 	dir = 8
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -187,14 +181,12 @@
 "aA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
 "aB" = (
 /obj/structure/filingcabinet,
-
 /turf/open/floor{
 	dir = 4;
 	icon_state = "darkgreen2";
@@ -213,8 +205,7 @@
 /area/bigredv2/outside/space_port)
 "aD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -224,8 +215,7 @@
 /area/bigredv2/outside/space_port)
 "aE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -246,8 +236,7 @@
 /area/bigredv2/outside/space_port)
 "aG" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 4;
@@ -257,15 +246,13 @@
 /area/bigredv2/outside/space_port)
 "aI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
 	name = "\improper Spaceport"
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -275,7 +262,6 @@
 	dir = 9
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -283,7 +269,6 @@
 "aK" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -294,9 +279,7 @@
 /obj/structure/machinery/door_control{
 	id = "Spaceport2";
 	name = "Storm Shutters";
-	pixel_x = 32;
-	unacidable = 1;
-	unslashable = 1
+	pixel_x = 32
 	},
 /turf/open/floor{
 	dir = 4;
@@ -344,7 +327,6 @@
 "aR" = (
 /obj/structure/bed/chair/office/dark,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -355,7 +337,6 @@
 	layer = 3.25
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
@@ -415,11 +396,9 @@
 "aZ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/computer/security{
-	dir = 1;
-	icon_state = "cameras"
+	dir = 1
 	},
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2";
 	tag = "icon-darkgreen2"
 	},
@@ -428,14 +407,12 @@
 /obj/structure/surface/table,
 /obj/item/device/radio,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2";
 	tag = "icon-darkgreen2"
 	},
 /area/bigredv2/outside/space_port)
 "bb" = (
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2";
 	tag = "icon-darkgreen2"
 	},
@@ -443,7 +420,6 @@
 "bc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2";
 	tag = "icon-darkgreen2"
 	},
@@ -453,7 +429,6 @@
 /obj/item/paper,
 /obj/item/tool/pen,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "darkgreen2";
 	tag = "icon-darkgreen2"
 	},
@@ -694,8 +669,7 @@
 /area/bigredv2/outside/nw)
 "bM" = (
 /obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4;
-	layer = 2.4
+	dir = 4
 	},
 /turf/open/floor{
 	dir = 1;
@@ -731,13 +705,6 @@
 /turf/open/floor{
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
-	},
-/area/bigredv2/outside/nw)
-"bR" = (
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
 /area/bigredv2/outside/nw)
 "bS" = (
@@ -782,12 +749,8 @@
 	},
 /area/bigredv2/outside/nw)
 "bY" = (
-/turf/open/floor{
-	dir = 6;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
-	},
-/area/bigredv2/outside/nw)
+/turf/template_noop,
+/area/template_noop)
 "bZ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -812,11 +775,14 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/engineer,
 /turf/open/floor{
-	dir = 2;
 	icon_state = "dark";
 	tag = "icon-dark"
 	},
 /area/bigredv2/outside/space_port)
+"Dc" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
 aa
@@ -827,16 +793,16 @@ ak
 aD
 ac
 bh
-bi
+bh
 by
 by
 by
-bE
-bG
-bG
-bS
-bG
-bn
+bY
+bY
+bY
+Dc
+bY
+bY
 bi
 "}
 (2,1,1) = {"
@@ -852,11 +818,11 @@ bt
 bj
 bC
 bj
-bR
-bU
-bx
-bU
-bU
+bY
+bY
+Dc
+bY
+bY
 bY
 bi
 "}

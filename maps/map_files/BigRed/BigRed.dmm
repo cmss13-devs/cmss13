@@ -123,15 +123,13 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "aar" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/effect/landmark/hunter_primary,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/telecomm)
+/area/bigredv2/outside/space_port)
 "aas" = (
 /turf/open/floor{
 	dir = 1;
@@ -219,7 +217,7 @@
 	icon_state = "asteroidplating";
 	tag = "icon-asteroidplating"
 	},
-/area/bigredv2/outside/telecomm)
+/area/bigredv2/outside/space_port)
 "aaE" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
@@ -331,7 +329,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/telecomm)
+/area/bigredv2/outside/space_port)
 "aaS" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
@@ -728,7 +726,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/telecomm)
+/area/bigredv2/outside/space_port)
 "abQ" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -931,13 +929,15 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/marshall_office)
 "acu" = (
-/obj/effect/landmark/crap_item,
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigredv2/outside/telecomm)
+/area/bigred/ground/garage_workshop)
 "acv" = (
 /obj/structure/filingcabinet/security,
 /turf/open/floor{
@@ -7790,8 +7790,13 @@
 /turf/open/floor/wood,
 /area/bigredv2/caves/lambda/breakroom)
 "aun" = (
-/turf/closed/wall/solaris/reinforced/hull,
-/area/bigredv2/outside/w)
+/obj/structure/closet/firecloset/full,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigred/ground/garage_workshop)
 "auo" = (
 /obj/structure/sign/safety/maint{
 	pixel_y = 32
@@ -11976,8 +11981,13 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/se)
 "aEY" = (
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/outside/w)
+/obj/structure/closet/firecloset/full,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/bigred/ground/garage_workshop)
 "aEZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/trash/liquidfood,
@@ -29251,6 +29261,12 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/caves/eta/living)
+"bGp" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/tool,
+/obj/item/tool/hand_labeler,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "bGL" = (
 /turf/open/floor{
 	dir = 1;
@@ -29309,6 +29325,14 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
+"bWl" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigred/ground/garage_workshop)
 "bZL" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -29345,7 +29369,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "cns" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "se-checkpoint"
@@ -29551,6 +29575,11 @@
 	tag = "icon-whitegreencorner (WEST)"
 	},
 /area)
+"dEf" = (
+/obj/structure/closet/toolcloset,
+/obj/structure/machinery/light,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "dEr" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -29578,6 +29607,13 @@
 	tag = "icon-mars_cave_5"
 	},
 /area/bigredv2/caves_lambda)
+"dNn" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/bigred/ground/garage_workshop)
 "dPs" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -29615,12 +29651,28 @@
 	tag = "icon-darkgreencorners2"
 	},
 /area/bigredv2/caves/eta/storage)
+"eci" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_11"
+	},
+/area/bigredv2/caves_virology)
 "ecK" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_east)
+"ecX" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigred/ground/garage_workshop)
 "ejP" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/se)
@@ -29666,6 +29718,13 @@
 	tag = "icon-mars_cave_22"
 	},
 /area/bigredv2/caves_research)
+"exc" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/bigred/ground/garage_workshop)
 "eAU" = (
 /turf/open/floor{
 	dir = 4;
@@ -29673,6 +29732,10 @@
 	tag = "icon-asteroidwarning (EAST)"
 	},
 /area/bigredv2/outside/eta)
+"eDQ" = (
+/obj/structure/closet/secure_closet/engineering_personal,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "eEm" = (
 /obj/effect/landmark/crap_item,
 /obj/effect/landmark/queen_spawn,
@@ -29898,6 +29961,11 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/living)
+"fOc" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_3"
+	},
+/area/bigredv2/caves_virology)
 "fOK" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -29973,6 +30041,12 @@
 "gpR" = (
 /turf/open/gm/river,
 /area/bigredv2/outside/c)
+"gqS" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/light,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "grU" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -30172,6 +30246,10 @@
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave,
 /area/bigredv2/caves_research)
+"hBD" = (
+/obj/structure/bed/chair,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "hEC" = (
 /obj/structure/machinery/light,
 /turf/open/floor/plating,
@@ -30363,18 +30441,6 @@
 	tag = "icon-mars_dirt_4"
 	},
 /area/bigredv2/caves_north)
-"iOU" = (
-/obj/structure/machinery/door/poddoor/almayer{
-	dir = 4;
-	id = "garage";
-	name = "Vehicle Garage"
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/garage)
 "iQw" = (
 /obj/item/ore,
 /turf/open/mars_cave{
@@ -30438,6 +30504,12 @@
 	tag = "icon-asteroidwarning"
 	},
 /area/bigredv2/caves_lambda)
+"jcn" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "tcomms"
+	},
+/turf/closed/wall/solaris/rock,
+/area/bigredv2/caves)
 "jcR" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
@@ -30496,18 +30568,6 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_research)
-"jso" = (
-/obj/structure/machinery/door_control{
-	id = "garage";
-	name = "Garage Shutters";
-	pixel_x = 26;
-	range = 500
-	},
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/bigred/ground/garage)
 "jvt" = (
 /obj/structure/lz_sign/solaris_sign,
 /turf/open/mars,
@@ -30566,17 +30626,13 @@
 	},
 /area/bigredv2/outside/s)
 "jHS" = (
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox,
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/decal/cleanable/blood/oil/streak,
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/garage)
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "jJB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/mars,
@@ -30588,14 +30644,6 @@
 	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/caves_sw)
-"jRj" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
-	},
-/area/bigred/ground/garage)
 "jUc" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -30656,13 +30704,6 @@
 	tag = "icon-mars_cave_18"
 	},
 /area/bigredv2/caves_sw)
-"khF" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
-	},
-/area/bigred/ground/garage)
 "knN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -30742,11 +30783,13 @@
 	},
 /area/bigredv2/caves_lambda)
 "kFe" = (
-/obj/effect/landmark/nightmare{
-	insert_tag = "tcomms"
+/obj/structure/largecrate/random/barrel/white,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
-/turf/closed/wall/solaris/rock,
-/area/bigredv2/caves)
+/area/bigred/ground/garage_workshop)
 "kGm" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -30814,6 +30857,18 @@
 "laj" = (
 /turf/open/floor/plating,
 /area/bigredv2/outside/se)
+"lcu" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/mask/cigarette,
+/obj/item/clothing/mask/cigarette{
+	pixel_x = 5;
+	pixel_y = 6
+	},
+/obj/item/ashtray/bronze{
+	pixel_x = -7
+	},
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "lmg" = (
 /obj/structure/bed/chair/office/light{
 	dir = 4
@@ -30838,6 +30893,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/bigredv2/outside/se)
+"lwT" = (
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigred/ground/garage_workshop)
 "lwX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave{
@@ -30877,12 +30942,16 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/space_port)
 "lMC" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
+/obj/structure/machinery/light{
+	dir = 4
 	},
-/area/bigred/ground/garage)
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/bigred/ground/garage_workshop)
 "lQU" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -30930,24 +30999,22 @@
 	},
 /area/bigredv2/caves_sw)
 "lYZ" = (
-/obj/structure/closet/secure_closet/engineering_welding,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+/obj/structure/bed/chair/office/dark{
+	dir = 8
 	},
-/area/bigred/ground/garage)
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "meT" = (
 /turf/open/mars,
 /area/bigredv2/outside/eta)
 "mji" = (
-/obj/effect/landmark/corpsespawner/security,
-/turf/open/floor{
+/obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	name = "\improper Engineering Workshop";
+	req_one_access = null
 	},
-/area/bigred/ground/garage)
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "msf" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11";
@@ -30966,15 +31033,13 @@
 	},
 /area/bigredv2/outside/hydroponics)
 "msS" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "mxf" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
@@ -30996,6 +31061,10 @@
 	icon_state = "dark"
 	},
 /area/bigredv2/outside/filtration_plant)
+"mBI" = (
+/obj/structure/closet/secure_closet/engineering_electrical,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "mDk" = (
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/mars_cave{
@@ -31107,33 +31176,24 @@
 	tag = "icon-mars_dirt_5"
 	},
 /area/bigredv2/outside/eta)
-"nGr" = (
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
-	},
-/area/bigred/ground/garage)
 "nGt" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "admin"
 	},
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/admin_building)
-"nHj" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/bigred/ground/garage)
 "nMB" = (
-/obj/structure/machinery/light,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+/obj/structure/machinery/door_control{
+	id = "workshop_br_g";
+	name = "Workshop Garage Lockdown";
+	pixel_x = 28
 	},
-/area/bigred/ground/garage)
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/bigred/ground/garage_workshop)
 "nUp" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_20";
@@ -31210,13 +31270,6 @@
 	tag = "icon-mars_cave_11"
 	},
 /area/bigredv2/caves_east)
-"ohZ" = (
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
-	},
-/area/bigred/ground/garage)
 "oip" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_6";
@@ -31241,10 +31294,6 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_se)
-"otW" = (
-/obj/vehicle/multitile/van/fixed,
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
 "ovq" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -31254,13 +31303,9 @@
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
 "oxk" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/garage)
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "oxp" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -31454,21 +31499,27 @@
 	},
 /area/bigredv2/caves_se)
 "pVP" = (
-/obj/structure/machinery/power/apc/high{
-	dir = 1
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "pYt" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_7";
 	tag = "icon-mars_dirt_7"
 	},
 /area/bigredv2/caves_sw)
+"qaK" = (
+/obj/structure/largecrate,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigred/ground/garage_workshop)
 "qez" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -31500,15 +31551,15 @@
 	},
 /area/bigredv2/outside/e)
 "qiA" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/surface/table/reinforced/prison,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/item/tool/extinguisher,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
 	},
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "qkB" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_8";
@@ -31524,13 +31575,9 @@
 /area/bigredv2/caves_sw)
 "qlK" = (
 /obj/structure/surface/rack,
-/obj/effect/spawner/random/tool,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/garage)
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "qmY" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/mars_cave{
@@ -31545,19 +31592,16 @@
 	},
 /area/bigredv2/outside/filtration_plant)
 "qrZ" = (
-/obj/structure/surface/rack,
-/obj/item/hardpoint/locomotion/van_wheels{
-	unacidable = 1
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTH)"
-	},
-/area/bigred/ground/garage)
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/firstaid/fire,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "qsE" = (
 /turf/closed/wall/solaris/reinforced,
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
+"qtx" = (
+/turf/closed/wall/solaris/reinforced/hull,
+/area/bigredv2/outside/space_port_lz2)
 "qvA" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/mars_cave{
@@ -31586,18 +31630,17 @@
 	},
 /area/bigredv2/caves_sw)
 "qEJ" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/poddoor/almayer{
 	dir = 4;
-	id = "garage";
-	name = "Vehicle Garage"
+	id = "workshop_br_g";
+	name = "\improper Workshop Garage"
 	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "qFY" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -31624,6 +31667,12 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/bigredv2/outside/eta)
+"qNP" = (
+/obj/structure/bed/chair{
+	dir = 8
+	},
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "qQn" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -31677,8 +31726,9 @@
 	},
 /area/bigredv2/outside/se)
 "rml" = (
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
+/obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "rnc" = (
 /turf/open/mars_cave,
 /area/bigredv2/caves_research)
@@ -31722,22 +31772,18 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
+"rCA" = (
+/turf/open/mars_cave{
+	icon_state = "mars_cave_7"
+	},
+/area/bigredv2/caves_virology)
 "rDP" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_virology)
-"rGg" = (
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/bigred/ground/garage)
 "rGP" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -31760,14 +31806,11 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "rMG" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
-	},
-/area/bigred/ground/garage)
+/obj/structure/machinery/cm_vending/sorted/tech/comp_storage,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "rRO" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11";
@@ -31813,11 +31856,11 @@
 	},
 /area/bigredv2/caves_east)
 "shV" = (
-/obj/vehicle/multitile/van/decrepit{
-	dir = 1
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
 	},
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "siu" = (
 /turf/open/floor{
 	icon_state = "asteroidwarning";
@@ -31854,11 +31897,12 @@
 	},
 /area/bigredv2/caves_research)
 "suV" = (
-/obj/vehicle/multitile/van/fixed{
-	dir = 1
+/obj/structure/machinery/door/airlock/almayer/engineering{
+	name = "\improper Engineering Workshop";
+	req_one_access = null
 	},
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "svp" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
@@ -31977,6 +32021,11 @@
 	tag = "icon-dark"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"tcb" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/pizzabox/meat,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "tft" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave,
@@ -32010,12 +32059,13 @@
 	},
 /area/bigredv2/caves_north)
 "tlP" = (
-/obj/structure/closet/secure_closet/engineering_welding,
-/turf/open/floor{
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning"
+/obj/structure/machinery/cm_vending/sorted/tech/tool_storage,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
 	},
-/area/bigred/ground/garage)
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "trk" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_13";
@@ -32084,11 +32134,13 @@
 	},
 /area/bigredv2/caves_lambda)
 "tIA" = (
-/turf/open/floor/plating{
-	dir = 4;
-	icon_state = "warnplate"
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/area/bigred/ground/garage)
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "tLt" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_14";
@@ -32112,6 +32164,10 @@
 /obj/item/pizzabox,
 /turf/open/floor,
 /area/bigredv2/outside/engineering)
+"tVn" = (
+/obj/item/tool/lighter/zippo,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "tVp" = (
 /turf/open/mars_cave{
 	icon_state = "mars_dirt_4";
@@ -32151,9 +32207,9 @@
 	},
 /area/bigredv2/caves_lambda)
 "upE" = (
-/obj/structure/machinery/light,
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "usG" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_18";
@@ -32176,9 +32232,12 @@
 	},
 /area/bigredv2/caves/lambda/xenobiology)
 "uvz" = (
-/obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigred/ground/garage_workshop)
 "uzv" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -32193,11 +32252,9 @@
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/caves)
 "uFp" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
+/obj/structure/machinery/mill,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "uGz" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -32207,16 +32264,14 @@
 	},
 /area/bigredv2/caves/eta/xenobiology)
 "uIB" = (
-/obj/structure/surface/rack,
-/obj/item/hardpoint/locomotion/van_wheels{
-	unacidable = 1
-	},
+/obj/vehicle/multitile/van/decrepit,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "uPm" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_5";
@@ -32286,6 +32341,11 @@
 	},
 /area/bigredv2/outside/eta)
 "viN" = (
+/obj/structure/machinery/door_control{
+	id = "workshop_br_g";
+	name = "Workshop Garage Lockdown";
+	pixel_x = -28
+	},
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -32294,7 +32354,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "vjc" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -32411,13 +32471,8 @@
 	},
 /area/bigredv2/outside/space_port_lz2)
 "vLd" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/garage)
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "vNh" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars_cave{
@@ -32454,7 +32509,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigred/ground/garage)
+/area/bigred/ground/garage_workshop)
 "waJ" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -32494,13 +32549,22 @@
 	},
 /area/bigredv2/caves_se)
 "whZ" = (
-/obj/vehicle/multitile/van/decrepit,
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
+/obj/effect/decal/cleanable/blood/oil/streak,
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
+	},
+/area/bigred/ground/garage_workshop)
 "wix" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/bigred/ground/garage)
+/obj/structure/machinery/light{
+	dir = 8
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigred/ground/garage_workshop)
 "wiK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/light{
@@ -32624,16 +32688,9 @@
 	},
 /area/bigredv2/caves_north)
 "wMQ" = (
-/obj/structure/reagent_dispensers/fueltank,
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/garage)
+/obj/structure/largecrate/random/secure,
+/turf/open/floor,
+/area/bigred/ground/garage_workshop)
 "wNw" = (
 /obj/structure/machinery/door/poddoor/almayer/closed{
 	dir = 4;
@@ -34406,7 +34463,6 @@ aao
 aao
 aao
 aao
-kFe
 aao
 aao
 aao
@@ -34419,8 +34475,9 @@ aao
 aao
 aao
 aao
-aao
-aao
+rDP
+rDP
+rDP
 jCY
 rDP
 rDP
@@ -34630,9 +34687,9 @@ aao
 aao
 aao
 aao
-aao
-aao
-aao
+rDP
+rDP
+rDP
 rDP
 rDP
 rDP
@@ -34840,7 +34897,7 @@ aao
 aao
 aao
 aao
-aao
+jcn
 aao
 aao
 rDP
@@ -35065,8 +35122,8 @@ rDP
 rDP
 rDP
 rDP
-rDP
-rDP
+ucH
+ucH
 ucH
 rDP
 rDP
@@ -35284,7 +35341,7 @@ rDP
 fLj
 rDP
 rDP
-rDP
+fLj
 rDP
 rDP
 rDP
@@ -35495,9 +35552,9 @@ oAf
 rDP
 rDP
 rDP
-fLj
-fLj
 rDP
+rDP
+fLj
 rDP
 rDP
 rDP
@@ -35712,6 +35769,8 @@ rDP
 fLj
 fLj
 rDP
+fLj
+fLj
 rDP
 rDP
 rDP
@@ -35721,13 +35780,11 @@ rDP
 rDP
 rDP
 rDP
-crQ
+rDP
+rDP
 ucH
 ucH
-ucH
-ucH
-ucH
-rDP
+fOc
 rDP
 rDP
 iwG
@@ -35887,20 +35944,20 @@ aao
 aao
 aao
 aae
-aar
-aas
-aas
-aas
-aas
-aar
-aas
-aas
-aas
-aas
-aas
-aas
-aar
-aas
+abQ
+aaf
+aaf
+aaf
+aaf
+abQ
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+abQ
+aaf
 aas
 acH
 acR
@@ -35935,13 +35992,13 @@ rDP
 rDP
 aao
 aao
-aao
-aao
-aao
-aao
-aao
-aao
-aao
+rDP
+rDP
+fLj
+fLj
+rCA
+ucH
+eci
 aao
 aao
 fwa
@@ -36104,21 +36161,21 @@ aao
 aao
 aao
 aae
-aas
+aaf
 aaD
 aaR
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
 acI
 acQ
 ade
@@ -36153,15 +36210,15 @@ aao
 aao
 aao
 aao
+fwa
+rDP
+rDP
+ucH
 aao
 aao
 aao
 aao
-aao
-aao
-aao
-aao
-dIz
+mZC
 aao
 aao
 aGo
@@ -36193,13 +36250,13 @@ aao
 aao
 aao
 aao
-aEV
-aEV
-aEV
-aoa
-aEY
-aEY
-aEY
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -36321,22 +36378,22 @@ aao
 aao
 aao
 aae
-aas
-aas
-aas
-aaZ
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-acu
-aas
-aas
-acI
+aaf
+aaf
+aaf
+aar
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+abi
+aaf
+aaf
+acJ
 acQ
 adf
 adv
@@ -36357,22 +36414,22 @@ all
 akl
 aao
 aao
+gJw
+vNh
+vNh
+gJw
 vNh
 vNh
 vNh
-vNh
-vNh
-vNh
-rDP
 aao
 aao
 aao
 aao
 aao
 aao
-aao
-aao
-aao
+crQ
+ucH
+oAf
 aao
 aao
 aao
@@ -36410,14 +36467,14 @@ aao
 aao
 aao
 aao
-aEV
-aEV
-aEV
-aoa
-aoa
-aEY
-aEY
-aEY
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -36538,22 +36595,22 @@ aae
 aae
 aae
 aae
-aas
-aas
-aas
-aas
-aas
-aas
-aas
-aas
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
 abP
-aas
-aas
-aas
-aas
-aas
-aas
-acI
+aaf
+aaf
+aaf
+aaf
+aaf
+aaf
+acJ
 acQ
 acQ
 acQ
@@ -36572,14 +36629,14 @@ acA
 acA
 acA
 acA
-qsE
-qsE
-qsE
-qsE
-qsE
-qsE
-qsE
 aao
+aao
+qsE
+qsE
+qsE
+qsE
+qsE
+qsE
 aao
 aao
 aao
@@ -36622,19 +36679,19 @@ aoD
 aRD
 aRD
 aoD
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aoa
-aEY
-aEY
-aEY
-aEY
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -36782,21 +36839,21 @@ aaf
 aaf
 aae
 aao
+aao
 qsE
 qsE
-clB
 qlK
 jHS
 qrZ
-uIB
-lYZ
-tlP
-wMQ
-vLd
-oxk
-qsE
 qsE
 aao
+qsE
+qsE
+vLd
+hBD
+bGp
+tcb
+qsE
 aao
 aao
 aao
@@ -36839,19 +36896,19 @@ aoD
 aIc
 aRE
 aoD
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aoa
-aEY
-aEY
-aEY
-aEY
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
 aao
 aao
 aao
@@ -36999,21 +37056,21 @@ aaf
 aaf
 aae
 aao
-qsE
-pVP
-oxk
-clB
-clB
-khF
-clB
-clB
-nGr
-clB
-clB
-clB
-clB
-qsE
 aao
+qsE
+oxk
+vLd
+lYZ
+vLd
+qsE
+qsE
+qsE
+wMQ
+upE
+hBD
+lcu
+gqS
+qsE
 aao
 aao
 aao
@@ -37056,22 +37113,22 @@ aoD
 aYA
 aWe
 aoD
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aoa
-aoa
-aun
-aun
-aun
-aun
 aao
 aao
+aao
+aao
+aao
+aao
+aao
+aao
+azR
+azR
+aao
+aao
+aao
+aao
+aao
+qtx
 ayf
 ayf
 ayf
@@ -37217,20 +37274,20 @@ aaf
 aae
 aao
 qsE
-ohZ
-ohZ
-ohZ
-ohZ
-jRj
-clB
-clB
-nGr
-ohZ
-ohZ
-ohZ
-ohZ
 qsE
-aao
+vLd
+upE
+vLd
+upE
+qsE
+rMG
+vLd
+vLd
+upE
+vLd
+qNP
+qNP
+qsE
 aao
 aao
 aao
@@ -37273,15 +37330,15 @@ aoD
 aYB
 aZj
 aoD
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aoa
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+azR
 aYF
 aYF
 aYF
@@ -37435,19 +37492,19 @@ aae
 aao
 qsE
 uFp
-rml
-otW
-rml
-khF
-rMw
-clB
-nGr
-rml
-rml
-rml
+vLd
+vLd
 upE
+vLd
 qsE
-aao
+tlP
+vLd
+upE
+vLd
+vLd
+upE
+vLd
+qsE
 aao
 aao
 aao
@@ -37490,15 +37547,15 @@ aoD
 aYA
 aRH
 aoD
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aoa
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+azR
 aYF
 aYF
 aYF
@@ -37652,19 +37709,19 @@ aae
 aao
 qsE
 tIA
-tIA
-tIA
-tIA
-khF
+vLd
+vLd
+vLd
+vLd
 mji
-clB
-rCd
-tIA
-tIA
-tIA
-tIA
+vLd
+vLd
+vLd
+vLd
+tVn
+vLd
+mBI
 qsE
-aao
 aao
 aao
 aao
@@ -37707,16 +37764,16 @@ aoD
 aoD
 aZk
 aoD
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aoa
-aoa
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+azR
+azR
 aYF
 aYF
 bgC
@@ -37869,19 +37926,19 @@ aae
 aao
 qsE
 rml
-rml
-rml
-rml
-khF
-clB
-clB
-nGr
-uvz
-rml
-rml
-rml
+vLd
+upE
+vLd
+vLd
+mji
+vLd
+vLd
+vLd
+upE
+vLd
+vLd
+dEf
 qsE
-aao
 aao
 aao
 aao
@@ -37924,15 +37981,15 @@ aWd
 aNc
 aRH
 aoD
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aoa
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+azR
 aYF
 aYF
 aYF
@@ -38085,20 +38142,20 @@ acJ
 aae
 aao
 qsE
-tIA
-nHj
-nHj
-tIA
-khF
-oxk
-clB
-nGr
-tIA
-tIA
-tIA
-tIA
 qsE
-aao
+suV
+suV
+qsE
+qsE
+qsE
+qsE
+qsE
+qsE
+vLd
+upE
+vLd
+eDQ
+qsE
 aao
 aao
 aao
@@ -38141,15 +38198,15 @@ aRF
 aNc
 aRH
 aoD
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aEV
-aoa
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+aao
+azR
 aYF
 aYF
 aYF
@@ -38302,20 +38359,20 @@ acJ
 aae
 aao
 qsE
-rml
+acu
 uvz
-whZ
+clB
 wix
-khF
 clB
 clB
-rCd
-rml
-rml
-suV
-rml
+uIB
+shV
 qsE
-aao
+suV
+suV
+qsE
+qsE
+qsE
 aao
 aao
 aao
@@ -38364,10 +38421,10 @@ aoD
 aoD
 aoD
 aoD
-aEV
-aEV
-aoa
-aoa
+aao
+aao
+azR
+azR
 aYF
 aYF
 aSB
@@ -38520,24 +38577,24 @@ aae
 aao
 qsE
 qiA
-tIA
-tIA
-tIA
-khF
+uvz
 clB
-oxk
-nGr
-tIA
-tIA
-tIA
-lMC
+uvz
+clB
+clB
+rMw
+whZ
+lwT
+pVP
+rCd
 qsE
 aao
 aao
 aao
 aao
-aao
-aao
+aeI
+aeI
+aeI
 aao
 aao
 aeI
@@ -38581,9 +38638,9 @@ aNc
 bco
 aNc
 aoD
-aEV
-aEV
-aoa
+aao
+aao
+azR
 aYF
 aYF
 bbc
@@ -38736,27 +38793,27 @@ acJ
 aae
 aao
 qsE
-rml
-rml
-rml
-rml
-khF
-clB
-mji
-nGr
-rml
+aun
 uvz
+clB
+msS
+clB
+clB
+clB
+whZ
+pVP
+pVP
 shV
-rml
 qsE
+aao
+aao
+aao
 aeI
 aeI
-aao
-aao
-aao
-aao
-aao
-aao
+aeI
+aeI
+aeI
+aeI
 aeI
 aeI
 aeI
@@ -38798,9 +38855,9 @@ aNc
 aNc
 aNc
 aoD
-aEV
-aEV
-aoa
+aao
+aao
+azR
 aYF
 aYF
 bcp
@@ -38953,20 +39010,20 @@ acJ
 aae
 aao
 qsE
-tIA
-rGg
-rMG
-jso
-khF
+aEY
+uvz
 clB
+uvz
+pVP
+pVP
 clB
 rCd
-tIA
-tIA
-rGg
-tIA
+exc
+exc
+dNn
 qsE
-aeI
+aao
+aao
 aeI
 aeI
 aeI
@@ -39015,10 +39072,10 @@ aNc
 aNc
 aNc
 aoD
-aEV
-aEV
-aoa
-aoa
+aao
+aao
+azR
+azR
 aYF
 bcp
 aSB
@@ -39171,19 +39228,19 @@ aae
 aao
 qsE
 qsE
-qsE
-qsE
-qsE
+kFe
+lMC
+uvz
 clB
-clB
-clB
-clB
+pVP
+pVP
+shV
+qaK
+bWl
 qsE
 qsE
-qsE
-qsE
-qsE
-aeI
+aao
+aao
 aeI
 aeI
 aeI
@@ -39232,9 +39289,9 @@ aoD
 asl
 aXx
 aoD
-aEV
-aEV
-aoa
+aao
+aao
+azR
 aYF
 aYF
 bcp
@@ -39387,17 +39444,17 @@ acJ
 aae
 aao
 aao
-aao
-aao
-aao
 qsE
-msS
-oxk
+qsE
+qsE
+uvz
+clB
 rMw
-nMB
+clB
+rCd
+ecX
 qsE
-aao
-aao
+qsE
 aao
 aao
 aeI
@@ -39449,9 +39506,9 @@ asl
 aYC
 aNi
 aoD
-aEV
-aEV
-aoa
+aao
+aao
+azR
 aYF
 aYF
 bcp
@@ -39606,14 +39663,14 @@ aao
 aao
 aao
 aao
-aao
 qsE
+nMB
 clB
 clB
-oxk
-clB
+rMw
+shV
 qsE
-aao
+qsE
 aao
 aao
 aao
@@ -39666,10 +39723,10 @@ asl
 aWT
 aXy
 aoD
-aEV
-aEV
-aoa
-aoa
+aao
+aao
+azR
+azR
 aYF
 bbJ
 aSB
@@ -39823,10 +39880,10 @@ aao
 aao
 aao
 aao
-aao
 qsE
-iOU
-iOU
+qsE
+qEJ
+qEJ
 qEJ
 qEJ
 qsE
@@ -39883,9 +39940,9 @@ asl
 aWU
 aXz
 aoD
-aEV
-aEV
-aoa
+aao
+aao
+azR
 jvt
 aYF
 aYF
@@ -40100,9 +40157,9 @@ aoa
 aoa
 aoa
 aoa
-aoa
-aoa
-aoa
+azR
+azR
+azR
 aYF
 aYF
 bbc
@@ -40317,7 +40374,7 @@ aSB
 aoa
 aSB
 aSB
-aoa
+azR
 aSB
 aSB
 bax

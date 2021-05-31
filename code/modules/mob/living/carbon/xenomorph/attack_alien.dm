@@ -515,6 +515,9 @@
 	if(locked)
 		to_chat(M, SPAN_WARNING("[src] is bolted down tight."))
 		return XENO_NO_DELAY_ACTION
+	if(heavy)
+		to_chat(M, SPAN_WARNING("[src] is too heavy to open."))
+		return XENO_NO_DELAY_ACTION
 	if(welded)
 		to_chat(M, SPAN_WARNING("[src] is welded shut."))
 		return XENO_NO_DELAY_ACTION

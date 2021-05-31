@@ -467,7 +467,7 @@
 /obj/item/weapon/melee/yautja/combistick/unique_action(mob/living/user)
 	if(user.get_active_hand() != src)
 		return
-	if(on)
+	if(!on)
 		user.visible_message(SPAN_INFO("With a flick of their wrist, [user] extends [src]."),\
 		SPAN_NOTICE("You extend [src]."),\
 		"You hear blades extending.")
@@ -483,6 +483,7 @@
 		if(blood_overlay && blood_color)
 			overlays.Cut()
 			add_blood(blood_color)
+		on = TRUE
 		update_icon()
 	else
 		unwield(user)
@@ -496,6 +497,7 @@
 		throwforce = MELEE_FORCE_TIER_6
 		attack_verb = list("thwacked", "smacked")
 		overlays.Cut()
+		on = FALSE
 		update_icon()
 
 	if(istype(user,/mob/living/carbon/human))
@@ -671,6 +673,14 @@
 		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
 	)
 
+	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
+	unacidable = TRUE
+	flags_equip_slot = SLOT_BACK
+	w_class = SIZE_LARGE
+	throw_speed = SPEED_VERY_FAST
+	edge = TRUE
+	hitsound = 'sound/weapons/bladeslice.ogg'
+
 /obj/item/weapon/melee/twohanded/yautja/spear
 	name = "hunter spear"
 	desc = "A spear of exquisite design, used by an ancient civilisation."
@@ -678,6 +688,8 @@
 	item_state = "spearhunter"
 	force = MELEE_FORCE_TIER_3
 	force_wielded = MELEE_FORCE_TIER_7
+	sharp = IS_SHARP_ITEM_SIMPLE
+	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
 /obj/item/weapon/melee/twohanded/yautja/glaive
 	name = "war glaive"
@@ -685,19 +697,12 @@
 	icon_state = "glaive"
 	item_state = "glaive"
 	force = MELEE_FORCE_TIER_3
-	w_class = SIZE_LARGE
-	flags_equip_slot = SLOT_BACK
 	force_wielded = MELEE_FORCE_TIER_9
 	throwforce = MELEE_FORCE_TIER_6
 	embeddable = FALSE //so predators don't lose their glaive when thrown.
-	throw_speed = SPEED_VERY_FAST
-	edge = 1
 	sharp = IS_SHARP_ITEM_BIG
 	flags_atom = FPRINT|CONDUCT
-	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
-	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
-	unacidable = TRUE
 	attack_speed = 14 //Default is 7.
 
 /obj/item/weapon/melee/twohanded/yautja/glaive/attack(mob/living/target, mob/living/carbon/human/user)

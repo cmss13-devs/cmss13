@@ -992,7 +992,7 @@ var/global/image/action_blue_power_up
 	if(user_flags & BEHAVIOR_IMMOBILE)
 		L.status_flags |= IMMOBILE_ACTION
 
-	L.action_busy = TRUE // target is not tethered by action, the action is tethered by target though
+	L.action_busy++ // target is not tethered by action, the action is tethered by target though
 	L.resisting = FALSE
 	L.clicked_something = list()
 	if(has_target && target_is_mob)
@@ -1121,7 +1121,7 @@ var/global/image/action_blue_power_up
 	if(target && target_icon)
 		target.overlays -= target_icon
 
-	L.action_busy = FALSE
+	L.action_busy--
 	L.resisting = FALSE
 	if(target_is_mob)
 		T.resisting = FALSE

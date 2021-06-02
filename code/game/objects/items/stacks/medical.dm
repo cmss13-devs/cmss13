@@ -10,6 +10,10 @@
 	var/heal_brute = 0
 	var/heal_burn = 0
 
+/obj/item/stack/medical/attack_self(mob/user)
+	..()
+	attack(user, user)
+
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(!istype(M))
 		to_chat(user, SPAN_DANGER("\The [src] cannot be applied to [M]!"))

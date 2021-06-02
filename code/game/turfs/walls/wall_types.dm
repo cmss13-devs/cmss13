@@ -140,7 +140,7 @@
 
 /turf/closed/wall/almayer/research/containment/wall/divide/proc/change_weeds()
 	for(var/obj/effect/alien/W in src) // Destroy all alien things on the divider (traps, special structures, etc)
-		playsound(loc, "alien_resin_break", 25)
+		playsound(src, "alien_resin_break", 25)
 		qdel(W)
 
 

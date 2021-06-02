@@ -242,8 +242,8 @@
 	icon_state = "green"
 	ceiling = CEILING_METAL
 
-/area/lv624/lazarus/garage
-	name = "vehicle garage"
+/area/lv624/lazarus/corporate_dome
+	name = "\improper Corporate Dome"
 	icon_state = "green"
 
 /area/lv624/lazarus/yggdrasil

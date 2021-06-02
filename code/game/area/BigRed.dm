@@ -14,8 +14,8 @@
 	name = "uground"
 	icon_state = "blue"
 
-/area/bigred/ground/garage
-	name = "vehicle garage"
+/area/bigred/ground/garage_workshop
+	name = "\improper garage workshop"
 	icon_state = "green"
 	ceiling = CEILING_METAL
 

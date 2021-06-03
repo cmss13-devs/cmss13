@@ -845,7 +845,7 @@
 		else //If neither hand can hold it, you must not have a free hand.
 			to_chat(usr, SPAN_WARNING("You need a free hand to do this!</b>"))
 
-/obj/item/clothing/gloves/yautja/proc/translate()
+/obj/item/clothing/gloves/yautja/verb/translate()
 	set name = "Translator"
 	set desc = "Emit a message from your bracer to those nearby."
 	set category = "Yautja.Utility"

@@ -1,7 +1,7 @@
 //This is the proc for gibbing a mob. Cannot gib ghosts.
 //added different sort of gibs and animations. N
 /mob/proc/gib(var/cause = "gibbing")
-	death(cause, 1)
+	death(create_cause_data(cause), 1)
 	gib_animation()
 	if (!SSticker?.mode?.hardcore)
 		spawn_gibs()

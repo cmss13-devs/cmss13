@@ -152,8 +152,12 @@ obj/structure/bed/Destroy()
 		var/obj/item/grab/G = W
 		if(ismob(G.grabbed_thing))
 			var/mob/M = G.grabbed_thing
-			to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
-			M.forceMove(loc)
+			var/atom/blocker = LinkBlocked(user, user.loc, loc)
+			if(blocker)
+				to_chat(user, SPAN_WARNING("\The [blocker] is in the way!"))
+			else
+				to_chat(user, SPAN_NOTICE("You place [M] on [src]."))
+				M.forceMove(loc)
 		return TRUE
 
 	else

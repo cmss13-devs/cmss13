@@ -131,6 +131,7 @@
 #define PROPERTY_EXCRETING			"excreting"
 #define PROPERTY_HYPOMETABOLIC		"hypometabolic"
 #define PROPERTY_SEDATIVE			"sedative"
+#define PROPERTY_TRANSFORMATIVE		"transformative"
 //Positive
 #define PROPERTY_ANTITOXIC			"anti-toxic"
 #define PROPERTY_ANTICORROSIVE		"anti-corrosive"

@@ -994,3 +994,16 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_CIPHERING = 1)
+
+/datum/reagent/fruit_resin
+	name = "Fruit Resin"
+	id = "fruit_resin"
+	description = "A strange green fluid found in certain xenomorphic structures. Seems to have regenerative properties."
+	reagent_state = LIQUID
+	nutriment_factor = 15 * REAGENTS_METABOLISM
+	color = "#12911d" // rgb: 102, 67, 48
+	overdose = MED_REAGENTS_OVERDOSE
+	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
+	flags = REAGENT_SCANNABLE

@@ -183,7 +183,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			) return TRUE
 		switch(user.faction)
 			if(
-				FACTION_DEATHSQUAD,
+				FACTION_WY_DEATHSQUAD,
 				FACTION_PMC,
 				FACTION_MERCENARY,
 				FACTION_FREELANCER,

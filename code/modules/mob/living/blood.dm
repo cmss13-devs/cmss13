@@ -257,7 +257,7 @@
 		return
 	if(species.name == "Yautja")
 		return "greenblood"
-	if(species.name == "Synthetic" || species.name == "Early Synthetic" || species.name == "Second Generation Synthetic")
+	if(species.name == "Synthetic" || species.name == "Early Synthetic" || species.name == "Second Generation Synthetic" || species.name == "Combat Synthetic")
 		return "whiteblood"
 	if(species.name == "Zombie")
 		return "greyblood"

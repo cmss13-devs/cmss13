@@ -160,7 +160,7 @@
 	// Get line of turfs
 	var/list/turf/target_turfs = list()
 
-	var/facing = get_dir(X, A)
+	var/facing = Get_Compass_Dir(X, A)
 	var/turf/T = X.loc
 	var/turf/temp = X.loc
 	var/list/telegraph_atom_list = list()

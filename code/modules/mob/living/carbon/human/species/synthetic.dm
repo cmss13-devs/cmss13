@@ -81,5 +81,16 @@
 
 	inherent_verbs = null
 
+// Synth used for W-Y Deathsquads
+/datum/species/synthetic/early_synthetic/w_y_combat_synthetic
+	name = "Combat Synthetic"
+	name_plural = "Combat Synthetics"
+	burn_mod = 0.6 // Made for combat
+
+	total_health = 250 //Made for Combat
+
+	knock_down_reduction = 5.0
+	stun_reduction = 5.0
+
 /datum/species/synthetic/event
 	name = "Event Synthetic" //To prevent any conflicts with natural spawns for events.

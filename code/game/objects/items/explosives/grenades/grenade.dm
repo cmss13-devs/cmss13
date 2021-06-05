@@ -24,7 +24,7 @@
 	. = ..()
 	det_time = rand(det_time - 5, det_time + 5)
 
-/obj/item/explosive/grenade/proc/can_use_grenade(mob/user)
+/obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
 	if(!hand_throwable)
 		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
 		return FALSE
@@ -33,7 +33,7 @@
 		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
 		return FALSE
 
-	if(harmful && isSynth(user))
+	if(harmful && !user.allow_gun_usage)
 		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
 		return FALSE
 

@@ -137,6 +137,7 @@
 	scatter = SCATTER_AMOUNT_TIER_10
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
 	scatter_unwielded = SCATTER_AMOUNT_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
 
 //-------------------------------------------------------
 //M40-SD AKA MARSOC RIFLE FROM HELL (It's actually an M41A, don't tell!)

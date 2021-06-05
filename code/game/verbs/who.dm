@@ -20,7 +20,7 @@
 							FACTION_UPP = 0,
 							FACTION_FREELANCER = 0,
 							FACTION_SURVIVOR = 0,
-							FACTION_DEATHSQUAD = 0,
+							FACTION_WY_DEATHSQUAD = 0,
 							FACTION_COLONIST = 0,
 							FACTION_MERCENARY = 0,
 							FACTION_DUTCH = 0,
@@ -168,7 +168,7 @@
 			if(CLIENT_HAS_RIGHTS(C, mappings[category]))
 				LAZYADD(listings[category], C)
 				break
-	
+
 	var/output = ""
 	for(var/category in listings)
 		output += "\n<b>Current [category] ([length(listings[category])]):</b>\n"

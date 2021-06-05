@@ -904,7 +904,7 @@ This function completely restores a damaged organ to perfect condition.
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
 		return
 
-	if(owner.species.flags & NO_PERMANENT_DAMAGE)
+	if(owner.status_flags & NO_PERMANENT_DAMAGE)
 		owner.visible_message(\
 			SPAN_WARNING("[owner] withstands the blow!"),
 			SPAN_WARNING("Your [display_name] withstands the blow!"))

@@ -206,7 +206,6 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	. = X.build_resin(A, thick, make_message, plasma_cost != 0)
 	..()
-	return
 
 // Destructive Acid
 /datum/action/xeno_action/activable/corrosive_acid/use_ability(atom/A)

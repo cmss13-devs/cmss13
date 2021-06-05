@@ -7,7 +7,9 @@
 	var/ability_primacy = XENO_NOT_PRIMARY_ACTION // Determines how the default ability macros handle this.
 
 	// Cooldown
-	var/xeno_cooldown = null   // Cooldown of the ability
+	/// Cooldown of the ability (do not use the cooldown var)
+	/// Probably should only have the cooldown var, but that is for another rework
+	var/xeno_cooldown = null
 	var/cooldown_message = null
 
 	var/cooldown_timer_id = TIMER_ID_NULL // holds our timer ID
@@ -57,7 +59,7 @@
 
 /datum/action/xeno_action/can_use_action()
 	if(!owner)
-		return
+		return FALSE
 	var/mob/living/carbon/Xenomorph/X = owner
 	if(X && !X.is_mob_incapacitated() && !X.dazed && !X.lying && !X.buckled && X.plasma_stored >= plasma_cost)
 		return TRUE
@@ -176,10 +178,10 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 	// Uh oh! STINKY! already on cooldown
 	if (cooldown_timer_id != TIMER_ID_NULL)
-	/* 
+	/*
 		Debug log disabled due to our historical inability at doing anything meaningful about it
 		And to make room for ones that matter more in regard to our ability to fix.
-		The whole of ability code is fucked up, the 'SHOULD NEVER BE OVERRIDEN' note above is 
+		The whole of ability code is fucked up, the 'SHOULD NEVER BE OVERRIDEN' note above is
 		completely ignored as about 20 procs override it ALREADY...
 		This is broken beyond repair and should just be reimplemented
 		log_debug("Xeno action [src] tried to go on cooldown while already on cooldown.")
@@ -187,11 +189,10 @@
 		*/
 		return
 
-	// First determine the appopriate cooldown
-	var/cooldown_to_apply = cooldown // Use this as fallback
+	var/cooldown_to_apply = xeno_cooldown
 
-	if(xeno_cooldown)
-		cooldown_to_apply = xeno_cooldown
+	if(!cooldown_to_apply)
+		return
 
 	cooldown_to_apply = cooldown_to_apply * (1 - Clamp(X.cooldown_reduction_percentage, 0, 0.5))
 
@@ -202,8 +203,6 @@
 
 	// Update our button
 	update_button_icon()
-
-	return
 
 // Call when you absolutely MUST have a cooldown of the passed duration
 // Useful for things like abilities with 2 xeno_cooldown
@@ -218,7 +217,6 @@
 	cooldown_timer_id = addtimer(CALLBACK(src, .proc/on_cooldown_end), cooldown_duration, TIMER_OVERRIDE|TIMER_UNIQUE | TIMER_STOPPABLE)
 	current_cooldown_duration = cooldown_duration
 	current_cooldown_start_time = world.time
-	return
 
 // Checks whether the action is on cooldown. Should not be overridden.
 // Returns TRUE if the action can be used and FALSE otherwise.

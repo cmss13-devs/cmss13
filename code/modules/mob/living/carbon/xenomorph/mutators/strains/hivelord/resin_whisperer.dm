@@ -18,7 +18,7 @@
 
 /datum/xeno_mutator/resinwhisperer/apply_mutator(var/datum/mutator_set/individual_mutators/MS)
 	. = ..()
-	if(. == 0)
+	if(!.)
 		return
 
 	var/mob/living/carbon/Xenomorph/Hivelord/H = MS.xeno
@@ -45,7 +45,7 @@
 	action_icon_state = "secrete_resin"
 	ability_name = "coerce resin"
 	var/last_use = 0
-	cooldown = 20
+	xeno_cooldown = 2 SECONDS
 	thick = FALSE
 	make_message = FALSE
 
@@ -53,17 +53,6 @@
 
 	macro_path = /datum/action/xeno_action/verb/verb_coerce_resin
 	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/activable/secrete_resin/remote/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X)
-		return FALSE
-
-	if(X.selected_resin)
-		// Account for the do_after in the resin building proc when checking cooldown
-		var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.selected_resin]
-		var/total_build_time = RC.build_time*X.caste.build_time_mult
-		return (world.time >= last_use + (total_build_time + cooldown))
 
 /datum/action/xeno_action/activable/secrete_resin/remote/use_ability(atom/A)
 	if(!action_cooldown_check())
@@ -88,12 +77,12 @@
 	if(!X.selected_resin)
 		return
 
-	last_use = world.time
-
 	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.selected_resin]
 	T.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [RC.construction_name]!"), null, 5)
 	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [RC.construction_name]."))
 	playsound(T, "alien_resin_build", 25)
+
+	apply_cooldown()
 
 /datum/action/xeno_action/verb/verb_coerce_resin()
 	set category = "Alien"

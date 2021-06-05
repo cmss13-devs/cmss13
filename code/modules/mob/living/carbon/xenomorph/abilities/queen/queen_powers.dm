@@ -340,6 +340,21 @@
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to readmit."))
 
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/A)
+	. = ..()
+	if(!.)
+		return
+
+	if(!boosted)
+		return
+	var/mob/living/carbon/Xenomorph/X = owner
+	var/datum/hive_status/HS = X.hive
+	if(!HS || !HS.hive_location)
+		return
+	// 5 screen radius
+	if(get_dist(A, HS.hive_location) > 35)
+		// Apply the normal cooldown if not building near the hive
+		apply_cooldown_override(initial(xeno_cooldown))
 
 /datum/action/xeno_action/onclick/eye/use_ability(atom/A)
 	. = ..()

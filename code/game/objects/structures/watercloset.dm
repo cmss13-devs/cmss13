@@ -7,14 +7,25 @@
 	icon_state = "toilet00"
 	density = 0
 	anchored = 1
+	can_buckle = TRUE
 	var/open = 0			//if the lid is up
 	var/cistern = 0			//if the cistern bit is open
 	var/w_items = 0			//the combined w_class of all the items in the cistern
 	var/mob/living/swirlie = null	//the mob being given a swirlie
+	var/list/buckling_y = list("north" = 1, "south" = 4, "east" = 0, "west" = 0)
+	var/list/buckling_x = list("north" = 0, "south" = 0, "east" = -5, "west" = 4)
+	var/atom/movable/overlay/cistern_overlay
 
-/obj/structure/toilet/New()
+
+
+/obj/structure/toilet/Initialize()
 	..()
 	open = round(rand(0, 1))
+	cistern_overlay = new()
+	cistern_overlay.icon = icon
+	cistern_overlay.layer = ABOVE_MOB_LAYER
+	cistern_overlay.vis_flags = VIS_INHERIT_DIR|VIS_INHERIT_ID
+	vis_contents += cistern_overlay
 	update_icon()
 
 /obj/structure/toilet/attack_hand(mob/living/user as mob)
@@ -23,25 +34,97 @@
 		swirlie.apply_damage(8, BRUTE)
 		return
 
-	if(cistern && !open)
-		if(!contents.len)
-			to_chat(user, SPAN_NOTICE("The cistern is empty."))
-			return
-		else
-			var/obj/item/I = pick(contents)
-			if(ishuman(user))
-				user.put_in_hands(I)
+	if(!open)
+		if(cistern)
+			if(!length(contents))
+				to_chat(user, SPAN_NOTICE("The cistern is empty."))
+				return
 			else
-				I.forceMove(get_turf(src))
-			to_chat(user, SPAN_NOTICE("You find \an [I] in the cistern."))
-			w_items -= I.w_class
-			return
+				var/obj/item/I = pick(contents)
+				if(ishuman(user))
+					user.put_in_hands(I)
+				else
+					I.forceMove(get_turf(src))
+				to_chat(user, SPAN_NOTICE("You find \an [I] in the cistern."))
+				w_items -= I.w_class
+				return
+		else
+			open = !open	// Toggles open to opposite state
+			update_icon()
+
+	if(open && (do_after(user, 1 SECONDS)))
+		switch(user.nutrition)
+			if((1 + NUTRITION_NORMAL) to NUTRITION_MAX)
+				to_chat(user, SPAN_NOTICE("The toilet starts flushing. You start feeling a bit more hungry."))
+				user.nutrition = ((NUTRITION_LOW + NUTRITION_NORMAL) * 0.5)
+			if((1 + NUTRITION_LOW) to NUTRITION_NORMAL)
+				to_chat(user, SPAN_NOTICE("The toilet starts flushing. You could go for some food right now."))
+				user.nutrition = ((NUTRITION_VERYLOW + NUTRITION_LOW) * 0.5)
+			if((1 + NUTRITION_VERYLOW) to NUTRITION_LOW)
+				to_chat(user, SPAN_NOTICE("The toilet starts flushing. Your stomach growls and you feel a little thinner."))
+				user.nutrition = NUTRITION_VERYLOW * 0.5
+			else
+				to_chat(user, SPAN_NOTICE("The toilet starts flushing. You feel starved. Go grab something to eat!"))
+				user.nutrition = 0
+
+		playsound(loc, 'sound/effects/toilet_flush_new.ogg', 25, 1)
+
+		flick("toilet1[cistern]_flush", src)
+		if(dir == SOUTH)
+			flick("cistern[cistern]_flush", cistern_overlay)
+
+
+
+/obj/structure/toilet/send_buckling_message(mob/M, mob/user)
+	if (M == user)
+		to_chat(M, SPAN_NOTICE("You seat yourself onto the toilet"))
+	else
+		to_chat(user, SPAN_NOTICE("[M] has been seated onto the toilet by [user]."))
+		to_chat(M, SPAN_NOTICE("You have been seated onto the toilet by [user]."))
+
+/obj/structure/toilet/afterbuckle(mob/M)
+	. = ..()
+
+
+	if(. && buckled_mob == M)
+		var/direction = dir2text(dir)
+		M.pixel_y = buckling_y[direction] + pixel_y
+		M.pixel_x = buckling_x[direction] + pixel_x
+		density = 1
+
+		if(dir == NORTH)
+			if(cistern == 1)
+				M.overlays += image("toilet01")
+			else
+				M.overlays += image("toilet00")
+	else
+		M.pixel_y = initial(buckled_mob.pixel_y)
+		M.old_y = initial(buckled_mob.pixel_y)
+		M.pixel_x = initial(buckled_mob.pixel_x)
+		M.old_x = initial(buckled_mob.pixel_x)
+		density = 0
+
+		if(dir == NORTH)
+			if(cistern == 1)
+				M.overlays -= image("toilet01")
+			else
+				M.overlays -= image("toilet00")
+
+
+
+/obj/structure/toilet/verb/flip_lid()
+	set name = "Flip lid"
+	set category = "Object"
+	set src in view(1)
 
 	open = !open
 	update_icon()
 
+
+
 /obj/structure/toilet/update_icon()
 	icon_state = "toilet[open][cistern]"
+	cistern_overlay.icon_state = "cistern[cistern]"
 
 /obj/structure/toilet/attackby(obj/item/I, mob/living/user)
 	if(istype(I, /obj/item/tool/crowbar))
@@ -344,10 +427,27 @@
 /obj/structure/sink
 	name = "sink"
 	icon = 'icons/obj/structures/props/watercloset.dmi'
-	icon_state = "sink"
+	icon_state = "sink_emptied_animation"
 	desc = "A sink used for washing one's hands and face."
 	anchored = 1
 	var/busy = 0 	//Something's being washed at the moment
+
+/obj/structure/sink/Initialize()
+	..()
+	if(prob(50))
+		icon_state = "sink_emptied"
+
+
+
+/obj/structure/sink/proc/stop_flow()		//sets sink animation to normal sink (without running water)
+
+	if(prob(50))
+		icon_state = "sink_emptied_animation"
+	else
+		icon_state = "sink_emptied"
+	flick("sink_animation_empty", src)
+
+
 
 /obj/structure/sink/attack_hand(mob/user)
 	if(isRemoteControlling(user))
@@ -361,6 +461,10 @@
 		return
 
 	to_chat(usr, SPAN_NOTICE(" You start washing your hands."))
+	flick("sink_animation_fill", src) //<- play the filling animation then automatically switch back to the loop
+	icon_state = "sink_animation_fill_loop" //<- set it to the loop
+	addtimer(CALLBACK(src, .proc/stop_flow), 6 SECONDS)
+	playsound(loc, 'sound/effects/sinkrunning.ogg', 25, TRUE)
 
 	busy = 1
 	sleep(40)

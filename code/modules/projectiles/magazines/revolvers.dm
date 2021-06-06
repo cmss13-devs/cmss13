@@ -40,6 +40,11 @@
 	default_ammo = /datum/ammo/bullet/revolver/penetrating
 	icon_state = "m44_penetrating"
 
+/obj/item/ammo_magazine/revolver/cluster
+	name = "\improper M44 cluster speed loader (.44)"
+	desc = "A revolver speed loader. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
+	default_ammo = /datum/ammo/bullet/revolver/cluster
+	icon_state = "m44_cluster"
 
 /obj/item/ammo_magazine/revolver/upp
 	name = "\improper N-Y speed loader (7.62x38mmR)"

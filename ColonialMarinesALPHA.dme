@@ -271,6 +271,7 @@
 #include "code\datums\buildmode\buildmode_datum.dm"
 #include "code\datums\buildmode\buildmode_objects.dm"
 #include "code\datums\components\_component.dm"
+#include "code\datums\components\cluster_stack.dm"
 #include "code\datums\components\toxin_buildup.dm"
 #include "code\datums\components\weed_damage_reduction.dm"
 #include "code\datums\components\xeno\shield_slash.dm"

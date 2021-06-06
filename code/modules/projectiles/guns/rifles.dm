@@ -288,6 +288,7 @@
 		/obj/item/ammo_magazine/rifle/penetrating,
 		/obj/item/ammo_magazine/rifle/m41aMK1,
 		/obj/item/ammo_magazine/rifle/m41aMK1/incendiary,
+		/obj/item/ammo_magazine/rifle/m41aMK1/cluster,
 		/obj/item/ammo_magazine/rifle/m41aMK1/toxin,
 		/obj/item/ammo_magazine/rifle/m41aMK1/penetrating,
 	)

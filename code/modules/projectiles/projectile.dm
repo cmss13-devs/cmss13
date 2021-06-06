@@ -972,6 +972,9 @@
 
 	bullet_message(P) //Message us about the bullet, since damage was inflicted.
 
+	if(SEND_SIGNAL(src, COMSIG_XENO_BULLET_ACT, damage_result, ammo_flags, P) & COMPONENT_CANCEL_BULLET_ACT)
+		return
+
 	if(damage)
 		apply_damage(damage_result,P.ammo.damage_type, P.def_zone)	//Deal the damage.
 		if(xeno_shields.len)

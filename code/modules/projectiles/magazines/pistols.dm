@@ -39,6 +39,12 @@
 	icon_state = "m4a3_penetrating"
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 
+/obj/item/ammo_magazine/pistol/cluster
+	name = "\improper M4A3 cluster magazine (9mm)"
+	desc = "A pistol magazine. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
+	icon_state = "m4a3_cluster"
+	default_ammo = /datum/ammo/bullet/pistol/heavy/cluster
+
 /obj/item/ammo_magazine/pistol/toxin
 	name = "\improper M4A3 toxin magazine (9mm)"
 	icon_state = "m4a3_toxin"
@@ -77,6 +83,11 @@
 	default_ammo = /datum/ammo/bullet/pistol/ap/penetrating
 	icon_state = "88m4_mag_penetrating"
 
+/obj/item/ammo_magazine/pistol/mod88/cluster
+	name = "\improper 88M4 cluster magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/ap/cluster
+	icon_state = "88m4_mag_cluster"
+
 /obj/item/ammo_magazine/pistol/mod88/incendiary
 	name = "\improper 88M4 incendiary magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/incendiary
@@ -107,6 +118,11 @@
 	name = "\improper VP78 wall-piercing magazine (9mm)"
 	default_ammo = /datum/ammo/bullet/pistol/squash/penetrating
 	icon_state = "vp78_penetrating"
+
+/obj/item/ammo_magazine/pistol/vp78/cluster
+	name = "\improper VP78 cluster magazine (9mm)"
+	default_ammo = /datum/ammo/bullet/pistol/squash/cluster
+	icon_state = "vp78_cluster"
 
 /obj/item/ammo_magazine/pistol/vp78/incendiary
 	name = "\improper VP78 incendiary magazine (9mm)"

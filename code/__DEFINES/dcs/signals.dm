@@ -209,6 +209,10 @@
 #define COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE "xeno_pre_calculate_armoured_damage"
 #define COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE "xeno_pre_apply_armoured_damage"
 
+/// From /mob/living/carbon/Xenomorph/bullet_act
+#define COMSIG_XENO_BULLET_ACT "xeno_bullet_act"
+	//#define COMPONENT_CANCEL_BULLET_ACT (1<<0) already defined
+
 /// from /mob/living/carbon/Xenomorph/get_status_tab_items(): (list/statdata)
 #define COMSIG_XENO_APPEND_TO_STAT "xeno_append_to_stat"
 

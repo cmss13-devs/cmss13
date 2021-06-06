@@ -273,6 +273,15 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
 
+/datum/ammo/bullet/pistol/ap/cluster
+	name = "cluster pistol bullet"
+	shrapnel_chance = 0
+	var/cluster_addon = 1.5
+
+/datum/ammo/bullet/pistol/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
+
 /datum/ammo/bullet/pistol/ap/toxin
 	name = "toxic pistol bullet"
 	var/acid_per_hit = 10
@@ -316,6 +325,14 @@
 	damage = BULLET_DAMAGE_TIER_8
 	penetration= ARMOR_PENETRATION_TIER_2
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+
+/datum/ammo/bullet/pistol/heavy/cluster
+	name = "heavy cluster pistol bullet"
+	var/cluster_addon = 1.5
+
+/datum/ammo/bullet/pistol/heavy/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/pistol/heavy/highimpact
 	name = "heavy high-impact pistol bullet"
@@ -398,6 +415,15 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
+
+/datum/ammo/bullet/pistol/squash/cluster
+	name = "cluster squash-head pistol bullet"
+	shrapnel_chance = 0
+	var/cluster_addon = 2
+
+/datum/ammo/bullet/pistol/squash/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/pistol/squash/incendiary
 	name = "incendiary squash-head pistol bullet"
@@ -518,6 +544,16 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
+
+/datum/ammo/bullet/revolver/cluster
+	name = "cluster revolver bullet"
+	shrapnel_chance = 0
+	var/cluster_addon = 4
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/revolver/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/revolver/nagant
 	name = "nagant revolver bullet"
@@ -765,6 +801,17 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
 
+/datum/ammo/bullet/smg/ap/cluster
+	name = "cluster submachinegun bullet"
+	shrapnel_chance = 0
+	damage = BULLET_DAMAGE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_10
+	var/cluster_addon = 0.8
+
+/datum/ammo/bullet/smg/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
+
 /datum/ammo/bullet/smg/le
 	name = "armor-shredding submachinegun bullet"
 
@@ -825,19 +872,6 @@
 	damage = BULLET_DAMAGE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_8
 
-/datum/ammo/bullet/rifle/type71
-	name = "heavy rifle bullet"
-
-	damage = BULLET_DAMAGE_TIER_7
-	penetration = ARMOR_PENETRATION_TIER_2
-
-/datum/ammo/bullet/rifle/type71/ap
-	name = "heavy armor-piercing rifle bullet"
-
-	damage = BULLET_DAMAGE_TIER_4
-	penetration = ARMOR_PENETRATION_TIER_10
-
-
 // Basically AP but better. Focused at taking out armour temporarily
 /datum/ammo/bullet/rifle/ap/toxin
 	name = "toxic rifle bullet"
@@ -871,6 +905,18 @@
 	LAZYADD(traits_to_give, list(
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
 	))
+
+/datum/ammo/bullet/rifle/ap/cluster
+	name = "cluster rifle bullet"
+	shrapnel_chance = 0
+
+	damage = BULLET_DAMAGE_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_10
+	var/cluster_addon = 1
+
+/datum/ammo/bullet/rifle/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/rifle/le
 	name = "armor-shredding rifle bullet"
@@ -949,6 +995,18 @@
 	name = "heavy rifle bullet"
 
 	damage = BULLET_DAMAGE_TIER_11
+
+/datum/ammo/bullet/rifle/type71
+	name = "heavy rifle bullet"
+
+	damage = BULLET_DAMAGE_TIER_7
+	penetration = ARMOR_PENETRATION_TIER_2
+
+/datum/ammo/bullet/rifle/type71/ap
+	name = "heavy armor-piercing rifle bullet"
+
+	damage = BULLET_DAMAGE_TIER_4
+	penetration = ARMOR_PENETRATION_TIER_10
 
 /*
 //================================================

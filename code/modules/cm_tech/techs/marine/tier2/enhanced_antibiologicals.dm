@@ -16,7 +16,7 @@
 	.["Incendiary Buckshot Kit"] = /obj/item/storage/box/shotgun/buckshot
 	.["Incendiary Slug Kit"] = /obj/item/storage/box/shotgun/slug
 	.["Incendiary Ammo Kit"] = /obj/item/ammo_kit/incendiary
-	.["Wall-Piercing Ammo Kit"] = /obj/item/ammo_kit/penetrating
+	.["Cluster Ammo Kit"] = /obj/item/ammo_kit/cluster
 	.["Toxin Ammo Kit"] = /obj/item/ammo_kit/toxin
 
 /obj/item/ammo_kit
@@ -114,6 +114,7 @@
 	)
 	to_hold = /obj/item/ammo_magazine/handful/shotgun/incendiary
 
+//unused due to thermal/wallpìercing combo
 /obj/item/ammo_kit/penetrating
 	name = "wall-piercing ammo kit"
 	icon_state = "kit_penetrating"
@@ -130,10 +131,26 @@
 	.[/obj/item/ammo_magazine/pistol/mod88] =  /obj/item/ammo_magazine/pistol/mod88/penetrating
 	.[/obj/item/ammo_magazine/revolver] =  /obj/item/ammo_magazine/revolver/penetrating
 
+/obj/item/ammo_kit/cluster
+	name = "cluster ammo kit"
+	icon_state = "kit_cluster"
+	desc = "Converts magazines into cluster-hit ammo. The ammo will stack up cluster micro-missiles inside the target, detonating them at a certain threshold."
+
+/obj/item/ammo_kit/cluster/get_convert_map()
+	. = ..()
+	.[/obj/item/ammo_magazine/smg/m39] = /obj/item/ammo_magazine/smg/m39/cluster
+	.[/obj/item/ammo_magazine/rifle] = /obj/item/ammo_magazine/rifle/cluster
+	.[/obj/item/ammo_magazine/rifle/l42a] = /obj/item/ammo_magazine/rifle/l42a/cluster
+	.[/obj/item/ammo_magazine/rifle/m41aMK1] = /obj/item/ammo_magazine/rifle/m41aMK1/cluster
+	.[/obj/item/ammo_magazine/pistol] =  /obj/item/ammo_magazine/pistol/cluster
+	.[/obj/item/ammo_magazine/pistol/vp78] =  /obj/item/ammo_magazine/pistol/vp78/cluster
+	.[/obj/item/ammo_magazine/pistol/mod88] =  /obj/item/ammo_magazine/pistol/mod88/cluster
+	.[/obj/item/ammo_magazine/revolver] =  /obj/item/ammo_magazine/revolver/cluster
+
 /obj/item/ammo_kit/toxin
 	name = "toxin ammo kit"
 	icon_state = "kit_toxin"
-	desc = "Converts magazines into toxin ammo."
+	desc = "Converts magazines into toxin ammo. Toxin ammo will poison your target, weakening their defences."
 
 /obj/item/ammo_kit/toxin/get_convert_map()
 	. = ..()

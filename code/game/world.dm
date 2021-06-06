@@ -228,7 +228,7 @@ var/world_topic_spam_protect_time = world.timeofday
 	var/s = ""
 
 	if(CONFIG_GET(string/servername))
-		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)]</b>"
+		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)]</b></a>"
 
 	if(SSmapping?.configs)
 		var/datum/map_config/MG = SSmapping.configs[GROUND_MAP]

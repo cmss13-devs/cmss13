@@ -782,6 +782,7 @@
 #include "code\game\objects\items\fulton.dm"
 #include "code\game\objects\items\gift_wrappaper.dm"
 #include "code\game\objects\items\handcuffs.dm"
+#include "code\game\objects\items\hoverpack.dm"
 #include "code\game\objects\items\legcuffs.dm"
 #include "code\game\objects\items\lightstick.dm"
 #include "code\game\objects\items\misc.dm"

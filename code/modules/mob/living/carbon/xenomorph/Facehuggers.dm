@@ -45,6 +45,11 @@
 	set_hive_data(src, hivenumber)
 	go_active()
 
+/obj/item/clothing/mask/facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if(PF)
+		PF.flags_pass |= PASS_MOB_THRU_XENO
+
 /obj/item/clothing/mask/facehugger/Destroy()
 	. = ..()
 	if(iscarbon(loc))

@@ -90,10 +90,24 @@
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
 	set waitfor = 0
-	if(!able_to_fire(user)) return
+	if(!able_to_fire(user))
+		return
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
-	if (!targloc || !curloc) return //Something has gone wrong...
+	if (!targloc || !curloc)
+		return //Something has gone wrong...
+
+	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
+		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+			return
+		if(active_attachable.current_rounds <= 0)
+			click_empty(user) //If it's empty, let them know.
+			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
+			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
+			active_attachable.activate_attachment(src, null, TRUE)
+		else
+			active_attachable.fire_attachment(target, src, user) //Fire it.
+		return
 
 	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
 		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
@@ -112,7 +126,8 @@
 		to_chat(user, SPAN_WARNING("The weapon isn't lit"))
 		return
 
-	if(!current_mag) return
+	if(!current_mag)
+		return
 	if(current_mag.current_rounds <= 0)
 		click_empty(user)
 	else

@@ -714,17 +714,14 @@
 		return 1
 
 /obj/item/weapon/gun/on_enter_storage(obj/item/storage/belt/gun/gun_belt)
-	if(istype(gun_belt))
-		if(!gun_belt.current_gun)
-			gun_belt.current_gun = src //If there's no active gun, we want to make this our icon.
-			gun_belt.update_gun_icon()
+	if(istype(gun_belt) && !gun_belt.current_gun)
+		gun_belt.current_gun = src //If there's no active gun, we want to make this our icon.
+		gun_belt.update_gun_icon()
 
 /obj/item/weapon/gun/on_exit_storage(obj/item/storage/belt/gun/gun_belt)
-	if(istype(gun_belt))
-		fast_pulled = TRUE //We fast pulled that gun, for equipped()
-		if(gun_belt.current_gun == src)
-			gun_belt.current_gun = null
-			gun_belt.update_gun_icon()
+	if(istype(gun_belt) && gun_belt.current_gun == src)
+		gun_belt.current_gun = null
+		gun_belt.update_gun_icon()
 
 /obj/item/storage/belt/gun/m4a3
 	name = "\improper M276 pattern general pistol holster rig"

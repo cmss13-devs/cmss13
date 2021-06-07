@@ -109,7 +109,6 @@
 		ET.moveToNullspace()
 
 /obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/Xenomorph/X = null) //drops and kills the hugger if any is remaining
-	set waitfor = 0
 	if(kill && status != EGG_DESTROYED)
 		hide_egg_triggers()
 		status = EGG_DESTROYED
@@ -122,22 +121,27 @@
 		icon_state = "Egg Opened"
 		flick("Egg Opening", src)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
-		sleep(1 SECONDS)
-		if(loc && status != EGG_DESTROYED)
-			status = EGG_BURST
-			var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
+		addtimer(CALLBACK(src, .proc/release_hugger, instant_trigger, X), 1 SECONDS)
 
-			child.flags_embryo = flags_embryo
-			flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
+/obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/Xenomorph/X)
+	if(!loc || status == EGG_DESTROYED)
+		return
 
-			if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
-				X.put_in_hands(child)
-				return
-			if(instant_trigger)
-				if(!child.leap_at_nearest_target())
-					child.return_to_egg(src)
-			else
-				child.go_idle()
+	status = EGG_BURST
+	var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
+
+	child.flags_embryo = flags_embryo
+	flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
+
+	if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
+		X.put_in_hands(child)
+		return
+
+	if(instant_trigger)
+		if(!child.leap_at_nearest_target())
+			child.return_to_egg(src)
+	else
+		child.go_idle()
 
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
 	..()
@@ -215,12 +219,14 @@
 	health -= damage
 	healthcheck()
 
-
 /obj/effect/alien/egg/proc/healthcheck()
 	if(health <= 0)
 		Burst(TRUE)
 
-/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
+/obj/effect/alien/egg/Crossed(atom/movable/AM)
+	HasProximity(AM)
+
+/obj/effect/alien/egg/HasProximity(atom/movable/AM)
 	if(status == EGG_GROWN)
 		if(!can_hug(AM, hivenumber) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
@@ -246,16 +252,15 @@
 	linked_eggmorph = source_eggmorph
 
 
-/obj/effect/egg_trigger/Crossed(atom/A)
+/obj/effect/egg_trigger/Crossed(atom/movable/AM)
 	if(!linked_egg && !linked_eggmorph) //something went very wrong.
 		qdel(src)
 	else if(linked_egg && (get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc))) //something went wrong
 		forceMove(linked_egg)
-
 	else if(linked_eggmorph && (get_dist(src, linked_eggmorph) != 1 || !isturf(linked_eggmorph.loc))) //something went wrong
 		forceMove(linked_eggmorph)
-	else if(iscarbon(A))
-		var/mob/living/carbon/C = A
+	else if(iscarbon(AM))
+		var/mob/living/carbon/C = AM
 		if(linked_egg)
 			linked_egg.HasProximity(C)
 		if(linked_eggmorph)

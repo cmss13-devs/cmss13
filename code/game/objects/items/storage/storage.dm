@@ -172,9 +172,9 @@
 				cx = 4
 				cy--
 	else
-		for (var/obj/O in contents)
+		for (var/obj/item/O in contents)
 			O.mouse_opacity = 2 //So storage items that start with contents get the opacity trick.
-			O.screen_loc = "[cx]:16,[cy]:16"
+			O.screen_loc = "[cx]:[16+O.hud_offset],[cy]:16"
 			O.layer = ABOVE_HUD_LAYER
 			cx++
 			if (cx > (4+cols))
@@ -256,7 +256,7 @@ var/list/global/item_storage_box_cache = list()
 		storage_start.overlays += src.stored_continue
 		storage_start.overlays += src.stored_end
 
-		O.screen_loc = "4:[round((startpoint+endpoint)/2)+2],2:16"
+		O.screen_loc = "4:[round((startpoint+endpoint)/2)+(2+O.hud_offset)],2:16"
 		O.layer = ABOVE_HUD_LAYER
 
 	src.closer.screen_loc = "4:[storage_width+19],2:16"

@@ -297,7 +297,7 @@
 	minimum_age = 40
 	skills = /datum/skills/commander
 
-	utility_under = /obj/item/clothing/under/marine
+	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap)
 	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
 

@@ -3,30 +3,21 @@
 GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("PERSONAL PRIMARY (CHOOSE 1)", 0, null, null, null),
 		list("M46C pulse rifle", 0, /obj/item/weapon/gun/rifle/m46c, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_RECOMMENDED),
-		list("FN FP9000", 0, /obj/item/weapon/gun/smg/fp9000, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
-		list("M16 rifle", 0, /obj/item/weapon/gun/rifle/m16, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 
 		list("PERSONAL SIDEARM (CHOOSE 1)", 0, null, null, null),
 		list("Mateba Autorevolver", 0, /obj/effect/essentials_set/cmateba, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("Desert Eagle", 0, /obj/item/storage/belt/gun/m4a3/heavy/co, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
-		list("M4A3 Custom Pistol", 0, /obj/item/storage/belt/gun/m4a3/commander, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
-		list("VP78 Pistol", 0, /obj/item/storage/belt/gun/m4a3/vp78, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("PRIMARY AMMUNITION", 0, null, null, null),
 		list("M41A MK1 Magazine", 40, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_RECOMMENDED),
 		list("M41A Extended Magazine", 30, /obj/item/ammo_magazine/rifle/extended, null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine", 20, /obj/item/ammo_magazine/rifle/ap, null, VENDOR_ITEM_REGULAR),
-		list("FN FP9000 Magazine", 20, /obj/item/ammo_magazine/smg/fp9000, null, VENDOR_ITEM_REGULAR),
-		list("M16 Magazine", 15, /obj/item/ammo_magazine/rifle/m16, null, VENDOR_ITEM_REGULAR),
-		list("M16 AP Magazine", 20, /obj/item/ammo_magazine/rifle/m16/ap, null, VENDOR_ITEM_REGULAR),
 
 		list("SIDEARM AMMUNITION", 0, null, null, null),
 		list("High Impact Mateba Speedloader (.454)", 20, /obj/item/ammo_magazine/revolver/mateba/highimpact, null, VENDOR_ITEM_REGULAR),
 		list("Mateba Speedloader (.454)", 10, /obj/item/ammo_magazine/revolver/mateba, null, VENDOR_ITEM_REGULAR),
 		list("High Impact Desert Eagle Magazine (.50)", 20, /obj/item/ammo_magazine/pistol/heavy/highimpact, null, VENDOR_ITEM_REGULAR),
 		list("Desert Eagle Magazine (.50)", 10, /obj/item/ammo_magazine/pistol/heavy, null, VENDOR_ITEM_REGULAR),
-		list("M4A3 Magazine (9mm)", 10, /obj/item/ammo_magazine/pistol, null, VENDOR_ITEM_REGULAR),
-		list("VP78 Magazine (9mm)", 10, /obj/item/ammo_magazine/pistol/vp78, null, VENDOR_ITEM_REGULAR),
 
 		list("SHOTGUN AMMUNITION", 0, null, null, null),
 		list("Buckshot Shells", 20, /obj/item/ammo_magazine/shotgun/buckshot, null, VENDOR_ITEM_REGULAR),
@@ -48,7 +39,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_commanding_officer, list(
 		list("Laser Sight", 15, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
 		list("Angled Grip", 15, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
 		list("Vertical Grip", 15, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Grenade Launcher", 15, /obj/item/attachable/attached_gun/grenade, null, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Shotgun", 15, /obj/item/attachable/attached_gun/shotgun, null, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Extinguisher", 15, /obj/item/attachable/attached_gun/extinguisher, null, VENDOR_ITEM_REGULAR),
 		list("Underbarrel Flamethrower", 15, /obj/item/attachable/attached_gun/flamer, null, VENDOR_ITEM_REGULAR),

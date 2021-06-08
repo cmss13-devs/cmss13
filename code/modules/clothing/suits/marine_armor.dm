@@ -369,13 +369,14 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M3 pattern admiral"
 	item_state_slots = list(WEAR_JACKET = "admiral")
 
-/obj/item/clothing/suit/storage/marine/MP/RO
+/obj/item/clothing/suit/storage/marine/MP/SO
 	icon_state = "officer"
 	name = "\improper M3 pattern officer armor"
 	desc = "A well-crafted suit of M3 Pattern Armor typically found in the hands of higher-ranking officers. Useful for letting your men know who is in charge when taking to the field."
 	flags_atom = null
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
 	specialty = "M2 pattern officer"
+	storage_slots = 3
 	item_state_slots = list(WEAR_JACKET = "officer")
 
 //Making a new object because we might want to edit armor values and such.
@@ -388,6 +389,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit)
 	flags_atom = NO_SNOW_TYPE
 	armor_bullet = CLOTHING_ARMOR_HIGH
+	storage_slots = 3
 	specialty = "M3 pattern captain"
 	item_state_slots = list(WEAR_JACKET = "co_officer")
 

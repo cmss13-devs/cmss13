@@ -75110,7 +75110,8 @@
 /area/almayer/evacuation/pod3)
 "wIr" = (
 /obj/structure/closet/secure_closet/req_officer,
-/obj/item/clothing/suit/storage/marine/MP/RO,
+/obj/item/clothing/suit/storage/marine/MP/SO,
+/obj/item/clothing/head/helmet/marine/MP/SO,
 /obj/item/clothing/suit/storage/RO,
 /turf/open/floor/almayer{
 	icon_state = "cargo";

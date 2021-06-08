@@ -54,7 +54,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm/tan(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/RO(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/SO(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/claymore/mercsword/ceremonial(H), WEAR_J_STORE)
@@ -89,7 +89,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/RO(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/SO(H), WEAR_JACKET)
 
 //*****************************************************************************************************/
 

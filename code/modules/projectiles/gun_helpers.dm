@@ -140,6 +140,13 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 
 	turn_off_light(user)
 
+	if(fire_delay_group && flags_gun_features & GUN_FIRED_BY_USER)
+		for(var/group in fire_delay_group)
+			var/fire_delay = fire_delay_group[group]
+			LAZYSET(user.fire_delay_next_fire, group, world.time + fire_delay)
+
+	flags_gun_features &= ~GUN_FIRED_BY_USER
+
 	unwield(user)
 
 /obj/item/weapon/gun/proc/turn_off_light(mob/bearer)

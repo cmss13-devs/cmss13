@@ -312,6 +312,10 @@
 	force = initial(force)
 	w_class = initial(w_class)
 
+	//reset HUD and pixel offsets
+	hud_offset = initial(hud_offset)
+	pixel_x = initial(hud_offset)
+
 	//Get default gun config values
 	set_gun_config_values()
 
@@ -338,12 +342,23 @@
 		movement_onehanded_acc_penalty_mult += R.movement_onehanded_acc_penalty_mod
 		force += R.melee_mod
 		w_class += R.size_mod
+		if(!R.hidden)
+			hud_offset += R.hud_offset_mod
+			pixel_x += R.hud_offset_mod
 
 		if(R.suppress_firesound)
 			flags_gun_features |= GUN_SILENCED
 			muzzle_flash = null
 			if(!(flags_gun_features & GUN_INTERNAL_SILENCED))
 				fire_sound = "gun_silenced"
+
+	//Refresh location in HUD.
+	if(ishuman(loc))
+		var/mob/living/carbon/human/M = loc
+		if(M.l_hand == src)
+			M.update_inv_l_hand()
+		else if(M.r_hand == src)
+			M.update_inv_r_hand()
 
 /obj/item/weapon/gun/proc/handle_random_attachments()
 	var/attachmentchoice

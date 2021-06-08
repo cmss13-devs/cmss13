@@ -28,6 +28,8 @@
 
 	var/hitsound = null
 	var/center_of_mass = "x=16;y=16"
+	///Adjusts the item's position in the HUD, currently only by guns with stock/barrel attachments.
+	var/hud_offset = 0
 	var/w_class = SIZE_MEDIUM
 	var/storage_cost = null
 	flags_atom = FPRINT

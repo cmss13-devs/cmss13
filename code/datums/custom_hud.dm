@@ -75,6 +75,12 @@
 	var/coord_row_offset = 26
 	return "EAST[coord_col]:[coord_col_offset],NORTH[coord_row]:[coord_row_offset]"
 
+///Offsets the slot's screen_loc by the item's hud_offset var. Uses the ui slot var as the arg: ui_belt, not WEAR_WAIST/"belt".
+/datum/custom_hud/proc/hud_slot_offset(obj/item/A, ui_slot)
+	var/coords = splittext(ui_slot, ",")
+	var/coords_x = splittext(coords[1], ":")
+	return "[coords_x[1]]:[text2num(coords_x[2])+A.hud_offset],[coords[2]]"
+
 /datum/custom_hud/proc/special_behaviour(var/datum/hud/element, var/ui_alpha = 255, var/ui_color = "#ffffff")
 	return
 

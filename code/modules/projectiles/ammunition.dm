@@ -961,67 +961,43 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
 				return
 
+			var/dumping = FALSE // we REFILL BOX (dump to it) on harm intent, otherwise we refill FROM box
+			if(user.a_intent == INTENT_HARM)
+				dumping = TRUE
 
-			var/source
-			var/source_current
-			var/destination
-			var/destination_max
-			var/destination_current
-			var/action_icon
+			var/transfering   = 0      // Amount of bullets we're trying to transfer
+			var/transferable  = 0      // Amount of bullets that can actually be transfered
+			do
+				// General checking
+				if(dumping)
+					transferable = min(AM.current_rounds, max_bullet_amount - bullet_amount)
+				else
+					transferable = min(bullet_amount, AM.max_rounds - AM.current_rounds)
+				if(transferable < 1)
+					to_chat(user, SPAN_NOTICE("You cannot transfer any more rounds."))
 
-			if(user.a_intent == INTENT_HARM)	//we REFILL BOX on harm intent, otherwise we refill FROM box
-				source = AM
-				source_current = AM.current_rounds
-				destination = src
-				destination_current = bullet_amount
-				destination_max = max_bullet_amount
-				action_icon = BUSY_ICON_HOSTILE
-			else
-				source = src
-				source_current = bullet_amount
-				destination = AM
-				destination_current = AM.current_rounds
-				destination_max = AM.max_rounds
-				action_icon = BUSY_ICON_FRIENDLY
+				// Half-Loop 1: Start transfering
+				else if(!transfering)
+					transfering = min(transferable, 48) // Max per transfer
+					if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, dumping ? BUSY_ICON_HOSTILE : BUSY_ICON_FRIENDLY))
+						to_chat(user, SPAN_NOTICE("You stop transferring rounds."))
+						transferable = 0
 
-			if(source_current <= 0)
-				to_chat(user, SPAN_WARNING("\The [source] is empty."))
-				return
+				// Half-Loop 2: Process transfer
+				else
+					transfering = min(transfering, transferable)
+					transferable -= transfering
+					if(dumping)
+						transfering = -transfering
+					AM.current_rounds += transfering
+					bullet_amount     -= transfering
+					playsound(src, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 20, TRUE, 6)
+					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] rounds to [dumping ? src : AM]."))
+					transfering = 0
 
-			if(destination_current == destination_max)
-				to_chat(user, SPAN_WARNING("\The [destination] is already full."))
-				return
+			while(transferable >= 1)
 
-			visible_message(SPAN_NOTICE("[user] starts refilling [destination] from [source]."), SPAN_NOTICE("You start refilling [destination] from [source]."))
-
-			var/S = min(source_current, destination_max - destination_current)
-			//Amount of bullets we plan to transfer depending on amount in source
-
-			var/bullets_transferred = 0
-
-			//Amount of times timed action will be activated.
-			//Standard M41A mag of 40 rounds or SMG mag of 48 takes 1.5 to refill from the box.
-			for(var/i = 1;i <= Ceiling(S / 48); i++)
-				if(!do_after(user, 15, INTERRUPT_ALL, action_icon))
-					to_chat(user, SPAN_NOTICE("You stop transferring rounds from [source] into [destination]."))
-					break
-				playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
-				var/transfer = min(S - bullets_transferred, 48)
-				destination_current += transfer
-				source_current -= transfer
-				bullets_transferred += transfer
-				to_chat(user, SPAN_NOTICE("You have transferred [bullets_transferred] rounds out of [S] from [source] into [destination]."))
-
-			if(source == AM)
-				AM.current_rounds = source_current
-				bullet_amount = destination_current
-			else if(source == src)
-				AM.current_rounds = destination_current
-				bullet_amount = source_current
-			else
-				to_chat(user, SPAN_NOTICE("Error \"Lost source\" has occured in transferring code. Report this on Gitlab, please."))
-
-			AM.update_icon(S)
+			AM.update_icon(AM.current_rounds)
 			update_icon()
 
 		else if(AM.flags_magazine & AMMUNITION_HANDFUL)

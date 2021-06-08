@@ -394,7 +394,7 @@
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\
-
+D
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
@@ -411,7 +411,7 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+	flags_inv_hide = HIDEEARS
 	anti_hug = 1
 
 /obj/item/clothing/head/ushanka/attack_self(mob/user)

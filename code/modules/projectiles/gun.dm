@@ -1172,20 +1172,25 @@ and you're good to go.
 			var/sound_volume = (flags_gun_features & GUN_SILENCED && !active_attachable) ? 25 : 60
 			playsound(user, actual_sound, sound_volume, 1)
 			simulate_recoil(2, user)
-			var/t = "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
-			var/datum/cause_data/cause_data = create_cause_data("suicide by [initial(name)]")
-			if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
-				t += " after playing Russian Roulette"
-				user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
-				user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
-				user.death(create_cause_data("russian roulette with \a [name]", user))
-				msg_admin_ff("[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]")
-				to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
-				user.ghostize(0) //No return.
+			var/t
+			var/datum/cause_data/cause_data
+			if(projectile_to_fire.ammo.damage == BULLET_DAMAGE_OFF)
+				t += "\[[time_stamp()]\] <b>[key_name(user)]</b> tried to commit suicide with a [name]"
+				cause_data = create_cause_data("failed suicide by [initial(name)]")
+				to_chat(user, SPAN_DANGER("Ow..."))
+				msg_admin_ff("[key_name(user)] tried to commit suicide with a [name] in [get_area(user)] [ffl]")
+				user.apply_damage(200, HALLOSS)
 			else
-				if(projectile_to_fire.ammo.damage_type == HALLOSS)
-					to_chat(user, SPAN_NOTICE("Ow..."))
-					user.apply_effect(110, AGONY, 0)
+				t += "\[[time_stamp()]\] <b>[key_name(user)]</b> committed suicide with <b>[src]</b>" //Log it.
+				cause_data = create_cause_data("suicide by [initial(name)]")
+				if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
+					t += " after playing Russian Roulette"
+					user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
+					user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
+					user.death(create_cause_data("russian roulette with \a [name]", user))
+					msg_admin_ff("[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]")
+					to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
+					user.ghostize(0) //No return.
 				else
 					user.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", sharp = 1)
 					user.apply_damage(100, OXY)

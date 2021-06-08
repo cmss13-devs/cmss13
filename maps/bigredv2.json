@@ -3,13 +3,13 @@
     "map_path": "map_files/BigRed",
     "map_file": "BigRed.dmm",
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Chaplain",
-        "Survivor - Engineer",
-        "Survivor - Trucker",
-        "Survivor - Security",
-        "Survivor - Colonial Marshall"
+        "Survivor - Solaris Scientist",
+        "Survivor - Solaris Doctor",
+        "Survivor - Solaris Chaplain",
+        "Survivor - Solaris Engineer",
+        "Survivor - Solaris Heavy Vehicle Operator",
+        "Survivor - Solaris Security Guard",
+        "Survivor - Solaris Colonial Marshall"
     ],
     "defcon_triggers": [
         4750,

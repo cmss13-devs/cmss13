@@ -468,7 +468,7 @@
 	cause_data = null
 	. = ..()
 
-/datum/effect_system/smoke_spread/set_up(radius = 2, c = 0, loca, direct, smoke_time)
+/datum/effect_system/smoke_spread/set_up(radius = 2, c = 0, loca, direct, smoke_time, datum/cause_data/new_cause_data)
 	if(isturf(loca))
 		location = loca
 	else
@@ -479,6 +479,7 @@
 		lifetime = smoke_time
 	radius = min(radius, 10)
 	amount = radius
+	cause_data = new_cause_data
 
 /datum/effect_system/smoke_spread/start()
 	if(holder)

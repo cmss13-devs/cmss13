@@ -481,6 +481,8 @@ Parameters are passed from New.
 		return
 	var/client/usr_client = usr.client
 	var/list/paramslist = list()
+	if(href_list["statpanel_item_middleclick"])
+		paramslist["middle"] = "1"
 	if(href_list["statpanel_item_shiftclick"])
 		paramslist["shift"] = "1"
 	if(href_list["statpanel_item_ctrlclick"])

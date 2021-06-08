@@ -59,6 +59,7 @@
 	var/vital //Lose a vital limb, die immediately.
 
 	var/has_stump_icon = FALSE
+	var/image/wound_overlay //Used to save time redefining it every wound update. Doesn't remember anything but the most recently used icon state.
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -77,6 +78,10 @@
 		parent.children.Add(src)
 	if(mob_owner)
 		owner = mob_owner
+
+	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_[0]")
+	wound_overlay.blend_mode = BLEND_INSET_OVERLAY
+	wound_overlay.color = owner.species.blood_color
 
 	forceMove(mob_owner)
 
@@ -599,9 +604,17 @@ This function completely restores a damaged organ to perfect condition.
 		number_wounds += W.amount
 
 /obj/limb/update_icon(forced = FALSE)
-	if(has_stump_icon && (!parent || !(parent.status & LIMB_DESTROYED)))
-		icon = 'icons/mob/humans/dam_human.dmi'
-		icon_state = "stump_[icon_name]"
+	if(parent && parent.status & LIMB_DESTROYED)
+		icon_state = ""
+		return
+
+	if(status & LIMB_DESTROYED)
+		if(has_stump_icon && !(status & LIMB_AMPUTATED))
+			icon = 'icons/mob/humans/dam_human.dmi'
+			icon_state = "stump_[icon_name]"
+		else
+			icon_state = ""
+		return
 
 	var/race_icon = owner.species.icobase
 
@@ -628,6 +641,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	icon = race_icon
 	icon_state = "[get_limb_icon_name(owner.species, b_icon, owner.gender, icon_name, e_icon)]"
+	wound_overlay.color = owner.species.blood_color
 
 	var/n_is = damage_state_text()
 	if (forced || n_is != damage_state)
@@ -671,10 +685,11 @@ This function completely restores a damaged organ to perfect condition.
 			DISMEMBERMENT
 */
 
-//Recursive setting of all child organs to amputated
+//Recursive setting of self and all child organs to amputated
 /obj/limb/proc/setAmputatedTree()
-	for(var/obj/limb/O in children)
-		O.status |= LIMB_AMPUTATED
+	status |= LIMB_AMPUTATED
+	update_icon()
+	for(var/obj/limb/O as anything in children)
 		O.setAmputatedTree()
 
 /mob/living/carbon/human/proc/remove_random_limb(var/delete_limb = 0)
@@ -823,8 +838,8 @@ This function completely restores a damaged organ to perfect condition.
 				var/lol = pick(cardinal)
 				step(organ,lol)
 
+		overlays.Cut() //Severed limbs shouldn't have damage overlays. This prevents issues with permanently bloody robot replacement limbs and excessively bloody stumps.
 		owner.update_body(1)
-		owner.UpdateDamageIcon(1)
 		owner.update_med_icon()
 
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
@@ -1049,20 +1064,15 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /obj/limb/proc/update_damage_icon_part()
-	var/image/DI
-
 	var/brutestate = copytext(damage_state, 1, 2)
 	var/burnstate = copytext(damage_state, 2)
 	if(brutestate != "0")
-		DI = new /image('icons/mob/humans/dam_human.dmi', "grayscale_[brutestate]")
-		DI.blend_mode = BLEND_INSET_OVERLAY
-		DI.color = owner.species.blood_color
-		overlays += DI
+		wound_overlay.icon_state = "grayscale_[brutestate]"
+		overlays += wound_overlay
 
 	if(burnstate != "0")
-		DI = new /image('icons/mob/humans/dam_human.dmi', "burn_[burnstate]")
-		DI.blend_mode = BLEND_INSET_OVERLAY
-		overlays += DI
+		wound_overlay.icon_state = "burn_[burnstate]"
+		overlays += wound_overlay
 
 	// for(var/datum/wound/W in wounds)
 	// 	if(W.impact_icon)

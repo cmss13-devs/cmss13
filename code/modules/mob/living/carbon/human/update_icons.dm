@@ -141,8 +141,6 @@ There are several things that need to be remembered:
 	var/g = get_gender_name(gender)
 	vis_contents.Cut()
 	for(var/obj/limb/part in limbs)
-		if(part.status & LIMB_DESTROYED)
-			continue
 		vis_contents += part
 		part.update_icon(TRUE)
 

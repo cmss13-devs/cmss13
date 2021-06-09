@@ -420,7 +420,6 @@
 							continue
 
 						if(!surgery) break
-						S.limb_ref.status |= LIMB_AMPUTATED
 						S.limb_ref.setAmputatedTree()
 						S.limb_ref.limb_replacement_stage = 0
 

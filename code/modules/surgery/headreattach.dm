@@ -152,7 +152,6 @@
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
 
 	affected.limb_replacement_stage = 0
-	affected.status |= LIMB_AMPUTATED
 	affected.setAmputatedTree()
 
 /datum/surgery_step/head/prepare/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)

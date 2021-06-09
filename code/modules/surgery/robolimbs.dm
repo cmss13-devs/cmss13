@@ -118,7 +118,6 @@
 	SPAN_NOTICE("You have finished adjusting the area around [target]'s [affected.display_name] with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s [affected.display_name] with \the [tool].")
 
-	affected.status |= LIMB_AMPUTATED
 	affected.setAmputatedTree()
 	affected.limb_replacement_stage = 0
 

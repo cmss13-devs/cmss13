@@ -509,7 +509,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/admiral
 	name = "\improper engraved Mateba autorevolver custom"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This version is finished in a luxurious and flashy gold trim. Looks like it was custom-made for a high-ranking official. It uses heavy .454 rounds."
+	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or an admiral."
 	icon_state = "amateba"
 	item_state = "amateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
@@ -543,7 +543,7 @@
 
 /obj/item/weapon/gun/revolver/mateba/engraved
 	name = "\improper engraved Mateba autorevolver"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This one is finished in an extremely slick black and gold. For when style matters most."
+	desc = "With a matte black chassis, ebony wooden grips, and gold-plated cylinder, this statement of a Mateba is as much a work of art as it is a bringer of death."
 	icon_state = "aamateba"
 	item_state = "aamateba"
 	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact

@@ -198,9 +198,9 @@
 
 
 /*
-//================================================
+//======
 					Default Ammo
-//================================================
+//======
 */
 //Only when things screw up do we use this as a placeholder.
 /datum/ammo/bullet
@@ -220,9 +220,9 @@
 	shell_speed = AMMO_SPEED_TIER_4
 
 /*
-//================================================
+//======
 					Pistol Ammo
-//================================================
+//======
 */
 
 // Used by M4A3, M4A3 Custom and B92FS
@@ -334,14 +334,28 @@
 	. = ..()
 	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
-/datum/ammo/bullet/pistol/heavy/highimpact
-	name = "heavy high-impact pistol bullet"
+/datum/ammo/bullet/pistol/heavy/super //Commander's variant
+	name = ".50 heavy pistol bullet"
+	damage = BULLET_DAMAGE_TIER_10
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_4
 
-/datum/ammo/bullet/pistol/heavy/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
+/datum/ammo/bullet/pistol/heavy/super/highimpact
+	name = ".50 high-impact pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_2
+	impact_limbs = BODY_FLAG_HEAD
+	debilitate = list(0,2,0,0,0,1,0,0)
+
+/datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
 
-/datum/ammo/bullet/pistol/heavy/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+/datum/ammo/bullet/pistol/heavy/super/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
 	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
+		return ..()
+
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
 		return ..()
 
 	var/mob/living/carbon/human/H = M
@@ -473,9 +487,9 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /*
-//================================================
+//======
 					Revolver Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/revolver
@@ -666,9 +680,9 @@
 		cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /*
-//================================================
+//======
 					SMG Ammo
-//================================================
+//======
 */
  //2020 SMG/ammo rebalance. default ammo actually has penetration so it can be useful, by 4khan: should be meh against t3s, better under 15 armor. Perfectly does this right now (oct 2020)
  //has reduced falloff compared to the m39. this means it is best for kiting castes (mostly t2s and below admittedly)
@@ -771,7 +785,7 @@
 		return
 
 	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	L.AdjustSuperslowed(3) 
+	L.AdjustSuperslowed(3)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -831,9 +845,9 @@
 	shrapnel_chance = 0
 
 /*
-//================================================
+//======
 					Rifle Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/rifle
@@ -1009,9 +1023,9 @@
 	penetration = ARMOR_PENETRATION_TIER_10
 
 /*
-//================================================
+//======
 					Shotgun Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/shotgun
@@ -1287,9 +1301,9 @@
 	scatter = SCATTER_AMOUNT_TIER_4
 
 /*
-//================================================
+//======
 					Sniper Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/sniper
@@ -1430,9 +1444,9 @@
 	shell_speed = AMMO_SPEED_TIER_6
 
 /*
-//================================================
+//======
 					Special Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/smartgun
@@ -1548,9 +1562,9 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /*
-//================================================
+//======
 					Rocket Ammo
-//================================================
+//======
 */
 
 /datum/ammo/rocket
@@ -1789,9 +1803,9 @@
 	prime(null, P)
 
 /*
-//================================================
+//======
 					Energy Ammo
-//================================================
+//======
 */
 
 /datum/ammo/energy
@@ -1941,9 +1955,9 @@
 
 
 /*
-//================================================
+//======
 					Xeno Spits
-//================================================
+//======
 */
 /datum/ammo/xeno
 	icon_state = "neurotoxin"
@@ -2408,9 +2422,9 @@
             M.AdjustSlowed(4)
 
 /*
-//================================================
+//======
 					Shrapnel
-//================================================
+//======
 */
 /datum/ammo/bullet/shrapnel
 	name = "shrapnel"
@@ -2519,9 +2533,9 @@
 	if(isXeno(M))
 		M.Slow(0.4)
 /*
-//================================================
+//======
 					Misc Ammo
-//================================================
+//======
 */
 
 /datum/ammo/alloy_spike

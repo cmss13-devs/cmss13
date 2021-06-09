@@ -147,16 +147,25 @@
 
 /obj/item/ammo_magazine/pistol/heavy
 	name = "\improper Desert Eagle magazine (.50)"
+
 	default_ammo = /datum/ammo/bullet/pistol/heavy
 	caliber = ".50"
-	icon_state = "m4a345" //PLACEHOLDER
+	icon_state = "deagle"
 	max_rounds = 7
 	gun_type = /obj/item/weapon/gun/pistol/heavy
 
-/obj/item/ammo_magazine/pistol/heavy/highimpact
+/obj/item/ammo_magazine/pistol/heavy/super //Commander's variant
+	name = "\improper Heavy Desert Eagle magazine (.50)"
+	desc = "A heavy variant of Desert Eagle magazines specially-tuned to fit a high-ranking officer. This variant is optimized for anti-armor."
+	gun_type = /obj/item/weapon/gun/pistol/heavy/co
+	default_ammo = /datum/ammo/bullet/pistol/heavy/super
+	icon_state = "deagleS"
+
+/obj/item/ammo_magazine/pistol/heavy/super/highimpact
 	name = "\improper High Impact Desert Eagle magazine (.50)"
-	default_ammo = /datum/ammo/bullet/pistol/heavy/highimpact
-	icon_state = "deagleE" //PLACEHOLDER
+	desc = "A heavy variant of Desert Eagle magazines specially-tuned to fit a high-ranking officer. This variant is optimized for anti-personnel. Don't fire it at anyone you'd like to stay alive."
+	default_ammo = /datum/ammo/bullet/pistol/heavy/super/highimpact
+	icon_state = "deagleE"
 
 //-------------------------------------------------------
 //MAUSER MERC PISTOL //Inspired by the Makarov.

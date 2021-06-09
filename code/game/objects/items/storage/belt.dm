@@ -731,7 +731,9 @@
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/pistol/heavy/highimpact
+		/obj/item/ammo_magazine/pistol/heavy,
+		/obj/item/ammo_magazine/pistol/heavy/super,
+		/obj/item/ammo_magazine/pistol/heavy/super/highimpact
 	)
 	cant_hold = list(
 		/obj/item/weapon/gun/pistol/smart,
@@ -792,12 +794,22 @@
 
 /obj/item/storage/belt/gun/m4a3/heavy/co/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/heavy/co(src)
-	new /obj/item/ammo_magazine/pistol/heavy/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy/highimpact(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
-	new /obj/item/ammo_magazine/pistol/heavy(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/m4a3/heavy/co_golden/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/heavy/co/gold(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super/highimpact(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
+	new /obj/item/ammo_magazine/pistol/heavy/super(src)
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/m44

@@ -23,7 +23,7 @@
 	languages = list("English", "Russian", "Japanese", "Spacendeutchen", "Spanish") //Know your enemy.
 
 	service_under = list(/obj/item/clothing/under/marine/officer/admiral, /obj/item/clothing/under/marine/officer/bridge)
-	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/admiral, /obj/item/clothing/suit/storage/jacket/marine)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/admiral, /obj/item/clothing/suit/storage/jacket/marine)
 	service_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
 	service_hat = list(/obj/item/clothing/head/admiral, /obj/item/clothing/head/beret/marine/commander/black)
 
@@ -40,7 +40,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/admiral(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/admiral(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/admiral(H), WEAR_JACKET)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/large/mateba/impact(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)

@@ -85,7 +85,7 @@
 	desc = "A bomber jacket resembling those worn by airmen of old. A classic, stylish choice for those in the higher ranks."
 	icon_state = "co_bomber"
 
-/obj/item/clothing/suit/storage/jacket/marine/admiral
+/obj/item/clothing/suit/storage/jacket/marine/dress/admiral
 	name = "admiral's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, an Admiral. Has quite a few pockets."
 	icon = 'icons/obj/items/clothing/suits.dmi'
@@ -98,7 +98,7 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	w_class = SIZE_MEDIUM
 
-/obj/item/clothing/suit/storage/jacket/marine/admiral/executive
+/obj/item/clothing/suit/storage/jacket/marine/dress/admiral/executive
 	name = "director's jacket"
 	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
 

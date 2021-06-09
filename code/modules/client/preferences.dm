@@ -57,7 +57,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_armor_type = 1
 	var/predator_boot_type = 1
 	var/predator_armor_material = "ebony"
-
+	//CO-specific preferences
+	var/commander_sidearm = "Mateba"
 
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL
@@ -419,6 +420,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<div id='column1'>"
 		dat += "<h2><b><u>Commander Settings:</u></b></h2>"
 		dat += "<b>Commander whitelist status:</b><a href='?_src_=prefs;preference=commander_status;task=input'>[commander_status]</a><br>"
+		dat += "<b>Commander sidearm:</b><a href='?_src_=prefs;preference=co_sidearm;task=input'>[commander_sidearm]</a><br>"
 		dat += "</div>"
 
 	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_PREDATOR)
@@ -907,6 +909,19 @@ var/const/MAX_SAVE_SLOTS = 10
 						return
 
 					commander_status = options[new_commander_status]
+
+				if("co_sidearm")
+					var/list/options = list("Mateba","Desert Eagle")
+
+					if(whitelist_flags & WHITELIST_COMMANDER_COUNCIL)
+						options += list("Commodore's Mateba","Golden Desert Eagle")
+					else
+						options -= list("Commodore's Mateba","Golden Desert Eagle") //This is weird and should not be necessary but it wouldn't remove these from the list otherwise
+
+					var/new_co_sidearm = tgui_input_list(user, "Choose your preferred sidearm.", "Commanding Officer's Sidearm", options)
+					if(!new_co_sidearm)
+						return
+					commander_sidearm = new_co_sidearm
 
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)

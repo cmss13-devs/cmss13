@@ -61,10 +61,10 @@
 		open(user)
 		return
 
-	//Allow alt-clicking to remove items directly from storage, if the storage is flagged or could be toggled to do so.
+	//Allow alt-clicking to remove items directly from storage.
 	//Does so by passing the alt mod back to do_click(), which eventually delivers it to attack_hand().
 	//This ensures consistent click behaviour between alt-click and left-mouse drawing.
-	if(mods["alt"] && storage_flags & STORAGE_ALLOW_DRAWING_METHOD_TOGGLE|STORAGE_USING_DRAWING_METHOD && loc == user && !user.get_active_hand())
+	if(mods["alt"]  && loc == user && !user.get_active_hand())
 		return
 
 	. = ..()

@@ -35,3 +35,4 @@ Dragging a Nanomed onto yourself instantly gives a Health Analyzer report. Alway
 Splints slow you down. Remove them after your bones are healed by using the Remove Your Splints verb.
 Blood loss can lead to hunger, which can slow you down. Make sure you're always full after taking a beating.
 Resin structures are weaker to melee than they are to bullets. Take out your knives!
+You can grab items from second-level storage, such as a splint in a first-aid kit inside a satchel.

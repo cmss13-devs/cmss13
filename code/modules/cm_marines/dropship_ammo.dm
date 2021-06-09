@@ -216,8 +216,8 @@
 
 //this one is air-to-air only
 /obj/structure/ship_ammo/rocket/widowmaker
-	name = "\improper AIM-224 'Widowmaker'"
-	desc = "The AIM-224 is the latest in air to air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidence warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment, but its high velocity makes it reach its target quickly."
+	name = "\improper AIM-224/B 'Widowmaker'"
+	desc = "The AIM-224/B missile is a retrofit of the latest in air to air missile technology. Earning the nickname of 'Widowmaker' from various dropship pilots after improvements to its guidence warhead prevents it from being jammed leading to its high kill rate. Not well suited for ground bombardment but its high velocity makes it reach its target quickly. This one has been modified to be a free-fall bomb as a result of dropship ammo shortages."
 	icon_state = "single"
 	travelling_time = 30 //not powerful, but reaches target fast
 	ammo_id = ""
@@ -260,7 +260,7 @@
 
 /obj/structure/ship_ammo/rocket/napalm
 	name = "\improper XN-99 'Napalm'"
-	desc = "The XN-99 'Napalm' is an incendiary rocket used to turn specific targeted areas into giant balls of fire for a long time."
+	desc = "The XN-99 'Napalm' is an incendiary missile  used to turn specific targeted areas into giant balls of fire for a long time."
 	icon_state = "napalm"
 	ammo_id = "n"
 	point_cost = 500

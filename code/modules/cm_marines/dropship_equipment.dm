@@ -679,9 +679,9 @@
 
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
-	name = "rocket pod"
+	name = "missile pod"
 	icon_state = "rocket_pod"
-	desc = "A rocket pod weapon system capable of launching a single laser-guided rocket. Moving this will require some sort of lifter."
+	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter."
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 5
 	point_cost = 600

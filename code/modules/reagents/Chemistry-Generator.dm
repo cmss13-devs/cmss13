@@ -107,8 +107,11 @@
 					else
 						chem_id = pick(chemical_gen_classes_list["C5"])
 				else
-					if(!required_reagents || is_catalyst)//first component is guaranteed special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
-						chem_id = pick(chemical_gen_classes_list["C5"])
+					if(!required_reagents || is_catalyst)//first component is more likely to be special in chems tier 4 or higher, catalysts are always special in tier 4 or higher
+						if (prob(50))
+							chem_id = pick(chemical_gen_classes_list["C5"])
+						else
+							chem_id = pick(chemical_gen_classes_list["C4"])
 					else if(roll<=15)
 						chem_id = pick(chemical_gen_classes_list["C2"])
 					else if(roll<=40)
@@ -187,17 +190,17 @@
 	//OD ratios
 	overdose = 5
 	for(var/i=1;i<=rand(1,11);i++) //We add 5 units to the overdose per cycle, min 5u, max 60u
-		if(prob(70))//Deviating from 5 gets exponentially more rare.
+		if(prob(50 + 5*gen_tier))//Deviating from 5 gets exponentially more rare, deviation scales with chem level
 			overdose += 5
 	overdose_critical = overdose + 5
 	for(var/i=1;i<=rand(1,5);i++) //overdose_critical is min 5u, to max 30u + normal overdose
-		if(prob(40))
+		if(prob(20 + 2*gen_tier))
 			overdose_critical += 5
 
 	//Metabolism
 	var/direction = rand(0,1) //the direction we deviate from 0.2
-	for(var/i=1;i<=rand(1,8);i++) //min of 0.01 (barely metabolizes, but chance is 0.00065%, so it deserves to be this miraculous) to max 0.4 (neuraline)
-		if(prob(75)) //Deviating from 0.2 gets exponentially more rare
+	for(var/i=1;i<=rand(1, 4 + (gen_tier - 1));i++) //min of 0.01 to max 0.4 (neuraline), lower level chems have lower ranges
+		if(prob(50 + 5 * gen_tier)) //Deviating from 0.2 gets exponentially more rare, deviation scales with chem level
 			if(direction)
 				custom_metabolism += 0.025
 			else

@@ -178,18 +178,6 @@
 						PROPERTY_CURING = 4)
 	flags = REAGENT_TYPE_MEDICAL
 
-/datum/reagent/medical/synaptizine
-	name = "Synaptizine"
-	id = "synaptizine"
-	description = "A controlled nervestimulant that treats hallucinations, drowsiness, improves reaction time and acts as a weak painkiller. Is mildly toxic and overdosing will cause extreme toxin damage."
-	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = AMOUNT_PER_TIME(1, 20 SECONDS)
-	overdose = LOW_REAGENTS_OVERDOSE
-	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_PAINKILLING = 1, PROPERTY_NERVESTIMULATING = 2, PROPERTY_ANTIHALLUCINOGENIC = 2, PROPERTY_TOXIC = 1)
-
 /datum/reagent/medical/neuraline //injected by neurostimulator implant
 	name = "Neuraline"
 	id = "neuraline"
@@ -294,20 +282,8 @@
 	overdose_critical = LOWM_REAGENTS_OVERDOSE_CRITICAL
 	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	chemclass = CHEM_CLASS_COMMON
-	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_MUSCLESTIMULATING = 1, PROPERTY_ELECTROGENETIC = 4)
+	properties = list(PROPERTY_PAINKILLING = 1.5, PROPERTY_ELECTROGENETIC = 4)
 	flags = REAGENT_TYPE_MEDICAL | REAGENT_SCANNABLE | REAGENT_NOT_INGESTIBLE
-
-/datum/reagent/medical/hyperzine
-	name = "Hyperzine"
-	id = "hyperzine"
-	description = "A potent long lasting muscle stimulant. Increases heart rate dramatically, which may damage cardiac tissue. Highly addictive. Controlled substance."
-	reagent_state = LIQUID
-	color = "#C8A5DC" // rgb: 200, 165, 220
-	custom_metabolism = AMOUNT_PER_TIME(1, 10 SECONDS)
-	overdose = LOW_REAGENTS_OVERDOSE
-	overdose_critical = LOW_REAGENTS_OVERDOSE_CRITICAL
-	chemclass = CHEM_CLASS_UNCOMMON
-	properties = list(PROPERTY_MUSCLESTIMULATING = 2, PROPERTY_CARDIOTOXIC = 1)
 
 /datum/reagent/medical/ultrazine
 	name = "Ultrazine"

@@ -162,7 +162,7 @@
 	pill_desc = "A Kelotane pill. Used to treat burns."
 	pill_initial_reagents = list("kelotane" = 15)
 	pill_icon_class = "kelo"
-	
+
 /obj/item/reagent_container/pill/oxycodone
     pill_desc = "A Oxycodone pill. A powerful painkiller."
     pill_initial_reagents = list("oxycodone" = 15)
@@ -207,11 +207,6 @@
 	pill_desc = "A Happy Pill! Happy happy joy joy!"
 	pill_initial_reagents = list("space_drugs" = 15, "sugar" = 15)
 	pill_icon_class = "drug"
-
-/obj/item/reagent_container/pill/zoom
-	pill_desc = "A Zoom pill! Gotta go fast!"
-	pill_initial_reagents = list("impedrezene" = 10, "synaptizine" = 5, "hyperzine" = 5)
-	pill_icon_class = "stim"
 
 /obj/item/reagent_container/pill/russianRed
 	pill_desc = "A Russian Red pill. A very dangerous radiation-countering substance."

@@ -3415,7 +3415,6 @@
 /area/fiorina/station/security/wardens)
 "bWh" = (
 /obj/structure/closet/wardrobe/orange,
-/obj/item/storage/pill_bottle/zoom,
 /turf/open/floor/prison{
 	icon_state = "yellowfull"
 	},

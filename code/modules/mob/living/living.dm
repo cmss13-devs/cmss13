@@ -692,9 +692,9 @@
 				advice += "<span class='scanner'>Administer food or recommend the patient eat.</span>\n"
 			if(internal_bleed_detected && reagents_in_body["quickclot"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of quickclot.</span>\n"
-			if(H.getToxLoss() > 10 && reagents_in_body["anti_toxin"] < 5 && !reagents_in_body["synaptizine"])
+			if(H.getToxLoss() > 10 && reagents_in_body["anti_toxin"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of dylovene.</span>\n"
-			if((H.getToxLoss() > 50 || (H.getOxyLoss() > 50 && blood_volume > 400) || H.getBrainLoss() >= 10) && reagents_in_body["peridaxon"] < 5 && !reagents_in_body["hyperzine"])
+			if((H.getToxLoss() > 50 || (H.getOxyLoss() > 50 && blood_volume > 400) || H.getBrainLoss() >= 10) && reagents_in_body["peridaxon"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of peridaxon.</span>\n"
 			if(H.getOxyLoss() > 50 && reagents_in_body["dexalin"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of dexalin.</span>\n"
@@ -716,10 +716,6 @@
 				dat += "\t<span class='scanner'> <b>Medication Advice:</b></span>\n"
 				dat += advice
 			advice = ""
-			if(reagents_in_body["synaptizine"])
-				advice += "<span class='scanner'>DO NOT administer dylovene.</span>\n"
-			if(reagents_in_body["hyperzine"])
-				advice += "<span class='scanner'>DO NOT administer peridaxon.</span>\n"
 			if(reagents_in_body["paracetamol"])
 				advice += "<span class='scanner'>DO NOT administer tramadol.</span>\n"
 			if(advice != "")

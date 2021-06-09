@@ -104,7 +104,7 @@
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
-	rarity = PROPERTY_COMMON
+	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, var/potency = 1)
@@ -130,13 +130,14 @@
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
 	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
-	rarity = PROPERTY_COMMON
+	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
 	M.reagent_move_delay_modifier -= 0.25 * potency
 	M.recalculate_move_delay = TRUE
+	M.nutrition = max (0, M.nutrition - HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 

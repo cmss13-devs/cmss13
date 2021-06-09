@@ -217,7 +217,6 @@ proc/populate_seed_list()
 	if(additional_chems)
 		var/list/possible_chems = list(
 			"bicaridine",
-			"hyperzine",
 			"cryoxadone",
 			"blood",
 			"water",
@@ -239,7 +238,6 @@ proc/populate_seed_list()
 			"dermaline",
 			"dexalin",
 			"phoron",
-			"synaptizine",
 			"impedrezene",
 			"peridaxon",
 			"toxin",
@@ -962,7 +960,7 @@ proc/populate_seed_list()
 	mutants = null
 	packet_icon = "seed-ambrosiadeus"
 	plant_icon = "ambrosiadeus"
-	chems = list("plantmatter" = list(1), "bicaridine" = list(1,8), "synaptizine" = list(1,8,1), "hyperzine" = list(1,10,1), "space_drugs" = list(1,10))
+	chems = list("plantmatter" = list(1), "bicaridine" = list(1,8), "space_drugs" = list(1,10))
 
 //Mushrooms/varieties.
 /datum/seed/mushroom

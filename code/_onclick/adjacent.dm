@@ -92,7 +92,7 @@ Quick adjacency (to turf):
 
 // This is necessary for storage items not on your person.
 /obj/item/Adjacent(var/atom/neighbor, var/recurse = 1)
-	if(neighbor == loc)
+	if(neighbor == loc || (loc && neighbor == loc.loc))
 		return TRUE
 	if(issurface(loc))
 		return loc.Adjacent(neighbor, recurse) //Surfaces don't count as storage depth.

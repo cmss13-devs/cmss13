@@ -683,7 +683,6 @@
 /obj/item/reagent_container/food/snacks/bearmeat/Initialize()
 	. = ..()
 	reagents.add_reagent("meatprotein", 12)
-	reagents.add_reagent("hyperzine", 5)
 	src.bitesize = 3
 
 /obj/item/reagent_container/food/snacks/xenomeat

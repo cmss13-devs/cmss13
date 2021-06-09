@@ -12,7 +12,7 @@
 	if(embedded_items.len > 0)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
-	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply hyperzine effects
+	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply MST effects
 	var/wear_slowdown_reduction = 0
 
 	reducible_tally += max(pain.pain_slowdown, stamina.stamina_slowdown) // Get the highest slowdown and apply that
@@ -56,7 +56,7 @@
 		reducible_tally += wear_suit.slowdown
 		wear_slowdown_reduction += wear_suit.movement_compensation
 
-	reducible_tally += reagent_move_delay_modifier //hyperzine and ultrazine
+	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
 	if(bodytemperature < species.cold_level_1 && !isYautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing

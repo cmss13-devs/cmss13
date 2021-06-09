@@ -196,11 +196,18 @@
 
 /obj/item/weapon/gun/pistol/heavy/co
 	name = "polished vintage Desert Eagle"
-	desc = "A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. This one is engraved, 'Peace through superior firepower.'"
+	desc = "A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. Its rosewood grips signify this much: it's hella classy."
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
 	base_gun_icon = "c_deagle"
+	current_mag = /obj/item/ammo_magazine/pistol/heavy/super/highimpact
 
+/obj/item/weapon/gun/pistol/heavy/co/gold
+	name = "golden vintage Desert Eagle"
+	desc = "A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. Its frame is anodized in gold with rosewood grips. Pretentious and flashy? Yes, but that's the point."
+	icon_state = "g_deagle"
+	item_state = "g_deagle"
+	base_gun_icon = "g_deagle"
 //-------------------------------------------------------
 //MAUSER MERC PISTOL //Inspired by the Makarov, specifically the "PB" version, an integrally silenced Makarov.
 //Rebalanced: Now acts like an UPP M4A3.

@@ -94,6 +94,7 @@
 	S["pred_armor_mat"]		>> predator_armor_material
 
 	S["commander_status"]	>> commander_status
+	S["co_sidearm"]			>> commander_sidearm
 	S["yautja_status"]		>> yautja_status
 	S["synth_status"]		>> synth_status
 	S["key_bindings"] 		>> key_bindings
@@ -132,6 +133,7 @@
 	predator_boot_type 	= sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
 	predator_armor_material = sanitize_inlist(predator_armor_material, list("ebony", "silver", "bronze"), initial(predator_armor_material))
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
+	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
 	yautja_status		= sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	key_bindings 		= sanitize_keybindings(key_bindings)
@@ -203,6 +205,7 @@
 	S["pred_armor_mat"]		<< predator_armor_material
 
 	S["commander_status"] 	<< commander_status
+	S["co_sidearm"]			<< commander_sidearm
 	S["yautja_status"]		<< yautja_status
 	S["synth_status"]		<< synth_status
 

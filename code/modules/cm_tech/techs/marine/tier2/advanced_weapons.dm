@@ -182,7 +182,7 @@
 	accurate_range = 32
 	max_range = 32
 	scatter = 0
-	damage = 3*BULLET_DAMAGE_TIER_20
+	damage = 3*100
 	penetration= ARMOR_PENETRATION_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
 	damage_falloff = 0

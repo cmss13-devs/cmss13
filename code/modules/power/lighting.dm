@@ -576,7 +576,7 @@
 /obj/structure/machinery/light/bullet_act(obj/item/projectile/P)
 	src.bullet_ping(P)
 	if(P.ammo.damage_type == BRUTE)
-		if(P.damage > BULLET_DAMAGE_TIER_2)
+		if(P.damage > 10)
 			broken()
 		else
 			playsound(src.loc, 'sound/effects/Glasshit.ogg', 25, 1)

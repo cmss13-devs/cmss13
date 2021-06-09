@@ -576,8 +576,8 @@
 /obj/item/explosive/grenade/spawnergrenade/hellhound/New()
 	. = ..()
 
-	force = BULLET_DAMAGE_TIER_4
-	throwforce = BULLET_DAMAGE_TIER_8
+	force = 20
+	throwforce = 40
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/on_set_interaction(mob/user)
 	..()

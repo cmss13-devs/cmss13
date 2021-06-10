@@ -492,6 +492,7 @@ Parameters are passed from New.
 	if(href_list["statpanel_item_click"])
 		// first of all make sure we valid
 		var/mouseparams = list2params(paramslist)
+		usr_client.ignore_next_click = FALSE
 		usr_client.Click(src, loc, TRUE, mouseparams)
 		return TRUE
 

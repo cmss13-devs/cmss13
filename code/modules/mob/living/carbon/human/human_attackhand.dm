@@ -93,7 +93,7 @@
 				extra_cqc_dmg = M.skills?.get_skill_level(SKILL_CQC)
 			var/raw_damage = 0 //final value, gets absorbed by the armor and then deals the leftover to the mob
 
-			var/obj/limb/affecting = get_limb(rand_zone(M.zone_selected))
+			var/obj/limb/affecting = get_limb(rand_zone(M.zone_selected, 70))
 			var/armor = getarmor(affecting, ARMOR_MELEE)
 
 			playsound(loc, attack.attack_sound, 25, 1)

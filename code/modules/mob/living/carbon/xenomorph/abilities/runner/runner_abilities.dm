@@ -48,6 +48,6 @@
 	action_icon_state = "screech"
 	ability_name = "for the hive"
 	macro_path = /datum/action/xeno_action/verb/verb_acider_sacrifice
-	action_type = XENO_ACTION_ACTIVATE
+	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 	var/minimal_acid = 200

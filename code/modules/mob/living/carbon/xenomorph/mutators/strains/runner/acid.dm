@@ -26,7 +26,7 @@
 	R.mutation_type = RUNNER_ACIDER
 	R.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	R.armor_modifier += XENO_ARMOR_MOD_MED
-	R.health_modifier += XENO_HEALTH_MOD_VERYLARGE
+	R.health_modifier += XENO_HEALTH_MOD_ACIDER
 	apply_behavior_holder(R)
 	mutator_update_actions(R)
 	R.recalculate_everything()
@@ -41,7 +41,8 @@
 
 	var/max_acid = 1000
 	var/caboom_timer = 20
-	var/acid_slash_regen = 10
+	var/acid_slash_regen_lying = 8
+	var/acid_slash_regen_standing = 14
 	var/acid_passive_regen = 1
 
 	var/melt_acid_cost = 100
@@ -72,13 +73,14 @@
 		var/mob/living/carbon/human/H = A
 		if (H.stat == DEAD)
 			return
-	var/datum/effects/acid/acid
 	for(var/datum/effects/acid/AA in A.effects_list)
-		acid = AA
+		qdel(AA)
 		break
-	if(acid)
-		modify_acid(acid_slash_regen)
-		qdel(acid)
+	if(isXenoOrHuman(A))
+		if(A.lying)
+			modify_acid(acid_slash_regen_lying)
+		else
+			modify_acid(acid_slash_regen_standing)
 	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
 
 /datum/behavior_delegate/runner_acider/on_life()

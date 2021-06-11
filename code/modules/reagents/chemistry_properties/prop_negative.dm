@@ -233,6 +233,7 @@
 	code = "HMR"
 	description = "Ruptures endothelial cells making up bloodvessels, causing blood to escape from the circulatory system."
 	rarity = PROPERTY_UNCOMMON
+	value = 2
 
 /datum/chem_property/negative/hemorrhaging/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -266,6 +267,12 @@
 		var/datum/wound/internal_bleeding/I = new (0)
 		L.add_bleeding(I, TRUE)
 		L.wounds += I
+
+/datum/chem_property/negative/hemorrhaging/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency)
+	if(!istype(M, /mob/living))
+		return
+	var/mob/living/L = M
+	L.AddComponent(/datum/component/injury_buildup, potency) //deals brute DOT to humans, prevents healing for xenos
 
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC

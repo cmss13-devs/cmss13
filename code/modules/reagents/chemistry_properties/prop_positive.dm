@@ -60,11 +60,13 @@
 	M.apply_damages(0, POTENCY_MULTIPLIER_VHIGH * potency, POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/positive/neogenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isXeno(M))
+	if(!isliving(M))
 		return
-	var/mob/living/carbon/Xenomorph/X = M
-	if(potency > 2) //heals at levels 5+
-		X.gain_health(potency * volume * POTENCY_MULTIPLIER_LOW)
+	var/mob/living/L = M
+	if(isXeno(L))
+		var/mob/living/carbon/Xenomorph/X = M
+		if(potency > 2) //heals at levels 5+
+			X.gain_health(min(potency * volume/2, -X.health))
 
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
@@ -89,13 +91,14 @@
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, TOX)
 
 /datum/chem_property/positive/repairing/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!ishuman(M) || method != TOUCH) //heals when sprayed on limbs
+	if(!isliving(M))
 		return
-	var/mob/living/carbon/human/H
-	for(var/obj/limb/T in H.limbs)
-		if(!(T.status & LIMB_ROBOT))
-			continue
-		T.heal_damage(potency * volume,potency * volume,0,1)
+	var/mob/living/L = M
+	if(ishuman(L) && method == TOUCH) //can stim on touch if high enough potency
+		var/mob/living/carbon/human/H
+		for(var/obj/limb/T in H.limbs)
+			if(T && T.status & LIMB_ROBOT)
+				T.heal_damage(potency,potency,0,1)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC
@@ -148,10 +151,19 @@
 	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH*potency)
 
 /datum/chem_property/positive/nervestimulating/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(isXenoOrHuman(M) && potency > POTENCY_MAX_TIER_1) //can stim on touch at level 7+
-		M.SetKnockeddown(0)
-		M.SetStunned(0)
-		M.SetDazed(0)
+	if(!isliving(M))
+		return
+	var/mob/living/L = M
+	if(ishuman(L) && potency>3) //can stim on touch at level 7+
+		var/mob/living/carbon/human/H
+		H.SetKnockeddown(0)
+		H.SetStunned(0)
+		H.SetDazed(0)
+	if(isXeno(L) && potency>3)
+		var/mob/living/carbon/Xenomorph/X = M
+		X.SetDazed(0)
+		X.SetKnockeddown(0)
+		X.SetStunned(0)
 
 /datum/chem_property/positive/musclestimulating
 	name = PROPERTY_MUSCLESTIMULATING
@@ -681,7 +693,7 @@
 /datum/chem_property/positive/fire/fueling/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//makes you more flammable if sprayed/splashed on you
-		L.adjust_fire_stacks(volume / (2/potency))
+		L.adjust_fire_stacks(volume / (10/potency))
 
 /datum/chem_property/positive/fire/fueling/reaction_turf(var/turf/T, var/volume, var/potency = 1)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
@@ -707,9 +719,9 @@
 
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
 	var/mob/living/L = M
-	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
-		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
-		if(potency > 4)
+	if(istype(L))//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
+		L.adjust_fire_stacks(max(L.fire_stacks, 10))
+		if(potency > 3)
 			L.IgniteMob(TRUE)
 
 /datum/chem_property/positive/fire/flowing
@@ -757,16 +769,17 @@
 	to_chat(M, SPAN_NOTICE("Your mind feels oddly... quiet."))
 
 /datum/chem_property/positive/disrupting/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_internal_damage(potency, "brain")
+	M.apply_internal_damage(2 * potency, "brain")
 
 /datum/chem_property/positive/disrupting/process_critical(mob/living/M, var/potency = 1)
 	M.KnockOut(potency)
 
 /datum/chem_property/positive/disrupting/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isXeno(M))
+	if(!isliving(M))
 		return
-	var/mob/living/carbon/Xenomorph/X = M
-	X.interference += (volume * potency)
+	if(isXeno(M))
+		var/mob/living/carbon/Xenomorph/X = M
+		X.interference += (volume * potency)
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
@@ -779,10 +792,10 @@
 	return list(REAGENT_PURGE = level)
 
 /datum/chem_property/positive/neutralizing/process(mob/living/M, var/potency = 1)
-	M.apply_damages(0, potency, potency * POTENCY_MULTIPLIER_LOW)
+	M.apply_damages(0, potency, potency/2)
 
 /datum/chem_property/positive/neutralizing/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damages(0, POTENCY_MULTIPLIER_MEDIUM * potency, potency)
+	M.apply_damages(0, 2 * potency, potency)
 
 /datum/chem_property/positive/neutralizing/process_critical(mob/living/M, var/potency = 1)
 	M.apply_internal_damage(potency, "liver")
@@ -797,15 +810,17 @@
 		H.emote("me",1, "scratches themselves.")
 	if(isXeno(L))
 		var/mob/living/carbon/Xenomorph/X = M
-		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_VHIGH * POTENCY_MULTIPLIER_VHIGH * potency, 0)
+		X.plasma_stored = max(X.plasma_stored - 25*potency, 0)
 
 /datum/chem_property/positive/neutralizing/reaction_turf(var/turf/T, var/volume, var/potency)
 	if(!istype(T))
 		return
 	for(var/obj/flamer_fire/F in T) //Extinguishes fires and acid
-		qdel(F)
+		if(istype(F))
+			qdel(F)
 	for(var/obj/effect/xenomorph/acid/A in T)
-		qdel(A)
+		if(istype(A))
+			qdel(A)
 
 //PROPERTY_DISABLED (in random generation)
 /datum/chem_property/positive/cardiostabilizing
@@ -843,11 +858,13 @@
 		M.emote(pick("twitch","blink_r","shiver"))
 
 /datum/chem_property/positive/cardiostabilizing/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isXeno(M))
+	if(!isliving(M))
 		return
-	var/mob/living/carbon/Xenomorph/X = M
-	if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
-		X.gain_health(min(potency * volume * 0.5, -X.health + 1))
+	var/mob/living/L = M
+	if(isXeno(L))
+		var/mob/living/carbon/Xenomorph/X = M
+		if(potency > 4 && X.health < 0) //heals out of crit
+			X.gain_health(min(potency * volume/2, -X.health + 1))
 
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING

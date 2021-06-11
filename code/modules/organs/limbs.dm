@@ -522,12 +522,6 @@ This function completely restores a damaged organ to perfect condition.
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
 
-	//Limb regrowing
-	if(regrow_time > 0)
-		if(world.time > regrow_time)
-			rejuvenate()
-			to_chat(owner, SPAN_WARNING("Your [display_name] regrows!"))
-
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/limb/proc/update_wounds()
 	if((status & LIMB_ROBOT)) //Robotic limbs don't heal or get worse.

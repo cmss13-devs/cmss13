@@ -168,7 +168,6 @@
 //Legendary, only in gen_tier 3+
 #define PROPERTY_HYPERGENETIC		"hypergenetic"
 #define PROPERTY_BOOSTING			"boosting"
-#define PROPERTY_REGROWING			"regrowing"
 #define PROPERTY_DNA_DISINTEGRATING	"DNA-Disintegrating"
 #define PROPERTY_REGULATING			"regulating"
 #define PROPERTY_CIPHERING			"ciphering"

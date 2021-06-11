@@ -1,11 +1,11 @@
-#define	CLIMB_DELAY_SHORT		1 SECONDS
-#define	CLIMB_DELAY_MEDIUM		2 SECONDS
-#define	CLIMB_DELAY_LONG		3 SECONDS
+#define	CLIMB_DELAY_SHORT		0.2 SECONDS
+#define	CLIMB_DELAY_MEDIUM		1 SECONDS
+#define CLIMB_DELAY_LONG		2 SECONDS
 
 /obj/structure
 	icon = 'icons/obj/structures/structures.dmi'
 	var/climbable
-	var/climb_delay = CLIMB_DELAY_MEDIUM
+	var/climb_delay = CLIMB_DELAY_LONG
 	var/breakable
 	var/parts
 	var/list/debris
@@ -124,7 +124,7 @@
 	var/climb_over_string = final_climb_delay < 1 SECONDS ? "vaulting over" : "climbing onto"
 	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
 
-	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, numticks = 2))
 		return
 
 	if(!can_climb(user))

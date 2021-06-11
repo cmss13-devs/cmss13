@@ -440,7 +440,8 @@
 	C.add_to_filtered_list()
 	return C
 
-/datum/reagent/proc/check_generated_properties(var/datum/chem_property/P) //Returns false if a property has been generated in a previously made chem and all properties haven't yet been generated.
+//Returns false if a property has been generated in a previous reagent and all properties of that category haven't been generated yet.
+/datum/reagent/proc/check_generated_properties(var/datum/chem_property/P)
 	if(istype(P, /datum/chem_property/positive))
 		for(var/gen_property in generated_properties["positive"])
 			if(P == gen_property && LAZYLEN(generated_properties["positive"]) < LAZYLEN(chemical_properties_list["positive"]))

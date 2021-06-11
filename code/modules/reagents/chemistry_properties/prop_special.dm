@@ -13,6 +13,50 @@
 /datum/chem_property/special/boosting/pre_process(mob/living/M)
 	return list(REAGENT_BOOST = level)
 
+/datum/chem_property/special/regrowing
+	name = PROPERTY_REGROWING
+	code = "RGW"
+	description = "Rapidly regrows human limbs through \[REDACTED\]"
+	rarity = PROPERTY_LEGENDARY
+	category = PROPERTY_TYPE_MEDICINE
+	value = 8
+	max_level = 1
+
+/datum/chem_property/special/regrowing/process(mob/living/M, var/potency = 1)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	var/obj/limb/L = pick(H.limbs)
+	if(L)
+		if(L.regrow_time > 0)
+			return // only one limb regrowing
+		switch(L.name)
+			if("groin","chest")
+				L.time_to_knit = 600 // 6 mins
+			if("head")
+				L.time_to_knit = 500 // 5 mins
+			if("l_hand","r_hand","r_foot","l_foot")
+				L.time_to_knit = 200 // 2 mins
+			if("r_leg","r_arm","l_leg","l_arm")
+				L.time_to_knit = 300 // 3 mins
+		if(L.time_to_knit && (L.status & (LIMB_DESTROYED || LIMB_AMPUTATED)) && L.knitting_time == -1)
+			if(potency > 0)
+				var/total_regrow_time = world.time + L.time_to_knit - min(150*potency, L.time_to_knit - 50)
+				L.regrow_time = total_regrow_time
+				L.start_processing()
+				to_chat(M, SPAN_NOTICE("You feel your [L.display_name]'s stump start to tingle'."))
+
+/datum/chem_property/special/regrowing/process_overdose(mob/living/M, var/potency = 1)
+	M.take_limb_damage(2*potency)
+
+/datum/chem_property/special/regrowing/process_critical(mob/living/M, var/potency = 1)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	var/obj/limb/L = pick(H.limbs)
+	if(L)
+		L.droplimb(0, 0, "overdose")
+
 /datum/chem_property/special/regulating
 	name = PROPERTY_REGULATING
 	code = "REG"
@@ -347,9 +391,10 @@
 	name = PROPERTY_FIRE_PENETRATING
 	code = "PTR"
 	description = "Gives the chemical a unique, anomalous combustion chemistry, causing the flame to react with flame-resistant material and obliterate through it."
-	rarity = PROPERTY_ADMIN
+	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_ANOMALOUS
-	value = 666
+	value = 8
+	max_level = 1
 
 /datum/chem_property/special/firepenetrating/reset_reagent()
 	holder.fire_penetrating = initial(holder.fire_penetrating)

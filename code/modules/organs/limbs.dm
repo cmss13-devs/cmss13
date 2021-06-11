@@ -15,6 +15,7 @@
 	var/max_size = 0
 	var/last_dam = -1
 	var/knitting_time = -1
+	var/regrow_time = -1
 	var/time_to_knit = -1 // snowflake vars for doing self-bone healing, think preds and magic research chems
 
 	var/display_name
@@ -525,6 +526,12 @@ This function completely restores a damaged organ to perfect condition.
 			owner.pain.apply_pain(-PAIN_BONE_BREAK)
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
+
+	//Limb regrowing
+	if(regrow_time > 0)
+		if(world.time > regrow_time)
+			rejuvenate()
+			to_chat(owner, SPAN_WARNING("Your [display_name] regrows!"))
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/limb/proc/update_wounds()

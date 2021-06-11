@@ -74,6 +74,8 @@ var/global/list/chemical_objective_list	 = list()	//List of all objective reagen
 var/global/list/chemical_identified_list = list()	//List of all identified objective reagents indexed by ID associated with the objective value
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"omega" = list(),"tau" = list())
+//properties generated in chemicals, helps to make sure the same property doesn't show up 10 times
+var/global/list/list/generated_properties = list("positive" = list(), "negative" = list(), "neutral" = list())
 
 GLOBAL_LIST_INIT_TYPED(surgery_steps, /datum/surgery_step, setup_surgeries())				//List of all surgery steps  |BS12
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo())					//List of all ammo types. Used by guns to tell the projectile how to act.

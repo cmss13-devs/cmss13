@@ -50,7 +50,7 @@
 	var/creation_cost = 0
 	var/min_creation_cost = 0
 	var/creation_od_level = 10 //a cache for new_od_level when switching between modes
-	var/datum/techtree/T //used for max level calculations based on the marine techweb
+	var/datum/techtree/T //used for maxes in creation mode
 
 /obj/structure/machinery/chem_simulator/Initialize()
 	. = ..()
@@ -301,13 +301,12 @@
 			creation_name = newname
 	else if(href_list["set_level"] && target_property)
 		T = GET_TREE(TREE_MARINE)
+		var/level_max = min(T.tier?.tier*4, 10)
 		var/level_to_set = 1
-		if(T.tier?.tier < 2)
-			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4))
-		else if(T.tier?.tier < 3)
-			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8))
-		else
-			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
+		level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
+		if(level_to_set > level_max)
+			to_chat(user, "Level too high. The maximum property level at the current tech level: [level_max]")
+			level_to_set = level_max
 		if(!level_to_set)
 			return
 
@@ -417,7 +416,7 @@
 				continue
 			switch(mode)
 				if(MODE_AMPLIFY)
-					property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
+					property_costs[P.name] = max(min(P.level - 1, 8), 1)
 				if(MODE_SUPPRESS)
 					property_costs[P.name] = 2
 				if(MODE_RELATE)

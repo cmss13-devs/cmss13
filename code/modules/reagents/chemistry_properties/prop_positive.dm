@@ -12,7 +12,7 @@
 	value = 1
 
 /datum/chem_property/positive/antitoxic/process(mob/living/M, var/potency = 1)
-	M.apply_damage(-(potency), TOX)
+	M.apply_damage(-(potency * 2), TOX)
 	M.reagents.remove_all_type(/datum/reagent/toxin, REM, 0, 1)
 
 /datum/chem_property/positive/antitoxic/process_overdose(mob/living/M, var/potency = 1)
@@ -31,6 +31,8 @@
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, var/potency = 1)
 	M.heal_limb_damage(0, potency)
+	if(potency > 2)
+		M.heal_limb_damage(0, potency/2)
 
 /datum/chem_property/positive/anticorrosive/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damages(potency, 0, potency) //Mixed brute/tox damage
@@ -48,6 +50,8 @@
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, var/potency = 1)
 	M.heal_limb_damage(potency, 0)
+	if(potency > 2)
+		M.heal_limb_damage(potency/2, 0)
 
 /datum/chem_property/positive/neogenetic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, BURN)
@@ -72,7 +76,7 @@
 		L.heal_damage(2*potency, 2*potency, TRUE)
 
 /datum/chem_property/positive/repairing/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/repairing/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(4*potency, TOX)
@@ -95,7 +99,7 @@
 		M.recalculate_move_delay = TRUE
 
 /datum/chem_property/positive/hemogenic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/hemogenic/process_critical(mob/living/M, var/potency = 1)
 	M.nutrition = max(M.nutrition - 5*potency, 0)
@@ -106,6 +110,7 @@
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
+	value = 3
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, var/potency = 1)
 	M.AdjustKnockedout(potency*-1)
@@ -132,7 +137,6 @@
 	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
-	value = 1
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
 	M.reagent_move_delay_modifier -= 0.25 * potency
@@ -186,6 +190,7 @@
 	code = "HPP"
 	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions."
 	rarity = PROPERTY_UNCOMMON
+	value = 1
 
 /datum/chem_property/positive/hepatopeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -205,6 +210,7 @@
 	code = "NPP"
 	description = "Heals damaged and deteriorated podocytes in the kidney, restoring organ functions."
 	rarity = PROPERTY_UNCOMMON
+	value = 1
 
 /datum/chem_property/positive/nephropeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -224,6 +230,7 @@
 	code = "PNP"
 	description = "Mends the interstitium tissue of the alveoli restoring respiratory functions in the lungs."
 	rarity = PROPERTY_UNCOMMON
+	value = 1
 
 /datum/chem_property/positive/pneumopeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -243,6 +250,7 @@
 	code = "OCP"
 	description = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision."
 	rarity = PROPERTY_COMMON
+	value = 1
 
 /datum/chem_property/positive/oculopeutic/process(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
@@ -252,7 +260,7 @@
 	M.eye_blind = max(M.eye_blind-5*potency , 0)
 
 /datum/chem_property/positive/oculopeutic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(potency * 2, TOX)
+	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/oculopeutic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damages(potency, potency, 3 * potency)
@@ -263,6 +271,7 @@
 	code = "CDP"
 	description = "Regenerates damaged cardiomyocytes and recovers a correct cardiac cycle and heart functionality."
 	rarity = PROPERTY_UNCOMMON
+	value = 1
 
 /datum/chem_property/positive/cardiopeutic/on_delete(mob/living/M)
 	..()
@@ -356,7 +365,7 @@
 	var/obj/limb/L = pick(H.limbs)
 	if(L && prob(10*potency))
 		if(L.status & LIMB_ROBOT)
-			L.take_damage(0,2*potency)
+			L.take_damage(0, potency)
 			return
 		if(L.implants && L.implants.len > 0)
 			var/obj/implanted_object = pick(L.implants)
@@ -364,7 +373,7 @@
 				L.implants -= implanted_object
 
 /datum/chem_property/positive/fluxing/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damages(2*potency, 0, 2*potency)
+	M.apply_damages(2*potency, 0, potency)
 
 /datum/chem_property/positive/fluxing/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damages(4*potency, 0, 4*potency) //Mixed brute/tox damage
@@ -421,7 +430,7 @@
 					A.counter = 90
 
 /datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/antiparasitic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(4*potency, TOX)
@@ -430,7 +439,7 @@
 	name = PROPERTY_ORGANSTABILIZE
 	code = "OGS"
 	description = "Stabilizes internal organ damage, stopping internal damage symptoms."
-	rarity = PROPERTY_COMMON
+	rarity = PROPERTY_DISABLED
 	value = 2
 
 /datum/chem_property/positive/organstabilize/process(mob/living/M, var/potency = 1)
@@ -508,6 +517,13 @@
 		to_chat(H, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(H.client, 'sound/effects/Heart Beat Short.ogg', 35)
 		addtimer(CALLBACK(H, /mob/living/carbon/human.proc/handle_revive), 50, TIMER_UNIQUE)
+	else if (potency >= 3 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 6 or greater
+		to_chat(H, SPAN_NOTICE("You feel a faint spark in your chest."))
+		H.apply_damage(-potency/2, BRUTE)
+		H.apply_damage(-potency/2, BURN)
+		H.apply_damage(-potency/2, TOX)
+		H.apply_damage(-potency/2, CLONE)
+		H.apply_damage(-H.getOxyLoss(), OXY)
 	return TRUE
 
 /datum/chem_property/positive/hyperdensificating
@@ -781,7 +797,7 @@
 	M.adjustCloneLoss(-potency)
 
 /datum/chem_property/positive/anticarcinogenic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+	M.apply_damage(potency, TOX)
 
 /datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, var/potency = 1)
 	M.take_limb_damage(2*potency)//Hyperactive apoptosis

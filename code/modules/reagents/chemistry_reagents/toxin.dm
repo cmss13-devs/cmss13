@@ -87,6 +87,7 @@
 	description = "Useful for dealing with undesirable customers."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/carpotoxin
 	name = "Carpotoxin"
@@ -95,6 +96,7 @@
 	reagent_state = LIQUID
 	color = "#003333" // rgb: 0, 51, 51
 	properties = list(PROPERTY_TOXIC = 2)
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/zombiepowder
 	name = "Zombie Powder"
@@ -103,6 +105,7 @@
 	reagent_state = SOLID
 	color = "#669900" // rgb: 102, 153, 0
 	properties = list(PROPERTY_TOXIC = 1)
+	flags = REAGENT_NO_GENERATION
 
 /datum/reagent/toxin/zombiepowder/on_mob_life(mob/living/carbon/M)
 	. = ..()

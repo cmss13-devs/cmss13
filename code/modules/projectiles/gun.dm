@@ -1036,7 +1036,7 @@ and you're good to go.
 /obj/item/weapon/gun/proc/Fire(atom/target, mob/living/user, params, reflex = 0, dual_wield)
 	set waitfor = 0
 
-	if(!able_to_fire(user))
+	if(!able_to_fire(user) || !target)
 		return
 
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
@@ -1081,7 +1081,7 @@ and you're good to go.
 
 	var/bullets_fired
 	for(bullets_fired = 1 to bullets_to_fire)
-		if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY) && !(flags_item & WIELDED))
+		if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
 			break //If you drop it while bursting, for example.
 
 		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
@@ -1109,12 +1109,15 @@ and you're good to go.
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, reflex, dual_wield) //User can be passed as null.
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
 
-		var/scatter_mod = 0
-		var/burst_scatter_mod = 0
+		curloc = get_turf(user)
+		if(QDELETED(original_target)) //If the target's destroyed, shoot at where it was last.
+			target = targloc
+		else
+			target = original_target
+			targloc = get_turf(target)	
 
-		target = original_target ? original_target : targloc
 		projectile_to_fire.original = target
-		target = simulate_scatter(projectile_to_fire, target, targloc, scatter_mod, user, burst_scatter_mod, bullets_fired)
+		target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user, bullets_fired)
 
 		if(params)
 			var/list/mouse_control = params2list(params)
@@ -1132,7 +1135,7 @@ and you're good to go.
 			click_empty(user)
 			return
 
-		if(get_turf(target) != get_turf(user))
+		if(targloc != curloc)
 			simulate_recoil(recoil_comp, user, target)
 
 			//This is where the projectile leaves the barrel and deals with projectile code only.
@@ -1155,9 +1158,8 @@ and you're good to go.
 			break
 
 		//>>POST PROCESSING AND CLEANUP BEGIN HERE.<<
-		if(target) //If we had a target, let's do a muzzle flash.
-			var/angle = round(Get_Angle(user,target))
-			muzzle_flash(angle,user)
+		var/angle = round(Get_Angle(user,target)) //Let's do a muzzle flash.
+		muzzle_flash(angle,user)
 
 		//This is where we load the next bullet in the chamber. We check for attachments too, since we don't want to load anything if an attachment is active.
 		if(!check_for_attachment_fire && !reload_into_chamber(user)) // It has to return a bullet, otherwise it's empty. Unless it's an undershotgun.
@@ -1284,10 +1286,13 @@ and you're good to go.
 
 	var/bullets_fired
 	for(bullets_fired = 1 to bullets_to_fire)
-		if(loc != user)
+		if(loc != user || (flags_gun_features & GUN_WIELDED_FIRING_ONLY && !(flags_item & WIELDED)))
 			break //If you drop it while bursting, for example.
 
 		if (bullets_fired > 1 && !(flags_gun_features & GUN_BURST_FIRING)) // No longer burst firing somehow
+			break
+
+		if(QDELETED(M)) //Target deceased.
 			break
 
 		var/obj/item/projectile/projectile_to_fire = load_into_chamber(user)
@@ -1547,20 +1552,16 @@ and you're good to go.
 
 	return 1
 
-/obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/targloc, total_scatter_angle = 0, mob/user, burst_scatter_mod = 0, bullets_fired = 1)
-
-	var/turf/curloc = get_turf(src)
-	var/initial_angle = Get_Angle(curloc, targloc)
-	var/final_angle = initial_angle
-
-	total_scatter_angle += projectile_to_fire.scatter
+/obj/item/weapon/gun/proc/simulate_scatter(obj/item/projectile/projectile_to_fire, atom/target, turf/curloc, turf/targloc, mob/user, bullets_fired = 1)
+	var/fire_angle = Get_Angle(curloc, targloc)
+	var/total_scatter_angle = projectile_to_fire.scatter
 
 	if(flags_gun_features & GUN_BURST_ON && bullets_fired > 1)//Much higher scatter on burst. Each additional bullet adds scatter
 		var/bullet_amt_scat = min(bullets_fired-1, SCATTER_AMOUNT_TIER_6)//capped so we don't penalize large bursts too much.
 		if(flags_item & WIELDED)
-			total_scatter_angle += max(0, bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
+			total_scatter_angle += max(0, bullet_amt_scat * burst_scatter_mult)
 		else
-			total_scatter_angle += max(0, 2 * bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
+			total_scatter_angle += max(0, 2 * bullet_amt_scat * burst_scatter_mult)
 
 	// Full auto fucks your scatter up big time
 	// Note that full auto uses burst scatter multipliers
@@ -1568,9 +1569,9 @@ and you're good to go.
 		// The longer you fire full-auto, the worse the scatter gets
 		var/bullet_amt_scat = min((fa_shots/fa_scatter_peak) * fa_max_scatter, fa_max_scatter)
 		if(flags_item & WIELDED)
-			total_scatter_angle += max(0, bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
+			total_scatter_angle += max(0, bullet_amt_scat * burst_scatter_mult)
 		else
-			total_scatter_angle += max(0, 2 * bullet_amt_scat * (burst_scatter_mult + burst_scatter_mod))
+			total_scatter_angle += max(0, 2 * bullet_amt_scat * burst_scatter_mult)
 
 	if(user && user.mind && user.skills)
 		if(user.skills.get_skill_level(SKILL_FIREARMS) == 0) //no training in any firearms
@@ -1581,8 +1582,8 @@ and you're good to go.
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
 	if(total_scatter_angle > 0)
-		final_angle += rand(-total_scatter_angle, total_scatter_angle)
-		target = get_angle_target_turf(curloc, final_angle, 30)
+		fire_angle += rand(-total_scatter_angle, total_scatter_angle)
+		target = get_angle_target_turf(curloc, fire_angle, 30)
 
 	return target
 

@@ -262,9 +262,9 @@
 	else
 		switch(gen_tier)
 			if(1)
-				if(roll<=30)
+				if(roll<=20)
 					property = pick(chemical_properties_list["negative"])
-				else if (roll<=60)
+				else if (roll<=50)
 					property = pick(chemical_properties_list["neutral"])
 				else
 					property = pick(chemical_properties_list["positive"])
@@ -293,14 +293,18 @@
 	var/datum/chem_property/P = chemical_properties_list[property]
 	if(track_added_properties) //Generated effects are more unique for lower-tier chemicals, but not higher-tier ones
 		var/property_checks = 0
+		var/to_pick
 		while(!check_generated_properties(P) && property_checks < 10)
 			property_checks++
 			if(isNegativeProperty(P))
-				P = pick(chemical_properties_list["negative"])
+				to_pick = pick(chemical_properties_list["negative"])
+				P = chemical_properties_list[to_pick]
 			else if(isNeutralProperty(P))
-				P = pick(chemical_properties_list["neutral"])
+				to_pick = pick(chemical_properties_list["neutral"])
+				P = chemical_properties_list[to_pick]
 			else
-				P = pick(chemical_properties_list["positive"])
+				to_pick = pick(chemical_properties_list["positive"])
+				P = chemical_properties_list[to_pick]
 
 	//Calculate what our chemical value is with our level
 	var/new_value

@@ -531,7 +531,7 @@
 	description = "Removes common alcoholic substances from the bloodstream and increases focus."
 	rarity = PROPERTY_COMMON
 	category = PROPERTY_TYPE_STIMULANT
-	value = 1
+	value = 0
 
 /datum/chem_property/neutral/focusing/process(mob/living/M, var/potency = 1)
 	M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)

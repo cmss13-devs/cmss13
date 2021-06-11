@@ -484,21 +484,6 @@
 	chemclass = CHEM_CLASS_RARE
 	properties = list(PROPERTY_FUELING = 5, PROPERTY_OXIDIZING = 3, PROPERTY_VISCOUS = 4, PROPERTY_TOXIC = 1)
 
-/datum/reagent/fuel/reaction_obj(var/obj/O, var/volume)
-	var/turf/the_turf = get_turf(O)
-	if(!the_turf)
-		return //No sense trying to start a fire if you don't have a turf to set on fire. --NEO
-	new /obj/effect/decal/cleanable/liquid_fuel(the_turf, volume)
-
-/datum/reagent/fuel/reaction_turf(var/turf/T, var/volume)
-	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
-
-/datum/reagent/fuel/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)//Splashing people with welding fuel to make them easy to ignite!
-	if(!istype(M, /mob/living))
-		return
-	if(method == TOUCH)
-		M.adjust_fire_stacks(volume / 10)
-
 /datum/reagent/space_cleaner
 	name = "Space cleaner"
 	id = "cleaner"
@@ -806,12 +791,6 @@
 	M.adjust_fire_stacks(max(M.fire_stacks, 15))
 	M.IgniteMob(TRUE)
 	to_chat(M, SPAN_DANGER("It burns! It burns worse than you could ever have imagined!"))
-
-/datum/reagent/chlorinetrifluoride/reaction_mob(var/mob/M, var/method = TOUCH, var/volume) // Spilled on you? Not good either, but not /as/ bad.
-	var/mob/living/L = M
-	if(istype(L))
-		L.adjust_fire_stacks(max(L.fire_stacks, 10))
-		L.IgniteMob(TRUE)
 
 /datum/reagent/methane
 	name = "Methane"

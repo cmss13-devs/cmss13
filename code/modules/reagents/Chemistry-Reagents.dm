@@ -100,16 +100,27 @@
 				if(prob(chance) && !block)
 					if(M.reagents)
 						M.reagents.add_reagent(self.id,self.volume/2)
+		for(var/datum/chem_property/P in self.properties)
+			var/potency = P.level * 0.5
+			P.reaction_mob(M, method, volume, potency)
+
+
 	return 1
 
-/datum/reagent/proc/reaction_obj(var/obj/O, var/volume) //By default we transfer a small part of the reagent to the object
-	src = null						//if it can hold reagents. nope!
+/datum/reagent/proc/reaction_obj(var/obj/O, var/volume)
+	for(var/datum/chem_property/P in properties)
+		var/potency = P.level * 0.5
+		P.reaction_obj(O, volume, potency)
+	//By default we transfer a small part of the reagent to the object
+	//if it can hold reagents. nope!
 	//if(O.reagents)
 	//	O.reagents.add_reagent(id,volume/3)
 	return
 
 /datum/reagent/proc/reaction_turf(var/turf/T, var/volume)
-	src = null
+	for(var/datum/chem_property/P in properties)
+		var/potency = P.level * 0.5
+		P.reaction_turf(T, volume, potency)
 	return
 
 /datum/reagent/proc/on_mob_life(mob/living/M, alien, var/delta_time)

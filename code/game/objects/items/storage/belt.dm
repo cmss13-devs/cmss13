@@ -174,7 +174,8 @@
 		/obj/item/storage/pill_bottle,
 		/obj/item/clothing/gloves/latex,
 		/obj/item/reagent_container/hypospray/autoinjector,
-		/obj/item/stack/medical
+		/obj/item/stack/medical,
+		/obj/item/device/defibrillator/compact
 	)
 	var/has_gamemode_skin = TRUE
 

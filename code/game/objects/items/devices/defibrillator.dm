@@ -215,9 +215,9 @@
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
 
 
-/obj/item/device/defibrillator/compact
-	name = "compact defibrillator"
-	desc = "A compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge."
+/obj/item/device/defibrillator/compact_adv
+	name = "advanced compact defibrillator"
+	desc = "An advanced compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
@@ -226,3 +226,12 @@
 	heart_damage_to_deal = 0
 	damage_heal_threshold = 40
 	charge_cost = 198
+
+/obj/item/device/defibrillator/compact
+	name = "compact defibrillator"
+	desc ="This particular defibrillator has halved charge capacity compared to the standard emergency defibrillator, but can fit in your pocket."
+	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon_state = "compact_defib"
+	item_state = "defib"
+	w_class = SIZE_SMALL
+	charge_cost = 132

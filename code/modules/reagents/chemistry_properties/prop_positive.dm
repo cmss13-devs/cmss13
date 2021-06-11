@@ -66,7 +66,7 @@
 	if(isXeno(L))
 		var/mob/living/carbon/Xenomorph/X = M
 		if(potency > 2) //heals at levels 5+
-			X.gain_health(min(potency * volume/2, -X.health))
+			X.gain_health(potency * volume * 0.5)
 
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
@@ -444,9 +444,10 @@
 	return TRUE
 
 /datum/chem_property/positive/neurocryogenic/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
-	if(!isXenoOrHuman(M))
+	if(!istype(M, /mob/living))
 		return
-	M.AddComponent(/datum/component/speed_modifier, potency * volume * 0.5) //Brainfreeze
+	var/mob/living/L = M
+	L.AddComponent(/datum/component/slow_buildup, potency) //Brainfreeze
 
 /datum/chem_property/positive/antiparasitic
 	name = PROPERTY_ANTIPARASITIC
@@ -863,8 +864,8 @@
 	var/mob/living/L = M
 	if(isXeno(L))
 		var/mob/living/carbon/Xenomorph/X = M
-		if(potency > 4 && X.health < 0) //heals out of crit
-			X.gain_health(min(potency * volume/2, -X.health + 1))
+		if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
+			X.gain_health(min(potency * volume * 0.5, -X.health + 1))
 
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING

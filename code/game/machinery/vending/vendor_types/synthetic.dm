@@ -59,6 +59,7 @@
 		list("Motion Detector", 5, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
 		list("Space Cleaner", 2, /obj/item/reagent_container/spray/cleaner, null, VENDOR_ITEM_REGULAR),
 		list("Whistle", 5, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+
 	)
 
 //------------CLOTHING VENDOR---------------
@@ -250,22 +251,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 //------------EXPERIMENTAL TOOLS---------------
 /obj/structure/machinery/cm_vending/own_points/experimental_tools
 	name = "\improper Experimental Vendor"
-	desc = "A vendor with specially provisioned tools. They may or may not be tested."
-	icon_state = "snowflake"
+	desc = "A smaller vendor hooked up to a cache of specially provisioned, experimental tools. Handle with care."
+	icon_state = "robotics"
 	vendor_theme = VENDOR_THEME_COMPANY
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = list(JOB_SYNTH)
-
+/obj/structure/machinery/cm_vending/own_points/experimental_tools
 	listed_products = list(
-		list("MEDICAL", 0, null, null, null),
 		list("Compact Defibrillator", 15, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),
 
-		list("ENGINEERING", 0, null, null, null),
-		list("Refurbished Meson Scanner", 15, /obj/item/clothing/glasses/meson/refurbished, null, VENDOR_ITEM_REGULAR),
-
-		list("CONSTRUCTION", 0, null, null, null),
-		list("Breach B5", 15, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
-
-		list("COMMAND", 0, null, null, null),
 		list("Crew Monitor", 15, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
+
+		list("Telescopic Baton", 15, /obj/item/weapon/melee/telebaton, null, VENDOR_ITEM_REGULAR),
 	)

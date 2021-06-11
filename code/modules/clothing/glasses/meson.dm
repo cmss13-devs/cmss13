@@ -32,4 +32,5 @@
 	item_state = "glasses"
 	vision_flags = SEE_TURFS
 	flags_inventory = COVEREYES
+	flags_item = MOB_LOCK_ON_EQUIP
 	fullscreen_vision = /obj/screen/fullscreen/meson/refurb

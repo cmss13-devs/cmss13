@@ -17,9 +17,7 @@
 	var/amount = 1
 	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stack_id //used to determine if two stacks are of the same kind.
-	attack_speed = 3	//makes collect stacks off the floor and such less of a pain
 	var/amount_sprites = FALSE //does it have sprites for extra amount, like metal, plasteel, or wood
-
 	//Coords for contents display, to make it play nice with inventory borders.
 	maptext_x = 4
 	maptext_y = 3
@@ -331,6 +329,7 @@ Also change the icon to reflect the amount of sheets, if possible.*/
 			src.use(to_transfer)
 			if (src && usr.interactee==src)
 				INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
+			user.next_move = world.time + 0.3 SECONDS
 			return TRUE
 
 	return ..()

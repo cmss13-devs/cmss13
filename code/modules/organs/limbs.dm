@@ -502,6 +502,8 @@ This function completely restores a damaged organ to perfect condition.
 		last_dam = brute_dam + burn_dam
 	if(knitting_time > 0)
 		return 1
+	if(regrow_time > 0)
+		return 1
 	return 0
 
 /obj/limb/process()
@@ -526,12 +528,6 @@ This function completely restores a damaged organ to perfect condition.
 			owner.pain.apply_pain(-PAIN_BONE_BREAK)
 			status &= ~LIMB_BROKEN //Let it be known that this code never unbroke the limb.
 			knitting_time = -1
-
-	//Limb regrowing
-	if(regrow_time > 0)
-		if(world.time > regrow_time)
-			rejuvenate()
-			to_chat(owner, SPAN_WARNING("Your [display_name] regrows!"))
 
 //Updating wounds. Handles wound natural I had some free spachealing, internal bleedings and infections
 /obj/limb/proc/update_wounds()

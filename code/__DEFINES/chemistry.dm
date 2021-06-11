@@ -91,6 +91,7 @@
 #define REAGENT_NOT_INGESTIBLE	(1<<2) // Whether the reagent canNOT be ingested and must be delivered through injection. Used by electrogenetic property.
 #define REAGENT_CANNOT_OVERDOSE	(1<<3) // Whether the reagent canNOT trigger its overdose effects. Used by regulating property. For ordinary reagents with no overdose effect, instead keep var/overdose at 0.
 #define REAGENT_TYPE_STIMULANT  (1<<4)
+#define REAGENT_NO_GENERATION	(1<<5) // Reagent doesn't randomly generate in chemicals
 
 /*
 	properties defines
@@ -104,6 +105,7 @@
 #define PROPERTY_HEMORRAGING		"hemorrhaging"
 #define PROPERTY_CARCINOGENIC		"carcinogenic"
 #define PROPERTY_HEPATOTOXIC		"hepatotoxic"
+#define PROPERTY_INTRAVENOUS		"intravenous"
 #define PROPERTY_NEPHROTOXIC		"nephrotoxic"
 #define PROPERTY_PNEUMOTOXIC		"pneumotoxic"
 #define PROPERTY_OCULOTOXIC 		"oculotoxic"
@@ -164,6 +166,7 @@
 //Legendary, only in gen_tier 3+
 #define PROPERTY_HYPERGENETIC		"hypergenetic"
 #define PROPERTY_BOOSTING			"boosting"
+#define PROPERTY_REGROWING			"regrowing"
 #define PROPERTY_DNA_DISINTEGRATING	"DNA-Disintegrating"
 #define PROPERTY_REGULATING			"regulating"
 #define PROPERTY_CIPHERING			"ciphering"

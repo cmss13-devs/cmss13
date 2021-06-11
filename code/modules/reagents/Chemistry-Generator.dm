@@ -176,14 +176,15 @@
 		var/gen_value
 		for(var/i=0;i<gen_tier+1;i++)
 			if(i == 0) //The first property is random to offset the value balance
-				if(gen_tier > 3 || (gen_tier == 3 && prob(50)))
+				if(gen_tier > 2)
 					gen_value = add_property(null,null,0,TRUE) //Give rare property
 				else
-					gen_value = add_property()
+					gen_value = add_property(null,null,0,FALSE,TRUE)
 			else if(gen_value == gen_tier * 2 - 1) //If we are balanced, don't add any more
 				break
-			else
-				gen_value += add_property(0,0, gen_tier - gen_value - 1) //add property based on our offset from the prefered balance
+			else if(gen_tier < 3)
+				gen_value += add_property(0,0, gen_tier - gen_value - 1,FALSE,TRUE) //add property based on our offset from the prefered balance
+			else gen_value += add_property(0,0, gen_tier - gen_value - 1)
 		while(LAZYLEN(properties) < gen_tier + 1) //We lost properties somewhere to conflicts, so add a random one until we're full
 			add_property()
 
@@ -216,7 +217,7 @@
 	generate_description()
 	return TRUE
 
-/datum/reagent/proc/add_property(var/my_property, var/my_level, var/value_offset = 0, var/make_rare = FALSE)
+/datum/reagent/proc/add_property(var/my_property, var/my_level, var/value_offset = 0, var/make_rare = FALSE, var/track_added_properties = FALSE)
 	//Determine level modifier
 	var/level
 	if(my_level)
@@ -290,6 +291,17 @@
 					property = pick(chemical_properties_list["positive"])
 
 	var/datum/chem_property/P = chemical_properties_list[property]
+	if(track_added_properties) //Generated effects are more unique for lower-tier chemicals, but not higher-tier ones
+		var/property_checks = 0
+		while(!check_generated_properties(P) && property_checks < 10)
+			property_checks++
+			if(isNegativeProperty(P))
+				P = pick(chemical_properties_list["negative"])
+			else if(isNeutralProperty(P))
+				P = pick(chemical_properties_list["neutral"])
+			else
+				P = pick(chemical_properties_list["positive"])
+
 	//Calculate what our chemical value is with our level
 	var/new_value
 	if(isNegativeProperty(P))
@@ -423,3 +435,21 @@
 	chemical_reactions_list[C.id] = C
 	C.add_to_filtered_list()
 	return C
+
+/datum/reagent/proc/check_generated_properties(var/datum/chem_property/P) //Returns false if a property has been generated in a previously made chem and all properties haven't yet been generated.
+	if(istype(P, /datum/chem_property/positive))
+		for(var/gen_property in generated_properties["positive"])
+			if(P == gen_property && LAZYLEN(generated_properties["positive"]) < LAZYLEN(chemical_properties_list["positive"]))
+				return FALSE
+		generated_properties["positive"] += P
+	else if(istype(P, /datum/chem_property/negative))
+		for(var/gen_property in generated_properties["negative"])
+			if(P == gen_property && LAZYLEN(generated_properties["negative"]) < LAZYLEN(chemical_properties_list["negative"]))
+				return FALSE
+		generated_properties["negative"] += P
+	else if(istype(P, /datum/chem_property/neutral))
+		for(var/gen_property in generated_properties["neutral"])
+			if(P == gen_property && LAZYLEN(generated_properties["neutral"]) < LAZYLEN(chemical_properties_list["neutral"]))
+				return FALSE
+		generated_properties["neutral"] += P
+	return TRUE

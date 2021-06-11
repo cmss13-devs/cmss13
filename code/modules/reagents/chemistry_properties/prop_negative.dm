@@ -209,6 +209,22 @@
 /datum/chem_property/negative/hepatotoxic/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(5*potency, TOX)
 
+/datum/chem_property/negative/intravenous
+	name = PROPERTY_INTRAVENOUS
+	code = "INV"
+	description = "Due to chemical composition, this chemical can only be administered intravenously."
+	rarity = PROPERTY_COMMON
+	category = PROPERTY_TYPE_METABOLITE
+	max_level = 1
+
+/datum/chem_property/negative/intravenous/reset_reagent()
+	holder.flags = initial(holder.flags)
+	..()
+
+/datum/chem_property/negative/intravenous/update_reagent()
+	holder.flags |= REAGENT_NOT_INGESTIBLE
+	..()
+
 /datum/chem_property/negative/nephrotoxic
 	name = PROPERTY_NEPHROTOXIC
 	code = "NPT"

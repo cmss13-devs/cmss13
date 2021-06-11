@@ -4,6 +4,8 @@
 	required_players = 0
 	latejoin_larva_drop = 0
 	votable = FALSE
+	var/research_allocation_interval = 10 MINUTES
+	var/next_research_allocation = 0
 
 /datum/game_mode/announce()
 	to_world("<B>The current game mode is - Extended!</B>")

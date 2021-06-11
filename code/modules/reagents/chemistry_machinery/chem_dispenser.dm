@@ -185,6 +185,7 @@
 	req_skill = null
 	req_skill_level = null
 	accept_glass = 1
+	wrenchable = TRUE
 	network = "Misc"
 	dispensable_reagents = list("water","ice","coffee","cream","tea","icetea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice","watermelonjuice")
 	var/hackedcheck = 0
@@ -211,6 +212,7 @@
 	req_skill = null
 	req_skill_level = null
 	accept_glass = 1
+	wrenchable = TRUE
 	network = "Misc"
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	dispensable_reagents = list("lemon_lime","sugar","orangejuice","limejuice","sodawater","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","tequilla","vermouth","cognac","ale","mead")

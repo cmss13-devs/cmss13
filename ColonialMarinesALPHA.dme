@@ -274,6 +274,8 @@
 #include "code\datums\buildmode\buildmode_objects.dm"
 #include "code\datums\components\_component.dm"
 #include "code\datums\components\cluster_stack.dm"
+#include "code\datums\components\injury_buildup.dm"
+#include "code\datums\components\slow_buildup.dm"
 #include "code\datums\components\footstep.dm"
 #include "code\datums\components\toxin_buildup.dm"
 #include "code\datums\components\weed_damage_reduction.dm"

@@ -5,4 +5,5 @@ After dying, ask yourself what you did wrong and make a mental note to not make 
 Communication, be it from a marine to a marine, a drone to the queen, or command to everyone, is vital and information on flanks can change how the entire round plays out.
 As an alien or marine, be careful of the flank, regardless of if the push is going well or stalling out.
 Half of getting good is knowing to be aggressive. The other half is knowing when not to be aggressive.
-Alt-click a storage item to draw the last item in it (last non-gun if it's a gun belt). Middle-click a storage item to inmediately open it, and middle-click structures to attempt to vault them.
+Past lives have absolutely no effect on the chain of command.
+Alt-click a storage item to draw the last item in it (last non-weapon if it's a weapon belt). Middle-click a storage item to inmediately open it, and middle-click structures to attempt to vault them.

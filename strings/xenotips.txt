@@ -12,7 +12,7 @@ You can spit at or shoot a welding fuel tank to blow it up next to hostiles.
 Quickly rest if you're right next to an explosive about to blow, you'll absorb half the explosion damage. The same method can be used to avoid shrapnel from certain explosion types.
 On grab intent, click vendors to knock them over. After a few seconds, they'll fall on their side and you can walk through them.
 Unpowered shutters can be manually opened by clicking on them. The Queen can also open containment shutters, but this takes some time.
-Moving through pipes is noisy and entering/leaving the vents has a noticeable visual and auditive cue.
+Moving through pipes is noisy and entering/leaving the vents has a noticeable visual and auditory cue.
 If a fellow alien is stunned, be sure to drag them to safety.
 On help intent, click a xenomorph who is on fire to pat them out. This works on marines too!
 Frenzy increases your speed and damage, Recovery increases your health regeneration, and Warding increases the time you have until you bleed out in critical health.
@@ -23,3 +23,4 @@ Drag yourself onto a hole in a wall as a medium-sized or smaller xeno to pass th
 Claymores have directional explosions. Set them off early by slashing them from behind.
 If you have difficulty clicking marines, try using Directional Slashing, though there's no directional slashing for abilities.
 You can diagonally pounce through the corners of fire as a Lurker or Runner without getting ignited.
+When playing as xeno, consider aiming at the limbs instead of the chest. Marine armour doesn't protect the arms and legs as well as it does the body.

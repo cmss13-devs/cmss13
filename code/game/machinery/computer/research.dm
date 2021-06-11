@@ -198,14 +198,11 @@
 			var/cost = max(3*(chemical_data.clearance_level + 1), 1)
 			if(cost <= chemical_data.rsc_credits)
 				chemical_data.update_credits(cost * -1)
-				if(chemical_data.clearance_level < 3)
-					chemical_data.update_income(1)
-				else
-					chemical_data.update_income(2)
 				chemical_data.clearance_level++
 				visible_message(SPAN_NOTICE("Clearance access increased to level [chemical_data.clearance_level] for [cost] credits."))
 				msg_admin_niche("[key_name(user)] traded research credits to upgrade the clearance to level [chemical_data.clearance_level].")
 				if(max_clearance < chemical_data.clearance_level)
+					chemical_data.update_income(1) //Bonus income for buying clearance instead of swiping it up
 					switch(chemical_data.clearance_level) //Gives a free research synthesis if clearance is bought, but only the first time
 						if(2)
 							new /obj/item/paper/research_notes/unique/tier_two/(photocopier.loc)

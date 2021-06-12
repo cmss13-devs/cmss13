@@ -1,14 +1,14 @@
 /datum/component/slow_buildup
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
 	var/slow_buildup = 0
-	var/slow_buildup_dissipation = AMOUNT_PER_TIME(1, 2 SECONDS)
+	var/slow_buildup_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS)
 	var/max_buildup = 10
 	var/human_stamina_multiplier = 2.5
 
 	var/max_alpha = 35
 	var/glow_color = "#00c3ff"
 
-/datum/component/slow_buildup/Initialize(var/slow_buildup, var/slow_buildup_dissipation = AMOUNT_PER_TIME(1, 2 SECONDS), var/max_buildup = 10, var/human_stamina_multiplier = 2.5)
+/datum/component/slow_buildup/Initialize(var/slow_buildup, var/slow_buildup_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), var/max_buildup = 10, var/human_stamina_multiplier = 2.5)
 	. = ..()
 	src.slow_buildup = slow_buildup
 	src.slow_buildup_dissipation = slow_buildup_dissipation
@@ -45,10 +45,8 @@
 /datum/component/slow_buildup/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
 	STOP_PROCESSING(SSdcs, src)
-	RegisterSignal(parent, list(
-		COMSIG_XENO_MOVEMENT_DELAY,
-		COMSIG_XENO_APPEND_TO_STAT
-	))
+	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY), .proc/apply_slow_buildup)
+	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
 
 /datum/component/slow_buildup/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)

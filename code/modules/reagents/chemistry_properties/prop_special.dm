@@ -60,7 +60,7 @@
 	if(isXeno(M)) //more effective on xenos to account for higher HP
 		var/mob/living/carbon/Xenomorph/X = M
 		X.gain_health(potency * volume)
-	L.AddComponent(/datum/component/injury_buildup, -potency * volume * 0.5) //reduces injuries if present
+	L.AddComponent(/datum/component/healing_reduction, -potency * volume * 0.5) //reduces injuries if present
 
 /datum/chem_property/special/organhealing
 	name = PROPERTY_ORGAN_HEALING

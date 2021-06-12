@@ -373,7 +373,7 @@
 	if(!istype(M, /mob/living))
 		return
 	var/mob/living/L = M
-	L.AddComponent(/datum/component/injury_buildup, potency) //deals brute DOT to humans, prevents healing for xenos
+	L.AddComponent(/datum/component/healing_reduction, potency * volume * 0.5) //deals brute DOT to humans, prevents healing for xenos
 
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC

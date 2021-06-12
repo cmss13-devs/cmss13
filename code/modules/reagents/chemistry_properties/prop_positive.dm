@@ -447,7 +447,7 @@
 	if(!istype(M, /mob/living))
 		return
 	var/mob/living/L = M
-	L.AddComponent(/datum/component/slow_buildup, potency) //Brainfreeze
+	L.AddComponent(/datum/component/slow_buildup, potency * volume * 0.5) //Brainfreeze
 
 /datum/chem_property/positive/antiparasitic
 	name = PROPERTY_ANTIPARASITIC

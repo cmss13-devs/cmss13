@@ -49,7 +49,7 @@ Humans will take continuous damage instead.
 
 /datum/component/healing_reduction/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
-	RegisterSignal(parent, COMSIG_XENO_ON_HEAL), .proc/apply_healing_reduction)
+	RegisterSignal(parent, COMSIG_XENO_ON_HEAL, .proc/apply_healing_reduction)
 	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
 
 /datum/component/healing_reduction/UnregisterFromParent()

@@ -45,7 +45,7 @@
 /datum/component/slow_buildup/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
 	STOP_PROCESSING(SSdcs, src)
-	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY), .proc/apply_slow_buildup)
+	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY, .proc/apply_slow_buildup)
 	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
 
 /datum/component/slow_buildup/UnregisterFromParent()

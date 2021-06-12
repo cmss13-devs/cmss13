@@ -666,6 +666,10 @@ Defined in conflicts.dm of the #defines folder.
 			if(user)
 				to_chat(user, SPAN_WARNING("You must hold [G] with two hands to use [src]."))
 			return FALSE
+		if(SSticker?.mode.flags_round_type & MODE_THUNDERSTORM)
+			if(user)
+				to_chat(user, SPAN_DANGER("You peer into [src], but it seems to have fogged up. You can't use this!"))
+			return FALSE
 		else
 			G.zoom(user, zoom_offset, zoom_viewsize, allows_movement)
 			apply_scoped_buff(G,user)

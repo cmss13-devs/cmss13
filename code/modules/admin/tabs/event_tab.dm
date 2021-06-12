@@ -254,6 +254,22 @@
 
 	message_staff("[key_name_admin(usr)] canceled an emergency evacuation.")
 
+/datum/admins/proc/disable_shuttle_console()
+	set name = "Disable Shuttle Console"
+	set desc = "Prevents a shuttle control console from being accessed."
+	set category = "Admin.Events"
+
+	if(!SSticker.mode || !check_rights(R_ADMIN))
+		return
+	
+	var/obj/structure/machinery/computer/shuttle_control/input = tgui_input_list(usr, "Choose which console to disable", "Shuttle Controls", GLOB.shuttle_controls)
+	if(!input)
+		return
+	input.disabled = !input.disabled
+
+	message_staff("[key_name_admin(usr)] set [input]'s disabled to [input.disabled].")
+
+
 /datum/admins/proc/admin_force_selfdestruct()
 	set name = "Self Destruct"
 	set desc = "Trigger self destruct countdown. This should not be done if the self destruct has already been called."
@@ -575,6 +591,7 @@
 		<A href='?src=\ref[src];events=selfdestruct'>Activate Self-Destruct</A><BR>
 		<A href='?src=\ref[src];events=evacuation_start'>Trigger Evacuation</A><BR>
 		<A href='?src=\ref[src];events=evacuation_cancel'>Cancel Evacuation</A><BR>
+		<A href='?src=\ref[src];events=disable_shuttle_console'>Disable Shuttle Control</A><BR>
 		<BR>
 		<B>Research</B><BR>
 		<A href='?src=\ref[src];events=change_clearance'>Change Research Clearance</A><BR>

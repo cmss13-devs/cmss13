@@ -247,7 +247,7 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
+	fuel = rand(80 SECONDS, 100 SECONDS) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
 
 /obj/item/device/flashlight/flare/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -256,11 +256,14 @@
 /obj/item/device/flashlight/flare/process()
 	fuel = max(fuel - 1, 0)
 	if(!fuel || !on)
-		turn_off()
-		if(!fuel)
-			icon_state = "[initial(icon_state)]-empty"
-			add_to_garbage(src)
-		STOP_PROCESSING(SSobj, src)
+		burn_out()
+
+/obj/item/device/flashlight/flare/proc/burn_out()
+	turn_off()
+	fuel = 0
+	icon_state = "[initial(icon_state)]-empty"
+	add_to_garbage(src)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_off()
 	on = 0
@@ -273,14 +276,21 @@
 	else
 		update_brightness(null)
 
-/obj/item/device/flashlight/flare/attack_self(mob/user)
+/obj/item/device/flashlight/flare/attack_self(mob/living/user)
 
 	// Usual checks
 	if(!fuel)
 		to_chat(user, SPAN_NOTICE("It's out of fuel."))
 		return FALSE
 	if(on)
-		return FALSE
+		if(do_after(user, 2.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			var/hand = user.hand ? "l_hand" : "r_hand"
+			user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
+			SPAN_WARNING("You snuff out [src], singing your hand."))
+			user.apply_damage(7, BURN, hand)
+			burn_out()
+			//TODO: add snuff out sound so guerilla CLF snuffing flares get noticed
+			return
 
 	. = ..()
 	// All good, turn it on.

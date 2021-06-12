@@ -16,6 +16,8 @@
 			if(alert(usr, "Are you sure you want to do this?", "Confirmation", "Yes", "No") == "No")
 				return
 			admin_cancel_evacuation()
+		if("disable_shuttle_console")
+			disable_shuttle_console()
 		if("medal")
 			owner.award_medal()
 		if("pmcguns")

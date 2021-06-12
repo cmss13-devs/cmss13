@@ -44,6 +44,7 @@
 #define MODE_DS_LANDED			(1<<10)
 #define MODE_BASIC_RT			(1<<11)
 #define MODE_RANDOM_HIVE		(1<<12)// Makes Join-as-Xeno choose a hive to join as pooled larva at random rather than at user's input..
+#define MODE_THUNDERSTORM		(1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
 
 #define ROUNDSTATUS_FOG_DOWN 		1
 #define ROUNDSTATUS_PODDOORS_OPEN	2

@@ -19,6 +19,9 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	var/abort_timer = 100 //10 seconds
 	var/link = 0 // Does this terminal activate the transport system?
 
+	 ///Has it been admin-disabled?
+	var/disabled = FALSE
+
 	var/datum/shuttle/ferry/shuttle_datum
 
 /obj/structure/machinery/computer/shuttle_control/Initialize()
@@ -46,6 +49,10 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 	if((!allowed(user) || ismaintdrone(user)) && !isXeno(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
 		return 1
+	
+	if(disabled)
+		to_chat(user, SPAN_WARNING("The console seems to be broken."))
+		return
 
 	user.set_interaction(src)
 

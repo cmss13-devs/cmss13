@@ -5,6 +5,13 @@
 	powernet_name = "ground"
 	ambience_exterior = AMBIENCE_JUNGLE
 
+/area/lv624/Initialize()
+	. = ..()
+	if(SSticker.current_state > GAME_STATE_SETTING_UP)
+		add_thunder()
+	else
+		LAZYADD(GLOB.thunder_setup_areas, src)
+
 /area/lv624/ground
 	name = "Ground"
 	icon_state = "green"

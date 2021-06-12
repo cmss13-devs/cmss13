@@ -63,6 +63,8 @@
 	var/recoil 					= 0
 	 ///How much the bullet scatters when fired.
 	var/scatter					= 0
+	 /// Added velocity to fired bullet.
+	var/velocity_add			= 0
 	 ///Multiplier. Increases or decreases how much bonus scatter is added with each bullet during burst fire (wielded only).
 	var/burst_scatter_mult		= 4
 
@@ -349,6 +351,7 @@
 		scatter += R.scatter_mod
 		scatter_unwielded += R.scatter_unwielded_mod
 		damage_mult += R.damage_mod
+		velocity_add += R.velocity_mod
 		damage_falloff_mult += R.damage_falloff_mod
 		damage_buildup_mult += R.damage_buildup_mod
 		effective_range_min += R.range_min_mod
@@ -1116,6 +1119,8 @@ and you're good to go.
 		projectile_to_fire.original = target
 		target = simulate_scatter(projectile_to_fire, target, targloc, scatter_mod, user, burst_scatter_mod, bullets_fired)
 
+		var/bullet_velocity = projectile_to_fire?.ammo?.shell_speed + velocity_add
+
 		if(params)
 			var/list/mouse_control = params2list(params)
 			if(mouse_control["icon-x"])
@@ -1137,7 +1142,7 @@ and you're good to go.
 
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
-			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, projectile_to_fire?.ammo?.shell_speed, original_target, FALSE)
+			projectile_to_fire.fire_at(target, user, src, projectile_to_fire?.ammo?.max_range, bullet_velocity, original_target, FALSE)
 			//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 			if(check_for_attachment_fire)

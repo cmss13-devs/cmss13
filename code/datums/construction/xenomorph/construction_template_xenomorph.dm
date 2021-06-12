@@ -10,7 +10,7 @@
 	var/block_range = 1
 
 /datum/construction_template/xenomorph/set_structure_image()
-	build_icon = get_icon_from_source(CONFIG_GET(string/alien_structures_64x64))
+	build_icon = 'icons/mob/hostiles/structures64x64.dmi'
 
 /datum/construction_template/xenomorph/complete() //Override because we need to pass the hive ref
 	if(!owner || !get_turf(owner))
@@ -71,4 +71,4 @@
 	pixel_x = -8
 
 /datum/construction_template/xenomorph/nest/set_structure_image()
-	build_icon = get_icon_from_source(CONFIG_GET(string/alien_structures))
+	build_icon = 'icons/mob/hostiles/structures.dmi'

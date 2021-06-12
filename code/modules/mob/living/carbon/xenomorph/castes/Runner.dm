@@ -27,6 +27,7 @@
 	caste_type = XENO_CASTE_RUNNER
 	name = XENO_CASTE_RUNNER
 	desc = "A small red alien that looks like it could run fairly quickly..."
+	icon = 'icons/mob/hostiles/runner.dmi'
 	icon_state = "Runner Walking"
 	icon_size = 64
 	layer = MOB_LAYER
@@ -52,10 +53,6 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
 	)
 	mutation_type = RUNNER_NORMAL
-
-/mob/living/carbon/Xenomorph/Runner/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_runner))
 
 /mob/living/carbon/Xenomorph/Runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()

@@ -5,6 +5,7 @@
 /obj/effect/alien/resin/construction
 	name = "construction node"
 	desc = "A strange wriggling lump. Looks like a marker for something."
+	icon = 'icons/mob/hostiles/weeds.dmi'
 	icon_state = "constructionnode"
 	density = 0
 	anchored = 1
@@ -15,7 +16,6 @@
 
 /obj/effect/alien/resin/construction/Initialize(mapload, var/hive_ref)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_weeds))
 	linked_hive = hive_ref
 	if (linked_hive.color)
 		color = linked_hive.color

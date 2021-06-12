@@ -30,6 +30,7 @@
 	caste_type = XENO_CASTE_WARRIOR
 	name = XENO_CASTE_WARRIOR
 	desc = "A beefy, alien with an armored carapace."
+	icon = 'icons/mob/hostiles/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -49,10 +50,6 @@
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
-
-/mob/living/carbon/Xenomorph/Warrior/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_warrior))
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)

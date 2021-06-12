@@ -649,9 +649,9 @@ There are several things that need to be remembered:
 	var/image/standing
 	switch(chestburst)
 		if(1)
-			standing = image("icon" = get_icon_from_source(CONFIG_GET(string/alien_effects)),"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/hostiles/Effects.dmi',"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
 		if(2)
-			standing = image("icon" = get_icon_from_source(CONFIG_GET(string/alien_effects)),"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/hostiles/Effects.dmi',"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
 		else
 			return
 	overlays_standing[BURST_LAYER] = standing

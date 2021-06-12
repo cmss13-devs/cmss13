@@ -3,6 +3,7 @@
 /obj/structure/bed/nest
 	name = "alien nest"
 	desc = "It's a gruesome pile of thick, sticky resin shaped like a nest."
+	icon = 'icons/mob/hostiles/Effects.dmi'
 	icon_state = "nest"
 	buckling_y = 6
 	buildstacktype = null //can't be disassembled and doesn't drop anything when destroyed
@@ -20,8 +21,6 @@
 
 /obj/structure/bed/nest/Initialize(mapload, hive)
 	. = ..()
-
-	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 
 	if (hive)
 		hivenumber = hive
@@ -227,7 +226,7 @@
 		health -= (M.melee_damage_upper + 25) //Beef up the damage a bit
 		healthcheck()
 		return XENO_ATTACK_ACTION
-	
+
 	attack_hand(M)
 	return XENO_NONCOMBAT_ACTION
 

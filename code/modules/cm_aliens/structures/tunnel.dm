@@ -5,6 +5,7 @@
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
+	icon = 'icons/mob/hostiles/Effects.dmi'
 	icon_state = "hole"
 
 	density = 0
@@ -24,7 +25,6 @@
 
 /obj/structure/tunnel/Initialize(mapload, var/h_number)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 	var/turf/L = get_turf(src)
 	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
 

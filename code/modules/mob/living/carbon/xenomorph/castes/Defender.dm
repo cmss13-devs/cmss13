@@ -24,6 +24,7 @@
 	caste_type = XENO_CASTE_DEFENDER
 	name = XENO_CASTE_DEFENDER
 	desc = "A alien with an armored head crest."
+	icon = 'icons/mob/hostiles/defender.dmi'
 	icon_size = 64
 	icon_state = "Defender Walking"
 	plasma_types = list(PLASMA_CHITIN)
@@ -40,10 +41,6 @@
 		/datum/action/xeno_action/activable/fortify
 	)
 	mutation_type = DEFENDER_NORMAL
-
-/mob/living/carbon/Xenomorph/Defender/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_defender))
 
 /mob/living/carbon/Xenomorph/Defender/update_icons()
 	if (stat == DEAD)

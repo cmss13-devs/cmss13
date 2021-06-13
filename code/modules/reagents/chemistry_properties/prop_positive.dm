@@ -187,6 +187,12 @@
 /datum/chem_property/positive/musclestimulating/process_critical(mob/living/M, var/potency = 1)
 	M.take_limb_damage(potency)
 
+/datum/chem_property/positive/musclestimulating/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
+	if(!istype(M, /mob/living))
+		return
+	var/mob/living/L = M
+	L.AddComponent(/datum/component/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
+
 /datum/chem_property/positive/painkilling
 	name = PROPERTY_PAINKILLING
 	code = "PNK"
@@ -442,7 +448,7 @@
 	if(!istype(M, /mob/living))
 		return
 	var/mob/living/L = M
-	L.AddComponent(/datum/component/slow_buildup, potency * volume * 0.5) //Brainfreeze
+	L.AddComponent(/datum/component/speed_modifier, potency * volume * 0.5) //Brainfreeze
 
 /datum/chem_property/positive/antiparasitic
 	name = PROPERTY_ANTIPARASITIC

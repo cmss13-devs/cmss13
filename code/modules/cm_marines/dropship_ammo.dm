@@ -1,7 +1,6 @@
 
 
 
-
 //////////////////////////////////// dropship weapon ammunition ////////////////////////////
 
 /obj/structure/ship_ammo
@@ -96,30 +95,30 @@
 		to_chat(user, "It's loaded with an empty [name].")
 
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
-	set waitfor = 0
-	var/list/turf_list = list()
-	for(var/turf/T in range(impact, bullet_spread_range))
-		turf_list += T
-	var/soundplaycooldown = 0
-	var/debriscooldown = 0
-	for(var/i=1, i<=ammo_used_per_firing, i++)
-		var/turf/U = pick(turf_list)
-		sleep(1)
-		U.ex_act(EXPLOSION_THRESHOLD_MLOW)
-		for(var/atom/movable/AM in U)
-			if(iscarbon(AM))
-				AM.ex_act(EXPLOSION_THRESHOLD_MLOW, , create_cause_data(initial(name), source_mob))
-			else
-				AM.ex_act(EXPLOSION_THRESHOLD_MLOW)
-		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-			playsound(U, get_sfx("explosion"), 40, 1, 20)
-			soundplaycooldown = 3
-		soundplaycooldown--
-		if(!debriscooldown)
-			U.ceiling_debris_check(1)
-			debriscooldown = 6
-		debriscooldown--
-		new /obj/effect/particle_effect/expl_particles(U)
+    set waitfor = 0
+    var/list/turf_list = list()
+    for(var/turf/T in range(impact, bullet_spread_range))
+        turf_list += T
+    var/soundplaycooldown = 0
+    var/debriscooldown = 0
+    for(var/i=1, i<=ammo_used_per_firing, i++)
+        var/turf/U = pick(turf_list)
+        sleep(1)
+        U.ex_act(EXPLOSION_THRESHOLD_MLOW)
+        for(var/atom/movable/AM in U)
+            if(iscarbon(AM))
+                AM.ex_act(EXPLOSION_THRESHOLD_MLOW, , create_cause_data(initial(name), source_mob))
+            else
+                AM.ex_act(EXPLOSION_THRESHOLD_MLOW)
+        if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
+            playsound(U, get_sfx("explosion"), 40, 1, 20)
+            soundplaycooldown = 3
+        soundplaycooldown--
+        if(!debriscooldown)
+            U.ceiling_debris_check(1)
+            debriscooldown = 6
+        debriscooldown--
+        new /obj/effect/particle_effect/expl_particles(U)
 
 
 /obj/structure/ship_ammo/heavygun/highvelocity
@@ -171,10 +170,10 @@
 /obj/structure/ship_ammo/laser_battery/detonate_on(turf/impact)
 	set waitfor = 0
 	var/list/turf_list = list()
-	for(var/turf/T in range(impact, 2))
+	for(var/turf/T in range(impact, 3)) //This is its area of effect
 		turf_list += T
 	playsound(impact, 'sound/effects/pred_vision.ogg', 20, 1)
-	for(var/i=1 to 10)
+	for(var/i=1 to 16) //This is how many tiles within that area of effect will be randomly ignited
 		var/turf/U = pick(turf_list)
 		turf_list -= U
 		laser_burn(U)
@@ -185,12 +184,7 @@
 
 
 /obj/structure/ship_ammo/laser_battery/proc/laser_burn(turf/T)
-	for(var/mob/living/L in T)
-		L.apply_damage(60, BURN)
-		L.adjust_fire_stacks(10)
-		L.IgniteMob()
-	if(!locate(/obj/flamer_fire) in T)
-		new/obj/flamer_fire(T, create_cause_data(initial(name), source_mob)) //short but intense
+	fire_spread_recur(T, create_cause_data(initial(name), source_mob), 1, null, 5, 75, "#EE6515")//Very, very intense, but goes out very quick
 
 
 //Rockets
@@ -227,7 +221,7 @@
 /obj/structure/ship_ammo/rocket/widowmaker/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
 	spawn(5)
-		explosion(impact,1,3,5, , , , , create_cause_data(initial(name), source_mob))
+		cell_explosion(impact, 300, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)) //Your standard HE splash damage rocket. Good damage, good range, good speed, it's an all rounder
 		qdel(src)
 
 /obj/structure/ship_ammo/rocket/banshee
@@ -241,13 +235,15 @@
 /obj/structure/ship_ammo/rocket/banshee/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
 	spawn(5)
-		explosion(impact,1,3,6,6,1,0,7, create_cause_data(initial(name), source_mob)) //more spread out, with flames
+		cell_explosion(impact, 175, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)) //Small explosive power with a small fall off for a big explosion range
+		fire_spread(impact, create_cause_data(initial(name), source_mob), 4, 15, 50, "#00b8ff") //Very intense but the fire doesn't last very long
 		qdel(src)
 
 /obj/structure/ship_ammo/rocket/keeper
 	name = "\improper GBU-67 'Keeper II'"
 	desc = "The GBU-67 'Keeper II' is the latest in a generation of laser guided weaponry that spans all the way back to the 20th century. Earning its nickname from a shortening of 'Peacekeeper' which comes from the program that developed its guidance system and the various uses of it during peacekeeping conflicts. Its payload is designed to devastate armored targets."
 	icon_state = "paveway"
+	travelling_time = 20 //A fast payload due to its very tight blast zone
 	ammo_id = "k"
 	point_cost = 300
 	fire_mission_delay = 4 //We don't care because our ammo has just 1 rocket
@@ -255,7 +251,7 @@
 /obj/structure/ship_ammo/rocket/keeper/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
 	spawn(5)
-		explosion(impact,3,4,4,6, , , , create_cause_data(initial(name), source_mob)) //tighter blast radius, but more devastating near center
+		cell_explosion(impact, 450, 100, EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL, null, create_cause_data(initial(name), source_mob)) //Insane fall off combined with insane damage makes the Keeper useful for single targets, but very bad against multiple.
 		qdel(src)
 
 /obj/structure/ship_ammo/rocket/napalm
@@ -269,9 +265,8 @@
 /obj/structure/ship_ammo/rocket/napalm/detonate_on(turf/impact)
 	impact.ceiling_debris_check(3)
 	spawn(5)
-		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-		explosion(impact,1,2,3,6,1,0, , cause_data) //relatively weak
-		fire_spread(impact, cause_data, 6, 60, 30, "white")
+		cell_explosion(impact, 200, 25, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
+		fire_spread(impact, create_cause_data(initial(name), source_mob), 6, 60, 30, "#EE6515") //Color changed into napalm's color to better convey how intense the fire actually is.
 		qdel(src)
 
 
@@ -295,7 +290,7 @@
 /obj/structure/ship_ammo/minirocket/detonate_on(turf/impact)
 	impact.ceiling_debris_check(2)
 	spawn(5)
-		explosion(impact,-1,1,3, 5, 0, , , create_cause_data(initial(name), source_mob))//no messaging admin, that'd spam them.
+		cell_explosion(impact, 200, 44, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob))
 		var/datum/effect_system/expl_particles/P = new/datum/effect_system/expl_particles()
 		P.set_up(4, 0, impact)
 		P.start()
@@ -325,6 +320,4 @@
 /obj/structure/ship_ammo/minirocket/incendiary/detonate_on(turf/impact)
 	..()
 	spawn(5)
-		for(var/turf/T in range(2, impact))
-			if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-				new/obj/flamer_fire(T, create_cause_data(initial(name), source_mob))
+		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")

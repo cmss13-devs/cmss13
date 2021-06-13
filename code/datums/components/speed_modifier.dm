@@ -1,6 +1,3 @@
-#define MAX_ALPHA 					35
-#define GLOW_COLOR 					"#7a0000"
-
 //Adjusts the speed of a xenomorph the component is on. Humans will take or heal stamina damage.
 
 /datum/component/speed_modifier
@@ -9,14 +6,17 @@
 	var/speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS)
 	var/max_buildup = 10
 	var/increase_speed = FALSE
+	var/human_stamina_multiplier = 5
 
-/datum/component/speed_modifier/Initialize(var/speed_modifier, var/increase_speed = FALSE, var/speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), var/max_buildup = 10)
-	if(!isXenoOrHuman(parent))
-		return COMPONENT_INCOMPATIBLE
+	var/max_alpha = 35
+	var/glow_color = "#00c3ff"
+
+/datum/component/speed_modifier/Initialize(var/speed_modifier, var/increase_speed = FALSE, var/speed_modifier_dissipation = AMOUNT_PER_TIME(1, 2.5 SECONDS), var/max_buildup = 10, var/human_stamina_multiplier = 5)
 	. = ..()
 	src.speed_modifier = speed_modifier
 	src.speed_modifier_dissipation = speed_modifier_dissipation
 	src.max_buildup = max_buildup
+	src.human_stamina_multiplier = human_stamina_multiplier
 	src.increase_speed = increase_speed
 
 /datum/component/speed_modifier/InheritComponent(datum/component/speed_modifier/C, i_am_original, var/speed_modifier)
@@ -29,26 +29,25 @@
 	src.speed_modifier = min(src.speed_modifier, max_buildup)
 
 /datum/component/speed_modifier/process(delta_time)
-	if(!parent)
-		qdel(src)
 	speed_modifier = max(speed_modifier - speed_modifier_dissipation * delta_time, 0)
 
 	if(ishuman(parent)) //Damages/heals stamina for humans
 		var/mob/living/carbon/human/H = parent
 		if(!increase_speed)
-			H.apply_stamina_damage(HUMAN_STAMINA_MULTIPLIER * speed_modifier_dissipation * delta_time)
+			H.apply_stamina_damage(human_stamina_multiplier * speed_modifier_dissipation * delta_time)
 		else
-			H.apply_stamina_damage(-HUMAN_STAMINA_MULTIPLIER * speed_modifier_dissipation * delta_time)
+			H.apply_stamina_damage(-human_stamina_multiplier * speed_modifier_dissipation * delta_time)
 
 	if(speed_modifier <= 0)
 		qdel(src)
 
-	var/color = GLOW_COLOR
+	var/color = glow_color
 	var/intensity = speed_modifier/max_buildup
-	color += num2text(MAX_ALPHA*intensity, 2, 16)
+	color += num2text(max_alpha*intensity, 2, 16)
 
-	var/atom/A = parent
-	A.add_filter("speed_modifier", 2, list("type" = "outline", "color" = color, "size" = 1))
+	if(parent)
+		var/atom/A = parent
+		A.add_filter("speed_modifier", 2, list("type" = "outline", "color" = color, "size" = 1))
 
 /datum/component/speed_modifier/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
@@ -78,6 +77,3 @@
 		speeds["speed"] += speed_modifier * 0.075
 	else //increasing speed is more effective than decreasing speed
 		speeds["speed"] -= speed_modifier * 0.1
-
-#undef MAX_ALPHA
-#undef GLOW_COLOR

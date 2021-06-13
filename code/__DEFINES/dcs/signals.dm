@@ -168,8 +168,9 @@
 #define COMSIG_LIVING_FLAMER_CROSSED "living_flamer_crossed"
 /// From /obj/flamer_fire/Initialize
 #define COMSIG_LIVING_FLAMER_FLAMED "living_flamer_flamed"
-	#define COMPONENT_NO_BURN	(1<<0)
-	#define COMPONENT_NO_IGNITE	(1<<1)
+	#define COMPONENT_NO_BURN		(1<<0)
+	#define COMPONENT_NO_IGNITE		(1<<1)
+	#define COMPONENT_XENO_FRENZY	(1<<2)
 /// From /obj/item/proc/unzoom
 #define COMSIG_LIVING_ZOOM_OUT "living_zoom_out"
 

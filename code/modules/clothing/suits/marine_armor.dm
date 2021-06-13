@@ -638,6 +638,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	fire_intensity_resistance = BURN_LEVEL_TIER_1
 	max_heat_protection_temperature = FIRESUIT_max_heat_protection_temperature
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS|BODY_FLAG_FEET

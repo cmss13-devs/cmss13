@@ -14,3 +14,6 @@
 
 /mob/living/proc/clear_audio_emote_cooldown()
 	recent_audio_emote = FALSE
+
+/mob/living/proc/check_fire_intensity_resistance()
+	return 0

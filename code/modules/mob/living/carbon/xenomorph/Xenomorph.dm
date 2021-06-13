@@ -458,6 +458,8 @@
 	// Burrowed xenos also cannot be ignited
 	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || burrow)
 		. |= COMPONENT_NO_IGNITE
+	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
+		. |= COMPONENT_XENO_FRENZY
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos

@@ -367,3 +367,20 @@
 
 /mob/living/carbon/human/get_role_name()
 	return get_actual_job_name(src)
+
+/mob/living/carbon/human/check_fire_intensity_resistance()
+	return clothing_fire_intensity_resistance()
+
+/mob/living/carbon/human/proc/clothing_fire_intensity_resistance()
+	var/fire_intensity_resistance
+
+	if(head && head.fire_intensity_resistance)
+		fire_intensity_resistance += head.fire_intensity_resistance
+
+	if(wear_suit && wear_suit.fire_intensity_resistance)
+		fire_intensity_resistance += wear_suit.fire_intensity_resistance
+
+	if(shoes && shoes.fire_intensity_resistance)
+		fire_intensity_resistance += shoes.fire_intensity_resistance
+
+	return fire_intensity_resistance

@@ -82,6 +82,9 @@
 	 ///Vision impairing effect if worn on head/mask/glasses.
 	var/vision_impair = VISION_IMPAIR_NONE
 
+	 ///Used for stepping onto flame and seeing how much dmg you take and if you're ignited.
+	var/fire_intensity_resistance
+
 	var/map_specific_decoration = FALSE
 	var/blood_color = "" //color of the blood on us if there's any.
 	appearance_flags = KEEP_TOGETHER //taken from blood.dm

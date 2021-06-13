@@ -56,3 +56,6 @@
 			count++
 
 	return count
+
+/mob/living/carbon/Xenomorph/check_fire_intensity_resistance()
+	return caste.fire_intensity_resistance

@@ -22,7 +22,7 @@
 	evolution_allowed = FALSE
 	deevolves_to = XENO_CASTE_LURKER
 	caste_desc = "A brutal, devastating front-line attacker."
-	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE
+	fire_immunity = FIRE_IMMUNITY_NO_DAMAGE|FIRE_IMMUNITY_XENO_FRENZY
 	attack_delay = -1
 
 	behavior_delegate_type = /datum/behavior_delegate/ravager_base
@@ -34,7 +34,6 @@
 	icon_size = 64
 	icon_state = "Ravager Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
-	var/used_charge = 0
 	mob_size = MOB_SIZE_BIG
 	drag_delay = 6 //pulling a big dead xeno is hard
 	tier = 3

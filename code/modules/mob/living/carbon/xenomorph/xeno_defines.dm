@@ -37,6 +37,7 @@
 
 	var/armor_deflection = 0 //Chance of deflecting projectiles.
 	var/fire_immunity = FIRE_IMMUNITY_NONE
+	var/fire_intensity_resistance = 0
 
 	var/spit_delay = 60 //Delay timer for spitting
 

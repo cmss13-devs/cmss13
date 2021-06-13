@@ -14,11 +14,11 @@
 	},
 /area/vehicle/apc)
 "c" = (
-/obj/effect/decal/medical_decals{
+/obj/structure/machinery/body_scanconsole,
+/obj/effect/decal/medical_decals/permanent{
 	dir = 4;
 	icon_state = "triagedecaldir"
 	},
-/obj/structure/machinery/body_scanconsole,
 /turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_1"
 	},
@@ -28,8 +28,10 @@
 	dir = 8
 	},
 /obj/structure/bed/roller,
-/obj/structure/machinery/iv_drip,
-/obj/effect/decal/medical_decals{
+/obj/structure/machinery/iv_drip{
+	anchored = 1
+	},
+/obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecaldir"
 	},
 /turf/open/shuttle/vehicle/med,
@@ -87,16 +89,16 @@
 /turf/open/void/vehicle,
 /area/space)
 "m" = (
-/obj/effect/decal/medical_decals{
-	dir = 4;
-	icon_state = "triagedecaldir"
-	},
 /obj/structure/machinery/optable,
 /obj/structure/vehicle_locker/med{
 	layer = 5.21;
 	pixel_y = 28
 	},
 /obj/item/tank/anesthetic,
+/obj/effect/decal/medical_decals/permanent{
+	dir = 4;
+	icon_state = "triagedecaldir"
+	},
 /turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_2"
 	},
@@ -110,7 +112,7 @@
 /turf/open/void/vehicle,
 /area/space)
 "o" = (
-/obj/effect/decal/medical_decals{
+/obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecaltop"
 	},
 /turf/open/shuttle/vehicle{
@@ -228,12 +230,12 @@
 	},
 /area/space)
 "D" = (
-/obj/effect/decal/medical_decals{
-	dir = 4;
-	icon_state = "triagedecaldir"
-	},
 /obj/structure/bed/chair/comfy{
 	dir = 4
+	},
+/obj/effect/decal/medical_decals/permanent{
+	dir = 4;
+	icon_state = "triagedecaldir"
 	},
 /turf/open/shuttle/vehicle/med,
 /area/vehicle/apc)
@@ -322,8 +324,10 @@
 	dir = 8
 	},
 /obj/structure/bed/roller,
-/obj/structure/machinery/iv_drip,
-/obj/effect/decal/medical_decals{
+/obj/structure/machinery/iv_drip{
+	anchored = 1
+	},
+/obj/effect/decal/medical_decals/permanent{
 	dir = 1;
 	icon_state = "triagedecaldir"
 	},
@@ -336,7 +340,7 @@
 /turf/open/void/vehicle,
 /area/space)
 "Q" = (
-/obj/effect/decal/medical_decals{
+/obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecalbottom"
 	},
 /turf/open/shuttle/vehicle{

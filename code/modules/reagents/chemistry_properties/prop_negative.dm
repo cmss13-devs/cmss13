@@ -550,12 +550,12 @@ datum/chem_property/negative/neurotoxic/reaction_mob(var/mob/M, var/method = TOU
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		H.apply_damage(potency, BRAIN) //Absorbed through skin, less
+		H.apply_damage(potency, BRAIN)
 		apply_neuro(M, potency*volume, FALSE)
 		to_chat(H, SPAN_WARNING("You start to go numb."))
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
-		X.Daze(potency*volume)
+		X.Daze(potency * min(volume, 3))
 		to_chat(X, SPAN_XENOWARNING("You can't think clearly."))
 
 /datum/chem_property/negative/hypermetabolic

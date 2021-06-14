@@ -113,7 +113,7 @@
 	name = "bone shrapnel chips"
 	icon_state = "shrapnel"
 	desc = "It looks like it came from a prehistoric animal."
-	damage_on_move = 0.4
+	damage_on_move = 0.6
 
 /obj/item/shard/shrapnel/bone_chips/human
 	name = "human bone fragments"

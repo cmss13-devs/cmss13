@@ -2386,9 +2386,9 @@
 	damage = 5
 	max_range = 5
 	accuracy = HIT_ACCURACY_TIER_8
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_6
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_7
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_7
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_7
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 

@@ -203,7 +203,7 @@
 			var/image/weapon_holstered = overlay_image('icons/mob/humans/onmob/back.dmi', "+m240t", color, RESET_COLOR)
 			ret.overlays += weapon_holstered
 
-		return ret
+	return ret
 
 
 /obj/item/storage/large_holster/fuelpack/attack_self(mob/user)

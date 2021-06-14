@@ -1,4 +1,3 @@
-
 // Rav charge
 /datum/action/xeno_action/activable/pounce/charge
 	name = "Charge"
@@ -135,7 +134,7 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
 	plasma_cost = 0
-	xeno_cooldown = 130
+	xeno_cooldown = 100
 
 	// Config
 	var/shard_cost = 75
@@ -154,7 +153,7 @@
 	// Config values
 	var/shard_cost = 50
 	var/ammo_type = /datum/ammo/xeno/bone_chips/spread
-	var/shrapnel_amount = 20
+	var/shrapnel_amount = 40
 
 
 

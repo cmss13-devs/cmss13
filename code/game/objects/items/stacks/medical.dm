@@ -7,6 +7,7 @@
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
+	attack_speed = 3
 	var/heal_brute = 0
 	var/heal_burn = 0
 

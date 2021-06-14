@@ -64,6 +64,13 @@
 	</tr>
 </table>
 
+			<h2 class="date">14 June 2021</h2>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added access restrictions to ColMarTech Techpod Vendor based on user faction. In Distress Beacon gamemode vendor's access is limited to USCM faction. New access_settings_override variable in vendor allows staff to lift access restrictions. In Whiskey Outpost gamemode access requirements are always lifted. In other gamemodes access requirements are lifted by default, but can be limited by staff to original as in Distress Beacon gamemode via toggling access_settings_override variable.</li>
+				<li class="tweak">ColMarTech Techpod Vendor no longer will be accessible if area is unpowered.</li>
+			</ul>
+
 			<h2 class="date">13 June 2021</h2>
 			<h3 class="author">Carlarc updated:</h3>
 			<ul class="changes bgimages16">
@@ -1233,38 +1240,6 @@
 			<ul class="changes bgimages16">
 				<li class="bugfix">OTs can now open the windoor at their front desk.</li>
 				<li class="rscadd">Added an instantly mature subtype of queen. Admin usage only.</li>
-			</ul>
-
-			<h2 class="date">12 April 2021</h2>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed bug with some jobs slots being permanently locked under specific conditions.</li>
-				<li class="rscadd">Clicking adjacent multitile vehicle with a motion detector will start a short scanning process that will show a blip on vehicle if there are xenos inside.</li>
-				<li class="tweak">Changed motion detector description to be more detailed.</li>
-				<li class="bugfix">Fixed entering vehicle despite vehicle rotating during timed action.</li>
-				<li class="maptweak">Swapped WY-med and blood bags vendors in MED APC to allow easier medical supplies restocking without enterrupting surgeries. Per CynicalRose's request.</li>
-			</ul>
-			<h3 class="author">JohnTitor updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Carp fillet and the food made out of it now properly contain fish meat in addition to carpotoxin.</li>
-			</ul>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Non-heart organ damage (toxin damage, blindness, suffocation etc - pain was a different section and not bugged) is now functional again. Embrace suffering.</li>
-				<li class="bugfix">Pain checks no longer backwards: pain messages now appear when *not* on painkillers, and tram or stronger painkillers now block them, as they used to.</li>
-				<li class="tweak">Adjusted some backend around pain message calculations. No effect on mechanical pain, but some messages should now be working which previously would be almost impossible to see.</li>
-				<li class="tweak">Pain messages for toxins and organ damage no longer require brute/burns/unsplinted fractures to be checked for.</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added a HUD for predators to mark targets as honored, dishonorable, gear carriers and thralls. Dishonorable overrides honored and thrall overrides gear carrier.</li>
-				<li class="rscadd">Added a panel for marking the above. Each mark can also be macro'd. Marking for hunt is in this panel however remains in it's original location too.</li>
-				<li class="rscadd">When predators examine a mob it will now show who is hunting the mob, and details regarding any other statuses set by the Pred HUD.</li>
-				<li class="rscadd">Humans marked as thralls will no longer show their gear on the gear tracker until they die, are unmarked as thralls or become dishonorable.</li>
-				<li class="rscadd">Abominations and their larva now permanently show up as dishonorable.</li>
-				<li class="tweak">Using the relay beacon to set a teleportation marker now transmits via bracer instead of AI announcement.</li>
-				<li class="tweak">Only one predator can mark a target as prey.</li>
-				<li class="wip">Added the ground works for some improvements for thralls.</li>
 			</ul>
 </div>
 </body>

@@ -5,6 +5,8 @@
 	icon_state = "densecrate"
 	density = 1
 	anchored = 0
+	var/parts_type = /obj/item/stack/sheet/wood
+	var/unpacking_sound = 'sound/effects/woodhit.ogg'
 
 /obj/structure/largecrate/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -15,27 +17,25 @@
 	to_chat(user, SPAN_NOTICE("You need a crowbar to pry this open!"))
 	return
 
+/obj/structure/largecrate/proc/unpack()
+	if(parts_type)
+		new parts_type(loc, 2)
+	for(var/obj/O in contents)
+		O.forceMove(loc)
+	playsound(src, unpacking_sound, 35)
+	qdel(src)
+
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
-		new /obj/item/stack/sheet/wood(src)
-		var/turf/T = get_turf(src)
-		for(var/obj/O in contents)
-			O.forceMove(T)
+		unpack()
 		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
-							 SPAN_NOTICE("You pry open \the [src]."), \
-							 SPAN_NOTICE("You hear splitting wood."))
-		qdel(src)
+							 SPAN_NOTICE("You pry open \the [src]."))
 	else
 		return attack_hand(user)
 
 /obj/structure/largecrate/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/sheet/wood(T)
-		for(var/obj/O in contents)
-			O.forceMove(T)
-
-		qdel(src)
+		unpack()
 
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
@@ -117,9 +117,14 @@
 	desc = "A stack of black storage cases."
 	icon_state = "case_double"
 
-/obj/structure/largecrate/random/case/double/Del()
+/obj/structure/largecrate/random/case/double/unpack()
+	if(parts_type)
+		new parts_type(loc, 2)
+	for(var/obj/O in contents)
+		O.forceMove(loc)
 	new /obj/structure/largecrate/random/case(loc)
-	..()
+	playsound(src, unpacking_sound, 35)
+	qdel(src)
 
 /obj/structure/largecrate/random/case/small
 	name = "small cases"
@@ -130,6 +135,8 @@
 	name = "blue barrel"
 	desc = "A blue storage barrel"
 	icon_state = "barrel_blue"
+	parts_type = /obj/item/stack/sheet/metal
+	unpacking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/largecrate/random/barrel/blue
 	name = "blue barrel"

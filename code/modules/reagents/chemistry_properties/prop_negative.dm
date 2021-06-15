@@ -141,8 +141,8 @@
 			M.take_limb_damage(min(6, volume))
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
-		if(potency >= 3) //Needs level 6+ to have any effect
-			X.AddComponent(/datum/component/toxic_buildup, potency-2)
+		if(potency > 3) //Needs level 7+ to have any effect
+			X.AddComponent(/datum/component/toxic_buildup, potency * volume * 0.25)
 			to_chat(X, SPAN_XENODANGER("The corrosive substance damages your carapace!"))
 
 /datum/chem_property/negative/corrosive/reaction_obj(var/obj/O, var/volume, var/potency)
@@ -272,7 +272,7 @@
 	if(!istype(M, /mob/living))
 		return
 	var/mob/living/L = M
-	L.AddComponent(/datum/component/healing_reduction, potency * volume * 0.5) //deals brute DOT to humans, prevents healing for xenos
+	L.AddComponent(/datum/component/healing_reduction, potency * volume * 0.25) //deals brute DOT to humans, prevents healing for xenos
 
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC

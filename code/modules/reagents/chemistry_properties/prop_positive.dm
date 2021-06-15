@@ -94,11 +94,11 @@
 	if(!isliving(M))
 		return
 	var/mob/living/L = M
-	if(ishuman(L) && method == TOUCH) //can stim on touch if high enough potency
+	if(ishuman(L) && method == TOUCH) //heals when sprayed on limbs
 		var/mob/living/carbon/human/H
 		for(var/obj/limb/T in H.limbs)
 			if(T && T.status & LIMB_ROBOT)
-				T.heal_damage(potency,potency,0,1)
+				T.heal_damage(potency * volume,potency * volume,0,1)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC
@@ -695,7 +695,7 @@
 /datum/chem_property/positive/fire/fueling/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
 	var/mob/living/L = M
 	if(istype(L) && method == TOUCH)//makes you more flammable if sprayed/splashed on you
-		L.adjust_fire_stacks(volume / (10/potency))
+		L.adjust_fire_stacks(volume / (2/potency))
 
 /datum/chem_property/positive/fire/fueling/reaction_turf(var/turf/T, var/volume, var/potency = 1)
 	new /obj/effect/decal/cleanable/liquid_fuel(T, volume)
@@ -721,9 +721,9 @@
 
 /datum/chem_property/positive/fire/oxidizing/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
 	var/mob/living/L = M
-	if(istype(L))//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
-		L.adjust_fire_stacks(max(L.fire_stacks, 10))
-		if(potency > 2)
+	if(istype(L) && method == TOUCH)//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
+		L.adjust_fire_stacks(max(L.fire_stacks, volume * potency))
+		if(potency > 4)
 			L.IgniteMob(TRUE)
 
 /datum/chem_property/positive/fire/flowing

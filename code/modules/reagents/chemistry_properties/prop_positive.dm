@@ -154,12 +154,12 @@
 	if(!isliving(M))
 		return
 	var/mob/living/L = M
-	if(ishuman(L) && potency>3) //can stim on touch at level 7+
+	if(ishuman(L) && potency > 3) //can stim on touch at level 7+
 		var/mob/living/carbon/human/H
 		H.SetKnockeddown(0)
 		H.SetStunned(0)
 		H.SetDazed(0)
-	if(isXeno(L) && potency>3)
+	if(isXeno(L) && potency > 3)
 		var/mob/living/carbon/Xenomorph/X = M
 		X.SetDazed(0)
 		X.SetKnockeddown(0)
@@ -563,7 +563,7 @@
 		to_chat(H, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(H.client, 'sound/effects/Heart Beat Short.ogg', 35)
 		addtimer(CALLBACK(H, /mob/living/carbon/human.proc/handle_revive), 50, TIMER_UNIQUE)
-	else if (potency >= 3 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 6 or greater
+	else if (potency > 3 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 7 or greater
 		to_chat(H, SPAN_NOTICE("You feel a faint spark in your chest."))
 		H.apply_damage(-potency/2, BRUTE)
 		H.apply_damage(-potency/2, BURN)
@@ -635,7 +635,7 @@
 
 /datum/chem_property/positive/antiaddictive/process(mob/living/M, var/potency = 1)
 	for(var/datum/disease/addiction/D in M.viruses)
-		if(potency >= 4)
+		if(potency > 3)
 			D.cure()
 			return
 		D.withdrawal_progression -= 2*potency
@@ -731,7 +731,7 @@
 	var/mob/living/L = M
 	if(istype(L))//Oxidizing 6+ makes a fire, otherwise it just adjusts fire stacks
 		L.adjust_fire_stacks(max(L.fire_stacks, 10))
-		if(potency > 3)
+		if(potency > 2)
 			L.IgniteMob(TRUE)
 
 /datum/chem_property/positive/fire/flowing

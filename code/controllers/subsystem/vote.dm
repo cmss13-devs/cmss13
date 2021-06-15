@@ -327,8 +327,8 @@ SUBSYSTEM_DEF(vote)
 			text += "<br>[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
-		//SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', channel = CHANNEL_NOTIFY))
-		to_chat(world, "<br><font color='purple'><b>[text]</b><br>Type <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font>")
+		SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', channel = SOUND_CHANNEL_VOX))
+		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'<b>[text]</b><br>Type <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font><br><br>"))
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c

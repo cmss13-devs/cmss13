@@ -417,7 +417,7 @@
 				continue
 			switch(mode)
 				if(MODE_AMPLIFY)
-					property_costs[P.name] = max(min(P.level - 1, 8), 1)
+					property_costs[P.name] = max(min(P.level - 1, PROPERTY_COST_MAX), 1)
 				if(MODE_SUPPRESS)
 					property_costs[P.name] = 2
 				if(MODE_RELATE)
@@ -584,7 +584,7 @@
 			return FALSE
 	T = GET_TREE(TREE_MARINE)
 	if(target && mode == MODE_AMPLIFY)
-		var/level_max = T.tier?.tier*4 + 2 //6 at TL1, 10 at TL2, uncapped at TL3
+		var/level_max = T.tier?.tier*TECHTREE_LEVEL_MULTIPLIER + 2 //6 at TL1, 10 at TL2, uncapped at TL3
 		if(mode == MODE_AMPLIFY && target_property.level >= level_max && T.tier?.tier < 3)
 			status_bar = "TECH LEVEL INSUFFICIENT FOR AMPLIFICATION"
 			return FALSE

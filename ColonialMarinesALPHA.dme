@@ -67,6 +67,7 @@
 #include "code\__DEFINES\procpath.dm"
 #include "code\__DEFINES\qdel.dm"
 #include "code\__DEFINES\radio.dm"
+#include "code\__DEFINES\research.dm"
 #include "code\__DEFINES\shuttles.dm"
 #include "code\__DEFINES\skills.dm"
 #include "code\__DEFINES\sounds.dm"

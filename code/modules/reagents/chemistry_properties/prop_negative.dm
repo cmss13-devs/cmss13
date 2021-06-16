@@ -81,11 +81,14 @@
 	if(istype(O,/obj/effect/alien/weeds/))
 		var/obj/effect/alien/weeds/alien_weeds = O
 		alien_weeds.take_damage(25 * potency) // Kills alien weeds on touch
-	else if(istype(O,/obj/effect/glowshroom))
+		return
+	if(istype(O,/obj/effect/glowshroom))
 		qdel(O)
-	else if(istype(O,/obj/effect/plantsegment))
+		return
+	if(istype(O,/obj/effect/plantsegment))
 		if(prob(50)) qdel(O)
-	else if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
+		return
+	if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
 		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
 
 		if(tray.seed)
@@ -101,8 +104,9 @@
 /datum/chem_property/negative/toxic/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume, var/potency = 1)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(!C.wear_mask) // If not wearing a mask
-			C.apply_damage(potency, TOX) // applies potency toxin damage
+		if(C.wear_mask) // If not wearing a mask
+			return
+		C.apply_damage(potency, TOX) // applies potency toxin damage
 
 /datum/chem_property/negative/corrosive
 	name = PROPERTY_CORROSIVE
@@ -222,6 +226,7 @@
 					to_chat(H, SPAN_DANGER("Your glasses melts away!"))
 					qdel(H.glasses)
 					H.update_inv_glasses(0)
+				return
 
 		if(!M.unacidable) //nothing left to melt, apply acid effects
 			if(istype(M, /mob/living/carbon/human) && volume >= 10)
@@ -242,7 +247,7 @@
 			M.take_limb_damage(min(6, volume))
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
-		if(potency > 3) //Needs level 7+ to have any effect
+		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
 			X.AddComponent(/datum/component/toxic_buildup, potency * volume * 0.25)
 			to_chat(X, SPAN_XENODANGER("The corrosive substance damages your carapace!"))
 
@@ -435,11 +440,11 @@
 
 /datum/chem_property/negative/intravenous/reset_reagent()
 	holder.flags = initial(holder.flags)
-	..()
+	return ..()
 
 /datum/chem_property/negative/intravenous/update_reagent()
 	holder.flags |= REAGENT_NOT_INGESTIBLE
-	..()
+	return ..()
 
 /datum/chem_property/negative/nephrotoxic
 	name = PROPERTY_NEPHROTOXIC
@@ -545,9 +550,7 @@
 	to_chat(M, SPAN_WARNING("You start to go numb."))
 	M.Daze(potency * volume * POTENCY_MULTIPLIER_LOW)
 
-datum/chem_property/negative/neurotoxic/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency)
-	if(!istype(M, /mob/living))
-		return
+/datum/chem_property/negative/neurotoxic/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.apply_damage(potency, BRAIN)

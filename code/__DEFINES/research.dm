@@ -7,5 +7,12 @@
 #define PROPERTY_MULTIPLIER_RARE			3
 #define PROPERTY_MULTIPLIER_ANOMALOUS		10
 
+//For minimum potencies for properties
+#define CREATE_MAX_TIER_1					2
+#define CREATE_MAX_TIER_2					4
+#define CREATE_MAX_TIER_3					5
+#define POTENCY_MAX_TIER_1					3
+#define POTENCY_MAX_TIER_2					5
+
 //for research properties/their components
 #define HUMAN_STAMINA_MULTIPLIER 			5

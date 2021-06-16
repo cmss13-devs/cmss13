@@ -31,7 +31,7 @@
 
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, var/potency = 1)
 	M.heal_limb_damage(0, potency)
-	if(potency > 2)
+	if(potency > CREATE_MAX_TIER_1)
 		M.heal_limb_damage(0, potency/2)
 
 /datum/chem_property/positive/anticorrosive/process_overdose(mob/living/M, var/potency = 1)
@@ -50,7 +50,7 @@
 
 /datum/chem_property/positive/neogenetic/process(mob/living/M, var/potency = 1)
 	M.heal_limb_damage(potency, 0)
-	if(potency > 2)
+	if(potency > CREATE_MAX_TIER_1)
 		M.heal_limb_damage(potency/2, 0)
 
 /datum/chem_property/positive/neogenetic/process_overdose(mob/living/M, var/potency = 1)
@@ -60,10 +60,7 @@
 	M.apply_damages(0, POTENCY_MULTIPLIER_VHIGH * potency, POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/positive/neogenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isliving(M))
-		return
-	var/mob/living/L = M
-	if(isXeno(L))
+	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
 		if(potency > 2) //heals at levels 5+
 			X.gain_health(potency * volume * 0.5)
@@ -91,10 +88,7 @@
 	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, TOX)
 
 /datum/chem_property/positive/repairing/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isliving(M))
-		return
-	var/mob/living/L = M
-	if(ishuman(L) && method == TOUCH) //heals when sprayed on limbs
+	if(ishuman(M) && method == TOUCH) //heals when sprayed on limbs
 		var/mob/living/carbon/human/H
 		for(var/obj/limb/T in H.limbs)
 			if(T && T.status & LIMB_ROBOT)
@@ -151,19 +145,10 @@
 	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH*potency)
 
 /datum/chem_property/positive/nervestimulating/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isliving(M))
-		return
-	var/mob/living/L = M
-	if(ishuman(L) && potency > 3) //can stim on touch at level 7+
-		var/mob/living/carbon/human/H
-		H.SetKnockeddown(0)
-		H.SetStunned(0)
-		H.SetDazed(0)
-	if(isXeno(L) && potency > 3)
-		var/mob/living/carbon/Xenomorph/X = M
-		X.SetDazed(0)
-		X.SetKnockeddown(0)
-		X.SetStunned(0)
+	if(isXenoOrHuman(M) && potency > POTENCY_MAX_TIER_1) //can stim on touch at level 7+
+		M.SetKnockeddown(0)
+		M.SetStunned(0)
+		M.SetDazed(0)
 
 /datum/chem_property/positive/musclestimulating
 	name = PROPERTY_MUSCLESTIMULATING
@@ -188,10 +173,9 @@
 	M.take_limb_damage(potency)
 
 /datum/chem_property/positive/musclestimulating/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
-	if(!istype(M, /mob/living))
+	if(!isXenoOrHuman(M))
 		return
-	var/mob/living/L = M
-	L.AddComponent(/datum/component/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
+	M.AddComponent(/datum/component/speed_modifier, volume, TRUE, AMOUNT_PER_TIME(1, potency SECONDS), potency*volume) //Long-lasting speed for beans, stamina for humans
 
 /datum/chem_property/positive/painkilling
 	name = PROPERTY_PAINKILLING
@@ -445,10 +429,9 @@
 	return TRUE
 
 /datum/chem_property/positive/neurocryogenic/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency = 1)
-	if(!istype(M, /mob/living))
+	if(!isXenoOrHuman(M))
 		return
-	var/mob/living/L = M
-	L.AddComponent(/datum/component/speed_modifier, potency * volume * 0.5) //Brainfreeze
+	M.AddComponent(/datum/component/speed_modifier, potency * volume * 0.5) //Brainfreeze
 
 /datum/chem_property/positive/antiparasitic
 	name = PROPERTY_ANTIPARASITIC
@@ -555,12 +538,12 @@
 		to_chat(H, SPAN_NOTICE("You feel your heart struggling as you suddenly feel a spark, making it desperately try to continue pumping."))
 		playsound_client(H.client, 'sound/effects/Heart Beat Short.ogg', 35)
 		addtimer(CALLBACK(H, /mob/living/carbon/human.proc/handle_revive), 50, TIMER_UNIQUE)
-	else if (potency > 3 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 7 or greater
+	else if (potency > POTENCY_MAX_TIER_1 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 7 or greater
 		to_chat(H, SPAN_NOTICE("You feel a faint spark in your chest."))
-		H.apply_damage(-potency/2, BRUTE)
-		H.apply_damage(-potency/2, BURN)
-		H.apply_damage(-potency/2, TOX)
-		H.apply_damage(-potency/2, CLONE)
+		H.apply_damage(-potency * 0.5, BRUTE)
+		H.apply_damage(-potency * 0.5, BURN)
+		H.apply_damage(-potency * 0.5, TOX)
+		H.apply_damage(-potency * 0.5, CLONE)
 		H.apply_damage(-H.getOxyLoss(), OXY)
 	return TRUE
 
@@ -627,7 +610,7 @@
 
 /datum/chem_property/positive/antiaddictive/process(mob/living/M, var/potency = 1)
 	for(var/datum/disease/addiction/D in M.viruses)
-		if(potency > 3)
+		if(potency > POTENCY_MAX_TIER_1)
 			D.cure()
 			return
 		D.withdrawal_progression -= POTENCY_MULTIPLIER_MEDIUM*potency
@@ -771,7 +754,7 @@
 	to_chat(M, SPAN_NOTICE("Your mind feels oddly... quiet."))
 
 /datum/chem_property/positive/disrupting/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_internal_damage(2 * potency, "brain")
+	M.apply_internal_damage(potency, "brain")
 
 /datum/chem_property/positive/disrupting/process_critical(mob/living/M, var/potency = 1)
 	M.KnockOut(potency)
@@ -818,11 +801,9 @@
 	if(!istype(T))
 		return
 	for(var/obj/flamer_fire/F in T) //Extinguishes fires and acid
-		if(istype(F))
-			qdel(F)
+		qdel(F)
 	for(var/obj/effect/xenomorph/acid/A in T)
-		if(istype(A))
-			qdel(A)
+		qdel(A)
 
 //PROPERTY_DISABLED (in random generation)
 /datum/chem_property/positive/cardiostabilizing
@@ -860,10 +841,7 @@
 		M.emote(pick("twitch","blink_r","shiver"))
 
 /datum/chem_property/positive/cardiostabilizing/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isliving(M))
-		return
-	var/mob/living/L = M
-	if(isXeno(L))
+	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
 		if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
 			X.gain_health(min(potency * volume * 0.5, -X.health + 1))

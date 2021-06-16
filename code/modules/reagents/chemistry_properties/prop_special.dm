@@ -51,16 +51,15 @@
 	M.take_limb_damage(3*potency,3*potency)
 
 /datum/chem_property/special/hypergenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!istype(M, /mob/living))
+	if(!isXenoOrHuman(M))
 		return
-	var/mob/living/L = M
+	M.AddComponent(/datum/component/healing_reduction, -potency * volume * 0.5) //reduces injuries if present
 	if(ishuman(M)) //heals on contact with humans/xenos
 		var/mob/living/carbon/human/H = M
 		H.heal_limb_damage(potency * volume * 0.5)
 	if(isXeno(M)) //more effective on xenos to account for higher HP
 		var/mob/living/carbon/Xenomorph/X = M
 		X.gain_health(potency * volume)
-	L.AddComponent(/datum/component/healing_reduction, -potency * volume * 0.5) //reduces injuries if present
 
 /datum/chem_property/special/organhealing
 	name = PROPERTY_ORGAN_HEALING

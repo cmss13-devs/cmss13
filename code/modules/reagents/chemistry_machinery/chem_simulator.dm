@@ -543,7 +543,7 @@
 				status_bar = "TARGET PROPERTY CAN NOT BE SIMULATED"
 				return FALSE
 			T = GET_TREE(TREE_MARINE)
-			var/level_max = T.tier?.tier*4 + 2 //6 at TL1, 10 at TL2, uncapped at TL3
+			var/level_max = T.tier?.tier*TECHTREE_LEVEL_MULTIPLIER + 2 //6 at TL1, 10 at TL2, uncapped at TL3
 			if(mode == MODE_AMPLIFY && target_property.level >= level_max && T.tier?.tier < 3)
 				status_bar = "TARGET LEVEL CAN NOT BE SIMULATED AT CURRENT TECH LEVEL"
 	if(mode == MODE_RELATE)

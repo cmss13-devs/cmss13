@@ -186,7 +186,7 @@
 				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[allowed_hat_items[O.type]]", color, RESET_COLOR)
 				ret.overlays += I
 
-		return ret
+	return ret
 
 /obj/item/clothing/head/cmcap/verb/fliphat()
 	set name = "Flip hat"

@@ -124,7 +124,7 @@
 	var/list/data = list(
 		"rsc_credits" = chemical_data.rsc_credits,
 		"clearance_level" = chemical_data.clearance_level,
-		"broker_cost" = max(4*(chemical_data.clearance_level + 1), 1),
+		"broker_cost" = max(RESEARCH_LEVEL_INCREASE_MULTIPLIER*(chemical_data.clearance_level + 1), 1),
 		"base_purchase_cost" = base_purchase_cost,
 		"research_documents" = chemical_data.research_documents,
 		"published_documents" = chemical_data.research_publications,
@@ -195,7 +195,7 @@
 		if(alert(usr,"The CL can swipe their ID card on the console to increase clearance for free, given enough DEFCON. Are you sure you want to spend research credits to increase the clearance immediately?","Warning","Yes","No") != "Yes")
 			return
 		if(chemical_data.clearance_level < 5)
-			var/cost = max(4*(chemical_data.clearance_level + 1), 1)
+			var/cost = max(RESEARCH_LEVEL_INCREASE_MULTIPLIER*(chemical_data.clearance_level + 1), 1)
 			if(cost <= chemical_data.rsc_credits)
 				chemical_data.update_credits(cost * -1)
 				chemical_data.clearance_level++

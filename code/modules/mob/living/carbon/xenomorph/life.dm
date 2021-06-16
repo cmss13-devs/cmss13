@@ -307,7 +307,7 @@ Make sure their actual health updates immediately.*/
 /mob/living/carbon/Xenomorph/proc/heal_wounds(m, recov)
 	var/heal_penalty = 0
 	var/list/L = list("healing" = heal_penalty)
-	SEND_SIGNAL(src, COMSIG_XENO_ON_HEAL, L)
+	SEND_SIGNAL(src, COMSIG_XENO_ON_HEAL_WOUNDS, L)
 	heal_penalty = - L["healing"]
 	apply_damage(min(-((maxHealth / 70) + 0.5 + (maxHealth / 70) * recov/2)*(m) + heal_penalty, 0), BRUTE)
 	apply_damage(min(-(maxHealth / 60 + 0.5 + (maxHealth / 60) * recov/2)*(m) + heal_penalty, 0), BURN)

@@ -19,7 +19,7 @@
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stack_id = "cable coil"
-
+	attack_speed = 3
 
 /obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, var/param_color = null)
 	. = ..()

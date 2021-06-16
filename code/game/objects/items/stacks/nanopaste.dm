@@ -5,6 +5,7 @@
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "tube"
 
+	attack_speed = 3
 	amount = 10
 	max_amount = 10
 	w_class = SIZE_SMALL

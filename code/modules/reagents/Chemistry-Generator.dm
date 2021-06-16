@@ -294,7 +294,7 @@
 	if(track_added_properties) //Generated effects are more unique for lower-tier chemicals, but not higher-tier ones
 		var/property_checks = 0
 		var/to_pick
-		while(!check_generated_properties(P) && property_checks < 10)
+		while(!check_generated_properties(P) && property_checks < 4)
 			property_checks++
 			if(isNegativeProperty(P))
 				to_pick = pick(chemical_properties_list["negative"])

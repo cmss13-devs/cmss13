@@ -24,6 +24,7 @@
 	return ..()
 
 /datum/game_mode/extended/process()
+	. = ..()
 	if(next_research_allocation < world.time)
 		chemical_data.update_credits(chemical_data.research_allocation_amount)
 		next_research_allocation = world.time + research_allocation_interval

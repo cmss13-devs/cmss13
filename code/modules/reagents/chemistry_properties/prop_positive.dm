@@ -763,11 +763,10 @@
 	M.KnockOut(potency)
 
 /datum/chem_property/positive/disrupting/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(!isliving(M))
+	if(!isXeno(M))
 		return
-	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/X = M
-		X.interference += (volume * potency)
+	var/mob/living/carbon/Xenomorph/X = M
+	X.interference += (volume * potency)
 
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
@@ -844,10 +843,11 @@
 		M.emote(pick("twitch","blink_r","shiver"))
 
 /datum/chem_property/positive/cardiostabilizing/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/X = M
-		if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
-			X.gain_health(min(potency * volume * 0.5, -X.health + 1))
+	if(!isXeno(M))
+		return
+	var/mob/living/carbon/Xenomorph/X = M
+	if(X.health < 0) //heals out of crit with enough potency/volume, otherwise reduces crit
+		X.gain_health(min(potency * volume * 0.5, -X.health + 1))
 
 /datum/chem_property/positive/aiding
 	name = PROPERTY_AIDING

@@ -290,21 +290,17 @@
 				else
 					property = pick(chemical_properties_list["positive"])
 
-	var/datum/chem_property/P = chemical_properties_list[property]
 	if(track_added_properties) //Generated effects are more unique for lower-tier chemicals, but not higher-tier ones
 		var/property_checks = 0
-		var/to_pick
-		while(!check_generated_properties(P) && property_checks < 4)
+		while(!check_generated_properties(property) && property_checks < 4)
 			property_checks++
-			if(isNegativeProperty(P))
-				to_pick = pick(chemical_properties_list["negative"])
-				P = chemical_properties_list[to_pick]
-			else if(isNeutralProperty(P))
-				to_pick = pick(chemical_properties_list["neutral"])
-				P = chemical_properties_list[to_pick]
+			if(LAZYISIN(chemical_properties_list["negative"], property))
+				property = pick(chemical_properties_list["negative"])
+			else if(LAZYISIN(chemical_properties_list["neutral"], property))
+				property = pick(chemical_properties_list["neutral"])
 			else
-				to_pick = pick(chemical_properties_list["positive"])
-				P = chemical_properties_list[to_pick]
+				property = pick(chemical_properties_list["positive"])
+	var/datum/chem_property/P = chemical_properties_list[property]
 
 	//Calculate what our chemical value is with our level
 	var/new_value
@@ -442,16 +438,16 @@
 
 //Returns false if a property has been generated in a previous reagent and all properties of that category haven't been generated yet.
 /datum/reagent/proc/check_generated_properties(var/datum/chem_property/P)
-	if(istype(P, /datum/chem_property/positive))
-		if(LAZYISIN(generated_properties["positive"], P) && LAZYLEN(generated_properties["positive"]) < LAZYLEN(chemical_properties_list["positive"]))
+	if(LAZYISIN(chemical_properties_list["positive"], P))
+		if(LAZYISIN(GLOB.generated_properties["positive"], P) && LAZYLEN(GLOB.generated_properties["positive"]) < LAZYLEN(chemical_properties_list["positive"]))
 			return FALSE
-		generated_properties["positive"] += P
-	else if(istype(P, /datum/chem_property/negative))
-		if(LAZYISIN(generated_properties["negative"], P) && LAZYLEN(generated_properties["negative"]) < LAZYLEN(chemical_properties_list["negative"]))
+		GLOB.generated_properties["positive"] += P
+	else if(LAZYISIN(chemical_properties_list["negative"], P))
+		if(LAZYISIN(GLOB.generated_properties["negative"], P) && LAZYLEN(GLOB.generated_properties["negative"]) < LAZYLEN(chemical_properties_list["negative"]))
 			return FALSE
-		generated_properties["negative"] += P
-	else if(istype(P, /datum/chem_property/neutral))
-		if(LAZYISIN(generated_properties["neutral"], P) && LAZYLEN(generated_properties["neutral"]) < LAZYLEN(chemical_properties_list["neutral"]))
+		GLOB.generated_properties["negative"] += P
+	else if(LAZYISIN(chemical_properties_list["neutral"], P))
+		if(LAZYISIN(GLOB.generated_properties["neutral"], P) && LAZYLEN(GLOB.generated_properties["neutral"]) < LAZYLEN(chemical_properties_list["neutral"]))
 			return FALSE
-		generated_properties["neutral"] += P
+		GLOB.generated_properties["neutral"] += P
 	return TRUE

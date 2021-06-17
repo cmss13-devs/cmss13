@@ -37,7 +37,7 @@
 	category = PROPERTY_TYPE_MEDICINE
 
 /datum/chem_property/special/hypergenetic/process(mob/living/M, var/potency = 1)
-	M.heal_limb_damage(0.2+potency)
+	M.heal_limb_damage(potency)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -53,10 +53,10 @@
 /datum/chem_property/special/hypergenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
 	if(!isXenoOrHuman(M))
 		return
-	M.AddComponent(/datum/component/healing_reduction, -potency * volume * 0.5) //reduces injuries if present
+	M.AddComponent(/datum/component/healing_reduction, -potency * volume * POTENCY_MULTIPLIER_LOW) //reduces injuries if present
 	if(ishuman(M)) //heals on contact with humans/xenos
 		var/mob/living/carbon/human/H = M
-		H.heal_limb_damage(potency * volume * 0.5)
+		H.heal_limb_damage(potency * volume * POTENCY_MULTIPLIER_LOW)
 	if(isXeno(M)) //more effective on xenos to account for higher HP
 		var/mob/living/carbon/Xenomorph/X = M
 		X.gain_health(potency * volume)
@@ -76,10 +76,10 @@
 		M.apply_internal_damage(-potency, O)
 
 /datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustCloneLoss(2*potency)
+	M.adjustCloneLoss(POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(3*potency,3*potency)
+	M.take_limb_damage(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)
 
 /datum/chem_property/special/DNA_Disintegrating
 	name = PROPERTY_DNA_DISINTEGRATING
@@ -90,7 +90,7 @@
 	value = 16
 
 /datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, var/potency = 1)
-	M.adjustCloneLoss(10*potency)
+	M.adjustCloneLoss(POTENCY_MULTIPLIER_EXTREME * potency)
 	if(ishuman(M) && M.cloneloss >= 190)
 		var/mob/living/carbon/human/H = M
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
@@ -234,7 +234,7 @@
 	var/mob/living/carbon/human/H = M
 	if(H.viruses)
 		for(var/datum/disease/D in H.viruses)
-			if(potency >= 2)
+			if(potency >= CREATE_MAX_TIER_1)
 				D.cure()
 				zs.remove_from_revive(H)
 			else
@@ -256,8 +256,8 @@
 	M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
-	M.heal_limb_damage(5*potency,5*potency)
-	M.apply_damage(-5*potency, TOX)
+	M.heal_limb_damage(POTENCY_MULTIPLIER_VHIGH * potency, POTENCY_MULTIPLIER_VHIGH * potency)
+	M.apply_damage(-POTENCY_MULTIPLIER_VHIGH * potency, TOX)
 	M.hallucination = 0
 	M.setBrainLoss(0)
 	M.disabilities = 0

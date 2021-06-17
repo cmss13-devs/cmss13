@@ -102,11 +102,12 @@
 			tray.update_icon()
 
 /datum/chem_property/negative/toxic/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume, var/potency = 1)
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		if(C.wear_mask) // If not wearing a mask
-			return
-		C.apply_damage(potency, TOX) // applies potency toxin damage
+	if(!iscarbon(M))
+		return
+	var/mob/living/carbon/C = M
+	if(!C.wear_mask) // If not wearing a mask
+		return
+	C.apply_damage(potency, TOX) // applies potency toxin damage
 
 /datum/chem_property/negative/corrosive
 	name = PROPERTY_CORROSIVE

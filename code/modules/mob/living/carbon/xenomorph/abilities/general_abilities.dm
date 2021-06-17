@@ -194,12 +194,14 @@
 /datum/action/xeno_action/activable/pounce/proc/initialize_pounce_pass_flags()
 	pounce_pass_flags = PASS_OVER_THROW_MOB
 
-// Any additional effects to apply to the target
-// is called if and only if we actually hit a human target
+/**
+ * Any additional effects to apply to the target
+ * is called if and only if we actually hit a human target
+ */
 /datum/action/xeno_action/activable/pounce/proc/additional_effects(mob/living/L)
 	return
 
-// Additional effects to apply even if we don't hit anything
+/// Additional effects to apply even if we don't hit anything
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
 	return
 
@@ -209,6 +211,14 @@
 	X.update_canmove()
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL
+
+/// Any effects to apply to the xenomorph before the windup occurs
+/datum/action/xeno_action/activable/pounce/proc/pre_windup_effects()
+	return
+
+/// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
+/datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
+	return
 
 /datum/action/xeno_action/onclick/toggle_long_range
 	name = "Toggle Long Range Sight"

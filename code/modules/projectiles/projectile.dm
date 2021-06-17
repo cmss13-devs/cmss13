@@ -953,14 +953,15 @@
 			"penetration" = P.ammo.penetration,
 			"armour_break_pr_pen" = P.ammo.pen_armor_punch,
 			"armour_break_flat" = P.ammo.damage_armor_punch,
-			"armor_integrity" = armor_integrity
+			"armor_integrity" = armor_integrity,
+			"direction" = P.dir,
 		)
-		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE, damagedata)
-		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damage,
+		SEND_SIGNAL(src, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, damagedata)
+		damage_result = armor_damage_reduction(GLOB.xeno_ranged, damagedata["damage"],
 			damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
 			damagedata["armour_break_flat"], damagedata["armor_integrity"])
 
-		var/armor_punch = armor_break_calculation(GLOB.xeno_ranged, damage,
+		var/armor_punch = armor_break_calculation(GLOB.xeno_ranged, damagedata["damage"],
 			damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
 			damagedata["armour_break_flat"], damagedata["armor_integrity"])
 

@@ -143,6 +143,7 @@
 						H.name = H.get_visible_name()
 			else
 				M.take_limb_damage(min(6, volume))
+			return
 	else
 		if(!M.unacidable)
 			M.take_limb_damage(min(6, volume))
@@ -451,17 +452,6 @@
 		H.apply_damage(potency, BRAIN)
 	to_chat(M, SPAN_WARNING("You start to go numb."))
 	M.Daze(potency * volume * POTENCY_MULTIPLIER_LOW)
-
-/datum/chem_property/negative/neurotoxic/reaction_mob(var/mob/M, var/method = TOUCH, var/volume, var/potency)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		H.apply_damage(potency, BRAIN)
-		apply_neuro(M, potency*volume, FALSE)
-		to_chat(H, SPAN_WARNING("You start to go numb."))
-	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/X = M
-		X.Daze(potency * min(volume, POTENCY_MAX_TIER_1))
-		to_chat(X, SPAN_XENOWARNING("You can't think clearly."))
 
 /datum/chem_property/negative/hypermetabolic
 	name = PROPERTY_HYPERMETABOLIC

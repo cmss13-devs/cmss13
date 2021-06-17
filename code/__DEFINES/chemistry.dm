@@ -231,3 +231,34 @@
 // Injectors
 #define INJECTOR_USES 3
 #define INJECTOR_PERCENTAGE_OF_OD 0.5
+
+//defines for research level multipliers
+#define RESEARCH_LEVEL_INCREASE_MULTIPLIER	4 //Scales cost of increasing clearance using credits
+#define TECHTREE_LEVEL_MULTIPLIER			4 //Scales tech level to max amplification level
+
+//Property cost multipliers for the chemical simulator
+#define PROPERTY_COST_MAX					8
+#define PROPERTY_MULTIPLIER_RARE			3
+#define PROPERTY_MULTIPLIER_ANOMALOUS		10
+
+/*
+	For minimum potencies for properties
+	Create maxes are what can be reached in create mode at a given tech level
+	Potency maxes are what can be reached in amplify mode (with unlimited levels at T3)
+*/
+#define CREATE_MAX_TIER_1					2
+#define CREATE_MAX_TIER_2					4
+#define CREATE_MAX_TIER_3					5
+#define POTENCY_MAX_TIER_1					3
+#define POTENCY_MAX_TIER_2					5
+
+//for scaling chem effects based on potency
+#define POTENCY_MULTIPLIER_VLOW				0.25
+#define POTENCY_MULTIPLIER_LOW				0.5
+#define POTENCY_MULTIPLIER_MEDIUM			2
+#define POTENCY_MULTIPLIER_HIGH				3
+#define POTENCY_MULTIPLIER_VHIGH			5
+#define POTENCY_MULTIPLIER_EXTREME			10
+
+//used in speed_modifier component
+#define HUMAN_STAMINA_MULTIPLIER 			5

@@ -14,7 +14,7 @@
 /datum/chem_property/neutral/cryometabolizing/pre_process(mob/living/M)
 	if(M.bodytemperature > 170)
 		return list(REAGENT_CANCEL = TRUE)
-	return list(REAGENT_BOOST = 0.5 * level)
+	return list(REAGENT_BOOST = POTENCY_MULTIPLIER_LOW * level)
 
 /datum/chem_property/neutral/thanatometabolizing
 	name = PROPERTY_THANATOMETABOL
@@ -76,7 +76,7 @@
 	category = PROPERTY_TYPE_METABOLITE
 
 /datum/chem_property/neutral/ketogenic/process(mob/living/M, var/potency = 1)
-	M.nutrition = max(M.nutrition - 5*potency, 0)
+	M.nutrition = max(M.nutrition - POTENCY_MULTIPLIER_VHIGH * potency, 0)
 	M.overeatduration = 0
 	if(M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)) //Ketosis causes rapid metabolization of alcohols
 		M.confused = min(M.confused + potency,10*potency)
@@ -120,7 +120,7 @@
 	M.disabilities |= NERVOUS
 
 /datum/chem_property/neutral/neuroinhibiting/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, BRAIN)
+	M.apply_damage(POTENCY_MULTIPLIER_MEDIUM * potency, BRAIN)
 
 /datum/chem_property/neutral/alcoholic
 	name = PROPERTY_ALCOHOLIC
@@ -148,7 +148,7 @@
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
 		if(L)
-			L.damage += 0.5*potency
+			L.damage += POTENCY_MULTIPLIER_LOW * potency
 
 /datum/chem_property/neutral/hallucinogenic
 	name = PROPERTY_HALLUCINOGENIC
@@ -160,7 +160,7 @@
 /datum/chem_property/neutral/hallucinogenic/process(mob/living/M, var/potency = 1)
 	if(prob(10))
 		M.emote(pick("twitch","drool","moan","giggle"))
-	if(potency>2)
+	if(potency > CREATE_MAX_TIER_1)
 		M.hallucination = min(M.hallucination + potency, potency * 10)
 		M.make_jittery(5)
 	M.druggy = min(M.druggy + potency, potency * 10)
@@ -190,7 +190,7 @@
 
 /datum/chem_property/neutral/relaxing/process_overdose(mob/living/M, var/potency = 1)
 	//heart beats slower
-	M.reagent_move_delay_modifier += 2*potency
+	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(prob(10))
 		to_chat(M, SPAN_WARNING("You feel incredibly weak!"))
 
@@ -201,7 +201,7 @@
 	M.apply_damage(potency, OXY)
 	if(prob(5))
 		to_chat(M, SPAN_WARNING("You can hardly breathe!"))
-	M.apply_internal_damage(0.75 * potency, "heart")
+	M.apply_internal_damage(POTENCY_MULTIPLIER_LOW * potency, "heart")
 
 /datum/chem_property/neutral/hyperthermic
 	name = PROPERTY_HYPERTHERMIC
@@ -214,15 +214,15 @@
 	if(prob(10))
 		M.emote("gasp")
 		to_chat(M, SPAN_DANGER("<b>Your insides feel uncomfortably hot !</b>"))
-	M.bodytemperature = max(M.bodytemperature+2*potency,0)
-	if(potency >= 2)
-		M.make_dizzy(potency*2)
+	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_MEDIUM * potency,0)
+	if(potency >= CREATE_MAX_TIER_1)
+		M.make_dizzy(potency * POTENCY_MULTIPLIER_MEDIUM)
 		M.apply_effect(potency,AGONY,0)
 	M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/hyperthermic/process_overdose(mob/living/M, var/potency = 1)
-	M.bodytemperature = max(M.bodytemperature+4*potency,0)
-	M.apply_effect(2*potency,AGONY,0)
+	M.bodytemperature = max(M.bodytemperature + POTENCY_MULTIPLIER_VHIGH * potency,0)
+	M.apply_effect(POTENCY_MULTIPLIER_MEDIUM * potency,AGONY,0)
 
 /datum/chem_property/neutral/hyperthermic/process_critical(mob/living/M, var/potency = 1)
 	M.KnockOut(20)
@@ -237,11 +237,11 @@
 /datum/chem_property/neutral/hypothermic/process(mob/living/M, var/potency = 1)
 	if(prob(10))
 		M.emote("shiver")
-	M.bodytemperature = max(M.bodytemperature-2*potency,0)
+	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_MEDIUM * potency,0)
 	M.recalculate_move_delay = TRUE
 
 /datum/chem_property/neutral/hypothermic/process_overdose(mob/living/M, var/potency = 1)
-	M.bodytemperature = max(M.bodytemperature-4*potency,0)
+	M.bodytemperature = max(M.bodytemperature - POTENCY_MULTIPLIER_VHIGH * potency,0)
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/neutral/hypothermic/process_critical(mob/living/M, var/potency = 1)
@@ -266,7 +266,7 @@
 			H.update_hair()
 
 /datum/chem_property/neutral/balding/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustCloneLoss(0.5*potency)
+	M.adjustCloneLoss(POTENCY_MULTIPLIER_LOW * potency)
 
 /datum/chem_property/neutral/balding/process_critical(mob/living/M, var/potency = 1)
 	M.adjustCloneLoss(potency)
@@ -307,7 +307,7 @@
 	value = 0
 
 /datum/chem_property/neutral/allergenic/process(mob/living/M, var/potency = 1)
-	if(prob(5*potency))
+	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
 		M.emote(pick("sneeze","blink","cough"))
 
 /datum/chem_property/neutral/euphoric
@@ -328,15 +328,15 @@
 		return
 
 	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency) //Endorphins are natural painkillers
-	if(prob(5*potency))
+	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
 		M.emote(pick("laugh","giggle","chuckle","grin","smile","twitch"))
 
 /datum/chem_property/neutral/euphoric/process_overdose(mob/living/M, var/potency = 1)
-	if(prob(5*potency))
+	if(prob(POTENCY_MULTIPLIER_VHIGH * potency))
 		M.emote("collapse") //ROFL
 
 /datum/chem_property/neutral/euphoric/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(3*potency, OXY)
+	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 	to_chat(M, SPAN_WARNING("You are laughing so much you can't breathe!"))
 
 /datum/chem_property/neutral/emetic
@@ -352,10 +352,10 @@
 		H.vomit() //vomit() already has a timer on in
 
 /datum/chem_property/neutral/emetic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(0.5*potency, TOX)
+	M.apply_damage(POTENCY_MULTIPLIER_LOW * potency, TOX)
 
 /datum/chem_property/neutral/emetic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(0.5*potency, TOX)
+	M.apply_damage(POTENCY_MULTIPLIER_LOW * potency, TOX)
 
 /datum/chem_property/neutral/psychostimulating
 	name = PROPERTY_PSYCHOSTIMULATING
@@ -398,7 +398,7 @@
 
 /datum/chem_property/neutral/psychostimulating/process_critical(mob/living/M, var/potency = 1)
 	M.hallucination = min(200, M.hallucination)
-	M.apply_damage(4*potency, BRAIN)
+	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, BRAIN)
 
 /datum/chem_property/neutral/antihallucinogenic
 	name = PROPERTY_ANTIHALLUCINOGENIC
@@ -411,14 +411,14 @@
 /datum/chem_property/neutral/antihallucinogenic/process(mob/living/M, var/potency = 1)
 	M.reagents.remove_reagent("mindbreaker", 5)
 	M.reagents.remove_reagent("space_drugs", 5)
-	M.hallucination = max(0, M.hallucination - 10*potency)
-	M.druggy = max(0, M.druggy - 10*potency)
+	M.hallucination = max(0, M.hallucination - POTENCY_MULTIPLIER_EXTREME * potency)
+	M.druggy = max(0, M.druggy - POTENCY_MULTIPLIER_EXTREME * potency)
 
 /datum/chem_property/neutral/antihallucinogenic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, TOX)
 
 /datum/chem_property/neutral/antihallucinogenic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(potency, potency, 3*potency)
+	M.apply_damages(potency, potency, POTENCY_MULTIPLIER_HIGH * potency)
 
 /datum/chem_property/neutral/hypometabolic
 	name = PROPERTY_HYPOMETABOLIC
@@ -445,10 +445,10 @@
 
 /datum/chem_property/neutral/sedative/process(mob/living/M, var/potency = 1)
 	if(M.confused < 25 && M.sleeping < 20)
-		M.confused += 2*potency
+		M.confused += POTENCY_MULTIPLIER_MEDIUM * potency
 	if(M.confused > 25)
-		M.AdjustSleeping(2*potency)
-		M.confused -= 2*potency //so when they wake up they aren't still confused
+		M.AdjustSleeping(POTENCY_MULTIPLIER_MEDIUM * potency)
+		M.confused -= POTENCY_MULTIPLIER_MEDIUM * potency //so when they wake up they aren't still confused
 	else if(prob(25))
 		M.emote("yawn")
 
@@ -456,7 +456,7 @@
 	M.AdjustKnockedout(potency)
 
 /datum/chem_property/neutral/sedative/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(5*potency, OXY)
+	M.apply_damage(POTENCY_MULTIPLIER_VHIGH * potency, OXY)
 
 /datum/chem_property/neutral/hyperthrottling
 	name = PROPERTY_HYPERTHROTTLING
@@ -470,7 +470,7 @@
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
-	M.reagent_move_delay_modifier += 4*potency
+	M.reagent_move_delay_modifier += POTENCY_MULTIPLIER_HIGH * potency
 	M.recalculate_move_delay = TRUE
 	M.druggy = min(M.druggy + potency, 10)
 	if(H.chem_effect_flags & CHEM_EFFECT_HYPER_THROTTLE)
@@ -535,21 +535,21 @@
 
 /datum/chem_property/neutral/focusing/process(mob/living/M, var/potency = 1)
 	M.reagents.remove_all_type(/datum/reagent/ethanol, potency, 0, 1)
-	M.stuttering = max(M.stuttering-2*potency, 0)
-	M.confused = max(M.confused-2*potency, 0)
-	M.eye_blurry = max(M.eye_blurry-2*potency, 0)
-	M.drowsyness = max(M.drowsyness-2*potency, 0)
-	M.dizziness = max(M.dizziness-2*potency, 0)
-	M.jitteriness = max(M.jitteriness-2*potency, 0)
-	if(potency >= 3)
+	M.stuttering = max(M.stuttering - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.confused = max(M.confused - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.eye_blurry = max(M.eye_blurry - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.drowsyness = max(M.drowsyness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.dizziness = max(M.dizziness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	M.jitteriness = max(M.jitteriness - POTENCY_MULTIPLIER_MEDIUM * potency, 0)
+	if(potency >= POTENCY_MAX_TIER_1)
 		M.eye_blind = 0
 		M.silent = 0
 
 /datum/chem_property/neutral/focusing/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(1, TOX)
+	M.apply_damage(potency, TOX)
 
 /datum/chem_property/neutral/focusing/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(4, TOX)
+	M.apply_damage(potency * POTENCY_MULTIPLIER_HIGH, TOX)
 
 /datum/chem_property/neutral/transformative
 	name = PROPERTY_TRANSFORMATIVE
@@ -570,7 +570,7 @@
 		M.apply_damage(true_heal * 0.1, TOX)
 
 /datum/chem_property/neutral/transformative/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(heal_amount * (potency * 0.5), TOX)
+	M.apply_damage(heal_amount * (potency * POTENCY_MULTIPLIER_LOW), TOX)
 
 /datum/chem_property/neutral/transformative/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(heal_amount * potency, TOX)
@@ -586,4 +586,4 @@
 	M.apply_damage(potency, BRUTE)
 
 /datum/chem_property/neutral/unknown/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(3*potency, 3*potency, 3*potency)
+	M.apply_damages(POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency, POTENCY_MULTIPLIER_HIGH * potency)

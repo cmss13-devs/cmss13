@@ -176,6 +176,7 @@
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
 	chemfiresupp = TRUE
+	properties = list(PROPERTY_OXIDIZING = 2)
 	intensitymod = 0.75
 	radiusmod = -0.08
 	burncolor = "#58daff"
@@ -570,6 +571,21 @@
 	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_RELAXING = 1)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/datum/reagent/oxidizing_agent
+	name = "Oxidizing Agent"
+	id = "oxidizing_agent"
+	description = "A synthesized, highly-refined oxidizing agent that is most likely extremely unhealthy for human consumption."
+	reagent_state = GAS
+	color = "#c4c4c4"
+	chemfiresupp = TRUE
+	properties = list(PROPERTY_OXIDIZING = 6)
+	intensitymod = 1
+	radiusmod = -0.12
+	burncolor = "#a9ecff"
+	burncolormod = 2
+	chemclass = CHEM_CLASS_RARE
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/nanites
 	name = "Nanomachines"

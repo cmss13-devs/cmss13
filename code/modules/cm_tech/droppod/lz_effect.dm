@@ -19,3 +19,7 @@
 	name = "weak alien warning"
 	color = "#a800ff"
 	alpha = 127
+
+/obj/effect/warning/hover
+	name = "hoverpack warning"
+	color = "#D4AE1E"

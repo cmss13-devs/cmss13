@@ -32205,9 +32205,9 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/repair_bay)
 "cgl" = (
-/obj/structure/machinery/door/airlock/almayer/marine/charlie,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/marine/shared/charlie_delta,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -53532,9 +53532,9 @@
 	},
 /area/almayer/engineering/laundry)
 "lKb" = (
-/obj/structure/machinery/door/airlock/almayer/marine/alpha,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/marine/shared/alpha_bravo,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -64912,8 +64912,8 @@
 	},
 /area/almayer/hull/upper_hull/u_f_s)
 "rJx" = (
-/obj/structure/machinery/door/airlock/almayer/marine/delta,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/marine/shared/charlie_delta/blue,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -70929,8 +70929,8 @@
 	},
 /area/almayer/shipboard/brig/evidence_storage)
 "uIT" = (
-/obj/structure/machinery/door/airlock/almayer/marine/bravo,
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/machinery/door/airlock/almayer/marine/shared/alpha_bravo/yellow,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

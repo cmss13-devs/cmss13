@@ -12,7 +12,7 @@
 	value = 1
 
 /datum/chem_property/positive/antitoxic/process(mob/living/M, var/potency = 1)
-	M.apply_damage(-(potency * 2), TOX)
+	M.apply_damage(-(potency * POTENCY_MULTIPLIER_MEDIUM), TOX)
 	M.reagents.remove_all_type(/datum/reagent/toxin, REM, 0, 1)
 
 /datum/chem_property/positive/antitoxic/process_overdose(mob/living/M, var/potency = 1)
@@ -32,7 +32,7 @@
 /datum/chem_property/positive/anticorrosive/process(mob/living/M, var/potency = 1)
 	M.heal_limb_damage(0, potency)
 	if(potency > CREATE_MAX_TIER_1)
-		M.heal_limb_damage(0, potency/2)
+		M.heal_limb_damage(0, potency * POTENCY_MULTIPLIER_LOW)
 
 /datum/chem_property/positive/anticorrosive/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damages(potency, 0, potency) //Mixed brute/tox damage
@@ -51,7 +51,7 @@
 /datum/chem_property/positive/neogenetic/process(mob/living/M, var/potency = 1)
 	M.heal_limb_damage(potency, 0)
 	if(potency > CREATE_MAX_TIER_1)
-		M.heal_limb_damage(potency/2, 0)
+		M.heal_limb_damage(potency * POTENCY_MULTIPLIER_LOW, 0)
 
 /datum/chem_property/positive/neogenetic/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, BURN)
@@ -64,7 +64,7 @@
 		return
 	var/mob/living/carbon/Xenomorph/X = M
 	if(potency > 2) //heals at levels 5+
-		X.gain_health(potency * volume * 0.5)
+		X.gain_health(potency * volume * POTENCY_MULTIPLIER_LOW)
 
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
@@ -400,7 +400,7 @@
 				L.implants -= implanted_object
 
 /datum/chem_property/positive/fluxing/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damages(2*potency, 0, potency)
+	M.apply_damages(POTENCY_MULTIPLIER_MEDIUM*potency, 0, potency)
 
 /datum/chem_property/positive/fluxing/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damages(POTENCY_MULTIPLIER_MEDIUM*potency, 0, POTENCY_MULTIPLIER_MEDIUM*potency) //Mixed brute/tox damage
@@ -543,10 +543,10 @@
 		addtimer(CALLBACK(H, /mob/living/carbon/human.proc/handle_revive), 50, TIMER_UNIQUE)
 	else if (potency > POTENCY_MAX_TIER_1 && H.check_tod() && H.is_revivable() && H.health < HEALTH_THRESHOLD_DEAD) //Will heal if level is 7 or greater
 		to_chat(H, SPAN_NOTICE("You feel a faint spark in your chest."))
-		H.apply_damage(-potency * 0.5, BRUTE)
-		H.apply_damage(-potency * 0.5, BURN)
-		H.apply_damage(-potency * 0.5, TOX)
-		H.apply_damage(-potency * 0.5, CLONE)
+		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BRUTE)
+		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, BURN)
+		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, TOX)
+		H.apply_damage(-potency * POTENCY_MULTIPLIER_LOW, CLONE)
 		H.apply_damage(-H.getOxyLoss(), OXY)
 	return TRUE
 
@@ -780,10 +780,10 @@
 	return list(REAGENT_PURGE = level)
 
 /datum/chem_property/positive/neutralizing/process(mob/living/M, var/potency = 1)
-	M.apply_damages(0, potency, potency/2)
+	M.apply_damages(0, potency, potency * POTENCY_MULTIPLIER_LOW)
 
 /datum/chem_property/positive/neutralizing/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damages(0, 2 * potency, potency)
+	M.apply_damages(0, POTENCY_MULTIPLIER_MEDIUM * potency, potency)
 
 /datum/chem_property/positive/neutralizing/process_critical(mob/living/M, var/potency = 1)
 	M.apply_internal_damage(potency, "liver")
@@ -798,7 +798,7 @@
 		H.emote("me",1, "scratches themselves.")
 	if(isXeno(L))
 		var/mob/living/carbon/Xenomorph/X = M
-		X.plasma_stored = max(X.plasma_stored - 25*potency, 0)
+		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_VHIGH * POTENCY_MULTIPLIER_VHIGH * potency, 0)
 
 /datum/chem_property/positive/neutralizing/reaction_turf(var/turf/T, var/volume, var/potency)
 	if(!istype(T))

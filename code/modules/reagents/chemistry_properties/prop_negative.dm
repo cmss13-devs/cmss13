@@ -77,38 +77,6 @@
 		return
 	C.apply_damage(potency, TOX) // applies potency toxin damage
 
-/datum/chem_property/negative/toxic/reaction_obj(var/obj/O, var/volume, var/potency = 1)
-	if(istype(O,/obj/effect/alien/weeds/))
-		var/obj/effect/alien/weeds/alien_weeds = O
-		alien_weeds.take_damage(25 * potency) // Kills alien weeds on touch
-		return
-	if(istype(O,/obj/effect/glowshroom))
-		qdel(O)
-		return
-	if(istype(O,/obj/effect/plantsegment))
-		if(prob(50)) qdel(O)
-		return
-	if(istype(O,/obj/structure/machinery/portable_atmospherics/hydroponics))
-		var/obj/structure/machinery/portable_atmospherics/hydroponics/tray = O
-
-		if(tray.seed)
-			tray.health -= rand(30,50)
-			if(tray.pestlevel > 0)
-				tray.pestlevel -= 2
-			if(tray.weedlevel > 0)
-				tray.weedlevel -= 3
-			tray.toxins += 4
-			tray.check_level_sanity()
-			tray.update_icon()
-
-/datum/chem_property/negative/toxic/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume, var/potency = 1)
-	if(!iscarbon(M))
-		return
-	var/mob/living/carbon/C = M
-	if(!C.wear_mask) // If not wearing a mask
-		return
-	C.apply_damage(potency, TOX) // applies potency toxin damage
-
 /datum/chem_property/negative/corrosive
 	name = PROPERTY_CORROSIVE
 	code = "CRS"
@@ -175,7 +143,6 @@
 						H.name = H.get_visible_name()
 			else
 				M.take_limb_damage(min(6, volume))
-			return
 	else
 		if(!M.unacidable)
 			M.take_limb_damage(min(6, volume))
@@ -194,72 +161,6 @@
 		for(var/mob/M in viewers(5, O))
 			to_chat(M, SPAN_WARNING("\the [O] melts."))
 		qdel(O)
-
-/datum/chem_property/negative/corrosive/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume, var/potency) //from sacid
-	var/meltprob = potency * 3
-	if(!istype(M, /mob/living))
-		return
-	if(method == TOUCH)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.head)
-				if(prob(meltprob) && !H.head.unacidable)
-					to_chat(H, SPAN_DANGER("Your headgear melts away but protects you from the acid!"))
-					qdel(H.head)
-					H.update_inv_head(0)
-					H.update_hair(0)
-				else
-					to_chat(H, SPAN_WARNING("Your headgear protects you from the acid."))
-				return
-
-			if(H.wear_mask)
-				if(prob(meltprob) && !H.wear_mask.unacidable)
-					to_chat(H, SPAN_DANGER("Your mask melts away but protects you from the acid!"))
-					qdel(H.wear_mask)
-					H.update_inv_wear_mask(0)
-					H.update_hair(0)
-				else
-					to_chat(H, SPAN_WARNING("Your mask protects you from the acid."))
-				return
-
-			if(H.glasses)
-				if(prob(meltprob) && !H.glasses.unacidable)
-					to_chat(H, SPAN_DANGER("Your glasses melts away!"))
-					qdel(H.glasses)
-					H.update_inv_glasses(0)
-				return
-
-		if(!M.unacidable) //nothing left to melt, apply acid effects
-			if(istype(M, /mob/living/carbon/human) && volume >= 10)
-				var/mob/living/carbon/human/H = M
-				var/obj/limb/affecting = H.get_limb("head")
-				if(affecting)
-					if(affecting.take_damage(4, 2))
-						H.UpdateDamageIcon()
-					if(prob(meltprob)) //Applies disfigurement
-						if(H.pain.feels_pain)
-							H.emote("scream")
-						H.status_flags |= DISFIGURED
-						H.name = H.get_visible_name()
-			else
-				M.take_limb_damage(min(6, volume))
-	else
-		if(!M.unacidable)
-			M.take_limb_damage(min(6, volume))
-	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/X = M
-		if(potency > POTENCY_MAX_TIER_1) //Needs level 7+ to have any effect
-			X.AddComponent(/datum/component/toxic_buildup, potency * volume * 0.25)
-			to_chat(X, SPAN_XENODANGER("The corrosive substance damages your carapace!"))
-
-/datum/chem_property/negative/corrosive/reaction_obj(var/obj/O, var/volume, var/potency)
-	if((istype(O,/obj/item) || istype(O,/obj/effect/glowshroom)) && prob(potency * 10))
-		if(!O.unacidable)
-			var/obj/effect/decal/cleanable/molten_item/I = new/obj/effect/decal/cleanable/molten_item(O.loc)
-			I.desc = "Looks like this was \an [O] some time ago."
-			for(var/mob/M in viewers(5, O))
-				to_chat(M, SPAN_WARNING("\the [O] melts."))
-			qdel(O)
 
 /datum/chem_property/negative/biocidic
 	name = PROPERTY_BIOCIDIC
@@ -379,7 +280,7 @@
 	if(!istype(M, /mob/living))
 		return
 	var/mob/living/L = M
-	L.AddComponent(/datum/component/healing_reduction, potency * volume * 0.25) //deals brute DOT to humans, prevents healing for xenos
+	L.AddComponent(/datum/component/healing_reduction, potency * volume * POTENCY_MULTIPLIER_VLOW) //deals brute DOT to humans, prevents healing for xenos
 
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC
@@ -559,7 +460,7 @@
 		to_chat(H, SPAN_WARNING("You start to go numb."))
 	if(isXeno(M))
 		var/mob/living/carbon/Xenomorph/X = M
-		X.Daze(potency * min(volume, 3))
+		X.Daze(potency * min(volume, POTENCY_MAX_TIER_1))
 		to_chat(X, SPAN_XENOWARNING("You can't think clearly."))
 
 /datum/chem_property/negative/hypermetabolic

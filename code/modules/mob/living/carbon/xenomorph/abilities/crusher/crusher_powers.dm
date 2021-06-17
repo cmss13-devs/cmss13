@@ -33,6 +33,20 @@
 	H.last_damage_data = create_cause_data(X.caste_type, X)
 	return
 
+/datum/action/xeno_action/activable/pounce/crusher_charge/pre_windup_effects()
+	RegisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE, .proc/check_directional_armor)
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/post_windup_effects(var/interrupted)
+	UnregisterSignal(owner, COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE)
+
+/datum/action/xeno_action/activable/pounce/crusher_charge/proc/check_directional_armor(mob/living/carbon/Xenomorph/X, list/damagedata)
+	SIGNAL_HANDLER
+	var/projectile_direction = damagedata["direction"]
+	if(X.dir & REVERSE_DIR(projectile_direction))
+		// During the charge windup, crusher gets an extra 15 directional armor in the direction its charging
+		damagedata["armor"] += frontal_armor
+
+
 // This ties the pounce/throwing backend into the old collision backend
 /mob/living/carbon/Xenomorph/Crusher/pounced_obj(var/obj/O)
 	var/datum/action/xeno_action/activable/pounce/crusher_charge/CCA = get_xeno_action_by_type(src, /datum/action/xeno_action/activable/pounce/crusher_charge)
@@ -45,7 +59,7 @@
 		obj_launch_collision(O)
 
 /mob/living/carbon/Xenomorph/Crusher/pounced_turf(var/turf/T)
-	T.ex_act(EXPLOSION_THRESHOLD_MLOW)
+	T.ex_act(EXPLOSION_THRESHOLD_MLOW, , create_cause_data(caste_type, src))
 	..(T)
 
 /datum/action/xeno_action/onclick/crusher_stomp/use_ability(atom/A)

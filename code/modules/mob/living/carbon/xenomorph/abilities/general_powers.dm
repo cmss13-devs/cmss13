@@ -284,23 +284,27 @@
 	apply_cooldown()
 
 	if (windup)
+		X.set_face_dir(get_cardinal_dir(X, A))
 		if (!windup_interruptable)
 			X.frozen = TRUE
 			X.anchored = TRUE
 			X.update_canmove()
+		pre_windup_effects()
 
 		if (!do_after(X, windup_duration, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			to_chat(X, SPAN_XENODANGER("You cancel your [ability_name]!"))
 			if (!windup_interruptable)
-				X.frozen = 0
-				X.anchored = 0
+				X.frozen = FALSE
+				X.anchored = FALSE
 				X.update_canmove()
+			post_windup_effects(interrupted = TRUE)
 			return
 
 		if (!windup_interruptable)
-			X.frozen = 0
-			X.anchored = 0
+			X.frozen = FALSE
+			X.anchored = FALSE
 			X.update_canmove()
+		post_windup_effects()
 
 	X.visible_message(SPAN_XENOWARNING("\The [X] [ability_name]s at [A]!"), SPAN_XENOWARNING("You [ability_name] at [A]!"))
 

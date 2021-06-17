@@ -43,7 +43,7 @@
 /datum/component/toxic_buildup/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
 	RegisterSignal(parent, list(
-		COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE,
+		COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE,
 		COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE
 	), .proc/apply_toxic_buildup)
 	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
@@ -51,7 +51,7 @@
 /datum/component/toxic_buildup/UnregisterFromParent()
 	STOP_PROCESSING(SSdcs, src)
 	UnregisterSignal(parent, list(
-		COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE,
+		COMSIG_XENO_PRE_CALCULATE_ARMOURED_DAMAGE_PROJECTILE,
 		COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE,
 		COMSIG_XENO_APPEND_TO_STAT
 	))

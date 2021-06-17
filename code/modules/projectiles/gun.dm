@@ -43,7 +43,7 @@
 	 /**How the bullet will behave once it leaves the gun, also used for basic bullet damage and effects, etc.
 	 Ammo will be replaced on New() for things that do not use mags.**/
 	var/datum/ammo/ammo = null
-	 ///What is currently in the chamber. Most guns will want something in the chamber upon creation.	
+	 ///What is currently in the chamber. Most guns will want something in the chamber upon creation.
 	var/obj/item/projectile/in_chamber = null
 	/*Ammo mags may or may not be internal, though the difference is a few additional variables. If they are not internal, don't call
 	on those unique vars. This is done for quicker pathing. Just keep in mind most mags aren't internal, though some are.
@@ -98,7 +98,7 @@
 	var/guaranteed_delay_time = 0
 	 ///Storing value for how long pulling a gun takes before you can use it
 	var/pull_time		= 0
-	
+
 	 ///Determines what happens when you fire a gun before its wield or pull time has finished. This one is extra scatter and an acc. malus.
 	var/delay_style		= WEAPON_DELAY_SCATTER_AND_ACCURACY
 
@@ -661,7 +661,7 @@
 		"recoil_max" = RECOIL_AMOUNT_TIER_1,
 		"scatter_max" = SCATTER_AMOUNT_TIER_1,
 		"firerate_max" = 1 MINUTES / FIRE_DELAY_TIER_10,
-		"damage_max" = BULLET_DAMAGE_TIER_20,
+		"damage_max" = 100,
 		"accuracy_max" = 32,
 		"range_max" = 32,
 		"falloff_max" = DAMAGE_FALLOFF_TIER_1,
@@ -1218,7 +1218,7 @@ and you're good to go.
 			simulate_recoil(2, user)
 			var/t
 			var/datum/cause_data/cause_data
-			if(projectile_to_fire.ammo.damage == BULLET_DAMAGE_OFF)
+			if(projectile_to_fire.ammo.damage == 0)
 				t += "\[[time_stamp()]\] <b>[key_name(user)]</b> tried to commit suicide with a [name]"
 				cause_data = create_cause_data("failed suicide by [initial(name)]")
 				to_chat(user, SPAN_DANGER("Ow..."))

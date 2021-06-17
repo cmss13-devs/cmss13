@@ -60,10 +60,11 @@
 	M.apply_damages(0, POTENCY_MULTIPLIER_VHIGH * potency, POTENCY_MULTIPLIER_MEDIUM * potency)
 
 /datum/chem_property/positive/neogenetic/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(isXeno(M))
-		var/mob/living/carbon/Xenomorph/X = M
-		if(potency > 2) //heals at levels 5+
-			X.gain_health(potency * volume * 0.5)
+	if(!isXeno(M))
+		return
+	var/mob/living/carbon/Xenomorph/X = M
+	if(potency > 2) //heals at levels 5+
+		X.gain_health(potency * volume * 0.5)
 
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING

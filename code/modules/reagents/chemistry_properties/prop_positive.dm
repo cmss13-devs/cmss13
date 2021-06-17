@@ -88,11 +88,13 @@
 	M.apply_damage(4*potency, TOX)
 
 /datum/chem_property/positive/repairing/reaction_mob(var/mob/M, var/method=TOUCH, var/volume, var/potency)
-	if(ishuman(M) && method == TOUCH) //heals when sprayed on limbs
-		var/mob/living/carbon/human/H
-		for(var/obj/limb/T in H.limbs)
-			if(T && T.status & LIMB_ROBOT)
-				T.heal_damage(potency * volume,potency * volume,0,1)
+	if(!ishuman(M) || method != TOUCH) //heals when sprayed on limbs
+		return
+	var/mob/living/carbon/human/H
+	for(var/obj/limb/T in H.limbs)
+		if(!(T.status & LIMB_ROBOT))
+			continue
+		T.heal_damage(potency * volume,potency * volume,0,1)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC

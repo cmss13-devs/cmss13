@@ -1172,7 +1172,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
-..()
+	..()
 
 /datum/equipment_preset/survivor/trucker/lv
 	name = "Survivor - LV-624 Cargo Technician"

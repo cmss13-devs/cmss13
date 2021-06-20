@@ -182,7 +182,7 @@
 		setDir(pick(NORTH, EAST, SOUTH, WEST))
 		sleep(2)
 
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("sentry explosion"))
+	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("sentry explosion", owner_mob))
 	if(!QDELETED(src))
 		qdel(src)
 

@@ -396,7 +396,7 @@
 	if(total_volume + amount > maximum_volume)
 		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
 
-	var/new_data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null)
+	var/new_data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
 		for(var/index in data)
 			new_data[index] = data[index]
@@ -404,6 +404,7 @@
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			R.volume += amount
+			R.last_source_mob = new_data["last_source_mob"]
 			update_total()
 
 			if(my_atom)

@@ -186,6 +186,8 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 
 	passengers_slots = 8
 
+	var/sensor_radius = 45	//45 tiles radius
+
 /obj/vehicle/multitile/apc/command/Initialize()
 	. = ..()
 	GLOB.command_apc_list += src

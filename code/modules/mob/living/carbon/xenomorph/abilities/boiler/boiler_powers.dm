@@ -193,7 +193,7 @@
 	if (!X.check_state())
 		return
 
-	if (!can_see(X, A, 10))
+	if (!can_see(X, A, TRAPPER_VIEWRANGE))
 		to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
 		return
 
@@ -262,7 +262,7 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
-	if(!check_clear_path_to_target(X, A, TRUE, 10))
+	if(!check_clear_path_to_target(X, A, TRUE, TRAPPER_VIEWRANGE))
 		to_chat(X, SPAN_XENOWARNING("Something is in the way!"))
 		return
 

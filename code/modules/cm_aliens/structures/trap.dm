@@ -20,14 +20,14 @@
 	var/datum/effect_system/smoke_spread/smoke_system
 	var/datum/cause_data/cause_data
 
-/obj/effect/alien/resin/trap/New(loc, mob/living/carbon/Xenomorph/X)
+/obj/effect/alien/resin/trap/Initialize(mapload, mob/living/carbon/Xenomorph/X)
+	. = ..()
 	if(X)
 		created_by = X.ckey
 		hivenumber = X.hivenumber
-		cause_data = create_cause_data(initial(X.caste_type), X)
 
+	cause_data = create_cause_data("resin trap", X)
 	set_hive_data(src, hivenumber)
-	..()
 
 /obj/effect/alien/resin/trap/Initialize()
 	. = ..()
@@ -253,6 +253,7 @@
 		B.use_plasma(200)
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 		set_state(RESIN_TRAP_GAS)
+		cause_data = create_cause_data("resin gas trap", B)
 		B.visible_message(SPAN_XENOWARNING("\The [B] pressurises the resin hole with acid gas!"), \
 		SPAN_XENOWARNING("You pressurise the resin hole with acid gas!"), null, 5)
 	else
@@ -276,6 +277,7 @@
 			return XENO_NO_DELAY_ACTION
 
 		X.use_plasma(acid_cost)
+		cause_data = create_cause_data("resin acid trap", X)
 		setup_tripwires()
 		playsound(loc, 'sound/effects/refill.ogg', 25, 1)
 

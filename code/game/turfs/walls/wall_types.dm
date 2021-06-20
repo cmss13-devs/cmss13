@@ -623,11 +623,17 @@
 	blend_objects = list(/obj/structure/mineral_door/resin)
 	repair_materials = list()
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/should_track_build = FALSE
+	var/datum/cause_data/construction_data
 	flags_turf = TURF_ORGANIC
 
 /turf/closed/wall/resin/pillar
 	name = "resin pillar segment"
 	hull = TRUE
+
+/turf/closed/wall/resin/proc/set_resin_builder(var/mob/M)
+	if(istype(M) && should_track_build)
+		construction_data = create_cause_data(initial(name), M)
 
 /turf/closed/wall/resin/make_girder()
 	return
@@ -990,6 +996,7 @@
 	health = HEALTH_WALL_XENO_MEMBRANE_THICK
 	icon_state = "thickmembrane"
 	wall_type = "thickmembrane"
+
 /turf/closed/wall/resin/reflective
 	name = "resin reflective wall"
 	desc = "Weird hardened slime solidified into a fine, smooth wall."
@@ -997,6 +1004,7 @@
 	icon_state = "resin"
 	walltype = WALL_BONE_RESIN
 	damage_cap = HEALTH_WALL_XENO_MEMBRANE
+	should_track_build = TRUE
 
 	// 75% chance of reflecting projectiles
 	var/chance_to_reflect = 75
@@ -1018,7 +1026,7 @@
 			// Bullet gets absorbed if it has IFF or can't be reflected.
 			return
 
-		var/obj/item/projectile/new_proj = new(src, create_cause_data(initial(name)))
+		var/obj/item/projectile/new_proj = new(src, construction_data ? construction_data : create_cause_data(initial(name)))
 		new_proj.generate_bullet(P.ammo, special_flags = P.projectile_override_flags|AMMO_HOMING)
 		new_proj.damage = original_damage
 

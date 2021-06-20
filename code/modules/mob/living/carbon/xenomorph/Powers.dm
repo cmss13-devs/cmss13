@@ -124,7 +124,7 @@
 			SPAN_XENONOTICE("You regurgitate some resin and shape it into \a [RC.construction_name][use_plasma ? " at the cost of a total [total_resin_cost] plasma" : ""]."), null, 5)
 		playsound(loc, "alien_resin_build", 25)
 
-	var/atom/new_resin = RC.build(current_turf, hivenumber)
+	var/atom/new_resin = RC.build(current_turf, hivenumber, src)
 	if(RC.max_per_xeno != RESIN_CONSTRUCTION_NO_MAX)
 		LAZYADD(built_structures[RC.build_path], new_resin)
 		RegisterSignal(new_resin, COMSIG_PARENT_QDELETING, .proc/remove_built_structure)

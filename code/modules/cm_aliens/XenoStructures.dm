@@ -19,6 +19,13 @@
 	anchored = 1
 	health = 200
 	unacidable = TRUE
+	var/should_track_build = FALSE
+	var/datum/cause_data/construction_data
+
+/obj/effect/alien/resin/Initialize(mapload, var/mob/builder)
+	. = ..()
+	if(istype(builder) && should_track_build)
+		construction_data = create_cause_data(initial(name), builder)
 
 /obj/effect/alien/resin/proc/healthcheck()
 	if(health <= 0)
@@ -101,6 +108,10 @@
 		healthcheck()
 	return ..()
 
+/obj/effect/alien/resin/proc/set_resin_builder(var/mob/M)
+	if(istype(M) && should_track_build)
+		construction_data = create_cause_data(initial(name), M)
+
 /obj/effect/alien/resin/sticky
 	name = "sticky resin"
 	desc = "A layer of disgusting sticky slime."
@@ -138,6 +149,7 @@
 	opacity = 0
 	health = HEALTH_RESIN_XENO_SPIKE
 	layer = RESIN_STRUCTURE_LAYER
+	should_track_build = TRUE
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/damage = 8
 	var/penetration = 50
@@ -166,7 +178,7 @@
 		return
 
 	H.apply_armoured_damage(damage, penetration = penetration, def_zone = pick(target_limbs))
-
+	H.last_damage_data = construction_data
 
 // Praetorian Sticky Resin spit uses this.
 /obj/effect/alien/resin/sticky/thin
@@ -370,6 +382,7 @@
 
 	health = HEALTH_RESIN_XENO_ACID_PILLAR
 	var/hivenumber = XENO_HIVE_NORMAL
+	should_track_build = TRUE
 	anchored = TRUE
 
 	var/firing_cooldown = 2 SECONDS

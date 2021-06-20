@@ -56,24 +56,25 @@
 
 	return TRUE
 
-/datum/resin_construction/proc/build(var/turf/T, var/hivenumber)
+/datum/resin_construction/proc/build(var/turf/T, var/hivenumber, var/builder)
 	return
 
 
 // Subtype encompassing all resin constructions that are of type /obj
-/datum/resin_construction/resin_obj/build(var/turf/T, var/hivenumber)
+/datum/resin_construction/resin_obj/build(var/turf/T, var/hivenumber, var/builder)
 	if (pass_hivenumber)
-		return new build_path(T, hivenumber)
+		return new build_path(T, hivenumber, builder)
 	return new build_path(T)
 
 
 // Subtype encompassing all resin constructions that are of type /turf
-/datum/resin_construction/resin_turf/build(var/turf/T, var/hivenumber)
+/datum/resin_construction/resin_turf/build(var/turf/T, var/hivenumber, var/builder)
 	T.PlaceOnTop(build_path)
 
 	var/turf/closed/wall/resin/W = T
 	if (istype(W) && pass_hivenumber)
 		W.hivenumber = hivenumber
+		W.set_resin_builder(builder)
 		set_hive_data(W, hivenumber)
 
 	return T

@@ -31,7 +31,7 @@
 	if(B.is_zoomed)
 		B.zoom_out()
 
-	B.viewsize = 13
+	B.viewsize = TRAPPER_VIEWRANGE
 	B.mutation_type = BOILER_TRAPPER
 	B.plasma_types -= PLASMA_NEUROTOXIN
 

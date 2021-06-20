@@ -925,8 +925,11 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_WARNING("Your [display_name] withstands the blow!"))
 		return
 
-	if((owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE) || owner.species.flags & SPECIAL_BONEBREAK || !owner.skills) //stops division by zero
+	if((owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE) || owner.species.flags & SPECIAL_BONEBREAK) //stops division by zero
 		bonebreak_probability = 0
+
+	if(!owner.skills)
+		bonebreak_probability = null
 
 	//if the chance was not set by what called fracture(), the endurance check is done instead
 	if(bonebreak_probability == null) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.

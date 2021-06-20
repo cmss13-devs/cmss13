@@ -813,7 +813,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-tomato"
 	plant_icon = "tomato"
 	harvest_repeat = 1
-	chems = list("vegetable" = list(1,10))
+	chems = list("vegetable" = list(1,10), "ketchup" = list(1,5))
 
 	lifespan = 25
 	maturation = 8
@@ -1277,7 +1277,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-corn"
 	products = list(/obj/item/reagent_container/food/snacks/grown/corn)
 	plant_icon = "corn"
-	chems = list("vegetable" = list(1,10))
+	chems = list("vegetable" = list(1,10), "cornoil" = list(1,5))
 
 	lifespan = 25
 	maturation = 8
@@ -1310,7 +1310,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/soybeans)
 	plant_icon = "soybean"
 	harvest_repeat = 1
-	chems = list("plantmatter" = list(1,20))
+	chems = list("plantmatter" = list(1,20), "soymilk" = list(1,10))
 
 	lifespan = 25
 	maturation = 4
@@ -1340,7 +1340,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-rice"
 	products = list(/obj/item/reagent_container/food/snacks/grown/ricestalk)
 	plant_icon = "rice"
-	chems = list("plantmatter" = list(1,25))
+	chems = list("plantmatter" = list(1,25), "rice" = list(1,10))
 
 	lifespan = 25
 	maturation = 6
@@ -1534,7 +1534,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/cherries)
 	plant_icon = "cherry"
 	harvest_repeat = 1
-	chems = list("fruit" = list(1,15), "sugar" = list(1,15))
+	chems = list("fruit" = list(1,15), "cherryjelly" = list(1,15))
 
 	lifespan = 50
 	maturation = 5

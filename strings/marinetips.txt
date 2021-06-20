@@ -35,10 +35,11 @@ Dragging a Nanomed onto yourself instantly gives a Health Analyzer report. Alway
 Splints slow you down. Remove them after your bones are healed by using the Remove Your Splints verb.
 Blood loss can lead to hunger, which can slow you down. Make sure you're always full after taking a beating.
 Resin structures are weaker to melee than they are to bullets. Take out your knives!
+You can grab items from second-level storage, such as a splint in a first-aid kit inside a satchel.
+Researchers can make pressurized canister pouches, which can contain up to 480 reagents, and contain custom injectors that can be easily used by privates.
 When fighting xenomorphs, don't aim for the head - It won't increase damage against anyone but your fellow marines.
 Don't forget to set the Anti-Aircraft Gun!
 Scavenging attachments from dead marines isn't bad practice, as long as you make sure they're actually dead first.
 When receiving a supply crate drop from requisitions, make sure to move the crate before opening it - Otherwise subsequent supply crates will be hidden beneath it!
 If a grenade comes your way, hit the deck! Lying down will reduce damage and let you dodge any shrapnel flying overhead.
 You can grab items from second-level storage, such as a splint in a first aid kit stored inside a satchel.
-If you're going to die, try dying somewhere in range of your buddies with your armour light activated so they can see it happen.

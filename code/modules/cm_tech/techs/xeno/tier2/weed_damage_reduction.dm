@@ -17,7 +17,7 @@
 	/// Amount to lose per second
 	var/point_drain_per_second = AMOUNT_PER_TIME(1, 1 MINUTES) // Drains 1 resource per 2 minute.
 	/// How much the drain scales up by depending on damage_mult var
-	var/point_drain_scale = 2.5
+	var/point_drain_scale = 3.5
 
 	var/next_toggle = 0
 	var/toggle_cooldown = 5 MINUTES

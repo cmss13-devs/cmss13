@@ -325,6 +325,21 @@
 	if(weapon_type)
 		new weapon_type(src)
 
+/obj/structure/closet/crate/empexplosives
+	name = "electromagnetic explosives crate"
+	desc = "An explosives crate, containing EMP grenades"
+	icon_state = "closed_explosives"
+	icon_opened = "open_explosives"
+	icon_closed = "closed_explosives"
+
+/obj/structure/closet/crate/empexplosives/Initialize()
+	. = ..()
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
+	new /obj/item/explosive/grenade/empgrenade(src)
 
 	/* * * * * * * * * * * * * *
 	 * Training weapon crates. *

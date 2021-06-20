@@ -45,7 +45,7 @@
 		healthcheck()
 
 /obj/structure/bed/nest/manual_unbuckle(mob/living/user)
-	if(!(buckled_mob && buckled_mob.buckled == src && (buckled_mob != user)))
+	if(!(buckled_mob && buckled_mob.buckled == src && buckled_mob != user))
 		return
 
 	if(user.stat || user.lying || user.is_mob_restrained())
@@ -62,6 +62,12 @@
 			to_chat(H, SPAN_XENOWARNING("You shouldn't interfere with the nest, leave that to the drones."))
 			return
 
+	if(ishuman(buckled_mob) && isXeno(user))
+		var/mob/living/carbon/human/H = buckled_mob
+		if(H.recently_nested)
+			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
+			return
+
 	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
 	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
 	SPAN_NOTICE("You hear squelching."))
@@ -69,13 +75,12 @@
 	if(ishuman(buckled_mob))
 		var/mob/living/carbon/human/H = buckled_mob
 		H.attack_log += "\[[time_stamp()]\]<font color='orange'>Unnested by [key_name(user)] at [get_location_in_text(H)]</font>"
-		H.start_nesting_cooldown()
 	unbuckle()
 	return
 
 /mob/living/carbon/human/proc/start_nesting_cooldown()
-	recently_unbuckled = 1
-	addtimer(VARSET_CALLBACK(src, recently_unbuckled, FALSE), 5 SECONDS)
+	recently_nested = TRUE
+	addtimer(VARSET_CALLBACK(src, recently_nested, FALSE), 5 SECONDS)
 
 /obj/structure/bed/nest/buckle_mob(mob/M as mob, mob/user as mob)
 	if(!ismob(M) || isXenoLarva(user) || (get_dist(src, user) > 1) || (M.loc != loc) || user.is_mob_restrained() || user.stat || user.lying || M.buckled || !iscarbon(user))
@@ -100,12 +105,6 @@
 	if(isYautja(M) && !force_nest)
 		to_chat(user, SPAN_WARNING("\The [M] seems to be wearing some kind of resin-resistant armor!"))
 		return
-
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.recently_unbuckled)
-			to_chat(user, SPAN_WARNING("[M] was recently unbuckled. Wait a bit."))
-			return
 
 	if(M == user)
 		return
@@ -141,20 +140,23 @@
 
 	do_buckle(M, user)
 	ADD_TRAIT(M, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
-	if(!M.mind || !ishuman(M))
+	
+	if(!ishuman(M))
 		return
 
 	//Disabling motion detectors and other stuff they might be carrying
 	var/mob/living/carbon/human/H = M
+	H.start_nesting_cooldown()
 	H.disable_special_flags()
 	H.disable_lights()
 	H.disable_special_items()
 
-	var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
-	if(choice == "Ghost")
-		// Ask to ghostize() so they can reenter, to leave mind and such intact
-		ghost_of_buckled_mob = M.ghostize(can_reenter_corpse = TRUE)
-		ghost_of_buckled_mob?.can_reenter_corpse = FALSE // Just don't for now
+	if(H.mind)
+		var/choice = alert(M, "You have no possibility of escaping unless freed by your fellow marines, do you wish to Ghost? If you are freed while ghosted, you will be given the choice to return to your body.", ,"Ghost", "Remain")
+		if(choice == "Ghost")
+			// Ask to ghostize() so they can reenter, to leave mind and such intact
+			ghost_of_buckled_mob = M.ghostize(can_reenter_corpse = TRUE)
+			ghost_of_buckled_mob?.can_reenter_corpse = FALSE // Just don't for now
 
 /obj/structure/bed/nest/send_buckling_message(mob/M, mob/user)
 	M.visible_message(SPAN_XENONOTICE("[user] secretes a thick, vile resin, securing [M] into [src]!"), \

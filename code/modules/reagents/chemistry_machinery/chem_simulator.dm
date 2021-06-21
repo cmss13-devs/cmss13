@@ -12,6 +12,9 @@
 #define SIMULATION_STAGE_5		5
 #define SIMULATION_STAGE_BEGIN	6
 
+//gets the max property level for amplification/relation at the current techtree level, equal to 6 at TL1 and 10 at TL2
+#define GET_MAX_TECH_LEVEL(T) 	T.tier?.tier*TECHTREE_LEVEL_MULTIPLIER + 2
+
 /obj/structure/machinery/chem_simulator
 	name = "Synthesis Simulator"
 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
@@ -542,11 +545,11 @@
 			if(target_property.category & PROPERTY_TYPE_UNADJUSTABLE)
 				status_bar = "TARGET PROPERTY CAN NOT BE SIMULATED"
 				return FALSE
-			T = GET_TREE(TREE_MARINE)
-			var/level_max = T.tier?.tier*TECHTREE_LEVEL_MULTIPLIER + 2 //6 at TL1, 10 at TL2, uncapped at TL3
-			if(mode == MODE_AMPLIFY && target_property.level >= level_max && T.tier?.tier < 3)
-				status_bar = "TARGET LEVEL CAN NOT BE SIMULATED AT CURRENT TECH LEVEL"
-	if(mode == MODE_RELATE)
+			if(mode == MODE_AMPLIFY)
+				T = GET_TREE(TREE_MARINE)
+				if(target_property.level >= GET_MAX_TECH_LEVEL(T) && T.tier?.tier < 3)
+					status_bar = "TECH LEVEL INSUFFICIENT FOR AMPLIFICATION"
+					return FALSE
 		if(target && length(target.data.properties) < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
 			return FALSE
@@ -565,6 +568,10 @@
 					if(reference_property.category & PROPERTY_TYPE_UNADJUSTABLE)
 						status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
 						return FALSE
+					T = GET_TREE(TREE_MARINE)
+					if((target_property.level >= GET_MAX_TECH_LEVEL(T)) && T.tier?.tier < 3)
+						status_bar = "PROPERTY LEVEL CAN NOT BE SIMULATED AT CURRENT TECH LEVEL"
+						return FALSE
 	if(mode == MODE_CREATE)
 		if(!LAZYLEN(creation_template))
 			status_bar = "TEMPLATE IS EMPTY"
@@ -574,12 +581,6 @@
 			return FALSE
 		if(creation_cost > chemical_data.rsc_credits)
 			status_bar = "INSUFFICIENT FUNDS"
-			return FALSE
-	T = GET_TREE(TREE_MARINE)
-	if(target && mode == MODE_AMPLIFY)
-		var/level_max = T.tier?.tier*TECHTREE_LEVEL_MULTIPLIER + 2 //6 at TL1, 10 at TL2, uncapped at TL3
-		if(mode == MODE_AMPLIFY && target_property.level >= level_max && T.tier?.tier < 3)
-			status_bar = "TECH LEVEL INSUFFICIENT FOR AMPLIFICATION"
 			return FALSE
 	else if(!target)
 		status_bar = "NO TARGET INSERTED"
@@ -743,3 +744,5 @@
 #undef MODE_SUPPRESS
 #undef MODE_RELATE
 #undef MODE_CREATE
+
+#undef GET_MAX_TECH_LEVEL

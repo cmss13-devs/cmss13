@@ -607,7 +607,7 @@ can cause issues with ammo types getting mixed up during the burst.
 						/obj/item/attachable/stock/mou53)
 	map_specific_decoration = TRUE
 	fire_delay_group = list(
-		FIRE_DELAY_GROUP_MOU = 1 SECONDS
+		FIRE_DELAY_GROUP_MOU = 1.5 SECONDS
 	)
 
 /obj/item/weapon/gun/shotgun/double/mou53/set_gun_attachment_offsets()

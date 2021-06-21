@@ -17,7 +17,7 @@
 	anchored = TRUE
 	repair_materials = list("metal" = 0.2, "plasteel" = 0.25)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
-	var/source_type
+	var/source_type = /obj/item/folding_barricade	//had to add this here, cause mapped in porta cades were unfoldable.
 
 /obj/structure/barricade/deployable/examine(mob/user)
 	..()

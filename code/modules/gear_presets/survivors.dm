@@ -135,7 +135,7 @@
 
 	..()
 
-//****************************************Doctor Survivors*************************************************************/
+// ---- Doctor Survivors
 
 /datum/equipment_preset/survivor/doctor
 	name = "Survivor - Doctor"

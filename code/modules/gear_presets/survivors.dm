@@ -26,7 +26,7 @@
 	if(H && H.client)
 		add_survivor_weapon(H)
 
-// ----- Scientist Survivor
+// ---- Scientist Survivors
 
 /datum/equipment_preset/survivor/scientist
 	name = "Survivor - Scientist"

@@ -136,11 +136,11 @@
 			M.AdjustStunned(4)
 			M.KnockDown(4)
 			if(!M.ear_deaf)
-				M.ear_deaf += 5 //Deafens them temporarily
+				M.AdjustEarDeafness(5) //Deafens them temporarily
 		else if(dist >= 5 && dist < 7)
 			M.AdjustStunned(3)
 			if(!M.ear_deaf)
-				M.ear_deaf += 2
+				M.AdjustEarDeafness(2)
 			to_chat(M, SPAN_DANGER("The roar shakes your body to the core, freezing you in place!"))
 
 	apply_cooldown()

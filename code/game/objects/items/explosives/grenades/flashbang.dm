@@ -90,7 +90,7 @@
 		else
 			M.Stun(10)
 			M.KnockDown(3)
-			M.ear_deaf = max(M.ear_deaf,15)
+			M.SetEarDeafness(max(M.ear_deaf,15))
 			if(!no_damage)
 				if((prob(14) || (M == src.loc && prob(70))))
 					M.ear_damage += rand(1, 10)
@@ -100,13 +100,13 @@
 	else if(get_dist(M, T) <= 5)
 		if(!trained_human)
 			M.Stun(8)
-			M.ear_deaf = max(M.ear_deaf,10)
+			M.SetEarDeafness(max(M.ear_deaf,10))
 			if(!no_damage)
 				M.ear_damage += rand(0, 3)
 
 	else if(!trained_human)
 		M.Stun(4)
-		M.ear_deaf = max(M.ear_deaf,5)
+		M.SetEarDeafness(max(M.ear_deaf,5))
 		if(!no_damage)
 			M.ear_damage += rand(0, 1)
 
@@ -214,7 +214,7 @@
 			if(get_dist(M, T) <= 4)
 				var/mob/living/carbon/Xenomorph/X = M
 				X.Daze(2)
-				X.ear_deaf = max(X.ear_deaf, 3)
+				X.SetEarDeafness(max(X.ear_deaf, 3))
 		else	//simple mobs?
 			M.Stun(5)
 			M.KnockDown(1)
@@ -263,24 +263,24 @@
 
 	switch(bang_effect)
 		if(1)
-			M.ear_deaf = max(M.ear_deaf, 2)
+			M.SetEarDeafness(max(M.ear_deaf, 2))
 		if(2)
 			M.Daze(2)
-			M.ear_deaf = max(M.ear_deaf, 3)
+			M.SetEarDeafness(max(M.ear_deaf, 3))
 		if(3)
 			M.flash_eyes(1, TRUE, /obj/screen/fullscreen/flash, 10)
 			M.Daze(5)
-			M.ear_deaf = max(M.ear_deaf, 5)
+			M.SetEarDeafness(max(M.ear_deaf, 5))
 		if(4)
 			M.flash_eyes(1, TRUE, /obj/screen/fullscreen/flash, 20)
 			M.Daze(5)
-			M.ear_deaf = max(M.ear_deaf, 7)
+			M.SetEarDeafness(max(M.ear_deaf, 7))
 			M.ear_damage += rand(1, 5)
 		if(5)
 			M.flash_eyes(1, TRUE, /obj/screen/fullscreen/flash, 50)
 			M.Daze(10)
 			M.KnockDown(5)
-			M.ear_deaf = max(M.ear_deaf, 10)
+			M.SetEarDeafness(max(M.ear_deaf, 10))
 			M.ear_damage += rand(1, 10)
 
 	var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]

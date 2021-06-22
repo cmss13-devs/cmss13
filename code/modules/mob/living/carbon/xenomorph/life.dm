@@ -175,7 +175,7 @@
 		else
 			see_in_dark = 8
 
-		ear_deaf = 0 //All this stuff is prob unnecessary
+		SetEarDeafness(0) //All this stuff is prob unnecessary
 		ear_damage = 0
 		eye_blind = 0
 

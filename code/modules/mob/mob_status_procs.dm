@@ -225,6 +225,33 @@
 	stuttering = max(stuttering + amount,0)
 	return
 
+/mob/proc/AdjustEarDeafness(amount)
+	var/prev_deaf = ear_deaf
+	ear_deaf = max(ear_deaf + amount, 0)
+	if(prev_deaf)
+		if(ear_deaf == 0)
+			on_deafness_loss()
+	else if(ear_deaf)
+		on_deafness_gain()
+
+
+/mob/proc/SetEarDeafness(amount)
+	var/prev_deaf = ear_deaf
+	ear_deaf = max(amount, 0)
+	if(prev_deaf)
+		if(ear_deaf == 0)
+			on_deafness_loss()
+	else if(ear_deaf)
+		on_deafness_gain()
+
+/mob/proc/on_deafness_gain()
+	to_chat(src, SPAN_WARNING("You notice you can't hear anything... you're deaf!"))
+	SEND_SIGNAL(src, COMSIG_MOB_DEAFENED)
+
+/mob/proc/on_deafness_loss()
+	to_chat(src, SPAN_WARNING("You start hearing things again!"))
+	SEND_SIGNAL(src, COMSIG_MOB_REGAINED_HEARING)
+
 /mob/proc/getBruteLoss()
 	return
 

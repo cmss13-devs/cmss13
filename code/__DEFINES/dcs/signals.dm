@@ -388,3 +388,8 @@
 #define COMSIG_WEEDNODE_GROWTH_COMPLETE "weednode_growth_complete"
 /// From /obj/effect/alien/weeds/proc/on_weed_expand()
 #define COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER "weednode_cannot_expand_further"
+
+//from /mob/proc/on_deafness_gain()
+#define COMSIG_MOB_DEAFENED "mob_deafened"
+//from /mob/proc/on_deafness_loss()
+#define COMSIG_MOB_REGAINED_HEARING "mob_regained_hearing"

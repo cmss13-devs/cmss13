@@ -128,7 +128,7 @@
 
 	if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
 		ear_damage += severity * 0.15
-		ear_deaf += severity * 0.5
+		AdjustEarDeafness(severity * 0.5)
 
 	var/knockdown_value = min( round( severity*0.1  ,1) ,10)
 	if(knockdown_value > 0)

@@ -90,7 +90,7 @@
 				if(21 to 30)//High level of EMP damage, unable to see, hear, or speak
 					eye_blind = 1
 					blinded = 1
-					ear_deaf = 1
+					SetEarDeafness(1)
 					silent = 1
 					if(!alert)//Sounds an alarm, but only once per 'level'
 						INVOKE_ASYNC(src, .proc/emote, "alarm")
@@ -102,7 +102,7 @@
 					alert = 0
 					blinded = 0
 					eye_blind = 0
-					ear_deaf = 0
+					SetEarDeafness(0)
 					silent = 0
 					emp_damage -= 1
 				if(11 to 19)//Moderate level of EMP damage, resulting in nearsightedness and ear damage

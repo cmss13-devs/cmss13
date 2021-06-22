@@ -1,4 +1,4 @@
-/datum/entity/player_entity/proc/show_statistics(mob/user, var/datum/entity/round_stats/viewing_round = round_statistics, var/update_data = FALSE)
+/datum/entity/player_entity/proc/show_statistics(mob/user, var/datum/entity/statistic/round/viewing_round = round_statistics, var/update_data = FALSE)
 	if(update_data)
 		update_panel_data(round_statistics)
 	ui_interact(user)
@@ -32,10 +32,10 @@
 /datum/entity/player_entity/proc/check_eye()
 	return
 
-/datum/entity/round_stats/proc/show_kill_feed(mob/user)
+/datum/entity/statistic/round/proc/show_kill_feed(mob/user)
 	ui_interact(user)
 
-/datum/entity/round_stats/proc/ui_interact(mob/user, ui_key = "kills", var/datum/nanoui/ui = null, var/force_open = 1)
+/datum/entity/statistic/round/proc/ui_interact(mob/user, ui_key = "kills", var/datum/nanoui/ui = null, var/force_open = 1)
 	ui = nanomanager.try_update_ui(user, src, ui_key, ui, death_data, force_open)
 
 	if(!ui)
@@ -44,14 +44,14 @@
 		ui.open()
 		ui.set_auto_update(1)
 
-/datum/entity/round_stats/proc/check_eye()
+/datum/entity/statistic/round/proc/check_eye()
 	return
 
 //*******************************************************
 //*******************PLAYER DATA*************************
 //*******************************************************
 
-/datum/entity/player_entity/proc/update_panel_data(var/datum/entity/round_stats/viewing_round = round_statistics)
+/datum/entity/player_entity/proc/update_panel_data(var/datum/entity/statistic/round/viewing_round = round_statistics)
 	data["current_time"] = worldtime2text()
 
 	if(viewing_round)
@@ -399,7 +399,7 @@
 //*******************ROUND DATA**************************
 //*******************************************************
 
-/datum/entity/round_stats/proc/update_panel_data()
+/datum/entity/statistic/round/proc/update_panel_data()
 	var/map_name
 	if(current_map)
 		map_name = current_map.name
@@ -699,8 +699,6 @@
 		"round_length" = new_round_length,
 		"round_hijack_time" = new_hijack_time,
 		"end_round_player_population" = end_round_player_population,
-		"defcon_level" = defcon_level,
-		"objective_points" = objective_points,
 		"total_projectiles_fired" = total_projectiles_fired,
 		"total_projectiles_hit" = total_projectiles_hit,
 		"total_projectiles_hit_human" = total_projectiles_hit_human,

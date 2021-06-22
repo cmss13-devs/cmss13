@@ -58,7 +58,6 @@
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
-	setup_round_stats()
 	for(var/i in GLOB.fog_blockers)
 		var/obj/effect/landmark/lv624/fog_blocker/FB = i
 		round_fog += new /obj/structure/blocker/fog(FB.loc)
@@ -302,24 +301,37 @@
 		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_xeno_victories += 1
+				round_statistics.current_map.total_xeno_majors += 1
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_marine_victories += 1
+				round_statistics.current_map.total_marine_majors += 1
 		if(MODE_INFESTATION_X_MINOR)
 			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
 			end_icon = "xeno_minor"
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_xeno_victories += 1
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_marine_victories += 1
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_draws += 1
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
 	if(round_statistics)
 		round_statistics.game_mode = name
 		round_statistics.round_length = world.time
+		round_statistics.round_result = round_finished
 		round_statistics.end_round_player_population = GLOB.clients.len
 
 		round_statistics.log_round_statistics()

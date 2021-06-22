@@ -9,7 +9,6 @@
 	to_world("<B>The current game mode is - Extended!</B>")
 
 /datum/game_mode/extended/pre_setup()
-	setup_round_stats()
 	roles_to_roll = RoleAuthority.roles_for_mode - (RoleAuthority.roles_for_mode & (ROLES_XENO|ROLES_WHITELISTED|ROLES_SPECIAL))
 
 	return ..()

@@ -234,8 +234,6 @@ SUBSYSTEM_DEF(ticker)
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		INVOKE_ASYNC(np, /mob/new_player.proc/new_player_panel_proc, TRUE)
 
-	begin_game_recording()
-
 	setup_economy()
 
 	shuttle_controller.setup_shuttle_docks()
@@ -248,12 +246,15 @@ SUBSYSTEM_DEF(ticker)
 	set waitfor = FALSE
 	mode.initialize_emergency_calls()
 	mode.post_setup()
+	mode.setup_round_stats()
+
+	begin_game_recording()
 
 	// Switch back to default automatically
 	save_mode(CONFIG_GET(string/gamemode_default))
 
 	if(round_statistics)
-		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.name]</B>")))
+		to_chat_spaced(world, html = FONT_SIZE_BIG(SPAN_ROLE_BODY("<B>Welcome to [round_statistics.round_name]</B>")))
 
 	supply_controller.process() 		//Start the supply shuttle regenerating points -- TLE
 

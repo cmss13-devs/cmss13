@@ -11,7 +11,7 @@
  *
  */
 
-var/global/datum/entity/round_stats/round_statistics
+var/global/datum/entity/statistic/round/round_statistics
 var/global/list/datum/entity/player_entity/player_entities = list()
 var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracking_ids to tacbinos and signal flares
 
@@ -29,7 +29,7 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/is_in_endgame = FALSE //Set it to TRUE when we trigger DELTA alert or dropship crashes
 	var/obj/structure/machinery/computer/shuttle_control/active_lz = null
 
-	var/datum/entity/round_stats/round_stats = null
+	var/datum/entity/statistic/round/round_stats = null
 
 	var/list/roles_to_roll
 
@@ -61,7 +61,6 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	SHOULD_CALL_PARENT(TRUE)
 	setup_structures()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
-	setup_round_stats()
 	return 1
 
 /datum/game_mode/proc/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
@@ -274,20 +273,3 @@ proc/display_roundstart_logout_report()
 		and before taking extreme actions, please try to also contact the administration! \
 		Think through your actions and make the roleplay immersive! <b>Please remember all \
 		rules aside from those without explicit exceptions apply to antagonists.</b>"
-
-/datum/game_mode/proc/setup_round_stats()
-	if(!round_stats)
-		var/operation_name
-		operation_name = "[pick(operation_titles)]"
-		operation_name += " [pick(operation_prefixes)]"
-		operation_name += "-[pick(operation_postfixes)]"
-		round_stats = new()
-		round_stats.name = operation_name
-		round_stats.real_time_start = world.realtime
-		var/datum/entity/map_stats/new_map = new()
-		new_map.name = SSmapping.configs[GROUND_MAP].map_name
-		new_map.linked_round = round_stats
-		new_map.death_stats_list = round_stats.death_stats_list
-		round_stats.game_mode = name
-		round_stats.current_map = new_map
-		round_statistics = round_stats

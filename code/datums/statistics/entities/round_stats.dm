@@ -1,30 +1,16 @@
-/datum/entity/round_stats
-	var/name = "round"
-	var/datum/entity/map_stats/current_map = null // reference to current map
-	var/list/datum/entity/statistic/death/death_stats_list = list()
+/datum/entity/statistic/round
+	var/round_id
 
-	var/game_mode = null
+	var/round_name
+	var/map_name
+	var/game_mode
 
 	var/real_time_start = 0 // GMT-based 11:04
 	var/real_time_end = 0 // GMT-based 12:54
-	var/round_length = null // current-time minus round-start time
-	var/round_hijack_time = null //hijack time in-round
-	var/round_result = null // "xeno_minor"
+	var/round_length = 0 // current-time minus round-start time
+	var/round_hijack_time = 0 //hijack time in-round
+	var/round_result // "xeno_minor"
 	var/end_round_player_population = 0
-
-	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
-
-	var/list/participants = list() // types of /datum/entity/statistic, "[human.faction]" = 10, "xeno" = 2
-	var/list/final_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
-	var/list/hijack_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
-	var/list/total_deaths = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
-	var/list/caste_stats_list = list() // list of types /datum/entity/player_stats/caste
-	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
-	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
-
-	var/defcon_level = 5
-	var/objective_points = 0
-	var/total_objective_points = 0
 
 	var/total_huggers_applied = 0
 	var/total_larva_burst = 0
@@ -37,11 +23,81 @@
 	var/total_friendly_fire_kills = 0
 	var/total_slashes = 0
 
+	// untracked data
+	var/datum/entity/statistic/map/current_map = null // reference to current map
+	var/list/datum/entity/statistic/death/death_stats_list = list()
+
+	var/list/abilities_used = list() // types of /datum/entity/statistic, "tail sweep" = 10, "screech" = 2
+
+	var/list/participants = list() // types of /datum/entity/statistic, "[human.faction]" = 10, "xeno" = 2
+	var/list/final_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
+	var/list/hijack_participants = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
+	var/list/total_deaths = list() // types of /datum/entity/statistic, "[human.faction]" = 0, "xeno" = 45
+	var/list/caste_stats_list = list() // list of types /datum/entity/player_stats/caste
+	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
+	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
+
 	// nanoui data
 	var/round_data[0]
 	var/death_data[0]
 
-/datum/entity/round_stats/proc/setup_job_stats(var/job, var/noteworthy = TRUE)
+/datum/entity_meta/statistic_round
+	entity_type = /datum/entity/statistic/round
+	table_name = "rounds"
+	key_field = "round_id"
+	field_types = list(
+		"round_id" = DB_FIELDTYPE_BIGINT,
+
+		"round_name" = DB_FIELDTYPE_STRING_LARGE,
+		"map_name" = DB_FIELDTYPE_STRING_LARGE,
+		"game_mode" = DB_FIELDTYPE_STRING_LARGE,
+
+		"real_time_start" = DB_FIELDTYPE_BIGINT,
+		"real_time_end" = DB_FIELDTYPE_BIGINT,
+		"round_hijack_time" = DB_FIELDTYPE_BIGINT,
+		"round_result" = DB_FIELDTYPE_STRING_MEDIUM,
+		"end_round_player_population" = DB_FIELDTYPE_INT,
+
+		"total_huggers_applied" = DB_FIELDTYPE_INT,
+		"total_larva_burst" = DB_FIELDTYPE_INT,
+
+		"total_projectiles_fired" = DB_FIELDTYPE_INT,
+		"total_projectiles_hit" = DB_FIELDTYPE_INT,
+		"total_projectiles_hit_human" = DB_FIELDTYPE_INT,
+		"total_projectiles_hit_xeno" = DB_FIELDTYPE_INT,
+		"total_friendly_fire_instances" = DB_FIELDTYPE_INT,
+		"total_slashes" = DB_FIELDTYPE_INT
+	)
+
+/datum/game_mode/proc/setup_round_stats()
+	if(!round_stats)
+		var/datum/entity/mc_round/mc_round = SSentity_manager.select(/datum/entity/mc_round)
+		var/operation_name
+		operation_name = "[pick(operation_titles)]"
+		operation_name += " [pick(operation_prefixes)]"
+		operation_name += "-[pick(operation_postfixes)]"
+
+		// Round stats
+		round_stats = DB_ENTITY(/datum/entity/statistic/round)
+		round_stats.round_name = operation_name
+		round_stats.round_id = mc_round.id
+		round_stats.map_name = SSmapping.configs[GROUND_MAP].map_name
+		round_stats.game_mode = name
+		round_stats.real_time_start = world.realtime
+		round_stats.save()
+
+		// Setup the global reference
+		round_statistics = round_stats
+
+		// Map stats
+		var/datum/entity/statistic/map/new_map = DB_EKEY(/datum/entity/statistic/map, SSmapping.configs[GROUND_MAP].map_name)
+		new_map.total_rounds += 1
+		new_map.save()
+
+		// Connect map to round
+		round_stats.current_map = new_map
+
+/datum/entity/statistic/round/proc/setup_job_stats(var/job, var/noteworthy = TRUE)
 	if(!job)
 		return
 	var/job_key = strip_improper(job)
@@ -58,7 +114,7 @@
 	job_stats_list["[job_key]"] = new_stat
 	return new_stat
 
-/datum/entity/round_stats/proc/setup_weapon_stats(var/weapon, var/noteworthy = TRUE)
+/datum/entity/statistic/round/proc/setup_weapon_stats(var/weapon, var/noteworthy = TRUE)
 	if(!weapon)
 		return
 	var/weapon_key = strip_improper(weapon)
@@ -74,7 +130,7 @@
 	weapon_stats_list["[weapon_key]"] = new_stat
 	return new_stat
 
-/datum/entity/round_stats/proc/setup_caste_stats(var/caste, var/noteworthy = TRUE)
+/datum/entity/statistic/round/proc/setup_caste_stats(var/caste, var/noteworthy = TRUE)
 	if(!caste)
 		return
 	var/caste_key = strip_improper(caste)
@@ -91,7 +147,7 @@
 	caste_stats_list["[caste_key]"] = new_stat
 	return new_stat
 
-/datum/entity/round_stats/proc/setup_ability(var/ability)
+/datum/entity/statistic/round/proc/setup_ability(var/ability)
 	if(!ability)
 		return
 	var/ability_key = strip_improper(ability)
@@ -103,7 +159,7 @@
 	abilities_used["[ability_key]"] = S
 	return S
 
-/datum/entity/round_stats/proc/recalculate_nemesis()
+/datum/entity/statistic/round/proc/recalculate_nemesis()
 	for(var/caste_statistic in caste_stats_list)
 		var/datum/entity/player_stats/caste/caste_entity = caste_stats_list[caste_statistic]
 		caste_entity.recalculate_nemesis()
@@ -111,11 +167,11 @@
 		var/datum/entity/player_stats/job/job_entity = job_stats_list[job_statistic]
 		job_entity.recalculate_nemesis()
 
-/datum/entity/round_stats/proc/track_ability_usage(var/ability, var/amount = 1)
+/datum/entity/statistic/round/proc/track_ability_usage(var/ability, var/amount = 1)
 	var/datum/entity/statistic/S = setup_ability(ability)
 	S.value += amount
 
-/datum/entity/round_stats/proc/setup_faction(var/faction)
+/datum/entity/statistic/round/proc/setup_faction(var/faction)
 	if(!faction)
 		return
 	var/faction_key = strip_improper(faction)
@@ -140,7 +196,7 @@
 		S.value = 0
 		total_deaths["[faction_key]"] = S
 
-/datum/entity/round_stats/proc/track_new_participant(var/faction, var/amount = 1)
+/datum/entity/statistic/round/proc/track_new_participant(var/faction, var/amount = 1)
 	if(!faction)
 		return
 	if(!participants["[faction]"])
@@ -148,7 +204,7 @@
 	var/datum/entity/statistic/S = participants["[faction]"]
 	S.value += amount
 
-/datum/entity/round_stats/proc/track_final_participant(var/faction, var/amount = 1)
+/datum/entity/statistic/round/proc/track_final_participant(var/faction, var/amount = 1)
 	if(!faction)
 		return
 	if(!final_participants["[faction]"])
@@ -156,14 +212,17 @@
 	var/datum/entity/statistic/S = final_participants["[faction]"]
 	S.value += amount
 
-/datum/entity/round_stats/proc/track_round_end()
+/datum/entity/statistic/round/proc/track_round_end()
 	real_time_end = world.realtime
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/M = i
 		if(M.mind)
 			track_final_participant(M.faction)
 
-/datum/entity/round_stats/proc/track_hijack_participant(var/faction, var/amount = 1)
+	save()
+	detach()
+
+/datum/entity/statistic/round/proc/track_hijack_participant(var/faction, var/amount = 1)
 	if(!faction)
 		return
 	if(!hijack_participants["[faction]"])
@@ -171,14 +230,19 @@
 	var/datum/entity/statistic/S = hijack_participants["[faction]"]
 	S.value += amount
 
-/datum/entity/round_stats/proc/track_hijack()
+/datum/entity/statistic/round/proc/track_hijack()
 	for(var/i in GLOB.alive_mob_list)
 		var/mob/M = i
 		if(M.mind)
 			track_hijack_participant(M.faction)
 	round_hijack_time = world.time
+	save()
 
-/datum/entity/round_stats/proc/track_dead_participant(var/faction, var/amount = 1)
+	if(current_map)
+		current_map.total_hijacks += 1
+		current_map.save()
+
+/datum/entity/statistic/round/proc/track_dead_participant(var/faction, var/amount = 1)
 	if(!faction)
 		return
 	if(!total_deaths["[faction]"])
@@ -186,7 +250,7 @@
 	var/datum/entity/statistic/S = total_deaths["[faction]"]
 	S.value += amount
 
-/datum/entity/round_stats/proc/track_death(var/datum/entity/statistic/death/new_death)
+/datum/entity/statistic/round/proc/track_death(var/datum/entity/statistic/death/new_death)
 	if(new_death)
 		death_stats_list.Insert(1, new_death)
 		var/list/damage_list = list()
@@ -229,7 +293,7 @@
 		death_data["death_stats_list"] = new_death_list
 	track_dead_participant(new_death.faction_name)
 
-/datum/entity/round_stats/proc/log_round_statistics()
+/datum/entity/statistic/round/proc/log_round_statistics()
 	if(!round_stats)
 		return
 	var/total_xenos_created = 0
@@ -296,12 +360,6 @@
 	stats += "Total shots fired: [total_projectiles_fired]\n"
 	stats += "Total friendly fire instances: [total_friendly_fire_instances]\n"
 	stats += "Total friendly fire kills: [total_friendly_fire_kills]\n"
-
-	stats += "DEFCON level: [defcon_level]\n"
-	stats += "Objective points earned: [objective_points]\n"
-	stats += "Objective points total: [total_objective_points]\n"
-
-	//stats += ": []\n"
 
 	stats += "Marines remaining: [end_of_round_marines]\n"
 	stats += "Xenos remaining: [end_of_round_xenos]\n"

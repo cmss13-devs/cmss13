@@ -26,7 +26,11 @@
 	if(H && H.client)
 		add_survivor_weapon(H)
 
+<<<<<<< HEAD
 // ----- Scientist Survivor
+=======
+// ---- Scientist Survivors
+>>>>>>> survivor_reorganization
 
 /datum/equipment_preset/survivor/scientist
 	name = "Survivor - Scientist"
@@ -125,7 +129,11 @@
 
 	..()
 
+<<<<<<< HEAD
 // ----- Doctor Survivor
+=======
+// ---- Doctor Survivors
+>>>>>>> survivor_reorganization
 
 /datum/equipment_preset/survivor/doctor
 	name = "Survivor - Doctor"

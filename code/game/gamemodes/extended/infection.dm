@@ -14,7 +14,6 @@
 	to_world("<B>Don't ahelp asking for specific details, you won't get them.</B>")
 
 /datum/game_mode/infection/pre_setup()
-	setup_round_stats()
 	return ..()
 
 /datum/game_mode/infection/post_setup()

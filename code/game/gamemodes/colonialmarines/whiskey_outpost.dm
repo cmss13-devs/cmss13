@@ -248,6 +248,9 @@
 		world << sound('sound/misc/Game_Over_Man.ogg')
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
+			if(round_statistics.current_map)
+				round_statistics.current_map.total_xeno_victories += 1
+				round_statistics.current_map.total_xeno_majors += 1
 
 	else if(finished == 2)
 		log_game("Round end result - marines won")
@@ -258,6 +261,9 @@
 		world << sound('sound/misc/hell_march.ogg')
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
+			if(round_statistics.current_map)
+				round_statistics.current_map.total_marine_victories += 1
+				round_statistics.current_map.total_marine_majors += 1
 
 	else
 		log_game("Round end result - no winners")

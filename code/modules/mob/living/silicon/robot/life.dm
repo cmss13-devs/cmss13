@@ -118,7 +118,7 @@
 	if ((src.sdisabilities & DISABILITY_BLIND))
 		src.blinded = 1
 	if ((src.sdisabilities & DISABILITY_DEAF))
-		src.ear_deaf = 1
+		SetEarDeafness(1)
 
 	if (src.eye_blurry > 0)
 		src.eye_blurry--

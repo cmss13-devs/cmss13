@@ -344,7 +344,7 @@
 	var/effect_amt = round(6 + amount*6)
 
 	M.apply_damage(9, OXY) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
-	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
+	M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
 	M.eye_blurry = max(M.eye_blurry, effect_amt)
@@ -397,7 +397,7 @@
 	var/effect_amt = round(6 + amount*6)
 
 	M.apply_damage(9, OXY) // MUCH harsher
-	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
+	M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
 	M.eye_blind = max(M.eye_blind, round(effect_amt/3))

@@ -180,7 +180,7 @@
 	blinded = 0
 	eye_blind = 0
 	eye_blurry = 0
-	ear_deaf = 0
+	SetEarDeafness(0)
 	ear_damage = 0
 	paralyzed = 0
 	confused = 0

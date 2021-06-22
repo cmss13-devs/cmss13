@@ -52,7 +52,7 @@ var/global/list/medal_awards = list()
 	if(recipient_ckey)
 		var/datum/entity/player_entity/P = setup_player_entity(recipient_ckey)
 		if(P)
-			P.track_medal_earned(medal_type, chosen_recipient, recipient_rank, citation)
+			P.track_medal_earned(medal_type, chosen_recipient, recipient_rank, citation, usr)
 
 	if(medal_location)
 		var/obj/item/clothing/accessory/medal/MD

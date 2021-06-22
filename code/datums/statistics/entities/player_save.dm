@@ -102,14 +102,6 @@
 				new_niche_stat_list["[new_niche_stat.name]"] = new_niche_stat
 			human_stats.niche_stats = new_niche_stat_list
 
-		if(human_save["medal_list"])
-			var/save_medal_list = human_save["medal_list"]
-			var/list/new_medal_list = new()
-			for(var/save_medal in save_medal_list)
-				var/datum/entity/medal_stats/new_medal = new(src, save_medal["medal_type"], save_medal["recipient"], save_medal["recipient_job"], save_medal["citation"])
-				new_medal_list += new_medal
-			human_stats.medal_list = new_medal_list
-
 		if(human_save["weapon_stats_list"])
 			var/save_weapon_list = human_save["weapon_stats_list"]
 			var/list/new_weapon_list = new()

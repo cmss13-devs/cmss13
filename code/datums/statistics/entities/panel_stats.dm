@@ -95,12 +95,13 @@
 			var/datum/entity/statistic/S = H.niche_stats[iteration]
 			niche_stats_list += list(list("name" = S.name, "value" = S.value))
 
-		for(var/datum/entity/medal_stats/S in H.medal_list)
+		for(var/datum/entity/statistic/medal/S in H.medal_list)
 			medal_list += list(list(
 				"medal_type" = sanitize(S.medal_type),
-				"recipient" = sanitize(S.recipient),
-				"recipient_job" = sanitize(S.recipient_job),
-				"citation" = sanitize(S.citation)
+				"recipient" = sanitize(S.recipient_name),
+				"recipient_job" = sanitize(S.recipient_role),
+				"citation" = sanitize(S.citation),
+				"giver" = sanitize(S.giver_name)
 			))
 
 		for(var/datum/entity/statistic/death/S in H.death_list)

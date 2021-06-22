@@ -8,7 +8,7 @@
 	var/datum/entity/weapon_stats/top_weapon = null // reference to /datum/entity/weapon_stats (like tac-shotty)
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
-	var/list/medal_list = list() // list of all medals earned
+	var/list/datum/entity/statistic/medal/medal_list = list() // list of all medals earned
 
 /datum/entity/player_stats/human/get_playtime(var/type)
 	if(!type)

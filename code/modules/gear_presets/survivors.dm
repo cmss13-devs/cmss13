@@ -26,7 +26,7 @@
 	if(H && H.client)
 		add_survivor_weapon(H)
 
-// ---- Scientist Survivors
+// ----- Scientist Survivor
 
 /datum/equipment_preset/survivor/scientist
 	name = "Survivor - Scientist"
@@ -125,7 +125,7 @@
 
 	..()
 
-// ---- Doctor Survivors
+// ----- Doctor Survivor
 
 /datum/equipment_preset/survivor/doctor
 	name = "Survivor - Doctor"
@@ -726,7 +726,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/yellow(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/uzi(H), WEAR_R_HAND) //funny cargonia meme hahah i also toss you into the air and shoot you with my double UZIs//
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smg/uzi(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/uzi(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/uzi(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/uzi(H), WEAR_IN_BACK)
@@ -947,7 +947,7 @@
 
 	..()
 
-// ----- CL Survivors
+// ----- CL Survivor
 
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason
 	name = "Survivor - Interstellar Commerce Commission Liaison"
@@ -987,7 +987,7 @@
 
 	..()
 
-// ----- Roughneck Survivors
+// ----- Roughneck Survivor
 
 /datum/equipment_preset/survivor/roughneck
 	name = "Survivor - Roughneck Rifle"
@@ -1032,7 +1032,7 @@
 
 	..()
 
-// ----- Interstellar Human Rights Survivors
+// ----- Interstellar Human Rights Survivor
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer
 	name = "Survivor - Interstellar Human Rights Observer"

@@ -3239,7 +3239,7 @@
 	name = "\improper MRE component"
 	desc = "A package from a Meal Ready-to-Eat, property of the US Colonial Marines. Contains a part of a meal, prepared for field consumption."
 	package = 1
-	bitesize = 1
+	bitesize = 5
 	icon_state = "entree"
 	var/flavor = "boneless pork ribs"//default value
 
@@ -3253,13 +3253,13 @@
 		playsound(loc,"rip", 15, 1)
 
 		name = "\improper" + flavor
-		desc = "The contents of a USCM Standard issue MRE. This one is " + flavor + "."
+		desc = "The contents of a USCM Standard issue MRE. This one is [flavor]."
 		icon_state = flavor
 		package = 0
 		return
 	..()
 /obj/item/reagent_container/food/snacks/packaged_meal/proc/determinetype(newflavor)
-	name = "\improper MRE component" + " (" + newflavor + ")"
+	name = "\improper MRE component ([newflavor])"
 	flavor = newflavor
 
 	switch(newflavor)
@@ -3280,5 +3280,3 @@
 			reagents.add_reagent("nutriment", 2)
 			reagents.add_reagent("sugar", 2)
 			reagents.add_reagent("coco", 1)
-
-

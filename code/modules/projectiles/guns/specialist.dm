@@ -710,12 +710,19 @@
 	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
 	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 
+/obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_PMC
+
 
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/dirty/elite
 	name = "\improper M56T 'Terminator' smartgun"
 	desc = "The actual firearm in the 4-piece M56T Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
 
+/obj/item/weapon/gun/smartgun/dirty/elite/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_WY_DEATHSQUAD
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()

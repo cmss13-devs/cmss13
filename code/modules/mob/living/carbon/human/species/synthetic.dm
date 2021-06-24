@@ -9,6 +9,7 @@
 	stamina_type = /datum/stamina/none
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG)
 	rarity_value = 2
+	insulated = TRUE
 
 	total_health = 150 //more health than regular humans
 
@@ -72,7 +73,6 @@
 	rarity_value = 1.5
 	slowdown = 0.45
 	total_health = 200 //But more durable
-	insulated = 1
 
 	hair_color = "#000000"
 

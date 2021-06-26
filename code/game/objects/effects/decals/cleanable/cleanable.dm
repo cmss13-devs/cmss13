@@ -2,16 +2,25 @@ var/global/list/cleanable_decal_cache = list()
 
 /obj/effect/decal/cleanable
 	var/list/random_icon_states = list()
-	var/obj/structure/machinery/bot/cleanbot/targeted_by = null			// Used so cleanbots can't claim a mess.
-	var/cleanable_type = CLEANABLE_MISC // What kind of cleanable is this
+	/// Used so cleanbots can't claim a mess.
+	var/obj/structure/machinery/bot/cleanbot/targeted_by = null
+	var/cleanable_type = CLEANABLE_MISC
 	var/overlay_on_initialize = TRUE
-	/// The overlayed image
+	/// A reference to the image overlayed on a turf
 	var/image/overlayed_image
 	/// Whether to cache the overlayed image or not
 	var/cache_overlay = TRUE
-	/// The turf that the cleanable is on,
-	/// whether overlayed or physically on top of
+	/**
+	 * The turf that the cleanable is on,
+	 * whether overlayed or physically on top of
+	 */
 	var/turf/cleanable_turf
+	/**
+	 * Whether this cleanable has had its overlays and
+	 * refs on turfs cleaned up
+	 */
+	var/cleaned_up = FALSE
+
 	garbage = TRUE
 
 /obj/effect/decal/cleanable/Initialize(mapload, ...)
@@ -30,6 +39,9 @@ var/global/list/cleanable_decal_cache = list()
 	place_cleanable(T, overlay_on_initialize)
 
 /obj/effect/decal/cleanable/Destroy()
+	if(!cleaned_up)
+		cleanup_cleanable()
+
 	random_icon_states = null
 	if(targeted_by)
 		if(targeted_by.target == src)
@@ -53,16 +65,20 @@ var/global/list/cleanable_decal_cache = list()
 	var/obj/effect/decal/cleanable/C = LAZYACCESS(T.cleanables, cleanable_type)
 	if(C)
 		C.cleanup_cleanable()
+	cleaned_up = FALSE
 	LAZYSET(T.cleanables, cleanable_type, src)
 	cleanable_turf = T
 	if(overlayed)
 		create_overlay()
 
 /obj/effect/decal/cleanable/proc/cleanup_cleanable()
+	cleaned_up = TRUE
+	if(!cleanable_turf)
+		return
 	if(overlayed_image)
 		cleanable_turf.overlays -= overlayed_image
 		overlayed_image = null
-	if(!length(cleanable_turf?.cleanables[cleanable_type]))
+	if(!length(cleanable_turf.cleanables[cleanable_type]))
 		return
 	QDEL_NULL(cleanable_turf.cleanables[cleanable_type])
 	LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)

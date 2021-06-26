@@ -111,15 +111,17 @@
 /obj/structure/machinery/camera/autoname/lz_camera
 	name = "landing zone camera"
 	invuln = TRUE
-	icon_state = ""
+	icon_state = "editor_icon"//for the map editor
 	mouse_opacity = 0
 	network = list("landing zones")
+	invisibility = 101 //fuck you init()
 
 	emp_act(severity)
 		return //immune to EMPs, just in case
 
 	ex_act()
 		return
+
 
 
 

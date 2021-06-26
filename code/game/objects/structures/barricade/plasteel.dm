@@ -24,13 +24,14 @@
 	var/busy = 0 //Standard busy check
 	var/linked = 0
 	var/recentlyflipped = FALSE
+	var/hasconnectionoverlay = TRUE
 
 /obj/structure/barricade/plasteel/update_icon()
 	..()
 	if(linked)
 		for(var/direction in cardinal)
 			for(var/obj/structure/barricade/plasteel/cade in get_step(src, direction))
-				if(((dir & (NORTH|SOUTH) && get_dir(src, cade) & (EAST|WEST)) || (dir & (EAST|WEST) && get_dir(src, cade) & (NORTH|SOUTH))) && dir == cade.dir && cade.linked && cade.closed == src.closed)
+				if(((dir & (NORTH|SOUTH) && get_dir(src, cade) & (EAST|WEST)) || (dir & (EAST|WEST) && get_dir(src, cade) & (NORTH|SOUTH))) && dir == cade.dir && cade.linked && cade.closed == src.closed && hasconnectionoverlay)
 					if(closed)
 						overlays += image('icons/obj/structures/barricades.dmi', icon_state = "[src.barricade_type]_closed_connection_[get_dir(src, cade)]")
 					else

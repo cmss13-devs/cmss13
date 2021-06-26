@@ -247,6 +247,13 @@
 	basestate = "kutjevo_window_alt"
 	reinforced = TRUE
 
+//Shivas Snowball (Ice v3) frame
+
+/obj/structure/window_frame/shiva
+	icon = 'icons/turf/walls/ice_colony/shiva_windows.dmi'
+	icon_state = "shiva_window0_frame"
+	basestate = "shiva_window"
+
 //Solaris frames
 
 /obj/structure/window_frame/solaris

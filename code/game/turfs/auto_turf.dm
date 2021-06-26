@@ -97,6 +97,28 @@
 	variant = 1
 	variant_prefix_name = "rocky"
 
+//Ice Colony perma frost
+/turf/open/auto_turf/ice
+	name = "auto-ice"
+	icon = 'icons/turf/floors/auto_ice.dmi'
+	icon_state = "ice_0"
+	icon_prefix = "ice"
+	layer_name = list("cracked permafrost","permafrost","glacial permafrost","warn a coder","warn a coder")
+
+/turf/open/auto_turf/ice/get_dirt_type()
+	return NO_DIRT
+/turf/open/auto_turf/ice/layer0 //still have to manually define the layers for the editor
+	icon_state = "ice_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/ice/layer1
+	icon_state = "ice_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/ice/layer2
+	icon_state = "ice_2"
+	bleed_layer = 2
+
 //Ice colony snow
 /turf/open/auto_turf/snow
 	name = "auto-snow"

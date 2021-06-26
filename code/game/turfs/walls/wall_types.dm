@@ -609,6 +609,61 @@
 	desc = "Dusty worn down walls that were once built to last. This one is indestructable."
 	hull = 1
 
+//ICE COLONY, AKA SHIVA'S SNOWBALL TOBLERONE WALLS
+/turf/closed/wall/shiva
+	icon = 'icons/turf/walls/ice_colony/shiva_turfs.dmi'
+
+/turf/closed/wall/shiva/ice
+	name = "black ice sabs"
+	icon_state = "shiva_ice"
+	desc = "Slabs on slabs of dirty black ice crusted over ancient rock formations. The perma frost fluctuates between 20in and 12in during the Summer months."
+	walltype = WALL_SHIVA_ICE //Not a metal wall
+	hull = 1 //Can't break this ice.
+
+/turf/closed/wall/strata_ice/ex_act(severity)
+	return
+
+/turf/closed/wall/shiva/prefabricated
+	name = "prefabricated structure wall"
+	icon_state = "shiva_fab"
+	desc = "This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UA ballistics vests, USCM and UPP uniforms. These walls are pulled taught and have been reinforced into a more permanent structure."
+	walltype = WALL_SHIVA_FAB
+	damage_cap = HEALTH_WALL
+
+/turf/closed/wall/shiva/prefabricated/reinforced
+	name = "reinforced prefabricated structure wall"
+	icon_state = "shiva_fab_r"
+	desc = "This structure is made of metal support rods. The poly-kevlon has been replaced with sheet metal, reinforcing it."
+	walltype = WALL_SHIVA_FAB_R
+	damage_cap = HEALTH_WALL + HEALTH_WALL_XENO_THICK
+
+/turf/closed/wall/shiva/prefabricated/reinforced/hull
+	name = "reinforced prefabricated structure wall"
+	icon_state = "shiva_fab_r_h"
+	desc = "It cannot be destroyed by any means you have available. Perhaps praying to the gods may help."
+	walltype = WALL_SHIVA_FAB_R
+
+/turf/closed/wall/shiva/prefabricated/orange
+	icon_state = "shiva_fab_oj"
+	walltype = WALL_SHIVA_FAB_ORANGE
+
+/turf/closed/wall/shiva/prefabricated/blue
+	icon_state = "shiva_fab_blu"
+	walltype = WALL_SHIVA_FAB_BLUE
+
+/turf/closed/wall/shiva/prefabricated/pink
+	icon_state = "shiva_fab_pnk"
+	walltype = WALL_SHIVA_FAB_PINK
+
+/turf/closed/wall/shiva/prefabricated/white
+	icon_state = "shiva_fab_wht"
+	walltype = WALL_SHIVA_FAB_WHITE
+
+/turf/closed/wall/shiva/prefabricated/red
+	icon_state = "shiva_fab_red"
+	walltype = WALL_SHIVA_FAB_RED
+
+
 //Xenomorph's Resin Walls
 
 /turf/closed/wall/resin

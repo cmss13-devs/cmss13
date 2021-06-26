@@ -4,7 +4,7 @@
 	icon = 'icons/obj/structures/handrail.dmi'
 	icon_state = "handrail_a_0"
 	barricade_type = "handrail"
-	health = 30 
+	health = 30
 	maxhealth = 30
 	climb_delay = CLIMB_DELAY_SHORT
 	stack_type = /obj/item/stack/sheet/metal
@@ -15,17 +15,17 @@
 	can_wire = FALSE
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
-	var/build_state = BARRICADE_BSTATE_SECURED 
+	var/build_state = BARRICADE_BSTATE_SECURED
 	var/reinforced = FALSE	//Reinforced to be a cade or not
 
 /obj/structure/barricade/handrail/update_icon()
 	overlays.Cut()
 	switch(dir)
-		if(SOUTH) 
+		if(SOUTH)
 			layer = ABOVE_MOB_LAYER
-		else if(NORTH) 
+		else if(NORTH)
 			layer = initial(layer) - 0.01
-		else 
+		else
 			layer = initial(layer)
 	if(!anchored)
 		layer = initial(layer)
@@ -34,7 +34,7 @@
 			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_reinforced_[damage_state]")
 		else
 			overlays += image('icons/obj/structures/handrail.dmi', icon_state = "[barricade_type]_welder_step")
-			
+
 	for(var/datum/effects/E in effects_list)
 		if(E.icon_path && E.obj_icon_state_path)
 			overlays += image(E.icon_path, icon_state = E.obj_icon_state_path)
@@ -55,7 +55,7 @@
 /obj/structure/barricade/handrail/proc/reinforce()
 	if(reinforced)
 		if(health == maxhealth)	// Drop metal if full hp when unreinforcing
-			new /obj/item/stack/sheet/metal(loc)	
+			new /obj/item/stack/sheet/metal(loc)
 		health = initial(health)
 		maxhealth = initial(maxhealth)
 		projectile_coverage = initial(projectile_coverage)
@@ -105,7 +105,7 @@
 					to_chat(user, SPAN_WARNING("You need at least one metal sheet to do this."))
 				return
 
-		if(BARRICADE_BSTATE_UNSECURED) 
+		if(BARRICADE_BSTATE_UNSECURED)
 			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH)) // Secure again
 				if(user.action_busy)
 					return
@@ -133,10 +133,10 @@
 				user.visible_message(SPAN_NOTICE("[user] takes apart [src]."),
 				SPAN_NOTICE("You take apart [src]."))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
-				destroy(TRUE) 
+				destroy(TRUE)
 				return
-			
-		if(BARRICADE_BSTATE_FORTIFIED) 
+
+		if(BARRICADE_BSTATE_FORTIFIED)
 			if(reinforced)
 				if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR)) // Un-reinforce
 					if(user.action_busy)
@@ -177,3 +177,7 @@
 
 /obj/structure/barricade/handrail/kutjevo
 	icon_state = "hr_kutjevo"
+
+/obj/structure/barricade/handrail/wire
+	icon_state = "wire_rail"
+	climb_delay = CLIMB_DELAY_SHORT

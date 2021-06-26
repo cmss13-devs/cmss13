@@ -91,6 +91,12 @@
 /turf/open/floor/plating/plating_catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'
 
+/turf/open/floor/plating/plating_catwalk/strata
+	icon = 'icons/turf/floors/strata_floor.dmi'
+
+/turf/open/floor/plating/plating_catwalk/shiva
+	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
+
 
 
 /turf/open/floor/plating/ironsand

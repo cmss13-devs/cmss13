@@ -107,6 +107,77 @@
 		new thing(src)
 	num_things = 0
 
+/obj/structure/largecrate/random/mini
+	name = "small crate"
+	desc = "The large supply crate's cousin, 1st removed."
+	icon_state = "mini_crate"
+	density = 0
+
+/obj/structure/largecrate/random/mini/chest
+	desc = "A small plastic crate wrapped with securing elastic straps."
+	icon_state = "mini_chest"
+	name = "small chest"
+
+/obj/structure/largecrate/random/mini/chest/b
+	icon_state = "mini_chest_b"
+	name = "small chest"
+
+/obj/structure/largecrate/random/mini/chest/c
+	icon_state = "mini_chest_c"
+	name = "small chest"
+
+/obj/structure/largecrate/random/mini/wooden
+	desc = "A small wooden crate. Two supporting ribs cross this one's frame."
+	icon_state = "mini_wooden"
+	name = "wooden crate"
+
+/obj/structure/largecrate/random/mini/small_case
+	desc = "A small hard shell case. What could be inside?"
+	icon_state = "mini_case"
+	name = "small case"
+
+/obj/structure/largecrate/random/mini/small_case/b
+	icon_state = "mini_case_b"
+	name = "small case"
+
+/obj/structure/largecrate/random/mini/small_case/c
+	icon_state = "mini_case_c"
+	name = "small case"
+
+/obj/structure/largecrate/random/mini/ammo
+	desc = "A small metal crate. Here, Freeman ammo!"
+	name = "small ammocase"
+	icon_state = "mini_ammo"
+	stuff = list(/obj/item/ammo_magazine/pistol,
+				/obj/item/ammo_magazine/revolver,
+				/obj/item/ammo_magazine/rifle,
+				/obj/item/ammo_magazine/rifle/extended,
+				/obj/item/ammo_magazine/shotgun,
+				/obj/item/ammo_magazine/shotgun/buckshot,
+				/obj/item/ammo_magazine/shotgun/flechette,
+				/obj/item/ammo_magazine/smg/m39,
+				/obj/item/ammo_magazine/smg/m39/extended,)
+
+/obj/structure/largecrate/random/mini/med
+	desc = "A small metal crate. Here, Freeman take this medkit!" //https://www.youtube.com/watch?v=OMXan7GS8-Q
+	icon_state = "mini_medcase"
+	name = "small medcase"
+	num_things = 1 //funny lootbox tho.
+	stuff = list(/obj/item/stack/medical/bruise_pack,
+				/obj/item/storage/pill_bottle/packet/tricordrazine,
+				/obj/item/tool/crowbar/red,
+				/obj/item/device/flashlight,
+				/obj/item/reagent_container/hypospray/autoinjector/skillless,
+				/obj/item/storage/pill_bottle/packet/tramadol,
+				/obj/item/stack/medical/ointment,
+				/obj/item/stack/medical/splint,
+				/obj/item/device/healthanalyzer,
+				/obj/item/stack/medical/advanced/ointment,
+				/obj/item/stack/medical/advanced/bruise_pack,
+				/obj/item/tool/extinguisher/mini,
+				/obj/item/tool/shovel/etool,
+				/obj/item/tool/screwdriver,)
+
 /obj/structure/largecrate/random/case
 	name = "storage case"
 	desc = "A black storage case."

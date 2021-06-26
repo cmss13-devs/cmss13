@@ -34,6 +34,26 @@
 	w_class = SIZE_MEDIUM
 	attack_verb = list("jabbed","stabbed","ripped")
 
+/obj/item/weapon/melee/ice_axe
+	name = "ice axe"
+	desc = "For climbing, mostly. Makes for a good improvised weapon."
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "ice_axe"
+	item_state = "ice_axe"
+	sharp = IS_SHARP_ITEM_ACCURATE
+	flags_equip_slot = SLOT_WAIST
+	w_class = SIZE_SMALL
+	force = 25
+	throw_speed = SPEED_FAST
+	throw_range = 2
+	throwforce = 40
+
+/obj/item/weapon/melee/ice_axe/red
+	icon_state = "ice_axe_red"
+
+/obj/item/weapon/melee/ice_axe/green
+	icon_state = "ice_axe_green"
+
 /obj/item/weapon/melee/baseballbat
 	name = "\improper wooden baseball bat"
 	desc = "A large wooden baseball bat. Commonly used in colony recreation, but also used as a means of self defense. Often carried by thugs and ruffians."

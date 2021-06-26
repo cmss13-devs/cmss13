@@ -39,6 +39,10 @@
 			monkey_types = list(/mob/living/carbon/human/yiren)
 			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA)
 
+		if(MAP_ICE_COLONY_V3)
+			monkey_types = list(/mob/living/carbon/human/yiren)
+			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA)
+
 		if(MAP_BIG_RED)
 			monkey_types = list(/mob/living/carbon/human/neaera)
 			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE)

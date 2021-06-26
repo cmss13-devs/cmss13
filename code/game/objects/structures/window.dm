@@ -727,6 +727,13 @@
 	unacidable = TRUE
 	health = 1000000
 
+/obj/structure/window/framed/shiva
+	icon = 'icons/turf/walls/ice_colony/shiva_windows.dmi'
+	icon_state = "shiva_window0"
+	basestate = "shiva_window"
+	health = 40
+	window_frame = /obj/structure/window_frame/shiva
+
 //Solaris windows
 
 /obj/structure/window/framed/solaris

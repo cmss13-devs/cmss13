@@ -27958,7 +27958,7 @@
 /area/strata/ag/interior/administration)
 "bJF" = (
 /obj/structure/filingcabinet,
-/obj/item/pamphlet/medical,
+/obj/item/pamphlet/skill/medical,
 /turf/open/floor/strata,
 /area/strata/ag/interior/administration)
 "bJG" = (
@@ -37500,6 +37500,15 @@
 	icon_state = "floor3"
 	},
 /area/strata/ag/exterior/research_decks/south)
+"iPw" = (
+/mob/living/simple_animal/hostile/retaliate/clown{
+	health = 10000;
+	move_to_delay = 2;
+	name = "Gonzo the Magnificent";
+	rapid = 1
+	},
+/turf/open/auto_turf/snow/layer0,
+/area/strata/ag/interior/restricted/devroom)
 "iQi" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /obj/structure/pipes/standard/simple/hidden/cyan{
@@ -43741,7 +43750,8 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/prop/almayer/ship_memorial{
 	desc = "A large granite slab that breaks the fabric of space time. Special thanks to Fourkhan, Tobinerd, Cakey, and all the countless playtesters that made this map possible.";
-	name = "slab of triumph"
+	name = "slab of triumph";
+	pixel_y = 2
 	},
 /turf/open/floor/strata{
 	icon_state = "floor2"
@@ -59917,7 +59927,7 @@ dTN
 cmo
 anb
 amj
-amj
+iPw
 ami
 amj
 awq

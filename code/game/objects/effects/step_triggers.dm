@@ -5,6 +5,8 @@
 	var/stopper = 1 // stops throwers
 	invisibility = 101 // nope cant see this shit
 	anchored = 1
+	icon = 'icons/landmarks.dmi'
+	icon_state = "trigger"
 
 /obj/effect/step_trigger/proc/Trigger(var/atom/movable/A)
 	return 0
@@ -92,6 +94,9 @@
 /obj/effect/step_trigger/stopper
 
 /* Deletes any clones related to the atom */
+
+/obj/effect/step_trigger/clone_cleaner
+	icon_state = "cleaner"
 
 /obj/effect/step_trigger/clone_cleaner/Trigger(var/atom/movable/A)
 	if(A.clone)

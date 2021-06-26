@@ -190,6 +190,7 @@
 	if(start_dir)
 		setDir(start_dir)
 
+	healthcheck()
 	update_nearby_icons()
 
 /obj/structure/fence/Destroy()

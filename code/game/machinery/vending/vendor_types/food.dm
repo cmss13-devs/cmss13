@@ -78,3 +78,32 @@
 			list("Ice Cup", 30, /obj/item/reagent_container/food/drinks/ice, VENDOR_ITEM_REGULAR),
 			list("Vacuum Flask", 5, /obj/item/reagent_container/food/drinks/flask/vacuumflask, VENDOR_ITEM_REGULAR)
 			)
+
+/obj/structure/machinery/cm_vending/sorted/boozeomat/chess
+	name = "\improper Chess-O-Mat"
+	desc = "In 2143 Red Star Drinks, a UPP-CA (Colonial Administration) affiliated corporation ran a promotional sweepstakes for drinkers who had found special codes on the inside of the caps of a limited run of Red Star Vodka, shipping them a Chess-O-Mat with unlimited refills."
+	vendor_theme = VENDOR_THEME_COMPANY
+	vend_delay = 15
+	icon_state = "chessomat"
+	hackable = TRUE
+	unacidable = FALSE
+	unslashable = FALSE
+	wrenchable = TRUE
+
+	listed_products = list(
+			list("White Pieces", -1, null, null),
+			list("Pawn", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn, VENDOR_ITEM_REGULAR),
+			list("Bishop", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_bishop, VENDOR_ITEM_REGULAR),
+			list("Knight", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_knight, VENDOR_ITEM_REGULAR),
+			list("Rook", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_rook, VENDOR_ITEM_REGULAR),
+			list("King", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_king, VENDOR_ITEM_REGULAR),
+			list("Queen", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_queen, VENDOR_ITEM_REGULAR),
+
+			list("Black Pieces", -1, null, null),
+			list("Pawn", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn, VENDOR_ITEM_REGULAR),
+			list("Bishop", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_bishop, VENDOR_ITEM_REGULAR),
+			list("Knight", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_knight, VENDOR_ITEM_REGULAR),
+			list("Rook", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_rook, VENDOR_ITEM_REGULAR),
+			list("King", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king, VENDOR_ITEM_REGULAR),
+			list("Queen", 2, /obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_queen, VENDOR_ITEM_REGULAR)
+			)

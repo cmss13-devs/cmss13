@@ -238,6 +238,7 @@
 	var/cover_icon = 'icons/turf/floors/filtration.dmi'
 	var/cover_icon_state = "grate"
 	var/default_name = "river"
+	var/no_overlay = FALSE
 	baseturfs = /turf/open/gm/river
 
 /turf/open/gm/river/Initialize(mapload, ...)
@@ -250,6 +251,8 @@
 
 /turf/open/gm/river/proc/update_overlays()
 	overlays.Cut()
+	if(no_overlay)
+		return
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
@@ -353,6 +356,9 @@
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
 	. = ..()
 	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1)
+
+/turf/open/gm/river/no_overlay
+	no_overlay = TRUE
 
 
 

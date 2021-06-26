@@ -173,6 +173,16 @@ obj/structure/platform_decoration
 	desc = "A platform corner supporting elevated ground, made of sandstone. Has what seem to be ancient hieroglyphs on its side."
 	color = "#c6a480"
 
+/obj/structure/platform/shiva/catwalk
+	icon_state = "shiva"
+	name = "raised rubber cord platform"
+	desc = "Reliable steel and a polymer rubber substitute. Doesn't crack under cold weather."
+
+/obj/structure/platform_decoration/shiva/catwalk
+	icon_state = "shiva_deco"
+	name = "raised rubber cord platform"
+	desc = "Reliable steel and a polymer rubber substitute. Doesn't crack under cold weather."
+
 /obj/structure/platform_decoration/mineral/sandstone/runed
 	name = "sandstone temple platform corner"
 	color = "#b29082"

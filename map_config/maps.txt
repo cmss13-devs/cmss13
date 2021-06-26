@@ -40,6 +40,9 @@ map ice_colony_v2
 	disabled
 endmap
 
+map shivas_snowball
+endmap
+
 map kutjevo
 endmap
 

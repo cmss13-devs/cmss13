@@ -150,6 +150,8 @@ obj/structure/xenoautopsy/tank/larva
 /obj/structure/stairs/perspective/kutjevo
 	icon = 'icons/obj/structures/stairs/perspective_stairs_kutjevo.dmi'
 
+/obj/structure/stairs/perspective/ice
+	icon = 'icons/obj/structures/stairs/perspective_stairs_ice.dmi'
 
 
 // Prop

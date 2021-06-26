@@ -147,6 +147,61 @@
 	. = ..()
 	reagents.add_reagent("vodka", 100)
 
+//chess bottles
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess
+	name = "\improper Red Star Vodka promotional bottle"
+	desc = "A promotional chess themed bottle of Red Star Vodka."
+	icon_state = "chess"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn
+	name = "\improper Black Pawn bottle"
+	icon_state = "b_pawn"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn
+	name = "\improper White Pawn bottle"
+	icon_state = "w_pawn"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_bishop
+	name = "\improper Black Bishop bottle"
+	icon_state = "b_bishop"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_bishop
+	name = "\improper White Bishop bottle"
+	icon_state = "w_bishop"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_knight
+	name = "\improper Black Knight bottle"
+	icon_state = "b_knight"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_knight
+	name = "\improper White Knight bottle"
+	icon_state = "w_knight"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_rook
+	name = "\improper Black Rook bottle"
+	icon_state = "b_rook"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_rook
+	name = "\improper White Rook bottle"
+	icon_state = "w_rook"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king
+	name = "\improper Black King bottle"
+	icon_state = "b_king"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_king
+	name = "\improper White King bottle"
+	icon_state = "w_king"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_queen
+	name = "\improper Black Queen bottle"
+	icon_state = "b_queen"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_queen
+	name = "\improper White Queen bottle"
+	icon_state = "w_queen"
+
 /obj/item/reagent_container/food/drinks/bottle/tequilla
 	name = "\improper Caccavo Guaranteed Quality Tequilla"
 	desc = "Made from premium petroleum distillates, pure thalidomide and other fine quality ingredients!"

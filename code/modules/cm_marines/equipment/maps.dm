@@ -64,6 +64,12 @@
 	html_link = "images/1/18/Map_icecolony.png"
 	color = "cyan"
 
+/obj/item/map/ice_colony_map_v3
+	name = "\improper Shivas Snowball map"
+	desc = "A labelled print out of the anterior scan of the UA colony Shivas Snowball."
+	html_link = "images/1/18/Map_icecolony.png"
+	color = "cyan"
+
 /obj/item/map/whiskey_outpost_map
 	name = "\improper Whiskey Outpost map"
 	desc = "A tactical printout of the Whiskey Outpost defensive positions and locations."
@@ -127,6 +133,11 @@
 			desc = "A satellite printout of the Ice Colony."
 			html_link = "images/1/18/Map_icecolony.png"
 			color = "cyan"
+		if(MAP_ICE_COLONY_V3)
+			name = "\improper Shivas Snowball map"
+			desc = "A labelled print out of the anterior scan of the UA colony Shivas Snowball."
+			html_link = "images/1/18/Map_icecolony.png"//needs to be replaced at some point
+			color = "cyan"
 		if(MAP_BIG_RED)
 			name = "\improper Solaris Ridge Map"
 			desc = "A censored blueprint of the Solaris Ridge facility"
@@ -171,6 +182,7 @@
 // Landmark - Used for mapping. Will spawn the appropriate map for each gamemode (LV map items will spawn when LV is the gamemode, etc)
 /obj/effect/landmark/map_item
 	name = "map item"
+	icon_state = "ipool"
 
 /obj/effect/landmark/map_item/Initialize(mapload, ...)
 	. = ..()

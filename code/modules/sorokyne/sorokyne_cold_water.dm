@@ -9,9 +9,14 @@
 	unacidable = 1
 	layer = ABOVE_FLY_LAYER //to make it visible in the map editor
 	mouse_opacity = 0
-	icon = 'icons/old_stuff/mark.dmi'
+	icon = 'icons/landmarks.dmi'
 
-	icon_state = null
+	icon_state = "map_blocker_hazard"
+
+/obj/effect/blocker/sorokyne_cold_water/Initialize(mapload, ...)
+	. = ..()
+	invisibility = 101
+
 
 /obj/effect/blocker/sorokyne_cold_water/Crossed(mob/living/M as mob)
 

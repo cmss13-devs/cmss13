@@ -35,6 +35,7 @@
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
+#define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -294,6 +295,14 @@
 #define WALL_JUNGLE_UPDATED "jungle_veg"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
+#define WALL_SHIVA_ICE "shiva_ice"
+#define WALL_SHIVA_FAB "shiva_fab"
+#define WALL_SHIVA_FAB_R "shiva_fab_r"
+#define WALL_SHIVA_FAB_ORANGE "shiva_fab_oj"
+#define WALL_SHIVA_FAB_BLUE "shiva_fab_blu"
+#define WALL_SHIVA_FAB_PINK "shiva_fab_pnk"
+#define WALL_SHIVA_FAB_WHITE "shiva_fab_wht"
+#define WALL_SHIVA_FAB_RED "shiva_fab_red"
 #define WALL_DOME "dome"
 #define WALL_DOMER "r_dome"
 #define WALL_SOLARIS "solaris_interior"

@@ -4,6 +4,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	name = "telephone receiver"
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "wall_phone"
+	desc = "It is a wall mounted telephone. The fine text reads: To log your details with the mainframe please insert your keycard into the slot below. Unfortunately the slot is jammed. You can still use the phone, however."
 
 	var/phone_category = "Uncategorised"
 	var/phone_color = "white"
@@ -512,3 +513,15 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	zlevel_transfer = FALSE
 	UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 	reset_tether()
+
+
+//rotary desk phones (need a touch tone handset at some point)
+/obj/structure/transmitter/rotary
+	name = "rotary telephone"
+	icon_state = "rotary_phone"
+	desc = "The finger plate is a little stiff."
+
+/obj/structure/transmitter/touchtone
+	name = "touch-tone telephone"
+	icon_state = "rotary_phone"//placeholder
+	desc = "Ancient aliens, its all true. I'm an expert just like you!"

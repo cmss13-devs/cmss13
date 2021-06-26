@@ -4486,7 +4486,7 @@
 	},
 /area/almayer/command/cichallway)
 "amJ" = (
-/obj/structure/largecrate/supply/machine/bodyscanner,
+/obj/structure/largecrate/machine/bodyscanner,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -4938,7 +4938,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -5021,7 +5020,6 @@
 /obj/structure/pipes/standard/simple/hidden/supply,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -5032,7 +5030,6 @@
 "aog" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -5292,7 +5289,6 @@
 "aoN" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -9183,13 +9179,10 @@
 	},
 /obj/structure/machinery/light,
 /obj/item/clothing/glasses/hud/health,
-/obj/structure/transmitter{
-	dir = 4;
+/obj/structure/transmitter/rotary{
 	name = "Bravo Overwatch Telephone";
 	phone_category = "Command";
-	phone_id = "Bravo Overwatch";
-	pixel_x = -16;
-	pixel_y = -4
+	phone_id = "Bravo Overwatch"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -10520,13 +10513,11 @@
 	dir = 1
 	},
 /obj/item/clothing/glasses/hud/health,
-/obj/structure/transmitter{
-	dir = 4;
+/obj/structure/transmitter/rotary{
 	name = "Charlie Overwatch Telephone";
 	phone_category = "Command";
 	phone_id = "Charlie Overwatch";
-	pixel_x = -16;
-	pixel_y = 6
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -16418,7 +16409,6 @@
 /area/almayer/hallways/hangar)
 "aZO" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/almayer{
@@ -16428,7 +16418,6 @@
 /area/almayer/hallways/hangar)
 "aZP" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/almayer{
@@ -16438,7 +16427,6 @@
 /area/almayer/hallways/hangar)
 "aZQ" = (
 /obj/structure/machinery/landinglight/ds2{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/almayer{
@@ -16448,7 +16436,6 @@
 /area/almayer/hallways/hangar)
 "aZR" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/almayer{
@@ -16472,7 +16459,6 @@
 /area/almayer/hallways/hangar)
 "aZV" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/almayer{
@@ -16482,7 +16468,6 @@
 /area/almayer/hallways/hangar)
 "aZW" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/almayer{
@@ -16492,7 +16477,6 @@
 /area/almayer/hallways/hangar)
 "aZX" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/almayer{
@@ -16502,7 +16486,6 @@
 /area/almayer/hallways/hangar)
 "aZY" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/almayer{
@@ -16629,7 +16612,6 @@
 "baH" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -16658,7 +16640,6 @@
 "baM" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -16690,7 +16671,6 @@
 "baS" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -16716,7 +16696,6 @@
 "baX" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -17113,7 +17092,6 @@
 	},
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -17220,7 +17198,6 @@
 /obj/structure/prop/almayer/hangar_stencil,
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -17616,7 +17593,6 @@
 "bdO" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -17645,12 +17621,12 @@
 /area/shuttle/drop2/sulaco)
 "bdS" = (
 /obj/structure/machinery/computer/dropship_weapons/dropship2,
-/obj/structure/transmitter{
+/obj/structure/transmitter/rotary{
 	name = "Normandy Telephone";
 	phone_category = "Dropship";
 	phone_id = "Normandy";
-	pixel_x = 14;
-	pixel_y = 14
+	pixel_x = 11;
+	pixel_y = 16
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -17665,7 +17641,6 @@
 "bdU" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -17693,7 +17668,6 @@
 "bea" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -17709,6 +17683,10 @@
 /area/shuttle/drop1/sulaco)
 "bec" = (
 /obj/structure/machinery/computer/security/dropship/one,
+/obj/structure/prop/ice_colony/hula_girl{
+	pixel_x = -10;
+	pixel_y = 16
+	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -17723,12 +17701,12 @@
 /area/shuttle/drop1/sulaco)
 "bee" = (
 /obj/structure/machinery/computer/dropship_weapons/dropship1,
-/obj/structure/transmitter{
+/obj/structure/transmitter/rotary{
 	name = "Alamo Telephone";
 	phone_category = "Dropship";
 	phone_id = "Alamo";
-	pixel_x = 14;
-	pixel_y = 14
+	pixel_x = 11;
+	pixel_y = 16
 	},
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
@@ -17744,7 +17722,6 @@
 "beg" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -18203,7 +18180,6 @@
 "bfL" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -18289,7 +18265,6 @@
 "bfV" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -18316,7 +18291,6 @@
 "bfZ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -18381,7 +18355,6 @@
 "bgj" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -19248,7 +19221,6 @@
 "bjS" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -19339,7 +19311,6 @@
 "bkd" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -19357,7 +19328,6 @@
 "bkh" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -19441,7 +19411,6 @@
 "bks" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -24818,7 +24787,6 @@
 	},
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/almayer{
@@ -24843,7 +24811,6 @@
 	},
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/platform_decoration{
@@ -24908,7 +24875,6 @@
 	},
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/platform_decoration{
@@ -24926,7 +24892,6 @@
 	},
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/almayer{
@@ -25384,7 +25349,6 @@
 "bGF" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -25395,7 +25359,6 @@
 "bGG" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -25406,7 +25369,6 @@
 "bGH" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -25417,7 +25379,6 @@
 "bGI" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -25469,7 +25430,6 @@
 "bGM" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -25480,7 +25440,6 @@
 "bGN" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -25491,7 +25450,6 @@
 "bGO" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -25502,7 +25460,6 @@
 "bGP" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -36894,13 +36851,12 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "dCh" = (
-/obj/structure/sink/puddle{
-	health = 50;
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
 	icon_state = "water";
-	indestructible = 1;
-	layer = 3.5;
-	projectile_coverage = 0;
-	unslashable = 1
+	name = "pipe water"
 	},
 /obj/structure{
 	dir = 4;
@@ -38006,6 +37962,10 @@
 	name = "Control Panel";
 	pixel_x = -15;
 	req_access_txt = "200"
+	},
+/obj/item/storage/fancy/cigarettes/wypacket{
+	pixel_x = 6;
+	pixel_y = 3
 	},
 /turf/open/floor/strata{
 	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
@@ -39345,14 +39305,13 @@
 	projectile_coverage = 0;
 	unacidable = 1
 	},
-/obj/structure/sink/puddle{
-	health = 50;
+/obj/structure/prop/invuln{
+	density = 0;
+	desc = "The Almayer has sprung a leak!";
+	icon = 'icons/obj/structures/props/watercloset.dmi';
 	icon_state = "water";
-	indestructible = 1;
-	layer = 3.4;
-	pixel_x = 17;
-	projectile_coverage = 0;
-	unslashable = 1
+	name = "pipe water";
+	pixel_x = 17
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/lower_hull/l_m_p)
@@ -39793,13 +39752,11 @@
 	pixel_y = -17
 	},
 /obj/item/clothing/glasses/hud/health,
-/obj/structure/transmitter{
-	dir = 4;
+/obj/structure/transmitter/rotary{
 	name = "Delta Overwatch Telephone";
 	phone_category = "Command";
 	phone_id = "Delta Overwatch";
-	pixel_x = -16;
-	pixel_y = 6
+	pixel_y = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -43315,7 +43272,6 @@
 "gzn" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/platform_decoration,
@@ -43680,15 +43636,11 @@
 	pixel_y = 16
 	},
 /obj/item/clothing/glasses/hud/health,
-/obj/structure/transmitter{
-	dir = 4;
+/obj/structure/transmitter/rotary{
 	name = "Alpha Overwatch Telephone";
 	phone_category = "Command";
-	phone_id = "Alpha Overwatch";
-	pixel_x = -16;
-	pixel_y = -4
+	phone_id = "Alpha Overwatch"
 	},
-/obj/item/ashtray/glass,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -47498,7 +47450,6 @@
 "iGQ" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/platform{
@@ -53218,6 +53169,12 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	desc = "A beat up beer stained, incredibly garish, polyester tiger rug. No one knows how it got here. Written on the wash tag are the words 'From Thedus, with love <3', in Sharpie.";
+	icon_state = "HotlineAlt";
+	layer = 2.9;
+	name = "Richard the tiger"
+	},
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "emerald";
@@ -54716,7 +54673,6 @@
 "mwQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/platform{
@@ -57050,16 +57006,11 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "nDh" = (
-/obj/item/storage/fancy/cigarettes/wypacket{
-	pixel_x = 6
-	},
 /obj/structure/surface/table/woodentable,
-/obj/structure/transmitter{
+/obj/structure/transmitter/rotary{
 	name = "CL Office Telephone";
 	phone_category = "Almayer";
-	phone_id = "CL Office";
-	pixel_x = -8;
-	pixel_y = 3
+	phone_id = "CL Office"
 	},
 /turf/open/floor/strata{
 	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
@@ -58091,7 +58042,6 @@
 "ohE" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/bed/chair{
@@ -63433,7 +63383,6 @@
 "qUL" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/bed/chair{
@@ -68428,7 +68377,6 @@
 "txO" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/platform_decoration{
@@ -71665,7 +71613,6 @@
 "vbf" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/bed/chair{
@@ -73635,7 +73582,6 @@
 "vWJ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/bed/chair{
@@ -74042,9 +73988,6 @@
 	tag = "icon-silver (WEST)"
 	},
 /area/almayer/living/briefing)
-"wgc" = (
-/turf/closed/wall/almayer,
-/area)
 "wgk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -78320,7 +78263,6 @@
 "yeN" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
@@ -114806,7 +114748,7 @@ vUi
 bPU
 qEW
 qEW
-wgc
+nsY
 xgS
 dbn
 qvC

@@ -5,6 +5,8 @@
 	anchored = TRUE
 	unacidable = TRUE
 	unslashable = TRUE
+	icon = 'icons/landmarks.dmi'
+	icon_state = "map_blocker"
 
 /obj/structure/blocker/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -17,8 +19,7 @@
 /obj/structure/blocker/invisible_wall
 	name = "invisible wall"
 	desc = "You cannot go this way."
-	icon = 'icons/old_stuff/mark.dmi'
-	icon_state = "x4"
+	icon_state = "invisible_wall"
 	opacity = 0
 	layer = ABOVE_FLY_LAYER + 0.1 //to make it visible in the map editor
 	mouse_opacity = 0
@@ -54,7 +55,7 @@
 	name = "forcefield"
 
 	icon = 'icons/landmarks.dmi'
-	icon_state = "x2"
+	icon_state = "map_blocker"
 	anchored = 1.0
 	unacidable = TRUE
 	density = FALSE

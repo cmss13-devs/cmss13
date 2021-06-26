@@ -3,7 +3,7 @@
 
 /obj/structure/resource_node
 	name = "\improper power node"
-	desc = "Generates vast amounts of energy."
+	desc = "Generates vast amounts of energy. As a Marine, use a wrench to capture and welder to repair. As a Xeno, click as a builder caste to capture and repair."
 	icon = 'icons/obj/structures/resources_64x64.dmi'
 	icon_state = "node_off"
 

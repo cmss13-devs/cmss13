@@ -18,7 +18,7 @@
 	to_chat(H, SPAN_BOLD("The Tychon's Rift sector has largely enjoyed its indepdendence.."))
 	to_chat(H, SPAN_BOLD("Though technically part of the United American frontier, many colonists in the Tychon's Rift have enjoyed their freedoms."))
 	to_chat(H, "")
-	to_chat(H, SPAN_BOLD("In 2181, however, the United Americas moved the USCM Battalion, the 'Dust Raiders', and the battalion flagship, the USS Alistoun, to the Tychon's Rift sector."))
+	to_chat(H, SPAN_BOLD("In 2172, however, the United Americas moved the USCM Battalion, the 'Dust Raiders', and the battalion flagship, the USS Alistoun, to the Tychon's Rift sector."))
 	to_chat(H, SPAN_BOLD("The Dust Raiders responded with deadly force, scattering many of the colonists who attempted to fight their occupation."))
 	to_chat(H, SPAN_BOLD("The Dust Raiders and their flagship, the USS Alistoun eventually withdrew from the sector by the end of the year.</font>"))
 	to_chat(H, "")

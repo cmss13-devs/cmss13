@@ -63,7 +63,7 @@
 	src.desc = "The safety is [safety ? "on" : "off"]."
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
 
-/obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
 		return FALSE
 	else

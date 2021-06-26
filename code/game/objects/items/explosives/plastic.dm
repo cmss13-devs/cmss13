@@ -23,7 +23,7 @@
 	disarm()
 	. = ..()
 
-/obj/item/explosive/plastic/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/explosive/plastic/attack(mob/M as mob, mob/user as mob)
 	return FALSE
 
 /obj/item/explosive/plastic/attack_hand(mob/user)

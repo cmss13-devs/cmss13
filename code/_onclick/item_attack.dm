@@ -26,7 +26,7 @@
 	return FALSE
 
 
-/obj/item/proc/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/proc/attack(mob/living/M, mob/living/user)
 	if(flags_item & NOBLUDGEON)
 		return FALSE
 
@@ -107,7 +107,7 @@
 		M.updatehealth()
 	else
 		var/mob/living/carbon/human/H = M
-		var/hit = H.attacked_by(src, user, def_zone)
+		var/hit = H.attacked_by(src, user)
 		if (hit && hitsound)
 			playsound(loc, hitsound, 25, 1)
 		return hit

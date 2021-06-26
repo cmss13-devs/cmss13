@@ -170,7 +170,7 @@
 
 	attack_verb = list("sliced", "diced", "cut")
 
-/obj/item/weapon/melee/katana/sharp/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/weapon/melee/katana/sharp/attack(mob/living/M, mob/living/user)
 
 	if(flags_item & NOBLUDGEON)
 		return
@@ -255,7 +255,7 @@
 		playsound(M, 'sound/effects/bone_break1.ogg', 100, 1)
 
 		for(var/i=1, i <= number_of_cuts, i++)
-			def_zone = pick("head","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
+			var/def_zone = pick("head","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 			switch(damtype)
 				if("brute")
 					M.apply_damage(power,BRUTE,def_zone)

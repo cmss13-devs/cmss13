@@ -107,7 +107,7 @@
 	attack_verb = list("slashed", "bitten", "torn", "scraped", "nibbled")
 	pry_capable = IS_PRY_CAPABLE_FORCE
 
-/obj/item/weapon/zombie_claws/attack(mob/living/M, mob/living/carbon/human/user, def_zone)
+/obj/item/weapon/zombie_claws/attack(mob/living/M, mob/living/carbon/human/user)
 	if(iszombie(M))
 		return FALSE
 
@@ -122,7 +122,7 @@
 			user.show_message(text(SPAN_XENOWARNING(" <B>You sense your target is infected</B>")))
 			return .
 
-		var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - H.getarmor(def_zone, ARMOR_BIO), 0)
+		var/bio_protected = max(CLOTHING_ARMOR_HARDCORE - H.getarmor(user.zone_selected, ARMOR_BIO), 0)
 
 		if(prob(bio_protected))
 			M.AddDisease(new /datum/disease/black_goo())

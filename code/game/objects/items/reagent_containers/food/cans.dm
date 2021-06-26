@@ -10,7 +10,7 @@
 		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
 		canopened = TRUE
 
-/obj/item/reagent_container/food/drinks/cans/attack(mob/M, mob/user, def_zone)
+/obj/item/reagent_container/food/drinks/cans/attack(mob/M, mob/user)
 	if (canopened == 0)
 		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 		return

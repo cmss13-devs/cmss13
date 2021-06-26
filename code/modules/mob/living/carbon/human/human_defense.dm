@@ -164,12 +164,12 @@ Contains most of the procs that are called when a mob is attacked by something
 
 
 //Returns 1 if the attack hit, 0 if it missed.
-/mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user, var/def_zone)
+/mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user)
 	if(!I || !user)
 		return FALSE
 
 	user.animation_attack_on(src)
-	var/target_zone = def_zone ? def_zone : check_zone(user.zone_selected)
+	var/target_zone = check_zone(user.zone_selected)
 	//IF there is an override, use that, otherwise, check if selected zone is valid, if it is, use that, otherwise use chest
 
 	if(!target_zone) //this should NEVER happen

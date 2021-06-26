@@ -140,7 +140,7 @@
 	else
 		to_chat(user, "Not with a missile inside!")
 
-/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/M, mob/living/carbon/human/user, def_zone)
+/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
 	if(!istype(M) || !istype(user) || get_dist(user, M) > 1)
 		return
 	var/obj/item/weapon/gun/launcher/in_hand = M.get_active_hand()

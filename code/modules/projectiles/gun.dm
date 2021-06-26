@@ -1180,7 +1180,7 @@ and you're good to go.
 
 #define EXECUTION_CHECK M.stat == UNCONSCIOUS && ((user.a_intent == INTENT_GRAB)||(user.a_intent == INTENT_DISARM))
 
-/obj/item/weapon/gun/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/weapon/gun/attack(mob/living/M, mob/living/user)
 	if(active_attachable && (active_attachable.flags_attach_features & ATTACH_MELEE)) //this is expected to do something in melee.
 		active_attachable.last_fired = world.time
 		active_attachable.fire_attachment(M, src, user)

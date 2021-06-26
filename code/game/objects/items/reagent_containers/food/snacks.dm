@@ -40,7 +40,7 @@
 	attack(user, user, "head")//zone does not matter
 	user.next_move += attack_speed
 
-/obj/item/reagent_container/food/snacks/attack(mob/M, mob/user, def_zone)
+/obj/item/reagent_container/food/snacks/attack(mob/M, mob/user)
 	if(reagents && !reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
 		to_chat(user, SPAN_DANGER("None of [src] left, oh no!"))
 		M.drop_inv_item_on_ground(src)	//so icons update :[

@@ -3674,9 +3674,12 @@
 /turf/open/floor/plating,
 /area/shiva/interior/valley_huts/disposals)
 "asU" = (
-/obj/structure/machinery/landinglight/ds1/delaytwo,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/lz1_valley)
+/obj/structure/machinery/computer/shuttle_control/dropship2,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/shiva/exterior/lz1_console/two)
 "asW" = (
 /obj/structure/prop/invuln/ice_prefab/trim{
 	dir = 8
@@ -10670,12 +10673,6 @@
 "flN" = (
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
-"fmh" = (
-/obj/structure/machinery/landinglight/ds2/delayone,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "fmZ" = (
 /turf/open/floor/prison{
 	icon_state = "kitchen";
@@ -13162,12 +13159,6 @@
 /obj/structure/bed/chair/comfy/beige,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
-"ibD" = (
-/obj/structure/machinery/landinglight/ds2/delaythree,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "ibN" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/shiva{
@@ -13691,10 +13682,6 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
-"iBP" = (
-/obj/structure/machinery/landinglight/ds1/delaythree,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/lz1_valley)
 "iCs" = (
 /obj/item/storage/firstaid/adv,
 /turf/open/floor/shiva{
@@ -16310,12 +16297,6 @@
 	icon_state = "kitchen"
 	},
 /area/shiva/interior/colony/central)
-"ltz" = (
-/obj/structure/machinery/landinglight/ds2/delaytwo,
-/turf/open/floor/shiva{
-	dir = 1
-	},
-/area/shiva/exterior/lz2_fortress)
 "ltJ" = (
 /obj/structure/platform_decoration/shiva/catwalk{
 	dir = 8
@@ -16593,7 +16574,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/shuttle_control/dropship1,
 /turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/lz1_valley)
+/area/shiva/exterior/lz1_console)
 "lLE" = (
 /obj/structure/prop/invuln/ice_prefab/standalone,
 /turf/open/auto_turf/snow/layer2,
@@ -23875,10 +23856,6 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/valley_huts/no2)
-"tPH" = (
-/obj/structure/machinery/landinglight/ds1/delayone,
-/turf/open/auto_turf/snow/layer0,
-/area/shiva/exterior/lz1_valley)
 "tPJ" = (
 /obj/structure/platform/shiva/catwalk,
 /turf/open/auto_turf/snow/layer1,
@@ -29754,7 +29731,7 @@ hnc
 hnc
 slj
 mFm
-mFm
+asU
 mFm
 mFm
 mFm
@@ -30237,9 +30214,9 @@ mFm
 mFm
 mFm
 mFm
-fmh
-ibD
-ltz
+mFm
+mFm
+mFm
 iuK
 iuK
 mFm
@@ -32178,8 +32155,8 @@ mhP
 sxD
 mFm
 mFm
-wMj
-wMj
+mFm
+mFm
 mFm
 mFm
 mFm
@@ -32190,8 +32167,8 @@ mFm
 mFm
 mFm
 mFm
-wMj
-wMj
+mFm
+mFm
 mFm
 mFm
 mFm
@@ -32340,8 +32317,8 @@ mhP
 mhP
 sxD
 mFm
-wMj
-wMj
+mFm
+mFm
 mFm
 mFm
 mFm
@@ -32352,8 +32329,8 @@ sxD
 mFm
 mFm
 mFm
-wMj
-wMj
+mFm
+mFm
 mFm
 mFm
 mFm
@@ -58697,9 +58674,9 @@ iQq
 boD
 boD
 boD
-tPH
-iBP
-asU
+iQq
+iQq
+iQq
 gGH
 kLM
 kLM

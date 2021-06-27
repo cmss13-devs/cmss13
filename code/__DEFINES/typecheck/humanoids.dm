@@ -12,7 +12,7 @@
 #define isYautja(A) (ishuman(A) && istype(A?:species, /datum/species/yautja))
 #define isResearcher(A) (ishuman(A) && A.job == "Researcher")
 #define isSynth(A)  (ishuman(A) && istype(A?:species, /datum/species/synthetic))
-#define isEarlySynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/early_synthetic))
+#define isColonySynthetic(A) (ishuman(A) && istype(A?:species, /datum/species/synthetic/colonial))
 #define hasorgans(A) ishuman(A)
 
 //Specic group checks, use instead of typechecks (but use traits instead)

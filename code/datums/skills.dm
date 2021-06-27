@@ -579,8 +579,8 @@ SYNTHETIC
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
 	)
 
-/datum/skills/early_synthetic
-	name = "Early Synthetic"
+/datum/skills/colonial_synthetic
+	name = SYNTH_COLONY
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,

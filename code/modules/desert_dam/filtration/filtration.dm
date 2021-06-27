@@ -186,8 +186,6 @@ var/global/east_riverstart = 0
 		M.apply_damage(0.5,BURN)
 	else
 		var/dam_amount = 3
-		if(istype(M,/mob/living/carbon/human/synthetic_old)) dam_amount = 0.5
-		else if(istype(M,/mob/living/carbon/human/synthetic) || istype(M,/mob/living/carbon/human/synthetic_2nd_gen)) dam_amount = 1
 		if(M.lying)
 			M.apply_damage(dam_amount,BURN)
 			M.apply_damage(dam_amount,BURN)

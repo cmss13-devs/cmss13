@@ -421,7 +421,7 @@
 	access = get_antagonist_pmc_access()
 
 /datum/equipment_preset/pmc/w_y_whiteout/load_race(mob/living/carbon/human/H)
-	H.set_species("Combat Synthetic")
+	H.set_species(SYNTH_COMBAT)
 	H.allow_gun_usage = TRUE //To allow usage of Guns/Grenades
 
 /datum/equipment_preset/pmc/w_y_whiteout/load_name(mob/living/carbon/human/H, var/randomise)

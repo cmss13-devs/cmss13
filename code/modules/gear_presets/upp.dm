@@ -407,7 +407,7 @@
 	idtype = /obj/item/card/id/dogtag
 
 /datum/equipment_preset/upp/synth/load_race(mob/living/carbon/human/H)
-	H.set_species("Synthetic")
+	H.set_species(SYNTH_GEN_TWO)
 
 /datum/equipment_preset/upp/synth/load_gear(mob/living/carbon/human/H)
 	load_name(H)

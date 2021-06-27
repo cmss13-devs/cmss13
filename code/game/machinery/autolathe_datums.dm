@@ -306,6 +306,14 @@
 	path = /obj/item/explosive/warhead/mortar
 	category = "Explosives"
 
+/datum/autolathe/recipe/armylathe/flamer_tank
+	name = "Custom M240A1 Fuel Tank"
+	path = /obj/item/ammo_magazine/flamer_tank/custom
+
+/datum/autolathe/recipe/armylathe/large_flamer_tank
+	name = "Custom M240-T Fuel Tank"
+	path = /obj/item/ammo_magazine/flamer_tank/custom/large
+
 //Medilathe recipes
 /datum/autolathe/recipe/medilathe
 	category = "Medical"

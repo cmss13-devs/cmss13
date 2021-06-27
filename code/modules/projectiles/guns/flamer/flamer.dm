@@ -17,6 +17,7 @@
 	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
+	var/fuel_pressure = 1 //Pressure setting of the attached fueltank, controls how much fuel is used per tile
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
 
 	attachable_allowed = list( //give it some flexibility.
@@ -164,7 +165,8 @@
 			current_mag = magazine
 			magazine.forceMove(src)
 			replace_ammo(,magazine)
-
+	var/obj/item/ammo_magazine/flamer_tank/tank = magazine
+	fuel_pressure = tank.fuel_pressure
 	update_icon()
 	return 1
 
@@ -183,6 +185,7 @@
 
 	current_mag.update_icon()
 	current_mag = null
+	fuel_pressure = 1
 
 	update_icon()
 
@@ -200,7 +203,8 @@
 	R.durationfire = Clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
 	R.rangefire = Clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
 	var/max_range = R.rangefire
-
+	if (max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
+		max_range = Clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
 	if(R.rangefire == -1)
 		max_range = current_mag.reagents.max_fire_rad
 
@@ -214,7 +218,7 @@
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user))
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
@@ -343,7 +347,7 @@
 	var/datum/reagents/tied_reagents
 	var/datum/callback/to_call
 
-/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C)
+/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1)
 	. = ..()
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
@@ -371,7 +375,8 @@
 
 	icon_state = "[flame_icon]_2"
 
-	firelevel = R.durationfire
+	//Fire duration increases with fuel usage
+	firelevel = R.durationfire + fuel_pressure*R.durationmod
 	burnlevel = R.intensityfire
 
 	START_PROCESSING(SSobj, src)
@@ -381,7 +386,7 @@
 	var/burn_dam = burnlevel*FIRE_DAMAGE_PER_LEVEL
 
 	if(tied_reagents && !tied_reagents.locked)
-		var/removed = tied_reagents.remove_reagent(tied_reagent.id, FLAME_REAGENT_USE_AMOUNT)
+		var/removed = tied_reagents.remove_reagent(tied_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_pressure)
 		if(removed)
 			qdel(src)
 			return
@@ -391,7 +396,7 @@
 		if(!FS)
 			CRASH("Invalid flameshape passed to /obj/flamer_fire. (Expected /datum/flameshape, got [FS] (id: [flameshape]))")
 
-		FS.handle_fire_spread(src, fire_spread_amount, burn_dam)
+		FS.handle_fire_spread(src, fire_spread_amount, burn_dam, fuel_pressure)
 	//Apply fire effects onto everyone in the fire
 
 	// Melt a single layer of snow

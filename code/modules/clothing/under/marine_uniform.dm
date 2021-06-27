@@ -16,7 +16,7 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	var/specialty = "USCM" //Makes it so that we can see the right name in the vendor.
 	layer = UPPER_ITEM_LAYER
 
@@ -58,19 +58,19 @@
 	desc = "Standard-issue RT Operator fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_rto"
 	item_state = "marine_rto"
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "marine RT operator"
 
 /obj/item/clothing/under/marine/sniper
 	name = "\improper USCM sniper uniform"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	specialty = "USCM sniper"
 
 /obj/item/clothing/under/marine/tanker
 	name = "\improper USCM tanker uniform"
 	icon_state = "marine_tanker"
 	worn_state = "marine_tanker"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	specialty = "USCM tanker"
 
 /obj/item/clothing/under/marine/tanker/New(loc,expected_type 		= type,
@@ -85,7 +85,7 @@
 	desc = "Standard-issue Mess Sergeant uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "chef_uniform"
 	worn_state = "chef_uniform"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	specialty = "USCM mess sergeant"
 	flags_atom = NO_SNOW_TYPE
 
@@ -95,7 +95,7 @@
 	icon_state = "MP_jumpsuit"
 	worn_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
 
@@ -105,7 +105,7 @@
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	specialty = "military warden"
 	flags_atom = NO_SNOW_TYPE
 
@@ -116,7 +116,7 @@
 	item_state = "officertanclothes"
 	worn_state = "officertanclothes"
 	suit_restricted = null //so most officers can wear whatever suit they want
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	specialty = "marine officer"
 
 /obj/item/clothing/under/marine/officer/warrant
@@ -155,7 +155,7 @@
 	worn_state = "marine_tanker"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/tanker)
 	specialty = "vehicle crewman"
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	item_state_slots = list(WEAR_BODY = "marine_tanker")
 
 /obj/item/clothing/under/marine/officer/bridge
@@ -164,7 +164,7 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
@@ -172,7 +172,7 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "executive officer"
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/command
 	name = "\improper USCM officer uniform"
@@ -220,7 +220,7 @@
 	icon_state = "mt_jumpsuit"
 	worn_state = "mt_jumpsuit"
 	specialty = "engineer"
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	flags_atom = NO_SNOW_TYPE
 	item_state_slots = list(WEAR_BODY = "mt_jumpsuit")
 
@@ -255,7 +255,7 @@
 	worn_state = "CO_formal_white"
 	specialty = "USCM officer"
 	flags_atom = NO_SNOW_TYPE
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/formal/black
 	name = "formal commanding officer's black uniform"
@@ -264,7 +264,7 @@
 	worn_state = "CO_formal_black"
 	specialty = "USCM officer"
 	flags_atom = NO_SNOW_TYPE
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/dining
 	name = "dining commanding officer uniform"
@@ -281,7 +281,7 @@
 	worn_state = "CO_casual"
 	specialty = "USCM officer"
 	flags_atom = NO_SNOW_TYPE
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/dress
 	name = "marine dress uniform"
@@ -304,7 +304,7 @@
 //=======================================================================\\
 
 /obj/item/clothing/under/marine/mp/provost
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 	name = "\improper Provost Uniform"
@@ -370,13 +370,13 @@
 //=======================================================================\\
 
 /obj/item/clothing/under/marine/veteran
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
 
 /obj/item/clothing/under/marine/veteran/marsoc
 	name = "MARSOC tactical operator uniform"
 	desc = "A black uniform for elite Marine operators. So this is where all their money goes."
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	icon_state = "marsoc"
 	worn_state = "marsoc"
 	specialty = "marsoc uniform"
@@ -509,7 +509,7 @@
 	icon_state = "ua_riot"
 	worn_state = "ua_riot"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	suit_restricted = null
 
 /obj/item/clothing/under/pizza
@@ -594,21 +594,21 @@
 /obj/item/clothing/under/rank/chef/exec
 	name = "\improper Weyland-Yutani suit"
 	desc = "A formal white undersuit."
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/ro_suit
 	name = "requisition officer suit."
 	desc = "A nicely-fitting military suit for a requisition officer. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "RO_jumpsuit"
 	worn_state = "RO_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/synthetic
 	name = "\improper USCM Support Uniform"
 	desc = "A simple uniform made for Synthetic crewmembers."
 	icon_state = "rdalt"
 	worn_state = "rdalt"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/synthetic/councillor
 	name = "\improper USCM Pristine Support Uniform"

@@ -894,91 +894,91 @@
 	icon_state = "syndicate"
 	item_state = "bl_suit"
 	worn_state = "syndicate"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/tristan
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
 	name = "captain's jumpsuit"
 	icon_state = "camojump"
 	worn_state = "camojump"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/SAS
 	name = "Legion Suit"
 	desc = "This armor was custom made to resemble the small growing Legion within the galaxy started by one man slowly making its way to becoming a larger Corperation.  DONOR ITEM."
 	icon_state = "ncr_uni"
 	worn_state = "ncr_uni"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/mycroft
 	name = "Doom Uniform"
 	desc = "A uniform, of a famous Earth warrior... Donor Item"
 	icon_state = "doom_suit"
 	worn_state = "doom_suit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/LEO
 	name = "Mercenary Jumpsuit Suit"
 	desc = "A uniform from a band of mercenaries...  DONOR ITEM."
 	icon_state = "merc_jumpsuit"
 	worn_state = "merc_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/john56
 	name = "Pink Pride Jumpsuit"
 	desc = "A jumpsuit for showing your pride in pink... Donor Item"
 	icon_state = "pink"
 	worn_state = "pink"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/sas3  //UNIQUE
 	name = "Black Fatigues"
 	desc = "Black camo Fatigues usually used on Night Operations.  UNIQUE DONOR ITEM."
 	icon_state = "hecu_u"
 	worn_state = "hecu_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/leeeverett
 	name = "Rugged Outfit"
 	desc = "It's covered in blood and smells terrible. Who died in this?"
 	icon_state = "rugged"
 	worn_state = "rugged"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/Vintage
 	name = "Vintage Pink Jumpsuit"
 	desc = "A jumpsuit that was either once red, or once white and washed with a load of colors... Donor Item"
 	icon_state = "pink"
 	worn_state = "pink"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/wooki
 	name = "Fancy Uniform"
 	desc = "Wooki's fancy blue suit.  UNIQUE DONOR ITEM"
 	icon_state = "wooki_u"
 	worn_state = "wooki_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/Zynax
 	name = "Gorka Suit"
 	desc = "Russian Gamo.   DONOR ITEM"
 	icon_state = "gorkasuit"
 	worn_state = "gorkasuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/BWO
 	name = "Fallout Suit"
 	desc = "A suit from an ancient group of wastelanders...   UNIQUE DONOR ITEM"
 	icon_state = "riot_u"
 	worn_state = "riot_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/juninho
 	name = "Corporate Security Uniform"
 	desc = "A security jumpsuit, worthy of a Corporate Head of Security.  DONOR ITEM" //Add UNIQUE if Unique
 	icon_state = "hos_corporate"
 	worn_state = "hos_corporate"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/fick
 	name = "Selena's Tactical Suit"
@@ -991,161 +991,161 @@
 	desc = "A uniform worn by a legendary battlefield surgeon.  UNIQUE DONOR ITEM"
 	icon_state = "hawkeye_jumpsuit_u"
 	worn_state = "hawkeye_jumpsuit_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/pink
 	name = "Pink Fatigues"
 	desc = "For fighting breast cancer.  With bullets. Donor Item"
 	icon_state = "pink2"
 	worn_state = "pink2"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/oneonethreeeight
 	name = "Camoflage Jumpsuit"
 	desc = "Woodland Camoflage Jumpsuit.  DONOR ITEM"
 	icon_state = "camo_jumpsuit"
 	worn_state = "camo_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/fick2
 	name = "Hart's Suit"
 	desc = "It looks like the Right Arm is robotic.  DONOR ITEM"
 	icon_state = "hart_jumpsuit"
 	worn_state = "hart_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/paradox
 	name = "Templar Jumpsuit"
 	desc = "The interfact components, for Templar Armor.  DONOR ITEM"
 	icon_state = "templar_jumpsuit"
 	worn_state = "templar_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/roswell
 	name = "Merc Jumpsuit"
 	desc = "Jumpsuit from a super shady mercenary company.  DONOR ITEM"
 	icon_state = "merc_jumpsuit"
 	worn_state = "merc_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/radical
 	name = "Bounty Hunter Jumpsuit"
 	desc = "Undergarmants of an ancient bounty hunter.  DONOR ITEM"
 	icon_state = "boba_jumpsuit"
 	worn_state = "boba_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/jackmcintyre
 	name = "Dress Uniform"
 	desc = "A Dress uniform, worn by standard marines. DONOR ITEM"
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/starscream
 	name = "Kardar Hussein's Jumpsuit"
 	desc = "Slightly worn and torn.  DONOR ITEM"
 	icon_state = "merc_jumpsuit2"
 	worn_state = "merc_jumpsuit2"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/allan
 	name = "Commander Jumpsuit"
 	desc = "Jumpsuit worn by a space commander...  DONOR ITEM"
 	icon_state = "henrick_jumpsuit"
 	worn_state = "henrick_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/steelpoint
 	name = "M4X Jumpsuit"
 	desc = "Jumpsuit to the M4X!!!  DONOR ITEM"
 	icon_state = "steelpoint_jumpsuit"
 	worn_state = "steelpoint_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/valentine
 	name = "Shocky's Jumpsuit"
 	desc = "Shockingly good Jumpsuit.  DONOR ITEM"
 	icon_state = "jensen"
 	worn_state = "jensen"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/arach
 	name = "Zero Suit"
 	desc = "A jumpsut worn under futuristic armor.  DONOR ITEM"
 	icon_state = "samus_jumpsuit"
 	worn_state = "samus_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/nickiscool
 	name = "Starlords Jumpsuit"
 	desc = "Designed to show off your manly muscles for all the ladies.  DONOR ITEM"
 	icon_state = "star_jumpsuit"
 	worn_state = "star_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/Jack
 	name = "White shirt and black Pants"
 	desc = "Perfect for formal dress, or going to a combat zone in Style.  UNIQUE DONOR ITEM"
 	icon_state = "Adam_jumpsuit_u"
 	worn_state = "Adam_jumpsuit_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/Fairedan
 	name = "Starfreighter Jumpsuit"
 	desc = "Standard Issue Jumpsuit for crew that serve on Lockmart CM-88B Bison starfreighters.  It has the number 1809246 on the inside tag....  DONOR ITEM"
 	icon_state = "Fairedan_jumpsuit"
 	worn_state = "Fairedan_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/commisar_jumpsuit
 	name = "Omega Commissar Uniform"
 	desc = "Uniform worn by the Comissars of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "commisar_jumpsuit_u"
 	worn_state = "commisar_jumpsuit_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/medicae_jumpsuit
 	name = "Omega Medicae Uniform"
 	desc = "Uniform work by the Medical Corps of Omega Team.  UNIQUE DONOR ITEM"
 	icon_state = "medicae_jumpsuit_u"
 	worn_state = "medicae_jumpsuit_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/standard_jumpsuit
 	name = "Omega Team Uniform"
 	desc = "Uniform worn by Omega Team.  DONOR ITEM"
 	icon_state = "standard_jumpsuit"
 	worn_state = "standard_jumpsuit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/Sanctum_uniform
 	name = "Sanctum Fatigues"
 	desc = "Fatigues with Kevlar fibers for a bit more protection than most clothing.  UNIQUE DONOR ITEM"
 	icon_state = "Sanctum_u"
 	worn_state = "Sanctum_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/sailorDave
 	name = "Eden USCM uniform"
 	desc = "An older model USCM uniform.  UNIQUE DONOR ITEM"
 	icon_state = "syndicate"
 	worn_state = "syndicate"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/coleMercer
 	name = "Black Ops uniform"
 	desc = "Way above your pay grade...  DONOR ITEM"
 	icon_state = "jensen"
 	worn_state = "jensen"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/marine/fluff/mileswolfe
 	name = "tiger striped combat fatigues"
 	desc = "Combat Fatigues that appear to have tiger stripes on them.  UNIQUE DONOR ITEM"
 	icon_state = "mileswolfe_u"
 	worn_state = "mileswolfe_u"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 
 //	MASK COSMETICS  ////////////////////////////////////////////////

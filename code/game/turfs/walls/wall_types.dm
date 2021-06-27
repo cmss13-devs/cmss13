@@ -642,6 +642,7 @@
 	icon_state = "shiva_fab_r_h"
 	desc = "It cannot be destroyed by any means you have available. Perhaps praying to the gods may help."
 	walltype = WALL_SHIVA_FAB_R
+	hull = TRUE
 
 /turf/closed/wall/shiva/prefabricated/orange
 	icon_state = "shiva_fab_oj"

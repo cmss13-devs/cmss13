@@ -4,7 +4,7 @@
 	name = "walkman"
 	desc = "A cassette player that first hit the market over 200 years ago. Crazy how these never went out of style."
 	icon = 'icons/obj/items/walkman.dmi'
-	icon_state = "walkman_empty"
+	icon_state = "walkman"
 	w_class = SIZE_SMALL
 	flags_equip_slot = SLOT_WAIST | SLOT_EAR
 	actions_types = list(/datum/action/item_action/walkman/play_pause,/datum/action/item_action/walkman/next_song,/datum/action/item_action/walkman/restart_song)
@@ -162,7 +162,7 @@
 	..()
 	overlays.Cut()
 	if(design)
-		icon_state = "walkman_[design]"
+		overlays += "+[design]"
 	if(tape)
 		if(!paused)
 			overlays += "+playing"
@@ -172,6 +172,13 @@
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc
 		H.regenerate_icons()
+
+/obj/item/device/walkman/get_mob_overlay(mob/user_mob, slot)
+	var/image/ret = ..()
+	if(slot == WEAR_EAR && !paused)
+		var/image/I = overlay_image(ret.icon, "+music", color, RESET_COLOR)
+		ret.overlays += I
+	return ret
 
 /obj/item/device/walkman/process()
 	if(!(src in current_listener.GetAllContents(3)) || current_listener.stat & DEAD)

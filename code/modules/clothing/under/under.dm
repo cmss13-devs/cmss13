@@ -26,7 +26,6 @@
 	var/displays_id = 1
 	///Stores whether sleeves can be rolled, cut etc. and whether they currently are.
 	var/flags_jumpsuit = FALSE
-	var/rolled_sleeves = FALSE //are the sleeves currently rolled?
 	var/list/suit_restricted //for uniforms that only accept to be combined with certain suits
 	var/removed_parts = 0
 	var/worn_state = null

@@ -64,6 +64,12 @@
 	</tr>
 </table>
 
+			<h2 class="date">27 June 2021</h2>
+			<h3 class="author">Carlarc updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Marines will now eat MREs instead of nibbling them.</li>
+			</ul>
+
 			<h2 class="date">26 June 2021</h2>
 			<h3 class="author">TheDonkified updated:</h3>
 			<ul class="changes bgimages16">
@@ -1118,37 +1124,6 @@
 			<ul class="changes bgimages16">
 				<li class="tweak">All instances of 'Weston-Yamada' have been replaced with 'Weyland-Yutani'.</li>
 				<li class="tweak">In reference to above, similarly, all instances of 'W-Y' have been replaced with 'Wey-Yu'.</li>
-			</ul>
-
-			<h2 class="date">25 April 2021</h2>
-			<h3 class="author">Carlarc updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Refactored vision_impair.</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Clusterbangs are no longer all cluster and no bang.</li>
-				<li class="rscadd">Added spawnable primed clusterbangs. Rulebreakers beware.</li>
-				<li class="bugfix">Queen's blockade should mess turfs after deletion somewhat less now.</li>
-			</ul>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Refactors xenomorph attack click delay behaviour. Xeno attacks now count as a full-delay XENO_ATTACK_ACTION, 0.4 second XENO_NONCOMBAT_ACTION, zero delay XENO_NO_DELAY_ACTION, or half-delay. Error messages have no delay. This does mean 'You can't do that!'-type messages are spammable, but only the user can see those.</li>
-				<li class="rscadd">A missed xeno melee attempt now has a half-delay and audio-visual feedback, plus a message. Should make the true causes of 'eaten clicks' more apparent.</li>
-				<li class="rscdel">Xenos can no longer click tiles to attack mobs in them. The functionality still exists but is now accessed indirectly through directional attacks and the next change. Weeds & blood etc. often blocked this anyway.</li>
-				<li class="tweak">As a xeno, clicking your own sprite now attacks the tile underneath the mouse pointer. This means that you will no longer miss otherwise-viable attacks because your own dummy thicc sprite got in the way.</li>
-				<li class="tweak">If conducting a tile attack where you and a prone enemy are on the same tile, it will now attempt to target the enemy rather than the standing mob (you).</li>
-				<li class="rscdel">Nibbling allied xenos removed: no attack delay for harm-intent clicking them.</li>
-				<li class="bugfix">Timed xeno actions (as distinguished from ability actions) such as tipping vending machines etc. now apply delays when they *start*, rather than when they finish.</li>
-				<li class="tweak">Attack delay for missing a directional attack is now 0.25 seconds, down from (usually) 1 second.</li>
-				<li class="tweak">Directional attacks now calculate angles more precisely, so your mouse doesn't need to be perfectly lined up to attack in a cardinal direction.</li>
-				<li class="tweak">The non-help intent self-harm preference toggle doesn't apply to xenomorphs anymore, as they can't do anything to themselves unless someone someday gives them weapon items. This prevents the toggle from messing you up when you click your own sprite while trying to attack someone.</li>
-				<li class="tweak">Changed the layer of the residue left by an abandoned ovipositor so that it's above weeds and weed nodes.</li>
-				<li class="rscadd">Added xeno attack animation to slashing resin, resin nests, dropship chairs, claymores, broken powerloader wreckage, discarded ovipositor object, empty eggs, resin fruits, tipping vending machines.</li>
-				<li class="tweak">Only attacks on mobs add to xeno slash stats. Previously all xeno clicks did, making it a useless statistic.</li>
-				<li class="tweak">Xenos no longer need to be on harm intent to open lockers.</li>
-				<li class="tweak">Xeno snow clearing must be done on disarm or grab intents, as harm intent counts as a missed slash and help intent does nothing.</li>
-				<li class="tweak">Clicking resin structures (spikes, sticky resin etc.) on help intent applies no delays.</li>
 			</ul>
 </div>
 </body>

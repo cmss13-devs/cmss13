@@ -2,10 +2,10 @@
 	var/name = ""
 	var/id = FLAMESHAPE_NONE
 
-/datum/flameshape/proc/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam)
+/datum/flameshape/proc/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
 	return
 
-/datum/flameshape/proc/generate_fire(var/turf/T, var/obj/flamer_fire/F2, var/new_spread_amt, var/fs, var/should_call, var/skip_flame = FALSE)
+/datum/flameshape/proc/generate_fire(var/turf/T, var/obj/flamer_fire/F2, var/new_spread_amt, var/fs, var/should_call, var/skip_flame = FALSE, var/fuel_pressure = 1)
 	var/obj/flamer_fire/foundflame = locate() in T
 	if(foundflame && foundflame.tied_reagents == F2.tied_reagents && !skip_flame) // From the same flames
 		return
@@ -18,14 +18,14 @@
 	if(!should_call)
 		to_call = null
 
-	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, new_spread_amt, F2.tied_reagents, fs, F2.target_clicked, to_call)
+	new /obj/flamer_fire(T, F2.weapon_cause_data, F2.tied_reagent, new_spread_amt, F2.tied_reagents, fs, F2.target_clicked, to_call, fuel_pressure)
 	return TRUE
 
 /datum/flameshape/default
 	name = "Default"
 	id = FLAMESHAPE_DEFAULT
 
-/datum/flameshape/default/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam)
+/datum/flameshape/default/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
 	var/turf/T
 	var/turf/source_turf = get_turf(F.loc)
 	for(var/dirn in cardinal)
@@ -52,7 +52,7 @@
 					break
 				new_spread_amt = 0
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, new_spread_amt, F.flameshape), 0)
+		addtimer(CALLBACK(src, .proc/generate_fire, T, F, new_spread_amt, F.flameshape, null, FALSE, fuel_pressure), 0)
 
 
 /datum/flameshape/default/irregular
@@ -66,7 +66,7 @@
 /datum/flameshape/star/proc/dirs_to_use()
 	return alldirs
 
-/datum/flameshape/star/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam)
+/datum/flameshape/star/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
 	fire_spread_amount = Floor(fire_spread_amount * 1.5) // branch 'length'
 	var/turf/source_turf = get_turf(F.loc)
 
@@ -93,7 +93,7 @@
 				if (A.flags_atom & ON_BORDER)
 					break
 
-			addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_MINORSTAR), 0)
+			addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_MINORSTAR, null, FALSE, fuel_pressure), 0)
 			prev_T = T
 
 /datum/flameshape/star/minor
@@ -110,7 +110,7 @@
 	name = "Line"
 	id = FLAMESHAPE_LINE
 
-/datum/flameshape/line/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam)
+/datum/flameshape/line/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
 	var/turf/source_turf = get_turf(F.loc)
 
 	var/turf/prev_T = F.loc
@@ -151,7 +151,7 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, F.flameshape, null, TRUE), distance)
+		addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, F.flameshape, null, TRUE, fuel_pressure), distance)
 		if(stop_at_turf)
 			break
 
@@ -165,7 +165,7 @@
 	name = "Triangle"
 	id = FLAMESHAPE_TRIANGLE
 
-/datum/flameshape/triangle/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam)
+/datum/flameshape/triangle/handle_fire_spread(var/obj/flamer_fire/F, var/fire_spread_amount, var/burn_dam, var/fuel_pressure = 1)
 	set waitfor = 0
 
 	var/mob/user
@@ -203,7 +203,7 @@
 			prev_T = T
 			continue
 
-		addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_TRIANGLE), 0)
+		addtimer(CALLBACK(src, .proc/generate_fire, T, F, 0, FLAMESHAPE_TRIANGLE, null, FALSE, fuel_pressure), 0)
 		prev_T = T
 		sleep(1)
 
@@ -234,7 +234,7 @@
 					hit_dense_atom_side = TRUE
 				else if (hit_dense_atom_mid)
 					break
-			generate_fire(R, F, 0, FLAMESHAPE_TRIANGLE, FALSE)
+			generate_fire(R, F, 0, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
 			if (!hit_dense_atom_mid && hit_dense_atom_side)
 				break
 			prev_R = R
@@ -253,7 +253,7 @@
 					hit_dense_atom_side = TRUE
 				else if (hit_dense_atom_mid)
 					break
-			generate_fire(L, F, 0, FLAMESHAPE_TRIANGLE, FALSE)
+			generate_fire(L, F, 0, FLAMESHAPE_TRIANGLE, FALSE, FALSE, fuel_pressure)
 			if (!hit_dense_atom_mid && hit_dense_atom_side)
 				break
 			prev_L = L

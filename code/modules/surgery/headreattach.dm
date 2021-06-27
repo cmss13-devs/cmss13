@@ -3,7 +3,15 @@
 /datum/surgery_step/head
 	priority = 1
 	can_infect = 0
-	allowed_species = list("Synthetic", "Early Synthetic", "Second Generation Synthetic")
+	allowed_species = list(
+		"Synthetic",
+		SYNTH_COLONY,
+		SYNTH_COMBAT,
+		SYNTH_GEN_ONE,
+		SYNTH_GEN_TWO,
+		SYNTH_GEN_THREE,
+		"Event Synthetic"
+		)
 	var/reattach_step
 
 /datum/surgery_step/head/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)

@@ -13,5 +13,5 @@
 /datum/pain/synthetic/activate_horrible()
 	pain_slowdown = PAIN_SPEED_MED
 
-/datum/pain/synthetic/early_synthetic
+/datum/pain/synthetic/colonial
 	max_pain 			= 300

@@ -55,13 +55,25 @@
 	SIGNAL_HANDLER
 	return COMPONENT_NO_IMPREGNATE
 
-/datum/species/synthetic/second_gen_synthetic
-	name = "Second Generation Synthetic"
+/datum/species/synthetic/shipside
+	name = SYNTH_GEN_THREE
+
+/datum/species/synthetic/shipside/gen_one
+	name = SYNTH_GEN_ONE
+	uses_ethnicity = FALSE
+	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
+
+	hair_color = "#000000"
+	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
+	deform = 'icons/mob/humans/species/r_synthetic.dmi'
+
+/datum/species/synthetic/shipside/gen_two
+	name = SYNTH_GEN_TWO
 	uses_ethnicity = FALSE //2nd gen uses generic human look
 
-/datum/species/synthetic/early_synthetic
-	name = "Early Synthetic"
-	name_plural = "Early Synthetics"
+/datum/species/synthetic/colonial
+	name = SYNTH_COLONY
+	name_plural = "Colonial Synthetics"
 	uses_ethnicity = FALSE
 	burn_mod = 0.80 // a little bit of resistance
 	mob_inherent_traits = list(TRAIT_SUPER_STRONG, TRAIT_INTENT_EYES)
@@ -69,7 +81,7 @@
 	icobase = 'icons/mob/humans/species/r_synthetic.dmi'
 	deform = 'icons/mob/humans/species/r_synthetic.dmi'
 
-	pain_type = /datum/pain/synthetic/early_synthetic
+	pain_type = /datum/pain/synthetic/colonial
 	rarity_value = 1.5
 	slowdown = 0.45
 	total_health = 200 //But more durable
@@ -82,8 +94,8 @@
 	inherent_verbs = null
 
 // Synth used for W-Y Deathsquads
-/datum/species/synthetic/early_synthetic/w_y_combat_synthetic
-	name = "Combat Synthetic"
+/datum/species/synthetic/colonial/combat
+	name = SYNTH_COMBAT
 	name_plural = "Combat Synthetics"
 	burn_mod = 0.6 // Made for combat
 
@@ -92,5 +104,13 @@
 	knock_down_reduction = 5.0
 	stun_reduction = 5.0
 
-/datum/species/synthetic/event
+
+//Event Synthetics
+/datum/species/synthetic/colonial/event
+	name = "Event Synthetic" //To prevent any conflicts with natural spawns for events.
+/datum/species/synthetic/shipside/event
+	name = "Event Synthetic" //To prevent any conflicts with natural spawns for events.
+/datum/species/synthetic/shipside/gen_one/event
+	name = "Event Synthetic" //To prevent any conflicts with natural spawns for events.
+/datum/species/synthetic/shipside/gen_two/event
 	name = "Event Synthetic" //To prevent any conflicts with natural spawns for events.

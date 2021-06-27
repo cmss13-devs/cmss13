@@ -24,8 +24,8 @@
 
 /datum/equipment_preset/synth/load_skills(mob/living/carbon/human/H)
 	. = ..()
-	if(isEarlySynthetic(H))
-		H.set_skills(/datum/skills/early_synthetic)
+	if(isColonySynthetic(H))
+		H.set_skills(/datum/skills/colonial_synthetic)
 
 	H.allow_gun_usage = FALSE
 
@@ -111,7 +111,7 @@
 	skills = /datum/skills/smartgunner
 
 /datum/equipment_preset/synth/combat_smartgunner/load_race(mob/living/carbon/human/H)
-	H.set_species("Early Synthetic")
+	H.set_species(SYNTH_COLONY)
 
 /datum/equipment_preset/synth/combat_smartgunner/load_gear(mob/living/carbon/human/H)
 	var/obj/item/clothing/under/marine/J = new(H)
@@ -145,10 +145,10 @@
 	idtype = /obj/item/card/id/lanyard
 	assignment = JOB_SURVIVOR
 	rank = JOB_SYNTH_SURVIVOR
-	skills = /datum/skills/early_synthetic
+	skills = /datum/skills/colonial_synthetic
 
 /datum/equipment_preset/synth/survivor/load_race(mob/living/carbon/human/H)
-	H.set_species("Early Synthetic")
+	H.set_species(SYNTH_COLONY)
 
 /datum/equipment_preset/synth/survivor/New()
 	. = ..()

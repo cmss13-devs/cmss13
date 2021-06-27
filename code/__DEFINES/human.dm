@@ -130,3 +130,10 @@
 #define EFFECTS_LAYER			1  //If you're hit by an acid DoT
 #define TOTAL_LAYERS			38
 //////////////////////////////////
+
+//Synthetic Defines
+#define SYNTH_COLONY	"Colonial Synthetic"
+#define SYNTH_COMBAT	"Combat Synthetic"
+#define SYNTH_GEN_ONE	"First Generation Synthetic"
+#define SYNTH_GEN_TWO	"Second Generation Synthetic"
+#define SYNTH_GEN_THREE	"Third Generation Synthetic"

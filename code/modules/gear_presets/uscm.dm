@@ -567,7 +567,7 @@
 
 /datum/equipment_preset/uscm/rto_equipped/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	var/obj/item/clothing/under/marine/officer/rto/U = new(H)
+	var/obj/item/clothing/under/marine/rto/U = new(H)
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
 	U.attach_accessory(H, W)
 	H.equip_to_slot_or_del(U, WEAR_BODY)

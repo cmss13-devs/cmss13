@@ -23,7 +23,7 @@
 		2 = Report detailed damages
 		3 = Report location
 		*/
-	var/displays_id = 1
+	var/displays_id = TRUE
 	///Stores whether sleeves can be rolled, cut etc. and whether they currently are.
 	var/flags_jumpsuit = FALSE
 	var/list/suit_restricted //for uniforms that only accept to be combined with certain suits
@@ -194,8 +194,6 @@
 	if(!(("[worn_state]_d") in icon_states(under_icon)))
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLABLE
 
-	update_clothing_icon()
-
 /obj/item/clothing/under/verb/rollsuit()
 	set name = "Roll Sleeves"
 	set category = "Object"
@@ -237,8 +235,6 @@
 	if(!(("[worn_state]_dj") in icon_states(under_icon)))
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVABLE
 
-	update_clothing_icon()
-
 /obj/item/clothing/under/verb/removejacket()
 	set name = "Remove Jacket"
 	set category = "Object"
@@ -253,6 +249,9 @@
 		flags_jumpsuit ^= UNIFORM_JACKET_REMOVED
 		if(flags_jumpsuit & UNIFORM_JACKET_REMOVED)
 			item_state_slots[WEAR_BODY] = "[worn_state]_dj"
+			if(ismob(loc))
+				var/mob/M = loc
+				M.update_inv_wear_id()
 		else if(flags_jumpsuit & UNIFORM_SLEEVE_CUT)
 			item_state_slots[WEAR_BODY] = "[worn_state]_df"
 		else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLED)
@@ -272,7 +271,7 @@
 		else if(flags_jumpsuit & UNIFORM_SLEEVE_ROLLED)
 			to_chat(user, SPAN_NOTICE("You can't dice up [src] while it's rolled."))
 		else
-			flags_jumpsuit &= (UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE)
+			flags_jumpsuit &= ~(UNIFORM_SLEEVE_ROLLABLE|UNIFORM_SLEEVE_CUTTABLE)
 			flags_jumpsuit |= UNIFORM_SLEEVE_CUT
 
 			item_state_slots[WEAR_BODY] = "[worn_state]_df"
@@ -284,10 +283,9 @@
 	else if(loc == user && istype(B, /obj/item/clothing/under) && src != B && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(H.w_uniform == src)
+			H.drop_inv_item_on_ground(src)
 			if(H.equip_to_appropriate_slot(B))
 				H.put_in_active_hand(src)
-			else
-				H.drop_inv_item_on_ground(src)
 
 	else
 		..()

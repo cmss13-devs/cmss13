@@ -107,6 +107,7 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/nurse
 	desc = "A dress commonly worn by the nursing staff in the medical department."

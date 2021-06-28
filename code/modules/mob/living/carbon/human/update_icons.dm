@@ -316,9 +316,6 @@ There are several things that need to be remembered:
 		overlays_standing[ID_LAYER]	= id_overlay
 		apply_overlay(ID_LAYER)
 
-//update_inv_wear_id
-//rolled_sleeves
-
 /mob/living/carbon/human/update_inv_gloves()
 	remove_overlay(GLOVES_LAYER)
 	var/image/I

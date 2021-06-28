@@ -23,7 +23,6 @@
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
 
 /obj/item/clothing/under/marine/Initialize(mapload, new_protection[] = list(MAP_ICE_COLONY = ICE_PLANET_min_cold_protection_temperature), override_icon_state[] 	= null)
-	. = ..()
 	if(!(flags_atom & NO_NAME_OVERRIDE))
 		name = "[specialty]"
 		if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
@@ -32,6 +31,7 @@
 			name += " uniform"
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type, override_icon_state, new_protection)
+	. = ..() //Done after above in case gamemode skin is missing sprites.
 
 /obj/item/clothing/under/marine/set_sensors(mob/user)
 	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
@@ -53,12 +53,11 @@
 	worn_state = "marine_engineer"
 	specialty = "USCM engineer"
 
-/obj/item/clothing/under/marine/officer/rto
+/obj/item/clothing/under/marine/rto
 	name = "\improper marine RT operator uniform"
 	desc = "Standard-issue RT Operator fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_rto"
 	item_state = "marine_rto"
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "marine RT operator"
 
 /obj/item/clothing/under/marine/sniper
@@ -299,6 +298,7 @@
 	worn_state = "marine_formal"
 	specialty = "marine dress"
 	flags_atom = NO_SNOW_TYPE
+	flags_jumpsuit = FALSE
 
 //=========================//PROVOST\\================================\\
 //=======================================================================\\

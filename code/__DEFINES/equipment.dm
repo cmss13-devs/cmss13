@@ -116,6 +116,7 @@
 #define UNIFORM_SLEEVE_CUT (1<<3)
 #define UNIFORM_JACKET_REMOVABLE (1<<4) //can the jacket be removed?
 #define UNIFORM_JACKET_REMOVED (1<<5)
+#define UNIFORM_DO_NOT_HIDE_ACCESSORIES (1<<6) //are accessories never hidden by sleeve/jacket state? (meant for snow uniform which rolls collar instead of sleeves)
 //===========================================================================================
 
 //===========================================================================================

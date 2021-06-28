@@ -33,8 +33,8 @@
 
 		if(istype(loc,/obj/item/clothing/under))
 			var/obj/item/clothing/under/C = loc
-			if(on_rolled["down"] && (C.flags_jumpsuit & UNIFORM_SLEEVE_ROLLED || C.item_state_slots[WEAR_BODY] == "[C.worn_state]_df") && !findtext(C.icon_state, "s_marine")) //_df == sleeves cut off. findtext is because marine snow uniforms roll their collar instead of sleeves. s_marine... states also exist for tanker uniforms but those do not have rollable/cuttable sleeves.
-				tmp_icon_state = on_rolled["down"]
+			if(C.flags_jumpsuit & jumpsuit_hide_states && !(C.flags_jumpsuit & UNIFORM_DO_NOT_HIDE_ACCESSORIES))
+				return
 
 		var/use_sprite_sheet = accessory_icons[slot]
 		if(sprite_sheets[bodytype])

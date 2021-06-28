@@ -17,7 +17,10 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-	var/specialty = "USCM" //Makes it so that we can see the right name in the vendor.
+	///Makes it so that we can see the right name in the vendor.
+	var/specialty = "USCM"
+	///List of map variants that use sleeve rolling on something else, like snow uniforms rolling the collar, and therefore shouldn't hide patches etc when rolled.
+	var/list/map_variants_roll_accessories = list("s_")
 	layer = UPPER_ITEM_LAYER
 
 	//speciality does NOTHING if you have NO_NAME_OVERRIDE
@@ -38,6 +41,12 @@
 		to_chat(user, SPAN_WARNING("The sensors in your uniform can't be modified."))
 		return
 	. = ..()
+
+/obj/item/clothing/under/marine/select_gamemode_skin(expected_type, list/override_icon_state, list/override_protection)
+	. = ..()
+	for(var/i in map_variants_roll_accessories)
+		if(findtext(icon_state, i, 1, 3))
+			flags_jumpsuit |= UNIFORM_DO_NOT_HIDE_ACCESSORIES
 
 /obj/item/clothing/under/marine/medic
 	name = "\improper USCM medic uniform"

@@ -287,7 +287,8 @@
 	name = "\improper MM Blood Dispenser"
 	desc = "Marine Med brand Blood Pack Dispensery"
 	icon_state = "blood"
-	wrenchable = FALSE
+	wrenchable = TRUE
+	hackable = TRUE
 
 	listed_products = list(
 		list("BLOOD PACKS", -1, null, null),

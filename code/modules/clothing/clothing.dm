@@ -82,19 +82,17 @@
 
 /obj/item/clothing/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
-	ret.appearance_flags |= KEEP_TOGETHER
 
 	if(slot == WEAR_L_HAND || slot == WEAR_R_HAND)
 		return ret
 
+	if(blood_color && blood_overlay_type)
+		var/image/bloodsies = overlay_image('icons/effects/blood.dmi', "[blood_overlay_type]_blood", blood_color, RESET_COLOR|NO_CLIENT_COLOR)
+		ret.overlays += bloodsies
+
 	if(LAZYLEN(accessories))
 		for(var/obj/item/clothing/accessory/A in accessories)
 			ret.overlays |= A.get_mob_overlay(user_mob, slot)
-
-	if(blood_color && blood_overlay_type)
-		var/image/bloodsies = overlay_image('icons/effects/blood.dmi', "[blood_overlay_type]_blood", blood_color, RESET_COLOR|NO_CLIENT_COLOR)
-		bloodsies.blend_mode = BLEND_INSET_OVERLAY
-		ret.overlays += bloodsies
 	return ret
 
 

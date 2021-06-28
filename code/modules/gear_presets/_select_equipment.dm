@@ -258,7 +258,7 @@
 		/obj/item/clothing/head/militia,
 		/obj/item/clothing/head/militia/bucket,
 		/obj/item/clothing/head/helmet,
-		/obj/item/clothing/head/helmet/durag,
+		/obj/item/clothing/head/helmet/skullcap,
 		/obj/item/clothing/head/helmet/swat,
 		/obj/item/clothing/head/hardhat,
 		/obj/item/clothing/head/welding,
@@ -407,7 +407,7 @@
 	if(!istype(H)) return
 	var/helmetpath = pick(
 		/obj/item/clothing/head/freelancer,
-		/obj/item/clothing/head/helmet/durag,
+		/obj/item/clothing/head/helmet/skullcap,
 		/obj/item/clothing/head/bandana,
 		/obj/item/clothing/head/cmbandana,
 		/obj/item/clothing/head/cmbandana/tan,

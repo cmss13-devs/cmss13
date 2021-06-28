@@ -4,6 +4,13 @@
 	dir = 1;
 	tag = "icon-comfychair (NORTH)"
 	},
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/van/backright;
+	name = "back right entrance marker";
+	pixel_x = -32;
+	tag = "back_right"
+	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_10"
 	},
@@ -79,6 +86,13 @@
 "s" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/vehicle_roof/van,
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/van/backleft;
+	name = "back left entrance marker";
+	pixel_x = -32;
+	tag = "back_left"
+	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_7"
 	},
@@ -88,6 +102,7 @@
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/van/left;
 	name = "left entrance marker";
+	pixel_y = 32;
 	tag = "left"
 	},
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat{
@@ -119,12 +134,6 @@
 /obj/structure/interior_wall/van{
 	icon_state = "back_2"
 	},
-/obj/effect/landmark/interior/spawn/entrance{
-	dir = 8;
-	exit_type = /obj/structure/interior_exit/vehicle/van/backleft;
-	name = "back left entrance marker";
-	tag = "back_left"
-	},
 /turf/open/void/vehicle,
 /area/space)
 "y" = (
@@ -145,12 +154,6 @@
 "z" = (
 /obj/structure/interior_wall/van{
 	icon_state = "back_1"
-	},
-/obj/effect/landmark/interior/spawn/entrance{
-	dir = 8;
-	exit_type = /obj/structure/interior_exit/vehicle/van/backright;
-	name = "back right entrance marker";
-	tag = "back_right"
 	},
 /turf/open/void/vehicle,
 /area/space)

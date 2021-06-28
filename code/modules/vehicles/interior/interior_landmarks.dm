@@ -33,6 +33,8 @@
 	E.setDir(dir)
 	E.alpha = alpha
 	E.update_icon()
+	E.pixel_x = pixel_x
+	E.pixel_y = pixel_y
 	// Don't qdel this because it's used for entering as well
 
 /obj/effect/landmark/interior/spawn/entrance/step_toward/on_load(var/datum/interior/I)
@@ -46,6 +48,8 @@
 	E.setDir(dir)
 	E.alpha = alpha
 	E.update_icon()
+	E.pixel_x = pixel_x
+	E.pixel_y = pixel_y
 
 // Driver's seat spawner
 /obj/effect/landmark/interior/spawn/vehicle_driver_seat
@@ -65,6 +69,8 @@
 	S.alpha = alpha
 	S.update_icon()
 	S.handle_rotation()
+	S.pixel_x = pixel_x
+	S.pixel_y = pixel_y
 
 	qdel(src)
 
@@ -86,6 +92,8 @@
 	S.alpha = alpha
 	S.update_icon()
 	S.handle_rotation()
+	S.pixel_x = pixel_x
+	S.pixel_y = pixel_y
 
 	qdel(src)
 
@@ -105,6 +113,8 @@
 	S.update_icon()
 	S.alpha = alpha
 	S.handle_rotation()
+	S.pixel_x = pixel_x
+	S.pixel_y = pixel_y
 
 	qdel(src)
 
@@ -124,5 +134,7 @@
 	S.alpha = alpha
 	S.update_icon()
 	S.handle_rotation()
+	S.pixel_x = pixel_x
+	S.pixel_y = pixel_y
 
 	qdel(src)

@@ -762,10 +762,7 @@
 /datum/equipment_preset/survivor/chaplain/trijent/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/nun(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/nun_hood(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double(H), WEAR_L_HAND)
 
 	..()
 
@@ -776,10 +773,7 @@
 /datum/equipment_preset/survivor/chaplain/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double(H), WEAR_L_HAND)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/priest_robe(H), WEAR_JACKET)
 
 	..()
 

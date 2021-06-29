@@ -60,6 +60,8 @@
 	H.equip_to_slot_or_del(new /obj/item/paper/research_notes/good(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/reagent_container/glass/beaker/vial/random/good(H), WEAR_IN_JACKET)
 
+	..()
+
 /datum/equipment_preset/survivor/scientist/soro
 	name = "Survivor - Sorokyne Strata Researcher"
 	assignment = "Sorokyne Strata Researcher"
@@ -73,6 +75,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/black(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/doctor(H), WEAR_JACKET)
 
+	..()
+
 /datum/equipment_preset/survivor/scientist/corsat
 	name = "Survivor - CORSAT Researcher"
 	assignment = "CORSAT Researcher"
@@ -81,6 +85,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
+
+	..()
 
 /datum/equipment_preset/survivor/scientist/florina
 	name = "Survivor - Florina Researcher"
@@ -96,11 +102,13 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/chem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
 
-/datum/equipment_preset/survivor/lv_archeologist
+	..()
+
+/datum/equipment_preset/survivor/scientist/lv_archeologist
 	name = "Survivor - LV-624 Archeologist"
 	assignment = "LV-624 Archeologist"
 
-/datum/equipment_preset/survivor/lv_archeologist/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/scientist/lv_archeologist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/researcher(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/booniehat(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/latex(H), WEAR_HANDS)
@@ -108,6 +116,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/science(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+
+	..()
 
 /datum/equipment_preset/survivor/scientist/solaris
 	name = "Survivor - Solaris Scientist"
@@ -240,6 +250,8 @@
 		add_ice_colony_survivor_equipment(H)
 	else H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+
+	..()
 
 /datum/equipment_preset/survivor/doctor/trijent
 	name = "Survivor - Trijent Doctor"
@@ -742,10 +754,11 @@
 	else
 		H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/bible/booze(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/shotgun/buckshot(H.back), WEAR_IN_BACK)
 
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+
+	..()
 
 /datum/equipment_preset/survivor/chaplin/trijent
 	name = "Survivor - Trijent Chaplain"
@@ -754,12 +767,26 @@
 /datum/equipment_preset/survivor/chaplin/trijent/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/nun(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/nun_hood(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double(H), WEAR_L_HAND)
+
+	..()
 
 /datum/equipment_preset/survivor/chaplain/lv
 	name = "Survivor - LV-624 Priest"
 	assignment = "LV-624 Priest"
 
 /datum/equipment_preset/survivor/chaplain/lv/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/chaplain(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/norm(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/handful/shotgun/buckshot(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/holidaypriest(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double(H), WEAR_L_HAND)
+
+	..()
 
 /datum/equipment_preset/survivor/chaplain/solaris
 	name = "Survivor - Solaris Chaplain"
@@ -834,6 +861,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
+	..()
+
 
 /datum/equipment_preset/survivor/engineer/trjent
 	name = "Survivor - Dam Maintenance Technician"
@@ -846,6 +875,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+
+	..()
 
 
 /datum/equipment_preset/survivor/engineer/lv
@@ -860,6 +891,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(H), WEAR_HEAD)
 
+	..()
+
 /datum/equipment_preset/survivor/engineer/soro
 	name = "Survivor - Sorokyne Strata Political Prisioner"
 	assignment = "Sorokyne Strata Political Prisioner"
@@ -870,6 +903,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(H), WEAR_FACE)
+
+	..()
 
 /datum/equipment_preset/survivor/engineer/trijent
 	name = "Survivor - Hydro Electric Engineer"
@@ -883,6 +918,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat(H), WEAR_HEAD)
 
+	..()
+
 /datum/equipment_preset/survivor/engineer/corsat
 	name = "Survivor - Corsat Station Engineer"
 	assignment = "Corsat Station Engineer"
@@ -892,6 +929,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/techofficer(H), WEAR_HEAD)
+
+	..()
 
 /datum/equipment_preset/survivor/engineer/florina
 	name = "Survivor - Florina Engineer"
@@ -904,6 +943,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(H), WEAR_HEAD)
 
+	..()
+
 /datum/equipment_preset/survivor/engineer/kutjevo
 	name = "Survivor - Kutjevo Engineer"
 	assignment = "Kutjevo Engineer"
@@ -914,6 +955,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat/orange(H), WEAR_HEAD)
+
+	..()
 
 /datum/equipment_preset/survivor/engineer/solaris
 	name = "Survivor - Solaris Engineer"
@@ -1154,6 +1197,8 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
+	..()
+
 /datum/equipment_preset/survivor/trucker/lv
 	name = "Survivor - LV-624 Cargo Technician"
 	assignment = "LV-624 Cargo Technician"
@@ -1171,6 +1216,8 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/uzi(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/smg/uzi(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+
+	..()
 
 /datum/equipment_preset/survivor/trucker/solaris
 	name = "Survivor - Solaris Heavy Vehicle Operator"
@@ -1255,7 +1302,63 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 
-/datum/equipment_preset/survivor/colonial_marshall/florina
+/datum/equipment_preset/survivor/security/trijent/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/head_of_security/navyblue(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/mpcap(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/CMB(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+
+	..()
+
+/datum/equipment_preset/survivor/security/soro
+	name = "Survivor - Sorokyne Strata Security"
+	assignment = "Sorokyne Strata Security"
+
+/datum/equipment_preset/survivor/security/soro/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/veteran/soviet_uniform_01(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/snow_suit/soviet(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/ears/earmuffs(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf(H), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/ushanka(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/hunting(H), WEAR_R_HAND)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/hunting(H), WEAR_IN_BACK)
+
+	..()
+
+/datum/equipment_preset/survivor/security/corsat
+	name = "Survivor - CORSAT Security Guard"
+	assignment = "CORSAT Security Guard"
+
+/datum/equipment_preset/survivor/security/corsat/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/b92fs(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/b92fs(H.back), WEAR_IN_BACK)
+
+	..()
+
+/datum/equipment_preset/survivor/riot/florina
 	name = "Survivor - United Americas Riot Officer"
 	assignment = "United Americas Riot Officer"
 
@@ -1271,6 +1374,61 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/prop/helmetgarb/riot_shield(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+
+	..()
+
+/datum/equipment_preset/survivor/security/florina
+	name = "Survivor - Florina Prison Guard"
+	assignment = "Florina Prison Guard"
+
+/datum/equipment_preset/survivor/security/florina/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m4a3(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+
+	..()
+
+/datum/equipment_preset/survivor/security/kutjevo
+	name = "Survivor - Kutjevo Security Guard"
+	assignment = "Kutjevo Security Guard"
+
+
+/datum/equipment_preset/survivor/security/kutjevo/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security/corp(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/m1911(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+
+	..()
+
+/datum/equipment_preset/survivor/security/lv
+	name = "Survivor - LV-624 Security Guard"
+	assignment = "LV-624 Security Guard"
+
+/datum/equipment_preset/survivor/security/lv/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security/navyblue(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/highpower(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/highpower(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
@@ -1292,6 +1450,8 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/small(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/small(H), WEAR_IN_BACK)
 
+	..()
+
 /datum/equipment_preset/survivor/marshall/solaris
 	name = "Survivor - Solaris Colonial Marshall"
 	assignment = "Solaris Colonial Marshall"
@@ -1306,6 +1466,24 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/heavy(H), WEAR_IN_BACK)
+
+	..()
+
+/datum/equipment_preset/survivor/security/solaris
+	name = "Survivor - Solaris Security Guard"
+	assignment = "Solaris Security Guard"
+
+/datum/equipment_preset/survivor/security/solaris/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/security2(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/security(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/revolver/cmb(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/cmb(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 
 	..()
 
@@ -1420,6 +1598,8 @@
 	H.equip_to_slot_or_del(new /obj/item/clipboard(H), WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
+
+	..()
 
 /datum/equipment_preset/survivor/interstellar_human_rights_observer/soro
 	name = "Survivor - Soro Interstellar Human Rights Observer"

@@ -206,10 +206,8 @@
 		fracture()
 /*
 	Describes how limbs (body parts) of human mobs get damage applied.
-	Less clear vars:
-	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
 */
-/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/damage_source = "dismemberment", var/mob/attack_source = null)
+/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, var/damage_source = "dismemberment", var/mob/attack_source = null)
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -238,11 +236,11 @@
 	if((brute_dam + burn_dam + brute + burn) < max_damage || !CONFIG_GET(flag/limbs_can_break))
 		if(brute)
 			if(can_cut)
-				createwound(CUT, brute, impact_name, is_ff = is_ff)
+				createwound(CUT, brute, is_ff = is_ff)
 			else
-				createwound(BRUISE, brute, impact_name, is_ff = is_ff)
+				createwound(BRUISE, brute, is_ff = is_ff)
 		if(burn)
-			createwound(BURN, burn, impact_name, is_ff = is_ff)
+			createwound(BURN, burn, is_ff = is_ff)
 	else
 		//If we can't inflict the full amount of damage, spread the damage in other ways
 		//How much damage can we actually cause?
@@ -253,9 +251,9 @@
 			if(brute > 0)
 				//Inflict all brute damage we can
 				if(can_cut)
-					createwound(CUT, min(brute, can_inflict), impact_name, is_ff = is_ff)
+					createwound(CUT, min(brute, can_inflict), is_ff = is_ff)
 				else
-					createwound(BRUISE, min(brute, can_inflict), impact_name, is_ff = is_ff)
+					createwound(BRUISE, min(brute, can_inflict), is_ff = is_ff)
 				var/temp = can_inflict
 				//How much more damage can we inflict
 				can_inflict = max(0, can_inflict - brute)
@@ -264,7 +262,7 @@
 
 			if(burn > 0 && can_inflict)
 				//Inflict all burn damage we can
-				createwound(BURN, min(burn,can_inflict), impact_name, is_ff = is_ff)
+				createwound(BURN, min(burn,can_inflict), is_ff = is_ff)
 				//How much burn damage is left to inflict
 				remain_burn = max(0, burn - can_inflict)
 
@@ -390,7 +388,7 @@ This function completely restores a damaged organ to perfect condition.
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
 
-/obj/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name, var/is_ff = FALSE)
+/obj/limb/proc/createwound(var/type = CUT, var/damage, var/is_ff = FALSE)
 	if(!damage)
 		return
 
@@ -1077,13 +1075,6 @@ This function completely restores a damaged organ to perfect condition.
 		wound_overlay.icon_state = "burn_[burnstate]"
 		overlays += wound_overlay
 
-	// for(var/datum/wound/W in wounds)
-	// 	if(W.impact_icon)
-	// 		DI = new /image(W.impact_icon)
-	// 		DI.blend_mode = BLEND_INSET_OVERLAY
-	// 		overlays += DI
-
-
 //called when limb is removed or robotized, any ongoing surgery and related vars are reset
 /obj/limb/proc/reset_limb_surgeries()
 	surgery_open_stage = 0
@@ -1248,7 +1239,7 @@ This function completely restores a damaged organ to perfect condition.
 		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "paint_[owner.lip_style]")
 		overlays += lips
 
-/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/mob/attack_source = null)
+/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, var/mob/attack_source = null)
 	. = ..()
 	if (!disfigured)
 		if (brute_dam > 50 || brute_dam > 40 && prob(50))

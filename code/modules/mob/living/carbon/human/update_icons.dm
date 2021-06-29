@@ -250,6 +250,27 @@ There are several things that need to be remembered:
 
 
 
+/**Handles headshot images. These render above hair and below hats/helmets. Must be given a headshot_state or it just removes the overlay.
+Applied by gun suicide and high impact bullet executions, removed by rejuvenate, since such people are otherwise unrevivable.**/
+/mob/living/carbon/human/proc/update_headshot_overlay(headshot_state)
+	remove_overlay(HEADSHOT_LAYER)
+
+	if(!headshot_state)
+		return
+
+	var/obj/limb/head/head_organ = get_limb("head")
+	if(!head_organ || (head_organ.status & LIMB_DESTROYED))
+		return
+
+	var/image/headshot = new('icons/mob/humans/dam_human.dmi', headshot_state)
+	headshot.appearance_flags = RESET_COLOR
+	headshot.blend_mode = BLEND_INSET_OVERLAY
+	headshot.layer = -HEADSHOT_LAYER
+	overlays_standing[HEADSHOT_LAYER] = headshot
+	apply_overlay(HEADSHOT_LAYER)
+
+
+
 /* --------------------------------------- */
 //For legacy support.
 /mob/living/carbon/human/regenerate_icons()

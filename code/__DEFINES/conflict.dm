@@ -5,6 +5,12 @@
 #define GRAB_CHOKE      3
 
 //Ammo defines for gun/projectile related things.
+
+//Headshot overlay icoc states used for suicide and battlefield executions.
+#define HEADSHOT_OVERLAY_LIGHT "light_headshot"
+#define HEADSHOT_OVERLAY_MEDIUM "medium_headshot"
+#define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
+
 #define AMMO_EXPLOSIVE 			(1<<0)
 #define AMMO_XENO_ACID 			(1<<1)
 #define AMMO_XENO_TOX			(1<<2)

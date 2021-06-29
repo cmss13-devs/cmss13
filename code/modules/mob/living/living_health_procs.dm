@@ -144,6 +144,7 @@
 		SShuman.processable_human_list |= H
 		H.undefibbable = FALSE
 		H.chestburst = 0
+		H.update_headshot_overlay() //They don't have their brains blown out anymore, if they did.
 
 	// fix all of our organs
 	restore_all_organs()

@@ -893,7 +893,7 @@
 
 	if(damage || (ammo_flags && AMMO_SPECIAL_EMBED))
 		. = TRUE
-		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, impact_name = P.ammo.impact_name, impact_limbs = P.ammo.impact_limbs, firer = P.firer)
+		apply_damage(damage_result, P.ammo.damage_type, P.def_zone, firer = P.firer)
 		P.play_damage_effect(src)
 
 		if(P.ammo.shrapnel_chance > 0 && prob(P.ammo.shrapnel_chance + round(damage / 10)))

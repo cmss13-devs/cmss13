@@ -89,28 +89,29 @@
 #define ORDER_FOCUS_MAX_LEVEL   50
 
 //Human Overlays Indexes used in update_icons/////////
-#define UNDERWEAR_LAYER			38
-#define UNDERSHIRT_LAYER		37
-#define MUTANTRACE_LAYER		36
-#define FLAY_LAYER 				35.5 //For use by Hunter Flay
-#define DAMAGE_LAYER			35
-#define UNIFORM_LAYER			34
-#define TAIL_LAYER				33	//bs12 specific. this hack is probably gonna come back to haunt me
-#define ID_LAYER				32
-#define SHOES_LAYER				31
-#define GLOVES_LAYER			30
-#define MEDICAL_LAYER			29	//For splint and gauze overlays
-#define SUIT_LAYER				28
-#define SUIT_GARB_LAYER			27
-#define SUIT_SQUAD_LAYER		26
-#define GLASSES_LAYER			25
-#define BELT_LAYER				24
-#define SUIT_STORE_LAYER		23
-#define BACK_LAYER				22
-#define HAIR_LAYER				21
-#define FACIAL_LAYER			20
-#define EARS_LAYER				19
-#define FACEMASK_LAYER			18
+#define UNDERWEAR_LAYER			40
+#define UNDERSHIRT_LAYER		39
+#define MUTANTRACE_LAYER		38
+#define FLAY_LAYER 				37 //For use by Hunter Flay
+#define DAMAGE_LAYER			36
+#define UNIFORM_LAYER			35
+#define TAIL_LAYER				34	//bs12 specific. this hack is probably gonna come back to haunt me
+#define ID_LAYER				33
+#define SHOES_LAYER				32
+#define GLOVES_LAYER			31
+#define MEDICAL_LAYER			30	//For splint and gauze overlays
+#define SUIT_LAYER				29
+#define SUIT_GARB_LAYER			28
+#define SUIT_SQUAD_LAYER		27
+#define GLASSES_LAYER			26
+#define BELT_LAYER				25
+#define SUIT_STORE_LAYER		24
+#define BACK_LAYER				23
+#define HAIR_LAYER				22
+#define FACIAL_LAYER			21
+#define EARS_LAYER				20
+#define FACEMASK_LAYER			19
+#define HEADSHOT_LAYER			18 //Unrevivable headshot overlays, suicide/execution.
 #define HEAD_LAYER				17
 #define HEAD_SQUAD_LAYER		16
 #define HEAD_GARB_LAYER_2		15	// These actual defines are unused but this space within the overlays list is
@@ -128,7 +129,7 @@
 #define TARGETED_LAYER			3	//for target sprites when held at gun point, and holo cards.
 #define FIRE_LAYER				2	//If you're on fire		//BS12: Layer for the target overlay from weapon targeting system
 #define EFFECTS_LAYER			1  //If you're hit by an acid DoT
-#define TOTAL_LAYERS			38
+#define TOTAL_LAYERS			40
 //////////////////////////////////
 
 //Synthetic Defines

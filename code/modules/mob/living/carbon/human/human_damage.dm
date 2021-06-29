@@ -379,14 +379,11 @@ This function restores all limbs.
 /*
 	Describes how human mobs get damage applied.
 	Less clear vars:
-	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
-	*	impact_limbs: the flags for which limbs (body parts) have an impact icon associated with impact_name.
 	*	permanent_kill: whether this attack causes human to become irrevivable
 */
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
 	var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
-	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE, var/mob/firer = null, \
-	var/force = FALSE
+	var/permanent_kill = FALSE, var/mob/firer = null, var/force = FALSE
 )
 	if(protection_aura && damage > 0)
 		damage = round(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura) / ORDER_HOLD_CALC_LEVEL))
@@ -419,19 +416,13 @@ This function restores all limbs.
 			damageoverlaytemp = 20
 			if(species.brute_mod && !force)
 				damage = damage * species.brute_mod
-			var/temp_impact_name = null
-			if(organ.body_part & impact_limbs)
-				temp_impact_name = impact_name
-			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name, attack_source = firer))
+			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
 				UpdateDamageIcon()
 		if(BURN)
 			damageoverlaytemp = 20
 			if(species.burn_mod && !force)
 				damage = damage * species.burn_mod
-			var/temp_impact_name = null
-			if(organ.body_part & impact_limbs)
-				temp_impact_name = impact_name
-			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name, attack_source = firer))
+			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
 				UpdateDamageIcon()
 
 	pain.apply_pain(damage, damagetype)

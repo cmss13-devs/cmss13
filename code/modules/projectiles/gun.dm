@@ -1189,7 +1189,8 @@ and you're good to go.
 	if(!(flags_gun_features & GUN_CAN_POINTBLANK)) // If it can't point blank, you can't suicide and such.
 		return ..()
 
-	if(M == user && user.zone_selected == "mouth")
+	if(M == user && user.zone_selected == "mouth" && ishuman(user))
+		var/mob/living/carbon/human/HM = user
 		if(!able_to_fire(user))
 			return TRUE
 
@@ -1229,19 +1230,18 @@ and you're good to go.
 				cause_data = create_cause_data("suicide by [initial(name)]")
 				if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
 					t += " after playing Russian Roulette"
-					user.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", sharp = 1)
-					user.apply_damage(200, OXY) //In case someone tried to defib them. Won't work.
-					user.death(create_cause_data("russian roulette with \a [name]", user))
+					HM.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", no_limb_loss = TRUE, permanent_kill = TRUE)
+					HM.apply_damage(200, OXY) //Fill out the rest of their healthbar.
+					HM.death(create_cause_data("russian roulette with \a [name]", user)) //Make sure they're dead. permanent_kill above will make them unrevivable.
+					HM.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
 					msg_admin_ff("[key_name(user)] lost at Russian Roulette with \a [name] in [get_area(user)] [ffl]")
 					to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
 					user.ghostize(0) //No return.
 				else
-					user.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", sharp = 1)
-					user.apply_damage(100, OXY)
-					if(ishuman(user) && user == M)
-						var/mob/living/carbon/human/HM = user
-						HM.undefibbable = TRUE //can't be defibbed back from self inflicted gunshot to head
-					user.death(cause_data)
+					HM.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", no_limb_loss = TRUE, permanent_kill = TRUE)
+					HM.apply_damage(200, OXY) //Fill out the rest of their healthbar.
+					HM.death(cause_data) //Make sure they're dead. permanent_kill above will make them unrevivable.
+					HM.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
 					msg_admin_ff("[key_name(user)] committed suicide with \a [name] in [get_area(user)] [ffl]")
 			M.last_damage_data = cause_data
 			user.attack_log += t //Apply the attack log.

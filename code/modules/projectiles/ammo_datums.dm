@@ -1,7 +1,6 @@
 /datum/ammo
 	var/name 		= "generic bullet"
-	var/impact_name	= null // Name of icon when trying to give a mob a projectile impact overlay
-	var/impact_limbs = BODY_FLAG_NO_BODY // The body parts that have an impact icon
+	var/headshot_state	= null //Icon state when a human is permanently killed with it by execution/suicide.
 	var/icon 		= 'icons/obj/items/weapons/projectiles.dmi'
 	var/icon_state 	= "bullet"
 	var/ping 		= "ping_b" //The icon that is displayed when the bullet bounces off something.
@@ -209,6 +208,7 @@
 /datum/ammo/bullet
 	name = "default bullet"
 	icon_state = "bullet"
+	headshot_state	= HEADSHOT_OVERLAY_LIGHT
 	flags_ammo_behavior = AMMO_BALLISTIC
 	sound_hit 	 = "ballistic_hit"
 	sound_armor  = "ballistic_armor"
@@ -322,7 +322,7 @@
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
-
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	damage = 40
@@ -347,7 +347,6 @@
 /datum/ammo/bullet/pistol/heavy/super/highimpact
 	name = ".50 high-impact pistol bullet"
 	penetration = ARMOR_PENETRATION_TIER_2
-	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
@@ -367,9 +366,14 @@
 	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
 		return -1
 
-	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
+	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
+	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
+	H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
+
+	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
+
 	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
-		SPAN_HIGHDANGER("You were Executed!"))
+		SPAN_HIGHDANGER("You were executed!"))
 
 	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
 
@@ -396,6 +400,7 @@
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
 	name = "squash-head pistol bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(0,0,0,0,0,0,0,2)
 
 	accuracy = HIT_ACCURACY_TIER_4
@@ -497,6 +502,7 @@
 
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(1,0,0,0,0,0,0,0)
 
 	damage = 55
@@ -574,11 +580,13 @@
 
 /datum/ammo/bullet/revolver/nagant
 	name = "nagant revolver bullet"
+	headshot_state	= HEADSHOT_OVERLAY_LIGHT //Smaller bullet.
 	damage = 40
 
 
 /datum/ammo/bullet/revolver/nagant/shrapnel
 	name = "shrapnel shot"
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
 	debilitate = list(0,0,0,0,0,0,0,0)
 	icon_state = "shrapnelshot"
 	bonus_projectiles_type = /datum/ammo/bullet/revolver/nagant/shrapnel_bits
@@ -608,13 +616,12 @@
 
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
+	headshot_state	= HEADSHOT_OVERLAY_LIGHT
 
 	damage = 30
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
-	impact_name = "mateba"
-	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
 	damage = 60
@@ -625,8 +632,6 @@
 
 /datum/ammo/bullet/revolver/mateba/highimpact
 	name = ".454 heavy high-impact revolver bullet"
-	impact_name = "mateba"
-	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 	penetration = ARMOR_PENETRATION_TIER_2
 
@@ -647,9 +652,14 @@
 	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
 		return -1
 
-	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
+	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
+	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
+	H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
+
+	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
+
 	H.visible_message(SPAN_HIGHDANGER("[M] WAS EXECUTED!"), \
-		SPAN_HIGHDANGER("You were Executed!"))
+		SPAN_HIGHDANGER("You were executed!"))
 
 	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
 
@@ -855,6 +865,7 @@
 
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 
 	damage = 40
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -1032,12 +1043,11 @@
 */
 
 /datum/ammo/bullet/shotgun
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY
 
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
 	handful_state = "slug_shell"
-	impact_name = "slug"
-	impact_limbs = BODY_FLAG_HEAD
 
 	accurate_range = 6
 	max_range = 8
@@ -1050,6 +1060,7 @@
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
+	headshot_state	= HEADSHOT_OVERLAY_LIGHT //It's not meant to kill people... but if you put it in your mouth, it will.
 	handful_state = "beanbag_slug"
 	icon_state = "beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
@@ -1243,8 +1254,6 @@
 /datum/ammo/bullet/shotgun/heavy/slug
 	name = "heavy shotgun slug"
 	handful_state = "heavy_slug"
-	impact_name = "slug"
-	impact_limbs = BODY_FLAG_HEAD
 
 	accurate_range = 7
 	max_range = 8
@@ -1258,6 +1267,7 @@
 /datum/ammo/bullet/shotgun/heavy/beanbag
 	name = "heavy beanbag slug"
 	icon_state = "beanbag"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	handful_state = "heavy_beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 
@@ -1311,6 +1321,7 @@
 
 /datum/ammo/bullet/sniper
 	name = "sniper bullet"
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 	accurate_range_min = 4
@@ -1539,6 +1550,7 @@
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
@@ -1555,6 +1567,7 @@
 
 /datum/ammo/bullet/m60
 	name = "M60 bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
@@ -1846,6 +1859,7 @@
 		H.disable_special_items() // Disables scout cloak
 
 /datum/ammo/energy/yautja/
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_3
 
@@ -2543,6 +2557,7 @@
 
 /datum/ammo/alloy_spike
 	name = "alloy spike"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	ping = "ping_s"
 	icon_state = "MSpearFlight"
 	sound_hit 	 	= "alloy_hit"

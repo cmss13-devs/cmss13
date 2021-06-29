@@ -23,9 +23,15 @@
     "announce_text": "We've lost contact with Weyland-Yutani's extra-solar colony, \"Trijent Dam\", on the planet \"Navarone.\" The ###SHIPNAME### has been dispatched to assist.",
     "monkey_types": [
         "stok"
-	],
-	"traits": [{ "Ground": true }],
-	"nightmare": {
-		"mapgen": "maps/Nightmare/maps/DesertDam/mapgen.json"
-	}
+    ],
+    "traits": [{ "Ground": true }],
+    "nightmare": {
+        "mapgen": "maps/Nightmare/maps/DesertDam/mapgen.json"
+    },
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 100
+    }
 }

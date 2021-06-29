@@ -8,7 +8,7 @@
 	monkey_amount = 0.2 // Amount of monkeys per player
 	flags_round_type = MODE_NO_SPAWN|MODE_NO_LATEJOIN|MODE_XVX|MODE_RANDOM_HIVE
 
-	var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/computer/shuttle_control)
+	var/list/structures_to_delete = list(/obj/effect/alien/weeds, /turf/closed/wall/resin, /obj/structure/mineral_door/resin, /obj/structure/bed/nest, /obj/item, /obj/structure/tunnel, /obj/structure/machinery/computer/shuttle_control, /obj/structure/machinery/defenses/sentry/premade)
 	var/list/hives = list()
 	var/list/hive_cores = list()
 
@@ -22,69 +22,15 @@
 	var/round_time_larva_interval = 0
 	var/round_time_sd = 0
 	votable = FALSE // broken
-////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
-
-
-/datum/game_mode/xenovs/proc/setup_mapdata(map)
-	switch(map)
-		if(MAP_LV_624)
-			monkey_types = list(/mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO)
-
-			if(readied_players > 70)
-				hives += XENO_HIVE_CHARLIE
-
-		if(MAP_ICE_COLONY)
-			monkey_types = list(/mob/living/carbon/human/yiren)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA)
-
-		if(MAP_ICE_COLONY_V3)
-			monkey_types = list(/mob/living/carbon/human/yiren)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA)
-
-		if(MAP_BIG_RED)
-			monkey_types = list(/mob/living/carbon/human/neaera)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE)
-			if(readied_players > 100)
-				hives += XENO_HIVE_DELTA
-
-		if(MAP_PRISON_STATION)
-			monkey_types = list(/mob/living/carbon/human/monkey)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE)
-			structures_to_delete += /obj/structure/machinery/defenses/sentry/premade
-
-		if(MAP_PRISON_STATION_V3)
-			monkey_types = list(/mob/living/carbon/human/monkey)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE)
-			structures_to_delete += /obj/structure/machinery/defenses/sentry/premade
-
-		if(MAP_DESERT_DAM)
-			monkey_types = list(/mob/living/carbon/human/stok)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE)
-			if(readied_players > 100)
-				hives += XENO_HIVE_DELTA
-
-		if(MAP_SOROKYNE_STRATA)
-			monkey_types = list(/mob/living/carbon/human/yiren)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO)
-			if(readied_players > 70)
-				hives += XENO_HIVE_CHARLIE
-
-		if(MAP_CORSAT)
-			monkey_types = list(/mob/living/carbon/human/yiren, /mob/living/carbon/human/farwa, /mob/living/carbon/human/monkey, /mob/living/carbon/human/neaera, /mob/living/carbon/human/stok)
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO, XENO_HIVE_CHARLIE, XENO_HIVE_DELTA)
-
-		else
-			monkey_types = list(/mob/living/carbon/human/monkey) //make sure we always have a monkey type
-			hives = list(XENO_HIVE_ALPHA, XENO_HIVE_BRAVO)
-
 
 /* Pre-pre-startup */
 /datum/game_mode/xenovs/can_start()
-	setup_mapdata(SSmapping.configs[GROUND_MAP].map_name)
+	for(var/hivename in SSmapping.configs[GROUND_MAP].xvx_hives)
+		if(readied_players > SSmapping.configs[GROUND_MAP].xvx_hives[hivename])
+			hives += hivename
 	xeno_starting_num = readied_players
 	if(!initialize_starting_xenomorph_list(hives, TRUE))
+		hives.Cut()
 		return
 	return TRUE
 
@@ -93,6 +39,7 @@
 
 /* Pre-setup */
 /datum/game_mode/xenovs/pre_setup()
+	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
 	if(monkey_amount)
 		if(monkey_types.len)
 			for(var/i = min(round(monkey_amount*GLOB.clients.len), GLOB.monkey_spawns.len), i > 0, i--)

@@ -54,6 +54,8 @@
 
 	var/list/monkey_types = list(/mob/living/carbon/human/monkey)
 
+	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
+
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
 	if(default)
@@ -165,6 +167,12 @@
 					return
 	else if ("monkey_types" in json)
 		log_world("map_config monkey_types is not a list!")
+		return
+
+	if (islist(json["xvx_hives"]))
+		xvx_hives = json["xvx_hives"]
+	else if ("xvx_hives" in json)
+		log_world("map_config xvx_hives is not a list!")
 		return
 
 	if (islist(json["defcon_triggers"]))

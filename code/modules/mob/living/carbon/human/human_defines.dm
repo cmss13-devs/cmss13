@@ -69,7 +69,7 @@
 	var/list/limbs_to_process = list()// limbs we check until they are good.
 
 	var/list/flavor_texts = list()
-	var/recently_unbuckled = 0
+	var/recently_nested = FALSE
 
 	//Life variables
 	var/oxygen_alert = 0

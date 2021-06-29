@@ -132,6 +132,24 @@
 	else
 		to_chat(user, SPAN_NOTICE("Nothing."))
 
+// This is gellie fuel. Green Flames.
+/obj/item/ammo_magazine/flamer_tank/gellied
+	name = "incinerator tank (Gel)"
+	desc = "A fuel tank full of heavier gel fuel. Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot. Handle with exceptional care."
+	caliber = "Napalm Gel"
+	flamer_chem = "napalmgel"
+	max_rounds = 200
+
+	max_range = 7
+
+/obj/item/ammo_magazine/flamer_tank/EX
+	name = "incinerator tank (EX)"
+	desc = "A fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustable liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
+	caliber = "Napalm EX"
+	flamer_chem = "napalmex"
+
+	max_range = 7
+
 /obj/item/ammo_magazine/flamer_tank/custom
 	name = "custom incinerator tank"
 	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a pressure regulator and an internal propellant tank."
@@ -177,15 +195,7 @@
 /obj/item/ammo_magazine/flamer_tank/large/empty
 	flamer_chem = null
 
-// This is gellie fuel. Green Flames.
-/obj/item/ammo_magazine/flamer_tank/gellied
-	name = "large incinerator tank (Gel)"
-	desc = "A large fuel tank full of heavier gel fuel. Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot. Handle with exceptional care."
-	caliber = "Napalm Gel"
-	flamer_chem = "napalmgel"
-	max_rounds = 200
 
-	max_range = 7
 
 // This is the green flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/B

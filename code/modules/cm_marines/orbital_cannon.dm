@@ -451,7 +451,7 @@ var/list/ob_type_fuel_requirements
 	var/distance = 18
 	var/fire_level = 70
 	var/burn_level = 80
-	var/fire_color = "white"
+	var/fire_type = "white"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target)
 	. = ..()
@@ -463,7 +463,7 @@ var/list/ob_type_fuel_requirements
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
 	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
 	sleep(clear_delay)
-	fire_spread(target, cause_data, distance, fire_level, burn_level, fire_color, TURF_PROTECTION_OB)
+	fire_spread(target, cause_data, distance, fire_level, burn_level, null, fire_type, TURF_PROTECTION_OB)
 
 
 /obj/structure/ob_ammo/warhead/cluster

@@ -79,7 +79,7 @@
 			var/obj/flamer_fire/FF = atm
 			if(FF.firelevel > fire_level_to_extinguish)
 				FF.firelevel -= fire_level_to_extinguish
-				FF.updateicon()
+				FF.update_flame()
 			else
 				qdel(atm)
 			continue

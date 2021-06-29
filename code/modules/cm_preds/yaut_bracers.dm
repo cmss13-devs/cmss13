@@ -103,7 +103,7 @@
 		if(charge <= 0)
 			decloak(loc)
 		//Non-Yautja have a chance to get stunned with each power drain
-		if(!isYautja(H))
+		if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH))
 			if(prob(15))
 				shock_user(H)
 				decloak(loc)
@@ -126,13 +126,13 @@
 	M.update_power_display(perc)
 
 	//Non-Yautja have a chance to get stunned with each power drain
-	if(!isYautja(M))
+	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH))
 		if(prob(15))
 			shock_user(M)
 	return 1
 
 /obj/item/clothing/gloves/yautja/proc/shock_user(var/mob/living/carbon/human/M)
-	if(!isYautja(M))
+	if(!HAS_TRAIT(M, TRAIT_YAUTJA_TECH))
 		//Spark
 		playsound(M, 'sound/effects/sparks2.ogg', 60, 1)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -250,7 +250,7 @@
 	if(!usr.loc || !usr.canmove || usr.stat) return
 	var/mob/living/carbon/human/user = usr
 	if(!istype(user)) return
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
@@ -304,7 +304,7 @@
 /obj/item/clothing/gloves/yautja/proc/track_gear_internal(var/forced = FALSE)
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
@@ -385,7 +385,7 @@
 	if(!usr || usr.stat) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			if(cloaked) //Turn it off.
@@ -487,7 +487,7 @@
 	if(!usr.loc || !usr.canmove || usr.stat) return
 	var/mob/living/carbon/human/M = usr
 	if(!istype(M)) return
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
@@ -682,7 +682,7 @@
 	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
 		return 0
 
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
@@ -727,7 +727,7 @@
 	if(usr.is_mob_incapacitated())
 		return 0
 
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
@@ -769,7 +769,7 @@
 	if(usr.is_mob_incapacitated())
 		return 0
 
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
@@ -796,7 +796,7 @@
 	if(usr.is_mob_incapacitated())
 		return 0
 
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
@@ -822,7 +822,7 @@
 	if(usr.is_mob_incapacitated())
 		return 0
 
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))
@@ -855,7 +855,7 @@
 /obj/item/clothing/gloves/yautja/proc/translate_internal(var/forced = FALSE)
 	if(!usr || usr.stat) return
 
-	if(!forced && !isYautja(usr))
+	if(!forced && !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
 		var/option = should_activate_random_or_this_function()
 		if (option == 0)
 			to_chat(usr, SPAN_WARNING("You fiddle with the buttons but nothing happens..."))

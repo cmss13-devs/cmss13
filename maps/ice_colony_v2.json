@@ -6,11 +6,11 @@
         "COLD": true
     },
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Security",
-        "Survivor - Trucker",
-        "Survivor - Engineer"
+        "Survivor - Shivas Snowball Corporate Liaison",
+        "Survivor - Shivas Snowball Doctor",
+        "Survivor - Shivas Snowball Researcher",
+        "Survivor - Shivas Snowball Engineer",
+        "Survivor - Shivas Snowball Security Guard"
     ],
     "defcon_triggers": [
         3300,

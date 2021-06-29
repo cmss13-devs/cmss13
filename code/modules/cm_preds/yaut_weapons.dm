@@ -233,7 +233,7 @@
 	var/parrying_delay = 11 SECONDS // effectively 8, starts counting on activation
 
 
-/obj/item/weapon/melee/yautja/sword/attack(mob/living/target, mob/living/carbon/human/user, def_zone, var/riposte)
+/obj/item/weapon/melee/yautja/sword/attack(mob/living/target, mob/living/carbon/human/user, var/riposte)
 	if(parrying && !riposte)
 		to_chat(user, SPAN_WARNING("You're a bit busy concentrating to hit something."))
 		return
@@ -335,7 +335,7 @@
 
 	target.animation_attack_on(user)
 	user.visible_message(SPAN_DANGER("[user] blocks the slash and counterattacks!"),SPAN_DANGER("You parry the slash and initiate a riposte attack!"))
-	attack(target, user, check_zone(user.zone_selected), riposte = TRUE)
+	attack(target, user, riposte = TRUE)
 	return COMPONENT_CANCEL_ATTACK
 
 /obj/item/weapon/melee/yautja/sword/proc/end_parry(mob/living/carbon/human/user)

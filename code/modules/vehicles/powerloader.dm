@@ -125,10 +125,10 @@
 		linked_powerloader.unbuckle() //drop a clamp, you auto unbuckle from the powerloader.
 
 
-/obj/item/powerloader_clamp/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/powerloader_clamp/attack(mob/living/M, mob/living/user)
 	if(M == linked_powerloader.buckled_mob)
 		unbuckle() //if the pilot clicks themself with the clamp, it unbuckles them.
-		return 1
+		return TRUE
 	else
 		return ..()
 

@@ -43,7 +43,7 @@
 	if(pill_desc)
 		display_contents(user)
 
-/obj/item/reagent_container/pill/attack(mob/M, mob/user, def_zone)
+/obj/item/reagent_container/pill/attack(mob/M, mob/user)
 	if(M == user)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M

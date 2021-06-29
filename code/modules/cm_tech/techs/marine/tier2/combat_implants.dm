@@ -63,7 +63,7 @@
 
 	icon_state = initial(icon_state)
 
-/obj/item/device/implanter/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/device/implanter/attack(mob/living/M, mob/living/user)
 	if(!uses || !implant_type)
 		return ..()
 

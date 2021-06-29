@@ -79,7 +79,7 @@
 
 	return TRUE
 
-/obj/item/stack/revival_jelly/attack(mob/living/carbon/Xenomorph/X, mob/living/user, def_zone)
+/obj/item/stack/revival_jelly/attack(mob/living/carbon/Xenomorph/X, mob/living/user)
 	if(!istype(X))
 		return ..()
 

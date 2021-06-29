@@ -89,7 +89,7 @@
 
 	victim.update_canmove()
 
-/obj/item/grab/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/grab/attack(mob/living/M, mob/living/user)
 	if(M == grabbed_thing)
 		attack_self(user)
 	else if(M == user && user.pulling && isXeno(user))

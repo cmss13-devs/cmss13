@@ -30,7 +30,7 @@
 
 
 
-/obj/item/device/multitool/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/device/multitool/attack(mob/M as mob, mob/user as mob)
 	return FALSE
 
 /obj/item/device/multitool/afterattack(atom/target, mob/user, flag)

@@ -18,7 +18,7 @@
 /obj/item/reagent_container/food/condiment/attackby(obj/item/W, mob/user)
 	return
 
-/obj/item/reagent_container/food/condiment/attack(mob/M, mob/user, def_zone)
+/obj/item/reagent_container/food/condiment/attack(mob/M, mob/user)
 	if(!reagents?.total_volume)
 		to_chat(user, SPAN_DANGER("The [src.name] is empty!"))
 		return FALSE

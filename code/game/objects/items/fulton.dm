@@ -54,7 +54,7 @@ var/global/list/deployed_fultons = list()
 		attach(target, user)
 		return
 
-/obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob)
 	return
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)

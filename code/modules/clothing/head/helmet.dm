@@ -22,7 +22,24 @@
 	siemens_coefficient = 0.7
 	w_class = SIZE_MEDIUM
 
+/obj/item/clothing/head/helmet/verb/hidehair()
+	set name = "Toggle Hair"
+	set category = "Object"
+	set src in usr
+	if(!isliving(usr)) return
+	if(usr.stat) return
 
+	if(flags_inv_hide & HIDETOPHAIR)
+		flags_inv_hide &= ~HIDETOPHAIR
+		to_chat(usr, "You let your hair out from [src].")
+	else
+		flags_inv_hide |= HIDETOPHAIR
+		to_chat(usr, "You tuck your hair into \the [src].")
+
+	if(ishuman(loc))
+		var/mob/living/carbon/human/H = loc
+		if(H.head == src)
+			H.update_hair()
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"

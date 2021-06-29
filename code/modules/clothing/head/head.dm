@@ -576,6 +576,7 @@ D
 	icon_state = "duragblack"
 	desc = "An improvised head wrap made out of a black neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/durag/New()
 	select_gamemode_skin(/obj/item/clothing/head/durag)

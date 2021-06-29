@@ -223,3 +223,163 @@
 		/obj/item/weapon/melee/baseballbat/metal,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
+
+/obj/item/clothing/suit/storage/snow_suit/parka/red
+	name = "Security Parka"
+	desc = "A winter coat made to withstand the fridged cold weather of the artic deserts. Nanotrasen branded Parka"
+	icon_state = "redpark"
+	item_state = "redpark"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	blood_overlay_type = "armor"
+	siemens_coefficient = 0.7
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/melee/baseballbat,
+		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
+
+/obj/item/clothing/suit/storage/snow_suit/parka/navy
+	name = "Navy Parka"
+	desc = "A winter coat made to withstand the fridged cold weather of the artic deserts. Nanotrasen branded Parka"
+	icon_state = "navypark"
+	item_state = "navypark"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	blood_overlay_type = "armor"
+	siemens_coefficient = 0.7
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/melee/baseballbat,
+		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
+
+/obj/item/clothing/suit/storage/snow_suit/parka/yellow
+	name = "yellow Parka"
+	desc = "A winter coat made to withstand the fridged cold weather of the artic deserts. Nanotrasen branded Parka"
+	icon_state = "yellowpark"
+	item_state = "yellowpark"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	blood_overlay_type = "armor"
+	siemens_coefficient = 0.7
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/melee/baseballbat,
+		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
+
+/obj/item/clothing/suit/storage/snow_suit/parka/green
+	name = "Green Parka"
+	desc = "A winter coat made to withstand the fridged cold weather of the artic deserts. Nanotrasen branded Parka"
+	icon_state = "greenpark"
+	item_state = "greenpark"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	blood_overlay_type = "armor"
+	siemens_coefficient = 0.7
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/melee/baseballbat,
+		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)
+
+/obj/item/clothing/suit/storage/snow_suit/parka/purple
+	name = "Purple Parka"
+	desc = "A winter coat made to withstand the fridged cold weather of the artic deserts. Nanotrasen branded Parka"
+	icon_state = "purplepark"
+	item_state = "purplepark"
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_NONE
+	armor_rad = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+	blood_overlay_type = "armor"
+	siemens_coefficient = 0.7
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade,
+		/obj/item/device/binoculars,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/weapon/melee/baseballbat,
+		/obj/item/weapon/melee/baseballbat/metal,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman)

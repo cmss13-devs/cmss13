@@ -32,9 +32,15 @@
         "neaera",
         "stok"
     ],
-	"traits": [{ "Ground": true }],
-	"nightmare": {
-		"scenario": "maps/Nightmare/maps/CORSAT/scenario.json",
-		"mapgen": "maps/Nightmare/maps/CORSAT/mapgen.json"
-	}
+    "traits": [{ "Ground": true }],
+    "nightmare": {
+        "scenario": "maps/Nightmare/maps/CORSAT/scenario.json",
+        "mapgen": "maps/Nightmare/maps/CORSAT/mapgen.json"
+    },
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    }
 }

@@ -569,6 +569,11 @@
 	icon_state = "hair_ponytail6"
 	gender = FEMALE
 
+/datum/sprite_accessory/hair/ponytail7
+	name = "Ponytail 6"
+	icon_state = "hair_ponytail7"
+	gender = FEMALE
+
 /datum/sprite_accessory/hair/shorthair3
 	name = "Short Hair 3"
 	icon_state = "hair_shorthair3"

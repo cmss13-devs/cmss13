@@ -601,6 +601,9 @@
 		to_chat(X, SPAN_XENODANGER("You decide to cancel your bombard."))
 		return FALSE
 
+	if (!X.can_bombard_turf(T, range, bombard_source)) //Second check in case something changed during the do_after.
+		return FALSE
+
 	if (!check_and_use_plasma_owner())
 		return FALSE
 

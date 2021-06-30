@@ -107,6 +107,7 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/nurse
 	desc = "A dress commonly worn by the nursing staff in the medical department."
@@ -122,7 +123,7 @@
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/orderly
 	desc = "A white suit to be worn by orderly people who love orderly things."
@@ -137,7 +138,7 @@
 	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_LOW
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "orderly")
 
 /obj/item/clothing/under/rank/medical
@@ -167,21 +168,21 @@
 	name = "medical scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in baby blue."
 	icon_state = "scrubsblue"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsblue")
 
 /obj/item/clothing/under/rank/medical/green
 	name = "medical scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in dark green."
 	icon_state = "scrubsgreen"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubsgreen")
 
 /obj/item/clothing/under/rank/medical/purple
 	name = "medical scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in deep purple."
 	icon_state = "scrubspurple"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 	item_state_slots = list(WEAR_BODY = "scrubspurple")
 
 /obj/item/clothing/under/rank/psych
@@ -189,7 +190,7 @@
 	name = "psychiatrist's jumpsuit"
 	icon_state = "psych"
 	item_state = "w_suit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 
 /obj/item/clothing/under/rank/psych/turtleneck
@@ -197,4 +198,4 @@
 	name = "psychologist's turtleneck"
 	icon_state = "psychturtle"
 	item_state = "b_suit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE

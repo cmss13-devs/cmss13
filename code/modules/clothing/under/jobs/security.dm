@@ -52,7 +52,7 @@
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 	siemens_coefficient = 0.9
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/security2
 	name = "security officer's uniform"
@@ -68,15 +68,15 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	siemens_coefficient = 0.9
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/security/corp
 	icon_state = "sec_corporate"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/warden/corp
 	icon_state = "warden_corporate"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/tactical
 	name = "tactical jumpsuit"
@@ -115,7 +115,7 @@
 
 /obj/item/clothing/under/det/slob
 	icon_state = "polsuit"
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 
 /*
@@ -127,18 +127,18 @@
 	desc = "The latest in fashionable security outfits."
 	icon_state = "officerblueclothes"
 	item_state = "officerblueclothes"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/head_of_security/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Head of Security."
 	name = "head of security's uniform"
 	icon_state = "hosblueclothes"
 	item_state = "hosblueclothes"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/warden/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
 	name = "warden's uniform"
 	icon_state = "wardenblueclothes"
 	item_state = "wardenblueclothes"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE

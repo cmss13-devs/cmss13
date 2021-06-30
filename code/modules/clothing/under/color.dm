@@ -1,6 +1,6 @@
 
 /obj/item/clothing/under/color
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/color/black
 	name = "black jumpsuit"

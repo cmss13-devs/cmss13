@@ -108,10 +108,16 @@
 //VISION IMPAIRMENT LEVELS===========================================================================
 
 
-
-
-
-
+//===========================================================================================
+//Uniform flags only, use for flags_jumpsuit. These are autodetected on init.
+#define UNIFORM_SLEEVE_ROLLABLE	(1<<0) //can we roll the sleeves on this uniform?
+#define UNIFORM_SLEEVE_ROLLED (1<<1)
+#define UNIFORM_SLEEVE_CUTTABLE	(1<<2) //can the sleeves be cut?
+#define UNIFORM_SLEEVE_CUT (1<<3)
+#define UNIFORM_JACKET_REMOVABLE (1<<4) //can the jacket be removed?
+#define UNIFORM_JACKET_REMOVED (1<<5)
+#define UNIFORM_DO_NOT_HIDE_ACCESSORIES (1<<6) //are accessories never hidden by sleeve/jacket state? (meant for snow uniform which rolls collar instead of sleeves)
+//===========================================================================================
 
 //===========================================================================================
 //Marine armor only, use for flags_marine_armor.

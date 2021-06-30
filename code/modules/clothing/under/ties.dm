@@ -10,7 +10,8 @@
 	var/list/mob_overlay = list()
 	var/overlay_state = null
 	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/ties.dmi', WEAR_JACKET = 'icons/mob/humans/onmob/ties.dmi')
-	var/list/on_rolled = list()	//used when uniform sleevels are rolled ("rolled" entry). Set to "none" to hide in this state.
+	///Jumpsuit flags that cause the accessory to be hidden. format: "x" OR "(x|y|z)" (w/o quote marks).
+	var/jumpsuit_hide_states
 	var/high_visibility	//if it should appear on examine without detailed view
 	var/removable = TRUE
 	flags_equip_slot = SLOT_ACCESSORY
@@ -131,6 +132,7 @@
 	var/medal_citation
 	slot = ACCESSORY_SLOT_MEDAL
 	high_visibility = TRUE
+	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 
 /obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
@@ -305,6 +307,7 @@
 	desc = "A fancy red armband!"
 	icon_state = "red"
 	slot = ACCESSORY_SLOT_ARMBAND
+	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/armband/cargo
 	name = "cargo armband"
@@ -341,7 +344,7 @@
 	name = "\improper USCM patch"
 	desc = "A fire resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
-	on_rolled = list("down" = "none")
+	jumpsuit_hide_states = (UNIFORM_SLEEVE_ROLLED|UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "\improper Falling Falcons patch"
@@ -358,6 +361,7 @@
 	slot = ACCESSORY_SLOT_RANK
 	high_visibility = TRUE
 	gender = PLURAL
+	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 
 /obj/item/clothing/accessory/ranks/New()
 	..()
@@ -740,6 +744,7 @@
 	desc = "This glowing blue badge marks the holder as THE LAW."
 	icon_state = "holobadge"
 	flags_equip_slot = SLOT_WAIST
+	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 
 	var/stored_name = null
 

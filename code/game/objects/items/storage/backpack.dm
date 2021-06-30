@@ -378,7 +378,7 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	flags_item = ITEM_OVERRIDE_NORTHFACE
 
-	uniform_restricted = list(/obj/item/clothing/under/marine/officer/rto)
+	uniform_restricted = list(/obj/item/clothing/under/marine/rto)
 	var/obj/structure/transmitter/internal/internal_transmitter
 
 	var/base_icon_state

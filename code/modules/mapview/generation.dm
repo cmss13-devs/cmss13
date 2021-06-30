@@ -167,7 +167,7 @@
 				//check whether xeno is within sensors range of any intact CMD APCs deployed on the ground
 				for(var/i in GLOB.command_apc_list)
 					var/obj/vehicle/multitile/apc/command/CMDAPC = i
-					if(CMDAPC.health > 0 && CMDAPC.visible_in_tacmap && is_ground_level(CMDAPC.loc?.z) && get_dist(CMDAPC, X) < 33)
+					if(CMDAPC.health > 0 && CMDAPC.visible_in_tacmap && is_ground_level(CMDAPC.loc?.z) && get_dist(CMDAPC, X) <= CMDAPC.sensor_radius)
 						switch(X.tier)
 							if(0)
 								tier_0 += X

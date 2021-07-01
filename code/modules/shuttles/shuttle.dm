@@ -4,6 +4,7 @@
 //shuttle moving state defines are in setup.dm
 
 /datum/shuttle
+	var/name = "Shuttle" //Name of the shuttle, for messages
 	var/warmup_time = 0
 	var/moving_status = SHUTTLE_IDLE
 	var/move_scheduled = 0

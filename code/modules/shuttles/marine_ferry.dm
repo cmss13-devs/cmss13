@@ -37,6 +37,13 @@
 	var/sound/sound_misc //Anything else, like escape pods.
 	var/list/obj/structure/dropship_equipment/equipments = list()
 
+	//Automated transport
+/// Can the shuttle depart automatically?
+	var/automated_launch = FALSE
+/// How many seconds past shuttle cooldown for the shuttle to automatically depart (if possible)
+	var/automated_launch_delay = DROPSHIP_MIN_AUTO_DELAY
+	var/automated_launch_timer = TIMER_ID_NULL //Timer
+
 	//Copy of about 650-700 lines down for elevators
 	var/list/controls = list() //Used to announce failure
 	var/list/main_doors = list() //Used to check failure
@@ -96,6 +103,30 @@
 	in_use = user
 	process_state = FORCE_CRASH
 
+/datum/shuttle/ferry/marine/proc/set_automated_launch(bool_v)
+	automated_launch = bool_v
+	if(bool_v)
+		if(recharging <= 0 && process_state == IDLE_STATE)
+			prepare_automated_launch()
+		//Else, the next automated launch will be prepared once the shuttle is ready
+	else 
+		if(automated_launch_timer != TIMER_ID_NULL)
+			deltimer(automated_launch_timer)
+			automated_launch_timer = TIMER_ID_NULL
+
+/datum/shuttle/ferry/marine/proc/prepare_automated_launch()
+	ai_silent_announcement("The [name] will automatically depart in [automated_launch_delay * 0.1] seconds")
+	automated_launch_timer = addtimer(CALLBACK(src, .proc/automated_launch), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
+
+/datum/shuttle/ferry/marine/proc/automated_launch()
+	if(!queen_locked)
+		launch()
+	else
+		automated_launch = FALSE
+	automated_launch_timer = TIMER_ID_NULL
+	ai_silent_announcement("Dropship '[name]' departing.")
+
+
 /*
 	Please ensure that long_jump() and short_jump() are only called from here. This applies to subtypes as well.
 	Doing so will ensure that multiple jumps cannot be initiated in parallel.
@@ -107,6 +138,10 @@
 		if (WAIT_LAUNCH)
 			if(!preflight_checks())
 				announce_preflight_failure()
+				if(automated_launch)
+					ai_silent_announcement("Automated launch of [name] failed. New launch in [DROPSHIP_AUTO_RETRY_COOLDOWN] SECONDS.")
+					automated_launch_timer = addtimer(CALLBACK(src, .proc/automated_launch), automated_launch_delay)
+
 				process_state = IDLE_STATE
 				in_use = null
 				locked = 0
@@ -325,6 +360,10 @@
 		while(recharging > 0)
 			recharging--
 			sleep(1)
+
+	//If the shuttle is set for automated departure, prepare for it
+	if(automated_launch)
+		prepare_automated_launch()
 
 //Starts out exactly the same as long_jump()
 //Differs in the target selection and later things enough to merit it's own proc

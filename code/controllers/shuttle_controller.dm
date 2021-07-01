@@ -46,6 +46,7 @@
 	var/datum/shuttle/ferry/marine/shuttle1 //Because I am using shuttle_tag, which is only defined under /datum/shuttle/ferry/marine
 	//ALMAYER DROPSHIP 1
 	shuttle1 = new
+	shuttle1.name = "Alamo"
 	shuttle1.location = 0
 	shuttle1.warmup_time = 10 SECONDS
 	shuttle1.move_time = DROPSHIP_TRANSIT_DURATION
@@ -59,6 +60,7 @@
 
 	//ALMAYER DROPSHIP 2
 	shuttle1 = new
+	shuttle1.name = "Normandy"
 	shuttle1.location = 0
 	shuttle1.warmup_time = 10 SECONDS
 	shuttle1.move_time = DROPSHIP_TRANSIT_DURATION

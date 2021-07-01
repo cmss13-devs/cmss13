@@ -797,7 +797,7 @@
 	spawned_gear_list = list(
 					/obj/item/clothing/head/militia,
 					/obj/item/clothing/head/militia/bucket,
-					/obj/item/clothing/head/helmet/durag,
+					/obj/item/clothing/head/helmet/skullcap,
 					/obj/item/clothing/head/hardhat,
 					/obj/item/clothing/head/helmet,
 					/obj/item/clothing/head/bandana,

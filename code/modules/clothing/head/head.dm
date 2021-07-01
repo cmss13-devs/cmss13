@@ -562,6 +562,26 @@ D
 	select_gamemode_skin(/obj/item/clothing/head/booniehat)
 	..()
 
+/obj/item/clothing/head/durag
+	name = "durag"
+	desc = "An improvised head wrap made out of a standard issue neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
+	icon_state = "durag"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	flags_inv_hide = HIDETOPHAIR
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/durag/black
+	icon_state = "duragblack"
+	desc = "An improvised head wrap made out of a black neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/head/durag/New()
+	select_gamemode_skin(/obj/item/clothing/head/durag)
+	..()
+
 /obj/item/clothing/head/drillhat
 	name = "\improper USCM drill hat"
 	desc = "A formal hat worn by drill sergeants. Police that moustache."

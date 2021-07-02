@@ -99,7 +99,7 @@
 			if("capsaicin")
 				name = "Hotsauce"
 				desc = "You can almost TASTE the stomach ulcers now!"
-				icon_state = "hotsauce"
+				icon_state = "hotsauce_tabasco"
 				center_of_mass = "x=16;y=6"
 			if("enzyme")
 				name = "Universal Enzyme"

@@ -256,24 +256,6 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/mppeaked
-	name = "\improper Military Police Peaked Cap"
-	desc = "A peaked cap worn by the USCM's Military Police. Something about it reminds you of an event you once read about in a history book."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	icon_state = "mppeaked"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
-
-/obj/item/clothing/head/mpcap
-	name = "\improper Military Police cap"
-	desc = "A ball-cap worn by the more casual of the USCM's Military Police."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	icon_state = "mpcap"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
-
 //============================//BERETS\\=================================\\
 //=======================================================================\\
 //Berets have armor, so they have their own category. PMC caps are helmets, so they're in helmets.dm.
@@ -294,7 +276,7 @@
 /obj/item/clothing/head/helmet/beret/marine/mp
 	name = "\improper USCM MP beret"
 	icon_state = "beretred"
-	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -309,24 +291,34 @@
 	)
 
 /obj/item/clothing/head/helmet/beret/marine/mp/warden
-	name = "\improper USCM warden peaked"
+	name = "\improper USCM MP warden peaked cap"
 	icon_state = "warden"
-	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+	desc = "A Kevlar reinforced peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, and is typicaly used by Wardens on USCM ships."
 
 /obj/item/clothing/head/helmet/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A kevlar reinforced beret with the USCM military police lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "A Kevlar reinforced beret with the USCM Military Police Lieutenant Commander insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
+
+/obj/item/clothing/head/helmet/beret/marine/mp/mppeaked
+	name = "\improper USCM MP peaked cap"
+	desc = "A Kevlar reinforced peaked cap worn by the USCM's Military Police. This durable headwear provides comparable protection to a M10 helmet. Something about it reminds you of an event you once read about in a history book."
+	icon_state = "mppeaked"
+
+/obj/item/clothing/head/helmet/beret/marine/mp/mpcap
+	name = "\improper USCM MP ball-cap"
+	desc = "A Kevlar reinforced ball-cap, typically worn by the more casual of the USCM's Military Police. This durable headwear provides comparable protection to a M10 helmet. "
+	icon_state = "mpcap"
 
 /obj/item/clothing/head/helmet/beret/marine/mp/provost
 	name = "\improper USCM provost beret"
 	icon_state = "beretwo"
-	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
 
 /obj/item/clothing/head/helmet/beret/marine/mp/provost/senior
 	name = "\improper USCM senior provost beret"
 	icon_state = "coblackberet"
-	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
 
 
 /obj/item/clothing/head/beret/marine/commander

@@ -228,29 +228,37 @@
 /area/desert_dam/building/substation/west
 	name = "Command Substation"
 	icon_state = "western_ss"
+	is_resin_allowed = FALSE
 
 //Administration
 /area/desert_dam/building/administration/control_room
 	name = "Administration Landing Control Room"
 	icon_state = "yellow"
+	is_resin_allowed = FALSE
 /area/desert_dam/building/administration/lobby
 	name = "Administration Lobby"
 	icon_state = "green"
+	is_resin_allowed = FALSE
 /area/desert_dam/building/administration/hallway
 	name = "Administration Hallway"
 	icon_state = "purple"
+	is_resin_allowed = FALSE
 /area/desert_dam/building/administration/office
 	name = "Administration Office"
 	icon_state = "blue-red"
+	is_resin_allowed = FALSE
 /area/desert_dam/building/administration/overseer_office
 	name = "Administration Overseer's Office"
 	icon_state = "red"
+	is_resin_allowed = FALSE
 /area/desert_dam/building/administration/meetingrooom
 	name = "Administration Meeting Room"
 	icon_state = "yellow"
+	is_resin_allowed = FALSE
 /area/desert_dam/building/administration/archives
 	name = "Administration Archives"
 	icon_state = "green"
+	is_resin_allowed = FALSE
 
 
 //Bar
@@ -371,12 +379,15 @@
 /area/desert_dam/building/warehouse/warehouse
 	name = "Warehouse"
 	icon_state = "yellow"
+	is_resin_allowed = FALSE
 /area/desert_dam/building/warehouse/loading
 	name = "Warehouse Loading Room"
 	icon_state = "red"
+	is_resin_allowed = FALSE
 /area/desert_dam/building/warehouse/breakroom
 	name = "Warehouse Breakroom"
 	icon_state = "green"
+	is_resin_allowed = FALSE
 
 
 //Hydroponics
@@ -398,6 +409,7 @@
 /area/desert_dam/building/telecommunication
 	name = "Telecommunications"
 	icon_state = "yellow"
+	is_resin_allowed = FALSE
 
 //Water Treatment Plant 1
 /area/desert_dam/building/water_treatment_one
@@ -473,7 +485,8 @@
 	icon_state = "green"
 
 
-//Library
+//Library UNUSED
+/*
 /area/desert_dam/building/library/library
 	name = "Library"
 	icon_state = "library"
@@ -483,7 +496,7 @@
 /area/desert_dam/building/library/studyroom
 	name = "Library Study Room"
 	icon_state = "purple"
-
+*/
 
 //Security
 /area/desert_dam/building/security/prison
@@ -545,9 +558,17 @@
 /area/desert_dam/building/church
 	name = "Church"
 	icon_state = "courtroom"
-
+	is_resin_allowed = FALSE
 
 //Mining area
+/area/desert_dam/building/mining/workshop
+	name = "Mining Workshop"
+	icon_state = "yellow"
+/area/desert_dam/building/mining/workshop_foyer
+	name = "Mining Workshop Foyer"
+	icon_state = "purple"
+//Legacy Areas for mining
+	/*
 /area/desert_dam/building/mining/garage
 	name = "Mining Garage"
 	icon_state = "garage"
@@ -578,18 +599,13 @@
 /area/desert_dam/building/mining/maintenance_east
 	name = "Mining Maintenance East"
 	icon_state = "dark128"
-/area/desert_dam/building/mining/workshop
-	name = "Mining Workshop"
-	icon_state = "yellow"
-/area/desert_dam/building/mining/workshop_foyer
-	name = "Mining Workshop Foyer"
-	icon_state = "purple"
 /area/desert_dam/building/mining/bunkhouse
 	name = "Mining Bunkhouse"
 	icon_state = "red"
 /area/desert_dam/building/mining/construction_site
 	name = "Construction Site"
 	icon_state = "yellow"
+*/
 
 
 //NorthWest Lab Buildings
@@ -626,7 +642,6 @@
 /area/desert_dam/building/lab_northwest/west_lab_xenoflora
 	name = "West Lab Xenoflora"
 	icon_state = "purple"
-
 /area/desert_dam/building/lab_northeast/checkpoint
 	name = "East Lab Checkpoint"
 	icon_state = "red"
@@ -673,6 +688,7 @@
 	is_resin_allowed = FALSE
 
 //Valleys
+//Near LZ
 //TODO: incorporate valleys and substrations for floodlight coverage
 
 /area/desert_dam/exterior/valley
@@ -680,6 +696,17 @@
 	name = "Northwest Valley"
 	icon_state = "valley_north_west"
 	is_resin_allowed = FALSE
+/area/desert_dam/exterior/valley/valley_cargo
+	name = "Shipping Valley"
+	icon_state = "valley_south_west"
+	is_resin_allowed = FALSE
+/area/desert_dam/exterior/valley/valley_telecoms
+	name = "Telecomms Valley"
+	icon_state = "valley_west"
+	is_resin_allowed = FALSE
+
+//Away from LZ
+
 /area/desert_dam/exterior/valley/valley_labs
 	name = "Lab Valley"
 	icon_state = "valley_north"
@@ -692,18 +719,21 @@
 /area/desert_dam/exterior/valley/valley_medical
 	name = "Medical Valley"
 	icon_state = "valley"
-/area/desert_dam/exterior/valley/valley_cargo
-	name = "Shipping Valley"
-	icon_state = "valley_south_west"
-/area/desert_dam/exterior/valley/valley_telecoms
-	name = "Telecomms Valley"
-	icon_state = "valley_west"
+/area/desert_dam/exterior/valley/valley_hydro
+	name = "Hydro Valley"
+	icon_state = "valley"
 /area/desert_dam/exterior/valley/valley_crashsite
 	name = "Crash Site Valley"
 	icon_state = "yellow"
-/area/desert_dam/exterior/valley/valley_dam
-	name = "Dam Valley"
+/area/desert_dam/exterior/valley/north_valley_dam
+	name = "North Dam Valley"
 	icon_state = "valley"
+/area/desert_dam/exterior/valley/south_valley_dam
+	name = "South Dam Valley"
+	icon_state = "valley"
+/area/desert_dam/exterior/valley/bar_valley_dam
+	name = "Bar Valley"
+	icon_state = "yellow"
 /area/desert_dam/exterior/valley/valley_wilderness
 	name = "Wilderness Valley"
 	icon_state = "central"

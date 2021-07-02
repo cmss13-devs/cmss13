@@ -672,7 +672,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/head/helmet/marine/MP
-	name = "\improper M10 pattern MP helmet"
+	name = "\improper M10 pattern Military Police Helmet"
 	desc = "A special variant of the M10 Pattern Helmet worn by the Military Police of the USCM. Whether you're facing a crime syndicate or a mutiny, this bucket will keep your brains intact."
 	icon_state = "mp_helmet"
 	item_state = "mp_helmet"

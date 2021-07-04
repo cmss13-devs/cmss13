@@ -356,7 +356,31 @@
 	desc = "A small bottle. Contains hot sauce."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
+/obj/item/reagent_container/glass/bottle/capsaicin/cholula
+	name = "\improper Cholula bottle"
+	desc = "A bottle of Weyland-Yutani brand Cholula hot sauce."
+	icon = 'icons/obj/items/food.dmi'
+	icon_state = "hotsauce_cholula"
+
+/obj/item/reagent_container/glass/bottle/capsaicin/franks
+	name = "\improper Frank's Red Hot bottle"
+	desc = "A bottle of Weyland-Yutani brand Frank's Red Hot hot sauce."
+	icon = 'icons/obj/items/food.dmi'
+	icon_state = "hotsauce_franks"
+
+/obj/item/reagent_container/glass/bottle/capsaicin/sriracha
+	name = "\improper Sriracha bottle"
+	desc = "A bottle of Weyland-Yutani brand Sriracha hot sauce."
+	icon = 'icons/obj/items/food.dmi'
+	icon_state = "hotsauce_sriracha"
+
+/obj/item/reagent_container/glass/bottle/capsaicin/tabasco
+	name = "\improper Tabasco bottle"
+	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
+	icon = 'icons/obj/items/food.dmi'
+	icon_state = "hotsauce_tabasco"
+
 /obj/item/reagent_container/glass/bottle/capsaicin/Initialize()
 	. = ..()
 	reagents.add_reagent("capsaicin", 60)

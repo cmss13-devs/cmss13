@@ -506,7 +506,7 @@
 /obj/structure/prop/ice_colony/dense
 	health = 75
 	density = 1
-	
+
 /obj/structure/prop/ice_colony/dense/ice_tray
 	name = "ice slab tray"
 	icon_state = "ice_tray"
@@ -560,11 +560,13 @@
 	icon_state = "ice_tray"
 
 /obj/structure/prop/invuln/catwalk_support
+	name = "support lattice"
 	icon_state = "support_lattice"
 	desc = "The middle of a large set of steel support girders."
 	density = 0
 
 /obj/structure/prop/invuln/minecart_tracks
+	name = "rails"
 	icon_state = "rail"
 	icon = 'icons/obj/structures/props/mining.dmi'
 	density =  0
@@ -572,6 +574,7 @@
 	layer = 3
 
 /obj/structure/prop/invuln/minecart_tracks/bumper
+	name = "rail bumpers"
 	icon_state = "rail_bumpers"
 	desc = "This (usually) stops minecarts and other rail vehicles at the end of a line of track."
 
@@ -579,10 +582,12 @@
 	density = 1
 
 /obj/structure/prop/invuln/dense/catwalk_support
+	name = "support lattice"
 	icon_state = "support_lattice"
 	desc = "The base of a large set of steel support girders."
 
 /obj/structure/prop/invuln/dense/ice_tray
+	name = "ice slab tray"
 	icon_state = "ice_tray"
 	desc = "It is a tray filled with slabs of dark ice."
 
@@ -593,6 +598,8 @@
 	icon_state = "fab"
 	density = 1
 	layer = 3
+	bound_width = 64
+	bound_height = 64
 
 /obj/structure/prop/invuln/ice_prefab/trim
 	layer = ABOVE_MOB_LAYER
@@ -603,6 +610,7 @@
 	icon_state = "antenna"
 	layer = ABOVE_MOB_LAYER
 	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
+	density = FALSE
 
 /obj/structure/prop/invuln/ice_prefab/standalone
 	density = 1

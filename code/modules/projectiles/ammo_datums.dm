@@ -1168,6 +1168,7 @@
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary
 	name = "incendiary buckshot shell"
+	handful_state = "incen_buckshot"
 	handful_type = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
 
 /datum/ammo/bullet/shotgun/buckshot/incendiary/set_bullet_traits()

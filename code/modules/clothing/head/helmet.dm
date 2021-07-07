@@ -622,6 +622,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inv_hide = HIDEEARS|HIDETOPHAIR
 	specialty = "M30 tactical"
 
+/obj/item/clothing/head/helmet/marine/pilottex
+	name = "\improper Tex's M30 tactical helmet"
+	desc = "The M30 tactical helmet has an left eyepiece filter used to filter tactical data. It is required to fly the dropships manually and in safety. This one belonged to Tex: the craziest sum'bitch pilot the Almayer ever had. He's not dead or anything, but he did get a medical discharge after he was hit by a car on shore leave last year."
+	icon_state = "helmetp_tex"
+	item_state = "helmetp_tex"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/head/helmet/marine/tanker
 	name = "\improper M50 tanker helmet"
 	desc = "The lightweight M50 tanker helmet is designed for use by armored crewmen in the USCM. It offers low weight protection, and allows agile movement inside the confines of an armored vehicle."

@@ -126,6 +126,17 @@
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 
+/obj/item/clothing/shoes/veteran/PMC/van_bandolier
+	name = "hiking boots"
+	desc = "Over stone, over ice, through sun and sand, mud and snow, into raging water and hungry bog, these will never let you down."
+
+/obj/item/clothing/shoes/veteran/PMC/van_bandolier/New()
+	..()
+	var/obj/item/attachable/bayonet/upp/knife = new(src)
+	knife.name = "\improper Fairbairn-Sykes fighting knife"
+	knife.desc = "This isn't for dressing game or performing camp chores. It's almost certainly not an original. Almost."
+	stored_item = knife
+	update_icon()
 
 /obj/item/clothing/shoes/marine/ress
 	name = "armoured sandals"

@@ -99,6 +99,9 @@
 //=================================================
 
 //Bitflags defining which status effects could be or are inflicted on a mob
+
+#define STATUS_FLAGS_DEBILITATE (CANSTUN|CANKNOCKOUT|CANDAZE|CANSLOW)
+
 #define CANSTUN				(1<<0)
 #define CANKNOCKDOWN		(1<<1)
 #define CANKNOCKOUT			(1<<2)

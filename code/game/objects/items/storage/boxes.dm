@@ -474,6 +474,17 @@
 		new /obj/item/reagent_container/hypospray/autoinjector/empty(src)
 
 
+/obj/item/storage/box/twobore
+	name = "box of 2 bore shells"
+	icon_state = "twobore"
+	desc = "A box filled with enormous slug shells, for hunting only the most dangerous game. 2 Bore."
+	storage_slots = 5
+	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
+
+/obj/item/storage/box/twobore/fill_preset_inventory()
+	for(var/i in 1 to storage_slots)
+		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
+
 ////////// MARINES BOXES //////////////////////////
 
 

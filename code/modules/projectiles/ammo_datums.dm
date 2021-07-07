@@ -693,6 +693,13 @@
 	if(T.density)
 		cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
+/datum/ammo/bullet/revolver/webley //Mateba round without the knockdown.
+	name = ".455 Webley bullet"
+	damage = 60
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_2
+
 /*
 //======
 					SMG Ammo
@@ -1311,6 +1318,44 @@
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_4
+
+//Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
+/datum/ammo/bullet/shotgun/twobore 
+	name = "two bore bullet"
+	icon_state 	= "autocannon"
+	handful_state = "twobore"
+
+	accurate_range = 8 //Big low-velocity projectile; this is for blasting dangerous game at close range.
+	max_range = 14 //At this range, it's lost all its damage anyway.
+	damage = 300 //Hits like a buckshot PB.
+	penetration = 15
+	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
+	effective_range_max	= EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
+	var/hit_messages = list()
+
+/datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/item/projectile/P)
+	var/mob/shooter = P.firer
+	if(shooter && ismob(shooter) && HAS_TRAIT(shooter, TRAIT_TWOBORE_TRAINING) && M.stat != DEAD && prob(40)) //Death is handled by periodic life() checks so this should have a chance to fire on a killshot.
+		if(!length(hit_messages)) //Pick and remove lines, refill on exhaustion.
+			hit_messages = list("Got you!", "Aha!", "Bullseye!", "It's curtains for you, Sonny Jim!", "Your head will look fantastic on my wall!", "I have you now!", "You miserable coward! Come and fight me like a man!", "Tally ho!")
+		var/message = pick_n_take(hit_messages)
+		shooter.say(message)
+
+	if(P.distance_travelled > 8)
+		heavy_knockback(M, P, 12)
+
+	else if(!M || M == P.firer || M.lying) //These checks are included in heavy_knockback and would be redundant above.
+		return
+
+	shake_camera(M, 3, 4)
+	M.apply_effect(2, WEAKEN)
+	M.apply_effect(4, SLOW)
+	if(isCarbonSizeXeno(M))
+		to_chat(M, SPAN_XENODANGER("The impact knocks you off your feet!"))
+	else //This will hammer a Yautja as hard as a human.
+		to_chat(M, SPAN_HIGHDANGER("The impact knocks you off your feet!"))
+
+	step(M, get_dir(P.firer, M))
 
 /*
 //======

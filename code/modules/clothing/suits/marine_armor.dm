@@ -1288,8 +1288,35 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 
-
-
+/obj/item/clothing/suit/storage/marine/veteran/van_bandolier
+	name = "safari jacket"
+	desc = "A tailored hunting jacket, cunningly lined with segmented armour plates. Sometimes the game shoots back."
+	icon_state = "van_bandolier"
+	item_state = "van_bandolier_jacket"
+	blood_overlay_type = "coat"
+	flags_marine_armor = NO_FLAGS //No shoulder light.
+	actions_types = list()
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	storage_slots = 2
+	movement_compensation = SLOWDOWN_ARMOR_LIGHT
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/van_bandolier)
+	allowed = list(/obj/item/weapon/gun,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/device/flashlight,
+		/obj/item/storage/fancy/cigarettes,
+		/obj/item/tool/lighter,
+		/obj/item/storage/bible,
+		/obj/item/attachable/bayonet,
+		/obj/item/storage/sparepouch,
+		/obj/item/storage/large_holster/machete,
+		/obj/item/storage/belt/gun/m4a3,
+		/obj/item/storage/belt/gun/m44,
+		/obj/item/storage/belt/gun/smartpistol,
+		/obj/item/storage/belt/gun/flaregun,
+		/obj/item/device/motiondetector,
+		/obj/item/device/walkman,
+		/obj/item/storage/belt/shotgun/van_bandolier
+	)
 
 //===========================//U.P.P\\================================\\
 //=====================================================================\\

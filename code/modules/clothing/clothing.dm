@@ -376,7 +376,7 @@
 				to_chat(M, "<div class='notice'>You slide the [I] into [src].</div>")
 				playsound(M, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, 1)
 				update_icon()
-				desc = initial(desc) + "It is storing \a [stored_item]."
+				desc = initial(desc) + "\nIt is storing \a [stored_item]."
 				break
 
 /obj/item/clothing/equipped(mob/user, slot)

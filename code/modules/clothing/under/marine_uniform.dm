@@ -478,6 +478,15 @@
 /obj/item/clothing/under/marine/veteran/dutch/ranger
 	icon_state = "dutch_jumpsuit2"
 
+/obj/item/clothing/under/marine/veteran/van_bandolier
+	name = "hunting clothes"
+	desc = "A set of tailored clothes, made from fine but sturdy reinforced fabrics. Protects from thorns, weather, and the cuts and scrapes that forever bedevil outdoorsmen."
+	icon_state = "van_bandolier"
+	worn_state = "van_bandolier"
+	item_state = "van_bandolier_clothes"
+	flags_cold_protection = ICE_PLANET_min_cold_protection_temperature
+	has_sensor = 0
+
 //===========================//HELGHAST - MERCENARY\\================================\\
 //=====================================================================\\
 

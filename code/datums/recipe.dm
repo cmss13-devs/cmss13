@@ -457,7 +457,7 @@
 	result = /obj/item/reagent_container/food/snacks/wingfangchu
 
 /datum/recipe/chaosdonut
-	reagents = list("frostoil" = 5, "hotsauce" = 5, "sugar" = 5)
+	reagents = list("frostoil" = 5, "capsaicin" = 5, "sugar" = 5)
 	items = list(
 		/obj/item/reagent_container/food/snacks/dough
 	)

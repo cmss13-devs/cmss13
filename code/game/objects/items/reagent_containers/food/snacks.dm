@@ -422,7 +422,7 @@
 		if(1)
 			reagents.add_reagent("nutriment", 3)
 		if(2)
-			reagents.add_reagent("hotsauce", 3)
+			reagents.add_reagent("capsaicin", 3)
 		if(3)
 			reagents.add_reagent("frostoil", 3)
 		if(4)
@@ -1142,7 +1142,7 @@
 	. = ..()
 	reagents.add_reagent("fish", 6)
 	reagents.add_reagent("carpotoxin", 3)
-	reagents.add_reagent("hotsauce", 3)
+	reagents.add_reagent("capsaicin", 3)
 	bitesize = 3
 
 /obj/item/reagent_container/food/snacks/popcorn
@@ -1445,7 +1445,7 @@
 	switch(mysteryselect)
 		if(1)
 			reagents.add_reagent("plantmatter", 6)
-			reagents.add_reagent("hotsauce", 3)
+			reagents.add_reagent("capsaicin", 3)
 			reagents.add_reagent("tomatojuice", 2)
 		if(2)
 			reagents.add_reagent("plantmatter", 6)
@@ -1501,7 +1501,7 @@
 /obj/item/reagent_container/food/snacks/hotchili/Initialize()
 	. = ..()
 	reagents.add_reagent("meatprotein", 6)
-	reagents.add_reagent("hotsauce", 3)
+	reagents.add_reagent("capsaicin", 3)
 	reagents.add_reagent("tomatojuice", 2)
 	bitesize = 5
 
@@ -1673,7 +1673,7 @@
 	. = ..()
 	reagents.add_reagent("vegetable",2)
 	reagents.add_reagent("meatprotein", 4)
-	reagents.add_reagent("hotsauce", 6)
+	reagents.add_reagent("capsaicin", 6)
 	bitesize = 4
 
 /obj/item/reagent_container/food/snacks/monkeysdelight

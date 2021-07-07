@@ -8648,6 +8648,10 @@
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
+/obj/item/clothing/head/helmet/marine/pilottex{
+	pixel_x = -7;
+	pixel_y = 13
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"

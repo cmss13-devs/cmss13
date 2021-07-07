@@ -950,6 +950,13 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 		flaps_up = TRUE
 	update_icon()
 
+obj/item/clothing/head/helmet/marine/veteran/van_bandolier
+	name = "pith helmet"
+	desc = "A stylish pith helmet, made from space-age materials. Lightweight, breathable, cool, and protective."
+	icon_state = "van_bandolier"
+	item_state = "s_helmet"
+	flags_marine_helmet = NO_FLAGS
+
 //head rag
 
 /obj/item/clothing/head/helmet/specrag

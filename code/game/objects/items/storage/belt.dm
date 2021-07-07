@@ -11,8 +11,9 @@
 	cant_hold = list(/obj/item/weapon/melee/throwing_knife)
 
 /obj/item/storage/belt/equipped(mob/user, slot)
-	if(slot == WEAR_WAIST || slot == WEAR_J_STORE) //Gunbelts can be worn on several armours.
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+	switch(slot)
+		if(WEAR_WAIST, WEAR_J_STORE, WEAR_BACK)
+			mouse_opacity = 2 //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/belt/dropped(mob/user)
@@ -452,8 +453,36 @@
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot(src)
 
 /obj/item/storage/belt/shotgun/upp/heavyslug/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
+
+/obj/item/storage/belt/shotgun/van_bandolier
+	name = "two bore bandolier"
+	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armour, worn over the back, or attached to belt loops."
+	icon_state = "van_bandolier_10"
+	item_state = "van_bandolier_10"
+	flags_equip_slot = SLOT_WAIST|SLOT_BACK
+	storage_slots = null
+	max_storage_space = 20
+	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
+	has_gamemode_skin = FALSE
+
+/obj/item/storage/belt/shotgun/van_bandolier/update_icon(flap = FALSE)
+	var/mob/living/carbon/human/user = loc
+	icon_state = "van_bandolier_[length(contents)]"
+	item_state = icon_state
+	if(!istype(user))
+		return
+	if(src == user.s_store)
+		user.update_inv_s_store()
+	else if(src == user.belt)
+		user.update_inv_belt()
+	else if(src == user.back)
+		user.update_inv_back()
+
+/obj/item/storage/belt/shotgun/van_bandolier/fill_preset_inventory()
+	for(var/i in 1 to max_storage_space * 0.5)
+		new /obj/item/ammo_magazine/handful/shotgun/twobore(src)
 
 /obj/item/storage/belt/shotgun/full/quackers
 	icon_state = "inflatable"
@@ -580,8 +609,9 @@
 	select_gamemode_skin(type)
 
 /obj/item/storage/sparepouch/equipped(mob/user, slot)
-	if(slot == WEAR_WAIST || slot == WEAR_J_STORE) //The G8 can be worn on several armours.
-		mouse_opacity = 2 //so it's easier to click when properly equipped.
+	switch(slot)
+		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
+			mouse_opacity = 2 //so it's easier to click when properly equipped.
 	..()
 
 /obj/item/storage/sparepouch/dropped(mob/user)
@@ -1027,6 +1057,24 @@
 		dump_into(M,user)
 	else
 		return ..()
+
+/obj/item/storage/belt/gun/webley
+	name = "\improper Webley Mk VI gunbelt"
+	desc = "Finely-tooled British leather, a Webley, and six speedloaders of .455. More than enough to kill anything with legs."
+	icon_state = "m44r_holster"
+	item_state = "marinebelt"
+	storage_slots = 7
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/weapon/gun/revolver/m44/custom/webley,
+		/obj/item/ammo_magazine/revolver
+	)
+
+/obj/item/storage/belt/gun/webley/full/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44/custom/webley(src)
+	for(var/i in 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/webley(src)
+	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/tank
 	name = "\improper M103 pattern vehicle ammo rig"

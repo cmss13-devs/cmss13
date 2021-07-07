@@ -986,6 +986,18 @@ Defined in conflicts.dm of the #defines folder.
 	flags_attach_features = NO_FLAGS
 	hud_offset_mod = 2
 
+/obj/item/attachable/stock/twobore
+	name = "heavy wooden stock"
+	icon_state = "twobore_stock"
+	attach_icon = "twobore_stock"
+	slot = "stock"
+	wield_delay_mod = WIELD_DELAY_NONE
+	flags_attach_features = NO_FLAGS
+	melee_mod = 0 //Integrated attachment for visuals, stats handled on main gun.
+	size_mod = 0
+	pixel_shift_x = 24
+	pixel_shift_y = 16
+	hud_offset_mod = 10 //A sprite long enough to touch the Moon.
 
 /obj/item/attachable/stock/smg
 	name = "submachinegun stock"

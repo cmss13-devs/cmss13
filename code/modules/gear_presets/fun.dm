@@ -459,3 +459,77 @@
 	//belt filled with random magazines, it's cool
 
 	H.set_species("Human Hero") //Ivan is STRONG.
+
+
+/datum/equipment_preset/fun/van_bandolier
+	name = "Fun - Big Game Hunter"
+	paygrade = "CCMO"
+	uses_special_name = TRUE
+	flags = EQUIPMENT_PRESET_EXTRA
+	skills = /datum/skills/everything
+	assignment = "Huntsman"
+	rank = "Huntsman"
+	idtype = /obj/item/card/id/gold
+
+/datum/equipment_preset/fun/van_bandolier/New()
+	. = ..()
+	access = get_all_accesses()
+
+/datum/equipment_preset/fun/van_bandolier/load_name(mob/living/carbon/human/H, var/randomise)
+	H.gender = MALE
+	H.change_real_name(H, "Van Bandolier")
+	H.age = 55
+	H.r_hair = 153 //Light brown hair.
+	H.g_hair = 102
+	H.b_hair = 51
+	H.r_facial = 153
+	H.g_facial = 102
+	H.b_facial = 51
+	H.h_style = "Mullet"
+	H.f_style = "Full English"
+	H.ethnicity = "Anglo"
+	H.r_eyes = 102 //Brown eyes.
+	H.g_eyes = 51
+	H.b_eyes = 0
+
+/datum/equipment_preset/fun/van_bandolier/load_gear(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double/twobore(H), WEAR_BACK)
+
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+
+	//body
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/van_bandolier(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/van_bandolier(H), WEAR_JACKET)
+
+	//suit storage
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/shotgun/van_bandolier(H), WEAR_J_STORE)
+
+	//suit pockets
+	H.equip_to_slot_or_del(new /obj/item/device/binoculars/civ(H.wear_suit), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/stack/medical/splint(H.wear_suit), WEAR_IN_JACKET)
+
+	//pockets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/pills(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H), WEAR_R_STORE)
+
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/van_bandolier(H), WEAR_HEAD)
+
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/insulated/van_bandolier(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/van_bandolier(H), WEAR_FEET)
+
+	//hands
+	H.equip_to_slot_or_del(new /obj/item/storage/box/twobore(H), WEAR_L_HAND)
+
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/webley/full(H), WEAR_WAIST)
+
+	H.set_species("Human Hero") //Van Bandolier is not easily subdued.
+	//But he isn't completely unstoppable, either. Reenables slow, knockout, daze, stun and permanent (organ dam, IB etc.) damage.
+	//Stuns and knockdowns are shorter but he's not completely immune.
+	H.status_flags &= ~NO_PERMANENT_DAMAGE
+	H.status_flags |= STATUS_FLAGS_DEBILITATE
+	ADD_TRAIT(H, TRAIT_TWOBORE_TRAINING, TRAIT_SOURCE_ADMIN) //Means he can handle his gun and speak its hit lines.

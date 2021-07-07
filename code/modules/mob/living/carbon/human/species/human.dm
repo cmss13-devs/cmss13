@@ -29,7 +29,7 @@
 /datum/species/human/hero/handle_post_spawn(var/mob/living/carbon/human/H)
 	H.universal_understand = TRUE
 	H.status_flags |= NO_PERMANENT_DAMAGE //John Wick doesn't get internal bleeding from a grazing gunshot
-	H.status_flags &= ~(CANSLOW|CANKNOCKOUT|CANDAZE|CANSTUN)
+	H.status_flags &= ~STATUS_FLAGS_DEBILITATE
 	return ..()
 
 //Various horrors that spawn in and haunt the living.

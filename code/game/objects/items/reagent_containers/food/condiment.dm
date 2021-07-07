@@ -87,7 +87,7 @@
 		to_chat(user, SPAN_NOTICE(" You transfer [trans] units of the condiment to [target]."))
 
 /obj/item/reagent_container/food/condiment/on_reagent_change()
-	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall")
+	if(icon_state == "saltshakersmall" || icon_state == "peppermillsmall" || icon_state == "hotsauce_cholula" || icon_state == "hotsauce_franks" || icon_state == "hotsauce_sriracha" || icon_state == "hotsauce_tabasco")
 		return
 	if(reagents.reagent_list.len > 0)
 		switch(reagents.get_master_reagent_id())
@@ -95,11 +95,6 @@
 				name = "Ketchup"
 				desc = "You feel more American already."
 				icon_state = "ketchup"
-				center_of_mass = "x=16;y=6"
-			if("capsaicin")
-				name = "Hotsauce"
-				desc = "You can almost TASTE the stomach ulcers now!"
-				icon_state = "hotsauce_tabasco"
 				center_of_mass = "x=16;y=6"
 			if("enzyme")
 				name = "Universal Enzyme"
@@ -188,3 +183,37 @@
 /obj/item/reagent_container/food/condiment/peppermill/Initialize()
 	. = ..()
 	reagents.add_reagent("blackpepper", 20)
+
+/obj/item/reagent_container/food/condiment/hotsauce
+	icon = 'icons/obj/items/food.dmi'
+	name = "hotsauce parent object"
+	possible_transfer_amounts = list(1,5,60) //60 allows marines to chug the bottle in one go.
+	volume = 60
+
+/obj/item/reagent_container/food/condiment/hotsauce/cholula
+	name = "\improper Cholula bottle"
+	desc = "A bottle of Weyland-Yutani brand Cholula hot sauce."
+	icon_state = "hotsauce_cholula"
+	item_state = "hotsauce_cholula"
+
+/obj/item/reagent_container/food/condiment/hotsauce/franks
+	name = "\improper Frank's Red Hot bottle"
+	desc = "A bottle of Weyland-Yutani brand Frank's Red Hot hot sauce."
+	icon_state = "hotsauce_franks"
+	item_state = "hotsauce_franks"
+
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha
+	name = "\improper Sriracha bottle"
+	desc = "A bottle of Weyland-Yutani brand Sriracha hot sauce."
+	icon_state = "hotsauce_sriracha"
+	item_state = "hotsauce_sriracha"
+
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco
+	name = "\improper Tabasco bottle"
+	desc = "A bottle of Weyland-Yutani brand Tabasco hot sauce."
+	icon_state = "hotsauce_tabasco"
+	item_state = "hotsauce_tabasco"
+
+/obj/item/reagent_container/food/condiment/hotsauce/Initialize()
+	. = ..()
+	reagents.add_reagent("hotsauce", 60)

@@ -592,11 +592,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "abM" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -615,11 +611,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "abQ" = (
 /obj/structure/surface/rack,
@@ -755,11 +747,7 @@
 	side = "left";
 	tag = "icon-hoop (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "ack" = (
 /turf/open/floor/almayer{
@@ -768,11 +756,7 @@
 	},
 /area/almayer/squads/charlie)
 "acl" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "acm" = (
 /obj/effect/decal/warning_stripes{
@@ -781,11 +765,7 @@
 	},
 /obj/effect/decal/warning_stripes,
 /obj/item/toy/beach_ball/holoball,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "acn" = (
 /obj/effect/decal/warning_stripes{
@@ -799,11 +779,7 @@
 	side = "right";
 	tag = "icon-hoop (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "aco" = (
 /obj/structure/bed/chair/wood/normal{
@@ -966,33 +942,21 @@
 	icon_state = "W";
 	tag = "icon-W"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "acK" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "NS-center";
 	tag = "icon-W"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "acL" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E";
 	tag = "icon-E-corner"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "acM" = (
 /obj/structure/surface/table/almayer,
@@ -1280,11 +1244,7 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ady" = (
 /obj/effect/step_trigger/clone_cleaner,
@@ -1569,11 +1529,7 @@
 	name = "Success Cabinet";
 	req_access_txt = "1"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "aex" = (
 /turf/open/floor/almayer{
@@ -1888,11 +1844,7 @@
 /obj/item/weapon/melee/telebaton,
 /obj/item/book/codebook,
 /obj/item/coin/diamond,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "afp" = (
 /obj/structure/machinery/light{
@@ -2468,11 +2420,7 @@
 	dir = 2;
 	tag = "icon-door_open"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahb" = (
 /obj/structure/machinery/light/small{
@@ -2639,22 +2587,14 @@
 	dir = 4;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahw" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahx" = (
 /obj/structure/closet,
@@ -2803,28 +2743,16 @@
 	pixel_y = -20;
 	req_access_txt = "1"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahY" = (
 /obj/structure/machinery/light,
 /obj/structure/machinery/cm_vending/clothing/dress,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "ahZ" = (
 /obj/structure/machinery/cm_vending/clothing/commanding_officer,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "aia" = (
 /turf/open/floor/almayer{
@@ -3089,19 +3017,11 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "aiF" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "aiG" = (
 /obj/structure/filingcabinet,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "aiH" = (
 /obj/item/tool/crew_monitor,
@@ -3669,11 +3589,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "akq" = (
 /turf/closed/shuttle/escapepod{
@@ -3686,21 +3602,13 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "aks" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/device/binoculars,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "akt" = (
 /obj/structure/cable/heavyduty{
@@ -4027,11 +3935,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper,
 /obj/item/device/whistle,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "all" = (
 /obj/structure/disposalpipe/segment,
@@ -4051,11 +3955,7 @@
 	tag = "icon-plant-10"
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "alp" = (
 /turf/open/floor/almayer{
@@ -4101,11 +4001,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/device/megaphone,
 /obj/item/device/radio,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "alv" = (
 /turf/closed/shuttle/escapepod{
@@ -4340,11 +4236,7 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "amm" = (
 /obj/item/device/radio/intercom{
@@ -4352,11 +4244,7 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "amn" = (
 /obj/structure/machinery/light{
@@ -4788,11 +4676,7 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "anw" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "anx" = (
 /obj/structure/surface/table/almayer,
@@ -4814,11 +4698,7 @@
 /obj/item/paper_bin/wy{
 	pixel_y = 7
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "anB" = (
 /turf/open/floor/almayer{
@@ -5260,11 +5140,7 @@
 	dir = 1;
 	tag = "icon-chair (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "aoK" = (
 /obj/structure/machinery/alarm/almayer{
@@ -5705,11 +5581,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "apO" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
@@ -8045,11 +7917,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/folder/white,
 /obj/item/device/flashlight/pen,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "avq" = (
 /obj/structure/closet/secure_closet/military_police,
@@ -13140,11 +13008,7 @@
 	icon_state = "pottedplant_21";
 	tag = "icon-plant-10"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "aLS" = (
 /obj/item/device/radio/intercom{
@@ -13515,11 +13379,7 @@
 /turf/closed/wall/almayer,
 /area/almayer/living/chapel)
 "aNm" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "aNn" = (
 /obj/item/device/radio/intercom{
@@ -13662,47 +13522,27 @@
 /obj/structure/bed/chair{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "aOj" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "aOk" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "aOl" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "aOm" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "aOq" = (
 /obj/structure/surface/table/almayer,
@@ -13919,20 +13759,12 @@
 "aOX" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/landmark/map_item,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "aOY" = (
 /obj/structure/surface/table/almayer,
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "aPa" = (
 /obj/structure/machinery/light{
@@ -14093,11 +13925,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "aPI" = (
 /turf/open/floor/almayer{
@@ -14892,11 +14720,7 @@
 /area/almayer/medical/operating_room_two)
 "aSP" = (
 /obj/structure/filingcabinet,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "aSY" = (
 /obj/structure/machinery/light/small{
@@ -16217,11 +16041,7 @@
 /obj/structure/machinery/alarm/almayer{
 	dir = 1
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "aZf" = (
 /obj/structure/disposalpipe/junction{
@@ -16285,21 +16105,13 @@
 /obj/structure/machinery/status_display{
 	pixel_y = 30
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "aZs" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "aZy" = (
 /obj/structure/pipes/vents/scrubber{
@@ -16511,11 +16323,7 @@
 "baa" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/faxmachine,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bac" = (
 /obj/structure/surface/table/almayer,
@@ -16523,11 +16331,7 @@
 	pixel_y = 28
 	},
 /obj/structure/machinery/computer/emails,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bad" = (
 /obj/structure/machinery/light,
@@ -18787,11 +18591,7 @@
 /area/almayer/hallways/starboard_hallway)
 "bhM" = (
 /obj/structure/safe,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bhS" = (
 /obj/structure/machinery/brig_cell/cell_4,
@@ -19529,11 +19329,7 @@
 	dir = 4;
 	layer = 2.991
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "bkU" = (
 /obj/effect/decal/warning_stripes{
@@ -20295,11 +20091,7 @@
 	},
 /area/almayer/medical/lower_medical_lobby)
 "bnL" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "bnR" = (
 /obj/structure/disposalpipe/segment{
@@ -20626,11 +20418,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bpj" = (
 /obj/structure/dropship_equipment/fulton_system,
@@ -20904,11 +20692,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bqw" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -21300,11 +21084,7 @@
 	req_one_access_txt = "200"
 	},
 /obj/structure/surface/table/woodentable,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bsd" = (
 /obj/item/device/flashlight/lamp/green{
@@ -21327,11 +21107,7 @@
 	req_access_txt = "200"
 	},
 /obj/item/tool/lighter/zippo,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bse" = (
 /obj/structure/machinery/computer/arcade,
@@ -23157,11 +22933,7 @@
 /obj/item/toy/farwadoll{
 	pixel_x = 5
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "byZ" = (
 /obj/effect/attach_point/fuel/dropship1,
@@ -23878,11 +23650,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "bBH" = (
 /turf/closed/shuttle/dropship2/transparent{
@@ -25900,11 +25668,7 @@
 	name = "\improper Jones's Office";
 	req_access_txt = "31"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "bIA" = (
 /obj/structure/sink{
@@ -26490,11 +26254,7 @@
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bKR" = (
 /turf/closed/wall/almayer,
@@ -27693,11 +27453,7 @@
 	icon_state = "pottedplant_21";
 	tag = "icon-plant-10"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bOV" = (
 /obj/structure/machinery/cryopod/right,
@@ -28209,11 +27965,7 @@
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bQZ" = (
 /obj/structure/sign/nosmoking_1,
@@ -28248,11 +28000,7 @@
 	dir = 10;
 	tag = "icon-intact-supply (SOUTHWEST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bRf" = (
 /obj/structure/disposalpipe/segment,
@@ -28675,11 +28423,7 @@
 "bSN" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "bSR" = (
 /obj/effect/decal/warning_stripes{
@@ -28798,11 +28542,7 @@
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "bTp" = (
 /obj/structure/machinery/portable_atmospherics/powered/scrubber,
@@ -28829,11 +28569,7 @@
 /turf/open/shuttle/escapepod,
 /area/almayer/evacuation/pod12)
 "bTx" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "bTy" = (
 /turf/open/floor/almayer{
@@ -28955,11 +28691,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "bTS" = (
 /turf/open/floor/almayer{
@@ -28972,21 +28704,13 @@
 /turf/open/floor/plating,
 /area/almayer/shipboard/weapon_room)
 "bTU" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "bTV" = (
 /obj/structure/surface/table/almayer,
 /obj/item/paper,
 /obj/item/device/megaphone,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "bTZ" = (
 /turf/closed/shuttle/escapepod{
@@ -29877,11 +29601,7 @@
 	pixel_x = -25;
 	req_access_txt = "200"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bXy" = (
 /turf/closed/shuttle/escapepod{
@@ -30034,11 +29754,7 @@
 /area/almayer/hallways/aft_hallway)
 "bYd" = (
 /obj/structure/bookcase/manuals/engineering,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "bYe" = (
 /turf/open/floor/almayer{
@@ -30077,11 +29793,7 @@
 	},
 /area/almayer/hull/upper_hull/u_a_s)
 "bYj" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bYn" = (
 /turf/closed/wall/almayer/outer,
@@ -31910,11 +31622,7 @@
 /obj/structure/machinery/photocopier{
 	anchored = 0
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "cer" = (
 /obj/structure/largecrate/random/case/double,
@@ -34171,20 +33879,12 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "cop" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "cos" = (
 /obj/structure/machinery/light/small,
@@ -34673,11 +34373,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/attachable/bayonet,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "cAF" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -34758,11 +34454,7 @@
 /obj/structure/bookcase{
 	icon_state = "book-5"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "cCx" = (
 /obj/structure/disposalpipe/segment{
@@ -35071,11 +34763,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "cLA" = (
 /obj/structure/machinery/cryopod,
@@ -35609,11 +35297,7 @@
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "cYX" = (
 /turf/closed/shuttle/lifeboat{
@@ -35740,11 +35424,7 @@
 	layer = 3.25
 	},
 /obj/effect/landmark/start/researcher,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "dcd" = (
 /obj/structure/bed/chair/comfy{
@@ -35894,11 +35574,7 @@
 /area/almayer/command/computerlab)
 "dfO" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "dga" = (
 /obj/structure/machinery/power/apc/almayer{
@@ -37114,11 +36790,7 @@
 	department = "SEA"
 	},
 /obj/structure/surface/table/almayer,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "dFR" = (
 /turf/open/floor/almayer{
@@ -37695,11 +37367,7 @@
 /obj/structure/bed/chair/office/dark{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "dWX" = (
 /obj/structure/machinery/light{
@@ -37755,11 +37423,7 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "dYu" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -37882,11 +37546,7 @@
 	pixel_y = 11;
 	tag = "icon-plant-10"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "ebD" = (
 /obj/structure/machinery/light/small{
@@ -37967,11 +37627,7 @@
 	phone_id = "Research";
 	pixel_y = 29
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "ecM" = (
 /obj/structure/bed/chair{
@@ -37992,11 +37648,7 @@
 	pixel_x = 6;
 	pixel_y = 3
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "ecR" = (
 /obj/effect/decal/warning_stripes{
@@ -38427,11 +38079,7 @@
 	dir = 8;
 	layer = 3.25
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "elR" = (
 /obj/structure/surface/table/almayer,
@@ -38513,11 +38161,7 @@
 	dir = 1;
 	name = "Corporate Liaison's Bedroom"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "emR" = (
 /obj/structure/surface/table/almayer,
@@ -38550,11 +38194,7 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "enw" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "enx" = (
 /obj/structure/pipes/vents/pump,
@@ -38708,11 +38348,7 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "esM" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -39044,11 +38680,7 @@
 	},
 /obj/effect/landmark/map_item,
 /obj/item/device/flashlight/lamp/green,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "eBC" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -39844,11 +39476,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "eUU" = (
 /obj/structure/machinery/light{
@@ -40023,11 +39651,7 @@
 /area/almayer/living/port_emb)
 "eYC" = (
 /obj/structure/machinery/vending/cigarette,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "eYH" = (
 /obj/structure/platform{
@@ -40047,11 +39671,7 @@
 /area/almayer/hull/upper_hull/u_f_s)
 "eYW" = (
 /obj/structure/filingcabinet/security,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "eZi" = (
 /obj/effect/projector{
@@ -40650,11 +40270,7 @@
 "fqe" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/portable_vendor/corporate,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "fqu" = (
 /obj/structure/largecrate/random/barrel/red,
@@ -40903,11 +40519,7 @@
 /obj/item/trash/USCMtray,
 /obj/item/tool/kitchen/utensil/pknife,
 /obj/item/tool/kitchen/utensil/pfork,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "fvt" = (
 /obj/effect/decal/warning_stripes{
@@ -41142,11 +40754,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/machinery/light,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "fAt" = (
 /obj/structure/largecrate/guns/merc{
@@ -42438,11 +42046,7 @@
 	pixel_x = -9;
 	pixel_y = 16
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "geX" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
@@ -42861,11 +42465,7 @@
 	pixel_x = -16;
 	pixel_y = 6
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "gsH" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
@@ -42967,11 +42567,7 @@
 /obj/item/tool/pen,
 /obj/structure/surface/table/woodentable,
 /obj/item/paper_bin/wy,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "guG" = (
 /obj/structure/pipes/vents/scrubber{
@@ -43540,11 +43136,7 @@
 	dir = 2;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "gEM" = (
 /obj/structure/bed/chair{
@@ -44308,11 +43900,7 @@
 "hds" = (
 /obj/structure/surface/table/almayer,
 /obj/item/folder/black,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "hdz" = (
 /obj/structure/surface/rack,
@@ -44383,11 +43971,7 @@
 	dir = 1
 	},
 /obj/structure/filingcabinet/security,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "hfs" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -44496,11 +44080,7 @@
 /area/almayer/medical/operating_room_three)
 "hhn" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "hhu" = (
 /obj/item/bedsheet/purple{
@@ -44824,11 +44404,7 @@
 	icon_state = "pottedplant_10";
 	tag = "icon-plant-10"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "hpw" = (
 /obj/structure/window/framed/almayer/white,
@@ -45028,11 +44604,7 @@
 	},
 /area/almayer/command/airoom)
 "hvH" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "hvQ" = (
 /obj/structure/machinery/light,
@@ -45478,11 +45050,7 @@
 /area/almayer/hull/upper_hull/u_f_s)
 "hGB" = (
 /obj/structure/machinery/light,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "hGD" = (
 /obj/effect/decal/warning_stripes{
@@ -45881,11 +45449,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/device/binoculars,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "hQY" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -46268,11 +45832,7 @@
 	dir = 1;
 	tag = "icon-comfychair (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "ial" = (
 /obj/structure/disposalpipe/segment{
@@ -46459,11 +46019,7 @@
 /area/almayer/living/briefing)
 "ifX" = (
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "ige" = (
 /obj/structure/machinery/computer/arcade,
@@ -46489,11 +46045,7 @@
 	pixel_y = 4
 	},
 /obj/item/reagent_container/food/drinks/coffee,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "ihn" = (
 /obj/structure/surface/table/almayer,
@@ -46605,11 +46157,7 @@
 	pixel_y = 12
 	},
 /obj/item/ashtray/plastic,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "ijU" = (
 /obj/item/tool/wet_sign,
@@ -46623,11 +46171,7 @@
 /obj/structure/closet/cabinet,
 /obj/item/clipboard,
 /obj/item/storage/briefcase,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "ily" = (
 /obj/structure/machinery/light,
@@ -47150,11 +46694,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "izU" = (
 /obj/structure/largecrate/random/case/small,
@@ -47404,11 +46944,7 @@
 /obj/structure/machinery/power/apc/almayer{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "iFH" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -47628,11 +47164,7 @@
 	icon_state = "psychbed"
 	},
 /obj/item/bedsheet/orange,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "iKI" = (
 /turf/open/floor/almayer{
@@ -48221,11 +47753,7 @@
 /area/almayer/lifeboat_pumps/north1)
 "iZU" = (
 /obj/item/poster,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "iZX" = (
 /obj/structure/surface/rack,
@@ -48247,11 +47775,7 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/hull/upper_hull/u_a_p)
 "jaR" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/squads/req)
 "jbq" = (
 /obj/structure/window/framed/almayer/hull,
@@ -48751,11 +48275,7 @@
 /area/almayer/living/briefing)
 "jkS" = (
 /obj/structure/bed/chair/wood/normal,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "jlA" = (
 /obj/structure/window/framed/almayer/white,
@@ -48776,11 +48296,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "jlX" = (
 /obj/structure/surface/table/almayer,
@@ -48971,11 +48487,7 @@
 /area/almayer/command/securestorage)
 "jrR" = (
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "jss" = (
 /obj/structure/bed/chair/comfy{
@@ -49925,11 +49437,7 @@
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "jWt" = (
 /obj/structure/disposalpipe/segment{
@@ -50452,11 +49960,7 @@
 /area/almayer/shipboard/firing_range_north)
 "kjl" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "kkx" = (
 /obj/structure/pipes/standard/manifold/hidden/supply,
@@ -51206,11 +50710,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
 /obj/effect/landmark/start/tank_crew,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "kCE" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
@@ -51318,11 +50818,7 @@
 /area/almayer/lifeboat_pumps/south2)
 "kFk" = (
 /obj/structure/closet/secure_closet/commander,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "kFq" = (
 /obj/structure/surface/table/almayer,
@@ -51479,11 +50975,7 @@
 	},
 /area/almayer/shipboard/brig/secondary_office)
 "kIf" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "kIm" = (
 /obj/structure/pipes/vents/pump{
@@ -51720,11 +51212,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "kQz" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
@@ -51985,11 +51473,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "kYB" = (
 /turf/closed/wall/almayer,
@@ -52003,22 +51487,14 @@
 	icon_state = "W";
 	tag = "icon-W"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "kYV" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
 	tag = "icon-intact-supply (SOUTHEAST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "kZA" = (
 /turf/open/floor/almayer{
@@ -52287,11 +51763,7 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "lgY" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -52346,11 +51818,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "lin" = (
 /obj/structure/closet/firecloset,
@@ -52372,11 +51840,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin/uscm,
 /obj/item/tool/pen,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "ljf" = (
 /obj/structure/surface/table/almayer,
@@ -52568,11 +52032,7 @@
 	id = "basketball";
 	pixel_y = 30
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "loY" = (
 /turf/open/floor/almayer{
@@ -52826,11 +52286,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/cane,
 /obj/item/folder/yellow,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "luk" = (
 /obj/structure/largecrate/random/secure,
@@ -52943,11 +52399,7 @@
 	icon_state = "E";
 	tag = "icon-E-corner"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "lwJ" = (
 /obj/structure/machinery/light{
@@ -52976,11 +52428,7 @@
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/tankerbunks)
 "lyi" = (
 /obj/structure/surface/table/almayer,
@@ -53037,11 +52485,7 @@
 /obj/item/toy/deck,
 /obj/item/toy/dice/d20,
 /obj/item/toy/deck/uno,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "lAO" = (
 /obj/structure/disposalpipe/segment{
@@ -53730,11 +53174,7 @@
 /area/almayer/lifeboat_pumps/south1)
 "lRP" = (
 /obj/structure/surface/table/almayer,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "lRX" = (
 /obj/structure/surface/table/almayer,
@@ -53807,11 +53247,7 @@
 	desc = "As the legendary US Army chaplain once said, 'There are no Athiests in fancy offices'.";
 	name = "Holy Bible"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "lTK" = (
 /obj/structure/closet/firecloset,
@@ -53838,11 +53274,7 @@
 /obj/structure/pipes/vents/scrubber{
 	dir = 1
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "lVS" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer/open{
@@ -54701,11 +54133,7 @@
 "mwL" = (
 /obj/structure/surface/table/almayer,
 /obj/item/book/manual/marine_law,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/chapel)
 "mwM" = (
 /obj/structure/machinery/door/firedoor/border_only/almayer,
@@ -54858,11 +54286,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/tool/pen,
 /obj/item/paper_bin/uscm,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "mzO" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -55088,11 +54512,7 @@
 /obj/structure/machinery/computer/research{
 	dir = 4
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "mIy" = (
 /obj/structure/disposalpipe/segment{
@@ -55127,11 +54547,7 @@
 	name = "Quackers"
 	},
 /obj/item/bedsheet/hop,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/squads/req)
 "mJu" = (
 /turf/open/floor/almayer/uscm/directional,
@@ -56655,11 +56071,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
 /obj/item/device/binoculars,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/squads/req)
 "nsR" = (
 /obj/item/tool/crowbar,
@@ -57068,11 +56480,7 @@
 	phone_category = "Almayer";
 	phone_id = "CL Office"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "nDo" = (
 /obj/structure/pipes/unary/freezer{
@@ -57616,11 +57024,7 @@
 	},
 /obj/item/ashtray/glass,
 /obj/item/cane,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/squads/req)
 "nQx" = (
 /obj/structure/machinery/light,
@@ -57798,11 +57202,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "nYh" = (
 /obj/structure/machinery/portable_atmospherics/hydroponics,
@@ -58319,11 +57719,7 @@
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "olU" = (
 /obj/structure/machinery/light,
@@ -58850,11 +58246,7 @@
 	dir = 8;
 	tag = "icon-wooden_chair (WEST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "oyo" = (
 /turf/open/floor/almayer{
@@ -58971,11 +58363,7 @@
 "oBq" = (
 /obj/effect/decal/cleanable/ash,
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "oBy" = (
 /obj/structure/disposalpipe/segment,
@@ -59380,11 +58768,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "oMQ" = (
 /obj/structure/pipes/vents/pump,
@@ -59469,11 +58853,7 @@
 /obj/structure/closet/secure_closet/personal/cabinet{
 	req_access = null
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/squads/req)
 "oPE" = (
 /turf/open/floor/almayer{
@@ -59853,11 +59233,7 @@
 "pbb" = (
 /obj/structure/surface/table/almayer,
 /obj/item/clipboard,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "pbj" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
@@ -60063,11 +59439,7 @@
 /obj/structure/bed/chair/wood/normal,
 /obj/item/bedsheet/brown,
 /obj/item/toy/farwadoll,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "pga" = (
 /obj/structure/largecrate/random,
@@ -60315,11 +59687,7 @@
 	icon_state = "E";
 	tag = "icon-E-corner"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "pop" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -62358,11 +61726,7 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "qqr" = (
 /obj/structure/closet/secure_closet/guncabinet/red,
@@ -62590,11 +61954,7 @@
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
 /obj/item/trash/cigbutt,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "qxi" = (
 /obj/structure/disposalpipe/segment,
@@ -62646,11 +62006,7 @@
 /area/almayer/medical/lower_medical_medbay)
 "qxP" = (
 /obj/structure/bed/chair,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "qyi" = (
 /obj/effect/decal/warning_stripes{
@@ -62991,11 +62347,7 @@
 	icon_state = "N";
 	tag = "icon-N"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "qJx" = (
 /obj/structure/machinery/vending/cola,
@@ -63204,11 +62556,7 @@
 	dir = 4;
 	tag = "icon-wooden_chair (EAST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "qOf" = (
 /obj/structure/machinery/door/poddoor/almayer/open{
@@ -64684,11 +64032,7 @@
 /area/almayer/command/securestorage)
 "rDd" = (
 /obj/structure/machinery/cm_vending/gear/commanding_officer,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "rDt" = (
 /obj/structure/disposalpipe/junction{
@@ -64717,11 +64061,7 @@
 "rEm" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/ashtray/bronze,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "rEn" = (
 /obj/structure/surface/table/almayer,
@@ -65338,11 +64678,7 @@
 	dir = 1;
 	tag = "icon-wooden_chair (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "rUy" = (
 /obj/structure/bed/chair/office/light{
@@ -66611,11 +65947,7 @@
 /obj/item/clothing/under/liaison_suit/outing,
 /obj/item/clothing/under/liaison_suit/suspenders,
 /obj/item/clothing/suit/armor/bulletproof,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "sDO" = (
 /turf/closed/shuttle/lifeboat{
@@ -67717,11 +67049,7 @@
 	},
 /area/almayer/squads/alpha_bravo_shared)
 "thL" = (
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/brig/cells)
 "thN" = (
 /obj/structure/machinery/camera/autoname/almayer/containment{
@@ -68330,11 +67658,7 @@
 /obj/item/clipboard,
 /obj/item/clipboard,
 /obj/item/clipboard,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "tvw" = (
 /obj/structure/pipes/standard/manifold/hidden/supply{
@@ -68901,11 +68225,7 @@
 	tag = "icon-W"
 	},
 /obj/effect/decal/warning_stripes,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "tIS" = (
 /obj/effect/decal/warning_stripes{
@@ -69455,11 +68775,7 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "tXT" = (
 /obj/item/bedsheet/blue{
@@ -69557,11 +68873,7 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "tZF" = (
 /obj/structure/machinery/light/small{
@@ -69765,11 +69077,7 @@
 "ueG" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/radio,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/engineering/ce_room)
 "ueZ" = (
 /obj/structure/machinery/door/airlock/almayer/marine/alpha,
@@ -69829,19 +69137,11 @@
 /obj/structure/surface/table/almayer,
 /obj/item/trash/cigbutt,
 /obj/item/ashtray/glass,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "uhV" = (
 /obj/structure/pipes/standard/simple/hidden/supply,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "uia" = (
 /obj/structure{
@@ -70469,11 +69769,7 @@
 /obj/item/clothing/mask/cigarette/pipe{
 	pixel_y = 5
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "uwz" = (
 /obj/structure/surface/table/reinforced/almayer_B,
@@ -73218,11 +72514,7 @@
 "vMr" = (
 /obj/structure/surface/table/almayer,
 /obj/item/book/manual/marine_law,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "vMx" = (
 /obj/structure/machinery/camera/autoname/almayer{
@@ -73424,11 +72716,7 @@
 	},
 /obj/structure/machinery/light,
 /obj/item/reagent_container/spray/cleaner,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "vRb" = (
 /turf/open/floor/almayer/uscm/directional{
@@ -74037,11 +73325,7 @@
 	dir = 4;
 	tag = "icon-intact-supply (EAST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "wfE" = (
 /turf/closed/wall/almayer,
@@ -74066,11 +73350,7 @@
 	icon_state = "S";
 	tag = "icon-S"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/basketball)
 "wga" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
@@ -74403,11 +73683,7 @@
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "wom" = (
 /obj/structure/disposalpipe/segment{
@@ -75446,11 +74722,7 @@
 	dir = 8;
 	tag = "icon-tube1 (WEST)"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "wQx" = (
 /obj/structure/disposalpipe/segment{
@@ -75806,11 +75078,7 @@
 /area/almayer/hallways/aft_hallway)
 "wWm" = (
 /obj/structure/machinery/photocopier,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/medical/medical_science)
 "wWz" = (
 /obj/structure/machinery/chem_storage/medbay{
@@ -76436,11 +75704,7 @@
 "xmF" = (
 /obj/structure/surface/table/almayer,
 /obj/item/device/flashlight/lamp,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/offices)
 "xmM" = (
 /turf/closed/shuttle/lifeboat{
@@ -78184,11 +77448,7 @@
 /obj/structure/machinery/faxmachine{
 	department = "Commander"
 	},
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "xZI" = (
 /obj/structure/largecrate/random/barrel/white,
@@ -78354,11 +77614,7 @@
 "yeo" = (
 /obj/structure/bed,
 /obj/item/bedsheet/hop,
-/turf/open/floor/strata{
-	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know.";
-	icon = 'icons/turf/floors/floors.dmi';
-	icon_state = "wood"
-	},
+/turf/open/floor/wood/ship,
 /area/almayer/living/commandbunks)
 "yev" = (
 /obj/item/device/flashlight/lamp/green,

@@ -37078,7 +37078,7 @@
 /area/almayer/hallways/starboard_hallway)
 "dEQ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/bottle/capsaicin/tabasco,
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
@@ -37358,7 +37358,7 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "dNM" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/bottle/capsaicin/tabasco{
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
 	pixel_x = -5;
 	pixel_y = 10
 	},
@@ -48401,7 +48401,7 @@
 /obj/structure/surface/table/almayer,
 /obj/structure/pipes/vents/pump,
 /obj/item/pizzabox,
-/obj/item/reagent_container/glass/bottle/capsaicin/tabasco{
+/obj/item/reagent_container/food/condiment/hotsauce/tabasco{
 	pixel_x = 10;
 	pixel_y = 18
 	},
@@ -53710,7 +53710,7 @@
 	pixel_x = 6;
 	pixel_y = 4
 	},
-/obj/item/reagent_container/glass/bottle/capsaicin/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
 	pixel_y = 20
 	},
 /turf/open/floor/almayer{
@@ -56774,7 +56774,7 @@
 /area/almayer/squads/alpha)
 "nuK" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/bottle/capsaicin/franks{
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
 	pixel_x = 2;
 	pixel_y = 10
 	},
@@ -57457,7 +57457,7 @@
 /area/almayer/hull/upper_hull/u_f_s)
 "nMp" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/bottle/capsaicin/franks,
+/obj/item/reagent_container/food/condiment/hotsauce/franks,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "silver";
@@ -63376,7 +63376,7 @@
 /area/almayer/shipboard/port_point_defense)
 "qSE" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/bottle/capsaicin/cholula,
+/obj/item/reagent_container/food/condiment/hotsauce/cholula,
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
@@ -65991,7 +65991,7 @@
 "snj" = (
 /obj/structure/surface/table/almayer,
 /obj/item/storage/donut_box,
-/obj/item/reagent_container/glass/bottle/capsaicin/cholula{
+/obj/item/reagent_container/food/condiment/hotsauce/cholula{
 	pixel_x = 14;
 	pixel_y = 22
 	},
@@ -69244,7 +69244,7 @@
 /area/almayer/command/securestorage)
 "tTp" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/bottle/capsaicin/sriracha{
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
 	pixel_x = 7;
 	pixel_y = 7
 	},
@@ -70105,11 +70105,11 @@
 "upx" = (
 /obj/structure/surface/table/almayer,
 /obj/item/pizzabox,
-/obj/item/reagent_container/glass/bottle/capsaicin/sriracha{
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
 	pixel_x = 11;
 	pixel_y = 15
 	},
-/obj/item/reagent_container/glass/bottle/capsaicin/franks{
+/obj/item/reagent_container/food/condiment/hotsauce/franks{
 	pixel_x = -13;
 	pixel_y = 16
 	},
@@ -74237,7 +74237,7 @@
 /area/almayer/lifeboat/boat2)
 "wka" = (
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/glass/bottle/capsaicin/sriracha{
+/obj/item/reagent_container/food/condiment/hotsauce/sriracha{
 	pixel_x = 4
 	},
 /turf/open/floor/almayer{

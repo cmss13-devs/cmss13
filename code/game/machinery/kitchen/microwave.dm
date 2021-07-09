@@ -196,7 +196,7 @@
 
 		for (var/datum/reagent/R in reagents.reagent_list)
 			var/display_name = R.name
-			if (R.id == "capsaicin")
+			if (R.id == "hotsauce")
 				display_name = "Hotsauce"
 			if (R.id == "frostoil")
 				display_name = "Coldsauce"

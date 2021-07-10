@@ -97,6 +97,12 @@
 /datum/chemical_reaction/machosauce/cranberry
 	required_reagents = list("condensedcapsaicin" = 1, "cranberry" = 1)
 
+/datum/chemical_reaction/machosauce/vanilla
+	required_reagents = list("condensedcapsaicin" = 1, "vanilla" = 1)
+
+/datum/chemical_reaction/machosauce/pineapple
+	required_reagents = list("condensedcapsaicin" = 1, "pineapple" = 1)
+
 /datum/chemical_reaction/machosauce/infinite
 	required_reagents = list("condensedcapsaicin" = 1, "machosauce" = 1)
 
@@ -118,9 +124,20 @@
 /datum/chemical_reaction/machosauce/infinite/cranberry
 	required_reagents = list("machosauce" = 1, "cranberry" = 1)
 
+/datum/chemical_reaction/machosauce/infinite/vanilla
+	required_reagents = list("machosauce" = 1, "vanilla" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/pineapple
+	required_reagents = list("machosauce" = 1, "pineapple" = 1)
+
 /datum/chemical_reaction/machosauce/weaksauce
 	required_reagents = list("machosauce" = 1, "water" = 1)
-	result_amount = 2
+
+/datum/chemical_reaction/machosauce/weaksauce/infinite
+	required_reagents = list("machosauce" = 1, "weaksauce" = 1)
+
+/datum/chemical_reaction/machosauce/weaksauce/infinite/water
+	required_reagents = list("water" = 1, "weaksauce" = 1)
 
 /datum/chemical_reaction/sodiumchloride
 	name = "Sodium Chloride"

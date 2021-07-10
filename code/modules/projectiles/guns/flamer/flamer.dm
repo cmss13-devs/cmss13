@@ -551,7 +551,7 @@
 	firelevel -= 2 //reduce the intensity by 2 per tick
 	return
 
-/proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
+/proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, var/aerial_flame_level)
 	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
@@ -595,10 +595,13 @@
 		if(T.density)
 			continue
 
-		spawn(0)
-			fire_spread_recur(T, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color)
+		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))
+			break
 
-/proc/fire_spread(var/turf/target, var/datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color)
+		spawn(0)
+			fire_spread_recur(T, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color, aerial_flame_level)
+
+/proc/fire_spread(var/turf/target, var/datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color, var/aerial_flame_level = TURF_PROTECTION_NONE)
 	var/datum/reagent/R = new()
 	R.intensityfire = burn_lvl
 	R.durationfire = fire_lvl
@@ -614,4 +617,6 @@
 			else
 				spread_power -= 1.414 //diagonal spreading
 		var/turf/T = get_step(target, direction)
-		fire_spread_recur(T, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color)
+		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))
+			continue
+		fire_spread_recur(T, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, aerial_flame_level)

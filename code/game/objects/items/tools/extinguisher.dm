@@ -178,7 +178,7 @@
 				var/obj/flamer_fire/FF = atm
 				if(FF.firelevel > power)
 					FF.firelevel -= power
-					FF.updateicon()
+					FF.update_flame()
 				else
 					qdel(atm)
 				continue

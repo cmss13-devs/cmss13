@@ -475,6 +475,7 @@
 	//------------------//
 	intensityfire = BURN_LEVEL_TIER_1
 	durationfire = BURN_TIME_TIER_1
+	burn_sprite = "red"
 	rangefire = 4
 	//------------------//
 	explosive = TRUE
@@ -701,6 +702,7 @@
 	color = "#ffb300"
 	chemfiresupp = TRUE
 	burncolor = "#D05006"
+	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
 
 // This is the regular flamer fuel and pyro regular flamer fuel.
@@ -727,6 +729,7 @@
 	flameshape = FLAMESHAPE_LINE
 	color = "#00ff00"
 	burncolor = "#00ff00"
+	burn_sprite = "green"
 	properties = list()
 
 /datum/reagent/napalm/gel/New()
@@ -744,6 +747,7 @@
 	description = "A sticky combustable liquid chemical that burns extremely hot."
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
+	burn_sprite = "blue"
 	properties = list()
 
 /datum/reagent/napalm/blue/New()
@@ -762,6 +766,7 @@
 	flameshape = FLAMESHAPE_TRIANGLE
 	color = "#00ff00"
 	burncolor = "#00ff00"
+	burn_sprite = "green"
 	properties = list()
 
 /datum/reagent/napalm/green/New()
@@ -778,6 +783,7 @@
 	description = "A sticky combustable liquid chemical that penetrates the best fire retardants."
 	color = "#800080"
 	burncolor = "#800080"
+	burn_sprite = "dynamic"
 	properties = list()
 
 /datum/reagent/napalm/penetrating/New()

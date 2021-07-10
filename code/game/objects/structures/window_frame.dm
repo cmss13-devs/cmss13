@@ -250,6 +250,7 @@
 //Shivas Snowball (Ice v3) frame
 
 /obj/structure/window_frame/shiva
+	name = "poly-kevlon window frame"
 	icon = 'icons/turf/walls/ice_colony/shiva_windows.dmi'
 	icon_state = "shiva_window0_frame"
 	basestate = "shiva_window"

@@ -395,8 +395,8 @@
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
 "abm" = (
-/mob/living/simple_animal/hostile/alien/ravager{
-	desc = "Cope, seethe. Ledges are eternal. You are not."
+/obj/structure/target/alien{
+	desc = "Cope, seethe. Ledges are eternal. But alas, you are not."
 	},
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/oob/dev_room)
@@ -6965,7 +6965,7 @@
 	},
 /area/shiva/interior/aerodrome)
 "aYy" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/shiva,
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
 "aYF" = (
@@ -7142,7 +7142,7 @@
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
 "bbj" = (
-/obj/structure/window_frame/colony,
+/obj/structure/window_frame/shiva,
 /obj/item/stack/rods,
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
@@ -8263,6 +8263,10 @@
 /obj/structure/inflatable/popped,
 /turf/open/auto_turf/ice/layer0,
 /area/shiva/interior/caves/research_caves)
+"cko" = (
+/obj/structure/platform_decoration/strata,
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/lz1_valley)
 "ckI" = (
 /obj/structure/surface/table,
 /obj/item/circuitboard{
@@ -8788,8 +8792,7 @@
 	},
 /area/shiva/interior/colony/medseceng)
 "cQW" = (
-/obj/structure/machinery/power/port_gen/pacman,
-/turf/open/auto_turf/snow/layer2,
+/turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
 "cQY" = (
 /obj/structure/barricade/handrail/wire,
@@ -10177,6 +10180,13 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/colony/research_hab)
+"eGe" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
 "eGq" = (
 /obj/structure/platform/strata,
 /obj/structure/platform/strata{
@@ -13116,6 +13126,10 @@
 /obj/item/clothing/mask/gas,
 /turf/open/floor/carpet,
 /area/shiva/interior/colony/research_hab)
+"hXX" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/lz1_valley)
 "hYb" = (
 /obj/structure/machinery/light/double,
 /turf/open/floor/plating,
@@ -14378,7 +14392,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
 "jpE" = (
-/obj/structure/machinery/botany,
+/obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "jqo" = (
@@ -14386,6 +14400,10 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/caves/cp_camp)
+"jqx" = (
+/obj/structure/platform/strata,
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/lz1_valley)
 "jqT" = (
 /obj/structure/closet/firecloset,
 /obj/item/explosive/grenade/HE/PMC,
@@ -15058,11 +15076,13 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/junkyard)
 "kfl" = (
-/obj/structure/platform_decoration/strata{
-	dir = 1
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/shuttle_control/dropship1,
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
 	},
-/turf/open/auto_turf/snow/layer2,
-/area/shiva/exterior/lz1_valley)
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_console)
 "kfW" = (
 /obj/effect/decal/cleanable/blood/oil,
 /obj/effect/decal/cleanable/dirt,
@@ -15150,15 +15170,6 @@
 	},
 /turf/open/floor/plating,
 /area/shiva/interior/aerodrome)
-"kjO" = (
-/obj/structure/barricade/metal{
-	dir = 4
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner"
-	},
-/turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/lz1_valley)
 "kjU" = (
 /obj/structure/machinery/light/double{
 	dir = 8;
@@ -15929,13 +15940,14 @@
 	},
 /area/shiva/interior/lz2_habs)
 "kXs" = (
-/obj/structure/barricade/metal{
-	dir = 4
+/obj/item/lightstick/red/spoke/planted{
+	pixel_x = 11;
+	pixel_y = 20
 	},
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner"
 	},
-/turf/open/auto_turf/snow/layer2,
+/turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
 "kXt" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -16444,16 +16456,6 @@
 	icon_state = "redfull"
 	},
 /area/shiva/interior/colony/research_hab)
-"lFw" = (
-/obj/item/lightstick/red/spoke/planted{
-	pixel_x = 11;
-	pixel_y = 20
-	},
-/obj/effect/decal/warning_stripes{
-	icon_state = "E-corner"
-	},
-/turf/open/floor/plating,
-/area/shiva/exterior/lz1_valley)
 "lFP" = (
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_sn_full_cap"
@@ -16571,10 +16573,9 @@
 	},
 /area/shiva/interior/colony/botany)
 "lLv" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/computer/shuttle_control/dropship1,
-/turf/open/auto_turf/snow/layer1,
-/area/shiva/exterior/lz1_console)
+/obj/structure/machinery/power/port_gen/pacman,
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
 "lLE" = (
 /obj/structure/prop/invuln/ice_prefab/standalone,
 /turf/open/auto_turf/snow/layer2,
@@ -16972,8 +16973,9 @@
 /turf/open/floor/wood,
 /area/shiva/interior/aerodrome)
 "mev" = (
-/obj/structure/platform_decoration/strata,
-/turf/open/auto_turf/snow/layer1,
+/obj/structure/closet/toolcloset,
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor/plating,
 /area/shiva/exterior/lz1_valley)
 "meG" = (
 /obj/structure/bed/chair,
@@ -16982,8 +16984,8 @@
 	},
 /area/shiva/interior/colony/s_admin)
 "mfa" = (
-/obj/structure/platform/strata,
-/turf/open/auto_turf/snow/layer1,
+/obj/item/weapon/melee/ice_axe,
+/turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "mfc" = (
 /obj/structure/platform_decoration/strata{
@@ -17350,10 +17352,6 @@
 	icon_state = "bluefull"
 	},
 /area/shiva/interior/colony/s_admin)
-"mCJ" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/central)
 "mCQ" = (
 /obj/structure/prop/ice_colony/surveying_device/measuring_device{
 	dir = 1;
@@ -17585,9 +17583,6 @@
 /area/shiva/exterior/cp_lz2)
 "mNs" = (
 /obj/structure/platform/strata,
-/obj/structure/platform/strata{
-	dir = 8
-	},
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "mNK" = (
@@ -20941,7 +20936,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "qza" = (
-/obj/structure/platform/strata,
+/obj/item/device/flashlight/flare,
 /turf/open/auto_turf/snow/layer2,
 /area/shiva/exterior/lz1_valley)
 "qzv" = (
@@ -21449,6 +21444,14 @@
 	icon_state = "redfull"
 	},
 /area/shiva/interior/caves/research_caves)
+"rbA" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner";
+	tag = "icon-S-corner"
+	},
+/obj/structure/barricade/metal,
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
 "rbB" = (
 /obj/effect/landmark/shuttle_loc/marine_trg/landing{
 	name = "1"
@@ -21656,6 +21659,16 @@
 	},
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
+"rnO" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S-corner";
+	tag = "icon-S-corner"
+	},
+/obj/effect/decal/warning_stripes{
+	icon_state = "W-corner"
+	},
+/turf/open/floor/plating,
+/area/shiva/exterior/lz1_valley)
 "rov" = (
 /obj/item/lightstick/red/spoke/planted{
 	layer = 3.1;
@@ -22165,6 +22178,10 @@
 	},
 /turf/open/floor/plating/icefloor,
 /area/shiva/exterior/junkyard/fortbiceps)
+"rXC" = (
+/obj/effect/landmark/railgun_camera_pos,
+/turf/open/auto_turf/ice/layer1,
+/area/shiva/exterior/cp_lz2)
 "rZj" = (
 /turf/open/floor/shiva{
 	dir = 6;
@@ -24434,6 +24451,10 @@
 	},
 /turf/open/auto_turf/ice/layer2,
 /area/shiva/interior/caves/left_spiders)
+"upf" = (
+/obj/item/tool/pickaxe,
+/turf/open/auto_turf/snow/layer1,
+/area/shiva/exterior/lz1_valley)
 "upl" = (
 /obj/structure/barricade/snow{
 	dir = 1
@@ -24626,6 +24647,12 @@
 	},
 /turf/open/floor/wood,
 /area/shiva/interior/colony/botany)
+"uCs" = (
+/obj/structure/flora/tree/dead{
+	icon_state = "tree_6"
+	},
+/turf/open/auto_turf/snow/layer2,
+/area/shiva/exterior/lz1_valley)
 "uCO" = (
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -26620,10 +26647,6 @@
 	icon_state = "floor2"
 	},
 /area/shiva/interior/colony/research_hab)
-"wTn" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
-/area/shiva/interior/colony/medseceng)
 "wTx" = (
 /obj/item/lightstick/red/spoke/planted{
 	pixel_x = 15;
@@ -32273,7 +32296,7 @@ rZt
 rZt
 rZt
 flN
-jrg
+amu
 fXX
 bJj
 jrg
@@ -42433,7 +42456,7 @@ eni
 kOV
 kOV
 kOV
-toD
+rXC
 kOV
 kOV
 kOV
@@ -44784,7 +44807,7 @@ vvb
 qrz
 qrz
 qrz
-mCJ
+jFy
 qrz
 qrz
 qrz
@@ -45108,7 +45131,7 @@ qrz
 qrz
 qrz
 qrz
-mCJ
+jFy
 ndR
 ndR
 ndR
@@ -51598,7 +51621,7 @@ qrz
 tTd
 acT
 aek
-wTn
+aek
 aek
 aek
 aDn
@@ -56889,7 +56912,7 @@ ano
 dMo
 uji
 hzJ
-aDM
+kLM
 lNE
 uqb
 iOu
@@ -57051,10 +57074,10 @@ uji
 uji
 uji
 hzJ
-hzJ
-kjO
+qhm
+qhm
 kXs
-lFw
+mcH
 mcH
 mcH
 mcH
@@ -57212,8 +57235,8 @@ hzJ
 hzJ
 hzJ
 hzJ
-hzJ
-kbK
+kLM
+kLM
 knI
 iQq
 iQq
@@ -57375,7 +57398,7 @@ hzJ
 hzJ
 hzJ
 uAd
-kLM
+kbK
 jpE
 iQq
 kLM
@@ -57715,7 +57738,7 @@ iQq
 uqb
 lNg
 lNg
-uqb
+xvb
 uqb
 xMz
 xMz
@@ -58026,7 +58049,7 @@ kLM
 uqb
 uqb
 kLM
-lLv
+kLM
 kLM
 iQq
 bzK
@@ -58178,7 +58201,7 @@ jAL
 pqj
 fQX
 jAL
-xMz
+fQX
 jAL
 kvQ
 kLM
@@ -58191,7 +58214,7 @@ kLM
 gCx
 kJQ
 kLM
-iQq
+qkI
 iQq
 kLM
 iOu
@@ -58364,9 +58387,9 @@ iQq
 iQq
 iQq
 kLM
+xvb
 uqb
-uqb
-uqb
+uCs
 xMz
 xMz
 xMz
@@ -58663,9 +58686,9 @@ jAL
 mhl
 vAp
 xMz
-xMz
 cnt
 cnt
+uqb
 xvb
 kLM
 gCx
@@ -58823,10 +58846,10 @@ fQX
 fQX
 jAL
 fQX
-xMz
-xMz
+jAL
 xMz
 aDM
+uqb
 uqb
 uqb
 kLM
@@ -59311,7 +59334,7 @@ jAL
 fQX
 fQX
 xMz
-xMz
+uqb
 uqb
 kLM
 boD
@@ -59473,7 +59496,7 @@ fQX
 mhl
 vAp
 xMz
-xMz
+uqb
 kLM
 iQq
 boD
@@ -59635,7 +59658,7 @@ jAL
 iMb
 xMz
 xMz
-xMz
+kLM
 uqb
 kLM
 boD
@@ -60444,7 +60467,7 @@ jAL
 iMb
 jAL
 jAL
-kLM
+jAL
 kvQ
 uqb
 dgG
@@ -60471,7 +60494,7 @@ gCx
 kLM
 kLM
 uqb
-puZ
+kLM
 puZ
 puZ
 puZ
@@ -60606,7 +60629,7 @@ iMb
 iMb
 fQX
 jAL
-kLM
+jAL
 kvQ
 oUu
 uqb
@@ -60633,7 +60656,7 @@ kLM
 uqb
 uqb
 uqb
-puZ
+kLM
 puZ
 puZ
 puZ
@@ -60768,7 +60791,7 @@ iMb
 jAL
 pqj
 jAL
-iQq
+pqj
 iQq
 iQq
 iQq
@@ -60783,7 +60806,7 @@ iQq
 gCx
 uqb
 uqb
-iQq
+qkI
 iQq
 kLM
 kLM
@@ -60794,8 +60817,8 @@ kLM
 uqb
 uqb
 aDM
-puZ
-puZ
+upf
+aDM
 puZ
 puZ
 puZ
@@ -60930,7 +60953,7 @@ jAL
 iMb
 iMb
 jAL
-kLM
+jAL
 kvQ
 iOu
 kLM
@@ -60955,8 +60978,8 @@ uqb
 uqb
 kLM
 uqb
-puZ
-puZ
+kLM
+aDM
 puZ
 puZ
 puZ
@@ -61092,7 +61115,7 @@ iMb
 iMb
 iMb
 jAL
-kLM
+jAL
 kvQ
 uqb
 aDM
@@ -61102,11 +61125,11 @@ uqb
 uqb
 uqb
 uqb
-uqb
+qza
 kLM
-uqb
-mev
-rLu
+hXX
+kLM
+cko
 rLu
 nMR
 kLM
@@ -61117,7 +61140,7 @@ xvb
 uqb
 uqb
 uqb
-puZ
+aDM
 puZ
 puZ
 puZ
@@ -61268,7 +61291,7 @@ uqb
 uqb
 uqb
 mfa
-slO
+jqx
 slO
 nNl
 nMR
@@ -61426,11 +61449,11 @@ slO
 aKP
 aMn
 puZ
-puZ
-uqb
-uqb
+kfl
+eGe
+rnO
 qza
-xMz
+mNs
 slO
 slO
 ofl
@@ -61588,10 +61611,10 @@ slO
 slO
 slO
 puZ
-puZ
+lLv
 cQW
-aDM
-kfl
+rbA
+uqb
 mNs
 xMz
 slO
@@ -61750,9 +61773,9 @@ slO
 slO
 puZ
 puZ
-puZ
-puZ
+mev
 cQW
+rbA
 aDM
 mOv
 niL
@@ -62081,7 +62104,7 @@ puZ
 puZ
 puZ
 puZ
-uqb
+snN
 uqb
 uqb
 aDM

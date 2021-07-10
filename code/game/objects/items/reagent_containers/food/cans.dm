@@ -396,6 +396,48 @@
 	reagents.add_reagent("souto_cranberry", 25)
 	reagents.add_reagent("water", 25)
 
+/obj/item/reagent_container/food/drinks/cans/souto/vanilla
+	name = "\improper Vanilla Souto"
+	desc = "When most soft drinks say 'vanilla,' they really mean their classic flavor with a bit of vanilla added. NOT THE SOUTO CORPORATION, BABY! This bad boy is filled to the brim with 100% pure carbonated vanilla extract! It tastes terrible. Canned in Havana."
+	icon_state = "souto_vanilla"
+	item_state = "souto_canilla"
+
+/obj/item/reagent_container/food/drinks/cans/souto/vanilla/Initialize()
+	. = ..()
+	reagents.add_reagent("souto_vanilla", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla
+	name = "\improper Diet Vanilla Souto"
+	desc = "This is a can of watery bitter vanilla extract. You can't possibly imagine who would greenlight such a concept. Canned in Havana."
+	icon_state = "souto_diet_vanilla"
+	item_state = "souto_diet_vanilla"
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla/Initialize()
+	. = ..()
+	reagents.add_reagent("souto_vanilla", 25)
+	reagents.add_reagent("water", 25)
+
+/obj/item/reagent_container/food/drinks/cans/souto/pineapple
+	name = "\improper Pineapple Souto"
+	desc = "This tastes like battery acid with a full cup of sugar mixed in. Canned in Havana."
+	icon_state = "souto_pineapple"
+	item_state = "souto_pineapple"
+
+/obj/item/reagent_container/food/drinks/cans/souto/pineapple/Initialize()
+	. = ..()
+	reagents.add_reagent("souto_pineapple", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple
+	name = "\improper Diet Pineapple Souto"
+	desc = "This tastes like battery acid with a half cup of sugar mixed in. Canned in Havana."
+	icon_state = "souto_diet_pineapple"
+	item_state = "souto_diet_pineapple"
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple/Initialize()
+	. = ..()
+	reagents.add_reagent("souto_pineapple", 25)
+	reagents.add_reagent("water", 25)
+
 /obj/item/reagent_container/food/drinks/cans/aspen
 	name = "\improper Weyland-Yutani Aspen Beer"
 	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."

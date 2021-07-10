@@ -247,7 +247,17 @@
 	description = "A cranberry flavored soda that's canned in Havana"
 	color = "#950714"
 
+/datum/reagent/drink/souto/vanilla
+	name = "Vanilla Souto"
+	id = "souto_vanilla"
+	description = "A vanilla flavored soda that's canned in Havana"
+	color = "#F9E5BC"
 
+/datum/reagent/drink/souto/pineapple
+	name = "Pineapple Souto"
+	id = "souto_pineapple"
+	description = "A pineapple flavored soda that's canned in Havana"
+	color = "#FEEB75"
 
 //OTHER SODA//
 

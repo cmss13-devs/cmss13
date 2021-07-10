@@ -728,9 +728,11 @@
 	health = 1000000
 
 /obj/structure/window/framed/shiva
+	name = "poly-kevlon framed window"
 	icon = 'icons/turf/walls/ice_colony/shiva_windows.dmi'
 	icon_state = "shiva_window0"
 	basestate = "shiva_window"
+	desc = "A semi transparent (not entirely opaque) pane of material set into a poly-kevlon frame. Very smashable."
 	health = 40
 	window_frame = /obj/structure/window_frame/shiva
 

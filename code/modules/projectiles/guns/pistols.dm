@@ -460,8 +460,7 @@
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/lasersight,
 						/obj/item/attachable/extended_barrel,
-						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/burstfire_assembly)
+						/obj/item/attachable/heavy_barrel)
 
 
 /obj/item/weapon/gun/pistol/vp78/set_gun_attachment_offsets()

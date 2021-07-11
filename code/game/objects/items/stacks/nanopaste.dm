@@ -36,7 +36,7 @@
 		if(S.surgery_open_stage == 0)
 			if (S && (S.status & LIMB_ROBOT))
 				if(S.get_damage())
-					S.heal_damage(15, 15, robo_repair = 1)
+					S.heal_damage(15, 15, TRUE)
 					H.pain.recalculate_pain()
 					H.updatehealth()
 					use(1)

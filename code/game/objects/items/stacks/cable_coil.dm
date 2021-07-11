@@ -327,7 +327,7 @@
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
-			S.heal_damage(0,15,0,1)
+			S.heal_damage(0, 15, TRUE)
 			H.pain.recalculate_pain()
 			user.visible_message(SPAN_DANGER("\The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src]."))
 			return

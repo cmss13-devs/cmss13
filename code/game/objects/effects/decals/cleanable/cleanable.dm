@@ -1,4 +1,4 @@
-var/global/list/cleanable_decal_cache = list()
+GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 
 /obj/effect/decal/cleanable
 	var/list/random_icon_states = list()
@@ -73,13 +73,11 @@ var/global/list/cleanable_decal_cache = list()
 
 /obj/effect/decal/cleanable/proc/cleanup_cleanable()
 	cleaned_up = TRUE
-	if(!cleanable_turf)
+	if(!cleanable_turf?.cleanables[cleanable_type])
 		return
 	if(overlayed_image)
 		cleanable_turf.overlays -= overlayed_image
 		overlayed_image = null
-	if(!length(cleanable_turf.cleanables[cleanable_type]))
-		return
 	QDEL_NULL(cleanable_turf.cleanables[cleanable_type])
 	LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)
 
@@ -87,10 +85,10 @@ var/global/list/cleanable_decal_cache = list()
 	var/cache_key = "[overlay_icon]&[overlay_icon_state]"
 	var/image/I
 	if(cache_overlay)
-		I = cleanable_decal_cache[cache_key]
-		if(!istype(I))
+		I = GLOB.cleanable_decal_cache[cache_key]
+		if(!I)
 			I = image(overlay_icon, icon_state = overlay_icon_state)
-			cleanable_decal_cache[cache_key] = I
+			GLOB.cleanable_decal_cache[cache_key] = I
 	else
 		I = image(overlay_icon, icon_state = overlay_icon_state)
 	var/mutable_appearance/MA = new(I)

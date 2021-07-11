@@ -121,7 +121,7 @@
 				O.take_damage(amount, 0, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
 			else
 				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
-				O.heal_damage(-amount, 0, internal=0, robo_repair=(O.status & LIMB_ROBOT))
+				O.heal_damage(-amount, 0, O.status & LIMB_ROBOT)
 			break
 
 
@@ -137,7 +137,7 @@
 				O.take_damage(0, amount, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
 			else
 				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
-				O.heal_damage(0, -amount, internal=0, robo_repair=(O.status & LIMB_ROBOT))
+				O.heal_damage(0, -amount, O.status & LIMB_ROBOT)
 			break
 
 
@@ -287,7 +287,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		var/brute_was = picked.brute_dam
 		var/burn_was = picked.burn_dam
 
-		update |= picked.heal_damage(brute, burn, 0, robo_repair)
+		update |= picked.heal_damage(brute, burn, robo_repair)
 
 		brute -= (brute_was-picked.brute_dam)
 		burn -= (burn_was-picked.burn_dam)

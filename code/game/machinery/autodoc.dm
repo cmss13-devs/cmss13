@@ -69,7 +69,7 @@
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & LIMB_ROBOT)
-		picked.heal_damage(brute, burn, 0, 1)
+		picked.heal_damage(brute, burn, TRUE)
 		human.pain.apply_pain(-brute, BRUTE)
 		human.pain.apply_pain(-burn, BURN)
 	else
@@ -383,7 +383,7 @@
 						if(S.limb_ref.brute_dam > 20)
 							sleep(((S.limb_ref.brute_dam - 20)/2)*surgery_mod)
 							if(!surgery) break
-							S.limb_ref.heal_damage(S.limb_ref.brute_dam - 20,0)
+							S.limb_ref.heal_damage(S.limb_ref.brute_dam - 20)
 						if(!surgery) break
 						if(S.limb_ref.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 							new /obj/item/stack/medical/splint/nano(loc, 1)

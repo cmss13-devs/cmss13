@@ -69,7 +69,7 @@
 	var/mob/living/carbon/human/C = M
 	var/obj/limb/L = pick(C.limbs)
 	if(L && L.status & LIMB_ROBOT)
-		L.heal_damage(2*potency,2*potency,0,1)
+		L.heal_damage(2*potency, 2*potency, TRUE)
 
 /datum/chem_property/positive/repairing/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(2*potency, TOX)

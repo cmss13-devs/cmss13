@@ -89,62 +89,79 @@
 /datum/ammo/proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
 	return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
-/datum/ammo/proc/knockback(mob/M, obj/item/projectile/P, var/max_range = 2)
-	if(!M || M == P.firer) return
-	if(P.distance_travelled > max_range || M.lying)
+/datum/ammo/proc/knockback(mob/living/L, obj/item/projectile/P, var/max_range = 2)
+	if(!L || L == P.firer)
+		return
+	if(P.distance_travelled > max_range || L.lying)
 		return //Two tiles away or more, basically.
 
-	if(M.mob_size >= MOB_SIZE_BIG)
+	if(L.mob_size >= MOB_SIZE_BIG)
 		return //Big xenos are not affected.
 
-	else //One tile away or less.
-		shake_camera(M, 3, 4)
-		if(isliving(M)) //This is pretty ugly, but what can you do.
-			if(isCarbonSizeXeno(M))
-				var/mob/living/carbon/Xenomorph/target = M
-				target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
-				target.apply_effect(1, SUPERSLOW)
-				target.apply_effect(2, SLOW)
-				to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
-			else
-				var/mob/living/L = M
-				L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
-		step_away(M,P)
+	shake_camera(L, 3, 4)
 
-/datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 6) //crazier version of knockback
-	if(!M || M == P.firer) return
-	if(P.distance_travelled > max_range || M.lying)
+	if(isCarbonSizeXeno(L))
+		var/mob/living/carbon/Xenomorph/target = L
+		target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
+		target.apply_effect(1, SUPERSLOW)
+		target.apply_effect(2, SLOW)
+		to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
+	else
+		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
+
+	//Either knockback or slam them into an obstacle.
+	var/direction = Get_Compass_Dir(P.z ? P : P.firer, L) //More precise than get_dir.
+	if(!direction) //Same tile.
+		return
+	if(!step(L, direction))
+		L.animation_attack_on(get_step(L, direction))
+		playsound(L.loc, "punch", 25, 1)
+		L.visible_message(SPAN_DANGER("[L] slams into an obstacle!"),
+			isXeno(L) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		L.apply_damage(MELEE_FORCE_TIER_2)
+
+/datum/ammo/proc/heavy_knockback(mob/living/L, obj/item/projectile/P, var/max_range = 6) //crazier version of knockback
+	if(!L || L == P.firer)
+		return
+	if(P.distance_travelled > max_range || L.lying)
+		return
+	if(L.mob_size >= MOB_SIZE_BIG)
 		return
 
-	if(M.mob_size >= MOB_SIZE_BIG)
-		return
+	shake_camera(L, 3, 4)
+	if(isCarbonSizeXeno(L))
+		var/mob/living/carbon/Xenomorph/target = L
+		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		target.apply_effect(0.5, WEAKEN)
+		target.apply_effect(2, SUPERSLOW)
+		target.apply_effect(5, SLOW)
+	else
+		if(!isYautja(L)) //Not predators.
+			L.apply_effect(1, SUPERSLOW)
+			L.apply_effect(2, SLOW)
+			to_chat(L, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
 
-	shake_camera(M, 3, 4)
-	if(isliving(M)) //This is pretty ugly, but what can you do.
-		if(isCarbonSizeXeno(M))
-			var/mob/living/carbon/Xenomorph/target = M
-			to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
-			target.apply_effect(0.5, WEAKEN)
-			target.apply_effect(2, SUPERSLOW)
-			target.apply_effect(5, SLOW)
-		else
-			var/mob/living/target = M
-			if(!isYautja(M)) //Not predators.
-				target.apply_effect(1, SUPERSLOW)
-				target.apply_effect(2, SLOW)
-				to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
-			target.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
-	step_away(M,P)
+	//Either knockback or slam them into an obstacle.
+	var/direction = Get_Compass_Dir(P.z ? P : P.firer, L) //More precise than get_dir. If the projectile has no z, it's a PB, and should measure from the shooter.
+	if(!direction) //Same tile.
+		return
+	if(!step(L, direction))
+		L.animation_attack_on(get_step(L, direction))
+		playsound(L.loc, "punch", 25, 1)
+		L.visible_message(SPAN_DANGER("[L] slams into an obstacle!"),
+			isXeno(L) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		L.apply_damage(MELEE_FORCE_TIER_2)
 
 /datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, var/max_range = 2)
-	if(!M || M == P.firer || P.distance_travelled > max_range)
+	if(!M || M == P.firer || P.distance_travelled > max_range || M.lying)
 		return
 
 	if(M.mob_size >= MOB_SIZE_BIG)
 		return //too big to push
 
-	to_chat(M, SPAN_XENODANGER("You are pushed back by the sudden impact!"))
-	step_away(M,P)
+	to_chat(M, isXeno(M) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	step(M, Get_Compass_Dir(P.z ? P : P.firer, M))
 
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage
 	if(!target || !P) return

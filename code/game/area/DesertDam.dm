@@ -197,6 +197,10 @@
 	name = "Western Central Tunnel Entrance"
 	icon_state = "red"
 
+/area/desert_dam/interior/caves/temple
+	name = "Sand Temple"
+	icon_state = "green"
+
 //BUILDING
 //areas not under rock
 // ceiling = CEILING_METAL

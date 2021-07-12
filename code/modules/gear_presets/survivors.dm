@@ -1327,7 +1327,7 @@
 
 /datum/equipment_preset/survivor/doctor/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/fr_jacket(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/windbreaker/windbreaker_fr(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/med(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/surgical(H), WEAR_FACE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/soft/green(H), WEAR_HEAD)

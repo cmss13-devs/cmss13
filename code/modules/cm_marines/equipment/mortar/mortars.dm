@@ -276,8 +276,8 @@
 	qdel(shell)
 	firing = FALSE
 
-/obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x, test_targ_y, test_dial_x, test_dial_y)
-	var/dialing = isnull(test_targ_x) || isnull(test_targ_y)
+/obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_dial_x, test_dial_y)
+	var/dialing = test_dial_x || test_dial_y
 	if(test_dial_x + test_targ_x > world.maxx || test_dial_x + test_targ_x < 0)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
 		return FALSE

@@ -313,12 +313,10 @@
 				return
 		update_clothing_icon()	//so our overlays update
 
-//Medical
-/obj/item/clothing/suit/storage/fr_jacket
-	name = "first responder jacket"
-	desc = "A high-visibility jacket worn by medical first responders."
-	icon_state = "fr_jacket_open"
-	item_state = "fr_jacket"
+//Windbreakers
+/obj/item/clothing/suit/storage/windbreaker
+	name = "windbreaker parent object"
+	desc = "This shouldn't be here..."
 	blood_overlay_type = "armor"
 	allowed = list(
 		/obj/item/stack/medical,
@@ -326,7 +324,6 @@
 		/obj/item/reagent_container/hypospray,
 		/obj/item/reagent_container/syringe,
 		/obj/item/device/healthanalyzer,
-
 		/obj/item/device/flashlight,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
@@ -337,29 +334,65 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
+	var/zip_unzip = FALSE
+	actions_types = list(/datum/action/item_action/toggle)
 
-	verb/toggle()
-		set name = "Toggle Jacket Buttons"
-		set category = "Object"
-		set src in usr
+/obj/item/clothing/suit/storage/windbreaker/attack_self(mob/user) //Adds UI button
+	..()
 
-		if(!usr.canmove || usr.stat || usr.is_mob_restrained())
-			return 0
+	if(!ishuman(user))
+		return
 
-		switch(icon_state)
-			if("fr_jacket_open")
-				src.icon_state = "fr_jacket"
-				to_chat(usr, "You button up the jacket.")
-			if("fr_jacket")
-				src.icon_state = "fr_jacket_open"
-				to_chat(usr, "You unbutton the jacket.")
-		update_clothing_icon()	//so our overlays update
+	var/mob/living/carbon/human/H = user
+	if(H.wear_suit != src)
+		return
 
-//Mime
+	playsound(user, "sound/items/zip.ogg", 10, TRUE)
+	zip_unzip(user)
+
+/obj/item/clothing/suit/storage/windbreaker/proc/zip_unzip(mob/user)
+
+	if(zip_unzip)
+		icon_state = initial(icon_state)
+		to_chat(user, SPAN_NOTICE("You zip \the [src]."))
+
+	else
+		icon_state = "[initial(icon_state)]_o"
+		to_chat(user, SPAN_NOTICE("You unzip \the [src]."))
+	zip_unzip = !zip_unzip
+
+	update_clothing_icon()
+
+/obj/item/clothing/suit/storage/windbreaker/windbreaker_brown
+	name = "brown windbreaker"
+	desc = "A brown windbreaker."
+	icon_state = "windbreaker_brown"
+
+/obj/item/clothing/suit/storage/windbreaker/windbreaker_gray
+	name = "gray windbreaker"
+	desc = "A gray windbreaker."
+	icon_state = "windbreaker_gray"
+
+/obj/item/clothing/suit/storage/windbreaker/windbreaker_green
+	name = "green windbreaker"
+	desc = "A green windbreaker."
+	icon_state = "windbreaker_green"
+
+/obj/item/clothing/suit/storage/windbreaker/windbreaker_fr
+	name = "first responder windbreaker"
+	desc = "A brown windbreaker with reflective strips commonly worn by first responders."
+	icon_state = "windbreaker_fr"
+
+/obj/item/clothing/suit/storage/windbreaker/windbreaker_covenant
+	name = "explorer's windbreaker"
+	desc = "A brown windbreaker covered in various patches tying it to one of the first explorations into this sector."
+	icon_state = "windbreaker_covenant"
+
+//Suspenders
 /obj/item/clothing/suit/suspenders
 	name = "suspenders"
-	desc = "They suspend the illusion of the mime's play."
+	desc = "They suspend pants."
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state = "suspenders"
-	blood_overlay_type = "armor" //it's the less thing that I can put here
+	blood_overlay_type = "armor"
 	flags_armor_protection = 0

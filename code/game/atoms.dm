@@ -50,9 +50,6 @@
 	var/list/beams // An assoc list where the keys are ids and their values are TRUE (indicating beam should persist)
 	var/beam_id = 0
 
-	/// Whether hovering over this atom will cause it to show in the statusbar
-	var/show_in_statusbar = TRUE
-
 /atom/New(loc, ...)
 	var/do_initialize = SSatoms.initialized
 	if(do_initialize != INITIALIZATION_INSSATOMS)

@@ -264,6 +264,12 @@
 				else
 					status += "numb"
 
+			for(var/datum/effects/bleeding/external/E in org.bleeding_effects_list)
+				if(status)
+					status += " and "
+				status += "bleeding"
+				break
+
 		if(!status)
 			status = "OK"
 

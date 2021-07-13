@@ -560,17 +560,3 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if("Whisper")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
-
-/client/MouseEntered(atom/object, location, control, params)
-	if(prefs?.hide_statusbar)
-		return
-
-	if(object.show_in_statusbar)
-		winset(src, "atom_name", "text=\"[object.name]\"")
-
-/client/MouseExited(atom/object, location, control, params)
-	if(prefs?.hide_statusbar)
-		return
-
-	if(object.show_in_statusbar)
-		winset(src, "atom_name", "text=\"\"")

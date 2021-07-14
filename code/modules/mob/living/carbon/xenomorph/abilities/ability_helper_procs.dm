@@ -397,6 +397,10 @@
 	if(!check_state())
 		return
 
+	if(target.stat == DEAD)
+		to_chat(src, SPAN_WARNING("[target] is dead!"))
+		return
+	
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
 		return
@@ -413,6 +417,10 @@
 	if(!check_state())
 		return
 
+	if(target.stat == DEAD)
+		to_chat(src, SPAN_WARNING("[target] is dead!"))
+		return
+	
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer plasma from here!"))
 		return

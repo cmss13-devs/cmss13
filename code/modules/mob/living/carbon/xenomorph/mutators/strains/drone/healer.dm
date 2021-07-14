@@ -71,6 +71,10 @@
 	if(!check_state())
 		return
 
+	if(target.stat == DEAD)
+		to_chat(src, SPAN_WARNING("[target] is already dead!"))
+		return
+	
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return
@@ -87,6 +91,10 @@
 	if(!check_state())
 		return
 
+	if(target.stat == DEAD)
+		to_chat(src, SPAN_WARNING("[target] is already dead!"))
+		return
+	
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return

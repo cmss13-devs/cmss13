@@ -78,7 +78,7 @@
 	..()
 
 	var/turf/T = get_turf(user)
-	if(istype(T,/turf/open/snow) || istype(T,/turf/open/auto_turf/snow))
+	if(!(istype(T,/turf/open/snow) || istype(T,/turf/open/auto_turf/snow)))
 		to_chat(user, SPAN_WARNING("You can't build a snow barricade at this location!"))
 		return
 

@@ -98,7 +98,7 @@
 	else
 		. = ..()
 
-/obj/structure/barricade/destroy(deconstruct)
+/obj/structure/barricade/sandbags/destroy(deconstruct)
 	if(deconstruct && is_wired)
 		new /obj/item/stack/barbed_wire(loc)
 	if(stack_type && health > 0)

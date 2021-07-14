@@ -475,6 +475,7 @@
 #include "code\game\area\admin_level.dm"
 #include "code\game\area\almayer.dm"
 #include "code\game\area\areas.dm"
+#include "code\game\area\areas_event.dm"
 #include "code\game\area\BigRed.dm"
 #include "code\game\area\ChigusaShipyard.dm"
 #include "code\game\area\chinook.dm"

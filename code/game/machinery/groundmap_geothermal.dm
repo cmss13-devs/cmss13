@@ -213,6 +213,10 @@
 
 /obj/structure/machinery/colony_floodlight_switch/Initialize(mapload, ...)
 	. = ..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/structure/machinery/colony_floodlight_switch/LateInitialize()
+	. = ..()
 	for(var/obj/structure/machinery/colony_floodlight/F in machines)
 		floodlist += F
 		F.fswitch = src

@@ -18,11 +18,12 @@ This one currently doesn't work. Will rework adn readd it during interior update
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
+	var/list/targets = get_multi_vehicles_admin()
 
-	var/obj/vehicle/multitile/Vehicle = tgui_input_list(usr, "Select a vehicle.", "Remove Clamp", GLOB.all_multi_vehicles)
+	var/choice = tgui_input_list(usr, "Select a vehicle.", "Remove Clamp", targets)
+	var/obj/vehicle/multitile/Vehicle = targets[choice]
 
 	if(!istype(Vehicle))
-		alert("Not a vehicle.")
 		return
 
 	Vehicle.detach_clamp()
@@ -38,11 +39,12 @@ This one currently doesn't work. Will rework adn readd it during interior update
 	if(!admin_holder || !(admin_holder.rights & R_MOD))
 		to_chat(src, "Only administrators may use this command.")
 		return
+	var/list/targets = get_multi_vehicles_admin()
 
-	var/obj/vehicle/multitile/Vehicle = tgui_input_list(usr, "Select a vehicle.", "Rejuvenate", GLOB.all_multi_vehicles)
+	var/choice = tgui_input_list(usr, "Select a vehicle.", "Rejuvenate", targets)
+	var/obj/vehicle/multitile/Vehicle = targets[choice]
 
 	if(!istype(Vehicle))
-		alert("Not a vehicle.")
 		return
 
 	Vehicle.rejuvenate_vehicle()

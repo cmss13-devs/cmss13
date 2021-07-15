@@ -556,6 +556,15 @@
 
 	return vehicles
 
+//Unlike the above adds object reference instead of number, for 100% pinpointing the needed vehicle
+/proc/get_multi_vehicles_admin()
+	var/list/vehicles = list()
+	for(var/obj/vehicle/multitile/MV as anything in GLOB.all_multi_vehicles)
+		var/name = "[MV.name] (\ref[MV]) ([get_area(MV)])"
+		vehicles[name] = MV
+
+	return vehicles
+
 /proc/get_holograms()
 	var/list/holograms = list()
 	var/list/namecounts = list()

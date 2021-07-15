@@ -15,7 +15,6 @@
 	var/max_size = 0
 	var/last_dam = -1
 	var/knitting_time = -1
-	var/regrow_time = -1
 	var/time_to_knit = -1 // snowflake vars for doing self-bone healing, think preds and magic research chems
 
 	var/display_name

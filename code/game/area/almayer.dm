@@ -310,6 +310,16 @@
 	icon_state = "starboard"
 	fake_zlevel = 2 // lowerdeck
 
+/area/almayer/stair_clone
+	name = "\improper Stairs"
+	icon_state = "stairs_lowerdeck"
+	fake_zlevel = 2 // lowerdeck
+	resin_construction_allowed = FALSE
+
+/area/almayer/stair_clone/upper
+	icon_state = "stairs_upperdeck"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/hull/lower_hull
 	name = "\improper Hull Lower"
 	icon_state = "lowerhull"

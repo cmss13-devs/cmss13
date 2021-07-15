@@ -190,6 +190,7 @@
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/apc;
+	pixel_y = 32;
 	tag = "left"
 	},
 /turf/open/shuttle/vehicle{

@@ -512,20 +512,37 @@
 	if(isElectrified())
 		if(shock(M, 70))
 			return XENO_NO_DELAY_ACTION
-	if(locked)
-		to_chat(M, SPAN_WARNING("[src] is bolted down tight."))
-		return XENO_NO_DELAY_ACTION
-	if(heavy)
-		to_chat(M, SPAN_WARNING("[src] is too heavy to open."))
-		return XENO_NO_DELAY_ACTION
-	if(welded)
-		to_chat(M, SPAN_WARNING("[src] is welded shut."))
-		return XENO_NO_DELAY_ACTION
-	if(!istype(cur_loc))
-		return XENO_NO_DELAY_ACTION //Some basic logic here
+
 	if(!density)
 		to_chat(M, SPAN_WARNING("[src] is already open!"))
 		return XENO_NO_DELAY_ACTION
+
+	if(heavy)
+		to_chat(M, SPAN_WARNING("[src] is too heavy to open."))
+		return XENO_NO_DELAY_ACTION
+
+	if(welded)
+		if(M.claw_type >= CLAW_TYPE_SHARP)
+			M.animation_attack_on(src)
+			playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+			take_damage(damage_cap / XENO_HITS_TO_DESTROY_WELDED_DOOR)
+			return XENO_ATTACK_ACTION
+		else
+			to_chat(M, SPAN_WARNING("[src] is welded shut."))
+			return XENO_NO_DELAY_ACTION
+
+	if(locked)
+		if(M.claw_type >= CLAW_TYPE_SHARP)
+			M.animation_attack_on(src)
+			playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+			take_damage(HEALTH_DOOR / XENO_HITS_TO_DESTROY_BOLTED_DOOR)
+			return XENO_ATTACK_ACTION
+		else
+			to_chat(M, SPAN_WARNING("[src] is bolted down tight."))
+			return XENO_NO_DELAY_ACTION
+
+	if(!istype(cur_loc))
+		return XENO_NO_DELAY_ACTION //Some basic logic here
 
 	if(M.action_busy)
 		return XENO_NO_DELAY_ACTION
@@ -654,6 +671,45 @@
 		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	return XENO_ATTACK_ACTION
+
+
+/obj/structure/reagent_dispensers/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(unslashable || health <= 0)
+		to_chat(M, SPAN_WARNING("You stare at [src] cluelessly."))
+		return XENO_NO_DELAY_ACTION
+
+	M.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
+	if(health <= 0)
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
+		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!unacidable)
+			qdel(src)
+	else
+		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return XENO_ATTACK_ACTION
+
+
+/obj/structure/filingcabinet/attack_alien(mob/living/carbon/Xenomorph/M)
+	if(unslashable || health <= 0)
+		to_chat(M, SPAN_WARNING("You stare at [src] cluelessly."))
+		return XENO_NO_DELAY_ACTION
+
+	M.animation_attack_on(src)
+	playsound(src, 'sound/effects/metalhit.ogg', 25, 1)
+	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
+	if(health <= 0)
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
+		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		if(!unacidable)
+			qdel(src)
+	else
+		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return XENO_ATTACK_ACTION
+
 
 /datum/shuttle/ferry/marine/proc/hijack(mob/living/carbon/Xenomorph/M, shuttle_tag)
 	if(!queen_locked) //we have not hijacked it yet

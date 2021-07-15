@@ -138,6 +138,15 @@
 	properties = list(PROPERTY_HYPERTHERMIC = 4)
 	spray_warning = TRUE
 
+/datum/reagent/hotsauce
+	name = "Hot Sauce"
+	id = "hotsauce"
+	description = "Hot sauce is a pungent condiment sauce made from hot peppers."
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 179, 16, 8
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_HYPERTHERMIC = 1)
+
 /datum/reagent/condensedcapsaicin/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
 	if(!istype(M, /mob/living) || has_species(M,"Horror"))
 		return

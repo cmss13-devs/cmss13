@@ -338,6 +338,9 @@
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 
+	 /// After the fire is created, for 0.5 seconds this variable will be TRUE.
+	var/initial_burst = TRUE
+
 	var/flame_icon = "dynamic"
 	var/flameshape = FLAMESHAPE_DEFAULT // diagonal square shape
 	var/datum/cause_data/weapon_cause_data
@@ -359,7 +362,11 @@
 
 	flameshape = new_flameshape
 
-	color = R.burncolor
+	//non-dynamic flame is already colored	
+	if(R.burn_sprite == "dynamic")
+		color = R.burncolor
+	else
+		flame_icon = R.burn_sprite
 
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
@@ -379,6 +386,9 @@
 	firelevel = R.durationfire + fuel_pressure*R.durationmod
 	burnlevel = R.intensityfire
 
+	update_flame()
+
+	addtimer(CALLBACK(src, .proc/un_burst_flame), 0.5 SECONDS)
 	START_PROCESSING(SSobj, src)
 
 	to_call = C
@@ -510,20 +520,27 @@
 	to_chat(M, SPAN_DANGER("You are burned!"))
 	M.updatehealth()
 
-/obj/flamer_fire/proc/updateicon()
+/obj/flamer_fire/proc/update_flame()
 	if(burnlevel < 15 && flame_icon != "dynamic")
 		color = "#c1c1c1" //make it darker to make show its weaker.
+	var/flame_level = 1
 	switch(firelevel)
 		if(1 to 9)
-			icon_state = "[flame_icon]_1"
-			SetLuminosity(2)
+			flame_level = 1
 		if(10 to 25)
-			icon_state = "[flame_icon]_2"
-			SetLuminosity(4)
+			flame_level = 2
 		if(25 to INFINITY) //Change the icons and luminosity based on the fire's intensity
-			icon_state = "[flame_icon]_3"
-			SetLuminosity(6)
+			flame_level = 3
 
+	if(initial_burst)
+		flame_level++ //the initial flame burst is 1 level higher for a small time
+
+	icon_state = "[flame_icon]_[flame_level]"
+	SetLuminosity(flame_level * 2)
+
+/obj/flamer_fire/proc/un_burst_flame()
+	initial_burst = FALSE
+	update_flame()
 
 /obj/flamer_fire/process()
 	var/turf/T = loc
@@ -532,7 +549,7 @@
 		qdel(src)
 		return
 
-	updateicon()
+	update_flame()
 
 	if(!firelevel)
 		qdel(src)
@@ -551,14 +568,14 @@
 	firelevel -= 2 //reduce the intensity by 2 per tick
 	return
 
-/proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
+/proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite, var/aerial_flame_level)
 	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
 		var/datum/reagent/R = new()
 		R.intensityfire = burn_lvl
 		R.durationfire = fire_lvl
-
+		R.burn_sprite = burn_sprite
 		R.burncolor = f_color
 		new/obj/flamer_fire(target, cause_data, R)
 
@@ -595,14 +612,17 @@
 		if(T.density)
 			continue
 
-		spawn(0)
-			fire_spread_recur(T, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color)
+		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))
+			break
 
-/proc/fire_spread(var/turf/target, var/datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color)
+		spawn(0)
+			fire_spread_recur(T, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+
+/proc/fire_spread(var/turf/target, var/datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color, burn_sprite, var/aerial_flame_level = TURF_PROTECTION_NONE)
 	var/datum/reagent/R = new()
 	R.intensityfire = burn_lvl
 	R.durationfire = fire_lvl
-
+	R.burn_sprite = burn_sprite
 	R.burncolor = f_color
 
 	new/obj/flamer_fire(target, cause_data, R)
@@ -614,4 +634,6 @@
 			else
 				spread_power -= 1.414 //diagonal spreading
 		var/turf/T = get_step(target, direction)
-		fire_spread_recur(T, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color)
+		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))
+			continue
+		fire_spread_recur(T, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)

@@ -80,6 +80,10 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 10,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 10,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 
@@ -97,6 +101,10 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 5,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 2,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
@@ -109,7 +117,9 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/peach = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10)
+					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 10)
 
 	prices = list()
 

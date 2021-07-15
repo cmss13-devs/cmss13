@@ -305,15 +305,9 @@
 	update_icon()
 	start_processing()
 
-/obj/limb/proc/heal_damage(brute, burn, internal = 0, robo_repair = 0)
+/obj/limb/proc/heal_damage(brute, burn, robo_repair)
 	if(status & LIMB_ROBOT && !robo_repair)
 		return
-
-	if(brute)
-		remove_all_bleeding(TRUE)
-
-	if(internal)
-		remove_all_bleeding(FALSE, TRUE)
 
 	//Heal damage on the individual wounds
 	for(var/datum/wound/W in wounds)
@@ -329,12 +323,6 @@
 			var/old_burn = burn
 			burn = W.heal_damage(burn)
 			owner.pain.apply_pain(burn - old_burn)
-
-	if(internal)
-		owner.pain.apply_pain(-PAIN_BONE_BREAK)
-		status &= ~LIMB_BROKEN
-		status |= LIMB_REPAIRED
-		perma_injury = 0
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()
@@ -480,6 +468,13 @@ This function completely restores a damaged organ to perfect condition.
 			qdel(I)
 
 
+///Checks if there's any external limb wounds, removes bleeding if there isn't.
+/obj/limb/proc/remove_wound_bleeding()
+	for(var/datum/wound/W as anything in wounds)
+		if(!W.internal)
+			return
+	remove_all_bleeding(TRUE)
+
 /*
 			PROCESSING & UPDATING
 */
@@ -488,21 +483,15 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/limb/proc/need_process()
 	if(status & LIMB_DESTROYED)	//Missing limb is missing
-		return 0
+		return TRUE
 	if(status && !(status & LIMB_ROBOT) && !(status & LIMB_REPAIRED)) // Any status other than destroyed or robotic requires processing
-		return 1
+		return TRUE
 	if(brute_dam || burn_dam)
-		return 1
-	if(last_dam != brute_dam + burn_dam) // Process when we are fully healed up.
-		last_dam = brute_dam + burn_dam
-		return 1
-	else
-		last_dam = brute_dam + burn_dam
+		return TRUE
 	if(knitting_time > 0)
-		return 1
-	if(regrow_time > 0)
-		return 1
-	return 0
+		return TRUE
+	update_wounds()
+	return FALSE
 
 /obj/limb/process()
 
@@ -587,8 +576,9 @@ This function completely restores a damaged organ to perfect condition.
 	// sync the organ's damage with its wounds
 	update_damages()
 	update_icon()
-	if (wound_disappeared)
+	if(wound_disappeared)
 		owner.update_med_icon()
+		remove_wound_bleeding()
 
 //Updates brute_damn and burn_damn from wound damages.
 /obj/limb/proc/update_damages()

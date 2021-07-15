@@ -547,7 +547,7 @@
 
 /obj/item/clothing/under/colonist
 	name = "colonist uniform"
-	desc = "A stylish grey-green jumpsuit - standard issue for colonists."
+	desc = "A stylish gray-green jumpsuit - standard issue for colonists."
 	icon_state = "colonist"
 	worn_state = "colonist"
 	has_sensor = 0
@@ -558,8 +558,48 @@
 	icon_state = "clf_uniform"
 	worn_state = "clf_uniform"
 
+/obj/item/clothing/under/colonist/ua_civvies
+	name = "gray utilities"
+	desc = "A stylish gray jumpsuit - standard issue for UA civilian support personnel."
+	icon_state = "ua_civvies"
+	worn_state = "ua_civvies"
+
+/obj/item/clothing/under/colonist/wy_davisone
+	name = "brown utilities"
+	desc = "A stylish brown jumpsuit - standard issue for UA civilian support personnel."
+	icon_state = "wy_davisone"
+	worn_state = "wy_davisone"
+
+/obj/item/clothing/under/colonist/wy_joliet_shopsteward
+	name = "stewart utilities"
+	desc = "A stylish brown vest and shorts - uniforms like this are often worn by clerks and shop stewarts."
+	icon_state = "wy_joliet_shopsteward"
+	worn_state = "wy_joliet_shopsteward"
+
+/obj/item/clothing/under/tshirt
+	name = "T-shirt parent object"
+	has_sensor = 0
+
+/obj/item/clothing/under/tshirt/w_br
+	name = "white T-shirt and brown pants"
+	desc = "A confortable white T-shirt and brown jeans."
+	icon_state = "tshirt_w_br"
+	worn_state = "tshirt_w_br"
+
+/obj/item/clothing/under/tshirt/gray_blu
+	name = "gray T-shirt and jeans"
+	desc = "A confortable gray T-shirt and blue jeans."
+	icon_state = "tshirt_gray_blu"
+	worn_state = "tshirt_gray_blu"
+
+/obj/item/clothing/under/tshirt/r_bla
+	name = "red T-shirt and black pants"
+	desc = "A confortable red T-shirt and black jeans."
+	icon_state = "tshirt_r_bla"
+	worn_state = "tshirt_r_bla"
+
 /obj/item/clothing/under/CM_uniform
-	name = "colonial marshal uniform"
+	name = "\improper Colonial Marshal uniform"
 	desc = "A blue shirt and tan trousers - the official uniform for a Colonial Marshal."
 	icon_state = "marshal"
 	worn_state = "marshal"

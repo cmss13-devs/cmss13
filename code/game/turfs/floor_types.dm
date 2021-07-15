@@ -274,6 +274,9 @@
 	icon_state = "wood"
 	floor_tile = new/obj/item/stack/tile/wood
 
+/turf/open/floor/wood/ship
+	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
+
 /turf/open/floor/vault
 	icon_state = "rockvault"
 

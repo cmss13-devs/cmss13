@@ -920,7 +920,8 @@
 			O.status = NO_FLAGS
 		O.perma_injury = 0
 		O.wounds.Cut()
-		O.heal_damage(1000,1000,1,1)
+		O.heal_damage(1000, 1000, TRUE)
+		O.remove_all_bleeding(TRUE, TRUE)
 		O.reset_limb_surgeries()
 
 	var/obj/limb/head/h = get_limb("head")

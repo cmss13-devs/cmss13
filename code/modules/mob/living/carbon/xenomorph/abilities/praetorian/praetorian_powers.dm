@@ -735,6 +735,10 @@
 
 	var/mob/living/carbon/Xenomorph/targetXeno = A
 
+	if(targetXeno.stat == DEAD)
+		to_chat(X, SPAN_WARNING("[targetXeno] is already dead!"))
+		return
+	
 	if (!check_plasma_owner())
 		return
 

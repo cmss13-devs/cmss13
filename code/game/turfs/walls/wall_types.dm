@@ -1180,7 +1180,7 @@
 	else
 		return attack_hand(user)
 
-/turf/closed/wall/resin/ChangeTurf(newtype)
+/turf/closed/wall/resin/ChangeTurf(newtype, ...)
 	var/hive = hivenumber
 	. = ..()
 	if(.)

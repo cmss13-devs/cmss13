@@ -402,8 +402,8 @@
 	icon_state = "redponcho"
 
 /obj/item/clothing/suit/storage/bomber
-	name = "bomber jacket"
-	desc = "A well-worn WW2 leather bomber jacket."
+	name = "brown bomber jacket"
+	desc = "A well-worn leather bomber jacket."
 	icon_state = "bomber"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
@@ -432,8 +432,8 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
-/obj/item/clothing/suit/storage/bomber/open
-	name = "open bomber jacket"
+/obj/item/clothing/suit/storage/bomber/alt
+	name = "black bomber jacket"
 	icon_state = "bomber_2"
 
 /obj/item/clothing/suit/storage/manager

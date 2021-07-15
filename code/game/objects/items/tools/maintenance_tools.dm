@@ -228,7 +228,7 @@
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
-			S.heal_damage(15,0,0,1)
+			S.heal_damage(15, 0, TRUE)
 			H.pain.recalculate_pain()
 			H.UpdateDamageIcon()
 			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src]."), \

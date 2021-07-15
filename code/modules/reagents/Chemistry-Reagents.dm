@@ -37,6 +37,7 @@
 	var/flameshape = FLAMESHAPE_LINE
 	var/fire_penetrating = FALSE // Whether it can damage fire-immune xenos
 	// For both chemical fires
+	var/burn_sprite = "dynamic"
 	var/burncolor = "#f88818"
 	var/burncolormod = 1
 	// Chem generator and research stuff

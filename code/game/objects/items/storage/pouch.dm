@@ -376,7 +376,7 @@
 /obj/item/storage/pouch/shotgun
 	name = "shotgun shell pouch"
 	desc = "It can contain handfuls of shells, or bullets if you choose to for some reason."
-	icon_state = "large_shotshells"
+	icon_state = "medium_shotshells"
 	max_w_class = SIZE_SMALL
 	storage_slots = 5
 	bypass_w_limit = list()
@@ -392,17 +392,23 @@
 		return ..()
 
 /obj/item/storage/pouch/shotgun/heavybuck/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/buckshot(src)
 
 /obj/item/storage/pouch/shotgun/heavyslug/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
 
 
 /obj/item/storage/pouch/shotgun/heavyflechette/fill_preset_inventory()
-	for(var/i = 1 to storage_slots)
+	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/flechette(src)
+
+/obj/item/storage/pouch/shotgun/large
+	name = "large shotgun shell pouch"
+	desc = "It can contain more handfuls of shells, or bullets if you choose to for some reason."
+	icon_state = "large_shotshells"
+	storage_slots = 7
 
 /obj/item/storage/pouch/explosive
 	name = "explosive pouch"

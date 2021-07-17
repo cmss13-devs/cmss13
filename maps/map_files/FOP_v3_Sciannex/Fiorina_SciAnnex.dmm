@@ -484,12 +484,9 @@
 "alr" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
 "alu" = (
@@ -1157,16 +1154,6 @@
 	icon_state = "redfull"
 	},
 /area/fiorina/station/security)
-"aDV" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/disco)
 "aEi" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer,
 /turf/open/floor/plating/prison,
@@ -1286,12 +1273,9 @@
 "aIf" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "aIh" = (
@@ -1497,12 +1481,11 @@
 	},
 /area/fiorina/station/park)
 "aNw" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/stair_cut{
+	dir = 1
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
@@ -1834,7 +1817,6 @@
 "aVK" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/prison{
@@ -2753,16 +2735,12 @@
 /area/fiorina/station/power_ring)
 "bBS" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
+/obj/structure/platform/stair_cut{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
+/turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "bBX" = (
 /obj/structure/largecrate/random/case/double,
@@ -3413,12 +3391,6 @@
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/wood,
 /area/fiorina/station/security/wardens)
-"bWh" = (
-/obj/structure/closet/wardrobe/orange,
-/turf/open/floor/prison{
-	icon_state = "yellowfull"
-	},
-/area/fiorina/station/lowsec)
 "bWE" = (
 /obj/structure/barricade/deployable{
 	dir = 4
@@ -3665,7 +3637,6 @@
 "chQ" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/prison{
@@ -4051,17 +4022,6 @@
 /obj/structure/platform,
 /turf/open/floor/plating/prison,
 /area/fiorina/lz/near_lzII)
-"ctb" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/power_ring)
 "ctc" = (
 /obj/structure/prop/resin_prop{
 	icon_state = "sheater0"
@@ -4521,16 +4481,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/station/medbay)
-"cIw" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/transit_hub)
 "cJa" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/prison{
@@ -4893,17 +4843,9 @@
 "cXY" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/machinery/light/double/blue{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = 13
-	},
+/obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "cYg" = (
@@ -8188,16 +8130,12 @@
 /area/fiorina/station/botany)
 "eXU" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
+/obj/structure/platform/stair_cut{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
+/turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "eYi" = (
 /obj/item/stack/cable_coil,
@@ -8265,7 +8203,6 @@
 "eZN" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/prison{
@@ -8761,7 +8698,6 @@
 "fpM" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/prison{
@@ -8994,16 +8930,6 @@
 	},
 /turf/open/space,
 /area/fiorina/oob)
-"fyH" = (
-/obj/structure/platform{
-	dir = 1
-	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/lz/near_lzII)
 "fyO" = (
 /obj/item/stack/rods,
 /turf/open/floor/plating/prison,
@@ -9691,17 +9617,6 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"fSJ" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/fiorina/tumor/servers)
 "fSY" = (
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
@@ -9916,7 +9831,6 @@
 "fZd" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/plating/prison,
@@ -10322,12 +10236,9 @@
 "gkV" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/servers)
 "gkZ" = (
@@ -10564,16 +10475,6 @@
 "gqe" = (
 /turf/open/floor/prison,
 /area/fiorina/station/disco)
-"gql" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/medbay)
 "gqH" = (
 /turf/open/floor/prison{
 	dir = 1;
@@ -10890,16 +10791,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/station/medbay)
-"gBM" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/prison,
-/area/fiorina/station/disco)
 "gCb" = (
 /obj/structure/barricade/sandbags{
 	dir = 8;
@@ -11774,13 +11665,10 @@
 "heb" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/prison,
+/obj/structure/platform/stair_cut,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "heu" = (
 /obj/structure/closet/crate/miningcar{
@@ -12472,7 +12360,6 @@
 "hzG" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	pixel_x = 7;
 	tag = "icon-landingstripe (EAST)"
 	},
@@ -12791,7 +12678,6 @@
 "hLK" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/prison{
@@ -13148,12 +13034,10 @@
 	},
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/plating/prison,
@@ -13484,12 +13368,6 @@
 	icon_state = "whitepurple"
 	},
 /area/fiorina/station/research_cells)
-"iiF" = (
-/obj/structure/sign/prop3{
-	desc = "Enlist in the Penal Battalions today! The USCM 3rd Fleet features a subset of UA sanctioned penal battalions, drawing from inmate popualtions across the colonies. Mostly New Argentina though."
-	},
-/turf/closed/wall/r_wall/prison_unmeltable,
-/area/fiorina/station/lowsec)
 "iiP" = (
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/prison{
@@ -15900,17 +15778,6 @@
 	icon_state = "whitegreen"
 	},
 /area/fiorina/tumor/ice_lab)
-"jED" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/power_ring)
 "jEG" = (
 /obj/structure/prop/resin_prop,
 /turf/open/floor/prison{
@@ -16460,14 +16327,11 @@
 	},
 /area/fiorina/station/security)
 "jVV" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
+/obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "jVW" = (
@@ -18006,25 +17870,21 @@
 /turf/open/space,
 /area/fiorina/oob)
 "kPB" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/stair_cut{
+	dir = 1
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/medbay)
 "kPC" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/turf/open/floor/prison,
+/obj/structure/platform/stair_cut,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
 "kPJ" = (
 /obj/item/ammo_magazine/smg/nailgun,
@@ -19245,12 +19105,11 @@
 /turf/closed/wall/prison,
 /area/fiorina/station/central_ring)
 "lEa" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/stair_cut{
+	dir = 1
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
@@ -19426,7 +19285,6 @@
 "lLv" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/prison,
@@ -21980,15 +21838,12 @@
 	},
 /area/fiorina/tumor/civres)
 "nnX" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/turf/open/floor/prison,
+/obj/structure/platform/stair_cut,
+/turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "noa" = (
 /obj/structure/largecrate/supply/supplies/plasteel,
@@ -23200,7 +23055,7 @@
 	},
 /area/fiorina/tumor/civres)
 "odQ" = (
-/obj/structure/largecrate/supply/machine/bodyscanner,
+/obj/structure/largecrate/supply,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/research_cells)
 "oex" = (
@@ -23761,7 +23616,6 @@
 "ovo" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/prison,
@@ -25253,12 +25107,11 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "pwg" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform{
+/obj/structure/platform/stair_cut{
 	dir = 1
+	},
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap"
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/power_ring)
@@ -26363,7 +26216,6 @@
 "qeR" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/prison{
@@ -27088,10 +26940,9 @@
 /area/fiorina/station/security)
 "qAn" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
+/obj/structure/platform/stair_cut{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -27216,10 +27067,9 @@
 /area/fiorina/lz/near_lzI)
 "qDd" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
+/obj/structure/platform/stair_cut{
 	dir = 1
 	},
 /turf/open/floor/plating/prison,
@@ -27755,10 +27605,9 @@
 /area/fiorina/station/chapel)
 "qQO" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
+/obj/structure/platform/stair_cut{
 	dir = 1
 	},
 /turf/open/floor/prison,
@@ -29437,20 +29286,6 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/tumor/servers)
-"rRI" = (
-/obj/structure/stairs/perspective{
-	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/obj/structure/platform{
-	dir = 1
-	},
-/turf/open/floor/prison{
-	dir = 1;
-	icon_state = "darkbrown2"
-	},
-/area/fiorina/station/park)
 "rRO" = (
 /obj/item/ammo_magazine/rifle/m16{
 	current_rounds = 0
@@ -29498,12 +29333,11 @@
 /turf/open/floor/carpet,
 /area/fiorina/station/security/wardens)
 "rTL" = (
-/obj/structure/platform{
-	dir = 1
-	},
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/stair_cut{
+	dir = 1
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
@@ -29652,6 +29486,15 @@
 	tag = "icon-floor_plate"
 	},
 /area/fiorina/lz/near_lzI)
+"rZh" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/stair_cut{
+	dir = 1
+	},
+/turf/open/floor/plating/prison,
+/area/fiorina/station/park)
 "rZi" = (
 /turf/closed/shuttle/ert{
 	icon_state = "stan_rightengine"
@@ -29838,12 +29681,9 @@
 "sel" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "set" = (
@@ -30263,11 +30103,9 @@
 "ssi" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/prison{
@@ -30759,7 +30597,6 @@
 "sIT" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/prison{
@@ -30790,7 +30627,6 @@
 /area/fiorina/station/chapel)
 "sJI" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/prison{
@@ -31910,7 +31746,6 @@
 /area/fiorina/station/park)
 "tts" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/prison{
@@ -31920,7 +31755,6 @@
 /area/fiorina/lz/near_lzII)
 "ttK" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/prison{
@@ -33057,7 +32891,6 @@
 "tZs" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/prison{
@@ -33898,7 +33731,6 @@
 /area/fiorina/station/security)
 "uEN" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/prison{
@@ -34327,7 +34159,6 @@
 "uVo" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/prison,
@@ -34344,7 +34175,6 @@
 "uVX" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	pixel_x = -7
 	},
 /turf/closed/shuttle/ert{
@@ -35242,7 +35072,6 @@
 /area/fiorina/station/central_ring)
 "vuE" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -35882,7 +35711,6 @@
 /area/fiorina/station/botany)
 "vPA" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/prison,
@@ -35982,16 +35810,12 @@
 /area/fiorina/lz/near_lzI)
 "vUn" = (
 /obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
+/obj/structure/platform/stair_cut{
 	dir = 1
 	},
-/turf/open/floor/prison{
-	icon_state = "floor_plate";
-	tag = "icon-floor_plate"
-	},
+/turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "vUv" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -36376,7 +36200,6 @@
 "wfp" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/prison{
@@ -37050,7 +36873,6 @@
 "wFk" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/prison{
@@ -37869,12 +37691,9 @@
 "xfd" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
+	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut,
 /obj/structure/machinery/light/double/blue{
 	dir = 1;
 	pixel_y = 21
@@ -38294,18 +38113,13 @@
 /turf/open/floor/plating/prison,
 /area/fiorina/tumor/civres)
 "xrG" = (
-/obj/structure/platform{
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/stair_cut{
 	dir = 1
 	},
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap";
-	layer = 3.5
-	},
-/turf/open/floor/prison{
-	dir = 4;
-	icon_state = "darkyellowfull2";
-	tag = "icon-darkyellowfull2 (EAST)"
-	},
+/turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "xrJ" = (
 /obj/effect/spawner/random/tool,
@@ -39542,7 +39356,6 @@
 "yfC" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/prison{
@@ -47847,7 +47660,7 @@ aWV
 aWV
 aWV
 aWV
-fSJ
+gkV
 qwR
 jDJ
 aWV
@@ -52422,7 +52235,7 @@ oPC
 irB
 jgu
 jgu
-iEi
+rZh
 dMc
 jgu
 jgu
@@ -52638,7 +52451,7 @@ lDe
 ofF
 chT
 jgu
-iEi
+rZh
 qPC
 dMc
 jgu
@@ -56026,7 +55839,7 @@ xub
 btz
 jgu
 jgu
-rRI
+sel
 aiK
 jgu
 itN
@@ -63614,7 +63427,7 @@ aiV
 bnA
 bnA
 vGV
-cIw
+eXU
 noY
 tVG
 xhc
@@ -71925,7 +71738,7 @@ qyX
 sEO
 kFY
 kFY
-fyH
+qAn
 xJE
 xJE
 xJE
@@ -72870,7 +72683,7 @@ hah
 xlp
 ofy
 mvl
-gql
+kPB
 vMh
 xFe
 cPI
@@ -76103,7 +75916,7 @@ gqe
 iMF
 kqC
 kqC
-gBM
+xrG
 kDq
 kqC
 kqC
@@ -78792,7 +78605,7 @@ bQM
 bQM
 uwk
 uwk
-drl
+roY
 iwb
 eSS
 mSY
@@ -79004,7 +78817,7 @@ bQM
 bQM
 bQM
 jmG
-vJD
+cOl
 thq
 cmm
 ctU
@@ -80319,7 +80132,7 @@ aRG
 aRG
 hfT
 hfT
-aDV
+xrG
 lHy
 lHy
 dBa
@@ -85250,7 +85063,7 @@ lJy
 wOc
 mxQ
 mxQ
-jED
+kPC
 bPf
 mxQ
 mxQ
@@ -88846,7 +88659,7 @@ dUZ
 tUs
 pJo
 bzO
-ctb
+kPC
 xnp
 xnp
 pIK

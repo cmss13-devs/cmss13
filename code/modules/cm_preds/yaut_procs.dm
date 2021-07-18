@@ -129,7 +129,7 @@
 			if(do_after(src,65, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
 				visible_message("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat.","You slice off a few of \the [T]'s limbs, making sure to get the finest cuts.")
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
+					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
 				else if(victim && isturf(victim.loc))
 					victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
@@ -144,7 +144,7 @@
 			if(do_after(src,70, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
 				visible_message("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces.","You rip open \the [T]'s ribcage and start tearing the tastiest bits out.")
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
+					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
 					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
 				else if(victim && isturf(T.loc))
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)

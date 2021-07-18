@@ -64,7 +64,7 @@
 	for (var/obj/O in container)
 		var/found = 0
 		for (var/type in checklist)
-			if (istype(O,type))
+			if (istypestrict(O,type))
 				checklist-=type
 				found = 1
 				break
@@ -86,11 +86,13 @@
 // food-related
 /datum/recipe/proc/make_food(var/obj/container as obj)
 	var/obj/result_obj = new result(container)
-	for (var/obj/O in (container.contents-result_obj))
+	for (var/obj/item/reagent_container/food/snacks/O in (container.contents-result_obj))
 		if (O.reagents)
 			O.reagents.del_reagent("nutriment")
 			O.reagents.update_total()
 			O.reagents.trans_to(result_obj, O.reagents.total_volume)
+		if(O.made_from_player)
+			result_obj.name = O.made_from_player + result_obj.name
 		qdel(O)
 	container.reagents.clear_reagents()
 	return result_obj
@@ -200,7 +202,7 @@
 /datum/recipe/xenoburger
 	items = list(
 		/obj/item/reagent_container/food/snacks/bun,
-		/obj/item/reagent_container/food/snacks/xenomeat
+		/obj/item/reagent_container/food/snacks/meat/xenomeat
 	)
 	result = /obj/item/reagent_container/food/snacks/xenoburger
 
@@ -311,9 +313,9 @@
 		/obj/item/reagent_container/food/snacks/dough,
 		/obj/item/reagent_container/food/snacks/dough,
 		/obj/item/reagent_container/food/snacks/dough,
-		/obj/item/reagent_container/food/snacks/xenomeat,
-		/obj/item/reagent_container/food/snacks/xenomeat,
-		/obj/item/reagent_container/food/snacks/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat,
 		/obj/item/reagent_container/food/snacks/cheesewedge,
 		/obj/item/reagent_container/food/snacks/cheesewedge,
 		/obj/item/reagent_container/food/snacks/cheesewedge,
@@ -422,7 +424,7 @@
 /datum/recipe/xemeatpie
 	items = list(
 		/obj/item/reagent_container/food/snacks/sliceable/flatdough,
-		/obj/item/reagent_container/food/snacks/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat,
 	)
 	result = /obj/item/reagent_container/food/snacks/xemeatpie
 
@@ -452,7 +454,7 @@
 /datum/recipe/wingfangchu
 	reagents = list("soysauce" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/xenomeat,
+		/obj/item/reagent_container/food/snacks/meat/xenomeat,
 	)
 	result = /obj/item/reagent_container/food/snacks/wingfangchu
 

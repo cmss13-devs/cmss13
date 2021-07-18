@@ -109,6 +109,8 @@
 		else //Otherwise bad luck!!
 			to_chat(user, SPAN_DANGER("It's dirty!"))
 			return 1
+	else if(operating)
+		to_chat(user, SPAN_DANGER("It's running!"))
 	else if(is_type_in_list(O,acceptable_items))
 		if (contents.len>=max_n_of_items)
 			to_chat(user, SPAN_DANGER("This [src] is full of ingredients, you cannot put more."))

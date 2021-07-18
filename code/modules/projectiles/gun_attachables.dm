@@ -1388,7 +1388,7 @@ Defined in conflicts.dm of the #defines folder.
 	set waitfor = 0
 	var/obj/item/explosive/grenade/G = loaded_grenades[1]
 
-	if(G.has_iff && grenade_grief_check(G))
+	if(G.has_iff && user.faction == FACTION_MARINE && explosive_grief_check(G))
 		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
 		msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return

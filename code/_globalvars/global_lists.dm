@@ -83,9 +83,10 @@ var/global/list/z1turfs = list()
 
 /var/global/list/objects_of_interest // This is used to track the stealing objective for Agents.
 
-// exceptions to grenade antigrief
-var/global/list/grenade_antigrief_exempt_areas = list(
-)
+// Areas exempt from explosive antigrief (not Z-levels)
+GLOBAL_LIST_INIT(explosive_antigrief_exempt_areas, list(
+	//non currently
+))
 
 var/global/list/yautja_gear = list() // list of loose pred gear
 var/global/list/untracked_yautja_gear = list() // List of untracked loose pred gear

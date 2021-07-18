@@ -14,11 +14,11 @@
 	max_container_volume = 60
 	var/det_time = 40
 	var/dangerous = 0		//Make an danger overlay for humans?
-	var/harmful = TRUE      //Is it harmful? Can synths use them?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
-	var/has_iff = TRUE
+	harmful = TRUE	//Is it harmful? Are they banned for synths?
+	has_iff = TRUE	//Should it be checked by antigrief?
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
@@ -51,7 +51,7 @@
 	if(!. || isnull(loc))
 		return
 
-	if(has_iff && grenade_grief_check(src))
+	if(has_iff && user.faction == FACTION_MARINE && explosive_grief_check(src))
 		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from priming the grenade!"))
 		// Let staff know, in case someone's actually about to try to grief
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")

@@ -6,6 +6,10 @@
 	var/customizable = FALSE
 	var/datum/cause_data/cause_data
 	var/creator
+	//Is it harmful? Are they banned for synths?
+	var/harmful
+	//Should it be checked by antigrief?
+	var/has_iff
 	//Below is used for customization
 	var/obj/item/device/assembly_holder/detonator = null
 	var/list/containers = new/list()

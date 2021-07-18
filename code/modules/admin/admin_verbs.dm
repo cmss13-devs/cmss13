@@ -38,7 +38,7 @@ var/list/admin_verbs_admin = list(
 	/client/proc/force_shuttle,
 	/client/proc/force_ground_shuttle,
 	/client/proc/force_teleporter,
-	/client/proc/toggle_grenade_antigrief,
+	/client/proc/toggle_explosive_antigrief,
 	/client/proc/matrix_editor,
 	/datum/admins/proc/open_shuttlepanel
 )

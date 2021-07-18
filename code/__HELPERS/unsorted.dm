@@ -1579,18 +1579,18 @@ var/list/WALLITEMS = list(
 
 	return null
 
-// Returns true if arming a given grenade might be considered grief
-// Grenades are considered "griefy" if they are primed when all the following are true:
-// * The grenade is on the Almayer/dropship transit z levels
+// Returns true if arming a given explosive might be considered grief
+// Explosives are considered "griefy" if they are primed when all the following are true:
+// * The explosive is on the Almayer/dropship transit z levels
 // * The alert level is green/blue (alternatively, not red+)
 // * The dropship crash hasn't happened yet
-// * An admin hasn't disabled grenade antigrief
-// Certain areas may be exempt from this check. Look up grenade_antigrief_exempt_areas
-/proc/grenade_grief_check(var/obj/item/explosive/grenade/G)
-	var/turf/T = get_turf(G)
-	if(!(T.loc.type in grenade_antigrief_exempt_areas))
+// * An admin hasn't disabled explosive antigrief
+// Certain areas may be exempt from this check. Look up explosive_antigrief_exempt_areas
+/proc/explosive_grief_check(var/obj/item/explosive/E)
+	var/turf/T = get_turf(E)
+	if(!(T.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if(G.harmful && (T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
+		if((T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && explosive_antigrief_on)
 			return TRUE
 	return FALSE
 

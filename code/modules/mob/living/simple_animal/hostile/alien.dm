@@ -5,7 +5,7 @@
 	response_disarm = "shoves"
 	response_harm = "hits"
 	speed = -1
-	meat_type = /obj/item/reagent_container/food/snacks/xenomeat
+	meat_type = /obj/item/reagent_container/food/snacks/meat/xenomeat
 	maxHealth = 100
 	health = 100
 	harm_intent_damage = 5

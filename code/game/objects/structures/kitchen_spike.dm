@@ -39,11 +39,11 @@
 		else if(src.meattype == 2)
 			if(src.meat > 1)
 				src.meat--
-				new /obj/item/reagent_container/food/snacks/xenomeat( src.loc )
+				new /obj/item/reagent_container/food/snacks/meat/xenomeat( src.loc )
 				to_chat(usr, "You remove some meat from the alien.")
 			else if(src.meat == 1)
 				src.meat--
-				new /obj/item/reagent_container/food/snacks/xenomeat(src.loc)
+				new /obj/item/reagent_container/food/snacks/meat/xenomeat(src.loc)
 				to_chat(usr, "You remove the last piece of meat from the alien!")
 				src.icon_state = "spike"
 				src.occupied = 0

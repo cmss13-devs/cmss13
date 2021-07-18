@@ -1620,10 +1620,10 @@
 /area/yautja)
 "de" = (
 /obj/structure/kitchenspike,
-/obj/item/reagent_container/food/snacks/xenomeat,
-/obj/item/reagent_container/food/snacks/xenomeat,
-/obj/item/reagent_container/food/snacks/xenomeat,
-/obj/item/reagent_container/food/snacks/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkred2"
@@ -3046,8 +3046,8 @@
 /obj/structure/kitchenspike,
 /obj/item/reagent_container/food/snacks/meat/corgi,
 /obj/item/reagent_container/food/snacks/meat/corgi,
-/obj/item/reagent_container/food/snacks/xenomeat,
-/obj/item/reagent_container/food/snacks/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
 /turf/open/floor{
 	dir = 1;
 	icon_state = "darkred2"

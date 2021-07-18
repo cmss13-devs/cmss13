@@ -10,6 +10,7 @@
 	var/slice_path
 	var/slices_num
 	var/package = 0
+	var/made_from_player = ""
 	center_of_mass = "x=15;y=15"
 
 	//Placeholder for effect that trigger on eating that aren't tied to reagents.
@@ -685,18 +686,6 @@
 	reagents.add_reagent("meatprotein", 12)
 	src.bitesize = 3
 
-/obj/item/reagent_container/food/snacks/xenomeat
-	name = "meat"
-	desc = "A slab of meat"
-	icon_state = "xenomeat"
-	filling_color = "#43DE18"
-
-/obj/item/reagent_container/food/snacks/xenomeat/Initialize()
-	. = ..()
-	reagents.add_reagent("meatprotein", 3)
-	reagents.add_reagent("xenoblood", 3)
-	src.bitesize = 6
-
 /obj/item/reagent_container/food/snacks/meatball
 	name = "meatball"
 	desc = "A great meal all round."
@@ -764,8 +753,6 @@
 
 
 /obj/item/reagent_container/food/snacks/human
-	var/hname = ""
-	var/job = null
 	filling_color = "#D63C3C"
 
 /obj/item/reagent_container/food/snacks/human/burger

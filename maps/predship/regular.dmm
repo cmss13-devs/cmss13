@@ -572,7 +572,7 @@
 "bW" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat,
-/obj/item/reagent_container/food/snacks/xenomeat{
+/obj/item/reagent_container/food/snacks/meat/xenomeat{
 	pixel_x = -6;
 	pixel_y = -5
 	},
@@ -623,7 +623,7 @@
 /area/yautja)
 "cb" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/food/snacks/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},

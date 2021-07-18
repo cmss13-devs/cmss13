@@ -1,25 +1,29 @@
 /*
-	Vehicles have momentum, which makes the movement code a bit complex.
-	To avoid race conditions between user inputs and timers for rolling movement,
-	the movement logic is split into 3 parts:
+	Original movement code was done by Atebite, however due to problems vehicle handling problems I had to simplify it a bit.
+	It had actual momentum, rolling thanks to momentum and so on. We had to cut out any rolling, cause it made vehicle controls
+	pretty inconvenient even without lags. The reason why it wasn't removed entirely is because I want vehicles to keep the the ability
+	to achieve top speed, to be able to move actually FAST in long-range travel on big maps, but not have sonic speed during engagements.
+	 - Jeser
 
-	- Pre-movement, which determines what movement inputs will be considered (the user's or the momentum code's?)
-	- Movement, which executes the movement input chosen by the pre-movement proc
-	- Post-movement, which determines if the movement cycle should automatically be repeated
+	original description:
+		Vehicles have momentum, which makes the movement code a bit complex.
+		To avoid race conditions between user inputs and timers for rolling movement,
+		the movement logic is split into 3 parts:
 
-	If the vehicle isn't moving (<= 1 momentum, either direction), the user input is buffered and immediately
-	chosen and executed. This means that users can move single tiles without having the vehicle begin rolling.
+		- Pre-movement, which determines what movement inputs will be considered
+		- Movement, which executes the movement input chosen by the pre-movement proc
+		- Post-movement, which determines if the movement cycle should automatically be repeated
 
-	When the vehicle gains more than 1 momentum, rolling kicks in via a timer that calls the movement procs immediately
-	when the movement delay ends. User inputs are still buffered, but the input itself won't cause any movement to occur.
-	If no user input was buffered before this next movement, the vehicle is moved according to its momentum. If there IS
-	buffered user input, the movement code will use the buffered input. Inputs can only be buffered 1ds ahead of the next move.
+		If the vehicle isn't moving (<= 1 momentum, either direction), the user input is buffered and immediately
+		chosen and executed. This means that users can move single tiles without having the vehicle begin rolling.
 
-	Any questions? Ask Atebite
+		When the vehicle gains more than 1 momentum, rolling kicks in via a timer that calls the movement procs immediately
+		when the movement delay ends. User inputs are still buffered, but the input itself won't cause any movement to occur.
+		If no user input was buffered before this next movement, the vehicle is moved according to its momentum. If there IS
+		buffered user input, the movement code will use the buffered input. Inputs can only be buffered 1ds ahead of the next move.
+
+		Any questions? Ask Atebite
 */
-
-// The window before the vehicle can move again in which the user can buffer their movement inputs
-#define VEHICLE_INPUT_BUFFER_WINDOW 1
 
 // Called when someone tries to move the vehicle
 /obj/vehicle/multitile/relaymove(var/mob/user, var/direction)
@@ -30,75 +34,35 @@
 	if(health <= 0)
 		return FALSE
 
-	// The driver can start buffering movement inputs VEHICLE_INPUT_BUFFER_WINDOW ds before the next move
-	//disabled to prevent sudden loss of momentum. Movement refactor pending.
-	//if(world.time > next_move - VEHICLE_INPUT_BUFFER_WINDOW)
-	//	return FALSE
+	return pre_movement(direction)
 
-	buffered_move = direction
-
-	// If we have momentum, the movement procs will loop themselves until it falls below 1
-	if(abs(momentum) >= 1)
-		return FALSE
-
-	return pre_movement()
-
-// This determines what type of movement to execute and which input to pass to it
-/obj/vehicle/multitile/proc/pre_movement()
+// This determines what type of movement to execute
+/obj/vehicle/multitile/proc/pre_movement(var/direction)
 	if(world.time < next_move)
 		return FALSE
 
 	var/success = FALSE
 
-	// User buffered a movement input, use that
-	if(buffered_move)
-		var/direction = buffered_move
-		buffered_move = null
+	if(dir == turn(direction, 180) || dir == direction)
+		var/old_dir = dir
+		success = try_move(direction)
+		// Keep dir when driving backwards
+		setDir(old_dir)
+	// Rotation/turning
+	else
+		success = try_rotate(turning_angle(dir, direction))
+		if(move_on_turn)
+			try_move(direction)
 
-		// Forwards/backwards
-		if(dir == turn(direction, 180) || dir == direction)
-			var/old_dir = dir
-			success = try_move(direction)
-			// Keep dir when driving backwards
-			setDir(old_dir)
-		// Rotation/turning
-		else
-			success = try_rotate(turning_angle(dir, direction))
-			if(move_on_turn)
-				try_move(direction)
-
-		post_movement()
-		return success
-
-	// Keep rolling from sufficient momentum. Only roll when momentum is >1 so we can do small adjustments without rolling away
-	// Decided to do this with timers instead of processing because the processing tickrate
-	// usually doesn't match up that well with the movement delays
-	/*
-		Rolling is disabled because it feels really bad with lag
-		Momentum is still lost
-	*/
-	//success = try_move((momentum > 0) ? dir : turn(dir, 180), TRUE)
-	update_momentum((momentum > 0) ? dir : turn(dir, 180), TRUE)
-
-	post_movement()
 	return success
 
-// This determines if the movement cycle should be automatically repeated due to momentum/inertia
-/obj/vehicle/multitile/proc/post_movement()
-	if(abs(momentum) < 1)
-		return
-	if((next_move - world.time) > 0)
-		addtimer(CALLBACK(src, .proc/pre_movement), next_move - world.time)
-	else
-		INVOKE_ASYNC(src, .proc/pre_movement)
-
 // Attempts to execute the given movement input
-/obj/vehicle/multitile/proc/try_move(var/direction, var/rolling=FALSE, var/force=FALSE)
+/obj/vehicle/multitile/proc/try_move(var/direction, var/force=FALSE)
 	if(!can_move(direction))
 		return FALSE
 
 	if(!force)
-		var/should_move = update_momentum(direction, rolling)
+		var/should_move = update_momentum(direction)
 		update_next_move()
 
 		if(!should_move)
@@ -110,8 +74,9 @@
 	for(var/obj/item/hardpoint/H in hardpoints)
 		H.on_move(old_turf, get_turf(src), direction)
 
-	if(movement_sound && !force)
+	if(movement_sound && world.time > move_next_sound_play)
 		playsound(src, movement_sound, vol = 20, sound_range = 30)
+		move_next_sound_play = world.time + 10
 
 	last_move_dir = direction
 
@@ -122,12 +87,12 @@
 	if(!can_rotate(deg))
 		return FALSE
 
-	momentum = momentum * turn_momentum_loss_factor
-	if(abs(momentum) < 0.5)
-		if(momentum < 0)
-			momentum = -0.5
+	move_momentum = move_momentum * move_turn_momentum_loss_factor
+	if(abs(move_momentum) < 0.5)
+		if(move_momentum < 0)
+			move_momentum = -0.5
 		else
-			momentum = 0.5
+			move_momentum = 0.5
 	update_next_move()
 
 	rotate_hardpoints(deg)
@@ -137,42 +102,40 @@
 
 	last_move_dir = dir
 
+	if(movement_sound && world.time > move_next_sound_play)
+		playsound(src, movement_sound, vol = 20, sound_range = 30)
+		move_next_sound_play = world.time + 10
+
 	update_icon()
 
 	return TRUE
 
 // Increases/decreases the vehicle's momentum according to whether or not the user is steppin' on the gas or not
-/obj/vehicle/multitile/proc/update_momentum(var/direction, var/rolling=FALSE)
+/obj/vehicle/multitile/proc/update_momentum(var/direction)
 	// If we've stood still for long enough we go back to 0 momentum
-	if(abs(momentum) <= 1 && world.time > next_move + move_delay*momentum_build_factor)
-		momentum = 0
+	if(world.time > next_move + move_delay*move_momentum_build_factor)
+		move_momentum = 0
 
-	// If we're rolling we lose momentum instead of gaining it
-	if(rolling)
-		if(direction == dir)
-			momentum = max(momentum - 1, 0)
-		else
-			momentum = min(momentum + 1, 0)
+	if(direction == dir)
+		move_momentum = min(move_momentum + 1, move_max_momentum)
 	else
-		if(direction == dir)
-			momentum = min(momentum + 1, max_momentum)
-		else
-			momentum = max(momentum - 1, -max_momentum)
+		move_momentum = max(move_momentum - 1, -move_max_momentum)
 
 	// Attempt to move in the opposite direction to our momentum
-	if(direction == dir && momentum < 0 || direction != dir && momentum > 0)
+	if(direction == dir && move_momentum < 0 || direction != dir && move_momentum > 0)
 		// Brakes or something
-		momentum = Floor(momentum/2)
+		move_momentum = 0
 		return FALSE
 
 	return TRUE
 
 /obj/vehicle/multitile/proc/update_next_move()
 	// 1/((m/M)*b) where m is momentum, M is max momentum and b is the build factor
-	var/anti_build_factor = 1/((max(abs(momentum), 1)/max_momentum)*momentum_build_factor)
+	var/anti_build_factor = 1/((max(abs(move_momentum), 1)/move_max_momentum) * move_momentum_build_factor)
 
-	next_move = world.time + move_delay * momentum_build_factor * anti_build_factor * misc_multipliers["move"]
+	next_move = world.time + move_delay * move_momentum_build_factor * anti_build_factor * misc_multipliers["move"]
 	l_move_time = world.time
+
 
 // This just checks if the vehicle can physically move in the given direction
 /obj/vehicle/multitile/proc/can_move(var/direction)
@@ -196,7 +159,7 @@
 
 	// Crashed with something that stopped us
 	if(!can_move)
-		momentum = Floor(momentum/2)
+		move_momentum = Floor(move_momentum/2)
 		update_next_move()
 		interior_crash_effect()
 
@@ -288,15 +251,15 @@
 		return
 
 	// Not enough momentum for anything serious
-	if(abs(momentum) <= 1)
+	if(abs(move_momentum) <= 1)
 		return
 
-	var/fling_distance = Ceiling(momentum/max_momentum) * 2
+	var/fling_distance = Ceiling(move_momentum/move_max_momentum) * 2
 	var/turf/target = interior.get_middle_turf()
 
 	for (var/x in 0 to fling_distance-1)
 		// NOTE: We fling east/west because all interiors are front-facing east
-		target = get_step(target, momentum > 0 ? EAST : WEST)
+		target = get_step(target, move_momentum > 0 ? EAST : WEST)
 		if (!target)
 			break
 
@@ -309,11 +272,11 @@
 			if(isliving(A))
 				var/mob/living/M = A
 
-				shake_camera(M, 2, Ceiling(momentum/max_momentum) * 1)
+				shake_camera(M, 2, Ceiling(move_momentum/move_max_momentum) * 1)
 				if(!M.buckled)
 					M.apply_effect(1, STUN)
 					M.apply_effect(2, WEAKEN)
 
 			// YOU'RE LIKE A CAR CRASH IN SLOW MOTION!
-			// IT'S LIKE I'M WATCHIN' YA FLY THROUGH A WINDSHIELD!		
+			// IT'S LIKE I'M WATCHIN' YA FLY THROUGH A WINDSHIELD!
 			A.throw_atom(target, fling_distance, SPEED_VERY_FAST, src, TRUE)

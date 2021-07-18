@@ -50,6 +50,8 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		VEHICLE_GUNNER = null
 	)
 
+	vehicle_flags = VEHICLE_CLASS_LIGHT
+
 	mob_size_required_to_hit = MOB_SIZE_XENO
 
 	dmg_multipliers = list(
@@ -61,6 +63,12 @@ GLOBAL_LIST_EMPTY(command_apc_list)
 		"blunt" = 0.9,
 		"abstract" = 1.0
 	)
+
+	move_max_momentum = 2
+	move_momentum_build_factor = 1.5
+	move_turn_momentum_loss_factor = 0.8
+
+	vehicle_ram_multiplier = VEHICLE_TRAMPLE_DAMAGE_APC_REDUCTION
 
 /obj/vehicle/multitile/apc/load_role_reserved_slots()
 	var/datum/role_reserved_slots/RRS = new

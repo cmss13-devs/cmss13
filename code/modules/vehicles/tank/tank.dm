@@ -28,7 +28,11 @@
 
 	required_skill = SKILL_VEHICLE_LARGE
 
-	max_momentum = 3
+	vehicle_flags = VEHICLE_CLASS_MEDIUM
+
+	move_max_momentum = 3
+	move_momentum_build_factor = 1.8
+	move_turn_momentum_loss_factor = 0.6
 
 	luminosity = 7
 

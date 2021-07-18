@@ -37,26 +37,27 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	// The next world.time when the vehicle can move
 	var/next_move = 0
 	// How much momentum the vehicle has. Increases by 1 each move
-	var/momentum = 0
+	var/move_momentum = 0
 	// How much momentum the vehicle can achieve
-	var/max_momentum = 4
+	var/move_max_momentum = 5
+	// How much momentum is lost when turning/rotating the vehicle
+	var/move_turn_momentum_loss_factor = 0.5
 	// Determines how much slower the vehicle is when it lacks its full momentum
 	// When the vehicle has 0 momentum, it's movement delay will be move_delay * momentum_build_factor
 	// The movement delay gradually reduces up to move_delay when momentum increases
-	var/momentum_build_factor = 1.3
-	// How much momentum is lost when turning/rotating the vehicle
-	var/turn_momentum_loss_factor = 0.5
-	// When the vehicle has momentum, the user may buffer a move input just before the move delay is up
-	// This causes the vehicle to prioritize user input over attempting to move due to momentum
-	var/buffered_move = null
+	var/move_momentum_build_factor = 1.3
 
+	//Sound to play when moving
+	var/movement_sound
+	//Cooldown for next sound to play
+	var/move_next_sound_play = 0
+
+	//whether MP vehicle clamps are applied
 	var/clamped = FALSE
 
 	// The amount of skill required to drive the vehicle
 	var/required_skill = SKILL_VEHICLE_SMALL
 
-	var/movement_sound //Sound to play when moving
-	var/next_sound_play = 0 //Cooldown for next sound to play
 
 	req_access = list() //List of accesses you need to enter
 	req_one_access = list() //List of accesses you need one of to enter
@@ -69,7 +70,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 
 	var/mob_size_required_to_hit = MOB_SIZE_XENO_SMALL
 
-	var/vehicle_flags = NO_FLAGS		//variable for various flags
+	//variable for various flags
+	var/vehicle_flags = VEHICLE_CLASS_WEAK
 
 	// References to the active/chosen hardpoint for each seat
 	var/active_hp = list(
@@ -90,6 +92,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	var/list/role_reserved_slots = list()
 
 	var/wall_ram_damage = 30
+	//allows more flexibility in ram damage
+	var/vehicle_ram_multiplier = 1
 
 	//vehicles with this off will be ignored by tacmap.
 	var/visible_in_tacmap = TRUE

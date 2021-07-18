@@ -11,4 +11,4 @@
 
 	health = 250
 
-	move_speed = VEHICLE_SPEED_VERYFAST
+	move_delay = VEHICLE_SPEED_VERYFAST

@@ -2,8 +2,6 @@
 //Trucks
 //Read the documentation in multitile.dm before trying to decipher this stuff
 
-#define TIER_3_RAM_DAMAGE_TAKEN	60
-
 /obj/vehicle/multitile/van
 	name = "Colony Van"
 	desc = "A rather old hunk of metal with four wheels, you know what to do. Entrance on the back and sides."
@@ -28,7 +26,7 @@
 		"back_right" = list(0, 2)
 	)
 
-	vehicle_flags = VEHICLE_WEAK
+	vehicle_flags = VEHICLE_CLASS_WEAK
 
 	passengers_slots = 8
 	xenos_slots = 2
@@ -45,13 +43,13 @@
 
 	luminosity = 8
 
-	max_momentum = 3
+	move_max_momentum = 3
 
 	hardpoints_allowed = list(
 		/obj/item/hardpoint/locomotion/van_wheels
 	)
 
-	turn_momentum_loss_factor = 1
+	move_turn_momentum_loss_factor = 1
 
 	req_access = list()
 	req_one_access = list()
@@ -60,7 +58,7 @@
 
 	mob_size_required_to_hit = MOB_SIZE_XENO
 
-	var/next_overdrive = 0
+	var/overdrive_next = 0
 	var/overdrive_cooldown = 15 SECONDS
 	var/overdrive_duration = 3 SECONDS
 	var/overdrive_speed_mult = 0.3 // Additive (30% more speed, adds to 80% more speed)
@@ -113,31 +111,7 @@
 /*
 ** PRESETS
 */
-/obj/vehicle/multitile/van/handle_living_collide(var/mob/living/L)
-	if(!seats[VEHICLE_DRIVER])
-		return FALSE
-
-	if(L.mob_flags & SQUEEZE_UNDER_VEHICLES)
-		add_under_van(L)
-		return TRUE
-
-	if(L.mob_size >= MOB_SIZE_IMMOBILE)
-		return FALSE
-
-	var/direction_taken = pick(45, -45)
-	var/successful = step(L, turn(last_move_dir, direction_taken))
-
-	if(!successful)
-		successful = step(L, turn(last_move_dir, -direction_taken))
-
-	if(L.mob_size >= MOB_SIZE_BIG)
-		take_damage_type(TIER_3_RAM_DAMAGE_TAKEN, "blunt", L)
-		playsound(src, 'sound/effects/metal_crash.ogg', 35)
-		return FALSE
-
-	return successful
-
-/obj/vehicle/multitile/van/post_movement()
+/obj/vehicle/multitile/van/pre_movement()
 	. = ..()
 
 	for(var/I in mobs_under)
@@ -196,9 +170,9 @@
 	return ..()
 
 
-/obj/vehicle/multitile/van/post_movement()
+/obj/vehicle/multitile/van/pre_movement()
 	if(locate(/obj/effect/alien/weeds) in loc)
-		momentum *= momentum_loss_on_weeds_factor
+		move_momentum *= momentum_loss_on_weeds_factor
 
 	. = ..()
 
@@ -224,14 +198,14 @@
 
 /obj/vehicle/multitile/van/handle_click(mob/living/user, atom/A, list/mods)
 	if(mods["shift"] && !mods["alt"])
-		if(next_overdrive > world.time)
-			to_chat(user, SPAN_WARNING("You can't activate overdrive yet! Wait [round((next_overdrive - world.time) / 10, 0.1)] seconds."))
+		if(overdrive_next > world.time)
+			to_chat(user, SPAN_WARNING("You can't activate overdrive yet! Wait [round((overdrive_next - world.time) / 10, 0.1)] seconds."))
 			return
 
 		misc_multipliers["move"] -= overdrive_speed_mult
 		addtimer(CALLBACK(src, .proc/reset_overdrive), overdrive_duration)
 
-		next_overdrive = world.time + overdrive_cooldown
+		overdrive_next = world.time + overdrive_cooldown
 		to_chat(user, SPAN_NOTICE("You activate overdrive."))
 		playsound(src, 'sound/vehicles/overdrive_activate.ogg', 75, FALSE)
 		return

@@ -396,17 +396,21 @@
 	else
 		to_chat(src, SPAN_WARNING("There's nothing in your belly that needs regurgitating."))
 
-/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf)
+/mob/living/carbon/Xenomorph/proc/check_alien_construction(var/turf/current_turf, var/check_blockers = TRUE, var/silent = FALSE)
 	var/has_obstacle
 	for(var/obj/O in current_turf)
-		if(istype(O, /obj/effect/build_blocker))
-			to_chat(src, SPAN_WARNING("This is too close to a special structure!"))
+		if(check_blockers && istype(O, /obj/effect/build_blocker))
+			var/obj/effect/build_blocker/bb = O
+			if(!silent)
+				to_chat(src, SPAN_WARNING("This is too close to a [bb.linked_structure]!"))
 			return
 		if(istype(O, /obj/item/clothing/mask/facehugger))
-			to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
+			if(!silent)
+				to_chat(src, SPAN_WARNING("There is a little one here already. Best move it."))
 			return
 		if(istype(O, /obj/effect/alien/egg))
-			to_chat(src, SPAN_WARNING("There's already an egg."))
+			if(!silent)
+				to_chat(src, SPAN_WARNING("There's already an egg."))
 			return
 		if(istype(O, /obj/structure/mineral_door) || istype(O, /obj/effect/alien/resin))
 			has_obstacle = TRUE
@@ -432,7 +436,8 @@
 			break
 
 	if(current_turf.density || has_obstacle)
-		to_chat(src, SPAN_WARNING("There's something built here already."))
+		if(!silent)
+			to_chat(src, SPAN_WARNING("There's something built here already."))
 		return
 
 	return TRUE

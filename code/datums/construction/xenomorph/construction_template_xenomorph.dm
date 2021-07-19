@@ -5,8 +5,6 @@
 	build_type = /obj/effect/alien/resin/special
 	crystals_required = 45 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	var/datum/hive_status/hive_ref //Who gets what we build
-	var/requires_node = TRUE
-
 	var/block_range = 1
 
 /datum/construction_template/xenomorph/set_structure_image()
@@ -29,14 +27,14 @@
 	build_type = /obj/effect/alien/resin/special/pylon/core
 	build_icon_state = "core"
 	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
-	requires_node = FALSE
+	block_range = 0
 
 /datum/construction_template/xenomorph/pylon
 	name = XENO_STRUCTURE_PYLON
 	build_type = /obj/effect/alien/resin/special/pylon
 	build_icon_state = "pylon"
 	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
-	requires_node = FALSE
+	block_range = 0
 
 /datum/construction_template/xenomorph/pool
 	name = XENO_STRUCTURE_POOL

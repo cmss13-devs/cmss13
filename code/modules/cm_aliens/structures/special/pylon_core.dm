@@ -9,6 +9,7 @@
 	icon_state = "pylon"
 	health = 1800
 	luminosity = 2
+	block_range = 0
 	var/cover_range = WEED_RANGE_PYLON
 	var/node_type = /obj/effect/alien/weeds/node/pylon
 	var/linked_turfs = list()

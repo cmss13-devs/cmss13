@@ -145,8 +145,8 @@
 
 /obj/item/clothing/gloves/marine/veteran/PMC
 	name = "\improper WY PMC gloves"
-	icon_state = "PMC"
-	item_state = "PMC"
+	icon_state = "pmc"
+	item_state = "pmc"
 	desc = "Standard issue kevlon fiber gloves manufactured for and by Weyland-Yutani PMC dispatch division. They are insulated against electrical shock."
 
 /obj/item/clothing/gloves/marine/veteran/PMC/commando

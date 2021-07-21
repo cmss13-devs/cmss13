@@ -7,8 +7,13 @@
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
+	attack_speed = 3
 	var/heal_brute = 0
 	var/heal_burn = 0
+
+/obj/item/stack/medical/attack_self(mob/user)
+	..()
+	attack(user, user)
 
 /obj/item/stack/medical/attack(mob/living/carbon/M as mob, mob/user as mob)
 	if(!istype(M))
@@ -46,7 +51,7 @@
 	singular_name = "medical gauze"
 	desc = "Some sterile gauze to wrap around bloody stumps and lacerations."
 	icon_state = "brutepack"
-	
+
 	stack_id = "bruise pack"
 
 /obj/item/stack/medical/bruise_pack/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -90,7 +95,7 @@
 	singular_name = "ointment"
 	icon_state = "ointment"
 	heal_burn = 1
-	
+
 	stack_id = "ointment"
 
 /obj/item/stack/medical/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -117,9 +122,9 @@
 				user.affected_message(M,
 					SPAN_HELPFUL("You <b>salve the wounds</b> on [possessive] <b>[affecting.display_name]</b>."),
 					SPAN_HELPFUL("[user] <b>salves the wounds</b> on your <b>[affecting.display_name]</b>."),
-					SPAN_NOTICE("[user] salves the wounds [possessive_their] [affecting.display_name]."))
+					SPAN_NOTICE("[user] salves the wounds on [possessive_their] [affecting.display_name]."))
 				use(1)
-				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)				
+				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 		else
 			if (H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
 				if (do_surgery(H,user,src))
@@ -134,7 +139,7 @@
 	desc = "An advanced trauma kit for severe injuries."
 	icon_state = "traumakit"
 	heal_brute = 12
-	
+
 	stack_id = "advanced bruise pack"
 
 
@@ -179,23 +184,23 @@
 			else
 				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
 
-/obj/item/stack/medical/advanced/bruise_pack/tajaran
-	name = "\improper S'rendarr's Hand leaf"
-	singular_name = "S'rendarr's Hand leaf"
+/obj/item/stack/medical/advanced/bruise_pack/predator
+	name = "mending herbs"
+	singular_name = "mending herb"
 	desc = "A poultice made of soft leaves that is rubbed on bruises."
-	icon = 'icons/obj/items/harvest.dmi'
-	icon_state = "shandp"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "brute_herbs"
 	heal_brute = 15
-	stack_id = "Hand leaf"
+	stack_id = "mending herbs"
 
-/obj/item/stack/medical/advanced/ointment/tajaran
-	name = "\improper Messa's Tear petals"
-	singular_name = "Messa's Tear petal"
+/obj/item/stack/medical/advanced/ointment/predator
+	name = "soothing herbs"
+	singular_name = "soothing herb"
 	desc = "A poultice made of cold, blue petals that is rubbed on burns."
-	icon = 'icons/obj/items/harvest.dmi'
-	icon_state = "mtearp"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "burn_herbs"
 	heal_burn = 15
-	stack_id = "Tear petals"
+	stack_id = "soothing herbs"
 
 /obj/item/stack/medical/advanced/ointment
 	name = "advanced burn kit"
@@ -203,7 +208,7 @@
 	desc = "An advanced treatment kit for severe burns."
 	icon_state = "burnkit"
 	heal_burn = 12
-	
+
 	stack_id = "advanced burn kit"
 
 /obj/item/stack/medical/advanced/ointment/attack(mob/living/carbon/M as mob, mob/user as mob)
@@ -253,6 +258,8 @@
 	max_amount = 5
 	stack_id = "splint"
 
+	var/indestructible_splints = FALSE
+
 /obj/item/stack/medical/splint/attack(mob/living/carbon/M, mob/user)
 	if(..()) return 1
 
@@ -296,6 +303,6 @@
 				,
 				SPAN_NOTICE("[user] starts splinting their [affecting.display_name]."))
 
-		if(affecting.apply_splints(src, user, M)) // Referenced in external organ helpers.
+		if(affecting.apply_splints(src, user, M, indestructible_splints)) // Referenced in external organ helpers.
 			use(1)
-			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)	
+			playsound(user, 'sound/handling/splint1.ogg', 25, 1, 2)

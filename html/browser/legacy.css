@@ -24,7 +24,7 @@
  	right:0px;
  	z-index: 10
  }
- 
+
 .uiTitleButtons {
 	position:fixed;
 	top:0px;
@@ -54,6 +54,14 @@ h2 {
 
 h3 {
 	font-size: 110%;
+}
+
+a:visited {
+	text-decoration:none;
+	color:#a0a;
+}
+a:visited:hover {
+	color:#d3d;
 }
 
 a.green {

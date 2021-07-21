@@ -257,13 +257,12 @@
 		flick(initial(icon_state) + "-denied",src)
 		return
 
-	var/datum/shuttle/ferry/supply/vehicle/elevator = supply_controller.vehicle_elevator
-	if(!elevator)
+	if(!SSshuttle.vehicle_elevator)
 		flick(initial(icon_state) + "-denied",src)
 		return
 
 	// safety first
-	if(!elevator.at_station())
+	if(!is_mainship_level(SSshuttle.vehicle_elevator.z))
 		flick(initial(icon_state) + "-denied",src)
 		return
 
@@ -282,7 +281,7 @@
 				else
 					M.close()
 	if(effective)
-		playsound(locate(elevator.Elevator_x,elevator.Elevator_y,elevator.Elevator_z), 'sound/machines/elevator_openclose.ogg', 50, 0)
+		playsound(get_turf(SSshuttle.vehicle_elevator), 'sound/machines/elevator_openclose.ogg', 50, 0)
 
 	desiredstate = !desiredstate
 	spawn(15)

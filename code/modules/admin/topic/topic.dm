@@ -1034,7 +1034,7 @@
 			if(is_alien_whitelisted(M,"Yautja Elder"))
 				M.change_real_name(M, "Elder [y_name]")
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/full(H), WEAR_JACKET)
-				H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/glaive(H), WEAR_L_HAND)
+				H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/yautja/glaive(H), WEAR_L_HAND)
 			else
 				M.change_real_name(M, y_name)
 			M.name = "Unknown"	// Yautja names are not visible for oomans
@@ -1135,7 +1135,7 @@
 		message_staff("[src.owner] has cancelled the predator self-destruct sequence [victim ? "of [victim] ([victim.key])":""].")
 
 	else if(href_list["adminspawncookie"])
-		if(!check_rights(R_ADMIN|R_FUN))
+		if(!check_rights(R_MOD))
 			return
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
@@ -1223,7 +1223,7 @@
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weston USCM", "") as message|null
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland USCM", "") as message|null
 				if(!message_body)
 					return
 				var/sent_by = input(src.owner, "Enter the name and rank you are sending from.", "Outgoing message from USCM", "") as message|null
@@ -1287,12 +1287,12 @@
 		var/fax_message = ""
 		switch(template_choice)
 			if("Custom")
-				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Weston-Yamada", "") as message|null
+				var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via secure connection. NOTE: BBCode does not work, but HTML tags do! Use <br> for line breaks.", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!input)
 					return
 				fax_message = "[input]"
 			if("Template")
-				var/subject = input(src.owner, "Enter subject line", "Outgoing message from Weston-Yamada", "") as message|null
+				var/subject = input(src.owner, "Enter subject line", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!subject)
 					return
 				var/addressed_to = ""
@@ -1300,18 +1300,18 @@
 				if(address_option == "Sender")
 					addressed_to = "[H.real_name]"
 				else if(address_option == "Custom")
-					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from Weston-Yamada", "") as message|null
+					addressed_to = input(src.owner, "Enter Addressee Line", "Outgoing message from Weyland-Yutani", "") as message|null
 					if(!addressed_to)
 						return
 				else
 					return
-				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weston-Yamada", "") as message|null
+				var/message_body = input(src.owner, "Enter Message Body, use <p></p> for paragraphs", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!message_body)
 					return
-				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from Weston-Yamada", "") as message|null
+				var/sent_by = input(src.owner, "Enter JUST the name you are sending this from", "Outgoing message from Weyland-Yutani", "") as message|null
 				if(!sent_by)
 					return
-				fax_message = generate_templated_fax(1, "WESTON-YAMADA CORPORATE AFFAIRS - USS ALMAYER", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weston-Yamada")
+				fax_message = generate_templated_fax(1, "WEYLAND-YUTANI CORPORATE AFFAIRS - USS ALMAYER", subject, addressed_to, message_body, sent_by, "Corporate Affairs Director", "Weyland-Yutani")
 		show_browser(usr, "<body class='paper'>[fax_message]</body>", "clfaxpreview", "size=500x400")
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice == "Cancel")
@@ -1324,7 +1324,7 @@
 		if(!customname)
 			return
 
-		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WESTON-YAMADA FAX REPLY: </font></b> ")
+		var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX REPLY: </font></b> ")
 		msg_ghost += "Transmitting '[customname]' via secure connection ... "
 		msg_ghost += "<a href='?FaxView=\ref[fax_message]'>view message</a>"
 		announce_fax( ,msg_ghost)
@@ -1340,7 +1340,7 @@
 					// give the sprite some time to flick
 					spawn(20)
 						var/obj/item/paper/P = new /obj/item/paper( F.loc )
-						P.name = "Weston-Yamada - [customname]"
+						P.name = "Weyland-Yutani - [customname]"
 						P.info = fax_message
 						P.update_icon()
 
@@ -1353,7 +1353,7 @@
 							P.stamped = new
 						P.stamped += /obj/item/tool/stamp
 						P.overlays += stampoverlay
-						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weston-Yamada Quantum Relay (tm).</i>"
+						P.stamps += "<HR><i>This paper has been stamped and encrypted by the Weyland-Yutani Quantum Relay (tm).</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
 				message_staff("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
@@ -1418,6 +1418,11 @@
 		if(!check_rights(R_SPAWN))
 			return
 		return create_mob(usr)
+
+	else if(href_list["send_tip"])
+		if(!check_rights(R_SPAWN))
+			return
+		return send_tip(usr)
 
 	else if(href_list["object_list"])			//this is the laggiest thing ever
 		if(!check_rights(R_SPAWN))
@@ -1553,11 +1558,6 @@
 
 		topic_events(href_list["events"])
 
-	else if(href_list["debug"])
-		if(!check_rights(R_DEBUG))
-			return
-		topic_debug(href_list["debug"])
-
 	else if(href_list["teleport"])
 		if(!check_rights(R_MOD))
 			return
@@ -1579,13 +1579,6 @@
 	else if(href_list["ahelp"])
 
 		topic_ahelps(href_list)
-
-	else if(href_list["agent"] == "showobjectives")
-		if(!check_rights(R_MOD))
-			return
-
-		var/mob/M = locate(href_list["extra"])
-		show_agent_objectives(M)
 
 	// player info stuff
 

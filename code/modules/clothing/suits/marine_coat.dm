@@ -75,14 +75,35 @@
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer
 	name = "marine officer dress jacket"
-	desc = "Dress Jacket worn by Commanding Officer's of the USCM."
+	desc = "Dress Jacket worn by Commanding Officers of the USCM."
 	icon_state = "co_jacket"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
 	name = "commanding officer bomber jacket"
-	desc = "A Bomber Jacket resembling those worn by Pilots of old. A classic, Stylish choice for those in the higher ranks."
+	desc = "A bomber jacket resembling those worn by airmen of old. A classic, stylish choice for those in the higher ranks."
 	icon_state = "co_bomber"
 
+/obj/item/clothing/suit/storage/jacket/marine/dress/admiral
+	name = "admiral's jacket"
+	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, an Admiral. Has quite a few pockets."
+	icon = 'icons/obj/items/clothing/suits.dmi'
+	icon_state = "admiral_jacket"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/suit_0.dmi'
+	)
+	item_state = "admiral_jacket"
+	storage_slots = 4
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	w_class = SIZE_MEDIUM
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/admiral/executive
+	name = "director's jacket"
+	desc = "A black trench coat with gold metallic trim. Flashy, highly protective, and over-the-top. Fit for a king - or, in this case, a Director. Has quite a few pockets."
 
 
 //=========================//PROVOST\\================================\\
@@ -90,8 +111,9 @@
 /obj/item/clothing/suit/storage/jacket/marine/provost
 	name = "\improper Provost Coat"
 	desc = "The crisp coat of a Provost Officer."
-	flags_atom = NO_SNOW_TYPE|UNIQUE_ITEM_TYPE
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 	icon_state = "provost_coat"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR)
 
 /obj/item/clothing/suit/storage/jacket/marine/provost/advisor
 	name = "\improper Provost Advisor Jacket"

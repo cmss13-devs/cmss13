@@ -104,8 +104,9 @@
 	return
 
 /obj/structure/prop/dam/torii/attackby(obj/item/W, mob/user)
-	..()
 	var/L
+	if(lit)
+		return
 	if(istype(W, /obj/item/tool/weldingtool))
 		var/obj/item/tool/weldingtool/WT = W
 		if(WT.isOn())
@@ -141,7 +142,7 @@
 		else
 			to_chat(user, SPAN_WARNING("Turn on the pilot light first!"))
 
-	else if(istype(W, /obj/item/weapon/gun))
+	else if(isgun(W))
 		var/obj/item/weapon/gun/G = W
 		for(var/slot in G.attachments)
 			if(istype(G.attachments[slot], /obj/item/attachable/attached_gun/flamer))
@@ -157,9 +158,9 @@
 		if(W.heat_source > 200)
 			L = 1
 	if(L)
-		visible_message("[user] quietly goes from lantern to lantern on to torri, lighting the wicks in each one.")
+		visible_message("[user] quietly goes from lantern to lantern on the torii, lighting the wicks in each one.")
+		lit = TRUE
 		Update()
-	return
 
 /obj/structure/prop/dam/gravestone
 	name = "grave marker"
@@ -418,7 +419,7 @@
 
 /obj/structure/prop/resin_prop
 	name = "resin coated object"
-	desc = "Well, its useless now."
+	desc = "Well, it's useless now."
 	icon = 'icons/obj/resin_objects.dmi'
 	icon_state = "watertank"
 
@@ -434,3 +435,191 @@
 
 /obj/structure/prop/invuln/ex_act(severity, direction)
 	return
+
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder
+	density = 0
+	name = "non-functional hatch"
+	desc = "You'll need more than a prybar for this one."
+	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
+
+/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
+	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
+
+/obj/structure/prop/brazier
+	name = "brazier"
+	desc = "The fire inside the brazier emits a relatively dim glow to flashlights and flares, but nothing can replace the feeling of sitting next to a fireplace with your friends."
+	icon = 'icons/obj/structures/structures.dmi'
+	icon_state = "brazier"
+	density = TRUE
+
+/obj/structure/prop/brazier/Initialize()
+	. = ..()
+	SetLuminosity(6)
+
+/obj/structure/prop/brazier/torch
+	name = "torch"
+	desc = "It's a torch."
+	icon_state = "torch"
+	density = FALSE
+
+//ICE COLONY PROPS
+//Thematically look to Blackmesa's Xen levels. Generic science-y props n' stuff.
+
+/obj/structure/prop/ice_colony
+	name = "prop"
+	desc = "Call a coder (or a mapper) you shouldn't be seeing this!"
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	projectile_coverage = 10
+
+/obj/structure/prop/ice_colony/soil_net
+	name = "soil net"
+	desc = "Scientists use these suspended nets to superimpose a grid over a patch of ground for study."
+	icon_state = "soil_grid"
+
+/obj/structure/prop/ice_colony/ice_crystal
+	name = "ice crystal"
+	desc = "It is a giant crystal of ice. The chemical process that keeps it frozen despite major seasonal temperature flux is what the United American Greater Argentinian science team is studying here on the Snowball."
+	icon_state = "ice_crystal"
+
+/obj/structure/prop/ice_colony/ground_wire
+	name = "ground wire"
+	desc = "A small string of black wire hangs between two marker posts. Probably used to mark off an area."
+	icon_state = "small_wire"
+
+/obj/structure/prop/ice_colony/poly_kevlon_roll
+	name = "poly_kevlon roll"
+	desc = "A big roll of poly-kevlon plastic used in temporary shelter construction."
+	icon_state = "kevlon_roll"
+	anchored = FALSE
+
+/obj/structure/prop/ice_colony/surveying_device
+	name = "surveying device"
+	desc = "A small laser measuring tool and camera mounted on a tripod. Comes in a stark safety yellow."
+	icon_state = "surveying_device"
+	anchored = FALSE
+
+/obj/structure/prop/ice_colony/surveying_device/measuring_device
+	name = "measuring device"
+	desc = "Some sort of doohicky that measures stuff."
+	icon_state = "measuring_device"
+
+/obj/structure/prop/ice_colony/dense
+	health = 75
+	density = 1
+
+/obj/structure/prop/ice_colony/dense/ice_tray
+	name = "ice slab tray"
+	icon_state = "ice_tray"
+	desc = "It is a tray filled with slabs of dark ice."
+
+/obj/structure/prop/ice_colony/dense/planter_box
+	icon_state = "planter_box_soil"
+	name = "grow box"
+	desc = "A root lattice is half buried inside the grow box."
+
+/obj/structure/prop/ice_colony/dense/planter_box/hydro
+	icon_state = "hydro_tray"
+	name = "hydroponics lattice"
+	desc = "A root lattice connected to two floating pontoons."
+
+/obj/structure/prop/ice_colony/dense/planter_box/plated
+	icon_state = "planter_box_empty"
+	name = "plated grow box"
+	desc = "The planter box is empty."
+
+/obj/structure/prop/ice_colony/flamingo
+	density = 0
+	name = "lawn flamingo"
+	desc = "For ornamenting your suburban lawn... or your ice colony."
+	icon_state = "flamingo"
+
+/obj/structure/prop/ice_colony/flamingo/festive
+	name = "festive lawn flamingo"
+	desc = "For ornamenting your suburban lawn... or your ice colony during the festive season. Not that anyone has an Earth calendar out here."
+	icon_state = "flamingo_santa"
+
+/obj/structure/prop/ice_colony/hula_girl //todo, animate based on dropship movement -Monkey
+	name = "hula girl"
+	desc = "Apparently at one point, Hawaii had beaches."
+	icon = 'icons/obj/structures/props/ice_colony/Hula.dmi'
+	icon_state = "Hula_Gal"
+
+/obj/structure/prop/ice_colony/tiger_rug
+	name = "tiger rug"
+	desc = "A rather tasteless but impressive tiger rug. Must've costed a fortune to get this exported to the rim."
+	icon = 'icons/obj/structures/props/ice_colony/Tiger_Rugs.dmi'
+	icon_state = "Bengal" //instanceable, lots of variants!
+
+
+//INVULNERABLE PROPS
+
+/obj/structure/prop/invuln
+	layer = ABOVE_MOB_LAYER
+	density = 1
+	icon = 'icons/obj/structures/props/ice_colony/props.dmi'
+	icon_state = "ice_tray"
+
+/obj/structure/prop/invuln/catwalk_support
+	name = "support lattice"
+	icon_state = "support_lattice"
+	desc = "The middle of a large set of steel support girders."
+	density = 0
+
+/obj/structure/prop/invuln/minecart_tracks
+	name = "rails"
+	icon_state = "rail"
+	icon = 'icons/obj/structures/props/mining.dmi'
+	density =  0
+	desc = "Minecarts and rail vehicles go on these."
+	layer = 3
+
+/obj/structure/prop/invuln/minecart_tracks/bumper
+	name = "rail bumpers"
+	icon_state = "rail_bumpers"
+	desc = "This (usually) stops minecarts and other rail vehicles at the end of a line of track."
+
+/obj/structure/prop/invuln/dense
+	density = 1
+
+/obj/structure/prop/invuln/dense/catwalk_support
+	name = "support lattice"
+	icon_state = "support_lattice"
+	desc = "The base of a large set of steel support girders."
+
+/obj/structure/prop/invuln/dense/ice_tray
+	name = "ice slab tray"
+	icon_state = "ice_tray"
+	desc = "It is a tray filled with slabs of dark ice."
+
+/obj/structure/prop/invuln/ice_prefab
+	name = "prefabricated structure"
+	desc = "This structure is made of metal support rods and robust poly-kevlon plastics. A derivative of the stuff used in UA ballistics vests, USCM and UPP uniforms. The loose walls roll with each gust of wind."
+	icon = 'icons/obj/structures/props/ice_colony/fabs_tileset.dmi'
+	icon_state = "fab"
+	density = 1
+	layer = 3
+	bound_width = 64
+	bound_height = 64
+
+/obj/structure/prop/invuln/ice_prefab/trim
+	layer = ABOVE_MOB_LAYER
+	density = 0
+
+/obj/structure/prop/invuln/ice_prefab/roof_greeble
+	icon = 'icons/obj/structures/props/ice_colony/fabs_greebles.dmi'
+	icon_state = "antenna"
+	layer = ABOVE_MOB_LAYER
+	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
+	density = FALSE
+
+/obj/structure/prop/invuln/ice_prefab/standalone
+	density = 1
+	icon = 'icons/obj/structures/props/ice_colony/fabs_64.dmi'
+	icon_state = "orange"//instance icons
+	layer = 3
+
+/obj/structure/prop/invuln/ice_prefab/standalone/trim
+	icon_state = "orange_trim"//instance icons
+	layer = ABOVE_MOB_LAYER
+	density = 0
+

@@ -55,7 +55,7 @@
 				chargelevel = -1
 				start_processing()
 		updateicon()
-	else if(istype(W, /obj/item/tool/wrench))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(charging)
 			to_chat(user, SPAN_DANGER("Remove the cell first!"))
 			return

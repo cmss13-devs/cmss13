@@ -131,7 +131,7 @@
 	plasma_cost = 55
 
 	// Configurables
-	var/damage = 40
+	var/damage = 20
 
 
 // This one is more tightly coupled than I'd like, but oh well
@@ -233,11 +233,11 @@
 	macro_path = /datum/action/xeno_action/verb/verb_acid_ball
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
-	xeno_cooldown = 180
+	xeno_cooldown = 18 SECONDS
 	plasma_cost = 80
 
-	var/activation_delay = 10
-	var/prime_delay = 10
+	var/activation_delay = 1 SECONDS
+	var/prime_delay = 1 SECONDS
 
 /datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid
 	name = "Spray Acid"

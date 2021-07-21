@@ -424,20 +424,21 @@ var/list/ob_type_fuel_requirements
 
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
-	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
 	sleep(clear_delay)
 	//ACTUALLY BLOW SHIT UP
 	if(!target.density)
-		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		sleep(double_explosion_delay)
-		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+		cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 		return
 
 	for(var/turf/T in range(2, target))
 		if(!T.density)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			sleep(double_explosion_delay)
-			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+			cell_explosion(target, standard_power, standard_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			return
 
 /obj/structure/ob_ammo/warhead/incendiary
@@ -450,7 +451,7 @@ var/list/ob_type_fuel_requirements
 	var/distance = 18
 	var/fire_level = 70
 	var/burn_level = 80
-	var/fire_color = "white"
+	var/fire_type = "white"
 
 /obj/structure/ob_ammo/warhead/incendiary/warhead_impact(turf/target)
 	. = ..()
@@ -459,9 +460,10 @@ var/list/ob_type_fuel_requirements
 
 	new /obj/effect/overlay/temp/blinking_laser (target)
 	sleep(10)
-	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob) //break shit around
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+	cell_explosion(target, clear_power, clear_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data) //break shit around
 	sleep(clear_delay)
-	fire_spread(target, initial(name), source_mob, distance, fire_level, burn_level, fire_color)
+	fire_spread(target, cause_data, distance, fire_level, burn_level, null, fire_type, TURF_PROTECTION_OB)
 
 
 /obj/structure/ob_ammo/warhead/cluster
@@ -500,7 +502,7 @@ var/list/ob_type_fuel_requirements
 
 /obj/structure/ob_ammo/warhead/cluster/proc/fire_in_a_hole(var/turf/loc)
 	new /obj/effect/overlay/temp/blinking_laser (loc)
-	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion, loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob), 1 SECONDS)
+	addtimer(CALLBACK(GLOBAL_PROC, .proc/cell_explosion, loc, explosion_power, explosion_falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), source_mob)), 1 SECONDS)
 
 
 /obj/structure/ob_ammo/ob_fuel

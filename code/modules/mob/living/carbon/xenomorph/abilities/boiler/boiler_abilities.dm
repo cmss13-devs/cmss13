@@ -4,22 +4,6 @@
 	delay = 20
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
-/datum/action/xeno_action/activable/bombard
-	name = "Bombard"
-	ability_name = "bombard"
-	action_icon_state = "bombard"
-	plasma_cost = 75
-	macro_path = /datum/action/xeno_action/verb/verb_bombard
-	action_type = XENO_ACTION_CLICK
-	ability_primacy = XENO_PRIMARY_ACTION_1
-	xeno_cooldown = 245
-
-	// Range and other config
-	var/effect_range = 3
-	var/effect_type = /obj/effect/xenomorph/boiler_bombard
-	var/activation_delay = 15
-	var/range = 15
-
 /datum/action/xeno_action/activable/acid_lance
 	name = "Acid Lance"
 	ability_name = "acid lance"
@@ -97,7 +81,7 @@
 
 	var/damage = 45
 	var/delay = 13.5
-	
+
 /datum/action/xeno_action/activable/acid_shotgun
 	name = "Acid Shotgun"
 	ability_name = "acid shotgun"

@@ -31,9 +31,12 @@
 	hitsound = null	//it is much lighter, after all.
 	throwforce = 2
 	w_class = SIZE_SMALL
-	force = 3.0
+	force = 3
 	max_water = 30
 	sprite_name = "miniFE"
+
+/obj/item/tool/extinguisher/mini/integrated_flamer
+	max_water = 60
 
 // A solely internal extinguisher
 /obj/item/tool/extinguisher/pyro
@@ -53,14 +56,14 @@
 	..()
 	to_chat(user, "It contains [reagents.total_volume] units of water left!")
 
-/obj/item/tool/extinguisher/attack_self(mob/user as mob)
+/obj/item/tool/extinguisher/attack_self(mob/user)
+	..()
 	safety = !safety
 	src.icon_state = "[sprite_name][!safety]"
 	src.desc = "The safety is [safety ? "on" : "off"]."
 	to_chat(user, "The safety is [safety ? "on" : "off"].")
-	return
 
-/obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/tool/extinguisher/attack(mob/living/M, mob/living/user)
 	if (M == user && !safety && reagents && reagents.total_volume > EXTINGUISHER_WATER_USE_AMT)
 		return FALSE
 	else
@@ -76,7 +79,7 @@
 
 	if(safety || (!isturf(target) && !isturf(target.loc)))
 		return ..()
-	
+
 	if(src.reagents.total_volume < 1)
 		to_chat(usr, SPAN_DANGER("\The [src] is empty."))
 		return
@@ -160,7 +163,7 @@
 	reagents.trans_to(W, 1)
 	for(var/b in 0 to (5-1))
 		step_towards(W, target)
-		if (!W || QDELETED(W)) 
+		if (!W || QDELETED(W))
 			return
 		else if (!W.reagents || get_turf(W) == T)
 			break
@@ -175,7 +178,7 @@
 				var/obj/flamer_fire/FF = atm
 				if(FF.firelevel > power)
 					FF.firelevel -= power
-					FF.updateicon()
+					FF.update_flame()
 				else
 					qdel(atm)
 				continue
@@ -188,7 +191,7 @@
 			if(iscarbon(atm) || istype(atm, /obj/structure/barricade))
 				atm.extinguish_acid()
 		T = get_turf(W)
-		if(T == target) 
+		if(T == target)
 			break
 		sleep(2)
 	qdel(W)

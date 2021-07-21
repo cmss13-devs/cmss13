@@ -8,6 +8,15 @@
 /datum/job/command/executive/generate_entry_message(mob/living/carbon/human/H)
 	return ..()
 
+/datum/job/command/executive/generate_entry_conditions(mob/living/M, whitelist_status)
+	. = ..()
+	GLOB.roundstart_leaders += M
+	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/cleanup_leader_candidate)
+
+/datum/job/command/executive/proc/cleanup_leader_candidate(var/mob/M)
+	SIGNAL_HANDLER
+	GLOB.roundstart_leaders -= M
+
 AddTimelock(/datum/job/command/executive, list(
 	JOB_COMMAND_ROLES = 5 HOURS
 ))

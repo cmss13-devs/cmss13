@@ -5,6 +5,8 @@
 	icon_state = "densecrate"
 	density = 1
 	anchored = 0
+	var/parts_type = /obj/item/stack/sheet/wood
+	var/unpacking_sound = 'sound/effects/woodhit.ogg'
 
 /obj/structure/largecrate/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -15,27 +17,25 @@
 	to_chat(user, SPAN_NOTICE("You need a crowbar to pry this open!"))
 	return
 
+/obj/structure/largecrate/proc/unpack()
+	if(parts_type)
+		new parts_type(loc, 2)
+	for(var/obj/O in contents)
+		O.forceMove(loc)
+	playsound(src, unpacking_sound, 35)
+	qdel(src)
+
 /obj/structure/largecrate/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
-		new /obj/item/stack/sheet/wood(src)
-		var/turf/T = get_turf(src)
-		for(var/obj/O in contents)
-			O.forceMove(T)
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		unpack()
 		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), \
-							 SPAN_NOTICE("You pry open \the [src]."), \
-							 SPAN_NOTICE("You hear splitting wood."))
-		qdel(src)
+							 SPAN_NOTICE("You pry open \the [src]."))
 	else
 		return attack_hand(user)
 
 /obj/structure/largecrate/ex_act(var/power)
 	if(power >= EXPLOSION_THRESHOLD_VLOW)
-		var/turf/T = get_turf(src)
-		new /obj/item/stack/sheet/wood(T)
-		for(var/obj/O in contents)
-			O.forceMove(T)
-
-		qdel(src)
+		unpack()
 
 /obj/structure/largecrate/mule
 	icon_state = "mulecrate"
@@ -44,7 +44,7 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/lisa/attackby(obj/item/W as obj, mob/user as mob)	//ugly but oh well
-	if(istype(W, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/corgi/Lisa(loc)
 	..()
 
@@ -53,7 +53,7 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/cow/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/cow(loc)
 	..()
 
@@ -62,7 +62,7 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/goat/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		new /mob/living/simple_animal/hostile/retaliate/goat(loc)
 	..()
 
@@ -71,7 +71,7 @@
 	icon_state = "lisacrate"
 
 /obj/structure/largecrate/chick/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		var/num = rand(4, 6)
 		for(var/i = 0, i < num, i++)
 			new /mob/living/simple_animal/chick(loc)
@@ -107,6 +107,77 @@
 		new thing(src)
 	num_things = 0
 
+/obj/structure/largecrate/random/mini
+	name = "small crate"
+	desc = "The large supply crate's cousin, 1st removed."
+	icon_state = "mini_crate"
+	density = 0
+
+/obj/structure/largecrate/random/mini/chest
+	desc = "A small plastic crate wrapped with securing elastic straps."
+	icon_state = "mini_chest"
+	name = "small chest"
+
+/obj/structure/largecrate/random/mini/chest/b
+	icon_state = "mini_chest_b"
+	name = "small chest"
+
+/obj/structure/largecrate/random/mini/chest/c
+	icon_state = "mini_chest_c"
+	name = "small chest"
+
+/obj/structure/largecrate/random/mini/wooden
+	desc = "A small wooden crate. Two supporting ribs cross this one's frame."
+	icon_state = "mini_wooden"
+	name = "wooden crate"
+
+/obj/structure/largecrate/random/mini/small_case
+	desc = "A small hard shell case. What could be inside?"
+	icon_state = "mini_case"
+	name = "small case"
+
+/obj/structure/largecrate/random/mini/small_case/b
+	icon_state = "mini_case_b"
+	name = "small case"
+
+/obj/structure/largecrate/random/mini/small_case/c
+	icon_state = "mini_case_c"
+	name = "small case"
+
+/obj/structure/largecrate/random/mini/ammo
+	desc = "A small metal crate. Here, Freeman ammo!"
+	name = "small ammocase"
+	icon_state = "mini_ammo"
+	stuff = list(/obj/item/ammo_magazine/pistol,
+				/obj/item/ammo_magazine/revolver,
+				/obj/item/ammo_magazine/rifle,
+				/obj/item/ammo_magazine/rifle/extended,
+				/obj/item/ammo_magazine/shotgun,
+				/obj/item/ammo_magazine/shotgun/buckshot,
+				/obj/item/ammo_magazine/shotgun/flechette,
+				/obj/item/ammo_magazine/smg/m39,
+				/obj/item/ammo_magazine/smg/m39/extended,)
+
+/obj/structure/largecrate/random/mini/med
+	desc = "A small metal crate. Here, Freeman take this medkit!" //https://www.youtube.com/watch?v=OMXan7GS8-Q
+	icon_state = "mini_medcase"
+	name = "small medcase"
+	num_things = 1 //funny lootbox tho.
+	stuff = list(/obj/item/stack/medical/bruise_pack,
+				/obj/item/storage/pill_bottle/packet/tricordrazine,
+				/obj/item/tool/crowbar/red,
+				/obj/item/device/flashlight,
+				/obj/item/reagent_container/hypospray/autoinjector/skillless,
+				/obj/item/storage/pill_bottle/packet/tramadol,
+				/obj/item/stack/medical/ointment,
+				/obj/item/stack/medical/splint,
+				/obj/item/device/healthanalyzer,
+				/obj/item/stack/medical/advanced/ointment,
+				/obj/item/stack/medical/advanced/bruise_pack,
+				/obj/item/tool/extinguisher/mini,
+				/obj/item/tool/shovel/etool,
+				/obj/item/tool/screwdriver,)
+
 /obj/structure/largecrate/random/case
 	name = "storage case"
 	desc = "A black storage case."
@@ -117,9 +188,14 @@
 	desc = "A stack of black storage cases."
 	icon_state = "case_double"
 
-/obj/structure/largecrate/random/case/double/Del()
+/obj/structure/largecrate/random/case/double/unpack()
+	if(parts_type)
+		new parts_type(loc, 2)
+	for(var/obj/O in contents)
+		O.forceMove(loc)
 	new /obj/structure/largecrate/random/case(loc)
-	..()
+	playsound(src, unpacking_sound, 35)
+	qdel(src)
 
 /obj/structure/largecrate/random/case/small
 	name = "small cases"
@@ -130,6 +206,8 @@
 	name = "blue barrel"
 	desc = "A blue storage barrel"
 	icon_state = "barrel_blue"
+	parts_type = /obj/item/stack/sheet/metal
+	unpacking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/largecrate/random/barrel/blue
 	name = "blue barrel"
@@ -211,7 +289,7 @@
 	num_guns = 1
 	num_mags = 1
 	name = "\improper Nagant-Yamasaki firearm crate"
-	stuff = list(	/obj/item/weapon/gun/revolver/upp = /obj/item/ammo_magazine/revolver/upp,
+	stuff = list(	/obj/item/weapon/gun/revolver/nagant = /obj/item/ammo_magazine/revolver/upp,
 					/obj/item/weapon/gun/pistol/c99 = /obj/item/ammo_magazine/pistol/c99,
 					/obj/item/weapon/gun/pistol/kt42 = /obj/item/ammo_magazine/pistol/automatic,
 					/obj/item/weapon/gun/rifle/mar40 = /obj/item/ammo_magazine/rifle/mar40,
@@ -234,7 +312,7 @@
 					/obj/item/weapon/gun/shotgun/pump/cmb = /obj/item/ammo_magazine/shotgun/incendiary,
 					/obj/item/weapon/gun/shotgun/double = /obj/item/ammo_magazine/shotgun/buckshot,
 					/obj/item/weapon/gun/smg/mp7 = /obj/item/ammo_magazine/smg/mp7,
-					/obj/item/weapon/gun/smg/skorpion = /obj/item/ammo_magazine/smg/skorpion,
+					/obj/item/weapon/gun/pistol/skorpion = /obj/item/ammo_magazine/pistol/skorpion,
 					/obj/item/weapon/gun/smg/uzi = /obj/item/ammo_magazine/smg/uzi,
 					/obj/item/weapon/gun/smg/fp9000 = /obj/item/ammo_magazine/smg/fp9000
 				)
@@ -401,9 +479,9 @@
 		new /obj/item/weapon/gun/rifle/mar40(src)
 		new /obj/item/ammo_magazine/rifle/mar40(src)
 		new /obj/item/ammo_magazine/rifle/mar40(src)
-	new /obj/item/weapon/gun/smg/skorpion(src)
-	new /obj/item/ammo_magazine/smg/skorpion(src)
-	new /obj/item/ammo_magazine/smg/skorpion(src)
+	new /obj/item/weapon/gun/pistol/skorpion(src)
+	new /obj/item/ammo_magazine/pistol/skorpion(src)
+	new /obj/item/ammo_magazine/pistol/skorpion(src)
 	new /obj/item/weapon/gun/shotgun/combat(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
@@ -447,8 +525,8 @@
 	new /obj/item/ammo_magazine/rifle(src)
 	new /obj/item/ammo_magazine/rifle/mar40(src)
 	new /obj/item/ammo_magazine/rifle/mar40(src)
-	new /obj/item/ammo_magazine/smg/skorpion(src)
-	new /obj/item/ammo_magazine/smg/skorpion(src)
+	new /obj/item/ammo_magazine/pistol/skorpion(src)
+	new /obj/item/ammo_magazine/pistol/skorpion(src)
 	new /obj/item/ammo_magazine/shotgun(src)
 	new /obj/item/ammo_magazine/shotgun/buckshot(src)
 

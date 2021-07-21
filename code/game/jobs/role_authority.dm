@@ -80,13 +80,13 @@ var/global/marines_assigned = 0
 	for(var/caste in castes_all) //Setting up our castes.
 		var/datum/caste_datum/C = new caste()
 
-		if(!C.caste_name) //In case you forget to subtract one of those variable holder jobs.
+		if(!C.caste_type) //In case you forget to subtract one of those variable holder jobs.
 			to_world(SPAN_DEBUG("Error setting up castes, blank caste name: [C.type].</span>"))
 			log_debug("Error setting up castes, blank caste name: [C.type].")
 			continue
 
 		castes_by_path[C.type] = C
-		castes_by_name[C.caste_name] = C
+		castes_by_name[C.caste_type] = C
 
 	roles_by_path = list()
 	roles_by_name = list()
@@ -455,6 +455,12 @@ var/global/marines_assigned = 0
 				else
 					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
 					return
+			if(JOB_SQUAD_RTO)
+				if(sq.num_rto > 0)
+					sq.num_rto--
+				else
+					to_chat(user, "There are no [J.title] slots occupied in [sq.name] Squad.")
+					return
 			if(JOB_SQUAD_LEADER)
 				if(sq.num_leaders > 0)
 					sq.num_leaders--
@@ -680,6 +686,19 @@ var/global/marines_assigned = 0
 						if(!lowest)
 							lowest = S
 						else if(S.num_specialists < lowest.num_specialists)
+							lowest = S
+
+			if("Squad RT Operator")
+				for(var/datum/squad/S in mixed_squads)
+					if(S.usable)
+						if(!skip_limit && S.num_rto >= S.max_rto) continue
+						if(pref_squad_name && S.name == pref_squad_name)
+							S.put_marine_in_squad(H) //fav squad has a spot for us.
+							return
+
+						if(!lowest)
+							lowest = S
+						else if(S.num_rto < lowest.num_rto)
 							lowest = S
 
 			if("Squad Smartgunner")

@@ -38,7 +38,6 @@
 	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
 	see_invisible = SEE_INVISIBLE_OBSERVER
 	see_in_dark = 100
-	add_verb(src, /mob/dead/observer/proc/dead_tele)
 	GLOB.observer_list += src
 
 	var/turf/T
@@ -156,7 +155,7 @@
 				if("Faction UPP HUD")
 					H = huds[MOB_HUD_FACTION_UPP]
 					H.add_hud_to(src)
-				if("Faction W-Y HUD")
+				if("Faction Wey-Yu HUD")
 					H = huds[MOB_HUD_FACTION_WY]
 					H.add_hud_to(src)
 				if("Faction RESS HUD")
@@ -174,7 +173,7 @@ Transfer_mind is there to check if mob is being deleted/not going to have a body
 Works together with spawning an observer, noted above.
 */
 
-/mob/dead/observer/Life()
+/mob/dead/observer/Life(delta_time)
 	..()
 	if(!loc) return
 	if(!client) return 0
@@ -310,16 +309,34 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	qdel(src)
 	return TRUE
 
-/mob/dead/observer/proc/dead_tele()
+/mob/dead/observer/verb/enter_tech_tree()
 	set category = "Ghost"
-	set name = "Teleport"
+	set name = "Teleport to Techtree"
+
+	var/list/trees = list()
+
+	for(var/T in SStechtree.trees)
+		trees += list("[T]" = SStechtree.trees[T])
+
+	var/value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
+
+	if(!value)
+		return
+
+	var/datum/techtree/tree = trees[value]
+
+	forceMove(tree.entrance)
+
+/mob/dead/observer/verb/dead_teleport_area()
+	set category = "Ghost"
+	set name = "Teleport to Area"
 	set desc= "Teleport to a location"
 
 	if(!istype(usr, /mob/dead/observer))
 		to_chat(src, "<span style='color: red;'>Not when you're not dead!</span>")
 		return
 
-	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", GLOB.sorted_areas)
+	var/area/thearea = tgui_input_list(usr, "Area to jump to", "BOOYEA", return_sorted_areas())
 	if(!thearea)	return
 
 	var/list/L = list()
@@ -410,7 +427,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(var/atom/movable/target)
-	if(target && target != src)
+	if(target)
+		if(target == src)
+			to_chat(src, SPAN_WARNING("You can't follow yourself"))
+			return
 		if(following && following == target)
 			return
 		following = target
@@ -436,9 +456,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		z = tz
 		sleep(15)
 
-/mob/dead/observer/verb/jumptomob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
+/mob/dead/observer/verb/dead_teleport_mob() //Moves the ghost instead of just changing the ghosts's eye -Nodrak
 	set category = "Ghost"
-	set name = "Jump to Mob"
+	set name = "Teleport to Mob"
 	set desc = "Teleport to a mob"
 
 	if(istype(usr, /mob/dead/observer)) //Make sure they're an observer!
@@ -640,11 +660,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	var/choice = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", GLOB.freed_mob_list)
-	if(!choice || choice == "Cancel")
+	var/mob/living/L = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", GLOB.freed_mob_list)
+	if(!L)
 		return
 
-	var/mob/living/L = choice
+	if(!(L in GLOB.freed_mob_list))
+		return
+
 	if(!istype(L))
 		return
 
@@ -790,13 +812,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		can_reenter_corpse = FALSE
 		GLOB.data_core.manifest_modify(name, null, null, "*Deceased*")
 
-/mob/dead/observer/verb/edit_characters()
-	set category = "Ghost"
-	set name = "Edit Characters"
-	set desc = "Edit your characters in your preferences."
-
-	client.prefs.ShowChoices(src)
-
 /mob/dead/observer/verb/view_stats()
 	set category = "Ghost.View"
 	set name = "View Playtimes"
@@ -831,7 +846,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	. = ..()
 	. += ""
 	. += "Game Mode: [GLOB.master_mode]"
-	. += "DEFCON Level: [defcon_controller.current_defcon_level]"
 
 	if(SSticker.HasRoundStarted())
 		return
@@ -847,7 +861,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	. += "Players: [SSticker.totalPlayers]"
 	if(client.admin_holder)
 		. += "Players Ready: [SSticker.totalPlayersReady]"
-	. += "DEFCON Level: [defcon_controller.current_defcon_level]"
 
 	if(EvacuationAuthority)
 		var/eta_status = EvacuationAuthority.get_status_panel_eta()

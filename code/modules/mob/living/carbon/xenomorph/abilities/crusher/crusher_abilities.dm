@@ -8,8 +8,6 @@
 	xeno_cooldown = 140
 	plasma_cost = 5
 
-	var/direct_hit_damage = 60
-
 	// Config options
 	distance = 9
 
@@ -23,6 +21,9 @@
 	should_destroy_objects = TRUE
 	throw_speed = SPEED_FAST
 	tracks_target = FALSE
+
+	var/direct_hit_damage = 60
+	var/frontal_armor = 15
 
 	// Object types that dont reduce cooldown when hit
 	var/list/not_reducing_objects = list()

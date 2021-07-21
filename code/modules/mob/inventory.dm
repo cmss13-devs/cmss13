@@ -14,29 +14,41 @@
 
 //Puts the item into your l_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_l_hand(var/obj/item/W)
-	if(lying)			return 0
-	if(!istype(W))		return 0
+	if(lying)
+		return FALSE
+	if(!istype(W))
+		return FALSE
 	if(!l_hand)
+		if(W.loc == src && !(W.flags_item & DELONDROP))
+			W.dropped(src)
+
 		W.forceMove(src)
 		l_hand = W
 		W.layer = ABOVE_HUD_LAYER
+		W.pickup(src)
 		W.equipped(src,WEAR_L_HAND)
 		update_inv_l_hand()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 //Puts the item into your r_hand if possible and calls all necessary triggers/updates. returns 1 on success.
 /mob/proc/put_in_r_hand(var/obj/item/W)
-	if(lying)			return 0
-	if(!istype(W))		return 0
+	if(lying)
+		return FALSE
+	if(!istype(W))
+		return FALSE
 	if(!r_hand)
+		if(W.loc == src && !(W.flags_item & DELONDROP))
+			W.dropped(src)
+
 		W.forceMove(src)
 		r_hand = W
 		W.layer = ABOVE_HUD_LAYER
+		W.pickup(src)
 		W.equipped(src,WEAR_R_HAND)
 		update_inv_r_hand()
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 //Puts the item into our active hand if possible. returns 1 on success.
 /mob/proc/put_in_active_hand(var/obj/item/W)
@@ -53,40 +65,36 @@
 //This is probably the main one you need to know :)
 /mob/proc/put_in_hands(var/obj/item/W)
 	if(!W)
-		return 0
+		return FALSE
 	if(put_in_active_hand(W))
-		update_inv_l_hand(0)
-		update_inv_r_hand()
-		return 1
+		return TRUE
 	else if(put_in_inactive_hand(W))
-		update_inv_l_hand(0)
-		update_inv_r_hand()
-		return 1
+		return TRUE
 	else
 		W.forceMove(get_turf(src))
 		W.layer = initial(W.layer)
 		W.dropped(src)
-		return 0
+		return FALSE
 
 
 
 /mob/proc/drop_item_v()		//this is dumb.
 	if(stat == CONSCIOUS && isturf(loc))
 		return drop_held_item()
-	return 0
+	return FALSE
 
 
 //Drops the item in our left hand
 /mob/proc/drop_l_hand()
 	if(l_hand)
 		return drop_inv_item_on_ground(l_hand)
-	return 0
+	return FALSE
 
 //Drops the item in our right hand
 /mob/proc/drop_r_hand()
 	if(r_hand)
 		return drop_inv_item_on_ground(r_hand)
-	return 0
+	return FALSE
 
 //Drops the item in our active hand. If passed with an item, it will check each hand for the item and drop the right one.
 /mob/proc/drop_held_item(var/obj/item/I)
@@ -287,6 +295,11 @@
 			if(istype(S) && S.pockets.storage_slots)
 				W.forceMove(S.pockets)
 				equipped = 1
+		if(WEAR_IN_HELMET)
+			var/obj/item/clothing/head/helmet/marine/HM = src.head
+			if(istype(HM) && HM.pockets.storage_slots)
+				W.forceMove(HM.pockets)
+				equipped = TRUE
 		if(WEAR_IN_BELT)
 			if(src.belt && isstorage(src.belt))
 				var/obj/item/storage/B = src.belt

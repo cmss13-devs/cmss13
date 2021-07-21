@@ -8,7 +8,7 @@
 	var/datum/entity/weapon_stats/top_weapon = null // reference to /datum/entity/weapon_stats (like tac-shotty)
 	var/list/weapon_stats_list = list() // list of types /datum/entity/weapon_stats
 	var/list/job_stats_list = list() // list of types /datum/entity/job_stats
-	var/list/medal_list = list() // list of all medals earned
+	var/list/datum/entity/statistic/medal/medal_list = list() // list of all medals earned
 
 /datum/entity/player_stats/human/get_playtime(var/type)
 	if(!type)
@@ -143,18 +143,18 @@
 			var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(cause)
 			R.count_human_kill(job_name)
 
-/datum/entity/player_stats/human/count_personal_xeno_kill(var/caste_name, var/cause, var/job)
+/datum/entity/player_stats/human/count_personal_xeno_kill(var/caste_type, var/cause, var/job)
 	var/datum/entity/player_stats/job/S = setup_job_stats(job)
-	S.count_xeno_kill(caste_name, cause)
+	S.count_xeno_kill(caste_type, cause)
 	if(round_statistics)
 		var/datum/entity/player_stats/job/R = round_statistics.setup_job_stats(job)
-		R.count_xeno_kill(caste_name, cause)
+		R.count_xeno_kill(caste_type, cause)
 	if(cause)
 		var/datum/entity/weapon_stats/W = setup_weapon_stats(cause)
-		W.count_xeno_kill(caste_name)
+		W.count_xeno_kill(caste_type)
 		if(round_statistics)
 			var/datum/entity/weapon_stats/R = round_statistics.setup_weapon_stats(cause)
-			R.count_xeno_kill(caste_name)
+			R.count_xeno_kill(caste_type)
 
 /datum/entity/player_stats/human/count_human_kill(var/job_name, var/cause, var/job)
 	if(!job_name)

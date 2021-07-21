@@ -22,10 +22,12 @@
 
 	interactee = null
 
-	last_damage_source = null
-	last_damage_mob = null
+	last_damage_data = null
 
 	QDEL_NULL(mob_panel)
+
+	if(implants)
+		QDEL_NULL_LIST(implants)
 
 	ghostize()
 	clear_fullscreens()
@@ -49,8 +51,10 @@
 		current_area.Entered(src)
 	if(!isnull(current_area) && current_area.statistic_exempt)
 		statistic_exempt = TRUE
-	prepare_huds()
 
+	set_focus(src)
+	prepare_huds()
+	langchat_make_image()
 	create_player_panel()
 
 	return ..()
@@ -79,19 +83,19 @@
 	if(!client || !client.prefs)	return
 
 	if (type)
-		if(type & 1 && (sdisabilities & BLIND || blinded) )//Vision related
+		if(type & 1 && (sdisabilities & DISABILITY_BLIND || blinded) )//Vision related
 			if (!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-		if (type & 2 && (sdisabilities & DEAF || ear_deaf))//Hearing related
+		if (type & 2 && (sdisabilities & DISABILITY_DEAF || ear_deaf))//Hearing related
 			if (!alt)
 				return
 			else
 				msg = alt
 				type = alt_type
-				if (type & 1 && (sdisabilities & BLIND))
+				if (type & 1 && (sdisabilities & DISABILITY_BLIND))
 					return
 	if(message_flags == CHAT_TYPE_OTHER || client.prefs && (message_flags & client.prefs.chat_display_preferences) > 0) // or logic between types
 		if(stat == UNCONSCIOUS)
@@ -177,7 +181,9 @@
 	. += speed
 	move_delay = .
 
-/mob/proc/Life()
+
+/mob/proc/Life(delta_time)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(client == null)
 		away_timer++
 	else
@@ -281,6 +287,10 @@
 			else
 				client.perspective = EYE_PERSPECTIVE
 				client.eye = loc
+
+		client.mouse_pointer_icon = mouse_icon
+
+		SEND_SIGNAL(client, COMSIG_CLIENT_RESET_VIEW, A)
 	return
 
 
@@ -422,8 +432,6 @@
 				client.recalculate_move_delay()
 
 			return
-		else
-			stop_pulling()
 
 	var/mob/M
 	if(ismob(AM))
@@ -438,6 +446,21 @@
 	var/pull_response = AM.pull_response(src)
 	if(!pull_response) // If I'm not allowed to pull you I won't. Stop here.
 		return FALSE
+
+	return do_pull(AM, lunge, no_msg)
+
+/mob/living/proc/do_pull(atom/movable/clone/AM, lunge, no_msg)
+	if(pulling)
+		stop_pulling()
+
+	if(SEND_SIGNAL(AM, COMSIG_ATTEMPT_MOB_PULL) & COMPONENT_CANCEL_MOB_PULL)
+		return
+
+	var/mob/M
+	if(ismob(AM))
+		M = AM
+	else if(istype(AM, /obj))
+		AM.add_fingerprint(src)
 
 	pulling = AM
 	AM.pulledby = src
@@ -663,6 +686,10 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(istype(mliv))
 		if(newdir)
 			mliv.on_movement(0)
+
+	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
+		update_inv_back()
+
 	return 1
 
 
@@ -680,9 +707,21 @@ note dizziness decrements automatically in the mob's Life() proc.
 /mob/proc/get_species()
 	return ""
 
+/// Sets freeze if possible and wasn't already set, returning success
+/mob/proc/freeze()
+	if(frozen)
+		return FALSE
+	frozen = TRUE
+	update_canmove()
+	return TRUE
+
+/// Attempts to unfreeze mob, returning success
 /mob/proc/unfreeze()
+	if(!frozen)
+		return FALSE
 	frozen = FALSE
 	update_canmove()
+	return TRUE
 
 /mob/proc/flash_weak_pain()
 	overlay_fullscreen("pain", /obj/screen/fullscreen/pain, 1)
@@ -953,3 +992,6 @@ mob/proc/yank_out_object()
 /// Adds this list to the output to the stat browser
 /mob/proc/get_status_tab_items()
 	. = list()
+
+/mob/proc/get_role_name()
+	return

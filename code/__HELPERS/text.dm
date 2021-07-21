@@ -299,3 +299,9 @@ proc/strip_improper(input_text)
 	else
 		message = "[get_area(A)] ([A.x], [A.y], [A.z])"
 	return message
+
+//Adds 'char' ahead of 'text' until there are 'count' characters total
+/proc/add_leading(text, count, char = " ")
+	var/charcount = count - length_char(text)
+	var/list/chars_to_add[max(charcount + 1, 0)]
+	return jointext(chars_to_add, char) + text

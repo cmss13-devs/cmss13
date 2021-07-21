@@ -70,10 +70,11 @@ var/bomb_set = FALSE
 		stop_processing()
 
 /obj/structure/machinery/nuclearbomb/attack_alien(mob/living/carbon/Xenomorph/M)
-	return attack_hand(M)
+	INVOKE_ASYNC(src, /atom.proc/attack_hand, M)
+	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/nuclearbomb/attackby(obj/item/O as obj, mob/user as mob)
-	if(anchored && timing && bomb_set && iswirecutter(O))
+	if(anchored && timing && bomb_set && HAS_TRAIT(O, TRAIT_TOOL_WIRECUTTERS))
 		user.visible_message(SPAN_DANGER("[user] begins to defuse [src]."), SPAN_DANGER("You begin to defuse [src]. This will take some time..."))
 		if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 			disable()
@@ -369,7 +370,7 @@ var/bomb_set = FALSE
 	EvacuationAuthority.trigger_self_destruct(list(z), src, FALSE, NUKE_EXPLOSION_GROUND_FINISHED, FALSE, end_round)
 
 	sleep(100)
-	cell_explosion(loc, 500, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name))
+	cell_explosion(loc, 500, 150, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name)))
 	qdel(src)
 	return TRUE
 

@@ -16,6 +16,7 @@
     linked_dummy = H
 
 /obj/item/device/professor_dummy_tablet/attack_self(mob/user as mob)
+    ..()
     interact(user)
 
 /obj/item/device/professor_dummy_tablet/interact(mob/user as mob)

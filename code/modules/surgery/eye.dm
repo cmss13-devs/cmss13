@@ -157,7 +157,7 @@
 	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with \the [tool].")
 
 	target.disabilities &= ~NEARSIGHTED
-	target.sdisabilities &= ~BLIND
+	target.sdisabilities &= ~DISABILITY_BLIND
 	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
 	E.damage = 0
 	E.eye_surgery_stage = 0

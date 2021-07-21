@@ -1,6 +1,7 @@
 
 /datum/sound_template //Basically a sound datum, but only serves as a way to carry info to soundOutput
 	var/file //The sound itself
+	var/file_muffled // Muffled variant for those that are deaf
 	var/wait = 0
 	var/repeat = 0
 	var/channel = 0
@@ -103,7 +104,14 @@
 			S.x = T.x
 			S.y = T.y
 			S.z = T.z
-	S.file = soundin
+	var/sound/SD = soundin
+	if(istype(SD))
+		S.file = SD.file
+		S.wait = SD.wait
+		S.repeat = SD.repeat
+	else
+		S.file = get_sfx(soundin)
+
 	if(random_freq)
 		S.frequency = GET_RANDOM_FREQ
 	S.volume = vol
@@ -174,6 +182,8 @@
 				S = pick('sound/effects/zippo_open.ogg')
 			if("zippo_close")
 				S = pick('sound/effects/zippo_close.ogg')
+			if("bonk") //somewhat quiet, increase volume
+				S = pick('sound/machines/bonk.ogg')
 			if("match")
 				S = pick('sound/effects/match.ogg')
 			if("punch")
@@ -217,6 +227,8 @@
 				S = pick('sound/weapons/gun_smartgun1.ogg', 'sound/weapons/gun_smartgun2.ogg', 'sound/weapons/gun_smartgun3.ogg', 'sound/weapons/gun_smartgun4.ogg')
 			if("gun_smartgun_rattle")
 				S = pick('sound/weapons/gun_smartgun1_rattle.ogg', 'sound/weapons/gun_smartgun2_rattle.ogg', 'sound/weapons/gun_smartgun3_rattle.ogg', 'sound/weapons/gun_smartgun4_rattle.ogg')
+			if("gun_casing_shotgun")
+				S = pick ('sound/bullets/bulletcasing_shotgun_fall1.ogg')
 			// Xeno
 			if("acid_hit")
 				S = pick('sound/bullets/acid_impact1.ogg')
@@ -273,6 +285,8 @@
 				S = pick("sound/voice/human_female_grenadethrow_1.ogg", 'sound/voice/human_female_grenadethrow_2.ogg', 'sound/voice/human_female_grenadethrow_3.ogg')
 			if("female_warcry")
 				S = pick('sound/voice/warcry/female_charge.ogg', 'sound/voice/warcry/female_yell1.ogg', 'sound/voice/warcry/warcry_female_1.ogg', 'sound/voice/warcry/warcry_female_2.ogg', 'sound/voice/warcry/warcry_female_3.ogg', 'sound/voice/warcry/warcry_female_4.ogg', 'sound/voice/warcry/warcry_female_5.ogg', 'sound/voice/warcry/warcry_female_6.ogg')
+			if("rtb_handset")
+				S = pick('sound/machines/telephone/rtb_handset_1.ogg', 'sound/machines/telephone/rtb_handset_2.ogg', 'sound/machines/telephone/rtb_handset_3.ogg', 'sound/machines/telephone/rtb_handset_4.ogg', 'sound/machines/telephone/rtb_handset_5.ogg')
 			if("bone_break")
 				S = pick('sound/effects/bone_break1.ogg','sound/effects/bone_break2.ogg','sound/effects/bone_break3.ogg','sound/effects/bone_break4.ogg','sound/effects/bone_break5.ogg','sound/effects/bone_break6.ogg','sound/effects/bone_break7.ogg')
 

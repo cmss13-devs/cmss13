@@ -297,17 +297,18 @@
 	minimum_age = 40
 	skills = /datum/skills/commander
 
-	utility_hat = list(/obj/item/clothing/head/beret/cm)
-	utility_gloves = list(/obj/item/clothing/gloves/marine/techofficer/commander)
-	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm/tan)
+	utility_under = list(/obj/item/clothing/under/marine,/obj/item/clothing/under/marine/officer/command)
+	utility_hat = list(/obj/item/clothing/head/cmcap)
+	utility_extra = list(/obj/item/clothing/glasses/sunglasses,/obj/item/clothing/glasses/sunglasses/big,/obj/item/clothing/glasses/sunglasses/aviator,/obj/item/clothing/glasses/mbcg)
 
-	service_hat = list(/obj/item/clothing/head/beret/cm)
+	service_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black)
 	service_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	service_extra = list(/obj/item/clothing/under/marine/officer/casual, /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber)
+	service_hat = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black)
 
-	dress_under = list(/obj/item/clothing/under/marine/officer/formal/white, /obj/item/clothing/under/marine/officer/formal/black, /obj/item/clothing/under/marine/officer/dining)
+	dress_under = list(/obj/item/clothing/under/marine/officer/dining,/obj/item/clothing/under/marine/dress)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/beret/marine/commander/dress, /obj/item/clothing/head/beret/marine/commander/black, /obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal/white, /obj/item/clothing/head/cmcap/co/formal/black)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal/white, /obj/item/clothing/head/cmcap/co/formal/black)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer)
 
@@ -316,20 +317,40 @@
 	access = get_all_marine_access()
 
 /datum/equipment_preset/uscm_ship/commander/load_gear(mob/living/carbon/human/H)
+	var/sidearm = "Mateba"
+	var/kit = null
+	var/sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
 	var/backItem = /obj/item/storage/backpack/satchel/lockable
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/mcommander
+
+	if(H.client && H.client.prefs)
+		sidearm = H.client.prefs.commander_sidearm
+		switch(sidearm)
+			if("Mateba")
+				sidearmpath = /obj/item/storage/belt/gun/mateba/cmateba/full
+				kit = /obj/item/storage/mateba_case/captain
+			if("Commodore's Mateba")
+				sidearmpath = /obj/item/storage/belt/gun/mateba/commodore/full
+				kit = /obj/item/storage/mateba_case/captain/commodore
+			if("Desert Eagle")
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co
+			if("Golden Desert Eagle")
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/heavy/co_golden
+			if("M4A3 Custom")
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/commander
+			if("VP78")
+				sidearmpath = /obj/item/storage/belt/gun/m4a3/vp78
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress/commander(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/cmateba/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new sidearmpath(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars/range/designator(H), WEAR_L_HAND)
-
+	if(kit)
+		H.equip_to_slot_or_del(new kit(H), WEAR_IN_BACK)
 	H.hud_set_squad()
 
 //*****************************************************************************************************/
@@ -348,12 +369,14 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/bridge(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdre(H), WEAR_HEAD)
 	. = ..()
-	H.equip_to_slot_or_del(new /obj/item/storage/mateba_case/commodore(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
 
 /datum/equipment_preset/uscm_ship/commander/commodore/plus
 	name = "USCM Commodore (CO++)"
 	idtype = /obj/item/card/id/admiral
+
+/datum/equipment_preset/uscm_ship/commander/commodore/plus/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/marine/commander/cdrechief(H), WEAR_HEAD)
+	. = ..()
 
 //*****************************************************************************************************/
 
@@ -387,6 +410,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 
 	H.hud_set_squad()
@@ -417,6 +441,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/commander(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap/ro(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 
@@ -484,6 +509,7 @@
 	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/marine
 
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)

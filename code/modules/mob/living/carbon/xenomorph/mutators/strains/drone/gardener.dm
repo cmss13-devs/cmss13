@@ -3,8 +3,14 @@
 	description = "You trade most of your abilities aside from pheromones and planting weeds to gain the abilities to plant potent resin fruits for your sisters."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Drone") //Only drone.
-	mutator_actions_to_remove = list("Secrete Resin","Choose Resin Structure", "Corrosive Acid (75)", "Transfer Plasma", "Order Construction (400)")
+	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/onclick/choose_resin,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
+		/datum/action/xeno_action/activable/transfer_plasma,
+		/datum/action/xeno_action/activable/place_construction,
+	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/resin_surge, //second macro
 		/datum/action/xeno_action/onclick/plant_resin_fruit/greater, //third macro
@@ -231,7 +237,7 @@
 	else if(W && istype(T, /turf/open) && W.hivenumber == X.hivenumber)
 		X.visible_message(SPAN_XENODANGER("\The [X] surges the resin, creating an unstable wall!"), \
 		SPAN_XENONOTICE("You surge the resin, creating an unstable wall!"), null, 5)
-		T.ChangeTurf("/turf/closed/wall/resin/weak")
+		T.PlaceOnTop(/turf/closed/wall/resin/weak)
 		var/turf/closed/wall/resin/weak_wall = T
 		weak_wall.hivenumber = X.hivenumber
 		set_hive_data(weak_wall, X.hivenumber)

@@ -1,0 +1,691 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ab" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/admin_building)
+"ac" = (
+/obj/effect/acid_hole,
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/admin_building)
+"ad" = (
+/obj/structure/window/framed/solaris,
+/turf/open/floor/plating,
+/area/bigredv2/outside/admin_building)
+"ae" = (
+/turf/closed/wall/solaris,
+/area/bigredv2/outside/admin_building)
+"af" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	tag = "icon-darkred2 (WEST)";
+	icon_state = "darkred2";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"ag" = (
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor{
+	tag = "icon-dark";
+	icon_state = "dark";
+	dir = 2
+	},
+/area/bigredv2/outside/admin_building)
+"ai" = (
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor{
+	tag = "icon-dark";
+	icon_state = "dark";
+	dir = 2
+	},
+/area/bigredv2/outside/admin_building)
+"aj" = (
+/obj/structure/window_frame/solaris,
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/bigredv2/outside/admin_building)
+"ak" = (
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/turf/open/floor{
+	tag = "icon-carpet14-10 (WEST)";
+	icon_state = "carpet14-10";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"al" = (
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/turf/open/floor{
+	tag = "icon-carpet10-8 (WEST)";
+	icon_state = "carpet10-8";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"am" = (
+/obj/structure/barricade/metal{
+	icon_state = "metal_0";
+	dir = 4
+	},
+/obj/structure/barricade/metal{
+	dir = 1
+	},
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"an" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor{
+	tag = "icon-darkred2 (WEST)";
+	icon_state = "darkred2";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"ap" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/turf/open/jungle{
+	bushes_spawn = 0;
+	icon_state = "grass_impenetrable"
+	},
+/area/bigredv2/outside/admin_building)
+"ar" = (
+/obj/structure/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood{
+	tag = "icon-gib6";
+	icon_state = "gib6"
+	},
+/turf/open/floor{
+	tag = "icon-carpet7-3 (WEST)";
+	icon_state = "carpet7-3";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"as" = (
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"at" = (
+/obj/structure/bed/chair/comfy/black,
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"au" = (
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/floor{
+	tag = "icon-carpet11-12 (WEST)";
+	icon_state = "carpet11-12";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"av" = (
+/obj/structure/barricade/metal{
+	icon_state = "metal_0";
+	dir = 4
+	},
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"aw" = (
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	tag = "icon-dark";
+	icon_state = "dark";
+	dir = 2
+	},
+/area/bigredv2/outside/admin_building)
+"ay" = (
+/turf/open/floor{
+	tag = "icon-dark";
+	icon_state = "dark";
+	dir = 2
+	},
+/area/bigredv2/outside/admin_building)
+"aA" = (
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/floor{
+	tag = "icon-carpet7-3 (WEST)";
+	icon_state = "carpet7-3";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aB" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer3/laptop/secure_data,
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aC" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aD" = (
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor{
+	tag = "icon-carpet6-2 (WEST)";
+	icon_state = "carpet6-2";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	tag = "icon-darkredcorners2";
+	icon_state = "darkredcorners2"
+	},
+/area/bigredv2/outside/admin_building)
+"aH" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/blood/xeno,
+/turf/open/floor{
+	tag = "icon-darkred2";
+	icon_state = "darkred2"
+	},
+/area/bigredv2/outside/admin_building)
+"aI" = (
+/turf/open/floor{
+	tag = "icon-carpet7-3 (WEST)";
+	icon_state = "carpet7-3";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aJ" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 4
+	},
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aK" = (
+/obj/structure/surface/table,
+/obj/item/device/radio/marine,
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aL" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor{
+	tag = "icon-carpet11-12 (WEST)";
+	icon_state = "carpet11-12";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aM" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor{
+	tag = "icon-darkred2 (WEST)";
+	icon_state = "darkred2";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aN" = (
+/obj/structure/barricade/sandbags/wired,
+/turf/open/floor{
+	tag = "icon-darkred2 (EAST)";
+	icon_state = "darkred2";
+	dir = 4
+	},
+/area/bigredv2/outside/admin_building)
+"aO" = (
+/obj/item/storage/secure/briefcase,
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aP" = (
+/obj/structure/surface/table,
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aQ" = (
+/turf/open/floor{
+	tag = "icon-carpet11-12 (WEST)";
+	icon_state = "carpet11-12";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aR" = (
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"aS" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/floor{
+	tag = "icon-darkred2 (WEST)";
+	icon_state = "darkred2";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aT" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	tag = "icon-dark";
+	icon_state = "dark";
+	dir = 2
+	},
+/area/bigredv2/outside/admin_building)
+"aU" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/storage/toolbox/syndicate,
+/turf/open/floor{
+	tag = "icon-darkred2 (EAST)";
+	icon_state = "darkred2";
+	dir = 4
+	},
+/area/bigredv2/outside/admin_building)
+"aV" = (
+/obj/structure/surface/table,
+
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aW" = (
+/obj/effect/decal/cleanable/blood,
+/obj/item/tool/weldingtool/largetank,
+/turf/open/floor{
+	tag = "icon-carpet11-12 (WEST)";
+	icon_state = "carpet11-12";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aX" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/crap_item,
+/turf/open/floor{
+	tag = "icon-darkred2 (WEST)";
+	icon_state = "darkred2";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"aY" = (
+/turf/open/floor{
+	tag = "icon-darkred2 (EAST)";
+	icon_state = "darkred2";
+	dir = 4
+	},
+/area/bigredv2/outside/admin_building)
+"aZ" = (
+/obj/structure/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor{
+	tag = "icon-carpet7-3 (WEST)";
+	icon_state = "carpet7-3";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"ba" = (
+/obj/structure/surface/table,
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/item/clothing/head/helmet/marine/veteran/PMC/leader,
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"bb" = (
+/obj/structure/bed/chair/office/dark{
+	dir = 8
+	},
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/landmark/corpsespawner/PMC,
+/turf/open/floor{
+	tag = "icon-carpet15-15 (WEST)";
+	icon_state = "carpet15-15";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"bc" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	tag = "icon-carpet11-12 (WEST)";
+	icon_state = "carpet11-12";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"bd" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 10
+	},
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"be" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/turf/open/floor{
+	tag = "icon-darkred2 (WEST)";
+	icon_state = "darkred2";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"bf" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	tag = "icon-dark";
+	icon_state = "dark";
+	dir = 2
+	},
+/area/bigredv2/outside/admin_building)
+"bg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor{
+	tag = "icon-darkred2 (EAST)";
+	icon_state = "darkred2";
+	dir = 4
+	},
+/area/bigredv2/outside/admin_building)
+"bh" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "\improper Operations Office";
+	req_access = null
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/admin_building)
+"bi" = (
+/obj/item/ammo_box/magazine/m39/ap,
+/turf/open/floor{
+	tag = "icon-carpet5-1 (WEST)";
+	icon_state = "carpet5-1";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"bj" = (
+/turf/open/floor{
+	tag = "icon-carpet13-5 (WEST)";
+	icon_state = "carpet13-5";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"bk" = (
+/turf/open/floor{
+	tag = "icon-carpet9-4 (WEST)";
+	icon_state = "carpet9-4";
+	dir = 8
+	},
+/area/bigredv2/outside/admin_building)
+"bl" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"bm" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/obj/structure/machinery/door/airlock/almayer/command{
+	name = "\improper Operations Meeting Room";
+	req_access = null
+	},
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"bn" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 9
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigredv2/outside/admin_building)
+"bo" = (
+/obj/item/device/radio/intercom{
+	anyai = 1;
+	freerange = 1;
+	frequency = 1469;
+	name = "General Listening Channel";
+	pixel_x = 30;
+	pixel_y = 0
+	},
+/turf/open/floor{
+	tag = "icon-darkred2 (EAST)";
+	icon_state = "darkred2";
+	dir = 4
+	},
+/area/bigredv2/outside/admin_building)
+"bp" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor,
+/area/bigredv2/outside/admin_building)
+"bq" = (
+/turf/open/floor{
+	tag = "icon-darkred2 (SOUTHWEST)";
+	icon_state = "darkred2";
+	dir = 10
+	},
+/area/bigredv2/outside/admin_building)
+"br" = (
+/turf/open/floor{
+	tag = "icon-darkred2";
+	icon_state = "darkred2"
+	},
+/area/bigredv2/outside/admin_building)
+"bs" = (
+/turf/open/floor{
+	tag = "icon-darkred2 (SOUTHEAST)";
+	icon_state = "darkred2";
+	dir = 6
+	},
+/area/bigredv2/outside/admin_building)
+
+(1,1,1) = {"
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+"}
+(2,1,1) = {"
+ac
+aD
+ar
+aA
+aI
+aI
+aI
+aZ
+bi
+ab
+"}
+(3,1,1) = {"
+aj
+ak
+as
+as
+aJ
+aO
+aJ
+as
+bj
+bp
+"}
+(4,1,1) = {"
+aj
+ak
+at
+aB
+aK
+aP
+aV
+ba
+bj
+aR
+"}
+(5,1,1) = {"
+aj
+ak
+as
+aC
+as
+aC
+as
+bb
+bj
+aR
+"}
+(6,1,1) = {"
+ad
+al
+au
+aW
+aL
+aQ
+aQ
+bc
+bk
+aR
+"}
+(7,1,1) = {"
+ad
+am
+av
+av
+av
+aR
+aR
+bd
+bl
+aR
+"}
+(8,1,1) = {"
+ae
+aj
+aj
+ad
+ad
+ad
+ad
+ae
+bm
+ae
+"}
+(9,1,1) = {"
+af
+an
+an
+be
+aM
+aS
+aX
+be
+bn
+bq
+"}
+(10,1,1) = {"
+ag
+ay
+aw
+bf
+ay
+aT
+ay
+bf
+ay
+br
+"}
+(11,1,1) = {"
+ay
+ap
+ay
+aG
+aN
+aU
+aY
+bg
+bo
+bs
+"}
+(12,1,1) = {"
+ai
+ay
+ay
+aH
+ae
+ae
+ae
+bh
+ae
+ae
+"}

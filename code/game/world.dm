@@ -106,7 +106,7 @@ var/internal_tick_usage = 0
 			sleep(10)
 
 		// Start the game ASAP
-		SSticker.force_start()
+		SSticker.request_start()
 	return
 
 var/world_topic_spam_protect_ip = "0.0.0.0"
@@ -198,10 +198,10 @@ var/world_topic_spam_protect_time = world.timeofday
 	if(SSticker.mode)
 		round_extra_data = "&message=[SSticker.mode.end_round_message()]"
 	world.Export("http://127.0.0.1:8888/?rebooting=1[round_extra_data]")
-	
+
 	if(CONFIG_GET(flag/no_restarts))
 		shutdown()
-		return 
+		return
 
 	..(reason)
 
@@ -224,19 +224,15 @@ var/world_topic_spam_protect_time = world.timeofday
 	join_motd = file2text("config/motd.txt")
 
 /world/proc/update_status()
-	//Note: Hub content is limited to 254 characters, including HTML/CSS. Image width is limited to 450 pixels.
+	//Note: Hub content is limited to 254 characters, including limited HTML/CSS.
 	var/s = ""
 
-	if (CONFIG_GET(string/servername))
-		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)] &#8212; [MAIN_SHIP_NAME]</b>"
-		s += "<br><img src=\"[CONFIG_GET(string/forumurl)]/byond_hub_logo.jpg\"></a>"
-		// s += "<a href=\"http://goo.gl/04C5lP\">Wiki</a>|<a href=\"http://goo.gl/hMmIKu\">Rules</a>"
+	if(CONFIG_GET(string/servername))
+		s += "<a href=\"[CONFIG_GET(string/forumurl)]\"><b>[CONFIG_GET(string/servername)]</b></a>"
 
 	if(SSmapping?.configs)
 		var/datum/map_config/MG = SSmapping.configs[GROUND_MAP]
-		if(MG?.map_name)
-			s += "<br>Map: <b>[SSmapping.configs[GROUND_MAP].map_name]</b>"
-
+		s += "<br>Map: [MG?.map_name ? "<b>[MG.map_name]</b>" : ""]"
 	if(SSticker?.mode)
 		s += "<br>Mode: <b>[SSticker.mode.name]</b>"
 		s += "<br>Round time: <b>[duration2text()]</b>"

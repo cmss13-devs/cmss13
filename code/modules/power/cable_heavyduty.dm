@@ -15,7 +15,7 @@
 	if(T.intact_tile)
 		return
 
-	if(istype(W, /obj/item/tool/wirecutters))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(usr, SPAN_NOTICE(" These cables are too tough to be cut with those [W.name]."))
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))

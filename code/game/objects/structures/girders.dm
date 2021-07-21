@@ -100,7 +100,7 @@
 /obj/structure/girder/proc/change_state(var/obj/item/W, var/mob/user)
 	switch(state)
 		if(STATE_STANDARD)
-			if(isscrewdriver(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("Now unsecuring support struts."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -151,7 +151,7 @@
 		if(STATE_REINFORCED_WALL)
 			return do_reinforced_wall(W, user)
 		if(STATE_DISPLACED)
-			if(iscrowbar(W))
+			if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE("Now securing the girder..."))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -168,7 +168,7 @@
 	if(!(state == STATE_DISMANTLING))
 		return FALSE
 
-	else if(iswirecutter(W) && step_state == STATE_SCREWDRIVER)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && step_state == STATE_SCREWDRIVER)
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("Now removing support struts."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -177,7 +177,7 @@
 		step_state = STATE_WIRECUTTER
 		return TRUE
 
-	else if(iscrowbar(W) && step_state == STATE_WIRECUTTER)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && step_state == STATE_WIRECUTTER)
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("Now dislodging the girder..."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -189,7 +189,7 @@
 		update_icon()
 		return TRUE
 
-	else if(iswrench(W) && step_state == STATE_WIRECUTTER)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && step_state == STATE_WIRECUTTER)
 		to_chat(user, SPAN_NOTICE("You start wrenching it apart."))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -204,7 +204,7 @@
 	if(!(state == STATE_WALL))
 		return FALSE
 
-	if(isscrewdriver(W) && step_state == STATE_METAL)
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && step_state == STATE_METAL)
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("You are attaching the metal to the internal structure."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
@@ -224,7 +224,7 @@
 			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
-			T.ChangeTurf(/turf/closed/wall)
+			T.PlaceOnTop(/turf/closed/wall)
 			SEND_SIGNAL(user, COMSIG_MOB_CONSTRUCT_WALL, /turf/closed/wall)
 			qdel(src)
 		return TRUE
@@ -243,7 +243,7 @@
 			to_chat(user, SPAN_NOTICE("You failed to strengthen the connection rods. You need more rods."))
 		return TRUE
 
-	if(isscrewdriver(W) && step_state == STATE_RODS)
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && step_state == STATE_RODS)
 		playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		to_chat(user, SPAN_NOTICE("You are attaching the plasteel to the internal structure."))
 		if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, src))
@@ -263,24 +263,24 @@
 			to_chat(user, SPAN_NOTICE("You have welded the new additions!"))
 			playsound(loc, 'sound/items/Welder2.ogg', 25, 1)
 			var/turf/T = get_turf(src)
-			T.ChangeTurf(/turf/closed/wall/r_wall)
+			T.PlaceOnTop(/turf/closed/wall/r_wall)
 			qdel(src)
 		return TRUE
 
 	return FALSE
 
-/obj/structure/girder/bullet_act(var/obj/item/projectile/Proj)
+/obj/structure/girder/bullet_act(var/obj/item/projectile/P)
 	//Tasers and the like should not damage girders.
-	if(Proj.ammo.damage_type == HALLOSS || Proj.ammo.damage_type == TOX || Proj.ammo.damage_type == CLONE || Proj.damage == 0)
+	if(P.ammo.damage_type == HALLOSS || P.ammo.damage_type == TOX || P.ammo.damage_type == CLONE || P.damage == 0)
 		return FALSE
 	var/dmg = 0
-	if(Proj.ammo.damage_type == BURN)
-		dmg = Proj.damage
+	if(P.ammo.damage_type == BURN)
+		dmg = P.damage
 	else
-		dmg = round(Proj.ammo.damage / 2)
+		dmg = round(P.damage * 0.5)
 	if(dmg)
 		health -= dmg
-		bullet_ping(Proj)
+		bullet_ping(P)
 	if(health <= 0)
 		update_state()
 	return TRUE
@@ -310,13 +310,13 @@
 		return
 	return ..()
 
-/obj/structure/girder/ex_act(severity, direction)
+/obj/structure/girder/ex_act(severity, direction, datum/cause_data/cause_data)
 	health -= severity
 	if(health <= 0)
 		var/location = get_turf(src)
 		handle_debris(severity, direction)
 		qdel(src)
-		create_shrapnel(location, rand(2,5), direction, 45, /datum/ammo/bullet/shrapnel/light) // Shards go flying
+		create_shrapnel(location, rand(2,5), direction, 45, /datum/ammo/bullet/shrapnel/light, cause_data) // Shards go flying
 	else
 		update_state()
 

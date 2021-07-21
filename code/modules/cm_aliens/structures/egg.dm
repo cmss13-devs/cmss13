@@ -28,7 +28,7 @@
 
 /obj/effect/alien/egg/Destroy()
 	. = ..()
-	delete_egg_triggers()
+	QDEL_NULL_LIST(egg_triggers)
 
 /obj/effect/alien/egg/ex_act(severity)
 	Burst(TRUE)//any explosion destroys the egg.
@@ -44,27 +44,29 @@
 		M.visible_message(SPAN_XENOWARNING("[M] crushes \the [src]"),
 			SPAN_XENOWARNING("You crush \the [src]"))
 		Burst(TRUE)
-		return
+		return XENO_ATTACK_ACTION
 
 	if(!istype(M))
 		return attack_hand(M)
 
 	switch(status)
 		if(EGG_BURST, EGG_DESTROYED)
-			if(M.caste.can_hold_eggs)
-				M.visible_message(SPAN_XENONOTICE("\The [M] clears the hatched egg."), \
-				SPAN_XENONOTICE("You clear the hatched egg."))
-				playsound(src.loc, "alien_resin_break", 25)
-				M.plasma_stored++
-				qdel(src)
+			M.animation_attack_on(src)
+			M.visible_message(SPAN_XENONOTICE("\The [M] clears the hatched egg."), \
+			SPAN_XENONOTICE("You clear the hatched egg."))
+			playsound(src.loc, "alien_resin_break", 25)
+			qdel(src)
+			return XENO_NONCOMBAT_ACTION
 		if(EGG_GROWING)
 			to_chat(M, SPAN_XENOWARNING("The child is not developed yet."))
+			return XENO_NO_DELAY_ACTION
 		if(EGG_GROWN)
 			if(isXenoLarva(M))
 				to_chat(M, SPAN_XENOWARNING("You nudge the egg, but nothing happens."))
 				return
 			to_chat(M, SPAN_XENONOTICE("You retrieve the child."))
 			Burst(FALSE)
+	return XENO_NONCOMBAT_ACTION
 
 /obj/effect/alien/egg/clicked(var/mob/user, var/list/mods)
 	if(isobserver(user) || get_dist(src, user) > 1)
@@ -94,53 +96,52 @@
 	var/x_coords = list(-1,-1,-1,0,0,1,1,1)
 	var/y_coords = list(1,0,-1,1,-1,1,0,-1)
 	var/turf/target_turf
-	for(var/atom/trigger in egg_triggers)
+	for(var/trigger in egg_triggers)
 		var/obj/effect/egg_trigger/ET = trigger
 		target_turf = locate(x+x_coords[i],y+y_coords[i], z)
 		if(target_turf)
 			ET.forceMove(target_turf)
 			i++
 
-/obj/effect/alien/egg/proc/delete_egg_triggers()
-	QDEL_NULL_LIST(egg_triggers)
-	egg_triggers = list()
+/obj/effect/alien/egg/proc/hide_egg_triggers()
+	for(var/trigger in egg_triggers)
+		var/obj/effect/egg_trigger/ET = trigger
+		ET.moveToNullspace()
 
 /obj/effect/alien/egg/proc/Burst(var/kill = TRUE, var/instant_trigger = FALSE, var/mob/living/carbon/Xenomorph/X = null) //drops and kills the hugger if any is remaining
-	set waitfor = 0
 	if(kill && status != EGG_DESTROYED)
-		delete_egg_triggers()
+		hide_egg_triggers()
 		status = EGG_DESTROYED
 		icon_state = "Egg Exploded"
 		flick("Egg Exploding", src)
 		playsound(src.loc, "sound/effects/alien_egg_burst.ogg", 25)
 	else if(status == EGG_GROWN || status == EGG_GROWING)
 		status = EGG_BURSTING
-		delete_egg_triggers()
+		hide_egg_triggers()
 		icon_state = "Egg Opened"
 		flick("Egg Opening", src)
 		playsound(src.loc, "sound/effects/alien_egg_move.ogg", 25)
-		sleep(10)
-		if(loc && status != EGG_DESTROYED)
-			status = EGG_BURST
-			var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
+		addtimer(CALLBACK(src, .proc/release_hugger, instant_trigger, X), 1 SECONDS)
 
-			child.flags_embryo = flags_embryo
-			flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
-
-			if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
-				X.put_in_hands(child)
-				return
-			if(instant_trigger)
-				child.leap_at_nearest_target()
-			else
-				child.go_idle()
-
-/obj/effect/alien/egg/proc/replace_triggers()
-	if(isnull(loc) || status == EGG_DESTROYED)
+/obj/effect/alien/egg/proc/release_hugger(var/instant_trigger, var/mob/living/carbon/Xenomorph/X)
+	if(!loc || status == EGG_DESTROYED)
 		return
 
-	create_egg_triggers()
-	deploy_egg_triggers()
+	status = EGG_BURST
+	var/obj/item/clothing/mask/facehugger/child = new(loc, hivenumber)
+
+	child.flags_embryo = flags_embryo
+	flags_embryo = NO_FLAGS // Lose the embryo flags when passed on
+
+	if(X && X.caste.can_hold_facehuggers && (!X.l_hand || !X.r_hand))	//sanity checks
+		X.put_in_hands(child)
+		return
+
+	if(instant_trigger)
+		if(!child.leap_at_nearest_target())
+			child.return_to_egg(src)
+	else
+		child.go_idle()
 
 /obj/effect/alien/egg/bullet_act(var/obj/item/projectile/P)
 	..()
@@ -188,7 +189,7 @@
 
 				qdel(F)
 
-				addtimer(CALLBACK(src, .proc/replace_triggers), 30 SECONDS)
+				addtimer(CALLBACK(src, .proc/deploy_egg_triggers), 30 SECONDS)
 			if(EGG_DESTROYED)
 				to_chat(user, SPAN_XENOWARNING("This egg is no longer usable."))
 			if(EGG_GROWING, EGG_GROWN)
@@ -218,12 +219,14 @@
 	health -= damage
 	healthcheck()
 
-
 /obj/effect/alien/egg/proc/healthcheck()
 	if(health <= 0)
 		Burst(TRUE)
 
-/obj/effect/alien/egg/HasProximity(atom/movable/AM as mob|obj)
+/obj/effect/alien/egg/Crossed(atom/movable/AM)
+	HasProximity(AM)
+
+/obj/effect/alien/egg/HasProximity(atom/movable/AM)
 	if(status == EGG_GROWN)
 		if(!can_hug(AM, hivenumber) || isYautja(AM) || isSynth(AM)) //Predators are too stealthy to trigger eggs to burst. Maybe the huggers are afraid of them.
 			return
@@ -249,16 +252,15 @@
 	linked_eggmorph = source_eggmorph
 
 
-/obj/effect/egg_trigger/Crossed(atom/A)
+/obj/effect/egg_trigger/Crossed(atom/movable/AM)
 	if(!linked_egg && !linked_eggmorph) //something went very wrong.
 		qdel(src)
 	else if(linked_egg && (get_dist(src, linked_egg) != 1 || !isturf(linked_egg.loc))) //something went wrong
 		forceMove(linked_egg)
-
 	else if(linked_eggmorph && (get_dist(src, linked_eggmorph) != 1 || !isturf(linked_eggmorph.loc))) //something went wrong
 		forceMove(linked_eggmorph)
-	else if(iscarbon(A))
-		var/mob/living/carbon/C = A
+	else if(iscarbon(AM))
+		var/mob/living/carbon/C = AM
 		if(linked_egg)
 			linked_egg.HasProximity(C)
 		if(linked_eggmorph)

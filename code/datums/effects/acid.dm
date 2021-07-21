@@ -6,7 +6,7 @@
 	mob_icon_state_path = "human_acid"
 	var/original_duration = 50			//Set to 50 for safety reasons if something fails
 	var/damage_in_total_human = 25
-	var/damage_in_total_obj = 50
+	var/damage_in_total_obj = 75
 	var/acid_multiplier = 1
 
 /datum/effects/acid/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
@@ -33,7 +33,7 @@
 
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
-		if(H.status_flags & XENO_HOST && istype(H.buckled, /obj/structure/bed/nest) || H.stat == DEAD)
+		if(H.status_flags & XENO_HOST && HAS_TRAIT(H, TRAIT_NESTED) || H.stat == DEAD)
 			return FALSE
 
 	. = ..()
@@ -44,8 +44,7 @@
 		return FALSE
 
 	var/mob/living/carbon/affected_mob = affected_atom
-	affected_mob.last_damage_source = source
-	affected_mob.last_damage_mob = source_mob
+	affected_mob.last_damage_data = cause_data
 	affected_mob.apply_armoured_damage((damage_in_total_human * acid_multiplier)/original_duration, ARMOR_BIO, BURN, def_zone, 40)
 
 	return TRUE

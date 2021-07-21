@@ -45,7 +45,7 @@
 	if(master)
 		if(isstorage(master))
 			var/obj/item/storage/S = master
-			S.close(user)
+			S.storage_close(user)
 	return TRUE
 
 
@@ -148,7 +148,7 @@
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 		return 1
-	if(!istype(user.get_held_item(),/obj/item/weapon/gun))
+	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
 		return 1
 	user.AllowTargetMove()
@@ -179,7 +179,7 @@
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 		return 1
-	if(!istype(user.get_held_item(),/obj/item/weapon/gun))
+	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
 		return 1
 	user.AllowTargetRun()
@@ -209,7 +209,7 @@
 
 	if(gun_click_time > world.time - 30)	//give them 3 seconds between mode changes.
 		return 1
-	if(!istype(user.get_held_item(),/obj/item/weapon/gun))
+	if(!isgun(user.get_held_item()))
 		to_chat(user, "You need your gun in your active hand to do that!")
 		return 1
 	user.AllowTargetClick()
@@ -397,13 +397,11 @@
 			if(iscarbon(usr))
 				var/mob/living/carbon/C = user
 				C.activate_hand("r")
-				user.next_move = world.time+2
 			return 1
 		if("l_hand")
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.activate_hand("l")
-				user.next_move = world.time+2
 			return 1
 		if("swap")
 			user.swap_hand()
@@ -415,7 +413,6 @@
 			if(user.attack_ui(slot_id))
 				user.update_inv_l_hand(0)
 				user.update_inv_r_hand(0)
-				user.next_move = world.time+6
 				return 1
 	return 0
 

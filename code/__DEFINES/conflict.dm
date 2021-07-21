@@ -5,6 +5,12 @@
 #define GRAB_CHOKE      3
 
 //Ammo defines for gun/projectile related things.
+
+//Headshot overlay icoc states used for suicide and battlefield executions.
+#define HEADSHOT_OVERLAY_LIGHT "light_headshot"
+#define HEADSHOT_OVERLAY_MEDIUM "medium_headshot"
+#define HEADSHOT_OVERLAY_HEAVY "heavy_headshot"
+
 #define AMMO_EXPLOSIVE 			(1<<0)
 #define AMMO_XENO_ACID 			(1<<1)
 #define AMMO_XENO_TOX			(1<<2)
@@ -25,6 +31,8 @@
 #define AMMO_HITS_TARGET_TURF	(1<<17) // Whether or not the bullet hits the target that was clicked or if it keeps travelling
 #define AMMO_ALWAYS_FF			(1<<18)
 #define AMMO_HOMING				(1<<19) // If the bullet target is a mob, it will correct its trajectory toward the mob.
+/// Can't be deflected
+#define AMMO_NO_DEFLECT			(1<<20)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)
@@ -43,9 +51,12 @@
 #define GUN_WIELDED_FIRING_ONLY	(1<<13)
 #define GUN_HAS_FULL_AUTO		(1<<14)
 #define GUN_FULL_AUTO_ON		(1<<15)
-#define GUN_ONE_HAND_WIELDED	(1<<16) //removes one-hand accuracy penalty
+#define GUN_ONE_HAND_WIELDED	(1<<16) //removes unwielded accuracy and scatter penalties (not recoil)
 #define GUN_ANTIQUE 			(1<<17)
 #define GUN_RECOIL_BUILDUP		(1<<18)
+#define GUN_INTERNAL_SILENCED	(1<<19) //suppressor doesnt override sound
+/// Whether the gun has been fired by its current user (reset upon `dropped()`)
+#define GUN_FIRED_BY_USER		(1<<20)
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1
@@ -55,9 +66,11 @@
 #define ATTACH_WEAPON		16 //is a weapon that fires stuff
 #define ATTACH_MELEE        32 //This attachment should activate if you attack() with it attached.
 //Ammo magazine defines, for flags_magazine
-#define AMMUNITION_REFILLABLE	1
-#define AMMUNITION_HANDFUL		2
-#define AMMUNITION_HIDE_AMMO    4
+
+#define AMMUNITION_REFILLABLE   (1<<0)
+#define AMMUNITION_HANDFUL      (1<<1)
+#define AMMUNITION_HANDFUL_BOX  (1<<2) //for dump_ammo_to(), boxes of handfuls like shotgun shell boxes
+#define AMMUNITION_HIDE_AMMO    (1<<3)
 
 //Slowdown from various armors.
 #define SHOES_SLOWDOWN -1.0			// How much shoes slow you down by default. Negative values speed you up
@@ -69,8 +82,9 @@
 #define SLOWDOWN_ARMOR_HEAVY		1
 #define SLOWDOWN_ARMOR_VERY_HEAVY	1.15
 
-#define SLOWDOWN_ADS_SMG				0.35
-#define SLOWDOWN_ADS_SHOTGUN			0.75 //anything below that doesn't change anything.
+#define SLOWDOWN_ADS_QUICK				0.35
+#define SLOWDOWN_ADS_VERSATILE			0.50
+#define SLOWDOWN_ADS_SHOTGUN			0.75
 #define SLOWDOWN_ADS_RIFLE				1
 #define SLOWDOWN_ADS_SCOPE				1.20
 #define SLOWDOWN_ADS_LMG				1.75
@@ -163,12 +177,17 @@
 #define HEALTH_WALL_XENO_WEAK				100
 #define HEALTH_WALL_XENO_THICK 				1350
 #define HEALTH_WALL_XENO_MEMBRANE 			300
+#define HEALTH_WALL_XENO_REFLECTIVE 		300
 #define HEALTH_WALL_XENO_MEMBRANE_THICK 	600
 
-#define HEALTH_DOOR 		    2000
+#define HEALTH_DOOR 		    1200
 #define HEALTH_DOOR_XENO 	    600
 #define HEALTH_DOOR_XENO_THICK 	900
 
+#define HEALTH_RESIN_PILLAR 2200
+#define HEALTH_RESIN_XENO_ACID_PILLAR 300
+#define HEALTH_RESIN_XENO_SHIELD_PILLAR 300
+#define HEALTH_RESIN_XENO_SPIKE 45
 #define HEALTH_RESIN_XENO_STICKY 45
 #define HEALTH_RESIN_XENO_FAST 30
 

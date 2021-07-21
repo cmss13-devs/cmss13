@@ -120,18 +120,6 @@
 	display_category = "Rescue the VIP"
 	objective_flags = OBJ_DO_NOT_TREE | OBJ_FAILABLE | OBJ_CAN_BE_UNCOMPLETED
 
-/mob/living/carbon/human/vip
-
-/mob/living/carbon/human/vip/Initialize(mapload, new_species)
-	. = ..()
-	new /datum/cm_objective/move_mob/almayer/vip(src)
-
-/mob/living/carbon/human/survivor
-
-/mob/living/carbon/human/survivor/Initialize(mapload, new_species)
-	. = ..()
-	new /datum/cm_objective/move_mob/almayer/survivor(src)
-
 // --------------------------------------------
 // *** Minimise losses ***
 // --------------------------------------------
@@ -318,6 +306,7 @@
 	corpses -= H
 
 /datum/cm_objective/recover_corpses/marines/proc/handle_marine_deaths(datum/source, mob/living/carbon/human/H, gibbed)
+	SIGNAL_HANDLER
 	if(!istype(H))
 		return TRUE
 	if(!istype(H.assigned_squad) || gibbed)
@@ -357,6 +346,7 @@
 	return "[get_point_value()]pts Recovered"
 
 /datum/cm_objective/recover_corpses/xenos/proc/handle_xeno_deaths(datum/source, mob/living/X, gibbed)
+	SIGNAL_HANDLER
 	if(!istype(X) || gibbed)
 		return TRUE
 	if(isXeno(X) || isYautja(X))

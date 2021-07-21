@@ -1,13 +1,13 @@
 //Alphabetical order of civilian jobs.
 
 /obj/item/clothing/under/rank
-	rollable_sleeves = TRUE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/rank/bartender
 	desc = "It looks like it could use some more flair."
 	name = "bartender's uniform"
 	icon_state = "ba_suit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/cargo
 	name = "quartermaster's jumpsuit"
@@ -26,22 +26,21 @@
 	desc = "It's a black jumpsuit, often worn by religious folk."
 	name = "chaplain's jumpsuit"
 	icon_state = "chaplain"
-	item_state = "bl_suit"
-	rollable_sleeves = FALSE
+	item_state = "chaplain"
+	flags_jumpsuit = FALSE
 
-/obj/item/clothing/under/rank/priest_robe
+/obj/item/clothing/suit/priest_robe
 	name = "priest robes"
 	desc = "A long dress with a purple scarf, often worn by religious folk."
 	icon_state = "priest_robe"
-	item_state = "bl_suit"
-	rollable_sleeves = FALSE
+	item_state = "priest_robe"
 
 /obj/item/clothing/under/rank/worker_overalls
 	name = "worker overalls"
 	desc = "An outfit fit for the hard working man."
 	icon_state = "worker_overalls"
 	item_state = "bl_suit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/chef
 	desc = "It's an apron which is given only to the most <b>hardcore</b> chefs in space."
@@ -52,7 +51,7 @@
 	name = "clown suit"
 	desc = "<i>'HONK!'</i>"
 	icon_state = "clown"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/hydroponics
 	desc = "It's a jumpsuit designed to protect against minor plant-related hazards."
@@ -65,7 +64,7 @@
 	desc = "The plain, professional attire of an Internal Affairs Agent. The collar is <i>immaculately</i> starched."
 	name = "Internal Affairs uniform"
 	icon_state = "internalaffairs"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/rank/janitor
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
@@ -83,7 +82,7 @@
 /obj/item/clothing/under/lawyer
 	desc = "Slick threads."
 	name = "Lawyer suit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/lawyer/black
 	name = "black Lawyer suit"
@@ -119,15 +118,10 @@
 	name = "sensible suit"
 	desc = "It's very... sensible."
 	icon_state = "red_suit"
-	rollable_sleeves = FALSE
+	flags_jumpsuit = FALSE
 
 /obj/item/clothing/under/mime
 	name = "mime's outfit"
 	desc = "It's not very colourful."
 	icon_state = "mime"
-	rollable_sleeves = FALSE
-
-/obj/item/clothing/under/rank/miner
-	desc = "It's a snappy jumpsuit with a sturdy set of overalls. It is very dirty."
-	name = "shaft miner's jumpsuit"
-	icon_state = "miner"
+	flags_jumpsuit = FALSE

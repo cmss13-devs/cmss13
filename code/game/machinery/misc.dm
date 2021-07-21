@@ -68,7 +68,7 @@ var/list/alldepartments = list()
 
 	var/department = "Liaison" // our department
 
-	var/dpt = "Weston-Yamada" // the department we're sending to
+	var/dpt = "Weyland-Yutani" // the department we're sending to
 
 /obj/structure/machinery/faxmachine/Initialize(mapload, ...)
 	. = ..()
@@ -76,8 +76,8 @@ var/list/alldepartments = list()
 
 	if( !("[department]" in alldepartments) ) //Initialize departments. This will work with multiple fax machines.
 		alldepartments += department
-	if(!("Weston-Yamada" in alldepartments))
-		alldepartments += "Weston-Yamada"
+	if(!("Weyland-Yutani" in alldepartments))
+		alldepartments += "Weyland-Yutani"
 	if(!("USCM High Command" in alldepartments))
 		alldepartments += "USCM High Command"
 
@@ -117,7 +117,7 @@ var/list/alldepartments = list()
 	dat += "<hr>"
 
 	if(authenticated)
-		dat += "<b>Logged in to:</b> Weston-Yamada Private Corporate Network<br><br>"
+		dat += "<b>Logged in to:</b> Weyland-Yutani Private Corporate Network<br><br>"
 
 		if(tofax)
 			dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Paper</a><br><br>"
@@ -157,7 +157,7 @@ var/list/alldepartments = list()
 				Centcomm_fax(src, tofax.info, tofax.name, usr)
 				sendcooldown = 1200
 
-			else if(dpt == "Weston-Yamada")
+			else if(dpt == "Weyland-Yutani")
 				Solgov_fax(src, tofax.info, tofax.name, usr)
 				sendcooldown = 1200
 			else
@@ -230,7 +230,7 @@ var/list/alldepartments = list()
 			user.drop_inv_item_to_loc(idcard, src)
 			scan = idcard
 
-	else if(istype(O, /obj/item/tool/wrench))
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 		anchored = !anchored
 		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
@@ -256,13 +256,13 @@ var/list/alldepartments = list()
 /proc/Solgov_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	fax_contents += faxcontents
-	var/msg_admin = SPAN_NOTICE("<b><font color='#1F66A0'>WESTON-YAMADA FAX: </font>[key_name(Sender, 1)] ")
+	var/msg_admin = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font>[key_name(Sender, 1)] ")
 	msg_admin += "(<A HREF='?_src_=admin_holder;ccmark=\ref[Sender]'>Mark</A>) (<A HREF='?_src_=admin_holder;ahelp=adminplayeropts;extra=\ref[Sender]'>PP</A>) "
 	msg_admin += "(<A HREF='?_src_=vars;Vars=\ref[Sender]'>VV</A>) (<A HREF='?_src_=admin_holder;subtlemessage=\ref[Sender]'>SM</A>) "
 	msg_admin += "(<A HREF='?_src_=admin_holder;adminplayerobservejump=\ref[Sender]'>JMP</A>) "
 	msg_admin += "(<a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>RPLY</a>)</b>: "
 	msg_admin += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
-	var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WESTON-YAMADA FAX: </font></b>")
+	var/msg_ghost = SPAN_NOTICE("<b><font color='#1F66A0'>WEYLAND-YUTANI FAX: </font></b>")
 	msg_ghost += "Receiving '[sentname]' via secure connection ... <a href='?FaxView=\ref[faxcontents]'>view message</a>"
 	CLFaxes.Add("<a href='?FaxView=\ref[faxcontents]'>\[view message at [world.timeofday]\]</a> <a href='?_src_=admin_holder;CLFaxReply=\ref[Sender];originfax=\ref[originfax]'>REPLY</a>")
 	announce_fax(msg_admin, msg_ghost)

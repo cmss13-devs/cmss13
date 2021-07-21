@@ -17,13 +17,52 @@
 	var/amount = 1
 	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stack_id //used to determine if two stacks are of the same kind.
-	attack_speed = 3	//makes collect stacks off the floor and such less of a pain
+	var/amount_sprites = FALSE //does it have sprites for extra amount, like metal, plasteel, or wood
+	//Coords for contents display, to make it play nice with inventory borders.
+	maptext_x = 4
+	maptext_y = 3
 
 /obj/item/stack/Initialize(mapload, var/amount = null)
 	. = ..()
 	if(amount)
 		src.amount = amount
+	if(!singular_name)
+		singular_name = name
+	update_icon()
 
+/*Check the location of the stack, and if it's in a storage item or a mob's inventory, display the number of items in the stack.
+Also change the icon to reflect the amount of sheets, if possible.*/
+/obj/item/stack/update_icon()
+	..()
+	if(isstorage(loc) || ismob(loc))
+		maptext = "<span class='langchat'>[(amount > 1)? "[amount]" : ""]</span>"
+	else
+		maptext = ""
+
+	if(!amount_sprites)
+		return
+	if(amount == 1)
+		icon_state = initial(icon_state) //if it has only one sheet, it is the singular sprite
+	else if(amount < max_amount * 0.5)
+		icon_state = "[initial(icon_state)]-2" //if it's less than half the max amount, use the 2 sheets sprite
+	else if(amount < max_amount)
+		icon_state = "[initial(icon_state)]-3" //if it's equal or more than half of max amount, but less than the maximum, use 3 sheets
+	else
+		icon_state = "[initial(icon_state)]-4" //otherwise use max sheet sprite
+
+/obj/item/stack/equipped() //Used when entering a mob's hands.
+	..()
+	update_icon()
+
+/obj/item/stack/on_exit_storage()
+	..()
+	if(ismob(loc))
+		return
+	update_icon()
+
+/obj/item/stack/dropped() //Also used when inserted into storage items.
+	..()
+	update_icon()
 
 /obj/item/stack/Destroy()
 	if (usr && usr.interactee == src)
@@ -34,10 +73,11 @@
 	..()
 	to_chat(user, "There are [amount] [singular_name]\s in the stack.")
 
-/obj/item/stack/attack_self(mob/user as mob)
+/obj/item/stack/attack_self(mob/user)
+	..()
 	list_recipes(user)
 
-/obj/item/stack/proc/list_recipes(mob/user as mob, recipes_sublist)
+/obj/item/stack/proc/list_recipes(mob/user, recipes_sublist)
 	if(!recipes)
 		return
 	if(!src || amount <= 0)
@@ -111,13 +151,13 @@
 			recipes_list = srl.recipes
 		var/datum/stack_recipe/R = recipes_list[text2num(href_list["make"])]
 		var/multiplier = text2num(href_list["multiplier"])
-		if(!isnum(multiplier))	
+		if(!isnum(multiplier))
 			return
 		multiplier = round(multiplier)
 		if(multiplier < 1)
 			return  //href exploit protection
-		if(R.skill_req) 
-			if(ishuman(usr) && !skillcheck(usr, SKILL_CONSTRUCTION, R.skill_req))
+		if(R.skill_lvl)
+			if(ishuman(usr) && !skillcheck(usr, R.skill_req, R.skill_lvl))
 				to_chat(usr, SPAN_WARNING("You are not trained to build this..."))
 				return
 		if(amount < R.req_amount * multiplier)
@@ -142,10 +182,12 @@
 				return
 
 		if(R.time)
-			if(usr.action_busy) return
+			if(usr.action_busy)
+				return
+			var/time_mult = skillcheck(usr, SKILL_CONSTRUCTION, 2) ? 1 : 2
 			usr.visible_message(SPAN_NOTICE("[usr] starts assembling \a [R.title]."), \
 				SPAN_NOTICE("You start assembling \a [R.title]."))
-			if(!do_after(usr, max(R.time * usr.get_skill_duration_multiplier(SKILL_CONSTRUCTION), R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			if(!do_after(usr, max(R.time * time_mult, R.min_time), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				return
 
 			//check again after some time has passed
@@ -163,6 +205,7 @@
 			var/obj/item/stack/new_item = O
 			new_item.amount = R.res_amount * multiplier
 		amount -= R.req_amount * multiplier
+		update_icon()
 
 		if(amount <= 0)
 			var/oldsrc = src
@@ -216,6 +259,7 @@
 	if(used > amount) //If it's larger than what we have, no go.
 		return 0
 	amount -= used
+	update_icon()
 	if(amount <= 0)
 		if(usr && loc == usr)
 			usr.temp_drop_inv_item(src)
@@ -224,10 +268,10 @@
 
 /obj/item/stack/proc/add(var/extra)
 	if(amount + extra > max_amount)
-		return 0
-	else
-		amount += extra
-	return 1
+		return FALSE
+	amount += extra
+	update_icon()
+	return TRUE
 
 /obj/item/stack/proc/get_amount()
 	return amount
@@ -262,12 +306,11 @@
 	return
 
 /obj/item/stack/attackby(obj/item/W as obj, mob/user as mob)
-	..()
 	if (istype(W, /obj/item/stack))
 		var/obj/item/stack/S = W
 		if(S.stack_id == stack_id) //same stack type
 			if (S.amount >= max_amount)
-				to_chat(user, SPAN_NOTICE("That stack is full!"))
+				to_chat(user, SPAN_NOTICE("The stack is full!"))
 				return 1
 			var/to_transfer
 			if (user.get_inactive_hand()==src)
@@ -286,6 +329,7 @@
 			src.use(to_transfer)
 			if (src && usr.interactee==src)
 				INVOKE_ASYNC(src, /obj/item/stack/.proc/interact, usr)
+			user.next_move = world.time + 0.3 SECONDS
 			return TRUE
 
 	return ..()
@@ -305,9 +349,10 @@
 	var/min_time = 0
 	var/one_per_turf = 0
 	var/on_floor = 0
-	var/skill_req = 0 //whether only people with sufficient construction skill can build this.
+	var/skill_req = SKILL_CONSTRUCTION
+	var/skill_lvl = 0 //whether only people with sufficient construction skill can build this.
 
-/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, skill_req = 0, min_time = 0)
+/datum/stack_recipe/New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, skill_req, skill_lvl = 0, min_time = 0)
 	src.title = title
 	src.result_type = result_type
 	src.req_amount = req_amount
@@ -318,6 +363,7 @@
 	src.one_per_turf = one_per_turf
 	src.on_floor = on_floor
 	src.skill_req = skill_req
+	src.skill_lvl = skill_lvl
 
 /*
  * Recipe list datum

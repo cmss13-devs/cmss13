@@ -2,9 +2,11 @@
 	name = "sandbag barricade"
 	desc = "A bunch of bags filled with sand, stacked into a small wall. Surprisingly sturdy, albeit labour intensive to set up. Trusted to do the job since 1914."
 	icon_state = "sandbag1"
-	barricade_resistance = 15
+	force_level_absorption = 15
 	health = BARRICADE_SANDBAG_TRESHOLD_1
 	maxhealth = BARRICADE_SANDBAG_TRESHOLD_1
+	burn_multiplier = 1.5
+	brute_multiplier = 1
 	stack_type = /obj/item/stack/sandbags
 	debris = list(/obj/item/stack/sandbags)
 	barricade_hitsound = "sound/weapons/Genhit.ogg"
@@ -95,6 +97,13 @@
 		return
 	else
 		. = ..()
+
+/obj/structure/barricade/sandbags/destroy(deconstruct)
+	if(deconstruct && is_wired)
+		new /obj/item/stack/barbed_wire(loc)
+	if(stack_type && health > 0)
+		new stack_type(loc, stack_amount)
+	qdel(src)
 
 /obj/structure/barricade/sandbags/proc/increment_build_stage()
 	switch(build_stage)

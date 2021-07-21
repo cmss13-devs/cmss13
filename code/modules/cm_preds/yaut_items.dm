@@ -23,14 +23,17 @@
 /obj/item/clothing/suit/armor/yautja
 	name = "clan armor"
 	desc = "A suit of armor with light padding. It looks old, yet functional."
-	icon = 'icons/obj/items/clothing/cm_suits.dmi'
-	icon_state = "halfarmor1"
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "halfarmor1_ebony"
 	item_state = "armor"
 	item_icons = list(
-		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
+
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
@@ -45,28 +48,16 @@
 	siemens_coefficient = 0.1
 	allowed = list(/obj/item/weapon/melee/harpoon,
 			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/plasmarifle,
-			/obj/item/weapon/gun/energy/plasmapistol,
-			/obj/item/weapon/yautja_chain,
-			/obj/item/weapon/melee/yautja_knife,
-			/obj/item/weapon/melee/yautja_sword,
-			/obj/item/weapon/melee/yautja_scythe,
-			/obj/item/weapon/melee/combistick,
-			/obj/item/weapon/melee/twohanded/glaive)
+			/obj/item/weapon/gun/energy/yautja,
+			/obj/item/weapon/melee/yautja,
+			/obj/item/weapon/melee/twohanded/yautja)
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
-/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,6), elder_restricted = 0)
+/obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
 	. = ..()
 	if(elder_restricted)
-		armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_bullet = CLOTHING_ARMOR_HIGH
-		armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_bomb = CLOTHING_ARMOR_HIGH
-		armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-		armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 		switch(armor_number)
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
@@ -89,11 +80,11 @@
 				icon_state = "halfarmor_elder"
 				item_state_slots = list(WEAR_JACKET = "halfarmor_elder")
 	else
-		if(armor_number > 6)
+		if(armor_number > 7)
 			armor_number = 1
 		if(armor_number) //Don't change full armor number
-			icon_state = "halfarmor[armor_number]"
-			item_state_slots = list(WEAR_JACKET = "halfarmor[armor_number]")
+			icon_state = "halfarmor[armor_number]_[armor_material]"
+			item_state_slots = list(WEAR_JACKET = "halfarmor[armor_number]_[armor_material]")
 
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -101,7 +92,7 @@
 /obj/item/clothing/suit/armor/yautja/full
 	name = "heavy clan armor"
 	desc = "A suit of armor with heavy padding. It looks old, yet functional."
-	icon_state = "fullarmor"
+	icon_state = "fullarmor_ebony"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
 	flags_item = ITEM_PREDATOR
 	armor_melee = CLOTHING_ARMOR_HIGH
@@ -117,18 +108,15 @@
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 	allowed = list(/obj/item/weapon/melee/harpoon,
 			/obj/item/weapon/gun/launcher/spike,
-			/obj/item/weapon/gun/energy/plasmarifle,
-			/obj/item/weapon/gun/energy/plasmapistol,
-			/obj/item/weapon/yautja_chain,
-			/obj/item/weapon/melee/yautja_knife,
-			/obj/item/weapon/melee/yautja_sword,
-			/obj/item/weapon/melee/yautja_scythe,
-			/obj/item/weapon/melee/combistick,
+			/obj/item/weapon/gun/energy/yautja,
+			/obj/item/weapon/melee/yautja,
 			/obj/item/storage/backpack/yautja,
-			/obj/item/weapon/melee/twohanded/glaive)
+			/obj/item/weapon/melee/twohanded/yautja)
 
-/obj/item/clothing/suit/armor/yautja/full/Initialize(mapload, armor_number)
+/obj/item/clothing/suit/armor/yautja/full/Initialize(mapload, armor_number, armor_material)
 	. = ..(mapload, 0)
+	icon_state = "fullarmor_[armor_material]"
+	item_state_slots = list(WEAR_JACKET = "fullarmor_[armor_material]")
 
 /obj/item/clothing/suit/armor/yautja/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
@@ -149,8 +137,13 @@
 /obj/item/clothing/cape/eldercape
 	name = "\improper Yautja Cape"
 	desc = "A battle-worn cape passed down by elder Yautja. Councillors who've proven themselves worthy may also be rewarded with one of these capes."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "cape_elder"
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+
 	flags_equip_slot = SLOT_BACK
 	flags_item = ITEM_PREDATOR
 	unacidable = TRUE
@@ -188,10 +181,35 @@
 	remove_from_missing_pred_gear(src)
 	return ..()
 
+/obj/item/clothing/cape/eldercape/verb/recolor()
+	set name = "Dye Cape"
+	set desc = "Allows you to add a custom color to your cape. Single use."
+	set src in usr
+
+	if(color)
+		to_chat(usr, "Your cape is already dyed!")
+		return
+
+	var/new_color = input(usr, "Choose your cape's colour. \nMeme colours may result in action taken by the council. \nSINGLE USE ONLY.", "Dye your cape") as color|null
+	if(!new_color)
+		return
+
+	color = new_color
+	log_game("[key_name(usr)] has changed their cape color to '[color]'")
+	icon_state = "cape_elder_n"
+	to_chat(usr, "Your cape has been dyed!")
+
 /obj/item/clothing/shoes/yautja
 	name = "clan greaves"
-	icon_state = "y-boots1"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	icon_state = "y-boots1_ebony"
+
+
 	unacidable = TRUE
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
@@ -208,14 +226,14 @@
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
-	items_allowed = list(/obj/item/weapon/melee/yautja_knife, /obj/item/weapon/gun/energy/plasmapistol)
+	items_allowed = list(/obj/item/weapon/melee/yautja/knife, /obj/item/weapon/gun/energy/yautja/plasmapistol)
 	var/bootnumber = 1
 
-/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,3))
+/obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
 	..()
-	var/boot_input[] = list(1,2,3)
-	if(boot_number in boot_input)
-		icon_state = "y-boots[boot_number]"
+	if(boot_number > 4)
+		boot_number = 1
+	icon_state = "y-boots[boot_number]_[armor_material]"
 
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -235,9 +253,14 @@
 
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
-	icon = 'icons/obj/items/clothing/uniforms.dmi'
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "mesh_shirt"
+	item_icons = list(
+		WEAR_BODY = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS //Does not cover the head though.
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
@@ -285,6 +308,7 @@
 	frequency = YAUT_FREQ
 	unacidable = TRUE
 	ignore_z = TRUE
+
 /obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking = "Sainja")
 	if(!isYautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
@@ -298,6 +322,10 @@
 /obj/item/device/radio/headset/yautja/attackby()
 	return
 
+/obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
+	name = "\improper Elder Communicator"
+	volume = RADIO_VOLUME_CRITICAL
+
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"
 	desc = "A complicated encryption device."
@@ -308,8 +336,14 @@
 /obj/item/storage/backpack/yautja
 	name = "hunting pouch"
 	desc = "A Yautja hunting pouch worn around the waist, made from a thick tanned hide. Capable of holding various devices and tools and used for the transport of trophies."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "beltbag"
+	item_state = "beltbag_w"
+	item_icons = list(
+		WEAR_WAIST = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = SIZE_MEDIUM
 	flags_item = ITEM_PREDATOR
@@ -333,8 +367,10 @@
 /obj/item/device/yautja_teleporter
 	name = "relay beacon"
 	desc = "A device covered in sacred text. It whirrs and beeps every couple of seconds."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "teleporter"
+
 	flags_item = ITEM_PREDATOR
 	flags_atom = FPRINT|CONDUCT
 	w_class = SIZE_TINY
@@ -357,13 +393,15 @@
 	..()
 
 /obj/item/device/yautja_teleporter/attack_self(mob/user)
-	set waitfor = 0
+	set waitfor = FALSE
+
+	..()
 
 	if(!ishuman(user))
 		return
 
 	var/mob/living/carbon/human/H = user
-	var/ship_to_tele = list("Public" = -1, "Ooman Ship" = "Ooman")
+	var/ship_to_tele = list("Public" = -1, "Human Ship" = "Human")
 
 	if(!isYautja(H))
 		to_chat(user, SPAN_WARNING("You fiddle with it, but nothing happens!"))
@@ -381,12 +419,12 @@
 			ship_to_tele += list("Your clan" = "[clan_info.clan_id]")
 
 	var/clan = ship_to_tele[tgui_input_list(H, "Select a ship to teleport to", "[src]", ship_to_tele)]
-	if(clan != "Ooman" && !SSpredships.is_clanship_loaded(clan))
+	if(clan != "Human" && !SSpredships.is_clanship_loaded(clan))
 		return // Checking ship is valid
 
 	// Getting an arrival point
 	var/turf/target_turf
-	if(clan == "Ooman")
+	if(clan == "Human")
 		var/obj/effect/landmark/yautja_teleport/pickedYT = pick(GLOB.mainship_yautja_teleports)
 		target_turf = get_turf(pickedYT)
 	else
@@ -422,7 +460,7 @@
 /obj/item/device/yautja_teleporter/verb/add_tele_loc()
 	set name = "Add Teleporter Destination"
 	set desc = "Adds this location to the teleporter."
-	set category = "Yautja"
+	set category = "Yautja.Utility"
 	set src in usr
 	if(!usr || usr.stat || !is_ground_level(usr.z))
 		return
@@ -439,394 +477,7 @@
 		GLOB.yautja_teleport_descs[name + location.loc_to_string()] = location
 		to_chat(usr, SPAN_WARNING("You can now teleport to this location!"))
 		log_game("[usr] ([usr.key]) has created a new teleport location at [get_area(usr)]")
-		yautja_announcement(SPAN_YAUTJABOLDBIG("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]"))
-//=================//\\=================\\
-//======================================\\
-
-/*
-			  MELEE WEAPONS
-*/
-
-//======================================\\
-//=================\\//=================\\
-
-/obj/item/weapon/melee/harpoon/yautja
-	name = "large harpoon"
-	desc = "A huge metal spike, with a hook at the end. It's carved with mysterious alien writing."
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "spike"
-	item_state = "harpoon"
-	embeddable = FALSE
-	attack_verb = list("jabbed","stabbed","ripped", "skewered")
-	throw_range = 4
-	unacidable = TRUE
-	edge = 1
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	sharp = IS_SHARP_ITEM_BIG
-
-/obj/item/weapon/melee/harpoon/yautja/New()
-	. = ..()
-
-	force = MELEE_FORCE_TIER_2
-	throwforce = MELEE_FORCE_TIER_6
-
-/obj/item/weapon/wristblades
-	name = "wrist blades"
-	desc = "A pair of huge, serrated blades extending from a metal gauntlet."
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "wrist"
-	item_state = "wristblade"
-	w_class = SIZE_HUGE
-	edge = TRUE
-	sharp = IS_SHARP_ITEM_ACCURATE
-	flags_item = NOSHIELD|NODROP|ITEM_PREDATOR
-	flags_equip_slot = NO_FLAGS
-	hitsound = 'sound/weapons/wristblades_hit.ogg'
-	attack_speed = 6
-	pry_capable = IS_PRY_CAPABLE_FORCE
-
-/obj/item/weapon/wristblades/New()
-	..()
-	if(usr)
-		var/obj/item/weapon/wristblades/W = usr.get_inactive_hand()
-		if(istype(W)) //wristblade in usr's other hand.
-			attack_speed = attack_speed - attack_speed/3
-	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = MELEE_FORCE_TIER_4
-
-/obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
-	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)
-	if(M)
-		var/obj/item/weapon/wristblades/W = M.get_inactive_hand()
-		if(istype(W))
-			W.attack_speed = initial(attack_speed)
-	..()
-
-/obj/item/weapon/wristblades/afterattack(atom/A, mob/user, proximity)
-	if(!proximity || !user || user.action_busy) return
-	if(user)
-		var/obj/item/weapon/wristblades/W = user.get_inactive_hand()
-		attack_speed = (istype(W)) ? 4 : initial(attack_speed)
-
-	if(istype(A, /obj/structure/machinery/door/airlock))
-		var/obj/structure/machinery/door/airlock/D = A
-		if(D.operating || !D.density) return
-		user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
-		SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
-		playsound(user,'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]."),
-			SPAN_DANGER("You force [D] open with the [name]."))
-			D.open(1)
-
-	else if(istype(A, /obj/structure/mineral_door/resin))
-		var/obj/structure/mineral_door/resin/D = A
-		if(D.isSwitchingStates || user.a_intent == INTENT_HARM || user.action_busy) return
-		if(D.density)
-			user.visible_message(SPAN_DANGER("[user] jams their [name] into [D] and strains to rip it open."),
-			SPAN_DANGER("You jam your [name] into [D] and strain to rip it open."))
-			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-			if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
-				user.visible_message(SPAN_DANGER("[user] forces [D] open using the [name]."),
-				SPAN_DANGER("You force [D] open with your [name]."))
-				D.Open()
-		else
-			user.visible_message(SPAN_DANGER("[user] pushes [D] with their [name] to force it closed."),
-			SPAN_DANGER("You push [D] with your [name] to force it closed."))
-			playsound(user, 'sound/weapons/wristblades_hit.ogg', 15, TRUE)
-			if(do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && !D.density)
-				user.visible_message(SPAN_DANGER("[user] forces [D] closed using the [name]."),
-				SPAN_DANGER("You force [D] closed with your [name]."))
-				D.Close()
-
-/obj/item/weapon/wristblades/attack_self(mob/user)
-	for(var/obj/item/clothing/gloves/yautja/Y in user.contents)
-		Y.wristblades()
-
-//I need to go over these weapons and balance them out later. Right now they're pretty all over the place.
-/obj/item/weapon/yautja_chain
-	name = "chainwhip"
-	desc = "A segmented, lightweight whip made of durable, acid-resistant metal. Not very common among Yautja Hunters, but still a dangerous weapon capable of shredding prey."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
-	icon_state = "whip"
-	item_state = "whip"
-	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
-	flags_equip_slot = SLOT_WAIST
-	embeddable = FALSE
-	w_class = SIZE_MEDIUM
-	unacidable = TRUE
-	force = MELEE_FORCE_TIER_6
-	throwforce = MELEE_FORCE_TIER_5
-	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = TRUE
-	attack_verb = list("whipped", "slashed","sliced","diced","shredded")
-	hitsound = 'sound/weapons/chain_whip.ogg'
-
-
-/obj/item/weapon/yautja_chain/attack(mob/target, mob/living/user)
-	. = ..()
-	if(isYautja(user) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
-
-/obj/item/weapon/yautja_chain/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-
-/obj/item/weapon/melee/yautja_sword
-	name = "clan sword"
-	desc = "An expertly crafted Yautja blade carried by hunters who wish to fight up close. Razor sharp, and capable of cutting flesh into ribbons. Commonly carried by aggresive and lethal hunters."
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "clansword"
-	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
-	flags_equip_slot = SLOT_BACK
-	force = MELEE_FORCE_TIER_7
-	throwforce = MELEE_FORCE_TIER_5
-	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = TRUE
-	var/on = FALSE
-	var/timer = FALSE
-	embeddable = FALSE
-	w_class = SIZE_LARGE
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	attack_speed = 9
-	unacidable = TRUE
-
-/obj/item/weapon/melee/yautja_sword/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/yautja_sword/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/yautja_sword/attack(mob/living/target, mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	if(isYautja(user) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
-
-/obj/item/weapon/melee/yautja_sword/pickup(mob/living/user as mob)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/yautja_sword/unique_action(mob/living/user)
-	if(user.get_active_hand() != src)
-		return
-	if(timer) return
-	if(!on)
-		on = !on
-		timer = TRUE
-		addtimer(CALLBACK(src, .proc/stop_parry), 3 SECONDS)
-		to_chat(user, SPAN_NOTICE("You get ready to parry with the [src]."))
-		addtimer(CALLBACK(src, .proc/parry_cooldown), 8 SECONDS)
-
-	add_fingerprint(user)
-	return
-
-/obj/item/weapon/melee/yautja_sword/proc/stop_parry()
-	if(on)
-		on = !on
-		if(isYautja(src.loc))
-			var/mob/living/user = loc
-			to_chat(user, SPAN_NOTICE("You lower the [src]."))
-
-/obj/item/weapon/melee/yautja_sword/proc/parry_cooldown()
-	timer = FALSE
-	if(isYautja(src.loc))
-		var/mob/living/user = loc
-		to_chat(user, SPAN_NOTICE("You lower the [src]."))
-/obj/item/weapon/melee/yautja_scythe
-	name = "double war scythe"
-	desc = "A huge, incredibly sharp double blade used for hunting dangerous prey. This weapon is commonly carried by Yautja who wish to disable and slice apart their foes.."
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "predscythe"
-	item_state = "scythe"
-	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
-	flags_equip_slot = SLOT_WAIST
-	force = MELEE_FORCE_TIER_6
-	throwforce = MELEE_FORCE_TIER_5
-	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = TRUE
-	embeddable = FALSE
-	w_class = SIZE_LARGE
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	unacidable = TRUE
-
-
-/obj/item/weapon/melee/yautja_scythe/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/yautja_scythe/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/yautja_scythe/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/yautja_scythe/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	..()
-	if(isYautja(user) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 15
-
-
-	if(prob(15))
-		user.visible_message(SPAN_DANGER("An opening in combat presents itself!"),SPAN_DANGER("You manage to strike at your foe once more!"))
-		..() //Do it again! CRIT! This will be replaced by a bleed effect.
-
-	return
-
-//Combistick
-/obj/item/weapon/melee/combistick
-	name = "combi-stick"
-	desc = "A compact yet deadly personal weapon. Can be concealed when folded. Functions well as a throwing weapon or defensive tool. A common sight in Yautja packs due to its versatility."
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "combistick"
-	flags_atom = FPRINT|CONDUCT
-	flags_equip_slot = SLOT_BACK
-	flags_item = TWOHANDED|ITEM_PREDATOR
-	w_class = SIZE_LARGE
-	embeddable = FALSE //It shouldn't embed so that the Yautja can actually use the yank combi verb, and so that it's not useless upon throwing it at someone.
-	throw_speed = SPEED_VERY_FAST
-	throw_range = 4
-	unacidable = TRUE
-	throwforce = MELEE_FORCE_TIER_6
-	sharp = IS_SHARP_ITEM_SIMPLE
-	edge = TRUE
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("speared", "stabbed", "impaled")
-	var/on = 1
-	var/timer = 0
-
-
-/obj/item/weapon/melee/combistick/IsShield()
-	return on
-
-/obj/item/weapon/melee/combistick/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/combistick/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/combistick/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/combistick/verb/use_unique_action()
-	set category = "Weapons"
-	set name = "Unique Action"
-	set desc = "Activate or deactivate the combistick."
-	set src in usr
-	unique_action(usr)
-
-/obj/item/weapon/melee/combistick/attack_self(mob/user)
-	..()
-	if(on)
-		if(flags_item & WIELDED) unwield(user)
-		else 				wield(user)
-	else
-		to_chat(user, SPAN_WARNING("You need to extend the combi-stick before you can wield it."))
-
-
-/obj/item/weapon/melee/combistick/wield(var/mob/user)
-	..()
-	force = MELEE_FORCE_TIER_6
-	update_icon()
-
-/obj/item/weapon/melee/combistick/unwield(mob/user)
-	..()
-	force = MELEE_FORCE_TIER_3
-	update_icon()
-
-/obj/item/weapon/melee/combistick/update_icon()
-	if(flags_item & WIELDED)
-		item_state = "combistick_w"
-	else item_state = "combistick"
-
-/obj/item/weapon/melee/combistick/unique_action(mob/living/user)
-	if(user.get_active_hand() != src)
-		return
-	if(timer) return
-	on = !on
-	if(on)
-		user.visible_message(SPAN_INFO("With a flick of their wrist, [user] extends [src]."),\
-		SPAN_NOTICE("You extend [src]."),\
-		"You hear blades extending.")
-		playsound(src,'sound/handling/combistick_open.ogg', 50, 1, 3)
-		icon_state = initial(icon_state)
-		flags_equip_slot = initial(flags_equip_slot)
-		flags_item |= TWOHANDED
-		w_class = SIZE_LARGE
-		force = MELEE_FORCE_TIER_6
-		throwforce = MELEE_FORCE_TIER_6
-		attack_verb = list("speared", "stabbed", "impaled")
-		timer = 1
-		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
-
-		if(blood_overlay && blood_color)
-			overlays.Cut()
-			add_blood(blood_color)
-	else
-		unwield(user)
-		to_chat(user, SPAN_NOTICE("You collapse [src] for storage."))
-		playsound(src, 'sound/handling/combistick_close.ogg', 50, 1, 3)
-		icon_state = initial(icon_state) + "_f"
-		flags_equip_slot = SLOT_STORE
-		flags_item &= ~TWOHANDED
-		w_class = SIZE_TINY
-		force = MELEE_FORCE_TIER_1
-		throwforce = MELEE_FORCE_TIER_6
-		attack_verb = list("thwacked", "smacked")
-		timer = 1
-		addtimer(VARSET_CALLBACK(src, timer, FALSE), 1 SECONDS)
-		overlays.Cut()
-
-	if(istype(user,/mob/living/carbon/human))
-		var/mob/living/carbon/human/H = user
-		H.update_inv_l_hand(0)
-		H.update_inv_r_hand()
-
-	add_fingerprint(user)
-
-	return
-
-/obj/item/weapon/melee/combistick/attack(mob/living/target as mob, mob/living/carbon/human/user as mob)
-	if(isYautja(user) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
-	..()
-
-/obj/item/weapon/melee/combistick/attack_hand(mob/user) //Prevents marines from instantly picking it up via pickup macros.
-	if(!isYautja(user))
-		user.visible_message(SPAN_DANGER("[user] starts to untangle the chain on \the [src]..."), SPAN_NOTICE("You start to untangle the chain on \the [src]..."))
-		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-			..()
-	else ..()
-
-/obj/item/weapon/melee/combistick/launch_impact(atom/hit_atom)
-	if(isYautja(hit_atom))
-		var/mob/living/carbon/human/H = hit_atom
-		if(H.put_in_hands(src))
-			hit_atom.visible_message(SPAN_NOTICE(" [hit_atom] expertly catches [src] out of the air. "), \
-				SPAN_NOTICE(" You easily catch [src]. "))
-			return
-	..()
+		message_all_yautja("[usr.real_name] has created a new teleport location, [name], at [usr.loc] in [get_area(usr)]")
 
 //=================//\\=================\\
 //======================================\\
@@ -843,91 +494,90 @@
 	spawner_type = /mob/living/carbon/hellhound
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It seems to call forth a hellhound."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "hellnade"
 	w_class = SIZE_TINY
 	det_time = 30
 	var/obj/structure/machinery/camera/current = null
 	var/turf/activated_turf = null
 
-	dropped(mob/user)
-		check_eye(user)
-		return ..()
+/obj/item/explosive/grenade/spawnergrenade/hellhound/dropped(mob/user)
+	check_eye(user)
+	return ..()
 
-	attack_self(mob/user)
-		if(!active)
-			if(!isYautja(user))
-				to_chat(user, "What's this thing?")
-				return
-			to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
-			activate(user)
-			add_fingerprint(user)
-			if(iscarbon(user))
-				var/mob/living/carbon/C = user
-				C.toggle_throw_mode(THROW_MODE_NORMAL)
-		else
-			if(!isYautja(user)) return
-			activated_turf = get_turf(user)
-			display_camera(user)
-		return
-
-	activate(mob/user)
-		if(active)
+/obj/item/explosive/grenade/spawnergrenade/hellhound/attack_self(mob/living/carbon/human/user)
+	..()
+	if(!active)
+		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
+			to_chat(user, "What's this thing?")
 			return
-
-		if(user)
-			msg_admin_attack("[key_name(user)] primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-		icon_state = initial(icon_state) + "_active"
-		active = 1
-		update_icon()
-		addtimer(CALLBACK(src, .proc/prime), det_time)
-
-	prime()
-		if(spawner_type && deliveryamt)
-			// Make a quick flash
-			var/turf/T = get_turf(src)
-			if(ispath(spawner_type))
-				new spawner_type(T)
-//		qdel(src)
-		return
-
-	check_eye(mob/user)
-		if (user.is_mob_incapacitated() || user.blinded )
-			user.unset_interaction()
-		else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
-			user.unset_interaction()
-
-
-	proc/display_camera(var/mob/user as mob)
-		var/list/L = list()
-		for(var/mob/living/carbon/hellhound/H in GLOB.hellhound_list)
-			L += H.real_name
-		L["Cancel"] = "Cancel"
-
-		var/choice = tgui_input_list(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View", L)
-		if(!choice || choice == "Cancel" || isnull(choice))
-			user.unset_interaction()
-			to_chat(user, "Stopping camera feed.")
+		to_chat(user, SPAN_WARNING("You activate the hellhound beacon!"))
+		activate(user)
+		add_fingerprint(user)
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.toggle_throw_mode(THROW_MODE_NORMAL)
+	else
+		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 			return
+		activated_turf = get_turf(user)
+		display_camera(user)
 
-		for(var/mob/living/carbon/hellhound/Q in GLOB.hellhound_list)
-			if(Q.real_name == choice)
-				current = Q.camera
-				break
-
-		if(istype(current))
-			to_chat(user, "Switching feed..")
-			user.set_interaction(current)
-
-		else
-			to_chat(user, "Something went wrong with the camera feed.")
+/obj/item/explosive/grenade/spawnergrenade/hellhound/activate(mob/user)
+	if(active)
 		return
+
+	if(user)
+		msg_admin_attack("[key_name(user)] primed \a [src] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+	icon_state = initial(icon_state) + "_active"
+	active = 1
+	update_icon()
+	addtimer(CALLBACK(src, .proc/prime), det_time)
+
+/obj/item/explosive/grenade/spawnergrenade/hellhound/prime()
+	if(spawner_type && deliveryamt)
+		// Make a quick flash
+		var/turf/T = get_turf(src)
+		if(ispath(spawner_type))
+			new spawner_type(T)
+	return
+
+/obj/item/explosive/grenade/spawnergrenade/hellhound/check_eye(mob/user)
+	if (user.is_mob_incapacitated() || user.blinded )
+		user.unset_interaction()
+	else if ( !current || get_turf(user) != activated_turf || src.loc != user ) //camera doesn't work, or we moved.
+		user.unset_interaction()
+
+
+/obj/item/explosive/grenade/spawnergrenade/hellhound/proc/display_camera(var/mob/user as mob)
+	var/list/L = list()
+	for(var/mob/living/carbon/hellhound/H in GLOB.hellhound_list)
+		L += H.real_name
+	L["Cancel"] = "Cancel"
+
+	var/choice = tgui_input_list(user,"Which hellhound would you like to observe? (moving will drop the feed)","Camera View", L)
+	if(!choice || choice == "Cancel" || isnull(choice))
+		user.unset_interaction()
+		to_chat(user, "Stopping camera feed.")
+		return
+
+	for(var/mob/living/carbon/hellhound/Q in GLOB.hellhound_list)
+		if(Q.real_name == choice)
+			current = Q.camera
+			break
+
+	if(istype(current))
+		to_chat(user, "Switching feed..")
+		user.set_interaction(current)
+
+	else
+		to_chat(user, "Something went wrong with the camera feed.")
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/New()
 	. = ..()
 
-	force = BULLET_DAMAGE_TIER_4
-	throwforce = BULLET_DAMAGE_TIER_8
+	force = 20
+	throwforce = 40
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound/on_set_interaction(mob/user)
 	..()
@@ -944,7 +594,7 @@
 	name = "hunting trap"
 	throw_speed = SPEED_FAST
 	throw_range = 2
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "yauttrap0"
 	desc = "A bizarre Yautja device used for trapping and killing prey."
 	var/armed = 0
@@ -972,9 +622,8 @@
 /obj/item/hunting_trap/attack_self(mob/user as mob)
 	..()
 	if(ishuman(user) && !user.stat && !user.is_mob_restrained())
-		var/mob/living/carbon/human/H = user
 		var/wait_time = 3 SECONDS
-		if(!isYautja(H))
+		if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 			wait_time = rand(5 SECONDS, 10 SECONDS)
 		if(!do_after(user, wait_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
 			return
@@ -987,7 +636,7 @@
 		user.drop_held_item()
 
 /obj/item/hunting_trap/attack_hand(mob/living/carbon/human/user)
-	if(isYautja(user))
+	if(HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		disarm(user)
 	//Humans and synths don't know how to handle those traps!
 	if(isHumanSynthStrict(user) && armed)
@@ -1016,11 +665,11 @@
 	C.attack_log += text("\[[time_stamp()]\] <font color='orange'>[key_name(C)] was caught in \a [src] at [get_location_in_text(C)].</font>")
 	log_attack("[key_name(C)] was caught in \a [src] at [get_location_in_text(C)].")
 
-	C.KnockDown(2)
 	if(ishuman(C))
 		C.emote("pain")
 	if(isXeno(C))
 		var/mob/living/carbon/Xenomorph/X = C
+		C.emote("needhelp")
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, .proc/block_heal)
 
@@ -1055,6 +704,7 @@
 		tether_effect = null
 
 /obj/item/hunting_trap/proc/disarm(var/mob/user)
+	SIGNAL_HANDLER
 	armed = FALSE
 	anchored = FALSE
 	icon_state = "yauttrap[armed]"
@@ -1074,11 +724,64 @@
 	set category = "Object"
 
 	var/mob/living/carbon/human/H = usr
-	if(!isYautja(H))
+	if(!HAS_TRAIT(H, TRAIT_YAUTJA_TECH))
 		to_chat(H, SPAN_WARNING("You do not know how to configure the trap."))
 		return
-	var/range = input(H, "Which range would you like to set the hunting trap to?") as null|anything in list(2, 3, 4, 5, 6, 7)
+	var/range = tgui_input_list(H, "Which range would you like to set the hunting trap to?", "Hunting Trap Range", list(2, 3, 4, 5, 6, 7))
 	if(isnull(range))
 		return
 	tether_range = range
 	to_chat(H, SPAN_NOTICE("You set the hunting trap's tether range to [range]."))
+
+//flavor armor & greaves, not a subtype
+/obj/item/clothing/suit/armor/yautja_flavor
+	name = "stone clan armor"
+	desc = "A suit of armor made entirely out of stone. Looks incredibly heavy."
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "fullarmor_ebony"
+	item_state = "armor"
+	item_icons = list(
+		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+
+	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_HEAD|BODY_FLAG_LEGS
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	slowdown = SLOWDOWN_ARMOR_VERY_HEAVY
+	siemens_coefficient = 0.1
+	allowed = list(/obj/item/weapon/melee/harpoon,
+			/obj/item/weapon/gun/launcher/spike,
+			/obj/item/weapon/gun/energy/yautja,
+			/obj/item/weapon/melee/yautja,
+			/obj/item/weapon/melee/twohanded/yautja)
+	unacidable = TRUE
+	item_state_slots = list(WEAR_JACKET = "fullarmor")
+
+/obj/item/clothing/shoes/yautja_flavor
+	name = "stone clan greaves"
+	desc = "A pair of armored, perfectly balanced boots. Perfect for running through cement because they're incredibly heavy."
+
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_FEET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
+	)
+	icon_state = "y-boots2_ebony"
+
+	unacidable = TRUE
+	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS|BODY_FLAG_GROIN
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH

@@ -164,7 +164,7 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 				//TODO: ORGAN REMOVAL UPDATE.
 				var/obj/item/organ/brain/B = new brain_item_type(loc)
 				if(brainmob.stat != DEAD)
-					brainmob.death("brain extraction") //brain mob doesn't survive outside a head
+					brainmob.death(create_cause_data("brain extraction", user)) //brain mob doesn't survive outside a head
 				B.transfer_identity(brainmob)
 
 				brain_op_stage = 4.0

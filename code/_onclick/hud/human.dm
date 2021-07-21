@@ -58,6 +58,9 @@
 	if(WEAR_JACKET in equip_slots)
 		equip_slots |= WEAR_IN_JACKET
 
+	if(WEAR_HEAD in equip_slots)
+		equip_slots |= WEAR_IN_HELMET
+
 	if(WEAR_FEET in equip_slots)
 		equip_slots |= WEAR_IN_SHOES
 
@@ -162,27 +165,28 @@
 		return
 
 	var/mob/living/carbon/human/H = mymob
+
 	if(hud_shown)
 		if(!gear.len) //species without inv slots don't show items.
 			return
 
 		if(H.s_store)
-			H.s_store.screen_loc = ui_datum.ui_sstore1
+			H.s_store.screen_loc = ui_datum.hud_slot_offset(H.s_store, ui_datum.ui_sstore1)
 			H.client.screen += H.s_store
 		if(H.wear_id)
-			H.wear_id.screen_loc = ui_datum.ui_id
+			H.wear_id.screen_loc = ui_datum.hud_slot_offset(H.wear_id, ui_datum.ui_id)
 			H.client.screen += H.wear_id
 		if(H.belt)
-			H.belt.screen_loc = ui_datum.ui_belt
+			H.belt.screen_loc = ui_datum.hud_slot_offset(H.belt, ui_datum.ui_belt)
 			H.client.screen += H.belt
 		if(H.back)
-			H.back.screen_loc = ui_datum.ui_back
+			H.back.screen_loc = ui_datum.hud_slot_offset(H.back, ui_datum.ui_back)
 			H.client.screen += H.back
 		if(H.l_store)
-			H.l_store.screen_loc = ui_datum.ui_storage1
+			H.l_store.screen_loc = ui_datum.hud_slot_offset(H.l_store, ui_datum.ui_storage1)
 			H.client.screen += H.l_store
 		if(H.r_store)
-			H.r_store.screen_loc = ui_datum.ui_storage2
+			H.r_store.screen_loc = ui_datum.hud_slot_offset(H.r_store, ui_datum.ui_storage2)
 			H.client.screen += H.r_store
 	else
 		if(H.s_store)
@@ -200,10 +204,10 @@
 
 	if(hud_version != HUD_STYLE_NOHUD)
 		if(H.r_hand)
-			H.r_hand.screen_loc = ui_datum.ui_rhand
+			H.r_hand.screen_loc = ui_datum.hud_slot_offset(H.r_hand, ui_datum.ui_rhand)
 			H.client.screen += H.r_hand
 		if(H.l_hand)
-			H.l_hand.screen_loc = ui_datum.ui_lhand
+			H.l_hand.screen_loc = ui_datum.hud_slot_offset(H.l_hand, ui_datum.ui_lhand)
 			H.client.screen += H.l_hand
 	else
 		if(H.r_hand)

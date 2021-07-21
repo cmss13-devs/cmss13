@@ -1,6 +1,6 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Box, Button, Flex, Input, Section, Tabs, Table } from '../components';
+import { Box, Button, Stack, Input, Section, Tabs, Table } from '../components';
 import { Window } from '../layouts';
 import { AccessList } from './common/AccessList';
 import { map } from 'common/collections';
@@ -136,7 +136,7 @@ export const CardContent = (props, context) => {
           icon="eject"
           content={id_name}
           onClick={() => act('PRG_eject')} />
-        Linked Account: 
+        Linked Account:
         <Input
           value={id_account}
           width="150px"
@@ -191,8 +191,8 @@ export const CardContent = (props, context) => {
                   assign_target: 'Custom',
                   custom_name: value,
                 })} />
-              <Flex>
-                <Flex.Item>
+              <Stack>
+                <Stack.Item>
                   <Tabs vertical>
                     {Object.keys(jobs).map(department => (
                       <Tabs.Tab
@@ -203,8 +203,8 @@ export const CardContent = (props, context) => {
                       </Tabs.Tab>
                     ))}
                   </Tabs>
-                </Flex.Item>
-                <Flex.Item grow={1}>
+                </Stack.Item>
+                <Stack.Item grow={1}>
                   {departmentJobs.map(job => (
                     <Button
                       fluid
@@ -214,8 +214,8 @@ export const CardContent = (props, context) => {
                         assign_target: job.job,
                       })} />
                   ))}
-                </Flex.Item>
-              </Flex>
+                </Stack.Item>
+              </Stack>
             </Section>
           )}
         </Box>

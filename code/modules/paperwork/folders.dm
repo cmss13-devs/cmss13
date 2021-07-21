@@ -55,9 +55,10 @@
 		if((loc == usr && usr.stat == 0))
 			name = "folder[(n_name ? text("- '[n_name]'") : null)]"
 
-/obj/item/folder/attack_self(mob/user as mob)
-	var/dat
+/obj/item/folder/attack_self(mob/user)
+	..()
 
+	var/dat
 	for(var/obj/item/paper/P in src)
 		dat += "<A href='?src=\ref[src];remove=\ref[P]'>Remove</A> - <A href='?src=\ref[src];read=\ref[P]'>[P.name]</A><BR>"
 	for(var/obj/item/photo/Ph in src)

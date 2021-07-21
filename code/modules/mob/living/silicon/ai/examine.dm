@@ -1,5 +1,5 @@
 /mob/living/silicon/ai/examine(mob/user)
-	if( (user.sdisabilities & BLIND || user.blinded || user.stat) && !istype(user,/mob/dead/observer) )
+	if( (user.sdisabilities & DISABILITY_BLIND || user.blinded || user.stat) && !istype(user,/mob/dead/observer) )
 		to_chat(user, SPAN_NOTICE("Something is there but you can't see it."))
 		return
 

@@ -1,8 +1,8 @@
 //------------SORTED MEDICAL VENDORS---------------
 
 /obj/structure/machinery/cm_vending/sorted/medical
-	name = "\improper WestonMed Plus"
-	desc = "Medical Pharmaceutical dispenser. Provided by W-Y Pharmaceuticals Division(TM)."
+	name = "\improper Wey-Med Plus"
+	desc = "Medical Pharmaceutical dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "med"
 	req_access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY)
 
@@ -125,6 +125,7 @@
 
 		to_chat(user, SPAN_NOTICE("[src] makes a whirring noise as it restocks your [S.name]."))
 		S.amount = S.max_amount
+		S.update_icon()
 	else
 		. = ..()
 
@@ -193,8 +194,8 @@
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/chemistry
-	name = "\improper WestonChem Plus"
-	desc = "Medical chemistry dispenser. Provided by W-Y Pharmaceuticals Division(TM)."
+	name = "\improper Wey-Chem Plus"
+	desc = "Medical chemistry dispenser. Provided by Wey-Yu Pharmaceuticals Division(TM)."
 	icon_state = "chem"
 
 	healthscan = FALSE
@@ -286,7 +287,8 @@
 	name = "\improper MM Blood Dispenser"
 	desc = "Marine Med brand Blood Pack Dispensery"
 	icon_state = "blood"
-	wrenchable = FALSE
+	wrenchable = TRUE
+	hackable = TRUE
 
 	listed_products = list(
 		list("BLOOD PACKS", -1, null, null),
@@ -346,6 +348,36 @@
 		/obj/item/stack/medical/splint
 	)
 
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
+	name = "Lifeboat Medical Cabinet"
+	icon = 'icons/obj/structures/machinery/lifeboat.dmi'
+	icon_state = "medcab"
+	desc = "A wall-mounted cabinet containing medical supplies vital to survival. While better equipped, it can only refill basic supplies."
+	listed_products = list(
+		list("AUTOINJECTORS", -1, null, null),
+		list("First-Aid Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless, VENDOR_ITEM_REGULAR),
+		list("Pain-Stop Autoinjector", 8, /obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol, VENDOR_ITEM_REGULAR),
+
+		list("DEVICES", -1, null, null),
+		list("Health Analyzer", 8, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
+
+		list("FIELD SUPPLIES", -1, null, null),
+		list("Advanced Burn Kit", 8, /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
+		list("Advanced Trauma Kit", 8, /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Ointment", 8, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
+		list("Roll of Gauze", 8, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Splints", 8, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
+	)
+	stack_refill = list(
+		/obj/item/stack/medical/ointment,
+		/obj/item/stack/medical/bruise_pack,
+		/obj/item/stack/medical/splint
+	)
+
+	unacidable = TRUE
+	unslashable = TRUE
+	wrenchable = FALSE
+	hackable = FALSE
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/populate_product_list(var/scale)
 	return

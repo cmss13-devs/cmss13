@@ -193,7 +193,7 @@
 
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I,/obj/item/device/multitool))
+	if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		var/catastasis = src.contraband_enabled
 		var/opposite_catastasis
 		if(catastasis)
@@ -221,7 +221,7 @@
 			to_chat(user, SPAN_NOTICE(" You [locked ? "" : "un"]lock the circuit controls."))
 		else
 			to_chat(user, SPAN_DANGER("Access denied."))
-	else if(istype(I,/obj/item/device/multitool))
+	else if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		if(locked)
 			to_chat(user, SPAN_DANGER("Circuit controls are locked."))
 			return
@@ -239,7 +239,7 @@
 	return
 
 /obj/item/circuitboard/computer/rdconsole/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I,/obj/item/tool/screwdriver))
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		user.visible_message(SPAN_NOTICE("\the [user] adjusts the jumper on the [src]'s access protocol pins."), SPAN_NOTICE("You adjust the jumper on the access protocol pins."))
 		if(src.build_path == /obj/structure/machinery/computer/rdconsole/core)
 			src.name = "Circuit Board (RD Console - Robotics)"

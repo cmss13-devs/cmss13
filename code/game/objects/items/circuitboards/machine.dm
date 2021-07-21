@@ -128,7 +128,7 @@ obj/item/circuitboard/machine/rdserver
 	var/init_dirs = SOUTH
 
 /obj/item/circuitboard/machine/unary_atmos/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I,/obj/item/tool/screwdriver))
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		machine_dir = turn(machine_dir, 90)
 		init_dirs = machine_dir
 		user.visible_message(SPAN_NOTICE("\The [user] adjusts the jumper on the [src]'s port configuration pins."), SPAN_NOTICE("You adjust the jumper on the port configuration pins. Now set to [dir2text(machine_dir)]."))

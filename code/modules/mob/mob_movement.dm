@@ -98,7 +98,13 @@
 	if(world.time < next_movement)
 		return
 
+	next_move_dir_add = 0
+	next_move_dir_sub = 0
+
 	next_movement = world.time + world.tick_lag
+
+	if(!direct)
+		return FALSE
 
 	if(mob.control_object)
 		next_movement = world.time + MINIMAL_MOVEMENT_INTERVAL
@@ -267,9 +273,3 @@
 
 /mob/proc/on_movement()
 	return TRUE
-
-/mob/Move(NewLoc, direction)
-	SEND_SIGNAL(src, COMSIG_MOB_MOVE, NewLoc, direction)
-	. = ..()
-	if(.)
-		SEND_SIGNAL(src, COMSIG_MOB_POST_MOVE, NewLoc, direction)

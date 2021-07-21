@@ -1,12 +1,14 @@
 /datum/random_fact/calories/announce()
-    for(var/P in player_entities)
-        var/datum/entity/player_entity/E = player_entities[P]
-        if(!E.death_stats.len)
-            continue
-        var/datum/entity/death_stats/death = pick(E.death_stats)
-        message = "<b>[death.mob_name]</b> burned <b>[death.steps_walked / 10] calories</b> before dying"
-        if(death.cause_name)
-            message += " to <b>[death.cause_name]</b>"
-        message += ". Good job!"
-        break
-    . = ..()
+	if(!round_statistics || !round_statistics.death_stats_list.len)
+		return
+	var/datum/entity/statistic/death/death_to_report = null
+	for(var/datum/entity/statistic/death/death in round_statistics.death_stats_list)
+		if(!death_to_report || death.total_steps > death_to_report.total_steps)
+			death_to_report = death
+	if(!death_to_report)
+		return
+	message = "<b>[death_to_report.mob_name]</b> burned <b>[death_to_report.total_steps / 10] calories</b> before dying"
+	if(death_to_report.cause_name)
+		message += " to <b>[death_to_report.cause_name]</b>"
+	message += ". Good job!"
+	. = ..()

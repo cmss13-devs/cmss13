@@ -258,7 +258,7 @@
 	name = "CLF Multipurpose Synthetic"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	skills = /datum/skills/early_synthetic
+	skills = /datum/skills/colonial_synthetic
 	assignment = "CLF Multipurpose Synthetic"
 	rank = "CLF Multipurpose Synthetic"
 	role_comm_title = "SYN"
@@ -284,7 +284,7 @@
 	idtype = /obj/item/card/id/data
 
 /datum/equipment_preset/clf/synth/load_race(mob/living/carbon/human/H)
-	H.set_species("Early Synthetic")
+	H.set_species(SYNTH_COLONY)
 
 /datum/equipment_preset/clf/synth/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack/ert, WEAR_BACK)

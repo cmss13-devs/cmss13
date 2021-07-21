@@ -14,6 +14,9 @@
 	invisibility = INVISIBILITY_LIGHTING
 	var/lightswitch = 1
 
+	/// Bitfield of special area features
+	var/flags_area = NO_FLAGS
+
 	var/flags_alarm_state = NO_FLAGS
 
 	var/unique = TRUE
@@ -36,6 +39,7 @@
 	var/pressure = ONE_ATMOSPHERE
 	var/can_build_special = FALSE
 	var/is_resin_allowed = TRUE	// can xenos weed, place resin holes or dig tunnels at said areas
+	var/resin_construction_allowed = TRUE	// Allow construction of resin walls, and other special
 
 	// Weather
 	var/weather_enabled = TRUE	// Manual override for weather if set to false

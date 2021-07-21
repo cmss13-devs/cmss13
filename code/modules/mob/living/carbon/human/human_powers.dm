@@ -131,14 +131,14 @@
 		var/mob/living/carbon/human/H = G.grabbed_thing
 		H.apply_damage(50,BRUTE)
 		if(H.stat == 2)
-			H.gib(H.last_damage_source)
+			H.gib(create_cause_data("gutting", usr))
 	else
 		var/mob/living/M = G.grabbed_thing
 		if(!istype(M))
 			return //wut
 		M.apply_damage(50,BRUTE)
 		if(M.stat == 2)
-			M.gib(M.last_damage_source)
+			M.gib(create_cause_data("gutting", usr))
 
 /mob/living/carbon/human/proc/commune()
 	set category = "Abilities"
@@ -270,14 +270,14 @@
 	switch(order)
 		if(COMMAND_ORDER_MOVE)
 			mobility_aura_count++
-			mobility_aura = max(mobility_aura, strength)
+			mobility_aura = Clamp(mobility_aura, strength, ORDER_MOVE_MAX_LEVEL)
 		if(COMMAND_ORDER_HOLD)
 			protection_aura_count++
-			protection_aura = max(protection_aura, strength)
+			protection_aura = Clamp(protection_aura, strength, ORDER_HOLD_MAX_LEVEL)
 			pain.apply_pain_reduction(protection_aura * PAIN_REDUCTION_AURA)
 		if(COMMAND_ORDER_FOCUS)
 			marksman_aura_count++
-			marksman_aura = max(marksman_aura, strength)
+			marksman_aura = Clamp(marksman_aura, strength, ORDER_FOCUS_MAX_LEVEL)
 
 	hud_set_order()
 
@@ -309,7 +309,7 @@
 
 	hud_set_order()
 
-/mob/living/carbon/human/verb/lay_down()
+/mob/living/verb/lay_down()
 	set name = "Rest"
 	set category = "IC"
 

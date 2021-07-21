@@ -24,7 +24,7 @@
 		check_reactions()
 	tiles_left -= 1
 	if(tiles_left)
-		addtimer(CALLBACK(src, /obj/effect/decal/chempuff.proc/move_towards, A, move_delay, tiles_left), move_delay)
+		addtimer(CALLBACK(src, .proc/move_towards, A, move_delay, tiles_left), move_delay)
 	else
 		qdel(src)
 
@@ -89,11 +89,12 @@
 	return 1
 
 /obj/effect/decal/mecha_wreckage/attack_alien(mob/living/carbon/Xenomorph/M)
-    if(M.a_intent != INTENT_HELP)
-        playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
-        M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
-        robogibs(src)
-        qdel(src)
+	playsound(src, 'sound/effects/metal_crash.ogg', 50, 1)
+	M.animation_attack_on(src)
+	M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"))
+	robogibs(src)
+	qdel(src)
+	return XENO_ATTACK_ACTION
 
 /obj/effect/decal/mecha_wreckage/gygax
 	name = "Gygax wreckage"

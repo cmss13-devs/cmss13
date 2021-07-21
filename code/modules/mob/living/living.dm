@@ -65,6 +65,7 @@
 				H.UpdateDamageIcon()
 		H.updatehealth()
 		return 1
+
 	else if(isAI(src))
 		return 0
 
@@ -141,7 +142,7 @@
 
 
 /mob/living/proc/get_limbzone_target()
-	return ran_zone(zone_selected)
+	return rand_zone(zone_selected)
 
 
 
@@ -164,7 +165,6 @@
 
 	return
 
-
 /mob/living/Move(NewLoc, direct)
 	if (buckled && buckled.loc != NewLoc) //not updating position
 		if (!buckled.anchored)
@@ -179,7 +179,8 @@
 	var/turf/T = loc
 	. = ..()
 	if(. && pulling && pulling == pullee) //we were pulling a thing and didn't lose it during our move.
-		if(pulling.anchored)
+		var/data = SEND_SIGNAL(pulling, COMSIG_MOVABLE_PULLED, src)
+		if(!(data & COMPONENT_IGNORE_ANCHORED) && pulling.anchored)
 			stop_pulling()
 			return
 
@@ -217,13 +218,15 @@
 	if(pulledby && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 		pulledby.stop_pulling()
 
-
 	if (s_active && !( s_active in contents ) && get_turf(s_active) != get_turf(src))	//check !( s_active in contents ) first so we hopefully don't have to call get_turf() so much.
-		s_active.close(src)
+		s_active.storage_close(src)
 
 	// Check if we're still pulling something
 	if(pulling)
 		SEND_SIGNAL(pulling, COMSIG_MOB_DRAGGED, src)
+
+	if(back && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
+		update_inv_back()
 
 
 
@@ -267,7 +270,7 @@
 			if(GRAB_CHOKE)
 				grab_level_delay = 9
 
-		. += max(pull_speed + pull_delay + grab_level_delay, 0) //harder grab makes you slower
+		. += max(pull_speed + (pull_delay + reagent_move_delay_modifier) + grab_level_delay, 0) //harder grab makes you slower
 	move_delay = .
 
 
@@ -326,8 +329,7 @@
 	now_pushing = TRUE
 	var/mob/living/L = AM
 
-	// For now a kind of hacky check for if you are performing an action that stops you from being pushed by teammates
-	if(L.status_flags & IMMOBILE_ACTION && areSameSpecies(src, L) && src.mob_size <= L.mob_size)
+	if(L.status_flags & IMMOBILE_ACTION && src.faction == L.faction && src.mob_size <= L.mob_size)
 		now_pushing = FALSE
 		return
 
@@ -451,10 +453,10 @@
 /mob/proc/flash_eyes()
 	return
 
-/mob/living/flash_eyes(intensity = 1, bypass_checks, type = /obj/screen/fullscreen/flash)
-	if( bypass_checks || (get_eye_protection() < intensity && !(disabilities & BLIND)) )
+/mob/living/flash_eyes(intensity = 1, bypass_checks, type = /obj/screen/fullscreen/flash, var/flash_timer = 40)
+	if( bypass_checks || (get_eye_protection() < intensity && !(disabilities & DISABILITY_BLIND)) )
 		overlay_fullscreen("flash", type)
-		spawn(40)
+		spawn(flash_timer)
 			clear_fullscreen("flash", 20)
 		return 1
 
@@ -592,7 +594,9 @@
 							show_limb = 1
 			if(show_limb)
 				dat += "\t\t [org_name]: \t [burn_info] - [brute_info] [fracture_info][org_bleed][org_incision][org_advice]"
-				if(org.status & LIMB_SPLINTED)
+				if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+					dat += "(Nanosplinted)"
+				else if(org.status & LIMB_SPLINTED)
 					dat += "(Splinted)"
 				dat += "\n"
 
@@ -688,9 +692,9 @@
 				advice += "<span class='scanner'>Administer food or recommend the patient eat.</span>\n"
 			if(internal_bleed_detected && reagents_in_body["quickclot"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of quickclot.</span>\n"
-			if(H.getToxLoss() > 10 && reagents_in_body["anti_toxin"] < 5 && !reagents_in_body["synaptizine"])
+			if(H.getToxLoss() > 10 && reagents_in_body["anti_toxin"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of dylovene.</span>\n"
-			if((H.getToxLoss() > 50 || (H.getOxyLoss() > 50 && blood_volume > 400) || H.getBrainLoss() >= 10) && reagents_in_body["peridaxon"] < 5 && !reagents_in_body["hyperzine"])
+			if((H.getToxLoss() > 50 || (H.getOxyLoss() > 50 && blood_volume > 400) || H.getBrainLoss() >= 10) && reagents_in_body["peridaxon"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of peridaxon.</span>\n"
 			if(H.getOxyLoss() > 50 && reagents_in_body["dexalin"] < 5)
 				advice += "<span class='scanner'>Administer a single dose of dexalin.</span>\n"
@@ -712,10 +716,6 @@
 				dat += "\t<span class='scanner'> <b>Medication Advice:</b></span>\n"
 				dat += advice
 			advice = ""
-			if(reagents_in_body["synaptizine"])
-				advice += "<span class='scanner'>DO NOT administer dylovene.</span>\n"
-			if(reagents_in_body["hyperzine"])
-				advice += "<span class='scanner'>DO NOT administer peridaxon.</span>\n"
 			if(reagents_in_body["paracetamol"])
 				advice += "<span class='scanner'>DO NOT administer tramadol.</span>\n"
 			if(advice != "")
@@ -733,6 +733,8 @@
 		show_browser(user, dat, name, "handscanner", "size=500x400")
 	else
 		user.show_message(dat, 1)
+
+	return dat
 
 /mob/living/create_clone_movable(shift_x, shift_y)
 	..()

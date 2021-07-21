@@ -8,6 +8,10 @@
 	var/obj/item/tool/extinguisher/has_extinguisher = new/obj/item/tool/extinguisher
 	var/opened = 0
 
+/obj/structure/extinguisher_cabinet/lifeboat
+	name = "extinguisher cabinet"
+	icon = 'icons/obj/structures/machinery/lifeboat.dmi'
+	icon_state = "extinguisher_closed"
 
 /obj/structure/extinguisher_cabinet/attackby(obj/item/O, mob/user)
 	if(isrobot(user))

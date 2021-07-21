@@ -7,6 +7,7 @@
 /obj/item/clothing/mask/facehugger
 	name = "facehugger"
 	desc = "It has some sort of a tube at the end of its tail."
+	icon = 'icons/mob/hostiles/Effects.dmi'
 	icon_state = "facehugger"
 	item_state = "facehugger"
 	w_class = SIZE_TINY //Note: can be picked up by aliens unlike most other items of w_class below 4
@@ -38,12 +39,16 @@
 
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 	if (hive)
 		hivenumber = hive
 
 	set_hive_data(src, hivenumber)
 	go_active()
+
+/obj/item/clothing/mask/facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if(PF)
+		PF.flags_pass |= PASS_MOB_THRU_XENO
 
 /obj/item/clothing/mask/facehugger/Destroy()
 	. = ..()
@@ -92,14 +97,15 @@
 		user.animation_attack_on(src)
 		user.visible_message(SPAN_XENOWARNING("[user] crushes \the [src]"), SPAN_XENOWARNING("You crush \the [src]"))
 		die()
-		return
+		return XENO_ATTACK_ACTION
 
 	if(user.caste.can_hold_facehuggers)
 		if(user.on_fire)
 			to_chat(user, SPAN_WARNING("Touching \the [src] while you're on fire would burn it!"))
-			return
-		// TODO: Refactor how pickups work so you do not need to go through attack_hand
-		attack_hand(user)//Not a carrier, or already full? Just pick it up.
+		else
+			// TODO: Refactor how pickups work so you do not need to go through attack_hand
+			attack_hand(user)//Not a carrier, or already full? Just pick it up.
+		return XENO_NO_DELAY_ACTION
 
 /obj/item/clothing/mask/facehugger/attack(mob/M, mob/user)
 	if(!can_hug(M, hivenumber) || !(M.is_mob_incapacitated() || M.lying || M.buckled && !isYautja(M)))
@@ -123,6 +129,8 @@
 
 // TODO: make this use signals
 /obj/item/clothing/mask/facehugger/attack_self(mob/user)
+	..()
+
 	if(isXenoCarrier(user))
 		var/mob/living/carbon/Xenomorph/Carrier/C = user
 		C.store_hugger(src)
@@ -203,12 +211,12 @@
 
 /obj/item/clothing/mask/facehugger/proc/leap_at_nearest_target()
 	if(!isturf(loc))
-		return
+		return FALSE
 
 	for(var/mob/living/M in loc)
 		if(can_hug(M, hivenumber))
 			attach(M)
-			return
+			return TRUE
 
 	var/mob/living/target
 	for(var/mob/living/M in view(3, src))
@@ -217,12 +225,13 @@
 		target = M
 		break
 	if(!target)
-		return
+		return FALSE
 
 	target.visible_message(SPAN_WARNING("\The scuttling [src] leaps at [target]!"), \
 	SPAN_WARNING("The scuttling [src] leaps at [target]!"))
 	leaping = TRUE
 	throw_atom(target, 3, SPEED_FAST)
+	return TRUE
 
 /obj/item/clothing/mask/facehugger/proc/attach(mob/living/M)
 	if(attached || !can_hug(M, hivenumber))
@@ -329,11 +338,7 @@
 	if(isturf(loc))
 		var/obj/effect/alien/egg/E = locate() in loc
 		if(E && E.status == EGG_BURST)
-			visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
-			E.status = EGG_GROWN
-			E.icon_state = "Egg"
-			E.deploy_egg_triggers()
-			qdel(src)
+			return_to_egg(E)
 			return
 		var/obj/effect/alien/resin/trap/T = locate() in loc
 		if(T && T.trap_type == RESIN_TRAP_EMPTY)
@@ -405,6 +410,13 @@
 
 /obj/item/clothing/mask/facehugger/flamer_fire_act()
 	die()
+
+/obj/item/clothing/mask/facehugger/proc/return_to_egg(obj/effect/alien/egg/E)
+	visible_message(SPAN_XENOWARNING("[src] crawls back into [E]!"))
+	E.status = EGG_GROWN
+	E.icon_state = "Egg"
+	E.deploy_egg_triggers()
+	qdel(src)
 
 /**
  * Human hugger handling

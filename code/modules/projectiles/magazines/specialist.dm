@@ -128,6 +128,7 @@
 	flags_magazine = NO_FLAGS
 
 /obj/item/ammo_magazine/rocket/attack_self(mob/user)
+	..()
 	if(current_rounds <= 0)
 		to_chat(user, SPAN_NOTICE("You begin taking apart the empty tube frame..."))
 		if(do_after(user,10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -136,9 +137,10 @@
 			M.amount = 2
 			user.drop_held_item()
 			qdel(src)
-	else to_chat(user, "Not with a missile inside!")
+	else
+		to_chat(user, "Not with a missile inside!")
 
-/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/M, mob/living/carbon/human/user, def_zone)
+/obj/item/ammo_magazine/rocket/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
 	if(!istype(M) || !istype(user) || get_dist(user, M) > 1)
 		return
 	var/obj/item/weapon/gun/launcher/in_hand = M.get_active_hand()
@@ -251,7 +253,7 @@
 	if(current_rounds <= 0)
 		to_chat(user, SPAN_WARNING("The rocket tube has been used already."))
 		return
-	if(istype(W,/obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!warhead)
 			to_chat(user, SPAN_NOTICE("[name] must contain a warhead to do that!"))
 			return

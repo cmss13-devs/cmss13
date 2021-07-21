@@ -4,7 +4,12 @@
 	deliveryamt = 1
 	desc = "A strange piece of alien technology. It has many jagged, whirring blades and bizarre writing."
 	flags_item = ITEM_PREDATOR
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	item_icons = list(
+		WEAR_BACK = 'icons/mob/humans/onmob/hunter/pred_gear.dmi',
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
 	icon_state = "disk"
 	item_state = "pred_disk"
 	w_class = SIZE_TINY
@@ -14,8 +19,8 @@
 
 /obj/item/explosive/grenade/spawnergrenade/smartdisc/New()
 	..()
-	force = BULLET_DAMAGE_TIER_3
-	throwforce = BULLET_DAMAGE_TIER_5
+	force = 15
+	throwforce = 25
 	if(!isYautja(loc))
 		add_to_missing_pred_gear(src)
 
@@ -71,21 +76,24 @@
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/attack_self(mob/user as mob)
-	if(!active)
-		if(!isYautja(user))
-			if(prob(75))
-				to_chat(user, "You fiddle with the disc, but nothing happens. Try again maybe?")
-				return
-		to_chat(user, SPAN_WARNING("You activate the smart-disc and it whirrs to life!"))
-		activate(user)
-		add_fingerprint(user)
-		var/mob/living/carbon/C = user
-		if(istype(C) && !C.throw_mode)
-			C.toggle_throw_mode(THROW_MODE_NORMAL)
-	return
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/attack_self(mob/user)
+	..()
 
-/obj/item/explosive/grenade/spawnergrenade/smartdisc/activate(mob/user as mob)
+	if(active)
+		return
+
+	if(!isYautja(user))
+		if(prob(75))
+			to_chat(user, "You fiddle with the disc, but nothing happens. Try again maybe?")
+			return
+	to_chat(user, SPAN_WARNING("You activate the smart-disc and it whirrs to life!"))
+	activate(user)
+	add_fingerprint(user)
+	var/mob/living/carbon/C = user
+	if(istype(C) && !C.throw_mode)
+		C.toggle_throw_mode(THROW_MODE_NORMAL)
+
+/obj/item/explosive/grenade/spawnergrenade/smartdisc/activate(mob/user)
 	if(active)
 		return
 
@@ -121,7 +129,7 @@
 /mob/living/simple_animal/hostile/smartdisc
 	name = "smart-disc"
 	desc = "A furious, whirling array of blades and alien technology."
-	icon = 'icons/obj/items/weapons/predator.dmi'
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "disk_active"
 	icon_living = "disk_active"
 	icon_dead = "disk"
@@ -162,8 +170,8 @@
 
 
 /mob/living/simple_animal/hostile/smartdisc/New()
-	melee_damage_lower = BULLET_DAMAGE_TIER_3
-	melee_damage_upper = BULLET_DAMAGE_TIER_5
+	melee_damage_lower = 15
+	melee_damage_upper = 25
 	..()
 /mob/living/simple_animal/hostile/smartdisc/Process_Spacemove(var/check_drift = 0)
 	return 1
@@ -224,7 +232,7 @@
 	var/list/L = hearers(src, dist)
 	return L
 
-/mob/living/simple_animal/hostile/smartdisc/Life()
+/mob/living/simple_animal/hostile/smartdisc/Life(delta_time)
 	. = ..()
 	if(!.)
 		walk(src, 0)
@@ -270,7 +278,6 @@
 		return 0
 	if(!(target_mob in ListTargets(5)) || prob(20) || target_mob.stat)
 		stance = HOSTILE_STANCE_IDLE
-		sleep(1)
 		return 0
 	if(get_dist(src, target_mob) <= 1)	//Attacking
 		AttackingTarget()

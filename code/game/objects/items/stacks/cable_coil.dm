@@ -19,7 +19,7 @@
 	item_state = "coil"
 	attack_verb = list("whipped", "lashed", "disciplined", "flogged")
 	stack_id = "cable coil"
-
+	attack_speed = 3
 
 /obj/item/stack/cable_coil/Initialize(mapload, length = MAXCOIL, var/param_color = null)
 	. = ..()
@@ -77,7 +77,7 @@
 		to_chat(usr, SPAN_NOTICE("\blue You cannot do that."))
 
 /obj/item/stack/cable_coil/attackby(obj/item/W, mob/user)
-	if( istype(W, /obj/item/tool/wirecutters) && src.amount > 1)
+	if( HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && src.amount > 1)
 		src.amount--
 		new/obj/item/stack/cable_coil(user.loc, 1,color)
 		to_chat(user, SPAN_NOTICE("You cut a piece off the cable coil."))
@@ -327,7 +327,7 @@
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
-			S.heal_damage(0,15,0,1)
+			S.heal_damage(0, 15, TRUE)
 			H.pain.recalculate_pain()
 			user.visible_message(SPAN_DANGER("\The [user] repairs some burn damage on \the [M]'s [S.display_name] with \the [src]."))
 			return

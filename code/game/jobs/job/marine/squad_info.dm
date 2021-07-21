@@ -100,6 +100,8 @@
 					rank = "SG"
 				if(JOB_SQUAD_SPECIALIST)
 					rank = "Spc"
+				if(JOB_SQUAD_RTO)
+					rank = "RTO"
 				if(JOB_SQUAD_LEADER)
 					rank = "SL"
 				else
@@ -175,6 +177,8 @@
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)
 						rank = "Spc"
+					if(JOB_SQUAD_RTO)
+						rank = "RTO"
 					if(JOB_SQUAD_LEADER)
 						rank = "SL"
 					else
@@ -218,6 +222,8 @@
 						rank = "SG"
 					if(JOB_SQUAD_SPECIALIST)
 						rank = "Spc"
+					if(JOB_SQUAD_RTO)
+						rank = "RTO"
 					if(JOB_SQUAD_LEADER)
 						rank = "SL"
 					else

@@ -27,9 +27,9 @@
 	var/rigged = 0
 	var/spam_flag = 0
 
-	var/const/deffont = "Verdana"
-	var/const/signfont = "Times New Roman"
-	var/const/crayonfont = "Comic Sans MS"
+	var/deffont = "Verdana"
+	var/signfont = "Times New Roman"
+	var/crayonfont = "Comic Sans MS"
 
 //lipstick wiping is in code/game/obj/items/weapons/cosmetics.dm!
 
@@ -96,8 +96,8 @@
 	return
 
 /obj/item/paper/attack_self(mob/living/user)
+	..()
 	examine(user)
-	return
 
 /obj/item/paper/attack_remote(var/mob/living/silicon/ai/user as mob)
 	var/dist
@@ -456,6 +456,9 @@
 	name = "Judgement"
 	info = "For crimes against the station, the offender is sentenced to:<BR>\n<BR>\n"
 
+/obj/item/paper/almayer_storage
+	name = "Almayer Emergency Storage Note"
+	info = "<i>Hey Garry, I got the boys to move most of the emergency supplies down into the ASRS hold just like ya' asked. <BR>Next time you're around Chinook I'll buy you a beer ok?</i>"
 /obj/item/paper/Toxin
 	name = "Chemical Information"
 	info = "Known Onboard Toxins:<BR>\n\tGrade A Semi-Liquid Phoron:<BR>\n\t\tHighly poisonous. You cannot sustain concentrations above 15 units.<BR>\n\t\tA gas mask fails to filter phoron after 50 units.<BR>\n\t\tWill attempt to diffuse like a gas.<BR>\n\t\tFiltered by scrubbers.<BR>\n\t\tThere is a bottled version which is very different<BR>\n\t\t\tfrom the version found in canisters!<BR>\n<BR>\n\t\tWARNING: Highly Flammable. Keep away from heat sources<BR>\n\t\texcept in a enclosed fire area!<BR>\n\t\tWARNING: It is a crime to use this without authorization.<BR>\nKnown Onboard Anti-Toxin:<BR>\n\tAnti-Toxin Type 01P: Works against Grade A Phoron.<BR>\n\t\tBest if injected directly into bloodstream.<BR>\n\t\tA full injection is in every regular Med-Kit.<BR>\n\t\tSpecial toxin Kits hold around 7.<BR>\n<BR>\nKnown Onboard Chemicals (other):<BR>\n\tRejuvenation T#001:<BR>\n\t\tEven 1 unit injected directly into the bloodstream<BR>\n\t\t\twill cure paralysis and sleep phoron.<BR>\n\t\tIf administered to a dying patient it will prevent<BR>\n\t\t\tfurther damage for about units*3 seconds.<BR>\n\t\t\tit will not cure them or allow them to be cured.<BR>\n\t\tIt can be administeredd to a non-dying patient<BR>\n\t\t\tbut the chemicals disappear just as fast.<BR>\n\tSoporific T#054:<BR>\n\t\t5 units wilkl induce precisely 1 minute of sleep.<BR>\n\t\t\tThe effect are cumulative.<BR>\n\t\tWARNING: It is a crime to use this without authorization"
@@ -579,7 +582,7 @@
 		if(!random_chem)
 			random_chem = pick(chemical_gen_classes_list["T1"])
 		C = chemical_reagents_list["[random_chem]"]
-	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weston-Yamada Document</B><BR>Experiment Notes</I><HR><H2>"
+	var/txt = "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Experiment Notes</I><HR><H2>"
 	switch(note_type)
 		if("synthesis")
 			var/datum/chemical_reaction/G = chemical_reactions_list[C.id]
@@ -603,19 +606,19 @@
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
 			if(C.get_property(PROPERTY_EXPLOSIVE))
 				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
-			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("test")
 			name = "Experiment [pick("C","Q","V","W","X","Y","Z")][rand(100,999)][pick("a","b","c")]"
 			txt += "Note for [name]</H2></center>"
 			txt += "Subject <I>[rand(10000,99999)]</I> experienced [pick(C.properties)] effects during testing of [C.name]. <BR>\nTesting for additional chemical properties is currently pending. <BR>\n"
-			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("grant")
 			if(!grant)
 				grant = rand(2,4)
 			name = "Research Grant"
-			txt += "Weston-Yamada Research Grant</H2></center>"
-			txt += "Dear valued researcher. Weston-Yamada has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weston-Yamada research data terminal to receive the benefits.<BR>\n"
-			txt += "<BR>\n<HR> - <I>Weston-Yamada</I>"
+			txt += "Weyland-Yutani Research Grant</H2></center>"
+			txt += "Dear valued researcher. Weyland-Yutani has taken high interest of your recent scientific progress. To further support your work we have sent you this research grant of [grant] credits. Please scan at your local Weyland-Yutani research data terminal to receive the benefits.<BR>\n"
+			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 	info = txt
 
 /obj/item/paper/research_notes/bad
@@ -762,6 +765,7 @@
 		\[small\]FOR USE BY MP'S ONLY\[/small\]\[br\]
 		\[barcode\]\[/center\]"}
 	info = parsepencode(template, null, null, FALSE)
+	update_icon()
 
 /obj/item/paper/incident/Destroy()
 	incident = null

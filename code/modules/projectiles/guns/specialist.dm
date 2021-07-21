@@ -11,7 +11,7 @@
 	able_to_fire(mob/living/user)
 		. = ..()
 		if(. && istype(user)) //Let's check all that other stuff first.
-			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
+			if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SNIPER)
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return 0
 
@@ -117,7 +117,7 @@
 
 /obj/item/weapon/gun/rifle/sniper/elite
 	name = "\improper M42C anti-tank sniper rifle"
-	desc = "A high end mag-rail heavy sniper rifle from Weston-Armat chambered in the heaviest ammo available, 10x99mm Caseless."
+	desc = "A high end mag-rail heavy sniper rifle from Weyland-Armat chambered in the heaviest ammo available, 10x99mm Caseless."
 	icon_state = "m42c"
 	item_state = "m42c" //NEEDS A TWOHANDED STATE
 
@@ -241,7 +241,7 @@
 						/obj/item/attachable/reflex
 						)
 
-	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER
 	starting_attachment_types = list(/obj/item/attachable/stock/rifle/marksman)
 
 	flags_item = TWOHANDED|NO_CRYO_STORE
@@ -249,7 +249,7 @@
 
 /obj/item/weapon/gun/rifle/m4ra/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 17,"rail_x" = 12, "rail_y" = 20, "under_x" = 23, "under_y" = 13, "stock_x" = 24, "stock_y" = 13)
-//also logs for AA canno
+
 /obj/item/weapon/gun/rifle/m4ra/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_6
@@ -264,7 +264,7 @@
 /obj/item/weapon/gun/rifle/m4ra/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user)) //Let's check all that other stuff first.
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 
@@ -319,13 +319,13 @@
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 	gun_category = GUN_CATEGORY_HEAVY
 	starting_attachment_types = list(/obj/item/attachable/smartbarrel)
+	auto_retrieval_slot = WEAR_J_STORE
 
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
 	. = ..()
 	ammo_primary = GLOB.ammo_list[ammo_primary]
 	ammo_secondary = GLOB.ammo_list[ammo_secondary]
-	AddElement(/datum/element/magharness)
 	MD = new(src)
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
@@ -455,7 +455,7 @@
 	if(.)
 		if(!ishuman(user)) return 0
 		var/mob/living/carbon/human/H = user
-		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED))
+		if(!skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_SMARTGUN) && !skillcheckexplicit(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
 		if ( !istype(H.wear_suit,/obj/item/clothing/suit/storage/marine/smartgunner) || !istype(H.back,/obj/item/smartgun_powerpack))
@@ -603,13 +603,11 @@
 	var/list/unconscious_targets = list()
 	var/list/turf/path = list()
 	var/turf/T
-	var/mob/M
 
-	for(M in orange(range, user)) // orange allows sentry to fire through gas and darkness
-		if(!isliving(M) || M.stat & DEAD || isrobot(M)) continue // No dead or non living.
+	for(var/mob/living/M in orange(range, user)) // orange allows sentry to fire through gas and darkness
+		if((M.stat & DEAD)) continue // No dead or non living.
 
-		var/mob/living/carbon/human/H = M
-		if(istype(H) && H.get_target_lock(user.faction_group)) continue
+		if(M.get_target_lock(user.faction_group)) continue
 		if(angle > 0)
 			var/opp
 			var/adj
@@ -712,12 +710,19 @@
 	ammo_secondary = /datum/ammo/bullet/smartgun/dirty/armor_piercing///Toggled ammo type
 	flags_gun_features = GUN_WY_RESTRICTED|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY|GUN_HAS_FULL_AUTO
 
+/obj/item/weapon/gun/smartgun/dirty/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_PMC
+
 
 //TERMINATOR SMARTGUN
 /obj/item/weapon/gun/smartgun/dirty/elite
 	name = "\improper M56T 'Terminator' smartgun"
 	desc = "The actual firearm in the 4-piece M56T Smartgun System. If you have this, you're about to bring some serious pain to anyone in your way.\nYou may toggle firing restrictions by using a special action."
 
+/obj/item/weapon/gun/smartgun/dirty/elite/Initialize(mapload, ...)
+	. = ..()
+	MD.iff_signal = FACTION_WY_DEATHSQUAD
 
 /obj/item/weapon/gun/smartgun/dirty/elite/set_gun_config_values()
 	..()
@@ -771,11 +776,8 @@
 	set name = "Switch Storage Drawing Method"
 	set category = "Object"
 	set src in usr
-	cylinder.storage_flags ^= STORAGE_USING_DRAWING_METHOD
-	if (cylinder.storage_flags & STORAGE_USING_DRAWING_METHOD)
-		to_chat(usr, "Clicking [src] with an empty hand now puts the last stored item in your hand.")
-	else
-		to_chat(usr, "Clicking [src] with an empty hand now opens the internal storage menu.")
+
+	cylinder.storage_draw_logic(src.name)
 
 //-------------------------------------------------------
 //GRENADE LAUNCHER
@@ -799,12 +801,12 @@
 	aim_slowdown = SLOWDOWN_ADS_SPECIALIST
 	wield_delay = WIELD_DELAY_SLOW
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_SPECIALIST|GUN_WIELDED_FIRING_ONLY
-	///Can you access the storage by clicking it, put things into it, or take things out? Meant for break-actions mostly but useful for any state where you want access to be toggleable. Make sure to call cylinder.hide_from(user) so they don't still have the screen open!
+	///Can you access the storage by clicking it, put things into it, or take things out? Meant for break-actions mostly but useful for any state where you want access to be toggleable. Make sure to call cylinder.close(user) so they don't still have the screen open!
 	var/open_chamber = TRUE
 	///Does it launch its grenades in a low arc or a high? Do they strike people in their path, or fly beyond?
 	var/is_lobbing = FALSE
 	///Verboten munitions. This is a blacklist. Anything in this list isn't loadable.
-	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade)
+	var/disallowed_grenade_types = list(/obj/item/explosive/grenade/spawnergrenade, /obj/item/explosive/grenade/alien)
 	///What is this weapon permitted to fire? This is a whitelist. Anything in this list can be fired. Anything.
 	var/valid_munitions = list(/obj/item/explosive/grenade)
 
@@ -919,7 +921,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_WARNING("The [name] is empty."))
 			return FALSE
 		var/obj/item/G = cylinder.contents[1]
-		if(grenade_grief_check(G))
+		if(user.faction == FACTION_MARINE && explosive_grief_check(G))
 			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 			return FALSE
@@ -1002,7 +1004,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/launcher/grenade/m92/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user))
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 
@@ -1034,10 +1036,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	. = ..()
 	if (. && istype(user))
 		if(riot_version)
-			if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+			if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 				return FALSE
-		else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
+		else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 
@@ -1112,9 +1114,13 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			click_empty(user)
 			to_chat(user, SPAN_WARNING("You can't fire that here!"))
 			return 0*/
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_ROCKET)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return 0
+		if(user.faction == FACTION_MARINE && explosive_grief_check(src))
+			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
+			msg_admin_niche("[key_name(user)] attempted to fire \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+			return FALSE
 		if(current_mag && current_mag.current_rounds > 0)
 			make_rocket(user, 0, 1)
 

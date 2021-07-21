@@ -9,14 +9,12 @@
 	to_world("<B>The current game mode is - Extended!</B>")
 
 /datum/game_mode/extended/pre_setup()
-	setup_round_stats()
 	roles_to_roll = RoleAuthority.roles_for_mode - (RoleAuthority.roles_for_mode & (ROLES_XENO|ROLES_WHITELISTED|ROLES_SPECIAL))
 
 	return ..()
 
 /datum/game_mode/extended/post_setup()
 	initialize_post_marine_gear_list()
-	initialize_map_resource_list()
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
 	round_time_lobby = world.time
@@ -40,7 +38,6 @@
 		round_statistics.end_round_player_population = GLOB.clients.len
 		round_statistics.log_round_statistics()
 
-	announce_agents()
 	calculate_end_statistics()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()

@@ -15,7 +15,7 @@
 	X.visible_message(SPAN_XENOWARNING("[X] fires a burst of bone chips at [A]!"), SPAN_XENOWARNING("You fire a burst of bone chips at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, X.loc)
+	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
 
 	var/datum/ammo/ammoDatum = GLOB.ammo_list[ammo_type]
 
@@ -151,6 +151,11 @@
 	var/mob/living/carbon/Xenomorph/X = owner
 
 	if(!istype(X))
+		return
+
+	var/area/xeno_area = get_area(X)
+	if(xeno_area.flags_area & AREA_CONTAINMENT)
+		to_chat(X, SPAN_XENOWARNING("You can't activate this here!"))
 		return
 
 	if(!X.check_state())

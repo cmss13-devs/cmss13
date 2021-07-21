@@ -50,13 +50,6 @@ datum/chemical_reaction/adrenaline
 	required_reagents = list("inaprovaline" = 1, "carbon" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/hyperzine
-	name = "Hyperzine"
-	id = "hyperzine"
-	result = "hyperzine"
-	required_reagents = list("sugar" = 1, "phosphorus" = 1, "sulfur" = 1,)
-	result_amount = 3
-
 /datum/chemical_reaction/ryetalyn
 	name = "Ryetalyn"
 	id = "ryetalyn"
@@ -150,13 +143,6 @@ datum/chemical_reaction/adrenaline
 	required_reagents = list("ethanol" = 1, "tramadol" = 1)
 	required_catalysts = list("phoron" = 1)
 	result_amount = 1
-
-/datum/chemical_reaction/synaptizine
-	name = "Synaptizine"
-	id = "synaptizine"
-	result = "synaptizine"
-	required_reagents = list("sugar" = 1, "lithium" = 1, "water" = 1)
-	result_amount = 3
 
 /datum/chemical_reaction/leporazine
 	name = "Leporazine"

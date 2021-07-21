@@ -1,10 +1,10 @@
 /datum/caste_datum/warrior
-	caste_name = "Warrior"
+	caste_type = XENO_CASTE_WARRIOR
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_3
 	melee_damage_upper = XENO_DAMAGE_TIER_5
-	max_health = XENO_HEALTH_TIER_5
+	max_health = XENO_HEALTH_TIER_6
 	plasma_gain = XENO_PLASMA_GAIN_TIER_9
 	plasma_max = XENO_NO_PLASMA
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
@@ -14,8 +14,8 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/warrior_base
 
-	evolves_to = list("Praetorian", "Crusher")
-	deevolves_to = "Defender"
+	evolves_to = list(XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER)
+	deevolves_to = XENO_CASTE_DEFENDER
 	caste_desc = "A powerful front line combatant."
 	can_vent_crawl = 0
 
@@ -27,9 +27,10 @@
 	heal_resting = 1.4
 
 /mob/living/carbon/Xenomorph/Warrior
-	caste_name = "Warrior"
-	name = "Warrior"
+	caste_type = XENO_CASTE_WARRIOR
+	name = XENO_CASTE_WARRIOR
 	desc = "A beefy, alien with an armored carapace."
+	icon = 'icons/mob/hostiles/warrior.dmi'
 	icon_size = 64
 	icon_state = "Warrior Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -38,21 +39,17 @@
 	tier = 2
 	pull_speed = 2.0 // about what it was before, slightly faster
 
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/warrior_punch,
 		/datum/action/xeno_action/activable/lunge,
-		/datum/action/xeno_action/activable/fling
+		/datum/action/xeno_action/activable/fling,
 	)
 
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
-
-/mob/living/carbon/Xenomorph/Warrior/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
-	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_warrior))
 
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)
@@ -68,6 +65,7 @@
 		icon_state = "[mutation_type] Warrior Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_wounds()
 
 /mob/living/carbon/Xenomorph/Warrior/throw_item(atom/target)
 	toggle_throw_mode(THROW_MODE_OFF)
@@ -88,7 +86,7 @@
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
-	var/should_neckgrab = (isHumanStrict(L) || (isXeno(L) && !can_not_harm(L))) && lunge
+	var/should_neckgrab = !(src.can_not_harm(L)) && lunge
 
 	if(!QDELETED(L) && !QDELETED(L.pulledby) && L != src ) //override pull of other mobs
 		visible_message(SPAN_WARNING("[src] has broken [L.pulledby]'s grip on [L]!"), null, null, 5)
@@ -120,24 +118,29 @@
 
 	var/stored_shield_max = 160
 	var/stored_shield_per_slash = 40
-	var/stored_shield = 0
+	var/datum/component/shield_component
 
-/datum/behavior_delegate/warrior_base/melee_attack_additional_effects_self()
-	..()
+/datum/behavior_delegate/warrior_base/New()
+	. = ..()
 
-	if (stored_shield == stored_shield_max)
-		bound_xeno.add_xeno_shield(stored_shield, XENO_SHIELD_SOURCE_GENERIC)
-		bound_xeno.visible_message(SPAN_XENOWARNING("\The [bound_xeno] roars as it mauls its target, its exoskeleton shimmering for a second!"), SPAN_XENOHIGHDANGER("You feel your rage increase your resiliency to damage!"))
-		bound_xeno.xeno_jitter(1 SECONDS)
-		bound_xeno.flick_heal_overlay(2 SECONDS, "#FFA800")
-		bound_xeno.emote("roar")
-		stored_shield = 0
+/datum/behavior_delegate/warrior_base/add_to_xeno()
+	. = ..()
+	if(!shield_component)
+		shield_component = bound_xeno.AddComponent(\
+			/datum/component/shield_slash,\
+			stored_shield_max,\
+			stored_shield_per_slash,\
+			"Warrior Shield")
 	else
-		stored_shield += stored_shield_per_slash
+		bound_xeno.TakeComponent(shield_component)
 
-/datum/behavior_delegate/warrior_base/append_to_stat()
-	. = list()
-	. += "Stored Shield: [stored_shield]/[stored_shield_max]"
+/datum/behavior_delegate/warrior_base/remove_from_xeno()
+	shield_component.RemoveComponent()
+	return ..()
+
+/datum/behavior_delegate/warrior_base/Destroy(force, ...)
+	qdel(shield_component)
+	return ..()
 
 /datum/behavior_delegate/boxer
 	name = "Boxer Warrior Behavior Delegate"
@@ -176,7 +179,7 @@
 		clear_head++
 		next_clear_head_regen = wt + clear_head_delay
 
-/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(atom/A, ko_boost = 0.5)
+/datum/behavior_delegate/boxer/melee_attack_additional_effects_target(mob/living/carbon/A, ko_boost = 0.5)
 	if(!ismob(A))
 		return
 	if(punching_bag != A)

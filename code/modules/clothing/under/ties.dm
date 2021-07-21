@@ -10,7 +10,8 @@
 	var/list/mob_overlay = list()
 	var/overlay_state = null
 	var/list/accessory_icons = list(WEAR_BODY = 'icons/mob/humans/onmob/ties.dmi', WEAR_JACKET = 'icons/mob/humans/onmob/ties.dmi')
-	var/list/on_rolled = list()	//used when uniform sleevels are rolled ("rolled" entry). Set to "none" to hide in this state.
+	///Jumpsuit flags that cause the accessory to be hidden. format: "x" OR "(x|y|z)" (w/o quote marks).
+	var/jumpsuit_hide_states
 	var/high_visibility	//if it should appear on examine without detailed view
 	var/removable = TRUE
 	flags_equip_slot = SLOT_ACCESSORY
@@ -30,7 +31,7 @@
 	return TRUE
 
 //when user attached an accessory to S
-/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user)
+/obj/item/clothing/accessory/proc/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	if(!istype(S))
 		return
 	has_suit = S
@@ -38,8 +39,10 @@
 	has_suit.overlays += get_inv_overlay()
 
 	if(user)
-		to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
+		if(!silent)
+			to_chat(user, SPAN_NOTICE("You attach \the [src] to \the [has_suit]."))
 		src.add_fingerprint(user)
+	return TRUE
 
 /obj/item/clothing/accessory/proc/on_removed(mob/living/user, obj/item/clothing/C)
 	if(!has_suit)
@@ -51,6 +54,7 @@
 		src.add_fingerprint(usr)
 	else
 		src.forceMove(get_turf(src))
+	return TRUE
 
 //default attackby behaviour
 /obj/item/clothing/accessory/attackby(obj/item/I, mob/user)
@@ -59,8 +63,12 @@
 //default attack_hand behaviour
 /obj/item/clothing/accessory/attack_hand(mob/user as mob)
 	if(has_suit)
-		return	//we aren't an object on the ground so don't call parent
+		return	//we aren't an object on the ground so don't call parent. If overriding to give special functions to a host item, return TRUE so that the host doesn't continue its own attack_hand.
 	..()
+
+///Extra text to append when attached to another clothing item and the host clothing is examined.
+/obj/item/clothing/accessory/proc/additional_examine_text()
+	return "."
 
 /obj/item/clothing/accessory/blue
 	name = "blue tie"
@@ -124,10 +132,12 @@
 	var/medal_citation
 	slot = ACCESSORY_SLOT_MEDAL
 	high_visibility = TRUE
+	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 
-/obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user)
+/obj/item/clothing/accessory/medal/on_attached(obj/item/clothing/S, mob/living/user, silent)
 	. = ..()
-	RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
+	if(.)
+		RegisterSignal(S, COMSIG_ITEM_PICKUP, .proc/remove_medal)
 
 /obj/item/clothing/accessory/medal/proc/remove_medal(var/obj/item/clothing/C, var/mob/user)
 	SIGNAL_HANDLER
@@ -137,42 +147,86 @@
 
 /obj/item/clothing/accessory/medal/on_removed(mob/living/user, obj/item/clothing/C)
 	. = ..()
-	UnregisterSignal(C, COMSIG_ITEM_PICKUP)
+	if(.)
+		UnregisterSignal(C, COMSIG_ITEM_PICKUP)
 
 /obj/item/clothing/accessory/medal/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
-	if(istype(H) && istype(user) && user.a_intent == INTENT_HELP)
-		if(H.w_uniform)
-			var/obj/item/clothing/under/U = H.w_uniform
-			if(recipient_name != H.real_name)
-				to_chat(user, SPAN_WARNING("[src] isn't awarded to [H]."))
-				return
-			if(user != H)
-				user.visible_message("[user] starts pinning [src] on [H]'s [U.name].", \
-				SPAN_NOTICE("You start pinning [src] on [H]'s [U.name]."))
-				if(user.action_busy)
-					return
-				if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, H))
-					return
-				user.drop_held_item()
-				U.attach_accessory(user, src)
-				H.update_inv_w_uniform()
-				if(user == H)
-					user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [U.name]."),
-					SPAN_NOTICE("You pin [src] to your [U.name]."))
-				else
-					user.visible_message("[user] pins [src] on [H]'s [U.name].", \
-					SPAN_NOTICE("You pin [src] on [H]'s [U.name]."))
-		else
-			to_chat(user, SPAN_WARNING("[src] needs a uniform to be pinned to."))
-	else
+	if(!(istype(H) && istype(user)))
 		return ..()
+	if(recipient_name != H.real_name)
+		to_chat(user, SPAN_WARNING("[src] wasn't awarded to [H]."))
+		return
+
+	var/obj/item/clothing/U
+	if(H.wear_suit && H.wear_suit.can_attach_accessory(src)) //Prioritises topmost garment, IE service jackets, if possible.
+		U = H.wear_suit
+	else
+		U = H.w_uniform //Will be null if no uniform. That this allows medal ceremonies in which the hero is wearing no pants is correct and just.
+	if(!U)
+		if(user == H)
+			to_chat(user, SPAN_WARNING("You aren't wearing anything you can pin [src] to."))
+		else
+			to_chat(user, SPAN_WARNING("[H] isn't wearing anything you can pin [src] to."))
+		return
+
+	if(user == H)
+		user.visible_message(SPAN_NOTICE("[user] pins [src] to \his [U.name]."),
+		SPAN_NOTICE("You pin [src] to your [U.name]."))
+
+	else
+		if(user.action_busy)
+			return
+		if(user.a_intent != INTENT_HARM)
+			user.affected_message(H,
+			SPAN_NOTICE("You start to pin [src] onto [H]."),
+			SPAN_NOTICE("[user] starts to pin [src] onto you."),
+			SPAN_NOTICE("[user] starts to pin [src] onto [H]."))
+			if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, H))
+				return
+			if(!(U == H.w_uniform || U == H.wear_suit))
+				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to it."))
+				return
+			user.affected_message(H,
+			SPAN_NOTICE("You pin [src] to [H]'s [U.name]."),
+			SPAN_NOTICE("[user] pins [src] to your [U.name]."),
+			SPAN_NOTICE("[user] pins [src] to [H]'s [U.name]."))
+
+		else
+			user.affected_message(H,
+			SPAN_ALERT("You start to pin [src] to [H]."),
+			SPAN_ALERT("[user] starts to pin [src] to you."),
+			SPAN_ALERT("[user] starts to pin [src] to [H]."))
+			if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE, H))
+				return
+			if(!(U == H.w_uniform || U == H.wear_suit))
+				to_chat(user, SPAN_WARNING("[H] took off \his [U.name] before you could finish pinning [src] to \him."))
+				return
+			user.affected_message(H,
+			SPAN_DANGER("You slam the [src.name]'s pin through [H]'s [U.name] and into \his chest."),
+			SPAN_DANGER("[user] slams the [src.name]'s pin through your [U.name] and into your chest!"),
+			SPAN_DANGER("[user] slams the [src.name]'s pin through [H]'s [U.name] and into \his chest."))
+
+			/*Some duplication from punch code due to attack message and damage stats.
+			This does cut damage and awarding multiple medals like this to the same person will cause bleeding.*/
+			H.last_damage_data = create_cause_data("macho bullshit", user)
+			user.animation_attack_on(H)
+			user.flick_attack_overlay(H, "punch")
+			playsound(user.loc, "punch", 25, 1)
+			H.apply_damage(5, BRUTE, "chest", 1)
+
+			if(!H.stat && H.pain.feels_pain)
+				if(prob(35))
+					INVOKE_ASYNC(H, /mob.proc/emote, "pain")
+				else
+					INVOKE_ASYNC(H, /mob.proc/emote, "me", 1, "winces.")
+
+	if(U.can_attach_accessory(src) && user.drop_held_item()) 
+		U.attach_accessory(H, src, TRUE)
 
 /obj/item/clothing/accessory/medal/can_attach_to(mob/user, obj/item/clothing/C)
 	if(user.real_name != recipient_name)
 		return FALSE
-
 	return TRUE
-
 
 /obj/item/clothing/accessory/medal/examine(mob/user)
 	..()
@@ -211,7 +265,7 @@
 
 /obj/item/clothing/accessory/medal/silver/security
 	name = "robust security award"
-	desc = "An award for distinguished combat and sacrifice in defence of W-Y's commercial interests. Often awarded to security staff."
+	desc = "An award for distinguished combat and sacrifice in defence of Wey-Yu's commercial interests. Often awarded to security staff."
 
 /obj/item/clothing/accessory/medal/gold
 	name = "gold medal"
@@ -220,7 +274,7 @@
 
 /obj/item/clothing/accessory/medal/gold/captain
 	name = "medal of captaincy"
-	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of a captain to W-Y, and their undisputable authority over their crew."
+	desc = "A golden medal awarded exclusively to those promoted to the rank of captain. It signifies the codified responsibilities of a captain to Wey-Yu, and their undisputable authority over their crew."
 
 /obj/item/clothing/accessory/medal/gold/heroism
 	name = "medal of exceptional heroism"
@@ -253,6 +307,7 @@
 	desc = "A fancy red armband!"
 	icon_state = "red"
 	slot = ACCESSORY_SLOT_ARMBAND
+	jumpsuit_hide_states = (UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/armband/cargo
 	name = "cargo armband"
@@ -289,7 +344,7 @@
 	name = "\improper USCM patch"
 	desc = "A fire resistant shoulder patch, worn by the men and women of the United States Colonial Marines."
 	icon_state = "uscmpatch"
-	on_rolled = list("down" = "none")
+	jumpsuit_hide_states = (UNIFORM_SLEEVE_ROLLED|UNIFORM_SLEEVE_CUT|UNIFORM_JACKET_REMOVED)
 
 /obj/item/clothing/accessory/patch/falcon
 	name = "\improper Falling Falcons patch"
@@ -306,6 +361,7 @@
 	slot = ACCESSORY_SLOT_RANK
 	high_visibility = TRUE
 	gender = PLURAL
+	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 
 /obj/item/clothing/accessory/ranks/New()
 	..()
@@ -429,7 +485,7 @@
 		to_chat(user, SPAN_DANGER("There is already a [holstered] holstered here!"))
 		return
 
-	if (!istype(I, /obj/item/weapon/gun))
+	if (!isgun(I))
 		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
 		return
 
@@ -464,7 +520,7 @@
 	if (has_suit)	//if we are part of a suit
 		if (holstered)
 			unholster(user)
-		return
+		return TRUE
 
 	..(user)
 
@@ -483,6 +539,11 @@
 	else
 		to_chat(user, "It is empty.")
 
+/obj/item/clothing/accessory/holster/additional_examine_text()
+	if(holstered)
+		return ", carrying \a [holstered]."
+	. = ..()
+
 /obj/item/clothing/accessory/holster/armpit
 	name = "shoulder holster"
 	desc = "A worn-out handgun holster. Perfect for concealed carry"
@@ -500,28 +561,35 @@
 
 //Ties that can store stuff
 
+/obj/item/storage/internal/accessory
+	storage_slots = 3
+
 /obj/item/clothing/accessory/storage
 	name = "load bearing equipment"
 	desc = "Used to hold things when you don't have enough hands."
 	icon_state = "webbing"
 	w_class = SIZE_LARGE //too big to store in other pouches
-	var/slots = 3
-	var/obj/item/storage/internal/hold
+	var/obj/item/storage/internal/hold = /obj/item/storage/internal/accessory
 	slot = ACCESSORY_SLOT_UTILITY
 	high_visibility = TRUE
 
-/obj/item/clothing/accessory/storage/New()
-	..()
-	hold = new/obj/item/storage/internal(src)
-	hold.storage_slots = slots
+/obj/item/clothing/accessory/storage/Initialize()
+	. = ..()
+	hold = new hold(src)
 
 /obj/item/clothing/accessory/storage/Destroy()
 	QDEL_NULL(hold)
 	return ..()
 
-/obj/item/clothing/accessory/storage/attack_hand(mob/user as mob)
-	if (!isnull(hold) && hold.handle_attack_hand(user))
+/obj/item/clothing/accessory/storage/clicked(var/mob/user, var/list/mods)
+	if(mods["alt"] && !isnull(hold) && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		return
+	. = ..()
+
+/obj/item/clothing/accessory/storage/attack_hand(mob/user as mob, mods)
+	if (!isnull(hold) && hold.handle_attack_hand(user, mods))
 		..(user)
+	return TRUE
 
 /obj/item/clothing/accessory/storage/MouseDrop(obj/over_object as obj)
 	if (has_suit || hold)
@@ -530,7 +598,7 @@
 	if (hold.handle_mousedrop(usr, over_object))
 		..(over_object)
 
-/obj/item/clothing/accessory/storage/attackby(obj/item/W as obj, mob/user as mob)
+/obj/item/clothing/accessory/storage/attackby(obj/item/W, mob/user)
 	return hold.attackby(W, user)
 
 /obj/item/clothing/accessory/storage/emp_act(severity)
@@ -541,44 +609,51 @@
 	hold.hear_talk(M, msg)
 	..()
 
-/obj/item/clothing/accessory/storage/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/storage/attack_self(mob/user)
+	..()
 	to_chat(user, SPAN_NOTICE("You empty [src]."))
 	var/turf/T = get_turf(src)
-	hold.hide_from(usr)
+	hold.storage_close(usr)
 	for(var/obj/item/I in hold.contents)
 		hold.remove_from_storage(I, T)
 	src.add_fingerprint(user)
 
-/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/C, mob/living/user)
-	..()
-	C.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+/obj/item/clothing/accessory/storage/on_attached(obj/item/clothing/C, mob/living/user, silent)
+	. = ..()
+	if(.)
+		C.w_class = w_class //To prevent monkey business.
+		C.verbs += /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
 /obj/item/clothing/accessory/storage/on_removed(mob/living/user, obj/item/clothing/C)
-	..()
-	C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
+	. = ..()
+	if(.)
+		C.w_class = initial(C.w_class)
+		C.verbs -= /obj/item/clothing/suit/storage/verb/toggle_draw_mode
 
-/obj/item/clothing/accessory/storage/webbing
-	name = "webbing"
-	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden."
-	icon_state = "webbing"
-	slots = 3
-
-/obj/item/clothing/accessory/storage/webbing/New()
-	..()
-	hold.bypass_w_limit = list(
+/obj/item/storage/internal/accessory/webbing
+	bypass_w_limit = list(
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg,
 		/obj/item/ammo_magazine/sniper,
 	)
 
+/obj/item/clothing/accessory/storage/webbing
+	name = "webbing"
+	desc = "A sturdy mess of synthcotton belts and buckles, ready to share your burden."
+	icon_state = "webbing"
+	hold = /obj/item/storage/internal/accessory/webbing
+
+/obj/item/storage/internal/accessory/black_vest
+	storage_slots = 5
+
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"
 	desc = "Robust black synthcotton vest with lots of pockets to hold whatever you need, but cannot hold in hands."
 	icon_state = "vest_black"
-	slots = 5
+	hold = /obj/item/storage/internal/accessory/black_vest
 
-/obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/B, mob/living/user)
-	if(iswirecutter(B) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+/obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/W, mob/living/user)
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		var/components = 0
 		var/obj/item/reagent_container/glass/beaker/vial
 		var/obj/item/cell/battery
@@ -614,29 +689,42 @@
 	name = "brown webbing vest"
 	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
 	icon_state = "vest_brown"
-	slots = 5
+
+/obj/item/storage/internal/accessory/surg_vest
+	storage_slots = 12
+	can_hold = list(
+		/obj/item/tool/surgery,
+		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/stack/nanopaste
+	)
+
+/obj/item/clothing/accessory/storage/surg_vest
+	name = "surgical webbing vest"
+	desc = "Greenish synthcotton vest purpose-made for holding surgical tools."
+	icon_state = "vest_surg"
+	hold = /obj/item/storage/internal/accessory/surg_vest
 
 
-/obj/item/clothing/accessory/storage/knifeharness
-	name = "decorated harness"
-	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
-	icon_state = "unathiharness2"
-	slots = 2
-
-/obj/item/clothing/accessory/storage/knifeharness/New()
-	..()
-	hold.max_storage_space = 4
-	hold.can_hold = list(
+/obj/item/storage/internal/accessory/knifeharness
+	storage_slots = 2
+	max_storage_space = 4
+	can_hold = list(
 		/obj/item/weapon/melee/unathiknife,
 		/obj/item/tool/kitchen/utensil/knife,
 		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
 	)
 
-	new /obj/item/weapon/melee/unathiknife(hold)
-	new /obj/item/weapon/melee/unathiknife(hold)
+/obj/item/storage/internal/accessory/knifeharness/Initialize(mapload, obj/item/MI)
+	. = ..()
+	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/melee/unathiknife(src)
 
-
+/obj/item/clothing/accessory/storage/knifeharness
+	name = "decorated harness"
+	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
+	icon_state = "unathiharness2"
+	hold = /obj/item/storage/internal/accessory/knifeharness
 
 
 
@@ -656,6 +744,7 @@
 	desc = "This glowing blue badge marks the holder as THE LAW."
 	icon_state = "holobadge"
 	flags_equip_slot = SLOT_WAIST
+	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
 
 	var/stored_name = null
 
@@ -663,14 +752,16 @@
 	icon_state = "holobadge-cord"
 	flags_equip_slot = SLOT_FACE
 
-/obj/item/clothing/accessory/holobadge/attack_self(mob/user as mob)
+/obj/item/clothing/accessory/holobadge/attack_self(mob/user)
+	..()
+
 	if(!stored_name)
 		to_chat(user, "Waving around a badge before swiping an ID would be pretty pointless.")
 		return
 	if(isliving(user))
-		user.visible_message(SPAN_DANGER("[user] displays their W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."),SPAN_DANGER("You display your W-Y Internal Security Legal Authorization Badge.\nIt reads: [stored_name], W-Y Security."))
+		user.visible_message(SPAN_DANGER("[user] displays their Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."),SPAN_DANGER("You display your Wey-Yu Internal Security Legal Authorization Badge.\nIt reads: [stored_name], Wey-Yu Security."))
 
-/obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O as obj, var/mob/user as mob)
+/obj/item/clothing/accessory/holobadge/attackby(var/obj/item/O, var/mob/user)
 	if(istype(O, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null

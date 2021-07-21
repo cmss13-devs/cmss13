@@ -102,7 +102,7 @@
 			to_chat(user, SPAN_WARNING("You need more welding fuel to complete this task."))
 			return 1
 
-	if(!iswrench(W))
+	if(!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return ..()
 	var/turf/T = src.loc
 	if(isturf(T) && T.intact_tile)

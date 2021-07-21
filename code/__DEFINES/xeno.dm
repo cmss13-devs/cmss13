@@ -1,7 +1,5 @@
 #define XENOCON_THRESHOLD 6000
 
-#define XENO_HIVE_EVOLUTION_FREETIME 3000 // 5 minutes of free evolution
-
 #define TUNNEL_MOVEMENT_XENO_DELAY 20
 #define TUNNEL_MOVEMENT_BIG_XENO_DELAY 60
 #define TUNNEL_MOVEMENT_LARVA_DELAY 5
@@ -9,6 +7,22 @@
 #define TUNNEL_ENTER_XENO_DELAY 40
 #define TUNNEL_ENTER_BIG_XENO_DELAY 120
 #define TUNNEL_ENTER_LARVA_DELAY 10
+
+// Defines for action types and click delays used by xenomorph/UnarmedAttack() and attack_alien().
+
+/// Full attack delay.
+#define XENO_ATTACK_ACTION 1
+/// Noticeable but shorter than full delay.
+#define XENO_NONCOMBAT_ACTION 2
+/// No delay at all.
+#define XENO_NO_DELAY_ACTION 3
+
+/// Usually 1 second delay.
+#define xeno_attack_delay(X) (X.next_move = world.time + (10 + X.caste.attack_delay + X.attack_speed_modifier))
+/// 0.4 seconds, legacy 'open hand clicked something adjacent' delay.
+#define xeno_noncombat_delay(X) (X.next_move = world.time + 4)
+/// Usually half a second's delay.
+#define xeno_miss_delay(X) (X.next_move = world.time + ((10 + X.caste.attack_delay + X.attack_speed_modifier) * 0.5))
 
 // Determines how xenos interact with walls, normal nothing, sharp can destroy normal walls and window frame, very sharp reinforced ones.
 #define CLAW_TYPE_NORMAL 		1
@@ -18,6 +32,8 @@
 #define XENO_HITS_TO_DESTROY_WALL			20
 #define XENO_HITS_TO_DESTROY_WINDOW_FRAME 	3
 #define XENO_HITS_TO_DESTROY_R_WINDOW_FRAME	5
+#define XENO_HITS_TO_DESTROY_BOLTED_DOOR	10
+#define XENO_HITS_TO_DESTROY_WELDED_DOOR	15
 
 #define XENO_ACTION_CLICK  0 // Just select the action (base). Toggles can use this too
 #define XENO_ACTION_ACTIVATE 1 // Actually use the action SHOULD ONLY BE USED ON ACTIVABLE ACTIONS OR ELSE WILL NOT WORK
@@ -28,6 +44,11 @@
 #define XENO_PRIMARY_ACTION_2 1          // Second primary action
 #define XENO_PRIMARY_ACTION_3 2          // Tertiary primary action
 #define XENO_PRIMARY_ACTION_4 3          // 4th primary action (rarely used)
+
+#define XENO_CORROSIVE_ACID 4 //Macro for covering things in acid, universal ability
+#define XENO_TECH_SECRETE_RESIN 5 //Macro for T1 build distrib secreting macro
+
+#define NO_ACTION_CHARGES -1	// This ability does not have a limit to how many times it can be used
 
 #define ACID_SPRAY_LINE 0
 #define ACID_SPRAY_CONE 1
@@ -43,8 +64,10 @@
 #define HUD_PLASMA_STATES_XENO 16
 #define HUD_ARMOR_STATES_XENO  10
 
-#define BUILD_TIME_MULT_XENO    1 // Multiplier for time taken for a xeno to place down a resin structure
-#define BUILD_TIME_MULT_HIVELORD     0.5
+/// Multiplier for time taken for a xeno to place down a resin structure
+#define BUILD_TIME_MULT_XENO        1
+#define BUILD_TIME_MULT_BUILDER	    1
+#define BUILD_TIME_MULT_HIVELORD    0.5
 
 #define IGNORE_BUILD_DISTANCE -1
 
@@ -108,16 +131,25 @@
 #define WEED_RANGE_PYLON     5
 #define WEED_RANGE_CORE      7
 
-#define WEED_XENO_DAMAGEMULT 0.25 //Multiplicative. The amount of damage xenos do to weeds
-#define WEED_XENO_SPEED_MULT 1 //Multiplicative. The slowdown that other xenos from different hives suffer. Also applies to sticky resin
+/// Multiplicative. The amount of damage xenos do to weeds.
+#define WEED_XENO_DAMAGEMULT 0.25
+/// Multiplicative. The slowdown that other xenos from different hives suffer. Also applies to sticky resin.
+#define WEED_XENO_SPEED_MULT 1
 
-#define WEED_HEALTH_STANDARD 1
+#define WEED_HEALTH_STANDARD 5
 #define WEED_HEALTH_HIVE     15
 
+#define NODE_HEALTH_GROWING  5
 #define NODE_HEALTH_STANDARD 11
 #define NODE_HEALTH_HIVE     30
 
 #define PYLON_COVERAGE_MULT 1.5
+
+#define WEED_BASE_GROW_SPEED (5 SECONDS)
+#define WEED_BASE_DECAY_SPEED (10 SECONDS)
+
+/// Between 2% to 10% of explosion severity
+#define WEED_EXPLOSION_DAMAGEMULT rand(2, 10)*0.01
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
@@ -160,6 +192,10 @@
 #define XENO_HEALTH_TIER_8		600 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_TIER_9		650 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_TIER_10		700 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_TIER_11		750 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_TIER_12		800 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_TIER_13		900 * XENO_UNIVERSAL_HPMULT
+#define XENO_HEALTH_TIER_14		950 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_QUEEN		1000 * XENO_UNIVERSAL_HPMULT
 #define XENO_HEALTH_IMMORTAL	1200 * XENO_UNIVERSAL_HPMULT
 
@@ -249,6 +285,8 @@
 #define XENO_RESIN_BASE_COST 25
 #define XENO_RESIN_WALL_COST 95
 #define XENO_RESIN_WALL_THICK_COST 145
+#define XENO_RESIN_WALL_REFLECT_COST 145
+#define XENO_RESIN_WALL_MOVABLE_COST 145
 #define XENO_RESIN_DOOR_COST 95
 #define XENO_RESIN_DOOR_THICK_COST 120
 #define XENO_RESIN_MEMBRANE_COST 70
@@ -256,6 +294,17 @@
 #define XENO_RESIN_NEST_COST 70
 #define XENO_RESIN_STICKY_COST 30
 #define XENO_RESIN_FAST_COST 10
+#define XENO_RESIN_SPIKE_COST 100
+#define XENO_RESIN_ACID_PILLAR_COST 250
+#define XENO_RESIN_SHIELD_PILLAR_COST 250
+#define XENO_RESIN_ACID_GRENADE_COST 500
+
+// Cost to thicken constructions.
+#define XENO_THICKEN_WALL_COST (XENO_RESIN_WALL_THICK_COST - XENO_RESIN_WALL_COST)
+#define XENO_THICKEN_DOOR_COST (XENO_RESIN_DOOR_THICK_COST - XENO_RESIN_DOOR_COST)
+#define XENO_THICKEN_MEMBRANE_COST (XENO_RESIN_MEMBRANE_THICK_COST - XENO_RESIN_MEMBRANE_COST)
+
+#define RESIN_CONSTRUCTION_NO_MAX -1
 
 /////////////////////////////////////////////////////////////////////////////////////
 //
@@ -280,6 +329,7 @@
 #define XENO_HEALTH_MOD_MED        60
 #define XENO_HEALTH_MOD_LARGE      80
 #define XENO_HEALTH_MOD_VERYLARGE  100
+#define XENO_HEALTH_MOD_ACIDER  115
 
 // Armor mods. Use the above defines for some guidance
 // In general, +20 armor should be a little more than +20% effective HP, however,
@@ -503,33 +553,41 @@
 #define XENO_SHIELD_SOURCE_RAVAGER 1
 #define XENO_SHIELD_SOURCE_HEDGE_RAV 2
 #define XENO_SHIELD_SOURCE_VANGUARD_PRAE 3
-#define XENO_SHIELD_SOURCE_CRUSHER 4
-#define XENO_SHIELD_SOURCE_WARDEN_PRAE 5
-#define XENO_SHIELD_SOURCE_SHAMAN 6
-#define XENO_SHIELD_SOURCE_GARDENER 7
+#define XENO_SHIELD_SOURCE_BASE_PRAE 4
+#define XENO_SHIELD_SOURCE_CRUSHER 5
+#define XENO_SHIELD_SOURCE_WARDEN_PRAE 6
+#define XENO_SHIELD_SOURCE_SHAMAN 7
+#define XENO_SHIELD_SOURCE_GARDENER 8
+#define XENO_SHIELD_SOURCE_SHIELD_PILLAR 9
+#define XENO_SHIELD_SOURCE_CUMULATIVE_GENERIC 10
 
-// Caste name defines
-#define CASTE_LARVA "Larva"
-
-#define CASTE_RUNNER "Runner"
-#define CASTE_LURKER "Lurker"
-#define CASTE_RAVAGER "Ravager"
-
-#define CASTE_SENTINEL "Sentinel"
-#define CASTE_SPITTER "Spitter"
-#define CASTE_BOILER "Boiler"
-
-#define CASTE_DEFENDER "Defender"
-#define CASTE_WARRIOR "Warrior"
-#define CASTE_CRUSHER "Crusher"
-#define CASTE_PRAETORIAN "Praetorian"
-
-#define CASTE_DRONE "Drone"
-#define CASTE_HIVELORD "Hivelord"
-#define CASTE_CARRIER "Carrier"
-#define CASTE_BURROWER "Burrower"
-
-#define CASTE_QUEEN "Queen"
+//XENO CASTES
+#define XENO_CASTE_LARVA             "Bloody Larva"
+#define XENO_CASTE_PREDALIEN_LARVA   "Predalien Larva"
+//t1
+#define XENO_CASTE_DRONE             "Drone"
+#define XENO_CASTE_RUNNER            "Runner"
+#define XENO_CASTE_SENTINEL          "Sentinel"
+#define XENO_CASTE_DEFENDER          "Defender"
+#define XENO_T1_CASTES               list(XENO_CASTE_DRONE, XENO_CASTE_RUNNER, XENO_CASTE_SENTINEL, XENO_CASTE_DEFENDER)
+//t2
+#define XENO_CASTE_BURROWER          "Burrower"
+#define XENO_CASTE_CARRIER           "Carrier"
+#define XENO_CASTE_HIVELORD          "Hivelord"
+#define XENO_CASTE_LURKER            "Lurker"
+#define XENO_CASTE_WARRIOR           "Warrior"
+#define XENO_CASTE_SPITTER           "Spitter"
+#define XENO_T2_CASTES               list(XENO_CASTE_BURROWER, XENO_CASTE_CARRIER, XENO_CASTE_HIVELORD, XENO_CASTE_LURKER, XENO_CASTE_WARRIOR, XENO_CASTE_SPITTER)
+//t3
+#define XENO_CASTE_BOILER            "Boiler"
+#define XENO_CASTE_PRAETORIAN        "Praetorian"
+#define XENO_CASTE_CRUSHER           "Crusher"
+#define XENO_CASTE_RAVAGER           "Ravager"
+#define XENO_T3_CASTES               list(XENO_CASTE_BOILER, XENO_CASTE_PRAETORIAN, XENO_CASTE_CRUSHER, XENO_CASTE_RAVAGER)
+//special
+#define XENO_CASTE_QUEEN             "Queen"
+#define XENO_CASTE_PREDALIEN         "Predalien"
+#define XENO_SPECIAL_CASTES          list(XENO_CASTE_QUEEN, XENO_CASTE_PREDALIEN)
 
 // Checks if two hives are allied to each other.
 // PARAMETERS:
@@ -542,3 +600,6 @@
 #define FIRE_IMMUNITY_NONE		0
 #define FIRE_IMMUNITY_NO_DAMAGE	(1<<0)
 #define FIRE_IMMUNITY_NO_IGNITE	(1<<1)
+#define FIRE_IMMUNITY_XENO_FRENZY	(1<<2)
+
+#define TRAPPER_VIEWRANGE 13

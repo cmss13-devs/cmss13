@@ -45,6 +45,7 @@
 	var/creation_complexity = list(CHEM_CLASS_COMMON, CHEM_CLASS_UNCOMMON, CHEM_CLASS_RARE)
 	var/creation_name = ""
 	var/creation_cost = 0
+	var/min_creation_cost = 5
 	var/creation_od_level = 10 //a cache for new_od_level when switching between modes
 
 /obj/structure/machinery/chem_simulator/Initialize()
@@ -426,13 +427,16 @@
 //Here the cost for creating a chemical is calculated. If you're looking to rebalance create mode, this is where you do it
 /obj/structure/machinery/chem_simulator/proc/calculate_creation_cost()
 	creation_cost = 0
+	min_creation_cost = 5 //min cost of 5
 	var/slots_used = LAZYLEN(creation_template)
 	creation_cost += slots_used * 3 - 6 //3 cost for each slot after the 2nd
+	min_creation_cost += slots_used - 2
 	var/has_combustibles = FALSE
 	for(var/datum/chem_property/P in creation_template)
 		creation_cost += P.value * P.level
 		if(P.level > 5) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
 			creation_cost += P.level - 6 + n_ceil((P.level - 5) / 2)
+			min_creation_cost += max(P.level - 6, 0) // Min creation cost scales linearly for each property at level 7+
 		if(P.category & PROPERTY_TYPE_COMBUSTIBLE)
 			has_combustibles = TRUE
 	if(has_combustibles) //negative values are not applied in templates that use combustibles unless those properties are also of the combustible category
@@ -450,7 +454,7 @@
 				creation_cost += 1
 			if(CHEM_CLASS_RARE)
 				creation_cost -= 5
-	creation_cost = max(creation_cost, 5) //min cost of 5
+	creation_cost = max(creation_cost, min_creation_cost) //checks against minimum cost
 
 /obj/structure/machinery/chem_simulator/proc/calculate_new_od_level()
 	if(mode == MODE_CREATE || !target || !target.data)
@@ -508,7 +512,7 @@
 		if(!target.data)
 			status_bar = "DATA CORRUPTION DETECTED, RESCAN CHEMICAL"
 			return FALSE
-		if(target.data.chemclass < CHEM_CLASS_COMMON)
+		if(target.data.chemclass < CHEM_CLASS_BASIC || !istype(target.data, /datum/reagent/generated)) //Requires a custom/generated chem as a base
 			status_bar = "TARGET CAN NOT BE ALTERED"
 			return FALSE
 		//Safety check in case of irregular papers
@@ -532,7 +536,7 @@
 				status_bar = "TARGET PROPERTY CAN NOT BE SIMULATED"
 				return FALSE
 	if(mode == MODE_RELATE)
-		if(target && target.data.properties.len < 2)
+		if(target && length(target.data.properties) < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
 			return FALSE
 		if(reference && target)

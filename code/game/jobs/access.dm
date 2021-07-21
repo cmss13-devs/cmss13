@@ -233,9 +233,9 @@
 
 /proc/get_centcom_access_desc(A)
 	switch(A)
-		if(ACCESS_WY_PMC_GREEN)			return "W-Y PMC Green"
-		if(ACCESS_WY_PMC_ORANGE)		return "W-Y PMC Orange"
-		if(ACCESS_WY_PMC_RED)			return "W-Y PMC Red"
-		if(ACCESS_WY_PMC_BLACK)			return "W-Y PMC Black"
-		if(ACCESS_WY_PMC_WHITE)			return "W-Y PMC White"
-		if(ACCESS_WY_CORPORATE)			return "W-Y Executive"
+		if(ACCESS_WY_PMC_GREEN)			return "Wey-Yu PMC Green"
+		if(ACCESS_WY_PMC_ORANGE)		return "Wey-Yu PMC Orange"
+		if(ACCESS_WY_PMC_RED)			return "Wey-Yu PMC Red"
+		if(ACCESS_WY_PMC_BLACK)			return "Wey-Yu PMC Black"
+		if(ACCESS_WY_PMC_WHITE)			return "Wey-Yu PMC White"
+		if(ACCESS_WY_CORPORATE)			return "Wey-Yu Executive"

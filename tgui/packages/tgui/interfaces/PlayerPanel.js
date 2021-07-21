@@ -1,7 +1,6 @@
 import { Fragment } from "inferno";
 import { useBackend, useLocalState } from '../backend';
-import { Input, Button, Flex, Section, Tabs, Box, Dropdown, Slider, Tooltip } from '../components';
-import { FlexItem } from '../components/Flex';
+import { Input, Button, Stack, Section, Tabs, Box, Dropdown, Slider, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const PAGES = [
@@ -77,38 +76,38 @@ export const PlayerPanel = (props, context) => {
     >
       <Window.Content scrollable>
         <Section md={1}>
-          <Flex>
-            <Flex.Item width="80px" color="label">Name:</Flex.Item>
-            <Flex.Item grow={1} align="right">
+          <Stack>
+            <Stack.Item width="80px" color="label">Name:</Stack.Item>
+            <Stack.Item grow={1} align="right">
               {!!hasPermission(data, "set_name") && (
                 <Input width={25} value={mob_name} onChange={(e, value) => act("set_name", { name: value })} />
               ) || mob_name}
-            </Flex.Item>
-          </Flex>
-          <Flex mt={1}>
-            <Flex.Item width="80px" color="label">Mob Type:</Flex.Item>
-            <Flex.Item grow={1} align="right">{mob_type}</Flex.Item>
-            <Flex.Item align="right">
+            </Stack.Item>
+          </Stack>
+          <Stack mt={1}>
+            <Stack.Item width="80px" color="label">Mob Type:</Stack.Item>
+            <Stack.Item grow={1} align="right">{mob_type}</Stack.Item>
+            <Stack.Item align="right">
               <Button
                 icon="window-restore"
                 content="Access Variables"
                 disabled={!hasPermission(data, "access_variables")}
                 onClick={() => act("access_variables")}
               />
-            </Flex.Item>
-          </Flex>
-          <Flex mt={1}>
-            <Flex.Item width="80px" color="label">Client:</Flex.Item>
-            <Flex.Item grow={1} align="left">
+            </Stack.Item>
+          </Stack>
+          <Stack mt={1}>
+            <Stack.Item width="80px" color="label">Client:</Stack.Item>
+            <Stack.Item grow={1} align="left">
               {((canModifyCkey || !client_key) && hasPermission(data, "set_ckey")) && (
                 <Input
                   value={client_ckey}
                   onChange={(e, value) => act("set_ckey", { ckey: value })}
                 />
               ) || (<Box inline>{client_key}</Box>) }
-            </Flex.Item>
+            </Stack.Item>
             {!!client_ckey && (
-              <Flex.Item align="right">
+              <Stack.Item align="right">
                 { !!hasPermission(data, "set_name") && (
                   <Button
                     ml={1}
@@ -132,25 +131,25 @@ export const PlayerPanel = (props, context) => {
                   onClick={() => act("subtle_message")}
                   content="Subtle Message"
                 />
-              </Flex.Item>
+              </Stack.Item>
             )}
-          </Flex>
+          </Stack>
           {client_rank && (
-            <Flex mt={1}>
-              <Flex.Item width="80px" color="label">Rank:</Flex.Item>
-              <Flex.Item>
+            <Stack mt={1}>
+              <Stack.Item width="80px" color="label">Rank:</Stack.Item>
+              <Stack.Item>
                 <Button
                   icon="window-restore"
                   content={client_rank}
                   disabled={!hasPermission(data, "access_admin_datum")}
                   onClick={() => act("access_admin_datum")}
                 />
-              </Flex.Item>
-            </Flex>
+              </Stack.Item>
+            </Stack>
           )}
         </Section>
-        <Flex fill grow>
-          <Flex.Item>
+        <Stack grow>
+          <Stack.Item>
             <Section fitted>
               <Tabs vertical>
                 {PAGES.map((page, i) => {
@@ -171,16 +170,16 @@ export const PlayerPanel = (props, context) => {
                 })}
               </Tabs>
             </Section>
-          </Flex.Item>
-          <Flex.Item
+          </Stack.Item>
+          <Stack.Item
             position="relative"
-            grow={1}
+            grow
             basis={0}
             ml={1}
           >
             <PageComponent />
-          </Flex.Item>
-        </Flex>
+          </Stack.Item>
+        </Stack>
       </Window.Content>
     </Window>
   );
@@ -193,7 +192,7 @@ const GeneralActions = (props, context) => {
   return (
     <Section fill>
       <Section level={2} title="Damage">
-        <Flex
+        <Stack
           align="right"
           grow={1}
         >
@@ -224,11 +223,11 @@ const GeneralActions = (props, context) => {
             disabled={!hasPermission(data, "mob_gib")}
             onClick={() => act("mob_gib")}
           />
-        </Flex>
+        </Stack>
       </Section>
 
       <Section level={2} title="Teleportation">
-        <Flex
+        <Stack
           align="right"
           grow={1}
         >
@@ -247,11 +246,11 @@ const GeneralActions = (props, context) => {
             disabled={!hasPermission(data, "jump_to")}
             onClick={() => act("jump_to")}
           />
-        </Flex>
+        </Stack>
       </Section>
 
       <Section level={2} title="Miscellaneous">
-        <Flex
+        <Stack
           align="right"
           grow={1}
         >
@@ -279,38 +278,38 @@ const GeneralActions = (props, context) => {
             disabled={!hasPermission(data, "send_to_lobby")}
             onClick={() => act("send_to_lobby")}
           />
-        </Flex>
+        </Stack>
         {hasPermission(data, "mob_force_emote") && (
-          <Flex
+          <Stack
             align="right"
             grow={1}
             mt={2}
           >
-            <FlexItem width="100px" align="left" color="label">Force Say:</FlexItem>
-            <FlexItem align="right" grow={1}>
+            <Stack.Item width="100px" align="left" color="label">Force Say:</Stack.Item>
+            <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
                 grow={1}
                 onEnter={(e, value) => act("mob_force_say", { to_say: value })}
               />
-            </FlexItem>
-          </Flex>
+            </Stack.Item>
+          </Stack>
         )}
         {hasPermission(data, "mob_force_emote") && (
-          <Flex
+          <Stack
             align="right"
             grow={1}
             mt={2}
           >
-            <FlexItem width="100px" align="left" color="label">Force Emote:</FlexItem>
-            <FlexItem align="right" grow={1}>
+            <Stack.Item width="100px" align="left" color="label">Force Emote:</Stack.Item>
+            <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
                 grow={1}
                 onEnter={(e, value) => act("mob_force_emote", { to_emote: value })}
               />
-            </FlexItem>
-          </Flex>
+            </Stack.Item>
+          </Stack>
         )}
       </Section>
     </Section>
@@ -323,7 +322,7 @@ const PunishmentActions = (props, context) => {
   return (
     <Section fill>
       <Section level={2} title="Banishment">
-        <Flex
+        <Stack
           align="right"
           grow={1}
         >
@@ -352,11 +351,11 @@ const PunishmentActions = (props, context) => {
             disabled={!hasPermission(data, "mob_jobban")}
             onClick={() => act("mob_jobban")}
           />
-        </Flex>
+        </Stack>
       </Section>
 
       <Section level={2} title="Record-keeping">
-        <Flex
+        <Stack
           align="right"
           grow={1}
         >
@@ -368,11 +367,11 @@ const PunishmentActions = (props, context) => {
             disabled={!hasPermission(data, "show_notes")}
             onClick={() => act("show_notes")}
           />
-        </Flex>
+        </Stack>
       </Section>
 
       <Section level={2} title="Mute">
-        <Flex
+        <Stack
           align="right"
           grow={1}
         >
@@ -390,11 +389,11 @@ const PunishmentActions = (props, context) => {
               onClick={() => act("mob_mute", { "mute_flag": !isMuted? client_muted | bit.bitflag : client_muted & ~bit.bitflag })}
             />);
           }) }
-        </Flex>
+        </Stack>
       </Section>
 
       <Section level={2} title="Xenomorph Name">
-        <Flex
+        <Stack
           align="right"
           grow={1}
         >
@@ -415,7 +414,7 @@ const PunishmentActions = (props, context) => {
             disabled={!hasPermission(data, "ban_xeno_name")}
             onClick={() => act("ban_xeno_name")}
           />
-        </Flex>
+        </Stack>
       </Section>
     </Section>
   );
@@ -428,7 +427,7 @@ const TransformActions = (props, context) => {
     <Section fill>
       {Object.keys(glob_pp_transformables).map((element, i) => (
         <Section level={2} title={element} key={i}>
-          <Flex
+          <Stack
             align="right"
             grow={1}
           >
@@ -444,7 +443,7 @@ const TransformActions = (props, context) => {
                 onClick={() => act("mob_transform", { key: option.key })}
               />
             ))}
-          </Flex>
+          </Stack>
         </Section>
       ))}
     </Section>
@@ -463,7 +462,7 @@ const FunActions = (props, context) => {
     <Section fill>
       {hasPermission(data, "mob_narrate") && (
         <Section level={2} title="Narrate">
-          <Flex
+          <Stack
             align="right"
             grow={1}
           >
@@ -476,14 +475,14 @@ const FunActions = (props, context) => {
                 height="100%"
               />
             ))}
-          </Flex>
-          <Flex
+          </Stack>
+          <Stack
             align="right"
             grow={1}
             mt={2}
           >
-            <FlexItem width="100px" align="left" color="label">Narrate:</FlexItem>
-            <FlexItem align="right" grow={1}>
+            <Stack.Item width="100px" align="left" color="label">Narrate:</Stack.Item>
+            <Stack.Item align="right" grow={1}>
               <Input
                 width="100%"
                 grow={1}
@@ -494,8 +493,8 @@ const FunActions = (props, context) => {
                   }
                 )}
               />
-            </FlexItem>
-          </Flex>
+            </Stack.Item>
+          </Stack>
         </Section>
       )}
 
@@ -509,12 +508,12 @@ const FunActions = (props, context) => {
             color={lockExplode? "good" : "bad"}
           />
         )}>
-          <Flex
+          <Stack
             align="right"
             grow={1}
             mt={1}
           >
-            <FlexItem>
+            <Stack.Item>
               <Button
                 width="100%"
                 height="100%"
@@ -524,8 +523,8 @@ const FunActions = (props, context) => {
               >
                 <Box height="100%" pt={2} pb={2} textAlign="center">Detonate</Box>
               </Button>
-            </FlexItem>
-            <FlexItem
+            </Stack.Item>
+            <Stack.Item
               ml={1}
               grow={1}
             >
@@ -555,8 +554,8 @@ const FunActions = (props, context) => {
                 mt={1}
                 stepPixelSize={2}
               />
-            </FlexItem>
-          </Flex>
+            </Stack.Item>
+          </Stack>
         </Section>
       )}
     </Section>
@@ -572,7 +571,7 @@ const AntagActions = (props, context) => {
     <Section fill>
       {!!is_human && (
         <Section level={2} title="Mutiny">
-          <Flex
+          <Stack
             align="right"
             grow={1}
           >
@@ -594,7 +593,7 @@ const AntagActions = (props, context) => {
               onClick={() => act("make_mutineer", { leader: true })}
               content="Make Mutineering Leader"
             />
-          </Flex>
+          </Stack>
         </Section>
       )}
       <Section level={2} title="Xenomorph" buttons={
@@ -606,7 +605,7 @@ const AntagActions = (props, context) => {
           onSelected={value => setHivenumber(value)}
         />
       }>
-        <Flex
+        <Stack
           align="right"
           grow={1}
           mt={1}
@@ -643,7 +642,7 @@ const AntagActions = (props, context) => {
               onClick={() => act("xeno_change_hivenumber", { hivenumber: glob_hives[selectedHivenumber] })}
             />
           )}
-        </Flex>
+        </Stack>
       </Section>
     </Section>
   );
@@ -691,7 +690,7 @@ const PhysicalActions = (props, context) => {
       </Section>
       {!!is_human && (
         <Section level={2} title="Limbs" buttons={(
-          <Flex
+          <Stack
             align="right"
             grow={1}
           >
@@ -709,9 +708,9 @@ const PhysicalActions = (props, context) => {
                 )}
               />
             ))}
-          </Flex>
+          </Stack>
         )}>
-          <Flex
+          <Stack
             align="right"
             grow={1}
           >
@@ -740,11 +739,11 @@ const PhysicalActions = (props, context) => {
                 ),
               })}
             />
-          </Flex>
+          </Stack>
         </Section>
       )}
       <Section level={2} title="Game">
-        <Flex>
+        <Stack>
           {!!is_human && (
             <Button.Confirm
               content="Send to cryogenics"
@@ -767,8 +766,8 @@ const PhysicalActions = (props, context) => {
             disabled={!hasPermission(data, "strip_equipment")}
             onClick={() => act("strip_equipment", { drop_items: true })}
           />
-        </Flex>
-        <Flex
+        </Stack>
+        <Stack
           mt={1}
         >
           {hasPermission(data, "set_speed") && (
@@ -782,10 +781,10 @@ const PhysicalActions = (props, context) => {
               unit="Mob Speed"
             />
           )}
-        </Flex>
+        </Stack>
       </Section>
       <Section title="Equipment" level={2}>
-        <Flex
+        <Stack
           align="right"
           grow={1}
         >
@@ -807,7 +806,7 @@ const PhysicalActions = (props, context) => {
             onClick={() => act("strip_equipment")}
             color="red"
           />
-        </Flex>
+        </Stack>
       </Section>
     </Section>
   );

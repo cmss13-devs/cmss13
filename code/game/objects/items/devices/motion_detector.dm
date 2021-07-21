@@ -2,6 +2,8 @@
 #define MOTION_DETECTOR_LONG	0
 #define MOTION_DETECTOR_SHORT	1
 
+#define MOTION_DETECTOR_RANGE_LONG	14
+#define MOTION_DETECTOR_RANGE_SHORT	7
 
 /obj/effect/detector_blip
 	icon = 'icons/obj/items/marine-items.dmi'
@@ -10,7 +12,7 @@
 
 /obj/item/device/motiondetector
 	name = "motion detector"
-	desc = "A device that detects movement, but ignores marines. The screen will show the amount of unidentified movement detected (up to 9). You can switch modes with Alt+Click."
+	desc = "A device that detects movement, but ignores marines."
 	icon = 'icons/obj/items/marine-items.dmi'
 	icon_state = "detector"
 	item_state = "motion_detector"
@@ -29,6 +31,11 @@
 	actions_types = list(/datum/action/item_action)
 	var/scanning = FALSE // controls if MD is in process of scan
 	var/datum/shape/rectangle/range_bounds
+
+/obj/item/device/motiondetector/examine()
+	. = ..()
+	var/msg = "Blue bubble-like indicators on your HUD will show pings locations or direction to them. The device screen will show the amount of unidentified movements detected (up to 9). Has two modes: slow long-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_LONG] tiles)")] and fast short-range [SPAN_HELPFUL("([MOTION_DETECTOR_RANGE_SHORT] tiles)")]. Use [SPAN_HELPFUL("Alt + Click")] on the device to switch between modes. Using the device on the adjacent multitile vehicle will start the process of recalibrating and scanning vehicle interior for unidentified movements inside."
+	to_chat(usr, SPAN_INFO(msg))
 
 /obj/item/device/motiondetector/New()
 	range_bounds = new //Just creating a rectangle datum
@@ -76,6 +83,8 @@
 	return ..()
 
 /obj/item/device/motiondetector/attack_self(mob/user)
+	..()
+
 	if(ishuman(user))
 		toggle_active(user, active)
 
@@ -139,6 +148,9 @@
 	if(ishuman(A.loc))
 		return A.loc
 
+/obj/item/device/motiondetector/proc/apply_debuff(var/mob/M)
+	return
+
 /obj/item/device/motiondetector/proc/scan()
 	set waitfor = 0
 	if(scanning)
@@ -162,14 +174,14 @@
 	var/list/ping_candidates = SSquadtree.players_in_range(range_bounds, cur_turf.z, QTREE_EXCLUDE_OBSERVER | QTREE_SCAN_MOBS)
 
 	for(var/A in ping_candidates)
-		var/mob/M = A	//do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
+		var/mob/living/M = A	//do this to skip the unnecessary istype() check; everything in ping_candidate is a mob already
 		if(M == loc) continue //device user isn't detected
 		if(world.time > M.l_move_time + 20) continue //hasn't moved recently
 		if(isrobot(M)) continue
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			if(H.get_target_lock(iff_signal))
-				continue
+		if(M.get_target_lock(iff_signal))
+			continue
+
+		apply_debuff(M)
 		ping_count++
 		if(human_user)
 			show_blip(human_user, M)
@@ -190,7 +202,7 @@
 
 	return ping_count
 
-/obj/item/device/motiondetector/proc/show_blip(mob/user, mob/target, var/blip_icon)
+/obj/item/device/motiondetector/proc/show_blip(var/mob/user, var/atom/target, var/blip_icon)
 	set waitfor = 0
 	if(user && user.client)
 
@@ -228,90 +240,10 @@
 		if(user.client)
 			user.client.screen -= DB
 
-/obj/item/device/motiondetector/intel
-	name = "data detector"
-	desc = "A device that detects objects that may be useful for intel gathering. You can switch modes with Alt+Click."
-	icon_state = "datadetector"
-	item_state = "data_detector"
-	blip_type = "data"
-	var/objects_to_detect = list(
-		/obj/item/document_objective,
-		/obj/item/disk/objective,
-		/obj/item/device/mass_spectrometer/adv/objective,
-		/obj/item/device/reagent_scanner/adv/objective,
-		/obj/item/device/healthanalyzer/objective,
-		/obj/item/device/autopsy_scanner/objective,
-		/obj/item/device/autopsy_scanner/objective,
-		/obj/item/paper/research_notes,
-		/obj/item/reagent_container/glass/beaker/vial/random,
-		/obj/item/storage/fancy/vials/random,
-		/obj/structure/machinery/computer/objective,
-		/obj/item/limb/head/synth,
-	)
+/obj/item/device/motiondetector/hacked
+	name = "hacked motion detector"
+	desc = "A device that usually picks up non-USCM signals, but this one's been hacked to detect all non-UPP movement instead. Fight fire with fire!"
+	iff_signal = FACTION_UPP
 
-/obj/item/device/motiondetector/intel/update_icon()
-	if (active)
-		icon_state = "[initial(icon_state)]_on_[detector_mode]"
-	else
-		icon_state = "[initial(icon_state)]"
-
-/obj/item/device/motiondetector/intel/scan()
-	set waitfor = 0
-	if(scanning)
-		return
-	scanning = TRUE
-	var/mob/living/carbon/human/human_user
-	if(ishuman(loc))
-		human_user = loc
-
-	var/detected_sound = FALSE
-
-	for(var/obj/I in orange(detector_range, loc))
-		var/detected
-		for(var/DT in objects_to_detect)
-			if(istype(I, DT))
-				detected = TRUE
-			if(I.contents)
-				for(var/obj/item/CI in I.contents)
-					if(istype(CI, DT))
-						detected = TRUE
-						break
-			if(human_user && detected)
-				show_blip(human_user, I)
-			if(detected)
-				break
-
-		if(detected)
-			detected_sound = TRUE
-
-		CHECK_TICK
-
-	for(var/mob/M in orange(detector_range, loc))
-		var/detected
-		if(loc == null || M == null) continue
-		if(loc.z != M.z) continue
-		if(M == loc) continue //device user isn't detected
-		if((isXeno(M) || isYautja(M)) && M.stat == DEAD )
-			detected = TRUE
-		else if(ishuman(M) && M.stat == DEAD && M.contents.len)
-			for(var/obj/I in M.contents_twice())
-				for(var/DT in objects_to_detect)
-					if(istype(I, DT))
-						detected = TRUE
-						break
-				if(detected)
-					break
-
-		if(human_user && detected)
-			show_blip(human_user, M)
-			if(detected)
-				detected_sound = TRUE
-
-		CHECK_TICK
-
-	if(detected_sound)
-		playsound(loc, 'sound/items/tick.ogg', 50, 0, 7, 2)
-	else
-		playsound(loc, 'sound/items/detector.ogg', 50, 0, 7, 2)
-
-	scanning = FALSE
+#undef MOTION_DETECTOR_RANGE_LONG
+#undef MOTION_DETECTOR_RANGE_SHORT

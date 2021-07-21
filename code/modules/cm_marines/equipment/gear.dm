@@ -286,8 +286,8 @@
 	info = "In loving memory of Cub Johnson."
 
 /obj/item/storage/box/wy_mre
-	name = "\improper Weston-Yamada brand MRE"
-	desc = "A prepackaged, long-lasting food box from Weston-Yamada Industries.\nOn the box is the Weston-Yamada logo, with a slogan surrounding it: \n<b>WESTON-YAMADA. BUILDING BETTER LUNCHES</b>"
+	name = "\improper Weyland-Yutani brand MRE"
+	desc = "A prepackaged, long-lasting food box from Weyland-Yutani Industries.\nOn the box is the Weyland-Yutani logo, with a slogan surrounding it: \n<b>WEYLAND-YUTANI. BUILDING BETTER LUNCHES</b>"
 	icon_state = "mre2"
 	can_hold = list(/obj/item/reagent_container/food/snacks)
 	w_class = SIZE_LARGE

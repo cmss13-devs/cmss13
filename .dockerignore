@@ -1,0 +1,10 @@
+*
+!**/*.so
+!**/*.dll
+!*.rsc
+!*.dmb
+!maps/*
+!config/*
+!tools/*
+!map_config/*
+!nano/*

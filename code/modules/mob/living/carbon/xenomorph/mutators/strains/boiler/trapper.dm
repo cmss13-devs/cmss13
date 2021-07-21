@@ -5,9 +5,19 @@
 	flavor_description = "I love the smell of burnin' tallhost flesh in the Mornin'."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Boiler") //Only boiler.
-	mutator_actions_to_remove = list("Toggle Long Range Sight", "Bombard", "Acid Lance", "Dump Acid")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/boiler_trap, /datum/action/xeno_action/activable/acid_mine, /datum/action/xeno_action/activable/acid_shotgun, /datum/action/xeno_action/onclick/toggle_long_range/trapper)
+	caste_whitelist = list(XENO_CASTE_BOILER) //Only boiler.
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/onclick/toggle_long_range/boiler,
+		/datum/action/xeno_action/activable/bombard,
+		/datum/action/xeno_action/activable/acid_lance,
+		/datum/action/xeno_action/onclick/dump_acid,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/boiler_trap,
+		/datum/action/xeno_action/activable/acid_mine,
+		/datum/action/xeno_action/activable/acid_shotgun,
+		/datum/action/xeno_action/onclick/toggle_long_range/trapper
+	)
 	keystone = TRUE
 
 	behavior_delegate_type = /datum/behavior_delegate/boiler_trapper
@@ -16,12 +26,12 @@
 	. = ..()
 	if(. == 0)
 		return
-	
+
 	var/mob/living/carbon/Xenomorph/Boiler/B = MS.xeno
 	if(B.is_zoomed)
 		B.zoom_out()
 
-	B.viewsize = 13
+	B.viewsize = TRAPPER_VIEWRANGE
 	B.mutation_type = BOILER_TRAPPER
 	B.plasma_types -= PLASMA_NEUROTOXIN
 
@@ -66,9 +76,9 @@
 		return
 
 	var/mob/living/carbon/human/H = A
-	var/datum/effects/xeno_freeze/found = null 
-	for (var/datum/effects/xeno_freeze/F in H.effects_list)
-		if (F.source_mob == bound_xeno)
+	var/datum/effects/boiler_trap/found = null
+	for (var/datum/effects/boiler_trap/F in H.effects_list)
+		if (F.cause_data?.resolve_mob() == bound_xeno)
 			found = F
 			break
 

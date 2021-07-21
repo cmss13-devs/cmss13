@@ -39,7 +39,8 @@
 
 /obj/effect/alien/resin/special/pylon/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(isXenoBuilder(M) && M.a_intent == INTENT_HELP && M.hivenumber == linked_hive.hivenumber)
-		do_repair(M)
+		do_repair(M) //This handles the delay itself.
+		return XENO_NO_DELAY_ACTION
 	else
 		return ..()
 
@@ -51,6 +52,7 @@
 		return
 
 	to_chat(M, SPAN_XENONOTICE("You begin adding the plasma to \the [name] to repair it."))
+	xeno_attack_delay(M)
 	if(!do_after(M, PYLON_REPAIR_TIME, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src) || !damaged)
 		return
 
@@ -107,14 +109,6 @@
 	. = ..()
 
 	// Pick the closest xeno resource activator
-	var/obj/effect/landmark/resource_node_activator/hive/start_activator
-	for(var/obj/effect/landmark/resource_node_activator/hive/node_activator in world)
-		if(!start_activator || get_dist(src, node_activator) < get_dist(src, start_activator))
-			start_activator = node_activator
-
-	// And grow the crystals tied to it
-	if(start_activator)
-		start_activator.trigger()
 
 	if(hive_ref)
 		hive_ref.set_hive_location(src, linked_hive.hivenumber)
@@ -129,7 +123,7 @@
 	if(linked_hive)
 		var/current_health = health
 		if(hardcore && HIVE_ALLIED_TO_HIVE(M.hivenumber, linked_hive.hivenumber))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		. = ..()
 

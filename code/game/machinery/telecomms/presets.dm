@@ -79,13 +79,13 @@
 	if(!damage)
 		return
 	if(damage > 0 && health <= 0)
-		return // Leave the poor thing alone 
+		return // Leave the poor thing alone
 
 	health -= damage
 	health = Clamp(health, 0, initial(health))
 
 	if(health <= 0)
-		toggled = FALSE		// requires flipping on again once repaired	
+		toggled = FALSE		// requires flipping on again once repaired
 	if(health < initial(health))
 		desc = "[initial(desc)] [SPAN_WARNING(" It is damaged and needs a welder for repairs!")]"
 	else
@@ -130,7 +130,7 @@
 				playsound(src.loc, 'sound/items/Welder2.ogg', 25, 1)
 		return
 
-	else if(ismultitool(I))
+	else if(HAS_TRAIT(I, TRAIT_TOOL_MULTITOOL))
 		return
 	else return ..()
 
@@ -194,7 +194,7 @@
 	id = "Receiver B"
 	network = "tcommsat"
 	autolinkers = list("receiverB") // link to relay
-	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, SUP_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ)
+	freq_listening = list(COMM_FREQ, ENG_FREQ, SEC_FREQ, MED_FREQ, CIV_GEN_FREQ, CIV_COMM_FREQ, SUP_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ, HC_FREQ)
 
 	//Common and other radio frequencies for people to freely use
 /obj/structure/machinery/telecomms/receiver/preset/Initialize(mapload, ...)
@@ -226,7 +226,7 @@
 /obj/structure/machinery/telecomms/bus/preset_three
 	id = "Bus 3"
 	network = "tcommsat"
-	freq_listening = list(SEC_FREQ, COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ)
+	freq_listening = list(SEC_FREQ, COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ, HC_FREQ)
 	autolinkers = list("processor3", "security", "command", "JTAC")
 
 /obj/structure/machinery/telecomms/bus/preset_four
@@ -308,7 +308,7 @@
 
 /obj/structure/machinery/telecomms/server/presets/command
 	id = "Command Server"
-	freq_listening = list(COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, INTEL_FREQ, WY_FREQ, HC_FREQ)
+	freq_listening = list(COMM_FREQ, ERT_FREQ, DTH_FREQ, PMC_FREQ, DUT_FREQ, YAUT_FREQ, JTAC_FREQ, TACTICS_FREQ, WY_FREQ, HC_FREQ)
 	autolinkers = list("command")
 
 /obj/structure/machinery/telecomms/server/presets/engineering

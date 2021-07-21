@@ -13,7 +13,7 @@ export const HiveFaction = (props, context) => {
     <Window
       theme="xeno"
       width={400}
-      height={510}
+      height={550}
     >
       <Window.Content scrollable>
         <Flex>

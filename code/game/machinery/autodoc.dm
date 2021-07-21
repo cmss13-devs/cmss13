@@ -69,7 +69,7 @@
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & LIMB_ROBOT)
-		picked.heal_damage(brute, burn, 0, 1)
+		picked.heal_damage(brute, burn, TRUE)
 		human.pain.apply_pain(-brute, BRUTE)
 		human.pain.apply_pain(-burn, BURN)
 	else
@@ -212,7 +212,7 @@
 			if(L.surgery_open_stage)
 				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"open")
 	var/datum/internal_organ/I = M.internal_organs_by_name["eyes"]
-	if(I && (M.disabilities & NEARSIGHTED || M.sdisabilities & BLIND || I.damage > 0))
+	if(I && (M.disabilities & NEARSIGHTED || M.sdisabilities & DISABILITY_BLIND || I.damage > 0))
 		surgery_list += create_autodoc_surgery(null,ORGAN_SURGERY,"eyes",0,I)
 	if(M.getBruteLoss() > 0)
 		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"brute")
@@ -345,7 +345,7 @@
 								sleep(CAUTERY_MAX_DURATION)
 								if(!surgery) break
 								H.disabilities &= ~NEARSIGHTED
-								H.sdisabilities &= ~BLIND
+								H.sdisabilities &= ~DISABILITY_BLIND
 								E.damage = 0
 								E.eye_surgery_stage = 0
 
@@ -383,10 +383,11 @@
 						if(S.limb_ref.brute_dam > 20)
 							sleep(((S.limb_ref.brute_dam - 20)/2)*surgery_mod)
 							if(!surgery) break
-							S.limb_ref.heal_damage(S.limb_ref.brute_dam - 20,0)
+							S.limb_ref.heal_damage(S.limb_ref.brute_dam - 20)
 						if(!surgery) break
-						S.limb_ref.status &= ~LIMB_BROKEN
-						S.limb_ref.status &= ~LIMB_SPLINTED
+						if(S.limb_ref.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+							new /obj/item/stack/medical/splint/nano(loc, 1)
+						S.limb_ref.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
 						S.limb_ref.status |= LIMB_REPAIRED
 						S.limb_ref.perma_injury = 0
 						H.pain.recalculate_pain()
@@ -419,7 +420,6 @@
 							continue
 
 						if(!surgery) break
-						S.limb_ref.status |= LIMB_AMPUTATED
 						S.limb_ref.setAmputatedTree()
 						S.limb_ref.limb_replacement_stage = 0
 

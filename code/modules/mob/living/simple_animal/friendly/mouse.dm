@@ -29,7 +29,7 @@
 	universal_understand = 1
 	holder_type = /obj/item/holder/mouse
 
-/mob/living/simple_animal/mouse/Life()
+/mob/living/simple_animal/mouse/Life(delta_time)
 	..()
 	if(!stat && prob(speak_chance))
 		for(var/mob/M in view())
@@ -48,7 +48,7 @@
 			wander = 1
 			canmove = 1
 		else if(prob(5))
-			emote("snuffles")
+			INVOKE_ASYNC(src, .proc/emote, "snuffles")
 
 /mob/living/simple_animal/mouse/New()
 	..()

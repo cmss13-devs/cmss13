@@ -33,7 +33,7 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 21
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
 
 	storage_flags = STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_QUICK_GATHER|STORAGE_CLICK_GATHER
 
@@ -64,7 +64,7 @@
 	max_w_class = SIZE_SMALL
 	storage_slots = 21
 	can_hold = list() // any
-	cant_hold = list(/obj/item/disk/nuclear)
+	cant_hold = list(/obj/item/disk/nuclear, /obj/item/weapon/melee/throwing_knife)
 
 // -----------------------------
 //        Mining Satchel
@@ -80,6 +80,7 @@
 	storage_slots = 50
 	max_storage_space = 200 //Doesn't matter what this is, so long as it's more or equal to storage_slots * ore.w_class
 	max_w_class = SIZE_MEDIUM
+	storage_flags = STORAGE_FLAGS_BAG | STORAGE_CONTENT_NUM_DISPLAY
 	can_hold = list(/obj/item/ore)
 
 
@@ -95,6 +96,7 @@
 	max_storage_space = 200 //Doesn't matter what this is, so long as it's more or equal to storage_slots * plants.w_class
 	max_w_class = SIZE_MEDIUM
 	w_class = SIZE_SMALL
+	storage_flags = STORAGE_FLAGS_BAG | STORAGE_CONTENT_NUM_DISPLAY
 	can_hold = list(
 		/obj/item/reagent_container/food/snacks/grown,
 		/obj/item/seeds,
@@ -112,12 +114,12 @@
 	icon = 'icons/obj/structures/props/mining.dmi'
 	icon_state = "sheetsnatcher"
 	name = "Sheet Snatcher"
-	desc = "A patented Yamada storage system designed for any kind of mineral sheet."
+	desc = "A patented Yutani storage system designed for any kind of mineral sheet."
 
 	var/capacity = 300; //the number of sheets it can carry.
 	w_class = SIZE_MEDIUM
 
-	storage_flags = STORAGE_FLAGS_BAG|STORAGE_QUICK_EMPTY
+	storage_flags = STORAGE_FLAGS_BAG | STORAGE_CONTENT_NUM_DISPLAY
 
 /obj/item/storage/bag/sheetsnatcher/Initialize()
 	. = ..()
@@ -177,6 +179,9 @@
 
 // Sets up numbered display to show the stack size of each stored mineral
 // NOTE: numbered display is turned off currently because it's broken
+
+//Turned numbered display on. Appears to work as intended, despite above comment -- Vanagandr.
+
 /obj/item/storage/bag/sheetsnatcher/orient2hud()
 	var/adjusted_contents = contents.len
 
@@ -195,7 +200,7 @@
 	var/col_count = min(7,storage_slots) -1
 	if (adjusted_contents > 7)
 		row_num = round((adjusted_contents-1) / 7) // 7 is the maximum allowed width.
-	src.slot_orient_objs(row_num, col_count, numbered_contents)
+	slot_orient_objs(row_num, col_count, numbered_contents)
 	return
 
 
@@ -210,9 +215,7 @@
 			S.amount -= stacksize
 		if(!S.amount)
 			qdel(S) // todo: there's probably something missing here
-	orient2hud(user)
-	if(user.s_active)
-		user.s_active.show_to(user)
+	storage_close(user)
 	update_icon()
 
 // Instead of removing

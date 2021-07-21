@@ -1,5 +1,5 @@
 /datum/caste_datum/larva
-	caste_name = "Bloody Larva"
+	caste_type = XENO_CASTE_LARVA
 	tier = 0
 	plasma_gain = 0.1
 	plasma_max = 10
@@ -9,15 +9,17 @@
 	caste_desc = "D'awwwww, so cute!"
 	speed = XENO_SPEED_TIER_10
 	innate_healing = TRUE //heals even outside weeds so you're not stuck unable to evolve when hiding on the ship wounded.
-	evolves_to = list("Drone", "Runner", "Sentinel", "Defender") //Add sentinel etc here
+	evolves_to = XENO_T1_CASTES
+
+	can_be_revived = FALSE
 
 /datum/caste_datum/larva/predalien
-	caste_name = "Predalien Larva"
-	evolves_to = list("Predalien")
+	caste_type = XENO_CASTE_PREDALIEN_LARVA
+	evolves_to = list(XENO_CASTE_PREDALIEN)
 
 /mob/living/carbon/Xenomorph/Larva
-	name = "Bloody Larva"
-	caste_name = "Bloody Larva"
+	name = XENO_CASTE_LARVA
+	caste_type = XENO_CASTE_LARVA
 	speak_emote = list("hisses")
 	icon_state = "Bloody Larva"
 	icon_size = 32
@@ -31,7 +33,7 @@
 	crit_health = -25
 	gib_chance = 25
 	mob_size = 0
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/onclick/xenohide,
@@ -40,6 +42,7 @@
 		/mob/living/carbon/Xenomorph/proc/vent_crawl
 		)
 	mutation_type = "Normal"
+	var/poolable = TRUE //Can it be safely pooled if it has no player?
 
 /mob/living/carbon/Xenomorph/Larva/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
@@ -62,21 +65,22 @@
 
 /mob/living/carbon/Xenomorph/Larva/predalien
 	icon_state = "Predalien Larva"
-	caste_name = "Predalien Larva"
+	caste_type = XENO_CASTE_PREDALIEN_LARVA
+	poolable = FALSE //Not interchangeable with regular larvas in the pool.
 
 /mob/living/carbon/Xenomorph/Larva/predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_hunter_embryo))
+	hunter_data.dishonored = TRUE
+	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
+	hunter_data.dishonored_set = src
+	hud_set_hunter()
 
 /mob/living/carbon/Xenomorph/Larva/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
 		PF.flags_pass = PASS_MOB_THRU|PASS_FLAGS_CRAWLER
 		PF.flags_can_pass_all = PASS_ALL^PASS_OVER_THROW_ITEM
-
-/mob/living/carbon/Xenomorph/Larva/UnarmedAttack(atom/A)
-	a_intent = INTENT_HELP //Forces help intent for all interactions.
-	. = ..()
 
 //Larva Progression.. Most of this stuff is obsolete.
 /mob/living/carbon/Xenomorph/Larva/update_progression()

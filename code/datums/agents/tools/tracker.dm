@@ -15,7 +15,7 @@
 		overlays += icon(icon, "+tracker_arrow", get_dir(src, tracked_object))
 
 /obj/item/device/tracker/attack_self(var/mob/user)
-	if(!skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+	if(!skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return ..()
 
 	if(isnull(tracked_object))
@@ -36,7 +36,7 @@
 	update_icon()
 
 /obj/item/device/tracker/clicked(mob/user, list/mods)
-	if(!ishuman(user) || !skillcheck(user, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+	if(!ishuman(user) || !skillcheckexplicit(user, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 		return ..()
 
 	if(mods["alt"])

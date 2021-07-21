@@ -7,7 +7,7 @@
 	var/atom/my_atom = null
 	var/trigger_volatiles = FALSE
 	var/exploded = FALSE
-	var/source_mob
+	var/datum/weakref/source_mob
 
 	var/locked = FALSE
 
@@ -29,7 +29,7 @@
 		global_prepare_properties()
 		global_prepare_reagents()
 
-// TODO - This should be 
+// TODO - This should be
 /proc/global_prepare_properties()
 	//Chemical Properties - Initialises all /datum/chem_property into a list indexed by property name
 	var/paths = typesof(/datum/chem_property)
@@ -178,6 +178,8 @@
 	amount = min(min(amount, total_volume), R.maximum_volume - R.total_volume)
 	trans_to_datum(V, amount, reaction = FALSE)
 
+	to_chat(target, SPAN_NOTICE("You taste [pick(V.reagent_list)]."))
+
 	for(var/datum/reagent/RG in V.reagent_list) // If it can't be ingested, remove it.
 		if(RG.flags & REAGENT_NOT_INGESTIBLE)
 			V.del_reagent(RG.id)
@@ -187,7 +189,7 @@
 
 /datum/reagents/proc/set_source_mob(var/new_source_mob)
 	for(var/datum/reagent/R in reagent_list)
-		R.last_source_mob = new_source_mob
+		R.last_source_mob = WEAKREF(new_source_mob)
 
 /datum/reagents/proc/copy_to(var/obj/target, var/amount=1, var/multiplier=1, var/preserve_data=1, var/safety = 0)
 	if(!target)
@@ -236,10 +238,10 @@
 	//handle_reactions() Don't need to handle reactions on the source since you're (presumably isolating and) transferring a specific reagent.
 	return amount
 
-/datum/reagents/proc/metabolize(var/mob/M,var/alien)
+/datum/reagents/proc/metabolize(var/mob/M,var/alien, var/delta_time)
 	for(var/datum/reagent/R in reagent_list)
 		if(M && R)
-			R.on_mob_life(M, alien)
+			R.on_mob_life(M, alien, delta_time)
 	update_total()
 
 /datum/reagents/proc/handle_reactions()
@@ -394,7 +396,7 @@
 	if(total_volume + amount > maximum_volume)
 		amount = maximum_volume - total_volume //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
 
-	var/new_data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null)
+	var/new_data = list("blood_type" = null, "blood_colour" = "#A10808", "viruses" = null, "resistances" = null, "last_source_mob" = null)
 	if(data)
 		for(var/index in data)
 			new_data[index] = data[index]
@@ -402,6 +404,7 @@
 	for(var/datum/reagent/R in reagent_list)
 		if(R.id == reagent)
 			R.volume += amount
+			R.last_source_mob = new_data["last_source_mob"]
 			update_total()
 
 			if(my_atom)
@@ -623,10 +626,14 @@
 
 	var/shards = 4 // Because explosions are messy
 	var/shard_type = /datum/ammo/bullet/shrapnel
+	var/atom/source_atom = source_mob?.resolve()
 
 	if(ishuman(my_atom))
 		var/mob/living/carbon/human/H = my_atom
-		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
+		var/source_mob_name = "unknown"
+		if(source_atom)
+			source_mob_name = "[source_atom]"
+		msg_admin_niche("WARNING: Ingestion based explosion attempted in containing mob [key_name(H)] made by [key_name(source_mob_name)] in area [sourceturf.loc] at ([H.loc.x],[H.loc.y],[H.loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[H.loc.x];Y=[H.loc.y];Z=[H.loc.z]'>JMP</a>)")
 		exploded = TRUE
 		return
 
@@ -648,11 +655,12 @@
 			ex_falloff = 25
 
 		//Note: No need to log here as that is done in cell_explosion()
-		create_shrapnel(sourceturf, shards, dir, angle, shard_type, "chemical explosion", source_mob)
+		var/datum/cause_data/cause_data = create_cause_data("chemical explosion", source_atom)
+		create_shrapnel(sourceturf, shards, dir, angle, shard_type, cause_data)
 		if((istype(my_atom, /obj/item/explosive/plastic) || istype(my_atom, /obj/item/explosive/grenade)) && (ismob(my_atom.loc) || isStructure(my_atom.loc)))
 			addtimer(CALLBACK(my_atom.loc, /atom.proc/ex_act, ex_power), 0.2 SECONDS)
 			ex_power = ex_power / 2
-		addtimer(CALLBACK(GLOBAL_PROC, /proc/cell_explosion, sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, "chemical_explosion", source_mob), 0.2 SECONDS)
+		addtimer(CALLBACK(GLOBAL_PROC, /proc/cell_explosion, sourceturf, ex_power, ex_falloff, ex_falloff_shape, dir, cause_data), 0.2 SECONDS)
 
 		exploded = TRUE // clears reagents after all reactions processed
 
@@ -707,7 +715,7 @@
 	R.burncolor = firecolor
 	R.color = firecolor
 
-	new /obj/flamer_fire(sourceturf, "chemical fire", source_mob, R, radius, FALSE, flameshape)
+	new /obj/flamer_fire(sourceturf, create_cause_data("chemical fire", source_mob?.resolve()), R, radius, FALSE, flameshape)
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/playsound, sourceturf, 'sound/weapons/gun_flamethrower1.ogg', 25, 1), 0.5 SECONDS)
 
 turf/proc/reset_chemexploded()

@@ -72,7 +72,7 @@
 
 /mob/living/carbon/human/var/updating = 0
 
-/mob/living/carbon/human/Move()
+/mob/living/carbon/human/Move(NewLoc, direction)
 	var/oldLoc = src.loc
 	. = ..()
 	if (.)

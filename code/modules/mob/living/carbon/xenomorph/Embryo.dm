@@ -80,7 +80,7 @@
 				counter += 0.33 * hive.larva_gestation_multiplier
 			else if(stage == 4)
 				counter += 0.11 * hive.larva_gestation_multiplier
-		else if(istype(affected_mob.buckled, /obj/structure/bed/nest)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
+		else if(HAS_TRAIT(affected_mob, TRAIT_NESTED)) //Hosts who are nested in resin nests provide an ideal setting, larva grows faster
 			counter += 1.5 * hive.larva_gestation_multiplier //Currently twice as much, can be changed
 		else
 			if(stage < 5)
@@ -230,7 +230,7 @@
 			round_statistics.total_larva_burst++
 		burstcount++
 
-		if(!L.ckey && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
+		if(!L.ckey && L.poolable && loc && is_ground_level(loc.z) && (locate(/obj/structure/bed/nest) in loc) && hive.living_xeno_queen && hive.living_xeno_queen.z == loc.z)
 			L.visible_message(SPAN_XENODANGER("[L] quickly burrows into the ground."))
 			if(round_statistics && !L.statistic_exempt)
 				round_statistics.track_new_participant(faction, -1) // keep stats sane
@@ -250,15 +250,14 @@
 	else
 		if(ishuman(victim))
 			var/mob/living/carbon/human/H = victim
-			H.last_damage_source = "chestbursting"
-			H.last_damage_mob = null
+			H.last_damage_data = create_cause_data("chestbursting", null)
 			var/datum/internal_organ/O
 			var/i
 			for(i in list("heart","lungs")) //This removes (and later garbage collects) both organs. No heart means instant death.
 				O = H.internal_organs_by_name[i]
 				H.internal_organs_by_name -= i
 				H.internal_organs -= O
-		victim.death("chestbursting") // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
+		victim.death(create_cause_data("chestbursting", src)) // Certain species were still surviving bursting (predators), DEFINITELY kill them this time.
 		victim.chestburst = 2
 		victim.update_burst()
 

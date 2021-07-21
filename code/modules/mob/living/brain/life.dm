@@ -1,11 +1,11 @@
-/mob/living/brain/Life()
+/mob/living/brain/Life(delta_time)
 	set invisibility = 0
 	set background = 1
 	..()
 
 	if(stat != DEAD)
 		//Chemicals in the body
-		handle_chemicals_in_body()
+		handle_chemicals_in_body(delta_time)
 
 	//Apparently, the person who wrote this code designed it so that
 	//blinded get reset each cycle and then get activated later in the
@@ -47,11 +47,11 @@
 
 
 
-/mob/living/brain/proc/handle_chemicals_in_body()
+/mob/living/brain/proc/handle_chemicals_in_body(delta_time)
 
 	reagent_move_delay_modifier = 0
 
-	if(reagents) reagents.metabolize(src)
+	if(reagents) reagents.metabolize(src, delta_time=delta_time)
 
 	confused = max(0, confused - 1)
 	// decrement dizziness counter, clamped to 0
@@ -73,7 +73,7 @@
 		silent = 0
 	else				//ALIVE. LIGHTS ARE ON
 		if( !container && (health < HEALTH_THRESHOLD_DEAD || ((world.time - timeofhostdeath) > CONFIG_GET(number/revival_brain_life))) )
-			death(last_damage_source)
+			death(last_damage_data)
 			blinded = 1
 			silent = 0
 			return 1
@@ -90,10 +90,10 @@
 				if(21 to 30)//High level of EMP damage, unable to see, hear, or speak
 					eye_blind = 1
 					blinded = 1
-					ear_deaf = 1
+					SetEarDeafness(1)
 					silent = 1
 					if(!alert)//Sounds an alarm, but only once per 'level'
-						emote("alarm")
+						INVOKE_ASYNC(src, .proc/emote, "alarm")
 						to_chat(src, SPAN_DANGER("Major electrical distruption detected: System rebooting."))
 						alert = 1
 					if(prob(75))
@@ -102,14 +102,14 @@
 					alert = 0
 					blinded = 0
 					eye_blind = 0
-					ear_deaf = 0
+					SetEarDeafness(0)
 					silent = 0
 					emp_damage -= 1
 				if(11 to 19)//Moderate level of EMP damage, resulting in nearsightedness and ear damage
 					eye_blurry = 1
 					ear_damage = 1
 					if(!alert)
-						emote("alert")
+						INVOKE_ASYNC(src, .proc/emote, "alert")
 						to_chat(src, SPAN_DANGER("Primary systems are now online."))
 						alert = 1
 					if(prob(50))
@@ -121,7 +121,7 @@
 					emp_damage -= 1
 				if(2 to 9)//Low level of EMP damage, has few effects(handled elsewhere)
 					if(!alert)
-						emote("notice")
+						INVOKE_ASYNC(src, .proc/emote, "notice")
 						to_chat(src, SPAN_DANGER("System reboot nearly complete."))
 						alert = 1
 					if(prob(25))

@@ -6,27 +6,25 @@
 	name = "Printing Pen"
 	var/mode = 1
 
-/obj/item/tool/pen/robopen/attack_self(mob/user as mob)
+/obj/item/tool/pen/robopen/attack_self(mob/user)
+	..()
 
 	var/choice = tgui_input_list(usr, "Would you like to change colour or mode?", "Change Mode", list("Colour","Mode"))
-	if(!choice) return
+	if(!choice)
+		return
 
-	playsound(src.loc, 'sound/effects/pop.ogg', 25, 0)
+	playsound(src.loc, 'sound/effects/pop.ogg', 25, FALSE)
 
 	switch(choice)
-
 		if("Colour")
 			var/newcolour = tgui_input_list(usr, "Which colour would you like to use?", list("black","blue","red","green","yellow"))
 			if(newcolour) colour = newcolour
-
 		if("Mode")
 			if (mode == 1)
 				mode = 2
 			else
 				mode = 1
 			to_chat(user, "Changed printing mode to '[mode == 2 ? "Rename Paper" : "Write Paper"]'")
-
-	return
 
 // Copied over from paper's rename verb
 // see code\modules\paperwork\paper.dm line 62
@@ -52,18 +50,18 @@
 	icon_state = "paper_bin1"
 	item_state = "sheet-metal"
 
-/obj/item/form_printer/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
+/obj/item/form_printer/attack(mob/living/carbon/M, mob/living/carbon/user)
 	return
 
-/obj/item/form_printer/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, flag, params)
-
+/obj/item/form_printer/afterattack(atom/target, mob/living/user, flag, params)
 	if(!target || !flag)
 		return
 
 	if(istype(target,/obj/structure/surface/table))
 		deploy_paper(get_turf(target))
 
-/obj/item/form_printer/attack_self(mob/user as mob)
+/obj/item/form_printer/attack_self(mob/user)
+	..()
 	deploy_paper(get_turf(src))
 
 /obj/item/form_printer/proc/deploy_paper(var/turf/T)

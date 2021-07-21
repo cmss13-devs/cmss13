@@ -10,8 +10,10 @@
 	throwforce = 5
 	w_class = SIZE_MEDIUM
 
+	var/blocked_by_suit = TRUE
+	var/heart_damage_to_deal = 5
 	var/ready = 0
-	var/damage_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
+	var/damage_heal_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
 	var/charge_cost = 66 //How much energy is used.
 	var/obj/item/cell/dcell = null
@@ -58,6 +60,8 @@
 
 
 /obj/item/device/defibrillator/attack_self(mob/living/carbon/human/user)
+	..()
+
 	if(defib_cooldown > world.time)
 		return
 
@@ -89,9 +93,38 @@
 	if(isnull(internal_organs_by_name) || isnull(internal_organs_by_name["heart"]))
 		return FALSE
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
+	var/obj/limb/head = get_limb("head")
 
-	if(!get_limb("head") || !heart || heart.is_broken() || !has_brain() || chestburst || status_flags & PERMANENTLY_DEAD)
+	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || heart.is_broken() || !has_brain() || status_flags & PERMANENTLY_DEAD)
 		return FALSE
+	return TRUE
+
+/obj/item/device/defibrillator/proc/check_revive(var/mob/living/carbon/human/H, mob/living/carbon/human/user)
+	if(!ishuman(H) || isYautja(H))
+		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))
+		return
+	if(!ready)
+		to_chat(user, SPAN_WARNING("Take [src]'s paddles out first."))
+		return
+	if(dcell.charge <= charge_cost)
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src]'s battery is too low! It needs to recharge."))
+		return
+	if(H.stat != DEAD)
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Vital signs detected. Aborting."))
+		return
+
+	if(!H.is_revivable())
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
+		return
+
+	if(blocked_by_suit && H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interfering."))
+		return
+
+	if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
+		return
+
 	return TRUE
 
 /obj/item/device/defibrillator/attack(mob/living/carbon/human/H, mob/living/carbon/human/user)
@@ -109,126 +142,96 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return
 
-	if(!ishuman(H) || isYautja(H))
-		to_chat(user, SPAN_WARNING("You can't defibrilate [H]. You don't even know where to put the paddles!"))
-		return
-	if(!ready)
-		to_chat(user, SPAN_WARNING("Take [src]'s paddles out first."))
-		return
-	if(dcell.charge <= charge_cost)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Internal battery depleted. Cannot analyze nor administer shock."))
-		return
-	if(H.stat != DEAD)
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Vital signs detected. Aborting."))
-		return
-
-	if(!H.is_revivable())
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's general condition does not allow reviving."))
-		return
-
-	if(H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring."))
-		return
-
-	if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient is braindead."))
+	if(!check_revive(H, user))
 		return
 
 	var/mob/dead/observer/G = H.get_ghost()
 	if(istype(G))
-		G << 'sound/effects/adminhelp_new.ogg'
+		playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
 			(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)")))
-	else if(!H.client)
-		//We couldn't find a suitable ghost, this means the person is not returning
-		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient has a DNR."))
-		return
 
 	user.visible_message(SPAN_NOTICE("[user] starts setting up the paddles on [H]'s chest"), \
 		SPAN_HELPFUL("You start <b>setting up</b> the paddles on <b>[H]</b>'s chest."))
 	playsound(get_turf(src),'sound/items/defib_charge.ogg', 25, 0) //Do NOT vary this tune, it needs to be precisely 7 seconds
 
 	//Taking square root not to make defibs too fast...
-	if(do_after(user, 70 * sqrt(user.get_skill_duration_multiplier(SKILL_MEDICAL)), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-
-		//Do this now, order doesn't matter
-		sparks.start()
-		dcell.use(charge_cost)
-		update_icon()
-		playsound(get_turf(src), 'sound/items/defib_release.ogg', 25, 1)
-		user.visible_message(SPAN_NOTICE("[user] shocks [H] with the paddles."),
-			SPAN_HELPFUL("You shock <b>[H]</b> with the paddles."))
-		H.visible_message(SPAN_DANGER("[H]'s body convulses a bit."))
-		defib_cooldown = world.time + 10 //1 second cooldown before you can shock again
-
-		if(H.wear_suit && (istype(H.wear_suit, /obj/item/clothing/suit/armor) || istype(H.wear_suit, /obj/item/clothing/suit/storage/marine)) && prob(95))
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed: Paddles registering >100,000 ohms, Possible cause: Suit or Armor interferring."))
-			return
-
-		var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
-		if(heart && prob(25))
-			heart.damage += 5 //Allow the defibrilator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
-
-		if(!H.is_revivable())
-			if(heart && heart.is_broken())
-				user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
-				return
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
-			return
-
-		if((!H.check_tod() && !isSynth(H))) //synthetic species have no expiration date
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient's brain has decayed too much."))
-			return
-
-		if(!H.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: No soul detected, Attempting to revive..."))
-
-		if(H.mind && !H.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
-			G = H.get_ghost()
-			if(istype(G))
-				user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's soul has almost departed, please try again."))
-				return
-			//We couldn't find a suitable ghost, this means the person is not returning
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Patient has a DNR."))
-			return
-
-
-		if(!H.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. No soul detected."))
-			return
-
-		//At this point, the defibrillator is ready to work
-		H.apply_damage(-damage_threshold, BRUTE)
-		H.apply_damage(-damage_threshold, BURN)
-		H.apply_damage(-damage_threshold, TOX)
-		H.apply_damage(-damage_threshold, CLONE)
-		H.apply_damage(-H.getOxyLoss(), OXY)
-		H.updatehealth() //Needed for the check to register properly
-
-		for(var/datum/reagent/R in H.reagents.reagent_list)
-			var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
-			if(P)
-				P.trigger(H)
-				H.reagents.remove_reagent(R.id, 1)
-				break
-		if(H.health > HEALTH_THRESHOLD_DEAD)
-			user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
-			user.track_life_saved(user.job)
-			H.handle_revive()
-			to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
-		else
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
-	else
+	if(!do_after(user, 7 SECONDS * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		user.visible_message(SPAN_WARNING("[user] stops setting up the paddles on [H]'s chest"), \
 		SPAN_WARNING("You stop setting up the paddles on [H]'s chest"))
+		return
 
+	if(!check_revive(H, user))
+		return
+
+	//Do this now, order doesn't matter
+	sparks.start()
+	dcell.use(charge_cost)
+	update_icon()
+	playsound(get_turf(src), 'sound/items/defib_release.ogg', 25, 1)
+	user.visible_message(SPAN_NOTICE("[user] shocks [H] with the paddles."),
+		SPAN_HELPFUL("You shock <b>[H]</b> with the paddles."))
+	H.visible_message(SPAN_DANGER("[H]'s body convulses a bit."))
+	defib_cooldown = world.time + 10 //1 second cooldown before you can shock again
+
+	var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
+	if(heart && prob(25))
+		heart.damage += heart_damage_to_deal //Allow the defibrilator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
+
+	if(!H.is_revivable())
+		if(heart && heart.is_broken())
+			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
+			return
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
+		return
+
+	if(!H.client) //Freak case, no client at all. This is a braindead mob (like a colonist)
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: No soul detected, Attempting to revive..."))
+
+	if(isobserver(H.mind?.current) && !H.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
+		H.mind.transfer_to(H, TRUE)
+
+
+	//At this point, the defibrillator is ready to work
+	H.apply_damage(-damage_heal_threshold, BRUTE)
+	H.apply_damage(-damage_heal_threshold, BURN)
+	H.apply_damage(-damage_heal_threshold, TOX)
+	H.apply_damage(-damage_heal_threshold, CLONE)
+	H.apply_damage(-H.getOxyLoss(), OXY)
+	H.updatehealth() //Needed for the check to register properly
+
+	for(var/datum/reagent/R in H.reagents.reagent_list)
+		var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
+		if(P)
+			P.trigger(H)
+			H.reagents.remove_reagent(R.id, 1)
+			break
+	if(H.health > HEALTH_THRESHOLD_DEAD)
+		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
+		user.track_life_saved(user.job)
+		H.handle_revive()
+		to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
+	else
+		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
+
+
+/obj/item/device/defibrillator/compact_adv
+	name = "advanced compact defibrillator"
+	desc = "An advanced compact defibrillator that trades capacity for strong immediate power. Ignores armor and heals strongly and quickly, at the cost of very low charge."
+	icon = 'icons/obj/items/experimental_tools.dmi'
+	icon_state = "compact_defib"
+	item_state = "defib"
+	w_class = SIZE_MEDIUM
+	blocked_by_suit = FALSE
+	heart_damage_to_deal = 0
+	damage_heal_threshold = 40
+	charge_cost = 198
 
 /obj/item/device/defibrillator/compact
 	name = "compact defibrillator"
-	desc = "A compact defibrillator not tested to be reliable. Success is not guaranteed on use."
+	desc ="This particular defibrillator has halved charge capacity compared to the standard emergency defibrillator, but can fit in your pocket."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "compact_defib"
 	item_state = "defib"
 	w_class = SIZE_SMALL
-
-	charge_cost = 132 //How much energy is used.
+	charge_cost = 132

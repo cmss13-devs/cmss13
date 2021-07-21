@@ -183,7 +183,7 @@
 /area/whiskey_outpost/inside/caves/tunnel
 	name = "\improper Tunnel"
 	icon_state = "tunnel"
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/whiskey_outpost/inside/caves/caverns
 	name = "\improper Northern Caverns"

@@ -1,5 +1,3 @@
-
-
 /obj/item/device/radio
 	icon = 'icons/obj/items/radio.dmi'
 	name = "station bounced radio"
@@ -21,6 +19,7 @@
 	var/subspace_transmission = 0
 	var/syndie = 0//Holder to see if it's a syndicate encrpyed radio
 	var/maxf = 1499
+	var/volume = RADIO_VOLUME_QUIET
 //			"Example" = FREQ_LISTENING|FREQ_BROADCASTING
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
@@ -29,15 +28,7 @@
 	w_class = SIZE_SMALL
 
 	matter = list("glass" = 25,"metal" = 75)
-
-	var/const/WIRE_SIGNAL = 1 //sends a signal, like to set off a bomb or electrocute someone
-	var/const/WIRE_RECEIVE = 2
-	var/const/WIRE_TRANSMIT = 4
-	var/const/TRANSMISSION_DELAY = 5 // only 2/second/radio
-	var/const/FREQ_LISTENING = 1
 		//FREQ_BROADCASTING = 2
-
-	var/agent_unlocked = FALSE
 
 /obj/item/device/radio
 	var/datum/radio_frequency/radio_connection
@@ -80,6 +71,7 @@
 
 
 /obj/item/device/radio/attack_self(mob/user as mob)
+	..()
 	user.set_interaction(src)
 	interact(user)
 
@@ -107,11 +99,6 @@
 		dat+=text_sec_channel(ch_name, channels[ch_name])
 	dat += "</table>"
 	dat += "<br>"
-	dat += "Special Frequency[agent_unlocked ? " (ACTIVATED)" : ""]:"
-	dat += "<A href='byond://?src=\ref[src];special_frequency=1'>Call</A>"
-	if(agent_unlocked)
-		dat += "<A href='byond://?src=\ref[src];special_frequency_reset=1'>Reset</A>"
-	dat += "<br><br>"
 	dat += {"[text_wires()]</TT></body></html>"}
 	show_browser(user, dat, name, "radio")
 	return
@@ -176,44 +163,13 @@
 				channels[chan_name] |= FREQ_LISTENING
 	else if (href_list["wires"])
 		var/t1 = text2num(href_list["wires"])
-		if (!( istype(usr.get_active_hand(), /obj/item/tool/wirecutters) ))
+		var/obj/item/held_item = usr.get_held_item()
+		if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 			return
 		if (wires & t1)
 			wires &= ~t1
 		else
 			wires |= t1
-
-	if (href_list["special_frequency"])
-		if(!ishuman(usr))
-			return
-
-		var/mob/living/carbon/human/H = usr
-		if(!agent_unlocked)
-			var/special_freq = input(usr, "What frequency do you want to tune it to?") as num|null
-			if(!special_freq)
-				return
-
-			if(H.agent_holder && H.agent_holder.frequency_code != special_freq || !H.agent_holder)
-				to_chat(usr, SPAN_NOTICE("The frequency tuned to doesn't respond."))
-				return
-
-			agent_unlocked = TRUE
-
-		//open up the vendor shit
-		if(!H.agent_holder || !H.agent_holder.tools)
-			return
-
-		H.agent_holder.tools.attack_self(usr)
-		attack_self(usr)
-		return
-
-	if (href_list["special_frequency_reset"])
-		if(!agent_unlocked)
-			return
-
-		agent_unlocked = FALSE
-		attack_self(usr)
-		return
 
 	if (!( master ))
 		if (istype(loc, /mob))
@@ -337,7 +293,7 @@
 
 	Broadcast_Message(connection, M, voicemask, pick(M.speak_emote),
 					  src, message, displayname, jobname, real_name, M.voice_name,
-					  filter_type, 0, target_zs, connection.frequency, verb, speaking)
+					  filter_type, 0, target_zs, connection.frequency, verb, speaking, volume)
 
 
 /obj/item/device/radio/proc/get_target_zs()
@@ -446,7 +402,7 @@
 /obj/item/device/radio/attackby(obj/item/W as obj, mob/user as mob)
 	..()
 	user.set_interaction(src)
-	if (!( istype(W, /obj/item/tool/screwdriver) ))
+	if (!HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		return
 	b_stat = !( b_stat )
 	if(!istype(src, /obj/item/device/radio/beacon))
@@ -490,10 +446,10 @@
 /obj/item/device/radio/borg/attackby(obj/item/W as obj, mob/user as mob)
 //	..()
 	user.set_interaction(src)
-	if (!( istype(W, /obj/item/tool/screwdriver) || (istype(W, /obj/item/device/encryptionkey/ ))))
+	if (!(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || (istype(W, /obj/item/device/encryptionkey))))
 		return
 
-	if(istype(W, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(keyslot)
 
 

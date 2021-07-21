@@ -23,6 +23,21 @@ FIRE ALARM
 	var/wiresexposed = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
 
+/obj/structure/machinery/firealarm/Initialize(mapload, dir, building)
+	. = ..()
+	if(is_mainship_level(z))
+		RegisterSignal(SSdcs, COMSIG_GLOB_SECURITY_LEVEL_CHANGED, .proc/sec_changed)
+
+/obj/structure/machinery/firealarm/proc/sec_changed(datum/source, new_sec)
+	SIGNAL_HANDLER
+	switch(new_sec)
+		if(SEC_LEVEL_GREEN)
+			icon_state = "fire0"
+		if(SEC_LEVEL_BLUE)
+			icon_state = "fireblue"
+		if(SEC_LEVEL_RED, SEC_LEVEL_DELTA)
+			icon_state = "firered"
+
 /obj/structure/machinery/firealarm/update_icon()
 
 	if(wiresexposed)
@@ -38,12 +53,8 @@ FIRE ALARM
 
 	if(stat & BROKEN)
 		icon_state = "firex"
-	else if(stat & NOPOWER)
+	else if(stat & NOPOWER & (security_level != SEC_LEVEL_RED))
 		icon_state = "firep"
-	else if(!src.detecting)
-		icon_state = "fire1"
-	else
-		icon_state = "fire0"
 
 /obj/structure/machinery/firealarm/fire_act(temperature, volume)
 	if(src.detecting)
@@ -64,7 +75,7 @@ FIRE ALARM
 /obj/structure/machinery/firealarm/attackby(obj/item/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 
-	if (istype(W, /obj/item/tool/screwdriver) && buildstage == 2)
+	if (HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && buildstage == 2)
 		wiresexposed = !wiresexposed
 		update_icon()
 		return
@@ -72,13 +83,13 @@ FIRE ALARM
 	if(wiresexposed)
 		switch(buildstage)
 			if(2)
-				if (istype(W, /obj/item/device/multitool))
+				if (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 					src.detecting = !( src.detecting )
 					if (src.detecting)
 						user.visible_message(SPAN_DANGER("[user] has reconnected [src]'s detecting unit!"), "You have reconnected [src]'s detecting unit.")
 					else
 						user.visible_message(SPAN_DANGER("[user] has disconnected [src]'s detecting unit!"), "You have disconnected [src]'s detecting unit.")
-				else if (istype(W, /obj/item/tool/wirecutters))
+				else if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 					user.visible_message(SPAN_DANGER("[user] has cut the wires inside \the [src]!"), "You have cut the wires inside \the [src].")
 					playsound(src.loc, 'sound/items/Wirecutter.ogg', 25, 1)
 					buildstage = 1
@@ -93,7 +104,7 @@ FIRE ALARM
 					else
 						to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
 						return
-				else if(istype(W, /obj/item/tool/crowbar))
+				else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 					to_chat(user, "You pry out the circuit!")
 					playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
 					spawn(20)
@@ -108,7 +119,7 @@ FIRE ALARM
 					buildstage = 1
 					update_icon()
 
-				else if(istype(W, /obj/item/tool/wrench))
+				else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 					to_chat(user, "You remove the fire alarm assembly from the wall!")
 					var/obj/item/frame/fire_alarm/frame = new /obj/item/frame/fire_alarm()
 					frame.forceMove(user.loc)

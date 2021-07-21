@@ -1,7 +1,8 @@
 
 // Called when the item is in the active hand, and clicked; alternately, there is an 'activate held object' verb or you can hit pagedown.
 /obj/item/proc/attack_self(mob/user)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
@@ -25,9 +26,12 @@
 	return FALSE
 
 
-/obj/item/proc/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/proc/attack(mob/living/M, mob/living/user)
 	if(flags_item & NOBLUDGEON)
 		return FALSE
+
+	if(SEND_SIGNAL(M, COMSIG_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK)
+		return
 
 	if (!istype(M)) // not sure if this is the right thing...
 		return FALSE
@@ -96,15 +100,14 @@
 				M.apply_damage(power,BURN)
 				to_chat(M, SPAN_WARNING("It burns!"))
 		if(power > 5)
-			M.last_damage_source = initial(name)
-			M.last_damage_mob = user
+			M.last_damage_data = create_cause_data(initial(name), user)
 			user.track_hit(initial(name))
 			if(user.faction == M.faction)
 				user.track_friendly_fire(initial(name))
 		M.updatehealth()
 	else
 		var/mob/living/carbon/human/H = M
-		var/hit = H.attacked_by(src, user, def_zone)
+		var/hit = H.attacked_by(src, user)
 		if (hit && hitsound)
 			playsound(loc, hitsound, 25, 1)
 		return hit

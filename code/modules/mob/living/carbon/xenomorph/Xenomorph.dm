@@ -44,7 +44,7 @@
 	see_in_dark = 8
 	recovery_constant = 1.5
 	see_invisible = SEE_INVISIBLE_MINIMUM
-	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
+	hud_possible = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE, HUNTER_HUD)
 	unacidable = TRUE
 	rebounds = TRUE
 	faction = FACTION_XENOMORPH
@@ -135,7 +135,7 @@
 	var/hardcore = 0 //Set to 1 in New() when Whiskey Outpost is active. Prevents healing and queen evolution
 
 	//Naming variables
-	var/caste_name = "Drone"
+	var/caste_type = "Drone"
 	var/nicknumber = 0 //The number after the name. Saved right here so it transfers between castes.
 
 	//This list of inherent verbs lets us take any proc basically anywhere and add them.
@@ -146,6 +146,10 @@
 	//Leader vars
 	var/leader_aura_strength = 0 //Pheromone strength inherited from Queen
 	var/leader_current_aura = "" //Pheromone type inherited from Queen
+
+	/// List of actions (typepaths) that a
+	/// xenomorph type is given upon spawn
+	var/base_actions
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -206,6 +210,8 @@
 	var/banished = FALSE // Banished xenos can be attacked by all other xenos
 	var/list/tackle_counter
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
+	/// The damage dealt by a xeno whenever they take damage near someone
+	var/acid_blood_damage = 12
 
 
 	//////////////////////////////////////////////////////////////////
@@ -232,7 +238,7 @@
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
 	var/list/resin_build_order
-	var/selected_resin = 1 // Which resin structure to build when we secrete resin, defaults to 1 (first element)
+	var/selected_resin // Which resin structure to build when we secrete resin, defaults to null.
 	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
 	var/obj/structure/tunnel/start_dig = null
@@ -242,7 +248,7 @@
 	var/list/current_placeable = list() // If we have current_placeable that are limited, e.g. fruits
 	var/max_placeable = 0 // Limit to that amount
 	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
-
+	var/list/built_structures = list()
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -272,16 +278,26 @@
 	//Taken from update_icon for all xeno's
 	var/list/overlays_standing[X_TOTAL_LAYERS]
 
+	var/atom/movable/vis_obj/xeno_wounds/wound_icon_carrier
+
 /mob/living/carbon/Xenomorph/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	var/area/A = get_area(src)
 	if(A && A.statistic_exempt)
 		statistic_exempt = TRUE
+
+	wound_icon_carrier = new(null, src)
+	vis_contents += wound_icon_carrier
 
 	if(oldXeno)
 		hivenumber = oldXeno.hivenumber
 		nicknumber = oldXeno.nicknumber
 	else if (h_number)
 		hivenumber = h_number
+
+	set_languages(list("Xenomorph", "Hivemind"))
+	if(oldXeno)
+		for(var/datum/language/L in oldXeno.languages)
+			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
 
 	// Well, not yet, technically
 	var/datum/hive_status/in_hive = GLOB.hive_datum[hivenumber]
@@ -304,11 +320,6 @@
 	if(SSticker?.mode?.hardcore)
 		hardcore = 1 //Prevents healing and queen evolution
 	time_of_birth = world.time
-
-	set_languages(list("Xenomorph", "Hivemind"))
-	if(oldXeno)
-		for(var/datum/language/L in oldXeno.languages)
-			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)
 
 	add_inherent_verbs()
 	add_abilities()
@@ -355,13 +366,14 @@
 	if (caste)
 		behavior_delegate = new caste.behavior_delegate_type()
 		behavior_delegate.bound_xeno = src
+		behavior_delegate.add_to_xeno()
 		resin_build_order = caste.resin_build_order
 	else
 		CRASH("Xenomorph [src] has no caste datum! Tell the devs!")
 
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
-		var/selected_caste = GLOB.xeno_datum_list[caste_name]?.type
+		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		var/free_slots = LAZYACCESS(hive.free_slots, selected_caste)
 		if(free_slots)
 			hive.free_slots[selected_caste] -= 1
@@ -376,9 +388,10 @@
 	if (hive && hive.hive_ui)
 		hive.hive_ui.update_all_xeno_data()
 
-	job = caste.caste_name // Used for tracking the caste playtime
+	job = caste.caste_type // Used for tracking the caste playtime
 
 	RegisterSignal(src, COMSIG_MOB_SCREECH_ACT, .proc/handle_screech_act)
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_SPAWN, src)
 
 /mob/living/carbon/Xenomorph/proc/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
 	SIGNAL_HANDLER
@@ -400,8 +413,8 @@
 	stamina = new /datum/stamina/none(src)
 
 /mob/living/carbon/Xenomorph/proc/update_caste()
-	if(caste_name && GLOB.xeno_datum_list[caste_name])
-		caste = GLOB.xeno_datum_list[caste_name]
+	if(caste_type && GLOB.xeno_datum_list[caste_type])
+		caste = GLOB.xeno_datum_list[caste_type]
 	else
 		to_world("something went very wrong")
 		return
@@ -445,6 +458,8 @@
 	// Burrowed xenos also cannot be ignited
 	if((caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || burrow)
 		. |= COMPONENT_NO_IGNITE
+	if(caste.fire_immunity & FIRE_IMMUNITY_XENO_FRENZY)
+		. |= COMPONENT_XENO_FRENZY
 
 //Off-load this proc so it can be called freely
 //Since Xenos change names like they change shoes, we need somewhere to hammer in all those legos
@@ -485,7 +500,7 @@
 	if(isXenoPredalien(src))
 		name = "[name_prefix][caste.display_name] ([name_client_prefix][nicknumber][name_client_postfix])"
 	else if(caste)
-		name = "[name_prefix][age_prefix][caste.caste_name] ([name_client_prefix][nicknumber][name_client_postfix])"
+		name = "[name_prefix][age_prefix][caste.caste_type] ([name_client_prefix][nicknumber][name_client_postfix])"
 
 	//Update linked data so they show up properly
 	change_real_name(src, name)
@@ -495,6 +510,10 @@
 
 /mob/living/carbon/Xenomorph/examine(mob/user)
 	..()
+	if(HAS_TRAIT(src, TRAIT_SIMPLE_DESC))
+		to_chat(user, desc)
+		return
+
 	if(isXeno(user) && caste && caste.caste_desc)
 		to_chat(user, caste.caste_desc)
 
@@ -541,7 +560,7 @@
 
 	// Only handle free slots if the xeno is not in tdome
 	if(!is_admin_level(z))
-		var/selected_caste = GLOB.xeno_datum_list[caste_name]?.type
+		var/selected_caste = GLOB.xeno_datum_list[caste_type]?.type
 		var/used_slots = LAZYACCESS(hive.used_free_slots, selected_caste)
 		if(used_slots)
 			hive.used_free_slots[selected_caste] -= 1
@@ -571,6 +590,16 @@
 	queued_action = null
 
 	QDEL_NULL(mutators)
+	QDEL_NULL(behavior_delegate)
+
+	for(var/i in built_structures)
+		var/list/L = built_structures[i]
+		QDEL_NULL_LIST(L)
+
+	built_structures = null
+
+	vis_contents -= wound_icon_carrier
+	QDEL_NULL(wound_icon_carrier)
 
 	. = ..()
 
@@ -581,6 +610,9 @@
 
 
 /mob/living/carbon/Xenomorph/start_pulling(atom/movable/AM, lunge, no_msg)
+	if(SEND_SIGNAL(AM, COMSIG_MOVABLE_XENO_START_PULLING, src) & COMPONENT_ALLOW_PULL)
+		return do_pull(AM, lunge, no_msg)
+
 	if(!isliving(AM))
 		return FALSE
 	var/mob/living/L = AM
@@ -593,12 +625,15 @@
 	var/atom/A = AM.handle_barriers(src)
 	if(A != AM)
 		A.attack_alien(src)
-		next_move = world.time + (10 + caste.attack_delay + attack_speed_modifier)
+		xeno_attack_delay(src)
 		return FALSE
 	return ..()
 
 /mob/living/carbon/Xenomorph/pull_response(mob/puller)
 	if(stat != DEAD && has_species(puller,"Human")) // If the Xeno is alive, fight back against a grab/pull
+		var/mob/living/carbon/human/H = puller
+		if(H.ally_of_hivenumber(hivenumber))
+			return TRUE
 		puller.KnockDown(rand(caste.tacklestrength_min,caste.tacklestrength_max))
 		playsound(puller.loc, 'sound/weapons/pierce.ogg', 25, 1)
 		puller.visible_message(SPAN_WARNING("[puller] tried to pull [src] but instead gets a tail swipe to the head!"))
@@ -829,12 +864,6 @@
 	plasma_stored = plasma_max
 	for(var/datum/action/xeno_action/XA in actions)
 		XA.end_cooldown()
-
-/mob/living/carbon/Xenomorph/proc/remove_action(var/action as text)
-	for(var/X in actions)
-		var/datum/action/A = X
-		if(A.name == action)
-			A.remove_action(src)
 
 /mob/living/carbon/Xenomorph/resist_fire()
 	adjust_fire_stacks(XENO_FIRE_RESIST_AMOUNT, min_stacks = 0)

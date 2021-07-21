@@ -3,8 +3,12 @@
 	description = "In exchange for your ability to build, you gain better pheromones, lesser resin fruits, and the ability to transfer life to other Xenomorphs. Be wary, this is a dangerous process, overexert yourself and you might die..."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Drone") //Only drone.
-	mutator_actions_to_remove = list("Secrete Resin","Choose Resin Structure", "Transfer Plasma")
+	caste_whitelist = list(XENO_CASTE_DRONE) //Only drone.
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/secrete_resin,
+		/datum/action/xeno_action/onclick/choose_resin,
+		/datum/action/xeno_action/activable/transfer_plasma,
+	)
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/onclick/plant_resin_fruit, // Second macro. Resin fruits belong to Gardener, but Healer has a minor variant
 		/datum/action/xeno_action/activable/transfer_health, //Third macro.
@@ -67,6 +71,10 @@
 	if(!check_state())
 		return
 
+	if(target.stat == DEAD)
+		to_chat(src, SPAN_WARNING("[target] is already dead!"))
+		return
+	
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return
@@ -83,6 +91,10 @@
 	if(!check_state())
 		return
 
+	if(target.stat == DEAD)
+		to_chat(src, SPAN_WARNING("[target] is already dead!"))
+		return
+	
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return

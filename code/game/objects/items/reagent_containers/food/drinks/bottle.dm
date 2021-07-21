@@ -7,7 +7,7 @@
 	amount_per_transfer_from_this = 5
 	volume = 100
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
-	var/const/duration = 13 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
+	var/duration = 13 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
 	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 
 /obj/item/reagent_container/food/drinks/bottle/proc/smash(mob/living/target as mob, mob/living/user as mob)
@@ -128,8 +128,8 @@
 	reagents.add_reagent("whiskey", 100)
 
 /obj/item/reagent_container/food/drinks/bottle/sake
-	name = "\improper Weston-Yamada Sake"
-	desc = "Sake made with ancient techniques passed down for thousands of years. Fermented in Iowa by the Weston-Yamada Corporation."
+	name = "\improper Weyland-Yutani Sake"
+	desc = "Sake made with ancient techniques passed down for thousands of years. Fermented in Iowa by the Weyland-Yutani Corporation."
 	icon_state = "sakebottle"
 	center_of_mass = "x=17;y=7"
 
@@ -146,6 +146,61 @@
 /obj/item/reagent_container/food/drinks/bottle/vodka/Initialize()
 	. = ..()
 	reagents.add_reagent("vodka", 100)
+
+//chess bottles
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess
+	name = "\improper Red Star Vodka promotional bottle"
+	desc = "A promotional chess themed bottle of Red Star Vodka."
+	icon_state = "chess"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_pawn
+	name = "\improper Black Pawn bottle"
+	icon_state = "b_pawn"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_pawn
+	name = "\improper White Pawn bottle"
+	icon_state = "w_pawn"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_bishop
+	name = "\improper Black Bishop bottle"
+	icon_state = "b_bishop"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_bishop
+	name = "\improper White Bishop bottle"
+	icon_state = "w_bishop"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_knight
+	name = "\improper Black Knight bottle"
+	icon_state = "b_knight"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_knight
+	name = "\improper White Knight bottle"
+	icon_state = "w_knight"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_rook
+	name = "\improper Black Rook bottle"
+	icon_state = "b_rook"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_rook
+	name = "\improper White Rook bottle"
+	icon_state = "w_rook"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_king
+	name = "\improper Black King bottle"
+	icon_state = "b_king"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_king
+	name = "\improper White King bottle"
+	icon_state = "w_king"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/b_queen
+	name = "\improper Black Queen bottle"
+	icon_state = "b_queen"
+
+/obj/item/reagent_container/food/drinks/bottle/vodka/chess/w_queen
+	name = "\improper White Queen bottle"
+	icon_state = "w_queen"
 
 /obj/item/reagent_container/food/drinks/bottle/tequilla
 	name = "\improper Caccavo Guaranteed Quality Tequilla"
@@ -320,6 +375,14 @@
 /obj/item/reagent_container/food/drinks/bottle/orangejuice/Initialize()
 	. = ..()
 	reagents.add_reagent("orangejuice", 100)
+	var/probability = rand(0, 101)
+	switch(probability)
+		if(0 to 49)
+			desc = "Full of vitamins and deliciousness! Contains NO pulp!"
+		if(50 to 100)
+			desc = "Full of vitamins and deliciousness! Contains pulp!"
+		else
+			desc = "Full of vitamins and deliciousness! Contains 100% pulp!"
 
 /obj/item/reagent_container/food/drinks/bottle/cream
 	name = "Milk Cream"

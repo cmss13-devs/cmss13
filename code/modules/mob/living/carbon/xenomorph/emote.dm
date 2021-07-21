@@ -21,10 +21,10 @@
 				return
 			if(!message)
 				return
-			return custom_emote(m_type, message, player_caused)
+			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
 
 		if("custom")
-			return custom_emote(m_type, message, player_caused)
+			return INVOKE_ASYNC(src, /mob.proc/custom_emote, m_type, message, player_caused)
 
 		if("growl")
 			if(isXenoPredalien(src))
@@ -44,7 +44,7 @@
 
 		if("needhelp")
 			emote_audio_helper("<B>The [name]</B> needs help!", "alien_help", 25, player_caused)
-			return		
+			return
 
 		if("roar")
 			if(isXenoPredalien(src))
@@ -52,13 +52,15 @@
 				return
 
 			emote_audio_helper("<B>The [name]</B> roars!", "alien_roar", 40, player_caused)
-			return	
+			return
 
 		if("tail")
 			emote_audio_helper("<B>The [name]</B> swipes its tail.", "alien_tail_swipe", 40, player_caused)
 			return
 
+		/*
 		if("dance")
+
 			if(!is_mob_restrained())
 			//	message = "<B>The [name]</B> dances around!"
 				m_type = 1
@@ -68,6 +70,7 @@
 						setDir(i)
 						sleep(1)
 				canmove = 1
+		*/
 
 		if("help")
 			to_chat(src, "<br><br><b>To use an emote, type an asterix (*) before a following word. Emotes with a sound are <span style='color: green;'>green</span>. Spamming emotes with sound will likely get you banned. Don't do it.<br><br>\
@@ -95,7 +98,7 @@
 	if(recent_audio_emote && player_caused)
 		to_chat(src, "You just did an audible emote. Wait a while.")
 		return
-	
+
 	playsound(loc, sound_to_play, volume)
 
 	if(player_caused)

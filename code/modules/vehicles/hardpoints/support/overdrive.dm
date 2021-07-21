@@ -8,9 +8,9 @@
 
 	health = 250
 
-	// 25% movespeed increase. Remember that movespeed is given in delay
+	// 20% movespeed increase. Remember that movespeed is given in delay
 	buff_multipliers = list(
-		"move" = 0.75
+		"move" = 0.8
 	)
 
 	px_offsets = list(

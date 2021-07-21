@@ -101,7 +101,7 @@
 		if(T.intact_tile)
 			return		// prevent intraction when T-scanner revealed
 
-		if(istype(I, /obj/item/tool/screwdriver))
+		if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 			open = !open
 
 			user.visible_message("[user] [open ? "opens" : "closes"] the beacon's cover.", "You [open ? "open" : "close"] the beacon's cover.")

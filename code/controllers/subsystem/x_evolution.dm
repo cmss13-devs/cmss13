@@ -28,7 +28,7 @@ SUBSYSTEM_DEF(xevolution)
 			continue
 
 		if(!HS.dynamic_evolution)
-			boost_power[HS.hivenumber] = HS.evolution_rate
+			boost_power[HS.hivenumber] = HS.evolution_rate + HS.evolution_bonus
 			HS.hive_ui.update_pooled_larva()
 			continue
 
@@ -37,13 +37,15 @@ SUBSYSTEM_DEF(xevolution)
 		if((world.time - SSticker.round_start_time) < XENO_ROUNDSTART_PROGRESS_TIME_2)
 			boost_power_new = max(boost_power_new, XENO_ROUNDSTART_PROGRESS_AMOUNT)
 		else
-			boost_power_new = Floor(10 * (world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - SSticker.round_start_time) / EVOLUTION_INCREMENT_TIME) / 10
+			//boost_power_new = Floor(10 * (world.time - XENO_ROUNDSTART_PROGRESS_TIME_2 - SSticker.round_start_time) / EVOLUTION_INCREMENT_TIME) / 10
+			boost_power_new = 1
 
 			//Add on any bonuses from evopods after applying upgrade progress
-			boost_power_new += (0.5 * HS.has_special_structure(XENO_STRUCTURE_EVOPOD))
+			boost_power_new += (0.25 * HS.has_special_structure(XENO_STRUCTURE_EVOPOD))
 
 		boost_power_new = Clamp(boost_power_new, BOOST_POWER_MIN, BOOST_POWER_MAX)
 
+		boost_power_new += HS.evolution_bonus
 		if(!force_boost_power)
 			boost_power[HS.hivenumber] = boost_power_new
 

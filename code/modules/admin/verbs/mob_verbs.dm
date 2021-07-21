@@ -127,7 +127,7 @@
 		to_chat(src, "Only administrators may use this command.")
 		return
 
-	var/list/subtle_message_options = list("Voice in head", "Weston-Yamada", "USCM High Command", "Faction-specific")
+	var/list/subtle_message_options = list("Voice in head", "Weyland-Yutani", "USCM High Command", "Faction-specific")
 
 	var/message_option = tgui_input_list(usr, "Choose the method of subtle messaging", "", subtle_message_options)
 

@@ -3,7 +3,7 @@
 		return
 
 	age = XENO_NORMAL
-	var/hours_as_caste = get_job_playtime(client, caste.caste_name)
+	var/hours_as_caste = get_job_playtime(client, caste.caste_type)
 
 	switch(hours_as_caste)
 		if(JOB_PLAYTIME_TIER_1 to JOB_PLAYTIME_TIER_2)

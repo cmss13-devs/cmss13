@@ -1,5 +1,5 @@
 /datum/caste_datum/lurker
-	caste_name = "Lurker"
+	caste_type = XENO_CASTE_LURKER
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -16,15 +16,15 @@
 
 	behavior_delegate_type = /datum/behavior_delegate/lurker_base
 
-	deevolves_to = "Runner"
+	deevolves_to = XENO_CASTE_RUNNER
 	caste_desc = "A fast, powerful backline combatant."
-	evolves_to = list("Ravager")
+	evolves_to = list(XENO_CASTE_RAVAGER)
 
 	heal_resting = 1.5
 
 /mob/living/carbon/Xenomorph/Lurker
-	caste_name = "Lurker"
-	name = "Lurker"
+	caste_type = XENO_CASTE_LURKER
+	name = XENO_CASTE_LURKER
 	desc = "A beefy, fast alien with sharp claws."
 	icon_size = 48
 	icon_state = "Lurker Walking"
@@ -32,7 +32,7 @@
 	pixel_x = -12
 	old_x = -12
 	tier = 2
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
@@ -67,7 +67,7 @@
 	var/next_slash_buffed = FALSE
 	var/can_go_invisible = TRUE
 
-/datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, atom/A = null)
+/datum/behavior_delegate/lurker_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
 	if (!isXenoOrHuman(A))
 		return original_damage
 
@@ -81,13 +81,13 @@
 
 	return original_damage
 
-/datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/lurker_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 	if (!isXenoOrHuman(A))
 		return
 
 	var/mob/living/carbon/H = A
 	if (H.knocked_down)
-		new /datum/effects/xeno_slow(H, bound_xeno, null, null, get_xeno_stun_duration(slash_slow_duration))
+		new /datum/effects/xeno_slow(H, bound_xeno, null, null, get_xeno_stun_duration(H, slash_slow_duration))
 
 	return
 

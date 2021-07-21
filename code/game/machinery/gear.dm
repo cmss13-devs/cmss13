@@ -8,6 +8,13 @@
 	use_power = 0
 	var/id
 
+/obj/structure/machinery/gear/proc/start_moving(direction = NORTH)
+	icon_state = "gear_moving"
+	setDir(direction)
+
+/obj/structure/machinery/gear/proc/stop_moving()
+	icon_state = "gear"
+
 /obj/structure/machinery/elevator_strut
 	name = "\improper strut"
 	icon = 'icons/turf/elevator_strut.dmi'
@@ -25,3 +32,4 @@
 
 /obj/structure/machinery/elevator_strut/bottom
 	icon_state = "strut_bottom"
+

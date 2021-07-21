@@ -1,8 +1,6 @@
 
 //actual built floors, not natural ground
 /turf/open/floor
-	//Note to coders, the 'intact_tile' var can no longer be used to determine if the floor is a plating or not.
-	//Use the is_plating(), is_plasteel_floor() and is_light_floor() procs instead. --Errorage
 	name = "floor"
 	icon = 'icons/turf/floors/floors.dmi'
 	icon_state = "floor"
@@ -207,7 +205,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 		icon_state = "carpet-broken"
 		broken = 1
 	else if(is_grass_floor())
-		icon_state = "sand[pick("1", "2", "3")]"
+		icon_state = "grass[pick("1", "2", "3")]"
 		broken = 1
 
 /turf/open/floor/proc/burn_tile()
@@ -230,7 +228,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 		icon_state = "carpet-broken"
 		burnt = 1
 	else if(is_grass_floor())
-		icon_state = "sand[pick("1", "2", "3")]"
+		icon_state = "grass[pick("1", "2", "3")]"
 		burnt = 1
 
 //This proc will delete the floor_tile and the update_iocn() proc will then change the icon_state of the turf
@@ -383,7 +381,7 @@ var/list/wood_icons = list("wood", "wood-broken")
 		playsound(src, 'sound/items/Crowbar.ogg', 25, 1)
 		return
 
-	if(istype(C, /obj/item/tool/screwdriver) && is_wood_floor())
+	if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER) && is_wood_floor())
 		if(broken || burnt)
 			return
 		else
@@ -506,7 +504,12 @@ var/list/wood_icons = list("wood", "wood-broken")
 		SPAN_DANGER("You hear broken glass!"), 5)
 		icon_state = "light_off"
 		SetLuminosity(0)
+		return XENO_ATTACK_ACTION
 
 /turf/open/floor/sandstone
 	name = "sandstone floor"
 	icon_state = "whiteyellowfull"
+
+/turf/open/floor/sandstone/runed
+	name = "sandstone temple floor"
+	icon_state = "runedsandstone"

@@ -40,4 +40,10 @@
 		else if((M.stat == DEAD || isobserver(M)) && M && M.client && M.client.prefs && (M.client.prefs.toggles_chat & CHAT_DEAD)) // show the message to regular ghosts who have deadchat toggled on
 			M.show_message(rendered, 2)
 
+/client/proc/get_dead_say()
+	var/msg = input(src, null, "dsay \"text\"") as text|null
 
+	if (isnull(msg))
+		return
+
+	dsay(msg)

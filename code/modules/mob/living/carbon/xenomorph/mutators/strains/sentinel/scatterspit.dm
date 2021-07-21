@@ -3,8 +3,11 @@
 	description = "You exchange your spit varieties, corrosive acid and some speed to gain a potent, shotgun-like neurotoxic spit."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Sentinel")
-	mutator_actions_to_remove = list("Toggle Spit Type", "Corrosive Acid (75)")
+	caste_whitelist = list(XENO_CASTE_SENTINEL)
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/onclick/shift_spits,
+		/datum/action/xeno_action/activable/corrosive_acid/weak,
+	)
 	keystone = TRUE
 
 /datum/xeno_mutator/scatterspit/apply_mutator(datum/mutator_set/individual_mutators/MS)

@@ -2,11 +2,11 @@
 
 /obj/effect/alien/resin/fruit
 	desc = "A fruit that can be eaten to immediately recover health."
-	name = "Lesser resin fruit"
+	name = "lesser resin fruit"
 	icon_state = "fruit_lesser_immature"
 	density = 0
 	opacity = 0
-	anchored = 1
+	anchored = TRUE
 	health = 25
 	layer = RESIN_STRUCTURE_LAYER
 	var/hivenumber = XENO_HIVE_NORMAL
@@ -22,6 +22,25 @@
 	var/consumed_icon_state = "fruit_spent"
 
 	var/mob/living/carbon/Xenomorph/bound_xeno // Drone linked to this fruit
+	var/fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit
+
+/obj/effect/alien/resin/fruit/attack_hand(mob/living/user)
+	. = ..()
+	to_chat(user, SPAN_WARNING("You start uprooting \the [src].."))
+	if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		return
+	var/n_color = color
+	qdel(src)
+	playsound(src, "alien_resin_break", 25, FALSE)
+	if(!mature)
+		to_chat(user, SPAN_WARNING("[src] disintegrates in your hands as you uproot it."))
+		return
+	to_chat(user, SPAN_WARNING("You uproot [src]."))
+	var/obj/item/reagent_container/food/snacks/resin_fruit/new_fruit = new fruit_type()
+	new_fruit.color = n_color
+	user.put_in_hands(new_fruit)
+
+
 
 /obj/effect/alien/resin/fruit/Initialize(mapload, obj/effect/alien/weeds/W, mob/living/carbon/Xenomorph/X)
 	if(!istype(X))
@@ -112,19 +131,23 @@
 	if(X.a_intent == INTENT_HELP && X.can_not_harm(bound_xeno))
 		if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && X.health >= X.caste.max_health)
 			to_chat(X, SPAN_XENODANGER("You are at full health! This would be a waste..."))
-			return
+			return XENO_NO_DELAY_ACTION
 		if(mature)
 			to_chat(X, SPAN_XENOWARNING("You prepare to consume [name]."))
+			xeno_noncombat_delay(X)
 			if(!do_after(X, consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-				return
+				return XENO_NO_DELAY_ACTION
 			consume_effect(X)
 		else
 			to_chat(X, SPAN_XENOWARNING("[name] isn't ripe yet. You need to wait a little longer."))
 	if(X.a_intent == INTENT_HARM && isXenoBuilder(X) || !X.can_not_harm(bound_xeno))
-		to_chat(X, SPAN_XENODANGER("You remove [name]!"))
+		X.animation_attack_on(src)
+		X.visible_message(SPAN_XENODANGER("[X] removes [name]!"),
+		SPAN_XENODANGER("You remove [name]!"))
 		playsound(loc, "alien_resin_break", 25)
 		qdel(src)
-	return
+		return XENO_ATTACK_ACTION
+	return XENO_NO_DELAY_ACTION
 
 /obj/effect/alien/resin/fruit/Destroy()
 	delete_fruit()
@@ -134,16 +157,19 @@
 
 /obj/effect/alien/resin/fruit/greater
 	desc = "A fruit that can be eaten to immediately recover health, and give a strong regeneration effect for a few seconds."
-	name = "Greater resin fruit"
+	name = "greater resin fruit"
 	time_to_mature = 30 SECONDS
 	heal_amount = 75
 	regeneration_amount_total = 100
 	regeneration_ticks = 5
 	icon_state = "fruit_greater_immature"
 	mature_icon_state = "fruit_greater"
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/greater
 
 
 /obj/effect/alien/resin/fruit/greater/consume_effect(mob/living/carbon/Xenomorph/recipient)
+	if(!mature)
+		return
 	if(recipient && !QDELETED(recipient))
 		recipient.gain_health(heal_amount)
 		to_chat(recipient, SPAN_XENONOTICE("You recover a bit from your injuries, and begin to regenerate rapidly."))
@@ -153,8 +179,8 @@
 
 //Unstable
 /obj/effect/alien/resin/fruit/unstable
-	desc = "A fruit that can be eaten to gain a strong overshield effect, and give a small regeneration for severals seconds."
-	name = "Unstable resin fruit"
+	desc = "A fruit that can be eaten to gain a strong overshield effect, and give a small regeneration for several seconds."
+	name = "unstable resin fruit"
 	time_to_mature = 45 SECONDS
 	heal_amount = 0
 	regeneration_amount_total = 75
@@ -166,6 +192,7 @@
 	var/overshield_amount = 200
 	var/shield_duration = 1 MINUTES
 	var/shield_decay = 10
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/unstable
 
 /obj/effect/alien/resin/fruit/unstable/consume_effect(mob/living/carbon/Xenomorph/recipient)
 	if(mature && recipient && !QDELETED(recipient))
@@ -178,7 +205,7 @@
 //Spore
 /obj/effect/alien/resin/fruit/spore
 	desc = "A fruit that can be eaten to reenergize your cooldowns. It also passively emits weak recovery pheromones"
-	name = "Spore resin fruit"
+	name = "spore resin fruit"
 	time_to_mature = 15 SECONDS
 	icon_state = "fruit_spore_immature"
 	mature_icon_state = "fruit_spore"
@@ -188,6 +215,7 @@
 	var/aura_strength = 1
 	var/pheromone_range = 1
 	consumed_icon_state = "fruit_spent_2"
+	fruit_type = /obj/item/reagent_container/food/snacks/resin_fruit/spore
 
 /obj/effect/alien/resin/fruit/spore/consume_effect(mob/living/carbon/Xenomorph/recipient)
 	if(mature && recipient && !QDELETED(recipient))
@@ -217,3 +245,52 @@
 
 
 #undef CAN_CONSUME_AT_FULL_HEALTH
+
+/obj/item/reagent_container/food/snacks/resin_fruit
+	name = "lesser resin fruit"
+	desc = "A strange fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon_state = "fruit_lesser_item"
+	w_class = SIZE_LARGE
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/resin_fruit/Initialize()
+	. = ..()
+	add_juice()
+	pixel_x = 0
+	pixel_y = 0
+
+/obj/item/reagent_container/food/snacks/resin_fruit/proc/add_juice()
+	reagents.add_reagent("fruit_resin", 8)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/greater
+	name = "greater resin fruit"
+	desc = "A strange large fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon_state = "fruit_greater_item" 
+	bitesize = 4
+
+/obj/item/reagent_container/food/snacks/resin_fruit/greater/add_juice()
+	reagents.add_reagent("fruit_resin", 16)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/unstable
+	name = "unstable resin fruit"
+	desc = "A strange volatile fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon_state = "fruit_unstable_item"
+	bitesize = 4
+
+/obj/item/reagent_container/food/snacks/resin_fruit/unstable/add_juice()
+	reagents.add_reagent("fruit_resin", 4)
+	reagents.add_reagent(PLASMA_CHITIN, 12)
+
+/obj/item/reagent_container/food/snacks/resin_fruit/spore
+	name = "spore resin fruit"
+	desc = "A strange spore-filled fruit that you could eat.. if you REALLY wanted to. Its roots seem to twitch every so often."
+	icon = 'icons/mob/hostiles/fruits.dmi'
+	icon_state = "fruit_spore_item"
+	bitesize = 4
+
+/obj/item/reagent_container/food/snacks/resin_fruit/spore/add_juice()
+	reagents.add_reagent("fruit_resin", 4)
+	reagents.add_reagent(PLASMA_PHEROMONE, 12)

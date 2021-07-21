@@ -37,26 +37,27 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	// The next world.time when the vehicle can move
 	var/next_move = 0
 	// How much momentum the vehicle has. Increases by 1 each move
-	var/momentum = 0
+	var/move_momentum = 0
 	// How much momentum the vehicle can achieve
-	var/max_momentum = 4
+	var/move_max_momentum = 5
+	// How much momentum is lost when turning/rotating the vehicle
+	var/move_turn_momentum_loss_factor = 0.5
 	// Determines how much slower the vehicle is when it lacks its full momentum
 	// When the vehicle has 0 momentum, it's movement delay will be move_delay * momentum_build_factor
 	// The movement delay gradually reduces up to move_delay when momentum increases
-	var/momentum_build_factor = 1.3
-	// How much momentum is lost when turning/rotating the vehicle
-	var/turn_momentum_loss_factor = 0.5
-	// When the vehicle has momentum, the user may buffer a move input just before the move delay is up
-	// This causes the vehicle to prioritize user input over attempting to move due to momentum
-	var/buffered_move = null
+	var/move_momentum_build_factor = 1.3
 
+	//Sound to play when moving
+	var/movement_sound
+	//Cooldown for next sound to play
+	var/move_next_sound_play = 0
+
+	//whether MP vehicle clamps are applied
 	var/clamped = FALSE
 
 	// The amount of skill required to drive the vehicle
 	var/required_skill = SKILL_VEHICLE_SMALL
 
-	var/movement_sound //Sound to play when moving
-	var/next_sound_play = 0 //Cooldown for next sound to play
 
 	req_access = list() //List of accesses you need to enter
 	req_one_access = list() //List of accesses you need one of to enter
@@ -69,7 +70,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 
 	var/mob_size_required_to_hit = MOB_SIZE_XENO_SMALL
 
-	var/vehicle_flags = NO_FLAGS		//variable for various flags
+	//variable for various flags
+	var/vehicle_flags = VEHICLE_CLASS_WEAK
 
 	// References to the active/chosen hardpoint for each seat
 	var/active_hp = list(
@@ -79,11 +81,25 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	// Map file name of the vehicle interior
 	var/interior_map = null
 	var/datum/interior/interior = null
-	// How many people can fit inside
-	var/interior_capacity = 2
+
+	//common passenger slots
+	var/passengers_slots = 2
+	//xenos passenger slots
+	var/xenos_slots = 2
+	//Special roles categories slots. These allow to set specific roles in categories with their own slots.
+	//For example, (list(JOB_CREWMAN, JOB_UPP_CREWMAN) = 2) means that USCM and UPP crewman will always have 2 slots reserved for them.
+	//Only first encounter of job will be checked for slots, so don't put job in more than one category.
+	var/list/role_reserved_slots = list()
+
+	var/wall_ram_damage = 30
+	//allows more flexibility in ram damage
+	var/vehicle_ram_multiplier = 1
 
 	//vehicles with this off will be ignored by tacmap.
 	var/visible_in_tacmap = TRUE
+
+	//Amount of seconds spent on entering/leaving. Always the same when dragging stuff (2 seconds) and for xenos (1 second)
+	var/entrance_speed = 1
 
 	// Whether or not entering the vehicle is ID restricted to crewmen only. Toggleable by the driver
 	var/door_locked = TRUE
@@ -137,9 +153,6 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 			qdel(src)
 			return
 
-		interior.human_capacity = interior_capacity
-		interior.xeno_capacity = interior_capacity
-
 	var/angle_to_turn = turning_angle(SOUTH, dir)
 	rotate_entrances(angle_to_turn)
 	rotate_bounds(angle_to_turn)
@@ -153,6 +166,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	update_icon()
 
 	initialize_cameras()
+
+	load_role_reserved_slots()
 
 	GLOB.all_multi_vehicles += src
 
@@ -221,8 +236,12 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		H.examine(user, TRUE)
 	if(clamped)
 		to_chat(user, "There is a vehicle clamp attached.")
-	if(isXeno(user) && interior && interior.humans_inside > 0)
-		to_chat(user, "You can sense approximately [interior.humans_inside] hosts inside.")
+	if(isXeno(user) && interior)
+		var/passengers_amount = interior.passengers_taken_slots
+		for(var/datum/role_reserved_slots/RRS in interior.role_reserved_slots)
+			passengers_amount += RRS.taken
+		if(passengers_amount > 0)
+			to_chat(user, "You can sense approximately [passengers_amount] hosts inside.")
 
 /obj/vehicle/multitile/proc/load_hardpoints()
 	return
@@ -306,6 +325,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		return interior.get_passengers()
 	return null
 
+/obj/vehicle/multitile/proc/load_role_reserved_slots()
+	return
 
 //Special armored vic healthcheck that mainly updates the hardpoint states
 /obj/vehicle/multitile/healthcheck()
@@ -320,4 +341,8 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	if(all_broken)
 		toggle_cameras_status()
 		handle_all_modules_broken()
+
+	//vehicle is dead, no more lights
+	if(health <= 0 && luminosity)
+		SetLuminosity(0)
 	update_icon()

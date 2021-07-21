@@ -68,7 +68,7 @@
 /obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/weapon/melee/yautja_knife,
+/obj/item/weapon/melee/yautja/knife,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -243,19 +243,19 @@
 /area/yautja)
 "aY" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/predator{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/predator{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/predator{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/predator{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/tajaran{
+/obj/item/stack/medical/advanced/bruise_pack/predator{
 	name = "mending herbs"
 	},
 /turf/open/floor/holofloor{
@@ -282,19 +282,19 @@
 /area/yautja)
 "ba" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/stack/medical/advanced/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/predator{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/predator{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/predator{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/predator{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/advanced/ointment/tajaran{
+/obj/item/stack/medical/advanced/ointment/predator{
 	name = "soothing herbs"
 	},
 /turf/open/floor/holofloor{
@@ -572,7 +572,7 @@
 "bW" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/food/snacks/meat,
-/obj/item/reagent_container/food/snacks/xenomeat{
+/obj/item/reagent_container/food/snacks/meat/xenomeat{
 	pixel_x = -6;
 	pixel_y = -5
 	},
@@ -623,7 +623,7 @@
 /area/yautja)
 "cb" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/food/snacks/xenomeat,
+/obj/item/reagent_container/food/snacks/meat/xenomeat,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -641,7 +641,7 @@
 /area/yautja)
 "ce" = (
 /obj/structure/surface/rack,
-/obj/item/weapon/melee/yautja_knife,
+/obj/item/weapon/melee/yautja/knife,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /obj/item/reagent_container/hypospray/autoinjector/yautja,
 /turf/open/floor/holofloor{

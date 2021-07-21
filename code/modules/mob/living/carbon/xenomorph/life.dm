@@ -1,7 +1,7 @@
 //Xenomorph Life - Colonial Marines - Apophis775 - Last Edit: 03JAN2015
 
 #define XENO_ARMOR_REGEN_DELAY 30 SECONDS
-/mob/living/carbon/Xenomorph/Life()
+/mob/living/carbon/Xenomorph/Life(delta_time)
 	set invisibility = 0
 	set background = 1
 
@@ -41,11 +41,10 @@
 	if(isnull(hive))
 		return
 	var/progress_amount = 1
-
-	if(SSxevolution && ((hive.living_xeno_queen && hive.living_xeno_queen.ovipositor) || (SSticker.round_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
+	if(SSxevolution)
 		progress_amount = SSxevolution.get_evolution_boost_power(hive.hivenumber)
-
-	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && hive.living_xeno_queen && (hive.living_xeno_queen.ovipositor || (SSticker.round_start_time + XENO_HIVE_EVOLUTION_FREETIME) >= world.time))
+	var/ovipositor_check = (hive.allow_no_queen_actions || hive.evolution_without_ovipositor || (hive.living_xeno_queen && hive.living_xeno_queen.ovipositor))
+	if(caste && caste.evolution_allowed && evolution_stored < evolution_threshold && ovipositor_check)
 		evolution_stored = min(evolution_stored + progress_amount, evolution_threshold)
 		if(evolution_stored >= evolution_threshold - 1)
 			to_chat(src, SPAN_XENODANGER("Your carapace crackles and your tendons strengthen. You are ready to evolve!")) //Makes this bold so the Xeno doesn't miss it
@@ -80,7 +79,7 @@
 
 	if(aura_strength > 0) //Ignoring pheromone underflow
 		if(current_aura && !stat && plasma_stored > 5)
-			if(caste_name == "Queen" && anchored) //stationary queen's pheromone apply around the observed xeno.
+			if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
 				var/mob/living/carbon/Xenomorph/Queen/Q = src
 				var/atom/phero_center = Q
 				if(Q.observed_xeno)
@@ -155,14 +154,14 @@
 
 	if(health <= crit_health - warding_aura * 20) //dead
 		if(prob(gib_chance + 0.5*(crit_health - health)))
-			gib(last_damage_source)
+			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
 		else
-			death(last_damage_source)
+			death(last_damage_data)
 		return
 
 	else if(health <= 0) //in crit
 		if(hardcore)
-			gib(last_damage_source)
+			INVOKE_ASYNC(src, .proc/gib, last_damage_data)
 		else
 			stat = UNCONSCIOUS
 			blinded = 1
@@ -176,7 +175,7 @@
 		else
 			see_in_dark = 8
 
-		ear_deaf = 0 //All this stuff is prob unnecessary
+		SetEarDeafness(0) //All this stuff is prob unnecessary
 		ear_damage = 0
 		eye_blind = 0
 

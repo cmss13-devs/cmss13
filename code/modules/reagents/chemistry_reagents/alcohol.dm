@@ -26,10 +26,7 @@
 	var/adj_sleepy = 0
 	var/slurr_adj = 3
 	var/confused_adj = 2
-	var/slur_start = 180			//amount absorbed after which mob starts slurring
-	var/confused_start = 300	//amount absorbed after which mob starts confusing directions
-	var/blur_start = 600	//amount absorbed after which mob starts getting blurred vision
-	var/pass_out = 800	//amount absorbed after which mob starts passing out
+	var/slur_start = 300 //(formerly 180) amount absorbed after which mob starts slurring
 
 /datum/reagent/ethanol/on_mob_life(mob/living/M, alien)
 	//This is all way too snowflake to accurately transition to the property system so it stays here
@@ -52,26 +49,9 @@
 	M.pain.apply_pain_reduction(max(d*-0.16, PAIN_REDUCTION_HEAVY)) // Max reduction at d=250, between slurring and confusion, helps slightly less than tramadol.
 
 	M.dizziness += dizzy_adj
-	if(d >= slur_start && d < pass_out)
-		if(!M:slurring) M:slurring = 1
-		M:slurring += slurr_adj
-	if(d >= confused_start && prob(33))
-		if(!M:confused) M:confused = 1
-		M.confused = max(M:confused+confused_adj,0)
-	if(d >= blur_start)
-		M.eye_blurry = max(M.eye_blurry, 10)
-		M:drowsyness  = max(M:drowsyness, 0)
-	if(d >= pass_out)
-		M:knocked_out = max(M:knocked_out, 20)
-		M:drowsyness  = max(M:drowsyness, 30)
-		if(ishuman(M))
-			var/mob/living/carbon/human/H = M
-			var/datum/internal_organ/liver/L = H.internal_organs_by_name["liver"]
-			if(!L)
-				H.apply_damage(5, TOX)
-			else if(istype(L))
-				L.take_damage(0.1, 1)
-			H.apply_damage(0.1, TOX)
+	if(d >= slur_start)
+		if(!M.slurring) M.slurring = 1
+		M.slurring += slurr_adj
 
 /datum/reagent/ethanol/reaction_obj(var/obj/O, var/volume)
 	if(istype(O,/obj/item/paper))
@@ -139,7 +119,6 @@
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 2
 	dizzy_adj = 4
-	slur_start = 30		//amount absorbed after which mob starts slurring
 
 /datum/reagent/ethanol/sake
 	name = "Sake"
@@ -230,8 +209,6 @@
 	color = "#7E4043" // rgb: 126, 64, 67
 	boozepwr = 1.5
 	dizzy_adj = 2
-	slur_start = 125			//amount absorbed after which mob starts slurring
-	confused_start = 195	//amount absorbed after which mob starts confusing directions
 
 /datum/reagent/ethanol/cognac
 	name = "Cognac"
@@ -240,7 +217,6 @@
 	color = "#AB3C05" // rgb: 171, 60, 5
 	boozepwr = 1.5
 	dizzy_adj = 4
-	confused_start = 195	//amount absorbed after which mob starts confusing directions
 
 /datum/reagent/ethanol/hooch
 	name = "Hooch"
@@ -248,10 +224,6 @@
 	description = "Either someone's failure at cocktail making or attempt in alchohol production. In any case, do you really want to drink that?"
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 2
-	dizzy_adj = 6
-	slurr_adj = 5
-	slur_start = 95			//amount absorbed after which mob starts slurring
-	confused_start = 160	//amount absorbed after which mob starts confusing directions
 
 /datum/reagent/ethanol/ale
 	name = "Ale"
@@ -267,8 +239,6 @@
 	color = "#33EE00" // rgb: 51, 238, 0
 	boozepwr = 4
 	dizzy_adj = 5
-	slur_start = 45
-	confused_start = 90
 
 
 /datum/reagent/ethanol/pwine
@@ -277,9 +247,6 @@
 	description = "Is this even wine? Toxic! Hallucinogenic! Probably consumed in boatloads by your superiors!"
 	color = "#000000" // rgb: 0, 0, 0 SHOCKER
 	boozepwr = 1
-	dizzy_adj = 1
-	slur_start = 1
-	confused_start = 1
 
 /datum/reagent/ethanol/pwine/on_mob_life(mob/living/M,alien)
 	M.druggy = max(M.druggy, 50)
@@ -601,8 +568,6 @@
 	description = "For when a gin and tonic isn't russian enough."
 	color = "#0064C8" // rgb: 0, 100, 200
 	boozepwr = 3
-	dizzy_adj = 4
-	slurr_adj = 3
 
 /datum/reagent/ethanol/ginfizz
 	name = "Gin Fizz"
@@ -610,8 +575,6 @@
 	description = "Refreshingly lemony, deliciously dry."
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 1.5
-	dizzy_adj = 4
-	slurr_adj = 3
 
 /datum/reagent/ethanol/bahama_mama
 	name = "Bahama mama"
@@ -626,8 +589,6 @@
 	description = "A blue-space beverage!"
 	color = "#2E6671" // rgb: 46, 102, 113
 	boozepwr = 5
-	dizzy_adj = 15
-	slurr_adj = 15
 
 /datum/reagent/ethanol/sbiten
 	name = "Sbiten"

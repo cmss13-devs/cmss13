@@ -1,0 +1,336 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/outside/nw)
+"c" = (
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/nw)
+"d" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating{
+	dir = 1;
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/nw)
+"e" = (
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"f" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	icon_state = "tube1";
+	tag = "icon-tube1 (NORTH)"
+	},
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"g" = (
+/obj/structure/xenoautopsy/tank/larva,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"h" = (
+/obj/structure/xenoautopsy/tank/broken,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"i" = (
+/obj/structure/machinery/light{
+	dir = 1;
+	icon_state = "tube1";
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"j" = (
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"k" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"l" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"m" = (
+/obj/item/shard,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"n" = (
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/nw)
+"p" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor/plating{
+	dir = 8;
+	icon_state = "warnplate"
+	},
+/area/bigredv2/outside/nw)
+"q" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"r" = (
+/obj/effect/landmark/hunter_primary,
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4;
+	layer = 2.4
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"s" = (
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"u" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"v" = (
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,2";
+	tag = "icon-0,2"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"w" = (
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,1";
+	tag = "icon-0,1"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"x" = (
+/obj/structure/prop/dam/crane/damaged,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"y" = (
+/obj/structure/cargo_container/horizontal{
+	icon_state = "0,0";
+	tag = "icon-0,0"
+	},
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"z" = (
+/obj/structure/machinery/light,
+/obj/structure/largecrate/random/barrel/red,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"A" = (
+/obj/structure/surface/rack,
+/obj/item/alienjar,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+"B" = (
+/obj/structure/machinery/light,
+/turf/open/floor/plating,
+/area/bigredv2/outside/nw)
+
+(1,1,1) = {"
+b
+b
+b
+n
+p
+n
+b
+b
+b
+b
+"}
+(2,1,1) = {"
+b
+e
+j
+j
+q
+j
+u
+j
+j
+b
+"}
+(3,1,1) = {"
+b
+f
+j
+j
+q
+j
+v
+w
+y
+b
+"}
+(4,1,1) = {"
+b
+g
+m
+j
+q
+j
+j
+j
+j
+b
+"}
+(5,1,1) = {"
+b
+h
+m
+j
+q
+j
+j
+j
+j
+b
+"}
+(6,1,1) = {"
+b
+g
+j
+j
+r
+j
+v
+w
+y
+b
+"}
+(7,1,1) = {"
+b
+g
+j
+j
+q
+j
+j
+j
+j
+b
+"}
+(8,1,1) = {"
+b
+i
+j
+j
+q
+j
+j
+j
+z
+b
+"}
+(9,1,1) = {"
+c
+j
+j
+j
+q
+j
+j
+g
+g
+b
+"}
+(10,1,1) = {"
+c
+j
+j
+j
+q
+j
+m
+h
+g
+b
+"}
+(11,1,1) = {"
+d
+k
+k
+k
+s
+j
+j
+m
+A
+b
+"}
+(12,1,1) = {"
+b
+l
+j
+j
+q
+j
+j
+j
+j
+b
+"}
+(13,1,1) = {"
+b
+f
+j
+j
+q
+j
+j
+x
+B
+b
+"}
+(14,1,1) = {"
+b
+l
+j
+j
+q
+j
+j
+j
+j
+b
+"}
+(15,1,1) = {"
+b
+j
+j
+j
+q
+j
+v
+w
+y
+b
+"}
+(16,1,1) = {"
+b
+j
+j
+j
+q
+j
+j
+j
+j
+b
+"}

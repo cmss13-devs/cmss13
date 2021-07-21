@@ -105,10 +105,10 @@
 		to_chat(usr, SPAN_WARNING("You need to be a ghost in order to use this."))
 
 // bite me
-var/global/grenade_antigrief_on = TRUE
-/client/proc/toggle_grenade_antigrief()
-	set name = "Toggle Grenade Antigrief"
+var/global/explosive_antigrief_on = TRUE
+/client/proc/toggle_explosive_antigrief()
+	set name = "Toggle Explosive Antigrief"
 	set category = "Admin.Game"
 
-	grenade_antigrief_on = !grenade_antigrief_on
-	message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has [grenade_antigrief_on ? "enabled" : "disabled"] grenade antigrief"))
+	explosive_antigrief_on = !explosive_antigrief_on
+	message_staff(FONT_SIZE_LARGE("[key_name_admin(usr)] has [explosive_antigrief_on ? "enabled" : "disabled"] explosive antigrief"))

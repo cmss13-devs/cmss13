@@ -42,25 +42,11 @@
 		holder.clear_reagents()
 
 
-/datum/chemical_reaction/hptoxin
-	name = "Toxin"
-	id = "hptoxin"
-	result = "hptoxin"
-	required_reagents = list("hyperzine" = 1, "peridaxon" = 1)
-	result_amount = 2
-
 /datum/chemical_reaction/pttoxin
 	name = "Toxin"
 	id = "pttoxin"
 	result = "pttoxin"
 	required_reagents = list("paracetamol" = 1, "tramadol" = 1)
-	result_amount = 2
-
-/datum/chemical_reaction/sdtoxin
-	name = "Toxin"
-	id = "sdtoxin"
-	result = "sdtoxin"
-	required_reagents = list("synaptizine" = 1, "anti_toxin" = 1)
 	result_amount = 2
 
 /datum/chemical_reaction/mutagen

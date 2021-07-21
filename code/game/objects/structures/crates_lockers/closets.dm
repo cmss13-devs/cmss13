@@ -23,7 +23,7 @@
 
 	anchored = 1 //Yep
 
-	var/const/mob_size = 15
+	var/mob_size = 15
 
 /obj/structure/closet/Initialize()
 	. = ..()
@@ -91,6 +91,7 @@
 
 	dump_contents()
 
+	UnregisterSignal(src, COMSIG_OBJ_FLASHBANGED)
 	opened = 1
 	update_icon()
 	playsound(src.loc, open_sound, 15, 1)
@@ -108,6 +109,7 @@
 		stored_units = store_items(stored_units)
 	if(store_mobs)
 		stored_units = store_mobs(stored_units)
+		RegisterSignal(src, COMSIG_OBJ_FLASHBANGED, .proc/flashbang)
 
 	opened = 0
 	update_icon()
@@ -165,6 +167,12 @@
 				A.forceMove(src.loc)
 				A.ex_act(severity - EXPLOSION_THRESHOLD_LOW)
 			qdel(src)
+
+/obj/structure/closet/proc/flashbang(var/datum/source, var/obj/item/explosive/grenade/flashbang/FB)
+	SIGNAL_HANDLER
+	for(var/mob/living/C in contents)
+		FB.bang(get_turf(FB), C)
+	open()
 
 /obj/structure/closet/bullet_act(var/obj/item/projectile/Proj)
 	health -= round(Proj.damage*0.3)

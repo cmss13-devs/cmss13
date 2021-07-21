@@ -5,6 +5,8 @@
 	anchored = TRUE
 	unacidable = TRUE
 	unslashable = TRUE
+	icon = 'icons/landmarks.dmi'
+	icon_state = "map_blocker"
 
 /obj/structure/blocker/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -17,8 +19,7 @@
 /obj/structure/blocker/invisible_wall
 	name = "invisible wall"
 	desc = "You cannot go this way."
-	icon = 'icons/old_stuff/mark.dmi'
-	icon_state = "x4"
+	icon_state = "invisible_wall"
 	opacity = 0
 	layer = ABOVE_FLY_LAYER + 0.1 //to make it visible in the map editor
 	mouse_opacity = 0
@@ -39,21 +40,22 @@
 	opacity = 1
 
 /obj/structure/blocker/fog/New()
-    ..()
-    dir  = pick(CARDINAL_DIRS)
+	..()
+	dir  = pick(CARDINAL_DIRS)
 
 /obj/structure/blocker/fog/attack_hand(mob/M)
-    to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
+	to_chat(M, SPAN_NOTICE("You peer through the fog, but it's impossible to tell what's on the other side..."))
 
 /obj/structure/blocker/fog/attack_alien(M)
-    return attack_hand(M)
+	attack_hand(M)
+	return XENO_NONCOMBAT_ACTION
 
 
 /obj/structure/blocker/forcefield
 	name = "forcefield"
 
 	icon = 'icons/landmarks.dmi'
-	icon_state = "x2"
+	icon_state = "map_blocker"
 	anchored = 1.0
 	unacidable = TRUE
 	density = FALSE

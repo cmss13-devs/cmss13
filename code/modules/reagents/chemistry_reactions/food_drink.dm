@@ -64,6 +64,14 @@
 	required_catalysts = list("phoron" = 5)
 	result_amount = 1
 
+/datum/chemical_reaction/hotsauce
+	name = "Hot Sauce"
+	id = "hotsauce"
+	result = "hotsauce"
+	required_reagents = list("capsaicin" = 2)
+	required_catalysts = list("blackpepper" = 1)
+	result_amount = 1
+
 /datum/chemical_reaction/machosauce
 	name = "Macho Sauce"
 	id = "machosauce"
@@ -89,9 +97,47 @@
 /datum/chemical_reaction/machosauce/cranberry
 	required_reagents = list("condensedcapsaicin" = 1, "cranberry" = 1)
 
+/datum/chemical_reaction/machosauce/vanilla
+	required_reagents = list("condensedcapsaicin" = 1, "vanilla" = 1)
+
+/datum/chemical_reaction/machosauce/pineapple
+	required_reagents = list("condensedcapsaicin" = 1, "pineapple" = 1)
+
+/datum/chemical_reaction/machosauce/infinite
+	required_reagents = list("condensedcapsaicin" = 1, "machosauce" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/cherry
+	required_reagents = list("machosauce" = 1, "souto_cherry" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/lime
+	required_reagents = list("machosauce" = 1, "lemon_lime" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/grape
+	required_reagents = list("machosauce" = 1, "grapejuice" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/blueraspberry
+	required_reagents = list("machosauce" = 1, "blueraspberry" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/peach
+	required_reagents = list("machosauce" = 1, "peach" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/cranberry
+	required_reagents = list("machosauce" = 1, "cranberry" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/vanilla
+	required_reagents = list("machosauce" = 1, "vanilla" = 1)
+
+/datum/chemical_reaction/machosauce/infinite/pineapple
+	required_reagents = list("machosauce" = 1, "pineapple" = 1)
+
 /datum/chemical_reaction/machosauce/weaksauce
 	required_reagents = list("machosauce" = 1, "water" = 1)
-	result_amount = 2
+
+/datum/chemical_reaction/machosauce/weaksauce/infinite
+	required_reagents = list("machosauce" = 1, "weaksauce" = 1)
+
+/datum/chemical_reaction/machosauce/weaksauce/infinite/water
+	required_reagents = list("water" = 1, "weaksauce" = 1)
 
 /datum/chemical_reaction/sodiumchloride
 	name = "Sodium Chloride"
@@ -136,7 +182,7 @@
 	name = "Hell Ramen"
 	id = "hell_ramen"
 	result = "hell_ramen"
-	required_reagents = list("hot_ramen" = 6, "capsaicin" = 1)
+	required_reagents = list("hot_ramen" = 6, "hotsauce" = 1)
 	result_amount = 6
 
 
@@ -185,6 +231,7 @@
 	required_reagents = list("cola" = 6, "uranium" = 1)
 	result_amount = 6
 
+
 /datum/chemical_reaction/moonshine
 	name = "Moonshine"
 	id = "moonshine"
@@ -192,6 +239,22 @@
 	required_reagents = list("nutriment" = 10)
 	required_catalysts = list("enzyme" = 5)
 	result_amount = 10
+
+/datum/chemical_reaction/moonshine/plantmatter
+	required_reagents = list("plantmatter" = 10)
+
+/datum/chemical_reaction/moonshine/vegetable
+	required_reagents = list("vegetable" = 10)
+
+/datum/chemical_reaction/moonshine/fruit
+	required_reagents = list("fruit" = 10)
+
+/datum/chemical_reaction/moonshine/mushroom
+	required_reagents = list("mushroom" = 10)
+
+/datum/chemical_reaction/moonshine/bread
+	required_reagents = list("bread" = 10)
+
 
 /datum/chemical_reaction/grenadine
 	name = "Grenadine Syrup"
@@ -531,7 +594,7 @@
 	name = "Sbiten"
 	id = "sbiten"
 	result = "sbiten"
-	required_reagents = list("vodka" = 10, "capsaicin" = 1)
+	required_reagents = list("vodka" = 10, "hotsauce" = 1)
 	result_amount = 10
 
 /datum/chemical_reaction/red_mead

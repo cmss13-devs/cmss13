@@ -65,7 +65,8 @@ Contains most of the procs that are called when a mob is attacked by something
 
 //this proc returns the armour value for a particular external organ.
 /mob/living/carbon/human/proc/getarmor_organ(var/obj/limb/def_zone, var/type)
-	if(!type)	return 0
+	if(!type)
+		return FALSE
 	var/protection = 0
 	var/list/protective_gear = list(head, wear_mask, wear_suit, w_uniform, gloves, shoes, glasses)
 	for(var/gear in protective_gear)
@@ -79,17 +80,18 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/list/body_parts = list(head, wear_mask, wear_suit ) /* w_uniform, gloves, shoes*/ //We don't need to check these for heads.
 	for(var/bp in body_parts)
-		if(!bp)	continue
+		if(!bp)
+			continue
 		if(bp && istype(bp ,/obj/item/clothing))
 			var/obj/item/clothing/C = bp
 			if(C.flags_armor_protection & BODY_FLAG_HEAD)
-				return 1
-	return 0
+				return TRUE
+	return FALSE
 
 /mob/living/carbon/human/proc/check_shields(var/damage = 0, var/attack_text = "the attack", var/combistick=0)
 	if(l_hand && istype(l_hand, /obj/item/weapon))//Current base is the prob(50-d/3)
-		if(combistick && istype(l_hand,/obj/item/weapon/melee/combistick) && prob(66))
-			var/obj/item/weapon/melee/combistick/C = l_hand
+		if(combistick && istype(l_hand,/obj/item/weapon/melee/yautja/combistick) && prob(66))
+			var/obj/item/weapon/melee/yautja/combistick/C = l_hand
 			if(C.on)
 				return TRUE
 
@@ -113,8 +115,8 @@ Contains most of the procs that are called when a mob is attacked by something
 			return TRUE
 
 	if(r_hand && istype(r_hand, /obj/item/weapon))
-		if(combistick && istype(r_hand,/obj/item/weapon/melee/combistick) && prob(66))
-			var/obj/item/weapon/melee/combistick/C = r_hand
+		if(combistick && istype(r_hand,/obj/item/weapon/melee/yautja/combistick) && prob(66))
+			var/obj/item/weapon/melee/yautja/combistick/C = r_hand
 			if(C.on)
 				return TRUE
 
@@ -147,41 +149,43 @@ Contains most of the procs that are called when a mob is attacked by something
 
 /mob/living/carbon/human/emp_act(severity)
 	for(var/obj/O in src)
-		if(!O)	continue
+		if(!O)
+			continue
 		O.emp_act(severity)
 	for(var/obj/limb/O in limbs)
-		if(O.status & LIMB_DESTROYED)	continue
+		if(O.status & LIMB_DESTROYED)
+			continue
 		O.emp_act(severity)
 		for(var/datum/internal_organ/I in O.internal_organs)
-			if(I.robotic == 0)	continue
+			if(I.robotic == FALSE)
+				continue
 			I.emp_act(severity)
 	..()
 
 
 //Returns 1 if the attack hit, 0 if it missed.
-/mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user, var/def_zone)
+/mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user)
 	if(!I || !user)
-		return 0
-
-	var/target_zone = def_zone? check_zone(def_zone) : get_zone_with_miss_chance(user.zone_selected, src)
+		return FALSE
 
 	user.animation_attack_on(src)
-	if(user == src) // Attacking yourself can't miss
-		target_zone = user.zone_selected
-	if(!target_zone && !(I.flags_item & ITEM_PREDATOR))
+	var/target_zone = check_zone(user.zone_selected)
+	//IF there is an override, use that, otherwise, check if selected zone is valid, if it is, use that, otherwise use chest
+
+	if(!target_zone) //this should NEVER happen
 		visible_message(SPAN_DANGER("[user] misses [src] with \the [I]!"), null, null, 5)
-		return 0
+		return FALSE
 
 	var/obj/limb/affecting = get_limb(target_zone)
 	if (!affecting)
-		return 0
+		return FALSE
 	if(affecting.status & LIMB_DESTROYED)
 		to_chat(user, "What [affecting.display_name]?")
-		return 0
+		return FALSE
 	var/hit_area = affecting.display_name
 
 	if((user != src) && check_shields(I.force, "the [I.name]"))
-		return 0
+		return FALSE
 
 	if(I.attack_verb && I.attack_verb.len)
 		visible_message(SPAN_DANGER("<B>[src] has been [pick(I.attack_verb)] in the [hit_area] with [I.name] by [user]!</B>"), null, null, 5)
@@ -193,11 +197,11 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/weapon_sharp = is_sharp(I)
 	var/weapon_edge = has_edge(I)
 	if ((weapon_sharp || weapon_edge) && prob(getarmor(target_zone, ARMOR_MELEE)))
-		weapon_sharp = 0
-		weapon_edge = 0
+		weapon_sharp = FALSE
+		weapon_edge = FALSE
 
 	if(!I.force)
-		return 0
+		return FALSE
 	if(weapon_sharp)
 		user.flick_attack_overlay(src, "punch")
 	else
@@ -206,12 +210,12 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/damage = armor_damage_reduction(GLOB.marine_melee, I.force, armor, (weapon_sharp?30:0) + (weapon_edge?10:0)) // no penetration frm punches
 	apply_damage(damage, I.damtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
 
-	var/bloody = 0
+	var/bloody = FALSE
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(I.force*2 + 25))
 		if(!(affecting.status & LIMB_ROBOT))
 			I.add_mob_blood(src)	//Make the weapon bloody, not the person.
 			if(prob(33))
-				bloody = 1
+				bloody = TRUE
 				var/turf/location = loc
 				if(istype(location, /turf))
 					location.add_mob_blood(src)
@@ -245,7 +249,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		if (weapon_sharp && prob(3) && !isYautja(user)) // make yautja less likely to get their weapon stuck
 			affecting.embed(I)
 
-	return 1
+	return TRUE
 
 //this proc handles being hit by a thrown atom
 /mob/living/carbon/human/hitby(atom/movable/AM)
@@ -277,10 +281,7 @@ Contains most of the procs that are called when a mob is attacked by something
 		var/mob/living/L = LM.thrower
 		zone = check_zone(L.zone_selected)
 	else
-		zone = ran_zone("chest", 75)	//Hits a random part of the body, geared towards the chest
-
-	//check if we hit
-	zone = get_zone_with_miss_chance(zone, src, min(15*(LM.dist-2), 0))
+		zone = rand_zone("chest", 75)	//Hits a random part of the body, geared towards the chest
 
 	if (!zone)
 		visible_message(SPAN_NOTICE("\The [O] misses [src] narrowly!"), null, null, 5)
@@ -303,8 +304,16 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/damage = armor_damage_reduction(GLOB.marine_melee, impact_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
 	apply_damage(damage, dtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
 
+	var/last_damage_source = null
+	var/last_damage_mob = null
 	if (damage > 5)
 		last_damage_source = initial(AM.name)
+		animation_flash_color(src)
+		var/obj/item/I = O
+		if(istype(I) && I.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.
+			playsound(loc, 'sound/effects/spike_hit.ogg', 20, TRUE, 5, falloff = 2)
+		else
+			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, 5, falloff = 2)
 
 	if (ismob(LM.thrower))
 		var/mob/M = LM.thrower
@@ -319,6 +328,9 @@ Contains most of the procs that are called when a mob is attacked by something
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>Hit [key_name(src)] with a thrown [O]</font>")
 			if(!istype(src,/mob/living/simple_animal/mouse))
 				msg_admin_attack("[key_name(src)] was hit by a [O], thrown by [key_name(M)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
+
+	if(last_damage_source)
+		last_damage_data = create_cause_data(last_damage_source, last_damage_mob)
 
 	//thrown weapon embedded object code.
 	if (dtype == BRUTE && istype(O,/obj/item))
@@ -343,17 +355,38 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	return C.faction_group
 
-/mob/living/carbon/human/proc/get_target_lock(var/access_to_check)
+/mob/living/proc/get_target_lock(var/access_to_check)
 	if(isnull(access_to_check))
 		return
 
 	var/compare_group = faction_group
-	var/id_group = get_id_faction_group()
-	if(!isnull(id_group))
-		compare_group = id_group
 
 	if(!islist(access_to_check))
 		return access_to_check in compare_group
 
 	var/list/overlap = compare_group & access_to_check
+	return length(overlap)
+
+/mob/living/carbon/human/freeze()
+	. = ..()
+	if(.)
+		update_xeno_hostile_hud()
+
+/mob/living/carbon/human/unfreeze()
+	. = ..()
+	if(.)
+		update_xeno_hostile_hud()
+
+/mob/living/carbon/human/get_target_lock(var/access_to_check)
+	if(isnull(access_to_check))
+		return
+
+	var/id_group = get_id_faction_group()
+	if(!id_group)
+		return ..()
+
+	if(!islist(access_to_check))
+		return access_to_check in id_group
+
+	var/list/overlap = id_group & access_to_check
 	return length(overlap)

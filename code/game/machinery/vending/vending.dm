@@ -168,7 +168,7 @@
 		to_chat(user, "Tip it back upright first!")
 		return FALSE
 
-	if(istype(W, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(stat == WORKING)
 			src.panel_open = !src.panel_open
 			to_chat(user, "You [src.panel_open ? "open" : "close"] the maintenance panel.")
@@ -200,7 +200,7 @@
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return FALSE
-	else if(istype(W, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You do not understand how to repair the broken [src]."))
 			return FALSE
@@ -264,7 +264,7 @@
 			var/msg = get_repair_move_text()
 			to_chat(user, SPAN_WARNING("[msg]"))
 			return
-	else if(istype(W, /obj/item/tool/wrench))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if(!wrenchable) return
 
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
@@ -278,7 +278,7 @@
 					user.visible_message("[user] unfastens the bolts securing \the [src] to the floor.", "You unfasten the bolts securing \the [src] to the floor.")
 					anchored = 0
 		return
-	else if(istype(W, /obj/item/device/multitool)||istype(W, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(src.panel_open)
 			attack_hand(user)
 		return
@@ -525,7 +525,8 @@
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return 0
 
-			if (!iswirecutter(usr.get_active_hand()))
+			var/obj/item/held_item = usr.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 				to_chat(usr, "You need wirecutters!")
 				return
 
@@ -545,7 +546,8 @@
 				to_chat(usr, SPAN_WARNING("You don't understand anything about this wiring..."))
 				return 0
 
-			if (!ismultitool(usr.get_active_hand()))
+			var/obj/item/held_item = usr.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(usr, "You need a multitool!")
 				return
 
@@ -630,7 +632,7 @@
 	 //More accurate comparison between absolute paths.
 	for(R in (product_records + hidden_records + coin_records))
 		if(item_to_stock.type == R.product_path && !istype(item_to_stock,/obj/item/storage)) //Nice try, specialists/engis
-			if(istype(item_to_stock, /obj/item/weapon/gun))
+			if(isgun(item_to_stock))
 				var/obj/item/weapon/gun/G = item_to_stock
 				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
 					to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))

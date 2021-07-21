@@ -110,7 +110,7 @@
 			return 0
 
 /obj/item/cell/crap
-	name = "\improper Yamada brand rechargable AA battery"
+	name = "\improper Yutani brand rechargable AA battery"
 	desc = "You can't top the plasma top." //TOTALLY TRADEMARK INFRINGEMENT
 
 	maxcharge = 500

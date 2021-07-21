@@ -54,7 +54,7 @@ var/global/list/deployed_fultons = list()
 		attach(target, user)
 		return
 
-/obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/stack/fulton/attack(mob/M as mob, mob/user as mob)
 	return
 
 /obj/item/stack/fulton/attack_hand(mob/user as mob)
@@ -88,7 +88,7 @@ var/global/list/deployed_fultons = list()
 			var/mob/living/carbon/human/H = target_atom
 			if(isYautja(H) && H.stat == DEAD)
 				can_attach = TRUE
-			else if((H.mind && H.check_tod() && H.is_revivable()) || H.stat != DEAD)
+			else if((H.stat != DEAD || H.mind && H.check_tod() && H.is_revivable()))
 				to_chat(user, SPAN_WARNING("You can't attach [src] to [target_atom], they still have a chance!"))
 				return
 			else
@@ -162,11 +162,6 @@ var/global/list/deployed_fultons = list()
 		attached_atom.forceMove(return_turf)
 		attached_atom.anchored = FALSE
 		playsound(attached_atom.loc,'sound/effects/bamf.ogg', 50, 1)
-
-	if(intel_system)
-		//Giving marines an objective to retrieve that fulton (so they'd know what they lost and where)
-		var/datum/cm_objective/retrieve_item/fulton/objective = new /datum/cm_objective/retrieve_item/fulton(attached_atom)
-		intel_system.store_single_objective(objective)
 
 	qdel(src)
 	return

@@ -21,22 +21,12 @@
 /datum/action/xeno_action/onclick/xeno_resting
 	name = "Rest"
 	action_icon_state = "resting"
-	macro_path = /datum/action/xeno_action/verb/verb_xeno_resting
 	action_type = XENO_ACTION_CLICK
 
-//resting action can be done even when lying down
 /datum/action/xeno_action/onclick/xeno_resting/can_use_action()
 	var/mob/living/carbon/Xenomorph/X = owner
-
-	if (!X || X.buckled || X.fortify || X.crest_defense)
-		return
-
-	if (istype(X, /mob/living/carbon/Xenomorph/Burrower))
-		var/mob/living/carbon/Xenomorph/Burrower/B = X
-		if (B.burrow)
-			return
-
-	return 1
+	if(X && !X.buckled && !X.is_mob_incapacitated())
+		return TRUE
 
 // Shift Spits
 /datum/action/xeno_action/onclick/shift_spits
@@ -63,7 +53,7 @@
 // Choose Resin
 /datum/action/xeno_action/onclick/choose_resin
 	name = "Choose Resin Structure"
-	action_icon_state = "resin wall"
+	action_icon_state = "retrieve_egg"
 	plasma_cost = 0
 	macro_path = /datum/action/xeno_action/verb/verb_choose_resin_structure
 	action_type = XENO_ACTION_CLICK
@@ -83,44 +73,22 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
+	plasma_cost = 1
+
+/datum/action/xeno_action/activable/secrete_resin/can_use_action()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	var/mob/living/carbon/Xenomorph/X = owner
+	return X.selected_resin
+
 /datum/action/xeno_action/activable/secrete_resin/queen_macro //see above for reasoning
 	ability_primacy = XENO_PRIMARY_ACTION_4
 
 /datum/action/xeno_action/activable/secrete_resin/hivelord
 	name = "Secrete Thick Resin"
 	thick = TRUE
-
-
-/* Resolve this line once structures are resolved.
-// Morph Resin
-/datum/action/xeno_action/morph_resin
-	name = "Resin Morph (125)"
-	action_icon_state = "morph_resin"
-	plasma_cost = 125
-	macro_path = /datum/action/xeno_action/verb/verb_morph_resin
-	action_type = XENO_ACTION_CLICK
-
-/datum/action/xeno_action/morph_resin/action_activate()
-	var/mob/living/carbon/Xenomorph/X = owner
-	var/choice = tgui_input_list(X, "Choose a pheromone", X.caste.structures_allowed + "help" + "cancel")
-	if(choice == "help")
-		var/message = "<br>Morphing into resin sacrifices your current body in order to create special structures that can benefit the hive, as follows:<br>"
-		for(var/structure_name in X.caste.structures_allowed)
-			message += "[get_xeno_structure_desc(structure_name)]<br>"
-		to_chat(X, SPAN_NOTICE(message))
-		return
-	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(plasma_cost))
-		return
-	var/answer = alert(X, "Are you sure you want to morph into [choice]? This will sacrifice your current body.", , "Yes", "No")
-	if(answer != "Yes")
-		return
-	if(!X.hive.can_build_structure(choice))
-		to_chat(X, SPAN_WARNING("You can't build any more [choice]s for the hive."))
-		return
-	X.use_plasma(plasma_cost)
-	X.morph_resin(get_turf(X), X.caste.structures_allowed[choice])
-	..()
-*/
 
 // Corrosive Acid
 /datum/action/xeno_action/activable/corrosive_acid
@@ -131,6 +99,7 @@
 	var/level = 2 //level of the acid strength
 	var/acid_type = /obj/effect/xenomorph/acid
 	macro_path = /datum/action/xeno_action/verb/verb_corrosive_acid
+	ability_primacy = XENO_CORROSIVE_ACID
 	action_type = XENO_ACTION_CLICK
 
 /datum/action/xeno_action/activable/corrosive_acid/New()
@@ -225,12 +194,14 @@
 /datum/action/xeno_action/activable/pounce/proc/initialize_pounce_pass_flags()
 	pounce_pass_flags = PASS_OVER_THROW_MOB
 
-// Any additional effects to apply to the target
-// is called if and only if we actually hit a human target
+/**
+ * Any additional effects to apply to the target
+ * is called if and only if we actually hit a human target
+ */
 /datum/action/xeno_action/activable/pounce/proc/additional_effects(mob/living/L)
 	return
 
-// Additional effects to apply even if we don't hit anything
+/// Additional effects to apply even if we don't hit anything
 /datum/action/xeno_action/activable/pounce/proc/additional_effects_always()
 	return
 
@@ -240,6 +211,14 @@
 	X.update_canmove()
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL
+
+/// Any effects to apply to the xenomorph before the windup occurs
+/datum/action/xeno_action/activable/pounce/proc/pre_windup_effects()
+	return
+
+/// Any effects to apply to the xenomorph after the windup finishes (or is interrupted)
+/datum/action/xeno_action/activable/pounce/proc/post_windup_effects(var/interrupted)
+	return
 
 /datum/action/xeno_action/onclick/toggle_long_range
 	name = "Toggle Long Range Sight"
@@ -328,3 +307,37 @@
 	macro_path = /datum/action/xeno_action/verb/verb_resin_hole
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_2
+
+/datum/action/xeno_action/activable/place_construction
+	name = "Order Construction (400)"
+	action_icon_state = "morph_resin"
+	ability_name = "order construction"
+	macro_path = /datum/action/xeno_action/verb/place_construction
+	action_type = XENO_ACTION_CLICK
+
+/datum/action/xeno_action/activable/xeno_spit
+	name = "Xeno Spit"
+	action_icon_state = "xeno_spit"
+	ability_name = "xeno spit"
+	macro_path = /datum/action/xeno_action/verb/verb_xeno_spit
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	cooldown_message = "You feel your neurotoxin glands swell with ichor. You can spit again."
+	xeno_cooldown = 60 SECONDS
+
+/datum/action/xeno_action/activable/bombard
+	name = "Bombard"
+	ability_name = "bombard"
+	action_icon_state = "bombard"
+	plasma_cost = 75
+	macro_path = /datum/action/xeno_action/verb/verb_bombard
+	action_type = XENO_ACTION_CLICK
+	ability_primacy = XENO_PRIMARY_ACTION_1
+	xeno_cooldown = 245
+
+	// Range and other config
+	var/effect_range = 3
+	var/effect_type = /obj/effect/xenomorph/boiler_bombard
+	var/activation_delay = 1.5 SECONDS
+	var/range = 15
+	var/interrupt_flags = INTERRUPT_ALL|BEHAVIOR_IMMOBILE

@@ -96,12 +96,15 @@
 		stop_gears()
 
 		if (!at_station())	//at centcom
-			supply_controller.sell()
+			handle_sell()
 		else
 			lower_railings()
 
 		spawn(0)
 			recharging = 0
+
+/datum/shuttle/ferry/supply/proc/handle_sell()
+	supply_controller.sell()
 
 // returns 1 if the supply shuttle should be prevented from moving because it contains forbidden atoms
 /datum/shuttle/ferry/supply/proc/forbidden_atoms_check()

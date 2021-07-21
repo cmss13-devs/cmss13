@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(xeno)
 		if (!M || QDELETED(M))
 			continue
 
-		M.Life()
+		M.Life(wait * 0.1)
 
 		if (MC_TICK_CHECK)
 			return

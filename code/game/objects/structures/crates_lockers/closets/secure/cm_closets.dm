@@ -15,24 +15,15 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/commander/Initialize()
 	. = ..()
-	new /obj/item/storage/mateba_case/captain(src)
 	new /obj/item/storage/backpack/mcommander(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
-	new /obj/item/device/radio/headset/almayer/mcom/cdrcom(src)
 	new /obj/item/clothing/suit/storage/jacket/marine/dress/officer(src)
 	new /obj/item/clothing/head/marine/peaked/captain(src)
-	//new /obj/item/clothing/head/cmcap/co/formal/white(src)
-	//new /obj/item/clothing/head/cmcap/co/formal/black(src)
-	//new /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber(src)
-	//new /obj/item/clothing/under/marine/officer/formal/white(src)
-	//new /obj/item/clothing/under/marine/officer/formal/black(src)
-	//new /obj/item/clothing/under/marine/officer/dining(src)
-	//new /obj/item/clothing/under/marine/officer/casual(src)
 
 /obj/structure/closet/secure_closet/securecom
 	name = "commanding officer's secure box"
 	req_access = list(ACCESS_MARINE_CAPTAIN)
-	desc = "You could probably get court-marshaled just by looking at this..."
+	desc = "A safe for the Commanding Officer to store any equipment they need to have ready at a moment's notice. There's a note inside saying that whatever was inside it before was moved out."
 	icon = 'icons/obj/structures/marine_closet.dmi'
 	icon_state = "commander_safe"
 	icon_opened = "commander_safe_open"
@@ -80,14 +71,16 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 
 /obj/structure/closet/secure_closet/staff_officer/armory/Initialize()
 	. = ..()
-	new /obj/item/clothing/head/helmet/marine(src)
-	new /obj/item/clothing/head/helmet/marine(src)
-	new /obj/item/clothing/suit/storage/marine/MP/RO(src)
-	new /obj/item/clothing/suit/storage/marine/MP/RO(src)
+	new /obj/item/clothing/head/helmet/marine/MP/SO(src)
+	new /obj/item/clothing/head/helmet/marine/MP/SO(src)
+	new /obj/item/clothing/suit/storage/marine/MP/SO(src)
+	new /obj/item/clothing/suit/storage/marine/MP/SO(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
 	new /obj/item/device/radio/headset/almayer/mcom(src)
 	new /obj/item/clothing/gloves/marine(src)
 	new /obj/item/clothing/gloves/marine(src)
+	new /obj/item/clothing/shoes/marine/knife(src)
+	new /obj/item/clothing/shoes/marine/knife(src)
 
 /obj/structure/closet/secure_closet/staff_officer/armory/m4a1/Initialize()
 	. = ..()
@@ -98,28 +91,7 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	. = ..()
 	new /obj/item/storage/belt/shotgun(src)
 	new /obj/item/storage/belt/shotgun(src)
-
-/obj/structure/closet/secure_closet/staff_officer/intel
-	name = "intelligence officer's locker"
-
-/obj/structure/closet/secure_closet/staff_officer/intel/Initialize()
-	. = ..()
-	new /obj/item/clothing/head/beret/cm(src)
-	new /obj/item/clothing/head/beret/cm/tan(src)
-	new /obj/item/clothing/head/cmcap/ro(src)
-	new /obj/item/clothing/head/helmet/marine/intel(src)
-	new /obj/item/device/radio/headset/almayer/mcom(src)
-	new /obj/item/clothing/under/marine/officer/intel(src)
-	new /obj/item/clothing/shoes/marine(src)
-	new /obj/item/storage/belt/gun/m4a3(src)
-	new /obj/item/storage/backpack/marine/satchel/intel(src)
-	new /obj/item/clothing/suit/storage/marine/intel(src)
-	new /obj/item/storage/pouch/document(src)
-	new /obj/item/storage/pouch/document(src)
-	new /obj/item/device/motiondetector/intel(src)
-	new /obj/item/tool/crowbar(src)
-	new /obj/item/clothing/accessory/storage/webbing(src)
-	new /obj/item/stack/fulton(src)
+	new /obj/item/storage/large_holster/m37(src)
 
 /obj/structure/closet/secure_closet/staff_officer/intel/select_gamemode_equipment(gamemode)
 	if (SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])

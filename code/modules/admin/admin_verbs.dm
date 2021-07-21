@@ -38,8 +38,9 @@ var/list/admin_verbs_admin = list(
 	/client/proc/force_shuttle,
 	/client/proc/force_ground_shuttle,
 	/client/proc/force_teleporter,
-	/client/proc/toggle_grenade_antigrief,
-	/client/proc/matrix_editor
+	/client/proc/toggle_explosive_antigrief,
+	/client/proc/matrix_editor,
+	/datum/admins/proc/open_shuttlepanel
 )
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel
@@ -63,7 +64,8 @@ var/list/admin_verbs_fun = list(
 	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
 	/client/proc/cmd_fun_fire_ob,
-	/client/proc/map_template_upload
+	/client/proc/map_template_upload,
+	/client/proc/enable_podlauncher
 )
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,
@@ -77,6 +79,7 @@ var/list/admin_verbs_server = list(
 	/datum/admins/proc/toggleaban,
 	/datum/admins/proc/end_round,
 	/datum/admins/proc/change_ground_map,
+	/datum/admins/proc/change_ship_map,
 	/datum/admins/proc/vote_ground_map,
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
@@ -106,7 +109,9 @@ var/list/admin_verbs_debug = list(
 	/client/proc/sound_debug_query,
 	/client/proc/bulk_fetcher,
 	/client/proc/debug_game_history,
-	/client/proc/construct_env_dmm
+	/client/proc/construct_env_dmm,
+	/client/proc/enter_tree,
+	/client/proc/set_tree_points
 )
 
 var/list/admin_verbs_debug_advanced = list(
@@ -230,7 +235,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_pm_context,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/show_player_panel,
-	/client/proc/show_objectives_status,
+	/datum/admins/proc/remove_marine_techtree_leader,
 	/client/proc/hide_admin_mob_verbs,
 	/client/proc/clear_mutineers,
 	/client/proc/cmd_admin_create_AI_report,  //Allows creation of IC reports by the ships AI utilizing Almayer General channel. Relies on ARES being intact and tcomms being powered.
@@ -278,7 +283,7 @@ var/list/admin_verbs_mod = list(
 /client/proc/add_admin_whitelists()
 	if(CLIENT_IS_STAFF(src) || CLIENT_HAS_RIGHTS(src, R_MENTOR))
 		RoleAuthority.roles_whitelist[ckey] |= WHITELIST_MENTOR
-		
+
 /client/proc/remove_admin_verbs()
 	remove_verb(src, list(
 		admin_verbs_default,

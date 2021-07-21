@@ -86,9 +86,13 @@ Additional game mode variables.
 	var/bioscan_ongoing_interval = 1 MINUTES//every 1 minute
 
 	var/lz_selection_timer = 25 MINUTES //25 minutes in
-	var/round_time_resin = 40 MINUTES	//Time for when resin placing is allowed close to LZs
 	var/round_time_pooled_cutoff = 25 MINUTES	//Time for when free pooled larvae stop spawning.
-	var/resin_allow_finished
+
+	var/round_time_resin = 40 MINUTES	//Time for when resin placing is allowed close to LZs
+	var/resin_allow_finished = FALSE
+
+	var/round_time_evolution_ovipositor = 5 MINUTES //Time for when ovipositor becomes necessary for evolution to progress.
+	var/evolution_ovipositor_threshold = FALSE
 
 	var/flags_round_type = NO_FLAGS
 
@@ -100,7 +104,7 @@ Additional game mode variables.
 
 /datum/game_mode/proc/initialize_special_clamps()
 	xeno_starting_num = clamp((readied_players/CONFIG_GET(number/xeno_number_divider)), xeno_required_num, INFINITY) //(n, minimum, maximum)
-	surv_starting_num = clamp((xeno_starting_num/CONFIG_GET(number/surv_number_divider)), 2, 8)
+	surv_starting_num = clamp((readied_players/CONFIG_GET(number/surv_number_divider)), 2, 8) //this doesnt run
 	marine_starting_num = GLOB.player_list.len - xeno_starting_num - surv_starting_num
 	for(var/datum/squad/sq in RoleAuthority.squads)
 		if(sq)
@@ -284,7 +288,7 @@ Additional game mode variables.
 	for(var/datum/mind/A in possible_queens)
 		var/mob/living/original = A.current
 		var/client/client = GLOB.directory[A.ckey]
-		if(jobban_isbanned(original, CASTE_QUEEN) || !can_play_special_job(client, CASTE_QUEEN))
+		if(jobban_isbanned(original, XENO_CASTE_QUEEN) || !can_play_special_job(client, XENO_CASTE_QUEEN))
 			LAZYREMOVE(possible_queens, A)
 
 	if(LAZYLEN(possible_queens)) // Pink one of the people who want to be Queen and put them in
@@ -372,7 +376,7 @@ Additional game mode variables.
 
 	for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
 		var/area/A = get_area(X)
-		if(is_admin_level(X.z) && (!A || !(A.flags_atom & AREA_ALLOW_XENO_JOIN))) continue //xenos on admin z level don't count
+		if(is_admin_level(X.z) && (!A || !(A.flags_area & AREA_ALLOW_XENO_JOIN))) continue //xenos on admin z level don't count
 		if(istype(X) && !X.client)
 			if(X.away_timer >= XENO_LEAVE_TIMER || (isXenoLarva(X) && X.away_timer >= XENO_LEAVE_TIMER_LARVA) ) available_xenos_non_ssd += X
 			available_xenos += X
@@ -405,11 +409,11 @@ Additional game mode variables.
 				if(!xeno_bypass_timer)
 					var/deathtime = world.time - xeno_candidate.timeofdeath
 					if(isnewplayer(xeno_candidate))
-						deathtime = 5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
-					if(deathtime < 5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
+						deathtime = 2.5 MINUTES //so new players don't have to wait to latejoin as xeno in the round's first 5 mins.
+					if(deathtime < 2.5 MINUTES && !check_client_rights(xeno_candidate.client, R_ADMIN, FALSE))
 						var/message = SPAN_WARNING("You have been dead for [DisplayTimeText(deathtime)].")
 						to_chat(xeno_candidate, message)
-						to_chat(xeno_candidate, SPAN_WARNING("You must wait 5 minutes before rejoining the game!"))
+						to_chat(xeno_candidate, SPAN_WARNING("You must wait 2.5 minutes before rejoining the game!"))
 						return FALSE
 				if(isnewplayer(xeno_candidate))
 					var/mob/new_player/N = xeno_candidate
@@ -508,7 +512,10 @@ Additional game mode variables.
 			X.update_pipe_icons(X.loc) //If we are in a vent, fetch a fresh vent map
 	return TRUE
 
+/// Pick and setup a queen spawn from landmarks, then spawns the player there alongside any required setup
 /datum/game_mode/proc/pick_queen_spawn(datum/mind/ghost_mind, var/hivenumber = XENO_HIVE_NORMAL)
+	RETURN_TYPE(/turf)
+
 	var/mob/living/original = ghost_mind.current
 	var/datum/hive_status/hive = GLOB.hive_datum[hivenumber]
 	if(hive.living_xeno_queen || !original || !original.client)
@@ -521,7 +528,7 @@ Additional game mode variables.
 	// Make the list pretty
 	var/list/spawn_list_names = list()
 	var/list/spawn_list_map = list()
-	for(var/T in GLOB.queen_spawns)
+	for(var/obj/effect/landmark/queen_spawn/T in GLOB.queen_spawns)
 		var/area/A = get_area(T)
 		spawn_list_names += A.name
 		spawn_list_map[A.name] = T
@@ -529,23 +536,20 @@ Additional game mode variables.
 	var/spawn_name = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_names, QUEEN_SPAWN_TIMEOUT)
 
 	var/turf/QS
+	var/obj/effect/landmark/queen_spawn/QSI
 	if(spawn_name)
-		. = spawn_list_map[spawn_name]
-		QS = get_turf(.)
+		QSI = spawn_list_map[spawn_name]
+		QS = get_turf(QSI)
 
 	// Pick a random one if nothing was picked
 	if(isnull(QS))
-		. = pick(GLOB.queen_spawns)
-		QS = get_turf(.)
+		QSI = pick(GLOB.queen_spawns)
+		QS = get_turf(QSI)
 		// Support maps without queen spawns
 		if(isnull(QS))
 			QS = get_turf(pick(GLOB.xeno_spawns))
-
-	for(var/obj/effect/landmark/structure_spawner/xenos/X in get_area(QS))
-		new X.path_to_spawn(X.loc)
-		qdel(X)
-
 	transform_queen(ghost_mind, QS, hivenumber)
+	return QS
 
 /datum/game_mode/proc/transform_queen(datum/mind/ghost_mind, var/turf/xeno_turf, var/hivenumber = XENO_HIVE_NORMAL)
 	var/mob/living/original = ghost_mind.current
@@ -723,9 +727,6 @@ Additional game mode variables.
 				//remove ourselves, so we don't get stuff generated for us
 				survivors -= H.mind
 
-		if(spawner.make_objective)
-			new /datum/cm_objective/move_mob/almayer/survivor(H)
-
 /datum/game_mode/proc/survivor_non_event_transform(mob/living/carbon/human/H, obj/effect/landmark/spawn_point, is_synth = FALSE)
 	H.forceMove(get_turf(spawn_point))
 	survivor_old_equipment(H, is_synth)
@@ -733,7 +734,6 @@ Additional game mode variables.
 
 	//Give them some information
 	if(!H.first_xeno) //Only give objectives/back-stories to uninfected survivors
-		new /datum/cm_objective/move_mob/almayer/survivor(H)
 		spawn(4)
 			to_chat(H, "<h2>You are a survivor!</h2>")
 			to_chat(H, SPAN_NOTICE(SSmapping.configs[GROUND_MAP].survivor_message))
@@ -832,70 +832,8 @@ Additional game mode variables.
 		var/obj/structure/machinery/cm_vending/sorted/CVS = i
 		CVS.populate_product_list(scale)
 
-	if(VehicleElevatorConsole)
-		var/obj/structure/machinery/computer/supplycomp/vehicle/VEC = VehicleElevatorConsole
-		VEC.check_vehicle_lock()
-
 	//Scale the amount of cargo points through a direct multiplier
 	supply_controller.points = round(supply_controller.points * scale)
-
-//===================================================\\
-
-			//MAP RESOURCE INITIATLIZE\\
-
-//===================================================\\
-
-//Initializes three things: Primary, LZ, and hive nodes. Distributes resources by fractions using a total resource value determined as 3x the spawn population.
-//Resource node activation doesn't happen here. This only distributes the total resources among the resource groups.
-//Xeno resources are activated/begin growing RAPIDLY when they build their first hive core
-//Marine resources are activated/begin growing RAPIDLY when they make first landfall
-//Primary resources begin growing SLOWLY when marines make first landfall
-/datum/game_mode/proc/initialize_map_resource_list()
-	var/total_pop_size = 0
-	for(var/mob/M in GLOB.player_list)
-		if(M.stat != DEAD && M.mind)
-			total_pop_size++
-
-	var/total_resources = max(RESOURCE_NODE_QUANTITY_MINIMUM, round(total_pop_size * RESOURCE_NODE_QUANTITY_PER_POP)) //This gives the total amount of resource to spawn in all nodes.
-	var/xeno_spawn_resources = total_resources * 0.2 //20% of resources go to spawn nodes, 20% per faction.
-	var/marine_spawn_resources = total_resources * 0.2
-
-	//Spawn all resource nodes
-	for(var/obj/effect/landmark/resource_node/node in world)
-		node.trigger()
-
-	//Pick our resource groups
-	var/list/node_group_pool = list()
-	for(var/obj/effect/landmark/resource_node_activator/node_group in world)
-		node_group_pool.Add(node_group)
-
-	//Setup the hive/xeno nodes
-	for(var/obj/effect/landmark/resource_node_activator/hive/hive_node_group in node_group_pool)
-		hive_node_group.amount = xeno_spawn_resources
-		node_group_pool.Remove(hive_node_group)
-
-	//Setup the LZ nodes
-	for(var/obj/effect/landmark/resource_node_activator/landing/landing_node_group in node_group_pool)
-		landing_node_group.amount = marine_spawn_resources
-		node_group_pool.Remove(landing_node_group)
-
-	if(!node_group_pool.len)
-		return
-
-	//Setup all other resource groups
-	var/main_resources = total_resources - xeno_spawn_resources - marine_spawn_resources
-	for(var/node_number in 1 to node_group_pool.len)
-		//Set amount to give to this node group as the total available
-		var/node_resources = main_resources
-
-		//If there is more than one node group, evenly split the resources among each node group
-		if(node_number != node_group_pool.len)
-			node_resources = round(main_resources / node_group_pool.len)
-			main_resources -= node_resources
-
-		// Chose an arbitrary node group and setup its resource amount
-		var/obj/effect/landmark/resource_node_activator/node_activator = pick(node_group_pool)
-		node_activator.amount = node_resources
 
 // for the toolbox
 /datum/game_mode/proc/end_round_message()

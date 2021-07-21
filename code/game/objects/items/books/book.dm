@@ -18,6 +18,7 @@
 	var/obj/item/store	//What's in the book?
 
 /obj/item/book/attack_self(var/mob/user as mob)
+	..()
 	if(carved)
 		if(store)
 			to_chat(user, SPAN_NOTICE("[store] falls out of [title]!"))
@@ -80,7 +81,7 @@
 			else
 				return
 
-	else if(istype(W, /obj/item/tool/kitchen/knife) || istype(W, /obj/item/tool/wirecutters))
+	else if(istype(W, /obj/item/tool/kitchen/knife) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		if(carved)	return
 		to_chat(user, SPAN_NOTICE("You begin to carve out [title]."))
 		if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

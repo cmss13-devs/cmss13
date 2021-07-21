@@ -14,6 +14,11 @@
 	bound_y = -32
 
 	interior_map = "tank"
+
+	//tank always has 1 crewmen slot reserved and 1 general slot for other roles.
+	passengers_slots = 1
+	xenos_slots = 4
+
 	entrances = list(
 		"back" = list(0, 2)
 	)
@@ -23,7 +28,11 @@
 
 	required_skill = SKILL_VEHICLE_LARGE
 
-	max_momentum = 3
+	vehicle_flags = VEHICLE_CLASS_MEDIUM
+
+	move_max_momentum = 3
+	move_momentum_build_factor = 1.8
+	move_turn_momentum_loss_factor = 0.6
 
 	luminosity = 7
 
@@ -71,6 +80,13 @@
 		camera_int.c_tag = "#[rand(1,100)] M34A2 \"[nickname]\" Tank" //this fluff allows it to be at the start of cams list
 	else
 		camera_int.c_tag = "#[rand(1,100)] M34A2 Tank"
+
+/obj/vehicle/multitile/tank/load_role_reserved_slots()
+	var/datum/role_reserved_slots/RRS = new
+	RRS.category_name = "Crewmen"
+	RRS.roles = list(JOB_CREWMAN, JOB_UPP_CREWMAN)
+	RRS.total = 1
+	role_reserved_slots += RRS
 
 /obj/vehicle/multitile/tank/load_hardpoints()
 	add_hardpoint(new /obj/item/hardpoint/holder/tank_turret)

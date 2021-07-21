@@ -25,8 +25,7 @@
 	var/calculated_damage = isXeno(affected_mob) ? damage_per_tick*3 : damage_per_tick
 	affected_mob.apply_damage(calculated_damage, BURN)
 
-	affected_mob.last_damage_source = "Exposure"
-	affected_mob.last_damage_mob = null
+	affected_mob.last_damage_data = create_cause_data("Exposure")
 
 	if (ambience_path \
 		&& affected_mob.client && (affected_mob.client.prefs.toggles_sound & SOUND_AMBIENCE) \

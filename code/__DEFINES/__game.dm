@@ -35,6 +35,7 @@
 #define MAP_SOROKYNE_STRATA "Sorokyne Strata"
 #define MAP_CORSAT "CORSAT" // Highpop only
 #define MAP_KUTJEVO "Kutjevo Refinery"
+#define MAP_ICE_COLONY_V3 "Shivas Snowball" //Ice Rework, low pop enabled.
 
 #define PLAYERCOUNT_LOWPOP_MAP_LIMIT 130 // number of players before we switch to lowpop maps only (LV, BR, Prison)
 
@@ -139,7 +140,7 @@
 #define ELEVATOR_RECHARGE 15 SECONDS  // 15 seconds
 
 //Shuttle moving status
-#define SHUTTLE_IDLE		0
+//#define SHUTTLE_IDLE		0
 #define SHUTTLE_WARMUP		1
 #define SHUTTLE_INTRANSIT	2
 #define SHUTTLE_CRASHED		3
@@ -291,9 +292,17 @@
 #define WALL_CULT "cult"
 #define WALL_STONE "stone"
 #define WALL_STRATA_ICE "strata_ice"
-#define WALL_STRATA_JUNGLE "strata_jungle"
+#define WALL_JUNGLE_UPDATED "jungle_veg"
 #define WALL_STRATA_OUTPOST_RIBBED "strata_ribbed_outpost_"
 #define WALL_STRATA_OUTPOST_BARE "strata_bare_outpost_"
+#define WALL_SHIVA_ICE "shiva_ice"
+#define WALL_SHIVA_FAB "shiva_fab"
+#define WALL_SHIVA_FAB_R "shiva_fab_r"
+#define WALL_SHIVA_FAB_ORANGE "shiva_fab_oj"
+#define WALL_SHIVA_FAB_BLUE "shiva_fab_blu"
+#define WALL_SHIVA_FAB_PINK "shiva_fab_pnk"
+#define WALL_SHIVA_FAB_WHITE "shiva_fab_wht"
+#define WALL_SHIVA_FAB_RED "shiva_fab_red"
 #define WALL_DOME "dome"
 #define WALL_DOMER "r_dome"
 #define WALL_SOLARIS "solaris_interior"
@@ -426,3 +435,9 @@
 // Beams
 /// For beams with an infinite duration (deletion is handled separately)
 #define BEAM_INFINITE_DURATION -1
+
+/// Used for calculations with delta_time when figuring how much "amount" to give per "time"
+/// `amount` - The number to get per time
+/// `time` - The time period in which to gain this amount
+/// To be used with delta_time. Multiplied by 10 to convert from deciseconds to seconds
+#define AMOUNT_PER_TIME(amount, time) ((amount / (time))*10)

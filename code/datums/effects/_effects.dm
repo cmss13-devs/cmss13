@@ -27,32 +27,27 @@
 #define DEL_ON_UNDEFIBBABLE 16	//Delete the effect when human mob is undefibbable
 
 /datum/effects
-	var/effect_name = "standard"		//Name of the effect
-	var/duration = 0					//How long it lasts
-	var/flags = DEL_ON_DEATH 			//Flags for the effect
-	var/atom/affected_atom = null		//The affected atom
-	var/def_zone = "chest"				//The area affected if its a mob
-	var/icon_path = null				//The icon path if the effect should apply an overlay to things
-	var/obj_icon_state_path = null		//The icon_state path for objs
-	var/mob_icon_state_path = null		//The icon_state path for mobs
-	var/source_mob = null				//Source mob for statistics
-	var/source = null					//Damage source for statistics
+	var/effect_name = "standard"			//Name of the effect
+	var/duration = 0						//How long it lasts
+	var/flags = DEL_ON_DEATH 				//Flags for the effect
+	var/atom/affected_atom = null			//The affected atom
+	var/def_zone = "chest"					//The area affected if its a mob
+	var/icon_path = null					//The icon path if the effect should apply an overlay to things
+	var/obj_icon_state_path = null			//The icon_state path for objs
+	var/mob_icon_state_path = null			//The icon_state path for mobs
+	var/datum/cause_data/cause_data = null	//Cause data for statistics
 
 /datum/effects/New(var/atom/A, var/mob/from = null, var/last_dmg_source = null, var/zone = "chest")
 	if(!validate_atom(A) || QDELETED(A))
 		qdel(src)
 		return
-
-	active_effects += src
+	START_PROCESSING(SSeffects, src)
 
 	affected_atom = A
 	LAZYADD(affected_atom.effects_list, src)
 	on_apply_effect()
 	def_zone = zone
-	if(from && istype(from))
-		source_mob = from
-	if(last_dmg_source)
-		source = last_dmg_source
+	cause_data = create_cause_data(last_dmg_source, from)
 
 /datum/effects/proc/validate_atom(var/atom/A)
 	if(iscarbon(A) || isobj(A))
@@ -123,7 +118,7 @@
 	if(affected_atom)
 		LAZYREMOVE(affected_atom.effects_list, src)
 		affected_atom = null
-	active_effects -= src
+	STOP_PROCESSING(SSeffects, src)
 	. = ..()
 
 

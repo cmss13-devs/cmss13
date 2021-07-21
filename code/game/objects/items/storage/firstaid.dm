@@ -20,6 +20,7 @@
 		/obj/item/explosive/grenade,
 		/obj/item/tool
 	) //to prevent powergaming.
+	storage_flags = STORAGE_FLAGS_BOX
 	var/icon_full //icon state to use when kit is full
 	var/possible_icons_full
 
@@ -34,12 +35,14 @@
 	update_icon()
 
 /obj/item/storage/firstaid/update_icon()
-	if(!length(contents))
+	if(content_watchers || !length(contents))
 		icon_state = "kit_empty"
 	else
 		icon_state = icon_full
 
 /obj/item/storage/firstaid/attack_self(mob/living/user)
+	..()
+
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		C.swap_hand()
@@ -217,39 +220,68 @@
 		/obj/item/toy/dice,
 		/obj/item/paper
 	)
-	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
+	storage_flags = STORAGE_FLAGS_BOX|STORAGE_CLICK_GATHER|STORAGE_QUICK_GATHER
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16
 	var/skilllock = 1
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
+	var/bottle_lid = TRUE //Whether it shows a visual lid when opened or closed.
 
 obj/item/storage/pill_bottle/packet
-    name = "\improper pill packet"
-    desc = "Containts pills. Once you take them out they don't go back in."
-    icon_state = "pill_packet"
-    storage_slots = 4
-    max_w_class = 0
-    max_storage_space = 4
-    skilllock = 0
-    storage_flags = STORAGE_FLAGS_BOX
+	name = "\improper pill packet"
+	desc = "Contains pills. Once you take them out, they don't go back in."
+	icon_state = "pill_packet"
+	bottle_lid = FALSE
+	storage_slots = 4
+	max_w_class = 0
+	max_storage_space = 4
+	skilllock = 0
+	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
-    name = "Tricordazine pill packet"
-    icon_state = "tricordrazine_packet"
-    desc = "This packet contains Tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
-    
+	name = "Tricordazine pill packet"
+	icon_state = "tricordrazine_packet"
+	desc = "This packet contains Tricordazine pills. Heals all types of damage slightly. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/tricordrazine
+
 /obj/item/storage/pill_bottle/packet/tramadol
-    name = "Tramadol pill packet"
-    icon_state = "tramadol_packet"
-    desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
-    pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
+	name = "Tramadol pill packet"
+	icon_state = "tramadol_packet"
+	desc = "This packet contains Tramadol pills, a mild painkiller. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
+
+/obj/item/storage/pill_bottle/packet/bicardine
+    name = "Bicardine pill packet"
+    icon_state = "bicardine_packet"
+    desc = "This packet contains Bicardine pills. Heals brute damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
+
+/obj/item/storage/pill_bottle/packet/kelotane
+    name = "kelotane pill packet"
+    icon_state = "kelotane_packet"
+    desc = "This packet contains kelotane pills. Heals burn damage effectively. Once you take them out, they don't go back in. Don't take more than 2 pills in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
+
+/obj/item/storage/pill_bottle/packet/oxycodone
+    name = "oxycodone pill packet"
+    icon_state = "oxycodone_packet"
+    desc = "This packet contains oxycodone pills. A highly effective painkiller. Once you take them out, they don't go back in. Don't take more than 1 pill in a short period."
+    pill_type_to_fill = /obj/item/reagent_container/pill/oxycodone
 
 /obj/item/storage/pill_bottle/fill_preset_inventory()
 	if(pill_type_to_fill)
 		for(var/i=1 to max_storage_space)
 			new pill_type_to_fill(src)
+
+/obj/item/storage/pill_bottle/update_icon()
+	if(!bottle_lid)
+		return
+	overlays.Cut()
+	if(content_watchers || !length(contents))
+		overlays += "pills_open"
+	else
+		overlays += "pills_closed"
 
 /obj/item/storage/pill_bottle/examine(mob/user)
 	..()
@@ -258,20 +290,22 @@ obj/item/storage/pill_bottle/packet
 		var/percentage_filled = round(pills_amount/max_storage_space * 100)
 		switch(percentage_filled)
 			if(80 to 101)
-				to_chat(user, SPAN_INFO("The [src] seems fairly full."))
+				to_chat(user, SPAN_INFO("The [name] seems fairly full."))
 			if(60 to 79)
-				to_chat(user, SPAN_INFO("The [src] feels more than half full."))
+				to_chat(user, SPAN_INFO("The [name] feels more than half full."))
 			if(40 to 59)
-				to_chat(user, SPAN_INFO("The [src] seems to be around half full."))
+				to_chat(user, SPAN_INFO("The [name] seems to be around half full."))
 			if(20 to 39)
-				to_chat(user, SPAN_INFO("The [src] feels less than half full."))
+				to_chat(user, SPAN_INFO("The [name] feels less than half full."))
 			if(0 to 19)
-				to_chat(user, SPAN_INFO("The [src] feels like it's nearly empty!"))
+				to_chat(user, SPAN_INFO("The [name] feels like it's nearly empty!"))
 	else
-		to_chat(user, SPAN_INFO("The [src] is empty."))
+		to_chat(user, SPAN_INFO("The [name] is empty."))
 
 
 /obj/item/storage/pill_bottle/attack_self(mob/living/user)
+	..()
+
 	if(user.get_inactive_hand())
 		to_chat(user, SPAN_WARNING("You need an empty hand to take out a pill."))
 		return
@@ -281,16 +315,26 @@ obj/item/storage/pill_bottle/packet
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		if(user.put_in_inactive_hand(I))
-			playsound(src.loc, src.use_sound, 10, 1, 3)
+			playsound(loc, use_sound, 10, TRUE, 3)
 			remove_from_storage(I,user)
-			to_chat(user, SPAN_NOTICE("You take a pill out of \the [src]."))
+			to_chat(user, SPAN_NOTICE("You take a pill out of the [name]."))
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.swap_hand()
 			return
 	else
-		to_chat(user, SPAN_WARNING("\The [src] is empty."))
+		to_chat(user, SPAN_WARNING("The [name] is empty."))
 		return
+
+
+/obj/item/storage/pill_bottle/attackby(var/obj/item/storage/pill_bottle/W, mob/user)
+	if(istype(W))
+		if((skilllock || W.skilllock) && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+			error_idlock(user)
+			return
+		dump_into(W,user)
+	else
+		return ..()
 
 
 /obj/item/storage/pill_bottle/open(mob/user)
@@ -326,10 +370,10 @@ obj/item/storage/pill_bottle/packet
 					var/obj/item/I = contents[1]
 					if(user.put_in_active_hand(I))
 						remove_from_storage(I,user)
-						to_chat(user, SPAN_NOTICE("You take a pill out of \the [src]."))
+						to_chat(user, SPAN_NOTICE("You take a pill out of the [name]."))
 						return 1
 				else
-					to_chat(user, SPAN_WARNING("\The [src] is empty."))
+					to_chat(user, SPAN_WARNING("The [name] is empty."))
 					return 0
 			else
 				return 0

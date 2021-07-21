@@ -1,4 +1,4 @@
-/mob/living/carbon/Xenomorph/ex_act(var/severity, var/direction, var/source, var/source_mob, pierce=0)
+/mob/living/carbon/Xenomorph/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data, pierce=0)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -8,7 +8,7 @@
 
 	if(severity > EXPLOSION_THRESHOLD_LOW && stomach_contents.len)
 		for(var/mob/M in stomach_contents)
-			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, source, source_mob, pierce)
+			M.ex_act(severity - EXPLOSION_THRESHOLD_LOW, cause_data, pierce)
 
 	var/b_loss = 0
 	var/f_loss = 0
@@ -21,17 +21,14 @@
 	var/armor_punch = armor_break_calculation(cfg, damage, total_explosive_resistance, pierce, 1, 0.5, armor_integrity)
 	apply_armorbreak(armor_punch)
 
-	if(source)
-		last_damage_source = source
-	if(source_mob)
-		last_damage_mob = source_mob
+	last_damage_data = cause_data
 
 	last_hit_time = world.time
 
 	if (damage >= health && damage >= EXPLOSION_THRESHOLD_GIB)
 		var/oldloc = loc
-		gib(source)
-		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, source, source_mob)
+		gib(cause_data)
+		create_shrapnel(oldloc, rand(16, 24), , , /datum/ammo/bullet/shrapnel/light/xeno, cause_data)
 		return
 	if (damage >= 0)
 		b_loss += damage * 0.5
@@ -67,17 +64,38 @@
 	if(armour_type == ARMOR_MELEE)
 		armour_config = GLOB.xeno_melee
 
-	var/modified_damage = armor_damage_reduction(armour_config, damage, (armor_deflection + armor_deflection_buff) * effectiveness_mult, penetration, armour_break_pr_pen, armour_break_flat)
-	var/armor_punch = armor_break_calculation(armour_config, damage, (armor_deflection + armor_deflection_buff) * effectiveness_mult, penetration, armour_break_pr_pen, armour_break_flat, armor_integrity)
+	var/list/damagedata = list(
+		"damage" = damage,
+		"armor" = (armor_deflection + armor_deflection_buff) * effectiveness_mult,
+		"penetration" = penetration,
+		"armour_break_pr_pen" = armour_break_pr_pen,
+		"armour_break_flat" = armour_break_flat,
+		"armor_integrity" = armor_integrity
+	)
+	SEND_SIGNAL(src, COMSIG_XENO_PRE_APPLY_ARMOURED_DAMAGE, damagedata)
+	var/modified_damage = armor_damage_reduction(armour_config, damage,
+		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
+		damagedata["armour_break_flat"], damagedata["armor_integrity"])
+
+	var/armor_punch = armor_break_calculation(armour_config, damage,
+		damagedata["armor"], damagedata["penetration"], damagedata["armour_break_pr_pen"],
+		damagedata["armour_break_flat"], damagedata["armor_integrity"])
+
 	apply_armorbreak(armor_punch)
 
 	apply_damage(modified_damage, damage_type)
+
+	return modified_damage
 
 /mob/living/carbon/Xenomorph/apply_damage(damage = 0, damagetype = BRUTE, def_zone = null, used_weapon = null, sharp = 0, edge = 0, force = FALSE)
 	if(!damage)
 		return
 
-	if(SEND_SIGNAL(src, COMSIG_XENO_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+
+	var/list/damagedata = list("damage" = damage)
+	if(SEND_SIGNAL(src, COMSIG_XENO_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	damage = damagedata["damage"]
+
 	//We still want to check for blood splash before we get to the damage application.
 	var/chancemod = 0
 	if(used_weapon && sharp)
@@ -202,11 +220,14 @@
 				splash_chance -= 70 //Preds know to avoid the splashback.
 
 			if(splash_chance > 0 && prob(splash_chance)) //Success!
+				var/dmg = list("damage" = acid_blood_damage)
+				if(SEND_SIGNAL(src, COMSIG_XENO_DEAL_ACID_DAMAGE, victim, dmg) & COMPONENT_BLOCK_DAMAGE)
+					continue
 				i++
 				victim.visible_message(SPAN_DANGER("\The [victim] is scalded with hissing green blood!"), \
 				SPAN_DANGER("You are splattered with sizzling blood! IT BURNS!"))
-				if(prob(60) && !victim.stat && pain.feels_pain)
-					victim.emote("scream") //Topkek
-				victim.take_limb_damage(0, rand(8, 12)) //Sizzledam! This automagically burns a random existing body part.
+				if(prob(60) && !victim.stat && victim.pain.feels_pain)
+					INVOKE_ASYNC(victim, /mob.proc/emote, "scream") //Topkek
+				victim.take_limb_damage(0, dmg["damage"]) //Sizzledam! This automagically burns a random existing body part.
 				victim.add_blood(get_blood_color(), BLOOD_BODY)
 				acid_splash_last = world.time

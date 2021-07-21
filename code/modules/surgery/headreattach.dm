@@ -3,7 +3,15 @@
 /datum/surgery_step/head
 	priority = 1
 	can_infect = 0
-	allowed_species = list("Synthetic", "Early Synthetic", "Second Generation Synthetic")
+	allowed_species = list(
+		"Synthetic",
+		SYNTH_COLONY,
+		SYNTH_COMBAT,
+		SYNTH_GEN_ONE,
+		SYNTH_GEN_TWO,
+		SYNTH_GEN_THREE,
+		"Event Synthetic"
+		)
 	var/reattach_step
 
 /datum/surgery_step/head/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
@@ -152,7 +160,6 @@
 	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
 
 	affected.limb_replacement_stage = 0
-	affected.status |= LIMB_AMPUTATED
 	affected.setAmputatedTree()
 
 /datum/surgery_step/head/prepare/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)

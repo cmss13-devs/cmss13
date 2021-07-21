@@ -38,7 +38,7 @@
 /obj/structure/machinery/vending/snack
 	name = "Hot Foods Machine"
 	desc = "A vending machine full of ready to cook meals, mhmmmm taste the nutritional goodness!"
-	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!;Eat a Weston-Yamada brand packaged hamburger.;Eat a Weston-Yamada brand packaged hot dog.;Eat a Weston-Yamada brand packaged burrito.;"
+	product_slogans = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!;Eat a Weyland-Yutani brand packaged hamburger.;Eat a Weyland-Yutani brand packaged hot dog.;Eat a Weyland-Yutani brand packaged burrito.;"
 	product_ads = "Kepler Crisps! Try a snack that's out of this world!;Eat an EAT!"
 	icon_state = "snack"
 	products = list(/obj/item/reagent_container/food/snacks/packaged_burger = 12,
@@ -64,8 +64,8 @@
 	name = "Souto Softdrinks"
 	desc = "A softdrink vendor provided by Souto Soda Company, Havana."
 	icon_state = "Cola_Machine"
-	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weston-Yamada Fruit Beer. Nothing came from that lawsuit!;Weston-Yamada Spring Water. It came from a spring!"
-	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weston-Yamada Fruit Beer. Nothing came from that lawsuit!;Weston-Yamada Spring Water. It technically came from a spring!"
+	product_slogans = "Souto Soda: Have a Souto and be taken away to a tropical paradise!;Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It came from a spring!"
+	product_ads = "Souto Classic. You can't beat that tangerine goodness!;Souto Cherry. The sweet flavor of a cool winter morning!;Souto Lime. For that sweet and sour flavor that you know and love!;Souto Grape. There's nothing better than a grape soda.;Weyland-Yutani Fruit Beer. Nothing came from that lawsuit!;Weyland-Yutani Spring Water. It technically came from a spring!"
 	products = list(/obj/item/reagent_container/food/drinks/cans/souto/classic = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/classic = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cherry = 10,
@@ -80,6 +80,10 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 10,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 10,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 
@@ -97,6 +101,10 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/peach = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 5,
 					/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 5,
+					/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple = 5,
 					/obj/item/reagent_container/food/drinks/cans/waterbottle = 2,
 					/obj/item/reagent_container/food/drinks/cans/cola = 10)
 	idle_power_usage = 211 //refrigerator - believe it or not, this is actually the average power consumption of a refrigerated vending machine according to NRCan.
@@ -109,7 +117,9 @@
 					/obj/item/reagent_container/food/drinks/cans/souto/grape = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/blue = 10,
 					/obj/item/reagent_container/food/drinks/cans/souto/peach = 10,
-					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10)
+					/obj/item/reagent_container/food/drinks/cans/souto/cranberry = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/vanilla = 10,
+					/obj/item/reagent_container/food/drinks/cans/souto/pineapple = 10)
 
 	prices = list()
 

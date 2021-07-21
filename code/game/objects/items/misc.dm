@@ -1,16 +1,3 @@
-/obj/item/phone
-	name = "red phone"
-	desc = "Should anything ever go wrong..."
-	icon = 'icons/obj/items/items.dmi'
-	icon_state = "red_phone"
-	force = 3.0
-	throwforce = 2.0
-	throw_speed = SPEED_FAST
-	throw_range = 4
-	w_class = SIZE_SMALL
-	attack_verb = list("called", "rang")
-	hitsound = 'sound/weapons/ring.ogg'
-
 /obj/item/bananapeel
 	name = "banana peel"
 	desc = "A peel from a banana."
@@ -91,7 +78,7 @@
 	icon = 'icons/obj/items/stock_parts.dmi'
 	icon_state = "capacitor"
 	desc = "A debug item for research."
-	
+
 /obj/item/moneybag
 	icon = 'icons/obj/items/storage.dmi'
 	name = "Money bag"
@@ -128,9 +115,9 @@
 	else
 		//If it isn't on the floor. Do some checks to see if it's in our hands or a box. Otherwise give up.
 		if(istype(I.loc,/obj/item/storage))	//in a container.
-			var/sdepth = I.storage_depth(user)
-			if (sdepth == -1 || sdepth > 1)
-				return	//too deeply nested to access
+			var/depth = I.get_storage_depth_to(user)
+			if (!depth || depth > 2)
+				return	//too deeply nested to access or not being carried by the user.
 
 			var/obj/item/storage/U = I.loc
 			user.client.screen -= I
@@ -179,7 +166,9 @@
 	return
 
 
-/obj/item/evidencebag/attack_self(mob/user as mob)
+/obj/item/evidencebag/attack_self(mob/user)
+	..()
+
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		user.visible_message("[user] takes [I] out of [src]", "You take [I] out of [src].",\

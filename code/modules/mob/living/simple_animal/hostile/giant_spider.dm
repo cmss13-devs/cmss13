@@ -77,7 +77,7 @@
 				to_chat(L, SPAN_DANGER("You feel a tiny prick."))
 				L.reagents.add_reagent(poison_type, 5)
 
-/mob/living/simple_animal/hostile/giant_spider/Life()
+/mob/living/simple_animal/hostile/giant_spider/Life(delta_time)
 	..()
 	if(!stat)
 		if(stance == HOSTILE_STANCE_IDLE)
@@ -100,7 +100,7 @@
 			busy = 0
 			stop_automated_movement = 0
 
-/mob/living/simple_animal/hostile/giant_spider/nurse/Life()
+/mob/living/simple_animal/hostile/giant_spider/nurse/Life(delta_time)
 	..()
 	if(!stat)
 		if(stance == HOSTILE_STANCE_IDLE)

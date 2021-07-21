@@ -25,7 +25,7 @@
 		if(AHOLD_IS_MOD(C.admin_holder) && C.prefs.toggles_chat & CHAT_PRAYER)
 			to_chat(C, msg)
 	if(liaison)
-		to_chat(usr, "Your corporate overlords at Weston-Yamada have received your message.")
+		to_chat(usr, "Your corporate overlords at Weyland-Yutani have received your message.")
 	else
 		to_chat(usr, "Your prayers have been received by the gods.")
 

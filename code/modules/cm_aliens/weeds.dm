@@ -1,13 +1,11 @@
-#define WEED_BASE_GROW_SPEED (10 SECONDS)
-#define WEED_BASE_DECAY_SPEED (20 SECONDS)
-
 /obj/effect/alien/weeds
 	name = "weeds"
 	desc = "Weird black weeds..."
+	icon = 'icons/mob/hostiles/weeds.dmi'
 	icon_state = "base"
 
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	layer = WEED_LAYER
 	unacidable = TRUE
 	health = WEED_HEALTH_STANDARD
@@ -19,13 +17,13 @@
 
 	var/datum/hive_status/linked_hive = null
 	var/hivenumber = XENO_HIVE_NORMAL
+	var/turf/weeded_turf
 
 	// Which node is responsible for keeping this weed patch alive?
 	var/obj/effect/alien/weeds/node/parent = null
 
 /obj/effect/alien/weeds/Initialize(mapload, obj/effect/alien/weeds/node/node)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_weeds))
 	if(node)
 		linked_hive = node.linked_hive
 		weed_strength = node.weed_strength
@@ -42,8 +40,27 @@
 
 	update_icon()
 	update_neighbours()
-	if(node && node.loc && (get_dist(node, src) < node.node_range) && !hibernate)
-		addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
+	if(node && node.loc)
+		if(get_dist(node, src) >= node.node_range)
+			SEND_SIGNAL(parent, COMSIG_WEEDNODE_GROWTH_COMPLETE)
+		else if(!hibernate)
+			addtimer(CALLBACK(src, .proc/weed_expand), WEED_BASE_GROW_SPEED / max(weed_strength, 1))
+
+	var/turf/T = get_turf(src)
+	T.weeds = src
+	weeded_turf = T
+
+	RegisterSignal(src, list(
+		COMSIG_ATOM_TURF_CHANGE,
+		COMSIG_MOVABLE_TURF_ENTERED
+	), .proc/set_turf_weeded)
+
+/obj/effect/alien/weeds/proc/set_turf_weeded(var/datum/source, var/turf/T)
+	SIGNAL_HANDLER
+	if(weeded_turf)
+		weeded_turf.weeds = null
+
+	T.weeds = src
 
 /obj/effect/alien/weeds/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	. = ..()
@@ -51,7 +68,8 @@
 		PF.flags_pass = PASS_FLAGS_WEEDS
 
 /obj/effect/alien/weeds/proc/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
-	return
+	if(!length(new_weeds) && parent)
+		SEND_SIGNAL(parent, COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER)
 
 /obj/effect/alien/weeds/weak
 	name = "weak weeds"
@@ -77,6 +95,7 @@
 	update_icon()
 
 /obj/effect/alien/weeds/node/weak/on_weed_expand(var/obj/effect/alien/weeds/spread_from, var/list/new_weeds)
+	..()
 	var/atom/to_copy = /obj/effect/alien/weeds/weak
 	for(var/i in new_weeds)
 		var/obj/effect/alien/weeds/W = i
@@ -93,6 +112,11 @@
 
 	var/oldloc = loc
 	parent = null
+
+	if(weeded_turf)
+		weeded_turf.weeds = null
+
+	weeded_turf = null
 	. = ..()
 	update_neighbours(oldloc)
 
@@ -145,7 +169,9 @@
 
 		var/obj/effect/alien/weeds/W = locate() in T
 		if(W)
-			if(W.weed_strength >= WEED_LEVEL_HIVE)
+			if(W.indestructible)
+				continue
+			else if(W.weed_strength >= WEED_LEVEL_HIVE)
 				continue
 			else if (W.linked_hive == node.linked_hive && W.weed_strength >= node.weed_strength)
 				continue
@@ -162,7 +188,6 @@
 			continue
 
 		weeds.Add(new /obj/effect/alien/weeds(T, node))
-
 
 	on_weed_expand(src, weeds)
 	if(parent)
@@ -239,38 +264,33 @@
 		var/image/secretion
 
 		if(icon_dir >= 0)
-			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete[icon_dir]")
+			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete[icon_dir]")
 		else if(icon_dir == -15)
-			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete_base")
+			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete_base")
 		else
-			secretion = image(get_icon_from_source(CONFIG_GET(string/alien_effects)), "secrete_dir[-icon_dir]")
+			secretion = image('icons/mob/hostiles/Effects.dmi', "secrete_dir[-icon_dir]")
 
 		overlays += secretion
 
 /obj/effect/alien/weeds/ex_act(severity)
-	switch(severity)
-		if(0 to EXPLOSION_THRESHOLD_LOW)
-			if(prob(50))
-				qdel(src)
-		if(EXPLOSION_THRESHOLD_LOW to EXPLOSION_THRESHOLD_MEDIUM)
-			if(prob(70))
-				qdel(src)
-		if(EXPLOSION_THRESHOLD_MEDIUM to INFINITY)
-			qdel(src)
+	if(indestructible)
+		return
+	take_damage(severity * WEED_EXPLOSION_DAMAGEMULT)
 
 /obj/effect/alien/weeds/attack_alien(mob/living/carbon/Xenomorph/X)
-	if(!HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
+	if(!indestructible && !HIVE_ALLIED_TO_HIVE(X.hivenumber, hivenumber))
 		X.animation_attack_on(src)
-
 		X.visible_message(SPAN_DANGER("\The [X] slashes [src]!"), \
 		SPAN_DANGER("You slash [src]!"), null, 5)
 		playsound(loc, "alien_resin_break", 25)
-		health -= X.melee_damage_lower*WEED_XENO_DAMAGEMULT
-		healthcheck()
-
+		take_damage(X.melee_damage_lower*WEED_XENO_DAMAGEMULT)
+		return XENO_ATTACK_ACTION
 
 
 /obj/effect/alien/weeds/attackby(obj/item/W, mob/living/user)
+	if(indestructible)
+		return FALSE
+
 	if(QDELETED(W) || QDELETED(user) || (W.flags_item & NOBLUDGEON))
 		return 0
 
@@ -293,23 +313,31 @@
 
 	user.animation_attack_on(src)
 
-	health -= damage
-	healthcheck()
+	take_damage(damage)
 	return TRUE //don't call afterattack
 
-/obj/effect/alien/weeds/proc/healthcheck()
+/obj/effect/alien/weeds/proc/take_damage(var/damage)
+	if(indestructible)
+		return
+
+	health -= damage
 	if(health <= 0)
 		qdel(src)
 
 /obj/effect/alien/weeds/flamer_fire_act(dam)
+	if(indestructible)
+		return
+
 	. = ..()
 	if(!QDELETED(src))
 		QDEL_IN(src, rand(1 SECONDS, 2 SECONDS)) // 1-2 seconds
 
 /obj/effect/alien/weeds/acid_spray_act()
+	if(indestructible)
+		return
+
 	. = ..()
-	health -= 20 * WEED_XENO_DAMAGEMULT
-	healthcheck()
+	take_damage(20 * WEED_XENO_DAMAGEMULT)
 
 /obj/effect/alien/weeds/weedwall
 	layer = RESIN_STRUCTURE_LAYER
@@ -348,9 +376,12 @@
 	name = "purple sac"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
-	health = NODE_HEALTH_STANDARD
+	// Weed nodes start out with normal weed health and become stronger once they've stopped spreading
+	health = NODE_HEALTH_GROWING
 	flags_atom = OPENCONTAINER
 	layer = ABOVE_BLOOD_LAYER
+	var/static/staticnode
+	var/overlay_node = TRUE
 
 	// Which weeds are being kept alive by this node?
 	var/list/obj/effect/alien/weeds/children = list()
@@ -375,7 +406,13 @@
 
 /obj/effect/alien/weeds/node/update_icon()
 	..()
-	overlays += "weednode"
+	if(overlay_node)
+		overlays += staticnode
+
+/obj/effect/alien/weeds/node/proc/trap_destroyed()
+	SIGNAL_HANDLER
+	overlay_node = TRUE
+	overlays += staticnode
 
 /obj/effect/alien/weeds/node/Initialize(mapload, obj/effect/alien/weeds/node/node, mob/living/carbon/Xenomorph/X, datum/hive_status/hive)
 	if (istype(hive))
@@ -385,10 +422,28 @@
 	else
 		linked_hive = GLOB.hive_datum[hivenumber]
 
+	for(var/obj/effect/alien/weeds/W in loc)
+		if(W != src)
+			if(W.weed_strength > WEED_LEVEL_HIVE)
+				qdel(src)
+				return
+			qdel(W) //replaces the previous weed
+			break
 
 	. = ..(mapload, src)
 
-	overlays += "weednode"
+	if(!staticnode)
+		staticnode = image('icons/mob/hostiles/weeds.dmi', "weednode", ABOVE_OBJ_LAYER)
+
+	var/obj/effect/alien/resin/trap/TR = locate() in loc
+	if(TR)
+		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, .proc/trap_destroyed)
+		overlay_node = FALSE
+		overlays -= staticnode
+	else
+		overlay_node = TRUE
+		overlays += staticnode
+
 	if(X)
 		add_hiddenprint(X)
 		weed_strength = X.weed_level
@@ -400,14 +455,12 @@
 			name = "hive node sac"
 
 	create_reagents(30)
-	reagents.add_reagent(PLASMA_PURPLE,30)
-	for(var/obj/effect/alien/weeds/W in loc)
-		if(W != src)
-			if(W.weed_strength > WEED_LEVEL_HIVE)
-				qdel(src)
-				return
-			qdel(W) //replaces the previous weed
-			break
+	reagents.add_reagent(PLASMA_PURPLE, 30)
+
+	RegisterSignal(src, list(
+		COMSIG_WEEDNODE_GROWTH_COMPLETE,
+		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
+	), .proc/complete_growth)
 
 /obj/effect/alien/weeds/node/Destroy()
 	// When the node is removed, weeds should start dying out
@@ -415,9 +468,21 @@
 	for(var/X in children)
 		var/obj/effect/alien/weeds/W = X
 		remove_child(W)
-		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 10)) // Slight variation whilst decaying
+		addtimer(CALLBACK(W, .proc/avoid_orphanage), WEED_BASE_DECAY_SPEED + rand(0, 1 SECONDS)) // Slight variation whilst decaying
 
 	. = ..()
+
+/obj/effect/alien/weeds/node/proc/complete_growth()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(src, list(
+		COMSIG_WEEDNODE_GROWTH_COMPLETE,
+		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
+	))
+	health = NODE_HEALTH_STANDARD
+
+/obj/effect/alien/weeds/node/feral
+	hivenumber = XENO_HIVE_FERAL
 
 /obj/effect/alien/weeds/node/pylon
 	health = WEED_HEALTH_HIVE

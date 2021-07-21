@@ -33,7 +33,7 @@
 
 /obj/item/toy/deck/uno
 	name = "deck of UNO cards"
-	desc = "A simple deck of the Weston-Yamada classic UNO playing cards."
+	desc = "A simple deck of the Weyland-Yutani classic UNO playing cards."
 	icon_state = "deck_uno"
 	base_icon = "deck_uno"
 	max_cards = 108
@@ -215,7 +215,8 @@
 		user.visible_message("\The [user] deals a card to \the [target].")
 	H.throw_atom(get_step(target,target.dir), 10, SPEED_VERY_FAST, H)
 
-/obj/item/toy/deck/attack_self(var/mob/user as mob)
+/obj/item/toy/deck/attack_self(var/mob/user)
+	..()
 	var/list/newcards = list()
 	while(cards.len)
 		var/datum/playingcard/P = pick(cards)
@@ -406,7 +407,8 @@
 		src.update_icon()
 
 
-/obj/item/toy/handcard/attack_self(var/mob/user as mob)
+/obj/item/toy/handcard/attack_self(var/mob/user)
+	..()
 	concealed = !concealed
 	update_icon()
 	user.visible_message("\The [user] [concealed ? "conceals" : "reveals"] their hand.")

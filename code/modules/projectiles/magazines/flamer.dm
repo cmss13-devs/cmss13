@@ -20,6 +20,9 @@
 	var/max_range = 5
 	var/max_duration = 30
 
+	var/fuel_pressure = 1 //How much fuel is used per tile fired
+	var/max_pressure = 10
+
 /obj/item/ammo_magazine/flamer_tank/empty
 	flamer_chem = null
 
@@ -41,7 +44,7 @@
 	update_icon()
 
 /obj/item/ammo_magazine/flamer_tank/verb/remove_reagents()
-	set name = "Empty cannister"
+	set name = "Empty canister"
 	set category = "Object"
 
 	set src in usr
@@ -49,7 +52,7 @@
 	if(usr.get_active_hand() != src)
 		return
 
-	if(alert(usr, "Do you really want to empty out [src]?", "Empty cannister", "Yes", "No") == "No")
+	if(alert(usr, "Do you really want to empty out [src]?", "Empty canister", "Yes", "No") == "No")
 		return
 
 	reagents.clear_reagents()
@@ -61,7 +64,7 @@
 	. = ..()
 	update_icon()
 
-	if(istype(loc, /obj/item/weapon/gun/))
+	if(isgun(loc))
 		var/obj/item/weapon/gun/G = loc
 		if(G.current_mag == src)
 			G.update_icon()
@@ -129,6 +132,53 @@
 	else
 		to_chat(user, SPAN_NOTICE("Nothing."))
 
+// This is gellie fuel. Green Flames.
+/obj/item/ammo_magazine/flamer_tank/gellied
+	name = "incinerator tank (Gel)"
+	desc = "A fuel tank full of heavier gel fuel. Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot. Handle with exceptional care."
+	caliber = "Napalm Gel"
+	flamer_chem = "napalmgel"
+	max_rounds = 200
+
+	max_range = 7
+
+/obj/item/ammo_magazine/flamer_tank/EX
+	name = "incinerator tank (EX)"
+	desc = "A fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustable liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
+	caliber = "Napalm EX"
+	flamer_chem = "napalmex"
+
+	max_range = 7
+
+/obj/item/ammo_magazine/flamer_tank/custom
+	name = "custom incinerator tank"
+	desc = "A fuel tank used to store fuel for use in the M240 incinerator unit. This one has been modified with a pressure regulator and an internal propellant tank."
+	matter = list("metal" = 3750)
+	flamer_chem = null
+	max_rounds = 100
+	max_range = 5
+	fuel_pressure = 1
+
+/obj/item/ammo_magazine/flamer_tank/custom/verb/set_fuel_pressure()
+	set name = "Change Fuel Pressure"
+	set category = "Object"
+
+	set src in usr
+
+	if(usr.get_active_hand() != src)
+		return
+
+	var/set_pressure = Clamp(input("Change fuel pressure to: (max: [max_pressure])", 10, fuel_pressure) as num|null,1,max_pressure)
+	if(!set_pressure)
+		to_chat(usr, SPAN_WARNING("You can't find that setting on the regulator!"))
+	else
+		to_chat(usr, SPAN_NOTICE("You set the pressure regulator to [set_pressure] U/t"))
+		fuel_pressure = set_pressure
+
+/obj/item/ammo_magazine/flamer_tank/custom/examine(mob/user)
+	..()
+	to_chat(user, SPAN_NOTICE("The pressure regulator is set to: [src.fuel_pressure] U/t"))
+
 // Pyro regular flamer tank just bigger than the base flamer tank.
 /obj/item/ammo_magazine/flamer_tank/large
 	name = "large incinerator tank"
@@ -145,15 +195,7 @@
 /obj/item/ammo_magazine/flamer_tank/large/empty
 	flamer_chem = null
 
-// This is gellie fuel. Green Flames.
-/obj/item/ammo_magazine/flamer_tank/gellied
-	name = "large incinerator tank (Gel)"
-	desc = "A large fuel tank full of heavier gel fuel. Unlike its liquid contemporaries, this stuff shoots far, and burns up fast, but it doesn't burn anywhere near as hot. Handle with exceptional care."
-	caliber = "Napalm Gel"
-	flamer_chem = "napalmgel"
-	max_rounds = 200
 
-	max_range = 7
 
 // This is the green flamer fuel for the pyro.
 /obj/item/ammo_magazine/flamer_tank/large/B
@@ -172,3 +214,22 @@
 	flamer_chem = "napalmx"
 
 	max_range = 6
+
+/obj/item/ammo_magazine/flamer_tank/large/EX
+	name = "large incinerator tank (EX)"
+	desc = "A large fuel tank of Ultra Thick Napthal Fuel type EX, a sticky combustable liquid chemical that burns so hot it melts straight through flame-resistant material, for use in the M240-T incinerator unit. Handle with care."
+	caliber = "Napalm EX"
+	flamer_chem = "napalmex"
+
+	max_range = 7
+
+//Custom pyro tanks
+/obj/item/ammo_magazine/flamer_tank/custom/large
+	name = "large custom incinerator tank"
+	desc = "A large fuel tank for use in the M240-T incinerator unit. This one has been modified with a pressure regulator and a large internal propellant tank. Must be manually attached."
+	gun_type = /obj/item/weapon/gun/flamer/M240T
+	max_rounds = 250
+
+	max_intensity = 60
+	max_range = 8
+	max_duration = 50

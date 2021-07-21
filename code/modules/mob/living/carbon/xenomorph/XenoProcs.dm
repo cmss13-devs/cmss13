@@ -1,9 +1,6 @@
 //Xenomorph General Procs And Functions - Colonial Marines
 //LAST EDIT: APOPHIS 22MAY16
 
-/mob/living/carbon/Xenomorph/Move(NewLoc, direct)
-	. = ..()
-
 //Send a message to all xenos. Mostly used in the deathgasp display
 /proc/xeno_message(var/message = null, var/size = 3, var/hivenumber = XENO_HIVE_NORMAL)
 	if(!message)
@@ -44,22 +41,42 @@
 
 	. += "Shield: [shieldtotal]"
 
+	if(selected_ability)
+		. += ""
+		. += "Selected Ability: [selected_ability.name]"
+		if(selected_ability.charges != NO_ACTION_CHARGES)
+			. += "Charges Left: [selected_ability.charges]"
+
+		if(selected_ability.cooldown_timer_id != TIMER_ID_NULL)
+			. += "On Cooldown: [DisplayTimeText(timeleft(selected_ability.cooldown_timer_id))]"
+
 	. += ""
 
-	if(caste_name == "Bloody Larva" || caste_name == "Predalien Larva")
-		. += "Evolve Progress: [round(amount_grown)]/[max_grown]"
-	else if(hive && !hive.living_xeno_queen)
-		. += "Evolve Progress: NO QUEEN"
-	else if(hive && !hive.living_xeno_queen.ovipositor && !caste_name == "Queen")
-		. += "Evolve Progress: NO OVIPOSITOR"
+	var/evolve_progress
+
+	if(caste_type == XENO_CASTE_LARVA || caste_type == XENO_CASTE_PREDALIEN_LARVA)
+		evolve_progress = "[round(amount_grown)]/[max_grown]"
 	else if(caste && caste.evolution_allowed)
-		. += "Evolve Progress: [round(evolution_stored)]/[evolution_threshold]"
+		evolve_progress = "[round(evolution_stored)]/[evolution_threshold]"
+		if(hive && !hive.allow_no_queen_actions)
+			if(!hive.living_xeno_queen)
+				evolve_progress += " (NO QUEEN)"
+			else if(!(hive.living_xeno_queen.ovipositor || hive.evolution_without_ovipositor))
+				evolve_progress += " (NO OVIPOSITOR)"
+
+	if(evolve_progress)
+		. += "Evolve Progress: [evolve_progress]"
 
 	. += ""
 
 	if (behavior_delegate)
 		var/datum/behavior_delegate/MD = behavior_delegate
 		. += MD.append_to_stat()
+
+	var/list/statdata = list()
+	SEND_SIGNAL(src, COMSIG_XENO_APPEND_TO_STAT, statdata)
+	if(length(statdata))
+		. += statdata
 
 	. += ""
 	//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
@@ -99,7 +116,7 @@
 	if(hive)
 		if(!hive.living_xeno_queen)
 			. += "Queen's Location: NO QUEEN"
-		else if(!(caste_name == "Queen"))
+		else if(!(caste_type == XENO_CASTE_QUEEN))
 			. += "Queen's Location: [hive.living_xeno_queen.loc.loc.name]"
 
 		if(hive.slashing_allowed == XENO_SLASH_ALLOWED)
@@ -134,7 +151,7 @@
 		if(is_mob_incapacitated() || lying || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
-		else if(!(caste_name == "Queen") && observed_xeno)
+		else if(!(caste_type == XENO_CASTE_QUEEN) && observed_xeno)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 	else
 		if(is_mob_incapacitated() || buckled)
@@ -231,6 +248,10 @@
 	if(slowed && !superslowed)
 		. += XENO_SLOWED_AMOUNT
 
+	var/list/L = list("speed" = .)
+	SEND_SIGNAL(src, COMSIG_XENO_MOVEMENT_DELAY, L)
+	. = L["speed"]
+
 	move_delay = .
 
 
@@ -254,23 +275,27 @@
 		if(ishuman(M) && (M.dir in reverse_nearby_direction(dir)))
 			var/mob/living/carbon/human/H = M
 			if(H.check_shields(15, "the pounce")) //Human shield block.
-				KnockDown(3)
+				visible_message(SPAN_DANGER("[src] slams into [H]!"),
+					SPAN_XENODANGER("You slam into [H]!"), null, 5)
+				KnockDown(1)
 				throwing = FALSE //Reset throwing manually.
+				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
 			if(isYautja(H))
 				if(H.check_shields(0, "the pounce", 1))
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
-					KnockDown(5)
+					KnockDown(3)
 					throwing = FALSE
+					playsound(H, "bonk", 75, FALSE)
 					return
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 					visible_message(SPAN_DANGER("[H] body slams [src]!"),
 						SPAN_XENODANGER("[H] body slams you!"), null, 5)
-					KnockDown(4)
+					KnockDown(3)
 					throwing = FALSE
 					return
-			if(isEarlySynthetic(H) && prob(60))
+			if(isColonySynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
 				KnockDown(1.5)
@@ -290,10 +315,10 @@
 		frozen = TRUE
 		pounceAction.freeze_timer_id = addtimer(CALLBACK(src, .proc/unfreeze), pounceAction.freeze_time, TIMER_STOPPABLE)
 
+	pounceAction.additional_effects(M)
+
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
-
-	pounceAction.additional_effects(M)
 
 	throwing = FALSE //Reset throwing since something was hit.
 
@@ -479,7 +504,7 @@
 		return
 
 	if(queued_action.can_use_action() && queued_action.action_cooldown_check())
-		queued_action.use_ability(A)
+		queued_action.use_ability_wrapper(A)
 
 	queued_action = null
 
@@ -540,8 +565,7 @@
 		SPAN_XENOWARNING("[M]'s [L.display_name] bones snap with a satisfying crunch!"))
 		L.take_damage(rand(15,25), 0, 0)
 		L.fracture(100)
-	M.last_damage_source = initial(name)
-	M.last_damage_mob = src
+	M.last_damage_data = create_cause_data(initial(caste_type), src)
 	src.attack_log += text("\[[time_stamp()]\] <font color='red'>ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress</font>")
 	M.attack_log += text("\[[time_stamp()]\] <font color='orange'>had their [L.display_name] ripped off by [src.name] ([src.ckey]) 1/2 progress</font>")
 	log_attack("[src.name] ([src.ckey]) ripped the [L.display_name] off of [M.name] ([M.ckey]) 1/2 progress")
@@ -593,6 +617,7 @@
 		LAZYREMOVE(tackle_counter, M)
 
 /mob/living/carbon/Xenomorph/proc/tackle_handle_lying_changed(mob/M)
+	SIGNAL_HANDLER
 	// Infected mobs do not have their tackle counter reset if
 	// they get knocked down or get up from a knockdown
 	if(M.status_flags & XENO_HOST)
@@ -606,3 +631,19 @@
 		qdel(TC)
 		LAZYREMOVE(tackle_counter, M)
 		UnregisterSignal(M, COMSIG_MOB_KNOCKED_DOWN)
+
+
+/mob/living/carbon/Xenomorph/burn_skin(burn_amount)
+	if(burrow)
+		return FALSE
+
+	if(caste.fire_immunity & FIRE_IMMUNITY_NO_DAMAGE)
+		burn_amount *= 0.5
+
+	apply_damage(burn_amount, BURN)
+	to_chat(src, SPAN_DANGER("Your flesh, it melts!"))
+	updatehealth()
+	return TRUE
+
+/mob/living/carbon/Xenomorph/get_role_name()
+	return caste_type

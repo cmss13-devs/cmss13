@@ -69,16 +69,20 @@
 	desc = "They are worth [worth] dollars."
 
 /obj/item/spacecash/bundle/attack_self(mob/user)
+	..()
 	var/oldloc = loc
 	var/amount = input(user, "How many dollars do you want to take? (0 to [src.worth])", "Take Money", 20) as num
 	amount = round(Clamp(amount, 0, src.worth))
-	if(amount==0) return 0
-	if(QDELETED(src) || loc != oldloc) return
+	if(amount == 0)
+		return
+	if(QDELETED(src) || loc != oldloc)
+		return
 
 	src.worth -= amount
 	src.update_icon()
 	if(!worth)
 		usr.temp_drop_inv_item(src)
+
 	if(amount in list(1000,500,200,100,50,20,1))
 		var/cashtype = text2path("/obj/item/spacecash/c[amount]")
 		var/obj/cash = new cashtype (usr.loc)
@@ -88,6 +92,7 @@
 		bundle.worth = amount
 		bundle.update_icon()
 		user.put_in_hands(bundle)
+
 	if(!worth)
 		qdel(src)
 
@@ -154,9 +159,9 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	return
 
 /obj/item/spacecash/ewallet
-	name = "\improper Weston-Yamada cash card"
+	name = "\improper Weyland-Yutani cash card"
 	icon_state = "efundcard"
-	desc = "A Weston-Yamada backed cash card that holds an amount of money."
+	desc = "A Weyland-Yutani backed cash card that holds an amount of money."
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
 /obj/item/spacecash/ewallet/examine(mob/user)

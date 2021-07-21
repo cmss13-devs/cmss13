@@ -9,6 +9,7 @@
 	var/unfolded_path = /obj/structure/closet/bodybag
 
 /obj/item/bodybag/attack_self(mob/user)
+	..()
 	deploy_bodybag(user, user.loc)
 
 /obj/item/bodybag/afterattack(atom/target, mob/user, proximity)
@@ -36,11 +37,10 @@
 	matter = list("plastic" = 7500)
 	var/used = 0
 
-/obj/item/bodybag/cryobag/New(loc, obj/structure/closet/bodybag/cryobag/CB)
-	..()
+/obj/item/bodybag/cryobag/Initialize(mapload, obj/structure/closet/bodybag/cryobag/CB)
+	. = ..()
 	if(CB)
 		used = CB.used
-
 
 /obj/item/storage/box/bodybags
 	name = "body bags"
@@ -71,11 +71,14 @@
 	close_sound = 'sound/items/zip.ogg'
 	var/item_path = /obj/item/bodybag
 	density = 0
-	storage_capacity = (mob_size * 2) - 1
 	anchored = 0
 	drag_delay = 2 //slightly easier than to drag the body directly.
 	var/obj/structure/bed/roller/roller_buckled //the roller bed this bodybag is attached to.
 	store_items = FALSE
+
+/obj/structure/closet/bodybag/Initialize()
+	. = ..()
+	storage_capacity = (mob_size * 2) - 1
 
 /obj/structure/closet/bodybag/proc/update_name()
 	if(opened)
@@ -102,7 +105,7 @@
 			src.name = "body bag"
 	//..() //Doesn't need to run the parent. Since when can fucking bodybags be welded shut? -Agouri
 		return
-	else if(istype(W, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		to_chat(user, SPAN_NOTICE("You cut the tag off the bodybag."))
 		src.name = "body bag"
 		src.overlays.Cut()
@@ -121,9 +124,8 @@
 			dead_mobs += M
 			continue
 		var/mob/living/carbon/human/H = M
-		if(H.check_tod() || isSynth(H)) // revivable
-			if(H.is_revivable() && H.get_ghost()) // definitely revivable
-				continue
+		if(H.check_tod() || isSynth(H) || H.is_revivable() && H.get_ghost()) // revivable
+			continue
 		dead_mobs += M
 	var/mob/living/mob_to_store
 	if(dead_mobs.len)
@@ -220,6 +222,14 @@
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
+/obj/structure/closet/bodybag/cryobag/update_icon()
+	. = ..()
+	// Bump up a living player in the bag to layer of an actual corpse and not just an accidentally coverable prop
+	if(stasis_mob)
+		layer = LYING_BETWEEN_MOB_LAYER
+	else
+		layer = initial(layer)
+
 /obj/structure/closet/bodybag/cryobag/open()
 	var/mob/living/L = locate() in contents
 	if(L)
@@ -253,6 +263,7 @@
 	if(H)
 		stasis_mob = H
 		START_PROCESSING(SSobj, src)
+		update_icon()
 
 /obj/structure/closet/bodybag/cryobag/process()
 	used++

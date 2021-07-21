@@ -2,7 +2,7 @@
 
 The code for CM-SS13 is licensed under the [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl.html), which can be found in full in [/LICENSE-AGPL3](/LICENSE-AGPL3).
 
-Assets including icons and sound are under the [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. Authorship for assets including art and sound under the CC BY-SA license is defined as the active development team of CM-SS13 unless stated otherwise (by author of the commit). 
+Assets including icons and sound are under the [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. Authorship for assets including art and sound under the CC BY-SA license is defined as the active development team of CM-SS13 unless stated otherwise (by author of the commit).
 
 All code is assumed to be licensed under AGPL v3 unless stated otherwise by file header. Commits before 9a001bf520f889b434acd295253a1052420860af are assumed to be licensed under GPLv3 and can be used in closed source repo.
 
@@ -45,13 +45,13 @@ The System Administrator assists the Host & Vice Host in managing and maintainin
 
 While not directly a part of the development team, the System Administrator has access to branch switching, repository access, and relevant dev channels for the purpose of supporting the team when needed.
 
-**Lead Spriter**
+**Maintainers**
 
-The Lead Spriter controls sprites and aesthetic that get into the game. New or modified art assets fall to the Lead Spriter, who can decide whether or not a sprite tweak is both merited and a suitable replacement, and may request changes on any MR on the grounds that the sprite changes to not fit the art style and standards. Large changes to art-direction should be referenced to the rest of the team, but the ultimate discretion falls to the Lead Spriter. They also maintain Fax Templates & Logos, Forum graphics, and help curate wiki content. These tasks can be delegated at their discretion. They also handle all incoming spriter applicantions as well as direct changes to the spriting test. They are also responsible for managing the Sprite team.
+Maintainers are responsible for doing reviews on any contributions made to CM by contributors and fellow developers in their respective fields of expertise. Maintainers are considered to be above normal developers in their own fields and can override decisions made by another developer or contributor should they deem it necessary.
 
-**Lead Mapper**
+**Gameplay Architects**
 
-The Lead Mapper oversees the management of mapping content going into the repository. They have the final say on any design and gameplay decisions when related to maps, and may request changes on any MR on the grounds that the proposed map changes do not fit the mapping standards. They are also responsible for managing the Mapping team.
+Gameplay Architects’ (GA) oversees the balance of features and content going into the repository and decide on the games overall balance, this includes old content that have been added in the past and they may request changes to merge requests on the grounds of balance. GA’s can also authorize pure number changes for a contributor to make, but it is still susceptible for review by other GA’s.
 
 **Developers**
 
@@ -97,67 +97,35 @@ These files are used by the changelog generation tool (see Dev Tool Usage below)
 
 
 ## Issues Tracker
-Open issues are categorized into two tags, bugs & suggestions.
+Potential bugs can be submitted to the project issue tracker on GitLab. While we appreciate suggestions, they should **not** be posted here to make triaging technical issues and fixing bugs easier. You are encouraged to use the official CM13 discord instead for this, in particular the `#ideaguys` channel for feature suggestions of all kind and what-ifs.
 
-### Bugs
-Bugs must be submitted using the bug template and should be reproduced by a member of the development team where possible. They should be tagged as bugs, as well as any relevant sub-categories that apply to them. If the bug could not be reproduced, the "Could not reproduce" tag should be applied.
+When submitting an issue, use the provided template. A few things to keep in mind for a good issue report maximizing the chance of finding and fixing it:
 
-If the bug in question is related to any change that may have been implemented by an active member of the development team, the Issue should be assigned to the person in question.
+ * Search quickly for existing related issues - add info there if applicable rather than duplicating them
+ * Stay factual and as concise as possible
+ * If possible, attempt to reproduce and confirm the issue, and detail steps
+ * Generally check the Todo list in the issue template - the more can be checked, the better
 
-When attempting to fix a bug, if unassigned, Developers must assign themselves to the issue.
-
-### Suggestions
-All suggestions should be marked with a 1 month due date upon opening, and should be tagged as suggestions, as well as any relevant sub-categories. Once the due date is reached, suggestions should be closed.
-
-If a developer wishes to work on a suggestion, they must assign themselves, as well as swap the suggestion tag with an accepted suggestion tag. They may also give the suggestion a new 1 month due date.
-
-Accepted suggestions are not to be considered as guaranteed upcoming changes, and developers must not make promises when speaking to the community.
+The tracker is a powerful tool - it might look pointless, but ensures what's there can be known by anyone, team members and contributors alike, and won't be forgotten. This maximizes chances of issues being resolved. Don't be afraid to use it.
 
 ## Specifications
 
 As mentioned before, you are expected to follow these specifications in order to make everyone's lives easier. It'll save both your time and ours, by making sure you don't have to make any changes and we don't have to ask you to.
 
+### You touch it, You fix it clause
+If you make more than minor changes to a piece of poor or legacy code a maintainer may force you to bring the whole section of code up to current coding standards.
+
+### Don't use dreammaker
+BYOND's packaged editor called DreamMaker is not a good piece of software and does not make your contributions easily follow the guidelines as enforced by `.editorconfig` and `.gitattributes`
+
+For coding it's recommended you use VS Code (and install the recommended plugins that it suggests to you automatically, see: (here)[.vscode\extensions.json])
+
+For mapping it's recommended you use StrongDmm.
+
+For spriting it's recommended you draw your sprites in your image editor of choice then only use DreamMaker for the final step of opening the .dmi files and adding/updating the icon states.
+
 ### Object Oriented Code
 As BYOND's Dream Maker (henceforth "DM") is an object-oriented language, code must be object-oriented when possible in order to be more flexible when adding content to it.
-
-#### Encapsulation
-While procs for getting variables are not required within DM, procs for setting should be preferred where possible. Code that modifies another datum's variables should be encapsulated into calling the other datum's setter procs if that variable is broadly used. Ensure that both the variable and the parameters are valid before using them.
-
-For example:
-````DM
-for(var/obj/item/food in mre_packet)
-	food.add_poison(2)
-
-/obj/item/food/proc/add_poison(var/amount)
-	poison += amount
-````
-
-#### Abstraction
-Front-end usage of a datum and its procs should be easy to use and understand, and when called by other datums it should hide internal implementation details. Datums should only reveal operations relevant for the other datums.
-
-#### Inheritance & Polymorphism
-Variables, procs, flags, and code should be inherited where possible to cut down on copy-pasted code. If two separate datums require the same code to function, they should inherit said code from their common parent. Additional differences in procs can then be defined on the child-level after using ``..()`` to call the parent's verison of the proc.
-
-Subtypes of datums should be polymorphic where possible, with their procs and functionality inheriting from parent defines and adjusting them to meet requirements.
-
-For example:
-````DM
-/obj/item/proc/add_poison(var/amount)
-	poison += amount
-
-/obj/item/food/add_poison(var/amount)
-	..()
-	//Make the food turn green
-	if(poison >= poison_overflow_threshold)
-		color = "#ff0000"
-
-/obj/item/weapon/add_poison(var/amount)
-	..()
-	//Make the weapon deal poison damage
-	if(poison)
-		flags_atom |= WEAPON_POISONOUS
-
-````
 
 ### All BYOND paths must contain the full path
 (i.e. absolute pathing)
@@ -165,6 +133,7 @@ For example:
 DM will allow you nest almost any type keyword into a block, such as:
 
 ```DM
+// Not our style!
 datum
 	datum1
 		var
@@ -185,7 +154,7 @@ datum
 				proc3()
 					code
 			proc2()
-				..()
+				. = ..()
 				code
 ```
 
@@ -194,6 +163,7 @@ The use of this is not allowed in this project as it makes finding definitions v
 The previous code made compliant:
 
 ```DM
+// Matches /tg/station style.
 /datum/datum1
 	var/varname1
 	var/varname2
@@ -209,18 +179,50 @@ The previous code made compliant:
 /datum/datum1/datum2/proc/proc3()
 	code
 /datum/datum1/datum2/proc2()
-	..()
+	. = ..()
 	code
 ```
 
-### No overriding type safety checks
-The use of the : operator and ?. proc call operator to override type safety checks is not allowed. You must cast the variable to the proper type. Do not use ?. over checking for a variable's existence (e.g. client && client.prefs instead of client?.prefs).
+### All `process` procs need to make use of delta-time and be frame independent
 
-### Type paths must begin with a /
+In a lot of our older code, `process()` is frame dependent. Here's some example mob code:
+
+```DM
+/mob/testmob
+	var/health = 100
+	var/health_loss = 4 //We want to lose 2 health per second, so 4 per SSmobs process
+
+/mob/testmob/process(delta_time) //SSmobs runs once every 2 seconds
+	health -= health_loss
+```
+
+As the mobs subsystem runs once every 2 seconds, the mob now loses 4 health every process, or 2 health per second. This is called frame dependent programming.
+
+Why is this an issue? If someone decides to make it so the mobs subsystem processes once every second (2 times as fast), your effects in process() will also be two times as fast. Resulting in 4 health loss per second rather than 2.
+
+How do we solve this? By using delta-time. Delta-time is the amount of seconds you would theoretically have between 2 process() calls. In the case of the mobs subsystem, this would be 2 (As there is 2 seconds between every call in `process()`). Here is a new example using delta-time:
+
+```DM
+/mob/testmob
+	var/health = 100
+	var/health_loss = 2 //Health loss every second
+
+/mob/testmob/process(delta_time) //SSmobs runs once every 2 seconds
+	health -= health_loss * delta_time
+```
+
+In the above example, we made our health_loss variable a per second value rather than per process. In the actual process() proc we then make use of deltatime. Because SSmobs runs once every  2 seconds. Delta_time would have a value of 2. This means that by doing health_loss * delta_time, you end up with the correct amount of health_loss per process, but if for some reason the SSmobs subsystem gets changed to be faster or slower in a PR, your health_loss variable will work the same.
+
+For example, if SSmobs is set to run once every 4 seconds, it would call process once every 4 seconds and multiply your health_loss var by 4 before subtracting it. Ensuring that your code is frame independent.
+
+### No overriding type safety checks
+The use of the : operator to override type safety checks is not allowed. You must cast the variable to the proper type.
+
+### Type paths must begin with a `/`
 eg: `/datum/thing`, not `datum/thing`
 
-### Type paths must be lowercase
-eg: `/datum/thing/blue`, not `datum/thing/BLUE` or `datum/thing/Blue`
+### Type paths must be snake case
+eg: `/datum/blue_bird`, not `/datum/BLUEBIRD` or `/datum/BlueBird` or `/datum/Bluebird` or `/datum/blueBird`
 
 ### Datum type paths must began with "datum"
 In DM, this is optional, but omitting it makes finding definitions harder.
@@ -236,35 +238,35 @@ var/path_type = /obj/item/baseball_bat
 var/path_type = "/obj/item/baseball_bat"
 ```
 
-### Use var/type/name format when declaring variables
-While DM allows other ways of declaring variables, this one should be used for consistency. Defining lists can be abstract when only a single datum type is known (``var/list/datum_list``).
+### Use `var/name` format when declaring variables
+While DM allows other ways of declaring variables, this one should be used for consistency.
 
 ### Tabs, not spaces
 You must use tabs to indent your code, NOT SPACES.
 
-(You may use spaces to align something, but you should tab to the block level first, then add the remaining spaces)
+Do not use tabs/spaces for indentation in the middle of a code line. Not only is this inconsistent because the size of a tab is undefined, but it means that, should the line you're aligning to change size at all, we have to adjust a ton of other code. Plus, it often time hurts readability.
 
-### Snake case naming convention
-All variables, procs, and files should use snake case.
+```dm
+// Bad
+#define SPECIES_MOTH			"moth"
+#define SPECIES_LIZARDMAN		"lizardman"
+#define SPECIES_FELINID			"felinid"
 
-```DM
-var/snake_case_variable
-
-/mob/living/simple_mob/snake/proc/attack_prey(var/mob/target_prey)
-	...
+// Good
+#define SPECIES_MOTH "moth"
+#define SPECIES_LIZARDMAN "lizardman"
+#define SPECIES_FELINID "felinid"
 ```
 
 ### No hacky code
-Hacky code, such as adding specific checks, is highly discouraged and only allowed when there is ***no*** other option. ('I couldn't immediately think of a proper way so thus there must be no other option' is not gonna cut it here. If you can't think of anything else, say that outright and admit that you need help with it. The team exists for a reason.)
+Hacky code, such as adding specific checks, is highly discouraged and only allowed when there is ***no*** other option. (Protip: "I couldn't immediately think of a proper way so thus there must be no other option" is not gonna cut it here! If you can't think of anything else, say that outright and admit that you need help with it. Maintainers exist for exactly that reason.)
 
-You can avoid hacky code by using object-oriented methodologies, such as overriding a proc or sectioning code into functions and then overriding them as required.
+You can avoid hacky code by using object-oriented methodologies, such as overriding a function (called "procs" in DM) or sectioning code into functions and then overriding them as required.
 
 ### No duplicated code
 Copying code from one place to another may be suitable for small, short-time projects, but CM is a long-term project and highly discourages this.
 
 Instead you can use object orientation, or simply placing repeated code in a function, to obey this specification easily.
-
-Repeated code sometimes may be necessary, but it should only be considered when all other options are unavailable.
 
 ### Startup/Runtime setup of lists and the usage of LAZY operations
 First, read the comments in [this BYOND thread](http://www.byond.com/forum/?post=2086980&page=2#comment19776775), starting where the link takes you.
@@ -283,17 +285,14 @@ Other defines are `LAZYLEN(L)` which gives you the length of the list, `LAZYISIN
 
 One important thing to note is that all these defines have null safety. I.e. it'll check if the list exists first for you and create it if it doesn't when needed.
 
-### Use `Initialize()` over `New()` for atoms
-Our game controller is pretty good at handling long operations and lag, but it can't control what happens when the map is loaded, which calls `New` for all atoms on the map. If you're creating a new atom, use the `Initialize` proc to do what you would normally do in `New`. This cuts down on the number of proc calls needed when the world is loaded.
-
-You should only ever use `New` when it is absolutely necessary.
-
-While we require bringing out of date code up to date when you make unrelated changes near the out of date code, that is not the case for `New` -> `Initialize` conversions. These systems are generally more dependant on parent and children procs so unrelated random conversions of existing things can cause bugs that take months to figure out.
+### Prefer `Initialize()` over `New()` for atoms
+Our game controller is pretty good at handling long operations and lag, but it can't control what happens when the map is loaded, which calls `New` for all atoms on the map. If you're creating a new atom, use the `Initialize` proc to do what you would normally do in `New`. This cuts down on the number of proc calls needed when the world is loaded. See here for details on `Initialize`: https://github.com/tgstation/tgstation/blob/34775d42a2db4e0f6734560baadcfcf5f5540910/code/game/atoms.dm#L166
+While we normally encourage (and in some cases, even require) bringing out of date code up to date when you make unrelated changes near the out of date code, that is not the case for `New` -> `Initialize` conversions. These systems are generally more dependant on parent and children procs so unrelated random conversions of existing things can cause bugs that take months to figure out.
 
 ### Use `qdel()` over `del()` for deleting atoms
 To tie in with using Initialize, atoms must use the garbage collector's `qdel(atom)` function in order to queue deletions instead of hard-calling `del()`. The priority of an atom's deletion can be marked with qdel hints (such as GC_HINT_DELETE_NOW).
 
-All datums must correctly nullify and delete all stored references to other datums within their `Dispose()` proc. The `Dispose()` proc should also never be directly called outside of the garbage collector.
+All datums must correctly nullify and delete all stored references to other datums within their `Destroy()` proc. The `Destroy()` proc should call parent, return its deletion hint or one of its own, and never be called directly.
 
 ### No magic numbers or strings
 This means stuff like having a "mode" variable for an object set to "1" or "2" with no clear indicator of what that means. Make these #defines with a name that more clearly states what it's for. For instance:
@@ -357,6 +356,190 @@ This is good:
 ````
 This prevents nesting levels from getting deeper then they need to be.
 
+### Use our time defines
+
+The codebase contains some defines which will automatically multiply a number by the correct amount to get a number in deciseconds. Using these is preffered over using a literal amount in deciseconds.
+
+The defines are as follows:
+* SECONDS
+* MINUTES
+* HOURS
+
+This is bad:
+````DM
+/datum/datum1/proc/proc1()
+	if(do_after(mob, 15))
+		mob.dothing()
+````
+
+This is good:
+````DM
+/datum/datum1/proc/proc1()
+	if(do_after(mob, 1.5 SECONDS))
+		mob.dothing()
+````
+
+### Getters and setters
+
+* Avoid getter procs. They are useful tools in languages with that properly enforce variable privacy and encapsulation, but DM is not one of them. The upfront cost in proc overhead is met with no benefits, and it may tempt to develop worse code.
+
+This is bad:
+```DM
+/datum/datum1/proc/simple_getter()
+	return gotten_variable
+```
+Prefer to either access the variable directly or use a macro/define.
+
+
+* Make usage of variables or traits, set up through condition setters, for a more maintainable alternative to compex and redefined getters.
+
+These are bad:
+```DM
+/datum/datum1/proc/complex_getter()
+	return condition ? VALUE_A : VALUE_B
+
+/datum/datum1/child_datum/complex_getter()
+	return condition ? VALUE_C : VALUE_D
+```
+
+This is good:
+```DM
+/datum/datum1
+	var/getter_turned_into_variable
+
+/datum/datum1/proc/set_condition(new_value)
+	if(condition == new_value)
+		return
+	condition = new_value
+	on_condition_change()
+
+/datum/datum1/proc/on_condition_change()
+	getter_turned_into_variable = condition ? VALUE_A : VALUE_B
+
+/datum/datum1/child_datum/on_condition_change()
+	getter_turned_into_variable = condition ? VALUE_C : VALUE_D
+```
+
+### Avoid unnecessary type checks and obscuring nulls in lists
+Typecasting in `for` loops carries an implied `istype()` check that filters non-matching types, nulls included. The `as anything` key can be used to skip the check.
+
+If we know the list is supposed to only contain the desired type then we want to skip the check not only for the small optimization it offers, but also to catch any null entries that may creep into the list.
+
+Nulls in lists tend to point to improperly-handled references, making hard deletes hard to debug. Generating a runtime in those cases is more often than not positive.
+
+This is bad:
+```DM
+var/list/bag_of_atoms = list(new /obj, new /mob, new /atom, new /atom/movable, new /atom/movable)
+var/highest_alpha = 0
+for(var/atom/thing in bag_of_atoms)
+	if(thing.alpha <= highest_alpha)
+		continue
+	highest_alpha = thing.alpha
+```
+
+This is good:
+```DM
+var/list/bag_of_atoms = list(new /obj, new /mob, new /atom, new /atom/movable, new /atom/movable)
+var/highest_alpha = 0
+for(var/atom/thing as anything in bag_of_atoms)
+	if(thing.alpha <= highest_alpha)
+		continue
+	highest_alpha = thing.alpha
+```
+
+### Signal Handlers
+All procs that are registered to listen for signals using `RegisterSignal()` must contain at the start of the proc `SIGNAL_HANDLER` eg;
+```
+/type/path/proc/signal_callback()
+	SIGNAL_HANDLER
+	// rest of the code
+```
+This is to ensure that it is clear the proc handles signals and turns on a lint to ensure it does not sleep.
+
+There exists `SIGNAL_HANDLER_DOES_SLEEP`, but this is only for legacy signal handlers that still sleep, new/changed code should not use this.
+
+### Enforcing parent calling
+When adding new signals to root level procs, eg;
+```
+/atom/proc/setDir(newdir)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(src, COMSIG_ATOM_DIR_CHANGE, dir, newdir)
+	dir = newdir
+```
+The `SHOULD_CALL_PARENT(TRUE)` lint should be added to ensure that overrides/child procs call the parent chain and ensure the signal is sent.
+
+### Use descriptive and obvious names
+Optimize for readability, not writability. While it is certainly easier to write `M` than `victim`, it will cause issues down the line for other developers to figure out what exactly your code is doing, even if you think the variable's purpose is obvious.
+
+#### Don't use abbreviations
+Avoid variables like C, M, and H. Prefer names like "user", "victim", "weapon", etc.
+
+```dm
+// What is M? The user? The target?
+// What is A? The target? The item?
+/proc/use_item(mob/M, atom/A)
+
+// Much better!
+/proc/use_item(mob/user, atom/target)
+```
+
+Unless it is otherwise obvious, try to avoid just extending variables like "C" to "carbon"--this is slightly more helpful, but does not describe the *context* of the use of the variable.
+
+#### Naming things when typecasting
+When typecasting, keep your names descriptive:
+```dm
+var/mob/living/living_target = target
+var/mob/living/carbon/carbon_target = living_target
+```
+
+Of course, if you have a variable name that better describes the situation when typecasting, feel free to use it.
+
+Note that it's okay, semantically, to use the same variable name as the type, e.g.:
+```dm
+var/atom/atom
+var/client/client
+var/mob/mob
+```
+
+Your editor may highlight the variable names, but BYOND, and we, accept these as variable names:
+
+```dm
+// This functions properly!
+var/client/client = CLIENT_FROM_VAR(usr)
+// vvv this may be highlighted, but it's fine!
+client << browse(...)
+```
+
+#### Name things as directly as possible
+`was_called` is better than `has_been_called`. `notify` is better than `do_notification`.
+
+#### Avoid negative variable names
+`is_flying` is better than `is_not_flying`. `late` is better than `not_on_time`.
+This prevents double-negatives (such as `if (!is_not_flying)` which can make complex checks more difficult to parse.
+
+#### Exceptions to variable names
+
+Exceptions can be made in the case of inheriting existing procs, as it makes it so you can use named parameters, but *new* variable names must follow these standards. It is also welcome, and encouraged, to refactor existing procs to use clearer variable names.
+
+Naming numeral iterator variables `i` is also allowed, but do remember to [Avoid unnecessary type checks and obscuring nulls in lists](#avoid-unnecessary-type-checks-and-obscuring-nulls-in-lists), and making more descriptive variables is always encouraged.
+
+```dm
+// Bad
+for (var/datum/reagent/R as anything in reagents)
+
+// Good
+for (var/datum/reagent/deadly_reagent as anything in reagents)
+
+// Allowed, but still has the potential to not be clear. What does `i` refer to?
+for (var/i in 1 to 12)
+
+// Better
+for (var/month in 1 to 12)
+
+// Bad, only use `i` for numeral loops
+for (var/i in reagents)
+```
+
 ### Use Type macros for commonly used typechecks
 If you need to use a typecheck multiple times for a specific type path, create an istype macro within the #define/type_check folder.
 ````DM
@@ -396,8 +579,11 @@ If you need to use a typecheck multiple times for a specific type path, create a
 	* Areas should not be var-edited on a map to change it's name or attributes. All areas of a single type and it's altered instances are considered the same area within the code, and editing their variables on a map can lead to issues with powernets and event subsystems which are difficult to debug.
 
 ### User Interfaces
-* All new player-facing user interfaces must use nanoui. 
+* All new player-facing user interfaces must use TGUI.
 * Raw HTML is permitted for admin and debug UIs.
+* Documentation for TGUI can be found at:
+	* [tgui/README.md](../tgui/README.md)
+	* [tgui/tutorial-and-examples.md](../tgui/docs/tutorial-and-examples.md)
 
 ### Operators
 #### Spacing
@@ -437,44 +623,6 @@ Placement of operators and bracketing can affect the outcome of certain logic wi
 
 A common mistake that's easy to fall for is that bitwise AND has a lower operator precedence than equality checks, so `a & b == c` evaluates to `a & (b == c)` instead of `(a & b) == c` as most sane people would probably expect
 
-### for(var/A in list) VS for(var/i in 1 to list.len)
-The former is faster than the latter, as shown by the following profile results:
-https://file.house/zy7H.png
-Code used for the test in a readable format:
-https://pastebin.com/w50uERkG
-
-
-#### Istypeless for loops
-A name for a differing syntax for writing for-each style loops in DM. It's NOT DM's standard syntax, hence why this is considered a quirk. Take a look at this:
-```DM
-var/list/bag_of_items = list(sword, apple, coinpouch, sword, sword)
-var/obj/item/sword/best_sword
-for(var/obj/item/sword/S in bag_of_items)
-	if(!best_sword || S.damage > best_sword.damage)
-		best_sword = S
-```
-The above is a simple proc for checking all swords in a container and returning the one with the highest damage, and it uses DM's standard syntax for a for-loop by specifying a type in the variable of the for's header that DM interprets as a type to filter by. It performs this filter using ```istype()``` (or some internal-magic similar to ```istype()``` - this is BYOND, after all). This is fine in its current state for ```bag_of_items```, but if ```bag_of_items``` contained ONLY swords, or only SUBTYPES of swords, then the above is inefficient. For example:
-```DM
-var/list/bag_of_swords = list(sword, sword, sword, sword)
-var/obj/item/sword/best_sword
-for(var/obj/item/sword/S in bag_of_swords)
-	if(!best_sword || S.damage > best_sword.damage)
-		best_sword = S
-```
-specifies a type for DM to filter by. 
-
-With the previous example that's perfectly fine, we only want swords, but here the bag only contains swords? Is DM still going to try to filter because we gave it a type to filter by? YES, and here comes the inefficiency. Wherever a list (or other container, such as an atom (in which case you're technically accessing their special contents list, but that's irrelevant)) contains datums of the same datatype or subtypes of the datatype you require for your loop's body,
-you can circumvent DM's filtering and automatic ```istype()``` checks by writing the loop as such:
-```DM
-var/list/bag_of_swords = list(sword, sword, sword, sword)
-var/obj/item/sword/best_sword
-for(var/s in bag_of_swords)
-	var/obj/item/sword/S = s
-	if(!best_sword || S.damage > best_sword.damage)
-		best_sword = S
-```
-Of course, if the list contains data of a mixed type then the above optimisation is DANGEROUS, as it will blindly typecast all data in the list as the specified type, even if it isn't really that type, causing runtime errors.
-
 #### Dot variable
 Like other languages in the C family, DM has a ```.``` or "Dot" operator, used for accessing variables/members/functions of an object instance.
 eg:
@@ -486,19 +634,17 @@ However, DM also has a dot variable, accessed just as ```.``` on its own, defaul
 
 With ```.``` being everpresent in every proc, can we use it as a temporary variable? Of course we can! However, the ```.``` operator cannot replace a typecasted variable - it can hold data any other var in DM can, it just can't be accessed as one, although the ```.``` operator is compatible with a few operators that look weird but work perfectly fine, such as: ```.++``` for incrementing ```.'s``` value, or ```.[1]``` for accessing the first element of ```.```, provided that it's a list.
 
-## Globals versus static
+### Globals versus static
 
 DM has a var keyword, called global. This var keyword is for vars inside of types. For instance:
 
 ```DM
-mob
-	var
-		global
-			thing = TRUE
+/mob
+	var/global/thing = TRUE
 ```
 This does NOT mean that you can access it everywhere like a global var. Instead, it means that that var will only exist once for all instances of its type, in this case that var will only exist once for all mobs - it's shared across everything in its type. (Much more like the keyword `static` in other languages like PHP/C++/C#/Java)
 
-Isn't that confusing? 
+Isn't that confusing?
 
 There is also an undocumented keyword called `static` that has the same behaviour as global but more correctly describes BYOND's behaviour. Therefore, we always use static instead of global where we need it, as it reduces suprise when reading BYOND code.
 
@@ -508,10 +654,10 @@ Bitflags are a method of defining properties of an atom in order to pass or fail
 For instance:
 
 ```DM
-#define ITEM_FLAG_UNACIDABLE        1
-#define ITEM_FLAG_INDESTRUCTIBLE    2
-#define ITEM_FLAG_BOUNCY            4
-#define ITEM_FLAG_SQUEAKY           8
+#define ITEM_FLAG_UNACIDABLE (1<<0)
+#define ITEM_FLAG_INDESTRUCTIBLE (1<<1)
+#define ITEM_FLAG_BOUNCY (1<<2)
+#define ITEM_FLAG_SQUEAKY (1<<3)
 
 /obj/attackby()
     if(flags_atom & ITEM_FLAG_BOUNCY)
@@ -520,6 +666,10 @@ For instance:
 /obj/item/rubber_ball
     flags_atom = ITEM_FLAG_UNACIDABLE|ITEM_FLAG_BOUNCY
 ```
+
+Additionally, always use bitshift formatting as shown above when defining bitflags.
+
+You are limited to 24 bits when doing bitwise operations, eg `(1<<23)` is the biggest bitflag supported.
 
 ## Span Macros
 In the case where span classes are required, for strings and text to be displayed to a user, span macros should be used to encapsulate and style where necessary.
@@ -537,7 +687,7 @@ to_chat(SPAN_WARNING("You are on fire!"))
 
 * You are expected to help maintain the code that you add, meaning that if there is a problem then you are likely to be approached in order to fix any issues, runtimes, or bugs.
 
-* Do not divide when you can easily convert it to multiplication. (ie `4/2` should be done as `4*0.5`, because it's slightly faster)
+* Do not divide when you can easily convert it to multiplication. (ie `4/2` should be done as `4*0.5`, because it's slightly faster). When the divisor is a variable then you should instead use multiplication or guard against divide by zero errors.
 
 * If you used regex to replace code during development of your code, post the regex in your MR for the benefit of future developers.
 
@@ -614,7 +764,7 @@ Dream Daemon can be unintuitive to set up. This document will cover the basic st
 
 Be sure Dream Daemon is inactive when compiling, as it locks up assets and prevents recompiling in some cases.
 
-Unit tests can be run locally with `DreamDaemon ColonialMarinesALPHA.dme someport -trusted -params "run_tests=1&verbose_tests=1"` or by hosting a server and using the debug verbs for running test cases. If you've only made changes relevant to one test set you can use the world parameter `test_set` to run only the specified test set, i.e. 
+Unit tests can be run locally with `DreamDaemon ColonialMarinesALPHA.dme someport -trusted -params "run_tests=1&verbose_tests=1"` or by hosting a server and using the debug verbs for running test cases. If you've only made changes relevant to one test set you can use the world parameter `test_set` to run only the specified test set, i.e.
 ``-params "run_tests=1&verbose_tests=1&test_set=\"Maps\""``
 
 ### Live Testing
@@ -625,3 +775,10 @@ Senior Developers+ may authorize a test. The Head Dev must be informed of what i
 Public tests must be supervised by at least one Developer+, with the change owner either being present or authorising another Developer+ to oversee their test. Any stand-in Developers for the author must be fully aware of the test's changes and functionality.
 
 Upon completing the public test, follow up with the Head Dev and describe the results of the test and what actions will be taken in response to the collected data. It is among the Head Dev’s responsibilities to compare the Team’s perspective on experimental features to feedback from the community - informing them is essential.
+
+## A word on Git
+This repository uses `LF` line endings for all code as specified in the **.gitattributes** and **.editorconfig** files.
+
+Unless overridden or a non standard git binary is used the line ending settings should be applied to your clone automatically.
+
+Note: VSC requires an [extension](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig) to take advantage of editorconfig.

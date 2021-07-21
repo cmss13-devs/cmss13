@@ -57,7 +57,7 @@
 					var/word = pick("dizzy","woozy","faint")
 					to_chat(src, SPAN_DANGER("You feel extremely [word]"))
 			if(0 to BLOOD_VOLUME_SURVIVE)
-				death("blood loss")
+				death(create_cause_data("blood loss"))
 
 		// Without enough blood you slowly go hungry.
 		if(blood_volume < BLOOD_VOLUME_SAFE)
@@ -257,7 +257,7 @@
 		return
 	if(species.name == "Yautja")
 		return "greenblood"
-	if(species.name == "Synthetic" || species.name == "Early Synthetic" || species.name == "Second Generation Synthetic")
+	if(species.flags & IS_SYNTHETIC)
 		return "whiteblood"
 	if(species.name == "Zombie")
 		return "greyblood"

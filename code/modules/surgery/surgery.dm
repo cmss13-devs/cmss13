@@ -74,8 +74,8 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 		return FALSE
 	if(user.action_busy) //already doing an action
 		return TRUE
-	if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
-		to_chat(user, SPAN_WARNING("You have no idea how to do surgery..."))
+	if(!skillcheck(user, SKILL_SURGERY, M.surgical_difficulty))
+		to_chat(user, SPAN_WARNING("You have no idea how to do surgery on [M]..."))
 		return TRUE
 	var/obj/limb/affected = M.get_limb(user.zone_selected)
 	if(!affected)
@@ -110,7 +110,8 @@ proc/do_surgery(mob/living/carbon/M, mob/living/user, obj/item/tool)
 								multipler += SURGERY_MULTIPLIER_MEDIUM
 							if(PAIN_REDUCTION_HEAVY to PAIN_REDUCTION_FULL)
 								multipler += SURGERY_MULTIPLIER_LARGE
-					if(istype(M.loc, /turf/open/shuttle/dropship))
+					var/turf/T = get_turf(M)
+					if(istype(T, /turf/open/shuttle/dropship) || istype(T, /turf/open/shuttle/vehicle) && !istype(T, /turf/open/shuttle/vehicle/med))
 						multipler -= SURGERY_MULTIPLIER_HUGE
 					multipler = Clamp(multipler, 0, 1)
 

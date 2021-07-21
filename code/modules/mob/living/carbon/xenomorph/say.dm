@@ -111,9 +111,9 @@
 	for (var/mob/S in GLOB.player_list)
 		var/hear_hivemind = 0
 		if(ishuman(S))
-			var/mob/living/carbon/human/H = S
-			if(H.hivenumber)
-				hear_hivemind = H.hivenumber
+			var/mob/living/carbon/human/Hu = S
+			if(Hu.hivenumber)
+				hear_hivemind = Hu.hivenumber
 
 		if(!QDELETED(S) && (isXeno(S) || S.stat == DEAD || hear_hivemind) && !istype(S,/mob/new_player))
 			var/mob/living/carbon/Xenomorph/X = src

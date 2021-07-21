@@ -50,6 +50,27 @@
 /datum/chem_property/special/hypergenetic/process_critical(mob/living/M, var/potency = 1)
 	M.take_limb_damage(3*potency,3*potency)
 
+
+/datum/chem_property/special/organhealing
+	name = PROPERTY_ORGAN_HEALING
+	code = "OHG"
+	description = "Regenerates all types of cell membranes mending damage in all organs."
+	rarity = PROPERTY_ADMIN
+	category = PROPERTY_TYPE_MEDICINE
+
+/datum/chem_property/special/organhealing/process(mob/living/M, var/potency = 1)
+	if(!ishuman(M))
+		return
+	var/mob/living/carbon/human/H = M
+	for(var/datum/internal_organ/O in H.internal_organs)
+		M.apply_internal_damage(-potency, O)
+
+/datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1)
+	M.adjustCloneLoss(2*potency)
+
+/datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1)
+	M.take_limb_damage(3*potency,3*potency)
+
 /datum/chem_property/special/DNA_Disintegrating
 	name = PROPERTY_DNA_DISINTEGRATING
 	code = "DDI"
@@ -65,12 +86,12 @@
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
 
 /datum/chem_property/special/DNA_Disintegrating/trigger()
-	SSticker.mode.get_specific_call("Weston-Yamada PMC (Chemical Investigation Squad)", TRUE, FALSE, holder.name)
+	SSticker.mode.get_specific_call("Weyland-Yutani PMC (Chemical Investigation Squad)", TRUE, FALSE, holder.name)
 	chemical_data.update_credits(10)
 	message_staff("The research department has discovered DNA_Disintegrating in [holder.name] adding [OBJECTIVE_ABSOLUTE_VALUE * 2] bonus DEFCON points.")
-	SSobjectives.add_admin_points(OBJECTIVE_ABSOLUTE_VALUE * 2)
-	defcon_controller.add_rewards_points(2);
-	ai_announcement("NOTICE: $20000 received from USCSS Royce and sent to DEFCON assets. Shuttle inbound.")
+	var/datum/techtree/tree = GET_TREE(TREE_MARINE)
+	tree.add_points(10);
+	ai_announcement("NOTICE: $20000 received from USCSS Royce and sent to assets. Shuttle inbound.")
 
 /datum/chem_property/special/ciphering
 	name = PROPERTY_CIPHERING

@@ -1,187 +1,259 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/obj/structure/bed/chair/comfy,
-/obj/structure/interior_wall/van{
-	dir = 8;
-	icon_state = "van_back_2"
-	},
-/obj/structure/interior_wall/van{
-	dir = 1;
-	icon_state = "van_left_1";
-	layer = 2;
-	pixel_y = 31
-	},
-/obj/effect/landmark/interior/spawn/entrance{
-	dir = 8;
-	exit_type = /obj/structure/interior_exit/vehicle/van/backleft;
-	name = "back left entrance marker";
-	tag = "back_left"
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
-	},
-/area/vehicle/van)
 "c" = (
-/obj/structure/bed/chair/comfy,
-/obj/structure/interior_wall/van{
-	dir = 1;
-	icon_state = "van_left_2";
-	layer = 2;
-	pixel_y = 31
-	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	pixel_y = 29
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
-	},
-/area/vehicle/van)
-"d" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	icon_state = "comfychair";
 	tag = "icon-comfychair (NORTH)"
-	},
-/obj/structure/interior_wall/van{
-	dir = 8;
-	icon_state = "van_back_2"
-	},
-/obj/structure/interior_wall/van{
-	alpha = 50;
-	icon_state = "van_right_1";
-	layer = 4
 	},
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 8;
 	exit_type = /obj/structure/interior_exit/vehicle/van/backright;
 	name = "back right entrance marker";
+	pixel_x = -32;
 	tag = "back_right"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_10"
 	},
 /area/vehicle/van)
+"e" = (
+/obj/structure/interior_wall/van{
+	icon_state = "background_1"
+	},
+/obj/effect/vehicle_roof/van,
+/turf/open/void/vehicle,
+/area/space)
 "f" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"h" = (
 /obj/structure/bed/chair/comfy{
 	dir = 1;
-	icon_state = "comfychair";
 	tag = "icon-comfychair (NORTH)"
 	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	alpha = 100;
+	pixel_y = -2
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_1"
+	},
+/area/vehicle/van)
+"i" = (
+/obj/structure/interior_wall/van{
+	icon_state = "front_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"j" = (
+/obj/structure/interior_wall/van{
+	icon_state = "background_2"
+	},
+/obj/effect/vehicle_roof/van{
+	icon_state = "roof_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"n" = (
 /obj/structure/interior_wall/van{
 	alpha = 50;
-	icon_state = "van_right_2";
-	layer = 4
+	icon_state = "exterior_2";
+	layer = 5.2;
+	pixel_y = 32
 	},
-/obj/effect/landmark/interior/spawn/interior_viewport{
-	dir = 1
-	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
-	},
-/area/vehicle/van)
-"h" = (
+/turf/open/void/vehicle,
+/area/space)
+"o" = (
 /obj/structure/bed/chair/comfy,
-/obj/structure/interior_wall/van{
-	dir = 1;
-	icon_state = "van_left_2";
-	layer = 2;
-	pixel_y = 31
+/obj/effect/vehicle_roof/van{
+	icon_state = "roof_3"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_8"
 	},
 /area/vehicle/van)
-"G" = (
-/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
-	dir = 4
-	},
+"r" = (
 /obj/structure/interior_wall/van{
-	dir = 1;
-	icon_state = "van_left_3";
-	layer = 2;
-	pixel_y = 31
+	icon_state = "background_3"
 	},
-/obj/structure/interior_wall/van{
-	dir = 4;
-	icon_state = "van_front_2"
+/obj/effect/vehicle_roof/van{
+	icon_state = "roof_3"
 	},
+/turf/open/void/vehicle,
+/area/space)
+"s" = (
+/obj/structure/bed/chair/comfy,
+/obj/effect/vehicle_roof/van,
+/obj/effect/landmark/interior/spawn/entrance{
+	dir = 8;
+	exit_type = /obj/structure/interior_exit/vehicle/van/backleft;
+	name = "back left entrance marker";
+	pixel_x = -32;
+	tag = "back_left"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_7"
+	},
+/area/vehicle/van)
+"t" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
 	exit_type = /obj/structure/interior_exit/vehicle/van/left;
 	name = "left entrance marker";
+	pixel_y = 32;
 	tag = "left"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+/obj/effect/landmark/interior/spawn/vehicle_driver_seat{
+	dir = 4
+	},
+/obj/effect/vehicle_roof/van{
+	icon_state = "front_roof_2"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_11"
 	},
 /area/vehicle/van)
-"J" = (
-/obj/structure/bed/chair/comfy{
-	dir = 4;
-	icon_state = "comfychair"
-	},
+"v" = (
 /obj/structure/interior_wall/van{
-	alpha = 50;
-	icon_state = "van_right_3";
-	layer = 4
+	icon_state = "interior_door"
 	},
+/obj/effect/vehicle_roof/van{
+	icon_state = "front_roof_1"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"w" = (
 /obj/structure/interior_wall/van{
-	dir = 4;
-	icon_state = "van_front_1"
+	icon_state = "front_3"
 	},
+/turf/open/void/vehicle,
+/area/space)
+"x" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_2"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"y" = (
 /obj/effect/landmark/interior/spawn/entrance{
+	alpha = 50;
 	exit_type = /obj/structure/interior_exit/vehicle/van/right;
 	name = "right entrance marker";
 	tag = "right"
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin3";
-	tag = "icon-rasputin3"
+/obj/structure/bed/chair/comfy{
+	dir = 4;
+	icon_state = "comfychair"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_3_12"
 	},
 /area/vehicle/van)
-"N" = (
-/obj/structure/bed/chair/comfy{
-	dir = 1;
-	icon_state = "comfychair";
-	tag = "icon-comfychair (NORTH)"
+"z" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_1"
 	},
+/turf/open/void/vehicle,
+/area/space)
+"E" = (
+/obj/structure/interior_wall/van{
+	icon_state = "back_3"
+	},
+/turf/open/void/vehicle,
+/area/space)
+"F" = (
 /obj/structure/interior_wall/van{
 	alpha = 50;
-	icon_state = "van_right_2";
-	layer = 4
+	icon_state = "background_1";
+	layer = 5.2;
+	pixel_y = 32
 	},
-/turf/open/shuttle/dropship{
-	icon_state = "rasputin14";
-	tag = "icon-rasputin15"
+/turf/open/void/vehicle,
+/area/space)
+"G" = (
+/obj/structure/bed/chair/comfy{
+	dir = 1;
+	tag = "icon-comfychair (NORTH)"
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_9"
+	},
+/area/vehicle/van)
+"J" = (
+/obj/structure/interior_wall/van{
+	alpha = 50;
+	icon_state = "exterior_3";
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
+"M" = (
+/obj/structure/bed/chair/comfy,
+/obj/effect/vehicle_roof/van{
+	icon_state = "roof_2"
+	},
+/obj/effect/landmark/interior/spawn/interior_viewport{
+	pixel_y = 28
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_2"
 	},
 /area/vehicle/van)
 "O" = (
-/turf/open/void,
-/area/vehicle/van)
+/turf/open/void/vehicle,
+/area/space)
+"V" = (
+/obj/structure/interior_wall/van{
+	alpha = 50;
+	icon_state = "exterior_door";
+	layer = 5.2;
+	pixel_y = 32
+	},
+/turf/open/void/vehicle,
+/area/space)
 
 (1,1,1) = {"
 O
-a
-d
+E
+x
+z
+O
 "}
 (2,1,1) = {"
 O
+e
+s
 c
-f
+F
 "}
 (3,1,1) = {"
 O
+j
+M
 h
-N
+n
 "}
 (4,1,1) = {"
 O
+r
+o
 G
 J
+"}
+(5,1,1) = {"
+O
+v
+t
+y
+V
+"}
+(6,1,1) = {"
+O
+w
+f
+i
+O
 "}

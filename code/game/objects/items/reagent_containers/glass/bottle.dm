@@ -186,7 +186,7 @@
 	desc = "A small bottle. Contains H13N1 flu virion culture in synthblood medium."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/flu_virion/Initialize()
 	. = ..()
 	var/datum/disease/F = new /datum/disease/advance/flu(0)
@@ -198,7 +198,7 @@
 	desc = "A small bottle. Contains Epiglottis virion culture in synthblood medium."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/epiglottis_virion/Initialize()
 	. = ..()
 	var/datum/disease/F = new /datum/disease/advance/voice_change(0)
@@ -210,7 +210,7 @@
 	desc = "A small bottle. Contains liver enhancement virion culture in synthblood medium."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/liver_enhance_virion/Initialize()
 	. = ..()
 	var/datum/disease/F = new /datum/disease/advance/heal(0)
@@ -222,7 +222,7 @@
 	desc = "A small bottle. Contains hullucigen virion culture in synthblood medium."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/hullucigen_virion/Initialize()
 	. = ..()
 	var/datum/disease/F = new /datum/disease/advance/hullucigen(0)
@@ -246,7 +246,7 @@
 	desc = "A small bottle. Contains XY-rhinovirus culture in synthblood medium."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/cold/Initialize()
 	. = ..()
 	var/datum/disease/advance/F = new /datum/disease/advance/cold(0)
@@ -258,7 +258,7 @@
 	desc = "A small bottle. Contains a random disease."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/random/Initialize()
 	. = ..()
 	var/datum/disease/advance/F = new(0)
@@ -284,7 +284,7 @@
 	desc = "A small bottle. Contains Gravitokinetic Bipotential SADS- culture in synthblood medium."//Or simply - General BullShit
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/fake_gbs/Initialize()
 	. = ..()
 	var/datum/disease/F = new /datum/disease/fake_gbs(0)
@@ -312,7 +312,7 @@
 	desc = "A small bottle. Contains Cryptococcus Cosmosis culture in synthblood medium."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/brainrot/Initialize()
 	. = ..()
 	var/datum/disease/F = new /datum/disease/brainrot(0)
@@ -324,7 +324,7 @@
 	desc = "A small bottle. Contains a small dosage of Fukkos Miracos."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/magnitis/Initialize()
 	. = ..()
 	var/datum/disease/F = new /datum/disease/magnitis(0)
@@ -336,7 +336,7 @@
 	desc = "A small bottle. Contains a small amount of Polytrinic Acid, an extremely potent and dangerous acid."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle17"
-	
+
 /obj/item/reagent_container/glass/bottle/pacid/Initialize()
 	. = ..()
 	reagents.add_reagent("pacid", 60)
@@ -346,7 +346,7 @@
 	desc = "A small bottle. Contains the liquid essence of the gods."
 	icon = 'icons/obj/items/drinks.dmi'
 	icon_state = "holyflask"
-	
+
 /obj/item/reagent_container/glass/bottle/adminordrazine/Initialize()
 	. = ..()
 	reagents.add_reagent("adminordrazine", 60)
@@ -356,7 +356,7 @@
 	desc = "A small bottle. Contains hot sauce."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle3"
-	
+
 /obj/item/reagent_container/glass/bottle/capsaicin/Initialize()
 	. = ..()
 	reagents.add_reagent("capsaicin", 60)
@@ -408,7 +408,7 @@
 
 /obj/item/reagent_container/glass/bottle/oxycodone
 	name = "\improper Oxycodone bottle"
-	desc = "A very small bottle. Contains Oxycodone - Used as an Extreme Painkilled.  ILLEGAL TO DISTRIBUTE."
+	desc = "A very small bottle. Contains Oxycodone - Used as an Extreme Painkiller.  ILLEGAL TO DISTRIBUTE."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle2"
 	volume = 10

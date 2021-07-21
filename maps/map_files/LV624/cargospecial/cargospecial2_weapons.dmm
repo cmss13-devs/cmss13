@@ -1,0 +1,90 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/item/weapon/gun/shotgun/pump/cmb,
+/obj/item/weapon/gun/shotgun/merc{
+	pixel_y = 8
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"o" = (
+/turf/closed/wall,
+/area/lv624/lazarus/quartstorage)
+"q" = (
+/obj/item/ammo_magazine/smg/mp7,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"t" = (
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"B" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/flamertank,
+/obj/item/storage/pouch/flamertank,
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank,
+/obj/item/ammo_magazine/flamer_tank,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"C" = (
+/obj/structure/surface/rack,
+/obj/item/weapon/gun/flamer{
+	pixel_y = 6
+	},
+/obj/item/weapon/gun/flamer,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"J" = (
+/obj/structure/window/framed/colony,
+/turf/open/floor/plating,
+/area/lv624/lazarus/quartstorage)
+"K" = (
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"U" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ammo_magazine/smg/mp7,
+/obj/item/ammo_magazine/smg/mp7,
+/obj/item/weapon/gun/shotgun/double{
+	pixel_y = -4
+	},
+/obj/item/weapon/gun/smg/mp7{
+	pixel_y = 8
+	},
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+"Y" = (
+/obj/item/stack/sheet/wood{
+	amount = 2
+	},
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/vault,
+/area/lv624/lazarus/quartstorage)
+
+(1,1,1) = {"
+J
+C
+U
+a
+"}
+(2,1,1) = {"
+J
+B
+q
+K
+"}
+(3,1,1) = {"
+J
+Y
+K
+K
+"}
+(4,1,1) = {"
+o
+t
+K
+q
+"}

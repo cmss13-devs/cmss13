@@ -13,9 +13,7 @@
 					/obj/item/attachable/scope/mini,
 					/obj/item/attachable/scope/mini,
 					/obj/item/attachable/magnetic_harness,
-					/obj/item/attachable/magnetic_harness,
-					/obj/item/attachable/quickfire,
-					/obj/item/attachable/quickfire
+					/obj/item/attachable/magnetic_harness
 					)
 	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate
@@ -74,17 +72,6 @@
 	cost = RO_PRICE_CHEAP
 	containertype = /obj/structure/closet/crate
 	containername = "magnetic harness attachment crate"
-	group = "Attachments"
-
-/datum/supply_packs/rail_quickfire
-	name = "quickfire adapter attachment crate (x2)"
-	contains = list(
-					/obj/item/attachable/quickfire,
-					/obj/item/attachable/quickfire
-					)
-	cost = RO_PRICE_CHEAP
-	containertype = /obj/structure/closet/crate
-	containername = "quickfire attachment crate"
 	group = "Attachments"
 
 /datum/supply_packs/m_attachables

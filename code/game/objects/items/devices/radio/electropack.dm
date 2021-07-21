@@ -83,6 +83,7 @@
 	return
 
 /obj/item/device/radio/electropack/attack_self(mob/user as mob, flag1)
+	..()
 
 	if(!istype(user, /mob/living/carbon/human))
 		return

@@ -192,3 +192,7 @@ SUBSYSTEM_DEF(weather)
 	invisibility = 0
 	mouse_opacity = 0
 	layer = ABOVE_MOB_LAYER
+
+/obj/effect/weather_vfx_holder/rain
+	icon_state = "strata_storm"
+	alpha = 50

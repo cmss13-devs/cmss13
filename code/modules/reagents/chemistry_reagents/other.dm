@@ -106,7 +106,7 @@
 	description = "A ubiquitous chemical substance that is composed of hydrogen and oxygen. It is a vital component to all known forms of organic life, even though it provides no calories or organic nutrients. It is also an effective solvent and can be used for cleaning."
 	reagent_state = LIQUID
 	color = "#0064C8" // rgb: 0, 100, 200
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	chemclass = CHEM_CLASS_BASIC
 	chemfiresupp = TRUE
 	intensitymod = -3
@@ -145,7 +145,7 @@
 	description = "Liquid plastic. Not safe to eat."
 	reagent_state = LIQUID
 	color = "#CF3600" // rgb: 207, 54, 0
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	properties = list(PROPERTY_TOXIC = 1)
 
 /datum/reagent/space_drugs
@@ -176,12 +176,13 @@
 	reagent_state = GAS
 	color = "#808080" // rgb: 128, 128, 128
 	chemfiresupp = TRUE
+	properties = list(PROPERTY_OXIDIZING = 2)
 	intensitymod = 0.75
 	radiusmod = -0.08
 	burncolor = "#58daff"
 	burncolormod = 2
 	chemclass = CHEM_CLASS_BASIC
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/copper
 	name = "Copper"
@@ -193,7 +194,7 @@
 	burncolormod = 4
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/nitrogen
 	name = "Nitrogen"
@@ -203,7 +204,7 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 
 /datum/reagent/hydrogen
@@ -222,7 +223,7 @@
 	power = 0.15
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/potassium
 	name = "Potassium"
@@ -232,7 +233,7 @@
 	color = "#A0A0A0" // rgb: 160, 160, 160
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/mercury
 	name = "Mercury"
@@ -252,7 +253,7 @@
 	color = "#BF8C00" // rgb: 191, 140, 0
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/carbon
 	name = "Carbon"
@@ -266,7 +267,7 @@
 	burncolormod = 3
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/carbon/reaction_turf(var/turf/T, var/volume)
 	src = null
@@ -308,7 +309,7 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/phosphorus
 	name = "Phosphorus"
@@ -324,7 +325,7 @@
 	burncolormod = 5
 	chemclass = CHEM_CLASS_BASIC
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/lithium
 	name = "Lithium"
@@ -359,7 +360,7 @@
 	color = "#808080" // rgb: 128, 128, 128
 	chemclass = CHEM_CLASS_RARE
 
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/radium
 	name = "Radium"
@@ -474,6 +475,7 @@
 	//------------------//
 	intensityfire = BURN_LEVEL_TIER_1
 	durationfire = BURN_TIME_TIER_1
+	burn_sprite = "red"
 	rangefire = 4
 	//------------------//
 	explosive = TRUE
@@ -570,6 +572,21 @@
 	properties = list(PROPERTY_NEUROTOXIC = 2, PROPERTY_RELAXING = 1)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/datum/reagent/oxidizing_agent
+	name = "Oxidizing Agent"
+	id = "oxidizing_agent"
+	description = "A synthesized, highly-refined oxidizing agent that is most likely extremely unhealthy for human consumption."
+	reagent_state = GAS
+	color = "#c4c4c4"
+	chemfiresupp = TRUE
+	properties = list(PROPERTY_OXIDIZING = 6)
+	intensitymod = 1
+	radiusmod = -0.12
+	burncolor = "#a9ecff"
+	burncolormod = 2
+	chemclass = CHEM_CLASS_RARE
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 
 /datum/reagent/nanites
 	name = "Nanomachines"
@@ -685,6 +702,7 @@
 	color = "#ffb300"
 	chemfiresupp = TRUE
 	burncolor = "#D05006"
+	burn_sprite = "red"
 	properties = list(PROPERTY_OXIDIZING = 6, PROPERTY_FUELING = 7, PROPERTY_FLOWING = 1)
 
 // This is the regular flamer fuel and pyro regular flamer fuel.
@@ -711,6 +729,7 @@
 	flameshape = FLAMESHAPE_LINE
 	color = "#00ff00"
 	burncolor = "#00ff00"
+	burn_sprite = "green"
 	properties = list()
 
 /datum/reagent/napalm/gel/New()
@@ -728,6 +747,7 @@
 	description = "A sticky combustable liquid chemical that burns extremely hot."
 	color = "#00b8ff"
 	burncolor = "#00b8ff"
+	burn_sprite = "blue"
 	properties = list()
 
 /datum/reagent/napalm/blue/New()
@@ -746,6 +766,7 @@
 	flameshape = FLAMESHAPE_TRIANGLE
 	color = "#00ff00"
 	burncolor = "#00ff00"
+	burn_sprite = "green"
 	properties = list()
 
 /datum/reagent/napalm/green/New()
@@ -762,6 +783,7 @@
 	description = "A sticky combustable liquid chemical that penetrates the best fire retardants."
 	color = "#800080"
 	burncolor = "#800080"
+	burn_sprite = "dynamic"
 	properties = list()
 
 /datum/reagent/napalm/penetrating/New()
@@ -803,7 +825,7 @@
 	description = "An easily combustible hydrocarbon that can very rapidly expand a fire, even explosively at the right concentrations. It is used primarily as fuel to make heat and light or manufacturing of organic chemicals."
 	reagent_state = LIQUID
 	color = "#0064C8"
-	custom_metabolism = 0.4
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 	chemfiresupp = TRUE
 	burncolor = "#00a5ff"
 	burncolormod = 1.5
@@ -850,7 +872,7 @@
 	description = "Nitroglycerin is a heavy, colorless, oily, explosive liquid obtained by nitrating glycerol. Despite being a highly volatile material, it is used for many medical purposes."
 	reagent_state = LIQUID
 	color = "#808080" // rgb: 128, 128, 128
-	custom_metabolism = 0.01
+	custom_metabolism = AMOUNT_PER_TIME(1, 200 SECONDS)
 	explosive = TRUE
 	power = 1
 	falloff_modifier = -0.5
@@ -888,7 +910,7 @@
 	description = "A clear extracellular fluid separated from blood."
 	reagent_state = LIQUID
 	color = "#f1e8cf"
-	custom_metabolism = 0.4
+	custom_metabolism = AMOUNT_PER_TIME(1, 5 SECONDS)
 
 /datum/reagent/plasma/pheromone
 	name = "Pheromone Plasma"
@@ -994,3 +1016,16 @@
 	chemclass = CHEM_CLASS_SPECIAL
 	objective_value = OBJECTIVE_ABSOLUTE_VALUE
 	properties = list(PROPERTY_BIOCIDIC = 4, PROPERTY_ADDICTIVE = 1, PROPERTY_HALLUCINOGENIC = 4, PROPERTY_CIPHERING = 1)
+
+/datum/reagent/fruit_resin
+	name = "Fruit Resin"
+	id = "fruit_resin"
+	description = "A strange green fluid found in certain xenomorphic structures. Seems to have regenerative properties."
+	reagent_state = LIQUID
+	nutriment_factor = 15 * REAGENTS_METABOLISM
+	color = "#12911d" // rgb: 102, 67, 48
+	overdose = MED_REAGENTS_OVERDOSE
+	overdose_critical = MED_REAGENTS_OVERDOSE_CRITICAL
+	chemclass = CHEM_CLASS_SPECIAL
+	properties = list(PROPERTY_TRANSFORMATIVE = 4, PROPERTY_NUTRITIOUS = 3, PROPERTY_HEMOGENIC = 1)
+	flags = REAGENT_SCANNABLE

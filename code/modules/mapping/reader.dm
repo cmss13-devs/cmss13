@@ -360,8 +360,8 @@
 	if(crds)
 		if(ispath(path, /turf))
 			if(delete)
-				for(var/obj/O in crds.contents)
-					qdel(O)
+				for(var/A in crds.GetAllContents())
+					qdel(A, force=TRUE)
 
 			if(placeOnTop)
 				. = crds.PlaceOnTop(null, path, CHANGETURF_DEFER_CHANGE | (no_changeturf ? CHANGETURF_SKIP : NONE))

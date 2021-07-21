@@ -100,8 +100,8 @@
 
 
 //copied from computer.dm
-/obj/structure/machinery/power/monitor/attackby(I as obj, user as mob)
-	if(istype(I, /obj/item/tool/screwdriver) && circuit)
+/obj/structure/machinery/power/monitor/attackby(obj/item/I, user as mob)
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER) && circuit)
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 		if(do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			var/obj/structure/computerframe/A = new( src.loc )

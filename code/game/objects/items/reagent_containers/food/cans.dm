@@ -2,15 +2,15 @@
 	var/canopened = 0
 	gulp_size = 10
 
-/obj/item/reagent_container/food/drinks/cans/attack_self(mob/user as mob)
-	if (canopened == 0)
+/obj/item/reagent_container/food/drinks/cans/attack_self(mob/user)
+	..()
+
+	if (canopened == FALSE)
 		playsound(src.loc,'sound/effects/canopen.ogg', 15, 1)
 		to_chat(user, SPAN_NOTICE("You open the drink with an audible pop!"))
-		canopened = 1
-	else
-		return
+		canopened = TRUE
 
-/obj/item/reagent_container/food/drinks/cans/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/reagent_container/food/drinks/cans/attack(mob/M, mob/user)
 	if (canopened == 0)
 		to_chat(user, SPAN_NOTICE("You need to open the drink!"))
 		return
@@ -96,7 +96,7 @@
 
 /obj/item/reagent_container/food/drinks/cans/cola
 	name = "\improper Fruit-Beer"
-	desc = "In theory, Mango flavored root beer sounds like a pretty good idea. Weston-Yamada has disproved yet another theory with its latest line of cola. Canned by the Weston-Yamada Corporation."
+	desc = "In theory, Mango flavored root beer sounds like a pretty good idea. Weyland-Yutani has disproved yet another theory with its latest line of cola. Canned by the Weyland-Yutani Corporation."
 	icon_state = "fruit_beer"
 	center_of_mass = "x=16;y=10"
 
@@ -105,8 +105,8 @@
 	reagents.add_reagent("cola", 30)
 
 /obj/item/reagent_container/food/drinks/cans/waterbottle
-	name = "\improper Weston-Yamada Bottled Spring Water"
-	desc = "Overpriced 'Spring' water. Bottled by the Weston-Yamada Corporation."
+	name = "\improper Weyland-Yutani Bottled Spring Water"
+	desc = "Overpriced 'Spring' water. Bottled by the Weyland-Yutani Corporation."
 	icon_state = "wy_water"
 	center_of_mass = "x=15;y=8"
 
@@ -396,9 +396,51 @@
 	reagents.add_reagent("souto_cranberry", 25)
 	reagents.add_reagent("water", 25)
 
+/obj/item/reagent_container/food/drinks/cans/souto/vanilla
+	name = "\improper Vanilla Souto"
+	desc = "When most soft drinks say 'vanilla,' they really mean their classic flavor with a bit of vanilla added. NOT THE SOUTO CORPORATION, BABY! This bad boy is filled to the brim with 100% pure carbonated vanilla extract! It tastes terrible. Canned in Havana."
+	icon_state = "souto_vanilla"
+	item_state = "souto_canilla"
+
+/obj/item/reagent_container/food/drinks/cans/souto/vanilla/Initialize()
+	. = ..()
+	reagents.add_reagent("souto_vanilla", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla
+	name = "\improper Diet Vanilla Souto"
+	desc = "This is a can of watery bitter vanilla extract. You can't possibly imagine who would greenlight such a concept. Canned in Havana."
+	icon_state = "souto_diet_vanilla"
+	item_state = "souto_diet_vanilla"
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/vanilla/Initialize()
+	. = ..()
+	reagents.add_reagent("souto_vanilla", 25)
+	reagents.add_reagent("water", 25)
+
+/obj/item/reagent_container/food/drinks/cans/souto/pineapple
+	name = "\improper Pineapple Souto"
+	desc = "This tastes like battery acid with a full cup of sugar mixed in. Canned in Havana."
+	icon_state = "souto_pineapple"
+	item_state = "souto_pineapple"
+
+/obj/item/reagent_container/food/drinks/cans/souto/pineapple/Initialize()
+	. = ..()
+	reagents.add_reagent("souto_pineapple", 50)
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple
+	name = "\improper Diet Pineapple Souto"
+	desc = "This tastes like battery acid with a half cup of sugar mixed in. Canned in Havana."
+	icon_state = "souto_diet_pineapple"
+	item_state = "souto_diet_pineapple"
+
+/obj/item/reagent_container/food/drinks/cans/souto/diet/pineapple/Initialize()
+	. = ..()
+	reagents.add_reagent("souto_pineapple", 25)
+	reagents.add_reagent("water", 25)
+
 /obj/item/reagent_container/food/drinks/cans/aspen
-	name = "\improper Weston-Yamada Aspen Beer"
-	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weston-Yamada Corporation."
+	name = "\improper Weyland-Yutani Aspen Beer"
+	desc = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	icon_state = "6_pack_1"
 	center_of_mass = "x=16;y=10"
 

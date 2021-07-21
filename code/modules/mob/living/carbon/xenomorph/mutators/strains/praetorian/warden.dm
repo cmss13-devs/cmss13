@@ -5,9 +5,18 @@
 	flavor_description = "Only in Death does your sisters' service to the Queen end. Keep them fighting using your own blood and claws."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Praetorian")  	// Only bae
-	mutator_actions_to_remove = list("Acid Ball", "Dash", "Spray Acid")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/spray_acid/prae_warden, /datum/action/xeno_action/activable/warden_heal, /datum/action/xeno_action/onclick/prae_switch_heal_type, /datum/action/xeno_action/onclick/emit_pheromones)
+	caste_whitelist = list(XENO_CASTE_PRAETORIAN)  	// Only bae
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/pounce/base_prae_dash,
+		/datum/action/xeno_action/activable/prae_acid_ball,
+		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/spray_acid/prae_warden,
+		/datum/action/xeno_action/activable/warden_heal,
+		/datum/action/xeno_action/onclick/prae_switch_heal_type,
+		/datum/action/xeno_action/onclick/emit_pheromones
+	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_warden
 	keystone = TRUE
 
@@ -21,7 +30,6 @@
 	// Make a 'halftank'
 	P.speed_modifier += XENO_SPEED_SLOWMOD_TIER_5
 	P.damage_modifier -= XENO_DAMAGE_MOD_SMALL
-	P.armor_modifier -= XENO_ARMOR_MOD_VERYLARGE
 
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)
@@ -80,6 +88,10 @@
 		add_internal_hitpoints(internal_hitpoints_per_attack)
 
 /datum/behavior_delegate/praetorian_warden/proc/add_internal_hitpoints(amount)
+	if (amount > 0)
+		if (internal_hitpoints >= internal_hitpoints_max)
+			return
+		to_chat(bound_xeno, SPAN_XENODANGER("You feel your resources of health increase!"))
 	internal_hitpoints = Clamp(internal_hitpoints + amount, 0, internal_hitpoints_max)
 
 /datum/behavior_delegate/praetorian_warden/proc/remove_internal_hitpoints(amount)

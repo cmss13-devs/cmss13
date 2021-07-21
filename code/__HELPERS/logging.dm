@@ -62,7 +62,7 @@
 	GLOB.STUI?.processing |= STUI_LOG_DEBUG
 	for(var/client/C in GLOB.admins)
 		if(C.prefs.toggles_chat & CHAT_DEBUGLOGS)
-			to_chat(C, "DEBUG: [text]")
+			to_chat(C, "DEBUG: [text]", type = MESSAGE_TYPE_DEBUG)
 
 
 /proc/log_game(text)
@@ -79,6 +79,13 @@
 
 	GLOB.STUI.attack.Add("\[[time_stamp()]]INTERACT: [msg]<br>")
 	GLOB.STUI.processing |= STUI_LOG_ATTACK
+
+
+/proc/log_overwatch(text)
+	if (CONFIG_GET(flag/log_overwatch))
+		diary << html_decode("\[[time_stamp()]]OVERWATCH: [text][log_end]")
+	GLOB.STUI.admin.Add("\[[time_stamp()]]OVERWATCH: [text]<br>")
+	GLOB.STUI.processing |= STUI_LOG_ADMIN
 
 /proc/log_idmod(var/obj/item/card/id/target_id, var/msg)
 	if (CONFIG_GET(flag/log_idmod))

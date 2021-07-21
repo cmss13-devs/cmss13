@@ -6,7 +6,6 @@
 		visible_message(SPAN_DANGER("<B>[M] attempted to touch [src]!</B>"), null, null, 5)
 		return 0
 
-	M.next_move += 7 //Adds some lag to the 'attack'. This will add up to 10
 	switch(M.a_intent)
 		if(INTENT_HELP)
 
@@ -81,8 +80,7 @@
 			if(!attack.is_usable(M)) attack = M.species.secondary_unarmed
 			if(!attack.is_usable(M)) return
 
-			M.last_damage_source = "fisticuffs"
-			M.last_damage_mob = src
+			M.last_damage_data = create_cause_data("fisticuffs", src)
 			M.attack_log += text("\[[time_stamp()]\] <font color='red'>[pick(attack.attack_verb)]ed [key_name(src)]</font>")
 			attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been [pick(attack.attack_verb)]ed by [key_name(M)]</font>")
 			msg_admin_attack("[key_name(M)] [pick(attack.attack_verb)]ed [key_name(src)] in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)
@@ -90,29 +88,21 @@
 			M.animation_attack_on(src)
 			M.flick_attack_overlay(src, "punch")
 
-			var/max_dmg = 5
+			var/extra_cqc_dmg = 0 //soft maximum of 5, this damage is added onto the final value depending on how much cqc skill you have
 			if(M.skills)
-				max_dmg += M.skills.get_skill_level(SKILL_CQC)
-			var/damage = rand(0, max_dmg)
-			if(!damage)
-				playsound(loc, attack.miss_sound, 25, 1)
-				visible_message(SPAN_DANGER("[M] tried to [pick(attack.attack_verb)] [src]!"), null, null, 5)
-				return
+				extra_cqc_dmg = M.skills?.get_skill_level(SKILL_CQC)
+			var/raw_damage = 0 //final value, gets absorbed by the armor and then deals the leftover to the mob
 
-			var/obj/limb/affecting = get_limb(ran_zone(M.zone_selected))
+			var/obj/limb/affecting = get_limb(rand_zone(M.zone_selected, 70))
 			var/armor = getarmor(affecting, ARMOR_MELEE)
 
 			playsound(loc, attack.attack_sound, 25, 1)
 
 			visible_message(SPAN_DANGER("[M] [pick(attack.attack_verb)]ed [src]!"), null, null, 5)
-			if(damage >= 5 && prob(50))
-				visible_message(SPAN_DANGER("[M] has weakened [src]!"), null, null, 5)
-				apply_effect(3, WEAKEN)
 
-			damage += attack.damage
-			damage = armor_damage_reduction(GLOB.marine_melee, damage, armor, 0) // no penetration frm punches
-			apply_damage(damage, BRUTE, affecting, sharp=attack.sharp, edge=attack.edge)
-
+			raw_damage = attack.damage + extra_cqc_dmg
+			var/final_damage = armor_damage_reduction(GLOB.marine_melee, raw_damage, armor, FALSE) // no penetration from punches
+			apply_damage(final_damage, BRUTE, affecting, sharp=attack.sharp, edge = attack.edge)
 
 		if(INTENT_DISARM)
 			if(M == src)
@@ -131,16 +121,16 @@
 				w_uniform.add_fingerprint(M)
 
 			//Accidental gun discharge
-			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_MP))
-				if (istype(r_hand,/obj/item/weapon/gun) || istype(l_hand,/obj/item/weapon/gun))
+			if(!skillcheck(M, SKILL_CQC, SKILL_CQC_SKILLED))
+				if (isgun(r_hand) || isgun(l_hand))
 					var/obj/item/weapon/gun/W = null
 					var/chance = 0
 
-					if (istype(l_hand,/obj/item/weapon/gun))
+					if (isgun(l_hand))
 						W = l_hand
 						chance = hand ? 40 : 20
 
-					if (istype(r_hand,/obj/item/weapon/gun))
+					if (isgun(r_hand))
 						W = r_hand
 						chance = !hand ? 40 : 20
 
@@ -274,11 +264,20 @@
 				else
 					status += "numb"
 
+			for(var/datum/effects/bleeding/external/E in org.bleeding_effects_list)
+				if(status)
+					status += " and "
+				status += "bleeding"
+				break
+
 		if(!status)
 			status = "OK"
+
 		if(org.status & LIMB_BROKEN)
 			status += " <b>(BROKEN)</b>"
-		if(org.status & LIMB_SPLINTED)
+		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
+			status += " <b>(NANOSPLINTED)</b>"
+		else if(org.status & LIMB_SPLINTED)
 			status += " <b>(SPLINTED)</b>"
 
 		to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")

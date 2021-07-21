@@ -27,6 +27,8 @@ They're all essentially identical when it comes to getting the job done.
 	var/flags_magazine = AMMUNITION_REFILLABLE //flags specifically for magazines.
 	var/base_mag_icon //the default mag icon state.
 	var/base_mag_item //the default mag item (inhand) state.
+	var/transfer_handful_amount = 8 //amount of bullets to transfer, 5 for 12g, 9 for 45-70
+	var/handful_state = "bullet" //used for generating handfuls from boxes and setting their sprite when loading/unloading
 
 /obj/item/ammo_magazine/Initialize(mapload, spawn_empty)
 	. = ..()
@@ -44,7 +46,7 @@ They're all essentially identical when it comes to getting the job done.
 	GLOB.ammo_magazine_list -= src
 	return ..()
 
-/obj/item/ammo_magazine/update_icon(var/round_diff = 0) //inhand sprites only get their icon update called when picked back up or removed from storage, known issue.
+/obj/item/ammo_magazine/update_icon(var/round_diff = 0)
 	if(current_rounds <= 0)
 		icon_state = base_mag_icon + "_e"
 		item_state = base_mag_item + "_e"
@@ -52,6 +54,12 @@ They're all essentially identical when it comes to getting the job done.
 	else if(current_rounds - round_diff <= 0)
 		icon_state = base_mag_icon
 		item_state = base_mag_item //to-do, unique magazine inhands for majority firearms.
+	if(iscarbon(loc))
+		var/mob/living/carbon/C = loc
+		if(C.r_hand == src)
+			C.update_inv_r_hand()
+		else if(C.l_hand == src)
+			C.update_inv_l_hand()
 
 /obj/item/ammo_magazine/examine(mob/user)
 	..()
@@ -116,23 +124,22 @@ They're all essentially identical when it comes to getting the job done.
 
 //This will attempt to place the ammo in the user's hand if possible.
 /obj/item/ammo_magazine/proc/create_handful(mob/user, transfer_amount, var/obj_name = src)
-	var/R
+	var/amount_to_transfer
 	if (current_rounds > 0)
 		var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
-		var/MR = caliber == "12g" ? 5 : 8
-		R = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, MR)
-		new_handful.generate_handful(default_ammo, caliber, MR, R, gun_type)
-		current_rounds -= R
+		amount_to_transfer = transfer_amount ? min(current_rounds, transfer_amount) : min(current_rounds, transfer_handful_amount)
+		new_handful.generate_handful(default_ammo, caliber, transfer_handful_amount, amount_to_transfer, gun_type)
+		current_rounds -= amount_to_transfer
 		if(!istype(src, /obj/item/ammo_magazine/internal) && !istype(src, /obj/item/ammo_magazine/shotgun))	//if we are shotgun or revolver or whatever not using normal mag system
 			playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
 
 		if(user)
 			user.put_in_hands(new_handful)
-			to_chat(user, SPAN_NOTICE("You grab <b>[R]</b> round\s from [obj_name]."))
+			to_chat(user, SPAN_NOTICE("You grab <b>[amount_to_transfer]</b> round\s from [obj_name]."))
 
 		else new_handful.forceMove(get_turf(src))
-		update_icon(-R) //Update the other one.
-	return R //Give the number created.
+		update_icon(-amount_to_transfer) //Update the other one.
+	return amount_to_transfer //Give the number created.
 
 //our magazine inherits ammo info from a source magazine
 /obj/item/ammo_magazine/proc/match_ammo(obj/item/ammo_magazine/source)
@@ -141,11 +148,11 @@ They're all essentially identical when it comes to getting the job done.
 	gun_type = source.gun_type
 
 //~Art interjecting here for explosion when using flamer procs.
-/obj/item/ammo_magazine/flamer_fire_act()
+/obj/item/ammo_magazine/flamer_fire_act(damage, flame_cause_data)
 	switch(current_rounds)
 		if(0) return
-		if(1 to 100) explosion(loc,  -1, -1, 0, 2) //blow it up.
-		else explosion(loc,  -1, -1, 1, 2) //blow it up HARDER
+		if(1 to 100) explosion(loc,  -1, -1, 0, 2, , , , flame_cause_data) //blow it up.
+		else explosion(loc,  -1, -1, 1, 2, , , , flame_cause_data) //blow it up HARDER
 	qdel(src)
 
 //Magazines that actually cannot be removed from the firearm. Functionally the same as the regular thing, but they do have three extra vars.
@@ -175,21 +182,27 @@ bullets/shells. ~N
 /obj/item/ammo_magazine/handful
 	name = "generic handful"
 	desc = "A handful of rounds to reload on the go."
+	icon = 'icons/obj/items/weapons/guns/handful.dmi'
+	icon_state = "bullet"
 	matter = list("metal" = 50) //This changes based on the ammo ammount. 5k is the base of one shell/bullet.
 	flags_equip_slot = null // It only fits into pockets and such.
 
 	w_class = SIZE_SMALL
 	current_rounds = 1 // So it doesn't get autofilled for no reason.
 	max_rounds = 5 // For shotguns, though this will be determined by the handful type when generated.
-	flags_atom = FPRINT|CONDUCT|DIRLOCK
+	flags_atom = FPRINT|CONDUCT
 	flags_magazine = AMMUNITION_HANDFUL
 	attack_speed = 3 // should make reloading less painful
+
+/obj/item/ammo_magazine/handful/Initialize(mapload, spawn_empty)
+	. = ..()
+	update_icon()
 
 /obj/item/ammo_magazine/handful/update_icon() //Handles the icon itself as well as some bonus things.
 	if(max_rounds >= current_rounds)
 		var/I = current_rounds*50 // For the metal.
 		matter = list("metal" = I)
-		setDir(current_rounds + round(current_rounds/3))
+	icon_state = handful_state + "_[current_rounds]"
 
 /obj/item/ammo_magazine/handful/pickup(mob/user)
 	var/olddir = dir
@@ -212,18 +225,22 @@ If it is the same and the other stack isn't full, transfer an amount (default 1)
 			transfer_ammo(transfer_from,user, transfer_from.current_rounds) // Transfer it from currently held to src
 		else to_chat(user, "Those aren't the same rounds. Better not mix them up.")
 
-/obj/item/ammo_magazine/handful/proc/generate_handful(new_ammo, new_caliber, maximum_rounds, new_rounds, new_gun_type)
+/obj/item/ammo_magazine/handful/proc/generate_handful(new_ammo, new_caliber, new_max_rounds, new_rounds, new_gun_type)
 	var/datum/ammo/A = GLOB.ammo_list[new_ammo]
 	var/ammo_name = A.name //Let's pull up the name.
 
-	name = "handful of [ammo_name + (ammo_name == "shotgun buckshot"? " ":"s ") + "([new_caliber])"]"
-	icon_state = new_caliber == "12g" ? ammo_name : "bullet"
-	item_state = new_caliber == "12g" ? ammo_name : "bullet"
+	var/multiple_handful_name = A.multiple_handful_name
+
+	name = "handful of [ammo_name + (multiple_handful_name ? " ":"s ") + "([new_caliber])"]"
+
 	default_ammo = new_ammo
 	caliber = new_caliber
-	max_rounds = maximum_rounds
+	max_rounds = new_max_rounds
 	current_rounds = new_rounds
 	gun_type = new_gun_type
+	handful_state = A.handful_state
+	if(A.handful_color)
+		color = A.handful_color
 	update_icon()
 
 //----------------------------------------------------------------//
@@ -365,7 +382,9 @@ Turn() or Shift() as there is virtually no overhead. ~N
 			to_chat(user, SPAN_INFO("It feels almost full."))
 
 /obj/item/ammo_box/magazine/attack_self(mob/living/user)
-	if(contents.len)
+	..()
+
+	if(length(contents))
 		if(!handfuls)
 			deploy_ammo_box(user, user.loc)
 			return
@@ -920,6 +939,7 @@ Turn() or Shift() as there is virtually no overhead. ~N
 		to_chat(user, "It's empty.")
 
 /obj/item/ammo_box/rounds/attack_self(mob/living/user)
+	..()
 	if(bullet_amount < 1)
 		unfold_box(user.loc)
 
@@ -941,70 +961,49 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
 				return
 
+			var/dumping = FALSE // we REFILL BOX (dump to it) on harm intent, otherwise we refill FROM box
+			if(user.a_intent == INTENT_HARM)
+				dumping = TRUE
 
-			var/source
-			var/source_current
-			var/destination
-			var/destination_max
-			var/destination_current
-			var/action_icon
+			var/transfering   = 0      // Amount of bullets we're trying to transfer
+			var/transferable  = 0      // Amount of bullets that can actually be transfered
+			do
+				// General checking
+				if(dumping)
+					transferable = min(AM.current_rounds, max_bullet_amount - bullet_amount)
+				else
+					transferable = min(bullet_amount, AM.max_rounds - AM.current_rounds)
+				if(transferable < 1)
+					to_chat(user, SPAN_NOTICE("You cannot transfer any more rounds."))
 
-			if(user.a_intent == INTENT_HARM)	//we REFILL BOX on harm intent, otherwise we refill FROM box
-				source = AM
-				source_current = AM.current_rounds
-				destination = src
-				destination_current = bullet_amount
-				destination_max = max_bullet_amount
-				action_icon = BUSY_ICON_HOSTILE
-			else
-				source = src
-				source_current = bullet_amount
-				destination = AM
-				destination_current = AM.current_rounds
-				destination_max = AM.max_rounds
-				action_icon = BUSY_ICON_FRIENDLY
+				// Half-Loop 1: Start transfering
+				else if(!transfering)
+					transfering = min(transferable, 48) // Max per transfer
+					if(!do_after(user, 1.5 SECONDS, INTERRUPT_ALL, dumping ? BUSY_ICON_HOSTILE : BUSY_ICON_FRIENDLY))
+						to_chat(user, SPAN_NOTICE("You stop transferring rounds."))
+						transferable = 0
 
-			if(source_current <= 0)
-				to_chat(user, SPAN_WARNING("\The [source] is empty."))
-				return
+				// Half-Loop 2: Process transfer
+				else
+					transfering = min(transfering, transferable)
+					transferable -= transfering
+					if(dumping)
+						transfering = -transfering
+					AM.current_rounds += transfering
+					bullet_amount     -= transfering
+					playsound(src, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 20, TRUE, 6)
+					to_chat(user, SPAN_NOTICE("You have transferred [abs(transfering)] rounds to [dumping ? src : AM]."))
+					transfering = 0
 
-			if(destination_current == destination_max)
-				to_chat(user, SPAN_WARNING("\The [destination] is already full."))
-				return
+			while(transferable >= 1)
 
-			visible_message(SPAN_NOTICE("[user] starts refilling [destination] from [source]."), SPAN_NOTICE("You start refilling [destination] from [source]."))
-
-			var/S = min(source_current, destination_max - destination_current)
-			//Amount of bullets we plan to transfer depending on amount in source
-
-			var/bullets_transferred = 0
-
-			//Amount of times timed action will be activated.
-			//Standard M41A mag of 40 rounds or SMG mag of 48 takes 1.5 to refill from the box.
-			for(var/i = 1;i <= Ceiling(S / 48); i++)
-				if(!do_after(user, 15, INTERRUPT_ALL, action_icon))
-					to_chat(user, SPAN_NOTICE("You stop transferring rounds from [source] into [destination]."))
-					break
-				playsound(loc, pick('sound/weapons/handling/mag_refill_1.ogg', 'sound/weapons/handling/mag_refill_2.ogg', 'sound/weapons/handling/mag_refill_3.ogg'), 25, 1)
-				var/transfer = min(S - bullets_transferred, 48)
-				destination_current += transfer
-				source_current -= transfer
-				bullets_transferred += transfer
-				to_chat(user, SPAN_NOTICE("You have transferred [bullets_transferred] rounds out of [S] from [source] into [destination]."))
-
-			if(source == AM)
-				AM.current_rounds = source_current
-				bullet_amount = destination_current
-			else if(source == src)
-				AM.current_rounds = destination_current
-				bullet_amount = source_current
-			else
-				to_chat(user, SPAN_NOTICE("Error \"Lost source\" has occured in transferring code. Report this on Gitlab, please."))
-
-			AM.update_icon(S)
+			AM.update_icon(AM.current_rounds)
 			update_icon()
 
 		else if(AM.flags_magazine & AMMUNITION_HANDFUL)
+			if(default_ammo != AM.default_ammo)
+				to_chat(user, SPAN_WARNING("Those aren't the same rounds. Better not mix them up."))
+				return
 			if(caliber != AM.caliber)
 				to_chat(user, SPAN_WARNING("The rounds don't match up. Better not mix them up."))
 				return
@@ -1024,11 +1023,11 @@ Turn() or Shift() as there is virtually no overhead. ~N
 				qdel(AM)
 
 //explosion when using flamer procs.
-/obj/item/ammo_box/rounds/flamer_fire_act()
+/obj/item/ammo_box/rounds/flamer_fire_act(damage, flame_cause_data)
 	switch(bullet_amount)
 		if(0) return
-		if(1 to 100) explosion(loc,  0, 0, 1, 2) //blow it up.
-		else explosion(loc,  0, 0, 2, 3) //blow it up HARDER
+		if(1 to 100) explosion(loc,  0, 0, 1, 2, , , , flame_cause_data) //blow it up.
+		else explosion(loc,  0, 0, 2, 3, , , , flame_cause_data) //blow it up HARDER
 	qdel(src)
 
 /obj/item/ammo_box/rounds/ap

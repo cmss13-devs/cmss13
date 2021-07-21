@@ -10,13 +10,13 @@ var/global/list/faction_phoron_stored_list = list(
 
 /obj/item/collector
 	name = "deployable collector"
-	desc = "The newest technology from Weston-Yamada, a portable collector of the precious resource phoron. Phoron is used as fuel for the generators."
+	desc = "The newest technology from Weyland-Yutani, a portable collector of the precious resource phoron. Phoron is used as fuel for the generators."
 	icon = 'icons/obj/structures/machinery/defenses.dmi'
 	icon_state = "collector"
 	w_class = SIZE_TINY
 
 /obj/item/collector/attackby(var/obj/item/O, var/mob/user)
-	if(iscrowbar(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
 		user.visible_message(SPAN_NOTICE("[user] pulls [src] apart."), SPAN_NOTICE("You pull [src] apart."))
 		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		new /obj/item/stack/sheet/metal(loc, DEFENSE_METAL_COST)
@@ -84,7 +84,7 @@ var/global/list/faction_phoron_stored_list = list(
 		break_down()
 
 /obj/structure/machinery/collector/attackby(var/obj/item/O, var/mob/user)
-	if(iscrowbar(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_CROWBAR))
 		user.visible_message(SPAN_NOTICE("[user] begins pulling apart [src]."), SPAN_NOTICE("You begin pulling apart [src]."))
 
 		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
@@ -134,6 +134,7 @@ var/global/list/faction_phoron_stored_list = list(
 		M.visible_message(SPAN_DANGER("\The [M] slices [src] apart!"), SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
 	else
 		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return XENO_ATTACK_ACTION
 
 /obj/structure/machinery/collector/proc/break_down()
 	var/turf/T = get_turf(src)

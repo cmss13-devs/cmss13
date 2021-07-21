@@ -20,7 +20,7 @@
 	var/spray_warning = FALSE //whether spraying that reagent creates an admin message.
 	//var/list/viruses = list()
 	var/color = "#000000" // rgb: 0, 0, 0 (does not support alpha channels - yet!)
-	var/mob/last_source_mob
+	var/datum/weakref/last_source_mob
 	// For explosions
 	var/explosive = FALSE
 	var/power = 0
@@ -37,6 +37,7 @@
 	var/flameshape = FLAMESHAPE_LINE
 	var/fire_penetrating = FALSE // Whether it can damage fire-immune xenos
 	// For both chemical fires
+	var/burn_sprite = "dynamic"
 	var/burncolor = "#f88818"
 	var/burncolormod = 1
 	// Chem generator and research stuff
@@ -112,10 +113,10 @@
 	src = null
 	return
 
-/datum/reagent/proc/on_mob_life(mob/living/M, alien)
+/datum/reagent/proc/on_mob_life(mob/living/M, alien, var/delta_time)
 	if(alien == IS_HORROR || !holder)
 		return
-	holder.remove_reagent(id, custom_metabolism) //By default it slowly disappears.
+	holder.remove_reagent(id, custom_metabolism*delta_time) //By default it slowly disappears.
 
 	var/list/mods = handle_pre_processing(M)
 
@@ -161,9 +162,8 @@
 			P.process_overdose(M, potency)
 			if(overdose_critical && volume > overdose_critical)
 				P.process_critical(M, potency)
-			var/overdose_message = "[name] overdose"
-			M.last_damage_source = overdose_message
-			M.last_damage_mob = last_source_mob
+			var/overdose_message = "[istype(src, /datum/reagent/generated) ? "custom chemical" : initial(name)] overdose"
+			M.last_damage_data = create_cause_data(overdose_message, last_source_mob?.resolve())
 
 	if(mods[REAGENT_PURGE])
 		holder.remove_all_type(/datum/reagent,2*mods[REAGENT_PURGE])

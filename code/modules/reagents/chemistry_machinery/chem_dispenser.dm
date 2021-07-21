@@ -185,13 +185,14 @@
 	req_skill = null
 	req_skill_level = null
 	accept_glass = 1
+	wrenchable = TRUE
 	network = "Misc"
 	dispensable_reagents = list("water","ice","coffee","cream","tea","icetea","cola","spacemountainwind","dr_gibb","space_up","tonic","sodawater","lemon_lime","sugar","orangejuice","limejuice","watermelonjuice")
 	var/hackedcheck = 0
 
 /obj/structure/machinery/chem_dispenser/soda/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	..()
-	if(istype(B, /obj/item/device/multitool))
+	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		if(hackedcheck == 0)
 			to_chat(user, "You change the mode from 'McNano' to 'Pizza King'.")
 			dispensable_reagents += list("thirteenloko","grapesoda")
@@ -211,6 +212,7 @@
 	req_skill = null
 	req_skill_level = null
 	accept_glass = 1
+	wrenchable = TRUE
 	network = "Misc"
 	desc = "A technological marvel, supposedly able to mix just the mixture you'd like to drink the moment you ask for one."
 	dispensable_reagents = list("lemon_lime","sugar","orangejuice","limejuice","sodawater","tonic","beer","kahlua","whiskey","sake","wine","vodka","gin","rum","tequilla","vermouth","cognac","ale","mead")
@@ -219,7 +221,7 @@
 /obj/structure/machinery/chem_dispenser/beer/attackby(var/obj/item/B as obj, var/mob/user as mob)
 	..()
 
-	if(istype(B, /obj/item/device/multitool))
+	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		if(hackedcheck == 0)
 			to_chat(user, "You disable the 'nanotrasen-are-cheap-bastards' lock, enabling hidden and very expensive boozes.")
 			dispensable_reagents += list("goldschlager","patron","watermelonjuice","berryjuice")

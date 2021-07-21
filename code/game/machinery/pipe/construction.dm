@@ -380,12 +380,13 @@ Buildable meters
 			return 0
 
 /obj/item/pipe/attack_self(mob/user as mob)
-	return rotate()
+	..()
+	rotate()
 
 /obj/item/pipe/attackby(obj/item/W, mob/user)
 	..()
 	//*
-	if (!istype(W, /obj/item/tool/wrench))
+	if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return ..()
 	if (!isturf(loc))
 		return 1
@@ -643,7 +644,7 @@ Buildable meters
 /obj/item/pipe_meter/attackby(var/obj/item/W as obj, var/mob/user as mob)
 	..()
 
-	if (!istype(W, /obj/item/tool/wrench))
+	if (!HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		return ..()
 	if(!locate(/obj/structure/pipes/standard/, src.loc))
 		to_chat(user, SPAN_WARNING("You need to fasten it to a pipe."))

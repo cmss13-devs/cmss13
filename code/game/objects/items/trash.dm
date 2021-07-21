@@ -70,17 +70,17 @@
 /obj/item/trash/burger
 	name = "Burger wrapper"
 	icon_state = "burger"
-	desc = "A greasy plastic film that once held a Cheeseburger. Packaged by the Weston-Yamada Corporation."
+	desc = "A greasy plastic film that once held a Cheeseburger. Packaged by the Weyland-Yutani Corporation."
 
 /obj/item/trash/buritto
 	name = "Burrito wrapper"
 	icon_state = "burrito"
-	desc = "A foul smelling plastic film that once held a microwave burrito. Packaged by the Weston-Yamada Corporation."
+	desc = "A foul smelling plastic film that once held a microwave burrito. Packaged by the Weyland-Yutani Corporation."
 
 /obj/item/trash/hotdog
 	name = "Hotdog wrapper"
 	icon_state = "hotdog"
-	desc = "A musty plastic film that once held a hotdog. Packaged by the Weston-Yamada Corporation."
+	desc = "A musty plastic film that once held a hotdog. Packaged by the Weyland-Yutani Corporation."
 
 /obj/item/trash/kepler
 	name = "Kepler wrapper"

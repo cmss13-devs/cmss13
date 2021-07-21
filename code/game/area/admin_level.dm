@@ -5,7 +5,7 @@
 	icon_state = "thunder"
 	requires_power = FALSE
 	statistic_exempt = TRUE
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 	luminosity = TRUE
 	lighting_use_dynamic = FALSE
 
@@ -91,7 +91,7 @@
 	name = "\improper Bunker Xeno Hive"
 	icon_state = "bunker01_caves_outpost"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
-	flags_atom = AREA_NOTUNNEL|AREA_ALLOW_XENO_JOIN
+	flags_area = AREA_NOTUNNEL|AREA_ALLOW_XENO_JOIN
 
 	var/hivenumber = XENO_HIVE_ALPHA
 
@@ -108,11 +108,11 @@
 	name = "ERT Station"
 	icon_state = "green"
 	requires_power = 0
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 //Simulation area
 /area/adminlevel/simulation
 	name = "Simulated Reality"
 	icon_state = "green"
 	requires_power = 0
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL

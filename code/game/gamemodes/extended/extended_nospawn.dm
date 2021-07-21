@@ -5,7 +5,6 @@
 	votable = FALSE
 
 /datum/game_mode/extended/nospawn/post_setup()
-	initialize_map_resource_list()
 	for(var/mob/new_player/np in GLOB.new_player_list)
 		np.new_player_panel_proc()
 	round_time_lobby = world.time

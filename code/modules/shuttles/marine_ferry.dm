@@ -37,6 +37,13 @@
 	var/sound/sound_misc //Anything else, like escape pods.
 	var/list/obj/structure/dropship_equipment/equipments = list()
 
+	//Automated transport
+/// Can the shuttle depart automatically?
+	var/automated_launch = FALSE
+/// How many seconds past shuttle cooldown for the shuttle to automatically depart (if possible)
+	var/automated_launch_delay = DROPSHIP_MIN_AUTO_DELAY
+	var/automated_launch_timer = TIMER_ID_NULL //Timer
+
 	//Copy of about 650-700 lines down for elevators
 	var/list/controls = list() //Used to announce failure
 	var/list/main_doors = list() //Used to check failure
@@ -96,6 +103,30 @@
 	in_use = user
 	process_state = FORCE_CRASH
 
+/datum/shuttle/ferry/marine/proc/set_automated_launch(bool_v)
+	automated_launch = bool_v
+	if(bool_v)
+		if(recharging <= 0 && process_state == IDLE_STATE)
+			prepare_automated_launch()
+		//Else, the next automated launch will be prepared once the shuttle is ready
+	else 
+		if(automated_launch_timer != TIMER_ID_NULL)
+			deltimer(automated_launch_timer)
+			automated_launch_timer = TIMER_ID_NULL
+
+/datum/shuttle/ferry/marine/proc/prepare_automated_launch()
+	ai_silent_announcement("The [name] will automatically depart in [automated_launch_delay * 0.1] seconds")
+	automated_launch_timer = addtimer(CALLBACK(src, .proc/automated_launch), automated_launch_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
+
+/datum/shuttle/ferry/marine/proc/automated_launch()
+	if(!queen_locked)
+		launch()
+	else
+		automated_launch = FALSE
+	automated_launch_timer = TIMER_ID_NULL
+	ai_silent_announcement("Dropship '[name]' departing.")
+
+
 /*
 	Please ensure that long_jump() and short_jump() are only called from here. This applies to subtypes as well.
 	Doing so will ensure that multiple jumps cannot be initiated in parallel.
@@ -107,6 +138,10 @@
 		if (WAIT_LAUNCH)
 			if(!preflight_checks())
 				announce_preflight_failure()
+				if(automated_launch)
+					ai_silent_announcement("Automated launch of [name] failed. New launch in [DROPSHIP_AUTO_RETRY_COOLDOWN] SECONDS.")
+					automated_launch_timer = addtimer(CALLBACK(src, .proc/automated_launch), automated_launch_delay)
+
 				process_state = IDLE_STATE
 				in_use = null
 				locked = 0
@@ -305,6 +340,10 @@
 
 	//END: Heavy lifting backend
 
+	if(SSticker && SSticker.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED))
+		SSticker.mode.flags_round_type |= MODE_DS_LANDED
+		SSticker.mode.ds_first_drop(src)
+
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X
 		E.on_arrival()
@@ -314,21 +353,6 @@
 	if(!transit_gun_mission) //we're back where we started, no location change.
 		location = !location
 
-		// Arrived at the planet/offsite
-		if(location)
-			// Shuttle code is so fucking shitty that I can't be bothered to make anything better than this
-			// Begin growing LZ & primary resource plasmagas
-			for(var/obj/effect/landmark/resource_node_activator/node_activator in world)
-				if(istype(node_activator, /obj/effect/landmark/resource_node_activator/hive))
-					continue
-
-				var/lz_tag = (shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1" ? "lz1" : "lz2")
-				if(istype(node_activator, /obj/effect/landmark/resource_node_activator/landing) && \
-				((SSticker.mode.active_lz && SSticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
-					continue
-
-				node_activator.trigger()
-
 	transit_optimized = 0 //De-optimize the flight plans
 
 	//Simple, cheap ticker
@@ -336,6 +360,10 @@
 		while(recharging > 0)
 			recharging--
 			sleep(1)
+
+	//If the shuttle is set for automated departure, prepare for it
+	if(automated_launch)
+		prepare_automated_launch()
 
 //Starts out exactly the same as long_jump()
 //Differs in the target selection and later things enough to merit it's own proc
@@ -478,7 +506,7 @@
 	for(var/j=0; j<10; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		cell_explosion(sploded, 200, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "dropship crash") //Clears out walls
+		cell_explosion(sploded, 200, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, , , ,create_cause_data("dropship crash")) //Clears out walls
 		sleep(3)
 
 	// Break the ultra-reinforced windows.
@@ -496,7 +524,7 @@
 	while(explosion_alive)
 		explosion_alive = FALSE
 		for(var/datum/automata_cell/explosion/E in cellauto_cells)
-			if(E.explosion_source == "dropship crash")
+			if(E.explosion_cause_data && E.explosion_cause_data.cause_name == "dropship crash")
 				explosion_alive = TRUE
 				break
 		sleep(1)
@@ -605,21 +633,6 @@
 	moving_status = SHUTTLE_IDLE
 
 	location = !location
-
-	if(!location)
-		return
-
-	// Begin growing LZ & primary resource plasmagas
-	for(var/obj/effect/landmark/resource_node_activator/node_activator in world)
-		if(istype(node_activator, /obj/effect/landmark/resource_node_activator/hive))
-			continue
-
-		var/lz_tag = (shuttle_tag == "[MAIN_SHIP_NAME] Dropship 1" ? "lz1" : "lz2")
-		if(istype(node_activator, /obj/effect/landmark/resource_node_activator/landing) && \
-		((SSticker.mode.active_lz && SSticker.mode.active_lz.shuttle_tag != shuttle_tag) || node_activator.node_group != "marine_first_landfall_[lz_tag]"))
-			continue
-
-		node_activator.trigger()
 
 /datum/shuttle/ferry/marine/close_doors(var/list/turf/L)
 	for(var/turf/T in L) // For every turf

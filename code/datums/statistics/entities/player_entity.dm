@@ -9,7 +9,7 @@
 	var/name
 	var/ckey // "cakey"
 	var/list/datum/entity/player_stats = list()
-	var/list/datum/entity/death_stats = list()
+	var/list/datum/entity/statistic/death/death_stats = list()
 	var/menu = 0
 	var/subMenu = 0
 	var/dataMenu = 0

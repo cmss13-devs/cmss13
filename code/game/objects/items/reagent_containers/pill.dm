@@ -24,7 +24,7 @@
 	volume = 60
 	var/pill_desc = "An unknown pill." // The real description of the pill, shown when examined by a medically trained person
 	var/pill_icon_class = "random"     // Pills with the same icon class share icons
-	var/list/pill_initial_reagents     // Defaults reagents if any	
+	var/list/pill_initial_reagents     // Defaults reagents if any
 
 /obj/item/reagent_container/pill/Initialize(mapload, ...)
 	. = ..()
@@ -35,7 +35,7 @@
 
 /obj/item/reagent_container/pill/update_icon()
 	. = ..()
-	if(!icon_state) 
+	if(!icon_state)
 		icon_state = GLOB.pill_icon_mappings[pill_icon_class]
 
 /obj/item/reagent_container/pill/examine(mob/user)
@@ -43,7 +43,7 @@
 	if(pill_desc)
 		display_contents(user)
 
-/obj/item/reagent_container/pill/attack(mob/M, mob/user, def_zone)
+/obj/item/reagent_container/pill/attack(mob/M, mob/user)
 	if(M == user)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
@@ -163,6 +163,11 @@
 	pill_initial_reagents = list("kelotane" = 15)
 	pill_icon_class = "kelo"
 
+/obj/item/reagent_container/pill/oxycodone
+    pill_desc = "A Oxycodone pill. A powerful painkiller."
+    pill_initial_reagents = list("oxycodone" = 15)
+    pill_icon_class = "oxy"
+
 /obj/item/reagent_container/pill/paracetamol
 	pill_desc = "A Paracetamol pill. Painkiller for the ages."
 	pill_initial_reagents = list("paracetamol" = 15)
@@ -202,11 +207,6 @@
 	pill_desc = "A Happy Pill! Happy happy joy joy!"
 	pill_initial_reagents = list("space_drugs" = 15, "sugar" = 15)
 	pill_icon_class = "drug"
-
-/obj/item/reagent_container/pill/zoom
-	pill_desc = "A Zoom pill! Gotta go fast!"
-	pill_initial_reagents = list("impedrezene" = 10, "synaptizine" = 5, "hyperzine" = 5)
-	pill_icon_class = "stim"
 
 /obj/item/reagent_container/pill/russianRed
 	pill_desc = "A Russian Red pill. A very dangerous radiation-countering substance."

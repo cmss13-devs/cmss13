@@ -4,6 +4,7 @@
 */
 /mob/living/proc/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
 	apply_damage(damage, damage_type, def_zone)
+	return damage
 
 /*
 	apply_damage(a,b,c)
@@ -18,7 +19,9 @@
 	if(!damage)
 		return FALSE
 
-	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	var/list/damagedata = list("damage" = damage)
+	if(SEND_SIGNAL(src, COMSIG_MOB_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	damage = damagedata["damage"]
 
 	switch(damagetype)
 		if(BRUTE)

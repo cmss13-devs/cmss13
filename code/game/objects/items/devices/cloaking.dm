@@ -37,6 +37,7 @@
 	disrupt(user)
 
 /obj/item/device/chameleon/attack_self(mob/user)
+	..()
 	toggle(user)
 
 /obj/item/device/chameleon/proc/toggle(mob/user)

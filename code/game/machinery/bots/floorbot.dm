@@ -343,10 +343,10 @@
 		..()
 		return
 	if(src.contents.len >= 1)
-		to_chat(user, SPAN_NOTICE("They wont fit in as there is already stuff inside."))
+		to_chat(user, SPAN_NOTICE("That won't fit, there's already stuff inside."))
 		return
-	if(user.s_active)
-		user.s_active.close(user)
+	for(var/mob/M in content_watchers)
+		storage_close(M)
 	if (T.use(10))
 		var/obj/item/frame/toolbox_tiles/B = new /obj/item/frame/toolbox_tiles
 		user.put_in_hands(B)

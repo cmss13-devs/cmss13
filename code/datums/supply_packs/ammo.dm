@@ -295,6 +295,17 @@
 	containername = "\improper sentry flamer ammo crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_sentry_shotgun
+	name = "UA 12-G sentry shotgun ammunition (x2)"
+	contains = list(
+					/obj/item/ammo_magazine/sentry/shotgun,
+					/obj/item/ammo_magazine/sentry/shotgun
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper sentry shotgun ammo crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_napalm
 	name = "UT-Napthal Fuel (x4)"
 	contains = list(
@@ -327,7 +338,7 @@
 	contains = list(
 					/obj/item/ammo_magazine/revolver/upp,
 					/obj/item/ammo_magazine/revolver/small,
-					/obj/item/ammo_magazine/execution/mateba,
+					/obj/item/ammo_magazine/revolver/mateba/highimpact,
 					/obj/item/ammo_magazine/revolver/cmb,
 					/obj/item/ammo_magazine/pistol/heavy,
 					/obj/item/ammo_magazine/pistol/c99,
@@ -337,7 +348,7 @@
 					/obj/item/ammo_magazine/pistol/mod88,
 					/obj/item/ammo_magazine/pistol/vp78,
 					/obj/item/ammo_magazine/smg/mp7,
-					/obj/item/ammo_magazine/smg/skorpion,
+					/obj/item/ammo_magazine/pistol/skorpion,
 					/obj/item/ammo_magazine/smg/ppsh,
 					/obj/item/ammo_magazine/smg/ppsh/extended,
 					/obj/item/ammo_magazine/smg/uzi,

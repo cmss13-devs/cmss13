@@ -20,12 +20,12 @@
 	role_comm_title = "RADM"
 	minimum_age = 50
 	skills = /datum/skills/admiral
-	languages = list("English", "Japanese")
+	languages = list("English", "Russian", "Japanese", "Spacendeutchen", "Spanish") //Know your enemy.
 
-	service_under = list(/obj/item/clothing/under/marine/officer/admiral)
-	service_over = list(/obj/item/clothing/suit/armor/vest/admiral)
-	service_gloves = list(/obj/item/clothing/gloves/black)
-	service_hat = list(/obj/item/clothing/head/admiral)
+	service_under = list(/obj/item/clothing/under/marine/officer/admiral, /obj/item/clothing/under/marine/officer/bridge)
+	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/admiral, /obj/item/clothing/suit/storage/jacket/marine)
+	service_gloves = list(/obj/item/clothing/gloves/black, /obj/item/clothing/gloves/marine/dress)
+	service_hat = list(/obj/item/clothing/head/admiral, /obj/item/clothing/head/beret/marine/commander/black)
 
 /datum/equipment_preset/uscm_event/admiral/New()
 	. = ..()
@@ -40,18 +40,17 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/admiral(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/admiral(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/dress/admiral(H), WEAR_JACKET)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/breath(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tank/emergency_oxygen/engi(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/pmc_mateba(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/revolver/mateba(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/pistol/large/mateba/impact(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/phosphorus(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/flashbang(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/admiral(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/cotablet(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/weapon/melee/telebaton, WEAR_IN_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/device/flash, WEAR_IN_JACKET)
 
 	H.equip_if_possible(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 
@@ -84,8 +83,8 @@
 	//they will see messages for them putting guns and explosives into their backpack...
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/pistol/c99/upp/tranq(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99t(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99/tranq(H.back), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/c99/tranq(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/handcuffs(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/chameleon(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
@@ -326,7 +325,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/marshall(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral/impact(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/provost/marshall(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/mp/provost/marshall(H), WEAR_HEAD)
@@ -355,7 +354,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/marshall(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral/impact(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/provost/marshall(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/mp/provost/marshall(H), WEAR_HEAD)
@@ -384,7 +383,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/marshall/chief(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/mateba/admiral/impact(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/provost/marshall/chief(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/mp/provost/marshall(H), WEAR_HEAD)

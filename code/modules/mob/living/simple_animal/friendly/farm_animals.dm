@@ -29,7 +29,7 @@
 	udder.my_atom = src
 	..()
 
-/mob/living/simple_animal/hostile/retaliate/goat/Life()
+/mob/living/simple_animal/hostile/retaliate/goat/Life(delta_time)
 	. = ..()
 	if(.)
 		//chance to go crazy and start wacking stuff
@@ -49,7 +49,7 @@
 			var/obj/effect/plantsegment/SV = locate(/obj/effect/plantsegment) in loc
 			qdel(SV)
 			if(prob(10))
-				say("Nom")
+				INVOKE_ASYNC(src, .proc/say, "Nom")
 
 		if(!pulledby)
 			for(var/direction in shuffle(list(1,2,4,8,5,6,9,10)))
@@ -69,7 +69,7 @@
 			var/obj/effect/plantsegment/SV = locate(/obj/effect/plantsegment) in loc
 			qdel(SV)
 			if(prob(10))
-				say("Nom")
+				INVOKE_ASYNC(src, .proc/say, "Nom")
 
 /mob/living/simple_animal/hostile/retaliate/goat/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	var/obj/item/reagent_container/glass/G = O
@@ -123,7 +123,7 @@
 	else
 		..()
 
-/mob/living/simple_animal/cow/Life()
+/mob/living/simple_animal/cow/Life(delta_time)
 	. = ..()
 	if(stat == CONSCIOUS)
 		if(udder && prob(5))
@@ -132,9 +132,10 @@
 /mob/living/simple_animal/cow/death()
 	. = ..()
 	if(!.)	return //was already dead
-	if(last_damage_mob)
-		var/mob/user = last_damage_mob
-		user.count_niche_stat(STATISTICS_NICHE_COW)
+	if(last_damage_data)
+		var/mob/user = last_damage_data.resolve_mob()
+		if(user)
+			user.count_niche_stat(STATISTICS_NICHE_COW)
 
 /mob/living/simple_animal/cow/attack_hand(mob/living/carbon/M as mob)
 	if(!stat && M.a_intent == INTENT_DISARM && icon_state != icon_dead)
@@ -186,7 +187,7 @@
 	if (PF)
 		PF.flags_pass = PASS_UNDER
 
-/mob/living/simple_animal/chick/Life()
+/mob/living/simple_animal/chick/Life(delta_time)
 	. =..()
 	if(!.)
 		return
@@ -241,9 +242,10 @@ var/global/chicken_count = 0
 /mob/living/simple_animal/chicken/death()
 	..()
 	chicken_count -= 1
-	if(last_damage_mob)
-		var/mob/user = last_damage_mob
-		user.count_niche_stat(STATISTICS_NICHE_CHICKEN)
+	if(last_damage_data)
+		var/mob/user = last_damage_data.resolve_mob()
+		if(user)
+			user.count_niche_stat(STATISTICS_NICHE_CHICKEN)
 
 /mob/living/simple_animal/chicken/attackby(var/obj/item/O as obj, var/mob/user as mob)
 	if(istype(O, /obj/item/reagent_container/food/snacks/grown/wheat)) //feedin' dem chickens
@@ -258,7 +260,7 @@ var/global/chicken_count = 0
 	else
 		..()
 
-/mob/living/simple_animal/chicken/Life()
+/mob/living/simple_animal/chicken/Life(delta_time)
 	. =..()
 	if(!.)
 		return

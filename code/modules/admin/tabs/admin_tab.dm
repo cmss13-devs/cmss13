@@ -240,6 +240,10 @@
 			if(R_ADMIN & C.admin_holder.rights)
 				to_chat(C, msg)
 
+/client/proc/get_admin_say()
+	var/msg = input(src, null, "asay \"text\"") as text|null
+	cmd_admin_say(msg)
+
 /client/proc/cmd_mod_say(msg as text)
 	set name = "Msay"
 	set category = "Admin"
@@ -264,6 +268,10 @@
 	for(var/client/C in GLOB.admins)
 		if((R_ADMIN|R_MOD) & C.admin_holder.rights)
 			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>[key_name(src,1)]</EM> (<A HREF='?src=\ref[C.admin_holder];adminplayerobservejump=\ref[mob]'>JMP</A>): <span class='message'>[msg]</span></span>")
+
+/client/proc/get_mod_say()
+	var/msg = input(src, null, "msay \"text\"") as text|null
+	cmd_mod_say(msg)
 
 /client/proc/cmd_mentor_say(msg as text)
 	set name = "MentorSay"
@@ -290,6 +298,9 @@
 		if((R_ADMIN|R_MOD|R_MENTOR) & C.admin_holder.rights)
 			to_chat(C, "<span class='[color]'><span class='prefix'>[channel]</span> <EM>([usr.key])</EM>: <span class='message'>[msg]</span></span>")
 
+/client/proc/get_mentor_say()
+	var/msg = input(src, null, "mentorsay \"text\"") as text|null
+	cmd_mentor_say(msg)
 
 /client/proc/enable_admin_mob_verbs()
 	set name = "Mob Admin Verbs - Show"

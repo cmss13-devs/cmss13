@@ -165,7 +165,7 @@
 	if (alert("Are you sure you want to start the round early?",,"Yes","No") != "Yes")
 		return
 	if (SSticker.current_state == GAME_STATE_PREGAME)
-		SSticker.force_start()
+		SSticker.request_start()
 		message_staff(SPAN_BLUE("[usr.key] has started the game."))
 
 		return TRUE

@@ -46,6 +46,9 @@
 	if(user.loc && (user.loc.density || locate(/obj/structure/fence) in user.loc))
 		to_chat(user, SPAN_WARNING("You can't plant a mine here."))
 		return TRUE
+	if(user.z == GLOB.interior_manager.interior_z)
+		to_chat(user, SPAN_WARNING("It's too cramped in here to deploy \a [src]."))
+		return TRUE
 
 
 
@@ -76,7 +79,7 @@
 	user.visible_message(SPAN_NOTICE("[user] finishes deploying [src]."), \
 		SPAN_NOTICE("You finish deploying [src]."))
 
-	source_mob = user
+	cause_data = create_cause_data(initial(name), user)
 	anchored = TRUE
 	playsound(loc, 'sound/weapons/mine_armed.ogg', 25, 1)
 	user.drop_inv_item_on_ground(src)
@@ -87,7 +90,7 @@
 
 //Disarming
 /obj/item/explosive/mine/attackby(obj/item/W, mob/user)
-	if(istype(W, /obj/item/device/multitool))
+	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
 				return
@@ -159,17 +162,17 @@
 	try_to_prime(AM)
 
 
-/obj/item/explosive/mine/proc/try_to_prime(mob/living/carbon/human/H)
+/obj/item/explosive/mine/proc/try_to_prime(mob/living/L)
 	if(!active || triggered || (customizable && !detonator))
 		return
-	if(!isliving(H))
+	if(!istype(L))
 		return
-	if(H.stat == DEAD)
+	if(L.stat == DEAD)
 		return
-	if((istype(H) && H.get_target_lock(iff_signal)) || isrobot(H))
+	if(L.get_target_lock(iff_signal) || isrobot(L))
 		return
-	H.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [H] moves in front of it."), \
-	SPAN_DANGER("[icon2html(src, H)] The [name] clicks as you move in front of it."), \
+	L.visible_message(SPAN_DANGER("[icon2html(src, viewers(src))] The [name] clicks as [L] moves in front of it."), \
+	SPAN_DANGER("[icon2html(src, L)] The [name] clicks as you move in front of it."), \
 	SPAN_DANGER("You hear a click."))
 
 	triggered = TRUE
@@ -183,9 +186,9 @@
 	set waitfor = 0
 
 	if(!customizable)
-		create_shrapnel(loc, 12, dir, angle, , initial(name), source_mob)
+		create_shrapnel(loc, 12, dir, angle, , cause_data)
 		sleep(2) //so that shrapnel has time to hit mobs before they are knocked over by the explosion
-		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, initial(name), source_mob)
+		cell_explosion(loc, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, dir, cause_data)
 		qdel(src)
 	else
 		. = ..()
@@ -195,10 +198,13 @@
 
 /obj/item/explosive/mine/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(triggered) //Mine is already set to go off
-		return
+		return XENO_NO_DELAY_ACTION
 
 	if(M.a_intent == INTENT_HELP)
-		return
+		to_chat(M, SPAN_XENONOTICE("If you hit this hard enough, it would probably explode."))
+		return XENO_NO_DELAY_ACTION
+
+	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] has slashed [src]!"), \
 		SPAN_DANGER("You slash [src]!"))
 	playsound(loc, 'sound/weapons/slice.ogg', 25, 1)
@@ -212,9 +218,10 @@
 	prime()
 	if(!QDELETED(src))
 		disarm()
+	return XENO_ATTACK_ACTION
 
-
-/obj/item/explosive/mine/flamer_fire_act() //adding mine explosions
+/obj/item/explosive/mine/flamer_fire_act(damage, flame_cause_data) //adding mine explosions
+	cause_data = flame_cause_data
 	prime()
 	if(!QDELETED(src))
 		disarm()
@@ -251,7 +258,7 @@
 
 /obj/item/explosive/mine/pmc
 	name = "\improper M20P Claymore anti-personnel mine"
-	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the W-Y PMC forces."
+	desc = "The M20P Claymore is a directional proximity triggered anti-personnel mine designed by Armat Systems for use by the United States Colonial Marines. It has been modified for use by the Wey-Yu PMC forces."
 	icon_state = "m20p"
 	iff_signal = FACTION_PMC
 

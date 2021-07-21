@@ -161,7 +161,7 @@
 	return dat
 
 /obj/structure/machinery/computer/groundside_operations/proc/update_mapview(var/close = 0)
-	if (current_mapviewer && !Adjacent(current_mapviewer) || close)
+	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return
@@ -170,21 +170,18 @@
 		overlay_marine_mapview()
 
 	current_mapviewer << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-
-	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]")
-	onclose(current_mapviewer, "marineminimap", src)
+	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/groundside_operations/Topic(href, href_list)
-	if(..())
-		return FALSE
-
-	usr.set_interaction(src)
-
 	if (href_list["close"] && current_mapviewer)
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return
 
+	if(..())
+		return FALSE
+
+	usr.set_interaction(src)
 	switch(href_list["operation"])
 		if("mapview")
 			if(current_mapviewer)

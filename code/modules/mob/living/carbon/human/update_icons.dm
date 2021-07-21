@@ -79,11 +79,14 @@ There are several things that need to be remembered:
 	var/image/I = overlays_standing[cache_index]
 	if(I)
 		I.appearance_flags |= RESET_COLOR
+		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_APPLIED, cache_index, I)
 		overlays += I
 
 /mob/living/carbon/human/remove_overlay(cache_index)
 	if(overlays_standing[cache_index])
-		overlays -= overlays_standing[cache_index]
+		var/image/I = overlays_standing[cache_index]
+		SEND_SIGNAL(src, COMSIG_HUMAN_OVERLAY_REMOVED, cache_index, I)
+		overlays -= I
 		overlays_standing[cache_index] = null
 
 
@@ -91,20 +94,25 @@ There are several things that need to be remembered:
 	if(lying == lying_prev && !force)
 		return
 	lying_prev = lying
+	var/matrix/M = matrix()
+	var/matrix/L = matrix() //Counter-rotation for langchat text.
 	if(lying)
-		var/matrix/M = matrix()
 		if(pulledby && pulledby.grab_level >= GRAB_CARRY)
 			M.Turn(90)
+			L.Turn(270)
 		else
 			if(prob(50))
 				M.Turn(90)
+				L.Turn(270)
 			else
 				M.Turn(270)
+				L.Turn(90)
 			M.Translate(rand(-10,10),rand(-10,10))
 		apply_transform(M)
+		langchat_image.transform = L
 	else
-		var/matrix/M = matrix()
 		apply_transform(M)
+		langchat_image.transform = L
 
 /mob/living/carbon/human/UpdateDamageIcon()
 	for(var/obj/limb/O in limbs)
@@ -133,8 +141,6 @@ There are several things that need to be remembered:
 	var/g = get_gender_name(gender)
 	vis_contents.Cut()
 	for(var/obj/limb/part in limbs)
-		if(part.status & LIMB_DESTROYED)
-			continue
 		vis_contents += part
 		part.update_icon(TRUE)
 
@@ -244,6 +250,27 @@ There are several things that need to be remembered:
 
 
 
+/**Handles headshot images. These render above hair and below hats/helmets. Must be given a headshot_state or it just removes the overlay.
+Applied by gun suicide and high impact bullet executions, removed by rejuvenate, since such people are otherwise unrevivable.**/
+/mob/living/carbon/human/proc/update_headshot_overlay(headshot_state)
+	remove_overlay(HEADSHOT_LAYER)
+
+	if(!headshot_state)
+		return
+
+	var/obj/limb/head/head_organ = get_limb("head")
+	if(!head_organ || (head_organ.status & LIMB_DESTROYED))
+		return
+
+	var/image/headshot = new('icons/mob/humans/dam_human.dmi', headshot_state)
+	headshot.appearance_flags = RESET_COLOR
+	headshot.blend_mode = BLEND_INSET_OVERLAY
+	headshot.layer = -HEADSHOT_LAYER
+	overlays_standing[HEADSHOT_LAYER] = headshot
+	apply_overlay(HEADSHOT_LAYER)
+
+
+
 /* --------------------------------------- */
 //For legacy support.
 /mob/living/carbon/human/regenerate_icons()
@@ -284,8 +311,8 @@ There are several things that need to be remembered:
 	remove_overlay(UNIFORM_LAYER)
 	if(w_uniform)
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			w_uniform.screen_loc = hud_used.ui_datum.ui_iclothing
 			client.screen += w_uniform
+			w_uniform.screen_loc = hud_used.ui_datum.hud_slot_offset(w_uniform, hud_used.ui_datum.ui_iclothing)
 
 		if(!(wear_suit && wear_suit.flags_inv_hide & HIDEJUMPSUIT))
 			var/image/I = w_uniform.get_mob_overlay(src, WEAR_BODY)
@@ -301,24 +328,22 @@ There are several things that need to be remembered:
 	if(!wear_id)
 		return
 	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
-		wear_id.screen_loc = hud_used.ui_datum.ui_id
 		client.screen += wear_id
+		wear_id.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_id, hud_used.ui_datum.ui_id)
 
-	if(!wear_id.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !w_uniform.rolled_sleeves))
+	if(!wear_id.pinned_on_uniform || (w_uniform && w_uniform.displays_id && !(w_uniform.flags_jumpsuit & UNIFORM_JACKET_REMOVED)))
 		var/image/id_overlay = wear_id.get_mob_overlay(src, WEAR_ID)
 		id_overlay.layer = -ID_LAYER
 		overlays_standing[ID_LAYER]	= id_overlay
 		apply_overlay(ID_LAYER)
-
-
 
 /mob/living/carbon/human/update_inv_gloves()
 	remove_overlay(GLOVES_LAYER)
 	var/image/I
 	if(gloves)
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			gloves.screen_loc = hud_used.ui_datum.ui_gloves
 			client.screen += gloves
+			gloves.screen_loc = hud_used.ui_datum.hud_slot_offset(gloves, hud_used.ui_datum.ui_gloves)
 
 		if(!(wear_suit && wear_suit.flags_inv_hide & HIDEGLOVES))
 			I = gloves.get_mob_overlay(src, WEAR_HANDS)
@@ -337,8 +362,8 @@ There are several things that need to be remembered:
 	remove_overlay(GLASSES_LAYER)
 	if(glasses)
 		if(client && hud_used &&  hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			glasses.screen_loc = hud_used.ui_datum.ui_glasses
 			client.screen += glasses
+			glasses.screen_loc = hud_used.ui_datum.hud_slot_offset(glasses, hud_used.ui_datum.ui_glasses)
 
 		var/image/I = glasses.get_mob_overlay(src, WEAR_EYES)
 		I.layer = -GLASSES_LAYER
@@ -351,8 +376,8 @@ There are several things that need to be remembered:
 	remove_overlay(EARS_LAYER)
 	if(wear_ear)
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			wear_ear.screen_loc = hud_used.ui_datum.ui_wear_ear
 			client.screen += wear_ear
+			wear_ear.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_ear, hud_used.ui_datum.ui_wear_ear)
 
 		var/image/I = wear_ear.get_mob_overlay(src, WEAR_EAR)
 		I.layer = -EARS_LAYER
@@ -366,8 +391,8 @@ There are several things that need to be remembered:
 	var/image/I
 	if(shoes)
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			shoes.screen_loc = hud_used.ui_datum.ui_shoes
 			client.screen += shoes
+			shoes.screen_loc = hud_used.ui_datum.hud_slot_offset(shoes, hud_used.ui_datum.ui_shoes)
 
 		if(!((wear_suit && wear_suit.flags_inv_hide & HIDESHOES) || (w_uniform && w_uniform.flags_inv_hide & HIDESHOES)))
 			I =  shoes.get_mob_overlay(src, WEAR_FEET)
@@ -384,10 +409,9 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/update_inv_s_store()
 	remove_overlay(SUIT_STORE_LAYER)
 	if(s_store)
-
 		if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
-			s_store.screen_loc = hud_used.ui_datum.ui_sstore1
 			client.screen += s_store
+			s_store.screen_loc = hud_used.ui_datum.hud_slot_offset(s_store, hud_used.ui_datum.ui_sstore1)
 
 		var/image/I	= s_store.get_mob_overlay(src, WEAR_J_STORE)
 		I.layer = -SUIT_STORE_LAYER
@@ -406,8 +430,8 @@ There are several things that need to be remembered:
 	if(head)
 
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			head.screen_loc = hud_used.ui_datum.ui_head
 			client.screen += head
+			head.screen_loc = hud_used.ui_datum.hud_slot_offset(head, hud_used.ui_datum.ui_head)
 
 		var/image/I = head.get_mob_overlay(src, WEAR_HEAD)
 		I.layer = -HEAD_LAYER
@@ -448,8 +472,9 @@ There are several things that need to be remembered:
 	if(!belt)
 		return
 	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
-		belt.screen_loc = hud_used.ui_datum.ui_belt
 		client.screen += belt
+		belt.screen_loc = hud_used.ui_datum.hud_slot_offset(belt, hud_used.ui_datum.ui_belt)
+	
 	var/image/I = belt.get_mob_overlay(src, WEAR_WAIST)
 	I.layer = -BELT_LAYER
 	overlays_standing[BELT_LAYER] = I
@@ -464,8 +489,8 @@ There are several things that need to be remembered:
 
 	if(wear_suit)
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			wear_suit.screen_loc = hud_used.ui_datum.ui_oclothing
 			client.screen += wear_suit
+			wear_suit.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_suit, hud_used.ui_datum.ui_oclothing)
 
 		var/image/I = wear_suit.get_mob_overlay(src, WEAR_JACKET)
 		I.layer = -SUIT_LAYER
@@ -514,11 +539,11 @@ There are several things that need to be remembered:
 		return
 
 	if(l_store)
-		l_store.screen_loc = hud_used.ui_datum.ui_storage1
 		client.screen += l_store
+		l_store.screen_loc = hud_used.ui_datum.hud_slot_offset(l_store, hud_used.ui_datum.ui_storage1)
 	if(r_store)
-		r_store.screen_loc = hud_used.ui_datum.ui_storage2
 		client.screen += r_store
+		r_store.screen_loc = hud_used.ui_datum.hud_slot_offset(r_store, hud_used.ui_datum.ui_storage2)
 
 
 /mob/living/carbon/human/update_inv_wear_mask()
@@ -526,8 +551,8 @@ There are several things that need to be remembered:
 	if(!wear_mask)
 		return
 	if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-		wear_mask.screen_loc = hud_used.ui_datum.ui_mask
 		client.screen += wear_mask
+		wear_mask.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_mask, hud_used.ui_datum.ui_mask)
 
 	if(!(head && head.flags_inv_hide & HIDEMASK))
 		var/image/I = wear_mask.get_mob_overlay(src, WEAR_FACE)
@@ -535,17 +560,19 @@ There are several things that need to be remembered:
 		overlays_standing[FACEMASK_LAYER] = I
 		apply_overlay(FACEMASK_LAYER)
 
-
 /mob/living/carbon/human/update_inv_back()
 	remove_overlay(BACK_LAYER)
 	if(!back)
 		return
 	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
-		back.screen_loc = hud_used.ui_datum.ui_back
 		client.screen += back
+		back.screen_loc = hud_used.ui_datum.hud_slot_offset(back, hud_used.ui_datum.ui_back)
 
 	var/image/I = back.get_mob_overlay(src, WEAR_BACK)
 	I.layer = -BACK_LAYER
+
+	if(dir == NORTH && (back.flags_item & ITEM_OVERRIDE_NORTHFACE))
+		I.layer = -BACK_FRONT_LAYER
 	overlays_standing[BACK_LAYER] = I
 	apply_overlay(BACK_LAYER)
 
@@ -577,7 +604,7 @@ There are several things that need to be remembered:
 		return
 	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD && hud_used.ui_datum)
 		client.screen += r_hand
-		r_hand.screen_loc = hud_used.ui_datum.ui_rhand
+		r_hand.screen_loc = hud_used.ui_datum.hud_slot_offset(r_hand, hud_used.ui_datum.ui_rhand)
 
 	var/image/I = r_hand.get_mob_overlay(src, WEAR_R_HAND)
 	I.layer = -R_HAND_LAYER
@@ -592,7 +619,8 @@ There are several things that need to be remembered:
 		return
 	if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD && hud_used.ui_datum)
 		client.screen += l_hand
-		l_hand.screen_loc = hud_used.ui_datum.ui_lhand
+		l_hand.screen_loc = hud_used.ui_datum.hud_slot_offset(l_hand, hud_used.ui_datum.ui_lhand)
+
 	var/image/I = l_hand.get_mob_overlay(src, WEAR_L_HAND)
 	I.layer = -L_HAND_LAYER
 	overlays_standing[L_HAND_LAYER] = I
@@ -640,9 +668,9 @@ There are several things that need to be remembered:
 	var/image/standing
 	switch(chestburst)
 		if(1)
-			standing = image("icon" = get_icon_from_source(CONFIG_GET(string/alien_effects)),"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/hostiles/Effects.dmi',"icon_state" = "burst_stand", "layer" = -BURST_LAYER)
 		if(2)
-			standing = image("icon" = get_icon_from_source(CONFIG_GET(string/alien_effects)),"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
+			standing = image("icon" = 'icons/mob/hostiles/Effects.dmi',"icon_state" = "bursted_stand", "layer" = -BURST_LAYER)
 		else
 			return
 	overlays_standing[BURST_LAYER] = standing

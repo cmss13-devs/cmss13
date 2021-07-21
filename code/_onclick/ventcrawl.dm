@@ -2,11 +2,13 @@
 	return FALSE
 
 /mob/living/proc/ventcrawl_carry()
-	for(var/atom/A in src.contents)
+	. = TRUE
+	if(HAS_TRAIT(src, TRAIT_CRAWLER))
+		return
+	for(var/atom/A as anything in src)
 		if(!(is_type_in_list(A, canEnterVentWith)))
 			to_chat(src, SPAN_WARNING("You can't be carrying items or have items equipped when vent crawling!"))
 			return FALSE
-	return TRUE
 
 /mob/living/click(var/atom/A, var/list/mods)
 	if(..())

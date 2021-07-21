@@ -8,7 +8,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
 	flags_atom = FPRINT|CONDUCT
-	
+
 
 	var/times_used = 0 //Number of times it's been used.
 	var/broken = 0     //Is the flash burnt out?
@@ -102,7 +102,9 @@
 
 
 /obj/item/device/flash/attack_self(mob/living/carbon/user as mob, flag = 0, emp = 0)
-	if(!user) 	
+	..()
+
+	if(!user)
 		return
 
 	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_FLASH))

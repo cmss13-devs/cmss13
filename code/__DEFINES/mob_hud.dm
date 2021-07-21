@@ -24,7 +24,8 @@
 #define ORDER_HUD			"22" // If humans are affected by orders or not
 #define XENO_BANISHED_HUD   "23" // indicates that the xeno is banished
 #define STATUS_HUD_XENO_CULTIST "24" // Whether they are a xeno cultist or not
-#define PRED_CLAN   "25"
+#define HUNTER_CLAN   "25" //Displays a colored icon to represent ingame Hunter Clans
+#define HUNTER_HUD	"26" //Displays various statuses on mobs for Hunters to identify targets
 
 
 //data HUD (medhud, sechud) defines
@@ -37,10 +38,10 @@
 #define MOB_HUD_XENO_STATUS			7
 #define MOB_HUD_SQUAD				8
 #define MOB_HUD_XENO_HOSTILE		9
-#define MOB_HUD_PRED_CLAN			10
+#define MOB_HUD_HUNTER_CLAN			10
 #define MOB_HUD_SQUAD_OBSERVER      11
 #define MOB_HUD_FACTION_UPP			12
 #define MOB_HUD_FACTION_WY			13
 #define MOB_HUD_FACTION_RESS		14
 #define MOB_HUD_FACTION_CLF			15
-
+#define MOB_HUD_HUNTER				16

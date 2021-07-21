@@ -66,7 +66,14 @@
 	//Flags for any active emotes the mob may be performing
 	var/flags_emote
 	//ventcrawl
-	var/canEnterVentWith = "/obj/item/implant=0&/obj/item/clothing/mask/facehugger=0&/obj/item/device/radio/borg=0&/obj/structure/machinery/camera=0&/obj/item/verbs=0"
+	var/list/canEnterVentWith = list(
+		/obj/item/implant,
+		/obj/item/clothing/mask/facehugger,
+		/obj/item/device/radio,
+		/obj/structure/machinery/camera,
+		/obj/limb,
+		/obj/item/alien_embryo
+	)
 	//blood.dm
 	var/blood_volume = 0 //how much blood the mob has
 

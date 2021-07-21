@@ -121,7 +121,7 @@
 				O.take_damage(amount, 0, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
 			else
 				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
-				O.heal_damage(-amount, 0, internal=0, robo_repair=(O.status & LIMB_ROBOT))
+				O.heal_damage(-amount, 0, O.status & LIMB_ROBOT)
 			break
 
 
@@ -137,18 +137,18 @@
 				O.take_damage(0, amount, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
 			else
 				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
-				O.heal_damage(0, -amount, internal=0, robo_repair=(O.status & LIMB_ROBOT))
+				O.heal_damage(0, -amount, O.status & LIMB_ROBOT)
 			break
 
 
 
 /mob/living/carbon/human/getCloneLoss()
-	if(species && species.flags & (IS_SYNTHETIC|NO_SCAN))
+	if(species && species.flags & (IS_SYNTHETIC|NO_CLONE_LOSS))
 		cloneloss = 0
 	return ..()
 
 /mob/living/carbon/human/setCloneLoss(var/amount)
-	if(species && species.flags & (IS_SYNTHETIC|NO_SCAN))
+	if(species && species.flags & (IS_SYNTHETIC|NO_CLONE_LOSS))
 		cloneloss = 0
 	else
 		..()
@@ -156,7 +156,7 @@
 /mob/living/carbon/human/adjustCloneLoss(var/amount)
 	..()
 
-	if(species && species.flags & (IS_SYNTHETIC|NO_SCAN))
+	if(species && species.flags & (IS_SYNTHETIC|NO_CLONE_LOSS))
 		cloneloss = 0
 		return
 
@@ -287,7 +287,7 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 		var/brute_was = picked.brute_dam
 		var/burn_was = picked.burn_dam
 
-		update |= picked.heal_damage(brute, burn, 0, robo_repair)
+		update |= picked.heal_damage(brute, burn, robo_repair)
 
 		brute -= (brute_was-picked.brute_dam)
 		burn -= (burn_was-picked.burn_dam)
@@ -361,7 +361,7 @@ This function restores all limbs.
 	if(def_zone)
 		target_limb = get_limb(check_zone(def_zone))
 	else
-		target_limb = get_limb(check_zone(ran_zone()))
+		target_limb = get_limb(check_zone(rand_zone()))
 	if(isnull(target_limb))
 		return FALSE
 
@@ -374,38 +374,39 @@ This function restores all limbs.
 	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
 	apply_damage(modified_damage, damage_type, target_limb)
 
+	return modified_damage
+
 /*
 	Describes how human mobs get damage applied.
 	Less clear vars:
-	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
-	*	impact_limbs: the flags for which limbs (body parts) have an impact icon associated with impact_name.
 	*	permanent_kill: whether this attack causes human to become irrevivable
 */
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
 	var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
-	var/impact_name = null, var/impact_limbs = null, var/permanent_kill = FALSE, var/mob/firer = null, \
-	var/force = FALSE
+	var/permanent_kill = FALSE, var/mob/firer = null, var/force = FALSE
 )
-	if(protection_aura)
-		damage = round(damage * ((15 - protection_aura) / 15))
+	if(protection_aura && damage > 0)
+		damage = round(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura) / ORDER_HOLD_CALC_LEVEL))
 
 	//Handle other types of damage
 	if(damage < 0 || (damagetype != BRUTE) && (damagetype != BURN))
 		if(damagetype == HALLOSS && pain.feels_pain)
 			if((damage > 25 && prob(20)) || (damage > 50 && prob(60)))
-				emote("pain")
+				INVOKE_ASYNC(src, .proc/emote, "pain")
 
 		..(damage, damagetype, def_zone)
 		return TRUE
 
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	var/list/damagedata = list("damage" = damage)
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
+	damage = damagedata["damage"]
 
 	var/obj/limb/organ = null
 	if(isorgan(def_zone))
 		organ = def_zone
 	else
 		if(!def_zone)
-			def_zone = ran_zone(def_zone)
+			def_zone = rand_zone(def_zone)
 		organ = get_limb(check_zone(def_zone))
 	if(!organ)
 		return FALSE
@@ -415,19 +416,13 @@ This function restores all limbs.
 			damageoverlaytemp = 20
 			if(species.brute_mod && !force)
 				damage = damage * species.brute_mod
-			var/temp_impact_name = null
-			if(organ.body_part & impact_limbs)
-				temp_impact_name = impact_name
-			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name, attack_source = firer))
+			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
 				UpdateDamageIcon()
 		if(BURN)
 			damageoverlaytemp = 20
 			if(species.burn_mod && !force)
 				damage = damage * species.burn_mod
-			var/temp_impact_name = null
-			if(organ.body_part & impact_limbs)
-				temp_impact_name = impact_name
-			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, impact_name = temp_impact_name, attack_source = firer))
+			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
 				UpdateDamageIcon()
 
 	pain.apply_pain(damage, damagetype)

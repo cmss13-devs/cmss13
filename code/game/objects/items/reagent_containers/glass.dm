@@ -89,8 +89,7 @@
 		for(var/datum/reagent/R in src.reagents.reagent_list)
 			injected += R.name
 		var/contained = english_list(injected)
-		M.last_damage_source = initial(name)
-		M.last_damage_mob = user
+		M.last_damage_data = create_cause_data(initial(name), user)
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been splashed with [src.name] by [user.name] ([user.ckey]). Reagents: [contained]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to splash [M.name] ([M.key]). Reagents: [contained]</font>")
 		msg_admin_attack("[user.name] ([user.ckey]) splashed [M.name] ([M.key]) with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
@@ -456,9 +455,6 @@
 		return
 	. = ..()
 
-/obj/item/reagent_container/glass/pressurized_canister/attack_self()
-	return
-
 /obj/item/reagent_container/glass/pressurized_canister/set_APTFT()
 	to_chat(usr, SPAN_WARNING("[src] has no transfer control valve! Use a dispenser to fill it!"))
 	return
@@ -559,10 +555,7 @@
 	flags_atom = FPRINT|OPENCONTAINER
 	flags_item = NOBLUDGEON
 
-/obj/item/reagent_container/glass/rag/attack_self(mob/user as mob)
-	return
-
-/obj/item/reagent_container/glass/rag/attack(atom/target as obj|turf|area, mob/user as mob , flag)
+/obj/item/reagent_container/glass/rag/attack(atom/target, mob/user)
 	if(ismob(target) && target.reagents && reagents.total_volume)
 		user.visible_message(SPAN_DANGER("\The [target] has been smothered with \the [src] by \the [user]!"), SPAN_DANGER("You smother \the [target] with \the [src]!"), "You hear some struggling and muffled cries of surprise")
 		src.reagents.reaction(target, TOUCH)

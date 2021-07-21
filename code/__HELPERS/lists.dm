@@ -274,6 +274,7 @@ proc/listclearnulls(list/list)
 
 //Mergesort: any value in a list
 /proc/sortList(var/list/L)
+	RETURN_TYPE(/list)
 	if(!istype(L))
 		return
 	if(L.len < 2)

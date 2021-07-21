@@ -479,7 +479,7 @@ var/list/robot_verbs_default = list(
 			for(var/mob/O in viewers(user, null))
 				O.show_message(text(SPAN_DANGER("[user] has fixed some of the burnt wires on [src]!")), 1)
 
-	else if (istype(W, /obj/item/tool/crowbar))	// crowbar means open or close the cover
+	else if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))	// crowbar means open or close the cover
 		if(opened)
 			if(cell)
 				to_chat(user, "You close the cover.")
@@ -553,18 +553,18 @@ var/list/robot_verbs_default = list(
 			C.brute_damage = 0
 			C.electronics_damage = 0
 
-	else if (istype(W, /obj/item/tool/wirecutters) || istype(W, /obj/item/device/multitool))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) || HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		if (wiresexposed)
 			interact(user)
 		else
 			to_chat(user, "You can't reach the wiring.")
 
-	else if(istype(W, /obj/item/tool/screwdriver) && opened && !cell)	// haxing
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && opened && !cell)	// haxing
 		wiresexposed = !wiresexposed
 		to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
 		update_icons()
 
-	else if(istype(W, /obj/item/tool/screwdriver) && opened && cell)	// radio
+	else if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && opened && cell)	// radio
 		if(radio)
 			radio.attackby(W,user)//Push it to the radio to let it handle everything
 		else
@@ -620,8 +620,7 @@ var/list/robot_verbs_default = list(
 			playsound(loc, M.attack_sound, 25, 1)
 		for(var/mob/O in viewers(src, null))
 			O.show_message(SPAN_DANGER("<B>[M]</B> [M.attacktext] [src]!"), 1)
-		last_damage_source = initial(M.name)
-		last_damage_mob = M
+		last_damage_data = create_cause_data(initial(M.name), M)
 		M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [key_name(src)]</font>")
 		src.attack_log += text("\[[time_stamp()]\] <font color='orange'>was attacked by [key_name(M)]</font>")
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)

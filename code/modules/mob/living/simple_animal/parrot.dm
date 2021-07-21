@@ -271,7 +271,7 @@
 /*
  * AI - Not really intelligent, but I'm calling it AI anyway.
  */
-/mob/living/simple_animal/parrot/Life()
+/mob/living/simple_animal/parrot/Life(delta_time)
 	..()
 
 	//Sprite and AI update for when a parrot gets pulled
@@ -349,7 +349,7 @@
 			//Search for item to steal
 			parrot_interest = search_for_item()
 			if(parrot_interest)
-				emote("looks in [parrot_interest]'s direction and takes flight")
+				INVOKE_ASYNC(src, .proc/emote, "looks in [parrot_interest]'s direction and takes flight")
 				parrot_state = PARROT_SWOOP|PARROT_STEAL
 				icon_state = "parrot_fly"
 			return
@@ -371,7 +371,7 @@
 			if(AM)
 				if(istype(AM, /obj/item) || isliving(AM))	//If stealable item
 					parrot_interest = AM
-					emote("turns and flies towards [parrot_interest]")
+					INVOKE_ASYNC(src, .proc/emote, "turns and flies towards [parrot_interest]")
 					parrot_state = PARROT_SWOOP|PARROT_STEAL
 					return
 				else	//Else it's a perch
@@ -432,7 +432,7 @@
 
 		if(in_range(src, parrot_perch))
 			src.forceMove(parrot_perch.loc)
-			drop_parrot_held_item()
+			INVOKE_ASYNC(src, .proc/drop_parrot_held_item)
 			parrot_state = PARROT_PERCH
 			icon_state = "parrot_sit"
 			return
@@ -482,14 +482,14 @@
 
 			if(ishuman(parrot_interest))
 				var/mob/living/carbon/human/H = parrot_interest
-				var/obj/limb/affecting = H.get_limb(ran_zone(pick(parrot_dam_zone)))
+				var/obj/limb/affecting = H.get_limb(rand_zone(pick(parrot_dam_zone)))
 
 				H.apply_damage(damage, BRUTE, affecting, sharp=1)
-				emote(pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
+				INVOKE_ASYNC(src, .proc/emote, pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
 
 			else
 				L.apply_damage(damage, BRUTE)
-				emote(pick("pecks at [L]", "claws [L]"))
+				INVOKE_ASYNC(src, .proc/emote, pick("pecks at [L]", "claws [L]"))
 			return
 
 		//Otherwise, fly towards the mob!
@@ -501,7 +501,7 @@
 		walk(src,0)
 		parrot_interest = null
 		parrot_perch = null
-		drop_parrot_held_item()
+		INVOKE_ASYNC(src, .proc/drop_parrot_held_item)
 		parrot_state = PARROT_WANDER
 		return
 
@@ -737,7 +737,7 @@
 
 
 
-/mob/living/simple_animal/parrot/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0)
+/mob/living/simple_animal/parrot/hear_radio(var/message, var/verb="says", var/datum/language/language=null, var/part_a, var/part_b, var/mob/speaker = null, var/hard_to_hear = 0, var/command, var/vname, var/no_paygrade)
 	if(prob(50))
 		parrot_hear("[pick(available_channels)] [message]")
 	..(message,verb,language,part_a,part_b,speaker,hard_to_hear)

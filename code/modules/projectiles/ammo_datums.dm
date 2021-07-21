@@ -1,7 +1,6 @@
 /datum/ammo
 	var/name 		= "generic bullet"
-	var/impact_name	= null // Name of icon when trying to give a mob a projectile impact overlay
-	var/impact_limbs = BODY_FLAG_NO_BODY // The body parts that have an impact icon
+	var/headshot_state	= null //Icon state when a human is permanently killed with it by execution/suicide.
 	var/icon 		= 'icons/obj/items/weapons/projectiles.dmi'
 	var/icon_state 	= "bullet"
 	var/ping 		= "ping_b" //The icon that is displayed when the bullet bounces off something.
@@ -39,6 +38,14 @@
 	var/effective_range_min	= EFFECTIVE_RANGE_OFF	//What minimum range the ammo deals full damage, builds up the closer you get. 0 for no minimum. Added onto gun range as a modifier.
 	var/effective_range_max	= EFFECTIVE_RANGE_OFF	//What maximum range the ammo deals full damage, tapers off using damage_falloff after hitting this value. 0 for no maximum. Added onto gun range as a modifier.
 	var/shell_speed 		= AMMO_SPEED_TIER_1 	// How fast the projectile moves.
+
+	var/handful_type 		= /obj/item/ammo_magazine/handful
+	var/handful_color
+	var/handful_state = "bullet" //custom handful sprite, for shotgun shells or etc.
+	var/multiple_handful_name //so handfuls say 'buckshot shells' not 'shell'
+
+	/// Does this apply xenomorph behaviour delegate?
+	var/apply_delegate = TRUE
 
 	/// An assoc list in the format list(/datum/element/bullet_trait_to_give = list(...args))
 	/// that will be given to a projectile with the current ammo datum
@@ -81,52 +88,79 @@
 /datum/ammo/proc/on_near_target(turf/T, obj/item/projectile/P) //Special effects when passing near something. Range of things that triggers it is controlled by other ammo flags.
 	return 0 //return 0 means it flies even after being near something. Return 1 means it stops
 
-/datum/ammo/proc/knockback(mob/M, obj/item/projectile/P, var/max_range = 2)
-	if(!M || M == P.firer) return
-	if(P.distance_travelled > max_range || M.lying) shake_camera(M, 2, 1) //Two tiles away or more, basically.
+/datum/ammo/proc/knockback(mob/living/L, obj/item/projectile/P, var/max_range = 2)
+	if(!L || L == P.firer)
+		return
+	if(P.distance_travelled > max_range || L.lying)
+		return //Two tiles away or more, basically.
 
-	else //One tile away or less.
-		shake_camera(M, 3, 4)
-		if(isliving(M)) //This is pretty ugly, but what can you do.
-			if(isXeno(M))
-				var/mob/living/carbon/Xenomorph/target = M
-				if(target.mob_size >= MOB_SIZE_BIG)
-					target.apply_effect(2, SLOW)
-					return //Big xenos are not affected.
-				target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
-				target.apply_effect(1, SUPERSLOW)
-				target.apply_effect(2, SLOW)
-				to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
-			else
-				var/mob/living/L = M
-				L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
-		step_away(M,P)
+	if(L.mob_size >= MOB_SIZE_BIG)
+		return //Big xenos are not affected.
 
-/datum/ammo/proc/heavy_knockback(mob/M, obj/item/projectile/P, var/max_range = 6) //crazier version of knockback
-	if(!M || M == P.firer) return
-	if(P.distance_travelled > max_range || M.lying) shake_camera(M, 3, 2)
-	shake_camera(M, 3, 4)
-	if(isliving(M)) //This is pretty ugly, but what can you do.
-		if(isXeno(M))
-			var/mob/living/carbon/Xenomorph/target = M
-			to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
-			if(target.mob_size >= MOB_SIZE_BIG)
-				target.apply_effect(0.3, DAZE)
-				target.apply_effect(2, SLOW)
-				return
-			target.apply_effect(0.5, WEAKEN)
-			target.apply_effect(4, DAZE)
-			target.apply_effect(2, SUPERSLOW)
-			target.apply_effect(5, SLOW)
-		else
-			var/mob/living/target = M
-			if(!isYautja(M)) //Not predators.
-				target.apply_effect(5, DAZE)
-				target.apply_effect(5, SUPERSLOW)
-				target.apply_effect(8, SLOW)
-				to_chat(target, SPAN_HIGHDANGER("The blast knocks you off your feet!"))
-			target.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
-	step_away(M,P)
+	shake_camera(L, 3, 4)
+
+	if(isCarbonSizeXeno(L))
+		var/mob/living/carbon/Xenomorph/target = L
+		target.apply_effect(0.7, WEAKEN) // 0.9 seconds of stun, per agreement from Balance Team when switched from MC stuns to exact stuns
+		target.apply_effect(1, SUPERSLOW)
+		target.apply_effect(2, SLOW)
+		to_chat(target, SPAN_XENODANGER("You are shaken by the sudden impact!"))
+	else
+		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
+
+	//Either knockback or slam them into an obstacle.
+	var/direction = Get_Compass_Dir(P.z ? P : P.firer, L) //More precise than get_dir.
+	if(!direction) //Same tile.
+		return
+	if(!step(L, direction))
+		L.animation_attack_on(get_step(L, direction))
+		playsound(L.loc, "punch", 25, 1)
+		L.visible_message(SPAN_DANGER("[L] slams into an obstacle!"),
+			isXeno(L) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		L.apply_damage(MELEE_FORCE_TIER_2)
+
+/datum/ammo/proc/heavy_knockback(mob/living/L, obj/item/projectile/P, var/max_range = 6) //crazier version of knockback
+	if(!L || L == P.firer)
+		return
+	if(P.distance_travelled > max_range || L.lying)
+		return
+	if(L.mob_size >= MOB_SIZE_BIG)
+		return
+
+	shake_camera(L, 3, 4)
+	if(isCarbonSizeXeno(L))
+		var/mob/living/carbon/Xenomorph/target = L
+		to_chat(target, SPAN_XENODANGER("You are shaken and slowed by the sudden impact!"))
+		target.apply_effect(0.5, WEAKEN)
+		target.apply_effect(2, SUPERSLOW)
+		target.apply_effect(5, SLOW)
+	else
+		if(!isYautja(L)) //Not predators.
+			L.apply_effect(1, SUPERSLOW)
+			L.apply_effect(2, SLOW)
+			to_chat(L, SPAN_HIGHDANGER("The impact knocks you off-balance!"))
+		L.apply_stamina_damage(P.ammo.damage, P.def_zone, ARMOR_BULLET)
+
+	//Either knockback or slam them into an obstacle.
+	var/direction = Get_Compass_Dir(P.z ? P : P.firer, L) //More precise than get_dir. If the projectile has no z, it's a PB, and should measure from the shooter.
+	if(!direction) //Same tile.
+		return
+	if(!step(L, direction))
+		L.animation_attack_on(get_step(L, direction))
+		playsound(L.loc, "punch", 25, 1)
+		L.visible_message(SPAN_DANGER("[L] slams into an obstacle!"),
+			isXeno(L) ? SPAN_XENODANGER("You slam into an obstacle!") : SPAN_HIGHDANGER("You slam into an obstacle!"), null, 4, CHAT_TYPE_TAKING_HIT)
+		L.apply_damage(MELEE_FORCE_TIER_2)
+
+/datum/ammo/proc/pushback(mob/M, obj/item/projectile/P, var/max_range = 2)
+	if(!M || M == P.firer || P.distance_travelled > max_range || M.lying)
+		return
+
+	if(M.mob_size >= MOB_SIZE_BIG)
+		return //too big to push
+
+	to_chat(M, isXeno(M) ? SPAN_XENODANGER("You are pushed back by the sudden impact!") : SPAN_HIGHDANGER("You are pushed back by the sudden impact!"), null, 4, CHAT_TYPE_TAKING_HIT)
+	step(M, Get_Compass_Dir(P.z ? P : P.firer, M))
 
 /datum/ammo/proc/burst(atom/target, obj/item/projectile/P, damage_type = BRUTE, range = 1, damage_div = 2, show_message = 1) //damage_div says how much we divide damage
 	if(!target || !P) return
@@ -161,12 +195,12 @@
 	var/initial_angle = Get_Angle(curloc, original_P.target_turf)
 
 	for(var/i in 1 to bonus_projectiles_amount) //Want to run this for the number of bonus projectiles.
-
 		var/final_angle = initial_angle
 
-		var/obj/item/projectile/P = new /obj/item/projectile(original_P.weapon_source, original_P.weapon_source_mob, original_P.shot_from)
+		var/obj/item/projectile/P = new /obj/item/projectile(original_P.weapon_cause_data)
 		P.generate_bullet(GLOB.ammo_list[bonus_projectiles_type]) //No bonus damage or anything.
 		P.accuracy = round(P.accuracy * original_P.accuracy/initial(original_P.accuracy)) //if the gun changes the accuracy of the main projectile, it also affects the bonus ones.
+		original_P.give_bullet_traits(P)
 
 		var/total_scatter_angle = P.scatter
 		final_angle += rand(-total_scatter_angle, total_scatter_angle)
@@ -174,23 +208,24 @@
 
 		P.fire_at(new_target, original_P.firer, original_P.shot_from, P.ammo.max_range, P.ammo.shell_speed, original_P.original) //Fire!
 
-/datum/ammo/proc/drop_flame(turf/T, var/source, var/source_mob) // ~Art updated fire 20JAN17
+/datum/ammo/proc/drop_flame(turf/T, datum/cause_data/cause_data) // ~Art updated fire 20JAN17
 	if(!istype(T)) return
 	if(locate(/obj/flamer_fire) in T) return
 
 	var/datum/reagent/napalm/ut/R = new()
-	new /obj/flamer_fire(T, source, source_mob, R)
+	new /obj/flamer_fire(T, cause_data, R)
 
 
 /*
-//================================================
+//======
 					Default Ammo
-//================================================
+//======
 */
 //Only when things screw up do we use this as a placeholder.
 /datum/ammo/bullet
 	name = "default bullet"
 	icon_state = "bullet"
+	headshot_state	= HEADSHOT_OVERLAY_LIGHT
 	flags_ammo_behavior = AMMO_BALLISTIC
 	sound_hit 	 = "ballistic_hit"
 	sound_armor  = "ballistic_armor"
@@ -199,55 +234,41 @@
 	sound_shield_hit = "ballistic_shield_hit"
 
 	accurate_range_min = 0
-	damage = BULLET_DAMAGE_TIER_2
+	damage = 10
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_1
 	shrapnel_type = /obj/item/shard/shrapnel
 	shell_speed = AMMO_SPEED_TIER_4
 
 /*
-//================================================
+//======
 					Pistol Ammo
-//================================================
+//======
 */
 
 // Used by M4A3, M4A3 Custom and B92FS
 /datum/ammo/bullet/pistol
 	name = "pistol bullet"
 
-	damage = BULLET_DAMAGE_TIER_7
+	damage = 35
 	accuracy = HIT_ACCURACY_TIER_2
+	effective_range_max = 4
+	damage_falloff = DAMAGE_FALLOFF_TIER_4 //should be useful in close-range mostly
 
 /datum/ammo/bullet/pistol/tiny
 	name = "light pistol bullet"
 
 /datum/ammo/bullet/pistol/tranq
-	name = "tranq bullet"
+	name = "tranquilizer bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	stamina_damage = 300
-
-	var/knockout_period = 10 SECONDS
-
-	shrapnel_chance = 0
-
-/datum/ammo/bullet/pistol/tranq/on_hit_mob(mob/M, obj/item/projectile/P)
-	. = ..()
-	if(isliving(M))
-		var/mob/living/L = M
-		if(L.stamina)
-			L.stamina.apply_rest_period(knockout_period)
+	stamina_damage = 30
 
 //2020 rebalance: is supposed to counter runners and lurkers, dealing high damage to the only castes with no armor.
 //Limited by its lack of versatility and lower supply, so marines finally have an answer for flanker castes that isn't just buckshot.
-//Runners are critted in 7 shots by normal m4a3 ammo, 5 shots with hollowpoint (230hp)
-//Lurkers are critted in 12 shots by normal m4a3 ammo, 9 shots with hollowpoint (450hp)
-//Drones are critted in 10 shots by normal m4a3 ammo, 11 shots with hollowpoint (330hp)
-//Hollowpoint shots to kill reduced by 1 using m4a3 custom, 2 for drone.
 
 /datum/ammo/bullet/pistol/hollow
 	name = "hollowpoint pistol bullet"
 
-	damage = BULLET_DAMAGE_TIER_11 //hollowpoint is strong
-	damage_falloff = DAMAGE_FALLOFF_TIER_9 //should be useful in close-range mostly
+	damage = 55 //hollowpoint is strong
 	penetration = 0 //hollowpoint can't pierce armor!
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_3 //hollowpoint causes shrapnel
 
@@ -255,15 +276,56 @@
 /datum/ammo/bullet/pistol/ap
 	name = "armor-piercing pistol bullet"
 
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	accuracy = HIT_ACCURACY_TIER_2
 	penetration= ARMOR_PENETRATION_TIER_8
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
+/datum/ammo/bullet/pistol/ap/penetrating
+	name = "wall-piercing pistol bullet"
+	shrapnel_chance = 0
+
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/pistol/ap/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/pistol/ap/cluster
+	name = "cluster pistol bullet"
+	shrapnel_chance = 0
+	var/cluster_addon = 1.5
+
+/datum/ammo/bullet/pistol/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
+
+/datum/ammo/bullet/pistol/ap/toxin
+	name = "toxic pistol bullet"
+	var/acid_per_hit = 10
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/pistol/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
 /datum/ammo/bullet/pistol/le
 	name = "armor-shredding pistol bullet"
 
-	damage = BULLET_DAMAGE_TIER_3
+	damage = 15
 	penetration = ARMOR_PENETRATION_TIER_4
 	pen_armor_punch = 3
 
@@ -271,19 +333,72 @@
 	name = "rubber pistol bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
 
-	damage = BULLET_DAMAGE_OFF
-	stamina_damage = BULLET_DAMAGE_TIER_5
+	damage = 0
+	stamina_damage = 25
 	shrapnel_chance = 0
 
 // Used by M1911, Deagle and KT-42
 /datum/ammo/bullet/pistol/heavy
 	name = "heavy pistol bullet"
-
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	damage = BULLET_DAMAGE_TIER_8
+	damage = 40
 	penetration= ARMOR_PENETRATION_TIER_2
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+
+/datum/ammo/bullet/pistol/heavy/cluster
+	name = "heavy cluster pistol bullet"
+	var/cluster_addon = 1.5
+
+/datum/ammo/bullet/pistol/heavy/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
+
+/datum/ammo/bullet/pistol/heavy/super //Commander's variant
+	name = ".50 heavy pistol bullet"
+	damage = 50
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_4
+
+/datum/ammo/bullet/pistol/heavy/super/highimpact
+	name = ".50 high-impact pistol bullet"
+	penetration = ARMOR_PENETRATION_TIER_2
+	debilitate = list(0,2,0,0,0,1,0,0)
+
+/datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
+	knockback(M, P, 4)
+
+/datum/ammo/bullet/pistol/heavy/super/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
+		return ..()
+
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
+		return ..()
+
+	var/mob/living/carbon/human/H = M
+	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
+
+	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
+		return -1
+
+	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
+	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
+	H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
+
+	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
+
+	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
+		SPAN_HIGHDANGER("You were executed!"))
+
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
+
+	var/area/A = get_area(H)
+
+	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
 
 /datum/ammo/bullet/pistol/incendiary
 	name = "incendiary pistol bullet"
@@ -292,7 +407,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = BULLET_DAMAGE_TIER_4
+	damage = 20
 
 /datum/ammo/bullet/pistol/incendiary/set_bullet_traits()
 	..()
@@ -303,12 +418,67 @@
 // Used by VP78 and Auto 9
 /datum/ammo/bullet/pistol/squash
 	name = "squash-head pistol bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(0,0,0,0,0,0,0,2)
 
 	accuracy = HIT_ACCURACY_TIER_4
-	damage = BULLET_DAMAGE_TIER_9
+	damage = 45
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+
+/datum/ammo/bullet/pistol/squash/toxin
+	name = "toxic squash-head pistol bullet"
+	var/acid_per_hit = 10
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/pistol/squash/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/pistol/squash/penetrating
+	name = "wall-piercing squash-head pistol bullet"
+	shrapnel_chance = 0
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/pistol/squash/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/pistol/squash/cluster
+	name = "cluster squash-head pistol bullet"
+	shrapnel_chance = 0
+	var/cluster_addon = 2
+
+/datum/ammo/bullet/pistol/squash/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
+
+/datum/ammo/bullet/pistol/squash/incendiary
+	name = "incendiary squash-head pistol bullet"
+	damage_type = BURN
+	shrapnel_chance = 0
+	flags_ammo_behavior = AMMO_BALLISTIC
+	accuracy = HIT_ACCURACY_TIER_3
+	damage = 35
+
+/datum/ammo/bullet/pistol/squash/incendiary/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
 
 /datum/ammo/bullet/pistol/mankey
 	name = "live monkey"
@@ -318,7 +488,7 @@
 	debilitate = list(4,4,0,0,0,0,0,0)
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR
 
-	damage = BULLET_DAMAGE_TIER_3
+	damage = 15
 	damage_var_high = PROJECTILE_VARIANCE_TIER_5
 	shell_speed = AMMO_SPEED_TIER_2
 
@@ -338,21 +508,22 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	penetration= ARMOR_PENETRATION_TIER_5
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
 /*
-//================================================
+//======
 					Revolver Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	debilitate = list(1,0,0,0,0,0,0,0)
 
-	damage = BULLET_DAMAGE_TIER_11
+	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_1
 	accuracy = HIT_ACCURACY_TIER_1
 
@@ -367,33 +538,189 @@
 /datum/ammo/bullet/revolver/heavy
 	name = "heavy revolver bullet"
 
-	damage = BULLET_DAMAGE_TIER_7
+	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_4
 	accuracy = HIT_ACCURACY_TIER_3
 
 /datum/ammo/bullet/revolver/heavy/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
 
+/datum/ammo/bullet/revolver/incendiary
+	name = "incendiary revolver bullet"
+	damage = 40
+
+/datum/ammo/bullet/revolver/incendiary/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+/datum/ammo/bullet/revolver/marksman/toxin
+	name = "toxic revolver bullet"
+	var/acid_per_hit = 10
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/revolver/marksman/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/revolver/penetrating
+	name = "wall-piercing revolver bullet"
+	shrapnel_chance = 0
+
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/revolver/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/revolver/cluster
+	name = "cluster revolver bullet"
+	shrapnel_chance = 0
+	var/cluster_addon = 4
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/revolver/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
+
+/datum/ammo/bullet/revolver/nagant
+	name = "nagant revolver bullet"
+	headshot_state	= HEADSHOT_OVERLAY_LIGHT //Smaller bullet.
+	damage = 40
+
+
+/datum/ammo/bullet/revolver/nagant/shrapnel
+	name = "shrapnel shot"
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY //Gol-dang shotgun blow your fething head off.
+	debilitate = list(0,0,0,0,0,0,0,0)
+	icon_state = "shrapnelshot"
+	bonus_projectiles_type = /datum/ammo/bullet/revolver/nagant/shrapnel_bits
+
+	max_range = 6
+	damage = 25 // + TIER_4 * 3
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
+	penetration	= ARMOR_PENETRATION_TIER_6
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	shrapnel_chance = 100
+	shrapnel_type = /obj/item/shard/shrapnel/nagant
+	//roughly 35 or so damage
+
+/datum/ammo/bullet/revolver/nagant/shrapnel/on_hit_mob(mob/M, obj/item/projectile/P)
+	pushback(M, P, 1)
+
+/datum/ammo/bullet/revolver/nagant/shrapnel_bits
+	name = "small shrapnel"
+	icon_state = "shrapnelshot_bit"
+
+	max_range = 6
+	damage = 20
+	penetration	= ARMOR_PENETRATION_TIER_1
+	scatter = SCATTER_AMOUNT_TIER_1
+	bonus_projectiles_amount = 0
+	shrapnel_type = /obj/item/shard/shrapnel/nagant/bits
+
 /datum/ammo/bullet/revolver/small
 	name = "small revolver bullet"
+	headshot_state	= HEADSHOT_OVERLAY_LIGHT
 
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 
 /datum/ammo/bullet/revolver/mateba
 	name = ".454 heavy revolver bullet"
-	impact_name = "mateba"
-	impact_limbs = BODY_FLAG_HEAD
 	debilitate = list(0,2,0,0,0,1,0,0)
 
-	damage = BULLET_DAMAGE_TIER_11
+	damage = 60
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_6
+	penetration = ARMOR_PENETRATION_TIER_4
+	var/explosive = FALSE
+
+/datum/ammo/bullet/revolver/mateba/highimpact
+	name = ".454 heavy high-impact revolver bullet"
+	debilitate = list(0,2,0,0,0,1,0,0)
+	penetration = ARMOR_PENETRATION_TIER_2
+
+/datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
+	knockback(M, P, 4)
+
+/datum/ammo/bullet/revolver/mateba/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
+		return ..()
+
+	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
+		return ..()
+
+	var/mob/living/carbon/human/H = M
+	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
+
+	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
+		return -1
+
+	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
+	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
+	H.death(create_cause_data("execution", user)) //...make certain they're properly dead...
+
+	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
+
+	H.visible_message(SPAN_HIGHDANGER("[M] WAS EXECUTED!"), \
+		SPAN_HIGHDANGER("You were executed!"))
+
+	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
+
+	var/area/A = get_area(H)
+
+	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
+	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
+
+	if(explosive)
+		H.gib()
+
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive //if you ever put this in normal gameplay, i am going to scream
+	name = ".454 heavy explosive revolver bullet"
+	damage = 100
+	damage_var_low = PROJECTILE_VARIANCE_TIER_10
+	damage_var_high = PROJECTILE_VARIANCE_TIER_1
+	penetration = ARMOR_PENETRATION_TIER_10
+	explosive = TRUE
+
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
+	..()
+	cell_explosion(get_turf(M), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
+	..()
+	cell_explosion(get_turf(O), 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/revolver/mateba/highimpact/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
+	..()
+	if(T.density)
+		cell_explosion(T, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
+
+/datum/ammo/bullet/revolver/webley //Mateba round without the knockdown.
+	name = ".455 Webley bullet"
+	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
 	penetration = ARMOR_PENETRATION_TIER_2
 
 /*
-//================================================
+//======
 					SMG Ammo
-//================================================
+//======
 */
  //2020 SMG/ammo rebalance. default ammo actually has penetration so it can be useful, by 4khan: should be meh against t3s, better under 15 armor. Perfectly does this right now (oct 2020)
  //has reduced falloff compared to the m39. this means it is best for kiting castes (mostly t2s and below admittedly)
@@ -405,11 +732,12 @@
 
 /datum/ammo/bullet/smg
 	name = "submachinegun bullet"
-	damage = BULLET_DAMAGE_TIER_8
-	accurate_range = 6
+	damage = 40
+	accurate_range = 4
+	effective_range_max = 4
 	penetration = ARMOR_PENETRATION_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
-	damage_falloff = DAMAGE_FALLOFF_TIER_9
+	damage_falloff = DAMAGE_FALLOFF_TIER_1
 	scatter = SCATTER_AMOUNT_TIER_6
 	accuracy = HIT_ACCURACY_TIER_3
 
@@ -419,89 +747,83 @@
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
 
-	damage = BULLET_DAMAGE_TIER_7
+	damage = 28
 	penetration = ARMOR_PENETRATION_TIER_6
-	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	shell_speed = AMMO_SPEED_TIER_4
+
+/datum/ammo/bullet/smg/ap/toxin
+	name = "toxic submachinegun bullet"
+	var/acid_per_hit = 5
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/smg/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/smg/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/smg/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
 
 /datum/ammo/bullet/smg/nail
 	name = "7x45mm plasteel nail"
 	icon_state = "nail-projectile"
 
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	penetration = ARMOR_PENETRATION_TIER_8
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 	accurate_range = 5
 	shell_speed = AMMO_SPEED_TIER_4
 
 
-/datum/ammo/bullet/smg/nail/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-	if(!user || user.a_intent != INTENT_HARM)
-		return ..()
-	if(!istype(M, /mob/living/carbon))
-		return ..()
+/datum/ammo/bullet/smg/nail/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+	if(!L || L == P.firer || L.lying)
+		return
 
-	var/mob/living/carbon/C = M
-	if(isXeno(C))
-		var/mob/living/carbon/Xenomorph/X = C
+	if(isCarbonSizeXeno(L))
+		var/mob/living/carbon/Xenomorph/X = L
 		if(X.tier != 1) // 0 is queen!
-			return ..()
-	if(isYautja(C) || C.stat == DEAD)
-		return ..()
-	if(C.frozen)
-		to_chat(user, SPAN_DANGER("[C] struggles and avoids being nailed further!"))
-		return ..()
+			return
+
+	if(L.frozen)
+		to_chat(user, SPAN_DANGER("[L] struggles and avoids being nailed further!"))
+		return
+
 	//Check for presence of solid surface behind
-	var/turf/T = get_step(C, user.dir)
-	if(!T || T.z != C.z)
-		return ..() //Welp we tried boy, pack it up.
+	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(user, L)))
+	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
+		return
 
-	var/thick_surface = null
-	if(T.density || T.opacity)
-		thick_surface = T
-	else
-		for(var/obj/O in T)
-			if(O.get_projectile_hit_boolean(P))
-				thick_surface = O
-				break
+	L.frozen = TRUE
+	user.visible_message(SPAN_DANGER("[user] punches [L] with the nailgun and nails their limb to [thick_surface]!"),
+		SPAN_DANGER("You punch [L] with the nailgun and nail their limb to [thick_surface]!"))
+	L.update_canmove()
+	addtimer(CALLBACK(L, /mob.proc/unfreeze), 3 SECONDS)
 
-	if(!thick_surface)
-		return ..()
+/datum/ammo/bullet/smg/nail/on_hit_mob(mob/living/L, obj/item/projectile/P)
+	if(!L || L == P.firer || L.lying)
+		return
 
-	C.frozen = TRUE
-	user.visible_message(SPAN_DANGER("[user] punches [C] with the nailgun, and nail their limb to [thick_surface]!"),
-		SPAN_DANGER("You punch [C] with the nailgun, and nail their limb to [thick_surface]!"))
-	C.update_canmove()
-	addtimer(CALLBACK(C, /mob.proc/unfreeze), 3 SECONDS)
+	L.AdjustSlowed(1) //Slow on hit.
+	L.recalculate_move_delay = TRUE
 
-/datum/ammo/bullet/smg/nail/on_hit_mob(mob/M, obj/item/projectile/P)
-	var/turf/T = get_step(M.loc, P.dir)
+	//If there's an obstacle on the far side, superslow and do extra damage.
+	if(isCarbonSizeXeno(L)) //Unless they're a strong xeno.
+		var/mob/living/carbon/Xenomorph/X = L
+		if(X.tier != 1) // 0 is queen!
+			return
 
-	var/thick_surface = FALSE
-	if(!istype(M, /mob/living/carbon))
-		return FALSE
+	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(P.loc ? P : P.firer, L)))
+	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
+		return
 
-	var/mob/living/carbon/C = M
-	C.AdjustSlowed(1) //Slow on hit.
-
-	if(!T || T.z != C.z)
-		return FALSE //Welp we tried boy, pack it up. Slow applied, but no further
-
-	if(T.density || T.opacity)
-		thick_surface = TRUE
-	else
-		for(var/obj/O in T)
-			if(O.get_projectile_hit_boolean(P))
-				thick_surface = TRUE
-				break
-
-	if(!thick_surface)
-		C.recalculate_move_delay = TRUE
-		return FALSE
-
-	C.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	C.AdjustSuperslowed(3) //Superslows if there`s an obstacle behind
-	C.recalculate_move_delay = TRUE
+	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
+	L.AdjustSuperslowed(3)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -509,7 +831,7 @@
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	accuracy = -HIT_ACCURACY_TIER_2
 
 /datum/ammo/bullet/smg/incendiary/set_bullet_traits()
@@ -518,11 +840,35 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
+/datum/ammo/bullet/smg/ap/penetrating
+	name = "wall-piercing submachinegun bullet"
+	shrapnel_chance = 0
+
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/smg/ap/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/smg/ap/cluster
+	name = "cluster submachinegun bullet"
+	shrapnel_chance = 0
+	damage = 30
+	penetration = ARMOR_PENETRATION_TIER_10
+	var/cluster_addon = 0.8
+
+/datum/ammo/bullet/smg/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
+
 /datum/ammo/bullet/smg/le
 	name = "armor-shredding submachinegun bullet"
 
 	scatter = SCATTER_AMOUNT_TIER_10
-	damage = BULLET_DAMAGE_TIER_4
+	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_4
 	shell_speed = AMMO_SPEED_TIER_3
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
@@ -532,55 +878,104 @@
 	name = "rubber submachinegun bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
 
-	damage = BULLET_DAMAGE_OFF
-	stamina_damage = BULLET_DAMAGE_TIER_2
+	damage = 0
+	stamina_damage = 10
 	shrapnel_chance = 0
 
 /*
-//================================================
+//======
 					Rifle Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/rifle
 	name = "rifle bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 
-	damage = BULLET_DAMAGE_TIER_8
+	damage = 40
+	penetration = ARMOR_PENETRATION_TIER_1
 	accurate_range = 16
 	accuracy = HIT_ACCURACY_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
+	effective_range_max = 7
+	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
 
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	accurate_range = 22
 	accuracy = 0
 	shell_speed = AMMO_SPEED_TIER_4
 	damage_falloff = DAMAGE_FALLOFF_TIER_9
 
 /datum/ammo/bullet/rifle/explosive/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/rifle/explosive/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density)
-		cell_explosion(T, 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_source, P.weapon_source_mob)
+		cell_explosion(T, 80, 40, EXPLOSION_FALLOFF_SHAPE_LINEAR, P.dir, P.weapon_cause_data)
 
 /datum/ammo/bullet/rifle/ap
 	name = "armor-piercing rifle bullet"
 
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_8
+
+// Basically AP but better. Focused at taking out armour temporarily
+/datum/ammo/bullet/rifle/ap/toxin
+	name = "toxic rifle bullet"
+	var/acid_per_hit = 7
+	var/organic_damage_mult = 3
+
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/toxic_buildup, acid_per_hit)
+
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_turf(turf/T, obj/item/projectile/P)
+	. = ..()
+	if(T.flags_turf & TURF_ORGANIC)
+		P.damage *= organic_damage_mult
+
+/datum/ammo/bullet/rifle/ap/toxin/on_hit_obj(obj/O, obj/item/projectile/P)
+	. = ..()
+	if(O.flags_obj & OBJ_ORGANIC)
+		P.damage *= organic_damage_mult
+
+
+/datum/ammo/bullet/rifle/ap/penetrating
+	name = "wall-piercing rifle bullet"
+	shrapnel_chance = 0
+
+	damage = 35
+	penetration = ARMOR_PENETRATION_TIER_10
+
+/datum/ammo/bullet/rifle/ap/penetrating/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
+
+/datum/ammo/bullet/rifle/ap/cluster
+	name = "cluster rifle bullet"
+	shrapnel_chance = 0
+
+	damage = 35
+	penetration = ARMOR_PENETRATION_TIER_10
+	var/cluster_addon = 1
+
+/datum/ammo/bullet/rifle/ap/cluster/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/cluster_stack, cluster_addon, damage, world.time)
 
 /datum/ammo/bullet/rifle/le
 	name = "armor-shredding rifle bullet"
 
-	damage = BULLET_DAMAGE_TIER_4
+	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_4
 	pen_armor_punch = 5
 
@@ -588,8 +983,8 @@
 	name = "rubber rifle bullet"
 	sound_override = 'sound/weapons/gun_c99.ogg'
 
-	damage = BULLET_DAMAGE_OFF
-	stamina_damage = BULLET_DAMAGE_TIER_3
+	damage = 0
+	stamina_damage = 15
 	shrapnel_chance = 0
 
 /datum/ammo/bullet/rifle/incendiary
@@ -598,7 +993,7 @@
 	shrapnel_chance = 0
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = -HIT_ACCURACY_TIER_2
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
@@ -616,7 +1011,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 	accurate_range_min = 4
 
-	damage = BULLET_DAMAGE_TIER_11
+	damage = 55
 	scatter = -SCATTER_AMOUNT_TIER_8
 	penetration= ARMOR_PENETRATION_TIER_7
 	shell_speed = AMMO_SPEED_TIER_6
@@ -625,7 +1020,7 @@
 	name = "A19 high velocity incendiary bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage = BULLET_DAMAGE_TIER_8
+	damage = 40
 	accuracy = HIT_ACCURACY_TIER_4
 	scatter = -SCATTER_AMOUNT_TIER_8
 	penetration= ARMOR_PENETRATION_TIER_5
@@ -641,53 +1036,66 @@
 	name = "A19 high velocity impact bullet"
 	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage = BULLET_DAMAGE_TIER_8
+	damage = 40
 	accuracy = -HIT_ACCURACY_TIER_2
 	scatter = -SCATTER_AMOUNT_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/bullet/rifle/m4ra/impact/on_hit_mob(mob/M, obj/item/projectile/P)
-	knockback(M, P, 32)	// Can knockback basically at max range
-	M.Daze(3)
+	heavy_knockback(M, P, 32)	// Can knockback basically at max range
 
 /datum/ammo/bullet/rifle/mar40
 	name = "heavy rifle bullet"
 
-	damage = BULLET_DAMAGE_TIER_11
+	damage = 55
+
+/datum/ammo/bullet/rifle/type71
+	name = "heavy rifle bullet"
+
+	damage = 35
+	penetration = ARMOR_PENETRATION_TIER_2
+
+/datum/ammo/bullet/rifle/type71/ap
+	name = "heavy armor-piercing rifle bullet"
+
+	damage = 20
+	penetration = ARMOR_PENETRATION_TIER_10
 
 /*
-//================================================
+//======
 					Shotgun Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/shotgun
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY
 
 /datum/ammo/bullet/shotgun/slug
 	name = "shotgun slug"
-	impact_name = "slug"
-	impact_limbs = BODY_FLAG_HEAD
+	handful_state = "slug_shell"
 
-	accurate_range = 12
-	max_range = 16
-	damage = BULLET_DAMAGE_TIER_11
-	penetration = ARMOR_PENETRATION_TIER_2
+	accurate_range = 6
+	max_range = 8
+	damage = 70
+	penetration = ARMOR_PENETRATION_TIER_4
 	damage_armor_punch = 2
 
 /datum/ammo/bullet/shotgun/slug/on_hit_mob(mob/M,obj/item/projectile/P)
-	heavy_knockback(M, P, 5)
+	heavy_knockback(M, P, 6)
 
 /datum/ammo/bullet/shotgun/beanbag
 	name = "beanbag slug"
+	headshot_state	= HEADSHOT_OVERLAY_LIGHT //It's not meant to kill people... but if you put it in your mouth, it will.
+	handful_state = "beanbag_slug"
 	icon_state = "beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
 	sound_override = 'sound/weapons/gun_shotgun_small.ogg'
 
 	max_range = 12
 	shrapnel_chance = 0
-	damage = BULLET_DAMAGE_OFF
-	stamina_damage = BULLET_DAMAGE_TIER_9
+	damage = 0
+	stamina_damage = 45
 	accuracy = HIT_ACCURACY_TIER_3
 	shell_speed = AMMO_SPEED_TIER_3
 
@@ -700,12 +1108,13 @@
 
 /datum/ammo/bullet/shotgun/incendiary
 	name = "incendiary slug"
+	handful_state = "incendiary_slug"
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	accuracy = -HIT_ACCURACY_TIER_2
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_11
+	damage = 55
 	penetration= ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/shotgun/incendiary/set_bullet_traits()
@@ -726,18 +1135,20 @@
 
 
 /datum/ammo/bullet/shotgun/flechette
-	name = "shotgun flechette shell"
+	name = "flechette shell"
 	icon_state = "flechette"
+	handful_state = "flechette_shell"
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/flechette_spread
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_7
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	multiple_handful_name = TRUE
 
 /datum/ammo/bullet/shotgun/flechette_spread
 	name = "additional flechette"
@@ -746,30 +1157,42 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_5
 
 /datum/ammo/bullet/shotgun/buckshot
-	name = "shotgun buckshot shell"
+	name = "buckshot shell"
 	icon_state = "buckshot"
+	handful_state = "buckshot_shell"
+	multiple_handful_name = TRUE
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/spread
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_5
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_5
 	accurate_range = 4
 	max_range = 4
-	damage = BULLET_DAMAGE_TIER_12
+	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	penetration	= 0
 	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
 	shell_speed = AMMO_SPEED_TIER_2
 	damage_armor_punch = 0
 	pen_armor_punch = 0
+
+/datum/ammo/bullet/shotgun/buckshot/incendiary
+	name = "incendiary buckshot shell"
+	handful_state = "incen_buckshot"
+	handful_type = /obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
+
+/datum/ammo/bullet/shotgun/buckshot/incendiary/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/bullet/shotgun/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M,P)
@@ -778,7 +1201,7 @@
 /datum/ammo/bullet/shotgun/buckshot/masterkey
 	bonus_projectiles_type = /datum/ammo/bullet/shotgun/spread/masterkey
 
-	damage = BULLET_DAMAGE_TIER_11
+	damage = 55
 
 /datum/ammo/bullet/shotgun/spread
 	name = "additional buckshot"
@@ -788,10 +1211,9 @@
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 4
 	max_range = 6
-	damage = BULLET_DAMAGE_TIER_12
+	damage = 60
 	damage_var_low = PROJECTILE_VARIANCE_TIER_8
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
-	damage_falloff = DAMAGE_FALLOFF_TIER_8
 	penetration = ARMOR_PENETRATION_TIER_1
 	shell_speed = AMMO_SPEED_TIER_2
 	scatter = SCATTER_AMOUNT_TIER_1
@@ -799,17 +1221,169 @@
 	pen_armor_punch = 0
 
 /datum/ammo/bullet/shotgun/spread/masterkey
-	damage = BULLET_DAMAGE_TIER_4
-
+	damage = 20
 
 /*
-//================================================
+					8 GAUGE SHOTGUN AMMO
+*/
+
+/datum/ammo/bullet/shotgun/heavy/buckshot
+	name = "heavy buckshot shell"
+	icon_state = "buckshot"
+	handful_state = "heavy_buckshot"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/spread
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_3
+	accurate_range = 3
+	max_range = 3
+	damage = 90
+	penetration	= 0
+	shell_speed = AMMO_SPEED_TIER_2
+	damage_armor_punch = 0
+	pen_armor_punch = 0
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/on_hit_mob(mob/M,obj/item/projectile/P)
+	knockback(M,P)
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/spread
+	name = "additional heavy buckshot"
+	max_range = 4
+	scatter = SCATTER_AMOUNT_TIER_1
+	bonus_projectiles_amount = 0
+
+//basically the same
+/datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
+	name = "dragon's breath shell"
+	handful_state = "heavy_dragonsbreath"
+	multiple_handful_name = TRUE
+	damage_type = BURN
+	damage = 75
+	accurate_range = 3
+	max_range = 4
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
+	))
+
+/datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath/spread
+	name = "additional dragon's breath"
+	bonus_projectiles_amount = 0
+	accurate_range = 4
+	max_range = 5 //make use of the ablaze property
+
+
+/datum/ammo/bullet/shotgun/heavy/slug
+	name = "heavy shotgun slug"
+	handful_state = "heavy_slug"
+
+	accurate_range = 7
+	max_range = 8
+	damage = 100 //ouch.
+	penetration = ARMOR_PENETRATION_TIER_6
+	damage_armor_punch = 2
+
+/datum/ammo/bullet/shotgun/heavy/slug/on_hit_mob(mob/M,obj/item/projectile/P)
+	heavy_knockback(M, P, 7)
+
+/datum/ammo/bullet/shotgun/heavy/beanbag
+	name = "heavy beanbag slug"
+	icon_state = "beanbag"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
+	handful_state = "heavy_beanbag"
+	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+
+	max_range = 7
+	shrapnel_chance = 0
+	damage = 0
+	stamina_damage = 100
+	accuracy = HIT_ACCURACY_TIER_2
+	shell_speed = AMMO_SPEED_TIER_2
+
+/datum/ammo/bullet/shotgun/heavy/beanbag/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(!M || M == P.firer)
+		return
+	if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		shake_camera(H, 2, 1)
+
+/datum/ammo/bullet/shotgun/heavy/flechette
+	name = "heavy flechette shell"
+	icon_state = "flechette"
+	handful_state = "heavy_flechette"
+	multiple_handful_name = TRUE
+	bonus_projectiles_type = /datum/ammo/bullet/shotgun/heavy/flechette_spread
+
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_3
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_3
+	max_range = 12
+	damage = 50
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	penetration	= ARMOR_PENETRATION_TIER_10
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_2
+
+/datum/ammo/bullet/shotgun/heavy/flechette_spread
+	name = "additional heavy flechette"
+	icon_state = "flechette"
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
+	max_range = 12
+	damage = 50
+	damage_var_low = PROJECTILE_VARIANCE_TIER_8
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	penetration	= ARMOR_PENETRATION_TIER_10
+	scatter = SCATTER_AMOUNT_TIER_4
+
+//Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
+/datum/ammo/bullet/shotgun/twobore 
+	name = "two bore bullet"
+	icon_state 	= "autocannon"
+	handful_state = "twobore"
+
+	accurate_range = 8 //Big low-velocity projectile; this is for blasting dangerous game at close range.
+	max_range = 14 //At this range, it's lost all its damage anyway.
+	damage = 300 //Hits like a buckshot PB.
+	penetration = 15
+	damage_falloff = DAMAGE_FALLOFF_TIER_1 * 3 //It has a lot of energy, but the 26mm bullet drops off fast.
+	effective_range_max	= EFFECTIVE_RANGE_MAX_TIER_2 //Full damage up to this distance, then falloff for each tile beyond.
+	var/hit_messages = list()
+
+/datum/ammo/bullet/shotgun/twobore/on_hit_mob(mob/living/M, obj/item/projectile/P)
+	var/mob/shooter = P.firer
+	if(shooter && ismob(shooter) && HAS_TRAIT(shooter, TRAIT_TWOBORE_TRAINING) && M.stat != DEAD && prob(40)) //Death is handled by periodic life() checks so this should have a chance to fire on a killshot.
+		if(!length(hit_messages)) //Pick and remove lines, refill on exhaustion.
+			hit_messages = list("Got you!", "Aha!", "Bullseye!", "It's curtains for you, Sonny Jim!", "Your head will look fantastic on my wall!", "I have you now!", "You miserable coward! Come and fight me like a man!", "Tally ho!")
+		var/message = pick_n_take(hit_messages)
+		shooter.say(message)
+
+	if(P.distance_travelled > 8)
+		heavy_knockback(M, P, 12)
+
+	else if(!M || M == P.firer || M.lying) //These checks are included in heavy_knockback and would be redundant above.
+		return
+
+	shake_camera(M, 3, 4)
+	M.apply_effect(2, WEAKEN)
+	M.apply_effect(4, SLOW)
+	if(isCarbonSizeXeno(M))
+		to_chat(M, SPAN_XENODANGER("The impact knocks you off your feet!"))
+	else //This will hammer a Yautja as hard as a human.
+		to_chat(M, SPAN_HIGHDANGER("The impact knocks you off your feet!"))
+
+	step(M, get_dir(P.firer, M))
+
+/*
+//======
 					Sniper Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/sniper
 	name = "sniper bullet"
+	headshot_state	= HEADSHOT_OVERLAY_HEAVY
 	damage_falloff = 0
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_SNIPER|AMMO_IGNORE_COVER
 	accurate_range_min = 4
@@ -818,7 +1392,7 @@
 	accurate_range = 32
 	max_range = 32
 	scatter = 0
-	damage = BULLET_DAMAGE_TIER_14
+	damage = 70
 	penetration= ARMOR_PENETRATION_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
 	damage_falloff = 0
@@ -837,7 +1411,7 @@
 
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	scatter = 0
-	damage = BULLET_DAMAGE_TIER_12
+	damage = 60
 	penetration = ARMOR_PENETRATION_TIER_4
 
 /datum/ammo/bullet/sniper/incendiary/set_bullet_traits()
@@ -865,7 +1439,7 @@
 
 	accuracy = HIT_ACCURACY_TIER_8
 	scatter = SCATTER_AMOUNT_TIER_8
-	damage = BULLET_DAMAGE_TIER_11
+	damage = 55
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration = 0
 
@@ -898,7 +1472,7 @@
 
 	accuracy = HIT_ACCURACY_TIER_8
 	scatter = 0
-	damage = BULLET_DAMAGE_TIER_12
+	damage = 60
 	damage_var_high = PROJECTILE_VARIANCE_TIER_8
 	penetration	= ARMOR_PENETRATION_TIER_6
 	accurate_range = 32
@@ -925,7 +1499,7 @@
 /datum/ammo/bullet/tank/flak/weak
 	name = "dualcannon flak bullet"
 
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
@@ -934,7 +1508,7 @@
 	name = "anti-tank sniper bullet"
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = BULLET_DAMAGE_TIER_19
+	damage = 95
 	shell_speed = AMMO_SPEED_TIER_6
 
 
@@ -942,13 +1516,13 @@
 	name = "supersonic sniper bullet"
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = BULLET_DAMAGE_TIER_19
+	damage = 95
 	shell_speed = AMMO_SPEED_TIER_6
 
 /*
-//================================================
+//======
 					Special Ammo
-//================================================
+//======
 */
 
 /datum/ammo/bullet/smartgun
@@ -958,8 +1532,7 @@
 
 	max_range = 12
 	accuracy = HIT_ACCURACY_TIER_3
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/armor_piercing
@@ -968,8 +1541,7 @@
 
 	accurate_range = 12
 	accuracy = HIT_ACCURACY_TIER_1
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_4
+	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_8
 	damage_armor_punch = 1
 
@@ -980,8 +1552,7 @@
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
 	accurate_range = 32
 	accuracy = HIT_ACCURACY_TIER_3
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_8
+	damage = 40
 	penetration = 0
 
 /datum/ammo/bullet/smartgun/dirty/armor_piercing
@@ -989,8 +1560,7 @@
 
 	accurate_range = 22
 	accuracy = HIT_ACCURACY_TIER_3
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 
@@ -1004,7 +1574,7 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_8
 	max_range = 22
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 0
 	pen_armor_punch = 0
@@ -1020,31 +1590,31 @@
 	icon_state 	= "bullet" // Keeping it bog standard with the turret but allows it to be changed. Had to remove IFF so you have to watch out.
 
 	accurate_range = 12
-	damage = BULLET_DAMAGE_TIER_7
+	damage = 35
 	penetration= ARMOR_PENETRATION_TIER_10 //Bumped the penetration to serve a different role from sentries, MGs are a bit more offensive
 	accuracy = HIT_ACCURACY_TIER_3
 
 /datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
 	name = "heavy machinegun bullet"
-	icon_state 	= "bullet"
 
 	accurate_range = 8
-	damage =  BULLET_DAMAGE_TIER_10
+	damage =  50
 	penetration = ARMOR_PENETRATION_TIER_6
-	accuracy = HIT_ACCURACY_TIER_6
-	shell_speed = AMMO_SPEED_TIER_4
-	max_range = 12
-	effective_range_max = 8
-	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	accuracy = HIT_ACCURACY_TIER_8
+	shell_speed = AMMO_SPEED_TIER_2
+	max_range = 14
+	effective_range_max = 7
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 12
-	damage = BULLET_DAMAGE_TIER_7
+	damage = 35
 	penetration = ARMOR_PENETRATION_TIER_7
 
 /datum/ammo/bullet/minigun/tank
@@ -1055,55 +1625,20 @@
 
 /datum/ammo/bullet/m60
 	name = "M60 bullet"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 
 	accuracy = -HIT_ACCURACY_TIER_3
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_8
 	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 12
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	penetration= ARMOR_PENETRATION_TIER_6
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
 
-//Changed so it can be used in multiple weapons.
-/datum/ammo/bullet/execution
-	name = "high-impact execution round"
-	impact_name = "mateba"
-	impact_limbs = BODY_FLAG_HEAD
-	debilitate = list(0,2,0,0,0,1,0,0)
-
-	damage = BULLET_DAMAGE_TIER_9
-	damage_var_low = PROJECTILE_VARIANCE_TIER_8
-	damage_var_high = PROJECTILE_VARIANCE_TIER_6
-	penetration = ARMOR_PENETRATION_TIER_2
-	shrapnel_chance = SHRAPNEL_CHANCE_TIER_5
-
-/datum/ammo/bullet/execution/on_hit_mob(mob/M, obj/item/projectile/P)
-	knockback(M, P, 4)
-
-/datum/ammo/bullet/execution/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
-		return ..()
-	var/mob/living/carbon/human/H = M
-	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
-
-	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
-		return -1
-
-	H.apply_damage(500, BRUTE, "head", no_limb_loss = TRUE, impact_name = impact_name, impact_limbs = impact_limbs, permanent_kill = TRUE) //not coming back
-	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
-		SPAN_HIGHDANGER("You were Executed!"))
-
-	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_source)
-
-	var/area/A = get_area(H)
-
-	msg_admin_attack(FONT_SIZE_HUGE("[key_name(usr)] has battlefield executed [key_name(H)] in [get_area(usr)] ([usr.loc.x],[usr.loc.y],[usr.loc.z])."), usr.loc.x, usr.loc.y, usr.loc.z)
-	log_attack("[key_name(usr)] battlefield executed [key_name(H)] at [A.name].")
-
 /*
-//================================================
+//======
 					Rocket Ammo
-//================================================
+//======
 */
 
 /datum/ammo/rocket
@@ -1118,7 +1653,7 @@
 	accuracy = HIT_ACCURACY_TIER_2
 	accurate_range = 7
 	max_range = 7
-	damage = BULLET_DAMAGE_TIER_3
+	damage = 15
 	shell_speed = AMMO_SPEED_TIER_1
 
 /datum/ammo/rocket/New()
@@ -1131,24 +1666,24 @@
 	. = ..()
 
 /datum/ammo/rocket/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, get_turf(M))
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
-		M.ex_act(350, P.dir, P.weapon_source, P.weapon_source_mob, 100)
+		M.ex_act(350, P.dir, P.weapon_cause_data, 100)
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, get_turf(O))
 	smoke.start()
 
 /datum/ammo/rocket/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(T, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, get_turf(P))
 	smoke.start()
 
@@ -1161,31 +1696,31 @@
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_9
 	accurate_range = 6
 	max_range = 6
-	damage = BULLET_DAMAGE_TIER_2
+	damage = 10
 	penetration= ARMOR_PENETRATION_TIER_10
 
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
-	M.ex_act(150, P.dir, P.weapon_source, P.weapon_source_mob, 100)
+	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
 	M.KnockDown(2)
 	M.KnockOut(2)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
-		M.ex_act(300, P.dir, P.weapon_source, P.weapon_source_mob, 100)
-	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+		M.ex_act(300, P.dir, P.weapon_cause_data, 100)
+	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_obj(obj/O, obj/item/projectile/P)
 	var/turf/T = get_turf(O)
-	O.ex_act(150, P.dir, P.weapon_source, P.weapon_source_mob, 100)
-	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	O.ex_act(150, P.dir, P.weapon_cause_data, 100)
+	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, T)
 	smoke.start()
 
 /datum/ammo/rocket/ap/on_hit_turf(turf/T, obj/item/projectile/P)
 	var/hit_something = 0
 	for(var/mob/M in T)
-		M.ex_act(150, P.dir, P.weapon_source, P.weapon_source_mob, 100)
+		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
 		M.KnockDown(4)
 		M.KnockOut(4)
 		hit_something = 1
@@ -1193,13 +1728,13 @@
 	if(!hit_something)
 		for(var/obj/O in T)
 			if(O.density)
-				O.ex_act(150, P.dir, P.weapon_source, P.weapon_source_mob, 100)
+				O.ex_act(150, P.dir, P.weapon_cause_data, 100)
 				hit_something = 1
 				continue
 	if(!hit_something)
-		T.ex_act(150, P.dir, P.weapon_source, P.weapon_source_mob, 200)
+		T.ex_act(150, P.dir, P.weapon_cause_data, 200)
 
-	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1207,7 +1742,7 @@
 	var/turf/T = get_turf(P)
 	var/hit_something = 0
 	for(var/mob/M in T)
-		M.ex_act(250, P.dir, P.weapon_source, P.weapon_source_mob, 100)
+		M.ex_act(250, P.dir, P.weapon_cause_data, 100)
 		M.KnockDown(2)
 		M.KnockOut(2)
 		hit_something = 1
@@ -1215,12 +1750,12 @@
 	if(!hit_something)
 		for(var/obj/O in T)
 			if(O.density)
-				O.ex_act(250, P.dir, P.weapon_source, P.weapon_source_mob, 100)
+				O.ex_act(250, P.dir, P.weapon_cause_data, 100)
 				hit_something = 1
 				continue
 	if(!hit_something)
-		T.ex_act(250, P.dir, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+		T.ex_act(250, P.dir, P.weapon_cause_data)
+	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1232,24 +1767,24 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	accurate_range = 32
 	max_range = 32
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	shell_speed = AMMO_SPEED_TIER_3
 
 /datum/ammo/rocket/ltb/on_hit_mob(mob/M, obj/item/projectile/P)
-	cell_explosion(get_turf(M), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(M), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(M), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	cell_explosion(get_turf(M), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
 /datum/ammo/rocket/ltb/on_hit_obj(obj/O, obj/item/projectile/P)
-	cell_explosion(get_turf(O), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(O), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(O), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	cell_explosion(get_turf(O), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
 /datum/ammo/rocket/ltb/on_hit_turf(turf/T, obj/item/projectile/P)
-	cell_explosion(get_turf(T), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(T), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(T), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	cell_explosion(get_turf(T), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
 /datum/ammo/rocket/ltb/do_at_max_range(obj/item/projectile/P)
-	cell_explosion(get_turf(P), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
-	cell_explosion(get_turf(P), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_source, P.weapon_source_mob)
+	cell_explosion(get_turf(P), 220, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	cell_explosion(get_turf(P), 200, 100, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 
 /datum/ammo/rocket/wp
 	name = "white phosphorous rocket"
@@ -1258,7 +1793,7 @@
 
 	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
 	accurate_range = 8
-	damage = BULLET_DAMAGE_TIER_18
+	damage = 90
 	max_range = 8
 
 /datum/ammo/rocket/wp/set_bullet_traits()
@@ -1267,58 +1802,53 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/rocket/wp/drop_flame(turf/T, var/source, var/source_mob)
+/datum/ammo/rocket/wp/drop_flame(turf/T, datum/cause_data/cause_data)
 	playsound(T, 'sound/weapons/gun_flamethrower3.ogg', 75, 1, 7)
 	if(!istype(T)) return
 	smoke.set_up(1, T)
 	smoke.start()
 	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, source, source_mob, R, 3)
+	new /obj/flamer_fire(T, cause_data, R, 3)
 
 	var/datum/effect_system/smoke_spread/phosphorus/landingSmoke = new /datum/effect_system/smoke_spread/phosphorus
-	landingSmoke.set_up(3, 0, T, null, 6)
+	landingSmoke.set_up(3, 0, T, null, 6, cause_data)
 	landingSmoke.start()
 	landingSmoke = null
 
-	var/shard_type = /datum/ammo/bullet/shrapnel/incendiary
-	var/shard_amount = 12
-	create_shrapnel(T, shard_amount, , ,shard_type, source, source_mob)
+/datum/ammo/rocket/wp/on_hit_mob(mob/M, obj/item/projectile/P)
+	drop_flame(get_turf(M), P.weapon_cause_data)
 
+/datum/ammo/rocket/wp/on_hit_obj(obj/O, obj/item/projectile/P)
+	drop_flame(get_turf(O), P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flame(get_turf(M))
-
-/datum/ammo/rocket/wp/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flame(get_turf(O))
-
-/datum/ammo/rocket/wp/on_hit_turf(turf/T,obj/item/projectile/P)
-	drop_flame(T)
+/datum/ammo/rocket/wp/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_flame(T, P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/do_at_max_range(obj/item/projectile/P)
-	drop_flame(get_turf(P))
+	drop_flame(get_turf(P), P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad
 	name = "thermobaric rocket"
 	flags_ammo_behavior = AMMO_ROCKET|AMMO_STRIKES_SURFACE
 
-	damage = BULLET_DAMAGE_TIER_20
+	damage = 100
 	max_range = 32
 
-/datum/ammo/rocket/wp/quad/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flame(get_turf(M))
-	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.weapon_source_mob)
+/datum/ammo/rocket/wp/quad/on_hit_mob(mob/M, obj/item/projectile/P)
+	drop_flame(get_turf(M), P.weapon_cause_data)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/quad/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flame(get_turf(O))
-	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.weapon_source_mob)
+/datum/ammo/rocket/wp/quad/on_hit_obj(obj/O, obj/item/projectile/P)
+	drop_flame(get_turf(O), P.weapon_cause_data)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_cause_data)
 
-/datum/ammo/rocket/wp/quad/on_hit_turf(turf/T,obj/item/projectile/P)
-	drop_flame(T)
-	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.weapon_source_mob)
+/datum/ammo/rocket/wp/quad/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_flame(T, P.weapon_cause_data)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_cause_data)
 
 /datum/ammo/rocket/wp/quad/do_at_max_range(obj/item/projectile/P)
-	drop_flame(get_turf(P))
-	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_source, P.weapon_source_mob)
+	drop_flame(get_turf(P), P.weapon_cause_data)
+	explosion(P.loc,  -1, 2, 4, 5, , , ,P.weapon_cause_data)
 
 /datum/ammo/rocket/custom
 	name = "custom rocket"
@@ -1347,9 +1877,9 @@
 	prime(null, P)
 
 /*
-//================================================
+//======
 					Energy Ammo
-//================================================
+//======
 */
 
 /datum/ammo/energy
@@ -1377,7 +1907,7 @@
 	damage_type = OXY
 	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF //Not that ignoring will do much right now.
 
-	stamina_damage = BULLET_DAMAGE_TIER_9
+	stamina_damage = 45
 	accuracy = HIT_ACCURACY_TIER_8
 	shell_speed = AMMO_SPEED_TIER_1 // Slightly faster
 
@@ -1387,6 +1917,7 @@
 		H.disable_special_items() // Disables scout cloak
 
 /datum/ammo/energy/yautja/
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_3
 
@@ -1395,7 +1926,7 @@
 	icon_state = "ion"
 	damage_type = BURN
 
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	shell_speed = AMMO_SPEED_TIER_2
 
 /datum/ammo/energy/yautja/caster/bolt
@@ -1405,14 +1936,14 @@
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
-	damage = BULLET_DAMAGE_TIER_2
+	damage = 10
 
 /datum/ammo/energy/yautja/caster/blast
 	name = "plasma blast"
 	icon_state = "pulse1"
 	damage_type = BURN
 
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	shell_speed = AMMO_SPEED_TIER_6
 
 /datum/ammo/energy/yautja/caster/sphere
@@ -1476,7 +2007,7 @@
 	debilitate = list(0,2,0,0,0,0,0,0)
 	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
-	damage = BULLET_DAMAGE_TIER_11
+	damage = 55
 
 /datum/ammo/energy/yautja/rifle/blast
 	name = "plasma rifle blast"
@@ -1484,24 +2015,24 @@
 	damage_type = BURN
 
 	shell_speed = AMMO_SPEED_TIER_4
-	damage = BULLET_DAMAGE_TIER_8
+	damage = 40
 
 /datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M,obj/item/projectile/P)
 	knockback(M,P)
 	playsound(M.loc, 'sound/weapons/pulse.ogg', 25, 1)
-	explosion(get_turf(M), -1, -1, 2, -1, P.weapon_source, P.weapon_source_mob)
+	explosion(get_turf(M), -1, -1, 2, -1, , , , P.weapon_cause_data)
 
 /datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T,obj/item/projectile/P)
-	explosion(T, -1, -1, 2, -1, P.weapon_source, P.weapon_source_mob)
+	explosion(T, -1, -1, 2, -1, , , , P.weapon_cause_data)
 
 /datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O,obj/item/projectile/P)
-	explosion(get_turf(P), -1, -1, 2, -1, P.weapon_source, P.weapon_source_mob)
+	explosion(get_turf(P), -1, -1, 2, -1, , , , P.weapon_cause_data)
 
 
 /*
-//================================================
+//======
 					Xeno Spits
-//================================================
+//======
 */
 /datum/ammo/xeno
 	icon_state = "neurotoxin"
@@ -1624,7 +2155,7 @@
 		if(isXeno(M) && isXeno(firer) && M:hivenumber == firer:hivenumber)
 			continue
 
-		if(istype(M.buckled, /obj/structure/bed/nest))
+		if(HAS_TRAIT(M, TRAIT_NESTED))
 			continue
 
 		hit_someone = TRUE
@@ -1752,7 +2283,7 @@
 	spit_cost = 25
 
 	accuracy = HIT_ACCURACY_TIER_3
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	penetration = ARMOR_PENETRATION_TIER_2
 	shell_speed = AMMO_SPEED_TIER_2
 
@@ -1762,14 +2293,14 @@
 /datum/ammo/xeno/acid/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && istype(C.buckled, /obj/structure/bed/nest) || C.stat == DEAD)
+		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
 			return
 	..()
 
 /datum/ammo/xeno/acid/medium
 	name = "acid spatter"
 
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	shell_speed = AMMO_SPEED_TIER_3
 	accuracy = HIT_ACCURACY_TIER_5*3
 	max_range = 6
@@ -1777,12 +2308,9 @@
 /datum/ammo/xeno/acid/praetorian
 	name = "acid splash"
 
-	damage_falloff = DAMAGE_FALLOFF_TIER_9
-	accuracy = HIT_ACCURACY_TIER_5*3
-	max_range = 7
-	damage = BULLET_DAMAGE_TIER_5
-	damage_var_low = PROJECTILE_VARIANCE_TIER_6
-	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	accuracy = HIT_ACCURACY_TIER_10 + HIT_ACCURACY_TIER_5
+	max_range = 8
+	damage = 30
 	shell_speed = AMMO_SPEED_TIER_2
 	added_spit_delay = 0
 
@@ -1792,13 +2320,15 @@
 /datum/ammo/xeno/acid/prae_nade // Used by base prae's acid nade
 	name = "acid spatter"
 
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
 	max_range = 4
-	damage = BULLET_DAMAGE_TIER_5
-	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	damage = 25
 	shell_speed = AMMO_SPEED_TIER_1
 	scatter = SCATTER_AMOUNT_TIER_6
+
+	apply_delegate = FALSE
 
 /datum/ammo/xeno/acid/prae_nade/on_hit_mob(mob/M, obj/item/projectile/P)
 	if (!ishuman(M))
@@ -1825,7 +2355,7 @@
 	accuracy = HIT_ACCURACY_TIER_5
 	accurate_range = 32
 	max_range = 8
-	damage = BULLET_DAMAGE_TIER_4
+	damage = 20
 	damage_falloff = DAMAGE_FALLOFF_TIER_10
 	shell_speed = AMMO_SPEED_TIER_1
 	scatter = SCATTER_AMOUNT_TIER_10
@@ -1885,7 +2415,7 @@
 /datum/ammo/xeno/boiler_gas/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(iscarbon(M))
 		var/mob/living/carbon/C = M
-		if(C.status_flags & XENO_HOST && istype(C.buckled, /obj/structure/bed/nest) || C.stat == DEAD)
+		if(C.status_flags & XENO_HOST && HAS_TRAIT(C, TRAIT_NESTED) || C.stat == DEAD)
 			return
 	drop_nade(get_turf(P), P)
 
@@ -1908,8 +2438,7 @@
 	var/amount = 4
 	var/lifetime_mult = 1.0
 	if(isXenoBoiler(P.firer))
-		smoke_system.source = P.weapon_source
-		smoke_system.source_mob = P.weapon_source_mob
+		smoke_system.cause_data = P.weapon_cause_data
 	smoke_system.set_up(amount, 0, T)
 	smoke_system.lifetime = 12 * lifetime_mult
 	smoke_system.start()
@@ -1927,9 +2456,9 @@
 	damage = 5
 	max_range = 5
 	accuracy = HIT_ACCURACY_TIER_8
-	accuracy_var_low = PROJECTILE_VARIANCE_TIER_6
-	accuracy_var_high = PROJECTILE_VARIANCE_TIER_6
-	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_6
+	accuracy_var_low = PROJECTILE_VARIANCE_TIER_7
+	accuracy_var_high = PROJECTILE_VARIANCE_TIER_7
+	bonus_projectiles_amount = EXTRA_PROJECTILES_TIER_7
 	shrapnel_type = /obj/item/shard/shrapnel/bone_chips
 	shrapnel_chance = 60
 
@@ -1966,9 +2495,9 @@
             M.AdjustSlowed(4)
 
 /*
-//================================================
+//======
 					Shrapnel
-//================================================
+//======
 */
 /datum/ammo/bullet/shrapnel
 	name = "shrapnel"
@@ -1979,10 +2508,9 @@
 	accuracy = HIT_ACCURACY_TIER_3
 	accurate_range = 32
 	max_range = 8
-	damage = BULLET_DAMAGE_TIER_5
+	damage = 25
 	damage_var_low = -PROJECTILE_VARIANCE_TIER_6
 	damage_var_high = PROJECTILE_VARIANCE_TIER_6
-	damage_falloff = DAMAGE_FALLOFF_TIER_10
 	penetration = ARMOR_PENETRATION_TIER_4
 	shell_speed = AMMO_SPEED_TIER_2
 	shrapnel_chance = 5
@@ -1993,13 +2521,22 @@
 		B.health -= rand(2, 5)
 		B.update_health(1)
 
+/datum/ammo/bullet/shrapnel/rubber
+	name = "rubber pellets"
+	icon_state = "rubber_pellets"
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
+
+	damage = 0
+	stamina_damage = 25
+	shrapnel_chance = 0
+
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
 	flags_ammo_behavior = AMMO_STOPPED_BY_COVER
 
 	shell_speed = AMMO_SPEED_TIER_1
-	damage = BULLET_DAMAGE_TIER_4
+	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_4
 
 /datum/ammo/bullet/shrapnel/incendiary/set_bullet_traits()
@@ -2012,7 +2549,7 @@
 	name = "light shrapnel"
 	icon_state = "shrapnel_light"
 
-	damage = BULLET_DAMAGE_TIER_2
+	damage = 10
 	penetration = ARMOR_PENETRATION_TIER_1
 	shell_speed = AMMO_SPEED_TIER_1
 	shrapnel_chance = 0
@@ -2041,7 +2578,7 @@
 	name = "spall"
 	icon_state = "shrapnel_light"
 
-	damage = BULLET_DAMAGE_TIER_2
+	damage = 10
 	penetration = ARMOR_PENETRATION_TIER_1
 	shell_speed = AMMO_SPEED_TIER_1
 	shrapnel_chance = 0
@@ -2068,13 +2605,14 @@
 	if(isXeno(M))
 		M.Slow(0.4)
 /*
-//================================================
+//======
 					Misc Ammo
-//================================================
+//======
 */
 
 /datum/ammo/alloy_spike
 	name = "alloy spike"
+	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	ping = "ping_s"
 	icon_state = "MSpearFlight"
 	sound_hit 	 	= "alloy_hit"
@@ -2084,7 +2622,7 @@
 	accuracy = HIT_ACCURACY_TIER_8
 	accurate_range = 12
 	max_range = 12
-	damage = BULLET_DAMAGE_TIER_6
+	damage = 30
 	penetration= ARMOR_PENETRATION_TIER_10
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
 
@@ -2095,7 +2633,7 @@
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR
 
 	max_range = 6
-	damage = BULLET_DAMAGE_TIER_7
+	damage = 35
 
 /datum/ammo/flamethrower/set_bullet_traits()
 	. = ..()
@@ -2103,25 +2641,25 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/flamethrower/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flame(get_turf(M))
+/datum/ammo/flamethrower/on_hit_mob(mob/M, obj/item/projectile/P)
+	drop_flame(get_turf(M), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flame(get_turf(O))
+/datum/ammo/flamethrower/on_hit_obj(obj/O, obj/item/projectile/P)
+	drop_flame(get_turf(O), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/on_hit_turf(turf/T,obj/item/projectile/P)
-	drop_flame(T)
+/datum/ammo/flamethrower/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_flame(T, P.weapon_cause_data)
 
 /datum/ammo/flamethrower/do_at_max_range(obj/item/projectile/P)
-	drop_flame(get_turf(P))
+	drop_flame(get_turf(P), P.weapon_cause_data)
 
-/datum/ammo/flamethrower/tank_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
+/datum/ammo/flamethrower/tank_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
 	if(locate(/obj/flamer_fire) in T)
 		return
 	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, source, source_mob, R, 2)
+	new /obj/flamer_fire(T, cause_data, R, 2)
 
 /datum/ammo/flamethrower/sentry_flamer
 	flags_ammo_behavior = AMMO_IGNORE_ARMOR|AMMO_IGNORE_COVER
@@ -2137,11 +2675,47 @@
 		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_incendiary)
 	))
 
-/datum/ammo/flamethrower/sentry_flamer/drop_flame(var/turf/T, var/source, var/source_mob)
+/datum/ammo/flamethrower/sentry_flamer/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
 	var/datum/reagent/napalm/blue/R = new()
-	new /obj/flamer_fire(T, source, source_mob, R, 0)
+	new /obj/flamer_fire(T, cause_data, R, 0)
+
+/datum/ammo/flamethrower/sentry_flamer/glob
+	var/datum/effect_system/smoke_spread/phosphorus/smoke
+
+/datum/ammo/flamethrower/sentry_flamer/glob/New()
+	. = ..()
+	smoke = new()
+
+/datum/ammo/flamethrower/sentry_flamer/glob/drop_flame(turf/T, datum/cause_data/cause_data)
+	if(!istype(T))
+		return
+	smoke.set_up(1, 0, T, new_cause_data = cause_data)
+	smoke.start()
+
+/datum/ammo/flamethrower/sentry_flamer/glob/Destroy()
+	qdel(smoke)
+	return ..()
+
+/datum/ammo/flamethrower/sentry_flamer/assault
+	name = "light fire"
+
+/datum/ammo/flamethrower/sentry_flamer/assault/drop_flame(turf/T, datum/cause_data/cause_data)
+	if(!istype(T))
+		return
+	var/datum/reagent/napalm/blue/R = new()
+	R.durationfire = BURN_TIME_INSTANT
+	new /obj/flamer_fire(T, cause_data, R, 0)
+
+/datum/ammo/flamethrower/sentry_flamer/mini
+	name = "normal fire"
+
+/datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
+	if(!istype(T))
+		return
+	var/datum/reagent/napalm/R = new()
+	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flare
 	name = "flare"
@@ -2149,7 +2723,7 @@
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
 
-	damage = BULLET_DAMAGE_TIER_3
+	damage = 15
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 14
 	shell_speed = AMMO_SPEED_TIER_3
@@ -2250,7 +2824,7 @@
 	icon_state = "grenade"
 	flags_ammo_behavior = AMMO_IGNORE_COVER|AMMO_SKIPS_ALIENS
 
-	damage = BULLET_DAMAGE_TIER_3
+	damage = 15
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 6
 
@@ -2271,7 +2845,7 @@
 	var/obj/item/explosive/grenade/G = new nade_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] lands on [T]!"))
 	G.det_time = 10
-	G.source_mob = P.weapon_source_mob
+	G.cause_data = P.weapon_cause_data
 	G.activate()
 
 /datum/ammo/grenade_container/rifle
@@ -2289,7 +2863,7 @@
 	var/hugger_hive = XENO_HIVE_NORMAL
 	icon_state = "smoke_shell"
 
-	damage = BULLET_DAMAGE_TIER_3
+	damage = 15
 	accuracy = HIT_ACCURACY_TIER_3
 	max_range = 6
 

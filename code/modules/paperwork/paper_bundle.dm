@@ -84,44 +84,47 @@
 	else
 		to_chat(user, SPAN_NOTICE("It is too far away."))
 
-/obj/item/paper_bundle/attack_self(mob/user as mob)
-	if(ishuman(user))
-		var/mob/living/carbon/human/human_user = user
-		var/dat
-		switch(screen)
-			if(0)
-				dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'></DIV>"
-				dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
-				dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
-			if(1)
-				dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-				dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
-				dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
-			if(2)
-				dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
-				dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV><BR><HR>"
-				dat+= "<DIV STYLE='float;left; text-align:right; with:33.33333%'></DIV>"
-		if(istype(src[page], /obj/item/paper))
-			var/obj/item/paper/P = src[page]
-			if(!(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/dead/observer) || isRemoteControlling(usr)))
-				dat+= "<BODY class='paper'>[stars(P.info)][P.stamps]</BODY>"
-			else
-				dat+= "<BODY class='paper'>[P.info][P.stamps]</BODY>"
-			show_browser(human_user, dat, P.name, name)
-			P.add_fingerprint(usr)
-		else if(istype(src[page], /obj/item/photo))
-			var/obj/item/photo/P = src[page]
-			human_user << browse_rsc(P.img, "tmp_photo.png")
-			dat += "<html>" \
-			+ "<body style='overflow:hidden'>" \
-			+ "<div> <img src='tmp_photo.png' width = '180'" \
-			+ "[P.scribble ? "<div> Written on the back:<br><i>[P.scribble]</i>" : null]"\
-			+ "</body></html>"
-			show_browser(human_user, dat, P.name, name)
-			P.add_fingerprint(usr)
-		add_fingerprint(usr)
-		update_icon()
-	return
+/obj/item/paper_bundle/attack_self(mob/user)
+	..()
+
+	if(!ishuman(user))
+		return
+
+	var/mob/living/carbon/human/human_user = user
+	var/dat
+	switch(screen)
+		if(0)
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
+		if(1)
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:right; width:33.33333%'><A href='?src=\ref[src];next_page=1'>Next Page</A></DIV><BR><HR>"
+		if(2)
+			dat+= "<DIV STYLE='float:left; text-align:left; width:33.33333%'><A href='?src=\ref[src];prev_page=1'>Previous Page</A></DIV>"
+			dat+= "<DIV STYLE='float:left; text-align:center; width:33.33333%'><A href='?src=\ref[src];remove=1'>Remove [(istype(src[page], /obj/item/paper)) ? "paper" : "photo"]</A></DIV><BR><HR>"
+			dat+= "<DIV STYLE='float;left; text-align:right; with:33.33333%'></DIV>"
+	if(istype(src[page], /obj/item/paper))
+		var/obj/item/paper/P = src[page]
+		if(!(istype(usr, /mob/living/carbon/human) || istype(usr, /mob/dead/observer) || isRemoteControlling(usr)))
+			dat+= "<BODY class='paper'>[stars(P.info)][P.stamps]</BODY>"
+		else
+			dat+= "<BODY class='paper'>[P.info][P.stamps]</BODY>"
+		show_browser(human_user, dat, P.name, name)
+		P.add_fingerprint(usr)
+	else if(istype(src[page], /obj/item/photo))
+		var/obj/item/photo/P = src[page]
+		human_user << browse_rsc(P.img, "tmp_photo.png")
+		dat += "<html>" \
+		+ "<body style='overflow:hidden'>" \
+		+ "<div> <img src='tmp_photo.png' width = '180'" \
+		+ "[P.scribble ? "<div> Written on the back:<br><i>[P.scribble]</i>" : null]"\
+		+ "</body></html>"
+		show_browser(human_user, dat, P.name, name)
+		P.add_fingerprint(usr)
+	add_fingerprint(usr)
+	update_icon()
 
 /obj/item/paper_bundle/Topic(href, href_list)
 	..()

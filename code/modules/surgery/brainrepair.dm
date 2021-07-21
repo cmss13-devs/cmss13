@@ -81,8 +81,8 @@
 	if(sponge)
 		sponge.damage = BONECHIPS_MAX_DAMAGE
 	target.disabilities &= ~NERVOUS
-	target.sdisabilities &= ~DEAF
-	target.sdisabilities &= ~MUTE
+	target.sdisabilities &= ~DISABILITY_DEAF
+	target.sdisabilities &= ~DISABILITY_MUTE
 
 /datum/surgery_step/brain/hematoma/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, bruising [target]'s brain with \the [tool]!"), \

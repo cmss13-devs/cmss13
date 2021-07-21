@@ -46,6 +46,16 @@
 	var/obj/item/device/flash/flash1 = null
 	var/obj/item/device/flash/flash2 = null
 
+/// A cameo of a real robotic head with limited gameplay functionality
+/obj/item/fake_robot_head
+	name = "malfunctioning robot head"
+	desc = "A standard reinforced braincase. Or it would be if it had been made correctly. This one looks deficient."
+	icon = 'icons/obj/items/robot_parts.dmi'
+	icon_state = "head"
+	item_state = "buildpipe"
+	flags_equip_slot = SLOT_WAIST
+	matter = list("metal" = 500, "glass" = 0)
+
 /obj/item/robot_parts/robot_suit
 	name = "robot endoskeleton"
 	desc = "A complex metal backbone with standard limb sockets and pseudomuscle anchors."
@@ -244,3 +254,14 @@
 		qdel(src)
 		return
 	return
+
+/obj/item/fake_robot_head/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(istype(W, /obj/item/device/flash))
+		to_chat(user, SPAN_DANGER("That thing looks way too busted to do anything with it..."))
+	// I lied
+	else if(istype(W, /obj/item/stock_parts/manipulator))
+		to_chat(user, SPAN_NOTICE("You jury rig the head with some manipulators, creating a mostly functional spider-bot!"))
+		new /mob/living/simple_animal/spiderbot(get_turf(loc))
+		qdel(W)
+		qdel(src)

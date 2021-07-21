@@ -11,8 +11,9 @@
 	var/html_link = ""
 	var/window_size = "1280x720"
 
-/obj/item/map/attack_self(var/mob/usr as mob) //Open the map
-	usr.visible_message(SPAN_NOTICE("[usr] opens the [src.name]. "))
+/obj/item/map/attack_self(var/mob/user) //Open the map
+	..()
+	user.visible_message(SPAN_NOTICE("[user] opens the [src.name]. "))
 	initialize_map()
 
 /obj/item/map/attack()
@@ -60,6 +61,12 @@
 /obj/item/map/ice_colony_map
 	name = "\improper Ice Colony map"
 	desc = "A satellite printout of the Ice Colony."
+	html_link = "images/1/18/Map_icecolony.png"
+	color = "cyan"
+
+/obj/item/map/ice_colony_map_v3
+	name = "\improper Shivas Snowball map"
+	desc = "A labelled print out of the anterior scan of the UA colony Shivas Snowball."
 	html_link = "images/1/18/Map_icecolony.png"
 	color = "cyan"
 
@@ -126,6 +133,11 @@
 			desc = "A satellite printout of the Ice Colony."
 			html_link = "images/1/18/Map_icecolony.png"
 			color = "cyan"
+		if(MAP_ICE_COLONY_V3)
+			name = "\improper Shivas Snowball map"
+			desc = "A labelled print out of the anterior scan of the UA colony Shivas Snowball."
+			html_link = "images/1/18/Map_icecolony.png"//needs to be replaced at some point
+			color = "cyan"
 		if(MAP_BIG_RED)
 			name = "\improper Solaris Ridge Map"
 			desc = "A censored blueprint of the Solaris Ridge facility"
@@ -149,7 +161,7 @@
 			//did only the basics todo change later
 		if(MAP_SOROKYNE_STRATA)
 			name = "\improper Sorokyne Strata map"
-			desc = "A map of the Weston-Yamada colony Sorokyne Outpost, commonly known as Sorokyne Strata."
+			desc = "A map of the Weyland-Yutani colony Sorokyne Outpost, commonly known as Sorokyne Strata."
 			html_link = "images/1/1c/Sorokyne_map.png"
 			color = "cyan"
 		if (MAP_CORSAT)
@@ -170,6 +182,7 @@
 // Landmark - Used for mapping. Will spawn the appropriate map for each gamemode (LV map items will spawn when LV is the gamemode, etc)
 /obj/effect/landmark/map_item
 	name = "map item"
+	icon_state = "ipool"
 
 /obj/effect/landmark/map_item/Initialize(mapload, ...)
 	. = ..()

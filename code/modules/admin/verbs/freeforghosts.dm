@@ -14,10 +14,13 @@
 	if(!ismob(M))
 		return
 
-	if(M.mind || M.client)
-		M.ghostize(FALSE)
+	M.free_for_ghosts()
 
-	GLOB.freed_mob_list += M
+/mob/proc/free_for_ghosts()
+	if(mind || client)
+		ghostize(FALSE)
+
+	GLOB.freed_mob_list |= src
 
 /client/proc/free_all_mobs_in_view()
 	set name = "Free All Mobs"

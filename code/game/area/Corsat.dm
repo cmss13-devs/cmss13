@@ -54,7 +54,7 @@
 	name = "\improper CORSAT Monorail transit"
 	icon_state = "railcart"
 	ceiling = CEILING_REINFORCED_METAL
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/corsat/sigma/hangar/cargo
 	name = "\improper Sigma Hangar Cargo Checkpoint"
@@ -189,6 +189,10 @@
 	name = "\improper Biodome Sigma"
 	icon_state = "sigma_biodome"
 	always_unpowered = 1
+
+// Ice Nightmare insert variation. COLD!
+/area/corsat/sigma/biodome/ice
+	temperature = SOROKYNE_TEMPERATURE
 
 /area/corsat/sigma/biodome/testgrounds
 	name = "\improper Sigma Biodome Testing Grounds"
@@ -576,4 +580,4 @@
 	name = "\improper Unknown Location"
 	icon_state = "corsat_hull"
 	ceiling = CEILING_REINFORCED_METAL
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL

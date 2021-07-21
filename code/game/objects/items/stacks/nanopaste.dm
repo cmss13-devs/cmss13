@@ -4,7 +4,8 @@
 	desc = "A tube of paste containing swarms of repair nanites. Very effective in repairing robotic machinery."
 	icon = 'icons/obj/items/items.dmi'
 	icon_state = "tube"
-	
+
+	attack_speed = 3
 	amount = 10
 	max_amount = 10
 	w_class = SIZE_SMALL
@@ -26,15 +27,16 @@
 			to_chat(user, SPAN_NOTICE("All [R]'s systems are nominal."))
 
 	if (istype(M,/mob/living/carbon/human))		//Repairing robolimbs
-		if(isSynth(M) && M == user)
-			return
 		var/mob/living/carbon/human/H = M
+		if(isSpeciesSynth(H) && M == user && !H.allow_gun_usage)
+			to_chat(H, SPAN_WARNING("Your programming forbids you from self-repairing with \the [src]."))
+			return
 		var/obj/limb/S = H.get_limb(user.zone_selected)
 
 		if(S.surgery_open_stage == 0)
 			if (S && (S.status & LIMB_ROBOT))
 				if(S.get_damage())
-					S.heal_damage(15, 15, robo_repair = 1)
+					S.heal_damage(15, 15, TRUE)
 					H.pain.recalculate_pain()
 					H.updatehealth()
 					use(1)

@@ -7,6 +7,13 @@
 	flags_round_type = MODE_INFESTATION|MODE_FOG_ACTIVATED|MODE_NEW_SPAWN
 	var/round_status_flags
 
+	var/passive_increase_interval = 20 MINUTES
+	var/next_passive_increase = 0
+
+	var/research_allocation_interval = 10 MINUTES
+	var/next_research_allocation = 0
+	var/research_allocation_amount = 5
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -51,7 +58,6 @@
 
 /* Pre-setup */
 /datum/game_mode/colonialmarines/pre_setup()
-	setup_round_stats()
 	for(var/i in GLOB.fog_blockers)
 		var/obj/effect/landmark/lv624/fog_blocker/FB = i
 		round_fog += new /obj/structure/blocker/fog(FB.loc)
@@ -82,6 +88,8 @@
 		round_time_river = rand(-100,100)
 		flags_round_type |= MODE_FOG_ACTIVATED
 
+	..()
+
 	var/obj/structure/tunnel/T
 	var/i = 0
 	var/turf/t
@@ -89,8 +97,6 @@
 		t = get_turf(pick_n_take(GLOB.xeno_tunnels))
 		T = new(t)
 		T.id = "hole[i]"
-
-	..()
 	return TRUE
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -102,8 +108,10 @@
 //Xenos and survivors should not spawn anywhere until we transform them.
 /datum/game_mode/colonialmarines/post_setup()
 	initialize_post_marine_gear_list()
-	initialize_map_resource_list()
 	spawn_smallhosts()
+
+	if(SSmapping.configs[GROUND_MAP].environment_traits[ZTRAIT_BASIC_RT])
+		flags_round_type |= MODE_BASIC_RT
 
 	round_time_lobby = world.time
 
@@ -137,12 +145,13 @@
 
 /datum/game_mode/colonialmarines/proc/map_announcement()
 	if(SSmapping.configs[GROUND_MAP].announce_text)
-		marine_announcement(SSmapping.configs[GROUND_MAP].announce_text, "[MAIN_SHIP_NAME]")
+		var/rendered_announce_text = replacetext(SSmapping.configs[GROUND_MAP].announce_text, "###SHIPNAME###", MAIN_SHIP_NAME)
+		marine_announcement(rendered_announce_text, "[MAIN_SHIP_NAME]")
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 
-#define FOG_DELAY_INTERVAL		(35 MINUTES)
+#define FOG_DELAY_INTERVAL		(25 MINUTES)
 #define PODLOCKS_OPEN_WAIT		(45 MINUTES) // CORSAT pod doors drop at 12:45
 
 //This is processed each tick, but check_win is only checked 5 ticks, so we don't go crazy with scanning for mobs.
@@ -151,7 +160,28 @@
 	if(--round_started > 0)
 		return FALSE //Initial countdown, just to be safe, so that everyone has a chance to spawn before we check anything.
 
+	if((flags_round_type & MODE_BASIC_RT) && next_passive_increase < world.time)
+		for(var/T in SStechtree.trees)
+			var/datum/techtree/tree = SStechtree.trees[T]
+
+			tree.passive_node.resources_per_second += PASSIVE_INCREASE_AMOUNT
+
+		next_passive_increase = world.time + passive_increase_interval
+
+	if(next_research_allocation < world.time)
+		chemical_data.update_credits(research_allocation_amount)
+		next_research_allocation = world.time + research_allocation_interval
+
 	if(!round_finished)
+		var/datum/hive_status/hive
+		for(var/hivenumber in GLOB.hive_datum)
+			hive = GLOB.hive_datum[hivenumber]
+			if(!hive.xeno_queen_timer)
+				continue
+
+			if(!hive.living_xeno_queen && hive.xeno_queen_timer < world.time)
+				xeno_message("The Hive is ready for a new Queen to evolve.", 3, hive.hivenumber)
+
 		if(!active_lz && world.time > lz_selection_timer)
 			for(var/obj/structure/machinery/computer/shuttle_control/dropship1/default_console in machines)
 				if(is_ground_level(default_console.z) && !default_console.onboard)
@@ -183,16 +213,31 @@
 				check_win()
 			round_checkwin = 0
 
-		if(!(resin_allow_finished) && world.time >= round_time_resin)
+		if(!evolution_ovipositor_threshold && world.time >= SSticker.round_start_time + round_time_evolution_ovipositor)
+			for(var/hivenumber in GLOB.hive_datum)
+				hive = GLOB.hive_datum[hivenumber]
+				hive.evolution_without_ovipositor = FALSE
+				if(hive.living_xeno_queen && !hive.living_xeno_queen.ovipositor)
+					to_chat(hive.living_xeno_queen, SPAN_XENODANGER("It is time to settle down and let your children grow."))
+			evolution_ovipositor_threshold = TRUE
+			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
+
+		if(!(resin_allow_finished) && world.time >= SSticker.round_start_time + round_time_resin)
 			for(var/area/A in all_areas)
 				if(!(A.is_resin_allowed))
 					A.is_resin_allowed = TRUE
-			resin_allow_finished = 1
+			resin_allow_finished = TRUE
 			msg_admin_niche("Areas close to landing zones are now weedable.")
 
 
 #undef FOG_DELAY_INTERVAL
 #undef PODLOCKS_OPEN_WAIT
+
+// Resource Towers
+
+/datum/game_mode/colonialmarines/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
+	SStechtree.activate_passive_nodes()
+	addtimer(CALLBACK(SStechtree, /datum/controller/subsystem/techtree/proc/activate_all_nodes), 20 SECONDS)
 
 ///////////////////////////
 //Checks to see who won///
@@ -256,24 +301,37 @@
 		if(MODE_INFESTATION_X_MAJOR)
 			musical_track = pick('sound/theme/sad_loss1.ogg','sound/theme/sad_loss2.ogg')
 			end_icon = "xeno_major"
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_xeno_victories += 1
+				round_statistics.current_map.total_xeno_majors += 1
 		if(MODE_INFESTATION_M_MAJOR)
 			musical_track = pick('sound/theme/winning_triumph1.ogg','sound/theme/winning_triumph2.ogg')
 			end_icon = "marine_major"
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_marine_victories += 1
+				round_statistics.current_map.total_marine_majors += 1
 		if(MODE_INFESTATION_X_MINOR)
 			musical_track = pick('sound/theme/neutral_melancholy1.ogg','sound/theme/neutral_melancholy2.ogg')
 			end_icon = "xeno_minor"
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_xeno_victories += 1
 		if(MODE_INFESTATION_M_MINOR)
 			musical_track = pick('sound/theme/neutral_hopeful1.ogg','sound/theme/neutral_hopeful2.ogg')
 			end_icon = "marine_minor"
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_marine_victories += 1
 		if(MODE_INFESTATION_DRAW_DEATH)
 			end_icon = "draw"
 			musical_track = pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')
+			if(round_statistics && round_statistics.current_map)
+				round_statistics.current_map.total_draws += 1
 	var/sound/S = sound(musical_track, channel = SOUND_CHANNEL_LOBBY)
 	S.status = SOUND_STREAM
 	sound_to(world, S)
 	if(round_statistics)
 		round_statistics.game_mode = name
 		round_statistics.round_length = world.time
+		round_statistics.round_result = round_finished
 		round_statistics.end_round_player_population = GLOB.clients.len
 
 		round_statistics.log_round_statistics()
@@ -282,7 +340,6 @@
 	show_end_statistics(end_icon)
 
 	declare_completion_announce_fallen_soldiers()
-	announce_agents()
 	declare_completion_announce_xenomorphs()
 	declare_completion_announce_predators()
 	declare_completion_announce_medal_awards()

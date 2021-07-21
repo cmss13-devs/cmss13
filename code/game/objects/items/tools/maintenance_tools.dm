@@ -25,8 +25,8 @@
 	throwforce = 7.0
 	w_class = SIZE_SMALL
 	matter = list("metal" = 150)
-
 	attack_verb = list("bashed", "battered", "bludgeoned", "whacked")
+	tool_traits_init = list(TRAIT_TOOL_WRENCH)
 
 
 /*
@@ -46,6 +46,9 @@
 	throw_range = 5
 	matter = list("metal" = 75)
 	attack_verb = list("stabbed")
+	tool_traits_init = list(TRAIT_TOOL_SCREWDRIVER)
+
+
 
 /obj/item/tool/screwdriver/Initialize()
 	. = ..()
@@ -76,6 +79,8 @@
 		src.pixel_y = rand(0, 16)
 	return
 
+
+
 /obj/item/tool/screwdriver/attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 	if(!istype(M))
 		return ..()
@@ -91,6 +96,15 @@
 				visible_message(SPAN_DANGER("[user] stabs [H] in the eyes with the [src]!"))
 				E.damage += rand(8,20)
 	return ..()
+/obj/item/tool/screwdriver/tactical
+	name = "tactical screwdriver"
+	desc = "Sharp, matte black, and deadly. In a pinch this will substitute for a pencil in a fight."
+	force = MELEE_FORCE_TIER_2
+	throwforce = MELEE_FORCE_NORMAL
+
+/obj/item/tool/screwdriver/tactical/Initialize()
+	. = ..()
+	icon_state = "tac_screwdriver"
 
 /*
  * Wirecutters
@@ -112,7 +126,12 @@
 	attack_verb = list("pinched", "nipped")
 	sharp = IS_SHARP_ITEM_SIMPLE
 	edge = 1
+	tool_traits_init = list(TRAIT_TOOL_WIRECUTTERS)
 
+/obj/item/tool/wirecutters/tactical
+	name = "tactical wirecutters"
+	desc = "This heavy-duty pair seems more fit for cutting barbed wire, but it'll work splendidly on electrical wires."
+	icon_state = "tac_cutters"
 
 /obj/item/tool/wirecutters/attack(mob/living/carbon/C, mob/user)
 	if((C.handcuffed) && (istype(C.handcuffed, /obj/item/handcuffs/cable)))
@@ -144,9 +163,6 @@
 
 	//Cost to make in the autolathe
 	matter = list("metal" = 70, "glass" = 30)
-
-	//R&D tech level
-
 
 	//blowtorch specific stuff
 	var/welding = 0 	//Whether or not the blowtorch is off(0), on(1) or currently welding(2)
@@ -212,7 +228,7 @@
 				if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 					return
 
-			S.heal_damage(15,0,0,1)
+			S.heal_damage(15, 0, TRUE)
 			H.pain.recalculate_pain()
 			H.UpdateDamageIcon()
 			user.visible_message(SPAN_WARNING("\The [user] patches some dents on \the [H]'s [S.display_name] with \the [src]."), \
@@ -225,7 +241,8 @@
 		return ..()
 
 /obj/item/tool/weldingtool/afterattack(obj/O as obj, mob/user as mob, proximity)
-	if(!proximity) return
+	if(!proximity)
+		return
 	if (istype(O, /obj/structure/reagent_dispensers/fueltank) && get_dist(src,O) <= 1)
 		if(!welding)
 			O.reagents.trans_to(src, max_fuel)
@@ -246,12 +263,11 @@
 		if(isliving(O))
 			var/mob/living/L = O
 			L.IgniteMob()
-	return
 
 
-/obj/item/tool/weldingtool/attack_self(mob/user as mob)
+/obj/item/tool/weldingtool/attack_self(mob/user)
+	..()
 	toggle()
-	return
 
 //Returns the amount of fuel in the welder
 /obj/item/tool/weldingtool/proc/get_fuel()
@@ -261,7 +277,7 @@
 
 
 //Removes fuel from the blowtorch. If a mob is passed, it will perform an eyecheck on the mob. This should probably be renamed to use()
-/obj/item/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M = null)
+/obj/item/tool/weldingtool/proc/remove_fuel(var/amount = 1, var/mob/M)
 	if(!welding || !check_fuel())
 		return 0
 	if(get_fuel() >= amount)
@@ -436,6 +452,7 @@
 	matter = list("metal" = 50)
 
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
+	tool_traits_init = list(TRAIT_TOOL_CROWBAR)
 	pry_capable = IS_PRY_CAPABLE_CROWBAR
 
 /obj/item/tool/crowbar/red
@@ -443,9 +460,12 @@
 	icon_state = "red_crowbar"
 	item_state = "red_crowbar"
 
-
-
-
+/obj/item/tool/crowbar/tactical
+	name = "tactical prybar"
+	desc = "Holding this makes you want to raid a townhouse filled with terrorists. Also doubles as a blunt weapon."
+	icon_state = "tac_prybar"
+	force = MELEE_FORCE_NORMAL
+	throwforce = MELEE_FORCE_NORMAL
 
 /*
  Welding backpack

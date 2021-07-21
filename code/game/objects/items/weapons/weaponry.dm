@@ -34,6 +34,26 @@
 	w_class = SIZE_MEDIUM
 	attack_verb = list("jabbed","stabbed","ripped")
 
+/obj/item/weapon/melee/ice_axe
+	name = "ice axe"
+	desc = "For climbing, mostly. Makes for a good improvised weapon."
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "ice_axe"
+	item_state = "ice_axe"
+	sharp = IS_SHARP_ITEM_ACCURATE
+	flags_equip_slot = SLOT_WAIST
+	w_class = SIZE_SMALL
+	force = 25
+	throw_speed = SPEED_FAST
+	throw_range = 2
+	throwforce = 40
+
+/obj/item/weapon/melee/ice_axe/red
+	icon_state = "ice_axe_red"
+
+/obj/item/weapon/melee/ice_axe/green
+	icon_state = "ice_axe_green"
+
 /obj/item/weapon/melee/baseballbat
 	name = "\improper wooden baseball bat"
 	desc = "A large wooden baseball bat. Commonly used in colony recreation, but also used as a means of self defense. Often carried by thugs and ruffians."
@@ -78,6 +98,8 @@
 
 
 /obj/item/weapon/melee/butterfly/attack_self(mob/user)
+	..()
+
 	active = !active
 	if(active)
 		to_chat(user, SPAN_NOTICE("You flip out your [src]."))
@@ -134,7 +156,7 @@
 		qdel(src)
 		update_icon(user)
 
-	else if(istype(I, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(I, TRAIT_TOOL_WIRECUTTERS))
 		var/obj/item/weapon/melee/baton/cattleprod/P = new /obj/item/weapon/melee/baton/cattleprod
 
 		user.put_in_hands(P)
@@ -168,7 +190,7 @@
 
 	attack_verb = list("sliced", "diced", "cut")
 
-/obj/item/weapon/melee/katana/sharp/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/weapon/melee/katana/sharp/attack(mob/living/M, mob/living/user)
 
 	if(flags_item & NOBLUDGEON)
 		return
@@ -189,8 +211,7 @@
 		already_dead -= M
 
 	/////////////////////////
-	M.last_damage_source = initial(name)
-	M.last_damage_mob = user
+	M.last_damage_data = create_cause_data(initial(name), user)
 
 	user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
 	M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by [key_name(user)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
@@ -254,7 +275,7 @@
 		playsound(M, 'sound/effects/bone_break1.ogg', 100, 1)
 
 		for(var/i=1, i <= number_of_cuts, i++)
-			def_zone = pick("head","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
+			var/def_zone = pick("head","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 			switch(damtype)
 				if("brute")
 					M.apply_damage(power,BRUTE,def_zone)

@@ -12,7 +12,7 @@
 	if(embedded_items.len > 0)
 		handle_embedded_objects() //Moving with objects stuck in you can cause bad times.
 
-	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply hyperzine effects
+	var/reducible_tally = 0 //Tally elements that can be reduced are put here, then we apply MST effects
 	var/wear_slowdown_reduction = 0
 
 	reducible_tally += max(pain.pain_slowdown, stamina.stamina_slowdown) // Get the highest slowdown and apply that
@@ -56,7 +56,7 @@
 		reducible_tally += wear_suit.slowdown
 		wear_slowdown_reduction += wear_suit.movement_compensation
 
-	reducible_tally += reagent_move_delay_modifier //hyperzine and ultrazine
+	reducible_tally += reagent_move_delay_modifier //Muscle-stimulating property
 
 	if(bodytemperature < species.cold_level_1 && !isYautja(src))
 		reducible_tally += 2 //Major slowdown if you're freezing
@@ -71,12 +71,12 @@
 	//Compile reducible tally and send it to total tally. Cannot go more than 1 units faster from the reducible tally!
 	. += max(-0.7, reducible_tally)
 
-	if(istype(get_active_hand(), /obj/item/weapon/gun))
+	if(isgun(get_active_hand()))
 		var/obj/item/weapon/gun/G = get_active_hand() //If wielding, it will ALWAYS be on the active hand
 		. += max(0, G.slowdown - wear_slowdown_reduction)
 
-	if(mobility_aura)
-		. -= 0.1 + 0.1 * mobility_aura
+	if(mobility_aura && . >= 1.5)
+		. = max(. - (0.1 + 0.1 * mobility_aura), 1.5)
 
 	if(superslowed)
 		. += HUMAN_SUPERSLOWED_AMOUNT
@@ -85,7 +85,9 @@
 		. += HUMAN_SLOWED_AMOUNT
 
 	. += CONFIG_GET(number/human_delay)
-	move_delay = .
+	var/list/movedata = list("move_delay" = .)
+	SEND_SIGNAL(src, COMSIG_HUMAN_POST_MOVE_DELAY, movedata)
+	move_delay = movedata["move_delay"]
 
 /mob/living/carbon/human/yautja/movement_delay()
 	. = ..()

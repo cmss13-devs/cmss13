@@ -179,14 +179,13 @@ var/global/east_riverstart = 0
 /obj/effect/blocker/toxic_water/proc/cause_damage(mob/living/M)
 	if(M.stat == DEAD)
 		return
+	M.last_damage_data = create_cause_data("toxic water")
 	if(isXeno(M))
 		M.apply_damage(34,BURN)
 	else if(isYautja(M))
 		M.apply_damage(0.5,BURN)
 	else
 		var/dam_amount = 3
-		if(istype(M,/mob/living/carbon/human/synthetic_old)) dam_amount = 0.5
-		else if(istype(M,/mob/living/carbon/human/synthetic) || istype(M,/mob/living/carbon/human/synthetic_2nd_gen)) dam_amount = 1
 		if(M.lying)
 			M.apply_damage(dam_amount,BURN)
 			M.apply_damage(dam_amount,BURN)

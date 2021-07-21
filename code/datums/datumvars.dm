@@ -213,13 +213,10 @@
 			body += "<option value='?_src_=vars;edit_skill=\ref[D]'>Edit Skills</option>"
 			body += "<option value='?_src_=vars;setspecies=\ref[D]'>Set Species</option>"
 			body += "<option value='?_src_=vars;selectequipment=\ref[D]'>Select Equipment</option>"
-			var/mob/living/carbon/human/H = D
-			if(H.agent_holder)
-				body += "<option value='?_src_=vars;giveagentobjective=\ref[D]'>Give Agent Objective</option>"
-			else
-				body += "<option value='?_src_=vars;createagent=\ref[D]'>Make Agent</option>"
 		if(iscarbon(D))
 			body += "<option value='?_src_=vars;changehivenumber=\ref[D]'>Change Hivenumber</option>"
+			body += "<option value='?_src_=vars;addtrait=\ref[D]'>Add Trait</option>"
+			body += "<option value='?_src_=vars;removetrait=\ref[D]'>Remove Trait</option>"
 		body += "<option value>---</option>"
 		body += "<option value='?_src_=vars;gib=\ref[D]'>Gib</option>"
 	if(isobj(D))
@@ -457,7 +454,7 @@ body
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
 
-		if(!M.client || !M.client.admin_holder || !M.client.admin_holder.rights & R_MOD)
+		if(!M.client || !M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD))
 			to_chat(usr, "This can only be used on people with +MOD permissions")
 			return
 
@@ -563,7 +560,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /obj, /mob and /turf")
 			return
 
-		cell_explosion(A, 150, 100)
+		cell_explosion(A, 150, 100, , create_cause_data("divine intervention"))
 		message_staff("[key_name(src, TRUE)] has exploded [A]!")
 		href_list["datumrefresh"] = href_list["explode"]
 
@@ -754,42 +751,6 @@ body
 
 		H.skills.set_skill(selected_skill, new_skill_level)
 		to_chat(usr, "[H]'s [selected_skill] skill is now set to [new_skill_level].")
-
-	else if(href_list["createagent"])
-		if(!check_rights(R_DEBUG|R_ADMIN))
-			return
-
-		var/mob/living/carbon/human/H = locate(href_list["createagent"])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-			return
-
-		var/faction = tgui_input_list(src,"Select the agent faction", "Create Agent", list("Random") + FACTION_LIST_AGENT)
-		if(!faction)
-			return
-
-		if(faction == "Random")
-			new /datum/agent(H)
-		else
-			new /datum/agent(H, faction)
-
-	else if(href_list["giveagentobjective"])
-		if(!check_rights(R_DEBUG|R_ADMIN))
-			return
-
-		var/mob/living/carbon/human/H = locate(href_list["giveagentobjective"])
-		if(!istype(H))
-			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
-			return
-
-		var/objective = tgui_input_list(src,"Select an objective", "Give Agent Objective", list("Random") + OBJECTIVES_TO_PICK_FROM)
-		if(objective == "Cancel")
-			return
-
-		if(objective == "Random")
-			H.agent_holder.give_objective()
-		else
-			H.agent_holder.give_objective(objective)
 
 	else if(href_list["addlanguage"])
 		if(!check_rights(R_SPAWN))
@@ -1087,6 +1048,39 @@ body
 		if(amount != 0)
 			message_staff("[key_name(usr)] dealt [amount] amount of [Text] damage to [L] ")
 			href_list["datumrefresh"] = href_list["mobToDamage"]
+
+	else if(href_list["addtrait"])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_SPAWN))
+			return
+
+		var/mob/living/carbon/C = locate(href_list["addtrait"])
+		if(!istype(C))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+			return
+		var/trait_new = tgui_input_list(usr, "Select a trait to add", "Trait", GLOB.mob_traits)
+		if(!trait_new)
+			return
+		ADD_TRAIT(C, trait_new, TRAIT_SOURCE_ADMIN)
+		message_staff("TRAIT: [key_name(usr)] added trait '[trait_new]' to [key_name(C)]")
+		if(trait_new == TRAIT_CRAWLER)
+			add_verb(C, /mob/living/proc/ventcrawl)
+
+	else if(href_list["removetrait"])
+		if(!check_rights(R_DEBUG|R_ADMIN|R_SPAWN))
+			return
+
+		var/mob/living/carbon/C = locate(href_list["removetrait"])
+		if(!istype(C))
+			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
+			return
+
+		var/trait_old = tgui_input_list(usr, "Select a trait to remove", "Trait", C.status_traits)
+		if(!trait_old)
+			return
+		REMOVE_TRAIT(C, trait_old, null)
+		message_staff("TRAIT: [key_name(usr)] removed trait '[trait_old]' from [key_name(C)]")
+		if(trait_old == TRAIT_CRAWLER)
+			remove_verb(C, /mob/living/proc/ventcrawl)
 
 	else if(href_list["setmatrix"])
 		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN|R_VAREDIT))

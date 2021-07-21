@@ -20,7 +20,7 @@
 	flags_gun_features = GUN_CAN_POINTBLANK|GUN_INTERNAL_MAG|GUN_ONE_HAND_WIELDED
 	gun_category = GUN_CATEGORY_HANDGUN
 	wield_delay = WIELD_DELAY_VERY_FAST //If you modify your revolver to be two-handed, it will still be fast to aim
-	movement_acc_penalty_mult = 3
+	movement_onehanded_acc_penalty_mult = 3
 	has_empty_icon = FALSE
 	has_open_icon = TRUE
 	current_mag = /obj/item/ammo_magazine/internal/revolver
@@ -40,13 +40,17 @@
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-	movement_acc_penalty_mult = 3
+	movement_onehanded_acc_penalty_mult = 3
 
 /obj/item/weapon/gun/revolver/examine(mob/user)
 	..()
 	if(current_mag)
 		var/message = "[current_mag.chamber_closed? "It's closed.": "It's open with [current_mag.current_rounds] round\s loaded."]"
 		to_chat(user, message)
+
+/obj/item/weapon/gun/revolver/display_ammo(mob/user) // revolvers don't *really* have a chamber, at least in a way that matters for ammo displaying
+	if(flags_gun_features & GUN_AMMO_COUNTER && !(flags_gun_features & GUN_BURST_FIRING) && current_mag)
+		to_chat(user, SPAN_DANGER("[current_mag.current_rounds] / [current_mag.max_rounds] ROUNDS REMAINING"))
 
 /obj/item/weapon/gun/revolver/proc/rotate_cylinder(mob/user) //Cylinder moves backward.
 	if(current_mag)
@@ -159,7 +163,7 @@
 			if(current_mag.chamber_contents[current_mag.chamber_position] == "bullet")
 				current_mag.current_rounds-- //Subtract the round from the mag.
 				in_chamber = create_bullet(ammo, initial(name))
-				apply_traits_to_in_chamber()
+				apply_traits(in_chamber)
 				return in_chamber
 		else if(current_mag.chamber_closed)
 			unload(null)
@@ -297,7 +301,6 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/stock/revolver,
@@ -312,15 +315,12 @@
 
 /obj/item/weapon/gun/revolver/m44/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
+	fire_delay = FIRE_DELAY_TIER_7
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_8
-	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT
 	recoil = RECOIL_AMOUNT_TIER_5
 	recoil_unwielded = RECOIL_AMOUNT_TIER_3
-
 
 /obj/item/weapon/gun/revolver/m44/able_to_fire(mob/user)
 	if (folded)
@@ -332,25 +332,29 @@
 /obj/item/weapon/gun/revolver/m44/custom //accuracy and damage bonus
 	name = "\improper M44 custom combat revolver"
 	desc = "A bulky combat revolver. The handle has been polished to a pearly perfection, and the body is silver plated. Fires .44 Magnum rounds."
-	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman //only difference is starting ammo
+	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman
 	icon_state = "m44rc"
 	item_state = "m44rc"
 
 /obj/item/weapon/gun/revolver/m44/custom/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_5
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_4
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT
-	scatter = SCATTER_AMOUNT_TIER_8
-	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
-	recoil = RECOIL_AMOUNT_TIER_5
-	recoil_unwielded = RECOIL_AMOUNT_TIER_3
+
+/obj/item/weapon/gun/revolver/m44/custom/webley //Van Bandolier's Webley.
+	name = "\improper Webley Mk VI service pistol"
+	desc = "A heavy top-break revolver. Bakelite grips, and older than most nations. .455 was good enough for angry tribesmen and <i>les boche</i>, and by Gum it'll do for Colonial Marines and xenomorphs as well."
+	current_mag = /obj/item/ammo_magazine/internal/revolver/webley
+	icon_state = "webley"
+	item_state = "m44r"
+	attachable_allowed = list(
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp)
 
 //-------------------------------------------------------
 //RUSSIAN REVOLVER //Based on the 7.62mm Russian revolvers.
 
-/obj/item/weapon/gun/revolver/upp
+/obj/item/weapon/gun/revolver/nagant
 	name = "\improper N-Y 7.62mm revolver"
 	desc = "The Nagant-Yamasaki 7.62 is an effective killing machine designed by a consortion of shady Not-Americans. It is frequently found in the hands of criminals or mercenaries."
 	icon_state = "ny762"
@@ -359,22 +363,42 @@
 	fire_sound = 'sound/weapons/gun_pistol_medium.ogg'
 	current_mag = /obj/item/ammo_magazine/internal/revolver/upp
 	force = 8
-	attachable_allowed = list(/obj/item/attachable/compensator)
+	attachable_allowed = list(
+						//Rail
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/scope,
+						/obj/item/attachable/scope/mini,
+						//Muzzle
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/compensator,
+						//Underbarrel
+						/obj/item/attachable/lasersight
+						)
 
-/obj/item/weapon/gun/revolver/upp/set_gun_attachment_offsets()
+/obj/item/weapon/gun/revolver/nagant/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 28, "muzzle_y" = 21,"rail_x" = 14, "rail_y" = 23, "under_x" = 24, "under_y" = 19, "stock_x" = 24, "stock_y" = 19)
 
-/obj/item/weapon/gun/revolver/upp/set_gun_config_values()
+/obj/item/weapon/gun/revolver/nagant/set_gun_config_values()
 	..()
 	fire_delay = FIRE_DELAY_TIER_8
 	accuracy_mult = BASE_ACCURACY_MULT
-	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_4
 	scatter = SCATTER_AMOUNT_TIER_6
-	scatter_unwielded = SCATTER_AMOUNT_TIER_4
 	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_1
 	recoil = 0
 	recoil_unwielded = 0
 
+/obj/item/weapon/gun/revolver/nagant/shrapnel
+	current_mag = /obj/item/ammo_magazine/internal/revolver/upp/shrapnel
+	random_spawn_chance = 100
+	random_under_chance = 100
+	random_spawn_under = list(
+							/obj/item/attachable/lasersight,
+							)
 
 //-------------------------------------------------------
 //357 REVOLVER //Based on the generic S&W 357.
@@ -435,13 +459,15 @@
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/compensator,
 						/obj/item/attachable/mateba,
 						/obj/item/attachable/mateba/long,
 						/obj/item/attachable/mateba/short)
 	starting_attachment_types = list(/obj/item/attachable/mateba)
 	unacidable = TRUE
+
+	var/mob/living/carbon/human/linked_human
+	var/is_locked = TRUE
 
 /obj/item/weapon/gun/revolver/mateba/attackby(obj/item/I, mob/user)
 	if(istype(I, /obj/item/weapon/mateba_key))
@@ -493,32 +519,51 @@
 
 /obj/item/weapon/gun/revolver/mateba/admiral
 	name = "\improper engraved Mateba autorevolver custom"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. This version is snubnosed, engraved with gold, tinted black, and highly customized for a high-ranking official. It uses heavy .454 rounds."
+	desc = "Boasting a gold-plated frame and grips made of a critically-endangered rosewood tree, this heavily-customized Mateba revolver's pretentious design rivals only the power of its wielder. Fit for a king. Or an admiral."
 	icon_state = "amateba"
 	item_state = "amateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	attachable_allowed = list(
 					/obj/item/attachable/reddot,
 					/obj/item/attachable/reflex,
 					/obj/item/attachable/flashlight,
 					/obj/item/attachable/heavy_barrel,
-					/obj/item/attachable/quickfire,
 					/obj/item/attachable/compensator,
 					/obj/item/attachable/mateba/dark,
 					/obj/item/attachable/mateba/long/dark,
 					/obj/item/attachable/mateba/short/dark)
-	starting_attachment_types = list(/obj/item/attachable/mateba/dark)
+	starting_attachment_types = null
+
+/obj/item/weapon/gun/revolver/mateba/admiral/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/mateba/long/dark/barrel = new(src)
+	barrel.flags_attach_features &= ~ATTACH_REMOVABLE
+	barrel.Attach(src)
+	update_attachables()
+
+/obj/item/weapon/gun/revolver/mateba/admiral/santa
+	name = "\improper Festeba"
+	desc = "The Mateba used by SANTA himself. Rumoured to be loaded with explosive ammunition."
+	icon_state = "amateba"
+	item_state = "amateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/explosive
+	color = "#FF0000"
+	fire_sound = 'sound/voice/alien_queen_xmas.ogg'
+	starting_attachment_types = list(/obj/item/attachable/heavy_barrel)
 
 /obj/item/weapon/gun/revolver/mateba/engraved
 	name = "\improper engraved Mateba autorevolver"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. We have all heard of it, but on this version you glance a scratched engraving, barely readable. Is it your name?"
+	desc = "With a matte black chassis, ebony wooden grips, and gold-plated cylinder, this statement of a Mateba is as much a work of art as it is a bringer of death."
 	icon_state = "aamateba"
 	item_state = "aamateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 
 /obj/item/weapon/gun/revolver/mateba/cmateba
 	name = "\improper Mateba autorevolver custom"
-	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds. This version is a limited edition produced for the USCM, and issued in extremely small amounts. Was a mail-order item back in 2172, and is highly sought after by officers across many different battalions. This one is stamped 'Major Ike Saker, 7th 'Falling Falcons' Battalion.'"
+	desc = "The Mateba is a powerful, fast-firing revolver that uses its own recoil to rotate the cylinders. It uses heavy .454 rounds. This version is a limited edition produced for the USCM, and issued in extremely small amounts. Was a mail-order item back in 2172, and is highly sought after by officers across many different battalions."
 	icon_state = "cmateba"
 	item_state = "cmateba"
+	current_mag = /obj/item/ammo_magazine/internal/revolver/mateba/impact
 	map_specific_decoration = TRUE
 
 //-------------------------------------------------------
@@ -538,7 +583,6 @@
 						/obj/item/attachable/flashlight,
 						/obj/item/attachable/extended_barrel,
 						/obj/item/attachable/heavy_barrel,
-						/obj/item/attachable/quickfire,
 						/obj/item/attachable/compensator)
 
 /obj/item/weapon/gun/revolver/cmb/set_gun_attachment_offsets()

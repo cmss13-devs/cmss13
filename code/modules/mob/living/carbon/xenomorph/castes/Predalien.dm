@@ -1,5 +1,5 @@
 /datum/caste_datum/predalien
-	caste_name = "Predalien"
+	caste_type = XENO_CASTE_PREDALIEN
 	display_name = "Abomination"
 
 	melee_damage_lower = XENO_DAMAGE_TIER_4
@@ -27,8 +27,8 @@
 	behavior_delegate_type = /datum/behavior_delegate/predalien_base
 
 /mob/living/carbon/Xenomorph/Predalien
-	caste_name = "Predalien"
-	name = "Abomination"
+	caste_type = XENO_CASTE_PREDALIEN
+	name = "Abomination" //snowflake name
 	desc = "A strange looking creature with fleshy strands on its head. It appears like a mixture of armor and flesh, smooth, but well carapaced."
 	icon_state = "Predalien Walking"
 	plasma_types = list(PLASMA_CATECHOLAMINE)
@@ -42,15 +42,15 @@
 	age = XENO_NO_AGE //Predaliens are already in their ultimate form, they don't get even better
 	small_explosives_stun = FALSE
 
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
 		/datum/action/xeno_action/activable/pounce/predalien,
 		/datum/action/xeno_action/activable/predalien_roar,
 		/datum/action/xeno_action/activable/smash,
-		/datum/action/xeno_action/activable/devastate
-		)
+		/datum/action/xeno_action/activable/devastate,
+	)
 	mutation_type = "Normal"
 
 	var/butcher_time = 6 SECONDS
@@ -60,6 +60,10 @@
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_predalien))
 	addtimer(CALLBACK(src, .proc/announce_spawn), 3 SECONDS)
+	hunter_data.dishonored = TRUE
+	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
+	hunter_data.dishonored_set = src
+	hud_set_hunter()
 
 /mob/living/carbon/Xenomorph/Predalien/proc/announce_spawn()
 	if(!loc)
@@ -91,8 +95,11 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 	kills = min(kills + 1, max_kills)
 
-/datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, atom/A = null)
-	if(isYautja(A))
+/datum/behavior_delegate/predalien_base/melee_attack_modify_damage(original_damage, mob/living/carbon/A)
+	if(!isCarbonSizeHuman(A))
+		return
+	var/mob/living/carbon/human/H = A
+	if(isSpeciesYautja(H))
 		original_damage *= 1.5
 
 	return original_damage + kills * 2.5
@@ -112,6 +119,7 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 			return TRUE
 
 		playsound(X.loc, 'sound/weapons/slice.ogg', 25)
+		xeno_attack_delay(X)
 
 		if(!do_after(X, X.butcher_time, INTERRUPT_ALL, BUSY_ICON_HOSTILE, M))
 			to_chat(X, SPAN_XENONOTICE("You decide not to butcher [M]"))
@@ -129,9 +137,9 @@ Your health meter will not regenerate normally, so kill and die for the hive!</s
 
 			new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 			var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
-			xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
-			xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
-			xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
+			xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+			xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+			xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
 
 		playsound(X.loc, 'sound/effects/blobattack.ogg', 25)
 

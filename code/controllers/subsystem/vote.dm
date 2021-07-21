@@ -194,11 +194,10 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/handle_client_joining(var/dcs, var/client/C)
 	SIGNAL_HANDLER
 
-	var/datum/action/innate/vote/V = new
+	var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
 	if(question)
-		V.name = "Vote: [question]"
+		V.set_name("Vote: [question]")
 	C.player_details.player_actions += V
-	V.give_action(C.mob)
 
 /datum/controller/subsystem/vote/proc/submit_vote(vote)
 	if(mode)
@@ -285,7 +284,8 @@ SUBSYSTEM_DEF(vote)
 					return FALSE
 				SSentity_manager.filter_then(/datum/entity/map_vote, null, CALLBACK(src, .proc/carry_over_callback))
 
-				vote_adjustment_callback = CALLBACK(src, .proc/map_vote_adjustment)
+				if(CONFIG_GET(flag/vote_adjustment_callback))
+					vote_adjustment_callback = CALLBACK(src, .proc/map_vote_adjustment)
 			if("shipmap")
 				question = "Ship map vote"
 				var/list/maps = list()
@@ -327,16 +327,15 @@ SUBSYSTEM_DEF(vote)
 			text += "<br>[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
-		//SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', channel = CHANNEL_NOTIFY))
-		to_chat(world, "<br><font color='purple'><b>[text]</b><br>Type <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font>")
+		SEND_SOUND(world, sound('sound/ambience/alarm4.ogg', channel = SOUND_CHANNEL_VOX))
+		to_chat(world, SPAN_CENTERBOLD("<br><br><font color='purple'<b>[text]</b><br>Type <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.<br>You have [DisplayTimeText(vp)] to vote.</font><br><br>"))
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)
 			var/client/C = c
-			var/datum/action/innate/vote/V = new
+			var/datum/action/innate/vote/V = give_action(C.mob, /datum/action/innate/vote)
 			if(question)
-				V.name = "Vote: [question]"
+				V.set_name("Vote: [question]")
 			C.player_details.player_actions += V
-			V.give_action(C.mob)
 
 		RegisterSignal(SSdcs, COMSIG_GLOB_CLIENT_LOGIN, .proc/handle_client_joining)
 		SStgui.update_uis(src)
@@ -345,7 +344,7 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/proc/map_vote_adjustment(current_votes, carry_over, total_votes)
 	// Get 10% of the total map votes and remove them from the pool
-	var/total_vote_adjustment = round(total_votes * 0.1)
+	var/total_vote_adjustment = round(total_votes * CONFIG_GET(number/vote_adjustment_callback))
 
 	// Do not remove more votes than were made for the map
 	return -(min(current_votes, total_vote_adjustment))
@@ -367,7 +366,7 @@ SUBSYSTEM_DEF(vote)
 	name = "Vote!"
 	action_icon_state = "vote"
 
-/datum/action/innate/vote/give_action(mob/M)
+/datum/action/innate/vote/give_to(mob/M)
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_REMOVE_VOTE_BUTTON, .proc/remove_vote_action)
 
@@ -375,7 +374,7 @@ SUBSYSTEM_DEF(vote)
 	SIGNAL_HANDLER
 
 	if(remove_from_client())
-		remove_action(owner)
+		remove_from(owner)
 	qdel(src)
 
 /datum/action/innate/vote/action_activate()

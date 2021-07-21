@@ -34,6 +34,16 @@
 	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
 	savefile_version = SAVEFILE_VERSION_MAX
 
+/proc/sanitize_keybindings(value)
+	var/list/base_bindings = sanitize_islist(value, null)
+	if(!base_bindings)
+		base_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key)
+	for(var/key in base_bindings)
+		base_bindings[key] = base_bindings[key] & GLOB.keybindings_by_name
+		if(!length(base_bindings[key]))
+			base_bindings -= key
+	return base_bindings
+
 /datum/preferences/proc/load_preferences()
 	if(!path)				return 0
 	if(!fexists(path))		return 0
@@ -81,16 +91,20 @@
 	S["pred_mask_type"]		>> predator_mask_type
 	S["pred_armor_type"]	>> predator_armor_type
 	S["pred_boot_type"]		>> predator_boot_type
+	S["pred_armor_mat"]		>> predator_armor_material
 
 	S["commander_status"]	>> commander_status
+	S["co_sidearm"]			>> commander_sidearm
 	S["yautja_status"]		>> yautja_status
 	S["synth_status"]		>> synth_status
+	S["key_bindings"] 		>> key_bindings
+	var/list/remembered_key_bindings
+	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	S["lang_chat_disabled"]	>> lang_chat_disabled
 	S["hear_vox"] >> hear_vox
-
-	S["swap_hand_default"]	>> swap_hand_default
-	S["swap_hand_hotkeymode"] >> swap_hand_hotkeymode
+	S["hide_statusbar"] >> hide_statusbar
+	S["hotkeys"] >> hotkeys
 
 	//Sanitize
 	ooccolor		= sanitize_hexcolor(ooccolor, CONFIG_GET(string/ooc_color_default))
@@ -107,6 +121,7 @@
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
 	playtime_perks   = sanitize_integer(playtime_perks, 0, 1, 1)
 	hear_vox  		= sanitize_integer(hear_vox, FALSE, TRUE, TRUE)
+	hide_statusbar = sanitize_integer(hide_statusbar, FALSE, TRUE, FALSE)
 
 	synthetic_name 		= synthetic_name ? sanitize_text(synthetic_name, initial(synthetic_name)) : initial(synthetic_name)
 	synthetic_type		= sanitize_text(synthetic_type, initial(synthetic_type))
@@ -116,19 +131,34 @@
 	predator_mask_type 	= sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type 	= sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
+	predator_armor_material = sanitize_inlist(predator_armor_material, list("ebony", "silver", "bronze"), initial(predator_armor_material))
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
+	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
 	yautja_status		= sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
-
+	key_bindings 		= sanitize_keybindings(key_bindings)
+	remembered_key_bindings = sanitize_islist(remembered_key_bindings, null)
+	hotkeys  			= sanitize_integer(hotkeys, FALSE, TRUE, TRUE)
 	vars["fps"] = fps
+
+	if(remembered_key_bindings)
+		for(var/i in GLOB.keybindings_by_name)
+			if(!(i in remembered_key_bindings))
+				var/datum/keybinding/instance = GLOB.keybindings_by_name[i]
+				// Classic
+				if(LAZYLEN(instance.classic_keys))
+					for(var/bound_key in instance.classic_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+				// Hotkey
+				if(LAZYLEN(instance.hotkey_keys))
+					for(var/bound_key in instance.hotkey_keys)
+						LAZYADD(key_bindings[bound_key], list(instance.name))
+
+	S["remembered_key_bindings"] << GLOB.keybindings_by_name
 
 	if(!observer_huds)
 		observer_huds = list("Medical HUD" = FALSE, "Security HUD" = FALSE, "Squad HUD" = FALSE, "Xeno Status HUD" = FALSE)
-
-	if (!swap_hand_default)
-		swap_hand_default = "CTRL+X"
-	if (!swap_hand_hotkeymode)
-		swap_hand_hotkeymode = "X"
 
 	return 1
 
@@ -172,16 +202,20 @@
 	S["pred_mask_type"] 	<< predator_mask_type
 	S["pred_armor_type"] 	<< predator_armor_type
 	S["pred_boot_type"] 	<< predator_boot_type
+	S["pred_armor_mat"]		<< predator_armor_material
 
 	S["commander_status"] 	<< commander_status
+	S["co_sidearm"]			<< commander_sidearm
 	S["yautja_status"]		<< yautja_status
 	S["synth_status"]		<< synth_status
 
 	S["lang_chat_disabled"] << lang_chat_disabled
+	S["key_bindings"] << key_bindings
+	S["hotkeys"] << hotkeys
 
-	S["swap_hand_default"]	<< swap_hand_default
-	S["swap_hand_hotkeymode"] << swap_hand_hotkeymode
 	S["hear_vox"] << hear_vox
+
+	S["hide_statusbar"] << hide_statusbar
 
 	return TRUE
 

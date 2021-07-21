@@ -5,9 +5,18 @@
 	flavor_description = "You are the Queen's scalpel. Don't think you are. Know you are."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
-	caste_whitelist = list("Praetorian")  	// Only bae
-	mutator_actions_to_remove = list("Xeno Spit","Dash", "Acid Ball", "Spray Acid")
-	mutator_actions_to_add = list(/datum/action/xeno_action/activable/prae_impale, /datum/action/xeno_action/activable/prae_dodge, /datum/action/xeno_action/activable/prae_tail_trip)
+	caste_whitelist = list(XENO_CASTE_PRAETORIAN)  	// Only bae
+	mutator_actions_to_remove = list(
+		/datum/action/xeno_action/activable/xeno_spit,
+		/datum/action/xeno_action/activable/pounce/base_prae_dash,
+		/datum/action/xeno_action/activable/prae_acid_ball,
+		/datum/action/xeno_action/activable/spray_acid/base_prae_spray_acid,
+	)
+	mutator_actions_to_add = list(
+		/datum/action/xeno_action/activable/prae_impale,
+		/datum/action/xeno_action/activable/prae_dodge,
+		/datum/action/xeno_action/activable/prae_tail_trip,
+	)
 	behavior_delegate_type = /datum/behavior_delegate/praetorian_dancer
 	keystone = TRUE
 
@@ -20,7 +29,7 @@
 	P.armor_modifier -= XENO_ARMOR_MOD_VERYSMALL
 	P.speed_modifier += XENO_SPEED_FASTMOD_TIER_5
 	P.plasma_types = list(PLASMA_CATECHOLAMINE)
-	P.claw_type = CLAW_TYPE_VERY_SHARP
+	P.claw_type = CLAW_TYPE_SHARP
 
 	mutator_update_actions(P)
 	MS.recalculate_actions(description, flavor_description)
@@ -68,7 +77,7 @@
 		to_chat(X, SPAN_XENOHIGHDANGER("You can no longer move through creatures!"))
 
 
-/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/praetorian_dancer/melee_attack_additional_effects_target(mob/living/carbon/A)
 	if (!isXenoOrHuman(A))
 		return
 

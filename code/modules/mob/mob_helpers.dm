@@ -1,9 +1,4 @@
-#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DEAF) || A?:ear_deaf))
-#define areSameSpecies(A, B) 	(isliving(A) && isliving(B) && \
-									((isXeno(A) && isXeno(B)) || \
-										(ishuman(A) && ishuman(B) && !(isYautja(A) ^ isYautja(B))) \
-									) \
-								)
+#define isdeaf(A) (ismob(A) && ((A?:sdisabilities & DISABILITY_DEAF) || A?:ear_deaf))
 #define xeno_hivenumber(A) (isXeno(A) ? A?:hivenumber : FALSE)
 
 /mob/proc/can_use_hands()
@@ -83,7 +78,8 @@ var/global/list/limb_types_by_name = list(
 )
 
 /proc/check_zone(zone)
-	if(!zone)	return "chest"
+	if(!zone)
+		return "chest"
 	switch(zone)
 		if("eyes")
 			zone = "head"
@@ -93,16 +89,15 @@ var/global/list/limb_types_by_name = list(
 
 // Returns zone with a certain probability. If the probability fails, or no zone is specified, then a random body part is chosen.
 // Do not use this if someone is intentionally trying to hit a specific body part.
-// Use get_zone_with_miss_chance() for that.
-/proc/ran_zone(zone, probability)
+/proc/rand_zone(zone, probability)
 	if (zone)
 		zone = check_zone(zone)
 		if (prob(probability))
 			return zone
 
-	var/ran_zone = zone
-	while (ran_zone == zone)
-		ran_zone = pick (
+	var/rand_zone = zone
+	while (rand_zone == zone)
+		rand_zone = pick (
 			organ_rel_size["head"]; "head",
 			organ_rel_size["chest"]; "chest",
 			organ_rel_size["groin"]; "groin",
@@ -116,27 +111,7 @@ var/global/list/limb_types_by_name = list(
 			organ_rel_size["r_foot"]; "r_foot",
 		)
 
-	return ran_zone
-
-// Emulates targetting a specific body part, and miss chances
-// May return null if missed
-// miss_chance_mod may be negative.
-/proc/get_zone_with_miss_chance(zone, var/mob/target, var/miss_chance_mod = 0)
-	zone = check_zone(zone)
-
-	// you can only miss if your target is standing and not restrained
-	if(!target.buckled && !target.lying)
-		var/miss_chance = 10
-		if (zone in base_miss_chance)
-			miss_chance = base_miss_chance[zone]
-		miss_chance = max(miss_chance + miss_chance_mod, 0)
-		if(prob(miss_chance))
-			if(prob(70))
-				return null
-			return pick(base_miss_chance)
-
-	return zone
-
+	return rand_zone
 
 /proc/stars(n, pr)
 	if (pr == null)
@@ -427,7 +402,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		if(SKILL_CQC)
 			if(skillcheck(src, SKILL_CQC, SKILL_CQC_MASTER))
 				return DURATION_MULTIPLIER_TIER_3
-			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_MP))
+			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_SKILLED))
 				return DURATION_MULTIPLIER_TIER_2
 			else if(skillcheck(src, SKILL_CQC, SKILL_CQC_TRAINED))
 				return DURATION_MULTIPLIER_TIER_1
@@ -456,6 +431,3 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
-		else
-			if(isYautja(src) || (isSynth(src) && !isEarlySynthetic(src)))
-				return DURATION_MULTIPLIER_TIER_3 //Acceleration for things that don't fall under skills

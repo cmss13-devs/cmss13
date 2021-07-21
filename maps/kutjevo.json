@@ -3,14 +3,11 @@
     "map_path": "map_files/Kutjevo",
     "map_file": "Kutjevo.dmm",
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Chef",
+        "Survivor - Kutjevo Doctor",
         "Survivor - Chaplain",
-        "Survivor - Miner",
-        "Survivor - Engineer",
+        "Survivor - Kutjevo Engineer",
         "Survivor - Trucker",
-        "Survivor - Colonial Marshall"
+        "Survivor - Kutjevo Security Guard"
     ],
     "defcon_triggers": [
         4250,
@@ -20,7 +17,7 @@
         0.0
     ],
     "map_item_type": "/obj/item/map/kutjevo_map",
-    "announce_text": "An automated distress signal has been received from Weston-Yamada colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The ###SHIPNAME### has been dispatched to investigate.",
+    "announce_text": "An automated distress signal has been received from Weyland-Yutani colony Kutjevo Refinery, known for botanical research, export, and raw materials processing and refinement. The ###SHIPNAME### has been dispatched to investigate.",
     "monkey_types": [
         "neaera",
         "stok"

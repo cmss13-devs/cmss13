@@ -161,7 +161,7 @@
 	group = "Weapons"
 
 /datum/supply_packs/explosives
-	name = "surplus explosives crate (claymore mine x4, M40 HIDP x2, M40 HEDP x2, M15 Frag x2, M12 Blast x2)"
+	name = "surplus explosives crate (claymore mine x5, M40 HIDP x2, M40 HEDP x2, M15 Frag x2, M12 Blast x2)"
 	contains = list(
 					/obj/item/storage/box/explosive_mines,
 					/obj/item/explosive/grenade/HE,
@@ -180,7 +180,7 @@
 
 
 /datum/supply_packs/explosives_mines
-	name = "claymore mines crate (x8)"
+	name = "claymore mines crate (x10)"
 	contains = list(
 					/obj/item/storage/box/explosive_mines,
 					/obj/item/storage/box/explosive_mines

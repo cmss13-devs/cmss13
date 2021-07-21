@@ -11,9 +11,10 @@
 	matter = list("metal" = 50,"glass" = 20)
 
 	actions_types = list(/datum/action/item_action)
-	var/on = 0
+	var/on = FALSE
 	var/brightness_on = 5 //luminosity when on
-	var/raillight_compatible = 1 //Can this be turned into a rail light ?
+	var/raillight_compatible = TRUE //Can this be turned into a rail light ?
+	var/toggleable = TRUE
 
 /obj/item/device/flashlight/Initialize()
 	. = ..()
@@ -46,15 +47,22 @@
 			SetLuminosity(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
+	..()
+
+	if(!toggleable)
+		to_chat(user, SPAN_WARNING("You cannot toggle \the [src.name] on or off."))
+		return FALSE
 	if(!isturf(user.loc))
 		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalities.
-		return 0
+		return FALSE
+
 	on = !on
 	update_brightness(user)
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.update_button_icon()
-	return 1
+
+	return TRUE
 
 /obj/item/device/flashlight/proc/turn_off_light(mob/bearer)
 	if(on)
@@ -67,7 +75,7 @@
 	return 0
 
 /obj/item/device/flashlight/attackby(obj/item/I as obj, mob/user as mob)
-	if(istype(I,/obj/item/tool/screwdriver))
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER))
 		if(!raillight_compatible) //No fancy messages, just no
 			return
 		if(on)
@@ -113,7 +121,7 @@
 							 SPAN_NOTICE("You direct [src] to [M]'s eyes."))
 
 		if(istype(M, /mob/living/carbon/human))	//robots and aliens are unaffected
-			if(M.stat == DEAD || M.sdisabilities & BLIND)	//mob is dead or fully blind
+			if(M.stat == DEAD || M.sdisabilities & DISABILITY_BLIND)	//mob is dead or fully blind
 				to_chat(user, SPAN_NOTICE("[M] pupils does not react to the light!"))
 			else	//they're okay!
 				M.flash_eyes()
@@ -239,7 +247,7 @@
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
+	fuel = rand(80 SECONDS, 100 SECONDS) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
 
 /obj/item/device/flashlight/flare/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -248,11 +256,14 @@
 /obj/item/device/flashlight/flare/process()
 	fuel = max(fuel - 1, 0)
 	if(!fuel || !on)
-		turn_off()
-		if(!fuel)
-			icon_state = "[initial(icon_state)]-empty"
-			add_to_garbage(src)
-		STOP_PROCESSING(SSobj, src)
+		burn_out()
+
+/obj/item/device/flashlight/flare/proc/burn_out()
+	turn_off()
+	fuel = 0
+	icon_state = "[initial(icon_state)]-empty"
+	add_to_garbage(src)
+	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_off()
 	on = 0
@@ -265,14 +276,21 @@
 	else
 		update_brightness(null)
 
-/obj/item/device/flashlight/flare/attack_self(mob/user)
+/obj/item/device/flashlight/flare/attack_self(mob/living/user)
 
 	// Usual checks
 	if(!fuel)
 		to_chat(user, SPAN_NOTICE("It's out of fuel."))
-		return
+		return FALSE
 	if(on)
-		return
+		if(do_after(user, 2.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
+			var/hand = user.hand ? "l_hand" : "r_hand"
+			user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
+			SPAN_WARNING("You snuff out [src], singing your hand."))
+			user.apply_damage(7, BURN, hand)
+			burn_out()
+			//TODO: add snuff out sound so guerilla CLF snuffing flares get noticed
+			return
 
 	. = ..()
 	// All good, turn it on.
@@ -301,21 +319,22 @@
 	name = "glowing slime"
 	desc = "A glowing ball of what appears to be amber."
 	icon = 'icons/obj/items/lighting.dmi'
-	icon_state = "floor1" //not a slime extract sprite but... something close enough!
+	// not a slime extract sprite but... something close enough!
+	icon_state = "floor1"
 	item_state = "slime"
 	w_class = SIZE_TINY
 	brightness_on = 6
-	on = 1 //Bio-luminesence has one setting, on.
-	raillight_compatible = 0
+	// Bio-luminesence has one setting, on.
+	on = TRUE
+	raillight_compatible = FALSE
+	// Bio-luminescence does not toggle.
+	toggleable = FALSE
 
 /obj/item/device/flashlight/slime/Initialize()
 	. = ..()
 	SetLuminosity(brightness_on)
 	update_brightness()
 	icon_state = initial(icon_state)
-
-/obj/item/device/flashlight/slime/attack_self(mob/user)
-	return //Bio-luminescence does not toggle.
 
 //******************************Lantern*******************************/
 
@@ -342,34 +361,12 @@
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
-	// Usual checks
-	if(!fuel)
-		to_chat(user, SPAN_NOTICE("It's out of fuel."))
-		return
-	if(on)
-		return
 
-	if(!isturf(user.loc))
-		to_chat(user, "You cannot turn the light on while in [user.loc].") //To prevent some lighting anomalities.
-		return 0
-	on = !on
-	update_brightness(user)
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.update_button_icon()
-	// All good, turn it on.
-	user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
-	force = on_damage
-	heat_source = 1500
-	damtype = "fire"
-	START_PROCESSING(SSobj, src)
-	// Enable throw mode to be consistent with normal flare
-	var/mob/living/carbon/U = user
-	if(istype(U) && !U.throw_mode)
-		U.toggle_throw_mode(THROW_MODE_NORMAL)
+	. = ..()
 
-	faction = user.faction
-	addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
+	if(.)
+		faction = user.faction
+		addtimer(CALLBACK(src, .proc/activate_signal, user), 5 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/proc/activate_signal(mob/living/carbon/human/user)
 	if(faction && cas_groups[faction])

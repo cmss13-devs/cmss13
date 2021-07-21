@@ -3,17 +3,17 @@
 //Place any asset datums you create in asset_list_items.dm
 
 //all of our asset datums, used for referring to these later
-var/list/asset_datums = list()
+GLOBAL_LIST_EMPTY(asset_datums)
 
 //get an assetdatum or make a new one
 /proc/get_asset_datum(type)
-	return asset_datums[type] || new type()
+	return GLOB.asset_datums[type] || new type()
 
 /datum/asset
 	var/_abstract = /datum/asset
 
 /datum/asset/New()
-	asset_datums[type] = src
+	GLOB.asset_datums[type] = src
 	register()
 
 /datum/asset/proc/get_url_mappings()
@@ -135,6 +135,9 @@ var/list/asset_datums = list()
 		// save flattened version
 		var/fname = "data/spritesheets/[name]_[size_id].png"
 		fcopy(size[SPRSZ_ICON], fname)
+		var/error = rustg_dmi_strip_metadata(fname)
+		if(length(error))
+			stack_trace("Failed to strip [name]_[size_id].png: [error]")
 		size[SPRSZ_STRIPPED] = icon(fname)
 		fdel(fname)
 

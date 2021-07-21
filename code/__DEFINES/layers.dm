@@ -105,6 +105,8 @@
 
 //#define FLY_LAYER 5
 
+#define RIPPLE_LAYER 5.1
+
 #define ABOVE_FLY_LAYER 6
 
 #define AREAS_LAYER 999 //for areas, so they appear above everything else on map file.

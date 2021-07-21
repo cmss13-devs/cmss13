@@ -7,7 +7,7 @@
 	matter = list("metal" = 1000, "glass" = 500, "waste" = 100)
 
 
-	wires = WIRE_PULSE
+	wires = WIRE_ASSEMBLY_PULSE
 
 	secured = 0
 

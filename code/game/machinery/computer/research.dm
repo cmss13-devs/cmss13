@@ -4,6 +4,7 @@
 	icon_state = "research"
 	req_access = list(ACCESS_MARINE_RESEARCH)
 	var/base_purchase_cost = 5
+	var/max_clearance = 1 // max clearance level reached by research
 	var/main_terminal = FALSE
 	var/obj/structure/machinery/photocopier/photocopier
 
@@ -58,7 +59,9 @@
 
 	var/list/options = list("Increase","Set to maximum","Set to minimum")
 
-	var/clearance_allowance = 6 - defcon_controller.current_defcon_level
+	var/datum/techtree/T = GET_TREE(TREE_MARINE)
+	// Tier 1 allows for CL2, Tier 2 allows for CL4 and Tier 3 allows for CL5
+	var/clearance_allowance = min(T.tier?.tier*2, 5)
 
 	var/can_give_x = FALSE
 	if(clearance_bypass)
@@ -121,7 +124,7 @@
 	var/list/data = list(
 		"rsc_credits" = chemical_data.rsc_credits,
 		"clearance_level" = chemical_data.clearance_level,
-		"broker_cost" = max(3*(chemical_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1),
+		"broker_cost" = max(3*(chemical_data.clearance_level + 1), 1),
 		"base_purchase_cost" = base_purchase_cost,
 		"research_documents" = chemical_data.research_documents,
 		"published_documents" = chemical_data.research_publications,
@@ -173,6 +176,10 @@
 		if(R.chemclass == CHEM_CLASS_SPECIAL || R.chemclass == CHEM_CLASS_NONE)
 			to_chat(usr, SPAN_WARNING("Chemical complexity above transmission data threshold. Transmission cancelled."))
 			return
+		for(var/datum/chem_property/P in R.properties)
+			if(P.level > chemical_data.clearance_level + 3) // limited to level 4 properties at CL 1, increasing by 1 for each level obtained
+				to_chat(usr, SPAN_WARNING("Chemical complexity above clearance level's data transmission threshold. Transmission cancelled."))
+				return
 		var/transmission_cost = R.calculate_value()
 		if(alert(usr,"This will transmit the data regarding [R.name] to the WY central database, so that other research labs can continue the research. The complexity of this chemical will cost [transmission_cost] credits to transmit. Confirm transmission?","Confirm Data Transmission","Confirm","No") != "Confirm")
 			return
@@ -188,12 +195,26 @@
 		if(alert(usr,"The CL can swipe their ID card on the console to increase clearance for free, given enough DEFCON. Are you sure you want to spend research credits to increase the clearance immediately?","Warning","Yes","No") != "Yes")
 			return
 		if(chemical_data.clearance_level < 5)
-			var/cost = max(3*(chemical_data.clearance_level + 1) - 2*(5 - defcon_controller.current_defcon_level), 1)
+			var/cost = max(3*(chemical_data.clearance_level + 1), 1)
 			if(cost <= chemical_data.rsc_credits)
 				chemical_data.update_credits(cost * -1)
 				chemical_data.clearance_level++
 				visible_message(SPAN_NOTICE("Clearance access increased to level [chemical_data.clearance_level] for [cost] credits."))
 				msg_admin_niche("[key_name(user)] traded research credits to upgrade the clearance to level [chemical_data.clearance_level].")
+				if(max_clearance < chemical_data.clearance_level)
+					switch(chemical_data.clearance_level) //Gives a free research synthesis if clearance is bought, but only the first time
+						if(2)
+							new /obj/item/paper/research_notes/unique/tier_two/(photocopier.loc)
+							max_clearance = 2
+						if(3)
+							new /obj/item/paper/research_notes/unique/tier_three/(photocopier.loc)
+							max_clearance = 3
+						if(4)
+							new /obj/item/paper/research_notes/unique/tier_four/(photocopier.loc)
+							max_clearance = 4
+						if(5)
+							new /obj/item/paper/research_notes/unique/tier_five/(photocopier.loc)
+							max_clearance = 5
 			else
 				to_chat(usr, SPAN_WARNING("Insufficient funds."))
 		else
@@ -202,7 +223,7 @@
 		var/purchase_tier = text2num(href_list["purchase_document"])
 		if(purchase_tier < 0 || purchase_tier > 5)
 			return
-		var/purchase_cost = base_purchase_cost + purchase_tier * purchase_tier
+		var/purchase_cost = base_purchase_cost + purchase_tier * 2
 		if(purchase_cost <= chemical_data.rsc_credits)
 			if(alert(usr,"Are you sure you wish to purchase a new level [purchase_tier] chemical report for [purchase_cost] credits?","Warning","Yes","No") != "Yes")
 				return

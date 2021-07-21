@@ -1,6 +1,4 @@
 /datum/crime_incident
-	var/UID // The unique identifier for this incident
-
 	var/notes = "" // The written explanation of the crime
 
 	var/list/charges = list() // What laws were broken in this incident
@@ -18,11 +16,6 @@
 	var/sentence_served = FALSE
 
 	var/pardoned = FALSE
-
-/datum/crime_incident/New()
-	UID = md5("[world.realtime][rand(0, 1000000)]")
-
-	..()
 
 /datum/crime_incident/proc/refresh_sentences()
 	brig_sentence = calculate_sentence()

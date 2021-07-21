@@ -48,13 +48,13 @@
 
 		list("POUCHES", -1, null, null),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
-		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
 		list("Flare Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", round(scale * 4), /obj/item/storage/pouch/flamertank, VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine/pistol/large, VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", round(scale * 5), /obj/item/storage/pouch/magazine, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Pouch", round(scale * 5), /obj/item/storage/pouch/shotgun, VENDOR_ITEM_REGULAR),
 		list("Medical Pouch", round(scale * 2), /obj/item/storage/pouch/medical, VENDOR_ITEM_REGULAR),
 		list("Medium General Pouch", round(scale * 2), /obj/item/storage/pouch/general/medium, VENDOR_ITEM_REGULAR),
 		list("Medkit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, VENDOR_ITEM_REGULAR),
@@ -107,7 +107,7 @@
 	var/list/R
 	for(R in (listed_products))
 		if(item_to_stock.type == R[3] && !istype(item_to_stock,/obj/item/storage))
-			if(istype(item_to_stock, /obj/item/weapon/gun))
+			if(isgun(item_to_stock))
 				var/obj/item/weapon/gun/G = item_to_stock
 				if(G.in_chamber || (G.current_mag && !istype(G.current_mag, /obj/item/ammo_magazine/internal)) || (istype(G.current_mag, /obj/item/ammo_magazine/internal) && G.current_mag.current_rounds > 0) )
 					to_chat(user, SPAN_WARNING("[G] is still loaded. Unload it before you can restock it."))
@@ -133,6 +133,12 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/blend
+	icon_state = "req_guns_wall"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall/almayer)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
@@ -164,7 +170,6 @@
 
 		list("POUCHES", -1, null, null),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
-		list("Document Pouch", round(scale * 2), /obj/item/storage/pouch/document/small, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
 		list("Flare Pouch", round(scale * 5), /obj/item/storage/pouch/flare/full, VENDOR_ITEM_REGULAR),
@@ -319,6 +324,12 @@
 			updateUsrDialog()
 			return //We found our item, no reason to go on.
 
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/blend
+		icon_state = "req_ammo_wall"
+		tiles_with = list(
+			/obj/structure/window/framed/almayer,
+			/obj/structure/machinery/door/airlock,
+			/turf/closed/wall/almayer)
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad
 	name = "\improper ColMarTech Automated Munition Squad Vendor"
@@ -386,7 +397,6 @@
 		list("RAIL", -1, null, null),
 		list("B8 Smart-Scope", round(scale * 3.5), /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
 		list("Magnetic Harness", round(scale * 6.5), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
-		list("Quickfire Adapter", round(scale * 4.5), /obj/item/attachable/quickfire, VENDOR_ITEM_REGULAR),
 		list("Rail Flashlight", round(scale * 10.5), /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
 		list("S4 2x Telescopic Mini-Scope", round(scale * 4.5), /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
 		list("S5 Red-Dot Sight", round(scale * 9.5), /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
@@ -432,6 +442,13 @@
 				T = loc
 	return T
 
+/obj/structure/machinery/cm_vending/sorted/attachments/blend
+	icon_state = "req_attach_wall"
+	tiles_with = list(
+		/obj/structure/window/framed/almayer,
+		/obj/structure/machinery/door/airlock,
+		/turf/closed/wall/almayer)
+
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"
 	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by Squad Leaders and Squad Specialists."
@@ -452,7 +469,6 @@
 		list("RAIL", -1, null, null),
 		list("B8 Smart-Scope", round(scale * 1.5), /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
 		list("Magnetic Harness", round(scale * 3), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
-		list("Quickfire Adapter", round(scale * 2.5), /obj/item/attachable/quickfire, VENDOR_ITEM_REGULAR),
 		list("S4 2x Telescopic Mini-Scope", round(scale * 2), /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
 		list("S5 Red-Dot Sight", round(scale * 3), /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
 		list("S6 Reflex Sight", round(scale * 3), /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),
@@ -523,7 +539,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Charlie Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/charlie, VENDOR_ITEM_REGULAR),
 		list("Delta Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/delta, VENDOR_ITEM_REGULAR),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, VENDOR_ITEM_REGULAR),
-		list("Intel Radio Encryption Key", 5, /obj/item/device/encryptionkey/intel, VENDOR_ITEM_REGULAR),
+		list("Tactics Radio Encryption Key", 5, /obj/item/device/encryptionkey/tactics, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 5, /obj/item/device/encryptionkey/jtac, VENDOR_ITEM_REGULAR),
 		list("Marine Radio Headset", 5, /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
 		list("Supply Radio Encryption Key", 5, /obj/item/device/encryptionkey/req, VENDOR_ITEM_REGULAR),

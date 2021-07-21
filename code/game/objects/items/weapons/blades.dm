@@ -12,6 +12,7 @@
 	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
 
 /obj/item/weapon/melee/claymore/mercsword
 	name = "combat sword"
@@ -65,10 +66,11 @@
 	var/turf/epicenter = get_turf(user)
 	epicenter = get_step(epicenter, user.dir)
 
-	create_shrapnel(epicenter, 48, dir, , /datum/ammo/bullet/shrapnel, initial(name), user)
+	var/datum/cause_data/cause_data = create_cause_data(initial(name), user)
+	create_shrapnel(epicenter, 48, dir, , /datum/ammo/bullet/shrapnel, cause_data)
 	sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?
 	apply_explosion_overlay()
-	cell_explosion(epicenter, 40, 18, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, initial(name), user)
+	cell_explosion(epicenter, 40, 18, EXPLOSION_FALLOFF_SHAPE_LINEAR, user.dir, cause_data)
 	qdel(src)
 
 /obj/item/weapon/melee/katana
@@ -83,6 +85,7 @@
 	w_class = SIZE_MEDIUM
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	attack_speed = 9
 
 //To do: replace the toys.
 /obj/item/weapon/melee/katana/replica
@@ -130,40 +133,6 @@
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = MELEE_FORCE_VERY_STRONG
 	edge = 1
-
-
-/obj/item/weapon/melee/yautja_knife
-	name = "ceremonial dagger"
-	desc = "A viciously sharp dagger enscribed with ancient Yautja markings. Smells thickly of blood. Carried by some hunters."
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "predknife"
-	item_state = "knife"
-	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
-	flags_equip_slot = SLOT_STORE
-	sharp = IS_SHARP_ITEM_ACCURATE
-	force = MELEE_FORCE_TIER_5
-	w_class = SIZE_TINY
-	throwforce = MELEE_FORCE_TIER_4
-	throw_speed = SPEED_VERY_FAST
-	throw_range = 6
-	hitsound = 'sound/weapons/slash.ogg'
-	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	actions_types = list(/datum/action/item_action)
-	unacidable = TRUE
-
-/obj/item/weapon/melee/yautja_knife/attack_self(mob/living/carbon/human/user)
-	if(!isYautja(user))
-		return
-	if(!hasorgans(user))
-		return
-
-	dig_out_shrapnel(user)
-
-/obj/item/weapon/melee/yautja_knife/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
 
 /obj/item/proc/dig_out_shrapnel_check(var/mob/living/target, var/mob/living/carbon/human/user) //for digging shrapnel out of OTHER people, not yourself
 	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && ishuman(user) && ishuman(target) && user.a_intent == INTENT_HELP) //Squad medics and above

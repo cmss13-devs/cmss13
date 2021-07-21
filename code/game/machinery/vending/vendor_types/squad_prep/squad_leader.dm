@@ -47,6 +47,7 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M39 Extended Magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/extended , null, VENDOR_ITEM_REGULAR),
 		list("M41A AP Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/ap , null, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/extended , null, VENDOR_ITEM_REGULAR),
+		list("M41A MK1 Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/m41aMK1, null, VENDOR_ITEM_REGULAR),
 
 		list("ATTACHMENTS", 0, null, null, null),
 		list("Angled Grip", 6, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
@@ -57,7 +58,6 @@ GLOBAL_LIST_INIT(cm_vending_gear_leader, list(
 		list("M37 Wooden Stock", 6, /obj/item/attachable/stock/shotgun, null, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 6, /obj/item/attachable/stock/smg, null, VENDOR_ITEM_REGULAR),
 		list("M41A Solid Stock", 6, /obj/item/attachable/stock/rifle, null, VENDOR_ITEM_REGULAR),
-		list("Quickfire Adapter", 6, /obj/item/attachable/quickfire, null, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 6, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),
 		list("Red-Dot Sight", 6, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
 		list("Reflex Sight", 6, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
@@ -112,6 +112,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		list("Fuel Tank Strap Pouch", 0, /obj/item/storage/pouch/flamertank, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
 		list("Large Magazine Pouch", 0, /obj/item/storage/pouch/magazine/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Large Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 
@@ -181,9 +182,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 		/obj/item/explosive/plastic,
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/map/current_map,
-		/obj/item/weapon/gun/flamer/underextinguisher,
-		/obj/item/ammo_magazine/flamer_tank,
-		/obj/item/ammo_magazine/flamer_tank,
+		/obj/item/storage/box/kit/mini_pyro,
 		/obj/item/tool/extinguisher/mini,
 		/obj/item/storage/box/zipcuffs
 	)

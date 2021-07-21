@@ -18,6 +18,58 @@
 	remove_verb(src, debug_verbs)
 	add_verb(src, /client/proc/enable_debug_verbs)
 
+/client/proc/enter_tree()
+	set category = "Debug.TechTree"
+	set name = "Enter Tech Tree"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	var/list/trees = list()
+
+	for(var/T in SStechtree.trees)
+		trees += list("[T]" = SStechtree.trees[T])
+
+	var/value = tgui_input_list(src, "Choose which tree to enter", "Enter Tree", trees)
+
+	if(!value)
+		to_chat(src, SPAN_WARNING("Something went wrong"))
+		return
+
+	var/datum/techtree/tree = trees[value]
+
+	var/should_force = tgui_alert(src, "Do you want to force yourself into the tree?", "Force Enter", list("Yes", "No"))
+
+	tree.enter_mob(src.mob, should_force == "Yes")
+
+
+/client/proc/set_tree_points()
+	set category = "Debug.TechTree"
+	set name = "Set Tech Tree Points"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	var/list/trees = list()
+
+	for(var/T in SStechtree.trees)
+		trees += list("[T]" = SStechtree.trees[T])
+
+	var/value = tgui_input_list(src, "Choose which tree to give points to", "Give Points", trees)
+
+	if(!value)
+		to_chat(src, SPAN_WARNING("Something went wrong"))
+		return
+
+	var/datum/techtree/tree = trees[value]
+
+	var/number_to_set = input(src, "How many points should this tech tree be at?", "", tree.points) as null|num
+
+	if(number_to_set == null)
+		return
+
+	tree.set_points(number_to_set)
+
 /client/proc/check_round_statistics()
 	set category = "Debug"
 	set name = "Round Statistics"

@@ -20,12 +20,12 @@
 		RegisterSignal(target, COMSIG_BULLET_USER_EFFECTS, .proc/set_iff)
 	else
 		src.iff_group = iff_group
-		RegisterSignal(target, COMSIG_BULLET_CHECK_IFF, .proc/check_iff)
+		RegisterSignal(target, COMSIG_BULLET_CHECK_MOB_SKIPPING, .proc/check_iff)
 
 /datum/element/bullet_trait_iff/Detach(datum/target)
 	UnregisterSignal(target, list(
 		COMSIG_BULLET_USER_EFFECTS,
-		COMSIG_BULLET_CHECK_IFF,
+		COMSIG_BULLET_CHECK_MOB_SKIPPING,
 	))
 
 	..()
@@ -34,7 +34,7 @@
 	SIGNAL_HANDLER
 
 	if(projectile_target.get_target_lock(iff_group))
-		return COMPONENT_BULLET_NO_HIT
+		return COMPONENT_SKIP_MOB
 
 /datum/element/bullet_trait_iff/proc/set_iff(datum/target, mob/living/carbon/human/firer)
 	SIGNAL_HANDLER
@@ -58,6 +58,7 @@
 	return iff_group
 
 /datum/element/bullet_trait_iff/proc/reset_iff_group_cache(mob/living/carbon/human/user)
+	SIGNAL_HANDLER
 	if(!user)
 		iff_group_cache = null
 	else

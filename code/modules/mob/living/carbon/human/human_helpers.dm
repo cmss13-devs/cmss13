@@ -207,8 +207,8 @@
 	if (istype(wear_suit, /obj/item/clothing/suit/straight_jacket))
 		return 1
 
-	if (istype(buckled, /obj/structure/bed/nest))
-		return 1
+	if (HAS_TRAIT(src, TRAIT_NESTED))
+		return TRUE
 
 	return 0
 
@@ -295,8 +295,8 @@
 
 
 /mob/living/carbon/human/a_intent_change(intent as num)
-	. = ..(intent)
-	if(isEarlySynthetic(src)) //1st gen synths change eye colour based on intent
+	. = ..()
+	if(HAS_TRAIT(src, TRAIT_INTENT_EYES)) //1st gen synths change eye colour based on intent
 		switch(a_intent)
 			if(INTENT_HELP) //Green, defalt
 				r_eyes = 0
@@ -364,3 +364,23 @@
 	for (var/datum/effects/tethered/TD in effects_list)
 		return TRUE
 	return FALSE
+
+/mob/living/carbon/human/get_role_name()
+	return get_actual_job_name(src)
+
+/mob/living/carbon/human/check_fire_intensity_resistance()
+	return clothing_fire_intensity_resistance()
+
+/mob/living/carbon/human/proc/clothing_fire_intensity_resistance()
+	var/fire_intensity_resistance
+
+	if(head && head.fire_intensity_resistance)
+		fire_intensity_resistance += head.fire_intensity_resistance
+
+	if(wear_suit && wear_suit.fire_intensity_resistance)
+		fire_intensity_resistance += wear_suit.fire_intensity_resistance
+
+	if(shoes && shoes.fire_intensity_resistance)
+		fire_intensity_resistance += shoes.fire_intensity_resistance
+
+	return fire_intensity_resistance

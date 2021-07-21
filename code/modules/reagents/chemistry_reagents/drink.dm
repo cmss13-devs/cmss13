@@ -47,10 +47,12 @@
 	description = "Both delicious AND rich in Vitamin C, what more do you need?"
 	color = "#E78108" // rgb: 231, 129, 8
 
-	on_mob_life(mob/living/M)
-		. = ..()
-		if(!.) return
-		if(M.getOxyLoss() && prob(30)) M.apply_damage(-1, OXY)
+/datum/reagent/drink/orangejuice/on_mob_life(mob/living/M)
+	. = ..()
+	if(!.)
+		return
+	if(M.getOxyLoss() && prob(30))
+		M.apply_damage(-1, OXY)
 
 /datum/reagent/drink/tomatojuice
 	name = "Tomato Juice"
@@ -163,6 +165,7 @@
 		if(!.) return
 		if(M.getBruteLoss() && prob(20)) M.heal_limb_damage(1,0)
 		holder.remove_reagent("capsaicin", 10*REAGENTS_METABOLISM)
+		holder.remove_reagent("hotsauce", 10*REAGENTS_METABOLISM)
 
 /datum/reagent/drink/milk/soymilk
 	name = "Soy Milk"
@@ -193,6 +196,7 @@
 		M.bodytemperature = max(M.bodytemperature - 10 * TEMPERATURE_DAMAGE_COEFFICIENT, 0)
 		M.recalculate_move_delay = TRUE
 		holder.remove_reagent("capsaicin", 5)
+		holder.remove_reagent("hotsauce", 5)
 		holder.remove_reagent(src.id, FOOD_METABOLISM)
 
 
@@ -243,7 +247,17 @@
 	description = "A cranberry flavored soda that's canned in Havana"
 	color = "#950714"
 
+/datum/reagent/drink/souto/vanilla
+	name = "Vanilla Souto"
+	id = "souto_vanilla"
+	description = "A vanilla flavored soda that's canned in Havana"
+	color = "#F9E5BC"
 
+/datum/reagent/drink/souto/pineapple
+	name = "Pineapple Souto"
+	id = "souto_pineapple"
+	description = "A pineapple flavored soda that's canned in Havana"
+	color = "#FEEB75"
 
 //OTHER SODA//
 
@@ -314,7 +328,7 @@
 /datum/reagent/drink/wy_beer
 	name = "Aspen Beer"
 	id = "aspen"
-	description = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weston-Yamada Corporation."
+	description = "Pretty good when you get past the fact that it tastes like piss. Canned by the Weyland-Yutani Corporation."
 	color = "#ffcc66"
 
 

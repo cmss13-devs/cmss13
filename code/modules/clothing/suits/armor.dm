@@ -10,8 +10,8 @@
 	w_class = SIZE_HUGE
 	allowed = list(/obj/item/weapon/gun)//Guns only.
 	uniform_restricted = list(/obj/item/clothing/under)
-	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
-	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMOR_C, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
+	valid_accessory_slots = list(ACCESSORY_SLOT_MEDAL, ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S)
 	slowdown = SLOWDOWN_ARMOR_LIGHT
 
 /obj/item/clothing/suit/armor/mob_can_equip(mob/living/carbon/human/M, slot, disable_warning = 0)
@@ -89,22 +89,12 @@
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN
 	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/dutch)
 
-/obj/item/clothing/suit/armor/vest/admiral
-	name = "admiral's jacket"
-	desc = "An armoured jacket with gold regalia"
-	icon_state = "admiral_jacket"
-	item_state = "admiral_jacket"
-	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
-	w_class = SIZE_MEDIUM
-
-/obj/item/clothing/suit/armor/vest/admiral/executive
-	name = "director's jacket"
-
 /obj/item/clothing/suit/armor/vest/security
-	name = "W-Y security armor"
-	desc = "An armored vest that protects against some damage. This one has a Weston-Yamada corporate badge."
+	name = "Wey-Yu security armor"
+	desc = "An armored vest that protects against some damage. This one has a Weyland-Yutani corporate badge."
 	icon_state = "armorsec"
 	item_state = "armor"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/vest/warden
 	name = "Warden's jacket"
@@ -145,11 +135,12 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	siemens_coefficient = 0.7
-	time_to_unequip = 20
-	time_to_equip = 20
+	time_to_unequip = 5
+	time_to_equip = 10
 
 /obj/item/clothing/suit/armor/bulletproof/badge
 	icon_state = "bulletproofbadge"
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
@@ -241,7 +232,7 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
-
+	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 //Reactive armor
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
@@ -268,18 +259,19 @@
 		return 1
 	return 0
 
-/obj/item/clothing/suit/armor/reactive/attack_self(mob/user as mob)
-	src.active = !( src.active )
-	if (src.active)
+/obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
+	..()
+
+	active = !active
+	if (active)
 		to_chat(user, SPAN_NOTICE(" The reactive armor is now active."))
-		src.icon_state = "reactive"
-		src.item_state = "reactive"
+		icon_state = "reactive"
+		item_state = "reactive"
 	else
 		to_chat(user, SPAN_NOTICE(" The reactive armor is now inactive."))
-		src.icon_state = "reactiveoff"
-		src.item_state = "reactiveoff"
-		src.add_fingerprint(user)
-	return
+		icon_state = "reactiveoff"
+		item_state = "reactiveoff"
+		add_fingerprint(user)
 
 /obj/item/clothing/suit/armor/reactive/emp_act(severity)
 	active = 0
@@ -365,7 +357,7 @@
 	if(usr.stat) return
 
 	if(!holstered)
-		if(!istype(usr.get_active_hand(), /obj/item/weapon/gun))
+		if(!isgun(usr.get_active_hand()))
 			to_chat(usr, SPAN_NOTICE(" You need your gun equiped to holster it."))
 			return
 		var/obj/item/weapon/gun/W = usr.get_active_hand()

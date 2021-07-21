@@ -168,7 +168,9 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	icon_state = "deliverycrate"
 
 /obj/item/spec_kit/attack_self(mob/user)
-	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_TRAINED))
+	..()
+
+	if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL))
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a specialist!"))
 		return
 	if(select_and_spawn(user))
@@ -178,8 +180,10 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	desc = "A paper box. Open it and get a specialist kit. Works only for squad marines."
 
 /obj/item/spec_kit/asrs/attack_self(mob/user)
+	..()
+
 	if(user.job == JOB_SQUAD_MARINE)
-		if (select_and_spawn(user))
+		if(select_and_spawn(user))
 			qdel(src)
 	else
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
@@ -274,7 +278,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/storage/pouch/tools/tank(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
-	new /obj/item/pamphlet/engineer/machinegunner(src)
+	new /obj/item/pamphlet/skill/machinegunner(src)
 
 /obj/item/storage/box/kit/update_icon()
 	if(!length(contents))
@@ -347,7 +351,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_engineer/fill_preset_inventory()
 	new /obj/item/storage/backpack/marine/engineerpack(src)
-	new /obj/item/pamphlet/engineer(src)
+	new /obj/item/pamphlet/skill/engineer(src)
 	new /obj/item/clothing/gloves/marine/insulated(src)
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/clothing/glasses/welding(src)
@@ -363,7 +367,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	overlays += image('icons/obj/items/pro_case.dmi', "+medic")
 
 /obj/item/storage/box/kit/mini_medic/fill_preset_inventory()
-	new /obj/item/pamphlet/medical(src)
+	new /obj/item/pamphlet/skill/medical(src)
 	new /obj/item/storage/pouch/medical/frt_kit/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
 	new /obj/item/clothing/glasses/hud/sensor(src)
@@ -383,6 +387,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/storage/box/m94/signal(src)
 	new /obj/item/device/binoculars/range/designator(src)
 	new /obj/item/device/encryptionkey/jtac(src)
+	new /obj/item/storage/backpack/marine/satchel/rto/small(src)
 
 /obj/item/storage/box/kit/mini_intel
 	name = "\improper Field Intelligence Support Kit"
@@ -393,9 +398,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_intel/fill_preset_inventory()
 	new /obj/item/stack/fulton(src)
-	new /obj/item/storage/pouch/document/small(src)
-	new /obj/item/device/motiondetector/intel(src)
-	new /obj/item/device/encryptionkey/intel(src)
+	new /obj/item/device/encryptionkey/tactics(src)
 
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"
@@ -441,6 +444,19 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/ammo_magazine/pistol/smart(src)
 	new /obj/item/attachable/extended_barrel(src)
-	new /obj/item/attachable/quickfire(src)
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/smartpistol(src)
+
+/obj/item/storage/box/kit/honorguard/New()
+  ..()
+  overlays += image('icons/obj/items/pro_case.dmi', "+honor_guard")
+
+/obj/item/storage/box/kit/honorguard/fill_preset_inventory()
+  new /obj/item/storage/pill_bottle/packet/oxycodone(src)
+  new /obj/item/storage/pill_bottle/packet/kelotane(src)
+  new /obj/item/storage/pill_bottle/packet/bicardine(src)
+  new /obj/item/weapon/gun/shotgun/combat/guard(src)
+  new /obj/item/storage/pouch/general/large(src)
+  new /obj/item/ammo_magazine/shotgun/buckshot(src)
+  new /obj/item/ammo_magazine/shotgun/buckshot(src)
+

@@ -1,30 +1,27 @@
 //FLAGS BITMASK
 
 
-//turf-only flags
-#define NOJAUNT		1
-
 //==========================================================================================
 
 //flags_atom
 
-#define NOINTERACT				(1<<0)		// You can't interact with it, at all. Useful when doing certain animations.
-#define FPRINT					(1<<1)		// takes a fingerprint
-#define CONDUCT					(1<<2)		// conducts electricity (metal etc.)
-#define ON_BORDER				(1<<3)		// 'border object'. item has priority to check when entering or leaving
-#define NOBLOODY				(1<<4)		// Don't want a blood overlay on this one.
-#define DIRLOCK					(1<<5)		// movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
-#define	NOREACT					(1<<6)		//Reagents dont' react inside this container.
-#define OPENCONTAINER			(1<<7)		//is an open container for chemistry purposes
-#define RELAY_CLICK				(1<<8)		//This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
-#define ITEM_UNCATCHABLE		(1<<9) 	// The item can't be caught out of the air.
-#define UNIQUE_ITEM_TYPE		(1<<10) 	// Used for donor items to exclude them for checks.
-#define NO_SNOW_TYPE			(1<<11)	// Used for armors or uniforms that don't have a snow icon state.
-#define INVULNERABLE			(1<<12)
-#define CAN_BE_SYRINGED			(1<<13)	// syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
-#define CAN_BE_DISPENSED_INTO	(1<<14)	// Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
-#define INITIALIZED				(1<<15)	// Initialized by SSatoms.
-#define ATOM_DECORATED				(1<<16) // Has run Decorate() as part of subsystem init
+#define NOINTERACT                (1<<0)  // You can't interact with it, at all. Useful when doing certain animations.
+#define FPRINT                    (1<<1)  // takes a fingerprint
+#define CONDUCT                   (1<<2)  // conducts electricity (metal etc.)
+#define ON_BORDER                 (1<<3)  // 'border object'. item has priority to check when entering or leaving
+#define NOBLOODY                  (1<<4)  // Don't want a blood overlay on this one.
+#define DIRLOCK                   (1<<5)  // movable atom won't change direction when Moving()ing. Useful for items that have several dir states.
+#define NOREACT                   (1<<6)  //Reagents dont' react inside this container.
+#define OPENCONTAINER             (1<<7)  //is an open container for chemistry purposes
+#define RELAY_CLICK               (1<<8)  //This is used for /obj/ that relay your clicks via handle_click(), mostly for MGs ~Art
+#define ITEM_UNCATCHABLE          (1<<9)  // The item can't be caught out of the air.
+#define NO_NAME_OVERRIDE          (1<<10) // Used for nonstandard marine clothing to ignore 'specialty' var.
+#define NO_SNOW_TYPE              (1<<11) // Used for armors or uniforms that don't have a snow icon state.
+#define INVULNERABLE              (1<<12)
+#define CAN_BE_SYRINGED           (1<<13) // syringes can inject or drain reagents in this even if it isn't an OPENCONTAINER
+#define CAN_BE_DISPENSED_INTO     (1<<14) // Chem dispenser can dispense in this even if it isn't an OPENCONTAINER
+#define INITIALIZED               (1<<15) // Initialized by SSatoms.
+#define ATOM_DECORATED            (1<<16) // Has run Decorate() as part of subsystem init
 //==========================================================================================
 
 #define HANDLE_BARRIER_CHANCE 1
@@ -43,8 +40,8 @@
 #define	ITEM_ABSTRACT			(1<<6)	// The item is abstract (grab, powerloader_clamp, etc)
 #define ITEM_PREDATOR			(1<<7) // Specific predator item interactions.
 #define MOB_LOCK_ON_EQUIP		(1<<8)	// Lock this item to the mob that equips it up until permadeath
-#define BLOCK_KNOCKDOWN			(1<<9)	// Wearing this will stop you from being pushed over
-#define NO_CRYO_STORE			(1<<10) // This item deletes itself when put in cryo storage
+#define NO_CRYO_STORE			(1<<9) // This item deletes itself when put in cryo storage
+#define ITEM_OVERRIDE_NORTHFACE	(1<<10) // For backpacks if they should have unique layering functions
 
 //==========================================================================================
 
@@ -90,22 +87,37 @@
 //To successfully stop taking all pressure damage you must have both a suit and head item with this flag.
 #define BLOCKSHARPOBJ 	(1<<8)  //From /tg: prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
 #define NOPRESSUREDMAGE (1<<9) //This flag is used on the flags variable for SUIT and HEAD items which stop pressure damage.
+#define BLOCK_KNOCKDOWN (1<<10) //Suits only. Wearing this will stop you from being pushed over.
 //SUITS AND HELMETS====================================================================================
 
 
-//GASMASK IMPAIRMENT LEVELS===========================================================================
+//VISION IMPAIRMENT LEVELS===========================================================================
 #define VISION_IMPAIR_NONE		0	//No visual impairment
-#define VISION_IMPAIR_MIN		1	//2 tiles of partial impairment
-#define VISION_IMPAIR_WEAK		2	//3 tiles of partial impairment
-#define VISION_IMPAIR_MED		3	//1 tile of full and 2 of partial impairment
-#define VISION_IMPAIR_STRONG	4	//2 tiles of full and 2 of partial impairment
-#define VISION_IMPAIR_MAX		5	//3 tiles of full and 2 of partial impairment (original one)
-//GASMASK IMPAIRMENT LEVELS===========================================================================
+/// 1 tile of partial impairment
+#define VISION_IMPAIR_MIN               1
+/// 2 tiles of partial impairment
+#define VISION_IMPAIR_WEAK              2
+/// 3 tiles of partial impairment
+#define VISION_IMPAIR_MED               3
+/// 1 tile of full and 2 of partial impairment
+#define VISION_IMPAIR_HIGH              4
+/// 2 tiles of full and 2 of partial impairment
+#define VISION_IMPAIR_STRONG            5
+/// 3 tiles of full and 2 of partial impairment (original one)
+#define VISION_IMPAIR_MAX               6
+//VISION IMPAIRMENT LEVELS===========================================================================
 
 
-
-
-
+//===========================================================================================
+//Uniform flags only, use for flags_jumpsuit. These are autodetected on init.
+#define UNIFORM_SLEEVE_ROLLABLE	(1<<0) //can we roll the sleeves on this uniform?
+#define UNIFORM_SLEEVE_ROLLED (1<<1)
+#define UNIFORM_SLEEVE_CUTTABLE	(1<<2) //can the sleeves be cut?
+#define UNIFORM_SLEEVE_CUT (1<<3)
+#define UNIFORM_JACKET_REMOVABLE (1<<4) //can the jacket be removed?
+#define UNIFORM_JACKET_REMOVED (1<<5)
+#define UNIFORM_DO_NOT_HIDE_ACCESSORIES (1<<6) //are accessories never hidden by sleeve/jacket state? (meant for snow uniform which rolls collar instead of sleeves)
+//===========================================================================================
 
 //===========================================================================================
 //Marine armor only, use for flags_marine_armor.
@@ -113,6 +125,7 @@
 #define ARMOR_LAMP_OVERLAY		2
 #define ARMOR_LAMP_ON			4
 #define ARMOR_IS_REINFORCED		8
+#define SYNTH_ALLOWED			16
 //===========================================================================================
 
 //===========================================================================================
@@ -170,6 +183,7 @@
 #define WEAR_IN_BELT        "in_belt"
 #define WEAR_IN_SCABBARD    "in_scabbard"
 #define WEAR_IN_J_STORE     "in_j_store"
+#define WEAR_IN_HELMET      "in_helmet"
 #define WEAR_IN_L_STORE     "in_l_store"
 #define WEAR_IN_R_STORE     "in_r_store"
 #define WEAR_IN_SHOES		"in_shoes"
@@ -201,6 +215,7 @@
 		WEAR_J_STORE,\
 		WEAR_IN_ACCESSORY,\
 		WEAR_IN_JACKET,\
+		WEAR_IN_HELMET,\
 		WEAR_L_STORE,\
 		WEAR_R_STORE,\
 		WEAR_IN_BACK\
@@ -227,6 +242,7 @@
 #define BODY_FLAG_HAND_LEFT		(1<<11)
 #define BODY_FLAG_HAND_RIGHT	(1<<12)
 #define BODY_FLAG_HANDS			(BODY_FLAG_HAND_LEFT|BODY_FLAG_HAND_RIGHT)
+#define BODY_FLAG_ALL_BUT_HEAD	(BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_FEET|BODY_FLAG_ARMS|BODY_FLAG_HANDS)
 #define BODY_FLAG_FULL_BODY		((1<<13)-1)
 //=================================================
 
@@ -275,7 +291,7 @@
 #define ACCESSORY_SLOT_RANK     "Rank"
 #define ACCESSORY_SLOT_DECOR    "Decor"
 #define ACCESSORY_SLOT_MEDAL    "Medal"
-#define ACCESSORY_SLOT_ARMOR_C  "Chest armor"
+#define ACCESSORY_SLOT_ARMOR_C  "Chest armor"			//Used for uniform armour inserts.
 #define ACCESSORY_SLOT_ARMOR_A  "Arm armor"
 #define ACCESSORY_SLOT_ARMOR_L  "Leg armor"
 #define ACCESSORY_SLOT_ARMOR_S  "Armor storage"
@@ -317,9 +333,11 @@
 var/global/list/uniform_categories = list(
 	"UTILITY" = list(UNIFORM_VEND_UTILITY_UNIFORM, UNIFORM_VEND_UTILITY_JACKET, UNIFORM_VEND_UTILITY_HEAD, UNIFORM_VEND_UTILITY_GLOVES, UNIFORM_VEND_UTILITY_SHOES),
 	"UTILITY EXTRAS" = list(UNIFORM_VEND_UTILITY_EXTRA),
-	"SERVICE" = list(UNIFORM_VEND_SERVICE_UNIFORM, UNIFORM_VEND_SERVICE_JACKET, UNIFORM_VEND_SERVICE_HEAD, UNIFORM_VEND_SERVICE_GLOVES, UNIFORM_VEND_SERVICE_SHOES),
+	"SERVICE" = list(UNIFORM_VEND_SERVICE_UNIFORM, UNIFORM_VEND_SERVICE_JACKET, UNIFORM_VEND_SERVICE_GLOVES, UNIFORM_VEND_SERVICE_SHOES),
+	"SERVICE HEADWEAR" = list(UNIFORM_VEND_SERVICE_HEAD),
 	"SERVICE EXTRAS" = list(UNIFORM_VEND_SERVICE_EXTRA),
-	"DRESS" = list(UNIFORM_VEND_DRESS_UNIFORM, UNIFORM_VEND_DRESS_JACKET, UNIFORM_VEND_DRESS_HEAD, UNIFORM_VEND_DRESS_GLOVES, UNIFORM_VEND_DRESS_SHOES),
+	"DRESS" = list(UNIFORM_VEND_DRESS_UNIFORM, UNIFORM_VEND_DRESS_JACKET, UNIFORM_VEND_DRESS_GLOVES, UNIFORM_VEND_DRESS_SHOES),
+	"DRESS HEADWEAR" = list(UNIFORM_VEND_DRESS_HEAD),
 	"DRESS EXTRAS" = list(UNIFORM_VEND_DRESS_EXTRA)
 )
 //=================================================
@@ -337,18 +355,18 @@ var/global/list/uniform_categories = list(
 
 
 // Storage flags
-
-#define STORAGE_ALLOW_EMPTY					1	// Whether the storage object has the 'empty' verb, which dumps all the contents on the floor
-#define STORAGE_QUICK_EMPTY					2	// Whether the storage object can quickly be emptied (no delay)
-#define STORAGE_QUICK_GATHER				4	// Whether the storage object can quickly collect all items from a tile via the 'toggle mode' verb
-#define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE	8	// Whether this storage object can have its items drawn (pouches)
-#define STORAGE_USING_DRAWING_METHOD		16	// Whether this storage object has its items drawn (versus just opening it)
-#define STORAGE_CLICK_EMPTY					32 	// Whether you can click to empty an item
-#define STORAGE_CLICK_GATHER				64 	// Whether it is possible to use this storage object in an inverse way,
-										   		// so you can have the item in your hand and click items on the floor to pick them up
-#define STORAGE_SHOW_FULLNESS				128	// Whether our storage object on hud changes color when full
-#define STORAGE_CONTENT_NUM_DISPLAY			256	// Whether the storage object groups contents of the same type and displays them as a number
-#define STORAGE_GATHER_SIMULTAENOUSLY		512	// Whether the storage object can pick up all the items in a tile
+#define STORAGE_ALLOW_EMPTY					(1<<0)	// Whether the storage object has the 'empty' verb, which dumps all the contents on the floor
+#define STORAGE_QUICK_EMPTY					(1<<1)	// Whether the storage object can quickly be emptied (no delay)
+#define STORAGE_QUICK_GATHER				(1<<2)	// Whether the storage object can quickly collect all items from a tile via the 'toggle mode' verb
+#define STORAGE_ALLOW_DRAWING_METHOD_TOGGLE	(1<<3)	// Whether this storage object can have its items drawn (pouches)
+#define STORAGE_USING_DRAWING_METHOD		(1<<4)	// Whether this storage object has its items drawn (versus just opening it)
+#define STORAGE_USING_FIFO_DRAWING			(1<<5)	// Wether the storage object can have items in it's leftmost slot be drawn
+#define STORAGE_CLICK_EMPTY					(1<<6)	// Whether you can click to empty an item
+#define STORAGE_CLICK_GATHER				(1<<7)	// Whether it is possible to use this storage object in an inverse way,
+										   			// so you can have the item in your hand and click items on the floor to pick them up
+#define STORAGE_SHOW_FULLNESS				(1<<8)	// Whether our storage object on hud changes color when full
+#define STORAGE_CONTENT_NUM_DISPLAY			(1<<9)		// Whether the storage object groups contents of the same type and displays them as a number. Only works for slot-based storage objects.
+#define STORAGE_GATHER_SIMULTAENOUSLY		(1<<10)		// Whether the storage object can pick up all the items in a tile
 
 #define STORAGE_FLAGS_DEFAULT				(STORAGE_SHOW_FULLNESS|STORAGE_GATHER_SIMULTAENOUSLY|STORAGE_ALLOW_EMPTY)
 #define STORAGE_FLAGS_BOX					(STORAGE_FLAGS_DEFAULT^STORAGE_ALLOW_EMPTY)

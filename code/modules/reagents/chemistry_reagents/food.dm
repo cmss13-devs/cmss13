@@ -14,6 +14,67 @@
 	properties = list(PROPERTY_NEOGENETIC = 1, PROPERTY_NUTRITIOUS = 2, PROPERTY_HEMOGENIC = 1)
 	flags = REAGENT_SCANNABLE
 
+/datum/reagent/nutriment/egg
+	name = "Egg"
+	id = "egg"
+	description = "The contents of an egg. Salmonella not included."
+
+/datum/reagent/nutriment/tofu
+	name = "Tofu"
+	id = "tofu"
+	description = "Meat substitute."
+
+/datum/reagent/nutriment/cheese
+	name = "Cheese"
+	id = "cheese"
+	description = "This used to be milk."
+
+/datum/reagent/nutriment/meat
+	name = "Meat Protein"
+	id = "meatprotein"
+	description = "Proteins found in various types of meat."
+
+/datum/reagent/nutriment/meat/fish
+	name = "Fish Meat"
+	id = "fish"
+	description = "It used to swim."
+
+/datum/reagent/nutriment/grown
+	name = "Plant Matter"
+	id = "plantmatter"
+	description = "Some sort of plant."
+
+/datum/reagent/nutriment/grown/vegetable
+	name = "Vegetable"
+	id = "vegetable"
+	description = "Some sort of vegetable."
+
+/datum/reagent/nutriment/grown/fruit
+	name = "Fruit"
+	id = "fruit"
+	description = "Some sort of fruit."
+
+/datum/reagent/nutriment/grown/mushroom
+	name = "Mushroom"
+	id = "mushroom"
+	description = "Some sort of fungus."
+
+/datum/reagent/nutriment/dough
+	name = "Dough"
+	id = "dough"
+	description = "Wet flour."
+
+/datum/reagent/nutriment/dough/bread
+	name = "Bread"
+	id = "bread"
+	description = "Cooked bread."
+
+/datum/reagent/nutriment/dough/noodles
+	name = "Noodles"
+	id = "noodles"
+	description = "Cooked noodles."
+
+
 /datum/reagent/lipozine
 	name = "Lipozine" // The anti-nutriment.
 	id = "lipozine"
@@ -65,6 +126,15 @@
 	properties = list(PROPERTY_HYPERTHERMIC = 4)
 	spray_warning = TRUE
 
+/datum/reagent/hotsauce
+	name = "Hot Sauce"
+	id = "hotsauce"
+	description = "Hot sauce is a pungent condiment sauce made from hot peppers."
+	reagent_state = LIQUID
+	color = "#B31008" // rgb: 179, 16, 8
+	chemclass = CHEM_CLASS_RARE
+	properties = list(PROPERTY_HYPERTHERMIC = 1)
+
 /datum/reagent/condensedcapsaicin/reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume)
 	if(!istype(M, /mob/living) || has_species(M,"Horror"))
 		return
@@ -72,11 +142,7 @@
 	if(method == TOUCH)
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/victim = M
-			var/trained_human = FALSE
-			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_MP))
-				trained_human = TRUE
-
-			if(trained_human)
+			if(skillcheck(victim, SKILL_POLICE, SKILL_POLICE_SKILLED))
 				victim.eye_blurry = max(M.eye_blurry, 5)
 				to_chat(victim, SPAN_WARNING("Your training protects you from the pepperspray!"))
 				return

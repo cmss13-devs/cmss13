@@ -144,6 +144,7 @@
 		SShuman.processable_human_list |= H
 		H.undefibbable = FALSE
 		H.chestburst = 0
+		H.update_headshot_overlay() //They don't have their brains blown out anymore, if they did.
 
 	// fix all of our organs
 	restore_all_organs()
@@ -162,6 +163,7 @@
 
 /mob/living/proc/heal_all_damage()
 	// shut down various types of badness
+	heal_overall_damage(getBruteLoss(), getFireLoss())
 	setToxLoss(0)
 	setOxyLoss(0)
 	setCloneLoss(0)
@@ -179,12 +181,11 @@
 	blinded = 0
 	eye_blind = 0
 	eye_blurry = 0
-	ear_deaf = 0
+	SetEarDeafness(0)
 	ear_damage = 0
 	paralyzed = 0
 	confused = 0
 	druggy = 0
-	heal_overall_damage(getBruteLoss(), getFireLoss())
 
 /mob/living/proc/regenerate_all_icons()
 	// make the icons look correct
@@ -196,3 +197,10 @@
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		H.update_body()
+
+/mob/living/keybind_face_direction(direction)
+	if(!canface())
+		return
+	if(stat >= UNCONSCIOUS)
+		return
+	return ..()

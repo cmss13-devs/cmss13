@@ -100,6 +100,8 @@ Administrative related.
 
 /datum/config_entry/flag/log_game
 
+/datum/config_entry/flag/log_overwatch
+
 /datum/config_entry/flag/log_interact
 
 /datum/config_entry/flag/log_idmod
@@ -117,6 +119,11 @@ Administrative related.
 /datum/config_entry/flag/log_manifest
 
 /datum/config_entry/flag/allow_admin_ooccolor // Allows admins to customize their OOC color.
+
+/datum/config_entry/flag/vote_adjustment_callback
+
+/datum/config_entry/number/vote_adjustment_callback
+	config_entry_value = 0.1
 
 /datum/config_entry/string/ooc_color_normal
 	config_entry_value = "#1c52f5"

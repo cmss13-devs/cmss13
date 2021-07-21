@@ -41,7 +41,7 @@
 				to_chat(user, "Barrier lock toggled off.")
 				return
 		return
-	else if (istype(W, /obj/item/tool/wrench))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		if (src.health < src.maxhealth)
 			src.health = src.maxhealth
 			src.req_access = list(ACCESS_MARINE_PREP)

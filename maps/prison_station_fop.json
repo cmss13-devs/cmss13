@@ -3,14 +3,14 @@
     "map_path": "map_files/FOP_v2_Cellblocks",
     "map_file": "Prison_Station_FOP.dmm",
     "survivor_types": [
-        "Survivor - Scientist",
-        "Survivor - Doctor",
-        "Survivor - Corporate Liaison",
-        "Survivor - Security",
+        "Survivor - Florina Researcher",
+        "Survivor - Florina Doctor",
+        "Survivor - Interstellar Human Rights Observer",
+        "Survivor - Florina Prison Guard",
         "Survivor - Prisoner",
         "Survivor - Prisoner",
         "Survivor - Gang Leader",
-        "Survivor - Engineer"
+        "Survivor - Florina Engineer"
     ],
     "defcon_triggers": [
         3750,
@@ -23,5 +23,10 @@
     "map_item_type": "/obj/item/map/FOP_map",
     "announce_text": "An automated distress signal has been received from maximum-security prison \"Fiorina Orbital Penitentiary\". A response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
     "environment_traits": { "Lockdown": true },
-    "traits": [{ "Ground": true }]
+    "traits": [{ "Ground": true }],
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0
+    }
 }

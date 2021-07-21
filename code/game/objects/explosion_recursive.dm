@@ -26,9 +26,9 @@ For explosion resistance, an explosion should never go through a wall or window 
 explosion resistance exactly as much as their health
 */
 
-/proc/explosion_rec(var/turf/epicenter, var/power, var/falloff = 20, var/explosion_source, var/explosion_source_mob)
+/proc/explosion_rec(var/turf/epicenter, var/power, var/falloff = 20, var/datum/cause_data/explosion_cause_data)
 	var/obj/effect/explosion/Controller = new /obj/effect/explosion(epicenter)
-	Controller.initiate_explosion(epicenter, power, falloff, explosion_source, explosion_source_mob)
+	Controller.initiate_explosion(epicenter, power, falloff, explosion_cause_data)
 
 
 /obj/effect/explosion
@@ -42,8 +42,7 @@ explosion resistance exactly as much as their health
 	var/reflection_multiplier = 1.5
 	var/reflection_amplification_limit = 1 //1 = 100% increase
 	var/minimum_spread_power = 0
-	var/explosion_source
-	var/explosion_source_mob
+	var/datum/cause_data/explosion_cause_data
 	//var/overlap_number = 0
 
 
@@ -52,10 +51,9 @@ explosion resistance exactly as much as their health
 
 
 //the start of the explosion
-/obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff0 = 20, var/new_explosion_source, var/new_explosion_source_mob)
+/obj/effect/explosion/proc/initiate_explosion(turf/epicenter, power0, falloff0 = 20, var/datum/cause_data/new_explosion_cause_data)
 
-	explosion_source = new_explosion_source
-	explosion_source_mob = new_explosion_source_mob
+	explosion_cause_data = new_explosion_cause_data
 
 	if(power0 <= 1) return
 	power = power0
@@ -78,9 +76,9 @@ explosion resistance exactly as much as their health
 
 	if(power >= 100) // powerful explosions send out some special effects
 		epicenter = get_turf(epicenter) // the ex_acts might have changed the epicenter
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_source, explosion_source_mob)
+		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver1, explosion_cause_data)
 		sleep(1)
-		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_source, explosion_source_mob)
+		create_shrapnel(epicenter, rand(5,9), , ,/datum/ammo/bullet/shrapnel/light/effect/ver2, explosion_cause_data)
 
 	spawn(2) //just in case something goes wrong
 		if(explosion_in_progress)
@@ -238,14 +236,21 @@ explosion resistance exactly as much as their health
 		T.ex_act(severity, direction)
 		if(!T)
 			T = locate(x,y,z)
+
 		for(var/atom/A in T)
 			spawn(0)
 				if(isliving(A))
 					var/mob/M = A
+					var/explosion_source
+					if(explosion_cause_data)
+						explosion_source = explosion_cause_data.resolve_mob()
+					if(!explosion_source) // Gotta call them something
+						explosion_source = "unknown"
+					M.last_damage_data = explosion_cause_data
 					log_attack("Mob [M.name] ([M.ckey]) was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([M.loc.x],[M.loc.y],[M.loc.z])")
+					var/mob/explosion_source_mob = explosion_source
 					if(ismob(explosion_source_mob))
 						var/mob/firingMob = explosion_source_mob
-						M.last_damage_mob = firingMob
 						var/turf/location_of_mob = get_turf(firingMob)
 						var/area/thearea = get_area(M)
 						if(M == firingMob)
@@ -273,7 +278,7 @@ explosion resistance exactly as much as their health
 						M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up with a <b>[explosion_source]</b> in [get_area(M)].</b>"
 					else
 						M.attack_log += "\[[time_stamp()]\] <b>[M]/[M.ckey]</b> was blown up in [get_area(M)]."
-				A.ex_act(severity, direction, explosion_source, explosion_source_mob)
+				A.ex_act(severity, direction, explosion_cause_data)
 
 		tiles_processed++
 		if(tiles_processed >= increment)

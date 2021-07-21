@@ -22,6 +22,8 @@
 	var/req_access_txt = null
 	var/req_one_access_txt = null
 
+	var/flags_obj = NO_FLAGS
+
 /obj/Initialize(mapload, ...)
 	. = ..()
 	GLOB.object_list += src
@@ -211,8 +213,11 @@
 		afterbuckle(target)
 		if(buckle_lying) // Make sure buckling to beds/nests etc only turns, and doesn't give a random offset
 			var/matrix/M = matrix()
+			var/matrix/L = matrix() //Counterrotation for langchat text.
 			M.Turn(90)
+			L.Turn(270)
 			target.apply_transform(M)
+			target.langchat_image.transform = L
 		return TRUE
 
 /obj/proc/send_buckling_message(mob/M, mob/user)

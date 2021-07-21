@@ -1,7 +1,7 @@
 /obj/structure/machinery/defenses
 	name = "Don't see this"
 	desc = "Call for help."
-	icon = 'icons/obj/structures/machinery/defenses.dmi'
+	icon = 'icons/obj/structures/machinery/defenses/sentry.dmi'
 	icon_state = "defense_base_off"
 	anchored = TRUE
 	unacidable = TRUE
@@ -17,11 +17,16 @@
 	var/defense_icon = "uac_sentry"
 	var/handheld_type = /obj/item/defenses/handheld
 	var/disassemble_time = 20
+	var/defense_type = "Normal"
 	var/static = FALSE
 	var/locked = FALSE
 
-/obj/structure/machinery/defenses/New(var/loc, var/faction)
-	..(loc)
+	var/defense_check_range = 2
+	var/can_be_near_defense = FALSE
+
+
+/obj/structure/machinery/defenses/Initialize(var/mapload, var/faction)
+	. = ..()
 	if(!isnull(faction))
 		if(islist(faction))
 			faction_group = faction
@@ -30,13 +35,9 @@
 
 /obj/structure/machinery/defenses/update_icon()
 	if(turned_on)
-		icon_state = "defense_base_on"
+		icon_state = "defense_base"
 	else
 		icon_state = "defense_base_off"
-	if(locked)
-		icon_state += "_locked"
-	else
-		icon_state += "_unlocked"
 
 /obj/structure/machinery/defenses/examine(mob/user)
 	. = ..()
@@ -78,17 +79,17 @@
 	if(QDELETED(O))
 		return
 
-	if(ismultitool(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_MULTITOOL))
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
 			to_chat(user, SPAN_WARNING("You don't have the training to do this."))
 			return
 
-		if(health < health_max)
-			to_chat(user, SPAN_WARNING("[src] is too damaged to disassemble. Repair it with a welder first."))
+		if(health < health_max * 0.5)
+			to_chat(user, SPAN_WARNING("[src] is too damaged to pick up!"))
 			return
 
 		if(static)
-			to_chat(user, SPAN_WARNING("[src] is not meant to be removed."))
+			to_chat(user, SPAN_WARNING("[src] is bolted to the ground!"))
 			return
 
 		user.visible_message(SPAN_NOTICE("[user] begins disassembling [src]."), SPAN_NOTICE("You begin disassembling [src]."))
@@ -101,11 +102,11 @@
 		var/obj/item/defenses/handheld/H = new handheld_type(loc)
 		playsound(loc, 'sound/mecha/mechmove04.ogg', 30, 1)
 		H.name = "handheld [src.name]" //fixed
-
+		H.obj_health = health
 		qdel(src)
 		return
 
-	if(iswrench(O))
+	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
 		if(anchored)
 			if(turned_on)
 				to_chat(user, SPAN_WARNING("[src] is currently active. The motors will prevent you from unanchoring it safely."))
@@ -177,10 +178,16 @@
 			return
 
 	if(!turned_on)
+		if(!can_be_near_defense)
+			for(var/obj/structure/machinery/defenses/def in urange(defense_check_range, loc))
+				if(def != src && def.turned_on && !def.can_be_near_defense)
+					to_chat(user, SPAN_WARNING("This is too close to a [def.name]!"))
+					return
+
 		power_on()
 	else
 		power_off()
-	return
+
 
 /obj/structure/machinery/defenses/proc/power_on_action(var/mob/user)
 	return
@@ -216,7 +223,7 @@
 
 	sleep(5)
 
-	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, "defense explosion")
+	cell_explosion(loc, 10, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data("defense explosion"))
 	if(!QDELETED(src))
 		qdel(src)
 

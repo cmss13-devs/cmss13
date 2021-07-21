@@ -1,6 +1,5 @@
 import { useBackend, useLocalState } from '../backend';
 import { Button, Flex, Section, Tabs, Box } from '../components';
-import { FlexItem } from '../components/Flex';
 import { Window } from '../layouts';
 const PAGES = [
   {
@@ -156,7 +155,7 @@ const StartVote = (props, context) => {
               && (!element.variable_required
                 || data[element.variable_required])));
           return (
-            <FlexItem
+            <Flex.Item
               key={key}
               basis="100%"
               mb="1%"
@@ -174,7 +173,7 @@ const StartVote = (props, context) => {
                 disabled={!canUseElement}
                 onClick={() => act("initiate_vote", { vote_type: key })}
               />
-            </FlexItem>
+            </Flex.Item>
           );
         })}
       </Flex>
@@ -189,8 +188,8 @@ const SettingsMenu = (props, context) => {
   return (
     <Section>
       <Flex>
-        <FlexItem color="label" grow={1}>Restart Votes:</FlexItem>
-        <FlexItem align="right">
+        <Flex.Item color="label" grow={1}>Restart Votes:</Flex.Item>
+        <Flex.Item align="right">
           <Button
             content={can_restart_vote? "Unlocked" : "Locked"}
             icon={can_restart_vote? "lock-open" : "lock"}
@@ -199,11 +198,11 @@ const SettingsMenu = (props, context) => {
             tooltip="Controls whether players can make restart votes."
             tooltipPosition="left"
           />
-        </FlexItem>
+        </Flex.Item>
       </Flex>
       <Flex mt={1}>
-        <FlexItem color="label" grow={1}>Gamemode Votes:</FlexItem>
-        <FlexItem>
+        <Flex.Item color="label" grow={1}>Gamemode Votes:</Flex.Item>
+        <Flex.Item>
           <Button
             content={can_gamemode_vote? "Unlocked" : "Locked"}
             icon={can_gamemode_vote? "lock-open" : "lock"}
@@ -212,7 +211,7 @@ const SettingsMenu = (props, context) => {
             tooltip="Controls whether players can make gamemode votes."
             tooltipPosition="left"
           />
-        </FlexItem>
+        </Flex.Item>
       </Flex>
     </Section>
   );

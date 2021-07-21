@@ -89,9 +89,10 @@
 	..()
 
 /obj/item/clothing/glasses/attack_self(mob/user)
+	..()
+
 	if(!toggleable)
 		return
-
 	if(!can_use_active_effect(user))
 		to_chat(user, SPAN_WARNING("You have no idea how to use [src]."))
 		return
@@ -223,8 +224,12 @@
 	flags_inv_hide = HIDEEYES
 	eye_protection = 2
 	has_tint = TRUE
+	vision_impair = VISION_IMPAIR_MAX
+	var/vision_impair_on = VISION_IMPAIR_MAX
+	var/vision_impair_off = VISION_IMPAIR_NONE
 
 /obj/item/clothing/glasses/welding/attack_self()
+	..()
 	toggle()
 
 /obj/item/clothing/glasses/welding/verb/toggle()
@@ -235,6 +240,7 @@
 	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
 		if(active)
 			active = 0
+			vision_impair = vision_impair_off
 			flags_inventory &= ~COVEREYES
 			flags_inv_hide &= ~HIDEEYES
 			flags_armor_protection &= ~BODY_FLAG_EYES
@@ -243,6 +249,7 @@
 			to_chat(usr, "You push [src] up out of your face.")
 		else
 			active = 1
+			vision_impair = vision_impair_on
 			flags_inventory |= COVEREYES
 			flags_inv_hide |= HIDEEYES
 			flags_armor_protection |= BODY_FLAG_EYES
@@ -267,6 +274,9 @@
 	desc = "Welding goggles made from more expensive materials, strangely smells like potatoes."
 	icon_state = "rwelding-g"
 	item_state = "rwelding-g"
+	vision_impair = VISION_IMPAIR_WEAK
+	vision_impair_on = VISION_IMPAIR_WEAK
+	vision_impair_off = VISION_IMPAIR_NONE
 
 //sunglasses
 
@@ -283,7 +293,7 @@
 	desc = "Covers the eyes, preventing sight."
 	icon_state = "blindfold"
 	item_state = "blindfold"
-	//vision_flags = BLIND  	// This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
+	//vision_flags = DISABILITY_BLIND  	// This flag is only supposed to be used if it causes permanent blindness, not temporary because of glasses
 
 /obj/item/clothing/glasses/sunglasses/prescription
 	name = "prescription sunglasses"
@@ -291,6 +301,7 @@
 	flags_equip_slot = SLOT_EYES|SLOT_FACE
 
 /obj/item/clothing/glasses/sunglasses/big
+	name = "big sunglasses"
 	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Larger than average enhanced shielding blocks many flashes."
 	icon_state = "bigsunglasses"
 	item_state = "bigsunglasses"

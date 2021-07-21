@@ -6,18 +6,18 @@
 	anchored = 1
 	var/amount = 1 //Basically moles.
 
-/obj/effect/decal/cleanable/liquid_fuel/New(turf/newLoc, amt = 1)
+/obj/effect/decal/cleanable/liquid_fuel/Initialize(mapload, amt = 1)
 	amount = amt
 
 	//Be absorbed by any other liquid fuel in the tile.
-	for(var/obj/effect/decal/cleanable/liquid_fuel/other in newLoc)
+	for(var/obj/effect/decal/cleanable/liquid_fuel/other in loc)
 		if(other != src)
 			other.amount += src.amount
 			spawn other.Spread()
-			qdel(src)
+			return INITIALIZE_HINT_QDEL
 
 	Spread()
-	. = ..()
+	return ..()
 
 /obj/effect/decal/cleanable/liquid_fuel/proc/Spread()
 	//Allows liquid fuels to sometimes flow into other tiles.

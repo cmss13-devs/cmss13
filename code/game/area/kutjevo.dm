@@ -10,6 +10,13 @@
 	temperature = 308.7 //kelvin, 35c, 95f
 	lighting_use_dynamic = 1
 
+/area/kutjevo/Initialize()
+	. = ..()
+	if(SSticker.current_state > GAME_STATE_SETTING_UP)
+		add_thunder()
+	else
+		LAZYADD(GLOB.thunder_setup_areas, src)
+
 /area/shuttle/drop1/kutjevo
 	name = "Kutjevo - Dropship Alamo Landing Zone"
 	icon_state = "shuttle"
@@ -39,12 +46,12 @@
 	ceiling = CEILING_MAX
 	icon_state = "oob"
 	is_resin_allowed = FALSE
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/kutjevo/interior/oob/dev_room
 	name = "Kutjevo - Credits Room"
 	is_resin_allowed = FALSE
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 	icon_state = "kutjevo"
 
 //exterior map areas
@@ -126,6 +133,10 @@
 
 /area/kutjevo/interior/complex/botany/east
 	name = "Kutjevo Complex - Botany East Hall"
+	icon_state = "botany1"
+
+/area/kutjevo/interior/complex/botany/east_tech
+	name = "Kutjevo Complex - Powerplant Access Hall"
 	icon_state = "botany1"
 
 /area/kutjevo/interior/complex/botany/locks

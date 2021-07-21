@@ -1,131 +1,6 @@
-
-#define DROPSHIP_WEAPON "dropship_weapon"
-#define DROPSHIP_CREW_WEAPON "dropship_crew_weapon"
-#define DROPSHIP_ELECTRONICS "dropship_electronics"
-#define DROPSHIP_FUEL_EQP "dropship_fuel_equipment"
-#define DROPSHIP_COMPUTER "dropship_computer"
-
-//the bases onto which you attach dropship equipments.
-
-/obj/effect/attach_point
-	name = "equipment attach point"
-	desc = "A place where heavy equipment can be installed with a powerloader."
-	unacidable = TRUE
-	anchored = TRUE
-	var/gimbal = GIMBAL_CENTER//which way it is gimballed
-	icon = 'icons/obj/structures/props/almayer_props.dmi'
-	icon_state = "equip_base"
-	var/base_category //what kind of equipment this base accepts.
-	var/ship_tag //used to associate the base to a dropship.
-	var/obj/structure/dropship_equipment/installed_equipment
-
-/obj/effect/attach_point/Destroy()
-	QDEL_NULL(installed_equipment)
-	. = ..()
-
-/obj/effect/attach_point/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/powerloader_clamp))
-		var/obj/item/powerloader_clamp/PC = I
-		install_equipment(PC, user)
-		return TRUE
-	. = ..()
-
-/obj/effect/attach_point/proc/install_equipment(var/obj/item/powerloader_clamp/PC, var/mob/living/user)
-	if(!istype(PC.loaded, /obj/structure/dropship_equipment))
-		return
-	var/obj/structure/dropship_equipment/SE = PC.loaded
-	if(!(base_category in SE.equip_categories) )
-		to_chat(user, SPAN_WARNING("[SE] doesn't fit on [src]."))
-		return TRUE
-	if(installed_equipment)
-		return TRUE
-	playsound(loc, 'sound/machines/hydraulics_1.ogg', 40, 1)
-	var/point_loc = loc
-	if(!do_after(user, 70 * user.get_skill_duration_multiplier(SKILL_ENGINEER), INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
-		return TRUE
-	if(loc != point_loc)//dropship flew away
-		return TRUE
-	if(installed_equipment || PC.loaded != SE)
-		return TRUE
-	to_chat(user, SPAN_NOTICE("You install [SE] on [src]."))
-	SE.forceMove(loc)
-	PC.loaded = null
-	playsound(loc, 'sound/machines/hydraulics_2.ogg', 40, 1)
-	PC.update_icon()
-	installed_equipment = SE
-	SE.ship_base = src
-
-	for(var/datum/shuttle/ferry/marine/S in shuttle_controller.process_shuttles)
-		if(S.shuttle_tag == ship_tag)
-			SE.linked_shuttle = S
-			S.equipments += SE
-			break
-
-	SE.update_equipment()
-
-
-/obj/effect/attach_point/weapon
-	name = "weapon system attach point"
-	icon_state = "equip_base_front"
-	base_category = DROPSHIP_WEAPON
-
-/obj/effect/attach_point/weapon/dropship1
-	ship_tag = "USS Almayer Dropship 1"
-
-/obj/effect/attach_point/weapon/dropship2
-	ship_tag = "USS Almayer Dropship 2"
-
-
-/obj/effect/attach_point/crew_weapon
-	name = "crew compartment attach point"
-	base_category = DROPSHIP_CREW_WEAPON
-
-/obj/effect/attach_point/crew_weapon/dropship1
-	ship_tag = "USS Almayer Dropship 1"
-
-/obj/effect/attach_point/crew_weapon/dropship2
-	ship_tag = "USS Almayer Dropship 2"
-
-/obj/effect/attach_point/electronics
-	name = "electronic system attach point"
-	base_category = DROPSHIP_ELECTRONICS
-	icon_state = "equip_base_front"
-
-/obj/effect/attach_point/electronics/dropship1
-	ship_tag = "USS Almayer Dropship 1"
-
-/obj/effect/attach_point/electronics/dropship2
-	ship_tag = "USS Almayer Dropship 2"
-
-
-/obj/effect/attach_point/fuel
-	name = "engine system attach point"
-	icon = 'icons/obj/structures/props/almayer_props64.dmi'
-	icon_state = "fuel_base"
-	base_category = DROPSHIP_FUEL_EQP
-
-/obj/effect/attach_point/fuel/dropship1
-	ship_tag = "USS Almayer Dropship 1"
-
-/obj/effect/attach_point/fuel/dropship2
-	ship_tag = "USS Almayer Dropship 2"
-
-
-/obj/effect/attach_point/computer
-	base_category = DROPSHIP_COMPUTER
-
-/obj/effect/attach_point/computer/dropship1
-	ship_tag = "USS Almayer Dropship 1"
-
-/obj/effect/attach_point/computer/dropship2
-	ship_tag = "USS Almayer Dropship 2"
-
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////::
 
-//Actual dropship equipments
-
+//Dropship equipments
 /obj/structure/dropship_equipment
 	density = TRUE
 	anchored = TRUE
@@ -804,9 +679,9 @@
 
 
 /obj/structure/dropship_equipment/weapon/rocket_pod
-	name = "rocket pod"
+	name = "missile pod"
 	icon_state = "rocket_pod"
-	desc = "A rocket pod weapon system capable of launching a single laser-guided rocket. Moving this will require some sort of lifter."
+	desc = "A missile pod weapon system capable of launching a single laser-guided missile. Moving this will require some sort of lifter."
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 5
 	point_cost = 600

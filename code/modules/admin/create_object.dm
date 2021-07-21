@@ -25,6 +25,7 @@
 								"/obj/item/reagent_container",
 								"/obj/item/stack",
 								"/obj/item/storage",
+								"/obj/item/explosive",
 								"/obj/item/weapon",
 								"/obj/item/weapon/gun",
 								"/obj/structure",

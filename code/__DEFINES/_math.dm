@@ -35,3 +35,13 @@
 
 // Real modulus that handles decimals
 #define MODULUS(x, y) ( (x) - (y) * round((x) / (y)) )
+
+// Returns true if val is from min to max, inclusive.
+#define ISINRANGE(val, min, max) (min <= val && val <= max)
+
+// Same as above, exclusive.
+#define ISINRANGE_EX(val, min, max) (min < val && val < max)
+
+// Will filter out extra rotations and negative rotations
+// E.g: 540 becomes 180. -180 becomes 180.
+#define SIMPLIFY_DEGREES(degrees) (MODULUS((degrees), 360))

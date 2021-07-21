@@ -152,6 +152,7 @@
 		var/mob/M = i
 		if(M)
 			var/turf/ear = get_turf(M)
+
 			if(ear)
 				// Ghostship is magic: Ghosts can hear radio chatter from anywhere
 				if(speaker_coverage[ear] || (istype(M, /mob/dead/observer) && (M.client) && (M.client.prefs) && (M.client.prefs.toggles_chat & CHAT_GHOSTRADIO)))

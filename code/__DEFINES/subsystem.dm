@@ -49,6 +49,7 @@
 // All in one file so it's easier to see what everything is relative to.
 
 #define SS_INIT_TICKER_SPAWN       999
+#define SS_INIT_INPUT              85
 #define SS_INIT_RUST               26
 #define SS_INIT_SUPPLY_SHUTTLE     25
 #define SS_INIT_GARBAGE            24
@@ -74,6 +75,7 @@
 #define SS_INIT_SHUTTLE            3.5
 #define SS_INIT_LANDMARK           3.2
 #define SS_INIT_MACHINES              3
+#define SS_INIT_TECHTREE           2.5
 #define SS_INIT_RADIO				2
 #define SS_INIT_TIMER              100
 #define SS_INIT_UNSPECIFIED        0
@@ -94,9 +96,11 @@
 #define SS_INIT_STATPANELS			-98
 #define SS_INIT_CHAT			   -100 //Should be last to ensure chat remains smooth during init.
 
+#define SS_PRIORITY_INPUT          1000
 #define SS_PRIORITY_TIMER          700
 #define SS_PRIORITY_SOUND          250
 #define SS_PRIORITY_TICKER         200
+#define SS_PRIORITY_NIGHTMARE      180
 #define SS_PRIORITY_MAPVIEW		   170
 #define SS_PRIORITY_QUADTREE       160
 #define SS_PRIORITY_CHAT		   155
@@ -109,13 +113,15 @@
 #define SS_PRIORITY_COMPONENT      125
 #define SS_PRIORITY_NANOUI         120
 #define SS_PRIORITY_TGUI           120
-#define SS_PRIORITY_HIVE_STATUS    111
+#define SS_PRIORITY_HIVE_STATUS    112
+#define SS_PRIORITY_SHIELD_PILLAR  111
 #define SS_PRIORITY_VOTE           110
 #define SS_PRIORITY_FAST_OBJECTS   105
 #define SS_PRIORITY_OBJECTS        104
 #define SS_PRIORITY_FACEHUGGERS    100
 #define SS_PRIORITY_DECORATOR	   99
 #define SS_PRIORITY_POWER          95
+#define SS_PRIORITY_EFFECTS        92
 #define SS_PRIORITY_MACHINERY      90
 #define SS_PRIORITY_FZ_TRANSITIONS 88
 #define SS_PRIORITY_PIPENET        85
@@ -127,10 +133,12 @@
 #define SS_PRIORITY_MIDI       	   40
 #define SS_PRIORITY_ENTITY	       37
 #define SS_PRIORITY_DEFCON         35
+#define SS_PRIORITY_ACID_PILLAR	   34
 #define SS_PRIORITY_UNSPECIFIED    30
 #define SS_PRIORITY_ROUND_RECORDING 83
 #define SS_PRIORITY_PROCESS        25
 #define SS_PRIORITY_SOUNDSCAPE	   24
+#define SS_PRIORITY_PAGER_STATUS   22
 #define SS_PRIORITY_LIGHTING       20
 #define SS_PRIORITY_TRACKING       19
 #define SS_PRIORITY_PING       	   10

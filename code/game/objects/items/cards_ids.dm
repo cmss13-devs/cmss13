@@ -89,30 +89,15 @@
 	screen_loc = null
 
 /obj/item/card/id/attack_self(mob/user as mob)
+	..()
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
-
 	src.add_fingerprint(user)
-	return
 
 /obj/item/card/id/GetAccess()
 	return access
 
 /obj/item/card/id/GetID()
 	return src
-
-/obj/item/card/id/proc/fail_agent_objectives()
-	var/mob/living/carbon/human/A
-	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
-		if(H.gid == registered_gid && H.agent_holder)
-			A = H
-
-	if(!A)
-		return FALSE
-
-	for(var/datum/agent_objective/O in A.agent_holder.objectives_list)
-		O.terminated = TRUE
-
-	return TRUE
 
 /obj/item/card/id/verb/read()
 	set name = "Read ID Card"

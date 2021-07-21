@@ -17,6 +17,7 @@
 	reload_sound = 'sound/weapons/handling/flamer_reload.ogg'
 	aim_slowdown = SLOWDOWN_ADS_INCINERATOR
 	current_mag = /obj/item/ammo_magazine/flamer_tank
+	var/fuel_pressure = 1 //Pressure setting of the attached fueltank, controls how much fuel is used per tile
 	var/max_range = 9 //9 tiles, 7 is screen range, controlled by the type of napalm in the canister. We max at 9 since diagonal bullshit.
 
 	attachable_allowed = list( //give it some flexibility.
@@ -90,16 +91,44 @@
 
 /obj/item/weapon/gun/flamer/Fire(atom/target, mob/living/user, params, reflex)
 	set waitfor = 0
-	if(!able_to_fire(user)) return
+	if(!able_to_fire(user))
+		return
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
-	if (!targloc || !curloc) return //Something has gone wrong...
+	if (!targloc || !curloc)
+		return //Something has gone wrong...
+
+	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
+		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+			return
+		if(active_attachable.current_rounds <= 0)
+			click_empty(user) //If it's empty, let them know.
+			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
+			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
+			active_attachable.activate_attachment(src, null, TRUE)
+		else
+			active_attachable.fire_attachment(target, src, user) //Fire it.
+		return
+
+	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
+		if(active_attachable.flags_attach_features & ATTACH_PROJECTILE)
+			return
+		if(active_attachable.current_rounds <= 0)
+			click_empty(user) //If it's empty, let them know.
+			to_chat(user, SPAN_WARNING("[active_attachable] is empty!"))
+			to_chat(user, SPAN_NOTICE("You disable [active_attachable]."))
+			active_attachable.activate_attachment(src, null, TRUE)
+		else
+			active_attachable.fire_attachment(target, src, user) //Fire it.
+			active_attachable.last_fired = world.time
+		return
 
 	if(flags_gun_features & GUN_TRIGGER_SAFETY)
 		to_chat(user, SPAN_WARNING("The weapon isn't lit"))
 		return
 
-	if(!current_mag) return
+	if(!current_mag)
+		return
 	if(current_mag.current_rounds <= 0)
 		click_empty(user)
 	else
@@ -136,7 +165,8 @@
 			current_mag = magazine
 			magazine.forceMove(src)
 			replace_ammo(,magazine)
-
+	var/obj/item/ammo_magazine/flamer_tank/tank = magazine
+	fuel_pressure = tank.fuel_pressure
 	update_icon()
 	return 1
 
@@ -155,6 +185,7 @@
 
 	current_mag.update_icon()
 	current_mag = null
+	fuel_pressure = 1
 
 	update_icon()
 
@@ -172,7 +203,8 @@
 	R.durationfire = Clamp(R.durationfire, current_mag.reagents.min_fire_dur, current_mag.reagents.max_fire_dur)
 	R.rangefire = Clamp(R.rangefire, current_mag.reagents.min_fire_rad, current_mag.reagents.max_fire_rad)
 	var/max_range = R.rangefire
-
+	if (max_range < fuel_pressure) //Used for custom tanks, allows for higher ranges
+		max_range = Clamp(fuel_pressure, 0, current_mag.reagents.max_fire_rad)
 	if(R.rangefire == -1)
 		max_range = current_mag.reagents.max_fire_rad
 
@@ -186,7 +218,7 @@
 
 	playsound(to_fire, src.get_fire_sound(), 50, TRUE)
 
-	new /obj/flamer_fire(to_fire, initial(name), user, R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user))
+	new /obj/flamer_fire(to_fire, create_cause_data(initial(name), user), R, max_range, current_mag.reagents, flameshape, target, CALLBACK(src, .proc/show_percentage, user), fuel_pressure)
 
 /obj/item/weapon/gun/flamer/proc/show_percentage(var/mob/living/user)
 	if(current_mag)
@@ -220,29 +252,19 @@
 		fuelpack = null
 	. = ..()
 
-/obj/item/weapon/gun/flamer/M240T/harness_check(var/mob/living/carbon/human/user)
-	var/obj/item/storage/large_holster/fuelpack/FP = user.back
-	if(istype(FP) && !(FP.contents.len))
-		return TRUE
+/obj/item/weapon/gun/flamer/M240T/retrieval_check(var/mob/living/carbon/human/user, var/retrieval_slot)
+	if(retrieval_slot == WEAR_IN_SCABBARD)
+		var/obj/item/storage/large_holster/fuelpack/FP = user.back
+		if(istype(FP) && !length(FP.contents))
+			return TRUE
+		return FALSE
+	return ..()
 
-	. = ..()
-
-/obj/item/weapon/gun/flamer/M240T/harness_return(var/mob/living/carbon/human/user)
-	if (!loc || !user)
-		return
-	if (!isturf(loc))
-		return
-	if (!harness_check(user))
-		return
-
-	var/obj/item/storage/large_holster/fuelpack/FP = user.back
-	if (istype(FP) && user.equip_to_slot_if_possible(src, WEAR_IN_SCABBARD))
-		to_chat(user, SPAN_WARNING("[src] snaps into place on [FP]."))
-		return
-
-	var/obj/item/I = user.wear_suit
-	if(user.equip_to_slot_if_possible(src, WEAR_J_STORE))
-		to_chat(user, SPAN_WARNING("[src] snaps into place on [I]."))
+/obj/item/weapon/gun/flamer/M240T/retrieve_to_slot(var/mob/living/carbon/human/user, var/retrieval_slot)
+	if(retrieval_slot == WEAR_J_STORE) //If we are using a magharness...
+		if(..(user, WEAR_IN_SCABBARD)) //...first try to put it onto the Broiler.
+			return TRUE
+	return ..()
 
 /obj/item/weapon/gun/flamer/M240T/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 0, "muzzle_y" = 0,"rail_x" = 9, "rail_y" = 21, "under_x" = 21, "under_y" = 14, "stock_x" = 0, "stock_y" = 0)
@@ -282,7 +304,7 @@
 		if(!current_mag || !current_mag.current_rounds)
 			return FALSE
 
-		if(!skillcheck(user, SKILL_SPEC_WEAPONS,  SKILL_SPEC_TRAINED) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
+		if(!skillcheck(user, SKILL_SPEC_WEAPONS,  SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_PYRO)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 
@@ -316,17 +338,19 @@
 	var/firelevel = 12 //Tracks how much "fire" there is. Basically the timer of how long the fire burns
 	var/burnlevel = 10 //Tracks how HOT the fire is. This is basically the heat level of the fire and determines the temperature.
 
+	 /// After the fire is created, for 0.5 seconds this variable will be TRUE.
+	var/initial_burst = TRUE
+
 	var/flame_icon = "dynamic"
 	var/flameshape = FLAMESHAPE_DEFAULT // diagonal square shape
-	var/weapon_source
-	var/weapon_source_mob
+	var/datum/cause_data/weapon_cause_data
 	var/turf/target_clicked
 
 	var/datum/reagent/tied_reagent
 	var/datum/reagents/tied_reagents
 	var/datum/callback/to_call
 
-/obj/flamer_fire/Initialize(mapload, var/source, var/source_mob, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C)
+/obj/flamer_fire/Initialize(mapload, var/datum/cause_data/cause_data, var/datum/reagent/R, fire_spread_amount = 0, var/datum/reagents/obj_reagents = null, new_flameshape = FLAMESHAPE_DEFAULT, var/atom/target = null, var/datum/callback/C, var/fuel_pressure = 1)
 	. = ..()
 	if(!R)
 		R = new /datum/reagent/napalm/ut()
@@ -338,7 +362,11 @@
 
 	flameshape = new_flameshape
 
-	color = R.burncolor
+	//non-dynamic flame is already colored	
+	if(R.burn_sprite == "dynamic")
+		color = R.burncolor
+	else
+		flame_icon = R.burn_sprite
 
 	tied_reagent = new R.type() // Can't get deleted this way
 	tied_reagent.make_alike(R)
@@ -346,14 +374,21 @@
 	tied_reagents = obj_reagents
 
 	target_clicked = target
-	weapon_source = source
-	weapon_source_mob = source_mob
+
+	if(cause_data)
+		weapon_cause_data = cause_data
+	else
+		weapon_cause_data = create_cause_data(initial(name), null)
 
 	icon_state = "[flame_icon]_2"
 
-	firelevel = R.durationfire
+	//Fire duration increases with fuel usage
+	firelevel = R.durationfire + fuel_pressure*R.durationmod
 	burnlevel = R.intensityfire
 
+	update_flame()
+
+	addtimer(CALLBACK(src, .proc/un_burst_flame), 0.5 SECONDS)
 	START_PROCESSING(SSobj, src)
 
 	to_call = C
@@ -361,7 +396,7 @@
 	var/burn_dam = burnlevel*FIRE_DAMAGE_PER_LEVEL
 
 	if(tied_reagents && !tied_reagents.locked)
-		var/removed = tied_reagents.remove_reagent(tied_reagent.id, FLAME_REAGENT_USE_AMOUNT)
+		var/removed = tied_reagents.remove_reagent(tied_reagent.id, FLAME_REAGENT_USE_AMOUNT * fuel_pressure)
 		if(removed)
 			qdel(src)
 			return
@@ -371,7 +406,7 @@
 		if(!FS)
 			CRASH("Invalid flameshape passed to /obj/flamer_fire. (Expected /datum/flameshape, got [FS] (id: [flameshape]))")
 
-		FS.handle_fire_spread(src, fire_spread_amount, burn_dam)
+		FS.handle_fire_spread(src, fire_spread_amount, burn_dam, fuel_pressure)
 	//Apply fire effects onto everyone in the fire
 
 	// Melt a single layer of snow
@@ -395,21 +430,27 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M //fixed :s
 
-			if(weapon_source_mob)
-				var/mob/user = weapon_source_mob
-				var/area/thearea = get_area(user)
-				if(user.faction == H.faction && !thearea?.statistic_exempt)
-					H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-					user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-					if(weapon_source)
-						H.track_friendly_fire(weapon_source)
-					msg_admin_ff("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
-				else
-					H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-					user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
-					msg_admin_attack("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
-				if(weapon_source)
-					H.track_shot_hit(weapon_source, H)
+			if(weapon_cause_data)
+				var/mob/user = weapon_cause_data.resolve_mob()
+				if(user)
+					var/area/thearea = get_area(user)
+					if(user.faction == H.faction && !thearea?.statistic_exempt)
+						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						if(weapon_cause_data.cause_name)
+							H.track_friendly_fire(weapon_cause_data.cause_name)
+						msg_admin_ff("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
+					else
+						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
+						msg_admin_attack("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+				if(weapon_cause_data.cause_name)
+					H.track_shot_hit(weapon_cause_data.cause_name, H)
+
+		var/fire_intensity_resistance = M.check_fire_intensity_resistance()
+		var/firedamage = max(burn_dam - fire_intensity_resistance, 0)
+		if(!firedamage)
+			continue
 
 		var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_FLAMED, tied_reagent)
 
@@ -419,8 +460,8 @@
 		if(sig_result & COMPONENT_NO_BURN)
 			continue
 
-		M.last_damage_mob = weapon_source_mob
-		M.apply_damage(burn_dam, BURN)
+		M.last_damage_data = weapon_cause_data
+		M.apply_damage(firedamage, BURN)
 
 		var/msg = "Augh! You are roasted by the flames!"
 		if (isXeno(M))
@@ -428,13 +469,10 @@
 		else
 			to_chat(M, SPAN_HIGHDANGER(msg))
 
-		if(weapon_source)
-			M.last_damage_source = weapon_source
-		else
-			M.last_damage_source = initial(name)
-		if(weapon_source_mob)
-			var/mob/SM = weapon_source_mob
-			SM.track_shot_hit(weapon_source)
+		if(weapon_cause_data)
+			var/mob/SM = weapon_cause_data.resolve_mob()
+			if(istype(SM))
+				SM.track_shot_hit(weapon_cause_data.cause_name)
 
 /obj/flamer_fire/Destroy()
 	SetLuminosity(0)
@@ -447,58 +485,62 @@
 		PF.flags_pass = PASS_FLAGS_FLAME
 
 /obj/flamer_fire/Crossed(mob/living/M) //Only way to get it to reliable do it when you walk into it.
+	set_on_fire(M)
+
+/obj/flamer_fire/proc/set_on_fire(mob/living/M)
 	if(!istype(M))
 		return
+
 	var/sig_result = SEND_SIGNAL(M, COMSIG_LIVING_FLAMER_CROSSED, tied_reagent)
-	var/burn_damage = round(burnlevel*0.5)
+	var/burn_damage = round(burnlevel * 0.5)
+	var/fire_intensity_resistance = M.check_fire_intensity_resistance()
 
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(isXeno(H.pulledby))
-			var/mob/living/carbon/Xenomorph/Z = H.pulledby
-			Z.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
-		if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
-			burn_damage = round(burnlevel*0.25) //Does small burn damage to a person wearing one of the suits.
+	if(!tied_reagent.fire_penetrating)
+		burn_damage = max(burn_damage - fire_intensity_resistance * 0.5, 0)
 
-	if(isXeno(M))
+	if(sig_result & COMPONENT_XENO_FRENZY)
 		var/mob/living/carbon/Xenomorph/X = M
-		if((X.caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) && !tied_reagent.fire_penetrating)
-			return
-		if(X.burrow)
-			return
+		if(X.plasma_stored != X.plasma_max) //limit num of noise
+			to_chat(X, SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!"))
+			X.emote("roar")
+		X.plasma_stored = X.plasma_max
 
-	if(!(sig_result & COMPONENT_NO_IGNITE))
+	if(!(sig_result & COMPONENT_NO_IGNITE) && burn_damage)
 		M.TryIgniteMob(tied_reagent.durationfire, tied_reagent)
 
-	if(sig_result & COMPONENT_NO_BURN)
+	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
+		burn_damage = 0
+	
+	if(!burn_damage)
+		to_chat(M, SPAN_DANGER("You step over the flames."))
 		return
 
-	if(weapon_source)
-		M.last_damage_source = weapon_source
-	else
-		M.last_damage_source = initial(name)
-
-	M.last_damage_mob = weapon_source_mob
+	M.last_damage_data = weapon_cause_data
 	M.apply_damage(burn_damage, BURN) //This makes fire stronk.
 	to_chat(M, SPAN_DANGER("You are burned!"))
-	if(isXeno(M))
-		M.updatehealth()
+	M.updatehealth()
 
-
-/obj/flamer_fire/proc/updateicon()
+/obj/flamer_fire/proc/update_flame()
 	if(burnlevel < 15 && flame_icon != "dynamic")
 		color = "#c1c1c1" //make it darker to make show its weaker.
+	var/flame_level = 1
 	switch(firelevel)
 		if(1 to 9)
-			icon_state = "[flame_icon]_1"
-			SetLuminosity(2)
+			flame_level = 1
 		if(10 to 25)
-			icon_state = "[flame_icon]_2"
-			SetLuminosity(4)
+			flame_level = 2
 		if(25 to INFINITY) //Change the icons and luminosity based on the fire's intensity
-			icon_state = "[flame_icon]_3"
-			SetLuminosity(6)
+			flame_level = 3
 
+	if(initial_burst)
+		flame_level++ //the initial flame burst is 1 level higher for a small time
+
+	icon_state = "[flame_icon]_[flame_level]"
+	SetLuminosity(flame_level * 2)
+
+/obj/flamer_fire/proc/un_burst_flame()
+	initial_burst = FALSE
+	update_flame()
 
 /obj/flamer_fire/process()
 	var/turf/T = loc
@@ -507,7 +549,7 @@
 		qdel(src)
 		return
 
-	updateicon()
+	update_flame()
 
 	if(!firelevel)
 		qdel(src)
@@ -517,48 +559,25 @@
 	for(var/i in loc)
 		if(++j >= 11) break
 		if(isliving(i))
-			var/mob/living/I = i
-			if(isXenoBurrower(I))
-				var/mob/living/carbon/Xenomorph/Burrower/B = I
-				if(B.burrow)
-					continue
-			if(isXenoRavager(I) && !tied_reagent.fire_penetrating)
-				if(!I.stat)
-					var/mob/living/carbon/Xenomorph/Ravager/X = I
-					X.plasma_stored = X.plasma_max
-					X.used_charge = 0 //Reset charge cooldown
-					X.show_message(text(SPAN_DANGER("The heat of the fire roars in your veins! KILL! CHARGE! DESTROY!")),1)
-					if(rand(1,100) < 70)
-						X.emote("roar")
-			if(ishuman(I))
-				var/mob/living/carbon/human/H = I
-				if(istype(H.wear_suit, /obj/item/clothing/suit/storage/marine/M35) || istype(H.wear_suit, /obj/item/clothing/suit/fire))
-					continue
-			// If I stand in the fire I deserve all of this. Also Napalm stacks quickly.
-			if(!I.TryIgniteMob(firelevel, tied_reagent))
-				continue
-			I.show_message(text(SPAN_WARNING("You are burned!")), 1)
-			if(isXeno(I)) //Have no fucken idea why the Xeno thing was there twice.
-				var/mob/living/carbon/Xenomorph/X = I
-				X.updatehealth()
+			set_on_fire(i)
 		if(isobj(i))
 			var/obj/O = i
-			O.flamer_fire_act()
+			O.flamer_fire_act(0, weapon_cause_data)
 
 	//This has been made a simple loop, for the most part flamer_fire_act() just does return, but for specific items it'll cause other effects.
 	firelevel -= 2 //reduce the intensity by 2 per tick
 	return
 
-/proc/fire_spread_recur(var/turf/target, var/source, var/source_mob, remaining_distance, direction, fire_lvl, burn_lvl, f_color)
+/proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite, var/aerial_flame_level)
 	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
 		var/datum/reagent/R = new()
 		R.intensityfire = burn_lvl
 		R.durationfire = fire_lvl
-
+		R.burn_sprite = burn_sprite
 		R.burncolor = f_color
-		new/obj/flamer_fire(target, source, source_mob, R)
+		new/obj/flamer_fire(target, cause_data, R)
 
 	for(var/spread_direction in alldirs)
 
@@ -593,17 +612,20 @@
 		if(T.density)
 			continue
 
-		spawn(0)
-			fire_spread_recur(T, source, source_mob, spread_power, spread_direction, fire_lvl, burn_lvl, f_color)
+		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))
+			break
 
-/proc/fire_spread(var/turf/target, var/source, var/source_mob, range, fire_lvl, burn_lvl, f_color)
+		spawn(0)
+			fire_spread_recur(T, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
+
+/proc/fire_spread(var/turf/target, var/datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color, burn_sprite, var/aerial_flame_level = TURF_PROTECTION_NONE)
 	var/datum/reagent/R = new()
 	R.intensityfire = burn_lvl
 	R.durationfire = fire_lvl
-
+	R.burn_sprite = burn_sprite
 	R.burncolor = f_color
 
-	new/obj/flamer_fire(target, source, source_mob, R)
+	new/obj/flamer_fire(target, cause_data, R)
 	for(var/direction in alldirs)
 		var/spread_power = range
 		switch(direction)
@@ -612,4 +634,6 @@
 			else
 				spread_power -= 1.414 //diagonal spreading
 		var/turf/T = get_step(target, direction)
-		fire_spread_recur(T, source, source_mob, spread_power, direction, fire_lvl, burn_lvl, f_color)
+		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))
+			continue
+		fire_spread_recur(T, cause_data, spread_power, direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)

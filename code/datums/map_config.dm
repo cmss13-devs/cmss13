@@ -16,6 +16,8 @@
 	var/map_name = "LV624"
 	var/map_path = "map_files/LV624"
 	var/map_file = "LV624.dmm"
+	/// Hash of nightmare parser types to config file paths
+	var/list/nightmare
 
 	var/traits = null
 	var/space_empty_levels = 1
@@ -51,6 +53,8 @@
 	var/force_mode
 
 	var/list/monkey_types = list(/mob/living/carbon/human/monkey)
+
+	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
 
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
@@ -165,6 +169,12 @@
 		log_world("map_config monkey_types is not a list!")
 		return
 
+	if (islist(json["xvx_hives"]))
+		xvx_hives = json["xvx_hives"]
+	else if ("xvx_hives" in json)
+		log_world("map_config xvx_hives is not a list!")
+		return
+
 	if (islist(json["defcon_triggers"]))
 		defcon_triggers = json["defcon_triggers"]
 	else if ("defcon_triggers" in json)
@@ -206,7 +216,7 @@
 		force_mode = json["force_mode"]
 
 	if(json["announce_text"])
-		announce_text = replacetext(json["announce_text"], "###SHIPNAME###", MAIN_SHIP_NAME)
+		announce_text = json["announce_text"]
 
 	if(json["weather_holder"])
 		weather_holder = text2path(json["weather_holder"])
@@ -219,6 +229,12 @@
 		if(!map_item_type)
 			log_world("map_config map_item_type is not a proper typepath!")
 			return
+
+	if(json["nightmare"])
+		if(!islist(json["nightmare"]))
+			log_world("map_config nightmare is not a list!")
+			return
+		nightmare = json["nightmare"]
 
 	if(islist(json["environment_traits"]))
 		environment_traits = json["environment_traits"]

@@ -1,0 +1,18 @@
+/**
+ * Copyright (c) 2020 watermelon914 (https://github.com/watermelon914)
+ * SPDX-License-Identifier: MIT
+ */
+
+@use '../base.scss';
+
+$border-radius: base.$border-radius !default;
+
+.TechNode__content {
+  white-space: pre-wrap;
+}
+
+.TechNode__purchased {
+  border-radius: $border-radius;
+  line-height: 1.667em;
+  padding: 0 0.5em;
+}

@@ -167,13 +167,10 @@
 			if(!authenticated)
 				return
 
-			var/is_agent = FALSE
-			if(target_id_card.registered_gid)
-				is_agent = target_id_card.fail_agent_objectives()
 			target_id_card.assignment = "Terminated"
 			target_id_card.access = list()
 			log_idmod(target_id_card, "<font color='red'> [key_name_admin(usr)] terminated the ID. </font>")
-			message_staff("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].[is_agent ? " They were an Agent." : ""]")
+			message_staff("[key_name_admin(usr)] terminated the ID of [target_id_card.registered_name].")
 			return TRUE
 		if("PRG_edit")
 			if(!authenticated || !target_id_card)

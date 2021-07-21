@@ -32,9 +32,10 @@
     ui_interact(user)
 
 /obj/structure/machinery/computer/teleporter_console/attack_alien(var/mob/living/carbon/Xenomorph/X)
-    if(!isXenoQueen(X))
-        return
-    return attack_hand(X)
+	if(!isXenoQueen(X))
+		return FALSE
+	attack_hand(X)
+	return XENO_ATTACK_ACTION
 
 // Try to find and add a teleporter from the globals.
 /obj/structure/machinery/computer/teleporter_console/proc/attempt_teleporter_link()

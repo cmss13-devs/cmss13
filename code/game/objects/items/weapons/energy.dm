@@ -13,12 +13,14 @@
 	w_class = SIZE_MEDIUM
 	flags_atom = FPRINT|CONDUCT|NOBLOODY
 	flags_item = NOSHIELD
-	
+
 	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
 
 /obj/item/weapon/melee/energy/axe/attack_self(mob/user)
+	..()
+
 	active = !active
 	if(active)
 		to_chat(user, SPAN_NOTICE(" The axe is now energised."))
@@ -47,7 +49,7 @@
 	w_class = SIZE_SMALL
 	flags_atom = FPRINT|NOBLOODY
 	flags_item = NOSHIELD
-	
+
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharp = IS_SHARP_ITEM_BIG
 	edge = 1
@@ -63,7 +65,9 @@
 	if(!sword_color)
 		sword_color = pick("red","blue","green","purple")
 
-/obj/item/weapon/melee/energy/sword/attack_self(mob/living/user as mob)
+/obj/item/weapon/melee/energy/sword/attack_self(mob/living/user)
+	..()
+
 	active = !active
 	if (active)
 		force = 30

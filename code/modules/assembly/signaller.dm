@@ -5,7 +5,7 @@
 	item_state = "signaller"
 	matter = list("metal" = 1000, "glass" = 200, "waste" = 100)
 
-	wires = WIRE_RECEIVE|WIRE_PULSE|WIRE_RADIO_PULSE|WIRE_RADIO_RECEIVE
+	wires = WIRE_ASSEMBLY_RECEIVE|WIRE_ASSEMBLY_PULSE|WIRE_RADIO_PULSE|WIRE_RADIO_RECEIVE
 
 	secured = 1
 
@@ -25,7 +25,7 @@
 		var/obj/item/device/assembly/signaller/S = O
 		code = S.code
 		set_frequency(S.frequency)
-		
+
 		SStgui.update_uis(src)
 		to_chat(user, SPAN_NOTICE("You set the frequence of [src] to [frequency] and code to [code]."))
 		return
@@ -54,9 +54,9 @@
 	if(!secured)
 		to_chat(user, SPAN_WARNING("The [name] is unsecured!"))
 		return
-	
+
 	tgui_interact(user)
-	
+
 
 /obj/item/device/assembly/signaller/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -64,7 +64,7 @@
 		ui = new(user, src, "Signaller", "Signaller")
 		ui.open()
 		ui.set_autoupdate(FALSE)
-	
+
 /obj/item/device/assembly/signaller/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 
@@ -98,7 +98,7 @@
 
 	.["max_freq"] = SIGNALLER_FREQ_MAX
 	.["min_freq"] = SIGNALLER_FREQ_MIN
-	
+
 	.["max_signal"] = SIGNALLER_CODE_MAX
 	.["min_signal"] = SIGNALLER_CODE_MIN
 

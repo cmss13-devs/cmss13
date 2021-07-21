@@ -7,6 +7,17 @@
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
 
+/mob/living/carbon/human/proc/message_thrall(var/msg)
+	if(!hunter_data.thrall)
+		return
+
+	var/mob/living/carbon/T = hunter_data.thrall
+
+	for(var/obj/item/clothing/gloves/yautja/G in T.contents)
+		to_chat(T, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
+		if(G.notification_sound)
+			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
+
 //Update the power display thing. This is called in Life()
 /mob/living/carbon/human/proc/update_power_display(var/perc)
 	if(hud_used && hud_used.pred_power_icon)
@@ -33,7 +44,7 @@
 				hud_used.pred_power_icon.icon_state = "powerbar10"
 
 /mob/living/carbon/human/proc/butcher()
-	set category = "Yautja"
+	set category = "Yautja.Misc"
 	set name = "Butcher"
 	set desc = "Butcher a corpse you're standing on for its tasty meats."
 
@@ -46,7 +57,7 @@
 		if(Adjacent(M) && M.stat)
 			if(istype(M,/mob/living/carbon/human))
 				var/mob/living/carbon/human/Q = M
-				if(Q.species && Q.species.name == "Yautja")
+				if(Q.species && isSameSpecies(Q, src))
 					continue
 			choices += M
 
@@ -118,8 +129,8 @@
 			if(do_after(src,65, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
 				visible_message("[src] hacks away at \the [T]'s limbs and slices off strips of dripping meat.","You slice off a few of \the [T]'s limbs, making sure to get the finest cuts.")
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
-					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_name] steak"
+					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
+					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] steak"
 				else if(victim && isturf(victim.loc))
 					victim.apply_damage(100,BRUTE,pick("r_leg","l_leg","r_arm","l_arm"),0,1,1) //Basically just rips off a random limb.
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
@@ -133,8 +144,8 @@
 			if(do_after(src,70, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE) && Adjacent(T))
 				visible_message("[src] tears apart \the [T]'s ribcage and begins chopping off bit and pieces.","You rip open \the [T]'s ribcage and start tearing the tastiest bits out.")
 				if(xeno_victim && isturf(xeno_victim.loc))
-					var/obj/item/reagent_container/food/snacks/xenomeat = new /obj/item/reagent_container/food/snacks/xenomeat(T.loc)
-					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_name] tenderloin"
+					var/obj/item/reagent_container/food/snacks/meat/xenomeat = new /obj/item/reagent_container/food/snacks/meat/xenomeat(T.loc)
+					xenomeat.name = "raw [xeno_victim.age_prefix][xeno_victim.caste_type] tenderloin"
 				else if(victim && isturf(T.loc))
 					var/obj/item/reagent_container/food/snacks/meat/meat = new /obj/item/reagent_container/food/snacks/meat(victim.loc)
 					meat.name = "raw [victim.name] tenderloin"
@@ -151,9 +162,9 @@
 					visible_message("<b>[src] flenses the last of [victim]'s exoskeleton, revealing only bones!</b>.","<b>You flense the last of [victim]'s exoskeleton clean off!</b>")
 					new /obj/effect/decal/remains/xeno(xeno_victim.loc)
 					var/obj/item/stack/sheet/animalhide/xeno/xenohide = new /obj/item/stack/sheet/animalhide/xeno(xeno_victim.loc)
-					xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
-					xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
-					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_name]-hide"
+					xenohide.name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+					xenohide.singular_name = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
+					xenohide.stack_id = "[xeno_victim.age_prefix][xeno_victim.caste_type]-hide"
 
 				else if(victim && isturf(T.loc))
 					visible_message("<b>[src] reaches down and rips out \the [T]'s spinal cord and skull!</b>.","<b>You firmly grip the revealed spinal column and rip [T]'s head off!</b>")
@@ -172,11 +183,11 @@
 					T.drop_inv_item_on_ground(T.legcuffed)
 				T.butchery_progress = 5 //Won't really matter.
 				playsound(loc, 'sound/weapons/slice.ogg', 25)
-				if(yautja_hunted_prey == T)
+				if(hunter_data.prey == T)
 					to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
 					emote("roar")
 					message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
-					yautja_hunted_prey = null
+					hunter_data.prey = null
 				else
 					to_chat(src, SPAN_NOTICE("You finish butchering!"))
 				qdel(T)
@@ -223,11 +234,11 @@
 			H.get_limb(limb).droplimb(1, 0, "butchering")
 			playsound(loc, 'sound/weapons/slice.ogg', 25)
 			H.butchery_progress = 0
-			if(yautja_hunted_prey == T)
+			if(hunter_data.prey == T)
 				to_chat(src, SPAN_YAUTJABOLD("You have claimed [T] as your trophy."))
 				emote("roar")
 				message_all_yautja("[src.real_name] has claimed [T] as their trophy.")
-				yautja_hunted_prey = null
+				hunter_data.prey = null
 			else
 				to_chat(src, SPAN_NOTICE("You finish butchering!"))
 
@@ -244,7 +255,7 @@
 	lighting_use_dynamic = FALSE
 
 /mob/living/carbon/human/proc/pred_buy()
-	set category = "Yautja"
+	set category = "Yautja.Misc"
 	set name = "Claim Equipment"
 	set desc = "When you're on the Predator ship, claim some gear. You can only do this ONCE."
 
@@ -282,15 +293,15 @@
 
 		switch(msel)
 			if("The Lumbering Glaive")
-				new /obj/item/weapon/melee/twohanded/glaive(src.loc)
+				new /obj/item/weapon/melee/twohanded/yautja/glaive(src.loc)
 			if("The Rending Chain-Whip")
-				new /obj/item/weapon/yautja_chain(src.loc)
+				new /obj/item/weapon/melee/yautja/chain(src.loc)
 			if("The Piercing Hunting Sword")
-				new /obj/item/weapon/melee/yautja_sword(src.loc)
+				new /obj/item/weapon/melee/yautja/sword(src.loc)
 			if("The Cleaving War-Scythe")
-				new /obj/item/weapon/melee/yautja_scythe(src.loc)
+				new /obj/item/weapon/melee/yautja/scythe(src.loc)
 			if("The Adaptive Combi-Stick")
-				new /obj/item/weapon/melee/combistick(src.loc)
+				new /obj/item/weapon/melee/yautja/combistick(src.loc)
 
 		var/choice = mother_0
 		var/i = 0
@@ -299,76 +310,11 @@
 				if("The Fleeting Spike Launcher")
 					new /obj/item/weapon/gun/launcher/spike(src.loc)
 				if("The Swift Plasma Pistol")
-					new /obj/item/weapon/gun/energy/plasmapistol(src.loc)
+					new /obj/item/weapon/gun/energy/yautja/plasmapistol(src.loc)
 				if("The Purifying Smart-Disc")
 					new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
 				if("The Formidable Plate Armor")
-					new /obj/item/clothing/suit/armor/yautja/full(src.loc)
+					new /obj/item/clothing/suit/armor/yautja/full(src.loc, 0,  src.client.prefs.predator_armor_material)
 			choice = mother_1
 
-		if(Y.upgrades > 0)
-			to_chat(src, SPAN_NOTICE("[Y] hum as their support systems come online."))
-			Y.verbs += /obj/item/clothing/gloves/yautja/proc/translate
 		remove_verb(src, /mob/living/carbon/human/proc/pred_buy)
-
-// Mark for Hunt verbs
-// Add prey for hunt
-/mob/living/carbon/human/proc/mark_for_hunt()
-	set category = "Yautja"
-	set name = "Mark for Hunt"
-	set desc = "Mark your next prey for the Hunt."
-
-	if(is_mob_incapacitated())
-		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
-		return
-
-	// Only one prey per pred
-	if(yautja_hunted_prey)
-		to_chat(src, SPAN_DANGER("You're already hunting something."))
-		return
-
-	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
-		return
-
-	// List all possible preys
-	// We only target living humans and xenos
-	var/list/target_list = list()
-	for(var/mob/living/prey in view(7, src))
-		if((isHumanStrict(prey) || isXeno(prey)) && prey.stat != DEAD)
-			target_list += prey
-
-	var/mob/living/M = tgui_input_list(usr, "Target", "Choose a prey.", target_list)
-	if(!M) return
-	yautja_hunted_prey = M
-
-	// Notify the pred
-	to_chat(src, SPAN_YAUTJABOLD("You have chosen [yautja_hunted_prey] as your next prey."))
-
-	// Notify other preds
-	message_all_yautja("[real_name] has chosen [yautja_hunted_prey] ([max(yautja_hunted_prey.life_kills_total, 1)] honor) as their next target at \the [get_area_name(src)].")
-
-	// Notify the staff
-	message_staff(WRAP_STAFF_LOG(src, "has marked [key_name(yautja_hunted_prey)] for the Hunt in [get_area(src)] ([x],[y],[z])."), x, y, z)
-
-// Removing prey from hunt (i.e. it died, it bugged, it left the game, etc.)
-/mob/living/carbon/human/proc/remove_from_hunt()
-	set category = "Yautja"
-	set name = "Remove from Hunt"
-	set desc = "Remove your prey from your active Hunt."
-
-	if(is_mob_incapacitated())
-		to_chat(src, SPAN_DANGER("You're not able to do that right now."))
-		return
-
-	if(!yautja_hunted_prey)
-		to_chat(src, SPAN_DANGER("You're not hunting anything right now."))
-		return
-
-	if(!isYautja(src))
-		to_chat(src, "How did you get this verb?")
-		return
-	if (alert(usr, "Are you sure you want to abandon this prey?", "Remove from Hunt:", "Yes", "No") != "Yes")
-		return
-	to_chat(src, SPAN_YAUTJABOLD("You have removed [yautja_hunted_prey] from your hunt."))
-	yautja_hunted_prey = null

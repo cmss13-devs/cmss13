@@ -18,7 +18,9 @@
 		icon_state = "gift[pick(1, 2, 3)]"
 	return
 
-/obj/item/m_gift/attack_self(mob/M as mob)
+/obj/item/m_gift/attack_self(mob/M)
+	..()
+
 	var/mob/living/carbon/human/H = M
 	if(istype(H))
 		if(H.opened_gift == 1)
@@ -116,7 +118,6 @@
 		/obj/item/attachable/angledgrip,
 		/obj/item/attachable/flashlight,
 		/obj/item/attachable/bipod,
-		/obj/item/attachable/quickfire,
 		/obj/item/attachable/magnetic_harness,
 		/obj/item/attachable/stock/rifle,
 		/obj/item/attachable/scope)

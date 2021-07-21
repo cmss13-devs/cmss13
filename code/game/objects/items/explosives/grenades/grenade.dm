@@ -14,48 +14,57 @@
 	max_container_volume = 60
 	var/det_time = 40
 	var/dangerous = 0		//Make an danger overlay for humans?
-	var/harmful = TRUE      //Is it harmful? Can synths use them?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
+	harmful = TRUE	//Is it harmful? Are they banned for synths?
+	has_iff = TRUE	//Should it be checked by antigrief?
 
 /obj/item/explosive/grenade/Initialize()
 	. = ..()
 	det_time = rand(det_time - 5, det_time + 5)
 
+/obj/item/explosive/grenade/proc/can_use_grenade(mob/living/carbon/human/user)
+	if(!hand_throwable)
+		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
+		return FALSE
+
+	if(!user.IsAdvancedToolUser())
+		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
+		return FALSE
+
+	if(harmful && !user.allow_gun_usage)
+		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+		return FALSE
+
+	return TRUE
+
 /obj/item/explosive/grenade/attack_self(mob/user)
 	if(active)
 		return
-	if(!hand_throwable)
-		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
-		return
-	if(!user.IsAdvancedToolUser())
-		to_chat(user, SPAN_WARNING("You don't have the dexterity to do this!"))
-		return
 
-	if(harmful && isSynth(user))
-		to_chat(user, SPAN_WARNING("Your programming prevents you from using this!"))
+	if(!can_use_grenade(user))
 		return
 
 	. = ..()
 
 	if(!. || isnull(loc))
 		return
-	
-	if(grenade_grief_check(src))
+
+	if(has_iff && user.faction == FACTION_MARINE && explosive_grief_check(src))
 		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from priming the grenade!"))
 		// Let staff know, in case someone's actually about to try to grief
 		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 		return
-	
-	if(SEND_SIGNAL(user, COMSIG_GRENADE_PRE_PRIME) & COMPONENT_GRENADE_PRIME_CANCEL)			
+
+	if(SEND_SIGNAL(user, COMSIG_GRENADE_PRE_PRIME) & COMPONENT_GRENADE_PRIME_CANCEL)
 		return
 
 	add_fingerprint(user)
 
 	activate(user)
-		
-	source_mob = user
+
+	cause_data = create_cause_data(initial(name), user)
 
 	user.visible_message(SPAN_WARNING("[user] primes \a [name]!"), \
 	SPAN_WARNING("You prime \a [name]!"))
@@ -76,7 +85,7 @@
 	if(!hand_throwable && hand_throw)
 		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
 		return
-	source_mob = user
+	cause_data = create_cause_data(initial(name), user)
 	playsound(loc, arm_sound, 25, 1, 6)
 	if(customizable)
 		activate_sensors()
@@ -100,7 +109,7 @@
 
 
 /obj/item/explosive/grenade/attackby(obj/item/W as obj, mob/user as mob)
-	if(isscrewdriver(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		switch(det_time)
 			if ("1")
 				det_time = 10

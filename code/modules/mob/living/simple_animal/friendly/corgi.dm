@@ -35,9 +35,11 @@
 	response_disarm = "bops"
 	response_harm   = "kicks"
 
-/mob/living/simple_animal/corgi/Ian/Life()
+/mob/living/simple_animal/corgi/Ian/Life(delta_time)
 	..()
+	INVOKE_ASYNC(src, .proc/look_for_food)
 
+/mob/living/simple_animal/corgi/Ian/proc/look_for_food()
 	//Feeding, chasing food, FOOOOODDDD
 	if(!stat && !resting && !buckled)
 		turns_since_scan++
@@ -77,10 +79,10 @@
 						movement_target.attack_animal(src)
 					else if(ishuman(movement_target.loc) )
 						if(prob(20))
-							emote("stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
+							INVOKE_ASYNC(src, .proc/emote, "stares at the [movement_target] that [movement_target.loc] has with a sad puppy-face")
 
 		if(prob(1))
-			emote(pick("dances around","chases its tail"))
+			INVOKE_ASYNC(src, .proc/emote, pick("dances around","chases its tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					setDir(i)
@@ -89,9 +91,10 @@
 /mob/living/simple_animal/corgi/death()
 	. = ..()
 	if(!.)	return //was already dead
-	if(last_damage_mob)
-		var/mob/user = last_damage_mob
-		user.count_niche_stat(STATISTICS_NICHE_CORGI)
+	if(last_damage_data)
+		var/mob/user = last_damage_data.resolve_mob()
+		if(user)
+			user.count_niche_stat(STATISTICS_NICHE_CORGI)
 
 /obj/item/reagent_container/food/snacks/meat/corgi
 	name = "Corgi meat"
@@ -179,7 +182,7 @@
 		return
 	..()
 
-/mob/living/simple_animal/corgi/Lisa/Life()
+/mob/living/simple_animal/corgi/Lisa/Life(delta_time)
 	..()
 
 	if(!stat && !resting && !buckled)
@@ -205,7 +208,7 @@
 
 
 		if(prob(1))
-			emote(pick("dances around","chases her tail"))
+			INVOKE_ASYNC(src, .proc/emote, pick("dances around","chases her tail"))
 			spawn(0)
 				for(var/i in list(1,2,4,8,4,2,1,2,4,8,4,2,1,2,4,8,4,2))
 					setDir(i)

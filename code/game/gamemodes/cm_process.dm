@@ -9,9 +9,9 @@
 
 #define MODE_INFECTION_ZOMBIE_WIN		"Major Zombie Victory"
 
-#define MODE_BATTLEFIELD_W_MAJOR		"W-Y PMC Major Success"
+#define MODE_BATTLEFIELD_W_MAJOR		"Wey-Yu PMC Major Success"
 #define MODE_BATTLEFIELD_M_MAJOR		"Marine Major Success"
-#define MODE_BATTLEFIELD_W_MINOR		"W-Y PMC Minor Success"
+#define MODE_BATTLEFIELD_W_MINOR		"Wey-Yu PMC Minor Success"
 #define MODE_BATTLEFIELD_M_MINOR		"Marine Minor Success"
 #define MODE_BATTLEFIELD_DRAW_STALEMATE "DRAW: Stalemate"
 #define MODE_BATTLEFIELD_DRAW_DEATH		"DRAW: My Friends Are Dead"
@@ -48,28 +48,6 @@ of predators), but can be added to include variant game modes (like humans vs. h
 				dat += "[fallen_list[i]], "
 			else
 				dat += "[fallen_list[i]].<br>"
-		to_world("[dat]")
-
-/datum/game_mode/proc/announce_agents()
-	set waitfor = 0
-	sleep(2 SECONDS)
-	if(length(GLOB.human_agent_list))
-		var/dat = "<br>"
-		dat += SPAN_CENTERBOLD("The Agents were: <br>")
-		for(var/i in GLOB.human_agent_list)
-			var/mob/living/carbon/human/H = i
-			if(!H.agent_holder)
-				continue
-
-			dat += "[SPAN_BOLD("[H]")] was being blackmailed by [H.agent_holder.faction], with the following objectives: <br>"
-			for(var/datum/agent_objective/O in H.agent_holder.objectives_list)
-				dat += "- [O.description]"
-				if(O.check_completion_round_end())
-					dat += " [SPAN_BOLD("[SPAN_GREEN("(COMPLETED)")]")] <br>"
-				else
-					dat += " [SPAN_BOLD("[SPAN_RED("(FAILED)")]")] <br>"
-			dat += "<br>"
-
 		to_world("[dat]")
 
 
@@ -208,7 +186,7 @@ var/nextAdminBioscan = 30 MINUTES//30 minutes in
 
 	for(var/mob/M in GLOB.living_xeno_list)
 		var/area/A = get_area(M)
-		if(A && A.flags_atom & AREA_AVOID_BIOSCAN || (A.flags_atom & AREA_AVOID_BIOSCAN && A.flags_atom & AREA_NOTUNNEL))
+		if(A?.flags_area & AREA_AVOID_BIOSCAN)
 			numXenosShip++
 			continue
 		var/atom/where = M
@@ -332,11 +310,11 @@ Only checks living mobs with a client attached.
 			else
 				var/area/A = get_area(M)
 				if(isXeno(M))
-					if (A.flags_atom & AREA_AVOID_BIOSCAN)
+					if (A.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
 				else if(iszombie(M))
-					if (A.flags_atom & AREA_AVOID_BIOSCAN)
+					if (A.flags_area & AREA_AVOID_BIOSCAN)
 						continue
 					num_xenos++
 

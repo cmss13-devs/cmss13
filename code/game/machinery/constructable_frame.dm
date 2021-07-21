@@ -63,7 +63,7 @@
 						SPAN_NOTICE("You add cables to [src]."))
 						state = CONSTRUCTION_STATE_PROGRESS
 						anchored = 1
-			else if(iswrench(P))
+			else if(HAS_TRAIT(P, TRAIT_TOOL_WRENCH))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
@@ -97,7 +97,7 @@
 						update_desc()
 					to_chat(user, requirements_left)
 
-			else if(istype(P, /obj/item/tool/wirecutters))
+			else if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				if(!skillcheck(user, SKILL_ENGINEER, required_dismantle_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to dismantle machines..."))
 					return
@@ -127,7 +127,7 @@
 				update_desc()
 				req_components = null
 				components = null
-			else if(istype(P, /obj/item/tool/screwdriver))
+			else if(HAS_TRAIT(P, TRAIT_TOOL_SCREWDRIVER))
 				if(!skillcheck(user, SKILL_CONSTRUCTION, required_skill))
 					to_chat(user, SPAN_WARNING("You are not trained to build machines..."))
 					return

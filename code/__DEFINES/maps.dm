@@ -27,9 +27,11 @@ require only minor tweaks.
 #define ZTRAIT_ADMIN "Admin"
 #define ZTRAIT_LOWORBIT "LowOrbit"
 #define ZTRAIT_INTERIORS "Interiors"
+#define ZTRAIT_TECHTREE	"TechTree"
 
 #define ZTRAIT_FOG "Fog"
 #define ZTRAIT_LOCKDOWN "Lockdown"
+#define ZTRAIT_BASIC_RT "BasicRT"
 
 // boolean - weather types that occur on the level
 #define ZTRAIT_SNOWSTORM "weather_snowstorm"

@@ -11,12 +11,13 @@ var/list/datum/mob_hud/huds = list(
 	MOB_HUD_XENO_STATUS = new /datum/mob_hud/xeno(),
 	MOB_HUD_SQUAD = new /datum/mob_hud/squad(),
 	MOB_HUD_XENO_HOSTILE = new /datum/mob_hud/xeno_hostile(),
-	MOB_HUD_PRED_CLAN = new /datum/mob_hud/pred_clan(),
+	MOB_HUD_HUNTER_CLAN = new /datum/mob_hud/hunter_clan(),
 	MOB_HUD_SQUAD_OBSERVER	= new /datum/mob_hud/squad/observer(),
 	MOB_HUD_FACTION_UPP	= new /datum/mob_hud/faction/upp(),
 	MOB_HUD_FACTION_WY = new /datum/mob_hud/faction/wy(),
 	MOB_HUD_FACTION_RESS = new /datum/mob_hud/faction/ress(),
 	MOB_HUD_FACTION_CLF = new /datum/mob_hud/faction/clf(),
+	MOB_HUD_HUNTER = new /datum/mob_hud/hunter_hud(),
 	)
 
 /datum/mob_hud
@@ -118,7 +119,7 @@ var/list/datum/mob_hud/huds = list(
 
 /datum/mob_hud/medical/advanced/add_to_single_hud(mob/user, mob/living/carbon/human/target)
 	if(istype(target))
-		if(target.species && target.species.name == "Yautja") //so you can't tell a pred's health with hud glasses.
+		if(target.species && HAS_TRAIT(target, TRAIT_FOREIGN_BIO)) //so you can't tell a pred's health with hud glasses.
 			return
 	..()
 
@@ -135,13 +136,16 @@ var/list/datum/mob_hud/huds = list(
 
 //Xeno status hud, for xenos
 /datum/mob_hud/xeno
-	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD)
+	hud_icons = list(HEALTH_HUD_XENO, PLASMA_HUD, PHEROMONE_HUD, QUEEN_OVERWATCH_HUD, ARMOR_HUD_XENO, XENO_STATUS_HUD, XENO_BANISHED_HUD, HUNTER_HUD)
 
 /datum/mob_hud/xeno_hostile
 	hud_icons = list(XENO_HOSTILE_ACID, XENO_HOSTILE_SLOW, XENO_HOSTILE_TAG, XENO_HOSTILE_FREEZE)
 
-/datum/mob_hud/pred_clan
-	hud_icons = list(PRED_CLAN)
+/datum/mob_hud/hunter_clan
+	hud_icons = list(HUNTER_CLAN)
+
+/datum/mob_hud/hunter_hud
+	hud_icons = list(HUNTER_HUD)
 
 //Security
 
@@ -158,7 +162,7 @@ var/list/datum/mob_hud/huds = list(
 	hud_icons = list(SQUAD_HUD, ORDER_HUD)
 
 /datum/mob_hud/squad/observer
-	hud_icons = list(SQUAD_HUD, ORDER_HUD, PRED_CLAN)
+	hud_icons = list(SQUAD_HUD, ORDER_HUD, HUNTER_CLAN)
 
 //Factions
 /datum/mob_hud/faction
@@ -167,10 +171,6 @@ var/list/datum/mob_hud/huds = list(
 
 /datum/mob_hud/faction/add_to_single_hud(mob/user, mob/target)
 	var/faction = target.faction
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(H.agent_holder)
-			faction = H.agent_holder.faction
 	if(isobserver(target))
 		faction = faction_to_check
 
@@ -344,7 +344,9 @@ var/list/datum/mob_hud/huds = list(
 		holder2.icon_state = "hudsynth"
 		holder3.icon_state = "hudsynth"
 	else
-		var/revive_enabled = check_tod() && is_revivable()
+		var/revive_enabled = stat == DEAD && check_tod() && is_revivable()
+		if(stat == DEAD)
+			revive_enabled = check_tod() && is_revivable()
 		var/datum/internal_organ/heart/heart = islist(internal_organs_by_name) ? internal_organs_by_name["heart"] : null
 
 		var/holder2_set = 0
@@ -585,16 +587,16 @@ var/list/datum/mob_hud/huds = list(
 		else if(I)
 			_role = I.rank
 		switch(_role)
-			if("Squad Engineer") marine_rk = "engi"
-			if("Squad Specialist") marine_rk = "spec"
-			if("Squad Medic") marine_rk = "med"
-			if("Squad Smartgunner") marine_rk = "gun"
-			if("Executive Officer") marine_rk = "xo"
-			if("Commanding Officer") marine_rk = "co"
-			if("USCM Admiral") marine_rk = "admiral"
-			if("Pilot Officer") marine_rk = "po"
-			if("Intelligence Officer") marine_rk = "io"
-			if("Crewman") marine_rk = "tc"
+			if(JOB_SQUAD_ENGI) marine_rk = "engi"
+			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
+			if(JOB_SQUAD_RTO) marine_rk = "rto"
+			if(JOB_SQUAD_MEDIC) marine_rk = "med"
+			if(JOB_SQUAD_SMARTGUN) marine_rk = "gun"
+			if(JOB_XO) marine_rk = "xo"
+			if(JOB_CO) marine_rk = "co"
+			if(JOB_ADMIRAL) marine_rk = "admiral"
+			if(JOB_PILOT) marine_rk = "po"
+			if(JOB_CREWMAN) marine_rk = "tc"
 		if(assigned_squad.squad_leader == src)
 			marine_rk = "leader"
 			langchat_styles = "langchat_bolded" // bold text for bold leaders
@@ -629,23 +631,21 @@ var/list/datum/mob_hud/huds = list(
 		else if(ID)
 			_role = ID.rank
 		switch(_role)
-			if("Executive Officer")
+			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"
-			if("Commanding Officer")
+			if(JOB_CO)
 				marine_rk = "co"
 				border_rk = "command"
-			if("Staff Officer")
+			if(JOB_SO)
 				marine_rk = "so"
 				border_rk = "command"
-			if("USCM Admiral")
+			if(JOB_ADMIRAL)
 				marine_rk = "admiral"
 				border_rk = "command"
-			if("Pilot Officer")
+			if(JOB_PILOT)
 				marine_rk = "po"
-			if("Intelligence Officer")
-				marine_rk = "io"
-			if("Crewman")
+			if(JOB_CREWMAN)
 				marine_rk = "tc"
 			if("Provost Officer")
 				marine_rk = "pvo"
@@ -680,7 +680,7 @@ var/list/datum/mob_hud/huds = list(
 /mob/living/carbon/human/yautja/hud_set_squad()
 	set waitfor = FALSE
 
-	var/image/holder = hud_list[PRED_CLAN]
+	var/image/holder = hud_list[HUNTER_CLAN]
 
 	holder.icon_state = "predhud"
 
@@ -690,7 +690,70 @@ var/list/datum/mob_hud/huds = list(
 
 		holder.color = player_clan.color
 
-	hud_list[PRED_CLAN] = holder
+	hud_list[HUNTER_CLAN] = holder
+
+
+
+/mob/proc/hud_set_hunter()
+	return
+
+var/global/image/hud_icon_hunter_gear
+var/global/image/hud_icon_hunter_hunted
+var/global/image/hud_icon_hunter_dishonored
+var/global/image/hud_icon_hunter_honored
+var/global/image/hud_icon_hunter_thralled
+
+
+/mob/living/carbon/hud_set_hunter()
+	var/image/holder = hud_list[HUNTER_HUD]
+	holder.icon_state = "hudblank"
+	holder.overlays.Cut()
+	if(hunter_data.hunted)
+		if(!hud_icon_hunter_hunted)
+			hud_icon_hunter_hunted = image('icons/mob/hud/hud_icons.dmi', src, "hunter_hunted")
+		holder.overlays += hud_icon_hunter_hunted
+
+	if(hunter_data.dishonored)
+		if(!hud_icon_hunter_dishonored)
+			hud_icon_hunter_dishonored = image('icons/mob/hud/hud_icons.dmi', src, "hunter_dishonored")
+		holder.overlays += hud_icon_hunter_dishonored
+	else if(hunter_data.honored)
+		if(!hud_icon_hunter_honored)
+			hud_icon_hunter_honored = image('icons/mob/hud/hud_icons.dmi', src, "hunter_honored")
+		holder.overlays += hud_icon_hunter_honored
+
+	if(hunter_data.thralled)
+		if(!hud_icon_hunter_thralled)
+			hud_icon_hunter_thralled = image('icons/mob/hud/hud_icons.dmi', src, "hunter_thralled")
+		holder.overlays += hud_icon_hunter_thralled
+	else if(hunter_data.gear)
+		if(!hud_icon_hunter_gear)
+			hud_icon_hunter_gear = image('icons/mob/hud/hud_icons.dmi', src, "hunter_gear")
+		holder.overlays += hud_icon_hunter_gear
+
+	hud_list[HUNTER_HUD] = holder
+
+/mob/living/carbon/Xenomorph/hud_set_hunter()
+	var/image/holder = hud_list[HUNTER_HUD]
+	holder.icon_state = "hudblank"
+	holder.overlays.Cut()
+	holder.pixel_x = -18
+	if(hunter_data.hunted)
+		if(!hud_icon_hunter_hunted)
+			hud_icon_hunter_hunted = image('icons/mob/hud/hud_icons.dmi', src, "hunter_hunted")
+		holder.overlays += hud_icon_hunter_hunted
+
+	if(hunter_data.dishonored)
+		if(!hud_icon_hunter_dishonored)
+			hud_icon_hunter_dishonored = image('icons/mob/hud/hud_icons.dmi', src, "hunter_dishonored")
+		holder.overlays += hud_icon_hunter_dishonored
+	else if(hunter_data.honored)
+		if(!hud_icon_hunter_honored)
+			hud_icon_hunter_honored = image('icons/mob/hud/hud_icons.dmi', src, "hunter_honored")
+		holder.overlays += hud_icon_hunter_honored
+
+	hud_list[HUNTER_HUD] = holder
+
 
 /mob/proc/hud_set_order()
 	return
@@ -716,7 +779,6 @@ var/global/image/hud_icon_hudfocus
 			hud_icon_hudfocus = image('icons/mob/hud/hud.dmi', src, "hudfocus")
 		holder.overlays += hud_icon_hudfocus
 	hud_list[ORDER_HUD] = holder
-
 
 
 

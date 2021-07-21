@@ -1,4 +1,10 @@
-/mob/living/carbon/Life()
+/mob/living/carbon/Initialize()
+	. = ..()
+	hunter_data = new /datum/huntdata
+	hunter_data.name = "[src.real_name]'s Hunter Data"
+	hunter_data.owner = src
+
+/mob/living/carbon/Life(delta_time)
 	..()
 
 	handle_fire() //Check if we're on fire
@@ -16,6 +22,10 @@
 
 	if(legcuffed)
 		QDEL_NULL(legcuffed)
+
+	if(hunter_data)
+		hunter_data.clean_data()
+		hunter_data = null
 
 	stomach_contents.Cut() //movable atom's Dispose() deletes all content, we clear stomach_contents to be safe.
 
@@ -54,14 +64,13 @@
 			playsound(user.loc, 'sound/effects/attackblob.ogg', 25, 1)
 
 			if(prob(max(4*(100*getBruteLoss()/maxHealth - 75),0))) //4% at 24% health, 80% at 5% health
-				last_damage_source = "chestbursting"
-				last_damage_mob = user
-				gib("chestbursting")
+				last_damage_data = create_cause_data("chestbursting", user)
+				gib(last_damage_data)
 	else if(!chestburst && (status_flags & XENO_HOST) && isXenoLarva(user))
 		var/mob/living/carbon/Xenomorph/Larva/L = user
 		L.chest_burst(src)
 
-/mob/living/carbon/ex_act(var/severity, var/direction, var/source, var/source_mob)
+/mob/living/carbon/ex_act(var/severity, var/direction, var/datum/cause_data/cause_data)
 
 	if(lying)
 		severity *= EXPLOSION_PRONE_MULTIPLIER
@@ -69,13 +78,10 @@
 	if(severity >= 30)
 		flash_eyes()
 
-	if(source)
-		last_damage_source = source
-	if(source_mob)
-		last_damage_mob = source_mob
+	last_damage_data = cause_data
 
 	if(severity >= health && severity >= EXPLOSION_THRESHOLD_GIB)
-		gib(source)
+		gib(cause_data)
 		return
 
 	apply_damage(severity, BRUTE)
@@ -130,7 +136,7 @@
 		if(D.spread_by_touch())
 			contract_disease(D, 0, 1, CONTACT_HANDS)
 
-	next_move += 7 //Adds some lag to the 'attack'
+	M.next_move += 7 //Adds some lag to the 'attack'. Adds up to 11 in combination with click_adjacent.
 	return
 
 /mob/living/carbon/electrocute_act(var/shock_damage, var/obj/source, var/siemens_coeff = 1.0, var/def_zone = null)
@@ -312,8 +318,13 @@
 	else //real item in hand, not a grab
 		thrown_thing = I
 
+
+
 	//actually throw it!
 	if(thrown_thing)
+
+		if(!(thrown_thing.try_to_throw(src)))
+			return
 		visible_message(SPAN_WARNING("[src] has thrown [thrown_thing]."), null, null, 5)
 
 		if(!lastarea)
@@ -431,9 +442,6 @@
 		SPAN_NOTICE("You extinguished the fire on [src]."), null, 5)
 
 /mob/living/carbon/resist_buckle()
-	if(istype(buckled, /obj/structure/bed/nest))
-		buckled.manual_unbuckle(src)
-		return
 
 	if(handcuffed)
 		next_move = world.time + 100
@@ -448,3 +456,20 @@
 			buckled.manual_unbuckle(src)
 	else
 		buckled.manual_unbuckle(src)
+
+/mob/living/carbon/examine(mob/user)
+	. = ..()
+	if(isYautja(user))
+		to_chat(user, SPAN_BLUE("[src] is worth [max(life_kills_total, 1)] honor."))
+		if(src.hunter_data.hunted)
+			to_chat(user, SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name]."))
+
+		if(src.hunter_data.dishonored)
+			to_chat(user, SPAN_RED("[src] was marked as dishonorable for '[src.hunter_data.dishonored_reason]'."))
+		else if(src.hunter_data.honored)
+			to_chat(user, SPAN_GREEN("[src] was honored for '[src.hunter_data.honored_reason]'."))
+
+		if(src.hunter_data.thralled)
+			to_chat(user, SPAN_GREEN("[src] was thralled by [src.hunter_data.thralled_set.real_name] for '[src.hunter_data.thralled_reason]'."))
+		else if(src.hunter_data.gear)
+			to_chat(user, SPAN_RED("[src] was marked as carrying gear by [src.hunter_data.gear_set]."))

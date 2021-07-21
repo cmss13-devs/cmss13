@@ -1,5 +1,6 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:31
-#define MAIN_SHIP_NAME "USS Almayer"
+#define MAIN_SHIP_NAME SSmapping.get_main_ship_name()
+#define MAIN_SHIP_DEFAULT_NAME "USS Almayer"
 //=================================================
 //Please don't edit these values without speaking to Errorage first	~Carn
 //Admin Permissions
@@ -51,7 +52,7 @@ var/command_name = "Central Command"
 var/station_name = "[MAIN_SHIP_NAME]"
 var/game_version = "Colonial Marines"
 var/changelog_hash = ""
-var/game_year = (text2num(time2text(world.realtime, "YYYY")) + 170)
+var/game_year = "2182"
 
 var/going = 1.0
 var/master_mode = "Distress Signal"
@@ -79,8 +80,7 @@ var/CELLRATE = 0.002	// multiplier for watts per tick <> cell storage (eg: 0.02 
 var/CHARGELEVEL = 0.0005 // Cap for how fast cells charge, as a percentage-per-tick (0.01 means cellcharge is capped to 1% per second)
 
 var/VehicleElevatorConsole
-var/HangarUpperElevator
-var/HangarLowerElevator
+var/VehicleGearConsole
 
 //Spawnpoints.
 var/list/fallen_list = list()

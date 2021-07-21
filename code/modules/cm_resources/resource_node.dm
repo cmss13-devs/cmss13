@@ -87,7 +87,7 @@
 /obj/structure/resource_node/plasma/attack_alien(mob/living/carbon/Xenomorph/X)
 	if(growth_level < max_growth_level)
 		to_chat(X, SPAN_NOTICE("This gas isn't ready to be harvested yet!"))
-		return
+		return XENO_NO_DELAY_ACTION
 	..()
 
 // Kick off the growing cycle

@@ -23,14 +23,13 @@
 
 /datum/equipment_preset/other/mutineer/leader/load_status(mob/living/carbon/human/H)
 	for(var/datum/action/human_action/activable/mutineer/A in H.actions)
-		A.remove_action(H)
+		A.remove_from(H)
 
 	var/list/abilities = subtypesof(/datum/action/human_action/activable/mutineer)
 
 
 	for(var/type in abilities)
-		var/datum/action/human_action/activable/mutineer/M = new type()
-		M.give_action(H)
+		give_action(H, type)
 
 
 /datum/equipment_preset/other/freelancer
@@ -73,7 +72,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	spawn_merc_helmet(H)
 
@@ -100,7 +99,7 @@
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/freelancer, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/faction/freelancer, WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp_knife, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	spawn_merc_helmet(H)
 
@@ -366,7 +365,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/souto, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses, WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/souto, WEAR_FEET)
-	var/obj/vehicle/souto/V = new
+	var/obj/vehicle/souto/super/V = new
 	V.forceMove(H.loc)
 	V.buckle_mob(H, H)
 
@@ -436,7 +435,7 @@
 	H.age = rand(21,45)
 
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
@@ -460,7 +459,7 @@
 	rank = "Samnite"
 
 /datum/equipment_preset/other/gladiator/champion/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/ert/security, WEAR_JACKET)
@@ -485,7 +484,7 @@
 	rank = "Spartacus"
 
 /datum/equipment_preset/other/gladiator/leader/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/bears, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/swat, WEAR_JACKET)
@@ -561,11 +560,10 @@
 	var/list/actions_to_add = subtypesof(/datum/action/human_action/activable/cult)
 
 	for(var/datum/action/human_action/activable/O in H.actions)
-		O.remove_action(H)
+		O.remove_from(H)
 
 	for(var/action_to_add in actions_to_add)
-		var/datum/action/human_action/activable/cult/O = new action_to_add()
-		O.give_action(H)
+		give_action(H, action_to_add)
 
 /datum/equipment_preset/other/xeno_cultist/leader
 	name = "Cultist - Xeno Cultist Leader"
@@ -589,8 +587,7 @@
 	var/list/types = subtypesof(/datum/action/human_action/activable/cult_leader/)
 
 	for(var/type in types)
-		var/datum/action/human_action/activable/cult_leader/O = new type()
-		O.give_action(H)
+		give_action(H, type)
 //*****************************************************************************************************/
 
 /datum/equipment_preset/other/professor_dummy
@@ -614,6 +611,7 @@
 	. = ..()
 	//Can't hug the dummy! Otherwise it's basically human...
 	H.huggable = FALSE
+	H.surgical_difficulty = SKILL_SURGERY_NOVICE //Nurses can practise surgery on it.
 
 /datum/equipment_preset/other/professor_dummy/load_gear(mob/living/carbon/human/H)
 	var/obj/item/device/professor_dummy_tablet/tablet = new /obj/item/device/professor_dummy_tablet(H)

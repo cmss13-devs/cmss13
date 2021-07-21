@@ -46,6 +46,45 @@
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
 	)
 
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training //Nonlethal stuff for events.
+	name = "\improper ColMarTech Automated Training Weapons Rack"
+	desc = "A automated weapon rack hooked up to a big storage of standard-issue weapons and non-lethal ammunition."
+
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/squad_prep/training/populate_product_list(var/scale)
+	listed_products = list(
+		list("PRIMARY FIREARMS", -1, null, null),
+		list("L42A Battle Rifle", round(scale * 10), /obj/item/weapon/gun/rifle/l42a, VENDOR_ITEM_REGULAR),
+		list("M37A2 Pump Shotgun", round(scale * 15), /obj/item/weapon/gun/shotgun/pump, VENDOR_ITEM_REGULAR),
+		list("M39 Submachine Gun", round(scale * 30), /obj/item/weapon/gun/smg/m39, VENDOR_ITEM_REGULAR),
+		list("M41A Pulse Rifle MK2", round(scale * 30), /obj/item/weapon/gun/rifle/m41a, VENDOR_ITEM_RECOMMENDED),
+
+		list("PRIMARY NONLETHAL AMMUNITION", -1, null, null),
+		list("Box of Beanbag Shells (12g)", round(scale * 15), /obj/item/ammo_magazine/shotgun/beanbag, VENDOR_ITEM_REGULAR),
+		list("L42A Rubber Magazine (10x24mm)", round(scale * 15), /obj/item/ammo_magazine/rifle/l42a/rubber, VENDOR_ITEM_REGULAR),
+		list("M39 Rubber Magazine (10x20mm)", round(scale * 25), /obj/item/ammo_magazine/smg/m39/rubber, VENDOR_ITEM_REGULAR),
+		list("M41A Rubber Magazine (10x24mm)", round(scale * 25), /obj/item/ammo_magazine/rifle/rubber, VENDOR_ITEM_REGULAR),
+
+		list("SIDEARMS", -1, null, null),
+		list("88 Mod 4 Combat Pistol", round(scale * 25), /obj/item/weapon/gun/pistol/mod88, VENDOR_ITEM_REGULAR),
+		list("M4A3 Service Pistol", round(scale * 25), /obj/item/weapon/gun/pistol/m4a3, VENDOR_ITEM_REGULAR),
+
+		list("SIDEARM NONLETHAL AMMUNITION", -1, null, null),
+		list("88M4 Rubber Magazine (9mm)", round(scale * 25), /obj/item/ammo_magazine/pistol/mod88/rubber, VENDOR_ITEM_REGULAR),
+		list("M4A3 Rubber Magazine (9mm)", round(scale * 25), /obj/item/ammo_magazine/pistol/rubber, VENDOR_ITEM_REGULAR),
+
+		list("ATTACHMENTS", -1, null, null),
+		list("Rail Flashlight", round(scale * 25), /obj/item/attachable/flashlight, VENDOR_ITEM_RECOMMENDED),
+		list("Underbarrel Flashlight Grip", round(scale * 10), /obj/item/attachable/flashlight/grip, VENDOR_ITEM_RECOMMENDED),
+		list("Underslung Grenade Launcher", round(scale * 25), /obj/item/attachable/attached_gun/grenade, VENDOR_ITEM_REGULAR), //They already get these as on-spawns, might as well formalize some spares.
+
+		list("UTILITIES", -1, null, null),
+		list("M07 Training Grenade", round(scale * 15), /obj/item/explosive/grenade/HE/training, VENDOR_ITEM_REGULAR),
+		list("M15 Rubber Pellet Grenade", round(scale * 10), /obj/item/explosive/grenade/HE/m15/rubber, VENDOR_ITEM_REGULAR),
+		list("M5 Bayonet", round(scale * 25), /obj/item/attachable/bayonet, VENDOR_ITEM_REGULAR),
+		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_RECOMMENDED)
+	)
+
 //------------SQUAD MARINE UNIFORM AND GEAR VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
@@ -77,11 +116,11 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Bayonet Sheath (Full)", 0, /obj/item/storage/pouch/bayonet, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Document Pouch", 0, /obj/item/storage/pouch/document/small, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Firstaid Pouch (Injectors)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
 		list("Firstaid Pouch (Pills)", 0, /obj/item/storage/pouch/firstaid/pills, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
 		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
 		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Medium General Pouch", 0, /obj/item/storage/pouch/general/medium, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Pistol Pouch", 0, /obj/item/storage/pouch/pistol, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
@@ -106,7 +145,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M37 Wooden Stock", 15, /obj/item/attachable/stock/shotgun, null, VENDOR_ITEM_REGULAR),
 		list("M39 Stock", 15, /obj/item/attachable/stock/smg, null, VENDOR_ITEM_REGULAR),
 		list("M41A Solid Stock", 15, /obj/item/attachable/stock/rifle, null, VENDOR_ITEM_REGULAR),
-		list("Quickfire Adapter", 15, /obj/item/attachable/quickfire, null, VENDOR_ITEM_REGULAR),
 		list("Recoil Compensator", 15, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),
 		list("Red-Dot Sight", 15, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
 		list("Reflex Sight", 15, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
@@ -123,6 +161,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M44 Heavy Speed Loader (.44)", 15, /obj/item/ammo_magazine/revolver/heavy, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
+		list("JTAC Instructional Pamphlet", 30, /obj/item/pamphlet/skill/jtac, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("Fuel Tank Strap Pouch", 15, /obj/item/storage/pouch/flamertank, null, VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 15, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),

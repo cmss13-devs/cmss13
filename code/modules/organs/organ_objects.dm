@@ -13,7 +13,8 @@
 	var/organ_type = /datum/internal_organ    // Used to spawn the relevant organ data when produced via a machine or spawn().
 	var/datum/internal_organ/organ_data       // Stores info when removed.
 
-/obj/item/organ/attack_self(mob/user as mob)
+/obj/item/organ/attack_self(mob/user)
+	..()
 
 	// Convert it to an edible form, yum yum.
 	if(!robotic && user.a_intent == INTENT_HELP && user.zone_selected == "mouth")

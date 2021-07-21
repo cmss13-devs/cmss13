@@ -155,7 +155,7 @@
 
 
 	//distance between each smoke cloud
-	var/const/arcLength = 2.3559
+#define arcLength 2.3559
 
 
 	//calculate positions for smoke coverage - then spawn smoke
@@ -181,6 +181,9 @@
 				continue
 			if(T in targetTurfs)
 				INVOKE_ASYNC(src, .proc/spawnSmoke, T, I, range)
+
+#undef arcLength
+
 
 //------------------------------------------
 // Randomizes and spawns the smoke effect.

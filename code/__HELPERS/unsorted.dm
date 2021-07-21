@@ -14,7 +14,7 @@
 //Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
 // For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
 #define can_puncture(W) (isitem(W) && (W.sharp || W.heat_source >= 400 || \
-							istype(W, /obj/item/tool/screwdriver) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
+							HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
 						)
 
 #define is_surgery_tool(W) (istype(W, /obj/item/tool/surgery))
@@ -556,6 +556,15 @@
 
 	return vehicles
 
+//Unlike the above adds object reference instead of number, for 100% pinpointing the needed vehicle
+/proc/get_multi_vehicles_admin()
+	var/list/vehicles = list()
+	for(var/obj/vehicle/multitile/MV as anything in GLOB.all_multi_vehicles)
+		var/name = "[MV.name] (\ref[MV]) ([get_area(MV)])"
+		vehicles[name] = MV
+
+	return vehicles
+
 /proc/get_holograms()
 	var/list/holograms = list()
 	var/list/namecounts = list()
@@ -811,10 +820,12 @@
 	var/y = min(world.maxy, max(1, A.y + dy))
 	return locate(x,y,A.z)
 
-/proc/anim(turf/location,atom/target,a_icon,a_icon_state as text,flick_anim as text,sleeptime = 0,direction as num)
+/proc/anim(turf/location,atom/target,a_icon,a_icon_state as text,flick_anim as text, qdel_in = 0,direction as num)
 //This proc throws up either an icon or an animation for a specified amount of time.
 //The variables should be apparent enough.
 	var/atom/movable/overlay/animation = new(location)
+	var/qdel_time = max(qdel_in, 1.5 SECONDS)
+	QDEL_IN(animation, qdel_time)
 	if(direction)
 		animation.setDir(direction)
 	animation.icon = a_icon
@@ -825,8 +836,6 @@
 		animation.icon_state = "blank"
 		animation.master = target
 		flick(flick_anim, animation)
-	sleep(max(sleeptime, 15))
-	qdel(animation)
 
 //Will return the contents of an atom recursivly to a depth of 'searchDepth'
 /atom/proc/GetAllContents(searchDepth = 5)
@@ -992,7 +1001,7 @@ var/global/image/action_blue_power_up
 	if(user_flags & BEHAVIOR_IMMOBILE)
 		L.status_flags |= IMMOBILE_ACTION
 
-	L.action_busy = TRUE // target is not tethered by action, the action is tethered by target though
+	L.action_busy++ // target is not tethered by action, the action is tethered by target though
 	L.resisting = FALSE
 	L.clicked_something = list()
 	if(has_target && target_is_mob)
@@ -1121,7 +1130,7 @@ var/global/image/action_blue_power_up
 	if(target && target_icon)
 		target.overlays -= target_icon
 
-	L.action_busy = FALSE
+	L.action_busy--
 	L.resisting = FALSE
 	if(target_is_mob)
 		T.resisting = FALSE
@@ -1136,16 +1145,13 @@ var/global/image/action_blue_power_up
 	if(A.vars.Find(lowertext(varname))) return 1
 	else return 0
 
-//Returns: all the areas in the world
-/proc/return_areas()
-	var/list/area/areas = list()
-	for(var/area/A in all_areas)
-		areas += A
-	return areas
-
-//Returns: all the areas in the world, sorted.
+//Returns: all the non-lighting areas in the world, sorted.
 /proc/return_sorted_areas()
-	return sortAtom(return_areas())
+	var/list/area/AL = list()
+	for(var/area/A in GLOB.sorted_areas)
+		if(!A.lighting_subarea)
+			AL += A
+	return AL
 
 //Takes: Area type as text string or as typepath OR an instance of the area.
 //Returns: A list of all turfs in areas of that type of that type in the world.
@@ -1162,8 +1168,15 @@ var/global/image/action_blue_power_up
 
 	var/list/turfs = list()
 	var/area/A = GLOB.areas_by_type[areatype]
-	for(var/turf/T in A)
-		turfs += T
+
+	// Fix it up with /area/var/related due to lighting shenanigans
+	var/list/area/LA
+	if(!length(A.related))
+		LA = list(A)
+	else LA = A.related
+	for(var/area/Ai in LA)
+		for(var/turf/T in Ai)
+			turfs += T
 
 	return turfs
 
@@ -1171,6 +1184,19 @@ var/global/image/action_blue_power_up
 	var/x_pos = null
 	var/y_pos = null
 	var/z_pos = null
+
+/datum/coords/New(var/turf/location)
+	. = ..()
+	if(location)
+		x_pos = location.x
+		y_pos = location.y
+		z_pos = location.z
+
+/datum/coords/proc/get_turf_from_coord()
+	if(!x_pos || !y_pos || !z_pos)
+		return
+
+	return locate(x_pos, y_pos, z_pos)
 
 /area/proc/move_contents_to(var/area/A, var/turftoleave=null, var/direction = null)
 	//Takes: Area. Optional: turf type to leave behind.
@@ -1553,18 +1579,18 @@ var/list/WALLITEMS = list(
 
 	return null
 
-// Returns true if arming a given grenade might be considered grief
-// Grenades are considered "griefy" if they are primed when all the following are true:
-// * The grenade is on the Almayer/dropship transit z levels
+// Returns true if arming a given explosive might be considered grief
+// Explosives are considered "griefy" if they are primed when all the following are true:
+// * The explosive is on the Almayer/dropship transit z levels
 // * The alert level is green/blue (alternatively, not red+)
 // * The dropship crash hasn't happened yet
-// * An admin hasn't disabled grenade antigrief
-// Certain areas may be exempt from this check. Look up grenade_antigrief_exempt_areas
-/proc/grenade_grief_check(var/obj/item/explosive/grenade/G)
-	var/turf/T = get_turf(G)
-	if(!(T.loc.type in grenade_antigrief_exempt_areas))
+// * An admin hasn't disabled explosive antigrief
+// Certain areas may be exempt from this check. Look up explosive_antigrief_exempt_areas
+/proc/explosive_grief_check(var/obj/item/explosive/E)
+	var/turf/T = get_turf(E)
+	if(!(T.loc.type in GLOB.explosive_antigrief_exempt_areas))
 		var/crash_occured = (SSticker?.mode?.is_in_endgame)
-		if(G.harmful && (T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && grenade_antigrief_on)
+		if((T.z in SSmapping.levels_by_any_trait(list(ZTRAIT_MARINE_MAIN_SHIP, ZTRAIT_LOWORBIT))) && (security_level < SEC_LEVEL_RED) && !crash_occured && explosive_antigrief_on)
 			return TRUE
 	return FALSE
 
@@ -1767,3 +1793,67 @@ var/list/WALLITEMS = list(
 			processing += A.contents
 			assembled += A
 	return assembled
+
+// Returns a list where [1] is all x values and [2] is all y values that overlap between the given pair of rectangles
+/proc/get_overlap(x1, y1, x2, y2, x3, y3, x4, y4)
+	var/list/region_x1 = list()
+	var/list/region_y1 = list()
+	var/list/region_x2 = list()
+	var/list/region_y2 = list()
+
+	// These loops create loops filled with x/y values that the boundaries inhabit
+	// ex: list(5, 6, 7, 8, 9)
+	for(var/i in min(x1, x2) to max(x1, x2))
+		region_x1["[i]"] = TRUE
+	for(var/i in min(y1, y2) to max(y1, y2))
+		region_y1["[i]"] = TRUE
+	for(var/i in min(x3, x4) to max(x3, x4))
+		region_x2["[i]"] = TRUE
+	for(var/i in min(y3, y4) to max(y3, y4))
+		region_y2["[i]"] = TRUE
+
+	return list(region_x1 & region_x2, region_y1 & region_y2)
+
+#define TURF_FROM_COORDS_LIST(List) (locate(List[1], List[2], List[3]))
+
+//Vars that will not be copied when using /DuplicateObject
+GLOBAL_LIST_INIT(duplicate_forbidden_vars,list(
+	"tag", "datum_components", "area", "type", "loc", "locs", "vars", "parent", "parent_type", "verbs", "ckey", "key",
+	"power_supply", "contents", "reagents", "stat", "x", "y", "z", "group", "atmos_adjacent_turfs", "comp_lookup",
+	"client_mobs_in_contents", "bodyparts", "internal_organs", "hand_bodyparts", "overlays_standing", "hud_list",
+	"actions", "AIStatus", "appearance", "managed_overlays", "managed_vis_overlays", "computer_id", "lastKnownIP", "implants",
+	"tgui_shared_states"
+	))
+
+/proc/DuplicateObject(atom/original, perfectcopy = TRUE, sameloc, atom/newloc = null)
+	RETURN_TYPE(original.type)
+	if(!original)
+		return
+	var/atom/O
+
+	if(sameloc)
+		O = new original.type(original.loc)
+	else
+		O = new original.type(newloc)
+
+	if(perfectcopy && O && original)
+		for(var/V in original.vars - GLOB.duplicate_forbidden_vars)
+			if(islist(original.vars[V]))
+				var/list/L = original.vars[V]
+				O.vars[V] = L.Copy()
+			else if(istype(original.vars[V], /datum) || ismob(original.vars[V]))
+				continue // this would reference the original's object, that will break when it is used or deleted.
+			else
+				O.vars[V] = original.vars[V]
+
+	if(ismob(O)) //Overlays are carried over despite disallowing them, if a fix is found remove this.
+		var/mob/M = O
+		M.overlays.Cut()
+		M.regenerate_icons()
+	return O
+
+/proc/convert_to_json_text(var/json_file_string)
+	var/json_file = file(json_file_string)
+	json_file = file2text(json_file)
+	json_file = json_decode(json_file)
+	return json_file

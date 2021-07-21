@@ -14,8 +14,8 @@
 	name = "uground"
 	icon_state = "blue"
 
-/area/bigred/ground/garage
-	name = "vehicle garage"
+/area/bigred/ground/garage_workshop
+	name = "\improper garage workshop"
 	icon_state = "green"
 	ceiling = CEILING_METAL
 
@@ -291,6 +291,13 @@
 	soundscape_playlist = SCAPE_PL_THUNDER
 	soundscape_interval = 50
 
+/area/bigredv2/Initialize()
+	. = ..()
+	if(SSticker.current_state > GAME_STATE_SETTING_UP)
+		add_thunder()
+	else
+		LAZYADD(GLOB.thunder_setup_areas, src)
+
 /area/bigredv2/outside
 	name = "\improper Colony Grounds"
 	icon_state = "red"
@@ -544,7 +551,7 @@
 	base_muffle = MUFFLE_HIGH
 
 /area/bigredv2/caves_research
-	name = "\improper W-Y Research Lab Caves"
+	name = "\improper Wey-Yu Research Lab Caves"
 	icon_state = "caves_research"
 	ceiling = CEILING_UNDERGROUND_ALLOW_CAS
 	sound_environment = 6

@@ -60,7 +60,7 @@
 
 /turf/open/floor/plating/plating_catwalk/attackby(obj/item/W as obj, mob/user as mob)
 	..()
-	if (istype(W, /obj/item/tool/crowbar))
+	if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		if(covered)
 			var/obj/item/stack/catwalk/R = new(usr.loc)
 			R.add_to_stacks(usr)
@@ -90,6 +90,12 @@
 
 /turf/open/floor/plating/plating_catwalk/prison
 	icon = 'icons/turf/floors/prison.dmi'
+
+/turf/open/floor/plating/plating_catwalk/strata
+	icon = 'icons/turf/floors/strata_floor.dmi'
+
+/turf/open/floor/plating/plating_catwalk/shiva
+	icon = 'icons/turf/floors/ice_colony/shiva_floor.dmi'
 
 
 
@@ -143,45 +149,24 @@
 /turf/open/floor/almayer/empty/proc/enter_depths(var/atom/movable/AM)
 	if(AM.throwing == 0 && istype(get_turf(AM), /turf/open/floor/almayer/empty))
 		AM.visible_message(SPAN_WARNING("[AM] falls into the depths!"), SPAN_WARNING("You fall into the depths!"))
-		if(get_area(src) == get_area(get_turf(HangarUpperElevator)))
-			var/list/droppoints = list()
-			for(var/turf/TL in get_area(get_turf(HangarLowerElevator)))
-				droppoints += TL
-			AM.forceMove(pick(droppoints))
-			if(ishuman(AM))
-				var/mob/living/carbon/human/human = AM
-				human.take_overall_damage(50, 0, "Blunt Trauma")
-				human.KnockDown(2)
-			for(var/mob/living/carbon/human/landedon in AM.loc)
-				if(AM == landedon)
-					continue
-				landedon.KnockDown(3)
-				landedon.take_overall_damage(50, 0, "Blunt Trauma")
-			if(isXeno(AM))
-				var/list/L = orange(rand(2,4))		// Not actually the fruit
-				for (var/mob/living/carbon/human/H in L)
-					H.KnockDown(3)
-					H.take_overall_damage(10, 0, "Blunt Trauma")
-			playsound(AM.loc, 'sound/effects/bang.ogg', 10, 0)
-		else
-			for(var/i in GLOB.disposal_retrieval_list)
-				var/obj/structure/disposaloutlet/retrieval/R = i
-				if(R.z != src.z)	continue
-				var/obj/structure/disposalholder/H = new()
-				AM.forceMove(H)
-				sleep(10)
-				H.forceMove(R)
-				for(var/mob/living/M in H)
-					M.take_overall_damage(100, 0, "Blunt Trauma")
-				sleep(20)
-				for(var/mob/living/M in H)
-					M.take_overall_damage(20, 0, "Blunt Trauma")
-				for(var/obj/effect/decal/cleanable/C in contents) //get rid of blood
-					qdel(C)
-				R.expel(H)
-				return
+		for(var/i in GLOB.disposal_retrieval_list)
+			var/obj/structure/disposaloutlet/retrieval/R = i
+			if(R.z != src.z)	continue
+			var/obj/structure/disposalholder/H = new()
+			AM.forceMove(H)
+			sleep(10)
+			H.forceMove(R)
+			for(var/mob/living/M in H)
+				M.take_overall_damage(100, 0, "Blunt Trauma")
+			sleep(20)
+			for(var/mob/living/M in H)
+				M.take_overall_damage(20, 0, "Blunt Trauma")
+			for(var/obj/effect/decal/cleanable/C in contents) //get rid of blood
+				qdel(C)
+			R.expel(H)
+			return
 
-			qdel(AM)
+		qdel(AM)
 
 	else
 		for(var/obj/effect/decal/cleanable/C in contents) //for the off chance of someone bleeding mid=flight
@@ -289,6 +274,9 @@
 	icon_state = "wood"
 	floor_tile = new/obj/item/stack/tile/wood
 
+/turf/open/floor/wood/ship
+	desc = "This metal floor has been painted to look like one made of wood. Unfortunately, wood and high pressure internal atmosphere don't mix well. Wood is a major fire hazard don't'cha know."
+
 /turf/open/floor/vault
 	icon_state = "rockvault"
 
@@ -304,6 +292,7 @@
 	intact_tile = 0
 	breakable_tile = FALSE
 	burnable_tile = FALSE
+	baseturfs = /turf/open/floor
 
 /turf/open/floor/engine/make_plating()
 	return
@@ -313,15 +302,15 @@
 		return
 	if(!user)
 		return
-	if(istype(C, /obj/item/tool/wrench))
+	if(HAS_TRAIT(C, TRAIT_TOOL_WRENCH))
 		user.visible_message(SPAN_NOTICE("[user] starts removing [src]'s protective cover."),
 		SPAN_NOTICE("You start removing [src]'s protective cover."))
 		playsound(src, 'sound/items/Ratchet.ogg', 25, 1)
 		if(do_after(user, 30 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 			new /obj/item/stack/rods(src, 2)
-			ChangeTurf(/turf/open/floor)
-			var/turf/open/floor/F = src
-			F.make_plating()
+			var/turf/open/floor/F = ScrapeAway()
+			if(istype(/turf/open/floor, F))
+				F.make_plating()
 
 
 /turf/open/floor/engine/ex_act(severity)

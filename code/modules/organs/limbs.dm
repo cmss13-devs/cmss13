@@ -59,6 +59,7 @@
 	var/vital //Lose a vital limb, die immediately.
 
 	var/has_stump_icon = FALSE
+	var/image/wound_overlay //Used to save time redefining it every wound update. Doesn't remember anything but the most recently used icon state.
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -77,6 +78,10 @@
 		parent.children.Add(src)
 	if(mob_owner)
 		owner = mob_owner
+
+	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_[0]")
+	wound_overlay.blend_mode = BLEND_INSET_OVERLAY
+	wound_overlay.color = owner.species.blood_color
 
 	forceMove(mob_owner)
 
@@ -201,10 +206,8 @@
 		fracture()
 /*
 	Describes how limbs (body parts) of human mobs get damage applied.
-	Less clear vars:
-	*	impact_name: name of an "impact icon." For now, is only relevant for projectiles but can be expanded to apply to melee weapons with special impact sprites.
 */
-/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/damage_source = "dismemberment", var/mob/attack_source = null)
+/obj/limb/proc/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, var/damage_source = "dismemberment", var/mob/attack_source = null)
 	if((brute <= 0) && (burn <= 0))
 		return 0
 
@@ -224,7 +227,7 @@
 
 	if(status & LIMB_BROKEN && prob(40) && brute > 10)
 		if(owner.pain.feels_pain)
-			owner.emote("scream") //Getting hit on broken hand hurts
+			INVOKE_ASYNC(owner, /mob.proc/emote, "scream") //Getting hit on broken hand hurts
 	if(used_weapon)
 		add_autopsy_data("[used_weapon]", brute + burn)
 
@@ -233,11 +236,11 @@
 	if((brute_dam + burn_dam + brute + burn) < max_damage || !CONFIG_GET(flag/limbs_can_break))
 		if(brute)
 			if(can_cut)
-				createwound(CUT, brute, impact_name, is_ff = is_ff)
+				createwound(CUT, brute, is_ff = is_ff)
 			else
-				createwound(BRUISE, brute, impact_name, is_ff = is_ff)
+				createwound(BRUISE, brute, is_ff = is_ff)
 		if(burn)
-			createwound(BURN, burn, impact_name, is_ff = is_ff)
+			createwound(BURN, burn, is_ff = is_ff)
 	else
 		//If we can't inflict the full amount of damage, spread the damage in other ways
 		//How much damage can we actually cause?
@@ -248,9 +251,9 @@
 			if(brute > 0)
 				//Inflict all brute damage we can
 				if(can_cut)
-					createwound(CUT, min(brute, can_inflict), impact_name, is_ff = is_ff)
+					createwound(CUT, min(brute, can_inflict), is_ff = is_ff)
 				else
-					createwound(BRUISE, min(brute, can_inflict), impact_name, is_ff = is_ff)
+					createwound(BRUISE, min(brute, can_inflict), is_ff = is_ff)
 				var/temp = can_inflict
 				//How much more damage can we inflict
 				can_inflict = max(0, can_inflict - brute)
@@ -259,7 +262,7 @@
 
 			if(burn > 0 && can_inflict)
 				//Inflict all burn damage we can
-				createwound(BURN, min(burn,can_inflict), impact_name, is_ff = is_ff)
+				createwound(BURN, min(burn,can_inflict), is_ff = is_ff)
 				//How much burn damage is left to inflict
 				remain_burn = max(0, burn - can_inflict)
 
@@ -285,7 +288,8 @@
 	src.update_damages()
 
 	//If limb was damaged before and took enough damage, try to cut or tear it off
-	if(old_brute_dam > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss)
+	var/no_perma_damage = owner.status_flags & NO_PERMANENT_DAMAGE
+	if(old_brute_dam > 0 && !is_ff && body_part != BODY_FLAG_CHEST && body_part != BODY_FLAG_GROIN && !no_limb_loss && !no_perma_damage)
 		var/obj/item/clothing/head/helmet/H = owner.head
 		if(!(body_part == BODY_FLAG_HEAD && istype(H) && !isSynth(owner))\
 			&& CONFIG_GET(flag/limbs_can_break)\
@@ -300,15 +304,9 @@
 	update_icon()
 	start_processing()
 
-/obj/limb/proc/heal_damage(brute, burn, internal = 0, robo_repair = 0)
+/obj/limb/proc/heal_damage(brute, burn, robo_repair)
 	if(status & LIMB_ROBOT && !robo_repair)
 		return
-
-	if(brute)
-		remove_all_bleeding(TRUE)
-
-	if(internal)
-		remove_all_bleeding(FALSE, TRUE)
 
 	//Heal damage on the individual wounds
 	for(var/datum/wound/W in wounds)
@@ -317,15 +315,13 @@
 
 		// heal brute damage
 		if(W.damage_type == CUT || W.damage_type == BRUISE)
+			var/old_brute = brute
 			brute = W.heal_damage(brute)
+			owner.pain.apply_pain(brute - old_brute)
 		else if(W.damage_type == BURN)
+			var/old_burn = burn
 			burn = W.heal_damage(burn)
-
-	if(internal)
-		owner.pain.apply_pain(-PAIN_BONE_BREAK)
-		status &= ~LIMB_BROKEN
-		status |= LIMB_REPAIRED
-		perma_injury = 0
+			owner.pain.apply_pain(burn - old_burn)
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()
@@ -380,7 +376,7 @@ This function completely restores a damaged organ to perfect condition.
 		wounds += I
 		owner.custom_pain("You feel something rip in your [display_name]!", 1)
 
-/obj/limb/proc/createwound(var/type = CUT, var/damage, var/impact_name, var/is_ff = FALSE)
+/obj/limb/proc/createwound(var/type = CUT, var/damage, var/is_ff = FALSE)
 	if(!damage)
 		return
 
@@ -389,7 +385,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(!is_ff && type != BURN && !(status & LIMB_ROBOT))
 		take_damage_internal_bleeding(damage)
 
-	if(status & LIMB_SPLINTED && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
+	if(!(status & LIMB_SPLINTED_INDESTRUCTIBLE) && (status & LIMB_SPLINTED) && damage > 5 && prob(50 + damage * 2.5)) //If they have it splinted, the splint won't hold.
 		status &= ~LIMB_SPLINTED
 		to_chat(owner, SPAN_DANGER("The splint on your [display_name] comes apart!"))
 		owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
@@ -471,6 +467,13 @@ This function completely restores a damaged organ to perfect condition.
 			qdel(I)
 
 
+///Checks if there's any external limb wounds, removes bleeding if there isn't.
+/obj/limb/proc/remove_wound_bleeding()
+	for(var/datum/wound/W as anything in wounds)
+		if(!W.internal)
+			return
+	remove_all_bleeding(TRUE)
+
 /*
 			PROCESSING & UPDATING
 */
@@ -479,19 +482,15 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/limb/proc/need_process()
 	if(status & LIMB_DESTROYED)	//Missing limb is missing
-		return 0
+		return TRUE
 	if(status && !(status & LIMB_ROBOT) && !(status & LIMB_REPAIRED)) // Any status other than destroyed or robotic requires processing
-		return 1
+		return TRUE
 	if(brute_dam || burn_dam)
-		return 1
-	if(last_dam != brute_dam + burn_dam) // Process when we are fully healed up.
-		last_dam = brute_dam + burn_dam
-		return 1
-	else
-		last_dam = brute_dam + burn_dam
+		return TRUE
 	if(knitting_time > 0)
-		return 1
-	return 0
+		return TRUE
+	update_wounds()
+	return FALSE
 
 /obj/limb/process()
 
@@ -576,8 +575,9 @@ This function completely restores a damaged organ to perfect condition.
 	// sync the organ's damage with its wounds
 	update_damages()
 	update_icon()
-	if (wound_disappeared)
+	if(wound_disappeared)
 		owner.update_med_icon()
+		remove_wound_bleeding()
 
 //Updates brute_damn and burn_damn from wound damages.
 /obj/limb/proc/update_damages()
@@ -594,9 +594,17 @@ This function completely restores a damaged organ to perfect condition.
 		number_wounds += W.amount
 
 /obj/limb/update_icon(forced = FALSE)
-	if(has_stump_icon && (!parent || !(parent.status & LIMB_DESTROYED)))
-		icon = 'icons/mob/humans/dam_human.dmi'
-		icon_state = "stump_[icon_name]"
+	if(parent && parent.status & LIMB_DESTROYED)
+		icon_state = ""
+		return
+
+	if(status & LIMB_DESTROYED)
+		if(has_stump_icon && !(status & LIMB_AMPUTATED))
+			icon = 'icons/mob/humans/dam_human.dmi'
+			icon_state = "stump_[icon_name]"
+		else
+			icon_state = ""
+		return
 
 	var/race_icon = owner.species.icobase
 
@@ -623,6 +631,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	icon = race_icon
 	icon_state = "[get_limb_icon_name(owner.species, b_icon, owner.gender, icon_name, e_icon)]"
+	wound_overlay.color = owner.species.blood_color
 
 	var/n_is = damage_state_text()
 	if (forced || n_is != damage_state)
@@ -666,10 +675,11 @@ This function completely restores a damaged organ to perfect condition.
 			DISMEMBERMENT
 */
 
-//Recursive setting of all child organs to amputated
+//Recursive setting of self and all child organs to amputated
 /obj/limb/proc/setAmputatedTree()
-	for(var/obj/limb/O in children)
-		O.status |= LIMB_AMPUTATED
+	status |= LIMB_AMPUTATED
+	update_icon()
+	for(var/obj/limb/O as anything in children)
 		O.setAmputatedTree()
 
 /mob/living/carbon/human/proc/remove_random_limb(var/delete_limb = 0)
@@ -818,8 +828,8 @@ This function completely restores a damaged organ to perfect condition.
 				var/lol = pick(cardinal)
 				step(organ,lol)
 
+		overlays.Cut() //Severed limbs shouldn't have damage overlays. This prevents issues with permanently bloody robot replacement limbs and excessively bloody stumps.
 		owner.update_body(1)
-		owner.UpdateDamageIcon(1)
 		owner.update_med_icon()
 
 		// OK so maybe your limb just flew off, but if it was attached to a pair of cuffs then hooray! Freedom!
@@ -898,25 +908,41 @@ This function completely restores a damaged organ to perfect condition.
 			knitting_time = -1
 			to_chat(owner, SPAN_WARNING("You feel your [display_name] stop knitting together as it absorbs damage!"))
 		return
-	if(owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE || owner.species.flags & SPECIAL_BONEBREAK || !owner.skills) //stops division by zero
-		bonebreak_probability = 100
+
+	if(owner.status_flags & NO_PERMANENT_DAMAGE)
+		owner.visible_message(\
+			SPAN_WARNING("[owner] withstands the blow!"),
+			SPAN_WARNING("Your [display_name] withstands the blow!"))
+		return
+
+	if((owner.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE) || owner.species.flags & SPECIAL_BONEBREAK) //stops division by zero
+		bonebreak_probability = 0
+
+	if(!owner.skills)
+		bonebreak_probability = null
+
 	//if the chance was not set by what called fracture(), the endurance check is done instead
-	if(!bonebreak_probability) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.
+	if(bonebreak_probability == null) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.
 		bonebreak_probability = 100 / Clamp(owner.skills.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
+
+	var/list/bonebreak_data = list("bonebreak_probability" = bonebreak_probability)
+	SEND_SIGNAL(owner, COMSIG_HUMAN_BONEBREAK_PROBABILITY, bonebreak_data)
+	bonebreak_probability = bonebreak_data["bonebreak_probability"]
+
 	if(prob(bonebreak_probability))
 		owner.recalculate_move_delay = TRUE
 		owner.visible_message(\
 			SPAN_WARNING("You hear a loud cracking sound coming from [owner]!"),
 			SPAN_HIGHDANGER("Something feels like it shattered in your [display_name]!"),
 			SPAN_HIGHDANGER("You hear a sickening crack!"))
-		playsound(owner,"bone_break", 45, 1)
+		playsound(owner, "bone_break", 45, TRUE)
 		start_processing()
 
 		status |= LIMB_BROKEN
 		status &= ~LIMB_REPAIRED
 		owner.pain.apply_pain(PAIN_BONE_BREAK)
 		broken_description = pick("broken","fracture","hairline fracture")
-		perma_injury = brute_dam
+		perma_injury = min_broken_damage
 	else
 		owner.visible_message(\
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
@@ -948,8 +974,9 @@ This function completely restores a damaged organ to perfect condition.
 	src.status &= ~LIMB_MUTATED
 	owner.update_body()
 
-/obj/limb/proc/get_damage()	//returns total damage
-	return max(brute_dam + burn_dam - perma_injury, perma_injury)	//could use health?
+///Returns total damage, or, if broken, the minimum fracture threshold, whichever is higher.
+/obj/limb/proc/get_damage()
+	return max(brute_dam + burn_dam, perma_injury)	//could use health?
 
 
 /obj/limb/proc/is_usable()
@@ -1002,61 +1029,43 @@ This function completely restores a damaged organ to perfect condition.
 	if(W)
 		W.forceMove(owner)
 
-/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target)
+/obj/limb/proc/apply_splints(obj/item/stack/medical/splint/S, mob/living/user, mob/living/carbon/human/target, var/indestructible_splints = FALSE)
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
-		if (target != user)
-			if(do_after(user, 50 * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				var/possessive = "[user == target ? "your" : "[target]'s"]"
-				var/possessive_their = "[user == target ? "their" : "[target]'s"]"
-				user.affected_message(target,
-					SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
-					SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
-					SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
-				status |= LIMB_SPLINTED
-				if(status & LIMB_BROKEN)
-					owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
-				else
-					owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
-				. = 1
-				owner.update_med_icon()
-		else
+		var/time_to_take = 5 SECONDS
+		if (target == user)
 			user.visible_message(SPAN_WARNING("[user] fumbles with the [S]"), SPAN_WARNING("You fumble with the [S]..."))
-			if(do_after(user, 150 * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-				user.visible_message(
-				SPAN_WARNING("[user] successfully applies [S] to their [display_name]."),
-				SPAN_NOTICE("You successfully apply [S] to your [display_name]."))
-				status |= LIMB_SPLINTED
-				if(status & LIMB_BROKEN)
-					owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
-				else
-					owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
-				. = 1
-				owner.update_med_icon()
+			time_to_take = 15 SECONDS
+
+		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			var/possessive = "[user == target ? "your" : "[target]'s"]"
+			var/possessive_their = "[user == target ? "their" : "[target]'s"]"
+			user.affected_message(target,
+				SPAN_HELPFUL("You finish applying <b>[S]</b> to [possessive] [display_name]."),
+				SPAN_HELPFUL("[user] finishes applying <b>[S]</b> to your [display_name]."),
+				SPAN_NOTICE("[user] finish applying [S] to [possessive_their] [display_name]."))
+			status |= LIMB_SPLINTED
+			if(indestructible_splints)
+				status |= LIMB_SPLINTED_INDESTRUCTIBLE
+
+			if(status & LIMB_BROKEN)
+				owner.pain.apply_pain(-PAIN_BONE_BREAK_SPLINTED)
+			else
+				owner.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
+			. = TRUE
+			owner.update_med_icon()
 
 
 
 /obj/limb/proc/update_damage_icon_part()
-	var/image/DI
-
 	var/brutestate = copytext(damage_state, 1, 2)
 	var/burnstate = copytext(damage_state, 2)
 	if(brutestate != "0")
-		DI = new /image('icons/mob/humans/dam_human.dmi', "grayscale_[brutestate]")
-		DI.blend_mode = BLEND_INSET_OVERLAY
-		DI.color = owner.species.blood_color
-		overlays += DI
+		wound_overlay.icon_state = "grayscale_[brutestate]"
+		overlays += wound_overlay
 
 	if(burnstate != "0")
-		DI = new /image('icons/mob/humans/dam_human.dmi', "burn_[burnstate]")
-		DI.blend_mode = BLEND_INSET_OVERLAY
-		overlays += DI
-
-	// for(var/datum/wound/W in wounds)
-	// 	if(W.impact_icon)
-	// 		DI = new /image(W.impact_icon)
-	// 		DI.blend_mode = BLEND_INSET_OVERLAY
-	// 		overlays += DI
-
+		wound_overlay.icon_state = "burn_[burnstate]"
+		overlays += wound_overlay
 
 //called when limb is removed or robotized, any ongoing surgery and related vars are reset
 /obj/limb/proc/reset_limb_surgeries()
@@ -1219,10 +1228,10 @@ This function completely restores a damaged organ to perfect condition.
 	overlays += eyes
 
 	if(owner.lip_style && (owner.species && owner.species.flags & HAS_LIPS))
-		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "camo_[owner.lip_style]_s")
+		var/icon/lips = new /icon('icons/mob/humans/onmob/human_face.dmi', "paint_[owner.lip_style]")
 		overlays += lips
 
-/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, impact_name = null, var/mob/attack_source = null)
+/obj/limb/head/take_damage(brute, burn, sharp, edge, used_weapon = null, list/forbidden_limbs = list(), no_limb_loss, var/mob/attack_source = null)
 	. = ..()
 	if (!disfigured)
 		if (brute_dam > 50 || brute_dam > 40 && prob(50))
@@ -1235,10 +1244,10 @@ This function completely restores a damaged organ to perfect condition.
 		return
 	if(type == "brute")
 		owner.visible_message(SPAN_DANGER("You hear a sickening cracking sound coming from \the [owner]'s face."),	\
-		SPAN_DANGER("<b>Your face becomes unrecognizible mangled mess!</b>"),	\
+		SPAN_DANGER("<b>Your face becomes an unrecognizible mangled mess!</b>"),	\
 		SPAN_DANGER("You hear a sickening crack."))
 	else
-		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into mangled mess!"),	\
+		owner.visible_message(SPAN_DANGER("[owner]'s face melts away, turning into a mangled mess!"),	\
 		SPAN_DANGER("<b>Your face melts off!</b>"),	\
 		SPAN_DANGER("You hear a sickening sizzle."))
 	disfigured = 1

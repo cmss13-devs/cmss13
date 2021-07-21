@@ -32,6 +32,8 @@
 		)
 
 /obj/item/device/gripper/attack_self(mob/user as mob)
+	..()
+
 	if(wrapped)
 		wrapped.attack_self(user)
 

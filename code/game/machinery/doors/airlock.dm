@@ -131,13 +131,13 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	playsound(src, 'sound/effects/metal_crash.ogg', 25, 1)
 	qdel(src)
 
-/obj/structure/machinery/door/airlock/ex_act(severity, explosion_direction)
+/obj/structure/machinery/door/airlock/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	var/exp_damage = severity * EXPLOSION_DAMAGE_MULTIPLIER_DOOR
 	var/location = get_turf(src)
 	if(!density)
 		exp_damage *= EXPLOSION_DAMAGE_MODIFIER_DOOR_OPEN
 	if(take_damage(exp_damage)) // destroyed by explosion, shards go flying
-		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light)
+		create_shrapnel(location, rand(2,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light, cause_data)
 
 /obj/structure/machinery/door/airlock/get_explosion_resistance()
 	if(density)
@@ -148,14 +148,14 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	else
 		return FALSE
 
-/obj/structure/machinery/door/airlock/bullet_act(var/obj/item/projectile/Proj)
-	bullet_ping(Proj)
-	if(Proj.ammo.damage)
-		if(Proj.ammo.flags_ammo_behavior & AMMO_ROCKET)
-			take_damage(Proj.ammo.damage * 4, Proj.firer) // rockets wreck airlocks
+/obj/structure/machinery/door/airlock/bullet_act(var/obj/item/projectile/P)
+	bullet_ping(P)
+	if(P.damage)
+		if(P.ammo.flags_ammo_behavior & AMMO_ROCKET)
+			take_damage(P.damage * 4, P.firer) // rockets wreck airlocks
 			return TRUE
 		else
-			take_damage(Proj.ammo.damage, Proj.firer)
+			take_damage(P.damage, P.firer)
 			return TRUE
 	return FALSE
 
@@ -477,7 +477,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 
 		switch(action)
 			if("cut")
-				if(!iswirecutter(usr.get_active_hand()))
+				var/obj/item/held_item = usr.get_held_item()
+				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 					to_chat(usr, SPAN_WARNING("You need wirecutters!"))
 					return TRUE
 
@@ -491,7 +492,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					SSclues.create_print(get_turf(usr), usr, "The fingerprint contains oil and wire pieces.")
 				. = TRUE
 			if("pulse")
-				if(!ismultitool(usr.get_active_hand()))
+				var/obj/item/held_item = usr.get_held_item()
+				if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 					to_chat(usr, SPAN_WARNING("You need a multitool!"))
 					return TRUE
 
@@ -506,7 +508,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 					if(getAssembly(target_wire))
 						return TRUE
 
-					if(!skillcheck(usr, SKILL_ANTAG, SKILL_ANTAG_TRAINED))
+					if(!skillcheckexplicit(usr, SKILL_ANTAG, SKILL_ANTAG_AGENT))
 						to_chat(usr, SPAN_WARNING("You don't seem to know how to perform this action."))
 						return TRUE
 
@@ -589,7 +591,7 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				update_icon()
 		return
 
-	else if(istype(C, /obj/item/tool/screwdriver))
+	else if(HAS_TRAIT(C, TRAIT_TOOL_SCREWDRIVER))
 		if(no_panel)
 			to_chat(user, SPAN_WARNING("\The [src] has no panel to open!"))
 			return
@@ -598,16 +600,17 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		to_chat(user, SPAN_NOTICE("You [panel_open ? "open" : "close"] [src]'s panel."))
 		update_icon()
 
-	else if(istype(C, /obj/item/tool/wirecutters))
+	else if(HAS_TRAIT(C, TRAIT_TOOL_WIRECUTTERS))
 		return attack_hand(user)
 
-	else if(istype(C, /obj/item/device/multitool))
+	else if(HAS_TRAIT(C, TRAIT_TOOL_MULTITOOL))
 		return attack_hand(user)
 
-	else if(istype(C, /obj/item/weapon/gun))
+	else if(isgun(C))
 		var/obj/item/weapon/gun/G = C
 		for(var/slot in G.attachments)
 			if(istype(G.attachments[slot], /obj/item/attachable/bayonet))
+				var/obj/item/attachable/bayonet/a_bayonet = G.attachments[slot]
 				if(arePowerSystemsOn())
 					to_chat(user, SPAN_WARNING("The airlock's motors resist your efforts to force it."))
 				else if(locked)
@@ -617,12 +620,12 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 				else if(!operating)
 					spawn(0)
 						if(density)
-							to_chat(user, SPAN_NOTICE("You start forcing the airlock open with [G.attachments[slot]]."))
-							if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+							to_chat(user, SPAN_NOTICE("You start forcing the airlock open with [a_bayonet]."))
+							if(do_after(user, a_bayonet.pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 								open(1)
 						else
-							to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with [G.attachments[slot]]."))
-							if(do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+							to_chat(user, SPAN_NOTICE("You start forcing the airlock shut with [a_bayonet]."))
+							if(do_after(user, a_bayonet.pry_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 								close(1)
 
 	else if(C.pry_capable)

@@ -186,7 +186,7 @@
 				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[allowed_hat_items[O.type]]", color, RESET_COLOR)
 				ret.overlays += I
 
-		return ret
+	return ret
 
 /obj/item/clothing/head/cmcap/verb/fliphat()
 	set name = "Flip hat"
@@ -339,7 +339,7 @@
 	)
 
 /obj/item/clothing/head/beret/marine/commander/dress
-	name = "marine captain dress beret"
+	name = "marine captain white beret"
 	icon_state = "codressberet"
 	desc = "A white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
 
@@ -353,6 +353,11 @@
 	name = "marine commodore beret"
 	desc = "A blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
 	icon_state = "cdreberet"
+
+/obj/item/clothing/head/beret/marine/commander/cdrechief
+	name = "marine commodore-in-chief beret"
+	desc = "A dark blue beret signifying the Chief of all Commodores. Rumors about the commodore-in-chief position being simply an alias for an Admiral have been declared as false."
+	icon_state = "cdrechiefberet"
 
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
@@ -389,7 +394,7 @@
 
 //==========================//PROTECTIVE\\===============================\\
 //=======================================================================\\
-
+D
 /obj/item/clothing/head/ushanka
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
@@ -406,18 +411,20 @@
 	flags_cold_protection = BODY_FLAG_HEAD
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS|HIDETOPHAIR
+	flags_inv_hide = HIDEEARS
 	anti_hug = 1
 
-	attack_self(mob/user as mob)
-		if(src.icon_state == "ushankadown")
-			src.icon_state = "ushankaup"
-			src.item_state = "ushankaup"
-			to_chat(user, "You raise the ear flaps on the ushanka.")
-		else
-			src.icon_state = "ushankadown"
-			src.item_state = "ushankadown"
-			to_chat(user, "You lower the ear flaps on the ushanka.")
+/obj/item/clothing/head/ushanka/attack_self(mob/user)
+	..()
+
+	if(src.icon_state == "ushankadown")
+		src.icon_state = "ushankaup"
+		src.item_state = "ushankaup"
+		to_chat(user, "You raise the ear flaps on the ushanka.")
+	else
+		src.icon_state = "ushankadown"
+		src.item_state = "ushankadown"
+		to_chat(user, "You lower the ear flaps on the ushanka.")
 
 
 /obj/item/clothing/head/bearpelt
@@ -444,6 +451,9 @@
 	name = "\improper Black Beret"
 	desc = "Worn by officers of special units."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
 	icon_state = "ivan_beret"
 	item_state = "ivan_beret"
 	siemens_coefficient = 2.0
@@ -460,33 +470,6 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	flags_inventory = COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
-
-/obj/item/clothing/head/uppcap
-	name = "\improper armored UPP cap"
-	desc = "Standard UPP head gear for covert operations and low-ranking officers alike. Sells for high prices on the black market due to their rarity."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	icon_state = "upp_cap"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
-	siemens_coefficient = 2.0
-	flags_armor_protection = BODY_FLAG_HEAD
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_laser = CLOTHING_ARMOR_LOW
-	armor_energy = CLOTHING_ARMOR_LOW
-	armor_bomb = CLOTHING_ARMOR_LOW
-	armor_bio = CLOTHING_ARMOR_MEDIUM
-	armor_rad = CLOTHING_ARMOR_LOW
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	flags_cold_protection = BODY_FLAG_HEAD
-	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	flags_inventory = BLOCKSHARPOBJ
-	flags_inv_hide = HIDEEARS
-
-/obj/item/clothing/head/uppcap/beret
-	name = "\improper armored UPP beret"
-	icon_state = "upp_beret"
 
 /obj/item/clothing/head/freelancer
 	name = "\improper armored Freelancer cap"
@@ -577,6 +560,26 @@
 
 /obj/item/clothing/head/booniehat/New()
 	select_gamemode_skin(/obj/item/clothing/head/booniehat)
+	..()
+
+/obj/item/clothing/head/durag
+	name = "durag"
+	desc = "An improvised head wrap made out of a standard issue neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
+	icon_state = "durag"
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	flags_inv_hide = HIDETOPHAIR
+	item_icons = list(
+		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
+	)
+
+/obj/item/clothing/head/durag/black
+	icon_state = "duragblack"
+	desc = "An improvised head wrap made out of a black neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
+	icon = 'icons/obj/items/clothing/cm_hats.dmi'
+	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/head/durag/New()
+	select_gamemode_skin(/obj/item/clothing/head/durag)
 	..()
 
 /obj/item/clothing/head/drillhat

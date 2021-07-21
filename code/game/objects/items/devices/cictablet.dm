@@ -24,10 +24,13 @@
 	var/cooldown_message = 0
 
 /obj/item/device/cotablet/attack_self(mob/user as mob)
+	..()
+
 	if(src.allowed(user))
 		user.set_interaction(src)
 		interact(user)
-	else to_chat(user, SPAN_DANGER("Access denied."))
+	else
+		to_chat(user, SPAN_DANGER("Access denied."))
 
 /obj/item/device/cotablet/interact(mob/user as mob)
 	if(!on)
@@ -42,26 +45,14 @@
 		if(STATE_DEFAULT)
 			dat += "<BR><A HREF='?src=\ref[src];operation=announce'>Make an announcement</A>"
 			dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
+			dat += "<BR><A HREF='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 			dat += "<BR><hr>"
-			dat += "<BR>DEFCON [defcon_controller.current_defcon_level]: [defcon_controller.check_defcon_percentage()]%"
-			dat += "<BR>Threat assessment level: [defcon_controller.last_objectives_completion_percentage*100]%"
-			dat += "<BR>Remaining DEFCON asset budget: $[defcon_controller.remaining_reward_points * DEFCON_TO_MONEY_MULTIPLIER]."
-			dat += "<BR><A href='?src=\ref[src];operation=defcon'>Enable DEFCON assets</A>"
-			dat += "<BR><A href='?src=\ref[src];operation=defconlist'>List DEFCON assets</A>"
 			switch(EvacuationAuthority.evac_status)
 				if(EVACUATION_STATUS_STANDING_BY)
-					dat += "<BR><hr>"
-					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate emergency evacuation</A>"
-
-		if(STATE_DEFCONLIST)
-			for(var/str in typesof(/datum/defcon_reward))
-				var/datum/defcon_reward/DR = new str
-				if(!DR.cost)
-					continue
-				dat += "DEFCON [DR.minimum_defcon_level] - [DR.name]<BR>"
+					dat += "<BR><A HREF='?src=\ref[src];operation=evacuation_start'>Initiate Emergency Evacuation</A>"
 
 		if(STATE_EVACUATION)
-			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
+			dat += "Are you sure you want to evacuate the [MAIN_SHIP_NAME]? This cannot be undone from the tablet. <A HREF='?src=\ref[src];operation=evacuation_start'>Confirm</A>"
 
 	dat += "<BR>[(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A>|" : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> "
 	show_browser(user, dat, "Commanding Officer's Tablet", "communications", "size=400x500")
@@ -69,20 +60,29 @@
 	updateDialog()
 	return
 
+/obj/item/device/cotablet/proc/update_mapview(var/close = 0)
+	if (close || !current_mapviewer || !Adjacent(current_mapviewer))
+		close_browser(current_mapviewer, "marineminimap")
+		current_mapviewer = null
+		return
+
+	if(!istype(marine_mapview_overlay_5))
+		overlay_marine_mapview()
+
+	current_mapviewer << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
+	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
+
 /obj/item/device/cotablet/Topic(href, href_list)
 	if(..())
 		return FALSE
 	usr.set_interaction(src)
 
+	if (href_list["close"] && current_mapviewer)
+		close_browser(current_mapviewer, "marineminimap")
+		current_mapviewer = null
+		return
+
 	switch(href_list["operation"])
-		if("defcon")
-			defcon_controller.list_and_purchase_rewards()
-			return
-
-		if("defconlist")
-			state = STATE_DEFCONLIST
-			interact(usr)
-
 		if("main")
 			state = STATE_DEFAULT
 			interact(usr)
@@ -96,9 +96,15 @@
 			if(!input || world.time < cooldown_message + COOLDOWN_COMM_MESSAGE || !(usr in view(1, src)))
 				return FALSE
 
-			input += "<br><br><i>- Sent from USCM Command Tablet</i>"
+			var/signed = null
+			if(ishuman(usr))
+				var/mob/living/carbon/human/H = usr
+				var/obj/item/card/id/id = H.wear_id
+				if(istype(id))
+					var/paygrade = get_paygrades(id.paygrade, FALSE, H.gender)
+					signed = "[paygrade] [id.registered_name]"
 
-			marine_announcement(input)
+			marine_announcement(input, signature = signed)
 			message_staff("[key_name(usr)] has made a command annoucement.")
 			log_announcement("[key_name(usr)] has announced the following: [input]")
 			cooldown_message = world.time
@@ -109,6 +115,14 @@
 				return
 			if(give_medal_award(usr.loc))
 				visible_message(SPAN_NOTICE("[src] prints a medal."))
+
+		if("mapview")
+			if(current_mapviewer)
+				update_mapview(TRUE)
+				return
+			current_mapviewer = usr
+			update_mapview()
+			return
 
 		if("evacuation_start")
 			if(state == STATE_EVACUATION)

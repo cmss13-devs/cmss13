@@ -47,7 +47,13 @@
 
 
 /obj/item/grab/attack_self(mob/user)
-	if(!ismob(grabbed_thing) || world.time < (last_upgrade + UPGRADE_COOLDOWN * user.get_skill_duration_multiplier(SKILL_CQC)))
+	..()
+	var/grab_delay = UPGRADE_COOLDOWN
+	var/list/grabdata = list("grab_delay" = grab_delay)
+	SEND_SIGNAL(user, COMSIG_MOB_GRAB_UPGRADE, grabdata)
+	grab_delay = grabdata["grab_delay"]
+
+	if(!ismob(grabbed_thing) || world.time < (last_upgrade + grab_delay * user.get_skill_duration_multiplier(SKILL_CQC)))
 		return
 
 	if(!ishuman(user)) //only humans can reinforce a grab.
@@ -83,7 +89,7 @@
 
 	victim.update_canmove()
 
-/obj/item/grab/attack(mob/living/M, mob/living/user, def_zone)
+/obj/item/grab/attack(mob/living/M, mob/living/user)
 	if(M == grabbed_thing)
 		attack_self(user)
 	else if(M == user && user.pulling && isXeno(user))

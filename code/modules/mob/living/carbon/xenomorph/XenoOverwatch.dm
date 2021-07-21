@@ -19,7 +19,7 @@
 		return FALSE
 
 	var/isQueen = FALSE
-	if (X.caste_name == "Queen")
+	if (X.caste_type == XENO_CASTE_QUEEN)
 		isQueen = TRUE
 
 	if(!X.hive.living_xeno_queen && !X.hive.allow_no_queen_actions)
@@ -93,7 +93,7 @@
 			to_chat(src, SPAN_XENOWARNING("You are already watching that sister!"))
 			return
 
-		if (caste_name != "Queen" && is_zoomed)
+		if (caste_type != XENO_CASTE_QUEEN && is_zoomed)
 			zoom_out()
 
 
@@ -140,7 +140,7 @@
 		if(!check_state(1))
 			return
 
-		var/isQueen = (src.caste_name == "Queen")
+		var/isQueen = (src.caste_type == XENO_CASTE_QUEEN)
 
 		var/mob/living/carbon/Xenomorph/xenoTarget = locate(href_list[XENO_OVERWATCH_TARGET_HREF]) in GLOB.living_xeno_list
 		var/mob/living/carbon/Xenomorph/xenoSrc = locate(href_list[XENO_OVERWATCH_SRC_HREF]) in GLOB.living_xeno_list

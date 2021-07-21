@@ -367,7 +367,7 @@
 				<body>
 				<center>
 				<br>
-				<b style='font-size: 12px;'>Weston-Yamada - Building Better Worlds</b>
+				<b style='font-size: 12px;'>Weyland-Yutani - Building Better Worlds</b>
 				<h1>Autonomous Power Loader Unit \"Ripley\"</h1>
 				</center>
 				<h2>Specifications:</h2>
@@ -416,7 +416,7 @@
 					<li>Internal armor is plasteel for additional strength.</li>
 					<li>External armor must be installed in 2 parts, totalling 10 sheets.</li>
 					<li>Completed mech is more resilient against fire, and is a bit more durable overall.</li>
-					<li>Weston-Yamada is determined to ensure the safety of its <s>investments</s> employees.</li>
+					<li>Weyland-Yutani is determined to ensure the safety of its <s>investments</s> employees.</li>
 				</ul>
 				</body>
 			</html>
@@ -742,7 +742,7 @@
 	name = "Surgical Reference Manual"
 	desc = "A quick reference manual for surgical procedures."
 	icon_state = "bookMedical"
-	author = "Weston-Yamada Medicine Department"
+	author = "Weyland-Yutani Medicine Department"
 	title = "Surgical Reference Manual"
 
 	dat = {"
@@ -763,7 +763,7 @@
 	name = "WY Medical Diagnostics Manual"
 	desc = "First, do no harm. A detailed medical practitioner's guide."
 	icon_state = "bookMedical"
-	author = "Weston-Yamada Medicine Department"
+	author = "Weyland-Yutani Medicine Department"
 	title = "WY Medical Diagnostics Manual"
 
 	dat = {"<html>
@@ -781,7 +781,7 @@
 				<br>
 				<h1>The Oath</h1>
 
-				<i>The Medical Oath sworn by recognised medical practitioners in the employ of Weston-Yamada</i><br>
+				<i>The Medical Oath sworn by recognised medical practitioners in the employ of Weyland-Yutani</i><br>
 
 				<ol>
 					<li>Now, as a new doctor, I solemnly promise that I will, to the best of my ability, serve humanity-caring for the sick, promoting good health, and alleviating pain and suffering.</li>
@@ -941,7 +941,7 @@
 /obj/item/book/manual/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
-	author = "Weston-Yamada"
+	author = "Weyland-Yutani"
 	title = "The Film Noir: Proper Procedures for Investigations"
 
 	dat = {"<html>
@@ -1000,7 +1000,7 @@
 				</head>
 				<body>
 				<h1>Nuclear Explosives 101</h1>
-				Hello and thank you for choosing the CLF for your nuclear information needs. Today's crash course will deal with the operation of a Fusion Class Weston-Yamada made Nuclear Device.<br><br>
+				Hello and thank you for choosing the CLF for your nuclear information needs. Today's crash course will deal with the operation of a Fusion Class Weyland-Yutani made Nuclear Device.<br><br>
 
 				First and foremost, DO NOT TOUCH ANYTHING UNTIL THE BOMB IS IN PLACE. Pressing any button on the compacted bomb will cause it to extend and bolt itself into place. If this is done, to unbolt it, one must completely log in, which at this time may not be possible.<br>
 
@@ -1025,7 +1025,7 @@
 
 				Remember the order:<br>
 				<b>Disk, Code, Safety, Timer, Disk, RUN!</b><br><br>
-				Intelligence Analysts believe that normal Weston-Yamada procedure is for the Commanding Officer, or Captain, to secure the nuclear authentication disk.<br><br>
+				Intelligence Analysts believe that normal Weyland-Yutani procedure is for the Commanding Officer, or Captain, to secure the nuclear authentication disk.<br><br>
 
 				Good luck!
 				</body>

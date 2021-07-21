@@ -1,5 +1,7 @@
+// Enables a tool to test ingame click rate.
+#define DEBUG_CLICK_RATE	0
 
-// 1 decisecond click delay (above and beyond mob/next_move)
+/// 1 decisecond click delay (above and beyond mob/next_move)
 /mob/var/next_click = 0
 /*
 	client/Click is called every time a client clicks anywhere, it should never be overridden.
@@ -16,23 +18,27 @@
 */
 
 /client/Click(atom/A, location, control, params)
-	if (control)	// No .click macros allowed
+	if (control && !ignore_next_click)	// No .click macros allowed, and only one click per mousedown.
+		ignore_next_click = TRUE
 		return usr.do_click(A, location, params)
 
 /mob/proc/do_click(atom/A, location, params)
+	// We'll be sending a lot of signals and things later on, this will save time.
+	if(!client)
+		return
 	// No clicking on atoms with the NOINTERACT flag
 	if ((A.flags_atom & NOINTERACT))
 		if (istype(A, /obj/screen/click_catcher))
 			var/list/mods = params2list(params)
-			var/turf/TU = params2turf(mods["screen-loc"], get_turf(usr.client ? usr.client.eye : usr), usr.client)
+			var/turf/TU = params2turf(mods["screen-loc"], get_turf(client.eye), client)
 			if (TU)
 				do_click(TU, location, params)
 		return
 
-	if (world.time <= next_click)
+	if (world.time < next_click)
 		return
 
-	next_click = world.time + 1
+	next_click = world.time + 1 //Maximum code-permitted clickrate 10.26/s, practical maximum manual rate: 8.5, autoclicker maximum: between 7.2/s and 8.5/s.
 	var/list/mods = params2list(params)
 
 	if (!clicked_something)
@@ -43,6 +49,9 @@
 
 	// Don't allow any other clicks while dragging something
 	if (mods["drag"])
+		return
+
+	if(SEND_SIGNAL(client, COMSIG_CLIENT_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
 		return
 
 	if(SEND_SIGNAL(src, COMSIG_MOB_PRE_CLICK, A, mods) & COMPONENT_INTERRUPT_CLICK)
@@ -72,13 +81,13 @@
 		RestrainedClickOn(A)
 		return
 
-	// Throwing stuff, can't throw on inventory items nor screen objects
-	if (throw_mode && A.loc != src && !istype(A, /obj/screen))
+	// Throwing stuff, can't throw on inventory items nor screen objects nor items inside storages.
+	if (throw_mode && A.loc != src && !isstorage(A.loc) && !istype(A, /obj/screen))
 		throw_item(A)
 		return
 
 	// Last thing clicked is tracked for something somewhere.
-	if(!istype(A,/obj/item/weapon/gun) && !isturf(A) && !istype(A,/obj/screen))
+	if(!isgun(A) && !isturf(A) && !istype(A,/obj/screen))
 		last_target_click = world.time
 
 	var/obj/item/W = get_active_hand()
@@ -88,8 +97,8 @@
 		mode()
 		return
 
-
-	if (A == src && client && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
+	//Self-harm preference. isXeno check because xeno clicks on self are redirected to the turf below the pointer.
+	if (A == src && client.prefs && client.prefs.toggle_prefs & TOGGLE_IGNORE_SELF && src.a_intent != INTENT_HELP && !isXeno(src) && (!W || !(W.flags_item & (NOBLUDGEON|ITEM_ABSTRACT))))
 		if (world.time % 3)
 			to_chat(src, SPAN_NOTICE("You have the discipline not to hurt yourself."))
 		return
@@ -108,44 +117,31 @@
 		click_adjacent(A, W, mods)
 		return
 
-	if(A.loc)
-		var/obj/structure/surface/S
-		if(istype(A.loc, /obj/structure/surface))
-			S = A.loc
-		else if(A.loc.loc && istype(A.loc.loc, /obj/structure/surface))//for items inside storage containers
-			S = A.loc.loc
-		if(S && S.Adjacent(src))
-			click_adjacent(A, W, mods)
-			S.draw_item_overlays()
-			return
-
 	// If not standing next to the atom clicked.
 	if(W)
 		W.afterattack(A, src, 0, mods)
 		return
 
 	RangedAttack(A, mods)
+	SEND_SIGNAL(src, COMSIG_MOB_POST_CLICK, A, mods)
 	return
 
 /mob/proc/click_adjacent(atom/A, var/obj/item/W, mods)
 	if(W)
-		if(W.attack_speed && A.loc != src)
+		if(W.attack_speed && !src.contains(A)) //Not being worn or carried in the user's inventory somewhere, including internal storages.
 			next_move += W.attack_speed
+
 		if(!A.attackby(W, src, mods) && A && !QDELETED(A))
 			// in case the attackby slept
 			if(!W)
-				next_move += 4
 				UnarmedAttack(A, 1, mods)
 				return
 
 			W.afterattack(A, src, 1, mods)
 	else
-		if(A.loc != src)
+		if(!isitem(A) && !issurface(A))
 			next_move += 4
-		else
-			next_move += 0.5
 		UnarmedAttack(A, 1, mods)
-	return
 
 
 /*	OLD DESCRIPTION
@@ -200,7 +196,7 @@
 	proximity_flag is not currently passed to attack_hand, and is instead used
 	in human click code to allow glove touches only at melee range.
 */
-/mob/proc/UnarmedAttack(var/atom/A, var/proximity_flag)
+/mob/proc/UnarmedAttack(var/atom/A, var/proximity_flag, click_parameters)
 	return
 
 /*
@@ -326,3 +322,40 @@
 		viewX = text2num(viewrangelist[1])
 		viewY = text2num(viewrangelist[2])
 	return list(viewX, viewY)
+
+
+#if DEBUG_CLICK_RATE
+/obj/item/clickrate_test
+	name = "clickrate tester"
+	icon_state = "game_kit"
+	var/started_testing
+	var/clicks
+	var/manual = FALSE //To test the maximum rate the code permits. Set to TRUE and to get actual ingame maximums.
+
+/obj/item/clickrate_test/attack_self(mob/user)
+	if(!started_testing)
+		to_world(SPAN_DEBUG("Hadn't tested."))
+		return
+	var/test_time = (world.time - started_testing) * 0.1 //in seconds
+	
+	to_world(SPAN_DEBUG("We did <b>[clicks]</b> clicks over <b>[test_time]</b> seconds, for an average clicks-per-second of <b>[clicks / test_time]</b>."))
+	started_testing = 0
+	clicks = 0
+
+/obj/item/clickrate_test/afterattack(atom/A, mob/living/user, flag, params)
+	if(flag)
+		to_world(SPAN_DEBUG("Too close, click something at range."))
+		return
+	if(!started_testing)
+		started_testing = world.time
+		if(!manual)
+			autoclick(user, A, params)
+	clicks++
+
+/obj/item/clickrate_test/proc/autoclick(mob/user, atom/A, params)
+	if(clicks >= 20)
+		attack_self(user)
+		return
+	user.do_click(A, null, params)
+	addtimer(CALLBACK(src, .proc/autoclick, user, A, params), 0.1)
+#endif

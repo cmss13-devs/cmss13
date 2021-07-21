@@ -51,13 +51,13 @@
 	health -= M.melee_damage_upper
 	visible_message(SPAN_DANGER("<B>[M] has [M.attacktext] [src]!</B>"))
 	M.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
-	M.last_damage_source = initial(name)
+	M.last_damage_data = create_cause_data(initial(name))
 	if(prob(10))
 		new /obj/effect/decal/cleanable/blood/oil(src.loc)
 	healthcheck()
 
 /obj/structure/machinery/bot/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/screwdriver))
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))
 		if(!locked)
 			open = !open
 			to_chat(user, SPAN_NOTICE("Maintenance panel is now [src.open ? "opened" : "closed"]."))

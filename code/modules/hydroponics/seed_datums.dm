@@ -217,7 +217,6 @@ proc/populate_seed_list()
 	if(additional_chems)
 		var/list/possible_chems = list(
 			"bicaridine",
-			"hyperzine",
 			"cryoxadone",
 			"blood",
 			"water",
@@ -239,7 +238,6 @@ proc/populate_seed_list()
 			"dermaline",
 			"dexalin",
 			"phoron",
-			"synaptizine",
 			"impedrezene",
 			"peridaxon",
 			"toxin",
@@ -692,7 +690,7 @@ proc/populate_seed_list()
 	seed_name = "chili"
 	display_name = "chili plants"
 	products = list(/obj/item/reagent_container/food/snacks/grown/chili)
-	chems = list("capsaicin" = list(3,5), "nutriment" = list(1,25))
+	chems = list("capsaicin" = list(3,5), "vegetable" = list(1,25))
 	mutants = list("icechili")
 	packet_icon = "seed-chili"
 	plant_icon = "chili"
@@ -710,7 +708,7 @@ proc/populate_seed_list()
 	display_name = "ice-pepper plants"
 	mutants = null
 	products = list(/obj/item/reagent_container/food/snacks/grown/icepepper)
-	chems = list("frostoil" = list(3,5), "nutriment" = list(1,50))
+	chems = list("frostoil" = list(3,5), "vegetable" = list(1,50))
 	packet_icon = "seed-icepepper"
 	plant_icon = "chiliice"
 
@@ -727,7 +725,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-berry"
 	plant_icon = "berry"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,10))
+	chems = list("fruit" = list(1,10))
 
 	lifespan = 20
 	maturation = 5
@@ -743,7 +741,7 @@ proc/populate_seed_list()
 	mutants = null
 	packet_icon = "seed-glowberry"
 	plant_icon = "glowberry"
-	chems = list("nutriment" = list(1,10), "uranium" = list(3,5))
+	chems = list("fruit" = list(1,10), "uranium" = list(3,5))
 
 	lifespan = 30
 	maturation = 5
@@ -759,7 +757,7 @@ proc/populate_seed_list()
 	mutants = list("deathberries")
 	packet_icon = "seed-poisonberry"
 	plant_icon = "poisonberry"
-	chems = list("nutriment" = list(1), "toxin" = list(3,5))
+	chems = list("fruit" = list(1), "toxin" = list(3,5))
 
 /datum/seed/berry/poison/death
 	name = "deathberries"
@@ -769,7 +767,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/deathberries)
 	packet_icon = "seed-deathberry"
 	plant_icon = "deathberry"
-	chems = list("nutriment" = list(1), "toxin" = list(3,3), "lexorin" = list(1,5))
+	chems = list("fruit" = list(1), "toxin" = list(3,3), "lexorin" = list(1,5))
 
 	yield = 3
 	potency = 50
@@ -784,7 +782,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-nettle"
 	plant_icon = "nettle"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,50), "sacid" = list(0,1))
+	chems = list("plantmatter" = list(1,50), "sacid" = list(0,1))
 	lifespan = 30
 	maturation = 6
 	production = 6
@@ -800,7 +798,7 @@ proc/populate_seed_list()
 	mutants = null
 	packet_icon = "seed-deathnettle"
 	plant_icon = "deathnettle"
-	chems = list("nutriment" = list(1,50), "pacid" = list(0,1))
+	chems = list("plantmatter" = list(1,50), "pacid" = list(0,1))
 
 	maturation = 8
 	yield = 2
@@ -815,7 +813,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-tomato"
 	plant_icon = "tomato"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,10))
+	chems = list("vegetable" = list(1,10), "ketchup" = list(1,5))
 
 	lifespan = 25
 	maturation = 8
@@ -831,7 +829,7 @@ proc/populate_seed_list()
 	mutants = list("bluetomato")
 	packet_icon = "seed-bloodtomato"
 	plant_icon = "bloodtomato"
-	chems = list("nutriment" = list(1,10), "blood" = list(1,5))
+	chems = list("vegetable" = list(1,10), "blood" = list(1,5))
 
 	yield = 3
 
@@ -855,7 +853,7 @@ proc/populate_seed_list()
 	mutants = list("bloodtomato")
 	packet_icon = "seed-bluetomato"
 	plant_icon = "bluetomato"
-	chems = list("nutriment" = list(1,20))
+	chems = list("vegetable" = list(1,20))
 
 /datum/seed/tomato/blue/teleport
 	name = "bluespacetomato"
@@ -865,7 +863,7 @@ proc/populate_seed_list()
 	mutants = null
 	packet_icon = "seed-bluespacetomato"
 	plant_icon = "bluespacetomato"
-	chems = list("nutriment" = list(1,20), "singulo" = list(1,5))
+	chems = list("vegetable" = list(1,20), "singulo" = list(1,5))
 
 //Eggplants/varieties.
 /datum/seed/eggplant
@@ -877,7 +875,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-eggplant"
 	plant_icon = "eggplant"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,10))
+	chems = list("vegetable" = list(1,10))
 
 	lifespan = 25
 	maturation = 6
@@ -908,7 +906,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-apple"
 	plant_icon = "apple"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,10))
+	chems = list("fruit" = list(1,10))
 
 	lifespan = 55
 	maturation = 6
@@ -930,7 +928,7 @@ proc/populate_seed_list()
 	mutants = null
 	packet_icon = "seed-goldapple"
 	plant_icon = "goldapple"
-	chems = list("nutriment" = list(1,10), "gold" = list(1,5))
+	chems = list("fruit" = list(1,10), "gold" = list(1,5))
 
 	maturation = 10
 	production = 10
@@ -946,7 +944,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-ambrosiavulgaris"
 	plant_icon = "ambrosiavulgaris"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1), "space_drugs" = list(1,8), "kelotane" = list(1,8,1), "bicaridine" = list(1,10,1), "toxin" = list(1,10))
+	chems = list("plantmatter" = list(1), "space_drugs" = list(1,8), "kelotane" = list(1,8,1), "bicaridine" = list(1,10,1), "toxin" = list(1,10))
 
 	lifespan = 60
 	maturation = 6
@@ -962,7 +960,7 @@ proc/populate_seed_list()
 	mutants = null
 	packet_icon = "seed-ambrosiadeus"
 	plant_icon = "ambrosiadeus"
-	chems = list("nutriment" = list(1), "bicaridine" = list(1,8), "synaptizine" = list(1,8,1), "hyperzine" = list(1,10,1), "space_drugs" = list(1,10))
+	chems = list("plantmatter" = list(1), "bicaridine" = list(1,8), "space_drugs" = list(1,10))
 
 //Mushrooms/varieties.
 /datum/seed/mushroom
@@ -974,7 +972,7 @@ proc/populate_seed_list()
 	mutants = list("reishi","amanita","plumphelmet")
 	packet_icon = "mycelium-chanter"
 	plant_icon = "chanter"
-	chems = list("nutriment" = list(1,25))
+	chems = list("mushroom" = list(1,25))
 
 	lifespan = 35
 	maturation = 7
@@ -1004,7 +1002,7 @@ proc/populate_seed_list()
 	mutants = list("towercap")
 	packet_icon = "mycelium-plump"
 	plant_icon = "plump"
-	chems = list("nutriment" = list(2,10))
+	chems = list("mushroom" = list(2,10))
 
 	lifespan = 25
 	maturation = 8
@@ -1019,7 +1017,7 @@ proc/populate_seed_list()
 	mutants = list("libertycap")
 	packet_icon = "mycelium-reishi"
 	plant_icon = "reishi"
-	chems = list("nutriment" = list(1,50), "psilocybin" = list(3,5))
+	chems = list("mushroom" = list(1,50), "psilocybin" = list(3,5))
 
 	maturation = 10
 	production = 5
@@ -1035,7 +1033,7 @@ proc/populate_seed_list()
 	mutants = null
 	packet_icon = "mycelium-liberty"
 	plant_icon = "liberty"
-	chems = list("nutriment" = list(1), "stoxin" = list(3,3), "space_drugs" = list(1,25))
+	chems = list("mushroom" = list(1), "stoxin" = list(3,3), "space_drugs" = list(1,25))
 
 	lifespan = 25
 	production = 1
@@ -1050,7 +1048,7 @@ proc/populate_seed_list()
 	mutants = list("destroyingangel")
 	packet_icon = "mycelium-amanita"
 	plant_icon = "amanita"
-	chems = list("nutriment" = list(1), "amatoxin" = list(3,3), "psilocybin" = list(1,25))
+	chems = list("mushroom" = list(1), "amatoxin" = list(3,3), "psilocybin" = list(1,25))
 
 	lifespan = 50
 	maturation = 10
@@ -1066,7 +1064,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/mushroom/angel)
 	packet_icon = "mycelium-angel"
 	plant_icon = "angel"
-	chems = list("nutriment" = list(1,50), "amatoxin" = list(13,3), "psilocybin" = list(1,25))
+	chems = list("mushroom" = list(1,50), "amatoxin" = list(13,3), "psilocybin" = list(1,25))
 
 	maturation = 12
 	yield = 2
@@ -1126,7 +1124,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/harebell)
 	packet_icon = "seed-harebell"
 	plant_icon = "harebell"
-	chems = list("nutriment" = list(1,20))
+	chems = list("plantmatter" = list(1,20))
 
 	lifespan = 100
 	maturation = 7
@@ -1141,7 +1139,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-poppy"
 	products = list(/obj/item/reagent_container/food/snacks/grown/poppy)
 	plant_icon = "poppy"
-	chems = list("nutriment" = list(1,20), "bicaridine" = list(1,10))
+	chems = list("plantmatter" = list(1,20), "bicaridine" = list(1,10))
 
 	lifespan = 25
 	potency = 20
@@ -1172,7 +1170,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/grapes)
 	plant_icon = "grape"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,10), "sugar" = list(1,5))
+	chems = list("fruit" = list(1,10), "sugar" = list(1,5))
 
 	lifespan = 50
 	maturation = 3
@@ -1189,7 +1187,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/greengrapes)
 	mutants = null
 	plant_icon = "greengrape"
-	chems = list("nutriment" = list(1,10), "kelotane" = list(3,5))
+	chems = list("fruit" = list(1,10), "kelotane" = list(3,5))
 
 //Everything else
 /datum/seed/peanuts
@@ -1200,7 +1198,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/peanut)
 	plant_icon = "peanut"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,10))
+	chems = list("plantmatter" = list(1,10))
 
 	lifespan = 55
 	maturation = 6
@@ -1216,7 +1214,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/cabbage)
 	plant_icon = "cabbage"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,10))
+	chems = list("vegetable" = list(1,10))
 
 	lifespan = 50
 	maturation = 3
@@ -1230,7 +1228,7 @@ proc/populate_seed_list()
 	seed_name = "S'randar's hand"
 	display_name = "S'randar's hand leaves"
 	packet_icon = "seed-shand"
-	products = list(/obj/item/stack/medical/advanced/bruise_pack/tajaran)
+	products = list(/obj/item/stack/medical/advanced/bruise_pack/predator)
 	plant_icon = "shand"
 	chems = list("bicaridine" = list(0,10))
 
@@ -1246,7 +1244,7 @@ proc/populate_seed_list()
 	seed_name = "Messa's tear"
 	display_name = "Messa's tear leaves"
 	packet_icon = "seed-mtear"
-	products = list(/obj/item/stack/medical/advanced/ointment/tajaran)
+	products = list(/obj/item/stack/medical/advanced/ointment/predator)
 	plant_icon = "mtear"
 	chems = list("honey" = list(1,10), "kelotane" = list(3,5))
 
@@ -1279,7 +1277,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-corn"
 	products = list(/obj/item/reagent_container/food/snacks/grown/corn)
 	plant_icon = "corn"
-	chems = list("nutriment" = list(1,10))
+	chems = list("vegetable" = list(1,10), "cornoil" = list(1,5))
 
 	lifespan = 25
 	maturation = 8
@@ -1295,7 +1293,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-potato"
 	products = list(/obj/item/reagent_container/food/snacks/grown/potato)
 	plant_icon = "potato"
-	chems = list("nutriment" = list(1,10))
+	chems = list("vegetable" = list(1,10))
 
 	lifespan = 30
 	maturation = 10
@@ -1312,7 +1310,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/soybeans)
 	plant_icon = "soybean"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,20))
+	chems = list("plantmatter" = list(1,20), "soymilk" = list(1,10))
 
 	lifespan = 25
 	maturation = 4
@@ -1327,7 +1325,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-wheat"
 	products = list(/obj/item/reagent_container/food/snacks/grown/wheat)
 	plant_icon = "wheat"
-	chems = list("nutriment" = list(1,25))
+	chems = list("plantmatter" = list(1,25))
 
 	lifespan = 25
 	maturation = 6
@@ -1342,7 +1340,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-rice"
 	products = list(/obj/item/reagent_container/food/snacks/grown/ricestalk)
 	plant_icon = "rice"
-	chems = list("nutriment" = list(1,25))
+	chems = list("plantmatter" = list(1,25), "rice" = list(1,10))
 
 	lifespan = 25
 	maturation = 6
@@ -1358,7 +1356,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-carrot"
 	products = list(/obj/item/reagent_container/food/snacks/grown/carrot)
 	plant_icon = "carrot"
-	chems = list("nutriment" = list(1,20), "imidazoline" = list(3,5))
+	chems = list("vegetable" = list(1,20), "imidazoline" = list(3,5))
 
 	lifespan = 25
 	maturation = 10
@@ -1389,7 +1387,7 @@ proc/populate_seed_list()
 	packet_icon = "seed-whitebeet"
 	products = list(/obj/item/reagent_container/food/snacks/grown/whitebeet)
 	plant_icon = "whitebeet"
-	chems = list("nutriment" = list(0,20), "sugar" = list(1,5))
+	chems = list("vegetable" = list(0,20), "sugar" = list(1,5))
 
 	lifespan = 60
 	maturation = 6
@@ -1422,7 +1420,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/watermelon)
 	plant_icon = "watermelon"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,6))
+	chems = list("fruit" = list(1,6))
 
 	lifespan = 50
 	maturation = 6
@@ -1438,7 +1436,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/pumpkin)
 	plant_icon = "pumpkin"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,6))
+	chems = list("vegetable" = list(1,6))
 
 	lifespan = 50
 	maturation = 6
@@ -1455,7 +1453,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/lime)
 	plant_icon = "lime"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,20))
+	chems = list("fruit" = list(1,20))
 
 	lifespan = 55
 	maturation = 6
@@ -1471,7 +1469,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/lemon)
 	plant_icon = "lemon"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,20))
+	chems = list("fruit" = list(1,20))
 
 	lifespan = 55
 	maturation = 6
@@ -1487,7 +1485,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/orange)
 	plant_icon = "orange"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,20))
+	chems = list("fruit" = list(1,20))
 
 	lifespan = 60
 	maturation = 6
@@ -1518,7 +1516,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/cocoapod)
 	plant_icon = "cocoapod"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,10), "coco" = list(4,5))
+	chems = list("plantmatter" = list(1,10), "coco" = list(4,5))
 
 	lifespan = 20
 	maturation = 5
@@ -1536,7 +1534,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/cherries)
 	plant_icon = "cherry"
 	harvest_repeat = 1
-	chems = list("nutriment" = list(1,15), "sugar" = list(1,15))
+	chems = list("fruit" = list(1,15), "cherryjelly" = list(1,15))
 
 	lifespan = 50
 	maturation = 5
@@ -1553,7 +1551,7 @@ proc/populate_seed_list()
 	products = list(/obj/item/reagent_container/food/snacks/grown/kudzupod)
 	plant_icon = "kudzu"
 	product_colour = "#96D278"
-	chems = list("nutriment" = list(1,50), "anti_toxin" = list(1,25))
+	chems = list("plantmatter" = list(1,50), "anti_toxin" = list(1,25))
 
 	lifespan = 20
 	maturation = 6

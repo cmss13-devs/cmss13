@@ -1,6 +1,3 @@
-#define INJECTOR_USES 3
-#define INJECTOR_PERCENTAGE_OF_OD 0.5
-
 /obj/item/reagent_container/hypospray/autoinjector
 	name = "inaprovaline autoinjector"
 	var/chemname = "inaprovaline"
@@ -14,6 +11,7 @@
 	possible_transfer_amounts = null
 	volume = (HIGH_REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 	magfed = FALSE
+	starting_vial = null
 	var/uses_left = 3
 	var/mixed_chem = FALSE
 
@@ -32,12 +30,6 @@
 		return
 	uses_left--
 	update_icon()
-
-
-/obj/item/reagent_container/hypospray/autoinjector/attackby(obj/item/W, mob/user)
-	if(isstorage(W))
-		..(W, user)
-	return
 
 /obj/item/reagent_container/hypospray/autoinjector/update_icon()
 	overlays.Cut()
@@ -151,6 +143,7 @@
 	name = "unusual crystal"
 	chemname = "thwei"
 	desc = "A strange glowing crystal with a spike at one end."
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "crystal"
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE
 	volume = REAGENTS_OVERDOSE
@@ -266,7 +259,3 @@
 	name = "Medic Autoinjector (M-L)"
 	volume = 180
 	amount_per_transfer_from_this = 30
-
-
-#undef INJECTOR_USES
-#undef INJECTOR_PERCENTAGE_OF_OD

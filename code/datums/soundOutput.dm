@@ -25,6 +25,7 @@
 
 	if(T.x && T.y && T.z)
 		var/turf/owner_turf = get_turf(owner.mob)
+
 		if(owner_turf)
 			// We're in an interior and sound came from outside
 			if(owner_turf.z == GLOB.interior_manager.interior_z && owner_turf.z != T.z)
@@ -77,7 +78,7 @@
 
 	S.echo = list(muffle)
 	S.file = ambience
-	if(!owner.prefs.toggles_sound & SOUND_AMBIENCE)
+	if(!(owner.prefs.toggles_sound & SOUND_AMBIENCE))
 		S.status |= SOUND_MUTE
 	sound_to(owner, S)
 

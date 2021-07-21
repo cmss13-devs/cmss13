@@ -32,7 +32,7 @@
 	name = "AI Integrated Encryption Key"
 	desc = "Integrated encryption key"
 	icon_state = "cap_key"
-	channels = list("Almayer" = 1, "Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "JTAC" = 1, "Intel" = 1)
+	channels = list("Almayer" = 1, "Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/engi
 	name = "Engineering Radio Encryption Key"
@@ -93,17 +93,17 @@
 
 /obj/item/device/encryptionkey/cmpcom/cdrcom
 	name = "\improper Marine Commanding Officer Radio Encryption Key"
-	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1)
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/mcom
 	name = "\improper Marine Command Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1)
+	channels = list("Command" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/mcom/cl
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1, "WY" = 1)
+	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "WY" = 1)
 
 /obj/item/device/encryptionkey/mcom/rep
 	name = "\improper Representative radio encryption key"
@@ -113,25 +113,25 @@
 /obj/item/device/encryptionkey/po
 	name = "\improper Marine Pilot Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "JTAC" = 1, "Intel" = 1)
+	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/io
 	name = "\improper Marine Intelligence Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Intel" = 1)
+	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/mcom/ai //AI only.
-	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1)
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/jtac
 	name = "\improper JTAC Radio Encryption Key"
 	icon_state = "jtac_key"
 	channels = list("JTAC" = 1, "Req" = 1)
 
-/obj/item/device/encryptionkey/intel
-	name = "\improper Intel Radio Encryption Key"
+/obj/item/device/encryptionkey/tactics
+	name = "\improper Tactics Radio Encryption Key"
 	icon_state = "jtac_key"
-	channels = list("Intel" = 1)
+	channels = list("Tactics" = 1)
 
 /obj/item/device/encryptionkey/squadlead
 	name = "\improper Squad Leader Radio Encryption Key"
@@ -163,7 +163,7 @@
 
 //For CL and their Marine goons
 /obj/item/device/encryptionkey/WY
-	name = "\improper Weston-Yamada encryption key"
+	name = "\improper Weyland-Yutani encryption key"
 	icon_state = "wy_key"
 	channels = list("WY" = 1)
 
@@ -177,7 +177,7 @@
 //ERT, PMC
 
 /obj/item/device/encryptionkey/ert
-	name = "W-Y Radio Encryption Key"
+	name = "Wey-Yu Radio Encryption Key"
 	icon_state = "cypherkey"
 	channels = list("Response Team" = 1, "Command" = 1, "MedSci" = 1, "Engi" = 1, "WY" = 1)
 
@@ -187,7 +187,7 @@
 	channels = list("Colonist" = 1)
 
 /obj/item/device/encryptionkey/PMC
-	name = "\improper Weston-Yamada PMC Radio Encryption Key"
+	name = "\improper Weyland-Yutani PMC Radio Encryption Key"
 	icon_state = "pmc_key"
 	channels = list("WY PMC" = 1, "WY" = 1)
 
@@ -205,4 +205,4 @@
 /obj/item/device/encryptionkey/highcom
 	name = "\improper USCM High Command Radio Encryption Key"
 	icon_state = "binary_key"
-	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Intel" = 1, "HighCom" = 1)
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "HighCom" = 1)

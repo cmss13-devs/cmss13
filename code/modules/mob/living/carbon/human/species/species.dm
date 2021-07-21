@@ -3,6 +3,9 @@
 */
 
 /datum/species
+	 ///Used for isx(y) checking of species groups
+	var/group
+
 	var/name                                             // Species name.
 	var/name_plural
 
@@ -99,6 +102,8 @@
 	var/melee_allowed = TRUE
 
 	var/mob_flags = NO_FLAGS // The mob flags to give their mob
+	 /// Status traits to give to the mob.
+	var/list/mob_inherent_traits
 
 /datum/species/New()
 	if(unarmed_type)
@@ -125,16 +130,16 @@
 	H.limbs += new /obj/limb/head(H, C, H)
 	var/obj/limb/arm/l_arm/LA = new(H, C, H)
 	H.limbs += LA
+	H.limbs += new /obj/limb/hand/l_hand(H, LA, H)
 	var/obj/limb/arm/r_arm/RA = new(H, C, H)
 	H.limbs += RA
+	H.limbs += new /obj/limb/hand/r_hand(H, RA, H)
 	var/obj/limb/leg/l_leg/LL = new(H, G, H)
 	H.limbs += LL
+	H.limbs += new /obj/limb/foot/l_foot(H, LL, H)
 	var/obj/limb/leg/r_leg/RL = new(H, G, H)
 	H.limbs += RL
-	H.limbs +=  new /obj/limb/hand/l_hand(H, LA, H)
-	H.limbs +=  new /obj/limb/hand/r_hand(H, RA, H)
-	H.limbs +=  new /obj/limb/foot/l_foot(H, LL, H)
-	H.limbs +=  new /obj/limb/foot/r_foot(H, RL, H)
+	H.limbs += new /obj/limb/foot/r_foot(H, RL, H)
 
 	for(var/organ in has_organ)
 		var/organ_type = has_organ[organ]
@@ -269,9 +274,10 @@
 		to_chat(H, SPAN_NOTICE("You were left hanging!"))
 	H.flags_emote &= ~EMOTING_FIST_BUMP
 
-//special things to change after we're no longer that species
+//things to change after we're no longer that species
 /datum/species/proc/post_species_loss(mob/living/carbon/human/H)
-	return
+	for(var/T in mob_inherent_traits)
+		REMOVE_TRAIT(src, T, TRAIT_SOURCE_SPECIES)
 
 /datum/species/proc/remove_inherent_verbs(var/mob/living/carbon/human/H)
 	if(inherent_verbs)

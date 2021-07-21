@@ -3,7 +3,7 @@
 	desc = "A handy little spring-loaded trap for catching pesty rodents."
 	icon_state = "mousetrap"
 	matter = list("metal" = 100, "waste" = 10)
-	
+
 	var/armed = 0
 
 /obj/item/device/assembly/mousetrap/attackby()
@@ -53,7 +53,9 @@
 	pulse(0)
 
 
-/obj/item/device/assembly/mousetrap/attack_self(mob/living/user as mob)
+/obj/item/device/assembly/mousetrap/attack_self(mob/living/user)
+	..()
+
 	if(!armed)
 		to_chat(user, SPAN_NOTICE("You arm [src]."))
 	else

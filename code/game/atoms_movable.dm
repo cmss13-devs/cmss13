@@ -16,7 +16,6 @@
 
 	var/move_intentionally = FALSE // this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
 
-
 //===========================================================================
 /atom/movable/Destroy()
 	for(var/atom/movable/I in contents)
@@ -217,3 +216,22 @@
 	clones.Remove(src.clone)
 	qdel(src.clone)
 	src.clone = null
+
+/**
+* A wrapper for setDir that should only be able to fail by living mobs.
+*
+* Called from [/atom/movable/proc/keyLoop], this exists to be overwritten by living mobs with a check to see if we're actually alive enough to change directions
+*/
+/atom/movable/proc/keybind_face_direction(direction)
+	setDir(direction)
+
+/atom/movable/proc/onTransitZ(old_z,new_z)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_Z_CHANGED, old_z, new_z)
+	for(var/item in src) // Notify contents of Z-transition. This can be overridden IF we know the items contents do not care.
+		var/atom/movable/AM = item
+		AM.onTransitZ(old_z,new_z)
+
+/atom/movable/proc/safe_throw_at(atom/target, range, speed, mob/thrower, spin = TRUE)
+	//if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
+	//	return
+	return throw_atom(target, range, speed, thrower, spin)

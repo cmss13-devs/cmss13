@@ -15,20 +15,18 @@
 	var/spread_speed = 1 //time in decisecond for a smoke to spread one tile.
 	var/time_to_live = 8
 	var/smokeranking = SMOKE_RANK_HARMLESS //Override priority. A higher ranked smoke cloud will displace lower and equal ones on spreading.
-	var/source = null
-	var/source_mob = null
+	var/datum/cause_data/cause_data = null
 
 	//Remove this bit to use the old smoke
 	icon = 'icons/effects/96x96.dmi'
 	pixel_x = -32
 	pixel_y = -32
 
-/obj/effect/particle_effect/smoke/New(loc, oldamount, new_source, new_source_mob)
+/obj/effect/particle_effect/smoke/New(loc, oldamount, new_cause_data)
 	..()
 	if(oldamount)
 		amount = oldamount - 1
-	source = new_source
-	source_mob = new_source_mob
+	cause_data = new_cause_data
 	time_to_live += rand(-1,1)
 	active_smoke_effects += src
 
@@ -89,7 +87,7 @@
 				qdel(foundsmoke)
 			else
 				continue
-		var/obj/effect/particle_effect/smoke/S = new type(T, amount, source, source_mob)
+		var/obj/effect/particle_effect/smoke/S = new type(T, amount, cause_data)
 		S.setDir(pick(cardinal))
 		S.time_to_live = time_to_live
 		if(S.amount>0)
@@ -195,8 +193,9 @@
 /////////////////////////////////////////////
 
 /obj/effect/particle_effect/smoke/phosphorus
-	time_to_live = 10
-	smokeranking = SMOKE_RANK_HIGH
+	time_to_live = 3
+	smokeranking = SMOKE_RANK_MED
+	var/next_cough = 2 SECONDS
 
 /obj/effect/particle_effect/smoke/phosphorus/Move()
 	. = ..()
@@ -205,26 +204,24 @@
 
 /obj/effect/particle_effect/smoke/phosphorus/affect(var/mob/living/carbon/M)
 	..()
-	if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
-		return
-	else
-		if(prob(20))
-			M.drop_held_item()
-		M.apply_damage(1, OXY)
-		M.updatehealth()
-		if(M.coughedtime != 1)
-			M.coughedtime = 1
-			if(ishuman(M)) //Humans only to avoid issues
+	if(ishuman(M))
+		if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
+			return
+		else
+			if(prob(20))
+				M.drop_held_item()
+			M.apply_damage(1, OXY)
+			M.updatehealth()
+			if(M.coughedtime < world.time)
 				M.emote("cough")
-			spawn (20)
-				M.coughedtime = 0
+				M.coughedtime = world.time + next_cough
 
-	M.last_damage_source = source
-	M.last_damage_mob = source_mob
-	M.burn_skin(5)
+		M.last_damage_data = cause_data
+	M.burn_skin(50)
 	M.adjust_fire_stacks(5)
 	M.IgniteMob()
 	M.updatehealth()
+
 
 //////////////////////////////////////
 // FLASHBANG SMOKE
@@ -253,8 +250,8 @@
 	var/hivenumber = XENO_HIVE_NORMAL
 	var/gas_damage = 20
 
-/obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, source, source_mob)
-	var/mob/living/carbon/Xenomorph/X = source_mob
+/obj/effect/particle_effect/smoke/xeno_burn/Initialize(mapload, amount, datum/cause_data/cause_data)
+	var/mob/living/carbon/Xenomorph/X = cause_data.resolve_mob()
 	if (istype(X) && X.hivenumber)
 		hivenumber = X.hivenumber
 
@@ -288,11 +285,10 @@
 		return
 	if(M.stat == DEAD)
 		return
-	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
+	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
 		return
 
-	M.last_damage_source = source
-	M.last_damage_mob = source_mob
+	M.last_damage_data = cause_data
 
 	M.apply_damage(3, OXY) //Basic oxyloss from "can't breathe"
 
@@ -338,7 +334,7 @@
 		return
 	if(M.stat == DEAD)
 		return
-	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
+	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -348,7 +344,7 @@
 	var/effect_amt = round(6 + amount*6)
 
 	M.apply_damage(9, OXY) //Causes even more oxyloss damage due to neurotoxin locking up respiratory system
-	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
+	M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
 	M.eye_blurry = max(M.eye_blurry, effect_amt)
@@ -395,13 +391,13 @@
 		return
 	if(M.stat == DEAD)
 		return
-	if(istype(M.buckled, /obj/structure/bed/nest) && M.status_flags & XENO_HOST)
+	if(HAS_TRAIT(M, TRAIT_NESTED) && M.status_flags & XENO_HOST)
 		return
 
 	var/effect_amt = round(6 + amount*6)
 
 	M.apply_damage(9, OXY) // MUCH harsher
-	M.ear_deaf = max(M.ear_deaf, round(effect_amt*1.5)) //Paralysis of hearing system, aka deafness
+	M.SetEarDeafness(max(M.ear_deaf, round(effect_amt*1.5))) //Paralysis of hearing system, aka deafness
 	if(!M.eye_blind) //Eye exposure damage
 		to_chat(M, SPAN_DANGER("Your eyes sting. You can't see!"))
 	M.eye_blind = max(M.eye_blind, round(effect_amt/3))
@@ -442,7 +438,7 @@
 				qdel(foundsmoke)
 			else
 				continue
-		var/obj/effect/particle_effect/smoke/S = new type(T, amount, source, source_mob)
+		var/obj/effect/particle_effect/smoke/S = new type(T, amount, cause_data)
 
 		for (var/atom/A in T)
 			if (istype(A, /mob/living))
@@ -466,15 +462,13 @@
 	var/smoke_type = /obj/effect/particle_effect/smoke
 	var/direction
 	var/lifetime
-	var/source = null
-	var/source_mob = null
+	var/datum/cause_data/cause_data = null
 
 /datum/effect_system/smoke_spread/Destroy()
-	source = null
-	source_mob = null
+	cause_data = null
 	. = ..()
 
-/datum/effect_system/smoke_spread/set_up(radius = 2, c = 0, loca, direct, smoke_time)
+/datum/effect_system/smoke_spread/set_up(radius = 2, c = 0, loca, direct, smoke_time, datum/cause_data/new_cause_data)
 	if(isturf(loca))
 		location = loca
 	else
@@ -485,11 +479,12 @@
 		lifetime = smoke_time
 	radius = min(radius, 10)
 	amount = radius
+	cause_data = new_cause_data
 
 /datum/effect_system/smoke_spread/start()
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1, source, source_mob)
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1, cause_data)
 	if(lifetime)
 		S.time_to_live = lifetime
 	if(S.amount)
@@ -521,7 +516,7 @@
 /datum/effect_system/smoke_spread/xeno_extinguish_fire/start()
 	if(holder)
 		location = get_turf(holder)
-	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1, source, source_mob)
+	var/obj/effect/particle_effect/smoke/S = new smoke_type(location, amount+1, cause_data)
 
 	for (var/atom/A in location)
 		if (istype(A, /mob/living))

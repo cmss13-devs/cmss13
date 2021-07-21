@@ -59,7 +59,7 @@
 	name = "\improper Combat Information Center"
 	icon_state = "cic"
 	fake_zlevel = 1 // upperdeck
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/cichallway
 	name = "\improper Secure Command Hallway"
@@ -70,7 +70,7 @@
 	name = "\improper AI Core"
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/securestorage
 	name = "\improper Secure Storage"
@@ -86,13 +86,13 @@
 	name = "\improper Telecommunications"
 	icon_state = "tcomms"
 	fake_zlevel = 1 // upperdeck
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/self_destruct
 	name = "\improper Self-Destruct Core Room"
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/corporateliason
 	name = "\improper Corporate Liason Office"
@@ -142,6 +142,11 @@
 	icon_state = "portatmos"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/engineering/laundry
+	name = "\improper Laundry Room"
+	icon_state = "laundry"
+	fake_zlevel = 1 // upperdeck
+
 /area/almayer/shipboard/navigation
 	name = "\improper Astronavigational Deck"
 	icon_state = "astronavigation"
@@ -175,17 +180,51 @@
 /area/almayer/shipboard/brig
 	name = "\improper Brig"
 	icon_state = "brig"
-	fake_zlevel = 1
+	fake_zlevel = 1 //upperdeck
 
-/area/almayer/shipboard/brig_cells
+/area/almayer/shipboard/brig/lobby
+	name = "\improper Brig Lobby"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/armory
+	name = "\improper Brig Armory"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/main_office_perma
+	name = "\improper Brig Main Office and Perma"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/secondary_office
+	name = "\improper Brig Secondary Office"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/surgery
+	name = "\improper Brig Surgery"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/general_equipment
+	name = "\improper Brig General Equipment"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/evidence_storage
+	name = "\improper Brig Evidence Storage"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/execution
+	name = "\improper Brig Execution Room"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/cic_hallway
+	name = "\improper Brig CiC Hallway"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/cells
 	name = "\improper Brig Cells"
 	icon_state = "brigcells"
-	fake_zlevel = 1
 
-/area/almayer/shipboard/chief_mp_office
+/area/almayer/shipboard/brig/chief_mp_office
 	name = "\improper Brig Chief MP Office"
 	icon_state = "chiefmpoffice"
-	fake_zlevel = 1
 
 /area/almayer/shipboard/sea_office
 	name = "\improper Senior Enlisted Advisor Office"
@@ -271,10 +310,15 @@
 	icon_state = "starboard"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/hull/under_hull
-	name = "\improper Hull Under"
-	icon_state = "lowerhull"
-	fake_zlevel = 3
+/area/almayer/stair_clone
+	name = "\improper Stairs"
+	icon_state = "stairs_lowerdeck"
+	fake_zlevel = 2 // lowerdeck
+	resin_construction_allowed = FALSE
+
+/area/almayer/stair_clone/upper
+	icon_state = "stairs_upperdeck"
+	fake_zlevel = 1 // upperdeck
 
 /area/almayer/hull/lower_hull
 	name = "\improper Hull Lower"
@@ -285,6 +329,54 @@
 	name = "\improper Hull Upper"
 	icon_state = "upperhull"
 	fake_zlevel = 1 // upperdeck
+
+/area/almayer/hull/upper_hull/u_f_s
+	name = "\improper Upper Fore-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_m_s
+	name = "\improper Upper Midship-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_a_s
+	name = "\improper Upper Aft-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_f_p
+	name = "\improper Upper Fore-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_m_p
+	name = "\improper Upper Midship-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/upper_hull/u_a_p
+	name = "\improper Upper Aft-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_f_s
+	name = "\improper Lower Fore-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_m_s
+	name = "\improper Lower Midship-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_a_s
+	name = "\improper Lower Aft-Starboard Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_f_p
+	name = "\improper Lower Fore-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_m_p
+	name = "\improper Lower Midship-Port Hull"
+	icon_state = "upperhull"
+
+/area/almayer/hull/lower_hull/l_a_p
+	name = "\improper Lower Aft-Port Hull"
+	icon_state = "upperhull"
 
 /area/almayer/living/cryo_cells
 	name = "\improper Cryo Cells"
@@ -391,8 +483,8 @@
 	icon_state = "officerrnr"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/medical/lower_medical
-	name = "\improper Medical Lower"
+/area/almayer/medical/lower_medical_lobby
+	name = "\improper Medical Lower Lobby"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
@@ -462,7 +554,7 @@
 	name = "\improper Medical Research containment cells"
 	icon_state = "science"
 	fake_zlevel = 1 // upperdeck
-	flags_atom = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
+	flags_area = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL|AREA_CONTAINMENT
 
 /area/almayer/medical/containment/cell/cl
 	name = "\improper Containment"
@@ -484,8 +576,8 @@
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
 	soundscape_interval = 50
 
-/area/almayer/medical/surgery_hallway
-	name = "\improper Medical Surgical Hallway"
+/area/almayer/medical/lower_medical_medbay
+	name = "\improper Medical Lower Medbay"
 	icon_state = "medical"
 	fake_zlevel = 2 // lowerdeck
 	soundscape_playlist = SCAPE_PL_ELEVATOR_MUSIC
@@ -496,18 +588,8 @@
 	icon_state = "alpha"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/alpha/req
-	name = "\improper Squad Alpha Requisitions"
-	icon_state = "alpha"
-	fake_zlevel = 2 // lowerdeck
-
 /area/almayer/squads/bravo
 	name = "\improper Squad Bravo Preparation"
-	icon_state = "bravo"
-	fake_zlevel = 2 // lowerdeck
-
-/area/almayer/squads/bravo/req
-	name = "\improper Squad Bravo Requisitions"
 	icon_state = "bravo"
 	fake_zlevel = 2 // lowerdeck
 
@@ -516,19 +598,19 @@
 	icon_state = "charlie"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/charlie/req
-	name = "\improper Squad Charlie Requisitions"
-	icon_state = "charlie"
-	fake_zlevel = 2 // lowerdeck
-
 /area/almayer/squads/delta
 	name = "\improper Squad Delta Preparation"
 	icon_state = "delta"
 	fake_zlevel = 2 // lowerdeck
 
-/area/almayer/squads/delta/req
-	name = "\improper Squad Delta Requisitions"
-	icon_state = "delta"
+/area/almayer/squads/alpha_bravo_shared
+	name = "\improper Alpha Bravo Equipment Preparation"
+	icon_state = "ab_shared"
+	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/squads/charlie_delta_shared
+	name = "\improper Charlie Delta Equipment Preparation"
+	icon_state = "cd_shared"
 	fake_zlevel = 2 // lowerdeck
 
 /area/almayer/squads/req
@@ -545,18 +627,58 @@
 	name = "\improper Unknown Area"
 	icon_state = "selfdestruct"
 	fake_zlevel = 2 // lowerdeck
-	flags_atom = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
+	flags_area = AREA_AVOID_BIOSCAN|AREA_NOTUNNEL
 
 /area/almayer/engineering/airmix
 	icon_state = "selfdestruct"
 	requires_power = 0
+	flags_area = AREA_NOTUNNEL
+
+/area/almayer/lifeboat_pumps
+	name = "Lifeboat Fuel Pumps"
+	icon_state = "lifeboat_pump"
+	requires_power = 0
+	fake_zlevel = 1
+
+/area/almayer/lifeboat_pumps/north1
+	name = "North West Lifeboat Fuel Pump"
+
+/area/almayer/lifeboat_pumps/north2
+	name = "North East Lifeboat Fuel Pump"
+
+/area/almayer/lifeboat_pumps/south1
+	name = "South West Lifeboat Fuel Pump"
+
+/area/almayer/lifeboat_pumps/south2
+	name = "South East Lifeboat Fuel Pump"
+
+/area/almayer/command/lifeboat
+	name = "\improper Lifeboat Docking Port"
+	icon_state = "selfdestruct"
+	fake_zlevel = 1 // upperdeck
+
+/area/almayer/lifeboat
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+	requires_power = 0
+	fake_zlevel = 1 // upperdeck
 	flags_atom = AREA_NOTUNNEL
+
+/area/almayer/lifeboat/boat1
+	name = "\improper Starboard Lifeboat Shuttle"
+
+/area/almayer/lifeboat/boat2
+	name = "\improper Port Lifeboat Shuttle"
+
+/area/almayer/lifeboat/boat1/space
+
+/area/almayer/lifeboat/boat2/space
 
 /area/almayer/evacuation
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "shuttle2"
 	requires_power = 0
-	flags_atom = AREA_NOTUNNEL
+	flags_area = AREA_NOTUNNEL
 
 //Placeholder.
 /area/almayer/evacuation/pod1

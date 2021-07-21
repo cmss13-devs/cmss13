@@ -5,10 +5,11 @@
 
 #ifndef LOWMEMORYMODE
 	#ifdef ALL_MAPS
-		#include "map_files\BigRed_v2\BigRed_v2.dmm"
-		#include "map_files\Corsat\Corsat.dmm"
-		#include "map_files\Desert_Dam\Desert_Dam.dmm"
+		#include "map_files\BigRed\BigRed.dmm"
+		#include "map_files\CORSAT\Corsat.dmm"
+		#include "map_files\DesertDam\Desert_Dam.dmm"
 		#include "map_files\Ice_Colony_v2\Ice_Colony_v2.dmm"
+		#include "map_files\Ice_Colony_v3\Shivas_Snowball.dmm"
 		#include "map_files\Kutjevo\Kutjevo.dmm"
 		#include "map_files\LV624\LV624.dmm"
 		#include "map_files\FOP_v2_Cellblocks\Prison_Station_FOP.dmm"

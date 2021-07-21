@@ -1,11 +1,11 @@
-#define	CLIMB_DELAY_SHORT		1 SECONDS
-#define	CLIMB_DELAY_MEDIUM		2 SECONDS
-#define	CLIMB_DELAY_LONG		3 SECONDS
+#define	CLIMB_DELAY_SHORT		0.2 SECONDS
+#define	CLIMB_DELAY_MEDIUM		1 SECONDS
+#define CLIMB_DELAY_LONG		2 SECONDS
 
 /obj/structure
 	icon = 'icons/obj/structures/structures.dmi'
 	var/climbable
-	var/climb_delay = CLIMB_DELAY_MEDIUM
+	var/climb_delay = CLIMB_DELAY_LONG
 	var/breakable
 	var/parts
 	var/list/debris
@@ -45,7 +45,7 @@
 			destroy()
 
 /obj/structure/attackby(obj/item/W, mob/user)
-	if(iswrench(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 		toggle_anchored(W, user)
 		return TRUE
 	..()
@@ -117,9 +117,14 @@
 	if(!can_climb(user))
 		return
 
-	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over":"climbing onto"] \the [src]!"))
+	var/list/climbdata = list("climb_delay" = climb_delay)
+	SEND_SIGNAL(user, COMSIG_LIVING_CLIMB_STRUCTURE, climbdata)
+	var/final_climb_delay = climbdata["climb_delay"] //so it doesn't set structure's climb_delay to permanently be modified
 
-	if(!do_after(user, climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
+	var/climb_over_string = final_climb_delay < 1 SECONDS ? "vaulting over" : "climbing onto"
+	user.visible_message(SPAN_WARNING("[user] starts [flags_atom & ON_BORDER ? "leaping over" : climb_over_string] \the [src]!"))
+
+	if(!do_after(user, final_climb_delay, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC, numticks = 2))
 		return
 
 	if(!can_climb(user))
@@ -131,7 +136,13 @@
 		if(user.loc == TT)
 			TT = get_turf(src)
 
-	user.visible_message(SPAN_WARNING("[user] climbs onto \the [src]!"))
+	var/climb_string = final_climb_delay < 1 SECONDS ? "[user] vaults over \the [src]!" : "[user] climbs onto \the [src]!"
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(skillcheck(H, SKILL_ENDURANCE, SKILL_ENDURANCE_MASTER))
+			climb_string = "[user] tactically vaults over \the [src]!"
+	user.visible_message(SPAN_WARNING(climb_string))
+
 	user.forceMove(TT)
 
 /obj/structure/proc/structure_shaken()

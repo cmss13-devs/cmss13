@@ -35,7 +35,8 @@
 /obj/item/stack/sheet/glass/cyborg
 	matter = null
 
-/obj/item/stack/sheet/glass/attack_self(mob/user as mob)
+/obj/item/stack/sheet/glass/attack_self(mob/user)
+	..()
 	construct_window(user)
 
 /obj/item/stack/sheet/glass/attackby(obj/item/W, mob/user)

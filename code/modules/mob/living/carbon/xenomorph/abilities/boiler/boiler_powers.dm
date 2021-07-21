@@ -1,78 +1,3 @@
-/datum/action/xeno_action/activable/bombard/use_ability(atom/A)
-	var/mob/living/carbon/Xenomorph/Boiler/X = owner
-
-	if (!istype(X) || !X.check_state() || !action_cooldown_check() || X.action_busy)
-		return
-
-	var/turf/T = get_turf(A)
-
-	if(isnull(T) || istype(T, /turf/closed) || !T.can_bombard(owner))
-		to_chat(X, SPAN_XENODANGER("You can't bombard that!"))
-		return
-
-	if (!check_plasma_owner())
-		return
-
-	if (!X.can_bombard_turf(T, range))
-		to_chat(X, SPAN_XENODANGER("That target is obstructed!"))
-		return
-
-	if (get_dist_sqrd(get_turf(X), T) > (range*range))
-		to_chat(X, SPAN_XENODANGER("That is too far away!"))
-		return
-
-	apply_cooldown()
-
-	X.visible_message(SPAN_XENODANGER("[X] digs itself into place!"), SPAN_XENODANGER("You dig yourself into place!"))
-	if (!do_after(X, activation_delay, INTERRUPT_ALL | BEHAVIOR_IMMOBILE, BUSY_ICON_HOSTILE))
-		to_chat(X, SPAN_XENODANGER("You decide to cancel your bombard."))
-		return
-
-	if (!check_and_use_plasma_owner())
-		return
-
-	X.visible_message(SPAN_XENODANGER("[X] launches a massive ball of acid at [A]!"), SPAN_XENODANGER("You launch a massive ball of acid at [A]!"))
-	playsound(get_turf(X), 'sound/effects/blobattack.ogg', 25, 1)
-
-
-	recursive_spread(T, effect_range, effect_range)
-
-	return ..()
-
-/datum/action/xeno_action/activable/bombard/proc/recursive_spread(turf/T, dist_left, orig_depth)
-	if (!istype(T))
-		return
-	else if (dist_left == 0)
-		return
-	else if (istype(T, /turf/closed) || istype(T, /turf/open/space))
-		return
-	else if(!T.can_bombard(owner))
-		return
-
-	addtimer(CALLBACK(src, .proc/new_effect, T), 2*(orig_depth - dist_left))
-
-	for (var/mob/living/L in T)
-		to_chat(L, SPAN_XENOHIGHDANGER("You see a massive ball of acid flying towards you!"))
-
-	for(var/dirn in alldirs)
-		recursive_spread(get_step(T, dirn), dist_left - 1, orig_depth)
-
-
-/datum/action/xeno_action/activable/bombard/proc/new_effect(turf/T)
-	if (!istype(T))
-		return
-
-	for (var/obj/effect/xenomorph/boiler_bombard/BB in T)
-		return
-
-	var/mob/living/carbon/Xenomorph/X = owner
-
-	if(!istype(owner))
-		return
-
-	new effect_type(T, X)
-
-
 /datum/action/xeno_action/activable/acid_lance/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
 
@@ -240,7 +165,7 @@
 		return
 
 	if (X && !QDELETED(X))
-		var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(X), 1, X, X)
+		var/obj/effect/particle_effect/smoke/S = new /obj/effect/particle_effect/smoke/xeno_burn(get_turf(X), 1, create_cause_data(initial(X.caste_type), X))
 		S.time_to_live = smoke_duration
 		S.spread_speed = spread_speed
 	else
@@ -268,7 +193,7 @@
 	if (!X.check_state())
 		return
 
-	if (!can_see(X, A, 10))
+	if (!can_see(X, A, TRAPPER_VIEWRANGE))
 		to_chat(X, SPAN_XENODANGER("You cannot see that location!"))
 		return
 
@@ -299,10 +224,13 @@
 
 		if (trap_found)
 			continue
+
+		var/obj/effect/alien/resin/boilertrap/BT
 		if(empowered)
-			new /obj/effect/alien/resin/boilertrap/empowered(T, X, trap_ttl)
+			BT = new /obj/effect/alien/resin/boilertrap/empowered(T, X)
 		else
-			new /obj/effect/alien/resin/boilertrap/(T, X, trap_ttl)
+			BT = new /obj/effect/alien/resin/boilertrap/(T, X)
+		QDEL_IN(BT, trap_ttl)
 
 	if(empowered)
 		empowered = FALSE
@@ -334,7 +262,7 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
-	if(!check_clear_path_to_target(X, A, TRUE, 10))
+	if(!check_clear_path_to_target(X, A, TRUE, TRAPPER_VIEWRANGE))
 		to_chat(X, SPAN_XENOWARNING("Something is in the way!"))
 		return
 
@@ -374,7 +302,7 @@
 	X.visible_message(SPAN_XENOWARNING("The [X] fires a blast of acid at [A]!"), SPAN_XENOWARNING("You fire a blast of acid at [A]!"))
 
 	var/turf/target = locate(A.x, A.y, A.z)
-	var/obj/item/projectile/P = new /obj/item/projectile(initial(X.caste_name), X, X.loc)
+	var/obj/item/projectile/P = new /obj/item/projectile(X.loc, create_cause_data(initial(X.caste_type), X))
 
 	var/datum/ammo/ammoDatum = new ammo_type()
 

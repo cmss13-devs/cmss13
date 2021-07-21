@@ -77,7 +77,7 @@
 	decompiler = locate(/obj/item/device/matter_decompiler) in src.module
 
 	//Some tidying-up.
-	flavor_text = "This is an XP-45 Engineering Drone, one of the many fancy things that come out of the Weston-Yamada Research Department. It's designed to assist both ship repairs as well as ground missions. Shiny!"
+	flavor_text = "This is an XP-45 Engineering Drone, one of the many fancy things that come out of the Weyland-Yutani Research Department. It's designed to assist both ship repairs as well as ground missions. Shiny!"
 	update_icons()
 
 /mob/living/silicon/robot/drone/initialize_pass_flags(var/datum/pass_flags_container/PF)
@@ -117,7 +117,7 @@
 		to_chat(user, SPAN_DANGER("The maintenance drone chassis not compatible with \the [W]."))
 		return
 
-	else if (istype(W, /obj/item/tool/crowbar))
+	else if (HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		to_chat(user, "The machine is hermetically sealed. You can't open the case.")
 		return
 
@@ -141,8 +141,8 @@
 
 	if(health <= -35 && src.stat != 2)
 		timeofdeath = world.time
-		death(last_damage_source) //Possibly redundant, having trouble making death() cooperate.
-		gib(last_damage_source)
+		death(last_damage_data) //Possibly redundant, having trouble making death() cooperate.
+		gib(last_damage_data)
 		return
 	..()
 

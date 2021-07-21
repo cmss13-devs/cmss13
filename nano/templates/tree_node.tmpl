@@ -1,0 +1,31 @@
+<style>
+
+.borderPx {
+    float: inherit;
+    width: 45%;
+}
+
+</style>
+
+{{if data.xeno}}
+    {{:helper.xenoMode()}}
+{{else}}
+    {{:helper.USCMMode()}}
+{{/if}}
+
+<div name="left_side" class="borderPx" style="float: left">
+    <h2>General Information</h2>
+    <b>Name:</b> {{:data.name}}<br>
+    <b>Description:</b> {{:data.desc}}<br>
+</div>
+<div name="right_side" class="borderPx" style="float: right">
+    <h2>Purchase Information</h2>
+    {{if data.unlocked}}
+        <b>PURCHASED</b>
+    {{else}}
+        <b>Total Points:</b> {{:data.total_points}}<br>
+        <b>Cost:</b>{{if data.cost == 0}} FREE {{else}} {{:data.cost}} {{/if}}<br>
+        {{:helper.link('Purchase', null, { 'purchase_node' : 1 }, null, null)}}
+    {{/if}}
+</div>
+

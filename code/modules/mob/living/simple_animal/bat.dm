@@ -15,7 +15,7 @@
 	if (PF)
 		PF.flags_pass = PASS_OVER|PASS_FLAGS_CRAWLER
 
-/mob/living/simple_animal/bat/Life()
+/mob/living/simple_animal/bat/Life(delta_time)
 	. = ..()
 	if(!ckey && stat == CONSCIOUS && prob(5))
 		if(locate(/turf/closed,get_step(src, NORTH)))

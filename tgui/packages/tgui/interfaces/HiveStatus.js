@@ -201,7 +201,7 @@ const XenoCounts = (props, context) => {
                         {guaranteed_slots && (
                           <div>
                             Guaranteed slots: {
-                              guaranteed_slots.map((caste_name, i) => (
+                              guaranteed_slots.map((caste_type, i) => (
                                 <Fragment key={i}>
                                   <span
                                     style={{
@@ -209,9 +209,9 @@ const XenoCounts = (props, context) => {
                                     }}
                                   >
                                     {tier_slots[tier_str]
-                                      .guaranteed_slots[caste_name]}
+                                      .guaranteed_slots[caste_type]}
                                   </span>
-                                  {caste_name}
+                                  {caste_type}
                                   {/* No comma at the end of the list*/}
                                   {i === guaranteed_slots.length-1
                                     ? ""

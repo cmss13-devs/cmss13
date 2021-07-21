@@ -1,10 +1,10 @@
 /datum/caste_datum/spitter
-	caste_name = "Spitter"
+	caste_type = XENO_CASTE_SPITTER
 	tier = 2
 
 	melee_damage_lower = XENO_DAMAGE_TIER_1
 	melee_damage_upper = XENO_DAMAGE_TIER_3
-	max_health = XENO_HEALTH_TIER_6
+	max_health = XENO_HEALTH_TIER_7
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_6
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_2
@@ -14,8 +14,8 @@
 
 	caste_desc = "Ptui!"
 	spit_types = list(/datum/ammo/xeno/acid/medium)
-	evolves_to = list("Boiler")
-	deevolves_to = "Sentinel"
+	evolves_to = list(XENO_CASTE_BOILER)
+	deevolves_to = XENO_CASTE_SENTINEL
 	acid_level = 2
 
 	behavior_delegate_type = /datum/behavior_delegate/spitter_base
@@ -29,8 +29,8 @@
 	tacklestrength_max = 5
 
 /mob/living/carbon/Xenomorph/Spitter
-	caste_name = "Spitter"
-	name = "Spitter"
+	caste_type = XENO_CASTE_SPITTER
+	name = XENO_CASTE_SPITTER
 	desc = "A gross, oozing alien of some kind."
 	icon_size = 48
 	icon_state = "Spitter Walking"
@@ -39,7 +39,7 @@
 	old_x = -12
 
 	tier = 2
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
@@ -47,10 +47,10 @@
 		/datum/action/xeno_action/activable/xeno_spit,
 		/datum/action/xeno_action/onclick/spitter_frenzy,
 		/datum/action/xeno_action/activable/spray_acid/spitter,
-		)
+	)
 	inherent_verbs = list(
 		/mob/living/carbon/Xenomorph/proc/vent_crawl,
-		)
+	)
 	mutation_type = SPITTER_NORMAL
 
 /mob/living/carbon/Xenomorph/Spitter/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
@@ -77,7 +77,7 @@
 	dot_cooldown_atoms += A
 	addtimer(CALLBACK(src, .proc/dot_cooldown_up, A), dot_cooldown_duration)
 
-	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_name))
+	new /datum/effects/acid(A, bound_xeno, initial(bound_xeno.caste_type))
 
 	if (ismob(A))
 		var/datum/action/xeno_action/onclick/spitter_frenzy/SFA = get_xeno_action_by_type(bound_xeno, /datum/action/xeno_action/onclick/spitter_frenzy)

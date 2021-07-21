@@ -138,9 +138,6 @@
 		spawn(0)
 			//Deleting Almayer, for performance!
 			SSitem_cleanup.delete_almayer()
-	if(SSdefcon)
-		//Don't need DEFCON
-		SSdefcon.wait = 30 MINUTES
 	if(SSxenocon)
 		//Don't need XENOCON
 		SSxenocon.wait = 30 MINUTES
@@ -251,6 +248,9 @@
 		world << sound('sound/misc/Game_Over_Man.ogg')
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_X_MAJOR
+			if(round_statistics.current_map)
+				round_statistics.current_map.total_xeno_victories += 1
+				round_statistics.current_map.total_xeno_majors += 1
 
 	else if(finished == 2)
 		log_game("Round end result - marines won")
@@ -261,6 +261,9 @@
 		world << sound('sound/misc/hell_march.ogg')
 		if(round_statistics)
 			round_statistics.round_result = MODE_INFESTATION_M_MAJOR
+			if(round_statistics.current_map)
+				round_statistics.current_map.total_marine_victories += 1
+				round_statistics.current_map.total_marine_majors += 1
 
 	else
 		log_game("Round end result - no winners")
@@ -520,7 +523,10 @@
 	var/supply_drop = 0 //0 = Regular ammo, 1 = Rocket, 2 = Smartgun, 3 = Sniper, 4 = Explosives + GL
 
 /obj/item/device/whiskey_supply_beacon/attack_self(mob/user)
-	if(!ishuman(user)) return
+	..()
+
+	if(!ishuman(user))
+		return
 	if(!user.mind)
 		to_chat(user, "It doesn't seem to do anything for you.")
 		return
@@ -668,7 +674,7 @@
 								/obj/item/attachable/extended_barrel,/obj/item/attachable/verticalgrip, /obj/item/attachable/angledgrip,
 								/obj/item/attachable/gyro, /obj/item/attachable/bipod)
 	var/list/attachment_2 = list(/obj/item/attachable/stock/smg, /obj/item/attachable/stock/shotgun, /obj/item/attachable/stock/rifle, /obj/item/attachable/magnetic_harness,
-								/obj/item/attachable/quickfire, /obj/item/attachable/heavy_barrel, /obj/item/attachable/scope, /obj/item/attachable/quickfire,
+								/obj/item/attachable/heavy_barrel, /obj/item/attachable/scope,
 								/obj/item/attachable/scope/mini)
 
 /obj/item/storage/box/attachments/fill_preset_inventory()

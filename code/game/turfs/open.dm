@@ -238,6 +238,7 @@
 	var/cover_icon = 'icons/turf/floors/filtration.dmi'
 	var/cover_icon_state = "grate"
 	var/default_name = "river"
+	var/no_overlay = FALSE
 	baseturfs = /turf/open/gm/river
 
 /turf/open/gm/river/Initialize(mapload, ...)
@@ -250,6 +251,8 @@
 
 /turf/open/gm/river/proc/update_overlays()
 	overlays.Cut()
+	if(no_overlay)
+		return
 	if(covered)
 		name = covered_name
 		overlays += image("icon"=src.cover_icon,"icon_state"=cover_icon_state,"layer"=CATWALK_LAYER,"dir" = dir)
@@ -288,7 +291,7 @@
 					var/obj/item/clothing/gloves/yautja/Y = H.gloves
 					if(Y && istype(Y) && Y.cloaked)
 						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
-						Y.decloak(H)
+						Y.decloak(H, TRUE)
 
 		else if(isXeno(C))
 			river_slowdown = 1.3
@@ -353,6 +356,9 @@
 /turf/open/gm/riverdeep/Initialize(mapload, ...)
 	. = ..()
 	overlays += image("icon"='icons/turf/ground_map.dmi',"icon_state"="water","layer"=MOB_LAYER+0.1)
+
+/turf/open/gm/river/no_overlay
+	no_overlay = TRUE
 
 
 
@@ -618,6 +624,10 @@
 	icon = 'icons/turf/escapepods.dmi'
 	icon_state = "floor3"
 
+/turf/open/shuttle/lifeboat
+	icon = 'icons/turf/almayer.dmi'
+	icon_state = "plating"
+	allow_construction = FALSE
 
 // Elevator floors
 /turf/open/shuttle/elevator
@@ -628,3 +638,13 @@
 	icon_state = "floor_grating"
 
 
+//vehicle interior floors
+/turf/open/shuttle/vehicle
+	name = "floor"
+	icon = 'icons/turf/vehicle_interior.dmi'
+	icon_state = "floor_0"
+
+//vehicle interior floors
+/turf/open/shuttle/vehicle/med
+	name = "floor"
+	icon_state = "dark_sterile"

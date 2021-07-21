@@ -26,7 +26,7 @@
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Despite this, you have been tasked to ransack the [MAIN_SHIP_NAME] and kill anyone who gets in your way.")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Any UPP, CLF or WY forces also responding are to be considered neutral parties unless proven hostile.")))
 	else
-		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weston-Yamada of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
+		to_chat(H, SPAN_NOTICE(SPAN_BOLD("To this end, you have been contacted by Weyland-Yutani of the USCSS Royce to assist the [MAIN_SHIP_NAME]..")))
 		to_chat(H, SPAN_NOTICE(SPAN_BOLD("Ensure they are not destroyed.</b>")))
 
 /datum/emergency_call/mercs/create_member(datum/mind/M)

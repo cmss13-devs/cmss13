@@ -37,11 +37,14 @@
 #define ACID_VITALS_EMERGENCY						32
 #define ACID_VITALS_DEAD							64
 
+/obj/item/storage/internal/accessory/black_vest/acid_harness
+	storage_slots = 2
+
 /obj/item/clothing/accessory/storage/black_vest/acid_harness
 	name = "A.C.I.D. Harness"
 	desc = "Automated Chemical Integrated Delivery Harness, or really just a franken webbing made by a researcher with poor tailoring skills."
 	icon_state = "vest_acid_black"
-	slots = 2
+	hold = /obj/item/storage/internal/accessory/black_vest/acid_harness
 	var/obj/item/reagent_container/glass/beaker/vial/vial
 	var/obj/item/cell/battery
 	var/obj/structure/machinery/acid_core/acid_core
@@ -57,7 +60,7 @@
 		acid_core.user = loc.loc
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/attackby(obj/item/B, mob/living/user)
-	if(ismultitool(B))
+	if(HAS_TRAIT(B, TRAIT_TOOL_MULTITOOL))
 		ui_interact(user)
 		return
 	. = ..()
@@ -73,8 +76,9 @@
 	. = ..()
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/on_removed(mob/living/user, obj/item/clothing/C)
-	acid_core.user = null
 	. = ..()
+	if(.)
+		acid_core.user = null
 
 /obj/item/clothing/accessory/storage/black_vest/acid_harness/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = TRUE)
 	var/list/data = list(

@@ -38,7 +38,7 @@
 	if (X.observed_xeno != T)
 		return
 
-	var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_name] to [newcaste]?", , "Yes", "No")
+	var/confirm = alert(X, "Are you sure you want to deevolve [T] from [T.caste.caste_type] to [newcaste]?", , "Yes", "No")
 	if(confirm == "No")
 		return
 
@@ -55,21 +55,21 @@
 	var/xeno_type
 
 	switch(newcaste)
-		if("Runner")
+		if(XENO_CASTE_RUNNER)
 			xeno_type = /mob/living/carbon/Xenomorph/Runner
-		if("Drone")
+		if(XENO_CASTE_DRONE)
 			xeno_type = /mob/living/carbon/Xenomorph/Drone
-		if("Sentinel")
+		if(XENO_CASTE_SENTINEL)
 			xeno_type = /mob/living/carbon/Xenomorph/Sentinel
-		if("Spitter")
+		if(XENO_CASTE_SPITTER)
 			xeno_type = /mob/living/carbon/Xenomorph/Spitter
-		if("Lurker")
+		if(XENO_CASTE_LURKER)
 			xeno_type = /mob/living/carbon/Xenomorph/Lurker
-		if("Warrior")
+		if(XENO_CASTE_WARRIOR)
 			xeno_type = /mob/living/carbon/Xenomorph/Warrior
-		if("Defender")
+		if(XENO_CASTE_DEFENDER)
 			xeno_type = /mob/living/carbon/Xenomorph/Defender
-		if("Burrower")
+		if(XENO_CASTE_BURROWER)
 			xeno_type = /mob/living/carbon/Xenomorph/Burrower
 
 	//From there, the new xeno exists, hopefully
@@ -98,7 +98,7 @@
 	if(!(/mob/living/carbon/Xenomorph/verb/Deevolve in T.verbs))
 		remove_verb(new_xeno, /mob/living/carbon/Xenomorph/verb/Deevolve)
 
-	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_name] emerges from the husk of \the [T]."), \
+	new_xeno.visible_message(SPAN_XENODANGER("A [new_xeno.caste.caste_type] emerges from the husk of \the [T]."), \
 	SPAN_XENODANGER("[X] makes you regress into your previous form."))
 
 	if(X.hive.living_xeno_queen && X.hive.living_xeno_queen.observed_xeno == T)
@@ -340,6 +340,21 @@
 	else
 		to_chat(X, SPAN_WARNING("You must overwatch the xeno you want to readmit."))
 
+/datum/action/xeno_action/activable/secrete_resin/remote/queen/use_ability(atom/A)
+	. = ..()
+	if(!.)
+		return
+
+	if(!boosted)
+		return
+	var/mob/living/carbon/Xenomorph/X = owner
+	var/datum/hive_status/HS = X.hive
+	if(!HS || !HS.hive_location)
+		return
+	// 5 screen radius
+	if(get_dist(A, HS.hive_location) > 35)
+		// Apply the normal cooldown if not building near the hive
+		apply_cooldown_override(initial(xeno_cooldown))
 
 /datum/action/xeno_action/onclick/eye/use_ability(atom/A)
 	. = ..()
@@ -348,38 +363,6 @@
 
 	new /mob/hologram/queen(owner.loc, owner)
 	qdel(src)
-
-/datum/action/xeno_action/activable/secrete_resin/ovipositor/action_cooldown_check()
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X)
-		return FALSE
-
-	// Account for the do_after in the resin building proc when checking cooldown
-	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.resin_build_order[X.selected_resin]]
-	var/total_build_time = RC.build_time*X.caste.build_time_mult
-	return (world.time >= last_use + (total_build_time + cooldown))
-
-/datum/action/xeno_action/activable/secrete_resin/ovipositor/use_ability(atom/A)
-	if(!action_cooldown_check())
-		return
-
-	var/mob/living/carbon/Xenomorph/X = owner
-	if(!X)
-		return
-
-	var/turf/T = get_turf(A)
-	if(!T)
-		return
-
-	if(!..())
-		return
-
-	last_use = world.time
-
-	var/datum/resin_construction/RC = GLOB.resin_constructions_list[X.resin_build_order[X.selected_resin]]
-	T.visible_message(SPAN_XENONOTICE("The weeds begin pulsating wildly and secrete resin in the shape of \a [RC.construction_name]!"), null, 5)
-	to_chat(owner, SPAN_XENONOTICE("You focus your plasma into the weeds below you and force the weeds to secrete resin in the shape of \a [RC.construction_name]."))
-	playsound(T, "alien_resin_build", 25)
 
 /datum/action/xeno_action/activable/expand_weeds
 	var/list/recently_built_turfs
@@ -458,3 +441,129 @@
 
 /datum/action/xeno_action/activable/expand_weeds/proc/reset_turf_cooldown(var/turf/T)
 	recently_built_turfs -= T
+
+/datum/action/xeno_action/activable/place_queen_beacon/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Queen/Q = owner
+	if(!Q.check_state())
+		return FALSE
+
+	if(Q.action_busy)
+		return FALSE
+
+	var/turf/T = get_turf(A)
+	if(!check_turf(Q, T))
+		return FALSE
+	if(!do_after(Q, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+		return FALSE
+	if(!check_turf(Q, T))
+		return FALSE
+
+	for(var/i in transported_xenos)
+		UnregisterSignal(i, COMSIG_MOVABLE_PRE_MOVE)
+
+	to_chat(Q, SPAN_XENONOTICE("You rally the hive to the queen beacon!"))
+	LAZYCLEARLIST(transported_xenos)
+	RegisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN, .proc/tunnel_xeno)
+	for(var/xeno in hive.totalXenos)
+		if(xeno == Q)
+			continue
+		tunnel_xeno(src, xeno)
+
+	addtimer(CALLBACK(src, .proc/transport_xenos, T), 3 SECONDS)
+	return TRUE
+
+/datum/action/xeno_action/activable/place_queen_beacon/proc/tunnel_xeno(datum/source, mob/living/carbon/Xenomorph/X)
+	SIGNAL_HANDLER
+	if(X.z == owner.z)
+		to_chat(X, SPAN_XENONOTICE("You begin tunneling towards the queen beacon!"))
+		RegisterSignal(X, COMSIG_MOVABLE_PRE_MOVE, .proc/cancel_movement)
+		LAZYADD(transported_xenos, X)
+
+/datum/action/xeno_action/activable/place_queen_beacon/proc/transport_xenos(turf/target)
+	UnregisterSignal(SSdcs, COMSIG_GLOB_XENO_SPAWN)
+	for(var/xeno in transported_xenos)
+		var/mob/living/carbon/Xenomorph/X = xeno
+		to_chat(X, SPAN_XENONOTICE("You tunnel to the queen beacon!"))
+		UnregisterSignal(X, COMSIG_MOVABLE_PRE_MOVE)
+		if(target)
+			X.forceMove(target)
+
+/datum/action/xeno_action/activable/place_queen_beacon/proc/cancel_movement()
+	SIGNAL_HANDLER
+	return COMPONENT_CANCEL_MOVE
+
+/datum/action/xeno_action/activable/place_queen_beacon/proc/check_turf(mob/living/carbon/Xenomorph/Queen/Q, turf/T)
+	if(!T || T.density)
+		to_chat(Q, SPAN_XENOWARNING("You can't place a queen beacon here."))
+		return FALSE
+
+	if(T.z != Q.z)
+		to_chat(Q, SPAN_XENOWARNING("That's too far away!"))
+		return FALSE
+
+	var/obj/effect/alien/weeds/located_weeds = locate() in T
+	if(!located_weeds)
+		to_chat(Q, SPAN_XENOWARNING("You need to place the queen beacon on weeds."))
+		return FALSE
+
+	return TRUE
+
+
+/datum/action/xeno_action/activable/blockade/use_ability(atom/A)
+	var/mob/living/carbon/Xenomorph/Queen/Q = owner
+	if(!Q.check_state())
+		return FALSE
+
+	if(!action_cooldown_check())
+		return FALSE
+
+	if(Q.action_busy)
+		return FALSE
+
+	var/width = initial(pillar_type.width)
+	var/height = initial(pillar_type.height)
+
+	var/turf/T = get_turf(A)
+	if(T.density)
+		to_chat(Q, SPAN_XENOWARNING("You can only construct this blockade in open areas!"))
+		return FALSE
+
+	if(T.z != owner.z)
+		to_chat(Q, SPAN_XENOWARNING("That's too far away!"))
+		return FALSE
+
+	if(!T.weeds)
+		to_chat(Q, SPAN_XENOWARNING("You can only construct this blockade on weeds!"))
+		return FALSE
+
+	if(!Q.check_plasma(plasma_cost))
+		return
+
+	var/list/alerts = list()
+	for(var/i in RANGE_TURFS(Floor(width/2), T))
+		alerts += new /obj/effect/warning/alien(i)
+
+	if(!do_after(Q, time_taken, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY))
+		QDEL_NULL_LIST(alerts)
+		return FALSE
+	QDEL_NULL_LIST(alerts)
+
+	if(!check_turf(Q, T))
+		return FALSE
+
+	if(!check_and_use_plasma_owner())
+		return
+
+	var/turf/new_turf = locate(max(T.x - Floor(width/2), 1), max(T.y - Floor(height/2), 1), T.z)
+	to_chat(Q, SPAN_XENONOTICE("You raise a blockade!"))
+	var/obj/effect/alien/resin/resin_pillar/RP = new pillar_type(new_turf)
+	RP.start_decay(brittle_time, decay_time)
+
+	return TRUE
+
+/datum/action/xeno_action/activable/blockade/proc/check_turf(mob/living/carbon/Xenomorph/Queen/Q, turf/T)
+	if(T.density)
+		to_chat(Q, SPAN_XENOWARNING("You can't place a blockade here."))
+		return FALSE
+
+	return TRUE

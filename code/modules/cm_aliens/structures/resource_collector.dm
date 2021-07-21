@@ -3,6 +3,7 @@
 /obj/effect/alien/resin/collector
 	name = "hive collector"
 	desc = "A disgusting mass of pulsating spores. It reeks of plasma."
+	icon = 'icons/mob/hostiles/structures64x64.dmi'
 	icon_state = "collector"
 	pixel_x = -16
 	pixel_y = -16
@@ -17,12 +18,11 @@
 
 /obj/effect/alien/resin/collector/Initialize(mapload, hive_ref, new_node)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_structures_64x64))
 	if(hive_ref)
 		linked_hive = hive_ref
 		if(linked_hive.living_xeno_queen)
-			var/area/current_area = get_area(src)
-			xeno_message("Hive: \A [src] has been constructed at [sanitize(current_area)]!", 3, linked_hive.hivenumber)
+			var/current_area_name = get_area_name(src)
+			xeno_message("Hive: \A [src] has been constructed at [sanitize(current_area_name)]!", 3, linked_hive.hivenumber)
 	if(new_node)
 		connected_node = new_node
 		connected_node.update_icon()
@@ -46,11 +46,11 @@
 /obj/effect/alien/resin/collector/process()
 	if(!linked_hive || world.time < (last_gathered_time + gather_cooldown))
 		return
-	var/area/current_area = get_area(src)
+	var/current_area_name = get_area_name(src)
 	if(!connected_node)
 		visible_message(SPAN_DANGER("\The [src] groans and collapses as its contents are reduced to nothing!"))
 		if(linked_hive.living_xeno_queen)
-			xeno_message("Hive: \A [src] has been depleted at [sanitize(current_area)]!", 3, linked_hive.hivenumber)
+			xeno_message("Hive: \A [src] has been depleted at [sanitize(current_area_name)]!", 3, linked_hive.hivenumber)
 		qdel(src)
 		return
 	last_gathered_time = world.time

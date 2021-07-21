@@ -39,7 +39,7 @@
 
 	var/obj/item/device/clue_scanner/S = W
 
-	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_MP))
+	if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_WARNING("You don't seem to know how to use [S]..."))
 		return
 

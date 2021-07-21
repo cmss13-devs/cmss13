@@ -3,7 +3,7 @@
 /datum/asset/simple/tgui_common
 	keep_local_name = TRUE
 	assets = list(
-		"tgui-common.chunk.js" = 'tgui/public/tgui-common.chunk.js',
+		"tgui-common.bundle.js" = 'tgui/public/tgui-common.bundle.js',
 	)
 
 /datum/asset/simple/tgui
@@ -179,3 +179,37 @@
 			Insert("language-[icon_state]", icon, icon_state=icon_state)*/
 	..()
 
+
+/datum/asset/spritesheet/choose_resin
+	name = "chooseresin"
+
+/datum/asset/spritesheet/choose_resin/register()
+	for (var/k in GLOB.resin_constructions_list)
+		var/datum/resin_construction/RC = k
+
+		var/icon_file = 'icons/mob/hud/actions.dmi'
+		var/icon_state = initial(RC.construction_name)
+		var/icon_name = replacetext(icon_state, " ", "-")
+
+		if (sprites[icon_name])
+			continue
+
+		var/icon_states_list = icon_states(icon_file)
+		if(!(icon_state in icon_states_list))
+			var/icon_states_string
+			for (var/an_icon_state in icon_states_list)
+				if (!icon_states_string)
+					icon_states_string = "[json_encode(an_icon_state)](\ref[an_icon_state])"
+				else
+					icon_states_string += ", [json_encode(an_icon_state)](\ref[an_icon_state])"
+			stack_trace("[RC] does not have a valid icon state, icon=[icon_file], icon_state=[json_encode(icon_state)](\ref[icon_state]), icon_states=[icon_states_string]")
+			icon_file = 'icons/turf/floors/floors.dmi'
+			icon_state = ""
+
+		var/icon/iconNormal = icon(icon_file, icon_state, SOUTH)
+		Insert(icon_name, iconNormal)
+
+		var/icon/iconBig = icon(icon_file, icon_state, SOUTH)
+		iconBig.Scale(iconNormal.Width()*2, iconNormal.Height()*2)
+		Insert("[icon_name]_big", iconBig)
+	return ..()

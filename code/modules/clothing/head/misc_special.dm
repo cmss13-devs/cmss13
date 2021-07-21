@@ -33,9 +33,11 @@
 	siemens_coefficient = 0.9
 	w_class = SIZE_MEDIUM
 	eye_protection = 2
+	vision_impair = VISION_IMPAIR_MAX
 	var/hug_memory = 0 //Variable to hold the "memory" of how many anti-hugs remain.  Because people were abusing the fuck out of it.
 
-/obj/item/clothing/head/welding/attack_self()
+/obj/item/clothing/head/welding/attack_self(mob/user)
+	..()
 	toggle()
 
 
@@ -46,6 +48,7 @@
 
 	if(usr.canmove && !usr.stat && !usr.is_mob_restrained())
 		if(up)
+			vision_impair = VISION_IMPAIR_MAX
 			flags_inventory |= COVEREYES|COVERMOUTH|BLOCKSHARPOBJ
 			flags_inv_hide |= HIDEEARS|HIDEEYES|HIDEFACE
 			icon_state = initial(icon_state)
@@ -53,6 +56,7 @@
 			to_chat(usr, "You flip the [src] down to protect your eyes.")
 			anti_hug = hug_memory //This will reset the hugged var, but ehh. More efficient than making a new var for it.
 		else
+			vision_impair = VISION_IMPAIR_NONE
 			flags_inventory &= ~(COVEREYES|COVERMOUTH|BLOCKSHARPOBJ)
 			flags_inv_hide &= ~(HIDEEARS|HIDEEYES|HIDEFACE)
 			icon_state = "[initial(icon_state)]up"
@@ -92,19 +96,22 @@
 		STOP_PROCESSING(SSobj, src)
 		return
 
-/obj/item/clothing/head/cakehat/attack_self(mob/user as mob)
-	if(status > 1)	return
-	src.onfire = !( src.onfire )
-	if (src.onfire)
-		src.force = 3
-		src.damtype = "fire"
-		src.icon_state = "cake1"
+/obj/item/clothing/head/cakehat/attack_self(mob/user)
+	..()
+
+	if(status > 1)
+		return
+
+	onfire = !onfire
+	if (onfire)
+		force = 3
+		damtype = "fire"
+		icon_state = "cake1"
 		START_PROCESSING(SSobj, src)
 	else
-		src.force = null
-		src.damtype = "brute"
-		src.icon_state = "cake0"
-	return
+		force = null
+		damtype = "brute"
+		icon_state = "cake0"
 
 
 /*
@@ -123,29 +130,31 @@
 	w_class = SIZE_MEDIUM
 	anti_hug = 1
 
-	attack_self(mob/user)
-		if(!isturf(user.loc))
-			to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
-			return
-		on = !on
-		icon_state = "hardhat[on]_pumpkin"
+/obj/item/clothing/head/pumpkinhead/attack_self(mob/user)
+	..()
 
-		if(on)	user.SetLuminosity(brightness_on)
-		else	user.SetLuminosity(-brightness_on)
+	if(!isturf(user.loc))
+		to_chat(user, "You cannot turn the light on while in [user.loc]") //To prevent some lighting anomalities.
+		return
+	on = !on
+	icon_state = "hardhat[on]_pumpkin"
 
-	pickup(mob/user)
-		..()
-		if(on)
-			user.SetLuminosity(brightness_on)
-//			user.UpdateLuminosity()
-			SetLuminosity(0)
+	if(on)
+		user.SetLuminosity(brightness_on)
+	else
+		user.SetLuminosity(-brightness_on)
 
-	dropped(mob/user)
-		..()
-		if(on)
-			user.SetLuminosity(-brightness_on)
-//			user.UpdateLuminosity()
-			SetLuminosity(brightness_on)
+/obj/item/clothing/head/pumpkinhead/pickup(mob/user)
+	..()
+	if(on)
+		user.SetLuminosity(brightness_on)
+	SetLuminosity(0)
+
+/obj/item/clothing/head/pumpkinhead/dropped(mob/user)
+	..()
+	if(on)
+		user.SetLuminosity(-brightness_on)
+		SetLuminosity(brightness_on)
 
 /obj/item/clothing/head/pumpkinhead/Destroy()
 	if(ismob(src.loc))

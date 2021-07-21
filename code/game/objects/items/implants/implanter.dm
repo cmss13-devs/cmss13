@@ -58,39 +58,35 @@
 /obj/item/implanter/loyalty
 	name = "implanter-loyalty"
 
-/obj/item/implanter/loyalty/New()
-	src.imp = new /obj/item/implant/loyalty( src )
-	..()
+/obj/item/implanter/loyalty/Initialize(mapload, ...)
+	. = ..()
+	imp = new /obj/item/implant/loyalty( src )
 	update()
-	return
 
 /obj/item/implanter/explosive
 	name = "implanter (E)"
 
-/obj/item/implanter/explosive/New()
-	src.imp = new /obj/item/implant/explosive( src )
-	..()
+/obj/item/implanter/explosive/Initialize(mapload, ...)
+	. = ..()
+	imp = new /obj/item/implant/explosive( src )
 	update()
-	return
 
 /obj/item/implanter/adrenalin
 	name = "implanter-adrenalin"
 
-/obj/item/implanter/adrenalin/New()
-	src.imp = new /obj/item/implant/adrenalin(src)
-	..()
+/obj/item/implanter/adrenalin/Initialize(mapload, ...)
+	. = ..()
+	imp = new /obj/item/implant/adrenalin( src )
 	update()
-	return
 
 /obj/item/implanter/compressed
 	name = "implanter (C)"
 	icon_state = "cimplanter1"
 
-/obj/item/implanter/compressed/New()
+/obj/item/implanter/compressed/Initialize(mapload, ...)
+	. = ..()
 	imp = new /obj/item/implant/compressed( src )
-	..()
 	update()
-	return
 
 /obj/item/implanter/compressed/update()
 	if (imp)

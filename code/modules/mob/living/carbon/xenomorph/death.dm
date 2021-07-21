@@ -67,7 +67,7 @@
 						break
 				hive.handle_xeno_leader_pheromones()
 				if(SSticker.mode)
-					SSticker.mode.check_queen_status(hivenumber)
+					INVOKE_ASYNC(SSticker.mode, /datum/game_mode.proc/check_queen_status, hivenumber)
 					LAZYADD(SSticker.mode.dead_queens, "<br>[!isnull(src.key) ? src.key : "?"] was [src] [SPAN_BOLDNOTICE("(DIED)")]")
 
 		else
@@ -109,6 +109,10 @@
 	if(hardcore)
 		QDEL_IN(src, 3 SECONDS)
 
+	for(var/i in built_structures)
+		var/list/L = built_structures[i]
+		QDEL_NULL_LIST(L)
+
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_XENO_DEATH, src, gibbed)
 
 /mob/living/carbon/Xenomorph/gib(var/cause = "gibbing")
@@ -119,16 +123,16 @@
 	if(!caste)
 		CRASH("CASTE ERROR: gib() was called without a caste. (name: [name], disposed: [QDELETED(src)], health: [health])")
 
-	switch(caste.caste_name) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
-		if("Boiler")
+	switch(caste.caste_type) //This will need to be changed later, when we have proper xeno pathing. Might do it on caste or something.
+		if(XENO_CASTE_BOILER)
 			var/mob/living/carbon/Xenomorph/Boiler/B = src
 			visible_message(SPAN_DANGER("[src] begins to bulge grotesquely, and explodes in a cloud of corrosive gas!"))
 			B.smoke.set_up(2, 0, get_turf(src))
 			B.smoke.start()
 			remains.icon_state = "gibbed-a-corpse"
-		if("Runner")
+		if(XENO_CASTE_RUNNER)
 			remains.icon_state = "gibbed-a-corpse-runner"
-		if("Bloody Larva","Predalien Larva")
+		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
 			remains.icon_state = "larva_gib_corpse"
 		else
 			remains.icon_state = "gibbed-a-corpse"
@@ -139,13 +143,15 @@
 
 /mob/living/carbon/Xenomorph/gib_animation()
 	var/to_flick = "gibbed-a"
-	var/icon_path = get_icon_from_source(CONFIG_GET(string/alien_gib_48x48))
+	var/icon_path
 	if(mob_size >= MOB_SIZE_BIG)
-		icon_path = get_icon_from_source(CONFIG_GET(string/alien_gib_64x64))
-	switch(caste.caste_name)
-		if("Runner")
+		icon_path = 'icons/mob/hostiles/xenomorph_64x64.dmi'
+	else
+		icon_path = 'icons/mob/hostiles/xenomorph_48x48.dmi'
+	switch(caste.caste_type)
+		if(XENO_CASTE_RUNNER)
 			to_flick = "gibbed-a-runner"
-		if("Bloody Larva","Predalien Larva")
+		if(XENO_CASTE_LARVA, XENO_CASTE_PREDALIEN_LARVA)
 			to_flick = "larva_gib"
 	new /obj/effect/overlay/temp/gib_animation/xeno(loc, src, to_flick, icon_path)
 

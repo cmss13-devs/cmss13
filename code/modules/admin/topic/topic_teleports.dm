@@ -91,7 +91,7 @@
 				if(!faction)
 					to_chat(owner, SPAN_ALERT("Faction choice error. Aborting."))
 					return
-				var/list/targets = GLOB.alive_human_list
+				var/list/targets = GLOB.alive_human_list.Copy()
 				for(var/mob/living/carbon/human/H in targets)
 					var/area/AR = get_area(H)
 					if(H.faction != faction || AR.statistic_exempt)

@@ -183,7 +183,7 @@
 				return
 
 			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_give_plasma)
-			A?.use_ability(xenoTarget)
+			A?.use_ability_wrapper(xenoTarget)
 
 		if("heal")
 			var/mob/living/carbon/Xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
@@ -196,7 +196,7 @@
 				return
 
 			var/datum/action/xeno_action/A = get_xeno_action_by_type(xenoSrc, /datum/action/xeno_action/activable/queen_heal)
-			A?.use_ability(xenoTarget, TRUE)
+			A?.use_ability_wrapper(xenoTarget, TRUE)
 
 		if("overwatch")
 			var/mob/living/carbon/Xenomorph/xenoTarget = locate(params["target_ref"]) in GLOB.living_xeno_list
@@ -214,7 +214,7 @@
 			if(!xenoSrc.check_state(TRUE))
 				return
 
-			var/isQueen = (xenoSrc.caste_name == "Queen")
+			var/isQueen = (xenoSrc.caste_type == XENO_CASTE_QUEEN)
 			if (isQueen)
 				xenoSrc.overwatch(xenoTarget, movement_event_handler = /datum/event_handler/xeno_overwatch_onmovement/queen)
 			else

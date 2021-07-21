@@ -6,32 +6,6 @@
 	..()
 	users = list()
 
-/datum/cas_fire_mission_record
-	var/obj/structure/dropship_equipment/weapon/weapon
-	var/list/offsets //null means we are not shooting
-
-/datum/cas_fire_mission_record/proc/get_offsets()
-	if(!weapon || !weapon.ship_base)
-		return null
-	var/min = -3 + weapon.ship_base.gimbal*3
-	var/max = 3 + weapon.ship_base.gimbal*3
-	return list("min" = min, "max" = max)
-
-/datum/cas_fire_mission_record/proc/get_ammo()
-	if(!weapon || !weapon.ship_base || !offsets)
-		return list("count" = 0, "used" = 0, "max" = 0)
-	if(!weapon.ammo_equipped)
-		return list("count" = 0, "used" = 0, "max" = 0)
-	var/ammocount = weapon.ammo_equipped.ammo_count
-	var/used = 0
-	var/max_ammo = 0
-	if(weapon.ammo_equipped)
-		for(var/step = 1; step<=offsets.len; step++)
-			if(offsets[step]!=null && offsets[step]!="-")
-				used += weapon.ammo_equipped.ammo_used_per_firing
-		max_ammo = weapon.ammo_equipped.max_ammo_count
-	return list("count" = ammocount, "used" = used, "max" = max_ammo)
-
 /datum/cas_fire_mission
 	var/mission_length = 3 //can be 3,4,6 or 12
 	var/list/datum/cas_fire_mission_record/records = list()
@@ -102,9 +76,16 @@
 	if(code_id == FIRE_MISSION_BAD_COOLDOWN)
 		return "Weapon [weapon_string] requires interval of [error_weapon.ammo_equipped.fire_mission_delay] time units per shot."
 	if(code_id == FIRE_MISSION_BAD_OFFSET)
-		var/min = -3 + error_weapon.ship_base.gimbal*3
-		var/max = 3 + error_weapon.ship_base.gimbal*3
-		return "Weapon [weapon_string] that only allows gimbal offset between [min] and [max]."
+		// Change this to using weapon's when it is implemented
+		var/obj/effect/attach_point/weapon/AW = error_weapon.ship_base
+		if(!istype(AW))
+			. = "Internal error: [weapon_string] hardpoint invalid"
+			CRASH("CASFM-CHECK-01: Weapon attached to invalid hardpoint")
+		var/list/allowed_offsets = AW.get_offsets()
+		if(!allowed_offsets)
+			. = "Internal error: [weapon_string] offsets invalid"
+			CRASH("CASFM-CHECK-02: Weapon reported offsets invalid")
+		return "Weapon hardpoint of [weapon_string] only allows gimbal offset between [allowed_offsets["min"]] and [allowed_offsets["max"]]."
 	if(code_id == FIRE_MISSION_WEAPON_REMOVED)
 		return "Weapon [weapon_string] is no longer located on this dropship"
 	if(code_id == FIRE_MISSION_WEAPON_UNUSABLE)

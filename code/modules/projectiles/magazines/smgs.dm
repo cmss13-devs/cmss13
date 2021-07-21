@@ -23,6 +23,7 @@
 	desc = "A 10x20mm caseless armor-piercing submachinegun magazine. The bullet tips are made out of high-density material, allowing them to pierce straight through armor, but also reducing the raw stopping power and velocity of the ammunition."
 	icon_state = "m39_AP"
 	default_ammo = /datum/ammo/bullet/smg/ap
+
 /obj/item/ammo_magazine/smg/m39/le
 	name = "\improper M39 LE magazine (10x20mm)"
 	desc = "A 10x20mm caseless light-explosive submachinegun magazine containing special light explosive rounds, designed to rapidly decimate armor, at the cost of vastly reduced damage and penetration."
@@ -34,6 +35,24 @@
 	desc = "A 10x20mm caseless rubber bullet submachinegun magazine, containing rubber bullets. Non-lethal, but terrible on bioforms."
 	icon_state = "m39_le"
 	default_ammo = /datum/ammo/bullet/smg/rubber
+
+/obj/item/ammo_magazine/smg/m39/penetrating
+	name = "\improper M39 wall-piercing magazine (10x20mm)"
+	desc = "A 10x20mm caseless wall-piercing bullet submachinegun magazine, containing wall-piercing bullets. Designed to penetrate straight through objects and walls."
+	icon_state = "m39_penetrating"
+	default_ammo = /datum/ammo/bullet/smg/ap/penetrating
+
+/obj/item/ammo_magazine/smg/m39/cluster
+	name = "\improper M39 cluster magazine (10x20mm)"
+	desc = "A 10x20mm caseless cluster bullet submachinegun magazine, containing cluster bullets. Designed to attach tiny explosives to targets, to detonate all at once if enough hit."
+	icon_state = "m39_cluster"
+	default_ammo = /datum/ammo/bullet/smg/ap/cluster
+
+/obj/item/ammo_magazine/smg/m39/toxin
+	name = "\improper M39 toxin magazine (10x20mm)"
+	desc = "A 10x20mm caseless toxin bullet submachinegun magazine, containing toxin bullets. Great at stripping away armour and destroying biological structures."
+	icon_state = "m39_toxin"
+	default_ammo = /datum/ammo/bullet/smg/ap/toxin
 
 /obj/item/ammo_magazine/smg/m39/incendiary
 	name = "\improper M39 incendiary magazine (10x20mm)"
@@ -57,7 +76,7 @@
 	desc = "A 9mm magazine for the MP5."
 	default_ammo = /datum/ammo/bullet/smg
 	caliber = "9mm"
-	icon_state = "mp7" //PLACEHOLDER
+	icon_state = "mp5"
 	gun_type = /obj/item/weapon/gun/smg/mp5
 	max_rounds = 30 //Also comes in 10 and 40.
 
@@ -73,17 +92,6 @@
 	icon_state = "mp7"
 	gun_type = /obj/item/weapon/gun/smg/mp7
 	max_rounds = 30 //Also comes in 20 and 40.
-
-//-------------------------------------------------------
-//SKORPION //Based on the same thing.
-
-/obj/item/ammo_magazine/smg/skorpion
-	name = "\improper CZ-81 magazine (.32ACP)"
-	desc = "A .32ACP caliber magazine for the CZ-81."
-	caliber = ".32ACP"
-	icon_state = "skorpion" //PLACEHOLDER
-	gun_type = /obj/item/weapon/gun/smg/skorpion
-	max_rounds = 30 //Can also be 10.
 
 
 //-------------------------------------------------------

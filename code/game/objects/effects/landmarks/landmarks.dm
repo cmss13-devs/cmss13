@@ -9,16 +9,6 @@
 	..()
 	tag = "landmark*[name]"
 	invisibility = 101
-
-	switch(name)			//some of these are probably obsolete
-		if("HangarUpperElevator")
-			HangarUpperElevator = loc
-			qdel(src)
-
-		if("HangarLowerElevator")
-			HangarLowerElevator = loc
-			qdel(src)
-
 	return 1
 
 /obj/effect/landmark/Initialize(mapload, ...)
@@ -42,6 +32,25 @@
 
 /obj/effect/landmark/ert_spawns/Destroy()
 	LAZYREMOVE(GLOB.ert_spawns[type], src)
+	return ..()
+
+// Nightmare insert locations
+/obj/effect/landmark/nightmare
+	name = "Nightmare Insert"
+	icon_state = "nightmare_insert"
+	var/insert_tag            // Identifier for global mapping
+	var/replace = FALSE       // Replace another existing landmark mapping of same name
+	var/autoremove = TRUE     // Delete mapped turf when landmark is deleted, such as by an insert in replace mode
+/obj/effect/landmark/nightmare/Initialize(mapload, ...)
+	. = ..()
+	if(!insert_tag) return
+	if(!replace && GLOB.nightmare_landmarks[insert_tag]) 
+		return
+	GLOB.nightmare_landmarks[insert_tag] = get_turf(src)
+/obj/effect/landmark/nightmare/Destroy()
+	if(insert_tag && autoremove \
+	   && GLOB.nightmare_landmarks[insert_tag] == get_turf(src))
+		GLOB.nightmare_landmarks.Remove(insert_tag)
 	return ..()
 
 /obj/effect/landmark/ert_spawns/distress

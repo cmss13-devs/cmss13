@@ -38,10 +38,6 @@
 
 	var/icon/bandaged_icon = null // Icon for gauze over a wound
 
-	var/icon/impact_icon = null // Icon for special impact icons from projectiles or melee weapons
-
-
-
 	// helper lists
 	var/tmp/list/desc_list = list()
 	var/tmp/list/damage_list = list()

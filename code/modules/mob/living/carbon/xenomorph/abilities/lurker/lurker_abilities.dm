@@ -62,12 +62,8 @@
 
 	var/duration = 30 SECONDS 			// 30 seconds base
 	var/invis_timer_id = TIMER_ID_NULL
-	var/alpha_amount = 35
-	var/speed_buff = 0
-
-	var/speed_buff_mod_max = 0.25
-	var/speed_buff_pct_per_ten_tiles = 0.25 // get a quarter of our buff per ten tiles
-	var/curr_speed_buff = 0
+	var/alpha_amount = 25
+	var/speed_buff = 0.20
 
 // tightly coupled 'buff next slash' action
 /datum/action/xeno_action/onclick/lurker_assassinate

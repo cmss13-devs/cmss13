@@ -46,13 +46,13 @@
 		if(prev_T && LinkBlocked(prev_T, T))
 			break
 		ammo.current_rounds--
-		flame_turf(T)
+		flame_turf(T, user)
 		distance++
 		prev_T = T
 		sleep(1)
 
-/obj/item/hardpoint/secondary/small_flamer/proc/flame_turf(turf/T)
+/obj/item/hardpoint/secondary/small_flamer/proc/flame_turf(turf/T, mob/user)
 	if(!istype(T)) return
 
 	if(!locate(/obj/flamer_fire) in T) // No stacking flames!
-		new/obj/flamer_fire(T, initial(name), user)
+		new/obj/flamer_fire(T, create_cause_data(initial(name), user))

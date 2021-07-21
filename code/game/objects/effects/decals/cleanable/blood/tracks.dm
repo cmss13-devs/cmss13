@@ -31,13 +31,11 @@
 	else
 		LAZYSET(steps_in, "[direction]", I)
 
-	MA = new(cleanable_turf)
 	// Need to do this because of BYOND behavior that does not update overlayed images
 	// after modifying their appearances
-	MA.overlays -= overlayed_image
+	cleanable_turf.overlays -= overlayed_image
 	overlayed_image.overlays += I
-	MA.overlays += overlayed_image
-	cleanable_turf.appearance = MA
+	cleanable_turf.overlays += overlayed_image
 
 /obj/effect/decal/cleanable/blood/tracks/footprints
 	name = "footprints"

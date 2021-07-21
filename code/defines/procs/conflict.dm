@@ -23,7 +23,7 @@
 
 	armor_integrity = max(armor_integrity, 0)
 	damage = damage * c_config.damage_initial_multiplier
-	penetration = penetration > 0 || armor > 0 ? penetration : 0		
+	penetration = penetration > 0 || armor > 0 ? penetration : 0
 	armor -= penetration
 	var/is_crit_hit = prob(c_config.critical_chance)
 	var/minimal_efficiency = c_config.armor_effective_health*c_config.armor_minimal_efficiency //lets not repeat ourselves
@@ -70,11 +70,11 @@
 
 	if(damage == 0 || armor == 0 || c_config.armor_ignore_integrity)
 		return 0 //why bother. Also saves a lot of checks down the line
-	
+
 	damage = damage * c_config.damage_initial_multiplier
 	var/dam_initial = damage
 	var/initial_armor = armor
-	penetration = penetration > 0 || armor > 0 ? penetration : 0		
+	penetration = penetration > 0 || armor > 0 ? penetration : 0
 	armor -= penetration
 	var/is_crit_hit = prob(c_config.critical_chance)
 	var/minimal_efficiency = c_config.armor_effective_health*c_config.armor_minimal_efficiency //lets not repeat ourselves
@@ -89,7 +89,7 @@
 		armor = armor * rand(100-c_config.armor_random_range,100) / 100
 		armor_deflection_total = (1+armor_effect) ** (armor/c_config.armor_steps) //basically a concept of "Effective Health"
 		effective_deflection = c_config.armor_ignore_integrity? 1 : armor_integrity/100
-	
+
 	damage /= armor_deflection_total
 
 	if(damage < armor * c_config.armor_full_deflection_mult * effective_deflection)

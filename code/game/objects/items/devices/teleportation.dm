@@ -23,7 +23,8 @@
 	matter = list("metal" = 400)
 
 
-/obj/item/device/locator/attack_self(mob/user as mob)
+/obj/item/device/locator/attack_self(mob/user)
+	..()
 	user.set_interaction(src)
 	var/dat
 	if (src.temp)
@@ -135,7 +136,9 @@
 	matter = list("metal" = 10000)
 
 
-/obj/item/device/hand_tele/attack_self(mob/user as mob)
+/obj/item/device/hand_tele/attack_self(mob/user)
+	..()
+
 	var/turf/current_location = get_turf(user)//What turf is the user on?
 	if(!current_location || is_admin_level(current_location.z))//If turf was not found or they're on z level 2
 		to_chat(user, SPAN_NOTICE("\The [src] is malfunctioning."))

@@ -23,10 +23,6 @@
 	..()
 	unwield(user)
 
-/obj/item/weapon/melee/twohanded/pickup(mob/user)
-	. = ..()
-	unwield(user)
-
 /obj/item/proc/wield(var/mob/user)
 	if( !(flags_item & TWOHANDED) || flags_item & WIELDED ) return
 
@@ -120,8 +116,9 @@
 	..()
 	//This hand should be holding the main weapon. If everything worked correctly, it should not be wielded.
 	//If it is, looks like we got our hand torn off or something.
-	var/obj/item/main_hand = user.get_active_hand()
-	if(main_hand) main_hand.unwield(user)
+	if(!QDESTROYING(src))
+		var/obj/item/main_hand = user.get_active_hand()
+		if(main_hand) main_hand.unwield(user)
 
 /*
  * Fireaxe
@@ -234,57 +231,6 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "stabbed", "jabbed", "torn", "gored")
 
-
-
-/obj/item/weapon/melee/twohanded/glaive
-	name = "war glaive"
-	icon = 'icons/obj/items/weapons/predator.dmi'
-	icon_state = "glaive"
-	item_state = "glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon."
-	force = MELEE_FORCE_TIER_3
-	w_class = SIZE_LARGE
-	flags_equip_slot = SLOT_BACK
-	force_wielded = MELEE_FORCE_TIER_9
-	throwforce = MELEE_FORCE_TIER_6
-	embeddable = FALSE //so predators don't lose their glaive when thrown.
-	throw_speed = SPEED_VERY_FAST
-	edge = 1
-	sharp = IS_SHARP_ITEM_BIG
-	flags_atom = FPRINT|CONDUCT
-	flags_item = NOSHIELD|TWOHANDED|ITEM_PREDATOR
-	hitsound = 'sound/weapons/bladeslice.ogg'
-	attack_verb = list("sliced", "slashed", "carved", "diced", "gored")
-	unacidable = TRUE
-	attack_speed = 14 //Default is 7.
-
-/obj/item/weapon/melee/twohanded/glaive/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
-
-/obj/item/weapon/melee/twohanded/glaive/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/twohanded/glaive/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/weapon/melee/twohanded/glaive/attack(mob/living/target, mob/living/carbon/human/user)
-	. = ..()
-	if(!.)
-		return
-	if(isYautja(user) && isXeno(target))
-		var/mob/living/carbon/Xenomorph/X = target
-		X.interference = 30
-
-/obj/item/weapon/melee/twohanded/glaive/damaged
-	name = "war glaive"
-	desc = "A huge, powerful blade on a metallic pole. Mysterious writing is carved into the weapon. This one is ancient and has suffered serious acid damage, making it near-useless."
-	force = MELEE_FORCE_NORMAL
-	force_wielded = MELEE_FORCE_STRONG
-
 /obj/item/weapon/melee/twohanded/lungemine
 	name = "lunge mine"
 	icon_state = "lungemine"
@@ -345,7 +291,7 @@
 
 	var/turf/epicenter = get_turf(target)
 	target.ex_act(400, null, src, user, 100)
-	cell_explosion(epicenter, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, src, user)
+	cell_explosion(epicenter, 150, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, create_cause_data(initial(name), user))
 	qdel(src)
 
 

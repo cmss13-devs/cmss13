@@ -2,6 +2,7 @@
 	name = "Configuration"
 
 	var/directory = "config"
+	var/map_directory = "map_config"
 
 	var/warned_deprecated_configs = FALSE
 	var/hiding_entries_by_type = TRUE //Set for readability, admins can set this to FALSE if they want to debug it
@@ -57,7 +58,7 @@
 
 /datum/controller/configuration/proc/loadmaplist(filename, maptype)
 	log_config("Loading config file [filename]...")
-	filename = "[directory]/[filename]"
+	filename = "[map_directory]/[filename]"
 	var/list/Lines = file2list(filename)
 
 	var/datum/map_config/currentmap

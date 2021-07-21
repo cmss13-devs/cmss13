@@ -1,0 +1,45 @@
+You can link plasteel barricades together using a crowbar. First click one, and then click one adjacent. Repeat as needed.
+A lone marine is a dead marine and a happy xeno. Stick together!
+Watch out for friendly fire. Make sure you're not walking into anyone's firing line, and make sure no one else is in yours!
+Be mindful when using hand grenades. Getting stunned or knocked over after priming a grenade will drop it at your feet. This is obviously very dangerous for not only you, but your friends as well.
+Reflective walls will bounce back non-IFF bullets, including rockets. Try not to shoot them.
+Vary your loadout! Doing the same thing every round gets old fast. Try out the pistols, or carry flares.
+Be careful when firing an Orbital Bombardment, Close Air Support, or the Railgun. Make sure you're not about to blow up the entire marine push.
+The Orbital Bombardment is always closer than it looks.
+Never inject a marine you haven't scanned! You might overdose them; ESPECIALLY so with an emergency autoinjector.
+Check perma-dead marines (skull icon on medhud) for useful gear, such as webbings, AP ammo, or binoculars.
+Always check for traps beneath loose objects - it could save your life!
+Bring a fire extinguisher, it might just save someone's life. They can remove flames that block a push, remove acid from other marines, as well as put out people on fire.
+Trading your life for a Xenomorph's is almost always worth it.
+If another marine is stunned, you can click on them with help intent with an open hand to shake them up faster.
+No round has ever been won behind a barricade.
+Always clear weeds and alien structures as you advance.
+Try not to block off pushes when using a flamethrower.
+Recover bodies whenever possible. Even if the marine is unrevivable, useful gear and ammunition can still be salvaged.
+A lack of supplies at the FOB can cost you the round. Make sure to unpack supply crates, weapons, and ammo for your fellow marines.
+More dakka is not good when it is directed towards your teammates.
+Never place barricades facing each other - Not only does this block bullets, both barricades are damaged at once if one is slashed!
+An FOB is as strong as its weakest part. Secure all flanks, remember that walls can be pried open.
+Flamethrowers: Green fire is weak and should be used for weed clearing. Queens and Ravagers are flameproof. Most flamethrower damage comes from the initial burst, not the flame on the ground. Don't forget you have an underbarrel extinguisher.
+CPR extends the defib timer on dead marines. It can be done by clicking the dead marine on help intent with an open hand. Make sure to get the rhythm correct!
+If the main push is stagnating and the area is congested, try to coordinate with a few others and go to a different area.
+When pushing into an area, check the flanks. Especially so in caves.
+Examine your gun and click [See combat statistics] to view information such as damage for your weapon.
+Xenomorphs who resist while on fire are stunned for some time and emit light. Use that time to catch up and finish them off!
+When you have shrapnel embedded, take out your boot knife and use it in your hand to rip them out of your body.
+If your weapon has a bayonet, you can manually pry open unpowered doors by clicking on them with the gun. Click on the door again to close it.
+Items on the floor can be shot. Shoot a misthrown HEDP away to save your buddies!
+You can hold a bayonet or throwing knife on your mask slot. Always be prepared.
+Xenomorphs can't apply huggers to marines if they're on fire.
+Dragging a Nanomed onto yourself instantly gives a Health Analyzer report. Always know what's wrong with you.
+Splints slow you down. Remove them after your bones are healed by using the Remove Your Splints verb.
+Blood loss can lead to hunger, which can slow you down. Make sure you're always full after taking a beating.
+Resin structures are weaker to melee than they are to bullets. Take out your knives!
+You can grab items from second-level storage, such as a splint in a first-aid kit inside a satchel.
+Researchers can make pressurized canister pouches, which can contain up to 480 reagents, and contain custom injectors that can be easily used by privates.
+When fighting xenomorphs, don't aim for the head - It won't increase damage against anyone but your fellow marines.
+Don't forget to set the Anti-Aircraft Gun!
+Scavenging attachments from dead marines isn't bad practice, as long as you make sure they're actually dead first.
+When receiving a supply crate drop from requisitions, make sure to move the crate before opening it - Otherwise subsequent supply crates will be hidden beneath it!
+If a grenade comes your way, hit the deck! Lying down will reduce damage and let you dodge any shrapnel flying overhead.
+You can grab items from second-level storage, such as a splint in a first aid kit stored inside a satchel.

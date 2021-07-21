@@ -54,7 +54,7 @@
 
 /datum/entity/player_stats/proc/recalculate_nemesis()
 	var/list/causes = list()
-	for(var/datum/entity/death_stats/stat_entity in death_list)
+	for(var/datum/entity/statistic/death/stat_entity in death_list)
 		if(!stat_entity.cause_name)
 			continue
 		causes["[stat_entity.cause_name]"] += 1
@@ -121,7 +121,7 @@
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 	if(isnull(xeno_stats))
 		return
-	xeno_stats.count_human_kill(job_name, cause, caste_name)
+	xeno_stats.count_human_kill(job_name, cause, caste_type)
 
 /mob/living/carbon/Xenomorph/count_xeno_kill(var/killed_caste, var/cause)
 	if(statistic_exempt || !mind)
@@ -129,7 +129,7 @@
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 	if(isnull(xeno_stats))
 		return
-	xeno_stats.count_xeno_kill(killed_caste, cause, caste_name)
+	xeno_stats.count_xeno_kill(killed_caste, cause, caste_type)
 
 /mob/living/carbon/Xenomorph/count_niche_stat(var/niche_name, var/amount = 1)
 	if(statistic_exempt || !mind)
@@ -137,7 +137,7 @@
 	var/datum/entity/player_stats/xeno/xeno_stats = mind.setup_xeno_stats()
 	if(isnull(xeno_stats))
 		return
-	xeno_stats.count_niche_stat(niche_name, amount, caste_name)
+	xeno_stats.count_niche_stat(niche_name, amount, caste_type)
 
 //*****************
 //Mob Procs - minor

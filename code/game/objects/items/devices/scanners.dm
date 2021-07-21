@@ -26,7 +26,7 @@ FORENSIC SCANNER
 	return ..()
 
 /obj/item/device/t_scanner/attack_self(mob/user)
-
+	..()
 	on = !on
 	icon_state = "t-ray[on]"
 
@@ -74,6 +74,7 @@ FORENSIC SCANNER
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
 	flags_atom = FPRINT|CONDUCT
 	flags_equip_slot = SLOT_WAIST
+	flags_item = NOBLUDGEON
 	throwforce = 3
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_VERY_FAST
@@ -82,11 +83,36 @@ FORENSIC SCANNER
 
 	var/mode = 1
 	var/hud_mode = 1
+	var/last_scan
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
-	M.health_scan(user, FALSE, mode, hud_mode)
+	last_scan = M.health_scan(user, FALSE, mode, hud_mode)
 	src.add_fingerprint(user)
 	return
+
+/obj/item/device/healthanalyzer/attack_self(mob/user)
+	..()
+
+	if (!last_scan)
+		user.show_message("No previous scan found.")
+		return
+
+	switch (hud_mode)
+		if (1)
+			var/dat = last_scan
+			dat = replacetext(dat, "\n", "<br>")
+			dat = replacetext(dat, "\t", "&emsp;")
+			dat = replacetext(dat, "class='warning'", "class='[INTERFACE_RED]'")
+			dat = replacetext(dat, "class='scanner'", "class='[INTERFACE_RED]'")
+			dat = replacetext(dat, "class='scannerb'", "style='font-weight: bold;' class='[INTERFACE_RED]'")
+			dat = replacetext(dat, "class='scannerburn'", "class='[INTERFACE_ORANGE]'")
+			dat = replacetext(dat, "class='scannerburnb'", "style='font-weight: bold;' class='[INTERFACE_ORANGE]'")
+			show_browser(user, dat, name, "handscanner", "size=500x400")
+		if (0)
+			user.show_message(last_scan)
+
+	return
+
 
 /obj/item/device/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
@@ -127,6 +153,7 @@ FORENSIC SCANNER
 
 
 /obj/item/device/analyzer/attack_self(mob/user as mob)
+	..()
 
 	if (user.stat)
 		return
@@ -182,7 +209,9 @@ FORENSIC SCANNER
 	else
 		icon_state = initial(icon_state)
 
-/obj/item/device/mass_spectrometer/attack_self(mob/user as mob)
+/obj/item/device/mass_spectrometer/attack_self(mob/user)
+	..()
+
 	if (user.stat)
 		return
 	if (crit_fail)
@@ -191,7 +220,6 @@ FORENSIC SCANNER
 	if (!(istype(user, /mob/living/carbon/human) || SSticker) && SSticker.mode.name != "monkey")
 		to_chat(user, SPAN_DANGER("You don't have the dexterity to do this!"))
 		return
-	return
 
 
 /obj/item/device/mass_spectrometer/adv
@@ -348,7 +376,9 @@ FORENSIC SCANNER
 				rad_potential += R.radiusmod * R.volume
 	return dat
 
-/obj/item/device/demo_scanner/attack_self(mob/user as mob)
+/obj/item/device/demo_scanner/attack_self(mob/user)
+	..()
+
 	if(!dat)
 		to_chat(user, SPAN_NOTICE("No scan data available."))
 		return

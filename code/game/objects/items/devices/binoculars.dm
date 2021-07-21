@@ -19,11 +19,12 @@
 	select_gamemode_skin(type)
 
 /obj/item/device/binoculars/attack_self(mob/user)
+	..()
+
 	if(SEND_SIGNAL(user, COMSIG_BINOCULAR_ATTACK_SELF, src))
-		return FALSE
+		return
 
 	zoom(user, 11, 12)
-	return TRUE
 
 /obj/item/device/binoculars/on_set_interaction(var/mob/user)
 	flags_atom |= RELAY_CLICK
@@ -116,7 +117,7 @@
 
 	var/acquisition_time = target_acquisition_delay
 	if(user.skills)
-		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_LEADERSHIP))
+		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_JTAC))
 
 	var/datum/squad/S = user.assigned_squad
 
@@ -241,7 +242,7 @@
 
 	var/acquisition_time = target_acquisition_delay
 	if(user.skills)
-		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_LEADERSHIP))
+		acquisition_time = max(15, acquisition_time - 25*user.skills.get_skill_level(SKILL_JTAC))
 
 	var/datum/squad/S = user.assigned_squad
 
@@ -458,14 +459,15 @@
 		var/turf/target_3 = locate(T.x - offset_x,T.y - offset_y,T.z)
 		var/turf/target_4 = locate(T.x - (offset_x*2),T.y - (offset_y*2),T.z)
 		sleep(50) //AWW YEAH
-		flame_radius("artillery fire", null, 3, target)
-		explosion(target,  -1, 2, 3, 5)
-		flame_radius("artillery fire", null, 3, target_2)
-		explosion(target_2,  -1, 2, 3, 5)
-		flame_radius("artillery fire", null, 3, target_3)
-		explosion(target_3,  -1, 2, 3, 5)
-		flame_radius("artillery fire", null, 3, target_4)
-		explosion(target_4,  -1, 2, 3, 5)
+		var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
+		flame_radius(cause_data, 3, target)
+		explosion(target,  -1, 2, 3, 5, , , , cause_data)
+		flame_radius(cause_data, 3, target_2)
+		explosion(target_2,  -1, 2, 3, 5, , , , cause_data)
+		flame_radius(cause_data, 3, target_3)
+		explosion(target_3,  -1, 2, 3, 5, , , , cause_data)
+		flame_radius(cause_data, 3, target_4)
+		explosion(target_4,  -1, 2, 3, 5, , , , cause_data)
 		sleep(1)
 		qdel(lasertarget)
 		lasing = FALSE
@@ -495,11 +497,12 @@
 		var/turf/target_3 = locate(T.x + rand(-2,2),T.y + rand(-2,2),T.z)
 		if(target && istype(target))
 			qdel(lasertarget)
-			explosion(target, -1, HE_power, con_power, con_power) //Kaboom!
+			var/datum/cause_data/cause_data = create_cause_data("artillery fire", user)
+			explosion(target, -1, HE_power, con_power, con_power, , , , cause_data) //Kaboom!
 			sleep(rand(15,30)) //This is all better done in a for loop, but I am mad lazy
-			explosion(target_2, -1, HE_power, con_power, con_power)
+			explosion(target_2, -1, HE_power, con_power, con_power, , , , cause_data)
 			sleep(rand(15,30))
-			explosion(target_3, -1, HE_power, con_power, con_power)
+			explosion(target_3, -1, HE_power, con_power, con_power, , , , cause_data)
 			lasing = FALSE
 			las_b = 1
 			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 10 MINUTES)

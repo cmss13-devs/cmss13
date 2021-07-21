@@ -97,6 +97,28 @@
 	variant = 1
 	variant_prefix_name = "rocky"
 
+//Ice Colony perma frost
+/turf/open/auto_turf/ice
+	name = "auto-ice"
+	icon = 'icons/turf/floors/auto_ice.dmi'
+	icon_state = "ice_0"
+	icon_prefix = "ice"
+	layer_name = list("cracked permafrost","permafrost","glacial permafrost","warn a coder","warn a coder")
+
+/turf/open/auto_turf/ice/get_dirt_type()
+	return NO_DIRT
+/turf/open/auto_turf/ice/layer0 //still have to manually define the layers for the editor
+	icon_state = "ice_0"
+	bleed_layer = 0
+
+/turf/open/auto_turf/ice/layer1
+	icon_state = "ice_1"
+	bleed_layer = 1
+
+/turf/open/auto_turf/ice/layer2
+	icon_state = "ice_2"
+	bleed_layer = 2
+
 //Ice colony snow
 /turf/open/auto_turf/snow
 	name = "auto-snow"
@@ -138,27 +160,27 @@
 
 //Digging up snow
 /turf/open/auto_turf/snow/attack_alien(mob/living/carbon/Xenomorph/M)
-	if(M.a_intent == INTENT_HELP)
-		return FALSE
-
-	if(!bleed_layer)
-		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
-		return FALSE
+	if(M.a_intent == INTENT_HARM) //Missed slash.
+		return
+	if(M.a_intent == INTENT_HELP || !bleed_layer)
+		return XENO_NO_DELAY_ACTION
 
 	M.visible_message(SPAN_NOTICE("[M] starts clearing out the [name]."), SPAN_NOTICE("You start clearing out the [name]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
+	xeno_attack_delay(M)
 	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-		return FALSE
+		return XENO_NO_DELAY_ACTION
 
 	if(!bleed_layer)
 		to_chat(M, SPAN_WARNING("There is nothing to clear out!"))
-		return
+		return XENO_NO_DELAY_ACTION
 
 	M.visible_message(SPAN_NOTICE("[M] clears out [src]."), \
 	SPAN_NOTICE("You clear out [src]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 
 	var/new_layer = bleed_layer - 1
 	changing_layer(new_layer)
+	return XENO_NO_DELAY_ACTION
 
 /turf/open/auto_turf/snow/Entered(atom/movable/AM)
 	if(bleed_layer > 0)

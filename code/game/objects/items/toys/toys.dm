@@ -244,13 +244,15 @@
 	var/cooldown = 0
 
 //all credit to skasi for toy mech fun ideas
-/obj/item/toy/prize/attack_self(mob/user as mob)
+/obj/item/toy/prize/attack_self(mob/user)
+	..()
+
 	if(cooldown < world.time - 8)
 		to_chat(user, SPAN_NOTICE("You play with [src]."))
 		playsound(user, 'sound/mecha/mechstep.ogg', 15, 1)
 		cooldown = world.time
 
-/obj/item/toy/prize/attack_hand(mob/user as mob)
+/obj/item/toy/prize/attack_hand(mob/user)
 	if(loc == user)
 		if(cooldown < world.time - 8)
 			to_chat(user, SPAN_NOTICE("You play with [src]."))
@@ -409,7 +411,8 @@
 	icon_state = "d2020"
 	sides = 20
 
-/obj/item/toy/dice/attack_self(mob/user as mob)
+/obj/item/toy/dice/attack_self(mob/user)
+	..()
 	var/result = rand(1, sides)
 	var/comment = ""
 	if(sides == 20 && result == 20)
@@ -439,9 +442,11 @@
 	var/spam_flag = 0
 	var/sound_effect = 'sound/items/bikehorn.ogg'
 
-/obj/item/toy/bikehorn/attack_self(mob/user as mob)
-	if (spam_flag == 0)
-		spam_flag = 1
+/obj/item/toy/bikehorn/attack_self(mob/user)
+	..()
+
+	if (!spam_flag)
+		spam_flag = TRUE
 		playsound(src.loc, sound_effect, 25, 1)
 		src.add_fingerprint(user)
 		addtimer(VARSET_CALLBACK(src, spam_flag, FALSE), 2 SECONDS)
@@ -456,11 +461,18 @@
 	var/last_hug_time
 
 /obj/item/toy/farwadoll/attack_self(mob/user)
+	..()
+
 	if(world.time > last_hug_time)
 		user.visible_message(SPAN_NOTICE("[user] hugs [src]! How cute! "), \
 							 SPAN_NOTICE("You hug [src]. Dawwww... "))
 		last_hug_time = world.time + 50 //5 second cooldown
 
+/obj/item/toy/farwadoll/pred
+	name = "strange plush doll"
+	desc = "A plush doll depicting some sort of tall humanoid biped..?"
+	w_class = SIZE_TINY
+	icon_state = "predplush"
 
 /obj/item/computer3_part
 	name = "computer part"

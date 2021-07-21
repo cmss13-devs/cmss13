@@ -5,6 +5,7 @@
 /obj/structure/tunnel
 	name = "tunnel"
 	desc = "A tunnel entrance. Looks like it was dug by some kind of clawed beast."
+	icon = 'icons/mob/hostiles/Effects.dmi'
 	icon_state = "hole"
 
 	density = 0
@@ -24,7 +25,6 @@
 
 /obj/structure/tunnel/Initialize(mapload, var/h_number)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_effects))
 	var/turf/L = get_turf(src)
 	tunnel_desc = L.loc.name + " ([loc.x], [loc.y]) [pick(greek_letters)]"//Default tunnel desc is the <area name> (x, y) <Greek letter>
 
@@ -169,36 +169,37 @@
 
 /obj/structure/tunnel/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(!istype(M) || M.stat || M.lying)
-		return FALSE
+		return XENO_NO_DELAY_ACTION
 
 	if(!isfriendly(M))
 		if(M.mob_size < MOB_SIZE_BIG)
 			to_chat(M, SPAN_XENOWARNING("You aren't large enough to collapse this tunnel!"))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		M.visible_message(SPAN_XENODANGER("[M] begins to fill [src] with dirt."),\
 		SPAN_XENONOTICE("You begin to fill [src] with dirt using your massive claws."), max_distance = 3)
+		xeno_attack_delay(M)
 
 		if(!do_after(M, 10 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL_OUT_OF_RANGE, max_dist = 1))
 			to_chat(M, SPAN_XENOWARNING("You decide not to cave the tunnel in."))
-			return
+			return XENO_NO_DELAY_ACTION
 
 		src.visible_message(SPAN_XENODANGER("[src] caves in!"), max_distance = 3)
 		qdel(src)
 
-		return
+		return XENO_NO_DELAY_ACTION
 
 	if(M.anchored)
 		to_chat(M, SPAN_XENOWARNING("You can't climb through a tunnel while immobile."))
-		return FALSE
+		return XENO_NO_DELAY_ACTION
 
 	if(!hive.tunnels.len)
 		to_chat(M, SPAN_WARNING("\The [src] doesn't seem to lead anywhere."))
-		return FALSE
+		return XENO_NO_DELAY_ACTION
 
 	if(contents.len > 2)
 		to_chat(M, SPAN_WARNING("The tunnel is too crowded, wait for others to exit!"))
-		return FALSE
+		return XENO_NO_DELAY_ACTION
 
 	var/tunnel_time = TUNNEL_ENTER_XENO_DELAY
 
@@ -214,9 +215,10 @@
 		M.visible_message(SPAN_XENONOTICE("\The [M] begins crawling down into \the [src]."), \
 		SPAN_XENONOTICE("You begin crawling down into \the [src]</b>."))
 
+	xeno_attack_delay(M)
 	if(!do_after(M, tunnel_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		to_chat(M, SPAN_WARNING("Your crawling was interrupted!"))
-		return
+		return XENO_NO_DELAY_ACTION
 
 	if(hive.tunnels.len) //Make sure other tunnels exist
 		M.forceMove(src) //become one with the tunnel
@@ -224,3 +226,4 @@
 		pick_tunnel(M)
 	else
 		to_chat(M, SPAN_WARNING("\The [src] ended unexpectedly, so you return back up."))
+	return XENO_NO_DELAY_ACTION

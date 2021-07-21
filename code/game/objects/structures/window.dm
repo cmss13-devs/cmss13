@@ -102,6 +102,8 @@
 			user.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
 			SEND_SIGNAL(user, COMSIG_MOB_DESTROY_WINDOW, src)
 			user.visible_message(SPAN_DANGER("[user] smashes through [src][AM ? " with [AM]":""]!"))
+			if(is_mainship_level(z))
+				SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
 		if(make_shatter_sound)
 			playsound(src, "shatter", 50, 1)
 		shatter_window(create_debris)
@@ -121,24 +123,25 @@
 	healthcheck(user = Proj.firer)
 	return 1
 
-/obj/structure/window/ex_act(severity, explosion_direction, source, mob/source_mob)
+/obj/structure/window/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	if(not_damageable) //Impossible to destroy
 		return
 
 	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
+	var/mob/M = cause_data?.resolve_mob()
 	if(health > 0)
-		healthcheck(FALSE, TRUE, user = source_mob)
+		healthcheck(FALSE, TRUE, user = M)
 		return
 
 	if(health >= -2000)
 		var/location = get_turf(src)
 		playsound(src, "shatter", 50, 1)
-		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass)
+		create_shrapnel(location, rand(1,5), explosion_direction, shrapnel_type = /datum/ammo/bullet/shrapnel/light/glass, cause_data = cause_data)
 
-	if(source_mob)
-		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
-		SEND_SIGNAL(source_mob, COMSIG_MOB_WINDOW_EXPLODED, src)
+	if(M)
+		M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		SEND_SIGNAL(M, COMSIG_MOB_WINDOW_EXPLODED, src)
 
 	handle_debris(severity, explosion_direction)
 	qdel(src)
@@ -170,7 +173,7 @@
 			anchored = 0
 			update_nearby_icons()
 			step(src, get_dir(AM, src))
-	healthcheck()
+	healthcheck(user = AM.launch_metadata.thrower)
 
 /obj/structure/window/attack_hand(mob/user as mob)
 	if(user.a_intent == INTENT_HARM && ishuman(user))
@@ -243,7 +246,7 @@
 
 	if(W.flags_item & NOBLUDGEON) return
 
-	if(istype(W, /obj/item/tool/screwdriver) && !not_deconstructable)
+	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && !not_deconstructable)
 		if(reinf && state >= 1)
 			state = 3 - state
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)
@@ -261,7 +264,7 @@
 		else if(static_frame && state == 0)
 			SEND_SIGNAL(user, COMSIG_MOB_DISASSEMBLE_WINDOW, src)
 			disassemble_window()
-	else if(istype(W, /obj/item/tool/crowbar) && reinf && state <= 1 && !not_deconstructable)
+	else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR) && reinf && state <= 1 && !not_deconstructable)
 		state = 1 - state
 		playsound(loc, 'sound/items/Crowbar.ogg', 25, 1)
 		to_chat(user, (state ? SPAN_NOTICE("You have pried the window into the frame.") : SPAN_NOTICE("You have pried the window out of the frame.")))
@@ -488,26 +491,27 @@
 /obj/structure/window/framed/update_icon()
 	relativewall()
 
-/obj/structure/window/framed/ex_act(severity, explosion_direction, source, mob/source_mob)
+/obj/structure/window/framed/ex_act(severity, explosion_direction, datum/cause_data/cause_data)
 	if(not_damageable) //Impossible to destroy
 		return
 
 	health -= severity * EXPLOSION_DAMAGE_MULTIPLIER_WINDOW
 
+	var/mob/M = cause_data?.resolve_mob()
 	if(health > 0)
-		healthcheck(FALSE, TRUE, user = source_mob)
+		healthcheck(FALSE, TRUE, user = M)
 		return
 
-	if(source_mob)
-		source_mob.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
-		SEND_SIGNAL(source_mob, COMSIG_MOB_EXPLODE_W_FRAME, src)
+	if(M)
+		M.count_niche_stat(STATISTICS_NICHE_DESTRUCTION_WINDOWS, 1)
+		SEND_SIGNAL(M, COMSIG_MOB_EXPLODE_W_FRAME, src)
 
 	if(health >= -3000)
 		var/location = get_turf(src)
 		playsound(src, "shatter", 50, 1)
 		handle_debris(severity, explosion_direction)
 		shatter_window(0)
-		create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass)
+		create_shrapnel(location, rand(1,5), explosion_direction, , /datum/ammo/bullet/shrapnel/light/glass, cause_data)
 	else
 		qdel(src)
 	return
@@ -544,13 +548,6 @@
 	reinf = 1
 	dir = NORTHEAST
 	window_frame = /obj/structure/window_frame/almayer
-
-/obj/structure/window/framed/almayer/healthcheck(make_hit_sound = 1, make_shatter_sound = 1, create_debris = 1, mob/user, atom/movable/AM)
-	if(health <= 0)
-		if(user && is_mainship_level(z))
-			SSclues.create_print(get_turf(user), user, "A small glass piece is found on the fingerprint.")
-
-	. = ..()
 
 /obj/structure/window/framed/almayer/hull
 	name = "hull window"
@@ -729,6 +726,15 @@
 	unslashable = TRUE
 	unacidable = TRUE
 	health = 1000000
+
+/obj/structure/window/framed/shiva
+	name = "poly-kevlon framed window"
+	icon = 'icons/turf/walls/ice_colony/shiva_windows.dmi'
+	icon_state = "shiva_window0"
+	basestate = "shiva_window"
+	desc = "A semi transparent (not entirely opaque) pane of material set into a poly-kevlon frame. Very smashable."
+	health = 40
+	window_frame = /obj/structure/window_frame/shiva
 
 //Solaris windows
 

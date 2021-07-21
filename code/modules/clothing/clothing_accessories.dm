@@ -33,8 +33,8 @@
 
 		if(istype(loc,/obj/item/clothing/under))
 			var/obj/item/clothing/under/C = loc
-			if(on_rolled["down"] && C.rolled_sleeves)
-				tmp_icon_state = on_rolled["down"]
+			if(C.flags_jumpsuit & jumpsuit_hide_states && !(C.flags_jumpsuit & UNIFORM_DO_NOT_HIDE_ACCESSORIES))
+				return
 
 		var/use_sprite_sheet = accessory_icons[slot]
 		if(sprite_sheets[bodytype])
@@ -57,7 +57,7 @@
 			if(!user.drop_held_item())
 				return
 			attach_accessory(user, A)
-			return
+			return TRUE //For some suit/storage items which both allow attaching accessories and also have their own internal storage.
 		else
 			to_chat(user, SPAN_WARNING("You cannot attach more accessories of this type to [src]."))
 		return
@@ -69,19 +69,30 @@
 
 	..()
 
-/obj/item/clothing/attack_hand(var/mob/user)
+/obj/item/clothing/attack_hand(var/mob/user, mods)
 	//only forward to the attached accessory if the clothing is equipped (not in a storage)
 	if(LAZYLEN(accessories) && src.loc == user)
+		var/delegated //So that accessories don't block attack_hands unless they actually did something. Specifically meant for armour vests with medals, but can't hurt in general.
 		for(var/obj/item/clothing/accessory/A in accessories)
-			A.attack_hand(user)
-		return
+			if(A.attack_hand(user, mods))
+				delegated = TRUE
+		if(delegated)
+			return
 	return ..()
+
+
+/obj/item/clothing/clicked(var/mob/user, var/list/mods)
+	if(mods["alt"] && loc == user && !user.get_active_hand()) //To pass quick-draw attempts to storage. See storage.dm for explanation.
+		for(var/V in verbs)
+			if(V == /obj/item/clothing/suit/storage/verb/toggle_draw_mode) //So that alt-clicks are only intercepted for clothing items with internal storage and toggleable draw modes.
+				return
+	. = ..()
 
 
 /obj/item/clothing/examine(var/mob/user)
 	. = ..(user)
 	for(var/obj/item/clothing/accessory/A in accessories)
-		to_chat(user, "[icon2html(A, user)] \A [A] is attached to it.")
+		to_chat(user, "[icon2html(A, user)] \A [A] is attached to it[A.additional_examine_text()]") //The spacing of the examine text proc is deliberate. By default it returns ".".
 
 /**
  *  Attach accessory A to src
@@ -89,12 +100,12 @@
  *  user is the user doing the attaching. Can be null, such as when attaching
  *  items on spawn
  */
-/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A)
+/obj/item/clothing/proc/attach_accessory(mob/user, obj/item/clothing/accessory/A, var/silent)
 	if(!A.can_attach_to(user, src))
 		return
 
 	LAZYADD(accessories, A)
-	A.on_attached(src, user)
+	A.on_attached(src, user, silent)
 	if(A.removable)
 		verbs += /obj/item/clothing/proc/removetie_verb
 	update_clothing_icon()

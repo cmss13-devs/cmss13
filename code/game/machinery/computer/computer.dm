@@ -98,7 +98,7 @@
 
 
 /obj/structure/machinery/computer/attackby(obj/item/I, mob/user)
-	if(istype(I, /obj/item/tool/screwdriver) && circuit)
+	if(HAS_TRAIT(I, TRAIT_TOOL_SCREWDRIVER) && circuit)
 		if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 			to_chat(user, SPAN_WARNING("You don't know how to deconstruct [src]..."))
 			return

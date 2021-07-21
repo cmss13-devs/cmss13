@@ -18,12 +18,13 @@
 	var/atom/plant_target = null //which atom the plstique explosive is planted on
 	var/overlay_image = "plastic-explosive2"
 	var/image/overlay
+	has_iff=TRUE	//Should it be checked by antigrief?
 
 /obj/item/explosive/plastic/Destroy()
 	disarm()
 	. = ..()
 
-/obj/item/explosive/plastic/attack(mob/M as mob, mob/user as mob, def_zone)
+/obj/item/explosive/plastic/attack(mob/M as mob, mob/user as mob)
 	return FALSE
 
 /obj/item/explosive/plastic/attack_hand(mob/user)
@@ -52,6 +53,11 @@
 	to_chat(user, SPAN_NOTICE("Timer set for [timer] seconds."))
 
 /obj/item/explosive/plastic/afterattack(atom/target, mob/user, flag)
+	if(has_iff && user.faction == FACTION_MARINE && explosive_grief_check(src))
+		to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from planting it!"))
+		msg_admin_niche("[key_name(user)] attempted to prime \a [name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
+		return
+
 	if(user.action_busy || !flag)
 		return
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_TRAINED))
@@ -72,7 +78,7 @@
 		return
 
 	user.drop_held_item()
-	source_mob = user
+	cause_data = create_cause_data(initial(name), user)
 	plant_target = target
 	icon_state = overlay_image
 
@@ -108,7 +114,7 @@
 		addtimer(CALLBACK(src, .proc/prime), timer * 10)
 
 /obj/item/explosive/plastic/attackby(obj/item/W, mob/user)
-	if(ismultitool(W))
+	if(HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL))
 		if(active)
 			if(user.action_busy)
 				return
@@ -135,11 +141,11 @@
 /obj/item/explosive/plastic/proc/disarm()
 	pixel_x = 0
 	pixel_y = 0
-	if(plant_target && !istype(plant_target, /obj/structure/window) & !istype(plant_target, /turf/closed))
+	if(plant_target && !istype(plant_target, /obj/structure/window) && !istype(plant_target, /turf/closed))
 		plant_target.overlays -= overlay
 		qdel(overlay)
 		plant_target.contents -= src
-		forceMove(get_turf(plant_target.loc))
+		forceMove(get_turf(plant_target))
 	plant_target = null
 	if(customizable)
 		if(active) //deactivate
@@ -218,15 +224,14 @@
 		return
 	var/turf/target_turf
 	if(!force)
-		if(!istype(plant_target, /obj/structure/window) & !istype(plant_target, /turf/closed))
+		if(!istype(plant_target, /obj/structure/window) && !istype(plant_target, /turf/closed))
 			plant_target.overlays -= overlay
 			qdel(overlay)
 			plant_target.contents -= src
-			forceMove(plant_target.loc)
+			forceMove(plant_target)
 		if(ismob(plant_target))
 			var/mob/M = plant_target
-			M.last_damage_source = initial(name)
-			M.last_damage_mob = source_mob
+			M.last_damage_data = cause_data
 
 		target_turf = get_turf(plant_target)
 	else
@@ -246,26 +251,26 @@
 			. = ..()
 		if(!QDELETED(src))
 			overlays.Cut()
-			cell_explosion(target_turf, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+			cell_explosion(target_turf, 60, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 			qdel(src)
 		return
-	plant_target.ex_act(1000, , initial(name), source_mob)
+	plant_target.ex_act(1000, , cause_data)
 
 	for(var/turf/closed/wall/W in orange(1, target_turf))
 		if(W.hull)
 			continue
-		W.ex_act(1000, , initial(name), source_mob)
+		W.ex_act(1000, , cause_data)
 
 	for(var/obj/structure/window/W in orange(1, target_turf))
 		if(W.not_damageable)
 			continue
 
-		W.ex_act(1000, , initial(name), source_mob)
+		W.ex_act(1000, , cause_data)
 
 	for(var/obj/structure/machinery/door/D in orange(1, target_turf))
-		D.ex_act(1000, , initial(name), source_mob)
+		D.ex_act(1000, , cause_data)
 
-	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, initial(name), source_mob)
+	cell_explosion(target_turf, 120, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
 	qdel(src)
 

@@ -1,10 +1,10 @@
 /datum/caste_datum/crusher
-	caste_name = "Crusher"
+	caste_type = XENO_CASTE_CRUSHER
 	tier = 3
 
 	melee_damage_lower = XENO_DAMAGE_TIER_5
 	melee_damage_upper = XENO_DAMAGE_TIER_5
-	max_health = XENO_HEALTH_TIER_7
+	max_health = XENO_HEALTH_TIER_10
 	plasma_gain = XENO_PLASMA_GAIN_TIER_7
 	plasma_max = XENO_PLASMA_TIER_4
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_10
@@ -20,12 +20,12 @@
 	tackle_chance = 25
 
 	evolution_allowed = FALSE
-	deevolves_to = "Warrior"
+	deevolves_to = XENO_CASTE_WARRIOR
 	caste_desc = "A huge tanky xenomorph."
 
 /mob/living/carbon/Xenomorph/Crusher
-	caste_name = "Crusher"
-	name = "Crusher"
+	caste_type = XENO_CASTE_CRUSHER
+	name = XENO_CASTE_CRUSHER
 	desc = "A huge alien with an enormous armored head crest."
 	icon_size = 64
 	icon_state = "Crusher Walking"
@@ -44,7 +44,7 @@
 
 	rebounds = FALSE // no more fucking pinball crooshers
 
-	actions = list(
+	base_actions = list(
 		/datum/action/xeno_action/onclick/xeno_resting,
 		/datum/action/xeno_action/onclick/regurgitate,
 		/datum/action/xeno_action/watch_xeno,
@@ -211,6 +211,7 @@
 			icon_state = "[mutation_type] Crusher Running"
 
 	update_fire() //the fire overlay depends on the xeno's stance, so we must update it.
+	update_wounds()
 
 // Mutator delegate for base ravager
 /datum/behavior_delegate/crusher_base
@@ -218,7 +219,7 @@
 
 	var/aoe_slash_damage_reduction = 0.40
 
-/datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(atom/A)
+/datum/behavior_delegate/crusher_base/melee_attack_additional_effects_target(mob/living/carbon/A)
 
 	if (!isXenoOrHuman(A))
 		return
@@ -242,12 +243,11 @@
 
 		bound_xeno.flick_attack_overlay(H, "slash")
 
-		H.last_damage_source = initial(bound_xeno.name)
-		H.last_damage_mob = bound_xeno
+		H.last_damage_data = create_cause_data(initial(bound_xeno.name), bound_xeno)
 
 		//Logging, including anti-rulebreak logging
 		if(H.status_flags & XENO_HOST && H.stat != DEAD)
-			if(istype(H.buckled, /obj/structure/bed/nest)) //Host was buckled to nest while infected, this is a rule break
+			if(HAS_TRAIT(H, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
 				H.attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(bound_xeno)] while they were infected and nested</B></font>")
 				bound_xeno.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(H)] while they were infected and nested</B></font>")
 				msg_admin_ff("[key_name(bound_xeno)] slashed [key_name(H)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins

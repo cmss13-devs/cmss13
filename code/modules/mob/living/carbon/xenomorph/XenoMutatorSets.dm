@@ -200,7 +200,7 @@
 	var/datum/xeno_mutator/XM = GLOB.xeno_mutator_list[mutator_name]
 	if(XM.hive_only)
 		return FALSE //We can't buy Hive mutators on an individual level
-	if(XM.caste_whitelist && (XM.caste_whitelist.len > 0) && !(xeno.caste_name in XM.caste_whitelist))
+	if(XM.caste_whitelist && (XM.caste_whitelist.len > 0) && !(xeno.caste_type in XM.caste_whitelist))
 		return FALSE //We are not on the whitelist
 	return TRUE
 

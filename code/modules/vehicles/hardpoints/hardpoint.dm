@@ -122,15 +122,18 @@
 	return
 
 /obj/item/hardpoint/proc/generate_bullet(mob/user, turf/origin_turf)
-	var/obj/item/projectile/P = new(initial(name), user)
-	P.forceMove(origin_turf)
+	var/obj/item/projectile/P = new(origin_turf, create_cause_data(initial(name), user))
 	P.generate_bullet(new ammo.default_ammo)
 	// Apply bullet traits from gun
 	for(var/entry in traits_to_give)
-		// Prepend the bullet trait to the list
-		var/list/L = list(entry) + traits_to_give[entry]
-		// Need to use the proc instead of the wrapper because each entry is a list
-		P._AddElement(L)
+		var/list/L
+		// Check if this is an ID'd bullet trait
+		if(istext(entry))
+			L = traits_to_give[entry].Copy()
+		else
+			// Prepend the bullet trait to the list
+			L = list(entry) + traits_to_give[entry]
+		P.apply_bullet_trait(L)
 	return P
 
 /obj/item/hardpoint/proc/take_damage(var/damage)

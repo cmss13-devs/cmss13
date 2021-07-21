@@ -96,6 +96,8 @@
 /obj/structure/largecrate/supply/weapons
 	name = "weapons chest"
 	icon_state = "chest"
+	parts_type = /obj/item/stack/sheet/metal
+	unpacking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/largecrate/supply/weapons/m41a
 	name = "\improper M41A pulse rifle weapons chest (x10)"
@@ -196,8 +198,8 @@
 	icon_state = "case_double"
 
 /obj/structure/largecrate/supply/explosives/mines
-	name = "\improper M20 claymore case (x20)"
-	desc = "A case containing five four M20 claymore boxes."
+	name = "\improper M20 claymore case (x25)"
+	desc = "A case containing five boxes of five M20 claymores."
 	supplies = list(/obj/item/storage/box/explosive_mines = 5)
 
 /obj/structure/largecrate/supply/explosives/grenades
@@ -257,7 +259,7 @@
 
 /obj/structure/largecrate/supply/supplies/water
 	name = "\improper WY Bottled Water crate (x50)"
-	desc = "A crate containing fifty Weston-Yamada Bottled Spring Water bottles."
+	desc = "A crate containing fifty Weyland-Yutani Bottled Spring Water bottles."
 	supplies = list(/obj/item/reagent_container/food/drinks/cans/waterbottle = 50)
 
 /obj/structure/largecrate/supply/powerloader
@@ -265,7 +267,7 @@
 	desc = "A crate containing one folded, but fully assembled, Caterpillar P-5000 Work Loader and included pamphlet for quick training."
 	supplies = list(
 		/obj/vehicle/powerloader = 1,
-		/obj/item/pamphlet/powerloader = 1,
+		/obj/item/pamphlet/skill/powerloader = 1,
 	)
 
 /obj/structure/largecrate/supply/floodlights
@@ -282,6 +284,8 @@
 	name = "medical crate"
 	desc = "A crate containing medical supplies."
 	icon_state = "chest_white"
+	parts_type = /obj/item/stack/sheet/metal
+	unpacking_sound = 'sound/effects/metalhit.ogg'
 
 /obj/structure/largecrate/supply/medicine/medkits
 	name = "first aid supply crate (x20)"
@@ -310,8 +314,8 @@
 	supplies = list(/obj/structure/machinery/optable = 1, /obj/item/storage/surgical_tray = 1, /obj/item/tank/anesthetic = 2, /obj/item/reagent_container/spray/cleaner = 1)
 
 /obj/structure/largecrate/supply/medicine/medivend
-	name = "\improper WestonMed Plus crate (x1)"
-	desc = "A crate containing one Weston Plus medical vendor."
+	name = "\improper Wey-Med Plus crate (x1)"
+	desc = "A crate containing one Weyland Plus medical vendor."
 	supplies = list(/obj/structure/machinery/cm_vending/sorted/medical = 1)
 
 
@@ -325,72 +329,127 @@
 /obj/structure/largecrate/machine/examine(mob/user)
 	..()
 	if(unmovable)
-		to_chat(user, "<b>!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!</b>")
+		to_chat(user, SPAN_DANGER("!!WARNING!! CONTENTS OF CRATE UNABLE TO BE MOVED ONCE UNPACKAGED!"))
+
+/obj/structure/largecrate/machine/unpack(var/forced)
+	if(parts_type)
+		new parts_type(loc, 2)
+	playsound(src, unpacking_sound, 35)
+	qdel(src)
 
 /obj/structure/largecrate/machine/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar) && dir_needed)
-		var/turf/next_turf = get_step(src, dir_needed)
-		if(next_turf.density)
-			to_chat(user, SPAN_WARNING("You can't open the crate here, there's not enough room!"))
+	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
+		if(turf_blocked_check())
+			to_chat(user, SPAN_WARNING("You need a clear space[dir_needed ? " to the [dir2text(dir_needed)] of the crate" : ""] in order to unpack \the [src]."))
 			return
-		for(var/atom/movable/AM in next_turf.contents)
-			if(AM.density)
-				to_chat(user, SPAN_WARNING("You can't open the crate here, [AM] blocks the way."))
-				return
-	..()
+		if(alert(user, "Are you sure you want to unpack \the [src] here?", "Confirmation", "Yes", "No") == "No")
+			return
+
+		user.visible_message(SPAN_NOTICE("[user] pries \the [src] open."), SPAN_NOTICE("You pry open \the [src]."))
+		unpack()
+	else
+		return attack_hand(user)
+
+/obj/structure/largecrate/machine/proc/turf_blocked_check()
+	var/turf/T
+	var/turf_blocked = FALSE
+	if(dir_needed)
+		T = get_step(src, dir_needed)
+		if(T.density)
+			turf_blocked = TRUE
+		else
+			for(var/atom/movable/AM in T.contents)
+				if(AM.density)
+					turf_blocked = TRUE
+					break
+	else
+		T = get_turf(loc)
+		if(T.density)	//I can totally imagine marines getting this crate on dense turf somehow
+			turf_blocked = TRUE
+		else
+			for(var/atom/movable/AM in T.contents)
+				if(AM.density)
+					turf_blocked = TRUE
+					break
+	return turf_blocked
 
 /obj/structure/largecrate/machine/recycler
 	name = "recycler crate (x1)"
 	desc = "A crate containing one recycler, for removal of trash."
 	dir_needed = 0
 
-/obj/structure/largecrate/machine/recycler/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
-		var/turf/T = get_turf(loc)
-		if(istype(T, /turf/open))
-			new /obj/structure/machinery/wo_recycler (T)
-	..()
+/obj/structure/largecrate/machine/recycler/unpack()
+	var/turf/T = get_turf(loc)
+	if(!istype(T, /turf/open))
+		return FALSE
+
+	if(parts_type)
+		new parts_type(loc, 2)
+	playsound(src, unpacking_sound, 35)
+
+	new /obj/structure/machinery/wo_recycler(loc)
+
+	qdel(src)
+	return TRUE
 
 /obj/structure/largecrate/machine/autodoc
 	name = "autodoctor machine crate (x1)"
 	desc = "A crate containing one autodoc."
 
-/obj/structure/largecrate/machine/autodoc/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
-		var/turf/T = get_turf(loc)
-		if(istype(T, /turf/open))
-			var/obj/structure/machinery/autodoc/event/E = new (T)
-			var/obj/structure/machinery/autodoc_console/C = new (T)
-			C.forceMove(get_step(T, EAST))
-			E.connected = C
-			C.connected = E
-	..()
+/obj/structure/largecrate/machine/autodoc/unpack()
+	var/turf/T = get_turf(loc)
+	if(!istype(T, /turf/open))
+		return FALSE
+
+	if(parts_type)
+		new parts_type(loc, 2)
+	playsound(src, unpacking_sound, 35)
+
+	var/obj/structure/machinery/autodoc/event/E = new (T)
+	var/obj/structure/machinery/autodoc_console/C = new (get_step(T, dir_needed))
+	E.connected = C
+	C.connected = E
+
+	qdel(src)
+	return TRUE
 
 /obj/structure/largecrate/machine/bodyscanner
 	name = "bodyscanner machine crate (x1)"
 	desc = "A crate containing one medical bodyscanner."
 
-/obj/structure/largecrate/supply/machine/bodyscanner/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
-		var/turf/T = get_turf(loc)
-		if(istype(T, /turf/open))
-			var/obj/structure/machinery/bodyscanner/E = new (T)
-			var/obj/structure/machinery/body_scanconsole/C = new (T)
-			C.forceMove(get_step(T, EAST))
-			C.connected = E
-	..()
+/obj/structure/largecrate/machine/bodyscanner/unpack()
+	var/turf/T = get_turf(loc)
+	if(!istype(T, /turf/open))
+		return FALSE
+
+	if(parts_type)
+		new parts_type(loc, 2)
+	playsound(src, unpacking_sound, 35)
+
+	var/obj/structure/machinery/bodyscanner/E = new (T)
+	var/obj/structure/machinery/body_scanconsole/C = new (get_step(T, dir_needed))
+	C.connected = E
+
+	qdel(src)
+	return TRUE
 
 /obj/structure/largecrate/machine/sleeper
 	name = "sleeper machine crate (x1)"
 	desc = "A crate containing one medical sleeper."
 
-/obj/structure/largecrate/machine/sleeper/attackby(obj/item/W as obj, mob/user as mob)
-	if(istype(W, /obj/item/tool/crowbar))
-		var/turf/T = get_turf(loc)
-		if(istype(T, /turf/open))
-			var/obj/structure/machinery/sleeper/E = new (T)
-			var/obj/structure/machinery/sleep_console/C = new (T)
-			C.forceMove(get_step(T, EAST))
-			E.connected = C
-			C.connected = E
-	..()
+/obj/structure/largecrate/machine/sleeper/unpack()
+	var/turf/T = get_turf(loc)
+	if(!istype(T, /turf/open))
+		return FALSE
+
+	if(parts_type)
+		new parts_type(loc, 2)
+	playsound(src, unpacking_sound, 35)
+
+	var/obj/structure/machinery/sleeper/E = new (T)
+	var/obj/structure/machinery/sleep_console/C = new (get_step(T, dir_needed))
+	E.connected = C
+	C.connected = E
+
+	qdel(src)
+	return TRUE

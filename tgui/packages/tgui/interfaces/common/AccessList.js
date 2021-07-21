@@ -1,7 +1,7 @@
 import { sortBy } from 'common/collections';
 import { Fragment } from 'inferno';
 import { useLocalState } from '../../backend';
-import { Button, Flex, Grid, Section, Tabs } from '../../components';
+import { Button, Flex, Grid, Section, Stack, Tabs } from '../../components';
 
 const diffMap = {
   0: {
@@ -77,8 +77,8 @@ export const AccessList = (props, context) => {
             onClick={() => denyAll()} />
         </Fragment>
       )}>
-      <Flex>
-        <Flex.Item>
+      <Stack>
+        <Stack.Item>
           <Tabs vertical>
             {accesses.map(access => {
               const entries = access.accesses || [];
@@ -97,36 +97,39 @@ export const AccessList = (props, context) => {
               );
             })}
           </Tabs>
-        </Flex.Item>
-        <Flex.Item grow={1}>
-          <Grid>
-            <Grid.Column mr={0}>
+        </Stack.Item>
+        <Stack.Item grow>
+          <Stack>
+            <Stack.Item>
               <Button
                 fluid
                 icon="check"
                 content="Grant Region"
                 color="good"
                 onClick={() => grantDep(selectedAccess.regid)} />
-            </Grid.Column>
-            <Grid.Column ml={0}>
+            </Stack.Item>
+            <Stack.Item>
               <Button
                 fluid
                 icon="times"
                 content="Deny Region"
                 color="bad"
                 onClick={() => denyDep(selectedAccess.regid)} />
-            </Grid.Column>
-          </Grid>
-          {selectedAccessEntries.map(entry => (
-            <Button.Checkbox
-              fluid
-              key={entry.desc}
-              content={entry.desc}
-              checked={selectedList.includes(entry.ref)}
-              onClick={() => accessMod(entry.ref)} />
-          ))}
-        </Flex.Item>
-      </Flex>
+            </Stack.Item>
+          </Stack>
+          <Stack vertical mt={1}>
+            {selectedAccessEntries.map(entry => (
+              <Stack.Item key={entry.desc}>
+                <Button.Checkbox
+                  fluid
+                  content={entry.desc}
+                  checked={selectedList.includes(entry.ref)}
+                  onClick={() => accessMod(entry.ref)} />
+              </Stack.Item>
+            ))}
+          </Stack>
+        </Stack.Item>
+      </Stack>
     </Section>
   );
 };

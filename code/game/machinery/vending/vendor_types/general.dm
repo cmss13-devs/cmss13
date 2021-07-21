@@ -1,6 +1,6 @@
 /obj/structure/machinery/cm_vending/sorted/walkman
 	name = "\improper Rec-Vend"
-	desc = "Contains Weston-Yamada approved recreational items, like Walkmans and Cards."
+	desc = "Contains Weyland-Yutani approved recreational items, like Walkmans and Cards."
 	icon_state = "walkman"
 	wrenchable = TRUE
 	hackable = TRUE

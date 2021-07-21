@@ -1,6 +1,6 @@
 /obj/item/hardpoint/locomotion/apc_wheels
-	name = "APC wheels"
-	desc = "Integral to the movement of the APC"
+	name = "APC Wheels"
+	desc = "Integral to the movement of the APC."
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 
 	damage_multiplier = 0.15
@@ -11,4 +11,7 @@
 
 	health = 500
 
-	move_speed = VEHICLE_SPEED_VERYFAST
+	move_delay = VEHICLE_SPEED_SUPERFAST
+	move_max_momentum = 2
+	move_momentum_build_factor = 1.5
+	move_turn_momentum_loss_factor = 0.5

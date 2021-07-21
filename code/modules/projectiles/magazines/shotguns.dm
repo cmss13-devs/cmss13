@@ -13,10 +13,13 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	icon_state = "slugs"
 	item_state = "slugs"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
-	caliber = "12g" //All shotgun rounds are 12g right now.
+	caliber = "12g"
 	gun_type = /obj/item/weapon/gun/shotgun
 	max_rounds = 25 // Real shotgun boxes are usually 5 or 25 rounds. This works with the new system, five handfuls.
 	w_class = SIZE_LARGE // Can't throw it in your pocket, friend.
+	flags_magazine = AMMUNITION_REFILLABLE|AMMUNITION_HANDFUL_BOX
+	handful_state = "slug_shell"
+	transfer_handful_amount = 5
 
 /obj/item/ammo_magazine/shotgun/slugs//for distinction on weapons that can't take child objects but still take slugs.
 
@@ -26,6 +29,7 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	icon_state = "incendiary"
 	item_state = "incendiary"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
+	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/shotgun/buckshot
 	name = "box of buckshot shells"
@@ -33,6 +37,7 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	icon_state = "buckshot"
 	item_state = "buckshot"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	handful_state = "buckshot_shell"
 
 /obj/item/ammo_magazine/shotgun/flechette
 	name = "box of flechette shells"
@@ -40,6 +45,7 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	icon_state = "flechette"
 	item_state = "flechette"
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
+	handful_state = "flechette_shell"
 
 /obj/item/ammo_magazine/shotgun/beanbag
 	name = "box of beanbag slugs"
@@ -47,6 +53,8 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	icon_state = "beanbag"
 	item_state = "beanbag"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
+	handful_state = "beanbag_slug"
+
 
 //-------------------------------------------------------
 
@@ -72,6 +80,10 @@ also doesn't really matter. You can only reload them with handfuls.
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
 	max_rounds = 3
 
+/obj/item/ammo_magazine/internal/shotgun/double/twobore //Van Bandolier's superheavy double-barreled hunting rifle.
+	caliber = "2 bore"
+	default_ammo = /datum/ammo/bullet/shotgun/twobore
+
 /obj/item/ammo_magazine/internal/shotgun/combat/riot
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 
@@ -81,6 +93,20 @@ also doesn't really matter. You can only reload them with handfuls.
 /obj/item/ammo_magazine/internal/shotgun/buckshot
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
 
+/obj/item/ammo_magazine/internal/shotgun/type23
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot
+	caliber = "8g"
+	max_rounds = 4
+
+/obj/item/ammo_magazine/internal/shotgun/type23/slug
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/slug
+
+/obj/item/ammo_magazine/internal/shotgun/type23/flechette
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/flechette
+
+/obj/item/ammo_magazine/internal/shotgun/type23/dragonsbreath
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
+
 //-------------------------------------------------------
 
 /*
@@ -89,32 +115,108 @@ Handfuls of shotgun rounds. For spawning directly on mobs in roundstart, ERTs, e
 
 /obj/item/ammo_magazine/handful/shotgun
 	name = "handful of shotgun slugs (12g)"
-	icon_state = "shotgun slug"
+	icon_state = "slug_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/slug
 	caliber = "12g"
 	max_rounds = 5
 	current_rounds = 5
-	dir = SOUTHEAST
 	gun_type = /obj/item/weapon/gun/shotgun
+	handful_state = "slug_shell"
+	transfer_handful_amount = 5
 
 /obj/item/ammo_magazine/handful/shotgun/slug
 
 /obj/item/ammo_magazine/handful/shotgun/incendiary
 	name = "handful of incendiary slugs (12g)"
-	icon_state = "incendiary slug"
+	icon_state = "incendiary_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/incendiary
+	handful_state = "incendiary_slug"
 
 /obj/item/ammo_magazine/handful/shotgun/buckshot
-	name = "handful of shotgun buckshot shells (12g)"
-	icon_state = "shotgun buckshot shell"
+	name = "handful of buckshot shells (12g)"
+	icon_state = "buckshot_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	handful_state = "buckshot_shell"
+
+/obj/item/ammo_magazine/handful/shotgun/buckshot/incendiary
+	name = "handful of incendiary buckshot shells (12g)"
+	icon_state = "incen_buckshot_5"
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot/incendiary
+	handful_state = "incen_buckshot"
+
+/obj/item/ammo_magazine/handful/shotgun/custom_color
+	name = "abstract handful custom type"
+	icon_state = "shell_greyscale_5"
+	default_ammo = /datum/ammo/bullet/shotgun/buckshot
+	handful_state = "shell_greyscale" //unneeded
 
 /obj/item/ammo_magazine/handful/shotgun/flechette
-	name = "handful of shotgun flechette shells (12g)"
-	icon_state = "shotgun flechette shell"
+	name = "handful of flechette shells (12g)"
+	icon_state = "flechette_shell_5"
 	default_ammo = /datum/ammo/bullet/shotgun/flechette
+	handful_state = "flechette_shell"
 
 /obj/item/ammo_magazine/handful/shotgun/beanbag
 	name = "handful of beanbag slugs (12g)"
-	icon_state = "beanbag slug"
+	icon_state = "beanbag_slug_5"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
+	handful_state = "beanbag_slug"
+
+//updates on init
+/obj/item/ammo_magazine/handful/shotgun/custom_color/update_icon()
+	overlays.Cut()
+	. = ..()
+	icon_state = "shell_greyscale" + "_[current_rounds]"
+	var/image/I = image(icon, src, "+shell_base_[src.current_rounds]")
+	I.color = "#ffffff"
+	I.appearance_flags = RESET_COLOR|KEEP_APART
+	overlays += I
+
+/obj/item/ammo_magazine/handful/shotgun/heavy
+	name = "handful of heavy shotgun slugs (8g)"
+	icon_state = "heavy_slug_4"
+	handful_state = "heavy_slug"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/slug
+	caliber = "8g"
+	max_rounds = 4
+	current_rounds = 4
+	transfer_handful_amount = 4
+	gun_type = /obj/item/weapon/gun/shotgun
+
+/obj/item/ammo_magazine/handful/shotgun/heavy/slug
+
+/obj/item/ammo_magazine/handful/shotgun/heavy/buckshot
+	name = "handful of heavy buckshot shells (8g)"
+	icon_state = "heavy_buckshot_4"
+	handful_state = "heavy_buckshot"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot
+
+/obj/item/ammo_magazine/handful/shotgun/heavy/dragonsbreath
+	name = "handful of dragon's breath shells (8g)"
+	desc = "These shells fire magnesium (rather than the usual lead) pellets that ignite on contact with the air, setting anything it hits on fire. Its custom design also increases maximum range."
+	icon_state = "heavy_dragonsbreath_4"
+	handful_state = "heavy_dragonsbreath"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/buckshot/dragonsbreath
+
+/obj/item/ammo_magazine/handful/shotgun/heavy/flechette
+	name = "handful of heavy flechette shells (8g)"
+	icon_state = "heavy_flechette_4"
+	handful_state = "heavy_flechette"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/flechette
+
+/obj/item/ammo_magazine/handful/shotgun/heavy/beanbag
+	name = "handful of heavy beanbag shells (8g)"
+	icon_state = "heavy_beanbag_4"
+	handful_state = "heavy_beanbag"
+	default_ammo = /datum/ammo/bullet/shotgun/heavy/beanbag
+
+/obj/item/ammo_magazine/handful/shotgun/twobore
+	name = "handful of shotgun slugs (2 bore)"
+	icon_state = "twobore_3"
+	default_ammo = /datum/ammo/bullet/shotgun/twobore
+	caliber = "2 bore"
+	max_rounds = 3
+	current_rounds = 3
+	gun_type = /obj/item/weapon/gun/shotgun/double/twobore
+	handful_state = "twobore"
+	transfer_handful_amount = 3

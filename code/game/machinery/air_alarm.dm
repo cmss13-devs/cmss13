@@ -142,7 +142,7 @@
 	if (name == "alarm")
 		name = "[alarm_area.name] Air Alarm"
 
-	// breathable air according to human/Life()
+	// breathable air according to human/Life(delta_time)
 	TLV["oxygen"] =			list(16, 19, 135, 140) // Partial pressure, kpa
 	TLV["carbon dioxide"] = list(-1.0, -1.0, 5, 10) // Partial pressure, kpa
 	TLV["phoron"] =			list(-1.0, -1.0, 0.2, 0.5) // Partial pressure, kpa
@@ -916,7 +916,8 @@ table tr:first-child th:first-child { border: none;}
 
 		if (href_list["AAlarmwires"])
 			var/t1 = text2num(href_list["AAlarmwires"])
-			if (!( istype(usr.get_held_item(), /obj/item/tool/wirecutters) ))
+			var/obj/item/held_item = usr.get_held_item()
+			if (!held_item || !HAS_TRAIT(held_item, TRAIT_TOOL_WIRECUTTERS))
 				to_chat(usr, "You need wirecutters!")
 				return
 			if (isWireColorCut(t1))
@@ -931,7 +932,8 @@ table tr:first-child th:first-child { border: none;}
 
 		else if (href_list["pulse"])
 			var/t1 = text2num(href_list["pulse"])
-			if (!istype(usr.get_held_item(), /obj/item/device/multitool))
+			var/obj/item/held_item = usr.get_held_item()
+			if (held_item && !HAS_TRAIT(held_item, TRAIT_TOOL_MULTITOOL))
 				to_chat(usr, "You need a multitool!")
 				return
 			if (isWireColorCut(t1))
@@ -948,14 +950,14 @@ table tr:first-child th:first-child { border: none;}
 
 	switch(buildstage)
 		if(2)
-			if(isscrewdriver(W))  // Opening that Air Alarm up.
+			if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER))  // Opening that Air Alarm up.
 				//to_chat(user, "You pop the Air Alarm's maintence panel open.")
 				wiresexposed = !wiresexposed
 				to_chat(user, "The wires have been [wiresexposed ? "exposed" : "unexposed"]")
 				update_icon()
 				return
 
-			if(wiresexposed && ((istype(W, /obj/item/device/multitool) || istype(W, /obj/item/tool/wirecutters))))
+			if(wiresexposed && (HAS_TRAIT(W, TRAIT_TOOL_MULTITOOL) || HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS)))
 				return attack_hand(user)
 
 			if(istype(W, /obj/item/card/id))// trying to unlock the interface with an ID card
@@ -984,7 +986,7 @@ table tr:first-child th:first-child { border: none;}
 					to_chat(user, SPAN_WARNING("You need 5 pieces of cable to do wire \the [src]."))
 					return
 
-			else if(iscrowbar(W))
+			else if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 				user.visible_message(SPAN_NOTICE("[user] starts prying out [src]'s circuits."),
 				SPAN_NOTICE("You start prying out [src]'s circuits."))
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 25, 1)
@@ -1004,7 +1006,7 @@ table tr:first-child th:first-child { border: none;}
 				update_icon()
 				return
 
-			else if(iswrench(W))
+			else if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
 				to_chat(user, "You remove the fire alarm assembly from the wall!")
 				var/obj/item/frame/air_alarm/frame = new /obj/item/frame/air_alarm()
 				frame.forceMove(user.loc)

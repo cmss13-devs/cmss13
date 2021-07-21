@@ -69,7 +69,7 @@
 	var/mob/living/carbon/human/C = M
 	var/obj/limb/L = pick(C.limbs)
 	if(L && L.status & LIMB_ROBOT)
-		L.heal_damage(2*potency,2*potency,0,1)
+		L.heal_damage(2*potency, 2*potency, TRUE)
 
 /datum/chem_property/positive/repairing/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(2*potency, TOX)
@@ -104,7 +104,7 @@
 	name = PROPERTY_NERVESTIMULATING
 	code = "NST"
 	description = "Increases neuron communication speed across synapses resulting in improved reaction time, awareness and muscular control."
-	rarity = PROPERTY_COMMON
+	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 
 /datum/chem_property/positive/nervestimulating/process(mob/living/M, var/potency = 1)
@@ -130,13 +130,14 @@
 	name = PROPERTY_MUSCLESTIMULATING
 	code = "MST"
 	description = "Stimulates neuromuscular junctions increasing the force of muscle contractions, resulting in increased strength. High doses might exhaust the cardiac muscles."
-	rarity = PROPERTY_COMMON
+	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
 
 /datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
 	M.reagent_move_delay_modifier -= 0.25 * potency
 	M.recalculate_move_delay = TRUE
+	M.nutrition = max (0, M.nutrition - HUNGER_FACTOR)
 	if(prob(10))
 		M.emote(pick("twitch","blink_r","shiver"))
 
@@ -627,9 +628,10 @@
 /datum/chem_property/positive/fire/fueling
 	name = PROPERTY_FUELING
 	code = "FUL"
-	description = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also lowers heat intensity."
+	description = "The chemical can be burned as a fuel, expanding the burn time of a chemical fire. However, this also slightly lowers heat intensity."
 	rarity = PROPERTY_COMMON
-	intensity_per_level = -3
+	value = 1
+	intensity_per_level = -2
 	duration_per_level = 6
 
 	intensitymod_per_level = -0.1
@@ -639,10 +641,11 @@
 /datum/chem_property/positive/fire/oxidizing
 	name = PROPERTY_OXIDIZING
 	code = "OXI"
-	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned faster because of it."
+	description = "The chemical is oxidizing, increasing the intensity of chemical fires. However, the fuel is also burned slightly faster because of it."
 	rarity = PROPERTY_COMMON
+	value = 1
 	intensity_per_level = 6
-	duration_per_level = -3
+	duration_per_level = -2
 
 	intensitymod_per_level = 0.2
 	durationmod_per_level = -0.1
@@ -653,9 +656,10 @@
 	code = "FLW"
 	description = "The chemical is the opposite of viscous, and it tends to spill everywhere. This could probably be used to expand the radius of a chemical fire."
 	rarity = PROPERTY_COMMON
+	value = 1
 	range_per_level = 1
-	duration_per_level = -2
-	intensity_per_level = -2
+	duration_per_level = -1
+	intensity_per_level = -1
 
 	intensitymod_per_level = -0.05
 	radiusmod_per_level = 0.05

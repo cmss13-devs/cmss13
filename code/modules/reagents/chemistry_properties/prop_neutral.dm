@@ -107,13 +107,13 @@
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO)
 			return
 	if(potency > 1)
-		M.sdisabilities |= BLIND
+		M.sdisabilities |= DISABILITY_BLIND
 	else
 		M.disabilities |= NEARSIGHTED
 	if(potency > 2)
-		M.sdisabilities |= DEAF
+		M.sdisabilities |= DISABILITY_DEAF
 	if(potency > 3)
-		M.sdisabilities |= MUTE
+		M.sdisabilities |= DISABILITY_MUTE
 
 /datum/chem_property/neutral/neuroinhibiting/process_overdose(mob/living/M, var/potency = 1)
 	M.apply_damage(potency, BRAIN)
@@ -550,6 +550,30 @@
 
 /datum/chem_property/neutral/focusing/process_critical(mob/living/M, var/potency = 1)
 	M.apply_damage(4, TOX)
+
+/datum/chem_property/neutral/transformative
+	name = PROPERTY_TRANSFORMATIVE
+	code = "TRF"
+	description = "Mends damaged tissue, in the process creating a small amount of weak toxin as a byproduct, which then seeps into the bloodstream and damages the recipient."
+	rarity = PROPERTY_RARE
+	starter = FALSE
+	value = 3
+	var/heal_amount = 1.5
+
+/datum/chem_property/neutral/transformative/process(mob/living/M, var/potency = 1)
+	var/true_heal = heal_amount * potency
+	if(M.getBruteLoss())
+		M.apply_damage(-true_heal, BRUTE)
+		M.apply_damage(true_heal * 0.1, TOX)
+	if(M.getFireLoss())
+		M.apply_damage(-true_heal, BURN)
+		M.apply_damage(true_heal * 0.1, TOX)
+
+/datum/chem_property/neutral/transformative/process_overdose(mob/living/M, var/potency = 1)
+	M.apply_damage(heal_amount * (potency * 0.5), TOX)
+
+/datum/chem_property/neutral/transformative/process_critical(mob/living/M, var/potency = 1)
+	M.apply_damage(heal_amount * potency, TOX)
 
 /datum/chem_property/neutral/unknown
 	name = PROPERTY_UNKNOWN

@@ -227,8 +227,6 @@
 /obj/item/clothing/suit/storage/snow_suit/parka
 	name = "Parent Parka"
 	desc = "Parent parka"
-	icon_state = ""
-	item_state = ""
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
 	armor_melee = CLOTHING_ARMOR_MEDIUM
@@ -260,29 +258,25 @@
 	name = "Security Parka"
 	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. Nanotrasen branded Parka"
 	icon_state = "redpark"
-	item_state = "redpark"
 
 /obj/item/clothing/suit/storage/snow_suit/parka/navy
 	name = "Navy Parka"
 	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. Nanotrasen branded Parka"
 	icon_state = "navypark"
-	item_state = "navypark"
 
 /obj/item/clothing/suit/storage/snow_suit/parka/yellow
 	name = "yellow Parka"
 	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. Nanotrasen branded Parka"
 	icon_state = "yellowpark"
-	item_state = "yellowpark"
 
 /obj/item/clothing/suit/storage/snow_suit/parka/green
 	name = "Green Parka"
 	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. Nanotrasen branded Parka"
 	icon_state = "greenpark"
-	item_state = "greenpark"
 
 /obj/item/clothing/suit/storage/snow_suit/parka/purple
 	name = "Purple Parka"
 	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. Nanotrasen branded Parka"
 	icon_state = "purplepark"
-	item_state = "purplepark"
+
 

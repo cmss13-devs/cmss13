@@ -16,6 +16,9 @@
 	unacidable = TRUE
 	climb_delay = CLIMB_DELAY_SHORT
 
+/obj/structure/platform/stair_cut
+	icon_state = "platform_stair"
+
 /obj/structure/platform/Initialize()
 	. = ..()
 	var/image/I = image(icon, src, "platform_overlay", LADDER_LAYER, dir)//ladder layer puts us just above weeds.

@@ -74631,6 +74631,16 @@
 	tag = "icon-bluecorner (NORTH)"
 	},
 /area/almayer/shipboard/firing_range_north)
+"wMO" = (
+/obj/structure/sign/catclock{
+	pixel_y = 32
+	},
+/turf/open/floor/almayer{
+	dir = 1;
+	icon_state = "sterile_green_side";
+	tag = "icon-sterile_green_side (NORTH)"
+	},
+/area/almayer/medical/upper_medical)
 "wMT" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 1
@@ -107748,7 +107758,7 @@ irA
 irA
 irA
 ajl
-akx
+wMO
 wky
 ajl
 dtM

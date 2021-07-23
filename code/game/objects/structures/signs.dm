@@ -562,3 +562,12 @@
 	name = "\improper USCM Poster"
 	desc = "An old recruitment poster for the USCM. Looking at it floods you with a mixture of pride and sincere regret."
 	icon_state = "prop3"
+
+///////////////
+///Cat Clock///
+///////////////
+/obj/structure/sign/catclock
+	name = "cat clock"
+	desc = "An unbelievably creepy cat clock that surveys the room with every tick and every tock."
+	icon = 'icons/obj/structures/props/catclock.dmi'
+	icon_state = "cat_clock_motion"

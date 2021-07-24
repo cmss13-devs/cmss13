@@ -330,8 +330,8 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
 	)
 
-/datum/skills/civilian/survivor/marshall
-	name = "Survivor Marshall"
+/datum/skills/civilian/survivor/marshal
+	name = "Survivor Marshal"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_MELEE = SKILL_MELEE_TRAINED,

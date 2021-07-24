@@ -659,13 +659,13 @@ var/list/datum/mob_hud/huds = list(
 			if("Provost Advisor")
 				marine_rk = "pva"
 				border_rk = "command"
-			if("Provost Marshall")
+			if("Provost Marshal")
 				marine_rk = "pvm"
 				border_rk = "command"
-			if("Provost Sector Marshall")
+			if("Provost Sector Marshal")
 				marine_rk = "pvm"
 				border_rk = "command"
-			if("Provost Chief Marshall")
+			if("Provost Chief Marshal")
 				marine_rk = "pvm"
 				border_rk = "command"
 		if(marine_rk)

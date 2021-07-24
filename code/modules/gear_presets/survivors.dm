@@ -131,7 +131,7 @@
 /datum/equipment_preset/survivor/security
 	name = "Survivor - Security"
 	assignment = "Security"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
 	access = list(
@@ -438,10 +438,10 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/survivor/colonial_marshall
-	name = "Survivor - Colonial Marshall"
-	assignment = "Colonial Marshall"
-	skills = /datum/skills/civilian/survivor/marshall
+/datum/equipment_preset/survivor/colonial_marshal
+	name = "Survivor - Colonial Marshal"
+	assignment = "Colonial Marshal"
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -454,7 +454,7 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/survivor/colonial_marshall/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/colonial_marshal/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
@@ -506,7 +506,7 @@
 /datum/equipment_preset/survivor/security/trijent
 	name = "Survivor - Trijent Security Guard"
 	assignment = "Trijent Dam Security Guard"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -720,7 +720,7 @@
 /datum/equipment_preset/survivor/security/soro
 	name = "Survivor - Sorokyne Strata Security"
 	assignment = "Sorokyne Strata Security"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC
@@ -944,7 +944,7 @@
 /datum/equipment_preset/survivor/security/corsat
 	name = "Survivor - CORSAT Security Guard"
 	assignment = "CORSAT Security Guard"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -1121,7 +1121,7 @@
 /datum/equipment_preset/survivor/riot/florina
 	name = "Survivor - United Americas Riot Officer"
 	assignment = "United Americas Riot Officer"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -1161,7 +1161,7 @@
 /datum/equipment_preset/survivor/security/florina
 	name = "Survivor - Florina Prison Guard"
 	assignment = "Florina Prison Guard"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -1227,7 +1227,7 @@
 /datum/equipment_preset/survivor/security/kutjevo
 	name = "Survivor - Kutjevo Security Guard"
 	assignment = "Kutjevo Security Guard"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -1347,7 +1347,7 @@
 /datum/equipment_preset/survivor/security/lv
 	name = "Survivor - LV-624 Security Guard"
 	assignment = "LV-624 Security Guard"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -1382,10 +1382,10 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/survivor/marshall/lv
+/datum/equipment_preset/survivor/marshal/lv
 	name = "Survivor - LV-624 Head of Security"
 	assignment = "LV-624 Head of Security"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -1398,7 +1398,7 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/survivor/marshall/lv/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/marshal/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/head_of_security/navyblue(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
@@ -1580,10 +1580,10 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/survivor/marshall/solaris
-	name = "Survivor - Solaris Colonial Marshall"
-	assignment = "Solaris Colonial Marshall"
-	skills = /datum/skills/civilian/survivor/marshall
+/datum/equipment_preset/survivor/marshal/solaris
+	name = "Survivor - Solaris Colonial Marshal"
+	assignment = "Solaris Colonial Marshal"
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -1596,7 +1596,7 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/survivor/marshall/solaris/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/marshal/solaris/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
@@ -1617,7 +1617,7 @@
 /datum/equipment_preset/survivor/security/solaris
 	name = "Survivor - Solaris Security Guard"
 	assignment = "Solaris Security Guard"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(

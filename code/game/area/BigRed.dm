@@ -404,8 +404,8 @@
 	ceiling = CEILING_METAL
 
 
-/area/bigredv2/outside/marshall_office
-	name = "\improper Marshall Offices"
+/area/bigredv2/outside/marshal_office
+	name = "\improper Marshal Offices"
 	icon_state = "brig"
 	ceiling = CEILING_METAL
 

@@ -125,11 +125,11 @@
 	desc = "The crisp jacket of a Provost Inspector."
 	icon_state = "provost_jacket"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshall
-	name = "\improper Provost Marshall Jacket"
-	desc = "The crisp jacket of a Provost Marshall."
+/obj/item/clothing/suit/storage/jacket/marine/provost/marshal
+	name = "\improper Provost Marshal Jacket"
+	desc = "The crisp jacket of a Provost Marshal."
 	icon_state = "provost_jacket"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshall/chief
-	name = "\improper Provost Chief Marshall Jacket"
-	desc = "The crisp jacket of the Provost Chief Marshall."
+/obj/item/clothing/suit/storage/jacket/marine/provost/marshal/chief
+	name = "\improper Provost Chief Marshal Jacket"
+	desc = "The crisp jacket of the Provost Chief Marshal."

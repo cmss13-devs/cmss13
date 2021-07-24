@@ -18,14 +18,14 @@
 /datum/job/distress/provost/inspector
 	title = JOB_PROVOST_INSPECTOR
 
-//Provost Marshall
-/datum/job/distress/provost/marshall
-	title = JOB_PROVOST_MARSHALL
+//Provost Marshal
+/datum/job/distress/provost/marshal
+	title = JOB_PROVOST_MARSHAL
 
 //Provost Sector
-/datum/job/distress/provost/marshall/sector
-	title = JOB_PROVOST_SMARSHALL
+/datum/job/distress/provost/marshal/sector
+	title = JOB_PROVOST_SMARSHAL
 
-//Provost Chief Marshall
-/datum/job/distress/provost/marshall/chief
-	title = JOB_PROVOST_CMARSHALL
+//Provost Chief Marshal
+/datum/job/distress/provost/marshal/chief
+	title = JOB_PROVOST_CMARSHAL

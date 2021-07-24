@@ -701,9 +701,9 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	item_state = "d_helmet"
 	specialty = "M10 pattern officer"
 
-/obj/item/clothing/head/helmet/marine/mp/provost/marshall
-	name = "\improper Provost Marshall Cap"
-	desc = "The expensive headwear of a Provost Marshall. Contains shards of kevlar to keep it's valuable contents safe."
+/obj/item/clothing/head/helmet/marine/mp/provost/marshal
+	name = "\improper Provost Marshal Cap"
+	desc = "The expensive headwear of a Provost Marshal. Contains shards of kevlar to keep it's valuable contents safe."
 	icon_state = "pvmarshalhat"
 	item_state = "pvmarshalhat"
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE

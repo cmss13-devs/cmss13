@@ -1716,11 +1716,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
-/obj/item/clothing/suit/storage/marine/MP/provost/marshall
+/obj/item/clothing/suit/storage/marine/MP/provost/marshal
 	icon_state = "pvmarshal"
 	item_state_slots = list(WEAR_JACKET = "pvmarshal")
-	name = "\improper M3 pattern Provost Marshall armor"
-	desc = "A custom fit luxury armor suit for Provost Marshalls. Useful for letting your men know who is in charge when taking to the field."
+	name = "\improper M3 pattern Provost Marshal armor"
+	desc = "A custom fit luxury armor suit for Provost Marshals. Useful for letting your men know who is in charge when taking to the field."
 
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
@@ -1731,8 +1731,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 
-/obj/item/clothing/suit/storage/marine/MP/provost/marshall/chief
-	name = "\improper M3 pattern Provost Chief Marshall armor"
+/obj/item/clothing/suit/storage/marine/MP/provost/marshal/chief
+	name = "\improper M3 pattern Provost Chief Marshal armor"
 
 //================//UNITED AMERICAS RIOT CONTROL\\=====================\\
 //=======================================================================\\

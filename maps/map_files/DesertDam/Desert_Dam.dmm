@@ -22615,7 +22615,7 @@
 /area/desert_dam/exterior/valley/south_valley_dam)
 "boh" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -22674,7 +22674,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -22831,7 +22831,7 @@
 "boN" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshalls Office"
+	name = "\improper Marshals Office"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -23665,7 +23665,7 @@
 "brs" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison{
 	dir = 10;
@@ -23995,7 +23995,7 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/prison{
@@ -28389,7 +28389,7 @@
 /area/desert_dam/building/security/deathrow)
 "bGy" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -29984,7 +29984,7 @@
 /area/desert_dam/building/security/southern_hallway)
 "bLN" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /turf/open/floor/prison,
 /area/desert_dam/building/security/southern_hallway)

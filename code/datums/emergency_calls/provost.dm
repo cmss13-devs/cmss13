@@ -62,7 +62,7 @@
 		arm_equipment(H, "Provost Team Leader (PvTML)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the leader of a Provost Enforcer Team!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command!"))
-		to_chat(H, SPAN_ROLE_BODY("You only answer to Marine Law and the Provost Marshall!"))
+		to_chat(H, SPAN_ROLE_BODY("You only answer to Marine Law and the Provost Marshal!"))
 	else
 		arm_equipment(H, "Provost Enforcer (PvE)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a member of a Provost Enforcer Team!"))

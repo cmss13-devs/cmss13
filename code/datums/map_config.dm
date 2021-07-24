@@ -40,7 +40,7 @@
 		"Survivor - Chef",
 		"Survivor - Chaplain",
 		"Survivor - Miner",
-		"Survivor - Colonial Marshall",
+		"Survivor - Colonial Marshal",
 		"Survivor - Engineer"
 	)
 

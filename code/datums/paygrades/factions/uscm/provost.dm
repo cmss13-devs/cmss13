@@ -30,20 +30,20 @@
 	name = "Inspector"
 	prefix = "Insp."
 
-/datum/paygrade/provost/marshall
+/datum/paygrade/provost/marshal
 	paygrade = "PvM"
-	name = "Provost Marshall"
+	name = "Provost Marshal"
 	prefix = "RADM."
 	rank_pin = /obj/item/clothing/accessory/ranks/o7
 
-/datum/paygrade/provost/sectormarshall
+/datum/paygrade/provost/sectormarshal
 	paygrade = "PvSM"
-	name = "Provost Sector Marshall"
+	name = "Provost Sector Marshal"
 	prefix = "VADM."
 	rank_pin = /obj/item/clothing/accessory/ranks/o8
 
-/datum/paygrade/provost/chiefmarshall
+/datum/paygrade/provost/chiefmarshal
 	paygrade = "PvCM"
-	name = "Provost Chief Marshall"
+	name = "Provost Chief Marshal"
 	prefix = "ADM."
 	rank_pin = /obj/item/clothing/accessory/ranks/o9

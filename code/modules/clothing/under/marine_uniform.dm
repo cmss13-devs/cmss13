@@ -184,7 +184,7 @@
 
 /obj/item/clothing/under/marine/officer/command
 	name = "\improper USCM officer uniform"
-	desc = "The well-ironed utility uniform of a USCM officer. Even looking at it the wrong way could result in being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "The well-ironed utility uniform of a USCM officer. Even looking at it the wrong way could result in being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_jumpsuit"
 	worn_state = "CO_jumpsuit"
 	specialty = "USCM officer"
@@ -258,7 +258,7 @@
 
 /obj/item/clothing/under/marine/officer/formal/white
 	name = "formal commanding officer's white uniform"
-	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_formal_white"
 	worn_state = "CO_formal_white"
 	specialty = "USCM officer"
@@ -267,7 +267,7 @@
 
 /obj/item/clothing/under/marine/officer/formal/black
 	name = "formal commanding officer's black uniform"
-	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_formal_black"
 	worn_state = "CO_formal_black"
 	specialty = "USCM officer"
@@ -361,19 +361,19 @@
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 
-/obj/item/clothing/under/marine/mp/provost/marshall
-	name = "\improper Provost Marshall Uniform"
-	desc = "The crisp uniform of a Provost Marshall."
+/obj/item/clothing/under/marine/mp/provost/marshal
+	name = "\improper Provost Marshal Uniform"
+	desc = "The crisp uniform of a Provost Marshal."
 	icon_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 
-/obj/item/clothing/under/marine/mp/provost/marshall/sector
-	name = "\improper Provost Sector Marshall Uniform"
-	desc = "The crisp uniform of a Provost Sector Marshall."
+/obj/item/clothing/under/marine/mp/provost/marshal/sector
+	name = "\improper Provost Sector Marshal Uniform"
+	desc = "The crisp uniform of a Provost Sector Marshal."
 
-/obj/item/clothing/under/marine/mp/provost/marshall/chief
-	name = "\improper Provost Chief Marshall Uniform"
-	desc = "The crisp uniform of the Provost Chief Marshall."
+/obj/item/clothing/under/marine/mp/provost/marshal/chief
+	name = "\improper Provost Chief Marshal Uniform"
+	desc = "The crisp uniform of the Provost Chief Marshal."
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\

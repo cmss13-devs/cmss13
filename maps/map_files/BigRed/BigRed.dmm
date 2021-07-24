@@ -377,7 +377,7 @@
 "aaX" = (
 /obj/structure/closet/secure_closet/injection,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aaY" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/toolbox,
@@ -889,7 +889,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acm" = (
 /obj/item/tool/pickaxe,
 /turf/open/mars_cave{
@@ -907,18 +907,18 @@
 /area/bigredv2/outside/space_port)
 "acp" = (
 /turf/closed/wall/solaris/reinforced,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acq" = (
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Marshall Offices";
-	name = "\improper Marshall Offices Shutters"
+	id = "Marshal Offices";
+	name = "\improper Marshal Offices Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acr" = (
 /turf/closed/wall/solaris,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acs" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
@@ -927,7 +927,7 @@
 	},
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -943,7 +943,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acw" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -963,14 +963,14 @@
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acz" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (NORTH)"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acA" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/telecomm)
@@ -983,14 +983,14 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acD" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acE" = (
 /obj/structure/window/reinforced,
 /obj/structure/machinery/botany,
@@ -998,7 +998,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1006,7 +1006,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acG" = (
 /obj/structure/window/reinforced,
 /obj/effect/decal/cleanable/dirt,
@@ -1014,7 +1014,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acH" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -1066,14 +1066,14 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acM" = (
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acN" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1083,7 +1083,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acO" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1093,7 +1093,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acP" = (
 /turf/open/mars,
 /area/bigredv2/outside/n)
@@ -1132,7 +1132,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acU" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1141,7 +1141,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acV" = (
 /obj/structure/surface/table,
 /obj/effect/decal/cleanable/dirt,
@@ -1149,7 +1149,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acW" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -1160,14 +1160,14 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acX" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor{
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "acY" = (
 /obj/structure/surface/table,
 /obj/item/folder/black,
@@ -1198,7 +1198,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "add" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
@@ -1235,20 +1235,20 @@
 	icon_state = "darkish";
 	tag = "icon-darkish"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adi" = (
 /obj/item/shard,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adj" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adk" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -1266,7 +1266,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adn" = (
 /obj/structure/bed/chair{
 	dir = 8
@@ -1276,7 +1276,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ado" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -1286,7 +1286,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adp" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1296,7 +1296,7 @@
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adr" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1355,32 +1355,32 @@
 	icon_state = "darkish";
 	tag = "icon-darkish"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adz" = (
 /obj/structure/window/framed/colony/reinforced/tinted,
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adA" = (
 /obj/structure/bed/chair{
 	dir = 8;
 	tag = "icon-chair (WEST)"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adB" = (
 /obj/structure/machinery/light{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adC" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor{
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adD" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -1388,7 +1388,7 @@
 	icon_state = "whitegreen";
 	tag = "icon-whitegreen (EAST)"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adE" = (
 /obj/structure/sink{
 	pixel_y = 32
@@ -1397,7 +1397,7 @@
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adF" = (
 /obj/structure/mirror{
 	icon_state = "mirror_broke";
@@ -1408,7 +1408,7 @@
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adG" = (
 /obj/item/shard,
 /obj/effect/decal/cleanable/blood{
@@ -1418,7 +1418,7 @@
 /obj/effect/landmark/corpsespawner/security,
 /obj/structure/window_frame/solaris/reinforced,
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adH" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/technology_scanner,
@@ -1466,20 +1466,20 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adO" = (
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adP" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -1488,22 +1488,22 @@
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adQ" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -32
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adR" = (
 /obj/structure/machinery/light{
 	dir = 1
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adS" = (
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adT" = (
 /obj/structure/closet/secure_closet/marshal,
 /obj/item/clothing/suit/storage/CMB,
@@ -1511,19 +1511,19 @@
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adU" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adW" = (
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adX" = (
 /obj/structure/bookcase/manuals/engineering,
 /obj/structure/machinery/light{
@@ -1532,14 +1532,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adY" = (
 /obj/structure/closet/secure_closet/detective,
 /obj/item/weapon/gun/smg/fp9000,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "adZ" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1650,11 +1650,11 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aem" = (
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Marshall Office Prison";
+	name = "\improper Marshal Office Prison";
 	req_one_access = null
 	},
 /turf/open/floor{
@@ -1662,12 +1662,12 @@
 	icon_state = "whitegreenfull";
 	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aen" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
 	dir = 1;
-	name = "\improper Marshall Office Prison";
+	name = "\improper Marshal Office Prison";
 	req_one_access = null
 	},
 /turf/open/floor{
@@ -1675,53 +1675,53 @@
 	icon_state = "whitegreenfull";
 	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeo" = (
 /obj/structure/machinery/door/airlock/almayer/generic{
 	dir = 1;
-	name = "\improper Marshall Office Prison Toilet"
+	name = "\improper Marshal Office Prison Toilet"
 	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aep" = (
 /obj/structure/reagent_dispensers/peppertank{
 	pixel_x = -32
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/bed/stool,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aer" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aes" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/computer/security/wooden_tv,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aet" = (
 /obj/structure/bed/chair/comfy,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeu" = (
 /obj/item/clothing/accessory/holster/armpit,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aev" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
@@ -1815,7 +1815,7 @@
 /turf/open/floor{
 	icon_state = "delivery"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeK" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
@@ -1825,14 +1825,14 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeL" = (
 /obj/structure/bed,
 /turf/open/floor{
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeM" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1841,26 +1841,26 @@
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeN" = (
 /obj/structure/bed/stool,
 /obj/item/clothing/shoes/jackboots,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeO" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/structure/machinery/recharger,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeP" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/reagent_container/food/drinks/flask/detflask,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aeQ" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/light{
@@ -1970,10 +1970,10 @@
 /area/bigredv2/outside/space_port)
 "afi" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office Isolation"
+	name = "\improper Marshal Office Isolation"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afj" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname{
@@ -1983,7 +1983,7 @@
 	icon_state = "white";
 	tag = "icon-white"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afk" = (
 /obj/structure/toilet{
 	dir = 4
@@ -1993,14 +1993,14 @@
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afl" = (
 /obj/structure/machinery/flasher/portable,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afm" = (
 /obj/structure/closet/l3closet/security,
 /obj/structure/machinery/light{
@@ -2011,14 +2011,14 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afn" = (
 /obj/structure/closet/l3closet/security,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afo" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/revolver/cmb,
@@ -2026,7 +2026,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afp" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/revolver/cmb,
@@ -2034,7 +2034,7 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afq" = (
 /obj/structure/surface/rack,
 /obj/structure/machinery/light{
@@ -2046,14 +2046,14 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afr" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 4
 	},
 /obj/structure/closet/bombclosetsecurity,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afs" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -2061,7 +2061,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aft" = (
 /obj/structure/surface/table/reinforced,
 /obj/item/tool/surgery/hemostat,
@@ -2226,13 +2226,13 @@
 /turf/open/floor{
 	icon_state = "delivery"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afP" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
-	name = "\improper Marshall Office Prison";
+	name = "\improper Marshal Office Prison";
 	req_access = null
 	},
 /turf/open/floor{
@@ -2240,14 +2240,14 @@
 	icon_state = "whitegreenfull";
 	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afQ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
-	name = "\improper Marshall Office Prison";
+	name = "\improper Marshal Office Prison";
 	req_access = null
 	},
 /turf/open/floor{
@@ -2255,29 +2255,29 @@
 	icon_state = "whitegreenfull";
 	tag = "icon-whitegreenfull (NORTHEAST)"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afR" = (
 /obj/structure/machinery/deployable/barrier,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afS" = (
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afU" = (
 /obj/structure/closet/bombclosetsecurity,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afV" = (
 /obj/structure/closet/secure_closet/marshal,
 /obj/structure/machinery/light{
@@ -2289,17 +2289,17 @@
 	icon_state = "floor4";
 	tag = "icon-floor4"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afW" = (
 /obj/structure/machinery/door_control{
-	id = "Marshall Offices";
+	id = "Marshal Offices";
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "afY" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -2470,7 +2470,7 @@
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agu" = (
 /turf/closed/wall/solaris/rock,
 /area/bigredv2/outside/nw)
@@ -2501,38 +2501,38 @@
 /obj/structure/window/framed/solaris/reinforced,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
-	id = "Marshall Offices";
-	name = "\improper Marshall Offices Shutters"
+	id = "Marshal Offices";
+	name = "\improper Marshal Offices Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agz" = (
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agA" = (
 /obj/effect/landmark/hunter_secondary,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agB" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agD" = (
 /obj/structure/surface/rack,
 /obj/item/ammo_magazine/shotgun/incendiary,
@@ -2542,14 +2542,14 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agE" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agF" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
@@ -2558,7 +2558,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agG" = (
 /obj/structure/surface/rack,
 /obj/item/weapon/gun/shotgun/pump/cmb,
@@ -2566,14 +2566,14 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agH" = (
 /obj/structure/pipes/vents/pump,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agI" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/eastleft,
@@ -2582,17 +2582,17 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agJ" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Head Office";
+	name = "\improper Marshal Head Office";
 	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agK" = (
 /obj/structure/machinery/optable,
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -2639,7 +2639,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "agP" = (
 /obj/structure/surface/rack,
 /turf/open/floor{
@@ -2791,25 +2791,25 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahm" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -2817,13 +2817,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aho" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahp" = (
 /obj/structure/machinery/power/apc,
 /obj/structure/machinery/camera/autoname{
@@ -2832,7 +2832,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahq" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/vents/pump{
@@ -2849,19 +2849,19 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahs" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aht" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahu" = (
 /obj/structure/machinery/vending/security,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ahv" = (
 /obj/structure/surface/table/holotable/wood,
 /obj/item/paper_bin,
@@ -3083,25 +3083,25 @@
 /area/bigredv2/outside/nw)
 "aia" = (
 /obj/structure/machinery/door_control{
-	id = "Marshall Offices";
+	id = "Marshal Offices";
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aib" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aic" = (
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aid" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -3109,21 +3109,21 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aie" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/good_item,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aif" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aig" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_4";
@@ -3136,21 +3136,21 @@
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
-	name = "\improper Marshall Office Armory";
+	name = "\improper Marshal Office Armory";
 	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aii" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office Equipment";
+	name = "\improper Marshal Office Equipment";
 	req_access = null
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aij" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -3298,38 +3298,38 @@
 /area/bigredv2/outside/nw)
 "aiC" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office Brig"
+	name = "\improper Marshal Office Brig"
 	},
 /turf/open/floor{
 	icon_state = "delivery"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "delivery"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiE" = (
 /obj/structure/closet/secure_closet/marshal,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiF" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/slugs,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiG" = (
 /obj/structure/surface/table,
 /obj/item/handcuffs,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiH" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/camera/autoname,
@@ -3338,7 +3338,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiI" = (
 /obj/structure/surface/table,
 /obj/item/ammo_magazine/shotgun/buckshot,
@@ -3346,7 +3346,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiJ" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -3354,47 +3354,47 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiK" = (
 /obj/structure/machinery/computer/secure_data,
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiL" = (
 /obj/structure/surface/table,
 /obj/item/clothing/suit/storage/CMB,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiM" = (
 /obj/structure/surface/table,
 /obj/item/handcuffs,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiN" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiO" = (
 /obj/structure/bed/chair,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiP" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiQ" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiR" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -3450,7 +3450,7 @@
 	icon_state = "bcircuit";
 	tag = "icon-bcircuit"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aiY" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/light{
@@ -3470,7 +3470,7 @@
 	icon_state = "bcircuit";
 	tag = "icon-bcircuit"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aja" = (
 /obj/structure/surface/table,
 /obj/item/ore/diamond,
@@ -3479,19 +3479,19 @@
 	icon_state = "bcircuit";
 	tag = "icon-bcircuit"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajb" = (
 /turf/open/floor{
 	dir = 8;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajc" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajd" = (
 /obj/structure/surface/table/holotable/wood,
 /turf/open/floor/carpet,
@@ -3499,35 +3499,35 @@
 "aje" = (
 /obj/structure/pipes/vents/pump/on,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajf" = (
 /obj/structure/surface/table,
 /obj/item/trash/kepler,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajg" = (
 /obj/structure/surface/table,
 /obj/item/evidencebag,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajh" = (
 /obj/structure/surface/table,
 /obj/item/clothing/suit/armor/det_suit,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aji" = (
 /obj/structure/surface/table,
 /obj/item/explosive/grenade/flashbang,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajj" = (
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajk" = (
 /obj/structure/surface/table,
 /obj/effect/spawner/random/bomb_supply,
@@ -3668,7 +3668,7 @@
 	icon_state = "bcircuit";
 	tag = "icon-bcircuit"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajC" = (
 /obj/structure/surface/table,
 /obj/item/device/radio,
@@ -3676,21 +3676,21 @@
 	icon_state = "bcircuit";
 	tag = "icon-bcircuit"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajD" = (
 /obj/structure/surface/table,
 /turf/open/floor{
 	icon_state = "darkish";
 	tag = "icon-darkish"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajE" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajF" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/westright,
@@ -3698,21 +3698,21 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/crap_item,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajI" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
@@ -3720,7 +3720,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajJ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3728,7 +3728,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajK" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -3736,23 +3736,23 @@
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	icon_state = "door_locked";
 	locked = 1;
-	name = "\improper Marshall Office Armory";
+	name = "\improper Marshal Office Armory";
 	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajL" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajM" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajN" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/spray/cleaner,
@@ -3761,7 +3761,7 @@
 	},
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajO" = (
 /obj/structure/surface/table/holotable/wood,
 /obj/item/tool/pen,
@@ -3774,7 +3774,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajQ" = (
 /obj/structure/surface/table,
 /obj/structure/machinery/recharger,
@@ -3782,21 +3782,21 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ajT" = (
 /turf/open/floor{
 	dir = 5;
@@ -3866,7 +3866,7 @@
 "akc" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -3882,7 +3882,7 @@
 	icon_state = "bcircuit";
 	tag = "icon-bcircuit"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akf" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -3891,7 +3891,7 @@
 	icon_state = "darkish";
 	tag = "icon-darkish"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akg" = (
 /obj/structure/surface/table,
 /obj/item/device/taperecorder,
@@ -3899,17 +3899,17 @@
 	icon_state = "darkish";
 	tag = "icon-darkish"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akh" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office Interrogation";
+	name = "\improper Marshal Office Interrogation";
 	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "darkish";
 	tag = "icon-darkish"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aki" = (
 /obj/structure/surface/table,
 /obj/item/clothing/mask/gas,
@@ -3917,16 +3917,16 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akj" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	dir = 4;
 	id = "Office Complex 2";
-	name = "\improper Marshall Office Complex Shutters"
+	name = "\improper Marshal Office Complex Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akk" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/suit/armor/riot,
@@ -3934,7 +3934,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akl" = (
 /obj/structure/sign/safety/hazard,
 /turf/closed/wall/solaris/reinforced,
@@ -3945,40 +3945,40 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/computer/prisoner,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ako" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/general_offices)
 "akp" = (
 /obj/structure/machinery/light,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akq" = (
 /obj/structure/machinery/computer/secure_data,
 /obj/structure/surface/table,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akr" = (
 /obj/structure/machinery/computer/prisoner,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aks" = (
 /obj/effect/landmark/good_item,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akt" = (
 /obj/structure/bed/chair{
 	dir = 1
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aku" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -3990,12 +3990,12 @@
 "akv" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office";
+	name = "\improper Marshal Office";
 	req_access = null
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akw" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
@@ -4030,7 +4030,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akB" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/xenoautopsy,
@@ -4123,7 +4123,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akN" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -4132,7 +4132,7 @@
 	icon_state = "darkish";
 	tag = "icon-darkish"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akO" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 8
@@ -4141,10 +4141,10 @@
 	icon_state = "darkish";
 	tag = "icon-darkish"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akP" = (
 /obj/structure/machinery/door_control{
-	id = "Marshall Offices";
+	id = "Marshal Offices";
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
@@ -4153,7 +4153,7 @@
 	dir = 8;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akQ" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/door/window/brigdoor/southright,
@@ -4161,27 +4161,27 @@
 	dir = 8;
 	icon_state = "vault"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akR" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office";
+	name = "\improper Marshal Office";
 	req_access = null
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akS" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akT" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "akU" = (
 /obj/structure/window/framed/solaris/reinforced,
 /turf/open/floor/plating,
@@ -4326,13 +4326,13 @@
 "alp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office Evidence Room";
+	name = "\improper Marshal Office Evidence Room";
 	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alq" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -4341,11 +4341,11 @@
 	dir = 8;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alr" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "als" = (
 /obj/structure/closet/hydrant{
 	pixel_y = 32
@@ -4354,14 +4354,14 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alt" = (
 /obj/effect/landmark/survivor_spawn,
 /turf/open/floor{
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alu" = (
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/medical)
@@ -4373,7 +4373,7 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alw" = (
 /obj/item/device/radio/intercom{
 	freerange = 1;
@@ -4385,13 +4385,13 @@
 	dir = 5;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alx" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aly" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -4401,7 +4401,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alz" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -4409,25 +4409,25 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alA" = (
 /obj/structure/surface/table,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alB" = (
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "alD" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
@@ -4577,11 +4577,11 @@
 "alZ" = (
 /obj/structure/window/framed/solaris,
 /obj/structure/machinery/door/poddoor/shutters/almayer{
-	id = "Marshall Offices";
-	name = "\improper Marshall Offices Shutters"
+	id = "Marshal Offices";
+	name = "\improper Marshal Offices Shutters"
 	},
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ama" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_9";
@@ -4596,7 +4596,7 @@
 	},
 /obj/structure/window_frame/solaris,
 /turf/open/floor/plating,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amc" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -4615,7 +4615,7 @@
 	dir = 8;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ame" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4624,7 +4624,7 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amf" = (
 /obj/structure/machinery/camera/autoname,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4634,7 +4634,7 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amg" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4644,7 +4644,7 @@
 	dir = 4;
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4655,7 +4655,7 @@
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/landmark/crap_item,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amj" = (
 /obj/structure/window/framed/solaris,
 /turf/open/floor/plating,
@@ -4679,14 +4679,14 @@
 /obj/structure/pipes/standard/manifold/hidden/green,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4694,7 +4694,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/shoes/black,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amr" = (
 /obj/effect/decal/cleanable/blood,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4702,7 +4702,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ams" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4712,17 +4712,17 @@
 	dir = 4;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
 /obj/structure/machinery/door/airlock/almayer/security/glass{
-	name = "\improper Marshall Office Courtroom";
+	name = "\improper Marshal Office Courtroom";
 	req_access = null
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amu" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -4732,7 +4732,7 @@
 	},
 /obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amv" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -4745,7 +4745,7 @@
 	dir = 4
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amw" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -4756,7 +4756,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amx" = (
 /obj/structure/surface/table,
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4766,7 +4766,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amy" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/pipes/vents/pump{
@@ -4775,14 +4775,14 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amz" = (
 /turf/open/floor{
 	dir = 1;
 	icon_state = "rampbottom";
 	tag = "icon-rampbottom"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amA" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -4790,14 +4790,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amB" = (
 /obj/effect/landmark/survivor_spawn,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amC" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -4805,7 +4805,7 @@
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "amD" = (
 /obj/effect/landmark/crap_item,
 /turf/open/mars,
@@ -4963,13 +4963,13 @@
 "ana" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
 	dir = 1;
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /turf/open/floor{
 	dir = 8;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anb" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -4977,7 +4977,7 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anc" = (
 /obj/structure/machinery/alarm{
 	dir = 1;
@@ -4987,7 +4987,7 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "and" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/frame/table,
@@ -4995,7 +4995,7 @@
 /turf/open/floor{
 	icon_state = "redcorner"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ane" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	name = "Emergency NanoMed";
@@ -5006,21 +5006,21 @@
 	dir = 6;
 	icon_state = "red"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anf" = (
 /obj/structure/bed/chair{
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ang" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/paper/Court,
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anh" = (
 /obj/structure/bed/chair/comfy/black{
 	dir = 8
@@ -5031,7 +5031,7 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "ani" = (
 /obj/structure/bed/chair{
 	dir = 4
@@ -5044,7 +5044,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anj" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/mars_cave,
@@ -5138,32 +5138,32 @@
 	dir = 1;
 	icon_state = "door_locked";
 	locked = 1;
-	name = "\improper Marshall Office Holding Cell";
+	name = "\improper Marshal Office Holding Cell";
 	req_access = null
 	},
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "any" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 1;
-	name = "\improper Marshall Office Checkpoint";
+	name = "\improper Marshal Office Checkpoint";
 	req_access = null
 	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anA" = (
 /obj/structure/machinery/door/airlock/glass_security{
 	icon_state = "door_locked";
@@ -5175,28 +5175,28 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anB" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anC" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anD" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anE" = (
 /obj/structure/surface/table/woodentable,
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anF" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -5205,13 +5205,13 @@
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anH" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "anI" = (
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/caves/lambda/research)
@@ -5363,7 +5363,7 @@
 /area/bigredv2/outside/nw)
 "aoh" = (
 /obj/structure/machinery/door_control{
-	id = "Marshall Offices";
+	id = "Marshal Offices";
 	name = "Storm Shutters";
 	pixel_x = -32
 	},
@@ -5371,39 +5371,39 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoi" = (
 /obj/structure/surface/table,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aok" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
 	icon_state = "cult"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aol" = (
 /turf/open/floor{
 	icon_state = "rampbottom";
 	tag = "icon-rampbottom"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aom" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/clothing/suit/storage/lawyer/bluejacket,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aon" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -5411,7 +5411,7 @@
 /turf/open/floor{
 	icon_state = "grimy"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoo" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -5633,7 +5633,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoU" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -5642,7 +5642,7 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoV" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 4
@@ -5651,25 +5651,25 @@
 	dir = 9;
 	icon_state = "redfull"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/survivor_spawn,
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoX" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoY" = (
 /obj/structure/machinery/light,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aoZ" = (
 /obj/structure/machinery/camera/autoname{
 	dir = 1
@@ -5677,7 +5677,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "apa" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
@@ -5685,14 +5685,14 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "apb" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/device/camera_film,
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "apc" = (
 /turf/open/floor,
 /area/bigredv2/outside/general_offices)
@@ -5926,10 +5926,10 @@
 "apH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
-	name = "\improper Marshall Office"
+	name = "\improper Marshal Office"
 	},
 /turf/open/floor,
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "apI" = (
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/caves_lambda)
@@ -10876,7 +10876,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "aCl" = (
 /obj/structure/surface/table,
 /obj/item/tool/shovel/spade,
@@ -29779,7 +29779,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "eMX" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_23";
@@ -30611,7 +30611,7 @@
 /turf/open/floor{
 	icon_state = "wood"
 	},
-/area/bigredv2/outside/marshall_office)
+/area/bigredv2/outside/marshal_office)
 "jGT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/door/poddoor/almayer/closed{

@@ -260,7 +260,7 @@
 
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
-			if(H.get_paygrade(0) in list("Captain", "Commodore", "Rear Admiral", "Vice Admiral", "Admiral", "Fleet Admiral", "Inspector", "Provost Marshall", "Provost Sector Marshall", "Provost Chief Marshall"))
+			if(H.get_paygrade(0) in list("Captain", "Commodore", "Rear Admiral", "Vice Admiral", "Admiral", "Fleet Admiral", "Inspector", "Provost Marshal", "Provost Sector Marshal", "Provost Chief Marshal"))
 				dat += "<br/>"
 				dat += "<a href='?src=\ref[src];brig=pardon'>Pardon</a>"
 				dat += "<br/>"

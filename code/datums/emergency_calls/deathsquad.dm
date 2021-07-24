@@ -14,7 +14,7 @@
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	max_medics = 1
 	max_heavies = 2
-
+	hostility = TRUE
 
 
 // DEATH SQUAD--------------------------------------------------------------------------------

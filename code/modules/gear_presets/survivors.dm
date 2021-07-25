@@ -324,7 +324,7 @@
 /datum/equipment_preset/survivor/security
 	name = "Survivor - Security"
 	assignment = "Security"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/data
 	access = list(
@@ -1009,7 +1009,7 @@
 /datum/equipment_preset/survivor/colonial_marshall
 	name = "Survivor - Colonial Marshall"
 	assignment = "Colonial Marshall"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -1059,7 +1059,7 @@
 /datum/equipment_preset/survivor/marshall/lv
 	name = "Survivor - LV-624 Head of Security"
 	assignment = "LV-624 Head of Security"
-	skills = /datum/skills/civilian/survivor/marshall
+	skills = /datum/skills/civilian/survivor/marshal
 
 /datum/equipment_preset/survivor/marshall/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/head_of_security/navyblue(H), WEAR_BODY)

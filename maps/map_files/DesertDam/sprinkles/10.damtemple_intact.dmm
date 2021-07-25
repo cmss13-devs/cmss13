@@ -356,9 +356,8 @@
 	pixel_y = 5
 	},
 /obj/item/stack/medical/advanced/ointment/predator{
-	pixel_x = -2;
-	pixel_y = 5;
-	step_x = -5
+	pixel_x = -7;
+	pixel_y = 5
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)

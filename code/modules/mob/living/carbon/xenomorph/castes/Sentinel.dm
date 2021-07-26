@@ -49,6 +49,8 @@
 	)
 	mutation_type = SENTINEL_NORMAL
 
+	icon_xenonid = 'icons/mob/xenonids/sentinel.dmi'
+
 /mob/living/carbon/Xenomorph/Sentinel/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_sentinel))
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_sentinel))

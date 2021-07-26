@@ -101,6 +101,7 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 //-- mob traits --
+// SPECIES TRAITS
  /// Knowledge of Yautja technology
 #define TRAIT_YAUTJA_TECH "t_yautja_tech"
  /// Absolutely RIPPED. Can do misc. heavyweight stuff others can't. (Yautja, Synths)
@@ -109,6 +110,12 @@
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
  /// Eye color changes on intent. (G1 Synths)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
+
+// HIVE TRAITS
+ /// If the Hive is a Xenonid Hive
+#define TRAIT_XENONID "t_xenonid"
+
+// MISC MOB TRAITS
  /// If the mob is nested.
 #define TRAIT_NESTED "t_nested"
  /// If the mob can crawl through pipes equipped
@@ -117,6 +124,8 @@
 #define TRAIT_SIMPLE_DESC "t_simple_desc"
  /// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
+
+
 
 //-- item traits --
 // TOOL TRAITS
@@ -145,6 +154,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 //-- mob traits --
  ///Status trait coming from species. .human/species_gain()
 #define TRAIT_SOURCE_SPECIES "t_s_species"
+ ///Status trait coming from the hive.
+#define TRAIT_SOURCE_HIVE "t_s_hive"
  ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
  ///Status trait coming from tools

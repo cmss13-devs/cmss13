@@ -250,6 +250,9 @@
 	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
 	var/list/built_structures = list()
 
+	var/icon_xeno
+	var/icon_xenonid
+
 	//////////////////////////////////////////////////////////////////
 	//
 	//		Vars that should be deleted
@@ -305,7 +308,12 @@
 		in_hive.add_xeno(src)
 		// But now we are!
 
+	for(var/T in in_hive.hive_inherant_traits)
+		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+
 	mutators.xeno = src
+
+	update_icon_source()
 
 	update_caste()
 
@@ -697,8 +705,13 @@
 	if(!new_hive)
 		return
 
+	for(var/T in status_traits)
+		REMOVE_TRAIT(src, T, TRAIT_SOURCE_HIVE)
 
 	new_hive.add_xeno(src)
+
+	for(var/T in new_hive.hive_inherant_traits)
+		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
 
 	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
 		var/mob/living/carbon/Xenomorph/Larva/L = src
@@ -723,6 +736,7 @@
 	recalculate_actions()
 	recalculate_pheromones()
 	recalculate_maturation()
+	update_icon_source()
 	if(hive && hive.living_xeno_queen && hive.living_xeno_queen == src)
 		hive.recalculate_hive() //Recalculating stuff around Queen maturing
 

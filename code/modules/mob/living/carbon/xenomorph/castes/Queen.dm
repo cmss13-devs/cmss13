@@ -254,6 +254,8 @@
 	small_explosives_stun = FALSE
 	pull_speed = 3.0 //screech/neurodragging is cancer, at the very absolute least get some runner to do it for teamwork
 
+	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
+
 	var/map_view = 0
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
@@ -345,18 +347,20 @@
 /mob/living/carbon/Xenomorph/Queen/Delta
 	hivenumber = XENO_HIVE_DELTA
 
+/mob/living/carbon/Xenomorph/Queen/Mutated
+	hivenumber = XENO_HIVE_MUTATED
+
 /mob/living/carbon/Xenomorph/Queen/combat_ready
 	queen_aged = TRUE
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
-	queen_standing_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
-	queen_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)
 	resin_build_order = GLOB.resin_build_order_drone
+
 	if(hive.dynamic_evolution && !queen_aged)
 		queen_age_timer_id = addtimer(CALLBACK(src, .proc/make_combat_effective), XENO_QUEEN_AGE_TIME, TIMER_UNIQUE|TIMER_STOPPABLE)
 	else

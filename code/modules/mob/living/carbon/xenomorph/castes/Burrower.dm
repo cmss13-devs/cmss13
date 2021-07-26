@@ -62,6 +62,9 @@
 		)
 	mutation_type = BURROWER_NORMAL
 
+	icon_xeno = 'icons/mob/hostiles/burrower.dmi'
+	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
+
 /mob/living/carbon/Xenomorph/Burrower/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
 	sight |= SEE_TURFS

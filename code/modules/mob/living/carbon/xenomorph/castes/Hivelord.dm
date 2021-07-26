@@ -63,3 +63,6 @@
 		/datum/action/xeno_action/onclick/toggle_speed //fourth macro
 		)
 	mutation_type = HIVELORD_NORMAL
+
+	icon_xeno = 'icons/mob/hostiles/hivelord.dmi'
+	icon_xenonid = 'icons/mob/xenonids/hivelord.dmi'

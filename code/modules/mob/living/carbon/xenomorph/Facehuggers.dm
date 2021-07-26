@@ -37,18 +37,24 @@
 	/// the nearest human before dying
 	var/jumps_left = 2
 
+	var/icon_xeno = 'icons/mob/hostiles/Effects.dmi'
+	var/icon_xenonid = 'icons/mob/xenonids/xenonid_crab.dmi'
+
 /obj/item/clothing/mask/facehugger/Initialize(mapload, hive)
 	. = ..()
+	var/new_icon = icon_xeno
 	if (hive)
 		hivenumber = hive
+
+		var/datum/hive_status/hive_s = GLOB.hive_datum[hivenumber]
+		if(HAS_TRAIT(hive_s, TRAIT_XENONID))
+			new_icon = icon_xenonid
+
+	icon = new_icon
 
 	set_hive_data(src, hivenumber)
 	go_active()
 
-/obj/item/clothing/mask/facehugger/initialize_pass_flags(var/datum/pass_flags_container/PF)
-	..()
-	if(PF)
-		PF.flags_pass |= PASS_MOB_THRU_XENO
 
 /obj/item/clothing/mask/facehugger/Destroy()
 	. = ..()

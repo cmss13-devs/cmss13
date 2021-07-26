@@ -56,9 +56,11 @@
 	mutation_type = CRUSHER_NORMAL
 	claw_type = CLAW_TYPE_VERY_SHARP
 
+	icon_xenonid = 'icons/mob/xenonids/crusher.dmi'
+
 /mob/living/carbon/Xenomorph/Crusher/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_crusher))
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_crusher))
 
 // Refactored to handle all of crusher's interactions with object during charge.
 /mob/living/carbon/Xenomorph/proc/handle_collision(atom/target)

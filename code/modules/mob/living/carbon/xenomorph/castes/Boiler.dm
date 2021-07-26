@@ -46,6 +46,9 @@
 	tileoffset = 0
 	viewsize = 16
 
+	icon_xeno = 'icons/mob/hostiles/boiler.dmi'
+	icon_xenonid = 'icons/mob/xenonids/boiler.dmi'
+
 	var/datum/effect_system/smoke_spread/xeno_acid/smoke
 
 	base_actions = list(
@@ -66,6 +69,8 @@
 	smoke.cause_data = create_cause_data(initial(caste_type), src)
 	see_in_dark = 20
 	ammo = GLOB.ammo_list[/datum/ammo/xeno/boiler_gas]
+
+	update_icon_source()
 
 /mob/living/carbon/Xenomorph/Boiler/Destroy()
 	if(smoke)

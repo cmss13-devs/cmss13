@@ -354,8 +354,8 @@
 	queen_aged = TRUE
 
 /mob/living/carbon/Xenomorph/Queen/Initialize()
-	. = ..()
 	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_queen_standing))
+	. = ..()
 	if(!is_admin_level(z))//so admins can safely spawn Queens in Thunderdome for tests.
 		xeno_message(SPAN_XENOANNOUNCE("A new Queen has risen to lead the Hive! Rejoice!"),3,hivenumber)
 	playsound(loc, 'sound/voice/alien_queen_command.ogg', 75, 0)

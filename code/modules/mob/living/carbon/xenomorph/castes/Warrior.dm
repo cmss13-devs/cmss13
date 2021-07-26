@@ -51,6 +51,10 @@
 	mutation_type = WARRIOR_NORMAL
 	claw_type = CLAW_TYPE_SHARP
 
+	icon_xeno = 'icons/mob/hostiles/warrior.dmi'
+	icon_xenonid = 'icons/mob/xenonids/warrior.dmi'
+
+
 /mob/living/carbon/Xenomorph/Warrior/update_icons()
 	if (stat == DEAD)
 		icon_state = "[mutation_type] Warrior Dead"

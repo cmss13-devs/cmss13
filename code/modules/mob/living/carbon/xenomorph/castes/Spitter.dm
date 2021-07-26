@@ -53,9 +53,11 @@
 	)
 	mutation_type = SPITTER_NORMAL
 
+	icon_xenonid = 'icons/mob/xenonids/spitter.dmi'
+
 /mob/living/carbon/Xenomorph/Spitter/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_spitter))
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_spitter))
 
 /datum/behavior_delegate/spitter_base
 	name = "Base Spitter Behavior Delegate"

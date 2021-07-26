@@ -214,6 +214,8 @@
 	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
 	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
 
+	var/list/hive_inherant_traits
+
 	// Cultist Info
 	var/mob/living/carbon/leading_cult_sl
 
@@ -837,6 +839,15 @@
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+
+/datum/hive_status/mutated
+	name = "Mutated Hive"
+	hivenumber = XENO_HIVE_MUTATED
+	prefix = "Mutated "
+	color = "#6abd99"
+	ui_color = "#6abd99"
+
+	hive_inherant_traits = list(TRAIT_XENONID)
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

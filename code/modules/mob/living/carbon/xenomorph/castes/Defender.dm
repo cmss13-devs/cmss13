@@ -42,6 +42,10 @@
 	)
 	mutation_type = DEFENDER_NORMAL
 
+	icon_xeno = 'icons/mob/hostiles/defender.dmi'
+	icon_xenonid = 'icons/mob/xenonids/defender.dmi'
+
+
 /mob/living/carbon/Xenomorph/Defender/update_icons()
 	if (stat == DEAD)
 		icon_state = "[mutation_type] Defender Dead"

@@ -54,6 +54,10 @@
 	)
 	mutation_type = RUNNER_NORMAL
 
+	icon_xeno = 'icons/mob/hostiles/runner.dmi'
+	icon_xenonid = 'icons/mob/xenonids/runner.dmi'
+
+
 /mob/living/carbon/Xenomorph/Runner/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)

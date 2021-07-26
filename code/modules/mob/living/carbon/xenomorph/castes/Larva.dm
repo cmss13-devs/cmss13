@@ -44,9 +44,11 @@
 	mutation_type = "Normal"
 	var/poolable = TRUE //Can it be safely pooled if it has no player?
 
+	icon_xenonid = 'icons/mob/xenonids/larva.dmi'
+
 /mob/living/carbon/Xenomorph/Larva/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_embryo))
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_embryo))
 
 /mob/living/carbon/Xenomorph/Larva/Corrupted
 	hivenumber = XENO_HIVE_CORRUPTED
@@ -63,6 +65,9 @@
 /mob/living/carbon/Xenomorph/Larva/Delta
 	hivenumber = XENO_HIVE_DELTA
 
+/mob/living/carbon/Xenomorph/Larva/Mutated
+	hivenumber = XENO_HIVE_MUTATED
+
 /mob/living/carbon/Xenomorph/Larva/predalien
 	icon_state = "Predalien Larva"
 	caste_type = XENO_CASTE_PREDALIEN_LARVA
@@ -70,7 +75,7 @@
 
 /mob/living/carbon/Xenomorph/Larva/predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_hunter_embryo))
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_hunter_embryo))
 	hunter_data.dishonored = TRUE
 	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"
 	hunter_data.dishonored_set = src

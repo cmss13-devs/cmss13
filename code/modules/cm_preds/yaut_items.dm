@@ -251,6 +251,10 @@
 	remove_from_missing_pred_gear(src)
 	return ..()
 
+/obj/item/clothing/shoes/yautja/knife/New()
+	..()
+	stored_item = new /obj/item/weapon/melee/yautja/knife(src)
+	update_icon()
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."

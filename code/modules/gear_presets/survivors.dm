@@ -1006,7 +1006,7 @@
 
 // ---- Colonial Marshall Survivor
 
-/datum/equipment_preset/survivor/colonial_marshall
+/datum/equipment_preset/survivor/colonial_marshal
 	name = "Survivor - Colonial Marshall"
 	assignment = "Colonial Marshall"
 	skills = /datum/skills/civilian/survivor/marshal
@@ -1022,7 +1022,7 @@
 		ACCESS_CIVILIAN_COMMAND,
 	)
 
-/datum/equipment_preset/survivor/colonial_marshall/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/colonial_marshal/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
@@ -1035,11 +1035,11 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
 
-/datum/equipment_preset/survivor/colonial_marshall/florina
+/datum/equipment_preset/survivor/colonial_marshal/florina
 	name = "Survivor - United Americas Riot Officer"
 	assignment = "United Americas Riot Officer"
 
-/datum/equipment_preset/survivor/colonial_marshall/florina/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/colonial_marshal/florina/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/ua_riot(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/ua_riot(H), WEAR_JACKET)
@@ -1056,12 +1056,11 @@
 
 	..()
 
-/datum/equipment_preset/survivor/marshall/lv
+/datum/equipment_preset/survivor/colonial_marshal/lv
 	name = "Survivor - LV-624 Head of Security"
 	assignment = "LV-624 Head of Security"
-	skills = /datum/skills/civilian/survivor/marshal
 
-/datum/equipment_preset/survivor/marshall/lv/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/colonial_marshal/lv/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/head_of_security/navyblue(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/sec/hos(H), WEAR_HEAD)
@@ -1074,11 +1073,11 @@
 
 	..()
 
-/datum/equipment_preset/survivor/marshall/solaris
-	name = "Survivor - Solaris Colonial Marshall"
-	assignment = "Solaris Colonial Marshall"
+/datum/equipment_preset/survivor/colonial_marshal/solaris
+	name = "Survivor - Solaris Colonial Marshal" 
+	assignment = "Solaris Colonial Marshal"
 
-/datum/equipment_preset/survivor/marshall/solaris/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/colonial_marshal/solaris/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/CM_uniform(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/centcom/officer(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/sec(H), WEAR_BACK)

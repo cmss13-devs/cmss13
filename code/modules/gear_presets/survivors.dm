@@ -857,7 +857,7 @@
 
 	..()
 
-// ----- Prision Survivor
+// ----- Gang Leader Survivor
 
 /datum/equipment_preset/survivor/gangleader
 	name = "Survivor - Gang Leader"

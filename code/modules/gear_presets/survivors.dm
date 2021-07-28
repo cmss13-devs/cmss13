@@ -793,11 +793,11 @@
 
 	..()
 
-/datum/equipment_preset/survivor/engineer/trijent
+/datum/equipment_preset/survivor/engineer/trijent/hydro
 	name = "Survivor - Hydro Electric Engineer"
 	assignment = "Hydro Electric Engineer"
 
-/datum/equipment_preset/survivor/hydro_engineer/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/engineer/trijent/hydro/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/engineer(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(H), WEAR_JACKET)

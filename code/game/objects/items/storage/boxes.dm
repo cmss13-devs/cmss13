@@ -608,10 +608,6 @@
 	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
 
-
-
-
-
 //ITEMS-----------------------------------//
 /obj/item/storage/box/lightstick
 	name = "box of lightsticks"

@@ -409,13 +409,161 @@
 	desc="A Odysseus right leg. Contains somewhat complex servodrives and balance maintaining systems."
 	icon_state = "odysseus_r_leg"
 
+//Use these to replace non-functional machinery 'props' around maps from bay12
+
+/obj/structure/prop/server_equipment
+	name = "server rack"
+	desc = "A rack full of hard drives, micro-computers, and ethernet cables."
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
+	icon_state = "rackframe"
+	density = 1
+	health = 150
+
+/obj/structure/prop/server_equipment/broken
+	name = "broken server rack"
+	desc = "A rack that was once full of hard drives, micro-computers, and ethernet cables. Though most of those are scattered on the floor now."
+	icon_state = "rackframe_broken"
+	health = 100
+
+/obj/structure/prop/server_equipment/yutani_server
+	name = "Yutani OS server box"
+	desc = "Yutani OS is a proprietary operating system used by the Company to run most all of their servers, banking, and management systems. A code leak in 2144 led some amateur hackers to believe that Yutani OS is loosely based on the 2017 release of TempleOS. But the Company has refuted these claims."
+	icon_state = "yutani_server_on"
+
+/obj/structure/prop/server_equipment/yutani_server/broken
+	icon_state = "yutani_server_broken"
+
+/obj/structure/prop/server_equipment/yutani_server/off
+	icon_state = "yutani_server_off"
+
+/obj/structure/prop/server_equipment/laptop
+	name = "laptop"
+	desc = "Laptops, porta-comps, and reel-back computers, all of these and more available at your local Wey-Mart electronics section!"
+	icon_state = "laptop_off"
+	density = 0
+
+/obj/structure/prop/server_equipment/laptop/closed
+	icon_state = "laptop_closed"
+
+/obj/structure/prop/server_equipment/laptop/on
+	icon_state = "laptop_on"
+	desc = "The screen is stuck on some sort of boot-loop in terrible garish green. All the text is in Rusoek, a creole language spawned out of the borders of UA and UPP space from some Korean settlements."
+
+//Here because man there is no general item props file
+
+/obj/item/prop/laz_top
+	name = "lazertop"
+	icon = 'icons/obj/structures/props/server_equipment.dmi'
+	icon_state = "laptop-gun"
+	item_state = ""
+	desc = "A Rexim RXF-M5 EVA pistol compressed down into a laptop! Also known as the Laz-top. Part of a line of discreet assassination weapons developed for Greater Argentina and the United States covert programs respectively."
+	w_class = SIZE_SMALL
+	garbage = TRUE
+
+//biomass turbine
+
+/obj/structure/prop/turbine //maybe turn this into an actual power generation device? Would be cool!
+	name = "power turbine"
+	icon = 'icons/obj/structures/props/biomass_turbine.dmi'
+	icon_state = "biomass_turbine"
+	desc = "A gigantic turbine that runs on god knows what. It could probably be turned on by someone with the correct know-how."
+	density = 1
+	breakable = FALSE
+	indestructible = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+	var/on = FALSE
+	bound_width = 32
+	bound_height = 96
+
+/obj/structure/prop/turbine/attackby(obj/item/W, mob/user)
+	. = ..()
+	if(isXeno(user))
+		return
+	else if (ishuman(user) && istype(W, /obj/item/tool/crowbar))
+		on = !on
+		visible_message("You pry at the control valve on [src]. The machine shudders." , "[user] pries at the control valve on [src]. The entire machine shudders.")
+
+		Update()
+
+/obj/structure/prop/turbine/proc/Update()
+	icon_state = "biomass_turbine[on ? "-on" : ""]"
+	if (on)
+		SetLuminosity(3)
+		playsound(src, 'sound/machines/turbine_on.ogg')
+	else
+		SetLuminosity(0)
+		playsound(src, 'sound/machines/turbine_off.ogg')
+	return
+
+/obj/structure/prop/turbine/ex_act(severity, direction)
+	return
+
+/obj/structure/prop/turbine_extras
+	name = "power turbine struts"
+	icon = 'icons/obj/structures/props/biomass_turbine.dmi'
+	icon_state = "support_struts_r"
+	desc = "Pipes, or maybe support struts that lead into, or perhaps support that big ol' turbine."
+	density = 0
+	breakable = FALSE
+	indestructible = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+
+/obj/structure/prop/turbine_extras/border
+	name = "power turbine warning stripes"
+	icon_state = "biomass_turbine_border"
+	desc = "Warning markers. Keep a safe distance, high voltage!"
+	layer = 2.5
+
+/obj/structure/prop/turbine_extras/left
+	name = "power turbine struts"
+	icon_state = "support_struts_l"
+
+/obj/structure/prop/turbine_extras/ex_act(severity, direction)
+	return
+
+//power transformer
+
+/obj/structure/prop/power_transformer
+	name = "power transformer"
+	icon = 'icons/obj/structures/props/power_transformer.dmi'
+	icon_state = "power_transformer"
+	bound_width = 64
+	bound_height = 64
+	desc = "A passive electrical component that controls where and which circuits power flows into."
+
+//cash registers
+
+/obj/structure/prop/cash_register
+	name = "digital cash register"
+	desc = "A Seegson brand point of sales system that accepts credit chits... and cash assuming it is operated. Rumor has it these use the same logic board as Seegson Working Joes. You are becoming financially unstable."
+	icon = 'icons/obj/structures/props/cash_register.dmi'
+	icon_state = "cash_register"
+	density = 1
+	health = 50
+
+/obj/structure/prop/cash_register/open
+	icon_state = "cash_register_open"
+
+/obj/structure/prop/cash_register/broken
+	icon_state = "cash_register_broken"
+
+/obj/structure/prop/cash_register/broken/open
+	icon_state = "cash_register_broken_open"
+
+/obj/structure/prop/cash_register/off
+	icon_state = "cash_registern_off"
+
+/obj/structure/prop/cash_register/off/open
+	icon_state = "cash_register_off_open"
+
 /obj/structure/prop/structure_lattice //instance me by direction for color variants
 	name = "structural lattice"
 	desc = "Like rebar, but in space."
 	icon = 'icons/obj/structures/structures.dmi'
 	icon_state = "structure_lattice"
 	density = 1 //impassable by default
-
 
 /obj/structure/prop/resin_prop
 	name = "resin coated object"

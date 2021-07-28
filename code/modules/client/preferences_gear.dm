@@ -285,11 +285,23 @@ var/global/list/gear_datums = list()
 	slot = WEAR_IN_BACK
 	cost = 4
 
+/datum/gear/m8_cartridge_bayonet
+	display_name = "M8 Cartridge Bayonet"
+	path = /obj/item/storage/box/c02_knife
+	slot = WEAR_IN_BACK
+	cost = 4
+
 /datum/gear/m43pistol
 	display_name = "M43 Holdout Pistol"
 	path = /obj/item/storage/box/m43
 	slot = WEAR_IN_BACK
 	cost = 4
+
+/datum/gear/jungle_boots
+	display_name = "Jungle Pattern Combat Boots"
+	path = /obj/item/clothing/shoes/marine/jungle
+	slot = WEAR_IN_BACK
+	cost = 3
 
 /datum/gear/uno_reverse_red
 	display_name = "Uno Reverse - Red"

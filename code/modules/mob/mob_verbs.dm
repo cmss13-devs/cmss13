@@ -129,6 +129,9 @@
 		else
 			to_chat(usr, "You can respawn now, enjoy your new life!")
 
+	if(alert("Are you sure you want to respawn?",,"Yes","No") != "Yes")
+		return
+
 	log_game("[usr.name]/[usr.key] used abandon mob.")
 
 	to_chat(usr, SPAN_NOTICE(" <B>Make sure to play a different character, and please roleplay correctly!</B>"))

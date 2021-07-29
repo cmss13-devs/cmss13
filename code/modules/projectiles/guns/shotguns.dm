@@ -225,6 +225,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -595,6 +596,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/magnetic_harness,
@@ -902,6 +904,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,

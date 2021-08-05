@@ -54,16 +54,7 @@ var/list/department_radio_keys = list(
 )
 
 /mob/living/proc/binarycheck()
-	if (!ishuman(src))
-		return
-
-	var/mob/living/carbon/human/H = src
-	if (H.wear_ear)
-		var/obj/item/device/radio/headset/dongle
-		if(istype(H.wear_ear,/obj/item/device/radio/headset))
-			dongle = H.wear_ear
-		if(!istype(dongle)) return
-		if(dongle.translate_binary) return 1
+	return FALSE
 
 /mob/living/proc/show_speech_bubble(var/bubble_name)
 	var/list/hear = hearers()

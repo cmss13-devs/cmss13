@@ -1165,7 +1165,7 @@
 
 		//unanswered_distress -= H
 
-		if(!istype(H.wear_ear, /obj/item/device/radio/headset))
+		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
 			to_chat(usr, "The person you are trying to contact is not wearing a headset")
 			return
 
@@ -1185,7 +1185,7 @@
 		if(!istype(H))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
-		if(!istype(H.wear_ear, /obj/item/device/radio/headset))
+		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
 			to_chat(usr, "The person you are trying to contact is not wearing a headset")
 			return
 

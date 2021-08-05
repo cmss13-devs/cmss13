@@ -384,3 +384,12 @@
 		fire_intensity_resistance += shoes.fire_intensity_resistance
 
 	return fire_intensity_resistance
+
+/mob/living/carbon/human/proc/get_type_in_ears(item_type)
+	if(istype(wear_l_ear, item_type))
+		return wear_l_ear
+	if(istype(wear_r_ear, item_type))
+		return wear_r_ear
+
+/mob/living/carbon/human/proc/has_item_in_ears(item)
+	return (item == wear_l_ear) || (item == wear_r_ear)

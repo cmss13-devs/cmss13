@@ -264,6 +264,6 @@ You just gotta get out of this jungle to tell the tale!"}
 /datum/game_mode/whiskey_outpost/proc/self_set_headset(var/mob/living/carbon/human/H)
 	if(!istype(H))
 		return
-	var/obj/item/device/radio/headset/almayer/marine/self_setting/headset = H.wear_ear
-	if(istype(headset))
+	var/obj/item/device/radio/headset/almayer/marine/self_setting/headset = H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine/self_setting)
+	if(headset)
 		headset.self_set()

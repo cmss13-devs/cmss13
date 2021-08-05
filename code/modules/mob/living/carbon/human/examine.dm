@@ -146,9 +146,12 @@
 	if(glasses && !skipeyes)
 		msg += "[t_He] [t_has] [glasses.get_examine_line()] covering [t_his] eyes.\n"
 
-	//ear
-	if(wear_ear && !skipears)
-		msg += "[t_He] [t_has] [wear_ear.get_examine_line()] on [t_his] right ear.\n"
+	//ears
+	if(!skipears)
+		if(wear_l_ear)
+			msg += "[t_He] [t_has] [wear_l_ear.get_examine_line()] on [t_his] left ear.\n"
+		if(wear_r_ear)
+			msg += "[t_He] [t_has] [wear_r_ear.get_examine_line()] on [t_his] right ear.\n"
 
 	//ID
 	if(wear_id)
@@ -513,7 +516,7 @@
 				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 					return istype(H.glasses, /obj/item/clothing/glasses/hud/health)
 			if("squadleader")
-				return H.mind && H.assigned_squad && H.assigned_squad.squad_leader == H && istype(H.wear_ear, /obj/item/device/radio/headset/almayer/marine)
+				return H.mind && H.assigned_squad && H.assigned_squad.squad_leader == H && H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 			else
 				return 0
 	else if(isrobot(M))

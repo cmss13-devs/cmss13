@@ -65,7 +65,7 @@
 	// Have to add radio headsets AFTER squad assignment, because the self-setting headset depends on things set in randomize_squad
 	// which also depend on things set in arm_equipment
 	// which doesn't just arm equipment, but sets a bunch of other important things . Who knew?
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(H), WEAR_L_EAR)
 
 	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 

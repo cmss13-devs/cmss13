@@ -733,8 +733,8 @@
 	if(H.skills)
 		H.skills.set_skill(SKILL_LEADERSHIP, max(SKILL_LEAD_TRAINED, H.skills.get_skill_level(SKILL_LEADERSHIP)))
 
-	if(istype(H.wear_ear, /obj/item/device/radio/headset/almayer/marine))
-		var/obj/item/device/radio/headset/almayer/marine/R = H.wear_ear
+	var/obj/item/device/radio/headset/almayer/marine/R = H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+	if(R)
 		R.keys += new /obj/item/device/encryptionkey/squadlead/acting(R)
 		R.recalculateChannels()
 	if(istype(H.wear_id, /obj/item/card/id))

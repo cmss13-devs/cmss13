@@ -374,14 +374,21 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 
 /mob/living/carbon/human/update_inv_ears()
 	remove_overlay(EARS_LAYER)
-	if(wear_ear)
+	if(wear_l_ear || wear_r_ear)
 		if(client && hud_used && hud_used.hud_shown && hud_used.inventory_shown && hud_used.ui_datum)
-			client.screen += wear_ear
-			wear_ear.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_ear, hud_used.ui_datum.ui_wear_ear)
+			if(wear_l_ear)
+				client.screen += wear_l_ear
+			if(wear_r_ear)
+				client.screen += wear_r_ear
+			wear_l_ear?.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_l_ear, hud_used.ui_datum.ui_wear_l_ear)
+			wear_r_ear?.screen_loc = hud_used.ui_datum.hud_slot_offset(wear_r_ear, hud_used.ui_datum.ui_wear_r_ear)
 
-		var/image/I = wear_ear.get_mob_overlay(src, WEAR_EAR)
-		I.layer = -EARS_LAYER
-		overlays_standing[EARS_LAYER] = I
+		var/image/standing_image = image('icons/mob/humans/onmob/med_human.dmi', icon_state = "blank", layer = -EARS_LAYER)
+
+		standing_image.overlays +=  wear_l_ear?.get_mob_overlay(src, WEAR_L_EAR)
+		standing_image.overlays +=  wear_r_ear?.get_mob_overlay(src, WEAR_R_EAR)
+
+		overlays_standing[EARS_LAYER] = standing_image
 		apply_overlay(EARS_LAYER)
 
 
@@ -474,7 +481,7 @@ Applied by gun suicide and high impact bullet executions, removed by rejuvenate,
 	if(client && hud_used && hud_used.hud_shown && hud_used.ui_datum)
 		client.screen += belt
 		belt.screen_loc = hud_used.ui_datum.hud_slot_offset(belt, hud_used.ui_datum.ui_belt)
-	
+
 	var/image/I = belt.get_mob_overlay(src, WEAR_WAIST)
 	I.layer = -BELT_LAYER
 	overlays_standing[BELT_LAYER] = I

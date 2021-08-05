@@ -50,7 +50,7 @@
 	RegisterSignal(SSradio, COMSIG_SSRADIO_GET_AVAILABLE_TCOMMS_ZS, .proc/override_available_zlevel)
 	for(var/h in GLOB.alive_human_list)
 		var/mob/living/carbon/human/H = h
-		if(H.z == hive.living_xeno_queen.z && istype(H.wear_ear, /obj/item/device/radio/headset))
+		if(H.z == hive.living_xeno_queen.z && H.get_type_in_ears(/obj/item/device/radio/headset))
 			to_chat(H, SPAN_WARNING("You feel a psychic disturbance! All you can hear is static from your headset."))
 
 

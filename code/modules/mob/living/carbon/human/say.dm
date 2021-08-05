@@ -90,8 +90,9 @@
 			return
 		else
 			if(message_mode)
-				if(wear_ear && istype(wear_ear,/obj/item/device/radio))
-					used_radios += wear_ear
+				var/earpiece = get_type_in_ears(/obj/item/device/radio)
+				if(earpiece)
+					used_radios += earpiece
 
 	var/sound/speech_sound
 	var/sound_vol
@@ -251,3 +252,9 @@
 	returns[3] = handled
 
 	return returns
+
+/mob/living/carbon/human/binarycheck()
+	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
+	if (dongle && dongle.translate_binary)
+		return TRUE
+	return FALSE

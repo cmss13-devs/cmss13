@@ -43,7 +43,7 @@
 	var/UI_FRAME_LOC		= "EAST-3:0,14:15"
 
 	//Status effects starting loc
-	var/UI_STATUS_X			= 1	
+	var/UI_STATUS_X			= 1
 	var/UI_STATUS_X_OFFSET	= 4
 	var/UI_STATUS_Y			= 0
 	var/UI_STATUS_Y_OFFSET	= 26
@@ -62,7 +62,8 @@
 	var/ui_gloves 		= "WEST+2:10,2:7"
 	var/ui_glasses 		= "WEST:6,3:9"
 	var/ui_mask 		= "WEST+1:8,3:9"
-	var/ui_wear_ear 	= "WEST+2:10,3:9"
+	var/ui_wear_l_ear 	= "WEST+2:10,3:9"
+	var/ui_wear_r_ear 	= "WEST+2:10,4:11"
 	var/ui_head 		= "WEST+1:8,4:11"
 
 /datum/custom_hud/proc/get_status_loc(var/placement)

@@ -524,7 +524,7 @@
 		return
 	if(H.get_active_hand())
 		return
-	var/obj/item/device/radio/headset/almayer/marine/earpiece = H.wear_ear
+	var/obj/item/device/radio/headset/almayer/marine/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 	if(!H.assigned_squad || !istype(earpiece) || H.assigned_squad.radio_freq != earpiece.frequency)
 		to_chat(H, SPAN_WARNING("Unauthorized access detected."))
 		return

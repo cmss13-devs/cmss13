@@ -552,23 +552,10 @@
 	reagents = list("sugar" = 5)
 	items = list(
 		/obj/item/reagent_container/food/snacks/doughslice,
-		/obj/item/paper,
+		/obj/item/reagent_container/food/snacks/doughslice,
 	)
 	result = /obj/item/reagent_container/food/snacks/fortunecookie
-	make_food(var/obj/container as obj)
-		var/obj/item/paper/paper = locate() in container
-		paper.moveToNullspace() //prevent deletion
-		var/obj/item/reagent_container/food/snacks/fortunecookie/being_cooked = ..(container)
-		paper.forceMove(being_cooked)
-		being_cooked.trash = paper //so the paper is left behind as trash without special-snowflake(TM Nodrak) code ~carn
-		return being_cooked
-	check_items(var/obj/container as obj)
-		. = ..()
-		if (.)
-			var/obj/item/paper/paper = locate() in container
-			if (!paper.info)
-				return 0
-		return .
+	//Old fortune cookie code has been deleted from here and moved to fortunecookie.dm
 
 /datum/recipe/meatsteak
 	reagents = list("sodiumchloride" = 1, "blackpepper" = 1)

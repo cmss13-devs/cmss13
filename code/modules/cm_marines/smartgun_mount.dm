@@ -378,6 +378,16 @@
 	var/gun_noise = 'sound/weapons/gun_rifle.ogg' // Variations for gun noises for M56D, M56DE, the auto one, uses a different set of sounds. emergency_cooling
 	var/empty_alarm = 'sound/weapons/smg_empty_alarm.ogg'
 
+	// Muzzle Flash Offsets
+	var/north_x_offset = 0
+	var/north_y_offset = 12
+	var/east_x_offset = -4
+	var/east_y_offset = 12
+	var/south_x_offset = 0
+	var/south_y_offset = 8
+	var/west_x_offset = 4
+	var/west_y_offset = 12
+
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -697,18 +707,34 @@
 	return FALSE
 
 /obj/structure/machinery/m56d_hmg/proc/muzzle_flash(var/angle) // Might as well keep this too.
-	if(isnull(angle)) return
+	if(isnull(angle))
+		return
 
 	SetLuminosity(muzzle_flash_lum)
 	spawn(10)
 		SetLuminosity(-muzzle_flash_lum)
 
 	var/image_layer = layer + 0.1
-	var/offset = 8
+
+	var/x_offset = 0
+	var/y_offset = 8
+	switch(dir)
+		if(NORTH)
+			x_offset = north_x_offset
+			y_offset = north_y_offset
+		if(EAST)
+			x_offset = east_x_offset
+			y_offset = east_y_offset
+		if(SOUTH)
+			x_offset = south_x_offset
+			y_offset = south_y_offset
+		if(WEST)
+			x_offset = west_x_offset
+			y_offset = west_y_offset
 
 	var/image/I = image('icons/obj/items/weapons/projectiles.dmi', src, "muzzle_flash",image_layer)
 	var/matrix/rotate = matrix() //Change the flash angle.
-	rotate.Translate(0, offset)
+	rotate.Translate(x_offset, y_offset)
 	rotate.Turn(angle)
 	I.transform = rotate
 	I.flick_overlay(src, 3)
@@ -995,6 +1021,16 @@
 	var/rotate_timer = 0
 	var/fire_stopper = FALSE
 
+	// Muzzle Flash Offsets
+	north_x_offset = 0
+	north_y_offset = 10
+	east_x_offset = 0
+	east_y_offset = 12
+	south_x_offset = 0
+	south_y_offset = 10
+	west_x_offset = 0
+	west_y_offset = 12
+
 // ANTI-CADE EFFECT, CREDIT TO WALTERMELDRON
 
 /obj/structure/machinery/m56d_hmg/auto/Initialize()
@@ -1090,7 +1126,7 @@
 /obj/structure/machinery/m56d_hmg/auto/CrusherImpact()
 	update_health(health*0.45)
 	var/mob/user = operator
-	to_chat(user, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram, temporairly disabling it!"))
+	to_chat(user, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
 	user.unset_interaction()
 	user.KnockDown(M2C_CRUSHER_STUN)
 

@@ -668,8 +668,6 @@
 
 	spawn_weapon(/obj/item/weapon/gun/rifle/type71/carbine, /obj/item/ammo_magazine/rifle/type71, H, 0, 3)
 
-	H.hud_set_squad()
-
 /datum/equipment_preset/upp/tank/load_status()
 	return
 

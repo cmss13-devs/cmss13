@@ -127,9 +127,7 @@
 
 	access = list(
 		ACCESS_MARINE_PREP,
-		ACCESS_MARINE_SMARTPREP,
 		ACCESS_MARINE_CREWMAN,
-		ACCESS_MARINE_PREP,
 		ACCESS_MARINE_ALPHA,
 		ACCESS_MARINE_BRAVO,
 		ACCESS_MARINE_CHARLIE,
@@ -534,24 +532,23 @@
 /datum/equipment_preset/uscm/specialist_equipped/sniper/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smock(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing(H), WEAR_ACCESSORY)
-	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/ghillie(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/ghillie(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/sniper(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/ghillie(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/ghillie(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smock(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/accessory/storage/webbing(H), WEAR_ACCESSORY)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/sniper/incendiary(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/sniper/flak(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/rifle/sniper/M42A(H), , WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/pistol(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/sniper/flak(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
+
+	spawn_weapon(/obj/item/weapon/gun/rifle/sniper/M42A, /obj/item/ammo_magazine/sniper, H, 0, 5)
 
 //*****************************************************************************************************/
 

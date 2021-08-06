@@ -646,8 +646,6 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/commander(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(H), WEAR_JACKET)
@@ -662,5 +660,45 @@
 
 /datum/equipment_preset/other/tank/load_status()
 	return
+
+//*****************************************************************************************************/
+
+//*****************************************************************************************************/
+//adding one for VC training camp, cause I really need these
+/datum/equipment_preset/other/tank/trainee
+	name = "Vehicle Crewman Trainee (CRTR)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/dogtag
+	assignment = "Crewman Trainee"
+	rank = "Crewman Trainee"
+	paygrade = "E5"
+	role_comm_title = "CRTR"
+	minimum_age = 25
+	skills = /datum/skills/tank_crew
+
+	faction = FACTION_NEUTRAL
+
+/datum/equipment_preset/other/tank/trainee/New()
+	. = ..()
+	access = list(
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_CREWMAN,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+	)
+
+/datum/equipment_preset/other/tank/trainee/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
+
+	H.hud_set_squad()
 
 //*****************************************************************************************************/

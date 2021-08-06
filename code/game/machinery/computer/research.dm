@@ -165,6 +165,8 @@
 		else
 			to_chat(usr, SPAN_WARNING("Printer toner is empty."))
 	else if(href_list["transmit"])
+		to_chat(usr,SPAN_WARNING("Transmission is currently disabled due to routine maintenance."))
+		/* //disabled for a testmerge to make sure database funnies don't happen
 		var/obj/item/paper/research_report/report = chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
 		if(!report)
 			to_chat(usr, SPAN_WARNING("Report data corrupted. Unable to transmit."))
@@ -190,7 +192,7 @@
 			chemical_data.update_credits(transmission_cost * -1)
 			to_chat(usr, SPAN_NOTICE("Data for [R.name] has been transmitted."))
 		else
-			to_chat(usr, SPAN_WARNING("Error during transmission."))
+			to_chat(usr, SPAN_WARNING("Error during transmission.")) */
 	else if(href_list["broker_clearance"])
 		if(alert(usr,"The CL can swipe their ID card on the console to increase clearance for free, given enough DEFCON. Are you sure you want to spend research credits to increase the clearance immediately?","Warning","Yes","No") != "Yes")
 			return

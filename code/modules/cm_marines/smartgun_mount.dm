@@ -983,6 +983,9 @@
 	var/user_old_x = 0
 	var/user_old_y = 0
 
+	var/static/image/barrel_overheat_image
+	var/has_barrel_overlay = FALSE
+
 	gun_noise = 'sound/weapons/gun_m56d_auto.ogg'
 	empty_alarm = 'sound/weapons/hmg_eject_mag.ogg'
 
@@ -1004,6 +1007,9 @@
 		CB.hmg = src
 
 		cadeblockers.Add(CB)
+
+	if(!barrel_overheat_image)
+		barrel_overheat_image = image('icons/turf/whiskeyoutpost.dmi', "+m56de_overheat")
 
 /obj/structure/machinery/m56d_hmg/auto/Destroy()
 	QDEL_NULL_LIST(cadeblockers)
@@ -1061,10 +1067,13 @@
 		icon_state = "[icon_full]"
 
 	if(overheat_value >= M2C_OVERHEAT_OVERLAY)
-		overlays += image('icons/turf/whiskeyoutpost.dmi', "+m56de_overheat")
-
-	else
-		overlays -= image('icons/turf/whiskeyoutpost.dmi', "+m56de_overheat")
+		if(has_barrel_overlay)
+			return
+		overlays += barrel_overheat_image
+		has_barrel_overlay = TRUE
+	else if(has_barrel_overlay)
+		overlays -= barrel_overheat_image
+		has_barrel_overlay = FALSE
 
 // DED
 

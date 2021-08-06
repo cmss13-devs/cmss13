@@ -646,7 +646,7 @@
 	icon_state = "mealpack"
 	w_class = SIZE_SMALL
 	can_hold = list()
-	storage_slots = 4
+	storage_slots = 5
 	max_w_class = 0
 	use_sound = "rip"
 	var/isopened = 0
@@ -660,10 +660,14 @@
 	var/side = pick("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
 	var/desert = pick("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
 	name = "[initial(name)] ([main])"
+	//1 in 3 chance of getting a fortune cookie
+	var/cookie = rand(1,3)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, main)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, second)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, side)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, desert)
+	if(cookie == 1)
+		new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(src)
 
 /obj/item/storage/box/MRE/update_icon()
 	if(!contents.len)

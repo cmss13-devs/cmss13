@@ -15110,7 +15110,7 @@
 /area/ice_colony/surface/bar/canteen)
 "aNv" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/reagent_container/food/snacks/fortunecookie,
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled,
 /obj/item/tool/kitchen/utensil/fork,
 /turf/open/floor{
 	icon_state = "freezerfloor";

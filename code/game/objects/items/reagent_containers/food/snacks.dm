@@ -1275,17 +1275,6 @@
 	reagents.add_reagent("potato", 2)
 	bitesize = 2
 
-/obj/item/reagent_container/food/snacks/fortunecookie
-	name = "Fortune cookie"
-	desc = "A true prophecy in each cookie!"
-	icon_state = "fortune_cookie"
-	filling_color = "#E8E79E"
-
-/obj/item/reagent_container/food/snacks/fortunecookie/Initialize()
-	. = ..()
-	reagents.add_reagent("bread", 3)
-	bitesize = 2
-
 /obj/item/reagent_container/food/snacks/badrecipe
 	name = "Burned mess"
 	desc = "Someone should be demoted from chef for this."

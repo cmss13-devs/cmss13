@@ -26722,11 +26722,11 @@
 /area/shiva/interior/bar)
 "wYd" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/fortunecookie{
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled{
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/obj/item/reagent_container/food/snacks/fortunecookie{
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled{
 	pixel_x = 6;
 	pixel_y = 11
 	},

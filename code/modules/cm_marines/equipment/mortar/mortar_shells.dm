@@ -25,7 +25,7 @@
 
 /obj/item/mortar_shell/frag/detonate(var/turf/T)
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-	create_shrapnel(T, 60, , , cause_data)
+	create_shrapnel(T, 60, cause_data = cause_data)
 	sleep(2)
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 

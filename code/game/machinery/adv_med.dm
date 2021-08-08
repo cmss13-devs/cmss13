@@ -417,9 +417,12 @@
 			break
 		if(e.status & LIMB_BROKEN)
 			AN = "[e.broken_description]<br>"
-		if(e.status & LIMB_ROBOT)
-			robot = "Prosthetic<br>"
-		if(e.surgery_open_stage)
+		else if(e.status & LIMB_ROBOT)
+			if(e.status & LIMB_UNCALIBRATED_PROSTHETIC)
+				robot = "Nonfunctional prosthetic<br>"
+			else
+				robot = "Prosthetic<br>"
+		if(e.get_incision_depth())
 			open = "Open<br>"
 
 		var/unknown_body = 0

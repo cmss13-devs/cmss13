@@ -124,9 +124,45 @@
 	recalculate_move_delay = TRUE
 	..()
 
+/mob/living/carbon/human/attackby(obj/item/W, mob/living/user)
+	if(user.mob_flags & SURGERY_MODE_ON) //Must have NOVICE or better to have this button.
+		switch(user.a_intent)
+			if(INTENT_HELP)
+				if((locate(/obj/item/shard) in src.embedded_items) && W.dig_out_shrapnel_check(src, user))
+					return TRUE
+				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
+				if(current_surgery)
+					if(current_surgery.attempt_next_step(user, W))
+						return TRUE //Cancel attack.
+				else
+					var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
+					if(initiate_surgery_moment(W, src, affecting, user))
+						return TRUE
+
+			if(INTENT_DISARM) //Same as help but without the shrapnel dig attempt.
+				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
+				if(current_surgery)
+					if(current_surgery.attempt_next_step(user, W))
+						return TRUE
+				else
+					var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
+					if(initiate_surgery_moment(W, src, affecting, user))
+						return TRUE
+
+	. = ..()
 
 /mob/living/carbon/attack_hand(mob/M as mob)
 	if(!istype(M, /mob/living/carbon)) return
+
+	if(M.mob_flags & SURGERY_MODE_ON && M.a_intent & (INTENT_HELP|INTENT_DISARM))
+		var/datum/surgery/current_surgery = active_surgeries[M.zone_selected]
+		if(current_surgery)
+			if(current_surgery.attempt_next_step(M, null))
+				return TRUE
+		else
+			var/obj/limb/affecting = get_limb(check_zone(M.zone_selected))
+			if(initiate_surgery_moment(null, src, affecting, M))
+				return TRUE
 
 	for(var/datum/disease/D in viruses)
 		if(D.spread_by_touch())

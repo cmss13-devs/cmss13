@@ -18,6 +18,7 @@
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
+	initialize_incision_depths()
 	initialize_pain()
 	initialize_stamina()
 	GLOB.living_mob_list += src
@@ -46,6 +47,10 @@
 
 /mob/living/proc/initialize_stamina()
 	stamina = new /datum/stamina(src)
+
+/mob/living/proc/initialize_incision_depths()
+	for(var/location in incision_depths)
+		incision_depths[location] = SURGERY_DEPTH_SURFACE
 
 /mob/living/proc/apply_stamina_damage(var/damage, var/def_zone, var/armor_type)
 	if(!stamina)
@@ -541,14 +546,12 @@
 		for(var/obj/limb/org in H.limbs)
 			var/brute_treated = TRUE
 			var/burn_treated = TRUE
-			var/open_incision = TRUE
-			if(org.surgery_open_stage == 0)
-				open_incision = FALSE
+			var/open_incision = org.get_incision_depth() ? " <span class='scanner'>Open surgical incision</span>" : ""
+
 			if((org.brute_dam > 0 && !org.is_bandaged()) || open_incision)
 				brute_treated = FALSE
 			if(org.burn_dam > 0 && !org.is_salved())
 				burn_treated = FALSE
-
 			if(org.status & LIMB_DESTROYED)
 				dat += "\t\t [capitalize(org.display_name)]: <span class='scannerb'>Missing!</span>\n"
 				continue
@@ -559,7 +562,14 @@
 				break
 			var/show_limb = (org.burn_dam > 0 || org.brute_dam > 0 || (org.status & LIMB_SPLINTED) || open_incision || bleeding_check)
 
-			var/org_name = "[capitalize(org.display_name)][org.status & LIMB_ROBOT ? " (Cybernetic)" : ""]"
+			var/org_name = "[capitalize(org.display_name)]"
+			if(org.status & LIMB_ROBOT)
+				if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
+					org_name += " (Nonfunctional Cybernetic)]"
+					show_limb = TRUE
+				else
+					org_name += " (Cybernetic)"
+
 			var/burn_info = org.burn_dam > 0 ? "<span class='scannerburnb'> [round(org.burn_dam)]</span>" : "<span class='scannerburn'>0</span>"
 			burn_info += "[burn_treated ? "" : "{B}"]"
 			var/brute_info =  org.brute_dam > 0 ? "<span class='scannerb'> [round(org.brute_dam)]</span>" : "<span class='scanner'>0</span>"
@@ -573,7 +583,6 @@
 			if(bleeding_check)
 				org_bleed = "<span class='scannerb'>(Bleeding)</span>"
 
-			var/org_incision = (open_incision?" <span class='scanner'>Open surgical incision</span>":"")
 			var/org_advice = ""
 			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				switch(org.name)
@@ -593,7 +602,7 @@
 							org_advice = " Possible Groin Fracture."
 							show_limb = 1
 			if(show_limb)
-				dat += "\t\t [org_name]: \t [burn_info] - [brute_info] [fracture_info][org_bleed][org_incision][org_advice]"
+				dat += "\t\t [org_name]: \t [burn_info] - [brute_info] [fracture_info][org_bleed][open_incision][org_advice]"
 				if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 					dat += "(Nanosplinted)"
 				else if(org.status & LIMB_SPLINTED)

@@ -11,18 +11,18 @@
 #define POCKET_STRIP_DELAY 20
 
 ///////////////////LIMB DEFINES///////////////////
-#define LIMB_BROKEN 1
-#define LIMB_DESTROYED 2 //limb is missing
-#define LIMB_ROBOT 4
-#define LIMB_SPLINTED 8
-#define LIMB_MUTATED 16 //limb is deformed by mutations
-#define LIMB_AMPUTATED 32 //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
-#define LIMB_REPAIRED 64 //we just repaired the bone, stops the gelling after setting
-#define LIMB_SPLINTED_INDESTRUCTIBLE 128 // Splint is indestructible
 
-///////////////SURGERY DEFINES///////////////
-#define SPECIAL_SURGERY_INVALID	"special_surgery_invalid"
+#define LIMB_ORGANIC 	(1<<0)
+#define LIMB_BROKEN 	(1<<1)
+#define LIMB_DESTROYED	(1<<2) //limb is missing
+#define LIMB_ROBOT 		(1<<3)
+#define LIMB_SPLINTED 	(1<<4)
+#define LIMB_MUTATED 	(1<<5) //limb is deformed by mutations
+#define LIMB_AMPUTATED 	(1<<6) //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
+#define LIMB_SPLINTED_INDESTRUCTIBLE (1<<7) // Splint is indestructible
+#define LIMB_UNCALIBRATED_PROSTHETIC (1<<8) //A prosthetic that's been attached to the body but not connected to the brain.
 
+///////////////OLD SURGERY DEFINES, USED BY AUTODOC///////////////
 #define HEMOSTAT_MIN_DURATION 20
 #define HEMOSTAT_MAX_DURATION 40
 
@@ -69,12 +69,6 @@
 
 #define LIMB_PRINTING_TIME 550
 #define LIMB_METAL_AMOUNT 125
-
-// Surgery chance modifiers
-#define SURGERY_MULTIPLIER_SMALL 	0.10
-#define SURGERY_MULTIPLIER_MEDIUM 	0.20
-#define SURGERY_MULTIPLIER_LARGE	0.40
-#define SURGERY_MULTIPLIER_HUGE 	0.60
 
 // ORDERS
 #define COMMAND_ORDER_RANGE		7

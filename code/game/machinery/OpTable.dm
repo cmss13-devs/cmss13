@@ -20,6 +20,8 @@
 	var/strapped = 0.0
 	can_buckle = TRUE
 	buckle_lying = TRUE
+	var/buckling_y = -4
+	surgery_duration_multiplier = SURGERY_SURFACE_MULT_IDEAL //Ideal surface for surgery.
 	var/patient_exam = 0
 	var/obj/item/tank/anesthetic/anes_tank
 
@@ -137,6 +139,14 @@
 		..()
 		update_icon()
 
+/obj/structure/machinery/optable/afterbuckle(mob/M)
+	. = ..()
+	if(. && buckled_mob == M)
+		M.old_y = M.pixel_y
+		M.pixel_y = buckling_y
+	else
+		M.pixel_y = M.old_y
+
 /obj/structure/machinery/optable/MouseDrop_T(atom/A, mob/user)
 
 	if(istype(A, /obj/item))
@@ -234,8 +244,8 @@
 		if(buckled_mob)
 			to_chat(user, SPAN_WARNING("The table is already occupied!"))
 			return
-		var/mob/living/carbon/M
-		if(iscarbon(G.grabbed_thing))
+		var/mob/living/carbon/human/M
+		if(ishuman(G.grabbed_thing))
 			M = G.grabbed_thing
 			if(M.buckled)
 				to_chat(user, SPAN_WARNING("Unbuckle first!"))

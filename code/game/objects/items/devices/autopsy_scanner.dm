@@ -175,10 +175,17 @@
 		M.update_inv_r_hand()
 
 /obj/item/device/autopsy_scanner/attack(mob/living/carbon/human/M as mob, mob/living/carbon/user as mob)
-	if(!istype(M))
+	if(!istype(M) || !M.lying)
 		return
 
-	if(!M.can_be_operated_on())
+	var/table
+	for(var/obj/surface in get_turf(M)) //An autopsy needs a surgery table, or a field surgery bed.
+		if(surface.surgery_duration_multiplier <= SURGERY_SURFACE_MULT_ADEQUATE)
+			table = TRUE
+			break
+	
+	if(!table)
+		to_chat(usr, "<b>You can't work here, you need to put [M] on a proper surgical bed.</b>")
 		return
 
 	if(target_name != M.name)
@@ -194,7 +201,7 @@
 	if(!S)
 		to_chat(usr, "<b>You can't scan this body part.</b>")
 		return
-	if(!S.surgery_open_stage)
+	if(M.incision_depths[S.name] == SURGERY_DEPTH_SURFACE)
 		to_chat(usr, "<b>You have to cut the limb open first!</b>")
 		return
 	for(var/mob/O in viewers(M))
@@ -202,4 +209,4 @@
 
 	src.add_data(S)
 
-	return 1
+	return TRUE

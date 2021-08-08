@@ -181,4 +181,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 		/obj/item/device/healthanalyzer,
 		/obj/item/roller/medevac,
 		/obj/item/roller,
+		/obj/item/tool/surgery/surgical_line ///obj/item/storage/firstaid/surgical once broader medic surgeries are done, but for now suturing is the only good one.
 	)

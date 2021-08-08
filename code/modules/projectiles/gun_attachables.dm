@@ -276,6 +276,7 @@ Defined in conflicts.dm of the #defines folder.
 	attack_speed = 9
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
+	flags_item = CAN_DIG_SHRAPNEL
 
 	attach_icon = "bayonet_a"
 	melee_mod = 20
@@ -288,10 +289,6 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/bayonet/New()
 	..()
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
-
-/obj/item/attachable/bayonet/attack(mob/living/target, mob/living/carbon/human/user)
-	if(!dig_out_shrapnel_check(target,user))
-		..()
 
 /obj/item/attachable/bayonet/attack_self(mob/living/carbon/human/user)
 	..()

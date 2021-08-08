@@ -69,9 +69,24 @@ var/global/list/chemical_identified_list = list()	//List of all identified objec
 //List of all id's from classed /datum/reagent datums indexed by class or tier. Used by chemistry generator and chem spawners.
 var/global/list/list/chemical_gen_classes_list = list("C" = list(),"C1" = list(),"C2" = list(),"C3" = list(),"C4" = list(),"C5" = list(),"C6" = list(),"T1" = list(),"T2" = list(),"T3" = list(),"T4" = list(),"omega" = list(),"tau" = list())
 
-GLOBAL_LIST_INIT_TYPED(surgery_steps, /datum/surgery_step, setup_surgeries())				//List of all surgery steps  |BS12
 GLOBAL_LIST_INIT_TYPED(ammo_list, /datum/ammo, setup_ammo())					//List of all ammo types. Used by guns to tell the projectile how to act.
 GLOBAL_REFERENCE_LIST_INDEXED(joblist, /datum/job, title)					//List of all jobstypes, minus borg and AI
+
+/*Surgical lists.
+surgery_invasiveness_levels lists possible incision depths.
+surgeries_list lists individual operations as initialised datums. These are used for reference when beginning surgeries.
+surgeries_by_zone_and_depth links to initialised surgery datums, indexed by target zone and depth of incision.
+surgery_step_list lists the individual surgical steps as initialised datums.
+surgical_tools lists all item paths that can be used in a surgery step.
+surgical_init_tools lists all item paths that can be used in a surgery step except those flagged to not message on failed init - ex. cable coil, trauma kits etc.
+surgical_patient_types is a list of typecaches indexed by surgery, used to test if a patient is a valid mobtype.*/
+GLOBAL_LIST_INIT(surgery_invasiveness_levels, list(SURGERY_DEPTH_SURFACE, SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP))
+GLOBAL_LIST_INIT_TYPED(surgeries_list, /datum/surgery, setup_surgeries())
+GLOBAL_LIST_INIT(surgeries_by_zone_and_depth, setup_surgeries_by_zone_and_depth())
+GLOBAL_REFERENCE_LIST_INDEXED(surgery_step_list, /datum/surgery_step, type)
+GLOBAL_LIST_INIT(surgical_tools, setup_surgical_tools())
+GLOBAL_LIST_INIT(surgical_init_tools, GLOB.surgical_tools - typecacheof(SURGERY_TOOLS_NO_INIT_MSG))
+GLOBAL_LIST_INIT(surgical_patient_types, setup_surgical_patient_types())
 
 GLOBAL_LIST_INIT_TYPED(gear_presets_list, /datum/equipment_preset, setup_gear_presets())
 
@@ -209,6 +224,52 @@ var/global/list/paramslist_cache = list()
 		language_keys[".[lowertext(initial(L.key))]"] = initial(L.name)
 		language_keys["#[lowertext(initial(L.key))]"] = initial(L.name)
 	return language_keys
+
+//Comb Sort. This works apparently, so we're keeping it that way
+/proc/setup_surgeries()
+	var/list/surgeries = list()
+	for(var/T in subtypesof(/datum/surgery))
+		surgeries += new T
+
+	var/gap = length(surgeries)
+	var/swapped = 1
+	while(gap > 1 || swapped)
+		swapped = 0
+		if(gap > 1)
+			gap = round(gap / 1.247330950103979)
+		if(gap < 1)
+			gap = 1
+		for(var/i = 1; gap + i <= length(surgeries); i++)
+			var/datum/surgery/l = surgeries[i]		//Fucking hate
+			var/datum/surgery/r = surgeries[gap+i]	//how lists work here
+			if(l.priority < r.priority)
+				surgeries.Swap(i, gap + i)
+				swapped = 1
+	return surgeries
+
+/proc/setup_surgeries_by_zone_and_depth()
+	var/list/surgeries = list()
+	for(var/L in DEFENSE_ZONES_LIVING)
+		surgeries[L] = list()
+		for(var/I in GLOB.surgery_invasiveness_levels)
+			surgeries[L][I] = list()
+			for(var/datum/surgery/T as anything in GLOB.surgeries_list)
+				if((L in T.possible_locs) && (I in T.invasiveness))
+					surgeries[L][I] += T
+	return surgeries
+
+/proc/setup_surgical_tools()
+	var/list/tools = list()
+	for(var/S in GLOB.surgery_step_list)
+		var/datum/surgery_step/step = GLOB.surgery_step_list[S]
+		tools |= typecacheof(step.tools)
+	return tools
+
+/proc/setup_surgical_patient_types()
+	var/list/mobtypes = list()
+	for(var/datum/surgery/T as anything in GLOB.surgeries_list)
+		mobtypes["[T]"] = typecacheof(T.target_mobtypes)
+	return mobtypes
 
 /proc/setup_custom_event_info()
 	//faction event messages

@@ -18789,8 +18789,9 @@
 /area/almayer/hull/upper_hull)
 "biF" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/roller,
-/obj/item/roller,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
+/obj/item/roller/surgical,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
 	name = "Surgery Cleaner"

@@ -21,8 +21,9 @@
 			updatehealth()
 
 /mob/living/carbon/Xenomorph/attack_hand(mob/living/carbon/human/M)
+	if(..())
+		return TRUE
 
-	..()
 	switch(M.a_intent)
 
 		if(INTENT_HELP)

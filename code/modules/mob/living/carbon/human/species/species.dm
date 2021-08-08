@@ -118,7 +118,8 @@
     return
 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
-	H.limbs = list()
+	for(var/L in H.limbs) //In case of pre-existing limbs/organs, we remove the old ones.
+		qdel(L)
 	H.internal_organs = list()
 	H.internal_organs_by_name = list()
 
@@ -146,9 +147,7 @@
 		H.internal_organs_by_name[organ] = new organ_type(H)
 
 	if(flags & IS_SYNTHETIC)
-		for(var/obj/limb/E in H.limbs)
-			if(E.status & LIMB_DESTROYED) continue
-			E.status |= LIMB_ROBOT
+		C.robotize() //Also gets all other limbs, as those are attached.
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
 

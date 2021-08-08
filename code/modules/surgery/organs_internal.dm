@@ -1,145 +1,118 @@
-// Internal surgeries.
-/datum/surgery_step/internal
-	priority = 3
-	can_infect = 1
-	blood_level = 1
-
-/datum/surgery_step/internal/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-	return affected.surgery_open_stage == (affected.encased ? 3 : 2)
-
+/*Procedures in this file: chest + groin organ repair surgery, legacy prosthetic organ repair
+and organ transplant code which may come in handy in future but haven't been edited at all.*/
 //////////////////////////////////////////////////////////////////
-//					ALIEN EMBRYO SURGERY						//
+//						ORGAN SURGERIES							//
 //////////////////////////////////////////////////////////////////
 
-/datum/surgery_step/internal/remove_embryo
-	allowed_tools = list(
-	/obj/item/tool/surgery/hemostat = 100,           \
-	/obj/item/tool/wirecutters = 75,         \
-	/obj/item/tool/kitchen/utensil/fork = 20
-	)
-	blood_level = 2
+/datum/surgery/organ_repair
+	name = "Organ Rejuvenation Surgery"
+	priority = SURGERY_PRIORITY_HIGH
+	possible_locs = list("chest")
+	invasiveness = list(SURGERY_DEPTH_DEEP)
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	steps = list(/datum/surgery_step/repair_organs)
 
-	min_duration = REMOVE_OBJECT_MIN_DURATION
-	max_duration = REMOVE_OBJECT_MAX_DURATION
+/datum/surgery/organ_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+	for(var/datum/internal_organ/IO as anything in L.internal_organs)
+		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
+			return TRUE
+	return FALSE
 
-/datum/surgery_step/internal/remove_embryo/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-	if(target_zone != "chest")
-		return 0
-	if(..())
-		var/obj/item/alien_embryo/A = locate() in target
-		if(A)
-			return 1
+/datum/surgery/organ_repair/groin
+	possible_locs = list("groin")
+	invasiveness = list(SURGERY_DEPTH_SHALLOW)
 
-/datum/surgery_step/internal/remove_embryo/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts to pull something out from [target]'s ribcage with \the [tool]."), \
-					SPAN_NOTICE("You start to pull something out from [target]'s ribcage with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] started to remove an embryo from [key_name(target)]'s ribcage with \the [tool].")
+//------------------------------------
 
-	target.custom_pain("Something hurts horribly in your chest!",1)
-	..()
+/datum/surgery_step/repair_organs
+	name = "Repair Damaged Organs"
+	desc = "repair the organ damage"
+	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
+	tools = list(
+		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
+		)
+	time = 3 SECONDS
+	repeat_step	= TRUE
 
-/datum/surgery_step/internal/remove_embryo/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	var/obj/item/alien_embryo/A = locate() in target
-	if(A)
-		user.visible_message(SPAN_WARNING("[user] rips a wriggling parasite out of [target]'s ribcage!"),
-							 SPAN_WARNING("You rip a wriggling parasite out of [target]'s ribcage!"))
-		log_interact(user, target, "[key_name(user)] removed an embryo from [key_name(target)]'s ribcage with \the [tool].")
+datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
+		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
+			return TRUE
+	return FALSE
 
-		user.count_niche_stat(STATISTICS_NICHE_SURGERY_LARVA)
-		var/mob/living/carbon/Xenomorph/Larva/L = locate() in target //the larva was fully grown, ready to burst.
-		if(L)
-			L.forceMove(target.loc)
-			qdel(A)
+/datum/surgery_step/repair_organs/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	var/list/damaged_organs = list()
+	var/toolname
+	for(var/datum/internal_organ/IO as anything in surgery.affected_limb.internal_organs)
+		if(IO.damage > 0 && IO.robotic != ORGAN_ROBOT)
+			damaged_organs += IO
+
+	switch(tool_type)
+		if(/obj/item/stack/medical/bruise_pack)
+			toolname = "the gauze"
+		if(/obj/item/stack/medical/advanced/bruise_pack)
+			toolname = "regenerative membrane"
 		else
-			A.forceMove(target.loc)
-			target.status_flags &= ~XENO_HOST
+			toolname = "the poultice"
 
-	affected.createwound(CUT, rand(0,20), 1)
-	target.updatehealth()
-	affected.update_wounds()
+	if(length(damaged_organs) > 1)
+		user.affected_message(target,
+			SPAN_NOTICE("You begin treating the damaged organs in [target]'s [surgery.affected_limb.display_name] with [toolname]."),
+			SPAN_NOTICE("[user] begins to treat the damaged organs in your [surgery.affected_limb.display_name] with [toolname]."),
+			SPAN_NOTICE("[user] begins to treat the damaged organs in [target]'s [surgery.affected_limb.display_name] with [toolname]."))
+	else
+		user.affected_message(target,
+			SPAN_NOTICE("You begin treating [target]'s damaged [damaged_organs[1]] with [toolname]."),
+			SPAN_NOTICE("[user] begins to treat your damaged [damaged_organs[1]] with [toolname]."),
+			SPAN_NOTICE("[user] begins to treat [target]'s damaged [damaged_organs[1]] with [toolname]."))
 
+	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is living hell!", 1)
+	playsound(target.loc, 'sound/handling/bandage.ogg', 25, TRUE)
+	log_interact(user, target, "[key_name(user)] began mending organs in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
-//////////////////////////////////////////////////////////////////
-//				CHEST INTERNAL ORGAN SURGERY					//
-//////////////////////////////////////////////////////////////////
-
-
-/datum/surgery_step/internal/fix_organ
-	allowed_tools = list(
-	/obj/item/stack/medical/advanced/bruise_pack= 100, \
-	/obj/item/stack/medical/bruise_pack = 20,          \
-	/obj/item/stack/medical/advanced/bruise_pack/predator = 70,  \
-	)
-
-	min_duration = FIX_ORGAN_MIN_DURATION
-	max_duration = FIX_ORGAN_MAX_DURATION
-
-/datum/surgery_step/internal/fix_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-	if(..())
-		if(affected.body_part == BODY_FLAG_HEAD)//brain and eye damage is fixed by a separate surgery
-			return 0
-		for(var/datum/internal_organ/I in affected.internal_organs)
-			if(I.damage > 0 && I.robotic != ORGAN_ROBOT)
-				return 1
-
-
-/datum/surgery_step/internal/fix_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	var/tool_name = "\the [tool]"
-	if(istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
-		tool_name = "regenerative membrane"
-	else if(istype(tool, /obj/item/stack/medical/bruise_pack))
-		tool_name = "the bandaid"
-
-	for(var/datum/internal_organ/I in affected.internal_organs)
+/datum/surgery_step/repair_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	log_interact(user, target, "[key_name(user)] mended an organ in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
+	for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
 		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
-			user.visible_message(SPAN_NOTICE("[user] starts treating damage to [target]'s [I.name] with [tool_name]."), \
-			SPAN_NOTICE("You start treating damage to [target]'s [I.name] with [tool_name].") )
-			log_interact(user, target, "[key_name(user)] started to treat damage to [key_name(target)]'s [I.name] with [tool_name].")
-
-
-	target.custom_pain("The pain in your [affected.display_name] is living hell!", 1)
-	..()
-
-/datum/surgery_step/internal/fix_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	var/tool_name = "\the [tool]"
-	if(istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
-		tool_name = "regenerative membrane"
-	else if(istype(tool, /obj/item/stack/medical/bruise_pack))
-		tool_name = "the bandaid"
-
-	for(var/datum/internal_organ/I in affected.internal_organs)
-		if(I && I.damage > 0 && I.robotic != ORGAN_ROBOT)
-			user.visible_message(SPAN_NOTICE("[user] treats damage to [target]'s [I.name] with [tool_name]."), \
-			SPAN_NOTICE("You treat damage to [target]'s [I.name] with [tool_name].") )
-			log_interact(user, target, "[key_name(user)] treated damage to [key_name(target)]'s [I.name] with [tool_name].")
+			user.affected_message(target,
+				SPAN_NOTICE("You finish treating [target]'s damaged [I.name]."),
+				SPAN_NOTICE("[user] finishes treating your damaged [I.name]."),
+				SPAN_NOTICE("[user] finishes treating [target]'s damaged [I.name]."))		
 
 			user.count_niche_stat(STATISTICS_NICHE_SURGERY_ORGAN_REPAIR)
 			I.rejuvenate()
+			target.pain.recalculate_pain()
+			break
 
-	target.pain.recalculate_pain()
+/datum/surgery_step/repair_organs/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s hand slips, bruising your organs and contaminating your [surgery.affected_limb.cavity]!"),
+		SPAN_WARNING("[user]'s hand slips, bruising [target]'s organs and contaminating \his [surgery.affected_limb.cavity]!"))
+	
+	var/dam_amt = 2	
+	switch(tool_type)
+		if(/obj/item/stack/medical/bruise_pack)
+			dam_amt = 5
+			target.apply_damage(10, TOX)
+			target.apply_damage(5, BRUTE, target_zone)
+		else
+			target.apply_damage(5, TOX)
 
-/datum/surgery_step/internal/fix_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, getting mess and tearing the inside of [target]'s [affected.display_name] with \the [tool]!"), \
-	SPAN_WARNING("Your hand slips, getting mess and tearing the inside of [target]'s [affected.display_name] with \the [tool]!"))
-	log_interact(user, target, "[key_name(user)] failed to treat damage to the inside of [key_name(target)]'s [affected.display_name] with \the [tool].")
-
-	var/dam_amt = 2
-
-	if(istype(tool, /obj/item/stack/medical/advanced/bruise_pack))
-		target.apply_damage(5, TOX)
-
-	else if(istype(tool, /obj/item/stack/medical/bruise_pack))
-		dam_amt = 5
-		target.apply_damage(10, TOX)
-		affected.createwound(CUT, 5)
-
-	for(var/datum/internal_organ/I in affected.internal_organs)
+	for(var/datum/internal_organ/I as anything in surgery.affected_limb.internal_organs)
 		if(I && I.damage > 0)
 			I.take_damage(dam_amt,0)
-	target.updatehealth()
-	affected.update_wounds()
 
+	log_interact(user, target, "[key_name(user)] failed to mend organs in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+	return FALSE
 
+/*
+//----------------------------------//
+//		UNUPDATED LEGACY CODE		//
+//----------------------------------//
 
 /datum/surgery_step/internal/fix_organ_robotic //For artificial organs
 	allowed_tools = list(
@@ -193,13 +166,14 @@
 	affected.update_wounds()
 
 
+//------------------------------------
 
 /datum/surgery_step/internal/detach_organ
-	allowed_tools = list()/*
+	allowed_tools = list()
 	/obj/item/tool/surgery/scalpel = 100,		\
 	/obj/item/tool/kitchen/knife = 75,	\
 	/obj/item/shard = 50, 		\
-	)*/
+	)
 
 	min_duration = SCALPEL_MIN_DURATION
 	max_duration = SCALPEL_MAX_DURATION
@@ -260,14 +234,14 @@
 	affected.surgery_organ = null
 
 
-
+//------------------------------------
 
 /datum/surgery_step/internal/remove_organ
 	allowed_tools = list()
-	/*/obj/item/tool/surgery/hemostat = 100,           \
+	/obj/item/tool/surgery/hemostat = 100,           \
 	/obj/item/tool/wirecutters = 75,         \
 	/obj/item/tool/kitchen/utensil/fork = 20
-	)*/
+	)
 
 	min_duration = SCALPEL_MIN_DURATION
 	max_duration = SCALPEL_MAX_DURATION
@@ -353,7 +327,7 @@
 	affected.update_wounds()
 	affected.surgery_organ = null
 
-
+//------------------------------------
 
 /datum/surgery_step/internal/replace_organ
 	allowed_tools = list(/obj/item/organ = 100)
@@ -450,8 +424,7 @@
 		I.organ_data.take_damage(rand(3, 5), 0)
 	target.updatehealth()
 
-
-
+//------------------------------------
 
 /datum/surgery_step/internal/attach_organ
 	allowed_tools = list(
@@ -520,3 +493,4 @@
 	affected.createwound(BRUISE, 20)
 	affected.update_wounds()
 	affected.surgery_organ = null
+*/

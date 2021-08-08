@@ -167,11 +167,24 @@
 		else if(jitteriness >= 100)
 			msg += SPAN_WARNING("[t_He] [t_is] twitching ever so slightly.\n")
 
-	//splints
+	//splints & surgical incisions
 	for(var/organ in list("l_leg","r_leg","l_arm","r_arm","l_foot","r_foot","l_hand","r_hand","chest","groin","head"))
 		var/obj/limb/o = get_limb(organ)
-		if(o && o.status & LIMB_SPLINTED)
-			msg += SPAN_WARNING("[t_He] [t_has] a splint on [t_his] [o.display_name]!\n")
+		if(o)
+			var/list/damage = list()
+			if(o.status & LIMB_SPLINTED)
+				damage += "a splint"
+
+			var/limb_incision = o.get_incision_depth()
+			if(limb_incision)
+				damage += limb_incision
+
+			var/limb_surgeries = o.get_active_limb_surgeries()
+			if(limb_surgeries)
+				damage += limb_surgeries
+
+			if(length(damage))
+				msg += SPAN_WARNING("[t_He] [t_has] [english_list(damage, final_comma_text = ",")] on [t_his] [o.display_name]!\n")
 
 	if(holo_card_color)
 		msg += "[t_He] has a [holo_card_color] holo card on [t_his] chest.\n"
@@ -219,10 +232,10 @@
 			if(temp.status & LIMB_ROBOT)
 				if(!(temp.brute_dam + temp.burn_dam))
 					if(!(species && species.flags & IS_SYNTHETIC))
-						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a robot [temp.display_name]!\n")
+						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]!\n")
 						continue
 				else
-					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a robot [temp.display_name]. It has")
+					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]. It has")
 				if(temp.brute_dam) switch(temp.brute_dam)
 					if(0 to 20)
 						wound_flavor_text["[temp.display_name]"] += " some dents"
@@ -239,8 +252,9 @@
 					wound_flavor_text["[temp.display_name]"] += "!\n"
 			else if(temp.wounds.len > 0)
 				var/list/wound_descriptors = list()
-				for(var/datum/wound/W in temp.wounds)
-					if(W.internal && !temp.surgery_open_stage) continue // can't see internal wounds
+				for(var/datum/wound/W as anything in temp.wounds)
+					if(W.internal && incision_depths[temp.name] == SURGERY_DEPTH_SURFACE)
+						continue // can't see internal wounds normally.
 					var/this_wound_desc = W.desc
 					if(W.damage_type == BURN && W.salved) this_wound_desc = "salved [this_wound_desc]"
 					else if(W.bandaged) this_wound_desc = "bandaged [this_wound_desc]"
@@ -368,9 +382,9 @@
 					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>sleeves</b>!\n")
 				else
 					if (display_arm_left)
-						msg += SPAN_WARNING("[t_He] has soaking through [t_his] <b>left sleeve</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>left sleeve</b>!\n")
 					if (display_arm_right)
-						msg += SPAN_WARNING("[t_He] has soaking through [t_his] <b>right sleeve</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>right sleeve</b>!\n")
 				if (display_hand_left && display_hand_right)
 					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>gloves</b>!\n")
 				else

@@ -16,6 +16,16 @@
 			user.flick_attack_overlay(src, "punch")
 
 /mob/living/attackby(obj/item/I, mob/user)
+	/* Commented surgery code, proof of concept. Would need to tweak human attackby to prevent duplication; mob/living don't have separate limb objects.
+	if((user.mob_flags & SURGERY_MODE_ON) && user.a_intent & (INTENT_HELP|INTENT_DISARM))
+		safety = TRUE
+		var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
+		if(current_surgery)
+			if(current_surgery.attempt_next_step(user, I))
+				return TRUE
+		else if(initiate_surgery_moment(I, src, null, user))
+			return TRUE
+	*/
 	if(istype(I) && ismob(user))
 		return I.attack(src, user)
 
@@ -35,10 +45,6 @@
 
 	if (!istype(M)) // not sure if this is the right thing...
 		return FALSE
-
-	if (M.can_be_operated_on()) //Checks if mob is lying down on table for surgery
-		if (do_surgery(M,user,src))
-			return FALSE
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user

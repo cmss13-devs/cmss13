@@ -959,6 +959,16 @@
 	pain.recalculate_pain()
 
 	undefibbable = FALSE
+
+	//Remove any larva.
+	var/obj/item/alien_embryo/A = locate() in src
+	if(A)
+		var/mob/living/carbon/Xenomorph/Larva/L = locate() in src //if the larva was fully grown, ready to burst.
+		if(L)
+			qdel(L)
+		qdel(A)
+		status_flags &= ~XENO_HOST
+
 	..()
 
 /mob/living/carbon/human/proc/is_lung_ruptured()

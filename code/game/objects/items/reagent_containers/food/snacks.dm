@@ -1564,7 +1564,6 @@
 			I.take_damage(rand(I.min_bruised_damage, I.min_broken_damage+1))
 		if (!E.hidden && prob(60)) //set it snuggly
 			E.hidden = surprise
-			E.cavity = 0
 		else 		//someone is having a bad day
 			E.createwound(CUT, 30)
 			E.embed(surprise)

@@ -68,8 +68,8 @@
 
 //surgery skill
 #define SKILL_SURGERY_DEFAULT 0 //Can't do surgery
-#define SKILL_SURGERY_NOVICE 1 //Can use autodocs but can't do surgery (nurses)
-#define SKILL_SURGERY_TRAINED 2 //Can do surgery (Doctors)
+#define SKILL_SURGERY_NOVICE 1 //Can use autodocs and perform basic surgery (Nurses, Medics, PO)
+#define SKILL_SURGERY_TRAINED 2 //Can do all surgeries (Doctors)
 #define SKILL_SURGERY_EXPERT 3
 #define SKILL_SURGERY_MAX 3
 //higher levels means faster surgery.

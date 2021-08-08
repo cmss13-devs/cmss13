@@ -22,7 +22,7 @@
 	if(istype(buckled, /obj/structure/bed/chair/wheelchair))
 		for(var/organ_name in list("l_hand","r_hand","l_arm","r_arm","chest","groin","head"))
 			var/obj/limb/E = get_limb(organ_name)
-			if(!E || (E.status & LIMB_DESTROYED))
+			if(!E || !E.is_usable())
 				. += MOVE_REDUCTION_LIMB_DESTROYED
 			if(E.status & LIMB_SPLINTED)
 				. += MOVE_REDUCTION_LIMB_SPLINTED
@@ -34,7 +34,7 @@
 
 		for(var/organ_name in list("l_foot","r_foot","l_leg","r_leg","chest","groin","head"))
 			var/obj/limb/E = get_limb(organ_name)
-			if(!E || (E.status & LIMB_DESTROYED))
+			if(!E || !E.is_usable())
 				. += MOVE_REDUCTION_LIMB_DESTROYED
 			// Splinted limbs are not as punishing
 			if(E.status & LIMB_SPLINTED)

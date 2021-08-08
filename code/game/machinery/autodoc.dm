@@ -111,7 +111,7 @@
 						visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Blood reserves depleted, switching to fresh bag.")
 					occupant.inject_blood(blood_pack, 8) // double iv stand rate
 					if(prob(10))
-						visible_message("\The [src] whirrs and gurgles as it tranfuses blood.")
+						visible_message("\The [src] whirrs and gurgles as it transfuses blood.")
 						to_chat(occupant, SPAN_INFO("You feel slightly less faint."))
 				else
 					blood_transfer = 0
@@ -197,7 +197,7 @@
 
 			if(istype(L,/obj/limb/head))
 				var/obj/limb/head/H = L
-				if(H.disfigured || H.face_surgery_stage > 0)
+				if(H.disfigured)
 					surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"facial")
 
 			if(L.status & LIMB_BROKEN)
@@ -209,7 +209,7 @@
 				for(var/I in L.implants)
 					if(!is_type_in_list(I,known_implants))
 						surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"shrapnel")
-			if(L.surgery_open_stage)
+			if(M.incision_depths[L.name] != SURGERY_DEPTH_SURFACE)
 				surgery_list += create_autodoc_surgery(L,LIMB_SURGERY,"open")
 	var/datum/internal_organ/I = M.internal_organs_by_name["eyes"]
 	if(I && (M.disabilities & NEARSIGHTED || M.sdisabilities & DISABILITY_BLIND || I.damage > 0))
@@ -388,7 +388,6 @@
 						if(S.limb_ref.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 							new /obj/item/stack/medical/splint/nano(loc, 1)
 						S.limb_ref.status &= ~(LIMB_SPLINTED|LIMB_SPLINTED_INDESTRUCTIBLE|LIMB_BROKEN)
-						S.limb_ref.status |= LIMB_REPAIRED
 						S.limb_ref.perma_injury = 0
 						H.pain.recalculate_pain()
 						close_incision(H,S.limb_ref)
@@ -421,7 +420,6 @@
 
 						if(!surgery) break
 						S.limb_ref.setAmputatedTree()
-						S.limb_ref.limb_replacement_stage = 0
 
 						var/spillover = LIMB_PRINTING_TIME - (CAUTERY_MAX_DURATION+RETRACTOR_MAX_DURATION+SCALPEL_MAX_DURATION)
 						if(spillover > 0)
@@ -458,34 +456,19 @@
 						if(!surgery) break
 						close_incision(H,S.limb_ref)
 
-					if("facial") // dumb but covers for incomplete facial surgery
+					if("facial")
 						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Beginning Facial Reconstruction Surgery.");
 						if(S.unneeded)
 							sleep(UNNEEDED_DELAY)
 							visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Procedure has been deemed unnecessary.");
 							surgery_todo_list -= S
 							continue
-						if(istype(S.limb_ref,/obj/limb/head))
+						if(istype(S.limb_ref, /obj/limb/head))
 							var/obj/limb/head/F = S.limb_ref
-							if(F.face_surgery_stage == 0)
-								sleep(SCALPEL_MAX_DURATION)
-								if(!surgery) break
-								F.face_surgery_stage = 1
-							if(F.face_surgery_stage == 1)
-								sleep(HEMOSTAT_MAX_DURATION)
-								if(!surgery) break
-								F.face_surgery_stage = 2
-							if(F.face_surgery_stage == 2)
-								sleep(RETRACTOR_MAX_DURATION)
-								if(!surgery) break
-								F.face_surgery_stage = 3
-							if(F.face_surgery_stage == 3)
-								sleep(CAUTERY_MAX_DURATION)
-								if(!surgery) break
-								F.remove_all_bleeding(TRUE)
-								F.disfigured = 0
-								F.owner.name = F.owner.get_visible_name()
-								F.face_surgery_stage = 0
+							sleep(SCALPEL_MAX_DURATION + HEMOSTAT_MAX_DURATION + RETRACTOR_MAX_DURATION + CAUTERY_MAX_DURATION)
+							F.remove_all_bleeding(TRUE)
+							F.disfigured = 0
+							F.owner.name = F.owner.get_visible_name()
 
 					if("open")
 						if(prob(30)) visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b>croaks: Closing surgical incision.");
@@ -508,43 +491,36 @@
 
 
 /obj/structure/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, var/obj/limb/L)
-	if(target && L && L.surgery_open_stage < 2)
+	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SURFACE)
 		sleep(INCISION_MANAGER_MAX_DURATION*surgery_mod)
-		if(!surgery) return
+		if(!surgery)
+			return
 		L.createwound(CUT, 1)
-		L.clamp_wounds() //Hemostat function, clamp bleeders
-		L.surgery_open_stage = 2 //Can immediately proceed to other surgery steps
+		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW //Can immediately proceed to other surgery steps
 		target.updatehealth()
 
 /obj/structure/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, var/obj/limb/L)
-	if(target && L && 0 < L.surgery_open_stage <= 2)
+	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
-		if(!surgery) return
-		L.surgery_open_stage = 0
+		if(!surgery)
+			return
+		L.reset_limb_surgeries()
 		L.remove_all_bleeding(TRUE)
 		target.updatehealth()
 
 /obj/structure/machinery/autodoc/proc/open_encased(mob/living/carbon/human/target, var/obj/limb/L)
-	if(target && L && L.surgery_open_stage >= 2)
-		if(L.surgery_open_stage == 2) // this will cover for half completed surgeries
-			sleep(CIRCULAR_SAW_MAX_DURATION*surgery_mod)
-			if(!surgery) return
-			L.surgery_open_stage = 2.5
-		if(L.surgery_open_stage == 2.5)
-			sleep(RETRACTOR_MAX_DURATION*surgery_mod)
-			if(!surgery) return
-			L.surgery_open_stage = 3
+	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
+		sleep((CIRCULAR_SAW_MAX_DURATION*surgery_mod) + (RETRACTOR_MAX_DURATION*surgery_mod))
+		if(!surgery)
+			return
+		target.incision_depths[L.name] = SURGERY_DEPTH_DEEP
 
 /obj/structure/machinery/autodoc/proc/close_encased(mob/living/carbon/human/target, var/obj/limb/L)
-	if(target && L && L.surgery_open_stage > 2)
-		if(L.surgery_open_stage == 3) // this will cover for half completed surgeries
-			sleep(RETRACTOR_MAX_DURATION*surgery_mod)
-			if(!surgery) return
-			L.surgery_open_stage = 2.5
-		if(L.surgery_open_stage == 2.5)
-			sleep(BONEGEL_REPAIR_MAX_DURATION*surgery_mod)
-			if(!surgery) return
-			L.surgery_open_stage = 2
+	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_DEEP)
+		sleep((RETRACTOR_MAX_DURATION*surgery_mod) + (BONEGEL_REPAIR_MAX_DURATION*surgery_mod))
+		if(!surgery)
+			return
+		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW
 
 /obj/structure/machinery/autodoc/verb/eject()
 	set name = "Eject Med-Pod"
@@ -969,7 +945,7 @@
 					if(L)
 						if(istype(L,/obj/limb/head))
 							var/obj/limb/head/J = L
-							if(J.disfigured || J.face_surgery_stage)
+							if(J.disfigured)
 								N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"facial")
 							else
 								N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"facial",1)
@@ -979,7 +955,7 @@
 			if(href_list["open"])
 				for(var/obj/limb/L in connected.occupant.limbs)
 					if(L)
-						if(L.surgery_open_stage)
+						if(connected.occupant.incision_depths[L.name] != SURGERY_DEPTH_SURFACE)
 							N.fields["autodoc_manual"] += create_autodoc_surgery(L,LIMB_SURGERY,"open")
 							needed++
 				if(href_list["open"])

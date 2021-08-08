@@ -42,6 +42,8 @@
 #define MOB_LOCK_ON_EQUIP		(1<<8)	// Lock this item to the mob that equips it up until permadeath
 #define NO_CRYO_STORE			(1<<9) // This item deletes itself when put in cryo storage
 #define ITEM_OVERRIDE_NORTHFACE	(1<<10) // For backpacks if they should have unique layering functions
+#define CAN_DIG_SHRAPNEL		(1<<11) // whether it can be used with medical skills to dig shapnel out of other people.
+#define ANIMATED_SURGICAL_TOOL	(1<<12) // whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 
 //==========================================================================================
 

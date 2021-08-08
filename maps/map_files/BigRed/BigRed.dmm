@@ -5541,7 +5541,7 @@
 /turf/closed/wall/solaris,
 /area/bigredv2/outside/general_store)
 "aoI" = (
-/obj/item/tool/surgery/scalpel/laser3,
+/obj/item/tool/surgery/scalpel/laser/advanced,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/floor{

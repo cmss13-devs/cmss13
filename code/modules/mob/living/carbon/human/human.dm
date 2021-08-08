@@ -913,17 +913,6 @@
 	return gender
 
 /mob/living/carbon/human/revive(keep_viruses)
-	for(var/obj/limb/O in limbs)
-		if(O.status & LIMB_ROBOT)
-			O.status = LIMB_ROBOT
-		else
-			O.status = NO_FLAGS
-		O.perma_injury = 0
-		O.wounds.Cut()
-		O.heal_damage(1000, 1000, TRUE)
-		O.remove_all_bleeding(TRUE, TRUE)
-		O.reset_limb_surgeries()
-
 	var/obj/limb/head/h = get_limb("head")
 	if(QDELETED(h))
 		h = get_limb("synthetic head")
@@ -947,16 +936,11 @@
 			H.brainmob.mind.transfer_to(src)
 			qdel(H)
 
-	for(var/datum/internal_organ/I in internal_organs)
-		I.damage = 0
-
 	if(!keep_viruses)
 		for(var/datum/disease/virus in viruses)
 			if(istype(virus, /datum/disease/black_goo))
 				continue
 			virus.cure(0)
-
-	pain.recalculate_pain()
 
 	undefibbable = FALSE
 

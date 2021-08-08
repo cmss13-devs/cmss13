@@ -134,12 +134,12 @@
 	force = MELEE_FORCE_VERY_STRONG
 	edge = 1
 
-/obj/item/proc/dig_out_shrapnel_check(var/mob/living/target, var/mob/living/carbon/human/user) //for digging shrapnel out of OTHER people, not yourself
-	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC) && ishuman(user) && ishuman(target) && user.a_intent == INTENT_HELP) //Squad medics and above
+///For digging shrapnel out of OTHER people, not yourself. Triggered by carbon/human/attackby() which runs the skill check.
+/obj/item/proc/dig_out_shrapnel_check(var/mob/living/target, var/mob/living/carbon/human/user)
+	if(flags_item & CAN_DIG_SHRAPNEL && ishuman(user) && user.a_intent == INTENT_HELP) //Squad medics and above
 		INVOKE_ASYNC(src, /obj/item.proc/dig_out_shrapnel, target, user)
 		return TRUE
 	return FALSE
-
 
 // If no user, it means that the embedded_human is removing it themselves
 /obj/item/proc/dig_out_shrapnel(var/mob/living/carbon/human/embedded_human, var/mob/living/carbon/human/user = null)

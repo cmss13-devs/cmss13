@@ -3,160 +3,172 @@
 //						FACE SURGERY							//
 //////////////////////////////////////////////////////////////////
 
-/datum/surgery_step/face
-	priority = 2
-	can_infect = 0
-	var/face_step = 0
-
-/datum/surgery_step/face/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-	if(target_zone != "mouth")
-		return 0
-	if(affected.status & LIMB_DESTROYED)
-		return 0
-	var/obj/limb/head/H = affected
-	if(!istype(H) || !H.disfigured || H.face_surgery_stage != face_step)
-		return 0
-	return 1
-
-/datum/surgery_step/face/cut_face
-	allowed_tools = list(
-	/obj/item/tool/surgery/scalpel = 100,		\
-	/obj/item/tool/kitchen/knife = 75,	\
-	/obj/item/shard = 50, 		\
+/datum/surgery/face_fix
+	name = "Facial Reconstruction"
+	possible_locs = list("mouth")
+	invasiveness = list(SURGERY_DEPTH_SURFACE)
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	steps = list(
+		/datum/surgery_step/facial_incision,
+		/datum/surgery_step/mend_vocals,
+		/datum/surgery_step/pull_skin,
+		/datum/surgery_step/cauterize/close_facial_incision
 	)
 
-	min_duration = SCALPEL_MIN_DURATION
-	max_duration = SCALPEL_MAX_DURATION
-	face_step = 0
+/datum/surgery/face_fix/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+	var/obj/limb/head/H = L
+	return H && H.disfigured
 
-/datum/surgery_step/face/cut_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts to cut open [target]'s face and neck with \the [tool]."), \
-	SPAN_NOTICE("You start to cut open [target]'s face and neck with \the [tool]."))
+//------------------------------------
+
+/datum/surgery_step/facial_incision
+	name = "Make Facial Incision"
+	desc = "make facial incisions"
+	tools = SURGERY_TOOLS_INCISION
+	time = 4 SECONDS
+
+/datum/surgery_step/facial_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You start to cut open [target]'s face and neck with \the [tool]."),
+		SPAN_NOTICE("[user] starts to cut open your face and neck with \the [tool]."),
+		SPAN_NOTICE("[user] starts to cut open [target]'s face and neck with \the [tool]."))
+
 	log_interact(user, target, "[key_name(user)] began to cut open [key_name(target)]'s face and neck with \the [tool].")
+	target.custom_pain("Your face is being cut apart!", 1)
 
-	..()
+/datum/surgery_step/facial_incision/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You finish opening incisions on [target]'s face and neck."),
+		SPAN_NOTICE("[user] finishes opening incisions on your face and neck."),
+		SPAN_NOTICE("[user] finishes opening incisions on [target]'s face and neck."))
 
-/datum/surgery_step/face/cut_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_NOTICE("[user] has cut open [target]'s face and neck with \the [tool].") , \
-	SPAN_NOTICE("You have cut open [target]'s face and neck with \the [tool]."),)
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	log_interact(user, target, "[key_name(user)] cut open [key_name(target)]'s face and neck with \the [tool].")
 
-	affected.face_surgery_stage = 1
+/datum/surgery_step/facial_incision/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_DANGER("Your hand slips, slicing [target]'s throat wth \the [tool]!"),
+		SPAN_DANGER("[user]'s hand slips, slicing [target]'s throat wth \the [tool]!"),
+		SPAN_DANGER("[user]'s hand slips, slicing [target]'s throat wth \the [tool]!"))
 
-/datum/surgery_step/face/cut_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, slicing [target]'s throat wth \the [tool]!") , \
-	SPAN_WARNING("Your hand slips, slicing [target]'s throat wth \the [tool]!") )
 	log_interact(user, target, "[key_name(user)] failed to cut open [key_name(target)]'s face and neck with \the [tool].")
 
-	affected.createwound(CUT, 60)
-	target.losebreath += 10
-	target.updatehealth()
-	affected.update_wounds()
+	target.apply_damage(40, BRUTE, target_zone)
+	target.losebreath += 20
+	user.add_blood(target.get_blood_color(), BLOOD_BODY|BLOOD_HANDS)
+	return FALSE
 
+//------------------------------------
 
-/datum/surgery_step/face/mend_vocal
-	allowed_tools = list(
-	/obj/item/tool/surgery/hemostat = 100,         \
-	/obj/item/stack/cable_coil = 75,         \
-	/obj/item/device/assembly/mousetrap = 10 //I don't know. Don't ask me. But I'm leaving it because hilarity.
-	)
+/datum/surgery_step/mend_vocals
+	name = "Mend Vocal Cords"
+	desc = "mend the vocal cords"
+	tools = SURGERY_TOOLS_PINCH
+	time = 3 SECONDS
 
-	min_duration = HEMOSTAT_MIN_DURATION
-	max_duration = HEMOSTAT_MAX_DURATION
-	face_step = 1
+/datum/surgery_step/mend_vocals/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You start mending [target]'s vocal cords with \the [tool]."),
+		SPAN_NOTICE("[user] starts to mend your vocal cords with \the [tool]."),
+		SPAN_NOTICE("[user] starts to mend [target]'s vocal cords with \the [tool]."))
 
-/datum/surgery_step/face/mend_vocal/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts mending [target]'s vocal cords with \the [tool]."), \
-	SPAN_NOTICE("You start mending [target]'s vocal cords with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] began to mend [key_name(target)]'s vocal cords with \the [tool].")
+	target.custom_pain("The insides of your throat are being pinched and pulled at!", 1)
 
-	..()
+/datum/surgery_step/mend_vocals/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You mend [target]'s vocal cords."),
+		SPAN_NOTICE("[user] mends your vocal cords."),
+		SPAN_NOTICE("[user] mends [target]'s vocal cords."))
 
-/datum/surgery_step/face/mend_vocal/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_NOTICE("[user] mends [target]'s vocal cords with \the [tool]."), \
-	SPAN_NOTICE("You mend [target]'s vocal cords with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s vocal cords with \the [tool].")
 
-	affected.face_surgery_stage = 2
+/datum/surgery_step/mend_vocals/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, clamping [user]'s trachea shut for a moment with \the [tool]!"),
+		SPAN_DANGER("[user]'s hand slips, clamping your trachea shut for a moment with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, clamping [target]'s trachea shut for a moment with \the [tool]!"))
 
-/datum/surgery_step/face/mend_vocal/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, clamping [target]'s trachea shut for a moment with \the [tool]!"), \
-	SPAN_WARNING("Your hand slips, clamping [user]'s trachea shut for a moment with \the [tool]!"))
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s vocal cords with \the [tool].")
 
 	target.losebreath += 10
-	target.updatehealth()
+	return FALSE
 
+//------------------------------------
 
-/datum/surgery_step/face/fix_face
-	allowed_tools = list(
-	/obj/item/tool/surgery/retractor = 100,          \
-	/obj/item/tool/crowbar = 55,             \
-	/obj/item/tool/kitchen/utensil/fork = 75
-	)
+/datum/surgery_step/pull_skin
+	name = "Reconstruct Facial Features"
+	desc = "reconstruct the face"
+	tools = SURGERY_TOOLS_PRY_DELICATE
+	time = 3 SECONDS
 
-	min_duration = RETRACTOR_MIN_DURATION
-	max_duration = RETRACTOR_MAX_DURATION
-	face_step = 2
+/datum/surgery_step/pull_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You start pulling the skin on [target]'s face back into shape with \the [tool]."),
+		SPAN_NOTICE("[user] starts to pull the skin on your face back into shape with \the [tool]."),
+		SPAN_NOTICE("[user] starts to pull the skin on [target]'s face back into shape with \the [tool]."))
 
-/datum/surgery_step/face/fix_face/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts pulling the skin on [target]'s face back in place with \the [tool]."), \
-	SPAN_NOTICE("You start pulling the skin on [target]'s face back in place with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] began to pull the skin on [key_name(target)]'s face back in place with \the [tool].")
+	target.custom_pain("Your face hurts!", 1)
 
-	..()
+/datum/surgery_step/pull_skin/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You reconstruct [target]'s facial features."),
+		SPAN_NOTICE("[user] reconstructs your facial features."),
+		SPAN_NOTICE("[user] reconstructs [target]'s facial features."))
 
-/datum/surgery_step/face/fix_face/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_NOTICE("[user] pulls the skin on [target]'s face back in place with \the [tool]."),	\
-	SPAN_NOTICE("You pull the skin on [target]'s face back in place with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] pulled the skin on [key_name(target)]'s face back in place with \the [tool].")
 
-	affected.face_surgery_stage = 3
+/datum/surgery_step/pull_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, tearing skin on [target]'s face with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, tearing skin on your face with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, tearing skin on [target]'s face with \the [tool]!"))
 
-/datum/surgery_step/face/fix_face/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, tearing skin on [target]'s face with \the [tool]!"), \
-	SPAN_WARNING("Your hand slips, tearing skin on [target]'s face with \the [tool]!"))
 	log_interact(user, target, "[key_name(user)] failed to pull the skin on [key_name(target)]'s face back in place with \the [tool].")
 
-	target.apply_damage(10, BRUTE, affected, sharp = 1)
-	target.updatehealth()
+	target.apply_damage(10, BRUTE, target_zone)
+	return FALSE
 
+//------------------------------------
 
-/datum/surgery_step/face/cauterize
-	allowed_tools = list(
-    /obj/item/tool/surgery/cautery = 100,         \
-    /obj/item/clothing/mask/cigarette = 75,    \
-    /obj/item/tool/lighter = 50,    \
-    /obj/item/tool/weldingtool = 50
-    )
+/datum/surgery_step/cauterize/close_facial_incision
+	name = "Close Facial Incisions"
+	desc = "close the facial incisions"
+	time = 5 SECONDS
 
-	min_duration = CAUTERY_MIN_DURATION
-	max_duration = CAUTERY_MAX_DURATION
-	face_step = 3
+/datum/surgery_step/cauterize/close_facial_incision/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You begin to cauterize the incisions on [target]'s face and neck with \the [tool]."),
+		SPAN_NOTICE("[user] begins to cauterize the incisions on your face and neck with \the [tool]."),
+		SPAN_NOTICE("[user] begins to cauterize the incisions on [target]'s face and neck with \the [tool]."))
 
+	target.custom_pain("Your face is being burned!", 1)
 
-/datum/surgery_step/face/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_NOTICE("[user] is beginning to cauterize the incision on [target]'s face and neck with \the [tool].") , \
-	SPAN_NOTICE("You are beginning to cauterize the incision on [target]'s face and neck with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] began to cauterize [key_name(target)]'s face and neck with \the [tool].")
 
-	..()
+/datum/surgery_step/cauterize/close_facial_incision/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You cauterize the incisions on [target]'s face and neck."),
+		SPAN_NOTICE("[user] cauterizes the incisions on your face and neck."),
+		SPAN_NOTICE("[user] cauterizes the incision on [target]'s face and neck."))
 
-/datum/surgery_step/face/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_NOTICE("[user] cauterizes the incision on [target]'s face and neck with \the [tool]."), \
-	SPAN_NOTICE("You cauterize the incision on [target]'s face and neck with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] cauterized [key_name(target)]'s face and neck with \the [tool].")
+	log_interact(user, target, "[key_name(user)] cauterized [key_name(target)]'s face and neck with \the [tool], ending [surgery].")
 
-	affected.remove_all_bleeding(TRUE)
-	affected.disfigured = 0
-	affected.owner.name = affected.owner.get_visible_name()
-	affected.face_surgery_stage = 0
-	target.pain.recalculate_pain()
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
+	surgery.affected_limb.remove_all_bleeding(TRUE)
+	var/obj/limb/head/H = surgery.affected_limb
+	H.disfigured = FALSE
+	H.owner.name = H.owner.get_visible_name()
 
-/datum/surgery_step/face/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/head/affected)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s face with \the [tool]!"), \
-	SPAN_WARNING("Your hand slips, leaving a small burn on [target]'s face with \the [tool]!"))
+/datum/surgery_step/cauterize/close_facial_incision/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, leaving a small burn on [target]'s face!"),
+		SPAN_WARNING("[user]'s hand slips, leaving a small burn on your face!"),
+		SPAN_WARNING("[user]'s hand slips, leaving a small burn on [target]'s face!"))
+
 	log_interact(user, target, "[key_name(user)] failed to cauterize [key_name(target)]'s face and neck with \the [tool].")
 
-	target.apply_damage(4, BURN, affected)
-	target.updatehealth()
+	target.apply_damage(5, BURN, target_zone)
+	return FALSE

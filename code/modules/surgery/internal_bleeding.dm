@@ -1,56 +1,71 @@
-//Procedures in this file: Inernal wound patching, Implant removal.
 //////////////////////////////////////////////////////////////////
 //					INTERNAL WOUND PATCHING						//
 //////////////////////////////////////////////////////////////////
 
+/datum/surgery/internal_bleeding
+	name = "Internal Bleeding Repair"
+	priority = SURGERY_PRIORITY_HIGH
+	possible_locs = ALL_LIMBS
+	invasiveness = list(SURGERY_DEPTH_SHALLOW, SURGERY_DEPTH_DEEP)
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	pain_reduction_required = PAIN_REDUCTION_HEAVY
+	steps = list(/datum/surgery_step/fix_vein)
+
+/datum/surgery/internal_bleeding/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
+	for(var/datum/wound/W as anything in L.wounds)
+		if(W.internal)
+			return TRUE
+	return FALSE
+
+//------------------------------------
 
 /datum/surgery_step/fix_vein
-	allowed_tools = list(
-	/obj/item/tool/surgery/FixOVein = 100, \
-	/obj/item/stack/cable_coil = 75
-	)
-	can_infect = 1
-	blood_level = 1
+	name = "Fix Vein"
+	desc = "mend the damaged blood vessel"
+	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
+	time = 5 SECONDS
 
-	min_duration = FIXVEIN_MIN_DURATION
-	max_duration = FIXVEIN_MAX_DURATION
+/datum/surgery_step/fix_vein/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You start patching the damaged vein in [target]'s [surgery.affected_limb.display_name] with \the [tool]."),
+		SPAN_NOTICE("[user] starts to patch the damaged vein in your [surgery.affected_limb.display_name] with \the [tool]."),
+		SPAN_NOTICE("[user] starts to patch the damaged vein in [target]'s [surgery.affected_limb.display_name] with \the [tool]."))
 
-/datum/surgery_step/fix_vein/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-	if(affected.surgery_open_stage >= 2)
-		for(var/datum/wound/W in affected.wounds)
-			if(W.internal)
-				return 1
+	target.custom_pain("The pain in your [surgery.affected_limb.display_name] is unbearable!", 1)
+	log_interact(user, target, "[key_name(user)] began repairing internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], beginning [surgery].")
 
-/datum/surgery_step/fix_vein/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts patching the damaged vein in [target]'s [affected.display_name] with \the [tool].") , \
-	SPAN_NOTICE("You start patching the damaged vein in [target]'s [affected.display_name] with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] started patching the damaged vein in [key_name(target)]'s [affected.display_name] with \the [tool].")
-
-	target.custom_pain("The pain in [affected.display_name] is unbearable!",1)
-	..()
-
-/datum/surgery_step/fix_vein/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] has patched the damaged vein in [target]'s [affected.display_name] with \the [tool]."), \
-		SPAN_NOTICE("You have patched the damaged vein in [target]'s [affected.display_name] with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] patched the damaged vein in [key_name(target)]'s [affected.display_name] with \the [tool].")
-
+/datum/surgery_step/fix_vein/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_IB)
 
-	for(var/datum/wound/W in affected.wounds)
+	user.affected_message(target,
+		SPAN_NOTICE("You finish repairing [target]'s damaged vein."),
+		SPAN_NOTICE("[user] finishes repairing your damaged vein."),
+		SPAN_NOTICE("[user] finishes repairing [target]'s damaged vein."))
+
+	for(var/datum/wound/W as anything in surgery.affected_limb.wounds)
 		if(W.internal)
-			affected.wounds -= W
-			affected.remove_all_bleeding(FALSE, TRUE)
-			affected.update_damages()
-	if(ishuman(user) && prob(40))
-		var/mob/living/carbon/human/H = user
-		H.add_blood(target.get_blood_color(), BLOOD_HANDS)
+			surgery.affected_limb.wounds -= W
+			surgery.affected_limb.remove_all_bleeding(FALSE, TRUE)
+			surgery.affected_limb.update_damages()
 
+	if(prob(40))
+		user.add_blood(target.get_blood_color(), BLOOD_HANDS)
 	target.pain.recalculate_pain()
+	log_interact(user, target, "[key_name(user)] successfully repaired internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
 
-/datum/surgery_step/fix_vein/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!") , \
-	SPAN_WARNING("Your hand slips, smearing [tool] in the incision in [target]'s [affected.display_name]!"))
-	log_interact(user, target, "[key_name(user)] failed to patch the damaged vein in [key_name(target)]'s [affected.display_name] with \the [tool].")
+/datum/surgery_step/fix_vein/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	if(tool_type == /obj/item/tool/surgery/FixOVein)
+		user.affected_message(target,
+			SPAN_WARNING("Your hand slips, smearing [tool] in [target]'s [surgery.affected_limb.display_name]!"),
+			SPAN_WARNING("[user]'s hand slips, smearing [tool] in your [surgery.affected_limb.display_name]!"),
+			SPAN_WARNING("[user]'s hand slips, smearing [tool] in [target]'s [surgery.affected_limb.display_name]!"))
+	else
+		user.affected_message(target,
+			SPAN_WARNING("Your hand slips, damaging the incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, damaging the incision in your [surgery.affected_limb.display_name] with \the [tool]!"),
+			SPAN_WARNING("[user]'s hand slips, damaging the incision in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
 
-	affected.take_damage(5, 0)
-	target.updatehealth()
+	user.add_blood(target.get_blood_color(), BLOOD_HANDS)
+	target.apply_damage(10, BRUTE, target_zone)
+	log_interact(user, target, "[key_name(user)] failed to repair internal bleeding in [key_name(target)]'s [surgery.affected_limb.display_name], ending [surgery].")
+	return FALSE

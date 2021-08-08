@@ -48,24 +48,23 @@
 	skill_name = SKILL_LEADERSHIP
 	skill_level = SKILL_LEAD_NOVICE
 
-/datum/skill/leadership/set_skill(var/new_level, var/mob/owner)
+/datum/skill/leadership/set_skill(var/new_level, var/mob/living/owner)
 	..()
 	if(!owner)
 		return
 
-	var/mob/living/M = owner
-	if(!ishuman(M))
+	if(!ishuman(owner))
 		return
 
 	// Give/remove issue order actions
 	if(is_skilled(SKILL_LEAD_TRAINED))
 		for(var/action_type in subtypesof(/datum/action/human_action/issue_order))
-			if(locate(action_type) in M.actions)
+			if(locate(action_type) in owner.actions)
 				continue
-			give_action(M, action_type)
+			give_action(owner, action_type)
 	else
-		for(var/datum/action/human_action/issue_order/O in M.actions)
-			O.remove_from(M)
+		for(var/datum/action/human_action/issue_order/O in owner.actions)
+			O.remove_from(owner)
 
 /datum/skill/medical
 	skill_name = SKILL_MEDICAL
@@ -74,6 +73,25 @@
 /datum/skill/surgery
 	skill_name = SKILL_SURGERY
 	skill_level = SKILL_SURGERY_DEFAULT
+
+/datum/skill/surgery/set_skill(var/new_level, var/mob/living/owner)
+	..()
+	if(!owner)
+		return
+
+	if(!ishuman(owner))
+		return
+
+	// Give/remove surgery toggle action
+	var/datum/action/surgery_toggle/surgery_action = locate() in owner.actions
+	if(is_skilled(SKILL_SURGERY_NOVICE))
+		if(!surgery_action)
+			give_action(owner, /datum/action/surgery_toggle)
+		else
+			surgery_action.update_surgery_skill()
+	else
+		if(surgery_action)
+			surgery_action.remove_from(owner)
 
 /datum/skill/research
 	skill_name = SKILL_RESEARCH
@@ -527,6 +545,7 @@ MILITARY NONCOMBATANT
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
@@ -620,7 +639,8 @@ United States Colonial Marines
 	name = "Combat Medic"
 	skills = list(
 		SKILL_LEADERSHIP = SKILL_LEAD_BEGINNER,
-		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE
 	)
 
 /datum/skills/combat_medic/crafty

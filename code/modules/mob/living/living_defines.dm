@@ -79,3 +79,11 @@
 
 	var/datum/pain/pain	//Pain datum for the mob, set on New()
 	var/datum/stamina/stamina
+
+	var/action_delay //for do_after
+
+	//Surgery vars.
+	///Assoc. list - the operations being performed, by aim zone. Both boolean and link to that surgery.
+	var/list/active_surgeries = DEFENSE_ZONES_LIVING
+	///Assoc. list - incision depths, by aim zone. Set by initialize_incision_depths().
+	var/list/incision_depths = DEFENSE_ZONES_LIVING

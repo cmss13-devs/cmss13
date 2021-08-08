@@ -17,8 +17,6 @@
 							HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
 						)
 
-#define is_surgery_tool(W) (istype(W, /obj/item/tool/surgery))
-
 //Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
 #define between(low, middle, high) (max(min(middle, high), low))
 

@@ -569,9 +569,6 @@
 						status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
 						return FALSE
 					T = GET_TREE(TREE_MARINE)
-					if((target_property.level >= GET_MAX_TECH_LEVEL(T)) && T.tier?.tier < 3)
-						status_bar = "PROPERTY LEVEL CAN NOT BE SIMULATED AT CURRENT TECH LEVEL"
-						return FALSE
 	if(mode == MODE_CREATE)
 		if(!LAZYLEN(creation_template))
 			status_bar = "TEMPLATE IS EMPTY"

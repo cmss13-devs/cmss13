@@ -233,13 +233,13 @@
 #define INJECTOR_PERCENTAGE_OF_OD 0.5
 
 //defines for research level multipliers
-#define RESEARCH_LEVEL_INCREASE_MULTIPLIER	4 //Scales cost of increasing clearance using credits
+#define RESEARCH_LEVEL_INCREASE_MULTIPLIER	3 //Scales cost of increasing clearance using credits
 #define TECHTREE_LEVEL_MULTIPLIER			4 //Scales tech level to max amplification level
 
 //Property cost multipliers for the chemical simulator
 #define PROPERTY_COST_MAX					8
-#define PROPERTY_MULTIPLIER_RARE			3
-#define PROPERTY_MULTIPLIER_ANOMALOUS		10
+#define PROPERTY_MULTIPLIER_RARE			2
+#define PROPERTY_MULTIPLIER_ANOMALOUS		5
 
 /*
 	For minimum potencies for properties

@@ -241,8 +241,6 @@ Additional game mode variables.
 	var/clan_id = CLAN_SHIP_PUBLIC
 	var/datum/entity/clan_player/clan_info = pred_candidate?.client?.clan_info
 	clan_info?.sync()
-	if(clan_info?.clan_id)
-		clan_id = clan_info.clan_id
 	SSpredships.load_new(clan_id)
 	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
 	if(!isturf(spawn_point))

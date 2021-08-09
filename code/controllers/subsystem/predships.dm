@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(predships)
 	if(!ship_template)
 		ship_template = new /datum/map_template(HUNTERSHIPS_TEMPLATE_PATH, cache = TRUE)
 	LAZYINITLIST(managed_z)
+	load_new(CLAN_SHIP_PUBLIC)
 	return ..()
 
 /datum/controller/subsystem/predships/proc/init_spawnpoint(obj/effect/landmark/clan_spawn/SP)

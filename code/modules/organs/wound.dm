@@ -119,6 +119,8 @@
 	// opens the wound again
 	proc/open_wound(damage)
 		src.damage += damage
+		bandaged = FALSE
+		salved = FALSE
 
 		while(src.current_stage > 1 && src.damage_list[current_stage-1] <= src.damage / src.amount)
 			src.current_stage--

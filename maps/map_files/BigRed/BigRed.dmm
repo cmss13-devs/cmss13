@@ -45,7 +45,6 @@
 /area/bigredv2/outside/space_port)
 "aai" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -55,7 +54,6 @@
 /area/bigredv2/outside/space_port)
 "aaj" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -65,7 +63,6 @@
 /area/bigredv2/outside/space_port)
 "aak" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -75,7 +72,6 @@
 /area/bigredv2/outside/space_port)
 "aal" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -94,7 +90,6 @@
 /obj/effect/landmark/crap_item,
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -109,7 +104,6 @@
 "aap" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -140,7 +134,6 @@
 "aat" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -155,7 +148,6 @@
 "aav" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -221,7 +213,6 @@
 "aaE" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -237,7 +228,6 @@
 "aaG" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -333,7 +323,6 @@
 "aaS" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -345,7 +334,6 @@
 "aaT" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -401,7 +389,6 @@
 "aba" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -478,7 +465,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -557,7 +543,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -1048,7 +1033,6 @@
 "acK" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1114,7 +1098,6 @@
 "acS" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1220,7 +1203,6 @@
 "adg" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1339,7 +1321,6 @@
 "adw" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1437,7 +1418,6 @@
 "adJ" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -1600,7 +1580,6 @@
 "aeh" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
@@ -1612,7 +1591,6 @@
 "aei" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
@@ -1624,7 +1602,6 @@
 "aej" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
@@ -1636,7 +1613,6 @@
 "aek" = (
 /obj/structure/machinery/landinglight/ds1/delaythree{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
@@ -5220,6 +5196,11 @@
 /area/bigredv2/outside/bar)
 "anK" = (
 /obj/structure/window_frame/solaris,
+/obj/effect/decal/cleanable/blood{
+	dir = 4;
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/dorms)
 "anL" = (
@@ -5526,9 +5507,11 @@
 /turf/open/floor/plating,
 /area/bigredv2/caves/lambda/xenobiology)
 "aoF" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/structure/machinery/light,
-/turf/open/floor,
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/turf/open/floor{
+	icon_state = "wood"
+	},
 /area/bigredv2/outside/dorms)
 "aoG" = (
 /obj/effect/landmark/monkey_spawn,
@@ -7472,17 +7455,25 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "aty" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
+/obj/item/bedsheet/brown,
+/obj/item/bedsheet/brown{
+	pixel_y = 13
 	},
 /obj/structure/bed,
+/obj/structure/bed{
+	pixel_y = 13
+	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/dorms)
 "atz" = (
-/obj/structure/bed,
+/obj/structure/surface/table,
+/obj/item/ammo_magazine/shotgun/buckshot,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -7492,10 +7483,7 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/cargo)
 "atB" = (
-/obj/structure/machinery/light{
-	dir = 1;
-	tag = "icon-tube1 (NORTH)"
-	},
+/obj/structure/closet/crate,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -7678,8 +7666,10 @@
 	},
 /area/bigredv2/outside/medical)
 "atX" = (
-/obj/structure/bed/stool{
-	pixel_y = 8
+/obj/item/stack/sheet/metal,
+/obj/effect/decal/cleanable/blood{
+	layer = 3;
+	pixel_x = 24
 	},
 /turf/open/floor{
 	icon_state = "wood"
@@ -8367,13 +8357,17 @@
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "avE" = (
-/obj/structure/machinery/camera/autoname,
+/obj/structure/machinery/camera/autoname{
+	dir = 4;
+	pixel_y = 21
+	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "avF" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
-	name = "Fitness APC"
+	name = "Dormitories APC";
+	pixel_y = 16
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -9949,15 +9943,13 @@
 /turf/closed/wall/solaris/reinforced,
 /area/bigredv2/outside/filtration_plant)
 "azM" = (
-/obj/structure/surface/table,
-/obj/item/clothing/head/det_hat,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor{
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/dorms)
 "azN" = (
-/obj/structure/bed,
-/obj/effect/decal/cleanable/blood,
+/obj/item/stack/sheet/metal,
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -10031,7 +10023,8 @@
 	pixel_y = -32
 	},
 /obj/structure/machinery/camera/autoname{
-	dir = 1
+	dir = 4;
+	pixel_y = -16
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
@@ -10238,7 +10231,10 @@
 /turf/open/mars,
 /area/bigredv2/outside/n)
 "aAB" = (
-/obj/effect/decal/cleanable/blood,
+/obj/effect/decal/cleanable/blood{
+	icon_state = "gib6";
+	tag = "icon-gib6"
+	},
 /turf/open/floor{
 	icon_state = "wood"
 	},
@@ -11889,16 +11885,13 @@
 	},
 /area/bigredv2/outside/medical)
 "aEK" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/structure/machinery/light{
-	dir = 1
-	},
 /obj/structure/pipes/vents/pump,
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "aEL" = (
 /obj/structure/machinery/camera/autoname{
-	dir = 4
+	dir = 1;
+	pixel_x = -14
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor,
@@ -22825,7 +22818,6 @@
 /area/bigredv2/caves_east)
 "bhu" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -22835,7 +22827,6 @@
 /area/bigredv2/outside/space_port_lz2)
 "bhv" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -22845,7 +22836,6 @@
 /area/bigredv2/outside/space_port_lz2)
 "bhw" = (
 /obj/structure/machinery/landinglight/ds2{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -22855,7 +22845,6 @@
 /area/bigredv2/outside/space_port_lz2)
 "bhx" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -22866,7 +22855,6 @@
 "bhy" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds2/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -22877,7 +22865,6 @@
 "bhz" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -22888,7 +22875,6 @@
 "bhA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds2/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor{
@@ -23050,7 +23036,6 @@
 "bid" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -23149,7 +23134,6 @@
 "biH" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -23284,7 +23268,6 @@
 "bjd" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -23343,7 +23326,6 @@
 "bjn" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor{
@@ -23360,7 +23342,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -23528,7 +23509,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -24870,7 +24850,6 @@
 "bpu" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -25092,7 +25071,6 @@
 "bqd" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -25167,7 +25145,6 @@
 "bqE" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -25254,7 +25231,6 @@
 "brb" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor{
@@ -25491,7 +25467,6 @@
 "bsb" = (
 /obj/structure/machinery/landinglight/ds2{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
@@ -25503,7 +25478,6 @@
 "bsc" = (
 /obj/structure/machinery/landinglight/ds2/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
@@ -25515,7 +25489,6 @@
 "bsd" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
@@ -25527,7 +25500,6 @@
 "bse" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor{
@@ -29465,6 +29437,16 @@
 	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/bigredv2/caves_sw)
+"cHI" = (
+/obj/structure/closet/crate,
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
 "cIq" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -30562,6 +30544,17 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
+"jpT" = (
+/obj/structure/surface/table,
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
 "jrD" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -30910,6 +30903,16 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_sw)
+"lyx" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
 "lDa" = (
 /obj/structure/surface/table/woodentable,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
@@ -31007,6 +31010,15 @@
 "meT" = (
 /turf/open/mars,
 /area/bigredv2/outside/eta)
+"mhF" = (
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
 "mji" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
@@ -31422,6 +31434,10 @@
 	},
 /turf/open/mars,
 /area/bigredv2/outside/nw)
+"per" = (
+/obj/structure/window_frame/solaris,
+/turf/open/floor/plating,
+/area/bigredv2/outside/dorms)
 "phi" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
@@ -32066,6 +32082,16 @@
 	},
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
+"tmH" = (
+/obj/structure/closet/crate,
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
+/turf/open/floor{
+	icon_state = "wood"
+	},
+/area/bigredv2/outside/dorms)
 "trk" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_13";
@@ -53131,16 +53157,16 @@ arp
 acP
 amn
 amV
-amn
-amn
 amV
 amn
-amn
+amV
 amV
 amn
+amV
+amV
 amn
 anK
-amn
+per
 amn
 amn
 amn
@@ -53347,23 +53373,23 @@ aqJ
 aqL
 asb
 amn
-ajl
-atX
-amn
-ajl
-atX
-amn
-ajl
-atX
-amn
+atB
+atY
+atY
+atY
+atY
+atY
+atY
+atY
+atY
 azM
-atX
-amn
-asJ
-atn
+atY
 amn
 atn
-asJ
+atn
+atn
+atn
+atn
 amn
 aHD
 aBR
@@ -53566,19 +53592,19 @@ aqL
 amn
 aty
 atY
-amn
+aoF
 aty
-atY
-amn
-aty
-atY
-amn
-aty
+atX
 aAB
+aty
+ajl
+atY
+aty
+atY
 amn
 aua
-aoF
-amn
+aua
+aua
 aEK
 aFN
 amn
@@ -53781,22 +53807,22 @@ aqJ
 aqL
 aqL
 amn
-atz
 atY
-amn
-atz
 atY
-amn
-atz
-atY
-amn
+jpT
+aty
+atB
+cHI
+aty
+atB
+mhF
 azN
 atY
 amn
 aua
-atn
-amn
-atn
+aua
+aua
+aua
 aws
 amn
 aHD
@@ -53998,14 +54024,14 @@ aqJ
 aqL
 asc
 amn
-amn
 atZ
 amn
 amn
-atZ
 amn
 amn
-atZ
+amn
+amn
+amn
 amn
 amn
 atZ
@@ -54865,9 +54891,9 @@ alZ
 acP
 arr
 aqL
-amn
-ajl
-atX
+amI
+aty
+atY
 amn
 asJ
 asJ
@@ -55082,7 +55108,7 @@ acr
 acP
 acP
 arr
-amn
+amI
 atB
 atY
 auU
@@ -55299,9 +55325,9 @@ acr
 acP
 acP
 acP
-amI
+amn
 atz
-atz
+atY
 amn
 avE
 asJ
@@ -55325,17 +55351,17 @@ aBR
 aBR
 aMc
 apC
-apC
+apJ
+apJ
 apJ
 apC
-apC
-apC
+apJ
+apJ
 apJ
 apC
-apC
-apC
 apJ
-apC
+apJ
+apJ
 apC
 apC
 apC
@@ -55517,8 +55543,8 @@ acP
 acP
 acP
 amn
-amn
-amn
+aty
+atY
 amn
 asJ
 awo
@@ -55734,8 +55760,8 @@ acP
 acP
 acP
 amn
-ajl
-atX
+tmH
+atY
 amn
 asJ
 awo
@@ -55950,7 +55976,7 @@ acr
 acP
 acP
 asg
-amn
+amI
 atB
 atY
 auU
@@ -56168,8 +56194,8 @@ acP
 acP
 ash
 amI
-atz
-atz
+aty
+atY
 amn
 asJ
 awo
@@ -56601,9 +56627,9 @@ acr
 aqO
 acP
 acP
-amn
-ajl
-atX
+amI
+aty
+atY
 amn
 asJ
 asJ
@@ -56818,7 +56844,7 @@ acr
 acP
 acP
 acP
-amn
+amI
 atB
 atY
 auU
@@ -57035,9 +57061,9 @@ acr
 acP
 acP
 acP
-amI
-atz
-atz
+amn
+tmH
+atY
 amn
 asJ
 awq
@@ -57253,8 +57279,8 @@ acP
 amD
 acP
 amn
-amn
-amn
+aty
+atY
 amn
 avG
 awq
@@ -57470,8 +57496,8 @@ acP
 acP
 acP
 amn
-ajl
-atX
+lyx
+atY
 amn
 asJ
 awq
@@ -57686,7 +57712,7 @@ acP
 acP
 acP
 acP
-amn
+amI
 atB
 atY
 auU
@@ -57904,8 +57930,8 @@ acP
 acP
 acP
 amI
-atz
-atz
+aty
+atY
 amn
 avE
 awr

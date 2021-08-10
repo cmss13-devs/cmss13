@@ -359,6 +359,7 @@ This function completely restores a damaged organ to perfect condition.
 			if(is_sharp(implanted_object) || istype(implanted_object, /obj/item/shard/shrapnel))
 				owner.embedded_items -= implanted_object
 
+	remove_all_bleeding(TRUE, TRUE)
 	owner.pain.recalculate_pain()
 	owner.updatehealth()
 	owner.update_body()

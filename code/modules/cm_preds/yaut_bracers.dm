@@ -532,7 +532,7 @@
 		usr.put_in_active_hand(W)
 		W.source = src
 		caster_active = 1
-		to_chat(usr, SPAN_NOTICE("You activate your plasma caster."))
+		to_chat(usr, SPAN_NOTICE("You activate your plasma caster. It is in [W.mode] mode."))
 		playsound(src,'sound/weapons/pred_plasmacaster_on.ogg', 15, 1)
 	return 1
 

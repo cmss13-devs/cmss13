@@ -1920,76 +1920,122 @@
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_3
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 /datum/ammo/energy/yautja/pistol
 	name = "plasma pistol bolt"
 	icon_state = "ion"
-	damage_type = BURN
 
 	damage = 30
 	shell_speed = AMMO_SPEED_TIER_2
 
-/datum/ammo/energy/yautja/caster/bolt
-	name = "plasma bolt"
+/datum/ammo/energy/yautja/caster
+	name = "root caster bolt"
 	icon_state = "ion"
+
+/datum/ammo/energy/yautja/caster/stun
+	name = "low power stun bolt"
 	debilitate = list(2,2,0,0,0,1,0,0)
-	damage_type = BURN
-	flags_ammo_behavior = AMMO_IGNORE_RESIST
-
-	damage = 10
-
-/datum/ammo/energy/yautja/caster/blast
-	name = "plasma blast"
-	icon_state = "pulse1"
-	damage_type = BURN
-
-	damage = 25
-	shell_speed = AMMO_SPEED_TIER_6
-
-/datum/ammo/energy/yautja/caster/sphere
-	name = "plasma immobilizer sphere"
-	icon_state = "bluespace"
-	damage_type = BURN
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF
-	var/stun_range = 4 // Big
-	var/stun_time = 6
 
 	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+
+/datum/ammo/energy/yautja/caster/bolt
+	name = "plasma bolt"
+	icon_state = "pulse1"
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
+	shell_speed = AMMO_SPEED_TIER_6
+	damage = 35
+
+/datum/ammo/energy/yautja/caster/bolt/stun
+	name = "high power stun bolt"
+	var/stun_time = 2
+
+	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+
+/datum/ammo/energy/yautja/caster/bolt/stun/on_hit_mob(mob/M, obj/item/projectile/P)
+	var/mob/living/carbon/C = M
+	var/stun_time = src.stun_time
+	if(istype(C))
+		if(isYautja(C) || isXenoPredalien(C))
+			return
+		to_chat(C, SPAN_DANGER("An electric shock ripples through your body, freezing you in place!"))
+		log_attack("[key_name(C)] was stunned by a high power stun bolt from [key_name(P.firer)] at [get_area(P)]")
+
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			stun_time += 1
+			H.KnockDown(stun_time)
+		else
+			M.KnockDown(stun_time, 1)
+
+		C.Stun(stun_time)
+	..()
+
+/datum/ammo/energy/yautja/caster/sphere
+	name = "plasma eradicator"
+	icon_state = "bluespace"
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = HIT_ACCURACY_TIER_8
-	accurate_range = 32
-	max_range = 32
 
+	damage = 55
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M,obj/item/projectile/P)
-	do_area_stun(P)
+	accurate_range = 8
+	max_range = 8
+
+/datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M, obj/item/projectile/P)
+	cell_explosion(P, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	..()
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T,obj/item/projectile/P)
-	do_area_stun(P)
+/datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T, obj/item/projectile/P)
+	cell_explosion(P, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	..()
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O,obj/item/projectile/P)
-	do_area_stun(P)
+/datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O, obj/item/projectile/P)
+	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	..()
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
-	do_area_stun(P)
+	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	..()
 
-/datum/ammo/energy/yautja/caster/sphere/proc/do_area_stun(obj/item/projectile/P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun
+	name = "plasma immobilizer"
+	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	accurate_range = 20
+	max_range = 20
+
+	var/stun_range = 4 // Big
+	var/stun_time = 6
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_mob(mob/M, obj/item/projectile/P)
+	do_area_stun(P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_turf(turf/T,obj/item/projectile/P)
+	do_area_stun(P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_obj(obj/O,obj/item/projectile/P)
+	do_area_stun(P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun/do_at_max_range(obj/item/projectile/P)
+	do_area_stun(P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun/proc/do_area_stun(obj/item/projectile/P)
 	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)
 	for (var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
 		var/stun_time = src.stun_time
 		log_attack("[key_name(M)] was stunned by a plasma immobilizer from [key_name(P.firer)] at [get_area(P)]")
 		if (isYautja(M))
 			stun_time -= 2
-		else if (isXeno(M))
-			if(isXenoPredalien(M))
-				continue
-			stun_time += 1
+		if(isXenoPredalien(M))
+			continue
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
-		M.stunned += stun_time
+		M.Stun(stun_time)
 
 		if (ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -2010,23 +2056,29 @@
 	damage = 55
 
 /datum/ammo/energy/yautja/rifle/blast
-	name = "plasma rifle blast"
+	name = "plasma shatterer"
 	icon_state = "bluespace"
 	damage_type = BURN
 
 	shell_speed = AMMO_SPEED_TIER_4
 	damage = 40
 
-/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M,obj/item/projectile/P)
-	knockback(M,P)
-	playsound(M.loc, 'sound/weapons/pulse.ogg', 25, 1)
-	explosion(get_turf(M), -1, -1, 2, -1, , , , P.weapon_cause_data)
+/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M, obj/item/projectile/P)
+	var/L = get_turf(M)
+	cell_explosion(L, 90, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	..()
 
-/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T,obj/item/projectile/P)
-	explosion(T, -1, -1, 2, -1, , , , P.weapon_cause_data)
+/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T, obj/item/projectile/P)
+	cell_explosion(T, 90, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	..()
 
-/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O,obj/item/projectile/P)
-	explosion(get_turf(P), -1, -1, 2, -1, , , , P.weapon_cause_data)
+/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O, obj/item/projectile/P)
+	cell_explosion(get_turf(O), 100, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	..()
+
+/datum/ammo/energy/yautja/rifle/blast/do_at_max_range(obj/item/projectile/P)
+	cell_explosion(get_turf(P), 100, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	..()
 
 
 /*

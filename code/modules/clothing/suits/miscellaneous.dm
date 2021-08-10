@@ -268,11 +268,23 @@
 	item_state = "ianshirt"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
 
-/obj/item/clothing/suit/webbing
+/obj/item/clothing/suit/storage/webbing
 	name = "External webbing"
 	desc = "Designed to be worn over a jumpsuit rather than clipped on."
 	icon_state = "webbing"
 	item_state = "webbing"
+	allowed = list(
+		/obj/item/toy,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/binoculars,
+		/obj/item/tool/crew_monitor,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+	)
 
 //Blue suit jacket toggle
 /obj/item/clothing/suit/suit/verb/toggle()

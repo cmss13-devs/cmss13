@@ -204,7 +204,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("SUIT", 0, null, null, null),
 		list("Brown Bomber Jacket", 12, /obj/item/clothing/suit/storage/bomber, null, VENDOR_ITEM_REGULAR),
 		list("Black Bomber Jacket", 12, /obj/item/clothing/suit/storage/bomber/alt, null, VENDOR_ITEM_REGULAR),
-		list("External webbing", 12, /obj/item/clothing/suit/webbing, null, VENDOR_ITEM_REGULAR),
+		list("External webbing", 12, /obj/item/clothing/suit/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Hazard Vest", 12, /obj/item/clothing/suit/storage/hazardvest, null, VENDOR_ITEM_REGULAR),
 		list("Snow Suit", 12, /obj/item/clothing/suit/storage/snow_suit, null, VENDOR_ITEM_REGULAR),
 		list("USCM Service Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine, null, VENDOR_ITEM_REGULAR),

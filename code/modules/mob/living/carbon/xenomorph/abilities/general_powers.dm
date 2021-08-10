@@ -476,9 +476,9 @@
 	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
-	if(structure_template.requires_node)
+	if(structure_template.block_range)
 		for(var/turf/TA in range(T, structure_template.block_range))
-			if(TA.density)
+			if(!X.check_alien_construction(TA, FALSE, TRUE))
 				to_chat(X, SPAN_WARNING("You need more open space to build here."))
 				qdel(structure_template)
 				return FALSE

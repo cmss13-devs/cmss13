@@ -9,8 +9,9 @@
 	icon_state = "constructionnode"
 	density = 0
 	anchored = 1
-
 	health = 200
+	block_range = 1
+
 	var/datum/construction_template/xenomorph/template //What we're building
 	var/datum/hive_status/linked_hive //Who gets what we build
 

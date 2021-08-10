@@ -32,21 +32,13 @@
 	density = TRUE
 	unacidable = TRUE
 	anchored = TRUE
+	block_range = 1
+
 	var/datum/hive_status/linked_hive
-
-	var/list/blocks = list()
-
-	var/block_range = 1
 
 /obj/effect/alien/resin/special/Initialize(mapload, var/hive_ref)
 	. = ..()
 	maxhealth = health
-
-	for(var/turf/T in range(block_range, src))
-		var/obj/effect/build_blocker/SP = new(T)
-		SP.linked_structure = src
-
-		blocks.Add(SP)
 
 	if(hive_ref)
 		linked_hive = hive_ref
@@ -69,24 +61,8 @@
 	linked_hive = null
 	STOP_PROCESSING(SSfastobj, src)
 
-	for(var/obj/effect/build_blocker/SP in blocks)
-		blocks -= SP
-		SP.linked_structure = null
-		qdel(SP)
-
 	. = ..()
 
 /obj/effect/alien/resin/special/attack_alien(mob/living/carbon/Xenomorph/M)
 	if(M.can_destroy_special() || M.hivenumber != linked_hive.hivenumber)
 		return ..()
-
-/obj/effect/build_blocker
-	health = 500000
-
-	unacidable = TRUE
-	indestructible = TRUE
-	invisibility = 101
-
-	alpha = 0
-
-	var/obj/effect/alien/resin/special/linked_structure

@@ -96,7 +96,7 @@
 	if(hive)
 		hive.remove_xeno(src)
 		// Finding the last xeno for anti-delay.
-		if(LAZYLEN(hive.totalXenos) == 1)
+		if(hive.hivenumber == XENO_HIVE_NORMAL && (LAZYLEN(hive.totalXenos) == 1))
 			var/mob/living/carbon/Xenomorph/X = LAZYACCESS(hive.totalXenos, 1)
 			// Tell the marines where the last one is.
 			var/name = "[MAIN_AI_SYSTEM] Bioscan Status"

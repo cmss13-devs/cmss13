@@ -125,10 +125,11 @@
 	..()
 
 /mob/living/carbon/human/attackby(obj/item/W, mob/living/user)
-	if(user.mob_flags & SURGERY_MODE_ON) //Must have NOVICE or better to have this button.
+	if(user.mob_flags & SURGERY_MODE_ON)
 		switch(user.a_intent)
 			if(INTENT_HELP)
-				if((locate(/obj/item/shard) in src.embedded_items) && W.dig_out_shrapnel_check(src, user))
+				//Attempt to dig shrapnel first, if any. dig_out_shrapnel_check() will fail if user is not human, which may be possible in future.
+				if(W.flags_item & CAN_DIG_SHRAPNEL && (locate(/obj/item/shard) in src.embedded_items) && W.dig_out_shrapnel_check(src, user))
 					return TRUE
 				var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
 				if(current_surgery)
@@ -148,6 +149,9 @@
 					var/obj/limb/affecting = get_limb(check_zone(user.zone_selected))
 					if(initiate_surgery_moment(W, src, affecting, user))
 						return TRUE
+
+	else if(W.flags_item & CAN_DIG_SHRAPNEL && W.dig_out_shrapnel_check(src, user))
+		return TRUE
 
 	. = ..()
 

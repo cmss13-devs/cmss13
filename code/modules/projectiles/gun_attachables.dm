@@ -290,16 +290,6 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
-/obj/item/attachable/bayonet/attack_self(mob/living/carbon/human/user)
-	..()
-
-	if(!ishuman(user))
-		return
-	if(!hasorgans(user))
-		return
-
-	dig_out_shrapnel(user)
-
 /obj/item/attachable/bayonet/upp
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."

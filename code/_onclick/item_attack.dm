@@ -4,6 +4,9 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 
+	if(flags_item & CAN_DIG_SHRAPNEL && ishuman(user))
+		dig_out_shrapnel(user)
+
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
 	return
@@ -41,9 +44,6 @@
 		return FALSE
 
 	if(SEND_SIGNAL(M, COMSIG_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK)
-		return
-
-	if (!istype(M)) // not sure if this is the right thing...
 		return FALSE
 
 	if(ishuman(user))

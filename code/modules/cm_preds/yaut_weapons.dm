@@ -551,7 +551,7 @@
 	icon_state = "predknife"
 	item_state = "knife"
 	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = MELEE_FORCE_TIER_5
@@ -563,10 +563,6 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	actions_types = list(/datum/action/item_action)
 	unacidable = TRUE
-
-/obj/item/weapon/melee/yautja/knife/attack_self(mob/living/carbon/human/user)
-	..()
-	dig_out_shrapnel(user)
 
 /obj/item/weapon/melee/yautja/knife/attack(mob/living/mob_victim, mob/living/carbon/human/user)
 	. =..()

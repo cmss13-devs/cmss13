@@ -1273,15 +1273,18 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	current_mag = /obj/item/ammo_magazine/internal/flare
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	fire_sound = 'sound/weapons/gun_flare.ogg'
-	flags_gun_features = GUN_INTERNAL_MAG
+	aim_slowdown = 0
+	wield_delay = WIELD_DELAY_VERY_FAST
+	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
-	attachable_allowed = list(/obj/item/attachable/scope/mini)
+	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
 
 /obj/item/weapon/gun/flare/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/mini/S = new(src)
+	var/obj/item/attachable/scope/mini/flaregun/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
@@ -1295,10 +1298,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1
 	scatter = 0
-	recoil = RECOIL_AMOUNT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
-	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/flare/set_bullet_traits()
 	LAZYADD(traits_to_give, list(

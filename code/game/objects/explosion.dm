@@ -14,7 +14,9 @@
 		return
 
 	var/falloff = power/(light_impact_range+2) // +1 would give the same range. +2 gives a bit of extra range now that explosions are blocked by walls
-
+	if(!explosion_cause_data)
+		stack_trace("explosion() called without cause_data.")
+		explosion_cause_data = create_cause_data("Explosion")
 	cell_explosion(epicenter, power, falloff, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, explosion_cause_data)
 
 

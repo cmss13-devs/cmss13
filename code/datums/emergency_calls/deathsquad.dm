@@ -57,7 +57,7 @@
 	mob_min = 5
 	probability = 0
 	shuttle_id = "Distress_PMC"
-	name_of_spawn = "Distress_PMC"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 
 	var/operator_team_designation
 	var/curr_operator_number = 1

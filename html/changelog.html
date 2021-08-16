@@ -61,6 +61,16 @@
 	</tr>
 </table>
 
+			<h2 class="date">16 August 2021</h2>
+			<h3 class="author">Segrain updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">MARSOC ERT now spawns properly (still admincalls only).</li>
+			</ul>
+			<h3 class="author">Vanagandr updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Removed a missed heal in bone-repair surgery code.</li>
+			</ul>
+
 			<h2 class="date">12 August 2021</h2>
 			<h3 class="author">ghostsheet updated:</h3>
 			<ul class="changes bgimages16">
@@ -731,86 +741,6 @@
 				<li class="tweak">Barrels, some guns and medical crates now drop metal sheets when unpacked.</li>
 				<li class="tweak">Made message that appears when vote starts easier to notice.</li>
 				<li class="tweak">Made sound played again when vote starts.</li>
-			</ul>
-
-			<h2 class="date">14 June 2021</h2>
-			<h3 class="author">Carnage068 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Hedgehog Ravager health increased from 610 to 650. Explosion resist increased by 20%.</li>
-				<li class="tweak">Hedgehog Fire Spikes ability cooldown decreased from 13 seconds to 10. Projectiles increased from 7 to 8.</li>
-				<li class="tweak">Hedgehog's Shed Spikes ability no longer reduces their armor by an additional 10 for the duration of the lockout. Projectiles increased from 20 to 40. Movement speed gain during lockout increased from 0.75 to 0.85.</li>
-				<li class="tweak">Hedgehog's bone chip shrapnel damage per tile-moved increased from 0.4 to 0.6.</li>
-			</ul>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added access restrictions to ColMarTech Techpod Vendor based on user faction. In Distress Beacon gamemode vendor's access is limited to USCM faction. New access_settings_override variable in vendor allows staff to lift access restrictions. In Whiskey Outpost gamemode access requirements are always lifted. In other gamemodes access requirements are lifted by default, but can be limited by staff to original as in Distress Beacon gamemode via toggling access_settings_override variable.</li>
-				<li class="tweak">ColMarTech Techpod Vendor no longer will be accessible if area is unpowered.</li>
-			</ul>
-
-			<h2 class="date">13 June 2021</h2>
-			<h3 class="author">Carlarc updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Cleaned up fire code, allowing for fire damage to be properly reduced not just nullified by fire armor.</li>
-				<li class="tweak">Due to code shenanigans, M35 armor now makes you immune to welder fuel fire.</li>
-				<li class="tweak">Xenos dragging marines into fire no longer get ignited themselves.</li>
-			</ul>
-			<h3 class="author">TrollerNoob updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">AGM-227 'Banshee' now properly spawns fire. It burns hot, but doesn't last long.</li>
-				<li class="tweak">AGM-277 'Banshee' has now been efficiently fueled, resulting in less explosion damage for a much higher fire intensity. Explosion fall off has been moderately reduced. (175 explosion, 20 linear fall off, 50 burn intensity, 15 burn duration)</li>
-				<li class="tweak">GBU-67 'Keeper II' has had its explosion damage and fall off drastically increased. It also hits laser-guided targets much quicker. (450 explosion, 100 exponential fall off)</li>
-				<li class="tweak">AIM-224 'Widowmaker' now has slightly less fall off. (300 explosion, 40 linear fall off)</li>
-				<li class="tweak">XN-99 'Napalm' now has orange fire, correctly conveying its identical intensity to UTNapalm. (200 explosion, 25 linear fall off, 30 burn intensity, 60 burn duration)</li>
-				<li class="tweak">Mini Rocket Stacks have been refitted, although there's no noticeable change. (200 explosion, 44 linear fall off)</li>
-				<li class="tweak">Incendiary Mini Rocket Stacks were found to be overfueled. The fire now affects a slightly smaller area. (200 explosion, 44 linear fall off, 20 burn intensity, 25 burn duration)</li>
-				<li class="tweak">Laser Batteries have received some enhancements after extensive field testing. They burn much, much hotter and have a bigger area of effect, but go out just as fast. (75 burn intensity, 5 burn duration)</li>
-				<li class="tweak">All old explosion procs in dropship_ammo.dm have been converted to use cell_explosion, making tweaking much easier. GAU has been left untouched for now.</li>
-			</ul>
-
-			<h2 class="date">12 June 2021</h2>
-			<h3 class="author">Carlarc updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added a gamemode for admin HvH setup: Faction Clash.</li>
-				<li class="rscadd">In FC, on non-station maps, exterior areas will gain dim brightness and a rain effect will appear on this gamemode. Not much else will change from normal extended settings.</li>
-				<li class="tweak">In FC, marines will be unable to peer down scopes, as they have 'fogged up'. Sad!</li>
-				<li class="tweak">(Always) Humans can now snuff out flares after a short windup.</li>
-				<li class="tweak">Added an option in the Events Panel to disable CAS.</li>
-				<li class="rscadd">The extended barrel has been reworked to slightly increase bullet speed and accuracy.</li>
-			</ul>
-
-			<h2 class="date">11 June 2021</h2>
-			<h3 class="author">50RemAndCounting updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="wip">Added a new Experimental Tools vendor to synthetic prep, containing a limited variety of specialized items oriented towards usage by synthetics, alongside an initial set of items in it.</li>
-			</ul>
-			<h3 class="author">Mercadier updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Made soda fountains and booze fountains wrenchable.</li>
-				<li class="tweak">Added some Tips of the Round.</li>
-			</ul>
-			<h3 class="author">NeroCavalier updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Masterkeys can be attached to MK1s again.</li>
-			</ul>
-			<h3 class="author">Silencer_pl updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Stackable construction materials no longer can be exploited to attack without any click delay.</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">The climb time for ledges has been decreased from 1 second to 0.2 seconds.</li>
-			</ul>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Can no longer use the pick-up verb on mobs.</li>
-				<li class="bugfix">Fixed bug where it was possible to start multiple exclusive timed actions. For ex. defibbing, splinting, possibly surgeries and various engi things as well.</li>
-				<li class="bugfix">Gun scatter will no longer break burst target tracking.</li>
-				<li class="bugfix">If you're firing a PB burst with a gun that needs both hands to fire and then unwield it, you will now stop firing</li>
-				<li class="tweak">Adjusted projectile knockback screenshake. Buck/plasma rifle hits no longer cause shake beyond their 2 tile knockback range, ditto for heavy revolver shots beyond 4 tiles. T3s don't get shaken by buck/heavy rev/plasma rifle hits. Slug/scout rifle impact ammo hits cause screenshake to non-xenos again.</li>
-			</ul>
-			<h3 class="author">senjx updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">The CAS rocket pod has been renamed to missile pod. The AIM-224 Widowmaker rocket has been renamed to AIM-224/B Widowmaker missile. Both are unchanged in function.</li>
 			</ul>
 </div>
 </body>

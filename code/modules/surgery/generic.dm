@@ -554,8 +554,6 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 			SPAN_NOTICE("You mend [target]'s [surgery.affected_limb.encased]."),
 			SPAN_NOTICE("[user] mends your [surgery.affected_limb.encased]."),
 			SPAN_NOTICE("[user] mends [target]'s [surgery.affected_limb.encased]."))
-
-		surgery.affected_limb.heal_damage(20)
 	else
 		var/improvised_desc = pick("paleolithic surgeon", "UPP torturer", "mad carpenter")
 		user.affected_message(target,

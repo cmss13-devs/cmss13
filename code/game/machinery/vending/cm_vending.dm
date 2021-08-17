@@ -31,8 +31,8 @@
 	var/show_points = TRUE
 
 	//squad-specific gear
-	var/gloves_type
-	var/headset_type
+	var/gloves_type = /obj/item/clothing/gloves/marine
+	var/headset_type = /obj/item/device/radio/headset/almayer/marine
 
 	var/vend_delay = 0		//delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
 	var/vend_sound			//use with caution. Potential spam

@@ -82,7 +82,7 @@
 /obj/item/device/encryptionkey/mmpo
 	name = "\improper Military Police Radio Encryption Key"
 	icon_state = "sec_key"
-	channels = list("MP" = 1, "Command" = 1)
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1,)
 
 //MARINE ENCRYPTION KEYS
 

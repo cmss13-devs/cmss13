@@ -198,6 +198,10 @@
 	name = "\improper Brig Secondary Office"
 	icon_state = "brig"
 
+/area/almayer/shipboard/brig/cryo
+	name = "\improper Brig Cryo Pods"
+	icon_state = "brig"
+
 /area/almayer/shipboard/brig/surgery
 	name = "\improper Brig Surgery"
 	icon_state = "brig"
@@ -216,6 +220,10 @@
 
 /area/almayer/shipboard/brig/cic_hallway
 	name = "\improper Brig CiC Hallway"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/dress
+	name = "\improper CIC Dress Uniform Room"
 	icon_state = "brig"
 
 /area/almayer/shipboard/brig/cells

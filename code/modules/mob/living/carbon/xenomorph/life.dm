@@ -442,7 +442,7 @@ updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/handle_interference()
 	if(interference)
-		interference -= 2
+		interference = max(interference-2, 0)
 
 	if(observed_xeno && observed_xeno.interference)
 		overwatch(observed_xeno,TRUE)

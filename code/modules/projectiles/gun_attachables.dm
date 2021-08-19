@@ -1362,7 +1362,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "grenade_a"
 	w_class = SIZE_MEDIUM
 	current_rounds = 0
-	max_rounds = 1
+	max_rounds = 3
 	max_range = 7
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
@@ -1443,12 +1443,13 @@ Defined in conflicts.dm of the #defines folder.
 //For the Mk1
 /obj/item/attachable/attached_gun/grenade/mk1
 	name = "MK1 underslung grenade launcher"
-	desc = "An older version of the classic underslung grenade launcher. Does not have IFF capabilities but can store three grenades."
+	desc = "An older version of the classic underslung grenade launcher. Does not have IFF capabilities but can store five grenades."
 	icon_state = "grenade-mk1"
 	attach_icon = "grenade-mk1_a"
 	current_rounds = 0
-	max_rounds = 3
+	max_rounds = 5
 	max_range = 10
+	attachment_firing_delay = 30
 
 /obj/item/attachable/attached_gun/grenade/mk1/Initialize()
 	. = ..()

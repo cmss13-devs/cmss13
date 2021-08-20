@@ -72,8 +72,11 @@
 	var/item_path = /obj/item/bodybag
 	density = 0
 	anchored = 0
+	layer = ABOVE_OBJ_LAYER //To layer above rollerbeds.
 	drag_delay = 2 //slightly easier than to drag the body directly.
 	var/obj/structure/bed/roller/roller_buckled //the roller bed this bodybag is attached to.
+	///How many extra pixels to offset the bag by when buckled, since rollerbeds are set up to offset a centered horizontal human sprite.
+	var/buckle_offset = 5
 	store_items = FALSE
 
 /obj/structure/closet/bodybag/Initialize()

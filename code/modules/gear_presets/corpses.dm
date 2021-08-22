@@ -413,7 +413,7 @@
 
 /datum/equipment_preset/colonist/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 

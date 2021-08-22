@@ -135,6 +135,9 @@
 #define TRAIT_TOOL_WRENCH "t_tool_wrench"
 #define TRAIT_TOOL_MULTITOOL "t_tool_multitool"
 
+//If an item with this trait is in an ear slot, no other item with this trait can fit in the other ear slot
+#define TRAIT_ITEM_EAR_EXCLUSIVE "t_item_ear_exclusive"
+
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_YAUTJA_TECH,

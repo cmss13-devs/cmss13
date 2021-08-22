@@ -10,10 +10,11 @@
 	gear = list(
 		"i_clothing" =   list("loc" = ui_datum.ui_iclothing, "slot" = WEAR_BODY, 		"state" = "center", "toggle" = 1, "dir" = SOUTH),
 		"o_clothing" =   list("loc" = ui_datum.ui_oclothing, "slot" = WEAR_JACKET, 		"state" = "equip",  "toggle" = 1),
-		"mask" =         list("loc" = ui_datum.ui_mask,      "slot" = WEAR_FACE, 		"state" = "mask",  "toggle" = 1),
+		"mask" =         list("loc" = ui_datum.ui_mask,      "slot" = WEAR_FACE, 		"state" = "mask",  	"toggle" = 1),
 		"gloves" =       list("loc" = ui_datum.ui_gloves,    "slot" = WEAR_HANDS,    	"state" = "gloves", "toggle" = 1),
 		"eyes" =         list("loc" = ui_datum.ui_glasses,   "slot" = WEAR_EYES,   		"state" = "glasses","toggle" = 1),
-		"wear_ear" =     list("loc" = ui_datum.ui_wear_ear,  "slot" = WEAR_EAR,     		"state" = "ears",   "toggle" = 1),
+		"wear_l_ear" =   list("loc" = ui_datum.ui_wear_l_ear,  "slot" = WEAR_L_EAR,     	"state" = "ears",   "toggle" = 1),
+		"wear_r_ear" =   list("loc" = ui_datum.ui_wear_r_ear,  "slot" = WEAR_R_EAR,     	"state" = "ears",   "toggle" = 1),
 		"head" =         list("loc" = ui_datum.ui_head,      "slot" = WEAR_HEAD,      	"state" = "hair",   "toggle" = 1),
 		"shoes" =        list("loc" = ui_datum.ui_shoes,     "slot" = WEAR_FEET,     	"state" = "shoes",  "toggle" = 1),
 		"suit storage" = list("loc" = ui_datum.ui_sstore1,   "slot" = WEAR_J_STORE,   	"state" = "suit_storage"),
@@ -87,9 +88,9 @@
 	draw_oxygen(ui_datum)
 	draw_healths(ui_datum)
 	draw_bodytemp(ui_datum)
-	
+
 	draw_status_effects(ui_datum)
-	
+
 	if(!iszombie(owner))
 		draw_nutrition(ui_datum)
 	draw_locator_spot(ui_datum)
@@ -110,13 +111,13 @@
 		hud_used.hotkey_ui_hidden = 1
 
 /datum/hud/human/hidden_inventory_update()
-	if(!mymob || !ui_datum) 
+	if(!mymob || !ui_datum)
 		return
 	var/mob/living/carbon/human/H = mymob
 	if(!gear.len)
 		inventory_shown = FALSE
 		return //species without inv slots don't show items.
-		
+
 	if(inventory_shown && hud_shown)
 		if(H.shoes)
 			H.shoes.screen_loc = ui_datum.ui_shoes
@@ -124,9 +125,12 @@
 		if(H.gloves)
 			H.gloves.screen_loc = ui_datum.ui_gloves
 			H.client.screen += H.gloves
-		if(H.wear_ear)
-			H.wear_ear.screen_loc = ui_datum.ui_wear_ear
-			H.client.screen += H.wear_ear
+		if(H.wear_l_ear)
+			H.wear_l_ear.screen_loc = ui_datum.ui_wear_l_ear
+			H.client.screen += H.wear_l_ear
+		if(H.wear_r_ear)
+			H.wear_r_ear.screen_loc = ui_datum.ui_wear_r_ear
+			H.client.screen += H.wear_r_ear
 		if(H.glasses)
 			H.glasses.screen_loc = ui_datum.ui_glasses
 			H.client.screen += H.glasses
@@ -147,8 +151,10 @@
 			H.shoes.screen_loc = null
 		if(H.gloves)
 			H.gloves.screen_loc = null
-		if(H.wear_ear)
-			H.wear_ear.screen_loc = null
+		if(H.wear_l_ear)
+			H.wear_l_ear.screen_loc = null
+		if(H.wear_r_ear)
+			H.wear_r_ear.screen_loc = null
 		if(H.glasses)
 			H.glasses.screen_loc = null
 		if(H.w_uniform)
@@ -161,7 +167,7 @@
 			H.head.screen_loc = null
 
 /datum/hud/human/persistant_inventory_update()
-	if(!mymob || !ui_datum) 
+	if(!mymob || !ui_datum)
 		return
 
 	var/mob/living/carbon/human/H = mymob

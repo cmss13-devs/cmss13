@@ -4,7 +4,7 @@
 
 /obj/structure/vehicle_locker
 	name = "wall-mounted storage compartment"
-	desc = "Small storage unit allowing Vehicle Crewmen to store their personal possessions or weaponry ammunition. Only Vehicle Crewmen can access these."
+	desc = "Small storage unit allowing vehicle crewmen to store their personal possessions or weaponry ammunition. Only vehicle crewmen can access these."
 	icon = 'icons/obj/vehicles/interiors/general.dmi'
 	icon_state = "locker"
 	anchored = TRUE
@@ -137,11 +137,17 @@
 		icon_state = "locker"
 		playsound(src.loc, "toolbox", 25, TRUE, 3)
 
+/obj/structure/vehicle_locker/tank
+	name = "storage compartment"
+	desc = "Small storage unit allowing vehicle crewmen to store their personal possessions or weaponry ammunition. Only vehicle crewmen can access these."
+	icon = 'icons/obj/vehicles/interiors/tank.dmi'
+	icon_state = "locker"
+
 /obj/structure/vehicle_locker/med
 	name = "wall-mounted surgery kit storage"
 	desc = "A small locker that securely stores a full surgical kit. ID-locked to surgeons."
 	icon_state = "locker_med"
-	role_restriction = list(JOB_CMO, JOB_DOCTOR, JOB_RESEARCHER, JOB_SYNTH, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER, JOB_SEA, JOB_CLF_MEDIC, "Colonial Doctor", "Sorokyne Strata Doctor")
+	role_restriction = list(JOB_CMO, JOB_DOCTOR, JOB_RESEARCHER, JOB_SYNTH, JOB_WO_CMO, JOB_WO_DOCTOR, JOB_WO_RESEARCHER, JOB_SEA, JOB_CLF_MEDIC, "Colonial Doctor", "Sorokyne Strata Doctor", JOB_SYNTH, JOB_WO_SYNTH)
 
 	var/has_tray = TRUE
 

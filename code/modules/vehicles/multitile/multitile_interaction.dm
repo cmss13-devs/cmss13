@@ -315,6 +315,23 @@
 
 		HP.activate(user, A)
 
+	if(seat == VEHICLE_SUPPORT_GUNNER_ONE || seat == VEHICLE_SUPPORT_GUNNER_TWO)
+		if(mods["shift"])
+			A.examine(user)
+			return
+		if(mods["middle"] || mods["alt"] || mods["ctrl"])
+			return
+
+		var/obj/item/hardpoint/HP = active_hp[seat]
+		if(!HP)
+			to_chat(user, SPAN_WARNING("Please select an active hardpoint first."))
+			return
+
+		if(!HP.can_activate(user, A))
+			return
+
+		HP.activate(user, A)
+
 /obj/vehicle/multitile/proc/handle_player_entrance(var/mob/M)
 	if(!M || M.client == null) return
 
@@ -328,11 +345,11 @@
 			break
 
 	var/enter_time = 0
-	// door locks break when hull is destroyed and xenos bypass door locks
-	if(door_locked && !allowed(M) && health > 0)
-		if(isXeno(M))
-			enter_time = 3 SECONDS
-		else
+	// door locks break when hull is destroyed. Xenos enter slower, but their speed is not affected by anything and they ignore locks
+	if(isXeno(M))
+		enter_time = 3 SECONDS
+	else
+		if(door_locked && !allowed(M) && health > 0)
 			to_chat(M, SPAN_DANGER("\The [src] is locked!"))
 			return
 
@@ -359,8 +376,6 @@
 		enter_time = entrance_speed SECONDS
 		if(dragged_atom)
 			enter_time = 2 SECONDS
-		if(isXeno(M))	//Xenos are not as fast as marines, but not affected by dragging when doors are unlocked
-			enter_time = 1 SECONDS
 
 	to_chat(M, SPAN_NOTICE(enter_msg))
 	if(!do_after(M, enter_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
@@ -388,7 +403,7 @@
 	if(dragged_atom)
 		var/success = interior.enter(dragged_atom, entrance_used)
 		if(!success)
-			to_chat(M, SPAN_NOTICE("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
+			to_chat(M, SPAN_WARNING("You fail to fit [dragged_atom] inside \the [src] and leave [ismob(dragged_atom) ? "them" : "it"] outside."))
 
 /obj/vehicle/multitile/proc/handle_fitting_pulled_atom(var/mob/M, var/atom/dragged_atom)
 	if(!ishuman(M))

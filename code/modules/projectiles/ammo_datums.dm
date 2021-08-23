@@ -1564,6 +1564,15 @@
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 
+/datum/ammo/bullet/smartgun/m56_fpw
+	name = "m56 FPW bullet"
+	icon_state = "redbullet"
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+	max_range = 7
+	accuracy = HIT_ACCURACY_TIER_7
+	damage = 35
+	penetration = ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"

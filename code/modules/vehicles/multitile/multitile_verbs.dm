@@ -208,6 +208,7 @@
 	<font color=\"red\"><b><i>Gunner verbs:</i></b></font><br> 1. <b>\"A: Cycle Active Hardpoint\"</b> - works similarly to one above, except it automatically switches to next hardpoint in a list allowing you to switch faster.<br> \
 	 2. <b>\"G: Toggle Middle/Shift Clicking\"</b> - toggles between using <i>Middle Mouse Button</i> click and <i>Shift + Click</i> to fire not currently selected weapon if possible.<br> \
 	 3. <b>\"G: Toggle Turret Gyrostabilizer\"</b> - toggles Turret Gyrostabilizer allowing it to keep current direction ignoring hull turning. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
+	<font color='#003300'><b><i>Support Gunner verbs:</i></b></font><br> 1. <b>\"Reload Firing Port Weapon\"</b> - initiates automated reloading process for M56 FPW. Requires a confirmation.<br> \
 	<font color='#cd6500'><b><i>Driver shortcuts:</i></b></font><br> 1. <b>\"CTRL + Click\"</b> - activates vehicle horn.<br> \
 	<font color=\"red\"><b><i>Gunner shortcuts:</i></b></font><br> 1. <b>\"ALT + Click\"</b> - toggles Turret Gyrostabilizer. <i>(Exists only on vehicles with rotating turret, e.g. M34A2 Longstreet Light Tank)</i><br> \
 	 2. <b>\"CTRL + Click\"</b> - activates not destroyed activatable support module.<br> \
@@ -322,3 +323,38 @@
 /obj/vehicle/multitile/proc/perform_honk()
 	if(honk_sound)
 		playsound(loc, honk_sound, 75, TRUE, 15)	//heard within ~15 tiles
+
+//Support gunner verbs
+
+/obj/vehicle/multitile/proc/reload_firing_port_weapon()
+	set name = "Reload Firing Port Weapon"
+	set desc = "Initiates firing port weapon automated reload process."
+	set category = "Vehicle"
+
+	var/mob/user = usr
+	if(!user || !istype(user))
+		return
+
+	var/obj/vehicle/multitile/V = user.interactee
+	if(!istype(V))
+		return
+
+	var/seat
+	for(var/vehicle_seat in V.seats)
+		if(V.seats[vehicle_seat] == user)
+			seat = vehicle_seat
+			break
+
+	if(!seat)
+		return
+
+	if(V.health < initial(V.health) * 0.5)
+		to_chat(user, SPAN_WARNING("\The [V]'s hull is too damaged to operate!"))
+
+	for(var/obj/item/hardpoint/special/firing_port_weapon/FPW in V.hardpoints)
+		if(FPW.allowed_seat == seat)
+			if(alert(user, "Initiate M56 FPW reload process? It will take [FPW.reload_time / 10] seconds.", "Initiate reload", "Yes", "No") == "Yes")
+				FPW.start_auto_reload(user)
+			return
+
+	to_chat(user, SPAN_WARNING("Warning. No FPW for [seat] found, tell a dev!"))

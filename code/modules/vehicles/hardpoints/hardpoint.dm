@@ -504,8 +504,8 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 	origin_turf = locate(origin_turf.x + origins[1], origin_turf.y + origins[2], origin_turf.z)
 
 	var/obj/item/projectile/P = generate_bullet(user, origin_turf)
-	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, owner.seats[VEHICLE_GUNNER])
-	P.fire_at(A, owner.seats[VEHICLE_GUNNER], src, P.ammo.max_range, P.ammo.shell_speed)
+	SEND_SIGNAL(P, COMSIG_BULLET_USER_EFFECTS, user)
+	P.fire_at(A, user, src, P.ammo.max_range, P.ammo.shell_speed)
 
 	if(use_muzzle_flash)
 		muzzle_flash(Get_Angle(owner, A))

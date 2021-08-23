@@ -1,0 +1,192 @@
+
+/obj/vehicle/multitile/apc/command
+	name = "\improper M577-CMD Armored Personnel Carrier"
+	desc = "A modification of the M577 Armored Personnel Carrier designed to act as a field commander vehicle. An armored transport with four big wheels. Has inbuilt techpod vendor at the back of it, sensor tower and a field command station installed inside. Entrances on the sides."
+
+	icon_state = "apc_base_com"
+
+	interior_map = "apc_command"
+
+	passengers_slots = 8
+
+	var/sensor_radius = 45	//45 tiles radius
+
+	var/techpod_faction_requirement = FACTION_MARINE
+	var/techpod_access_settings_override = FALSE
+
+	entrances = list(
+		"left" = list(2, 0),
+		"right" = list(-2, 0)
+	)
+
+	seats = list(
+		VEHICLE_DRIVER = null,
+		VEHICLE_GUNNER = null
+	)
+
+	active_hp = list(
+		VEHICLE_DRIVER = null,
+		VEHICLE_GUNNER = null
+	)
+
+/obj/vehicle/multitile/apc/command/Initialize()
+	. = ..()
+	GLOB.command_apc_list += src
+
+/obj/vehicle/multitile/apc/command/Destroy()
+	GLOB.command_apc_list -= src
+	return ..()
+
+/obj/vehicle/multitile/apc/command/load_role_reserved_slots()
+	var/datum/role_reserved_slots/RRS = new
+	RRS.category_name = "Crewmen"
+	RRS.roles = list(JOB_CREWMAN, JOB_UPP_CREWMAN)
+	RRS.total = 2
+	role_reserved_slots += RRS
+
+	RRS = new
+	RRS.category_name = "Command Staff"
+	RRS.roles = JOB_COMMAND_ROLES_LIST
+	RRS.total = 1
+	role_reserved_slots += RRS
+
+	RRS = new
+	RRS.category_name = "Synthetic Unit"
+	RRS.roles = list(JOB_SYNTH, JOB_WO_SYNTH)
+	RRS.total = 1
+	role_reserved_slots += RRS
+
+/obj/vehicle/multitile/apc/command/add_seated_verbs(var/mob/living/M, var/seat)
+	if(!M.client)
+		return
+	add_verb(M.client, list(
+		/obj/vehicle/multitile/proc/get_status_info,
+		/obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/proc/name_vehicle,
+	))
+	if(seat == VEHICLE_DRIVER)
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn,
+		))
+	else if(seat == VEHICLE_GUNNER)
+		add_verb(M.client, list(
+			/obj/vehicle/multitile/proc/switch_hardpoint,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_shift_click,
+		))
+
+/obj/vehicle/multitile/apc/command/remove_seated_verbs(var/mob/living/M, var/seat)
+	if(!M.client)
+		return
+	remove_verb(M.client, list(
+		/obj/vehicle/multitile/proc/get_status_info,
+		/obj/vehicle/multitile/proc/open_controls_guide,
+		/obj/vehicle/multitile/proc/name_vehicle,
+	))
+	if(seat == VEHICLE_DRIVER)
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/toggle_door_lock,
+			/obj/vehicle/multitile/proc/activate_horn,
+		))
+	else if(seat == VEHICLE_GUNNER)
+		remove_verb(M.client, list(
+			/obj/vehicle/multitile/proc/switch_hardpoint,
+			/obj/vehicle/multitile/proc/cycle_hardpoint,
+			/obj/vehicle/multitile/proc/toggle_shift_click,
+		))
+
+/obj/vehicle/multitile/apc/command/initialize_cameras(var/change_tag = FALSE)
+	if(!camera)
+		camera = new /obj/structure/machinery/camera/vehicle(src)
+	if(change_tag)
+		camera.c_tag = "#[rand(1,100)] M777 \"[nickname]\" CMD APC"
+		if(camera_int)
+			camera_int.c_tag = camera.c_tag + " interior"
+	else
+		camera.c_tag = "#[rand(1,100)] M777 CMD APC"
+		if(camera_int)
+			camera_int.c_tag = camera.c_tag + " interior"
+
+/obj/vehicle/multitile/apc/command/attack_hand(var/mob/user)
+	. = ..()
+
+	if(user.z != GLOB.interior_manager.interior_z)	//if we didn't enter
+		var/turf/T = get_step(get_step(get_turf(src), REVERSE_DIR(dir)), REVERSE_DIR(dir))
+		if(user.loc == T)
+			access_techpod(user)
+
+//taken from gear_access_point.dm
+/obj/vehicle/multitile/apc/command/proc/access_techpod(var/mob/user)
+	if(!ishuman(user) || !get_access_permission(user))
+		to_chat(user, SPAN_WARNING("Access denied."))
+		return
+
+	if(health < initial(health) * 0.5)
+		to_chat(user, SPAN_WARNING("\The [name]'s hull is too damaged and Techpod Vendor is not responding."))
+		return
+
+	var/list/list_of_techs = list()
+	for(var/i in GLOB.unlocked_droppod_techs)
+		var/datum/tech/droppod/droppod_tech = i
+		if(!droppod_tech.can_access(user))
+			continue
+
+		list_of_techs[droppod_tech.name] = droppod_tech
+
+	if(!length(list_of_techs))
+		to_chat(user, SPAN_WARNING("No tech gear is available at the moment!"))
+		return
+
+	var/user_input = tgui_input_list(user, "Choose a tech to retrieve an item from.", name, list_of_techs)
+	if(!user_input)
+		return
+
+	var/datum/tech/droppod/chosen_tech = list_of_techs[user_input]
+	if(!chosen_tech.can_access(user))
+		to_chat(user, SPAN_WARNING("You cannot access this tech!"))
+		return
+
+	chosen_tech.on_pod_access(user)
+
+//stole my own code from techpod_vendor
+/obj/vehicle/multitile/apc/command/proc/get_access_permission(mob/living/carbon/human/user)
+	if(SSticker.mode == "Whiskey Outpost" || master_mode == "Whiskey Outpost")
+		return TRUE
+	else if(SSticker.mode == "Distress Signal" || master_mode == "Distress Signal")
+		if(techpod_access_settings_override)
+			return TRUE
+		else if(user.get_target_lock(techpod_faction_requirement))
+			return TRUE
+	else
+		if(techpod_access_settings_override)
+			if(user.get_target_lock(techpod_faction_requirement))
+				return TRUE
+		else
+			return TRUE
+
+	return FALSE
+
+/*
+** PRESETS
+*/
+
+/obj/vehicle/multitile/apc/command/decrepit/load_hardpoints(var/obj/vehicle/multitile/R)
+	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
+	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+
+/obj/vehicle/multitile/apc/command/decrepit/load_damage(var/obj/vehicle/multitile/R)
+	take_damage_type(1e8, "abstract")
+	take_damage_type(1e8, "abstract")
+	healthcheck()
+
+/obj/vehicle/multitile/apc/command/fixed/load_hardpoints(var/obj/vehicle/multitile/R)
+	add_hardpoint(new /obj/item/hardpoint/primary/dualcannon)
+	add_hardpoint(new /obj/item/hardpoint/secondary/frontalcannon)
+	add_hardpoint(new /obj/item/hardpoint/support/flare_launcher)
+	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)
+
+/obj/vehicle/multitile/apc/command/plain/load_hardpoints(var/obj/vehicle/multitile/R)
+	add_hardpoint(new /obj/item/hardpoint/locomotion/apc_wheels)

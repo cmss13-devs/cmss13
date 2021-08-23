@@ -5,6 +5,7 @@
 #define HDPT_TREADS                 "treads"
 #define HDPT_WHEELS                 "wheels"
 #define HDPT_TURRET                 "turret"
+#define HDPT_SPECIAL                "special"	//special pre-installed hardpoints with unique behaviour
 
 #define HDPT_LAYER_WHEELS   1
 #define HDPT_LAYER_SUPPORT  2
@@ -14,7 +15,8 @@
 
 #define VEHICLE_DRIVER              "driver"
 #define VEHICLE_GUNNER      		"primary gunner"
-#define VEHICLE_SECONDARY_GUNNER    "secondary gunner"
+#define VEHICLE_SUPPORT_GUNNER_ONE  "1st support gunner"
+#define VEHICLE_SUPPORT_GUNNER_TWO  "2nd support gunner"
 
 #define VEHICLE_SPEED_SLOW          30 //3 seconds per tile
 #define VEHICLE_SPEED_NORMAL        10 //default 1 second per tile

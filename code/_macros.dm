@@ -72,7 +72,8 @@
 
 #define IS_DIAGONAL_DIR(dir) (dir & ~(NORTH|SOUTH))
 
-#define REVERSE_DIR(dir) ((dir & (NORTH|SOUTH) ? ~dir & (NORTH|SOUTH) : 0) | (dir & (EAST|WEST) ? ~dir & (EAST|WEST) : 0))
+// Inverse direction, taking into account UP|DOWN if necessary.
+#define REVERSE_DIR(dir) ( ((dir & 85) << 1) | ((dir & 170) >> 1) )
 
 #define GENERATE_DEBUG_ID "[rand(0, 9)][rand(0, 9)][rand(0, 9)][rand(0, 9)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)][pick(alphabet_lowercase)]"
 

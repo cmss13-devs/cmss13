@@ -6,16 +6,19 @@
 /turf/open/void/vehicle,
 /area/space)
 "b" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1
-	},
+/obj/structure/prop/vehicle/sensor_equipment,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_10_1"
 	},
 /area/vehicle/apc)
 "c" = (
 /obj/structure/bed/chair/vehicle{
-	dir = 1
+	dir = 1;
+	pixel_x = -8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
@@ -23,7 +26,12 @@
 /area/vehicle/apc)
 "d" = (
 /obj/structure/bed/chair/vehicle{
-	dir = 1
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_8_1"
@@ -95,15 +103,19 @@
 /turf/open/void/vehicle,
 /area/space)
 "o" = (
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/surface/table/reinforced/prison{
+	pixel_y = -3
+	},
 /obj/structure/machinery/computer/groundside_operations{
 	dir = 4;
-	layer = 5.22;
+	indestructible = 1;
+	layer = 2.82;
 	pixel_y = -10
 	},
 /obj/structure/machinery/computer/overwatch/almayer{
 	dir = 8;
-	layer = 5.21;
+	indestructible = 1;
+	layer = 2.81;
 	pixel_y = 4
 	},
 /turf/open/shuttle/vehicle{
@@ -118,7 +130,6 @@
 /area/space)
 "q" = (
 /obj/structure/vehicle_locker{
-	layer = 5.21;
 	pixel_y = 28
 	},
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
@@ -164,12 +175,20 @@
 	dir = 8
 	},
 /obj/structure/transmitter{
-	layer = 3.1;
 	name = "APC Telephone";
 	phone_category = "Vehicles";
 	phone_id = "M577-CMD APC";
-	pixel_x = -20;
-	pixel_y = 32
+	pixel_x = -19;
+	pixel_y = 31
+	},
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = -6;
+	pixel_y = 28
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	name = "Vehicle NanoMed";
+	pixel_x = 7;
+	pixel_y = 28
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_5"
@@ -197,12 +216,6 @@
 	},
 /turf/open/void/vehicle,
 /area/space)
-"A" = (
-/obj/structure/bed/chair/vehicle,
-/turf/open/shuttle/vehicle{
-	icon_state = "floor_3_13"
-	},
-/area/vehicle/apc)
 "B" = (
 /obj/effect/landmark/interior/spawn/entrance{
 	dir = 1;
@@ -222,7 +235,7 @@
 /area/space)
 "D" = (
 /obj/structure/interior_wall/apc{
-	icon_state = "corner_inverse_L_2";
+	icon_state = "corner_inverse_L";
 	opacity = 0
 	},
 /turf/open/void/vehicle,
@@ -259,8 +272,8 @@
 	},
 /area/vehicle/apc)
 "I" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
@@ -280,7 +293,10 @@
 /area/space)
 "L" = (
 /obj/structure/bed/chair/vehicle{
-	dir = 4
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_9_1"
@@ -334,8 +350,7 @@
 /area/space)
 "R" = (
 /obj/structure/interior_wall/apc{
-	icon_state = "corner_inverse_R_4";
-	opacity = 0
+	icon_state = "corner_inverse_R_2"
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -390,6 +405,16 @@
 	icon_state = "floor_3_6"
 	},
 /area/vehicle/apc)
+"Z" = (
+/obj/effect/landmark/interior/spawn/interior_camera{
+	dir = 10;
+	pixel_x = 15;
+	pixel_y = 38
+	},
+/turf/open/shuttle/vehicle{
+	icon_state = "floor_1_6"
+	},
+/area/vehicle/apc)
 
 (1,1,1) = {"
 p
@@ -430,7 +455,7 @@ l
 (5,1,1) = {"
 Q
 B
-r
+Z
 E
 r
 G
@@ -439,7 +464,7 @@ z
 (6,1,1) = {"
 M
 R
-A
+I
 y
 I
 V

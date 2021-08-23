@@ -44,6 +44,16 @@
 	var/xenos_slots = 2
 	//xenos passenger slots taken
 	var/xenos_taken_slots = 0
+
+	//some vehicles have special slots for dead revivable corpses for various reasons
+	//revivable corpses slots
+	var/revivable_dead_slots = 0
+	//revivable corpses slots taken
+	var/revivable_dead_taken_slots = 0
+
+	//list of stuff we do NOT want to be pulled inside. Taken from exterior's list
+	var/list/forbidden_atoms
+
 	//special roles passenger slots, kept in datums
 	var/list/role_reserved_slots = list()
 
@@ -90,8 +100,17 @@
 	handle_landmarks()
 
 	update_passenger_settings()
+	update_forbidden_atoms()
 
 	ready = TRUE
+
+//setup forbidden atoms list
+/datum/interior/proc/update_forbidden_atoms()
+	forbidden_atoms = list()
+	if(isVehicleMultitile(exterior))
+		var/obj/vehicle/multitile/V = exterior
+		if(length(V.forbidden_atoms))
+			forbidden_atoms = V.forbidden_atoms
 
 /datum/interior/proc/get_passengers()
 	if(!ready)
@@ -113,10 +132,12 @@
 	var/obj/vehicle/multitile/V = exterior
 	passengers_slots = V.passengers_slots
 	xenos_slots = V.xenos_slots
+	revivable_dead_slots = V.revivable_dead_slots
 	passengers_taken_slots = 0
 	xenos_taken_slots = 0
+	revivable_dead_taken_slots = 0
 
-	if(V.role_reserved_slots.len)
+	if(length(V.role_reserved_slots))
 		role_reserved_slots = list()
 		role_reserved_slots = V.role_reserved_slots.Copy()
 		for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
@@ -134,11 +155,14 @@
 			//whether we put human in some category
 			var/role_slot_taken = FALSE
 			var/mob/living/carbon/human/H = M
-			if(H.stat == DEAD && !H.is_revivable())
-				continue
+			//some vehicles have separate count for non-perma dead corpses
+			if(H.stat == DEAD && H.is_revivable())
+				if(revivable_dead_slots && revivable_dead_taken_slots < revivable_dead_slots)
+					revivable_dead_taken_slots++
+					role_slot_taken = TRUE
 
 			//if we have any special roles slots, we check them first
-			if(role_reserved_slots.len)
+			if(length(role_reserved_slots))
 				for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
 					//check each category if it has our role. We stop after we find role to avoid checking others.
 					if(RRS.roles.Find(H.job))
@@ -164,8 +188,12 @@
 	if(!A)
 		return
 
-	if(istype(A, /obj/structure/barricade) || istype(A, /obj/structure/machinery/defenses) || istype(A, /obj/structure/machinery/m56d_post))
-		return FALSE
+	if(forbidden_atoms)
+		for(var/type in forbidden_atoms)
+			if(istype(A, type))
+				if(A.pulledby)
+					to_chat(A.pulledby, SPAN_WARNING("\The [A] won't fit inside!"))
+				return FALSE
 
 	// Ensure we have an accurate count before trying to enter
 	update_passenger_count()
@@ -185,28 +213,35 @@
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.stat != DEAD || H.is_revivable())
-			//whether we put human in some category
-			var/role_slot_taken = FALSE
-			//if we have any special roles slots, we check them first
-			if(role_reserved_slots.len)
-				for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
-					//check each category if it has our role. We stop after we find role to avoid checking others.
-					if(RRS.roles.Find(H.job))
-						//if we have slots for this category, take it
-						if(RRS.taken < RRS.total)
-							RRS.taken++
-							role_slot_taken = TRUE
-						break
-			//if no special slot is taken, we will check for common passengers
-			if(!role_slot_taken)
-				if(passengers_taken_slots < passengers_slots)
-					//even if somehow mob moving will fail further down in proc, extra slot taken won't matter, since next update_passenger_count() will fix it
-					passengers_taken_slots++
-				else
-					if(M.stat == CONSCIOUS)
-						to_chat(M, SPAN_WARNING("There's no more space inside!"))
-					return FALSE
+		var/role_slot_taken = FALSE
+		if(H.stat == DEAD && H.is_revivable())
+			//this is here to prevent accummulating people in vehicle by bringing in more and more revivable dead and reviving them inside
+			if(revivable_dead_slots && revivable_dead_taken_slots < revivable_dead_slots && passengers_taken_slots < passengers_slots + revivable_dead_slots)
+				revivable_dead_taken_slots++
+				role_slot_taken = TRUE
+
+		if(!role_slot_taken && length(role_reserved_slots))
+			for(var/datum/role_reserved_slots/RRS in role_reserved_slots)
+				//check each category if it has our role. We stop after we find role to avoid checking others.
+				if(RRS.roles.Find(H.job))
+					//if we have slots for this category, take it
+					if(RRS.taken < RRS.total)
+						RRS.taken++
+						role_slot_taken = TRUE
+					break
+
+
+		//whether we put human in some category
+		//if we have any special roles slots, we check them first
+		//if no special slot is taken, we will check for common passengers
+		if(!role_slot_taken)
+			if(passengers_taken_slots < passengers_slots)
+				//even if somehow mob moving will fail further down in proc, extra slot taken won't matter, since next update_passenger_count() will fix it
+				passengers_taken_slots++
+			else
+				if(M.stat == CONSCIOUS)
+					to_chat(M, SPAN_WARNING("There's no more space inside!"))
+				return FALSE
 
 	else if(isXeno(M))
 		if(M.stat != DEAD)

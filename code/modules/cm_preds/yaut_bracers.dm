@@ -455,7 +455,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 
 	if(forced)
-		cloak_cooldown = world.time + 20 SECONDS
+		cloak_cooldown = world.time + 10 SECONDS
 
 	to_chat(user, "Your cloaking device deactivates.")
 	cloaked = 0

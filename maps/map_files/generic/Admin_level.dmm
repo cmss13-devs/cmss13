@@ -1075,8 +1075,7 @@
 "hO" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress/item,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/device/multitool,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1113,8 +1112,7 @@
 "hV" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress_pmc/item,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/device/multitool,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1151,8 +1149,7 @@
 "ic" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress_upp/item,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/device/multitool,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1404,7 +1401,8 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress/item,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/full/with_defib_and_analyzer,
+/obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1432,6 +1430,7 @@
 /obj/effect/landmark/ert_spawns/distress_pmc/item,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1458,7 +1457,8 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress_upp/item,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1479,8 +1479,9 @@
 "ju" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
 /obj/effect/landmark/ert_spawns/distress_upp/item,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -3553,7 +3554,7 @@
 	},
 /area/adminlevel/ert_station)
 "ET" = (
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
@@ -4616,6 +4617,8 @@
 	pixel_x = 2;
 	pixel_y = -5
 	},
+/obj/item/device/healthanalyzer,
+/obj/item/device/healthanalyzer,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"

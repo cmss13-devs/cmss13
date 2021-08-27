@@ -313,7 +313,7 @@
 
 /obj/item/device/radio/headset/almayer/cmpcom
 	name = "marine chief MP radio headset"
-	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :m - medbay, :e - engineering, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :e - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
 	volume = RADIO_VOLUME_CRITICAL

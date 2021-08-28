@@ -32,6 +32,7 @@
 		if(zs.to_revive[src])
 			handle_chemicals_in_body(delta_time)
 			return
+
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)
 		if(stat != DEAD)
@@ -81,16 +82,9 @@
 
 	update_canmove()
 
-	//Update our name based on whether our face is obscured/disfigured
-	//name = get_visible_name() //moved out to the relevant places to be updated on demand.
-
 	handle_regular_hud_updates()
 
 	pulse = handle_pulse()
-
-	//Grabbing
-	for(var/obj/item/grab/G in src)
-		G.process()
 
 	if(!client && !mind && species)
 		species.handle_npc(src)

@@ -971,6 +971,7 @@
 /area/almayer/living/offices)
 "acN" = (
 /obj/structure/surface/rack,
+/obj/effect/spawner/random/warhead,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "red";
@@ -8265,7 +8266,6 @@
 	},
 /area/almayer/command/cic)
 "awm" = (
-/obj/structure/machinery/computer/tech_control,
 /turf/open/floor/almayer{
 	dir = 9;
 	icon_state = "red";
@@ -11566,7 +11566,6 @@
 	},
 /area/almayer/command/cic)
 "aGq" = (
-/obj/structure/machinery/computer/tech_control,
 /turf/open/floor/almayer{
 	dir = 10;
 	icon_state = "blue";
@@ -27524,6 +27523,7 @@
 /obj/structure/surface/rack,
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "red";
@@ -27892,6 +27892,8 @@
 /area/almayer/squads/charlie)
 "bQE" = (
 /obj/structure/surface/rack,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /turf/open/floor/almayer{
@@ -29165,6 +29167,8 @@
 /area/almayer/command/corporateliason)
 "bVL" = (
 /obj/structure/surface/rack,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /turf/open/floor/almayer{
@@ -34843,12 +34847,14 @@
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/shipboard/brig/cells)
 "cMV" = (
-/obj/structure/techpod_vendor{
-	req_one_access_txt = null
-	},
 /obj/structure/sign/prop1{
 	pixel_x = -32;
 	pixel_y = 2
+	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;16;21"
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
@@ -37505,9 +37511,6 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "eaf" = (
-/obj/structure/techpod_vendor{
-	req_one_access_txt = null
-	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -46595,15 +46598,13 @@
 /turf/open/floor/plating,
 /area/almayer/living/briefing)
 "iuz" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/structure/machinery/computer/tech_control,
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/warhead,
 /turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
+	icon_state = "red";
+	tag = "icon-red"
 	},
-/area/almayer/command/cic)
+/area/almayer/shipboard/weapon_room)
 "iuE" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/machinery/light{
@@ -48164,15 +48165,6 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/starboard_hallway)
-"jha" = (
-/obj/structure/techpod_vendor{
-	req_one_access_txt = null
-	},
-/turf/open/floor/almayer{
-	icon_state = "redfull";
-	tag = "icon-redfull"
-	},
-/area/almayer/command/cic)
 "jhb" = (
 /obj/structure/pipes/standard/simple/hidden/supply{
 	dir = 6;
@@ -58913,12 +58905,14 @@
 	},
 /area/almayer/engineering/ce_room)
 "oNj" = (
-/obj/structure/techpod_vendor{
-	req_one_access_txt = null
-	},
 /obj/structure/sign/prop1{
 	pixel_x = -32;
 	pixel_y = 2
+	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo{
+	req_access = null;
+	req_one_access = null;
+	req_one_access_txt = "15;16;21"
 	},
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
@@ -60107,6 +60101,8 @@
 /area/almayer/hallways/hangar)
 "pyL" = (
 /obj/structure/surface/rack,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
@@ -63960,6 +63956,8 @@
 /area/almayer/living/grunt_rnr)
 "rAD" = (
 /obj/structure/surface/rack,
+/obj/structure/ob_ammo/ob_fuel,
+/obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
 /obj/structure/ob_ammo/ob_fuel,
@@ -88681,7 +88679,7 @@ ohA
 cFh
 bDW
 bPJ
-ald
+iuz
 bBA
 vhq
 orv
@@ -97901,7 +97899,7 @@ agj
 aox
 aoA
 awr
-iuz
+rOC
 aqN
 aqN
 alX
@@ -99537,7 +99535,7 @@ alX
 aIf
 aED
 awr
-jha
+fvB
 jvX
 auR
 awr

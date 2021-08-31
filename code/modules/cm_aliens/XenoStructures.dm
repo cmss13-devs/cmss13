@@ -551,7 +551,7 @@
 
 /obj/effect/alien/resin/shield_pillar/process()
 	for(var/mob/living/carbon/Xenomorph/X in urange(range, src))
-		if(X.hivenumber != hivenumber)
+		if((X.hivenumber != hivenumber) || X.stat == DEAD)
 			continue
 		X.add_xeno_shield(shield_to_give, XENO_SHIELD_SOURCE_SHIELD_PILLAR, decay_amount_per_second = 1, add_shield_on = TRUE, duration = 1 SECONDS)
 		X.flick_heal_overlay(1 SECONDS, "#ffa800")

@@ -500,7 +500,6 @@ IN_USE						used for vending/denying
 
 			var/idx=text2num(href_list["vend"])
 			var/list/L = listed_products[idx]
-			var/cost = L[2]
 
 			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
 				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
@@ -546,34 +545,40 @@ IN_USE						used for vending/denying
 							return
 					available_specialist_sets -= p_name
 
-			if(use_points)
-				if(use_snowflake_points)
-					if(H.marine_snowflake_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_snowflake_points -= cost
-				else
-					if(H.marine_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_points -= cost
 
-			if(L[4])
-				if(H.marine_buy_flags & L[4])
-					H.marine_buy_flags &= ~L[4]
-				else
-					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
-					vend_fail()
-					return
+
+			if(!handle_points(H, L))
+				return
 
 			vend_succesfully(L, H, T)
 
 		add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window
+
+/obj/structure/machinery/cm_vending/gear/proc/handle_points(var/mob/living/carbon/human/H, var/list/L)
+	var/cost = L[2]
+	if(use_points)
+		if(use_snowflake_points)
+			if(H.marine_snowflake_points < cost)
+				to_chat(H, SPAN_WARNING("Not enough points."))
+				vend_fail()
+				return FALSE
+			else
+				H.marine_snowflake_points -= cost
+		else
+			if(H.marine_points < cost)
+				to_chat(H, SPAN_WARNING("Not enough points."))
+				vend_fail()
+				return FALSE
+			else
+				H.marine_points -= cost
+	if(L[4])
+		if(H.marine_buy_flags & L[4])
+			H.marine_buy_flags &= ~L[4]
+		else
+			to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
+			vend_fail()
+			return FALSE
 
 /obj/structure/machinery/cm_vending/gear/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

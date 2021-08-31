@@ -19,6 +19,9 @@
 		to_chat(src, SPAN_XENOWARNING("You can't burrow here!"))
 		return
 
+	if(caste_type && GLOB.xeno_datum_list[caste_type])
+		caste = GLOB.xeno_datum_list[caste_type]
+
 	used_burrow = TRUE
 
 	to_chat(src, SPAN_XENOWARNING("You begin burrowing yourself into the ground."))
@@ -32,7 +35,9 @@
 	invisibility = 101
 	anchored = TRUE
 	density = FALSE
-	RegisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED, .proc/flamer_crossed_immune)
+	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
+		RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+		RegisterSignal(src, COMSIG_LIVING_FLAMER_CROSSED, .proc/flamer_crossed_immune)
 	update_canmove()
 	update_icons()
 	addtimer(CALLBACK(src, .proc/do_burrow_cooldown), (caste ? caste.burrow_cooldown : 5 SECONDS))
@@ -50,9 +55,13 @@
 		addtimer(CALLBACK(src, .proc/process_burrow), 1 SECONDS)
 
 /mob/living/carbon/Xenomorph/proc/burrow_off()
+	if(caste_type && GLOB.xeno_datum_list[caste_type])
+		caste = GLOB.xeno_datum_list[caste_type]
 	to_chat(src, SPAN_NOTICE("You resurface."))
 	burrow = FALSE
-	UnregisterSignal(src, COMSIG_LIVING_FLAMER_FLAMED)
+	if(caste.fire_immunity == FIRE_IMMUNITY_NONE)
+		UnregisterSignal(src, COMSIG_LIVING_PREIGNITION)
+		UnregisterSignal(src, COMSIG_LIVING_FLAMER_CROSSED)
 	frozen = FALSE
 	invisibility = FALSE
 	anchored = FALSE

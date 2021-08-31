@@ -789,6 +789,8 @@
 		var/mob/living/carbon/Xenomorph/X = L
 		if(X.tier != 1) // 0 is queen!
 			return
+	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
+		return
 
 	if(L.frozen)
 		to_chat(user, SPAN_DANGER("[L] struggles and avoids being nailed further!"))
@@ -811,19 +813,21 @@
 
 	L.AdjustSlowed(1) //Slow on hit.
 	L.recalculate_move_delay = TRUE
-
+	var/super_slowdown_duration = 3
 	//If there's an obstacle on the far side, superslow and do extra damage.
-	if(isCarbonSizeXeno(L)) //Unless they're a strong xeno.
+	if(isCarbonSizeXeno(L)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
 		var/mob/living/carbon/Xenomorph/X = L
 		if(X.tier != 1) // 0 is queen!
-			return
+			super_slowdown_duration = 0.5
+	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
+		super_slowdown_duration = 0.5
 
 	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(P.loc ? P : P.firer, L)))
 	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
 		return
 
 	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	L.AdjustSuperslowed(3)
+	L.AdjustSuperslowed(super_slowdown_duration)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -1338,7 +1342,7 @@
 	scatter = SCATTER_AMOUNT_TIER_4
 
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
-/datum/ammo/bullet/shotgun/twobore 
+/datum/ammo/bullet/shotgun/twobore
 	name = "two bore bullet"
 	icon_state 	= "autocannon"
 	handful_state = "twobore"

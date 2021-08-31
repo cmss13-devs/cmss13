@@ -350,6 +350,7 @@
 	item_state = "grenade_training"
 	dangerous = 0
 	harmful = FALSE
+	has_iff = FALSE
 
 /obj/item/explosive/grenade/HE/training/prime()
 	spawn(0)

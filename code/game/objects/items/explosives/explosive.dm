@@ -226,6 +226,7 @@
 	set category = "Weapons"
 	set	name = "Toggle Blast Wave Dampener"
 	set desc = "Enable/Disable the Explosive Blast Wave Dampener"
+	set src in usr
 
 	if(!ishuman(usr))
 		to_chat(usr, SPAN_DANGER("This is beyond your understanding..."))
@@ -234,7 +235,7 @@
 	var/mob/living/carbon/human/H = usr
 	if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(usr, SPAN_DANGER("You have no idea how to use this..."))
-		return;
+		return
 
 	if(falloff_mode == EXPLOSION_FALLOFF_SHAPE_LINEAR)
 		falloff_mode = EXPLOSION_FALLOFF_SHAPE_EXPONENTIAL

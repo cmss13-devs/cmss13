@@ -51,7 +51,6 @@ var/global/marines_assigned = 0
 											/datum/job/command,
 											/datum/job/civilian,
 											/datum/job/logistics,
-											/datum/job/logistics/tech,
 											/datum/job/marine,
 											/datum/job/antag,
 											/datum/job/distress,

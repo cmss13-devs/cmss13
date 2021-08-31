@@ -93,7 +93,7 @@ mob/living/carbon/human/proc/handle_pain()
 	var/maxdam = 0
 	var/dam
 	var/obj/limb/damaged_organ = null
-	for(var/obj/limb/E in limbs)
+	for(var/obj/limb/E as anything in limbs)
 		/*
 		Amputated, dead, or missing limbs don't cause pain messages.
 		Broken limbs that are also splinted do not cause pain messages either.
@@ -118,7 +118,7 @@ mob/living/carbon/human/proc/handle_pain()
 
 	// Damage to internal organs hurts a lot.
 	var/obj/limb/parent
-	for(var/datum/internal_organ/I in internal_organs)
+	for(var/datum/internal_organ/I as anything in internal_organs)
 		if(I.damage > 2 && prob(2))
 			parent = get_limb(I.parent_limb)
 			custom_pain("You feel a sharp pain in your [parent.display_name]!", 1)

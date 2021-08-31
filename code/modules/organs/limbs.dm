@@ -528,7 +528,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.recalculate_move_delay = TRUE
 
 	var/wound_disappeared = FALSE
-	for(var/datum/wound/W in wounds)
+	for(var/datum/wound/W as anything in wounds)
 		// we don't care about wounds after we heal them. We are not an antag simulator
 		if(W.damage <= 0 && !W.internal)
 			wounds -= W
@@ -568,9 +568,9 @@ This function completely restores a damaged organ to perfect condition.
 			// making it look prettier on scanners
 			heal_amt = round(heal_amt,0.1)
 
-			if(istype(W, /datum/wound/bruise) || istype(W, /datum/wound/cut))
+			if(W.damage_type == BRUISE || W.damage_type == CUT)
 				owner.pain.apply_pain(-heal_amt, BRUTE)
-			else if(istype(W, /datum/wound/burn))
+			else if(W.damage_type == BURN)
 				owner.pain.apply_pain(-heal_amt, BURN)
 			else
 				owner.pain.recalculate_pain()
@@ -590,7 +590,7 @@ This function completely restores a damaged organ to perfect condition.
 	brute_dam = 0
 	burn_dam = 0
 
-	for(var/datum/wound/W in wounds)
+	for(var/datum/wound/W as anything in wounds)
 		if(W.damage_type == CUT || W.damage_type == BRUISE)
 			brute_dam += W.damage
 		else if(W.damage_type == BURN)

@@ -33,8 +33,6 @@
 
 	else nutrition = NUTRITION_NORMAL //synthetics are never hungry
 
-	//updatehealth() moved to Life()
-
 	return //TODO: DEFERRED
 
 /mob/living/carbon/human/proc/handle_necro_chemicals_in_body()

@@ -556,6 +556,7 @@ IN_USE						used for vending/denying
 		ui_interact(usr) //updates the nanoUI window
 
 /obj/structure/machinery/cm_vending/gear/proc/handle_points(var/mob/living/carbon/human/H, var/list/L)
+	. = TRUE
 	var/cost = L[2]
 	if(use_points)
 		if(use_snowflake_points)
@@ -579,7 +580,6 @@ IN_USE						used for vending/denying
 			to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
 			vend_fail()
 			return FALSE
-	return TRUE
 
 /obj/structure/machinery/cm_vending/gear/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

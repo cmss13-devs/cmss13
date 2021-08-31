@@ -222,6 +222,7 @@
 		ui.set_auto_update(0)
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/handle_points(var/mob/living/carbon/human/H, var/list/L)
+	. = TRUE
 	if(available_categories)
 		if(!(available_categories & L[4]))
 			to_chat(usr, SPAN_WARNING("Module from this category is already taken."))

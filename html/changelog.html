@@ -61,6 +61,15 @@
 	</tr>
 </table>
 
+			<h2 class="date">31 August 2021</h2>
+			<h3 class="author">alardun updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Significantly increased amount of repair done via nailgun.</li>
+				<li class="bugfix">Nailgun on-hit bonus now applies to larger xenos once again. This bonus (and the one below) only applies if the nail hit a mob while they're in front of an obstacle.</li>
+				<li class="tweak">Nailgun on-hit superslowdown is drastically cut down on larger xenos.</li>
+				<li class="tweak">Yautja and other mobs with the SUPER_STRONG trait are now treated as larger Xenomorph for nailgun-related resistance.</li>
+			</ul>
+
 			<h2 class="date">30 August 2021</h2>
 			<h3 class="author">Nanu updated:</h3>
 			<ul class="changes bgimages16">
@@ -646,44 +655,6 @@
 			<ul class="changes bgimages16">
 				<li class="rscadd">Marines can now remove the jacket from their BDUs. So far only works on all non-snow ground pounder BDU types and basic UPP BDU.</li>
 				<li class="tweak">Restored old, higher contrast, skull facepaint.</li>
-			</ul>
-
-			<h2 class="date">29 June 2021</h2>
-			<h3 class="author">NeroCavalier updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Helmets now have a verb that hides your hair to prevent it from clipping through. It is off by default.</li>
-			</ul>
-			<h3 class="author">TheDonkified updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">SMG starts experiencing falloff after travelling 4 tiles. Each tile past its effective range reduces damage by 10. This mainly applies to basic SMG ammo, AP, and HV.</li>
-				<li class="tweak">Pistols starts experiencing falloff after travelling 4 tiles. Each tile past its effective range reduces damage by 7.</li>
-				<li class="tweak">Rifles starts experiencing falloff after travelling 7 tiles. Each tile past its effective range reduces damage by 5.</li>
-				<li class="tweak">Removed damage falloff values for ammo types that did not utilize it.</li>
-				<li class="tweak">Accuracy penalty for ammo type being past its accurate range increased from 5 to 10.</li>
-				<li class="tweak">Added 0.5 seconds to MOU fire delay group.</li>
-			</ul>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscdel">Removed unused target zone override for item melee.</li>
-				<li class="rscdel">Removed vestigial impact icon system, since nothing used it. Commented shotgun slug/mateba hits didn't make sense; they were blatantly lethal, yet even non-fatal hits caused displayed them.</li>
-				<li class="tweak">Tweaked Triiodine's mateba/shotgun slug headshot graphics into light, medium, and heavy headshot effects, assigned them to bullets accordingly. Shotgun = heavy, small pistols = light, most things = medium.</li>
-				<li class="rscadd">Executions and suicide now have gory wound effects which are layered above hair but below hats/helmets. You know what you have to do.</li>
-				<li class="tweak">Suicide can no longer decap, fiddled with suicide/execution damage a little.</li>
-			</ul>
-			<h3 class="author">Vicacrov updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Xenomorph nest - Once a humanoid is nested, it gets a 4-second timer. While this timer is active, the human cannot be unnested by Xenomorphs, to avoid accidental unnesting. This timer does NOT affect humans, they can still instantly unnest each other.</li>
-				<li class="rscdel">Xenomorph nest - Removed the deprecated re-nesting cooldown that was added to combat the infinite unnesting-renesting cycle, as marines can no longer break out of their nests.</li>
-				<li class="bugfix">Xenomorph nest - Fixed a bug where human mobs without a mind did not get their lights and motion detectors turned off, once being nested.</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Bracer shock checks for species group now instead of species name.</li>
-				<li class="tweak">Hunter verbs now check for the relevant trait instead of species.</li>
-			</ul>
-			<h3 class="author">monkeysfist updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Added more posters.</li>
 			</ul>
 </div>
 </body>

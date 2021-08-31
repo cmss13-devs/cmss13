@@ -29,7 +29,7 @@
 	var/list/wall_connections = list("0", "0", "0", "0")
 	var/neighbors_list = 0
 	var/max_temperature = 1800 //K, walls will take damage if they're next to a fire hotter than this
-	var/repair_materials = list("wood"= 0.05, "metal" = 0.1, "plasteel" = 0.2) //Max health % recovered on a nailgun repair
+	var/repair_materials = list("wood"= 0.075, "metal" = 0.15, "plasteel" = 0.3) //Max health % recovered on a nailgun repair
 
 	var/d_state = 0 //Normal walls are now as difficult to remove as reinforced walls
 

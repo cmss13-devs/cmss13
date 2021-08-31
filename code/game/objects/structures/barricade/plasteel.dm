@@ -17,7 +17,7 @@
 	density = 0
 	closed = TRUE
 	can_wire = TRUE
-	repair_materials = list("plasteel" = 0.2)
+	repair_materials = list("plasteel" = 0.3)
 
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/tool_cooldown = 0 //Delay to apply tools to prevent spamming

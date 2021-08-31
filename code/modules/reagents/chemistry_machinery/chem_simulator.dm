@@ -12,9 +12,6 @@
 #define SIMULATION_STAGE_5		5
 #define SIMULATION_STAGE_BEGIN	6
 
-//gets the max property level for amplification/relation at the current techtree level, equal to 6 at TL1 and 10 at TL2
-#define GET_MAX_TECH_LEVEL(T) 	T.tier?.tier*TECHTREE_LEVEL_MULTIPLIER + 2
-
 /obj/structure/machinery/chem_simulator
 	name = "Synthesis Simulator"
 	desc = "This computer uses advanced algorithms to perform simulations of reagent properties, for the purpose of calculating the synthesis required to make a new variant."
@@ -50,7 +47,6 @@
 	var/creation_cost = 0
 	var/min_creation_cost = 0
 	var/creation_od_level = 10 //a cache for new_od_level when switching between modes
-	var/datum/techtree/T //used for max level calculations based on the marine techweb
 
 /obj/structure/machinery/chem_simulator/Initialize()
 	. = ..()
@@ -300,11 +296,10 @@
 		else
 			creation_name = newname
 	else if(href_list["set_level"] && target_property)
-		T = GET_TREE(TREE_MARINE)
 		var/level_to_set = 1
-		if(T.tier?.tier < 2)
+		if(chemical_data.clearance_level <= 2)
 			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4))
-		else if(T.tier?.tier < 3)
+		else if(chemical_data.clearance_level <= 4)
 			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8))
 		else
 			level_to_set = tgui_input_list(usr, "Set target level for [target_property.name]:","[src]", list(1,2,3,4,5,6,7,8,9,10))
@@ -546,9 +541,8 @@
 				status_bar = "TARGET PROPERTY CAN NOT BE SIMULATED"
 				return FALSE
 			if(mode == MODE_AMPLIFY)
-				T = GET_TREE(TREE_MARINE)
-				if(target_property.level >= GET_MAX_TECH_LEVEL(T) && T.tier?.tier < 3)
-					status_bar = "TECH LEVEL INSUFFICIENT FOR AMPLIFICATION"
+				if(target_property.level >= chemical_data.clearance_level*TECHTREE_LEVEL_MULTIPLIER + 2 && chemical_data.clearance_level < 5)
+					status_bar = "CLEARANCE INSUFFICIENT FOR AMPLIFICATION"
 					return FALSE
 		if(target && length(target.data.properties) < 2)
 			status_bar = "TARGET COMPLEXITY IMPROPER FOR RELATION"
@@ -568,7 +562,6 @@
 					if(reference_property.category & PROPERTY_TYPE_UNADJUSTABLE)
 						status_bar = "REFERENCE PROPERTY CAN NOT BE SIMULATED"
 						return FALSE
-					T = GET_TREE(TREE_MARINE)
 	if(mode == MODE_CREATE)
 		if(!LAZYLEN(creation_template))
 			status_bar = "TEMPLATE IS EMPTY"
@@ -741,5 +734,3 @@
 #undef MODE_SUPPRESS
 #undef MODE_RELATE
 #undef MODE_CREATE
-
-#undef GET_MAX_TECH_LEVEL

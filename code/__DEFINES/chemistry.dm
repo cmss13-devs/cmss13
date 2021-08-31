@@ -234,7 +234,7 @@
 
 //defines for research level multipliers
 #define RESEARCH_LEVEL_INCREASE_MULTIPLIER	3 //Scales cost of increasing clearance using credits
-#define TECHTREE_LEVEL_MULTIPLIER			4 //Scales tech level to max amplification level
+#define TECHTREE_LEVEL_MULTIPLIER			2 //Scales tech level to max amplification level
 
 //Property cost multipliers for the chemical simulator
 #define PROPERTY_COST_MAX					8

@@ -227,7 +227,7 @@ var/waiting_for_drop_votes = 0
 	if(istype(M,/mob/living/carbon/human)) //somehow?
 		H = M
 		if(H.contents.len)
-			for(var/I in H.contents)
+			for(var/obj/item/I in H.contents)
 				qdel(I)
 		H.forceMove(picked)
 	else
@@ -240,6 +240,8 @@ var/waiting_for_drop_votes = 0
 		H.mind = new(H.key)
 		H.mind_initialize()
 
+	H.name = H.real_name
+
 	H.skills = null //no restriction on what the contestants can do
 
 	H.KnockDown(15)
@@ -248,8 +250,7 @@ var/waiting_for_drop_votes = 0
 	var/randjob = rand(0,10)
 	switch(randjob)
 		if(0) //colonial marine
-			if(prob(50))
-				H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 		if(1) //MP
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
@@ -284,6 +285,7 @@ var/waiting_for_drop_votes = 0
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), WEAR_FEET)
 		if(8) //Assassin!
+			H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/laceup(H), WEAR_FEET)
 		if(9) //Corporate guy
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)

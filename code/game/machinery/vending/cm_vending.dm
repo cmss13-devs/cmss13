@@ -579,6 +579,7 @@ IN_USE						used for vending/denying
 			to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
 			vend_fail()
 			return FALSE
+	return TRUE
 
 /obj/structure/machinery/cm_vending/gear/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)

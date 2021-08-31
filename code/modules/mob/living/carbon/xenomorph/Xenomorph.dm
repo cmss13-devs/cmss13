@@ -315,7 +315,32 @@
 
 	update_icon_source()
 
-	update_caste()
+	if(caste_type && GLOB.xeno_datum_list[caste_type])
+		caste = GLOB.xeno_datum_list[caste_type]
+	else
+		to_world("something went very wrong")
+		return
+
+	acid_splash_cooldown = caste.acid_splash_cooldown
+
+	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
+		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
+			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+		RegisterSignal(src, list(
+			COMSIG_LIVING_FLAMER_CROSSED,
+			COMSIG_LIVING_FLAMER_FLAMED,
+		), .proc/flamer_crossed_immune)
+	else
+		UnregisterSignal(src, list(
+			COMSIG_LIVING_PREIGNITION,
+			COMSIG_LIVING_FLAMER_CROSSED,
+			COMSIG_LIVING_FLAMER_FLAMED,
+		))
+
+	recalculate_everything()
+
+	if(mob_size < MOB_SIZE_BIG)
+		mob_flags |= SQUEEZE_UNDER_VEHICLES
 
 	generate_name()
 
@@ -420,38 +445,10 @@
 /mob/living/carbon/Xenomorph/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
 
-/mob/living/carbon/Xenomorph/proc/update_caste()
-	if(caste_type && GLOB.xeno_datum_list[caste_type])
-		caste = GLOB.xeno_datum_list[caste_type]
-	else
-		to_world("something went very wrong")
-		return
-
-	acid_splash_cooldown = caste.acid_splash_cooldown
-
-	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
-		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
-		RegisterSignal(src, list(
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED,
-		), .proc/flamer_crossed_immune)
-	else
-		UnregisterSignal(src, list(
-			COMSIG_LIVING_PREIGNITION,
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED,
-		))
-
-	recalculate_everything()
-
-	if(mob_size < MOB_SIZE_BIG)
-		mob_flags |= SQUEEZE_UNDER_VEHICLES
-
 /mob/living/carbon/Xenomorph/proc/fire_immune(mob/living/L)
 	SIGNAL_HANDLER
 
-	if(L.fire_reagent?.fire_penetrating)
+	if(L.fire_reagent?.fire_penetrating && !burrow)
 		return
 
 	return COMPONENT_CANCEL_IGNITION

@@ -89,32 +89,18 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
-"gH" = (
-/obj/effect/decal/sand_overlay/sand1/corner1,
-/turf/open/desert/dirt{
-	icon_state = "dirt2"
-	},
-/area/desert_dam/exterior/valley/valley_crashsite)
 "gX" = (
 /obj/item/hunting_trap{
 	desc = "A bizarre alien device used for trapping and killing prey.";
 	name = "Alien Mine"
 	},
 /turf/open/floor/sandstone/runed,
-/area/desert_dam/exterior/valley/valley_crashsite)
+/area/desert_dam/interior/caves/temple)
 "hh" = (
 /turf/closed/wall/mineral/sandstone/runed/decor{
 	hull = 1
 	},
 /area/desert_dam/interior/caves/temple)
-"hF" = (
-/obj/effect/decal/sand_overlay/sand1{
-	dir = 6
-	},
-/turf/open/desert/dirt{
-	icon_state = "dirt2"
-	},
-/area/desert_dam/exterior/valley/valley_crashsite)
 "ik" = (
 /obj/structure/showcase{
 	desc = "An ancient, dusty tomb with strange alien writing. It's best not to touch it.";
@@ -144,6 +130,11 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"jl" = (
+/obj/structure/surface/rack,
+/obj/item/device/flashlight/lantern,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
 "jO" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -200,6 +191,11 @@
 	icon_state = "multi_tiles"
 	},
 /area/desert_dam/interior/caves/temple)
+"mY" = (
+/turf/open/desert/dirt{
+	icon_state = "rock1"
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
 "oq" = (
 /obj/structure/bed/chair/comfy/black,
 /turf/open/floor/strata{
@@ -207,6 +203,11 @@
 	icon_state = "multi_tiles"
 	},
 /area/desert_dam/interior/caves/temple)
+"oH" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
 "oM" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -260,7 +261,11 @@
 	pixel_x = 31
 	},
 /turf/open/floor/sandstone/runed,
-/area/desert_dam/exterior/valley/valley_crashsite)
+/area/desert_dam/interior/caves/temple)
+"qE" = (
+/obj/item/device/flashlight/lantern,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
 "qV" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/desert/dirt{
@@ -342,7 +347,22 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"uO" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 9;
+	icon_state = "p_stair_full"
+	},
+/turf/open/desert/dirt{
+	icon_state = "dirt2"
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
 "vb" = (
+/obj/structure/stairs/perspective{
+	color = "#b29082";
+	dir = 8;
+	icon_state = "p_stair_full"
+	},
 /turf/open/desert/dirt{
 	icon_state = "rock1"
 	},
@@ -378,9 +398,6 @@
 "zg" = (
 /turf/closed/wall/mineral/sandstone/runed/decor,
 /area/desert_dam/interior/caves/temple)
-"Ac" = (
-/turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_crashsite)
 "An" = (
 /obj/structure/platform_decoration/mineral/sandstone/runed,
 /turf/open/gm/river/desert/deep,
@@ -424,10 +441,13 @@
 /area/desert_dam/interior/caves/temple)
 "Co" = (
 /turf/open/desert/dirt{
-	dir = 9;
-	icon_state = "desert_transition_edge1"
+	icon_state = "dirt2"
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
+"Dc" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
 "DL" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -483,6 +503,9 @@
 	icon_state = "squareswood"
 	},
 /area/desert_dam/interior/caves/temple)
+"Ik" = (
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/temple)
 "Ix" = (
 /obj/structure/surface/rack{
 	color = "#6b675e";
@@ -534,6 +557,10 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"JC" = (
+/obj/item/clothing/head/hardhat,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
 "JM" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 4
@@ -608,8 +635,12 @@
 /obj/item/tool/kitchen/utensil/spoon,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"NL" = (
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
+/turf/open/desert/rock,
+/area/desert_dam/exterior/valley/valley_crashsite)
 "NV" = (
-/turf/open/floor/sandstone/runed,
+/turf/open/desert/rock,
 /area/desert_dam/exterior/valley/valley_crashsite)
 "Oj" = (
 /obj/structure/bed/alien{
@@ -633,6 +664,11 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"PO" = (
+/obj/structure/surface/rack,
+/obj/item/tool/pickaxe,
+/turf/open/desert/rock,
+/area/desert_dam/interior/caves/central_caves)
 "PP" = (
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
@@ -707,16 +743,22 @@
 	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"ZI" = (
+/turf/open/desert/dirt{
+	dir = 4;
+	icon_state = "desert_transition_corner1"
+	},
+/area/desert_dam/exterior/valley/valley_crashsite)
 
 (1,1,1) = {"
-EB
-EB
-EB
-gH
-hF
-Ac
+NV
+NV
+NV
 Co
-EB
+Co
+Co
+Co
+ZI
 mA
 mA
 mA
@@ -725,66 +767,66 @@ mA
 mA
 mA
 mA
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
+MH
+MH
+MH
+MH
+MH
+MH
+MH
+MH
 "}
 (2,1,1) = {"
-td
-EB
-EB
-hF
-Ac
+NV
+NV
+NL
 Co
-EB
-EB
-EB
+Co
+Co
+uO
 vb
 vb
 vb
 vb
-EB
-EB
-EB
-EB
-EB
+vb
+vb
+vb
+vb
+vb
+MH
+MH
 Li
 Li
 Li
 Li
-EB
-EB
+MH
+MH
 "}
 (3,1,1) = {"
+mY
+mY
+mY
+mY
+mY
+mY
 EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-EB
-NV
-NV
+mB
+mB
+mB
+mB
+mB
 gX
-EB
-EB
-EB
-EB
+mB
+mB
+mB
+MH
+MH
 Li
 Li
 Li
 Li
-Li
-EB
-EB
+MH
+MH
 "}
 (4,1,1) = {"
 EB
@@ -794,26 +836,26 @@ EB
 EB
 EB
 EB
-EB
-EB
-EB
+mB
+mB
+mB
 qv
-NV
+mB
 qv
-EB
-EB
-EB
-EB
+mB
+mB
+mB
+MH
 Li
 Li
 Li
 Li
 Li
 Li
-EB
+MH
 "}
 (5,1,1) = {"
-EB
+td
 EB
 EB
 EB
@@ -827,20 +869,20 @@ MH
 uK
 MH
 MH
-EB
-EB
-EB
+mB
+mB
+MH
 An
 wi
 wi
 wi
 wi
 tn
-EB
+MH
 "}
 (6,1,1) = {"
-EB
-EB
+Dc
+jl
 EB
 EB
 EB
@@ -853,20 +895,20 @@ mB
 mB
 mB
 MH
-EB
-EB
-EB
-EB
+mB
+mB
+MH
+MH
 mB
 mB
 mB
 mB
-EB
-EB
+MH
+MH
 "}
 (7,1,1) = {"
-EB
-EB
+td
+PO
 EB
 EB
 EB
@@ -879,8 +921,8 @@ mB
 mB
 mB
 WV
-EB
-EB
+mB
+mB
 MH
 fX
 yT
@@ -891,9 +933,9 @@ MH
 EB
 "}
 (8,1,1) = {"
-EB
-EB
-EB
+td
+td
+td
 EB
 EB
 EB
@@ -905,8 +947,8 @@ mB
 mB
 mB
 MH
-EB
-EB
+mB
+mB
 MH
 mB
 mB
@@ -917,12 +959,12 @@ MH
 EB
 "}
 (9,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
+td
+td
+td
+td
+oH
+PO
 MH
 mn
 mB
@@ -943,12 +985,12 @@ MH
 EB
 "}
 (10,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
+td
+td
+td
+td
+td
+td
 WV
 mB
 mB
@@ -969,12 +1011,12 @@ kI
 EB
 "}
 (11,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
+td
+td
+Dc
+td
+td
+td
 MH
 mB
 mB
@@ -995,12 +1037,12 @@ MH
 EB
 "}
 (12,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
+td
+td
+JC
+td
+td
+td
 MH
 XQ
 IV
@@ -1021,12 +1063,12 @@ MH
 EB
 "}
 (13,1,1) = {"
-EB
-EB
-EB
-EB
-EB
-EB
+td
+td
+td
+td
+qE
+td
 MH
 MH
 MH
@@ -1044,7 +1086,7 @@ mB
 Gz
 aZ
 MH
-EB
+Ik
 "}
 (14,1,1) = {"
 EB

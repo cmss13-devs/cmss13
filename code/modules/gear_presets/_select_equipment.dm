@@ -19,7 +19,7 @@
 	var/role_comm_title
 	var/minimum_age
 	var/faction = FACTION_NEUTRAL
-	var/faction_group
+	var/list/faction_group
 
 	//Uniform data
 	var/utility_under = null
@@ -110,7 +110,7 @@
 		W.name += " ([assignment])"
 	W.access = access.Copy(1, 0)
 	W.faction = faction
-	W.faction_group = faction_group
+	W.faction_group = faction_group.Copy()
 	W.assignment = assignment
 	W.rank = rank
 	W.registered_name = H.real_name
@@ -120,7 +120,7 @@
 	W.uniform_sets = uniform_sets
 	H.equip_to_slot_or_del(W, WEAR_ID)
 	H.faction = faction
-	H.faction_group = faction_group
+	H.faction_group = faction_group.Copy()
 	if(H.mind)
 		H.mind.name = H.real_name
 		if(H.mind.initial_account)

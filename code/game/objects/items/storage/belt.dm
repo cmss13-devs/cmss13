@@ -459,18 +459,25 @@
 /obj/item/storage/belt/shotgun/van_bandolier
 	name = "two bore bandolier"
 	desc = "A leather bandolier designed to hold extremely heavy shells. Can be attached to armour, worn over the back, or attached to belt loops."
-	icon_state = "van_bandolier_10"
-	item_state = "van_bandolier_10"
+	icon_state = "van_bandolier_5"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	storage_slots = null
 	max_storage_space = 20
 	can_hold = list(/obj/item/ammo_magazine/handful/shotgun/twobore)
 	has_gamemode_skin = FALSE
+	item_state_slots = list(
+		WEAR_J_STORE = "van_bandolier_10",
+		WEAR_BACK = "van_bandolier_10",
+		WEAR_WAIST = "van_bandolier_10"
+		)
 
 /obj/item/storage/belt/shotgun/van_bandolier/update_icon(flap = FALSE)
 	var/mob/living/carbon/human/user = loc
-	icon_state = "van_bandolier_[length(contents)]"
-	item_state = icon_state
+	icon_state = "van_bandolier_[round(length(contents) * 0.5, 1)]"
+	var/new_state = "van_bandolier_[length(contents)]"
+	for(var/I in item_state_slots)
+		item_state_slots[I] = new_state
+
 	if(!istype(user))
 		return
 	if(src == user.s_store)

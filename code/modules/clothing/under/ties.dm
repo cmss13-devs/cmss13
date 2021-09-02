@@ -220,7 +220,7 @@
 				else
 					INVOKE_ASYNC(H, /mob.proc/emote, "me", 1, "winces.")
 
-	if(U.can_attach_accessory(src) && user.drop_held_item()) 
+	if(U.can_attach_accessory(src) && user.drop_held_item())
 		U.attach_accessory(H, src, TRUE)
 
 /obj/item/clothing/accessory/medal/can_attach_to(mob/user, obj/item/clothing/C)
@@ -350,115 +350,6 @@
 	name = "\improper Falling Falcons patch"
 	desc = "A fire resistant shoulder patch, worn by the men and women of the Falling Falcons, the 2nd battalion of the 4th brigade of the USCM."
 	icon_state = "fallingfalconspatch"
-
-//ranks
-/obj/item/clothing/accessory/ranks
-	name = "rank pins"
-	desc = "A set of rank pins, used to denote the paygrade of someone within the military."
-	icon_state = "ranks_enlisted"
-	var/rank = "Private"
-	var/rank_short = "E1"
-	slot = ACCESSORY_SLOT_RANK
-	high_visibility = TRUE
-	gender = PLURAL
-	jumpsuit_hide_states = UNIFORM_JACKET_REMOVED
-
-/obj/item/clothing/accessory/ranks/New()
-	..()
-	name = "[initial(name)] ([rank_short])"
-	desc = "[initial(desc)] This one is for the rank <b>[get_paygrades(rank_short, 1)]</b>"
-
-/obj/item/clothing/accessory/ranks/e1
-	rank_short = "E1"
-
-/obj/item/clothing/accessory/ranks/e2
-	rank_short = "E2"
-
-/obj/item/clothing/accessory/ranks/e3
-	rank_short = "E3"
-
-/obj/item/clothing/accessory/ranks/e4
-	rank_short = "E4"
-	icon_state = "ranks_nco"
-
-/obj/item/clothing/accessory/ranks/e5
-	rank_short = "E5"
-	icon_state = "ranks_nco"
-
-/obj/item/clothing/accessory/ranks/e6
-	rank_short = "E6"
-	icon_state = "ranks_snco"
-
-/obj/item/clothing/accessory/ranks/e7
-	rank_short = "E7"
-	icon_state = "ranks_snco"
-
-/obj/item/clothing/accessory/ranks/e8
-	rank_short = "E8"
-	icon_state = "ranks_snco"
-
-/obj/item/clothing/accessory/ranks/e9
-	rank_short = "E9"
-	icon_state = "ranks_snco"
-
-/obj/item/clothing/accessory/ranks/e9e
-	rank_short = "E9E"
-	icon_state = "ranks_snco"
-
-/obj/item/clothing/accessory/ranks/o1
-	name = "rank boards"
-	rank_short = "O1"
-	icon_state = "ranks_officer"
-
-/obj/item/clothing/accessory/ranks/o2
-	name = "rank boards"
-	rank_short = "O2"
-	icon_state = "ranks_officer"
-
-/obj/item/clothing/accessory/ranks/o3
-	name = "rank boards"
-	rank_short = "O3"
-	icon_state = "ranks_officer"
-
-/obj/item/clothing/accessory/ranks/o4
-	name = "rank boards"
-	rank_short = "O4"
-	icon_state = "ranks_seniorofficer"
-
-/obj/item/clothing/accessory/ranks/o5
-	name = "rank boards"
-	rank_short = "O5"
-	icon_state = "ranks_flagofficer"
-
-/obj/item/clothing/accessory/ranks/o5e
-	name = "rank boards"
-	rank_short = "O5E"
-	icon_state = "ranks_flagofficer"
-
-/obj/item/clothing/accessory/ranks/o6
-	name = "rank boards"
-	rank_short = "O6"
-	icon_state = "ranks_flagofficer"
-
-/obj/item/clothing/accessory/ranks/o7
-	name = "rank boards"
-	rank_short = "O7"
-	icon_state = "ranks_flagofficer"
-
-/obj/item/clothing/accessory/ranks/o8
-	name = "rank boards"
-	rank_short = "O8"
-	icon_state = "ranks_flagofficer"
-
-/obj/item/clothing/accessory/ranks/o9
-	name = "rank boards"
-	rank_short = "O9"
-	icon_state = "ranks_flagofficer"
-
-/obj/item/clothing/accessory/ranks/o9e
-	name = "rank boards"
-	rank_short = "O9E"
-	icon_state = "ranks_flagofficer"
 
 //holsters
 /obj/item/clothing/accessory/holster

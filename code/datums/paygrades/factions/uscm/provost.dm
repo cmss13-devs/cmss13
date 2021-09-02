@@ -2,48 +2,43 @@
 	name = "Provost Paygrade"
 
 /datum/paygrade/provost/officer
-	paygrade = "PvO"
-	name = "Officer"
-	prefix = "SFC."
-	rank_pin = /obj/item/clothing/accessory/ranks/e7
+	paygrade = "PvE7"
+	name = "Chief Petty Officer"
+	prefix = "CPO."
+	rank_pin = /obj/item/clothing/accessory/ranks/navy/e7/pvst
 
 /datum/paygrade/provost/enforcer
-	paygrade = "PvE"
-	name = "Enforcer"
-	prefix = "GySGT."
-	rank_pin = /obj/item/clothing/accessory/ranks/e8
+	paygrade = "PvE8"
+	name = "Senior Chief Petty Officer"
+	prefix = "SCPO."
+	rank_pin = /obj/item/clothing/accessory/ranks/navy/e8/pvst
 
 /datum/paygrade/provost/tml
-	paygrade = "PvTML"
-	name = "Provost Team Leader"
-	prefix = "SGM."
-	rank_pin = /obj/item/clothing/accessory/ranks/e9
-
-/datum/paygrade/provost/advisor
-	paygrade = "PvA"
-	name = "Provost Advisor"
-	prefix = "SGM."
-	rank_pin = /obj/item/clothing/accessory/ranks/e9
+	paygrade = "PvE9"
+	name = "Master Chief Petty Officer"
+	prefix = "MCPO."
+	rank_pin = /obj/item/clothing/accessory/ranks/navy/e9/pvst
 
 /datum/paygrade/provost/inspector
 	paygrade = "PvI"
 	name = "Inspector"
 	prefix = "Insp."
+	rank_pin = /obj/item/clothing/accessory/ranks/special/insp
 
 /datum/paygrade/provost/marshal
-	paygrade = "PvM"
-	name = "Provost Marshal"
+	paygrade = "PvO8"
+	name = "Rear Admiral"
 	prefix = "RADM."
-	rank_pin = /obj/item/clothing/accessory/ranks/o7
+	rank_pin = /obj/item/clothing/accessory/ranks/navy/o8/pvst
 
 /datum/paygrade/provost/sectormarshal
-	paygrade = "PvSM"
-	name = "Provost Sector Marshal"
+	paygrade = "PvO9"
+	name = "Vice Admiral"
 	prefix = "VADM."
-	rank_pin = /obj/item/clothing/accessory/ranks/o8
+	rank_pin = /obj/item/clothing/accessory/ranks/navy/o9/pvst
 
 /datum/paygrade/provost/chiefmarshal
 	paygrade = "PvCM"
 	name = "Provost Chief Marshal"
-	prefix = "ADM."
-	rank_pin = /obj/item/clothing/accessory/ranks/o9
+	prefix = "PCM."
+	rank_pin = /obj/item/clothing/accessory/ranks/navy/o10c/pvst

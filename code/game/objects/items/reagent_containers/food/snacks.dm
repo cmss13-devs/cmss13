@@ -756,7 +756,7 @@
 	filling_color = "#D63C3C"
 
 /obj/item/reagent_container/food/snacks/human/burger
-	name = "-burger"
+	name = "burger"
 	desc = "A bloody burger."
 	icon_state = "hamburger"
 
@@ -1083,7 +1083,7 @@
 
 
 /obj/item/reagent_container/food/snacks/human/kabob
-	name = "-kabob"
+	name = "kabob"
 	icon_state = "kabob"
 	desc = "A human meat, on a stick."
 	trash = /obj/item/stack/rods

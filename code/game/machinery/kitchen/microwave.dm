@@ -59,9 +59,6 @@
 //********************/
 
 /obj/structure/machinery/microwave/attackby(var/obj/item/O as obj, var/mob/user as mob)
-	if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
-		. = ..()
-		return
 	if(broken > 0)
 		if(broken == 2 && HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // If it's broken and they're using a screwdriver
 			user.visible_message( \
@@ -71,7 +68,7 @@
 			if (do_after(user,20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 				user.visible_message( \
 					SPAN_NOTICE("[user] fixes part of the microwave."), \
-					SPAN_NOTICE("You have fixed part of the microwave.") \
+					SPAN_NOTICE("You have fixed part of the microwave. Now use a wrench!") \
 				)
 				src.broken = 1 // Fix it a bit
 		else if(src.broken == 1 && HAS_TRAIT(O, TRAIT_TOOL_WRENCH)) // If it's broken and they're doing the wrench
@@ -89,8 +86,14 @@
 				dirty = 0 // just to be sure
 				flags_atom = OPENCONTAINER
 		else
-			to_chat(user, SPAN_DANGER("It's broken!"))
+			if(broken == 2)
+				to_chat(user, SPAN_DANGER("It's broken! Use a screwdriver and a wrench to fix it!"))
+			else
+				to_chat(user, SPAN_DANGER("It's broken! Use a wrench to fix it!"))
 			return 1
+	else if(HAS_TRAIT(O, TRAIT_TOOL_WRENCH))
+		. = ..()
+		return
 	else if(dirty==100) // The microwave is all dirty so can't be used!
 		if(istype(O, /obj/item/reagent_container/spray/cleaner)) // If they're trying to clean it then let them
 			user.visible_message( \
@@ -107,7 +110,7 @@
 				icon_state = "mw"
 				flags_atom = OPENCONTAINER
 		else //Otherwise bad luck!!
-			to_chat(user, SPAN_DANGER("It's dirty!"))
+			to_chat(user, SPAN_DANGER("It's dirty! Clean it with a spray cleaner!"))
 			return 1
 	else if(operating)
 		to_chat(user, SPAN_DANGER("It's running!"))

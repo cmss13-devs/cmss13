@@ -23,7 +23,7 @@
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to Marine Law and High Command!"))
 	else
-		arm_equipment(H, "Provost Officer (PvO)", TRUE, TRUE)
+		arm_equipment(H, "Provost Officer (PvE7)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a member of a Provost Inspection Team!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command or your Inspector!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to your superior, Marine Law and High Command!"))
@@ -59,12 +59,12 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
-		arm_equipment(H, "Provost Team Leader (PvTML)", TRUE, TRUE)
+		arm_equipment(H, "Provost Team Leader (PvE9)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the leader of a Provost Enforcer Team!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to Marine Law and the Provost Marshal!"))
 	else
-		arm_equipment(H, "Provost Enforcer (PvE)", TRUE, TRUE)
+		arm_equipment(H, "Provost Enforcer (PvE8)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a member of a Provost Enforcer Team!"))
 		to_chat(H, SPAN_ROLE_BODY("Follow any orders directly from High Command or your Team Leader!"))
 		to_chat(H, SPAN_ROLE_BODY("You only answer to your superior, Marine Law and High Command!"))

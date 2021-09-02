@@ -197,7 +197,7 @@ datum/preferences/proc/randomize_skin_color()
 	preview_dummy.update_hair()
 
 	arm_equipment(preview_dummy, J, FALSE, FALSE)
-	
+
 	preview_front = new()
 	owner.screen |= preview_front
 	preview_front.icon_state = "blank"
@@ -209,7 +209,7 @@ datum/preferences/proc/job_pref_to_gear_preset()
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)
 			high_priority = job
-	
+
 	switch(high_priority)
 		if(JOB_SQUAD_MARINE)
 			return "USCM Cryo Private (Equipped)"
@@ -266,7 +266,7 @@ datum/preferences/proc/job_pref_to_gear_preset()
 		if(JOB_NURSE)
 			return "USCM Nurse"
 		if(JOB_MESS_SERGEANT)
-			return "USCM Mess Sergeant (MS)"	
+			return "USCM Mess Sergeant (MS)"
 
 	return "USCM Cryo Private (Equipped)"
 

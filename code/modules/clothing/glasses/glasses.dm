@@ -21,6 +21,11 @@
 	var/req_skill_explicit = FALSE
 	var/hud_type //hud type the glasses gives
 
+/obj/item/clothing/glasses/Initialize(mapload, ...)
+	. = ..()
+	if(prescription)
+		AddElement(/datum/element/poor_eyesight_correction)
+
 /obj/item/clothing/glasses/get_icon_state(mob/user_mob, slot)
 	if(item_state_slots && item_state_slots[slot])
 		return item_state_slots[slot]
@@ -79,6 +84,7 @@
 		else if(hud_type && slot == WEAR_EYES)
 			var/datum/mob_hud/MH = huds[hud_type]
 			MH.add_hud_to(user)
+	
 	..()
 
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
@@ -105,7 +111,6 @@
 		playsound_client(user.client, toggle_on_sound, null, 75)
 
 	toggle_glasses_effect()
-
 
 /obj/item/clothing/glasses/science
 	name = "weird science goggles"

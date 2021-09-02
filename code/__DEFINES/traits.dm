@@ -124,6 +124,8 @@
 #define TRAIT_SIMPLE_DESC "t_simple_desc"
  /// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
+ /// If the mob has equipment that alleviates nearsightedness
+#define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
 
 
 
@@ -167,3 +169,5 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
  ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
+ ///Status trait coming from worn clothing
+#define TRAIT_SOURCE_CLOTHING "t_s_clothing"

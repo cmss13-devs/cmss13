@@ -513,7 +513,7 @@
 /obj/effect/xenomorph/acid_damage_delay/boiler_landmine/deal_damage()
 	var/total_hits = 0
 	for (var/obj/structure/barricade/B in loc)
-		B.take_acid_damage(damage*(1.2 + 0.55 * empowered))
+		B.take_acid_damage(damage*(1.15 + 0.55 * empowered))
 
 	for (var/mob/living/carbon/H in loc)
 		if (H.stat == DEAD)

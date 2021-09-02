@@ -4,7 +4,7 @@
 	icon_state = "metal_0"
 	health = 450
 	maxhealth = 450
-	burn_multiplier = 1.5
+	burn_multiplier = 1.15
 	brute_multiplier = 1
 	crusher_resistant = TRUE
 	force_level_absorption = 10
@@ -103,17 +103,15 @@
 
 				switch(upgrade)
 					if(BARRICADE_UPGRADE_BURN)
-						burn_multiplier = 0.5
-						brute_multiplier = 1.5
+						burn_multiplier = 0.75
 						upgraded = BARRICADE_UPGRADE_BURN
 						to_chat(user, SPAN_NOTICE("You applied a biohazardous upgrade."))
 					if(BARRICADE_UPGRADE_BRUTE)
-						brute_multiplier = 0.5
-						burn_multiplier = 2
+						brute_multiplier = 0.75
 						upgraded = BARRICADE_UPGRADE_BRUTE
 						to_chat(user, SPAN_NOTICE("You applied a reinforced upgrade."))
 					if(BARRICADE_UPGRADE_EXPLOSIVE)
-						explosive_multiplier = 0.5
+						explosive_multiplier = 0.75
 						upgraded = BARRICADE_UPGRADE_EXPLOSIVE
 						to_chat(user, SPAN_NOTICE("You applied an explosive upgrade."))
 

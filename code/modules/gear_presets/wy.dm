@@ -123,6 +123,7 @@
 	name = "Corporate - J - Director"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrade = "WY-XJ"
+	skills = /datum/skills/civilian/manager/director
 
 /datum/equipment_preset/wy/manager/director/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director(H), WEAR_BODY)

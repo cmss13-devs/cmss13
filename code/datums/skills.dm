@@ -242,6 +242,17 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
 	)
 
+/datum/skills/civilian/manager/director
+	name = "Weyland-Yutani Director"
+	skills = list(
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_POLICE = SKILL_POLICE_SKILLED
+	)
+
 /datum/skills/civilian/survivor
 	name = "Survivor"
 	skills = list(

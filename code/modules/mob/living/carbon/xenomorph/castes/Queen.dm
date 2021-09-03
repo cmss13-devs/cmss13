@@ -366,6 +366,8 @@
 	else
 		make_combat_effective()
 
+	AddComponent(/datum/component/footstep, 2 , 35, 11, 4, "alien_footstep_large")
+
 /mob/living/carbon/Xenomorph/Queen/generate_name()
 	. = ..()
 

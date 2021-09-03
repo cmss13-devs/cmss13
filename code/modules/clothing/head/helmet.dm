@@ -886,18 +886,19 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 
-/obj/item/clothing/head/helmet/marine/veteran/UPP/V
+/obj/item/clothing/head/helmet/marine/veteran/UPP/engi
 	name = "\improper UM4-V helmet"
-	desc = "This version of the UM4 helmet has a ballistic-glass visor, increasing resistance against attacks significantly but by some reports hindering sight in the process."
-	icon_state = "upp_helmet_visor"
+	desc = "This version of the UM4 helmet has a ballistic-glass visor, allowing for the UPP Engineers to safely weld, but by some reports hindering sight in the process."
+	icon_state = "upp_helmet_engi"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_bullet = CLOTHING_ARMOR_HIGH
 	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
 	armor_energy = CLOTHING_ARMOR_MEDIUM
 	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	var/protection_on = TRUE
 
 /obj/item/clothing/head/helmet/marine/veteran/UPP/heavy
 	name = "\improper UH7 helmet"
@@ -935,27 +936,53 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
+/obj/item/clothing/head/uppcap/civi
+	name = "\improper UL2 UPP cap"
+	desc = "UPP civilian headgear. It's of poor quality, and isn't expected to last all that long, however for as long as it's whole, it appears quite stylish."
+	icon_state = "upp_cap_civi"
+
 /obj/item/clothing/head/uppcap/beret
 	name = "\improper UL3 UPP beret"
 	icon_state = "upp_beret"
 
+/obj/item/clothing/head/uppcap/peaked
+	name = "\improper UL3 UPP peaked cap"
+	desc = "UPP headgear issued to Kapitans and above. It is made of high quality materials, and has the officers rank in gold placed upon the front of the cap."
+	icon_state = "upp_peaked"
+
 /obj/item/clothing/head/uppcap/ushanka
 	name = "\improper UL8 UPP ushanka"
 	icon_state = "upp_ushanka"
-	actions_types = list(/datum/action/item_action/toggle)
-	var/flaps_up = FALSE
+	item_state = "upp_ushanka"
+	var/tied = FALSE
+	var/original_state = "upp_ushanka"
 
-/obj/item/clothing/head/uppcap/ushanka/attack_self(mob/user)
-	..()
-	if(flaps_up)
-		to_chat(user, SPAN_INFO("You move the ear flaps back."))
-		icon_state = "upp_ushanka"
-		flaps_up = FALSE
+/obj/item/clothing/head/uppcap/ushanka/verb/flaps_up()
+	set name = "Tie Up/Down"
+	set category = "Object"
+	set src in usr
+	if(usr.is_mob_incapacitated())
+		return
+
+	tied = !tied
+	if(tied)
+		to_chat(usr, SPAN_NOTICE("You tie \the [src] up."))
+		icon_state += "_up"
 	else
-		to_chat(user, SPAN_INFO("You move the ear flaps out of the way."))
-		icon_state = "upp_ushanka_u"
-		flaps_up = TRUE
-	update_icon()
+		to_chat(usr, SPAN_NOTICE("You untie \the [src]."))
+		icon_state = original_state
+
+
+
+	update_clothing_icon(src) //Update the on-mob icon.
+
+
+
+/obj/item/clothing/head/uppcap/ushanka/civi
+	name = "\improper UL8c UPP ushanka"
+	icon_state = "upp_ushanka_civi"
+	item_state = "upp_ushanka_civi"
+	original_state = "upp_ushanka_civi"
 
 obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	name = "pith helmet"
@@ -963,6 +990,7 @@ obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 	icon_state = "van_bandolier"
 	item_state = "s_helmet"
 	flags_marine_helmet = NO_FLAGS
+
 
 //head rag
 

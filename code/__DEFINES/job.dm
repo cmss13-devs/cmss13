@@ -136,8 +136,13 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_UPP_MEDIC					"UPP Korporal Medic"
 #define JOB_UPP_SPECIALIST				"UPP Serzhant"
 #define JOB_UPP_LEADER					"UPP Master Serzhant"
+#define JOB_UPP_POLICE					"UPP Politsiya"
+#define JOB_UPP_LT_OFFICER				"UPP Leytenant"
+#define JOB_UPP_SRLT_OFFICER			"UPP Senior Leytenant"
+#define JOB_UPP_KPT_OFFICER				"UPP Kapitan"
+#define JOB_UPP_KOL_OFFICER				"UPP Kolonel"
 
-#define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER)
+#define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER)
 
 #define JOB_UPP_COMMANDO				"UPP Junior Kommando"
 #define JOB_UPP_COMMANDO_MEDIC			"UPP 2nd Kommando"
@@ -147,7 +152,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_UPP_REPRESENTATIVE			"UPP Representative"
 
-#define JOB_UPP_CREWMAN					"UPP Tankist"
+#define JOB_UPP_CREWMAN					"UPP Tank Crewman"
 
 //-------- CLF --------//
 #define JOB_CLF							"CLF Guerilla"

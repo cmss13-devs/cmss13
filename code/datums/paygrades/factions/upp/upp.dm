@@ -48,7 +48,13 @@
 /datum/paygrade/upp/uo1
 	paygrade = "UO1"
 	name = "Leytenant"
-	prefix = "LT."
+	prefix = "Lt."
+
+/datum/paygrade/upp/uo1e
+	paygrade = "UO1E"
+	name = "Senior Leytenant"
+	prefix = "Sr. LT."
+
 
 /datum/paygrade/upp/uo2
 	paygrade = "UO2"
@@ -62,5 +68,5 @@
 
 /datum/paygrade/upp/uo4
 	paygrade = "UO4"
-	name = "Chairman of Progressive Peoples"
-	prefix = "CPP."
+	name = "Major General"
+	prefix = "Maj."

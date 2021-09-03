@@ -1355,7 +1355,23 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 1
-	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP)
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP, /obj/item/clothing/under/marine/veteran/UPP/medic, /obj/item/clothing/under/marine/veteran/UPP/engi)
+
+/obj/item/clothing/suit/storage/marine/faction/support
+	name = "\improper UM5B personal armor"
+	desc = "Standard body armor of the UPP military, the UM5B (Union Medium MK5 Beta) is a light body armor, slightly weaker than the M3 pattern body armor in service with the USCM, specialized towards ballistics protection. This set of personal armor lacks the iconic neck piece and some of the armor in favor of user mobility."
+	icon_state = "upp_armor_support"
+	slowdown = SLOWDOWN_ARMOR_LIGHT
+	armor_melee = CLOTHING_ARMOR_HIGH
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
+	armor_internaldamage = CLOTHING_ARMOR_HIGH
+	storage_slots = 2
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP/officer)
 
 /obj/item/clothing/suit/storage/marine/faction/UPP/commando
 	name = "\improper UM5CU personal armor"
@@ -1386,10 +1402,44 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		/obj/item/ammo_magazine/minigun
 		)
 
-/obj/item/clothing/suit/storage/marine/faction/UPP/jacket
+/obj/item/clothing/suit/storage/marine/faction/UPP/officer
+	name = "\improper UL6 officers jacket"
+	desc = "A lightweight jacket, issued to officers of the UPP's military. Still studded to the brim with kevlar shards, though the synthread construction reduces its effectiveness."
+	icon_state = "upp_coat_officer"
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	storage_slots = 3
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP/officer)
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/kapitan
+	name = "\improper UL6 Kapitan's jacket"
+	desc = "A lightweight jacket, issued to the Kapitans of the UPP's military. Made of high quality materials, even going as far as having the ranks and insignia of the Kapitan and his Company emblazoned on the shoulders and front of the jacket."
+	icon_state = "upp_coat_kapitan"
+	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
+	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
+	armor_melee = CLOTHING_ARMOR_LOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMLOW
+	armor_laser = CLOTHING_ARMOR_MEDIUMLOW
+	armor_energy = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_LOW
+	storage_slots = 4
+	uniform_restricted = list(/obj/item/clothing/under/marine/veteran/UPP/officer)
+
+/obj/item/clothing/suit/storage/marine/faction/UPP/mp
 	name = "\improper UL6 camouflaged jacket"
 	desc = "A lightweight jacket, issued to troops when they're not expected to engage in combat. Still studded to the brim with kevlar shards, though the synthread construction reduces its effectiveness."
-	icon_state = "camo_jacket"
+	icon_state = "upp_coat_mp"
 	slowdown = SLOWDOWN_ARMOR_VERY_LIGHT
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	armor_melee = CLOTHING_ARMOR_LOW
@@ -1419,6 +1469,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_HIGH
 	storage_slots = 2
+
 
 //===========================//FREELANCER\\================================\\
 //=====================================================================\\

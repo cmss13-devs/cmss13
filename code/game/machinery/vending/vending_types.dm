@@ -45,6 +45,7 @@
 					/obj/item/reagent_container/food/snacks/packaged_burrito = 12,
 					/obj/item/reagent_container/food/snacks/packaged_hdogs =12,
 					/obj/item/reagent_container/food/snacks/kepler_crisps = 12,
+					/obj/item/reagent_container/food/snacks/wy_chips/pepper = 12,
 					/obj/item/reagent_container/food/snacks/eat_bar = 12,
 					/obj/item/reagent_container/food/snacks/wrapped/booniebars = 6,
 					/obj/item/reagent_container/food/snacks/wrapped/chunk = 6,

@@ -382,6 +382,8 @@
 		return
 
 	var/entrance_coord = entrances[entrance_used]
+	mob_x = M.x - src.x
+	mob_y = M.y - src.y
 	if(mob_x != entrance_coord[1] || mob_y != entrance_coord[2])
 		to_chat(M, SPAN_WARNING("\The [src] moved!"))
 		return

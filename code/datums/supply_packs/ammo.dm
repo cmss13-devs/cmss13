@@ -580,7 +580,7 @@
 //M240-T
 
 /datum/supply_packs/ammo_pyro_mix
-	name = "M240-T fuel crate (extended x1, A Gel x1, type-B x1, type-X x1)"
+	name = "M240-T fuel crate (extended x1, type-B x1, type-X x1)"
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank/large,
 					/obj/item/ammo_magazine/flamer_tank/large/B,

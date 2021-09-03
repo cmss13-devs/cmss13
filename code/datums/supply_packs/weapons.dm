@@ -324,7 +324,7 @@
 
 
 /datum/supply_packs/mortar
-	name = "M402 mortar crate (x1)"
+	name = "M402 mortar crate (Mortar x1, Mortar shell backpack x1)"
 	contains = list(
 					/obj/item/storage/backpack/marine/mortarpack,
 					/obj/item/mortar_kit

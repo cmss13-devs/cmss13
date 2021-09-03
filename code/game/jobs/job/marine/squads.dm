@@ -232,10 +232,10 @@
 		if(JOB_SQUAD_RTO)
 			if(num_rto > 0)
 				assignment = "Assistant [JOB_SQUAD_RTO]"
-				paygrade = "E4"
+				paygrade = "ME4"
 				M.comm_title = "aRTO"
 			else
-				paygrade = "E5"
+				paygrade = "ME5"
 				assignment = JOB_SQUAD_RTO
 				extra_access += ACCESS_MARINE_RTO_DROP
 				M.important_radio_channels += radio_freq

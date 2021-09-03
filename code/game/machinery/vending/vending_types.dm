@@ -212,7 +212,8 @@
 	product_ads = "Semper Fi!;First to Fight!;Ooh Rah.;Leathernecks!;The Few. The Proud.;Esprit de Corps;Jarhead.;Devil Dogs."
 	icon_state = "sec"
 	icon_deny = "sec-deny"
-	var/hackable = FALSE
+	hacking_safety = TRUE
+	wrenchable = FALSE
 	req_access = list(ACCESS_MARINE_SEA)
 	products = list(/obj/item/ammo_magazine/smg/m39/rubber = 20,
 					/obj/item/ammo_magazine/pistol/rubber = 20,

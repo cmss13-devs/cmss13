@@ -26,7 +26,7 @@
 	desc = "A synthetic slab of flesh."
 
 /obj/item/reagent_container/food/snacks/meat/human
-	name = "-meat"
+	name = "meat"
 	desc = "A slab of flesh for cannibals."
 
 /obj/item/reagent_container/food/snacks/meat/monkey
@@ -37,7 +37,7 @@
 	desc = "Tastes like... well you know..."
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat
-	name = "-meat"
+	name = "meat"
 	desc = "A slab of acrid smelling meat."
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"

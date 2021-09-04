@@ -1143,17 +1143,40 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		H.equip_to_slot_or_del( new /obj/item/reagent_container/food/snacks/cookie(H), WEAR_L_HAND )
-		if(!(istype(H.l_hand,/obj/item/reagent_container/food/snacks/cookie)))
-			H.equip_to_slot_or_del( new /obj/item/reagent_container/food/snacks/cookie(H), WEAR_R_HAND )
-			if(!(istype(H.r_hand,/obj/item/reagent_container/food/snacks/cookie)))
-				message_staff("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
-				return
-			else
-				H.update_inv_r_hand()//To ensure the icon appears in the HUD
-		else
-			H.update_inv_l_hand()
-		message_staff("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
+		var/cookie_type = tgui_input_list(usr, "Choose cookie type:", "Give Cookie", list("cookie", "random fortune cookie", "custom fortune cookie"))
+		if(!cookie_type)
+			return
+
+		var/obj/item/reagent_container/food/snacks/snack
+		switch(cookie_type)
+			if("cookie")
+				snack = new /obj/item/reagent_container/food/snacks/cookie(H.loc)
+			if("random fortune cookie")
+				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc)
+			if("custom fortune cookie")
+				var/fortune_text = tgui_input_list(usr, "Choose fortune:", "Cookie customisation", list("Random", "Custom", "None"))
+				if(!fortune_text)
+					return
+				if(fortune_text == "Custom")
+					fortune_text = input(usr, "Enter the fortune text:", "Cookie customisation", "")
+					if(!fortune_text)
+						return
+				var/fortune_numbers = tgui_input_list(usr, "Choose lucky numbers:", "Cookie customisation", list("Random", "Custom", "None"))
+				if(!fortune_numbers)
+					return
+				if(fortune_numbers == "Custom")
+					fortune_numbers = input(usr, "Enter the lucky numbers:", "Cookie customisation", "1, 2, 3, 4 and 5")
+					if(!fortune_numbers)
+						return
+				if(fortune_text == "None" && fortune_numbers == "None")
+					to_chat(usr, "No fortune provided, Give Cookie code crumbled!")
+					return
+				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc, fortune_text, fortune_numbers)
+
+		if(!snack)
+			error("Give Cookie code crumbled!")
+		H.put_in_hands(snack)
+		message_staff("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["CentcommReply"])

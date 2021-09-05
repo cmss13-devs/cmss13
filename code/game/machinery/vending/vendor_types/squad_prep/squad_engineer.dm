@@ -10,11 +10,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("R-1NG Bell Tower", 0, /obj/item/defenses/handheld/bell_tower, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("UA 42-F Sentry Flamer", 0, /obj/item/defenses/handheld/sentry/flamer, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("UA 571-C Sentry Gun", 0, /obj/item/defenses/handheld/sentry, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("Sentry Upgrade kit", 30, /obj/item/engi_upgrade_kit, null, VENDOR_ITEM_REGULAR),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Airlock Circuit Board", 2, /obj/item/circuitboard/airlock, null, VENDOR_ITEM_REGULAR),
 		list("APC Circuit Board", 2, /obj/item/circuitboard/apc, null, VENDOR_ITEM_REGULAR),
-		list("Entrenching Tool (ET)", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
+		list("Entrenching Tool (ET)", 2, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Power Cell", 3, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
 		list("Incendiary Grenade", 6, /obj/item/explosive/grenade/incendiary, null, VENDOR_ITEM_REGULAR),
@@ -162,6 +163,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		/obj/item/stack/sheet/metal/large_stack,
 		/obj/item/stack/sheet/plasteel/medium_stack,
 		/obj/item/cell/high,
-		/obj/item/tool/shovel/etool,
+		/obj/item/tool/shovel/etool/folded,
 		/obj/item/device/lightreplacer,
 	)

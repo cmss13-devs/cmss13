@@ -55,7 +55,7 @@
 	var/obj/item/defenses/handheld/D = target
 	var/mob/living/carbon/human/H = user
 
-	var/chosen_upgrade = tgui_input_list(user, "Please select a valid upgrade to apply to this kit", "Droppod", D.upgrade_list)
+	var/chosen_upgrade = tgui_input_list(user, "Please select a valid upgrade to apply to this kit", "W-Y Sponsored Kit", D.upgrade_list)
 
 	if(QDELETED(D) || !D.upgrade_list[chosen_upgrade])
 		return

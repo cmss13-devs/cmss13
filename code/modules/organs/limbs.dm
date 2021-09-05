@@ -494,8 +494,6 @@ This function completely restores a damaged organ to perfect condition.
 		return TRUE
 	if(knitting_time > 0)
 		return 1
-	if(regrow_time > 0)
-		return 1
 	return 0
 
 /obj/limb/process()
@@ -1274,7 +1272,7 @@ This function completely restores a damaged organ to perfect condition.
 				incisions++
 			if(SURGERY_DEPTH_DEEP) //Only the head itself can be cut this deeply.
 				. = "a massive surgical incision"
-	
+
 	switch(incisions)
 		if(1)
 			if(.)
@@ -1291,7 +1289,7 @@ This function completely restores a damaged organ to perfect condition.
 	for(var/zone in list("head", "eyes", "mouth"))
 		if(owner.active_surgeries[zone])
 			.++
-	
+
 	switch(.)
 		if(1)
 			return "an incomplete surgical operation"

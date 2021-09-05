@@ -771,12 +771,9 @@
 /datum/chem_property/positive/neutralizing
 	name = PROPERTY_NEUTRALIZING
 	code = "NEU"
-	description = "Neutralizes certain reactive chemicals and plasmas on contact. Unsafe to administer intravenously. May cause irritation on contact with skin."
+	description = "Neutralizes certain reactive chemicals and plasmas on contact. Unsafe to administer intravenously."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_IRRITANT
-
-/datum/chem_property/positive/neutralizing/pre_process(mob/living/M) //neutralizes chems in the body
-	return list(REAGENT_PURGE = level)
 
 /datum/chem_property/positive/neutralizing/process(mob/living/M, var/potency = 1)
 	M.apply_damages(0, potency, potency * POTENCY_MULTIPLIER_LOW)
@@ -792,9 +789,6 @@
 		return
 	var/mob/living/L = M
 	L.ExtinguishMob() //Extinguishes mobs on contact
-	if(ishuman(L))
-		var/mob/living/carbon/human/H
-		H.emote("me",1, "scratches themselves.")
 	if(isXeno(L))
 		var/mob/living/carbon/Xenomorph/X = M
 		X.plasma_stored = max(X.plasma_stored - POTENCY_MULTIPLIER_VHIGH * POTENCY_MULTIPLIER_VHIGH * potency, 0)

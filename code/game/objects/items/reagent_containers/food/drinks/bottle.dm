@@ -1,17 +1,19 @@
 
-///////////////////////////////////////////////Alchohol bottles! -Agouri //////////////////////////
+///////////////////////////////////////////////Alchohol bottles and juice mixers! -Agouri //////////////////////////
 //Functionally identical to regular drinks. The only difference is that the default bottle size is 100. - Darem
 //Bottles now weaken and break when smashed on people's heads. - Giacom
+
+//Booze bottles have two unqiue functions: They be used to smack someone in the head and turned into a molotov.
 
 /obj/item/reagent_container/food/drinks/bottle
 	amount_per_transfer_from_this = 5
 	volume = 100
 	item_state = "broken_beer" //Generic held-item sprite until unique ones are made.
-	var/duration = 13 //Directly relates to the 'weaken' duration. Lowered by armor (i.e. helmets)
-	var/isGlass = 1 //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
+	///This excludes all the juices and dairy in cartons that are also defined in this file.
+	var/isGlass = TRUE
 
-/obj/item/reagent_container/food/drinks/bottle/proc/smash(mob/living/target as mob, mob/living/user as mob)
-	//Creates a shattering noise and replaces the bottle with a broken_bottle
+///Audio/visual bottle breaking effects start here
+/obj/item/reagent_container/food/drinks/bottle/proc/smash(mob/living/target, mob/living/user)
 	user.temp_drop_inv_item(src)
 	var/obj/item/weapon/melee/broken_bottle/B = new /obj/item/weapon/melee/broken_bottle(user.loc)
 	user.put_in_active_hand(B)
@@ -37,49 +39,40 @@
 	if(user.a_intent != INTENT_HARM || !isGlass)
 		return ..()
 
-	force = 15 //Smashing bottles over someoen's head hurts.
+	force = 15
 
-	var/obj/limb/affecting = user.zone_selected //Find what the player is aiming at
-	var/armor_duration = 0 //The more force the bottle has, the longer the duration.
+	var/obj/limb/affecting = user.zone_selected
+	var/drowsy_threshold = 0
 
-	//Calculating duration and calculating damage.
-	armor_duration = duration + force - target.getarmor(affecting, ARMOR_MELEE)
+	drowsy_threshold = CLOTHING_ARMOR_MEDIUM - target.getarmor(affecting, ARMOR_MELEE)
 
-	//Apply the damage!
 	target.apply_damage(force, BRUTE, affecting, sharp=0)
 
-	// You are going to knock someone out for longer if they are not wearing a helmet.
 	if(affecting == "head" && istype(target, /mob/living/carbon/) && !isXeno(target))
-
-		//Display an attack message.
 		for(var/mob/O in viewers(user, null))
 			if(target != user) O.show_message(text(SPAN_DANGER("<B>[target] has been hit over the head with a bottle of [name], by [user]!</B>")), 1)
 			else O.show_message(text(SPAN_DANGER("<B>[target] hit \himself with a bottle of [name] on the head!</B>")), 1)
-		//Weaken the target for the duration that we calculated and divide it by 5.
-		if(armor_duration)
-			target.apply_effect(min(armor_duration, 10) , WEAKEN) // Never weaken more than a flash!
+		if(drowsy_threshold > 0)
+			target.apply_effect(min(drowsy_threshold, 10) , DROWSY)
 
-	else
-		//Default attack message and don't weaken the target.
+	else //Regular attack text
 		for(var/mob/O in viewers(user, null))
 			if(target != user) O.show_message(text(SPAN_DANGER("<B>[target] has been attacked with a bottle of [name], by [user]!</B>")), 1)
 			else O.show_message(text(SPAN_DANGER("<B>[target] has attacked \himself with a bottle of [name]!</B>")), 1)
 
-	//Attack logs
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Has attacked [target.name] ([target.ckey]) with a bottle!</font>")
 	target.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been smashed with a bottle by [user.name] ([user.ckey])</font>")
 	msg_admin_attack("[user.name] ([user.ckey]) attacked [target.name] ([target.ckey]) with a bottle (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
-	//The reagents in the bottle splash all over the target, thanks for the idea Nodrak
 	if(reagents)
 		for(var/mob/O in viewers(user, null))
 			O.show_message(text(SPAN_NOTICE("<B>The contents of the [src] splashes all over [target]!</B>")), 1)
 		reagents.reaction(target, TOUCH)
 
-	//Finally, smash the bottle. This kills (del) the bottle.
 	smash(target, user)
 
 	return
+
 /obj/item/reagent_container/food/drinks/bottle/attackby(obj/item/I, mob/living/user)
 	if(!isGlass || !istype(I, /obj/item/paper))
 		return ..()
@@ -98,6 +91,7 @@
 		to_chat(user, SPAN_NOTICE("There's not enough flammable liquid in [src]!"))
 		return
 	alcohol_potency = Clamp(alcohol_potency, BURN_LEVEL_TIER_1, BURN_LEVEL_TIER_7)
+
 	if(!do_after(user, 20, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return
 	var/turf/T = get_turf(src)
@@ -107,6 +101,7 @@
 	qdel(I)
 	qdel(src)
 
+///Alcohol bottles and their contents.
 /obj/item/reagent_container/food/drinks/bottle/gin
 	name = "\improper Griffeater Gin"
 	desc = "A bottle of high quality gin, produced in the New London Space Station."

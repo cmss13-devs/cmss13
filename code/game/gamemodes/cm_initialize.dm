@@ -524,19 +524,21 @@ Additional game mode variables.
 		return
 
 	// Make the list pretty
-	var/list/spawn_list_names = list()
 	var/list/spawn_list_map = list()
-	for(var/obj/effect/landmark/queen_spawn/T in GLOB.queen_spawns)
-		var/area/A = get_area(T)
-		spawn_list_names += A.name
-		spawn_list_map[A.name] = T
+	for(var/obj/effect/landmark/queen_spawn/T as anything in GLOB.queen_spawns)
+		var/area_name = get_area_name(T)
+		var/spawn_name = area_name
+		var/spawn_counter = 1
+		while(spawn_list_map[spawn_name])
+			spawn_name = "[area_name] [++spawn_counter]"
+		spawn_list_map[spawn_name] = T
 
-	var/spawn_name = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_names, QUEEN_SPAWN_TIMEOUT)
+	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT)
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI
-	if(spawn_name)
-		QSI = spawn_list_map[spawn_name]
+	if(selected_spawn)
+		QSI = spawn_list_map[selected_spawn]
 		QS = get_turf(QSI)
 
 	// Pick a random one if nothing was picked

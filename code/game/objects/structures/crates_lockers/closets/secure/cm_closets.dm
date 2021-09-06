@@ -334,3 +334,17 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	new /obj/item/clothing/under/marine/officer/bridge(src)
 	new /obj/item/clothing/shoes/dress(src)
 	new /obj/item/storage/backpack/marine/satchel(src)
+
+/obj/structure/closet/secure_closet/cmdcabinet
+	name = "command tablet cabinet"
+	desc = "A bulletproof cabinet containing the command tablet for usage by the CO and XO. Opens only to them and department heads."
+	density = 0
+	store_mobs = FALSE
+	req_access = list(ACCESS_MARINE_COMMANDER)
+	icon_state = "secure_locked_cmdcabinet"
+	icon_closed = "secure_unlocked_cmdcabinet"
+	icon_locked = "secure_locked_cmdcabinet"
+	icon_opened = "secure_open_cmdcabinet"
+	icon_broken = "secure_locked_cmdcabinet"
+	icon_off = "secure_unlocked_cmdcabinet"
+

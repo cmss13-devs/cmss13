@@ -62,7 +62,7 @@
 	if(!(user in viewers(M, null)))
 		showname = "."
 
-	if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
+	if ((user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP) || (user.mob_flags & SURGERY_MODE_ON))
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),\
 			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)

@@ -892,7 +892,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		return FALSE
 	else if(user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
-			to_chat(user, SPAN_NOTICE("You consider shooting at [A], but do not follow through."))
+			//Absolutely SCREAM this at people so they don't get killed by it
+			to_chat(user, SPAN_DANGER("Help intent safety is on. Switch to another intent to fire your weapon."))
 		return FALSE
 	else if(user.gun_mode && !(A in target))
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.
@@ -1117,7 +1118,7 @@ and you're good to go.
 			target = targloc
 		else
 			target = original_target
-			targloc = get_turf(target)	
+			targloc = get_turf(target)
 
 		projectile_to_fire.original = target
 		target = simulate_scatter(projectile_to_fire, target, curloc, targloc, user, bullets_fired)

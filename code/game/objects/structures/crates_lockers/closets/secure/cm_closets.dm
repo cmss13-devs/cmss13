@@ -347,4 +347,5 @@ GLOBAL_LIST_EMPTY(co_secure_boxes)
 	icon_opened = "secure_open_cmdcabinet"
 	icon_broken = "secure_locked_cmdcabinet"
 	icon_off = "secure_unlocked_cmdcabinet"
+	wall_mounted = TRUE
 

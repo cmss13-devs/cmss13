@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Shoes, White", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Expedition Cap", 0, /obj/item/clothing/head/cmflapcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Expedition Cap", 0, /obj/item/clothing/head/cmcap/flap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Hard Hat, Orange", 0, /obj/item/clothing/head/hardhat/orange, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Surgical Cap, Green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Welding Helmet", 0, /obj/item/clothing/head/welding, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),

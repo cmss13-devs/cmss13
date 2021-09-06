@@ -87,13 +87,13 @@ var/global/list/gear_datums = list()
 
 /datum/gear/booniehat
 	display_name = "USCM Boonie Hat (Olive)"
-	path = /obj/item/clothing/head/booniehat
+	path = /obj/item/clothing/head/cmcap/boonie
 	cost = 3
 	slot = WEAR_HEAD
 
 /datum/gear/booniehattan
 	display_name = "USCM Boonie Hat (Tan)"
-	path = /obj/item/clothing/head/booniehat/tan
+	path = /obj/item/clothing/head/cmcap/boonie/tan
 	cost = 3
 	slot = WEAR_HEAD
 

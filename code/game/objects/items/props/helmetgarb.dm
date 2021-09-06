@@ -77,10 +77,10 @@
 /obj/item/prop/helmetgarb/helmet_nvg
 	name = "\improper old M2 night vision goggles"
 	desc = "They've been out of batteries since two shoreleaves ago. But hey, they make you feel tacticool, and that's all that matters, right?"
-	icon_state = "helmet_nvg"
+	icon_state = "nvg"
 	var/activated = FALSE
-	var/active_icon_state = "helmet_nvg_down"
-	var/inactive_icon_state = "helmet_nvg"
+	var/active_icon_state = "nvg_down"
+	var/inactive_icon_state = "nvg"
 
 	var/datum/action/item_action/activation
 	var/obj/item/attached_item
@@ -129,7 +129,7 @@
 		to_chat(user, SPAN_NOTICE("You flip the goggles down."))
 		icon_state = active_icon_state
 	else
-		to_chat(user, SPAN_NOTICE("You push the goggles back up onto your helmet."))
+		to_chat(user, SPAN_NOTICE("You push the goggles up."))
 		icon_state = inactive_icon_state
 
 	attached_item.update_icon()

@@ -64341,7 +64341,7 @@
 /area/almayer/medical/lower_medical_lobby)
 "rIO" = (
 /obj/structure/machinery/vending/snack,
-/obj/item/clothing/head/booniehat/tan{
+/obj/item/clothing/head/cmcap/boonie/tan{
 	pixel_x = -2;
 	pixel_y = 10
 	},

@@ -1,3 +1,4 @@
+#define HAT_GARB_RELAY_ICON_STATE "icon_state"
 /obj/item/clothing/head
 	name = "head"
 	icon = 'icons/obj/items/clothing/hats.dmi'
@@ -24,9 +25,9 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/cmbandana/New()
+/obj/item/clothing/head/cmbandana/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/cmbandana)
-	..()
 
 /obj/item/clothing/head/cmbandana/tan
 	icon_state = "band2"
@@ -59,16 +60,16 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/beret/cm/New()
+/obj/item/clothing/head/beret/cm/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/beret/cm)
-	..()
 
 /obj/item/clothing/head/beret/cm/tan
 	icon_state = "berettan"
 
-/obj/item/clothing/head/beret/cm/tan/New()
+/obj/item/clothing/head/beret/cm/tan/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/beret/cm/tan)
-	..()
 
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
@@ -81,9 +82,9 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/headband/New()
+/obj/item/clothing/head/headband/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/headband)
-	..()
 
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
@@ -114,13 +115,17 @@
 
 /obj/item/clothing/head/cmcap
 	name = "patrol cap"
-	desc = "A casual cap occasionally worn by Squad-leaders and Combat-Engineers. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+	desc = "A casual cap issued as part of the non-combat uniform. While it only protects from the sun, it's much more comfortable than a helmet."
 	icon_state = "cap"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	var/helmet_overlays[]
 	var/flipped_cap = FALSE
+	var/list/flipping_message = list(
+		"flipped" = "You spin the hat backwards! You look like a tool.",
+		"unflipped" = "You spin the hat back forwards. That's better."
+		)
 	var/base_cap_icon
-	var/flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_STORE_GARB
+	var/flags_marine_hat = HAT_GARB_OVERLAY|HAT_CAN_FLIP
 	var/obj/item/storage/internal/pockets
 	var/list/allowed_hat_items = list(
 						/obj/item/storage/fancy/cigarettes/emeraldgreen = "hat_cig_cig",
@@ -135,15 +140,20 @@
 						/obj/item/tool/pen/red = "hat_pen_red",
 						/obj/item/clothing/glasses/welding = "welding-c",
 						/obj/item/clothing/glasses/mgoggles = "goggles-c",
-						/obj/item/clothing/glasses/mgoggles/prescription = "goggles-c")
+						/obj/item/clothing/glasses/mgoggles/prescription = "goggles-c",
+						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/prop/helmetgarb/helmet_nvg/functional = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/head/headband = "hat_headbandgreen",
+						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
+						/obj/item/clothing/head/headband/red = "hat_headbandred")
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/cmcap/New()
+/obj/item/clothing/head/cmcap/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/cmcap)
 	base_cap_icon = icon_state
-	..()
 	helmet_overlays = list("item") //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = 1
@@ -180,10 +190,13 @@
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
 	if(slot == WEAR_HEAD)
-		if(length(pockets.contents) && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+		if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
 			var/obj/O = pockets.contents[1]
 			if(O.type in allowed_hat_items)
-				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[allowed_hat_items[O.type]]", color, RESET_COLOR)
+				var/garb_state = allowed_hat_items[O.type]
+				if(garb_state == HAT_GARB_RELAY_ICON_STATE)
+					garb_state = "hat_[O.icon_state]"
+				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[garb_state]", color, RESET_COLOR)
 				ret.overlays += I
 
 	return ret
@@ -192,23 +205,49 @@
 	set name = "Flip hat"
 	set category = "Object"
 	set src in usr
-	if(!isliving(usr)) return
-	if(usr.is_mob_incapacitated()) return
+	if(!isliving(usr))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+	if(!(flags_marine_hat & HAT_CAN_FLIP))
+		to_chat(usr, SPAN_WARNING("[src] can't be flipped!"))
+		return
 
-	flipped_cap = !flipped_cap
-	if(flipped_cap)
-		to_chat(usr, "You spin the hat backwards! You look like a tool.")
+	flags_marine_hat ^= HAT_FLIPPED
+
+	if(flags_marine_hat & HAT_FLIPPED)
+		to_chat(usr, flipping_message["flipped"])
 		icon_state = base_cap_icon + "_b"
 	else
-		to_chat(usr, "You spin the hat back forwards. That's better.")
+		to_chat(usr, flipping_message["unflipped"])
 		icon_state = base_cap_icon
 
 	update_clothing_icon()
 
+/obj/item/clothing/head/cmcap/boonie
+	name = "\improper USCM boonie hat"
+	desc = "A floppy bush hat. Protects only from the sun and rain, but very comfortable."
+	icon_state = "booniehat"
+	flipping_message = list(
+		"flipped" = "You tuck the hat's chinstrap away. Hopefully the wind doesn't nick it...",
+		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."
+		)
+
+/obj/item/clothing/head/cmcap/boonie/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(/obj/item/clothing/head/cmcap/boonie)
+
+/obj/item/clothing/head/cmcap/boonie/tan
+	icon_state = "booniehattan"
+
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM captain cap"
 	icon_state = "cocap"
-	desc = "A hat usually worn by senior officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
+
+/obj/item/clothing/head/cmcap/co/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(/obj/item/clothing/head/cmcap/co)
 
 /obj/item/clothing/head/cmcap/co/formal/white
 	name = "\improper USCM formal captain's white cap"
@@ -222,30 +261,28 @@
 
 /obj/item/clothing/head/cmcap/ro
 	name = "\improper USCM officer cap"
-	desc = "A hat usually worn by officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 	icon_state = "rocap"
 
-/obj/item/clothing/head/cmcap/ro/New()
+/obj/item/clothing/head/cmcap/ro/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/cmcap/ro)
-	..()
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
 	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
 
-/obj/item/clothing/head/cmflapcap
+/obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"
-	desc = "It's a cap, with flaps. ALMAYER reads across a patch stitched to the front."
+	desc = "It's a cap, with flaps. A patch stitched across the front reads \"<b>USS ALMAYER</b>\"."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "flapcap"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
+	flags_marine_hat = HAT_GARB_OVERLAY
 
-/obj/item/clothing/head/cmflapcap/New()
-	select_gamemode_skin(/obj/item/clothing/head/cmflapcap)
-	..()
+/obj/item/clothing/head/cmcap/flap/Initialize(mapload, ...)
+	. = ..()
+	select_gamemode_skin(/obj/item/clothing/head/cmcap/flap)
 
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
@@ -545,23 +582,6 @@ D
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
-/obj/item/clothing/head/booniehat
-	name = "\improper USCM boonie hat"
-	desc = "A casual cap occasionally worn by crazy marines. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
-	icon_state = "booniehat"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
-
-/obj/item/clothing/head/booniehat/tan
-	icon_state = "booniehattan"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-
-/obj/item/clothing/head/booniehat/New()
-	select_gamemode_skin(/obj/item/clothing/head/booniehat)
-	..()
-
 /obj/item/clothing/head/durag
 	name = "durag"
 	desc = "An improvised head wrap made out of a standard issue neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
@@ -578,9 +598,9 @@ D
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/head/durag/New()
+/obj/item/clothing/head/durag/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/durag)
-	..()
 
 /obj/item/clothing/head/drillhat
 	name = "\improper USCM drill hat"
@@ -591,6 +611,7 @@ D
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/drillhat/New()
+/obj/item/clothing/head/drillhat/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/drillhat)
-	..()
+#undef HAT_GARB_RELAY_ICON_STATE

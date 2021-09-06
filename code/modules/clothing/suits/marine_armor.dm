@@ -697,6 +697,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		A.update_button_icon()
 	addtimer(CALLBACK(src, .proc/end_fire_shield, H), 6 SECONDS)
 
+	H.add_filter("firewalk_on", 1, list("type" = "outline", "color" = "#03fcc6", "size" = 1))
+
 /obj/item/clothing/suit/storage/marine/M35/proc/end_fire_shield(var/mob/living/carbon/human/user)
 	if(!istype(user))
 		return
@@ -706,6 +708,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 		COMSIG_LIVING_FLAMER_FLAMED,
 	))
 	fire_shield_on = FALSE
+
+	user.remove_filter("firewalk_on")
 
 	addtimer(CALLBACK(src, .proc/enable_fire_shield, user), FIRE_SHIELD_CD)
 

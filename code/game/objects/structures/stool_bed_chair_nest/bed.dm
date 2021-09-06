@@ -74,7 +74,7 @@ obj/structure/bed/Destroy()
 	density = 1
 	update_icon()
 	if(buckling_y)
-		buckled_bodybag.pixel_y = buckling_y
+		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
 	add_fingerprint(user)
 
 /obj/structure/bed/unbuckle()

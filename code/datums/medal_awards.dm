@@ -32,14 +32,15 @@ var/global/list/medal_awards = list()
 	var/citation = strip_html(input("What should the medal citation read?","Medal Citation", null) as text|null, MAX_PAPER_MESSAGE_LEN)
 	if(!citation) return
 	var/recipient_ckey
+	var/recipient_mob
 	for(var/mob/M in GLOB.mob_list)
 		if(M == usr)
 			M.count_niche_stat(STATISTICS_NICHE_MEDALS_GIVE)
 		if(M.real_name == chosen_recipient)
 			if(isliving(M) && M.stat != DEAD)
 				posthumous = 0
-			if(M.mind)
-				recipient_ckey = M.mind.ckey
+			recipient_ckey = M.ckey
+			recipient_mob = M
 			break
 	if(!medal_awards[chosen_recipient])
 		medal_awards[chosen_recipient] = new /datum/recipient_awards()
@@ -52,7 +53,7 @@ var/global/list/medal_awards = list()
 	if(recipient_ckey)
 		var/datum/entity/player_entity/P = setup_player_entity(recipient_ckey)
 		if(P)
-			P.track_medal_earned(medal_type, chosen_recipient, recipient_rank, citation, usr)
+			P.track_medal_earned(medal_type, recipient_mob, recipient_rank, citation, usr)
 
 	if(medal_location)
 		var/obj/item/clothing/accessory/medal/MD

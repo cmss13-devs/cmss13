@@ -111,6 +111,10 @@
 								background = "'background-color:#a16832;'"
 							if("Released")
 								background = "'background-color:#2981b3;'"
+							if("Suspect")
+								background = "'background-color:#008743;'"
+							if("NJP")
+								background = "'background-color:#faa20a;'"
 							if("None")
 								background = "'background-color:#008743;'"
 							if("")
@@ -199,6 +203,10 @@
 								background = "'background-color:#B6732F;'"
 							if("Released")
 								background = "'background-color:#3BB9FF;'"
+							if("Suspect")
+								background = "'background-color:#1AAFFF;'"
+							if("NJP")
+								background = "'background-color:#faa20a;'"
 							if("None")
 								background = "'background-color:#1AAFFF;'"
 							if("")
@@ -444,6 +452,8 @@ What a mess.*/
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=arrest'>*Arrest*</a></li>"
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=incarcerated'>Incarcerated</a></li>"
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=released'>Released</a></li>"
+							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=suspect'>Suspect</a></li>"
+							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=njp'>NJP</a></li>"
 							temp += "</ul>"
 					if("rank")
 						var/list/L = list( "Head of Personnel", "Captain", "AI" )
@@ -485,6 +495,10 @@ What a mess.*/
 									active2.fields["criminal"] = "Incarcerated"
 								if("released")
 									active2.fields["criminal"] = "Released"
+								if("suspect")
+									active2.fields["criminal"] = "Suspect"
+								if("njp")
+									active2.fields["criminal"] = "NJP"
 
 							for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 								H.sec_hud_set_security_status()
@@ -539,7 +553,7 @@ What a mess.*/
 				if(3)
 					R.fields["age"] = rand(5, 85)
 				if(4)
-					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
+					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
 				if(5)
 					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
 				if(6)

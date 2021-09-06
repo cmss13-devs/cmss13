@@ -561,6 +561,12 @@ var/list/datum/mob_hud/huds = list(
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
 					holder.icon_state = "hudreleased"
 					break
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Suspect"))
+					holder.icon_state = "hudsuspect"
+					break
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "NJP"))
+					holder.icon_state = "hudnjp"
+					break
 //Squad HUD
 
 /mob/proc/hud_set_squad()

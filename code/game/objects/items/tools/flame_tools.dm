@@ -627,6 +627,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_on = "zippoon"
 	icon_off = "zippo"
 
+/obj/item/tool/lighter/zippo/gold
+	name = "golden Zippo lighter"
+	desc = "A gold-anodized Zippo lighter. Osentatious, but it certainly stands out."
+	icon_state = "goldzippo"
+	item_state = "goldzippo"
+	icon_on = "goldzippoon"
+	icon_off = "goldzippo"
+
 /obj/item/tool/lighter/random
 
 /obj/item/tool/lighter/random/Initialize()

@@ -655,6 +655,10 @@
 	active_power_usage = 500
 //	circuit = "/obj/item/circuitboard/computer/crew"
 
+/obj/structure/machinery/computer/crew/alt
+	icon_state = "cmonitor"
+	density = FALSE
+
 GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
 #define SENSOR_LIVING 1

@@ -16,15 +16,22 @@
 	var/num3 = rand(1,99)
 	var/num4 = rand(1,99)
 	var/num5 = rand(1,99)
-	var/luckynumbers = "Your lucky numbers are [num1], [num2], [num3], [num4], and [num5]."
-	return(luckynumbers)
+	var/luckynumbers = "[num1], [num2], [num3], [num4], and [num5]"
+	return luckynumbers
 
-obj/item/paper/fortune/premade/Initialize()
+/obj/item/paper/fortune/premade/Initialize(mapload, var/message = "Random", var/numbers = "Random")
 	. = ..()
-	var/message = assign_fortunes()
-	var/luckynumbers = get_lucky_numbers()
-	if(message)
-		info = "<p style=\"text-align: center;\"><span style=\"text-align: center; color: #0000ff;\"><b>[message]</b><br/>[luckynumbers]</p></span>"
+	switch(message)
+		if("None")
+			message = null
+		if("Random")
+			message = assign_fortunes()
+	if(numbers == "None")
+		numbers = null
+	else
+		numbers = "Your lucky numbers are [numbers == "Random" ? get_lucky_numbers() : numbers]."
+	if(message || numbers)
+		info = "<p style=\"text-align: center;\"><span style=\"text-align: center; color: #0000ff;\"><b>[message]</b><br/>[numbers]</p></span>"
 	else
 		error("Fortune cookie code broke! Fortune does not smile upon you today.")
 
@@ -39,9 +46,6 @@ obj/item/paper/fortune/premade/Initialize()
 	var/cookie_broken = FALSE
 	//The fortune inside the cookie
 	var/cookiefortune
-
-/obj/item/reagent_container/food/snacks/fortunecookie/prefilled
-	cookiefortune = new /obj/item/paper/fortune/premade()
 
 /obj/item/reagent_container/food/snacks/fortunecookie/update_icon()
 	. = ..()
@@ -111,3 +115,6 @@ obj/item/paper/fortune/premade/Initialize()
 	else
 		. = ..()
 
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled/Initialize(mapload, fortune, numbers)
+	. = ..()
+	cookiefortune = new /obj/item/paper/fortune/premade(src, fortune, numbers)

@@ -213,6 +213,7 @@
 			body += "<option value='?_src_=vars;edit_skill=\ref[D]'>Edit Skills</option>"
 			body += "<option value='?_src_=vars;setspecies=\ref[D]'>Set Species</option>"
 			body += "<option value='?_src_=vars;selectequipment=\ref[D]'>Select Equipment</option>"
+			body += "<option value='?_src_=admin_holder;adminspawncookie=\ref[D]'>Give Cookie</option>"
 		if(iscarbon(D))
 			body += "<option value='?_src_=vars;changehivenumber=\ref[D]'>Change Hivenumber</option>"
 			body += "<option value='?_src_=vars;addtrait=\ref[D]'>Add Trait</option>"

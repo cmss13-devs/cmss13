@@ -73,7 +73,8 @@
 
 	var/name_archive //For admin things like possession
 
-	var/luminosity_total = 0 //For max luminosity stuff.
+	/// List of active luminosity sources for handling of light stacking
+	var/list/atom/luminosity_sources
 
 	var/statistic_exempt = FALSE
 	var/statistic_tracked = FALSE //So we don't repeat log the same data on death/ghost/cryo

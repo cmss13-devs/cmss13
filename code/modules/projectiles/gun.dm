@@ -447,7 +447,7 @@
 			for(var/slot in attachments)
 				var/obj/item/attachable/R = attachments[slot]
 				if(!R) continue
-				loc.SetLuminosity(-R.light_mod)
+				loc.SetLuminosity(0, FALSE, src)
 		else
 			SetLuminosity(0)
 	attachments = null
@@ -1642,7 +1642,7 @@ and you're good to go.
 		return
 
 	if(user.luminosity <= muzzle_flash_lum)
-		user.SetLuminosity(muzzle_flash_lum)
+		user.SetLuminosity(muzzle_flash_lum, FALSE, src)
 		addtimer(CALLBACK(user, /atom.proc/SetLuminosity, -muzzle_flash_lum), 10)
 
 	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1

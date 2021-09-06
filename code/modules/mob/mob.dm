@@ -5,6 +5,7 @@
 	GLOB.player_list -= src
 
 	item_verbs = null
+	luminosity_sources = null
 
 	if(mind)
 		if(mind.current == src)

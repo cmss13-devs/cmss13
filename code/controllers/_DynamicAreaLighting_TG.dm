@@ -171,7 +171,7 @@ GLOBAL_LIST_INIT(comp2table, list(
 //If we are setting luminosity to 0 the light will be cleaned up by the controller and garbage collected once all its
 //queues are complete.
 //if we have a light already it is merely updated, rather than making a new one.
-/atom/proc/SetLuminosity(new_luminosity, trueLum = FALSE)
+/atom/proc/SetLuminosity(new_luminosity, trueLum = FALSE, atom/source)
 	if(new_luminosity < 0)
 		new_luminosity = 0
 	if(!trueLum)
@@ -190,28 +190,26 @@ GLOBAL_LIST_INIT(comp2table, list(
 	else
 		luminosity = sqrt(trueLuminosity)
 
-/atom/proc/AddLuminosity(delta_luminosity)
-	if(delta_luminosity > 0)
-		SetLuminosity(trueLuminosity + delta_luminosity*delta_luminosity, TRUE)
-	else if(delta_luminosity < 0)
-		SetLuminosity(trueLuminosity - delta_luminosity*delta_luminosity, TRUE)
-
-
 //This slightly modifies human luminosity. Source of light do NOT stack.
 //When you drop a light source it should keep a running total of your actual luminosity and set it accordingly.
-/mob/SetLuminosity(new_luminosity, trueLum)
-	if(!new_luminosity) //Our new addition is positive. Add it to our running total.
-		return..(0, trueLum)  //Set to ZERO.
-	else
-		luminosity_total += new_luminosity //Keep track of our new total.
+/mob/SetLuminosity(new_luminosity, trueLum, atom/source)
+	LAZYREMOVE(luminosity_sources, source)
+	if(source)
+		UnregisterSignal(source, COMSIG_PARENT_QDELETING)
+	var/highest_luminosity = 0
+	for(var/luminosity_source as anything in luminosity_sources)
+		var/lumonisity_rating = luminosity_sources[luminosity_source]
+		if(highest_luminosity < lumonisity_rating)
+			highest_luminosity = lumonisity_rating
+	if(source && new_luminosity > 0)
+		LAZYSET(luminosity_sources, source, new_luminosity)
+		RegisterSignal(source, COMSIG_PARENT_QDELETING, .proc/remove_luminosity_source)
+	if(new_luminosity < highest_luminosity)
+		new_luminosity = highest_luminosity
+	return ..()
 
-	if(new_luminosity > luminosity) //The lum we want to set to is higher. Use it.
-		..(new_luminosity, trueLum)
-
-	else if(luminosity_total < luminosity) //We want to drop our actual luminosity.
-		..(luminosity_total, trueLum)
-
-	return
+/mob/proc/remove_luminosity_source(var/atom/source)
+	SetLuminosity(0, FALSE, source)
 
 /area/SetLuminosity(new_luminosity)			//we don't want dynamic lighting for areas
 	luminosity = !!new_luminosity

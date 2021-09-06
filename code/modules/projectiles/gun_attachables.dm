@@ -550,9 +550,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
 		return FALSE
-	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? -1 : 1
+	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? 0 : 1
 	var/atom/movable/light_source =  ismob(G.loc) ? G.loc : G
-	light_source.SetLuminosity(light_mod * flashlight_on)
+	light_source.SetLuminosity(light_mod * flashlight_on, FALSE, G)
 	G.flags_gun_features ^= GUN_FLASHLIGHT_ON
 
 	if(G.flags_gun_features & GUN_FLASHLIGHT_ON)

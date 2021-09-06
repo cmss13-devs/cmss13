@@ -156,7 +156,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		var/obj/item/attachable/A = attachments[slot]
 		if (!A || !A.light_mod)
 			continue
-		bearer.SetLuminosity(-A.light_mod)
+		bearer.SetLuminosity(0, FALSE, src)
 		SetLuminosity(A.light_mod)
 		return TRUE
 	return FALSE
@@ -169,7 +169,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			var/obj/item/attachable/A = attachments[slot]
 			if (!A || !A.light_mod)
 				continue
-			user.SetLuminosity(A.light_mod)
+			user.SetLuminosity(A.light_mod, FALSE, src)
 			SetLuminosity(0)
 			break
 

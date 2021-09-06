@@ -13,6 +13,10 @@
 	maxhealth = 200
 	pixel_x = -16
 	pixel_y = -2
+	var/base_state = "powerloader"
+	var/open_state = "powerloader_open"
+	var/overlay_state = "powerloader_overlay"
+	var/wreckage = /obj/structure/powerloader_wreckage
 
 /obj/vehicle/powerloader/Initialize()
 	cell = new /obj/item/cell/apc
@@ -60,8 +64,8 @@
 	overlays.Cut()
 	playsound(loc, 'sound/mecha/powerloader_buckle.ogg', 25)
 	if(.)
-		icon_state = "powerloader"
-		overlays += image(icon_state= "powerloader_overlay", layer = MOB_LAYER + 0.1)
+		icon_state = base_state
+		overlays += image(icon_state = overlay_state, layer = MOB_LAYER + 0.1)
 		if(M.mind && M.skills)
 			move_delay = max(4, move_delay - 2 * M.skills.get_skill_level(SKILL_POWERLOADER))
 		var/clamp_equipped = 0
@@ -71,7 +75,7 @@
 		if(clamp_equipped != 2) unbuckle() //can't use the powerloader without both clamps equipped
 	else
 		move_delay = initial(move_delay)
-		icon_state = "powerloader_open"
+		icon_state = open_state
 		M.drop_held_items() //drop the clamp when unbuckling
 
 /obj/vehicle/powerloader/buckle_mob(mob/M, mob/user)
@@ -102,12 +106,12 @@
 			else buckled_mob.pixel_x = 0
 
 /obj/vehicle/powerloader/explode()
-	new /obj/structure/powerloader_wreckage(loc)
+	new wreckage(loc)
 	playsound(loc, 'sound/effects/metal_crash.ogg', 75)
 	..()
 
 /obj/item/powerloader_clamp
-	name = "\improper Caterpillar P-5000 Work Loader Hydraulic Claw"
+	name = "\improper Power Loader Hydraulic Claw"
 	icon = 'icons/obj/vehicles/vehicles.dmi'
 	icon_state = "loader_clamp"
 	force = 20
@@ -218,3 +222,17 @@
 	opacity = 0
 	pixel_x = -18
 	pixel_y = -5
+
+/obj/structure/powerloader_wreckage/jd
+	name = "\improper John Deere 4300 Power Loader wreckage"
+	icon_state = "wreck_jd"
+
+/obj/vehicle/powerloader/jd
+	name = "\improper John Deere 4300 Power Loader"
+	desc = "John Deere 4300 Work Loader is a commercial mechanized exoskeleton used for lifting heavy materials and objects based on the Caterpillar P-5000, first designed in January 29, 2025 by Weyland Corporation. An old but trusted design used in warehouses, constructions and military ships everywhere. This one has a signature green and yellow livery."
+	icon_state = "powerloader_open_jd"
+	base_state = "powerloader_jd"
+	open_state = "powerloader_open_jd"
+	overlay_state = "powerloader_overlay_jd"
+	wreckage = /obj/structure/powerloader_wreckage/jd
+

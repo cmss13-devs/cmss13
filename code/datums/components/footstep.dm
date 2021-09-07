@@ -45,4 +45,4 @@
 	if(!T)
 		return
 	if(isfile(footstep_sounds) || istext(footstep_sounds))
-		playsound(T, footstep_sounds, volume, TRUE, range, falloff = falloff)
+		playsound(T, footstep_sounds, volume, rand(20000, 25000), range, falloff = falloff)

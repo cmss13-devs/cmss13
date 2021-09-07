@@ -370,7 +370,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/ucigarette
 	icon_on = "ucigon"
 	icon_off = "ucigoff"
-	type_butt = /obj/item/trash/ucigbutt
+	type_butt = /obj/item/trash/cigbutt/ucigbutt
 	name = "cigarette"
 	desc = "An unfiltered roll of tobacco and nicotine. Smoking this releases even more tar and soot into your mouth."
 	item_state = "cigoff"
@@ -379,7 +379,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/bcigarette
 	icon_on = "bcigon"
 	icon_off = "bcigoff"
-	type_butt = /obj/item/trash/bcigbutt
+	type_butt = /obj/item/trash/cigbutt/bcigbutt
 	name = "cigarette"
 	desc = "A roll of tobacco, nicotine, and some phosphor, in a fancy black package. The phosphor makes the tip glow blue when lit."
 	item_state = "bcigoff"

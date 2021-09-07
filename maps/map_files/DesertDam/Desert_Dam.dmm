@@ -361,7 +361,7 @@
 /area/desert_dam/exterior/river/riverside_east)
 "abf" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_labs)
 "abg" = (

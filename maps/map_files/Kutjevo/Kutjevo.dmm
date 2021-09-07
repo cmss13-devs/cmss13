@@ -8379,7 +8379,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
 "BY" = (
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 4;
 	icon_state = "p_stair_full"
@@ -12187,7 +12187,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "Pq" = (
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central)
 "Pr" = (

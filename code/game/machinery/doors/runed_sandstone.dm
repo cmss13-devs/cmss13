@@ -1,6 +1,3 @@
-/*#################################################################################################
-###################################################################################################
-#################################################################################################*/
 /obj/structure/machinery/door/airlock/sandstone/runed
 	name = "\improper Runed Sandstone Airlock"
 	icon = 'icons/obj/structures/doors/doorrunedsand.dmi'
@@ -217,6 +214,8 @@
 		return (damage_cap-damage)/EXPLOSION_DAMAGE_MULTIPLIER_DOOR
 	else
 		return FALSE
-/*#################################################################################################
-###################################################################################################
-#################################################################################################*/
+
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable
+	name = "\improper Runed Sandstone Airlock"
+	unacidable = FALSE //Destroyable version of the temple doors
+	damage_cap = HEALTH_WALL

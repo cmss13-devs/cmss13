@@ -49,7 +49,6 @@
 "I" = (
 /obj/item/defenses/handheld/sentry/flamer,
 /obj/structure/closet/crate,
-/obj/item/defenses/handheld/sentry,
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
 

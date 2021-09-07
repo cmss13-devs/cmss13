@@ -40014,7 +40014,7 @@
 	pixel_x = 7;
 	pixel_y = 11
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	layer = 3.7;
 	pixel_x = 7;
 	pixel_y = 19
@@ -41284,7 +41284,7 @@
 	pixel_y = 4
 	},
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	desc = "A handful of rounds to reload on the go.";
 	icon = 'icons/obj/items/weapons/guns/handful.dmi';
 	icon_state = "bullet_2";
@@ -45758,7 +45758,7 @@
 /obj/structure/platform{
 	layer = 3.1
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	layer = 3.7;
 	pixel_x = 5;
 	pixel_y = 8
@@ -45768,7 +45768,7 @@
 	pixel_x = 4
 	},
 /obj/structure/largecrate/random/case,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = -6;
 	pixel_y = 7
 	},
@@ -49166,7 +49166,7 @@
 /obj/item/toy/deck{
 	pixel_y = 14
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	layer = 3.7;
 	pixel_x = 5;
 	pixel_y = 8
@@ -49841,7 +49841,7 @@
 /obj/item/toy/deck{
 	pixel_y = 14
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	layer = 3.7;
 	pixel_x = 5;
 	pixel_y = 8
@@ -50399,19 +50399,19 @@
 	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/ash,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 4;
 	pixel_y = 13
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = -7;
 	pixel_y = 14
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = -13;
 	pixel_y = 8
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = -6;
 	pixel_y = 9
 	},
@@ -52190,7 +52190,7 @@
 /area/almayer/hull/lower_hull/l_f_s)
 "lqK" = (
 /obj/effect/decal/cleanable/ash,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = -13;
 	pixel_y = 8
 	},
@@ -52453,7 +52453,7 @@
 	pixel_x = -1;
 	pixel_y = 24
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	desc = "A handful of rounds to reload on the go.";
 	icon = 'icons/obj/items/weapons/guns/handful.dmi';
 	icon_state = "bullet_2";
@@ -61009,7 +61009,7 @@
 	},
 /area/almayer/hull/lower_hull/l_f_p)
 "pVA" = (
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 2;
 	pixel_y = 18
 	},
@@ -62548,7 +62548,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/clothing/mask/cigarette,
 /obj/item/ashtray/plastic,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 4;
 	pixel_y = 13
 	},
@@ -64632,7 +64632,7 @@
 	name = "cigarette";
 	pixel_y = 7
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	layer = 3.7;
 	pixel_x = 7;
 	pixel_y = 11
@@ -70836,7 +70836,7 @@
 	},
 /area/almayer/command/cic)
 "uTY" = (
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/almayer{
 	icon_regular_floor = "mono";
 	icon_state = "mono"
@@ -71252,7 +71252,7 @@
 	pixel_x = 3;
 	pixel_y = 6
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 4;
 	pixel_y = 13
 	},
@@ -73069,7 +73069,7 @@
 "vWB" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/plastic,
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /obj/item/trash/cigbutt{
 	pixel_x = -1;
 	pixel_y = 17
@@ -74200,12 +74200,12 @@
 	pixel_x = 7;
 	pixel_y = 9
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	layer = 3.7;
 	pixel_x = 7;
 	pixel_y = 16
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	layer = 3.7;
 	pixel_x = 5;
 	pixel_y = 8

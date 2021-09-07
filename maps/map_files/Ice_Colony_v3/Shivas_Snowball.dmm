@@ -14082,7 +14082,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
 "iXr" = (
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "iXx" = (
@@ -19771,7 +19771,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "pue" = (
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_y = 8
 	},
 /turf/open/floor/shiva,
@@ -20366,7 +20366,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/valley_huts)
 "pRH" = (
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
@@ -24799,11 +24799,11 @@
 "uKo" = (
 /obj/structure/surface/table,
 /obj/item/ashtray/plastic,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /obj/item/trash/cigbutt/cigarbutt{
 	pixel_x = 5;
 	pixel_y = 11

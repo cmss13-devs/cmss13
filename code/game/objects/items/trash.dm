@@ -122,21 +122,14 @@
 	pixel_y = rand(-10,10)
 	apply_transform(turn(transform,rand(0,360)))
 
-/obj/item/trash/ucigbutt
-	name = "cigarette butt"
+/obj/item/trash/cigbutt/ucigbutt
 	desc = "A manky old unfiltered cigarette butt."
-	icon = 'icons/obj/items/clothing/masks.dmi'
 	icon_state = "ucigbutt"
-	w_class = SIZE_TINY
-	throwforce = 1
 
-/obj/item/trash/bcigbutt
-	name = "cigarette butt"
+
+/obj/item/trash/cigbutt/bcigbutt
 	desc = "A manky old cigarette butt in a fancy black package."
-	icon = 'icons/obj/items/clothing/masks.dmi'
 	icon_state = "bcigbutt"
-	w_class = SIZE_TINY
-	throwforce = 1
 
 /obj/item/trash/cigbutt/cigarbutt
 	name = "cigar butt"

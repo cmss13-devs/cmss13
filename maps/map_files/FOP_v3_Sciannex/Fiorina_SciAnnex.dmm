@@ -5129,7 +5129,7 @@
 	},
 /area/fiorina/station/research_cells)
 "dgz" = (
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/prison,
 /area/fiorina/station/power_ring)
 "dgB" = (
@@ -7724,8 +7724,8 @@
 	},
 /area/fiorina/station/flight_deck)
 "ePq" = (
-/obj/item/trash/ucigbutt,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
@@ -8847,7 +8847,7 @@
 	},
 /area/fiorina/station/flight_deck)
 "fyT" = (
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/prison{
 	dir = 10;
@@ -12831,7 +12831,7 @@
 	},
 /area/fiorina/station/security)
 "hVm" = (
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},
@@ -14538,7 +14538,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "jaR" = (
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
@@ -16400,11 +16400,11 @@
 "kcO" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/plastic,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /obj/item/trash/cigbutt/cigarbutt{
 	pixel_x = 5;
 	pixel_y = 11
@@ -16537,7 +16537,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/plastic,
 /obj/item/clothing/mask/cigarette,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_y = 8
 	},
 /obj/structure/sign/nosmoking_1{
@@ -17251,7 +17251,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "kCv" = (
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -18191,7 +18191,7 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "leF" = (
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/wood,
 /area/fiorina/station/civres_blue)
 "leR" = (
@@ -18728,7 +18728,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/plastic,
 /obj/item/trash/cigbutt,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
@@ -25987,7 +25987,7 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ashtray/plastic,
 /obj/item/clothing/mask/cigarette,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_y = 8
 	},
 /obj/structure/sign/nosmoking_1{
@@ -28308,7 +28308,7 @@
 /obj/structure/bed/chair/wood/normal{
 	dir = 4
 	},
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
@@ -32336,7 +32336,7 @@
 /area/fiorina/station/civres_blue)
 "tNt" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /turf/open/floor/prison{
 	icon_state = "bluefull"
 	},

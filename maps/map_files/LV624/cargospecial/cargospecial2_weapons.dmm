@@ -3,8 +3,8 @@
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/ammo_magazine/shotgun/buckshot,
 /obj/item/weapon/gun/shotgun/pump/cmb,
-/obj/item/weapon/gun/shotgun/merc{
-	pixel_y = 8
+/obj/item/weapon/gun/shotgun/pump{
+	pixel_y = 9
 	},
 /turf/open/floor/vault,
 /area/lv624/lazarus/quartstorage)
@@ -23,7 +23,6 @@
 /obj/structure/surface/rack,
 /obj/item/storage/pouch/flamertank,
 /obj/item/storage/pouch/flamertank,
-/obj/item/ammo_magazine/flamer_tank,
 /obj/item/ammo_magazine/flamer_tank,
 /obj/item/ammo_magazine/flamer_tank,
 /obj/item/ammo_magazine/flamer_tank,

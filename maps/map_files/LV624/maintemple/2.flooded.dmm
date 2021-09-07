@@ -1755,7 +1755,9 @@
 	},
 /area/lv624/ground/caves/sand_temple)
 "PA" = (
-/obj/structure/machinery/door/airlock/sandstone/runed,
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	name = "\improper Strange Temple"
+	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "PN" = (
@@ -1841,7 +1843,9 @@
 "Rg" = (
 /obj/structure/flora/jungle/vines/heavy,
 /obj/structure/blocker/forcefield/vehicles,
-/obj/structure/machinery/door/airlock/sandstone/runed,
+/obj/structure/machinery/door/airlock/sandstone/runed/destroyable{
+	name = "\improper Strange Temple"
+	},
 /turf/open/floor/sandstone/runed,
 /area/lv624/ground/caves/sand_temple)
 "Rx" = (
@@ -2071,7 +2075,7 @@ ZX
 ZX
 ZX
 ZX
-ZX
+GT
 GT
 GT
 GT

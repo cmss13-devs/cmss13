@@ -433,7 +433,7 @@
 	var/old_icon = attack_icon.icon_state
 	var/old_pix_x = attack_icon.pixel_x
 	var/old_pix_y = attack_icon.pixel_y
-	addtimer(CALLBACK(target, /mob/living/proc/finish_attack_overlay, target, old_icon, old_pix_x, old_pix_y), 4)
+	addtimer(CALLBACK(istype(target, /mob/living) ? target : src, /mob/living/proc/finish_attack_overlay, target, old_icon, old_pix_x, old_pix_y), 4)
 
 /mob/living/proc/finish_attack_overlay(atom/target, old_icon, old_pix_x, old_pix_y)
 	if(!attack_icon || !target)

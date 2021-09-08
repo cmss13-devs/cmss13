@@ -145,6 +145,8 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/lang_chat_disabled = FALSE
 
+	var/show_permission_errors = TRUE
+
 	var/key_buf // A buffer for setting macro keybinds
 	var/list/key_mod_buf // A buffer for macro modifiers
 

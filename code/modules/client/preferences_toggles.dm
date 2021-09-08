@@ -69,6 +69,15 @@
 	prefs.save_preferences()
 	to_chat(src, "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head.")
 
+/client/verb/toggle_permission_errors()
+	set name = "Toggle Permission Errors"
+	set category = "Preferences.Chat"
+	set desc = "Toggles error messages due to missing permissions."
+
+	prefs.show_permission_errors = !prefs.show_permission_errors
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.show_permission_errors) ? "now" : "no longer"] see permission error messages.")
+
 /client/verb/listen_ooc()
 	set name = "Show/Hide OOC"
 	set category = "Preferences.Chat"

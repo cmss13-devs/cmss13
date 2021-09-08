@@ -68,6 +68,15 @@
 			to_chat(user, SPAN_WARNING("[H] was nested recently. Wait a bit."))
 			return
 
+	if(ishuman(buckled_mob) && isXeno(user))
+		var/mob/living/carbon/human/H = buckled_mob
+		if(H.stat != DEAD)
+			var/alert_result = (alert(usr, "[H] is still alive and kicking! Are you sure you want to remove them from the nest?", "Confirmation", "Yes", "No"))
+			if (alert_result != "Yes")
+				return
+			else
+				unbuckle()
+
 	buckled_mob.visible_message(SPAN_NOTICE("\The [user] pulls \the [buckled_mob] free from \the [src]!"),\
 	SPAN_NOTICE("\The [user] pulls you free from \the [src]."),\
 	SPAN_NOTICE("You hear squelching."))
@@ -140,7 +149,7 @@
 
 	do_buckle(M, user)
 	ADD_TRAIT(M, TRAIT_NESTED, TRAIT_SOURCE_BUCKLE)
-	
+
 	if(!ishuman(M))
 		return
 

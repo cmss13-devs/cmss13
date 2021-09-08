@@ -102,6 +102,7 @@
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	S["lang_chat_disabled"]	>> lang_chat_disabled
+	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
 	S["hide_statusbar"] >> hide_statusbar
 	S["hotkeys"] >> hotkeys
@@ -210,6 +211,7 @@
 	S["synth_status"]		<< synth_status
 
 	S["lang_chat_disabled"] << lang_chat_disabled
+	S["show_permission_errors"] << show_permission_errors
 	S["key_bindings"] << key_bindings
 	S["hotkeys"] << hotkeys
 

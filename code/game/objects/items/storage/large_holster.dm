@@ -110,31 +110,64 @@
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed for the M39 SMG, and features a larger frame to support the gun. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This holster features a larger frame and stiff backboard to support a submachinegun. It's designed for the M39, but the clips are adjustable enough to fit most compact submachineguns. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
 	icon_state = "m39_holster"
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	base_icon = "m39_holster"
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = 5
 	can_hold = list(
-		/obj/item/weapon/gun/smg/m39
+		/obj/item/weapon/gun/smg/m39,
+		/obj/item/weapon/gun/smg/mp7,
+		/obj/item/weapon/gun/smg/uzi,
+		/obj/item/weapon/gun/pistol/skorpion
 		)
+	///Guns have a hud offset that throws the vis_contents alignment off.
+	var/gun_offset = 0
+	///Whether the gun had pixel scaling set before being holstered.
+	var/gun_scaling = FALSE
+
+/obj/item/storage/large_holster/m39/handle_item_insertion(obj/item/W, prevent_warning)
+	if(istype(W)) //Doing this before calling parent so that the gun isn't misaligned in the inventory screen.
+		if(W.appearance_flags & PIXEL_SCALE)
+			gun_scaling = TRUE
+		else
+			W.appearance_flags |= PIXEL_SCALE
+
+		gun_offset = W.hud_offset
+		W.hud_offset = 0
+		W.pixel_x = 0
+		W.transform = turn(matrix(0.82, MATRIX_SCALE), 90) //0.82x is the right size and gives reasonably accurate results with pixel scaling.
+
+		W.vis_flags |= VIS_INHERIT_ID //Means the gun is just visual and doesn't block picking up or clicking on the holster.
+		vis_contents += W
+
+	. = ..()
+
+/obj/item/storage/large_holster/m39/remove_from_storage(obj/item/W, atom/new_location)
+	. = ..()
+	if(.)
+		if(gun_scaling)
+			gun_scaling = FALSE
+		else
+			W.appearance_flags &= ~PIXEL_SCALE
+
+		W.hud_offset = gun_offset
+		W.pixel_x = gun_offset
+		W.transform = null
+
+		W.vis_flags &= ~VIS_INHERIT_ID
+		vis_contents -= W 
 
 /obj/item/storage/large_holster/m39/update_icon()
-	var/mob/user = loc
-	if(contents.len)
-		var/obj/I = contents[1]
-		icon_state = "[base_icon]_full_[I.icon_state]"
-		item_state = "[base_icon]_full"
-	else
-		icon_state = base_icon
-		item_state = base_icon
-	if(istype(user)) user.update_inv_belt()
+	item_state = length(contents) ? "[base_icon]_full" : base_icon
+
+	var/mob/living/carbon/human/user = loc
+	if(istype(user))
+		user.update_inv_belt()
 
 /obj/item/storage/large_holster/m39/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/smg/m39(src)
-
-
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39())
 
 /obj/item/storage/large_holster/fuelpack
 	name = "\improper Broiler-T flexible refueling system"

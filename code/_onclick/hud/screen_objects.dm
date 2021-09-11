@@ -519,30 +519,40 @@
 	alpha = 0 //invisible
 	mouse_opacity = 0
 
-/obj/screen/squad_leader_locator/clicked(var/mob/living/carbon/human/H)
-	if(!istype(H))
+/obj/screen/squad_leader_locator/clicked(mob/living/carbon/human/user, mods)
+	if(!istype(user))
 		return
-	if(H.get_active_hand())
+	if(user.get_active_hand())
 		return
-	var/obj/item/device/radio/headset/almayer/marine/earpiece = H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
-	if(!H.assigned_squad || !istype(earpiece) || H.assigned_squad.radio_freq != earpiece.frequency)
-		to_chat(H, SPAN_WARNING("Unauthorized access detected."))
+	var/obj/item/device/radio/headset/almayer/marine/earpiece = user.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+	if(!user.assigned_squad || !istype(earpiece) || user.assigned_squad.radio_freq != earpiece.frequency)
+		to_chat(user, SPAN_WARNING("Unauthorized access detected."))
 		return
-	H.assigned_squad.ui_interact(H)
+	if(mods["shift"])
+		var/area/current_area = get_area(user)
+		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
+		return
+	user.assigned_squad.ui_interact(user)
 
 /obj/screen/queen_locator
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
 	name = "queen locator"
 
-/obj/screen/queen_locator/clicked(var/mob/living/carbon/Xenomorph/X)
-	if(!istype(X))
+/obj/screen/queen_locator/clicked(mob/living/carbon/Xenomorph/user, mods)
+	if(!istype(user))
 		return FALSE
-	if(!X.hive)
+	if(mods["shift"])
+		var/area/current_area = get_area(user)
+		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
+		return
+	if(!user.hive)
+		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
 		return FALSE
-	if(!X.hive.living_xeno_queen)
+	if(!user.hive.living_xeno_queen)
+		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
 		return FALSE
-	X.overwatch(X.hive.living_xeno_queen)
+	user.overwatch(user.hive.living_xeno_queen)
 
 /obj/screen/xenonightvision
 	icon = 'icons/mob/hud/alien_standard.dmi'

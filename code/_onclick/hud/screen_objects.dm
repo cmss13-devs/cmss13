@@ -13,6 +13,7 @@
 	icon_state = "x"
 	layer = ABOVE_HUD_LAYER
 	unacidable = TRUE
+	appearance_flags = NO_CLIENT_COLOR //So that saturation/desaturation etc. effects don't hit the HUD.
 	var/obj/master = null	//A reference to the object in the slot. Grabs or items, generally.
 
 /obj/screen/text

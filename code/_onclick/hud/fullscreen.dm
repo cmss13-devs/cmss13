@@ -117,16 +117,19 @@
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "nvg_hud"
+	appearance_flags = NONE
 
 /obj/screen/fullscreen/thermal
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "thermal_hud"
+	appearance_flags = NONE
 
 /obj/screen/fullscreen/meson
 	icon = 'icons/mob/hud/screen1.dmi'
 	screen_loc = "WEST,SOUTH to EAST,NORTH"
 	icon_state = "meson_hud"
+	appearance_flags = NONE
 
 /obj/screen/fullscreen/meson/refurb
 	icon_state = "refurb_meson_hud"
@@ -144,6 +147,7 @@
 /obj/screen/fullscreen/weather
 	icon_state = "initialize this"
 	layer = FULLSCREEN_WEATHER_LAYER
+	appearance_flags = NONE
 
 
 /obj/screen/fullscreen/weather/snow

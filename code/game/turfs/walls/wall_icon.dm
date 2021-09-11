@@ -51,6 +51,7 @@
 	for(var/i = 1; i <= damage_overlays.len; i++)
 		var/image/img = image(icon = 'icons/turf/walls/walls.dmi', icon_state = "overlay_damage")
 		img.blend_mode = BLEND_MULTIPLY
+		img.appearance_flags = NO_CLIENT_COLOR
 		img.alpha = (i * alpha_inc) - 1
 		damage_overlays[i] = img
 

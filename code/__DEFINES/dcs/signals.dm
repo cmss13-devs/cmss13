@@ -122,6 +122,8 @@
 #define COMSIG_MOB_DRAGGED "mob_dragged"
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RESISTED "mob_resist"
+/// From /mob/living/verb/resist()
+#define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"

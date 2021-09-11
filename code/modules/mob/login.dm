@@ -26,6 +26,11 @@
 
 	reload_fullscreens()
 
+	if(length(client_color_matrices))
+		update_client_color_matrices(time = 0) //This mob has client colour matrices set, apply them instantly on login.
+	else
+		update_client_color_matrices(time = 1.5 SECONDS) //Otherwise, fade any matrices from a previous mob.
+
 	next_move = 1
 	sight |= SEE_SELF
 

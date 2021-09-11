@@ -18,7 +18,7 @@
 
 	logging_ckey = null
 
-	if(client)
+	if(client) //As of 16/8/21 this check doesn't seem possible - client appears to be unset before Logout() is called.
 		for(var/foo in client.player_details.post_logout_callbacks)
 			var/datum/callback/CB = foo
 			CB.Invoke()

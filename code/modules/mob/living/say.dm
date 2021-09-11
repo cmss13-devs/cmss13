@@ -65,10 +65,13 @@ var/list/department_radio_keys = list(
 		if(!istype(dongle)) return
 		if(dongle.translate_binary) return 1
 
+///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(var/bubble_name)
 	var/list/hear = hearers()
 
 	var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"[bubble_name]")
+
+	speech_bubble.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 
 	if(appearance_flags & PIXEL_SCALE)
 		speech_bubble.appearance_flags |= PIXEL_SCALE
@@ -147,6 +150,7 @@ var/list/department_radio_keys = list(
 
 		var/speech_bubble_test = say_test(message)
 		var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")
+		speech_bubble.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)

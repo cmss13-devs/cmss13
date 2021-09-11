@@ -74,7 +74,7 @@
 	hud_list = new
 	for(var/hud in hud_possible)
 		var/image/I = image('icons/mob/hud/hud.dmi', src, "")
-		I.appearance_flags |= RESET_COLOR
+		I.appearance_flags |= NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		hud_list[hud] = I
 
 

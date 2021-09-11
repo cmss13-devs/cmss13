@@ -98,6 +98,8 @@
 		new path(src)
 	if(w_class <= SIZE_MEDIUM) //pulling small items doesn't slow you down much
 		drag_delay = 1
+	if(isstorage(loc))
+		appearance_flags |= NO_CLIENT_COLOR //It's spawned in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
 
 /obj/item/Destroy()
 	flags_item &= ~DELONDROP //to avoid infinite loop of unequip, delete, unequip, delete.
@@ -292,6 +294,8 @@ cases. Override_icon_state should be a list.*/
 
 	SEND_SIGNAL(src, COMSIG_ITEM_DROPPED, user)
 
+	appearance_flags &= ~NO_CLIENT_COLOR //So saturation/desaturation etc. effects affect it.
+
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)
 	SHOULD_CALL_PARENT(TRUE)
@@ -301,11 +305,13 @@ cases. Override_icon_state should be a list.*/
 
 // called when this item is removed from a storage item, which is passed on as S. The loc variable is already set to the new destination before this is called.
 /obj/item/proc/on_exit_storage(obj/item/storage/S as obj)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	appearance_flags &= ~NO_CLIENT_COLOR
 
 // called when this item is added into a storage item, which is passed on as S. The loc variable is already set to the storage item.
 /obj/item/proc/on_enter_storage(obj/item/storage/S as obj)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	appearance_flags |= NO_CLIENT_COLOR //It's in an inventory item, so saturation/desaturation etc. effects shouldn't affect it.
 
 // called when "found" in pockets and storage items. Returns 1 if the search should end.
 /obj/item/proc/on_found(mob/finder as mob)
@@ -347,6 +353,8 @@ cases. Override_icon_state should be a list.*/
 		var/datum/action/A = X
 		if(item_action_slot_check(user, slot)) //some items only give their actions buttons when in a specific slot.
 			A.give_to(user)
+
+	appearance_flags |= NO_CLIENT_COLOR //So that saturation/desaturation etc. effects don't hit inventory.
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(mob/user, slot)

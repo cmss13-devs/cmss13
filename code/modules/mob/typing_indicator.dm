@@ -12,6 +12,7 @@ var/global/image/typing_indicator
 
 	if(!typing_indicator)
 		typing_indicator = image('icons/mob/hud/talk.dmi',null,"typing")
+		typing_indicator.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 
 	if(client)
 		if(client.prefs.toggles_chat & SHOW_TYPING)

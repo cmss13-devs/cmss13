@@ -38,7 +38,7 @@
 	if(!langchat_image)
 		langchat_image = image(null, src)
 		langchat_image.layer = 20
-		langchat_image.appearance_flags = KEEP_APART
+		langchat_image.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 		langchat_image.maptext_y = langchat_height
 		langchat_image.maptext_height = 64
 		langchat_image.maptext_x = LANGCHAT_X_OFFSET

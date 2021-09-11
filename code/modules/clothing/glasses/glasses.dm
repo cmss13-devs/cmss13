@@ -214,6 +214,146 @@
 	toggleable = 1
 	actions_types = list(/datum/action/item_action/toggle)
 
+/obj/item/clothing/glasses/disco_fever
+	name = "malfunctioning AR visor"
+	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."
+	icon_state = "discovision"
+	flags_equip_slot = SLOT_EYES|SLOT_FACE
+
+	//These three vars are so that the flashing of the obj and onmob match what the wearer is seeing. They're actually vis_contents rather than overlays,
+	//strictly speaking, since overlays can't be animate()-ed.
+	var/list/onmob_colors
+	var/obj/obj_glass_overlay
+	var/obj/mob_glass_overlay
+
+/obj/item/clothing/glasses/disco_fever/Initialize(mapload, ...)
+	. = ..()
+
+	obj_glass_overlay = new()
+	obj_glass_overlay.vis_flags = VIS_INHERIT_ID|VIS_INHERIT_ICON
+	obj_glass_overlay.icon_state = "discovision_glass"
+	obj_glass_overlay.layer = FLOAT_LAYER
+	vis_contents += obj_glass_overlay
+	
+	mob_glass_overlay = new()
+	mob_glass_overlay.icon = icon
+	mob_glass_overlay.vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
+	mob_glass_overlay.icon_state = "discovision_glass_onmob"
+	mob_glass_overlay.layer = FLOAT_LAYER
+
+	//The overlays are painted in shades of pure red. These matrices convert them to various shades of the new colour.
+	onmob_colors = list(
+		"base" = color_matrix_recolor_red("#5D5D5D"),
+		"yellow" = color_matrix_recolor_red("#D4C218"),
+		"green" = color_matrix_recolor_red("#0DB347"),
+		"cyan" = color_matrix_recolor_red("#2AC1DB"),
+		"blue" = color_matrix_recolor_red("#005BF7"),
+		"indigo" = color_matrix_recolor_red("#9608D4"),
+		)	
+
+	obj_glass_overlay.color = onmob_colors["base"]
+	mob_glass_overlay.color = onmob_colors["base"]
+
+/obj/item/clothing/glasses/disco_fever/equipped(mob/user, slot)
+	. = ..()
+
+	if(slot != WEAR_EYES && slot != WEAR_FACE)
+		return
+
+	RegisterSignal(user, COMSIG_MOB_RECALCULATE_CLIENT_COLOR, .proc/apply_discovision_handler)
+	apply_discovision_handler(user)
+
+///Ends existing animations in preparation for the funny. Looping animations don't seem to properly end if a new one is started on the same tick.
+/obj/item/clothing/glasses/disco_fever/proc/apply_discovision_handler(mob/user)
+	SIGNAL_HANDLER
+
+	//User client has its looping animation ended by the login matrix update when ghosting.
+	//For some reason the obj overlay doesn't end the loop properly when set to 0 seconds, but as long as the previous loop is ended the new one should
+	//transition smoothly from whatever colour it current has.
+	animate(obj_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS) 
+	animate(mob_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
+
+	addtimer(CALLBACK(src, .proc/apply_discovision, user), 0.1 SECONDS)
+
+///Handles disco-vision. Normal client colour matrix handling isn't set up for a continuous animation like this, so this is applied afterwards.
+/obj/item/clothing/glasses/disco_fever/proc/apply_discovision(mob/user)
+	//Caramelldansen HUD overlay.
+	//Use of this filter in armed conflict is in direct contravention of the Geneva Suggestions (2120 revision)
+	//Colours are based on a bit of the music video. Original version was a rainbow with #c20000 and #db6c03 as well.
+
+	//Animate the obj and onmob in sync with the client.
+	for(var/I in list(obj_glass_overlay, mob_glass_overlay))
+		animate(I, color = onmob_colors["indigo"], time = 0.3 SECONDS, loop = -1)
+		animate(color = onmob_colors["base"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["cyan"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["base"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["yellow"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["base"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["green"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["base"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["blue"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["base"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["yellow"], time = 0.3 SECONDS)
+		animate(color = onmob_colors["base"], time = 0.3 SECONDS)
+
+	if(!user.client) //Shouldn't happen but can't hurt to check.
+		return
+
+	var/base_colour
+	if(!user.client.color) //No set client colour.
+		base_colour = color_matrix_saturation(1.35) //Crank up the saturation and get ready to party.
+	else if(istext(user.client.color)) //Hex colour string.
+		base_colour = color_matrix_multiply(color_matrix_from_string(user.client.color), color_matrix_saturation(1.35))
+	else //Colour matrix.
+		base_colour = color_matrix_multiply(user.client.color, color_matrix_saturation(1.35))
+
+	var/list/colours = list(
+		"yellow" = color_matrix_multiply(base_colour, color_matrix_from_string("#d4c218")),
+		"green" = color_matrix_multiply(base_colour, color_matrix_from_string("#2dc404")),
+		"cyan" = color_matrix_multiply(base_colour, color_matrix_from_string("#2ac1db")),
+		"blue" = color_matrix_multiply(base_colour, color_matrix_from_string("#005BF7")),
+		"indigo" = color_matrix_multiply(base_colour, color_matrix_from_string("#b929f7"))
+		)
+
+	//Animate the victim's client.
+	animate(user.client, color = colours["indigo"], time = 0.3 SECONDS, loop = -1)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["cyan"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["yellow"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["green"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["blue"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+	animate(color = colours["yellow"], time = 0.3 SECONDS)
+	animate(color = base_colour, time = 0.3 SECONDS)
+
+/obj/item/clothing/glasses/disco_fever/dropped(mob/living/carbon/human/user)
+	. = ..()
+
+	UnregisterSignal(user, COMSIG_MOB_RECALCULATE_CLIENT_COLOR)
+
+	animate(obj_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
+	animate(mob_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
+
+	user.update_client_color_matrices(0.3 SECONDS)
+
+/obj/item/clothing/glasses/disco_fever/get_mob_overlay(mob/living/carbon/human/user_mob, slot)
+	. = ..()
+
+	if(!ishuman(user_mob))
+		return
+
+	var/obj/limb/head/user_head = user_mob.get_limb("head")
+
+	if(slot != WEAR_EYES && slot != WEAR_FACE)
+		user_head.vis_contents -= mob_glass_overlay
+		return
+
+	//Add the onmob overlay. Normal onmob images are handled by static overlays.
+	//It's added to the head object so that glasses/mask overlays on the mob render above it, since vis_contents and overlays appear to use different layerings.
+	user_head.vis_contents += mob_glass_overlay
 
 
 //welding goggles

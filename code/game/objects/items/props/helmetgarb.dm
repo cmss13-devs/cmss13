@@ -87,8 +87,10 @@
 	garbage = FALSE
 
 /obj/item/prop/helmetgarb/helmet_nvg/on_enter_storage(obj/item/storage/internal/S)
+	..()
+
 	if(!istype(S))
-		return ..()
+		return
 
 	remove_attached_item()
 

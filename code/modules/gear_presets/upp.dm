@@ -40,7 +40,7 @@
 	skills = /datum/skills/upp
 	assignment = JOB_UPP
 	rank = JOB_UPP
-	role_comm_title = "Pvt"
+	role_comm_title = "Sol"
 	paygrade = "UE1"
 
 /datum/equipment_preset/upp/soldier/load_gear(mob/living/carbon/human/H)
@@ -142,7 +142,7 @@
 	assignment = JOB_UPP_MEDIC
 	rank = JOB_UPP_MEDIC
 	role_comm_title = "Med"
-	paygrade = "UE2M"
+	paygrade = "UE3M"
 
 /datum/equipment_preset/upp/medic/load_gear(mob/living/carbon/human/H)
 	//back
@@ -183,7 +183,7 @@
 	assignment = JOB_UPP_ENGI
 	rank = JOB_UPP_ENGI
 	role_comm_title = "Sap"
-	paygrade = "UE2S"
+	paygrade = "UE3S"
 
 /datum/equipment_preset/upp/sapper/load_gear(mob/living/carbon/human/H)
 	//Sappers should have lots of gear and whatnot that helps them attack or siege marines
@@ -235,8 +235,8 @@
 	skills = /datum/skills/upp/specialist
 	assignment = JOB_UPP_SPECIALIST
 	rank = JOB_UPP_SPECIALIST
-	role_comm_title = "Szh"
-	paygrade = "UE3"
+	role_comm_title = "Spc"
+	paygrade = "UE5"
 
 /datum/equipment_preset/upp/specialist/load_gear(mob/living/carbon/human/H)
 	//back
@@ -288,14 +288,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/leader
-	name = "UPP Leader"
+	name = "UPP Squad Leader"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/SL
 	assignment = JOB_UPP_LEADER
 	rank = JOB_UPP_LEADER
-	role_comm_title = "MSzh"
-	paygrade = "UE4"
+	role_comm_title = "SL"
+	paygrade = "UE6"
 
 /datum/equipment_preset/upp/leader/load_gear(mob/living/carbon/human/H)
 	//back
@@ -336,7 +336,7 @@
 	assignment = JOB_UPP_POLICE
 	rank = JOB_UPP_POLICE
 	role_comm_title = "MP"
-	paygrade = "UE4"
+	paygrade = "UE6"
 
 /datum/equipment_preset/upp/military_police/load_gear(mob/living/carbon/human/H)
 	//back
@@ -373,7 +373,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer
-	name = "UPP Officer"
+	name = "UPP Lieutenant"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	skills = /datum/skills/upp/officer
@@ -421,7 +421,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/senior
-	name = "UPP Senior Officer"
+	name = "UPP Senior Lieutenant"
 	assignment = JOB_UPP_SRLT_OFFICER
 	rank = JOB_UPP_SRLT_OFFICER
 	role_comm_title = "Sr-Lt."
@@ -465,14 +465,14 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/upp/officer/kapitan
-	name = "UPP Kapitan"
-	assignment = JOB_UPP_KPT_OFFICER
-	rank = JOB_UPP_KPT_OFFICER
-	role_comm_title = "Kpt."
-	paygrade = "UO2"
+/datum/equipment_preset/upp/officer/major
+	name = "UPP Major"
+	assignment = JOB_UPP_MAY_OFFICER
+	rank = JOB_UPP_MAY_OFFICER
+	role_comm_title = "May."
+	paygrade = "UO3"
 
-/datum/equipment_preset/upp/officer/kapitan/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/upp/officer/major/load_gear(mob/living/carbon/human/H)
 	//back
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_BACK)
@@ -515,7 +515,8 @@
 	assignment = JOB_UPP_KOL_OFFICER
 	rank = JOB_UPP_KOL_OFFICER
 	role_comm_title = "Kol."
-	paygrade = "UO3"
+	paygrade = "UO5"
+	skills = /datum/skills/upp/commander
 
 /datum/equipment_preset/upp/officer/kolonel/load_gear(mob/living/carbon/human/H)
 	//back
@@ -869,7 +870,7 @@
 
 	assignment = JOB_UPP_CREWMAN
 	rank = JOB_UPP_CREWMAN
-	paygrade = "UE3"
+	paygrade = "UE5"
 	role_comm_title = "TANK"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew

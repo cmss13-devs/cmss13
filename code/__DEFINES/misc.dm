@@ -89,10 +89,6 @@
 //           END DO_AFTER FLAGS            //
 // *************************************** //
 
-#define PAYGRADES_MARINE list("C","E1","E2","E3","E4","E5","E6","E7","E8","E9","E9E","O1","O2","O3","O4","O5","O5E","O6","O7","O8","O9","O9E")
-#define PAYGRADES_OFFICER list("O1","O2","O3","O4","O5","O5E","O6","O7","O8","O9","O9E")
-#define PAYGRADES_ENLISTED list("C","E1","E2","E3","E4","E5","E6","E7","E8","E9","E9E")
-
 // MATERIALS
 #define MATERIAL_METAL     "metal"
 #define MATERIAL_PLASTEEL  "plasteel"

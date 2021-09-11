@@ -48,6 +48,10 @@
 	rank_short = "ME8"
 	icon_state = "ranks_snco"
 
+/obj/item/clothing/accessory/ranks/marine/e8e
+	rank_short = "ME8E"
+	icon_state = "ranks_snco"
+
 /obj/item/clothing/accessory/ranks/marine/e9
 	rank_short = "ME9"
 	icon_state = "ranks_snco"

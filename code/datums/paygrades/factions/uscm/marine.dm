@@ -55,31 +55,38 @@
 
 /datum/paygrade/marine/e8
 	paygrade = "ME8"
-	name = "Master Sergeant"
-	prefix = "MSGT."
+	name = "First Sergeant"
+	prefix = "1stSGT"
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e8
 	ranking = 7
+
+/datum/paygrade/marine/e8e
+	paygrade = "ME8E"
+	name = "Master Sergeant"
+	prefix = "MSGT."
+	rank_pin = /obj/item/clothing/accessory/ranks/marine/e8e
+	ranking = 8
 
 /datum/paygrade/marine/e9
 	paygrade = "ME9"
 	name = "Sergeant Major"
 	prefix = "SGM."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9
-	ranking = 8
+	ranking = 9
 
 /datum/paygrade/marine/e9e
 	paygrade = "ME9E"
 	name = "Master Gunnery Sergeant"
 	prefix = "MGySGT."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9e
-	ranking = 9
+	ranking = 10
 
 /datum/paygrade/marine/e9c
 	paygrade = "ME9C"
 	name = "Command Sergeant Major"
 	prefix = "CSGM."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9c
-	ranking = 10
+	ranking = 11
 
 // COMMISSIONED PAYGRADES
 
@@ -88,35 +95,35 @@
 	name = "Second Lieutenant"
 	prefix = "2ndLT."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o1
-	ranking = 11
+	ranking = 12
 
 /datum/paygrade/marine/o2
 	paygrade = "MO2"
 	name = "First Lieutenant"
 	prefix = "1stLT."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o2
-	ranking = 12
+	ranking = 13
 
 /datum/paygrade/marine/o3
 	paygrade = "MO3"
 	name = "Captain"
 	prefix = "CPT."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o3
-	ranking = 13
+	ranking = 14
 
 /datum/paygrade/marine/o4
 	paygrade = "MO4"
 	name = "Major"
 	prefix = "Maj."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o4
-	ranking = 14
+	ranking = 15
 
 /datum/paygrade/marine/o5
 	paygrade = "MO5"
 	name = "Lieutenant Colonel"
 	prefix = "LtCol."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o5
-	ranking = 15
+	ranking = 16
 
 //Platoon Commander
 /datum/paygrade/marine/o6
@@ -124,21 +131,21 @@
 	name = "Colonel"
 	prefix = "Col."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6
-	ranking = 16
+	ranking = 17
 
 /datum/paygrade/marine/o6e
 	paygrade = "MO6E"
 	name = "Senior Colonel"
 	prefix = "Snr Col."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6e
-	ranking = 17
+	ranking = 18
 
 /datum/paygrade/marine/o6c
 	paygrade = "MO6C"
 	name = "Division Colonel"
 	prefix = "Div Col."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o6c
-	ranking = 18
+	ranking = 19
 
 //High Command
 /datum/paygrade/marine/o7
@@ -146,32 +153,32 @@
 	name = "Brigadier General"
 	prefix = "BGen."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o7
-	ranking = 19
+	ranking = 20
 
 /datum/paygrade/marine/o8
 	paygrade = "MO8"
 	name = "Major General"
 	prefix = "MajGen."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o8
-	ranking = 20
+	ranking = 21
 
 /datum/paygrade/marine/o9
 	paygrade = "MO9"
 	name = "Lieutenant General"
 	prefix = "LtGen."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o9
-	ranking = 21
+	ranking = 22
 
 /datum/paygrade/marine/o10
 	paygrade = "MO10"
 	name = "General"
 	prefix = "Gen."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10
-	ranking = 22
+	ranking = 23
 
 /datum/paygrade/marine/o10c
 	paygrade = "MO10C"
 	name = "Commandant of the Marine Corps"
 	prefix = "CMC."
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/o10c
-	ranking = 23
+	ranking = 24

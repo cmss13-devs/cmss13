@@ -535,9 +535,10 @@
 	user.assigned_squad.ui_interact(user)
 
 /obj/screen/queen_locator
+	name = "queen locator"
 	icon = 'icons/mob/hud/alien_standard.dmi'
 	icon_state = "trackoff"
-	name = "queen locator"
+	var/track_state = TRACKER_QUEEN
 
 /obj/screen/queen_locator/clicked(mob/living/carbon/Xenomorph/user, mods)
 	if(!istype(user))
@@ -549,6 +550,22 @@
 	if(!user.hive)
 		to_chat(user, SPAN_WARNING("You don't belong to a hive!"))
 		return FALSE
+	if(mods["alt"])
+		var/list/options = list()
+		if(user.hive.living_xeno_queen)
+			options["Queen"] = TRACKER_QUEEN
+		if(user.hive.hive_location)
+			options["Hive Core"] = TRACKER_HIVE
+		var/xeno_leader_index = 1
+		for(var/xeno in user.hive.xeno_leader_list)
+			var/mob/living/carbon/Xenomorph/xeno_lead = user.hive.xeno_leader_list[xeno_leader_index]
+			if(xeno_lead)
+				options["Xeno Leader [xeno_lead]"] = "[xeno_leader_index]"
+			xeno_leader_index++
+		var/selected = tgui_input_list(user, "Select what you want the locator to track.", "Locator Options", options)
+		if(selected)
+			track_state = options[selected]
+		return
 	if(!user.hive.living_xeno_queen)
 		to_chat(user, SPAN_WARNING("Your hive doesn't have a living queen!"))
 		return FALSE

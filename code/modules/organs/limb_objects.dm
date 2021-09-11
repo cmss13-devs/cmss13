@@ -93,10 +93,17 @@ obj/item/limb/New(loc, mob/living/carbon/human/H)
 		var/datum/sprite_accessory/hair_style = GLOB.hair_styles_list[H.h_style]
 		if(hair_style)
 			var/icon/hair = new/icon("icon" = hair_style.icon, "icon_state" = "[hair_style.icon_state]_s")
+			var/icon/eyes = new/icon("icon" = 'icons/mob/humans/onmob/human_face.dmi', "icon_state" = H.species ? H.species.eyes : "eyes_s")
 			if(hair_style.do_colouration)
 				hair.Blend(rgb(H.r_hair, H.g_hair, H.b_hair), ICON_ADD)
+				eyes.Blend(rgb(H.r_eyes, H.g_eyes, H.b_eyes), ICON_ADD)
 
 			overlays.Add(hair) //icon.Blend(hair, ICON_OVERLAY)
+			overlays.Add(eyes) //icon.Blend(hair, ICON_OVERLAY)
+
+	if(H.lip_style && (H.species && H.species.flags & HAS_LIPS))
+		var/icon/lipstick = new/icon('icons/mob/humans/onmob/human_face.dmi', "paint_[H.lip_style]")
+		overlays += lipstick
 
 	if(brainmob && brainmob.client)
 		brainmob.client.screen.len = null //clear the hud

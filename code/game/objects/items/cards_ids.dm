@@ -259,17 +259,21 @@
 
 		switch(alert("Would you like to display the ID, or retitle it?","Choose.","Rename","Show"))
 			if("Rename")
-				var t = strip_html(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name),26)
-				if(!t || t == "Unknown" || t == "floor" || t == "wall" || t == "r-wall") //Same as mob/new_player/prefrences.dm
+				var/T = strip_html(input(user, "What name would you like to put on this card?", "Agent card name", ishuman(user) ? user.real_name : user.name),26)
+				if(!T || T == "Unknown" || T == "floor" || T == "wall" || T == "r-wall") //Same as mob/new_player/prefrences.dm
 					alert("Invalid name.")
 					return
-				src.registered_name = t
+				src.registered_name = T
 
-				var u = strip_html(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Assistant"))
-				if(!u)
+				var/U = strip_html(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Assistant"))
+				if(!U)
 					alert("Invalid assignment.")
 					return
-				src.assignment = u
+				src.assignment = U
+
+				var/P = strip_html(input(user, "What paygrade would you like to put on this card?", "Agent card paygrade", "E1"))
+
+				src.paygrade = P
 				src.name = "[src.registered_name]'s ID Card ([src.assignment])"
 				to_chat(user, SPAN_NOTICE(" You successfully forge the ID card."))
 				return
@@ -278,14 +282,6 @@
 	else
 		..()
 
-
-
-/obj/item/card/id/syndicate_command
-	name = "syndicate ID card"
-	desc = "An ID straight from the Syndicate."
-	registered_name = "Syndicate"
-	assignment = "Syndicate Overlord"
-	access = list(ACCESS_ILLEGAL_PIRATE)
 
 /obj/item/card/id/captains_spare
 	name = "captain's spare ID"

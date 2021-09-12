@@ -401,6 +401,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTOMATIC_PUNCTUATION]'><b>[toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION ? "On" : "Off"]</b></a><br>"
 	dat += "<b>Toggle Combat Click-Drag Override: \
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Alternate-Fire Dual Wielding: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
 
 	if(CONFIG_GET(flag/allow_Metadata))
 		dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"

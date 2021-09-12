@@ -169,12 +169,12 @@
 			unload(null)
 
 /obj/item/weapon/gun/revolver/load_into_chamber(mob/user)
-//		if(active_attachable) active_attachable = null
 	if(ready_in_chamber())
 		return in_chamber
 	rotate_cylinder() //If we fail to return to chamber the round, we just move the firing pin some.
 
 /obj/item/weapon/gun/revolver/reload_into_chamber(mob/user)
+	in_chamber = null
 	if(current_mag)
 		current_mag.chamber_contents[current_mag.chamber_position] = "blank" //We shot the bullet.
 		rotate_cylinder()

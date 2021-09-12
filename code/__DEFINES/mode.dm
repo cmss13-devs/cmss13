@@ -68,6 +68,8 @@
 
 #define TOGGLE_COMBAT_CLICKDRAG_OVERRIDE	(1<<8) // Whether disarm/harm intents cause clicks to trigger immediately when the mouse button is depressed.
 
+#define TOGGLE_ALTERNATING_DUAL_WIELD		(1<<9) // Whether dual-wielding fires both guns at once or swaps between them.
+
 //=================================================
 
 var/list/be_special_flags = list(

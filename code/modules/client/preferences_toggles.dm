@@ -126,7 +126,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>"
 	)
 
 	var/dat = ""
@@ -209,6 +210,13 @@
 		to_chat(src, "Click-dragging now blocks clicks from going through.")
 	prefs.save_preferences()
 
+/client/proc/toggle_dualwield() //Toggle whether dual-wielding fires both guns at once or swaps between them.
+	prefs.toggle_prefs ^= TOGGLE_ALTERNATING_DUAL_WIELD
+	if(prefs.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
+		to_chat(src, "Dual-wielding now switches between guns, as long as the other gun is loaded.")
+	else
+		to_chat(src, "Dual-wielding now fires both guns simultaneously.")
+	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------
 

@@ -973,6 +973,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/launcher/grenade/reload_into_chamber()
 	return
 
+/obj/item/weapon/gun/launcher/grenade/has_ammunition()
+	return length(cylinder.contents)
 
 //-------------------------------------------------------
 //M92 GRENADE LAUNCHER
@@ -1130,14 +1132,15 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 //No such thing
 /obj/item/weapon/gun/launcher/rocket/reload_into_chamber(mob/user)
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	if(!current_mag)
 		return
 	qdel(projectile_to_fire)
-	if(refund) current_mag.current_rounds++
-	return 1
+	if(refund)
+		current_mag.current_rounds++
+	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/proc/make_rocket(mob/user, drop_override = 0, empty = 1)
 	if(!current_mag)
@@ -1206,7 +1209,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		current_mag = rocket
 		rocket.forceMove(src)
 		replace_ammo(,rocket)
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
 	if(user && current_mag)

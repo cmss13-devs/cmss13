@@ -68,23 +68,28 @@
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return 0
+			return FALSE
 
 /obj/item/weapon/gun/energy/taser/load_into_chamber()
-	if(!cell || cell.charge - charge_cost < 0) return
+	if(!cell || cell.charge < charge_cost)
+		return
 
 	cell.charge -= charge_cost
 	in_chamber = create_bullet(ammo, initial(name))
 	return in_chamber
 
+/obj/item/weapon/gun/energy/taser/has_ammunition()
+	if(cell?.charge >= charge_cost)
+		return TRUE //Enough charge for a shot.
+
 /obj/item/weapon/gun/energy/taser/reload_into_chamber()
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/taser/delete_bullet(var/obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) cell.charge += charge_cost
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/taser/examine(mob/user)
 	. = ..()

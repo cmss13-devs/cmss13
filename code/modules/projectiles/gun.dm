@@ -778,16 +778,13 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		to_chat(user, SPAN_WARNING("It's still got something loaded."))
 		return
 
-
-
 	if(user)
 		if(magazine.reload_delay > 1)
 			to_chat(user, SPAN_NOTICE("You begin reloading [src]. Hold still..."))
-			if(do_after(user, magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY)) replace_magazine(user, magazine)
-			else
+			if(!do_after(user, magazine.reload_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 				to_chat(user, SPAN_WARNING("Your reload was interrupted!"))
 				return
-		else replace_magazine(user, magazine)
+		replace_magazine(user, magazine)
 	else
 		current_mag = magazine
 		magazine.forceMove(src)
@@ -795,7 +792,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		if(!in_chamber) load_into_chamber()
 
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/proc/replace_magazine(mob/user, obj/item/ammo_magazine/magazine)
 	user.drop_inv_item_to_loc(magazine, src) //Click!
@@ -901,11 +898,11 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		Fire(A,user,params) //Otherwise, fire normally.
 	return TRUE
 
-/*
+/**
 load_into_chamber(), reload_into_chamber(), and clear_jam() do all of the heavy lifting.
 If you need to change up how a gun fires, just change these procs for that subtype
 and you're good to go.
-*/
+**/
 /obj/item/weapon/gun/proc/load_into_chamber(mob/user)
 	//The workhorse of the bullet procs.
 	//If we have a round chambered and no active attachable, we're good to go.
@@ -1045,7 +1042,7 @@ and you're good to go.
 
 	var/turf/curloc = get_turf(user) //In case the target or we are expired.
 	var/turf/targloc = get_turf(target)
-	if (!targloc || !curloc)
+	if(!targloc || !curloc)
 		return //Something has gone wrong...
 	var/atom/original_target = target //This is for burst mode, in case the target changes per scatter chance in between fired bullets.
 
@@ -1054,7 +1051,10 @@ and you're good to go.
 	This is also a general check to see if the attachment can fire in the first place.
 	*/
 	var/check_for_attachment_fire = 0
-	if(active_attachable && active_attachable.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
+
+	//Number of bullets based on burst. If an active attachable is shooting, bursting is always zero.
+	var/bullets_to_fire = 1
+	if(active_attachable?.flags_attach_features & ATTACH_WEAPON) //Attachment activated and is a weapon.
 		check_for_attachment_fire = 1
 		if(!(active_attachable.flags_attach_features & ATTACH_PROJECTILE)) //If it's unique projectile, this is where we fire it.
 			if(active_attachable.current_rounds <= 0)
@@ -1067,21 +1067,30 @@ and you're good to go.
 				active_attachable.last_fired = world.time
 			return
 			//If there's more to the attachment, it will be processed farther down, through in_chamber and regular bullet act.
-
 	/*
 	This is where burst is established for the proceeding section. Which just means the proc loops around that many times.
 	If burst = 1, you must null it if you ever RETURN during the for() cycle. If for whatever reason burst is left on while
 	the gun is not firing, it will break a lot of stuff. BREAK is fine, as it will null it.
 	*/
-
-	//Number of bullets based on burst. If an active attachable is shooting, bursting is always zero.
-	var/bullets_to_fire = 1
-	if(!check_for_attachment_fire && (flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
+	else if((flags_gun_features & GUN_BURST_ON) && burst_amount > 1)
 		bullets_to_fire = burst_amount
 		flags_gun_features |= GUN_BURST_FIRING
 		if(PB_burst_bullets_fired) //Has a burst been carried over from a PB?
 			bullets_to_fire -= PB_burst_bullets_fired
 			PB_burst_bullets_fired = 0 //Don't need this anymore. The torch is passed.
+
+	//Dual wielding. Do we have a gun in the other hand, is it loaded, and is it the same category?
+	if(!reflex && !dual_wield && user)
+		var/obj/item/weapon/gun/akimbo = user.get_inactive_hand()
+		if(istype(akimbo) && akimbo.gun_category == gun_category && !(akimbo.flags_gun_features & GUN_WIELDED_FIRING_ONLY))
+			/*Does the offhand weapon have a loaded selected attachable gun or ammo? This doesn't necessarily mean the offhand gun can be *fired*,
+			an unpumped shotgun or opened double-barrel or a revolver with a spun cylinder would pass it, but it's less indiscrimate than it used to be.*/
+			if(akimbo.active_attachable?.current_rounds || akimbo.has_ammunition())
+				dual_wield = TRUE //increases recoil, increases scatter, and reduces accuracy.
+				if(user?.client?.prefs?.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
+					user.swap_hand()
+				else
+					akimbo.Fire(target,user,params, 0, TRUE)
 
 	var/bullets_fired
 	for(bullets_fired = 1 to bullets_to_fire)
@@ -1096,19 +1105,6 @@ and you're good to go.
 		if(!projectile_to_fire) //If there is nothing to fire, click.
 			click_empty(user)
 			break
-
-		var/recoil_comp = 0 //used by bipod and akimbo firing
-
-		//checking for a gun in other hand to fire akimbo
-		if(bullets_fired == 1 && !reflex && !dual_wield)
-			if(user)
-				var/obj/item/IH = user.get_inactive_hand()
-				if(isgun(IH))
-					var/obj/item/weapon/gun/OG = IH
-					if(!(OG.flags_gun_features & GUN_WIELDED_FIRING_ONLY) && OG.gun_category == gun_category)
-						OG.Fire(target,user,params, 0, TRUE)
-						dual_wield = TRUE
-						recoil_comp++
 
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired, reflex, dual_wield) //User can be passed as null.
 		SEND_SIGNAL(projectile_to_fire, COMSIG_BULLET_USER_EFFECTS, user)
@@ -1142,7 +1138,7 @@ and you're good to go.
 			return
 
 		if(targloc != curloc)
-			simulate_recoil(recoil_comp, user, target)
+			simulate_recoil(dual_wield, user, target)
 
 			//This is where the projectile leaves the barrel and deals with projectile code only.
 			//vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
@@ -1398,6 +1394,14 @@ and you're good to go.
 				//						   	\\
 //----------------------------------------------------------
 
+/**Returns TRUE if the weapon is loaded. Separate proc because there's no single way to check this for all weapons: chamber isn't always loaded,
+not all weapons use normal magazines etc. load_into_chamber() itself is designed to be called immediately before firing, and isn't suitable.**/
+/obj/item/weapon/gun/proc/has_ammunition()
+	if(in_chamber)
+		return TRUE //Chambered round.
+	if(current_mag?.current_rounds > 0)
+		return TRUE //Loaded magazine.
+
 /obj/item/weapon/gun/proc/able_to_fire(mob/user)
 	/*
 	Removed ishuman() check. There is no reason for it, as it just eats up more processing, and adding fingerprints during the fire cycle is silly.
@@ -1603,9 +1607,7 @@ and you're good to go.
 
 	last_recoil_update = world.timeofday
 
-/obj/item/weapon/gun/proc/simulate_recoil(recoil_bonus = 0, mob/user, atom/target)
-	var/total_recoil = recoil_bonus
-
+/obj/item/weapon/gun/proc/simulate_recoil(total_recoil = 0, mob/user, atom/target)
 	if(flags_gun_features & GUN_RECOIL_BUILDUP)
 		update_recoil_buildup()
 
@@ -1628,7 +1630,7 @@ and you're good to go.
 
 	if(total_recoil > 0 && ishuman(user))
 		if(total_recoil >= 4)
-			shake_camera(user, total_recoil/2, total_recoil)
+			shake_camera(user, total_recoil * 0.5, total_recoil)
 		else
 			shake_camera(user, 1, total_recoil)
 		return TRUE

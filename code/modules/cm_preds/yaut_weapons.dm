@@ -801,14 +801,18 @@
 		spikes--
 		return in_chamber
 
+/obj/item/weapon/gun/launcher/spike/has_ammunition()
+	if(spikes > 0)
+		return TRUE //Enough spikes for a shot.
+
 /obj/item/weapon/gun/launcher/spike/reload_into_chamber()
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/launcher/spike/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) spikes++
-	return 1
+	return TRUE
 
 
 /obj/item/weapon/gun/energy/yautja
@@ -896,14 +900,17 @@
 	in_chamber = P
 	return in_chamber
 
+/obj/item/weapon/gun/energy/yautja/plasmarifle/has_ammunition()
+	return TRUE //Plasma rifle appears to have infinite ammunition.
+
 /obj/item/weapon/gun/energy/yautja/plasmarifle/reload_into_chamber()
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) charge_time *= 2
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
@@ -970,20 +977,25 @@
 		return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/load_into_chamber()
-	if(charge_time < 1) return
+	if(charge_time < 1)
+		return
 	var/obj/item/projectile/P = create_bullet(ammo, initial(name))
 	P.SetLuminosity(1)
 	in_chamber = P
-	charge_time -= 1
+	charge_time--
 	return in_chamber
 
+/obj/item/weapon/gun/energy/yautja/plasmapistol/has_ammunition()
+	if(charge_time >= 1)
+		return TRUE //Enough charge for a shot.
+
 /obj/item/weapon/gun/energy/yautja/plasmapistol/reload_into_chamber()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) charge_time *= 2
-	return 1
+	return TRUE
 
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster
@@ -1122,8 +1134,12 @@
 		in_chamber = create_bullet(ammo, initial(name))
 		return in_chamber
 
+/obj/item/weapon/gun/energy/yautja/plasma_caster/has_ammunition()
+	if(source?.charge >= charge_cost)
+		return TRUE //Enough charge for a shot.
+
 /obj/item/weapon/gun/energy/yautja/plasma_caster/reload_into_chamber()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
@@ -1132,4 +1148,4 @@
 		var/perc = source.charge / source.charge_max * 100
 		var/mob/living/carbon/human/user = usr //Hacky...
 		user.update_power_display(perc)
-	return 1
+	return TRUE

@@ -35,7 +35,8 @@
 	var/speaker_name = speaker.name
 	if(ishuman(speaker) && ishuman(src))
 		var/mob/living/carbon/human/H = speaker
-		speaker_name = H.GetVoice()
+		if(!H.is_disfigured())
+			speaker_name = H.GetVoice()
 		comm_paygrade = H.get_paygrade()
 
 	if(italics)

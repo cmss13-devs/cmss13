@@ -1,4 +1,3 @@
-
 // nightvision goggles
 
 /obj/item/clothing/glasses/night
@@ -106,4 +105,23 @@
 			if(!H.hivenumber)
 				to_chat(user, SPAN_WARNING("You do not want to put these on, they're making you nauseous."))
 				return FALSE
+	return ..()
+
+/obj/item/clothing/glasses/night/experimental_mesons
+	name = "\improper Experimental Meson Goggles"
+	desc = "An improved but experimental version of the standard issue meson goggles, due to increased complexity these can only be worn by synthetics. Allows for full night vision and viewing of the surroundings. Click it to toggle."
+	icon = 'icons/obj/items/clothing/glasses.dmi'
+	icon_state = "refurb_meson"
+	deactive_state = "degoggles"
+	vision_flags = SEE_TURFS
+	darkness_view = 12
+	toggleable = TRUE
+	fullscreen_vision = null
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/glasses/night/experimental_mesons/mob_can_equip(mob/user, slot)
+	if(slot == WEAR_EYES)
+		if(!isSynth(user))
+			to_chat(user, "The experimental meson goggles start probing at your eyes, searching for an attachment point, and you immediately take them off.")
+			return FALSE
 	return ..()

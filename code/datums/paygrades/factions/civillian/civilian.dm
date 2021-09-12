@@ -19,3 +19,8 @@
     paygrade = "CCMO"
     name = "Professor"
     prefix = "Prof."
+
+/datum/paygrade/civillian/representative
+	paygrade = "CR"
+	name = "Representative"
+	prefix = "Rep."

@@ -351,8 +351,8 @@
 	initial_keys = list(/obj/item/device/encryptionkey/mcom/rep)
 
 /obj/item/device/radio/headset/almayer/mcom/cdrcom
-	name = "marine commanding officer headset"
-	desc = "Issued only to Captains. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - tactics"
+	name = "marine senior command headset"
+	desc = "Issued only to senior command staff. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - tactics"
 	icon_state = "mco_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/cmpcom/cdrcom)
 	volume = RADIO_VOLUME_CRITICAL
@@ -583,10 +583,10 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public_civ)
 
 /obj/item/device/radio/headset/distress/PMC
-	name = "corporate headset"
+	name = "PMC headset"
 	desc = "A special headset used by corporate personnel. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - tactics, :y - Corporate."
 	frequency = PMC_FREQ
-	icon_state = "wy_headset"
+	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom/cl)
 
 /obj/item/device/radio/headset/distress/UPP
@@ -603,12 +603,12 @@
 	name = "Commando headset"
 	desc = "A special headset used by unidentified operatives. Channels are as follows: :g - public, :v - marine command, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC, :t - tactics."
 	frequency = DTH_FREQ
-	icon_state = "wy_headset"
+	icon_state = "pmc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/mcom)
 
 /obj/item/device/radio/headset/almayer/highcom
 	name = "USCM High Command headset"
 	desc = "Issued to members of USCM High Command and their immediate subordinates. Channels are as follows: :v - marine command, :p - military police, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad, :e - engineering, :m - medbay, :u - requisitions, :j - JTAC,  :t - tactics,  :z - HighCom"
-	icon_state = "mco_headset"
+	icon_state = "mhc_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/highcom)
 	volume = RADIO_VOLUME_CRITICAL

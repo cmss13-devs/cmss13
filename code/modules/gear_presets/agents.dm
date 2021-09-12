@@ -66,7 +66,7 @@
 	)
 	assignment = JOB_UPP_REPRESENTATIVE
 	rank = JOB_UPP_REPRESENTATIVE
-	paygrade = "Representative"
+	paygrade = "CR"
 	role_comm_title = "UPP Rep."
 	skills = /datum/skills/civilian/survivor
 
@@ -99,7 +99,7 @@
 	)
 	assignment = JOB_RESS_REPRESENTATIVE
 	rank = JOB_RESS_REPRESENTATIVE
-	paygrade = "Representative"
+	paygrade = "CR"
 	role_comm_title = "RESS Rep."
 	skills = /datum/skills/civilian/survivor
 

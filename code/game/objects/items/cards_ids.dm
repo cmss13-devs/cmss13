@@ -204,6 +204,15 @@
 	New()
 		access = get_all_centcom_access()
 
+/obj/item/card/id/provost
+	name = "provost holo-badge"
+	desc = "Issued to members of the Provost Office."
+	icon_state = "provost"
+	registered_name = "Provost Office"
+	assignment = "Provost"
+	New()
+		access = get_all_centcom_access()
+
 /obj/item/card/id/syndicate
 	name = "agent card"
 	access = list(ACCESS_ILLEGAL_PIRATE)

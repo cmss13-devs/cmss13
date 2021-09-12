@@ -24,10 +24,8 @@
 	if(copytext(message,1,2) == "*")
 		return emote(copytext(message,2), 1, null, TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
-	if(!is_disfigured())
-		var/new_alt = get_id_name("Unknown")
-		if(new_alt != GetVoice())
-			alt_name = " (as [new_alt])"
+	if(name != GetVoice())
+		alt_name = "(as [get_id_name("Unknown")])"
 
 	//parse the radio code and consume it
 	if (message_mode)

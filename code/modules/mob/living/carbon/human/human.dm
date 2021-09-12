@@ -324,21 +324,22 @@
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere
 /mob/living/carbon/human/proc/get_visible_name()
-	if(is_disfigured())
-		return get_id_name("")
-	else
-		return real_name
-
-/// Returns TRUE if facially disfigured/obscured and FALSE if not.
-/mob/living/carbon/human/proc/is_disfigured()
-	var/obj/limb/head/face = get_limb("head")
-	if(!face || face.disfigured || (face.status & LIMB_DESTROYED) || !real_name)	//disfigured. use id-name if possible
-		return TRUE
 	if(wear_mask && (wear_mask.flags_inv_hide & HIDEFACE) )	//Wearing a mask which hides our face, use id-name if possible
-		return TRUE
+		return get_id_name("Unknown")
 	if(head && (head.flags_inv_hide & HIDEFACE) )
-		return TRUE
-	return FALSE
+		return get_id_name("Unknown")		//Likewise for hats
+	var/face_name = get_face_name()
+	var/id_name = get_id_name("")
+	if(id_name && (id_name != face_name))
+		return "[face_name] (as [id_name])"
+	return face_name
+
+//Returns "Unknown" if facially disfigured and real_name if not. Useful for setting name when polyacided or when updating a human's name variable
+/mob/living/carbon/human/proc/get_face_name()
+	var/obj/limb/head/head = get_limb("head")
+	if(!head || head.disfigured || (head.status & LIMB_DESTROYED) || !real_name)	//disfigured. use id-name if possible
+		return "Unknown"
+	return real_name
 
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs

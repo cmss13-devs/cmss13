@@ -71,6 +71,11 @@
 	switch(state)
 		if(STATE_STANDARD)
 			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH))
+				if(!anchored)
+					var/turf/open/T = loc
+					if(!(istype(T) && T.allow_construction))
+						to_chat(user, SPAN_WARNING("[src] cannot be secured here!"))
+						return
 				playsound(loc, 'sound/items/Ratchet.ogg', 25, 1)
 				to_chat(user, SPAN_NOTICE(" You start [anchored? "un" : ""]securing the airlock assembly!"))
 				if(!do_after(user, 40 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))

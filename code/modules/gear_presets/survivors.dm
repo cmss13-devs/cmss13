@@ -1107,7 +1107,7 @@
 /datum/equipment_preset/survivor/interstellar_commerce_commission_liason/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/mod88(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcl(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)

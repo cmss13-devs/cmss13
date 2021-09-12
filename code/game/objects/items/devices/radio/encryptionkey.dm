@@ -92,7 +92,7 @@
 	channels = list("Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0)
 
 /obj/item/device/encryptionkey/cmpcom/cdrcom
-	name = "\improper Marine Commanding Officer Radio Encryption Key"
+	name = "\improper Marine Senior Command Radio Encryption Key"
 	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/mcom

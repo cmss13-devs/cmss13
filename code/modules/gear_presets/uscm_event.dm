@@ -100,7 +100,7 @@
 	name = "USCM Provost"
 	flags = EQUIPMENT_PRESET_EXTRA
 
-	idtype = /obj/item/card/id/centcom
+	idtype = /obj/item/card/id/provost
 	access = list(
 		ACCESS_MARINE_BRIG,
 		ACCESS_MARINE_BRIDGE,

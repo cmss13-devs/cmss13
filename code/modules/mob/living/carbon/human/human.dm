@@ -1157,7 +1157,7 @@
 
 
 //very similar to xeno's queen_locator() but this is for locating squad leader.
-/mob/living/carbon/human/proc/locate_squad_leader()
+/mob/living/carbon/human/proc/locate_squad_leader(var/tracker_setting = TRACKER_SL)
 	if(!assigned_squad) return
 
 	var/mob/living/carbon/human/H
@@ -1165,13 +1165,24 @@
 	if(hud_used)
 		hud_used.locate_leader.icon_state = "trackoff"
 
-	if(assigned_fireteam && assigned_squad.fireteam_leaders[assigned_fireteam])
+
+	if(tracker_setting == TRACKER_SL) //default
+		H = assigned_squad.squad_leader
+	else if(tracker_setting == TRACKER_LZ)
+		var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
+		if(!C) //no LZ selected
+			hud_used.locate_leader.icon_state = "trackoff"
+		else if(C.z != src.z || get_dist(src,C) < 1)
+			hud_used.locate_leader.icon_state = "trackondirect_lz"
+		else
+			hud_used.locate_leader.setDir(get_dir(src,C))
+			hud_used.locate_leader.icon_state = "trackon_lz"
+		return
+	else if(tracker_setting == TRACKER_FTL && src.assigned_fireteam)
 		H = assigned_squad.fireteam_leaders[assigned_fireteam]
 		tl_prefix = "_tl"
-	else if(assigned_squad.squad_leader)
-		H = assigned_squad.squad_leader
-	else return
-
+	if(!H)
+		return
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tl_prefix]"
 	else

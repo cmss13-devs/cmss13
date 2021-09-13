@@ -2747,6 +2747,8 @@
 	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flamethrower/sentry_flamer/glob
+	max_range = 14
+	accurate_range = 10
 	var/datum/effect_system/smoke_spread/phosphorus/smoke
 
 /datum/ammo/flamethrower/sentry_flamer/glob/New()
@@ -2763,16 +2765,6 @@
 	qdel(smoke)
 	return ..()
 
-/datum/ammo/flamethrower/sentry_flamer/assault
-	name = "light fire"
-
-/datum/ammo/flamethrower/sentry_flamer/assault/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	R.durationfire = BURN_TIME_INSTANT
-	new /obj/flamer_fire(T, cause_data, R, 0)
-
 /datum/ammo/flamethrower/sentry_flamer/mini
 	name = "normal fire"
 
@@ -2780,6 +2772,7 @@
 	if(!istype(T))
 		return
 	var/datum/reagent/napalm/R = new()
+	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flare

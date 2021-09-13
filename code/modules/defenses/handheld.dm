@@ -88,17 +88,24 @@
 /obj/item/defenses/handheld/sentry/dmr
 	name = "handheld UA 725-D sniper sentry"
 	icon_state = "DMR uac_sentry_handheld"
+	obj_health = 150
+	obj_health_max = 150
+	deployment_time = 2 SECONDS
 	defense_type = /obj/structure/machinery/defenses/sentry/dmr
 
 /obj/item/defenses/handheld/sentry/shotgun
 	name = "handheld UA 12-G shotgun sentry"
 	icon_state = "Shotgun uac_sentry_handheld"
+	obj_health = 250
+	obj_health_max = 250
 	defense_type = /obj/structure/machinery/defenses/sentry/shotgun
 
 /obj/item/defenses/handheld/sentry/mini
 	name = "handheld UA 512-M mini sentry"
 	icon_state = "Mini uac_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry/mini
+	obj_health = 150
+	obj_health_max = 150
 	deployment_time = 0.75 SECONDS
 
 // FLAMER BASE AND UPGRADES
@@ -112,7 +119,6 @@
 /obj/item/defenses/handheld/sentry/flamer/Initialize(mapload, ...)
 	. = ..()
 	upgrade_list = list(
-		"Assault flamer" = /obj/item/defenses/handheld/sentry/flamer/assault,
 		"Plasma glob flamer" = /obj/item/defenses/handheld/sentry/flamer/plasma,
 		"Mini flamer" = /obj/item/defenses/handheld/sentry/flamer/mini
 	)
@@ -144,17 +150,17 @@
 	defense_type = /obj/structure/machinery/defenses/sentry/flamer/mini
 	deployment_time = 0.75 SECONDS
 	ammo_convert = /obj/item/ammo_magazine/sentry_flamer/mini
+	obj_health = 150
+	obj_health_max = 150
 /obj/item/defenses/handheld/sentry/flamer/plasma
 	name = "handheld UA 60-FP plasma sentry"
 	icon_state = "Plasma uac_flamer_handheld"
+	obj_health = 150
+	obj_health_max = 150
+	deployment_time = 2 SECONDS
 	defense_type = /obj/structure/machinery/defenses/sentry/flamer/plasma
 	ammo_convert = /obj/item/ammo_magazine/sentry_flamer/glob
 
-/obj/item/defenses/handheld/sentry/flamer/assault
-	name = "handheld UA 55-FA flamer assault sentry"
-	icon_state = "Assault uac_flamer_handheld"
-	defense_type = /obj/structure/machinery/defenses/sentry/flamer/assault
-	ammo_convert = /obj/item/ammo_magazine/sentry_flamer/assault
 
 // TESLA BASE AND UPGRADES
 /obj/item/defenses/handheld/tesla_coil
@@ -165,7 +171,6 @@
 	obj_health = 150
 	obj_health_max = 150
 
-
 /obj/item/defenses/handheld/tesla_coil/stun
 	name = "handheld 21S overclocked tesla coil"
 	icon_state = "Stun tesla_coil_handheld"
@@ -175,8 +180,6 @@
 	icon_state = "Micro tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil/micro
 	deployment_time = 0.75 SECONDS
-	obj_health = 75
-	obj_health_max = 75
 
 /obj/item/defenses/handheld/tesla_coil/Initialize(mapload, ...)
 	. = ..()
@@ -201,13 +204,15 @@
 	name = "handheld camouflaged R-1NG bell tower"
 	icon_state = "Cloaker bell_tower_handheld"
 	defense_type = /obj/structure/machinery/defenses/bell_tower/cloaker
+	obj_health = 250
+	obj_health_max = 250
 
 /obj/item/defenses/handheld/bell_tower/Initialize(mapload, ...)
 	. = ..()
 	upgrade_list = list(
 		"Motion Detector" = /obj/item/defenses/handheld/bell_tower/md,
 		"Cloaker" = /obj/item/defenses/handheld/bell_tower/cloaker,
-		"IMP frame mount" = /obj/item/device/imp
+		"IMP frame mount" = /obj/item/storage/backpack/imp
 	)
 
 // JIMA TOWER BASE AND UPGRADES
@@ -222,18 +227,24 @@
 	. = ..()
 	upgrade_list = list(
 		"Warbanner" = /obj/item/defenses/handheld/planted_flag/warbanner,
-		"extended JIMA" = /obj/item/defenses/handheld/planted_flag/range,
-		"JIMA frame mount" = /obj/item/device/jima
+		"Extended JIMA" = /obj/item/defenses/handheld/planted_flag/range,
+		"JIMA frame mount" = /obj/item/storage/backpack/jima
 	)
 
 /obj/item/defenses/handheld/planted_flag/warbanner
 	name = "handheld JIMA planted warbanner"
 	icon_state = "Warbanner planted_flag_handheld"
+	obj_health = 250
+	obj_health_max = 250
+	deployment_time = 0.5 SECONDS
 	defense_type = /obj/structure/machinery/defenses/planted_flag/warbanner
 
 /obj/item/defenses/handheld/planted_flag/range
 	name = "handheld extended JIMA planted flag"
 	icon_state = "Range planted_flag_handheld"
+	obj_health = 150
+	obj_health_max = 150
+	deployment_time = 2 SECONDS
 	defense_type = /obj/structure/machinery/defenses/planted_flag/range
 
 

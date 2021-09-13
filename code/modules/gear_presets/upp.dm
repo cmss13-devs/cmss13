@@ -299,7 +299,7 @@
 
 /datum/equipment_preset/upp/leader/load_gear(mob/living/carbon/human/H)
 	//back
-	H.equip_to_slot_or_del(new /obj/item/device/jima, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/jima, WEAR_BACK)
 	//face
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	//head

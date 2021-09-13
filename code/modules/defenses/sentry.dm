@@ -407,7 +407,9 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	name = "UA 725-D Sniper Sentry"
 	desc = "A fully-automated defence turret with long-range targeting capabilities. Armed with a modified M32-S Autocannon and an internal belt feed."
 	defense_type = "DMR"
-	fire_delay = 2.5 SECONDS
+	health = 150
+	health_max = 150
+	fire_delay = 2 SECONDS
 	ammo = new /obj/item/ammo_magazine/sentry
 	sentry_range = SENTRY_SNIPER_RANGE
 	accuracy_mult = 5
@@ -429,17 +431,41 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 /obj/structure/machinery/defenses/sentry/shotgun
 	name = "UA 12-G Shotgun Sentry"
 	defense_type = "Shotgun"
-	fire_delay = 2.5 SECONDS
-	sentry_range = 2
+	health = 250
+	health_max = 250
+	fire_delay = 2 SECONDS
+	sentry_range = 3
 	ammo = new /obj/item/ammo_magazine/sentry/shotgun
+
 	accuracy_mult = 2 // Misses a lot since shotgun ammo has low accuracy, this should ensure a lot of shots actually hit.
 	handheld_type = /obj/item/defenses/handheld/sentry/shotgun
+	disassemble_time = 1.5 SECONDS
+
+/obj/structure/machinery/defenses/sentry/shotgun/attack_alien(mob/living/carbon/Xenomorph/M)
+	. = ..()
+	if(. == XENO_ATTACK_ACTION && turned_on)
+		M.visible_message(SPAN_DANGER("The sentry's steel tusks cut into [M]!"),
+		SPAN_DANGER("The sentry's steel tusks cut into you!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+		M.apply_damage(20)
+
+/obj/structure/machinery/defenses/sentry/shotgun/hitby(atom/movable/AM)
+	if(AM.throwing && turned_on)
+		if(ismob(AM))
+			var/mob/living/L = AM
+			L.apply_damage(20)
+			playsound(L, "bonk", 75, FALSE)
+			L.visible_message(SPAN_DANGER("The sentry's steel tusks impale [L]!"),
+			SPAN_DANGER("The sentry's steel tusks impale you!"))
+			if(L.mob_size <= MOB_SIZE_XENO_SMALL)
+				L.KnockDown(1)
 
 /obj/structure/machinery/defenses/sentry/mini
 	name = "UA 512-M mini sentry"
 	defense_type = "Mini"
 	fire_delay = 0.15 SECONDS
-	damage_mult = 0.4
+	health = 150
+	health_max = 150
+	damage_mult = 0.6
 	density = FALSE
 	disassemble_time = 0.75 SECONDS
 	handheld_type = /obj/item/defenses/handheld/sentry/mini

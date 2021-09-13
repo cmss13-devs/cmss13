@@ -10,6 +10,8 @@
 	var/datum/shape/rectangle/range_bounds
 	var/area_range = PLANTED_FLAG_RANGE
 	var/buff_intensity = PLANTED_FLAG_BUFF
+	health = 200
+	health_max = 200
 
 	can_be_near_defense = TRUE
 
@@ -72,58 +74,46 @@
 
 /obj/structure/machinery/defenses/planted_flag/range
 	name = "extended JIMA planted flag"
+	health = 150
+	health_max = 150
 	area_range = PLANTED_FLAG_RANGE * 2 // Double range
+	disassemble_time = 1.5 SECONDS
 	handheld_type = /obj/item/defenses/handheld/planted_flag/range
+	defense_type = "Range"
 
 /obj/structure/machinery/defenses/planted_flag/warbanner
 	name = "JIMA planted warbanner"
-	var/list/flags_in_range
+	disassemble_time = 0.5 SECONDS
+	health = 250
+	health_max = 250
+	density = FALSE
 	wrenchable = FALSE
 	handheld_type = /obj/item/defenses/handheld/planted_flag/warbanner
-
-/obj/structure/machinery/defenses/planted_flag/warbanner/Initialize()
-	. = ..()
-	LAZYINITLIST(flags_in_range)
-
-	for(var/obj/structure/machinery/defenses/planted_flag/warbanner/WB in range(area_range))
-		if(WB == src)
-			continue
-		WB.flags_in_range.Add(src)
-		flags_in_range.Add(WB)
-
-/obj/structure/machinery/defenses/planted_flag/warbanner/Destroy()
-	for(var/O in flags_in_range)
-		var/obj/structure/machinery/defenses/planted_flag/warbanner/WB = O
-		WB.flags_in_range.Remove(src)
-		flags_in_range.Remove(O)
-
-	flags_in_range = null
-	return ..()
-
+	defense_type = "Warbanner"
 
 /obj/structure/machinery/defenses/planted_flag/warbanner/apply_buff_to_player(var/mob/living/carbon/human/H)
-	var/to_buff = buff_intensity * LAZYLEN(flags_in_range)
+	H.activate_order_buff(COMMAND_ORDER_HOLD, buff_intensity, 5 SECONDS)
+	H.activate_order_buff(COMMAND_ORDER_FOCUS, buff_intensity, 5 SECONDS)
+	H.activate_order_buff(COMMAND_ORDER_MOVE, buff_intensity, 5 SECONDS)
 
-	H.activate_order_buff(COMMAND_ORDER_HOLD, to_buff, 1.5 SECONDS)
-	H.activate_order_buff(COMMAND_ORDER_FOCUS, to_buff, 1.5 SECONDS)
-	H.activate_order_buff(COMMAND_ORDER_MOVE, to_buff, 1.5 SECONDS)
-
-/obj/item/device/jima
+/obj/item/storage/backpack/jima
 	name = "JIMA frame mount"
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
-	icon_state = "rto_backpack"
+	icon_state = "flag_backpack"
+	max_storage_space = 10
+	worn_accessible = TRUE
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	var/area_range = PLANTED_FLAG_RANGE
 	var/buff_intensity = PLANTED_FLAG_BUFF/2
 
-/obj/item/device/jima/equipped(mob/user, slot)
+/obj/item/storage/backpack/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_BACK)
 		START_PROCESSING(SSobj, src)
 
 
-/obj/item/device/jima/process()
+/obj/item/storage/backpack/jima/process()
 	if(!ismob(loc))
 		STOP_PROCESSING(SSobj, src)
 		return

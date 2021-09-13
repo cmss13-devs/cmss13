@@ -40,11 +40,6 @@
 	desc = "A fuel tank of compressed Ultra Thick Napthal Fuel, used in the UA 60-FP."
 	default_ammo = /datum/ammo/flamethrower/sentry_flamer/glob
 
-/obj/item/ammo_magazine/sentry_flamer/assault
-	name = "assault sentry incinerator tank"
-	desc = "A fuel tank of Ultra Thick Napthal Fuel, used in the UA 55-FA."
-	default_ammo = /datum/ammo/flamethrower/sentry_flamer/assault
-
 /obj/item/ammo_magazine/sentry_flamer/mini
 	name = "mini sentry incinerator tank"
 	desc = "A fuel tank of Ultra Thick Napthal Fuel, used in the UA 45-FM."

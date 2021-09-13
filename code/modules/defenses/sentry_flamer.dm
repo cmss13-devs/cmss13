@@ -6,6 +6,8 @@
 	ammo = new /obj/item/ammo_magazine/sentry_flamer
 	sentry_type = "flamer"
 	handheld_type = /obj/item/defenses/handheld/sentry/flamer
+	health = 200
+	health_max = 200
 
 /obj/structure/machinery/defenses/sentry/flamer/Initialize()
 	. = ..()
@@ -38,7 +40,11 @@
 /obj/structure/machinery/defenses/sentry/flamer/mini
 	name = "UA 45-FM Mini Sentry"
 	defense_type = "Mini"
+	health = 150
+	health_max = 150
+	density = FALSE
 	fire_delay = 10
+	disassemble_time = 0.75 SECONDS
 	ammo = new /obj/item/ammo_magazine/sentry_flamer/mini
 	handheld_type = /obj/item/defenses/handheld/sentry/flamer/mini
 
@@ -56,9 +62,12 @@
 	name = "UA 60-FP Plasma Sentry"
 	defense_type = "Plasma"
 	ammo = new /obj/item/ammo_magazine/sentry_flamer/glob
+	health = 150
+	health_max = 150
 	fire_delay = 10 SECONDS
 	sentry_range = FLAMER_SENTRY_SNIPER_RANGE
 	handheld_type = /obj/item/defenses/handheld/sentry/flamer/plasma
+	disassemble_time = 1.5 SECONDS
 
 /obj/structure/machinery/defenses/sentry/flamer/plasma/set_range()
 	switch(dir)
@@ -72,8 +81,3 @@
 			range_bounds = RECT(x, y - (FLAMER_SENTRY_SNIPER_RANGE/2), FLAMER_SENTRY_SNIPER_RANGE, FLAMER_SENTRY_SNIPER_RANGE)
 
 #undef FLAMER_SENTRY_SNIPER_RANGE
-/obj/structure/machinery/defenses/sentry/flamer/assault
-	name = "UA 55-FA Flamer Assault Sentry"
-	defense_type = "Assault"
-	ammo = new /obj/item/ammo_magazine/sentry_flamer/assault
-	handheld_type = /obj/item/defenses/handheld/sentry/flamer/assault

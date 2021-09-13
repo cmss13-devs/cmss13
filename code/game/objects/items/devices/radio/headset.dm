@@ -201,6 +201,7 @@
 	item_state = "headset"
 	frequency = PUB_FREQ
 	var/headset_hud_on = 1
+	var/locate_setting = TRACKER_SL
 
 /*
 /obj/item/device/radio/headset/almayer/verb/enter_tree()
@@ -236,7 +237,6 @@
 				user.hud_used.locate_leader.mouse_opacity = 0
 	..()
 
-
 /obj/item/device/radio/headset/almayer/verb/toggle_squadhud()
 	set name = "Toggle headset HUD"
 	set category = "Object"
@@ -261,6 +261,26 @@
 					user.hud_used.locate_leader.mouse_opacity = 0
 	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
 	playsound(src,'sound/machines/click.ogg', 20, 1)
+
+/obj/item/device/radio/headset/almayer/verb/switch_tracker_target()
+	set name = "Switch Tracker Target"
+	set category = "Object"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return 0
+	//Cycles through SL > LZ > FTL
+	if(locate_setting == TRACKER_SL)
+		to_chat(usr, SPAN_NOTICE("You set your headset's tracker to point to the LZ tracking beacon."))
+		locate_setting = TRACKER_LZ
+		return
+	var/mob/living/carbon/human/H = usr
+	if(locate_setting == TRACKER_LZ && H.assigned_fireteam) //Only set it to FTL if they have a fireteam
+		to_chat(usr, SPAN_NOTICE("You set your headset's tracker to point to your FTL's tracking beacon."))
+		locate_setting = TRACKER_FTL
+		return
+	to_chat(usr, SPAN_NOTICE("You set your headset's tracker to point to your SL's tracking beacon."))
+	locate_setting = TRACKER_SL
 
 /obj/item/device/radio/headset/almayer/ce
 	name = "chief engineer's headset"

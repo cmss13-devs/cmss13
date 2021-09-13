@@ -144,7 +144,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
-	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by Squad Leaders and Squad Specialists."
+	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by any Squad Marine."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE
@@ -336,7 +336,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad
 	name = "\improper ColMarTech Automated Munition Squad Vendor"
-	desc = "An automated supply rack hooked up to a small storage of various ammunition types. Can be accessed by Squad Leaders and Squad Specialists."
+	desc = "An automated supply rack hooked up to a small storage of various ammunition types. Can be accessed by any Squad Marine."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE
@@ -454,7 +454,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"
-	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by Squad Leaders and Squad Specialists."
+	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by any Squad Marine."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE

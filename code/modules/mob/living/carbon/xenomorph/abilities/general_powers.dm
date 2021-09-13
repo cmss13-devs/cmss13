@@ -204,6 +204,9 @@
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(A.z != X.z)
+		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
+		return
 	. = X.build_resin(A, thick, make_message, plasma_cost != 0)
 	..()
 
@@ -457,6 +460,10 @@
 	var/area/AR = get_area(T)
 	if(isnull(AR) || !(AR.is_resin_allowed))
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
+		return FALSE
+
+	if(T.z != X.z)
+		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 
 	var/choice = XENO_STRUCTURE_CORE

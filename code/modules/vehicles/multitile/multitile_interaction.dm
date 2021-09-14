@@ -381,12 +381,13 @@
 	if(!do_after(M, enter_time, INTERRUPT_NO_NEEDHAND, BUSY_ICON_GENERIC))
 		return
 
-	var/entrance_coord = entrances[entrance_used]
-	mob_x = M.x - src.x
-	mob_y = M.y - src.y
-	if(mob_x != entrance_coord[1] || mob_y != entrance_coord[2])
-		to_chat(M, SPAN_WARNING("\The [src] moved!"))
-		return
+	if(entrance_used)
+		var/entrance_coord = entrances[entrance_used]
+		mob_x = M.x - src.x
+		mob_y = M.y - src.y
+		if(mob_x != entrance_coord[1] || mob_y != entrance_coord[2])
+			to_chat(M, SPAN_WARNING("\The [src] moved!"))
+			return
 
 	//Dragged stuff comes with us only if properly waited 2 seconds. No cheating!
 	if(dragged_atom)

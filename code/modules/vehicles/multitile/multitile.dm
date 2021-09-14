@@ -282,7 +282,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	for(var/obj/item/hardpoint/H in hardpoints)
 		// Health check is done before the hardpoint takes damage
 		// This way, the frame won't take damage at the same time hardpoints break
-		if(H.health > 0)
+		if(H.can_take_damage())
 			H.take_damage(damage * get_dmg_multi(type))
 			all_broken = FALSE
 

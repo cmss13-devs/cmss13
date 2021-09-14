@@ -136,6 +136,12 @@
 		P.apply_bullet_trait(L)
 	return P
 
+/obj/item/hardpoint/proc/can_take_damage()
+	if(!damage_multiplier)
+		return FALSE
+	if(health > 0)
+		return TRUE
+
 /obj/item/hardpoint/proc/take_damage(var/damage)
 	health = max(0, health - damage * damage_multiplier)
 

@@ -557,3 +557,27 @@ CULT
 
 	message_staff("[key_name_admin(H)] has begun the mutiny.")
 	remove_from(H)
+
+
+/datum/action/human_action/cancel_view // cancel-camera-view, but a button
+	name = "Cancel View"
+	action_icon_state = "cancel_view"
+
+/datum/action/human_action/cancel_view/give_to(user)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from) // will delete the button even if you reset view by resisting or the verb
+
+/datum/action/human_action/cancel_view/remove_from(mob/L)
+	. = ..()
+	UnregisterSignal(L, COMSIG_MOB_RESET_VIEW)
+
+/datum/action/human_action/cancel_view/action_activate()
+	if(!can_use_action())
+		return
+
+	var/mob/living/carbon/human/H = owner
+
+	H.cancel_camera()
+	H.client.change_view(7) // default view range
+	H.client.pixel_x = 0
+	H.client.pixel_y = 0

@@ -326,6 +326,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 
 	M.set_interaction(src)
 	M.reset_view(src)
+	give_action(M, /datum/action/human_action/cancel_view)
 
 /obj/vehicle/multitile/proc/get_seat_mob(var/seat)
 	return seats[seat]

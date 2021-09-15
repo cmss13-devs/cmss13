@@ -53,6 +53,18 @@
 		if(M && M.client)
 			M.client.change_view(8)
 
+/obj/structure/bed/chair/comfy/vehicle/clicked(mob/user, list/mods) // If you're buckled, you can shift-click on the seat in order to return to camera-view
+	if(user == buckled_mob && mods["shift"] && !user.is_mob_incapacitated())
+		switch(seat)
+			if(VEHICLE_SUPPORT_GUNNER_ONE, VEHICLE_SUPPORT_GUNNER_TWO)
+				user.client.change_view(6)
+			if(VEHICLE_DRIVER, VEHICLE_GUNNER)
+				user.client.change_view(8)
+		vehicle.set_seated_mob(seat, user)
+		return TRUE
+	else
+		. = ..()
+
 // Pass movement relays to the vehicle
 /obj/structure/bed/chair/comfy/vehicle/relaymove(mob/user, direction)
 	vehicle.relaymove(user, direction)

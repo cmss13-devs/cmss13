@@ -650,24 +650,26 @@
 				to_chat(user, SPAN_WARNING("There is no charge to draw from that APC."))
 			return
 		else if(H.species.can_shred(H))
+			var/allcut = TRUE
+			for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+				if(!isWireCut(wire))
+					allcut = FALSE
+					break
+			if(allcut)
+				to_chat(user, SPAN_NOTICE("[src] is already broken!"))
+				return
 			user.visible_message(SPAN_WARNING("[user.name] slashes [src]!"),
 			SPAN_WARNING("You slash [src]!"))
 			playsound(src.loc, 'sound/weapons/slash.ogg', 25, 1)
-			var/allcut = 1
-			for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
-				if(!isWireCut(wire))
-					allcut = 0
-					break
-			if(beenhit >= pick(3, 4) && wiresexposed != 1)
-				wiresexposed = 1
-				update_icon()
-				visible_message(SPAN_WARNING("[src]'s cover flies open, exposing the wires!"))
-
-			else if(wiresexposed == 1 && allcut == 0)
+			if(wiresexposed)
 				for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
 					cut(wire, user)
 				update_icon()
 				visible_message(SPAN_WARNING("[src]'s wires are shredded!"))
+			else if(beenhit >= pick(3, 4))
+				wiresexposed = TRUE
+				update_icon()
+				visible_message(SPAN_WARNING("[src]'s cover flies open, exposing the wires!"))
 			else
 				beenhit += 1
 			return

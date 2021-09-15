@@ -533,6 +533,9 @@
 		var/area/current_area = get_area(user)
 		to_chat(user, SPAN_NOTICE("You are currently at: <b>[current_area.name]</b>."))
 		return
+	else if(mods["alt"])
+		earpiece.switch_tracker_target()
+		return
 	user.assigned_squad.ui_interact(user)
 
 /obj/screen/queen_locator

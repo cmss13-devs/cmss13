@@ -194,11 +194,9 @@
 	},
 /area/desert_dam/exterior/valley/valley_labs)
 "aaG" = (
-/obj/effect/blocker/toxic_water,
-/turf/open/desert/desert_shore/shore_corner2{
-	dir = 1
-	},
-/area/desert_dam/exterior/river/riverside_east)
+/obj/structure/prop/brazier,
+/turf/open/floor/sandstone/runed,
+/area/desert_dam/interior/caves/temple)
 "aaH" = (
 /obj/structure/cargo_container{
 	icon_state = "gorg 2,0";
@@ -65321,6 +65319,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
+"mnc" = (
+/turf/open/desert/dirt{
+	icon_state = "dirt2"
+	},
+/area/desert_dam/interior/caves/temple)
 "mnA" = (
 /obj/structure/machinery/floodlight,
 /obj/structure/machinery/camera/autoname/almayer,
@@ -66927,7 +66930,9 @@
 	},
 /area/desert_dam/interior/dam_interior/office)
 "teR" = (
-/obj/structure/bed/chair/comfy/beige,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/temple)
 "thd" = (
@@ -67116,11 +67121,8 @@
 	},
 /area/desert_dam/exterior/valley/valley_crashsite)
 "ufW" = (
-/obj/structure/prop/brazier,
-/turf/open/desert/rock/deep{
-	icon_state = "rock4"
-	},
-/area/desert_dam/interior/caves/temple)
+/turf/closed/wall/mineral/sandstone/runed,
+/area/desert_dam/exterior/rock)
 "uhf" = (
 /turf/open/desert/desert_shore/desert_shore1{
 	dir = 1
@@ -119900,7 +119902,7 @@ dTs
 dTs
 dTs
 dTs
-aao
+aap
 aaW
 abn
 bLJ
@@ -120132,9 +120134,9 @@ dTs
 dTs
 dTs
 dTs
-dTs
-dTs
-aap
+mnc
+mnc
+aaD
 aao
 aaO
 bLJ
@@ -120365,9 +120367,9 @@ ndP
 aBL
 dTs
 dTs
-dTs
-dTs
-dTs
+mnc
+aCk
+mnc
 aaD
 aao
 aaO
@@ -120598,10 +120600,10 @@ iwy
 aCk
 aBL
 dTs
-dTs
-dTs
-dTs
-dTs
+ufW
+mnc
+mnc
+mnc
 aaD
 aao
 aaO
@@ -120832,11 +120834,11 @@ nCi
 dTs
 dTs
 dTs
-dTs
-dTs
-dTs
-dTs
-aaG
+ufW
+mnc
+mnc
+mnc
+aaD
 aao
 aaO
 bLJ
@@ -121067,10 +121069,10 @@ dTs
 dTs
 dTs
 dTs
-dTs
-dTs
-dTs
-aao
+aCk
+mnc
+mnc
+aaD
 aao
 aaO
 bLJ
@@ -121300,11 +121302,11 @@ aAv
 aBS
 aBL
 dTs
-dTs
-dTs
-dTs
-dTs
-aap
+aBE
+ooQ
+aCk
+mnc
+aaD
 aao
 aaO
 bLJ
@@ -121533,11 +121535,11 @@ aBE
 aCk
 aCk
 aCk
-dTs
-dTs
-dTs
-dTs
-dTs
+aCk
+aBE
+aBE
+mnc
+mnc
 aaD
 aao
 aaW
@@ -121765,13 +121767,13 @@ aCk
 aBE
 aBE
 teR
-ufW
+aBS
 aCk
 aBE
-aBE
-aBE
-dTs
-dTs
+aCk
+aCk
+aCk
+mnc
 aaI
 aap
 aao
@@ -121998,14 +122000,14 @@ aCk
 aBL
 aBL
 aBE
-aCk
+aaG
 rgT
 aBL
 dTs
 dTs
-aBE
-aBE
-aBE
+dTs
+ufW
+dTs
 aaK
 aaD
 aao

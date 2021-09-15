@@ -155,14 +155,14 @@ var/list/alldepartments = list()
 
 			if(dpt == "USCM High Command")
 				Centcomm_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 1200
+				sendcooldown = 600
 
 			else if(dpt == "Weyland-Yutani")
 				Solgov_fax(src, tofax.info, tofax.name, usr)
-				sendcooldown = 1200
+				sendcooldown = 600
 			else
 				SendFax(tofax.info, tofax.name, usr, dpt)
-				sendcooldown = 600
+				sendcooldown = 300
 
 			to_chat(usr, "Message transmitted successfully.")
 

@@ -308,7 +308,7 @@
 
 	dress_under = list(/obj/item/clothing/under/marine/officer/dining,/obj/item/clothing/under/marine/dress)
 	dress_extra = list(/obj/item/storage/large_holster/ceremonial_sword/full)
-	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal/white, /obj/item/clothing/head/cmcap/co/formal/black)
+	dress_hat = list(/obj/item/clothing/head/marine/peaked/captain, /obj/item/clothing/head/cmcap/co/formal, /obj/item/clothing/head/cmcap/co/formal/black)
 	dress_shoes = list(/obj/item/clothing/shoes/dress/commander)
 	dress_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/officer)
 

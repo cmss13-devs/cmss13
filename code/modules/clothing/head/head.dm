@@ -73,6 +73,7 @@
 
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
+
 /obj/item/clothing/head/headband
 	name = "headband"
 	desc = "A rag typically worn by the less-orthodox weapons operators. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
@@ -152,7 +153,8 @@
 
 /obj/item/clothing/head/cmcap/Initialize(mapload, ...)
 	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/cmcap)
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(type)
 	base_cap_icon = icon_state
 	helmet_overlays = list("item") //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
@@ -233,45 +235,36 @@
 		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."
 		)
 
-/obj/item/clothing/head/cmcap/boonie/Initialize(mapload, ...)
-	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/cmcap/boonie)
-
 /obj/item/clothing/head/cmcap/boonie/tan
 	icon_state = "booniehattan"
+	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM captain cap"
 	icon_state = "cocap"
 	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 
-/obj/item/clothing/head/cmcap/co/Initialize(mapload, ...)
-	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/cmcap/co)
-
-/obj/item/clothing/head/cmcap/co/formal/white
+/obj/item/clothing/head/cmcap/co/formal
 	name = "\improper USCM formal captain's white cap"
 	icon_state = "co_formalhat_white"
 	desc = "A formal cover worn by Commanding Officers of the USCM."
+	flags_marine_hat = HAT_GARB_OVERLAY
+	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co/formal/black
 	name = "\improper USCM formal captain's black cap"
 	icon_state = "co_formalhat_black"
-	desc = "A formal cover worn by Commanding Officers of the USCM."
 
 /obj/item/clothing/head/cmcap/ro
 	name = "\improper USCM officer cap"
 	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 	icon_state = "rocap"
 
-/obj/item/clothing/head/cmcap/ro/Initialize(mapload, ...)
-	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/cmcap/ro)
-
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
 	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
+	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"
@@ -279,10 +272,6 @@
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "flapcap"
 	flags_marine_hat = HAT_GARB_OVERLAY
-
-/obj/item/clothing/head/cmcap/flap/Initialize(mapload, ...)
-	. = ..()
-	select_gamemode_skin(/obj/item/clothing/head/cmcap/flap)
 
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"

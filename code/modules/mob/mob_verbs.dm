@@ -242,7 +242,6 @@
 		if(M.cameraFollow)
 			M.cameraFollow = null
 
-
 /mob/verb/eastface()
 	set hidden = 1
 	return facedir(EAST)

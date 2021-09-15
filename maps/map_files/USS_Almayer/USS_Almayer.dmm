@@ -29217,6 +29217,10 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
+/obj/item/clothing/glasses/disco_fever{
+	pixel_x = 5;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -35565,6 +35569,10 @@
 	layer = 2.5;
 	pixel_x = -8;
 	pixel_y = 4
+	},
+/obj/item/clothing/glasses/disco_fever{
+	pixel_x = -3;
+	pixel_y = -2
 	},
 /turf/open/floor/plating,
 /area/almayer/living/port_emb)
@@ -43800,6 +43808,11 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
+"gRF" = (
+/obj/structure/surface/table/almayer,
+/obj/item/clothing/glasses/disco_fever,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/hull/lower_hull/l_a_p)
 "gRP" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 1
@@ -67253,6 +67266,10 @@
 	pixel_x = 27;
 	pixel_y = 4
 	},
+/obj/item/clothing/glasses/disco_fever{
+	pixel_x = 5;
+	pixel_y = 4
+	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "blue";
@@ -77527,6 +77544,10 @@
 	name = "dip cup";
 	pixel_x = -7;
 	pixel_y = 13
+	},
+/obj/item/clothing/glasses/disco_fever{
+	pixel_x = 12;
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	dir = 1;
@@ -126947,7 +126968,7 @@ xzE
 cAH
 cAH
 gHv
-blt
+gRF
 haq
 cAH
 pFP

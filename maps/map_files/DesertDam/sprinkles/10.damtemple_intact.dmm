@@ -479,7 +479,9 @@
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "Gz" = (
-/obj/structure/bed/chair/comfy/beige,
+/obj/structure/bed/chair/comfy/beige{
+	dir = 4
+	},
 /turf/open/floor/sandstone/runed,
 /area/desert_dam/interior/caves/temple)
 "GX" = (
@@ -502,9 +504,6 @@
 	dir = 1;
 	icon_state = "squareswood"
 	},
-/area/desert_dam/interior/caves/temple)
-"Ik" = (
-/turf/open/desert/rock,
 /area/desert_dam/interior/caves/temple)
 "Ix" = (
 /obj/structure/surface/rack{
@@ -1059,8 +1058,8 @@ mB
 mB
 mB
 mB
-MH
-EB
+uK
+mB
 "}
 (13,1,1) = {"
 td
@@ -1084,9 +1083,9 @@ MH
 mB
 mB
 Gz
-aZ
-MH
-Ik
+mB
+uK
+mB
 "}
 (14,1,1) = {"
 EB
@@ -1109,7 +1108,7 @@ mB
 zg
 MH
 mB
-mB
+aZ
 IW
 MH
 EB

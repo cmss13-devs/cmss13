@@ -82,8 +82,9 @@
 
 	if(!activated_once)
 		. = ..()
-		activated_once = TRUE
-		addtimer(CALLBACK(src, .proc/timeout), time_until_timeout)
+		if(.)
+			activated_once = TRUE
+			addtimer(CALLBACK(src, .proc/timeout), time_until_timeout)
 	else
 		damage_nearby_targets()
 

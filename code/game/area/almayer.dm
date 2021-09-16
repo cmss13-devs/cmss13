@@ -59,6 +59,8 @@
 	name = "\improper Combat Information Center"
 	icon_state = "cic"
 	fake_zlevel = 1 // upperdeck
+	soundscape_playlist = SCAPE_PL_CIC
+	soundscape_interval = 20
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/cichallway

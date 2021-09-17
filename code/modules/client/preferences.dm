@@ -272,7 +272,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		switch(role_name)
 			if("Xenomorph after<br>unrevivably dead")
-				ban_check_name = "Alien"
+				ban_check_name = JOB_XENOMORPH
 
 			if("Agent")
 				ban_check_name = "Agent"

@@ -697,7 +697,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		// to_chat(usr, "usr != src")
 		return 0 // Something is terribly wrong
 
-	if(jobban_isbanned(usr,"Alien")) // User is jobbanned
+	if(jobban_isbanned(usr, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(usr, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a Hellhound."))
 		return
 

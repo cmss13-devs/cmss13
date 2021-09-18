@@ -329,7 +329,7 @@
 	additional_effects_always()
 	..()
 
-	return
+	return TRUE
 
 // Massive, customizable spray_acid
 /datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)

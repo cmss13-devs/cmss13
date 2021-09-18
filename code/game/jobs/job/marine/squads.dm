@@ -230,17 +230,9 @@
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
 		if(JOB_SQUAD_RTO)
-			if(num_rto > 0)
-				assignment = "Assistant [JOB_SQUAD_RTO]"
-				paygrade = "ME4"
-				M.comm_title = "aRTO"
-			else
-				paygrade = "ME5"
-				assignment = JOB_SQUAD_RTO
-				extra_access += ACCESS_MARINE_RTO_DROP
-				M.important_radio_channels += radio_freq
-
+			assignment = JOB_SQUAD_RTO
 			num_rto++
+			M.important_radio_channels += radio_freq
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
 			num_smartgun++

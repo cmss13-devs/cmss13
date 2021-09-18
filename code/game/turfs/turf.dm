@@ -41,7 +41,7 @@
 	 * on the turf, it can simply be for handling how the
 	 * overlays or placing new cleanables of the same type work
 	 */
-	var/list/cleanables
+	var/list/obj/effect/decal/cleanable/cleanables
 
 	var/list/baseturfs = /turf/baseturf_bottom
 	var/changing_turf = FALSE

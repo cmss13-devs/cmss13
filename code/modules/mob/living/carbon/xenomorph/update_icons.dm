@@ -177,7 +177,7 @@
 
 /mob/living/carbon/Xenomorph/update_fire()
 	remove_overlay(X_FIRE_LAYER)
-	if(on_fire)
+	if(on_fire && fire_reagent)
 		var/image/I
 		if(mob_size >= MOB_SIZE_BIG)
 			if((!initial(pixel_y) || lying) && !resting && !sleeping)
@@ -209,6 +209,9 @@
 
 // Shamelessly inspired from the equivalent proc on TGCM
 /mob/living/carbon/Xenomorph/proc/update_wounds()
+	if(!wound_icon_carrier)
+		return
+
 	var/health_threshold
 	wound_icon_carrier.layer = layer + 0.01
 	health_threshold = CEILING((health * 4) / (maxHealth), 1) //From 1 to 4, in 25% chunks

@@ -78,7 +78,8 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	if(overlayed_image)
 		cleanable_turf.overlays -= overlayed_image
 		overlayed_image = null
-	QDEL_NULL(cleanable_turf.cleanables[cleanable_type])
+	if(!QDELING(cleanable_turf.cleanables[cleanable_type]))
+		qdel(cleanable_turf.cleanables[cleanable_type])
 	LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)
 
 /obj/effect/decal/cleanable/proc/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state)

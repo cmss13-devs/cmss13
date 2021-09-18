@@ -1307,15 +1307,18 @@ and you're good to go.
 			break
 
 		//We actually have a projectile, let's move on. We're going to simulate the fire cycle.
-		if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user)==-1)
+		if(projectile_to_fire.ammo.on_pointblank(M, projectile_to_fire, user, src))
+			flags_gun_features &= ~GUN_BURST_FIRING
 			return TRUE
+
 		var/damage_buff = BASE_BULLET_DAMAGE_MULT
 		//if target is lying or unconscious - add damage bonus
 		if(M.lying == TRUE || M.stat == UNCONSCIOUS)
 			damage_buff += BULLET_DAMAGE_MULT_TIER_4
 		projectile_to_fire.damage *= damage_buff //Multiply the damage for point blank.
 		if(bullets_fired == 1) //First shot gives the PB message.
-			user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"), null, null, null, CHAT_TYPE_WEAPON_USE)
+			user.visible_message(SPAN_DANGER("[user] fires [src] point blank at [M]!"),
+				SPAN_WARNING("You fire [src] point blank at [M]!"), null, null, CHAT_TYPE_WEAPON_USE)
 
 		user.track_shot(initial(name))
 		apply_bullet_effects(projectile_to_fire, user, bullets_fired) //We add any damage effects that we need.

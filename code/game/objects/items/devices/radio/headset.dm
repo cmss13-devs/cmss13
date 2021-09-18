@@ -558,6 +558,9 @@
 				if(JOB_SQUAD_ENGI)
 					name = "marine engineer " + name
 					keys += new /obj/item/device/encryptionkey/engi(src)
+				if(JOB_SQUAD_RTO)
+					name = "marine RTO " + name
+					keys += new /obj/item/device/encryptionkey/jtac(src)
 				else
 					name = "marine " + name
 

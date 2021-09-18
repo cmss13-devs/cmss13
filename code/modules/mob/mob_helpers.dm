@@ -230,9 +230,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 #define PIXELS_PER_STRENGTH_VAL 24
 
 /proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
-	set waitfor = 0
-
-	if(!M || !M.client || (M.shakecamera > world.time))
+	if(!M?.client || (M.shakecamera > world.time))
 		return
 
 	M.shakecamera = world.time + steps * time_per_step
@@ -240,15 +238,12 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	var/old_X = M.client.pixel_x
 	var/old_y = M.client.pixel_y
 
-	//ANIMATION_PARALLEL means that screenshake won't interfere with client colour transitions, but means that each animation step of the shake will happen simultanously unless slept.
 	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step, flags = ANIMATION_PARALLEL)
 	var/i = 1
-	sleep(time_per_step)
 	while(i < steps)
-		animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step, flags = ANIMATION_PARALLEL)
+		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
 		i++
-		sleep(time_per_step)
-	animate(M.client, pixel_x = old_X, pixel_y = old_y,time = Clamp(Floor(strength/PIXELS_PER_STRENGTH_VAL),2,4), flags = ANIMATION_PARALLEL)//ease it back
+	animate(pixel_x = old_X, pixel_y = old_y,time = Clamp(Floor(strength/PIXELS_PER_STRENGTH_VAL),2,4))//ease it back
 
 #undef PIXELS_PER_STRENGTH_VAL
 

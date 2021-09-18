@@ -23,8 +23,7 @@
 	for(var/datum/disease/D in viruses)
 		D.cure(0)
 	viruses = null
-	..()
-	return QDEL_HINT_IWILLGC
+	return ..()
 
 /obj/effect/decal/cleanable/blood/Initialize(mapload, b_color)
 	. = ..()

@@ -479,7 +479,8 @@
 		lifetime = smoke_time
 	radius = min(radius, 10)
 	amount = radius
-	cause_data = new_cause_data
+	if(new_cause_data)
+		cause_data = new_cause_data
 
 /datum/effect_system/smoke_spread/start()
 	if(holder)

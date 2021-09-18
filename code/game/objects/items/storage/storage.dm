@@ -469,7 +469,11 @@ var/list/global/item_storage_box_cache = list()
 			W.layer = initial(W.layer)
 		W.forceMove(new_location)
 	else
-		W.forceMove(get_turf(src))
+		var/turf/T = get_turf(src)
+		if(T)
+			W.forceMove(T)
+		else
+			W.moveToNullspace()
 
 	orient2hud()
 	for(var/mob/M in can_see_content())

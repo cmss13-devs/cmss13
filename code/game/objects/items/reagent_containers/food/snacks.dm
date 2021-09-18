@@ -211,12 +211,6 @@
 
 	return
 
-/obj/item/reagent_container/food/snacks/Destroy()
-	if(contents)
-		for(var/atom/movable/something in contents)
-			something.forceMove(get_turf(src))
-	return ..()
-
 /obj/item/reagent_container/food/snacks/attack_animal(var/mob/M)
 	if(isanimal(M))
 		if(iscorgi(M))

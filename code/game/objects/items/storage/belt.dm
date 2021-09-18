@@ -689,11 +689,10 @@
 	else
 		overlays += "+[icon_state_text]_full"
 
-/obj/item/storage/belt/gun/Destroy()
-	gun_underlay = null
-	QDEL_NULL(current_gun)
-	. = ..()
-
+/obj/item/storage/belt/gun/on_stored_atom_del(atom/movable/AM)
+	if(AM == current_gun)
+		current_gun = null
+		update_gun_icon()
 
 /obj/item/storage/belt/gun/attack_hand(mob/user, mods)
 	if(current_gun && ishuman(user) && loc == user)

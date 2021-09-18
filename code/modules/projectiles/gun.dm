@@ -453,10 +453,6 @@
 	attachments = null
 	attachable_overlays = null
 	GLOB.gun_list -= src
-
-	var/obj/item/storage/belt/gun/gun_belt = loc //These use a var to prevent inserting more than one pistol, so the gun must be removed to clear it.
-	if(istype(gun_belt))
-		gun_belt.remove_from_storage(src, null)
 	. = ..()
 
 /obj/item/weapon/gun/emp_act(severity)

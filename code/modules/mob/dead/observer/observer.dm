@@ -259,7 +259,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		for(var/obj/effect/step_trigger/S in NewLoc)
 			S.Crossed(src)
 
-	forceMove(get_turf(src) )//Get out of closets and such as a ghost
+	var/turf/T = get_turf(src)
+	if(T) // Get out of closets and such as a ghost
+		forceMove(T)
+
 	if((direct & NORTH) && y < world.maxy)
 		y += m_intent //Let's take advantage of the intents being 1 & 2 respectively
 	else if((direct & SOUTH) && y > 1)

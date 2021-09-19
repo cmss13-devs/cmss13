@@ -335,7 +335,7 @@
 	icon_state = "nonpressarea"
 
 /obj/structure/sign/safety/nonpress_ag
-	name = "zrtificial gravity area, non-pressurized, suit required semiotic"
+	name = "artificial gravity area, non-pressurized, suit required semiotic"
 	desc = "Semiotic Standard denoting the nearby presence of an area with artificial gravity lacking in pressurization."
 	icon_state = "nonpressag"
 
@@ -482,7 +482,12 @@
 /obj/structure/sign/safety/waterhazard
 	name = "water hazard semiotic"
 	desc = "Semiotic Standard denoting a water hazard. Keep electronics away."
-	icon_state = "water"
+	icon_state = "waterhaz"
+
+/obj/structure/sign/safety/west
+	name = "\improper West semiotic"
+	desc = "Semiotic Standard denoting the nearby presence of something to the West."
+	icon_state = "west"
 
 /obj/structure/sign/safety/zero_g
 	name = "artificial gravity absent semiotic"
@@ -491,52 +496,52 @@
 
 /obj/structure/sign/safety/zero
 	name = "zero semiotic"
-	desc = "A number. This one is 0."
+	desc = "Semiotic Standard denoting the number zero."
 	icon_state = "0"
 
 /obj/structure/sign/safety/one
 	name = "one semiotic"
-	desc = "A number. This one is 1."
+	desc = "Semiotic Standard denoting the number one."
 	icon_state = "1"
 
 /obj/structure/sign/safety/two
 	name = "two semiotic"
-	desc = "A number. This one is 2."
+	desc = "Semiotic Standard denoting the number two."
 	icon_state = "2"
 
 /obj/structure/sign/safety/three
 	name = "three semiotic"
-	desc = "A number. This one is 3."
+	desc = "Semiotic Standard denoting the number three."
 	icon_state = "3"
 
 /obj/structure/sign/safety/four
 	name = "four semiotic"
-	desc = "A number. This one is 4."
+	desc = "Semiotic Standard denoting the number four."
 	icon_state = "4"
 
 /obj/structure/sign/safety/five
 	name = "five semiotic"
-	desc = "A number. This one is 5."
+	desc = "Semiotic Standard denoting the number five."
 	icon_state = "5"
 
 /obj/structure/sign/safety/six
 	name = "six semiotic"
-	desc = "A number. This one is 6."
+	desc = "Semiotic Standard denoting the number six."
 	icon_state = "6"
 
 /obj/structure/sign/safety/seven
 	name = "seven semiotic"
-	desc = "A number. This one is 7."
+	desc = "Semiotic Standard denoting the number seven."
 	icon_state = "7"
 
 /obj/structure/sign/safety/eight
 	name = "eight semiotic"
-	desc = "A number. This one is 8."
+	desc = "Semiotic Standard denoting the number eight."
 	icon_state = "8"
 
 /obj/structure/sign/safety/nine
 	name = "nine semiotic"
-	desc = "A number. This one is 9."
+	desc = "Semiotic Standard denoting the number nine."
 	icon_state = "9"
 
 //////////////////

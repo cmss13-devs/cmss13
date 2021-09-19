@@ -61,6 +61,12 @@
 	</tr>
 </table>
 
+			<h2 class="date">19 September 2021</h2>
+			<h3 class="author">Firartix updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">made players taking control of nullspaced ghosts not just crash down the whole server</li>
+			</ul>
+
 			<h2 class="date">18 September 2021</h2>
 			<h3 class="author">50RemAndCounting updated:</h3>
 			<ul class="changes bgimages16">
@@ -837,32 +843,6 @@
 			<h3 class="author">Nanu updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">USCM Presets now have gloves with armor.</li>
-			</ul>
-
-			<h2 class="date">18 July 2021</h2>
-			<h3 class="author">Jackie_Estegado updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Added IFF inhibitor to plastic explosives.</li>
-				<li class="tweak">Added IFF inhibitor to SADAR.</li>
-				<li class="tweak">IFF inhibitor now only affects the marines.</li>
-				<li class="rscadd">Gibber can now process xenos.</li>
-				<li class="bugfix">Gibber now also makes human meat from human corpses, as intended.</li>
-				<li class="bugfix">Microwave no longer eats items when trying to insert them while its running.</li>
-			</ul>
-			<h3 class="author">Jeser updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Simplified vehicle movement code further, removing some parts of it. Vehicles still start slower and accelerate to top speed, but driving should feel much better.</li>
-				<li class="bugfix">Fixed double movement on vehicles.</li>
-				<li class="tweak">Wheels and treads now can change 4 vehicle movement characteristics instead of just top speed, allowing more flexible adjustment.</li>
-				<li class="tweak">APC is faster and more responsive now, has reduced momentum loss for turning.</li>
-				<li class="tweak">Regular tank treads were made to be slightly faster, require moving 3 tiles to reach top speed. Reinforced treads now have same top speed as regular, but take 5 tiles to accelerate to full speed.</li>
-				<li class="tweak">Overdrive Enhancer movement buff was reduced from 25% to 20%.</li>
-				<li class="rscadd">Multitile vehicles now belong to one of four possible vehicle classes: weak (currently vans), light (currently APC), medium (currently tank) and heavy, which affects ramming results and, in future, more stuff.</li>
-				<li class="tweak">Changed vehicle bumping code to not use huge if else structure. This means that absolutely anything can easily be assigned some unique behaviour when being rammed by vehicle. Some stuff just gets outright deleted, some explodes, some nicely collapses or dismantles instead of being broken and so on. If something is not being rammed the way you think it should, you can tell me or add missing behaviour yourself.</li>
-				<li class="rscadd">Ramming mobs is now logged, this includes FF logs for ramming allies. Bad drivers will be much easier to spot.</li>
-				<li class="tweak">Changes in ramming humans: weak vehicle classes (vans) will apply micro knockdown to humans instead of pushing them in front of themselves. Light vehicle classes (APC) will do the same for allies and apply longer knockdown and some damage to other factions. Heavier classes (tank) will apply longer knockdown and damage to humans indiscriminately.</li>
-				<li class="tweak">Changes in ramming xenos: heavy class vehicles cannot be blocked at all and will drive over most xenos. Weak class vehicles (vans) will push xenos like before, while heavier (APC, tank) classes will push them away from themselves, making it harder to continuously ram xenos over long distances. APC ramming damage multiplier was nerfed from 0.5 to 0.2. Momentum penalty for ramming was reduced from 50% to 20%. Defenders now block only weak (vans) class vehicles, slowdown light (APC) vehicles by 70% and won't prevent heavier (tank) classes from moving at all, but won't receive any damage from being rammed.</li>
-				<li class="tweak">Crushers ramming vehicles will produce crash effect inside.</li>
 			</ul>
 </div>
 </body>

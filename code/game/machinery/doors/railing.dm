@@ -2,6 +2,7 @@
 	name = "\improper retractable railing"
 	icon = 'icons/obj/structures/doors/railing.dmi'
 	icon_state = "railing0"
+	climbable = TRUE
 	use_power = 0
 	flags_atom = ON_BORDER
 	opacity = 0

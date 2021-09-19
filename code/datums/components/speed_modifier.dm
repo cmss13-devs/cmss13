@@ -52,7 +52,6 @@
 
 /datum/component/speed_modifier/RegisterWithParent()
 	START_PROCESSING(SSdcs, src)
-	STOP_PROCESSING(SSdcs, src)
 	RegisterSignal(parent, COMSIG_XENO_MOVEMENT_DELAY, .proc/apply_speed_modifier)
 	RegisterSignal(parent, COMSIG_XENO_APPEND_TO_STAT, .proc/stat_append)
 

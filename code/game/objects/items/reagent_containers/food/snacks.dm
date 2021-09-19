@@ -2843,7 +2843,7 @@
 // Flour + egg = dough
 /obj/item/reagent_container/food/snacks/flour/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food/snacks/egg))
-		new /obj/item/reagent_container/food/snacks/dough(src)
+		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
 		to_chat(user, "You make some dough.")
 		qdel(W)
 		qdel(src)
@@ -2851,7 +2851,7 @@
 // Egg + flour = dough
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food/snacks/flour))
-		new /obj/item/reagent_container/food/snacks/dough(src)
+		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
 		to_chat(user, "You make some dough.")
 		qdel(W)
 		qdel(src)
@@ -2870,7 +2870,7 @@
 // Dough + rolling pin = flat dough
 /obj/item/reagent_container/food/snacks/dough/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/kitchen/rollingpin))
-		new /obj/item/reagent_container/food/snacks/sliceable/flatdough(src)
+		new /obj/item/reagent_container/food/snacks/sliceable/flatdough(get_turf(src))
 		to_chat(user, "You flatten the dough.")
 		qdel(src)
 
@@ -2912,21 +2912,21 @@
 /obj/item/reagent_container/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_container/food/snacks/meatball))
-		new /obj/item/reagent_container/food/snacks/monkeyburger(src)
+		new /obj/item/reagent_container/food/snacks/monkeyburger(get_turf(src))
 		to_chat(user, "You make a burger.")
 		qdel(W)
 		qdel(src)
 
 	// Bun + cutlet = hamburger
 	else if(istype(W,/obj/item/reagent_container/food/snacks/cutlet))
-		new /obj/item/reagent_container/food/snacks/monkeyburger(src)
+		new /obj/item/reagent_container/food/snacks/monkeyburger(get_turf(src))
 		to_chat(user, "You make a burger.")
 		qdel(W)
 		qdel(src)
 
 	// Bun + sausage = hotdog
 	else if(istype(W,/obj/item/reagent_container/food/snacks/sausage))
-		new /obj/item/reagent_container/food/snacks/hotdog(src)
+		new /obj/item/reagent_container/food/snacks/hotdog(get_turf(src))
 		to_chat(user, "You make a hotdog.")
 		qdel(W)
 		qdel(src)
@@ -2934,7 +2934,7 @@
 // Burger + cheese wedge = cheeseburger
 /obj/item/reagent_container/food/snacks/monkeyburger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))// && !istype(src,/obj/item/reagent_container/food/snacks/cheesewedge))
-		new /obj/item/reagent_container/food/snacks/cheeseburger(src)
+		new /obj/item/reagent_container/food/snacks/cheeseburger(get_turf(src))
 		to_chat(user, "You make a cheeseburger.")
 		qdel(W)
 		qdel(src)
@@ -2945,7 +2945,7 @@
 // Human Burger + cheese wedge = cheeseburger
 /obj/item/reagent_container/food/snacks/human/burger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))
-		new /obj/item/reagent_container/food/snacks/cheeseburger(src)
+		new /obj/item/reagent_container/food/snacks/cheeseburger(get_turf(src))
 		to_chat(user, "You make a cheeseburger.")
 		qdel(W)
 		qdel(src)
@@ -3021,7 +3021,7 @@
 // potato + knife = raw sticks
 /obj/item/reagent_container/food/snacks/grown/potato/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/kitchen/utensil/knife))
-		new /obj/item/reagent_container/food/snacks/rawsticks(src)
+		new /obj/item/reagent_container/food/snacks/rawsticks(get_turf(src))
 		to_chat(user, "You cut the potato.")
 		qdel(src)
 	else

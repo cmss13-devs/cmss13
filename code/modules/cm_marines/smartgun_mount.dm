@@ -35,7 +35,7 @@
 // Now we need a box for this.
 /obj/item/storage/box/m56d_hmg
 	name = "\improper M56D crate"
-	desc = "A large metal case with Japanese writing on the top. However it also comes with English text to the side. This is a M56D heavy machine gun, it clearly has various labeled warnings. The most major one is that this does not have IFF features due to specialized ammo."
+	desc = "A large metal case with Japanese writing on the top. However it also comes with English text to the side. This is a M56D heavy machine gun, it clearly has various labeled warnings."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D_case" // I guess a placeholder? Not actually going to show up ingame for now.
 	w_class = SIZE_HUGE
@@ -304,7 +304,7 @@
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
 				G.name = src.name
-				G.visible_message("[icon2html(G)] <B>[G] is now complete!</B>") //finished it for everyone to
+				G.visible_message("[icon2html(G, viewers(src))] <B>\The [G] is now complete!</B>") //finished it for everyone to
 				G.setDir(dir) //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
 				G.update_icon()
@@ -345,7 +345,7 @@
 // The actual Machinegun itself, going to borrow some stuff from current sentry code to make sure it functions. Also because they're similiar.
 /obj/structure/machinery/m56d_hmg
 	name = "\improper M56D heavy machine gun"
-	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire.<br> <span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A deployable, heavy machine gun. While it is capable of taking the same rounds as the M56, it fires specialized tungsten rounds for increased armor penetration.<br>Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
 	icon = 'icons/turf/whiskeyoutpost.dmi'
 	icon_state = "M56D"
 	anchored = 1
@@ -357,7 +357,7 @@
 	projectile_coverage = PROJECTILE_COVERAGE_LOW
 	var/rounds = 0 //Have it be empty upon spawn.
 	var/rounds_max = 700
-	var/fire_delay = 4 //Gotta have rounds down quick.
+	var/fire_delay = 2 //Gotta have rounds down quick.
 	var/last_fired = 0
 	var/burst_fire = 0 //0 is non-burst mode, 1 is burst.
 	var/burst_scatter_mult = 4
@@ -634,6 +634,7 @@
 			in_chamber.weapon_cause_data = create_cause_data(initial(name), user)
 			in_chamber.setDir(dir)
 			in_chamber.def_zone = pick("chest","chest","chest","head")
+			SEND_SIGNAL(in_chamber, COMSIG_BULLET_USER_EFFECTS, user)
 			playsound(loc,gun_noise, 50, 1)
 			in_chamber.fire_at(target,user,src,ammo.max_range,ammo.shell_speed)
 			if(target)
@@ -652,7 +653,7 @@
 	return total_scatter_angle
 
 /obj/structure/machinery/m56d_hmg/proc/handle_ammo_out(mob/user)
-	visible_message(SPAN_NOTICE(" [icon2html(src, viewers(src))] [src] beeps steadily and its ammo light blinks red."))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps steadily and its ammo light blinks red."))
 	playsound(loc, empty_alarm, 25, 1)
 	update_icon() //final safeguard.
 
@@ -750,8 +751,7 @@
 	if((over_object == user && (in_range(src, user) || locate(src) in user))) //Make sure its on ourselves
 		if(user.interactee == src)
 			user.unset_interaction()
-			visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] decided to let someone else have a go ")]")
-			to_chat(usr, SPAN_NOTICE("You decided to let someone else have a go on the MG "))
+			user.visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] lets go of \the [src].")]", SPAN_NOTICE("You let go of \the [src]."))
 			return
 		if(operator) //If there is already a operator then they're manning it.
 			if(operator.interactee == null)
@@ -823,7 +823,7 @@
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"
-	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire. <span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A scoped M56D heavy machine gun mounted upon a small reinforced post with sandbags to provide a small machine gun nest for all your defensive needs. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
 	burst_fire = 1
 	fire_delay = 2
 	rounds = 1500
@@ -837,7 +837,7 @@
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship
 	name = "\improper scoped M56D heavy machine gun"
-	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire. <span class='notice'>!!DANGER: M56D DOES NOT HAVE IFF FEATURES!!</span>"
+	desc = "A scoped M56D heavy machine gun mounted behind a metal shield. Drag its sprite onto yourself to man it. Ctrl-click it to toggle burst fire."
 	icon_full = "towergun_folding"
 	icon_empty = "towergun_folding"
 	var/obj/structure/dropship_equipment/mg_holder/deployment_system
@@ -1272,7 +1272,7 @@
 	addtimer(CALLBACK(src, .proc/auto_fire_repeat, user), fire_delay)
 
 /obj/structure/machinery/m56d_hmg/auto/handle_ammo_out(mob/user)
-	visible_message(SPAN_NOTICE(" [icon2html(src, viewers(src))] [src]'s ammo box drops onto the ground, now completely empty."))
+	visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src]'s ammo box drops onto the ground, now completely empty."))
 	playsound(loc, empty_alarm, 70, 1)
 	update_icon() //final safeguard.
 	var/obj/item/ammo_magazine/m2c/AM = new /obj/item/ammo_magazine/m2c(src.loc)

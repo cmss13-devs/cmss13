@@ -357,7 +357,9 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/clothing/glasses/welding(src)
 	new /obj/item/storage/pouch/tools/pfc(src)
 	new /obj/item/folding_barricade(src)
-	new /obj/item/device/m56d_gun/mounted(src)
+	new /obj/item/explosive/mine(src)
+	new /obj/item/explosive/plastic(src)
+	new /obj/item/explosive/plastic(src)
 
 /obj/item/storage/box/kit/mini_medic
 	name = "\improper First Responder Medical Support Kit"

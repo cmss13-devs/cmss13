@@ -44,7 +44,7 @@
 
 	if(!src.network || src.network.len < 1)
 		if(loc)
-			error("[src.name] in [get_area(src)] (x:[src.x] y:[src.y] z:[src.z] has errored. [src.network?"Empty network list":"Null network list"]")
+			error("[src.name] in [get_area(src)] (x:[src.x] y:[src.y] z:[src.z]) has errored. [src.network?"Empty network list":"Null network list"]")
 		else
 			error("[src.name] in [get_area(src)]has errored. [src.network?"Empty network list":"Null network list"]")
 		ASSERT(src.network)
@@ -263,3 +263,18 @@
 		SPAN_NOTICE("You weld [src]."))
 		return 1
 	return 0
+
+/obj/structure/machinery/camera/mortar
+	alpha = 0
+	mouse_opacity = 0
+	density = FALSE
+	invuln = TRUE
+	network = list("mortar")
+
+/obj/structure/machinery/camera/mortar/Initialize()
+	c_tag = "Para-Cam ([obfuscate_x(x)]):([obfuscate_y(y)])"
+	. = ..()
+	QDEL_IN(src, 3 MINUTES)
+
+/obj/structure/machinery/camera/mortar/isXRay()
+	return TRUE

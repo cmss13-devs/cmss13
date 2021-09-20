@@ -124,4 +124,5 @@
 /datum/supply_packs/ammo_mortar_flare/asrs
 	buyable = 0
 	group = "Munition"
+
 //===================================

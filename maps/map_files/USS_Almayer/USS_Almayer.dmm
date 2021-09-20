@@ -30664,14 +30664,18 @@
 	name = "\improper Requisitions Storage"
 	},
 /obj/structure/machinery/door/firedoor/border_only/almayer,
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	tag = "icon-pipe-s (WEST)"
+	},
 /turf/open/floor/almayer{
 	icon_state = "test_floor4";
 	tag = "icon-test_floor4"
 	},
 /area/almayer/squads/req)
 "bYw" = (
-/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/junction,
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/req)
 "bYx" = (
@@ -40595,6 +40599,15 @@
 	},
 /turf/open/floor/almayer,
 /area/almayer/living/briefing)
+"eHa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/squads/req)
 "eHf" = (
 /obj/structure/machinery/light/small,
 /obj/structure{
@@ -48909,6 +48922,17 @@
 	tag = "icon-sterile_green_side (WEST)"
 	},
 /area/almayer/medical/morgue)
+"isS" = (
+/obj/item/stack/sheet/cardboard{
+	amount = 50
+	},
+/obj/structure/surface/rack,
+/turf/open/floor/almayer{
+	dir = 4;
+	icon_state = "green";
+	tag = "icon-green (EAST)"
+	},
+/area/almayer/squads/req)
 "isW" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med{
 	pixel_y = 25
@@ -50379,6 +50403,16 @@
 	tag = "icon-red"
 	},
 /area/almayer/hull/upper_hull/u_a_p)
+"jac" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	tag = "icon-pipe-s (WEST)"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/squads/req)
 "jaj" = (
 /obj/item/ammo_box/magazine/misc/mre/empty{
 	pixel_x = 8;
@@ -59501,9 +59535,9 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/port_hallway)
 "nmK" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/cardboard{
-	amount = 50
+/obj/structure/machinery/disposal,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = -17
@@ -60237,6 +60271,11 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/medical_science)
+"nDM" = (
+/obj/structure/pipes/standard/simple/hidden/supply,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/req)
 "nEj" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/security/almayer_network{
@@ -68892,6 +68931,13 @@
 	tag = "icon-sterile"
 	},
 /area/almayer/medical/lower_medical_lobby)
+"rIH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/plating/plating_catwalk,
+/area/almayer/squads/req)
 "rIO" = (
 /obj/structure/machinery/vending/snack,
 /obj/item/clothing/head/cmcap/boonie/tan{
@@ -124550,8 +124596,8 @@ bKA
 bEc
 mCo
 tjl
-bCA
-bCA
+rIH
+tUh
 cag
 bdl
 bGk
@@ -124753,7 +124799,7 @@ bNQ
 bNQ
 bEk
 bKA
-bKA
+jac
 bCA
 cah
 bdl
@@ -124956,8 +125002,8 @@ bNP
 bmD
 gkg
 doP
-bKA
-bCB
+jac
+isS
 cai
 bdl
 bII
@@ -125362,7 +125408,7 @@ bNP
 bmD
 lyk
 bOR
-bKA
+eHa
 opj
 xAB
 mCo
@@ -125566,7 +125612,7 @@ bNL
 bWL
 bXH
 bYw
-bYw
+nDM
 bWL
 sSa
 qLp

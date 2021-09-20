@@ -1644,7 +1644,7 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 
 	if(user.luminosity <= muzzle_flash_lum)
 		user.SetLuminosity(muzzle_flash_lum, FALSE, src)
-		addtimer(CALLBACK(user, /atom.proc/SetLuminosity, -muzzle_flash_lum), 10)
+		addtimer(CALLBACK(user, /atom.proc/SetLuminosity, 0, FALSE, src), 10)
 
 	var/image_layer = (user && user.dir == SOUTH) ? MOB_LAYER+0.1 : MOB_LAYER-0.1
 	var/offset = 5

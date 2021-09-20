@@ -41,13 +41,17 @@
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
 /obj/item/mortar_shell/flare
-	name = "\improper 80mm flare mortar shell"
-	desc = "An 80mm mortar shell, loaded with an illumination flare."
+	name = "\improper 80mm flare/camera mortar shell"
+	desc = "An 80mm mortar shell, loaded with an illumination flare / camera combo, attached to a parachute."
 	icon_state = "mortar_ammo_flr"
 
 /obj/item/mortar_shell/flare/detonate(var/turf/T)
 	new /obj/item/device/flashlight/flare/on/illumination(T)
 	playsound(T, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
+	var/obj/structure/machinery/camera/mortar/old_cam = locate() in T
+	if(old_cam)
+		qdel(old_cam)
+	new /obj/structure/machinery/camera/mortar(T)
 
 /obj/item/mortar_shell/custom
 	name = "\improper 80mm custom mortar shell"

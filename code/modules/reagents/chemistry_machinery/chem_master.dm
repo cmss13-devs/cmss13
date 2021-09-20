@@ -68,12 +68,14 @@
 
 /obj/structure/machinery/chem_master/attackby(obj/item/B, mob/living/user)
 	if(istype(B, /obj/item/reagent_container/glass))
-		if(beaker)
-			to_chat(user, SPAN_WARNING("A beaker is already loaded into the machine."))
-			return
+		var/obj/item/old_beaker = beaker
 		beaker = B
 		user.drop_inv_item_to_loc(B, src)
-		to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
+		if(old_beaker)
+			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [B]."))
+			user.put_in_hands(old_beaker)
+		else
+			to_chat(user, SPAN_NOTICE("You add the beaker to the machine!"))
 		updateUsrDialog()
 		update_icon()
 

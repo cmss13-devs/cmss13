@@ -6,11 +6,8 @@
 	desc = "Used to time things. Works well with contraptions which has to count down. Tick tock."
 	icon_state = "timer"
 	matter = list("metal" = 500, "glass" = 50, "waste" = 10)
-
-
 	wires = WIRE_ASSEMBLY_PULSE
-
-	secured = 0
+	secured = FALSE
 
 	var/timing = 0
 	var/time = 3 SECONDS

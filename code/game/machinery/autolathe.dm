@@ -179,11 +179,12 @@
 	add_fingerprint(usr)
 
 	if (href_list["change_category"])
-		var/choice = tgui_input_list(usr, "Which category do you wish to display?", categories+"All")
+		var/choice = tgui_input_list(usr, "Which category do you wish to display?", "Category Selection", categories+"All")
 		if(!choice)
 			return
 		show_category = choice
 		update_printable()
+		updateUsrDialog()
 		return
 
 	else if (href_list["cancel"])

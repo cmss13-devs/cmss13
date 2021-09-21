@@ -855,20 +855,12 @@
 		ui.open()
 		ui.set_auto_update(0)
 
-/obj/structure/machinery/cm_vending/clothing/antag/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(stat & (BROKEN|NOPOWER))
-		return
-	if(usr.is_mob_incapacitated())
-		return
-
-	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
+/obj/structure/machinery/cm_vending/clothing/antag/handle_topic(mob/user, href, href_list)
+	if(in_range(src, user) && isturf(loc) && ishuman(user))
+		user.set_interaction(src)
 		if (href_list["vend"])
 
-			var/mob/living/carbon/human/H = usr
+			var/mob/living/carbon/human/H = user
 
 			if(!allowed(H))
 				to_chat(H, SPAN_WARNING("Access denied."))
@@ -893,8 +885,6 @@
 
 			var/idx=text2num(href_list["vend"])
 			var/list/L = listed_products[H.job][idx]
-			for(var/i in L)
-				to_chat(H, SPAN_WARNING("L: [i]"))
 			var/cost = L[2]
 
 			var/turf/T = loc
@@ -935,8 +925,8 @@
 
 			vend_succesfully(L, H)
 
-		add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
+		add_fingerprint(user)
+		ui_interact(user) //updates the nanoUI window
 
 /obj/structure/machinery/cm_vending/clothing/antag/vend_succesfully(var/list/L, var/mob/living/carbon/human/H)
 	if(stat & IN_USE)

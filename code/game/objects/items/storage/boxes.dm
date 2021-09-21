@@ -646,7 +646,7 @@
 	icon_state = "mealpack"
 	w_class = SIZE_SMALL
 	can_hold = list()
-	storage_slots = 5
+	storage_slots = 6
 	max_w_class = 0
 	use_sound = "rip"
 	var/isopened = 0
@@ -666,6 +666,7 @@
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, second)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, side)
 	new /obj/item/reagent_container/food/snacks/packaged_meal(src, desert)
+	new /obj/item/reagent_container/food/drinks/cans/waterbottle(src)
 	if(cookie == 1)
 		new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(src)
 

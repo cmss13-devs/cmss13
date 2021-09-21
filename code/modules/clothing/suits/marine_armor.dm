@@ -491,9 +491,9 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/light/synvest
 	name = "\improper M3A1 Synthetic Utility Vest"
-	desc = "This variant of the M3-VL pattern ballistics vest has its protective plates stripped out, making it the absolute lightest IMP-compatible apparel available. Meant to be used by synthetic units, to provide an IMP-compatible utility compliant with standard synthetic unit programming."
+	desc = "This variant of the ubiquitous M3 pattern ballistics vest has been extensively modified, providing no protection in exchange for maximum mobility and storage space. Synthetic programming compliant."
 	icon_state = "VL_syn"
-	storage_slots = 1
+	storage_slots = 3
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE

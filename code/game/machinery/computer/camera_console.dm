@@ -163,9 +163,12 @@
 	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
 
 	var/list/visible_turfs = list()
+	range_turfs.Cut()
+	var/area/A
 	for(var/turf/visible_turf in visible_things)
 		range_turfs += visible_turf
-		if(visible_turf.lighting_lumcount >= 1)
+		A = visible_turf.loc
+		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
 			visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
@@ -181,8 +184,10 @@
 /obj/structure/machinery/computer/security/process()
 	if(current)
 		var/list/visible_turfs = list()
+		var/area/A
 		for(var/turf/visible_turf as anything in range_turfs)
-			if(visible_turf.lighting_lumcount >= 1)
+			A = visible_turf.loc
+			if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
 				visible_turfs += visible_turf
 		cam_screen.vis_contents = visible_turfs
 

@@ -26,7 +26,7 @@
 					/datum/job/civilian/researcher/whiskey,
 					/datum/job/logistics/engineering/whiskey,
 					/datum/job/logistics/tech/maint/whiskey,
-					/datum/job/logistics/tech/cargo/whiskey,
+					/datum/job/logistics/cargo/whiskey,
 					/datum/job/civilian/liaison/whiskey,
 					/datum/job/marine/leader/equipped/whiskey,
 					/datum/job/marine/specialist/equipped/whiskey,

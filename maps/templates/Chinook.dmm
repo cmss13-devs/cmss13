@@ -12,11 +12,6 @@
 	},
 /area/adminlevel/chinook/medical)
 "ad" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'LIVE AMMUNITION RANGE'.";
-	name = "\improper FIRING RANGE";
-	pixel_y = -32
-	},
 /obj/structure/machinery/disposal,
 /turf/open/floor/almayer,
 /area/adminlevel/chinook/sec)
@@ -761,7 +756,6 @@
 	},
 /area/adminlevel/chinook/sec)
 "cx" = (
-/obj/structure/largecrate/supply/machine,
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -3628,14 +3622,6 @@
 	},
 /area/adminlevel/chinook/offices)
 "lz" = (
-/obj/structure/sign/directions/medical{
-	pixel_x = 28;
-	pixel_y = -5
-	},
-/obj/structure/sign/directions/engineering{
-	pixel_x = 28;
-	pixel_y = 2
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
@@ -7341,11 +7327,6 @@
 	},
 /area/adminlevel/chinook/event)
 "xk" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'LIVE AMMUNITION RANGE'.";
-	name = "\improper FIRING RANGE";
-	pixel_x = 32
-	},
 /turf/open/floor/almayer{
 	dir = 5;
 	icon_state = "plating";
@@ -8616,11 +8597,6 @@
 	},
 /area/adminlevel/chinook)
 "Cf" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'LIVE AMMUNITION RANGE'.";
-	name = "\improper FIRING RANGE";
-	pixel_x = -29
-	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "red";
@@ -9080,10 +9056,6 @@
 	},
 /area/adminlevel/chinook/sec)
 "Ea" = (
-/obj/structure/sign/directions/engineering{
-	dir = 1;
-	pixel_x = 28
-	},
 /turf/open/floor/almayer{
 	dir = 4;
 	icon_state = "silver";
@@ -13503,9 +13475,6 @@
 /area/adminlevel/chinook/cargo)
 "TC" = (
 /obj/structure/closet/crate,
-/obj/structure/sign/fire{
-	pixel_y = 25
-	},
 /turf/open/floor/almayer{
 	icon_state = "cargo";
 	tag = "icon-bluecorner (NORTH)"

@@ -3,7 +3,7 @@
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "ab" = (
 /obj/structure/platform{
 	dir = 1
@@ -44,12 +44,12 @@
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached3"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "ag" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached1"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "ah" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 8;
@@ -59,10 +59,10 @@
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "ai" = (
 /turf/open/desert/dirt,
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "aj" = (
 /turf/closed/wall/rock/orange,
 /area/desert_dam/exterior/rock)
@@ -106,12 +106,12 @@
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached14"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "ap" = (
 /turf/open/asphalt/cement_sunbleached{
 	icon_state = "cement_sunbleached15"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "aq" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 4;
@@ -121,7 +121,7 @@
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "ar" = (
 /obj/effect/decal/sand_overlay/sand1{
 	dir = 1;
@@ -131,7 +131,7 @@
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "as" = (
 /obj/effect/decal/sand_overlay/sand1/corner1{
 	dir = 1;
@@ -141,7 +141,7 @@
 /turf/open/asphalt{
 	icon_state = "tile"
 	},
-/area/desert_dam/exterior/valley/valley_dam)
+/area/desert_dam/exterior/valley/valley_bridge)
 "at" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/gm/river/desert/shallow_edge{

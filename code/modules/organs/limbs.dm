@@ -57,6 +57,7 @@
 
 	var/has_stump_icon = FALSE
 	var/image/wound_overlay //Used to save time redefining it every wound update. Doesn't remember anything but the most recently used icon state.
+	var/image/burn_overlay //Ditto but for burns.
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -79,9 +80,12 @@
 	if(mob_owner)
 		owner = mob_owner
 
-	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_[0]")
+	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0")
 	wound_overlay.blend_mode = BLEND_INSET_OVERLAY
 	wound_overlay.color = owner.species.blood_color
+
+	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0")
+	burn_overlay.blend_mode = BLEND_INSET_OVERLAY
 
 	forceMove(mob_owner)
 
@@ -646,7 +650,15 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /obj/limb/proc/update_overlays()
-	update_damage_icon_part()
+	var/brutestate = copytext(damage_state, 1, 2)
+	var/burnstate = copytext(damage_state, 2)
+	if(brutestate != "0")
+		wound_overlay.icon_state = "grayscale_[brutestate]"
+		overlays += wound_overlay
+
+	if(burnstate != "0")
+		burn_overlay.icon_state = "burn_[burnstate]"
+		overlays += burn_overlay
 
 // new damage icon system
 // returns just the brute/burn damage code
@@ -659,18 +671,18 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(burn_dam == 0)
 		tburn = 0
-	else if (burn_dam < (max_damage * 0.25 / 1.5))
+	else if (burn_dam < (max_damage * 0.1667)) //0.25 / 1.5
 		tburn = 1
-	else if (burn_dam < (max_damage * 0.75 / 1.5))
+	else if (burn_dam < (max_damage * 0.5)) //0.75 / 1.5
 		tburn = 2
 	else
 		tburn = 3
 
 	if (brute_dam == 0)
 		tbrute = 0
-	else if (brute_dam < (max_damage * 0.25 / 1.5))
+	else if (brute_dam < (max_damage * 0.1667))
 		tbrute = 1
-	else if (brute_dam < (max_damage * 0.75 / 1.5))
+	else if (brute_dam < (max_damage * 0.5))
 		tbrute = 2
 	else
 		tbrute = 3
@@ -1064,19 +1076,6 @@ This function completely restores a damaged organ to perfect condition.
 			. = TRUE
 			owner.update_med_icon()
 
-
-
-/obj/limb/proc/update_damage_icon_part()
-	var/brutestate = copytext(damage_state, 1, 2)
-	var/burnstate = copytext(damage_state, 2)
-	if(brutestate != "0")
-		wound_overlay.icon_state = "grayscale_[brutestate]"
-		overlays += wound_overlay
-
-	if(burnstate != "0")
-		wound_overlay.icon_state = "burn_[burnstate]"
-		overlays += wound_overlay
-
 ///called when limb is removed or robotized, any ongoing surgery and related vars are reset unless set otherwise.
 /obj/limb/proc/reset_limb_surgeries()
 	owner.incision_depths[name] = SURGERY_DEPTH_SURFACE
@@ -1273,7 +1272,7 @@ This function completely restores a damaged organ to perfect condition.
 				incisions++
 			if(SURGERY_DEPTH_DEEP) //Only the head itself can be cut this deeply.
 				. = "a massive surgical incision"
-	
+
 	switch(incisions)
 		if(1)
 			if(.)
@@ -1290,7 +1289,7 @@ This function completely restores a damaged organ to perfect condition.
 	for(var/zone in list("head", "eyes", "mouth"))
 		if(owner.active_surgeries[zone])
 			.++
-	
+
 	switch(.)
 		if(1)
 			return "an incomplete surgical operation"

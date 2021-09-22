@@ -135,13 +135,8 @@
 				var/confirm = alert("Are you sure you want to self-destruct the Almayer?", "Self-Destruct", "Yes", "Cancel")
 				if(confirm != "Yes")
 					return
-
-				if(!EvacuationAuthority.initiate_self_destruct(1))
-					to_chat(usr, SPAN_WARNING("You are unable to trigger the self-destruct right now!"))
-					return
-				if(alert("Are you sure you want to destroy the Almayer right now?",, "Yes", "Cancel") == "Cancel") return
-
 				message_staff("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME].")
+				EvacuationAuthority.trigger_self_destruct()
 
 			if("toggle_dest")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_SELF_DESTRUCT_DENY

@@ -88,6 +88,7 @@
 	icon_state = "syndishuttle"
 	shuttle_tag = "Distress"
 	unacidable = TRUE
+	density = TRUE
 
 /obj/structure/machinery/computer/shuttle_control/ert/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]

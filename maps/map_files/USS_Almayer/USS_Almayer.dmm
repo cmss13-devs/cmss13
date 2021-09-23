@@ -17913,6 +17913,7 @@
 /area/shuttle/drop2/sulaco)
 "bdQ" = (
 /obj/structure/machinery/computer/security/dropship/two,
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -17920,6 +17921,7 @@
 /area/shuttle/drop2/sulaco)
 "bdR" = (
 /obj/structure/machinery/computer/shuttle_control/dropship2/onboard,
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -17934,6 +17936,7 @@
 	pixel_x = 11;
 	pixel_y = 16
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -17993,6 +17996,7 @@
 	pixel_x = -10;
 	pixel_y = 16
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -18000,6 +18004,7 @@
 /area/shuttle/drop1/sulaco)
 "bed" = (
 /obj/structure/machinery/computer/shuttle_control/dropship1/onboard,
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -18014,6 +18019,7 @@
 	pixel_x = 11;
 	pixel_y = 16
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"

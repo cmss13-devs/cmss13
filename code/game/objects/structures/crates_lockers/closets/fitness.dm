@@ -65,6 +65,7 @@
 	desc = "It's a storage unit for laser tag equipment."
 	icon_state = "blue"
 	icon_closed = "blue"
+	icon_opened = "white_open"
 
 /obj/structure/closet/lasertag/blue/Initialize()
 	. = ..()

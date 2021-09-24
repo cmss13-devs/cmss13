@@ -24,7 +24,7 @@
 	desc = "It's a storage unit for things that have no right being here."
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
-	icon_opened = "syndicate1open"
+	icon_opened = "syndicate1_open"
 	anchored = 0
 
 /obj/structure/closet/gimmick/russian
@@ -32,7 +32,7 @@
 	desc = "It's a storage unit for Russian standard-issue surplus."
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
-	icon_opened = "syndicate1open"
+	icon_opened = "syndicate1_open"
 
 /obj/structure/closet/gimmick/russian/Initialize()
 	. = ..()
@@ -53,7 +53,7 @@
 	desc = "It's a storage unit for Tacticool gear."
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
-	icon_opened = "syndicate1open"
+	icon_opened = "syndicate1_open"
 
 /obj/structure/closet/gimmick/tacticool/Initialize()
 	. = ..()
@@ -76,7 +76,7 @@
 	desc = "Everything you need!"
 	icon_state = "syndicate"
 	icon_closed = "syndicate"
-	icon_opened = "syndicateopen"
+	icon_opened = "syndicate_open"
 	anchored = 1
 /obj/structure/closet/thunderdome/tdred
 	name = "red-team Thunderdome closet"
@@ -103,7 +103,7 @@
 	name = "green-team Thunderdome closet"
 	icon_state = "syndicate1"
 	icon_closed = "syndicate1"
-	icon_opened = "syndicate1open"
+	icon_opened = "syndicate1_open"
 
 /obj/structure/closet/thunderdome/tdgreen/Initialize()
 	. = ..()

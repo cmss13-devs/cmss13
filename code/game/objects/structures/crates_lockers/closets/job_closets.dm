@@ -60,6 +60,7 @@
 	desc = "It's a storage unit for courtroom apparel and items."
 	icon_state = "blue"
 	icon_closed = "blue"
+	icon_opened = "blue_open"
 
 /obj/structure/closet/lawcloset/Initialize()
 	. = ..()

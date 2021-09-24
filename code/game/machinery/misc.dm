@@ -212,7 +212,9 @@ var/list/alldepartments = list()
 	updateUsrDialog()
 
 /obj/structure/machinery/faxmachine/attackby(obj/item/O as obj, mob/user as mob)
-
+	if(inoperable())
+		to_chat(user, SPAN_NOTICE("You try to use it ,but it appears to be unpowered!"))
+		return //needs power to open unless it was forced
 	if(istype(O, /obj/item/paper))
 		if(!tofax)
 			user.drop_inv_item_to_loc(O, src)
@@ -304,6 +306,25 @@ proc/SendFax(var/sent, var/sentname, var/mob/Sender, var/dpt)
 					P.update_icon()
 
 					playsound(F.loc, "sound/items/polaroid1.ogg", 15, 1)
+
+/obj/structure/machinery/faxmachine/verb/eject_id()
+	set category = "Object"
+	set name = "Eject ID Card"
+	set src in view(1)
+
+	if(!usr || usr.stat || usr.lying)	return
+
+	if(ishuman(usr) && scan)
+		to_chat(usr, "You remove \the [scan] from \the [src].")
+		scan.forceMove(get_turf(src))
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(scan)
+		scan = null
+		authenticated = FALSE
+	else
+		to_chat(usr, "There is nothing to remove from \the [src].")
+	return
+
 
 /obj/structure/machinery/computer3/server
 	name			= "server"

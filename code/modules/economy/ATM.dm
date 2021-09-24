@@ -42,6 +42,9 @@ log transactions
 	spark_system.attach(src)
 
 /obj/structure/machinery/atm/attackby(obj/item/I as obj, mob/user as mob)
+	if(inoperable())
+		to_chat(user, SPAN_NOTICE("You try to use it ,but it appears to be unpowered!"))
+		return //so it doesnt brazil IDs when unpowered
 	if(istype(I, /obj/item/card))
 		var/obj/item/card/id/idcard = I
 		if(!held_card)
@@ -429,7 +432,23 @@ log transactions
 	if(ishuman(human_user) && !human_user.get_active_hand())
 		human_user.put_in_hands(held_card)
 	held_card = null
+/obj/structure/machinery/atm/verb/eject_id()
+	set category = "Object"
+	set name = "Eject ID Card"
+	set src in view(1)
 
+	if(!usr || usr.stat || usr.lying)	return
+
+	if(ishuman(usr) && held_card)
+		to_chat(usr, "You remove \the [held_card] from \the [src].")
+		held_card.forceMove(get_turf(src))
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(held_card)
+		held_card = null
+		authenticated_account = null
+	else
+		to_chat(usr, "There is nothing to remove from \the [src].")
+	return
 
 /obj/structure/machinery/atm/proc/spawn_ewallet(var/sum, loc, mob/living/carbon/human/human_user as mob)
 	var/obj/item/spacecash/ewallet/E = new /obj/item/spacecash/ewallet(loc)

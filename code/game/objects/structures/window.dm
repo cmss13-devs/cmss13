@@ -247,6 +247,11 @@
 	if(W.flags_item & NOBLUDGEON) return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && !not_deconstructable)
+		if(!anchored)
+			var/turf/open/T = loc
+			if(!(istype(T) && T.allow_construction))
+				to_chat(user, SPAN_WARNING("[src] must be fastened on a proper surface!"))
+				return
 		if(reinf && state >= 1)
 			state = 3 - state
 			playsound(loc, 'sound/items/Screwdriver.ogg', 25, 1)

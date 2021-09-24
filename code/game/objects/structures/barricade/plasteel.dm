@@ -163,6 +163,10 @@
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
 					return
+				var/turf/open/T = loc
+				if(!(istype(T) && T.allow_construction))
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),
 				SPAN_NOTICE("You secure [src]'s anchor bolts."))

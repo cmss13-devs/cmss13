@@ -52,6 +52,10 @@
 	if(AC)
 		to_chat(user, SPAN_WARNING("You can't construct the table here!"))
 		return
+	var/turf/open/OT = user.loc
+	if(!(istype(OT) && OT.allow_construction))
+		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		return
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))
 		return
@@ -174,6 +178,10 @@
 
 /obj/item/frame/rack/attack_self(mob/user)
 	..()
+	var/turf/open/OT = user.loc
+	if(!(istype(OT) && OT.allow_construction))
+		to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+		return
 
 	if(istype(get_area(loc), /area/shuttle))  //HANGAR/SHUTTLE BUILDING
 		to_chat(user, SPAN_WARNING("No. This area is needed for the dropship."))

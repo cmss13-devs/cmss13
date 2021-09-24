@@ -67,6 +67,10 @@ obj/structure/windoor_assembly/Destroy()
 
 			//Wrenching an unsecure assembly anchors it in place. Step 4 complete
 			if(HAS_TRAIT(W, TRAIT_TOOL_WRENCH) && !anchored)
+				var/turf/open/T = loc
+				if(!(istype(T) && T.allow_construction))
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				user.visible_message("[user] secures the windoor assembly to the floor.", "You start to secure the windoor assembly to the floor.")
 

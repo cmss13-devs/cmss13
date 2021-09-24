@@ -469,6 +469,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	density = FALSE
 	disassemble_time = 0.75 SECONDS
 	handheld_type = /obj/item/defenses/handheld/sentry/mini
+	composite_icon = FALSE
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

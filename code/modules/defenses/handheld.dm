@@ -108,6 +108,7 @@
 	obj_health_max = 150
 	deployment_time = 0.75 SECONDS
 
+
 // FLAMER BASE AND UPGRADES
 /obj/item/defenses/handheld/sentry/flamer
 	name = "handheld UA 42-F sentry flamer"

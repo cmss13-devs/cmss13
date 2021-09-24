@@ -464,6 +464,14 @@ div.notice {
     float: left;
 }
 
+.fixedLeftLongText {
+	width: 260px;
+	float: left;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
 .floatRight {
     float: right;
 }

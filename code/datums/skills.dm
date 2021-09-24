@@ -892,7 +892,7 @@ UNITED PROGRESSIVE PEOPLES
 	)
 
 /datum/skills/upp/SL
-	name = "UPP Leader"
+	name = "UPP Squad Leader"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,

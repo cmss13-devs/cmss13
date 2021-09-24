@@ -176,6 +176,10 @@
 					if(B != src && B.dir == dir)
 						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
+				var/turf/open/T = loc
+				if(!(istype(T) && T.allow_construction))
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),

@@ -98,12 +98,14 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 
 	//list of stuff we do NOT want to be pulled inside
 	var/list/forbidden_atoms = list(
+		/obj/structure/airlock_assembly,
 		/obj/structure/barricade,
 		/obj/structure/machinery/defenses,
 		/obj/structure/machinery/m56d_post,
-		/obj/structure/barricade,
 		/obj/structure/machinery/cm_vending,
 		/obj/structure/machinery/vending,
+		/obj/structure/window,
+		/obj/structure/windoor_assembly,
 	)
 
 	var/wall_ram_damage = 30

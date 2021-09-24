@@ -848,9 +848,6 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// Predators
 		if(isYautja(H))
 			continue
-		// Survivors can't be found at ground (until we code remote access to local systems for Almayer)
-		if(H.faction == FACTION_SURVIVOR && is_ground_level(H.loc.z))
-			continue
 		// Check for a uniform
 		var/obj/item/clothing/under/C = H.w_uniform
 		if(!C || !istype(C))
@@ -861,6 +858,11 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
 		// Check if z-level is correct
 		var/turf/pos = get_turf(H)
+		if(!pos)
+			continue
+		// Survivors can't be found at ground (until we code remote access to local systems for Almayer)
+		if(H.faction == FACTION_SURVIVOR && is_ground_level(pos.z))
+			continue
 
 		// The entry for this human
 		var/list/entry = list(
@@ -890,7 +892,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			)
 
 		// Location
-		if (pos && (C.sensor_mode >= SENSOR_COORDS))
+		if (C.sensor_mode >= SENSOR_COORDS)
 			if(is_mainship_level(pos.z))
 				entry["side"] = "Almayer"
 			var/area/A = get_area(H)

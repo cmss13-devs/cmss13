@@ -63,7 +63,7 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
-		arm_equipment(H, "UPP Leader", TRUE, TRUE)
+		arm_equipment(H, "UPP Squad Leader", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an officer of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 	else if(medics < max_medics)
 		medics++

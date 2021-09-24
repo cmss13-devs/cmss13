@@ -196,7 +196,7 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 //*************************************
 //--------------CARGO TECH-------------
 //*************************************/
-/datum/job/logistics/tech/cargo/whiskey
+/datum/job/logistics/cargo/whiskey
 	title = JOB_WO_REQUISITION
 	supervisors = "the bunker crew master and the quartermaster"
 	selection_class = "job_bunker_crew"

@@ -1,5 +1,4 @@
-//Cargo Tech. Don't ask why this is in engineering
-/datum/job/logistics/tech/cargo
+/datum/job/logistics/cargo
 	title = JOB_CARGO_TECH
 	total_positions = 2
 	spawn_positions = 2
@@ -11,10 +10,10 @@
 	gear_preset = "USCM Cargo Technician (CT)"
 	entry_message_body = "Your job is to dispense supplies to the marines, including weapon attachments. Stay in your department when possible to ensure the marines have full access to the supplies they may require. Listen to the radio in case someone requests a supply drop via the overwatch system."
 
-/datum/job/logistics/tech/cargo/set_spawn_positions(var/count)
+/datum/job/logistics/cargo/set_spawn_positions(var/count)
 	spawn_positions = ct_slot_formula(count)
 
-/datum/job/logistics/tech/cargo/get_total_positions(var/latejoin = 0)
+/datum/job/logistics/cargo/get_total_positions(var/latejoin = 0)
 	var/positions = spawn_positions
 	if(latejoin)
 		positions = ct_slot_formula(get_total_marines())
@@ -28,4 +27,4 @@
 
 /obj/effect/landmark/start/cargo
 	name = JOB_CARGO_TECH
-	job = /datum/job/logistics/tech/cargo
+	job = /datum/job/logistics/cargo

@@ -153,8 +153,6 @@
 	else
 		//copied from human_defense.dm - human defence code should really be refactored some time.
 		if (ishuman(L))
-			user.lastattacked = L	//are these used at all, if we have logs?
-			L.lastattacker = user
 
 			if(!target_zone) //shouldn't ever happen
 				L.visible_message(SPAN_DANGER("<B>[user] misses [L] with \the [src]!"))

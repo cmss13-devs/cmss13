@@ -29,9 +29,7 @@
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
 	var/damageoverlaytemp = 0
 	var/computer_id = null //to track the players
-	var/lastattacker = null
-	var/lastattacked = null
-	var/attack_log = list( )
+	var/list/attack_log = list( )
 	var/atom/movable/interactee //the thing that the mob is currently interacting with (e.g. a computer, another mob (stripping a mob), manning a hmg)
 	var/sdisabilities = 0	//Carbon
 	var/disabilities = 0	//Carbon
@@ -153,11 +151,6 @@
 	var/status_flags = CANKNOCKDOWN|CANPUSH|STATUS_FLAGS_DEBILITATE	//bitflags defining which status effects can be inflicted (replaces canweaken, canstun, etc)
 
 	var/area/lastarea = null
-
-	var/list/radar_blips = list() // list of screen objects, radar blips
-	var/radar_open = 0 	// nonzero is radar is open
-
-
 	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
 
 	//Whether or not mobs can understand other mobtypes. These stay in /mob so that ghosts can hear everything.
@@ -188,8 +181,6 @@
 							// only left click, shift click, right click, and middle click
 
 	var/datum/cause_data/last_damage_data // for tracking whatever damaged us last
-
-	var/ambience_playing = FALSE
 
 	var/noclip = FALSE
 

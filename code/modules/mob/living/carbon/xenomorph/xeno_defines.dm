@@ -292,7 +292,7 @@
 	// So don't even bother trying updating UI here without large refactors
 
 // Removes the xeno from the hive
-/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X, var/hard=FALSE)
+/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X, var/hard=FALSE, light_mode = FALSE)
 	if(!X || !istype(X))
 		return
 
@@ -322,9 +322,9 @@
 	else if(X.tier == 3)
 		tier_3_xenos -= X
 
-	// At least UI updates when xenos are removed are safe
-	hive_ui.update_xeno_counts()
-	hive_ui.xeno_removed(X)
+	if(!light_mode)
+		hive_ui.update_xeno_counts()
+		hive_ui.xeno_removed(X)
 
 /datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
 	if(M == null)
@@ -382,16 +382,18 @@
 	hive_ui.update_xeno_keys()
 	return TRUE
 
-/datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
+/datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno, light_mode = FALSE)
 	if(!istype(xeno) || !IS_XENO_LEADER(xeno))
 		return FALSE
 
 	var/leader_num = GET_XENO_LEADER_NUM(xeno)
 
 	xeno_leader_list[leader_num] = null
-	xeno.hive_pos = NORMAL_XENO
-	xeno.handle_xeno_leader_pheromones()
-	xeno.hud_update() // To remove leader star
+
+	if(!light_mode) // Don't run side effects during deletions. Better yet, replace all this by signals someday
+		xeno.hive_pos = NORMAL_XENO
+		xeno.handle_xeno_leader_pheromones()
+		xeno.hud_update() // To remove leader star
 
 	// Need to maintain ascending order of open_xeno_leader_positions
 	for (var/i in 1 to queen_leader_limit)
@@ -399,7 +401,9 @@
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
 
-	hive_ui.update_xeno_keys()
+	if(!light_mode)
+		hive_ui.update_xeno_keys()
+
 	return TRUE
 
 /datum/hive_status/proc/replace_hive_leader(var/mob/living/carbon/Xenomorph/original, var/mob/living/carbon/Xenomorph/replacement)

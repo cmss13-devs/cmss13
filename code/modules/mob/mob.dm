@@ -1,38 +1,52 @@
-/mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
+/mob/Destroy()
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
 	GLOB.alive_mob_list -= src
 	GLOB.player_list -= src
 
-	item_verbs = null
-	luminosity_sources = null
+	ghostize(FALSE)
 
-	if(mind)
+	item_verbs = null
+	control_object = null
+
+	if(mind) // Means ghostize failed for some reason
 		if(mind.current == src)
 			mind.current = null
 		if(mind.original == src)
 			mind.original = null
+		mind = null
 
-	QDEL_NULL(hud_used)
+	QDEL_NULL(skills)
+	QDEL_NULL_LIST(actions)
+	QDEL_NULL_LIST(viruses)
+	resistances?.Cut()
+	QDEL_LIST_ASSOC_VAL(implants)
 
-	if(open_uis)
-		for(var/datum/nanoui/ui in open_uis)
-			ui.close()
-			qdel(ui)
-		open_uis = null
+	. = ..()
 
-	interactee = null
-
-	last_damage_data = null
-
-	QDEL_NULL(mob_panel)
-
-	if(implants)
-		QDEL_NULL_LIST(implants)
-
-	ghostize()
 	clear_fullscreens()
-	return ..()
+	QDEL_NULL(mob_panel)
+	QDEL_NULL_LIST(open_uis)
+
+	tgui_open_uis = null
+	buckled = null
+	skincmds = null
+	item_verbs = null
+	interactee = null
+	faction_group = null
+	lastarea = null
+	langchat_listeners = null
+	langchat_image = null
+	languages = null
+	last_damage_data = null
+	listed_turf = null
+	tile_contents = null
+	hud_list = null
+	attack_log = null
+	item_verbs = null
+	luminosity_sources = null
+
+
 
 /mob/Initialize()
 	if(!faction_group)

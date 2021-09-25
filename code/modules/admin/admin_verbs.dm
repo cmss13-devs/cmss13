@@ -63,6 +63,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/rerun_decorators,
 	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
+	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
 	/client/proc/enable_podlauncher

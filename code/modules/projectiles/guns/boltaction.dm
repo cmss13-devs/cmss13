@@ -60,38 +60,46 @@
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 /obj/item/weapon/gun/boltaction/unique_action(mob/M)
-    if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
-        to_chat(M, SPAN_DANGER("You can't recycle the bolt again right now."))
-        return
-    if(!bolted)
-        close_bolt(M)
-        recent_cycle = world.time
-    else
-        open_bolt(M)
+	if(world.time < (recent_cycle + bolt_delay) )  //Don't spam it.
+		to_chat(M, SPAN_DANGER("You can't cycle the bolt again right now."))
+		return
 
-/obj/item/weapon/gun/boltaction/proc/close_bolt(mob/user)
-    to_chat(user, SPAN_DANGER("You close the bolt of [src]!"))
-    playsound(get_turf(src), open_bolt_sound, 15, TRUE, 1)
-    load_into_chamber()
-    bolted = TRUE
-    update_icon()
+	bolted = !bolted
 
-/obj/item/weapon/gun/boltaction/proc/open_bolt(mob/user)
-    to_chat(user, SPAN_DANGER("You open the bolt of [src]!"))
-    playsound(get_turf(src), close_bolt_sound, 75, TRUE, 1)
-    in_chamber = null
-    bolted = FALSE
-    update_icon()
+	if(bolted)
+		to_chat(M, SPAN_DANGER("You close the bolt of [src]!"))
+		playsound(get_turf(src), open_bolt_sound, 15, TRUE, 1)
+		ready_in_chamber()
+		recent_cycle = world.time
+	else
+		to_chat(M, SPAN_DANGER("You open the bolt of [src]!"))
+		playsound(get_turf(src), close_bolt_sound, 65, TRUE, 1)
+		unload_chamber(M)
+
+	update_icon()
 
 /obj/item/weapon/gun/boltaction/able_to_fire(mob/user)
-    . = ..()
+	. = ..()
 
-    if(!.) return
-    if(!bolted)
-        to_chat(user, SPAN_WARNING("The bolt is still open, you can't fire [src]."))
-        return FALSE
+	if(. && !bolted)
+		to_chat(user, SPAN_WARNING("The bolt is still open, you can't fire [src]."))
+		return FALSE
 
-    return 
+/obj/item/weapon/gun/boltaction/load_into_chamber(mob/user)
+	return in_chamber
 
 /obj/item/weapon/gun/boltaction/reload_into_chamber(mob/user)
-    return TRUE // Literally do nothing.
+	in_chamber = null
+	return TRUE
+
+/obj/item/weapon/gun/boltaction/cock(mob/user)
+	return
+	
+/obj/item/weapon/gun/boltaction/replace_magazine(mob/user, obj/item/ammo_magazine/magazine) //mostly standard but without the cock-and-load if unchambered.
+	user.drop_inv_item_to_loc(magazine, src) //Click!
+	current_mag = magazine
+	replace_ammo(user,magazine)
+	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
+		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
+	if(reload_sound)
+		playsound(user, reload_sound, 25, 1, 5)

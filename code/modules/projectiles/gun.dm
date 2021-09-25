@@ -23,6 +23,8 @@
 	flags_item = TWOHANDED
 
 	var/accepted_ammo = list()
+	///Determines what kind of bullet is created when the gun is unloaded - used to match rounds to magazines. Set automatically when reloading.
+	var/caliber
 	var/muzzle_flash 	= "muzzle_flash"
 	 ///muzzle flash brightness
 	var/muzzle_flash_lum = 3
@@ -240,7 +242,7 @@
 			update_icon()
 		else
 			current_mag = new current_mag(src, spawn_empty? 1:0)
-			ammo = current_mag.default_ammo ? GLOB.ammo_list[current_mag.default_ammo] : GLOB.ammo_list[/datum/ammo/bullet] //Latter should never happen, adding as a precaution.
+			replace_ammo(null, current_mag)
 	else ammo = GLOB.ammo_list[ammo] //If they don't have a mag, they fire off their own thing.
 
 	set_gun_attachment_offsets()
@@ -731,9 +733,16 @@
 /obj/item/weapon/gun/proc/replace_ammo(mob/user = null, var/obj/item/ammo_magazine/magazine)
 	if(!magazine.default_ammo)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A1: null ammo while reloading.")
-		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b>")
+		log_debug("ERROR CODE A1: null ammo while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")
 		ammo = GLOB.ammo_list[/datum/ammo/bullet] //Looks like we're defaulting it.
-	else ammo = GLOB.ammo_list[magazine.default_ammo]
+	else
+		ammo = GLOB.ammo_list[magazine.default_ammo]
+	if(!magazine.caliber)
+		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A2: null calibre while reloading.")
+		log_debug("ERROR CODE A2: null calibre while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")	
+		caliber = "bugged calibre"
+	else
+		caliber = magazine.caliber
 
 //Hardcoded and horrible
 /obj/item/weapon/gun/proc/cock_gun(mob/user)
@@ -798,8 +807,9 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 		ready_in_chamber()
 		cock_gun(user)
 	user.visible_message(SPAN_NOTICE("[user] loads [magazine] into [src]!"),
-	SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
-	if(reload_sound) playsound(user, reload_sound, 25, 1, 5)
+		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
+	if(reload_sound)
+		playsound(user, reload_sound, 25, 1, 5)
 
 
 //Drop out the magazine. Keep the ammo type for next time so we don't need to replace it every time.
@@ -825,6 +835,23 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 
 	update_icon()
 
+///Unload a chambered round, if one exists, and empty the chamber.
+/obj/item/weapon/gun/proc/unload_chamber(mob/user)
+	if(!in_chamber)
+		return
+	var/found_handful
+	for(var/obj/item/ammo_magazine/handful/H in user.loc)
+		if(H.default_ammo == in_chamber.ammo.type && H.caliber == caliber && H.current_rounds < H.max_rounds)
+			found_handful = TRUE
+			H.current_rounds++
+			H.update_icon()
+			break
+	if(!found_handful)
+		var/obj/item/ammo_magazine/handful/new_handful = new(get_turf(src))
+		new_handful.generate_handful(in_chamber.ammo.type, caliber, 8, 1, type)
+
+	in_chamber = null
+
 //Manually cock the gun
 //This only works on weapons NOT marked with UNUSUAL_DESIGN or INTERNAL_MAG
 /obj/item/weapon/gun/proc/cock(mob/user)
@@ -838,20 +865,7 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	if(in_chamber)
 		user.visible_message(SPAN_NOTICE("[user] cocks [src], clearing a [in_chamber.name] from its chamber."),
 		SPAN_NOTICE("You cock [src], clearing a [in_chamber.name] from its chamber."), null, 4, CHAT_TYPE_COMBAT_ACTION)
-		if(current_mag)
-			var/found_handful
-			for(var/obj/item/ammo_magazine/handful/H in user.loc)
-				if(H.default_ammo == current_mag.default_ammo && H.caliber == current_mag.caliber && H.current_rounds < H.max_rounds)
-					found_handful = TRUE
-					H.current_rounds++
-					H.update_icon()
-					break
-			if(!found_handful)
-				var/obj/item/ammo_magazine/handful/new_handful = new /obj/item/ammo_magazine/handful
-				new_handful.generate_handful(current_mag.default_ammo, current_mag.caliber, 8, 1, type)
-				new_handful.forceMove(get_turf(src))
-
-		in_chamber = null
+		unload_chamber(user)
 	else
 		user.visible_message(SPAN_NOTICE("[user] cocks [src]."),
 		SPAN_NOTICE("You cock [src]."), null, 4, CHAT_TYPE_COMBAT_ACTION)
@@ -968,7 +982,7 @@ and you're good to go.
 /obj/item/weapon/gun/proc/create_bullet(var/datum/ammo/chambered, var/bullet_source)
 	if(!chambered)
 		to_chat(usr, "Something has gone horribly wrong. Ahelp the following: ERROR CODE I2: null ammo while create_bullet()")
-		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b>")
+		log_debug("ERROR CODE I2: null ammo while create_bullet(). User: <b>[usr]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
 		chambered = GLOB.ammo_list[/datum/ammo/bullet] //Slap on a default bullet if somehow ammo wasn't passed.
 
 	var/weapon_source_mob = null
@@ -1126,8 +1140,8 @@ and you're good to go.
 
 		//Finally, make with the pew pew!
 		if(QDELETED(projectile_to_fire) || !isobj(projectile_to_fire))
-			to_chat(user, "ERROR CODE I1: Gun malfunctionned due to invalid chambered projectile, clearing it. AHELP if this persists.")
-			log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b>")
+			to_chat(user, "ERROR CODE I1: Gun malfunctioned due to invalid chambered projectile, clearing it. AHELP if this persists.")
+			log_debug("ERROR CODE I1: projectile malfunctioned while firing. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[current_mag]</b>")
 			flags_gun_features &= ~GUN_BURST_FIRING
 			in_chamber = null
 			click_empty(user)

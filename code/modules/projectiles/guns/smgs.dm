@@ -425,3 +425,6 @@
 
 /obj/item/weapon/gun/smg/nailgun/unique_action(mob/user)
 	return //Yeah no.
+
+/obj/item/weapon/gun/smg/nailgun/unload_chamber(mob/user)
+	return //Can't remove nails from mags or gun.

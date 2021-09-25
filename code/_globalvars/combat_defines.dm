@@ -5,6 +5,7 @@ GLOBAL_DATUM_INIT(marine_ranged_stats, /datum/combat_configuration/marine/ranged
 GLOBAL_DATUM_INIT(marine_explosive, /datum/combat_configuration/marine/explosive, new)
 GLOBAL_DATUM_INIT(marine_fire, /datum/combat_configuration/marine/fire, new)
 GLOBAL_DATUM_INIT(marine_organ_damage, /datum/combat_configuration/marine/organ_damage, new)
+GLOBAL_DATUM_INIT(marine_bone_break, /datum/combat_configuration/marine/bone_break, new)
 
 GLOBAL_DATUM_INIT(xeno_general, /datum/combat_configuration/xeno, new)
 GLOBAL_DATUM_INIT(xeno_melee, /datum/combat_configuration/xeno/melee, new)

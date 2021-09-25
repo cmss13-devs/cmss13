@@ -363,7 +363,7 @@ Additional game mode variables.
 		INVOKE_ASYNC(src, .proc/pick_queen_spawn, picked_queens[hive], hive.hivenumber)
 
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
-	if(jobban_isbanned(xeno_candidate, "Alien")) // User is jobbanned
+	if(jobban_isbanned(xeno_candidate, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(xeno_candidate, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return
 	return 1

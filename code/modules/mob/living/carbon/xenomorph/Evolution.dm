@@ -214,7 +214,7 @@
 		to_chat(src, SPAN_WARNING("Nuh-uh."))
 		return FALSE
 
-	if(jobban_isbanned(src, "Alien"))
+	if(jobban_isbanned(src, JOB_XENOMORPH))//~who so genius to do this is?
 		to_chat(src, SPAN_WARNING("You are jobbanned from aliens and cannot evolve. How did you even become an alien?"))
 		return FALSE
 

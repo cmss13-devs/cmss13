@@ -228,7 +228,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 	for(var/i in GLOB.observer_list)
 		var/mob/dead/observer/O = i
 		// Jobban check
-		if(!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, "Alien"))
+		if(!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, JOB_XENOMORPH))
 			continue
 
 		//players that can still be revived are skipped

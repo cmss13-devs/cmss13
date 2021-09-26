@@ -1480,9 +1480,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/central_ring)
 "aNP" = (
@@ -2724,9 +2722,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/security)
 "bBX" = (
@@ -8016,9 +8012,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
 "eYi" = (
@@ -17736,15 +17730,6 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/fiorina/oob)
-"kPB" = (
-/obj/structure/stairs/perspective{
-	icon_state = "p_stair_ew_full_cap"
-	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
-/turf/open/floor/plating/prison,
-/area/fiorina/station/medbay)
 "kPC" = (
 /obj/structure/stairs/perspective{
 	dir = 8;
@@ -19005,9 +18990,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/chapel)
 "lEp" = (
@@ -23841,6 +23824,13 @@
 	icon_state = "yellow"
 	},
 /area/fiorina/station/disco)
+"oAm" = (
+/obj/structure/stairs/perspective{
+	icon_state = "p_stair_ew_full_cap"
+	},
+/obj/structure/platform/stair_cut/alt,
+/turf/open/floor/plating/prison,
+/area/fiorina/station/medbay)
 "oAv" = (
 /obj/item/reagent_container/food/drinks/cans/waterbottle,
 /turf/open/floor/prison,
@@ -24517,12 +24507,6 @@
 	tag = "icon-sterile_white (SOUTHWEST)"
 	},
 /area/fiorina/station/medbay)
-"oYB" = (
-/obj/structure/machinery/door/airlock/prison_hatch/autoname{
-	dir = 1
-	},
-/turf/closed/wall/prison,
-/area/fiorina/maintenance)
 "oYH" = (
 /obj/structure/monorail{
 	name = "launch track"
@@ -25192,9 +25176,7 @@
 	},
 /area/fiorina/tumor/ice_lab)
 "pwg" = (
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
@@ -27106,9 +27088,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/flight_deck)
 "qDi" = (
@@ -29335,9 +29315,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/civres_blue)
 "rTR" = (
@@ -29478,9 +29456,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/park)
 "rZi" = (
@@ -35697,9 +35673,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/botany)
 "vUv" = (
@@ -37983,9 +37957,7 @@
 /obj/structure/stairs/perspective{
 	icon_state = "p_stair_ew_full_cap"
 	},
-/obj/structure/platform/stair_cut{
-	dir = 1
-	},
+/obj/structure/platform/stair_cut/alt,
 /turf/open/floor/plating/prison,
 /area/fiorina/station/disco)
 "xrJ" = (
@@ -61545,14 +61517,14 @@ tel
 ioM
 ioM
 ioM
-kPB
+oAm
 vQN
 ioM
 ioM
 ioM
 ioM
 ioM
-kPB
+oAm
 vMh
 vMh
 vQN
@@ -61565,7 +61537,7 @@ ioM
 ioM
 ioM
 ioM
-kPB
+oAm
 vMh
 vMh
 vQN
@@ -61969,7 +61941,7 @@ ioM
 ioM
 ioM
 ioM
-kPB
+oAm
 vQN
 ioM
 hVI
@@ -62511,7 +62483,7 @@ uGM
 uGM
 uGM
 lzX
-oYB
+liA
 cME
 cME
 cME
@@ -72568,7 +72540,7 @@ hah
 xlp
 ofy
 mvl
-kPB
+oAm
 vMh
 xFe
 cPI

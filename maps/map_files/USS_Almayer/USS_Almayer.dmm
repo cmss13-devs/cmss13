@@ -79538,7 +79538,7 @@
 	pixel_y = 32
 	},
 /turf/open/floor/wood/ship,
-/area/space)
+/area/almayer/medical/medical_science)
 "wom" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -83911,7 +83911,7 @@
 	icon_state = "red";
 	tag = "icon-red (WEST)"
 	},
-/area/space)
+/area/almayer/hallways/starboard_hallway)
 "yiC" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/flora/pottedplant{

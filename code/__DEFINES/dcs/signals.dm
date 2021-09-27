@@ -252,6 +252,8 @@
 #define COMSIG_ITEM_DROPPED "item_drop"
 /// From base of /obj/item/proc/equipped(): (mob/user, slot)
 #define COMSIG_ITEM_EQUIPPED "item_equipped"
+/// From base of /obj/item/proc/unequipped(): (mob/user, slot)
+#define COMSIG_ITEM_UNEQUIPPED "item_unequipped"
 ///from /obj/item/proc/unwield
 #define COMSIG_ITEM_UNWIELD "item_unwield"
 /// From base of /obj/item/proc/attack_self(): (mob/user)

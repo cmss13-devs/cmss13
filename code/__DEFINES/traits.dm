@@ -169,5 +169,5 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
  ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
- ///Status trait coming from worn clothing
-#define TRAIT_SOURCE_CLOTHING "t_s_clothing"
+ ///Status trait coming from equipment
+#define TRAIT_SOURCE_EQUIPMENT(slot) "t_s_equipment_[slot]"

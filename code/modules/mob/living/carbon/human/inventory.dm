@@ -444,7 +444,42 @@
 		if(WEAR_LEGCUFFS)
 			return legcuffed
 
-
+/mob/living/carbon/human/get_slot_by_item(obj/item/I)
+	if(I == back)
+		return WEAR_BACK
+	if(I == wear_mask)
+		return WEAR_FACE
+	if(I == belt)
+		return WEAR_WAIST
+	if(I == wear_id)
+		return WEAR_ID
+	if(I == wear_l_ear)
+		return WEAR_L_EAR
+	if(I == wear_r_ear)
+		return WEAR_R_EAR
+	if(I == glasses)
+		return WEAR_EYES
+	if(I == gloves)
+		return WEAR_HANDS
+	if(I == head)
+		return WEAR_HEAD
+	if(I == shoes)
+		return WEAR_FEET
+	if(I == wear_suit)
+		return WEAR_JACKET
+	if(I == w_uniform)
+		return WEAR_BODY
+	if(I == l_store)
+		return WEAR_L_STORE
+	if(I == r_store)
+		return WEAR_R_STORE
+	if(I == s_store)
+		return WEAR_J_STORE
+	if(I == handcuffed)
+		return WEAR_HANDCUFFS
+	if(I == legcuffed)
+		return WEAR_LEGCUFFS
+	return ..()
 
 
 

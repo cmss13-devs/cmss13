@@ -139,7 +139,7 @@
 				if(HAS_TRAIT(src, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
 					attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(M)] while they were infected and nested</B></font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(src)] while they were infected and nested</B></font>")
-					msg_admin_ff("[key_name(M)] slashed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+					message_staff("[key_name(M)] slashed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 				else //Host might be rogue, needs further investigation
 					attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)] while they were infected</font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)] while they were infected</font>")

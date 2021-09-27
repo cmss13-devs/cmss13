@@ -35,9 +35,14 @@
 			if(C.prefs.toggles_chat & CHAT_NICHELOGS)
 				to_chat(C, msg)
 
-/proc/msg_admin_ff(var/text)
+/proc/msg_admin_ff(var/text, var/alive = TRUE)
+	var/rendered
+	if(alive)
+		rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> <font color=#00FF00><b>[text]</b></font>") //I used <font> because I never learned html correctly, fix this if you want
+	else
+		rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> <font color=#FFA500><b>[text]</b></font>")
+		text = "///DEAD/// - " + text
 	log_attack(text) //Do everything normally BUT IN GREEN SO THEY KNOW
-	var/rendered = SPAN_COMBAT("<span class=\"prefix\">ATTACK:</span> <font color=#00ff00><b>[text]</b></font>") //I used <font> because I never learned html correctly, fix this if you want
 	for(var/client/C in GLOB.admins)
 		if(C && C.admin_holder && (R_MOD & C.admin_holder.rights))
 			if(C.prefs.toggles_chat & CHAT_FFATTACKLOGS)

@@ -308,7 +308,11 @@
 				M.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
 
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
-				msg_admin_ff("[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) (<a href='?priv_msg=\ref[firing_mob.client]'>PM</a>)")
+				var/ff_msg = "[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP LOC</a>) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[location_of_mob.x];Y=[location_of_mob.y];Z=[location_of_mob.z]'>JMP SRC</a>) (<a href='?priv_msg=\ref[firing_mob.client]'>PM</a>)"
+				var/ff_living = TRUE
+				if(M.stat == DEAD)
+					ff_living = FALSE
+				msg_admin_ff(ff_msg, ff_living)
 
 				if(ishuman(firing_mob))
 					var/mob/living/carbon/human/H = firing_mob

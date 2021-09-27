@@ -140,6 +140,7 @@
 	buildstacktype = 0
 	unslashable = TRUE
 	unacidable = TRUE
+	buckling_sound = 'sound/effects/metal_close.ogg'
 	var/is_animating = 0
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair

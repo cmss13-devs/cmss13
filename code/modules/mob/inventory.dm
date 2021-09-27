@@ -129,7 +129,7 @@
 
 	if((I.flags_item & NODROP) && !force)
 		return FALSE //u_equip() only fails if item has NODROP
-
+	var/slot = get_slot_by_item(I)
 	if (I == r_hand)
 		r_hand = null
 		update_inv_r_hand()
@@ -145,6 +145,7 @@
 			I.forceMove(newloc)
 		else
 			I.forceMove(newloc)
+	I.unequipped(src, slot)
 	I.dropped(src)
 	if(I.unequip_sounds.len)
 		playsound_client(client, pick(I.unequip_sounds), null, ITEM_EQUIP_VOLUME)
@@ -356,3 +357,10 @@
 //returns the item in a given slot
 /mob/proc/get_item_by_slot(slot_id)
 	return
+
+//Returns the slot occupied by a given item.
+/mob/proc/get_slot_by_item(obj/item/I)
+	if(I == l_hand)
+		return WEAR_L_HAND
+	if(I == r_hand)
+		return WEAR_R_HAND

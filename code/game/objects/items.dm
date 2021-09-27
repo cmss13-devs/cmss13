@@ -356,6 +356,12 @@ cases. Override_icon_state should be a list.*/
 
 	appearance_flags |= NO_CLIENT_COLOR //So that saturation/desaturation etc. effects don't hit inventory.
 
+// Called after the item is removed from equipment slot.
+/obj/item/proc/unequipped(mob/user, slot)
+	SHOULD_CALL_PARENT(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_ITEM_UNEQUIPPED, user, slot)
+
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(mob/user, slot)
 	return TRUE

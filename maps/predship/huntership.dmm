@@ -1942,8 +1942,8 @@
 /area/yautja)
 "is" = (
 /obj/structure/kitchenspike,
-/obj/item/reagent_container/food/snacks/xenomeat,
-/obj/item/reagent_container/food/snacks/xenomeat,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
+/obj/item/reagent_container/food/snacks/sliceable/xenomeatbread,
 /turf/open/floor{
 	dir = 8;
 	icon_state = "darkred2"

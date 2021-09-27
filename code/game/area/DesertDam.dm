@@ -709,6 +709,11 @@
 	icon_state = "valley_west"
 	is_resin_allowed = FALSE
 
+// Generic bridge used in nightmare inserts... Can in fact be different places (sigh)
+/area/desert_dam/exterior/valley/valley_bridge
+	name = "Valley Bridge"
+	icon_state = "valley"
+
 //Away from LZ
 
 /area/desert_dam/exterior/valley/valley_labs

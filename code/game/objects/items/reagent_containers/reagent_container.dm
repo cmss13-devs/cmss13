@@ -7,6 +7,7 @@
 	w_class = SIZE_SMALL
 	throw_speed = SPEED_FAST
 	throw_range = 5
+	attack_speed = 3
 	var/amount_per_transfer_from_this = 5
 	var/possible_transfer_amounts = list(5,10,15,25,30)
 	var/volume = 30

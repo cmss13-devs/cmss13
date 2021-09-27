@@ -74,18 +74,16 @@
 
 
 /obj/structure/machinery/reagentgrinder/attackby(obj/item/O, mob/living/user)
-	if(istype(O,/obj/item/reagent_container/glass) || \
-		istype(O,/obj/item/reagent_container/food/drinks/drinkingglass) || \
-		istype(O,/obj/item/reagent_container/food/drinks/shaker))
-
-		if(beaker)
-			return 1
-		else
-			beaker =  O
-			user.drop_inv_item_to_loc(O, src)
-			update_icon()
-			updateUsrDialog()
-			return 0
+	if(istype(O,/obj/item/reagent_container/glass) || istype(O,/obj/item/reagent_container/food/drinks/drinkingglass) || istype(O,/obj/item/reagent_container/food/drinks/shaker))
+		var/obj/item/old_beaker = beaker
+		beaker = O
+		user.drop_inv_item_to_loc(O, src)
+		if(old_beaker)
+			to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [O]."))
+			user.put_in_hands(old_beaker)
+		update_icon()
+		updateUsrDialog()
+		return 0
 
 	if(holdingitems && holdingitems.len >= limit)
 		to_chat(user, SPAN_WARNING("The machine cannot hold anymore items."))
@@ -204,29 +202,27 @@
 			if("juice")
 				juice()
 			if("eject")
-				eject()
+				eject(user)
 			if("detach")
-				detach()
+				detach(user)
 			if("connect")
 				connect_smartfridge()
 	updateUsrDialog()
 	return
 
-/obj/structure/machinery/reagentgrinder/proc/detach()
-
-	if(usr.stat != 0)
+/obj/structure/machinery/reagentgrinder/proc/detach(mob/user)
+	if(user.is_mob_incapacitated())
 		return
 	if(!beaker)
 		return
-	beaker.forceMove(loc)
+	user.put_in_hands(beaker)
 	beaker = null
 	update_icon()
 
-/obj/structure/machinery/reagentgrinder/proc/eject()
-
-	if(usr.stat != 0)
+/obj/structure/machinery/reagentgrinder/proc/eject(mob/user)
+	if(user.is_mob_incapacitated())
 		return
-	if(holdingitems && holdingitems.len == 0)
+	if(!length(holdingitems))
 		return
 
 	for(var/obj/item/O in holdingitems)

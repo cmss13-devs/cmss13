@@ -4,10 +4,8 @@
 	icon_state = "signaller"
 	item_state = "signaller"
 	matter = list("metal" = 1000, "glass" = 200, "waste" = 100)
-
 	wires = WIRE_ASSEMBLY_RECEIVE|WIRE_ASSEMBLY_PULSE|WIRE_RADIO_PULSE|WIRE_RADIO_RECEIVE
-
-	secured = 1
+	secured = TRUE
 
 	var/code = 30
 	var/frequency = 1457

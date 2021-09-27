@@ -3,10 +3,9 @@
 	desc = "A small electronic device able to ignite combustable substances."
 	icon_state = "igniter"
 	matter = list("metal" = 500, "glass" = 50, "waste" = 10)
-
-	heat_source = 1000 //Can ignite Thermite.
-	secured = 1
 	wires = WIRE_ASSEMBLY_RECEIVE
+	secured = FALSE
+	heat_source = 1000 //Can ignite Thermite.
 
 /obj/item/device/assembly/igniter/activate()
 	if(!..())

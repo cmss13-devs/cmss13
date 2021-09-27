@@ -15,6 +15,7 @@
 	throwforce = 2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 10
+	attack_speed = 3
 
 
 	var/secured = 1

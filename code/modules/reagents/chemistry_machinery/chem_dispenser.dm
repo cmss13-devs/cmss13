@@ -151,18 +151,20 @@
 	attack_hand(usr)
 	return TRUE // update UIs attached to this object
 
-/obj/structure/machinery/chem_dispenser/attackby(var/obj/item/reagent_container/B as obj, var/mob/user as mob)
+/obj/structure/machinery/chem_dispenser/attackby(obj/item/reagent_container/B, mob/user)
 	if(isrobot(user))
-		return
-	if(src.beaker)
-		to_chat(user, "Something is already loaded into the machine.")
 		return
 	if(istype(B, /obj/item/reagent_container/glass) || istype(B, /obj/item/reagent_container/food))
 		if(!accept_glass && istype(B,/obj/item/reagent_container/food))
 			to_chat(user, SPAN_NOTICE("This machine only accepts beakers"))
 		if(user.drop_inv_item_to_loc(B, src))
-			beaker =  B
-			to_chat(user, "You set [B] on the machine.")
+			var/obj/item/old_beaker = beaker
+			beaker = B
+			if(old_beaker)
+				to_chat(user, SPAN_NOTICE("You swap out \the [old_beaker] for \the [B]."))
+				user.put_in_hands(old_beaker)
+			else
+				to_chat(user, SPAN_NOTICE("You set \the [B] on the machine."))
 			nanomanager.update_uis(src) // update all UIs attached to src
 		return
 

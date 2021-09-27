@@ -10,8 +10,9 @@
 	var/max_positions = -1 //Maximum number allowed in a squad. Defaults to infinite
 	var/color = 0 //Color for helmets, etc.
 	var/list/access = list() //Which special access do we grant them
-	var/usable = 0	 //Is it a valid squad?
-	var/no_random_spawn = 0 //Stop players from spawning into the squad
+	var/roundstart = TRUE /// Whether this squad can be picked at roundstart
+	var/usable = FALSE	 //Is it a valid squad?
+	var/omni_squad_vendor = FALSE /// Can use any squad vendor regardless of squad connection
 	var/max_engineers = 3 //maximum # of engineers allowed in squad
 	var/max_medics = 4 //Ditto, squad medics
 	var/max_specialists = 1
@@ -55,35 +56,37 @@
 	name = SQUAD_NAME_1
 	color = 1
 	access = list(ACCESS_MARINE_ALPHA)
-	usable = 1
+	usable = TRUE
 	radio_freq = ALPHA_FREQ
 
 /datum/squad/bravo
 	name = SQUAD_NAME_2
 	color = 2
 	access = list(ACCESS_MARINE_BRAVO)
-	usable = 1
+	usable = TRUE
 	radio_freq = BRAVO_FREQ
 
 /datum/squad/charlie
 	name = SQUAD_NAME_3
 	color = 3
 	access = list(ACCESS_MARINE_CHARLIE)
-	usable = 1
+	usable = TRUE
 	radio_freq = CHARLIE_FREQ
 
 /datum/squad/delta
 	name = SQUAD_NAME_4
 	color = 4
 	access = list(ACCESS_MARINE_DELTA)
-	usable = 1
+	usable = TRUE
 	radio_freq = DELTA_FREQ
 
 /datum/squad/echo
 	name = SQUAD_NAME_5
 	color = 5
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
-	usable = 0	//Normally not usable
+	usable = TRUE
+	roundstart = FALSE
+	omni_squad_vendor = TRUE
 	radio_freq = ECHO_FREQ
 
 /datum/squad/New()
@@ -266,6 +269,13 @@
 	if(paygrade)
 		C.paygrade = paygrade
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
+
+	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(M.wear_l_ear, M.wear_r_ear)
+	if(headset)
+		headset.set_frequency(radio_freq)
+	M.update_inv_head()
+	M.update_inv_wear_suit()
+	M.update_inv_gloves()
 	return 1
 
 //proc used by the overwatch console to transfer marine to another squad

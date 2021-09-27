@@ -503,7 +503,6 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 
-/* Echo squad cryo support, planned, but not yet implemented. Uncomment when needed.
 /obj/item/device/radio/headset/almayer/marine/echo
 	name = "marine echo radio headset"
 	desc = "This is used by Echo squad members. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
@@ -512,8 +511,8 @@
 
 /obj/item/device/radio/headset/almayer/marine/echo/lead
 	name = "marine echo leader radio headset"
-	desc = "This is used by the marine Echo squad leader. Channels are as follows: :v - marine command. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/squadlead
+	desc = "This is used by the marine Echo squad leader. Channels are as follows: :v - marine command, :j - JTAC. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/squadlead)
 	volume = RADIO_VOLUME_CRITICAL
 
 /obj/item/device/radio/headset/almayer/marine/echo/rto
@@ -525,13 +524,12 @@
 /obj/item/device/radio/headset/almayer/marine/echo/engi
 	name = "marine echo engineer radio headset"
 	desc = "This is used by the marine Echo combat engineers. To access the engineering channel, use :e. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/engi
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/echo/med
 	name = "marine echo medic radio headset"
 	desc = "This is used by the marine Echo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
-	keyslot2 = new /obj/item/device/encryptionkey/med
-*/
+	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
 //*************************************
 //-----SELF SETTING MARINE HEADSET-----

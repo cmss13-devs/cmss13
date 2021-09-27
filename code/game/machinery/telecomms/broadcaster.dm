@@ -260,6 +260,8 @@
 			part_a = "<span class='charlieradio'><span class='name'>"
 		else if (display_freq == DELTA_FREQ)
 			part_a = "<span class='deltaradio'><span class='name'>"
+		else if (display_freq == ECHO_FREQ)
+			part_a = "<span class='echoradio'><span class='name'>"
 
 		// If all else fails and it's a dept_freq, color me purple!
 		else if (display_freq in DEPT_FREQS)

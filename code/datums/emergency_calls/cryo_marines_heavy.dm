@@ -14,6 +14,13 @@
 	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_cryo
 	shuttle_id = ""
 
+	var/leaders = 0
+
+/datum/emergency_call/cryo_squad_equipped/spawn_candidates(announce)
+	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
+	leaders = echo_squad.num_leaders
+	return ..()
+
 /datum/emergency_call/cryo_squad_equipped/create_member(datum/mind/M)
 	set waitfor = 0
 	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
@@ -26,8 +33,10 @@
 	M.transfer_to(H, TRUE)
 
 	sleep(5)
-	if(!leader)
+	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
+	if(leaders < echo_squad.max_leaders)
 		leader = H
+		leaders++
 		arm_equipment(H, "USCM Cryo Squad Leader (Equipped)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Squad leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
@@ -58,14 +67,10 @@
 	sleep(10)
 	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
 
-	RoleAuthority.randomize_squad(H)
+	echo_squad.put_marine_in_squad(H, H.wear_id)
+	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
 	H.sec_hud_set_ID()
 	H.hud_set_squad()
-
-	// Have to add radio headsets AFTER squad assignment, because the self-setting headset depends on things set in randomize_squad
-	// which also depend on things set in arm_equipment
-	// which doesn't just arm equipment, but sets a bunch of other important things . Who knew?
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(H), WEAR_L_EAR)
 
 	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 

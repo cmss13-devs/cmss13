@@ -565,7 +565,7 @@ var/global/marines_assigned = 0
 
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.usable)
+		if (S.roundstart && S.usable)
 			mixed_squads += S
 
 	var/datum/squad/lowest = pick(mixed_squads)
@@ -637,7 +637,7 @@ var/global/marines_assigned = 0
 		switch(H.job)
 			if("Squad Engineer")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_engineers >= S.max_engineers) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us, no more searching needed.
@@ -650,7 +650,7 @@ var/global/marines_assigned = 0
 
 			if("Squad Medic")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_medics >= S.max_medics) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -663,7 +663,7 @@ var/global/marines_assigned = 0
 
 			if("Squad Leader")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_leaders >= S.max_leaders) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -676,7 +676,7 @@ var/global/marines_assigned = 0
 
 			if("Squad Specialist")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_specialists >= S.max_specialists) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -689,7 +689,7 @@ var/global/marines_assigned = 0
 
 			if("Squad RT Operator")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_rto >= S.max_rto) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -702,7 +702,7 @@ var/global/marines_assigned = 0
 
 			if("Squad Smartgunner")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_smartgun >= S.max_smartgun) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.

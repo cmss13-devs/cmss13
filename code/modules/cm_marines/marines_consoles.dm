@@ -622,7 +622,7 @@
 					return
 				var/isXenos = isXeno(G.grabbed_thing)
 				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scaned, please stay close until operation's end."]\"")
+				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 				// No Xeno Squads, please!
 				if(!isXenos)
@@ -651,7 +651,7 @@
 	else
 		var/isXenos = isXeno(user)
 		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scaned, please stay close until operation's end."]\"")
+		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		// No Xeno Squads, please!
 		if(!isXenos)

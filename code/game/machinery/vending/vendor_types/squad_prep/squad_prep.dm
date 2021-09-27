@@ -188,25 +188,21 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 /obj/structure/machinery/cm_vending/clothing/marine/alpha
 	squad_tag = SQUAD_NAME_1
 	req_access = list(ACCESS_MARINE_ALPHA)
-	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha
 
 /obj/structure/machinery/cm_vending/clothing/marine/bravo
 	squad_tag = SQUAD_NAME_2
 	req_access = list(ACCESS_MARINE_BRAVO)
-	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo
 
 /obj/structure/machinery/cm_vending/clothing/marine/charlie
 	squad_tag = SQUAD_NAME_3
 	req_access = list(ACCESS_MARINE_CHARLIE)
-	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie
 
 /obj/structure/machinery/cm_vending/clothing/marine/delta
 	squad_tag = SQUAD_NAME_4
 	req_access = list(ACCESS_MARINE_DELTA)
-	gloves_type = /obj/item/clothing/gloves/marine/delta
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta
 
 //------------SQUAD PREP UNIFORM VENDOR---------------
@@ -228,12 +224,13 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M276 Pattern M39 Holster Rig", 10, /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M44 Holster Rig", 10, /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Shotgun Shell Loading Rig", 10, /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
-		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
-		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
 		list("Marine Radio Headset", 10, /obj/item/device/radio/headset/almayer, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Black Combat Gloves", 10, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
 		list("Shotgun Scabbard", 5, /obj/item/storage/large_holster/m37, VENDOR_ITEM_REGULAR),
-		list("USCM Uniform", 20, /obj/item/clothing/under/marine, VENDOR_ITEM_REGULAR),
 		list("USCM Satchel", 10, /obj/item/storage/backpack/marine/satchel, VENDOR_ITEM_REGULAR),
+		list("USCM Uniform", 20, /obj/item/clothing/under/marine, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR", -1, null, null),
 		list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
@@ -267,11 +264,12 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M276 Pattern M44 Holster Rig", 10, /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Shotgun Shell Loading Rig", 10, /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
 		list("Marine Alpha Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/alpha, VENDOR_ITEM_REGULAR),
-		list("Marine Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Black Combat Gloves", 10, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
 		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
 		list("Shotgun Scabbard", 5, /obj/item/storage/large_holster/m37, VENDOR_ITEM_REGULAR),
-		list("USCM Uniform", 20, /obj/item/clothing/under/marine, VENDOR_ITEM_REGULAR),
 		list("USCM Satchel", 10, /obj/item/storage/backpack/marine/satchel, VENDOR_ITEM_REGULAR),
+		list("USCM Uniform", 20, /obj/item/clothing/under/marine, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR", -1, null, null),
 		list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
@@ -303,7 +301,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M276 Pattern M44 Holster Rig", 10, /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Shotgun Shell Loading Rig", 10, /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
 		list("Marine Bravo Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/bravo, VENDOR_ITEM_REGULAR),
-		list("Marine Bravo Squad Gloves", 10, /obj/item/clothing/gloves/marine/bravo, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Black Combat Gloves", 10, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
 		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
 		list("Shotgun Scabbard", 5, /obj/item/storage/large_holster/m37, VENDOR_ITEM_REGULAR),
 		list("USCM Satchel", 10, /obj/item/storage/backpack/marine/satchel, VENDOR_ITEM_REGULAR),
@@ -339,7 +338,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 		list("M276 Pattern M44 Holster Rig", 10, /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Shotgun Shell Loading Rig", 10, /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
 		list("Marine Charlie Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/charlie, VENDOR_ITEM_REGULAR),
-		list("Marine Charlie Squad Gloves", 10, /obj/item/clothing/gloves/marine/charlie, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Black Combat Gloves", 10, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
 		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
 		list("Shotgun Scabbard", 5, /obj/item/storage/large_holster/m37, VENDOR_ITEM_REGULAR),
 		list("USCM Satchel", 10, /obj/item/storage/backpack/marine/satchel, VENDOR_ITEM_REGULAR),
@@ -369,15 +369,16 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 	listed_products = list(
 		list("UNIFORM", -1, null, null),
 		list("Lightweight IMP Backpack", 10, /obj/item/storage/backpack/marine, VENDOR_ITEM_REGULAR),
-		list("M276 Knife Rig", 5, /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
-		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
-		list("Delta Squad Gloves", 10, /obj/item/clothing/gloves/marine/delta, VENDOR_ITEM_REGULAR),
-		list("Marine Delta Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/delta, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Ammo Load Rig", 10, /obj/item/storage/belt/marine, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern General Pistol Holster Rig", 10, /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M39 Holster Rig", 10, /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern M44 Holster Rig", 10, /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Pattern Shotgun Shell Loading Rig", 10, /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
+		list("M276 Knife Rig", 5, /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
+		list("Marine Delta Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/delta, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Black Combat Gloves", 10, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Boots", 20, /obj/item/clothing/shoes/marine, VENDOR_ITEM_REGULAR),
 		list("Shotgun Scabbard", 5, /obj/item/storage/large_holster/m37, VENDOR_ITEM_REGULAR),
 		list("USCM Satchel", 10, /obj/item/storage/backpack/marine/satchel, VENDOR_ITEM_REGULAR),
 		list("USCM Uniform", 20, /obj/item/clothing/under/marine, VENDOR_ITEM_REGULAR),

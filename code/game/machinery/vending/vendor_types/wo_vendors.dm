@@ -40,11 +40,7 @@
 		list("Marine Delta Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/delta, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES", -1, null, null),
-		list("Marine Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, VENDOR_ITEM_REGULAR),
-		list("Marine Bravo Squad Gloves", 10, /obj/item/clothing/gloves/marine/bravo, VENDOR_ITEM_REGULAR),
-		list("Marine Charlie Squad Gloves", 10, /obj/item/clothing/gloves/marine/charlie, VENDOR_ITEM_REGULAR),
-		list("Marine Delta Squad Gloves", 10, /obj/item/clothing/gloves/marine/delta, VENDOR_ITEM_REGULAR),
-		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 40, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR", -1, null, null),
 		list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),

@@ -528,11 +528,8 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES", -1, null, null),
-		list("Marine Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, VENDOR_ITEM_REGULAR),
-		list("Marine Bravo Squad Gloves", 10, /obj/item/clothing/gloves/marine/bravo, VENDOR_ITEM_REGULAR),
-		list("Marine Charlie Squad Gloves", 10, /obj/item/clothing/gloves/marine/charlie, VENDOR_ITEM_REGULAR),
-		list("Marine Delta Squad Gloves", 10, /obj/item/clothing/gloves/marine/delta, VENDOR_ITEM_REGULAR),
-		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 40, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Black Combat Gloves", 40, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
 
 		list("MASKS (Choose 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
@@ -543,6 +540,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Bravo Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/bravo, VENDOR_ITEM_REGULAR),
 		list("Charlie Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/charlie, VENDOR_ITEM_REGULAR),
 		list("Delta Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/delta, VENDOR_ITEM_REGULAR),
+		list("Echo Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/echo, VENDOR_ITEM_REGULAR),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, VENDOR_ITEM_REGULAR),
 		list("Tactics Radio Encryption Key", 5, /obj/item/device/encryptionkey/tactics, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 5, /obj/item/device/encryptionkey/jtac, VENDOR_ITEM_REGULAR),

@@ -51,6 +51,13 @@
 			return "ME1"
 	return paygrade
 
+/datum/equipment_preset/uscm/pfc/echo
+	name = "USCM Echo Squad Marine (PFC)"
+
+/datum/equipment_preset/uscm/pfc/echo/load_gear(mob/living/carbon/human/H)
+	..()
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle
@@ -98,6 +105,13 @@
 		backItem = /obj/item/storage/backpack/marine
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+/datum/equipment_preset/uscm/sg/echo
+	name = "USCM Echo Smartgunner"
+
+/datum/equipment_preset/uscm/sg/echo/load_gear(mob/living/carbon/human/H)
+	..()
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
 
 //*****************************************************************************************************/
 
@@ -198,6 +212,13 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/specrag(H), WEAR_HEAD)
 
+/datum/equipment_preset/uscm/spec/echo
+	name = "USCM Echo Squad Specialist"
+
+/datum/equipment_preset/uscm/spec/echo/load_gear(mob/living/carbon/human/H)
+	..()
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/spec/full_armor
@@ -245,6 +266,13 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
+/datum/equipment_preset/uscm/medic/echo
+	name = "USCM Echo Squad Medic"
+
+/datum/equipment_preset/uscm/medic/echo/load_gear(mob/living/carbon/human/H)
+	..()
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/med(H), WEAR_L_EAR)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/rto
@@ -264,6 +292,13 @@
 		backItem = /obj/item/storage/backpack/marine
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+
+/datum/equipment_preset/uscm/rto/echo
+	name = "USCM Echo Squad RT Operator"
+
+/datum/equipment_preset/uscm/rto/echo/load_gear(mob/living/carbon/human/H)
+	..()
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/rto(H), WEAR_L_EAR)
 
 /*****************************************************************************************************/
 
@@ -287,6 +322,13 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
+/datum/equipment_preset/uscm/engineer/echo
+	name = "USCM Echo Squad Engineer"
+
+/datum/equipment_preset/uscm/engineer/echo/load_gear(mob/living/carbon/human/H)
+	..()
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/engi(H), WEAR_L_EAR)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/leader
@@ -308,6 +350,12 @@
 
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
+/datum/equipment_preset/uscm/leader/echo
+	name = "USCM Echo Squad Leader"
+
+/datum/equipment_preset/uscm/leader/echo/load_gear(mob/living/carbon/human/H)
+	..()
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/lead(H), WEAR_L_EAR)
 
 
 //*****************************************************************************************************/
@@ -333,6 +381,7 @@
 /datum/equipment_preset/uscm/private_equipped/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
@@ -367,6 +416,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/leader(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/lead(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/leader(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
@@ -404,13 +454,13 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/self_setting(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/attachments(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 	//Backup SMG Weapon
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
 
 //*****************************************************************************************************/
 
@@ -432,6 +482,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/engineer(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/tech(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/engi(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/engineerpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
@@ -469,6 +520,7 @@
 /datum/equipment_preset/uscm/medic_equipped/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/medic(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/medic(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/med(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/medium(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine(H), WEAR_BACK)
 	if(prob(50))
@@ -516,6 +568,7 @@
 	H.equip_to_slot_or_del(new /obj/item/attachable/magnetic_harness(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/spec_kit, WEAR_R_HAND)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/magazine/large/pmc_m39(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/flare/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
@@ -536,6 +589,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m42_night_goggles(H), WEAR_EYES)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/ghillie(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/ghillie(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smock(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/large_holster/m39/full(H), WEAR_WAIST)
@@ -572,6 +626,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/vp78(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/rto(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/rto(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/rto(src), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(src), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/satchel/rto(H), WEAR_BACK)

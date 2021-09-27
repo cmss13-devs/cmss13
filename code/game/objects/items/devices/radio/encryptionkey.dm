@@ -32,7 +32,7 @@
 	name = "AI Integrated Encryption Key"
 	desc = "Integrated encryption key"
 	icon_state = "cap_key"
-	channels = list("Almayer" = 1, "Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "JTAC" = 1, "Tactics" = 1)
+	channels = list("Almayer" = 1, "Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, SQUAD_NAME_5 = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/engi
 	name = "Engineering Radio Encryption Key"
@@ -52,7 +52,7 @@
 /obj/item/device/encryptionkey/ce
 	name = "Chief Engineer's Encryption Key"
 	icon_state = "ce_key"
-	channels = list("Engi" = 1, "Command" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0)
+	channels = list("Engi" = 1, "Command" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, SQUAD_NAME_5 = 0)
 
 /obj/item/device/encryptionkey/cmo
 	name = "Chief Medical Officer's Encryption Key"
@@ -67,7 +67,7 @@
 /obj/item/device/encryptionkey/ro
 	name = "Requisition Officer's Encryption Key"
 	icon_state = "ce_key"
-	channels = list("Req" = 1, "Command" = 1, "Engi" = 0, "MedSci" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0)
+	channels = list("Req" = 1, "Command" = 1, "Engi" = 0, "MedSci" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, SQUAD_NAME_5 = 0)
 
 /obj/item/device/encryptionkey/req
 	name = "Supply Radio Encryption Key"
@@ -77,33 +77,33 @@
 /obj/item/device/encryptionkey/req/ct
 	name = "Supply Radio Encryption Key"
 	icon_state = "req_key"
-	channels = list("Req" = 1, "Command" = 0, "Engi" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0)
+	channels = list("Req" = 1, "Command" = 0, "Engi" = 0, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, SQUAD_NAME_5 = 0)
 
 /obj/item/device/encryptionkey/mmpo
 	name = "\improper Military Police Radio Encryption Key"
 	icon_state = "sec_key"
-	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1,)
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, SQUAD_NAME_5 = 1, "Engi" = 1, "MedSci" = 1,)
 
 //MARINE ENCRYPTION KEYS
 
 /obj/item/device/encryptionkey/cmpcom
 	name = "\improper Marine Chief MP Radio Encryption Key"
 	icon_state = "cmp_key"
-	channels = list("Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0)
+	channels = list("Command" = 1, "MP" = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, SQUAD_NAME_5 = 0)
 
 /obj/item/device/encryptionkey/cmpcom/cdrcom
 	name = "\improper Marine Senior Command Radio Encryption Key"
-	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, SQUAD_NAME_5 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/mcom
 	name = "\improper Marine Command Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
+	channels = list("Command" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, SQUAD_NAME_5 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/mcom/cl
 	name = "\improper Corporate Liaison radio encryption key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "WY" = 1)
+	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, SQUAD_NAME_5 = 0, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "WY" = 1)
 
 /obj/item/device/encryptionkey/mcom/rep
 	name = "\improper Representative radio encryption key"
@@ -113,15 +113,15 @@
 /obj/item/device/encryptionkey/po
 	name = "\improper Marine Pilot Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "JTAC" = 1, "Tactics" = 1)
+	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, SQUAD_NAME_5 = 0, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/io
 	name = "\improper Marine Intelligence Officer Radio Encryption Key"
 	icon_state = "cap_key"
-	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, "Tactics" = 1)
+	channels = list("Command" = 1, SQUAD_NAME_1 = 0, SQUAD_NAME_2 = 0, SQUAD_NAME_3 = 0, SQUAD_NAME_4 = 0, SQUAD_NAME_5 = 0, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/mcom/ai //AI only.
-	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, SQUAD_NAME_5 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1)
 
 /obj/item/device/encryptionkey/jtac
 	name = "\improper JTAC Radio Encryption Key"
@@ -167,12 +167,10 @@
 	icon_state = "wy_key"
 	channels = list("WY" = 1)
 
-/* For cryo-squad, to be implemented
 /obj/item/device/encryptionkey/echo
-	name = "\improper [SQUAD_NAME_5] Squad Radio Encryption Key"
+	name = "\improper Echo Squad Radio Encryption Key"
 	icon_state = "echo_key"
 	channels = list(SQUAD_NAME_5 = 1)
-*/
 
 //ERT, PMC
 
@@ -205,4 +203,4 @@
 /obj/item/device/encryptionkey/highcom
 	name = "\improper USCM High Command Radio Encryption Key"
 	icon_state = "binary_key"
-	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "HighCom" = 1)
+	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, SQUAD_NAME_5 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "HighCom" = 1)

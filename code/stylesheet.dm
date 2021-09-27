@@ -53,6 +53,7 @@ em						{font-style: normal;	font-weight: bold;}
 .bravoradio				{color: #C68610;}
 .charlieradio			{color: #AA55AA;}
 .deltaradio				{color: #007FCF;}
+.echoradio				{color: #3EB489;}
 
 .medium					{					font-size: 2}
 .big					{					font-size: 2}

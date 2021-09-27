@@ -209,7 +209,7 @@
 			var/list/L = listed_products[H.faction][idx]
 			var/cost = L[2]
 
-			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
+			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
 				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
 				vend_fail()
 				return

@@ -21,6 +21,13 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	var/adopts_squad_color = TRUE
+
+/obj/item/clothing/gloves/marine/get_mob_overlay(mob/living/carbon/human/H, slot)
+	var/image/ret = ..()
+	if(adopts_squad_color && slot == WEAR_HANDS && istype(H) && H.assigned_squad)
+		ret.overlays += glovemarkings[H.assigned_squad.color]
+	return ret
 
 /obj/item/clothing/gloves/marine/insulated
 	name = "marine insulated gloves"
@@ -29,45 +36,9 @@
 	item_state = "lightbrowngloves"
 	siemens_coefficient = 0
 
-/obj/item/clothing/gloves/marine/alpha
-	name = "alpha squad gloves"
-	icon_state = "red"
-	item_state = "redgloves"
-
-/obj/item/clothing/gloves/marine/alpha/insulated
-	name = "insulated alpha squad gloves"
-	desc = "Insulated marine tactical gloves that protects against electrical shocks."
-	siemens_coefficient = 0
-
-/obj/item/clothing/gloves/marine/bravo
-	name = "bravo squad gloves"
-	icon_state = "yellow"
-	item_state = "ygloves"
-
-/obj/item/clothing/gloves/marine/bravo/insulated
-	name = "insulated bravo squad gloves"
-	desc = "Insulated marine tactical gloves that protects against electrical shocks."
-	siemens_coefficient = 0
-
-/obj/item/clothing/gloves/marine/charlie
-	name = "charlie squad gloves"
-	icon_state = "purple"
-	item_state = "purplegloves"
-
-/obj/item/clothing/gloves/marine/charlie/insulated
-	name = "insulated charlie squad gloves"
-	desc = "Insulated marine tactical gloves that protects against electrical shocks."
-	siemens_coefficient = 0
-
-/obj/item/clothing/gloves/marine/delta
-	name = "delta squad gloves"
-	icon_state = "blue"
-	item_state = "bluegloves"
-
-/obj/item/clothing/gloves/marine/delta/insulated
-	name = "insulated delta squad gloves"
-	desc = "Insulated marine tactical gloves that protects against electrical shocks."
-	siemens_coefficient = 0
+/obj/item/clothing/gloves/marine/black
+	name = "marine black combat gloves"
+	adopts_squad_color = FALSE
 
 /obj/item/clothing/gloves/marine/officer
 	name = "officer gloves"

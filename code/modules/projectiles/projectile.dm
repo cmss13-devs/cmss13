@@ -1002,10 +1002,12 @@
 
 	var/list/mobs_list = list() //Let's built a list of mobs on the bullet turf and grab one.
 	for(var/mob/living/L in src)
-		if(L in P.permutated) continue
-		mobs_list += L
+		if(L in P.permutated)
+			continue
+		if(prob(L.get_projectile_hit_chance(P)))
+			mobs_list += L
 
-	if(mobs_list.len)
+	if(length(mobs_list))
 		var/mob/living/picked_mob = pick(mobs_list) //Hit a mob, if there is one.
 		if(istype(picked_mob))
 			picked_mob.bullet_act(P)

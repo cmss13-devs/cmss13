@@ -663,11 +663,25 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		to_chat(src, SPAN_WARNING("The game hasn't started yet!"))
 		return
 
-	var/mob/living/L = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", GLOB.freed_mob_list)
-	if(!L)
+	var/list/mobs_by_role = list() // the list the mobs are assigned to first, for sorting purposes
+	for(var/mob/living/L as anything in GLOB.freed_mob_list)
+		var/role_name = L.get_role_name()
+		if(!role_name)
+			role_name = "No Role"
+		LAZYINITLIST(mobs_by_role[role_name])
+		mobs_by_role[role_name] += L
+
+	var/list/freed_mob_choices = list() // the list we'll be choosing from
+	for(var/role in mobs_by_role)
+		for(var/freed_mob in mobs_by_role[role])
+			freed_mob_choices["[freed_mob] ([role])"] = freed_mob
+
+	var/choice = tgui_input_list(usr, "Pick a Freed Mob:", "Join as Freed Mob", freed_mob_choices)
+	if(!choice)
 		return
 
-	if(!(L in GLOB.freed_mob_list))
+	var/mob/living/L = freed_mob_choices[choice]
+	if(!L || !(L in GLOB.freed_mob_list))
 		return
 
 	if(!istype(L))

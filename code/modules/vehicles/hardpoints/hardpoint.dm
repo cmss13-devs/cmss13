@@ -536,10 +536,20 @@ obj/item/hardpoint/proc/remove_buff(var/obj/vehicle/multitile/V)
 
 //Returns the image object to overlay onto the root object
 /obj/item/hardpoint/proc/get_icon_image(var/x_offset, var/y_offset, var/new_dir)
-	var/icon_state_suffix = "0"
-	if(health <= 0)
-		icon_state_suffix = "1"
-	return image(icon = disp_icon, icon_state = "[disp_icon_state]_[icon_state_suffix]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	var/is_broken = health <= 0
+	var/image/I = image(icon = disp_icon, icon_state = "[disp_icon_state]_[is_broken ? "1" : "0"]", pixel_x = x_offset, pixel_y = y_offset, dir = new_dir)
+	switch(round((health / initial(health)) * 100))
+		if(0 to 20)
+			I.color = "#4e4e4e"
+		if(21 to 40)
+			I.color = "#6e6e6e"
+		if(41 to 60)
+			I.color = "#8b8b8b"
+		if(61 to 80)
+			I.color = "#bebebe"
+		else
+			I.color = null
+	return I
 
 // debug proc
 /obj/item/hardpoint/proc/set_offsets(var/dir, var/x, var/y)

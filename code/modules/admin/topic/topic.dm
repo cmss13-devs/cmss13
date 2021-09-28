@@ -1378,7 +1378,12 @@
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
+	else if(href_list["customise_paper"])
+		if(!check_rights(R_MOD))
+			return
 
+		var/obj/item/paper/sheet = locate(href_list["customise_paper"])
+		usr.client.customise_paper(sheet)
 
 	else if(href_list["jumpto"])
 		if(!check_rights(R_ADMIN))

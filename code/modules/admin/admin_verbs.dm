@@ -229,6 +229,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/datum/admins/proc/viewUnheardAhelps,
 	/client/proc/view_faxes,
+	/client/proc/create_custom_paper,
 	/client/proc/cmd_admin_change_their_name,
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,

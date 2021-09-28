@@ -238,6 +238,12 @@ var/list/alldepartments = list()
 		to_chat(user, SPAN_NOTICE("You [anchored ? "wrench" : "unwrench"] \the [src]."))
 	return
 
+/obj/structure/machinery/faxmachine/get_vv_options()
+	. = ..()
+	. += "<option value>-----FAX-----</option>"
+	. += "<option value='?_src_=admin_holder;USCMFaxReply=\ref[usr];originfax=\ref[src]'>Send USCM fax message</option>"
+	. += "<option value='?_src_=admin_holder;CLFaxReply=\ref[usr];originfax=\ref[src]'>Send CL fax message</option>"
+
 /proc/Centcomm_fax(var/originfax, var/sent, var/sentname, var/mob/Sender)
 	var/faxcontents = "[sent]"
 	fax_contents += faxcontents

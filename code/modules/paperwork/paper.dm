@@ -135,6 +135,11 @@
 					H.lip_style = null
 					H.update_body()
 
+/obj/item/paper/get_vv_options()
+	. = ..()
+	. += "<option value>-----PAPER-----</option>"
+	. += "<option value='?_src_=admin_holder;customise_paper=\ref[src]'>Customise content</option>"
+
 /obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
 	var/locid = 0
 	var/laststart = 1

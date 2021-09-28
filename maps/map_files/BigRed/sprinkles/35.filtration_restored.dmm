@@ -370,7 +370,10 @@
 /area/bigredv2/outside/filtration_plant)
 "bq" = (
 /obj/structure/window_frame/solaris/reinforced,
-/obj/item/shard,
+/obj/item/shard{
+	icon_state = "small";
+	tag = "icon-small"
+	},
 /turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "br" = (
@@ -416,8 +419,8 @@
 /turf/open/floor,
 /area/bigredv2/outside/filtration_plant)
 "bD" = (
-/obj/structure/window/framed/colony/reinforced/hull,
-/turf/closed/wall/solaris/reinforced,
+/obj/structure/window/framed/solaris/reinforced/hull,
+/turf/open/floor/plating,
 /area/bigredv2/outside/filtration_plant)
 "bE" = (
 /obj/structure/cryofeed/right{

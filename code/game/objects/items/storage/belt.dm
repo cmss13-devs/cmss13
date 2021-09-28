@@ -9,6 +9,8 @@
 	w_class = SIZE_LARGE
 	storage_flags = STORAGE_FLAGS_POUCH
 	cant_hold = list(/obj/item/weapon/melee/throwing_knife)
+	///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
+	var/flap = TRUE
 
 /obj/item/storage/belt/equipped(mob/user, slot)
 	switch(slot)
@@ -20,8 +22,7 @@
 	mouse_opacity = initial(mouse_opacity)
 	..()
 
-///TRUE Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
-/obj/item/storage/belt/update_icon(flap = TRUE)
+/obj/item/storage/belt/update_icon()
 	overlays.Cut()
 	if(!length(contents))
 		return
@@ -178,12 +179,7 @@
 		/obj/item/stack/medical,
 		/obj/item/device/defibrillator/compact
 	)
-	var/has_gamemode_skin = TRUE
-
-/obj/item/storage/belt/medical/lifesaver/Initialize()
-	. = ..()
-	if(has_gamemode_skin)
-		select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/medical/lifesaver/full/fill_preset_inventory()
 	new /obj/item/stack/medical/advanced/bruise_pack(src)
@@ -330,12 +326,7 @@
 		/obj/item/ammo_magazine/rifle,
 		/obj/item/ammo_magazine/smg
 	)
-	var/has_gamemode_skin = TRUE //whether it has a sprite for each gamemode.
-
-/obj/item/storage/belt/marine/Initialize()
-	. = ..()
-	if(has_gamemode_skin)
-		select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/marine/m41a/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -431,15 +422,8 @@
 	max_w_class = SIZE_SMALL
 	max_storage_space = 28
 	can_hold = list(/obj/item/ammo_magazine/handful)
-	var/has_gamemode_skin = TRUE
-
-/obj/item/storage/belt/shotgun/update_icon(flap = FALSE)
-	..()
-
-/obj/item/storage/belt/shotgun/Initialize()
-	. = ..()
-	if(has_gamemode_skin)
-		select_gamemode_skin(type)
+	flap = FALSE
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/shotgun/full/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -483,7 +467,7 @@
 		WEAR_WAIST = "van_bandolier_10"
 		)
 
-/obj/item/storage/belt/shotgun/van_bandolier/update_icon(flap = FALSE)
+/obj/item/storage/belt/shotgun/van_bandolier/update_icon()
 	var/mob/living/carbon/human/user = loc
 	icon_state = "van_bandolier_[round(length(contents) * 0.5, 1)]"
 	var/new_state = "van_bandolier_[length(contents)]"
@@ -524,14 +508,9 @@
 		/obj/item/attachable/bayonet
 	)
 	cant_hold = list()
+	flap = FALSE
 	var/draw_cooldown = 0
 	var/draw_cooldown_interval = 1 SECONDS
-
-/obj/item/storage/belt/knifepouch/update_icon(flap = FALSE)
-	..()
-
-/obj/item/storage/belt/knifepouch/Initialize()
-	. = ..()
 
 /obj/item/storage/belt/knifepouch/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -554,7 +533,7 @@
 		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 	else
 		to_chat(user, SPAN_WARNING("You need to wait before drawing another knife!"))
-		return 0
+		return FALSE
 
 /obj/item/storage/belt/grenade
 	name="\improper M276 pattern M40 Grenade rig"
@@ -622,10 +601,7 @@
 	icon = 'icons/obj/items/clothing/belts.dmi'
 	icon_state="g8pouch"
 	item_state="g8pouch"
-
-/obj/item/storage/sparepouch/Initialize()
-	. = ..()
-	select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/sparepouch/equipped(mob/user, slot)
 	switch(slot)
@@ -669,25 +645,28 @@
 	var/icon_y = 0
 	///Some holsters can take both automatic pistols and the M44 revolver. The M44's sprite does not line up with automatics, and needs some massaging to fit.
 	var/mixed_pistols = FALSE
+	///Used to get flap overlay states as inserting a gun changes icon state.
+	var/base_icon
 	can_hold = list(
 		/obj/item/weapon/gun/pistol,
 		/obj/item/ammo_magazine/pistol
 	)
 
+/obj/item/storage/belt/gun/post_skin_selection()
+	base_icon = icon_state
+
 /obj/item/storage/belt/gun/update_icon()
 	overlays.Cut()
 
-	var/icon_state_text = icon_state
-	if(current_gun)
-		icon_state_text = copytext(icon_state,1,-2)
-	if((!(length(contents) - 1) && current_gun) || (!length(contents) && !current_gun))
-		return
 	if(content_watchers)
 		return
-	else if(length(contents) <= storage_slots * 0.5)
-		overlays += "+[icon_state_text]_half"
+	var/magazines = current_gun ? length(contents) - 1 : length(contents)
+	if(!magazines)
+		return
+	if(magazines <= (storage_slots - 1) * 0.5) //Final slot is reserved for the gun.
+		overlays += "+[base_icon]_half"
 	else
-		overlays += "+[icon_state_text]_full"
+		overlays += "+[base_icon]_full"
 
 /obj/item/storage/belt/gun/Destroy()
 	gun_underlay = null
@@ -791,10 +770,7 @@
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart
 	)
-
-/obj/item/storage/belt/gun/m4a3/Initialize()
-	. = ..()
-	select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/m4a3/full/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
@@ -875,10 +851,7 @@
 		/obj/item/weapon/gun/revolver/m44,
 		/obj/item/ammo_magazine/revolver
 	)
-
-/obj/item/storage/belt/gun/m44/Initialize()
-	. = ..()
-	select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/m44/full/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44(src)
@@ -919,10 +892,7 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. It was included with the mail-order USCM edition of the Mateba autorevolver in the early 2170s."
 	icon_state = "cmateba_holster"
 	item_state = "cmateba_holster"
-
-/obj/item/storage/belt/gun/mateba/cmateba/Initialize()
-	. = ..()
-	select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/mateba/cmateba/full/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/mateba/cmateba(src)
@@ -1038,11 +1008,7 @@
 		/obj/item/weapon/gun/pistol/smart,
 		/obj/item/ammo_magazine/pistol/smart
 	)
-	var/has_gamemode_skin = TRUE
-
-/obj/item/storage/belt/gun/smartpistol/Initialize()
-	. = ..()
-	select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartpistol/full/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/smart(src)
@@ -1137,10 +1103,7 @@
 		/obj/item/ammo_magazine/pistol,
 		/obj/item/ammo_magazine/smartgun
 	)
-
-/obj/item/storage/belt/gun/smartgunner/Initialize()
-	. = ..()
-	select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/gun/smartgunner/full/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/pistol/m4a3(src)
@@ -1173,10 +1136,7 @@
 		/obj/item/mortar_shell
 	)
 	bypass_w_limit = list(/obj/item/mortar_shell)
-
-/obj/item/storage/belt/gun/mortarbelt/Initialize()
-	. = ..()
-	select_gamemode_skin(type)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/souto
 	name = "\improper Souto belt"

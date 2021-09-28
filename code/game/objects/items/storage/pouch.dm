@@ -9,15 +9,16 @@
 	storage_slots = 1
 	storage_flags = STORAGE_FLAGS_POUCH
 	cant_hold = list(/obj/item/weapon/melee/throwing_knife)
+	///If it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
+	var/flap = TRUE
 
-///Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
-/obj/item/storage/pouch/update_icon(flap = TRUE)
+/obj/item/storage/pouch/update_icon()
 	overlays.Cut()
-	if(!contents.len)
+	if(!length(contents))
 		return TRUE //For the pistol pouch to know it's empty.
 	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
-	else if(contents.len <= storage_slots * 0.5)
+	else if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
 		overlays += "+[icon_state]_full"
@@ -220,6 +221,7 @@
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver/m44,/obj/item/weapon/gun/flare)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	flap = FALSE
 
 	///Display code pulled from belt.dm gun belt. Can shave quite a lot off because this pouch can only hold one item at a time.
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
@@ -242,7 +244,7 @@
 	return ..()
 
 
-/obj/item/storage/pouch/pistol/update_icon(flap = FALSE) //The pistol is an underlay, showing the empty sprite would just look ugly. Parent handles holster flap; gun underlay only needs to be updated if the gun changes.
+/obj/item/storage/pouch/pistol/update_icon() //The pistol is an underlay, showing the empty sprite would just look ugly. Parent handles holster flap; gun underlay only needs to be updated if the gun changes.
 	. = ..()
 	if(.) // . = empty pouch
 		if(current_gun) //If the pouch is empty but a gun is recorded, remove its record and the overlay and play a draw sfx.
@@ -383,6 +385,7 @@
 	can_hold = list(
 		/obj/item/ammo_magazine/handful
 	)
+	flap = FALSE
 
 /obj/item/storage/pouch/shotgun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
@@ -398,7 +401,6 @@
 /obj/item/storage/pouch/shotgun/heavyslug/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
-
 
 /obj/item/storage/pouch/shotgun/heavyflechette/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)

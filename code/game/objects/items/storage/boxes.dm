@@ -551,15 +551,12 @@
 	storage_slots = 25
 	max_storage_space = 50
 	can_hold = list(/obj/item/explosive/grenade/HE)
-	var/nade_box_icon
+	var/base_icon
 	var/grenade_type = /obj/item/explosive/grenade/HE
+	has_gamemode_skin = TRUE
 
-/obj/item/storage/box/nade_box/Initialize()
-	. = ..()
-
-	select_gamemode_skin(/obj/item/storage/box/nade_box)
-	nade_box_icon = initial(icon_state)
-	update_icon()
+/obj/item/storage/box/nade_box/post_skin_selection()
+	base_icon = icon_state
 
 /obj/item/storage/box/nade_box/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
@@ -567,10 +564,10 @@
 
 /obj/item/storage/box/nade_box/update_icon()
 	if(!contents.len)
-		icon_state = "[nade_box_icon]_e"
+		icon_state = "[base_icon]_e"
 		qdel(src) //No reason to keep it - nobody will reuse it...
 	else
-		icon_state = nade_box_icon
+		icon_state = base_icon
 
 
 /obj/item/storage/box/nade_box/frag
@@ -582,6 +579,7 @@
 	max_storage_space = 50
 	can_hold = list(/obj/item/explosive/grenade/HE/frag)
 	grenade_type = /obj/item/explosive/grenade/HE/frag
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/airburst
 	name = "\improper M74 AGM-F grenade box"
@@ -592,6 +590,7 @@
 	max_storage_space = 50
 	can_hold = list(/obj/item/explosive/grenade/HE/airburst)
 	grenade_type = /obj/item/explosive/grenade/HE/airburst
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/training
 	name = "\improper M07 training grenade box"
@@ -599,7 +598,7 @@
 	icon_state = "train_nade_placeholder"
 	grenade_type = /obj/item/explosive/grenade/HE/training
 	can_hold = list(/obj/item/explosive/grenade/HE/training)
-
+	has_gamemode_skin = FALSE
 
 /obj/item/storage/box/nade_box/tear_gas
 	name = "\improper M66 tear gas grenade box"
@@ -607,6 +606,7 @@
 	icon_state = "teargas_nade_placeholder"
 	can_hold = list(/obj/item/explosive/grenade/custom/teargas)
 	grenade_type = /obj/item/explosive/grenade/custom/teargas
+	has_gamemode_skin = FALSE
 
 //ITEMS-----------------------------------//
 /obj/item/storage/box/lightstick

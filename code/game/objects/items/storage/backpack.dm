@@ -330,12 +330,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	desc = "The standard-issue pack of the USCM forces. Designed to lug gear into the battlefield."
 	icon_state = "marinepack"
 	item_state = "marinepack"
-	var/has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
-
-/obj/item/storage/backpack/marine/Initialize()
-	. = ..()
-	if(has_gamemode_skin)
-		select_gamemode_skin(type)
+	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 
 /obj/item/storage/backpack/marine/medic
 	name = "\improper USCM medic backpack"
@@ -381,7 +376,10 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	uniform_restricted = list(/obj/item/clothing/under/marine/rto)
 	var/obj/structure/transmitter/internal/internal_transmitter
 
-	var/base_icon_state
+	var/base_icon
+
+/obj/item/storage/backpack/marine/satchel/rto/post_skin_selection()
+	base_icon = icon_state
 
 /obj/item/storage/backpack/marine/satchel/rto/Initialize()
 	. = ..()
@@ -390,7 +388,6 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	internal_transmitter.phone_category = "RTO"
 	internal_transmitter.enabled = FALSE
 
-	base_icon_state = icon_state
 	RegisterSignal(internal_transmitter, COMSIG_TRANSMITTER_UPDATE_ICON, .proc/check_for_ringing)
 
 	LAZYADD(actions, new /datum/action/human_action/activable/droppod())
@@ -408,13 +405,13 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 	if(!internal_transmitter.attached_to \
 		|| internal_transmitter.attached_to.loc != internal_transmitter)
-		icon_state = "[base_icon_state]_ear"
+		icon_state = "[base_icon]_ear"
 		return
 
 	if(internal_transmitter.caller)
-		icon_state = "[base_icon_state]_ring"
+		icon_state = "[base_icon]_ring"
 	else
-		icon_state = base_icon_state
+		icon_state = base_icon
 
 /obj/item/storage/backpack/marine/satchel/rto/item_action_slot_check(mob/user, slot)
 	if(slot == WEAR_BACK)

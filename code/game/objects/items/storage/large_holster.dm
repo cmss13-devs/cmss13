@@ -4,20 +4,30 @@
 	name = "\improper Rifle Holster"
 	desc = "holster"
 	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "m37_holster"
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	max_w_class = SIZE_LARGE
 	storage_slots = 1
 	max_storage_space = 4
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
-	var/base_icon = "m37_holster"
+	///Icon/item states change based on contents; this stores base icon state.
+	var/base_icon
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
 
 
+/obj/item/storage/large_holster/post_skin_selection()
+	base_icon = icon_state
+
 /obj/item/storage/large_holster/update_icon()
-	var/mob/living/carbon/human/user = loc
-	icon_state = "[base_icon][contents.len?"_full":""]"
+	if(length(contents))
+		icon_state = "[base_icon]_full"
+	else
+		icon_state = base_icon
+
 	item_state = icon_state
+
+	var/mob/living/carbon/human/user = loc
 	if(istype(user))
 		if(src == user.back)
 			user.update_inv_back()
@@ -25,7 +35,6 @@
 			user.update_inv_belt()
 		else if(src == user.s_store)
 			user.update_inv_s_store()
-
 
 /obj/item/storage/large_holster/equipped(mob/user, slot)
 	if(slot == WEAR_BACK || slot == WEAR_WAIST || slot == WEAR_J_STORE)
@@ -48,11 +57,6 @@
 	if(. && drawSound)
 		playsound(src, drawSound, 15, TRUE)
 
-
-
-
-
-
 /obj/item/storage/large_holster/m37
 	name = "\improper L44 M37A2 scabbard"
 	desc = "A large leather holster fitted for USCM-issue shotguns. It has harnesses that allow it to be secured to the back for easy storage."
@@ -61,12 +65,7 @@
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat
 	)
-
-/obj/item/storage/large_holster/m37/Initialize()
-	. = ..()
-	select_gamemode_skin(/obj/item/storage/large_holster/m37)
-	base_icon = icon_state
-
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/large_holster/m37/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)
@@ -74,9 +73,7 @@
 /obj/item/storage/large_holster/machete
 	name = "\improper H5 pattern M2132 machete scabbard"
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the back or the armor."
-	base_icon = "machete_holster"
 	icon_state = "machete_holster"
-	item_state = "machete_holster"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
 
@@ -86,7 +83,6 @@
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
 	desc = "A large, vibrantly colored katana scabbard used to carry a japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
-	base_icon = "katana_holster"
 	icon_state = "katana_holster"
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
@@ -99,7 +95,6 @@
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
 	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
-	base_icon = "ceremonial_sword_holster"
 	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	force = 12
 	flags_equip_slot = SLOT_WAIST
@@ -113,7 +108,6 @@
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This holster features a larger frame and stiff backboard to support a submachinegun. It's designed for the M39, but the clips are adjustable enough to fit most compact submachineguns. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
 	icon_state = "m39_holster"
 	icon = 'icons/obj/items/clothing/belts.dmi'
-	base_icon = "m39_holster"
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = 5
 	can_hold = list(
@@ -174,8 +168,6 @@
 	desc = "A specialized back harness that carries the Broiler-T flexible refueling system. Designed by and for USCM Pyrotechnicians."
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "flamethrower_broiler"
-	item_state = "flamethrower_broiler"
-	base_icon = "flamethrower_broiler"
 	flags_atom = FPRINT|CONDUCT
 	var/obj/item/ammo_magazine/flamer_tank/large/fuel
 	var/obj/item/ammo_magazine/flamer_tank/large/B/fuelB
@@ -186,11 +178,9 @@
 	var/image/flamer_overlay
 	actions_types = list(/datum/action/item_action/specialist/toggle_fuel)
 	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/large_holster/fuelpack/Initialize()
-	select_gamemode_skin(/obj/item/storage/large_holster/fuelpack)
-	base_icon = icon_state
-	item_state = icon_state
 	. = ..()
 	fuel = new /obj/item/ammo_magazine/flamer_tank/large()
 	fuelB =	new /obj/item/ammo_magazine/flamer_tank/large/B()
@@ -210,19 +200,18 @@
 	. = ..()
 
 /obj/item/storage/large_holster/fuelpack/update_icon()
-	var/mob/user = loc
 	overlays -= flamer_overlay
-	if(contents.len)
+	if(length(contents))
 		overlays += flamer_overlay
 
-	// Update onmob
+	var/mob/living/carbon/human/user = loc
 	if(istype(user))
 		user.update_inv_back()
 
 /obj/item/storage/large_holster/fuelpack/dropped(mob/user)
-	if (linked_flamer)
+	if(linked_flamer)
 		linked_flamer.fuelpack = null
-		if (linked_flamer.current_mag in list(fuel, fuelB, fuelX))
+		if(linked_flamer.current_mag in list(fuel, fuelB, fuelX))
 			linked_flamer.current_mag = null
 		linked_flamer.update_icon()
 		linked_flamer = null
@@ -237,7 +226,6 @@
 			ret.overlays += weapon_holstered
 
 	return ret
-
 
 /obj/item/storage/large_holster/fuelpack/attack_self(mob/user)
 	..()

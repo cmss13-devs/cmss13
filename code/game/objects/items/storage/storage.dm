@@ -30,6 +30,8 @@
 	var/opened = FALSE //Has it been opened before?
 	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
+	///Whether to use map-variant skins.
+	var/has_gamemode_skin = FALSE
 
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
@@ -674,6 +676,11 @@ var/list/global/item_storage_box_cache = list()
 	closer = new
 	closer.master = src
 
+	if(has_gamemode_skin)
+		select_gamemode_skin(type)
+
+	post_skin_selection()
+
 	fill_preset_inventory()
 
 	update_icon()
@@ -749,6 +756,10 @@ var/list/global/item_storage_box_cache = list()
 		return w_class
 
 /obj/item/storage/proc/fill_preset_inventory()
+	return
+
+///Things to be done after selecting a map skin (if any) and before adding inventory and updating icon for the first time. Most likely saving basic icon state.
+/obj/item/storage/proc/post_skin_selection()
 	return
 
 /**Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.

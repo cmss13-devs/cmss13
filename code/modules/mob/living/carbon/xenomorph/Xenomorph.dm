@@ -241,7 +241,6 @@
 	var/selected_resin // Which resin structure to build when we secrete resin, defaults to null.
 	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
-	var/obj/structure/tunnel/start_dig = null
 	var/tunnel_delay = 0
 	var/steelcrest = FALSE
 	var/list/available_placeable = list() // List of placeable the xenomorph has access to.
@@ -550,17 +549,13 @@
 	return
 
 /mob/living/carbon/Xenomorph/Destroy()
-	if(mind)
-		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
-	if(is_zoomed)
-		zoom_out()
-
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
 
+	if(mind)
+		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
-		hive.remove_hive_leader(src)
-
+		hive.remove_hive_leader(src, light_mode = TRUE)
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
 	// Only handle free slots if the xeno is not in tdome
@@ -573,24 +568,14 @@
 			LAZYSET(hive.free_slots, selected_caste, new_val)
 
 	hive.remove_xeno(src)
-
 	remove_from_all_mob_huds()
-
-	for(var/datum/action/xeno_action/XA in actions)
-		qdel(XA)
-		XA = null
-
-	reagents = null
 
 	observed_xeno = null
 	wear_suit = null
 	head = null
 	r_store = null
 	l_store = null
-
-	start_dig = null
 	ammo = null
-
 	selected_ability = null
 	queued_action = null
 
@@ -606,7 +591,14 @@
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
 
+	if(hardcore)
+		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
+
 	. = ..()
+
+	// Everything below fits the "we have to clear by principle it but i dont wanna break stuff" bill
+	mutators = null
+
 
 
 /mob/living/carbon/Xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)

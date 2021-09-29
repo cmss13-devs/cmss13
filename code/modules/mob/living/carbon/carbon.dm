@@ -12,22 +12,18 @@
 /mob/living/carbon/Destroy()
 	QDEL_NULL_LIST(internal_organs)
 
-	for(var/datum/disease/virus in viruses)
-		virus.cure()
-
 	. = ..()
 
-	if(handcuffed)
-		QDEL_NULL(handcuffed)
+	QDEL_NULL(handcuffed)
+	QDEL_NULL(legcuffed)
+	QDEL_NULL(halitem)
 
-	if(legcuffed)
-		QDEL_NULL(legcuffed)
+	hunter_data?.clean_data()
+	hunter_data = null
+	stomach_contents?.Cut()
+	halimage = null
+	halbody = null
 
-	if(hunter_data)
-		hunter_data.clean_data()
-		hunter_data = null
-
-	stomach_contents.Cut() //movable atom's Dispose() deletes all content, we clear stomach_contents to be safe.
 
 /mob/living/carbon/Move(NewLoc, direct)
 	. = ..()

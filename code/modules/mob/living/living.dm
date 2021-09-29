@@ -27,15 +27,14 @@
 	GLOB.living_mob_list -= src
 	pipes_shown = null
 
+	. = ..()
+
 	attack_icon = null
 	QDEL_NULL(fire_reagent)
 	QDEL_NULL(event_movement)
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
-
-	. = ..()
-
-	QDEL_NULL_LIST(actions)
+	QDEL_NULL(hallucinations)
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage

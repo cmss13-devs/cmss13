@@ -58,15 +58,16 @@
 		return
 	X.visible_message(SPAN_XENONOTICE("\The [X] digs out a tunnel entrance."), \
 	SPAN_XENONOTICE("You dig out an entrance to the tunnel network."), null, 5)
-	X.start_dig = new /obj/structure/tunnel(T, X.hivenumber)
+
+	var/obj/structure/tunnel/tunnelobj = new(T, X.hivenumber)
 	X.tunnel_delay = 1
 	addtimer(CALLBACK(src, .proc/cooldown_end), 4 MINUTES)
 	var/msg = strip_html(input("Add a description to the tunnel:", "Tunnel Description") as text|null)
 	if(msg)
-		msg = "[msg] ([get_area_name(X.start_dig)])"
+		msg = "[msg] ([get_area_name(tunnelobj)])"
 		log_admin("[key_name(X)] has named a new tunnel \"[msg]\".")
 		msg_admin_niche("[X]/([key_name(X)]) has named a new tunnel \"[msg]\".")
-		X.start_dig.tunnel_desc = "[msg]"
+		tunnelobj.tunnel_desc = "[msg]"
 
 	X.use_plasma(plasma_cost)
 	to_chat(X, SPAN_NOTICE("You will be ready to dig a new tunnel in 4 minutes."))

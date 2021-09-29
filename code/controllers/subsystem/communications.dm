@@ -249,6 +249,9 @@ SUBSYSTEM_DEF(radio)
 /datum/controller/subsystem/radio/proc/get_available_tcomm_zs()
 	//Returns lists of Z levels that have comms
 	var/list/target_zs = SSmapping.levels_by_trait(ZTRAIT_ADMIN)
+	var/list/extra_zs = SSmapping.levels_by_trait(ZTRAIT_AWAY)
+	if(length(extra_zs))
+		target_zs += extra_zs
 	if(tcomm_machines_ground.len > 0)
 		target_zs += SSmapping.levels_by_trait(ZTRAIT_GROUND)
 	if(tcomm_machines_almayer.len > 0)

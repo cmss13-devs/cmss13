@@ -25,6 +25,7 @@ require only minor tweaks.
 #define ZTRAIT_GROUND "Ground"
 #define ZTRAIT_MARINE_MAIN_SHIP "Marine Main Ship"
 #define ZTRAIT_ADMIN "Admin"
+#define ZTRAIT_AWAY  "Away"
 #define ZTRAIT_LOWORBIT "LowOrbit"
 #define ZTRAIT_INTERIORS "Interiors"
 #define ZTRAIT_TECHTREE	"TechTree"

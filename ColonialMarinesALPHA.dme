@@ -1149,6 +1149,7 @@
 #include "code\modules\admin\verbs\debug.dm"
 #include "code\modules\admin\verbs\freeforghosts.dm"
 #include "code\modules\admin\verbs\getlogs.dm"
+#include "code\modules\admin\verbs\load_event_level.dm"
 #include "code\modules\admin\verbs\map_template_loadverb.dm"
 #include "code\modules\admin\verbs\massmodvar.dm"
 #include "code\modules\admin\verbs\mob_verbs.dm"

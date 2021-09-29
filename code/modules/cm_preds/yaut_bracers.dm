@@ -39,6 +39,7 @@
 	var/upgrades = 0 //Set to two, so admins can give preds shittier ones for young blood events or whatever. //Changed it back to 0 since it was breaking spawn-equipment and the translator -retrokinesis
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
+	var/scimitars = FALSE
 
 /obj/item/clothing/gloves/yautja/Initialize(mapload, ...)
 	. = ..()
@@ -262,7 +263,10 @@
 	var/obj/item/weapon/wristblades/L = user.get_inactive_hand()
 	var/is_lefthand_full = FALSE
 	if(R && istype(R)) //Turn it off.
-		to_chat(user, SPAN_NOTICE("You retract your wrist blades."))
+		if(scimitars)
+			to_chat(user, SPAN_NOTICE("You retract your scimitars."))
+		else
+			to_chat(user, SPAN_NOTICE("You retract your wrist blades."))
 		playsound(user.loc,'sound/weapons/wristblades_off.ogg', 15, 1)
 		blades_active = 0
 		qdel(R)
@@ -282,13 +286,23 @@
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(user, SPAN_WARNING("You can't hold that!"))
 			return
-		var/obj/item/weapon/wristblades/N = new()
-		user.put_in_active_hand(N)
-		if(!is_lefthand_full)
-			var/obj/item/weapon/wristblades/W = new()
-			user.put_in_inactive_hand(W)
+		if(scimitars)
+			var/obj/item/weapon/wristblades/scimitar/N = new()
+			user.put_in_active_hand(N)
+			if(!is_lefthand_full)
+				var/obj/item/weapon/wristblades/scimitar/W = new()
+				user.put_in_inactive_hand(W)
+		else
+			var/obj/item/weapon/wristblades/blades/N = new()
+			user.put_in_active_hand(N)
+			if(!is_lefthand_full)
+				var/obj/item/weapon/wristblades/blades/W = new()
+				user.put_in_inactive_hand(W)
 		blades_active = 1
-		to_chat(user, SPAN_NOTICE("You activate your wrist blades."))
+		if(scimitars)
+			to_chat(user, SPAN_NOTICE("You activate your scimitars."))
+		else
+			to_chat(user, SPAN_NOTICE("You activate your wrist blades."))
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 
 	return 1

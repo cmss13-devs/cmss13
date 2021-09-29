@@ -107,7 +107,9 @@
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
+	force = MELEE_FORCE_TIER_4
 	pry_capable = IS_PRY_CAPABLE_FORCE
+	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
 /obj/item/weapon/wristblades/New()
 	..()
@@ -115,8 +117,6 @@
 		var/obj/item/weapon/wristblades/W = usr.get_inactive_hand()
 		if(istype(W)) //wristblade in usr's other hand.
 			attack_speed = attack_speed - attack_speed/3
-	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = MELEE_FORCE_TIER_4
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)
@@ -127,10 +127,8 @@
 	..()
 
 /obj/item/weapon/wristblades/afterattack(atom/A, mob/user, proximity)
-	if(!proximity || !user || user.action_busy) return
-	if(user)
-		var/obj/item/weapon/wristblades/W = user.get_inactive_hand()
-		attack_speed = (istype(W)) ? 4 : initial(attack_speed)
+	if(!proximity || !user || user.action_busy)
+		return FALSE
 
 	if(istype(A, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/D = A
@@ -145,7 +143,7 @@
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]."),
 			SPAN_DANGER("You force [D] open with the [name]."))
-			D.open(1)
+			D.open(TRUE)
 
 	else if(istype(A, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/D = A
@@ -172,6 +170,25 @@
 	for(var/obj/item/clothing/gloves/yautja/Y in user.contents)
 		Y.wristblades()
 
+/obj/item/weapon/wristblades/blades //simplest way to ensure scimitars don't get speedup buff.
+
+/obj/item/weapon/wristblades/blades/afterattack(atom/A, mob/user, proximity)
+	if(!proximity || !user || user.action_busy)
+		return FALSE
+	if(user)
+		var/obj/item/weapon/wristblades/blades/W = user.get_inactive_hand()
+		attack_speed = (istype(W)) ? 4 : initial(attack_speed)
+
+	..()
+
+/obj/item/weapon/wristblades/scimitar
+	name = "wrist scimitar"
+	desc = "A huge, serrated blade extending from a metal gauntlet."
+	icon_state = "scim"
+	item_state = "scim"
+	attack_speed = 5
+	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
+	force = MELEE_FORCE_TIER_5
 
 /*#########################################
 ########### One Handed Weapons ############

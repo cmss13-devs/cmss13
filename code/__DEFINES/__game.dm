@@ -390,9 +390,14 @@
 
 // Quadtree values
 
-#define QUADTREE_CAPACITY 4
-#define QUADTREE_BOUNDARY_MINIMUM_WIDTH 15
-#define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 15
+/// Max amount of player coordinates in a quadtree cell
+#define QUADTREE_CAPACITY 12
+/// Minimum X width up to which we keep dividing the tree (meaning cells can be half that)
+#define QUADTREE_BOUNDARY_MINIMUM_WIDTH 12
+/// Minimum Y height up to which we keep dividing the tree (meaning cells can be half that)
+#define QUADTREE_BOUNDARY_MINIMUM_HEIGHT 12
+
+
 #define QTREE_EXCLUDE_OBSERVER 1
 #define QTREE_SCAN_MOBS 2 //Return mob list instead of client list
 

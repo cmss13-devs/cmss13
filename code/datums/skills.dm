@@ -715,6 +715,17 @@ United States Colonial Marines
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
+/datum/skills/SL/New(mob/skillset_owner)
+	..()
+	RegisterSignal(skillset_owner, COMSIG_HUMAN_CARRY, .proc/handle_fireman_carry)
+
+/datum/skills/SL/Destroy()
+	UnregisterSignal(owner, COMSIG_HUMAN_CARRY)
+	return ..()
+
+/datum/skills/SL/proc/handle_fireman_carry(mob/living/M, list/carrydata)
+	return COMPONENT_CARRY_ALLOW
+
 /datum/skills/intel
 	name = "Intelligence Officer"
 	skills = list(

@@ -28,10 +28,8 @@
 	life_tick++
 
 	if(stat == DEAD && species.name == "Zombie")
-		var/datum/species/zombie/zs = species
-		if(zs.to_revive[src])
-			handle_chemicals_in_body(delta_time)
-			return
+		handle_chemicals_in_body(delta_time)
+		return
 
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)

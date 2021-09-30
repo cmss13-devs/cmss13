@@ -39,6 +39,7 @@
 
 /mob/living/carbon/human/death(var/cause, var/gibbed)
 	if(stat == DEAD)
+		species?.handle_dead_death(src, gibbed)
 		return
 	GLOB.alive_human_list -= src
 	if(!gibbed)

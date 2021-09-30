@@ -309,6 +309,8 @@
 	return
 */
 
+/datum/species/proc/handle_dead_death(var/mob/living/carbon/human/H, var/gibbed)
+
 /datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
 	// If we don't actually need to offset this, don't bother with any of the generation/caching.
 	if(!spritesheet && equip_adjust.len && equip_adjust[slot] && LAZYLEN(equip_adjust[slot]))

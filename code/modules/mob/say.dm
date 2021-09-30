@@ -194,8 +194,8 @@
 		message_and_modes[2] = standard_mode
 		return message_and_modes
 
-	if(length(message) >= 2 && copytext(message,1,2) == ".")
-		if(copytext(message, 1 ,3) == "..")
+	if(length(message) >= 2 && (copytext(message,1,2) == "." || copytext(message,1,2) == ":"))
+		if(copytext(message, 1 ,3) == ".." || copytext(message, 1 ,3) == "::")
 			// Radio multibroadcast functionality.
 			// If a message starts with .. we assume that up to MULTIBROADCAST_MAX_CHANNELS
 			// next symbols are channel names. If we run into a space we stop looking for more channels.

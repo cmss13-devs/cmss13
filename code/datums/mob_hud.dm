@@ -540,17 +540,17 @@ var/list/datum/mob_hud/huds = list(
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]
 	holder.icon_state = "hudblank"
-	var/perpname = name
+	var/perpref = null
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
-			perpname = I.registered_name
+			perpref = I.registered_ref
 
 	if(!GLOB.data_core)
 		return
 
 	for(var/datum/data/record/E in GLOB.data_core.general)
-		if(E.fields["name"] == perpname)
+		if(E.fields["ref"] == perpref)
 			for(var/datum/data/record/R in GLOB.data_core.security)
 				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
 					holder.icon_state = "hudwanted"

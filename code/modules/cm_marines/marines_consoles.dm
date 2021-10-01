@@ -135,7 +135,7 @@
 			var/origin_name
 			if(target_id_card)
 				if(target_id_card.registered_name != origin_name || target_id_card.assignment != origin_assignment)
-					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.assignment, target_id_card.rank)
+					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 					target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 					if(target_id_card.registered_name != origin_name)
 						log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>")
@@ -442,7 +442,7 @@
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(target_id_card)
 		if(operable())	// Powered. Make comp proceed ejection
-			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.assignment, target_id_card.rank)
+			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 			visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 		else
@@ -551,12 +551,7 @@
 				var/datum/squad/selected = get_squad_by_name(params["name"])
 				if(!selected)
 					return
-				//First, remove any existing squad access and clear the card.
-				for(var/datum/squad/Q in RoleAuthority.squads)
-					if(findtext(ID_to_modify.assignment, Q.name)) //Found one!
-						ID_to_modify.access -= Q.access //Remove any access found.
-						person_to_modify.assigned_squad = null
-				if(selected.put_marine_in_squad(person_to_modify, ID_to_modify))
+				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
 					visible_message("<span class='bold'>[src]</span> states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
 					return TRUE
 				else

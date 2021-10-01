@@ -426,20 +426,16 @@
 		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
 
 	if(hasHUD(user,"security"))
-		var/perpname = "wot"
-		var/criminal = "None"
+		var/perpref
+		
 
-		if(wear_id)
-			if(I)
-				perpname = I.registered_name
-			else
-				perpname = name
-		else
-			perpname = name
+		if(wear_id && I)
+			perpref = I.registered_ref
 
-		if(perpname)
-			for (var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["name"] == perpname)
+		if(perpref)
+			var/criminal = "None"
+			for(var/datum/data/record/E in GLOB.data_core.general)
+				if(E.fields["ref"] == perpref)
 					for (var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							criminal = R.fields["criminal"]
@@ -454,8 +450,9 @@
 
 		// scan reports
 		var/datum/data/record/N = null
+		var/me_ref = WEAKREF(src)
 		for(var/datum/data/record/R in GLOB.data_core.medical)
-			if (R.fields["name"] == real_name)
+			if (R.fields["ref"] == me_ref)
 				N = R
 				break
 		if(!isnull(N))

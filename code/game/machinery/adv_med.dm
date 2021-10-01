@@ -250,8 +250,9 @@
 	else if (connected) //Is something connected?
 		var/mob/living/carbon/human/H = connected.occupant
 		var/datum/data/record/N = null
+		var/human_ref = WEAKREF(H)
 		for(var/datum/data/record/R in GLOB.data_core.medical)
-			if (R.fields["name"] == H.real_name)
+			if (R.fields["ref"] == human_ref)
 				N = R
 		if(isnull(N))
 			N = create_medical_record(H)

@@ -744,3 +744,25 @@ var/global/marines_assigned = 0
 		return status_limit
 
 	return desired_status
+
+/proc/transfer_marine_to_squad(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad, var/datum/squad/old_squad, var/obj/item/card/id/ID)
+	if(old_squad)
+		if(transfer_marine.assigned_fireteam)
+			if(old_squad.fireteam_leaders["FT[transfer_marine.assigned_fireteam]"] == transfer_marine)
+				old_squad.unassign_ft_leader(transfer_marine.assigned_fireteam, TRUE, FALSE)
+			old_squad.unassign_fireteam(transfer_marine, TRUE)	//reset fireteam assignment
+		old_squad.remove_marine_from_squad(transfer_marine, ID)
+		old_squad.update_free_mar()
+		old_squad.update_squad_ui()
+	. = new_squad.put_marine_in_squad(transfer_marine, ID)
+	if(.)
+		new_squad.update_free_mar()
+		new_squad.update_squad_ui()
+
+		var/marine_ref = WEAKREF(transfer_marine)
+		for(var/datum/data/record/t in GLOB.data_core.general) //we update the crew manifest
+			if(t.fields["ref"] == marine_ref)
+				t.fields["squad"] = new_squad.name
+				break
+
+		transfer_marine.hud_set_squad()

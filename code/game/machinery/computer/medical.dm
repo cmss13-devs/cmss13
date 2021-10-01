@@ -363,7 +363,7 @@
 					src.temp = "Record Not Found!"
 					return
 				for(var/datum/data/record/E in GLOB.data_core.medical)
-					if ((E.fields["name"] == R.fields["name"] || E.fields["id"] == R.fields["id"]))
+					if ((E.fields["ref"] == R.fields["ref"] || E.fields["id"] == R.fields["id"]))
 						M = E
 					else
 						//Foreach continue //goto(2540)

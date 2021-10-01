@@ -757,8 +757,9 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("[wanted_marine] is missing in action.")]")
 		return
 
+	var/marine_ref = WEAKREF(wanted_marine)
 	for(var/datum/data/record/E in GLOB.data_core.general)
-		if(E.fields["name"] == wanted_marine.real_name)
+		if(E.fields["ref"] == marine_ref)
 			for(var/datum/data/record/R in GLOB.data_core.security)
 				if(R.fields["id"] == E.fields["id"])
 					if(!findtext(R.fields["ma_crim"],"Insubordination."))
@@ -839,26 +840,12 @@
 		to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Transfer aborted. [new_squad] can't have another [transfer_marine.job].")]")
 		return
 
-	if(transfer_marine.assigned_fireteam)
-		if(old_squad.fireteam_leaders["FT[transfer_marine.assigned_fireteam]"] == transfer_marine)
-			old_squad.unassign_ft_leader(transfer_marine.assigned_fireteam, TRUE, FALSE)
-		old_squad.unassign_fireteam(transfer_marine, TRUE)	//reset fireteam assignment
-
-	old_squad.remove_marine_from_squad(transfer_marine)
-	old_squad.update_free_mar()
-	old_squad.update_squad_ui()
-	new_squad.put_marine_in_squad(transfer_marine)
-	new_squad.update_free_mar()
-	new_squad.update_squad_ui()
-
-	for(var/datum/data/record/t in GLOB.data_core.general) //we update the crew manifest
-		if(t.fields["name"] == transfer_marine.real_name)
-			t.fields["squad"] = new_squad.name
-			break
-
-	transfer_marine.hud_set_squad()
-	visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
-	to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
+	. = transfer_marine_to_squad(transfer_marine, new_squad, old_squad)
+	if(.)
+		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] has been transfered from squad '[old_squad]' to squad '[new_squad]'. Logging to enlistment file.")]")
+		to_chat(transfer_marine, "[icon2html(src, transfer_marine)] <font size='3' color='blue'><B>\[Overwatch\]:</b> You've been transfered to [new_squad]!</font>")
+	else
+		visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("[transfer_marine] transfer from squad '[old_squad]' to squad '[new_squad]' unsuccessful.")]")
 
 /obj/structure/machinery/computer/overwatch/proc/handle_bombard(mob/user)
 	if(!user)

@@ -65,6 +65,7 @@
 	var/list/faction_group
 
 	var/registered_name = "Unknown" // The name registered_name on the card
+	var/registered_ref = null
 	var/registered_gid = 0
 	flags_equip_slot = SLOT_ID
 

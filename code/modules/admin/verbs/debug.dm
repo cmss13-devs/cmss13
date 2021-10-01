@@ -454,6 +454,7 @@ GLOBAL_PROTECT(AdminProcCallSpamPrevention)
 			id.icon_state = "gold"
 			id:access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 			id.registered_name = H.real_name
+			id.registered_ref = WEAKREF(H)
 			id.assignment = "Captain"
 			id.name = "[id.registered_name]'s ID Card ([id.assignment])"
 			H.equip_to_slot_or_del(id, WEAR_ID)

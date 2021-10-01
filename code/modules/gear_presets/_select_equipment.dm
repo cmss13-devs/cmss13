@@ -114,6 +114,7 @@
 	W.assignment = assignment
 	W.rank = rank
 	W.registered_name = H.real_name
+	W.registered_ref = WEAKREF(H)
 	W.registered_gid = H.gid
 	W.blood_type = H.blood_type
 	W.paygrade = load_rank(H)

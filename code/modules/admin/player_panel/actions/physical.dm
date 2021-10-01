@@ -101,16 +101,17 @@
 	RoleAuthority.free_role(RoleAuthority.roles_for_mode[target.job], TRUE)
 
 	//Delete them from datacore.
+	var/target_ref = WEAKREF(target)
 	for(var/datum/data/record/R in GLOB.data_core.medical)
-		if((R.fields["name"] == target.real_name))
+		if((R.fields["ref"] == target_ref))
 			GLOB.data_core.medical -= R
 			qdel(R)
 	for(var/datum/data/record/T in GLOB.data_core.security)
-		if((T.fields["name"] == target.real_name))
+		if((T.fields["ref"] == target_ref))
 			GLOB.data_core.security -= T
 			qdel(T)
 	for(var/datum/data/record/G in GLOB.data_core.general)
-		if((G.fields["name"] == target.real_name))
+		if((G.fields["ref"] == target_ref))
 			GLOB.data_core.general -= G
 			qdel(G)
 

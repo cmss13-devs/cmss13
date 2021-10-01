@@ -1325,10 +1325,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		if(!F.fuel)
 			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
 			return
-		if(istype(F, /obj/item/device/flashlight/flare/signal))
-			to_chat(user, SPAN_WARNING("You can't load a signal flare in [src]!"))
-			return
 		if(current_mag && current_mag.current_rounds == 0)
+			ammo = GLOB.ammo_list[F.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
 			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
 			current_mag.current_rounds++

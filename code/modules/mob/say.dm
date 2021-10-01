@@ -182,41 +182,6 @@
 
 	return null
 
-/**
- * parses the message mode code (e.g. :h, :w) from text, such as that supplied to say.
- * returns the message mode string or null for no message mode.
- * standard mode is the mode returned for the special ';' radio code.
- */
-/mob/proc/parse_message_and_modes(var/message, var/standard_mode="headset")
-	var/message_and_modes[2]
-	if(length(message) >= 1 && copytext(message,1,2) == ";")
-		message_and_modes[1] = copytext(message,2)
-		message_and_modes[2] = standard_mode
-		return message_and_modes
-
-	if(length(message) >= 2 && (copytext(message,1,2) == "." || copytext(message,1,2) == ":"))
-		if(copytext(message, 1 ,3) == ".." || copytext(message, 1 ,3) == "::")
-			// Radio multibroadcast functionality.
-			// If a message starts with .. we assume that up to MULTIBROADCAST_MAX_CHANNELS
-			// next symbols are channel names. If we run into a space we stop looking for more channels.
-			var/i
-			var/channels_and_message = copytext(message, 3)
-			message_and_modes.len = 1 + MULTIBROADCAST_MAX_CHANNELS
-			for(i in 1 to MULTIBROADCAST_MAX_CHANNELS)
-				var/current_channel = copytext(channels_and_message, i, i+1)
-				if(current_channel == " ")
-					break
-				message_and_modes[i+1] = department_radio_keys[addtext(".", current_channel)]
-			message_and_modes[1] = copytext(channels_and_message, i+1)
-		else
-			var/channel_prefix = copytext(message,1,3)
-			message_and_modes[1] = copytext(message,3)
-			message_and_modes[2] = department_radio_keys[channel_prefix]
-		return message_and_modes
-	message_and_modes[1] = message
-	message_and_modes[2] = MESSAGE_MODE_LOCAL
-	return message_and_modes
-
 //parses the language code (e.g. :j) from text, such as that supplied to say.
 //returns the language object only if the code corresponds to a language that src can speak, otherwise null.
 /mob/proc/parse_language(var/message)

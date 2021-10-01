@@ -1,3 +1,47 @@
+/mob/living/carbon/human/proc/parse_say_modes(var/message)
+	. = list("message_and_language", "modes" = list())
+	if(length(message) >= 1 && message[1] == ";")
+		.["message_and_language"] = copytext(message, 2)
+		.["modes"] += "headset"
+		return
+
+	if(length(message) >= 2 && message[1] == ",")
+		// Radio multibroadcast functionality.
+		// If a message starts with , we assume that up to MULTIBROADCAST_MAX_CHANNELS
+		// next symbols are channel names. If we run into a space we stop looking for more channels.
+		var/i
+		for(i in 2 to 1+MULTIBROADCAST_MAX_CHANNELS)
+			var/current_channel = message[i]
+			if(current_channel == " " || current_channel == ":" || current_channel == ".")
+				i--
+				break
+			.["modes"] += department_radio_keys[":[current_channel]"]
+		.["message_and_language"] = copytext(message, i+1)
+		return
+
+	if(length(message) >= 2 && (message[1] == "." || message[1] == ":"))
+		var/channel_prefix = copytext(message, 1, 3)
+		if(channel_prefix in department_radio_keys)
+			.["message_and_language"] = copytext(message, 3)
+			.["modes"] += department_radio_keys[channel_prefix]
+			return
+
+	.["message_and_language"] = message
+	.["modes"] += MESSAGE_MODE_LOCAL
+	return
+
+/mob/living/carbon/human/proc/parse_say(var/message)
+	. = list("message", "language", "modes")
+	var/list/ml_and_modes = parse_say_modes(message)
+	.["modes"] = ml_and_modes["modes"]
+	var/message_and_language = ml_and_modes["message_and_language"]
+	var/parsed_language = parse_language(message_and_language)
+	if(parsed_language)
+		.["language"] = parsed_language
+		.["message"] = copytext(message_and_language, 3)
+	else
+		.["message"] = message_and_language
+
 /mob/living/carbon/human/say(var/message)
 
 	var/verb = "says"
@@ -25,10 +69,9 @@
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
 
-	var/list/message_and_modes = parse_message_and_modes(message, "headset")
-	message = message_and_modes[1]
-	//parse the language code and consume it
-	var/datum/language/speaking = parse_language(message)
+	var/list/parsed = parse_say(message)
+	message = parsed["message"]
+	var/datum/language/speaking = parsed["language"]
 	if(!speaking)
 		speaking = get_default_language()
 
@@ -67,21 +110,18 @@
 
 	if(!message || stat)
 		return
-	for(var/i in 2 to length(message_and_modes))
-		var/message_mode = message_and_modes[i]
-		if(!message_mode)
-			break
+	for(var/message_mode in parsed["modes"])
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)
+			if(MESSAGE_MODE_LOCAL)
+			if("whisper")
+				whisper_say(message, speaking, alt_name)
+				return
 			if("intercom")
 				message_mode = null
 				for(var/obj/item/device/radio/intercom/I in view(1))
 					used_radios += I
 					break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
-			if("whisper")
-				whisper_say(message, speaking, alt_name)
-				return
-			if(MESSAGE_MODE_LOCAL)
 			else
 				var/earpiece = get_type_in_ears(/obj/item/device/radio)
 				if(earpiece)

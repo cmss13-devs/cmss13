@@ -5,6 +5,11 @@
 
 /////////////////////// Hand Labeler ////////////////////////////////
 
+/atom/proc/set_name_label(var/new_label)
+	name_label = new_label
+	name = initial(name)
+	if(name_label)
+		name += " ([name_label])"
 
 /obj/item/tool/hand_labeler
 	name = "hand labeler"
@@ -50,7 +55,7 @@
 	if(!label || !length(label))
 		remove_label(A, user)
 		return
-	if(A.name == "[initial(A.name)] ([label])") //object name = new object.name, so people don't spam
+	if(A.name_label == label)
 		to_chat(user, SPAN_NOTICE("It already has the same label."))
 		return
 
@@ -59,7 +64,7 @@
 
 	log_admin("[user] has labeled [A.name] with label \"[label]\". (CKEY: ([user.ckey]))")
 
-	A.name = "[initial(A.name)] ([label])"
+	A.set_name_label(label)
 
 	playsound(A, label_sound, 20, TRUE)
 
@@ -100,7 +105,7 @@
 
 	log_admin("[user] has removed label from [A.name]. (CKEY: ([user.ckey]))")
 
-	A.name = "[initial(A.name)]"
+	A.set_name_label(null)
 
 	playsound(A, remove_label_sound, 20, TRUE)
 

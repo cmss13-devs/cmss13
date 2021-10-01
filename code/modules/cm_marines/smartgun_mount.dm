@@ -23,11 +23,11 @@
 	name = "M56D drum magazine (10x28mm Caseless)"
 	desc = "A box of 700, 10x28mm caseless tungsten rounds for the M56D heavy machine gun system. Just click the M56D with this to reload it."
 	w_class = SIZE_MEDIUM
-	icon_state = "ammo_drum"
+	icon_state = "m56d_drum"
 	flags_magazine = NO_FLAGS //can't be refilled or emptied by hand
 	caliber = "10x28mm"
 	max_rounds = 700
-	default_ammo = /datum/ammo/bullet/smartgun
+	default_ammo = /datum/ammo/bullet/machinegun
 	gun_type = null
 
 
@@ -42,16 +42,13 @@
 	storage_slots = 6
 	can_hold = list()
 
-/obj/item/storage/box/m56d_hmg/Initialize()
-	. = ..()
+/obj/item/storage/box/m56d_hmg/fill_preset_inventory()
 	new /obj/item/device/m56d_gun(src) //gun itself
-	new /obj/item/ammo_magazine/m56d(src) //ammo for the gun
 	new /obj/item/device/m56d_post(src) //post for the gun
+	new /obj/item/ammo_magazine/m56d(src) //ammo for the gun
+	new /obj/item/ammo_magazine/m56d(src)
 	new /obj/item/tool/wrench(src) //wrench to hold it down into the ground
 	new /obj/item/tool/screwdriver(src) //screw the gun onto the post.
-	new /obj/item/ammo_magazine/m56d(src)
-
-
 
 // The actual gun itself.
 /obj/item/device/m56d_gun
@@ -122,7 +119,7 @@
 	M.gun_mounted = TRUE
 	M.anchored = TRUE
 	M.update_icon()
-	M.name = src.name
+	M.set_name_label(name_label)
 	to_chat(user, SPAN_NOTICE("You deploy [src]."))
 	qdel(src)
 
@@ -170,7 +167,7 @@
 		return
 	to_chat(user, SPAN_NOTICE("You deploy [src]."))
 	var/obj/structure/machinery/m56d_post/M = new /obj/structure/machinery/m56d_post(user.loc)
-	M.name = src.name
+	M.set_name_label(name_label)
 	qdel(src)
 
 
@@ -303,7 +300,7 @@
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 25, 1)
 				user.visible_message(SPAN_NOTICE("[user] screws the M56D into the mount."),SPAN_NOTICE("You finalize the M56D heavy machine gun."))
 				var/obj/structure/machinery/m56d_hmg/G = new(src.loc) //Here comes our new turret.
-				G.name = src.name
+				G.set_name_label(name_label)
 				G.visible_message("[icon2html(G, viewers(src))] <B>\The [G] is now complete!</B>") //finished it for everyone to
 				G.setDir(dir) //make sure we face the right direction
 				G.rounds = src.gun_rounds //Inherent the amount of ammo we had.
@@ -388,6 +385,10 @@
 	var/west_x_offset = 4
 	var/west_y_offset = 12
 
+	// USED FOR ANIMATIONS AND ROTATIONS
+	var/user_old_x = 0
+	var/user_old_y = 0
+
 //Making so rockets don't hit M56D
 /obj/structure/machinery/m56d_hmg/calculate_cover_hit_boolean(obj/item/projectile/P, var/distance = 0, var/cade_direction_correct = FALSE)
 	var/ammo_flags = P.ammo.flags_ammo_behavior | P.projectile_override_flags
@@ -450,6 +451,7 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message("[user] rotates the [src].","You rotate the [src].")
 			setDir(turn(dir, -90))
+			update_pixels(user)
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // Lets take it apart.
@@ -466,7 +468,7 @@
 				user.visible_message(SPAN_NOTICE(" [user] disassembles [src]! "),SPAN_NOTICE(" You disassemble [src]!"))
 				playsound(src.loc, 'sound/items/Screwdriver.ogg', 25, 1)
 				var/obj/item/device/m56d_gun/HMG = new(src.loc) //Here we generate our disassembled mg.
-				HMG.name = src.name
+				HMG.set_name_label(name_label)
 				HMG.rounds = src.rounds //Inherent the amount of ammo we had.
 				HMG.has_mount = TRUE
 				HMG.update_icon()
@@ -766,45 +768,77 @@
 			if(user.get_active_hand() != null)
 				to_chat(user, SPAN_WARNING("You need a free hand to man the [src]."))
 			else
-				visible_message("[icon2html(src, viewers(src))] [SPAN_NOTICE("[user] mans the M56D!")]")
-				to_chat(user, SPAN_NOTICE("You man the gun!"))
 				user.set_interaction(src)
 
 /obj/structure/machinery/m56d_hmg/on_set_interaction(mob/user)
+	user.frozen = TRUE
 	flags_atom |= RELAY_CLICK
 	user.status_flags |= IMMOBILE_ACTION
+	user.visible_message(SPAN_NOTICE("[user] mans \the [src]."),SPAN_NOTICE("You man \the [src], locked and loaded!"))
+	user.update_canmove()
+	user.forceMove(src.loc)
+	user.setDir(dir)
+	user_old_x = user.pixel_x
+	user_old_y = user.pixel_y
 	user.reset_view(src)
-	if(zoom)
-		var/tilesize = 32
-		var/viewoffset = tilesize * 5
-		switch(dir)
-			if(NORTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = viewoffset
-			if(SOUTH)
-				user.client.pixel_x = 0
-				user.client.pixel_y = -viewoffset
-			if(EAST)
-				user.client.pixel_x = viewoffset
-				user.client.pixel_y = 0
-			if(WEST)
-				user.client.pixel_x = -viewoffset
-				user.client.pixel_y = 0
+	update_pixels(user)
 	operator = user
+	user.unfreeze()
 
 /obj/structure/machinery/m56d_hmg/on_unset_interaction(mob/user)
 	flags_atom &= ~RELAY_CLICK
 	user.status_flags &= ~IMMOBILE_ACTION
+	user.visible_message(SPAN_NOTICE("[user] lets go of \the [src]."),SPAN_NOTICE("You let go of \the [src], letting the gun rest."))
+	user.update_canmove()
 	user.reset_view(null)
-	if(zoom && user.client)
-		user.client.change_view(world_view_size)
-		user.client.pixel_x = 0
-		user.client.pixel_y = 0
+	var/grip_dir = reverse_direction(dir)
+	var/old_dir = dir
+	step(user, grip_dir)
+	user_old_x = 0
+	user_old_y = 0
+	user.setDir(old_dir)
+	update_pixels(user, FALSE)
 	if(operator == user)
 		operator = null
 
+/obj/structure/machinery/m56d_hmg/proc/update_pixels(var/mob/user, var/mounting = TRUE)
+	if(mounting)
+		var/diff_x = 0
+		var/diff_y = 0
+		var/tilesize = 32
+		var/viewoffset = zoom ? (tilesize * 5) : (tilesize * 2)
+		switch(dir)
+			if(NORTH)
+				diff_y = -16 + user_old_y
+				if(user.client)
+					user.client.pixel_x = 0
+					user.client.pixel_y = viewoffset
+			if(SOUTH)
+				diff_y = 16 + user_old_y
+				if(user.client)
+					user.client.pixel_x = 0
+					user.client.pixel_y = -viewoffset
+			if(EAST)
+				diff_x = -16 + user_old_x
+				if(user.client)
+					user.client.pixel_x = viewoffset
+					user.client.pixel_y = 0
+			if(WEST)
+				diff_x = 16 + user_old_x
+				if(user.client)
+					user.client.pixel_x = -viewoffset
+					user.client.pixel_y = 0
+
+		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
+	else
+		if(user.client)
+			user.client.change_view(world_view_size)
+			user.client.pixel_x = 0
+			user.client.pixel_y = 0
+		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
+
 /obj/structure/machinery/m56d_hmg/check_eye(mob/user)
-	if(user.lying || get_dist(user,src) > 1 || user.is_mob_incapacitated() || !user.client)
+	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
 		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/clicked(var/mob/user, var/list/mods) //Making it possible to toggle burst fire. Perhaps have altclick be the safety on the gun?
@@ -819,7 +853,11 @@
 	return ..()
 
 /obj/structure/machinery/m56d_hmg/proc/CrusherImpact()
-	update_health(400)
+	update_health(health_max * 0.2)
+	if(operator)
+		to_chat(operator, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
+		operator.unset_interaction()
+		operator.KnockDown(M2C_CRUSHER_STUN)
 
 /obj/structure/machinery/m56d_hmg/mg_turret //Our mapbound version with stupid amounts of ammo.
 	name = "\improper scoped M56D heavy machine gun nest"
@@ -870,9 +908,7 @@
 	w_class = SIZE_HUGE
 	storage_slots = 5
 
-/obj/item/storage/box/m56d/m2c/Initialize()
-	..()
-
+/obj/item/storage/box/m56d/m2c/fill_preset_inventory()
 	new /obj/item/device/m2c_gun(src)
 	new /obj/item/ammo_magazine/m2c(src)
 	new /obj/item/ammo_magazine/m2c(src)
@@ -943,7 +979,7 @@
 		return
 
 	var/obj/structure/machinery/m56d_hmg/auto/M =  new /obj/structure/machinery/m56d_hmg/auto(user.loc)
-	M.name = src.name
+	M.set_name_label(name_label)
 	M.setDir(user.dir) // Make sure we face the right direction
 	M.anchored = TRUE
 	playsound(M, 'sound/items/m56dauto_setup.ogg', 75, TRUE)
@@ -1004,10 +1040,6 @@
 	health_max = 230
 	var/list/cadeblockers = list()
 	var/cadeblockers_range = 1
-
-	// USED FOR ANIMATIONS AND ROTATIONS
-	var/user_old_x = 0
-	var/user_old_y = 0
 
 	var/static/image/barrel_overheat_image
 	var/has_barrel_overlay = FALSE
@@ -1131,13 +1163,6 @@
 		health = health_max
 	update_damage_state()
 	update_icon()
-
-/obj/structure/machinery/m56d_hmg/auto/CrusherImpact()
-	update_health(health*0.45)
-	var/mob/user = operator
-	to_chat(user, SPAN_HIGHDANGER("You are knocked off the gun by the sheer force of the ram!"))
-	user.unset_interaction()
-	user.KnockDown(M2C_CRUSHER_STUN)
 
 /obj/structure/machinery/m56d_hmg/auto/attackby(var/obj/item/O as obj, mob/user as mob)
 	if(!ishuman(user))
@@ -1365,7 +1390,7 @@
 			user.visible_message(SPAN_NOTICE("[user] disassembles [src]."),SPAN_NOTICE("You fold up the tripod for [src], disassembling it."))
 			playsound(src.loc, 'sound/items/m56dauto_setup.ogg', 75, 1)
 			var/obj/item/device/m2c_gun/HMG = new(src.loc)
-			HMG.name = src.name
+			HMG.set_name_label(name_label)
 			HMG.rounds = src.rounds
 			HMG.overheat_value = round(0.5 * src.overheat_value)
 			if (HMG.overheat_value <= 10)
@@ -1380,88 +1405,64 @@
 // MOUNT THE MG
 
 /obj/structure/machinery/m56d_hmg/auto/on_set_interaction(mob/user)
-	user.frozen = TRUE
-	flags_atom |= RELAY_CLICK
-	user.visible_message(SPAN_NOTICE("[user] handles [src]."),SPAN_NOTICE("You handle [src], locked and loaded!"))
-	user.update_canmove()
-	user.forceMove(src.loc)
-	user.setDir(dir)
-	user_old_x = user.pixel_x
-	user_old_y = user.pixel_y
-	update_pixels(user)
-	user.reset_view(src)
-
-	update_pixels(user)
-
+	..()
 	if(user.client)
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DOWN, .proc/auto_fire_start)
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_UP, .proc/auto_fire_stop)
 		RegisterSignal(user.client, COMSIG_CLIENT_LMB_DRAG, .proc/auto_fire_new_target)
 	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/disable_interaction)
 	RegisterSignal(user, COMSIG_MOB_POST_UPDATE_CANMOVE, .proc/disable_canmove_interaction)
-	operator = user
-
-	user.unfreeze()
 
 // DISMOUNT THE MG
 
 /obj/structure/machinery/m56d_hmg/auto/on_unset_interaction(mob/user)
-	flags_atom &= ~RELAY_CLICK
+	..()
 	UnregisterSignal(user, list(
 		COMSIG_MOVABLE_PRE_MOVE,
 		COMSIG_MOB_POST_UPDATE_CANMOVE
 	))
-	user.visible_message(SPAN_NOTICE("[user] releases [src]."),SPAN_NOTICE("You handle [src], letting the gun rest."))
-	user.update_canmove()
-	user.reset_view(null)
-	var/grip_dir = reverse_direction(dir)
-	var/old_dir = dir
-	step(user, grip_dir)
-	user_old_x = 0
-	user_old_y = 0
-	user.setDir(old_dir)
-
-	if(user.client)
-		user.client.change_view(world_view_size)
-		user.client.pixel_x = 0
-		user.client.pixel_y = 0
-		UnregisterSignal(user.client, list(
-			COMSIG_CLIENT_LMB_DOWN,
-			COMSIG_CLIENT_LMB_UP,
-			COMSIG_CLIENT_LMB_DRAG,
-		))
-
-	animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
-	if(operator == user)
-		operator = null
 
 // GET ANIMATED
 
-/obj/structure/machinery/m56d_hmg/auto/proc/update_pixels(mob/user as mob)
-	var/diff_x = 0
-	var/diff_y = 0
-	var/tilesize = 32
-	var/viewoffset = tilesize * 5
+/obj/structure/machinery/m56d_hmg/auto/update_pixels(mob/user, var/mounting = TRUE)
+	if(mounting)
+		var/diff_x = 0
+		var/diff_y = 0
+		var/tilesize = 32
+		var/viewoffset = tilesize * 5
 
-	user.reset_view(src)
-	if(dir == EAST)
-		diff_x = -16 + user_old_x
-		user.client.pixel_x = viewoffset
-		user.client.pixel_y = 0
-	if(dir == WEST)
-		diff_x = 16 + user_old_x
-		user.client.pixel_x = -viewoffset
-		user.client.pixel_y = 0
-	if(dir == NORTH)
-		diff_y = -16 + user_old_y
-		user.client.pixel_x = 0
-		user.client.pixel_y = viewoffset
-	if(dir == SOUTH)
-		diff_y = 16 + user_old_y
-		user.client.pixel_x = 0
-		user.client.pixel_y = -viewoffset
+		user.reset_view(src)
+		if(dir == EAST)
+			diff_x = -16 + user_old_x
+			user.client.pixel_x = viewoffset
+			user.client.pixel_y = 0
+		if(dir == WEST)
+			diff_x = 16 + user_old_x
+			user.client.pixel_x = -viewoffset
+			user.client.pixel_y = 0
+		if(dir == NORTH)
+			diff_y = -16 + user_old_y
+			user.client.pixel_x = 0
+			user.client.pixel_y = viewoffset
+		if(dir == SOUTH)
+			diff_y = 16 + user_old_y
+			user.client.pixel_x = 0
+			user.client.pixel_y = -viewoffset
 
-	animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
+		animate(user, pixel_x=diff_x, pixel_y=diff_y, 0.4 SECONDS)
+	else
+		if(user.client)
+			user.client.change_view(world_view_size)
+			user.client.pixel_x = 0
+			user.client.pixel_y = 0
+			UnregisterSignal(user.client, list(
+				COMSIG_CLIENT_LMB_DOWN,
+				COMSIG_CLIENT_LMB_UP,
+				COMSIG_CLIENT_LMB_DRAG,
+			))
+
+		animate(user, pixel_x=user_old_x, pixel_y=user_old_y, 4, 1)
+
 
 //ROTATE THE MACHINEGUN
 
@@ -1495,10 +1496,6 @@
 	update_pixels(user)
 	playsound(src.loc, 'sound/items/m56dauto_rotate.ogg', 25, 1)
 	to_chat(user, "You rotate [src], using the tripod to support your pivoting movement.")
-
-/obj/structure/machinery/m56d_hmg/auto/check_eye(mob/user)
-	if(user.lying || get_dist(user,src) > 0 || user.is_mob_incapacitated() || !user.client)
-		user.unset_interaction()
 
 /obj/structure/machinery/m56d_hmg/auto/proc/disable_interaction(mob/user, NewLoc, direction)
 	SIGNAL_HANDLER

@@ -397,7 +397,7 @@
 // M56E HMG gunner belt
 /obj/item/storage/belt/marine/m2c
 	name = "\improper M804 heavygunner storage rig"
-	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified to carry ammunition for the M2C Heavy Machinegun System and engineering tools for the gunner."
+	desc = "The M804 heavygunner storage rig is an M276 pattern toolbelt rig modified to carry ammunition for Heavy Machinegun Systems and engineering tools for the gunner."
 	icon_state = "m2c_ammo_rig"
 	item_state = "m2c_ammo_rig"
 	storage_slots = 7
@@ -405,10 +405,14 @@
 	max_storage_space = 30
 	can_hold = list(
 		/obj/item/tool/weldingtool,
-		/obj/item/tool/weldingtool/largetank,
-		/obj/item/tool/weldingtool/hugetank,
+		/obj/item/tool/wrench,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/extinguisher/mini,
 		/obj/item/explosive/plastic,
-		/obj/item/ammo_magazine/m2c
+		/obj/item/explosive/mine,
+		/obj/item/ammo_magazine/m2c,
+		/obj/item/ammo_magazine/m56d
 	)
 	has_gamemode_skin = FALSE
 

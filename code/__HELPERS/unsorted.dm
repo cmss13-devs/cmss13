@@ -246,9 +246,10 @@
 
 	if(oldname)
 		//update the datacore records! This is goig to be a bit costly.
+		var/mob_ref = WEAKREF(src)
 		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
 			for(var/datum/data/record/R in L)
-				if(R.fields["name"] == oldname)
+				if(R.fields["ref"] == mob_ref)
 					R.fields["name"] = newname
 					break
 

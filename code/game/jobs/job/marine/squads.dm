@@ -279,13 +279,14 @@
 	return 1
 
 //proc used by the overwatch console to transfer marine to another squad
-/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M)
+/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, var/obj/item/card/id/ID)
 	if(!M.mind)
 		return 0
 	if(M.assigned_squad != src)
 		return		//not assigned to the correct squad
-	var/obj/item/card/id/C
-	C = M.wear_id
+	var/obj/item/card/id/C = ID
+	if(!istype(C))
+		C = M.wear_id
 	if(!istype(C))
 		return 0	//Abort, no ID found
 

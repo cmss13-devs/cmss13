@@ -291,8 +291,9 @@
 		if(ishuman(stasis_mob))
 			if(hasHUD(user,"medical"))
 				var/mob/living/carbon/human/H = stasis_mob
+				var/stasis_ref = WEAKREF(H)
 				for(var/datum/data/record/R in GLOB.data_core.medical)
-					if (R.fields["name"] == H.real_name)
+					if (R.fields["ref"] == stasis_ref)
 						if(!(R.fields["last_scan_time"]))
 							to_chat(user, "<span class = 'deptradio'>No scan report on record</span>\n")
 						else
@@ -320,8 +321,9 @@
 				return
 			if(ishuman(stasis_mob))
 				var/mob/living/carbon/human/H = stasis_mob
+				var/stasis_ref = WEAKREF(H)
 				for(var/datum/data/record/R in GLOB.data_core.medical)
-					if (R.fields["name"] == H.real_name)
+					if (R.fields["ref"] == stasis_ref)
 						if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
 							show_browser(usr, R.fields["last_scan_result"], "Last Medical Scan of [H]", "scanresults", "size=430x600")
 						break

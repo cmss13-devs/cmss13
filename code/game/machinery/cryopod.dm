@@ -341,17 +341,18 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	//Handle job slot/tater cleanup.
 	RoleAuthority.free_role(RoleAuthority.roles_for_mode[occupant.job], TRUE)
 
+	var/occupant_ref = WEAKREF(occupant)
 	//Delete them from datacore.
 	for(var/datum/data/record/R in GLOB.data_core.medical)
-		if((R.fields["name"] == occupant.real_name))
+		if((R.fields["ref"] == occupant_ref))
 			GLOB.data_core.medical -= R
 			qdel(R)
 	for(var/datum/data/record/T in GLOB.data_core.security)
-		if((T.fields["name"] == occupant.real_name))
+		if((T.fields["ref"] == occupant_ref))
 			GLOB.data_core.security -= T
 			qdel(T)
 	for(var/datum/data/record/G in GLOB.data_core.general)
-		if((G.fields["name"] == occupant.real_name))
+		if((G.fields["ref"] == occupant_ref))
 			GLOB.data_core.general -= G
 			qdel(G)
 

@@ -8,7 +8,6 @@
 	var/going_state="blood2"
 	cleanable_type = CLEANABLE_TRACKS
 	overlay_on_initialize = TRUE
-	cache_overlay = FALSE
 
 	var/list/steps_in
 	var/list/steps_out

@@ -8,8 +8,6 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	var/overlay_on_initialize = TRUE
 	/// A reference to the image overlayed on a turf
 	var/image/overlayed_image
-	/// Whether to cache the overlayed image or not
-	var/cache_overlay = TRUE
 	/**
 	 * The turf that the cleanable is on,
 	 * whether overlayed or physically on top of
@@ -83,20 +81,7 @@ GLOBAL_LIST_EMPTY(cleanable_decal_cache)
 	LAZYREMOVE(cleanable_turf.cleanables, cleanable_type)
 
 /obj/effect/decal/cleanable/proc/create_overlay(overlay_icon = icon, overlay_icon_state = icon_state)
-	var/cache_key = "[overlay_icon]&[overlay_icon_state]"
-	var/image/I
-	if(cache_overlay)
-		I = GLOB.cleanable_decal_cache[cache_key]
-		if(!I)
-			I = image(overlay_icon, icon_state = overlay_icon_state)
-			GLOB.cleanable_decal_cache[cache_key] = I
-	else
-		I = image(overlay_icon, icon_state = overlay_icon_state)
-	var/mutable_appearance/MA = new(I)
-	MA.layer = layer
-	MA.dir = dir
-	MA.color = color
-	I.appearance = MA
-	overlayed_image = I
+	overlayed_image = image(overlay_icon, icon_state = overlay_icon_state)
+	overlayed_image.appearance = appearance
 	cleanable_turf.overlays += overlayed_image
 	moveToNullspace() // This obj should not be on the turf for performance

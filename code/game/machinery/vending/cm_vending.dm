@@ -530,21 +530,36 @@ IN_USE						used for vending/denying
 						to_chat(H, SPAN_WARNING("That set is already taken."))
 						vend_fail()
 						return
+					if(!istype(H.wear_id, /obj/item/card/id))
+						to_chat(H, SPAN_WARNING("You must be wearing your ID card to select a specialization!"))
+						return
+					var/obj/item/card/id/ID = H.wear_id
+					if(ID.registered_ref != WEAKREF(H))
+						to_chat(H, SPAN_WARNING("You must be wearing YOUR ID card to select a specialization!"))
+						return
+					var/specialist_assignment
 					switch(p_name)
 						if("Scout Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
+							specialist_assignment = "Scout"
 						if("Sniper Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+							specialist_assignment = "Sniper"
 						if("Demolitionist Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
+							specialist_assignment = "Demo"
 						if("Heavy Grenadier Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
+							specialist_assignment = "Grenadier"
 						if("Pyro Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
+							specialist_assignment = "Pyro"
 						else
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							vend_fail()
 							return
+					ID.set_assignment(JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
 					available_specialist_sets -= p_name
 
 

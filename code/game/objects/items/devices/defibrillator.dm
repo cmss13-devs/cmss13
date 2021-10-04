@@ -146,7 +146,7 @@
 		return
 
 	var/mob/dead/observer/G = H.get_ghost()
-	if(istype(G))
+	if(istype(G) && G.client)
 		playsound_client(G.client, 'sound/effects/adminhelp_new.ogg')
 		to_chat(G, SPAN_BOLDNOTICE(FONT_SIZE_LARGE("Someone is trying to revive your body. Return to it if you want to be resurrected! \
 			(Verbs -> Ghost -> Re-enter corpse, or <a href='?src=\ref[G];reentercorpse=1'>click here!</a>)")))
@@ -211,6 +211,8 @@
 		user.track_life_saved(user.job)
 		H.handle_revive()
 		to_chat(H, SPAN_NOTICE("You suddenly feel a spark and your consciousness returns, dragging you back to the mortal plane."))
+		if(H.client?.prefs.toggles_flashing & FLASH_CORPSEREVIVE)
+			window_flash(H.client)
 	else
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Vital signs are too weak, repair damage and try again.")) //Freak case
 

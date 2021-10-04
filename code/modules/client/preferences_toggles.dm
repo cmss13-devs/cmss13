@@ -110,6 +110,54 @@
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_SOUNDSCAPE)
 
+/client/verb/toggle_roundstart_flash()
+	set name = "Toggle Roundstart Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when the round starts."
+
+	prefs.toggles_flashing ^= FLASH_ROUNDSTART
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_ROUNDSTART)
+		to_chat(src, "The icon on your taskbar will now flash when the Tip of the Round is played right before the start of the round.")
+	else
+		to_chat(src, "The icon on your taskbar will no longer flash when the Tip of the Round is played right before the start of the round.")
+
+/client/verb/toggle_roundend_flash()
+	set name = "Toggle Roundend Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when the round ends."
+
+	prefs.toggles_flashing ^= FLASH_ROUNDEND
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_ROUNDEND)
+		to_chat(src, "The icon on your taskbar will now flash when the round ends.")
+	else
+		to_chat(src, "The icon on your taskbar will no longer flash when the round ends.")
+
+/client/verb/toggle_corpserevive_flash()
+	set name = "Toggle Revival Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when your corpse gets revived."
+
+	prefs.toggles_flashing ^= FLASH_CORPSEREVIVE
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_CORPSEREVIVE)
+		to_chat(src, "The icon on your taskbar will now flash when your corpse gets revived.")
+	else
+		to_chat(src, "The icon on your taskbar will no longer flash when your corpse gets revived.")
+
+/client/verb/toggle_adminpm_flash()
+	set name = "Toggle Admin PM Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when you an admin messages you."
+
+	prefs.toggles_flashing ^= FLASH_ADMINPM
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_ADMINPM)
+		to_chat(src, "The icon on your taskbar will now flash when an admin messages you.")
+	else
+		to_chat(src, "The icon on your taskbar will no longer flash when an admin messages you. Warning, use at own risk.")
+
 //be special
 /client/verb/toggle_be_special(role in be_special_flags)
 	set name = "Toggle SpecialRole Candidacy"

@@ -279,3 +279,18 @@ proc/isInSight(var/atom/A, var/atom/B)
 		min(list_y),
 		max(list_x),
 		max(list_y))
+
+// makes peoples byond icon flash on the taskbar
+/proc/window_flash(client/C)
+	if(ismob(C))
+		var/mob/M = C
+		if(M.client)
+			C = M.client
+	if(!C)
+		return
+	winset(C, "mainwindow", "flash=5")
+
+/proc/flash_clients()
+	for(var/client/C as anything in GLOB.clients)
+		if(C.prefs?.toggles_flashing & FLASH_ROUNDSTART)
+			window_flash(C)

@@ -833,13 +833,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			ref = WEAKREF(H)
 		GLOB.data_core.manifest_modify(name, ref, null, null, "*Deceased*")
 
-/mob/dead/observer/verb/view_stats()
-	set category = "Ghost.View"
-	set name = "View Playtimes"
-	set desc = "View your playtimes."
-
-	if(client && client.player_entity)
-		client.player_data.ui_interact(src)
 
 /mob/dead/observer/verb/view_kill_feed()
 	set category = "Ghost.View"

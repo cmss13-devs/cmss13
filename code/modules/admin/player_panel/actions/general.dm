@@ -190,6 +190,15 @@
 	user.debug_variables(target)
 	return TRUE
 
+/datum/player_action/access_playtimes
+	action_tag = "access_playtimes"
+	name = "Access Playtimes"
+
+/datum/player_action/access_playtimes/act(var/client/user, var/mob/target, var/list/params)
+	target?.client?.player_data.ui_interact(user.mob)
+
+	return TRUE
+
 
 /datum/player_action/access_admin_datum
 	action_tag = "access_admin_datum"

@@ -94,6 +94,10 @@
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 	src.add_fingerprint(user)
 
+/obj/item/card/id/proc/set_assignment(var/new_assignment)
+	assignment = new_assignment
+	name = "[registered_name]'s ID Card ([assignment])"
+
 /obj/item/card/id/GetAccess()
 	return access
 

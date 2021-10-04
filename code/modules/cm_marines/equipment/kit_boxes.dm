@@ -174,42 +174,55 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	else
 		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
 
-/obj/item/spec_kit/proc/select_and_spawn(mob/user)
+/obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
+	if(!istype(user))
+		to_chat(user, SPAN_WARNING("You can't use \the [src]!"))
+		return
+
 	var/selection = tgui_input_list(user, "Pick your equipment", "Specialist Kit Selection", kits)
 	if(!selection)
 		return FALSE
 	if(!kits[selection] || kits[selection] <= 0)
 		to_chat(user, SPAN_NOTICE("No more kits of this type may be chosen!!"))
 		return FALSE
+	if(!istype(user.wear_id, /obj/item/card/id))
+		to_chat(user, SPAN_WARNING("You must be wearing your ID card to select a specialization!"))
+		return
+	var/obj/item/card/id/ID = user.wear_id
+	if(ID.registered_ref != WEAKREF(user))
+		to_chat(user, SPAN_WARNING("You must be wearing YOUR ID card to select a specialization!"))
+		return
 	var/turf/T = get_turf(loc)
+	var/obj/item/storage/box/spec/spec_box
+	var/specialist_assignment
 	switch(selection)
 		if("Pyro")
-			new /obj/item/storage/box/spec/pyro (T)
-			kits["Pyro"] --
+			spec_box = new /obj/item/storage/box/spec/pyro(T)
+			specialist_assignment = "Pyro"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
-			return TRUE
 		if("Grenadier")
-			new /obj/item/storage/box/spec/heavy_grenadier (T)
-			kits["Grenadier"] --
+			spec_box = new /obj/item/storage/box/spec/heavy_grenadier(T)
+			specialist_assignment = "Grenadier"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
-			return TRUE
 		if("Sniper")
-			new /obj/item/storage/box/spec/sniper (T)
-			kits["Sniper"] --
+			spec_box = new /obj/item/storage/box/spec/sniper(T)
+			specialist_assignment = "Sniper"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
-			return TRUE
 		if("Scout")
-			new /obj/item/storage/box/spec/scout (T)
-			kits["Scout"] --
+			spec_box = new /obj/item/storage/box/spec/scout(T)
+			specialist_assignment = "Scout"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
 			user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
-			return TRUE
 		if("Demo")
-			new /obj/item/storage/box/spec/demolitionist (T)
-			kits["Demo"] --
+			spec_box = new /obj/item/storage/box/spec/demolitionist(T)
+			specialist_assignment = "Demo"
 			user.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
 			user.skills.set_skill(SKILL_ENGINEER, SKILL_ENGINEER_TRAINED)
-			return TRUE
+	if(specialist_assignment)
+		user.put_in_hands(spec_box)
+		ID.set_assignment(JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+		GLOB.data_core.manifest_modify(user.real_name, WEAKREF(user), ID.assignment)
+		return TRUE
 	return FALSE
 
 

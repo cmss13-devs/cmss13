@@ -797,10 +797,6 @@
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
-	if(!linked_shuttle.transit_gun_mission)
-		to_chat(user, SPAN_WARNING("[src] requires a flyby flight to be used."))
-		return
-
 	if(busy_winch)
 		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
 		return
@@ -874,10 +870,6 @@
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
-	if(!linked_shuttle.transit_gun_mission)
-		to_chat(user, SPAN_WARNING("[src] requires a flyby flight to be used."))
-		return
-
 	if(busy_winch)
 		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
 		return
@@ -929,10 +921,6 @@
 		to_chat(user, SPAN_WARNING("[src] can only be used while in flight."))
 		return
 
-	if(!linked_shuttle.transit_gun_mission)
-		to_chat(user, SPAN_WARNING("[src] requires a flyby flight to be used."))
-		return
-
 	if(busy_winch)
 		to_chat(user, SPAN_WARNING(" The winch is already in motion."))
 		return
@@ -972,7 +960,7 @@
 	else if(!ship_base) //uninstalled midway
 		fail = TRUE
 
-	else if(!linked_shuttle || linked_shuttle.moving_status != SHUTTLE_INTRANSIT || !linked_shuttle.transit_gun_mission)
+	else if(!linked_shuttle || linked_shuttle.moving_status != SHUTTLE_INTRANSIT)
 		fail = TRUE
 
 	if(fail)

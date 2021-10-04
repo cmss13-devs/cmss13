@@ -603,18 +603,23 @@
 			victim.apply_damage(15, BRUTE, L, sharp = FALSE)
 		victim.add_flay_overlay(stage = 1)
 
-		if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+		if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 			var/obj/limb/head/v_head = victim.get_limb("head")
 			if(v_head) //they might be beheaded
-				to_chat(user, SPAN_WARNING("You slam \the [src] into [victim]'s scalp, ripping it from the head, pocketing the scalp on yourself afterwards."))
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
 				victim.apply_damage(10, BRUTE, v_head, sharp = FALSE)
 				v_head.disfigured = TRUE
-				victim.h_style = "Bald"
-				victim.update_hair() //tear the hair off with the scalp
+				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
+					to_chat(user, SPAN_WARNING("You make some rough cuts on [victim]'s head and face with \the [src]."))
+				else
+					to_chat(user, SPAN_WARNING("You use \the [src] to cut around [victim]'s hairline, then rip \his scalp from \his head."))
+					var/obj/item/scalp/cut_scalp = new(get_turf(user), victim, user) //Create a scalp of the victim at the user's feet.
+					user.put_in_inactive_hand(cut_scalp) //Put it in the user's offhand if possible.
+					victim.h_style = "Bald"
+					victim.update_hair() //tear the hair off with the scalp
 			playsound(loc, 'sound/weapons/slashmiss.ogg', 25)
 
-			if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+			if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 				to_chat(user, SPAN_WARNING("You jab \the [src] into the flesh cuts, using them to tear off most of the skin, the remainder skin hanging off the flesh."))
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
@@ -625,7 +630,7 @@
 				victim.update_hair() //then rip the beard off along the skin
 				victim.add_flay_overlay(stage = 2)
 
-				if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+				if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 					to_chat(user, SPAN_WARNING("You completely flay [victim], sloppily ripping most remaining flesh and skin off the body. Use rope to hang them from the ceiling."))
 					playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 					create_leftovers(victim, has_meat = TRUE, skin_amount = 2)

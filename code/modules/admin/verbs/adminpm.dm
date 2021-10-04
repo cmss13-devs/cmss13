@@ -89,6 +89,8 @@
 
 	//play the recieving admin the adminhelp sound
 	playsound_client(C, 'sound/effects/adminhelp-reply.ogg')
+	if(C.prefs.toggles_flashing & FLASH_ADMINPM)
+		window_flash(C)
 
 	log_admin("PM: [key_name(src)]->[key_name(C)]: [msg]")
 	GLOB.STUI.staff.Add("PM: [key_name(src)]->[key_name(C)]: [msg]<br>")

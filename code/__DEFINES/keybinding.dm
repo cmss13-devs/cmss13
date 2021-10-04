@@ -26,6 +26,8 @@
 #define COMSIG_KB_CARBON_SELECTGRABINTENT_DOWN "keybinding_carbon_selectgrabintent_down"
 #define COMSIG_KB_CARBON_SELECTHARMINTENT_DOWN "keybinding_carbon_selectharmintent_down"
 #define COMSIG_KB_CARBON_GIVEITEM_DOWN "keybinding_carbon_giveitem_down"
+#define COMSIG_KB_CARBON_WARCRY "keybinding_carbon_warcry"
+#define COMSIG_KB_CARBON_MEDIC "keybinding_carbon_medic"
 
 //Client
 #define COMSIG_KB_CLIENT_GETHELP_DOWN "keybinding_client_gethelp_down"

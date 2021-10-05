@@ -397,3 +397,5 @@
 #define COMSIG_MOB_DEAFENED "mob_deafened"
 //from /mob/proc/on_deafness_loss()
 #define COMSIG_MOB_REGAINED_HEARING "mob_regained_hearing"
+//from /mob/living/carbon/human/equip_to_slot()
+#define COMSIG_HUMAN_EQUIPPED_ITEM "human_equipped_item"

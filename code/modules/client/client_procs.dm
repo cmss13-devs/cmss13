@@ -321,6 +321,11 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		winset(src, "infowindow.changelog", "background-color=#ED9F9B;font-style=bold")
 
+	if(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
+		toggle_fullscreen(TRUE)
+	else
+		toggle_fullscreen(FALSE)
+
 
 	var/file = file2text("config/donators.txt")
 	var/lines = splittext(file, "\n")
@@ -561,3 +566,10 @@ GLOBAL_LIST_INIT(whitelisted_client_procs, list(
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=\"me\\n.typing\"")
 				if("Whisper")
 					winset(src, "srvkeybinds-[REF(key)]", "parent=default;name=[key];command=whisper")
+
+/client/proc/toggle_fullscreen(new_value)
+	if(new_value)
+		winset(src, "mainwindow", "is-maximized=false;can-resize=false;titlebar=false;menu=menu")
+	else
+		winset(src, "mainwindow", "is-maximized=false;can-resize=true;titlebar=true;menu=menu")
+	winset(src, "mainwindow", "is-maximized=true")

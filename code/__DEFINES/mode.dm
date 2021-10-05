@@ -70,6 +70,8 @@
 
 #define TOGGLE_ALTERNATING_DUAL_WIELD		(1<<9) // Whether dual-wielding fires both guns at once or swaps between them.
 
+#define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
+
 //=================================================
 
 var/list/be_special_flags = list(

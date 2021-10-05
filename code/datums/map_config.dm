@@ -52,6 +52,8 @@
 
 	var/force_mode
 
+	var/disable_ship_map = FALSE
+
 	var/list/monkey_types = list(/mob/living/carbon/human/monkey)
 
 	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
@@ -214,6 +216,9 @@
 
 	if(json["force_mode"])
 		force_mode = json["force_mode"]
+
+	if(json["disable_ship_map"])
+		disable_ship_map = json["disable_ship_map"]
 
 	if(json["announce_text"])
 		announce_text = json["announce_text"]

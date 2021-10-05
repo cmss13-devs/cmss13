@@ -26,6 +26,11 @@ menu "menu"
 		category = "&File"
 		saved-params = "is-checked"
 	elem
+		name = "&Options and Messages"
+		command = ".options"
+		category = "&File"
+		saved-params = "is-checked"
+	elem
 		name = "&Quit"
 		command = ".quit"
 		category = "&File"

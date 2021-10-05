@@ -230,6 +230,8 @@ GLOBAL_DATUM_INIT(data_core, /obj/effect/datacore, new)
 			foundrecord.fields["real_rank"] = rank
 		if (p_stat)
 			foundrecord.fields["p_stat"] = p_stat
+		return TRUE
+	return FALSE
 
 /obj/effect/datacore/proc/manifest_inject(var/mob/living/carbon/human/H)
 	var/assignment

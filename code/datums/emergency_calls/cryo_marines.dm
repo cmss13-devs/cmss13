@@ -54,12 +54,6 @@
 
 	sleep(10)
 	to_chat(H, SPAN_BOLD("Objectives: [objectives]"))
-	echo_squad.put_marine_in_squad(H, H.wear_id)
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
-
-	GLOB.data_core.manifest_inject(H) //Put people in crew manifest
 
 /datum/emergency_call/cryo_squad/platoon
 	name = "Marine Cryo Reinforcements (Platoon)"

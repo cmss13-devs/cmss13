@@ -618,6 +618,38 @@ cases. Override_icon_state should be a list.*/
 		return FALSE //Unsupported slot
 		//END HUMAN
 
+///Checks if an item can be put in a slot (string) based on their slot flags (bit flags)
+/obj/item/proc/is_valid_slot(slot, ignore_non_flags)
+	switch(slot)
+		if(WEAR_FACE)
+			return flags_equip_slot & SLOT_FACE
+		if(WEAR_BACK)
+			return flags_equip_slot & SLOT_BACK
+		if(WEAR_JACKET)
+			return flags_equip_slot & SLOT_OCLOTHING
+		if(WEAR_HANDS)
+			return flags_equip_slot & SLOT_HANDS
+		if(WEAR_FEET)
+			return flags_equip_slot & SLOT_FEET
+		if(WEAR_WAIST)
+			return flags_equip_slot & SLOT_WAIST
+		if(WEAR_EYES)
+			return flags_equip_slot & SLOT_EYES
+		if(WEAR_HEAD)
+			return flags_equip_slot & SLOT_HEAD
+		if(WEAR_L_EAR, WEAR_R_EAR)
+			return flags_equip_slot & SLOT_EAR
+		if(WEAR_BODY)
+			return flags_equip_slot & SLOT_ICLOTHING
+		if(WEAR_ID)
+			return flags_equip_slot & SLOT_ID
+		if(WEAR_L_STORE, WEAR_R_STORE)
+			if((flags_equip_slot & SLOT_NO_STORE) || !(flags_equip_slot & SLOT_STORE))
+				return FALSE
+			return TRUE
+		else
+			return !ignore_non_flags
+
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
 	set category = "Object"

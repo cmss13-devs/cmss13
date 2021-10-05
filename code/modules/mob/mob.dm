@@ -239,7 +239,7 @@
 		INVOKE_ASYNC(src, .proc/equip_to_slot_timed, W, slot, redraw_mob, permanent, start_loc)
 		return TRUE
 
-	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
+	equip_to_slot(W, slot) //This proc should not ever fail.
 	if(permanent)
 		W.flags_inventory |= CANTSTRIP
 		W.flags_item |= NODROP
@@ -255,7 +255,7 @@
 /mob/proc/equip_to_slot_timed(obj/item/W, slot, redraw_mob = 1, permanent = 0, start_loc)
 	if(!do_after(src, W.time_to_equip, INTERRUPT_ALL, BUSY_ICON_GENERIC))
 		to_chat(src, "You stop putting on \the [W]")
-	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
+	equip_to_slot(W, slot) //This proc should not ever fail.
 	if(permanent)
 		W.flags_inventory |= CANTSTRIP
 		W.flags_item |= NODROP

@@ -133,8 +133,8 @@
 	SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
 	targ_x = deobfuscate_x(temp_targ_x)
 	targ_y = deobfuscate_y(temp_targ_y)
-	var/offset_x_max = round(abs((targ_x + dial_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
-	var/offset_y_max = round(abs((targ_y + dial_y) - y)/offset_per_turfs)
+	var/offset_x_max = round(abs((targ_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
+	var/offset_y_max = round(abs((targ_y) - y)/offset_per_turfs)
 	offset_x = rand(-offset_x_max, offset_x_max)
 	offset_y = rand(-offset_y_max, offset_y_max)
 

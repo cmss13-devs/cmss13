@@ -49,7 +49,11 @@
 		return
 	if(speaker_name != speaker.real_name && speaker.real_name)
 		speaker_name = "[speaker.real_name] ([speaker_name])"
-	track = "(<a href='byond://?src=\ref[src];track=\ref[speaker]'>follow</a>) "
+	track = "(<a href='byond://?src=\ref[src];track=\ref[speaker]'>F</a>) "
+	if(istype(speaker, /mob/living/carbon/Xenomorph/Queen))
+		var/mob/hologram/queen/queen_eye = speaker?.client?.eye
+		if(istype(queen_eye))
+			track += "(<a href='byond://?src=\ref[src];track=\ref[queen_eye]'>E</a>) "
 	if(client && client.prefs && client.prefs.toggles_chat & CHAT_GHOSTEARS && speaker.z == z && get_dist(speaker, src) <= world_view_size)
 		message = "<b>[message]</b>"
 

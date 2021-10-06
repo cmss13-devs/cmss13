@@ -32,7 +32,6 @@
 	icon_state = "meson"
 	actions_types = list(/datum/action/item_action/toggle)
 
-
 /obj/item/clothing/glasses/thermal/monocle
 	name = "Thermoncle"
 	desc = "A monocle thermal."

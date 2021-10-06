@@ -1534,7 +1534,7 @@
 	name = "anti-tank sniper bullet"
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 95
+	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 
 
@@ -1542,8 +1542,14 @@
 	name = "supersonic sniper bullet"
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 95
-	shell_speed = AMMO_SPEED_TIER_6
+	damage = 125
+	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
+
+/datum/ammo/bullet/sniper/elite/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+	    BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
 
 /*
 //======

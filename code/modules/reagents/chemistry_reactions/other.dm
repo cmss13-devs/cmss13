@@ -147,23 +147,14 @@
 	id = "flash_powder"
 	result = null
 	required_reagents = list("aluminum" = 1, "potassium" = 1, "sulfur" = 1 )
-	result_amount = null
+	result_amount = 3
 
 	on_reaction(var/datum/reagents/holder, var/created_volume)
 		var/location = get_turf(holder.my_atom)
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(2, 1, location)
 		s.start()
-		for(var/mob/living/carbon/M in viewers(world_view_size, location))
-			switch(get_dist(M, location))
-				if(0 to 3)
-					if(M.flash_eyes())
-						M.KnockDown(15)
-
-				if(4 to 5)
-					if(M.flash_eyes())
-						M.Stun(5)
-
+		new /obj/item/device/flashlight/flare/on/illumination/chemical(location, created_volume)
 
 /datum/chemical_reaction/chemfire
 	name = "Napalm"

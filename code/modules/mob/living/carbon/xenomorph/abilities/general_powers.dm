@@ -232,7 +232,7 @@
 
 		var/choice = tgui_input_list(X, "Choose a pheromone", "Pheromone Menu", X.caste.aura_allowed + "help" + "cancel")
 		if(choice == "help")
-			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
+			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
 			return
 		if(!choice || choice == "cancel" || X.current_aura || !X.check_state(1)) //If they are stacking windows, disable all input
 			return

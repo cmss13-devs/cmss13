@@ -84,7 +84,7 @@
 		else if(hud_type && slot == WEAR_EYES)
 			var/datum/mob_hud/MH = huds[hud_type]
 			MH.add_hud_to(user)
-	
+
 	..()
 
 /obj/item/clothing/glasses/dropped(mob/living/carbon/human/user)
@@ -214,6 +214,17 @@
 	toggleable = 1
 	actions_types = list(/datum/action/item_action/toggle)
 
+/obj/item/clothing/glasses/m42c_goggles
+	name = "\improper M42C special operations sight"
+	desc = "A specialized variation of the M42 scout sight system, intended for use with the high-power M42C anti-tank sniper rifle. Allows for highlighted imaging of surroundings, as well as detection of thermal signatures even from a great distance. Click it to toggle."
+	icon = 'icons/obj/items/clothing/glasses.dmi'
+	icon_state = "m56_goggles"
+	deactive_state = "m56_goggles_0"
+	vision_flags = SEE_TURFS|SEE_MOBS
+	darkness_view = 12
+	toggleable = TRUE
+	actions_types = list(/datum/action/item_action/toggle)
+
 /obj/item/clothing/glasses/disco_fever
 	name = "malfunctioning AR visor"
 	desc = "Someone tried to watch a black-market Arcturian blue movie on this augmented-reality headset and now it's useless. Unlike you, Disco will never die.\nThere's some kind of epilepsy warning sticker on the side."
@@ -234,7 +245,7 @@
 	obj_glass_overlay.icon_state = "discovision_glass"
 	obj_glass_overlay.layer = FLOAT_LAYER
 	vis_contents += obj_glass_overlay
-	
+
 	mob_glass_overlay = new()
 	mob_glass_overlay.icon = icon
 	mob_glass_overlay.vis_flags = VIS_INHERIT_ID|VIS_INHERIT_DIR
@@ -249,7 +260,7 @@
 		"cyan" = color_matrix_recolor_red("#2AC1DB"),
 		"blue" = color_matrix_recolor_red("#005BF7"),
 		"indigo" = color_matrix_recolor_red("#9608D4"),
-		)	
+		)
 
 	obj_glass_overlay.color = onmob_colors["base"]
 	mob_glass_overlay.color = onmob_colors["base"]
@@ -275,7 +286,7 @@
 	//User client has its looping animation ended by the login matrix update when ghosting.
 	//For some reason the obj overlay doesn't end the loop properly when set to 0 seconds, but as long as the previous loop is ended the new one should
 	//transition smoothly from whatever colour it current has.
-	animate(obj_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS) 
+	animate(obj_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
 	animate(mob_glass_overlay, color = onmob_colors["base"], time = 0.3 SECONDS)
 
 	addtimer(CALLBACK(src, .proc/apply_discovision, user), 0.1 SECONDS)

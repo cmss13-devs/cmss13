@@ -18,6 +18,7 @@
 	var/max_amount //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/stack_id //used to determine if two stacks are of the same kind.
 	var/amount_sprites = FALSE //does it have sprites for extra amount, like metal, plasteel, or wood
+	var/display_maptext = TRUE //does it show amount on top of the icon
 	//Coords for contents display, to make it play nice with inventory borders.
 	maptext_x = 4
 	maptext_y = 3
@@ -34,7 +35,7 @@
 Also change the icon to reflect the amount of sheets, if possible.*/
 /obj/item/stack/update_icon()
 	..()
-	if(isstorage(loc) || ismob(loc))
+	if((isstorage(loc) || ismob(loc)) && display_maptext)
 		maptext = "<span class='langchat'>[(amount > 1)? "[amount]" : ""]</span>"
 	else
 		maptext = ""

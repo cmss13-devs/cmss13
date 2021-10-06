@@ -3521,7 +3521,7 @@
 "arZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "asd" = (
@@ -5472,7 +5472,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "aKv" = (
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},

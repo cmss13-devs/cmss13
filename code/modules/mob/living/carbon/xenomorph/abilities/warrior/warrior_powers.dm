@@ -177,22 +177,12 @@
 			to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
 			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
+		if(isHumanStrict(H))
+			H.Slow(2)
 		if(isYautja(H))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
 		else if(L.status & LIMB_ROBOT)
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
-		else
-			var/fracture_chance = 100
-			switch(L.body_part)
-				if(BODY_FLAG_HEAD)
-					fracture_chance = 20
-				if(BODY_FLAG_CHEST)
-					fracture_chance = 30
-				if(BODY_FLAG_GROIN)
-					fracture_chance = 40
-
-			if(prob(fracture_chance))
-				L.fracture()
 
 
 	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")

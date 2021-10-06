@@ -244,19 +244,20 @@
 	actions = list()	//just pull it manually, neckbeard.
 	raillight_compatible = 0
 	var/fuel = 0
+	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(80 SECONDS, 100 SECONDS) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
+	fuel = rand(1600 SECONDS, 2000 SECONDS)
 
 /obj/item/device/flashlight/flare/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/device/flashlight/flare/process()
-	fuel = max(fuel - 1, 0)
-	if(!fuel || !on)
+/obj/item/device/flashlight/flare/process(delta_time)
+	fuel -= fuel_rate * delta_time
+	if(fuel <= 0 || !on)
 		burn_out()
 
 /obj/item/device/flashlight/flare/proc/burn_out()
@@ -315,6 +316,39 @@
 	damtype = "fire"
 	START_PROCESSING(SSobj, src)
 
+//Special flare subtype for the illumination flare shell
+//Acts like a flare, just even stronger, and set length
+/obj/item/device/flashlight/flare/on/illumination
+	name = "illumination flare"
+	desc = "It's really bright, and unreachable."
+	icon_state = "" //No sprite
+	invisibility = 101 //Can't be seen or found, it's "up in the sky"
+	mouse_opacity = 0
+	brightness_on = 7 //Way brighter than most lights
+
+/obj/item/device/flashlight/flare/on/illumination/Initialize()
+	. = ..()
+	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+
+/obj/item/device/flashlight/flare/on/illumination/turn_off()
+	..()
+	qdel(src)
+
+/obj/item/device/flashlight/flare/on/illumination/ex_act(severity)
+	return //Nope
+
+/obj/item/device/flashlight/flare/on/illumination/chemical
+	name = "chemical light"
+	brightness_on = 0
+
+/obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, var/amount)
+	. = ..()
+	brightness_on = round(amount * 0.04)
+	if(!brightness_on)
+		return INITIALIZE_HINT_QDEL
+	SetLuminosity(brightness_on)
+	fuel = amount * 5 SECONDS
+
 /obj/item/device/flashlight/slime
 	gender = PLURAL
 	name = "glowing slime"
@@ -357,7 +391,7 @@
 
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
-	fuel = rand(80, 100)
+	fuel = rand(160 SECONDS, 200 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))

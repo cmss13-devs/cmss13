@@ -1563,7 +1563,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	max_range = 12
-	accuracy = HIT_ACCURACY_TIER_3
+	accuracy = HIT_ACCURACY_TIER_4
 	damage = 30
 	penetration = 0
 
@@ -1572,7 +1572,7 @@
 	icon_state = "bullet"
 
 	accurate_range = 12
-	accuracy = HIT_ACCURACY_TIER_1
+	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_8
 	damage_armor_punch = 1

@@ -22622,6 +22622,14 @@
 	icon_state = "wood"
 	},
 /area/bigredv2/outside/office_complex)
+"bgP" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/floodlight/landing,
+/turf/open/floor{
+	icon_state = "asteroidplating";
+	tag = "icon-asteroidplating"
+	},
+/area/bigredv2/outside/space_port)
 "bgQ" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -37293,7 +37301,7 @@ aaf
 aaf
 aaf
 aaf
-aag
+aaf
 aaf
 aaf
 aaf
@@ -37510,7 +37518,7 @@ adg
 adw
 adJ
 aeg
-aeg
+bgP
 aeg
 aeg
 agn
@@ -38045,9 +38053,9 @@ ayf
 ayf
 ayf
 ayf
-aao
-aao
-aao
+ayf
+ayf
+ayf
 aao
 aao
 aao
@@ -38261,10 +38269,10 @@ uSC
 tVp
 fFO
 cVY
+cVY
+cVY
+uSC
 ayf
-aao
-aao
-aao
 aao
 aao
 aao
@@ -38478,9 +38486,9 @@ vKv
 vKv
 vKv
 vKv
-ayf
-ayf
-ayf
+vKv
+vKv
+vKv
 ayf
 aao
 aao
@@ -40114,7 +40122,7 @@ aaG
 aaT
 aap
 aaf
-aaf
+aag
 aaf
 aaf
 acJ
@@ -40331,7 +40339,7 @@ aam
 vvi
 aam
 aam
-aag
+aam
 aam
 aam
 ago

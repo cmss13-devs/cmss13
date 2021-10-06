@@ -2374,16 +2374,18 @@
 /turf/open/gm/river/desert/deep/covered,
 /area/desert_dam/exterior/river/riverside_central_north)
 "ahj" = (
-/obj/effect/decal/warning_stripes{
-	icon_state = "N";
-	tag = "icon-N"
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
 	},
-/obj/structure/largecrate/random/secure,
+/obj/structure/largecrate/random/barrel/blue,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "ahk" = (
-/obj/structure/largecrate/random/barrel/blue,
-/turf/open/asphalt,
+/obj/effect/decal/sand_overlay/sand1,
+/obj/structure/prop/dam/truck/damaged,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "ahl" = (
 /obj/structure/desertdam/decals/road_stop{
@@ -2465,7 +2467,7 @@
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
 	},
-/obj/structure/prop/dam/truck/damaged,
+/obj/structure/largecrate/random/secure,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_northwest)
 "ahy" = (
@@ -2474,11 +2476,11 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "ahz" = (
-/obj/structure/desertdam/decals/road_edge{
-	icon_state = "road_edge_decal3"
-	},
+/obj/effect/decal/sand_overlay/sand1,
 /obj/structure/largecrate/random/case/small,
-/turf/open/asphalt,
+/turf/open/asphalt/cement_sunbleached{
+	icon_state = "cement_sunbleached18"
+	},
 /area/desert_dam/exterior/valley/valley_northwest)
 "ahA" = (
 /turf/open/floor/filtrationside,
@@ -2539,13 +2541,6 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_wilderness)
-"ahL" = (
-/obj/effect/decal/sand_overlay/sand1,
-/obj/structure/largecrate/random/secure,
-/turf/open/asphalt/cement_sunbleached{
-	icon_state = "cement_sunbleached18"
-	},
-/area/desert_dam/exterior/valley/valley_northwest)
 "ahM" = (
 /obj/structure/desertdam/decals/road_edge{
 	icon_state = "road_edge_decal3"
@@ -80058,9 +80053,9 @@ aiZ
 aIa
 apz
 aql
-ahj
+ara
 ahx
-bdW
+ahk
 aim
 dTs
 dTs
@@ -80292,9 +80287,9 @@ aiZ
 aIa
 apz
 aqg
-ahk
-asa
-ahL
+aqg
+ahj
+bdW
 aiZ
 aUL
 dTs
@@ -80527,9 +80522,9 @@ aIa
 apz
 aqg
 aqg
+asa
 ahz
-bdW
-aiZ
+acW
 aiZ
 apu
 apt

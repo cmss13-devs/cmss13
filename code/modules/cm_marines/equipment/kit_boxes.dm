@@ -325,7 +325,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/weapon/gun/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg(src)
 	new /obj/item/attachable/bipod(src)
-	new /obj/item/folding_barricade(src)
+	new /obj/item/stack/folding_barricade/three(src)
 	new /obj/item/clothing/glasses/welding(src)
 	new /obj/item/tool/weldingtool(src)
 
@@ -353,7 +353,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/tool/crowbar(src)
 	new /obj/item/clothing/glasses/welding(src)
 	new /obj/item/storage/pouch/tools/pfc(src)
-	new /obj/item/folding_barricade(src)
+	new /obj/item/stack/folding_barricade/three(src)
 	new /obj/item/explosive/mine(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)

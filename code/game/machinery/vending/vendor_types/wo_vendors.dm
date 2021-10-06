@@ -262,5 +262,5 @@
 		list("M89-S Signal Flare Pack", round(scale * 2), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 20), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
-		list("MB-6 Folding Barricade", round(scale * 4), /obj/item/folding_barricade, VENDOR_ITEM_REGULAR)
+		list("MB-6 Folding Barricades (x3)", round(scale * 1), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR)
 		)

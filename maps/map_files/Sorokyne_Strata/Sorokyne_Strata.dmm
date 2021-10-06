@@ -6007,7 +6007,7 @@
 /area/strata/ag/interior/outpost/security)
 "aqz" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -6406,7 +6406,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -6414,7 +6414,7 @@
 /area/strata/ag/interior/outpost/security)
 "arE" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/structure/machinery/camera/autoname{
@@ -6826,7 +6826,7 @@
 /area/strata/ag/interior/outpost/security)
 "asG" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata{
@@ -28905,7 +28905,7 @@
 /area/strata/ag/interior/administration)
 "bRw" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -29317,7 +29317,7 @@
 /area/strata/ag/interior/research_decks/security)
 "bUV" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},

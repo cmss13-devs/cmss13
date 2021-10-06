@@ -57,13 +57,10 @@
 
 /datum/supply_packs/folding_barricades
 	contains = list(
-					/obj/item/folding_barricade,
-					/obj/item/folding_barricade,
-					/obj/item/folding_barricade,
-					/obj/item/folding_barricade
+					/obj/item/stack/folding_barricade/three
 					)
-	name = "Folding Barricades (x4)"
-	cost = RO_PRICE_VERY_PRICY
+	name = "Folding Barricades (x3)"
+	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate/supply
 	containername = "\improper folding barricades crate"
 	group = "Engineering"

@@ -168,9 +168,9 @@
 	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
 	var/egg_planting_range = 15
 	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
-	var/construction_allowed = XENO_QUEEN //Who can place construction nodes for special structures
+	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
 	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
-	var/unnesting_allowed = FALSE
+	var/unnesting_allowed = TRUE
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
@@ -839,6 +839,7 @@
 	color = "#828296"
 	ui_color = "#828296"
 
+	construction_allowed = XENO_QUEEN
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE

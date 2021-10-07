@@ -451,7 +451,8 @@
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 			user.visible_message("[user] rotates the [src].","You rotate the [src].")
 			setDir(turn(dir, -90))
-			update_pixels(user)
+			if(operator)
+				update_pixels(operator)
 		return
 
 	if(HAS_TRAIT(O, TRAIT_TOOL_SCREWDRIVER)) // Lets take it apart.

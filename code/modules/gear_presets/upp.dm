@@ -895,3 +895,41 @@
 	return
 
 //*****************************************************************************************************/
+
+/datum/equipment_preset/upp/doctor
+	name = "UPP Doctor"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	skills = /datum/skills/upp/combat_medic
+	assignment = JOB_UPP_LT_DOKTOR
+	rank = JOB_UPP_LT_DOKTOR
+	role_comm_title = "Lt. Med."
+	paygrade = "UO1M"
+
+/datum/equipment_preset/upp/doctor/load_gear(mob/living/carbon/human/H)
+	//back
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack/upp, WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/defibrillator, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/firstaid/adv, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/roller/surgical, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/reagent_container/food/snacks/upp, WEAR_IN_BACK)
+	//face
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/hud/health, WEAR_EYES)
+	//head
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/uppcap/ushanka, WEAR_HEAD)
+	//body
+	var/obj/item/clothing/under/marine/veteran/UPP/medic/UPP = new()
+	var/obj/item/clothing/accessory/storage/surg_vest/equipped/W = new()
+	UPP.attach_accessory(H, W)
+	H.equip_to_slot_or_del(UPP, WEAR_BODY)
+	//waist
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/lifesaver/upp/full, WEAR_WAIST)
+	//limbs
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
+	//póckets
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/frt_kit/full, WEAR_L_STORE)

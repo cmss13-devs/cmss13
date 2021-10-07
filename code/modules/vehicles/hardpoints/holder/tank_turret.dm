@@ -158,7 +158,7 @@
 		var/mob/user = C.seats[VEHICLE_GUNNER]
 		if(user && user.client)
 			user = C.seats[VEHICLE_GUNNER]
-			user.client.change_view(AM.view_buff)
+			user.client.change_view(AM.view_buff, src)
 
 			switch(dir)
 				if(NORTH)

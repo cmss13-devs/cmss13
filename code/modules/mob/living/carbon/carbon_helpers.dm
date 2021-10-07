@@ -40,3 +40,17 @@
 
 /mob/living/carbon/Xenomorph/medic_macro()
 	emote("needhelp", player_caused = TRUE)
+
+/mob/living/carbon/check_view_change(var/new_size, var/atom/source)
+	LAZYREMOVE(view_change_sources, source)
+	var/highest_view = 0
+	for(var/view_source as anything in view_change_sources)
+		var/view_rating = view_change_sources[view_source]
+		if(highest_view < view_rating)
+			highest_view = view_rating
+	if(source && new_size != world_view_size)
+		LAZYSET(view_change_sources, source, new_size)
+	if(new_size < highest_view)
+		new_size = highest_view
+	return new_size
+

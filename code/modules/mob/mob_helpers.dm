@@ -416,3 +416,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
+
+/mob/proc/check_view_change(var/new_size, var/atom/source)
+	return new_size

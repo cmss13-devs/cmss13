@@ -783,7 +783,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 		qdel(zoom_event_handler)
 	//General reset in case anything goes wrong, the view will always reset to default unless zooming in.
 	if(user.client)
-		user.client.change_view(world_view_size)
+		user.client.change_view(world_view_size, src)
 		user.client.pixel_x = 0
 		user.client.pixel_y = 0
 
@@ -797,7 +797,7 @@ keep_zoom - do we keep zoom during movement. be careful with setting this to 1
 	user.zoom_cooldown = world.time + 20
 
 	if(user.client)
-		user.client.change_view(viewsize)
+		user.client.change_view(viewsize, src)
 
 		if(zoom_event_handler)
 			qdel(zoom_event_handler)

@@ -42,7 +42,7 @@
 		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
 		if(M.client)
-			M.client.change_view(7)
+			M.client.change_view(world_view_size, src)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 	else
@@ -51,15 +51,15 @@
 			return
 		vehicle.set_seated_mob(seat, M)
 		if(M && M.client)
-			M.client.change_view(8)
+			M.client.change_view(8, src)
 
 /obj/structure/bed/chair/comfy/vehicle/clicked(mob/user, list/mods) // If you're buckled, you can shift-click on the seat in order to return to camera-view
 	if(user == buckled_mob && mods["shift"] && !user.is_mob_incapacitated())
 		switch(seat)
 			if(VEHICLE_SUPPORT_GUNNER_ONE, VEHICLE_SUPPORT_GUNNER_TWO)
-				user.client.change_view(6)
+				user.client.change_view(6, src)
 			if(VEHICLE_DRIVER, VEHICLE_GUNNER)
-				user.client.change_view(8)
+				user.client.change_view(8, src)
 		vehicle.set_seated_mob(seat, user)
 		return TRUE
 	else
@@ -224,7 +224,7 @@
 		vehicle.set_seated_mob(seat, null)
 		M.unset_interaction()
 		if(M.client)
-			M.client.change_view(7)
+			M.client.change_view(world_view_size, src)
 			M.client.pixel_x = 0
 			M.client.pixel_y = 0
 	else
@@ -234,7 +234,7 @@
 		vehicle.set_seated_mob(seat, M)
 		//port view ain't that good
 		if(M && M.client)
-			M.client.change_view(6)
+			M.client.change_view(6, src)
 
 		if(vehicle.health < initial(vehicle.health) / 2)
 			to_chat(M, SPAN_WARNING("\The [vehicle] is too damaged to operate the Firing Port Weapon!"))

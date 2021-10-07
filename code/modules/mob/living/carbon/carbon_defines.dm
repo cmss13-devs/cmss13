@@ -16,6 +16,8 @@
 	var/list/internal_organs = list()
 	var/huggable = TRUE //can apply Facehuggers (still checks proc/can_hug())
 
+	var/list/view_change_sources
+
 	//blood.dm
 	blood_volume = BLOOD_VOLUME_NORMAL
 

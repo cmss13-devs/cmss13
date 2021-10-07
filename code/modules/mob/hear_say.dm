@@ -157,6 +157,11 @@
 		else
 			track = "<a href='byond://?src=\ref[src];trackname=[html_encode(speaker_name)];track=\ref[speaker]'>[speaker_name] ([jobname])</a>"
 
+	if(istype(src, /mob/dead/observer))
+		if(speaker_name != speaker.real_name && !isAI(speaker)) //Announce computer and various stuff that broadcasts doesn't use it's real name but AI's can't pretend to be other mobs.
+			speaker_name = "[speaker.real_name] ([speaker_name])"
+		track = "[speaker_name] (<a href='byond://?src=\ref[src];track=\ref[speaker]'>F</a>)"
+
 	var/fontsize_style
 	switch(command)
 		if(1)

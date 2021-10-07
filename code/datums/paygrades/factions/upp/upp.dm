@@ -64,6 +64,11 @@
 	name = "Leytenant"
 	prefix = "Lt."
 
+/datum/paygrade/upp/uo1m
+	paygrade = "UO1M"
+	name = "Leytenant Medic"
+	prefix = "Lt. Med."
+
 /datum/paygrade/upp/uo1e
 	paygrade = "UO1E"
 	name = "Senior Leytenant"

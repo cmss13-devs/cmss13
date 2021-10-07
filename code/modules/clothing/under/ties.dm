@@ -589,11 +589,28 @@
 		/obj/item/stack/nanopaste
 	)
 
+/obj/item/storage/internal/accessory/surg_vest/equipped/fill_preset_inventory()
+	new /obj/item/tool/surgery/scalpel/pict_system(src)
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/tool/surgery/cautery(src)
+	new /obj/item/tool/surgery/circular_saw(src)
+	new /obj/item/tool/surgery/surgicaldrill(src)
+	new /obj/item/tool/surgery/bonegel(src)
+	new /obj/item/tool/surgery/bonesetter(src)
+	new /obj/item/tool/surgery/FixOVein(src)
+	new /obj/item/stack/nanopaste(src)
+
 /obj/item/clothing/accessory/storage/surg_vest
 	name = "surgical webbing vest"
 	desc = "Greenish synthcotton vest purpose-made for holding surgical tools."
 	icon_state = "vest_surg"
 	hold = /obj/item/storage/internal/accessory/surg_vest
+
+/obj/item/clothing/accessory/storage/surg_vest/equipped
+	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
 
 /obj/item/storage/internal/accessory/knifeharness

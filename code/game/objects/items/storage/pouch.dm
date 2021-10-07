@@ -814,6 +814,7 @@
 		/obj/item/tool/shovel/etool,
 		/obj/item/stack/sandbags_empty,
 		/obj/item/device/lightreplacer,
+		/obj/item/weapon/gun/smg/nailgun/compact,
 	)
 
 /obj/item/storage/pouch/construction/full/fill_preset_inventory()

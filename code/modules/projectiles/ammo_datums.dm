@@ -2727,6 +2727,7 @@
 	damage = 30
 	penetration= ARMOR_PENETRATION_TIER_10
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
+	shrapnel_type = /obj/item/shard/shrapnel
 
 /datum/ammo/flamethrower
 	name = "flame"

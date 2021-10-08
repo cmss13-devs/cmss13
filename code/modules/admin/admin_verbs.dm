@@ -206,6 +206,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel,
+	/client/proc/toggle_lz_resin,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,

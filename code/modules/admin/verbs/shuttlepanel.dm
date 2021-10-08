@@ -31,7 +31,8 @@
 	switch(selection)
 		if("Infinite Transit")
 			destination = null
-			mode = SHUTTLE_IGNITING
+			set_mode(SHUTTLE_IGNITING)
+			on_ignition()
 			setTimer(ignitionTime)
 
 		if("Delete Shuttle")

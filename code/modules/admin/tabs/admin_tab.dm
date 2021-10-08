@@ -474,3 +474,24 @@
 		return
 
 	admin_holder.in_view_panel()
+
+/client/proc/toggle_lz_resin()
+	set name = "Toggle LZ Weeding"
+	set category = "Admin.Flags"
+
+	if(!admin_holder || !check_rights(R_MOD, FALSE))
+		return
+
+	set_lz_resin_allowed(!GLOB.resin_lz_allowed)
+	message_staff("[src] has [GLOB.resin_lz_allowed ? "allowed xenos to weed" : "disallowed from weeding"] near the LZ.")
+
+/proc/set_lz_resin_allowed(var/allowed = TRUE)
+	if(allowed)
+		for(var/area/A in all_areas)
+			A.is_resin_allowed = TRUE
+		msg_admin_niche("Areas close to landing zones are now weedable.")
+	else
+		for(var/area/A in all_areas)
+			A.is_resin_allowed = initial(A.is_resin_allowed)
+		msg_admin_niche("Areas close to landing zones cannot be weeded now.")
+	GLOB.resin_lz_allowed = allowed

@@ -1,3 +1,5 @@
+GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
+
 /datum/resin_construction
 	var/name
 	var/desc

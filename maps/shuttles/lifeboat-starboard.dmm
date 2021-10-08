@@ -1,0 +1,660 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ce" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,5"
+	},
+/area/almayer/lifeboat)
+"ci" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,6"
+	},
+/area/almayer/lifeboat)
+"ej" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "0,4"
+	},
+/area/almayer/lifeboat)
+"em" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,6"
+	},
+/area/almayer/lifeboat)
+"ep" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,2"
+	},
+/area/almayer/lifeboat)
+"ex" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "0,2"
+	},
+/area/almayer/lifeboat)
+"gp" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "25,4"
+	},
+/area/almayer/lifeboat)
+"gS" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "26,5"
+	},
+/area/almayer/lifeboat)
+"hb" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/prop/almayer/computer{
+	dir = 8
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"ho" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "7,0"
+	},
+/area/almayer/lifeboat)
+"hD" = (
+/obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
+	pixel_x = -9;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"hQ" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "0,3"
+	},
+/area/almayer/lifeboat)
+"ix" = (
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = 11;
+	pixel_y = 27
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"iP" = (
+/turf/closed/shuttle/lifeboat/transparent,
+/area/almayer/lifeboat)
+"jA" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,0"
+	},
+/area/almayer/lifeboat)
+"kC" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,5"
+	},
+/area/almayer/lifeboat)
+"kE" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair,
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"lK" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "22,0"
+	},
+/area/almayer/lifeboat)
+"lS" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat1-D2"
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"mt" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,2"
+	},
+/area/almayer/lifeboat)
+"mA" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,3"
+	},
+/area/almayer/lifeboat)
+"pr" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,4"
+	},
+/area/almayer/lifeboat)
+"qV" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "0,6"
+	},
+/area/almayer/lifeboat)
+"rM" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,6"
+	},
+/area/almayer/lifeboat)
+"su" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "0,5"
+	},
+/area/almayer/lifeboat)
+"sO" = (
+/turf/closed/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"tB" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,1"
+	},
+/area/almayer/lifeboat)
+"uJ" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "25,6"
+	},
+/area/almayer/lifeboat)
+"uN" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "26,1"
+	},
+/area/almayer/lifeboat)
+"vG" = (
+/obj/docking_port/mobile/lifeboat/starboard,
+/turf/closed/shuttle/lifeboat{
+	icon_state = "0,0"
+	},
+/area/almayer/lifeboat)
+"wA" = (
+/turf/template_noop,
+/area/template_noop)
+"xI" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "25,3"
+	},
+/area/almayer/lifeboat)
+"zv" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,6"
+	},
+/area/almayer/lifeboat)
+"zz" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,5"
+	},
+/area/almayer/lifeboat)
+"zK" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,1"
+	},
+/area/almayer/lifeboat)
+"Ax" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,2"
+	},
+/area/almayer/lifeboat)
+"AF" = (
+/turf/open/shuttle/lifeboat{
+	icon_state = "plating_striped"
+	},
+/area/almayer/lifeboat)
+"Bf" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "window2"
+	},
+/area/almayer/lifeboat)
+"BC" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,0"
+	},
+/area/almayer/lifeboat)
+"BP" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "18,0"
+	},
+/area/almayer/lifeboat)
+"Cq" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,5"
+	},
+/area/almayer/lifeboat)
+"CS" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "25,2"
+	},
+/area/almayer/lifeboat)
+"Dj" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,1"
+	},
+/area/almayer/lifeboat)
+"Dn" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,0"
+	},
+/area/almayer/lifeboat)
+"Ep" = (
+/obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
+	id = "Boat1-D1"
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"EI" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/communications{
+	dir = 8
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"EP" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "16,0"
+	},
+/area/almayer/lifeboat)
+"FI" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,3"
+	},
+/area/almayer/lifeboat)
+"FS" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "25,0"
+	},
+/area/almayer/lifeboat)
+"GA" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "7,6"
+	},
+/area/almayer/lifeboat)
+"GD" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,1"
+	},
+/area/almayer/lifeboat)
+"HW" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,1"
+	},
+/area/almayer/lifeboat)
+"Io" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,4"
+	},
+/area/almayer/lifeboat)
+"KZ" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,3"
+	},
+/area/almayer/lifeboat)
+"Lk" = (
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/computer/security/almayer_network{
+	dir = 8;
+	network = list("almayer","vehicle")
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"Mu" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,5"
+	},
+/area/almayer/lifeboat)
+"NE" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4;
+	name = "pilot seat"
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"NF" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,0"
+	},
+/area/almayer/lifeboat)
+"NK" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,4"
+	},
+/area/almayer/lifeboat)
+"Od" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,6"
+	},
+/area/almayer/lifeboat)
+"Ow" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "6,0"
+	},
+/area/almayer/lifeboat)
+"OO" = (
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"PJ" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 1
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"Qa" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "12,0"
+	},
+/area/almayer/lifeboat)
+"Rk" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "25,5"
+	},
+/area/almayer/lifeboat)
+"RH" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "0,1"
+	},
+/area/almayer/lifeboat)
+"RR" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,6"
+	},
+/area/almayer/lifeboat)
+"Td" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "3,5"
+	},
+/area/almayer/lifeboat)
+"Tn" = (
+/obj/structure/bed/chair/dropship/passenger/shuttle_chair{
+	dir = 4
+	},
+/turf/open/shuttle/lifeboat,
+/area/almayer/lifeboat)
+"TM" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "24,4"
+	},
+/area/almayer/lifeboat)
+"TU" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "2,3"
+	},
+/area/almayer/lifeboat)
+"Up" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "1,6"
+	},
+/area/almayer/lifeboat)
+"UG" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "23,5"
+	},
+/area/almayer/lifeboat)
+"Vj" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "25,1"
+	},
+/area/almayer/lifeboat)
+"VF" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "17,1"
+	},
+/area/almayer/lifeboat)
+"VZ" = (
+/turf/open/shuttle/escapepod{
+	icon_state = "floor8";
+	tag = "icon-floor8"
+	},
+/area/almayer/lifeboat)
+"Xj" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,1"
+	},
+/area/almayer/lifeboat)
+"XV" = (
+/turf/open/shuttle/lifeboat{
+	icon_state = "plate"
+	},
+/area/almayer/lifeboat)
+"Zl" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "24,0"
+	},
+/area/almayer/lifeboat)
+"ZP" = (
+/turf/closed/shuttle/lifeboat/transparent{
+	icon_state = "26,2"
+	},
+/area/almayer/lifeboat)
+"ZR" = (
+/turf/closed/shuttle/lifeboat{
+	icon_state = "11,0"
+	},
+/area/almayer/lifeboat)
+
+(1,1,1) = {"
+qV
+su
+ej
+hQ
+ex
+RH
+vG
+"}
+(2,1,1) = {"
+Up
+zz
+Io
+mA
+ep
+Dj
+NF
+"}
+(3,1,1) = {"
+zv
+Cq
+NK
+TU
+Ax
+HW
+sO
+"}
+(4,1,1) = {"
+Od
+Td
+Tn
+Tn
+Tn
+GD
+Dn
+"}
+(5,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+PJ
+iP
+"}
+(6,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+PJ
+iP
+"}
+(7,1,1) = {"
+em
+kC
+ix
+XV
+OO
+zK
+Ow
+"}
+(8,1,1) = {"
+GA
+Td
+OO
+XV
+OO
+GD
+ho
+"}
+(9,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+AF
+Ep
+"}
+(10,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+AF
+OO
+"}
+(11,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+AF
+OO
+"}
+(12,1,1) = {"
+em
+kC
+OO
+XV
+OO
+zK
+ZR
+"}
+(13,1,1) = {"
+GA
+Td
+OO
+XV
+OO
+GD
+Qa
+"}
+(14,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+AF
+lS
+"}
+(15,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+AF
+OO
+"}
+(16,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+AF
+OO
+"}
+(17,1,1) = {"
+em
+kC
+ix
+XV
+OO
+zK
+EP
+"}
+(18,1,1) = {"
+ci
+ce
+hD
+XV
+OO
+VF
+jA
+"}
+(19,1,1) = {"
+GA
+Td
+OO
+XV
+OO
+GD
+BP
+"}
+(20,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+PJ
+iP
+"}
+(21,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+PJ
+iP
+"}
+(22,1,1) = {"
+Bf
+kE
+OO
+VZ
+OO
+PJ
+iP
+"}
+(23,1,1) = {"
+em
+kC
+NE
+NE
+NE
+zK
+lK
+"}
+(24,1,1) = {"
+RR
+UG
+Lk
+hb
+EI
+tB
+BC
+"}
+(25,1,1) = {"
+rM
+Mu
+TM
+FI
+mt
+Xj
+Zl
+"}
+(26,1,1) = {"
+uJ
+Rk
+gp
+xI
+CS
+Vj
+FS
+"}
+(27,1,1) = {"
+wA
+gS
+pr
+KZ
+ZP
+uN
+wA
+"}

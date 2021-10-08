@@ -168,12 +168,12 @@
 
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
-/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE)
+/proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client)
 	if(!GLOB.gear_presets_list)
 		CRASH("arm_equipment !gear_presets_list")
 	if(!GLOB.gear_presets_list[dresscode])
 		CRASH("arm_equipment !gear_presets_list[dresscode]")
-	GLOB.gear_presets_list[dresscode].load_preset(M, randomise, count_participant)
+	GLOB.gear_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client)
 
 	if(M.faction)
 		M.check_event_info(M.faction)

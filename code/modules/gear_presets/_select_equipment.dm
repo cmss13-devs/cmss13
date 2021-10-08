@@ -74,10 +74,10 @@
 		faction_group = list(faction)
 
 	//load_appearance()
-/datum/equipment_preset/proc/load_race(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_race(mob/living/carbon/human/H, var/client/mob_client)
 	return
 
-/datum/equipment_preset/proc/load_name(mob/living/carbon/human/H, var/randomise)
+/datum/equipment_preset/proc/load_name(mob/living/carbon/human/H, var/randomise, var/client/mob_client)
 	H.gender = pick(60;MALE,40;FEMALE)
 	var/datum/preferences/A = new()
 	A.randomize_appearance(H)
@@ -85,23 +85,23 @@
 	H.change_real_name(H, random_name)
 	H.age = rand(21,45)
 
-/datum/equipment_preset/proc/load_age(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_age(mob/living/carbon/human/H, var/client/mob_client)
 	if(minimum_age && H.age < minimum_age)
 		H.age = minimum_age
 
-/datum/equipment_preset/proc/load_rank(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_rank(mob/living/carbon/human/H, var/client/mob_client)
 	return paygrade
 
-/datum/equipment_preset/proc/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_gear(mob/living/carbon/human/H, var/client/mob_client)
 	return
 
-/datum/equipment_preset/proc/load_status(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_status(mob/living/carbon/human/H, var/client/mob_client)
 	return
 
-/datum/equipment_preset/proc/load_skills(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_skills(mob/living/carbon/human/H, var/client/mob_client)
 	H.set_skills(skills)
 
-/datum/equipment_preset/proc/load_id(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_id(mob/living/carbon/human/H, var/client/mob_client)
 	if(!idtype)
 		return
 	var/obj/item/card/id/W = new idtype()
@@ -129,21 +129,21 @@
 	H.job = rank
 	H.comm_title = role_comm_title
 
-/datum/equipment_preset/proc/load_languages(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_languages(mob/living/carbon/human/H, var/client/mob_client)
 	H.set_languages(languages)
 
-/datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H, var/randomise = FALSE, var/count_participant = FALSE)
-	load_race(H)
+/datum/equipment_preset/proc/load_preset(mob/living/carbon/human/H, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client)
+	load_race(H, mob_client)
 	if(randomise || uses_special_name)
-		load_name(H, randomise)
-	load_skills(H) //skills are set before equipment because of skill restrictions on certain clothes.
-	load_languages(H)
-	load_age(H)
-	load_gear(H)
-	load_id(H)
-	load_status(H)
-	load_vanity(H)
-	load_traits(H)
+		load_name(H, randomise, mob_client)
+	load_skills(H, mob_client) //skills are set before equipment because of skill restrictions on certain clothes.
+	load_languages(H, mob_client)
+	load_age(H, mob_client)
+	load_gear(H, mob_client)
+	load_id(H, mob_client)
+	load_status(H, mob_client)
+	load_vanity(H, mob_client)
+	load_traits(H, mob_client)
 	if(round_statistics && count_participant)
 		round_statistics.track_new_participant(faction)
 	H.regenerate_icons()
@@ -152,7 +152,7 @@
 	H.marine_snowflake_points = MARINE_TOTAL_SNOWFLAKE_POINTS
 	H.marine_buy_flags = MARINE_CAN_BUY_ALL
 
-/datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_vanity(mob/living/carbon/human/H, var/client/mob_client)
 	if(!H.client || !H.client.prefs || !H.client.prefs.gear)
 		return//We want to equip them with custom stuff second, after they are equipped with everything else.
 	var/datum/gear/G
@@ -218,7 +218,7 @@
 		P.prescription = 1
 		H.equip_to_slot_or_del(P, WEAR_EYES)
 
-/datum/equipment_preset/proc/load_traits(mob/living/carbon/human/H)
+/datum/equipment_preset/proc/load_traits(mob/living/carbon/human/H, var/client/mob_client)
 	if(!H.client || !H.client.prefs || !H.client.prefs.traits)
 		return
 

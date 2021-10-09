@@ -8,8 +8,8 @@
 	update_surgery_skill()
 
 /datum/action/surgery_toggle/remove_from(mob/living/carbon/human/H)
-	..()
 	owner.mob_flags &= ~SURGERY_MODE_ON
+	..()
 
 /datum/action/surgery_toggle/proc/update_surgery_skill()
 	if(skillcheck(owner, SKILL_SURGERY, SKILL_SURGERY_TRAINED) && !(owner.mob_flags & SURGERY_MODE_ON))

@@ -340,7 +340,7 @@
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_6
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 	if(accuracy_improvement)
-		accuracy_mult += HIT_ACCURACY_MULT_TIER_2
+		accuracy_mult += HIT_ACCURACY_MULT_TIER_3
 	else
 		accuracy_mult += HIT_ACCURACY_MULT_TIER_1
 	if(recoil_compensation)

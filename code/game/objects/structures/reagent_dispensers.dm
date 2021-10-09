@@ -1,5 +1,4 @@
 
-
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
@@ -10,7 +9,7 @@
 	flags_atom = CAN_BE_SYRINGED
 
 	var/amount_per_transfer_from_this = 10
-	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100)
+	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
 	var/chemical = ""
 	var/dispensing = TRUE
 

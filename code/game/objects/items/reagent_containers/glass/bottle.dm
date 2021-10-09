@@ -387,43 +387,43 @@
 	desc = "A small bottle. Contains Peridaxon - Used by lazy doctors to temporarily halt the effects of internal organ damage."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle4"
-	volume = 20
-	amount_per_transfer_from_this = 20
+	volume = 60
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/peridaxon/Initialize()
 	. = ..()
-	reagents.add_reagent("peridaxon", 20)
+	reagents.add_reagent("peridaxon", 60)
 
 /obj/item/reagent_container/glass/bottle/tramadol
 	name = "\improper Tramadol bottle"
 	desc = "A small bottle. Contains Tramadol - Used as a basic painkiller."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle1"
-	volume = 20
-	amount_per_transfer_from_this = 20
+	volume = 60
+	amount_per_transfer_from_this = 60
 
 /obj/item/reagent_container/glass/bottle/tramadol/Initialize()
 	. = ..()
-	reagents.add_reagent("tramadol", 20)
+	reagents.add_reagent("tramadol", 60)
 
 /obj/item/reagent_container/glass/bottle/oxycodone
 	name = "\improper Oxycodone bottle"
-	desc = "A very small bottle. Contains Oxycodone - Used as an Extreme Painkiller.  ILLEGAL TO DISTRIBUTE."
+	desc = "A small bottle. Contains Oxycodone - Used as an Extreme Painkiller.  ILLEGAL TO DISTRIBUTE."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle2"
-	volume = 10
+	volume = 60
 
 /obj/item/reagent_container/glass/bottle/oxycodone/Initialize()
 	. = ..()
-	reagents.add_reagent("oxycodone", 10)
+	reagents.add_reagent("oxycodone", 60)
 
 /obj/item/reagent_container/glass/bottle/tricordrazine
 	name = "\improper Tricordrazine bottle"
-	desc = "A very small bottle. Contains tricordrazine - A weak but catch-all medicine for treating all sorts of damage."
+	desc = "A small bottle. Contains tricordrazine - A weak but catch-all medicine for treating all sorts of damage."
 	icon = 'icons/obj/items/chemistry.dmi'
 	icon_state = "bottle18"
-	volume = 30
+	volume = 60
 
 /obj/item/reagent_container/glass/bottle/tricordrazine/Initialize()
 	. = ..()
-	reagents.add_reagent("tricordrazine", 30)
+	reagents.add_reagent("tricordrazine", 60)

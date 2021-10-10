@@ -61,6 +61,20 @@
 	</tr>
 </table>
 
+			<h2 class="date">10 October 2021</h2>
+			<h3 class="author">Firartix updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added more words to be used for the operation name.</li>
+			</ul>
+			<h3 class="author">Flpfs updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Surgical closets have been added to the Almayer. They require medical-level access.</li>
+			</ul>
+			<h3 class="author">ihatethisengine2 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Evac cancellation no longer allows new players to join.</li>
+			</ul>
+
 			<h2 class="date">09 October 2021</h2>
 			<h3 class="author">Benbot16 updated:</h3>
 			<ul class="changes bgimages16">
@@ -1076,33 +1090,6 @@
 			<h3 class="author">forest2001 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscdel">Disables clan ships. This is a temporary patch to reduce server load and not a long-term solution.</li>
-			</ul>
-
-			<h2 class="date">08 August 2021</h2>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Humans with no skills are no longer immune to fractures. Examples: adminspawned naked people, surgery practice dummy.</li>
-				<li class="bugfix">Rejuvenate()/aheal now fixes larva infection.</li>
-				<li class="rscadd">Complete surgery system rework. This was originally TG surgery ported and modified for CM by Foolosopher and updated by Optimyst. I then modified it heavily to make it behave like the smooth and drape-free Baycode surgeries we've grown accustomed to. Adding new surgeries and steps is easy.</li>
-				<li class="tweak">Specific surgery changes: LARVA SURGERY must be performed on a proper surgical table. Use the PICT or else.  Removing the severed larva is fastest with a haemostat, middling with bare hands, and improvised tools are slow but don't hurt. Attaching PROSTHETICS is a multiple-step process and the limb must be calibrated (hand or haemostat twice) before it will work. The stump of a BROKEN PROSTHETIC must be sawn away before a new one can be attached. AMPUTATION is a multiple-step process and begins with a scalpel in an opened incision. If you begin one by accident and it isn't too late, you can stitch the muscles back together. ORGAN REPAIR loops, treating one organ at a time. REATTACHING SYNTH HEADS involves attaching the head, then fully reconnecting it. Make sure you're aiming for the head, not eye or mouth. If the head can talk, the job isn't done.</li>
-				<li class="rscadd">People with surgical skills now have an ability toggle for surgery mode. This also temporarily sets help intent safety on or off if you didn't already have it, and means you'll attempt to perform surgeries when on on help or disarm intent and clicking people with valid items or an empty hand. Also added a keybind for switching it on the fly, though it's not set by default.</li>
-				<li class="tweak">Medics and POs now have basic surgery skills. Added surgical line to medic essentials kit as wound tending is the only useful surgery they can do currently.</li>
-				<li class="tweak">Surgical trays no longer have incision management systems. Instead, they have the PICT system.</li>
-				<li class="rscadd">Added new surgical tools: drapes, which do nothing in this revision but may come in handy, the PICT system, which is a specialised scalpel used by larva surgery, and surgical line, used for sewing flesh together. Surgical line can substitute for fixovein, fixovein can substitute for surgical line, and cable coil and headbands can be used (in extremis) in place of either. The specialised tools are the best in their niche, though. At present, surgical line is only in the medic field surgery kit.</li>
-				<li class="rscadd">Added a new surgery for tending wounds, using the new surgical line tool or its substitutes. This is a no- or shallow-incision surgery with one looping step, healing 10 points of brute and burn damage on the target limb per iteration. It can be performed on a patient who's standing up, or yourself.</li>
-				<li class="rscadd">Surgeries no longer require a surgery table or rollerbed to perform. Surgeries that require the patient to be lying down have a time multiplier depending on what surface you're using.</li>
-				<li class="rscadd">Some surgeries can be performed on a patient who's standing up. These specific surgeries can also be performed on yourself. Standing surgeries don't care about the surface they're performed on, and standing vs lying makes no difference to their speed.</li>
-				<li class="tweak">Tweaked skill effects on surgery times: all else the same, a medic/nurse/PO will be 20% slower than a doctor, and a synth 40% faster.</li>
-				<li class="rscadd">Aside from pain, the success chance/rng failure system is gone. Improvised tools now use time multipliers, causing the step to take longer.</li>
-				<li class="rscadd">Once you finish the first step in a surgery, you must finish the surgery before you can attempt any others. If you don't complete the first step, the surgery is cancelled. Failing the first step doesn't hurt the patient, unless it happens because of pain or you did it deliberately.</li>
-				<li class="rscadd">You can deliberately fail a step by starting it on disarm intent, if you're sure of what you're doing. This will automatically switch you back to help intent afterwards.</li>
-				<li class="rscadd">Examining yourself or other people now tells you where any incisions or surgeries are.</li>
-				<li class="rscadd">If surgery conditions aren't ideal, it will message the reasons why. Attempting surgery with the wrong tool lists possible steps or surgeries.</li>
-				<li class="tweak">Updated the Autodoc to keep it functional, but didn't touch its step times. This means that for most operations an autodoc is likely to take much longer than an actual doctor. Do your job.</li>
-				<li class="rscadd">Ported typecache check from TG. This is much faster than istype(), especially for comparing an atom to a black- or whitelist.</li>
-				<li class="bugfix">Admin-editing a human's species now properly deletes their old limbs, instead of simply making a new limb list.</li>
-				<li class="tweak">Removed some duplicate checks from unarmed attack code.</li>
-				<li class="imageadd">New sprites for surgical pump, surgical line, and laser scalpels courtesy of Triiodine. Tweaked sprites for surgical drills, circular saw, cautery to animate them while doing surgery.</li>
 			</ul>
 </div>
 </body>

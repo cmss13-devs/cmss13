@@ -160,6 +160,10 @@ There are several things that need to be remembered:
 			overlays_standing[UNDERSHIRT_LAYER] = undershirt_icon
 			apply_overlay(UNDERSHIRT_LAYER)
 
+/mob/living/carbon/human/proc/remove_underwear() // :flushed: - geeves
+	remove_overlay(UNDERSHIRT_LAYER)
+	remove_overlay(UNDERWEAR_LAYER)
+
 //HAIR OVERLAY
 /mob/living/carbon/human/proc/update_hair()
 	remove_overlay(HAIR_LAYER)

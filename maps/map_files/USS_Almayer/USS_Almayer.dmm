@@ -8351,7 +8351,6 @@
 /area/almayer/living/starboard_garden)
 "avW" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_tray,
 /obj/item/storage/box/gloves{
 	pixel_x = 5;
 	pixel_y = 5
@@ -8360,9 +8359,8 @@
 	pixel_x = -5;
 	pixel_y = 5
 	},
-/obj/structure/sign/safety/ref_bio_storage{
-	pixel_x = 8;
-	pixel_y = 32
+/obj/structure/closet/secure_closet/surgical{
+	pixel_y = 30
 	},
 /turf/open/floor/almayer{
 	icon_state = "sterile_green_corner";
@@ -20245,9 +20243,11 @@
 /area/almayer/medical/operating_room_three)
 "bmj" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_tray,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -22502,9 +22502,11 @@
 /area/almayer/medical/lower_medical_lobby)
 "bvz" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_tray,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -41729,9 +41731,11 @@
 /area/almayer/command/cichallway)
 "feY" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_tray,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -49538,9 +49542,11 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "iGn" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/storage/surgical_tray,
 /obj/structure/machinery/light{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -62603,6 +62609,15 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/squads/delta)
+"oGx" = (
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = 30
+	},
+/turf/open/floor/almayer{
+	icon_state = "cargo";
+	tag = "icon-bluecorner (NORTH)"
+	},
+/area/almayer/hull/upper_hull/u_f_s)
 "oGy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -72199,7 +72214,9 @@
 "tjg" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/spray/cleaner,
-/obj/item/storage/surgical_tray,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
+	},
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -102557,7 +102574,7 @@ avl
 qtS
 tRX
 rIW
-soq
+oGx
 wvU
 yiX
 lIa

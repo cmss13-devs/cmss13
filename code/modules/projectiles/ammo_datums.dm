@@ -2567,8 +2567,8 @@
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isHumanStrict(M) || isXeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 7)
-			M.AdjustSlowed(6)
+		if(M.slowed < 8)
+			M.Slow(8)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"
@@ -2593,8 +2593,8 @@
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
     if(isHumanStrict(M) || isXeno(M))
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-        if(M.slowed < 5)
-            M.AdjustSlowed(4)
+        if(M.slowed < 6)
+            M.Slow(6)
 
 /*
 //======

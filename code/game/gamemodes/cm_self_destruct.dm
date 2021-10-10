@@ -92,7 +92,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation/proc/initiate_evacuation(var/force=0) //Begins the evacuation procedure.
 	if(force || (evac_status == EVACUATION_STATUS_STANDING_BY && !(flags_scuttle & FLAGS_EVACUATION_DENY)))
-		enter_allowed = 0 //No joining during evac.
 		evac_time = world.time
 		evac_status = EVACUATION_STATUS_INITIATING
 		ai_announcement("Attention. Emergency. All personel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
@@ -109,7 +108,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 
 /datum/authority/branch/evacuation/proc/cancel_evacuation() //Cancels the evac procedure. Useful if admins do not want the marines leaving.
 	if(evac_status == EVACUATION_STATUS_INITIATING)
-		enter_allowed = 1
 		evac_time = null
 		evac_status = EVACUATION_STATUS_STANDING_BY
 		ai_announcement("Evacuation has been cancelled.", 'sound/AI/evacuate_cancelled.ogg')
@@ -219,7 +217,6 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 /datum/authority/branch/evacuation/proc/trigger_self_destruct(list/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP), origin = dest_master, override = FALSE, end_type = NUKE_EXPLOSION_FINISHED, play_anim = TRUE, end_round = TRUE)
 	set waitfor = 0
 	if(dest_status < NUKE_EXPLOSION_IN_PROGRESS) //One more check for good measure, in case it's triggered through a bomb instead of the destruct mechanism/admin panel.
-		enter_allowed = 0 //Do not want baldies spawning in as everything is exploding.
 		dest_status = NUKE_EXPLOSION_IN_PROGRESS
 		playsound(origin, 'sound/machines/Alarm.ogg', 75, 0, 30)
 		world << pick('sound/theme/nuclear_detonation1.ogg','sound/theme/nuclear_detonation2.ogg')

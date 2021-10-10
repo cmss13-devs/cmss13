@@ -32,6 +32,9 @@
 	var/entry_message_body
 	var/entry_message_end
 
+	/// When set to true, SSticker won't call spawn_in_player, instead calling the job's spawn_and_equip proc
+	var/handle_spawn_and_equip = FALSE
+
 /datum/job/New()
 	. = ..()
 
@@ -142,6 +145,9 @@
 
 /datum/job/proc/set_spawn_positions(var/count)
 	return spawn_positions
+
+/datum/job/proc/spawn_and_equip(var/mob/new_player/player)
+	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
 
 /datum/job/proc/generate_entry_message()
 	if(!entry_message_intro)

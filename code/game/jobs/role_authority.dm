@@ -18,8 +18,6 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define RETURN_TO_LOBBY 2
 #define BE_XENOMORPH 3
 
-#define CHANCE_OF_PRED_ROUND 20
-
 #define NEVER_PRIORITY 	0
 #define HIGH_PRIORITY 	1
 #define MED_PRIORITY 	2
@@ -250,8 +248,8 @@ var/global/marines_assigned = 0
 	if(istype(SJ))
 		SJ.set_spawn_positions(marines_assigned)
 
-	if(prob(CHANCE_OF_PRED_ROUND))
-		SSticker?.mode?.flags_round_type |= MODE_PREDATOR
+	if(prob(SSticker.mode.pred_round_chance))
+		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))

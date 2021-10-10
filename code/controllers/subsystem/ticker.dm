@@ -392,15 +392,18 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(var/mob/new_player/player)
 	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]
-	var/mob/M = J.spawn_in_player(player)
-	if(istype(M))
-		J.equip_job(M)
-		EquipCustomItems(M)
+	if(J.handle_spawn_and_equip)
+		J.spawn_and_equip(player)
+	else
+		var/mob/M = J.spawn_in_player(player)
+		if(istype(M))
+			J.equip_job(M)
+			EquipCustomItems(M)
 
-		if(M.client)
-			var/client/C = M.client
-			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
-				msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+			if(M.client)
+				var/client/C = M.client
+				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 
 	QDEL_IN(player, 5)
 

@@ -20,10 +20,16 @@
 	if(!istype(C))
 		return FALSE
 	C.mutation_type = CARRIER_EGGSAC
+	C.plasma_types = list(PLASMA_EGG)
+	C.phero_modifier += XENO_PHERO_MOD_LARGE // praetorian level pheremones
+	C.plasmapool_modifier = 1.25
 	mutator_update_actions(C)
 	MS.recalculate_actions(description, flavor_description)
+	C.recalculate_pheromones()
+	C.recalculate_plasma()
 	C.huggers_cur = 0
 	C.huggers_max = 0
+	C.extra_build_dist = 1
 	return TRUE
 
 /datum/action/xeno_action/activable/generate_egg

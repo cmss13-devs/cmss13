@@ -196,7 +196,7 @@ datum/preferences/proc/randomize_skin_color()
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
 
-	arm_equipment(preview_dummy, J, FALSE, FALSE)
+	arm_equipment(preview_dummy, J, FALSE, FALSE, owner)
 
 	preview_front = new()
 	owner.screen |= preview_front
@@ -204,7 +204,7 @@ datum/preferences/proc/randomize_skin_color()
 	preview_front.vis_contents += preview_dummy
 	preview_front.screen_loc = "preview:0,0"
 
-datum/preferences/proc/job_pref_to_gear_preset()
+/datum/preferences/proc/job_pref_to_gear_preset()
 	var/high_priority
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)
@@ -267,6 +267,12 @@ datum/preferences/proc/job_pref_to_gear_preset()
 			return "USCM Nurse"
 		if(JOB_MESS_SERGEANT)
 			return "USCM Mess Sergeant (MS)"
+		if(JOB_PREDATOR)
+			if(length(RoleAuthority.roles_whitelist))
+				var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+				return "Yautja [J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"
+			else
+				return "Yautja Blooded"
 
 	return "USCM Cryo Private (Equipped)"
 

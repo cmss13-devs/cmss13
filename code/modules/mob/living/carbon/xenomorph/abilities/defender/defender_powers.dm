@@ -170,6 +170,21 @@
 	playsound(get_turf(X), 'sound/effects/stonedoor_openclose.ogg', 30, 1)
 
 	if(!X.fortify)
+		RegisterSignal(owner, COMSIG_MOB_DEATH, .proc/death_check)
+		fortify_switch(X, TRUE)
+	else
+		UnregisterSignal(owner, COMSIG_MOB_DEATH)
+		fortify_switch(X, FALSE)
+
+	apply_cooldown()
+	..()
+	return
+
+/datum/action/xeno_action/activable/fortify/proc/fortify_switch(var/mob/living/carbon/Xenomorph/X, var/fortify_state)
+	if(X.fortify == fortify_state)
+		return
+
+	if(fortify_state)
 		to_chat(X, SPAN_XENOWARNING("You tuck yourself into a defensive stance."))
 		if(X.steelcrest)
 			X.armor_deflection_buff += 10
@@ -206,6 +221,8 @@
 		X.update_icons()
 		X.fortify = FALSE
 
-	apply_cooldown()
-	..()
-	return
+/datum/action/xeno_action/activable/fortify/proc/death_check()
+	SIGNAL_HANDLER
+
+	UnregisterSignal(owner, COMSIG_MOB_DEATH)
+	fortify_switch(owner, FALSE)

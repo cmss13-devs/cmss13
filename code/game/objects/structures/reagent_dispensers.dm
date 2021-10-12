@@ -134,6 +134,13 @@
 	icon_state = "pacidtank"
 	chemical = "pacid"
 
+/obj/structure/reagent_dispensers/ethanoltank
+	name = "ethanol tank"
+	desc = "An ethanol tank."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "ethanoltank"
+	chemical = "ethanol"
+
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fueltank"

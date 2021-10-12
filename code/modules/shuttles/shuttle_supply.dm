@@ -25,17 +25,18 @@
 
 /datum/shuttle/ferry/supply/New()
 	..()
-	Elevator_x = pick_loc().x
-	Elevator_y = pick_loc().y
-	Elevator_z = pick_loc().z
-	SW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
-	SE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
-	SE.pixel_x = -128
-	NW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
-	NW.pixel_y = -128
-	NE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
-	NE.pixel_x = -128
-	NE.pixel_y = -128
+	if(pick_loc())
+		Elevator_x = pick_loc().x
+		Elevator_y = pick_loc().y
+		Elevator_z = pick_loc().z
+		SW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y-2,Elevator_z))
+		SE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y-2,Elevator_z))
+		SE.pixel_x = -128
+		NW = new /obj/effect/elevator/supply(locate(Elevator_x-2,Elevator_y+2,Elevator_z))
+		NW.pixel_y = -128
+		NE = new /obj/effect/elevator/supply(locate(Elevator_x+2,Elevator_y+2,Elevator_z))
+		NE.pixel_x = -128
+		NE.pixel_y = -128
 
 /datum/shuttle/ferry/supply/short_jump(var/area/origin,var/area/destination)
 	if(moving_status != SHUTTLE_IDLE)

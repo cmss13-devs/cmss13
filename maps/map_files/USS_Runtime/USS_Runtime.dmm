@@ -1,0 +1,472 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"a" = (
+/turf/closed/wall/r_wall/bunker,
+/area/event/deep_underground/dynamic)
+"b" = (
+/obj/effect/landmark/start/tank_crew,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"c" = (
+/obj/effect/landmark/start/engineering,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"e" = (
+/obj/effect/landmark/start/requisition,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"g" = (
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"h" = (
+/obj/effect/landmark/start/police,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"k" = (
+/obj/effect/landmark/start/liaison,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"l" = (
+/obj/effect/landmark/start/marine/medic,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"n" = (
+/obj/effect/landmark/start/professor,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"q" = (
+/obj/effect/landmark/start/warden,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"r" = (
+/obj/effect/landmark/start/maint,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"s" = (
+/obj/effect/landmark/late_join,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"t" = (
+/obj/effect/landmark/start/marine/engineer,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"u" = (
+/obj/effect/landmark/start/tech,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"v" = (
+/obj/effect/landmark/start/marine,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"x" = (
+/obj/effect/landmark/start/captain,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"z" = (
+/obj/effect/landmark/start/pilot,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"A" = (
+/obj/effect/landmark/start/cargo,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"C" = (
+/obj/effect/landmark/start/bridge,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"D" = (
+/obj/effect/landmark/start/warrant,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"F" = (
+/obj/effect/landmark/start/marine/rto,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"G" = (
+/obj/effect/landmark/start/marine/spec,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"I" = (
+/obj/effect/landmark/start/synthetic,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"J" = (
+/obj/effect/landmark/start/executive,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"L" = (
+/obj/effect/landmark/start/researcher,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"N" = (
+/obj/effect/landmark/start/nurse,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"P" = (
+/obj/effect/landmark/start/doctor,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"Q" = (
+/obj/effect/landmark/start/senior,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"R" = (
+/obj/effect/landmark/start/marine/smartgunner,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"T" = (
+/obj/effect/landmark/start/marine/leader,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+"W" = (
+/obj/effect/landmark/start/chef,
+/turf/open/floor/almayer{
+	icon_state = "plating"
+	},
+/area/event/deep_underground/dynamic)
+
+(1,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(2,1,1) = {"
+a
+s
+k
+z
+q
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(3,1,1) = {"
+a
+x
+v
+h
+D
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(4,1,1) = {"
+a
+J
+t
+n
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(5,1,1) = {"
+a
+C
+T
+e
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(6,1,1) = {"
+a
+A
+l
+L
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(7,1,1) = {"
+a
+W
+F
+Q
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(8,1,1) = {"
+a
+P
+R
+I
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(9,1,1) = {"
+a
+c
+G
+b
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(10,1,1) = {"
+a
+r
+N
+u
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(11,1,1) = {"
+a
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(12,1,1) = {"
+a
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(13,1,1) = {"
+a
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(14,1,1) = {"
+a
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(15,1,1) = {"
+a
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+g
+a
+"}
+(16,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}

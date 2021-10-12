@@ -1,0 +1,16 @@
+{
+    "map_name": "USS Runtime",
+    "map_path": "map_files/USS_Runtime",
+    "map_file": "USS_Runtime.dmm",
+	"survivor_types": [
+        "Survivor - LV-624 Archeologist",
+        "Survivor - LV-624 Emergency Medical Technician",
+        "Survivor - LV-624 Priest",
+        "Survivor - LV-624 Engineer",
+        "Survivor - LV-624 Cargo Technician",
+        "Survivor - LV-624 Security Guard",
+        "Survivor - LV-624 Head of Security"
+    ],
+    "traits": [{"Marine Main Ship": true}],
+	"disable_ship_map": true
+}

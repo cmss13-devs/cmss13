@@ -3,155 +3,155 @@
 /turf/closed/shuttle/lifeboat{
 	icon_state = "17,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "ci" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "17,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "ej" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,4"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "em" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "6,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "ep" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "1,2"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "ex" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,2"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "gp" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "25,4"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "gS" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "26,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "hb" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/prop/almayer/computer{
 	dir = 8
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "ho" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "7,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "hD" = (
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat{
 	pixel_x = -9;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "hQ" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,3"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "ix" = (
 /obj/structure/extinguisher_cabinet/lifeboat{
 	pixel_x = 11;
 	pixel_y = 27
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "iP" = (
 /turf/closed/shuttle/lifeboat/transparent,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "jA" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "17,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "kC" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "6,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "kE" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair,
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "lK" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "22,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "lS" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
 	id = "Boat1-D2"
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "mt" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "24,2"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "mA" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "1,3"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "pr" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "26,4"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "qV" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "rM" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "24,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "su" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "sO" = (
 /turf/closed/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "tB" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "23,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "uJ" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "25,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "uN" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "26,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "vG" = (
 /obj/docking_port/mobile/lifeboat/starboard,
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "wA" = (
 /turf/template_noop,
 /area/template_noop)
@@ -159,120 +159,120 @@
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "25,3"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "zv" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "zz" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "1,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "zK" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "6,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Ax" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,2"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "AF" = (
 /turf/open/shuttle/lifeboat{
 	icon_state = "plating_striped"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Bf" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "window2"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "BC" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "23,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "BP" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "18,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Cq" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "CS" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "25,2"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Dj" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "1,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Dn" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "3,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Ep" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/dropshiprear/lifeboat{
 	id = "Boat1-D1"
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "EI" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/communications{
 	dir = 8
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "EP" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "16,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "FI" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "24,3"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "FS" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "25,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "GA" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "7,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "GD" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "3,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "HW" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Io" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "1,4"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "KZ" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "26,3"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Lk" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/structure/machinery/computer/security/almayer_network{
@@ -280,140 +280,140 @@
 	network = list("almayer","vehicle")
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Mu" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "24,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "NE" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 4;
 	name = "pilot seat"
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "NF" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "1,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "NK" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,4"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Od" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "3,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Ow" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "6,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "OO" = (
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "PJ" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 1
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Qa" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "12,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Rk" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "25,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "RH" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "0,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "RR" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "23,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Td" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "3,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Tn" = (
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair{
 	dir = 4
 	},
 /turf/open/shuttle/lifeboat,
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "TM" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "24,4"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "TU" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "2,3"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Up" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "1,6"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "UG" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "23,5"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Vj" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "25,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "VF" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "17,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "VZ" = (
 /turf/open/shuttle/escapepod{
 	icon_state = "floor8";
 	tag = "icon-floor8"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Xj" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "24,1"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "XV" = (
 /turf/open/shuttle/lifeboat{
 	icon_state = "plate"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "Zl" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "24,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "ZP" = (
 /turf/closed/shuttle/lifeboat/transparent{
 	icon_state = "26,2"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 "ZR" = (
 /turf/closed/shuttle/lifeboat{
 	icon_state = "11,0"
 	},
-/area/almayer/lifeboat)
+/area/shuttle/lifeboat)
 
 (1,1,1) = {"
 qV

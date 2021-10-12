@@ -94,6 +94,15 @@
 	user.visible_message("[user] shows you: [icon2html(src, viewers(user))] [name]: assignment: [assignment]")
 	src.add_fingerprint(user)
 
+/obj/item/card/id/proc/set_user_data(var/mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	registered_name = H.real_name
+	registered_ref = WEAKREF(H)
+	registered_gid = H.gid
+	blood_type = H.blood_type
+
 /obj/item/card/id/proc/set_assignment(var/new_assignment)
 	assignment = new_assignment
 	name = "[registered_name]'s ID Card ([assignment])"

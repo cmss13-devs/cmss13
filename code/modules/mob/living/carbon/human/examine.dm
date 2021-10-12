@@ -427,7 +427,7 @@
 
 	if(hasHUD(user,"security"))
 		var/perpref
-		
+
 
 		if(wear_id && I)
 			perpref = I.registered_ref
@@ -483,6 +483,9 @@
 
 
 	if(isYautja(user))
+		var/obj/item/clothing/gloves/yautja/bracers = gloves
+		if(istype(bracers) && bracers.name_active)
+			to_chat(user, SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>."))
 		to_chat(user, SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey."))
 		if(src.hunter_data.hunted)
 			to_chat(user, SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name]."))

@@ -19,3 +19,6 @@ GLOBAL_LIST_INIT(_kbMap, list(
 	"SHIFT" = "Shift",
 	"CONTROL" = "Ctrl"
 	))
+
+///List of ckeys that have seen a blurb of a given key.
+GLOBAL_LIST_EMPTY(blurb_witnesses)

@@ -232,6 +232,9 @@
 // Resource Towers
 
 /datum/game_mode/colonialmarines/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/show_blurb_uscm), DROPSHIP_DROP_MSG_DELAY)
+
+/datum/game_mode/colonialmarines/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
 	SStechtree.activate_passive_nodes()
 	addtimer(CALLBACK(SStechtree, /datum/controller/subsystem/techtree/proc/activate_all_nodes), 20 SECONDS)
 

@@ -1028,32 +1028,12 @@
 	tag = "icon-mars_cave_23"
 	},
 /area/bigredv2/outside/sw)
-"dN" = (
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/s)
 "dO" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_6";
 	tag = "icon-mars_cave_6"
 	},
 /area/bigredv2/outside/sw)
-"dP" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_10";
-	tag = "icon-mars_cave_10"
-	},
-/area/bigredv2/outside/s)
-"dQ" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_7";
-	tag = "icon-mars_cave_7"
-	},
-/area/bigredv2/outside/s)
 "dR" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -1402,13 +1382,6 @@
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/outside/sw)
-"wx" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigredv2/outside/s)
 "Ah" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/mars,
@@ -1418,13 +1391,6 @@
 /turf/open/mars_cave{
 	icon_state = "mars_cave_7";
 	tag = "icon-mars_cave_7"
-	},
-/area/bigredv2/caves_sw)
-"LC" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_sw)
 "NX" = (
@@ -2046,9 +2012,9 @@ dj
 dZ
 ez
 dX
-IE
-dW
-dR
+dT
+dT
+dT
 "}
 (20,1,1) = {"
 an
@@ -2078,9 +2044,9 @@ dj
 ez
 ez
 aq
-IE
-dV
-dR
+dT
+dT
+dT
 "}
 (21,1,1) = {"
 ao
@@ -2110,9 +2076,9 @@ dj
 cP
 aq
 aq
-IE
-dV
-dR
+dT
+dT
+dT
 "}
 (22,1,1) = {"
 bw
@@ -2142,9 +2108,9 @@ dj
 cP
 eq
 eJ
-IE
-dR
-dR
+dT
+dT
+dT
 "}
 (23,1,1) = {"
 ab
@@ -2174,9 +2140,9 @@ cS
 ew
 dX
 aq
-IE
-dR
-dR
+dT
+dT
+dT
 "}
 (24,1,1) = {"
 bQ
@@ -2206,9 +2172,9 @@ cP
 ee
 dX
 aq
-IE
-dR
-dR
+dT
+dT
+dT
 "}
 (25,1,1) = {"
 ap
@@ -2237,10 +2203,10 @@ cP
 cP
 dk
 aq
-dP
-LC
-dR
-dR
+dT
+dT
+dT
+dT
 "}
 (26,1,1) = {"
 aq
@@ -2268,11 +2234,11 @@ df
 do
 dv
 aq
-dP
-wx
-dV
-dR
-dR
+dT
+dT
+dT
+dT
+dT
 "}
 (27,1,1) = {"
 ar
@@ -2300,11 +2266,11 @@ dX
 dk
 aq
 aq
-dQ
-dN
-dR
-dR
-dR
+dT
+dT
+dT
+dT
+dT
 "}
 (28,1,1) = {"
 as
@@ -2331,11 +2297,11 @@ dA
 dH
 dL
 dL
-wx
-wx
-dN
-dR
-dR
+dT
+dT
+dT
+dT
+dT
 dT
 "}
 (29,1,1) = {"
@@ -2362,11 +2328,11 @@ dA
 dF
 dA
 dH
-dN
-wx
-dN
-dN
-dR
+dT
+dT
+dT
+dT
+dT
 dT
 dT
 "}

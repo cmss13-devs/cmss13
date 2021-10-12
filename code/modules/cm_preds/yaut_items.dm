@@ -913,3 +913,12 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/card/id/bracer_chip
+	name = "bracer ID chip"
+	desc = "A complex cypher chip embedded within a set of clan bracers."
+	icon = 'icons/obj/items/radio.dmi'
+	icon_state = "upp_key"
+	w_class = SIZE_TINY
+	flags_equip_slot = SLOT_ID
+	flags_item = ITEM_PREDATOR|DELONDROP|NODROP

@@ -285,14 +285,17 @@
 		to_chat(user, SPAN_NOTICE("It's out of fuel."))
 		return FALSE
 	if(on)
-		if(do_after(user, 2.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-			var/hand = user.hand ? "l_hand" : "r_hand"
-			user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
-			SPAN_WARNING("You snuff out [src], singing your hand."))
-			user.apply_damage(7, BURN, hand)
-			burn_out()
-			//TODO: add snuff out sound so guerilla CLF snuffing flares get noticed
+		if(!do_after(user, 2.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
+		if(!on)
+			return
+		var/hand = user.hand ? "l_hand" : "r_hand"
+		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
+		SPAN_WARNING("You snuff out [src], singing your hand."))
+		user.apply_damage(7, BURN, hand)
+		burn_out()
+		//TODO: add snuff out sound so guerilla CLF snuffing flares get noticed
+		return
 
 	. = ..()
 	// All good, turn it on.

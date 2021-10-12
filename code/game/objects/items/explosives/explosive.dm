@@ -42,6 +42,20 @@
 	creator = null
 	. = ..()
 
+/obj/item/explosive/clicked(mob/user, list/mods)
+	if(Adjacent(user) && mods["alt"])
+		if(!has_blast_wave_dampener)
+			to_chat(user, SPAN_WARNING("\The [src] doesn't have blast wave dampening."))
+			return
+		toggle_blast_dampener(user)
+		return
+	return ..()
+
+/obj/item/explosive/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	if(proximity_flag && (istype(target, /obj/item/device/assembly_holder) || is_type_in_list(target, allowed_sensors) || is_type_in_list(target, allowed_containers)))
+		return attackby(target, user)
+	return ..()
+
 /obj/item/explosive/attack_self(mob/user)
 	..()
 	if(customizable && assembly_stage <= ASSEMBLY_UNLOCKED)
@@ -132,7 +146,7 @@
 				if(W.reagents.maximum_volume + current_container_volume > max_container_volume)
 					to_chat(user, SPAN_DANGER("\the [W] is too large for [name]."))
 					return
-				if(user.drop_held_item())
+				if(user.temp_drop_inv_item(W))
 					to_chat(user, SPAN_NOTICE("You add \the [W] to the assembly."))
 					W.forceMove(src)
 					containers += W
@@ -222,17 +236,19 @@
 		other_container.reagents.copy_to(new_container, other_container.reagents.total_volume, TRUE, TRUE, TRUE)
 		containers += new_container
 
-/obj/item/explosive/proc/toggle_blast_dampener()
+/obj/item/explosive/proc/toggle_blast_dampener_verb()
 	set category = "Weapons"
 	set	name = "Toggle Blast Wave Dampener"
 	set desc = "Enable/Disable the Explosive Blast Wave Dampener"
 	set src in usr
 
-	if(!ishuman(usr))
+	toggle_blast_dampener(usr)
+
+/obj/item/explosive/proc/toggle_blast_dampener(var/mob/living/carbon/human/H)
+	if(!istype(H))
 		to_chat(usr, SPAN_DANGER("This is beyond your understanding..."))
 		return
 
-	var/mob/living/carbon/human/H = usr
 	if(!skillcheck(H, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(usr, SPAN_DANGER("You have no idea how to use this..."))
 		return

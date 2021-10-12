@@ -416,4 +416,5 @@
 	req_skill = SKILL_ENGINEER
 	req_skill_level = SKILL_ENGINEER_ENGI
 	pill_maker = FALSE
+	vial_maker = TRUE
 	max_pill_count = 0

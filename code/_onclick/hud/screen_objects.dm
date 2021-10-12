@@ -20,9 +20,10 @@
 	icon = null
 	icon_state = null
 	mouse_opacity = 0
-	screen_loc = "CENTER-7,CENTER-7"
+	layer = CINEMATIC_LAYER
 	maptext_height = 480
 	maptext_width = 480
+	appearance_flags = NO_CLIENT_COLOR|PIXEL_SCALE
 
 /obj/screen/cinematic
 	layer = CINEMATIC_LAYER

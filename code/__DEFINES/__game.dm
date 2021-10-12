@@ -138,6 +138,8 @@
 // note that this is multiplied by 10 in the shuttle controller. Hence, this is not defined in deciseconds but in real seconds
 
 #define DOCK_ATTEMPT_TIMEOUT 			20 SECONDS	//how long in ticks we wait before assuming the docking controller is broken or blown up.
+#define DROPSHIP_WARMUP_TIME			10 SECONDS
+#define DROPSHIP_DROP_MSG_DELAY			30 SECONDS
 #define DROPSHIP_TRANSIT_DURATION		100 SECONDS	// 100 seconds
 #define DROPSHIP_CORSAT_DURATION		30 SECONDS  // 30 seconds
 #define ELEVATOR_TRANSIT_DURATION		5 SECONDS	// 5 seconds

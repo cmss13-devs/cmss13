@@ -210,9 +210,9 @@ All ShuttleMove procs go here
 
 	. = ..()
 
-//	var/knockdown = movement_force["KNOCKDOWN"]
-//	if(knockdown)
-//		Paralyze(knockdown)
+	var/knockdown = movement_force["KNOCKDOWN"]
+	if(knockdown)
+		KnockDown(knockdown)
 
 
 /************************************Structure move procs************************************/

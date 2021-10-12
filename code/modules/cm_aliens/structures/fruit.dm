@@ -139,6 +139,9 @@
 	QDEL_IN(src, 3 SECONDS)
 
 /obj/effect/alien/resin/fruit/attack_alien(mob/living/carbon/Xenomorph/X)
+	if(picked)
+		to_chat(X, SPAN_XENODANGER("This fruit is already being picked!"))
+		return
 	if(X.a_intent == INTENT_HELP && X.can_not_harm(bound_xeno))
 		if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && X.health >= X.caste.max_health)
 			to_chat(X, SPAN_XENODANGER("You are at full health! This would be a waste..."))
@@ -266,6 +269,7 @@
 	bitesize = 2
 	var/mob/living/carbon/Xenomorph/bound_xeno //Drone linked to this fruit
 	var/fruit_type = FRUIT_TYPE_NORMAL
+	var/consume_delay = 2 SECONDS
 
 /obj/item/reagent_container/food/snacks/resin_fruit/Initialize()
 	. = ..()
@@ -300,13 +304,18 @@
 
 // Xenos eating fruit
 /obj/item/reagent_container/food/snacks/resin_fruit/attack(mob/living/carbon/Xenomorph/X, mob/user)
+	if(istype(user, /mob/living/carbon/Xenomorph)) // Prevents xenos from feeding capped/dead marines fruit
+		var/mob/living/carbon/Xenomorph/Y = user
+		if(!Y.can_not_harm(X))
+			to_chat(Y, SPAN_WARNING("[X] refuses to eat [src]."))
+			return
 	if(!istype(X))
 		return ..()
 	user.affected_message(X,
 		SPAN_HELPFUL("You <b>start [user == X ? "eating" : "feeding [X]"] [src]</b>."),
 		SPAN_HELPFUL("[user] <b>starts feeding</b> you <b>[src]</b>."),
 		SPAN_NOTICE("[user] starts [user == X ? "eating" : "feeding [X]"] <b>[src]</b>."))
-	if(!do_after(user, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(user, consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, X, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
 		return FALSE
 	user.affected_message(X,
 		SPAN_HELPFUL("You [user == X ? "<b>eat</b>" : "<b>fed</b> [X]"] <b>[src]</b>."),
@@ -381,19 +390,26 @@
 // Handles xenos picking up fruit
 /mob/living/carbon/Xenomorph/proc/pickup_fruit(var/obj/effect/alien/resin/fruit/F)
 	if(F.bound_xeno && !can_not_harm(F.bound_xeno))
-		to_chat(src, SPAN_WARNING("You crush [F]."))
+		to_chat(src, SPAN_XENODANGER("You crush [F]."))
 		qdel(F)
 		return
 	if(!F.mature)
-		to_chat(src, SPAN_WARNING("[F] isn't mature yet!"))
+		to_chat(src, SPAN_XENODANGER("[F] isn't mature yet!"))
 		return
-	if(!do_after(src, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(F.picked)
+		to_chat(src, SPAN_XENODANGER("[F] is already being picked!"))
+	// Indicates the fruit is being picked, so other xenos can't eat it at the same time
+	F.picked = TRUE
+	if(!do_after(src, F.consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+		F.picked = FALSE
 		return
-	to_chat(src, SPAN_NOTICE("You uproot [F]."))
+	if(!F.mature)
+		F.picked = FALSE
+		return
+	to_chat(src, SPAN_XENONOTICE("You uproot [F]."))
 	var/obj/item/reagent_container/food/snacks/resin_fruit/new_fruit = new F.fruit_type()
 	new_fruit.color = F.color
 	put_in_hands(new_fruit)
-	F.picked = TRUE
 	//if there's a xeno linked to the fruit, add it to their fruit cap and notify them.
 	if(!QDELETED(F.bound_xeno))
 		new_fruit.link_xeno(F.bound_xeno)

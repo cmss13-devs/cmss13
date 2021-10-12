@@ -3,7 +3,7 @@
 /// Generic Lifeboat definition
 /obj/docking_port/mobile/lifeboat
 	name = "lifeboat"
-	area_type = /area/almayer/lifeboat
+	area_type = /area/shuttle/lifeboat
 	ignitionTime = 10 SECONDS
 	width = 27
 	height = 7

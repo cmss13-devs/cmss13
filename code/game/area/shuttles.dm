@@ -11,6 +11,7 @@
 	icon_state = "shuttle"
 	// Loading the same shuttle map at a different time will produce distinct area instances.
 	unique = FALSE
+	lighting_use_dynamic = FALSE
 
 ///area/shuttle/Initialize()
 //	if(!canSmoothWithAreas)
@@ -32,3 +33,8 @@
 
 /area/shuttle/vehicle_elevator
 	name = "Vehicle ASRS"
+
+/area/shuttle/lifeboat
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+	flags_atom = AREA_NOTUNNEL

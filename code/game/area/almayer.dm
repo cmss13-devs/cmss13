@@ -667,12 +667,6 @@
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/lifeboat
-	icon = 'icons/turf/area_almayer.dmi'
-	icon_state = "lifeboat"
-	requires_power = 0
-	flags_atom = AREA_NOTUNNEL
-
 /area/space/almayer/lifeboat_dock
 	name = "\improper Lifeboat Docking Port"
 	icon = 'icons/turf/area_almayer.dmi'

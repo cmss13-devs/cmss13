@@ -8,6 +8,8 @@
 	supervisors = "Ancients"
 	gear_preset = "Yautja Blooded"
 
+	handle_spawn_and_equip = TRUE
+
 /datum/job/antag/predator/New()
 	. = ..()
 	gear_preset_whitelist = list(
@@ -23,37 +25,11 @@
 	spawn_positions = max((round(count * PREDATOR_TO_MARINES_SPAWN_RATIO)), 4)
 	total_positions = spawn_positions
 
-/datum/job/antag/predator/spawn_in_player(mob/new_player/NP)
-	if(!NP?.client)
-		return
+/datum/job/antag/predator/spawn_and_equip(var/mob/new_player/player)
+	player.spawning = TRUE
+	player.close_spawn_windows()
 
-	var/clan_id = CLAN_SHIP_PUBLIC
-	var/datum/entity/clan_player/clan_info = NP?.client?.clan_info
-	clan_info?.sync()
-	if(clan_info?.clan_id)
-		clan_id = clan_info.clan_id
-	SSpredships.load_new(clan_id)
-	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
-	if(!isturf(spawn_point))
-		log_debug("Failed to find spawn point for pred ship in JobAuthority - clan_id=[clan_id]")
-		to_chat(NP, SPAN_WARNING("Unable to setup spawn location - you might want to tell someone about this."))
-		return
-
-	NP.spawning = TRUE
-	NP.close_spawn_windows()
-	var/mob/living/carbon/human/yautja/Y = new(NP.loc)
-	Y.lastarea = get_area(NP.loc)
-
-	Y.forceMove(spawn_point)
-	Y.job = NP.job
-	Y.name = NP.real_name
-	Y.voice = NP.real_name
-
-	NP.mind_initialize()
-	NP.mind.transfer_to(Y, TRUE)
-	NP.mind.setup_human_stats()
-
-	return Y
+	SSticker.mode.attempt_to_join_as_predator(player)
 
 /datum/job/antag/predator/get_whitelist_status(var/list/roles_whitelist, var/client/player) // Might be a problem waiting here, but we've got no choice
 	. = ..()

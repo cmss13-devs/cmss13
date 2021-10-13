@@ -129,36 +129,6 @@ Additional game mode variables.
 	if(!ignore_pred_num)
 		pred_current_num++
 
-#define calculate_pred_max (Floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
-
-/datum/game_mode/proc/initialize_starting_predator_list()
-	if(prob(pred_round_chance)) //First we want to determine if it's actually a predator round.
-		flags_round_type |= MODE_PREDATOR //It is now a predator round.
-		var/L[] = get_whitelisted_predators() //Grabs whitelisted preds who are ready at game start.
-		var/datum/mind/M
-		var/i //Our iterator for the maximum amount of pred spots available. The actual number is changed later on.
-		var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-		var/pred_max = calculate_pred_max
-
-		while(L.len && i < pred_max)
-			M = pick(L)
-			if(!istype(M)) continue
-			L -= M
-			M.roundstart_picked = TRUE
-			predators += M
-			if(M.current && J)
-				if(J.get_whitelist_status(RoleAuthority.roles_whitelist, M.current.client) == WHITELIST_NORMAL)
-					i++
-			else
-				i++
-
-/datum/game_mode/proc/initialize_post_predator_list() //TO DO: Possibly clean this using tranfer_to.
-	var/temp_pred_list[] = predators //We don't want to use the actual predator list as it will be overriden.
-	predators = list() //Empty it. The temporary minds we used aren't going to be used much longer.
-	for(var/datum/mind/new_pred in temp_pred_list)
-		if(!istype(new_pred)) continue
-		attempt_to_join_as_predator(new_pred.current)
-
 /datum/game_mode/proc/get_whitelisted_predators(readied = 1)
 	// Assemble a list of active players who are whitelisted.
 	var/players[] = new
@@ -193,6 +163,8 @@ Additional game mode variables.
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
 	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+#define calculate_pred_max (Floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
 

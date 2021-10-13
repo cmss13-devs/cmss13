@@ -194,9 +194,9 @@
 		comm_paygrade = H.get_paygrade()
 
 	if(say_understands(speaker, language))
-		message = SPAN_EMOTE("<B>[comm_paygrade][src]</B> [verb], \"[message]\"")
+		message = "<B>[comm_paygrade][src]</B> [verb], \"[message]\""
 	else
-		message = SPAN_EMOTE("<B>[comm_paygrade][src]</B> [verb].")
+		message = "<B>[comm_paygrade][src]</B> [verb]."
 
 	if(src.status_flags & PASSEMOTES)
 		for(var/obj/item/holder/H in src.contents)

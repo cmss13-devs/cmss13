@@ -67,7 +67,6 @@
 
 #define SPAN_HELPFUL(X) "<span class='helpful'>[X]</span>"
 
-#define SPAN_EMOTE(X) "<span class='emote'>[X]</span>"
 #define SPAN_LOCALSAY(X) "<span class='say'>[X]</span>"
 #define SPAN_DEADSAY(X) "<span class='deadsay'>[X]</span>"
 

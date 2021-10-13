@@ -15,6 +15,8 @@
 	var/yooc_message = "YOOC: [src.key]([src.admin_holder.rank]): [msg]"
 	log_admin(yooc_message)
 
+	msg = process_chat_markup(msg, list("*"))
+
 	// Send to preds who are non-staff
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		if(Y.client && !Y.client.admin_holder)

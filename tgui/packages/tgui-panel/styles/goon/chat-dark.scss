@@ -255,7 +255,7 @@ a.popt {
 /* ADD HERE FOR ITALIC */
 
 
-.italic, .italics, .emote {
+.italic, .italics, {
   font-style: italic;
 }
 
@@ -378,10 +378,6 @@ em {
 
 .alert {
   color: #d82020;
-}
-
-.emote {
-  font-style: italic;
 }
 
 .userdanger {

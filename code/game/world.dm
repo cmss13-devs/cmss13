@@ -47,6 +47,7 @@ var/internal_tick_usage = 0
 	load_mode()
 	loadShuttleInfoDatums()
 	populate_gear_list()
+	initialize_global_regex()
 
 	//Emergency Fix
 	//end-emergency fix

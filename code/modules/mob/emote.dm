@@ -17,7 +17,8 @@
 	else
 		input = message
 	if(input)
-		message = SPAN_EMOTE("<B>[comm_paygrade][src]</B> [input]")
+		message = "<B>[comm_paygrade][src]</B> [input]"
+		message = process_chat_markup(message, list("~", "_"))
 	else
 		return
 

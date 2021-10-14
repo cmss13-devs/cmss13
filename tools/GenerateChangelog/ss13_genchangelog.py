@@ -75,7 +75,7 @@ failed_cache_read = True
 if os.path.isfile(changelog_cache):
     try:
         with open(changelog_cache) as f:
-            (_, all_changelog_entries) = yaml.load_all(f)
+            (_, all_changelog_entries) = yaml.load_all(f, Loader=yaml.FullLoader)
             failed_cache_read = False
 
             # Convert old timestamps to newer format.
@@ -102,7 +102,7 @@ if failed_cache_read and os.path.isfile(args.targetFile):
     from bs4.element import NavigableString
     print(' Generating cache...')
     with open(args.targetFile, 'r') as f:
-        soup = BeautifulSoup(f)
+        soup = BeautifulSoup(f, 'html.parser')
         for e in soup.find_all('div', {'class': 'commit'}):
             entry = {}
             date = datetime.strptime(e.h2.string.strip(), dateformat).date()  # key
@@ -147,7 +147,7 @@ for fileName in glob.glob(os.path.join(args.ymlDir, "*.yml")):
     print(' Reading {}...'.format(fileName))
     cl = {}
     with open(fileName, 'r') as f:
-        cl = yaml.load(f)
+        cl = yaml.load(f, Loader=yaml.FullLoader)
         f.close()
 
     try:

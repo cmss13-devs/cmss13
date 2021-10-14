@@ -10,6 +10,8 @@
 #define COMSIG_GLOB_NEW_Z "!new_z"
 ///from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)
 #define COMSIG_GLOB_VEHICLE_ORDERED "!vehicle_ordered"
+/// from /datum/controller/subsystem/ticker/fire
+#define COMSIG_GLOB_MODE_PREGAME_LOBBY "!mode_pregame_lobby"
 ///from /datum/game_mode/proc/pre_setup
 #define COMSIG_GLOB_MODE_PRESETUP "!mode_presetup"
 ///from /datum/game_mode/proc/post_setup

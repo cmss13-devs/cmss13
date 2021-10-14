@@ -922,3 +922,4 @@
 	w_class = SIZE_TINY
 	flags_equip_slot = SLOT_ID
 	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
+	paygrade = null

@@ -1,6 +1,9 @@
 #define MOVE_INTENT_WALK 1
 #define MOVE_INTENT_RUN 2
 
+GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
+
+
 /mob/dead
 	var/voted_this_drop = 0
 	can_block_movement = FALSE
@@ -20,6 +23,8 @@
 	var/m_intent = MOVE_INTENT_WALK
 	stat = DEAD
 	var/adminlarva = 0
+	var/ghostvision = 1
+	var/image/ghostimage_default = null
 	var/can_reenter_corpse
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghost - this will remain as null.
@@ -34,11 +39,40 @@
 	var/atom/movable/following = null
 	alpha = 127
 
+
+/proc/updateallghostimages()
+	listclearnulls(GLOB.ghost_images_default)
+
+	for(var/mob/dead/observer/O as anything in GLOB.observer_list)
+		O.updateghostimages()
+
+/mob/dead/observer/verb/toggle_ghostsee()
+	set name = "Toggle Ghost Vision"
+	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
+	set category = "Ghost.Settings"
+	ghostvision = !(ghostvision)
+	updateghostimages()
+	to_chat(usr, SPAN_NOTICE("You [(ghostvision?"now":"no longer")] have ghost vision."))
+
+/mob/dead/observer/proc/updateghostimages()
+	if (!client)
+		return
+	client.images -= GLOB.ghost_images_default
+	if(!ghostvision)
+		return
+	client.images |= GLOB.ghost_images_default-ghostimage_default
+
 /mob/dead/observer/New(mob/body)
 	sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS|SEE_SELF
-	see_invisible = SEE_INVISIBLE_OBSERVER
+	see_invisible = INVISIBILITY_LEVEL_TWO
 	see_in_dark = 100
 	GLOB.observer_list += src
+
+	ghostimage_default = image(src.icon,src,src.icon_state)
+	ghostimage_default.override = TRUE
+	GLOB.ghost_images_default |= ghostimage_default
+
+	updateallghostimages()
 
 	var/turf/T
 	if(ismob(body))
@@ -536,7 +570,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost.Settings"
 
 	if (see_invisible == SEE_INVISIBLE_OBSERVER_NOLIGHTING)
-		see_invisible = SEE_INVISIBLE_OBSERVER
+		see_invisible = INVISIBILITY_LEVEL_TWO
 	else
 		see_invisible = SEE_INVISIBLE_OBSERVER_NOLIGHTING
 

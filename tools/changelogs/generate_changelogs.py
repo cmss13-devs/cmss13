@@ -80,7 +80,7 @@ def generate_changelogs(pid, branch, directory):
                 stalling = False
 
             # Check this wasn't already done, too
-            if iid in processed_miids: 
+            if iid in processed_miids:
                 continue
             processed_miids.append(iid)
 
@@ -100,22 +100,29 @@ def generate_changelogs(pid, branch, directory):
             # Make the changelog
             print("Parsing MR #{}    {}".format(iid, title))
             print("#{} was last updated {}".format(iid, mr_updated_date.strftime(DATE_FORMAT)))
-            changelog = Changelog()
-            success = changelog.parse_changelog(merge_request.get("description"))
+
+            mr_cls = parse_multiple_changelog(merge_request.get("description"))
             mrs_parsed += 1
 
-            # No changelog found :(
-            if not success:
+            # No changelogs found :(
+            if not mr_cls:
                 continue
 
-            if not changelog.author:
-                changelog.set_author(user) # Fallback to gitlab username as CL author
+            cl_counter = 1
+            for changelog in mr_cls:
+                if not changelog.author:
+                    changelog.set_author(user) # Fallback to gitlab username as CL author
 
-            # make a YAML file for the changelog
-            file_name = "{}-merge_request-{}@{}".format(user, merge_request.get("id"), mr_merged_date.date().strftime("%d-%m-%Y"))
-            changelog.dump_yaml(file_name, directory)
-            print("Generated changelog for MR #{}    {}".format(iid, file_name))
-            cls_generated += 1
+                # make a YAML file for the changelog
+                mr_file_id = str(merge_request.get("id"))
+                if cl_counter > 1:
+                    mr_file_id += "+"
+                    mr_file_id += str(cl_counter)
+                file_name = "{}-merge_request-{}@{}".format(user, mr_file_id, mr_merged_date.date().strftime("%d-%m-%Y"))
+                changelog.dump_yaml(file_name, directory)
+                print("Generated changelog #{} for MR #{}    {}".format(cl_counter, iid, file_name))
+                cls_generated += 1
+                cl_counter += 1
 
         # If we have no newer date, we bump time ahead and pray that someone didn't
         # mass reference a MR and we'd have more than a few dozens updated same second...
@@ -135,6 +142,17 @@ def generate_changelogs(pid, branch, directory):
 
     # Save our progress on changelog generation
     working_branch.save_latest_mr_date(str(pid)+'.txt')
+
+def parse_multiple_changelog(desc):
+    it = iter(desc.splitlines())
+    all_cl = []
+    success = True
+    while success:
+        cl = Changelog()
+        success = cl.parse_changelog(it)
+        if success:
+            all_cl.append(cl)
+    return all_cl
 
 if __name__ == "__main__":
     if len(argv) < 4:

@@ -1,9 +1,6 @@
 ## Changelog
-<!--
-	Remember that the name can NOT contain spaces
--->
 
-:cl: JohnTitor
+:cl: John Titor
 
 rscadd: Added a broken changelog that wasn't filled out.
 

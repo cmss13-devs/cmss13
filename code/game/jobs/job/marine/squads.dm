@@ -200,8 +200,6 @@
 		return 0	//Logic
 	if(!src.usable)
 		return 0
-	if(!M.mind)
-		return 0
 	if(!M.job)
 		return 0	//Not yet
 	if(M.assigned_squad)
@@ -280,8 +278,6 @@
 
 //proc used by the overwatch console to transfer marine to another squad
 /datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, var/obj/item/card/id/ID)
-	if(!M.mind)
-		return 0
 	if(M.assigned_squad != src)
 		return		//not assigned to the correct squad
 	var/obj/item/card/id/C = ID

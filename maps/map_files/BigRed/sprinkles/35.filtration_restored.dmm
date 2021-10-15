@@ -620,9 +620,6 @@
 /area/bigredv2/outside/s)
 "cn" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/machinery/door/poddoor/two_tile/vertical{
-	name = "\improper Filtration Lockdown"
-	},
 /turf/open/floor{
 	dir = 4;
 	icon_state = "asteroidwarning";

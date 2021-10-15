@@ -101,6 +101,7 @@
 		return
 
 	message = capitalize(trim(message))
+	message = process_chat_markup(message, list("~", "_"))
 
 	if(speech_problem_flag)
 		var/list/handle_r = handle_speech_problems(message)

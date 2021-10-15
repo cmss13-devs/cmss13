@@ -4526,7 +4526,7 @@
 "cHF" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/eastright,
-/obj/item/reagent_container/food/drinks/britcup{
+/obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
 	pixel_y = 14
 	},
@@ -24946,7 +24946,7 @@
 "oZz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/door/window/eastright,
-/obj/item/reagent_container/food/drinks/britcup{
+/obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
 	pixel_y = 14
 	},
@@ -27230,7 +27230,7 @@
 /obj/structure/filingcabinet{
 	pixel_x = 8
 	},
-/obj/item/reagent_container/food/drinks/britcup{
+/obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -7;
 	pixel_y = 11
 	},

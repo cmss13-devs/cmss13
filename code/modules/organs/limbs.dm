@@ -610,7 +610,10 @@ This function completely restores a damaged organ to perfect condition.
 	if(status & LIMB_DESTROYED)
 		if(has_stump_icon && !(status & LIMB_AMPUTATED))
 			icon = 'icons/mob/humans/dam_human.dmi'
-			icon_state = "stump_[icon_name]"
+			if(owner.species?.flags & IS_SYNTHETIC)
+				icon_state = "synth_stump_[icon_name]"
+			else
+				icon_state = "stump_[icon_name]"
 		else
 			icon_state = ""
 		return

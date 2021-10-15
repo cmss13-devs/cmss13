@@ -82218,8 +82218,8 @@
 	pixel_y = 2
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/reagent_container/food/drinks/britcup{
-	desc = "A cup with the British flag emblazoned on it. Looks like someone spit in it.";
+/obj/item/reagent_container/food/drinks/coffeecup/wy{
+	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Looks like someone spat in it.";
 	name = "dip cup";
 	pixel_x = -7;
 	pixel_y = 13

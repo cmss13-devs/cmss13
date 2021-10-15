@@ -25069,7 +25069,7 @@
 	icon_state = "asteroidfloor";
 	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "bqa" = (
 /turf/open/floor{
 	dir = 1;
@@ -25084,7 +25084,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (EAST)"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "bqd" = (
 /obj/structure/machinery/landinglight/ds2/delaytwo{
 	dir = 8;
@@ -25379,10 +25379,10 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "brE" = (
 /turf/open/floor/greengrid,
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "brF" = (
 /obj/effect/landmark/shuttle_loc/marine_trg/landing{
 	name = "2"
@@ -25582,7 +25582,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "bsI" = (
 /turf/open/mars{
 	icon_state = "mars_dirt_3";
@@ -29422,7 +29422,9 @@
 /area/bigredv2/outside/engineering)
 "cvi" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/structure/tunnel{
+	id = "hole2"
+	},
 /turf/open/floor{
 	icon_state = "dark";
 	tag = "icon-dark"
@@ -29437,6 +29439,13 @@
 	icon_state = "grass_impenetrable"
 	},
 /area/bigredv2/caves/eta/xenobiology)
+"cAs" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/caves_east)
 "cCr" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
 /turf/open/mars_cave{
@@ -29902,6 +29911,13 @@
 "fin" = (
 /turf/open/floor/plating,
 /area/bigredv2/caves/eta/xenobiology)
+"fjF" = (
+/obj/effect/landmark/lv624/xeno_tunnel,
+/turf/open/mars{
+	icon_state = "mars_dirt_6";
+	tag = "icon-mars_dirt_6"
+	},
+/area/bigredv2/outside/w)
 "fjP" = (
 /turf/open/floor{
 	icon_state = "dark"
@@ -30581,6 +30597,13 @@
 /obj/structure/fence,
 /turf/open/mars,
 /area/bigredv2/outside/se)
+"iXp" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/bigredv2/caves_east)
 "iYR" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -6
@@ -30950,7 +30973,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "kVT" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_21";
@@ -30969,17 +30992,14 @@
 /turf/closed/wall/solaris/reinforced/hull,
 /area/bigredv2/outside/e)
 "laj" = (
-/obj/structure/machinery/door/poddoor/almayer/closed{
-	dir = 4;
-	id = "filtration";
-	name = "Filtration Lockdown"
+/obj/structure/tunnel{
+	id = "hole5"
 	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_lambda)
 "lcu" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/mask/cigarette,
@@ -31211,7 +31231,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "mya" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_door,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
@@ -31332,7 +31352,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTHEAST)"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "nht" = (
 /turf/open/floor{
 	dir = 6;
@@ -31484,6 +31504,12 @@
 	tag = "icon-mars_dirt_6"
 	},
 /area/bigredv2/outside/sw)
+"ooD" = (
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
+	},
+/area/bigredv2/caves_east)
 "ooP" = (
 /obj/structure/toilet{
 	pixel_y = 8
@@ -31630,7 +31656,7 @@
 "pbr" = (
 /obj/structure/blocker/forcefield/vehicles,
 /turf/closed/wall/solaris,
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "pbK" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
@@ -31840,7 +31866,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "qlK" = (
 /obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
@@ -32002,7 +32028,7 @@
 /turf/open/floor{
 	icon_state = "dark"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "rml" = (
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage,
 /turf/open/floor,
@@ -32018,7 +32044,9 @@
 	},
 /area/bigredv2/caves/eta/research)
 "rqa" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/structure/tunnel{
+	id = "hole4"
+	},
 /turf/open/floor{
 	icon_state = "whitepurplefull";
 	tag = "icon-whitepurplefull"
@@ -32108,6 +32136,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/gm/river,
 /area/bigredv2/outside/filtration_plant)
+"rHD" = (
+/obj/effect/landmark/lv624/xeno_tunnel,
+/turf/open/mars,
+/area/bigredv2/outside/c)
 "rJJ" = (
 /turf/open/floor{
 	dir = 1;
@@ -32318,7 +32350,7 @@
 	icon_state = "asteroidwarning";
 	tag = "icon-asteroidwarning (NORTH)"
 	},
-/area/bigredv2/outside/se)
+/area/bigredv2/caves_east)
 "sLr" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_11";
@@ -32368,7 +32400,9 @@
 /turf/open/floor,
 /area/bigred/ground/garage_workshop)
 "tdB" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/structure/tunnel{
+	id = "hole1"
+	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -32523,6 +32557,13 @@
 	tag = "icon-mars_cave_7"
 	},
 /area/bigredv2/caves_east)
+"tPr" = (
+/obj/effect/landmark/lv624/xeno_tunnel,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/outside/ne)
 "tQw" = (
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
@@ -32581,6 +32622,13 @@
 	tag = "icon-asteroidwarning (NORTH)"
 	},
 /area/bigredv2/outside/sw)
+"uij" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/bigredv2/caves_east)
 "ujC" = (
 /obj/effect/landmark/structure_spawner/xvx_hive/xeno_wall,
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_wall,
@@ -32710,6 +32758,13 @@
 	tag = "icon-mars_dirt_10"
 	},
 /area/bigredv2/outside/space_port_lz2)
+"uVe" = (
+/turf/open/floor{
+	dir = 10;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHWEST)"
+	},
+/area/bigredv2/caves_east)
 "uWo" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /obj/effect/decal/cleanable/dirt,
@@ -32965,6 +33020,13 @@
 	tag = "icon-mars_cave_2"
 	},
 /area/bigredv2/caves_se)
+"whi" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/bigredv2/caves_east)
 "whZ" = (
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor{
@@ -33200,6 +33262,13 @@
 	tag = "icon-mars_cave_14"
 	},
 /area/bigredv2/caves_north)
+"xeN" = (
+/obj/effect/landmark/lv624/xeno_tunnel,
+/turf/open/mars_cave{
+	icon_state = "mars_dirt_4";
+	tag = "icon-mars_dirt_4"
+	},
+/area/bigredv2/outside/filtration_plant)
 "xfW" = (
 /turf/open/jungle{
 	bushes_spawn = 0;
@@ -33288,7 +33357,9 @@
 	},
 /area/bigredv2/caves_north)
 "xXP" = (
-/obj/effect/landmark/lv624/xeno_tunnel,
+/obj/structure/tunnel{
+	id = "hole3"
+	},
 /turf/open/mars_cave{
 	icon_state = "mars_cave_2";
 	tag = "icon-mars_cave_2"
@@ -41234,7 +41305,7 @@ aEu
 aEu
 aEu
 aEu
-aQG
+fjF
 aEu
 aQF
 aQG
@@ -59057,7 +59128,7 @@ bgL
 asv
 bhU
 aBR
-aBR
+rHD
 asv
 bjL
 bkg
@@ -60097,7 +60168,7 @@ azc
 ako
 aAJ
 aBu
-aCc
+tPr
 anJ
 aEa
 aER
@@ -62549,7 +62620,7 @@ bes
 bes
 mzV
 pvp
-uvZ
+xeN
 aao
 aao
 aao
@@ -62757,13 +62828,13 @@ nbc
 bep
 bep
 nht
-ejP
+vVZ
 aao
-ejP
-ejP
+vVZ
+vVZ
 eDS
 aao
-ejP
+vVZ
 aao
 cns
 aao
@@ -62970,11 +63041,11 @@ bes
 bes
 bes
 ejP
-laj
-laj
-laj
-laj
-ejP
+ujD
+ujD
+ujD
+ujD
+vVZ
 rjw
 brD
 aao
@@ -63188,9 +63259,9 @@ bhr
 aao
 aao
 mxf
-bpY
-bpY
-kwQ
+uij
+uij
+uVe
 brD
 brD
 brD
@@ -63405,9 +63476,9 @@ bes
 aao
 aao
 neH
-bep
+whi
 bqb
-nht
+iXp
 aao
 aao
 rjw
@@ -63621,11 +63692,11 @@ bes
 bes
 aao
 kBn
-laj
-laj
-laj
-laj
-ejP
+ujD
+ujD
+ujD
+ujD
+vVZ
 brE
 brD
 brD
@@ -63839,17 +63910,17 @@ bes
 bes
 aao
 mxf
-bpY
-bpY
-kwQ
-ejP
-ejP
-ejP
-ejP
+uij
+uij
+uVe
+vVZ
+vVZ
+vVZ
+vVZ
 brD
-ejP
-ejP
-ejP
+vVZ
+vVZ
+vVZ
 pcF
 kBn
 fjP
@@ -64055,11 +64126,11 @@ bkh
 bkV
 bkV
 aao
-bpX
-bqa
-bqa
-bja
-ejP
+cAs
+mDs
+mDs
+ooD
+vVZ
 brD
 brD
 brD
@@ -64272,10 +64343,10 @@ bki
 beq
 beq
 aao
-bpX
-bqa
-bqa
-bja
+cAs
+mDs
+mDs
+ooD
 brD
 kTs
 brD
@@ -64489,10 +64560,10 @@ beq
 beq
 aao
 aao
-bpX
-bqa
-bqa
-bja
+cAs
+mDs
+mDs
+ooD
 brD
 brD
 brD
@@ -64706,11 +64777,11 @@ bky
 aao
 aao
 aao
-bpX
-bqa
-bqa
-bja
-ejP
+cAs
+mDs
+mDs
+ooD
+vVZ
 brD
 kTs
 kTs
@@ -64927,7 +64998,7 @@ sJq
 bpZ
 bpZ
 qkC
-ejP
+vVZ
 kTs
 brD
 brD
@@ -67227,7 +67298,7 @@ tQw
 tQw
 tQw
 aao
-tQw
+laj
 tQw
 oCR
 tQw

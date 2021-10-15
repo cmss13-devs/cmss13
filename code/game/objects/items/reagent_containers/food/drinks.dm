@@ -334,9 +334,19 @@
 	volume = 60
 	center_of_mass = "x=15;y=4"
 
-/obj/item/reagent_container/food/drinks/britcup
-	name = "cup"
-	desc = "A cup with the British flag emblazoned on it. The sight of it irritates you."
-	icon_state = "britcup"
+/obj/item/reagent_container/food/drinks/coffeecup
+	name = "coffee mug"
+	desc = "A ceramic coffee mug. Practically guaranteed to fall and spill scalding-hot drink onto your brand-new shirt. Ouch."
+	icon_state = "coffeecup"
 	volume = 30
 	center_of_mass = "x=15;y=13"
+
+/obj/item/reagent_container/food/drinks/coffeecup/uscm
+	name = "USCM coffee mug"
+	desc = "A red, white and blue coffee mug depicting the emblem of the USCM. Patriotic and bold, and commonly seen among veterans as a novelty."
+	icon_state = "uscmcup"
+
+/obj/item/reagent_container/food/drinks/coffeecup/wy
+	name = "Weyland-Yutani coffee mug"
+	desc = "A matte gray coffee mug bearing the Weyland-Yutani logo on its front. Either issued as corporate standard, or bought as a souvenir for people who love the Company oh so dearly. Probably the former."
+	icon_state = "wycup"

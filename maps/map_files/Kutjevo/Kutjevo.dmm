@@ -10310,7 +10310,7 @@
 	pixel_y = -7
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/britcup{
+/obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -7;
 	pixel_y = 8
 	},

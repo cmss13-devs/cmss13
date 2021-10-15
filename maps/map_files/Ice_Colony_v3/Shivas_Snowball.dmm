@@ -20846,7 +20846,7 @@
 /area/shiva/exterior/cp_lz2)
 "qud" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/britcup{
+/obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
 	pixel_y = 14
 	},

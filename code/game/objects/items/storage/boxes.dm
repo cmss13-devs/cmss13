@@ -149,7 +149,7 @@
 /obj/item/storage/box/emps
 	name = "box of emp grenades"
 	desc = "A box with 5 emp grenades."
-	icon_state = "flashbang"
+	icon_state = "emp"
 
 /obj/item/storage/box/emps/fill_preset_inventory()
 	new /obj/item/explosive/grenade/empgrenade(src)
@@ -377,6 +377,7 @@
 /obj/item/storage/box/pillbottles
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
+	icon_state = "pillbox"
 
 /obj/item/storage/box/pillbottles/fill_preset_inventory()
 	new /obj/item/storage/pill_bottle( src )
@@ -637,12 +638,9 @@
 	new /obj/item/lightstick/red(src)
 	new /obj/item/lightstick/red(src)
 
-
-
-
 /obj/item/storage/box/MRE
 	name = "\improper USCM MRE"
-	desc = "Meal Ready-to-Eat, property of the US Colonial Marines. Meant to be consumed in the field, and has an expiration that is at least two decades past your combat life expectancy."
+	desc = "A Meal, Ready-to-Eat. A single-meal combat ration designed to provide a soldier with enough nutrients for a day's of strenuous work. Its expiration date is at least 20 years ahead of your combat life expectancy."
 	icon_state = "mealpack"
 	w_class = SIZE_SMALL
 	can_hold = list()
@@ -669,6 +667,11 @@
 	new /obj/item/reagent_container/food/drinks/cans/waterbottle(src)
 	if(cookie == 1)
 		new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(src)
+
+/obj/item/storage/box/MRE/Initialize()
+	. = ..()
+	isopened = 0
+	icon_state = "mealpack"
 
 /obj/item/storage/box/MRE/update_icon()
 	if(!contents.len)

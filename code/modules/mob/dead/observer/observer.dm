@@ -68,11 +68,6 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 	see_in_dark = 100
 	GLOB.observer_list += src
 
-	ghostimage_default = image(src.icon,src,src.icon_state)
-	ghostimage_default.override = TRUE
-	GLOB.ghost_images_default |= ghostimage_default
-
-	updateallghostimages()
 
 	var/turf/T
 	if(ismob(body))
@@ -110,6 +105,12 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 					name = capitalize(pick(first_names_female)) + " " + capitalize(pick(last_names))
 
 		mind = body.mind	//we don't transfer the mind but we keep a reference to it.
+
+	ghostimage_default = image(src.icon,src,src.icon_state)
+	ghostimage_default.override = TRUE
+	GLOB.ghost_images_default |= ghostimage_default
+
+	updateallghostimages()
 
 	if(!T)	T = get_turf(pick(GLOB.latejoin))			//Safety in case we cannot find the body's position
 	forceMove(T)

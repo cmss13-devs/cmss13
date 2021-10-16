@@ -324,6 +324,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/heavy_support/fill_preset_inventory()
 	new /obj/item/weapon/gun/rifle/lmg(src)
 	new /obj/item/ammo_magazine/rifle/lmg(src)
+	new /obj/item/ammo_magazine/rifle/lmg/holo_target(src)
 	new /obj/item/attachable/bipod(src)
 	new /obj/item/folding_barricade(src)
 	new /obj/item/clothing/glasses/welding(src)

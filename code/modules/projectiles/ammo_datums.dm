@@ -927,6 +927,14 @@
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
 
+/datum/ammo/bullet/rifle/holo_target
+	name = "holo-targeting rifle bullet"
+	damage = 30
+
+/datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
+
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
 

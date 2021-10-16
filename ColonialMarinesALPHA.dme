@@ -275,6 +275,7 @@
 #include "code\datums\buildmode\buildmode_objects.dm"
 #include "code\datums\components\_component.dm"
 #include "code\datums\components\armor_link.dm"
+#include "code\datums\components\bonus_damage_stack.dm"
 #include "code\datums\components\cluster_stack.dm"
 #include "code\datums\components\footstep.dm"
 #include "code\datums\components\toxin_buildup.dm"

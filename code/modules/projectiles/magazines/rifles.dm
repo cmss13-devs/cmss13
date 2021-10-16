@@ -172,6 +172,12 @@
 	max_rounds = 300
 	gun_type = /obj/item/weapon/gun/rifle/lmg
 
+/obj/item/ammo_magazine/rifle/lmg/holo_target
+	name = "\improper M41AE2 ammo box (10x24mm holo-target)"
+	desc = "A semi-rectangular box of holo-target rounds for the M41AE2 Heavy Pulse Rifle."
+	icon_state = "m41ae2_track"
+	default_ammo = /datum/ammo/bullet/rifle/holo_target
+	max_rounds = 200
 
 //-------------------------------------------------------
 //UPP TYPE 71 RIFLE

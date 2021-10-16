@@ -1233,6 +1233,19 @@
 	tag = "icon-darkgreen2"
 	},
 /area/ice_colony/underground/crew/canteen)
+"dp" = (
+/obj/structure/prop/fishing/pole_interactive{
+	dir = 4
+	},
+/obj/item/stack/tile/plasteel{
+	layer = 2.89;
+	pixel_x = 17;
+	pixel_y = 16
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "dq" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -1648,11 +1661,14 @@
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves)
 "et" = (
-/turf/open/floor/shiva{
-	dir = 5;
-	icon_state = "yellow"
+/obj/item/reagent_container/glass/bucket{
+	pixel_x = -11;
+	pixel_y = -4
 	},
-/area/ice_colony/underground/requesition)
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/research)
 "eu" = (
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirt,
@@ -3274,7 +3290,9 @@
 	},
 /area/ice_colony/underground/storage)
 "iK" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
 /turf/open/floor{
 	dir = 5;
 	icon_state = "darkgreen2";
@@ -3743,7 +3761,9 @@
 	},
 /area/ice_colony/underground/crew/library)
 "jZ" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
 /turf/open/floor{
 	dir = 9;
 	icon_state = "darkbrown2";
@@ -7544,6 +7564,15 @@
 /area/shuttle/drop2/ice_colony{
 	name = "\improper Almayer Dropship 2"
 	})
+"tz" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/research)
 "tA" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
@@ -7874,6 +7903,12 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/security/hallway)
+"us" = (
+/obj/structure/prop/fishing/line{
+	dir = 8
+	},
+/turf/open/gm/river,
+/area/ice_colony/exterior/underground/caves)
 "ut" = (
 /obj/structure/surface/table/woodentable/fancy,
 /obj/item/paper_bin,
@@ -8751,6 +8786,9 @@
 	dir = 1;
 	icon_state = "pipe-c";
 	tag = "icon-pipe-c (NORTH)"
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
 	},
 /turf/open/floor/shiva{
 	icon_state = "yellow"
@@ -11664,6 +11702,12 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/crew/canteen)
+"DY" = (
+/obj/item/tool/wrench,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/research)
 "DZ" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/reception/checkpoint_north)
@@ -12782,6 +12826,9 @@
 	},
 /area/ice_colony/underground/requesition)
 "GO" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22"
+	},
 /turf/open/floor/shiva{
 	icon_state = "yellow"
 	},
@@ -17387,8 +17434,8 @@
 "Sy" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/freight,
 /turf/open/floor/shiva{
-	dir = 9;
-	icon_state = "yellow"
+	dir = 8;
+	icon_state = "yellowfull"
 	},
 /area/ice_colony/underground/requesition)
 "Sz" = (
@@ -18736,6 +18783,16 @@
 	tag = "icon-darkgreen2 (NORTHWEST)"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"VS" = (
+/obj/item/stool{
+	layer = 2.5;
+	pixel_x = -3;
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "VT" = (
 /turf/open/floor{
 	icon_state = "white"
@@ -26489,7 +26546,7 @@ Dv
 to
 Ts
 MO
-Ey
+vV
 Xt
 hz
 hz
@@ -26671,7 +26728,7 @@ Dv
 ll
 uL
 MO
-Ey
+vV
 Xt
 Xt
 hz
@@ -26853,8 +26910,8 @@ XO
 to
 TM
 MO
-Ey
-Xt
+et
+VS
 Xt
 Xt
 xK
@@ -27035,8 +27092,8 @@ Dv
 to
 TM
 MO
-Ey
-Xt
+DY
+dp
 Xt
 Xt
 Xt
@@ -27217,8 +27274,8 @@ gf
 to
 TM
 MO
-Ey
-Xt
+tz
+us
 Xt
 Xt
 Xt
@@ -27372,7 +27429,7 @@ Jf
 Gz
 Jf
 Jf
-ZL
+YN
 qL
 qL
 qL
@@ -27399,7 +27456,7 @@ to
 to
 ev
 MO
-Ey
+vV
 Xt
 Xt
 Xt
@@ -27554,7 +27611,7 @@ Jf
 Gz
 Jf
 Jf
-ZL
+YN
 qL
 qL
 qL
@@ -27736,7 +27793,7 @@ Jf
 Jf
 Jf
 Jf
-et
+YN
 xB
 KN
 Hq

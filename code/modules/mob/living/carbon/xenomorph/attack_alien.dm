@@ -771,7 +771,7 @@
 	attack_hand(M)
 	if(!shuttle.iselevator)
 		if(shuttle_tag != "Ground Transport 1")
-			shuttle.door_override(M)
+			shuttle.door_override(M, shuttle_tag)
 		if(onboard || shuttle_tag == "Ground Transport 1") //This is the shuttle's onboard console or the control console for the CORSAT monorail
 			shuttle.hijack(M, shuttle_tag)
 	return XENO_ATTACK_ACTION
@@ -790,7 +790,7 @@
 				return XENO_NO_DELAY_ACTION
 
 		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-		shuttle.door_override(M)
+		shuttle.door_override(M, shuttle_tag)
 		xeno_attack_delay(M)
 
 		if(do_after(usr, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))

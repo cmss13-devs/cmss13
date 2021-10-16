@@ -111,7 +111,7 @@
 		if(!placed)
 			to_chat(X, SPAN_XENOHIGHDANGER("Couldn't find the fruit to place! Contact a coder!"))
 			return
-		X.bruteloss += health_cost
+		X.adjustBruteLoss(health_cost)
 		X.updatehealth()
 		playsound(X.loc, "alien_resin_build", 25)
 		X.current_placeable.Add(placed)

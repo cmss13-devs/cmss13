@@ -142,7 +142,7 @@
 	if(picked)
 		to_chat(X, SPAN_XENODANGER("This fruit is already being picked!"))
 		return
-	if(X.a_intent == INTENT_HELP && X.can_not_harm(bound_xeno))
+	if(X.a_intent != INTENT_HARM && X.can_not_harm(bound_xeno))
 		if(!(flags & CAN_CONSUME_AT_FULL_HEALTH) && X.health >= X.caste.max_health)
 			to_chat(X, SPAN_XENODANGER("You are at full health! This would be a waste..."))
 			return XENO_NO_DELAY_ACTION

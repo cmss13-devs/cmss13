@@ -529,10 +529,18 @@
 /datum/recipe/fortunecookie
 	reagents = list("sugar" = 5)
 	items = list(
-		/obj/item/reagent_container/food/snacks/doughslice,
-		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/reagent_container/food/snacks/doughslice
 	)
 	result = /obj/item/reagent_container/food/snacks/fortunecookie
+
+/datum/recipe/fortunecookiefilled
+	reagents = list("sugar" = 5)
+	items = list(
+		/obj/item/reagent_container/food/snacks/doughslice,
+		/obj/item/paper
+	)
+	result = /obj/item/reagent_container/food/snacks/fortunecookie/prefilled
+
 	//Old fortune cookie code has been deleted from here and moved to fortunecookie.dm
 
 /datum/recipe/meatsteak

@@ -90,7 +90,6 @@
 		update_icon()
 		if(cookiefortune)
 			to_chat(user,SPAN_NOTICE("You break open the fortune cookie, revealing a fortune inside!"))
-			user.swap_hand()
 			user.put_in_hands(cookiefortune)
 			cookiefortune = null
 		else
@@ -107,7 +106,6 @@
 		update_icon()
 		if(cookiefortune)
 			to_chat(user,SPAN_NOTICE("You break open the fortune cookie, revealing a fortune inside!"))
-			user.swap_hand()
 			user.put_in_hands(cookiefortune)
 			cookiefortune = null
 		else

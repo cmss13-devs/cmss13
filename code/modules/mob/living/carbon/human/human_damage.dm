@@ -411,6 +411,13 @@ This function restores all limbs.
 	if(!organ)
 		return FALSE
 
+	var/list/damage_data = list(
+		"bonus_damage" = 0,
+		"damage" = damage
+	)
+	SEND_SIGNAL(src, COMSIG_BONUS_DAMAGE, damage_data)
+	damage += damage_data["bonus_damage"]
+
 	switch(damagetype)
 		if(BRUTE)
 			damageoverlaytemp = 20

@@ -401,3 +401,7 @@
 #define COMSIG_MOB_REGAINED_HEARING "mob_regained_hearing"
 //from /mob/living/carbon/human/equip_to_slot()
 #define COMSIG_HUMAN_EQUIPPED_ITEM "human_equipped_item"
+
+///from /datum/component/bonus_damage_stack
+#define COMSIG_BONUS_DAMAGE "bonus_damage"
+

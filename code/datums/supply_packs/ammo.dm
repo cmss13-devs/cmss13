@@ -251,6 +251,17 @@
 	containername = "\improper M41AE2 HPR magazines crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_hpr_holo
+	contains = list(
+					/obj/item/ammo_magazine/rifle/lmg/holo_target,
+					/obj/item/ammo_magazine/rifle/lmg/holo_target
+					)
+	name = "M41AE2 HPR Holo-Target Magazines crate (HPR HT ammo box x2)"
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate
+	containername = "\improper M41AE2 HPR holo-target magazines crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_smartgun_powerpack
 	name = "M56 smartgun powerpack crate (x2)"
 	contains = list(

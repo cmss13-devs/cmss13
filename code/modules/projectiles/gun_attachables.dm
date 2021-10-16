@@ -1776,6 +1776,8 @@ Defined in conflicts.dm of the #defines folder.
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_10
 	G.recalculate_attachment_bonuses()
+	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
+		G.remove_bullet_trait("iff")
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 	if(turn_off)
@@ -1811,6 +1813,9 @@ Defined in conflicts.dm of the #defines folder.
 					bipod_movement.attachment = src
 					bipod_movement.G = G
 					user.add_movement_handler(bipod_movement)
+
+				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
+					G.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))

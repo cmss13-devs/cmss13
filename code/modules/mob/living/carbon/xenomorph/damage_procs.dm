@@ -105,6 +105,13 @@
 	if(def_zone != "chest") //Which it generally will be, vs xenos
 		chancemod += 5
 
+	var/list/damage_data = list(
+		"bonus_damage" = 0,
+		"damage" = damage
+	)
+	SEND_SIGNAL(src, COMSIG_BONUS_DAMAGE, damage_data)
+	damage += damage_data["bonus_damage"]
+
 	if(damage > 12) //Light damage won't splash.
 		check_blood_splash(damage, damagetype, chancemod)
 

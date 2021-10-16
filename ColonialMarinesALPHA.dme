@@ -973,6 +973,7 @@
 #include "code\game\objects\items\implants\implantfreedom.dm"
 #include "code\game\objects\items\implants\implantneurostim.dm"
 #include "code\game\objects\items\implants\implantpad.dm"
+#include "code\game\objects\items\props\fishing.dm"
 #include "code\game\objects\items\props\helmetgarb.dm"
 #include "code\game\objects\items\props\rocks.dm"
 #include "code\game\objects\items\props\souto_land.dm"

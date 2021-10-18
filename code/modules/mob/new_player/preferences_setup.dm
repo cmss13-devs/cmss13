@@ -212,19 +212,19 @@ datum/preferences/proc/randomize_skin_color()
 
 	switch(high_priority)
 		if(JOB_SQUAD_MARINE)
-			return "USCM Cryo Private (Equipped)"
+			return "USCM Cryo Squad Marine (Equipped)"
 		if(JOB_SQUAD_ENGI)
-			return "USCM Cryo Engineer (Equipped)"
+			return "USCM Cryo Squad Engineer (Equipped)"
 		if(JOB_SQUAD_LEADER)
 			return "USCM Cryo Squad Leader (Equipped)"
 		if(JOB_SQUAD_MEDIC)
-			return "USCM Cryo Medic (Equipped)"
+			return "USCM Cryo Squad Medic (Equipped)"
 		if(JOB_SQUAD_SPECIALIST)
-			return "USCM Cryo Specialist (Equipped)"
+			return "USCM Cryo Squad Specialist (Equipped)"
 		if(JOB_SQUAD_SMARTGUN)
-			return "USCM Cryo Smartgunner (Equipped)"
+			return "USCM Cryo Squad Smartgunner (Equipped)"
 		if(JOB_SQUAD_RTO)
-			return "USCM Cryo RT Operator (Equipped)"
+			return "USCM Cryo Squad RT Operator (Equipped)"
 		if(JOB_CO)
 			return "USCM Captain (CO)"
 		if(JOB_SO)
@@ -274,7 +274,7 @@ datum/preferences/proc/randomize_skin_color()
 			else
 				return "Yautja Blooded"
 
-	return "USCM Cryo Private (Equipped)"
+	return "USCM Cryo Squad Marine (Equipped)"
 
 datum/preferences/proc/clear_equipment()
 	for(var/obj/item/I in preview_dummy)

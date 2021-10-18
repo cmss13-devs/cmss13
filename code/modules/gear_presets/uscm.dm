@@ -21,9 +21,25 @@
 	dress_hat = list(/obj/item/clothing/head/marine/peaked)
 	dress_gloves = list(/obj/item/clothing/gloves/marine/dress)
 	dress_shoes = list(/obj/item/clothing/shoes/dress)
+	var/auto_squad_name
 
 /datum/equipment_preset/uscm/load_status(mob/living/carbon/human/H)
 	H.nutrition = rand(NUTRITION_VERYLOW, NUTRITION_LOW)
+
+/datum/equipment_preset/uscm/load_preset(mob/living/carbon/human/H, randomise, count_participant)
+	. = ..()
+	if(!auto_squad_name)
+		return
+	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
+		GLOB.data_core.manifest_inject(H)
+
+	var/datum/squad/auto_squad = get_squad_by_name(auto_squad_name)
+	if(auto_squad)
+		transfer_marine_to_squad(H, auto_squad, H.assigned_squad, H.wear_id)
+
+	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
+	H.sec_hud_set_ID()
+	H.hud_set_squad()
 
 //*****************************************************************************************************/
 
@@ -53,23 +69,11 @@
 
 /datum/equipment_preset/uscm/pfc/echo
 	name = "USCM Echo Squad Marine (PFC)"
+	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/pfc/echo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
-
-/datum/equipment_preset/uscm/pfc/echo/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
 
 //*****************************************************************************************************/
 
@@ -121,6 +125,7 @@
 
 /datum/equipment_preset/uscm/sg/echo
 	name = "USCM Echo Smartgunner"
+	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/sg/echo/load_gear(mob/living/carbon/human/H)
 	..()
@@ -227,23 +232,11 @@
 
 /datum/equipment_preset/uscm/spec/echo
 	name = "USCM Echo Squad Specialist"
+	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/spec/echo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
-
-/datum/equipment_preset/uscm/spec/echo/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
 
 //*****************************************************************************************************/
 
@@ -294,23 +287,11 @@
 
 /datum/equipment_preset/uscm/medic/echo
 	name = "USCM Echo Squad Medic"
+	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/medic/echo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/med(H), WEAR_L_EAR)
-
-/datum/equipment_preset/uscm/medic/echo/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
 
 //*****************************************************************************************************/
 
@@ -334,23 +315,11 @@
 
 /datum/equipment_preset/uscm/rto/echo
 	name = "USCM Echo Squad RT Operator"
+	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/rto/echo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/rto(H), WEAR_L_EAR)
-
-/datum/equipment_preset/uscm/rto/echo/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
 
 /*****************************************************************************************************/
 
@@ -376,23 +345,11 @@
 
 /datum/equipment_preset/uscm/engineer/echo
 	name = "USCM Echo Squad Engineer"
+	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/engineer/echo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/engi(H), WEAR_L_EAR)
-
-/datum/equipment_preset/uscm/engineer/echo/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
 
 //*****************************************************************************************************/
 
@@ -417,30 +374,18 @@
 
 /datum/equipment_preset/uscm/leader/echo
 	name = "USCM Echo Squad Leader"
+	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/leader/echo/load_gear(mob/living/carbon/human/H)
 	..()
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo/lead(H), WEAR_L_EAR)
-
-/datum/equipment_preset/uscm/leader/echo/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
 
 
 //*****************************************************************************************************/
 // ERT members that spawn with full gear from DEFCON
 
 /datum/equipment_preset/uscm/private_equipped
-	name = "USCM Echo Squad Marine (Equipped)"
+	name = "USCM Cryo Squad Marine (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP)
@@ -475,24 +420,15 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/private_equipped/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+/datum/equipment_preset/uscm/private_equipped/echo
+	name = "USCM Echo Squad Marine (Equipped)"
+	auto_squad_name = SQUAD_NAME_5
 
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/leader_equipped
-	name = "USCM Echo Squad Leader (Equipped)"
+	name = "USCM Cryo Squad Leader (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
@@ -521,23 +457,14 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/leader_equipped/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+/datum/equipment_preset/uscm/leader_equipped/echo
+	name = "USCM Echo Squad Leader (Equipped)"
+	auto_squad_name = SQUAD_NAME_5
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/smartgunner_equipped
-	name = "USCM Echo Squad Smartgunner (Equipped)"
+	name = "USCM Cryo Squad Smartgunner (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
@@ -565,24 +492,15 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/marine/echo(H), WEAR_L_EAR)
 
-/datum/equipment_preset/uscm/smartgunner_equipped/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+/datum/equipment_preset/uscm/smartgunner_equipped/echo
+	name = "USCM Echo Squad Smartgunner (Equipped)"
+	auto_squad_name = SQUAD_NAME_5
 
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/engineer_equipped
-	name = "USCM Echo Squad Engineer (Equipped)"
+	name = "USCM Cryo Squad Engineer (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
@@ -619,23 +537,14 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/engineer_equipped/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+/datum/equipment_preset/uscm/engineer_equipped/echo
+	name = "USCM Echo Squad Engineer (Equipped)"
+	auto_squad_name = SQUAD_NAME_5
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/medic_equipped
-	name = "USCM Echo Squad Medic (Equipped)"
+	name = "USCM Cryo Squad Medic (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
@@ -672,24 +581,15 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/medic_equipped/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+/datum/equipment_preset/uscm/medic_equipped/echo
+	name = "USCM Echo Squad Medic (Equipped)"
+	auto_squad_name = SQUAD_NAME_5
 
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/specialist_equipped
-	name = "USCM Echo Squad Specialist (Equipped)"
+	name = "USCM Cryo Squad Specialist (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
@@ -721,18 +621,9 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/box/MRE(H), WEAR_IN_BACK)
 
-/datum/equipment_preset/uscm/specialist_equipped/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+/datum/equipment_preset/uscm/specialist_equipped/echo
+	name = "USCM Echo Squad Specialist (Equipped)"
+	auto_squad_name = SQUAD_NAME_5
 
 //*****************************************************************************************************/
 
@@ -764,7 +655,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/rto_equipped
-	name = "USCM Echo Squad RT Operator (Equipped)"
+	name = "USCM Cryo Squad RT Operator (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
@@ -790,18 +681,9 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 
-/datum/equipment_preset/uscm/rto_equipped/load_preset(mob/living/carbon/human/H, randomise, count_participant)
-	. = ..()
-
-	if(!GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), assignment, rank))
-		GLOB.data_core.manifest_inject(H)
-
-	var/datum/squad/echo/echo_squad = locate() in RoleAuthority.squads
-	transfer_marine_to_squad(H, echo_squad, H.assigned_squad, H.wear_id)
-
-	H.marine_buy_flags &= ~MARINE_CAN_BUY_EAR
-	H.sec_hud_set_ID()
-	H.hud_set_squad()
+/datum/equipment_preset/uscm/rto_equipped/echo
+	name = "USCM Echo Squad RT Operator (Equipped)"
+	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/marsoc
 	name = "MARSOC Operator"

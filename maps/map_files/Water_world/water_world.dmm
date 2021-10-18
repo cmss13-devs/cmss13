@@ -66,12 +66,16 @@
 	name = "Underground Power Substation";
 	req_access_txt = "100"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "aj" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/largecrate/random,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "ak" = (
 /obj/structure/machinery/floodlight{
@@ -90,7 +94,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/security)
 "an" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -435,7 +441,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "bl" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -496,7 +504,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "bt" = (
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
 	dir = 9;
@@ -628,6 +636,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/north)
+"bK" = (
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/gm/dirt,
+/area/ice_colony/exterior/underground/caves)
 "bL" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -763,7 +775,9 @@
 	dir = 8
 	},
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "cg" = (
 /turf/open/floor/wood,
@@ -855,7 +869,9 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "cs" = (
 /obj/structure/machinery/light{
@@ -935,7 +951,9 @@
 /obj/structure/machinery/light/small{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "cA" = (
 /obj/structure/tunnel{
@@ -1062,7 +1080,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/security/backroom)
 "cR" = (
 /obj/structure/machinery/power/apc{
@@ -1188,6 +1208,15 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/crew/morgue)
+"dj" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/ice_colony/exterior/underground/caves)
 "dk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -1275,7 +1304,7 @@
 /area/ice_colony/underground/maintenance/north)
 "du" = (
 /obj/item/stack/sheet/wood,
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /obj/structure/blocker/forcefield/vehicles,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/research)
@@ -1318,7 +1347,9 @@
 "dz" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "dA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -1820,7 +1851,9 @@
 /obj/structure/machinery/power/smes/buildable{
 	name = "colony distribution SMES"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "eR" = (
 /turf/closed/shuttle/elevator{
@@ -2090,7 +2123,9 @@
 /area/ice_colony/underground/security/interrogation)
 "fA" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "fB" = (
 /obj/structure/surface/table/woodentable{
@@ -2122,7 +2157,9 @@
 /area/ice_colony/underground/hallway/north_west)
 "fF" = (
 /obj/structure/window_frame/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "fG" = (
 /obj/structure/closet/jcloset,
@@ -2225,7 +2262,9 @@
 /obj/structure/barricade/wooden{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "fR" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -2503,7 +2542,9 @@
 	dir = 8
 	},
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "gD" = (
 /turf/open/floor{
@@ -2516,7 +2557,9 @@
 	flipped = 1;
 	icon_state = "tableflip0"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/south)
 "gF" = (
 /obj/structure/machinery/light,
@@ -2594,7 +2637,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/crew/leisure)
 "gP" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -2658,7 +2703,9 @@
 	dir = 8
 	},
 /obj/structure/largecrate/random,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "gY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -2667,7 +2714,9 @@
 	pixel_x = 24;
 	start_charge = 0
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "gZ" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
@@ -2807,6 +2856,12 @@
 	icon_state = "white"
 	},
 /area/ice_colony/underground/medical/treatment)
+"hs" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/ice_colony/exterior/underground/caves)
 "ht" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -2821,6 +2876,12 @@
 	tag = "icon-whitered (WEST)"
 	},
 /area/ice_colony/underground/medical/treatment)
+"hu" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "hv" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -2908,7 +2969,7 @@
 /area/ice_colony/underground/research)
 "hH" = (
 /obj/effect/alien/weeds/node,
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/engineering)
 "hJ" = (
@@ -2948,7 +3009,9 @@
 	dir = 4
 	},
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "hP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -3131,8 +3194,17 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
+"im" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/gm/dirt,
+/area/ice_colony/exterior/underground/caves)
 "in" = (
 /obj/structure/surface/table/woodentable,
 /obj/structure/window/reinforced/tinted{
@@ -3154,7 +3226,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "ir" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -3318,7 +3392,9 @@
 /area/ice_colony/exterior/underground/caves/open)
 "iN" = (
 /obj/structure/machinery/light/small,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "iO" = (
 /obj/structure/disposalpipe/segment{
@@ -3454,6 +3530,14 @@
 	icon_state = "asteroidplating"
 	},
 /area/space)
+"je" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "jf" = (
 /obj/structure/bed/chair/office/dark{
 	dir = 8;
@@ -3490,12 +3574,14 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/south)
 "jm" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/research)
 "jn" = (
@@ -3575,7 +3661,9 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "jx" = (
 /obj/structure/bed/chair/wood/normal{
@@ -3610,6 +3698,11 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"jC" = (
+/turf/open/gm/coast{
+	dir = 4
+	},
+/area/ice_colony/exterior/underground/caves)
 "jD" = (
 /turf/open/floor{
 	icon_state = "dark2";
@@ -3661,6 +3754,9 @@
 "jK" = (
 /obj/structure/ice/thin/end,
 /turf/open/gm/dirt,
+/area/ice_colony/exterior/underground/caves)
+"jL" = (
+/turf/open/gm/coast,
 /area/ice_colony/exterior/underground/caves)
 "jM" = (
 /turf/open/floor{
@@ -4062,7 +4158,9 @@
 	dir = 4
 	},
 /obj/structure/machinery/light/small,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "kN" = (
 /obj/structure/machinery/disposal,
@@ -4335,7 +4433,7 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "ls" = (
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/research)
 "lt" = (
@@ -4435,7 +4533,9 @@
 "lD" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/barricade/wooden,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "lE" = (
 /obj/structure/machinery/light/small{
@@ -4622,7 +4722,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "mi" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4746,11 +4848,15 @@
 /obj/effect/decal/cleanable/cobweb{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "mw" = (
 /obj/structure/largecrate/random,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "mx" = (
 /obj/structure/flora/pottedplant,
@@ -4802,7 +4908,9 @@
 /area/ice_colony/underground/research)
 "mC" = (
 /obj/structure/machinery/light/small,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "mD" = (
 /obj/structure/bed/chair{
@@ -4823,7 +4931,9 @@
 /area/ice_colony/underground/requesition)
 "mF" = (
 /obj/item/clothing/head/helmet,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "mH" = (
 /obj/structure/surface/table,
@@ -4882,7 +4992,9 @@
 	dir = 4;
 	tag = "icon-term (EAST)"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "mN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -4928,12 +5040,6 @@
 	tag = "icon-darkbrown2"
 	},
 /area/ice_colony/underground/crew/disposals)
-"mT" = (
-/turf/open/floor/plating{
-	dir = 1;
-	icon_state = "warnplatecorner"
-	},
-/area/ice_colony/underground/maintenance/east)
 "mU" = (
 /obj/structure/surface/table,
 /obj/item/reagent_container/food/snacks/cheeseburger,
@@ -4952,7 +5058,9 @@
 /area/ice_colony/underground/hallway/north_west)
 "mW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "mX" = (
 /obj/structure/machinery/requests_console{
@@ -5015,6 +5123,15 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/engineering)
+"nf" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/ice_colony/exterior/underground/caves)
 "ng" = (
 /obj/item/roller{
 	icon_state = "down";
@@ -5205,6 +5322,11 @@
 /obj/structure/flora/pottedplant,
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
+"nJ" = (
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "nK" = (
 /obj/structure/machinery/bioprinter,
 /turf/open/floor{
@@ -5450,7 +5572,9 @@
 /area/ice_colony/underground/reception)
 "oq" = (
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "or" = (
 /obj/structure/machinery/shower{
@@ -5848,7 +5972,9 @@
 	},
 /area/ice_colony/underground/crew/disposals)
 "pl" = (
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "pm" = (
 /obj/item/frame/rack,
@@ -5943,7 +6069,9 @@
 	dir = 8
 	},
 /obj/effect/decal/remains/human,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "pz" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -6126,6 +6254,12 @@
 	},
 /turf/open/gm/river,
 /area/space)
+"pX" = (
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "pY" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/wood,
@@ -6166,7 +6300,9 @@
 /area/ice_colony/underground/maintenance/central)
 "qe" = (
 /obj/structure/machinery/computer3/powermonitor,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "qf" = (
 /obj/effect/decal/warning_stripes{
@@ -6274,7 +6410,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "qs" = (
 /obj/structure/window/framed/colony/reinforced,
@@ -6318,7 +6456,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "qA" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -6355,7 +6495,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "qF" = (
 /obj/structure/bed/chair{
@@ -6574,7 +6716,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "rj" = (
 /turf/open/floor/prison/chapel_carpet,
@@ -6625,6 +6769,15 @@
 "ro" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/research/sample)
+"rp" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/gm/dirt,
+/area/ice_colony/exterior/underground/caves)
 "rq" = (
 /obj/structure/closet/secure_closet/medical3{
 	req_access_txt = "100"
@@ -6739,7 +6892,9 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "rF" = (
 /obj/structure/machinery/light{
@@ -6848,7 +7003,7 @@
 	},
 /area/ice_colony/underground/security)
 "rS" = (
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves)
 "rT" = (
@@ -7260,8 +7415,8 @@
 	icon_state = "ladderup";
 	id = "hangar_ladder1"
 	},
-/turf/open/floor/plating{
-	icon_state = "warnplate"
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/east)
 "sM" = (
@@ -7756,7 +7911,9 @@
 /area/ice_colony/underground/reception)
 "tW" = (
 /obj/structure/window/framed/colony/reinforced/tinted,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/security/interrogation)
 "tX" = (
 /obj/structure/machinery/light{
@@ -7835,7 +7992,9 @@
 /area/ice_colony/underground/security/interrogation)
 "ui" = (
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "uj" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -7936,7 +8095,9 @@
 /obj/structure/barricade/wooden{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "ux" = (
 /obj/structure/cryofeed/right,
@@ -7951,7 +8112,9 @@
 /area/ice_colony/exterior/underground/caves/open)
 "uz" = (
 /obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/exterior/underground/caves)
 "uA" = (
 /obj/structure/surface/table,
@@ -8238,7 +8401,9 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "vm" = (
 /obj/structure/platform/kutjevo/smooth{
@@ -8328,7 +8493,9 @@
 /obj/effect/decal/cleanable/cobweb{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "vw" = (
 /obj/structure/closet/emcloset,
@@ -8371,7 +8538,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "vC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -8668,7 +8837,9 @@
 /area/ice_colony/underground/command/pv2)
 "ws" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "wt" = (
 /turf/open/gm/dirt{
@@ -8687,6 +8858,12 @@
 	icon_state = "white"
 	},
 /area/ice_colony/underground/security/brig)
+"wv" = (
+/turf/open/gm/coast{
+	dir = 4;
+	icon_state = "beachcorner2"
+	},
+/area/ice_colony/exterior/underground/caves)
 "ww" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -9104,6 +9281,12 @@
 /obj/item/paper/research_notes,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
+"xz" = (
+/obj/structure/surface/rack,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "xA" = (
 /obj/structure/closet/wardrobe/engineering_yellow,
 /turf/open/floor{
@@ -9360,6 +9543,12 @@
 "yg" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/storage)
+"yh" = (
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/ice_colony/exterior/underground/caves)
 "yi" = (
 /obj/structure/largecrate/random/mini/med{
 	layer = 3.01;
@@ -9446,7 +9635,9 @@
 /area/ice_colony/underground/requesition/lobby)
 "yu" = (
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "yv" = (
 /obj/structure/machinery/light{
@@ -9495,6 +9686,14 @@
 	tag = "icon-darkred2 (SOUTHEAST)"
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
+"yC" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/ice_colony/exterior/underground/caves)
 "yD" = (
 /obj/structure/sign/safety/bulkhead_door,
 /obj/structure/machinery/door_control/brbutton{
@@ -9638,7 +9837,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "yS" = (
 /obj/structure/stairs/perspective{
@@ -9930,7 +10131,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "zB" = (
 /obj/structure/bed/chair{
@@ -10074,7 +10277,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/security/hallway)
 "zV" = (
 /obj/structure/bed/chair{
@@ -10131,7 +10336,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/reception)
 "Ab" = (
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
@@ -10216,7 +10423,9 @@
 	dir = 4;
 	tag = "icon-bulb1 (EAST)"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/south)
 "Ao" = (
 /obj/structure/dispenser,
@@ -10227,7 +10436,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "Ap" = (
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves/open)
 "Aq" = (
@@ -10517,7 +10726,9 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/south)
 "Bb" = (
 /obj/structure/sink{
@@ -10659,7 +10870,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "Bs" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -10899,7 +11112,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "BY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -10966,7 +11181,9 @@
 "Ch" = (
 /obj/structure/surface/rack,
 /obj/item/implantpad,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "Ci" = (
 /obj/structure/bed,
@@ -11405,7 +11622,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "Di" = (
 /obj/structure/machinery/bot/medbot{
@@ -11671,7 +11890,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/hallway/south_east)
 "DU" = (
 /turf/closed/shuttle/elevator{
@@ -11751,7 +11972,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "Ei" = (
 /obj/structure/disposalpipe/segment{
@@ -11938,6 +12161,12 @@
 	tag = "icon-darkred2 (WEST)"
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
+"ED" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "EE" = (
 /obj/structure/filingcabinet,
 /turf/open/floor{
@@ -12021,7 +12250,9 @@
 /area/space)
 "EO" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "EQ" = (
 /turf/closed/shuttle/elevator{
@@ -12054,7 +12285,9 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "EU" = (
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "EV" = (
 /obj/structure/bed/chair/office/light{
@@ -12099,6 +12332,9 @@
 	tag = "icon-darkbrown2 (WEST)"
 	},
 /area/ice_colony/underground/crew/lavatory)
+"Fb" = (
+/turf/closed/wall/r_wall/unmeltable,
+/area/ice_colony/underground/maintenance/engineering)
 "Fc" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/maintenance/east)
@@ -12661,7 +12897,9 @@
 "Gt" = (
 /obj/item/reagent_container/glass/bucket/mopbucket,
 /obj/item/tool/mop,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "Gu" = (
 /obj/structure/machinery/light{
@@ -12840,7 +13078,9 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "GS" = (
 /turf/open/floor{
@@ -13057,7 +13297,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "Hx" = (
 /obj/structure/disposalpipe/segment{
@@ -13186,6 +13428,12 @@
 	icon_state = "white"
 	},
 /area/ice_colony/underground/reception/toilet_women)
+"HR" = (
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/ice_colony/exterior/underground/caves)
 "HS" = (
 /obj/structure/closet/crate/secure/weapon,
 /obj/structure/curtain/black,
@@ -13392,7 +13640,9 @@
 /area/ice_colony/underground/crew/morgue)
 "It" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/hallway/south_east)
 "Iu" = (
 /obj/structure/disposalpipe/segment,
@@ -13545,7 +13795,9 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "IN" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
@@ -13618,6 +13870,14 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/crew/canteen)
+"IX" = (
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "IY" = (
 /obj/structure/surface/rack,
 /obj/item/tool/pickaxe/plasmacutter,
@@ -13830,6 +14090,14 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/leisure)
+"Jx" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 5
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "Jy" = (
 /obj/structure/machinery/power/apc{
 	pixel_y = -24;
@@ -14088,12 +14356,6 @@
 	tag = "icon-darkgreen2 (NORTH)"
 	},
 /area/ice_colony/underground/medical/lobby)
-"Kg" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/east)
 "Ki" = (
 /obj/item/roller{
 	icon_state = "down";
@@ -14330,9 +14592,8 @@
 	icon_state = "ladderup";
 	id = "hangar_ladder"
 	},
-/turf/open/floor/plating{
-	dir = 10;
-	icon_state = "warnplate"
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/east)
 "KK" = (
@@ -14426,7 +14687,7 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "KU" = (
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/east)
 "KV" = (
@@ -14492,6 +14753,11 @@
 	tag = "icon-darkgreen2 (NORTH)"
 	},
 /area/ice_colony/underground/crew/canteen)
+"Ld" = (
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/ice_colony/exterior/underground/caves)
 "Le" = (
 /turf/open/floor{
 	dir = 1;
@@ -14654,7 +14920,9 @@
 	icon_state = "ladderup";
 	id = "power_storage_ladder1"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "LA" = (
 /obj/structure/reagent_dispensers/water_cooler,
@@ -14673,7 +14941,9 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/exterior/underground/caves)
 "LD" = (
 /obj/effect/landmark/monkey_spawn,
@@ -14697,7 +14967,9 @@
 /area/ice_colony/underground/medical/treatment)
 "LG" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/reception/checkpoint_south)
 "LH" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
@@ -14812,6 +15084,11 @@
 	tag = "icon-whitered (NORTH)"
 	},
 /area/ice_colony/underground/medical/hallway)
+"LT" = (
+/turf/open/gm/coast{
+	icon_state = "beachcorner"
+	},
+/area/ice_colony/exterior/underground/caves)
 "LU" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/multi_tile/almayer/comdoor{
@@ -14863,7 +15140,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering)
 "Ma" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -14912,6 +15191,14 @@
 	tag = "icon-darkred2"
 	},
 /area/ice_colony/underground/reception/checkpoint_south)
+"Mg" = (
+/obj/structure/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "Mh" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -14957,7 +15244,9 @@
 	dir = 4
 	},
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "Mm" = (
 /obj/structure/shuttle/engine/heater{
@@ -14987,9 +15276,8 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating{
-	dir = 8;
-	icon_state = "warnplate"
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/east)
 "Mq" = (
@@ -15212,7 +15500,7 @@
 	},
 /area/ice_colony/underground/command/center)
 "MW" = (
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/south)
 "MX" = (
@@ -15325,6 +15613,12 @@
 	tag = "icon-wall (WEST)"
 	},
 /area/space)
+"Nl" = (
+/obj/structure/window/framed/dev/reinforced,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "Nm" = (
 /obj/structure/surface/table,
 /obj/item/device/camera,
@@ -15429,7 +15723,9 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "NA" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -15550,7 +15846,9 @@
 /area/ice_colony/underground/command/checkpoint)
 "NR" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "NS" = (
 /obj/effect/decal/warning_stripes{
@@ -15584,7 +15882,9 @@
 /area/ice_colony/underground/crew/canteen)
 "NV" = (
 /obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "NW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -15782,6 +16082,14 @@
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
+"Ov" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/gm/coast{
+	dir = 1
+	},
+/area/ice_colony/exterior/underground/caves)
 "Ow" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -16051,7 +16359,9 @@
 /obj/structure/machinery/computer/shuttle_control/ice_colony/elevator1{
 	pixel_y = 32
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/south)
 "Pg" = (
 /turf/open/floor{
@@ -16220,6 +16530,12 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/hallway/north_west)
+"Py" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/ice_colony/exterior/underground/caves)
 "Pz" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -16281,7 +16597,9 @@
 	dir = 1
 	},
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "PI" = (
 /obj/structure/machinery/shower{
@@ -16382,7 +16700,9 @@
 /area/space)
 "PW" = (
 /obj/structure/machinery/power/geothermal,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "PX" = (
 /obj/item/storage/box/bodybags,
@@ -16574,8 +16894,9 @@
 	},
 /area/ice_colony/underground/requesition/lobby)
 "Qu" = (
-/obj/structure/largecrate/random,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "Qv" = (
 /obj/structure/closet/emcloset,
@@ -16712,7 +17033,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "QM" = (
 /obj/effect/decal/warning_stripes{
@@ -17007,7 +17330,9 @@
 /obj/structure/barricade/wooden{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "Rx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -17018,7 +17343,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "Rz" = (
 /turf/open/floor{
@@ -17419,6 +17746,18 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves/open)
+"Sw" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/almayer/maint{
+	dir = 1;
+	name = "\improper Underground Maintenance";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "Sx" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -17465,7 +17804,9 @@
 	icon_state = "ladderup";
 	id = "mining_ladder"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "SC" = (
 /obj/structure/disposalpipe/junction{
@@ -17573,7 +17914,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "SS" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -17887,7 +18230,9 @@
 "TB" = (
 /obj/structure/surface/rack,
 /obj/item/reagent_container/blood/OMinus,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "TC" = (
 /obj/structure/flora/pottedplant{
@@ -18211,7 +18556,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "Uw" = (
 /obj/effect/decal/warning_stripes{
@@ -18288,7 +18635,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "UD" = (
 /obj/structure/surface/rack,
@@ -18513,6 +18862,12 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/bball)
+"Ve" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/engineering)
 "Vf" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 6
@@ -18630,7 +18985,9 @@
 /obj/structure/machinery/light/small{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "Vt" = (
 /turf/open/floor/shiva{
@@ -19247,7 +19604,9 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "WS" = (
 /obj/structure/ice/thin/corner{
@@ -19324,7 +19683,9 @@
 /area/ice_colony/underground/medical/storage)
 "Xa" = (
 /obj/structure/machinery/portable_atmospherics/canister/empty,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "Xb" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19398,7 +19759,9 @@
 /area/ice_colony/underground/hangar)
 "Xi" = (
 /obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/security/hallway)
 "Xj" = (
 /obj/structure/machinery/space_heater,
@@ -19446,7 +19809,9 @@
 /obj/structure/barricade/wooden{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "Xp" = (
 /obj/structure/disposalpipe/segment,
@@ -19501,7 +19866,9 @@
 /obj/structure/pipes/vents/pump{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "Xw" = (
 /obj/structure/machinery/light{
@@ -19747,7 +20114,7 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "Yc" = (
-/obj/structure/mineral_door/resin,
+/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/engineering)
 "Yd" = (
@@ -19755,7 +20122,9 @@
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "Ye" = (
 /obj/structure/disposalpipe/segment,
@@ -19818,7 +20187,9 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "Ym" = (
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/east)
 "Yn" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -19872,6 +20243,12 @@
 	tag = "icon-whitered (WEST)"
 	},
 /area/ice_colony/underground/medical/treatment)
+"Yu" = (
+/turf/open/gm/coast{
+	dir = 6;
+	tag = "icon-beach (SOUTHEAST)"
+	},
+/area/ice_colony/exterior/underground/caves)
 "Yv" = (
 /turf/open/gm/dirt{
 	icon_state = "desert1"
@@ -19880,6 +20257,13 @@
 "Yw" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/security)
+"Yy" = (
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/gm/coast{
+	dir = 8;
+	icon_state = "beachcorner"
+	},
+/area/ice_colony/exterior/underground/caves)
 "Yz" = (
 /obj/structure/bed/chair,
 /obj/structure/machinery/light{
@@ -19988,7 +20372,9 @@
 /area/ice_colony/underground/requesition)
 "YO" = (
 /obj/structure/surface/rack,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/engineering)
 "YP" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -19998,7 +20384,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering)
 "YQ" = (
 /obj/structure/surface/table,
@@ -20195,7 +20583,9 @@
 "Zs" = (
 /obj/structure/machinery/power/geothermal,
 /obj/structure/machinery/light/small,
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "Zt" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -20281,7 +20671,9 @@
 	req_access_txt = "100";
 	req_one_access = null
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/maintenance/security)
 "ZC" = (
 /obj/structure/ladder{
@@ -20289,7 +20681,9 @@
 	icon_state = "ladderup";
 	id = "power_storage_ladder"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/underground/engineering/substation)
 "ZD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -27094,7 +27488,7 @@ TM
 MO
 DY
 dp
-Xt
+vg
 Xt
 Xt
 Xt
@@ -27276,7 +27670,7 @@ TM
 MO
 tz
 us
-Xt
+vg
 Xt
 Xt
 Xt
@@ -27456,9 +27850,9 @@ to
 to
 ev
 MO
-vV
-Xt
-Xt
+uL
+vg
+vg
 Xt
 Xt
 Xt
@@ -37885,23 +38279,23 @@ ZS
 Jw
 pp
 gO
-JZ
+hu
 jl
-JZ
+hu
 nB
 nB
-JZ
-JZ
-JZ
-JZ
-JZ
-JZ
-JZ
-JZ
-JZ
-JZ
-JZ
-JZ
+hu
+hu
+hu
+hu
+hu
+hu
+hu
+hu
+hu
+hu
+hu
+hu
 CO
 zw
 Xt
@@ -38067,24 +38461,24 @@ ad
 eq
 IS
 Ev
-gM
-Gv
-Gv
-Gv
-Gv
-Gv
-Gv
-Gv
-Gv
-Gv
-Gv
+IX
+nJ
+nJ
+nJ
+nJ
+nJ
+nJ
+nJ
+nJ
+nJ
+nJ
 gE
 gE
 gE
-Gv
-Gv
-Gv
-DO
+nJ
+nJ
+nJ
+je
 zw
 Xt
 Xt
@@ -38249,13 +38643,13 @@ YL
 eq
 ZM
 Ev
-VF
-Ky
-Ky
-Gv
-Gv
-Gv
-Ky
+ED
+pX
+pX
+nJ
+nJ
+nJ
+pX
 bw
 bw
 bw
@@ -38265,8 +38659,8 @@ bw
 bw
 bw
 bw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -38431,13 +38825,13 @@ GF
 IS
 nY
 Ev
-VF
-Gv
-Gv
+ED
+nJ
+nJ
 An
-VF
-VF
-Ky
+ED
+ED
+pX
 bw
 VR
 Dm
@@ -38447,8 +38841,8 @@ PU
 Tt
 mx
 bw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -38629,8 +39023,8 @@ hA
 hA
 tr
 bw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -38811,8 +39205,8 @@ hA
 hA
 tr
 bw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -38993,8 +39387,8 @@ Tx
 hA
 tr
 bw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -39175,8 +39569,8 @@ pI
 hA
 tr
 bw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -39357,8 +39751,8 @@ sQ
 TQ
 qk
 bw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -39539,8 +39933,8 @@ oy
 hA
 OF
 bw
-Gv
-DO
+nJ
+je
 zw
 zw
 zw
@@ -39720,15 +40114,15 @@ oz
 KQ
 vK
 vK
-BC
-JZ
+Sw
+hu
 jl
-JZ
-JZ
-JZ
-JZ
-JZ
-eD
+hu
+hu
+hu
+hu
+hu
+Jx
 zw
 Xt
 Xt
@@ -39904,13 +40298,13 @@ hA
 if
 bw
 Ba
-AI
-Gv
-Gv
-Gv
-Gv
-Gv
-DO
+xz
+nJ
+nJ
+nJ
+nJ
+nJ
+je
 zw
 Xt
 Xt
@@ -40035,7 +40429,7 @@ ws
 ws
 ws
 NR
-Qw
+Qu
 QW
 Xt
 Xt
@@ -40091,8 +40485,8 @@ hw
 hw
 hw
 hw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -40209,15 +40603,15 @@ xe
 SQ
 vl
 Rw
-Qw
-Qw
-Qw
-Qw
-Qw
-Qw
-Qw
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
 qz
-Qw
+Qu
 QW
 Xt
 Xt
@@ -40273,8 +40667,8 @@ LG
 Aq
 nM
 hw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -40455,8 +40849,8 @@ LG
 Fl
 pT
 hw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -40637,8 +41031,8 @@ Jp
 XT
 Me
 hw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -40819,8 +41213,8 @@ LG
 yx
 Az
 hw
-Gv
-DO
+nJ
+je
 zw
 Xt
 Xt
@@ -41001,8 +41395,8 @@ hw
 uU
 hw
 hw
-Gv
-DO
+nJ
+je
 zw
 zw
 zw
@@ -41166,7 +41560,7 @@ rX
 Fz
 Yo
 Of
-Kg
+Mp
 ce
 ex
 EQ
@@ -41183,10 +41577,10 @@ Dm
 hA
 mx
 bw
-Gv
-DO
-Ky
-Gv
+nJ
+je
+pX
+nJ
 jI
 Gv
 Gv
@@ -41309,7 +41703,7 @@ Al
 Xt
 QW
 Ml
-Qw
+Qu
 Yc
 hz
 QR
@@ -41348,7 +41742,7 @@ WH
 WH
 Qc
 Of
-Kg
+Mp
 yu
 ex
 Ii
@@ -41365,9 +41759,9 @@ hA
 hA
 Hi
 bw
-lE
-DO
-Ky
+Mg
+je
+pX
 Pf
 Gv
 Gv
@@ -41491,7 +41885,7 @@ Xt
 Xt
 QW
 qz
-Qw
+Qu
 Yc
 hz
 Wb
@@ -41530,7 +41924,7 @@ mk
 WH
 tt
 Of
-Kg
+Mp
 Ym
 ex
 Ii
@@ -41673,7 +42067,7 @@ Xt
 Xt
 QW
 qz
-Qw
+Qu
 Yc
 Al
 Xt
@@ -41712,7 +42106,7 @@ by
 WH
 tJ
 Of
-Kg
+Mp
 Ym
 ex
 gc
@@ -41730,7 +42124,7 @@ hA
 FP
 bw
 cq
-Kg
+Mp
 Fc
 Xt
 Xt
@@ -41894,7 +42288,7 @@ WH
 WH
 FH
 Of
-Kg
+Mp
 Ym
 ex
 hd
@@ -41912,7 +42306,7 @@ hA
 Hi
 bw
 Ym
-Kg
+Mp
 Fc
 Xt
 Xt
@@ -42076,7 +42470,7 @@ ik
 Xk
 CB
 Of
-Kg
+Mp
 Ym
 ex
 Ii
@@ -42094,7 +42488,7 @@ hA
 Hi
 bw
 Ym
-Kg
+Mp
 Fc
 Fc
 Fc
@@ -42231,7 +42625,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -42258,7 +42652,7 @@ zI
 zI
 zI
 zI
-Kg
+Mp
 Ym
 ex
 Ii
@@ -42413,7 +42807,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -42440,7 +42834,7 @@ XJ
 So
 Ci
 zI
-Kg
+Mp
 Ym
 ex
 Vi
@@ -42459,7 +42853,7 @@ sm
 bw
 Ym
 Ym
-Kg
+Mp
 Ym
 Fc
 uC
@@ -42583,7 +42977,7 @@ ub
 wC
 QW
 jr
-Qw
+Qu
 QW
 hz
 Al
@@ -42595,7 +42989,7 @@ Al
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Fc
@@ -42622,7 +43016,7 @@ GS
 uJ
 cD
 zI
-Kg
+Mp
 Ym
 ex
 ex
@@ -42641,7 +43035,7 @@ SG
 SG
 SG
 SG
-Kg
+Mp
 Ym
 KU
 uC
@@ -42765,7 +43159,7 @@ uz
 uz
 QW
 qz
-Qw
+Qu
 QW
 hz
 hz
@@ -42804,7 +43198,7 @@ GS
 uJ
 Ss
 zI
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -42823,7 +43217,7 @@ nb
 Pe
 RV
 SG
-Kg
+Mp
 Ym
 KU
 uC
@@ -42947,7 +43341,7 @@ kG
 kd
 Aj
 qz
-Qw
+Qu
 QW
 hz
 hz
@@ -42959,7 +43353,7 @@ hz
 hz
 Xt
 Fc
-Kg
+Mp
 Ym
 Ym
 Ym
@@ -42986,7 +43380,7 @@ GS
 uJ
 WU
 zI
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43005,7 +43399,7 @@ Bm
 SG
 SG
 SG
-Kg
+Mp
 Ym
 Fc
 uC
@@ -43129,7 +43523,7 @@ kG
 PW
 Aj
 qz
-Qw
+Qu
 Yc
 hz
 Cm
@@ -43141,7 +43535,7 @@ Nu
 hz
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Fc
@@ -43168,7 +43562,7 @@ BH
 Zu
 Ss
 zI
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43187,7 +43581,7 @@ Kn
 Pe
 RV
 SG
-Kg
+Mp
 Ym
 Fc
 uC
@@ -43311,7 +43705,7 @@ kG
 PW
 Aj
 qz
-Qw
+Qu
 Yc
 hz
 hz
@@ -43323,7 +43717,7 @@ sX
 hz
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43350,7 +43744,7 @@ BH
 Zu
 cD
 zI
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43369,7 +43763,7 @@ XF
 SG
 SG
 SG
-Kg
+Mp
 Ym
 Fc
 QR
@@ -43493,7 +43887,7 @@ kG
 Zs
 Aj
 QL
-Qw
+Qu
 QW
 QW
 Yc
@@ -43505,7 +43899,7 @@ hz
 hz
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43532,7 +43926,7 @@ FC
 Zu
 Ss
 zI
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43551,7 +43945,7 @@ Kn
 Pe
 RV
 SG
-Kg
+Mp
 Ym
 Fc
 Wb
@@ -43687,7 +44081,7 @@ hz
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43714,7 +44108,7 @@ rF
 Wi
 nw
 zI
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43733,7 +44127,7 @@ SG
 SG
 SG
 SG
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43858,7 +44252,7 @@ mM
 Aj
 PG
 YO
-Qw
+Qu
 qz
 Ur
 hH
@@ -43869,7 +44263,7 @@ QR
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43896,7 +44290,7 @@ zI
 zI
 zI
 zI
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -43915,7 +44309,7 @@ Pe
 Kn
 Bb
 SG
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -44051,7 +44445,7 @@ Wb
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -44078,7 +44472,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -44097,7 +44491,7 @@ SG
 Kn
 RV
 SG
-Kg
+Mp
 Ym
 KU
 uC
@@ -44204,9 +44598,9 @@ Xt
 Xt
 SQ
 SQ
-SQ
-SQ
-SQ
+jg
+jg
+jg
 SQ
 SQ
 SQ
@@ -44224,7 +44618,7 @@ Xt
 Xt
 QW
 qz
-Qw
+Qu
 QW
 hz
 hz
@@ -44233,7 +44627,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -44260,7 +44654,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Fc
@@ -44279,7 +44673,7 @@ SG
 SG
 SG
 SG
-Kg
+Mp
 Ym
 KU
 uC
@@ -44385,12 +44779,12 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+ub
+Nl
+Nl
+Nl
+Dk
+Dk
 QW
 qz
 gC
@@ -44406,7 +44800,7 @@ Xt
 Xt
 QW
 qz
-Qw
+Qu
 QW
 hz
 hz
@@ -44415,7 +44809,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -44566,13 +44960,13 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+rg
+rg
+rg
+rg
+rg
+bK
+Dk
 QW
 qz
 YO
@@ -44588,7 +44982,7 @@ Xt
 Xt
 QW
 qz
-Qw
+Qu
 QW
 hz
 Xt
@@ -44597,7 +44991,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -44747,6 +45141,19 @@ Xt
 Xt
 Xt
 Xt
+rg
+rg
+LT
+yh
+rg
+rg
+bK
+Dk
+QW
+qz
+Qu
+QW
+Xt
 Xt
 Xt
 Xt
@@ -44757,20 +45164,7 @@ Xt
 Xt
 QW
 qz
-Qw
-QW
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-QW
-qz
-Qw
+Qu
 QW
 hz
 Xt
@@ -44779,7 +45173,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -44806,7 +45200,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Fc
@@ -44928,18 +45322,18 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+rg
+rg
+LT
+Yu
+wv
+yh
+rg
+bK
+Dk
 QW
 qz
-Qw
+Qu
 QW
 Xt
 Xt
@@ -44961,7 +45355,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Al
@@ -44988,7 +45382,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -45110,31 +45504,31 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-QW
-qz
-Qw
-QW
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+rg
+LT
+Yu
+eK
+eK
+wv
+yh
+bK
+Dk
 QW
 qz
 Qu
+QW
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+QW
+qz
+Ve
 QW
 hz
 Al
@@ -45143,7 +45537,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 hz
@@ -45170,7 +45564,7 @@ Xt
 Xt
 Xt
 Fc
-Kg
+Mp
 Ym
 Fc
 Xt
@@ -45292,31 +45686,31 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-QW
-qz
-Qw
-QW
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+rg
+jL
+eK
+eK
+eK
+eK
+Ld
+bK
+Dk
 QW
 qz
 Qu
+QW
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+Xt
+QW
+qz
+Ve
 QW
 hz
 hz
@@ -45325,7 +45719,7 @@ Xt
 Xt
 Fc
 Fc
-Kg
+Mp
 Ym
 mR
 hz
@@ -45474,18 +45868,18 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+jC
+Yu
+eK
+eK
+eK
+eK
+Ld
+bK
+Dk
 QW
 qz
-Qw
+Qu
 QW
 Xt
 Xt
@@ -45507,7 +45901,7 @@ Xt
 QW
 Ym
 Ym
-Kg
+Mp
 Ym
 mR
 mR
@@ -45656,31 +46050,31 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+Ld
+bK
+Nl
+Qu
+qz
+Qu
+QW
+QW
+QW
+QW
+QW
+QW
+QW
+QW
+QW
+QW
 QW
 qz
-Qw
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-qz
-Qw
+Qu
 QW
 QW
 QW
@@ -45689,7 +46083,7 @@ QW
 QW
 Ym
 Ym
-Kg
+Mp
 Ym
 Ym
 Ym
@@ -45715,7 +46109,7 @@ Ym
 Ym
 Ym
 Ym
-mT
+Ym
 Mp
 Ym
 Fc
@@ -45838,16 +46232,16 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-QW
+eK
+eK
+eK
+eK
+eK
+eK
+wv
+Yy
+Nl
+Qu
 SR
 ws
 ws
@@ -46020,35 +46414,35 @@ Xt
 Xt
 Xt
 Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-QW
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+HR
+Nl
 Qu
 Qu
-Qw
-Qw
-Qw
-Qw
-Qw
-Qw
-Qw
-Qw
-Qw
-Qw
-Qw
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
+Qu
 GR
 Ur
 Ur
 Qw
-Qw
-Qw
+Qu
+Qu
 mC
 QW
 cz
@@ -46202,29 +46596,29 @@ tE
 tE
 tE
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
-QW
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+HR
+Dk
+Fb
+Ve
+Ve
+Qu
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
+Fb
 QW
 Yc
 Yc
@@ -46384,24 +46778,24 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+Ov
+im
+Dk
+Nl
+Nl
+Nl
+Dk
+rp
+yC
+dj
+hs
 Xt
 Xt
 Xt
@@ -46566,25 +46960,25 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+wv
+nf
+hs
+hs
+hs
+hs
+hs
+Py
+jL
+wv
+yh
+rg
 Xt
 Xt
 Xt
@@ -46748,25 +47142,25 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+wv
+yh
+rg
+rg
+rg
+rg
+rg
+jL
+eK
+Ld
+rg
 Xt
 Xt
 Xt
@@ -46930,26 +47324,26 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+wv
+jC
+jC
+jC
+jC
+jC
+Yu
+eK
+Ld
+rg
+rg
 Xt
 Xt
 Xt
@@ -47112,26 +47506,26 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+Ld
+rg
+rg
 Xt
 Xt
 Xt
@@ -47294,27 +47688,27 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+wv
+yh
+rg
+rg
 Xt
 Xt
 Xt
@@ -47476,27 +47870,27 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+wv
+yh
+rg
 Xt
 Xt
 Xt
@@ -47658,27 +48052,27 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+wv
+yh
 Xt
 Xt
 Xt
@@ -47840,27 +48234,27 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+wv
 Xt
 Xt
 Xt
@@ -48022,27 +48416,27 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
 Xt
 Xt
 Xt
@@ -48204,27 +48598,27 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
 Xt
 Xt
 Xt
@@ -48386,27 +48780,27 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
 Xt
 Xt
 Xt
@@ -48568,28 +48962,28 @@ UF
 UF
 UF
 tE
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
-Xt
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
+eK
 Xt
 Xt
 Xt

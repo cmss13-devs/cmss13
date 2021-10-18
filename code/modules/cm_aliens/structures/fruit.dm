@@ -384,7 +384,7 @@
 /obj/effect/alien/resin/fruit/MouseDrop(mob/living/carbon/Xenomorph/user)
 	if(!istype(user))
 		return
-	if(Adjacent(user) && !user.is_mob_incapacitated())
+	if(Adjacent(user) && !user.is_mob_incapacitated() && !user.lying)
 		user.pickup_fruit(src)
 
 // Handles xenos picking up fruit
@@ -398,6 +398,7 @@
 		return
 	if(F.picked)
 		to_chat(src, SPAN_XENODANGER("[F] is already being picked!"))
+		return
 	// Indicates the fruit is being picked, so other xenos can't eat it at the same time
 	F.picked = TRUE
 	if(!do_after(src, F.consume_delay, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))

@@ -11,21 +11,19 @@
 	var/mob/pulledby = null
 	var/rebounds = FALSE
 	var/rebounding = FALSE // whether an object that was launched was rebounded (to prevent infinite recursive loops from wall bouncing)
-
 	var/acid_damage = 0 //Counter for stomach acid damage. At ~60 ticks, dissolved
-
 	var/move_intentionally = FALSE // this is for some deep stuff optimization. This means that it is regular movement that can only be NSWE and you don't need to perform checks on diagonals. ALWAYS reset it back to FALSE when done
+
+	/// Data for an ongoing throwing/flight of the atom
+	var/datum/launch_metadata/launch_metadata
 
 //===========================================================================
 /atom/movable/Destroy()
-	for(var/atom/movable/I in contents)
-		qdel(I)
-	if(pulledby)
-		pulledby.stop_pulling()
+	for(var/atom/A as anything in contents)
+		qdel(A)
+	pulledby?.stop_pulling()
 	QDEL_NULL(launch_metadata)
-
-	if(loc)
-		loc.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
+	loc?.on_stored_atom_del(src) //things that container need to do when a movable atom inside it is deleted
 	vis_contents.Cut()
 	. = ..()
 	moveToNullspace() //so we move into null space. Must be after ..() b/c atom's Dispose handles deleting our lighting stuff

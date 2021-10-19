@@ -254,7 +254,7 @@
 
 	var/mob/living/carbon/M = L
 	if(M.stat || M.mob_size >= MOB_SIZE_BIG || can_not_harm(L))
-		throwing = FALSE
+		reset_throw()
 		return
 
 	if (pounceAction.can_be_shield_blocked)
@@ -264,7 +264,7 @@
 				visible_message(SPAN_DANGER("[src] slams into [H]!"),
 					SPAN_XENODANGER("You slam into [H]!"), null, 5)
 				KnockDown(1)
-				throwing = FALSE //Reset throwing manually.
+				reset_throw()
 				playsound(H, "bonk", 75, FALSE) //bonk
 				return
 
@@ -272,20 +272,20 @@
 				if(H.check_shields(0, "the pounce", 1))
 					visible_message(SPAN_DANGER("[H] blocks the pounce of [src] with the combistick!"), SPAN_XENODANGER("[H] blocks your pouncing form with the combistick!"), null, 5)
 					KnockDown(3)
-					throwing = FALSE
+					reset_throw()
 					playsound(H, "bonk", 75, FALSE)
 					return
 				else if(prob(75)) //Body slam the fuck out of xenos jumping at your front.
 					visible_message(SPAN_DANGER("[H] body slams [src]!"),
 						SPAN_XENODANGER("[H] body slams you!"), null, 5)
 					KnockDown(3)
-					throwing = FALSE
+					reset_throw()
 					return
 			if(isColonySynthetic(H) && prob(60))
 				visible_message(SPAN_DANGER("[H] withstands being pounced and slams down [src]!"),
 					SPAN_XENODANGER("[H] throws you down after withstanding the pounce!"), null, 5)
 				KnockDown(1.5)
-				throwing = FALSE
+				reset_throw()
 				return
 
 
@@ -306,7 +306,7 @@
 	if(pounceAction.slash)
 		M.attack_alien(src, pounceAction.slash_bonus_damage)
 
-	throwing = FALSE //Reset throwing since something was hit.
+	reset_throw()
 
 /mob/living/carbon/Xenomorph/proc/pounced_mob_wrapper(var/mob/living/L)
 	pounced_mob(L)

@@ -408,7 +408,7 @@
 	LM.thrower = X
 	LM.spin = FALSE
 	LM.pass_flags = pounce_pass_flags
-	LM.collision_callbacks = pounce_callbacks
+	LM.collision_callbacks = pounce_callbacks.Copy()
 
 	X.launch_towards(LM) //Victim, distance, speed
 

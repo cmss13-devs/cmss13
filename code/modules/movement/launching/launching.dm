@@ -8,6 +8,7 @@
 	var/speed
 	var/atom/thrower
 	var/spin
+	var/initial_speed
 
 	// A list of callbacks to invoke when an atom of a specific type is hit (keys are typepaths and values are proc paths)
 	// These should only be for CUSTOM procs to invoke when an atom of a specific type is collided with, otherwise will default to using
@@ -18,12 +19,17 @@
 	// Tracked information
 	var/dist = 0
 
+/datum/launch_metadata/Destroy()
+	target = null
+	thrower = null
+	QDEL_LIST_ASSOC_VAL(collision_callbacks)
+	return ..()
 
 /datum/launch_metadata/proc/get_collision_callbacks(var/atom/A)
 	var/highest_matching = null
 	var/list/matching = list()
 
-	if (isnull(collision_callbacks))
+	if(!length(collision_callbacks))
 		return null
 
 	for (var/path in collision_callbacks)
@@ -46,16 +52,14 @@
 			matching_procs += collision_callbacks[path]
 		return matching_procs
 
-/atom/movable/var/datum/launch_metadata/launch_metadata = null
-
 //called when src is thrown into hit_atom
 /atom/movable/proc/launch_impact(atom/hit_atom)
 	if (isnull(launch_metadata))
 		CRASH("launch_impact called without any stored metadata")
 
 	var/list/collision_callbacks = launch_metadata.get_collision_callbacks(hit_atom)
-	if (islist(collision_callbacks))
-		for(var/datum/callback/CB in collision_callbacks)
+	if (collision_callbacks)
+		for(var/datum/callback/CB as anything in collision_callbacks)
 			if(istype(CB, /datum/callback/dynamic))
 				CB.Invoke(src, hit_atom)
 			else
@@ -68,9 +72,19 @@
 		var/turf/T = hit_atom
 		if (T.density)
 			turf_launch_collision(T)
+	reset_throw()
 
+/// Reset a specified active throw on the atom, or any if not specified
+/atom/movable/proc/reset_throw(datum/launch_metadata/LM)
+	if(LM && LM != launch_metadata)
+		return
 	throwing = FALSE
 	rebounding = FALSE
+	if(launch_metadata)
+		if(launch_metadata.initial_speed)
+			cur_speed = launch_metadata.initial_speed
+		remove_temp_pass_flags(launch_metadata.pass_flags)
+		QDEL_NULL(launch_metadata)
 
 /atom/movable/proc/mob_launch_collision(var/mob/living/L)
 	if (!rebounding)
@@ -143,21 +157,19 @@
 	if(SEND_SIGNAL(src, COMSIG_MOVABLE_PRE_THROW, LM.thrower) & COMPONENT_CANCEL_THROW)
 		return
 
-	// If we already have launch_metadata (from a previous throw), reset it and qdel the old launch_metadata datum
-	if (istype(launch_metadata))
-		qdel(launch_metadata)
+	// If we already have launch_metadata (from a previous throw), reset it
+	reset_throw()
 	launch_metadata = LM
 
 	if (LM.spin)
 		animation_spin(5, 1 + min(1, LM.range/20))
 
-	var/old_speed = cur_speed
+	LM.initial_speed = cur_speed
 	cur_speed = Clamp(LM.speed, MIN_SPEED, MAX_SPEED) // Sanity check, also ~1 sec delay between each launch move is not very reasonable
 	var/delay = 10/cur_speed - 0.5 // scales delay back to deciseconds for when sleep is called
 	var/pass_flags = LM.pass_flags
 
 	throwing = TRUE
-
 	add_temp_pass_flags(pass_flags)
 
 	var/turf/start_turf = get_step_towards(src, LM.target)
@@ -166,10 +178,10 @@
 
 	var/early_exit = FALSE
 	LM.dist = 0
-	for (var/turf/T in path)
-		if (!src || !throwing || loc != last_loc || !isturf(src.loc))
+	for(var/turf/T as anything in path)
+		if (!throwing || loc != last_loc || !isturf(src.loc))
 			break
-		if (!LM || QDELETED(LM))
+		if (launch_metadata != LM)
 			early_exit = TRUE
 			break
 		if (LM.dist >= LM.range)
@@ -192,9 +204,5 @@
 				if(A == LM.target)
 					hit_atom = A
 					break
-		launch_impact(hit_atom)
-	if (loc)
-		throwing = FALSE
-		rebounding = FALSE
-		cur_speed = old_speed
-		remove_temp_pass_flags(pass_flags)
+		launch_impact(T)
+	reset_throw(LM)

@@ -82,9 +82,9 @@
 		return
 
 	if(target.health >= target.maxHealth)
-		to_chat(src, SPAN_WARNING("\The [src] is already at max health!"))
+		to_chat(src, SPAN_WARNING("\The [target] is already at max health!"))
 		return
-	
+
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return
@@ -110,9 +110,9 @@
 		return
 
 	if(target.health >= target.maxHealth)
-		to_chat(src, SPAN_WARNING("\The [src] is already at max health!"))
+		to_chat(src, SPAN_WARNING("\The [target] is already at max health!"))
 		return
-	
+
 	if(!isturf(loc))
 		to_chat(src, SPAN_WARNING("You can't transfer health from here!"))
 		return

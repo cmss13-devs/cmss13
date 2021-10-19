@@ -143,6 +143,8 @@ class Changelog:
             change_data = ""
 
             for change in self.changes:
-                change_data += "  - {}: \'{}\'\n".format(change["type"], change["log"])
+                escaped = change["log"]
+                escaped = escaped.replace("'", "''")
+                change_data += "  - {}: \'{}\'\n".format(change["type"], escaped)
 
             file.write(data.format(self.author, change_data))

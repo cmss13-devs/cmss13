@@ -69,6 +69,12 @@
 			<h3 class="author">Firartix updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">fix issues with single quotes in changelogs</li>
+				<li class="bugfix">Game server now properly requires BYOND 513.1532 for building (previously 513.1514)</li>
+				<li class="tweak">Bump supported BYOND server version to 513.1542 (from 513.1539)</li>
+				<li class="tweak">Gitlab CI pipeline now only builds in testing mode and doesn't produce binaries/container/dmdoc anymore</li>
+				<li class="tweak">Default-Branch (dev) Gitlab CI pipeline still builds docs/artifacts/containers, and now in release mode</li>
+				<li class="bugfix">Gitlab CI pipeline now check maps per legacy SS13 method (notably invalid paths)</li>
+				<li class="tweak">Increased artifacts retention for Gitlab CI pipeline, map renders are now kept 30 days</li>
 			</ul>
 			<h3 class="author">GoldenDarkness55 updated:</h3>
 			<ul class="changes bgimages16">

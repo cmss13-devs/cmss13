@@ -522,6 +522,12 @@
 	if(isXeno(user) && caste && caste.caste_desc)
 		to_chat(user, caste.caste_desc)
 
+	if(l_hand)
+		to_chat(user, "It's holding[l_hand.get_examine_line()] in its left hand.")
+
+	if(r_hand)
+		to_chat(user, "It's holding[r_hand.get_examine_line()] in its right hand.")
+
 	if(stat == DEAD)
 		to_chat(user, "It is DEAD. Kicked the bucket. Off to that great hive in the sky.")
 	else if(stat == UNCONSCIOUS)

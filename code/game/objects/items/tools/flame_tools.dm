@@ -183,6 +183,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	item_state = "cigoff"
 	w_class = SIZE_TINY
 	flags_armor_protection = 0
+	flags_equip_slot = SLOT_EAR | SLOT_FACE
 	flags_atom = CAN_BE_SYRINGED
 	attack_verb = list("burnt", "singed")
 	blood_overlay_type = ""

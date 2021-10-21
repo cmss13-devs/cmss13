@@ -349,9 +349,17 @@
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"
-	desc = "A beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	desc = "An armored beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coberet"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
@@ -359,27 +367,26 @@
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine captain white beret"
 	icon_state = "codressberet"
-	desc = "A white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
+	desc = "An armored white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/black
 	name = "marine captain black beret"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coblackberet"
-	desc = "A black beret with the captain insignia emblazoned on it. Its sleek black color commands power and exudes class."
+	desc = "An armored black beret with the captain insignia emblazoned on it. Its sleek black color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/cdre
 	name = "marine commodore beret"
-	desc = "A blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
+	desc = "An armored blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
 	icon_state = "cdreberet"
 
 /obj/item/clothing/head/beret/marine/commander/cdrechief
 	name = "marine commodore-in-chief beret"
-	desc = "A dark blue beret signifying the Chief of all Commodores. Rumors about the commodore-in-chief position being simply an alias for an Admiral have been declared as false."
+	desc = "A dark blue, custom-tailored armored beret signifying the Chief of all Commodores. Definitely not an alias for an Admiral."
 	icon_state = "cdrechiefberet"
 
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
-	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/hats.dmi'
 	icon_state = "officercap"
 	item_icons = list(
@@ -388,12 +395,22 @@
 
 /obj/item/clothing/head/marine/peaked/captain
 	name = "marine captain peaked cap"
-	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "copeaked"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+
+/obj/item/clothing/head/marine/peaked/captain/white
+	name = "captain's dress white peaked cap"
+	desc = "A white, Navy-style peaked cap for the Captain. Wearer may suffer the heavy weight of responsibility upon their head."
+	icon_state = "co_peakedcap_white"
+
+/obj/item/clothing/head/marine/peaked/captain/black
+	name = "captain's dress black peaked cap"
+	desc = "A black, Navy-style peaked cap for the Captain. Wearer may suffer the heavy weight of responsibility upon their head."
+	icon_state = "co_peakedcap_black"
 
 /obj/item/clothing/head/beret/marine/chiefofficer
 	name = "chief officer beret"

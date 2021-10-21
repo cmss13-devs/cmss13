@@ -29,7 +29,7 @@
 	utility_extra = list(/obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
 
 	service_under = /obj/item/clothing/under/marine/officer/bridge
-	service_over = /obj/item/clothing/suit/storage/jacket/marine
+	service_over = /obj/item/clothing/suit/storage/jacket/marine/service
 	service_hat = /obj/item/clothing/head/cmcap
 	service_shoes = /obj/item/clothing/shoes/dress
 

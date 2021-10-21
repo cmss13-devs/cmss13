@@ -581,6 +581,11 @@
 	desc = "Worn brownish synthcotton vest with lots of pockets to unload your hands."
 	icon_state = "vest_brown"
 
+/obj/item/clothing/accessory/storage/black_vest/waistcoat
+	name = "tactical waistcoat"
+	desc = "A stylish black waistcoat with plenty of discreet pouches, to be both utilitarian and fashionable without compromising looks."
+	icon_state = "waistcoat"
+
 /obj/item/storage/internal/accessory/surg_vest
 	storage_slots = 12
 	can_hold = list(

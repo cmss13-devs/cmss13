@@ -172,7 +172,6 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
@@ -256,40 +255,29 @@
 	specialty = "researcher"
 	flags_atom = NO_SNOW_TYPE
 
+/obj/item/clothing/under/marine/officer/formal/servicedress
+	name = "captain's dress shirt"
+	desc = "The shirt and tie of a two-piece Navy service dress uniform for high-ranking officers. Wear with style and substance."
+	specialty = "captain's service dress"
+	icon_state = "CO_service"
+	worn_state = "CO_service"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/under/marine/officer/formal/white
-	name = "formal commanding officer's white uniform"
-	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "captain's white formal uniform"
+	desc = "A well-ironed USCM officer uniform in brilliant white with gold accents, intended for parades or hot weather. Wear this with pride."
 	icon_state = "CO_formal_white"
 	worn_state = "CO_formal_white"
-	specialty = "USCM officer"
+	specialty = "captain's white formal"
 	flags_atom = NO_SNOW_TYPE
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/formal/black
-	name = "formal commanding officer's black uniform"
-	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "captain's gray formal uniform"
+	desc = "A well-ironed USCM officer uniform in subdued gray with gold accents, intended for more formal or somber events. Wear this with pride."
 	icon_state = "CO_formal_black"
 	worn_state = "CO_formal_black"
-	specialty = "USCM officer"
+	specialty = "captain's gray formal"
 	flags_atom = NO_SNOW_TYPE
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-
-/obj/item/clothing/under/marine/officer/dining
-	name = "dining commanding officer uniform"
-	desc = "The well-ironed dining uniform of a USCM officer. This uniform is saved for dining, that way you and the years-old stain upon the collar look sharp during your most important meals."
-	icon_state = "CO_dining"
-	worn_state = "CO_dining"
-	specialty = "USCM officer"
-	flags_atom = NO_SNOW_TYPE
-
-/obj/item/clothing/under/marine/officer/casual
-	name = "casual commanding officer uniform"
-	desc = "Casual clothing you brought aboard to show the marines you do in fact have style. Should only be worn during downtime, or special occasions."
-	icon_state = "CO_casual"
-	worn_state = "CO_casual"
-	specialty = "USCM officer"
-	flags_atom = NO_SNOW_TYPE
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/dress
 	name = "marine dress uniform"

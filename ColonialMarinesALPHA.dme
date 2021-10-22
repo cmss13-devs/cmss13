@@ -1314,6 +1314,7 @@
 #include "code\modules\cm_tech\tech_tiers.dm"
 #include "code\modules\cm_tech\techtree.dm"
 #include "code\modules\cm_tech\droppod\droppod.dm"
+#include "code\modules\cm_tech\droppod\equipment.dm"
 #include "code\modules\cm_tech\droppod\gear_access_point.dm"
 #include "code\modules\cm_tech\droppod\lz_effect.dm"
 #include "code\modules\cm_tech\droppod\marine.dm"

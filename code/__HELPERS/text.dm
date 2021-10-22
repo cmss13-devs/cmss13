@@ -306,6 +306,14 @@ proc/strip_improper(input_text)
 	var/list/chars_to_add[max(charcount + 1, 0)]
 	return jointext(chars_to_add, char) + text
 
+/// Finds the first letter of each word in the provided string and capitalize them
+/proc/capitalize_first_letters(var/string)
+	var/list/text = splittext_char(string, " ")
+	var/list/finalized_text = list()
+	for(var/word in text)
+		finalized_text += capitalize(word)
+	return jointext(finalized_text, " ")
+
 // Aurorastation Markup System
 // For processing simple markup, similar to what Skype and Discord use.
 // Enabled from a config setting.
@@ -334,3 +342,4 @@ proc/strip_improper(input_text)
 		message = replacetextEx_char(message, ref, urls[ref])
 
 	return message
+

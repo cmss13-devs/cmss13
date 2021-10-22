@@ -321,3 +321,20 @@
 	..()
 	spawn(5)
 		fire_spread(impact, create_cause_data(initial(name), source_mob), 3, 25, 20, "#EE6515")
+
+/obj/structure/ship_ammo/sentry
+	name = "multi-purpose area denial sentry"
+	desc = "An omni-directional sentry, capable of defending an area from lightly armored hostile incursion."
+	icon_state = "launchable_sentry"
+	equipment_type = /obj/structure/dropship_equipment/weapon/launch_bay
+	ammo_count = 1
+	max_ammo_count = 1
+	ammo_name = "area denial sentry"
+	travelling_time = 0 // handled by droppod
+	point_cost = 600
+
+/obj/structure/ship_ammo/sentry/detonate_on(turf/impact)
+	var/obj/structure/droppod/equipment/sentry/droppod = new(impact, /obj/structure/machinery/defenses/sentry/launchable, source_mob)
+	droppod.drop_time = 5 SECONDS
+	droppod.launch(impact)
+	qdel(src)

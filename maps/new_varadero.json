@@ -1,0 +1,36 @@
+{
+    "map_name": "New Varadero",
+    "map_path": "map_files/water_world",
+    "map_file": "water_world.dmm",
+
+    "survivor_types": [
+        "Survivor - LV-624 Archeologist",
+        "Survivor - LV-624 Emergency Medical Technician",
+        "Survivor - LV-624 Priest",
+        "Survivor - LV-624 Engineer",
+        "Survivor - LV-624 Cargo Technician",
+        "Survivor - LV-624 Security Guard",
+        "Survivor - LV-624 Head of Security"
+    ],
+
+    "defcon_triggers": [
+        3300,
+        2100,
+        1450,
+        580,
+        0.0
+    ],
+    "survivor_message": "You are an UA employee on the island outpost of New Varadero, it is vital that you do all that you can to contain the outbreak, or at least survive.",
+    "map_item_type": "/obj/item/map/new_varadero",
+    "announce_text": "A manual distress signal has been received from United American outpost New Varadero. Survivor count is unknown, and the signal warns of biological hostiles not human in nature. An armed response team from the ###SHIPNAME### will be dispatched shortly to investigate.",
+    "monkey_types": [
+        "farwa"
+    ],
+    "traits": [{ "Ground": true }],
+    "xvx_hives": {
+        "xeno_hive_alpha": 0,
+        "xeno_hive_bravo": 0,
+        "xeno_hive_charlie": 0,
+        "xeno_hive_delta": 0
+    }
+}

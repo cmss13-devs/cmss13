@@ -20,10 +20,10 @@ map bigredv2
 endmap
 
 map prison_station_fop
-	voteweight 0
 endmap
 
 map fiorina_sciannex
+	minplayers 130
 endmap
 
 map corsat
@@ -52,6 +52,9 @@ endmap
 
 map LV522_Chances_Claim
 	minplayers 130
+endmap
+
+map water_world
 endmap
 
 map whiskey_outpost_v2

@@ -10,6 +10,9 @@
 	default_ammo = /datum/ammo/bullet/turret
 	gun_type = null
 
+/obj/item/ammo_magazine/sentry/dropped
+	max_rounds = 2500
+
 /obj/item/ammo_magazine/sentry/premade
 	max_rounds = 1000000
 

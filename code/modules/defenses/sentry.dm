@@ -17,6 +17,8 @@
 	var/immobile = FALSE //Used for prebuilt ones.
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
 	var/sentry_type = "sentry" //Used for the icon
+
+	var/omni_directional = FALSE
 	var/sentry_range = SENTRY_RANGE
 
 	var/damage_mult = 1
@@ -62,6 +64,9 @@
 	return TRUE
 
 /obj/structure/machinery/defenses/sentry/proc/set_range()
+	if(omni_directional)
+		range_bounds = RECT(x, y, 7, 7)
+		return
 	switch(dir)
 		if(EAST)
 			range_bounds = RECT(x + 4, y, 7, 7)
@@ -209,6 +214,9 @@
 	if(QDELETED(owner_mob))
 		owner_mob = src
 
+	if(omni_directional)
+		setDir(get_dir(src, A))
+
 	actual_fire(A)
 
 	if(targets.len)
@@ -224,9 +232,12 @@
 	muzzle_flash(Get_Angle(get_turf(src), A))
 	ammo.current_rounds--
 	if(ammo.current_rounds == 0)
-		visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
-		playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
-		update_icon()
+		handle_empty()
+
+/obj/structure/machinery/defenses/sentry/proc/handle_empty()
+	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red.</span>")
+	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
+	update_icon()
 
 //Mostly taken from gun code.
 /obj/structure/machinery/defenses/sentry/proc/muzzle_flash(var/angle)
@@ -279,31 +290,32 @@
 			targets.Remove(A)
 			continue
 
-		var/opp
-		var/adj
-		switch(dir)
-			if(NORTH)
-				opp = x-A.x
-				adj = A.y-y
-			if(SOUTH)
-				opp = x-A.x
-				adj = y-A.y
-			if(EAST)
-				opp = y-A.y
-				adj = A.x-x
-			if(WEST)
-				opp = y-A.y
-				adj = x-A.x
+		if(!omni_directional)
+			var/opp
+			var/adj
+			switch(dir)
+				if(NORTH)
+					opp = x-A.x
+					adj = A.y-y
+				if(SOUTH)
+					opp = x-A.x
+					adj = y-A.y
+				if(EAST)
+					opp = y-A.y
+					adj = A.x-x
+				if(WEST)
+					opp = y-A.y
+					adj = x-A.x
 
-		var/r = 9999
-		if(adj != 0)
-			r = abs(opp/adj)
-		var/angledegree = arcsin(r/sqrt(1+(r*r)))
-		if(adj < 0 || (angledegree*2) > SENTRY_FIREANGLE)
-			if(A == target)
-				target = null
-			targets.Remove(A)
-			continue
+			var/r = 9999
+			if(adj != 0)
+				r = abs(opp/adj)
+			var/angledegree = arcsin(r/sqrt(1+(r*r)))
+			if(adj < 0 || (angledegree*2) > SENTRY_FIREANGLE)
+				if(A == target)
+					target = null
+				targets.Remove(A)
+				continue
 
 		var/list/turf/path = getline2(src, A, include_from_atom = FALSE)
 		if(!path.len || get_dist(src, A) > sentry_range)
@@ -470,6 +482,21 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	disassemble_time = 0.75 SECONDS
 	handheld_type = /obj/item/defenses/handheld/sentry/mini
 	composite_icon = FALSE
+
+/obj/structure/machinery/defenses/sentry/launchable
+	name = "\improper UA 571-O sentry post"
+	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 2500-round drum magazine."
+	ammo = new /obj/item/ammo_magazine/sentry/dropped
+	omni_directional = TRUE
+	immobile = TRUE
+	static = TRUE
+
+/obj/structure/machinery/defenses/sentry/launchable/handle_empty()
+	visible_message("[icon2html(src, viewers(src))] <span class='warning'>The [name] beeps steadily and its ammo light blinks red. It rapidly deconstructs itself!</span>")
+	playsound(loc, 'sound/weapons/smg_empty_alarm.ogg', 25, 1)
+	new /obj/item/stack/sheet/metal/medium_stack(loc)
+	new /obj/item/stack/sheet/plasteel/medium_stack(loc)
+	qdel(src)
 
 #undef SENTRY_FIREANGLE
 #undef SENTRY_RANGE

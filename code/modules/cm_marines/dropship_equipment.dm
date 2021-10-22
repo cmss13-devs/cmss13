@@ -736,8 +736,6 @@
 		if(ship_base) icon_state = "laser_beam_installed"
 		else icon_state = "laser_beam"
 
-
-/*TBD
 /obj/structure/dropship_equipment/weapon/launch_bay
 	name = "launch bay"
 	icon_state = "launch_bay"
@@ -746,17 +744,13 @@
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
-	point_cost = 0
+	point_cost = 400
 
-	update_icon()
-		if(ammo_equipped && ammo_equipped.ammo_count)
-			icon_state = "launch_bay_loaded"
-		else
-			if(ship_base) icon_state = "launch_bay"
-			else icon_state = "launch_bay"
-*/
-
-
+/obj/structure/dropship_equipment/weapon/launch_bay/update_equipment()
+	if(ship_base)
+		icon_state = "launch_bay_deployed"
+	else
+		icon_state = "launch_bay"
 
 //////////////// OTHER EQUIPMENT /////////////////
 

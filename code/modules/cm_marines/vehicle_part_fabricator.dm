@@ -19,12 +19,17 @@
 
 /obj/structure/machinery/part_fabricator/proc/get_point_store()
     return 0
-    
+
 /obj/structure/machinery/part_fabricator/proc/add_to_point_store(var/number = 1)
     return
-    
+
 /obj/structure/machinery/part_fabricator/proc/spend_point_store(var/number = 1)
     return
+
+/obj/structure/machinery/part_fabricator/dropship/ui_data(mob/user)
+	return list(
+		"points" = get_point_store()
+	)
 
 /obj/structure/machinery/part_fabricator/power_change()
 	..()
@@ -48,11 +53,11 @@
 /obj/structure/machinery/part_fabricator/proc/build_part(part_type, cost, mob/user)
 	set waitfor = 0
 	if(stat & NOPOWER) return
-	if(get_point_store() < text2num(cost))
+	if(get_point_store() < cost)
 		to_chat(user, SPAN_WARNING("You don't have enough points to build that."))
 		return
 	visible_message(SPAN_NOTICE("[src] starts printing something."))
-	spend_point_store(text2num(cost))
+	spend_point_store(cost)
 	icon_state = "drone_fab_active"
 	busy = TRUE
 	addtimer(CALLBACK(src, .proc/do_build_part, part_type), 10 SECONDS)
@@ -64,30 +69,26 @@
 	vending_stat_bump(part_type, src.type)
 	icon_state = "drone_fab_idle"
 
-/obj/structure/machinery/part_fabricator/Topic(href, href_list)
-	if(..())
+/obj/structure/machinery/part_fabricator/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
-
-	usr.set_interaction(src)
-	add_fingerprint(usr)
 
 	if(busy)
 		to_chat(usr, SPAN_WARNING("The [name] is busy. Please wait for completion of previous operation."))
 		return
 
-	if(href_list["produce"]&&href_list["cost"])
-		var/produce = text2path(href_list["produce"])
-		var/cost = href_list["cost"]
+	if(action == "produce")
+		var/produce = text2path(params["path"])
+		var/cost = text2num(params["cost"])
 		var/exploiting = TRUE
-		
-		if (valid_parts || valid_ammo) 
-			if (valid_parts && ispath(produce, valid_parts))
-				exploiting = FALSE
-				
-			else if (valid_ammo && ispath(produce, valid_ammo))
-				exploiting = FALSE
 
-		if (text2num(cost) < 0)
+		if (valid_parts && ispath(produce, valid_parts))
+			exploiting = FALSE
+		else if (valid_ammo && ispath(produce, valid_ammo))
+			exploiting = FALSE
+
+		if (cost < 0)
 			exploiting = TRUE
 
 		if (exploiting)
@@ -96,15 +97,21 @@
 
 		build_part(produce, cost, usr)
 		return
-	else 
+	else
 		log_admin("Bad topic: [usr] may be trying to HREF exploit [src]")
 		return
 
 /obj/structure/machinery/part_fabricator/attack_hand(mob/user)
 	if(!allowed(user))
 		to_chat(user, SPAN_WARNING("Access denied."))
-		return 1
-	return . = ..()
+		return TRUE
+	tgui_interact(user)
+
+/obj/structure/machinery/part_fabricator/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "PartFabricator", "Part Fabricator")
+		ui.open()
 
 /obj/structure/machinery/part_fabricator/dropship
 	name = "dropship part fabricator"
@@ -115,38 +122,46 @@
 
 /obj/structure/machinery/part_fabricator/dropship/get_point_store()
     return supply_controller.dropship_points
-    
+
 /obj/structure/machinery/part_fabricator/dropship/add_to_point_store(var/number = 1)
     supply_controller.dropship_points += number
 
 /obj/structure/machinery/part_fabricator/dropship/spend_point_store(var/number = 1)
     supply_controller.dropship_points -= number
 
-/obj/structure/machinery/part_fabricator/dropship/attack_hand(mob/user)
-	if(..())
-		return
-	user.set_interaction(src)
-	var/dat = "<h4>Points Available: [get_point_store()]</h4>"
-	dat += "<h3>Dropship Equipment:</h3>"
+/obj/structure/machinery/part_fabricator/dropship/ui_static_data(mob/user)
+	var/list/static_data = list()
+	static_data["Equipment"] = list()
 	for(var/build_type in typesof(/obj/structure/dropship_equipment))
 		var/obj/structure/dropship_equipment/DE = build_type
 		var/build_name = initial(DE.name)
+		var/build_description = initial(DE.desc)
 		var/build_cost = initial(DE.point_cost)
 		if(build_cost)
-			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
+			static_data["Equipment"] += list(list(
+				"name" = capitalize_first_letters(build_name),
+				"desc" = build_description,
+				"path" = build_type,
+				"cost" = build_cost
+			))
 
-	dat += "<h3>Dropship Ammo:</h3>"
+	static_data["Ammo"] = list()
 	for(var/build_type in typesof(/obj/structure/ship_ammo))
 		var/obj/structure/ship_ammo/SA = build_type
 		var/build_name = initial(SA.name)
+		var/build_description = initial(SA.desc)
 		var/build_cost = initial(SA.point_cost)
 		if(build_cost)
-			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
+			static_data["Ammo"] += list(list(
+				"name" = capitalize_first_letters(build_name),
+				"desc" = build_description,
+				"path" = build_type,
+				"cost" = build_cost
+			))
 
+	return static_data
 
-	show_browser(user, dat, "Dropship Part Fabricator", "dropship_part_fab")
-	return
-
+/// WARNING: IF YOU DECIDE TO READD THIS, GIVE THE HARDPOINTS POINT COSTS
 /obj/structure/machinery/part_fabricator/tank
 	name = "vehicle part fabricator"
 	desc = "A large automated 3D printer for producing vehicle parts."
@@ -160,32 +175,41 @@
 
 /obj/structure/machinery/part_fabricator/tank/get_point_store()
     return supply_controller.tank_points
-    
+
 /obj/structure/machinery/part_fabricator/tank/add_to_point_store(var/number = 1)
     supply_controller.tank_points += number
 
 /obj/structure/machinery/part_fabricator/tank/spend_point_store(var/number = 1)
     supply_controller.tank_points -= number
 
-/obj/structure/machinery/part_fabricator/tank/attack_hand(mob/user)
-	if(..())
-		return
-	user.set_interaction(src)
-	var/dat = "<h4>Points Available: [get_point_store()]</h4>"
-	dat += "<h3>Vehicle Equipment:</h3>"
+/obj/structure/machinery/part_fabricator/tank/ui_static_data(mob/user)
+	var/list/static_data = list()
+	static_data["Equipment"] = list()
 	for(var/build_type in typesof(/obj/item/hardpoint))
 		var/obj/item/hardpoint/TE = build_type
 		var/build_name = initial(TE.name)
+		var/build_description = initial(TE.desc)
 		var/build_cost = 0
 		if(build_cost)
-			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
+			static_data["Equipment"] += list(list(
+				"name" = capitalize_first_letters(build_name),
+				"desc" = build_description,
+				"path" = build_type,
+				"cost" = build_cost
+			))
 
-	dat += "<h3>Vehicle Ammo:</h3>"
+	static_data["Ammo"] = list()
 	for(var/build_type in typesof(/obj/item/ammo_magazine/hardpoint))
 		var/obj/item/ammo_magazine/hardpoint/TA = build_type
 		var/build_name = initial(TA.name)
+		var/build_description = initial(TA.desc)
 		var/build_cost = 0
 		if(build_cost)
-			dat += "<a href='byond://?src=\ref[src];produce=[build_type];cost=[build_cost]'>[build_name] ([build_cost])</a><br>"
-	show_browser(user, dat, "Vehicle Part Fabricator", "tank_part_fab")
-	return
+			static_data["Ammo"] += list(list(
+				"name" = capitalize_first_letters(build_name),
+				"desc" = build_description,
+				"path" = build_type,
+				"cost" = build_cost
+			))
+
+	return static_data

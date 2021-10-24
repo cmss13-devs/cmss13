@@ -1,7 +1,7 @@
 {
     "map_name": "New Varadero",
-    "map_path": "map_files/water_world",
-    "map_file": "water_world.dmm",
+    "map_path": "map_files/New_Varadero",
+    "map_file": "New_Varadero.dmm",
 
     "survivor_types": [
         "Survivor - LV-624 Archeologist",

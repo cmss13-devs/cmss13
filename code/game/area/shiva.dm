@@ -21,12 +21,14 @@
 	icon_state = "shuttle"
 	icon = 'icons/turf/area_shiva.dmi'
 	lighting_use_dynamic = TRUE
+	is_resin_allowed = FALSE
 
 /area/shuttle/drop2/shiva
 	name = "Shiva's Snowball - Dropship Normandy Landing Zone"
 	icon_state = "shuttle2"
 	icon = 'icons/turf/area_shiva.dmi'
 	lighting_use_dynamic = TRUE
+	is_resin_allowed = FALSE
 
 /area/shiva/exterior/lz1_console
 	name = "Shiva's Snowball - Dropship Alamo Console"
@@ -63,10 +65,12 @@
 /area/shiva/exterior/lz1_valley
 	name = "Shiva's Snowball - Landing Valley"
 	icon_state = "landing_valley"
+	is_resin_allowed = FALSE
 
 /area/shiva/exterior/lz2_fortress
 	name = "Shiva's Snowball - Landing Bulwark"
 	icon_state = "lz2_fortress"
+	is_resin_allowed = FALSE
 
 /area/shiva/exterior/valley
 	name = "Shiva's Snowball - Storage Bunker Valley"

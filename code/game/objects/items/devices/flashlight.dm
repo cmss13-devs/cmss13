@@ -251,6 +251,12 @@
 	. = ..()
 	fuel = rand(1600 SECONDS, 2000 SECONDS)
 
+/obj/item/device/flashlight/flare/dropped(mob/user)
+	. = ..()
+	if(iscarbon(user) && on)
+		var/mob/living/carbon/flare_user = user
+		flare_user.toggle_throw_mode(THROW_MODE_OFF)
+
 /obj/item/device/flashlight/flare/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()

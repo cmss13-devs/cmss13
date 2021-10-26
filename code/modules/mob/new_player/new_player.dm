@@ -123,7 +123,7 @@
 
 				close_spawn_windows()
 
-				var/obj/O = locate("landmark*Observer-Start")
+				var/obj/effect/landmark/observer_start/O = SAFEPICK(GLOB.observer_starts)
 				if(istype(O))
 					to_chat(src, SPAN_NOTICE("Now teleporting."))
 					observer.forceMove(O.loc)

@@ -4,7 +4,7 @@
 	name = "Security Records"
 	desc = "Used to view and edit personnel's security records"
 	icon_state = "security"
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_WY_CORPORATE, ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/secure_data
 	var/obj/item/card/id/scan = null
 	var/obj/item/device/clue_scanner/scanner = null
@@ -64,8 +64,12 @@
 
 //Someone needs to break down the dat += into chunks instead of long ass lines.
 /obj/structure/machinery/computer/secure_data/attack_hand(mob/user as mob)
-	if(..() || !allowed(usr) || inoperable())
+	if(..() || inoperable())
+		to_chat(user, SPAN_INFO("It does not appear to be working."))
 		return
+
+	if(!allowed(usr))
+		to_chat(user, SPAN_WARNING("Access denied."))
 
 	if(!is_mainship_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))

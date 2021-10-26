@@ -1116,7 +1116,7 @@
 	handful_state = "beanbag_slug"
 	icon_state = "beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	sound_override = 'sound/weapons/gun_shotgun_small.ogg'
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
 
 	max_range = 12
 	shrapnel_chance = 0
@@ -1320,6 +1320,7 @@
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	handful_state = "heavy_beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
 
 	max_range = 7
 	shrapnel_chance = 0
@@ -1965,6 +1966,11 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		H.disable_special_items() // Disables scout cloak
+
+/datum/ammo/energy/taser/precise
+	name = "precise taser bolt"
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
+
 
 /datum/ammo/energy/yautja/
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM

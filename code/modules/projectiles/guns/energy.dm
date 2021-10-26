@@ -15,9 +15,10 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 	matter = list("metal" = 2000)
-	ammo = /datum/ammo/energy/taser
+	ammo = /datum/ammo/energy/taser/precise
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 625 // approx 16 shots shots.
+	var/precision = TRUE
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
 
@@ -98,3 +99,13 @@
 	else
 		to_chat(user, SPAN_NOTICE("It has no power cell inside."))
 
+/obj/item/weapon/gun/energy/taser/use_unique_action()
+	switch(precision)
+		if(TRUE)
+			precision = FALSE
+			to_chat(usr, SPAN_NOTICE("\The [src] is now set to Free mode."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/taser]
+		if(FALSE)
+			precision = TRUE
+			to_chat(usr, SPAN_NOTICE("\The [src] is now set to Precision mode."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/taser/precise]

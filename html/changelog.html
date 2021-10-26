@@ -1135,6 +1135,166 @@
 			<ul class="changes bgimages16">
 				<li class="tweak">Removed a missed heal in bone-repair surgery code.</li>
 			</ul>
+
+			<h2 class="date">12 August 2021</h2>
+			<h3 class="author">ghostsheet updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Flaregun has been buffed to be faster and have less wield delay, similiar to a pistol.</li>
+			</ul>
+
+			<h2 class="date">10 August 2021</h2>
+			<h3 class="author">Backsea updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fragmentation mortar rounds generate shrapnel again.</li>
+			</ul>
+			<h3 class="author">Flpfs updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Wey-Yu armor vest has been buffed and it's slowdown has been removed.</li>
+				<li class="tweak">UA-M1, the fiorina riot vest, has had it's slowdown lowered by one tier.</li>
+				<li class="tweak">Detective vest has had it's slowdown removed.</li>
+			</ul>
+			<h3 class="author">Geeves updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">The various HMGs' muzzle flash offsets have been adjusted to line up with the end of the barrel.</li>
+				<li class="bugfix">Fixed a typo with getting rammed off an HMG by removing the offending text.</li>
+				<li class="bugfix">The "You feel faint" messages that pop up when you suffer from blood loss now has proper punctuation at the end.</li>
+			</ul>
+			<h3 class="author">Pigeon352 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="maptweak">Made dorms on Big Red more combat friendly</li>
+			</ul>
+			<h3 class="author">Segrain updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">All floodlights on LV now properly respond to their switch.</li>
+				<li class="bugfix">Mortars can once again be offset in any direction.</li>
+				<li class="bugfix">Fixed an exploit with placement of hive structures.</li>
+				<li class="tweak">Hive core and pylons no longer prevent building next to them.</li>
+			</ul>
+			<h3 class="author">Stan_Albatross updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Added storage slots to the external webbing as well as expanding its suit storage to fit crew monitors and binoculars.</li>
+			</ul>
+			<h3 class="author">Vanagandr updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed adminheal not removing bleeding/IB properly.</li>
+				<li class="bugfix">Fixed a bug where a bandaged wound could widen and start bleeding again, but still count as bandaged and be un-treatable.</li>
+				<li class="tweak">Removes surgical drape spawns. At present they do nothing at all and simply cause confusion.</li>
+				<li class="bugfix">Fixed not being able to dig shrapnel from other people when not on surgery mode.</li>
+			</ul>
+			<h3 class="author">forest2001 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Staff ERT log now flags Deathsquad as hostile.</li>
+				<li class="tweak">The last remaining xeno bioscan now only triggers for the Default Hive</li>
+				<li class="tweak">Examining the plasma caster now says what it's set to fire.</li>
+				<li class="tweak">Renamed LPC projectile to 'Low Power Stun Bolts'.</li>
+				<li class="tweak">'Plasma Immobilizer' no longer stuns Xenos longer than humans.</li>
+				<li class="tweak">‘Plasma Immobilizer’ range reduced from 32 to 20</li>
+				<li class="rscadd">Added 'High Power Stun Bolts', these stun Xenos for roughly 2 seconds and stun Humans for 3. It is ineffective against Abominations.</li>
+				<li class="tweak">Plasma Caster stun shots now passthrough glass again.</li>
+				<li class="rscadd">Added Plasma Caster Lethal Mode. This allows for the caster to damage mobs, including the return of the original HPC, 'Plasma Eradicator' (Range 8) and a lethal version of the 'High Power Stun Bolt', 'Plasma Bolt'. It is toggled with Unique-Action</li>
+				<li class="tweak">Plasma rifle projectiles now renamed to 'Plasma Rifle Bolt' and 'Plasma Shatterer'.</li>
+				<li class="bugfix">'Plasma Shatterer' now explodes on impact with a mob again, detonating an explosion roughly half the size of a 'Plasma Eradicator'.</li>
+				<li class="rscdel">Removed plasma rifle inbuilt zoom. (This may be temporary)</li>
+				<li class="tweak">Using Hunter Ranged Weaponry now checks for the relevant trait, and not species.</li>
+			</ul>
+
+			<h2 class="date">09 August 2021</h2>
+			<h3 class="author">forest2001 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscdel">Disables clan ships. This is a temporary patch to reduce server load and not a long-term solution.</li>
+			</ul>
+
+			<h2 class="date">08 August 2021</h2>
+			<h3 class="author">Vanagandr updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Humans with no skills are no longer immune to fractures. Examples: adminspawned naked people, surgery practice dummy.</li>
+				<li class="bugfix">Rejuvenate()/aheal now fixes larva infection.</li>
+				<li class="rscadd">Complete surgery system rework. This was originally TG surgery ported and modified for CM by Foolosopher and updated by Optimyst. I then modified it heavily to make it behave like the smooth and drape-free Baycode surgeries we've grown accustomed to. Adding new surgeries and steps is easy.</li>
+				<li class="tweak">Specific surgery changes: LARVA SURGERY must be performed on a proper surgical table. Use the PICT or else.  Removing the severed larva is fastest with a haemostat, middling with bare hands, and improvised tools are slow but don't hurt. Attaching PROSTHETICS is a multiple-step process and the limb must be calibrated (hand or haemostat twice) before it will work. The stump of a BROKEN PROSTHETIC must be sawn away before a new one can be attached. AMPUTATION is a multiple-step process and begins with a scalpel in an opened incision. If you begin one by accident and it isn't too late, you can stitch the muscles back together. ORGAN REPAIR loops, treating one organ at a time. REATTACHING SYNTH HEADS involves attaching the head, then fully reconnecting it. Make sure you're aiming for the head, not eye or mouth. If the head can talk, the job isn't done.</li>
+				<li class="rscadd">People with surgical skills now have an ability toggle for surgery mode. This also temporarily sets help intent safety on or off if you didn't already have it, and means you'll attempt to perform surgeries when on on help or disarm intent and clicking people with valid items or an empty hand. Also added a keybind for switching it on the fly, though it's not set by default.</li>
+				<li class="tweak">Medics and POs now have basic surgery skills. Added surgical line to medic essentials kit as wound tending is the only useful surgery they can do currently.</li>
+				<li class="tweak">Surgical trays no longer have incision management systems. Instead, they have the PICT system.</li>
+				<li class="rscadd">Added new surgical tools: drapes, which do nothing in this revision but may come in handy, the PICT system, which is a specialised scalpel used by larva surgery, and surgical line, used for sewing flesh together. Surgical line can substitute for fixovein, fixovein can substitute for surgical line, and cable coil and headbands can be used (in extremis) in place of either. The specialised tools are the best in their niche, though. At present, surgical line is only in the medic field surgery kit.</li>
+				<li class="rscadd">Added a new surgery for tending wounds, using the new surgical line tool or its substitutes. This is a no- or shallow-incision surgery with one looping step, healing 10 points of brute and burn damage on the target limb per iteration. It can be performed on a patient who's standing up, or yourself.</li>
+				<li class="rscadd">Surgeries no longer require a surgery table or rollerbed to perform. Surgeries that require the patient to be lying down have a time multiplier depending on what surface you're using.</li>
+				<li class="rscadd">Some surgeries can be performed on a patient who's standing up. These specific surgeries can also be performed on yourself. Standing surgeries don't care about the surface they're performed on, and standing vs lying makes no difference to their speed.</li>
+				<li class="tweak">Tweaked skill effects on surgery times: all else the same, a medic/nurse/PO will be 20% slower than a doctor, and a synth 40% faster.</li>
+				<li class="rscadd">Aside from pain, the success chance/rng failure system is gone. Improvised tools now use time multipliers, causing the step to take longer.</li>
+				<li class="rscadd">Once you finish the first step in a surgery, you must finish the surgery before you can attempt any others. If you don't complete the first step, the surgery is cancelled. Failing the first step doesn't hurt the patient, unless it happens because of pain or you did it deliberately.</li>
+				<li class="rscadd">You can deliberately fail a step by starting it on disarm intent, if you're sure of what you're doing. This will automatically switch you back to help intent afterwards.</li>
+				<li class="rscadd">Examining yourself or other people now tells you where any incisions or surgeries are.</li>
+				<li class="rscadd">If surgery conditions aren't ideal, it will message the reasons why. Attempting surgery with the wrong tool lists possible steps or surgeries.</li>
+				<li class="tweak">Updated the Autodoc to keep it functional, but didn't touch its step times. This means that for most operations an autodoc is likely to take much longer than an actual doctor. Do your job.</li>
+				<li class="rscadd">Ported typecache check from TG. This is much faster than istype(), especially for comparing an atom to a black- or whitelist.</li>
+				<li class="bugfix">Admin-editing a human's species now properly deletes their old limbs, instead of simply making a new limb list.</li>
+				<li class="tweak">Removed some duplicate checks from unarmed attack code.</li>
+				<li class="imageadd">New sprites for surgical pump, surgical line, and laser scalpels courtesy of Triiodine. Tweaked sprites for surgical drills, circular saw, cautery to animate them while doing surgery.</li>
+			</ul>
+
+			<h2 class="date">07 August 2021</h2>
+			<h3 class="author">Jeser updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Tweaked PMC Gunner loadout. Belt now has 4 M56D drums instead of 2 drums and 2 VP78 magazines. Empty medium pouch is replaced with pistol magazine pouch with VP78 magazines.</li>
+				<li class="rscadd">Added PMC Vehicle Crewman loadout.</li>
+				<li class="rscadd">Added Vehicle Crewman Trainee loadout for Vehicle Crewman training camp.</li>
+				<li class="bugfix">Fixed PMC gloves not visible on mob.</li>
+				<li class="bugfix">Fixed USCM Sniper Specialist loadout not getting M42A and made some tweaks.</li>
+			</ul>
+
+			<h2 class="date">06 August 2021</h2>
+			<h3 class="author">naut updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Fortune cookies now have fortunes in them.</li>
+				<li class="rscadd">Freshly-baked/spawned empty fortune cookies can have paper slipped inside them to create your own fortunes.</li>
+				<li class="rscadd">Added fortunes.txt to the strings file containing the list of premade fortunes available.</li>
+				<li class="tweak">Fortune cookie recipe was changed to use two dough slices and 5 sugar. Previous recipe was 1 dough slice, 1 piece of paper, and 5 sugar.</li>
+				<li class="tweak">Fortune cookies can now be cracked open by using it (press Z or click on it) with it in your hand.</li>
+				<li class="tweak">MREs now have a 1 in 3 chance of being packaged with a fortune cookie inside.</li>
+				<li class="imageadd">Resprited the fortune cookie, added a cracked-open variant, and added a fortune paper slip.</li>
+			</ul>
+
+			<h2 class="date">02 August 2021</h2>
+			<h3 class="author">Mercadier updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="maptweak">Buffed the CL's office - now has a 20% bonus to fashion, wealth, and embezzlement stats.</li>
+				<li class="maptweak">Cleaned up the kitchen and added an alcoholic beverages vendor. Please drink responsibly.</li>
+			</ul>
+
+			<h2 class="date">01 August 2021</h2>
+			<h3 class="author">Geeves updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">The message displayed to marines when they spawn in will now have proper spacing and punctuation.</li>
+			</ul>
+			<h3 class="author">TheFlyingFlail updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Tweaked the way in which survivor gear presets are generated to a standardized template.</li>
+				<li class="tweak">Tweaked lv-614 priest to use priest robes instead of holiday robes.</li>
+				<li class="bugfix">Fixed survivor gear duplication</li>
+				<li class="bugfix">Fixed engineer survivor not spawning with welder googles</li>
+				<li class="bugfix">Fixed survivors not spawning with winter gear on Shivas Snowball</li>
+				<li class="rscadd">Added new survivor types for the Shivas Snowball map</li>
+				<li class="rscadd">Added new spritework for the Shivas Snowball Survivors courtesy of Hulaabeo | Jan Rota on the cm13 discord</li>
+			</ul>
+
+			<h2 class="date">30 July 2021</h2>
+			<h3 class="author">Triiodine updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="maptweak">Compressed Science Annex, removing tons of maintenance padding primarily to the north and north west.</li>
+				<li class="maptweak">Tweaked Science Annex LZ2, removing platforms, stairs, and adding in reinforced walls to make it more defensible.</li>
+				<li class="maptweak">Tweaked Disco Room on Science Annex by LZ1, removing platforms and simplifying the area.</li>
+				<li class="maptweak">Removed Bug-B-Gone and Eyepatch thermal goggles from Science Annex.</li>
+				<li class="maptweak">Clogged up the east yard entrance on Science Annex.</li>
+				<li class="maptweak">Changed up most of the routes in the research cell blocks on Science Annex.</li>
+				<li class="maptweak">Removed a bunch of platforms on Science Annex.</li>
+			</ul>
+
+			<h2 class="date">29 July 2021</h2>
+			<h3 class="author">Nicboone updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="imageadd">Added a bunch of new props for mappers using old Nicboone sprites. Including: Server racks (including a broken variant), Yutani-OS server boxes (on, off, broken variants), personal laptops (on, off, closed), a power turbine (Can be turned on with a crowbar thwack), a digital cash register (on, off, broken), and a power transformer.</li>
+				<li class="imageadd">Replaced some legacy bay12 and legacy CM13 sprites. Including: Alien sample jars, and sample jar racks.</li>
+				<li class="rscadd">Added Jungle boots (by Nicboone) to marine loadout. Added the M8 cartridge bayonet to marine loadout (Cartridge by Nicboone, knife by Triiodine)</li>
+			</ul>
 </div>
 </body>
 </html>

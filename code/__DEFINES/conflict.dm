@@ -33,6 +33,8 @@
 #define AMMO_HOMING				(1<<19) // If the bullet target is a mob, it will correct its trajectory toward the mob.
 /// Can't be deflected
 #define AMMO_NO_DEFLECT			(1<<20)
+///Can only hit people with criminal status
+#define AMMO_MP					(1<<21)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)

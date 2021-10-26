@@ -45,6 +45,7 @@
 	// Config
 	var/internal_hitpoints_max = 350
 	var/internal_hitpoints_per_attack = 50
+	var/internal_hp_per_life = 5
 
 	// State
 	var/internal_hitpoints = 0
@@ -52,6 +53,9 @@
 /datum/behavior_delegate/praetorian_warden/append_to_stat()
 	. = list()
 	. += "Energy Reserves: [internal_hitpoints]/[internal_hitpoints_max]"
+
+/datum/behavior_delegate/praetorian_warden/on_life()
+	internal_hitpoints = min(internal_hitpoints_max, internal_hitpoints + internal_hp_per_life)
 
 /datum/behavior_delegate/praetorian_warden/melee_attack_additional_effects_self()
 	..()

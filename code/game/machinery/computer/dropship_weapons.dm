@@ -267,7 +267,8 @@
 				if(DEW.last_fired > world.time - DEW.firing_delay)
 					to_chat(usr, SPAN_WARNING("[DEW] just fired, wait for it to cool down."))
 					return
-				if(!LT.signal_loc) return
+				if(!LT.signal_loc)
+					return
 				var/turf/TU = get_turf(LT.signal_loc)
 				var/area/targ_area = get_area(LT.signal_loc)
 				var/is_outside = FALSE
@@ -282,6 +283,8 @@
 					return
 				if (protected_by_pylon(TURF_PROTECTION_CAS, TU))
 					to_chat(usr, SPAN_WARNING("INVALID TARGET: biological-pattern interference with signal."))
+					return
+				if(!DEW.ammo_equipped.can_fire_at(TU, usr))
 					return
 
 				DEW.open_fire(LT.signal_loc)

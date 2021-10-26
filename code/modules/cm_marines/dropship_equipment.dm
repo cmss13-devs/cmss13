@@ -625,9 +625,7 @@
 	// clamp back to maximum inaccuracy
 	ammo_accuracy_range = min(ammo_accuracy_range, ammo_max_inaccuracy)
 
-	var/list/possible_turfs = list()
-	for(var/turf/TU in range(ammo_accuracy_range, target_turf))
-		possible_turfs += TU
+	var/list/possible_turfs = RANGE_TURFS(ammo_accuracy_range, target_turf)
 	var/turf/impact = pick(possible_turfs)
 	if(ammo_warn_sound)
 		playsound(impact, ammo_warn_sound, ammo_warn_sound_volume, 1)
@@ -743,6 +741,7 @@
 	icon = 'icons/obj/structures/props/almayer_props.dmi'
 	firing_sound = 'sound/weapons/gun_flare_explode.ogg'
 	firing_delay = 10 //1 seconds
+	bound_height = 32
 	equip_categories = list(DROPSHIP_CREW_WEAPON) //fits inside the central spot of the dropship
 	point_cost = 400
 

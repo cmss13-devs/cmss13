@@ -26,6 +26,19 @@
 	GLOB.newplayer_start -= src
 	return ..()
 
+/obj/effect/landmark/observer_start
+	name = "Observer Landmark"
+	icon = 'icons/mob/mob.dmi'
+	icon_state = "ghost1"
+
+/obj/effect/landmark/observer_start/Initialize()
+	. = ..()
+	GLOB.observer_starts += src
+
+/obj/effect/landmark/observer_start/Destroy()
+	GLOB.observer_starts -= src
+	return ..()
+
 /obj/effect/landmark/ert_spawns/Initialize(mapload, ...)
 	. = ..()
 	LAZYADD(GLOB.ert_spawns[type], src)
@@ -44,7 +57,7 @@
 /obj/effect/landmark/nightmare/Initialize(mapload, ...)
 	. = ..()
 	if(!insert_tag) return
-	if(!replace && GLOB.nightmare_landmarks[insert_tag]) 
+	if(!replace && GLOB.nightmare_landmarks[insert_tag])
 		return
 	GLOB.nightmare_landmarks[insert_tag] = get_turf(src)
 /obj/effect/landmark/nightmare/Destroy()

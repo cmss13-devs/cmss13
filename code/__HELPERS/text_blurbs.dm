@@ -90,7 +90,7 @@ blurb_key = a key used for specific blurb types so they are not shown repeatedly
 ignore_key = used to skip key checks. Ex. a USCM ERT member shouldn't see the normal USCM drop message,
 but should see their own spawn message even if the player already dropped as USCM.**/
 /proc/show_blurb(list/mob/targets, duration = 3 SECONDS, message, scroll_down, screen_position = "LEFT+0:16,BOTTOM+1:16",\
-	text_alignment = "left", text_color = "#FFFFFF", blurb_key, ignore_key = FALSE)
+	text_alignment = "left", text_color = "#FFFFFF", blurb_key, ignore_key = FALSE, speed = 1)
 	set waitfor = 0
 	if(!islist(targets))
 		targets = list(targets)
@@ -112,14 +112,14 @@ but should see their own spawn message even if the player already dropped as USC
 	while(html_tag)
 		html_tag++
 		if(opener)
-			html_tags += list(html_tag, html_tag + 1)
-			html_tag = findtext(message, regex("<.>"), html_tag + 1)
+			html_tags += list(html_tag, html_tag + 1, html_tag + 2)
+			html_tag = findtext(message, regex("<.>"), html_tag + 2)
 			if(!html_tag)
 				opener = FALSE
 				html_tag = findtext(message, regex("</.>"))
 		else
-			html_tags += list(html_tag, html_tag + 1, html_tag + 2)
-			html_tag = findtext(message, regex("</.>"), html_tag + 2)
+			html_tags += list(html_tag, html_tag + 1, html_tag + 2, html_tag + 3)
+			html_tag = findtext(message, regex("</.>"), html_tag + 3)
 
 	var/obj/screen/text/T = new()
 	T.screen_loc = screen_position
@@ -146,7 +146,7 @@ but should see their own spawn message even if the player already dropped as USC
 		if(i in html_tags)
 			continue
 		T.maptext = "<span style=\"[style]\">[copytext(message,1,i)]</span>"
-		sleep(1)
+		sleep(speed)
 
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/fade_blurb, targets, T), duration)
 

@@ -237,6 +237,8 @@ datum/preferences/proc/randomize_skin_color()
 			return "USCM Corporate Liaison (CL)"
 		if(JOB_SYNTH)
 			return "USCM Synthetic"
+		if(JOB_POLICE_CADET)
+			return "USCM MP Cadet (MPC)"
 		if(JOB_POLICE)
 			return "USCM Military Police (MP)"
 		if(JOB_CHIEF_POLICE)

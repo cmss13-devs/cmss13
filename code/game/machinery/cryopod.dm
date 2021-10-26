@@ -216,11 +216,11 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	if(ishuman(occupant))
 		var/mob/living/carbon/human/H = occupant
 		switch(H.job)
-			if("Military Police","Chief MP")
+			if(JOB_POLICE_CADET, JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 				dept_console = GLOB.frozen_items["MP"]
-			if("Doctor","Researcher","Chief Medical Officer")
+			if("Nurse", "Doctor","Researcher","Chief Medical Officer")
 				dept_console = GLOB.frozen_items["Med"]
-			if("Ordnance Techician","Chief Engineer")
+			if("Maintenance Technician", "Ordnance Technician","Chief Engineer")
 				dept_console = GLOB.frozen_items["Eng"]
 			if("Predator")
 				dept_console = GLOB.frozen_items["Yautja"]

@@ -762,6 +762,11 @@
 			if(shooter_human.faction == faction && !(ammo_flags & AMMO_ALWAYS_FF))
 				. -= FF_hit_evade
 
+			if(ammo_flags & AMMO_MP)
+				if(criminal)
+					. += FF_hit_evade
+				else
+					return FALSE
 
 /mob/living/carbon/Xenomorph/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()

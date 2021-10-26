@@ -49140,6 +49140,7 @@
 	dir = 1;
 	tag = "icon-chair (NORTH)"
 	},
+/obj/effect/landmark/start/cadet_police,
 /turf/open/floor/almayer,
 /area/almayer/shipboard/brig/secondary_office)
 "iCF" = (

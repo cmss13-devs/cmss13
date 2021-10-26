@@ -46,11 +46,12 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PILOT						"Pilot Officer"
 #define JOB_CREWMAN						"Vehicle Crewman"
 
+#define JOB_POLICE_CADET				"MP Cadet"
 #define JOB_POLICE						"Military Police"
 #define JOB_WARDEN						"Military Warden"
 #define JOB_CHIEF_POLICE				"Chief MP"
 #define JOB_POLICE_ROLES                /datum/timelock/mp
-#define JOB_POLICE_ROLES_LIST           list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+#define JOB_POLICE_ROLES_LIST           list(JOB_POLICE_CADET, JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 
 #define JOB_SEA							"Senior Enlisted Advisor"
 
@@ -65,7 +66,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_REQUISITION_ROLES           /datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
-#define JOB_MARSOC "MARSOC Operator"
+#define JOB_MARSOC						"MARSOC Operator"
 
 #define JOB_HUMAN_ROLES                 /datum/timelock/human
 #define JOB_XENO_ROLES                  /datum/timelock/xeno
@@ -192,7 +193,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PROVOST_TML					"Provost Team Leader"
 #define JOB_PROVOST_ADVISOR				"Provost Advisor"
 #define JOB_PROVOST_INSPECTOR			"Provost Inspector"
-#define JOB_PROVOST_MARSHAL			"Provost Marshal"
+#define JOB_PROVOST_MARSHAL				"Provost Marshal"
 #define JOB_PROVOST_SMARSHAL			"Provost Sector Marshal"
 #define JOB_PROVOST_CMARSHAL			"Provost Chief Marshal"
 

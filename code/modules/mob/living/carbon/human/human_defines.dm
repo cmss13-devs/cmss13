@@ -97,6 +97,8 @@
 	var/marksman_aura = 0
 
 	var/FF_hit_evade = 15
+	///used to determine if precise taser will shoot. Security code is so convoluted it's the easiest way, sorry.
+	var/criminal = FALSE
 
 	var/is_important = FALSE
 

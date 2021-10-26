@@ -170,11 +170,12 @@
 #define SEC_LEVEL_DELTA	3
 
 //Alarm levels.
-#define ALARM_WARNING_FIRE 	1
-#define ALARM_WARNING_ATMOS	2
-#define ALARM_WARNING_EVAC	4
-#define ALARM_WARNING_READY	8
-#define ALARM_WARNING_DOWN	16
+#define ALARM_WARNING_FIRE 	(1<<0)
+#define ALARM_WARNING_ATMOS	(1<<1)
+#define ALARM_WARNING_EVAC	(1<<2)
+#define ALARM_WARNING_READY	(1<<3)
+#define ALARM_WARNING_DOWN	(1<<4)
+#define ALARM_LOCKDOWN		(1<<5)
 
 //some arbitrary defines to be used by self-pruning global lists. (see master_controller)
 #define PROCESS_KILL 26	//Used to trigger removal from a processing list

@@ -98,7 +98,6 @@
 
 /datum/equipment_preset/uscm_event/provost
 	name = "USCM Provost"
-	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/provost
 	access = list(
@@ -131,6 +130,7 @@
 	rank = "Provost Officer"
 	paygrade = "PvE7"
 	role_comm_title = "PvO"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/provost/officer/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -158,6 +158,7 @@
 	rank = "Provost Enforcer"
 	paygrade = "PvE8"
 	role_comm_title = "PvE"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/provost/enforcer/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -189,6 +190,7 @@
 	rank = "Provost Team Leader"
 	paygrade = "PvE9"
 	role_comm_title = "PvTML"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/provost/tml/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -221,6 +223,7 @@
 	rank = "Provost Advisor"
 	paygrade = "PvE9"
 	role_comm_title = "PvA"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/provost/advisor/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -252,6 +255,7 @@
 	rank = "Provost Inspector"
 	paygrade = "PvI"
 	role_comm_title = "PvI"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/provost/inspector/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -283,6 +287,7 @@
 	rank = "Provost Inspector"
 	paygrade = "PvI"
 	role_comm_title = "PvI"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/provost/inspector/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec
@@ -315,6 +320,7 @@
 	rank = "Provost Marshal"
 	paygrade = "PvO8"
 	role_comm_title = "PvM"
+	flags = EQUIPMENT_PRESET_EXTRA
 
 /datum/equipment_preset/uscm_event/provost/marshal/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel/sec

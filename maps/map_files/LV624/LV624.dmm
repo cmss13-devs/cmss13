@@ -21752,11 +21752,6 @@
 /obj/structure/flora/jungle/plantbot1,
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/south_east_jungle)
-"vfT" = (
-/obj/structure/fence,
-/obj/structure/fence,
-/turf/open/gm/dirtgrassborder,
-/area/lv624/ground/colony/west_tcomms_road)
 "vgJ" = (
 /obj/structure/platform/mineral/sandstone/runed{
 	dir = 1
@@ -36223,7 +36218,7 @@ hJd
 xgE
 cPV
 cPV
-vfT
+uSq
 qIO
 qIO
 qIO

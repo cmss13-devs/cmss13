@@ -246,6 +246,7 @@
 	var/fuel = 0
 	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
+	var/ammo_datum = /datum/ammo/flare
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
@@ -266,6 +267,14 @@
 	icon_state = "[initial(icon_state)]-empty"
 	add_to_garbage(src)
 	STOP_PROCESSING(SSobj, src)
+
+/obj/item/device/flashlight/flare/proc/turn_on()
+	on = TRUE
+	heat_source = 1500
+	update_brightness()
+	force = on_damage
+	damtype = "fire"
+	START_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_off()
 	on = 0
@@ -302,22 +311,18 @@
 	if(.)
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
 		playsound(src,'sound/handling/flare_activate_2.ogg', 50, 1) //cool guy sound
-		force = on_damage
-		heat_source = 1500
-		damtype = "fire"
-		START_PROCESSING(SSobj, src)
+		turn_on()
 		var/mob/living/carbon/U = user
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
 
 /obj/item/device/flashlight/flare/on/Initialize()
 	. = ..()
-	on = 1
-	heat_source = 1500
-	update_brightness()
-	force = on_damage
-	damtype = "fire"
-	START_PROCESSING(SSobj, src)
+	turn_on()
+
+/// Flares deployed by a flare gun
+/obj/item/device/flashlight/flare/on/gun
+	brightness_on = 7
 
 //Special flare subtype for the illumination flare shell
 //Acts like a flare, just even stronger, and set length
@@ -389,8 +394,10 @@
 	icon_state = "cas_flare"
 	item_state = "cas_flare"
 	layer = ABOVE_FLY_LAYER
+	ammo_datum = /datum/ammo/flare/signal
 	var/faction = ""
 	var/datum/cas_signal/signal
+	var/activate_message = TRUE
 
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
@@ -414,7 +421,8 @@
 		signal.name = name
 		cas_groups[user.faction].add_signal(signal)
 		anchored = TRUE
-		visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
+		if(activate_message)
+			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
 		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP LOC</a>)")
 		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
 
@@ -439,3 +447,12 @@
 		cas_groups[faction].remove_signal(signal)
 		qdel(signal)
 	..()
+
+/// Signal flares deployed by a flare gun
+/obj/item/device/flashlight/flare/signal/gun
+	activate_message = FALSE
+
+/obj/item/device/flashlight/flare/signal/gun/activate_signal(mob/living/carbon/human/user)
+	turn_on()
+	faction = user.faction
+	return ..()

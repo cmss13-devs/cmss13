@@ -110,9 +110,19 @@
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock()
 	rage = max_rage
 	rage_lock_start_time = world.time
-	addtimer(CALLBACK(src, .proc/rage_lock_callback), rage_lock_duration)
+	var/color = "#00000035"
+	bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
+	addtimer(CALLBACK(src, .proc/rage_lock_weaken), rage_lock_duration/2)
+
+/datum/behavior_delegate/ravager_berserker/proc/rage_lock_weaken()
+	bound_xeno.remove_filter("empower_rage")
+	var/color = "#00000027"
+	bound_xeno.add_filter("empower_rage", 1, list("type" = "outline", "color" = color, "size" = 3))
+	addtimer(CALLBACK(src, .proc/rage_lock_callback), rage_cooldown_duration/2)
+
 
 /datum/behavior_delegate/ravager_berserker/proc/rage_lock_callback()
+	bound_xeno.remove_filter("empower_rage")
 	rage_lock_start_time = 0
 	rage_cooldown_start_time = world.time
 	decrement_rage(rage)

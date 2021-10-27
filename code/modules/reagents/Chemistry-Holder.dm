@@ -293,7 +293,7 @@
 					total_matching_catalysts++
 
 				if(isliving(my_atom) && !C.mob_react) //Makes it so some chemical reactions don't occur in mobs
-					return
+					continue
 
 				if(!C.required_container)
 					matching_container = 1

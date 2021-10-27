@@ -565,6 +565,8 @@
 //////////////////////////////EXPLOSIONS AND FIRE//////////////////////////////
 
 /datum/reagents/proc/handle_volatiles()
+	if(isliving(my_atom))
+		return
 	var/turf/sourceturf = get_turf(my_atom)
 	//For explosion
 	var/ex_power = 0

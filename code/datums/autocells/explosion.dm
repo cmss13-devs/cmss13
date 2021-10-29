@@ -287,12 +287,11 @@
 			return
 
 		M.last_damage_data = E.explosion_cause_data
-		var/explosion_source = E.explosion_cause_data.cause_name
-		var/mob/explosion_source_mob = E.explosion_cause_data.resolve_mob()
-
-		log_attack("[key_name(M)] was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([T.x],[T.y],[T.z])")
+		var/explosion_source = E.explosion_cause_data?.cause_name
+		var/mob/explosion_source_mob = E.explosion_cause_data?.resolve_mob()
 
 		if(explosion_source_mob)
+			log_attack("[key_name(M)] was harmed by explosion in [T.loc.name] caused by [explosion_source] at ([T.x],[T.y],[T.z])")
 			if(!ismob(explosion_source_mob))
 				CRASH("Statistics attempted to track a source mob incorrectly: [explosion_source_mob] ([explosion_source])")
 			var/mob/firing_mob = explosion_source_mob
@@ -323,7 +322,8 @@
 				firing_mob.attack_log += "\[[time_stamp()]\] <b>[key_name(firing_mob)]</b> blew up <b>[key_name(M)]</b> with \a <b>[explosion_source]</b> in [get_area(T)]."
 
 				msg_admin_attack("[key_name(firing_mob)] blew up [key_name(M)] with \a [explosion_source] in [get_area(T)] ([T.x],[T.y],[T.z]).", T.x, T.y, T.z)
-
+		else
+			log_attack("[key_name(M)] was harmed by unknown explosion in [T.loc.name] at ([T.x],[T.y],[T.z])")
 
 /obj/effect/particle_effect/shockwave
 	name = "shockwave"

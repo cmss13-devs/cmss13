@@ -618,8 +618,7 @@
 	if (!.)
 		TC.tackle_reset_id = addtimer(CALLBACK(src, .proc/reset_tackle, M), 4 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
 	else
-		qdel(TC)
-		LAZYREMOVE(tackle_counter, M)
+		reset_tackle(M)
 
 /mob/living/carbon/Xenomorph/proc/tackle_handle_lying_changed(mob/M)
 	SIGNAL_HANDLER

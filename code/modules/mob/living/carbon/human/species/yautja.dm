@@ -181,8 +181,5 @@
 				L.max_damage = 75
 				L.time_to_knit = 600 // 1 minute, time is in tenths of a second
 
-
-	var/datum/mob_hud/medical/advanced/A = huds[MOB_HUD_MEDICAL_ADVANCED]
-	A.remove_from_hud(H)
 	H.set_languages(list("Sainja"))
 	return ..()

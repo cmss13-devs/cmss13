@@ -4,13 +4,13 @@
 SUBSYSTEM_DEF(item_cleanup)
 	name = "Item Cleanup"
 	flags = SS_NO_INIT | SS_POST_FIRE_TIMING
-	wait = 6 MINUTES
+	wait = 4 MINUTES
 	priority = SS_PRIORITY_CLEANUP
 
 	/// After how long to start cleaning stuff up, to preserve scenery
 	var/start_processing_time = 26 MINUTES
 	/// How much of the items marked for garbaging should be actually cleaned up
-	var/garbage_ratio = 0.35
+	var/garbage_ratio = 0.25
 	/// Active deletion queue: list of items that can be deleted during next iterations
 	var/list/list/datum/weakref/active_queue = list()
 	/// Standby deletion queue: items will be shifted only after a full iteration so they're not instantly deleted

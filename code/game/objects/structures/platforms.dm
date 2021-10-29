@@ -47,8 +47,8 @@
 		PF.flags_can_pass_all = PASS_OVER
 
 /obj/structure/platform/Collided(atom/movable/AM)
-	do_climb(AM)
-
+	if(ismob(AM))
+		do_climb(AM)
 	..()
 
 /obj/structure/platform/BlockedPassDirs(atom/movable/mover, target_dir)

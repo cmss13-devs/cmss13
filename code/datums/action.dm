@@ -103,7 +103,7 @@
 /datum/action/proc/remove_from(mob/L)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ACTION_REMOVED, L)
-	L.actions.Remove(src)
+	L.actions?.Remove(src)
 	if(L.client)
 		L.client.screen -= button
 	owner = null

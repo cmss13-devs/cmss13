@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(item_cleanup)
 	priority = SS_PRIORITY_CLEANUP
 
 	/// After how long to start cleaning stuff up, to preserve scenery
-	var/start_processing_time = 0 //26 MINUTES
+	var/start_processing_time = 26 MINUTES
 	/// How much of the items marked for garbaging should be actually cleaned up
 	var/garbage_ratio = 0.35
 	/// Active deletion queue: list of items that can be deleted during next iterations

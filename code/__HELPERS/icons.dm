@@ -419,7 +419,8 @@ proc/ReadRGB(rgb)
 
 	var/curblend = A.blend_mode || defblend
 
-	if(A.vis_contents.len || A.overlays.len || A.underlays.len)
+	var/atom/movable/AM = A
+	if(length(A.overlays) || length(A.underlays) || (istype(AM) && AM.vis_contents))
 		var/icon/flat = BLANK
 		// Layers will be a sorted list of icons/overlays, based on the order in which they are displayed
 		var/list/layers = list()
@@ -439,6 +440,8 @@ proc/ReadRGB(rgb)
 				if(PROCESS_SET_UNDERLAYS)
 					process = A.underlays
 				if(PROCESS_SET_VIS_CONTENTS)
+					if(!istype(AM))
+						continue
 					process = A.vis_contents
 				else // PROCESS_SET_OVERLAYS
 					process = A.overlays

@@ -206,11 +206,14 @@
 	return
 
 /datum/action/xeno_action/activable/pounce/proc/end_pounce_freeze()
+	if(freeze_timer_id == TIMER_ID_NULL)
+		return
 	var/mob/living/carbon/Xenomorph/X = owner
 	X.frozen = FALSE
 	X.update_canmove()
 	deltimer(freeze_timer_id)
 	freeze_timer_id = TIMER_ID_NULL
+	to_chat(X, SPAN_XENONOTICE("Slashing frenzies you! You feel free to move immediately!"))
 
 /// Any effects to apply to the xenomorph before the windup occurs
 /datum/action/xeno_action/activable/pounce/proc/pre_windup_effects()

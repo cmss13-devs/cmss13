@@ -271,7 +271,7 @@
 	turn_off()
 	fuel = 0
 	icon_state = "[initial(icon_state)]-empty"
-	add_to_garbage(src)
+	QUEUE_CLEANUP(src)
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_on()
@@ -321,7 +321,7 @@
 		var/mob/living/carbon/U = user
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
-			
+
 /obj/item/device/flashlight/flare/proc/activate_signal(mob/living/carbon/human/user)
 	return
 

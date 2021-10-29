@@ -192,7 +192,7 @@
 		name = "\improper 84mm spent rocket tube"
 		icon_state = "rocket_e"
 		desc = "Spent rocket tube for M5 RPG rocket launcher. Activate in hand to disassemble for metal."
-		add_to_garbage(src)
+		QUEUE_CLEANUP(src)
 	else
 		icon_state = initial(icon_state)
 

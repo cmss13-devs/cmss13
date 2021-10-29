@@ -6,7 +6,6 @@
 	icon = 'icons/obj/items/helmet_garb.dmi'
 	icon_state = "placeholder"
 	w_class = SIZE_TINY
-	garbage = TRUE
 
 /obj/item/prop/helmetgarb/gunoil
 	name = "gun oil"

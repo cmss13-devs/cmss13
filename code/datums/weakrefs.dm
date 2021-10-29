@@ -1,3 +1,4 @@
+/// Creates or gets a weak reference datum for the input datum: it's a proxy datum we use to allow garbage collection while holding a reference
 /proc/WEAKREF(datum/input)
 	if(istype(input) && !QDELETED(input))
 		if(istype(input, /datum/weakref))

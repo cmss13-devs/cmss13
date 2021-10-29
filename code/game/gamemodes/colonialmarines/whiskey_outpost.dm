@@ -108,6 +108,13 @@
 /datum/game_mode/whiskey_outpost/post_setup()
 	set waitfor = 0
 	update_controllers()
+
+	// Delete most of ship map for performance
+	var/z_levels = SSmapping.levels_by_trait(ZTRAIT_MARINE_MAIN_SHIP)
+	for(var/obj/o in world)
+		if(o?.loc && o?.loc.z in z_levels)
+			qdel(o)
+
 	initialize_post_marine_gear_list()
 	lobby_time = world.time
 
@@ -145,16 +152,8 @@
 	if(SSitem_cleanup)
 		//Cleaning stuff more aggressively
 		SSitem_cleanup.start_processing_time = 0
-		SSitem_cleanup.percentage_of_garbage_to_delete = 1.0
 		SSitem_cleanup.wait = 1 MINUTES
 		SSitem_cleanup.next_fire = 1 MINUTES
-		spawn(0)
-			//Deleting Almayer, for performance!
-			SSitem_cleanup.delete_almayer()
-	if(SSxenocon)
-		//Don't need XENOCON
-		SSxenocon.wait = 30 MINUTES
-
 
 //PROCCESS
 /datum/game_mode/whiskey_outpost/process(delta_time)

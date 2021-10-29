@@ -107,7 +107,7 @@
 	I.on_implanted(M)
 	uses = max(uses - 1, 0)
 	if(!uses)
-		garbage = TRUE
+		QUEUE_CLEANUP(src)
 	update_icon()
 
 /obj/item/device/internal_implant

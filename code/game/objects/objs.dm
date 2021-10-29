@@ -31,13 +31,12 @@
 	. = ..()
 	GLOB.object_list += src
 	if(garbage)
-		add_to_garbage(src)
+		QUEUE_CLEANUP(src)
 
 /obj/Destroy()
 	if(buckled_mob)
 		unbuckle()
 	. = ..()
-	remove_from_garbage(src)
 	GLOB.object_list -= src
 
 

@@ -521,15 +521,13 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/weapon/melee/throwing_knife(src)
 
-/obj/item/storage/belt/knifepouch/handle_item_insertion(obj/item/W, prevent_warning = 0)
-	. = ..()
-	if(.)
-		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+/obj/item/storage/belt/knifepouch/_item_insertion(obj/item/W, prevent_warning = 0)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/storage/belt/knifepouch/remove_from_storage(obj/item/W, atom/new_location)
-	. = ..()
-	if(.)
-		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+/obj/item/storage/belt/knifepouch/_item_removal(obj/item/W, atom/new_location)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/storage/belt/knifepouch/attack_hand(mob/user, mods)
 	if(draw_cooldown < world.time)

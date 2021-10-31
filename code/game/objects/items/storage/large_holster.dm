@@ -45,16 +45,15 @@
 	mouse_opacity = initial(mouse_opacity)
 	..()
 
-/obj/item/storage/large_holster/handle_item_insertion(obj/item/W, prevent_warning = 0)
-	. = ..()
-	if(. && drawSound)
+/obj/item/storage/large_holster/_item_insertion(obj/item/W, prevent_warning = 0)
+	..()
+	if(drawSound)
 		playsound(src, drawSound, 15, TRUE)
-	return 1
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/obj/item/storage/large_holster/remove_from_storage(obj/item/W, atom/new_location)
-	. = ..()
-	if(. && drawSound)
+/obj/item/storage/large_holster/_item_removal(obj/item/W, atom/new_location)
+	..()
+	if(drawSound)
 		playsound(src, drawSound, 15, TRUE)
 
 /obj/item/storage/large_holster/m37
@@ -121,7 +120,7 @@
 	///Whether the gun had pixel scaling set before being holstered.
 	var/gun_scaling = FALSE
 
-/obj/item/storage/large_holster/m39/handle_item_insertion(obj/item/W, prevent_warning)
+/obj/item/storage/large_holster/m39/_item_insertion(obj/item/W, prevent_warning)
 	if(istype(W)) //Doing this before calling parent so that the gun isn't misaligned in the inventory screen.
 		if(W.appearance_flags & PIXEL_SCALE)
 			gun_scaling = TRUE
@@ -136,22 +135,22 @@
 		W.vis_flags |= VIS_INHERIT_ID //Means the gun is just visual and doesn't block picking up or clicking on the holster.
 		vis_contents += W
 
-	. = ..()
+	..()
 
-/obj/item/storage/large_holster/m39/remove_from_storage(obj/item/W, atom/new_location)
-	. = ..()
-	if(.)
-		if(gun_scaling)
-			gun_scaling = FALSE
-		else
-			W.appearance_flags &= ~PIXEL_SCALE
+/obj/item/storage/large_holster/m39/_item_removal(obj/item/W, atom/new_location)
+	if(gun_scaling)
+		gun_scaling = FALSE
+	else
+		W.appearance_flags &= ~PIXEL_SCALE
 
-		W.hud_offset = gun_offset
-		W.pixel_x = gun_offset
-		W.transform = null
+	W.hud_offset = gun_offset
+	W.pixel_x = gun_offset
+	W.transform = null
 
-		W.vis_flags &= ~VIS_INHERIT_ID
-		vis_contents -= W 
+	W.vis_flags &= ~VIS_INHERIT_ID
+	vis_contents -= W
+
+	..()
 
 /obj/item/storage/large_holster/m39/update_icon()
 	item_state = length(contents) ? "[base_icon]_full" : base_icon

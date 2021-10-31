@@ -139,7 +139,7 @@
 	return 1
 
 
-// Modified handle_item_insertion.  Would prefer not to, but...
+// Modified handle_item_insertion & _item_insertion.  Would prefer not to, but...
 /obj/item/storage/bag/sheetsnatcher/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	var/obj/item/stack/sheet/S = W
 	if(!istype(S)) return 0
@@ -218,7 +218,7 @@
 	storage_close(user)
 	update_icon()
 
-// Instead of removing
+// modified remove_from_storage and _item_removal.
 /obj/item/storage/bag/sheetsnatcher/remove_from_storage(obj/item/W as obj, atom/new_location)
 	var/obj/item/stack/sheet/S = W
 	if(!istype(S)) return 0

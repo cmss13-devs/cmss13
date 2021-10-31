@@ -30,21 +30,17 @@
 	var/obj/item/card/id/front_id = null
 
 
-/obj/item/storage/wallet/remove_from_storage(obj/item/W as obj, atom/new_location)
-	. = ..(W, new_location)
-	if(.)
-		if(W == front_id)
-			front_id = null
-			name = initial(name)
-			update_icon()
+/obj/item/storage/wallet/_item_removal(obj/item/W as obj, atom/new_location)
+	if(W == front_id)
+		front_id = null
+		name = initial(name)
+	..()
 
-/obj/item/storage/wallet/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
-	. = ..(W, prevent_warning)
-	if(.)
-		if(!front_id && istype(W, /obj/item/card/id))
-			front_id = W
-			name = "[name] ([front_id])"
-			update_icon()
+/obj/item/storage/wallet/_item_insertion(obj/item/W as obj, prevent_warning = 0)
+	if(!front_id && istype(W, /obj/item/card/id))
+		front_id = W
+		name = "[name] ([front_id])"
+	..()
 
 /obj/item/storage/wallet/update_icon()
 

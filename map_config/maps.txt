@@ -55,3 +55,7 @@ map whiskey_outpost_v2
 	minplayers 130
 	disabled
 endmap
+
+map haunted_house_v2
+	voteweight 0
+endmap

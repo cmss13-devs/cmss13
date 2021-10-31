@@ -73,7 +73,8 @@ structure:
 /area/event/dynamic
 	name = "Open grounds (event PD)"
 	icon_state = "event_dyn"
-
+	requires_power = TRUE
+	unlimited_power = TRUE
 	lighting_use_dynamic = TRUE
 
 //no dynamic lighting, unpowered.
@@ -81,7 +82,6 @@ structure:
 	name = "Open grounds (event D)"
 	icon_state = "event_dyn_nopower"
 
-	requires_power = TRUE
 	unlimited_power = FALSE
 
 //dynamic lighting, lit, powered.
@@ -96,7 +96,6 @@ structure:
 	name = "Open grounds (event DL)"
 	icon_state = "event_dyn_lit_nopower"
 
-	requires_power = TRUE
 	unlimited_power = FALSE
 
 //-----------------------CEILING_METAL--------------------------
@@ -121,7 +120,8 @@ structure:
 /area/event/metal/dynamic
 	name = "Building interior (event PD)"
 	icon_state = "metal_dyn"
-
+	requires_power = TRUE
+	unlimited_power = TRUE
 	lighting_use_dynamic = TRUE
 
 //no dynamic lighting, unpowered.
@@ -174,7 +174,8 @@ structure:
 /area/event/underground/dynamic
 	name = "Small caves (event PD)"
 	icon_state = "under_dyn"
-
+	requires_power = TRUE
+	unlimited_power = TRUE
 	lighting_use_dynamic = TRUE
 
 //no dynamic lighting, unpowered.
@@ -229,7 +230,8 @@ structure:
 /area/event/underground_no_CAS/dynamic
 	name = "Caves (event PD)"
 	icon_state = "undercas_dyn"
-
+	requires_power = TRUE
+	unlimited_power = TRUE
 	lighting_use_dynamic = TRUE
 
 //no dynamic lighting, unpowered.
@@ -237,7 +239,6 @@ structure:
 	name = "Caves (event D)"
 	icon_state = "undercas_dyn_nopower"
 
-	requires_power = TRUE
 	unlimited_power = FALSE
 
 //dynamic lighting, lit, powered.
@@ -252,7 +253,6 @@ structure:
 	name = "Caves (event DL)"
 	icon_state = "undercas_dyn_lit_nopower"
 
-	requires_power = TRUE
 	unlimited_power = FALSE
 
 //-----------------------CEILING_DEEP_UNDERGROUND--------------------------
@@ -284,7 +284,8 @@ structure:
 /area/event/deep_underground/dynamic
 	name = "Deep underground (event PD)"
 	icon_state = "deep_dyn"
-
+	requires_power = TRUE
+	unlimited_power = TRUE
 	lighting_use_dynamic = TRUE
 
 //no dynamic lighting, unpowered.

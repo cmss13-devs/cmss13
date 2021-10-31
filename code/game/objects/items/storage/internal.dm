@@ -138,12 +138,12 @@
 	..()
 	master_object.on_pocket_close(content_watchers)
 
-/obj/item/storage/internal/handle_item_insertion(obj/item/W as obj, prevent_warning = 0)
-	. = ..()
+/obj/item/storage/internal/_item_insertion(obj/item/W as obj, prevent_warning = 0)
+	..()
 	master_object.on_pocket_insertion()
 
-/obj/item/storage/internal/remove_from_storage(obj/item/W as obj, atom/new_location)
-	. = ..()
+/obj/item/storage/internal/_item_removal(obj/item/W as obj, atom/new_location)
+	..()
 	master_object.on_pocket_removal()
 
 //things to do when the obj's internal pocket is accessed. Passes content_watchers for easier checks.

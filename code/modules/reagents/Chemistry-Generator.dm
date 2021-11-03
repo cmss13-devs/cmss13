@@ -197,17 +197,6 @@
 		if(prob(20 + 2*gen_tier))
 			overdose_critical += 5
 
-	//Metabolism
-	var/direction = rand(0,1) //the direction we deviate from 0.2
-	for(var/i=1;i<=rand(1, 4 + (gen_tier - 1));i++) //min of 0.01 to max 0.4 (neuraline), lower level chems have lower ranges
-		if(prob(50 + 5 * gen_tier)) //Deviating from 0.2 gets exponentially more rare, deviation scales with chem level
-			if(direction)
-				custom_metabolism += 0.025
-			else
-				custom_metabolism -= 0.025
-				if(custom_metabolism<0.01)
-					custom_metabolism = 0.01
-
 	//Color
 	color = text("#[][][]",num2hex(rand(0,255)),num2hex(rand(0,255)),num2hex(rand(0,255)))
 	burncolor = color
@@ -402,15 +391,6 @@
 		else if(P == PROPERTY_EXPLOSIVE)
 			info += "<I>WARNING: Mixing too much at a time can cause spontanous explosion! Do not mix more than the OD threshold!</I>"
 	description = info
-
-/datum/reagent/proc/calculate_gen_tier(var/value)
-	gen_tier = min(max(round(value / 4 - 1), 1), 4)
-
-/datum/reagent/proc/calculate_value()
-	var/value = 0
-	for(var/datum/chem_property/P in properties)
-		value += P.value * P.level
-	return max(value, 3)
 
 /datum/reagent/proc/generate_assoc_recipe(var/list/complexity)
 	var/datum/chemical_reaction/generated/C = new /datum/chemical_reaction/generated

@@ -641,8 +641,6 @@
 
 /obj/item/paper/research_notes/good/Initialize()
 	var/list/L = list("T3", "T4")
-	if(length(chemical_gen_classes_list["omega"]))//If we have chems from the previous round we can pick from the omega list
-		L += "omega"
 	tier = pick(L)
 	. = ..()
 

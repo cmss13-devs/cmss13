@@ -72,7 +72,6 @@
 		var/datum/reagent/D = new path()
 		D.save_chemclass()
 		chemical_reagents_list[D.id] = D
-	chemical_data.initialize_saved_chem_data() //load and initialize chems that have been saved to DB
 
 	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 	// It is filtered into multiple lists within a list.

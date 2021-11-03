@@ -153,6 +153,9 @@
 		if(report)
 			report.read_paper(user)
 	else if(href_list["print"])
+		if(!photocopier)
+			to_chat(user, SPAN_WARNING("ERROR: no linked printer found."))
+			return
 		if(photocopier.toner)
 			photocopier.toner = max(0, photocopier.toner - 1)
 			var/obj/item/paper/research_report/printing = new /obj/item/paper/research_report/(photocopier.loc)
@@ -164,34 +167,10 @@
 				printing.completed = report.completed
 		else
 			to_chat(usr, SPAN_WARNING("Printer toner is empty."))
-	else if(href_list["transmit"])
-		var/obj/item/paper/research_report/report = chemical_data.research_documents[href_list["print_type"]][href_list["print_title"]]
-		if(!report)
-			to_chat(usr, SPAN_WARNING("Report data corrupted. Unable to transmit."))
-			return
-		var/datum/reagent/R = report.data
-		if(!R || !R.properties)
-			to_chat(usr, SPAN_WARNING("Report contains no chemical data or chemical contains no known properties. Transmission cancelled."))
-			return
-		if(R.chemclass == CHEM_CLASS_SPECIAL || R.chemclass == CHEM_CLASS_NONE)
-			to_chat(usr, SPAN_WARNING("Chemical complexity above transmission data threshold. Transmission cancelled."))
-			return
-		for(var/datum/chem_property/P in R.properties)
-			if(P.level > chemical_data.clearance_level + 3) // limited to level 4 properties at CL 1, increasing by 1 for each level obtained
-				to_chat(usr, SPAN_WARNING("Chemical complexity above clearance level's data transmission threshold. Transmission cancelled."))
-				return
-		var/transmission_cost = R.calculate_value()
-		if(alert(usr,"This will transmit the data regarding [R.name] to the WY central database, so that other research labs can continue the research. The complexity of this chemical will cost [transmission_cost] credits to transmit. Confirm transmission?","Confirm Data Transmission","Confirm","No") != "Confirm")
-			return
-		if(transmission_cost > chemical_data.rsc_credits)
-			to_chat(usr, SPAN_WARNING("Insufficient funds."))
-			return
-		if(chemical_data.transmit_chem_data(R))
-			chemical_data.update_credits(transmission_cost * -1)
-			to_chat(usr, SPAN_NOTICE("Data for [R.name] has been transmitted."))
-		else
-			to_chat(usr, SPAN_WARNING("Error during transmission."))
 	else if(href_list["broker_clearance"])
+		if(!photocopier)
+			to_chat(user, SPAN_WARNING("ERROR: no linked printer found."))
+			return
 		if(alert(usr,"The CL can swipe their ID card on the console to increase clearance for free, given enough DEFCON. Are you sure you want to spend research credits to increase the clearance immediately?","Warning","Yes","No") != "Yes")
 			return
 		if(chemical_data.clearance_level < 5)
@@ -220,6 +199,9 @@
 		else
 			to_chat(usr, SPAN_WARNING("Higher authorization is required to increase the clearance level further."))
 	else if(href_list["purchase_document"])
+		if(!photocopier)
+			to_chat(user, SPAN_WARNING("ERROR: no linked printer found."))
+			return
 		var/purchase_tier = text2num(href_list["purchase_document"])
 		if(purchase_tier < 0 || purchase_tier > 5)
 			return

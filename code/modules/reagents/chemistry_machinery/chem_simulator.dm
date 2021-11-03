@@ -396,7 +396,7 @@
 	var/only_positive = TRUE
 	if(mode == MODE_CREATE)
 		for(var/datum/chem_property/P in chemical_data.research_property_data)
-			property_costs[P.name] = P.value
+			property_costs[P.name] = max(abs(P.value), 1)
 	else if(target && target.data && target.completed)
 		for(var/datum/chem_property/P in target.data.properties)
 			if(!isPositiveProperty(P))
@@ -431,18 +431,11 @@
 	var/slots_used = LAZYLEN(creation_template)
 	creation_cost += slots_used * 3 - 6 //3 cost for each slot after the 2nd
 	min_creation_cost += slots_used - 2
-	var/has_combustibles = FALSE
 	for(var/datum/chem_property/P in creation_template)
-		creation_cost += P.value * P.level
+		creation_cost += max(abs(P.value), 1) * P.level
 		if(P.level > 5) // a penalty is added at each level above 5 (+1 at 6, +2 at 7, +4 at 8, +5 at 9, +7 at 10)
 			creation_cost += P.level - 6 + n_ceil((P.level - 5) / 2)
 			min_creation_cost += max(P.level - 6, 0) // Min creation cost scales linearly for each property at level 7+
-		if(P.category & PROPERTY_TYPE_COMBUSTIBLE)
-			has_combustibles = TRUE
-	if(has_combustibles) //negative values are not applied in templates that use combustibles unless those properties are also of the combustible category
-		for(var/datum/chem_property/P in creation_template)
-			if(P.value < 0 && !(P.category & PROPERTY_TYPE_COMBUSTIBLE))
-				creation_cost += P.value * P.level * -1 //revert
 	creation_cost += ((new_od_level - 10) / 5) * 3 //3 cost for every 5 units above 10
 	for(var/rarity in creation_complexity)
 		switch(rarity)
@@ -461,15 +454,10 @@
 		new_od_level = creation_od_level
 		return
 	new_od_level = max(target.data.overdose, 1)
-	if(isNeutralProperty(target_property)) //unchanged
-		return
-	if((mode == MODE_AMPLIFY && isPositiveProperty(target_property)) || (mode == MODE_SUPPRESS && isNegativeProperty(target_property)) || (mode == MODE_RELATE && isPositiveProperty(target_property)))
-		if(new_od_level <= 5)
-			new_od_level = max(new_od_level - 1, 1)
-		else
-			new_od_level = max(5, new_od_level - 5)
+	if(new_od_level <= 5)
+		new_od_level = max(new_od_level - 1, 1)
 	else
-		new_od_level += 5
+		new_od_level = max(new_od_level - 5, 5)
 
 /obj/structure/machinery/chem_simulator/proc/prepare_recipe_options()
 	var/datum/chemical_reaction/generated/O = chemical_reactions_list[target.data.id]

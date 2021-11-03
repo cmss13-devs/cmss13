@@ -39,7 +39,7 @@
 /obj/item/storage/backpack/marine/smartpack/update_icon(mob/user)
 	overlays.Cut()
 
-	if(changed_icon)
+/*	if(changed_icon)
 		icon_state = original_icon
 		item_state = original_icon
 		changed_icon = FALSE
@@ -52,7 +52,7 @@
 		icon_state = icon_state+"_p"
 		item_state = icon_state+"_p"
 		changed_icon = TRUE
-
+*/
 	if(light_state)
 		overlays += "+lamp_on"
 	else
@@ -274,6 +274,15 @@
 /obj/item/storage/backpack/marine/smartpack/tan
 	item_state = "t_smartpack"
 	icon_state = "t_smartpack"
+
+/obj/item/storage/backpack/marine/smartpack/black
+	item_state = "b_smartpack"
+	icon_state = "b_smartpack"
+
+/obj/item/storage/backpack/marine/smartpack/white
+	item_state = "w_smartpack"
+	icon_state = "w_smartpack"
+
 
 #undef BACKPACK_LIGHT_LEVEL
 #undef PROTECTIVE_COST

@@ -81,6 +81,7 @@
 	cause_data = create_cause_data(initial(name), user)
 	plant_target = target
 	icon_state = overlay_image
+	layer = BELOW_MOB_LAYER
 
 	if(!istype(target, /obj/structure/window) && !istype(target, /turf/closed))
 		user.drop_held_item()

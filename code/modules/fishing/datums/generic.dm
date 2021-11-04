@@ -1,18 +1,18 @@
 GLOBAL_LIST_EMPTY(fishing_loot_tables)
 
 /datum/fish_loot_table
-	var/common_fishable_atoms = list(
+	var/list/common_fishable_atoms = list(
 		/obj/item/clothing/shoes/leather,
 		/obj/item/clothing/shoes/marine,
 	)
-	var/uncommon_fishable_atoms = list(
+	var/list/uncommon_fishable_atoms = list(
 		/obj/item/cell/high,
 		/obj/item/device/multitool
 	)
-	var/rare_fishable_atoms = list(
+	var/list/rare_fishable_atoms = list(
 		/obj/item/reagent_container/food/snacks/packaged_burrito
 	)
-	var/ultra_rare_fishable_atoms = list(
+	var/list/ultra_rare_fishable_atoms = list(
 		/obj/item/card/data/clown,
 		/obj/item/reagent_container/food/snacks/clownburger,
 		/obj/item/reagent_container/pill/ultrazine/unmarked

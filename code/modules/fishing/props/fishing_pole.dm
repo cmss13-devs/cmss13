@@ -14,8 +14,9 @@
 	var/fishing_failure = 'sound/items/jetpack_beep.ogg'
 	var/fishing_event = 'sound/items/component_pickup.ogg'
 
-	var/common_weight = 80//we can instance these on a per object basis to make 'lucky' rods
-	var/uncommon_weight = 40//tbh we should probably just load a datum in instead and that'd allow us to have unique loot tables and weights per rod, per turf, per area, assuming I can actually code in line casting
+	// these can be modified per-rod to make one luckier than the others
+	var/common_weight = 80
+	var/uncommon_weight = 40
 	var/rare_weight = 5
 	var/ultra_rare_weight = 1
 

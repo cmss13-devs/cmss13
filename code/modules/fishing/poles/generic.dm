@@ -12,6 +12,11 @@
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 
+	var/common_weight = 80
+	var/uncommon_weight = 40
+	var/rare_weight = 5
+	var/ultra_rare_weight = 1
+
 	var/deploy_type = /obj/structure/prop/fishing/pole_interactive
 	var/obj/item/fish_bait/loaded_bait
 
@@ -56,18 +61,31 @@
 
 /obj/item/fishing_pole/proc/transfer_to_pole(var/obj/structure/prop/fishing/pole_interactive/pole, var/mob/user)
 	pole.dir = user.dir
+
+	pole.common_weight = common_weight
+	pole.uncommon_weight = uncommon_weight
+	pole.rare_weight = rare_weight
+	pole.ultra_rare_weight = ultra_rare_weight
+
 	if(loaded_bait)
 		pole.loaded_bait = loaded_bait
 		loaded_bait.forceMove(pole)
 		loaded_bait = null
+
 	transfer_fingerprints_to(pole)
 	qdel(src)
 
 /obj/item/fishing_pole/proc/transfer_to_user(var/obj/structure/prop/fishing/pole_interactive/parent, var/mob/user)
+	common_weight = parent.common_weight
+	uncommon_weight = parent.uncommon_weight
+	rare_weight = parent.rare_weight
+	ultra_rare_weight = parent.ultra_rare_weight
+
 	if(parent.loaded_bait)
 		loaded_bait = parent.loaded_bait
 		parent.loaded_bait.forceMove(src)
 		parent.loaded_bait = null
+
 	user.put_in_hands(src)
 	parent.transfer_fingerprints_to(src)
 	qdel(parent)

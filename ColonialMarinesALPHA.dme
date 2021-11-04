@@ -1499,6 +1499,7 @@
 #include "code\modules\fishing\bait\generic.dm"
 #include "code\modules\fishing\datums\generic.dm"
 #include "code\modules\fishing\datums\helpers.dm"
+#include "code\modules\fishing\poles\generic.dm"
 #include "code\modules\fishing\props\fishing_line.dm"
 #include "code\modules\fishing\props\fishing_pole.dm"
 #include "code\modules\flufftext\Dreaming.dm"

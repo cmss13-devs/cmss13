@@ -22,6 +22,7 @@
 	var/fish_check_progress = FALSE
 	var/waiting_for_fish = FALSE
 
+	var/pole_type = /obj/item/fishing_pole
 	var/obj/item/fish_bait/loaded_bait
 
 /obj/structure/prop/fishing/pole_interactive/Destroy()
@@ -46,6 +47,16 @@
 			return
 	return ..()
 
+/obj/structure/prop/fishing/pole_interactive/MouseDrop(obj/over_object)
+	if(CAN_PICKUP(usr, src) && over_object == usr)
+		var/mob/user = over_object
+		if(waiting_for_fish || fish_check_progress)
+			to_chat(user, SPAN_WARNING("It is EXTREMELY disrespectful to pack up a rod while someone's fishing!"))
+			return
+		user.visible_message(SPAN_NOTICE("[user] starts packing up \the [src]..."), SPAN_NOTICE("You start packing up \the [src]..."))
+		if(do_after(user, 3 SECONDS))
+			var/obj/item/fishing_pole/FP = new pole_type(loc)
+			FP.transfer_to_user(src, user)
 
 /obj/structure/prop/fishing/pole_interactive/attack_hand(mob/user)
 	if(waiting_for_fish)
@@ -75,7 +86,7 @@
 	if(do_after(user, rand(0.5 SECONDS, 2 SECONDS)) && fish_check_progress)
 		fish_check_progress = FALSE
 		playsound(src, fishing_failure, 50, 1)
-		visible_message(SPAN_NOTICE("[user] fails to fish up anything."), SPAN_NOTICE("You don't seem to catch much of anything..."))
+		user.visible_message(SPAN_NOTICE("[user] fails to fish up anything."), SPAN_NOTICE("You don't seem to catch much of anything..."))
 		remove_filter("fish_ready")
 
 /obj/structure/prop/fishing/pole_interactive/proc/spawn_loot(var/mob/M)
@@ -89,7 +100,7 @@
 
 	caught_item.throw_atom(M.loc, 2, 2, spin = TRUE, launch_type = HIGH_LAUNCH)
 	playsound(src, fishing_success, 50, 1)
-	visible_message(SPAN_NOTICE("[M] fishes up \the [caught_item]!"), SPAN_NOTICE("You fish up \the [caught_item]!"))
+	M.visible_message(SPAN_NOTICE("[M] fishes up \the [caught_item]!"), SPAN_NOTICE("You fish up \the [caught_item]!"))
 
 	QDEL_NULL(loaded_bait)
 

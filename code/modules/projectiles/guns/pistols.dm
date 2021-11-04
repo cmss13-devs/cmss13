@@ -179,7 +179,7 @@
 
 
 /obj/item/weapon/gun/pistol/heavy/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 31, "muzzle_y" = 21,"rail_x" = 9, "rail_y" = 23, "under_x" = 20, "under_y" = 17, "stock_x" = 20, "stock_y" = 17)
+	attachable_offset = list("muzzle_x" = 30, "muzzle_y" = 20,"rail_x" = 17, "rail_y" = 21, "under_x" = 20, "under_y" = 17, "stock_x" = 20, "stock_y" = 17)
 
 
 /obj/item/weapon/gun/pistol/heavy/set_gun_config_values()
@@ -196,7 +196,7 @@
 
 /obj/item/weapon/gun/pistol/heavy/co
 	name = "polished vintage Desert Eagle"
-	desc = "A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. Its rosewood grips signify this much: it's hella classy."
+	desc = "The Desert Eagle. Expensive, heavy, and unwieldy, yet immensely powerful. Sporting rosewood grips and a monstrous amount of kick, it's a symbol of power more than anything. But it can kill a bear in its tracks, and you look like a badass in doing so."
 	icon_state = "c_deagle"
 	item_state = "c_deagle"
 	base_gun_icon = "c_deagle"
@@ -204,7 +204,7 @@
 
 /obj/item/weapon/gun/pistol/heavy/co/gold
 	name = "golden vintage Desert Eagle"
-	desc = "A bulky 50 caliber pistol with a serious kick, probably taken from some museum somewhere. Its frame is anodized in gold with rosewood grips. Pretentious and flashy? Yes, but that's the point."
+	desc = "A Desert Eagle anodized in gold and adorned with rosewood grips. The living definition of ostentatious, it's flashy, unwieldy, tremendously heavy, and kicks like a mule. But as a symbol of power, there's nothing like it."
 	icon_state = "g_deagle"
 	item_state = "g_deagle"
 	base_gun_icon = "g_deagle"

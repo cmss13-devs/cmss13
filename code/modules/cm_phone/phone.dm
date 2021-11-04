@@ -28,6 +28,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	var/base_icon_state
 
+	//Time in seconds before the phone automatically disengages
+	var/timeout = 30
+
 /obj/structure/transmitter/hidden
 	callable = FALSE
 
@@ -152,6 +155,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
 	playsound(get_turf(user), "rtb_handset")
+	addtimer(CALLBACK(src, .proc/reset_call), timeout * 10)
 
 	START_PROCESSING(SSobj, src)
 	START_PROCESSING(SSobj, T)
@@ -235,6 +239,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		if(attached_to.loc == src)
 			if(next_ring < world.time)
 				playsound(loc, 'sound/machines/telephone/telephone_ring.ogg', 75)
+				visible_message(SPAN_WARNING("[src] rings vigorously!"))
 				next_ring = world.time + 3 SECONDS
 
 	else if(calling)
@@ -247,6 +252,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 		if(P && attached_to.loc == src && P.loc == T && next_ring < world.time)
 			playsound(get_turf(attached_to), 'sound/machines/telephone/telephone_ring.ogg', 20, FALSE, 14)
+			visible_message(SPAN_WARNING("[src] rings vigorously!"))
 			next_ring = world.time + 3 SECONDS
 
 	else

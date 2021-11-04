@@ -739,7 +739,7 @@
 		ammo = GLOB.ammo_list[magazine.default_ammo]
 	if(!magazine.caliber)
 		to_chat(user, "Something went horribly wrong. Ahelp the following: ERROR CODE A2: null calibre while reloading.")
-		log_debug("ERROR CODE A2: null calibre while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")	
+		log_debug("ERROR CODE A2: null calibre while reloading. User: <b>[user]</b> Weapon: <b>[src]</b> Magazine: <b>[magazine]</b>")
 		caliber = "bugged calibre"
 	else
 		caliber = magazine.caliber
@@ -900,7 +900,8 @@ User can be passed as null, (a gun reloading itself for instance), so we need to
 	else if(user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
 		if (world.time % 3) // Limits how often this message pops up, saw this somewhere else and thought it was clever
 			//Absolutely SCREAM this at people so they don't get killed by it
-			to_chat(user, SPAN_DANGER("Help intent safety is on. Switch to another intent to fire your weapon."))
+			to_chat(user, SPAN_WARNING("Help intent safety is on! Switch to another intent to fire your weapon."))
+			playsound(loc,'sound/weapons/gun_empty.ogg', 25, 1)
 		return FALSE
 	else if(user.gun_mode && !(A in target))
 		PreFire(A,user,params) //They're using the new gun system, locate what they're aiming at.

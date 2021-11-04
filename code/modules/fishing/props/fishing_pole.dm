@@ -55,7 +55,7 @@
 			to_chat(user, SPAN_WARNING("It is EXTREMELY disrespectful to pack up a rod while someone's fishing!"))
 			return
 		user.visible_message(SPAN_NOTICE("[user] starts packing up \the [src]..."), SPAN_NOTICE("You start packing up \the [src]..."))
-		if(do_after(user, 3 SECONDS))
+		if(do_after(user, 3 SECONDS, show_busy_icon = BUSY_ICON_BUILD))
 			var/obj/item/fishing_pole/FP = new pole_type(loc)
 			FP.transfer_to_user(src, user)
 
@@ -94,9 +94,8 @@
 	var/turf/T = get_step(get_step(src, dir), dir)//at least 2 tiles away, also add a temp_visual water splash when those are merged into the codebase
 	var/area/A = get_area(T)
 
-	update_weights()
 	var/datum/fish_loot_table/area_loot_table = get_fishing_loot_datum(A.fishing_loot)
-	var/type_to_spawn = area_loot_table.return_caught_fish(common_weight, uncommon_weight, rare_weight, ultra_rare_weight)
+	var/type_to_spawn = area_loot_table.return_caught_fish(get_common_weight(), get_uncommon_weight(), get_rare_weight(), get_ultra_rare_weight())
 	var/obj/item/caught_item = new type_to_spawn(T)
 
 	caught_item.throw_atom(M.loc, 2, 2, spin = TRUE, launch_type = HIGH_LAUNCH)
@@ -105,14 +104,22 @@
 
 	QDEL_NULL(loaded_bait)
 
-/obj/structure/prop/fishing/pole_interactive/proc/update_weights()
-	common_weight = initial(common_weight)
-	uncommon_weight = initial(uncommon_weight)
-	rare_weight = initial(rare_weight)
-	ultra_rare_weight = initial(ultra_rare_weight)
-
+/obj/structure/prop/fishing/pole_interactive/proc/get_common_weight()
+	. = common_weight
 	if(loaded_bait)
-		common_weight += loaded_bait.common_mod
-		uncommon_weight += loaded_bait.uncommon_mod
-		rare_weight += loaded_bait.rare_mod
-		ultra_rare_weight += loaded_bait.ultra_rare_mod
+		. += loaded_bait.common_mod
+
+/obj/structure/prop/fishing/pole_interactive/proc/get_uncommon_weight()
+	. = uncommon_weight
+	if(loaded_bait)
+		. += loaded_bait.uncommon_mod
+
+/obj/structure/prop/fishing/pole_interactive/proc/get_rare_weight()
+	. = rare_weight
+	if(loaded_bait)
+		. += loaded_bait.rare_mod
+
+/obj/structure/prop/fishing/pole_interactive/proc/get_ultra_rare_weight()
+	. = ultra_rare_weight
+	if(loaded_bait)
+		. += loaded_bait.ultra_rare_mod

@@ -2,8 +2,9 @@
 	Apply damage to a mob with their armour considered.
 	If no def_zone is supplied, one will be picked at random.
 */
-/mob/living/proc/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
-	apply_damage(damage, damage_type, def_zone)
+/mob/living/proc/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null,
+	var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0, int_dmg_multiplier = 1)
+	apply_damage(damage, damage_type, def_zone, int_dmg_multiplier = int_dmg_multiplier)
 	return damage
 
 /*
@@ -15,7 +16,7 @@
 	Returns
 	standard 0 if fail
 */
-/mob/living/proc/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/used_weapon = null, var/sharp = 0, var/edge = 0, var/force = FALSE)
+/mob/living/proc/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, var/used_weapon = null, int_dmg_multiplier = 1, var/force = FALSE)
 	if(!damage)
 		return FALSE
 

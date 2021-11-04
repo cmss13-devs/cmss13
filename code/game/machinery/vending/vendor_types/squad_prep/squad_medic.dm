@@ -5,11 +5,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Essential Medic Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("FIELD SUPPLIES", 0, null, null, null),
-		list("Adv Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_RECOMMENDED),
-		list("Adv Trauma Kit", 2, /obj/item/stack/medical/advanced/bruise_pack, null, VENDOR_ITEM_RECOMMENDED),
+		list("Adv Burn Kit", 2, /obj/item/stack/medical/healing/burnkit, null, VENDOR_ITEM_RECOMMENDED),
+		list("Adv Trauma Kit", 2, /obj/item/stack/medical/healing/traumakit, null, VENDOR_ITEM_RECOMMENDED),
 		list("Advanced Firstaid Kit", 12, /obj/item/storage/firstaid/adv, null, VENDOR_ITEM_RECOMMENDED),
 		list("Firstaid Kit", 6, /obj/item/storage/firstaid/regular, null, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_RECOMMENDED),
+		list("Medical Tourniquets", 1, /obj/item/stack/medical/tourniquet, null, VENDOR_ITEM_RECOMMENDED),
 
 		list("AUTOINJECTORS", 0, null, null, null),
 		list("Autoinjector (Bicaridine)", 1, /obj/item/reagent_container/hypospray/autoinjector/bicaridine, null, VENDOR_ITEM_REGULAR),

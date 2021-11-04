@@ -1,13 +1,6 @@
 
 // Takes care of organ & limb related updates, such as broken and missing limbs
 /mob/living/carbon/human/proc/handle_organs()
-
-	last_dam = getBruteLoss() + getFireLoss() + getToxLoss()
-
-	// Processing internal organs is pretty cheap, do that first.
-	for(var/datum/internal_organ/I as anything in internal_organs)
-		I.process()
-
 	for(var/obj/limb/E as anything in limbs_to_process)
 		if(!E)
 			continue
@@ -17,15 +10,7 @@
 		else
 			E.process()
 
-			if(!lying && world.time - l_move_time < 15)
-			// Moving around with fractured ribs won't do you any good
-				if(E.is_broken() && E.internal_organs && prob(15))
-					var/datum/internal_organ/I = pick(E.internal_organs)
-					custom_pain("You feel broken bones moving in your [E.display_name]!", 1)
-					var/damage = rand(3,5)
-					I.take_damage(damage)
-					pain.apply_pain(damage * PAIN_ORGAN_DAMAGE_MULTIPLIER)
-
+	/*Knockdown if broken limb. needs to be compared to foolosopher's thing -Vanagandr
 	if(!lying && !buckled && prob(2))
 		var/left_leg_crippled = FALSE
 		var/right_leg_crippled = FALSE
@@ -52,4 +37,4 @@
 			if(pain.feels_pain)
 				emote("pain")
 			custom_pain("You can't stand on broken legs!", 1)
-			KnockDown(5)
+			KnockDown(5)*/

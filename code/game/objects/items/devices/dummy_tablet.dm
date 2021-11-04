@@ -150,7 +150,6 @@
                 return
             if(limb.status & LIMB_DESTROYED)
                 return
-            limb.fracture(100)
         if ("blood_loss")
             var/amount = 0
             amount = input(usr, "Amount?") as num|null
@@ -168,9 +167,8 @@
                 return
             if(linked_dummy.get_limb(selection).status & LIMB_DESTROYED)
                 return
-            var/datum/wound/internal_bleeding/I = new (0)//<- copied from limbs.dm, doesn't have any issues with cybernetics
-            limb.add_bleeding(I, TRUE)
-            limb.wounds += I
+            //var/datum/wound/internal_bleeding/I = new (0)//<- copied from limbs.dm, doesn't have any issues with cybernetics
+
         if ("shrapnel")
             var/selection = select_body_part()
             if (!selection)

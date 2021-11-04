@@ -27,7 +27,7 @@
 	L.KnockDown(2)
 	X.visible_message(SPAN_XENODANGER("[X] overruns [H], brutally trampling them underfoot!"), SPAN_XENODANGER("You brutalize [H] as you crush them underfoot!"))
 
-	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE)
+	H.apply_armoured_damage(get_xeno_damage_slash(H, direct_hit_damage), ARMOR_MELEE, BRUTE, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP) //Blunt but heavy.
 	xeno_throw_human(H, X, X.dir, 3)
 
 	H.last_damage_data = create_cause_data(X.caste_type, X)
@@ -90,7 +90,7 @@
 		if(H.mob_size < MOB_SIZE_BIG)
 			H.KnockDown(get_xeno_stun_duration(H, 0.2))
 
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP) //Blunt but heavy.
 		H.last_damage_data = create_cause_data(X.caste_type, X)
 
 	for (var/mob/living/carbon/H in orange(distance, get_turf(X)))

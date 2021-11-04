@@ -11,8 +11,7 @@
 	throw_range = 5
 
 	attack_verb = list("attacked", "slapped", "whacked")
-	organ_type = /datum/internal_organ/brain
-	organ_tag = "brain"
+	organ_data_type = /datum/internal_organ/brain
 
 	var/mob/living/brain/brainmob = null
 
@@ -46,11 +45,10 @@
 	else
 		to_chat(user, "This one seems particularly lifeless. Perhaps it will regain some of its luster later..")
 
+/*
 /obj/item/organ/brain/removed(var/mob/living/target,var/mob/living/user)
 
 	..()
-
-
 
 	var/mob/living/carbon/human/H = target
 	var/obj/item/organ/brain/B = src
@@ -68,3 +66,4 @@
 		else
 			target.key = brainmob.key
 			if(target.client) target.client.change_view(world_view_size)
+*/

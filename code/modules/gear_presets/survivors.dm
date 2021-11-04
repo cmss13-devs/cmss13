@@ -179,6 +179,14 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
 
+/datum/equipment_preset/survivor/doctor/solaris
+	name = "Survivor - Solaris Doctor"
+	assignment = "Solaris Doctor"
+
+/datum/equipment_preset/survivor/doctor/solaris/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/medical/purple(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/surgery/purple(H), WEAR_HEAD)
+
 	..()
 
 /datum/equipment_preset/survivor/doctor/trijent

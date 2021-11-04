@@ -18185,7 +18185,7 @@
 	pixel_x = -14;
 	pixel_y = 14
 	},
-/obj/item/stack/medical/advanced/ointment/upgraded{
+/obj/item/stack/medical/healing/burnkit/upgraded{
 	pixel_x = -7;
 	pixel_y = 3
 	},
@@ -26170,11 +26170,11 @@
 /area/shiva/interior/caves/cp_camp)
 "wjK" = (
 /obj/structure/surface/table,
-/obj/item/stack/medical/advanced/bruise_pack/upgraded{
+/obj/item/stack/medical/healing/traumakit/upgraded{
 	pixel_x = -3;
 	pixel_y = 14
 	},
-/obj/item/stack/medical/advanced/ointment/upgraded{
+/obj/item/stack/medical/healing/burnkit/upgraded{
 	pixel_x = 4;
 	pixel_y = 5
 	},

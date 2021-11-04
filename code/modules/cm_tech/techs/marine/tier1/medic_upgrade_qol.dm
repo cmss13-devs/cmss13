@@ -58,8 +58,8 @@
 
 /obj/item/storage/box/combat_zone_support_package/Initialize()
 	. = ..()
-	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
-	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/healing/traumakit/upgraded(src)
+	new /obj/item/stack/medical/healing/burnkit/upgraded(src)
 	new /obj/item/stack/medical/splint/nano(src)
 	new /obj/item/device/defibrillator/upgraded(src)
 
@@ -74,10 +74,10 @@
 
 /obj/item/storage/box/medic_upgraded_kits/Initialize()
 	. = ..()
-	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
-	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/healing/traumakit/upgraded(src)
+	new /obj/item/stack/medical/healing/burnkit/upgraded(src)
 
-/obj/item/stack/medical/advanced/ointment/upgraded
+/obj/item/stack/medical/healing/burnkit/upgraded
 	name = "upgraded burn kit"
 	singular_name = "upgraded burn kit"
 	stack_id = "upgraded advanced burn kit"
@@ -87,12 +87,7 @@
 
 	max_amount = 10
 	amount = 10
-
-/obj/item/stack/medical/advanced/ointment/upgraded/Initialize(mapload, ...)
-	. = ..()
-	heal_burn = initial(heal_burn) * 3 // 3x stronger
-
-/obj/item/stack/medical/advanced/bruise_pack/upgraded
+/obj/item/stack/medical/healing/traumakit/upgraded
 	name = "upgraded trauma kit"
 	singular_name = "upgraded trauma kit"
 	stack_id = "upgraded advanced trauma kit"
@@ -102,11 +97,6 @@
 
 	max_amount = 10
 	amount = 10
-
-/obj/item/stack/medical/advanced/bruise_pack/upgraded/Initialize(mapload, ...)
-	. = ..()
-	heal_brute = initial(heal_brute) * 3 // 3x stronger
-
 /obj/item/stack/medical/splint/nano
 	name = "nano splints"
 	singular_name = "nano splint"
@@ -126,7 +116,6 @@
 	desc = "An advanced rechargeable defibrillator using induction to deliver shocks through metallic objects, such as armor, and does so with much greater efficiency than the standard variant."
 
 	blocked_by_suit = FALSE
-	heart_damage_to_deal = 0
 	damage_heal_threshold = 35
 
 /obj/item/ammo_magazine/internal/pillgun

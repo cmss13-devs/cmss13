@@ -59,6 +59,9 @@
 		var/contained = english_list(reagents_in_pill)
 		msg_admin_niche("[key_name(user)] swallowed [src] (REAGENTS: [contained]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 		M.drop_inv_item_on_ground(src) //icon update
+
+		SEND_SIGNAL(M, COMSIG_MOB_INGESTION, M, src)
+
 		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)
 			reagents.trans_to_ingest(M, reagents.total_volume)
@@ -96,6 +99,8 @@
 		M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been fed [src.name] by [key_name(user)] Reagents: [rgt_list_text]</font>")
 		user.attack_log += text("\[[time_stamp()]\] <font color='red'>Fed [M.name] by [key_name(M)] Reagents: [rgt_list_text]</font>")
 		msg_admin_attack("[key_name(user)] fed [key_name(M)] with [src.name] (REAGENTS: [rgt_list_text]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+
+		SEND_SIGNAL(M, COMSIG_MOB_INGESTION, M, src)
 
 		if(reagents && reagents.total_volume)
 			reagents.set_source_mob(user)

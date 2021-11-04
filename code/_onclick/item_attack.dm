@@ -43,7 +43,10 @@
 	if(flags_item & NOBLUDGEON)
 		return FALSE
 
-	if(SEND_SIGNAL(M, COMSIG_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK)
+	if(SEND_SIGNAL(M, COMSIG_MOB_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK)
+		return
+
+	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK, M, user) & COMPONENT_CANCEL_ATTACK)
 		return FALSE
 
 	if(ishuman(user))
@@ -90,10 +93,13 @@
 
 		user.animation_attack_on(M)
 		user.flick_attack_overlay(M, "punch")
+
+		var/weapon_blade = is_sharp(src) + has_edge(src) //Using this instead of sharp + edge because we want a boolean sharp vs not sharp, not the exact value of sharpness.
+
 		if(isXeno(M))
 			var/mob/living/carbon/Xenomorph/X = M
-			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
-			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, 20, 0, 0, X.armor_integrity)
+			power = armor_damage_reduction(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, weapon_blade * ARMOR_SHARP_PENETRATION, 0, 0, X.armor_integrity)
+			var/armor_punch = armor_break_calculation(GLOB.xeno_melee, power, X.armor_deflection + X.armor_deflection_buff, weapon_blade * ARMOR_SHARP_PENETRATION, 0, 0, X.armor_integrity)
 			X.apply_armorbreak(armor_punch)
 		if(hitsound)
 			playsound(loc, hitsound, 25, 1)

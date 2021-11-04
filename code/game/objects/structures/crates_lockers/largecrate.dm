@@ -172,8 +172,8 @@
 				/obj/item/stack/medical/ointment,
 				/obj/item/stack/medical/splint,
 				/obj/item/device/healthanalyzer,
-				/obj/item/stack/medical/advanced/ointment,
-				/obj/item/stack/medical/advanced/bruise_pack,
+				/obj/item/stack/medical/healing/burnkit,
+				/obj/item/stack/medical/healing/traumakit,
 				/obj/item/tool/extinguisher/mini,
 				/obj/item/tool/shovel/etool,
 				/obj/item/tool/screwdriver,)

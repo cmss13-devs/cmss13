@@ -471,11 +471,11 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -712,11 +712,11 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -2748,18 +2748,18 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/ointment/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
-/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
 /turf/open/shuttle{
 	icon_state = "floor6"
 	},

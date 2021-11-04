@@ -4210,7 +4210,7 @@
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_3"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/predator,
+/obj/item/stack/medical/healing/traumakit/predator,
 /turf/open/gm/dirtgrassborder{
 	dir = 4;
 	icon_state = "grassdirt_corner"
@@ -6044,7 +6044,7 @@
 "aAA" = (
 /obj/structure/closet,
 /obj/item/clothing/shoes/laceup,
-/obj/item/stack/medical/advanced/ointment,
+/obj/item/stack/medical/healing/burnkit,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -6147,7 +6147,7 @@
 /obj/structure/closet,
 /obj/item/clothing/under/rank/scientist,
 /obj/structure/window/reinforced/tinted,
-/obj/item/stack/medical/advanced/bruise_pack,
+/obj/item/stack/medical/healing/traumakit,
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -6507,7 +6507,7 @@
 	},
 /area/lv624/lazarus/sleep_male)
 "aBW" = (
-/obj/item/stack/medical/advanced/bruise_pack,
+/obj/item/stack/medical/healing/traumakit,
 /turf/open/floor{
 	icon_state = "bluecorner"
 	},
@@ -6951,7 +6951,7 @@
 "aDx" = (
 /obj/structure/closet,
 /obj/item/clothing/under/blackskirt,
-/obj/item/stack/medical/advanced/ointment,
+/obj/item/stack/medical/healing/burnkit,
 /turf/open/floor{
 	dir = 9;
 	icon_state = "purple"
@@ -25678,7 +25678,6 @@ ane
 ane
 ane
 fEU
-oyx
 oyx
 aZa
 aYS

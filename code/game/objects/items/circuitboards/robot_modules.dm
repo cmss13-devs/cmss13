@@ -77,7 +77,7 @@
 /obj/item/circuitboard/robot_module/surgeon
 	name = "surgeon robot module"
 	stacktypes = list(
-		/obj/item/stack/medical/advanced/bruise_pack = 5,
+		/obj/item/stack/medical/healing/traumakit = 5,
 		/obj/item/stack/nanopaste = 5
 		)
 
@@ -97,7 +97,7 @@
 	src.modules += new /obj/item/tool/surgery/circular_saw(src)
 	src.modules += new /obj/item/tool/surgery/surgicaldrill(src)
 	src.modules += new /obj/item/tool/extinguisher/mini(src)
-	src.modules += new /obj/item/stack/medical/advanced/bruise_pack(src)
+	src.modules += new /obj/item/stack/medical/healing/traumakit(src)
 	src.modules += new /obj/item/stack/nanopaste(src)
 	src.modules += new /obj/item/tool/weldingtool/largetank(src)
 	src.modules += new /obj/item/tool/crowbar(src)
@@ -118,8 +118,9 @@
 	name = "medic robot module"
 	stacktypes = list(
 		/obj/item/stack/medical/ointment = 15,
-		/obj/item/stack/medical/advanced/bruise_pack = 15,
-		/obj/item/stack/medical/splint = 15
+		/obj/item/stack/medical/healing/traumakit = 15,
+		/obj/item/stack/medical/splint = 15,
+		/obj/item/stack/medical/tourniquet = 15
 		)
 
 /obj/item/circuitboard/robot_module/medic/Initialize()
@@ -131,8 +132,9 @@
 	src.modules += new /obj/item/device/reagent_scanner/adv(src)
 	src.modules += new /obj/item/roller_holder(src)
 	src.modules += new /obj/item/stack/medical/ointment(src)
-	src.modules += new /obj/item/stack/medical/advanced/bruise_pack(src)
+	src.modules += new /obj/item/stack/medical/healing/traumakit(src)
 	src.modules += new /obj/item/stack/medical/splint(src)
+	src.modules += new /obj/item/stack/medical/tourniquet(src)
 	src.modules += new /obj/item/reagent_container/borghypo(src)
 	src.modules += new /obj/item/reagent_container/glass/beaker/large(src)
 	src.modules += new /obj/item/reagent_container/robodropper(src)

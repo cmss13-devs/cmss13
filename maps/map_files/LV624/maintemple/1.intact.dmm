@@ -1586,10 +1586,10 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
+/obj/item/stack/medical/healing/traumakit/predator{
 	pixel_x = -7
 	},
-/obj/item/stack/medical/advanced/ointment/predator{
+/obj/item/stack/medical/healing/burnkit/predator{
 	pixel_x = 5
 	},
 /turf/open/floor/strata{

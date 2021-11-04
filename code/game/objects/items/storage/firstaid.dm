@@ -126,11 +126,11 @@
 
 /obj/item/storage/firstaid/adv/fill_preset_inventory()
 	new /obj/item/reagent_container/hypospray/autoinjector/tricord(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
 	new /obj/item/stack/medical/splint(src)
 
 /obj/item/storage/firstaid/adv/empty/fill_preset_inventory()

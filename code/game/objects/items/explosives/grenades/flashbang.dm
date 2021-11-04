@@ -114,7 +114,7 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-		if (E && E.damage >= E.min_bruised_damage)
+		if (E && E.damage >= E.min_malf_damage)
 			to_chat(M, SPAN_WARNING("Your eyes start to burn badly!"))
 			if(!no_damage)
 				if (E.damage >= E.min_broken_damage)
@@ -284,7 +284,7 @@
 			M.ear_damage += rand(1, 10)
 
 	var/datum/internal_organ/eyes/E = H.internal_organs_by_name["eyes"]
-	if(E && E.damage >= E.min_bruised_damage)
+	if(E && E.damage >= E.min_malf_damage)
 		to_chat(H, SPAN_WARNING("Your eyes start to burn badly!"))
 		if (E.damage >= E.min_broken_damage)
 			to_chat(H, SPAN_WARNING("You can't see anything!"))

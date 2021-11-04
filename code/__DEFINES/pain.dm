@@ -15,7 +15,8 @@
 #define PAIN_REDUCTION_FULL			80 //oxycodone, neuraline
 
 // Pain amount supplied by the action
-#define PAIN_BONE_BREAK 25
+#define PAIN_DISLOCATED_BREAK 10
+#define PAIN_BONE_BREAK 20
 #define PAIN_BONE_BREAK_SPLINTED 15
 #define PAIN_DELIMB 	40
 #define PAIN_ORGAN_DAMAGE_MULTIPLIER 2

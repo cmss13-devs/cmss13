@@ -1,4 +1,5 @@
-#define BICAOD_BLOOD_REDUCTION 0.67 //15 OD ticks to heal 1 blood loss
+#define BICAOD_BLOOD_REDUCTION 0.005
+#define IB_BLOOD_ACCUMULATION 0.055
 #define CRYO_BLOOD_REDUCTION 0.67
 #define THWEI_BLOOD_REDUCTION 0.75
 #define BLOOD_ADD_PENALTY	1.5
@@ -53,7 +54,6 @@
 		limb.bleeding_effects_list -= src
 	return ..()
 
-
 /datum/effects/bleeding/external
 	var/buffer_blood_loss = 0
 
@@ -77,10 +77,12 @@
 
 	return TRUE
 
-			
+
 /datum/effects/bleeding/internal
 	effect_name = "internal bleeding"
 	flags = INF_DURATION | NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE
+	blood_loss_divider = 60
+	blood_duration_multiplier = 3
 
 /datum/effects/bleeding/internal/process_mob()
 	. = ..()
@@ -91,12 +93,15 @@
 	if(affected_mob.in_stasis == STASIS_IN_BAG)
 		return FALSE
 
+	var/loss_accumulation = FALSE
 	if(affected_mob.bodytemperature < T0C && (affected_mob.reagents && affected_mob.reagents.get_reagent_amount("cryoxadone") || affected_mob.reagents.get_reagent_amount("clonexadone")))
 		blood_loss -= CRYO_BLOOD_REDUCTION
+		loss_accumulation = TRUE
 
 	var/bicaridine = affected_mob.reagents?.get_reagent_amount("bicaridine")
-	if(bicaridine > REAGENTS_OVERDOSE && affected_mob.getBruteLoss() <= 0)
+	if(bicaridine > REAGENTS_OVERDOSE)
 		blood_loss -= BICAOD_BLOOD_REDUCTION
+		loss_accumulation = TRUE
 
 	if(affected_mob.reagents) // Annoying QC check
 		if(affected_mob.reagents.get_reagent_amount("thwei"))
@@ -104,8 +109,44 @@
 		if(affected_mob.reagents.get_reagent_amount("quickclot"))
 			return FALSE
 
+	if(!loss_accumulation)
+		blood_loss += IB_BLOOD_ACCUMULATION
+
 	affected_mob.blood_volume = max(affected_mob.blood_volume - blood_loss, 0)
 
 	return TRUE
 
+/datum/effects/bleeding/arterial
+	effect_name = "arterial bleeding"
+	flags = INF_DURATION | NO_PROCESS_ON_DEATH | DEL_ON_UNDEFIBBABLE
+	var/next_bleed_spray = 0
+
+/datum/effects/bleeding/arterial/process_mob()
+	. = ..()
+	if(!.)
+		return FALSE
+
+	var/mob/living/carbon/human/affected_mob = affected_atom
+	if(world.time >= next_bleed_spray)
+		var/arterial_bloodloss = affected_mob.blood_volume * 0.025 // 2.5% of current blood
+		next_bleed_spray = world.time + rand(8, 12) SECONDS
+
+		if(isturf(affected_mob.loc))
+			playsound(affected_mob, 'sound/effects/blood_spray.ogg', 20, 0)
+
+			affected_mob.visible_message(SPAN_DANGER("Blood spurts from [affected_mob.name]'s wounded [limb.artery_name]!"), \
+				SPAN_DANGER("Blood spurts from your wounded [limb.artery_name]!"))
+
+			if(affected_mob.blood_volume > 0)
+				affected_mob.blood_volume -= affected_mob.blood_spray(arterial_bloodloss, get_turf(affected_mob))
+		else
+			playsound(affected_mob, 'sound/effects/blood_spray.ogg', 15, 0)
+
+			to_chat(affected_mob, SPAN_DANGER("Blood spurts from your wounded [limb.artery_name]!"))
+
+			if(affected_mob.blood_volume > 0)
+				affected_mob.blood_volume -= arterial_bloodloss
+	return TRUE
+
 #undef BLOOD_ADD_PENALTY
+

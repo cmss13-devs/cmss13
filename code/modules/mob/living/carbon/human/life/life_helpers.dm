@@ -287,7 +287,7 @@
 	var/final_reduction = species_resistance + skill_resistance
 	var/shift_left = (SShuman.next_fire - world.time) * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction
 	if(knocked_down > shift_left)
-		knocked_down += SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction - shift_left
+		knocked_down += (SShuman.wait * HUMAN_TIMER_TO_EFFECT_CONVERSION * final_reduction) - shift_left
 
 /mob/living/carbon/human/knockout_clock_adjustment()
 	if(!species)

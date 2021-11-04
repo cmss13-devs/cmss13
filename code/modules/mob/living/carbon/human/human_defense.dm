@@ -162,7 +162,6 @@ Contains most of the procs that are called when a mob is attacked by something
 			I.emp_act(severity)
 	..()
 
-
 //Returns 1 if the attack hit, 0 if it missed.
 /mob/living/carbon/human/proc/attacked_by(var/obj/item/I, var/mob/living/user)
 	if(!I || !user)
@@ -194,21 +193,28 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 
-	var/weapon_sharp = is_sharp(I)
-	var/weapon_edge = has_edge(I)
-	if ((weapon_sharp || weapon_edge) && prob(getarmor(target_zone, ARMOR_MELEE)))
-		weapon_sharp = FALSE
-		weapon_edge = FALSE
+	var/weapon_blade = is_sharp(I) + has_edge(I)
+	if(weapon_blade && prob(getarmor(target_zone, ARMOR_MELEE)))
+		weapon_blade = FALSE
 
 	if(!I.force)
 		return FALSE
-	if(weapon_sharp)
+	if(weapon_blade)
 		user.flick_attack_overlay(src, "punch")
 	else
 		user.flick_attack_overlay(src, "punch")
+	var/integrity_damage_multiplier
 
-	var/damage = armor_damage_reduction(GLOB.marine_melee, I.force, armor, (weapon_sharp?30:0) + (weapon_edge?10:0)) // no penetration frm punches
-	apply_damage(damage, I.damtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=I)
+	switch(weapon_blade)
+		if(1) //Sharp or edged but not both.
+			integrity_damage_multiplier = INT_DMG_MULTIPLIER_SHARP
+		if(2) //Sharp and edged.
+			integrity_damage_multiplier = INT_DMG_MULTIPLIER_VERYSHARP
+		else //Not sharp or armour absorbed it
+			integrity_damage_multiplier = INT_DMG_MULTIPLIER_NORMAL
+
+	var/damage = armor_damage_reduction(GLOB.marine_melee, I.force, armor, weapon_blade * ARMOR_SHARP_PENETRATION)
+	apply_damage(damage, I.damtype, affecting, integrity_damage_multiplier, used_weapon = I)
 
 	var/bloody = FALSE
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(I.force*2 + 25))
@@ -246,7 +252,7 @@ Contains most of the procs that are called when a mob is attacked by something
 	if (I.damtype == BRUTE && !I.is_robot_module() && !(I.flags_item & (NODROP|DELONDROP)))
 		damage = I.force
 		if(damage > 40) damage = 40  //Some sanity, mostly for yautja weapons. CONSTANT STICKY ICKY
-		if (weapon_sharp && prob(3) && !isYautja(user)) // make yautja less likely to get their weapon stuck
+		if (weapon_blade && prob(3) && !isYautja(user)) // make yautja less likely to get their weapon stuck
 			affecting.embed(I)
 
 	return TRUE
@@ -298,19 +304,26 @@ Contains most of the procs that are called when a mob is attacked by something
 
 	var/armor = getarmor(affecting, ARMOR_MELEE)
 
-	var/weapon_sharp = is_sharp(O)
-	var/weapon_edge = has_edge(O)
+	var/weapon_blade = is_sharp(O) + has_edge(O)
+	var/integrity_damage_multiplier
 
-	var/damage = armor_damage_reduction(GLOB.marine_melee, impact_damage, armor, (weapon_sharp?30:0) + (weapon_edge?10:0))
-	apply_damage(damage, dtype, affecting, sharp=weapon_sharp, edge=weapon_edge, used_weapon=O)
+	switch(weapon_blade)
+		if(1) //Sharp or edged but not both.
+			integrity_damage_multiplier = INT_DMG_MULTIPLIER_SHARP
+		if(2) //Sharp and edged.
+			integrity_damage_multiplier = INT_DMG_MULTIPLIER_VERYSHARP
+		else //Not sharp.
+			integrity_damage_multiplier = INT_DMG_MULTIPLIER_NORMAL
+
+	var/damage = armor_damage_reduction(GLOB.marine_melee, impact_damage, armor, weapon_blade * ARMOR_SHARP_PENETRATION)
+	apply_damage(damage, dtype, affecting, integrity_damage_multiplier, used_weapon=O)
 
 	var/last_damage_source = null
 	var/last_damage_mob = null
 	if (damage > 5)
 		last_damage_source = initial(AM.name)
 		animation_flash_color(src)
-		var/obj/item/I = O
-		if(istype(I) && I.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.
+		if(weapon_blade)
 			playsound(loc, 'sound/effects/spike_hit.ogg', 20, TRUE, 5, falloff = 2)
 		else
 			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, 5, falloff = 2)
@@ -336,14 +349,13 @@ Contains most of the procs that are called when a mob is attacked by something
 	if (dtype == BRUTE && istype(O,/obj/item))
 		var/obj/item/I = O
 		if (!I.is_robot_module())
-			var/sharp = is_sharp(I)
 			//blunt objects should really not be embedding in things unless a huge amount of force is involved
-			var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
-			var/embed_threshold = sharp? 5*I.w_class : 15*I.w_class
+			var/embed_chance = weapon_blade ? damage * weapon_blade / min(3, I.w_class) : damage / (I.w_class * 3) //capping divisor at 3 so that things like spears have a decent embed rate.
+			var/embed_threshold = weapon_blade ? 5 * I.w_class : 15 * I.w_class
 
 			//Sharp objects will always embed if they do enough damage.
 			//Thrown sharp objects have some momentum already and have a small chance to embed even if the damage is below the threshold
-			if (!isYautja(src) && ((sharp && prob(damage/(10*I.w_class)*100)) || (damage > embed_threshold && prob(embed_chance))))
+			if (!isYautja(src) && damage > embed_threshold && prob(embed_chance))
 				affecting.embed(I)
 
 /mob/living/carbon/human/proc/get_id_faction_group()

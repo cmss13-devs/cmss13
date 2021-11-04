@@ -46,7 +46,7 @@
 
 	drowsy_threshold = CLOTHING_ARMOR_MEDIUM - target.getarmor(affecting, ARMOR_MELEE)
 
-	target.apply_damage(force, BRUTE, affecting, sharp=0)
+	target.apply_damage(force, BRUTE, affecting, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 
 	if(affecting == "head" && istype(target, /mob/living/carbon/) && !isXeno(target))
 		for(var/mob/O in viewers(user, null))

@@ -172,11 +172,6 @@
 	var/damage = rand(base_damage, base_damage + damage_variance)
 
 	if(ishuman(H))
-		if((L.status & LIMB_SPLINTED) && !(L.status & LIMB_SPLINTED_INDESTRUCTIBLE)) //If they have it splinted, the splint won't hold.
-			L.status &= ~LIMB_SPLINTED
-			to_chat(H, SPAN_DANGER("The splint on your [L.display_name] comes apart!"))
-			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
-
 		if(isHumanStrict(H))
 			H.Slow(2)
 		if(isYautja(H))
@@ -184,9 +179,7 @@
 		else if(L.status & LIMB_ROBOT)
 			damage = rand(base_punch_damage_synth, base_punch_damage_synth + damage_variance)
 
-
-	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
-
+	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest", int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL) //Punch is pinpoint accurate but soft tissue damage with little int.
 	shake_camera(H, 2, 1)
 	step_away(H, X, 2)
 
@@ -201,7 +194,7 @@
 		else if(L.status & LIMB_ROBOT)
 			damage = rand(boxer_punch_damage_synth, boxer_punch_damage_synth + damage_variance)
 
-	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
+	H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest", int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL) //Punch is pinpoint accurate but soft tissue damage with little int.
 
 	step_away(H, X)
 	if(prob(25)) // 25% chance to fly 2 tiles
@@ -338,7 +331,7 @@
 	var/obj/limb/L = H.get_limb(check_zone(X.zone_selected))
 
 	if(damage)
-		H.apply_armoured_damage(get_xeno_damage_slash(H, base_damage * ko_counter), ARMOR_MELEE, BRUTE, L? L.name : "chest")
+		H.apply_armoured_damage(get_xeno_damage_slash(H, base_damage * ko_counter), ARMOR_MELEE, BRUTE, L? L.name : "chest", int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL) //Pinpoint accurate but soft tissue damage with little int.
 
 	if(knockout)
 		H.KnockOut(knockout_power)

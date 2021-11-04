@@ -150,10 +150,7 @@
 	if(!L || L.status & LIMB_ROBOT)
 		return
 	..()
-	if(prob(5*potency))
-		var/datum/wound/internal_bleeding/I = new (0)
-		L.add_bleeding(I, TRUE)
-		L.wounds += I
+
 	if(prob(5*potency))
 		spawn L.owner.emote("me", 1, "coughs up blood!")
 		L.owner.drip(10)
@@ -168,12 +165,6 @@
 		O.damage += 0.5*potency
 
 /datum/chem_property/negative/hemorrhaging/process_critical(mob/living/M, var/potency = 1)
-	if(prob(20*potency) && ishuman(M))
-		var/mob/living/carbon/human/H = M
-		var/obj/limb/L = pick(H.limbs)
-		var/datum/wound/internal_bleeding/I = new (0)
-		L.add_bleeding(I, TRUE)
-		L.wounds += I
 
 /datum/chem_property/negative/carcinogenic
 	name = PROPERTY_CARCINOGENIC

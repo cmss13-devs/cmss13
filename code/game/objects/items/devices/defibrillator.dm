@@ -11,7 +11,6 @@
 	w_class = SIZE_MEDIUM
 
 	var/blocked_by_suit = TRUE
-	var/heart_damage_to_deal = 5
 	var/ready = 0
 	var/damage_heal_threshold = 12 //This is the maximum non-oxy damage the defibrillator will heal to get a patient above -100, in all categories
 	var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread
@@ -95,7 +94,7 @@
 	var/datum/internal_organ/heart/heart = internal_organs_by_name["heart"]
 	var/obj/limb/head = get_limb("head")
 
-	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || heart.is_broken() || !has_brain() || status_flags & PERMANENTLY_DEAD)
+	if(chestburst || !head || head.status & LIMB_DESTROYED || !heart || !heart.can_revive() || !has_brain() || status_flags & PERMANENTLY_DEAD)
 		return FALSE
 	return TRUE
 
@@ -175,12 +174,19 @@
 	defib_cooldown = world.time + 10 //1 second cooldown before you can shock again
 
 	var/datum/internal_organ/heart/heart = H.internal_organs_by_name["heart"]
-	if(heart && prob(25))
-		heart.damage += heart_damage_to_deal //Allow the defibrilator to possibly worsen heart damage. Still rare enough to just be the "clone damage" of the defib
+
+	heart.handle_defib()
+
+	for(var/datum/reagent/R in H.reagents.reagent_list)
+		var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
+		if(P)
+			P.trigger(H)
+			H.reagents.remove_reagent(R.id, 1)
+			break
 
 	if(!H.is_revivable())
-		if(heart && heart.is_broken())
-			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart is too damaged. Immediate surgery is advised."))
+		if(heart && !heart.can_revive())
+			user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's heart condition too severe. Immediate surgery is advised."))
 			return
 		user.visible_message(SPAN_WARNING("[icon2html(src, viewers(src))] \The [src] buzzes: Defibrillation failed. Patient's general condition does not allow reviving."))
 		return
@@ -191,21 +197,6 @@
 	if(isobserver(H.mind?.current) && !H.client) //Let's call up the correct ghost! Also, bodies with clients only, thank you.
 		H.mind.transfer_to(H, TRUE)
 
-
-	//At this point, the defibrillator is ready to work
-	H.apply_damage(-damage_heal_threshold, BRUTE)
-	H.apply_damage(-damage_heal_threshold, BURN)
-	H.apply_damage(-damage_heal_threshold, TOX)
-	H.apply_damage(-damage_heal_threshold, CLONE)
-	H.apply_damage(-H.getOxyLoss(), OXY)
-	H.updatehealth() //Needed for the check to register properly
-
-	for(var/datum/reagent/R in H.reagents.reagent_list)
-		var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
-		if(P)
-			P.trigger(H)
-			H.reagents.remove_reagent(R.id, 1)
-			break
 	if(H.health > HEALTH_THRESHOLD_DEAD)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 		user.track_life_saved(user.job)
@@ -225,7 +216,6 @@
 	item_state = "defib"
 	w_class = SIZE_MEDIUM
 	blocked_by_suit = FALSE
-	heart_damage_to_deal = 0
 	damage_heal_threshold = 40
 	charge_cost = 198
 

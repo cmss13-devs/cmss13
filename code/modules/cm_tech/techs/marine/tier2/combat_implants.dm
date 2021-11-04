@@ -253,7 +253,6 @@
 		COMSIG_HUMAN_TAKE_DAMAGE,
 		COMSIG_XENO_TAKE_DAMAGE
 	), .proc/handle_damage)
-	RegisterSignal(M, COMSIG_HUMAN_BONEBREAK_PROBABILITY, .proc/handle_bonebreak)
 
 /obj/item/device/internal_implant/subdermal_armor/proc/handle_damage(var/mob/living/M, list/damagedata, damagetype)
 	SIGNAL_HANDLER
@@ -262,6 +261,3 @@
 	else if(damagetype == BURN)
 		damagedata["damage"] *= burn_damage_mult
 
-/obj/item/device/internal_implant/subdermal_armor/proc/handle_bonebreak(var/mob/living/M, list/bonedata)
-	SIGNAL_HANDLER
-	bonedata["bonebreak_probability"] *= bone_break_mult

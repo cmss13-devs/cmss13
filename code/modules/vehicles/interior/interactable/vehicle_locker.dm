@@ -170,7 +170,7 @@
 	container.max_storage_space = 24
 	container.can_hold = list(
 							/obj/item/tool/surgery,
-							/obj/item/stack/medical/advanced/bruise_pack,
+							/obj/item/stack/medical/healing/traumakit,
 							/obj/item/stack/nanopaste
 							)
 
@@ -178,7 +178,7 @@
 	new /obj/item/tool/surgery/scalpel(container)
 	new /obj/item/tool/surgery/hemostat(container)
 	new /obj/item/tool/surgery/retractor(container)
-	new /obj/item/stack/medical/advanced/bruise_pack(container)
+	new /obj/item/stack/medical/healing/traumakit(container)
 	new /obj/item/tool/surgery/cautery(container)
 	new /obj/item/tool/surgery/circular_saw(container)
 	new /obj/item/tool/surgery/surgicaldrill(container)

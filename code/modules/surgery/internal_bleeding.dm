@@ -12,9 +12,9 @@
 	steps = list(/datum/surgery_step/fix_vein)
 
 /datum/surgery/internal_bleeding/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
-	for(var/datum/wound/W as anything in L.wounds)
+	/*for(var/datum/wound/W as anything in L.wounds)
 		if(W.internal)
-			return TRUE
+			return TRUE*/
 	return FALSE
 
 //------------------------------------
@@ -42,11 +42,11 @@
 		SPAN_NOTICE("[user] finishes repairing your damaged vein."),
 		SPAN_NOTICE("[user] finishes repairing [target]'s damaged vein."))
 
-	for(var/datum/wound/W as anything in surgery.affected_limb.wounds)
+	/*for(var/datum/wound/W as anything in surgery.affected_limb.wounds)
 		if(W.internal)
 			surgery.affected_limb.wounds -= W
 			surgery.affected_limb.remove_all_bleeding(FALSE, TRUE)
-			surgery.affected_limb.update_damages()
+			surgery.affected_limb.update_damages()*/
 
 	if(prob(40))
 		user.add_blood(target.get_blood_color(), BLOOD_HANDS)

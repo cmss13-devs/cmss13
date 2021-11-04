@@ -39,11 +39,12 @@
 		/obj/item/reagent_container/glass/bottle/tramadol,
 		)
 	var/list/stack_refill = list(
-		/obj/item/stack/medical/advanced/ointment,
-		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/stack/medical/healing/burnkit,
+		/obj/item/stack/medical/healing/traumakit,
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
+		/obj/item/stack/medical/tourniquet
 		)
 
 /obj/structure/machinery/cm_vending/sorted/medical/examine(mob/living/carbon/human/user)
@@ -146,11 +147,12 @@
 /obj/structure/machinery/cm_vending/sorted/medical/populate_product_list(var/scale)
 	listed_products = list(
 		list("FIELD SUPPLIES", -1, null, null),
-		list("Advanced Burn Kit", round(scale * 7), /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Advanced Trauma Kit", round(scale * 7), /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Advanced Burn Kit", round(scale * 7), /obj/item/stack/medical/healing/burnkit, VENDOR_ITEM_REGULAR),
+		list("Advanced Trauma Kit", round(scale * 7), /obj/item/stack/medical/healing/traumakit, VENDOR_ITEM_REGULAR),
 		list("Ointment", round(scale * 7), /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", round(scale * 7), /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Splints", round(scale * 7), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+		list("Tourniquets", round(scale * 7), /obj/item/stack/medical/tourniquet, VENDOR_ITEM_REGULAR),
 
 		list("AUTOINJECTORS", -1, null, null),
 		list("Autoinjector (Bicaridine)", round(scale * 5), /obj/item/reagent_container/hypospray/autoinjector/bicaridine, VENDOR_ITEM_REGULAR),
@@ -258,7 +260,8 @@
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
+		/obj/item/stack/medical/tourniquet
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/populate_product_list(var/scale)
@@ -274,7 +277,8 @@
 		list("Fire Extinguisher (portable)", 5, /obj/item/tool/extinguisher/mini, VENDOR_ITEM_REGULAR),
 		list("Ointment", round(scale * 7), /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", round(scale * 7), /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Splints", round(scale * 7), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
+		list("Splints", round(scale * 7), /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+		list("Tourniquets", round(scale * 7), /obj/item/stack/medical/tourniquet, VENDOR_ITEM_REGULAR)
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/marinemed/antag
@@ -331,6 +335,7 @@
 		list("Roll Of Gauze", 2, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 2, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+		list("Tourniquets", 1, /obj/item/stack/medical/tourniquet, VENDOR_ITEM_REGULAR),
 
 		list("UTILITY", -1, null, null),
 		list("HF2 Health Analyzer", 1, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR)
@@ -345,7 +350,8 @@
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,
 		/obj/item/stack/medical/ointment,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
+		/obj/item/stack/medical/tourniquet
 	)
 
 /obj/structure/machinery/cm_vending/sorted/medical/wall_med/lifeboat
@@ -362,16 +368,18 @@
 		list("Health Analyzer", 8, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),
 
 		list("FIELD SUPPLIES", -1, null, null),
-		list("Advanced Burn Kit", 8, /obj/item/stack/medical/advanced/ointment, VENDOR_ITEM_REGULAR),
-		list("Advanced Trauma Kit", 8, /obj/item/stack/medical/advanced/bruise_pack, VENDOR_ITEM_REGULAR),
+		list("Advanced Burn Kit", 8, /obj/item/stack/medical/healing/burnkit, VENDOR_ITEM_REGULAR),
+		list("Advanced Trauma Kit", 8, /obj/item/stack/medical/healing/traumakit, VENDOR_ITEM_REGULAR),
 		list("Ointment", 8, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Roll of Gauze", 8, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
-		list("Splints", 8, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR)
+		list("Splints", 8, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+		list("Tourniquets", 8, /obj/item/stack/medical/tourniquet, VENDOR_ITEM_REGULAR)
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/ointment,
 		/obj/item/stack/medical/bruise_pack,
-		/obj/item/stack/medical/splint
+		/obj/item/stack/medical/splint,
+		/obj/item/stack/medical/tourniquet
 	)
 
 	unacidable = TRUE
@@ -394,6 +402,7 @@
 		list("Roll Of Gauze", 2, /obj/item/stack/medical/bruise_pack, VENDOR_ITEM_REGULAR),
 		list("Ointment", 2, /obj/item/stack/medical/ointment, VENDOR_ITEM_REGULAR),
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, VENDOR_ITEM_REGULAR),
+		list("Tourniquets", 1, /obj/item/stack/medical/tourniquet, VENDOR_ITEM_REGULAR),
 
 		list("UTILITY", -1, null, null),
 		list("HF2 Health Analyzer", 1, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR),

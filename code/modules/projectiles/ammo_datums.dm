@@ -2187,6 +2187,8 @@
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)
 			H.visible_message(SPAN_DANGER("[M] shrugs off the neurotoxin!"))
 			return //species like zombies or synths are immune to neurotoxin
+		if(H.xeno_neurotoxin_buff)
+			power *= H.xeno_neurotoxin_buff
 
 	if(M.knocked_out || pass_down_the_line) //second part is always false, but consistency is a great thing
 		pass_down_the_line = TRUE
@@ -2592,17 +2594,17 @@
 	bonus_projectiles_amount = 0
 
 /datum/ammo/xeno/bone_chips/spread/short_range
-    name = "small bone chips"
+	name = "small bone chips"
 
-    max_range = 3 // Very short range
+	max_range = 3 // Very short range
 
 /datum/ammo/xeno/bone_chips/spread/runner_skillshot
-    name = "bone chips"
+	name = "bone chips"
 
-    scatter = 0
-    max_range = 5
-    damage = 10
-    shrapnel_chance = 0
+	scatter = 0
+	max_range = 5
+	damage = 10
+	shrapnel_chance = 0
 
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
     if(isHumanStrict(M) || isXeno(M))
@@ -2720,6 +2722,60 @@
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))
 		M.Slow(0.4)
+
+/datum/ammo/bullet/shrapnel/blood
+	name = "blood spray"
+	icon_state = "shrapnel_blood"
+	scatter = SCATTER_AMOUNT_TIER_10
+	max_range = 3
+	damage = 0
+	flags_ammo_behavior = AMMO_STOPPED_BY_COVER|AMMO_IGNORE_RESIST|AMMO_ALWAYS_FF
+	shrapnel_chance = 0 // of course theres no shrapnel embedding you moron, it's literally liquid
+	shell_speed = AMMO_SPEED_TIER_1 // very slow
+	accuracy = HIT_ACCURACY_TIER_MAX
+	var/obj/effect/decal/cleanable/blood
+
+/datum/ammo/bullet/shrapnel/blood/on_hit_mob(mob/M, obj/item/projectile/P)
+	if(!isHumanStrict(M))
+		return
+
+	if(M == P.firer)
+		return
+
+	var/mob/living/carbon/human/H = M
+	var/mob/living/carbon/human/bleeder = P.firer
+	H.add_blood(bleeder.get_blood_color(), BLOOD_ALL)
+	to_chat(H, SPAN_DANGER("You are sprayed by a burst of blood from [bleeder.name], drenching you near-completely with it!"))
+	if(P.def_zone == "head")
+		var/blinding = TRUE
+		var/list/protections = list(H.glasses, H.wear_mask, H.head)
+		for(var/obj/item/clothing/C in protections)
+			if(C && (C.flags_armor_protection & BODY_FLAG_EYES))
+				blinding = FALSE
+				break
+		if(blinding)
+			H.eye_blurry = max(H.eye_blurry, 5)
+			H.eye_blind = max(H.eye_blind, 2)
+			to_chat(H, SPAN_DANGER("You are sprayed by a burst of blood from [name], drenching your eyes with the hot blood and blinding you!"))
+
+	drop_blood(get_turf(H), P)
+
+/datum/ammo/bullet/shrapnel/blood/on_hit_obj(obj/O, obj/item/projectile/P)
+	var/mob/living/carbon/human/bleeder = P.firer
+	O.add_blood(bleeder.get_blood_color())
+	drop_blood(get_turf(O), P)
+
+/datum/ammo/bullet/shrapnel/blood/on_hit_turf(turf/T, obj/item/projectile/P)
+	drop_blood(T, P)
+
+/datum/ammo/bullet/shrapnel/blood/do_at_max_range(obj/item/projectile/P)
+	drop_blood(get_turf(P), P)
+
+/datum/ammo/bullet/shrapnel/blood/proc/drop_blood(turf/T, obj/item/projectile/P)
+	blood =  new /obj/effect/decal/cleanable/blood(T)
+	blood.icon_state = "blood_spray"
+	blood.dir = P.dir
+
 /*
 //======
 					Misc Ammo

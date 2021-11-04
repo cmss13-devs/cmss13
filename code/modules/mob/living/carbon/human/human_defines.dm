@@ -66,7 +66,6 @@
 
 	var/failed_last_breath = 0 //This is used to determine if the mob failed a breath. If they did fail a brath, they will attempt to breathe each tick, otherwise just once per 4 ticks.
 
-	var/last_dam = -1	//Used for determining if we need to process all limbs or just some or even none.
 	var/list/limbs_to_process = list()// limbs we check until they are good.
 
 	var/list/flavor_texts = list()
@@ -143,6 +142,14 @@
 	throw_range = 4 // Humans can't be thrown that far
 
 	var/datum/action/human_action/activable/selected_ability
+
+	// Integrity
+	var/xeno_neurotoxin_buff //Increases effectiveness of xeno neurotoxin
+	var/minimum_gun_recoil
+	var/minimum_wield_delay
+	var/int_dmg_malus = 1
+
+	var/list/limb_wounds = list()
 
 /client/var/cached_human_playtime
 

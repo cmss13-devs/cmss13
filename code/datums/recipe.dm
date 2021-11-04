@@ -64,7 +64,7 @@
 	for (var/obj/O in container)
 		var/found = 0
 		for (var/type in checklist)
-			if (istype(O,type))
+			if (istypestrict(O,type))
 				checklist-=type
 				found = 1
 				break

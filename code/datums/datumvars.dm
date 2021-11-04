@@ -839,7 +839,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 			return
 
-		var/new_organ = tgui_input_list(usr, "Please choose an organ to add.","Organ",null, typesof(/datum/internal_organ)-/datum/internal_organ)
+		var/new_organ = tgui_input_list(usr, "Please choose an organ to add.","Organ", typesof(/datum/internal_organ)-/datum/internal_organ)
 
 		if(!new_organ)
 			return FALSE
@@ -852,35 +852,18 @@ body
 			to_chat(usr, "Mob already has that organ.")
 			return
 
-		if(istype(M,/mob/living/carbon/human))
+		var/datum/internal_organ/organ = new new_organ(M)
+
+		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			var/datum/internal_organ/I = new new_organ(H)
-
-			var/organ_slot = input(usr, "Which slot do you want the organ to go in ('default' for default)?")  as text|null
-
-			if(!organ_slot)
-				return
-
-			if(organ_slot != "default")
-				organ_slot = sanitize(copytext(organ_slot,1,MAX_MESSAGE_LEN))
-			else
-				if(I.removed_type)
-					var/obj/item/organ/O = new I.removed_type()
-					organ_slot = O.organ_tag
-					qdel(O)
-				else
-					organ_slot = "unknown organ"
-
-			if(H.internal_organs_by_name[organ_slot])
+			if(H.internal_organs_by_name[organ.organ_tag])
 				to_chat(usr, "[H] already has an organ in that slot.")
-				qdel(I)
+				qdel(organ)
 				return
 
-			H.internal_organs_by_name[organ_slot] = I
-			to_chat(usr, "Added new [new_organ] to [H] as slot [organ_slot].")
-		else
-			new new_organ(M)
-			to_chat(usr, "Added new [new_organ] to [M].")
+			H.internal_organs_by_name[organ.organ_tag] = organ
+
+		to_chat(usr, "Added new [new_organ] to [M].")
 
 	else if(href_list["remorgan"])
 		if(!check_rights(R_SPAWN))
@@ -891,7 +874,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
 			return
 
-		var/rem_organ = tgui_input_list(usr, "Please choose an organ to remove.","Organ",null, M.internal_organs)
+		var/datum/internal_organ/rem_organ = tgui_input_list(usr, "Please choose an organ to remove.","Organ", M.internal_organs)
 
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")
@@ -900,6 +883,10 @@ body
 		if(!(locate(rem_organ) in M.internal_organs))
 			to_chat(usr, "Mob does not have that organ.")
 			return
+
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			H.internal_organs_by_name[rem_organ.organ_tag] = null
 
 		to_chat(usr, "Removed [rem_organ] from [M].")
 		qdel(rem_organ)
@@ -914,7 +901,7 @@ body
 			to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
 			return
 
-		var/new_limb = tgui_input_list(usr, "Please choose an organ to add.","Organ", typesof(/obj/limb)-/obj/limb)
+		var/new_limb = tgui_input_list(usr, "Please choose a limb to add.","Organ", typesof(/obj/limb)-/obj/limb)
 
 		if(!M)
 			to_chat(usr, "Mob doesn't exist anymore")
@@ -928,7 +915,6 @@ body
 			return
 
 		EO.status = NO_FLAGS
-		EO.perma_injury = 0
 		EO.reset_limb_surgeries()
 		M.update_body(0)
 		M.updatehealth()

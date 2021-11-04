@@ -18288,7 +18288,7 @@
 /area/strata/ag/exterior/paths/westadmin)
 "aZb" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/item/stack/medical/advanced/bruise_pack,
+/obj/item/stack/medical/healing/traumakit,
 /obj/structure/pipes/standard/simple/hidden/cyan{
 	dir = 4
 	},

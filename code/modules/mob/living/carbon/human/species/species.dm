@@ -81,12 +81,12 @@
 	// Species-specific abilities.
 	var/list/inherent_verbs
 	var/list/has_organ = list(
-		"heart" =    /datum/internal_organ/heart,
-		"lungs" =    /datum/internal_organ/lungs,
-		"liver" =    /datum/internal_organ/liver,
-		"kidneys" =  /datum/internal_organ/kidneys,
-		"brain" =    /datum/internal_organ/brain,
-		"eyes" =     /datum/internal_organ/eyes
+		ORGAN_HEART =    /datum/internal_organ/heart,
+		ORGAN_LUNGS =    /datum/internal_organ/lungs,
+		ORGAN_LIVER =    /datum/internal_organ/liver,
+		ORGAN_KIDNEYS =  /datum/internal_organ/kidneys,
+		ORGAN_BRAIN =    /datum/internal_organ/brain,
+		ORGAN_EYES =     /datum/internal_organ/eyes
 		)
 
 	var/knock_down_reduction = 1 //how much the knocked_down effect is reduced per Life call.
@@ -104,6 +104,93 @@
 	var/mob_flags = NO_FLAGS // The mob flags to give their mob
 	 /// Status traits to give to the mob.
 	var/list/mob_inherent_traits
+
+	//Assoc list of limb name -> list of lists of wounds types
+	//These are all wounds that can be added to a limb when integrity increases
+	//Basically your fractures, IBs and such
+	//They're mapped to ids, so that when the integrity level increases,
+	//a wound can "upgrade" to the latest one associated with their id
+	//Ex: hairline fracture -> fracture
+
+	var/list/wounds_by_limb = list(
+		"head" = list(
+			list(), //OKAY
+			list(), //CONCERNING
+			list(), //SERIOUS
+			list(), //CRITICAL
+			list()	//NONE
+		),
+		"chest" = list(
+			list(),
+			list(),
+			list(),
+			list(),
+			list()
+		),
+		"groin" = list(
+			list(),
+			list(),
+			list(),
+			list(),
+			list()
+		),
+		"r_arm" = list(
+			list(),
+			list("bone" = /datum/limb_wound/fracture, "veins" = /datum/limb_wound/bleeding_arterial),
+			list(),
+			list(),
+			list()
+		),
+		"l_arm" = list(
+			list(),
+			list("bone" = /datum/limb_wound/fracture, "veins" = /datum/limb_wound/bleeding_arterial),
+			list(),
+			list(),
+			list()
+		),
+		"r_hand" = list(
+			list(),
+			list(),
+			list(),
+			list(),
+			list()
+		),
+		"l_hand" = list(
+			list(),
+			list(),
+			list(),
+			list(),
+			list()
+		),
+		"r_leg" = list(
+			list(),
+			list(),
+			list(),
+			list(),
+			list()
+		),
+		"l_leg" = list(
+			list(),
+			list(),
+			list(),
+			list(),
+			list()
+		),
+		"r_foot" = list(
+			list(),
+			list(),
+			list(),
+			list(),
+			list()
+		),
+		"l_foot" = list(
+			list(),
+			list(),
+			list(),
+			list(),
+			list()
+		)
+	)
 
 /datum/species/New()
 	if(unarmed_type)
@@ -150,6 +237,8 @@
 		C.robotize() //Also gets all other limbs, as those are attached.
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
+
+	H.initialize_wounds()
 
 /datum/species/proc/initialize_pain(mob/living/carbon/human/H)
 	if(pain_type)

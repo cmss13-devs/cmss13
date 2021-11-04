@@ -10,7 +10,7 @@
 	matter = list("plastic" = 3000)
 	can_hold = list(
 		/obj/item/tool/surgery,
-		/obj/item/stack/medical/advanced/bruise_pack,
+		/obj/item/stack/medical/healing/traumakit,
 		/obj/item/stack/nanopaste
 	)
 
@@ -22,7 +22,7 @@
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
 	new /obj/item/tool/surgery/cautery(src)
 	new /obj/item/tool/surgery/circular_saw(src)
 	new /obj/item/tool/surgery/surgicaldrill(src)

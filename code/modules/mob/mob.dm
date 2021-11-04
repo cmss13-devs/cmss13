@@ -24,6 +24,9 @@
 
 	. = ..()
 
+	if(pulling)
+		stop_pulling()
+
 	clear_fullscreens()
 	QDEL_NULL(mob_panel)
 	QDEL_NULL_LIST(open_uis)
@@ -641,9 +644,13 @@ note dizziness decrements automatically in the mob's Life() proc.
 	if(is_mob_restrained())					return 0
 	return 1
 
+/mob/proc/update_can_stand()
+	can_stand = has_legs()
+	update_canmove()
+
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
-	var/laid_down = (stat || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
+	var/laid_down = (stat || !can_stand || knocked_down || knocked_out || !has_legs() || resting || (status_flags & FAKEDEATH) || (pulledby && pulledby.grab_level >= GRAB_AGGRESSIVE))
 
 	if(laid_down)
 		lying = TRUE
@@ -782,7 +789,12 @@ mob/proc/yank_out_object()
 		remove_verb(src, /mob/proc/yank_out_object)
 		return
 
-	var/obj/item/selection = tgui_input_list(usr, "What do you want to yank out?", "Embedded objects", valid_objects)
+	var/obj/item/selection
+	if(length(valid_objects) == 1)
+		selection = valid_objects[1]
+	else
+		selection = tgui_input_list(usr, "What do you want to yank out?", "Embedded objects", valid_objects)
+
 	if(self)
 		if(get_active_hand())
 			to_chat(src, SPAN_WARNING("You need an empty hand for this!"))
@@ -804,7 +816,7 @@ mob/proc/yank_out_object()
 	else
 		visible_message(SPAN_WARNING("<b>[usr] rips [selection] out of [src]'s body.</b>"),SPAN_WARNING("<b>[usr] rips [selection] out of your body.</b>"), null, 5)
 
-	if(valid_objects.len == 1) //Yanking out last object - removing verb.
+	if(length(valid_objects) == 1) //Yanking out last object - removing verb.
 		remove_verb(src, /mob/proc/yank_out_object)
 
 	if(ishuman(src))
@@ -823,13 +835,12 @@ mob/proc/yank_out_object()
 		affected.implants -= selection
 		H.embedded_items -= selection
 
-		affected.take_damage((selection.w_class * 3), 0, 0, 1, "Embedded object extraction")
+		affected.take_damage((selection.w_class * 3), 0, 0, "Embedded object extraction")
 		H.pain.apply_pain(selection.w_class * 3)
 
 		if(prob(selection.w_class * 5) && !(affected.status & LIMB_ROBOT))
-			var/datum/wound/internal_bleeding/I = new (0)
-			affected.add_bleeding(I, TRUE)
-			affected.wounds += I
+			//var/datum/wound/internal_bleeding/I = new (0)
+
 			H.custom_pain("Something tears wetly in your [affected] as [selection] is pulled free!", 1)
 
 	selection.forceMove(get_turf(src))
@@ -1037,3 +1048,28 @@ mob/proc/yank_out_object()
 	. += "<option value='?_src_=vars;remverb=\ref[src]'>Remove Verb</option>"
 
 	. += "<option value='?_src_=vars;gib=\ref[src]'>Gib</option>"
+
+/mob/proc/stop_pulling()
+	if(pulling)
+		var/mob/M = pulling
+		pulling.pulledby = null
+		pulling = null
+
+		grab_level = 0
+		if(client)
+			client.recalculate_move_delay()
+		if(hud_used && hud_used.pull_icon)
+			hud_used.pull_icon.icon_state = "pull0"
+		if(istype(r_hand, /obj/item/grab))
+			temp_drop_inv_item(r_hand)
+		else if(istype(l_hand, /obj/item/grab))
+			temp_drop_inv_item(l_hand)
+		if(istype(M))
+			if(M.client)
+				//resist_grab uses long movement cooldown durations to prevent message spam
+				//so we must undo it here so the victim can move right away
+				M.client.next_movement = world.time
+			M.update_transform(TRUE)
+			M.update_canmove()
+
+		SEND_SIGNAL(src, COMSIG_MOB_STOPPED_PULLING, M)

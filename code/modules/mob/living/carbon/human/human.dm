@@ -50,6 +50,15 @@
 	QDEL_NULL(stamina)
 	stamina = new /datum/stamina(src)
 
+/mob/living/carbon/human/proc/initialize_wounds()
+	if(length(limb_wounds))
+		for(var/limb in limb_wounds)
+			for(var/wound in limb_wounds[limb])
+				qdel(wound)
+	else
+		for(var/obj/limb/limbloop as anything in limbs)
+			limb_wounds[limbloop.name] = list()
+
 /mob/living/carbon/human/Destroy()
 	if(internal_organs_by_name)
 		for(var/name in internal_organs_by_name)
@@ -266,7 +275,7 @@
 	[suit && LAZYLEN(suit.accessories) ? "<BR><A href='?src=\ref[src];tie=1'>Remove Accessory</A>" : ""]
 	[internal ? "<BR><A href='?src=\ref[src];internal=1'>Remove Internal</A>" : ""]
 	[istype(wear_id, /obj/item/card/id/dogtag) ? "<BR><A href='?src=\ref[src];item=id'>Retrieve Info Tag</A>" : ""]
-	<BR><A href='?src=\ref[src];splints=1'>Remove Splints</A>
+	<BR><A href='?src=\ref[src];limbitems=1'>Check items in limbs</A>
 	<BR>
 	<BR><A href='?src=\ref[user];refresh=1'>Refresh</A>
 	<BR><A href='?src=\ref[user];mach_close=mob[name]'>Close</A>
@@ -441,10 +450,6 @@
 				// Update strip window
 				if(usr.interactee == src && Adjacent(usr))
 					show_inv(usr)
-
-
-	if(href_list["splints"])
-		remove_splints(usr)
 
 	if(href_list["tie"])
 		if(!usr.action_busy)
@@ -834,6 +839,38 @@
 				flavor_texts[href_list["flavor_change"]] = msg
 				set_flavor()
 				return
+
+	if(href_list["limbitems"])
+		var/list/found = list()
+		var/msg = ""
+		for(var/obj/limb/L in limbs)
+			SEND_SIGNAL(L, COMSIG_LIMB_GET_ATTACHED_ITEMS, found)
+			if(length(found))
+				msg += "<b>[L.display_name]</b>\n"
+				for(var/obj/item/I in found)
+					msg += "\The [I.name] - <a href='?src=\ref[src];lookitem=\ref[I]'>\[Examine\]</a> <a href='?src=\ref[src];removelimbitem=\ref[I]'>\[Remove\] </a>\n"
+				found.Cut()
+		to_chat(usr, msg)
+
+	if(href_list["removelimbitem"])
+		var/mob/user = usr
+		var/obj/item = locate(href_list["removelimbitem"])
+		if(!istype(item.loc, /obj/limb))
+			return
+		var/obj/limb/L = item.loc
+
+		var/action_time = HUMAN_LIMB_ITEM_REMOVAL_DELAY
+		var/self_removal = (user == src)
+		var/helper_item = user.get_active_hand()
+		if(helper_item)
+			if(HAS_TRAIT(user.get_active_hand(), TRAIT_PRECISE))
+				action_time *= 0.5
+		visible_message(SPAN_NOTICE("[user] begins to remove \an [item.name] from [self_removal ? "their" : "[src]'s"] [L.display_name]"),
+						SPAN_NOTICE("[self_removal ? "You" : user] begin[self_removal ? "" : "s"] to remove \the [item.name] from your [L.display_name]"))
+		if(do_after(user, action_time, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(user, SPAN_NOTICE("You succeed!"))
+			item.forceMove(get_turf(src))
+			SEND_SIGNAL(item, COMSIG_ITEM_REMOVED_FROM_LIMB, L)
 	..()
 	return
 
@@ -957,18 +994,6 @@
 
 	..()
 
-/mob/living/carbon/human/proc/is_lung_ruptured()
-	var/datum/internal_organ/lungs/L = internal_organs_by_name["lungs"]
-	return L && L.is_bruised()
-
-/mob/living/carbon/human/proc/rupture_lung()
-	var/datum/internal_organ/lungs/L = internal_organs_by_name["lungs"]
-
-	if(L && !L.is_bruised())
-		src.custom_pain("You feel a stabbing pain in your chest!", 1)
-		L.damage = L.min_bruised_damage
-
-
 /mob/living/carbon/human/get_visible_implants(var/class = 0)
 	var/list/visible_objects = list()
 	for(var/obj/item/W in embedded_items)
@@ -987,10 +1012,8 @@
 		if(istype(W, /obj/item/shard/shrapnel))
 			var/obj/item/shard/shrapnel/embedded = W
 			embedded.on_embedded_movement(src)
-		// Check if its a sharp weapon
-		else if(is_sharp(W))
-			if(organ.status & LIMB_SPLINTED) //Splints prevent movement.
-				continue
+		// Check if its a bladed weapon
+		else if(W.sharp || W.edge)
 			if(prob(20)) //Let's not make throwing knives too good in HvH
 				organ.take_damage(rand(1,2), 0, 0)
 		if(prob(30))	// Spam chat less
@@ -1007,9 +1030,12 @@
 	if(usr.stat > 0 || usr.is_mob_restrained() || !ishuman(usr)) return
 
 	if(self)
-		var/list/L = get_broken_limbs()	- list("chest","head","groin")
-		if(L.len > 0)
-			msg += "Your [english_list(L)] [L.len > 1 ? "are" : "is"] broken\n"
+		var/list/wounded_limbs = list()
+		for(var/limb_name in limb_wounds)
+			if(length(limb_wounds[limb_name]))
+				wounded_limbs += limb_name
+		if(length(wounded_limbs))
+			msg += "Your [english_list(wounded_limbs)] [length(wounded_limbs) > 1 ? "are" : "is"] broken\n"
 	to_chat(usr,SPAN_NOTICE("You [self ? "take a moment to analyze yourself":"start analyzing [src]"]"))
 	if(toxloss > 20)
 		msg += "[self ? "Your" : "Their"] skin is slightly green\n"
@@ -1230,13 +1256,14 @@
 		see_in_dark = 8
 		see_invisible = SEE_INVISIBLE_LEVEL_TWO
 	else
-		sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
-		see_in_dark = species.darksight
-		see_invisible = see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : SEE_INVISIBLE_LIVING
-		if(glasses)
-			process_glasses(glasses)
-		else
-			see_invisible = SEE_INVISIBLE_LIVING
+		if(!(SEND_SIGNAL(src, COMSIG_MOB_PRE_GLASSES_SIGHT_BONUS) & COMPONENT_BLOCK_GLASSES_SIGHT_BONUS))
+			sight &= ~(SEE_TURFS|SEE_MOBS|SEE_OBJS)
+			see_in_dark = species.darksight
+			see_invisible = see_in_dark > 2 ? SEE_INVISIBLE_LEVEL_ONE : SEE_INVISIBLE_LIVING
+			if(glasses)
+				process_glasses(glasses)
+			else
+				see_invisible = SEE_INVISIBLE_LIVING
 
 	SEND_SIGNAL(src, COMSIG_HUMAN_POST_UPDATE_SIGHT)
 
@@ -1306,85 +1333,6 @@
 
 	show_browser(src, dat, "Skills", "checkskills")
 	return
-
-/mob/living/carbon/human/verb/remove_your_splints()
-	set name = "Remove Your Splints"
-	set category = "Object"
-
-	remove_splints()
-
-// target = person whose splints are being removed
-// source = person removing the splints
-/mob/living/carbon/human/proc/remove_splints(mob/living/carbon/human/source)
-	var/mob/living/carbon/human/HT = src
-	var/mob/living/carbon/human/HS = source
-
-	if(!istype(HS))
-		HS = src
-	if(!istype(HS) || !istype(HT))
-		return
-
-	var/cur_hand = "l_hand"
-	if(!HS.hand)
-		cur_hand = "r_hand"
-
-	if(!HS.action_busy)
-		var/list/obj/limb/to_splint = list()
-		var/same_arm_side = FALSE // If you are trying to splint yourself, need opposite hand to splint an arm/hand
-		if(HS.get_limb(cur_hand).status & LIMB_DESTROYED)
-			to_chat(HS, SPAN_WARNING("You cannot remove splints without a hand."))
-			return
-		for(var/bodypart in list("l_leg","r_leg","l_arm","r_arm","r_hand","l_hand","r_foot","l_foot","chest","head","groin"))
-			var/obj/limb/l = HT.get_limb(bodypart)
-			if(l && (l.status & LIMB_SPLINTED))
-				if(HS == HT)
-					if((bodypart in list("l_arm", "l_hand")) && (cur_hand == "l_hand"))
-						same_arm_side = TRUE
-						continue
-					if((bodypart in list("r_arm", "r_hand")) && (cur_hand == "r_hand"))
-						same_arm_side = TRUE
-						continue
-				to_splint.Add(l)
-
-		var/msg = "" // Have to use this because there are issues with the to_chat macros and text macros and quotation marks
-		if(to_splint.len)
-			if(do_after(HS, HUMAN_STRIP_DELAY * HS.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_ALL, BUSY_ICON_GENERIC, HT, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
-				var/can_reach_splints = TRUE
-				var/amount_removed = 0
-				if(wear_suit && istype(wear_suit,/obj/item/clothing/suit/space))
-					var/obj/item/clothing/suit/space/suit = HT.wear_suit
-					if(suit.supporting_limbs && suit.supporting_limbs.len)
-						msg = "[HS == HT ? "your":"\proper [HT]'s"]"
-						to_chat(HS, SPAN_WARNING("You cannot remove the splints, [msg] [suit] is supporting some of the breaks."))
-						can_reach_splints = FALSE
-				if(can_reach_splints)
-					var/obj/item/stack/W = new /obj/item/stack/medical/splint(HS.loc)
-					W.amount = 0 //we checked that we have at least one bodypart splinted, so we can create it no prob. Also we need amount to be 0
-					W.add_fingerprint(HS)
-					for(var/obj/limb/l in to_splint)
-						amount_removed += 1
-						l.status &= ~LIMB_SPLINTED
-						pain.recalculate_pain()
-						if(l.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-							new /obj/item/stack/medical/splint/nano(HS.loc, 1)
-							l.status &= ~LIMB_SPLINTED_INDESTRUCTIBLE
-						else if(!W.add(1))
-							W = new /obj/item/stack/medical/splint(HS.loc)//old stack is dropped, time for new one
-							W.amount = 0
-							W.add_fingerprint(HS)
-							W.add(1)
-					msg = "[HS == HT ? "their own":"\proper [HT]'s"]"
-					HT.visible_message(SPAN_NOTICE("[HS] removes [msg] [amount_removed>1 ? "splints":"splint"]."), \
-						SPAN_NOTICE("Your [amount_removed>1 ? "splints are":"splint is"] removed."))
-					HT.update_med_icon()
-			else
-				msg = "[HS == HT ? "your":"\proper [HT]'s"]"
-				to_chat(HS, SPAN_NOTICE("You stop trying to remove [msg] splints."))
-		else
-			if(same_arm_side)
-				to_chat(HS, SPAN_WARNING("You need to use the opposite hand to remove the splints on your arm and hand!"))
-			else
-				to_chat(HS, SPAN_WARNING("There are no splints to remove."))
 
 /mob/living/carbon/human/yautja/Initialize(mapload)
 	. = ..(mapload, new_species = "Yautja")
@@ -1549,3 +1497,49 @@
 	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
 	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
 	. += "<option value='?_src_=admin_holder;adminspawncookie=\ref[src]'>Give Cookie</option>"
+
+/mob/living/carbon/human/update_can_stand()
+	var/prev_state = can_stand
+	var/left_side_tally = 0
+	var/right_side_tally = 0
+	var/left_side_support = FALSE
+	var/right_side_support = FALSE
+
+	var/additional_support = HAS_TRAIT(src, TRAIT_ADDITIONAL_STAND_SUPPORT)
+
+	for(var/obj/limb/L as anything in limbs)
+		if(!HAS_TRAIT(L, TRAIT_LIMB_ALLOWS_STAND) || L.status & LIMB_DESTROYED)
+			continue
+		if(L.body_side == LEFT)
+			left_side_tally++
+		else
+			right_side_tally++
+
+	//Check for side-specific additional support if there are no limbs to hold us up
+	if(left_side_tally > 0)
+		left_side_support = TRUE
+	else
+		if(l_hand)
+			if(HAS_TRAIT(l_hand, TRAIT_CRUTCH))
+				left_side_support = TRUE
+	if(right_side_tally)
+		right_side_support = TRUE
+	else
+		if(r_hand)
+			if(HAS_TRAIT(r_hand, TRAIT_CRUTCH))
+				right_side_support = TRUE
+
+	//Both sides supporting? One must be a limb (no holding two crutches)
+	if(left_side_support && right_side_support && (left_side_tally || right_side_tally))
+		can_stand = TRUE
+	else
+		if((left_side_support || right_side_support) && (HAS_TRAIT(src, TRAIT_EXTREME_BODY_BALANCE) || additional_support))
+			//One side supported + additional support == can stand
+			can_stand = TRUE
+		else
+			can_stand = FALSE
+
+	if(prev_state != can_stand)
+		if(!can_stand)
+			to_chat(src, SPAN_DANGER("Your legs can't hold you up any longer!"))
+		update_canmove()

@@ -103,7 +103,7 @@
 
 			raw_damage = attack.damage + extra_cqc_dmg
 			var/final_damage = armor_damage_reduction(GLOB.marine_melee, raw_damage, armor, FALSE) // no penetration from punches
-			apply_damage(final_damage, BRUTE, affecting, sharp=attack.sharp, edge = attack.edge)
+			apply_damage(final_damage, BRUTE, affecting)
 
 		if(INTENT_DISARM)
 			if(M == src)
@@ -207,10 +207,20 @@
 		if(client)
 			sleeping = max(0,src.sleeping-5)
 		if(!sleeping)
+			if(M.pulling == src && M.grab_level != GRAB_LIFTUP) //Helping someone to stand up
+				M.visible_message(SPAN_NOTICE("[M] starts lifting [src] up..."),
+								  SPAN_NOTICE("You start lifting [src] to help [t_him] stand up..."))
+				if(do_after(M, 2 SECONDS, INTERRUPT_ALL, BUSY_ICON_GENERIC, src, INTERRUPT_MOVED, BUSY_ICON_GENERIC))
+					M.grab_level = GRAB_LIFTUP
+					M.visible_message(SPAN_NOTICE("[M] lifts [src] up from the ground and holds [t_him], helping them to stand up."),
+									SPAN_NOTICE("You lift [src] up from the ground and hold [t_him], preventing [t_him] from falling."))
+					M.AddElement(/datum/element/standing_helper)
+
 			resting = 0
 			update_canmove()
-		M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
-			SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
+		else
+			M.visible_message(SPAN_NOTICE("[M] shakes [src] trying to wake [t_him] up!"), \
+				SPAN_NOTICE("You shake [src] trying to wake [t_him] up!"), null, 4)
 	else
 		var/mob/living/carbon/human/H = M
 		if(istype(H))
@@ -228,53 +238,72 @@
 	playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, 1, 7)
 
 /mob/living/carbon/human/proc/check_for_injuries()
-	visible_message(SPAN_NOTICE("[src] examines [gender==MALE?"himself":"herself"]."), \
+	visible_message(SPAN_NOTICE("[src] examines \himself."), \
 	SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
-	for(var/obj/limb/org in limbs)
+	var/dat
+	var/count
+	var/severe //False/null = period, TRUE = exclamation mark.
+	var/prosthetic
+
+	for(var/obj/limb/org as anything in limbs)
 		var/list/status = list()
-		var/brutedamage = org.brute_dam
-		var/burndamage = org.burn_dam
 		if(org.status & LIMB_DESTROYED)
-			status += "MISSING!"
+			if(org.parent?.status & LIMB_DESTROYED) //The foot of a severed limb shouldn't have any conditions at all.
+				count++ //Add it to the tally. The parent will show in the list, so we shouldn't get someone with no messages other than "my other limbs are ok".
+				continue
+			if(org.status & LIMB_AMPUTATED)
+				status += "an amputated stump"
+			else
+				status += "a torn stump"
+				severe = TRUE
 		else if(org.status & LIMB_ROBOT)
-			switch(brutedamage)
+			prosthetic = TRUE
+			if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
+				status += " not working"
+				severe = TRUE
+			switch(org.brute_dam)
 				if(1 to 20)
 					status += "dented"
 				if(20 to 40)
 					status += "battered"
 				if(40 to INFINITY)
 					status += "mangled"
+					severe = TRUE
 
-			switch(burndamage)
+			switch(org.burn_dam)
 				if(1 to 10)
 					status += "singed"
 				if(10 to 40)
 					status += "scorched"
 				if(40 to INFINITY)
 					status += "charred"
-
+					severe = TRUE
 		else
 			if(org.status & LIMB_MUTATED)
 				status += "weirdly shaped"
+				severe = TRUE
 			if(halloss > 0)
 				status += "tingling"
-			switch(brutedamage)
+			switch(org.brute_dam)
 				if(1 to 20)
 					status += "bruised"
 				if(20 to 40)
 					status += "battered"
 				if(40 to INFINITY)
 					status += "mangled"
+					severe = TRUE
 
-			switch(burndamage)
+			switch(org.burn_dam)
 				if(1 to 10)
 					status += "numb"
 				if(10 to 40)
 					status += "blistered"
 				if(40 to INFINITY)
 					status += "peeling away"
+					severe = TRUE
 
+//This proc needs to display int and wounds at some point and I intend to do that, but the surgery rework majorly messes with it, so let's wait until that's merged in before poking it again. -VVanagandr
 		if(org.get_incision_depth()) //Unindented because robotic and severed limbs may also have surgeries performed upon them.
 			status += "cut open"
 
@@ -286,20 +315,21 @@
 		if(limb_surgeries)
 			status += "undergoing [limb_surgeries]"
 
-		if(!length(status))
-			status += "OK"
-
 		var/postscript
-		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
-			postscript += " <b>(NONFUNCTIONAL)</b>"
-		if(org.status & LIMB_BROKEN)
-			postscript += " <b>(BROKEN)</b>"
-		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-			postscript += " <b>(NANOSPLINTED)</b>"
-		else if(org.status & LIMB_SPLINTED)
-			postscript += " <b>(SPLINTED)</b>"
+		/*if(org.status & LIMB_BROKEN)
+			postscript += " <b>(BROKEN)</b>"*/
 
-		if(postscript)
-			to_chat(src, "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]")
-		else
-			to_chat(src, "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]")
+		if(length(status) || postscript)
+			count++
+			dat += "\t My [prosthetic && !isSpeciesSynth(src) ? "cybernetic " : ""][org.display_name] is [SPAN_ALERT("[english_list(status, nothing_text = "OK", final_comma_text = ",")][severe ? "!" : "."][postscript]")]\n"
+
+	switch(count)
+		if(null)
+			dat += SPAN_HELPFUL("\t I'm OK.\n")
+		if(1 to HUMAN_LIMB_AMOUNT - 2)
+			dat += SPAN_HELPFUL("\t My other limbs are OK.\n")
+		if(HUMAN_LIMB_AMOUNT - 1)
+			dat += SPAN_HELPFUL("\t My other limb is OK.\n")
+	
+	dat += "<a href='?src=\ref[src];limbitems=1'>Check limb items</a>"
+	to_chat(src, dat)

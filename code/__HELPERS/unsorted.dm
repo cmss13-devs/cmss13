@@ -5,11 +5,11 @@
 // GLOBAL DEFINES //
 #define is_hot(I) (I?:heat_source)
 
-//Whether or not the given item counts as sharp in terms of dealing damage
-#define is_sharp(I) (isitem(I) && I?:sharp && I?:edge)
+//Whether or not the given item counts as sharp in terms of dealing damage. Gives melee/thrown weapons armour penetration and extra int damage against humans.
+#define is_sharp(I) (isitem(I) && I?:sharp > 0)
 
-//Whether or not the given item counts as cutting with an edge in terms of removing limbs
-#define has_edge(I) (isitem(I) && I?:edge)
+//Whether or not the given item counts as cutting with an edge. Gives melee/thrown weapons armour penetration and extra int damage against humans.
+#define has_edge(I) (isitem(I) && I?:edge > 0)
 
 //Returns 1 if the given item is capable of popping things like balloons, inflatable barriers, or cutting police tape.
 // For the record, WHAT THE HELL IS THIS METHOD OF DOING IT?
@@ -974,6 +974,8 @@ var/global/image/action_blue_power_up
 	var/mob/living/L = user
 	if(!istype(L))
 		return FALSE
+
+	delay += L.action_delay 
 
 	// This var will only be used for checks that require target to be living.
 	var/mob/living/T = target

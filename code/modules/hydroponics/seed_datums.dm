@@ -1228,7 +1228,7 @@ proc/populate_seed_list()
 	seed_name = "S'randar's hand"
 	display_name = "S'randar's hand leaves"
 	packet_icon = "seed-shand"
-	products = list(/obj/item/stack/medical/advanced/bruise_pack/predator)
+	products = list(/obj/item/stack/medical/healing/traumakit/predator)
 	plant_icon = "shand"
 	chems = list("bicaridine" = list(0,10))
 
@@ -1244,7 +1244,7 @@ proc/populate_seed_list()
 	seed_name = "Messa's tear"
 	display_name = "Messa's tear leaves"
 	packet_icon = "seed-mtear"
-	products = list(/obj/item/stack/medical/advanced/ointment/predator)
+	products = list(/obj/item/stack/medical/healing/burnkit/predator)
 	plant_icon = "mtear"
 	chems = list("honey" = list(1,10), "kelotane" = list(3,5))
 

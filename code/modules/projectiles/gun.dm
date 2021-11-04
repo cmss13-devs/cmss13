@@ -694,8 +694,10 @@
 			return
 
 	if(ishuman(user))
-		var/check_hand = user.r_hand == src ? "l_hand" : "r_hand"
 		var/mob/living/carbon/human/wielder = user
+		if(world.time < (pull_time + wielder.minimum_wield_delay))
+			return
+		var/check_hand = user.r_hand == src ? "l_hand" : "r_hand"
 		var/obj/limb/hand = wielder.get_limb(check_hand)
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(user, SPAN_WARNING("Your other hand can't hold \the [src]!"))
@@ -1238,7 +1240,7 @@ and you're good to go.
 				cause_data = create_cause_data("suicide by [initial(name)]")
 				if(istype(current_revolver) && current_revolver.russian_roulette) //If it's a revolver set to Russian Roulette.
 					t += " after playing Russian Roulette"
-					HM.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", no_limb_loss = TRUE, permanent_kill = TRUE)
+					HM.apply_damage(projectile_to_fire.damage * 3, projectile_to_fire.ammo.damage_type, "head", used_weapon = "An unlucky pull of the trigger during Russian Roulette!", int_dmg_multiplier = INT_DMG_MULTIPLIER_VERYSHARP, no_limb_loss = TRUE, permanent_kill = TRUE)
 					HM.apply_damage(200, OXY) //Fill out the rest of their healthbar.
 					HM.death(create_cause_data("russian roulette with \a [name]", user)) //Make sure they're dead. permanent_kill above will make them unrevivable.
 					HM.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
@@ -1246,7 +1248,7 @@ and you're good to go.
 					to_chat(user, SPAN_HIGHDANGER("Your life flashes before you as your spirit is torn from your body!"))
 					user.ghostize(0) //No return.
 				else
-					HM.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", no_limb_loss = TRUE, permanent_kill = TRUE)
+					HM.apply_damage(projectile_to_fire.damage * 2.5, projectile_to_fire.ammo.damage_type, "head", used_weapon = "Point blank shot in the mouth with \a [projectile_to_fire]", int_dmg_multiplier = INT_DMG_MULTIPLIER_VERYSHARP ,no_limb_loss = TRUE, permanent_kill = TRUE)
 					HM.apply_damage(200, OXY) //Fill out the rest of their healthbar.
 					HM.death(cause_data) //Make sure they're dead. permanent_kill above will make them unrevivable.
 					HM.update_headshot_overlay(projectile_to_fire.ammo.headshot_state) //Add headshot overlay.
@@ -1603,6 +1605,8 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 		else
 			total_scatter_angle -= user.skills.get_skill_level(SKILL_FIREARMS)*SCATTER_AMOUNT_TIER_8
 
+	if(HAS_TRAIT(src, TRAIT_MOB_WEAK_HANDS))
+		total_scatter_angle += SCATTER_AMOUNT_TIER_9
 
 	//Not if the gun doesn't scatter at all, or negative scatter.
 	if(total_scatter_angle > 0)
@@ -1641,6 +1645,12 @@ not all weapons use normal magazines etc. load_into_chamber() itself is designed
 			total_recoil += RECOIL_AMOUNT_TIER_5
 		else
 			total_recoil -= user.skills.get_skill_level(SKILL_FIREARMS)*RECOIL_AMOUNT_TIER_5
+		if(HAS_TRAIT(user, TRAIT_MOB_WEAK_HANDS))
+			total_recoil += RECOIL_AMOUNT_TIER_4
+
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		total_recoil = max(total_recoil + H.minimum_gun_recoil, H.minimum_gun_recoil)
 
 	if(total_recoil > 0 && ishuman(user))
 		if(total_recoil >= 4)

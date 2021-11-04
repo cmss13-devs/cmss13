@@ -70,13 +70,13 @@
 		SPAN_WARNING("[user]'s hand slips, tearing a blood vessel in [target]'s [surgery.affected_limb.display_name] with \the [tool]!"))
 
 	log_interact(user, target, "[key_name(user)] failed to take the bone chips out of [key_name(target)]'s brain with \the [tool], possibly aborting [surgery].")
-
+/*
 	var/datum/wound/internal_bleeding/I = new (0)
 	surgery.affected_limb.add_bleeding(I, TRUE)
 	surgery.affected_limb.wounds += I
 	target.custom_pain("You feel something rip in your [surgery.affected_limb.display_name]!", 1)
 	return FALSE
-
+*/
 //------------------------------------
 
 /datum/surgery_step/treat_hematoma

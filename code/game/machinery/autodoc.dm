@@ -57,15 +57,15 @@
 
 
 /obj/structure/machinery/autodoc/power_change(var/area/master_area = null)
-	..()
+	/*..()
 	if(stat & NOPOWER)
 		visible_message("\The [src] engages the safety override, ejecting the occupant.")
 		surgery = 0
 		go_out()
-		return
+		return*/
 
 /obj/structure/machinery/autodoc/proc/heal_limb(var/mob/living/carbon/human/human, var/brute, var/burn)
-	var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
+	/*var/list/obj/limb/parts = human.get_damaged_limbs(brute,burn)
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
 	if(picked.status & LIMB_ROBOT)
@@ -77,9 +77,10 @@
 		human.apply_damage(-burn, BURN, picked)
 
 	human.UpdateDamageIcon()
-	human.updatehealth()
+	human.updatehealth()*/
 
 /obj/structure/machinery/autodoc/process()
+	/*
 	set background = 1
 
 	updateUsrDialog()
@@ -143,7 +144,7 @@
 				else
 					heal_toxin = 0
 					visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> speaks: Chelation complete.")
-
+*/
 
 #define LIMB_SURGERY 1
 #define ORGAN_SURGERY 2
@@ -171,7 +172,7 @@
 	return 0
 
 /proc/generate_autodoc_surgery_list(mob/living/carbon/human/M)
-	if(!ishuman(M))
+	/*if(!ishuman(M))
 		return list()
 	var/surgery_list = list()
 	var/known_implants = list(/obj/item/implant/chem, /obj/item/implant/death_alarm, /obj/item/implant/loyalty, /obj/item/implant/tracking, /obj/item/implant/neurostim)
@@ -229,9 +230,9 @@
 	if(M.blood_volume < BLOOD_VOLUME_NORMAL)
 		surgery_list += create_autodoc_surgery(null,EXTERNAL_SURGERY,"blood")
 	return surgery_list
-
+*/
 /obj/structure/machinery/autodoc/proc/surgery_op(mob/living/carbon/M)
-	set background = 1
+	/*set background = 1
 
 	if(M.stat == DEAD||!ishuman(M))
 		visible_message("\The [src] buzzes.")
@@ -489,8 +490,8 @@
 	visible_message("[icon2html(src, viewers(src))] \The <b>[src]</b> clicks and opens up having finished the requested operations.")
 	surgery = 0
 	go_out()
-
-
+*/
+/*
 /obj/structure/machinery/autodoc/proc/open_incision(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SURFACE)
 		sleep(INCISION_MANAGER_MAX_DURATION*surgery_mod)
@@ -499,7 +500,7 @@
 		L.createwound(CUT, 1)
 		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW //Can immediately proceed to other surgery steps
 		target.updatehealth()
-
+*/
 /obj/structure/machinery/autodoc/proc/close_incision(mob/living/carbon/human/target, var/obj/limb/L)
 	if(target && L && target.incision_depths[L.name] == SURGERY_DEPTH_SHALLOW)
 		sleep(CAUTERY_MAX_DURATION*surgery_mod)
@@ -524,7 +525,7 @@
 		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW
 
 /obj/structure/machinery/autodoc/verb/eject()
-	set name = "Eject Med-Pod"
+	/*set name = "Eject Med-Pod"
 	set category = "Object"
 	set src in oview(1)
 	if(usr.stat == DEAD)
@@ -554,9 +555,10 @@
 			message_staff("[key_name(usr)] ejected [key_name(occupant)] from the autodoc during surgery causing damage.")
 		go_out()
 		add_fingerprint(usr)
+		*/
 
 /obj/structure/machinery/autodoc/verb/move_inside()
-	set name = "Enter Autodoc"
+	/*set name = "Enter Autodoc"
 	set category = "Object"
 	set src in oview(1)
 
@@ -581,10 +583,10 @@
 			to_chat(usr, SPAN_NOTICE("\The [src] is already occupied!"))
 			return
 		go_in_autodoc(usr)
-		add_fingerprint(usr)
+		add_fingerprint(usr)*/
 
 /obj/structure/machinery/autodoc/proc/go_in_autodoc(mob/M)
-	M.forceMove(src)
+	/*M.forceMove(src)
 	update_use_power(2)
 	occupant = M
 	icon_state = "autodoc_closed"
@@ -593,12 +595,12 @@
 		connected.start_processing()
 	//prevents occupant's belonging from landing inside the machine
 	for(var/obj/O in src)
-		O.forceMove(loc)
+		O.forceMove(loc)*/
 
 
 
 /obj/structure/machinery/autodoc/proc/go_out()
-	if(!occupant) return
+	/*if(!occupant) return
 	occupant.forceMove(loc)
 	occupant.update_med_icon()
 	occupant = null
@@ -609,10 +611,10 @@
 	if(connected)
 		connected.stop_processing()
 		connected.process() // one last update
-
+*/
 
 /obj/structure/machinery/autodoc/attackby(obj/item/W, mob/living/user)
-	if(!ishuman(user))
+	/*if(!ishuman(user))
 		return // no
 	if(istype(W, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = W
@@ -648,7 +650,7 @@
 			go_in_autodoc(M)
 
 			add_fingerprint(user)
-
+*/
 #ifdef OBJECTS_PROXY_SPEECH
 // Transfers speech to occupant
 /obj/structure/machinery/autodoc/hear_talk(mob/living/sourcemob, message, verb, language, italics)
@@ -712,7 +714,7 @@
 	updateUsrDialog()
 
 /obj/structure/machinery/autodoc_console/attack_hand(mob/living/user)
-	if(..())
+	/*if(..())
 		return
 	var/dat = ""
 	if(!connected || (connected.inoperable()))
@@ -847,9 +849,9 @@
 	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)
 	show_browser(user, dat, "Autodoc Medical System", "sleeper", "size=300x400")
 	onclose(user, "sleeper")
-
+*/
 /obj/structure/machinery/autodoc_console/Topic(href, href_list)
-	if(..())
+	/*if(..())
 		return
 	if((usr.contents.Find(src) || ((get_dist(src, usr) <= 1) && istype(src.loc, /turf))))
 		usr.set_interaction(src)
@@ -979,6 +981,6 @@
 			connected.eject()
 			updateUsrDialog()
 		add_fingerprint(usr)
-
+*/
 /obj/structure/machinery/autodoc/event
 	event = TRUE

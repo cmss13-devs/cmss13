@@ -1565,14 +1565,14 @@
 		surprise.add_mob_blood(M)
 		var/mob/living/carbon/human/H = M
 		var/obj/limb/E = H.get_limb("chest")
-		E.fracture(100)
+		E.take_integrity_damage(80)
 		H.recalculate_move_delay = TRUE
 		for (var/datum/internal_organ/I in E.internal_organs)
-			I.take_damage(rand(I.min_bruised_damage, I.min_broken_damage+1))
+			I.take_damage(rand(I.min_malf_damage, I.min_broken_damage+1))
 		if (!E.hidden && prob(60)) //set it snuggly
 			E.hidden = surprise
 		else 		//someone is having a bad day
-			E.createwound(CUT, 30)
+			E.take_damage(30)
 			E.embed(surprise)
 	..()
 

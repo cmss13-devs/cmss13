@@ -135,7 +135,7 @@
 
 	log_interact(user, target, "[key_name(user)] failed to mend the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
 
-	target.apply_damage(10, BRUTE, target_zone, sharp = 1)
+	target.apply_damage(10, BRUTE, target_zone)
 	surgery.target_eyes.take_damage(5, FALSE)
 	return FALSE
 

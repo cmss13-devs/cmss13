@@ -29,6 +29,9 @@
 			msg += "<span style='font-weight: bold; color: purple;'>You sense this creature is dead.\n"
 		else if(stat || !client)
 			msg += "<span class='xenowarning'>It doesn't seem responsive.\n</span>"
+		for(var/obj/limb/L in limbs)
+			if(L.integrity_level)
+				msg += SPAN_XENOMINORWARNING("Its [L.display_name] is [L.integrity_damage > 100 ? "greatly weakened" : "weakened"]!\n")
 		msg += "*---------*</span>"
 		to_chat(user, msg)
 		return
@@ -169,26 +172,7 @@
 			msg += SPAN_WARNING("[t_He] [t_is] extremely jittery.\n")
 		else if(jitteriness >= 100)
 			msg += SPAN_WARNING("[t_He] [t_is] twitching ever so slightly.\n")
-
-	//splints & surgical incisions
-	for(var/organ in list("l_leg","r_leg","l_arm","r_arm","l_foot","r_foot","l_hand","r_hand","chest","groin","head"))
-		var/obj/limb/o = get_limb(organ)
-		if(o)
-			var/list/damage = list()
-			if(o.status & LIMB_SPLINTED)
-				damage += "a splint"
-
-			var/limb_incision = o.get_incision_depth()
-			if(limb_incision)
-				damage += limb_incision
-
-			var/limb_surgeries = o.get_active_limb_surgeries()
-			if(limb_surgeries)
-				damage += limb_surgeries
-
-			if(length(damage))
-				msg += SPAN_WARNING("[t_He] [t_has] [english_list(damage, final_comma_text = ",")] on [t_his] [o.display_name]!\n")
-
+			
 	if(holo_card_color)
 		msg += "[t_He] has a [holo_card_color] holo card on [t_his] chest.\n"
 
@@ -226,7 +210,7 @@
 	var/list/wound_flavor_text = list()
 	var/list/is_destroyed = list()
 	var/list/is_bleeding = list()
-	for(var/obj/limb/temp in limbs)
+	for(var/obj/limb/temp in limbs)/*
 		if(temp)
 			if(temp.status & LIMB_DESTROYED)
 				is_destroyed["[temp.display_name]"] = 1
@@ -306,7 +290,7 @@
 					is_bleeding["[temp.display_name]"] = TRUE
 					break
 			else
-				wound_flavor_text["[temp.display_name]"] = ""
+				wound_flavor_text["[temp.display_name]"] = ""*/
 
 	//Handles the text strings being added to the actual description.
 	//If they have something that covers the limb, and it is not missing, put flavortext.  If it is covered but bleeding, add other flavortext.

@@ -1,8 +1,9 @@
 //Grab levels
 #define GRAB_PASSIVE	0
-#define GRAB_AGGRESSIVE	1
-#define GRAB_CARRY      2
-#define GRAB_CHOKE      3
+#define GRAB_LIFTUP		1
+#define GRAB_AGGRESSIVE	2
+#define GRAB_CARRY      3
+#define GRAB_CHOKE      4
 
 //Ammo defines for gun/projectile related things.
 
@@ -149,7 +150,8 @@
 #define ARMOR_RAD 64
 #define ARMOR_INTERNALDAMAGE 128
 
-#define ARMOR_SHARP_INTERNAL_PENETRATION 10
+///How much armour edged or sharp melee weapons bypass. Stacks - sharp = 10, edge = 10, sharp + edge = 20.
+#define ARMOR_SHARP_PENETRATION 15
 
 // Related to damage that ANTISTRUCT ammo types deal to structures
 #define ANTISTRUCT_DMG_MULT_BARRICADES 1.45

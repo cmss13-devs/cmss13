@@ -50,12 +50,13 @@
 		return
 
 	src.visible_message(SPAN_DANGER("[src] has been hit by [O]."), null, null, 5)
-	var/damage_done = apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, , is_sharp(O), has_edge(O), null)
+	
+	var/sharp = is_sharp(O)
+	var/damage_done = apply_armoured_damage(impact_damage, ARMOR_MELEE, dtype, null, ((sharp + has_edge(O)) * ARMOR_SHARP_PENETRATION), sharp, has_edge(O))
 
 	if (damage_done > 5)
 		animation_flash_color(src)
-		var/obj/item/I = O
-		if(istype(I) && I.sharp) //Hilarious is_sharp only returns true if it's sharp AND edged, while a bunch of things don't have edge to limit embeds.
+		if(sharp)
 			playsound(loc, 'sound/effects/spike_hit.ogg', 20, TRUE, falloff = 2)
 		else
 			playsound(loc, 'sound/effects/thud.ogg', 25, TRUE, falloff = 2)

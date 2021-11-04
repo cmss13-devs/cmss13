@@ -244,13 +244,13 @@
 /mob/living/carbon/human/proc/handle_speech_problems(var/message)
 	var/list/returns[3]
 	var/verb = "says"
-	var/handled = 0
+	var/handled = FALSE
 	if(silent)
 		message = ""
-		handled = 1
+		handled = TRUE
 	if(sdisabilities & DISABILITY_MUTE)
 		message = ""
-		handled = 1
+		handled = TRUE
 	if(wear_mask)
 		if(istype(wear_mask, /obj/item/clothing/mask/horsehead))
 			var/obj/item/clothing/mask/horsehead/hoers = wear_mask
@@ -262,18 +262,18 @@
 	if(slurring)
 		message = slur(message)
 		verb = pick("stammers","stutters")
-		handled = 1
-	if(stuttering)
+		handled = TRUE
+	if(stuttering || HAS_TRAIT(src, TRAIT_MOB_STUTTER))
 		message = NewStutter(message)
 		verb = pick("stammers", "stutters")
-		handled = 1
+		handled = TRUE
 	if(dazed)
 		message = DazedText(message)
 		verb = pick("mumbles", "babbles")
-		handled = 1
+		handled = TRUE
 	var/braindam = getBrainLoss()
 	if(braindam >= 60)
-		handled = 1
+		handled = TRUE
 		if(prob(braindam/4))
 			message = stutter(message)
 			verb = pick("stammers", "stutters")

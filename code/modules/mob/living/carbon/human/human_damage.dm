@@ -118,7 +118,7 @@
 		var/obj/limb/O = X
 		if(O.name == organ_name)
 			if(amount > 0)
-				O.take_damage(amount, 0, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
+				O.take_damage(amount, 0, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL, used_weapon=damage_source)
 			else
 				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
 				O.heal_damage(-amount, 0, O.status & LIMB_ROBOT)
@@ -134,7 +134,7 @@
 		var/obj/limb/O = X
 		if(O.name == organ_name)
 			if(amount > 0)
-				O.take_damage(0, amount, sharp=is_sharp(damage_source), edge=has_edge(damage_source), used_weapon=damage_source)
+				O.take_damage(0, amount, 0, used_weapon=damage_source)
 			else
 				//if you don't want to heal robot limbs, they you will have to check that yourself before using this proc.
 				O.heal_damage(0, -amount, O.status & LIMB_ROBOT)
@@ -226,12 +226,13 @@
 ////////////////////////////////////////////
 
 //Returns a list of damaged limbs
-/mob/living/carbon/human/proc/get_damaged_limbs(var/brute, var/burn)
+/mob/living/carbon/human/proc/get_damaged_limbs(var/brute, var/burn, var/integrity)
 	var/list/obj/limb/parts = list()
 	for(var/obj/limb/O in limbs)
-		if((brute && O.brute_dam) || (burn && O.burn_dam))
+		if((brute && O.brute_dam) || (burn && O.burn_dam) || (integrity && O.integrity_damage))
 			parts += O
 	return parts
+
 
 //Returns a list of damageable limbs
 /mob/living/carbon/human/proc/get_damageable_limbs()
@@ -263,18 +264,17 @@ In most cases it makes more sense to use apply_damage() instead! And make sure t
 //Damages ONE external organ, organ gets randomly selected from damagable ones.
 //It automatically updates damage overlays if necesary
 //It automatically updates health status
-/mob/living/carbon/human/take_limb_damage(var/brute, var/burn, var/sharp = 0, var/edge = 0)
+/mob/living/carbon/human/take_limb_damage(var/brute, var/burn, var/int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
 	var/list/obj/limb/parts = get_damageable_limbs()
 	if(!parts.len)	return
 	var/obj/limb/picked = pick(parts)
 	if(brute != 0)
-		apply_damage(brute, BRUTE, picked, sharp, edge)
+		apply_damage(brute, BRUTE, picked, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
 	if(burn != 0)
-		apply_damage(burn, BURN, picked, sharp, edge)
+		apply_damage(burn, BURN, picked, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
 	UpdateDamageIcon()
 	updatehealth()
 	speech_problem_flag = 1
-
 
 //Heal MANY limbs, in random order
 /mob/living/carbon/human/heal_overall_damage(var/brute, var/burn, var/robo_repair = FALSE)
@@ -336,7 +336,11 @@ This function restores all limbs.
 			var/datum/internal_organ/IO = new internal_organ_type(src)
 			internal_organs_by_name[organ_slot] = IO
 
+	update_can_stand()
 
+/mob/living/carbon/human/heal_integrity_damage()
+	for(var/obj/limb/E in limbs)
+		E.set_integrity_level(LIMB_INTEGRITY_PERFECT)
 
 /mob/living/carbon/human/proc/HealDamage(zone, brute, burn)
 	var/obj/limb/E = get_limb(zone)
@@ -353,7 +357,9 @@ This function restores all limbs.
 	return (locate(limb_types_by_name[zone]) in limbs)
 
 
-/mob/living/carbon/human/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null, var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0)
+/mob/living/carbon/human/apply_armoured_damage(var/damage = 0, var/armour_type = ARMOR_MELEE, var/damage_type = BRUTE, var/def_zone = null,
+	var/penetration = 0, var/armour_break_pr_pen = 0, var/armour_break_flat = 0, int_dmg_multiplier = 1)
+
 	if(damage <= 0)
 		return ..(damage, armour_type, damage_type, def_zone)
 
@@ -372,7 +378,7 @@ This function restores all limbs.
 		armour_config = GLOB.marine_melee
 
 	var/modified_damage = armor_damage_reduction(armour_config, damage, armor, penetration, 0, 0)
-	apply_damage(modified_damage, damage_type, target_limb)
+	apply_damage(modified_damage, damage_type, target_limb, int_dmg_multiplier = int_dmg_multiplier)
 
 	return modified_damage
 
@@ -382,9 +388,8 @@ This function restores all limbs.
 	*	permanent_kill: whether this attack causes human to become irrevivable
 */
 /mob/living/carbon/human/apply_damage(var/damage = 0, var/damagetype = BRUTE, var/def_zone = null, \
-	var/sharp = 0, var/edge = 0, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
-	var/permanent_kill = FALSE, var/mob/firer = null, var/force = FALSE
-)
+	var/int_dmg_multiplier = 1, var/obj/used_weapon = null, var/no_limb_loss = FALSE, \
+	var/permanent_kill = FALSE, var/mob/firer = null, var/force = FALSE)
 	if(protection_aura && damage > 0)
 		damage = round(damage * ((ORDER_HOLD_CALC_LEVEL - protection_aura) / ORDER_HOLD_CALC_LEVEL))
 
@@ -397,9 +402,7 @@ This function restores all limbs.
 		..(damage, damagetype, def_zone)
 		return TRUE
 
-	var/list/damagedata = list("damage" = damage)
-	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damagedata, damagetype) & COMPONENT_BLOCK_DAMAGE) return
-	damage = damagedata["damage"]
+	if(SEND_SIGNAL(src, COMSIG_HUMAN_TAKE_DAMAGE, damage, damagetype) & COMPONENT_BLOCK_DAMAGE) return
 
 	var/obj/limb/organ = null
 	if(isorgan(def_zone))
@@ -423,14 +426,16 @@ This function restores all limbs.
 			damageoverlaytemp = 20
 			if(species.brute_mod && !force)
 				damage = damage * species.brute_mod
-			if(organ.take_damage(damage, 0, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
+			if(organ.take_damage(damage, 0, int_dmg_multiplier, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
 				UpdateDamageIcon()
+
 		if(BURN)
 			damageoverlaytemp = 20
 			if(species.burn_mod && !force)
 				damage = damage * species.burn_mod
-			if(organ.take_damage(0, damage, sharp, edge, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
+			if(organ.take_damage(0, damage, int_dmg_multiplier, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
 				UpdateDamageIcon()
+
 
 	pain.apply_pain(damage, damagetype)
 

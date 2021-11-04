@@ -25,9 +25,9 @@
 				b_volume = 0
 			else if(chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)
 				b_volume *= 1
-			else if(heart.damage > 1 && heart.damage < heart.min_bruised_damage)
+			else if(heart.damage > 1 && heart.damage < heart.min_malf_damage)
 				b_volume *= 0.8
-			else if(heart.damage >= heart.min_bruised_damage && heart.damage < heart.min_broken_damage)
+			else if(heart.damage >= heart.min_malf_damage && heart.damage < heart.min_broken_damage)
 				b_volume *= 0.6
 			else if(heart.damage >= heart.min_broken_damage && heart.damage < INFINITY)
 				b_volume *= 0.3
@@ -93,6 +93,14 @@
 /mob/living/carbon/human/restore_blood()
 	blood_volume = BLOOD_VOLUME_NORMAL
 
+/mob/living/carbon/proc/blood_spray(var/amt, var/turf/sprayloc)
+	if(amt <= 0)
+		return
+	var/spray_direction = pick(alldirs)
+	var/datum/cause_data/cause_data = create_cause_data("arterial blood spray", src)
+	create_shrapnel(sprayloc, 1, spray_direction, 45, /datum/ammo/bullet/shrapnel/blood, cause_data, TRUE)
+
+	return amt
 
 /*
 				BLOOD TRANSFERS

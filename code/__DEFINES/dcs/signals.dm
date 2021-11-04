@@ -140,7 +140,8 @@
 #define COMSIG_HUMAN_TAKE_DAMAGE "human_take_damage"
 	#define COMPONENT_BLOCK_DAMAGE (1<<0)
 
-#define COMSIG_ITEM_ATTEMPT_ATTACK "item_attempt_attack"
+#define COMSIG_ITEM_ATTACK "item_attack"
+#define COMSIG_MOB_ITEM_ATTEMPT_ATTACK "mob_item_attempt_attack"
 	#define COMPONENT_CANCEL_ATTACK (1<<0)
 
 ///Called in /mob/reset_view(): (atom/A)
@@ -248,6 +249,7 @@
 #define COMSIG_HUMAN_POST_UPDATE_SIGHT "human_post_update_sight"
 ///from /mob/living/carbon/human/movement_delay(): (list/movedata)
 #define COMSIG_HUMAN_POST_MOVE_DELAY "human_post_move_delay"
+	#define COMPONENT_HUMAN_MOVE_DELAY_MALUS (1<<0)
 
 // /obj/item signals
 ///from base of obj/item/dropped(): (mob/user)
@@ -395,6 +397,46 @@
 /// From /obj/effect/alien/weeds/proc/on_weed_expand()
 #define COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER "weednode_cannot_expand_further"
 
+// From /mob/proc/stop_pulling()
+#define COMSIG_MOB_STOPPED_PULLING "mob_stopped_pulling"
+
+/// From obj/limb/groin/reapply_integrity_effects()
+#define COMSIG_MOB_INGESTION "mob_ingestion"
+
+/// From obj/limb/head/reapply_integrity_effects()
+#define COMSIG_MOB_PRE_ITEM_ZOOM "mob_pre_item_zoom"
+	#define COMPONENT_CANCEL_ZOOM (1<<0)
+
+#define COMSIG_MOB_PRE_GLASSES_SIGHT_BONUS "mob_pre_special_vision_application"
+	#define COMPONENT_BLOCK_GLASSES_SIGHT_BONUS (1<<0)
+
+#define COMSIG_MOB_PRE_EYE_TINTCHECK "mob_pre_eye_tintcheck"
+	#define COMPONENT_ADD_EYETINT (1<<0)
+
+/// From obj/limb/arm/reapply_integrity_effects()
+#define COMSIG_MOB_ADD_DELAY "add_work_delay"
+
+/// From obj/limb/leg/reapply_integrity_effects()
+#define COMSIG_MOB_ADD_DRAG_DELAY "add_drag_delay"
+
+#define COMSIG_MOB_ADD_KNOCKDOWN "add_knockdown"
+
+#define COMSIG_PRE_LOCAL_WOUND_EFFECTS "pre_local_wound_effects"
+	#define COMPONENT_STABILIZE_WOUND (1<<0)
+
+// From obj/limb/proc/take_damage()
+// Sent after the limb has taken damage
+#define COMSIG_LIMB_TAKEN_DAMAGE "limb_taken_damage"
+
+#define COMSIG_LIMB_WOUND_STABILIZER_ADDED "limb_wound_stabilizer_added"
+
+#define COMSIG_LIMB_WOUND_STABILIZER_REMOVED "limb_wound_stabilizer_removed"
+
+#define COMSIG_LIMB_INTEGRITY_CHANGED "limb_integrity_changed"
+
+#define COMSIG_LIMB_GET_ATTACHED_ITEMS "limb_get_removable_items"
+
+#define COMSIG_ITEM_REMOVED_FROM_LIMB "limb_item_removed"
 //from /mob/proc/on_deafness_gain()
 #define COMSIG_MOB_DEAFENED "mob_deafened"
 //from /mob/proc/on_deafness_loss()

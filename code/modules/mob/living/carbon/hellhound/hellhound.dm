@@ -77,7 +77,7 @@
 			return
 
 		var/dmg = rand(10,25)
-		H.apply_damage(dmg,BRUTE,edge = 1) //Does NOT check armor.
+		H.apply_damage(dmg,BRUTE, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP) //Does NOT check armor.
 		visible_message(SPAN_DANGER("<B>[src] mauls [H]!</b>"),SPAN_DANGER("<B>You maul [H]!</b>"))
 		playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
 	return
@@ -95,7 +95,7 @@
 		src.start_pulling(X)
 	else
 		var/dmg = rand(20,32)
-		X.apply_damage(dmg,BRUTE,edge = 1) //Does NOT check armor.
+		X.apply_damage(dmg,BRUTE, INT_DMG_MULTIPLIER_SHARP) //Does NOT check armor.
 		visible_message(SPAN_DANGER("<B>[src] mauls [X]!</b>"),SPAN_DANGER("<B>You maul [X]!</b>"))
 		playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
 	return
@@ -122,7 +122,7 @@
 		if(isYautja(H))
 			return
 		var/dmg = rand(3,8)
-		H.apply_damage(dmg,BRUTE,edge = 1) //Does NOT check armor.
+		H.apply_damage(dmg, BRUTE, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP) //Does NOT check armor.
 		visible_message(SPAN_DANGER("<B>[src] mauls [H]!</b>"),SPAN_DANGER("<B>You maul [H]!</b>"))
 		playsound(loc, 'sound/weapons/bite.ogg', 25, 1)
 	return

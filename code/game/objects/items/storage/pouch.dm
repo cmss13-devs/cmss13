@@ -583,8 +583,8 @@
 /obj/item/storage/pouch/medical/frt_kit/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/stack/medical/splint(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
 
 /obj/item/storage/pouch/medical/socmed
 	name = "tactical medical pouch"
@@ -602,8 +602,8 @@
 /obj/item/storage/pouch/medical/socmed/full/fill_preset_inventory()
 	new /obj/item/device/healthanalyzer(src)
 	new /obj/item/stack/medical/splint/nano(src)
-	new /obj/item/stack/medical/advanced/bruise_pack/upgraded(src)
-	new /obj/item/stack/medical/advanced/ointment/upgraded(src)
+	new /obj/item/stack/medical/healing/traumakit/upgraded(src)
+	new /obj/item/stack/medical/healing/burnkit/upgraded(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/bicaridine(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/kelotane(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)

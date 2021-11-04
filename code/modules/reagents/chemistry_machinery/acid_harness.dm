@@ -389,25 +389,29 @@
 		condition_scan |= ACID_SCAN_CONDITION_BLEEDING
 		if(!(last_condition_scan & ACID_SCAN_CONDITION_BLEEDING))
 			voice(ACID_SCAN_CONDITION_BLEEDING)
+	/*
 	if(inject_conditions & ACID_SCAN_CONDITION_BLEEDING_INTERNAL && user.is_bleeding_internal())
 		condition_scan |= ACID_SCAN_CONDITION_BLEEDING_INTERNAL
 		if(!(last_condition_scan & ACID_SCAN_CONDITION_BLEEDING_INTERNAL))
-			voice(ACID_SCAN_CONDITION_BLEEDING_INTERNAL)
+			voice(ACID_SCAN_CONDITION_BLEEDING_INTERNAL)*/
 	if(inject_conditions & ACID_SCAN_CONDITION_BLOODLOSS_HIGH && user.blood_volume < BLOOD_VOLUME_OKAY)
 		condition_scan |= ACID_SCAN_CONDITION_BLOODLOSS_HIGH
 		if(!(last_condition_scan & ACID_SCAN_CONDITION_BLOODLOSS_HIGH))
 			voice(ACID_SCAN_CONDITION_BLOODLOSS_HIGH)
+	/*
 	if(inject_conditions & ACID_SCAN_CONDITION_FRACTURE && user.has_broken_limbs())
 		condition_scan |= ACID_SCAN_CONDITION_FRACTURE
 		if(!(last_condition_scan & ACID_SCAN_CONDITION_FRACTURE))
-			voice(ACID_SCAN_CONDITION_FRACTURE)
+			voice(ACID_SCAN_CONDITION_FRACTURE)*/
+	/*
 	if(inject_conditions & ACID_SCAN_CONDITION_SPLINT && user.has_splinted_limbs())
 		condition_scan |= ACID_SCAN_CONDITION_SPLINT
+	*/
 	if(inject_conditions & ACID_SCAN_CONDITION_FOREIGN_OBJECT && user.has_foreign_object())
 		condition_scan |= ACID_SCAN_CONDITION_FOREIGN_OBJECT
 
 	for(var/datum/internal_organ/O in user.internal_organs)
-		if(O.damage > O.min_bruised_damage)
+		if(O.damage > O.min_malf_damage)
 			condition_scan |= ACID_SCAN_CONDITION_ORGAN_DAMAGED
 			if(!(last_condition_scan & ACID_SCAN_CONDITION_ORGAN_DAMAGED))
 				voice(ACID_SCAN_CONDITION_ORGAN_DAMAGED)

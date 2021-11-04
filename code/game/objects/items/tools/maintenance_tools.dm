@@ -383,7 +383,7 @@
 				to_chat(H, SPAN_WARNING("You go blind! Maybe welding without protection wasn't such a great idea..."))
 				return
 
-			if (E.damage >= E.min_bruised_damage)
+			if (E.damage >= E.min_malf_damage)
 				to_chat(H, SPAN_WARNING("Your vision starts blurring and your eyes hurt terribly!"))
 				return
 

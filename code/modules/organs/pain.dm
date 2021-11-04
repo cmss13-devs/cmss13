@@ -101,11 +101,7 @@ mob/living/carbon/human/proc/handle_pain()
 		if(E.status & (LIMB_DESTROYED))
 			continue
 
-		//If the body part is broken and splinted, we don't want to include bone break damage, which get_damage() does if it's more than raw damage.
-		if((E.status & LIMB_BROKEN) && (E.status & LIMB_SPLINTED))
-			dam = E.brute_dam + E.burn_dam
-		else
-			dam = E.get_damage()
+		dam = E.get_damage()
 
 		// make the choice of the organ depend on damage,
 		// but also sometimes use one of the less damaged ones
@@ -117,11 +113,9 @@ mob/living/carbon/human/proc/handle_pain()
 		pain(damaged_organ.display_name, maxdam, 0, on_fire)
 
 	// Damage to internal organs hurts a lot.
-	var/obj/limb/parent
 	for(var/datum/internal_organ/I as anything in internal_organs)
 		if(I.damage > 2 && prob(2))
-			parent = get_limb(I.parent_limb)
-			custom_pain("You feel a sharp pain in your [parent.display_name]!", 1)
+			custom_pain("You feel a sharp pain in your [I.parent_limb.display_name]!", 1)
 
 	var/toxDamageMessage = null
 	var/toxMessageProb = 1

@@ -247,7 +247,6 @@
 #define BLOOD_VOLUME_BAD		224
 #define BLOOD_VOLUME_SURVIVE	122
 
-
 //diseases
 #define SPECIAL -1
 #define NON_CONTAGIOUS 0
@@ -380,3 +379,11 @@ var/list/default_onmob_icons = list(
 #define HANDLING_LIMBS list("l_arm","l_hand", "r_arm", "r_hand")
 #define EXTREMITY_LIMBS list("l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
 #define CORE_LIMBS list("chest","head","groin")
+
+//Organ tags
+#define ORGAN_HEART "heart"
+#define ORGAN_LUNGS "lungs"
+#define ORGAN_LIVER "liver"
+#define ORGAN_KIDNEYS "kidneys"
+#define ORGAN_EYES "eyes"
+#define ORGAN_BRAIN "brain"

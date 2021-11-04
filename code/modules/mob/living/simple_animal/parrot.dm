@@ -484,7 +484,7 @@
 				var/mob/living/carbon/human/H = parrot_interest
 				var/obj/limb/affecting = H.get_limb(rand_zone(pick(parrot_dam_zone)))
 
-				H.apply_damage(damage, BRUTE, affecting, sharp=1)
+				H.apply_damage(damage, BRUTE, affecting, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
 				INVOKE_ASYNC(src, .proc/emote, pick("pecks [H]'s [affecting]", "cuts [H]'s [affecting] with its talons"))
 
 			else

@@ -399,7 +399,7 @@ var/list/datum/mob_hud/huds = list(
 						holder3.icon_state = "huddead"
 						holder2_set = 1
 			else
-				if(heart && (heart.is_broken() && check_tod())) // broken heart icon
+				if(heart && (!heart.can_revive() && check_tod())) // broken heart icon
 					holder.icon_state = "huddeadheart"
 					if(!holder2_set)
 						holder2.icon_state = "huddeadheart"

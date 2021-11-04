@@ -9,18 +9,18 @@
 
 #define HUMAN_STRIP_DELAY 40 //takes 40ds = 4s to strip someone.
 #define POCKET_STRIP_DELAY 20
+#define HUMAN_LIMB_ITEM_REMOVAL_DELAY 8 SECONDS
 
 ///////////////////LIMB DEFINES///////////////////
-
 #define LIMB_ORGANIC 	(1<<0)
-#define LIMB_BROKEN 	(1<<1)
-#define LIMB_DESTROYED	(1<<2) //limb is missing
-#define LIMB_ROBOT 		(1<<3)
-#define LIMB_SPLINTED 	(1<<4)
-#define LIMB_MUTATED 	(1<<5) //limb is deformed by mutations
-#define LIMB_AMPUTATED 	(1<<6) //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
-#define LIMB_SPLINTED_INDESTRUCTIBLE (1<<7) // Splint is indestructible
-#define LIMB_UNCALIBRATED_PROSTHETIC (1<<8) //A prosthetic that's been attached to the body but not connected to the brain.
+#define LIMB_DESTROYED	(1<<1) //limb is missing
+#define LIMB_ROBOT 		(1<<2)
+#define LIMB_MUTATED 	(1<<3) //limb is deformed by mutations
+#define LIMB_AMPUTATED 	(1<<4) //limb was amputated cleanly or destroyed limb was cleaned up, thus causing no pain
+#define LIMB_UNCALIBRATED_PROSTHETIC (1<<5) //A prosthetic that's been attached to the body but not connected to the brain.
+
+//Not flags
+#define HUMAN_LIMB_AMOUNT 11
 
 ///////////////OLD SURGERY DEFINES, USED BY AUTODOC///////////////
 #define HEMOSTAT_MIN_DURATION 20
@@ -69,6 +69,43 @@
 
 #define LIMB_PRINTING_TIME 550
 #define LIMB_METAL_AMOUNT 125
+
+// INTEGRITY STUFF
+
+#define LIMB_INTEGRITY_AUTOHEAL_THRESHOLD 39
+#define MAX_LIMB_INTEGRITY 200 //If changing this, make sure to change health scanner % calc multiplier to match. Ex: 200 - 140 = 60, 60 / 200 = 0.3, 0.3 * 100 = 30, 30 / 60 = *0.5*.
+#define MINIMUM_AUTOHEAL_DAMAGE_INTERVAL 10 SECONDS
+#define MINIMUM_AUTOHEAL_HEALTH 50
+
+#define LIMB_INTEGRITY_PERFECT      0
+#define LIMB_INTEGRITY_OKAY         1
+#define LIMB_INTEGRITY_CONCERNING   2
+#define LIMB_INTEGRITY_SERIOUS      3
+#define LIMB_INTEGRITY_CRITICAL     4
+#define LIMB_INTEGRITY_NONE         5
+
+#define LIMB_INTEGRITY_THRESHOLD_PERFECT 0 //0-14
+#define LIMB_INTEGRITY_THRESHOLD_OKAY 15 //15-29
+#define LIMB_INTEGRITY_THRESHOLD_CONCERNING 30 //30-79
+#define LIMB_INTEGRITY_THRESHOLD_SERIOUS 80 // 80-139
+#define LIMB_INTEGRITY_THRESHOLD_CRITICAL 140 // 140-199
+#define LIMB_INTEGRITY_THRESHOLD_NONE 200
+#define LIMB_INTEGRITY_BONE_MOVEMENT_CAP 130
+
+#define PASSIVE_INT_DAMAGE_PER_STEP 2
+
+#define NO_INTERNAL_DAMAGE 0
+#define INT_DMG_MULTIPLIER_NORMAL 0.7
+#define INT_DMG_MULTIPLIER_SHARP 1.0
+#define INT_DMG_MULTIPLIER_VERYSHARP 1.25
+
+// Gauzes, splints & co.
+
+#define CATEGORY_GAUZES 1
+#define CATEGORY_SPLINTS 2
+#define CATEGORY_TOURNIQUETS 3
+#define CATEGORY_BRUTEHEALER 4
+#define CATEGORY_BURNHEALER 5
 
 // ORDERS
 #define COMMAND_ORDER_RANGE		7

@@ -203,7 +203,7 @@
 			if(X.can_not_harm(C))
 				continue
 			X.flick_attack_overlay(C, "slash")
-			C.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE)
+			C.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 			playsound(get_turf(C), "alien_claw_flesh", 30, TRUE)
 
 			if(should_sslow)
@@ -327,9 +327,9 @@
 	// Damage
 	var/obj/limb/head/head = H.get_limb("head")
 	if(ishuman(H) && head)
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head")
+		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "head", int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 	else
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE) // just for consistency
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP) // just for consistency
 
 	// Heal
 	X.gain_health(heal_amount)
@@ -412,7 +412,7 @@
 				X.visible_message(SPAN_XENODANGER("[X] claws [H]!"), SPAN_XENODANGER("You claw [H]!"))
 				playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
-			H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, "chest", 20)
+			H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, "chest", 20, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 
 	X.frozen = 0
 	X.anchored = 0

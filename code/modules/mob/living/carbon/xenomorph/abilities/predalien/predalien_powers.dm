@@ -145,7 +145,7 @@
         H.spawn_gibs()
         playsound(get_turf(H), 'sound/effects/gibbed.ogg', 30, 1)
         H.KnockDown(get_xeno_stun_duration(H, 0.5))
-        H.apply_armoured_damage(get_xeno_damage_slash(H, base_damage + damage_scale * P.kills), ARMOR_MELEE, BRUTE, "chest", 20)
+        H.apply_armoured_damage(get_xeno_damage_slash(H, base_damage + damage_scale * P.kills), ARMOR_MELEE, BRUTE, "chest", 20, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 
         X.animation_attack_on(H)
         X.flick_attack_overlay(H, "slash")

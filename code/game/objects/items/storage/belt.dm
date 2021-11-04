@@ -142,8 +142,8 @@
 	new /obj/item/storage/pill_bottle/peridaxon(src)
 	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/stack/medical/splint(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
 
 /obj/item/storage/belt/medical/verb/toggle_mode() //A verb that can (should) only be used if in hand/equipped
 	set category = "Object"
@@ -183,10 +183,10 @@
 	has_gamemode_skin = TRUE
 
 /obj/item/storage/belt/medical/lifesaver/full/fill_preset_inventory()
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
@@ -208,10 +208,10 @@
 	has_gamemode_skin = FALSE
 
 /obj/item/storage/belt/medical/lifesaver/upp/full/fill_preset_inventory()
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/bruise_pack(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
-	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/traumakit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
+	new /obj/item/stack/medical/healing/burnkit(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)

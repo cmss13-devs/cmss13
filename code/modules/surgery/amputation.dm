@@ -172,7 +172,7 @@ datum/surgery_step/abort_amputation/skip_step_criteria(mob/user, mob/living/carb
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of your [surgery.affected_limb.display_name]!"),
 			SPAN_WARNING("[user]'s hand slips, cutting into the wrong part of [target]'s [surgery.affected_limb.display_name]!"))
 
-		surgery.affected_limb.fracture()
+		//surgery.affected_limb.fracture()
 		target.apply_damage(20, BRUTE, surgery.affected_limb)
 		log_interact(user, target, "[key_name(user)] failed to cut [key_name(target)]'s [surgery.affected_limb.display_name] off with \the [tool].")
 		return FALSE

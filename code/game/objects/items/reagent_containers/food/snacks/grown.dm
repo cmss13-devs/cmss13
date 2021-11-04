@@ -164,9 +164,7 @@
 
 	if(istype(user.loc,/turf/open/space))
 		return
-	var/obj/item/stack/medical/advanced/ointment/predator/poultice = new /obj/item/stack/medical/advanced/ointment/predator(user.loc)
 
-	poultice.heal_burn = potency
 	qdel(src)
 
 	to_chat(user, SPAN_NOTICE("You mash the petals into a poultice."))
@@ -176,9 +174,7 @@
 
 	if(istype(user.loc,/turf/open/space))
 		return
-	var/obj/item/stack/medical/advanced/bruise_pack/predator/poultice = new /obj/item/stack/medical/advanced/bruise_pack/predator(user.loc)
 
-	poultice.heal_brute = potency
 	qdel(src)
 
 	to_chat(user, SPAN_NOTICE("You mash the leaves into a poultice."))

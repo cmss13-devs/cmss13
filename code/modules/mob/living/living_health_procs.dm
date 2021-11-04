@@ -81,12 +81,6 @@
 /mob/living/proc/setMaxHealth(var/newMaxHealth)
 	maxHealth = newMaxHealth
 
-
-
-
-
-
-
 // heal ONE limb, organ gets randomly selected from damaged ones.
 /mob/living/proc/heal_limb_damage(var/brute, var/burn)
 	apply_damage(-brute, BRUTE)
@@ -116,7 +110,8 @@
 /mob/living/proc/restore_all_organs()
 	return
 
-
+/mob/living/proc/heal_integrity_damage()
+	return
 
 /mob/living/proc/revive(keep_viruses)
 	rejuvenate()
@@ -152,6 +147,9 @@
 	//Reset any surgeries.
 	active_surgeries = DEFENSE_ZONES_LIVING
 	initialize_incision_depths()
+
+	//fix integrity damage
+	heal_integrity_damage()
 
 	// remove the character from the list of the dead
 	if(stat == DEAD)

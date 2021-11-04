@@ -807,6 +807,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			user.apply_effect(1, STUN) //Van Bandolier is a human/hero and stuns last half as long for him.
 			shake_camera(user, RECOIL_AMOUNT_TIER_2 * 0.5, RECOIL_AMOUNT_TIER_2)
 			return
+	/*TODO: revisit twobore shoulder fracture once integrity fracs are done. -Vanagandr.
 	else //You *do not* fire this one-handed.
 		var/obj/limb/shoulder
 		if(user.hand) //They're using their left hand.
@@ -821,7 +822,7 @@ can cause issues with ammo types getting mixed up during the burst.
 			to_chat(user, SPAN_DANGER("The splint on your [shoulder.display_name] comes apart under the recoil!"))
 			user.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 			user.update_med_icon()
-
+	*/
 	//Ruh roh.
 	user.visible_message(SPAN_WARNING("[user] is thrown to the ground by the recoiling [initial(name)]!"),\
 		SPAN_HIGHDANGER("The world breaks in half!"))
@@ -885,7 +886,6 @@ can cause issues with ammo types getting mixed up during the burst.
 			user.visible_message(SPAN_DANGER("[user] slams into an obstacle!"),\
 				SPAN_DANGER("The [initial(name)]'s recoil hammers you against an obstacle!"))
 		user.apply_damage(5, BRUTE)
-
 
 //-------------------------------------------------------
 //PUMP SHOTGUN

@@ -288,7 +288,7 @@
 
 	RegisterSignal(user, COMSIG_HUMAN_BULLET_ACT, .proc/deflect_bullet)
 	RegisterSignal(user, COMSIG_HUMAN_XENO_ATTACK, .proc/riposte_slash)
-	RegisterSignal(user, COMSIG_ITEM_ATTEMPT_ATTACK, .proc/riposte_melee)
+	RegisterSignal(user, COMSIG_MOB_ITEM_ATTEMPT_ATTACK, .proc/riposte_melee)
 	addtimer(CALLBACK(src, .proc/end_parry, user), parrying_duration)
 
 /obj/item/weapon/melee/yautja/sword/proc/deflect_bullet(mob/living/carbon/human/user, var/x, var/y, obj/item/projectile/P)
@@ -362,7 +362,7 @@
 
 	user.remove_filter("parry_sword")
 
-	UnregisterSignal(user, list(COMSIG_HUMAN_XENO_ATTACK, COMSIG_HUMAN_BULLET_ACT, COMSIG_ITEM_ATTEMPT_ATTACK))
+	UnregisterSignal(user, list(COMSIG_HUMAN_XENO_ATTACK, COMSIG_HUMAN_BULLET_ACT, COMSIG_MOB_ITEM_ATTEMPT_ATTACK))
 
 /obj/item/projectile/proc/jank_wrapper()
 	RegisterSignal(src, COMSIG_BULLET_PRE_HANDLE_MOB, .proc/bullet_ignore_mob)
@@ -617,14 +617,14 @@
 		playsound(loc, 'sound/weapons/slash.ogg', 25)
 		create_leftovers(victim, has_meat = TRUE, skin_amount = 0)
 		for(var/L in victim.limbs)
-			victim.apply_damage(15, BRUTE, L, sharp = FALSE)
+			victim.apply_damage(15, BRUTE, L, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
 		victim.add_flay_overlay(stage = 1)
 
 		if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 			var/obj/limb/head/v_head = victim.get_limb("head")
 			if(v_head) //they might be beheaded
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
-				victim.apply_damage(10, BRUTE, v_head, sharp = FALSE)
+				victim.apply_damage(10, BRUTE, v_head, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
 				v_head.disfigured = TRUE
 				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
 					to_chat(user, SPAN_WARNING("You make some rough cuts on [victim]'s head and face with \the [src]."))
@@ -641,7 +641,7 @@
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
 				for(var/L in victim.limbs)
-					victim.apply_damage(18, BRUTE, L, sharp = FALSE)
+					victim.apply_damage(18, BRUTE, L, int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL)
 				victim.remove_overlay(UNDERWEAR_LAYER)
 				victim.f_style = "Shaved"
 				victim.update_hair() //then rip the beard off along the skin
@@ -652,7 +652,7 @@
 					playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 					create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
 					for(var/L in victim.limbs)
-						victim.apply_damage(22, BRUTE, L, sharp = FALSE)
+						victim.apply_damage(22, BRUTE, L, INT_DMG_MULTIPLIER_NORMAL)
 					for(var/obj/item/I in victim)
 						victim.drop_inv_item_to_loc(I, victim.loc, FALSE, TRUE)
 

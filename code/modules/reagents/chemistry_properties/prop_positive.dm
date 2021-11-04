@@ -306,6 +306,7 @@
 	rarity = PROPERTY_UNCOMMON
 
 /datum/chem_property/positive/bonemending/process(mob/living/M, var/potency = 1)
+	/*
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -330,6 +331,7 @@
 				L.knitting_time = total_knitting_time
 				L.start_processing()
 				to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))
+*/
 
 /datum/chem_property/positive/bonemending/process_overdose(mob/living/M, var/potency = 1)
 	M.take_limb_damage(2*potency)
@@ -337,10 +339,6 @@
 /datum/chem_property/positive/bonemending/process_critical(mob/living/M, var/potency = 1)
 	if(!ishuman(M))
 		return
-	var/mob/living/carbon/human/H = M
-	var/obj/limb/L = pick(H.limbs)
-	if(L)
-		L.fracture(100)
 
 /datum/chem_property/positive/fluxing
 	name = PROPERTY_FLUXING

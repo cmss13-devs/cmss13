@@ -30,8 +30,8 @@ and organ transplant code which may come in handy in future but haven't been edi
 	desc = "repair the organ damage"
 	//Tools used to fix damaged organs. Predator herbs may be herbal and organic, but are not as good for surgery.
 	tools = list(
-		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/stack/medical/healing/traumakit = SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/stack/medical/healing/traumakit/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
 		)
 	time = 3 SECONDS
@@ -53,7 +53,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 	switch(tool_type)
 		if(/obj/item/stack/medical/bruise_pack)
 			toolname = "the gauze"
-		if(/obj/item/stack/medical/advanced/bruise_pack)
+		if(/obj/item/stack/medical/healing/traumakit)
 			toolname = "regenerative membrane"
 		else
 			toolname = "the poultice"
@@ -157,13 +157,11 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 	log_interact(user, target, "[key_name(user)] failed to repair damage inside of [key_name(target)]'s [affected.display_name] with \the [tool].")
 
 	target.apply_damage(5, TOX)
-	affected.createwound(CUT, 5)
 
 	for(var/datum/internal_organ/I in affected.internal_organs)
 		if(I)
 			I.take_damage(rand(3, 5), 0)
 	target.updatehealth()
-	affected.update_wounds()
 
 
 //------------------------------------
@@ -229,8 +227,6 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 	SPAN_WARNING("Your hand slips, slicing an artery inside [target]'s [affected.display_name] with \the [tool]!"))
 	log_interact(user, target, "[key_name(user)] failed to detatch [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
 
-	affected.createwound(CUT, rand(30, 50), 1)
-	affected.update_wounds()
 	affected.surgery_organ = null
 
 
@@ -285,6 +281,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 	..()
 
 /datum/surgery_step/internal/remove_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
+/*
 	user.visible_message(SPAN_NOTICE("[user] has removed [target]'s [affected.surgery_organ] with \the [tool]."), \
 	SPAN_NOTICE("You have removed [target]'s [affected.surgery_organ] with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] removed [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
@@ -317,14 +314,13 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 				O.removed(target,user)
 
 		affected.surgery_organ = null
+*/
 
 /datum/surgery_step/internal/remove_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!"), \
 	SPAN_WARNING("Your hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!"))
 	log_interact(user, target, "[key_name(user)] failed to remove [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
 
-	affected.createwound(BRUISE, 20)
-	affected.update_wounds()
 	affected.surgery_organ = null
 
 //------------------------------------
@@ -336,7 +332,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 	max_duration = IMPLANT_MAX_DURATION
 
 /datum/surgery_step/internal/replace_organ/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-
+	/*
 	var/obj/item/organ/O = tool
 
 	var/organ_compatible
@@ -375,7 +371,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 		return SPECIAL_SURGERY_INVALID
 
 	return ..() && organ_missing && organ_compatible
-
+*/
 /datum/surgery_step/internal/replace_organ/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_NOTICE("[user] starts transplanting \the [tool] into [target]'s [affected.display_name]."), \
 	SPAN_NOTICE("You start transplanting \the [tool] into [target]'s [affected.display_name]."))
@@ -385,6 +381,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 	..()
 
 /datum/surgery_step/internal/replace_organ/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
+	/*
 	user.visible_message(SPAN_NOTICE("[user] has transplanted \the [tool] into [target]'s [affected.display_name]."), \
 	SPAN_NOTICE("You have transplanted \the [tool] into [target]'s [affected.display_name]."))
 	log_interact(user, target, "[key_name(user)] transplanted \the [tool] into [key_name(target)]'s [affected.display_name].")
@@ -413,6 +410,7 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 		O.replaced(target)
 
 	qdel(O)
+	*/
 
 /datum/surgery_step/internal/replace_organ/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
 	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging \the [tool]!"), \
@@ -490,7 +488,5 @@ datum/surgery_step/repair_organs/repeat_step_criteria(mob/user, mob/living/carbo
 	SPAN_WARNING("Your hand slips, damaging the flesh in [target]'s [affected.display_name] with \the [tool]!"))
 	log_interact(user, target, "[key_name(user)] failed to reattach [key_name(target)]'s [affected.surgery_organ] with \the [tool].")
 
-	affected.createwound(BRUISE, 20)
-	affected.update_wounds()
 	affected.surgery_organ = null
 */

@@ -29,7 +29,6 @@
 	attack_verb = list("bludgeoned", "whacked", "disciplined", "thrashed")
 
 
-
 /*
 /obj/item/game_kit
 	name = "Gaming Kit"
@@ -53,17 +52,29 @@
 	item_state = "gift"
 	w_class = SIZE_LARGE
 
-/obj/item/staff/gentcane
-	name = "Gentlemans Cane"
-	desc = "An ebony cane with an ivory tip."
+/obj/item/staff //This type only seems to exist because of "wizarditis"...
 	icon = 'icons/obj/items/weapons/weapons.dmi'
+
+/obj/item/staff/Initialize(mapload, ...)
+	. = ..()
+	AddElement(/datum/element/crutch)
+
+/obj/item/staff/medical_crutch
+	name = "crutch"
+	desc = "A medical crutch. It helps you keep balance even when your leg isn't working properly. In short, it does all the legwork when your leg isn't working."
+	icon = 'icons/obj/items/marine-items.dmi'
+	icon_state = "crutch"
+	item_state = "crutch"
+
+/obj/item/staff/gentcane
+	name = "\improper Gentleman's Cane"
+	desc = "An ebony cane with an ivory tip."
 	icon_state = "cane"
 	item_state = "stick"
 
 /obj/item/staff/stick
 	name = "stick"
 	desc = "A great tool to drag someone else's drinks across the bar."
-	icon = 'icons/obj/items/weapons/weapons.dmi'
 	icon_state = "stick"
 	item_state = "stick"
 	force = 3.0

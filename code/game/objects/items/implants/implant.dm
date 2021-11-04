@@ -186,7 +186,7 @@ Implant Specifics:<BR>"}
 						if (istype(part,/obj/limb/chest) ||	\
 							istype(part,/obj/limb/groin) ||	\
 							istype(part,/obj/limb/head))
-							part.createwound(BRUISE, 60)	//mangle them instead
+							part.take_damage(60)
 							explosion(get_turf(imp_in), -1, -1, 2, 3)
 							qdel(src)
 						else
@@ -251,7 +251,7 @@ Implant Specifics:<BR>"}
 					if (istype(part,/obj/limb/chest) ||	\
 						istype(part,/obj/limb/groin) ||	\
 						istype(part,/obj/limb/head))
-						part.createwound(BRUISE, 60)	//mangle them instead
+						part.take_damage(60)	//mangle them instead
 					else
 						part.droplimb(0, 0, "dismemberment")
 				explosion(get_turf(imp_in), -1, -1, 2, 3)

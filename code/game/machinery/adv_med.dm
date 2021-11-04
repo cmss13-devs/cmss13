@@ -1,5 +1,6 @@
 // Pretty much everything here is stolen from the dna scanner FYI
 
+//This needs to display int and wounds but that's going to be a real can of worms. -Vanagandr
 
 /obj/structure/machinery/bodyscanner
 	name = "Body Scanner"
@@ -314,10 +315,10 @@
 		"blood_amount" = H.blood_volume,
 		"disabilities" = H.sdisabilities,
 		"tg_diseases_list" = H.viruses.Copy(),
-		"lung_ruptured" = H.is_lung_ruptured(),
 		"external_organs" = H.limbs.Copy(),
 		"internal_organs" = H.internal_organs.Copy(),
-		"species_organs" = H.species.has_organ //Just pass a reference for this, it shouldn't ever be modified outside of the datum.
+		"species_organs" = H.species.has_organ, //Just pass a reference for this, it shouldn't ever be modified outside of the datum.
+		"wounds_by_limb" = H.limb_wounds.Copy(),
 		)
 	return occupant_data
 
@@ -389,8 +390,12 @@
 	dat += "<th>Organ</th>"
 	dat += "<th>Burn Damage</th>"
 	dat += "<th>Brute Damage</th>"
+	dat += "<th>Wound Information</th>"
 	dat += "<th>Other Wounds</th>"
+	dat += "<th>Items</th>"
 	dat += "</tr>"
+
+	var/list/wounds_by_limb = occ["wounds_by_limb"]
 
 	for(var/obj/limb/e in occ["external_organs"])
 		var/AN = ""
@@ -398,31 +403,25 @@
 		var/imp = ""
 		var/bled = ""
 		var/robot = ""
-		var/splint = ""
-		var/internal_bleeding = ""
-		var/lung_ruptured = ""
+		var/wounds = ""
+		var/items = ""
 
 		dat += "<tr>"
 
-		for(var/datum/effects/bleeding/internal/I in e.bleeding_effects_list)
-			internal_bleeding = "Internal bleeding<br>"
-			break
-		if(istype(e, /obj/limb/chest) && occ["lung_ruptured"])
-			lung_ruptured = "Lung ruptured:<br>"
-		if(e.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-			splint = "Nanosplinted<br>"
-		else if(e.status & LIMB_SPLINTED)
-			splint = "Splinted<br>"
+		var/list/item_list = list()
+		SEND_SIGNAL(e, COMSIG_LIMB_GET_ATTACHED_ITEMS, item_list)
+		for(var/obj/item/I in item_list)
+			items += "[I.name]  "
+		for(var/datum/limb_wound/W in wounds_by_limb[e.name])
+			wounds += "[W.name]  "
 		for(var/datum/effects/bleeding/external/E in e.bleeding_effects_list)
 			bled = "Bleeding<br>"
 			break
-		if(e.status & LIMB_BROKEN)
-			AN = "[e.broken_description]<br>"
-		else if(e.status & LIMB_ROBOT)
-			if(e.status & LIMB_UNCALIBRATED_PROSTHETIC)
-				robot = "Nonfunctional prosthetic<br>"
-			else
+		switch(e.status & (LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC))
+			if(LIMB_ROBOT)
 				robot = "Prosthetic<br>"
+			if(LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC)
+				robot = "Nonfunctional prosthetic<br>"
 		if(e.get_incision_depth())
 			open = "Open<br>"
 
@@ -444,13 +443,13 @@
 			else
 				imp += "Unknown body present<br>"
 
-		if(!AN && !open && !imp && !bled && !internal_bleeding && !lung_ruptured)
+		if(!AN && !open && !imp && !bled)
 			AN = "None"
 
 		if(!(e.status & LIMB_DESTROYED))
-			dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[robot][bled][AN][splint][open][imp][internal_bleeding][lung_ruptured]</td>"
+			dat += "<td>[e.display_name]</td><td>[e.burn_dam]</td><td>[e.brute_dam]</td><td>[wounds]</td><td>[robot][bled][AN][open][imp]</td><td>[items]</td>"
 		else
-			dat += "<td>[e.display_name]</td><td>-</td><td>-</td><td>Not Found</td>"
+			dat += "<td>[e.display_name]</td><td>-</td><td>-</td><td>-</td><td>-</td><td>-</td>"
 		dat += "</tr>"
 
 	for(var/datum/internal_organ/i in occ["internal_organs"])
@@ -464,7 +463,7 @@
 			mech = "None"
 
 		dat += "<tr>"
-		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>[mech]</td>"
+		dat += "<td>[i.name]</td><td>N/A</td><td>[i.damage]</td><td>N/A</td><td>[mech]</td><td>N/A</td>"
 		dat += "</tr>"
 	dat += "</table>"
 

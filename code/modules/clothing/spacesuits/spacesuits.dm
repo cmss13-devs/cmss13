@@ -74,7 +74,4 @@
 	if(!istype(H) || H.wear_suit == src)
 		return
 
-	// Otherwise, remove the splints.
-	for(var/obj/limb/E in supporting_limbs)
-		E.status &= ~ LIMB_SPLINTED
 	supporting_limbs = list()

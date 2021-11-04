@@ -65,7 +65,7 @@
 	anchored = TRUE
 	RegisterSignal(src, COMSIG_ATTEMPT_MOB_PULL, .proc/deny_pull)
 	RegisterSignal(src, list(
-		COMSIG_ITEM_ATTEMPT_ATTACK,
+		COMSIG_MOB_ITEM_ATTEMPT_ATTACK,
 		COMSIG_LIVING_REJUVENATED,
 		COMSIG_HUMAN_REVIVED
 		), .proc/cut_down)
@@ -89,7 +89,7 @@
 		visible_message(SPAN_DANGER("[src]'s body falls down from the hanging rope!"))
 	UnregisterSignal(src, list(
 			COMSIG_ATTEMPT_MOB_PULL,
-			COMSIG_ITEM_ATTEMPT_ATTACK,
+			COMSIG_MOB_ITEM_ATTEMPT_ATTACK,
 			COMSIG_LIVING_REJUVENATED,
 			COMSIG_HUMAN_REVIVED
 		))

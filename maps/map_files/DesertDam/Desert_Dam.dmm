@@ -65617,7 +65617,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/south_valley_dam)
 "nCi" = (
-/obj/item/stack/medical/advanced/ointment/predator,
+/obj/item/stack/medical/healing/burnkit/predator,
 /turf/open/desert/rock/deep/transition,
 /area/desert_dam/interior/caves/temple)
 "nFh" = (
@@ -122000,6 +122000,23 @@ rgT
 aBL
 dTs
 dTs
+aBL
+aCk
+aBE
+aBE
+aBE
+aAv
+rCp
+mth
+fgo
+qJU
+aCk
+aBL
+aBL
+aBE
+aCk
+rgT
+aBL
 dTs
 ufW
 dTs
@@ -122697,6 +122714,20 @@ aCk
 chF
 aBL
 dTs
+aBS
+uso
+ays
+aCk
+aBL
+aBL
+aBE
+aBE
+aBE
+aBE
+aCk
+aCk
+chF
+aBL
 dTs
 dTs
 dTs

@@ -243,19 +243,19 @@
 /area/yautja)
 "aY" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/stack/medical/advanced/bruise_pack/predator{
+/obj/item/stack/medical/healing/traumakit/predator{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
+/obj/item/stack/medical/healing/traumakit/predator{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
+/obj/item/stack/medical/healing/traumakit/predator{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
+/obj/item/stack/medical/healing/traumakit/predator{
 	name = "mending herbs"
 	},
-/obj/item/stack/medical/advanced/bruise_pack/predator{
+/obj/item/stack/medical/healing/traumakit/predator{
 	name = "mending herbs"
 	},
 /turf/open/floor/holofloor{
@@ -282,19 +282,19 @@
 /area/yautja)
 "ba" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/stack/medical/advanced/ointment/predator{
+/obj/item/stack/medical/healing/burnkit/predator{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/advanced/ointment/predator{
+/obj/item/stack/medical/healing/burnkit/predator{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/advanced/ointment/predator{
+/obj/item/stack/medical/healing/burnkit/predator{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/advanced/ointment/predator{
+/obj/item/stack/medical/healing/burnkit/predator{
 	name = "soothing herbs"
 	},
-/obj/item/stack/medical/advanced/ointment/predator{
+/obj/item/stack/medical/healing/burnkit/predator{
 	name = "soothing herbs"
 	},
 /turf/open/floor/holofloor{

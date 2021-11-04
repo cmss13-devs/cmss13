@@ -64,7 +64,7 @@
 			continue
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20)
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, null, 20, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 
 	if (target_mobs.len >= shield_regen_threshold)
 		if (X.mutation_type == PRAETORIAN_VANGUARD)
@@ -126,7 +126,7 @@
 
 
 		X.flick_attack_overlay(H, "slash")
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE)
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 		playsound(get_turf(H), "alien_claw_flesh", 30, 1)
 
 	if (target_mobs.len >= shield_regen_threshold)
@@ -344,7 +344,7 @@
 	playsound(H,S, 50, 1)
 
 	if (H.frozen || H.slowed || H.knocked_down)
-		H.apply_damage(get_xeno_damage_slash(H, damage), BRUTE, L? L.name : "chest")
+		H.apply_damage(get_xeno_damage_slash(H, damage), BRUTE, L? L.name : "chest", int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP) //Goes through armour and does extra int.
 		H.frozen = TRUE
 		H.update_canmove()
 
@@ -362,7 +362,7 @@
 		if(SFB && SFB.action_cooldown_check())
 			SFB.reduce_cooldown(50)
 	else
-		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest")
+		H.apply_armoured_damage(get_xeno_damage_slash(H, damage), ARMOR_MELEE, BRUTE, L? L.name : "chest", int_dmg_multiplier = INT_DMG_MULTIPLIER_NORMAL) //Punches are mostly soft-tissue damage.
 		step_away(H, X, 2)
 
 
@@ -514,7 +514,7 @@
 		X.flick_attack_overlay(A, "slash")
 		X.emote("roar") // Feedback for the player that we got the magic double impale
 
-		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+		H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 		playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 
 		// Reroll damage
@@ -526,7 +526,7 @@
 	X.flick_attack_overlay(A, "slash")
 
 	H.last_damage_data = create_cause_data(initial(X.caste_type), X)
-	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10)
+	H.apply_armoured_damage(damage, ARMOR_MELEE, BRUTE, "chest", 10, int_dmg_multiplier = INT_DMG_MULTIPLIER_SHARP)
 	playsound(get_turf(A), "alien_claw_flesh", 30, 1)
 
 	apply_cooldown()

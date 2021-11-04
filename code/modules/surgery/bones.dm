@@ -28,7 +28,7 @@
 				affected_bone = "pelvis"
 
 /datum/surgery/bone_repair/can_start(mob/user, mob/living/carbon/patient, var/obj/limb/L, obj/item/tool)
-	return L.status & LIMB_BROKEN
+	return// L.status & LIMB_BROKEN
 
 //------------------------------------
 
@@ -165,7 +165,7 @@
 			SPAN_NOTICE("You set the bones in [target]'s [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] sets the bones in your [surgery.affected_limb.display_name]."),
 			SPAN_NOTICE("[user] sets the bones in [target]'s [surgery.affected_limb.display_name]."))
-
+/*
 	user.count_niche_stat(STATISTICS_NICHE_SURGERY_BONES)
 	if(surgery.affected_limb.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 		new /obj/item/stack/medical/splint/nano(get_turf(target), 1)
@@ -173,7 +173,7 @@
 	surgery.affected_limb.perma_injury = 0
 	target.pain.recalculate_pain()
 	log_interact(user, target, "[key_name(user)] successfully set bones in [key_name(target)]'s [surgery.affected_limb.display_name] with \the [tool], ending [surgery].")
-
+*/
 /datum/surgery_step/set_bones/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/bone_repair/surgery)
 	if(surgery.affected_bone)
 		user.affected_message(target,

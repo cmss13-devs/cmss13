@@ -177,7 +177,7 @@ datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/c
 		SPAN_WARNING("[user]'s hand slips, tearing blood vessels in [target]'s [surgery.affected_limb.display_name] and causing massive bleeding!"))
 
 	target.apply_damage(4, BRUTE, target_zone)
-	surgery.affected_limb.add_bleeding(null, FALSE, 15)
+	surgery.affected_limb.add_bleeding(15, FALSE)
 	log_interact(user, target, "[key_name(user)] failed to clamp bleeders in [key_name(target)]'s [surgery.affected_limb.display_name], possibly ending [surgery].")
 	return FALSE
 
@@ -364,10 +364,11 @@ datum/surgery_step/clamp_bleeders_step/skip_step_criteria(mob/user, mob/living/c
 		)
 	time = 4 SECONDS
 
-datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/*datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/limb/affecting = target.get_limb(check_zone(user.zone_selected))
 	if(affecting.status & LIMB_BROKEN)
 		return TRUE //Don't need the saw if it's already fractured.
+*/
 
 /datum/surgery_step/saw_encased/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
 	user.affected_message(target,
@@ -377,8 +378,8 @@ datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/ta
 
 	target.custom_pain("Your [surgery.affected_limb.display_name] hurts horribly!", 1)
 
-	if(surgery.affected_limb.status & LIMB_BROKEN)
-		to_chat(user, SPAN_NOTICE("It's already broken, though, so you could just pry it open."))
+	//if(surgery.affected_limb.status & LIMB_BROKEN)
+	//	to_chat(user, SPAN_NOTICE("It's already broken, though, so you could just pry it open."))
 	log_interact(user, target, "[key_name(user)] began cutting through [key_name(target)]'s [surgery.affected_limb.encased], attempting [surgery].")
 
 /datum/surgery_step/saw_encased/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
@@ -390,7 +391,7 @@ datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/ta
 	log_interact(user, target, "[key_name(user)] cut through [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")
 
 /datum/surgery_step/saw_encased/failure(mob/living/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(surgery.affected_limb.status & LIMB_BROKEN) //Can't shatter what is already broken.
+	/*if(surgery.affected_limb.status & LIMB_BROKEN) //Can't shatter what is already broken.
 		var/affected_bone = surgery.affected_limb.name == "chest" ? "ribs" : "skull"
 		user.affected_message(target,
 			SPAN_WARNING("You hack through [target]'s broken [affected_bone]!"),
@@ -401,9 +402,9 @@ datum/surgery_step/saw_encased/skip_step_criteria(mob/user, mob/living/carbon/ta
 		user.affected_message(target,
 			SPAN_WARNING("You shatter [target]'s [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user] shatters your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("[user] shatters [target]'s [surgery.affected_limb.encased]!"))*/
 
-		surgery.affected_limb.fracture(100)
+		//surgery.affected_limb.fracture(100)
 
 	user.animation_attack_on(target)
 	if(tool.hitsound)
@@ -444,12 +445,12 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 	target.incision_depths[target_zone] = SURGERY_DEPTH_DEEP
 	complete(target, surgery) //This finishes the surgery.
 
-	if(prob(10)) //RNG slip chance.
-		surgery.affected_limb.fracture(100)
+	/*if(prob(10)) //RNG slip chance.
+		surgery.affected_limb.fracture(100)*/
 	log_interact(user, target, "[key_name(user)] opened [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
 /datum/surgery_step/open_encased_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(surgery.affected_limb.status & LIMB_BROKEN)
+	/*if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
 			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_limb.encased] even more!"),
@@ -458,9 +459,9 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))*/
 
-	surgery.affected_limb.fracture(100)
+	//surgery.affected_limb.fracture(100)
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to open [key_name(target)]'s [surgery.affected_limb.encased].")
 
@@ -506,7 +507,7 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 	log_interact(user, target, "[key_name(user)] closed [key_name(target)]'s [surgery.affected_limb.encased], beginning [surgery].")
 
 /datum/surgery_step/close_encased_step/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(surgery.affected_limb.status & LIMB_BROKEN)
+	/*if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
 			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_limb.encased] even more!"),
@@ -515,9 +516,9 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))*/
 
-	surgery.affected_limb.fracture(100)
+	//surgery.affected_limb.fracture(100)
 	target.apply_damage(15, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to close [key_name(target)]'s [surgery.affected_limb.encased], aborting [surgery].")
 
@@ -561,12 +562,12 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 			SPAN_NOTICE("[user] haphazardly repairs your [surgery.affected_limb.encased] like some kind of [improvised_desc]."),
 			SPAN_NOTICE("[user] haphazardly repairs [target]'s [surgery.affected_limb.encased] like some kind of [improvised_desc]."))
 
-	if(surgery.affected_limb.status & LIMB_BROKEN)
-		to_chat(user, SPAN_NOTICE("You've repaired the damage done by prying it open, but it's still fractured."))
+	//if(surgery.affected_limb.status & LIMB_BROKEN)
+	//	to_chat(user, SPAN_NOTICE("You've repaired the damage done by prying it open, but it's still fractured."))
 	log_interact(user, target, "[key_name(user)] mended [key_name(target)]'s [surgery.affected_limb.encased], ending [surgery].")
 
 /datum/surgery_step/mend_encased/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
-	if(surgery.affected_limb.status & LIMB_BROKEN)
+	/*if(surgery.affected_limb.status & LIMB_BROKEN)
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, damaging [target]'s [surgery.affected_limb.encased] even more!"),
 			SPAN_WARNING("[user]'s hand slips, damaging your [surgery.affected_limb.encased] even more!"),
@@ -575,9 +576,9 @@ datum/surgery_step/open_encased_step/skip_step_criteria(mob/user, mob/living/car
 		user.affected_message(target,
 			SPAN_WARNING("Your hand slips, cracking [target]'s [surgery.affected_limb.encased]!"),
 			SPAN_WARNING("[user]'s hand slips, cracking your [surgery.affected_limb.encased]!"),
-			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))
+			SPAN_WARNING("[user]'s hand slips, cracking [target]'s [surgery.affected_limb.encased]!"))*/
 
-		surgery.affected_limb.fracture(100)
+		//surgery.affected_limb.fracture(100)
 
 	target.apply_damage(10, BRUTE, target_zone)
 	log_interact(user, target, "[key_name(user)] failed to mend [key_name(target)]'s [surgery.affected_limb.encased].")
@@ -654,8 +655,8 @@ If fiddling with, uncomment /mob/living/attackby surgery code also. It's pointle
 	name = "Repair Damaged Organs"
 	desc = "repair the organ damage"
 	tools = list(
-		/obj/item/stack/medical/advanced/bruise_pack = SURGERY_TOOL_MULT_IDEAL,
-		/obj/item/stack/medical/advanced/bruise_pack/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/stack/medical/healing/traumakit = SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/stack/medical/healing/traumakit/predator = SURGERY_TOOL_MULT_SUBSTITUTE,
 		/obj/item/stack/medical/bruise_pack = SURGERY_TOOL_MULT_AWFUL
 		)
 	time = 3 SECONDS

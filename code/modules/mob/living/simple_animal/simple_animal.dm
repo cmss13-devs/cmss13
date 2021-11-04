@@ -277,21 +277,6 @@
 
 
 /mob/living/simple_animal/attackby(var/obj/item/O as obj, var/mob/user as mob)  //Marker -Agouri
-	if(istype(O, /obj/item/stack/medical))
-
-		if(stat != DEAD)
-			var/obj/item/stack/medical/MED = O
-			if(health < maxHealth)
-				if(MED.get_amount() >= 1)
-					apply_damage(-MED.heal_brute, BRUTE)
-					MED.use(1)
-					for(var/mob/M in viewers(src, null))
-						if ((M.client && !( M.blinded )))
-							M.show_message(SPAN_NOTICE("[user] applies the [MED] on [src]"))
-					return
-		else
-			to_chat(user, SPAN_NOTICE(" this [src] is dead, medical items won't bring it back to life."))
-			return
 	if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
 		if(istype(O, /obj/item/tool/kitchen/knife) || istype(O, /obj/item/tool/kitchen/knife/butcher))
 			new meat_type (get_turf(src))

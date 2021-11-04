@@ -85,6 +85,14 @@ FORENSIC SCANNER
 	var/hud_mode = 1
 	var/last_scan
 
+///For slash debugging.
+/obj/item/device/healthanalyzer/debug
+	desc = "Who in the Sam Hill would make a health scanner for a xenomorph?"
+	color = "purple"
+
+/obj/item/device/healthanalyzer/debug/attack_alien(mob/living/user)
+	attack_hand(user)
+
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
 	last_scan = M.health_scan(user, FALSE, mode, hud_mode)
 	src.add_fingerprint(user)

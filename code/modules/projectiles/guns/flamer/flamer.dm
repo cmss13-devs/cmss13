@@ -439,7 +439,11 @@
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						if(weapon_cause_data.cause_name)
 							H.track_friendly_fire(weapon_cause_data.cause_name)
-						msg_admin_ff("[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)")
+						var/ff_msg = "[key_name(user)] shot [key_name(H)] with \a [name] in [get_area(user)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[user.x];Y=[user.y];Z=[user.z]'>JMP</a>) (<a href='?priv_msg=\ref[user.client]'>PM</a>)"
+						var/ff_living = TRUE
+						if(H.stat == DEAD)
+							ff_living = FALSE
+						msg_admin_ff(ff_msg, ff_living)
 					else
 						H.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
 						user.attack_log += "\[[time_stamp()]\] <b>[key_name(user)]</b> shot <b>[key_name(H)]</b> with \a <b>[name]</b> in [get_area(user)]."
@@ -568,7 +572,7 @@
 	firelevel -= 2 //reduce the intensity by 2 per tick
 	return
 
-/proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite, var/aerial_flame_level)
+/proc/fire_spread_recur(var/turf/target, var/datum/cause_data/cause_data, remaining_distance, direction, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", var/aerial_flame_level)
 	var/direction_angle = dir2angle(direction)
 	var/obj/flamer_fire/foundflame = locate() in target
 	if(!foundflame)
@@ -618,7 +622,7 @@
 		spawn(0)
 			fire_spread_recur(T, cause_data, spread_power, spread_direction, fire_lvl, burn_lvl, f_color, burn_sprite, aerial_flame_level)
 
-/proc/fire_spread(var/turf/target, var/datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color, burn_sprite, var/aerial_flame_level = TURF_PROTECTION_NONE)
+/proc/fire_spread(var/turf/target, var/datum/cause_data/cause_data, range, fire_lvl, burn_lvl, f_color, burn_sprite = "dynamic", var/aerial_flame_level = TURF_PROTECTION_NONE)
 	var/datum/reagent/R = new()
 	R.intensityfire = burn_lvl
 	R.durationfire = fire_lvl

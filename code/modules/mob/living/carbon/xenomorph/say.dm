@@ -119,8 +119,13 @@
 			var/mob/living/carbon/Xenomorph/X = src
 			if(istype(S,/mob/dead/observer))
 				if(S.client.prefs && S.client.prefs.toggles_chat & CHAT_GHOSTHIVEMIND)
-					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>follow</a>)"
-					if(isXenoQueen(src) || hive.leading_cult_sl == src)
+					track = "(<a href='byond://?src=\ref[S];track=\ref[src]'>F</a>)"
+					if(isXenoQueen(src))
+						var/mob/hologram/queen/queen_eye = client?.eye
+						if(istype(queen_eye))
+							track += " (<a href='byond://?src=\ref[S];track=\ref[queen_eye]'>E</a>)"
+						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name] [track] hisses, <span class='normal'>'[message]'</span>")
+					else if(hive.leading_cult_sl == src)
 						ghostrend = SPAN_XENOQUEEN("Hivemind, [src.name] [track] hisses, <span class='normal'>'[message]'</span>")
 					else if(istype(X) && IS_XENO_LEADER(X))
 						ghostrend = SPAN_XENOLEADER("Hivemind, Leader [src.name] [track] hisses, <span class='normal'>'[message]'</span>")

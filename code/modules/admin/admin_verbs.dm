@@ -63,6 +63,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/rerun_decorators,
 	/client/proc/toogle_door_control,
 	/client/proc/map_template_load,
+	/client/proc/load_event_level,
 	/client/proc/cmd_fun_fire_ob,
 	/client/proc/map_template_upload,
 	/client/proc/enable_podlauncher
@@ -205,6 +206,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/chem_panel,			/*chem panel, allows viewing, editing and creation of reagent and chemical_reaction datums*/
 	/client/proc/vehicle_panel,
 	/client/proc/in_view_panel,
+	/client/proc/toggle_lz_resin,
 	/client/proc/rejuvenate_all_in_view,
 	/client/proc/rejuvenate_all_humans_in_view,
 	/client/proc/rejuvenate_all_revivable_humans_in_view,
@@ -229,6 +231,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/cmd_admin_xeno_report,  //Allows creation of IC reports by the Queen Mother
 	/datum/admins/proc/viewUnheardAhelps,
 	/client/proc/view_faxes,
+	/client/proc/create_custom_paper,
 	/client/proc/cmd_admin_change_their_name,
 	/client/proc/cmd_admin_changekey,
 	/client/proc/cmd_admin_subtle_message,

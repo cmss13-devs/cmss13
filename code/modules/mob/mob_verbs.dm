@@ -30,6 +30,15 @@
 
 	to_chat(usr, SPAN_DANGER("This mob type cannot throw items."))
 	return
+/mob/verb/view_stats()
+	set category = "OOC"
+	set name = "View Playtimes"
+	set desc = "View your playtimes."
+	if(!SSentity_manager.ready)
+		to_chat(src, "DB is still starting up, please wait")
+		return
+	if(client && client.player_entity)
+		client.player_data.ui_interact(src)
 
 /mob/verb/toggle_high_toss()
 	set name = "Toggle High Toss"
@@ -128,6 +137,9 @@
 			return
 		else
 			to_chat(usr, "You can respawn now, enjoy your new life!")
+
+	if(alert("Are you sure you want to respawn?",,"Yes","No") != "Yes")
+		return
 
 	log_game("[usr.name]/[usr.key] used abandon mob.")
 
@@ -238,7 +250,6 @@
 		var/mob/living/M = src
 		if(M.cameraFollow)
 			M.cameraFollow = null
-
 
 /mob/verb/eastface()
 	set hidden = 1

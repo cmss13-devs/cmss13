@@ -7,7 +7,7 @@
 		return
 
 	if(undefibbable && stat == DEAD || spawned_corpse)
-		GLOB.data_core.manifest_modify(real_name, null, null, "*Deceased*")
+		GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
 		SShuman.processable_human_list -= src
 		if(hardcore)
 			qdel(src) //We just delete the corpse on WO to keep things simple and lag-free
@@ -28,10 +28,9 @@
 	life_tick++
 
 	if(stat == DEAD && species.name == "Zombie")
-		var/datum/species/zombie/zs = species
-		if(zs.to_revive[src])
-			handle_chemicals_in_body(delta_time)
-			return
+		handle_chemicals_in_body(delta_time)
+		return
+
 	//No need to update all of these procs if the guy is dead.
 	if(!in_stasis)
 		if(stat != DEAD)
@@ -81,16 +80,9 @@
 
 	update_canmove()
 
-	//Update our name based on whether our face is obscured/disfigured
-	//name = get_visible_name() //moved out to the relevant places to be updated on demand.
-
 	handle_regular_hud_updates()
 
 	pulse = handle_pulse()
-
-	//Grabbing
-	for(var/obj/item/grab/G in src)
-		G.process()
 
 	if(!client && !mind && species)
 		species.handle_npc(src)

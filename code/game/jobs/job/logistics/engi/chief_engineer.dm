@@ -6,7 +6,8 @@
 	entry_message_body = "Your job is to maintain the ship's engine and keep everything running. If you have no idea how to set up the engine, or it's your first time, mentorhelp so that a mentor can assist you. You are also next in the chain of command, should the bridge crew fall in the line of duty."
 
 AddTimelock(/datum/job/logistics/engineering, list(
-	JOB_ENGINEER_ROLES = 10 HOURS
+	JOB_ENGINEER_ROLES = 10 HOURS,
+	JOB_POLICE_ROLES = 1 HOURS
 ))
 
 /obj/effect/landmark/start/engineering

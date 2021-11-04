@@ -36,6 +36,7 @@
 		list("M276 General Pistol Holster Rig", round(scale * 10), /obj/item/storage/belt/gun/m4a3, VENDOR_ITEM_REGULAR),
 		list("M276 Knife Rig", round(scale * 5), /obj/item/storage/belt/knifepouch, VENDOR_ITEM_REGULAR),
 		list("M276 M39 Holster Rig", round(scale * 5), /obj/item/storage/large_holster/m39, VENDOR_ITEM_REGULAR),
+		list("M276 M40 Grenade Rig", round(scale * 2), /obj/item/storage/belt/grenade, VENDOR_ITEM_REGULAR),
 		list("M276 M44 Holster Rig", round(scale * 5), /obj/item/storage/belt/gun/m44, VENDOR_ITEM_REGULAR),
 		list("M276 Shotgun Shell Loading Rig", round(scale * 10), /obj/item/storage/belt/shotgun, VENDOR_ITEM_REGULAR),
 		list("M276 Mortar Operator Belt", round(scale * 2), /obj/item/storage/belt/gun/mortarbelt, VENDOR_ITEM_REGULAR),
@@ -47,6 +48,7 @@
 		list("Webbing", round(scale * 5), /obj/item/clothing/accessory/storage/webbing, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES", -1, null, null),
+		list("Autoinjector Pouch", round(scale * 2), /obj/item/storage/pouch/autoinjector, VENDOR_ITEM_REGULAR),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),
 		list("Explosive Pouch", round(scale * 2), /obj/item/storage/pouch/explosive, VENDOR_ITEM_REGULAR),
 		list("First-Aid Pouch (Full)", round(scale * 5), /obj/item/storage/pouch/firstaid/full, VENDOR_ITEM_REGULAR),
@@ -80,6 +82,7 @@
 		list("M240 Pyrotechnician Support Kit", round(scale * 2), /obj/item/storage/box/kit/mini_pyro, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Kit", round(scale * 4), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
 		list("M2C Heavy Gunner Kit", 4, /obj/item/storage/box/kit/machinegunner, VENDOR_ITEM_REGULAR),
+		list("M56D Defense Gunner Kit", 1 + round(scale), /obj/item/storage/box/kit/defensegunner, VENDOR_ITEM_REGULAR),
 		list("M39 Point Man Kit", round(scale * 4), /obj/item/storage/box/kit/pursuit, VENDOR_ITEM_REGULAR),
 		list("M-OU53 Field Test Kit", round(scale * 3), /obj/item/storage/box/kit/mou53_sapper, VENDOR_ITEM_REGULAR),
 
@@ -97,7 +100,7 @@
 		list("M89-S Signal Flare Pack", round(scale * 2), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 10), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
-		list("MB-6 Folding Barricade", round(scale * 4), /obj/item/folding_barricade, VENDOR_ITEM_REGULAR),
+		list("MB-6 Folding Barricades (x3)", round(scale * 1), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", round(scale * 4), /obj/item/device/motiondetector, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 2), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("Plastic Explosive", round(scale * 3), /obj/item/explosive/plastic, VENDOR_ITEM_REGULAR)
@@ -142,7 +145,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_guns/squad
 	name = "\improper ColMarTech Automated Armaments Squad Vendor"
-	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by Squad Leaders and Squad Specialists."
+	desc = "An automated supply rack hooked up to a small storage of various firearms and explosives. Can be accessed by any Squad Marine."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE
@@ -178,6 +181,7 @@
 		list("Medical Pouch", round(scale * 2), /obj/item/storage/pouch/medical, VENDOR_ITEM_REGULAR),
 		list("Medium General Pouch", round(scale * 2), /obj/item/storage/pouch/general/medium, VENDOR_ITEM_REGULAR),
 		list("Medkit Pouch", round(scale * 2), /obj/item/storage/pouch/medkit, VENDOR_ITEM_REGULAR),
+		list("Shotgun Shell Pouch", round(scale *5), /obj/item/storage/pouch/shotgun, VENDOR_ITEM_REGULAR),
 		list("Sidearm Pouch", round(scale * 15), /obj/item/storage/pouch/pistol, VENDOR_ITEM_REGULAR),
 		list("Syringe Pouch", round(scale * 2), /obj/item/storage/pouch/syringe, VENDOR_ITEM_REGULAR),
 		list("Tools Pouch", round(scale * 2), /obj/item/storage/pouch/tools, VENDOR_ITEM_REGULAR),
@@ -186,6 +190,7 @@
 		list("Experimental Trooper Kit", round(scale * 1), /obj/item/storage/box/kit/exp_trooper, VENDOR_ITEM_REGULAR),
 		list("Field Intelligence Support Kit", round(scale * 1), /obj/item/storage/box/kit/mini_intel, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Kit", round(scale * 1), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
+		list("M56D Defense Gunner Kit", Ceiling(scale), /obj/item/storage/box/kit/defensegunner, VENDOR_ITEM_REGULAR),
 		list("M39 Point Man Kit", round(scale * 1), /obj/item/storage/box/kit/pursuit, VENDOR_ITEM_REGULAR),
 		list("M-OU53 Field Test Kit", round(scale / 3), /obj/item/storage/box/kit/mou53_sapper, VENDOR_ITEM_REGULAR),
 
@@ -201,7 +206,7 @@
 		list("M89-S Signal Flare Pack", round(scale * 1), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 5), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 1), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
-		list("MB-6 Folding Barricade", round(scale * 2), /obj/item/folding_barricade, VENDOR_ITEM_REGULAR)
+		list("MB-6 Folding Barricades (x3)", round(scale * 1), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR)
 		)
 
 //------------AMMUNITION VENDOR---------------
@@ -333,7 +338,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/cargo_ammo/squad
 	name = "\improper ColMarTech Automated Munition Squad Vendor"
-	desc = "An automated supply rack hooked up to a small storage of various ammunition types. Can be accessed by Squad Leaders and Squad Specialists."
+	desc = "An automated supply rack hooked up to a small storage of various ammunition types. Can be accessed by any Squad Marine."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE
@@ -451,7 +456,7 @@
 
 /obj/structure/machinery/cm_vending/sorted/attachments/squad
 	name = "\improper Armat Systems Squad Attachments Vendor"
-	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by Squad Leaders and Squad Specialists."
+	desc = "An automated supply rack hooked up to a small storage of weapons attachments. Can be accessed by any Squad Marine."
 	req_access = list(ACCESS_MARINE_ALPHA)
 	req_one_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_SPECPREP, ACCESS_MARINE_RO)
 	hackable = TRUE
@@ -523,11 +528,8 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("M3-L Pattern Light Armor", 10, /obj/item/clothing/suit/storage/marine/light, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES", -1, null, null),
-		list("Marine Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, VENDOR_ITEM_REGULAR),
-		list("Marine Bravo Squad Gloves", 10, /obj/item/clothing/gloves/marine/bravo, VENDOR_ITEM_REGULAR),
-		list("Marine Charlie Squad Gloves", 10, /obj/item/clothing/gloves/marine/charlie, VENDOR_ITEM_REGULAR),
-		list("Marine Delta Squad Gloves", 10, /obj/item/clothing/gloves/marine/delta, VENDOR_ITEM_REGULAR),
-		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 40, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Black Combat Gloves", 40, /obj/item/clothing/gloves/marine/black, VENDOR_ITEM_REGULAR),
 
 		list("MASKS (Choose 1)", 0, null, null, null),
 		list("Gas Mask", 0, /obj/item/clothing/mask/gas, MARINE_CAN_BUY_MASK, VENDOR_ITEM_REGULAR),
@@ -538,6 +540,7 @@ obj/structure/machinery/cm_vending/sorted/uniform_supply
 		list("Bravo Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/bravo, VENDOR_ITEM_REGULAR),
 		list("Charlie Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/charlie, VENDOR_ITEM_REGULAR),
 		list("Delta Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/delta, VENDOR_ITEM_REGULAR),
+		list("Echo Squad Radio Encryption Key", 5, /obj/item/device/encryptionkey/echo, VENDOR_ITEM_REGULAR),
 		list("Engineering Radio Encryption Key", 5, /obj/item/device/encryptionkey/engi, VENDOR_ITEM_REGULAR),
 		list("Tactics Radio Encryption Key", 5, /obj/item/device/encryptionkey/tactics, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Encryption Key", 5, /obj/item/device/encryptionkey/jtac, VENDOR_ITEM_REGULAR),

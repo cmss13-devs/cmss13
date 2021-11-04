@@ -135,7 +135,7 @@
 			var/origin_name
 			if(target_id_card)
 				if(target_id_card.registered_name != origin_name || target_id_card.assignment != origin_assignment)
-					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.assignment, target_id_card.rank)
+					GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 					target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 					if(target_id_card.registered_name != origin_name)
 						log_idmod(target_id_card, "<font color='orange'> [key_name_admin(usr)] changed the registered name of the ID to '[target_id_card.registered_name]'. </font>")
@@ -413,7 +413,6 @@
 	else
 		..()
 
-
 /obj/structure/machinery/computer/card/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
 
@@ -443,7 +442,7 @@
 		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
 			usr.put_in_hands(target_id_card)
 		if(operable())	// Powered. Make comp proceed ejection
-			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.assignment, target_id_card.rank)
+			GLOB.data_core.manifest_modify(target_id_card.registered_name, target_id_card.registered_ref, target_id_card.assignment, target_id_card.rank)
 			target_id_card.name = text("[target_id_card.registered_name]'s ID Card ([target_id_card.assignment])")
 			visible_message("<span class='bold'>[src]</span> states, \"CARD EJECT: Data imprinted. Updating database... Success.\"")
 		else
@@ -484,6 +483,24 @@
 	req_access = list(ACCESS_MARINE_LOGISTICS)
 	var/obj/item/card/id/ID_to_modify = null
 	var/mob/living/carbon/human/person_to_modify = null
+
+/obj/structure/machinery/computer/squad_changer/verb/eject_id()
+	set category = "Object"
+	set name = "Eject ID Card"
+	set src in view(1)
+
+	if(!usr || usr.stat || usr.lying)	return
+
+	if(ishuman(usr) && ID_to_modify)
+		to_chat(usr, "You remove \the [ID_to_modify] from \the [src].")
+		ID_to_modify.forceMove(get_turf(src))
+		if(!usr.get_active_hand() && istype(usr,/mob/living/carbon/human))
+			usr.put_in_hands(ID_to_modify)
+		ID_to_modify = null
+		person_to_modify = null
+	else
+		to_chat(usr, "There is nothing to remove from \the [src].")
+	return
 
 /obj/structure/machinery/computer/squad_changer/tgui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -534,12 +551,7 @@
 				var/datum/squad/selected = get_squad_by_name(params["name"])
 				if(!selected)
 					return
-				//First, remove any existing squad access and clear the card.
-				for(var/datum/squad/Q in RoleAuthority.squads)
-					if(findtext(ID_to_modify.assignment, Q.name)) //Found one!
-						ID_to_modify.access -= Q.access //Remove any access found.
-						person_to_modify.assigned_squad = null
-				if(selected.put_marine_in_squad(person_to_modify, ID_to_modify))
+				if(transfer_marine_to_squad(person_to_modify, selected, person_to_modify.assigned_squad, ID_to_modify))
 					visible_message("<span class='bold'>[src]</span> states, \"DATABASE LOG: [person_to_modify] was assigned to [selected] Squad.\"")
 					return TRUE
 				else
@@ -605,7 +617,7 @@
 					return
 				var/isXenos = isXeno(G.grabbed_thing)
 				H.visible_message(SPAN_NOTICE("You hear a beep as [G.grabbed_thing]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scaned, please stay close until operation's end."]\"")
+				visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 				playsound(H.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 				// No Xeno Squads, please!
 				if(!isXenos)
@@ -634,7 +646,7 @@
 	else
 		var/isXenos = isXeno(user)
 		user.visible_message(SPAN_NOTICE("You hear a beep as [user]'s [isXenos ? "limb" : "hand"] is scanned to \the [name]."))
-		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scaned, please stay close until operation's end."]\"")
+		visible_message("<span class='bold'>[src]</span> states, \"SCAN ENTRY: [isXenos ? "Unknown lifeform detected! Forbidden operation!" : "Scanned, please stay close until operation's end."]\"")
 		playsound(user.loc, 'sound/machines/screen_output1.ogg', 25, 1)
 		// No Xeno Squads, please!
 		if(!isXenos)
@@ -654,6 +666,10 @@
 	idle_power_usage = 250
 	active_power_usage = 500
 //	circuit = "/obj/item/circuitboard/computer/crew"
+
+/obj/structure/machinery/computer/crew/alt
+	icon_state = "cmonitor"
+	density = FALSE
 
 GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
@@ -689,11 +705,12 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_CHIEF_POLICE = 20,
 		JOB_WARDEN = 21,
 		JOB_POLICE = 22,
+		JOB_POLICE_CADET = 23,
 		// 30-39: MedSci
 		JOB_CMO = 30,
-		JOB_DOCTOR = 31,
-		JOB_NURSE = 32,
-		JOB_RESEARCHER = 33,
+		JOB_RESEARCHER = 31,
+		JOB_DOCTOR = 32,
+		JOB_NURSE = 33,
 		// 40-49: Engineering
 		JOB_CHIEF_ENGINEER = 40,
 		JOB_ORDNANCE_TECH = 41,
@@ -704,50 +721,56 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// SQUADS
 		// 60-79: Alpha
 		"[SQUAD_NAME_1] [JOB_SQUAD_LEADER]" = 60,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST]" = 61,
-		"[SQUAD_NAME_1] [JOB_SQUAD_SMARTGUN]" = 62,
-		"[SQUAD_NAME_1] [JOB_SQUAD_ENGI]" = 63,
-		"[SQUAD_NAME_1] [JOB_SQUAD_MEDIC]" = 64,
-		"[SQUAD_NAME_1] [JOB_SQUAD_MARINE]" = 65,
+		"[SQUAD_NAME_1] [JOB_SQUAD_RTO]" = 61,
+		"[SQUAD_NAME_1] [JOB_SQUAD_SPECIALIST]" = 62,
+		"[SQUAD_NAME_1] [JOB_SQUAD_SMARTGUN]" = 63,
+		"[SQUAD_NAME_1] [JOB_SQUAD_ENGI]" = 64,
+		"[SQUAD_NAME_1] [JOB_SQUAD_MEDIC]" = 65,
+		"[SQUAD_NAME_1] [JOB_SQUAD_MARINE]" = 66,
 		// 70-79: Bravo
 		"[SQUAD_NAME_2] [JOB_SQUAD_LEADER]" = 70,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST]" = 71,
-		"[SQUAD_NAME_2] [JOB_SQUAD_SMARTGUN]" = 72,
-		"[SQUAD_NAME_2] [JOB_SQUAD_ENGI]" = 73,
-		"[SQUAD_NAME_2] [JOB_SQUAD_MEDIC]" = 74,
-		"[SQUAD_NAME_2] [JOB_SQUAD_MARINE]" = 75,
+		"[SQUAD_NAME_2] [JOB_SQUAD_RTO]" = 71,
+		"[SQUAD_NAME_2] [JOB_SQUAD_SPECIALIST]" = 72,
+		"[SQUAD_NAME_2] [JOB_SQUAD_SMARTGUN]" = 73,
+		"[SQUAD_NAME_2] [JOB_SQUAD_ENGI]" = 74,
+		"[SQUAD_NAME_2] [JOB_SQUAD_MEDIC]" = 75,
+		"[SQUAD_NAME_2] [JOB_SQUAD_MARINE]" = 76,
 		// 80-89: Charlie
 		"[SQUAD_NAME_3] [JOB_SQUAD_LEADER]" = 80,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST]" = 81,
-		"[SQUAD_NAME_3] [JOB_SQUAD_SMARTGUN]" = 82,
-		"[SQUAD_NAME_3] [JOB_SQUAD_ENGI]" = 83,
-		"[SQUAD_NAME_3] [JOB_SQUAD_MEDIC]" = 84,
-		"[SQUAD_NAME_3] [JOB_SQUAD_MARINE]" = 85,
+		"[SQUAD_NAME_3] [JOB_SQUAD_RTO]" = 81,
+		"[SQUAD_NAME_3] [JOB_SQUAD_SPECIALIST]" = 82,
+		"[SQUAD_NAME_3] [JOB_SQUAD_SMARTGUN]" = 83,
+		"[SQUAD_NAME_3] [JOB_SQUAD_ENGI]" = 84,
+		"[SQUAD_NAME_3] [JOB_SQUAD_MEDIC]" = 85,
+		"[SQUAD_NAME_3] [JOB_SQUAD_MARINE]" = 86,
 		// 90-99: Delta
 		"[SQUAD_NAME_4] [JOB_SQUAD_LEADER]" = 90,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST]" = 91,
-		"[SQUAD_NAME_4] [JOB_SQUAD_SMARTGUN]" = 92,
-		"[SQUAD_NAME_4] [JOB_SQUAD_ENGI]" = 93,
-		"[SQUAD_NAME_4] [JOB_SQUAD_MEDIC]" = 94,
-		"[SQUAD_NAME_4] [JOB_SQUAD_MARINE]" = 95,
+		"[SQUAD_NAME_4] [JOB_SQUAD_RTO]" = 91,
+		"[SQUAD_NAME_4] [JOB_SQUAD_SPECIALIST]" = 92,
+		"[SQUAD_NAME_4] [JOB_SQUAD_SMARTGUN]" = 93,
+		"[SQUAD_NAME_4] [JOB_SQUAD_ENGI]" = 94,
+		"[SQUAD_NAME_4] [JOB_SQUAD_MEDIC]" = 95,
+		"[SQUAD_NAME_4] [JOB_SQUAD_MARINE]" = 96,
 		// 100-109: Echo
 		"[SQUAD_NAME_5] [JOB_SQUAD_LEADER]" = 100,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST]" = 101,
-		"[SQUAD_NAME_5] [JOB_SQUAD_SMARTGUN]" = 102,
-		"[SQUAD_NAME_5] [JOB_SQUAD_ENGI]" = 103,
-		"[SQUAD_NAME_5] [JOB_SQUAD_MEDIC]" = 104,
-		"[SQUAD_NAME_5] [JOB_SQUAD_MARINE]" = 105,
+		"[SQUAD_NAME_5] [JOB_SQUAD_RTO]" = 101,
+		"[SQUAD_NAME_5] [JOB_SQUAD_SPECIALIST]" = 102,
+		"[SQUAD_NAME_5] [JOB_SQUAD_SMARTGUN]" = 103,
+		"[SQUAD_NAME_5] [JOB_SQUAD_ENGI]" = 104,
+		"[SQUAD_NAME_5] [JOB_SQUAD_MEDIC]" = 105,
+		"[SQUAD_NAME_5] [JOB_SQUAD_MARINE]" = 106,
 		// 110+: Civilian/other
 		JOB_CORPORATE_LIAISON = 110,
 		JOB_MESS_SERGEANT = 111,
 		JOB_PASSENGER = 112,
 		// Unknown squad IDs
 		JOB_SQUAD_LEADER = 120,
-		JOB_SQUAD_SPECIALIST = 121,
-		JOB_SQUAD_SMARTGUN = 122,
-		JOB_SQUAD_ENGI = 123,
-		JOB_SQUAD_MEDIC = 124,
-		JOB_SQUAD_MARINE = 125,
+		JOB_SQUAD_RTO = 121,
+		JOB_SQUAD_SPECIALIST = 122,
+		JOB_SQUAD_SMARTGUN = 123,
+		JOB_SQUAD_ENGI = 124,
+		JOB_SQUAD_MEDIC = 125,
+		JOB_SQUAD_MARINE = 126,
 		// Non Almayer jobs lower then registered
 		JOB_SYNTH_SURVIVOR = 130,
 		JOB_SURVIVOR = 131,
@@ -766,8 +789,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_WO_PILOT = 22,
 		// 30-39: MedSci
 		JOB_WO_CMO = 30,
-		JOB_WO_DOCTOR = 31,
-		JOB_WO_RESEARCHER = 32,
+		JOB_WO_RESEARCHER = 31,
+		JOB_WO_DOCTOR = 32,
 		// 40-49: Engineering
 		JOB_WO_CHIEF_ENGINEER = 40,
 		JOB_WO_ORDNANCE_TECH = 41,
@@ -839,9 +862,6 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// Predators
 		if(isYautja(H))
 			continue
-		// Survivors can't be found at ground (until we code remote access to local systems for Almayer)
-		if(H.faction == FACTION_SURVIVOR && is_ground_level(H.loc.z))
-			continue
 		// Check for a uniform
 		var/obj/item/clothing/under/C = H.w_uniform
 		if(!C || !istype(C))
@@ -852,6 +872,11 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
 		// Check if z-level is correct
 		var/turf/pos = get_turf(H)
+		if(!pos)
+			continue
+		// Survivors can't be found at ground (until we code remote access to local systems for Almayer)
+		if(H.faction == FACTION_SURVIVOR && is_ground_level(pos.z))
+			continue
 
 		// The entry for this human
 		var/list/entry = list(
@@ -881,7 +906,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			)
 
 		// Location
-		if (pos && (C.sensor_mode >= SENSOR_COORDS))
+		if (C.sensor_mode >= SENSOR_COORDS)
 			if(is_mainship_level(pos.z))
 				entry["side"] = "Almayer"
 			var/area/A = get_area(H)

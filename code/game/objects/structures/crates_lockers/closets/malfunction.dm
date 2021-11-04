@@ -3,7 +3,7 @@
 	desc = "It's a storage unit for operational gear."
 	icon_state = "syndicate"
 	icon_closed = "syndicate"
-	icon_opened = "syndicateopen"
+	icon_opened = "syndicate_open"
 
 /obj/structure/closet/malf/suits/Initialize()
 	. = ..()

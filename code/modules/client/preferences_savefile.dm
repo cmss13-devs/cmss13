@@ -70,6 +70,7 @@
 	S["chat_display_preferences"] >> chat_display_preferences
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
+	S["toggles_flashing"]	>> toggles_flashing
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
 	S["stylesheet"] 		>> stylesheet
@@ -102,6 +103,7 @@
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
 	S["lang_chat_disabled"]	>> lang_chat_disabled
+	S["show_permission_errors"] >> show_permission_errors
 	S["hear_vox"] >> hear_vox
 	S["hide_statusbar"] >> hide_statusbar
 	S["hotkeys"] >> hotkeys
@@ -116,6 +118,7 @@
 	chat_display_preferences	= sanitize_integer(chat_display_preferences, 0, 65535, initial(chat_display_preferences))
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
+	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
@@ -183,6 +186,7 @@
 	S["chat_display_preferences"] << chat_display_preferences
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
+	S["toggle_flashing"]	<< toggles_flashing
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
 
@@ -210,6 +214,7 @@
 	S["synth_status"]		<< synth_status
 
 	S["lang_chat_disabled"] << lang_chat_disabled
+	S["show_permission_errors"] << show_permission_errors
 	S["key_bindings"] << key_bindings
 	S["hotkeys"] << hotkeys
 
@@ -339,7 +344,10 @@
 	r_eyes			= sanitize_integer(r_eyes, 0, 255, initial(r_eyes))
 	g_eyes			= sanitize_integer(g_eyes, 0, 255, initial(g_eyes))
 	b_eyes			= sanitize_integer(b_eyes, 0, 255, initial(b_eyes))
-	underwear		= sanitize_integer(underwear, 1, underwear_m.len, initial(underwear))
+	if(gender == MALE)
+		underwear	= sanitize_integer(underwear, 1, underwear_m.len, initial(underwear))
+	else
+		underwear	= sanitize_integer(underwear, 1, underwear_f.len, initial(underwear))
 	undershirt		= sanitize_integer(undershirt, 1, undershirt_t.len, initial(undershirt))
 	backbag			= sanitize_integer(backbag, 1, backbaglist.len, initial(backbag))
 	//b_type			= sanitize_text(b_type, initial(b_type))

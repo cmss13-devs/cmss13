@@ -540,26 +540,36 @@ var/list/datum/mob_hud/huds = list(
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]
 	holder.icon_state = "hudblank"
-	var/perpname = name
+	criminal = FALSE
+	var/perpref = null
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
-			perpname = I.registered_name
+			perpref = I.registered_ref
 
 	if(!GLOB.data_core)
 		return
 
 	for(var/datum/data/record/E in GLOB.data_core.general)
-		if(E.fields["name"] == perpname)
+		if(E.fields["ref"] == perpref)
 			for(var/datum/data/record/R in GLOB.data_core.security)
 				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
 					holder.icon_state = "hudwanted"
+					criminal = TRUE
 					break
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
 					holder.icon_state = "hudprisoner"
+					criminal = TRUE
 					break
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
 					holder.icon_state = "hudreleased"
+					criminal = FALSE
+					break
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Suspect"))
+					holder.icon_state = "hudsuspect"
+					break
+				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "NJP"))
+					holder.icon_state = "hudnjp"
 					break
 //Squad HUD
 
@@ -659,13 +669,13 @@ var/list/datum/mob_hud/huds = list(
 			if("Provost Advisor")
 				marine_rk = "pva"
 				border_rk = "command"
-			if("Provost Marshall")
+			if("Provost Marshal")
 				marine_rk = "pvm"
 				border_rk = "command"
-			if("Provost Sector Marshall")
+			if("Provost Sector Marshal")
 				marine_rk = "pvm"
 				border_rk = "command"
-			if("Provost Chief Marshall")
+			if("Provost Chief Marshal")
 				marine_rk = "pvm"
 				border_rk = "command"
 		if(marine_rk)

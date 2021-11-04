@@ -79,7 +79,8 @@
 /datum/ammo/proc/on_hit_mob(mob/M, obj/item/projectile/P) //Special effects when hitting mobs.
 	return
 
-/datum/ammo/proc/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+///Special effects when pointblanking mobs. Ultimately called from /living/attackby(). Return TRUE to end the PB attempt.
+/datum/ammo/proc/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
 	return
 
 /datum/ammo/proc/on_hit_obj(obj/O, obj/item/projectile/P) //Special effects when hitting objects.
@@ -370,19 +371,28 @@
 /datum/ammo/bullet/pistol/heavy/super/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
 
-/datum/ammo/bullet/pistol/heavy/super/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
-		return ..()
+/datum/ammo/bullet/pistol/heavy/super/highimpact/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
+	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
+		return
 
 	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return ..()
+		return TRUE
 
-	var/mob/living/carbon/human/H = M
-	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
+	if(L.status_flags & PERMANENTLY_DEAD)
+		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
+		return TRUE
 
-	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
-		return -1
+	var/mob/living/carbon/human/H = L
+	user.affected_message(L,
+		SPAN_HIGHDANGER("You aim [fired_from] at [L]'s head!"),
+		SPAN_HIGHDANGER("[user] aims [fired_from] directly at your head!"),
+		SPAN_DANGER("[user] aims [fired_from] at [L]'s head!"))
+
+	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
+
+	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
+		return TRUE
 
 	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
 	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
@@ -390,7 +400,7 @@
 
 	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
 
-	H.visible_message(SPAN_DANGER("[M] WAS EXECUTED!"), \
+	H.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
 		SPAN_HIGHDANGER("You were executed!"))
 
 	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
@@ -656,19 +666,31 @@
 /datum/ammo/bullet/revolver/mateba/highimpact/on_hit_mob(mob/M, obj/item/projectile/P)
 	knockback(M, P, 4)
 
-/datum/ammo/bullet/revolver/mateba/highimpact/on_pointblank(mob/M, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
-	if(!user || !isHumanStrict(M) || user.zone_selected != "head" || user.a_intent != INTENT_HARM)
-		return ..()
+/datum/ammo/bullet/revolver/mateba/highimpact/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/revolver/fired_from)
+	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
+		return
 
 	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return ..()
+		fired_from.delete_bullet(P, TRUE)
+		return TRUE
 
-	var/mob/living/carbon/human/H = M
-	user.visible_message(SPAN_DANGER("[user] aims at [M]'s head!"), SPAN_HIGHDANGER("You aim at [M]'s head!"))
+	if(L.status_flags & PERMANENTLY_DEAD)
+		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
+		fired_from.delete_bullet(P, TRUE)
+		return TRUE
 
-	if(!do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
-		return -1
+	var/mob/living/carbon/human/H = L
+	user.affected_message(L,
+		SPAN_HIGHDANGER("You aim [fired_from] at [L]'s head!"),
+		SPAN_HIGHDANGER("[user] aims [fired_from] directly at your head!"),
+		SPAN_DANGER("[user] aims [fired_from] at [L]'s head!"))
+
+	user.next_move += 1.1 SECONDS //PB has no click delay; readding it here to prevent people accidentally queuing up multiple executions.
+
+	if(!do_after(user, 1 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) || !user.Adjacent(H))
+		fired_from.delete_bullet(P, TRUE)
+		return TRUE
 
 	H.apply_damage(damage * 3, BRUTE, "head", no_limb_loss = TRUE, permanent_kill = TRUE) //Apply gobs of damage and make sure they can't be revived later...
 	H.apply_damage(200, OXY) //...fill out the rest of their health bar with oxyloss...
@@ -676,7 +698,7 @@
 
 	H.update_headshot_overlay(headshot_state) //...and add a gory headshot overlay.
 
-	H.visible_message(SPAN_HIGHDANGER("[M] WAS EXECUTED!"), \
+	H.visible_message(SPAN_HIGHDANGER(uppertext("[L] WAS EXECUTED!")), \
 		SPAN_HIGHDANGER("You were executed!"))
 
 	user.count_niche_stat(STATISTICS_NICHE_EXECUTION, 1, P.weapon_cause_data?.cause_name)
@@ -781,7 +803,7 @@
 	shell_speed = AMMO_SPEED_TIER_4
 
 
-/datum/ammo/bullet/smg/nail/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user) //Special effects when pointblanking mobs.
+/datum/ammo/bullet/smg/nail/on_pointblank(mob/living/L, obj/item/projectile/P, mob/living/user, obj/item/weapon/gun/fired_from)
 	if(!L || L == P.firer || L.lying)
 		return
 
@@ -789,6 +811,8 @@
 		var/mob/living/carbon/Xenomorph/X = L
 		if(X.tier != 1) // 0 is queen!
 			return
+	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
+		return
 
 	if(L.frozen)
 		to_chat(user, SPAN_DANGER("[L] struggles and avoids being nailed further!"))
@@ -811,19 +835,21 @@
 
 	L.AdjustSlowed(1) //Slow on hit.
 	L.recalculate_move_delay = TRUE
-
+	var/super_slowdown_duration = 3
 	//If there's an obstacle on the far side, superslow and do extra damage.
-	if(isCarbonSizeXeno(L)) //Unless they're a strong xeno.
+	if(isCarbonSizeXeno(L)) //Unless they're a strong xeno, in which case the slowdown is drastically reduced
 		var/mob/living/carbon/Xenomorph/X = L
 		if(X.tier != 1) // 0 is queen!
-			return
+			super_slowdown_duration = 0.5
+	else if(HAS_TRAIT(L, TRAIT_SUPER_STRONG))
+		super_slowdown_duration = 0.5
 
 	var/atom/movable/thick_surface = LinkBlocked(L, get_turf(L), get_step(L, get_dir(P.loc ? P : P.firer, L)))
 	if(!thick_surface || ismob(thick_surface) && !thick_surface.anchored)
 		return
 
 	L.apply_armoured_damage(damage*0.5, ARMOR_BULLET, BRUTE, null, penetration)
-	L.AdjustSuperslowed(3)
+	L.AdjustSuperslowed(super_slowdown_duration)
 
 /datum/ammo/bullet/smg/incendiary
 	name = "incendiary submachinegun bullet"
@@ -900,6 +926,14 @@
 	shell_speed = AMMO_SPEED_TIER_6
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_6
+
+/datum/ammo/bullet/rifle/holo_target
+	name = "holo-targeting rifle bullet"
+	damage = 30
+
+/datum/ammo/bullet/rifle/holo_target/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
 
 /datum/ammo/bullet/rifle/explosive
 	name = "explosive rifle bullet"
@@ -1090,7 +1124,7 @@
 	handful_state = "beanbag_slug"
 	icon_state = "beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
-	sound_override = 'sound/weapons/gun_shotgun_small.ogg'
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
 
 	max_range = 12
 	shrapnel_chance = 0
@@ -1294,6 +1328,7 @@
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	handful_state = "heavy_beanbag"
 	flags_ammo_behavior = AMMO_BALLISTIC|AMMO_IGNORE_RESIST
+	sound_override = 'sound/weapons/gun_shotgun_riot.ogg'
 
 	max_range = 7
 	shrapnel_chance = 0
@@ -1338,7 +1373,7 @@
 	scatter = SCATTER_AMOUNT_TIER_4
 
 //Enormous shell for Van Bandolier's superheavy double-barreled hunting gun.
-/datum/ammo/bullet/shotgun/twobore 
+/datum/ammo/bullet/shotgun/twobore
 	name = "two bore bullet"
 	icon_state 	= "autocannon"
 	handful_state = "twobore"
@@ -1508,7 +1543,7 @@
 	name = "anti-tank sniper bullet"
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 95
+	damage = 125
 	shell_speed = AMMO_SPEED_TIER_6
 
 
@@ -1516,8 +1551,14 @@
 	name = "supersonic sniper bullet"
 
 	accuracy = HIT_ACCURACY_TIER_8
-	damage = 95
-	shell_speed = AMMO_SPEED_TIER_6
+	damage = 125
+	shell_speed = AMMO_SPEED_TIER_6 + AMMO_SPEED_TIER_2
+
+/datum/ammo/bullet/sniper/elite/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+	    BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_penetrating)
+	))
 
 /*
 //======
@@ -1531,7 +1572,7 @@
 	flags_ammo_behavior = AMMO_BALLISTIC
 
 	max_range = 12
-	accuracy = HIT_ACCURACY_TIER_3
+	accuracy = HIT_ACCURACY_TIER_4
 	damage = 30
 	penetration = 0
 
@@ -1540,7 +1581,7 @@
 	icon_state = "bullet"
 
 	accurate_range = 12
-	accuracy = HIT_ACCURACY_TIER_1
+	accuracy = HIT_ACCURACY_TIER_2
 	damage = 20
 	penetration = ARMOR_PENETRATION_TIER_8
 	damage_armor_punch = 1
@@ -1564,6 +1605,15 @@
 	penetration = ARMOR_PENETRATION_TIER_7
 	damage_armor_punch = 3
 
+/datum/ammo/bullet/smartgun/m56_fpw
+	name = "m56 FPW bullet"
+	icon_state = "redbullet"
+	flags_ammo_behavior = AMMO_BALLISTIC
+
+	max_range = 7
+	accuracy = HIT_ACCURACY_TIER_7
+	damage = 35
+	penetration = ARMOR_PENETRATION_TIER_1
 
 /datum/ammo/bullet/turret
 	name = "autocannon bullet"
@@ -1587,12 +1637,18 @@
 
 /datum/ammo/bullet/machinegun //Adding this for the MG Nests (~Art)
 	name = "machinegun bullet"
-	icon_state 	= "bullet" // Keeping it bog standard with the turret but allows it to be changed. Had to remove IFF so you have to watch out.
+	icon_state 	= "bullet" // Keeping it bog standard with the turret but allows it to be changed
 
 	accurate_range = 12
 	damage = 35
 	penetration= ARMOR_PENETRATION_TIER_10 //Bumped the penetration to serve a different role from sentries, MGs are a bit more offensive
 	accuracy = HIT_ACCURACY_TIER_3
+
+/datum/ammo/bullet/machinegun/set_bullet_traits()
+	. = ..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /datum/ammo/bullet/machinegun/auto // for M2C, automatic variant for M56D, stats for bullet should always be moderately overtuned to fulfill its ultra-offense + flank-push purpose
 	name = "heavy machinegun bullet"
@@ -1605,6 +1661,9 @@
 	max_range = 14
 	effective_range_max = 7
 	damage_falloff = DAMAGE_FALLOFF_TIER_7
+
+/datum/ammo/bullet/machinegun/auto/set_bullet_traits()
+	return
 
 /datum/ammo/bullet/minigun
 	name = "minigun bullet"
@@ -1916,80 +1975,131 @@
 		var/mob/living/carbon/human/H = M
 		H.disable_special_items() // Disables scout cloak
 
+/datum/ammo/energy/taser/precise
+	name = "precise taser bolt"
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST|AMMO_MP
+
+
 /datum/ammo/energy/yautja/
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
 	accurate_range = 12
 	shell_speed = AMMO_SPEED_TIER_3
+	damage_type = BURN
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
 
 /datum/ammo/energy/yautja/pistol
 	name = "plasma pistol bolt"
 	icon_state = "ion"
-	damage_type = BURN
 
 	damage = 30
 	shell_speed = AMMO_SPEED_TIER_2
 
-/datum/ammo/energy/yautja/caster/bolt
-	name = "plasma bolt"
+/datum/ammo/energy/yautja/caster
+	name = "root caster bolt"
 	icon_state = "ion"
+
+/datum/ammo/energy/yautja/caster/stun
+	name = "low power stun bolt"
 	debilitate = list(2,2,0,0,0,1,0,0)
-	damage_type = BURN
-	flags_ammo_behavior = AMMO_IGNORE_RESIST
-
-	damage = 10
-
-/datum/ammo/energy/yautja/caster/blast
-	name = "plasma blast"
-	icon_state = "pulse1"
-	damage_type = BURN
-
-	damage = 25
-	shell_speed = AMMO_SPEED_TIER_6
-
-/datum/ammo/energy/yautja/caster/sphere
-	name = "plasma immobilizer sphere"
-	icon_state = "bluespace"
-	damage_type = BURN
-	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF
-	var/stun_range = 4 // Big
-	var/stun_time = 6
 
 	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+
+/datum/ammo/energy/yautja/caster/bolt
+	name = "plasma bolt"
+	icon_state = "pulse1"
+	flags_ammo_behavior = AMMO_IGNORE_RESIST
+	shell_speed = AMMO_SPEED_TIER_6
+	damage = 35
+
+/datum/ammo/energy/yautja/caster/bolt/stun
+	name = "high power stun bolt"
+	var/stun_time = 2
+
+	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+
+/datum/ammo/energy/yautja/caster/bolt/stun/on_hit_mob(mob/M, obj/item/projectile/P)
+	var/mob/living/carbon/C = M
+	var/stun_time = src.stun_time
+	if(istype(C))
+		if(isYautja(C) || isXenoPredalien(C))
+			return
+		to_chat(C, SPAN_DANGER("An electric shock ripples through your body, freezing you in place!"))
+		log_attack("[key_name(C)] was stunned by a high power stun bolt from [key_name(P.firer)] at [get_area(P)]")
+
+		if(ishuman(C))
+			var/mob/living/carbon/human/H = C
+			stun_time += 1
+			H.KnockDown(stun_time)
+		else
+			M.KnockDown(stun_time, 1)
+
+		C.Stun(stun_time)
+	..()
+
+/datum/ammo/energy/yautja/caster/sphere
+	name = "plasma eradicator"
+	icon_state = "bluespace"
+	flags_ammo_behavior = AMMO_EXPLOSIVE|AMMO_HITS_TARGET_TURF
 	shell_speed = AMMO_SPEED_TIER_4
 	accuracy = HIT_ACCURACY_TIER_8
-	accurate_range = 32
-	max_range = 32
 
+	damage = 55
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M,obj/item/projectile/P)
-	do_area_stun(P)
+	accurate_range = 8
+	max_range = 8
+
+/datum/ammo/energy/yautja/caster/sphere/on_hit_mob(mob/M, obj/item/projectile/P)
+	cell_explosion(P, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	..()
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T,obj/item/projectile/P)
-	do_area_stun(P)
+/datum/ammo/energy/yautja/caster/sphere/on_hit_turf(turf/T, obj/item/projectile/P)
+	cell_explosion(P, 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	..()
 
-/datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O,obj/item/projectile/P)
-	do_area_stun(P)
+/datum/ammo/energy/yautja/caster/sphere/on_hit_obj(obj/O, obj/item/projectile/P)
+	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	..()
 
 /datum/ammo/energy/yautja/caster/sphere/do_at_max_range(obj/item/projectile/P)
-	do_area_stun(P)
+	cell_explosion(get_turf(P), 170, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
 	..()
 
-/datum/ammo/energy/yautja/caster/sphere/proc/do_area_stun(obj/item/projectile/P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun
+	name = "plasma immobilizer"
+	damage = 0
+	flags_ammo_behavior = AMMO_ENERGY|AMMO_IGNORE_RESIST
+	accurate_range = 20
+	max_range = 20
+
+	var/stun_range = 4 // Big
+	var/stun_time = 6
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_mob(mob/M, obj/item/projectile/P)
+	do_area_stun(P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_turf(turf/T,obj/item/projectile/P)
+	do_area_stun(P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun/on_hit_obj(obj/O,obj/item/projectile/P)
+	do_area_stun(P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun/do_at_max_range(obj/item/projectile/P)
+	do_area_stun(P)
+
+/datum/ammo/energy/yautja/caster/sphere/stun/proc/do_area_stun(obj/item/projectile/P)
 	playsound(P, 'sound/weapons/wave.ogg', 75, 1, 25)
 	for (var/mob/living/carbon/M in view(src.stun_range, get_turf(P)))
 		var/stun_time = src.stun_time
 		log_attack("[key_name(M)] was stunned by a plasma immobilizer from [key_name(P.firer)] at [get_area(P)]")
 		if (isYautja(M))
 			stun_time -= 2
-		else if (isXeno(M))
-			if(isXenoPredalien(M))
-				continue
-			stun_time += 1
+		if(isXenoPredalien(M))
+			continue
 		to_chat(M, SPAN_DANGER("A powerful electric shock ripples through your body, freezing you in place!"))
-		M.stunned += stun_time
+		M.Stun(stun_time)
 
 		if (ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -2010,23 +2120,29 @@
 	damage = 55
 
 /datum/ammo/energy/yautja/rifle/blast
-	name = "plasma rifle blast"
+	name = "plasma shatterer"
 	icon_state = "bluespace"
 	damage_type = BURN
 
 	shell_speed = AMMO_SPEED_TIER_4
 	damage = 40
 
-/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M,obj/item/projectile/P)
-	knockback(M,P)
-	playsound(M.loc, 'sound/weapons/pulse.ogg', 25, 1)
-	explosion(get_turf(M), -1, -1, 2, -1, , , , P.weapon_cause_data)
+/datum/ammo/energy/yautja/rifle/blast/on_hit_mob(mob/M, obj/item/projectile/P)
+	var/L = get_turf(M)
+	cell_explosion(L, 90, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	..()
 
-/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T,obj/item/projectile/P)
-	explosion(T, -1, -1, 2, -1, , , , P.weapon_cause_data)
+/datum/ammo/energy/yautja/rifle/blast/on_hit_turf(turf/T, obj/item/projectile/P)
+	cell_explosion(T, 90, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	..()
 
-/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O,obj/item/projectile/P)
-	explosion(get_turf(P), -1, -1, 2, -1, , , , P.weapon_cause_data)
+/datum/ammo/energy/yautja/rifle/blast/on_hit_obj(obj/O, obj/item/projectile/P)
+	cell_explosion(get_turf(O), 100, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	..()
+
+/datum/ammo/energy/yautja/rifle/blast/do_at_max_range(obj/item/projectile/P)
+	cell_explosion(get_turf(P), 100, 30, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	..()
 
 
 /*
@@ -2465,8 +2581,8 @@
 /datum/ammo/xeno/bone_chips/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isHumanStrict(M) || isXeno(M))
 		playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-		if(M.slowed < 7)
-			M.AdjustSlowed(6)
+		if(M.slowed < 8)
+			M.Slow(8)
 
 /datum/ammo/xeno/bone_chips/spread
 	name = "small bone chips"
@@ -2491,8 +2607,8 @@
 /datum/ammo/xeno/bone_chips/spread/runner/on_hit_mob(mob/M, obj/item/projectile/P)
     if(isHumanStrict(M) || isXeno(M))
         playsound(M, 'sound/effects/spike_hit.ogg', 25, 1, 1)
-        if(M.slowed < 5)
-            M.AdjustSlowed(4)
+        if(M.slowed < 6)
+            M.Slow(6)
 
 /*
 //======
@@ -2625,6 +2741,7 @@
 	damage = 30
 	penetration= ARMOR_PENETRATION_TIER_10
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_7
+	shrapnel_type = /obj/item/shard/shrapnel
 
 /datum/ammo/flamethrower
 	name = "flame"
@@ -2682,6 +2799,8 @@
 	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flamethrower/sentry_flamer/glob
+	max_range = 14
+	accurate_range = 10
 	var/datum/effect_system/smoke_spread/phosphorus/smoke
 
 /datum/ammo/flamethrower/sentry_flamer/glob/New()
@@ -2698,16 +2817,6 @@
 	qdel(smoke)
 	return ..()
 
-/datum/ammo/flamethrower/sentry_flamer/assault
-	name = "light fire"
-
-/datum/ammo/flamethrower/sentry_flamer/assault/drop_flame(turf/T, datum/cause_data/cause_data)
-	if(!istype(T))
-		return
-	var/datum/reagent/napalm/blue/R = new()
-	R.durationfire = BURN_TIME_INSTANT
-	new /obj/flamer_fire(T, cause_data, R, 0)
-
 /datum/ammo/flamethrower/sentry_flamer/mini
 	name = "normal fire"
 
@@ -2715,6 +2824,7 @@
 	if(!istype(T))
 		return
 	var/datum/reagent/napalm/R = new()
+	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 
 /datum/ammo/flare
@@ -2728,6 +2838,8 @@
 	max_range = 14
 	shell_speed = AMMO_SPEED_TIER_3
 
+	var/flare_type = /obj/item/device/flashlight/flare/on/gun
+
 /datum/ammo/flare/set_bullet_traits()
 	. = ..()
 	LAZYADD(traits_to_give, list(
@@ -2735,23 +2847,32 @@
 	))
 
 /datum/ammo/flare/on_hit_mob(mob/M,obj/item/projectile/P)
-	drop_flare(get_turf(P))
+	drop_flare(get_turf(P), P.firer)
 
 /datum/ammo/flare/on_hit_obj(obj/O,obj/item/projectile/P)
-	drop_flare(get_turf(P))
+	drop_flare(get_turf(P), P.firer)
 
 /datum/ammo/flare/on_hit_turf(turf/T, obj/item/projectile/P)
 	if(T.density && isturf(P.loc))
-		drop_flare(P.loc)
+		drop_flare(P.loc, P.firer)
 	else
-		drop_flare(T)
+		drop_flare(T, P.firer)
 
 /datum/ammo/flare/do_at_max_range(obj/item/projectile/P)
-	drop_flare(get_turf(P))
+	drop_flare(get_turf(P), P.firer)
 
-/datum/ammo/flare/proc/drop_flare(var/turf/T)
-	var/obj/item/device/flashlight/flare/on/G = new (T)
+/datum/ammo/flare/proc/drop_flare(var/turf/T, var/mob/firer)
+	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
+	return G
+
+/datum/ammo/flare/signal
+	name = "signal flare"
+	flare_type = /obj/item/device/flashlight/flare/signal/gun
+
+/datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
+	var/obj/item/device/flashlight/flare/signal/gun/G = ..()
+	G.activate_signal(firer)
 
 /datum/ammo/souto
 	name = "Souto Can"

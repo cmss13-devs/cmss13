@@ -41,9 +41,13 @@
 	var/list/queue = list()
 	var/queue_max = AUTOLATHE_MAX_QUEUE
 
-/obj/structure/machinery/autolathe/Initialize()
+/obj/structure/machinery/autolathe/Initialize(mapload, ...)
 	. = ..()
 	projected_stored_material = stored_material.Copy()
+	if(!mapload)
+		for(var/res as anything in projected_stored_material)
+			projected_stored_material[res] = 0
+			stored_material[res] = 0
 
 	//Create global autolathe recipe list if it hasn't been made already.
 	if(isnull(recipes))
@@ -179,11 +183,12 @@
 	add_fingerprint(usr)
 
 	if (href_list["change_category"])
-		var/choice = tgui_input_list(usr, "Which category do you wish to display?", categories+"All")
+		var/choice = tgui_input_list(usr, "Which category do you wish to display?", "Category Selection", categories+"All")
 		if(!choice)
 			return
 		show_category = choice
 		update_printable()
+		updateUsrDialog()
 		return
 
 	else if (href_list["cancel"])

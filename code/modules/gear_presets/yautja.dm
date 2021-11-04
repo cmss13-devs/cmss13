@@ -17,25 +17,29 @@
 /datum/equipment_preset/yautja/load_vanity(mob/living/carbon/human/H)
 	return //No vanity items for Yautja!
 
-/datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/yautja/load_gear(mob/living/carbon/human/H, var/client/mob_client)
 	var/armor_number = 1
 	var/boot_number = 1
 	var/mask_number = 1
 	var/armor_material = "ebony"
-	if(H.client && H.client.prefs)
-		armor_number = H.client.prefs.predator_armor_type
-		boot_number = H.client.prefs.predator_boot_type
-		mask_number = H.client.prefs.predator_mask_type
-		armor_material = H.client.prefs.predator_armor_material
+
+	if(!mob_client)
+		mob_client = H.client
+
+	if(mob_client?.prefs)
+		armor_number = mob_client.prefs.predator_armor_type
+		boot_number = mob_client.prefs.predator_boot_type
+		mask_number = mob_client.prefs.predator_mask_type
+		armor_material = mob_client.prefs.predator_armor_material
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_EAR)
-	H.equip_to_slot_or_del(new /obj/item/weapon/melee/yautja/knife(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja(H, boot_number, armor_material), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/knife(H, boot_number, armor_material), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(H, armor_number, armor_material), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(H, mask_number, armor_material), WEAR_FACE)
 

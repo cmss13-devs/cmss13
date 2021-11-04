@@ -4,7 +4,7 @@
 	icon_state = "metal_0"
 	health = 450
 	maxhealth = 450
-	burn_multiplier = 1.5
+	burn_multiplier = 1.15
 	brute_multiplier = 1
 	crusher_resistant = TRUE
 	force_level_absorption = 10
@@ -15,7 +15,7 @@
 	barricade_hitsound = "sound/effects/metalhit.ogg"
 	barricade_type = "metal"
 	can_wire = TRUE
-	repair_materials = list("metal" = 0.2, "plasteel" = 0.25)
+	repair_materials = list("metal" = 0.3, "plasteel" = 0.45)
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/upgrade = null
 
@@ -103,17 +103,15 @@
 
 				switch(upgrade)
 					if(BARRICADE_UPGRADE_BURN)
-						burn_multiplier = 0.5
-						brute_multiplier = 1.5
+						burn_multiplier = 0.75
 						upgraded = BARRICADE_UPGRADE_BURN
 						to_chat(user, SPAN_NOTICE("You applied a biohazardous upgrade."))
 					if(BARRICADE_UPGRADE_BRUTE)
-						brute_multiplier = 0.5
-						burn_multiplier = 2
+						brute_multiplier = 0.75
 						upgraded = BARRICADE_UPGRADE_BRUTE
 						to_chat(user, SPAN_NOTICE("You applied a reinforced upgrade."))
 					if(BARRICADE_UPGRADE_EXPLOSIVE)
-						explosive_multiplier = 0.5
+						explosive_multiplier = 0.75
 						upgraded = BARRICADE_UPGRADE_EXPLOSIVE
 						to_chat(user, SPAN_NOTICE("You applied an explosive upgrade."))
 
@@ -178,6 +176,10 @@
 					if(B != src && B.dir == dir)
 						to_chat(user, SPAN_WARNING("There's already a barricade here."))
 						return
+				var/turf/open/T = loc
+				if(!(istype(T) && T.allow_construction))
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
+					return
 				playsound(src.loc, 'sound/items/Ratchet.ogg', 25, 1)
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),

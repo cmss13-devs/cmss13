@@ -8,12 +8,20 @@
 	icon_state = "chair"
 	buckle_lying = FALSE
 	var/propelled = 0 //Check for fire-extinguisher-driven chairs
+	var/created_object = /obj/item/weapon/melee/twohanded/folded_metal_chair
+	var/stacked_size = 0
 
 /obj/structure/bed/chair/Initialize()
 	. = ..()
 	if(anchored)
 		verbs -= /atom/movable/verb/pull
 	handle_rotation()
+
+/obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
+	..()
+	if (PF)
+		PF.flags_can_pass_all = PASS_AROUND|PASS_UNDER
+	flags_can_pass_all_temp = PASS_OVER
 
 /obj/structure/bed/chair/handle_rotation() //Making this into a seperate proc so office chairs can call it on Move()
 	if(src.dir == NORTH)
@@ -22,6 +30,147 @@
 		src.layer = OBJ_LAYER
 	if(buckled_mob)
 		buckled_mob.setDir(dir)
+
+/obj/structure/bed/chair/MouseDrop(atom/over)
+	. = ..()
+	if(!istype(over, /mob/living/carbon/human) || !created_object)
+		return
+	var/mob/living/carbon/human/H = over
+	if(!H.Adjacent(src))
+		return
+	if(buckled_mob)
+		to_chat(H, SPAN_NOTICE("You cannot fold the chair while [buckled_mob.name] is buckled to it!"))
+		return
+	if(stacked_size)
+		to_chat(H, SPAN_NOTICE("You cannot fold a chair while its stacked!"))
+		return
+	var/obj/item/weapon/melee/twohanded/folded_metal_chair/FMC = new created_object
+	if(H.put_in_active_hand(FMC))
+		qdel(src)
+	else if(H.put_in_inactive_hand(FMC))
+		qdel(src)
+	else
+		to_chat(H, SPAN_NOTICE("You need a free hand to fold up the chair."))
+		qdel(FMC)
+
+/obj/structure/bed/chair/attack_hand(mob/user)
+	. = ..()
+	if(stacked_size)
+		for(var/obj/item/weapon/melee/twohanded/folded_metal_chair/F in src.contents)
+			user.put_in_active_hand(F)
+			stacked_size--
+			update_overlays()
+			break
+		if(!stacked_size)
+			layer = OBJ_LAYER
+			unslashable = FALSE
+			can_buckle = TRUE
+			density = FALSE
+			flags_can_pass_all_temp |= PASS_OVER
+			projectile_coverage = PROJECTILE_COVERAGE_MEDIUM
+	return
+
+/obj/structure/bed/chair/attack_alien(mob/living/carbon/Xenomorph/M)
+	. = ..()
+	stack_collapse(M)
+
+/obj/structure/bed/chair/attackby(obj/item/I, mob/user)
+	if(istype(I, /obj/item/weapon/melee/twohanded/folded_metal_chair) && created_object)
+		if(I.flags_item & WIELDED)
+			return ..()
+
+		user.drop_inv_item_to_loc(I, src)
+		stacked_size++
+		update_overlays()
+
+		if(stacked_size == 1)
+			layer = ABOVE_MOB_LAYER
+			unslashable = TRUE
+			can_buckle = FALSE
+			density = TRUE
+			flags_can_pass_all_temp -= PASS_OVER
+			projectile_coverage = PROJECTILE_COVERAGE_HIGH
+
+		if(stacked_size > 8)
+			to_chat(user, SPAN_WARNING("The stack of chairs looks unstable!"))
+			if(prob(sqrt(50 * stacked_size)))
+				stack_collapse(user)
+
+/obj/structure/bed/chair/hitby(atom/movable/AM)
+	. = ..()
+	if(istype(AM, /mob/living) && stacked_size)
+		var/mob/living/M = AM
+		stack_collapse(M)
+		M.Stun(2)
+		M.KnockDown(2)
+	else if(stacked_size > 8 && prob(50))
+		stack_collapse(AM)
+
+/obj/structure/bed/chair/ex_act(power)
+	. = ..()
+	if(stacked_size)
+		stack_collapse()
+
+/obj/structure/bed/chair/proc/stack_collapse(var/mob/user)
+	user.visible_message(SPAN_HIGHDANGER("The stack of chairs collapses!!!"))
+	var/turf/starting_turf = get_turf(src)
+	playsound(starting_turf, 'sound/weapons/metal_chair_crash.ogg', 30, 1, 30)
+	for(var/obj/item/weapon/melee/twohanded/folded_metal_chair/falling_chair in src.contents)
+		stacked_size--
+		update_overlays()
+
+		var/list/candidate_target_turfs = range(round(stacked_size/2), starting_turf)
+		candidate_target_turfs -= starting_turf
+		var/turf/target_turf = candidate_target_turfs[rand(1, length(candidate_target_turfs))]
+
+		falling_chair.forceMove(starting_turf)
+		falling_chair.pixel_x = rand(-8, 8)
+		falling_chair.pixel_y = rand(-8, 8)
+		falling_chair.throw_atom(target_turf, rand(2, 5), SPEED_FAST, user, TRUE)
+	var/obj/item/weapon/melee/twohanded/folded_metal_chair/I = new created_object(starting_turf)
+	I.throw_atom(starting_turf, rand(2, 5), SPEED_FAST, user, TRUE)
+	qdel(src)
+
+/obj/structure/bed/chair/proc/update_overlays()
+	overlays.Cut()
+	if(!stacked_size)
+		name = initial(name)
+		desc = initial(desc)
+		return
+	name = "A stack of folding chairs."
+	desc = "There seems to be [stacked_size + 1] in the stack, wow!"
+	for(var/i in 1 to stacked_size)
+		var/image/I = new(src.icon)
+		I.dir = src.dir
+		var/image/previous_chair_overlay
+		if(i == 1)
+			switch(src.dir)
+				if(NORTH)
+					I.pixel_y = pixel_y + 2
+				if(SOUTH)
+					I.pixel_y = pixel_y + 2
+				if(EAST)
+					I.pixel_x = pixel_x + 1
+					I.pixel_y = pixel_y + 3
+				if(WEST)
+					I.pixel_x = pixel_x - 1
+					I.pixel_y = pixel_y + 3
+		else
+			previous_chair_overlay = overlays[i - 1]
+			switch(src.dir)
+				if(NORTH)
+					I.pixel_y = previous_chair_overlay.pixel_y + 2
+				if(SOUTH)
+					I.pixel_y = previous_chair_overlay.pixel_y + 2
+				if(EAST)
+					I.pixel_x = previous_chair_overlay.pixel_x + 1
+					I.pixel_y = previous_chair_overlay.pixel_y + 3
+				if(WEST)
+					I.pixel_x = previous_chair_overlay.pixel_x - 1
+					I.pixel_y = previous_chair_overlay.pixel_y + 3
+		if(stacked_size > 8)
+			I.pixel_x = I.pixel_x + pick(list(-1, 1))
+		overlays += I
 
 /obj/structure/bed/chair/verb/rotate()
 	set name = "Rotate Chair"
@@ -140,6 +289,7 @@
 	buildstacktype = 0
 	unslashable = TRUE
 	unacidable = TRUE
+	buckling_sound = 'sound/effects/metal_close.ogg'
 	var/is_animating = 0
 
 /obj/structure/bed/chair/dropship/passenger/shuttle_chair
@@ -305,3 +455,45 @@
 	color = rgb(255,255,255)
 	hit_bed_sound = 'sound/weapons/bladeslice.ogg'
 	debris = list()
+
+/obj/item/weapon/melee/twohanded/folded_metal_chair //used for when someone picks up the chair
+	name = "metal folding chair"
+	desc = "A metal folding chair, probably could be turned into a seat by anyone with half a braincell working."
+	icon = 'icons/obj/items/weapons/weapons.dmi'
+	icon_state = "folding_chair"
+	item_state = "folding_chair"
+	attack_verb = list("bashed", "battered", "chaired")
+	force = 1.0
+	throwforce = 3.0
+	sharp = null
+	edge = 0
+	w_class = SIZE_LARGE
+	force_wielded = 10
+	flags_item = TWOHANDED
+	var/created_object = /obj/structure/bed/chair
+
+/obj/item/weapon/melee/twohanded/folded_metal_chair/attack(mob/living/M as mob, mob/living/user as mob)
+	. = ..()
+	if(flags_item & WIELDED)
+		M.apply_stamina_damage(25, check_zone(user.zone_selected))
+	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)
+
+/obj/item/weapon/melee/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)
+	if(flags_item & WIELDED)
+		return
+	if(isturf(target))
+		if(!proximity)
+			return
+		var/turf/T = target
+		if(!T.density)
+			for(var/atom/movable/AM in T.contents)
+				if(AM.density || istype(AM, /obj/structure/bed))
+					to_chat(user, SPAN_WARNING("You can't unfold the chair here, [AM] blocks the way."))
+					return
+			var/obj/O = new created_object(T)
+			O.dir = user.dir
+			qdel(src)
+
+/obj/item/weapon/melee/twohanded/folded_metal_chair/mob_launch_collision(var/mob/living/L)
+		playsound(get_turf(src), 'sound/weapons/metal_chair_slam.ogg', 50, 1)
+		..()

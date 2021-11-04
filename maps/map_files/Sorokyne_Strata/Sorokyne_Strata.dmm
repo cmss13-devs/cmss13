@@ -5469,7 +5469,6 @@
 /area/strata/ag/interior/landingzone_1)
 "apd" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -5488,7 +5487,6 @@
 /area/strata/ag/exterior/paths/cabin_area)
 "apf" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/asphalt/cement{
@@ -5497,7 +5495,6 @@
 /area/strata/ag/interior/landingzone_1)
 "aph" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/asphalt/cement{
@@ -5506,7 +5503,6 @@
 /area/strata/ag/interior/landingzone_1)
 "api" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -5516,7 +5512,6 @@
 /area/strata/ag/interior/landingzone_1)
 "apj" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/asphalt/cement{
@@ -5525,7 +5520,6 @@
 /area/strata/ag/interior/landingzone_1)
 "apk" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/asphalt/cement{
@@ -5534,7 +5528,6 @@
 /area/strata/ag/interior/landingzone_1)
 "apl" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -5597,7 +5590,6 @@
 "apv" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -5763,7 +5755,6 @@
 "apS" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -5779,7 +5770,6 @@
 "apU" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -6007,7 +5997,7 @@
 /area/strata/ag/interior/outpost/security)
 "aqz" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -6406,7 +6396,7 @@
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/item/weapon/gun/rifle/type71/carbine,
 /turf/open/floor/strata{
 	icon_state = "red1"
@@ -6414,7 +6404,7 @@
 /area/strata/ag/interior/outpost/security)
 "arE" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/structure/machinery/camera/autoname{
@@ -6504,7 +6494,6 @@
 "arR" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -6518,7 +6507,6 @@
 "arT" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -6826,7 +6814,7 @@
 /area/strata/ag/interior/outpost/security)
 "asG" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/item/ammo_magazine/rifle/type71,
 /obj/item/ammo_magazine/rifle/type71,
 /turf/open/floor/strata{
@@ -7099,7 +7087,6 @@
 "atp" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -7109,7 +7096,6 @@
 "atq" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -7382,7 +7368,6 @@
 "auj" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -7392,7 +7377,6 @@
 "auk" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -8843,7 +8827,6 @@
 "ayh" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -15400,7 +15383,6 @@
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -15411,7 +15393,6 @@
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -15784,7 +15765,6 @@
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/asphalt/cement{
@@ -15797,7 +15777,6 @@
 "aRx" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/asphalt/cement{
@@ -15813,7 +15792,6 @@
 "aRz" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -16334,7 +16312,6 @@
 "aSX" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -20694,7 +20671,6 @@
 "bgk" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -28077,10 +28053,6 @@
 /obj/structure/window/reinforced/tinted{
 	dir = 8
 	},
-/obj/item/reagent_container/food/drinks/britcup{
-	pixel_x = 7;
-	pixel_y = 14
-	},
 /turf/open/floor/strata{
 	dir = 8;
 	icon_state = "multi_tiles"
@@ -28905,7 +28877,7 @@
 /area/strata/ag/interior/administration)
 "bRw" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /turf/open/floor/strata{
 	icon_state = "red1"
 	},
@@ -29317,7 +29289,7 @@
 /area/strata/ag/interior/research_decks/security)
 "bUV" = (
 /obj/structure/surface/rack,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /obj/structure/machinery/camera/autoname{
 	dir = 8
 	},
@@ -32897,7 +32869,6 @@
 "crW" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -33556,7 +33527,6 @@
 "cwQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -34876,7 +34846,6 @@
 /area/strata/ug/interior/jungle/deep/tearlake_east)
 "eBo" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/asphalt/cement{
@@ -35248,7 +35217,6 @@
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -36713,7 +36681,6 @@
 "hue" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -36751,7 +36718,6 @@
 "hzb" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -37272,7 +37238,6 @@
 "iwp" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -38087,7 +38052,6 @@
 /area/strata/ug/interior/jungle/platform/east/scrub)
 "jPQ" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/asphalt/cement{
@@ -38974,7 +38938,6 @@
 /area/strata/ug/interior/jungle/deep/south_engi)
 "loP" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -39174,7 +39137,6 @@
 /area/strata/ug/interior/jungle/deep/tearlake_north)
 "lEo" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/asphalt/cement{
@@ -39776,7 +39738,6 @@
 /area/strata/ug/interior/jungle/deep/tearlake_south)
 "mvh" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -40510,7 +40471,6 @@
 "nTf" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -41835,7 +41795,6 @@
 "qbk" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -42009,7 +41968,6 @@
 "qoD" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -43082,7 +43040,6 @@
 "skJ" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -43286,7 +43243,6 @@
 "sAv" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /obj/structure/machinery/floodlight/landing,
@@ -43300,7 +43256,6 @@
 /area/strata/ug/interior/jungle/deep/tearlake_west)
 "sBg" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/asphalt/cement{
@@ -43374,7 +43329,6 @@
 "sFB" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -44593,7 +44547,6 @@
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/asphalt/cement{
@@ -45091,7 +45044,6 @@
 "vsp" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/asphalt/cement{
@@ -46025,7 +45977,6 @@
 /obj/structure/machinery/floodlight/landing,
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/asphalt/cement{
@@ -46393,7 +46344,6 @@
 /area/strata/ug/interior/jungle/deep/west_engi)
 "xGE" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -46700,7 +46650,6 @@
 "yee" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/asphalt/cement{

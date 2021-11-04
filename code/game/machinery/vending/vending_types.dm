@@ -45,6 +45,7 @@
 					/obj/item/reagent_container/food/snacks/packaged_burrito = 12,
 					/obj/item/reagent_container/food/snacks/packaged_hdogs =12,
 					/obj/item/reagent_container/food/snacks/kepler_crisps = 12,
+					/obj/item/reagent_container/food/snacks/wy_chips/pepper = 12,
 					/obj/item/reagent_container/food/snacks/eat_bar = 12,
 					/obj/item/reagent_container/food/snacks/wrapped/booniebars = 6,
 					/obj/item/reagent_container/food/snacks/wrapped/chunk = 6,
@@ -188,15 +189,44 @@
 	products = list(/obj/item/handcuffs = 8,
 					/obj/item/handcuffs/zip = 10,
 					/obj/item/explosive/grenade/flashbang = 4,
+					/obj/item/weapon/gun/energy/taser = 4,
+					/obj/item/reagent_container/spray/pepper = 4,
+					/obj/item/weapon/melee/baton = 4,
+					/obj/item/device/flashlight = 4,
+					/obj/item/storage/belt/security/MP = 4,
 					/obj/item/device/flash = 5,
 					/obj/item/reagent_container/food/snacks/donut/normal = 12,
 					/obj/item/storage/box/evidence = 6,
 					/obj/item/clothing/head/helmet/marine/MP = 6,
-					/obj/item/clothing/head/mppeaked = 6,
-					/obj/item/clothing/head/mpcap = 6,
+					/obj/item/clothing/head/helmet/beret/marine/mp/mppeaked = 6,
+					/obj/item/clothing/head/helmet/beret/marine/mp/mpcap = 6,
+					/obj/item/clothing/under/marine/mp = 2,
+					/obj/item/storage/belt/security/MP = 6,
+					/obj/item/clothing/head/helmet/beret/marine/mp = 6,
 					/obj/item/clothing/glasses/sunglasses/sechud = 3,
 					/obj/item/device/radio/headset = 6)
 	contraband = list(/obj/item/clothing/glasses/sunglasses = 2,/obj/item/storage/donut_box = 2)
+
+/obj/structure/machinery/vending/sea
+	name = "SeaTech"
+	desc = "A equipment vendor designed to save lives"
+	product_ads = "Semper Fi!;First to Fight!;Ooh Rah.;Leathernecks!;The Few. The Proud.;Esprit de Corps;Jarhead.;Devil Dogs."
+	icon_state = "sec"
+	icon_deny = "sec-deny"
+	hacking_safety = TRUE
+	wrenchable = FALSE
+	req_access = list(ACCESS_MARINE_SEA)
+	products = list(/obj/item/ammo_magazine/smg/m39/rubber = 20,
+					/obj/item/ammo_magazine/pistol/rubber = 20,
+					/obj/item/ammo_magazine/pistol/mod88/rubber = 20,
+					/obj/item/ammo_magazine/rifle/rubber = 20,
+					/obj/item/ammo_magazine/rifle/l42a/rubber = 20,
+					/obj/item/ammo_magazine/shotgun/beanbag = 20,
+					/obj/item/storage/firstaid/regular = 2,
+					/obj/item/storage/firstaid/fire = 2,
+					/obj/item/storage/firstaid/rad = 1,
+					/obj/item/device/radio/headset = 6)
+	contraband = list(/obj/item/storage/fancy/cigar = 2,/obj/item/tool/lighter/zippo = 2)
 
 /obj/structure/machinery/vending/hydronutrients
 	name = "NutriMax"

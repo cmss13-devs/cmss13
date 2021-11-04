@@ -8379,7 +8379,7 @@
 /turf/open/floor/almayer/research/containment/floor2,
 /area/kutjevo/interior/complex/botany)
 "BY" = (
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /obj/structure/stairs/perspective/kutjevo{
 	dir = 4;
 	icon_state = "p_stair_full"
@@ -10310,7 +10310,7 @@
 	pixel_y = -7
 	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/britcup{
+/obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = -7;
 	pixel_y = 8
 	},
@@ -12187,7 +12187,7 @@
 /turf/open/auto_turf/sand/layer1,
 /area/kutjevo/exterior/stonyfields)
 "Pq" = (
-/obj/item/trash/bcigbutt,
+/obj/item/trash/cigbutt/bcigbutt,
 /turf/open/floor/kutjevo/multi_tiles,
 /area/kutjevo/interior/colony_central)
 "Pr" = (
@@ -24367,7 +24367,7 @@ QY
 eD
 ao
 dp
-tT
+eD
 tT
 tT
 QY
@@ -24875,8 +24875,8 @@ tT
 tT
 tT
 QY
+eD
 QY
-dk
 QY
 QY
 eD
@@ -25042,9 +25042,9 @@ tT
 QY
 QY
 QY
+QY
 eD
-QY
-QY
+lJ
 QY
 QY
 QY
@@ -25208,11 +25208,11 @@ tT
 tT
 QY
 QY
-QY
+dk
 QY
 eD
-lJ
-QY
+eD
+eD
 QY
 QY
 aT
@@ -25377,9 +25377,9 @@ eD
 QY
 QY
 QY
-eD
-eD
-eD
+QY
+QY
+QY
 QY
 QY
 aT

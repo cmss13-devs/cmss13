@@ -1,3 +1,4 @@
+#define HAT_GARB_RELAY_ICON_STATE "icon_state"
 /obj/item/clothing/head
 	name = "head"
 	icon = 'icons/obj/items/clothing/hats.dmi'
@@ -24,9 +25,9 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/cmbandana/New()
+/obj/item/clothing/head/cmbandana/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/cmbandana)
-	..()
 
 /obj/item/clothing/head/cmbandana/tan
 	icon_state = "band2"
@@ -59,19 +60,20 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/beret/cm/New()
+/obj/item/clothing/head/beret/cm/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/beret/cm)
-	..()
 
 /obj/item/clothing/head/beret/cm/tan
 	icon_state = "berettan"
 
-/obj/item/clothing/head/beret/cm/tan/New()
+/obj/item/clothing/head/beret/cm/tan/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/beret/cm/tan)
-	..()
 
 /obj/item/clothing/head/beret/cm/red
 	icon_state = "beretred"
+
 /obj/item/clothing/head/headband
 	name = "headband"
 	desc = "A rag typically worn by the less-orthodox weapons operators. While it offers no protection, it is certainly comfortable to wear compared to the standard helmet. Comes in two stylish colors."
@@ -81,9 +83,9 @@
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/headband/New()
+/obj/item/clothing/head/headband/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/headband)
-	..()
 
 /obj/item/clothing/head/headband/red
 	icon_state = "headbandred"
@@ -114,13 +116,17 @@
 
 /obj/item/clothing/head/cmcap
 	name = "patrol cap"
-	desc = "A casual cap occasionally worn by Squad-leaders and Combat-Engineers. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+	desc = "A casual cap issued as part of the non-combat uniform. While it only protects from the sun, it's much more comfortable than a helmet."
 	icon_state = "cap"
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	var/helmet_overlays[]
 	var/flipped_cap = FALSE
+	var/list/flipping_message = list(
+		"flipped" = "You spin the hat backwards! You look like a tool.",
+		"unflipped" = "You spin the hat back forwards. That's better."
+		)
 	var/base_cap_icon
-	var/flags_marine_helmet = HELMET_GARB_OVERLAY|HELMET_STORE_GARB
+	var/flags_marine_hat = HAT_GARB_OVERLAY|HAT_CAN_FLIP
 	var/obj/item/storage/internal/pockets
 	var/list/allowed_hat_items = list(
 						/obj/item/storage/fancy/cigarettes/emeraldgreen = "hat_cig_cig",
@@ -135,15 +141,21 @@
 						/obj/item/tool/pen/red = "hat_pen_red",
 						/obj/item/clothing/glasses/welding = "welding-c",
 						/obj/item/clothing/glasses/mgoggles = "goggles-c",
-						/obj/item/clothing/glasses/mgoggles/prescription = "goggles-c")
+						/obj/item/clothing/glasses/mgoggles/prescription = "goggles-c",
+						/obj/item/prop/helmetgarb/helmet_nvg = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/prop/helmetgarb/helmet_nvg/functional = HAT_GARB_RELAY_ICON_STATE,
+						/obj/item/clothing/head/headband = "hat_headbandgreen",
+						/obj/item/clothing/head/headband/tan = "hat_headbandtan",
+						/obj/item/clothing/head/headband/red = "hat_headbandred")
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/cmcap/New()
-	select_gamemode_skin(/obj/item/clothing/head/cmcap)
+/obj/item/clothing/head/cmcap/Initialize(mapload, ...)
+	. = ..()
+	if(!(flags_atom & NO_SNOW_TYPE))
+		select_gamemode_skin(type)
 	base_cap_icon = icon_state
-	..()
 	helmet_overlays = list("item") //To make things simple.
 	pockets = new/obj/item/storage/internal(src)
 	pockets.storage_slots = 1
@@ -180,10 +192,13 @@
 /obj/item/clothing/head/cmcap/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
 	if(slot == WEAR_HEAD)
-		if(length(pockets.contents) && (flags_marine_helmet & HELMET_GARB_OVERLAY))
+		if(length(pockets.contents) && (flags_marine_hat & HAT_GARB_OVERLAY))
 			var/obj/O = pockets.contents[1]
 			if(O.type in allowed_hat_items)
-				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[allowed_hat_items[O.type]]", color, RESET_COLOR)
+				var/garb_state = allowed_hat_items[O.type]
+				if(garb_state == HAT_GARB_RELAY_ICON_STATE)
+					garb_state = "hat_[O.icon_state]"
+				var/image/I = overlay_image('icons/mob/humans/onmob/helmet_garb.dmi', "[garb_state]", color, RESET_COLOR)
 				ret.overlays += I
 
 	return ret
@@ -192,84 +207,77 @@
 	set name = "Flip hat"
 	set category = "Object"
 	set src in usr
-	if(!isliving(usr)) return
-	if(usr.is_mob_incapacitated()) return
+	if(!isliving(usr))
+		return
+	if(usr.is_mob_incapacitated())
+		return
+	if(!(flags_marine_hat & HAT_CAN_FLIP))
+		to_chat(usr, SPAN_WARNING("[src] can't be flipped!"))
+		return
 
-	flipped_cap = !flipped_cap
-	if(flipped_cap)
-		to_chat(usr, "You spin the hat backwards! You look like a tool.")
+	flags_marine_hat ^= HAT_FLIPPED
+
+	if(flags_marine_hat & HAT_FLIPPED)
+		to_chat(usr, flipping_message["flipped"])
 		icon_state = base_cap_icon + "_b"
 	else
-		to_chat(usr, "You spin the hat back forwards. That's better.")
+		to_chat(usr, flipping_message["unflipped"])
 		icon_state = base_cap_icon
 
 	update_clothing_icon()
 
+/obj/item/clothing/head/cmcap/boonie
+	name = "\improper USCM boonie hat"
+	desc = "A floppy bush hat. Protects only from the sun and rain, but very comfortable."
+	icon_state = "booniehat"
+	flipping_message = list(
+		"flipped" = "You tuck the hat's chinstrap away. Hopefully the wind doesn't nick it...",
+		"unflipped" = "You hook the hat's chinstrap under your chin. Peace of mind is worth a little embarassment."
+		)
+
+/obj/item/clothing/head/cmcap/boonie/tan
+	icon_state = "booniehattan"
+	flags_atom = FPRINT|NO_SNOW_TYPE
+
 /obj/item/clothing/head/cmcap/co
 	name = "\improper USCM captain cap"
 	icon_state = "cocap"
-	desc = "A hat usually worn by senior officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+	desc = "A hat usually worn by senior officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 
-/obj/item/clothing/head/cmcap/co/formal/white
+/obj/item/clothing/head/cmcap/co/formal
 	name = "\improper USCM formal captain's white cap"
 	icon_state = "co_formalhat_white"
 	desc = "A formal cover worn by Commanding Officers of the USCM."
+	flags_marine_hat = HAT_GARB_OVERLAY
+	flags_atom = FPRINT|NO_SNOW_TYPE
 
 /obj/item/clothing/head/cmcap/co/formal/black
 	name = "\improper USCM formal captain's black cap"
 	icon_state = "co_formalhat_black"
-	desc = "A formal cover worn by Commanding Officers of the USCM."
 
 /obj/item/clothing/head/cmcap/ro
 	name = "\improper USCM officer cap"
-	desc = "A hat usually worn by officers in the USCM. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
+	desc = "A hat usually worn by officers in the USCM. While it provides no protection, some officers wear it in the field to make themselves more recognisable."
 	icon_state = "rocap"
-
-/obj/item/clothing/head/cmcap/ro/New()
-	select_gamemode_skin(/obj/item/clothing/head/cmcap/ro)
-	..()
 
 /obj/item/clothing/head/cmcap/req
 	name = "\improper USCM requisition cap"
 	desc = "It's a fancy hat for a not-so-fancy military supply clerk."
 	icon_state = "cargocap"
+	flags_atom = FPRINT|NO_SNOW_TYPE
 
-/obj/item/clothing/head/cmflapcap
+/obj/item/clothing/head/cmcap/flap
 	name = "\improper USCM expedition cap"
-	desc = "It's a cap, with flaps. ALMAYER reads across a patch stitched to the front."
+	desc = "It's a cap, with flaps. A patch stitched across the front reads \"<b>USS ALMAYER</b>\"."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "flapcap"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
-
-/obj/item/clothing/head/cmflapcap/New()
-	select_gamemode_skin(/obj/item/clothing/head/cmflapcap)
-	..()
+	flags_marine_hat = HAT_GARB_OVERLAY
 
 /obj/item/clothing/head/cmo
 	name = "\improper Chief Medical Officer's Peaked Cap"
 	desc = "A peaked cap given to high ranking civilian medical officers. Looks just a touch silly."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "cmohat"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
-
-/obj/item/clothing/head/mppeaked
-	name = "\improper Military Police Peaked Cap"
-	desc = "A peaked cap worn by the USCM's Military Police. Something about it reminds you of an event you once read about in a history book."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	icon_state = "mppeaked"
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
-
-/obj/item/clothing/head/mpcap
-	name = "\improper Military Police cap"
-	desc = "A ball-cap worn by the more casual of the USCM's Military Police."
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	icon_state = "mpcap"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
@@ -294,7 +302,7 @@
 /obj/item/clothing/head/helmet/beret/marine/mp
 	name = "\improper USCM MP beret"
 	icon_state = "beretred"
-	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_bullet = CLOTHING_ARMOR_LOW
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -309,31 +317,49 @@
 	)
 
 /obj/item/clothing/head/helmet/beret/marine/mp/warden
-	name = "\improper USCM warden peaked"
+	name = "\improper USCM MP warden peaked cap"
 	icon_state = "warden"
-	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+	desc = "A Kevlar reinforced peaked cap with the USCM Military Police Lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, and is typicaly used by Wardens on USCM ships."
 
 /obj/item/clothing/head/helmet/beret/marine/mp/cmp
 	name = "\improper USCM chief MP beret"
-	desc = "A kevlar reinforced beret with the USCM military police lieutenant insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
+	desc = "A Kevlar reinforced beret with the USCM Military Police Lieutenant Commander insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package. It shines with the glow of corrupt authority and a smudge of doughnut."
 	icon_state = "beretwo"
+
+/obj/item/clothing/head/helmet/beret/marine/mp/mppeaked
+	name = "\improper USCM MP peaked cap"
+	desc = "A Kevlar reinforced peaked cap worn by the USCM's Military Police. This durable headwear provides comparable protection to a M10 helmet. Something about it reminds you of an event you once read about in a history book."
+	icon_state = "mppeaked"
+
+/obj/item/clothing/head/helmet/beret/marine/mp/mpcap
+	name = "\improper USCM MP ball-cap"
+	desc = "A Kevlar reinforced ball-cap, typically worn by the more casual of the USCM's Military Police. This durable headwear provides comparable protection to a M10 helmet. "
+	icon_state = "mpcap"
 
 /obj/item/clothing/head/helmet/beret/marine/mp/provost
 	name = "\improper USCM provost beret"
 	icon_state = "beretwo"
-	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
 
 /obj/item/clothing/head/helmet/beret/marine/mp/provost/senior
 	name = "\improper USCM senior provost beret"
 	icon_state = "coblackberet"
-	desc = "A kevlar reinforced beret with the USCM military police insignia emblazoned on it. This durable headwear provides comparable protection to an M10 helmet, but in a much more stylish package."
+	desc = "A Kevlar reinforced beret with the USCM Military Police insignia emblazoned on it. This durable headwear provides comparable protection to a M10 helmet, but in a much more stylish package."
 
 
 /obj/item/clothing/head/beret/marine/commander
 	name = "marine captain beret"
-	desc = "A beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	desc = "An armored beret with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coberet"
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_LOW
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_LOW
+	armor_bomb = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bio = CLOTHING_ARMOR_MEDIUMLOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
@@ -341,27 +367,26 @@
 /obj/item/clothing/head/beret/marine/commander/dress
 	name = "marine captain white beret"
 	icon_state = "codressberet"
-	desc = "A white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
+	desc = "An armored white beret with the captain insignia emblazoned on it. Its dazzling white color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/black
 	name = "marine captain black beret"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "coblackberet"
-	desc = "A black beret with the captain insignia emblazoned on it. Its sleek black color commands power and exudes class."
+	desc = "An armored black beret with the captain insignia emblazoned on it. Its sleek black color commands power and exudes class."
 
 /obj/item/clothing/head/beret/marine/commander/cdre
 	name = "marine commodore beret"
-	desc = "A blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
+	desc = "An armored blue beret with the commodore's insignia emblazoned on it. Its blue color symbolizes loyalty, confidence, and politics - the core components of a true Commodore."
 	icon_state = "cdreberet"
 
 /obj/item/clothing/head/beret/marine/commander/cdrechief
 	name = "marine commodore-in-chief beret"
-	desc = "A dark blue beret signifying the Chief of all Commodores. Rumors about the commodore-in-chief position being simply an alias for an Admiral have been declared as false."
+	desc = "A dark blue, custom-tailored armored beret signifying the Chief of all Commodores. Definitely not an alias for an Admiral."
 	icon_state = "cdrechiefberet"
 
 /obj/item/clothing/head/marine/peaked
 	name = "marine peaked cap"
-	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	desc = "A peaked cap. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/hats.dmi'
 	icon_state = "officercap"
 	item_icons = list(
@@ -370,12 +395,22 @@
 
 /obj/item/clothing/head/marine/peaked/captain
 	name = "marine captain peaked cap"
-	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon his head and shoulders."
+	desc = "A peaked cap with the captain insignia emblazoned on it. Wearer may suffer the heavy weight of responsibility upon their head and shoulders."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "copeaked"
 	item_icons = list(
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
+
+/obj/item/clothing/head/marine/peaked/captain/white
+	name = "captain's dress white peaked cap"
+	desc = "A white, Navy-style peaked cap for the Captain. Wearer may suffer the heavy weight of responsibility upon their head."
+	icon_state = "co_peakedcap_white"
+
+/obj/item/clothing/head/marine/peaked/captain/black
+	name = "captain's dress black peaked cap"
+	desc = "A black, Navy-style peaked cap for the Captain. Wearer may suffer the heavy weight of responsibility upon their head."
+	icon_state = "co_peakedcap_black"
 
 /obj/item/clothing/head/beret/marine/chiefofficer
 	name = "chief officer beret"
@@ -545,23 +580,6 @@ D
 	flags_inventory = BLOCKSHARPOBJ
 	flags_inv_hide = HIDEEARS
 
-/obj/item/clothing/head/booniehat
-	name = "\improper USCM boonie hat"
-	desc = "A casual cap occasionally worn by crazy marines. While it has limited combat functionality, some prefer to wear it instead of the standard issue helmet."
-	icon_state = "booniehat"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-	item_icons = list(
-		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
-	)
-
-/obj/item/clothing/head/booniehat/tan
-	icon_state = "booniehattan"
-	icon = 'icons/obj/items/clothing/cm_hats.dmi'
-
-/obj/item/clothing/head/booniehat/New()
-	select_gamemode_skin(/obj/item/clothing/head/booniehat)
-	..()
-
 /obj/item/clothing/head/durag
 	name = "durag"
 	desc = "An improvised head wrap made out of a standard issue neckercheif. Great for keeping the sweat out of your eyes and protecting your hair."
@@ -578,9 +596,9 @@ D
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	flags_atom = NO_SNOW_TYPE
 
-/obj/item/clothing/head/durag/New()
+/obj/item/clothing/head/durag/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/durag)
-	..()
 
 /obj/item/clothing/head/drillhat
 	name = "\improper USCM drill hat"
@@ -591,6 +609,7 @@ D
 		WEAR_HEAD = 'icons/mob/humans/onmob/head_1.dmi'
 	)
 
-/obj/item/clothing/head/drillhat/New()
+/obj/item/clothing/head/drillhat/Initialize(mapload, ...)
+	. = ..()
 	select_gamemode_skin(/obj/item/clothing/head/drillhat)
-	..()
+#undef HAT_GARB_RELAY_ICON_STATE

@@ -323,10 +323,10 @@
 
 
 /obj/item/weapon/gun/smartgun/Initialize(mapload, ...)
-	. = ..()
-	ammo_primary = GLOB.ammo_list[ammo_primary]
+	ammo_primary = GLOB.ammo_list[ammo_primary] //Gun initialize calls replace_ammo() so we need to set these first.
 	ammo_secondary = GLOB.ammo_list[ammo_secondary]
 	MD = new(src)
+	. = ..()
 
 /obj/item/weapon/gun/smartgun/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 16,"rail_x" = 17, "rail_y" = 18, "under_x" = 22, "under_y" = 14, "stock_x" = 22, "stock_y" = 14)
@@ -340,7 +340,7 @@
 	fa_scatter_peak = FULL_AUTO_SCATTER_PEAK_TIER_6
 	fa_max_scatter = SCATTER_AMOUNT_TIER_5
 	if(accuracy_improvement)
-		accuracy_mult += HIT_ACCURACY_MULT_TIER_2
+		accuracy_mult += HIT_ACCURACY_MULT_TIER_3
 	else
 		accuracy_mult += HIT_ACCURACY_MULT_TIER_1
 	if(recoil_compensation)
@@ -973,6 +973,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 /obj/item/weapon/gun/launcher/grenade/reload_into_chamber()
 	return
 
+/obj/item/weapon/gun/launcher/grenade/has_ammunition()
+	return length(cylinder.contents)
 
 //-------------------------------------------------------
 //M92 GRENADE LAUNCHER
@@ -1130,14 +1132,15 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 //No such thing
 /obj/item/weapon/gun/launcher/rocket/reload_into_chamber(mob/user)
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	if(!current_mag)
 		return
 	qdel(projectile_to_fire)
-	if(refund) current_mag.current_rounds++
-	return 1
+	if(refund)
+		current_mag.current_rounds++
+	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/proc/make_rocket(mob/user, drop_override = 0, empty = 1)
 	if(!current_mag)
@@ -1206,7 +1209,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		current_mag = rocket
 		rocket.forceMove(src)
 		replace_ammo(,rocket)
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/launcher/rocket/unload(mob/user,  reload_override = 0, drop_override = 0)
 	if(user && current_mag)
@@ -1273,15 +1276,18 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	current_mag = /obj/item/ammo_magazine/internal/flare
 	reload_sound = 'sound/weapons/gun_shotgun_shell_insert.ogg'
 	fire_sound = 'sound/weapons/gun_flare.ogg'
-	flags_gun_features = GUN_INTERNAL_MAG
+	aim_slowdown = 0
+	wield_delay = WIELD_DELAY_VERY_FAST
+	movement_onehanded_acc_penalty_mult = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
+	flags_gun_features = GUN_INTERNAL_MAG|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
-	attachable_allowed = list(/obj/item/attachable/scope/mini)
+	attachable_allowed = list(/obj/item/attachable/scope/mini/flaregun)
 	var/popped_state = "m82f_e" //Icon state that represents an unloaded flare gun. The tube's just popped out.
 
 
 /obj/item/weapon/gun/flare/handle_starting_attachment()
 	..()
-	var/obj/item/attachable/scope/mini/S = new(src)
+	var/obj/item/attachable/scope/mini/flaregun/S = new(src)
 	S.hidden = TRUE
 	S.flags_attach_features &= ~ATTACH_REMOVABLE
 	S.Attach(src)
@@ -1295,10 +1301,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	fire_delay = FIRE_DELAY_TIER_10
 	accuracy_mult = BASE_ACCURACY_MULT
+	accuracy_mult_unwielded = -MOVEMENT_ACCURACY_PENALTY_MULT_TIER_1
 	scatter = 0
-	recoil = RECOIL_AMOUNT_TIER_5
+	recoil = RECOIL_AMOUNT_TIER_4
 	recoil_unwielded = RECOIL_AMOUNT_TIER_4
-	recoil = RECOIL_AMOUNT_TIER_5
 
 /obj/item/weapon/gun/flare/set_bullet_traits()
 	LAZYADD(traits_to_give, list(
@@ -1319,10 +1325,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		if(!F.fuel)
 			to_chat(user, SPAN_WARNING("You can't put a burnt out flare in [src]!"))
 			return
-		if(istype(F, /obj/item/device/flashlight/flare/signal))
-			to_chat(user, SPAN_WARNING("You can't load a signal flare in [src]!"))
-			return
 		if(current_mag && current_mag.current_rounds == 0)
+			ammo = GLOB.ammo_list[F.ammo_datum]
 			playsound(user, reload_sound, 25, 1)
 			to_chat(user, SPAN_NOTICE("You load \the [F] into [src]."))
 			current_mag.current_rounds++

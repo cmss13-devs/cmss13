@@ -33,6 +33,8 @@
 #define AMMO_HOMING				(1<<19) // If the bullet target is a mob, it will correct its trajectory toward the mob.
 /// Can't be deflected
 #define AMMO_NO_DEFLECT			(1<<20)
+///Can only hit people with criminal status
+#define AMMO_MP					(1<<21)
 
 //Gun defines for gun related thing. More in the projectile folder.
 #define GUN_CAN_POINTBLANK		(1<<0)
@@ -57,6 +59,7 @@
 #define GUN_INTERNAL_SILENCED	(1<<19) //suppressor doesnt override sound
 /// Whether the gun has been fired by its current user (reset upon `dropped()`)
 #define GUN_FIRED_BY_USER		(1<<20)
+#define GUN_SUPPORT_PLATFORM	(1<<21) /// support weapon, bipod will grant IFF
 
 //Gun attachable related flags.
 #define ATTACH_REMOVABLE	1

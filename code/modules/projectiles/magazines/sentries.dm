@@ -10,6 +10,9 @@
 	default_ammo = /datum/ammo/bullet/turret
 	gun_type = null
 
+/obj/item/ammo_magazine/sentry/dropped
+	max_rounds = 1500
+
 /obj/item/ammo_magazine/sentry/premade
 	max_rounds = 1000000
 
@@ -39,11 +42,6 @@
 	name = "plasma sentry incinerator tank"
 	desc = "A fuel tank of compressed Ultra Thick Napthal Fuel, used in the UA 60-FP."
 	default_ammo = /datum/ammo/flamethrower/sentry_flamer/glob
-
-/obj/item/ammo_magazine/sentry_flamer/assault
-	name = "assault sentry incinerator tank"
-	desc = "A fuel tank of Ultra Thick Napthal Fuel, used in the UA 55-FA."
-	default_ammo = /datum/ammo/flamethrower/sentry_flamer/assault
 
 /obj/item/ammo_magazine/sentry_flamer/mini
 	name = "mini sentry incinerator tank"

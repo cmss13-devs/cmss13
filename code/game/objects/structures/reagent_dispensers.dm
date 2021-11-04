@@ -1,5 +1,4 @@
 
-
 /obj/structure/reagent_dispensers
 	name = "dispenser"
 	desc = "..."
@@ -10,7 +9,7 @@
 	flags_atom = CAN_BE_SYRINGED
 
 	var/amount_per_transfer_from_this = 10
-	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100)
+	var/possible_transfer_amounts = list(5,10,20,30,40,50,60,100,200,300)
 	var/chemical = ""
 	var/dispensing = TRUE
 
@@ -134,6 +133,13 @@
 	icon_state = "pacidtank"
 	chemical = "pacid"
 
+/obj/structure/reagent_dispensers/ethanoltank
+	name = "ethanol tank"
+	desc = "An ethanol tank."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "ethanoltank"
+	chemical = "ethanol"
+
 /obj/structure/reagent_dispensers/fueltank
 	name = "fueltank"
 	desc = "A fueltank"
@@ -256,12 +262,11 @@
 		source_mob = WEAKREF(Proj.firer)
 
 	if(Proj.damage > 10 && prob(60) && !reinforced)
-		exploding = TRUE
-		explode()
-
 		if(Proj.firer)
 			message_staff("[key_name_admin(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]) (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[loc.x];Y=[loc.y];Z=[loc.z]'>JMP</a>).")
 			log_game("[key_name(Proj.firer)] fired a projectile at [name] in [loc.loc.name] ([loc.x],[loc.y],[loc.z]).")
+		exploding = TRUE
+		explode()
 
 	return TRUE
 

@@ -6,13 +6,14 @@ var/list/department_radio_keys = list(
 	  ":z" = "HighCom",		"#z" = "HighCom",		".z" = "HighCom",
 
 	  ":m" = "MedSci",		"#m" = "MedSci",		".m" = "MedSci",
-	  ":e" = "Engi", 		"#e" = "Engi",			".e" = "Engi",
+	  ":n" = "Engi", 		"#n" = "Engi",			".n" = "Engi",
 	  ":g" = "Almayer",		"#g" = "Almayer",		".g" = "Almayer",
 	  ":v" = "Command",		"#v" = "Command",		".v" = "Command",
 	  ":a" = SQUAD_NAME_1,	"#a" = SQUAD_NAME_1,	".a" = SQUAD_NAME_1,
 	  ":b" = SQUAD_NAME_2,	"#b" = SQUAD_NAME_2,	".b" = SQUAD_NAME_2,
 	  ":c" = SQUAD_NAME_3,	"#c" = SQUAD_NAME_3,	".c" = SQUAD_NAME_3,
 	  ":d" = SQUAD_NAME_4,	"#d" = SQUAD_NAME_4,	".d" = SQUAD_NAME_4,
+	  ":e" = SQUAD_NAME_5,	"#e" = SQUAD_NAME_5,	".e" = SQUAD_NAME_5,
 	  ":p" = "MP",			"#p" = "MP",			".p" = "MP",
 	  ":u" = "Req",			"#u" = "Req",			".u" = "Req",
 	  ":j" = "JTAC",		"#j" = "JTAC",			".j" = "JTAC",
@@ -27,13 +28,14 @@ var/list/department_radio_keys = list(
 	  ":Z" = "HighCom",		"#Z" = "HighCom",		".Z" = "HighCom",
 
 	  ":M" = "MedSci",		"#M" = "MedSci",		".M" = "MedSci",
-	  ":E" = "Engi", 		"#E" = "Engi",			".E" = "Engi",
+	  ":N" = "Engi", 		"#N" = "Engi",			".N" = "Engi",
 	  ":G" = "Almayer",		"#G" = "Almayer",		".G" = "Almayer",
 	  ":V" = "Command",		"#V" = "Command",		".V" = "Command",
 	  ":A" = SQUAD_NAME_1,	"#A" = SQUAD_NAME_1,	".A" = SQUAD_NAME_1,
 	  ":B" = SQUAD_NAME_2,	"#B" = SQUAD_NAME_2,	".B" = SQUAD_NAME_2,
 	  ":C" = SQUAD_NAME_3,	"#C" = SQUAD_NAME_3,	".C" = SQUAD_NAME_3,
 	  ":D" = SQUAD_NAME_4,	"#D" = SQUAD_NAME_4,	".D" = SQUAD_NAME_4,
+	  ":E" = SQUAD_NAME_5,	"#E" = SQUAD_NAME_5,	".E" = SQUAD_NAME_5,
 	  ":P" = "MP",			"#P" = "MP",			".P" = "MP",
 	  ":U" = "Req",			"#U" = "Req",			".U" = "Req",
 	  ":J" = "JTAC",		"#J" = "JTAC",			".J" = "JTAC",
@@ -54,21 +56,15 @@ var/list/department_radio_keys = list(
 )
 
 /mob/living/proc/binarycheck()
-	if (!ishuman(src))
-		return
+	return FALSE
 
-	var/mob/living/carbon/human/H = src
-	if (H.wear_ear)
-		var/obj/item/device/radio/headset/dongle
-		if(istype(H.wear_ear,/obj/item/device/radio/headset))
-			dongle = H.wear_ear
-		if(!istype(dongle)) return
-		if(dongle.translate_binary) return 1
-
+///Shows custom speech bubbles for screaming, *warcry etc.
 /mob/living/proc/show_speech_bubble(var/bubble_name)
 	var/list/hear = hearers()
 
 	var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"[bubble_name]")
+
+	speech_bubble.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 
 	if(appearance_flags & PIXEL_SCALE)
 		speech_bubble.appearance_flags |= PIXEL_SCALE
@@ -100,6 +96,8 @@ var/list/department_radio_keys = list(
 			message += "."
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
+
+	message = process_chat_markup(message, list("~", "_"))
 
 	for(var/dst=0; dst<=1; dst++) //Will run twice if src has a clone
 		if(!dst && src.clone) //Will speak in src's location and the clone's
@@ -147,6 +145,7 @@ var/list/department_radio_keys = list(
 
 		var/speech_bubble_test = say_test(message)
 		var/image/speech_bubble = image('icons/mob/hud/talk.dmi',src,"h[speech_bubble_test]")
+		speech_bubble.appearance_flags = NO_CLIENT_COLOR|KEEP_APART|RESET_COLOR
 
 		var/not_dead_speaker = (stat != DEAD)
 		if(not_dead_speaker)

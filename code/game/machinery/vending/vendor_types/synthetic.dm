@@ -29,6 +29,7 @@
 		list("Medical Splints", 1, /obj/item/stack/medical/splint, null, VENDOR_ITEM_REGULAR),
 		list("Roller Bed", 4, /obj/item/roller, null, VENDOR_ITEM_REGULAR),
 		list("Stasis Bag", 6, /obj/item/bodybag/cryobag, null, VENDOR_ITEM_REGULAR),
+		list("Surgical Line", 4, /obj/item/tool/surgery/surgical_line, null, VENDOR_ITEM_REGULAR),
 
 		list("Pillbottle (Bicaridine)", 5, /obj/item/storage/pill_bottle/bicaridine, null, VENDOR_ITEM_RECOMMENDED),
 		list("Pillbottle (Dexalin)", 5, /obj/item/storage/pill_bottle/dexalin, null, VENDOR_ITEM_REGULAR),
@@ -85,7 +86,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Shoes, White", 0, /obj/item/clothing/shoes/white, MARINE_CAN_BUY_SHOES, VENDOR_ITEM_RECOMMENDED),
 
 		list("HELMET (CHOOSE 1)", 0, null, null, null),
-		list("Expedition Cap", 0, /obj/item/clothing/head/cmflapcap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
+		list("Expedition Cap", 0, /obj/item/clothing/head/cmcap/flap, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Hard Hat, Orange", 0, /obj/item/clothing/head/hardhat/orange, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Surgical Cap, Green", 0, /obj/item/clothing/head/surgery/green, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
 		list("Welding Helmet", 0, /obj/item/clothing/head/welding, MARINE_CAN_BUY_HELMET, VENDOR_ITEM_REGULAR),
@@ -105,6 +106,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("Smartpack, Blue", 0, /obj/item/storage/backpack/marine/smartpack, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Smartpack, Green", 0, /obj/item/storage/backpack/marine/smartpack/green, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 		list("Smartpack, Tan", 0, /obj/item/storage/backpack/marine/smartpack/tan, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Smartpack, White", 0, /obj/item/storage/backpack/marine/smartpack/white, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Smartpack, Black", 0, /obj/item/storage/backpack/marine/smartpack/black, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("G8-A General Utility Pouch", 0, /obj/item/storage/sparepouch, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -204,10 +207,10 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 		list("SUIT", 0, null, null, null),
 		list("Brown Bomber Jacket", 12, /obj/item/clothing/suit/storage/bomber, null, VENDOR_ITEM_REGULAR),
 		list("Black Bomber Jacket", 12, /obj/item/clothing/suit/storage/bomber/alt, null, VENDOR_ITEM_REGULAR),
-		list("External webbing", 12, /obj/item/clothing/suit/webbing, null, VENDOR_ITEM_REGULAR),
+		list("External webbing", 12, /obj/item/clothing/suit/storage/webbing, null, VENDOR_ITEM_REGULAR),
 		list("Hazard Vest", 12, /obj/item/clothing/suit/storage/hazardvest, null, VENDOR_ITEM_REGULAR),
 		list("Snow Suit", 12, /obj/item/clothing/suit/storage/snow_suit, null, VENDOR_ITEM_REGULAR),
-		list("USCM Service Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine, null, VENDOR_ITEM_REGULAR),
+		list("USCM Service Jacket", 12, /obj/item/clothing/suit/storage/jacket/marine/service, null, VENDOR_ITEM_REGULAR),
 		list("Brown Windbreaker", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_brown, null, VENDOR_ITEM_REGULAR),
 		list("Gray Windbreaker", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_gray, null, VENDOR_ITEM_REGULAR),
 		list("Green Windbreaker", 12, /obj/item/clothing/suit/storage/windbreaker/windbreaker_green, null, VENDOR_ITEM_REGULAR),
@@ -235,7 +238,19 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	listed_products = list(
 		list("Compact Defibrillator", 15, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),
 
+      	list("Compact Nailgun kit", 15, /obj/effect/essentials_set/cnailgun, null, VENDOR_ITEM_REGULAR),
+
 		list("Crew Monitor", 15, /obj/item/tool/crew_monitor, null, VENDOR_ITEM_REGULAR),
+
+		list("Experimental Meson Goggles", 15, /obj/item/clothing/glasses/night/experimental_mesons, null, VENDOR_ITEM_REGULAR),
 
 		list("Telescopic Baton", 15, /obj/item/weapon/melee/telebaton, null, VENDOR_ITEM_REGULAR),
 	)
+
+//------------EXPERIMENTAL TOOL KITS---------------
+/obj/effect/essentials_set/cnailgun
+    spawned_gear_list = list(
+        /obj/item/weapon/gun/smg/nailgun/compact,
+        /obj/item/ammo_magazine/smg/nailgun,
+        /obj/item/ammo_magazine/smg/nailgun,
+    )

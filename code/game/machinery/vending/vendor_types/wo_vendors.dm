@@ -40,11 +40,7 @@
 		list("Marine Delta Radio Headset", 10, /obj/item/device/radio/headset/almayer/marine/delta, VENDOR_ITEM_REGULAR),
 
 		list("GLOVES", -1, null, null),
-		list("Marine Alpha Squad Gloves", 10, /obj/item/clothing/gloves/marine/alpha, VENDOR_ITEM_REGULAR),
-		list("Marine Bravo Squad Gloves", 10, /obj/item/clothing/gloves/marine/bravo, VENDOR_ITEM_REGULAR),
-		list("Marine Charlie Squad Gloves", 10, /obj/item/clothing/gloves/marine/charlie, VENDOR_ITEM_REGULAR),
-		list("Marine Delta Squad Gloves", 10, /obj/item/clothing/gloves/marine/delta, VENDOR_ITEM_REGULAR),
-		list("Marine Combat Gloves", 10, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
+		list("Marine Combat Gloves", 40, /obj/item/clothing/gloves/marine, VENDOR_ITEM_REGULAR),
 
 		list("ARMOR", -1, null, null),
 		list("M10 Pattern Marine Helmet", 20, /obj/item/clothing/head/helmet/marine, VENDOR_ITEM_REGULAR),
@@ -248,6 +244,7 @@
 		list("Field Intelligence Support Kit", round(scale * 4), /obj/item/storage/box/kit/mini_intel, VENDOR_ITEM_REGULAR),
 		list("Forward HPR Shield Kit", round(scale * 4), /obj/item/storage/box/kit/heavy_support, VENDOR_ITEM_REGULAR),
 		list("JTAC Radio Kit", round(scale * 4), /obj/item/storage/box/kit/mini_jtac, VENDOR_ITEM_REGULAR),
+		list("M56D Defense Gunner Kit", 1 + Ceiling(scale), /obj/item/storage/box/kit/defensegunner, VENDOR_ITEM_REGULAR),
 		list("M39 Point Man Kit", round(scale * 4), /obj/item/storage/box/kit/pursuit, VENDOR_ITEM_REGULAR),
 		list("M-OU53 Field Test Kit", round(scale * 3), /obj/item/storage/box/kit/mou53_sapper, VENDOR_ITEM_REGULAR),
 
@@ -265,5 +262,5 @@
 		list("M89-S Signal Flare Pack", round(scale * 2), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 20), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
-		list("MB-6 Folding Barricade", round(scale * 4), /obj/item/folding_barricade, VENDOR_ITEM_REGULAR)
+		list("MB-6 Folding Barricades (x3)", round(scale * 1), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR)
 		)

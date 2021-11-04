@@ -30,6 +30,8 @@
 	var/opened = FALSE //Has it been opened before?
 	var/list/content_watchers //list of mobs currently seeing the storage's contents
 	var/storage_flags = STORAGE_FLAGS_DEFAULT
+	///Whether to use map-variant skins.
+	var/has_gamemode_skin = FALSE
 
 
 /obj/item/storage/MouseDrop(obj/over_object as obj)
@@ -423,10 +425,11 @@ var/list/global/item_storage_box_cache = list()
 
 	return 1
 
-//This proc handles items being inserted. It does not perform any checks of whether an item can or can't be inserted. That's done by can_be_inserted()
-//The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple items at once,
-//such as when picking up all the items on a tile with one click.
-//user can be null, it refers to the potential mob doing the insertion.
+/**Handler for inserting items. It does not perform any checks of whether an item can or can't be inserted into the storage item.
+That's done by can_be_inserted(). Its checks are whether the item exists, is an item, and (if it's held by a mob) the mob can drop it.
+The stop_warning parameter will stop the insertion message from being displayed. It is intended for cases where you are inserting multiple
+items at once, such as when picking up all the items on a tile with one click.
+user can be null, it refers to the potential mob doing the insertion.**/
 /obj/item/storage/proc/handle_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	if(!istype(W))
 		return FALSE
@@ -435,6 +438,15 @@ var/list/global/item_storage_box_cache = list()
 			return FALSE
 	else
 		W.forceMove(src)
+
+	_item_insertion(W, prevent_warning, user)
+	return TRUE
+
+/**Inserts the item. Separate proc because handle_item_insertion isn't guaranteed to insert
+and it therefore isn't safe to override it before calling parent. Updates icon when done.
+Can be called directly but only if the item was spawned inside src - handle_item_insertion is safer.
+W is always an item. stop_warning prevents messaging. user may be null.**/
+/obj/item/storage/proc/_item_insertion(obj/item/W, prevent_warning = 0, mob/user)
 	W.on_enter_storage(src)
 	if(user)
 		if (user.client && user.s_active != src)
@@ -451,12 +463,17 @@ var/list/global/item_storage_box_cache = list()
 	if (storage_slots)
 		W.mouse_opacity = 2 //not having to click the item's tiny sprite to take it out of the storage.
 	update_icon()
+
+///Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target.
+/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
+	if(!istype(W))
+		return FALSE
+
+	_item_removal(W, new_location)
 	return TRUE
 
-//Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/obj/item/storage/proc/remove_from_storage(obj/item/W as obj, atom/new_location)
-	if(!istype(W)) return 0
-
+///Separate proc because remove_from_storage isn't guaranteed to finish. Can be called directly if the target atom exists and is an item. Updates icon when done.
+/obj/item/storage/proc/_item_removal(obj/item/W as obj, atom/new_location)
 	for(var/mob/M in can_see_content())
 		if(M.client)
 			M.client.screen -= W
@@ -469,7 +486,11 @@ var/list/global/item_storage_box_cache = list()
 			W.layer = initial(W.layer)
 		W.forceMove(new_location)
 	else
-		W.forceMove(get_turf(src))
+		var/turf/T = get_turf(src)
+		if(T)
+			W.forceMove(T)
+		else
+			W.moveToNullspace()
 
 	orient2hud()
 	for(var/mob/M in can_see_content())
@@ -479,7 +500,6 @@ var/list/global/item_storage_box_cache = list()
 	W.on_exit_storage(src)
 	update_icon()
 	W.mouse_opacity = initial(W.mouse_opacity)
-	return 1
 
 //This proc is called when you want to place an item into the storage item.
 /obj/item/storage/attackby(obj/item/W as obj, mob/user as mob)
@@ -670,6 +690,11 @@ var/list/global/item_storage_box_cache = list()
 	closer = new
 	closer.master = src
 
+	if(has_gamemode_skin)
+		select_gamemode_skin(type)
+
+	post_skin_selection()
+
 	fill_preset_inventory()
 
 	update_icon()
@@ -745,6 +770,10 @@ var/list/global/item_storage_box_cache = list()
 		return w_class
 
 /obj/item/storage/proc/fill_preset_inventory()
+	return
+
+///Things to be done after selecting a map skin (if any) and before adding inventory and updating icon for the first time. Most likely saving basic icon state.
+/obj/item/storage/proc/post_skin_selection()
 	return
 
 /**Returns the storage depth of an atom. This is the number of items the atom is nested in before reaching the designated container, counted inclusively.

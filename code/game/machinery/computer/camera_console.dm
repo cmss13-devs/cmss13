@@ -17,6 +17,9 @@
 	var/obj/screen/map_view/cam_screen
 	var/obj/screen/background/cam_background
 
+	/// All turfs within range of the currently active camera
+	var/list/range_turfs = list()
+
 /obj/structure/machinery/computer/security/Initialize(mapload)
 	. = ..()
 	// Map name has to start and end with an A-Z character,
@@ -139,8 +142,6 @@
 		show_camera_static()
 		return
 
-	var/list/visible_turfs = list()
-
 	// Is this camera located in or attached to a living thing, Vehicle or helmet? If so, assume the camera's loc is the living (or non) thing.
 	var/cam_location = current
 	if(isliving(current.loc) || isVehicle(current.loc))
@@ -161,8 +162,14 @@
 
 	var/list/visible_things = current.isXRay() ? range(current.view_range, cam_location) : view(current.view_range, cam_location)
 
+	var/list/visible_turfs = list()
+	range_turfs.Cut()
+	var/area/A
 	for(var/turf/visible_turf in visible_things)
-		visible_turfs += visible_turf
+		range_turfs += visible_turf
+		A = visible_turf.loc
+		if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
+			visible_turfs += visible_turf
 
 	var/list/bbox = get_bbox_of_atoms(visible_turfs)
 	var/size_x = bbox[3] - bbox[1] + 1
@@ -171,6 +178,18 @@
 	cam_screen.vis_contents = visible_turfs
 	cam_background.icon_state = "clear"
 	cam_background.fill_rect(1, 1, size_x, size_y)
+
+	START_PROCESSING(SSfastobj, src) // fastobj to somewhat keep pace with lighting updates
+
+/obj/structure/machinery/computer/security/process()
+	if(current)
+		var/list/visible_turfs = list()
+		var/area/A
+		for(var/turf/visible_turf as anything in range_turfs)
+			A = visible_turf.loc
+			if(!A.lighting_use_dynamic || visible_turf.lighting_lumcount >= 1)
+				visible_turfs += visible_turf
+		cam_screen.vis_contents = visible_turfs
 
 /obj/structure/machinery/computer/security/ui_close(mob/user)
 	var/user_ref = REF(user)
@@ -182,7 +201,10 @@
 	// Turn off the console
 	if(length(concurrent_users) == 0 && is_living)
 		current = null
+		last_camera_turf = null
+		range_turfs = list()
 		use_power(0)
+		STOP_PROCESSING(SSfastobj, src)
 	user.unset_interaction()
 
 /obj/structure/machinery/computer/security/proc/show_camera_static()
@@ -264,6 +286,19 @@
 /obj/structure/machinery/computer/security/almayer_network
 	network = list("almayer")
 
+/obj/structure/machinery/computer/security/mortar
+	name = "Mortar Camera Interface"
+	alpha = 0
+	mouse_opacity = 0
+	density = FALSE
+	use_power = 0
+	idle_power_usage = 0
+	active_power_usage = 0
+	network = list("mortar")
+	exproof = TRUE
+
+/obj/structure/machinery/computer/security/mortar/emp_act(severity)
+	return FALSE
 
 /obj/structure/machinery/computer/security/dropship
 	name = "abstract dropship camera computer"

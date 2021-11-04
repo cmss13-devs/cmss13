@@ -63,7 +63,12 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PRESETUP)
 	return 1
 
+///Triggered partway through the first drop, based on DROPSHIP_DROP_MSG_DELAY. Marines are underway but haven't yet landed.
 /datum/game_mode/proc/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
+	return
+
+///Triggered when the dropship first lands.
+/datum/game_mode/proc/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
 	return
 
 /// Spawn structures relevant to the game mode setup, done before actual game setup. By default try to setup everything.
@@ -170,9 +175,9 @@ var/global/cas_tracking_id_increment = 0	//this var used to assign unique tracki
 	var/ban_check = role
 	switch(role)
 		if(JOB_XENOMORPH)
-			ban_check = "Alien"
+			ban_check = JOB_XENOMORPH
 		if(JOB_XENOMORPH_QUEEN)
-			ban_check = "Queen"
+			ban_check = JOB_XENOMORPH_QUEEN
 
 	//Assemble a list of active players without jobbans.
 	for(var/mob/new_player/player in GLOB.player_list)

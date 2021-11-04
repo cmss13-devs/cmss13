@@ -17,8 +17,6 @@
 							HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) || istype(W, /obj/item/tool/pen ) || istype(W, /obj/item/tool/shovel)) \
 						)
 
-#define is_surgery_tool(W) (istype(W, /obj/item/tool/surgery))
-
 //Makes sure MIDDLE is between LOW and HIGH. If not, it adjusts it. Returns the adjusted value.
 #define between(low, middle, high) (max(min(middle, high), low))
 
@@ -248,9 +246,10 @@
 
 	if(oldname)
 		//update the datacore records! This is goig to be a bit costly.
+		var/mob_ref = WEAKREF(src)
 		for(var/list/L in list(GLOB.data_core.general, GLOB.data_core.medical, GLOB.data_core.security, GLOB.data_core.locked))
 			for(var/datum/data/record/R in L)
-				if(R.fields["name"] == oldname)
+				if(R.fields["ref"] == mob_ref)
 					R.fields["name"] = newname
 					break
 

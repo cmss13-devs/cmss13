@@ -168,9 +168,9 @@
 	var/mob/living/carbon/Xenomorph/Queen/living_xeno_queen
 	var/egg_planting_range = 15
 	var/slashing_allowed = XENO_SLASH_ALLOWED //This initial var allows the queen to turn on or off slashing. Slashing off means harm intent does much less damage.
-	var/construction_allowed = XENO_QUEEN //Who can place construction nodes for special structures
+	var/construction_allowed = NORMAL_XENO //Who can place construction nodes for special structures
 	var/destruction_allowed = XENO_LEADER //Who can destroy special structures
-	var/unnesting_allowed = FALSE
+	var/unnesting_allowed = TRUE
 	var/hive_orders = "" //What orders should the hive have
 	var/color = null
 	var/ui_color = null // Color for hive status collapsible buttons and xeno count list
@@ -213,6 +213,8 @@
 	var/evolution_without_ovipositor = TRUE //Temporary for the roundstart.
 	var/allow_queen_evolve = TRUE // Set to true if you want to prevent evolutions into Queens
 	var/hardcore = FALSE // Set to true if you want to prevent bursts and spawns of new xenos. Will also prevent healing if the queen no longer exists
+
+	var/list/hive_inherant_traits
 
 	// Cultist Info
 	var/mob/living/carbon/leading_cult_sl
@@ -290,7 +292,7 @@
 	// So don't even bother trying updating UI here without large refactors
 
 // Removes the xeno from the hive
-/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X, var/hard=FALSE)
+/datum/hive_status/proc/remove_xeno(var/mob/living/carbon/Xenomorph/X, var/hard=FALSE, light_mode = FALSE)
 	if(!X || !istype(X))
 		return
 
@@ -320,9 +322,9 @@
 	else if(X.tier == 3)
 		tier_3_xenos -= X
 
-	// At least UI updates when xenos are removed are safe
-	hive_ui.update_xeno_counts()
-	hive_ui.xeno_removed(X)
+	if(!light_mode)
+		hive_ui.update_xeno_counts()
+		hive_ui.xeno_removed(X)
 
 /datum/hive_status/proc/set_living_xeno_queen(var/mob/living/carbon/Xenomorph/Queen/M)
 	if(M == null)
@@ -380,16 +382,18 @@
 	hive_ui.update_xeno_keys()
 	return TRUE
 
-/datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno)
+/datum/hive_status/proc/remove_hive_leader(var/mob/living/carbon/Xenomorph/xeno, light_mode = FALSE)
 	if(!istype(xeno) || !IS_XENO_LEADER(xeno))
 		return FALSE
 
 	var/leader_num = GET_XENO_LEADER_NUM(xeno)
 
 	xeno_leader_list[leader_num] = null
-	xeno.hive_pos = NORMAL_XENO
-	xeno.handle_xeno_leader_pheromones()
-	xeno.hud_update() // To remove leader star
+
+	if(!light_mode) // Don't run side effects during deletions. Better yet, replace all this by signals someday
+		xeno.hive_pos = NORMAL_XENO
+		xeno.handle_xeno_leader_pheromones()
+		xeno.hud_update() // To remove leader star
 
 	// Need to maintain ascending order of open_xeno_leader_positions
 	for (var/i in 1 to queen_leader_limit)
@@ -397,7 +401,9 @@
 			open_xeno_leader_positions.Insert(i, leader_num)
 			break
 
-	hive_ui.update_xeno_keys()
+	if(!light_mode)
+		hive_ui.update_xeno_keys()
+
 	return TRUE
 
 /datum/hive_status/proc/replace_hive_leader(var/mob/living/carbon/Xenomorph/original, var/mob/living/carbon/Xenomorph/replacement)
@@ -833,10 +839,20 @@
 	color = "#828296"
 	ui_color = "#828296"
 
+	construction_allowed = XENO_QUEEN
 	dynamic_evolution = FALSE
 	allow_no_queen_actions = TRUE
 	allow_queen_evolve = FALSE
 	ignore_slots = TRUE
+
+/datum/hive_status/mutated
+	name = "Mutated Hive"
+	hivenumber = XENO_HIVE_MUTATED
+	prefix = "Mutated "
+	color = "#6abd99"
+	ui_color = "#6abd99"
+
+	hive_inherant_traits = list(TRAIT_XENONID)
 
 /datum/hive_status/corrupted/tamed
 	name = "Tamed Hive"

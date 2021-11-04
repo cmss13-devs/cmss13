@@ -68,10 +68,12 @@
 	if(!display_colour) // if invalid R_COLOR choice
 		display_colour = CONFIG_GET(string/ooc_color_default)
 
+	msg = process_chat_markup(msg, list("*"))
+
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.toggles_chat & CHAT_OOC)
 			var/display_name = src.key
-			to_chat(C, "<font color='[display_colour]'><span class='ooc'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='[display_colour]'><span class='ooc linkify'>[src.donator ? "\[D\] " : ""]<span class='prefix'>OOC: [display_name]</span>: <span class='message'>[msg]</span></span></font>")
 
 	usr.talked = 1
 	addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY, TIMER_UNIQUE)
@@ -143,6 +145,8 @@
 	if(S.stat != DEAD && !isobserver(S))
 		display_name = S.name
 
+	msg = process_chat_markup(msg, list("*"))
+
 	// Handle non-admins
 	for(var/mob/M in heard)
 		if(!M.client)
@@ -152,7 +156,7 @@
 			continue //they are handled after that
 
 		if(C.prefs.toggles_chat & CHAT_LOOC)
-			to_chat(C, "<font color='#6699CC'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='#6699CC'><span class='ooc linkify'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
 	// Now handle admins
 	display_name = S.key
@@ -167,7 +171,7 @@
 			var/prefix = "(R)LOOC"
 			if (C.mob in heard)
 				prefix = "LOOC"
-			to_chat(C, "<font color='#6699CC'><span class='ooc'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
+			to_chat(C, "<font color='#6699CC'><span class='ooc linkify'><span class='prefix'>[prefix]:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 	usr.talked = 1
 	addtimer(CALLBACK(usr, .proc/clear_chat_spam_mute, usr.talked), CHAT_OOC_DELAY, TIMER_UNIQUE)
 

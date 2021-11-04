@@ -25,6 +25,22 @@
 		overlays -= overlays_standing[cache_index]
 		overlays_standing[cache_index] = null
 
+/mob/living/carbon/Xenomorph/proc/update_icon_source()
+	if(HAS_TRAIT(src, TRAIT_XENONID))
+		icon = icon_xenonid
+		if(isXenoQueen(src))
+			var/mob/living/carbon/Xenomorph/Queen/Q = src
+			Q.queen_standing_icon = icon_xenonid
+			Q.queen_ovipositor_icon = 'icons/mob/xenonids/ovipositor.dmi'
+	else
+		icon = icon_xeno
+		if(isXenoQueen(src))
+			var/mob/living/carbon/Xenomorph/Queen/Q = src
+			Q.queen_standing_icon = icon_xeno
+			Q.queen_ovipositor_icon = get_icon_from_source(CONFIG_GET(string/alien_queen_ovipositor))
+
+	update_icons()
+
 /mob/living/carbon/Xenomorph/update_icons()
 	if(!caste)
 		return
@@ -161,7 +177,7 @@
 
 /mob/living/carbon/Xenomorph/update_fire()
 	remove_overlay(X_FIRE_LAYER)
-	if(on_fire)
+	if(on_fire && fire_reagent)
 		var/image/I
 		if(mob_size >= MOB_SIZE_BIG)
 			if((!initial(pixel_y) || lying) && !resting && !sleeping)
@@ -193,9 +209,12 @@
 
 // Shamelessly inspired from the equivalent proc on TGCM
 /mob/living/carbon/Xenomorph/proc/update_wounds()
+	if(!wound_icon_carrier)
+		return
+
 	var/health_threshold
 	wound_icon_carrier.layer = layer + 0.01
-	health_threshold = CEILING((health * 4) / (maxHealth), 1) //From 1 to 4, in 25% chunks
+	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 1) //From 1 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
 			wound_icon_carrier.icon_state = "none"

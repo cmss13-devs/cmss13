@@ -13,6 +13,8 @@
 
 	log_admin("MOOC: [key_name(src)]: [msg]")
 
+	msg = process_chat_markup(msg, list("*"))
+
 	for(var/i in GLOB.alive_human_list)
 		var/mob/M = i
 		if(M.client && (!M.client.admin_holder || !(M.client.admin_holder.rights & R_MOD)))	// Send to marines who are non-staff

@@ -21,7 +21,7 @@ VALID_CL_TYPES = (
 )
 
 # CL regexps
-CL_REGEX_START = re.compile(r':cl:\s*([a-zA-Z0-9_]{1,40})?')
+CL_REGEX_START = re.compile(r':cl:\s*([a-zA-Z0-9_\s\+\-@\(\)\",]{1,64})?')
 CL_REGEX_ENTRY = re.compile(r'\s*(\w+):\s*(.+)')
 CL_REGEX_END = re.compile(r'\/:cl:')
 
@@ -69,7 +69,7 @@ class Changelog:
             safe_log = log.replace("\"", "\\\"")
             self.changes.append({"type": change_type, "log": safe_log})
 
-    def parse_changelog(self, data):
+    def parse_changelog(self, it):
         '''
             Parses a text for a changelog
 
@@ -80,50 +80,52 @@ class Changelog:
         in_cl = False
         in_comment = False
 
-        for line in iter(data.splitlines()):
-            # Don't parse comments
-            if in_comment:
-                end_comment_match = CL_REGEX_COMMENT_END.search(line)
-                if not end_comment_match:
-                    continue
-                in_comment = False
+        try:
+            while True:
+                line = next(it)
 
-            comment_match = CL_REGEX_COMMENT_START.search(line)
-            if comment_match:
-                end_comment_match = CL_REGEX_COMMENT_END.search(line)
-                if not end_comment_match:
-                    in_comment = True
-                continue
+                # Don't parse comments
+                if in_comment:
+                    end_comment_match = CL_REGEX_COMMENT_END.search(line)
+                    if not end_comment_match:
+                        continue
+                    in_comment = False
 
-            # Look for the start of the changelog
-            if not in_cl:
-                cl_start_match = CL_REGEX_START.search(line)
-                if not cl_start_match:
+                comment_match = CL_REGEX_COMMENT_START.search(line)
+                if comment_match:
+                    end_comment_match = CL_REGEX_COMMENT_END.search(line)
+                    if not end_comment_match:
+                        in_comment = True
                     continue
 
-                in_cl = True
-                if cl_start_match.group(1):
-                    # The author is captured first by the regex
-                    self.author = cl_start_match.group(1)
-            else:
-                # This might be the end of the changelog
-                cl_end_match = CL_REGEX_END.search(line)
-                if cl_end_match and cl_end_match.group(0):
-                    break
+                # Look for the start of the changelog
+                if not in_cl:
+                    cl_start_match = CL_REGEX_START.search(line)
+                    if not cl_start_match:
+                        continue
 
-                cl_entry_match = CL_REGEX_ENTRY.search(line)
-                if cl_entry_match:
-                    # The first capture group contains the changelog type
-                    # The second capture contains the log message
-                    match_groups = (cl_entry_match.group(1), cl_entry_match.group(2))
-                    if(match_groups[0] and match_groups[1]):
-                        # Add the change to the changelog
-                        self.add_change(match_groups[0], match_groups[1])
+                    in_cl = True
+                    if cl_start_match.group(1):
+                        # The author is captured first by the regex
+                        self.author = cl_start_match.group(1)
+                else:
+                    # This might be the end of the changelog
+                    cl_end_match = CL_REGEX_END.search(line)
+                    if cl_end_match and cl_end_match.group(0):
+                        return True
 
-        # in_cl still holds whether or not we're in a CL
-        # So if in_cl is true, we found and parsed a changelog
-        # If not, we never found a changelog
-        return in_cl
+                    cl_entry_match = CL_REGEX_ENTRY.search(line)
+                    if cl_entry_match:
+                        # The first capture group contains the changelog type
+                        # The second capture contains the log message
+                        match_groups = (cl_entry_match.group(1), cl_entry_match.group(2))
+                        if(match_groups[0] and match_groups[1]):
+                            # Add the change to the changelog
+                            self.add_change(match_groups[0], match_groups[1])
+        except StopIteration:
+            pass
+        return False
+
 
     def dump_yaml(self, file_name, directory = ""):
         '''
@@ -137,10 +139,12 @@ class Changelog:
             return
 
         with open("{}{}.yml".format(directory, file_name), "w+") as file:
-            data = "author: \"{}\"\ndelete-after: true\nchanges:\n{}"
+            data = "author: \'{}\'\ndelete-after: true\nchanges:\n{}"
             change_data = ""
 
             for change in self.changes:
-                change_data += "  - {}: \"{}\"\n".format(change["type"], change["log"])
+                escaped = change["log"]
+                escaped = escaped.replace("'", "''")
+                change_data += "  - {}: \'{}\'\n".format(change["type"], escaped)
 
             file.write(data.format(self.author, change_data))

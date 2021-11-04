@@ -179,61 +179,13 @@
 
 	if(admin_holder)
 		body += "<option value='?_src_=vars;mark_object=\ref[D]'>[(D in admin_holder.marked_datums) ? "Unm" : "M"]ark Datum</option>"
-	if(ismob(D))
-		body += "<option value='?_src_=vars;mob_player_panel=\ref[D]'>Show player panel</option>"
-
 	body += "<option value='?_src_=vars;adv_proccall=\ref[D]'>Advanced ProcCall</option>"
+	body += "<option value>----------</option>"
 
-	body += "<option value>---</option>"
-
-	if(ismob(D))
-		body += "<option value='?_src_=vars;give_disease=\ref[D]'>Give TG-style Disease</option>"
-		body += "<option value='?_src_=vars;godmode=\ref[D]'>Toggle Godmode</option>"
-		body += "<option value='?_src_=vars;build_mode=\ref[D]'>Toggle Build Mode</option>"
-
-		body += "<option value='?_src_=vars;direct_control=\ref[D]'>Assume Direct Control</option>"
-		body += "<option value='?_src_=vars;drop_everything=\ref[D]'>Drop Everything</option>"
-
-		body += "<option value='?_src_=vars;regenerateicons=\ref[D]'>Regenerate Icons</option>"
-		body += "<option value='?_src_=vars;addlanguage=\ref[D]'>Add Language</option>"
-		body += "<option value='?_src_=vars;remlanguage=\ref[D]'>Remove Language</option>"
-		body += "<option value='?_src_=vars;addorgan=\ref[D]'>Add Organ</option>"
-		body += "<option value='?_src_=vars;remorgan=\ref[D]'>Remove Organ</option>"
-		body += "<option value='?_src_=vars;addlimb=\ref[D]'>Add Limb</option>"
-		body += "<option value='?_src_=vars;amplimb=\ref[D]'>Amputate Limb</option>"
-		body += "<option value='?_src_=vars;remlimb=\ref[D]'>Remove Limb</option>"
-
-		body += "<option value='?_src_=vars;fix_nano=\ref[D]'>Fix NanoUI</option>"
-
-		body += "<option value='?_src_=vars;addverb=\ref[D]'>Add Verb</option>"
-		body += "<option value='?_src_=vars;remverb=\ref[D]'>Remove Verb</option>"
-
-		if(ishuman(D))
-			body += "<option value>---</option>"
-			body += "<option value='?_src_=vars;edit_skill=\ref[D]'>Edit Skills</option>"
-			body += "<option value='?_src_=vars;setspecies=\ref[D]'>Set Species</option>"
-			body += "<option value='?_src_=vars;selectequipment=\ref[D]'>Select Equipment</option>"
-		if(iscarbon(D))
-			body += "<option value='?_src_=vars;changehivenumber=\ref[D]'>Change Hivenumber</option>"
-			body += "<option value='?_src_=vars;addtrait=\ref[D]'>Add Trait</option>"
-			body += "<option value='?_src_=vars;removetrait=\ref[D]'>Remove Trait</option>"
-		body += "<option value>---</option>"
-		body += "<option value='?_src_=vars;gib=\ref[D]'>Gib</option>"
-	if(isobj(D))
-		body += "<option value='?_src_=vars;delall=\ref[D]'>Delete all of type</option>"
-	if(isobj(D) || ismob(D) || isturf(D))
-		body += "<option value='?_src_=vars;explode=\ref[D]'>Trigger explosion</option>"
-		body += "<option value='?_src_=vars;emp=\ref[D]'>Trigger EM pulse</option>"
-		body += "<option value='?_src_=vars;setmatrix=\ref[D]'>Set Base Matrix</option>"
-
-	body += "<option value>---</option>"
-
-	if(istype(D, /obj/structure/machinery/faxmachine))
-		body += "<option value='?_src_=admin_holder;USCMFaxReply=\ref[usr];originfax=\ref[D]'>Send USCM fax message</option>"
-		body += "<option value='?_src_=admin_holder;CLFaxReply=\ref[usr];originfax=\ref[D]'>Send CL fax message</option>"
-
-	if(istype(D, /atom))
-		body += "<option value='?_src_=vars;enablepixelscaling=\ref[D]'>Enable Pixel Scaling</option>"
+	var/list/datum_options = D.get_vv_options()
+	if(length(datum_options))
+		for(var/specific_option in datum_options)
+			body += specific_option
 
 	body += "</select></form>"
 
@@ -289,6 +241,33 @@ body
 	show_browser(usr, html, "View Variables", "variables\ref[D]", "size=475x650")
 
 	return
+
+/datum/proc/get_vv_options()
+	return list()
+
+/atom/get_vv_options()
+	. = ..()
+	. += "<option value='?_src_=vars;enablepixelscaling=\ref[src]'>Enable Pixel Scaling</option>"
+
+/turf/get_vv_options()
+	. = ..()
+	. += "<option value='?_src_=vars;explode=\ref[src]'>Trigger explosion</option>"
+	. += "<option value='?_src_=vars;emp=\ref[src]'>Trigger EM pulse</option>"
+	. += "<option value='?_src_=vars;setmatrix=\ref[src]'>Set Base Matrix</option>"
+
+/mob/get_vv_options()
+	. = ..()
+	. += "<option value='?_src_=vars;explode=\ref[src]'>Trigger explosion</option>"
+	. += "<option value='?_src_=vars;emp=\ref[src]'>Trigger EM pulse</option>"
+	. += "<option value='?_src_=vars;setmatrix=\ref[src]'>Set Base Matrix</option>"
+
+/obj/get_vv_options()
+	. = ..()
+	. += "<option value='?_src_=vars;explode=\ref[src]'>Trigger explosion</option>"
+	. += "<option value='?_src_=vars;emp=\ref[src]'>Trigger EM pulse</option>"
+	. += "<option value='?_src_=vars;setmatrix=\ref[src]'>Set Base Matrix</option>"
+	. += "<option value>-----OBJECT-----</option>"
+	. += "<option value='?_src_=vars;delall=\ref[src]'>Delete all of type</option>"
 
 /client/proc/is_safe_variable(name)
 	if(name == "step_x" || name == "step_y" || name == "bound_x" || name == "bound_y" || name == "bound_height" || name == "bound_width" || name == "bounds")

@@ -1,4 +1,3 @@
-
 // toggle agility
 /datum/action/xeno_action/onclick/toggle_agility
 	name = "Toggle Agility"
@@ -56,7 +55,7 @@
 	xeno_cooldown = 40
 
 	// Configurables
-	var/base_damage = 20
+	var/base_damage = 25
 	var/boxer_punch_damage = 20
 	var/base_punch_damage_synth = 30
 	var/boxer_punch_damage_synth = 30

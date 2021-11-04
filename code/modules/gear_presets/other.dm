@@ -76,7 +76,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	spawn_merc_helmet(H)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
@@ -103,7 +103,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	spawn_merc_helmet(H)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/medical/full, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
@@ -137,7 +137,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine, WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack, WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/stick, WEAR_IN_BACK)
@@ -167,7 +167,7 @@
 
 /datum/equipment_preset/other/mercenary_heavy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
@@ -198,7 +198,7 @@
 
 /datum/equipment_preset/other/mercenary_miner/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/miner, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/miner, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
@@ -226,7 +226,7 @@
 
 /datum/equipment_preset/other/mercenary_engineer/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/mercenary/engineer, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/mercenary/engineer, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
@@ -410,8 +410,10 @@
 	H.set_species("Zombie")
 
 /datum/equipment_preset/other/zombie/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/colonist, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine, WEAR_FEET)
+	var/uniform_path = pick(/obj/item/clothing/under/colonist, /obj/item/clothing/under/colonist/ua_civvies, /obj/item/clothing/under/colonist/wy_davisone, /obj/item/clothing/under/colonist/wy_joliet_shopsteward, /obj/item/clothing/under/marine/ua_riot, /obj/item/clothing/under/suit_jacket/manager, /obj/item/clothing/under/suit_jacket/director)
+	H.equip_to_slot_or_del(new uniform_path, WEAR_BODY)
+	var/shoe_path = pick(/obj/item/clothing/shoes/laceup, /obj/item/clothing/shoes/leather, /obj/item/clothing/shoes/jackboots)
+	H.equip_to_slot_or_del(new shoe_path, WEAR_FEET)
 
 //*****************************************************************************************************/
 
@@ -435,7 +437,7 @@
 	H.age = rand(21,45)
 
 /datum/equipment_preset/other/gladiator/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat, WEAR_HANDS)
@@ -459,7 +461,7 @@
 	rank = "Samnite"
 
 /datum/equipment_preset/other/gladiator/champion/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/vest/ert/security, WEAR_JACKET)
@@ -484,7 +486,7 @@
 	rank = "Spartacus"
 
 /datum/equipment_preset/other/gladiator/leader/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/gladiator, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/gladiator, WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/swat, WEAR_JACKET)
@@ -537,7 +539,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/cultist_hoodie(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/cultist_hood(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/other/xeno_cultist/load_status(mob/living/carbon/human/H, var/hivenumber = XENO_HIVE_NORMAL)
@@ -611,7 +613,7 @@
 	. = ..()
 	//Can't hug the dummy! Otherwise it's basically human...
 	H.huggable = FALSE
-	H.surgical_difficulty = SKILL_SURGERY_NOVICE //Nurses can practise surgery on it.
+	H.mob_flags |= EASY_SURGERY //Nurses can practise surgery on it.
 
 /datum/equipment_preset/other/professor_dummy/load_gear(mob/living/carbon/human/H)
 	var/obj/item/device/professor_dummy_tablet/tablet = new /obj/item/device/professor_dummy_tablet(H)
@@ -644,10 +646,8 @@
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/welding(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/commander(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/tanker(H), WEAR_JACKET)
@@ -662,5 +662,45 @@
 
 /datum/equipment_preset/other/tank/load_status()
 	return
+
+//*****************************************************************************************************/
+
+//*****************************************************************************************************/
+//adding one for VC training camp, cause I really need these
+/datum/equipment_preset/other/tank/trainee
+	name = "Vehicle Crewman Trainee (CRTR)"
+	flags = EQUIPMENT_PRESET_EXTRA
+
+	idtype = /obj/item/card/id/dogtag
+	assignment = "Crewman Trainee"
+	rank = "Crewman Trainee"
+	paygrade = "E5"
+	role_comm_title = "CRTR"
+	minimum_age = 25
+	skills = /datum/skills/tank_crew
+
+	faction = FACTION_NEUTRAL
+
+/datum/equipment_preset/other/tank/trainee/New()
+	. = ..()
+	access = list(
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_CREWMAN,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+	)
+
+/datum/equipment_preset/other/tank/trainee/load_gear(mob/living/carbon/human/H)
+
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/tanker(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/tank(H), WEAR_R_STORE)
+
+	H.hud_set_squad()
 
 //*****************************************************************************************************/

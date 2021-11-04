@@ -108,7 +108,6 @@
 	M.AdjustSuperslowed(BELL_TOWER_EFFECT)
 	to_chat(M, SPAN_DANGER("The frequence of the noise slows you down!"))
 
-#define BELL_TOWER_MD_ALPHA 60
 /obj/item/device/motiondetector/internal
 	name = "internal motion detector"
 
@@ -123,15 +122,10 @@
 
 /obj/structure/machinery/defenses/bell_tower/md
 	name = "R-1NG motion detector tower"
-	desc = "A tactical advanced version of the motion detector. Has an increased range, cloaks itself and disrupts the activity of hostiles nearby."
+	desc = "A tactical advanced version of the motion detector. Has an increased range, disrupts the activity of hostiles nearby."
 	handheld_type = /obj/item/defenses/handheld/bell_tower/md
-	var/cloak_alpha = BELL_TOWER_MD_ALPHA
 	var/obj/item/device/motiondetector/internal/md
 	defense_type = "MD"
-
-/obj/structure/machinery/defenses/bell_tower/md/Initialize()
-	. = ..()
-	animate(src, alpha = cloak_alpha, time = 2 SECONDS, easing = LINEAR_EASING)
 
 /obj/structure/machinery/defenses/bell_tower/md/setup_tripwires()
 	md = new(src)
@@ -148,14 +142,15 @@
 		QDEL_NULL(md)
 
 
-#undef BELL_TOWER_MD_ALPHA
-#define BELL_TOWER_CLOAKER_ALPHA 20
+#define BELL_TOWER_CLOAKER_ALPHA 10
 /obj/structure/machinery/defenses/bell_tower/cloaker
 	name = "camouflaged R-1NG bell tower"
-	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response. This one is camouflaged"
+	desc = "A tactical advanced version of a normal alarm. Designed to trigger an old instinct ingrained in humans when they hear a wake-up alarm, for fast response. This one is camouflaged and reinforced."
 	handheld_type = /obj/item/defenses/handheld/bell_tower/cloaker
 	var/cloak_alpha = BELL_TOWER_CLOAKER_ALPHA
 	density = FALSE
+	health = 250
+	health_max = 250
 	defense_type = "Cloaker"
 
 /obj/structure/machinery/defenses/bell_tower/cloaker/Initialize()
@@ -170,22 +165,24 @@
 #undef BELL_TOWER_CLOAKER_ALPHA
 
 #define IMP_SLOWDOWN_TIME 1
-/obj/item/device/imp
+/obj/item/storage/backpack/imp
 	name = "IMP frame mount"
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
-	icon_state = "rto_backpack"
+	icon_state = "bell_backpack"
+	max_storage_space = 10
+	worn_accessible = TRUE
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	var/slowdown_amount = IMP_SLOWDOWN_TIME
 	var/area_range = BELL_TOWER_RANGE
 
 
-/obj/item/device/imp/equipped(mob/user, slot)
+/obj/item/storage/backpack/imp/equipped(mob/user, slot)
 	. = ..()
 	if(slot == WEAR_BACK)
 		START_PROCESSING(SSobj, src)
 
-/obj/item/device/imp/process()
+/obj/item/storage/backpack/imp/process()
 	if(!ismob(loc))
 		STOP_PROCESSING(SSobj, src)
 		return

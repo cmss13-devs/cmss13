@@ -150,25 +150,21 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 /obj/structure/machinery/cm_vending/clothing/medic/alpha
 	squad_tag = SQUAD_NAME_1
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ALPHA)
-	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/med
 
 /obj/structure/machinery/cm_vending/clothing/medic/bravo
 	squad_tag = SQUAD_NAME_2
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_BRAVO)
-	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/med
 
 /obj/structure/machinery/cm_vending/clothing/medic/charlie
 	squad_tag = SQUAD_NAME_3
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_CHARLIE)
-	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/med
 
 /obj/structure/machinery/cm_vending/clothing/medic/delta
 	squad_tag = SQUAD_NAME_4
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_DELTA)
-	gloves_type = /obj/item/clothing/gloves/marine/delta
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/med
 
 //------------ESSENTIAL SETS---------------
@@ -181,4 +177,5 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 		/obj/item/device/healthanalyzer,
 		/obj/item/roller/medevac,
 		/obj/item/roller,
+		/obj/item/tool/surgery/surgical_line ///obj/item/storage/firstaid/surgical once broader medic surgeries are done, but for now suturing is the only good one.
 	)

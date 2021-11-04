@@ -10,8 +10,9 @@
 	var/max_positions = -1 //Maximum number allowed in a squad. Defaults to infinite
 	var/color = 0 //Color for helmets, etc.
 	var/list/access = list() //Which special access do we grant them
-	var/usable = 0	 //Is it a valid squad?
-	var/no_random_spawn = 0 //Stop players from spawning into the squad
+	var/roundstart = TRUE /// Whether this squad can be picked at roundstart
+	var/usable = FALSE	 //Is it a valid squad?
+	var/omni_squad_vendor = FALSE /// Can use any squad vendor regardless of squad connection
 	var/max_engineers = 3 //maximum # of engineers allowed in squad
 	var/max_medics = 4 //Ditto, squad medics
 	var/max_specialists = 1
@@ -55,35 +56,37 @@
 	name = SQUAD_NAME_1
 	color = 1
 	access = list(ACCESS_MARINE_ALPHA)
-	usable = 1
+	usable = TRUE
 	radio_freq = ALPHA_FREQ
 
 /datum/squad/bravo
 	name = SQUAD_NAME_2
 	color = 2
 	access = list(ACCESS_MARINE_BRAVO)
-	usable = 1
+	usable = TRUE
 	radio_freq = BRAVO_FREQ
 
 /datum/squad/charlie
 	name = SQUAD_NAME_3
 	color = 3
 	access = list(ACCESS_MARINE_CHARLIE)
-	usable = 1
+	usable = TRUE
 	radio_freq = CHARLIE_FREQ
 
 /datum/squad/delta
 	name = SQUAD_NAME_4
 	color = 4
 	access = list(ACCESS_MARINE_DELTA)
-	usable = 1
+	usable = TRUE
 	radio_freq = DELTA_FREQ
 
 /datum/squad/echo
 	name = SQUAD_NAME_5
 	color = 5
 	access = list(ACCESS_MARINE_ALPHA, ACCESS_MARINE_BRAVO, ACCESS_MARINE_CHARLIE, ACCESS_MARINE_DELTA)
-	usable = 0	//Normally not usable
+	usable = TRUE
+	roundstart = FALSE
+	omni_squad_vendor = TRUE
 	radio_freq = ECHO_FREQ
 
 /datum/squad/New()
@@ -197,8 +200,6 @@
 		return 0	//Logic
 	if(!src.usable)
 		return 0
-	if(!M.mind)
-		return 0
 	if(!M.job)
 		return 0	//Not yet
 	if(M.assigned_squad)
@@ -230,17 +231,9 @@
 			assignment = JOB_SQUAD_SPECIALIST
 			num_specialists++
 		if(JOB_SQUAD_RTO)
-			if(num_rto > 0)
-				assignment = "Assistant [JOB_SQUAD_RTO]"
-				paygrade = "E4"
-				M.comm_title = "aRTO"
-			else
-				paygrade = "E5"
-				assignment = JOB_SQUAD_RTO
-				extra_access += ACCESS_MARINE_RTO_DROP
-				M.important_radio_channels += radio_freq
-
+			assignment = JOB_SQUAD_RTO
 			num_rto++
+			M.important_radio_channels += radio_freq
 		if(JOB_SQUAD_SMARTGUN)
 			assignment = JOB_SQUAD_SMARTGUN
 			num_smartgun++
@@ -274,16 +267,22 @@
 	if(paygrade)
 		C.paygrade = paygrade
 	C.name = "[C.registered_name]'s ID Card ([C.assignment])"
+
+	var/obj/item/device/radio/headset/almayer/marine/headset = locate() in list(M.wear_l_ear, M.wear_r_ear)
+	if(headset)
+		headset.set_frequency(radio_freq)
+	M.update_inv_head()
+	M.update_inv_wear_suit()
+	M.update_inv_gloves()
 	return 1
 
 //proc used by the overwatch console to transfer marine to another squad
-/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M)
-	if(!M.mind)
-		return 0
+/datum/squad/proc/remove_marine_from_squad(mob/living/carbon/human/M, var/obj/item/card/id/ID)
 	if(M.assigned_squad != src)
 		return		//not assigned to the correct squad
-	var/obj/item/card/id/C
-	C = M.wear_id
+	var/obj/item/card/id/C = ID
+	if(!istype(C))
+		C = M.wear_id
 	if(!istype(C))
 		return 0	//Abort, no ID found
 
@@ -369,8 +368,8 @@
 				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 
 	if(old_lead.job != JOB_SQUAD_LEADER || !leader_killed)
-		if(istype(old_lead.wear_ear, /obj/item/device/radio/headset/almayer/marine))
-			var/obj/item/device/radio/headset/almayer/marine/R = old_lead.wear_ear
+		var/obj/item/device/radio/headset/almayer/marine/R = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
+		if(R)
 			for(var/obj/item/device/encryptionkey/squadlead/acting/key in R.keys)
 				R.keys -= key
 				qdel(key)

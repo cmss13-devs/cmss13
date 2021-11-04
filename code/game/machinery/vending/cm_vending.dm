@@ -31,8 +31,8 @@
 	var/show_points = TRUE
 
 	//squad-specific gear
-	var/gloves_type
-	var/headset_type
+	var/gloves_type = /obj/item/clothing/gloves/marine
+	var/headset_type = /obj/item/device/radio/headset/almayer/marine
 
 	var/vend_delay = 0		//delaying vending of an item (for drinks machines animation, for example). Make sure to synchronize this with animation duration
 	var/vend_sound			//use with caution. Potential spam
@@ -434,6 +434,9 @@ IN_USE						used for vending/denying
 		add_fingerprint(usr)
 		ui_interact(usr) //updates the nanoUI window
 
+/obj/structure/machinery/cm_vending/proc/handle_topic(mob/user, href, href_list)
+	return
+
 /obj/structure/machinery/cm_vending/proc/vend_succesfully()
 	return
 
@@ -461,20 +464,19 @@ IN_USE						used for vending/denying
 /obj/structure/machinery/cm_vending/gear/Topic(href, href_list)
 	. = ..()
 	if(.)
-		return
-	if(stat & (BROKEN|NOPOWER))
-		return
-	if(usr.is_mob_incapacitated())
-		return
+		return TRUE
 
-	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
+	handle_topic(usr, href, href_list)
+
+/obj/structure/machinery/cm_vending/gear/handle_topic(mob/user, href, href_list)
+	if(in_range(src, user) && isturf(loc) && ishuman(user))
+		user.set_interaction(src)
 		if(href_list["vend"])
 
 			if(stat & IN_USE)
 				return
 
-			var/mob/living/carbon/human/H = usr
+			var/mob/living/carbon/human/H = user
 
 			if(!hacked)
 				if(!allowed(H))
@@ -500,9 +502,8 @@ IN_USE						used for vending/denying
 
 			var/idx=text2num(href_list["vend"])
 			var/list/L = listed_products[idx]
-			var/cost = L[2]
 
-			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
+			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
 				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
 				vend_fail()
 				return
@@ -529,51 +530,73 @@ IN_USE						used for vending/denying
 						to_chat(H, SPAN_WARNING("That set is already taken."))
 						vend_fail()
 						return
+					if(!istype(H.wear_id, /obj/item/card/id))
+						to_chat(H, SPAN_WARNING("You must be wearing your ID card to select a specialization!"))
+						return
+					var/obj/item/card/id/ID = H.wear_id
+					if(ID.registered_ref != WEAKREF(H))
+						to_chat(H, SPAN_WARNING("You must be wearing YOUR ID card to select a specialization!"))
+						return
+					var/specialist_assignment
 					switch(p_name)
 						if("Scout Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SCOUT)
+							specialist_assignment = "Scout"
 						if("Sniper Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_SNIPER)
+							specialist_assignment = "Sniper"
 						if("Demolitionist Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_ROCKET)
+							specialist_assignment = "Demo"
 						if("Heavy Grenadier Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_GRENADIER)
+							specialist_assignment = "Grenadier"
 						if("Pyro Set")
 							H.skills.set_skill(SKILL_SPEC_WEAPONS, SKILL_SPEC_PYRO)
+							specialist_assignment = "Pyro"
 						else
 							to_chat(H, SPAN_WARNING("<b>Something bad occured with [src], tell a Dev.</b>"))
 							vend_fail()
 							return
+					ID.set_assignment(JOB_SQUAD_SPECIALIST + " ([specialist_assignment])")
+					GLOB.data_core.manifest_modify(H.real_name, WEAKREF(H), ID.assignment)
 					available_specialist_sets -= p_name
 
-			if(use_points)
-				if(use_snowflake_points)
-					if(H.marine_snowflake_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_snowflake_points -= cost
-				else
-					if(H.marine_points < cost)
-						to_chat(H, SPAN_WARNING("Not enough points."))
-						vend_fail()
-						return
-					else
-						H.marine_points -= cost
 
-			if(L[4])
-				if(H.marine_buy_flags & L[4])
-					H.marine_buy_flags &= ~L[4]
-				else
-					to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
-					vend_fail()
-					return
+
+			if(!handle_points(H, L))
+				return
 
 			vend_succesfully(L, H, T)
 
-		add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
+		add_fingerprint(user)
+		ui_interact(user) //updates the nanoUI window
+
+/obj/structure/machinery/cm_vending/gear/proc/handle_points(var/mob/living/carbon/human/H, var/list/L)
+	. = TRUE
+	var/cost = L[2]
+	if(use_points)
+		if(use_snowflake_points)
+			if(H.marine_snowflake_points < cost)
+				to_chat(H, SPAN_WARNING("Not enough points."))
+				vend_fail()
+				return FALSE
+			else
+				H.marine_snowflake_points -= cost
+		else
+			if(H.marine_points < cost)
+				to_chat(H, SPAN_WARNING("Not enough points."))
+				vend_fail()
+				return FALSE
+			else
+				H.marine_points -= cost
+	if(L[4])
+		if(H.marine_buy_flags & L[4])
+			H.marine_buy_flags &= ~L[4]
+		else
+			to_chat(H, SPAN_WARNING("You can't buy things from this category anymore."))
+			vend_fail()
+			return FALSE
 
 /obj/structure/machinery/cm_vending/gear/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -614,19 +637,18 @@ IN_USE						used for vending/denying
 	. = ..()
 	if(.)
 		return
-	if(stat & (BROKEN|NOPOWER))
-		return
-	if(usr.is_mob_incapacitated())
-		return
 
-	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
+	handle_topic(usr, href, href_list)
+
+/obj/structure/machinery/cm_vending/clothing/handle_topic(mob/user, href, href_list)
+	if(in_range(src, user) && isturf(loc) && ishuman(user))
+		user.set_interaction(src)
 		if(href_list["vend"])
 
 			if(stat & IN_USE)
 				return
 
-			var/mob/living/carbon/human/H = usr
+			var/mob/living/carbon/human/H = user
 
 			if(!hacked)
 
@@ -655,7 +677,7 @@ IN_USE						used for vending/denying
 			var/list/L = listed_products[idx]
 			var/cost = L[2]
 
-			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
+			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
 				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
 				vend_fail()
 				return
@@ -698,8 +720,8 @@ IN_USE						used for vending/denying
 
 			vend_succesfully(L, H, T)
 
-		add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
+		add_fingerprint(user)
+		ui_interact(user) //updates the nanoUI window
 
 /obj/structure/machinery/cm_vending/clothing/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -810,21 +832,18 @@ IN_USE						used for vending/denying
 
 /obj/structure/machinery/cm_vending/sorted/Topic(href, href_list)
 	. = ..()
-	if(.)
-		return
-	if(inoperable())
-		return
-	if(usr.is_mob_incapacitated())
-		return
 
-	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
+	handle_topic(usr, href, href_list)
+
+/obj/structure/machinery/cm_vending/sorted/handle_topic(mob/user, href, href_list)
+	if(in_range(src, user) && isturf(loc) && ishuman(user))
+		user.set_interaction(src)
 		if(href_list["vend"])
 
 			if(stat & IN_USE)
 				return
 
-			var/mob/living/carbon/human/H = usr
+			var/mob/living/carbon/human/H = user
 
 			if(!hacked)
 
@@ -865,8 +884,8 @@ IN_USE						used for vending/denying
 
 			vend_succesfully(L, H, T)
 
-		add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
+		add_fingerprint(user)
+		ui_interact(user) //updates the nanoUI window
 
 /obj/structure/machinery/cm_vending/sorted/vend_succesfully(var/list/L, var/mob/living/carbon/human/H, var/turf/T)
 	if(stat & IN_USE)
@@ -987,7 +1006,7 @@ IN_USE						used for vending/denying
 			var/list/L = listed_products[idx]
 			var/cost = L[2]
 
-			if((!H.assigned_squad && squad_tag) || (squad_tag && H.assigned_squad.name != squad_tag))
+			if((!H.assigned_squad && squad_tag) || (!H.assigned_squad?.omni_squad_vendor && (squad_tag && H.assigned_squad.name != squad_tag)))
 				to_chat(H, SPAN_WARNING("This machine isn't for your squad."))
 				vend_fail()
 				return

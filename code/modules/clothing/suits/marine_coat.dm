@@ -1,14 +1,16 @@
-/obj/item/clothing/suit/storage/jacket/marine
-	name = "marine service jacket"
-	desc = "A service jacket typically worn by officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+/obj/item/clothing/suit/storage/jacket/marine //BASE ITEM
+	name = "marine jacket"
+	//This really should not be spawned
+	desc = "What the hell is this doing here?"
 	icon = 'icons/obj/items/clothing/cm_suits.dmi'
 	item_icons = list(
 		WEAR_JACKET = 'icons/mob/humans/onmob/suit_1.dmi'
 	)
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
-	icon_state = "coat_officer"
 	blood_overlay_type = "coat"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_ARMS
+	flags_cold_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS|BODY_FLAG_LEGS
+	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -40,10 +42,43 @@
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK, ACCESSORY_SLOT_DECOR, ACCESSORY_SLOT_MEDAL)
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND, ACCESSORY_SLOT_RANK)
 
+	//Buttons
+	var/has_buttons = FALSE
+	var/buttoned = TRUE
+	var/initial_icon_state
+
+/obj/item/clothing/suit/storage/jacket/marine/proc/toggle()
+	set name = "Toggle Buttons"
+	set category = "Object"
+	set src in usr
+
+	if(!usr.canmove || usr.stat || usr.is_mob_restrained())
+		return 0
+
+	if(src.buttoned == TRUE)
+		src.icon_state = "[initial_icon_state]_o"
+		src.buttoned = FALSE
+		to_chat(usr, SPAN_INFO("You unbutton \the [src]."))
+	else
+		src.icon_state = "[initial_icon_state]"
+		src.buttoned = TRUE
+		to_chat(usr, SPAN_INFO("You button \the [src]."))
+	update_clothing_icon()
+
 /obj/item/clothing/suit/storage/jacket/marine/Initialize()
 	. = ..()
 	if(!(flags_atom & NO_SNOW_TYPE))
 		select_gamemode_skin(type)
+		initial_icon_state = icon_state
+	if(has_buttons)
+		verbs += /obj/item/clothing/suit/storage/jacket/marine/proc/toggle
+
+//Marine service jacket
+/obj/item/clothing/suit/storage/jacket/marine/service
+	name = "marine service jacket"
+	desc = "A service jacket typically worn by officers of the USCM. It has shards of light Kevlar to help protect against stabbing weapons, bullets, and shrapnel from explosions, a small EMF distributor to help null energy-based weapons, and a hazmat chemical filter weave to ward off biological and radiation hazards."
+	has_buttons = TRUE
+	icon_state = "coat_officer"
 
 /obj/item/clothing/suit/storage/jacket/marine/chef
 	name = "mess sergeant jacket"
@@ -81,9 +116,24 @@
 	restricted_accessory_slots = list(ACCESSORY_SLOT_ARMBAND)
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
-	name = "commanding officer bomber jacket"
+	name = "captain's bomber jacket"
 	desc = "A bomber jacket resembling those worn by airmen of old. A classic, stylish choice for those in the higher ranks."
 	icon_state = "co_bomber"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/white
+	name = "captain's white dress jacket"
+	desc = "A white dress tunic for hot-weather parades. Bright, unstained, and immaculate with gold accents."
+	icon_state = "co_formal_white"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/black
+	name = "captain's gray dress jacket"
+	desc = "A gray dress tunic for those occasions that mandate darker, more subdued colors. Combines sleek and subdued with gold accents."
+	icon_state = "co_formal_black"
+
+/obj/item/clothing/suit/storage/jacket/marine/dress/officer/suit
+	name = "captain's dress blue coat"
+	desc = "A Navy regulation dress blues coat for high-ranking officers. For those who wish for style and authority."
+	icon_state = "co_suit"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/admiral
 	name = "admiral's jacket"
@@ -95,9 +145,9 @@
 	)
 	item_state = "admiral_jacket"
 	storage_slots = 4
-	armor_melee = CLOTHING_ARMOR_MEDIUM
-	armor_bullet = CLOTHING_ARMOR_MEDIUM
-	armor_bomb = CLOTHING_ARMOR_MEDIUM
+	armor_melee = CLOTHING_ARMOR_HIGHPLUS
+	armor_bullet = CLOTHING_ARMOR_HIGHPLUS
+	armor_bomb = CLOTHING_ARMOR_VERYHIGH
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	w_class = SIZE_MEDIUM
 
@@ -125,11 +175,11 @@
 	desc = "The crisp jacket of a Provost Inspector."
 	icon_state = "provost_jacket"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshall
-	name = "\improper Provost Marshall Jacket"
-	desc = "The crisp jacket of a Provost Marshall."
+/obj/item/clothing/suit/storage/jacket/marine/provost/marshal
+	name = "\improper Provost Marshal Jacket"
+	desc = "The crisp jacket of a Provost Marshal."
 	icon_state = "provost_jacket"
 
-/obj/item/clothing/suit/storage/jacket/marine/provost/marshall/chief
-	name = "\improper Provost Chief Marshall Jacket"
-	desc = "The crisp jacket of the Provost Chief Marshall."
+/obj/item/clothing/suit/storage/jacket/marine/provost/marshal/chief
+	name = "\improper Provost Chief Marshal Jacket"
+	desc = "The crisp jacket of the Provost Chief Marshal."

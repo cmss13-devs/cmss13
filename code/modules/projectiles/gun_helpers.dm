@@ -2,7 +2,8 @@
 ERROR CODES AND WHAT THEY MEAN:
 
 
-ERROR CODE A1: null ammo while reloading. <------------ Only appears when reloading a weapon and switching the .ammo. Somehow the argument passed a null.ammo.
+ERROR CODE A1: null ammo while reloading. <------------ Only appears when initialising or reloading a weapon and switching the ammo. Somehow the argument passed a null ammo.
+ERROR CODE A2: null caliber while reloading. <------------ Only appears when initialising or reloading a weapon and switching the calibre. Somehow the argument passed a null caliber.
 ERROR CODE I1: projectile malfunctioned while firing. <------------ Right before the bullet is fired, the actual bullet isn't present or isn't a bullet.
 ERROR CODE I2: null ammo while load_into_chamber() <------------- Somehow the ammo datum is missing or something. We need to figure out how that happened.
 ERROR CODE R1: negative current_rounds on examine. <------------ Applies to ammunition only. Ammunition should never have negative rounds after spawn.
@@ -156,7 +157,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 		var/obj/item/attachable/A = attachments[slot]
 		if (!A || !A.light_mod)
 			continue
-		bearer.SetLuminosity(-A.light_mod)
+		bearer.SetLuminosity(0, FALSE, src)
 		SetLuminosity(A.light_mod)
 		return TRUE
 	return FALSE
@@ -169,7 +170,7 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 			var/obj/item/attachable/A = attachments[slot]
 			if (!A || !A.light_mod)
 				continue
-			user.SetLuminosity(A.light_mod)
+			user.SetLuminosity(A.light_mod, FALSE, src)
 			SetLuminosity(0)
 			break
 
@@ -621,17 +622,17 @@ As sniper rifles have both and weapon mods can change them as well. ..() deals w
 				if(holster_unholster_from_suit_storage())
 					return
 
-			if("ctrl", "alt") //control and alt keymods, do common tertiary weapon locations first. order: belt, pockets, uniform, shoes, back, suit.
-				if(holster_unholster_from_belt()) //in case ctrl is awkward for some people but alt is not.
+			if("ctrl", "alt") //control and alt keymods, do common tertiary weapon locations first. order: uniform, belt, pockets, shoes, back, suit.
+				if(holster_unholster_from_uniform()) //in case ctrl is awkward for some people but alt is not.
+					return
+
+				if(holster_unholster_from_belt())
 					return
 
 				if(holster_unholster_from_left_pocket())
 					return
 
 				if(holster_unholster_from_right_pocket())
-					return
-
-				if(holster_unholster_from_uniform())
 					return
 
 				if(holster_unholster_from_shoes())

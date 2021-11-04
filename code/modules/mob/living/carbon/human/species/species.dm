@@ -118,7 +118,8 @@
     return
 
 /datum/species/proc/create_organs(var/mob/living/carbon/human/H) //Handles creation of mob organs and limbs.
-	H.limbs = list()
+	for(var/L in H.limbs) //In case of pre-existing limbs/organs, we remove the old ones.
+		qdel(L)
 	H.internal_organs = list()
 	H.internal_organs_by_name = list()
 
@@ -127,7 +128,6 @@
 	H.limbs += C
 	var/obj/limb/groin/G = new(H, C, H)
 	H.limbs += G
-	H.limbs += new /obj/limb/head(H, C, H)
 	var/obj/limb/arm/l_arm/LA = new(H, C, H)
 	H.limbs += LA
 	H.limbs += new /obj/limb/hand/l_hand(H, LA, H)
@@ -140,15 +140,14 @@
 	var/obj/limb/leg/r_leg/RL = new(H, G, H)
 	H.limbs += RL
 	H.limbs += new /obj/limb/foot/r_foot(H, RL, H)
+	H.limbs += new /obj/limb/head(H, C, H)
 
 	for(var/organ in has_organ)
 		var/organ_type = has_organ[organ]
 		H.internal_organs_by_name[organ] = new organ_type(H)
 
 	if(flags & IS_SYNTHETIC)
-		for(var/obj/limb/E in H.limbs)
-			if(E.status & LIMB_DESTROYED) continue
-			E.status |= LIMB_ROBOT
+		C.robotize() //Also gets all other limbs, as those are attached.
 		for(var/datum/internal_organ/I in H.internal_organs)
 			I.mechanize()
 
@@ -309,6 +308,8 @@
 			H.update_hair()
 	return
 */
+
+/datum/species/proc/handle_dead_death(var/mob/living/carbon/human/H, var/gibbed)
 
 /datum/species/proc/get_offset_overlay_image(var/spritesheet, var/mob_icon, var/mob_state, var/color, var/slot)
 	// If we don't actually need to offset this, don't bother with any of the generation/caching.

@@ -149,6 +149,10 @@
 	// fix all of our organs
 	restore_all_organs()
 
+	//Reset any surgeries.
+	active_surgeries = DEFENSE_ZONES_LIVING
+	initialize_incision_depths()
+
 	// remove the character from the list of the dead
 	if(stat == DEAD)
 		GLOB.dead_mob_list -= src

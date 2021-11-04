@@ -26,6 +26,8 @@
 #define COMSIG_KB_CARBON_SELECTGRABINTENT_DOWN "keybinding_carbon_selectgrabintent_down"
 #define COMSIG_KB_CARBON_SELECTHARMINTENT_DOWN "keybinding_carbon_selectharmintent_down"
 #define COMSIG_KB_CARBON_GIVEITEM_DOWN "keybinding_carbon_giveitem_down"
+#define COMSIG_KB_CARBON_WARCRY "keybinding_carbon_warcry"
+#define COMSIG_KB_CARBON_MEDIC "keybinding_carbon_medic"
 
 //Client
 #define COMSIG_KB_CLIENT_GETHELP_DOWN "keybinding_client_gethelp_down"
@@ -57,6 +59,7 @@
 #define COMSIG_KB_HUMAN_WEAPON_ATTACHMENT_RAIL "keybinding_human_weapon_attachment_rail"
 
 //Living
+#define COMSIG_KB_SURGERY_INTENT_DOWN "keybinding_living_surgery_intent_down"
 #define COMSIG_KB_LIVING_RESIST_DOWN "keybinding_living_resist_down"
 #define COMSIG_KB_LIVING_LOOKUP_DOWN "keybinding_living_lookup_down"
 #define COMSIG_KB_LIVING_LOOKDOWN_DOWN "keybinding_living_lookdown_down"

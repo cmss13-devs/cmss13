@@ -8,6 +8,7 @@
 	customizable = TRUE
 	underslug_launchable = TRUE
 	allowed_sensors = list(/obj/item/device/assembly/timer)
+	max_container_volume = 90
 	matter = list("metal" = 3750)
 	has_blast_wave_dampener = TRUE
 

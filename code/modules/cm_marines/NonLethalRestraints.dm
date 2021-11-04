@@ -44,8 +44,6 @@
 
 	if(status)
 		M.KnockDown(6)
-		user.lastattacked = M
-		M.lastattacker = user
 		charges -= 2
 		M.visible_message(SPAN_DANGER("[M] has been prodded with the [src] by [user]!"))
 

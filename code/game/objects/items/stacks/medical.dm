@@ -68,25 +68,22 @@
 
 		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
-		if(affecting.surgery_open_stage == 0)
-			if(!affecting.bandage())
-				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been bandaged."))
-				return 1
-			else
-				var/possessive = "[user == M ? "your" : "[M]'s"]"
-				var/possessive_their = "[user == M ? "their" : "[M]'s"]"
-				user.affected_message(M,
-					SPAN_HELPFUL("You <b>bandage</b> [possessive] <b>[affecting.display_name]</b>."),
-					SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
-					SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
-				use(1)
-				playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
+		if(affecting.get_incision_depth())
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			return TRUE
+
+		if(!affecting.bandage())
+			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been bandaged."))
+			return 1
 		else
-			if(H.can_be_operated_on()) //Checks if mob is lying down on table for surgery
-				if(do_surgery(H,user,src))
-					return
-			else
-				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			var/possessive = "[user == M ? "your" : "[M]'s"]"
+			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>bandage</b> [possessive] <b>[affecting.display_name]</b>."),
+				SPAN_HELPFUL("[user] <b>bandages</b> your <b>[affecting.display_name]</b>."),
+				SPAN_NOTICE("[user] bandages [possessive_their] [affecting.display_name]."))
+			use(1)
+			playsound(user, 'sound/handling/bandage.ogg', 25, 1, 2)
 
 /obj/item/stack/medical/ointment
 	name = "ointment"
@@ -112,26 +109,22 @@
 
 		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
-		if(affecting.surgery_open_stage == 0)
-			if(!affecting.salve())
-				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
-				return 1
-			else
-				var/possessive = "[user == M ? "your" : "[M]'s"]"
-				var/possessive_their = "[user == M ? "their" : "[M]'s"]"
-				user.affected_message(M,
-					SPAN_HELPFUL("You <b>salve the wounds</b> on [possessive] <b>[affecting.display_name]</b>."),
-					SPAN_HELPFUL("[user] <b>salves the wounds</b> on your <b>[affecting.display_name]</b>."),
-					SPAN_NOTICE("[user] salves the wounds on [possessive_their] [affecting.display_name]."))
-				use(1)
-				playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
-		else
-			if (H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
-				if (do_surgery(H,user,src))
-					return
-			else
-				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
+		if(affecting.get_incision_depth())
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			return TRUE
 
+		if(!affecting.salve())
+			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
+			return 1
+		else
+			var/possessive = "[user == M ? "your" : "[M]'s"]"
+			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>salve the wounds</b> on [possessive] <b>[affecting.display_name]</b>."),
+				SPAN_HELPFUL("[user] <b>salves the wounds</b> on your <b>[affecting.display_name]</b>."),
+				SPAN_NOTICE("[user] salves the wounds on [possessive_their] [affecting.display_name]."))
+			use(1)
+			playsound(user, 'sound/handling/ointment_spreading.ogg', 25, 1, 2)
 
 /obj/item/stack/medical/advanced/bruise_pack
 	name = "advanced trauma kit"
@@ -141,8 +134,6 @@
 	heal_brute = 12
 
 	stack_id = "advanced bruise pack"
-
-
 
 /obj/item/stack/medical/advanced/bruise_pack/attack(mob/living/carbon/M, mob/user)
 	if(..())
@@ -161,28 +152,25 @@
 
 		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
-		if(affecting.surgery_open_stage == 0)
-			var/bandaged = affecting.bandage()
+		if(affecting.get_incision_depth())
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			return
 
-			if(!bandaged)
-				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been treated."))
-				return 1
-			else
-				var/possessive = "[user == M ? "your" : "[M]'s"]"
-				var/possessive_their = "[user == M ? "their" : "[M]'s"]"
-				user.affected_message(M,
-					SPAN_HELPFUL("You <b>clean and seal</b> the wounds on [possessive] <b>[affecting.display_name]</b> with bioglue."),
-					SPAN_HELPFUL("[user] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
-					SPAN_NOTICE("[user] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
-			if(bandaged)
-				H.apply_damage(-heal_amt, BRUTE, affecting)
-				use(1)
+		var/bandaged = affecting.bandage()
+
+		if(!bandaged)
+			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been treated."))
+			return 1
 		else
-			if(H.can_be_operated_on())        //Checks if mob is lying down on table for surgery
-				if(do_surgery(H, user, src))
-					return
-			else
-				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			var/possessive = "[user == M ? "your" : "[M]'s"]"
+			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>clean and seal</b> the wounds on [possessive] <b>[affecting.display_name]</b> with bioglue."),
+				SPAN_HELPFUL("[user] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
+				SPAN_NOTICE("[user] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
+		if(bandaged)
+			H.apply_damage(-heal_amt, BRUTE, affecting)
+			use(1)
 
 /obj/item/stack/medical/advanced/bruise_pack/predator
 	name = "mending herbs"
@@ -228,26 +216,23 @@
 
 		var/obj/limb/affecting = H.get_limb(user.zone_selected)
 
-		if(affecting.surgery_open_stage == 0)
-			if(!affecting.salve())
-				to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
-				return 1
-			else
-				var/possessive = "[user == M ? "your" : "[M]'s"]"
-				var/possessive_their = "[user == M ? "their" : "[M]'s"]"
-				user.affected_message(M,
-					SPAN_HELPFUL("You <b>cover the wounds</b> on [possessive] <b>[affecting.display_name]</b> with regenerative membrane."),
-					SPAN_HELPFUL("[user] <b>covers the wounds</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
-					SPAN_NOTICE("[user] covers the wounds on [possessive_their] [affecting.display_name] with regenerative membrane."))
+		if(affecting.get_incision_depth())
+			to_chat(user, SPAN_NOTICE("[M]'s [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			return
 
-				H.apply_damage(-heal_amt, BURN, affecting)
-				use(1)
+		if(!affecting.salve())
+			to_chat(user, SPAN_WARNING("The wounds on [M]'s [affecting.display_name] have already been salved."))
+			return 1
 		else
-			if(H.can_be_operated_on()) //Checks if mob is lying down on table for surgery
-				if(do_surgery(H,user,src))
-					return
-			else
-				to_chat(user, SPAN_NOTICE("The [affecting.display_name] is cut open, you'll need more than a bandage!"))
+			var/possessive = "[user == M ? "your" : "[M]'s"]"
+			var/possessive_their = "[user == M ? "their" : "[M]'s"]"
+			user.affected_message(M,
+				SPAN_HELPFUL("You <b>cover the wounds</b> on [possessive] <b>[affecting.display_name]</b> with regenerative membrane."),
+				SPAN_HELPFUL("[user] <b>covers the wounds</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
+				SPAN_NOTICE("[user] covers the wounds on [possessive_their] [affecting.display_name] with regenerative membrane."))
+
+			H.apply_damage(-heal_amt, BURN, affecting)
+			use(1)
 
 /obj/item/stack/medical/splint
 	name = "medical splints"

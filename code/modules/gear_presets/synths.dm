@@ -46,7 +46,7 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/white(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
@@ -70,7 +70,7 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/industrial
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/councillor(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/dress(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
@@ -86,7 +86,7 @@
 /datum/equipment_preset/synth/uscm/wo/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/beret/cm(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/RO(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/brown(H), WEAR_FEET)
@@ -96,44 +96,6 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/marine/smartpack/tan(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/construction/full(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_L_STORE)
-
-//*****************************************************************************************************/
-
-/datum/equipment_preset/synth/combat_smartgunner
-	name = "USCM Combat Synth (Smartgunner)"
-	flags = EQUIPMENT_PRESET_EXTRA
-	faction = FACTION_MARINE
-	idtype = /obj/item/card/id/dogtag
-	assignment = "Squad Smartgunner"
-	rank = "Squad Smartgunner"
-	paygrade = "E3"
-	role_comm_title = "SG"
-	skills = /datum/skills/smartgunner
-
-/datum/equipment_preset/synth/combat_smartgunner/load_race(mob/living/carbon/human/H)
-	H.set_species(SYNTH_COLONY)
-
-/datum/equipment_preset/synth/combat_smartgunner/load_gear(mob/living/carbon/human/H)
-	var/obj/item/clothing/under/marine/J = new(H)
-	J.icon_state = ""
-	H.equip_to_slot_or_del(J, WEAR_BODY)
-	var/obj/item/clothing/head/helmet/specrag/L = new(H)
-	L.icon_state = ""
-	L.name = "synth faceplate"
-	L.flags_inventory |= NODROP
-	L.anti_hug = 99
-
-	H.equip_to_slot_or_del(L, WEAR_HEAD)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/smartgunner(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/smartgunner/full(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/smartgun_powerpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/weapon/gun/smartgun(H), WEAR_J_STORE)
-	H.equip_to_slot_or_del(new /obj/item/attachable/bayonet(H), WEAR_L_HAND)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/night/m56_goggles(H), WEAR_EYES)
-
-	H.allow_gun_usage = TRUE
 
 //*****************************************************************************************************/
 
@@ -232,7 +194,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/xenos(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/collectable/xenom(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/weapon/melee/baton(H.back), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
 
 /datum/equipment_preset/synth/survivor/midwife/load_name(mob/living/carbon/human/H, var/randomise)

@@ -20,6 +20,7 @@
 		return
 
 	M.reset_view(vehicle)
+	give_action(M, /datum/action/human_action/cancel_view)
 
 // Landmark for spawning windows
 /obj/effect/landmark/interior/spawn/interior_viewport

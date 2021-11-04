@@ -35,7 +35,6 @@
 				<p><b>{{:title}}</b></p>
 				{{:helper.link('Read', null, {'read_document' : 1, 'print_type' : type, 'print_title' : title})}}
 				{{:helper.link('Print', 'print', {'print' : 1, 'print_type' : type, 'print_title' : title})}}
-				{{:helper.link('Transmit', 'arrowthickstop-1-n', {'transmit' : 1, 'print_type' : type, 'print_title' : title})}}
 				{{if data.main_terminal == 1 }}
 					{{if data.published_documents[type] }}
 						{{if data.published_documents[type][title] }}

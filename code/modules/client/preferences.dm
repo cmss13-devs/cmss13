@@ -34,6 +34,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/UI_style = "midnight"
 	var/toggles_chat = TOGGLES_CHAT_DEFAULT
 	var/toggles_sound = TOGGLES_SOUND_DEFAULT
+	var/toggles_flashing = TOGGLES_FLASHING_DEFAULT
 	var/chat_display_preferences = CHAT_TYPE_ALL
 	var/UI_style_color = "#ffffff"
 	var/UI_style_alpha = 255
@@ -144,6 +145,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/stylesheet = "Modern"
 
 	var/lang_chat_disabled = FALSE
+
+	var/show_permission_errors = TRUE
 
 	var/key_buf // A buffer for setting macro keybinds
 	var/list/key_mod_buf // A buffer for macro modifiers
@@ -270,7 +273,7 @@ var/const/MAX_SAVE_SLOTS = 10
 
 		switch(role_name)
 			if("Xenomorph after<br>unrevivably dead")
-				ban_check_name = "Alien"
+				ban_check_name = JOB_XENOMORPH
 
 			if("Agent")
 				ban_check_name = "Agent"
@@ -401,6 +404,8 @@ var/const/MAX_SAVE_SLOTS = 10
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_AUTOMATIC_PUNCTUATION]'><b>[toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION ? "On" : "Off"]</b></a><br>"
 	dat += "<b>Toggle Combat Click-Drag Override: \
 			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_COMBAT_CLICKDRAG_OVERRIDE]'><b>[toggle_prefs & TOGGLE_COMBAT_CLICKDRAG_OVERRIDE ? "On" : "Off"]</b></a><br>"
+	dat += "<b>Toggle Alternate-Fire Dual Wielding: \
+			</b> <a href='?_src_=prefs;preference=toggle_prefs;flag=[TOGGLE_ALTERNATING_DUAL_WIELD]'><b>[toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD ? "On" : "Off"]</b></a><br>"
 
 	if(CONFIG_GET(flag/allow_Metadata))
 		dat += "<b>OOC Notes:</b> <a href='?_src_=prefs;preference=metadata;task=input'> Edit </a><br>"

@@ -94,6 +94,14 @@
 	desc = "An armored vest that protects against some damage. This one has a Weyland-Yutani corporate badge."
 	icon_state = "armorsec"
 	item_state = "armor"
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_LOW
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_bomb = CLOTHING_ARMOR_LOW
+	armor_bio = CLOTHING_ARMOR_LOW
+	armor_rad = CLOTHING_ARMOR_LOW
+	slowdown = SLOWDOWN_ARMOR_NONE
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 
 /obj/item/clothing/suit/armor/vest/warden
@@ -231,6 +239,7 @@
 	armor_bomb = CLOTHING_ARMOR_LOW
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
+	slowdown = SLOWDOWN_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMLOW
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
 

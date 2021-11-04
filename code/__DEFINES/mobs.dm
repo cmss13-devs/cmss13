@@ -129,6 +129,7 @@
 #define XENO_HIVE_DELTA "xeno_hive_delta"
 #define XENO_HIVE_FERAL "xeno_hive_feral"
 #define XENO_HIVE_TAMED "xeno_hive_tamed"
+#define XENO_HIVE_MUTATED "xeno_hive_mutated"
 
 //=================================================
 
@@ -165,6 +166,8 @@
 // Mob flags.
 #define KNOWS_TECHNOLOGY		(1<<0)	// This mob understands technology
 #define SQUEEZE_UNDER_VEHICLES 	(1<<1)  // Only the van is supported as of now.
+#define EASY_SURGERY			(1<<2)  // Surgeries on this mob don't require advanced skills.
+#define SURGERY_MODE_ON			(1<<3)  // Mob on surgery mode, will attempt surgery when using relevant items on harm/disarm intent.
 
 //=================================================
 
@@ -298,6 +301,7 @@
 // Carrier strain flags
 #define CARRIER_NORMAL 		"Normal"
 #define CARRIER_SHAMAN		"Shaman"
+#define CARRIER_EGGSAC		"Eggsac"
 
 // Burrower strain flags
 #define BURROWER_NORMAL 	"Normal"
@@ -349,7 +353,8 @@ var/list/default_onmob_icons = list(
 		WEAR_R_HAND = 'icons/mob/humans/onmob/items_righthand_0.dmi',
 		WEAR_WAIST = 'icons/mob/humans/onmob/belt.dmi',
 		WEAR_BACK = 'icons/mob/humans/onmob/back.dmi',
-		WEAR_EAR = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
+		WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
 		WEAR_EYES = 'icons/mob/humans/onmob/eyes.dmi',
 		WEAR_ID = 'icons/mob/mob.dmi',
 		WEAR_BODY = 'icons/mob/humans/onmob/uniform_0.dmi',
@@ -369,3 +374,9 @@ var/list/default_onmob_icons = list(
 #define SPECIES_YAUTJA "Yautja"
 #define SPECIES_SYNTHETIC "Synthetic"
 #define SPECIES_MONKEY "Monkey"
+
+#define ALL_LIMBS list("head","chest","groin","l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
+#define MOVEMENT_LIMBS list("l_leg", "l_foot", "r_leg", "r_foot")
+#define HANDLING_LIMBS list("l_arm","l_hand", "r_arm", "r_hand")
+#define EXTREMITY_LIMBS list("l_leg","l_foot","r_leg","r_foot","l_arm","l_hand","r_arm","r_hand")
+#define CORE_LIMBS list("chest","head","groin")

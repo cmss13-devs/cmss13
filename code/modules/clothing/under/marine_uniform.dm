@@ -89,7 +89,7 @@
 	..(loc,expected_type, override_icon_state, new_name, new_protection)
 
 /obj/item/clothing/under/marine/chef
-	name = "\improper USCM mess sergeant uniform"
+	name = "\improper USCM Mess Sergeant uniform"
 	desc = "Standard-issue Mess Sergeant uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "chef_uniform"
 	worn_state = "chef_uniform"
@@ -106,6 +106,9 @@
 	flags_jumpsuit = FALSE
 	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
+
+/obj/item/clothing/under/marine/mp/cadet
+	name = "MP cadet jumpsuit"
 
 /obj/item/clothing/under/marine/warden
 	name = "military warden jumpsuit"
@@ -172,7 +175,6 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"
@@ -184,7 +186,7 @@
 
 /obj/item/clothing/under/marine/officer/command
 	name = "\improper USCM officer uniform"
-	desc = "The well-ironed utility uniform of a USCM officer. Even looking at it the wrong way could result in being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	desc = "The well-ironed utility uniform of a USCM officer. Even looking at it the wrong way could result in being court-martialed. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "CO_jumpsuit"
 	worn_state = "CO_jumpsuit"
 	specialty = "USCM officer"
@@ -256,40 +258,29 @@
 	specialty = "researcher"
 	flags_atom = NO_SNOW_TYPE
 
+/obj/item/clothing/under/marine/officer/formal/servicedress
+	name = "captain's dress shirt"
+	desc = "The shirt and tie of a two-piece Navy service dress uniform for high-ranking officers. Wear with style and substance."
+	specialty = "captain's service dress"
+	icon_state = "CO_service"
+	worn_state = "CO_service"
+	flags_atom = NO_SNOW_TYPE
+
 /obj/item/clothing/under/marine/officer/formal/white
-	name = "formal commanding officer's white uniform"
-	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "captain's white formal uniform"
+	desc = "A well-ironed USCM officer uniform in brilliant white with gold accents, intended for parades or hot weather. Wear this with pride."
 	icon_state = "CO_formal_white"
 	worn_state = "CO_formal_white"
-	specialty = "USCM officer"
+	specialty = "captain's white formal"
 	flags_atom = NO_SNOW_TYPE
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/formal/black
-	name = "formal commanding officer's black uniform"
-	desc = "The well-ironed formal uniform of a USCM officer. Even looking at it the wrong way could result in you, and your platoon being court-marshalled. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "captain's gray formal uniform"
+	desc = "A well-ironed USCM officer uniform in subdued gray with gold accents, intended for more formal or somber events. Wear this with pride."
 	icon_state = "CO_formal_black"
 	worn_state = "CO_formal_black"
-	specialty = "USCM officer"
+	specialty = "captain's gray formal"
 	flags_atom = NO_SNOW_TYPE
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
-
-/obj/item/clothing/under/marine/officer/dining
-	name = "dining commanding officer uniform"
-	desc = "The well-ironed dining uniform of a USCM officer. This uniform is saved for dining, that way you and the years-old stain upon the collar look sharp during your most important meals."
-	icon_state = "CO_dining"
-	worn_state = "CO_dining"
-	specialty = "USCM officer"
-	flags_atom = NO_SNOW_TYPE
-
-/obj/item/clothing/under/marine/officer/casual
-	name = "casual commanding officer uniform"
-	desc = "Casual clothing you brought aboard to show the marines you do in fact have style. Should only be worn during downtime, or special occasions."
-	icon_state = "CO_casual"
-	worn_state = "CO_casual"
-	specialty = "USCM officer"
-	flags_atom = NO_SNOW_TYPE
-	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/dress
 	name = "marine dress uniform"
@@ -361,19 +352,19 @@
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 
-/obj/item/clothing/under/marine/mp/provost/marshall
-	name = "\improper Provost Marshall Uniform"
-	desc = "The crisp uniform of a Provost Marshall."
+/obj/item/clothing/under/marine/mp/provost/marshal
+	name = "\improper Provost Marshal Uniform"
+	desc = "The crisp uniform of a Provost Marshal."
 	icon_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 
-/obj/item/clothing/under/marine/mp/provost/marshall/sector
-	name = "\improper Provost Sector Marshall Uniform"
-	desc = "The crisp uniform of a Provost Sector Marshall."
+/obj/item/clothing/under/marine/mp/provost/marshal/sector
+	name = "\improper Provost Sector Marshal Uniform"
+	desc = "The crisp uniform of a Provost Sector Marshal."
 
-/obj/item/clothing/under/marine/mp/provost/marshall/chief
-	name = "\improper Provost Chief Marshall Uniform"
-	desc = "The crisp uniform of the Provost Chief Marshall."
+/obj/item/clothing/under/marine/mp/provost/marshal/chief
+	name = "\improper Provost Chief Marshal Uniform"
+	desc = "The crisp uniform of the Provost Chief Marshal."
 
 //=========================//RESPONDERS\\================================\\
 //=======================================================================\\
@@ -381,6 +372,8 @@
 /obj/item/clothing/under/marine/veteran
 	flags_jumpsuit = FALSE
 	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE //Let's make them keep their original name.
+
+//=========================//MARSOC\\================================\\
 
 /obj/item/clothing/under/marine/veteran/marsoc
 	name = "MARSOC tactical operator uniform"
@@ -390,6 +383,8 @@
 	worn_state = "marsoc"
 	specialty = "marsoc uniform"
 	flags_item = NO_SNOW_TYPE
+
+//=========================//PMC\\================================\\
 
 /obj/item/clothing/under/marine/veteran/PMC
 	name = "\improper PMC fatigues"
@@ -429,6 +424,8 @@
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 
+//=========================//UPP\\================================\\
+
 /obj/item/clothing/under/marine/veteran/bear
 	name = "\improper Iron Bear uniform"
 	desc = "A uniform worn by Iron Bears mercenaries in the service of Mother Russia. Smells a little like an actual bear."
@@ -447,12 +444,60 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	has_sensor = FALSE
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/UPP, /obj/item/clothing/suit/gimmick/jason, /obj/item/clothing/suit/storage/snow_suit/soviet)
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/UPP/medic
 	name = "\improper UPP medic fatigues"
 	desc = "A set of medic UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
 	icon_state = "upp_uniform_medic"
 	worn_state = "upp_uniform_medic"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/veteran/UPP/engi
+	name = "\improper UPP engineer fatigues"
+	desc = "A set of Engineer UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
+	icon_state = "upp_uniform_engi"
+	worn_state = "upp_uniform_engi"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/veteran/UPP/mp
+	name = "\improper UPP Military Police fatigues"
+	desc = "A set of Military Police UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
+	icon_state = "upp_uniform_mp"
+	worn_state = "upp_uniform_mp"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
+
+/obj/item/clothing/under/marine/veteran/UPP/officer
+	name = "\improper UPP Officer fatigues"
+	desc = "A set of Officer UPP fatigues, mass produced for the armed-forces of the Union of Progressive Peoples. A rare sight, especially in ICC zones. This particular set sports the dark drab pattern of the UPP 17th battalion, 'Smoldering Sons', operating in the sparse UPP frontier in the Anglo-Japanese arm."
+	icon_state = "upp_uniform_officer"
+	worn_state = "upp_uniform_officer"
+
+/obj/item/clothing/under/marine/veteran/UPP/civi1
+	name = "\improper UPP Civilian-style Orange overalls"
+	desc = "A set of Civilian-style Orange Overalls with a dark tan undershirt. The material is of a poor quality, however it's better than nothing. Clothing of this style is typically given out to those who work laborious jobs."
+	icon_state = "upp_uniform_civi1"
+	worn_state = "upp_uniform_civi1"
+
+/obj/item/clothing/under/marine/veteran/UPP/civi2
+	name = "\improper UPP Civilian-style tan overalls"
+	desc = "A set of Civilian-style Tan Overalls with a Blue undershirt. The material is of a poor quality, however it's better than nothing. Clothing of this style is typically given to those who work laborious jobs."
+	icon_state = "upp_uniform_civi2"
+	worn_state = "upp_uniform_civi2"
+
+/obj/item/clothing/under/marine/veteran/UPP/civi3
+	name = "\improper UPP Civilian-style shirt and pants"
+	desc = "A set of Civilian-style tan shirt and jeans. The material, while poor, is comfortable enough to be worn during all periods of the day."
+	icon_state = "upp_uniform_civi3"
+	worn_state = "upp_uniform_civi3"
+
+/obj/item/clothing/under/marine/veteran/UPP/civi4
+	name = "\improper UPP Civilian-style Vest and pants"
+	desc = "A set of Civilian-style Brown vest and orange pants. The material is surprisingly decent, something not often worn by the civilians of the UPP for two reasons: They typically can't afford such clothing, and if they can, it paints a target on their back."
+	icon_state = "upp_uniform_civi4"
+	worn_state = "upp_uniform_civi4"
+
+//=========================//Freelancer\\================================\\
 
 /obj/item/clothing/under/marine/veteran/freelancer
 	name = "\improper freelancer fatigues"
@@ -462,6 +507,8 @@
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
 	has_sensor = 0
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/faction/freelancer)
+
+//=========================//Dutch Dozen\\================================\\
 
 /obj/item/clothing/under/marine/veteran/dutch
 	name = "\improper Dutch's Dozen uniform"

@@ -146,9 +146,12 @@
 	if(glasses && !skipeyes)
 		msg += "[t_He] [t_has] [glasses.get_examine_line()] covering [t_his] eyes.\n"
 
-	//ear
-	if(wear_ear && !skipears)
-		msg += "[t_He] [t_has] [wear_ear.get_examine_line()] on [t_his] right ear.\n"
+	//ears
+	if(!skipears)
+		if(wear_l_ear)
+			msg += "[t_He] [t_has] [wear_l_ear.get_examine_line()] on [t_his] left ear.\n"
+		if(wear_r_ear)
+			msg += "[t_He] [t_has] [wear_r_ear.get_examine_line()] on [t_his] right ear.\n"
 
 	//ID
 	if(wear_id)
@@ -167,11 +170,24 @@
 		else if(jitteriness >= 100)
 			msg += SPAN_WARNING("[t_He] [t_is] twitching ever so slightly.\n")
 
-	//splints
+	//splints & surgical incisions
 	for(var/organ in list("l_leg","r_leg","l_arm","r_arm","l_foot","r_foot","l_hand","r_hand","chest","groin","head"))
 		var/obj/limb/o = get_limb(organ)
-		if(o && o.status & LIMB_SPLINTED)
-			msg += SPAN_WARNING("[t_He] [t_has] a splint on [t_his] [o.display_name]!\n")
+		if(o)
+			var/list/damage = list()
+			if(o.status & LIMB_SPLINTED)
+				damage += "a splint"
+
+			var/limb_incision = o.get_incision_depth()
+			if(limb_incision)
+				damage += limb_incision
+
+			var/limb_surgeries = o.get_active_limb_surgeries()
+			if(limb_surgeries)
+				damage += limb_surgeries
+
+			if(length(damage))
+				msg += SPAN_WARNING("[t_He] [t_has] [english_list(damage, final_comma_text = ",")] on [t_his] [o.display_name]!\n")
 
 	if(holo_card_color)
 		msg += "[t_He] has a [holo_card_color] holo card on [t_his] chest.\n"
@@ -219,10 +235,10 @@
 			if(temp.status & LIMB_ROBOT)
 				if(!(temp.brute_dam + temp.burn_dam))
 					if(!(species && species.flags & IS_SYNTHETIC))
-						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a robot [temp.display_name]!\n")
+						wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]!\n")
 						continue
 				else
-					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a robot [temp.display_name]. It has")
+					wound_flavor_text["[temp.display_name]"] = SPAN_WARNING("[t_He] has a[temp.status & LIMB_UNCALIBRATED_PROSTHETIC ? " nonfunctional" : ""] robot [temp.display_name]. It has")
 				if(temp.brute_dam) switch(temp.brute_dam)
 					if(0 to 20)
 						wound_flavor_text["[temp.display_name]"] += " some dents"
@@ -239,8 +255,9 @@
 					wound_flavor_text["[temp.display_name]"] += "!\n"
 			else if(temp.wounds.len > 0)
 				var/list/wound_descriptors = list()
-				for(var/datum/wound/W in temp.wounds)
-					if(W.internal && !temp.surgery_open_stage) continue // can't see internal wounds
+				for(var/datum/wound/W as anything in temp.wounds)
+					if(W.internal && incision_depths[temp.name] == SURGERY_DEPTH_SURFACE)
+						continue // can't see internal wounds normally.
 					var/this_wound_desc = W.desc
 					if(W.damage_type == BURN && W.salved) this_wound_desc = "salved [this_wound_desc]"
 					else if(W.bandaged) this_wound_desc = "bandaged [this_wound_desc]"
@@ -368,9 +385,9 @@
 					msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>sleeves</b>!\n")
 				else
 					if (display_arm_left)
-						msg += SPAN_WARNING("[t_He] has soaking through [t_his] <b>left sleeve</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>left sleeve</b>!\n")
 					if (display_arm_right)
-						msg += SPAN_WARNING("[t_He] has soaking through [t_his] <b>right sleeve</b>!\n")
+						msg += SPAN_WARNING("[t_He] has blood soaking through [t_his] <b>right sleeve</b>!\n")
 				if (display_hand_left && display_hand_right)
 					msg += SPAN_WARNING("[t_He] has blood running out from under [t_his] <b>gloves</b>!\n")
 				else
@@ -409,20 +426,16 @@
 		msg += SPAN_WARNING("<b>[t_He] has \a [implant] sticking out of [t_his] flesh!\n")
 
 	if(hasHUD(user,"security"))
-		var/perpname = "wot"
-		var/criminal = "None"
+		var/perpref
 
-		if(wear_id)
-			if(I)
-				perpname = I.registered_name
-			else
-				perpname = name
-		else
-			perpname = name
 
-		if(perpname)
-			for (var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["name"] == perpname)
+		if(wear_id && I)
+			perpref = I.registered_ref
+
+		if(perpref)
+			var/criminal = "None"
+			for(var/datum/data/record/E in GLOB.data_core.general)
+				if(E.fields["ref"] == perpref)
 					for (var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							criminal = R.fields["criminal"]
@@ -437,8 +450,9 @@
 
 		// scan reports
 		var/datum/data/record/N = null
+		var/me_ref = WEAKREF(src)
 		for(var/datum/data/record/R in GLOB.data_core.medical)
-			if (R.fields["name"] == real_name)
+			if (R.fields["ref"] == me_ref)
 				N = R
 				break
 		if(!isnull(N))
@@ -469,6 +483,9 @@
 
 
 	if(isYautja(user))
+		var/obj/item/clothing/gloves/yautja/bracers = gloves
+		if(istype(bracers) && bracers.name_active)
+			to_chat(user, SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>."))
 		to_chat(user, SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey."))
 		if(src.hunter_data.hunted)
 			to_chat(user, SPAN_ORANGE("[src] is being hunted by [src.hunter_data.hunter.real_name]."))
@@ -499,7 +516,7 @@
 				if(skillcheck(H, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 					return istype(H.glasses, /obj/item/clothing/glasses/hud/health)
 			if("squadleader")
-				return H.mind && H.assigned_squad && H.assigned_squad.squad_leader == H && istype(H.wear_ear, /obj/item/device/radio/headset/almayer/marine)
+				return H.mind && H.assigned_squad && H.assigned_squad.squad_leader == H && H.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 			else
 				return 0
 	else if(isrobot(M))

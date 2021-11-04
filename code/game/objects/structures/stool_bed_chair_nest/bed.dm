@@ -24,6 +24,9 @@
 	var/accepts_bodybag = FALSE //Whether you can buckle bodybags to this bed
 	var/base_bed_icon //Used by beds that change sprite when something is buckled to them
 	var/hit_bed_sound = 'sound/effects/metalhit.ogg' //sound player when attacked by a xeno
+	/// Sound when buckled to a bed/chair/stool
+	var/buckling_sound = 'sound/effects/buckle.ogg' 
+	surgery_duration_multiplier = SURGERY_SURFACE_MULT_UNSUITED
 
 /obj/structure/bed/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
@@ -73,7 +76,7 @@ obj/structure/bed/Destroy()
 	density = 1
 	update_icon()
 	if(buckling_y)
-		buckled_bodybag.pixel_y = buckling_y
+		buckled_bodybag.pixel_y = buckled_bodybag.buckle_offset + buckling_y
 	add_fingerprint(user)
 
 /obj/structure/bed/unbuckle()
@@ -99,7 +102,8 @@ obj/structure/bed/Destroy()
 	if(buckled_bodybag)
 		return
 	..()
-
+	if(M.loc == src.loc && buckling_sound)
+		playsound(src, buckling_sound, 20)
 
 /obj/structure/bed/Move(NewLoc, direct)
 	. = ..()
@@ -171,12 +175,12 @@ obj/structure/bed/Destroy()
  */
 /obj/structure/bed/roller
 	name = "roller bed"
-	desc = "A basic cushioned leather board resting on a small frame. Not very comfortable at all, but allows the patient to rest lying down while moved to another location rapidly."
+	desc = "A basic cushioned leather board resting on a small frame. Not very comfortable at all, but allows the patient to rest lying down while moved to another location rapidly. Not great for surgery, but better than nothing."
 	icon = 'icons/obj/structures/rollerbed.dmi'
 	icon_state = "roller_down"
 	anchored = FALSE
 	drag_delay = 0 //Pulling something on wheels is easy
-	buckling_y = 6
+	buckling_y = 3
 	foldabletype = /obj/item/roller
 	accepts_bodybag = TRUE
 	base_bed_icon = "roller"
@@ -261,6 +265,27 @@ obj/structure/bed/Destroy()
 	R.add_fingerprint(user)
 	QDEL_NULL(held)
 
+//////////////////////////////////////////////
+//			PORTABLE SURGICAL BED			//
+//////////////////////////////////////////////
+
+/obj/structure/bed/portable_surgery
+	name = "portable surgical bed"
+	desc = "A collapsible surgical bed. It's not perfect, but it's the best you'll get short of an actual surgical table."
+	icon = 'icons/obj/structures/rollerbed.dmi'
+	icon_state = "surgical_down"
+	buckling_y = 2
+	foldabletype = /obj/item/roller/surgical
+	base_bed_icon = "surgical"
+	accepts_bodybag = FALSE
+	surgery_duration_multiplier = SURGERY_SURFACE_MULT_ADEQUATE
+
+/obj/item/roller/surgical
+	name = "portable surgical bed"
+	desc = "A collapsed surgical bed that can be carried around."
+	icon_state = "surgical_folded"
+	rollertype = /obj/structure/bed/portable_surgery
+
 ////////////////////////////////////////////
 			//MEDEVAC STRETCHER
 //////////////////////////////////////////////
@@ -270,15 +295,16 @@ var/global/list/activated_medevac_stretchers = list()
 
 /obj/structure/bed/medevac_stretcher
 	name = "medevac stretcher"
-	desc = "A medevac stretcher with integrated beacon for rapid evacuation of an injured patient via dropship lift. Accepts patients and body bags."
+	desc = "A medevac stretcher with integrated beacon for rapid evacuation of an injured patient via dropship lift. Accepts patients and body bags. Completely useless for surgery."
 	icon = 'icons/obj/structures/rollerbed.dmi'
 	icon_state = "stretcher_down"
-	buckling_y = 6
+	buckling_y = -1
 	foldabletype = /obj/item/roller/medevac
 	base_bed_icon = "stretcher"
 	accepts_bodybag = TRUE
 	var/stretcher_activated
 	var/obj/structure/dropship_equipment/medevac_system/linked_medevac
+	surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL //On the one hand, it's a big stretcher. On the other hand, you have a big sheet covering the patient and those damned Fulton hookups everywhere.
 
 /obj/structure/bed/medevac_stretcher/Destroy()
 	if(stretcher_activated)

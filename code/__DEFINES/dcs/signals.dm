@@ -10,6 +10,8 @@
 #define COMSIG_GLOB_NEW_Z "!new_z"
 ///from base of datum/controller/subsystem/mapping/proc/add_new_zlevel(): (list/args)
 #define COMSIG_GLOB_VEHICLE_ORDERED "!vehicle_ordered"
+/// from /datum/controller/subsystem/ticker/fire
+#define COMSIG_GLOB_MODE_PREGAME_LOBBY "!mode_pregame_lobby"
 ///from /datum/game_mode/proc/pre_setup
 #define COMSIG_GLOB_MODE_PRESETUP "!mode_presetup"
 ///from /datum/game_mode/proc/post_setup
@@ -122,6 +124,8 @@
 #define COMSIG_MOB_DRAGGED "mob_dragged"
 /// From /mob/living/verb/resist()
 #define COMSIG_MOB_RESISTED "mob_resist"
+/// From /mob/living/verb/resist()
+#define COMSIG_MOB_RECALCULATE_CLIENT_COLOR "mob_recalc_client_color"
 
 /// For when a mob is devoured by a Xeno
 #define COMSIG_MOB_DEVOURED "mob_devoured"
@@ -250,6 +254,8 @@
 #define COMSIG_ITEM_DROPPED "item_drop"
 /// From base of /obj/item/proc/equipped(): (mob/user, slot)
 #define COMSIG_ITEM_EQUIPPED "item_equipped"
+/// From base of /obj/item/proc/unequipped(): (mob/user, slot)
+#define COMSIG_ITEM_UNEQUIPPED "item_unequipped"
 ///from /obj/item/proc/unwield
 #define COMSIG_ITEM_UNWIELD "item_unwield"
 /// From base of /obj/item/proc/attack_self(): (mob/user)
@@ -393,3 +399,9 @@
 #define COMSIG_MOB_DEAFENED "mob_deafened"
 //from /mob/proc/on_deafness_loss()
 #define COMSIG_MOB_REGAINED_HEARING "mob_regained_hearing"
+//from /mob/living/carbon/human/equip_to_slot()
+#define COMSIG_HUMAN_EQUIPPED_ITEM "human_equipped_item"
+
+///from /datum/component/bonus_damage_stack
+#define COMSIG_BONUS_DAMAGE "bonus_damage"
+

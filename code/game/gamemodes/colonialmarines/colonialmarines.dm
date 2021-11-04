@@ -222,12 +222,8 @@
 			evolution_ovipositor_threshold = TRUE
 			msg_admin_niche("Xenomorphs now require the queen's ovipositor for evolution progress.")
 
-		if(!(resin_allow_finished) && world.time >= SSticker.round_start_time + round_time_resin)
-			for(var/area/A in all_areas)
-				if(!(A.is_resin_allowed))
-					A.is_resin_allowed = TRUE
-			resin_allow_finished = TRUE
-			msg_admin_niche("Areas close to landing zones are now weedable.")
+		if(!GLOB.resin_lz_allowed && world.time >= SSticker.round_start_time + round_time_resin)
+			set_lz_resin_allowed(TRUE)
 
 
 #undef FOG_DELAY_INTERVAL
@@ -236,6 +232,9 @@
 // Resource Towers
 
 /datum/game_mode/colonialmarines/ds_first_drop(var/datum/shuttle/ferry/marine/m_shuttle)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/show_blurb_uscm), DROPSHIP_DROP_MSG_DELAY)
+
+/datum/game_mode/colonialmarines/ds_first_landed(var/datum/shuttle/ferry/marine/m_shuttle)
 	SStechtree.activate_passive_nodes()
 	addtimer(CALLBACK(SStechtree, /datum/controller/subsystem/techtree/proc/activate_all_nodes), 20 SECONDS)
 

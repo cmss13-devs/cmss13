@@ -27,7 +27,7 @@
 	)
 	assignment = JOB_POLICE
 	rank = JOB_POLICE
-	paygrade = "E6"
+	paygrade = "ME6"
 	role_comm_title = "MP"
 	skills = /datum/skills/MP
 
@@ -40,7 +40,7 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/security
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
@@ -51,6 +51,57 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/uscm_police/mp_cadet
+	name = "USCM MP Cadet (MPC)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	access = list(
+		ACCESS_MARINE_BRIG,
+		ACCESS_MARINE_BRIDGE,
+		ACCESS_MARINE_DROPSHIP,
+		ACCESS_MARINE_LOGISTICS,
+		ACCESS_MARINE_PREP,
+		ACCESS_MARINE_MEDBAY,
+		ACCESS_MARINE_MORGUE,
+		ACCESS_MARINE_ALPHA,
+		ACCESS_MARINE_BRAVO,
+		ACCESS_MARINE_CHARLIE,
+		ACCESS_MARINE_DELTA,
+		ACCESS_MARINE_ENGINEERING,
+		ACCESS_MARINE_MAINT,
+		ACCESS_MARINE_OT
+	)
+	assignment = JOB_POLICE_CADET
+	rank = JOB_POLICE_CADET
+	paygrade = "ME4"
+	role_comm_title = "MPC"
+	skills = /datum/skills/MP
+
+	utility_under = list(/obj/item/clothing/under/marine/mp)
+	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp)
+	utility_extra = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/beret/cm, /obj/item/clothing/head/beret/cm/tan)
+
+/datum/equipment_preset/uscm_ship/uscm_police/mp_cadet/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel/sec
+	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/security
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/cadet(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/security/MP/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium(H), WEAR_R_STORE)
+
+
 
 //*****************************************************************************************************/
 
@@ -79,9 +130,9 @@
 	)
 	assignment = JOB_WARDEN
 	rank = JOB_WARDEN
-	paygrade = "O2"
+	paygrade = "NO3"
 	role_comm_title = "MW"
-	skills = /datum/skills/CMP
+	skills = /datum/skills/MW
 
 	utility_under = list(/obj/item/clothing/under/marine/warden)
 	utility_hat = list(/obj/item/clothing/head/helmet/beret/marine/mp/warden)
@@ -92,7 +143,7 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/security
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mmpo(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/warden(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
@@ -131,7 +182,7 @@
 	)
 	assignment = JOB_CHIEF_POLICE
 	rank = JOB_CHIEF_POLICE
-	paygrade = "O3"
+	paygrade = "NO4"
 	role_comm_title = "CMP"
 	skills = /datum/skills/CMP
 
@@ -144,7 +195,7 @@
 	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
 		backItem = /obj/item/storage/backpack/security
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine(H), WEAR_HANDS)
@@ -166,7 +217,7 @@
 	access = list()
 	assignment = "Riot Control"
 	rank = "Riot"
-	paygrade = "E6"
+	paygrade = "ME6"
 	role_comm_title = "RMP"
 	skills = /datum/skills/CMP
 
@@ -181,7 +232,7 @@
 /datum/equipment_preset/uscm_ship/uscm_police/riot_mp/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels
 
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/cmpcom(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/warrant(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/riot/marine(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/riot(H), WEAR_HEAD)
@@ -211,6 +262,6 @@
 
 	assignment = "Chief Riot Control"
 	rank = "CRMP"
-	paygrade = "E7"
+	paygrade = "ME7"
 	role_comm_title = "CRMP"
 	skills = /datum/skills/CMP

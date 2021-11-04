@@ -9,15 +9,16 @@
 	storage_slots = 1
 	storage_flags = STORAGE_FLAGS_POUCH
 	cant_hold = list(/obj/item/weapon/melee/throwing_knife)
+	///If it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
+	var/flap = TRUE
 
-///Means that it closes a flap over its contents, and therefore update_icon should lift that flap when opened. If it doesn't have _half and _full iconstates, this doesn't matter either way.
-/obj/item/storage/pouch/update_icon(flap = TRUE)
+/obj/item/storage/pouch/update_icon()
 	overlays.Cut()
-	if(!contents.len)
+	if(!length(contents))
 		return TRUE //For the pistol pouch to know it's empty.
 	if(content_watchers && flap) //If it has a flap and someone's looking inside it, don't close the flap.
 		return
-	else if(contents.len <= storage_slots * 0.5)
+	else if(length(contents) <= storage_slots * 0.5)
 		overlays += "+[icon_state]_half"
 	else
 		overlays += "+[icon_state]_full"
@@ -120,15 +121,13 @@
 /obj/item/storage/pouch/bayonet/upp
 	default_knife_type = /obj/item/attachable/bayonet/upp
 
-/obj/item/storage/pouch/bayonet/handle_item_insertion(obj/item/W, prevent_warning = 0)
-	. = ..()
-	if(.)
-		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+/obj/item/storage/pouch/bayonet/_item_insertion(obj/item/W, prevent_warning = 0)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
-/obj/item/storage/pouch/bayonet/remove_from_storage(obj/item/W, atom/new_location)
-	. = ..()
-	if(.)
-		playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
+/obj/item/storage/pouch/bayonet/_item_removal(obj/item/W, atom/new_location)
+	..()
+	playsound(src, 'sound/weapons/gun_shotgun_shell_insert.ogg', 15, TRUE)
 
 /obj/item/storage/pouch/bayonet/attack_hand(mob/user, mods)
 	if(draw_cooldown < world.time)
@@ -212,6 +211,7 @@
 	new /obj/item/stack/medical/splint(src)
 	new /obj/item/reagent_container/hypospray/autoinjector/emergency(src)
 
+///Pistol pouch.
 /obj/item/storage/pouch/pistol
 	name = "sidearm pouch"
 	desc = "You could carry a pistol in this; more importantly, you could draw it quickly. Useful for emergencies."
@@ -220,6 +220,7 @@
 	max_w_class = SIZE_MEDIUM
 	can_hold = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver/m44,/obj/item/weapon/gun/flare)
 	storage_flags = STORAGE_FLAGS_POUCH|STORAGE_USING_DRAWING_METHOD
+	flap = FALSE
 
 	///Display code pulled from belt.dm gun belt. Can shave quite a lot off because this pouch can only hold one item at a time.
 	var/obj/item/weapon/gun/current_gun //The gun it holds, used for referencing later so we can update the icon.
@@ -231,38 +232,136 @@
 
 /obj/item/storage/pouch/pistol/Destroy()
 	gun_underlay = null
-	QDEL_NULL(current_gun)
+	current_gun = null
 	. = ..()
+
+/obj/item/storage/pouch/pistol/on_stored_atom_del(atom/movable/AM)
+	if(AM == current_gun)
+		current_gun = null
+		update_gun_icon()
 
 /obj/item/storage/pouch/pistol/can_be_inserted(obj/item/W, stop_messages) //A little more detailed than just 'the pouch is full'.
-	if(length(contents))
+	. = ..()
+	if(!.)
+		return
+	if(current_gun && isgun(W))
 		if(!stop_messages)
 			to_chat(usr, SPAN_WARNING("[src] already holds a gun."))
-		return
-	return ..()
+		return FALSE
 
+/obj/item/storage/pouch/pistol/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
+	if(isgun(I))
+		current_gun = I
+		update_gun_icon()
+	..()
 
-/obj/item/storage/pouch/pistol/update_icon(flap = FALSE) //The pistol is an underlay, showing the empty sprite would just look ugly. Parent handles holster flap; gun underlay only needs to be updated if the gun changes.
-	. = ..()
-	if(.) // . = empty pouch
-		if(current_gun) //If the pouch is empty but a gun is recorded, remove its record and the overlay and play a draw sfx.
-			current_gun = null
-			playsound(src, sheatheSound, 15, TRUE)
-			underlays -= gun_underlay
-			gun_underlay = null
+/obj/item/storage/pouch/pistol/_item_removal(obj/item/I, atom/new_location)
+	if(I == current_gun)
+		current_gun = null
+		update_gun_icon()
+	..()
+
+/obj/item/storage/pouch/pistol/proc/update_gun_icon()
+	if(current_gun)
+		playsound(src, drawSound, 15, TRUE)
+		gun_underlay = image('icons/obj/items/clothing/belts.dmi', current_gun.base_gun_icon)
+		if(!istype(current_gun,/obj/item/weapon/gun/pistol))
+			gun_underlay.pixel_x = icon_x + 1
+			gun_underlay.pixel_y = icon_y + 3
+		else
+			gun_underlay.pixel_x = icon_x
+			gun_underlay.pixel_y = icon_y
+		gun_underlay.color = current_gun.color
+		underlays += gun_underlay
 	else
-		if(length(contents) && !current_gun) //If there's something in the pouch but no gun is recorded, add a record and overlay and play a holster sfx.
-			for(var/obj/item/weapon/gun/G in contents)
-				current_gun = G
-			playsound(src, drawSound, 15, TRUE)
-			gun_underlay = image('icons/obj/items/clothing/belts.dmi', current_gun.base_gun_icon)
-			if(!istype(current_gun,/obj/item/weapon/gun/pistol)) //This is a multirole container, and flareguns and *especially* the M44 don't line up with the sprites automatic pistols use.
-				gun_underlay.pixel_x = icon_x + 1
-				gun_underlay.pixel_y = icon_y + 3
-			else
-				gun_underlay.pixel_x = icon_x
-				gun_underlay.pixel_y = icon_y
-			underlays += gun_underlay
+		playsound(src, sheatheSound, 15, TRUE)
+		underlays -= gun_underlay
+		gun_underlay = null
+
+///CO pouch. This pouch can hold only 1 of each type of item: 1 sidearm, 1 pair of binoculars, 1 CO tablet
+/obj/item/storage/pouch/pistol/command
+	name = "command pouch"
+	desc = "A specialized, sturdy pouch issued to Captains. Can hold their sidearm, the command tablet and a set of binoculars."
+	storage_slots = 3
+	icon_state = "command_pouch"
+	storage_flags = STORAGE_FLAGS_POUCH
+	can_hold = list(
+					/obj/item/weapon/gun/revolver,
+					/obj/item/weapon/gun/pistol,
+					/obj/item/device/binoculars,
+					/obj/item/device/cotablet
+					)
+
+	var/obj/item/device/binoculars/binos
+	var/obj/item/device/cotablet/tablet
+	icon_x = -6
+	icon_y = -0
+
+/obj/item/storage/pouch/pistol/command/Destroy()
+	binos = null
+	tablet = null
+	. = ..()
+
+/obj/item/storage/pouch/pistol/command/on_stored_atom_del(atom/movable/AM)
+	..()
+	if(AM == binos)
+		binos = null
+	else if(AM == tablet)
+		tablet = null
+
+/obj/item/storage/pouch/pistol/command/can_be_inserted(obj/item/I, stop_messages)
+	. = ..()
+	if(!.)
+		return
+	if(binos && istype(I, /obj/item/device/binoculars))
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[src] already holds a pair of binoculars."))
+		return FALSE
+	else if(tablet && istype(I, /obj/item/device/cotablet))
+		if(!stop_messages)
+			to_chat(usr, SPAN_WARNING("[src] already holds a tablet."))
+		return FALSE
+
+/obj/item/storage/pouch/pistol/command/_item_insertion(obj/item/I, prevent_warning = 0, mob/user)
+	if(istype(I, /obj/item/device/binoculars))
+		binos = I
+	else if(istype(I, /obj/item/device/cotablet))
+		tablet = I
+	..()
+
+/obj/item/storage/pouch/pistol/command/_item_removal(obj/item/I, atom/new_location)
+	if(I == binos)
+		binos = null
+	else if(I == tablet)
+		tablet = null
+	..()
+
+/obj/item/storage/pouch/pistol/command/update_icon()
+	overlays.Cut()
+	if(!length(contents))
+		return
+	if(content_watchers) //Opened flaps.
+		if(binos)
+			overlays += "+command_pouch_binos"
+		if(tablet)
+			overlays += "+command_pouch_tablet"
+	else
+		if(binos)
+			overlays += "+command_pouch_binos_flap"
+		if(tablet)
+			overlays += "+command_pouch_tablet_flap"
+
+/obj/item/storage/pouch/pistol/command/attack_hand(mob/user, mods) //Mostly copied from gunbelt.
+	if(current_gun && ishuman(user) && loc == user)
+		if(mods && mods["alt"] && length(contents) > 1) //Withdraw the most recently inserted nongun item if possible.
+			var/obj/item/I = contents[length(contents)]
+			if(isgun(I))
+				I = contents[length(contents) - 1]
+			I.attack_hand(user)
+		else
+			current_gun.attack_hand(user)
+		return
+	..()
 
 //// MAGAZINE POUCHES /////
 
@@ -383,6 +482,7 @@
 	can_hold = list(
 		/obj/item/ammo_magazine/handful
 	)
+	flap = FALSE
 
 /obj/item/storage/pouch/shotgun/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/ammo_magazine/shotgun))
@@ -398,7 +498,6 @@
 /obj/item/storage/pouch/shotgun/heavyslug/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
 		new /obj/item/ammo_magazine/handful/shotgun/heavy/slug(src)
-
 
 /obj/item/storage/pouch/shotgun/heavyflechette/fill_preset_inventory()
 	for(var/i in 1 to storage_slots)
@@ -812,6 +911,7 @@
 		/obj/item/tool/shovel/etool,
 		/obj/item/stack/sandbags_empty,
 		/obj/item/device/lightreplacer,
+		/obj/item/weapon/gun/smg/nailgun/compact,
 	)
 
 /obj/item/storage/pouch/construction/full/fill_preset_inventory()
@@ -908,13 +1008,13 @@
 		return FALSE
 	return ..()
 
-/obj/item/storage/pouch/sling/handle_item_insertion(obj/item/I, prevent_warning = FALSE, mob/user)
+/obj/item/storage/pouch/sling/_item_insertion(obj/item/I, prevent_warning = FALSE, mob/user)
 	if(!slung)
 		slung = I
 		slung.AddElement(/datum/element/drop_retrieval/pouch_sling, src)
 		if(!prevent_warning)
 			to_chat(user, SPAN_NOTICE("You attach the sling to [I]."))
-	return ..()
+	..()
 
 /obj/item/storage/pouch/sling/attack_self(mob/user)
 	if(slung)

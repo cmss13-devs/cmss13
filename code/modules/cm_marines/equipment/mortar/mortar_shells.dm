@@ -10,6 +10,12 @@
 /obj/item/mortar_shell/proc/detonate(var/turf/T)
 	forceMove(T)
 
+/obj/item/mortar_shell/proc/deploy_camera(var/turf/T)
+	var/obj/structure/machinery/camera/mortar/old_cam = locate() in T
+	if(old_cam)
+		qdel(old_cam)
+	new /obj/structure/machinery/camera/mortar(T)
+
 /obj/item/mortar_shell/he
 	name = "\improper 80mm high explosive mortar shell"
 	desc = "An 80mm mortar shell, loaded with a high explosive charge."
@@ -25,7 +31,7 @@
 
 /obj/item/mortar_shell/frag/detonate(var/turf/T)
 	var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
-	create_shrapnel(T, 60, , , cause_data)
+	create_shrapnel(T, 60, cause_data = cause_data)
 	sleep(2)
 	cell_explosion(T, 60, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, cause_data)
 
@@ -41,13 +47,14 @@
 	playsound(T, 'sound/weapons/gun_flamethrower2.ogg', 35, 1, 4)
 
 /obj/item/mortar_shell/flare
-	name = "\improper 80mm flare mortar shell"
-	desc = "An 80mm mortar shell, loaded with an illumination flare."
+	name = "\improper 80mm flare/camera mortar shell"
+	desc = "An 80mm mortar shell, loaded with an illumination flare / camera combo, attached to a parachute."
 	icon_state = "mortar_ammo_flr"
 
 /obj/item/mortar_shell/flare/detonate(var/turf/T)
 	new /obj/item/device/flashlight/flare/on/illumination(T)
 	playsound(T, 'sound/weapons/gun_flare.ogg', 50, 1, 4)
+	deploy_camera(T)
 
 /obj/item/mortar_shell/custom
 	name = "\improper 80mm custom mortar shell"
@@ -60,11 +67,20 @@
 	var/fuel_type = "hydrogen"
 	var/locked = FALSE
 
+/obj/item/mortar_shell/custom/examine()
+	. = ..()
+	if(fuel)
+		to_chat(usr, SPAN_NOTICE("Contains fuel."))
+	if(warhead)
+		to_chat(usr, SPAN_NOTICE("Contains a warhead[warhead.has_camera ? " with integrated camera drone." : ""]."))
+
 /obj/item/mortar_shell/custom/detonate(var/turf/T)
 	if(fuel)
 		var/fuel_amount = fuel.reagents.get_reagent_amount(fuel_type)
 		if(fuel_amount >= fuel_requirement)
 			forceMove(T)
+			if(warhead?.has_camera)
+				deploy_camera(T)
 	if(warhead && locked && warhead.detonator)
 		warhead.prime()
 
@@ -81,7 +97,6 @@
 		user.put_in_hands(fuel)
 		fuel = null
 	icon_state = initial(icon_state)
-	desc = initial(desc) + "\n Contains[fuel?" fuel":""][warhead?" and warhead":""]."
 
 /obj/item/mortar_shell/custom/attackby(obj/item/W as obj, mob/user)
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
@@ -112,7 +127,6 @@
 			W.forceMove(src)
 			fuel = W
 			to_chat(user, SPAN_DANGER("You add [W] to [name]."))
-			desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 			playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
 	else if(istype(W,/obj/item/explosive/warhead/mortar) && !locked)
 		if(warhead)
@@ -127,30 +141,7 @@
 		warhead = W
 		to_chat(user, SPAN_DANGER("You add [W] to [name]."))
 		icon_state = initial(icon_state) +"_unlocked"
-		desc = initial(desc) + "\n Contains[fuel?" fuel":""] [warhead?" and warhead":""]."
 		playsound(loc, 'sound/items/Screwdriver2.ogg', 25, 0, 6)
-
-//Special flare subtype for the illumination flare shell
-//Acts like a flare, just even stronger, and set length
-/obj/item/device/flashlight/flare/on/illumination
-
-	name = "illumination flare"
-	desc = "It's really bright, and unreachable."
-	icon_state = "" //No sprite
-	invisibility = 101 //Can't be seen or found, it's "up in the sky"
-	mouse_opacity = 0
-	brightness_on = 7 //Way brighter than most lights
-
-/obj/item/device/flashlight/flare/on/illumination/Initialize()
-	. = ..()
-	fuel = rand(400, 500) // Half the duration of a flare, but justified since it's invincible
-
-/obj/item/device/flashlight/flare/on/illumination/turn_off()
-	..()
-	qdel(src)
-
-/obj/item/device/flashlight/flare/on/illumination/ex_act(severity)
-	return //Nope
 
 /obj/structure/closet/crate/secure/mortar_ammo
 	name = "\improper M402 mortar ammo crate"

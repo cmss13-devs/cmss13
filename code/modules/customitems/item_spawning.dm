@@ -31,6 +31,7 @@ GLOBAL_LIST_FILE_LOAD(custom_items, "config/custom_items.txt")
 						//default settings
 						I.name = "[M.real_name]'s ID Card ([M.job])"
 						I.registered_name = M.real_name
+						I.registered_ref = WEAKREF(M)
 						I.registered_gid = M.gid
 						I.access = C.access
 						I.assignment = C.assignment

@@ -34,11 +34,18 @@
 	/// Prevents mortar from creating endless piles of glass shards
 	var/has_created_ceiling_debris = 0
 
+	var/obj/structure/machinery/computer/security/mortar/internal_camera
+
 /obj/structure/mortar/Initialize()
 	. = ..()
 	// Makes coords appear as 0 in UI
 	targ_x = deobfuscate_x(0)
 	targ_y = deobfuscate_y(0)
+	internal_camera = new(loc)
+
+/obj/structure/mortar/Destroy()
+	qdel(internal_camera)
+	return ..()
 
 /obj/structure/mortar/attack_hand(mob/user)
 	if(isYautja(user))
@@ -56,7 +63,7 @@
 	add_fingerprint(user)
 
 	if(computer_enabled)
-		ui_interact(user)
+		tgui_interact(user)
 	else
 		var/choice = alert(user, "Would you like to set the mortar's target coordinates, or dial the mortar? Setting coordinates will make you lose your fire adjustment.", "Mortar Dialing", "Target", "Dial", "Cancel")
 		if(choice == "Cancel")
@@ -66,39 +73,40 @@
 		if(choice == "Dial")
 			handle_dial(user, manual = TRUE)
 
-/obj/structure/mortar/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = FALSE)
-	var/list/data = list(
-		"src" = "\ref[src]",//Needed to use forms with Topic()
-		"target_x" = obfuscate_x(targ_x),
-		"target_y" = obfuscate_y(targ_y),
-		"dial_x" = dial_x,
-		"dial_y" = dial_y,
+/obj/structure/mortar/tgui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Mortar", "Mortar Interface")
+		ui.open()
+
+/obj/structure/mortar/ui_data(mob/user)
+	return list(
+		"data_target_x" = obfuscate_x(targ_x),
+		"data_target_y" = obfuscate_y(targ_y),
+		"data_dial_x" = dial_x,
+		"data_dial_y" = dial_y
 	)
 
-	ui = nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
-	if (!ui)
-		ui = new(user, src, ui_key, "mortar.tmpl", "Mortar Targeting Computer" , 340, 270)
-		ui.add_script("mortar", 'nano/js/ui_scripts/mortar.js')
-		ui.set_initial_data(data)
-		ui.open()
-		ui.set_auto_update(FALSE)//Auto update is NOT compatible with forms.
-
-/obj/structure/mortar/Topic(href, href_list)
+/obj/structure/mortar/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
 
 	var/mob/user = usr
 	if(get_dist(user, src) > 1)
-		return
+		return FALSE
 
-	switch(href_list["choice"])
-		if ("target")
-			handle_target(user, text2num(href_list["target_x"]), text2num(href_list["target_y"]))
+	switch(action)
+		if("set_target")
+			handle_target(user, text2num(params["target_x"]), text2num(params["target_y"]))
+			return TRUE
 
-		if ("dial")
-			handle_dial(user, text2num(href_list["dial_x"]), text2num(href_list["dial_y"]))
-	ui_interact(user)
+		if("set_offset")
+			handle_dial(user, text2num(params["dial_x"]), text2num(params["dial_y"]))
+			return TRUE
+
+		if("operate_cam")
+			internal_camera.tgui_interact(user)
 
 /obj/structure/mortar/proc/handle_target(mob/user, temp_targ_x = 0, temp_targ_y = 0, manual = FALSE)
 	if(manual)
@@ -125,10 +133,12 @@
 	SPAN_NOTICE("You finish adjusting [src]'s firing angle and distance to match the new coordinates."))
 	targ_x = deobfuscate_x(temp_targ_x)
 	targ_y = deobfuscate_y(temp_targ_y)
-	var/offset_x_max = round(abs((targ_x + dial_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
-	var/offset_y_max = round(abs((targ_y + dial_y) - y)/offset_per_turfs)
+	var/offset_x_max = round(abs((targ_x) - x)/offset_per_turfs) //Offset of mortar shot, grows by 1 every 20 tiles travelled
+	var/offset_y_max = round(abs((targ_y) - y)/offset_per_turfs)
 	offset_x = rand(-offset_x_max, offset_x_max)
 	offset_y = rand(-offset_y_max, offset_y_max)
+
+	SStgui.update_uis(src)
 
 /obj/structure/mortar/proc/handle_dial(mob/user, temp_dial_x = 0, temp_dial_y = 0, manual = FALSE)
 	if(manual)
@@ -155,6 +165,8 @@
 	SPAN_NOTICE("You finish dialing [src]'s firing angle and distance to match the new coordinates."))
 	dial_x = temp_dial_x
 	dial_y = temp_dial_y
+
+	SStgui.update_uis(src)
 
 /obj/structure/mortar/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/mortar_shell))
@@ -276,8 +288,8 @@
 	qdel(shell)
 	firing = FALSE
 
-/obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x, test_targ_y, test_dial_x, test_dial_y)
-	var/dialing = isnull(test_targ_x) || isnull(test_targ_y)
+/obj/structure/mortar/proc/can_fire_at(mob/user, test_targ_x = targ_x, test_targ_y = targ_y, test_dial_x, test_dial_y)
+	var/dialing = test_dial_x || test_dial_y
 	if(test_dial_x + test_targ_x > world.maxx || test_dial_x + test_targ_x < 0)
 		to_chat(user, SPAN_WARNING("You cannot [dialing ? "dial to" : "aim at"] this coordinate, it is outside of the area of operations."))
 		return FALSE

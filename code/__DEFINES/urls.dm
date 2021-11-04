@@ -14,6 +14,7 @@
 #define URL_WIKI_MARINE_QUICKSTART "https://cm-ss13.com/wiki/Marine_Quickstart_Guide"
 #define URL_WIKI_MACROS            "https://cm-ss13.com/wiki/Macros"
 #define URL_WIKI_SOP               "https://cm-ss13.com/wiki/Standard_Operating_Procedure"
+#define URL_WIKI_CO_RULES          "https://cm-ss13.com/wiki/CO_Council_Rulings"
 
 #define URL_WIKI_CONSTRUCTION      "https://cm-ss13.com/wiki/Guide_to_construction"
 #define URL_WIKI_ENGINEERING       "https://cm-ss13.com/wiki/Guide_to_Engineering"

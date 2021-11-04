@@ -280,7 +280,6 @@
 
 /obj/structure/machinery/door/poddoor/almayer/open
 	density = FALSE
-
 /obj/structure/machinery/door/poddoor/almayer/blended
 	icon_state = "almayer_pdoor"
 

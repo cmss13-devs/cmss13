@@ -10,7 +10,7 @@
 	plasma_max = XENO_PLASMA_TIER_6
 	crystal_max = XENO_CRYSTAL_LOW
 	xeno_explosion_resistance = XENO_EXPLOSIVE_ARMOR_TIER_4
-	armor_deflection = XENO_ARMOR_TIER_3
+	armor_deflection = XENO_ARMOR_TIER_2
 	evasion = XENO_EVASION_NONE
 	speed = XENO_SPEED_TIER_4
 
@@ -61,6 +61,9 @@
 		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
 		)
 	mutation_type = BURROWER_NORMAL
+
+	icon_xeno = 'icons/mob/hostiles/burrower.dmi'
+	icon_xenonid = 'icons/mob/xenonids/burrower.dmi'
 
 /mob/living/carbon/Xenomorph/Burrower/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()

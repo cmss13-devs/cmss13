@@ -135,13 +135,8 @@
 				var/confirm = alert("Are you sure you want to self-destruct the Almayer?", "Self-Destruct", "Yes", "Cancel")
 				if(confirm != "Yes")
 					return
-
-				if(!EvacuationAuthority.initiate_self_destruct(1))
-					to_chat(usr, SPAN_WARNING("You are unable to trigger the self-destruct right now!"))
-					return
-				if(alert("Are you sure you want to destroy the Almayer right now?",, "Yes", "Cancel") == "Cancel") return
-
 				message_staff("[key_name_admin(usr)] forced the self-destrust system, destroying the [MAIN_SHIP_NAME].")
+				EvacuationAuthority.trigger_self_destruct()
 
 			if("toggle_dest")
 				EvacuationAuthority.flags_scuttle ^= FLAGS_SELF_DESTRUCT_DENY
@@ -1143,17 +1138,40 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 
-		H.equip_to_slot_or_del( new /obj/item/reagent_container/food/snacks/cookie(H), WEAR_L_HAND )
-		if(!(istype(H.l_hand,/obj/item/reagent_container/food/snacks/cookie)))
-			H.equip_to_slot_or_del( new /obj/item/reagent_container/food/snacks/cookie(H), WEAR_R_HAND )
-			if(!(istype(H.r_hand,/obj/item/reagent_container/food/snacks/cookie)))
-				message_staff("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
-				return
-			else
-				H.update_inv_r_hand()//To ensure the icon appears in the HUD
-		else
-			H.update_inv_l_hand()
-		message_staff("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
+		var/cookie_type = tgui_input_list(usr, "Choose cookie type:", "Give Cookie", list("cookie", "random fortune cookie", "custom fortune cookie"))
+		if(!cookie_type)
+			return
+
+		var/obj/item/reagent_container/food/snacks/snack
+		switch(cookie_type)
+			if("cookie")
+				snack = new /obj/item/reagent_container/food/snacks/cookie(H.loc)
+			if("random fortune cookie")
+				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc)
+			if("custom fortune cookie")
+				var/fortune_text = tgui_input_list(usr, "Choose fortune:", "Cookie customisation", list("Random", "Custom", "None"))
+				if(!fortune_text)
+					return
+				if(fortune_text == "Custom")
+					fortune_text = input(usr, "Enter the fortune text:", "Cookie customisation", "")
+					if(!fortune_text)
+						return
+				var/fortune_numbers = tgui_input_list(usr, "Choose lucky numbers:", "Cookie customisation", list("Random", "Custom", "None"))
+				if(!fortune_numbers)
+					return
+				if(fortune_numbers == "Custom")
+					fortune_numbers = input(usr, "Enter the lucky numbers:", "Cookie customisation", "1, 2, 3, 4 and 5")
+					if(!fortune_numbers)
+						return
+				if(fortune_text == "None" && fortune_numbers == "None")
+					to_chat(usr, "No fortune provided, Give Cookie code crumbled!")
+					return
+				snack = new /obj/item/reagent_container/food/snacks/fortunecookie/prefilled(H.loc, fortune_text, fortune_numbers)
+
+		if(!snack)
+			error("Give Cookie code crumbled!")
+		H.put_in_hands(snack)
+		message_staff("[key_name(H)] got their [cookie_type], spawned by [key_name(src.owner)]")
 		to_chat(H, SPAN_NOTICE(" Your prayers have been answered!! You received the <b>best cookie</b>!"))
 
 	else if(href_list["CentcommReply"])
@@ -1165,7 +1183,7 @@
 
 		//unanswered_distress -= H
 
-		if(!istype(H.wear_ear, /obj/item/device/radio/headset))
+		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
 			to_chat(usr, "The person you are trying to contact is not wearing a headset")
 			return
 
@@ -1185,7 +1203,7 @@
 		if(!istype(H))
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
-		if(!istype(H.wear_ear, /obj/item/device/radio/headset))
+		if(!H.get_type_in_ears(/obj/item/device/radio/headset))
 			to_chat(usr, "The person you are trying to contact is not wearing a headset")
 			return
 
@@ -1360,7 +1378,12 @@
 				return
 		to_chat(src.owner, "/red Unable to locate fax!")
 
+	else if(href_list["customise_paper"])
+		if(!check_rights(R_MOD))
+			return
 
+		var/obj/item/paper/sheet = locate(href_list["customise_paper"])
+		usr.client.customise_paper(sheet)
 
 	else if(href_list["jumpto"])
 		if(!check_rights(R_ADMIN))

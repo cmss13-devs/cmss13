@@ -1,9 +1,27 @@
-//This is an uguu head restoration surgery TOTALLY not yoinked from chinsky's limb reattacher
+//Procedures in this file: Synth head reattachment
+//////////////////////////////////////////////////////////////////
+//					  REATTACHING ROBOHEAD	     				//
+//////////////////////////////////////////////////////////////////
 
-/datum/surgery_step/head
-	priority = 1
-	can_infect = 0
-	allowed_species = list(
+/datum/surgery/head_reattach
+	name = "Synthetic Head Reattachment"
+	priority = SURGERY_PRIORITY_MAXIMUM
+	possible_locs = list("head")
+	invasiveness = list(SURGERY_DEPTH_SURFACE)
+	pain_reduction_required = NONE
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	steps = list(
+		/datum/surgery_step/peel_skin,
+		/datum/surgery_step/reattach_head,
+		/datum/surgery_step/mend_connections,
+		/datum/surgery_step/cauterize/reposition_flesh
+	)
+	requires_bodypart = FALSE
+	requires_bodypart_type = LIMB_DESTROYED
+	pain_reduction_required = NONE
+	var/obj/item/limb/head/synth/patient_head
+	var/no_revive = FALSE
+	var/list/species_allowed = list(
 		"Synthetic",
 		SYNTH_COLONY,
 		SYNTH_COMBAT,
@@ -12,220 +30,151 @@
 		SYNTH_GEN_THREE,
 		"Event Synthetic"
 		)
-	var/reattach_step
 
-/datum/surgery_step/head/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-	if(!affected)
-		return 0
-	if(!(affected.status & LIMB_DESTROYED))
-		return 0
-	if(affected.body_part != BODY_FLAG_HEAD)
-		return 0
-	if(affected.limb_replacement_stage == reattach_step)
-		return 1
+/datum/surgery/head_reattach/can_start(mob/user, mob/living/carbon/human/patient, obj/limb/L, obj/item/tool)
+	if(patient.species.name in species_allowed)
+		return TRUE
+	return FALSE
 
-/datum/surgery_step/head/peel
-	allowed_tools = list(
-	/obj/item/tool/surgery/retractor = 100,           \
-	/obj/item/tool/crowbar = 75,              \
-	/obj/item/tool/kitchen/utensil/fork = 50, \
-	)
+//------------------------------------
 
-	min_duration = RETRACTOR_MIN_DURATION
-	max_duration = RETRACTOR_MAX_DURATION
-	reattach_step = 0
+/datum/surgery_step/peel_skin
+	name = "Peel Back Skin"
+	desc = "peel the skin back"	
+	//Tools used to pry things open without orthopedic dramatics.
+	tools = list(
+		/obj/item/tool/surgery/retractor = SURGERY_TOOL_MULT_IDEAL,
+		/obj/item/tool/surgery/hemostat = SURGERY_TOOL_MULT_SUBOPTIMAL,
+		/obj/item/tool/crowbar = SURGERY_TOOL_MULT_SUBSTITUTE,
+		/obj/item/tool/wirecutters = SURGERY_TOOL_MULT_BAD_SUBSTITUTE,
+		/obj/item/tool/kitchen/utensil/fork = SURGERY_TOOL_MULT_AWFUL
+		)
+	time = 4 SECONDS
 
+/datum/surgery_step/peel_skin/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	//No need for to-patient messages on this one, they're ghosted or in the head.
+	user.visible_message(SPAN_NOTICE("[user] begins to peel [target]'s neck stump open with \the [tool].") , \
+	SPAN_NOTICE("You begin to peel [target]'s neck stump open with \the [tool]."))
 
-/datum/surgery_step/head/peel/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts peeling back tattered flesh where [target]'s head used to be with \the [tool]."), \
-	SPAN_NOTICE("You start peeling back tattered flesh where [target]'s head used to be with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] started peeling back flesh where [key_name(target)]'s head used to be with \the [tool].")
+	log_interact(user, target, "[key_name(user)] began to peel back tattered skin around [key_name(target)]'s neck with \the [tool].")
 
-	..()
+/datum/surgery_step/peel_skin/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_NOTICE("[user] draws back the ragged flesh of [target]'s neck stump."),	\
+	SPAN_NOTICE("You draw back the ragged flesh of [target]'s neck stump."))
 
-/datum/surgery_step/head/peel/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] peels back tattered flesh where [target]'s head used to be with \the [tool]."),	\
-	SPAN_NOTICE("You peel back tattered flesh where [target]'s head used to be with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] peeled back flesh where [key_name(target)]'s head used to be with \the [tool].")
+	surgery.affected_limb.setAmputatedTree()
+	target.update_body()
 
-	affected.limb_replacement_stage = 1
+	log_interact(user, target, "[key_name(user)] peeled back flesh where [key_name(target)]'s head used to be with \the [tool], beginning [surgery]")
 
-/datum/surgery_step/head/peel/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	if(affected.parent)
-		affected = affected.parent
-		user.visible_message(SPAN_WARNING("[user]'s hand slips, ripping [target]'s [affected.display_name] open!"), \
-		SPAN_WARNING("Your hand slips,  ripping [target]'s [affected.display_name] open!"))
-		log_interact(user, target, "[key_name(user)] finished peeling back flesh where [key_name(target)]'s head used to be with \the [tool].")
+/datum/surgery_step/peel_skin/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, somehow damaging the flesh of [target]'s stump even worse!"), \
+	SPAN_WARNING("Your hand slips, somehow damaging the flesh of [target]'s stump even worse!"))
 
-		affected.createwound(CUT, 10)
-		affected.update_wounds()
+	log_interact(user, target, "[key_name(user)] failed to finish peeling back flesh where [key_name(target)]'s head used to be with \the [tool], aborting [surgery].")
+	return FALSE
 
+//------------------------------------
 
-/datum/surgery_step/head/shape
-	allowed_tools = list(
-	/obj/item/tool/surgery/FixOVein = 100,         \
-	/obj/item/stack/cable_coil = 75,         \
-	/obj/item/device/assembly/mousetrap = 10
-	)
+/datum/surgery_step/reattach_head
+	name = "Reattach Synthetic Head"
+	desc = "reattach the head"
+	tools = list(/obj/item/limb/head/synth = SURGERY_TOOL_MULT_IDEAL)
+	time = 10 SECONDS
 
-	min_duration = FIXVEIN_MIN_DURATION
-	max_duration = FIXVEIN_MAX_DURATION
-	reattach_step = 1
-
-/datum/surgery_step/head/shape/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] is beginning to reshape [target]'s esophagal and vocal region with \the [tool]."), \
-	SPAN_NOTICE("You start to reshape [target]'s head esophagal and vocal region with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] started to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
-
-	..()
-
-/datum/surgery_step/head/shape/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] has finished repositioning flesh and tissue to something anatomically recognizable where [target]'s head used to be with \the [tool]."),	\
-	SPAN_NOTICE("You have finished repositioning flesh and tissue to something anatomically recognizable where [target]'s head used to be with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] reshaped [key_name(target)]'s head esophagal and vocal region with \the [tool].")
-
-	affected.limb_replacement_stage = 2
-
-/datum/surgery_step/head/shape/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	if(affected.parent)
-		affected = affected.parent
-		user.visible_message(SPAN_WARNING("[user]'s hand slips, further rending flesh on [target]'s neck!"), \
-		SPAN_WARNING("Your hand slips, further rending flesh on [target]'s neck!"))
-		log_interact(user, target, "[key_name(user)] failed to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
-
-		target.apply_damage(10, BRUTE, affected)
-		target.updatehealth()
-
-
-
-/datum/surgery_step/head/suture
-	allowed_tools = list(
-	/obj/item/tool/surgery/hemostat = 100, \
-	/obj/item/stack/cable_coil = 60, \
-	/obj/item/tool/surgery/FixOVein = 80
-	)
-
-	min_duration = HEMOSTAT_MIN_DURATION
-	max_duration = HEMOSTAT_MAX_DURATION
-	reattach_step = 2
-
-/datum/surgery_step/head/suture/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] is stapling and suturing flesh into place in [target]'s esophagal and vocal region with \the [tool]."), \
-	SPAN_NOTICE("You start to staple and suture flesh into place in [target]'s esophagal and vocal region with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] started to staple [key_name(target)]'s neck into place with \the [tool].")
-
-	..()
-
-/datum/surgery_step/head/suture/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] has finished stapling [target]'s neck into place with \the [tool]."),	\
-	SPAN_NOTICE("You have finished stapling [target]'s neck into place with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] stapled [key_name(target)]'s neck into place with \the [tool].")
-
-	affected.limb_replacement_stage = 3
-
-/datum/surgery_step/head/suture/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	if(affected.parent)
-		affected = affected.parent
-		user.visible_message(SPAN_WARNING("[user]'s hand slips, ripping apart flesh on [target]'s neck!"), \
-		SPAN_WARNING("Your hand slips, ripping apart flesh on [target]'s neck!"))
-		log_interact(user, target, "[key_name(user)] failed to staple [key_name(target)]'s neck into place with \the [tool].")
-
-		target.apply_damage(10, BRUTE, affected)
-		target.updatehealth()
-
-
-
-/datum/surgery_step/head/prepare
-	allowed_tools = list(
-    /obj/item/tool/surgery/cautery = 100,         \
-    /obj/item/clothing/mask/cigarette = 75,    \
-    /obj/item/tool/lighter = 50,    \
-    /obj/item/tool/weldingtool = 50
-    )
-
-	min_duration = CAUTERY_MIN_DURATION
-	max_duration = CAUTERY_MAX_DURATION
-	reattach_step = 3
-
-/datum/surgery_step/head/prepare/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts adjusting area around [target]'s neck with \the [tool]."), \
-	SPAN_NOTICE("You start adjusting area around [target]'s neck with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] started to adjust the area around [key_name(target)]'s neck with \the [tool].")
-
-	..()
-
-/datum/surgery_step/head/prepare/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] has finished adjusting the area around [target]'s neck with \the [tool]."),	\
-	SPAN_NOTICE("You have finished adjusting the area around [target]'s neck with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
-
-	affected.limb_replacement_stage = 0
-	affected.setAmputatedTree()
-
-/datum/surgery_step/head/prepare/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	if(affected.parent)
-		affected = affected.parent
-		user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s neck!"), \
-		SPAN_WARNING("Your hand slips, searing [target]'s [affected.display_name]!"))
-		log_interact(user, target, "[key_name(user)] failed to adjust the area around [key_name(target)]'s neck with \the [tool].")
-
-		target.apply_damage(10, BURN, affected)
-		target.updatehealth()
-
-
-
-/datum/surgery_step/head/attach
-	allowed_tools = list(/obj/item/limb/head/synth = 100)
-	can_infect = 0
-	min_duration = IMPLANT_MIN_DURATION
-	max_duration = IMPLANT_MAX_DURATION
-	reattach_step = 0
-
-/datum/surgery_step/head/attach/can_use(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-	if(..())
-		if(affected.status & LIMB_AMPUTATED)
-			return 1
-
-/datum/surgery_step/head/attach/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts attaching [tool] to [target]'s reshaped neck."), \
-	SPAN_NOTICE("You start attaching [tool] to [target]'s reshaped neck."))
+/datum/surgery_step/reattach_head/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_NOTICE("[user] begins to reattach [tool] to [target]'s neck."), \
+	SPAN_NOTICE("You begin reattaching [tool] to [target]'s neck."))
 	log_interact(user, target, "[key_name(user)] started to attach [tool] to [key_name(target)]'s reshaped neck.")
 
-	..()
+/datum/surgery_step/reattach_head/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
+	user.visible_message(SPAN_NOTICE("[user] reattaches [target]'s head to the bones and musculature of \his body."),	\
+	SPAN_NOTICE("You reattach [target]'s head to the bones and musculature of \his body."))
+	log_interact(user, target, "[key_name(user)] attached [tool] to [key_name(target)]'s neck.")
 
-/datum/surgery_step/head/attach/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] has attached [target]'s head to the body."),	\
-	SPAN_NOTICE("You have attached [target]'s head to the body."))
-	log_interact(user, target, "[key_name(user)] attached [tool] to [key_name(target)]'s reshaped neck.")
+	surgery.patient_head = tool
 
-
-	//Update our dear victim to have a head again
-
-	var/obj/item/limb/head/synth/B = tool
-
-	affected.robotize()
+	user.drop_inv_item_to_loc(surgery.patient_head, target)
+	surgery.affected_limb.robotize(TRUE)
 	target.updatehealth()
-	target.update_body()
-	target.UpdateDamageIcon()
+	target.regenerate_icons()
+
+	if(target.status_flags & PERMANENTLY_DEAD) //We'll be using this flag so the patient doesn't get defibbed before their head is all the way reattached.
+		surgery.no_revive = TRUE
+
+	target.status_flags |= PERMANENTLY_DEAD
+
+/datum/surgery_step/reattach_head/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging the connectors on [target]'s neck!"), \
+	SPAN_WARNING("Your hand slips, damaging the connectors on [target]'s neck!"))
+	log_interact(user, target, "[key_name(user)] failed to attach [tool] to [key_name(target)]'s reshaped neck.")
+
+	target.apply_damage(20, BRUTE, target_zone)
+	return FALSE
+
+//------------------------------------
+
+/datum/surgery_step/mend_connections
+	name = "Reconstruct Throat"
+	desc = "reconstruct the throat"	
+	tools = SURGERY_TOOLS_MEND_BLOODVESSEL
+	time = 4 SECONDS
+
+/datum/surgery_step/mend_connections/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_NOTICE("[user] begins to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."), \
+	SPAN_NOTICE("You begin to shape the flesh of [target]'s neck back into something anatomically recognizable with \the [tool]."))
+
+	log_interact(user, target, "[key_name(user)] started to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
+
+/datum/surgery_step/mend_connections/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_NOTICE("[user] finishes reconstructing [target]'s throat."),	\
+	SPAN_NOTICE("You finish reconstructing [target]'s throat."))
+
+	log_interact(user, target, "[key_name(user)] reshaped [key_name(target)]'s head esophagal and vocal region with \the [tool].")
+
+/datum/surgery_step/mend_connections/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, rending the flesh of [target]'s neck and throat even more!"), \
+	SPAN_WARNING("Your hand slips, rending the flesh of [target]'s neck and throat even more!"))
+
+	log_interact(user, target, "[key_name(user)] failed to reshape [key_name(target)]'s head esophagal and vocal region with \the [tool].")
+	return FALSE
+
+//------------------------------------
+
+/datum/surgery_step/cauterize/reposition_flesh
+	name = "Seal Skin"
+	desc = "seal the skin"
+	time = 6 SECONDS
+
+/datum/surgery_step/cauterize/reposition_flesh/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_NOTICE("[user] begins making final adjustments to the area around [target]'s neck with \the [tool]."), \
+	SPAN_NOTICE("You begin making final adjustments to the area around [target]'s neck with \the [tool]."))
+	log_interact(user, target, "[key_name(user)] started to adjust the area around [key_name(target)]'s neck with \the [tool].")
+
+/datum/surgery_step/cauterize/reposition_flesh/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/head_reattach/surgery)
+	user.visible_message(SPAN_NOTICE("[user] finishes adjusting [target]'s neck."),	\
+	SPAN_NOTICE("You finish adjusting [target]'s neck."))
+	log_interact(user, target, "[key_name(user)] adjusted the area around [key_name(target)]'s neck with \the [tool].")
+	
+	if(!surgery.no_revive) //Unset this flag if they didn't have it before the surgery started.
+		target.status_flags &= ~PERMANENTLY_DEAD
 
 	//Prepare mind datum
-	if(B.brainmob.mind)
-		B.brainmob.mind.transfer_to(target)
+	if(surgery.patient_head.brainmob.mind)
+		surgery.patient_head.brainmob.mind.transfer_to(target)
 
 	else	// attempt to transfer linked ghost if not found
 		for(var/mob/dead/observer/G in GLOB.observer_list)
-			if(istype(G) && G.mind && G.mind.original == B.brainmob && G.can_reenter_corpse)
+			if(istype(G) && G.mind && G.mind.original == surgery.patient_head.brainmob && G.can_reenter_corpse)
 				G.mind.original = target
 				break
 
-	//Deal with the head item properly
-	user.temp_drop_inv_item(B)
-	qdel(B)
+	qdel(surgery.patient_head) //Destroy head item.
 
-/datum/surgery_step/head/attach/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging connectors on [target]'s neck!"), \
-	SPAN_WARNING("Your hand slips, damaging connectors on [target]'s neck!"))
-	log_interact(user, target, "[key_name(user)] failed to attach [tool] to [key_name(target)]'s reshaped neck.")
+/datum/surgery_step/cauterize/reposition_flesh/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s neck!"), \
+	SPAN_WARNING("Your hand slips, searing [target]'s [surgery.affected_limb.name]!"))
+	log_interact(user, target, "[key_name(user)] failed to adjust the area around [key_name(target)]'s neck with \the [tool].")
 
-	target.apply_damage(10, BRUTE, affected, sharp = 1)
-	target.updatehealth()
+	return FALSE
+

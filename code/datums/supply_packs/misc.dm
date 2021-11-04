@@ -29,7 +29,7 @@
 	group = "Science"
 
 /datum/supply_packs/pyrotec
-	name = "pyrotecnics crate"
+	name = "pyrotechnics crate"
 	contains = list(
 					/obj/item/reagent_container/glass/beaker/sulphuric,
 					/obj/item/reagent_container/glass/beaker/sulphuric,
@@ -49,7 +49,7 @@
 					)
 	cost = RO_PRICE_WORTHLESS
 	containertype = /obj/structure/closet/crate/secure/phoron
-	containername = "pyrotecnics crate"
+	containername = "pyrotechnics crate"
 	access = ACCESS_MARINE_ENGINEERING
 	group = "Science"
 

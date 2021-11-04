@@ -59,6 +59,8 @@
 	name = "\improper Combat Information Center"
 	icon_state = "cic"
 	fake_zlevel = 1 // upperdeck
+	soundscape_playlist = SCAPE_PL_CIC
+	soundscape_interval = 20
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/cichallway
@@ -198,6 +200,10 @@
 	name = "\improper Brig Secondary Office"
 	icon_state = "brig"
 
+/area/almayer/shipboard/brig/cryo
+	name = "\improper Brig Cryo Pods"
+	icon_state = "brig"
+
 /area/almayer/shipboard/brig/surgery
 	name = "\improper Brig Surgery"
 	icon_state = "brig"
@@ -216,6 +222,10 @@
 
 /area/almayer/shipboard/brig/cic_hallway
 	name = "\improper Brig CiC Hallway"
+	icon_state = "brig"
+
+/area/almayer/shipboard/brig/dress
+	name = "\improper CIC Dress Uniform Room"
 	icon_state = "brig"
 
 /area/almayer/shipboard/brig/cells
@@ -657,22 +667,12 @@
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
 
-/area/almayer/lifeboat
+/area/space/almayer/lifeboat_dock
+	name = "\improper Lifeboat Docking Port"
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
-	requires_power = 0
 	fake_zlevel = 1 // upperdeck
 	flags_atom = AREA_NOTUNNEL
-
-/area/almayer/lifeboat/boat1
-	name = "\improper Starboard Lifeboat Shuttle"
-
-/area/almayer/lifeboat/boat2
-	name = "\improper Port Lifeboat Shuttle"
-
-/area/almayer/lifeboat/boat1/space
-
-/area/almayer/lifeboat/boat2/space
 
 /area/almayer/evacuation
 	icon = 'icons/turf/areas.dmi'

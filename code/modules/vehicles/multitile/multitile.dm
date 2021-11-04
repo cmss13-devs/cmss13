@@ -24,7 +24,9 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	can_buckle = FALSE
 
 	//Yay! Working cameras in the vehicles at last!!
+	var/obj/structure/machinery/camera/vehicle/camera = null
 	var/obj/structure/machinery/camera/vehicle/camera_int = null
+
 	var/nickname		//used for single-use verb to name the vehicle. Put anything here to prevent naming
 
 	var/honk_sound = 'sound/vehicles/honk_4_light.ogg'
@@ -86,10 +88,25 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	var/passengers_slots = 2
 	//xenos passenger slots
 	var/xenos_slots = 2
+	//some vehicles have special slots for dead revivable corpses for various reasons
+	//revivable corpses slots
+	var/revivable_dead_slots = 0
 	//Special roles categories slots. These allow to set specific roles in categories with their own slots.
 	//For example, (list(JOB_CREWMAN, JOB_UPP_CREWMAN) = 2) means that USCM and UPP crewman will always have 2 slots reserved for them.
 	//Only first encounter of job will be checked for slots, so don't put job in more than one category.
 	var/list/role_reserved_slots = list()
+
+	//list of stuff we do NOT want to be pulled inside
+	var/list/forbidden_atoms = list(
+		/obj/structure/airlock_assembly,
+		/obj/structure/barricade,
+		/obj/structure/machinery/defenses,
+		/obj/structure/machinery/m56d_post,
+		/obj/structure/machinery/cm_vending,
+		/obj/structure/machinery/vending,
+		/obj/structure/window,
+		/obj/structure/windoor_assembly,
+	)
 
 	var/wall_ram_damage = 30
 	//allows more flexibility in ram damage
@@ -185,9 +202,10 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	return
 
 /obj/vehicle/multitile/proc/toggle_cameras_status(var/on)
-	if(!camera_int)
-		return
-	camera_int.toggle_cam_status(on)
+	if(camera)
+		camera.toggle_cam_status(on)
+	if(camera_int)
+		camera_int.toggle_cam_status(on)
 
 /obj/vehicle/multitile/get_explosion_resistance()
 	return explosive_resistance
@@ -232,7 +250,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	..()
 
 	for(var/obj/item/hardpoint/H in hardpoints)
-		to_chat(user, "There is a [H] module installed.")
+		to_chat(user, "There is \a [H] module installed.")
 		H.examine(user, TRUE)
 	if(clamped)
 		to_chat(user, "There is a vehicle clamp attached.")
@@ -266,7 +284,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 	for(var/obj/item/hardpoint/H in hardpoints)
 		// Health check is done before the hardpoint takes damage
 		// This way, the frame won't take damage at the same time hardpoints break
-		if(H.health > 0)
+		if(H.can_take_damage())
 			H.take_damage(damage * get_dmg_multi(type))
 			all_broken = FALSE
 
@@ -310,6 +328,7 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 
 	M.set_interaction(src)
 	M.reset_view(src)
+	give_action(M, /datum/action/human_action/cancel_view)
 
 /obj/vehicle/multitile/proc/get_seat_mob(var/seat)
 	return seats[seat]

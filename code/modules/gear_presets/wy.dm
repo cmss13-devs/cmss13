@@ -25,7 +25,7 @@
 	H.apply_wy_rank_code(load_rank(), assignment, role_comm_title)
 
 /datum/equipment_preset/wy/load_gear(mob/living/carbon/human/H)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/liaison_suit(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/centcom(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
@@ -123,6 +123,7 @@
 	name = "Corporate - J - Director"
 	flags = EQUIPMENT_PRESET_EXTRA
 	paygrade = "WY-XJ"
+	skills = /datum/skills/civilian/manager/director
 
 /datum/equipment_preset/wy/manager/director/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/suit_jacket/director(H), WEAR_BODY)

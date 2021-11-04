@@ -140,25 +140,21 @@ GLOBAL_LIST_INIT(cm_vending_clothing_leader, list(
 /obj/structure/machinery/cm_vending/clothing/leader/alpha
 	squad_tag = SQUAD_NAME_1
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_ALPHA)
-	gloves_type = /obj/item/clothing/gloves/marine/alpha
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/bravo
 	squad_tag = SQUAD_NAME_2
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_BRAVO)
-	gloves_type = /obj/item/clothing/gloves/marine/bravo
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/charlie
 	squad_tag = SQUAD_NAME_3
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_CHARLIE)
-	gloves_type = /obj/item/clothing/gloves/marine/charlie
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/lead
 
 /obj/structure/machinery/cm_vending/clothing/leader/delta
 	squad_tag = SQUAD_NAME_4
 	req_access = list(ACCESS_MARINE_LEADER, ACCESS_MARINE_DELTA)
-	gloves_type = /obj/item/clothing/gloves/marine/delta
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/lead
 
 //------------ESSENTIAL SETS---------------

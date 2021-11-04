@@ -57,7 +57,7 @@
 
 /obj/structure/machinery/camera/vehicle
 	name = "military-grade vehicle camera"
-	icon_state = "camera_vehicle"
+	icon_state = "vehicle_camera"
 	network = list("vehicle")
 
 /obj/structure/machinery/camera/vehicle/toggle_cam_status(var/on = FALSE)

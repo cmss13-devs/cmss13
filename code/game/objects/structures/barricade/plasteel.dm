@@ -4,7 +4,7 @@
 	icon_state = "plasteel_closed_0"
 	health = 800
 	maxhealth = 800
-	burn_multiplier = 1.5
+	burn_multiplier = 1.15
 	brute_multiplier = 1
 	crusher_resistant = TRUE
 	force_level_absorption = 20
@@ -17,7 +17,7 @@
 	density = 0
 	closed = TRUE
 	can_wire = TRUE
-	repair_materials = list("plasteel" = 0.2)
+	repair_materials = list("plasteel" = 0.3)
 
 	var/build_state = BARRICADE_BSTATE_SECURED //Look at __game.dm for barricade defines
 	var/tool_cooldown = 0 //Delay to apply tools to prevent spamming
@@ -162,6 +162,10 @@
 				tool_cooldown = world.time + 10
 				if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 					to_chat(user, SPAN_WARNING("You are not trained to assemble [src]..."))
+					return
+				var/turf/open/T = loc
+				if(!(istype(T) && T.allow_construction))
+					to_chat(user, SPAN_WARNING("[src] must be secured on a proper surface!"))
 					return
 				if(!do_after(user, 10, INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src)) return
 				user.visible_message(SPAN_NOTICE("[user] secures [src]'s anchor bolts."),

@@ -762,6 +762,11 @@
 			if(shooter_human.faction == faction && !(ammo_flags & AMMO_ALWAYS_FF))
 				. -= FF_hit_evade
 
+			if(ammo_flags & AMMO_MP)
+				if(criminal)
+					. += FF_hit_evade
+				else
+					return FALSE
 
 /mob/living/carbon/Xenomorph/get_projectile_hit_chance(obj/item/projectile/P)
 	. = ..()
@@ -1002,10 +1007,12 @@
 
 	var/list/mobs_list = list() //Let's built a list of mobs on the bullet turf and grab one.
 	for(var/mob/living/L in src)
-		if(L in P.permutated) continue
-		mobs_list += L
+		if(L in P.permutated)
+			continue
+		if(prob(L.get_projectile_hit_chance(P)))
+			mobs_list += L
 
-	if(mobs_list.len)
+	if(length(mobs_list))
 		var/mob/living/picked_mob = pick(mobs_list) //Hit a mob, if there is one.
 		if(istype(picked_mob))
 			picked_mob.bullet_act(P)
@@ -1097,7 +1104,7 @@
 		var/hit_msg = "You've been shot in the [parse_zone(P.def_zone)] by [P.name]!"
 		to_chat(src, isXeno(src) ? SPAN_XENODANGER("[hit_msg]"):SPAN_HIGHDANGER("[hit_msg]"))
 	else
-		visible_message(SPAN_DANGER("[name] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
+		visible_message(SPAN_DANGER("[src] is hit by the [P.name] in the [parse_zone(P.def_zone)]!"), \
 						SPAN_HIGHDANGER("You are hit by the [P.name] in the [parse_zone(P.def_zone)]!"), null, 4, CHAT_TYPE_TAKING_HIT)
 
 	last_damage_data = P.weapon_cause_data
@@ -1105,17 +1112,22 @@
 		var/mob/firingMob = P.firer
 		var/area/A = get_area(src)
 		if(ishuman(firingMob) && ishuman(src) && faction == firingMob.faction && !A?.statistic_exempt) //One human shot another, be worried about it but do everything basically the same //special_role should be null or an empty string if done correctly
-			attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-			firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-			round_statistics.total_friendly_fire_instances++
-			msg_admin_ff("[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)")
-			if(ishuman(firingMob) && P.weapon_cause_data)
-				var/mob/living/carbon/human/H = firingMob
-				H.track_friendly_fire(P.weapon_cause_data.cause_name)
+			if(!istype(P.ammo, /datum/ammo/energy/taser))
+				round_statistics.total_friendly_fire_instances++
+				var/ff_msg = "[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[firingMob.x];Y=[firingMob.y];Z=[firingMob.z]'>JMP</a>) (<a href='?priv_msg=\ref[firingMob.client]'>PM</a>)"
+				var/ff_living = TRUE
+				if(src.stat == DEAD)
+					ff_living = FALSE
+				msg_admin_ff(ff_msg, ff_living)
+				if(ishuman(firingMob) && P.weapon_cause_data)
+					var/mob/living/carbon/human/H = firingMob
+					H.track_friendly_fire(P.weapon_cause_data.cause_name)
+			else
+				msg_admin_attack("[key_name(firingMob)] tased [key_name(src)] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
 		else
-			attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
-			firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 			msg_admin_attack("[key_name(firingMob)] shot [key_name(src)] with \a [P.name] in [get_area(firingMob)] ([firingMob.x],[firingMob.y],[firingMob.z]).", firingMob.x, firingMob.y, firingMob.z)
+		attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
+		firingMob.attack_log += "\[[time_stamp()]\] <b>[key_name(firingMob)]</b> shot <b>[key_name(src)]</b> with \a <b>[P]</b> in [get_area(firingMob)]."
 		return
 
 	attack_log += "\[[time_stamp()]\] <b>SOMETHING??</b> shot <b>[key_name(src)]</b> with a <b>[P]</b>"

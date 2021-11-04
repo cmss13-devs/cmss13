@@ -19,7 +19,7 @@
 /datum/equipment_preset/fun/pirate/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/pirate(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/bandana(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/eyepatch(H), WEAR_EYES)
@@ -41,7 +41,7 @@
 /datum/equipment_preset/fun/pirate/captain/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/pirate(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/pirate(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/pirate(H), WEAR_HEAD)
@@ -60,7 +60,7 @@
 
 /datum/equipment_preset/fun/clown/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/clown(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/clown(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/clown_shoes(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/clown_hat(H), WEAR_FACE)
@@ -101,7 +101,7 @@
 /datum/equipment_preset/fun/dutch/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/dutch(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/dutch(H), WEAR_HEAD)
@@ -132,7 +132,7 @@
 /datum/equipment_preset/fun/dutch/minigun/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/dutch(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/dutch(H), WEAR_HEAD)
@@ -173,7 +173,7 @@
 /datum/equipment_preset/fun/dutch/arnie/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/dutch(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/dutch(H), WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/dutch/cap(H), WEAR_HEAD)
@@ -394,7 +394,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/santabag(H), WEAR_BACK)
 	//pack filled with gifts
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom/cdrcom(H), WEAR_L_EAR)
 	//body
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/pj/red(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/space/santa(H), WEAR_JACKET)
@@ -434,7 +434,7 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/ivan, WEAR_BACK)
 	//back filled with random guns, it's awesome
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/UPP, WEAR_L_EAR)
 	//body + webbing
 	var/obj/item/clothing/under/marine/veteran/UPP/UPP = new()
 	var/obj/item/clothing/accessory/storage/webbing/W = new()
@@ -497,7 +497,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/gun/shotgun/double/twobore(H), WEAR_BACK)
 
 	//face
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_EAR)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 
 	//body
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/van_bandolier(H), WEAR_BODY)

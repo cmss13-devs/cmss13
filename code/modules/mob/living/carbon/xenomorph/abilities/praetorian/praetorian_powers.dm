@@ -82,8 +82,9 @@
 
 	if(!activated_once)
 		. = ..()
-		activated_once = TRUE
-		addtimer(CALLBACK(src, .proc/timeout), time_until_timeout)
+		if(.)
+			activated_once = TRUE
+			addtimer(CALLBACK(src, .proc/timeout), time_until_timeout)
 	else
 		damage_nearby_targets()
 
@@ -759,7 +760,7 @@
 			if (!BD.use_internal_hp_ability(shield_cost))
 				return
 
-			bonus_shield = BD.internal_hitpoints/2
+			bonus_shield = BD.internal_hitpoints*0.5
 			if (!BD.use_internal_hp_ability(bonus_shield))
 				bonus_shield = 0
 
@@ -777,6 +778,9 @@
 		targetXeno.add_xeno_shield(total_shield_amount, XENO_SHIELD_SOURCE_WARDEN_PRAE, duration = shield_duration, decay_amount_per_second = shield_decay)
 		targetXeno.xeno_jitter(1 SECONDS)
 		targetXeno.flick_heal_overlay(3 SECONDS, "#FFA800") //D9F500
+		X.add_xeno_shield(total_shield_amount*0.5, XENO_SHIELD_SOURCE_WARDEN_PRAE, duration = shield_duration, decay_amount_per_second = shield_decay) // X is the prae itself
+		X.xeno_jitter(1 SECONDS)
+		X.flick_heal_overlay(3 SECONDS, "#FFA800") //D9F500
 		use_plasma = TRUE
 
 	else if (curr_effect_type == WARDEN_HEAL_HP)
@@ -797,7 +801,7 @@
 			if (!BD.use_internal_hp_ability(heal_cost))
 				return
 
-			bonus_heal = BD.internal_hitpoints/2
+			bonus_heal = BD.internal_hitpoints*0.5
 			if (!BD.use_internal_hp_ability(bonus_heal))
 				bonus_heal = 0
 
@@ -805,6 +809,8 @@
 		to_chat(targetXeno, SPAN_XENOHIGHDANGER("You are healed by [X]!"))
 		targetXeno.gain_health(heal_amount + bonus_heal)
 		targetXeno.visible_message(SPAN_BOLDNOTICE("[X] places its claws on [targetXeno], and its wounds are quickly sealed!"))	//marines probably should know if a xeno gets healed
+		X.gain_health(heal_amount*0.5 + bonus_heal*0.5)
+		X.flick_heal_overlay(3 SECONDS, "#00B800")
 		use_plasma = TRUE	//it's already hard enough to gauge health without hp showing on the mob
 		targetXeno.flick_heal_overlay(3 SECONDS, "#00B800")//so the visible_message and recovery overlay will warn marines and possibly predators that the xenomorph has been healed!
 

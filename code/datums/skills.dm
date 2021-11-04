@@ -48,24 +48,23 @@
 	skill_name = SKILL_LEADERSHIP
 	skill_level = SKILL_LEAD_NOVICE
 
-/datum/skill/leadership/set_skill(var/new_level, var/mob/owner)
+/datum/skill/leadership/set_skill(var/new_level, var/mob/living/owner)
 	..()
 	if(!owner)
 		return
 
-	var/mob/living/M = owner
-	if(!ishuman(M))
+	if(!ishuman(owner))
 		return
 
 	// Give/remove issue order actions
 	if(is_skilled(SKILL_LEAD_TRAINED))
 		for(var/action_type in subtypesof(/datum/action/human_action/issue_order))
-			if(locate(action_type) in M.actions)
+			if(locate(action_type) in owner.actions)
 				continue
-			give_action(M, action_type)
+			give_action(owner, action_type)
 	else
-		for(var/datum/action/human_action/issue_order/O in M.actions)
-			O.remove_from(M)
+		for(var/datum/action/human_action/issue_order/O in owner.actions)
+			O.remove_from(owner)
 
 /datum/skill/medical
 	skill_name = SKILL_MEDICAL
@@ -74,6 +73,25 @@
 /datum/skill/surgery
 	skill_name = SKILL_SURGERY
 	skill_level = SKILL_SURGERY_DEFAULT
+
+/datum/skill/surgery/set_skill(var/new_level, var/mob/living/owner)
+	..()
+	if(!owner)
+		return
+
+	if(!ishuman(owner))
+		return
+
+	// Give/remove surgery toggle action
+	var/datum/action/surgery_toggle/surgery_action = locate() in owner.actions
+	if(is_skilled(SKILL_SURGERY_NOVICE))
+		if(!surgery_action)
+			give_action(owner, /datum/action/surgery_toggle)
+		else
+			surgery_action.update_surgery_skill()
+	else
+		if(surgery_action)
+			surgery_action.remove_from(owner)
 
 /datum/skill/research
 	skill_name = SKILL_RESEARCH
@@ -224,6 +242,17 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
 	)
 
+/datum/skills/civilian/manager/director
+	name = "Weyland-Yutani Director"
+	skills = list(
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_POLICE = SKILL_POLICE_SKILLED
+	)
+
 /datum/skills/civilian/survivor
 	name = "Survivor"
 	skills = list(
@@ -330,8 +359,8 @@ CIVILIAN
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL
 	)
 
-/datum/skills/civilian/survivor/marshall
-	name = "Survivor Marshall"
+/datum/skills/civilian/survivor/marshal
+	name = "Survivor Marshal"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_MELEE = SKILL_MELEE_TRAINED,
@@ -466,6 +495,9 @@ COMMAND STAFF
 		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_EXPERT,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI
 	)
 
 /datum/skills/CE
@@ -527,6 +559,7 @@ MILITARY NONCOMBATANT
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
 
@@ -535,7 +568,19 @@ MILITARY NONCOMBATANT
 	skills = list(
 		SKILL_CQC = SKILL_CQC_SKILLED,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED
+	)
+
+/datum/skills/MW
+	name = "Military Warden"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_SKILLED,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
 		SKILL_ENDURANCE = SKILL_ENDURANCE_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI
 	)
 
 /datum/skills/OT
@@ -620,7 +665,8 @@ United States Colonial Marines
 	name = "Combat Medic"
 	skills = list(
 		SKILL_LEADERSHIP = SKILL_LEAD_BEGINNER,
-		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE
 	)
 
 /datum/skills/combat_medic/crafty
@@ -683,6 +729,17 @@ United States Colonial Marines
 		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
 		SKILL_JTAC = SKILL_JTAC_TRAINED,
 	)
+
+/datum/skills/SL/New(mob/skillset_owner)
+	..()
+	RegisterSignal(skillset_owner, COMSIG_HUMAN_CARRY, .proc/handle_fireman_carry)
+
+/datum/skills/SL/Destroy()
+	UnregisterSignal(owner, COMSIG_HUMAN_CARRY)
+	return ..()
+
+/datum/skills/SL/proc/handle_fireman_carry(mob/living/M, list/carrydata)
+	return COMPONENT_CARRY_ALLOW
 
 /datum/skills/intel
 	name = "Intelligence Officer"
@@ -861,7 +918,7 @@ UNITED PROGRESSIVE PEOPLES
 	)
 
 /datum/skills/upp/SL
-	name = "UPP Leader"
+	name = "UPP Squad Leader"
 	skills = list(
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
@@ -872,6 +929,47 @@ UNITED PROGRESSIVE PEOPLES
 		SKILL_JTAC = SKILL_JTAC_EXPERT
 	)
 
+/datum/skills/upp/military_police
+	name = "UPP Military Police"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_EXPERT,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_TRAINED,
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED
+	)
+
+/datum/skills/upp/officer
+	name = "UPP Officer"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_EXPERT,
+		SKILL_POLICE = SKILL_POLICE_FLASH,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_LEADERSHIP = SKILL_LEAD_EXPERT,
+		SKILL_ENGINEER = SKILL_ENGINEER_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_JTAC = SKILL_JTAC_EXPERT,
+	)
+
+/datum/skills/upp/commander
+	name = "UPP Command Officer"
+	skills = list(
+		SKILL_CQC = SKILL_CQC_EXPERT,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_LEADERSHIP = SKILL_LEAD_MASTER,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_EXPERT,
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_SMALL,
+		SKILL_JTAC = SKILL_JTAC_EXPERT,
+	)
 /datum/skills/upp/conscript
 	name = "UPP Conscript"
 	skills = list(
@@ -974,6 +1072,20 @@ Private Military Contractors
 		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
 		SKILL_JTAC = SKILL_JTAC_TRAINED
+	)
+
+/datum/skills/pmc/tank_crew
+	name = "Vehicle Crewman"
+	skills = list(
+		SKILL_FIREARMS = SKILL_FIREARMS_TRAINED,
+		SKILL_POLICE = SKILL_POLICE_SKILLED,
+		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_ENGI,
+		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
+		SKILL_ENDURANCE = SKILL_ENDURANCE_MASTER,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+		SKILL_VEHICLE = SKILL_VEHICLE_CREWMAN,
+		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 	)
 
 /*

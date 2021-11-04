@@ -25,3 +25,8 @@
     paygrade = "PMC4"
     name = "Team Leader"
     prefix = "TML."
+
+/datum/paygrade/pmc/pmc5
+    paygrade = "PMC5"
+    name = "Vehicle Specialist"
+    prefix = "CRW."

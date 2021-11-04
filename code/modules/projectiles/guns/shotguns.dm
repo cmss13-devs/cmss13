@@ -225,6 +225,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,
@@ -270,6 +271,9 @@ can cause issues with ammo types getting mixed up during the burst.
 
 
 /obj/item/weapon/gun/shotgun/combat/riot
+	icon_state = "mp220"
+	item_state = "mp220"
+	desc = "The Weyland-Yutani MK221 Shotgun, a semi-automatic shotgun with a quick fire rate. Equipped with a steel blue finish to signify use in riot control. It has been modified to only fire 20G beanbags."
 	current_mag = /obj/item/ammo_magazine/internal/shotgun/combat/riot
 
 /obj/item/weapon/gun/shotgun/combat/guard
@@ -595,6 +599,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/magnetic_harness,
@@ -902,6 +907,7 @@ can cause issues with ammo types getting mixed up during the burst.
 	attachable_allowed = list(
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,

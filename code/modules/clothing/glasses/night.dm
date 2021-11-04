@@ -1,4 +1,3 @@
-
 // nightvision goggles
 
 /obj/item/clothing/glasses/night
@@ -63,11 +62,26 @@
 	deactive_state = "m56_goggles_0"
 	darkness_view = 5
 	toggleable = TRUE
-	actions_types = list(/datum/action/item_action/toggle)
+	actions_types = list(/datum/action/item_action/toggle, /datum/action/item_action/m56_goggles/far_sight)
 	vision_flags = SEE_TURFS
 	fullscreen_vision = null
 	req_skill = SKILL_SPEC_WEAPONS
 	req_skill_level = SKILL_SPEC_SMARTGUN
+
+	var/far_sight = FALSE
+	var/powerpack = null
+
+/obj/item/clothing/glasses/night/m56_goggles/Destroy()
+	powerpack = null
+	disable_far_sight()
+	return ..()
+
+/obj/item/clothing/glasses/night/m56_goggles/proc/link_powerpack(var/mob/user)
+	if(!QDELETED(user) && !QDELETED(user.back))
+		if(istype(user.back, /obj/item/smartgun_powerpack))
+			powerpack = user.back
+			return TRUE
+	return FALSE
 
 /obj/item/clothing/glasses/night/m56_goggles/mob_can_equip(mob/user, slot)
 	if(slot == WEAR_EYES)
@@ -77,6 +91,72 @@
 				to_chat(user, "You must be wearing an M56 Powerpack on your back to wear these.")
 				return FALSE
 	return ..()
+
+/obj/item/clothing/glasses/night/m56_goggles/equipped(mob/user, slot)
+	if(slot != SLOT_EYES)
+		disable_far_sight(user)
+	return ..()
+
+/obj/item/clothing/glasses/night/m56_goggles/dropped(mob/living/carbon/human/user)
+	disable_far_sight(user)
+	return ..()
+
+/obj/item/clothing/glasses/night/m56_goggles/proc/set_far_sight(mob/living/carbon/human/user, var/set_to_state = TRUE)
+	if(set_to_state)
+		if(user.glasses != src)
+			to_chat(user, SPAN_WARNING("You can't activate far sight without wearing \the [src]!"))
+			return
+		if(!link_powerpack(user))
+			to_chat(user, SPAN_WARNING("You can't use this without a powerpack!"))
+			return
+		far_sight = TRUE
+		if(user)
+			if(user.client)
+				user.client.change_view(8, src)
+			to_chat(user, SPAN_NOTICE("You enable the far sight system."))
+		START_PROCESSING(SSobj, src)
+	else
+		powerpack = null
+		far_sight = FALSE
+		if(user)
+			if(user.client)
+				user.client.change_view(world_view_size, src)
+			to_chat(user, SPAN_NOTICE("You disable the far sight system."))
+		STOP_PROCESSING(SSobj, src)
+
+/obj/item/clothing/glasses/night/m56_goggles/proc/disable_far_sight(mob/living/carbon/human/user)
+	if(!istype(user))
+		user = loc
+		if(!istype(user))
+			user = null
+	set_far_sight(user, FALSE)
+
+/obj/item/clothing/glasses/night/m56_goggles/process(delta_time)
+	var/mob/living/carbon/human/user = loc
+	if(!istype(user))
+		set_far_sight(null, FALSE)
+		return PROCESS_KILL
+	if(powerpack != user.back)
+		set_far_sight(user, FALSE)
+		return PROCESS_KILL
+	var/obj/item/smartgun_powerpack/pp = user.back
+	if(istype(pp))
+		var/obj/item/cell/c = pp.pcell
+		if(!pp.drain_powerpack(25 * delta_time, c))
+			set_far_sight(user, FALSE)
+
+/datum/action/item_action/m56_goggles/far_sight
+	action_icon_state = "m56_goggles"
+
+/datum/action/item_action/m56_goggles/far_sight/New()
+	..()
+	name = "Toggle Far Sight"
+	button.name = name
+
+/datum/action/item_action/m56_goggles/far_sight/action_activate()
+	if(target)
+		var/obj/item/clothing/glasses/night/m56_goggles/G = target
+		G.set_far_sight(owner, !G.far_sight)
 
 /obj/item/clothing/glasses/night/yautja
 	name = "bio-mask nightvision"
@@ -106,4 +186,23 @@
 			if(!H.hivenumber)
 				to_chat(user, SPAN_WARNING("You do not want to put these on, they're making you nauseous."))
 				return FALSE
+	return ..()
+
+/obj/item/clothing/glasses/night/experimental_mesons
+	name = "\improper Experimental Meson Goggles"
+	desc = "An improved but experimental version of the standard issue meson goggles, due to increased complexity these can only be worn by synthetics. Allows for full night vision and viewing of the surroundings. Click it to toggle."
+	icon = 'icons/obj/items/clothing/glasses.dmi'
+	icon_state = "refurb_meson"
+	deactive_state = "degoggles"
+	vision_flags = SEE_TURFS
+	darkness_view = 12
+	toggleable = TRUE
+	fullscreen_vision = null
+	actions_types = list(/datum/action/item_action/toggle)
+
+/obj/item/clothing/glasses/night/experimental_mesons/mob_can_equip(mob/user, slot)
+	if(slot == WEAR_EYES)
+		if(!isSynth(user))
+			to_chat(user, "The experimental meson goggles start probing at your eyes, searching for an attachment point, and you immediately take them off.")
+			return FALSE
 	return ..()

@@ -5,7 +5,7 @@
 	force_level_absorption = 15
 	health = BARRICADE_SANDBAG_TRESHOLD_1
 	maxhealth = BARRICADE_SANDBAG_TRESHOLD_1
-	burn_multiplier = 1.5
+	burn_multiplier = 1.15
 	brute_multiplier = 1
 	stack_type = /obj/item/stack/sandbags
 	debris = list(/obj/item/stack/sandbags)

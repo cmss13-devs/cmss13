@@ -14,6 +14,9 @@
 	var/mob/living/buckled_mob
 	var/buckle_lying = FALSE //Is the mob buckled in a lying position
 	var/can_buckle = FALSE
+	/**Applied to surgery times for mobs buckled prone to it or lying on the same tile, if the surgery
+	cares about surface conditions. The lowest multiplier of objects on the tile is used.**/
+	var/surgery_duration_multiplier = SURGERY_SURFACE_MULT_AWFUL
 
 	var/projectile_coverage = 0 //an object's "projectile_coverage" var indicates the maximum probability of blocking a projectile, assuming density and throwpass. Used by barricades, tables and window frames
 	var/garbage = FALSE //set to true if the item is garbage and should be deleted after awhile
@@ -190,7 +193,10 @@
 		density = 1
 	else
 		if(M.loc != src.loc)
-			return
+			step_towards(M, src) //buckle if you're right next to it
+			if(M.loc != src.loc)
+				return
+			. = buckle_mob(M)
 	if (M.mob_size <= MOB_SIZE_XENO && M.stat == DEAD && istype(src, /obj/structure/bed/roller))
 		do_buckle(M, user)
 		return

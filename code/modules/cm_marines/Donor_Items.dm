@@ -442,7 +442,7 @@
 	flags_inv_hide = HIDEEARS
 	flags_atom = NO_NAME_OVERRIDE
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
-	flags_marine_helmet = HELMET_STORE_GARB
+	flags_marine_helmet = NO_FLAGS
 
 /obj/item/clothing/head/helmet/marine/fluff/verb/toggle_squad_markings()
 	set src in usr
@@ -466,7 +466,7 @@
 
 	to_chat(usr, SPAN_NOTICE("You [flags_marine_helmet & HELMET_GARB_OVERLAY? "hide" : "show"] the helmet garb."))
 	flags_marine_helmet ^= HELMET_GARB_OVERLAY
-	update_icon(usr, flags_marine_helmet & HELMET_GARB_OVERLAY? 0 : 2)
+	update_icon()
 
 	//AND THIS LINE
 //END HEAD TEMPLATE

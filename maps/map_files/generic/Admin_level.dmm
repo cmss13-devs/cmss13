@@ -112,7 +112,7 @@
 /turf/open/space/transit/north/shuttlespace_ns15,
 /area/space)
 "aI" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/tool/kitchen/rollingpin,
 /obj/item/tool/kitchen/knife,
 /turf/open/floor/prison{
@@ -1011,6 +1011,7 @@
 /area/shuttle/distress/start)
 "ht" = (
 /obj/structure/machinery/computer/shuttle_control/ert,
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1035,6 +1036,7 @@
 /obj/structure/machinery/computer/shuttle_control/ert{
 	shuttle_tag = "Distress_PMC"
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1059,6 +1061,7 @@
 /obj/structure/machinery/computer/shuttle_control/ert{
 	shuttle_tag = "Distress_UPP"
 	},
+/obj/structure/blocker/invisible_wall,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1075,8 +1078,7 @@
 "hO" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress/item,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/device/multitool,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1113,8 +1115,7 @@
 "hV" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress_pmc/item,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/device/multitool,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1151,8 +1152,7 @@
 "ic" = (
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress_upp/item,
-/obj/item/storage/toolbox/mechanical,
-/obj/item/device/multitool,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1404,7 +1404,8 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress/item,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/full/with_defib_and_analyzer,
+/obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1432,6 +1433,7 @@
 /obj/effect/landmark/ert_spawns/distress_pmc/item,
 /obj/item/storage/firstaid/regular,
 /obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1458,7 +1460,8 @@
 /obj/structure/surface/rack,
 /obj/effect/landmark/ert_spawns/distress_upp/item,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -1479,8 +1482,9 @@
 "ju" = (
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/regular,
-/obj/item/storage/belt/medical/lifesaver/full,
 /obj/effect/landmark/ert_spawns/distress_upp/item,
+/obj/item/storage/belt/medical/lifesaver/upp/full,
+/obj/item/device/healthanalyzer,
 /turf/open/shuttle/dropship{
 	icon_state = "rasputin15";
 	tag = "icon-rasputin15"
@@ -3004,8 +3008,12 @@
 	},
 /area/shuttle/distress/start_big)
 "mX" = (
-/turf/open/space/basic,
-/area/almayer/lifeboat/boat2/space)
+/obj/docking_port/stationary/lifeboat_dock/admin{
+	id = "admin-lifeboat1";
+	name = "Admin Lifeboat Port 1"
+	},
+/turf/open/space,
+/area/space/almayer/lifeboat_dock)
 "ne" = (
 /turf/open/space/transit/east/shuttlespace_ew8,
 /area/space)
@@ -3109,8 +3117,12 @@
 	},
 /area/adminlevel/ert_station)
 "uc" = (
+/obj/docking_port/stationary/lifeboat_dock/admin{
+	id = "admin-lifeboat2";
+	name = "Admin Lifeboat Port 2"
+	},
 /turf/open/space,
-/area/almayer/lifeboat/boat1/space)
+/area/space/almayer/lifeboat_dock)
 "ug" = (
 /obj/structure/machinery/shower,
 /turf/open/floor/prison{
@@ -3206,7 +3218,7 @@
 /area/adminlevel/ert_station)
 "xr" = (
 /turf/open/space/basic,
-/area/almayer/lifeboat/boat1/space)
+/area/space/almayer/lifeboat_dock)
 "xw" = (
 /obj/effect/step_trigger/teleporter/random{
 	affect_ghosts = 1;
@@ -3248,7 +3260,7 @@
 /turf/open/space/transit/east/shuttlespace_ew12,
 /area/space)
 "yk" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/chef_recipes,
 /obj/item/clothing/head/chefhat,
 /turf/open/floor/prison{
@@ -3313,7 +3325,7 @@
 	},
 /area/adminlevel/ert_station)
 "zt" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/surgical_tray,
 /obj/item/reagent_container/spray/cleaner{
 	desc = "Someone has crossed out the Space from Space Cleaner and written in Surgery. 'Do not remove under punishment of death!!!' is scrawled on the back.";
@@ -3420,7 +3432,7 @@
 	},
 /area/tdome/tdomeobserve)
 "BV" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/chem_dispenser/soda{
 	density = 0
 	},
@@ -3543,7 +3555,7 @@
 	},
 /area/shuttle/distress/start_upp)
 "EI" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/structure/reagent_dispensers/beerkeg{
 	density = 0
 	},
@@ -3553,7 +3565,7 @@
 	},
 /area/adminlevel/ert_station)
 "ET" = (
-/obj/structure/machinery/vending/cola,
+/obj/structure/machinery/cm_vending/sorted/walkman,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "silver";
@@ -3617,7 +3629,7 @@
 	},
 /area/adminlevel/ert_station)
 "Gv" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
 	tag = "icon-sterile_white"
@@ -3634,7 +3646,7 @@
 	},
 /area/adminlevel/ert_station)
 "GC" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/recharger,
 /obj/item/roller,
 /obj/item/roller,
@@ -3676,7 +3688,7 @@
 /turf/open/space/transit/east/shuttlespace_ew2,
 /area/space)
 "GT" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/chem_dispenser/beer{
 	density = 0
 	},
@@ -3773,7 +3785,7 @@
 	},
 /area/adminlevel/ert_station)
 "JW" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/pillbottles{
 	pixel_x = 3;
 	pixel_y = 5
@@ -4235,7 +4247,7 @@
 /area/adminlevel/ert_station)
 "Sr" = (
 /turf/open/space,
-/area/almayer/lifeboat/boat2/space)
+/area/space/almayer/lifeboat_dock)
 "ST" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/reagentgrinder,
@@ -4476,7 +4488,7 @@
 	},
 /area/centcom/control)
 "WK" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/almayer{
 	icon_state = "silverfull";
 	tag = "icon-sterile"
@@ -4548,7 +4560,7 @@
 	},
 /area/adminlevel/ert_station)
 "Yy" = (
-/obj/structure/surface/table/reinforced,
+/obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/juicer,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -4616,6 +4628,8 @@
 	pixel_x = 2;
 	pixel_y = -5
 	},
+/obj/item/device/healthanalyzer,
+/obj/item/device/healthanalyzer,
 /turf/open/floor/almayer{
 	icon_state = "dark_sterile";
 	tag = "icon-sterile"
@@ -14767,13 +14781,13 @@ FI
 FI
 FI
 xw
-uc
-uc
-uc
-uc
-uc
-uc
-uc
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+mX
 xw
 FI
 FI
@@ -14787,7 +14801,7 @@ Sr
 Sr
 Sr
 Sr
-Sr
+uc
 xw
 FI
 FI
@@ -14933,13 +14947,13 @@ nB
 nB
 nB
 cU
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 cU
 nB
 nB
@@ -15085,13 +15099,13 @@ Uz
 Uz
 Uz
 sy
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 sy
 Uz
 Uz
@@ -15237,13 +15251,13 @@ TS
 TS
 TS
 VQ
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 VQ
 TS
 TS
@@ -15389,13 +15403,13 @@ cJ
 cJ
 cJ
 dR
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 dR
 cJ
 cJ
@@ -15541,13 +15555,13 @@ ne
 ne
 ne
 ql
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 ql
 ne
 ne
@@ -15693,13 +15707,13 @@ GE
 GE
 GE
 Ef
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 Ef
 GE
 GE
@@ -15845,13 +15859,13 @@ ii
 ii
 ii
 GD
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 GD
 ii
 ii
@@ -15997,13 +16011,13 @@ Db
 Db
 Db
 xJ
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 xJ
 Db
 Db
@@ -16149,13 +16163,13 @@ xX
 xX
 xX
 Gm
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 Gm
 xX
 xX
@@ -16301,13 +16315,13 @@ Ji
 Ji
 Ji
 uJ
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 uJ
 Ji
 Ji
@@ -16453,13 +16467,13 @@ Gw
 Gw
 Gw
 UW
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 UW
 Gw
 Gw
@@ -16605,13 +16619,13 @@ PK
 PK
 PK
 vH
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 vH
 PK
 PK
@@ -16757,13 +16771,13 @@ AH
 AH
 AH
 oQ
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 oQ
 AH
 AH
@@ -16909,13 +16923,13 @@ GM
 GM
 GM
 TH
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 TH
 GM
 GM
@@ -17061,13 +17075,13 @@ FI
 FI
 FI
 xw
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 xw
 FI
 FI
@@ -17213,13 +17227,13 @@ nB
 nB
 nB
 cU
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 cU
 nB
 nB
@@ -17365,13 +17379,13 @@ Uz
 Uz
 Uz
 sy
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 sy
 Uz
 Uz
@@ -17517,13 +17531,13 @@ TS
 TS
 TS
 VQ
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 VQ
 TS
 TS
@@ -17669,13 +17683,13 @@ cJ
 cJ
 cJ
 dR
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 dR
 cJ
 cJ
@@ -17821,13 +17835,13 @@ ne
 ne
 ne
 ql
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 ql
 ne
 ne
@@ -17973,13 +17987,13 @@ GE
 GE
 GE
 Ef
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 Ef
 GE
 GE
@@ -18125,13 +18139,13 @@ ii
 ii
 ii
 GD
-mX
-mX
-mX
-mX
-mX
-mX
-mX
+xr
+xr
+xr
+xr
+xr
+xr
+xr
 GD
 ii
 ii
@@ -18263,13 +18277,13 @@ Db
 Db
 Db
 xJ
-uc
-uc
-uc
-uc
-uc
-uc
-uc
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
 xJ
 Db
 Db
@@ -18415,13 +18429,13 @@ xX
 xX
 xX
 Gm
-uc
-uc
-uc
-uc
-uc
-uc
-uc
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
 Gm
 xX
 xX
@@ -18567,13 +18581,13 @@ Ji
 Ji
 Ji
 uJ
-uc
-uc
-uc
-uc
-uc
-uc
-uc
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
+Sr
 uJ
 Ji
 Ji
@@ -18720,11 +18734,11 @@ Gw
 Gw
 UW
 UW
-uc
-uc
-uc
-uc
-uc
+Sr
+Sr
+Sr
+Sr
+Sr
 UW
 UW
 Gw

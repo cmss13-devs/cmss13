@@ -221,72 +221,20 @@
 		ui.open()
 		ui.set_auto_update(0)
 
-/obj/structure/machinery/cm_vending/gear/vehicle_crew/Topic(href, href_list)
-	. = ..()
-	if(.)
-		return
-	if(inoperable())
-		return
-	if(usr.is_mob_incapacitated())
-		return
-
-	if(in_range(src, usr) && isturf(loc) && ishuman(usr))
-		usr.set_interaction(src)
-		if (href_list["vend"])
-
-			if(stat & IN_USE)
-				return
-
-			var/mob/living/carbon/human/H = usr
-
-			if(!allowed(H))
-				to_chat(H, SPAN_WARNING("Access denied."))
-				vend_fail()
-				return
-
-			var/obj/item/card/id/I = H.wear_id
-			if(!istype(I)) //not wearing an ID
-				to_chat(H, SPAN_WARNING("Access denied. No ID card detected"))
-				vend_fail()
-				return
-
-			if(I.registered_name != H.real_name)
-				to_chat(H, SPAN_WARNING("Wrong ID card owner detected."))
-				vend_fail()
-				return
-
-			if(LAZYLEN(vendor_role) && !vendor_role.Find(I.rank))
-				to_chat(H, SPAN_WARNING("This machine isn't for you."))
-				vend_fail()
-				return
-
-			var/turf/T = get_appropriate_vend_turf(H)
-
-			if(T.contents.len > 25)
-				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
-				vend_fail()
-				return
-
-			var/idx=text2num(href_list["vend"])
-			var/list/L = listed_products[idx]
-
-			if(available_categories)
-				if(!(available_categories & L[4]))
-					to_chat(usr, SPAN_WARNING("Module from this category is already taken."))
-					vend_fail()
-					return
-				available_categories &= ~L[4]
-			else
-				if(budget_points < L[2])
-					to_chat(H, SPAN_WARNING("Not enough points."))
-					vend_fail()
-					return
-				budget_points -= L[2]
-
-			vend_succesfully(L, H, T)
-
-		add_fingerprint(usr)
-		ui_interact(usr) //updates the nanoUI window
+/obj/structure/machinery/cm_vending/gear/vehicle_crew/handle_points(var/mob/living/carbon/human/H, var/list/L)
+	. = TRUE
+	if(available_categories)
+		if(!(available_categories & L[4]))
+			to_chat(usr, SPAN_WARNING("Module from this category is already taken."))
+			vend_fail()
+			return FALSE
+		available_categories &= ~L[4]
+	else
+		if(budget_points < L[2])
+			to_chat(H, SPAN_WARNING("Not enough points."))
+			vend_fail()
+			return FALSE
+		budget_points -= L[2]
 
 /obj/structure/machinery/cm_vending/gear/vehicle_crew/get_appropriate_vend_turf(var/mob/living/carbon/human/H)
 	var/turf/T = get_turf(src)

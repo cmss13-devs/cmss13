@@ -204,6 +204,14 @@
 		return TRUE
 	return FALSE
 
+/obj/structure/fence/handle_vehicle_bump(var/obj/vehicle/multitile/V)
+	if(!(V.vehicle_flags & VEHICLE_CLASS_MEDIUM || V.vehicle_flags & VEHICLE_CLASS_HEAVY))
+		V.move_momentum -= V.move_momentum * 0.5
+	visible_message(SPAN_DANGER("\The [V] crushes \the [src]!"))
+	playsound(src, 'sound/effects/grillehit.ogg', 20)
+	qdel(src)
+	return TRUE
+
 //-------------------------MACHINERY------------------------
 
 /obj/structure/machinery/door/handle_vehicle_bump(var/obj/vehicle/multitile/V)

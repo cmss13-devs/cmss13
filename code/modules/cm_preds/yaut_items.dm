@@ -251,6 +251,10 @@
 	remove_from_missing_pred_gear(src)
 	return ..()
 
+/obj/item/clothing/shoes/yautja/knife/New()
+	..()
+	stored_item = new /obj/item/weapon/melee/yautja/knife(src)
+	update_icon()
 /obj/item/clothing/under/chainshirt
 	name = "body mesh"
 	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
@@ -488,6 +492,130 @@
 
 //======================================\\
 //=================\\//=================\\
+
+/obj/item/scalp
+	name = "scalp"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "scalp_1"
+	item_state = "scalp"
+	item_icons = list(
+		WEAR_L_HAND = 'icons/mob/humans/onmob/hunter/items_lefthand.dmi',
+		WEAR_R_HAND = 'icons/mob/humans/onmob/hunter/items_righthand.dmi'
+	)
+	var/true_desc = "This is the scalp of a" //humans and Yautja see different things when examining these.
+	appearance_flags = NO_FLAGS //So that the blood overlay renders separately and isn't affected by the hair colour matrix.
+
+/obj/item/scalp/Initialize(mapload, mob/living/carbon/human/scalpee, mob/living/carbon/human/user)
+	. = ..()
+
+	var/variant = rand(1, 4) //Random sprite variant.
+	icon_state = "scalp_[variant]"
+	blood_color =  "#A10808" //So examine describes it as 'bloody'. Synths can't be scalped so it'll always be human blood.
+	flags_atom = FPRINT|NOBLOODY //Don't want the ugly item blood overlay ending up on this. We'll use our own blood overlay.
+
+	var/image/blood_overlay = image('icons/obj/items/hunter/pred_gear.dmi', "scalp_[variant]_blood")
+	blood_overlay.appearance_flags = RESET_COLOR
+	overlays += blood_overlay
+
+	if(!scalpee) //Presumably spawned as map decoration.
+		true_desc = "This is the scalp of an irrelevant hooman."
+		color = list(null, null, null, null, rgb(rand(0,255), rand(0,255), rand(0,255)))
+		return
+
+	name = "\proper [scalpee.real_name]'s scalp"
+	color = list(null, null, null, null, rgb(scalpee.r_hair, scalpee.g_hair, scalpee.b_hair)) //Hair colour.
+
+	var/they = "they"
+	var/their = "their"
+	var/them = "them"
+	var/themselves = "themselves"
+
+	//Gender?
+	switch(scalpee.gender)
+		if(MALE)
+			their = "his"
+			they = "he"
+			them = "him"
+			themselves = "himself"
+
+		if(FEMALE)
+			their = "her"
+			they = "she"
+			them = "her"
+			themselves = "herself"
+
+	//What did this person do?
+	var/list/biography = list()
+	//Did they disgrace themselves more than humans usually do?
+	var/dishonourable = FALSE
+	//Did they distinguish themselves?
+	var/honourable = FALSE
+
+	if(scalpee.hunter_data.thralled)
+		biography += "enthralled by [scalpee.hunter_data.thralled_set.real_name] for '[scalpee.hunter_data.thralled_reason]'"
+		honourable = TRUE
+
+	if(scalpee.hunter_data.honored)
+		biography += "honored for '[scalpee.hunter_data.honored_reason]'"
+		honourable = TRUE
+
+	if(scalpee.hunter_data.dishonored)
+		biography +=  "marked as dishonorable for '[scalpee.hunter_data.dishonored_reason]'"
+		dishonourable = TRUE
+
+	if(scalpee.hunter_data.gear)
+		biography +=  "killed after [scalpee.hunter_data.gear_set.real_name] marked [them] as a thief of Yautja equipment"
+		dishonourable = TRUE
+
+	//How impressive a trophy is this?
+	var/worth = 1
+	switch(scalpee.life_kills_total)
+		if(0)
+			if(dishonourable)
+				true_desc += " hooman who was even more shameful than usual."
+				worth = -1
+			else if(honourable) //They weren't marked as killing anyone but otherwise distinguished themselves.
+				true_desc += " hooman."
+			else
+				true_desc += "n irrelevant hooman."
+				worth = 0
+
+		if(1 to 4)
+			if(dishonourable)
+				true_desc += " hooman who could have been worthy, had [they] not insisted on disgracing [themselves]."
+				worth = -1
+			else
+				true_desc += " respectable hooman with blood on [their] hands."
+
+		if(5 to 9)
+			true_desc += "n uncommonly destructive hooman."
+			if(!dishonourable)
+				worth = 2 //Even if they did do something dishonourable, this person is worth at least grudging respect.
+
+		if(10 to INFINITY)
+			true_desc += " truly worthy hooman, no doubt descended from many storied warriors. [capitalize(their)] arms were soaked to the elbows with the life-blood of many."
+			worth = 2
+
+	if(length(biography))
+		true_desc += " [scalpee.real_name] was [english_list(biography, final_comma_text = ",")]."
+
+	if(scalpee.hunter_data.hunter == user) //You don't get your name on it unless you hunted them yourself.
+		switch(worth)
+			if(-1)
+				true_desc += SPAN_BLUE("\n[user.real_name] had the unpleasant duty of running [them] to ground.")
+			if(0) //You hunted someone with no kills for no real reason.
+				true_desc += SPAN_BLUE("\nAn honourable first trophy for a truly precocious child. [user.real_name]'s parents must be so proud.")
+			if(1)
+				true_desc += SPAN_BLUE("\nThis trophy was taken by [user.real_name] after a successful hunt.")
+			if(2)
+				true_desc += SPAN_BLUE("\nThis fine trophy was taken by [user.real_name] after a successful hunt.")
+
+/obj/item/scalp/examine(mob/user)
+	..()
+	if(isYautja(user) || isobserver(user))
+		to_chat(user, true_desc)
+	else
+		to_chat(user, "Scalp-collecting is supposed to be a <i>joke</i>. Has someone been going around doing this shit for real? What next, a necklace of severed ears? Jesus Christ.")
 
 /obj/item/explosive/grenade/spawnergrenade/hellhound
 	name = "hellhound caller"
@@ -785,3 +913,13 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+/obj/item/card/id/bracer_chip
+	name = "bracer ID chip"
+	desc = "A complex cypher chip embedded within a set of clan bracers."
+	icon = 'icons/obj/items/radio.dmi'
+	icon_state = "upp_key"
+	w_class = SIZE_TINY
+	flags_equip_slot = SLOT_ID
+	flags_item = ITEM_PREDATOR|DELONDROP|NODROP
+	paygrade = null

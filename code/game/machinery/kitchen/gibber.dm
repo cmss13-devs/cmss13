@@ -153,9 +153,7 @@
 
 	var/totalslabs = 2
 
-	var/sourcename = occupant.real_name
-
-	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat
+	var/obj/item/reagent_container/food/snacks/meat/meat_template = /obj/item/reagent_container/food/snacks/meat/monkey
 	if(istype(occupant, /mob/living/carbon/Xenomorph))
 		var/mob/living/carbon/Xenomorph/X = occupant
 		meat_template = /obj/item/reagent_container/food/snacks/meat/xenomeat
@@ -168,7 +166,7 @@
 			else
 				totalslabs += X.tier
 	else
-		if(istype(occupant, /mob/living/carbon/human))
+		if(istypestrict(occupant, /mob/living/carbon/human))
 			meat_template = /obj/item/reagent_container/food/snacks/meat/human
 			totalslabs = 3
 
@@ -176,7 +174,7 @@
 	for(var/i in 1 to totalslabs)
 		var/obj/item/reagent_container/food/snacks/meat/newmeat
 		newmeat = new meat_template
-		newmeat.made_from_player = sourcename
+		newmeat.made_from_player = occupant.real_name + "-"
 		newmeat.name = newmeat.made_from_player + newmeat.name
 		allmeat[i] = newmeat
 

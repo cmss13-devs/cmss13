@@ -150,3 +150,23 @@
 				icon_state = icon_closed
 		else
 			icon_state = icon_opened
+
+/obj/structure/closet/secure_closet/surgical
+	name = "surgical equipment cabinet"
+	desc = "A self-sterilizing, wall-mounted cabinet containing all the surgical tools you need."
+	req_access = list(ACCESS_MARINE_MEDBAY)
+	icon_state = "surgical_wall_locked"
+	icon_closed = "surgical_wall_unlocked"
+	icon_locked = "surgical_wall_locked"
+	icon_opened = "surgical_wall_open"
+	icon_broken = "surgical_wall_spark"
+	density = 0
+	store_mobs = FALSE
+	wall_mounted = TRUE
+
+
+/obj/structure/closet/secure_closet/surgical/Initialize()
+	. = ..()
+	new /obj/item/storage/surgical_tray(src)
+	new /obj/item/roller/surgical(src)
+	new	/obj/item/tool/surgery/surgical_line(src)

@@ -72,8 +72,11 @@
 	var/item_path = /obj/item/bodybag
 	density = 0
 	anchored = 0
+	layer = ABOVE_OBJ_LAYER //To layer above rollerbeds.
 	drag_delay = 2 //slightly easier than to drag the body directly.
 	var/obj/structure/bed/roller/roller_buckled //the roller bed this bodybag is attached to.
+	///How many extra pixels to offset the bag by when buckled, since rollerbeds are set up to offset a centered horizontal human sprite.
+	var/buckle_offset = 5
 	store_items = FALSE
 
 /obj/structure/closet/bodybag/Initialize()
@@ -288,8 +291,9 @@
 		if(ishuman(stasis_mob))
 			if(hasHUD(user,"medical"))
 				var/mob/living/carbon/human/H = stasis_mob
+				var/stasis_ref = WEAKREF(H)
 				for(var/datum/data/record/R in GLOB.data_core.medical)
-					if (R.fields["name"] == H.real_name)
+					if (R.fields["ref"] == stasis_ref)
 						if(!(R.fields["last_scan_time"]))
 							to_chat(user, "<span class = 'deptradio'>No scan report on record</span>\n")
 						else
@@ -317,8 +321,9 @@
 				return
 			if(ishuman(stasis_mob))
 				var/mob/living/carbon/human/H = stasis_mob
+				var/stasis_ref = WEAKREF(H)
 				for(var/datum/data/record/R in GLOB.data_core.medical)
-					if (R.fields["name"] == H.real_name)
+					if (R.fields["ref"] == stasis_ref)
 						if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
 							show_browser(usr, R.fields["last_scan_result"], "Last Medical Scan of [H]", "scanresults", "size=430x600")
 						break

@@ -10299,7 +10299,7 @@
 	dir = 8
 	},
 /obj/structure/surface/table/almayer,
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	dir = 10;
 	icon_state = "brown"
@@ -25991,7 +25991,7 @@
 /area/corsat/sigma/south)
 "bsy" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/tool/surgery/scalpel/laser1{
+/obj/item/tool/surgery/scalpel/laser{
 	pixel_y = 10
 	},
 /turf/open/floor/corsat{
@@ -32957,7 +32957,7 @@
 	dir = 1;
 	network = list("gamma")
 	},
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/corsat{
 	icon_state = "brown"
@@ -33135,7 +33135,7 @@
 /area/corsat/omega/cargo)
 "bOC" = (
 /obj/structure/surface/table/almayer,
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "squares"
 	},
@@ -33463,7 +33463,7 @@
 /area/corsat/sigma/cargo)
 "bPw" = (
 /obj/structure/surface/table/almayer,
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -33533,7 +33533,7 @@
 /obj/structure/surface/table/almayer,
 /obj/item/paper_bin,
 /obj/item/tool/pen,
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "brown"
 	},
@@ -41134,7 +41134,7 @@
 /area/corsat/gamma/foyer)
 "flt" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},
@@ -46932,7 +46932,7 @@
 	},
 /area/corsat/gamma/residential/west)
 "jsK" = (
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	dir = 8;
 	icon_state = "brown"
@@ -49518,7 +49518,7 @@
 	},
 /area/corsat/gamma/rnr/arcade)
 "lqX" = (
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "plate"
 	},
@@ -51960,7 +51960,7 @@
 	},
 /area/corsat/gamma/biodome/complex)
 "ncW" = (
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	dir = 4;
 	icon_state = "brown"
@@ -61552,7 +61552,7 @@
 /area/corsat/gamma/freezer)
 "ucW" = (
 /obj/structure/surface/table/reinforced,
-/obj/item/explosive/grenade/flashbang/clusterbang,
+/obj/item/explosive/grenade/flashbang/cluster,
 /turf/open/floor/corsat{
 	dir = 6;
 	icon_state = "purplewhite"
@@ -65322,7 +65322,7 @@
 /area/corsat/gamma/medbay/morgue)
 "wRH" = (
 /obj/vehicle/train/cargo/trolley,
-/obj/item/pamphlet/powerloader,
+/obj/item/pamphlet/skill/powerloader,
 /turf/open/floor/corsat{
 	icon_state = "cargo"
 	},

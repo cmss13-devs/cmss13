@@ -290,6 +290,9 @@
 		if(F.id == shuttle_tag)
 			F.turn_off()
 
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED)) //Launching on first drop.
+		SSticker.mode.ds_first_drop()
+
 	in_transit_time_left = travel_time
 	while(in_transit_time_left>0)
 		in_transit_time_left-=10
@@ -340,9 +343,9 @@
 
 	//END: Heavy lifting backend
 
-	if(SSticker && SSticker.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED))
+	if(SSticker?.mode && !(SSticker.mode.flags_round_type & MODE_DS_LANDED))
 		SSticker.mode.flags_round_type |= MODE_DS_LANDED
-		SSticker.mode.ds_first_drop(src)
+		SSticker.mode.ds_first_landed(src)
 
 	for(var/X in equipments)
 		var/obj/structure/dropship_equipment/E = X

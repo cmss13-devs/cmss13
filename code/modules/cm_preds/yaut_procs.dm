@@ -276,7 +276,7 @@
 
 	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.","Sure?","Begin the Hunt","No, not now")
 	if(sure == "Begin the Hunt")
-		var/list/melee = list("The Lumbering Glaive", "The Rending Chain-Whip","The Piercing Hunting Sword","The Cleaving War-Scythe", "The Adaptive Combi-Stick")
+		var/list/melee = list("The Lumbering Glaive", "The Rending Chain-Whip","The Piercing Hunting Sword","The Cleaving War-Scythe", "The Adaptive Combi-Stick", "The Fearsome Scimitars")
 		var/list/other = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Purifying Smart-Disc", "The Formidable Plate Armor")//, "The Clever Hologram")
 		var/list/restricted = list("The Fleeting Spike Launcher", "The Swift Plasma Pistol", "The Formidable Plate Armor") //Can only select them once each.
 
@@ -302,6 +302,9 @@
 				new /obj/item/weapon/melee/yautja/scythe(src.loc)
 			if("The Adaptive Combi-Stick")
 				new /obj/item/weapon/melee/yautja/combistick(src.loc)
+			if("The Fearsome Scimitars")
+				Y.scimitars = TRUE
+				Y.charge_max -= 500
 
 		var/choice = mother_0
 		var/i = 0

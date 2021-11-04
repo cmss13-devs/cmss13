@@ -179,7 +179,7 @@ SUBSYSTEM_DEF(vote)
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)
-			if(!C.is_afk() && check_rights(R_SERVER))
+			if(!C.is_afk() && check_client_rights(C, R_SERVER, FALSE))
 				active_admins = TRUE
 				break
 		if(!active_admins)
@@ -233,22 +233,28 @@ SUBSYSTEM_DEF(vote)
 
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key, datum/callback/on_end)
 	if(!mode)
+		var/admin = FALSE
+		var/ckey = ckey(initiator_key)
+		if(initiator_key == "SERVER")
+			admin = TRUE
+		else
+			for(var/i in GLOB.admins)
+				var/client/C = i
+				if(C.ckey == ckey)
+					admin = TRUE
+					break
+
+		if(!admin && vote_type == "restart")
+			for(var/client/C as anything in GLOB.admins)
+				if(!C.is_afk() && check_client_rights(C, R_SERVER, FALSE))
+					to_chat(usr, SPAN_WARNING("You cannot make a restart vote while there are active admins online."))
+					return FALSE
+
 		if(started_time)
 			var/next_allowed_time = (started_time + CONFIG_GET(number/vote_delay))
 			if(mode)
-				to_chat(usr, SPAN_WARNING("There is already a vote in progress! please wait for it to finish."))
+				to_chat(usr, SPAN_WARNING("There is already a vote in progress! Please wait for it to finish."))
 				return FALSE
-
-			var/admin = FALSE
-			var/ckey = ckey(initiator_key)
-			if(initiator_key == "SERVER")
-				admin = TRUE
-			else
-				for(var/i in GLOB.admins)
-					var/client/C = i
-					if(C.ckey == ckey)
-						admin = TRUE
-						break
 
 			if(next_allowed_time > world.time && !admin)
 				to_chat(usr, SPAN_WARNING("A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!"))

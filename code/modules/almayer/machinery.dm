@@ -50,13 +50,13 @@
 
 /obj/item/prop/almayer/comp_closed
 	name = "dropship maintenance computer"
-	desc = "A closed dropship maintenance computer that technicans and pilots use to find out whats wrong with a dropship. It has various outlets for different systems."
+	desc = "A closed dropship maintenance computer that technicians and pilots use to find out what's wrong with a dropship. It has various outlets for different systems."
 	icon_state = "hangar_comp"
 	w_class = SIZE_LARGE
 
 /obj/item/prop/almayer/comp_open
 	name = "dropship maintenance computer"
-	desc = "A opened dropship maintenance computer, it seems to be off however. Its used by technicans and pilots to find damaged or broken systems on a dropship. It has various outlets for different systems."
+	desc = "A opened dropship maintenance computer, it seems to be off however. It's used by technicians and pilots to find damaged or broken systems on a dropship. It has various outlets for different systems."
 	icon_state = "hangar_comp_open"
 	w_class = SIZE_LARGE
 
@@ -118,7 +118,7 @@
 
 /obj/structure/machinery/prop/almayer/NavCon
 	name = "NavCon"
-	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in system curse corrections and orbital maneuvers. Don't touch it!"
+	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
 
 	density = 0
 	anchored = 1
@@ -164,7 +164,7 @@
 
 /obj/structure/machinery/prop/almayer/NavCon2
 	name = "NavCon 2"
-	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in system curse corrections and orbital maneuvers. Don't touch it!"
+	desc = "Navigational console for ploting course and heading of the ship. Since the AI calculates all long range navigation, this is only used for in-system course corrections and orbital maneuvers. Don't touch it!"
 
 	density = 0
 	anchored = 1
@@ -472,8 +472,9 @@
 /obj/structure/closet/basketball
 	name = "athletic wardrobe"
 	desc = "It's a storage unit for athletic wear."
-	icon_state = "mixed"
-	icon_closed = "mixed"
+	icon_state = "purple"
+	icon_closed = "purple"
+	icon_opened = "purple_open"
 
 /obj/structure/closet/basketball/Initialize()
 	. = ..()

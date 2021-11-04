@@ -1,3 +1,47 @@
+/mob/living/carbon/human/proc/parse_say_modes(var/message)
+	. = list("message_and_language", "modes" = list())
+	if(length(message) >= 1 && message[1] == ";")
+		.["message_and_language"] = copytext(message, 2)
+		.["modes"] += "headset"
+		return
+
+	if(length(message) >= 2 && message[1] == ",")
+		// Radio multibroadcast functionality.
+		// If a message starts with , we assume that up to MULTIBROADCAST_MAX_CHANNELS
+		// next symbols are channel names. If we run into a space we stop looking for more channels.
+		var/i
+		for(i in 2 to 1+MULTIBROADCAST_MAX_CHANNELS)
+			var/current_channel = message[i]
+			if(current_channel == " " || current_channel == ":" || current_channel == ".")
+				i--
+				break
+			.["modes"] += department_radio_keys[":[current_channel]"]
+		.["message_and_language"] = copytext(message, i+1)
+		return
+
+	if(length(message) >= 2 && (message[1] == "." || message[1] == ":"))
+		var/channel_prefix = copytext(message, 1, 3)
+		if(channel_prefix in department_radio_keys)
+			.["message_and_language"] = copytext(message, 3)
+			.["modes"] += department_radio_keys[channel_prefix]
+			return
+
+	.["message_and_language"] = message
+	.["modes"] += MESSAGE_MODE_LOCAL
+	return
+
+/mob/living/carbon/human/proc/parse_say(var/message)
+	. = list("message", "language", "modes")
+	var/list/ml_and_modes = parse_say_modes(message)
+	.["modes"] = ml_and_modes["modes"]
+	var/message_and_language = ml_and_modes["message_and_language"]
+	var/parsed_language = parse_language(message_and_language)
+	if(parsed_language)
+		.["language"] = parsed_language
+		.["message"] = copytext(message_and_language, 3)
+	else
+		.["message"] = message_and_language
+
 /mob/living/carbon/human/say(var/message)
 
 	var/verb = "says"
@@ -19,26 +63,16 @@
 	if(stat == 2)
 		return say_dead(message)
 
-	var/message_mode = parse_message_mode(message, "headset")
-
 	if(copytext(message,1,2) == "*")
 		return emote(copytext(message,2), 1, null, TRUE) //TRUE arg means emote was caused by player (e.g. no an auto scream when hurt).
 
 	if(name != GetVoice())
 		alt_name = "(as [get_id_name("Unknown")])"
 
-	//parse the radio code and consume it
-	if (message_mode)
-		if (message_mode == "headset")
-			message = copytext(message,2)	//it would be really nice if the parse procs could do this for us.
-		else
-			message = copytext(message,3)
-
-	//parse the language code and consume it
-	var/datum/language/speaking = parse_language(message)
-	if(speaking)
-		message = copytext(message,3)
-	else
+	var/list/parsed = parse_say(message)
+	message = parsed["message"]
+	var/datum/language/speaking = parsed["language"]
+	if(!speaking)
 		speaking = get_default_language()
 
 	var/ending = copytext(message, length(message))
@@ -67,6 +101,7 @@
 		return
 
 	message = capitalize(trim(message))
+	message = process_chat_markup(message, list("~", "_"))
 
 	if(speech_problem_flag)
 		var/list/handle_r = handle_speech_problems(message)
@@ -76,48 +111,48 @@
 
 	if(!message || stat)
 		return
+	for(var/message_mode in parsed["modes"])
+		var/list/obj/item/used_radios = list()
+		switch(message_mode)
+			if(MESSAGE_MODE_LOCAL)
+			if("whisper")
+				whisper_say(message, speaking, alt_name)
+				return
+			if("intercom")
+				message_mode = null
+				for(var/obj/item/device/radio/intercom/I in view(1))
+					used_radios += I
+					break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
+			else
+				var/earpiece = get_type_in_ears(/obj/item/device/radio)
+				if(earpiece)
+					used_radios += earpiece
 
-	var/list/obj/item/used_radios = new
+		var/sound/speech_sound
+		var/sound_vol
+		if(species?.speech_sounds && prob(species.speech_chance))
+			speech_sound = sound(pick(species.speech_sounds))
+			sound_vol = 70
 
-	switch (message_mode)
-		if("intercom")
-			message_mode = null
-			for(var/obj/item/device/radio/intercom/I in view(1))
-				used_radios += I
-				break // remove this if we EVER have two different intercomms with DIFFERENT frequencies IN ONE ROOM
-		if("whisper")
-			whisper_say(message, speaking, alt_name)
-			return
-		else
-			if(message_mode)
-				if(wear_ear && istype(wear_ear,/obj/item/device/radio))
-					used_radios += wear_ear
+		//speaking into radios
+		if(length(used_radios))
+			GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FF0000'>RADIO: [key_name(src)] : [message]</font><br>")
+			GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
+			if (speech_sound)
+				sound_vol *= 0.5
 
-	var/sound/speech_sound
-	var/sound_vol
-	if(species && species.speech_sounds && prob(species.speech_chance))
-		speech_sound = sound(pick(species.speech_sounds))
-		sound_vol = 70
+			for(var/mob/living/M in hearers(message_range, src))
+				if(M != src)
+					M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"))
+			if(isHumanSynthStrict(src))
+				playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
 
-	//speaking into radios
-	if(used_radios.len)
-		GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#FF0000'>RADIO: [key_name(src)] : [message]</font><br>")
-		GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
-		if (speech_sound)
-			sound_vol *= 0.5
+			italics = 1
+			message_range = 2
 
-		for(var/mob/living/M in hearers(message_range, src))
-			if(M != src)
-				M.show_message(SPAN_NOTICE("[src] talks into [used_radios.len ? used_radios[1] : "the radio."]"))
-		if(isHumanSynthStrict(src))
-			playsound(src.loc, 'sound/effects/radiostatic.ogg', 15, 1)
+		..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.
 
-		italics = 1
-		message_range = 2
-
-	..(message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, 0, message_mode)	//ohgod we should really be passing a datum here.
-
-	INVOKE_ASYNC(src, /mob/living/carbon/human.proc/say_to_radios, used_radios, message, message_mode, verb, speaking)
+		INVOKE_ASYNC(src, /mob/living/carbon/human.proc/say_to_radios, used_radios, message, message_mode, verb, speaking)
 
 /mob/living/carbon/human/proc/say_to_radios(used_radios, message, message_mode, verb, speaking)
 	for(var/obj/item/device/radio/R in used_radios)
@@ -251,3 +286,9 @@
 	returns[3] = handled
 
 	return returns
+
+/mob/living/carbon/human/binarycheck()
+	var/obj/item/device/radio/headset/dongle = get_type_in_ears(/obj/item/device/radio/headset)
+	if (dongle && dongle.translate_binary)
+		return TRUE
+	return FALSE

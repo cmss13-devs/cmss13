@@ -15,9 +15,10 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 
 	matter = list("metal" = 2000)
-	ammo = /datum/ammo/energy/taser
+	ammo = /datum/ammo/energy/taser/precise
 	var/obj/item/cell/high/cell //10000 power.
 	var/charge_cost = 625 // approx 16 shots shots.
+	var/precision = TRUE
 	flags_gun_features = GUN_UNUSUAL_DESIGN|GUN_CAN_POINTBLANK
 	gun_category = GUN_CATEGORY_HANDGUN
 
@@ -68,23 +69,28 @@
 	if (. && istype(user)) //Let's check all that other stuff first.
 		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
-			return 0
+			return FALSE
 
 /obj/item/weapon/gun/energy/taser/load_into_chamber()
-	if(!cell || cell.charge - charge_cost < 0) return
+	if(!cell || cell.charge < charge_cost)
+		return
 
 	cell.charge -= charge_cost
 	in_chamber = create_bullet(ammo, initial(name))
 	return in_chamber
 
+/obj/item/weapon/gun/energy/taser/has_ammunition()
+	if(cell?.charge >= charge_cost)
+		return TRUE //Enough charge for a shot.
+
 /obj/item/weapon/gun/energy/taser/reload_into_chamber()
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/taser/delete_bullet(var/obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) cell.charge += charge_cost
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/taser/examine(mob/user)
 	. = ..()
@@ -93,3 +99,13 @@
 	else
 		to_chat(user, SPAN_NOTICE("It has no power cell inside."))
 
+/obj/item/weapon/gun/energy/taser/use_unique_action()
+	switch(precision)
+		if(TRUE)
+			precision = FALSE
+			to_chat(usr, SPAN_NOTICE("\The [src] is now set to Free mode."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/taser]
+		if(FALSE)
+			precision = TRUE
+			to_chat(usr, SPAN_NOTICE("\The [src] is now set to Precision mode."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/taser/precise]

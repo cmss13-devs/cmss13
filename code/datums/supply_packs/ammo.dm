@@ -251,6 +251,17 @@
 	containername = "\improper M41AE2 HPR magazines crate"
 	group = "Ammo"
 
+/datum/supply_packs/ammo_hpr_holo
+	contains = list(
+					/obj/item/ammo_magazine/rifle/lmg/holo_target,
+					/obj/item/ammo_magazine/rifle/lmg/holo_target
+					)
+	name = "M41AE2 HPR Holo-Target Magazines crate (HPR HT ammo box x2)"
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate
+	containername = "\improper M41AE2 HPR holo-target magazines crate"
+	group = "Ammo"
+
 /datum/supply_packs/ammo_smartgun_powerpack
 	name = "M56 smartgun powerpack crate (x2)"
 	contains = list(
@@ -580,7 +591,7 @@
 //M240-T
 
 /datum/supply_packs/ammo_pyro_mix
-	name = "M240-T fuel crate (extended x1, A Gel x1, type-B x1, type-X x1)"
+	name = "M240-T fuel crate (extended x1, type-B x1, type-X x1)"
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank/large,
 					/obj/item/ammo_magazine/flamer_tank/large/B,
@@ -656,7 +667,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_mortar_flare
-	name = "M402 mortar shells crate (x6 Flare)"
+	name = "M402 mortar shells crate (x6 Flare/Camera)"
 	cost = RO_PRICE_VERY_CHEAP
 	contains = list(
 					/obj/item/mortar_shell/flare,

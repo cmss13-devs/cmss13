@@ -117,25 +117,25 @@ GLOBAL_LIST_INIT(cm_vending_clothing_rto, list(
 /obj/structure/machinery/cm_vending/clothing/rto/alpha
 	squad_tag = SQUAD_NAME_1
 	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_ALPHA)
-	gloves_type = /obj/item/clothing/gloves/marine/alpha/insulated
+	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/bravo
 	squad_tag = SQUAD_NAME_2
 	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_BRAVO)
-	gloves_type = /obj/item/clothing/gloves/marine/bravo/insulated
+	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/charlie
 	squad_tag = SQUAD_NAME_3
 	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_CHARLIE)
-	gloves_type = /obj/item/clothing/gloves/marine/charlie/insulated
+	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/rto
 
 /obj/structure/machinery/cm_vending/clothing/rto/delta
 	squad_tag = SQUAD_NAME_4
 	req_access = list(ACCESS_MARINE_RTO_PREP, ACCESS_MARINE_DELTA)
-	gloves_type = /obj/item/clothing/gloves/marine/delta/insulated
+	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/rto
 
 //------------ESSENTIAL SETS---------------

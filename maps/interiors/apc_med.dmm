@@ -6,9 +6,7 @@
 /turf/open/void/vehicle,
 /area/space)
 "b" = (
-/obj/structure/machinery/bodyscanner{
-	icon_state = "sleeper_0"
-	},
+/obj/structure/machinery/bodyscanner,
 /turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_11"
 	},
@@ -59,12 +57,17 @@
 	},
 /area/space)
 "h" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 4
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	alpha = 100;
 	pixel_y = -2
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1;
+	pixel_x = -8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3"
@@ -89,15 +92,28 @@
 /turf/open/void/vehicle,
 /area/space)
 "m" = (
-/obj/structure/machinery/optable,
-/obj/structure/vehicle_locker/med{
-	layer = 5.21;
-	pixel_y = 28
-	},
-/obj/item/tank/anesthetic,
 /obj/effect/decal/medical_decals/permanent{
 	dir = 4;
 	icon_state = "triagedecaldir"
+	},
+/obj/structure/machinery/cm_vending/sorted/medical/blood{
+	density = 0;
+	indestructible = 1;
+	layer = 2.79;
+	pixel_x = -18;
+	pixel_y = 19;
+	req_access = list();
+	unslashable = 1;
+	wrenchable = 0
+	},
+/obj/structure/machinery/cm_vending/sorted/medical{
+	density = 0;
+	indestructible = 1;
+	pixel_x = 4;
+	pixel_y = 19;
+	req_access = list();
+	unslashable = 1;
+	wrenchable = 0
 	},
 /turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_2"
@@ -114,6 +130,11 @@
 "o" = (
 /obj/effect/decal/medical_decals/permanent{
 	icon_state = "triagedecaltop"
+	},
+/obj/effect/landmark/interior/spawn/interior_camera{
+	dir = 10;
+	pixel_x = 15;
+	pixel_y = 38
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_1_6"
@@ -206,18 +227,26 @@
 /turf/open/void/vehicle,
 /area/space)
 "A" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 4
-	},
 /obj/effect/landmark/interior/spawn/interior_viewport{
 	pixel_y = 28
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = 8
+	},
+/obj/structure/bed/chair/vehicle{
+	pixel_x = -8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3"
 	},
 /area/vehicle/apc)
 "B" = (
-/obj/structure/machinery/cm_vending/sorted/medical/blood,
+/obj/structure/vehicle_locker/med{
+	pixel_x = -6;
+	pixel_y = 28
+	},
+/obj/structure/machinery/optable,
+/obj/item/tank/anesthetic,
 /turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_12"
 	},
@@ -231,9 +260,6 @@
 	},
 /area/space)
 "D" = (
-/obj/structure/bed/chair/comfy{
-	dir = 4
-	},
 /obj/effect/decal/medical_decals/permanent{
 	dir = 4;
 	icon_state = "triagedecaldir"
@@ -242,7 +268,6 @@
 /area/vehicle/apc)
 "E" = (
 /obj/structure/vehicle_locker{
-	layer = 5.21;
 	pixel_y = 28
 	},
 /obj/effect/landmark/interior/spawn/vehicle_gunner_seat/armor{
@@ -284,7 +309,9 @@
 	},
 /area/vehicle/apc)
 "J" = (
-/obj/structure/machinery/cm_vending/sorted/medical,
+/obj/structure/bed/chair/comfy{
+	dir = 4
+	},
 /turf/open/shuttle/vehicle/med{
 	icon_state = "dark_sterile_green_6"
 	},
@@ -372,34 +399,32 @@
 /turf/open/void/vehicle,
 /area/space)
 "V" = (
-/obj/structure/bed/chair/vehicle{
-	dir = 1
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
 "W" = (
-/obj/structure/bed/chair/vehicle,
 /obj/structure/transmitter{
-	layer = 3.1;
 	name = "APC Telephone";
 	phone_category = "Vehicles";
 	phone_id = "M577-MED APC";
-	pixel_x = -1;
-	pixel_y = 32
+	pixel_x = 6;
+	pixel_y = 31
+	},
+/obj/structure/extinguisher_cabinet/lifeboat{
+	pixel_x = -5;
+	pixel_y = 29
+	},
+/obj/structure/barricade/handrail{
+	dir = 8
 	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
 /area/vehicle/apc)
-"X" = (
-/obj/structure/interior_wall/apc{
-	icon_state = "wall_3";
-	opacity = 0
-	},
-/turf/open/void/vehicle,
-/area/space)
 "Y" = (
 /obj/structure/interior_wall/apc{
 	icon_state = "rear_4"
@@ -425,7 +450,7 @@ k
 "}
 (2,1,1) = {"
 n
-X
+x
 B
 J
 b

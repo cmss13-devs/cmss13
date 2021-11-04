@@ -69,6 +69,15 @@
 	prefs.save_preferences()
 	to_chat(src, "You will [(!prefs.lang_chat_disabled) ? "now" : "no longer"] see messages above head.")
 
+/client/verb/toggle_permission_errors()
+	set name = "Toggle Permission Errors"
+	set category = "Preferences.Chat"
+	set desc = "Toggles error messages due to missing permissions."
+
+	prefs.show_permission_errors = !prefs.show_permission_errors
+	prefs.save_preferences()
+	to_chat(src, "You will [(prefs.show_permission_errors) ? "now" : "no longer"] see permission error messages.")
+
 /client/verb/listen_ooc()
 	set name = "Show/Hide OOC"
 	set category = "Preferences.Chat"
@@ -101,6 +110,54 @@
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_AMBIENCE)
 		src << sound(null, repeat = 0, wait = 0, volume = 0, channel = SOUND_CHANNEL_SOUNDSCAPE)
 
+/client/verb/toggle_roundstart_flash()
+	set name = "Toggle Roundstart Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when the round starts."
+
+	prefs.toggles_flashing ^= FLASH_ROUNDSTART
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_ROUNDSTART)
+		to_chat(src, "The icon on your taskbar will now flash when the Tip of the Round is played right before the start of the round.")
+	else
+		to_chat(src, "The icon on your taskbar will no longer flash when the Tip of the Round is played right before the start of the round.")
+
+/client/verb/toggle_roundend_flash()
+	set name = "Toggle Roundend Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when the round ends."
+
+	prefs.toggles_flashing ^= FLASH_ROUNDEND
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_ROUNDEND)
+		to_chat(src, "The icon on your taskbar will now flash when the round ends.")
+	else
+		to_chat(src, "The icon on your taskbar will no longer flash when the round ends.")
+
+/client/verb/toggle_corpserevive_flash()
+	set name = "Toggle Revival Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when your corpse gets revived."
+
+	prefs.toggles_flashing ^= FLASH_CORPSEREVIVE
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_CORPSEREVIVE)
+		to_chat(src, "The icon on your taskbar will now flash when your corpse gets revived.")
+	else
+		to_chat(src, "The icon on your taskbar will no longer flash when your corpse gets revived.")
+
+/client/verb/toggle_adminpm_flash()
+	set name = "Toggle Admin PM Flash"
+	set category = "Preferences.TaskbarFlashing"
+	set desc = "Toggles the taskbar flashing when you an admin messages you."
+
+	prefs.toggles_flashing ^= FLASH_ADMINPM
+	prefs.save_preferences()
+	if(prefs.toggles_flashing & FLASH_ADMINPM)
+		to_chat(src, "The icon on your taskbar will now flash when an admin messages you.")
+	else
+		to_chat(src, "The icon on your taskbar will no longer flash when an admin messages you. Warning, use at own risk.")
+
 //be special
 /client/verb/toggle_be_special(role in be_special_flags)
 	set name = "Toggle SpecialRole Candidacy"
@@ -112,6 +169,15 @@
 	prefs.be_special ^= role_flag
 	prefs.save_preferences()
 	to_chat(src, "You will [(prefs.be_special & role_flag) ? "now" : "no longer"] be considered for [role] events (where possible).")
+
+/client/verb/toggle_fullscreen_preference()
+	set name = "Toggle Fullscreen Preference"
+	set category = "Preferences"
+	set desc = "Toggles whether the game window will be true fullscreen or normal."
+
+	prefs.toggle_prefs ^= TOGGLE_FULLSCREEN
+	prefs.save_preferences()
+	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
 
 /client/verb/toggle_prefs() // Toggle whether anything will happen when you click yourself in non-help intent
 	set name = "Toggle Preferences"
@@ -126,7 +192,8 @@
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_eject_to_hand'>Toggle 'Unload Weapon' Ejecting Magazines to Your Hands</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_automatic_punctuation'>Toggle Automatic Punctuation</a><br>",
 		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_middle_mouse_click'>Toggle Middle Mouse Ability Activation</a><br>",
-		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>"
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_clickdrag_override'>Toggle Combat Click-Drag Override</a><br>",
+		"<a href='?src=\ref[src];action=proccall;procpath=/client/proc/toggle_dualwield'>Toggle Alternate-Fire Dual Wielding</a><br>"
 	)
 
 	var/dat = ""
@@ -209,6 +276,13 @@
 		to_chat(src, "Click-dragging now blocks clicks from going through.")
 	prefs.save_preferences()
 
+/client/proc/toggle_dualwield() //Toggle whether dual-wielding fires both guns at once or swaps between them.
+	prefs.toggle_prefs ^= TOGGLE_ALTERNATING_DUAL_WIELD
+	if(prefs.toggle_prefs & TOGGLE_ALTERNATING_DUAL_WIELD)
+		to_chat(src, "Dual-wielding now switches between guns, as long as the other gun is loaded.")
+	else
+		to_chat(src, "Dual-wielding now fires both guns simultaneously.")
+	prefs.save_preferences()
 
 //------------ GHOST PREFERENCES ---------------------------------
 

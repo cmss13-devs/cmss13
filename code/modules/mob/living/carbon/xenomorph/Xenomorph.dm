@@ -168,6 +168,7 @@
 	var/explosivearmor_modifier = 0
 	var/plasmapool_modifier = 1
 	var/plasmagain_modifier = 0
+	var/tackle_chance_modifier = 0
 	var/regeneration_multiplier = 1
 	var/speed_modifier = 0
 	var/phero_modifier = 0
@@ -241,7 +242,6 @@
 	var/selected_resin // Which resin structure to build when we secrete resin, defaults to null.
 	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
 	var/datum/ammo/xeno/ammo = null //The ammo datum for our spit projectiles. We're born with this, it changes sometimes.
-	var/obj/structure/tunnel/start_dig = null
 	var/tunnel_delay = 0
 	var/steelcrest = FALSE
 	var/list/available_placeable = list() // List of placeable the xenomorph has access to.
@@ -249,6 +249,9 @@
 	var/max_placeable = 0 // Limit to that amount
 	var/selected_placeable_index = 1 //In the available build list, what is the index of what we're building next
 	var/list/built_structures = list()
+
+	var/icon_xeno
+	var/icon_xenonid
 
 	//////////////////////////////////////////////////////////////////
 	//
@@ -305,9 +308,39 @@
 		in_hive.add_xeno(src)
 		// But now we are!
 
+	for(var/T in in_hive.hive_inherant_traits)
+		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
+
 	mutators.xeno = src
 
-	update_caste()
+	update_icon_source()
+
+	if(caste_type && GLOB.xeno_datum_list[caste_type])
+		caste = GLOB.xeno_datum_list[caste_type]
+	else
+		to_world("something went very wrong")
+		return
+
+	acid_splash_cooldown = caste.acid_splash_cooldown
+
+	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
+		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
+			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
+		RegisterSignal(src, list(
+			COMSIG_LIVING_FLAMER_CROSSED,
+			COMSIG_LIVING_FLAMER_FLAMED,
+		), .proc/flamer_crossed_immune)
+	else
+		UnregisterSignal(src, list(
+			COMSIG_LIVING_PREIGNITION,
+			COMSIG_LIVING_FLAMER_CROSSED,
+			COMSIG_LIVING_FLAMER_FLAMED,
+		))
+
+	recalculate_everything()
+
+	if(mob_size < MOB_SIZE_BIG)
+		mob_flags |= SQUEEZE_UNDER_VEHICLES
 
 	generate_name()
 
@@ -412,38 +445,10 @@
 /mob/living/carbon/Xenomorph/initialize_stamina()
 	stamina = new /datum/stamina/none(src)
 
-/mob/living/carbon/Xenomorph/proc/update_caste()
-	if(caste_type && GLOB.xeno_datum_list[caste_type])
-		caste = GLOB.xeno_datum_list[caste_type]
-	else
-		to_world("something went very wrong")
-		return
-
-	acid_splash_cooldown = caste.acid_splash_cooldown
-
-	if (caste.fire_immunity != FIRE_IMMUNITY_NONE)
-		if(caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE)
-			RegisterSignal(src, COMSIG_LIVING_PREIGNITION, .proc/fire_immune)
-		RegisterSignal(src, list(
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED,
-		), .proc/flamer_crossed_immune)
-	else
-		UnregisterSignal(src, list(
-			COMSIG_LIVING_PREIGNITION,
-			COMSIG_LIVING_FLAMER_CROSSED,
-			COMSIG_LIVING_FLAMER_FLAMED,
-		))
-
-	recalculate_everything()
-
-	if(mob_size < MOB_SIZE_BIG)
-		mob_flags |= SQUEEZE_UNDER_VEHICLES
-
 /mob/living/carbon/Xenomorph/proc/fire_immune(mob/living/L)
 	SIGNAL_HANDLER
 
-	if(L.fire_reagent?.fire_penetrating)
+	if(L.fire_reagent?.fire_penetrating && !burrow)
 		return
 
 	return COMPONENT_CANCEL_IGNITION
@@ -517,6 +522,12 @@
 	if(isXeno(user) && caste && caste.caste_desc)
 		to_chat(user, caste.caste_desc)
 
+	if(l_hand)
+		to_chat(user, "It's holding[l_hand.get_examine_line()] in its left hand.")
+
+	if(r_hand)
+		to_chat(user, "It's holding[r_hand.get_examine_line()] in its right hand.")
+
 	if(stat == DEAD)
 		to_chat(user, "It is DEAD. Kicked the bucket. Off to that great hive in the sky.")
 	else if(stat == UNCONSCIOUS)
@@ -545,17 +556,13 @@
 	return
 
 /mob/living/carbon/Xenomorph/Destroy()
-	if(mind)
-		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
-	if(is_zoomed)
-		zoom_out()
-
 	GLOB.living_xeno_list -= src
 	GLOB.xeno_mob_list -= src
 
+	if(mind)
+		mind.name = name //Grabs the name when the xeno is getting deleted, to reference through hive status later.
 	if(IS_XENO_LEADER(src)) //Strip them from the Xeno leader list, if they are indexed in here
-		hive.remove_hive_leader(src)
-
+		hive.remove_hive_leader(src, light_mode = TRUE)
 	SStracking.stop_tracking("hive_[hivenumber]", src)
 
 	// Only handle free slots if the xeno is not in tdome
@@ -568,24 +575,14 @@
 			LAZYSET(hive.free_slots, selected_caste, new_val)
 
 	hive.remove_xeno(src)
-
 	remove_from_all_mob_huds()
-
-	for(var/datum/action/xeno_action/XA in actions)
-		qdel(XA)
-		XA = null
-
-	reagents = null
 
 	observed_xeno = null
 	wear_suit = null
 	head = null
 	r_store = null
 	l_store = null
-
-	start_dig = null
 	ammo = null
-
 	selected_ability = null
 	queued_action = null
 
@@ -601,7 +598,14 @@
 	vis_contents -= wound_icon_carrier
 	QDEL_NULL(wound_icon_carrier)
 
+	if(hardcore)
+		attack_log?.Cut() // Completely clear out attack_log to limit mem usage if we fail to delete
+
 	. = ..()
+
+	// Everything below fits the "we have to clear by principle it but i dont wanna break stuff" bill
+	mutators = null
+
 
 
 /mob/living/carbon/Xenomorph/slip(slip_source_name, stun_level, weaken_level, run_only, override_noslip, slide_steps)
@@ -697,8 +701,13 @@
 	if(!new_hive)
 		return
 
+	for(var/T in status_traits)
+		REMOVE_TRAIT(src, T, TRAIT_SOURCE_HIVE)
 
 	new_hive.add_xeno(src)
+
+	for(var/T in new_hive.hive_inherant_traits)
+		ADD_TRAIT(src, T, TRAIT_SOURCE_HIVE)
 
 	if(istype(src, /mob/living/carbon/Xenomorph/Larva))
 		var/mob/living/carbon/Xenomorph/Larva/L = src
@@ -723,6 +732,7 @@
 	recalculate_actions()
 	recalculate_pheromones()
 	recalculate_maturation()
+	update_icon_source()
 	if(hive && hive.living_xeno_queen && hive.living_xeno_queen == src)
 		hive.recalculate_hive() //Recalculating stuff around Queen maturing
 
@@ -740,7 +750,7 @@
 /mob/living/carbon/Xenomorph/proc/recalculate_tackle()
 	tackle_min = caste.tackle_min
 	tackle_max = caste.tackle_max
-	tackle_chance = caste.tackle_chance
+	tackle_chance = caste.tackle_chance + tackle_chance_modifier
 	tacklestrength_min = caste.tacklestrength_min + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 

@@ -160,7 +160,7 @@
 	if(istype(src, /mob/dead/observer))
 		if(speaker_name != speaker.real_name && !isAI(speaker)) //Announce computer and various stuff that broadcasts doesn't use it's real name but AI's can't pretend to be other mobs.
 			speaker_name = "[speaker.real_name] ([speaker_name])"
-		track = "[speaker_name] (<a href='byond://?src=\ref[src];track=\ref[speaker]'>follow</a>)"
+		track = "[speaker_name] (<a href='byond://?src=\ref[src];track=\ref[speaker]'>F</a>)"
 
 	var/fontsize_style
 	switch(command)
@@ -194,9 +194,9 @@
 		comm_paygrade = H.get_paygrade()
 
 	if(say_understands(speaker, language))
-		message = SPAN_EMOTE("<B>[comm_paygrade][src]</B> [verb], \"[message]\"")
+		message = "<B>[comm_paygrade][src]</B> [verb], \"[message]\""
 	else
-		message = SPAN_EMOTE("<B>[comm_paygrade][src]</B> [verb].")
+		message = "<B>[comm_paygrade][src]</B> [verb]."
 
 	if(src.status_flags & PASSEMOTES)
 		for(var/obj/item/holder/H in src.contents)

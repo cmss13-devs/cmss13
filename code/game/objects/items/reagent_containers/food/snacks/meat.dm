@@ -13,9 +13,10 @@
 
 /obj/item/reagent_container/food/snacks/meat/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/kitchen/knife))
-		new /obj/item/reagent_container/food/snacks/rawcutlet(src)
-		new /obj/item/reagent_container/food/snacks/rawcutlet(src)
-		new /obj/item/reagent_container/food/snacks/rawcutlet(src)
+		var/turf/T = get_turf(src)
+		new /obj/item/reagent_container/food/snacks/rawcutlet(T)
+		new /obj/item/reagent_container/food/snacks/rawcutlet(T)
+		new /obj/item/reagent_container/food/snacks/rawcutlet(T)
 		to_chat(user, "You cut the meat in thin strips.")
 		qdel(src)
 	else
@@ -26,7 +27,7 @@
 	desc = "A synthetic slab of flesh."
 
 /obj/item/reagent_container/food/snacks/meat/human
-	name = "-meat"
+	name = "meat"
 	desc = "A slab of flesh for cannibals."
 
 /obj/item/reagent_container/food/snacks/meat/monkey
@@ -37,7 +38,7 @@
 	desc = "Tastes like... well you know..."
 
 /obj/item/reagent_container/food/snacks/meat/xenomeat
-	name = "-meat"
+	name = "meat"
 	desc = "A slab of acrid smelling meat."
 	icon_state = "xenomeat"
 	filling_color = "#43DE18"

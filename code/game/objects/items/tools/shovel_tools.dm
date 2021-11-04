@@ -195,3 +195,4 @@
 	w_class = SIZE_MEDIUM
 	force = 2
 	icon_state = "etool_c"
+	item_state = "etool_c"

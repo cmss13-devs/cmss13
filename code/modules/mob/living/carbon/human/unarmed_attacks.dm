@@ -9,23 +9,11 @@
 	var/edge = FALSE
 
 /datum/unarmed_attack/proc/is_usable(var/mob/living/carbon/human/user)
-	if(user.is_mob_restrained())
-		return FALSE
-
 	if(!user.species.melee_allowed)
 		to_chat(user, SPAN_DANGER("You are currently unable to attack."))
 		return FALSE
 
-	// Check if they have a functioning hand.
-	var/obj/limb/E = user.get_limb("l_hand")
-	if(E && !(E.status & LIMB_DESTROYED))
-		return TRUE
-
-	E = user.get_limb("r_hand")
-	if(E && !(E.status & LIMB_DESTROYED))
-		return TRUE
-
-	return FALSE
+	return TRUE
 
 /datum/unarmed_attack/bite
 	attack_verb = list("bite") // 'x has biteed y', needs work.
@@ -40,8 +28,8 @@
 		return FALSE
 
 	if (user.wear_mask && istype(user.wear_mask, /obj/item/clothing/mask/muzzle))
-		return 0
-	return 1
+		return FALSE
+	return TRUE
 
 /datum/unarmed_attack/punch
 	attack_verb = list("punch")

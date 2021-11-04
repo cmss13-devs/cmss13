@@ -62,9 +62,11 @@
 		)
 	mutation_type = CARRIER_NORMAL
 
+	icon_xenonid = 'icons/mob/xenonids/carrier.dmi'
+
 /mob/living/carbon/Xenomorph/Carrier/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_carrier))
 	. = ..()
-	icon = get_icon_from_source(CONFIG_GET(string/alien_carrier))
 
 /mob/living/carbon/Xenomorph/Carrier/death(var/cause, var/gibbed)
 	. = ..(cause, gibbed)

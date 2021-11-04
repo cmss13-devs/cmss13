@@ -18,7 +18,7 @@
 	return
 
 /obj/item/storage/surgical_tray/fill_preset_inventory()
-	new /obj/item/tool/surgery/scalpel/manager(src)
+	new /obj/item/tool/surgery/scalpel/pict_system(src)
 	new /obj/item/tool/surgery/scalpel(src)
 	new /obj/item/tool/surgery/hemostat(src)
 	new /obj/item/tool/surgery/retractor(src)

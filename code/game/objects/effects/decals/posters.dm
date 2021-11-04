@@ -18,30 +18,30 @@
 
 //############################## THE ACTUAL DECALS ###########################
 
-obj/structure/sign/poster
+/obj/structure/sign/poster
 	name = "poster"
 	desc = "A large piece of cheap printed paper."
 	icon = 'icons/obj/structures/props/posters.dmi'
 	anchored = 1
-	var/serial_number	//Will hold the value of src.loc if nobody initialises it
+	var/serial_number	//determines the design of the poster
 	var/ruined = 0
 
 
-obj/structure/sign/poster/New(var/serial)
+/obj/structure/sign/poster/Initialize(mapload, var/serial)
+	. = ..()
+	if(serial)
+		serial_number = serial
 
-	serial_number = serial
-
-	if(serial_number == loc)
-		serial_number = rand(1, GLOB.poster_designs.len)	//This is for the mappers that want individual posters without having to use rolled posters.
+	if(!isnum(serial_number))
+		serial_number = rand(1, GLOB.poster_designs.len)
 
 	var/designtype = GLOB.poster_designs[serial_number]
 	var/datum/poster/design=new designtype
 	name += " - [design.name]"
 	desc += " [design.desc]"
-	icon_state = design.icon_state // poster[serial_number]
-	..()
+	icon_state = design.icon_state
 
-obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
+/obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 25, 1)
 		if(ruined)
@@ -51,7 +51,6 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 			to_chat(user, SPAN_NOTICE("You carefully remove the poster from the wall."))
 			roll_and_drop(user.loc)
 		return
-
 
 /obj/structure/sign/poster/attack_hand(mob/user as mob)
 	if(ruined)
@@ -98,7 +97,7 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	to_chat(user, SPAN_NOTICE("You start placing the poster on the wall...")) //Looks like it's uncluttered enough. Place the poster.
 
 	//declaring D because otherwise if P gets 'deconstructed' we lose our reference to P.resulting_poster
-	var/obj/structure/sign/poster/D = new(P.serial_number)
+	var/obj/structure/sign/poster/D = new(null, P.serial_number)
 
 	var/temp_loc = user.loc
 	flick("poster_being_set",D)
@@ -121,3 +120,67 @@ obj/structure/sign/poster/attackby(obj/item/W as obj, mob/user as mob)
 	// Description suffix
 	var/desc=""
 	var/icon_state=""
+
+///For ease of mapping
+/obj/structure/sign/poster/ad
+	icon_state = "poster7"
+
+/obj/structure/sign/poster/ad/Initialize()
+	serial_number = pick(7,8,9,10,11,13,18,22,35)
+	.=..()
+
+/obj/structure/sign/poster/art
+	icon_state = "poster6"
+
+/obj/structure/sign/poster/art/Initialize()
+	serial_number = pick(6,23,24)
+	.=..()
+
+/obj/structure/sign/poster/blacklight
+	icon_state = "poster1"
+
+/obj/structure/sign/poster/blacklight/Initialize()
+	serial_number = pick(1,2)
+	.=..()
+
+/obj/structure/sign/poster/clf
+	icon_state = "poster19"
+
+/obj/structure/sign/poster/clf/Initialize()
+	serial_number = pick(19)
+	.=..()
+
+/obj/structure/sign/poster/hunk
+	icon_state = "poster32"
+
+/obj/structure/sign/poster/hunk/Initialize()
+	serial_number = pick(32,33,34)
+	.=..()
+
+/obj/structure/sign/poster/music
+	icon_state = "poster3"
+
+/obj/structure/sign/poster/music/Initialize()
+	serial_number = pick(3,5,25,26,29)
+	.=..()
+
+/obj/structure/sign/poster/pinup
+	icon_state = "poster12"
+
+/obj/structure/sign/poster/pinup/Initialize()
+	serial_number = pick(12,16,17)
+	.=..()
+
+/obj/structure/sign/poster/propaganda
+	icon_state = "poster4"
+
+/obj/structure/sign/poster/propaganda/Initialize()
+	serial_number = pick(4,14,15,20,21)
+	.=..()
+
+/obj/structure/sign/poster/safety
+	icon_state = "poster27"
+
+/obj/structure/sign/poster/safety/Initialize()
+	serial_number = pick(27,28,30,31)
+	.=..()

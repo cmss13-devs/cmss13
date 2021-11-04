@@ -100,7 +100,8 @@
 			power_light = TRUE
 			power_equip = TRUE
 			power_environ = TRUE
-			SetDynamicLighting()
+			if(lighting_use_dynamic)
+				SetDynamicLighting()
 	else
 		power_light = FALSE			//rastaf0
 		power_equip = FALSE			//rastaf0

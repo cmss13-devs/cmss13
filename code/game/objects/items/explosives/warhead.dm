@@ -26,3 +26,11 @@
 							"min_fire_rad" = 3,		"min_fire_int" = 5,		"min_fire_dur" = 5
 	)
 	has_blast_wave_dampener = TRUE
+	var/has_camera = FALSE
+
+/obj/item/explosive/warhead/mortar/camera
+	name = "80mm mortar camera warhead"
+	desc = "A custom warhead meant for 80mm mortar shells. Camera drone included."
+	max_container_volume = 180
+	matter = list("metal" = 15000) //4 sheets
+	has_camera = TRUE

@@ -46,11 +46,12 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PILOT						"Pilot Officer"
 #define JOB_CREWMAN						"Vehicle Crewman"
 
+#define JOB_POLICE_CADET				"MP Cadet"
 #define JOB_POLICE						"Military Police"
 #define JOB_WARDEN						"Military Warden"
 #define JOB_CHIEF_POLICE				"Chief MP"
 #define JOB_POLICE_ROLES                /datum/timelock/mp
-#define JOB_POLICE_ROLES_LIST           list(JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
+#define JOB_POLICE_ROLES_LIST           list(JOB_POLICE_CADET, JOB_POLICE, JOB_WARDEN, JOB_CHIEF_POLICE)
 
 #define JOB_SEA							"Senior Enlisted Advisor"
 
@@ -65,7 +66,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_REQUISITION_ROLES           /datum/timelock/requisition
 #define JOB_REQUISITION_ROLES_LIST      list(JOB_CHIEF_REQUISITION, JOB_CARGO_TECH)
 
-#define JOB_MARSOC "MARSOC Operator"
+#define JOB_MARSOC						"MARSOC Operator"
 
 #define JOB_HUMAN_ROLES                 /datum/timelock/human
 #define JOB_XENO_ROLES                  /datum/timelock/xeno
@@ -122,6 +123,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_ELITE					"PMC Elite"
 #define JOB_PMC_GUNNER					"PMC Support Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
 #define JOB_PMC_SNIPER					"PMC Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
+#define JOB_PMC_CREWMAN					"PMC Crewman"
 #define JOB_PMC_NINJA					"PMC Ninja"
 #define JOB_PMC_XENO_HANDLER            "PMC Xeno Handler"
 #define JOB_PMC_COMMANDO				"PMC Commando"
@@ -135,8 +137,15 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_UPP_MEDIC					"UPP Korporal Medic"
 #define JOB_UPP_SPECIALIST				"UPP Serzhant"
 #define JOB_UPP_LEADER					"UPP Master Serzhant"
+#define JOB_UPP_POLICE					"UPP Politsiya"
+#define JOB_UPP_LT_OFFICER				"UPP Leytenant"
+#define JOB_UPP_LT_DOKTOR				"UPP Leytenant Doktor"
+#define JOB_UPP_SRLT_OFFICER			"UPP Senior Leytenant"
+#define JOB_UPP_KPT_OFFICER				"UPP Kapitan"
+#define JOB_UPP_MAY_OFFICER				"UPP Mayjor"
+#define JOB_UPP_KOL_OFFICER				"UPP Kolonel"
 
-#define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER)
+#define UPP_JOB_LIST					list(JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_UPP_POLICE, JOB_UPP_LT_OFFICER, JOB_UPP_LT_DOKTOR, JOB_UPP_SRLT_OFFICER, JOB_UPP_KPT_OFFICER, JOB_UPP_KOL_OFFICER)
 
 #define JOB_UPP_COMMANDO				"UPP Junior Kommando"
 #define JOB_UPP_COMMANDO_MEDIC			"UPP 2nd Kommando"
@@ -146,7 +155,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_UPP_REPRESENTATIVE			"UPP Representative"
 
-#define JOB_UPP_CREWMAN					"UPP Tankist"
+#define JOB_UPP_CREWMAN					"UPP Tank Crewman"
 
 //-------- CLF --------//
 #define JOB_CLF							"CLF Guerilla"
@@ -184,11 +193,11 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PROVOST_TML					"Provost Team Leader"
 #define JOB_PROVOST_ADVISOR				"Provost Advisor"
 #define JOB_PROVOST_INSPECTOR			"Provost Inspector"
-#define JOB_PROVOST_MARSHALL			"Provost Marshall"
-#define JOB_PROVOST_SMARSHALL			"Provost Sector Marshall"
-#define JOB_PROVOST_CMARSHALL			"Provost Chief Marshall"
+#define JOB_PROVOST_MARSHAL				"Provost Marshal"
+#define JOB_PROVOST_SMARSHAL			"Provost Sector Marshal"
+#define JOB_PROVOST_CMARSHAL			"Provost Chief Marshal"
 
-#define PROVOST_JOB_LIST				list(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHALL, JOB_PROVOST_SMARSHALL, JOB_PROVOST_CMARSHALL)
+#define PROVOST_JOB_LIST				list(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER, JOB_PROVOST_TML, JOB_PROVOST_ADVISOR, JOB_PROVOST_INSPECTOR, JOB_PROVOST_MARSHAL, JOB_PROVOST_SMARSHAL, JOB_PROVOST_CMARSHAL)
 
 //antag jobs supported by adaptive antag vendors
 #define VENDOR_ANTAG_JOBS				list(JOB_UPP_COMMANDO, JOB_UPP_COMMANDO_MEDIC, JOB_UPP_COMMANDO_LEADER, JOB_UPP, JOB_UPP_ENGI, JOB_UPP_MEDIC, JOB_UPP_SPECIALIST, JOB_UPP_LEADER, JOB_CLF, JOB_CLF_ENGI, JOB_CLF_MEDIC, JOB_CLF_SPECIALIST, JOB_CLF_LEADER)

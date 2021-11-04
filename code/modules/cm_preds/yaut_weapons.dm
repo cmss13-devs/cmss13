@@ -107,7 +107,9 @@
 	flags_equip_slot = NO_FLAGS
 	hitsound = 'sound/weapons/wristblades_hit.ogg'
 	attack_speed = 6
+	force = MELEE_FORCE_TIER_4
 	pry_capable = IS_PRY_CAPABLE_FORCE
+	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
 
 /obj/item/weapon/wristblades/New()
 	..()
@@ -115,8 +117,6 @@
 		var/obj/item/weapon/wristblades/W = usr.get_inactive_hand()
 		if(istype(W)) //wristblade in usr's other hand.
 			attack_speed = attack_speed - attack_speed/3
-	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
-	force = MELEE_FORCE_TIER_4
 
 /obj/item/weapon/wristblades/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/wristblades_off.ogg', 15, 1)
@@ -127,10 +127,8 @@
 	..()
 
 /obj/item/weapon/wristblades/afterattack(atom/A, mob/user, proximity)
-	if(!proximity || !user || user.action_busy) return
-	if(user)
-		var/obj/item/weapon/wristblades/W = user.get_inactive_hand()
-		attack_speed = (istype(W)) ? 4 : initial(attack_speed)
+	if(!proximity || !user || user.action_busy)
+		return FALSE
 
 	if(istype(A, /obj/structure/machinery/door/airlock))
 		var/obj/structure/machinery/door/airlock/D = A
@@ -145,7 +143,7 @@
 		if(do_after(user, 3 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE) && D.density)
 			user.visible_message(SPAN_DANGER("[user] forces [D] open with the [name]."),
 			SPAN_DANGER("You force [D] open with the [name]."))
-			D.open(1)
+			D.open(TRUE)
 
 	else if(istype(A, /obj/structure/mineral_door/resin))
 		var/obj/structure/mineral_door/resin/D = A
@@ -172,6 +170,25 @@
 	for(var/obj/item/clothing/gloves/yautja/Y in user.contents)
 		Y.wristblades()
 
+/obj/item/weapon/wristblades/blades //simplest way to ensure scimitars don't get speedup buff.
+
+/obj/item/weapon/wristblades/blades/afterattack(atom/A, mob/user, proximity)
+	if(!proximity || !user || user.action_busy)
+		return FALSE
+	if(user)
+		var/obj/item/weapon/wristblades/blades/W = user.get_inactive_hand()
+		attack_speed = (istype(W)) ? 4 : initial(attack_speed)
+
+	..()
+
+/obj/item/weapon/wristblades/scimitar
+	name = "wrist scimitar"
+	desc = "A huge, serrated blade extending from a metal gauntlet."
+	icon_state = "scim"
+	item_state = "scim"
+	attack_speed = 5
+	attack_verb = list("sliced", "slashed", "jabbed", "torn", "gored")
+	force = MELEE_FORCE_TIER_5
 
 /*#########################################
 ########### One Handed Weapons ############
@@ -551,7 +568,7 @@
 	icon_state = "predknife"
 	item_state = "knife"
 	flags_atom = FPRINT|CONDUCT
-	flags_item = ITEM_PREDATOR
+	flags_item = ITEM_PREDATOR|CAN_DIG_SHRAPNEL
 	flags_equip_slot = SLOT_STORE
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = MELEE_FORCE_TIER_5
@@ -563,10 +580,6 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	actions_types = list(/datum/action/item_action)
 	unacidable = TRUE
-
-/obj/item/weapon/melee/yautja/knife/attack_self(mob/living/carbon/human/user)
-	..()
-	dig_out_shrapnel(user)
 
 /obj/item/weapon/melee/yautja/knife/attack(mob/living/mob_victim, mob/living/carbon/human/user)
 	. =..()
@@ -607,18 +620,23 @@
 			victim.apply_damage(15, BRUTE, L, sharp = FALSE)
 		victim.add_flay_overlay(stage = 1)
 
-		if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+		if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 			var/obj/limb/head/v_head = victim.get_limb("head")
 			if(v_head) //they might be beheaded
-				to_chat(user, SPAN_WARNING("You slam \the [src] into [victim]'s scalp, ripping it from the head, pocketing the scalp on yourself afterwards."))
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 1)
 				victim.apply_damage(10, BRUTE, v_head, sharp = FALSE)
 				v_head.disfigured = TRUE
-				victim.h_style = "Bald"
-				victim.update_hair() //tear the hair off with the scalp
+				if(victim.h_style == "Bald") //you can't scalp someone with no hair.
+					to_chat(user, SPAN_WARNING("You make some rough cuts on [victim]'s head and face with \the [src]."))
+				else
+					to_chat(user, SPAN_WARNING("You use \the [src] to cut around [victim]'s hairline, then rip \his scalp from \his head."))
+					var/obj/item/scalp/cut_scalp = new(get_turf(user), victim, user) //Create a scalp of the victim at the user's feet.
+					user.put_in_inactive_hand(cut_scalp) //Put it in the user's offhand if possible.
+					victim.h_style = "Bald"
+					victim.update_hair() //tear the hair off with the scalp
 			playsound(loc, 'sound/weapons/slashmiss.ogg', 25)
 
-			if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+			if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 				to_chat(user, SPAN_WARNING("You jab \the [src] into the flesh cuts, using them to tear off most of the skin, the remainder skin hanging off the flesh."))
 				playsound(loc, 'sound/weapons/bladeslice.ogg', 25)
 				create_leftovers(victim, has_meat = FALSE, skin_amount = 3)
@@ -629,7 +647,7 @@
 				victim.update_hair() //then rip the beard off along the skin
 				victim.add_flay_overlay(stage = 2)
 
-				if(do_after(user, 4 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
+				if(do_after(user, 4 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, victim))
 					to_chat(user, SPAN_WARNING("You completely flay [victim], sloppily ripping most remaining flesh and skin off the body. Use rope to hang them from the ceiling."))
 					playsound(loc, 'sound/weapons/wristblades_hit.ogg', 25)
 					create_leftovers(victim, has_meat = TRUE, skin_amount = 2)
@@ -793,7 +811,7 @@
 	update_special_overlay(new_icon_state)
 
 /obj/item/weapon/gun/launcher/spike/able_to_fire(mob/user)
-	if(!isYautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 
@@ -805,14 +823,18 @@
 		spikes--
 		return in_chamber
 
+/obj/item/weapon/gun/launcher/spike/has_ammunition()
+	if(spikes > 0)
+		return TRUE //Enough spikes for a shot.
+
 /obj/item/weapon/gun/launcher/spike/reload_into_chamber()
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/launcher/spike/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) spikes++
-	return 1
+	return TRUE
 
 
 /obj/item/weapon/gun/energy/yautja
@@ -849,6 +871,7 @@
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
+	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/process()
 	if(charge_time < 100)
@@ -880,51 +903,36 @@
 		update_special_overlay(new_icon_state)
 		last_regen = charge_time
 
-/obj/item/weapon/gun/energy/yautja/plasmarifle/unique_action(mob/user)
-	if(!isYautja(user))
-		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
-		return
-	..()
-	zoom(user)
-
 /obj/item/weapon/gun/energy/yautja/plasmarifle/able_to_fire(mob/user)
-	if(!isYautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 
 	return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/load_into_chamber()
-	ammo = GLOB.ammo_list[charge_time < 15? /datum/ammo/energy/yautja/rifle/bolt : /datum/ammo/energy/yautja/rifle/blast]
+	if(charge_time >= 80)
+		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/blast]
+		charge_time = 0
+	else
+		ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/rifle/bolt]
+		charge_time -= 10
 	var/obj/item/projectile/P = create_bullet(ammo, initial(name))
 	P.SetLuminosity(1)
 	in_chamber = P
-	charge_time = round(charge_time / 2)
 	return in_chamber
+
+/obj/item/weapon/gun/energy/yautja/plasmarifle/has_ammunition()
+	return TRUE //Plasma rifle appears to have infinite ammunition.
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/reload_into_chamber()
 	update_icon()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasmarifle/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) charge_time *= 2
-	return 1
-
-/obj/item/weapon/gun/energy/yautja/plasmarifle/attack_self(mob/living/user)
-	if(!isYautja(user))
-		return ..()
-
-	if(charge_time > 10)
-		user.visible_message(SPAN_NOTICE("You feel a strange surge of energy in the area."),SPAN_NOTICE("You release the rifle battery's energy."))
-		var/obj/item/clothing/gloves/yautja/Y = user:gloves
-		if(Y && Y.charge < Y.charge_max)
-			Y.charge += charge_time * 2
-			if(Y.charge > Y.charge_max) Y.charge = Y.charge_max
-			charge_time = 0
-			to_chat(user, SPAN_NOTICE("Your bracers absorb some of the released energy."))
-			update_icon()
-	else to_chat(user, SPAN_WARNING("The weapon's not charged enough with ambient energy!"))
+	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol
 	name = "plasma pistol"
@@ -984,27 +992,32 @@
 
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/able_to_fire(mob/user)
-	if(!isYautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 	else
 		return ..()
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/load_into_chamber()
-	if(charge_time < 1) return
+	if(charge_time < 1)
+		return
 	var/obj/item/projectile/P = create_bullet(ammo, initial(name))
 	P.SetLuminosity(1)
 	in_chamber = P
-	charge_time -= 1
+	charge_time--
 	return in_chamber
 
+/obj/item/weapon/gun/energy/yautja/plasmapistol/has_ammunition()
+	if(charge_time >= 1)
+		return TRUE //Enough charge for a shot.
+
 /obj/item/weapon/gun/energy/yautja/plasmapistol/reload_into_chamber()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasmapistol/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
 	if(refund) charge_time *= 2
-	return 1
+	return TRUE
 
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster
@@ -1013,26 +1026,27 @@
 	icon_state = "plasma"
 	item_state = "plasma_wear"
 	fire_sound = 'sound/weapons/pred_plasmacaster_fire.ogg'
-	ammo = /datum/ammo/energy/yautja/caster/bolt
+	ammo = /datum/ammo/energy/yautja/caster/stun
 	muzzle_flash = null // TO DO, add a decent one.
 	w_class = SIZE_HUGE
 	force = 0
 	fire_delay = 3
-	var/obj/item/clothing/gloves/yautja/source = null
-	var/charge_cost = 100 //How much energy is needed to fire.
-	var/mode = 0
 	actions_types = list(/datum/action/item_action/toggle)
 	flags_atom = FPRINT|CONDUCT
 	flags_item = NOBLUDGEON|DELONDROP //Can't bludgeon with this.
 	flags_gun_features = GUN_UNUSUAL_DESIGN
 	has_empty_icon = FALSE
 
+	var/obj/item/clothing/gloves/yautja/source = null
+	var/charge_cost = 100 //How much energy is needed to fire.
+	var/mode = "stun"//fire mode (stun/lethal)
+	var/strength = "low power stun bolts"//what it's shooting
+
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Initialize(mapload, spawn_empty)
 	. = ..()
 	verbs -= /obj/item/weapon/gun/verb/field_strip
 	verbs -= /obj/item/weapon/gun/verb/toggle_burst
 	verbs -= /obj/item/weapon/gun/verb/empty_mag
-	verbs -= /obj/item/weapon/gun/verb/use_unique_action
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/Destroy()
 	. = ..()
@@ -1052,20 +1066,75 @@
 	..()
 
 	switch(mode)
-		if(0)
-			mode = 1
-			charge_cost = 300
-			fire_delay = FIRE_DELAY_TIER_6 * 20
-			fire_sound = 'sound/weapons/pulse.ogg'
-			to_chat(user, SPAN_NOTICE("[src] is now set to fire heavy plasma spheres."))
-			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
-		if(1)
-			mode = 0
+		if("stun")
+			switch(strength)
+				if("low power stun bolts")
+					strength = "high power stun bolts"
+					charge_cost = 100
+					fire_delay = FIRE_DELAY_TIER_6 * 3
+					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
+					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt/stun]
+				if("high power stun bolts")
+					strength = "plasma immobilizers"
+					charge_cost = 300
+					fire_delay = FIRE_DELAY_TIER_6 * 20
+					fire_sound = 'sound/weapons/pulse.ogg'
+					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere/stun]
+				if("plasma immobilizers")
+					strength = "low power stun bolts"
+					charge_cost = 30
+					fire_delay = FIRE_DELAY_TIER_6
+					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
+					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
+		if("lethal")
+			switch(strength)
+				if("plasma bolts")
+					strength = "plasma spheres"
+					charge_cost = 1200
+					fire_delay = FIRE_DELAY_TIER_6 * 20
+					fire_sound = 'sound/weapons/pulse.ogg'
+					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/sphere]
+				if("plasma spheres")
+					strength = "plasma bolts"
+					charge_cost = 100
+					fire_delay = FIRE_DELAY_TIER_6 * 3
+					fire_sound = 'sound/weapons/pred_lasercannon.ogg'
+					to_chat(user, SPAN_NOTICE("[src] will now fire [strength]."))
+					ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/use_unique_action()
+	switch(mode)
+		if("stun")
+			mode = "lethal"
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beep: [src] is now set to [mode] mode"))
+			strength = "plasma bolts"
+			charge_cost = 100
+			fire_delay = FIRE_DELAY_TIER_6 * 3
+			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
+			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
+
+		if("lethal")
+			mode = "stun"
+			to_chat(usr, SPAN_YAUTJABOLD("[src.source] beep: [src] is now set to [mode] mode"))
+			strength = "low power stun bolts"
 			charge_cost = 30
 			fire_delay = FIRE_DELAY_TIER_6
 			fire_sound = 'sound/weapons/pred_lasercannon.ogg'
-			to_chat(user, SPAN_NOTICE("[src] is now set to fire light plasma bolts."))
-			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/bolt]
+			to_chat(usr, SPAN_NOTICE("[src] will now fire [strength]."))
+			ammo = GLOB.ammo_list[/datum/ammo/energy/yautja/caster/stun]
+
+/obj/item/weapon/gun/energy/yautja/plasma_caster/examine(mob/user)
+	. = ..()
+	var/msg = "It is set to fire [strength]."
+	if(mode == "lethal")
+		to_chat(user, SPAN_RED(msg))
+	else
+		to_chat(user, SPAN_ORANGE(msg))
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/dropped(mob/living/carbon/human/M)
 	playsound(M,'sound/weapons/pred_plasmacaster_off.ogg', 15, 1)
@@ -1076,7 +1145,7 @@
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/able_to_fire(mob/user)
 	if(!source)	return
-	if(!isYautja(user))
+	if(!HAS_TRAIT(user, TRAIT_YAUTJA_TECH))
 		to_chat(user, SPAN_WARNING("You have no idea how this thing works!"))
 		return
 
@@ -1087,8 +1156,12 @@
 		in_chamber = create_bullet(ammo, initial(name))
 		return in_chamber
 
+/obj/item/weapon/gun/energy/yautja/plasma_caster/has_ammunition()
+	if(source?.charge >= charge_cost)
+		return TRUE //Enough charge for a shot.
+
 /obj/item/weapon/gun/energy/yautja/plasma_caster/reload_into_chamber()
-	return 1
+	return TRUE
 
 /obj/item/weapon/gun/energy/yautja/plasma_caster/delete_bullet(obj/item/projectile/projectile_to_fire, refund = 0)
 	qdel(projectile_to_fire)
@@ -1097,4 +1170,4 @@
 		var/perc = source.charge / source.charge_max * 100
 		var/mob/living/carbon/human/user = usr //Hacky...
 		user.update_power_display(perc)
-	return 1
+	return TRUE

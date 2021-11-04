@@ -166,7 +166,7 @@
 			else
 				var/datum/internal_organ/O = pick(owner.internal_organs)
 				if(O)
-					O.damage += 0.2  * PROCESS_ACCURACY
+					O.damage += 0.2 * PROCESS_ACCURACY
 
 		//Detox can heal small amounts of damage
 		if (src.damage && src.damage < src.min_bruised_damage && owner.reagents.has_reagent("anti_toxin"))
@@ -184,14 +184,13 @@
 				filter_effect -= 2
 
 		// Do some reagent filtering/processing.
-		for(var/datum/reagent/R in owner.reagents.reagent_list)
+		for(var/datum/reagent/ethanol/R in owner.reagents.reagent_list)
 			// Damaged liver means some chemicals are very dangerous
 			// The liver is also responsible for clearing out alcohol and toxins.
 			// Ethanol and all drinks are bad.K
-			if(istype(R, /datum/reagent/ethanol))
-				if(filter_effect < 3)
-					owner.apply_damage(0.1 * PROCESS_ACCURACY, TOX)
-				owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
+			if(filter_effect < 3)
+				owner.apply_damage(0.1 * PROCESS_ACCURACY, TOX)
+			owner.reagents.remove_reagent(R.id, R.custom_metabolism*filter_effect)
 
 		//Deal toxin damage if damaged
 		if(owner.chem_effect_flags & CHEM_EFFECT_ORGAN_STASIS)

@@ -306,6 +306,11 @@
 	path = /obj/item/explosive/warhead/mortar
 	category = "Explosives"
 
+/datum/autolathe/recipe/armylathe/mortar_camera_warhead
+	name = "80mm Mortar Camera Warhead"
+	path = /obj/item/explosive/warhead/mortar/camera
+	category = "Explosives"
+
 /datum/autolathe/recipe/armylathe/flamer_tank
 	name = "Custom M240A1 Fuel Tank"
 	path = /obj/item/ammo_magazine/flamer_tank/custom

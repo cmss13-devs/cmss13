@@ -395,20 +395,44 @@ updatehealth()
 	if(!hud_used || !hud_used.locate_leader)
 		return
 
-	if(hive && !hive.living_xeno_queen || (caste && caste.is_intelligent) || !loc)
-		hud_used.locate_leader.icon_state = "trackoff"
+	var/obj/screen/queen_locator/QL = hud_used.locate_leader
+	if(!loc)
+		QL.icon_state = "trackoff"
 		return
 
-	if(hive && hive.living_xeno_queen.loc.z != loc.z || get_dist(src,hive.living_xeno_queen) < 1 || src == hive.living_xeno_queen)
-		hud_used.locate_leader.icon_state = "trackondirect"
+	var/atom/tracking_atom
+	switch(QL.track_state)
+		if(TRACKER_QUEEN)
+			if(!hive || !hive.living_xeno_queen)
+				QL.icon_state = "trackoff"
+				return
+			tracking_atom = hive.living_xeno_queen
+		if(TRACKER_HIVE)
+			if(!hive || !hive.hive_location)
+				QL.icon_state = "trackoff"
+				return
+			tracking_atom = hive.hive_location
+		else
+			var/leader_tracker = text2num(QL.track_state)
+			if(!hive || !hive.xeno_leader_list[leader_tracker])
+				QL.icon_state = "trackoff"
+				return
+			tracking_atom = hive.xeno_leader_list[leader_tracker]
+
+	if(!tracking_atom)
+		QL.icon_state = "trackoff"
+		return
+
+	if(tracking_atom.loc.z != loc.z || get_dist(src, tracking_atom) < 1 || src == tracking_atom)
+		QL.icon_state = "trackondirect"
 	else
 		var/area/A = get_area(loc)
-		var/area/QA = get_area(hive.living_xeno_queen.loc)
+		var/area/QA = get_area(tracking_atom.loc)
 		if(A.fake_zlevel == QA.fake_zlevel)
-			hud_used.locate_leader.setDir(get_dir(src,hive.living_xeno_queen))
-			hud_used.locate_leader.icon_state = "trackon"
+			QL.setDir(get_dir(src, tracking_atom))
+			QL.icon_state = "trackon"
 		else
-			hud_used.locate_leader.icon_state = "trackondirect"
+			QL.icon_state = "trackondirect"
 
 /mob/living/carbon/Xenomorph/updatehealth()
 	if(status_flags & GODMODE)
@@ -426,7 +450,6 @@ updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/handle_luminosity()
 	var/new_luminosity = 0
-	luminosity_total = 0
 	if(caste)
 		new_luminosity += caste.caste_luminosity
 	if(on_fire)
@@ -442,7 +465,7 @@ updatehealth()
 
 /mob/living/carbon/Xenomorph/proc/handle_interference()
 	if(interference)
-		interference -= 2
+		interference = max(interference-2, 0)
 
 	if(observed_xeno && observed_xeno.interference)
 		overwatch(observed_xeno,TRUE)

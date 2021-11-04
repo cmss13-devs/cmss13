@@ -211,12 +211,6 @@
 
 	return
 
-/obj/item/reagent_container/food/snacks/Destroy()
-	if(contents)
-		for(var/atom/movable/something in contents)
-			something.forceMove(get_turf(src))
-	return ..()
-
 /obj/item/reagent_container/food/snacks/attack_animal(var/mob/M)
 	if(isanimal(M))
 		if(iscorgi(M))
@@ -345,6 +339,19 @@
 	reagents.add_reagent("blackpepper", 1)
 	bitesize = 1
 
+/obj/item/reagent_container/food/snacks/wy_chips/pepper
+	name = "Weyland-Yutani Pepper Chips"
+	desc = "Premium high quality chips, now with 0% trans fat and added black pepper."
+	icon_state = "wy_chips_pepper"
+	item_state = "wy_chips_pepper"
+	trash = /obj/item/trash/wy_chips_pepper
+	filling_color = "#E8C31E"
+
+/obj/item/reagent_container/food/snacks/wy_chips/pepper/Initialize()
+	. = ..()
+	reagents.add_reagent("bread", 3)
+	reagents.add_reagent("blackpepper", 1)
+	bitesize = 1
 /obj/item/reagent_container/food/snacks/cookie
 	name = "cookie"
 	desc = "COOKIE!!!"
@@ -756,7 +763,7 @@
 	filling_color = "#D63C3C"
 
 /obj/item/reagent_container/food/snacks/human/burger
-	name = "-burger"
+	name = "burger"
 	desc = "A bloody burger."
 	icon_state = "hamburger"
 
@@ -1083,7 +1090,7 @@
 
 
 /obj/item/reagent_container/food/snacks/human/kabob
-	name = "-kabob"
+	name = "kabob"
 	icon_state = "kabob"
 	desc = "A human meat, on a stick."
 	trash = /obj/item/stack/rods
@@ -1273,17 +1280,6 @@
 	. = ..()
 	reagents.add_reagent("cheese", 4)
 	reagents.add_reagent("potato", 2)
-	bitesize = 2
-
-/obj/item/reagent_container/food/snacks/fortunecookie
-	name = "Fortune cookie"
-	desc = "A true prophecy in each cookie!"
-	icon_state = "fortune_cookie"
-	filling_color = "#E8E79E"
-
-/obj/item/reagent_container/food/snacks/fortunecookie/Initialize()
-	. = ..()
-	reagents.add_reagent("bread", 3)
 	bitesize = 2
 
 /obj/item/reagent_container/food/snacks/badrecipe
@@ -1575,7 +1571,6 @@
 			I.take_damage(rand(I.min_bruised_damage, I.min_broken_damage+1))
 		if (!E.hidden && prob(60)) //set it snuggly
 			E.hidden = surprise
-			E.cavity = 0
 		else 		//someone is having a bad day
 			E.createwound(CUT, 30)
 			E.embed(surprise)
@@ -2848,7 +2843,7 @@
 // Flour + egg = dough
 /obj/item/reagent_container/food/snacks/flour/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food/snacks/egg))
-		new /obj/item/reagent_container/food/snacks/dough(src)
+		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
 		to_chat(user, "You make some dough.")
 		qdel(W)
 		qdel(src)
@@ -2856,7 +2851,7 @@
 // Egg + flour = dough
 /obj/item/reagent_container/food/snacks/egg/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/reagent_container/food/snacks/flour))
-		new /obj/item/reagent_container/food/snacks/dough(src)
+		new /obj/item/reagent_container/food/snacks/dough(get_turf(src))
 		to_chat(user, "You make some dough.")
 		qdel(W)
 		qdel(src)
@@ -2875,7 +2870,7 @@
 // Dough + rolling pin = flat dough
 /obj/item/reagent_container/food/snacks/dough/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/kitchen/rollingpin))
-		new /obj/item/reagent_container/food/snacks/sliceable/flatdough(src)
+		new /obj/item/reagent_container/food/snacks/sliceable/flatdough(get_turf(src))
 		to_chat(user, "You flatten the dough.")
 		qdel(src)
 
@@ -2917,21 +2912,21 @@
 /obj/item/reagent_container/food/snacks/bun/attackby(obj/item/W as obj, mob/user as mob)
 	// Bun + meatball = burger
 	if(istype(W,/obj/item/reagent_container/food/snacks/meatball))
-		new /obj/item/reagent_container/food/snacks/monkeyburger(src)
+		new /obj/item/reagent_container/food/snacks/monkeyburger(get_turf(src))
 		to_chat(user, "You make a burger.")
 		qdel(W)
 		qdel(src)
 
 	// Bun + cutlet = hamburger
 	else if(istype(W,/obj/item/reagent_container/food/snacks/cutlet))
-		new /obj/item/reagent_container/food/snacks/monkeyburger(src)
+		new /obj/item/reagent_container/food/snacks/monkeyburger(get_turf(src))
 		to_chat(user, "You make a burger.")
 		qdel(W)
 		qdel(src)
 
 	// Bun + sausage = hotdog
 	else if(istype(W,/obj/item/reagent_container/food/snacks/sausage))
-		new /obj/item/reagent_container/food/snacks/hotdog(src)
+		new /obj/item/reagent_container/food/snacks/hotdog(get_turf(src))
 		to_chat(user, "You make a hotdog.")
 		qdel(W)
 		qdel(src)
@@ -2939,7 +2934,7 @@
 // Burger + cheese wedge = cheeseburger
 /obj/item/reagent_container/food/snacks/monkeyburger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))// && !istype(src,/obj/item/reagent_container/food/snacks/cheesewedge))
-		new /obj/item/reagent_container/food/snacks/cheeseburger(src)
+		new /obj/item/reagent_container/food/snacks/cheeseburger(get_turf(src))
 		to_chat(user, "You make a cheeseburger.")
 		qdel(W)
 		qdel(src)
@@ -2950,7 +2945,7 @@
 // Human Burger + cheese wedge = cheeseburger
 /obj/item/reagent_container/food/snacks/human/burger/attackby(obj/item/reagent_container/food/snacks/cheesewedge/W as obj, mob/user as mob)
 	if(istype(W))
-		new /obj/item/reagent_container/food/snacks/cheeseburger(src)
+		new /obj/item/reagent_container/food/snacks/cheeseburger(get_turf(src))
 		to_chat(user, "You make a cheeseburger.")
 		qdel(W)
 		qdel(src)
@@ -3026,7 +3021,7 @@
 // potato + knife = raw sticks
 /obj/item/reagent_container/food/snacks/grown/potato/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/tool/kitchen/utensil/knife))
-		new /obj/item/reagent_container/food/snacks/rawsticks(src)
+		new /obj/item/reagent_container/food/snacks/rawsticks(get_turf(src))
 		to_chat(user, "You cut the potato.")
 		qdel(src)
 	else
@@ -3252,18 +3247,22 @@
 	switch(newflavor)
 		if("boneless pork ribs", "grilled chicken", "pizza square", "spaghetti chunks", "chicken tender")
 			icon_state = "entree"
+			desc = "An MRE entree component. Contains the main course for nutrients. This one is [flavor]."
 			reagents.add_reagent("nutriment", 14)
 			reagents.add_reagent("sodiumchloride", 6)
 		if("cracker", "cheese spread", "rice onigiri", "mashed potatoes", "risotto")
 			icon_state = "side"
+			desc = "An MRE side component. Contains a side, to be eaten alongside the main. This one is [flavor]."
 			reagents.add_reagent("nutriment", 6)
 			reagents.add_reagent("sodiumchloride", 2)
 		if("biscuit", "meatballs", "pretzels", "peanuts", "sushi")
 			icon_state = "snack"
+			desc = "An MRE snack component. Contains a light snack in case you weren't feeling terribly hungry. This one is [flavor]."
 			reagents.add_reagent("nutriment", 4)
 			reagents.add_reagent("sodiumchloride", 2)
 		if("spiced apples", "chocolate brownie", "sugar cookie", "coco bar", "flan", "honey flan")
 			icon_state = "dessert"
+			desc = "An MRE side component. Contains a sweet dessert, to be eaten after the main (or before, if you're rebellious). This one is [flavor]."
 			reagents.add_reagent("nutriment", 2)
 			reagents.add_reagent("sugar", 2)
 			reagents.add_reagent("coco", 1)

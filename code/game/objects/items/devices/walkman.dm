@@ -18,14 +18,15 @@
 	var/volume = 25
 	var/design = 1 // What kind of walkman design style to use
 	item_icons = list(
-			WEAR_EAR = 'icons/mob/humans/onmob/ears.dmi',
+			WEAR_L_EAR = 'icons/mob/humans/onmob/ears.dmi',
+			WEAR_R_EAR = 'icons/mob/humans/onmob/ears.dmi',
 			WEAR_WAIST = 'icons/mob/humans/onmob/ears.dmi',
 			WEAR_IN_J_STORE = 'icons/mob/humans/onmob/ears.dmi'
 			)
 
 /obj/item/device/walkman/Initialize()
 	. = ..()
-	design = rand(1, 3)
+	design = rand(1, 5)
 	update_icon()
 
 /obj/item/device/walkman/Destroy()
@@ -175,7 +176,7 @@
 
 /obj/item/device/walkman/get_mob_overlay(mob/user_mob, slot)
 	var/image/ret = ..()
-	if(slot == WEAR_EAR && !paused)
+	if((slot == WEAR_L_EAR || slot == WEAR_R_EAR) && !paused)
 		var/image/I = overlay_image(ret.icon, "+music", color, RESET_COLOR)
 		ret.overlays += I
 	return ret
@@ -460,3 +461,56 @@
 								"sound/music/walkman/surf/10-2-2.ogg",\
 								"sound/music/walkman/surf/10-2-3.ogg",\
 								"sound/music/walkman/surf/10-2-4.ogg"))
+
+// hotline reference
+/obj/item/device/cassette_tape/aesthetic
+	name = "aesthetic cassette"
+	id = 12
+	desc = "An aesthetic looking cassette tape. 'Jacket' is written on the front."
+	icon_state = "cassette_aesthetic"
+	side1_icon = "cassette_aesthetic"
+
+//cassette tape that I thought was a good idea but doesnt fit for new maps.
+/obj/item/device/cassette_tape/cargocrate
+	name = "weyland yutani cassette"
+	id = 13
+	desc = "A blue metalic cassette with a weyland yutani logo."
+	icon_state = "cassette_wy"
+	side1_icon = "cassette_wy"
+
+// cassette tapes for map lore
+/obj/item/device/cassette_tape/solaris
+	name = "red UCP cassette"
+	id = 14
+	desc = "A cassette with a red UCP camo design."
+	icon_state = "cassette_solaris"
+	side1_icon = "cassette_solaris"
+
+
+/obj/item/device/cassette_tape/icecolony
+	name = "frozen cassette"
+	id = 15
+	desc = "A cassette. It's covered in ice and snow."
+	icon_state = "cassette_ice"
+	side1_icon = "cassette_ice"
+
+/obj/item/device/cassette_tape/lz
+	name = "nostalgic cassette"
+	id = 16
+	desc = "There's a cut up postcard taped to this cassette. You know this place."
+	icon_state = "cassette_lz"
+	side1_icon = "cassette_lz"
+
+/obj/item/device/cassette_tape/desertdam
+	name = "dam cassette"
+	id = 17
+	desc = "Attached to this cassette is a picture of a dam."
+	icon_state = "cassette_dam"
+	side1_icon = "cassette_dam"
+
+/obj/item/device/cassette_tape/prison
+	name = "broken cassette"
+	id = 18
+	desc = "The shell on this casette is broken, it still looks like it'll work, though!"
+	icon_state = "cassette_worstmap"
+	side1_icon = "cassette_worstmap"

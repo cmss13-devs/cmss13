@@ -153,8 +153,6 @@
 	else
 		//copied from human_defense.dm - human defence code should really be refactored some time.
 		if (ishuman(L))
-			user.lastattacked = L	//are these used at all, if we have logs?
-			L.lastattacker = user
 
 			if(!target_zone) //shouldn't ever happen
 				L.visible_message(SPAN_DANGER("<B>[user] misses [L] with \the [src]!"))
@@ -220,7 +218,7 @@
 	item_state = "prod"
 	force = 3
 	throwforce = 5
-	stunforce = 0
+	stunforce = 40
 	hitcost = 2500
 	attack_verb = list("poked")
 	flags_equip_slot = NO_FLAGS

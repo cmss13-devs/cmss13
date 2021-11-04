@@ -140,25 +140,25 @@
 	icon_state = "hardhat[on]_pumpkin"
 
 	if(on)
-		user.SetLuminosity(brightness_on)
+		user.SetLuminosity(brightness_on, FALSE, src)
 	else
-		user.SetLuminosity(-brightness_on)
+		user.SetLuminosity(0, FALSE, src)
 
 /obj/item/clothing/head/pumpkinhead/pickup(mob/user)
 	..()
 	if(on)
-		user.SetLuminosity(brightness_on)
+		user.SetLuminosity(brightness_on, FALSE, src)
 	SetLuminosity(0)
 
 /obj/item/clothing/head/pumpkinhead/dropped(mob/user)
 	..()
 	if(on)
-		user.SetLuminosity(-brightness_on)
+		user.SetLuminosity(0, FALSE, src)
 		SetLuminosity(brightness_on)
 
 /obj/item/clothing/head/pumpkinhead/Destroy()
 	if(ismob(src.loc))
-		src.loc.SetLuminosity(-brightness_on)
+		src.loc.SetLuminosity(0, FALSE, src)
 	else
 		SetLuminosity(0)
 	return ..()

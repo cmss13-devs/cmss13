@@ -18,6 +18,7 @@
 
 	attack_icon = image("icon" = 'icons/effects/attacks.dmi',"icon_state" = "", "layer" = 0)
 
+	initialize_incision_depths()
 	initialize_pain()
 	initialize_stamina()
 	GLOB.living_mob_list += src
@@ -26,15 +27,14 @@
 	GLOB.living_mob_list -= src
 	pipes_shown = null
 
+	. = ..()
+
 	attack_icon = null
 	QDEL_NULL(fire_reagent)
 	QDEL_NULL(event_movement)
 	QDEL_NULL(pain)
 	QDEL_NULL(stamina)
-
-	. = ..()
-
-	QDEL_NULL_LIST(actions)
+	QDEL_NULL(hallucinations)
 
 //This proc is used for mobs which are affected by pressure to calculate the amount of pressure that actually
 //affects them once clothing is factored in. ~Errorage
@@ -46,6 +46,10 @@
 
 /mob/living/proc/initialize_stamina()
 	stamina = new /datum/stamina(src)
+
+/mob/living/proc/initialize_incision_depths()
+	for(var/location in incision_depths)
+		incision_depths[location] = SURGERY_DEPTH_SURFACE
 
 /mob/living/proc/apply_stamina_damage(var/damage, var/def_zone, var/armor_type)
 	if(!stamina)
@@ -428,7 +432,7 @@
 	var/old_icon = attack_icon.icon_state
 	var/old_pix_x = attack_icon.pixel_x
 	var/old_pix_y = attack_icon.pixel_y
-	addtimer(CALLBACK(src, /mob/living/proc/finish_attack_overlay, target, old_icon, old_pix_x, old_pix_y), 4)
+	addtimer(CALLBACK(istype(target, /mob/living) ? target : src, /mob/living/proc/finish_attack_overlay, target, old_icon, old_pix_x, old_pix_y), 4)
 
 /mob/living/proc/finish_attack_overlay(atom/target, old_icon, old_pix_x, old_pix_y)
 	if(!attack_icon || !target)
@@ -454,7 +458,7 @@
 	return
 
 /mob/living/flash_eyes(intensity = 1, bypass_checks, type = /obj/screen/fullscreen/flash, var/flash_timer = 40)
-	if( bypass_checks || (get_eye_protection() < intensity && !(disabilities & DISABILITY_BLIND)) )
+	if( bypass_checks || (get_eye_protection() < intensity && !(sdisabilities & DISABILITY_BLIND)))
 		overlay_fullscreen("flash", type)
 		spawn(flash_timer)
 			clear_fullscreen("flash", 20)
@@ -541,14 +545,12 @@
 		for(var/obj/limb/org in H.limbs)
 			var/brute_treated = TRUE
 			var/burn_treated = TRUE
-			var/open_incision = TRUE
-			if(org.surgery_open_stage == 0)
-				open_incision = FALSE
+			var/open_incision = org.get_incision_depth() ? " <span class='scanner'>Open surgical incision</span>" : ""
+
 			if((org.brute_dam > 0 && !org.is_bandaged()) || open_incision)
 				brute_treated = FALSE
 			if(org.burn_dam > 0 && !org.is_salved())
 				burn_treated = FALSE
-
 			if(org.status & LIMB_DESTROYED)
 				dat += "\t\t [capitalize(org.display_name)]: <span class='scannerb'>Missing!</span>\n"
 				continue
@@ -559,7 +561,14 @@
 				break
 			var/show_limb = (org.burn_dam > 0 || org.brute_dam > 0 || (org.status & LIMB_SPLINTED) || open_incision || bleeding_check)
 
-			var/org_name = "[capitalize(org.display_name)][org.status & LIMB_ROBOT ? " (Cybernetic)" : ""]"
+			var/org_name = "[capitalize(org.display_name)]"
+			if(org.status & LIMB_ROBOT)
+				if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
+					org_name += " (Nonfunctional Cybernetic)]"
+					show_limb = TRUE
+				else
+					org_name += " (Cybernetic)"
+
 			var/burn_info = org.burn_dam > 0 ? "<span class='scannerburnb'> [round(org.burn_dam)]</span>" : "<span class='scannerburn'>0</span>"
 			burn_info += "[burn_treated ? "" : "{B}"]"
 			var/brute_info =  org.brute_dam > 0 ? "<span class='scannerb'> [round(org.brute_dam)]</span>" : "<span class='scanner'>0</span>"
@@ -573,7 +582,6 @@
 			if(bleeding_check)
 				org_bleed = "<span class='scannerb'>(Bleeding)</span>"
 
-			var/org_incision = (open_incision?" <span class='scanner'>Open surgical incision</span>":"")
 			var/org_advice = ""
 			if(!skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
 				switch(org.name)
@@ -593,7 +601,7 @@
 							org_advice = " Possible Groin Fracture."
 							show_limb = 1
 			if(show_limb)
-				dat += "\t\t [org_name]: \t [burn_info] - [brute_info] [fracture_info][org_bleed][org_incision][org_advice]"
+				dat += "\t\t [org_name]: \t [burn_info] - [brute_info] [fracture_info][org_bleed][open_incision][org_advice]"
 				if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
 					dat += "(Nanosplinted)"
 				else if(org.status & LIMB_SPLINTED)

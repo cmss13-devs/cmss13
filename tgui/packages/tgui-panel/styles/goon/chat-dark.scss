@@ -255,7 +255,7 @@ a.popt {
 /* ADD HERE FOR ITALIC */
 
 
-.italic, .italics, .emote {
+.italic, .italics, {
   font-style: italic;
 }
 
@@ -378,10 +378,6 @@ em {
 
 .alert {
   color: #d82020;
-}
-
-.emote {
-  font-style: italic;
 }
 
 .userdanger {
@@ -877,6 +873,7 @@ em {
 .bravoradio				{color: #C68610;}
 .charlieradio			{color: #AA55AA;}
 .deltaradio				{color: #007FCF;}
+.echoradio				{color: #3EB489;}
 
 .medium					{					font-size: 110%}
 .big					{					font-size: 115%}
@@ -959,6 +956,7 @@ em {
 .german					{color: #858F1E; 	font-family: 'Times New Roman', Times, serif;}
 .spanish				{color: #CF982B;}
 .japanese				{color: #be0029}
+.zombie 				{color: #2dacb1; font-style: italic;}
 .rough					{font-family: trebuchet-ms, cursive, sans-serif;}
 .commando				{color: #FE9B24; font-style: bold;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}

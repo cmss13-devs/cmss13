@@ -53,6 +53,7 @@ em						{font-style: normal;	font-weight: bold;}
 .bravoradio				{color: #C68610;}
 .charlieradio			{color: #AA55AA;}
 .deltaradio				{color: #007FCF;}
+.echoradio				{color: #3EB489;}
 
 .medium					{					font-size: 2}
 .big					{					font-size: 2}
@@ -70,7 +71,6 @@ em						{font-style: normal;	font-weight: bold;}
 .alert					{color: #ff0000;}
 h1.alert, h2.alert		{color: #000000;}
 
-.emote					{					font-style: italic;}
 .selecteddna			{color: #FFFFFF; 	background-color: #001B1B}
 
 .attack					{color: #ff0000;}

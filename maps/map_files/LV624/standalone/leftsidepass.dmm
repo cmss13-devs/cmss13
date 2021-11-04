@@ -1,8 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aa" = (
-
-/turf/open/gm/dirt,
-/area/lv624/ground/barrens/south_west_barrens)
 "ab" = (
 /obj/effect/landmark/lv624/fog_blocker,
 /turf/open/gm/coast,
@@ -177,7 +173,6 @@
 /area/lv624/ground/jungle/west_jungle)
 "aJ" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
-
 /turf/open/gm/grass,
 /area/lv624/ground/jungle/west_jungle)
 "aK" = (
@@ -324,7 +319,7 @@ JC
 JC
 JC
 JC
-aa
+bi
 bi
 ES
 ES
@@ -337,7 +332,7 @@ aC
 (3,1,1) = {"
 JC
 JC
-JC
+bi
 bi
 ag
 bi
@@ -351,7 +346,7 @@ aD
 "}
 (4,1,1) = {"
 JC
-JC
+bi
 bh
 bi
 bi
@@ -366,7 +361,7 @@ aE
 "}
 (5,1,1) = {"
 JC
-JC
+bi
 bi
 bi
 bz
@@ -380,8 +375,8 @@ ay
 az
 "}
 (6,1,1) = {"
-JC
-JC
+bi
+bi
 bi
 bi
 bL
@@ -395,7 +390,7 @@ Za
 aV
 "}
 (7,1,1) = {"
-JC
+bi
 bi
 bx
 bi
@@ -413,7 +408,7 @@ aF
 bi
 bi
 bh
-aa
+bi
 bL
 bc
 bc
@@ -455,7 +450,7 @@ aV
 aF
 "}
 (11,1,1) = {"
-aa
+bi
 bz
 ad
 bm

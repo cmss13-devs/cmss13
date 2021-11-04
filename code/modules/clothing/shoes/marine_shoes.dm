@@ -33,6 +33,10 @@
 	stored_item = new /obj/item/attachable/bayonet(src)
 	update_icon()
 
+/obj/item/clothing/shoes/marine/jungle
+	icon_state = "marine_jungle"
+	desc = "Don't go walkin' slow, the devils on the loose."
+
 /obj/item/clothing/shoes/marine/upp
 	name = "military combat boots"
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW

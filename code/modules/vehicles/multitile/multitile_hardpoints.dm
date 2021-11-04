@@ -143,7 +143,7 @@
 	var/list/hps = list()
 	for(var/obj/item/hardpoint/H in get_hardpoints_copy())
 		// Only allow uninstalls of massive hardpoints when using powerloaders
-		if(H.w_class == SIZE_MASSIVE && !ispowerclamp(O) || H.w_class <= SIZE_HUGE && ispowerclamp(O))
+		if(H.w_class == SIZE_MASSIVE && !ispowerclamp(O) || H.w_class <= SIZE_HUGE && ispowerclamp(O) || istype(H, /obj/item/hardpoint/special))
 			continue
 		hps += H
 

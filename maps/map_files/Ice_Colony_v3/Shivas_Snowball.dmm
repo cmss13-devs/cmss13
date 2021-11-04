@@ -3521,7 +3521,7 @@
 "arZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /turf/open/asphalt/cement,
 /area/shiva/interior/warehouse)
 "asd" = (
@@ -5472,7 +5472,7 @@
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/interior/bar)
 "aKv" = (
-/obj/item/folding_barricade,
+/obj/item/stack/folding_barricade,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -14082,7 +14082,7 @@
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/junkyard/cp_bar)
 "iXr" = (
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /turf/open/floor/shiva,
 /area/shiva/interior/colony/research_hab)
 "iXx" = (
@@ -19003,7 +19003,7 @@
 	},
 /area/shiva/interior/colony/botany)
 "otV" = (
-/obj/vehicle/powerloader{
+/obj/vehicle/powerloader/jd{
 	dir = 4
 	},
 /turf/open/floor/shiva{
@@ -19771,7 +19771,7 @@
 	},
 /area/shiva/interior/colony/research_hab)
 "pue" = (
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_y = 8
 	},
 /turf/open/floor/shiva,
@@ -20366,7 +20366,7 @@
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/interior/valley_huts)
 "pRH" = (
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
@@ -20846,7 +20846,7 @@
 /area/shiva/exterior/cp_lz2)
 "qud" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/drinks/britcup{
+/obj/item/reagent_container/food/drinks/coffeecup{
 	pixel_x = 7;
 	pixel_y = 14
 	},
@@ -24799,11 +24799,11 @@
 "uKo" = (
 /obj/structure/surface/table,
 /obj/item/ashtray/plastic,
-/obj/item/trash/ucigbutt{
+/obj/item/trash/cigbutt/ucigbutt{
 	pixel_x = 5;
 	pixel_y = 12
 	},
-/obj/item/trash/ucigbutt,
+/obj/item/trash/cigbutt/ucigbutt,
 /obj/item/trash/cigbutt/cigarbutt{
 	pixel_x = 5;
 	pixel_y = 11
@@ -26722,11 +26722,11 @@
 /area/shiva/interior/bar)
 "wYd" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/reagent_container/food/snacks/fortunecookie{
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled{
 	pixel_x = -6;
 	pixel_y = 2
 	},
-/obj/item/reagent_container/food/snacks/fortunecookie{
+/obj/item/reagent_container/food/snacks/fortunecookie/prefilled{
 	pixel_x = 6;
 	pixel_y = 11
 	},

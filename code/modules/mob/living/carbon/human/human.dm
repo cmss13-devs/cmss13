@@ -126,7 +126,7 @@
 		create_shrapnel(oldloc, rand(5, 9), direction, 45, /datum/ammo/bullet/shrapnel/light/human/var2, cause_data)
 		return
 
-	if(!istype(wear_ear, /obj/item/clothing/ears/earmuffs))
+	if(!get_type_in_ears(/obj/item/clothing/ears/earmuffs))
 		ear_damage += severity * 0.15
 		AdjustEarDeafness(severity * 0.5)
 
@@ -248,7 +248,8 @@
 	<BR><B>Right Hand:</B> <A href='?src=\ref[src];item=[WEAR_R_HAND]'>[(r_hand ? r_hand : "Nothing")]</A>
 	<BR><B>Gloves:</B> <A href='?src=\ref[src];item=[WEAR_HANDS]'>[(gloves ? gloves : "Nothing")]</A>
 	<BR><B>Eyes:</B> <A href='?src=\ref[src];item=[WEAR_EYES]'>[(glasses ? glasses : "Nothing")]</A>
-	<BR><B>Left Ear:</B> <A href='?src=\ref[src];item=[WEAR_EAR]'>[(wear_ear ? wear_ear : "Nothing")]</A>
+	<BR><B>Left Ear:</B> <A href='?src=\ref[src];item=[WEAR_L_EAR]'>[(wear_l_ear ? wear_l_ear : "Nothing")]</A>
+	<BR><B>Right Ear:</B> <A href='?src=\ref[src];item=[WEAR_R_EAR]'>[(wear_r_ear ? wear_r_ear : "Nothing")]</A>
 	<BR><B>Head:</B> <A href='?src=\ref[src];item=[WEAR_HEAD]'>[(head ? head : "Nothing")]</A>
 	<BR><B>Shoes:</B> <A href='?src=\ref[src];item=[WEAR_FEET]'>[(shoes ? shoes : "Nothing")]</A>
 	<BR><B>Belt:</B> <A href='?src=\ref[src];item=[WEAR_WAIST]'>[(belt ? belt : "Nothing")]</A> [((istype(wear_mask, /obj/item/clothing/mask) && istype(belt, /obj/item/tank) && !internal) ? " <A href='?src=\ref[src];internal=1'>Set Internal</A>" : "")]
@@ -533,25 +534,20 @@
 
 	if(href_list["criminal"])
 		if(hasHUD(usr,"security"))
-
 			var/modified = 0
-			var/perpname = "wot"
+			var/perpref = null
 			if(wear_id)
 				var/obj/item/card/id/I = wear_id.GetID()
 				if(I)
-					perpname = I.registered_name
-				else
-					perpname = name
-			else
-				perpname = name
+					perpref = I.registered_ref
 
-			if(perpname)
+			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
-					if(E.fields["name"] == perpname)
+					if(E.fields["ref"] == perpref)
 						for(var/datum/data/record/R in GLOB.data_core.security)
 							if(R.fields["id"] == E.fields["id"])
 
-								var/setcriminal = tgui_input_list(usr, "Specify a new criminal status for this person.", "Security HUD", list("None", "*Arrest*", "Incarcerated", "Released", "Cancel"))
+								var/setcriminal = tgui_input_list(usr, "Specify a new criminal status for this person.", "Security HUD", list("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP", "Cancel"))
 
 								if(hasHUD(usr, "security"))
 									if(setcriminal != "Cancel")
@@ -565,16 +561,15 @@
 
 	if(href_list["secrecord"])
 		if(hasHUD(usr,"security"))
-			var/perpname = "wot"
+			var/perpref = null
 			var/read = 0
 
 			if(wear_id)
-				if(istype(wear_id,/obj/item/card/id))
-					perpname = wear_id:registered_name
-			else
-				perpname = src.name
+				var/obj/item/card/id/ID = wear_id.GetID()
+				if(istype(ID))
+					perpref = ID.registered_ref
 			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["name"] == perpname)
+				if(E.fields["ref"] == perpref)
 					for(var/datum/data/record/R in GLOB.data_core.security)
 						if(R.fields["id"] == E.fields["id"])
 							if(hasHUD(usr,"security"))
@@ -587,183 +582,189 @@
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["secrecordComment"] && hasHUD(usr,"security"))
-		var/perpname = "wot"
-		if(wear_id && istype(wear_id,/obj/item/card/id))
-			perpname = wear_id:registered_name
-		if(!wear_id)
-			perpname = src.name
+		var/perpref = null
+		if(wear_id)
+			var/obj/item/card/id/ID = wear_id.GetID()
+			if(istype(ID))
+				perpref = ID.registered_ref
 
 		var/read = 0
 
-		for(var/datum/data/record/E in GLOB.data_core.general)
-			if(E.fields["name"] != perpname)
-				continue
-			for(var/datum/data/record/R in GLOB.data_core.security)
-				if(R.fields["id"] != E.fields["id"])
+		if(perpref)
+			for(var/datum/data/record/E in GLOB.data_core.general)
+				if(E.fields["ref"] != perpref)
 					continue
-				read = 1
-				if(!islist(R.fields["comments"]))
-					to_chat(usr, "<br /><b>No comments</b>")
-					continue
-				var/comment_markup = ""
-				for(var/com_i in R.fields["comments"])
-					var/comment = R.fields["comments"][com_i]
-					comment_markup += text("<br /><b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
-					if (isnull(comment["deleted_by"]))
-						comment_markup += text("[]<br />", comment["entry"])
+				for(var/datum/data/record/R in GLOB.data_core.security)
+					if(R.fields["id"] != E.fields["id"])
 						continue
-					comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
-				to_chat(usr, comment_markup)
-				to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
+					read = 1
+					if(!islist(R.fields["comments"]))
+						to_chat(usr, "<br /><b>No comments</b>")
+						continue
+					var/comment_markup = ""
+					for(var/com_i in R.fields["comments"])
+						var/comment = R.fields["comments"][com_i]
+						comment_markup += text("<br /><b>[] / [] ([])</b><br />", comment["created_at"], comment["created_by"]["name"], comment["created_by"]["rank"])
+						if (isnull(comment["deleted_by"]))
+							comment_markup += text("[]<br />", comment["entry"])
+							continue
+						comment_markup += text("<i>Comment deleted by [] at []</i><br />", comment["deleted_by"], comment["deleted_at"])
+					to_chat(usr, comment_markup)
+					to_chat(usr, "<a href='?src=\ref[src];secrecordadd=1'>\[Add comment\]</a><br />")
 
 		if(!read)
 			to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["secrecordadd"] && hasHUD(usr,"security"))
-		var/perpname = "wot"
-		if(wear_id && istype(wear_id,/obj/item/card/id))
-			perpname = wear_id:registered_name
-		if(!wear_id)
-			perpname = src.name
-		for(var/datum/data/record/E in GLOB.data_core.general)
-			if(E.fields["name"] != perpname)
-				continue
-			for(var/datum/data/record/R in GLOB.data_core.security)
-				if(R.fields["id"] != E.fields["id"])
+		var/perpref = null
+		if(wear_id)
+			var/obj/item/card/id/ID = wear_id.GetID()
+			if(istype(ID))
+				perpref = ID.registered_ref
+
+		if(perpref)
+			for(var/datum/data/record/E in GLOB.data_core.general)
+				if(E.fields["ref"] != perpref)
 					continue
-				var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)), 1, MAX_MESSAGE_LEN)
-				if(!(t1) || usr.stat || usr.is_mob_restrained())
-					return
-				var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
-				var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
-				if(istype(usr,/mob/living/carbon/human))
-					var/mob/living/carbon/human/U = usr
-					new_comment["created_by"]["name"] = U.get_authentification_name()
-					new_comment["created_by"]["rank"] = U.get_assignment()
-				else if(istype(usr,/mob/living/silicon/robot))
-					var/mob/living/silicon/robot/U = usr
-					new_comment["created_by"]["name"] = U.name
-					new_comment["created_by"]["rank"] = "[U.modtype] [U.braintype]"
-				if(!islist(R.fields["comments"]))
-					R.fields["comments"] = list("1" = new_comment)
-				else
-					var/new_com_i = length(R.fields["comments"]) + 1
-					R.fields["comments"]["[new_com_i]"] = new_comment
-				to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
+				for(var/datum/data/record/R in GLOB.data_core.security)
+					if(R.fields["id"] != E.fields["id"])
+						continue
+					var/t1 = copytext(trim(strip_html(input("Your name and time will be added to this new comment.", "Add a comment", null, null)  as message)), 1, MAX_MESSAGE_LEN)
+					if(!(t1) || usr.stat || usr.is_mob_restrained())
+						return
+					var/created_at = text("[]&nbsp;&nbsp;[]&nbsp;&nbsp;[]", time2text(world.realtime, "MMM DD"), time2text(world.time, "[worldtime2text()]:ss"), game_year)
+					var/new_comment = list("entry" = t1, "created_by" = list("name" = "", "rank" = ""), "deleted_by" = null, "deleted_at" = null, "created_at" = created_at)
+					if(istype(usr,/mob/living/carbon/human))
+						var/mob/living/carbon/human/U = usr
+						new_comment["created_by"]["name"] = U.get_authentification_name()
+						new_comment["created_by"]["rank"] = U.get_assignment()
+					else if(istype(usr,/mob/living/silicon/robot))
+						var/mob/living/silicon/robot/U = usr
+						new_comment["created_by"]["name"] = U.name
+						new_comment["created_by"]["rank"] = "[U.modtype] [U.braintype]"
+					if(!islist(R.fields["comments"]))
+						R.fields["comments"] = list("1" = new_comment)
+					else
+						var/new_com_i = length(R.fields["comments"]) + 1
+						R.fields["comments"]["[new_com_i]"] = new_comment
+					to_chat(usr, "You have added a new comment to the Security Record of [R.fields["name"]]. <a href='?src=\ref[src];secrecordComment=1'>\[View Comment Log\]</a>")
 
 	if(href_list["medical"])
 		if(hasHUD(usr,"medical"))
-			var/perpname = "wot"
-			var/modified = 0
-
+			var/perpref = null
 			if(wear_id)
-				if(istype(wear_id,/obj/item/card/id))
-					perpname = wear_id:registered_name
-			else
-				perpname = src.name
+				var/obj/item/card/id/ID = wear_id.GetID()
+				if(istype(ID))
+					perpref = ID.registered_ref
 
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["name"] == perpname)
-					for(var/datum/data/record/R in GLOB.data_core.general)
-						if(R.fields["id"] == E.fields["id"])
+			var/modified = FALSE
 
-							var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"], list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled", "Cancel"))
+			if(perpref)
+				for(var/datum/data/record/E in GLOB.data_core.general)
+					if(E.fields["ref"] == perpref)
+						for(var/datum/data/record/R in GLOB.data_core.general)
+							if(R.fields["id"] == E.fields["id"])
 
-							if(hasHUD(usr,"medical"))
-								if(setmedical != "Cancel")
-									R.fields["p_stat"] = setmedical
-									modified = 1
+								var/setmedical = tgui_input_list(usr, "Specify a new medical status for this person.", "Medical HUD", R.fields["p_stat"], list("*SSD*", "*Deceased*", "Physically Unfit", "Active", "Disabled", "Cancel"))
 
-									spawn()
-										if(istype(usr,/mob/living/carbon/human))
-											var/mob/living/carbon/human/U = usr
-											U.handle_regular_hud_updates()
-										if(istype(usr,/mob/living/silicon/robot))
-											var/mob/living/silicon/robot/U = usr
-											U.handle_regular_hud_updates()
+								if(hasHUD(usr,"medical"))
+									if(setmedical != "Cancel")
+										R.fields["p_stat"] = setmedical
+										modified = 1
+
+										spawn()
+											if(istype(usr,/mob/living/carbon/human))
+												var/mob/living/carbon/human/U = usr
+												U.handle_regular_hud_updates()
+											if(istype(usr,/mob/living/silicon/robot))
+												var/mob/living/silicon/robot/U = usr
+												U.handle_regular_hud_updates()
 
 			if(!modified)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["medrecord"])
 		if(hasHUD(usr,"medical"))
-			var/perpname = "wot"
-			var/read = 0
-
+			var/perpref = null
 			if(wear_id)
-				if(istype(wear_id,/obj/item/card/id))
-					perpname = wear_id:registered_name
-			else
-				perpname = src.name
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["name"] == perpname)
-					for(var/datum/data/record/R in GLOB.data_core.medical)
-						if(R.fields["id"] == E.fields["id"])
-							if(hasHUD(usr,"medical"))
-								to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
-								to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
-								to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
-								to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
-								to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
-								to_chat(usr, "<a href='?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
-								read = 1
+				var/obj/item/card/id/ID = wear_id.GetID()
+				if(istype(ID))
+					perpref = ID.registered_ref
+
+			var/read = FALSE
+
+			if(perpref)
+				for(var/datum/data/record/E in GLOB.data_core.general)
+					if(E.fields["ref"] == perpref)
+						for(var/datum/data/record/R in GLOB.data_core.medical)
+							if(R.fields["id"] == E.fields["id"])
+								if(hasHUD(usr,"medical"))
+									to_chat(usr, "<b>Name:</b> [R.fields["name"]]	<b>Blood Type:</b> [R.fields["b_type"]]")
+									to_chat(usr, "<b>Minor Disabilities:</b> [R.fields["mi_dis"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["mi_dis_d"]]")
+									to_chat(usr, "<b>Major Disabilities:</b> [R.fields["ma_dis"]]")
+									to_chat(usr, "<b>Details:</b> [R.fields["ma_dis_d"]]")
+									to_chat(usr, "<b>Notes:</b> [R.fields["notes"]]")
+									to_chat(usr, "<a href='?src=\ref[src];medrecordComment=1'>\[View Comment Log\]</a>")
+									read = 1
 
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["medrecordComment"])
 		if(hasHUD(usr,"medical"))
-			var/perpname = "wot"
-			var/read = 0
-
+			var/perpref = null
 			if(wear_id)
-				if(istype(wear_id,/obj/item/card/id))
-					perpname = wear_id:registered_name
-			else
-				perpname = src.name
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["name"] == perpname)
-					for(var/datum/data/record/R in GLOB.data_core.medical)
-						if(R.fields["id"] == E.fields["id"])
-							if(hasHUD(usr,"medical"))
-								read = 1
-								var/counter = 1
-								while(R.fields["com_[counter]"])
-									to_chat(usr, R.fields["com_[counter]"])
-									counter++
-								if(counter == 1)
-									to_chat(usr, "No comment found")
-								to_chat(usr, "<a href='?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
+				var/obj/item/card/id/ID = wear_id.GetID()
+				if(istype(ID))
+					perpref = ID.registered_ref
+
+			var/read = FALSE
+
+			if(perpref)
+				for(var/datum/data/record/E in GLOB.data_core.general)
+					if(E.fields["ref"] == perpref)
+						for(var/datum/data/record/R in GLOB.data_core.medical)
+							if(R.fields["id"] == E.fields["id"])
+								if(hasHUD(usr,"medical"))
+									read = 1
+									var/counter = 1
+									while(R.fields["com_[counter]"])
+										to_chat(usr, R.fields["com_[counter]"])
+										counter++
+									if(counter == 1)
+										to_chat(usr, "No comment found")
+									to_chat(usr, "<a href='?src=\ref[src];medrecordadd=1'>\[Add comment\]</a>")
 
 			if(!read)
 				to_chat(usr, SPAN_DANGER("Unable to locate a data core entry for this person."))
 
 	if(href_list["medrecordadd"])
 		if(hasHUD(usr,"medical"))
-			var/perpname = "wot"
+			var/perpref = null
 			if(wear_id)
-				if(istype(wear_id,/obj/item/card/id))
-					perpname = wear_id:registered_name
-			else
-				perpname = src.name
-			for(var/datum/data/record/E in GLOB.data_core.general)
-				if(E.fields["name"] == perpname)
-					for(var/datum/data/record/R in GLOB.data_core.medical)
-						if(R.fields["id"] == E.fields["id"])
-							if(hasHUD(usr,"medical"))
-								var/t1 = strip_html(input("Add Comment:", "Med. records", null, null)  as message)
-								if(!(t1) || usr.stat || usr.is_mob_restrained() || !(hasHUD(usr,"medical")) )
-									return
-								var/counter = 1
-								while(R.fields[text("com_[]", counter)])
-									counter++
-								if(istype(usr,/mob/living/carbon/human))
-									var/mob/living/carbon/human/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
-								if(istype(usr,/mob/living/silicon/robot))
-									var/mob/living/silicon/robot/U = usr
-									R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+				var/obj/item/card/id/ID = wear_id.GetID()
+				if(istype(ID))
+					perpref = ID.registered_ref
+
+			if(perpref)
+				for(var/datum/data/record/E in GLOB.data_core.general)
+					if(E.fields["ref"] == perpref)
+						for(var/datum/data/record/R in GLOB.data_core.medical)
+							if(R.fields["id"] == E.fields["id"])
+								if(hasHUD(usr,"medical"))
+									var/t1 = strip_html(input("Add Comment:", "Med. records", null, null)  as message)
+									if(!(t1) || usr.stat || usr.is_mob_restrained() || !(hasHUD(usr,"medical")) )
+										return
+									var/counter = 1
+									while(R.fields[text("com_[]", counter)])
+										counter++
+									if(istype(usr,/mob/living/carbon/human))
+										var/mob/living/carbon/human/U = usr
+										R.fields[text("com_[counter]")] = text("Made by [U.get_authentification_name()] ([U.get_assignment()]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
+									if(istype(usr,/mob/living/silicon/robot))
+										var/mob/living/silicon/robot/U = usr
+										R.fields[text("com_[counter]")] = text("Made by [U.name] ([U.modtype] [U.braintype]) on [time2text(world.realtime, "DDD MMM DD hh:mm:ss")], [game_year]<BR>[t1]")
 
 	if(href_list["medholocard"])
 		if(!skillcheck(usr, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
@@ -798,8 +799,9 @@
 				to_chat(usr, SPAN_WARNING("[src] is too far away."))
 				return
 
+			var/me_ref = WEAKREF(src)
 			for(var/datum/data/record/R in GLOB.data_core.medical)
-				if(R.fields["name"] == real_name)
+				if(R.fields["ref"] == me_ref)
 					if(R.fields["last_scan_time"] && R.fields["last_scan_result"])
 						show_browser(usr, R.fields["last_scan_result"], "Medical Scan Report", "scanresults", "size=430x600")
 					break
@@ -865,10 +867,10 @@
 
 
 /mob/living/carbon/human/abiotic(var/full_body = 0)
-	if(full_body && ((src.l_hand && !( src.l_hand.flags_item & ITEM_ABSTRACT)) || (src.r_hand && !( src.r_hand.flags_item & ITEM_ABSTRACT)) || (src.back || src.wear_mask || src.head || src.shoes || src.w_uniform || src.wear_suit || src.glasses || src.wear_ear || src.gloves)))
+	if(full_body && ((l_hand && !( l_hand.flags_item & ITEM_ABSTRACT)) || (r_hand && !( r_hand.flags_item & ITEM_ABSTRACT)) || (back || wear_mask || head || shoes || w_uniform || wear_suit || glasses || wear_l_ear || wear_r_ear || gloves)))
 		return TRUE
 
-	if((src.l_hand && !(src.l_hand.flags_item & ITEM_ABSTRACT)) || (src.r_hand && !(src.r_hand.flags_item & ITEM_ABSTRACT)) )
+	if((l_hand && !(l_hand.flags_item & ITEM_ABSTRACT)) || (r_hand && !(r_hand.flags_item & ITEM_ABSTRACT)) )
 		return TRUE
 
 	return FALSE
@@ -913,17 +915,6 @@
 	return gender
 
 /mob/living/carbon/human/revive(keep_viruses)
-	for(var/obj/limb/O in limbs)
-		if(O.status & LIMB_ROBOT)
-			O.status = LIMB_ROBOT
-		else
-			O.status = NO_FLAGS
-		O.perma_injury = 0
-		O.wounds.Cut()
-		O.heal_damage(1000, 1000, TRUE)
-		O.remove_all_bleeding(TRUE, TRUE)
-		O.reset_limb_surgeries()
-
 	var/obj/limb/head/h = get_limb("head")
 	if(QDELETED(h))
 		h = get_limb("synthetic head")
@@ -947,18 +938,23 @@
 			H.brainmob.mind.transfer_to(src)
 			qdel(H)
 
-	for(var/datum/internal_organ/I in internal_organs)
-		I.damage = 0
-
 	if(!keep_viruses)
 		for(var/datum/disease/virus in viruses)
 			if(istype(virus, /datum/disease/black_goo))
 				continue
 			virus.cure(0)
 
-	pain.recalculate_pain()
-
 	undefibbable = FALSE
+
+	//Remove any larva.
+	var/obj/item/alien_embryo/A = locate() in src
+	if(A)
+		var/mob/living/carbon/Xenomorph/Larva/L = locate() in src //if the larva was fully grown, ready to burst.
+		if(L)
+			qdel(L)
+		qdel(A)
+		status_flags &= ~XENO_HOST
+
 	..()
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
@@ -1100,6 +1096,8 @@
 	INVOKE_ASYNC(src, .proc/restore_blood)
 	INVOKE_ASYNC(src, .proc/update_body, 1, 0)
 	INVOKE_ASYNC(src, .proc/update_hair)
+	if(!(species.flags & HAS_UNDERWEAR))
+		INVOKE_ASYNC(src, .proc/remove_underwear)
 
 	if(species)
 		return TRUE
@@ -1163,7 +1161,7 @@
 
 
 //very similar to xeno's queen_locator() but this is for locating squad leader.
-/mob/living/carbon/human/proc/locate_squad_leader()
+/mob/living/carbon/human/proc/locate_squad_leader(var/tracker_setting = TRACKER_SL)
 	if(!assigned_squad) return
 
 	var/mob/living/carbon/human/H
@@ -1171,13 +1169,24 @@
 	if(hud_used)
 		hud_used.locate_leader.icon_state = "trackoff"
 
-	if(assigned_fireteam && assigned_squad.fireteam_leaders[assigned_fireteam])
+
+	if(tracker_setting == TRACKER_SL) //default
+		H = assigned_squad.squad_leader
+	else if(tracker_setting == TRACKER_LZ)
+		var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
+		if(!C) //no LZ selected
+			hud_used.locate_leader.icon_state = "trackoff"
+		else if(C.z != src.z || get_dist(src,C) < 1)
+			hud_used.locate_leader.icon_state = "trackondirect_lz"
+		else
+			hud_used.locate_leader.setDir(get_dir(src,C))
+			hud_used.locate_leader.icon_state = "trackon_lz"
+		return
+	else if(tracker_setting == TRACKER_FTL && src.assigned_fireteam)
 		H = assigned_squad.fireteam_leaders[assigned_fireteam]
 		tl_prefix = "_tl"
-	else if(assigned_squad.squad_leader)
-		H = assigned_squad.squad_leader
-	else return
-
+	if(!H)
+		return
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
 		hud_used.locate_leader.icon_state = "trackondirect[tl_prefix]"
 	else
@@ -1532,3 +1541,11 @@
 	if(species)
 		slot_equipment_priority = species.slot_equipment_priority
 	return ..(W,ignore_delay,slot_equipment_priority)
+
+/mob/living/carbon/human/get_vv_options()
+	. = ..()
+	. += "<option value>-----HUMAN-----</option>"
+	. += "<option value='?_src_=vars;edit_skill=\ref[src]'>Edit Skills</option>"
+	. += "<option value='?_src_=vars;setspecies=\ref[src]'>Set Species</option>"
+	. += "<option value='?_src_=vars;selectequipment=\ref[src]'>Select Equipment</option>"
+	. += "<option value='?_src_=admin_holder;adminspawncookie=\ref[src]'>Give Cookie</option>"

@@ -1,160 +1,5 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
-/turf/open/floor{
-	dir = 9;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHWEST)"
-	},
-/area/bigredv2/outside/se)
-"b" = (
-/turf/closed/wall/solaris/reinforced,
-/area/bigred/ground/security)
-"c" = (
-/turf/open/mars,
-/area/bigredv2/outside/se)
-"d" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
-	},
-/area/bigredv2/outside/se)
-"e" = (
-/obj/item/tool/warning_cone,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/security)
-"f" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/security)
-"g" = (
-/obj/effect/landmark/crap_item,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/security)
-"h" = (
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/security)
-"i" = (
-/turf/open/floor{
-	dir = 8;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (WEST)"
-	},
-/area/bigredv2/outside/se)
-"j" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/security)
-"k" = (
-/obj/structure/machinery/camera/autoname,
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/security)
-"l" = (
-/obj/structure/machinery/light{
-	dir = 1
-	},
-/turf/open/floor{
-	dir = 1;
-	icon_state = "asteroidfloor";
-	tag = "icon-asteroidfloor (NORTH)"
-	},
-/area/bigred/ground/security)
-"m" = (
-/obj/effect/landmark/hunter_primary,
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor{
-	dir = 5;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (NORTHEAST)"
-	},
-/area/bigredv2/caves_east)
-"n" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/mars_cave{
-	icon_state = "mars_cave_2";
-	tag = "icon-mars_cave_2"
-	},
-/area/bigred/ground/security)
-"p" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/floor{
-	dir = 4;
-	icon_state = "asteroidwarning";
-	tag = "icon-asteroidwarning (EAST)"
-	},
-/area/bigredv2/caves_east)
-"q" = (
-/obj/structure/window/framed/solaris/reinforced,
-/turf/open/floor/plating,
-/area/bigred/ground/security)
-"r" = (
-/obj/structure/machinery/door/airlock/almayer/security/glass{
-	dir = 1;
-	name = "\improper Checkpoint Office";
-	req_access = null
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"s" = (
-/obj/structure/filingcabinet,
-/turf/open/floor/greengrid,
-/area/bigred/ground/security)
-"t" = (
-/obj/structure/surface/table/almayer,
-
-/turf/open/floor/greengrid,
-/area/bigred/ground/security)
-"u" = (
-/obj/structure/surface/table/almayer,
-/obj/item/ashtray/bronze,
-/obj/item/trash/cigbutt/cigarbutt,
-/turf/open/floor/greengrid,
-/area/bigred/ground/security)
-"v" = (
-/obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv{
-	dir = 8
-	},
-/turf/open/floor/greengrid,
-/area/bigred/ground/security)
-"w" = (
-/obj/structure/largecrate,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"x" = (
+"ax" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 28;
@@ -164,42 +9,7 @@
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
-"y" = (
-/obj/structure/blocker/forcefield/vehicles,
-/turf/closed/wall/solaris/reinforced,
-/area/bigred/ground/security)
-"z" = (
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"A" = (
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"B" = (
-/obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"C" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4;
-	icon_state = "officechair_white";
-	tag = ""
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"D" = (
+"aN" = (
 /obj/structure/surface/table/almayer,
 /obj/structure/machinery/computer/secure_data{
 	dir = 8
@@ -208,68 +18,7 @@
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
-"E" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"F" = (
-/obj/effect/decal/cleanable/blood,
-/obj/effect/spawner/gibspawner/human,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"G" = (
-/obj/effect/landmark/crap_item,
-/obj/structure/machinery/light{
-	dir = 4
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"H" = (
-/obj/item/device/radio,
-/obj/structure/surface/table/almayer,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"I" = (
-/obj/item/trash/sosjerky,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"J" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"K" = (
-/obj/structure/machinery/camera/autoname{
-	dir = 8
-	},
-/obj/structure/surface/rack,
-/obj/effect/spawner/random/toolbox,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"L" = (
-/obj/structure/surface/table/almayer,
-/obj/item/device/motiondetector,
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigred/ground/security)
-"M" = (
+"bp" = (
 /obj/structure/machinery/door/airlock/almayer/security/glass{
 	dir = 4;
 	icon_state = "door_locked";
@@ -281,44 +30,209 @@
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
-"N" = (
-/obj/structure/surface/rack,
-/obj/item/storage/firstaid,
+"bx" = (
+/obj/structure/surface/table/almayer,
+/obj/item/device/motiondetector,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
-"O" = (
+"cO" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"dz" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/bigredv2/caves_east)
+"el" = (
 /obj/structure/surface/table/almayer,
 /obj/item/handcuffs,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
-"P" = (
-/obj/structure/surface/rack,
-/obj/item/stack/sheet/metal/small_stack,
+"ge" = (
+/obj/structure/closet/secure_closet/marshal,
+/turf/open/floor/greengrid,
+/area/bigred/ground/security)
+"hz" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	name = "\improper Checkpoint Office";
+	req_access = null
+	},
+/obj/structure/blocker/forcefield/vehicles,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
-"Q" = (
+"ie" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/mars_cave{
+	icon_state = "mars_cave_2";
+	tag = "icon-mars_cave_2"
+	},
+/area/bigredv2/caves_east)
+"kG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/bigredv2/caves_east)
+"kL" = (
 /obj/structure/machinery/light{
-	dir = 8;
-	icon_state = "tube1"
+	dir = 1
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor{
-	icon_state = "dark"
+	dir = 9;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
 	},
+/area/bigredv2/caves_east)
+"kX" = (
+/turf/closed/wall/solaris/reinforced,
 /area/bigred/ground/security)
-"R" = (
+"mp" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 9;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/bigredv2/caves_east)
+"oT" = (
+/turf/closed/wall/solaris/reinforced,
+/area/bigredv2/caves_east)
+"pb" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"pJ" = (
+/obj/item/tool/warning_cone,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHEAST)"
+	},
+/area/bigredv2/outside/se)
+"pV" = (
 /obj/structure/surface/table/almayer,
 /obj/effect/spawner/random/tool,
 /turf/open/floor{
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
-"S" = (
+"qg" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
+	},
+/area/bigredv2/caves_east)
+"qy" = (
+/obj/item/device/radio,
+/obj/structure/surface/table/almayer,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"rD" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"rF" = (
+/obj/structure/machinery/deployable/barrier,
+/turf/open/floor/greengrid,
+/area/bigred/ground/security)
+"tV" = (
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "filtration";
+	name = "Filtration Lockdown"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"uk" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"uF" = (
+/obj/structure/surface/table/almayer,
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/greengrid,
+/area/bigred/ground/security)
+"ve" = (
+/obj/structure/machinery/door/airlock/almayer/security/glass{
+	dir = 1;
+	name = "\improper Checkpoint Office";
+	req_access = null
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"vH" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"vO" = (
+/obj/structure/surface/rack,
+/obj/item/stack/sheet/metal/small_stack,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"wi" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/bigredv2/caves_east)
+"xa" = (
+/turf/open/floor/greengrid,
+/area/bigred/ground/security)
+"xj" = (
+/obj/structure/bed/chair/office/light{
+	dir = 4;
+	icon_state = "officechair_white";
+	tag = ""
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"xr" = (
 /obj/structure/surface/rack,
 /obj/item/clothing/mask/gas,
 /obj/item/device/flashlight,
@@ -329,225 +243,440 @@
 	icon_state = "dark"
 	},
 /area/bigred/ground/security)
-"T" = (
-/obj/structure/machinery/vending/security,
+"zE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/bigredv2/caves_east)
+"Aq" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"AY" = (
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"AZ" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"EV" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/bigredv2/outside/se)
+"Ge" = (
+/obj/effect/landmark/crap_item,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHEAST)"
+	},
+/area/bigredv2/caves_east)
+"Gm" = (
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"GJ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/bigredv2/caves_east)
+"HH" = (
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning"
+	},
+/area/bigredv2/caves_east)
+"Ih" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"IS" = (
+/obj/structure/filingcabinet,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"U" = (
-/turf/open/floor/greengrid,
+"KO" = (
+/obj/item/trash/sosjerky,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigred/ground/security)
-"V" = (
-/obj/structure/closet/secure_closet/marshal,
-/turf/open/floor/greengrid,
+"LX" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	icon_state = "dark"
+	},
 /area/bigred/ground/security)
-"W" = (
+"Mq" = (
 /obj/structure/surface/table/almayer,
-
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
-"X" = (
-/obj/structure/surface/table/almayer,
-/obj/effect/spawner/random/technology_scanner,
-/turf/open/floor/greengrid,
-/area/bigred/ground/security)
-"Y" = (
-/obj/structure/machinery/deployable/barrier,
-/turf/open/floor/greengrid,
-/area/bigred/ground/security)
-"Z" = (
+"NQ" = (
 /obj/structure/largecrate,
 /turf/open/floor/greengrid,
 /area/bigred/ground/security)
+"NU" = (
+/obj/structure/machinery/light{
+	dir = 8;
+	icon_state = "tube1"
+	},
+/obj/structure/machinery/vending/security,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"OD" = (
+/turf/open/floor{
+	dir = 4;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (EAST)"
+	},
+/area/bigredv2/outside/se)
+"OM" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor{
+	dir = 10;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHWEST)"
+	},
+/area/bigredv2/caves_east)
+"Pf" = (
+/obj/effect/decal/cleanable/blood,
+/obj/effect/spawner/gibspawner/human,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"PS" = (
+/turf/open/mars,
+/area/bigredv2/outside/se)
+"Qf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/machinery/door/poddoor/almayer/closed{
+	dir = 4;
+	id = "filtration";
+	name = "Filtration Lockdown"
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"Qo" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/closed/wall/solaris/reinforced,
+/area/bigred/ground/security)
+"Sr" = (
+/obj/structure/machinery/camera/autoname{
+	dir = 8
+	},
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"SF" = (
+/obj/structure/window/framed/solaris/reinforced,
+/turf/open/floor/plating,
+/area/bigred/ground/security)
+"Ue" = (
+/obj/structure/machinery/camera/autoname,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTH)"
+	},
+/area/bigredv2/caves_east)
+"Vg" = (
+/turf/open/floor{
+	dir = 8;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/bigredv2/caves_east)
+"Vn" = (
+/obj/structure/surface/table/almayer,
+/obj/item/ashtray/bronze,
+/obj/item/trash/cigbutt/cigarbutt,
+/turf/open/floor/greengrid,
+/area/bigred/ground/security)
+"VI" = (
+/obj/structure/largecrate,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"Wa" = (
+/turf/open/floor{
+	dir = 6;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHWEST)"
+	},
+/area/bigredv2/outside/se)
+"XU" = (
+/turf/open/floor{
+	dir = 10;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (SOUTHWEST)"
+	},
+/area/bigredv2/caves_east)
+"Yo" = (
+/obj/structure/surface/rack,
+/obj/item/storage/firstaid,
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
+"YZ" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/security/wooden_tv{
+	dir = 8
+	},
+/turf/open/floor/greengrid,
+/area/bigred/ground/security)
+"Zu" = (
+/obj/effect/landmark/hunter_primary,
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor{
+	dir = 5;
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (NORTHEAST)"
+	},
+/area/bigredv2/caves_east)
+"ZK" = (
+/obj/effect/landmark/crap_item,
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "dark"
+	},
+/area/bigred/ground/security)
 
 (1,1,1) = {"
-c
-a
-d
-i
-i
-b
-b
-b
-b
-b
-b
-b
-b
-b
+PS
+pJ
+EV
+OD
+Wa
+kX
+kX
+kX
+kX
+kX
+kX
+kX
+kX
+Qo
 "}
 (2,1,1) = {"
-b
-e
-h
-h
-h
-b
-s
-B
-H
-L
-O
-Q
-T
-b
+oT
+tV
+tV
+tV
+tV
+kX
+IS
+LX
+qy
+bx
+el
+NU
+rF
+Qo
 "}
 (3,1,1) = {"
-b
-f
-h
-j
-j
-q
-t
-z
-I
-E
-E
-z
-Y
-b
+oT
+kL
+Vg
+zE
+OM
+SF
+Mq
+AY
+KO
+uk
+uk
+AY
+rF
+Qo
 "}
 (4,1,1) = {"
-b
-g
-j
-j
-j
-q
-u
-C
-E
-z
-E
-E
-Y
-b
+oT
+Ge
+wi
+wi
+kG
+SF
+Vn
+xj
+uk
+AY
+uk
+uk
+xa
+hz
 "}
 (5,1,1) = {"
-b
-h
-h
-j
-j
-b
-v
-D
-J
-z
-E
-z
-V
-b
+oT
+tV
+tV
+Qf
+Qf
+kX
+YZ
+aN
+rD
+AY
+uk
+AY
+ge
+Qo
 "}
 (6,1,1) = {"
-b
-j
-h
-h
-h
-b
-b
-b
-b
-M
-b
-b
-b
-b
+oT
+mp
+Vg
+Vg
+XU
+kX
+kX
+kX
+kX
+bp
+kX
+kX
+kX
+Qo
 "}
 (7,1,1) = {"
-b
-k
-h
-j
-j
-b
-w
-w
-z
-E
-z
-R
-W
-b
+oT
+Ue
+Ih
+Aq
+qg
+kX
+VI
+VI
+AY
+uk
+AY
+pV
+Mq
+Qo
 "}
 (8,1,1) = {"
-b
-h
-h
-j
-j
-b
-x
-z
-E
-E
-z
-z
-X
-b
+oT
+AZ
+Ih
+Aq
+qg
+kX
+ax
+AY
+uk
+uk
+AY
+AY
+uF
+Qo
 "}
 (9,1,1) = {"
-b
-j
-j
-h
-h
-r
-E
-E
-z
-z
-E
-z
-U
-b
+oT
+cO
+Aq
+Ih
+HH
+ve
+uk
+uk
+AY
+AY
+uk
+AY
+xa
+Qo
 "}
 (10,1,1) = {"
-b
-l
-h
-h
-h
-b
-z
-F
-A
-z
-E
-E
-U
-b
+oT
+Gm
+Ih
+Ih
+HH
+kX
+AY
+Pf
+vH
+AY
+uk
+uk
+xa
+Qo
 "}
 (11,1,1) = {"
-b
-e
-h
-j
-j
-b
-A
-G
-K
-N
-P
-S
-Z
-b
+oT
+pb
+Ih
+Aq
+qg
+kX
+vH
+ZK
+Sr
+Yo
+vO
+xr
+NQ
+Qo
 "}
 (12,1,1) = {"
-n
-m
-p
-p
-p
-y
-y
-y
-y
-y
-y
-y
-y
-y
+ie
+Zu
+GJ
+GJ
+dz
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
+Qo
 "}

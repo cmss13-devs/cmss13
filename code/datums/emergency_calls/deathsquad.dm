@@ -14,7 +14,7 @@
 	item_spawn = /obj/effect/landmark/ert_spawns/distress_pmc/item
 	max_medics = 1
 	max_heavies = 2
-
+	hostility = TRUE
 
 
 // DEATH SQUAD--------------------------------------------------------------------------------
@@ -57,7 +57,7 @@
 	mob_min = 5
 	probability = 0
 	shuttle_id = "Distress_PMC"
-	name_of_spawn = "Distress_PMC"
+	name_of_spawn = /obj/effect/landmark/ert_spawns/distress_pmc
 
 	var/operator_team_designation
 	var/curr_operator_number = 1

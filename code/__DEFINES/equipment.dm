@@ -42,6 +42,8 @@
 #define MOB_LOCK_ON_EQUIP		(1<<8)	// Lock this item to the mob that equips it up until permadeath
 #define NO_CRYO_STORE			(1<<9) // This item deletes itself when put in cryo storage
 #define ITEM_OVERRIDE_NORTHFACE	(1<<10) // For backpacks if they should have unique layering functions
+#define CAN_DIG_SHRAPNEL		(1<<11) // whether activating it digs shrapnel out of the user and striking others with medical skills can dig shapnel out of other people.
+#define ANIMATED_SURGICAL_TOOL	(1<<12) // whether it has an animated icon state of "[icon_state]_on" to be used during surgeries.
 
 //==========================================================================================
 
@@ -130,11 +132,17 @@
 
 //===========================================================================================
 //Marine helmet only, use for flags_marine_helmet.
-#define HELMET_SQUAD_OVERLAY	1
-#define HELMET_GARB_OVERLAY		2
-#define HELMET_DAMAGE_OVERLAY	4
-#define HELMET_STORE_GARB		8
-#define HELMET_IS_DAMAGED		16
+#define HELMET_SQUAD_OVERLAY (1<<0)
+#define HELMET_GARB_OVERLAY (1<<1)
+#define HELMET_DAMAGE_OVERLAY (1<<2)
+#define HELMET_IS_DAMAGED (1<<3)
+//===========================================================================================
+
+//===========================================================================================
+//Marine caps only, use for flags_marine_hat.
+#define HAT_GARB_OVERLAY (1<<0)
+#define HAT_CAN_FLIP (1<<1)
+#define HAT_FLIPPED (1<<2)
 //===========================================================================================
 
 //ITEM INVENTORY SLOT BITMASKS
@@ -158,7 +166,8 @@
 //slots
 //Text strings so that the slots can be associated when doing inventory lists.
 #define WEAR_ID				"id"
-#define WEAR_EAR			"wear_ear"
+#define WEAR_L_EAR			"wear_l_ear"
+#define WEAR_R_EAR			"wear_r_ear"
 #define WEAR_BODY			"w_uniform"
 #define WEAR_LEGS			"legs"
 #define WEAR_FEET			"shoes"
@@ -204,7 +213,8 @@
 		WEAR_IN_SHOES,\
 		WEAR_FACE,\
 		WEAR_HANDS,\
-		WEAR_EAR,\
+		WEAR_L_EAR,\
+		WEAR_R_EAR,\
 		WEAR_EYES,\
 		WEAR_IN_BELT,\
 		WEAR_IN_SCABBARD,\

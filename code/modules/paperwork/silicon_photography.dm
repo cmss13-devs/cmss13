@@ -75,10 +75,6 @@
 	aipictures -= selection
 	to_chat(usr, "<span class='unconscious'>Image deleted</span>")
 
-/obj/item/device/camera/siliconcam/ai_camera/can_capture_turf(turf/T, mob/user)
-	var/mob/living/silicon/ai = user
-	return ai.TurfAdjacent(T)
-
 /obj/item/device/camera/siliconcam/proc/toggle_camera_mode()
 	if(in_camera_mode)
 		camera_mode_off()

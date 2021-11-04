@@ -276,6 +276,7 @@ Defined in conflicts.dm of the #defines folder.
 	attack_speed = 9
 	flags_equip_slot = SLOT_FACE
 	flags_armor_protection = SLOT_FACE
+	flags_item = CAN_DIG_SHRAPNEL
 
 	attach_icon = "bayonet_a"
 	melee_mod = 20
@@ -289,20 +290,6 @@ Defined in conflicts.dm of the #defines folder.
 	..()
 	accuracy_unwielded_mod = -HIT_ACCURACY_MULT_TIER_1
 
-/obj/item/attachable/bayonet/attack(mob/living/target, mob/living/carbon/human/user)
-	if(!dig_out_shrapnel_check(target,user))
-		..()
-
-/obj/item/attachable/bayonet/attack_self(mob/living/carbon/human/user)
-	..()
-
-	if(!ishuman(user))
-		return
-	if(!hasorgans(user))
-		return
-
-	dig_out_shrapnel(user)
-
 /obj/item/attachable/bayonet/upp
 	name = "\improper Type 80 bayonet"
 	desc = "The standard-issue bayonet of the UPP, the Type 80 is balanced to also function as an effective throwing knife."
@@ -312,6 +299,37 @@ Defined in conflicts.dm of the #defines folder.
 	throw_speed = SPEED_REALLY_FAST
 	throw_range = 7
 	pry_delay = 1 SECONDS
+
+
+/obj/item/attachable/bayonet/c02
+	name = "\improper M8 cartridge bayonet"
+	desc = "A back issue USCM approved exclusive for Boots subscribers found in issue #255 'Inside the Night Raider - morale breaking alternatives with 2nd LT. Juliane Gerd'. A pressurized tube runs along the inside of the blade, and a button allows one to inject compressed CO2 into the stab wound. It feels cheap to the touch. Faulty even."
+	icon_state = "c02_knife"
+	var/filled = FALSE
+
+/obj/item/attachable/bayonet/c02/update_icon()
+	icon_state = "c02_knife[filled ? "-f" : ""]"
+
+/obj/item/attachable/bayonet/c02/attackby(obj/item/W, mob/user)
+	if(!istype(W, /obj/item/c02_cartridge))
+		return
+	if(filled)
+		return
+	else
+		filled = TRUE
+		visible_message("You slot a fresh C02 cartridge into [src] and snap the slot cover into place. Only then do you realize its budged. Shit." , "[user] slots a C02 cartridge into [src].")
+		playsound(src, 'sound/machines/hydraulics_2.ogg')
+		qdel(W)
+		update_icon()
+		return
+
+/obj/item/c02_cartridge //where tf else am I gonna put this?
+	name = "C02 cartridge"
+	desc = "A cartridge of compressed C02 for the M8 cartridge bayonet. Do not consume or puncture."
+	icon = 'icons/obj/items/items.dmi'
+	icon_state = "co2_cartridge"
+	item_state = ""
+	w_class = SIZE_TINY
 
 /obj/item/attachable/extended_barrel
 	name = "extended barrel"
@@ -532,9 +550,9 @@ Defined in conflicts.dm of the #defines folder.
 /obj/item/attachable/flashlight/activate_attachment(obj/item/weapon/gun/G, mob/living/user, turn_off)
 	if(turn_off && !(G.flags_gun_features & GUN_FLASHLIGHT_ON))
 		return FALSE
-	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? -1 : 1
+	var/flashlight_on = (G.flags_gun_features & GUN_FLASHLIGHT_ON) ? 0 : 1
 	var/atom/movable/light_source =  ismob(G.loc) ? G.loc : G
-	light_source.SetLuminosity(light_mod * flashlight_on)
+	light_source.SetLuminosity(light_mod * flashlight_on, FALSE, G)
 	G.flags_gun_features ^= GUN_FLASHLIGHT_ON
 
 	if(G.flags_gun_features & GUN_FLASHLIGHT_ON)
@@ -650,8 +668,8 @@ Defined in conflicts.dm of the #defines folder.
 	movement_onehanded_acc_penalty_mod = MOVEMENT_ACCURACY_PENALTY_MULT_TIER_4
 	accuracy_unwielded_mod = 0
 
-	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_7 + HIT_ACCURACY_MULT_TIER_1 //to compensate initial debuff
-	delay_scoped_nerf = FIRE_DELAY_TIER_8 - FIRE_DELAY_TIER_10 //to compensate initial debuff. We want "high_fire_delay"
+	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_8 //to compensate initial debuff
+	delay_scoped_nerf = FIRE_DELAY_TIER_9 //to compensate initial debuff. We want "high_fire_delay"
 	damage_falloff_scoped_buff = -0.4 //has to be negative
 
 /obj/item/attachable/scope/proc/apply_scoped_buff(obj/item/weapon/gun/G, mob/living/carbon/user)
@@ -725,6 +743,21 @@ Defined in conflicts.dm of the #defines folder.
 	if(istype(G, /obj/item/weapon/gun/launcher/grenade/m92))
 		G.fire_delay -= FIRE_DELAY_TIER_4
 	..()
+
+/obj/item/attachable/scope/mini/flaregun
+	aim_speed_mod = 0
+	wield_delay_mod = 0
+	dynamic_aim_slowdown = SLOWDOWN_ADS_MINISCOPE_DYNAMIC
+
+/obj/item/attachable/scope/mini/flaregun/New()
+	..()
+	delay_mod = 0
+	accuracy_mod = 0
+	movement_onehanded_acc_penalty_mod = 0
+	accuracy_unwielded_mod = 0
+
+	accuracy_scoped_buff = HIT_ACCURACY_MULT_TIER_8
+	delay_scoped_nerf = FIRE_DELAY_TIER_8
 
 /obj/item/attachable/scope/mini/hunting //can only be attached to the hunting rifle to prevent vending hunting rifles to cannibalize scopes
 	name = "2x hunting mini-scope"
@@ -1329,7 +1362,7 @@ Defined in conflicts.dm of the #defines folder.
 	attach_icon = "grenade_a"
 	w_class = SIZE_MEDIUM
 	current_rounds = 0
-	max_rounds = 1
+	max_rounds = 3
 	max_range = 7
 	slot = "under"
 	fire_sound = 'sound/weapons/gun_m92_attachable.ogg'
@@ -1410,12 +1443,13 @@ Defined in conflicts.dm of the #defines folder.
 //For the Mk1
 /obj/item/attachable/attached_gun/grenade/mk1
 	name = "MK1 underslung grenade launcher"
-	desc = "An older version of the classic underslung grenade launcher. Does not have IFF capabilities but can store three grenades."
+	desc = "An older version of the classic underslung grenade launcher. Does not have IFF capabilities but can store five grenades."
 	icon_state = "grenade-mk1"
 	attach_icon = "grenade-mk1_a"
 	current_rounds = 0
-	max_rounds = 3
+	max_rounds = 5
 	max_range = 10
+	attachment_firing_delay = 30
 
 /obj/item/attachable/attached_gun/grenade/mk1/Initialize()
 	. = ..()
@@ -1742,6 +1776,8 @@ Defined in conflicts.dm of the #defines folder.
 	burst_scatter_mod = 0
 	delay_mod = FIRE_DELAY_TIER_10
 	G.recalculate_attachment_bonuses()
+	if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
+		G.remove_bullet_trait("iff")
 
 /obj/item/attachable/bipod/activate_attachment(obj/item/weapon/gun/G,mob/living/user, turn_off)
 	if(turn_off)
@@ -1777,6 +1813,9 @@ Defined in conflicts.dm of the #defines folder.
 					bipod_movement.attachment = src
 					bipod_movement.G = G
 					user.add_movement_handler(bipod_movement)
+
+				if(G.flags_gun_features & GUN_SUPPORT_PLATFORM)
+					G.add_bullet_trait(BULLET_TRAIT_ENTRY_ID("iff", /datum/element/bullet_trait_iff))
 
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))

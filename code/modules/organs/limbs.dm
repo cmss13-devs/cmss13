@@ -18,6 +18,7 @@
 	var/time_to_knit = -1 // snowflake vars for doing self-bone healing, think preds and magic research chems
 
 	var/display_name
+
 	var/list/wounds = list()
 	var/number_wounds = 0 // cache the number of wounds, which is NOT wounds.len!
 
@@ -38,28 +39,25 @@
 	var/damage_msg = "<span class='danger'>You feel an intense pain</span>"
 	var/broken_description
 
-	var/surgery_open_stage = 0
-	var/bone_repair_stage = 0
-	var/limb_replacement_stage = 0
-	var/cavity = 0
-
-	var/in_surgery_op = FALSE //whether someone is currently doing a surgery step to this limb
-	var/surgery_organ //name of the organ currently being surgically worked on (detach/remove/etc)
-
-	var/encased       // Needs to be opened with a saw to access the organs.
-
+	//Surgical vars
+	///Name of bones encasing the limb.
+	var/encased
+	///Name of internal cavity.
+	var/cavity
+	///Surgically implanted item.
 	var/obj/item/hidden = null
+	///Embedded or implanter implanted items.
 	var/list/implants = list()
 
 	// how often wounds should be updated, a higher number means less often
 	var/wound_update_accuracy = 1
-	var/status //limb status flags
 
 	var/mob/living/carbon/human/owner = null
 	var/vital //Lose a vital limb, die immediately.
 
 	var/has_stump_icon = FALSE
 	var/image/wound_overlay //Used to save time redefining it every wound update. Doesn't remember anything but the most recently used icon state.
+	var/image/burn_overlay //Ditto but for burns.
 
 	var/splint_icon_amount = 1
 	var/bandage_icon_amount = 1
@@ -68,6 +66,9 @@
 
 	var/list/bleeding_effects_list = list()
 
+	var/destroyed = FALSE
+	var/status = LIMB_ORGANIC
+	var/processing = FALSE
 
 /obj/limb/Initialize(mapload, obj/limb/P, mob/mob_owner)
 	. = ..()
@@ -79,9 +80,12 @@
 	if(mob_owner)
 		owner = mob_owner
 
-	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_[0]")
+	wound_overlay = image('icons/mob/humans/dam_human.dmi', "grayscale_0")
 	wound_overlay.blend_mode = BLEND_INSET_OVERLAY
 	wound_overlay.color = owner.species.blood_color
+
+	burn_overlay = image('icons/mob/humans/dam_human.dmi', "burn_0")
+	burn_overlay.blend_mode = BLEND_INSET_OVERLAY
 
 	forceMove(mob_owner)
 
@@ -200,7 +204,7 @@
 	if(owner.mind && owner.skills)
 		armor += owner.skills.get_skill_level(SKILL_ENDURANCE)*5
 
-	var/damage = armor_damage_reduction(GLOB.marine_organ_damage, brute*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
+	var/damage = armor_damage_reduction(GLOB.marine_bone_break, brute*3, armor, 0, 0, 0, max_damage ? (100*(max_damage-brute_dam) / max_damage) : 100)
 
 	if(brute_dam > min_broken_damage * CONFIG_GET(number/organ_health_multiplier) && prob(damage*2))
 		fracture()
@@ -304,7 +308,7 @@
 	update_icon()
 	start_processing()
 
-/obj/limb/proc/heal_damage(brute, burn, robo_repair)
+/obj/limb/proc/heal_damage(brute, burn, robo_repair = FALSE)
 	if(status & LIMB_ROBOT && !robo_repair)
 		return
 
@@ -337,12 +341,15 @@ This function completely restores a damaged organ to perfect condition.
 	if(status & LIMB_ROBOT)	//Robotic organs stay robotic.  Fix because right click rejuvinate makes IPC's organs organic.
 		status = LIMB_ROBOT
 	else
-		status = 0
+		status = LIMB_ORGANIC
 	perma_injury = 0
 	brute_dam = 0
 	burn_dam = 0
 	wounds.Cut()
 	number_wounds = 0
+
+	// reset surgeries. Some duplication with general mob rejuvenate() but this also allows individual limbs to be rejuvenated, in theory.
+	reset_limb_surgeries()
 
 	// heal internal organs
 	for(var/datum/internal_organ/current_organ in internal_organs)
@@ -356,6 +363,7 @@ This function completely restores a damaged organ to perfect condition.
 			if(is_sharp(implanted_object) || istype(implanted_object, /obj/item/shard/shrapnel))
 				owner.embedded_items -= implanted_object
 
+	remove_all_bleeding(TRUE, TRUE)
 	owner.pain.recalculate_pain()
 	owner.updatehealth()
 	owner.update_body()
@@ -431,18 +439,18 @@ This function completely restores a damaged organ to perfect condition.
 		if(W)
 			wounds += W
 
-
-/obj/limb/proc/add_bleeding(var/datum/wound/W, var/internal = FALSE)
+///Adds bleeding to the limb. Damage_amount lets you apply an amount worth of bleeding, otherwise it uses the given wound's damage.
+/obj/limb/proc/add_bleeding(var/datum/wound/W, var/internal = FALSE, damage_amount)
 	if(!(SSticker.current_state >= GAME_STATE_PLAYING)) //If the game hasnt started, don't add bleed. Hacky fix to avoid having 100 bleed effect from roundstart.
 		return
 
 	if(status & LIMB_ROBOT)
 		return
 
-	if(bleeding_effects_list.len)
+	if(length(bleeding_effects_list))
 		if(!internal)
 			for(var/datum/effects/bleeding/external/B in bleeding_effects_list)
-				B.add_on(W.damage)
+				B.add_on(damage_amount ? damage_amount : W.damage)
 				return
 		else
 			for(var/datum/effects/bleeding/internal/B in bleeding_effects_list)
@@ -453,7 +461,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(internal)
 		bleeding_status = new /datum/effects/bleeding/internal(owner, src, 40)
 	else
-		bleeding_status = new /datum/effects/bleeding/external(owner, src, W.damage)
+		bleeding_status = new /datum/effects/bleeding/external(owner, src, damage_amount ? damage_amount : W.damage)
 	bleeding_effects_list += bleeding_status
 
 
@@ -482,9 +490,10 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/limb/proc/need_process()
 	if(status & LIMB_DESTROYED)	//Missing limb is missing
+		return FALSE
+	if(status & LIMB_BROKEN) // Causes things to drop and may be healed by bonemending chem.
 		return TRUE
-	if(status && !(status & LIMB_ROBOT) && !(status & LIMB_REPAIRED)) // Any status other than destroyed or robotic requires processing
-		return TRUE
+
 	if(brute_dam || burn_dam)
 		return TRUE
 	if(knitting_time > 0)
@@ -523,7 +532,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.recalculate_move_delay = TRUE
 
 	var/wound_disappeared = FALSE
-	for(var/datum/wound/W in wounds)
+	for(var/datum/wound/W as anything in wounds)
 		// we don't care about wounds after we heal them. We are not an antag simulator
 		if(W.damage <= 0 && !W.internal)
 			wounds -= W
@@ -563,9 +572,9 @@ This function completely restores a damaged organ to perfect condition.
 			// making it look prettier on scanners
 			heal_amt = round(heal_amt,0.1)
 
-			if(istype(W, /datum/wound/bruise) || istype(W, /datum/wound/cut))
+			if(W.damage_type == BRUISE || W.damage_type == CUT)
 				owner.pain.apply_pain(-heal_amt, BRUTE)
-			else if(istype(W, /datum/wound/burn))
+			else if(W.damage_type == BURN)
 				owner.pain.apply_pain(-heal_amt, BURN)
 			else
 				owner.pain.recalculate_pain()
@@ -585,7 +594,7 @@ This function completely restores a damaged organ to perfect condition.
 	brute_dam = 0
 	burn_dam = 0
 
-	for(var/datum/wound/W in wounds)
+	for(var/datum/wound/W as anything in wounds)
 		if(W.damage_type == CUT || W.damage_type == BRUISE)
 			brute_dam += W.damage
 		else if(W.damage_type == BURN)
@@ -601,7 +610,10 @@ This function completely restores a damaged organ to perfect condition.
 	if(status & LIMB_DESTROYED)
 		if(has_stump_icon && !(status & LIMB_AMPUTATED))
 			icon = 'icons/mob/humans/dam_human.dmi'
-			icon_state = "stump_[icon_name]"
+			if(owner.species?.flags & IS_SYNTHETIC)
+				icon_state = "synth_stump_[icon_name]"
+			else
+				icon_state = "stump_[icon_name]"
 		else
 			icon_state = ""
 		return
@@ -641,7 +653,15 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /obj/limb/proc/update_overlays()
-	update_damage_icon_part()
+	var/brutestate = copytext(damage_state, 1, 2)
+	var/burnstate = copytext(damage_state, 2)
+	if(brutestate != "0")
+		wound_overlay.icon_state = "grayscale_[brutestate]"
+		overlays += wound_overlay
+
+	if(burnstate != "0")
+		burn_overlay.icon_state = "burn_[burnstate]"
+		overlays += burn_overlay
 
 // new damage icon system
 // returns just the brute/burn damage code
@@ -654,18 +674,18 @@ This function completely restores a damaged organ to perfect condition.
 
 	if(burn_dam == 0)
 		tburn = 0
-	else if (burn_dam < (max_damage * 0.25 / 1.5))
+	else if (burn_dam < (max_damage * 0.1667)) //0.25 / 1.5
 		tburn = 1
-	else if (burn_dam < (max_damage * 0.75 / 1.5))
+	else if (burn_dam < (max_damage * 0.5)) //0.75 / 1.5
 		tburn = 2
 	else
 		tburn = 3
 
 	if (brute_dam == 0)
 		tbrute = 0
-	else if (brute_dam < (max_damage * 0.25 / 1.5))
+	else if (brute_dam < (max_damage * 0.1667))
 		tbrute = 1
-	else if (brute_dam < (max_damage * 0.75 / 1.5))
+	else if (brute_dam < (max_damage * 0.5))
 		tbrute = 2
 	else
 		tbrute = 3
@@ -703,7 +723,7 @@ This function completely restores a damaged organ to perfect condition.
 	owner.limbs_to_process -= src
 
 //Handles dismemberment
-/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause)
+/obj/limb/proc/droplimb(amputation, var/delete_limb = 0, var/cause, surgery_in_progress)
 	if(!owner)
 		return
 	if(status & LIMB_DESTROYED)
@@ -715,7 +735,7 @@ This function completely restores a damaged organ to perfect condition.
 		if(status & LIMB_ROBOT)
 			status = LIMB_DESTROYED|LIMB_ROBOT
 		else
-			status = LIMB_DESTROYED
+			status = LIMB_DESTROYED|LIMB_ORGANIC
 			owner.pain.apply_pain(PAIN_BONE_BREAK)
 		if(amputation)
 			status |= LIMB_AMPUTATED
@@ -746,8 +766,9 @@ This function completely restores a damaged organ to perfect condition.
 			parent.update_damages()
 		update_damages()
 
-		//we reset the surgery related variables
-		reset_limb_surgeries()
+		//we reset the surgery related variables unless this was done as part of a surgery.
+		if(!surgery_in_progress)
+			reset_limb_surgeries()
 
 		var/obj/organ	//Dropped limb object
 		switch(body_part)
@@ -758,7 +779,8 @@ This function completely restores a damaged organ to perfect condition.
 					organ= new /obj/item/limb/head(owner.loc, owner)
 				owner.drop_inv_item_on_ground(owner.glasses, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.head, null, TRUE)
-				owner.drop_inv_item_on_ground(owner.wear_ear, null, TRUE)
+				owner.drop_inv_item_on_ground(owner.wear_l_ear, null, TRUE)
+				owner.drop_inv_item_on_ground(owner.wear_r_ear, null, TRUE)
 				owner.drop_inv_item_on_ground(owner.wear_mask, null, TRUE)
 				owner.update_hair()
 			if(BODY_FLAG_ARM_RIGHT)
@@ -841,6 +863,19 @@ This function completely restores a damaged organ to perfect condition.
 			HELPERS
 */
 
+///Returns a description of opened incisions.
+/obj/limb/proc/get_incision_depth()
+	switch(owner.incision_depths[name])
+		if(SURGERY_DEPTH_SHALLOW)
+			return "a surgical incision"
+		if(SURGERY_DEPTH_DEEP)
+			return "a massive surgical incision"
+
+///Returns a description of active surgeries.
+/obj/limb/proc/get_active_limb_surgeries()
+	if(owner.active_surgeries[name])
+		return "an incomplete surgical operation"
+
 /obj/limb/proc/release_restraints()
 	if(!owner)
 		return
@@ -869,23 +904,12 @@ This function completely restores a damaged organ to perfect condition.
 	return rval
 
 /obj/limb/proc/is_bandaged()
-	if (surgery_open_stage != 0)
-		return TRUE
 	var/not_bandaged = FALSE
 	for (var/datum/wound/W in wounds)
 		if (W.internal)
 			continue
 		not_bandaged |= !W.bandaged
 	return !not_bandaged
-
-/obj/limb/proc/clamp_wounds()
-	var/rval = 0
-	remove_all_bleeding(TRUE)
-	for(var/datum/wound/W in wounds)
-		if(W.internal) continue
-		rval |= !W.clamped
-		W.clamped = 1
-	return rval
 
 /obj/limb/proc/salve()
 	var/rval = 0
@@ -895,8 +919,6 @@ This function completely restores a damaged organ to perfect condition.
 	return rval
 
 /obj/limb/proc/is_salved()
-	if (surgery_open_stage != 0)
-		return TRUE
 	var/not_salved = FALSE
 	for (var/datum/wound/W in wounds)
 		not_salved |= !W.salved
@@ -923,7 +945,7 @@ This function completely restores a damaged organ to perfect condition.
 
 	//if the chance was not set by what called fracture(), the endurance check is done instead
 	if(bonebreak_probability == null) //bone break chance is based on endurance, 25% for survivors, erts, 100% for most everyone else.
-		bonebreak_probability = 100 / Clamp(owner.skills.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
+		bonebreak_probability = 100 / Clamp(owner.skills?.get_skill_level(SKILL_ENDURANCE)-1,1,100) //can't be zero
 
 	var/list/bonebreak_data = list("bonebreak_probability" = bonebreak_probability)
 	SEND_SIGNAL(owner, COMSIG_HUMAN_BONEBREAK_PROBABILITY, bonebreak_data)
@@ -939,7 +961,6 @@ This function completely restores a damaged organ to perfect condition.
 		start_processing()
 
 		status |= LIMB_BROKEN
-		status &= ~LIMB_REPAIRED
 		owner.pain.apply_pain(PAIN_BONE_BREAK)
 		broken_description = pick("broken","fracture","hairline fracture")
 		perma_injury = min_broken_damage
@@ -948,30 +969,34 @@ This function completely restores a damaged organ to perfect condition.
 			SPAN_WARNING("[owner] seems to withstand the blow!"),
 			SPAN_WARNING("Your [display_name] manages to withstand the blow!"))
 
-/obj/limb/proc/robotize()
-	status &= ~LIMB_BROKEN
-	status &= ~LIMB_SPLINTED
-	status &= ~LIMB_AMPUTATED
-	status &= ~LIMB_DESTROYED
-	status &= ~LIMB_MUTATED
-	status &= ~LIMB_REPAIRED
-	status |= LIMB_ROBOT
+/obj/limb/proc/robotize(surgery_in_progress, uncalibrated)
+	if(uncalibrated) //Newly-attached prosthetics need to be calibrated to function.
+		status = LIMB_ROBOT|LIMB_UNCALIBRATED_PROSTHETIC
+	else
+		status = LIMB_ROBOT
+
 	stop_processing()
-	reset_limb_surgeries()
+
+	if(!surgery_in_progress) //So as to not interrupt an ongoing prosthetic-attaching operation.
+		reset_limb_surgeries()
 
 	perma_injury = 0
-	for (var/obj/limb/T in children)
-		if(T)
-			T.robotize()
+	for(var/obj/limb/T as anything in children)
+		T.robotize(uncalibrated = uncalibrated)
 
 	update_icon()
 
+/obj/limb/proc/calibrate_prosthesis()
+	status &= ~LIMB_UNCALIBRATED_PROSTHETIC
+	for(var/obj/limb/T as anything in children)
+		T.calibrate_prosthesis()
+
 /obj/limb/proc/mutate()
-	src.status |= LIMB_MUTATED
+	status |= LIMB_MUTATED
 	owner.update_body()
 
 /obj/limb/proc/unmutate()
-	src.status &= ~LIMB_MUTATED
+	status &= ~LIMB_MUTATED
 	owner.update_body()
 
 ///Returns total damage, or, if broken, the minimum fracture threshold, whichever is higher.
@@ -980,7 +1005,7 @@ This function completely restores a damaged organ to perfect condition.
 
 
 /obj/limb/proc/is_usable()
-	return !(status & (LIMB_DESTROYED|LIMB_MUTATED))
+	return !(status & (LIMB_DESTROYED|LIMB_MUTATED|LIMB_UNCALIBRATED_PROSTHETIC))
 
 /obj/limb/proc/is_broken()
 	return ((status & LIMB_BROKEN) && !(status & LIMB_SPLINTED))
@@ -1033,7 +1058,7 @@ This function completely restores a damaged organ to perfect condition.
 	if(!(status & LIMB_DESTROYED) && !(status & LIMB_SPLINTED))
 		var/time_to_take = 5 SECONDS
 		if (target == user)
-			user.visible_message(SPAN_WARNING("[user] fumbles with the [S]"), SPAN_WARNING("You fumble with the [S]..."))
+			user.visible_message(SPAN_WARNING("[user] fumbles with [S]"), SPAN_WARNING("You fumble with [S]..."))
 			time_to_take = 15 SECONDS
 
 		if(do_after(user, time_to_take * user.get_skill_duration_multiplier(SKILL_MEDICAL), INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, target, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
@@ -1054,29 +1079,10 @@ This function completely restores a damaged organ to perfect condition.
 			. = TRUE
 			owner.update_med_icon()
 
-
-
-/obj/limb/proc/update_damage_icon_part()
-	var/brutestate = copytext(damage_state, 1, 2)
-	var/burnstate = copytext(damage_state, 2)
-	if(brutestate != "0")
-		wound_overlay.icon_state = "grayscale_[brutestate]"
-		overlays += wound_overlay
-
-	if(burnstate != "0")
-		wound_overlay.icon_state = "burn_[burnstate]"
-		overlays += wound_overlay
-
-//called when limb is removed or robotized, any ongoing surgery and related vars are reset
+///called when limb is removed or robotized, any ongoing surgery and related vars are reset unless set otherwise.
 /obj/limb/proc/reset_limb_surgeries()
-	surgery_open_stage = 0
-	bone_repair_stage = 0
-	limb_replacement_stage = 0
-	surgery_organ = null
-	cavity = 0
-
-
-
+	owner.incision_depths[name] = SURGERY_DEPTH_SURFACE
+	owner.active_surgeries[name] = null
 
 /*
 			LIMB TYPES
@@ -1086,6 +1092,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "chest"
 	icon_name = "torso"
 	display_name = "chest"
+	cavity = "thoracic cavity"
 	max_damage = 200
 	min_broken_damage = 30
 	body_part = BODY_FLAG_CHEST
@@ -1098,6 +1105,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "groin"
 	icon_name = "groin"
 	display_name = "groin"
+	cavity = "abdominal cavity"
 	max_damage = 200
 	min_broken_damage = 30
 	body_part = BODY_FLAG_GROIN
@@ -1209,6 +1217,7 @@ This function completely restores a damaged organ to perfect condition.
 	name = "head"
 	icon_name = "head"
 	display_name = "head"
+	cavity = "cranial cavity"
 	max_damage = 60
 	min_broken_damage = 30
 	body_part = BODY_FLAG_HEAD
@@ -1218,7 +1227,6 @@ This function completely restores a damaged organ to perfect condition.
 	splint_icon_amount = 4
 	bandage_icon_amount = 4
 	var/disfigured = 0 //whether the head is disfigured.
-	var/face_surgery_stage = 0
 
 /obj/limb/head/update_overlays()
 	..()
@@ -1254,5 +1262,39 @@ This function completely restores a damaged organ to perfect condition.
 	owner.name = owner.get_visible_name()
 
 /obj/limb/head/reset_limb_surgeries()
-	..()
-	face_surgery_stage = 0
+	for(var/zone in list("head", "eyes", "mouth"))
+		owner.active_surgeries[zone] = null
+		owner.incision_depths[zone] = SURGERY_DEPTH_SURFACE
+
+/obj/limb/head/get_incision_depth() //Head limb includes eye/mouth locations.
+	var/incisions
+
+	for(var/zone in list("head", "eyes", "mouth"))
+		switch(owner.incision_depths[zone])
+			if(SURGERY_DEPTH_SHALLOW)
+				incisions++
+			if(SURGERY_DEPTH_DEEP) //Only the head itself can be cut this deeply.
+				. = "a massive surgical incision"
+
+	switch(incisions)
+		if(1)
+			if(.)
+				. += " and a smaller incision"
+			else
+				. = "a surgical incision"
+		if(2, 3)
+			if(.) //3 locations tested, . means skull is opened deeply, therefore this is eye + mouth.
+				. += " and two smaller incisions"
+			else //2-3 open incisions. Not bothering to test exact number.
+				. = "several surgical incisions"
+
+/obj/limb/head/get_active_limb_surgeries()
+	for(var/zone in list("head", "eyes", "mouth"))
+		if(owner.active_surgeries[zone])
+			.++
+
+	switch(.)
+		if(1)
+			return "an incomplete surgical operation"
+		if(2, 3)
+			return "several incomplete surgical operations"

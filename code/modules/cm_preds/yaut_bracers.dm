@@ -39,10 +39,15 @@
 	var/upgrades = 0 //Set to two, so admins can give preds shittier ones for young blood events or whatever. //Changed it back to 0 since it was breaking spawn-equipment and the translator -retrokinesis
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
+	var/scimitars = FALSE
+
+	var/name_active = TRUE
+	var/obj/item/card/id/bracer_chip/embedded_id
 
 /obj/item/clothing/gloves/yautja/Initialize(mapload, ...)
 	. = ..()
 	caster = new(src)
+	embedded_id = new(src)
 
 /obj/item/clothing/gloves/yautja/emp_act(severity)
 	charge -= (severity * 500)
@@ -55,11 +60,14 @@
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
 	if(slot != WEAR_HANDS)
+		move_chip_to_bracer()
 		return
 	flags_item ^= NODROP
 	START_PROCESSING(SSobj, src)
 	if(isYautja(user))
 		to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+		if(embedded_id.registered_name)
+			embedded_id.set_user_data(user)
 	else
 		to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
 
@@ -75,11 +83,13 @@
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	QDEL_NULL(caster)
+	QDEL_NULL(embedded_id)
 	STOP_PROCESSING(SSobj, src)
 	remove_from_missing_pred_gear(src)
 	return ..()
 
 /obj/item/clothing/gloves/yautja/dropped(mob/user)
+	move_chip_to_bracer()
 	STOP_PROCESSING(SSobj, src)
 	add_to_missing_pred_gear(src)
 	flags_item = initial(flags_item)
@@ -262,7 +272,10 @@
 	var/obj/item/weapon/wristblades/L = user.get_inactive_hand()
 	var/is_lefthand_full = FALSE
 	if(R && istype(R)) //Turn it off.
-		to_chat(user, SPAN_NOTICE("You retract your wrist blades."))
+		if(scimitars)
+			to_chat(user, SPAN_NOTICE("You retract your scimitars."))
+		else
+			to_chat(user, SPAN_NOTICE("You retract your wrist blades."))
 		playsound(user.loc,'sound/weapons/wristblades_off.ogg', 15, 1)
 		blades_active = 0
 		qdel(R)
@@ -282,13 +295,23 @@
 		if(!istype(hand) || !hand.is_usable())
 			to_chat(user, SPAN_WARNING("You can't hold that!"))
 			return
-		var/obj/item/weapon/wristblades/N = new()
-		user.put_in_active_hand(N)
-		if(!is_lefthand_full)
-			var/obj/item/weapon/wristblades/W = new()
-			user.put_in_inactive_hand(W)
+		if(scimitars)
+			var/obj/item/weapon/wristblades/scimitar/N = new()
+			user.put_in_active_hand(N)
+			if(!is_lefthand_full)
+				var/obj/item/weapon/wristblades/scimitar/W = new()
+				user.put_in_inactive_hand(W)
+		else
+			var/obj/item/weapon/wristblades/blades/N = new()
+			user.put_in_active_hand(N)
+			if(!is_lefthand_full)
+				var/obj/item/weapon/wristblades/blades/W = new()
+				user.put_in_inactive_hand(W)
 		blades_active = 1
-		to_chat(user, SPAN_NOTICE("You activate your wrist blades."))
+		if(scimitars)
+			to_chat(user, SPAN_NOTICE("You activate your scimitars."))
+		else
+			to_chat(user, SPAN_NOTICE("You activate your wrist blades."))
 		playsound(user,'sound/weapons/wristblades_on.ogg', 15, 1)
 
 	return 1
@@ -455,7 +478,7 @@
 	UnregisterSignal(user, COMSIG_HUMAN_PRE_BULLET_ACT)
 
 	if(forced)
-		cloak_cooldown = world.time + 20 SECONDS
+		cloak_cooldown = world.time + 10 SECONDS
 
 	to_chat(user, "Your cloaking device deactivates.")
 	cloaked = 0
@@ -532,7 +555,7 @@
 		usr.put_in_active_hand(W)
 		W.source = src
 		caster_active = 1
-		to_chat(usr, SPAN_NOTICE("You activate your plasma caster."))
+		to_chat(usr, SPAN_NOTICE("You activate your plasma caster. It is in [W.mode] mode."))
 		playsound(src,'sound/weapons/pred_plasmacaster_on.ogg', 15, 1)
 	return 1
 
@@ -891,3 +914,53 @@
 			if(Q.stat && !isobserver(Q))
 				continue //Unconscious
 			to_chat(Q, "[SPAN_INFO("A strange voice says")] <span class='prefix'>'[msg]'</span>.")
+
+/obj/item/clothing/gloves/yautja/verb/bracername()
+	set name = "Toggle Bracer Name"
+	set desc = "Toggle whether fellow Yautja that examine you will be able to see your name."
+	set category = "Yautja"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	name_active = !name_active
+	to_chat(usr, SPAN_NOTICE("\The [src] will [name_active ? "now" : "no longer"] show your name when fellow Yautja examine you."))
+
+/obj/item/clothing/gloves/yautja/verb/idchip()
+	set name = "Toggle ID Chip"
+	set desc = "Reveal/Hide your embedded bracer ID chip."
+	set category = "Yautja"
+	set src in usr
+
+	if(usr.is_mob_incapacitated())
+		return
+
+	var/mob/living/carbon/human/H = usr
+	if(!istype(H) || !HAS_TRAIT(usr, TRAIT_YAUTJA_TECH))
+		to_chat(usr, SPAN_WARNING("You do not know how to use this."))
+		return
+
+	if(H.wear_id == embedded_id)
+		to_chat(H, SPAN_NOTICE("You retract your ID chip."))
+		move_chip_to_bracer()
+	else if(H.wear_id)
+		to_chat(H, SPAN_WARNING("Something is obstructing the deployment of your ID chip!"))
+	else
+		to_chat(H, SPAN_NOTICE("You expose your ID chip."))
+		if(!H.equip_to_slot_if_possible(embedded_id, WEAR_ID))
+			to_chat(H, SPAN_WARNING("Something went wrong during your chip's deployment! (Make a Bug Report about this)"))
+			move_chip_to_bracer()
+
+/obj/item/clothing/gloves/yautja/proc/move_chip_to_bracer()
+	if(!embedded_id || !embedded_id.loc)
+		return
+
+	if(embedded_id.loc == src)
+		return
+
+	if(ismob(embedded_id.loc))
+		var/mob/M = embedded_id.loc
+		M.u_equip(embedded_id, src, FALSE, TRUE)
+	else
+		embedded_id.forceMove(src)

@@ -3,7 +3,7 @@ ARG BYOND_BASE_IMAGE=i386/ubuntu:bionic
 FROM ${BYOND_BASE_IMAGE} AS byond
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y make man curl unzip libssl-dev
 ARG BYOND_MAJOR=513
-ARG BYOND_MINOR=1539
+ARG BYOND_MINOR=1542
 ARG BYOND_DOWNLOAD_URL=https://secure.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip
 RUN curl ${BYOND_DOWNLOAD_URL} -o byond.zip \
     && unzip byond.zip \

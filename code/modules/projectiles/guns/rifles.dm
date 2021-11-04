@@ -48,6 +48,7 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/verticalgrip,
@@ -261,15 +262,15 @@
 
 /obj/item/weapon/gun/rifle/m41aMK1/set_gun_config_values()
 	..()
-	fire_delay = FIRE_DELAY_TIER_8
+	fire_delay = FIRE_DELAY_TIER_9
 	burst_amount = BURST_AMOUNT_TIER_4
-	burst_delay = FIRE_DELAY_TIER_8
+	burst_delay = FIRE_DELAY_TIER_9
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
 	scatter = SCATTER_AMOUNT_TIER_9
 	burst_scatter_mult = SCATTER_AMOUNT_TIER_9
 	scatter_unwielded = SCATTER_AMOUNT_TIER_2
-	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_5
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_2
 	recoil_unwielded = RECOIL_AMOUNT_TIER_2
 
 
@@ -323,6 +324,7 @@
 	random_spawn_rail = list(
 							/obj/item/attachable/reddot,
 							/obj/item/attachable/reflex/,
+							/obj/item/attachable/scope/mini,
 							)
 	random_spawn_under = list(
 							/obj/item/attachable/angledgrip,
@@ -753,7 +755,7 @@
 						/obj/item/attachable/burstfire_assembly,
 						/obj/item/attachable/magnetic_harness)
 
-	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_WIELDED_FIRING_ONLY|GUN_SUPPORT_PLATFORM
 	gun_category = GUN_CATEGORY_HEAVY
 
 /obj/item/weapon/gun/rifle/lmg/set_gun_attachment_offsets()
@@ -1145,6 +1147,7 @@
 						/obj/item/attachable/suppressor,
 						/obj/item/attachable/bayonet,
 						/obj/item/attachable/bayonet/upp,
+						/obj/item/attachable/bayonet/c02,
 						/obj/item/attachable/reddot,
 						/obj/item/attachable/reflex,
 						/obj/item/attachable/flashlight,

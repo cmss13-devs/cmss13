@@ -44,7 +44,9 @@
 			return has_limb("chest")
 		if(WEAR_ID)
 			return 1
-		if(WEAR_EAR)
+		if(WEAR_L_EAR)
+			return has_limb("head")
+		if(WEAR_R_EAR)
 			return has_limb("head")
 		if(WEAR_EYES)
 			return has_limb("head")
@@ -154,8 +156,11 @@
 		update_tint()
 		update_glass_vision(I)
 		update_inv_glasses()
-	else if (I == wear_ear)
-		wear_ear = null
+	else if (I == wear_l_ear)
+		wear_l_ear = null
+		update_inv_ears()
+	else if (I == wear_r_ear)
+		wear_r_ear = null
 		update_inv_ears()
 	else if (I == shoes)
 		shoes = null
@@ -272,8 +277,12 @@
 			hud_set_squad()
 			update_inv_wear_id()
 			name = get_visible_name()
-		if(WEAR_EAR)
-			wear_ear = W
+		if(WEAR_L_EAR)
+			wear_l_ear = W
+			W.equipped(src, slot)
+			update_inv_ears()
+		if(WEAR_R_EAR)
+			wear_r_ear = W
 			W.equipped(src, slot)
 			update_inv_ears()
 		if(WEAR_EYES)
@@ -388,6 +397,8 @@
 		else
 			to_chat(src, SPAN_DANGER("You are trying to eqip this item to an unsupported inventory slot. How the heck did you manage that? Stop it..."))
 			return
+
+	SEND_SIGNAL(src, COMSIG_HUMAN_EQUIPPED_ITEM, W, slot)
 	recalculate_move_delay = TRUE
 	return 1
 
@@ -404,8 +415,10 @@
 			return belt
 		if(WEAR_ID)
 			return wear_id
-		if(WEAR_EAR)
-			return wear_ear
+		if(WEAR_L_EAR)
+			return wear_l_ear
+		if(WEAR_R_EAR)
+			return wear_r_ear
 		if(WEAR_EYES)
 			return glasses
 		if(WEAR_HANDS)
@@ -433,7 +446,42 @@
 		if(WEAR_LEGCUFFS)
 			return legcuffed
 
-
+/mob/living/carbon/human/get_slot_by_item(obj/item/I)
+	if(I == back)
+		return WEAR_BACK
+	if(I == wear_mask)
+		return WEAR_FACE
+	if(I == belt)
+		return WEAR_WAIST
+	if(I == wear_id)
+		return WEAR_ID
+	if(I == wear_l_ear)
+		return WEAR_L_EAR
+	if(I == wear_r_ear)
+		return WEAR_R_EAR
+	if(I == glasses)
+		return WEAR_EYES
+	if(I == gloves)
+		return WEAR_HANDS
+	if(I == head)
+		return WEAR_HEAD
+	if(I == shoes)
+		return WEAR_FEET
+	if(I == wear_suit)
+		return WEAR_JACKET
+	if(I == w_uniform)
+		return WEAR_BODY
+	if(I == l_store)
+		return WEAR_L_STORE
+	if(I == r_store)
+		return WEAR_R_STORE
+	if(I == s_store)
+		return WEAR_J_STORE
+	if(I == handcuffed)
+		return WEAR_HANDCUFFS
+	if(I == legcuffed)
+		return WEAR_LEGCUFFS
+	return ..()
 
 
 

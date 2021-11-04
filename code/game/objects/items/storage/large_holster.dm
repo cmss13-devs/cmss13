@@ -4,20 +4,30 @@
 	name = "\improper Rifle Holster"
 	desc = "holster"
 	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "m37_holster"
 	w_class = SIZE_LARGE
 	flags_equip_slot = SLOT_BACK
 	max_w_class = SIZE_LARGE
 	storage_slots = 1
 	max_storage_space = 4
 	storage_flags = STORAGE_FLAGS_DEFAULT|STORAGE_USING_DRAWING_METHOD
-	var/base_icon = "m37_holster"
+	///Icon/item states change based on contents; this stores base icon state.
+	var/base_icon
 	var/drawSound = 'sound/weapons/gun_rifle_draw.ogg'
 
 
+/obj/item/storage/large_holster/post_skin_selection()
+	base_icon = icon_state
+
 /obj/item/storage/large_holster/update_icon()
-	var/mob/living/carbon/human/user = loc
-	icon_state = "[base_icon][contents.len?"_full":""]"
+	if(length(contents))
+		icon_state = "[base_icon]_full"
+	else
+		icon_state = base_icon
+
 	item_state = icon_state
+
+	var/mob/living/carbon/human/user = loc
 	if(istype(user))
 		if(src == user.back)
 			user.update_inv_back()
@@ -25,7 +35,6 @@
 			user.update_inv_belt()
 		else if(src == user.s_store)
 			user.update_inv_s_store()
-
 
 /obj/item/storage/large_holster/equipped(mob/user, slot)
 	if(slot == WEAR_BACK || slot == WEAR_WAIST || slot == WEAR_J_STORE)
@@ -36,22 +45,16 @@
 	mouse_opacity = initial(mouse_opacity)
 	..()
 
-/obj/item/storage/large_holster/handle_item_insertion(obj/item/W, prevent_warning = 0)
-	. = ..()
-	if(. && drawSound)
+/obj/item/storage/large_holster/_item_insertion(obj/item/W, prevent_warning = 0)
+	..()
+	if(drawSound)
 		playsound(src, drawSound, 15, TRUE)
-	return 1
 
 //Call this proc to handle the removal of an item from the storage item. The item will be moved to the atom sent as new_target
-/obj/item/storage/large_holster/remove_from_storage(obj/item/W, atom/new_location)
-	. = ..()
-	if(. && drawSound)
+/obj/item/storage/large_holster/_item_removal(obj/item/W, atom/new_location)
+	..()
+	if(drawSound)
 		playsound(src, drawSound, 15, TRUE)
-
-
-
-
-
 
 /obj/item/storage/large_holster/m37
 	name = "\improper L44 M37A2 scabbard"
@@ -61,12 +64,7 @@
 		/obj/item/weapon/gun/shotgun/pump,
 		/obj/item/weapon/gun/shotgun/combat
 	)
-
-/obj/item/storage/large_holster/m37/Initialize()
-	. = ..()
-	select_gamemode_skin(/obj/item/storage/large_holster/m37)
-	base_icon = icon_state
-
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/large_holster/m37/full/fill_preset_inventory()
 	new /obj/item/weapon/gun/shotgun/pump(src)
@@ -74,9 +72,7 @@
 /obj/item/storage/large_holster/machete
 	name = "\improper H5 pattern M2132 machete scabbard"
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the back or the armor."
-	base_icon = "machete_holster"
 	icon_state = "machete_holster"
-	item_state = "machete_holster"
 	flags_equip_slot = SLOT_WAIST|SLOT_BACK
 	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
 
@@ -86,7 +82,6 @@
 /obj/item/storage/large_holster/katana
 	name = "\improper katana scabbard"
 	desc = "A large, vibrantly colored katana scabbard used to carry a japanese sword. It can be strapped to the back or worn at the belt. Because of the sturdy wood casing of the scabbard, it makes an okay defensive weapon in a pinch."
-	base_icon = "katana_holster"
 	icon_state = "katana_holster"
 	force = 12
 	attack_verb = list("bludgeoned", "struck", "cracked")
@@ -99,7 +94,6 @@
 /obj/item/storage/large_holster/ceremonial_sword
 	name = "ceremonial sword scabbard"
 	desc = "A large, vibrantly colored scabbard used to carry a ceremonial sword."
-	base_icon = "ceremonial_sword_holster"
 	icon_state = "ceremonial_sword_holster"//object icon is duplicate of katana holster, needs new icon at some point.
 	force = 12
 	flags_equip_slot = SLOT_WAIST
@@ -110,39 +104,69 @@
 
 /obj/item/storage/large_holster/m39
 	name = "\improper M276 pattern M39 holster rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is designed for the M39 SMG, and features a larger frame to support the gun. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This holster features a larger frame and stiff backboard to support a submachinegun. It's designed for the M39, but the clips are adjustable enough to fit most compact submachineguns. Due to its unorthodox design, it isn't a very common sight, and is only specially issued."
 	icon_state = "m39_holster"
 	icon = 'icons/obj/items/clothing/belts.dmi'
-	base_icon = "m39_holster"
 	flags_equip_slot = SLOT_WAIST
 	max_w_class = 5
 	can_hold = list(
-		/obj/item/weapon/gun/smg/m39
+		/obj/item/weapon/gun/smg/m39,
+		/obj/item/weapon/gun/smg/mp7,
+		/obj/item/weapon/gun/smg/uzi,
+		/obj/item/weapon/gun/pistol/skorpion
 		)
+	///Guns have a hud offset that throws the vis_contents alignment off.
+	var/gun_offset = 0
+	///Whether the gun had pixel scaling set before being holstered.
+	var/gun_scaling = FALSE
+
+/obj/item/storage/large_holster/m39/_item_insertion(obj/item/W, prevent_warning)
+	if(istype(W)) //Doing this before calling parent so that the gun isn't misaligned in the inventory screen.
+		if(W.appearance_flags & PIXEL_SCALE)
+			gun_scaling = TRUE
+		else
+			W.appearance_flags |= PIXEL_SCALE
+
+		gun_offset = W.hud_offset
+		W.hud_offset = 0
+		W.pixel_x = 0
+		W.transform = turn(matrix(0.82, MATRIX_SCALE), 90) //0.82x is the right size and gives reasonably accurate results with pixel scaling.
+
+		W.vis_flags |= VIS_INHERIT_ID //Means the gun is just visual and doesn't block picking up or clicking on the holster.
+		vis_contents += W
+
+	..()
+
+/obj/item/storage/large_holster/m39/_item_removal(obj/item/W, atom/new_location)
+	if(gun_scaling)
+		gun_scaling = FALSE
+	else
+		W.appearance_flags &= ~PIXEL_SCALE
+
+	W.hud_offset = gun_offset
+	W.pixel_x = gun_offset
+	W.transform = null
+
+	W.vis_flags &= ~VIS_INHERIT_ID
+	vis_contents -= W
+
+	..()
 
 /obj/item/storage/large_holster/m39/update_icon()
-	var/mob/user = loc
-	if(contents.len)
-		var/obj/I = contents[1]
-		icon_state = "[base_icon]_full_[I.icon_state]"
-		item_state = "[base_icon]_full"
-	else
-		icon_state = base_icon
-		item_state = base_icon
-	if(istype(user)) user.update_inv_belt()
+	item_state = length(contents) ? "[base_icon]_full" : base_icon
+
+	var/mob/living/carbon/human/user = loc
+	if(istype(user))
+		user.update_inv_belt()
 
 /obj/item/storage/large_holster/m39/full/fill_preset_inventory()
-	new /obj/item/weapon/gun/smg/m39(src)
-
-
+	handle_item_insertion(new /obj/item/weapon/gun/smg/m39())
 
 /obj/item/storage/large_holster/fuelpack
 	name = "\improper Broiler-T flexible refueling system"
 	desc = "A specialized back harness that carries the Broiler-T flexible refueling system. Designed by and for USCM Pyrotechnicians."
 	icon = 'icons/obj/items/clothing/backpacks.dmi'
 	icon_state = "flamethrower_broiler"
-	item_state = "flamethrower_broiler"
-	base_icon = "flamethrower_broiler"
 	flags_atom = FPRINT|CONDUCT
 	var/obj/item/ammo_magazine/flamer_tank/large/fuel
 	var/obj/item/ammo_magazine/flamer_tank/large/B/fuelB
@@ -153,11 +177,9 @@
 	var/image/flamer_overlay
 	actions_types = list(/datum/action/item_action/specialist/toggle_fuel)
 	can_hold = list(/obj/item/weapon/gun/flamer/M240T)
+	has_gamemode_skin = TRUE
 
 /obj/item/storage/large_holster/fuelpack/Initialize()
-	select_gamemode_skin(/obj/item/storage/large_holster/fuelpack)
-	base_icon = icon_state
-	item_state = icon_state
 	. = ..()
 	fuel = new /obj/item/ammo_magazine/flamer_tank/large()
 	fuelB =	new /obj/item/ammo_magazine/flamer_tank/large/B()
@@ -177,19 +199,18 @@
 	. = ..()
 
 /obj/item/storage/large_holster/fuelpack/update_icon()
-	var/mob/user = loc
 	overlays -= flamer_overlay
-	if(contents.len)
+	if(length(contents))
 		overlays += flamer_overlay
 
-	// Update onmob
+	var/mob/living/carbon/human/user = loc
 	if(istype(user))
 		user.update_inv_back()
 
 /obj/item/storage/large_holster/fuelpack/dropped(mob/user)
-	if (linked_flamer)
+	if(linked_flamer)
 		linked_flamer.fuelpack = null
-		if (linked_flamer.current_mag in list(fuel, fuelB, fuelX))
+		if(linked_flamer.current_mag in list(fuel, fuelB, fuelX))
 			linked_flamer.current_mag = null
 		linked_flamer.update_icon()
 		linked_flamer = null
@@ -204,7 +225,6 @@
 			ret.overlays += weapon_holstered
 
 	return ret
-
 
 /obj/item/storage/large_holster/fuelpack/attack_self(mob/user)
 	..()

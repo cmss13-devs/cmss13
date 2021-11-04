@@ -1,175 +1,183 @@
 //Procedures in this file: Eye mending surgery
+//Steps will only work in a surgery of /datum/surgery/eye_repair or a child of that due to target_eyes var.
 //////////////////////////////////////////////////////////////////
-//						EYE SURGERY							//
+//							EYE SURGERY							//
 //////////////////////////////////////////////////////////////////
 
-/datum/surgery_step/eye
-	priority = 2
-	can_infect = 1
-	var/eye_step
-
-/datum/surgery_step/eye/can_use(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected, checks_only)
-	if(!affected || (affected.status & LIMB_DESTROYED))
-		return 0
-
-	if(target_zone != "eyes")
-		return 0
-
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	if(!E)
-		return 0
-	if(E.eye_surgery_stage == eye_step)
-		return 1
-
-/datum/surgery_step/eye/cut_open
-	allowed_tools = list(
-	/obj/item/tool/surgery/scalpel = 100,		\
-	/obj/item/tool/kitchen/knife = 75,	\
-	/obj/item/shard = 50, 		\
+/datum/surgery/eye_repair
+	name = "Eye Repair Surgery"
+	possible_locs = list("eyes")
+	invasiveness = list(SURGERY_DEPTH_SURFACE)
+	required_surgery_skill = SKILL_SURGERY_TRAINED
+	pain_reduction_required = PAIN_REDUCTION_LIGHT //Eye doesn't have pain receptors.
+	steps = list(
+		/datum/surgery_step/separate_cornea,
+		/datum/surgery_step/lift_eyes,
+		/datum/surgery_step/mend_eyes,
+		/datum/surgery_step/cauterize/eyes
 	)
+	var/datum/internal_organ/eyes/target_eyes
 
-	min_duration = SCALPEL_MIN_DURATION
-	max_duration = SCALPEL_MAX_DURATION
-	eye_step = 0
+/datum/surgery/eye_repair/New(surgery_target, surgery_location, surgery_limb)
+	..()
+	if(target)
+		var/mob/living/carbon/human/targethuman = target
+		target_eyes = targethuman.internal_organs_by_name["eyes"]
 
-/datum/surgery_step/eye/cut_open/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts to separate the cornea on [target]'s eyes with \the [tool]."), \
-	SPAN_NOTICE("You start to separate the cornea on [target]'s eyes with \the [tool]."))
+/datum/surgery/eye_repair/can_start(mob/user, mob/living/carbon/human/patient, var/obj/limb/L, obj/item/tool)
+	var/datum/internal_organ/eyes/E = patient.internal_organs_by_name["eyes"]
+	return E && E.damage > 0 && E.robotic != ORGAN_ROBOT
+
+//------------------------------------
+
+/datum/surgery_step/separate_cornea
+	name = "Separate Corneas"
+	desc = "separate the corneas"
+	tools = SURGERY_TOOLS_INCISION
+	time = 2 SECONDS
+
+/datum/surgery_step/separate_cornea/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You start to separate the corneas of [target]'s eyes with \the [tool]."),
+		SPAN_NOTICE("[user] starts to separate the corneas of your eyes with \the [tool]."),
+		SPAN_NOTICE("[user] starts to separate the corneas of [target]'s eyes with \the [tool]."))
+
 	log_interact(user, target, "[key_name(user)] started to separate the cornea on [key_name(target)]'s eyes with \the [tool].")
 
-	..()
+/datum/surgery_step/separate_cornea/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You have separated [target]'s corneas."),
+		SPAN_NOTICE("[user] has separated your corneas."),
+		SPAN_NOTICE("[user] has separated [target]'s corneas."))
 
-/datum/surgery_step/eye/cut_open/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] has separated the cornea on [target]'s eyes with \the [tool].") , \
-	SPAN_NOTICE("You have separated the cornea on [target]'s eyes with \the [tool]."),)
-	log_interact(user, target, "[key_name(user)] separated the cornea on [key_name(target)]'s eyes with \the [tool].")
+	log_interact(user, target, "[key_name(user)] separated the cornea on [key_name(target)]'s eyes with \the [tool], starting [surgery].")
 
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	E.eye_surgery_stage = 1
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SHALLOW
 	target.disabilities |= NEARSIGHTED // code\#define\mobs.dm
 
-/datum/surgery_step/eye/cut_open/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, slicing [target]'s eyes with \the [tool]!") , \
-	SPAN_WARNING("Your hand slips, slicing [target]'s eyes with \the [tool]!") )
-	log_interact(user, target, "[key_name(user)] failed to separate the cornea on [key_name(target)]'s eyes with \the [tool].")
+/datum/surgery_step/separate_cornea/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, slicing [target]'s eyes with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, slicing your eyes with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, slicing [target]'s eyes with \the [tool]!"))
+	
+	log_interact(user, target, "[key_name(user)] failed to separate the cornea on [key_name(target)]'s eyes with \the [tool], aborting [surgery].")
 
-	affected.createwound(CUT, 10)
-	E.take_damage(5, 0)
-	target.updatehealth()
-	affected.update_wounds()
+	target.apply_damage(10, BRUTE, target_zone)
+	surgery.target_eyes.take_damage(5, FALSE)
+	return FALSE
 
+//------------------------------------
 
-/datum/surgery_step/eye/lift_eyes
-	allowed_tools = list(
-	/obj/item/tool/surgery/retractor = 100,          \
-	/obj/item/tool/kitchen/utensil/fork = 50
-	)
+/datum/surgery_step/lift_eyes
+	name = "Lift Corneas"
+	desc = "lift the corneas"
+	tools = SURGERY_TOOLS_PRY_DELICATE
+	time = 2 SECONDS
 
-	min_duration = RETRACTOR_MIN_DURATION
-	max_duration = RETRACTOR_MAX_DURATION
-	eye_step = 1
+/datum/surgery_step/lift_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You begin lifting the corneas from [target]'s eyes with \the [tool]."),
+		SPAN_NOTICE("[user] begins to lift the corneas from your eyes with \the [tool]."),
+		SPAN_NOTICE("[user] begins to lift the corneas from [target]'s eyes with \the [tool]."))
 
-/datum/surgery_step/eye/lift_eyes/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts lifting the cornea from [target]'s eyes with \the [tool]."), \
-	SPAN_NOTICE("You start lifting the cornea from [target]'s eyes with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] started to lift the cornea from [key_name(target)]'s eyes with \the [tool].")
 
-	..()
+/datum/surgery_step/lift_eyes/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You finish lifting [target]'s corneas."),
+		SPAN_NOTICE("[user] has lifted your corneas."),
+		SPAN_NOTICE("[user] has lifted [target]'s corneas."))
 
-/datum/surgery_step/eye/lift_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] has lifted the cornea from [target]'s eyes with \the [tool].") , \
-	SPAN_NOTICE("You have lifted the cornea from [target]'s eyes with \the [tool].") )
 	log_interact(user, target, "[key_name(user)] lifted the cornea from [key_name(target)]'s eyes with \the [tool].")
 
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	E.eye_surgery_stage = 2
+/datum/surgery_step/lift_eyes/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, damaging [target]'s eyes with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, damaging your eyes with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with \the [tool]!"))
 
-/datum/surgery_step/eye/lift_eyes/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	var/datum/internal_organ/eyes/eyes = target.internal_organs_by_name["eyes"]
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with \the [tool]!"), \
-	SPAN_WARNING("Your hand slips, damaging [target]'s eyes with \the [tool]!"))
 	log_interact(user, target, "[key_name(user)] failed to lift the cornea from [key_name(target)]'s eyes with \the [tool].")
 
-	target.apply_damage(10, BRUTE, affected)
-	eyes.take_damage(5, 0)
-	target.updatehealth()
+	target.apply_damage(10, BRUTE, target_zone)
+	surgery.target_eyes.take_damage(5, FALSE)
+	return FALSE
 
-/datum/surgery_step/eye/mend_eyes
-	allowed_tools = list(
-	/obj/item/tool/surgery/hemostat = 100,         \
-	/obj/item/stack/cable_coil = 75,         \
-	/obj/item/device/assembly/mousetrap = 10 //I don't know. Don't ask me. But I'm leaving it because hilarity.
-	)
+//------------------------------------
 
-	min_duration = HEMOSTAT_MIN_DURATION
-	max_duration = HEMOSTAT_MAX_DURATION
-	eye_step = 2
+/datum/surgery_step/mend_eyes
+	name = "Mend Ocular Nerves"
+	desc = "mend the eyes"
+	tools = SURGERY_TOOLS_PINCH
+	time = 4 SECONDS
 
-/datum/surgery_step/eye/mend_eyes/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] starts mending the nerves and lenses in [target]'s eyes with \the [tool]."), \
-	SPAN_NOTICE("You start mending the nerves and lenses in [target]'s eyes with the [tool]."))
+/datum/surgery_step/mend_eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You begin mending the nerves and lenses in [target]'s eyes with \the [tool]."),
+		SPAN_NOTICE("[user] begins to mend the nerves and lenses in your eyes with \the [tool]."),
+		SPAN_NOTICE("[user] begins to mend the nerves and lenses in [target]'s eyes with \the [tool]."))
+
 	log_interact(user, target, "[key_name(user)] started to mend the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
 
-	..()
+/datum/surgery_step/mend_eyes/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You mend the nerves and lenses in [target]'s eyes."),
+		SPAN_NOTICE("[user] mends the nerves and lenses in your eyes."),
+		SPAN_NOTICE("[user] mends the nerves and lenses in [target]'s eyes."))
 
-/datum/surgery_step/eye/mend_eyes/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] mends the nerves and lenses in [target]'s with \the [tool].") ,	\
-	SPAN_NOTICE("You mend the nerves and lenses in [target]'s with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] mended the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
 
-	user.count_niche_stat(STATISTICS_NICHE_SURGERY_EYE)
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	E.eye_surgery_stage = 3
+/datum/surgery_step/mend_eyes/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, damaging [target]'s eyes with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, damaging your eyes with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, damaging [target]'s eyes with \the [tool]!"))
 
-/datum/surgery_step/eye/mend_eyes/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, stabbing \the [tool] into [target]'s eye!"), \
-	SPAN_WARNING("Your hand slips, stabbing \the [tool] into [target]'s eye!"))
 	log_interact(user, target, "[key_name(user)] failed to mend the nerves and lenses in [key_name(target)]'s eyes with \the [tool].")
 
-	target.apply_damage(10, BRUTE, affected, sharp = 1)
-	E.take_damage(5, 0)
-	target.updatehealth()
+	target.apply_damage(10, BRUTE, target_zone, sharp = 1)
+	surgery.target_eyes.take_damage(5, FALSE)
+	return FALSE
 
+//------------------------------------
 
-/datum/surgery_step/eye/cauterize
-	allowed_tools = list(
-    /obj/item/tool/surgery/cautery = 100,         \
-    /obj/item/clothing/mask/cigarette = 75,    \
-    /obj/item/tool/lighter = 50,    \
-    /obj/item/tool/weldingtool = 50
-    )
+/datum/surgery_step/cauterize/eyes
+	name = "Cauterize Eye Incisions"
+	name = "cauterize the incisions"
+	time = 3 SECONDS
 
-	min_duration = CAUTERY_MIN_DURATION
-	max_duration = CAUTERY_MAX_DURATION
-	eye_step = 3
+/datum/surgery_step/cauterize/eyes/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You begin to reattach [target]'s corneas with \the [tool]."),
+		SPAN_NOTICE("[user] begins to reattach your corneas with \the [tool]."),
+		SPAN_NOTICE("[user] begins to reattach [target]'s corneas with \the [tool]."))
 
-/datum/surgery_step/eye/cauterize/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] is beginning to cauterize the incision around [target]'s eyes with \the [tool].") , \
-	SPAN_NOTICE("You are beginning to cauterize the incision around [target]'s eyes with \the [tool]."))
 	log_interact(user, target, "[key_name(user)] began to cauterize the incision around [key_name(target)]'s eyes with \the [tool].")
 
 
-/datum/surgery_step/eye/cauterize/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	user.visible_message(SPAN_NOTICE("[user] cauterizes the incision around [target]'s eyes with \the [tool]."), \
-	SPAN_NOTICE("You cauterize the incision around [target]'s eyes with \the [tool]."))
-	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with \the [tool].")
+/datum/surgery_step/cauterize/eyes/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
+	user.affected_message(target,
+		SPAN_NOTICE("You reattach [target]'s corneas."),
+		SPAN_NOTICE("[user] reattaches your corneas."),
+		SPAN_NOTICE("[user] reattaches [target]'s corneas."))
 
+	log_interact(user, target, "[key_name(user)] cauterized the incision around [key_name(target)]'s eyes with \the [tool], ending [surgery].")
+
+	target.incision_depths[target_zone] = SURGERY_DEPTH_SURFACE
 	target.disabilities &= ~NEARSIGHTED
 	target.sdisabilities &= ~DISABILITY_BLIND
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	E.damage = 0
-	E.eye_surgery_stage = 0
+	surgery.target_eyes.damage = 0
+	user.count_niche_stat(STATISTICS_NICHE_SURGERY_EYE)
 	target.pain.recalculate_pain()
 
+/datum/surgery_step/cauterize/eyes/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, tool_type, datum/surgery/eye_repair/surgery)
+	user.affected_message(target,
+		SPAN_WARNING("Your hand slips, searing [target]'s eyes with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, searing your eyes with \the [tool]!"),
+		SPAN_WARNING("[user]'s hand slips, searing [target]'s eyes with \the [tool]!"))
 
-/datum/surgery_step/eye/cauterize/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool, obj/limb/affected)
-	var/datum/internal_organ/eyes/E = target.internal_organs_by_name["eyes"]
-	user.visible_message(SPAN_WARNING("[user]'s hand slips, searing [target]'s eyes with \the [tool]!"), \
-	SPAN_WARNING("Your hand slips, searing [target]'s eyes with \the [tool]!"))
 	log_interact(user, target, "[key_name(user)] failed to cauterize the incision around [key_name(target)]'s eyes with \the [tool].")
 
-	target.apply_damage(5, BURN, affected)
-	E.take_damage(5, 0)
-	target.updatehealth()
+	target.apply_damage(15, BURN, target_zone)
+	surgery.target_eyes.take_damage(10, FALSE)
+	return FALSE

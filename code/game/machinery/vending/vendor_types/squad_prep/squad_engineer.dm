@@ -10,11 +10,12 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 		list("R-1NG Bell Tower", 0, /obj/item/defenses/handheld/bell_tower, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("UA 42-F Sentry Flamer", 0, /obj/item/defenses/handheld/sentry/flamer, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
 		list("UA 571-C Sentry Gun", 0, /obj/item/defenses/handheld/sentry, MARINE_CAN_BUY_ATTACHMENT, VENDOR_ITEM_MANDATORY),
+		list("Sentry Upgrade kit", 30, /obj/item/engi_upgrade_kit, null, VENDOR_ITEM_REGULAR),
 
 		list("ENGINEERING SUPPLIES", 0, null, null, null),
 		list("Airlock Circuit Board", 2, /obj/item/circuitboard/airlock, null, VENDOR_ITEM_REGULAR),
 		list("APC Circuit Board", 2, /obj/item/circuitboard/apc, null, VENDOR_ITEM_REGULAR),
-		list("Entrenching Tool (ET)", 2, /obj/item/tool/shovel/etool, null, VENDOR_ITEM_REGULAR),
+		list("Entrenching Tool (ET)", 2, /obj/item/tool/shovel/etool/folded, null, VENDOR_ITEM_REGULAR),
 		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
 		list("High-Capacity Power Cell", 3, /obj/item/cell/high, null, VENDOR_ITEM_REGULAR),
 		list("Incendiary Grenade", 6, /obj/item/explosive/grenade/incendiary, null, VENDOR_ITEM_REGULAR),
@@ -132,25 +133,25 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 /obj/structure/machinery/cm_vending/clothing/engi/alpha
 	squad_tag = SQUAD_NAME_1
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_ALPHA)
-	gloves_type = /obj/item/clothing/gloves/marine/alpha/insulated
+	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/alpha/engi
 
 /obj/structure/machinery/cm_vending/clothing/engi/bravo
 	squad_tag = SQUAD_NAME_2
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_BRAVO)
-	gloves_type = /obj/item/clothing/gloves/marine/bravo/insulated
+	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/bravo/engi
 
 /obj/structure/machinery/cm_vending/clothing/engi/charlie
 	squad_tag = SQUAD_NAME_3
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_CHARLIE)
-	gloves_type = /obj/item/clothing/gloves/marine/charlie/insulated
+	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/charlie/engi
 
 /obj/structure/machinery/cm_vending/clothing/engi/delta
 	squad_tag = SQUAD_NAME_4
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_DELTA)
-	gloves_type = /obj/item/clothing/gloves/marine/delta/insulated
+	gloves_type = /obj/item/clothing/gloves/marine/insulated
 	headset_type = /obj/item/device/radio/headset/almayer/marine/delta/engi
 
 //------------ESSENTIAL SETS---------------
@@ -162,6 +163,6 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 		/obj/item/stack/sheet/metal/large_stack,
 		/obj/item/stack/sheet/plasteel/medium_stack,
 		/obj/item/cell/high,
-		/obj/item/tool/shovel/etool,
+		/obj/item/tool/shovel/etool/folded,
 		/obj/item/device/lightreplacer,
 	)

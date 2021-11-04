@@ -208,11 +208,13 @@
 				res.Blend(IM, blendMode2iconMode(A.blend_mode),  A.pixel_x + xoff, A.pixel_y + yoff)
 
 	// Lastly, render any contained effects on top.
-	for(var/turf/the_turf in turfs)
+	for(var/turf/the_turf as anything in turfs)
 		// Calculate where we are relative to the center of the photo
 		var/xoff = (the_turf.x - center.x) * 32 + center_offset
 		var/yoff = (the_turf.y - center.y) * 32 + center_offset
-		res.Blend(getFlatIcon(the_turf.loc), blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
+		var/image/IM = getFlatIcon(the_turf.loc)
+		if(IM)
+			res.Blend(IM, blendMode2iconMode(the_turf.blend_mode),xoff,yoff)
 	return res
 
 
@@ -250,33 +252,11 @@
 		icon_state = icon_on
 		on = 1
 
-/obj/item/device/camera/proc/can_capture_turf(turf/T, mob/user)
-	var/mob/dummy = new(T)	//Go go visibility check dummy
-	var/viewer = user
-	if(user.client)		//To make shooting through security cameras possible
-		viewer = user.client.eye
-	var/can_see = (dummy in viewers(world_view_size, viewer)) != null
-
-	dummy.moveToNullspace()
-	dummy = null	//Alas, nameless creature	//garbage collect it instead
-	return can_see
-
 /obj/item/device/camera/proc/captureimage(atom/target, mob/user, flag)
-	var/x_c = target.x - (size-1)/2
-	var/y_c = target.y + (size-1)/2
-	var/z_c	= target.z
-	var/list/turfs = list()
 	var/mobs = ""
-	for(var/i = 1; i <= size; i++)
-		for(var/j = 1; j <= size; j++)
-			var/turf/T = locate(x_c, y_c, z_c)
-			if(can_capture_turf(T, user))
-				turfs.Add(T)
-				mobs += get_mobs(T)
-			x_c++
-		y_c--
-		x_c = x_c - size
-
+	var/list/turf/turfs = RANGE_TURFS(size-1, target) & view(world_view_size, user.client)
+	for(var/turf/T as anything in turfs)
+		mobs += get_mobs(T)
 	var/datum/picture/P = createpicture(target, user, turfs, mobs, flag)
 	printpicture(user, P)
 

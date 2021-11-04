@@ -55,7 +55,14 @@ one type of shotgun ammo, but I think it helps in referencing it. ~N
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 	handful_state = "beanbag_slug"
 
-
+/obj/item/ammo_magazine/shotgun/beanbag/riot
+	name = "box of RC beanbag slugs"
+	desc = "A box filled with beanbag shotgun shells used for non-lethal crowd control. Riot Control use only."
+	icon_state = "beanbag"
+	item_state = "beanbag"
+	default_ammo = /datum/ammo/bullet/shotgun/beanbag
+	handful_state = "beanbag_slug"
+	caliber = "20g"
 //-------------------------------------------------------
 
 /*
@@ -85,6 +92,7 @@ also doesn't really matter. You can only reload them with handfuls.
 	default_ammo = /datum/ammo/bullet/shotgun/twobore
 
 /obj/item/ammo_magazine/internal/shotgun/combat/riot
+	caliber = "20g"
 	default_ammo = /datum/ammo/bullet/shotgun/beanbag
 
 /obj/item/ammo_magazine/internal/shotgun/merc

@@ -230,7 +230,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 #define PIXELS_PER_STRENGTH_VAL 24
 
 /proc/shake_camera(var/mob/M, var/steps = 1, var/strength = 1, var/time_per_step = 1)
-	if(!M || !M.client || (M.shakecamera > world.time))
+	if(!M?.client || (M.shakecamera > world.time))
 		return
 
 	M.shakecamera = world.time + steps * time_per_step
@@ -238,7 +238,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 	var/old_X = M.client.pixel_x
 	var/old_y = M.client.pixel_y
 
-	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
+	animate(M.client, pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step, flags = ANIMATION_PARALLEL)
 	var/i = 1
 	while(i < steps)
 		animate(pixel_x = old_X + rand(-(strength), strength), pixel_y = old_y + rand(-(strength), strength), easing = JUMP_EASING, time = time_per_step)
@@ -285,25 +285,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 	if(hud_used && hud_used.action_intent)
 		hud_used.action_intent.icon_state = "intent_[intent_text(a_intent)]"
-
-//can the mob be operated on?
-/mob/proc/can_be_operated_on()
-	return FALSE
-
-//check if mob is lying down on something we can operate him on.
-/mob/living/carbon/can_be_operated_on()
-	if(!lying) return FALSE
-	if(locate(/obj/structure/machinery/optable, loc) || locate(/obj/structure/bed/roller, loc))
-		return TRUE
-	var/obj/structure/surface/table/T = locate(/obj/structure/surface/table, loc)
-	if(T && !T.flipped) return TRUE
-
-/mob/living/carbon/hellhound/can_be_operated_on()
-	return FALSE
-
-/mob/living/carbon/Xenomorph/can_be_operated_on()
-	return FALSE
-
 
 /mob/proc/is_mob_restrained()
 	return
@@ -423,11 +404,18 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			else if(skillcheck(src, SKILL_MEDICAL, SKILL_MEDICAL_DOCTOR))
 				return DURATION_MULTIPLIER_TIER_1
 
-		if(SKILL_SURGERY)
+		if(SKILL_SURGERY) //Surgeons are the baseline.
 			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_EXPERT))
-				return DURATION_MULTIPLIER_TIER_3
+				return 0.6 //Synths are 40% faster. In the same conditions they work almost twice as quickly, and can perform surgeries in rough conditions or with improvised tools at full speed.
+			if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_TRAINED))
+				return 1 			
+			else if(skillcheck(src, SKILL_SURGERY, SKILL_SURGERY_NOVICE))
+				return 1.2 //Medic/nurse.
 		//if(SKILL_RESEARCH)
 		//if(SKILL_PILOT)
 		//if(SKILL_POLICE)
 		//if(SKILL_POWERLOADER)
 		//if(SKILL_VEHICLE)
+
+/mob/proc/check_view_change(var/new_size, var/atom/source)
+	return new_size

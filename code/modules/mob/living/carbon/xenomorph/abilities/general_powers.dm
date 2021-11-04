@@ -204,6 +204,9 @@
 // Resin
 /datum/action/xeno_action/activable/secrete_resin/use_ability(atom/A)
 	var/mob/living/carbon/Xenomorph/X = owner
+	if(A.z != X.z)
+		to_chat(owner, SPAN_XENOWARNING("This area is too far away to affect!"))
+		return
 	. = X.build_resin(A, thick, make_message, plasma_cost != 0)
 	..()
 
@@ -229,7 +232,7 @@
 
 		var/choice = tgui_input_list(X, "Choose a pheromone", "Pheromone Menu", X.caste.aura_allowed + "help" + "cancel")
 		if(choice == "help")
-			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and tackle chance.<br><B>Warding</B> - Increased armor, reduced incoming damage and critical bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
+			to_chat(X, SPAN_NOTICE("<br>Pheromones provide a buff to all Xenos in range at the cost of some stored plasma every second, as follows:<br><B>Frenzy</B> - Increased run speed, damage and chance to knock off headhunter masks.<br><B>Warding</B> - While in critical state, increased maximum negative health and slower off weed bleedout.<br><B>Recovery</B> - Increased plasma and health regeneration.<br>"))
 			return
 		if(!choice || choice == "cancel" || X.current_aura || !X.check_state(1)) //If they are stacking windows, disable all input
 			return
@@ -326,7 +329,7 @@
 	additional_effects_always()
 	..()
 
-	return
+	return TRUE
 
 // Massive, customizable spray_acid
 /datum/action/xeno_action/activable/spray_acid/use_ability(atom/A)
@@ -459,16 +462,22 @@
 		to_chat(X, SPAN_XENOWARNING("It's too early to spread the hive this far."))
 		return FALSE
 
+	if(T.z != X.z)
+		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
+		return FALSE
+
 	var/choice = XENO_STRUCTURE_CORE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
-		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help" + "cancel")
-	if(choice == "help")
-		var/message = "<br>Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
-		for(var/structure_name in X.hive.hive_structure_types)
-			message += "[get_xeno_structure_desc(structure_name)]<br>"
-		to_chat(X, SPAN_NOTICE(message))
-		return
-	if(choice == "cancel" || !X.check_state(1) || !X.check_plasma(400))
+		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help")
+		if(!choice)
+			return
+		if(choice == "help")
+			var/message = "<br>Placing a construction node creates a template for special structures that can benefit the hive, which require the insertion of [MATERIAL_CRYSTAL] to construct the following:<br>"
+			for(var/structure_name in X.hive.hive_structure_types)
+				message += "[get_xeno_structure_desc(structure_name)]<br>"
+			to_chat(X, SPAN_NOTICE(message))
+			return
+	if(!X.check_state(1) || !X.check_plasma(400))
 		return FALSE
 	var/structure_type = X.hive.hive_structure_types[choice]
 	var/datum/construction_template/xenomorph/structure_template = new structure_type()
@@ -476,9 +485,9 @@
 	if(!do_after(X, XENO_STRUCTURE_BUILD_TIME, INTERRUPT_NO_NEEDHAND|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
 		return FALSE
 
-	if(structure_template.requires_node)
+	if(structure_template.block_range)
 		for(var/turf/TA in range(T, structure_template.block_range))
-			if(TA.density)
+			if(!X.check_alien_construction(TA, FALSE, TRUE))
 				to_chat(X, SPAN_WARNING("You need more open space to build here."))
 				qdel(structure_template)
 				return FALSE

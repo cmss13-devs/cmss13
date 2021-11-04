@@ -446,16 +446,14 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		raised = FALSE
 		item_state = "rpb_phone"
 
-		var/obj/item/device/radio/R = H.wear_ear
-		if(istype(R))
-			R.on = TRUE
+		var/obj/item/device/radio/R = H.get_type_in_ears(/obj/item/device/radio)
+		R?.on = TRUE
 	else
 		raised = TRUE
 		item_state = "rpb_phone_ear"
 
-		var/obj/item/device/radio/R = H.wear_ear
-		if(istype(R))
-			R.on = FALSE
+		var/obj/item/device/radio/R = H.get_type_in_ears(/obj/item/device/radio)
+		R?.on = FALSE
 
 	H.update_inv_r_hand()
 	H.update_inv_l_hand()

@@ -101,6 +101,7 @@
 /// Example trait
 // #define TRAIT_X "t_x"
 //-- mob traits --
+// SPECIES TRAITS
  /// Knowledge of Yautja technology
 #define TRAIT_YAUTJA_TECH "t_yautja_tech"
  /// Absolutely RIPPED. Can do misc. heavyweight stuff others can't. (Yautja, Synths)
@@ -109,6 +110,12 @@
 #define TRAIT_FOREIGN_BIO "t_foreign_bio"
  /// Eye color changes on intent. (G1 Synths)
 #define TRAIT_INTENT_EYES "t_intent_eyes"
+
+// HIVE TRAITS
+ /// If the Hive is a Xenonid Hive
+#define TRAIT_XENONID "t_xenonid"
+
+// MISC MOB TRAITS
  /// If the mob is nested.
 #define TRAIT_NESTED "t_nested"
  /// If the mob can crawl through pipes equipped
@@ -117,6 +124,10 @@
 #define TRAIT_SIMPLE_DESC "t_simple_desc"
  /// If the mob can handle the superheavy two-bore rifle and speaks its fluff lines when landing hits with it.
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
+ /// If the mob has equipment that alleviates nearsightedness
+#define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
+
+
 
 //-- item traits --
 // TOOL TRAITS
@@ -125,6 +136,9 @@
 #define TRAIT_TOOL_WIRECUTTERS "t_tool_wirecutters"
 #define TRAIT_TOOL_WRENCH "t_tool_wrench"
 #define TRAIT_TOOL_MULTITOOL "t_tool_multitool"
+
+//If an item with this trait is in an ear slot, no other item with this trait can fit in the other ear slot
+#define TRAIT_ITEM_EAR_EXCLUSIVE "t_item_ear_exclusive"
 
 //List of all traits
 GLOBAL_LIST_INIT(mob_traits, list(
@@ -145,6 +159,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 //-- mob traits --
  ///Status trait coming from species. .human/species_gain()
 #define TRAIT_SOURCE_SPECIES "t_s_species"
+ ///Status trait coming from the hive.
+#define TRAIT_SOURCE_HIVE "t_s_hive"
  ///Status trait coming from being buckled.
 #define TRAIT_SOURCE_BUCKLE "t_s_buckle"
  ///Status trait coming from tools
@@ -153,3 +169,5 @@ GLOBAL_LIST_INIT(mob_traits, list(
 #define TRAIT_SOURCE_QUIRK "t_s_quirk"
  ///Status trait forced by staff
 #define TRAIT_SOURCE_ADMIN "t_s_admin"
+ ///Status trait coming from equipment
+#define TRAIT_SOURCE_EQUIPMENT(slot) "t_s_equipment_[slot]"

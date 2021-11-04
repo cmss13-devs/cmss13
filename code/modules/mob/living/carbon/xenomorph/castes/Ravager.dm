@@ -52,6 +52,10 @@
 		/datum/action/xeno_action/activable/scissor_cut
 	)
 
+	icon_xeno = 'icons/mob/hostiles/ravager.dmi'
+	icon_xenonid = 'icons/mob/xenonids/ravager.dmi'
+
+
 // Mutator delegate for base ravager
 /datum/behavior_delegate/ravager_base
 	var/shield_decay_time = 15 SECONDS // Time in deciseconds before our shield decays

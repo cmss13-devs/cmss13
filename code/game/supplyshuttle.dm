@@ -94,7 +94,7 @@ var/datum/controller/supply/supply_controller = new()
 
 /obj/structure/machinery/computer/supplycomp
 	name = "ASRS console"
-	desc = "A console for an Automated Storage and Retrieval System"
+	desc = "A console for the Automated Storage Retrieval System"
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "supply"
 	density = TRUE

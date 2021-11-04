@@ -39,7 +39,7 @@
 /obj/item/storage/backpack/marine/smartpack/update_icon(mob/user)
 	overlays.Cut()
 
-	if(changed_icon)
+/*	if(changed_icon)
 		icon_state = original_icon
 		item_state = original_icon
 		changed_icon = FALSE
@@ -52,7 +52,7 @@
 		icon_state = icon_state+"_p"
 		item_state = icon_state+"_p"
 		changed_icon = TRUE
-
+*/
 	if(light_state)
 		overlays += "+lamp_on"
 	else
@@ -105,7 +105,7 @@
 		to_chat(M, SPAN_DANGER("[name] beeps, \"Unathorized user!\""))
 
 	if(light_state && loc != M)
-		M.SetLuminosity(BACKPACK_LIGHT_LEVEL)
+		M.SetLuminosity(BACKPACK_LIGHT_LEVEL, FALSE, src)
 		SetLuminosity(0)
 	..()
 
@@ -125,7 +125,7 @@
 
 /obj/item/storage/backpack/marine/smartpack/Destroy()
 	if(ismob(loc))
-		loc.SetLuminosity(-BACKPACK_LIGHT_LEVEL)
+		loc.SetLuminosity(0, FALSE, src)
 	else
 		SetLuminosity(0)
 	. = ..()
@@ -147,13 +147,13 @@
 	flashlight_cooldown = world.time + 20 //2 seconds cooldown every time the light is toggled
 	if(light_state) //Turn it off.
 		if(user)
-			user.SetLuminosity(-BACKPACK_LIGHT_LEVEL)
+			user.SetLuminosity(0, FALSE, src)
 		else
 			SetLuminosity(0)
 		playsound(src, 'sound/handling/click_2.ogg', 50, TRUE)
 	else //Turn it on.
 		if(user)
-			user.SetLuminosity(BACKPACK_LIGHT_LEVEL)
+			user.SetLuminosity(BACKPACK_LIGHT_LEVEL, FALSE, src)
 		else
 			SetLuminosity(BACKPACK_LIGHT_LEVEL)
 
@@ -274,6 +274,15 @@
 /obj/item/storage/backpack/marine/smartpack/tan
 	item_state = "t_smartpack"
 	icon_state = "t_smartpack"
+
+/obj/item/storage/backpack/marine/smartpack/black
+	item_state = "b_smartpack"
+	icon_state = "b_smartpack"
+
+/obj/item/storage/backpack/marine/smartpack/white
+	item_state = "w_smartpack"
+	icon_state = "w_smartpack"
+
 
 #undef BACKPACK_LIGHT_LEVEL
 #undef PROTECTIVE_COST

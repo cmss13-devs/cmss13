@@ -21,11 +21,26 @@
 	unacidable = TRUE
 	var/should_track_build = FALSE
 	var/datum/cause_data/construction_data
+	var/list/blocks = list()
+	var/block_range = 0
 
 /obj/effect/alien/resin/Initialize(mapload, var/mob/builder)
 	. = ..()
 	if(istype(builder) && should_track_build)
 		construction_data = create_cause_data(initial(name), builder)
+	if(block_range)
+		for(var/turf/T in range(block_range, src))
+			var/obj/effect/build_blocker/SP = new(T)
+			SP.linked_structure = src
+			blocks.Add(SP)
+
+/obj/effect/alien/resin/Destroy()
+	if(block_range)
+		for(var/obj/effect/build_blocker/SP as anything in blocks)
+			blocks -= SP
+			SP.linked_structure = null
+			qdel(SP)
+	return ..()
 
 /obj/effect/alien/resin/proc/healthcheck()
 	if(health <= 0)
@@ -111,6 +126,17 @@
 /obj/effect/alien/resin/proc/set_resin_builder(var/mob/M)
 	if(istype(M) && should_track_build)
 		construction_data = create_cause_data(initial(name), M)
+
+/obj/effect/build_blocker
+	health = 500000
+
+	unacidable = TRUE
+	indestructible = TRUE
+	invisibility = 101
+
+	alpha = 0
+
+	var/obj/effect/alien/resin/linked_structure
 
 /obj/effect/alien/resin/sticky
 	name = "sticky resin"
@@ -525,7 +551,7 @@
 
 /obj/effect/alien/resin/shield_pillar/process()
 	for(var/mob/living/carbon/Xenomorph/X in urange(range, src))
-		if(X.hivenumber != hivenumber)
+		if((X.hivenumber != hivenumber) || X.stat == DEAD)
 			continue
 		X.add_xeno_shield(shield_to_give, XENO_SHIELD_SOURCE_SHIELD_PILLAR, decay_amount_per_second = 1, add_shield_on = TRUE, duration = 1 SECONDS)
 		X.flick_heal_overlay(1 SECONDS, "#ffa800")

@@ -83,7 +83,7 @@
 	update_icon()
 
 /obj/effect/alien/weeds/node/weak
-	name = "weak purple sac"
+	name = "weak resin node"
 	health = WEED_HEALTH_STANDARD
 	alpha = 127
 
@@ -373,7 +373,7 @@
 
 
 /obj/effect/alien/weeds/node
-	name = "purple sac"
+	name = "resin node"
 	desc = "A weird, pulsating node."
 	icon_state = "weednode"
 	// Weed nodes start out with normal weed health and become stronger once they've stopped spreading

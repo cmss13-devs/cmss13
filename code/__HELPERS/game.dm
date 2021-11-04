@@ -228,7 +228,7 @@ proc/isInSight(var/atom/A, var/atom/B)
 	for(var/i in GLOB.observer_list)
 		var/mob/dead/observer/O = i
 		// Jobban check
-		if(!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, "Alien"))
+		if(!O.client || !O.client.prefs || !(O.client.prefs.be_special & BE_ALIEN_AFTER_DEATH) || jobban_isbanned(O, JOB_XENOMORPH))
 			continue
 
 		//players that can still be revived are skipped
@@ -279,3 +279,18 @@ proc/isInSight(var/atom/A, var/atom/B)
 		min(list_y),
 		max(list_x),
 		max(list_y))
+
+// makes peoples byond icon flash on the taskbar
+/proc/window_flash(client/C)
+	if(ismob(C))
+		var/mob/M = C
+		if(M.client)
+			C = M.client
+	if(!C)
+		return
+	winset(C, "mainwindow", "flash=5")
+
+/proc/flash_clients()
+	for(var/client/C as anything in GLOB.clients)
+		if(C.prefs?.toggles_flashing & FLASH_ROUNDSTART)
+			window_flash(C)

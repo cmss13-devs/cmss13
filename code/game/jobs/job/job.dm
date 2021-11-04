@@ -32,6 +32,9 @@
 	var/entry_message_body
 	var/entry_message_end
 
+	/// When set to true, SSticker won't call spawn_in_player, instead calling the job's spawn_and_equip proc
+	var/handle_spawn_and_equip = FALSE
+
 /datum/job/New()
 	. = ..()
 
@@ -143,6 +146,9 @@
 /datum/job/proc/set_spawn_positions(var/count)
 	return spawn_positions
 
+/datum/job/proc/spawn_and_equip(var/mob/new_player/player)
+	CRASH("A job without a set spawn_and_equip proc has handle_spawn_and_equip set to TRUE!")
+
 /datum/job/proc/generate_entry_message()
 	if(!entry_message_intro)
 		entry_message_intro = "You are the [title]!."
@@ -162,7 +168,7 @@
 			[SPAN_ROLE_BODY("|______________________|")] \n\
 			[SPAN_ROLE_HEADER("You are \a [title_given]")] \n\
 			[flags_startup_parameters & ROLE_ADMIN_NOTIFY ? SPAN_ROLE_HEADER("You are playing a job that is important for game progression. If you have to disconnect, please notify the admins via adminhelp.") : ""] \n\
-			[SPAN_ROLE_BODY("[generate_entry_message(H)].[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : ""]")] \n\
+			[SPAN_ROLE_BODY("[generate_entry_message(H)]<br>[M ? "Your account number is: <b>[M.account_number]</b>. Your account pin is: <b>[M.remote_access_pin]</b>." : ""]")] \n\
 			[SPAN_ROLE_BODY("|______________________|")] \
 		"
 		to_chat_spaced(H, html = entrydisplay)

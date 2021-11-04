@@ -139,7 +139,7 @@
 				if(HAS_TRAIT(src, TRAIT_NESTED)) //Host was buckled to nest while infected, this is a rule break
 					attack_log += text("\[[time_stamp()]\] <font color='orange'><B>was slashed by [key_name(M)] while they were infected and nested</B></font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'><B>slashed [key_name(src)] while they were infected and nested</B></font>")
-					msg_admin_ff("[key_name(M)] slashed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
+					message_staff("[key_name(M)] slashed [key_name(src)] while they were infected and nested.") //This is a blatant rulebreak, so warn the admins
 				else //Host might be rogue, needs further investigation
 					attack_log += text("\[[time_stamp()]\] <font color='orange'>was slashed by [key_name(M)] while they were infected</font>")
 					M.attack_log += text("\[[time_stamp()]\] <font color='red'>slashed [key_name(src)] while they were infected</font>")
@@ -383,6 +383,11 @@
 
 //Medevac stretchers. Unbuckle ony
 /obj/structure/bed/medevac_stretcher/attack_alien(mob/living/carbon/Xenomorph/M)
+	unbuckle()
+	return XENO_NONCOMBAT_ACTION
+
+//Portable surgical bed. Ditto, though it's meltable.
+/obj/structure/bed/portable_surgery/attack_alien(mob/living/carbon/Xenomorph/M)
 	unbuckle()
 	return XENO_NONCOMBAT_ACTION
 
@@ -766,7 +771,7 @@
 	attack_hand(M)
 	if(!shuttle.iselevator)
 		if(shuttle_tag != "Ground Transport 1")
-			shuttle.door_override(M)
+			shuttle.door_override(M, shuttle_tag)
 		if(onboard || shuttle_tag == "Ground Transport 1") //This is the shuttle's onboard console or the control console for the CORSAT monorail
 			shuttle.hijack(M, shuttle_tag)
 	return XENO_ATTACK_ACTION
@@ -785,7 +790,7 @@
 				return XENO_NO_DELAY_ACTION
 
 		var/datum/shuttle/ferry/marine/shuttle = shuttle_controller.shuttles[shuttle_tag]
-		shuttle.door_override(M)
+		shuttle.door_override(M, shuttle_tag)
 		xeno_attack_delay(M)
 
 		if(do_after(usr, 50, INTERRUPT_ALL, BUSY_ICON_HOSTILE))
@@ -796,26 +801,27 @@
 
 //APCs.
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/Xenomorph/M)
+	var/allcut = TRUE
+	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
+		if(!isWireCut(wire))
+			allcut = FALSE
+			break
+	if(allcut)
+		to_chat(M, SPAN_XENONOTICE("[src] is already broken!"))
+		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"), null, 5)
 	playsound(loc, "alien_claw_metal", 25, 1)
-	var/allcut = 1
-	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
-		if(!isWireCut(wire))
-			allcut = 0
-			break
-
-	if(beenhit >= pick(3, 4) && wiresexposed != 1)
-		wiresexposed = 1
-		update_icon()
-		visible_message(SPAN_DANGER("[src]'s cover swings open, exposing the wires!"), null, null, 5)
-
-	else if(wiresexposed == 1 && allcut == 0)
+	if(wiresexposed)
 		for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
 			cut(wire, M)
 		update_icon()
 		visible_message(SPAN_DANGER("[src]'s wires snap apart in a rain of sparks!"), null, null, 5)
+	else if(beenhit >= pick(3, 4))
+		wiresexposed = TRUE
+		update_icon()
+		visible_message(SPAN_DANGER("[src]'s cover swings open, exposing the wires!"), null, null, 5)
 	else
 		beenhit += 1
 	return XENO_ATTACK_ACTION

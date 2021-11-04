@@ -103,7 +103,8 @@
 		LM.target = get_step(src, turn(dir, 180))
 		LM.range = 1
 		LM.speed = launched_speed
-		LM.pass_flags = PASS_UNDER|PASS_OVER
+		LM.pass_flags = PASS_UNDER
+		LM.pass_flags |= (ismob(src) ? PASS_OVER_THROW_MOB : PASS_OVER_THROW_ITEM)
 
 		launch_towards(LM)
 

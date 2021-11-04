@@ -586,3 +586,5 @@ proc/listclearnulls(list/list)
 		if(!typecache[A.type])
 			. += A
 
+//Checks for specific types in specifically structured (Assoc "type" = TRUE) lists ('typecaches')
+#define is_type_in_typecache(A, L) (A && length(L) && L[(ispath(A) ? A : A:type)])

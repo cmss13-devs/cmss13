@@ -20,9 +20,10 @@
 		if(M.glasses == src)
 			M.eye_blind = 3
 			M.eye_blurry = 5
-			M.disabilities |= NEARSIGHTED
-			spawn(100)
-				M.disabilities &= ~NEARSIGHTED
+			if(!(M.disabilities & NEARSIGHTED))
+				M.disabilities |= NEARSIGHTED
+				spawn(100)
+					M.disabilities &= ~NEARSIGHTED
 	..()
 
 /obj/item/clothing/glasses/thermal/syndi	//These are now a traitor item, concealed as mesons.	-Pete
@@ -30,7 +31,6 @@
 	desc = "Used for seeing walls, floors, and stuff through anything."
 	icon_state = "meson"
 	actions_types = list(/datum/action/item_action/toggle)
-
 
 /obj/item/clothing/glasses/thermal/monocle
 	name = "Thermoncle"

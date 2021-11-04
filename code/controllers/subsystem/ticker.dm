@@ -72,6 +72,7 @@ SUBSYSTEM_DEF(ticker)
 				start_at = time_left || world.time + (CONFIG_GET(number/lobby_countdown) * 10)
 			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 2, margin_bottom = 0, html = SPAN_ROUNDHEADER("Welcome to the pre-game lobby of [CONFIG_GET(string/servername)]!"))
 			to_chat_spaced(world, type = MESSAGE_TYPE_SYSTEM, margin_top = 0, html = SPAN_ROUNDBODY("Please, setup your character and select ready. Game will start in [round(time_left / 10) || CONFIG_GET(number/lobby_countdown)] seconds."))
+			SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MODE_PREGAME_LOBBY)
 			current_state = GAME_STATE_PREGAME
 			fire()
 
@@ -93,6 +94,7 @@ SUBSYSTEM_DEF(ticker)
 			if(time_left <= 40 SECONDS && !tipped)
 				send_tip_of_the_round()
 				tipped = TRUE
+				flash_clients()
 
 			if(time_left <= 0)
 				request_start()
@@ -104,6 +106,7 @@ SUBSYSTEM_DEF(ticker)
 				current_state = GAME_STATE_FINISHED
 				ooc_allowed = TRUE
 				mode.declare_completion(force_ending)
+				flash_clients()
 				if(text2num(SSperf_logging?.round?.id) % CONFIG_GET(number/gamemode_rounds_needed) == 0)
 					addtimer(CALLBACK(
 						SSvote,
@@ -390,15 +393,18 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/spawn_and_equip_char(var/mob/new_player/player)
 	var/datum/job/J = RoleAuthority.roles_for_mode[player.job]
-	var/mob/M = J.spawn_in_player(player)
-	if(istype(M))
-		J.equip_job(M)
-		EquipCustomItems(M)
+	if(J.handle_spawn_and_equip)
+		J.spawn_and_equip(player)
+	else
+		var/mob/M = J.spawn_in_player(player)
+		if(istype(M))
+			J.equip_job(M)
+			EquipCustomItems(M)
 
-		if(M.client)
-			var/client/C = M.client
-			if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
-				msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
+			if(M.client)
+				var/client/C = M.client
+				if(C.player_data && C.player_data.playtime_loaded && length(C.player_data.playtimes) == 0)
+					msg_admin_niche("NEW PLAYER: <b>[key_name(player, 1, 1, 0)] (<A HREF='?_src_=admin_holder;ahelp=adminmoreinfo;extra=\ref[player]'>?</A>)</b>. IP: [player.lastKnownIP], CID: [player.computer_id]")
 
 	QDEL_IN(player, 5)
 

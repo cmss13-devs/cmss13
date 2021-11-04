@@ -89,7 +89,6 @@ Additional game mode variables.
 	var/round_time_pooled_cutoff = 25 MINUTES	//Time for when free pooled larvae stop spawning.
 
 	var/round_time_resin = 40 MINUTES	//Time for when resin placing is allowed close to LZs
-	var/resin_allow_finished = FALSE
 
 	var/round_time_evolution_ovipositor = 5 MINUTES //Time for when ovipositor becomes necessary for evolution to progress.
 	var/evolution_ovipositor_threshold = FALSE
@@ -130,36 +129,6 @@ Additional game mode variables.
 	if(!ignore_pred_num)
 		pred_current_num++
 
-#define calculate_pred_max (Floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
-
-/datum/game_mode/proc/initialize_starting_predator_list()
-	if(prob(pred_round_chance)) //First we want to determine if it's actually a predator round.
-		flags_round_type |= MODE_PREDATOR //It is now a predator round.
-		var/L[] = get_whitelisted_predators() //Grabs whitelisted preds who are ready at game start.
-		var/datum/mind/M
-		var/i //Our iterator for the maximum amount of pred spots available. The actual number is changed later on.
-		var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-		var/pred_max = calculate_pred_max
-
-		while(L.len && i < pred_max)
-			M = pick(L)
-			if(!istype(M)) continue
-			L -= M
-			M.roundstart_picked = TRUE
-			predators += M
-			if(M.current && J)
-				if(J.get_whitelist_status(RoleAuthority.roles_whitelist, M.current.client) == WHITELIST_NORMAL)
-					i++
-			else
-				i++
-
-/datum/game_mode/proc/initialize_post_predator_list() //TO DO: Possibly clean this using tranfer_to.
-	var/temp_pred_list[] = predators //We don't want to use the actual predator list as it will be overriden.
-	predators = list() //Empty it. The temporary minds we used aren't going to be used much longer.
-	for(var/datum/mind/new_pred in temp_pred_list)
-		if(!istype(new_pred)) continue
-		attempt_to_join_as_predator(new_pred.current)
-
 /datum/game_mode/proc/get_whitelisted_predators(readied = 1)
 	// Assemble a list of active players who are whitelisted.
 	var/players[] = new
@@ -194,6 +163,8 @@ Additional game mode variables.
 	msg_admin_niche("([new_predator.key]) joined as Yautja, [new_predator.real_name].")
 
 	if(pred_candidate) pred_candidate.moveToNullspace() //Nullspace it for garbage collection later.
+
+#define calculate_pred_max (Floor(length(GLOB.player_list) / pred_per_players) + pred_additional_max + pred_start_count)
 
 /datum/game_mode/proc/check_predator_late_join(mob/pred_candidate, show_warning = 1)
 
@@ -241,8 +212,6 @@ Additional game mode variables.
 	var/clan_id = CLAN_SHIP_PUBLIC
 	var/datum/entity/clan_player/clan_info = pred_candidate?.client?.clan_info
 	clan_info?.sync()
-	if(clan_info?.clan_id)
-		clan_id = clan_info.clan_id
 	SSpredships.load_new(clan_id)
 	var/turf/spawn_point = SAFEPICK(SSpredships.get_clan_spawnpoints(clan_id))
 	if(!isturf(spawn_point))
@@ -365,7 +334,7 @@ Additional game mode variables.
 		INVOKE_ASYNC(src, .proc/pick_queen_spawn, picked_queens[hive], hive.hivenumber)
 
 /datum/game_mode/proc/check_xeno_late_join(mob/xeno_candidate)
-	if(jobban_isbanned(xeno_candidate, "Alien")) // User is jobbanned
+	if(jobban_isbanned(xeno_candidate, JOB_XENOMORPH)) // User is jobbanned
 		to_chat(xeno_candidate, SPAN_WARNING("You are banned from playing aliens and cannot spawn as a xenomorph."))
 		return
 	return 1
@@ -526,19 +495,21 @@ Additional game mode variables.
 		return
 
 	// Make the list pretty
-	var/list/spawn_list_names = list()
 	var/list/spawn_list_map = list()
-	for(var/obj/effect/landmark/queen_spawn/T in GLOB.queen_spawns)
-		var/area/A = get_area(T)
-		spawn_list_names += A.name
-		spawn_list_map[A.name] = T
+	for(var/obj/effect/landmark/queen_spawn/T as anything in GLOB.queen_spawns)
+		var/area_name = get_area_name(T)
+		var/spawn_name = area_name
+		var/spawn_counter = 1
+		while(spawn_list_map[spawn_name])
+			spawn_name = "[area_name] [++spawn_counter]"
+		spawn_list_map[spawn_name] = T
 
-	var/spawn_name = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_names, QUEEN_SPAWN_TIMEOUT)
+	var/selected_spawn = tgui_input_list(original, "Where do you want to spawn?", "Queen Spawn", spawn_list_map, QUEEN_SPAWN_TIMEOUT)
 
 	var/turf/QS
 	var/obj/effect/landmark/queen_spawn/QSI
-	if(spawn_name)
-		QSI = spawn_list_map[spawn_name]
+	if(selected_spawn)
+		QSI = spawn_list_map[selected_spawn]
 		QS = get_turf(QSI)
 
 	// Pick a random one if nothing was picked

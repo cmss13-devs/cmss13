@@ -278,8 +278,8 @@
 
 
 
-/client/proc/change_view(new_size)
-	view = new_size
+/client/proc/change_view(new_size, var/atom/source)
+	view = mob.check_view_change(new_size, source)
 	apply_clickcatcher()
 	mob.reload_fullscreens()
 

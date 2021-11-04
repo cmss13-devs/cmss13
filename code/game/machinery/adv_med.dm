@@ -250,8 +250,9 @@
 	else if (connected) //Is something connected?
 		var/mob/living/carbon/human/H = connected.occupant
 		var/datum/data/record/N = null
+		var/human_ref = WEAKREF(H)
 		for(var/datum/data/record/R in GLOB.data_core.medical)
-			if (R.fields["name"] == H.real_name)
+			if (R.fields["ref"] == human_ref)
 				N = R
 		if(isnull(N))
 			N = create_medical_record(H)
@@ -417,9 +418,12 @@
 			break
 		if(e.status & LIMB_BROKEN)
 			AN = "[e.broken_description]<br>"
-		if(e.status & LIMB_ROBOT)
-			robot = "Prosthetic<br>"
-		if(e.surgery_open_stage)
+		else if(e.status & LIMB_ROBOT)
+			if(e.status & LIMB_UNCALIBRATED_PROSTHETIC)
+				robot = "Nonfunctional prosthetic<br>"
+			else
+				robot = "Prosthetic<br>"
+		if(e.get_incision_depth())
 			open = "Open<br>"
 
 		var/unknown_body = 0

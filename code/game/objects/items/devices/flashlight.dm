@@ -26,7 +26,7 @@
 /obj/item/device/flashlight/Destroy()
 	if(on)
 		if(ismob(src.loc))
-			src.loc.SetLuminosity(-brightness_on)
+			src.loc.SetLuminosity(0, FALSE, src)
 		else
 			SetLuminosity(0)
 	. = ..()
@@ -36,13 +36,13 @@
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
 		if(loc && loc == user)
-			user.SetLuminosity(brightness_on)
+			user.SetLuminosity(brightness_on, FALSE, src)
 		else if(isturf(loc))
 			SetLuminosity(brightness_on)
 	else
 		icon_state = initial(icon_state)
 		if(loc && loc == user)
-			user.SetLuminosity(-brightness_on)
+			user.SetLuminosity(0, FALSE, src)
 		else if(isturf(loc))
 			SetLuminosity(0)
 
@@ -131,17 +131,18 @@
 
 
 /obj/item/device/flashlight/pickup(mob/user)
-	if(on && src.loc != user)
-		user.SetLuminosity(brightness_on)
+	if(on)
+		user.SetLuminosity(brightness_on, FALSE, src)
 		SetLuminosity(0)
 	..()
 
 
 /obj/item/device/flashlight/dropped(mob/user)
 	if(on && src.loc != user)
-		user.SetLuminosity(-brightness_on)
+		user.SetLuminosity(0, FALSE, src)
 		SetLuminosity(brightness_on)
 	..()
+
 /obj/item/device/flashlight/on
 	on = TRUE
 
@@ -243,19 +244,21 @@
 	actions = list()	//just pull it manually, neckbeard.
 	raillight_compatible = 0
 	var/fuel = 0
+	var/fuel_rate = AMOUNT_PER_TIME(1 SECONDS, 1 SECONDS)
 	var/on_damage = 7
+	var/ammo_datum = /datum/ammo/flare
 
 /obj/item/device/flashlight/flare/Initialize()
 	. = ..()
-	fuel = rand(80 SECONDS, 100 SECONDS) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
+	fuel = rand(1600 SECONDS, 2000 SECONDS)
 
 /obj/item/device/flashlight/flare/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
-/obj/item/device/flashlight/flare/process()
-	fuel = max(fuel - 1, 0)
-	if(!fuel || !on)
+/obj/item/device/flashlight/flare/process(delta_time)
+	fuel -= fuel_rate * delta_time
+	if(fuel <= 0 || !on)
 		burn_out()
 
 /obj/item/device/flashlight/flare/proc/burn_out()
@@ -264,6 +267,14 @@
 	icon_state = "[initial(icon_state)]-empty"
 	add_to_garbage(src)
 	STOP_PROCESSING(SSobj, src)
+
+/obj/item/device/flashlight/flare/proc/turn_on()
+	on = TRUE
+	heat_source = 1500
+	update_brightness()
+	force = on_damage
+	damtype = "fire"
+	START_PROCESSING(SSobj, src)
 
 /obj/item/device/flashlight/flare/proc/turn_off()
 	on = 0
@@ -283,36 +294,68 @@
 		to_chat(user, SPAN_NOTICE("It's out of fuel."))
 		return FALSE
 	if(on)
-		if(do_after(user, 2.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
-			var/hand = user.hand ? "l_hand" : "r_hand"
-			user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
-			SPAN_WARNING("You snuff out [src], singing your hand."))
-			user.apply_damage(7, BURN, hand)
-			burn_out()
-			//TODO: add snuff out sound so guerilla CLF snuffing flares get noticed
+		if(!do_after(user, 2.5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_MOVED, BUSY_ICON_HOSTILE))
 			return
+		if(!on)
+			return
+		var/hand = user.hand ? "l_hand" : "r_hand"
+		user.visible_message(SPAN_WARNING("[user] snuffs out [src]."),\
+		SPAN_WARNING("You snuff out [src], singing your hand."))
+		user.apply_damage(7, BURN, hand)
+		burn_out()
+		//TODO: add snuff out sound so guerilla CLF snuffing flares get noticed
+		return
 
 	. = ..()
 	// All good, turn it on.
 	if(.)
 		user.visible_message(SPAN_NOTICE("[user] activates the flare."), SPAN_NOTICE("You pull the cord on the flare, activating it!"))
 		playsound(src,'sound/handling/flare_activate_2.ogg', 50, 1) //cool guy sound
-		force = on_damage
-		heat_source = 1500
-		damtype = "fire"
-		START_PROCESSING(SSobj, src)
+		turn_on()
 		var/mob/living/carbon/U = user
 		if(istype(U) && !U.throw_mode)
 			U.toggle_throw_mode(THROW_MODE_NORMAL)
 
 /obj/item/device/flashlight/flare/on/Initialize()
 	. = ..()
-	on = 1
-	heat_source = 1500
-	update_brightness()
-	force = on_damage
-	damtype = "fire"
-	START_PROCESSING(SSobj, src)
+	turn_on()
+
+/// Flares deployed by a flare gun
+/obj/item/device/flashlight/flare/on/gun
+	brightness_on = 7
+
+//Special flare subtype for the illumination flare shell
+//Acts like a flare, just even stronger, and set length
+/obj/item/device/flashlight/flare/on/illumination
+	name = "illumination flare"
+	desc = "It's really bright, and unreachable."
+	icon_state = "" //No sprite
+	invisibility = 101 //Can't be seen or found, it's "up in the sky"
+	mouse_opacity = 0
+	brightness_on = 7 //Way brighter than most lights
+
+/obj/item/device/flashlight/flare/on/illumination/Initialize()
+	. = ..()
+	fuel = rand(800 SECONDS, 1000 SECONDS) // Half the duration of a flare, but justified since it's invincible
+
+/obj/item/device/flashlight/flare/on/illumination/turn_off()
+	..()
+	qdel(src)
+
+/obj/item/device/flashlight/flare/on/illumination/ex_act(severity)
+	return //Nope
+
+/obj/item/device/flashlight/flare/on/illumination/chemical
+	name = "chemical light"
+	brightness_on = 0
+
+/obj/item/device/flashlight/flare/on/illumination/chemical/Initialize(mapload, var/amount)
+	. = ..()
+	brightness_on = round(amount * 0.04)
+	if(!brightness_on)
+		return INITIALIZE_HINT_QDEL
+	SetLuminosity(brightness_on)
+	fuel = amount * 5 SECONDS
 
 /obj/item/device/flashlight/slime
 	gender = PLURAL
@@ -351,12 +394,14 @@
 	icon_state = "cas_flare"
 	item_state = "cas_flare"
 	layer = ABOVE_FLY_LAYER
+	ammo_datum = /datum/ammo/flare/signal
 	var/faction = ""
 	var/datum/cas_signal/signal
+	var/activate_message = TRUE
 
 /obj/item/device/flashlight/flare/signal/Initialize()
 	. = ..()
-	fuel = rand(80, 100)
+	fuel = rand(160 SECONDS, 200 SECONDS)
 
 /obj/item/device/flashlight/flare/signal/attack_self(mob/living/carbon/human/user)
 	if(!istype(user))
@@ -376,7 +421,8 @@
 		signal.name = name
 		cas_groups[user.faction].add_signal(signal)
 		anchored = TRUE
-		visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
+		if(activate_message)
+			visible_message(SPAN_DANGER("[src]'s flame reaches full strength. It's fully active now."), null, 5)
 		msg_admin_niche("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]). (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP LOC</a>)")
 		log_game("Flare target [src] has been activated by [key_name(user, 1)] at ([x], [y], [z]).")
 
@@ -401,3 +447,12 @@
 		cas_groups[faction].remove_signal(signal)
 		qdel(signal)
 	..()
+
+/// Signal flares deployed by a flare gun
+/obj/item/device/flashlight/flare/signal/gun
+	activate_message = FALSE
+
+/obj/item/device/flashlight/flare/signal/gun/activate_signal(mob/living/carbon/human/user)
+	turn_on()
+	faction = user.faction
+	return ..()

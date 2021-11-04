@@ -34,8 +34,9 @@
 /obj/structure/closet/jcloset
 	name = "custodial closet"
 	desc = "It's a storage unit for janitorial clothes and gear."
-	icon_state = "mixed"
-	icon_closed = "mixed"
+	icon_state = "purple"
+	icon_closed = "purple"
+	icon_opened = "purpled_open"
 
 /obj/structure/closet/jcloset/Initialize()
 	. = ..()
@@ -60,6 +61,7 @@
 	desc = "It's a storage unit for courtroom apparel and items."
 	icon_state = "blue"
 	icon_closed = "blue"
+	icon_opened = "blue_open"
 
 /obj/structure/closet/lawcloset/Initialize()
 	. = ..()

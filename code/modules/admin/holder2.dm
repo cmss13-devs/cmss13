@@ -65,13 +65,13 @@ you will have to do something like if(client.admin_holder.rights & R_ADMIN) your
 			if(rights_required & C.admin_holder.rights)
 				return TRUE
 			else
-				if(show_msg)
+				if(show_msg && C.prefs.show_permission_errors)
 					to_chat(C, SPAN_DANGER("Error: You do not have sufficient rights to do that. You require one of the following flags:[rights2text(rights_required,"")]."))
 	else
 		if(C.admin_holder)
 			return TRUE
 		else
-			if(show_msg)
+			if(show_msg && C.prefs.show_permission_errors)
 				to_chat(C, SPAN_DANGER("Error: You are not an admin."))
 	return FALSE
 

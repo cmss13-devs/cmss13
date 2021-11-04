@@ -385,7 +385,7 @@
 
 	var/turf/T = get_turf(A)
 
-	if(!T || !T.is_weedable() || T.density)
+	if(!T || !T.is_weedable() || T.density || (T.z != X.z))
 		to_chat(X, SPAN_XENOWARNING("You can't do that here."))
 		return
 
@@ -421,6 +421,10 @@
 
 	if(!node)
 		to_chat(X, SPAN_XENOWARNING("You can only plant weeds near weeds with a connected node!"))
+		return
+
+	if(node.weed_strength >= WEED_LEVEL_HIVE)
+		to_chat(X, SPAN_XENOWARNING("You cannot expand hive weeds!"))
 		return
 
 	if(T in recently_built_turfs)

@@ -18,8 +18,6 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define RETURN_TO_LOBBY 2
 #define BE_XENOMORPH 3
 
-#define CHANCE_OF_PRED_ROUND 20
-
 #define NEVER_PRIORITY 	0
 #define HIGH_PRIORITY 	1
 #define MED_PRIORITY 	2
@@ -51,7 +49,6 @@ var/global/marines_assigned = 0
 											/datum/job/command,
 											/datum/job/civilian,
 											/datum/job/logistics,
-											/datum/job/logistics/tech,
 											/datum/job/marine,
 											/datum/job/antag,
 											/datum/job/distress,
@@ -251,8 +248,8 @@ var/global/marines_assigned = 0
 	if(istype(SJ))
 		SJ.set_spawn_positions(marines_assigned)
 
-	if(prob(CHANCE_OF_PRED_ROUND))
-		SSticker?.mode?.flags_round_type |= MODE_PREDATOR
+	if(prob(SSticker.mode.pred_round_chance))
+		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
@@ -566,7 +563,7 @@ var/global/marines_assigned = 0
 
 	for(var/i= 1 to squads_copy.len)
 		var/datum/squad/S = pick_n_take(squads_copy)
-		if (S.usable)
+		if (S.roundstart && S.usable)
 			mixed_squads += S
 
 	var/datum/squad/lowest = pick(mixed_squads)
@@ -638,7 +635,7 @@ var/global/marines_assigned = 0
 		switch(H.job)
 			if("Squad Engineer")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_engineers >= S.max_engineers) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us, no more searching needed.
@@ -651,7 +648,7 @@ var/global/marines_assigned = 0
 
 			if("Squad Medic")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_medics >= S.max_medics) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -664,7 +661,7 @@ var/global/marines_assigned = 0
 
 			if("Squad Leader")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_leaders >= S.max_leaders) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -677,7 +674,7 @@ var/global/marines_assigned = 0
 
 			if("Squad Specialist")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_specialists >= S.max_specialists) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -690,7 +687,7 @@ var/global/marines_assigned = 0
 
 			if("Squad RT Operator")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_rto >= S.max_rto) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -703,7 +700,7 @@ var/global/marines_assigned = 0
 
 			if("Squad Smartgunner")
 				for(var/datum/squad/S in mixed_squads)
-					if(S.usable)
+					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_smartgun >= S.max_smartgun) continue
 						if(pref_squad_name && S.name == pref_squad_name)
 							S.put_marine_in_squad(H) //fav squad has a spot for us.
@@ -745,3 +742,25 @@ var/global/marines_assigned = 0
 		return status_limit
 
 	return desired_status
+
+/proc/transfer_marine_to_squad(var/mob/living/carbon/human/transfer_marine, var/datum/squad/new_squad, var/datum/squad/old_squad, var/obj/item/card/id/ID)
+	if(old_squad)
+		if(transfer_marine.assigned_fireteam)
+			if(old_squad.fireteam_leaders["FT[transfer_marine.assigned_fireteam]"] == transfer_marine)
+				old_squad.unassign_ft_leader(transfer_marine.assigned_fireteam, TRUE, FALSE)
+			old_squad.unassign_fireteam(transfer_marine, TRUE)	//reset fireteam assignment
+		old_squad.remove_marine_from_squad(transfer_marine, ID)
+		old_squad.update_free_mar()
+		old_squad.update_squad_ui()
+	. = new_squad.put_marine_in_squad(transfer_marine, ID)
+	if(.)
+		new_squad.update_free_mar()
+		new_squad.update_squad_ui()
+
+		var/marine_ref = WEAKREF(transfer_marine)
+		for(var/datum/data/record/t in GLOB.data_core.general) //we update the crew manifest
+			if(t.fields["ref"] == marine_ref)
+				t.fields["squad"] = new_squad.name
+				break
+
+		transfer_marine.hud_set_squad()

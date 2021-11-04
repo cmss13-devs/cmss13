@@ -36,6 +36,8 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 	dir = WEST
 	flags_atom = ON_BORDER|CONDUCT|FPRINT
 
+	req_one_access = list(ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE)
+
 /obj/structure/machinery/computer/aa_console/initialize_pass_flags(var/datum/pass_flags_container/PF)
 	..()
 	if (PF)
@@ -55,7 +57,11 @@ var/obj/structure/anti_air_cannon/almayer_aa_cannon
 
 	if(!skillcheck(user, SKILL_ENGINEER, SKILL_ENGINEER_ENGI))
 		to_chat(user, SPAN_WARNING("You have no idea how to use that console."))
-		return 1
+		return TRUE
+
+	if(!allowed(user))
+		to_chat(user, SPAN_WARNING("You do not have access to this."))
+		return TRUE
 
 	user.set_interaction(src)
 

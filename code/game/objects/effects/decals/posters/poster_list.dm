@@ -109,7 +109,7 @@ Template
 	desc = "This poster depicts a CBRN Marine. These dudes have a hazardous job."
 
 /datum/poster/poster_21
-	icon_state="poster"
+	icon_state="poster21"
 	name = "Groves"
 	desc = "This poster depicts a CBRN Marine. These dudes have a hazardous job."
 

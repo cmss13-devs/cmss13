@@ -48,7 +48,7 @@
 	updateinfolinks()
 
 /obj/item/paper/update_icon()
-	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm")
+	if(icon_state == "paper_talisman" || icon_state == "paper_wy_words" || icon_state == "paper_uscm" || icon_state == "fortune")
 		return
 	if(info)
 		if(icon_state == "paper_wy")
@@ -123,17 +123,22 @@
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H == user)
-				to_chat(user, SPAN_NOTICE("You wipe off the lipstick with [src]."))
+				to_chat(user, SPAN_NOTICE("You wipe off the face paint with [src]."))
 				H.lip_style = null
 				H.update_body()
 			else
-				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s lipstick off with \the [src]."), \
-								 	 SPAN_NOTICE("You begin to wipe off [H]'s lipstick."))
+				user.visible_message(SPAN_WARNING("[user] begins to wipe [H]'s face paint off with \the [src]."), \
+								 	 SPAN_NOTICE("You begin to wipe off [H]'s face paint."))
 				if(do_after(user, 10, INTERRUPT_ALL, BUSY_ICON_FRIENDLY) && do_after(H, 10, INTERRUPT_ALL, BUSY_ICON_GENERIC))	//user needs to keep their active hand, H does not.
-					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s lipstick off with \the [src]."), \
-										 SPAN_NOTICE("You wipe off [H]'s lipstick."))
+					user.visible_message(SPAN_NOTICE("[user] wipes [H]'s face paint off with \the [src]."), \
+										 SPAN_NOTICE("You wipe off [H]'s face paint."))
 					H.lip_style = null
 					H.update_body()
+
+/obj/item/paper/get_vv_options()
+	. = ..()
+	. += "<option value>-----PAPER-----</option>"
+	. += "<option value='?_src_=admin_holder;customise_paper=\ref[src]'>Customise content</option>"
 
 /obj/item/paper/proc/addtofield(var/id, var/text, var/links = 0)
 	var/locid = 0
@@ -636,8 +641,6 @@
 
 /obj/item/paper/research_notes/good/Initialize()
 	var/list/L = list("T3", "T4")
-	if(length(chemical_gen_classes_list["omega"]))//If we have chems from the previous round we can pick from the omega list
-		L += "omega"
 	tier = pick(L)
 	. = ..()
 

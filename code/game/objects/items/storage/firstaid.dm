@@ -152,6 +152,27 @@
 /obj/item/storage/firstaid/rad/empty/fill_preset_inventory()
 	return
 
+/obj/item/storage/firstaid/surgical
+	name = "basic field surgery kit"
+	desc = "Contains a surgical line, cautery, scalpel, hemostat, retractor, drapes and an oxycodone injector for tending wounds surgically."
+	icon_state = "bezerk"
+	cant_hold = list(
+		/obj/item/ammo_magazine,
+		/obj/item/explosive/grenade
+	) // we need surgery tools buddy 
+
+/obj/item/storage/firstaid/surgical/fill_preset_inventory()
+	new /obj/item/tool/surgery/surgical_line(src)
+	new /obj/item/tool/surgery/cautery(src)
+	new /obj/item/tool/surgery/scalpel(src)
+	new /obj/item/tool/surgery/hemostat(src)
+	new /obj/item/tool/surgery/retractor(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+
+/obj/item/storage/firstaid/surgical/empty/fill_preset_inventory()
+	return
+
 	/*
  * Syringe Case
  */

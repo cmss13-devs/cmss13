@@ -22,6 +22,7 @@
 	var/mob/living/carbon/Xenomorph/XNO = M
 	if(istype(XNO))
 		XNO.generate_name()
+	M.client?.change_view(world_view_size)
 
 /client/proc/cmd_admin_changekey(mob/O in GLOB.mob_list)
 	set name = "Change CKey"
@@ -152,7 +153,7 @@
 				to_chat(usr, "The person you are trying to contact is not human")
 				return
 
-			if(!istype(H.wear_ear, /obj/item/device/radio/headset))
+			if(!H.get_type_in_ears(/obj/item/device/radio/headset))
 				to_chat(usr, "The person you are trying to contact is not wearing a headset")
 				return
 			to_chat(H, SPAN_DANGER("Message received through headset. [message_option] Transmission <b>\"[msg]\"</b>"))

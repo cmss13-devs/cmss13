@@ -196,35 +196,35 @@ datum/preferences/proc/randomize_skin_color()
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
 
-	arm_equipment(preview_dummy, J, FALSE, FALSE)
-	
+	arm_equipment(preview_dummy, J, FALSE, FALSE, owner)
+
 	preview_front = new()
 	owner.screen |= preview_front
 	preview_front.icon_state = "blank"
 	preview_front.vis_contents += preview_dummy
 	preview_front.screen_loc = "preview:0,0"
 
-datum/preferences/proc/job_pref_to_gear_preset()
+/datum/preferences/proc/job_pref_to_gear_preset()
 	var/high_priority
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)
 			high_priority = job
-	
+
 	switch(high_priority)
 		if(JOB_SQUAD_MARINE)
-			return "USCM Cryo Private (Equipped)"
+			return "USCM Cryo Squad Marine (Equipped)"
 		if(JOB_SQUAD_ENGI)
-			return "USCM Cryo Engineer (Equipped)"
+			return "USCM Cryo Squad Engineer (Equipped)"
 		if(JOB_SQUAD_LEADER)
 			return "USCM Cryo Squad Leader (Equipped)"
 		if(JOB_SQUAD_MEDIC)
-			return "USCM Cryo Medic (Equipped)"
+			return "USCM Cryo Squad Medic (Equipped)"
 		if(JOB_SQUAD_SPECIALIST)
-			return "USCM Cryo Specialist (Equipped)"
+			return "USCM Cryo Squad Specialist (Equipped)"
 		if(JOB_SQUAD_SMARTGUN)
-			return "USCM Cryo Smartgunner (Equipped)"
+			return "USCM Cryo Squad Smartgunner (Equipped)"
 		if(JOB_SQUAD_RTO)
-			return "USCM Cryo RT Operator (Equipped)"
+			return "USCM Cryo Squad RT Operator (Equipped)"
 		if(JOB_CO)
 			return "USCM Captain (CO)"
 		if(JOB_SO)
@@ -237,6 +237,8 @@ datum/preferences/proc/job_pref_to_gear_preset()
 			return "USCM Corporate Liaison (CL)"
 		if(JOB_SYNTH)
 			return "USCM Synthetic"
+		if(JOB_POLICE_CADET)
+			return "USCM MP Cadet (MPC)"
 		if(JOB_POLICE)
 			return "USCM Military Police (MP)"
 		if(JOB_CHIEF_POLICE)
@@ -266,9 +268,15 @@ datum/preferences/proc/job_pref_to_gear_preset()
 		if(JOB_NURSE)
 			return "USCM Nurse"
 		if(JOB_MESS_SERGEANT)
-			return "USCM Mess Sergeant (MS)"	
+			return "USCM Mess Sergeant (MS)"
+		if(JOB_PREDATOR)
+			if(length(RoleAuthority.roles_whitelist))
+				var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
+				return "Yautja [J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"
+			else
+				return "Yautja Blooded"
 
-	return "USCM Cryo Private (Equipped)"
+	return "USCM Cryo Squad Marine (Equipped)"
 
 datum/preferences/proc/clear_equipment()
 	for(var/obj/item/I in preview_dummy)

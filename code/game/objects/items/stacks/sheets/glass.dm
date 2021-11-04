@@ -80,7 +80,14 @@
 		return 0
 	var/title = "Sheet-[name]"
 	title += " ([src.amount] sheet\s left)"
-	switch(tgui_input_list(user, title, "What would you like to construct?", construction_options))
+	var/to_build = tgui_input_list(user, title, "What would you like to construct?", construction_options)
+	if(!to_build)
+		return
+	var/turf/open/T = user.loc
+	if(!(istype(T) && T.allow_construction))
+		to_chat(user, SPAN_WARNING("Windows must be constructed on a proper surface!"))
+		return
+	switch(to_build)
 		if("One Direction")
 			if(!src)	return 1
 			if(src.loc != user)	return 1

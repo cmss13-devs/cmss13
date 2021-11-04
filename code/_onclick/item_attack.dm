@@ -4,6 +4,9 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user)
 
+	if(flags_item & CAN_DIG_SHRAPNEL && ishuman(user))
+		dig_out_shrapnel(user)
+
 // No comment
 /atom/proc/attackby(obj/item/W, mob/living/user,list/mods)
 	return
@@ -16,6 +19,16 @@
 			user.flick_attack_overlay(src, "punch")
 
 /mob/living/attackby(obj/item/I, mob/user)
+	/* Commented surgery code, proof of concept. Would need to tweak human attackby to prevent duplication; mob/living don't have separate limb objects.
+	if((user.mob_flags & SURGERY_MODE_ON) && user.a_intent & (INTENT_HELP|INTENT_DISARM))
+		safety = TRUE
+		var/datum/surgery/current_surgery = active_surgeries[user.zone_selected]
+		if(current_surgery)
+			if(current_surgery.attempt_next_step(user, I))
+				return TRUE
+		else if(initiate_surgery_moment(I, src, null, user))
+			return TRUE
+	*/
 	if(istype(I) && ismob(user))
 		return I.attack(src, user)
 
@@ -31,14 +44,7 @@
 		return FALSE
 
 	if(SEND_SIGNAL(M, COMSIG_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK)
-		return
-
-	if (!istype(M)) // not sure if this is the right thing...
 		return FALSE
-
-	if (M.can_be_operated_on()) //Checks if mob is lying down on table for surgery
-		if (do_surgery(M,user,src))
-			return FALSE
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -56,7 +62,7 @@
 	if(!(user in viewers(M, null)))
 		showname = "."
 
-	if (user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP)
+	if ((user.client && user.client.prefs && user.client.prefs.toggle_prefs & TOGGLE_HELP_INTENT_SAFETY && user.a_intent == INTENT_HELP) || (user.mob_flags & SURGERY_MODE_ON))
 		playsound(loc, 'sound/effects/pop.ogg', 25, 1)
 		user.visible_message(SPAN_NOTICE("[M] has been poked with [src][showname]"),\
 			SPAN_NOTICE("You poke [M == user ? "yourself":M] with [src]."), null, 4)
@@ -64,8 +70,6 @@
 		return FALSE
 
 	/////////////////////////
-	user.lastattacked = M
-	M.lastattacker = user
 	user.attack_log += "\[[time_stamp()]\]<font color='red'> Attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
 	M.attack_log += "\[[time_stamp()]\]<font color='orange'> Attacked by  [key_name(user)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)])</font>"
 	msg_admin_attack("[key_name(user)] attacked [key_name(M)] with [name] (INTENT: [uppertext(intent_text(user.a_intent))]) (DAMTYE: [uppertext(damtype)]) in [get_area(src)] ([src.loc.x],[src.loc.y],[src.loc.z]).", src.loc.x, src.loc.y, src.loc.z)

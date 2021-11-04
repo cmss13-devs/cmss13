@@ -1,6 +1,7 @@
 /mob/living/carbon/human/var/cpr_cooldown
 /mob/living/carbon/human/attack_hand(mob/living/carbon/human/M)
-	..()
+	if(..())
+		return TRUE
 
 	if((M != src) && check_shields(0, M.name))
 		visible_message(SPAN_DANGER("<B>[M] attempted to touch [src]!</B>"), null, null, 5)
@@ -231,53 +232,74 @@
 	SPAN_NOTICE("You check yourself for injuries."), null, 3)
 
 	for(var/obj/limb/org in limbs)
-		var/status = ""
+		var/list/status = list()
 		var/brutedamage = org.brute_dam
 		var/burndamage = org.burn_dam
 		if(org.status & LIMB_DESTROYED)
-			status = "MISSING!"
+			status += "MISSING!"
+		else if(org.status & LIMB_ROBOT)
+			switch(brutedamage)
+				if(1 to 20)
+					status += "dented"
+				if(20 to 40)
+					status += "battered"
+				if(40 to INFINITY)
+					status += "mangled"
+
+			switch(burndamage)
+				if(1 to 10)
+					status += "singed"
+				if(10 to 40)
+					status += "scorched"
+				if(40 to INFINITY)
+					status += "charred"
+
 		else
 			if(org.status & LIMB_MUTATED)
-				if(status)
-					status += " and "
-				status += "weirdly shapen"
+				status += "weirdly shaped"
 			if(halloss > 0)
-				if(status)
-					status += " and "
 				status += "tingling"
-			if(brutedamage > 0)
-				if(status)
-					status += " and "
-				if(brutedamage > 40)
-					status += "mangled"
-				else if(brutedamage > 20)
-					status += "battered"
-				else
+			switch(brutedamage)
+				if(1 to 20)
 					status += "bruised"
-			if(burndamage > 0)
-				if(status)
-					status += " and "
-				if(burndamage > 40)
-					status += "peeling away"
-				else if(burndamage > 10)
-					status += "blistered"
-				else
+				if(20 to 40)
+					status += "battered"
+				if(40 to INFINITY)
+					status += "mangled"
+
+			switch(burndamage)
+				if(1 to 10)
 					status += "numb"
+				if(10 to 40)
+					status += "blistered"
+				if(40 to INFINITY)
+					status += "peeling away"
 
-			for(var/datum/effects/bleeding/external/E in org.bleeding_effects_list)
-				if(status)
-					status += " and "
-				status += "bleeding"
-				break
+		if(org.get_incision_depth()) //Unindented because robotic and severed limbs may also have surgeries performed upon them.
+			status += "cut open"
 
-		if(!status)
-			status = "OK"
+		for(var/datum/effects/bleeding/external/E in org.bleeding_effects_list)
+			status += "bleeding"
+			break
 
+		var/limb_surgeries = org.get_active_limb_surgeries()
+		if(limb_surgeries)
+			status += "undergoing [limb_surgeries]"
+
+		if(!length(status))
+			status += "OK"
+
+		var/postscript
+		if(org.status & LIMB_UNCALIBRATED_PROSTHETIC)
+			postscript += " <b>(NONFUNCTIONAL)</b>"
 		if(org.status & LIMB_BROKEN)
-			status += " <b>(BROKEN)</b>"
+			postscript += " <b>(BROKEN)</b>"
 		if(org.status & LIMB_SPLINTED_INDESTRUCTIBLE)
-			status += " <b>(NANOSPLINTED)</b>"
+			postscript += " <b>(NANOSPLINTED)</b>"
 		else if(org.status & LIMB_SPLINTED)
-			status += " <b>(SPLINTED)</b>"
+			postscript += " <b>(SPLINTED)</b>"
 
-		to_chat(src, "\t My [org.display_name] is [status=="OK"?SPAN_NOTICE(status):SPAN_WARNING(status)]")
+		if(postscript)
+			to_chat(src, "\t My [org.display_name] is [SPAN_WARNING("[english_list(status, final_comma_text = ",")].[postscript]")]")
+		else
+			to_chat(src, "\t My [org.display_name] is [status[1] == "OK" ? SPAN_NOTICE("OK.") : SPAN_WARNING("[english_list(status, final_comma_text = ",")].")]")

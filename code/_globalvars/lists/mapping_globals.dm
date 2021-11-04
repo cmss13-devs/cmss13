@@ -30,6 +30,7 @@ GLOBAL_LIST_EMPTY(whiskey_start)
 
 GLOBAL_LIST_EMPTY(latejoin)
 GLOBAL_LIST_EMPTY(newplayer_start)
+GLOBAL_LIST_EMPTY_TYPED(observer_starts, /obj/effect/landmark/observer_start)
 
 GLOBAL_LIST_EMPTY(fog_blockers)
 

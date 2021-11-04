@@ -12,7 +12,7 @@
 
 	undefibbable = TRUE
 
-	GLOB.data_core.manifest_modify(real_name, null, null, "*Deceased*")
+	GLOB.data_core.manifest_modify(real_name, WEAKREF(src), null, null, "*Deceased*")
 
 	if(is_a_synth)
 		spawn_gibs()
@@ -39,6 +39,7 @@
 
 /mob/living/carbon/human/death(var/cause, var/gibbed)
 	if(stat == DEAD)
+		species?.handle_dead_death(src, gibbed)
 		return
 	GLOB.alive_human_list -= src
 	if(!gibbed)

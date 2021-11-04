@@ -4,7 +4,7 @@
 	name = "Security Records"
 	desc = "Used to view and edit personnel's security records"
 	icon_state = "security"
-	req_one_access = list(ACCESS_MARINE_BRIG, ACCESS_WY_CORPORATE, ACCESS_MARINE_BRIDGE)
+	req_access = list(ACCESS_MARINE_BRIG)
 	circuit = /obj/item/circuitboard/computer/secure_data
 	var/obj/item/card/id/scan = null
 	var/obj/item/device/clue_scanner/scanner = null
@@ -64,8 +64,12 @@
 
 //Someone needs to break down the dat += into chunks instead of long ass lines.
 /obj/structure/machinery/computer/secure_data/attack_hand(mob/user as mob)
-	if(..() || !allowed(usr) || inoperable())
+	if(..() || inoperable())
+		to_chat(user, SPAN_INFO("It does not appear to be working."))
 		return
+
+	if(!allowed(usr))
+		to_chat(user, SPAN_WARNING("Access denied."))
 
 	if(!is_mainship_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))
@@ -111,6 +115,10 @@
 								background = "'background-color:#a16832;'"
 							if("Released")
 								background = "'background-color:#2981b3;'"
+							if("Suspect")
+								background = "'background-color:#008743;'"
+							if("NJP")
+								background = "'background-color:#faa20a;'"
 							if("None")
 								background = "'background-color:#008743;'"
 							if("")
@@ -199,6 +207,10 @@
 								background = "'background-color:#B6732F;'"
 							if("Released")
 								background = "'background-color:#3BB9FF;'"
+							if("Suspect")
+								background = "'background-color:#1AAFFF;'"
+							if("NJP")
+								background = "'background-color:#faa20a;'"
 							if("None")
 								background = "'background-color:#1AAFFF;'"
 							if("")
@@ -444,6 +456,8 @@ What a mess.*/
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=arrest'>*Arrest*</a></li>"
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=incarcerated'>Incarcerated</a></li>"
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=released'>Released</a></li>"
+							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=suspect'>Suspect</a></li>"
+							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=njp'>NJP</a></li>"
 							temp += "</ul>"
 					if("rank")
 						var/list/L = list( "Head of Personnel", "Captain", "AI" )
@@ -485,6 +499,10 @@ What a mess.*/
 									active2.fields["criminal"] = "Incarcerated"
 								if("released")
 									active2.fields["criminal"] = "Released"
+								if("suspect")
+									active2.fields["criminal"] = "Suspect"
+								if("njp")
+									active2.fields["criminal"] = "NJP"
 
 							for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 								H.sec_hud_set_security_status()
@@ -539,7 +557,7 @@ What a mess.*/
 				if(3)
 					R.fields["age"] = rand(5, 85)
 				if(4)
-					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released")
+					R.fields["criminal"] = pick("None", "*Arrest*", "Incarcerated", "Released", "Suspect", "NJP")
 				if(5)
 					R.fields["p_stat"] = pick("*Unconcious*", "Active", "Physically Unfit")
 				if(6)

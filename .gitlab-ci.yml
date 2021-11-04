@@ -21,7 +21,7 @@ variables:
   IMG_BUILD_PYTHON: "python:3.7-buster"
   IMG_BUILD_NODE: "node:15-buster"
   BYOND_MAJOR: "513"
-  BYOND_MINOR: "1539"
+  BYOND_MINOR: "1542"
   SPDMM_VERSION: "suite-1.7"
   # Resource settings
   BYOND_DOWNLOAD_URL: "https://secure.byond.com/download/build/${BYOND_MAJOR}/${BYOND_MAJOR}.${BYOND_MINOR}_byond_linux.zip"
@@ -49,8 +49,7 @@ build:map-templates:
   artifacts:
     name: 'map_template'
     paths:
-      - 'maps/templates.dm'
-    expire_in: '2 hours'
+      - 'maps/_basemap.dm'
 
 # TGUI Interface
 build:tgui:
@@ -71,7 +70,7 @@ build:tgui:
     paths:
       - 'tgui/public/'
     expose_as: 'TGUI Bundles'
-    expire_in: '3 days'
+    expire_in: '7 days'
 
 # Updated changelog for inclusion in game build if on main branch
 # TODO Add support for auto-detecting MR changelog and including it, for Testmerges
@@ -95,7 +94,7 @@ report:changelog:
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 
-# Run DreamMaker to build game
+# Run DreamMaker to build game release build
 build:dm:
   stage: build
   image: $IMG_BUILD_CMBASE
@@ -114,6 +113,7 @@ build:dm:
     - make here
     - source bin/byondsetup
     - cd $CI_PROJECT_DIR
+    - cp tools/ci/_compile_options_release.dm code/_compile_options.dm
     - DreamMaker ${DM_PROJECT_NAME}.dme
   artifacts:
     name: 'binaries'
@@ -121,9 +121,33 @@ build:dm:
       - "${DM_PROJECT_NAME}.dmb"
       - "${DM_PROJECT_NAME}.rsc"
     expose_as: 'DM Binaries'
-    expire_in: '7 days'
+    expire_in: '14 days'
+  rules:
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 
-# Run tests
+# Run DreamMaker to build game in test mode
+build:dm-testing:
+  stage: build
+  image: $IMG_BUILD_CMBASE
+  dependencies:
+    - 'build:tgui'
+    - 'build:map-templates'
+  cache:
+    key: "byond-${BYOND_MAJOR}.${BYOND_MINOR}"
+    paths:
+      - byond.zip
+  script:
+    - DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y build-essential libssl-dev unzip wget
+    - "[ -f byond.zip ] || wget -O byond.zip $BYOND_DOWNLOAD_URL"
+    - mkdir -p $BYOND_INSTALL_DIR
+    - unzip byond.zip -d $BYOND_INSTALL_DIR && cd ${BYOND_INSTALL_DIR}/byond
+    - make here
+    - source bin/byondsetup
+    - cd $CI_PROJECT_DIR
+    - cp tools/ci/_compile_options.dm code/_compile_options.dm
+    - DreamMaker ${DM_PROJECT_NAME}.dme
+
+# Run SpacemanDMM static tests
 tests:
   stage: build
   image: $IMG_BUILD_PYTHON
@@ -134,6 +158,7 @@ tests:
     paths:
       - dreamchecker
   script:
+    - cp tools/ci/_compile_options.dm code/_compile_options.dm
     - find . -iname "*.json" -not -path "*/node_modules/*" -exec python3 ./tools/json_verifier.py {} \;
     - "[ -f dreamchecker ] || wget -O dreamchecker ${SPDMM_DOWNLOAD_URL}/dreamchecker"
     - chmod u+x dreamchecker
@@ -145,9 +170,6 @@ build:runner:
   extends: .dind
   dependencies:
     - 'build:dm'
-    - 'build:map-templates'
-    - 'build:tgui'
-    - 'report:changelog'
   script:
     - docker pull ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:latest || docker pull ${CI_REGISTRY_IMAGE}/${CI_DEFAULT_BRANCH}:latest || true
     - docker build
@@ -166,7 +188,7 @@ build:runner:
     - docker push ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:${CI_PIPELINE_ID}
     - docker push ${CI_REGISTRY_IMAGE}/${CI_COMMIT_REF_SLUG}:latest || true
   rules:
-    - if: '$CI_REGISTRY_IMAGE'
+    - if: '$CI_REGISTRY_IMAGE && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
 
 # Generate DM documentation
 report:dmdoc:
@@ -174,8 +196,6 @@ report:dmdoc:
   image:
     name: alpine/git
     entrypoint: [""]
-  dependencies:
-    - 'build:map-templates'
   cache:
     key: "dmdoc-${SPDMM_VERSION}"
     paths:
@@ -189,10 +209,11 @@ report:dmdoc:
     paths:
       - 'dmdoc/'
     expose_as: 'DM Documentation'
-    expire_in: '3 days'
+    expire_in: '14 days'
   rules:
-    - changes:
-      - "**/*.dm"
+    - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH'
+      changes:
+        - "**/*.dm"
 
 # Reports effective map changes on same branch, using dmm-tools to render full map file
 report:map-changed-report:
@@ -217,7 +238,7 @@ report:map-changed-report:
       - 'maps-renders/'
       - 'mapinfo.txt'
     expose_as: 'Maps Changes'
-    expire_in: '7 days'
+    expire_in: '30 days'
   rules:
     - if: '$CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BEFORE_SHA'
       changes:

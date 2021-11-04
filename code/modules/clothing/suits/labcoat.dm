@@ -158,8 +158,8 @@
 
 /obj/item/clothing/suit/storage/snow_suit/survivor
 	name = "robust snow suit"
-	desc = "A snow suit. It can protect the wearer from extreme cold. This one seems to have been modified somewhat, and can both holster a gun and fit magazines."
 	icon_state = "snowsuit" //needs new cool sprite
+	desc = "A snow suit. It can protect the wearer from extreme cold. This one seems to have been modified somewhat, and can both holster a gun and fit magazines."
 	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
 	armor_laser = CLOTHING_ARMOR_LOW
@@ -192,6 +192,30 @@
 	)
 	pockets.max_storage_space = 8
 
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka
+	name = "Parent Parka"
+	desc = "A winter coat made to withstand the frigged cold weather of the arctic deserts. WY branded Parka"
+
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/red
+	name = "Security Parka"
+	icon_state = "redpark"
+
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/navy
+	name = "Navy Parka"
+	icon_state = "navypark"
+
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/yellow
+	name = "yellow Parka"
+	icon_state = "yellowpark"
+
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/green
+	name = "Green Parka"
+	icon_state = "greenpark"
+
+/obj/item/clothing/suit/storage/snow_suit/survivor/parka/purple
+	name = "Purple Parka"
+	icon_state = "purplepark"
+
 /obj/item/clothing/suit/storage/snow_suit/soviet
 	name = "soviet snowcoat"
 	desc = "A winter coat made in some desolate snowplanet. This wintercoat was made from the fur of local wildlife which donated their fur for the greater good of UPP!"
@@ -204,7 +228,7 @@
 	armor_laser = CLOTHING_ARMOR_LOW
 	armor_energy = CLOTHING_ARMOR_LOW
 	armor_bomb = CLOTHING_ARMOR_NONE
-	armor_bio = CLOTHING_ARMOR_NONE
+	armor_bio = CLOTHING_ARMOR_LOW
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
@@ -223,3 +247,4 @@
 		/obj/item/weapon/melee/baseballbat/metal,
 		/obj/item/device/motiondetector,
 		/obj/item/device/walkman)
+

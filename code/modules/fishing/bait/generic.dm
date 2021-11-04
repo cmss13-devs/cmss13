@@ -1,6 +1,6 @@
 /obj/item/fish_bait
 	name = "fish bait"
-	desc = "A tasty piece of... meat? Whatever it, fish love this."
+	desc = "A tasty piece of... meat? Whatever it is, fish love this."
 
 	var/common_mod = -10
 	var/uncommon_mod = 20

@@ -842,15 +842,23 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 
 /obj/item/storage/backpack/ivan/Initialize()
 	. = ..()
-	var/list/template_guns = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver, /obj/item/weapon/gun/shotgun, /obj/item/weapon/gun/rifle, /obj/item/weapon/gun/smg, /obj/item/weapon/gun/energy, /obj/item/weapon/gun/launcher, /obj/item/weapon/gun/rifle/sniper)
-	var/list/bad_guns = typesof(/obj/item/weapon/gun/pill) + /obj/item/weapon/gun/souto + /obj/item/weapon/gun/energy/yautja/plasma_caster + /obj/item/weapon/gun/smg/nailgun/compact //guns that don't work for some reason
+	var/list/template_guns = list(/obj/item/weapon/gun/pistol, /obj/item/weapon/gun/revolver, /obj/item/weapon/gun/shotgun, /obj/item/weapon/gun/rifle, /obj/item/weapon/gun/smg, /obj/item/weapon/gun/energy, /obj/item/weapon/gun/launcher, /obj/item/weapon/gun/launcher/grenade, /obj/item/weapon/gun/rifle/sniper)
+	var/list/bad_guns = typesof(/obj/item/weapon/gun/pill) + /obj/item/weapon/gun/souto + /obj/item/weapon/gun/smg/nailgun/compact //guns that don't work for some reason
 	var/list/emplacements = list(/obj/item/device/m2c_gun , /obj/item/device/m56d_gun/mounted)
-	var/list/yautja_guns = list(/obj/item/weapon/gun/energy/yautja/plasmarifle, /obj/item/weapon/gun/energy/yautja/plasmapistol, /obj/item/weapon/gun/launcher/spike)
+	var/list/yautja_guns = typesof(/obj/item/weapon/gun/energy/yautja) + /obj/item/weapon/gun/launcher/spike
 	var/list/smartguns = typesof(/obj/item/weapon/gun/smartgun)
-	var/random_gun = pick(subtypesof(/obj/item/weapon/gun) - (template_guns + bad_guns + emplacements + yautja_guns + smartguns))
+	var/list/training_guns = list(
+		/obj/item/weapon/gun/rifle/m41a/training,
+		/obj/item/weapon/gun/rifle/l42a/training,
+		/obj/item/weapon/gun/smg/m39/training,
+		/obj/item/weapon/gun/pistol/m4a3/training,
+		/obj/item/weapon/gun/pistol/mod88/training) //Ivan doesn't carry toys.
+
+	var/list/picklist = subtypesof(/obj/item/weapon/gun) - (template_guns + bad_guns + emplacements + yautja_guns + smartguns + training_guns)
+	var/random_gun = pick(picklist)
 	for(var/total_storage_slots in 1 to storage_slots) //minus templates
 		new random_gun(src)
-		random_gun = pick(subtypesof(/obj/item/weapon/gun) - (template_guns + bad_guns + emplacements + yautja_guns + smartguns))
+		random_gun = pick(picklist)
 
 /obj/item/storage/backpack/souto
 	name = "\improper back mounted Souto vending machine"

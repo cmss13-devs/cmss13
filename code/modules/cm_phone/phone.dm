@@ -28,8 +28,8 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	var/base_icon_state
 
-	//Time in seconds before the phone automatically disengages
-	var/timeout = 30
+	var/timeout_timer_id
+	var/timeout_duration = 30 SECONDS
 
 /obj/structure/transmitter/hidden
 	callable = FALSE
@@ -155,7 +155,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Dialing [calling_phone_id].."))
 	playsound(get_turf(user), "rtb_handset")
-	addtimer(CALLBACK(src, .proc/reset_call), timeout * 10)
+	timeout_timer_id = addtimer(CALLBACK(src, .proc/reset_call, TRUE), timeout_duration, TIMER_UNIQUE|TIMER_OVERRIDE|TIMER_STOPPABLE)
 
 	START_PROCESSING(SSobj, src)
 	START_PROCESSING(SSobj, T)
@@ -183,6 +183,9 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(T.attached_to && ismob(T.attached_to.loc))
 		var/mob/M = T.attached_to.loc
 		to_chat(M, SPAN_PURPLE("[icon2html(src, M)] [phone_id] has picked up."))
+		if(T.timeout_timer_id)
+			deltimer(T.timeout_timer_id)
+			T.timeout_timer_id = null
 
 	to_chat(user, SPAN_PURPLE("[icon2html(src, user)] Picked up a call from [T.phone_id]."))
 	playsound(get_turf(user), "rtb_handset")
@@ -205,7 +208,7 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 	if(attached_to)
 		attached_to.reset_tether()
 
-/obj/structure/transmitter/proc/reset_call()
+/obj/structure/transmitter/proc/reset_call(var/timeout = FALSE)
 	var/obj/structure/transmitter/T = get_calling_phone()
 	if(T)
 		if(T.attached_to && ismob(T.attached_to.loc))
@@ -214,7 +217,10 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 
 		if(attached_to && ismob(attached_to.loc))
 			var/mob/M = attached_to.loc
-			to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You have hung up on [T.phone_id]."))
+			if(timeout)
+				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] Your call to [T.phone_id] has reached voicemail, you immediately disconnect the line."))
+			else
+				to_chat(M, SPAN_PURPLE("[icon2html(src, M)] You have hung up on [T.phone_id]."))
 
 	if(calling)
 		calling.caller = null
@@ -224,7 +230,15 @@ GLOBAL_LIST_EMPTY_TYPED(transmitters, /obj/structure/transmitter)
 		caller.calling = null
 		caller = null
 
+	if(timeout_timer_id)
+		deltimer(timeout_timer_id)
+		timeout_timer_id = null
+
 	if(T)
+		if(T.timeout_timer_id)
+			deltimer(T.timeout_timer_id)
+			T.timeout_timer_id = null
+
 		T.update_icon()
 		STOP_PROCESSING(SSobj, T)
 

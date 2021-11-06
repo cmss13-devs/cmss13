@@ -72,6 +72,8 @@
 	name = "\improper AI Core"
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
+	soundscape_playlist = SCAPE_PL_ARES
+	soundscape_interval = 8
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/securestorage
@@ -133,6 +135,8 @@
 	name = "\improper Engine Reactor Core Room"
 	icon_state = "coreroom"
 	fake_zlevel = 2 // lowerdeck
+	soundscape_playlist = SCAPE_PL_ENG
+	soundscape_interval = 15
 
 /area/almayer/engineering/starboard_atmos
 	name = "\improper Atmospherics Starboard"
@@ -259,6 +263,8 @@
 	name = "\improper Hangar"
 	icon_state = "hangar"
 	fake_zlevel = 2 // lowerdeck
+	soundscape_playlist = SCAPE_PL_HANGAR
+	soundscape_interval = 35
 
 /area/almayer/hallways/vehiclehangar
 	name = "\improper Vehicle Storage"

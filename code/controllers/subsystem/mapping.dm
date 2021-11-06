@@ -60,6 +60,10 @@ SUBSYSTEM_DEF(mapping)
 	initialize_reserved_level(transit.z_value)
 	GLOB.interior_manager = new
 	repopulate_sorted_areas()
+	for(var/maptype as anything in configs)
+		var/datum/map_config/MC = configs[maptype]
+		if(MC.perf_mode)
+			GLOB.perf_flags |= MC.perf_mode
 	return ..()
 
 /datum/controller/subsystem/mapping/proc/wipe_reservations(wipe_safety_delay = 100)

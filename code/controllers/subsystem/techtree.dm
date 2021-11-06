@@ -12,6 +12,9 @@ SUBSYSTEM_DEF(techtree)
 	var/list/obj/structure/resource_node/resources = list()
 
 /datum/controller/subsystem/techtree/Initialize()
+	if(GLOB.perf_flags & PERF_TOGGLE_TECHWEBS)
+		return ..()
+
 	var/list/tech_trees = subtypesof(/datum/techtree)
 	var/list/tech_nodes = subtypesof(/datum/tech)
 

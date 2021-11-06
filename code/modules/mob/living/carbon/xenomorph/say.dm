@@ -67,6 +67,11 @@
 	if(!message || stat)
 		return
 
+	// Automatic punctuation
+	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
+		if(!(copytext(message, -1) in ENDING_PUNCT))
+			message += "."
+
 	if(forced)
 		if(isXenoPredalien(src))
 			playsound(loc, 'sound/voice/predalien_click.ogg', 25, 1)

@@ -1011,7 +1011,7 @@ var/global/image/action_blue_power_up
 	var/cur_target_zone_sel
 	if(has_target && istype(T))
 		cur_target_zone_sel = T.zone_selected
-	var/delayfraction = round(delay/numticks)
+	var/delayfraction = Ceiling(delay/numticks)
 	var/user_orig_loc = L.loc
 	var/user_orig_turf = get_turf(L)
 	var/target_orig_loc
@@ -1023,11 +1023,11 @@ var/global/image/action_blue_power_up
 	var/obj/target_holding
 	if(has_target && istype(T))
 		target_holding = T.get_active_hand()
-	var/expected_total_time = delayfraction*(numticks+1)
+	var/expected_total_time = delayfraction*numticks
 	var/time_remaining = expected_total_time
 
 	. = TRUE
-	for(var/i = 0 to numticks)
+	for(var/i in 1 to numticks)
 		sleep(delayfraction)
 		time_remaining -= delayfraction
 		if(!istype(L) || has_target && !istype(target)) // Checks if L exists and is not dead and if the target exists and is not destroyed

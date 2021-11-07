@@ -489,7 +489,7 @@
 /obj/item/weapon/melee/twohanded/folded_metal_chair/attack(mob/living/M as mob, mob/living/user as mob)
 	. = ..()
 	if(flags_item & WIELDED)
-		M.apply_stamina_damage(25, check_zone(user.zone_selected))
+		M.apply_stamina_damage(17, check_zone(user.zone_selected))
 	playsound(get_turf(user), 'sound/weapons/metal_chair_clang.ogg', 20, 1)
 
 /obj/item/weapon/melee/twohanded/folded_metal_chair/afterattack(atom/target, mob/user, proximity)

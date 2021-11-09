@@ -132,6 +132,17 @@
 			M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 			SPAN_DANGER("You slash [src]!"), null, null, CHAT_TYPE_XENO_COMBAT)
 
+			var/splatter_dir = get_dir(M.loc, src.loc)
+
+			if(isHumanStrict(src))
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter/human(src.loc, splatter_dir)
+			if(isYautja(src))
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter/yautjasplatter(src.loc, splatter_dir)
+			if(isXeno(src))
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(src.loc, splatter_dir)
+			if(isSynth(src))
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter/synthsplatter(src.loc, splatter_dir)
+
 			last_damage_data = create_cause_data(initial(M.name), M)
 
 			//Logging, including anti-rulebreak logging

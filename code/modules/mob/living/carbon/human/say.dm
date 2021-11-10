@@ -111,6 +111,12 @@
 
 	if(!message || stat)
 		return
+
+	// Automatic punctuation
+	if(client && client.prefs && client.prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
+		if(!(copytext(message, -1) in ENDING_PUNCT))
+			message += "."
+
 	for(var/message_mode in parsed["modes"])
 		var/list/obj/item/used_radios = list()
 		switch(message_mode)

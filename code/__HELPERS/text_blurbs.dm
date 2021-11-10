@@ -14,7 +14,7 @@ exempt_ztraits = trait or list of traits of zlevels where any marines don't see 
 shouldn't see the ship marines' drop message. Ex. ZTRAIT_GROUND by default.
 unit = the unit the marines are from. FF, Dust Raiders etc. Military crew see this.
 base = the base the marines are staging from. The ship, Whiskey Outpost etc. Noncombat crew see this.**/
-/proc/show_blurb_uscm(list/exempt_ztraits = ZTRAIT_GROUND, unit = "7th Bat. 'Falling Falcons'", base = station_name)
+/proc/show_blurb_uscm(list/exempt_ztraits = ZTRAIT_GROUND, unit = "2nd Bat. 'Falling Falcons'", base = station_name)
 	if(!islist(exempt_ztraits))
 		exempt_ztraits = list(exempt_ztraits)
 	var/list/exempt_zlevels = SSmapping.levels_by_any_trait(exempt_ztraits)

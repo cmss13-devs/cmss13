@@ -178,7 +178,7 @@
 			H.pain.apply_pain(PAIN_BONE_BREAK_SPLINTED)
 
 		if(isHumanStrict(H))
-			H.Slow(2)
+			H.Slow(3)
 		if(isYautja(H))
 			damage = rand(base_punch_damage_pred, base_punch_damage_pred + damage_variance)
 		else if(L.status & LIMB_ROBOT)

@@ -480,14 +480,14 @@
 						to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Invalid input. Aborting.")]")
 		if("message")
 			if(current_squad && operator == usr)
-				var/input = stripped_input(usr, "Please write a message to announce to the squad:", "Squad Message")
+				var/input = sanitize_control_chars(stripped_input(usr, "Please write a message to announce to the squad:", "Squad Message"))
 				if(input)
 					send_to_squad(input, 1) //message, adds username
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message sent to all Marines of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(usr)] sent '[input]' to squad [current_squad].")
 		if("sl_message")
 			if(current_squad && operator == usr)
-				var/input = stripped_input(usr, "Please write a message to announce to the squad leader:", "SL Message")
+				var/input = sanitize_control_chars(stripped_input(usr, "Please write a message to announce to the squad leader:", "SL Message"))
 				if(input)
 					send_to_squad(input, 1, 1) //message, adds usrname, only to leader
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
@@ -503,14 +503,14 @@
 					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Reminding secondary objectives of squad '[current_squad]'.")]")
 					to_chat(usr, "[icon2html(src, usr)] <b>Secondary Objective:</b> [current_squad.secondary_objective]")
 		if("set_primary")
-			var/input = stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective")
+			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective"))
 			if(current_squad && input)
 				current_squad.primary_objective = "[input] ([worldtime2text()])"
 				send_to_squad("Your primary objective has changed. See Status pane for details.")
 				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[current_squad]' set.")]")
 				log_overwatch("[key_name(usr)] set [current_squad]'s primary objective to '[input]'.")
 		if("set_secondary")
-			var/input = stripped_input(usr, "What will be the squad's secondary objective?", "Secondary Objective")
+			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's secondary objective?", "Secondary Objective"))
 			if(input)
 				current_squad.secondary_objective = input + " ([worldtime2text()])"
 				send_to_squad("Your secondary objective has changed. See Status pane for details.")
@@ -635,11 +635,10 @@
 			return helm.camera
 
 //Sends a string to our currently selected squad.
-/obj/structure/machinery/computer/overwatch/proc/send_to_squad(var/txt = "", var/plus_name = 0, var/only_leader = 0)
-	if(txt == "" || !current_squad || !operator)
+/obj/structure/machinery/computer/overwatch/proc/send_to_squad(var/text = "", var/plus_name = 0, var/only_leader = 0)
+	if(text == "" || !current_squad || !operator)
 		return //Logic
 
-	var/text = strip_html(txt)
 	var/nametext = ""
 	if(plus_name)
 		nametext = "[usr.name] transmits: "

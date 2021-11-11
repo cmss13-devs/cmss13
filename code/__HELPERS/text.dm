@@ -41,6 +41,11 @@
 	var/msg = html_encode(sanitize_simple(t, repl_chars))
 	return readd_quotes(msg)
 
+//Removes control chars like "\n"
+/proc/sanitize_control_chars(var/stuff)
+	var/static/regex/whitelistedWords = regex(@{"([^\u0020-\u8000]+)"}, "g")
+	return whitelistedWords.Replace(stuff, "")
+
 //Runs sanitize and strip_html_simple
 //I believe strip_html_simple() is required to run first to prevent '<' from displaying as '&lt;' after sanitize() calls byond's html_encode()
 /proc/strip_html(var/t,var/limit=MAX_MESSAGE_LEN)

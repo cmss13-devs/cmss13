@@ -85,9 +85,9 @@
 		if(assigned_squad.overwatch_officer)
 			. += "Overwatch Officer: [assigned_squad.overwatch_officer.get_paygrade()][assigned_squad.overwatch_officer.name]"
 		if(assigned_squad.primary_objective)
-			. += "Primary Objective: [assigned_squad.primary_objective]"
+			. += "Primary Objective: [html_decode(assigned_squad.primary_objective)]"
 		if(assigned_squad.secondary_objective)
-			. += "Secondary Objective: [assigned_squad.secondary_objective]"
+			. += "Secondary Objective: [html_decode(assigned_squad.secondary_objective)]"
 
 	if(mobility_aura)
 		. += "Active Order: MOVE"
@@ -720,7 +720,7 @@
 					perpref = ID.registered_ref
 
 			var/read = FALSE
-			
+
 			if(perpref)
 				for(var/datum/data/record/E in GLOB.data_core.general)
 					if(E.fields["ref"] == perpref)

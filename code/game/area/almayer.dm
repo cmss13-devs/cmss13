@@ -108,6 +108,9 @@
 	icon_state = "upperengineering"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/engineering/upper_engineering/notunnel
+	flags_area = AREA_NOTUNNEL
+
 /area/almayer/engineering/ce_room
 	name = "\improper Chief Engineer Office"
 	icon_state = "ceroom"
@@ -172,6 +175,9 @@
 	name = "\improper Weapon Control Room"
 	icon_state = "weaponroom"
 	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/shipboard/weapon_room/notunnel
+	flags_area = AREA_NOTUNNEL
 
 /area/almayer/shipboard/starboard_point_defense
 	name = "\improper Point Defense Starboard"
@@ -653,7 +659,7 @@
 /area/almayer/lifeboat_pumps
 	name = "Lifeboat Fuel Pumps"
 	icon_state = "lifeboat_pump"
-	requires_power = 0
+	requires_power = 1
 	fake_zlevel = 1
 
 /area/almayer/lifeboat_pumps/north1

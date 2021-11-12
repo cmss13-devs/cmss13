@@ -296,8 +296,8 @@
 
 
 /obj/item/weapon/melee/twohanded/breacher
-	name = "Breach B5"
-	desc = "An extremely heavy tool, used to smash things. The top piece is specially designed to take down walls."
+	name = "B5 Breaching Hammer"
+	desc = "An extremely heavy tool, used to smash things. The top piece is specially designed to take down walls, but looks way too heavy for a human to use."
 	icon = 'icons/obj/items/experimental_tools.dmi'
 	icon_state = "breacher"
 	item_state = "breacher"
@@ -306,6 +306,8 @@
 	w_class = SIZE_LARGE
 	flags_item = TWOHANDED
 	flags_equip_slot = SLOT_BACK
+
+	attack_verb = list("pulverised", "smashed", "thwacked", "crushed")
 
 /obj/item/weapon/melee/twohanded/breacher/afterattack(var/atom/A, var/mob/user, var/proximity)
 	if(!(flags_item & WIELDED))
@@ -322,19 +324,18 @@
 		var/time_to_destroy = 50
 		if(istype(W, /turf/closed/wall/r_wall))
 			time_to_destroy = 100
+		if(!user.Adjacent(A))
+			return
 
 		breach_action(W, user, time_to_destroy)
-
-		W.take_damage(W.damage_cap)
-		return
 
 	if(istype(A, /obj/structure/girder))
 		var/obj/structure/girder/G = A
 
-		breach_action(G, user, 30)
+		if(!user.Adjacent(A))
+			return
 
-		G.dismantle()
-		return
+		breach_action(G, user, 30)
 
 	..()
 
@@ -343,8 +344,20 @@
 		return
 
 	to_chat(user, SPAN_NOTICE("You start taking down the [A.name]."))
-	if(!do_after(user, time_to_destroy, INTERRUPT_ALL, BUSY_ICON_BUILD))
+
+	if(!do_after(user, time_to_destroy, INTERRUPT_ALL_OUT_OF_RANGE, BUSY_ICON_BUILD))
+		to_chat(user, SPAN_NOTICE("You stop taking down the [A.name]."))
 		return
 
 	to_chat(user, SPAN_NOTICE("You tear down the [A.name]."))
-	playsound(user, 'sound/effects/woodhit.ogg', 40, 1)
+
+	if(istype(A, /turf/closed/wall))
+		var/turf/closed/wall/W = A
+		W.take_damage(W.damage_cap)
+		playsound(user, 'sound/effects/meteorimpact.ogg', 40, 1)
+		playsound(user, 'sound/effects/ceramic_shatter.ogg', 40, 1)
+
+	if(istype(A, /obj/structure/girder))
+		var/obj/structure/girder/G = A
+		G.dismantle()
+		playsound(user, 'sound/effects/metal_shatter.ogg', 40, 1)

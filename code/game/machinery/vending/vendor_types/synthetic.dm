@@ -234,6 +234,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 	vendor_role = list(JOB_SYNTH)
 /obj/structure/machinery/cm_vending/own_points/experimental_tools
 	listed_products = list(
+		list("Breaching Hammer", 15, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),
+
 		list("Compact Defibrillator", 15, /obj/item/device/defibrillator/compact, null, VENDOR_ITEM_REGULAR),
 
       	list("Compact Nailgun kit", 15, /obj/effect/essentials_set/cnailgun, null, VENDOR_ITEM_REGULAR),

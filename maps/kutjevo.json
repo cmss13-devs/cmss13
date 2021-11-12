@@ -4,9 +4,9 @@
     "map_file": "Kutjevo.dmm",
     "survivor_types": [
         "Survivor - Kutjevo Doctor",
-        "Survivor - Chaplain",
+        "Survivor - Kutjevo Chaplain",
         "Survivor - Kutjevo Engineer",
-        "Survivor - Trucker",
+        "Survivor - Kutjevo Heavy Vehicle Operator",
         "Survivor - Kutjevo Security Guard"
     ],
     "defcon_triggers": [

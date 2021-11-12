@@ -823,6 +823,14 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	specialty = "RC6"
 	flags_atom = NO_SNOW_TYPE
 
+// KUTJEVO HELMET
+
+/obj/item/clothing/head/helmet/marine/veteran/kutjevo
+	name = "Kutjevo Helmet"
+	desc = "Standard issued helmet for the workers of Kutjevo. Contains a small webbing to hold small items like pens, oil or even a photo of a loved one."
+	icon_state = "kutjevo_helmet"
+	item_state = "kutjevo_helmet"
+
 //==========================//DISTRESS\\=================================\\
 //=======================================================================\\
 

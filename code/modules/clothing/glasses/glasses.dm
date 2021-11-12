@@ -118,6 +118,12 @@
 	icon_state = "purple"
 	item_state = "glasses"
 
+/obj/item/clothing/glasses/kutjevo
+	name = "kutjevo goggles"
+	desc = "Goggles used to shield the eyes of workers on Kutjevo. N95Z Rated Goggles."
+	icon_state = "kutjevo_goggles"
+	item_state = "kutjevo_goggles"
+
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"
 	desc = "Once worn by swashbucklers of old, now more commonly associated with a figure of legend. They say he was big AND a boss. Impressive no? Don't let the MPs see you wearing this non-regulation attire."

@@ -105,6 +105,19 @@
 	icon_state = "pirate"
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS
 
+/obj/item/clothing/under/kutjevo
+	name = "kutjevo jumper"
+	desc = "A heavy-duty jumpsuit worn by the workers on Kutjevo."
+	icon_state = "kutjevo_jumper"
+	item_state = "kutjevo_jumper"
+
+/obj/item/clothing/under/kutjevo/drysuit
+	name = "kutjevo drysuit"
+	desc = "A heavy-duty drysuit worn by the workers on Kutjevo."
+	icon_state = "kutjevo_drysuit"
+	item_state = "kutjevo_drysuit"
+
+
 /obj/item/clothing/under/soviet
 	name = "soviet uniform"
 	desc = "For the Motherland!"

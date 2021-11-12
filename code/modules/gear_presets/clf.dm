@@ -69,28 +69,6 @@
 
 //*****************************************************************************************************/
 
-/datum/equipment_preset/clf/survivor
-	name = "CLF Survivor"
-	flags = EQUIPMENT_PRESET_EXTRA
-	skills = /datum/skills/civilian/survivor/clf
-
-/datum/equipment_preset/clf/survivor/load_gear(mob/living/carbon/human/H)
-
-	spawn_rebel_uniform(H)
-	spawn_rebel_suit(H)
-	spawn_rebel_helmet(H)
-	spawn_rebel_shoes(H)
-	spawn_rebel_gloves(H)
-	spawn_rebel_belt(H)
-
-	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/flashlight(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/tool/crowbar(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/survival/full(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/tools/full(H), WEAR_R_STORE)
-
-//*****************************************************************************************************/
-
 /datum/equipment_preset/clf/engineer
 	name = "CLF Engineer"
 	flags = EQUIPMENT_PRESET_EXTRA

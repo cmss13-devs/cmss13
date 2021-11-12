@@ -13560,9 +13560,7 @@
 /turf/open/floor/plating,
 /area/desert_dam/exterior/valley/valley_cargo)
 "aMK" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison{
@@ -13663,9 +13661,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "aMX" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison{
 	dir = 1;
@@ -15290,9 +15286,7 @@
 	},
 /area/desert_dam/building/substation/northwest)
 "aRE" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor{
@@ -15476,9 +15470,7 @@
 	},
 /area/desert_dam/building/substation/northwest)
 "aSf" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor{
 	dir = 4;
@@ -16089,9 +16081,7 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "aTY" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal,
 /obj/item/stack/sheet/plasteel{
 	amount = 10
@@ -16106,9 +16096,7 @@
 /turf/closed/wall/r_wall/prison,
 /area/desert_dam/building/security/courtroom)
 "aUa" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison{
 	dir = 10;
@@ -16381,16 +16369,12 @@
 	},
 /area/desert_dam/building/mining/workshop)
 "aUX" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "aUY" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/bomb_supply,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
@@ -16400,16 +16384,12 @@
 /turf/open/floor/prison,
 /area/desert_dam/building/water_treatment_two/control_room)
 "aVa" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
 "aVb" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/item/clothing/head/welding,
 /turf/open/floor/prison,
 /area/desert_dam/building/mining/workshop)
@@ -24571,9 +24551,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_mining)
 "buz" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -24878,9 +24856,7 @@
 /obj/item/stack/sheet/plasteel{
 	amount = 10
 	},
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	dir = 10;
 	icon_state = "bright_clean";
@@ -28007,9 +27983,7 @@
 	},
 /area/desert_dam/building/security/holding)
 "bFq" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /obj/structure/machinery/light{
@@ -30664,9 +30638,7 @@
 /turf/closed/wall/r_wall/bunker,
 /area/desert_dam/interior/dam_interior/workshop)
 "bNZ" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison{
 	icon_state = "sterile_white";
@@ -32362,9 +32334,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bTe" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison{
@@ -32372,9 +32342,7 @@
 	},
 /area/desert_dam/interior/dam_interior/primary_tool_storage)
 "bTf" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
@@ -42814,9 +42782,7 @@
 /turf/closed/wall/r_wall,
 /area/desert_dam/building/substation/central)
 "czh" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison{
@@ -42835,9 +42801,7 @@
 	},
 /area/desert_dam/interior/dam_interior/east_tunnel_entrance)
 "czn" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
@@ -43670,9 +43634,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_two)
 "cBu" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison{
 	dir = 8;
@@ -43995,9 +43957,7 @@
 	},
 /area/desert_dam/building/medical/surgery_room_two)
 "cCx" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison{
@@ -44157,9 +44117,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_cargo)
 "cCW" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison{
 	icon_state = "darkbrown2"
@@ -48435,9 +48393,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/landing_pad_two)
 "cPJ" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison{
 	dir = 1;
@@ -49432,26 +49388,20 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_cargo)
 "cSU" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/building/mining/workshop)
 "cSX" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/technology_scanner,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
 	},
 /area/desert_dam/building/mining/workshop)
 "cSY" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/toolbox,
 /turf/open/floor/prison{
 	icon_state = "darkyellow2"
@@ -52634,9 +52584,7 @@
 	},
 /area/desert_dam/building/warehouse/loading)
 "dfL" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/item/stack/sheet/metal,
 /turf/open/floor/prison{
 	dir = 10;
@@ -55771,9 +55719,7 @@
 /obj/item/weapon/melee/baseballbat/metal{
 	pixel_x = 5
 	},
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/structure/machinery/light{
 	dir = 8;
 	tag = "icon-tube1 (EAST)"
@@ -57332,9 +57278,7 @@
 /area/desert_dam/building/dorms/pool)
 "dIQ" = (
 /obj/item/clothing/under/shorts/red,
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -57430,9 +57374,7 @@
 /area/desert_dam/building/dorms/pool)
 "dJm" = (
 /obj/item/tool/mop,
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue"
@@ -57578,9 +57520,7 @@
 	},
 /area/desert_dam/building/cafeteria/cafeteria)
 "dJX" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /turf/open/floor/prison{
 	dir = 4;
 	icon_state = "blue"
@@ -67169,9 +67109,7 @@
 	},
 /area/desert_dam/exterior/valley/valley_medical)
 "uyn" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /turf/open/floor/plating,
 /area/desert_dam/building/cafeteria/backroom)
 "uAo" = (
@@ -67998,9 +67936,7 @@
 /turf/open/asphalt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "xRf" = (
-/obj/structure/surface/rack{
-	layer = 2.5
-	},
+/obj/structure/surface/rack,
 /obj/effect/spawner/random/tech_supply,
 /obj/effect/spawner/random/tech_supply,
 /turf/open/floor/prison{

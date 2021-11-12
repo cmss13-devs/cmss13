@@ -21,8 +21,8 @@
 		world.Reboot()
 
 /datum/admins/proc/togglejoin()
-	set name = "Toggle Marines Joining"
-	set desc = "Players can still log into the server, but Marines won't be able to join the game as a new mob."
+	set name = "Toggle Joining Round"
+	set desc = "Players can still log into the server, but players won't be able to join the game as a new mob."
 	set category = "Server"
 
 	enter_allowed = !enter_allowed

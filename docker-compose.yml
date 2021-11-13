@@ -1,0 +1,56 @@
+version: '3.6'
+
+services:
+  # You will probably want to copy config/example/dbconfig_docker.txt to config/dbconfig.txt to use this
+  cm13-mysql:
+    image: mysql:8
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: cm13
+      MYSQL_USER: cm13
+      MYSQL_PASSWORD: cm13testing
+      MYSQL_ROOT_PASSWORD: cm13testingroot
+    volumes:
+      - cm13-mysql:/var/lib/mysql
+    networks:
+      - cm13-net
+
+  cm13-game:
+    build:
+      context: .
+      target: deploy
+    ports:
+      - 51400:1400
+    volumes:
+      - type: bind
+        source: ./cfg
+        target: /usr/local/byond/cfg
+      - type: bind
+        source: ./data
+        target: /cm/data
+      - type: bind
+        source: ./config
+        target: /cm/config
+        read_only: true
+      - type: bind
+        source: ./map_config
+        target: /cm/map_config
+        read_only: true
+      - type: bind
+        source: ./maps
+        target: /cm/maps
+        read_only: true
+    networks:
+      - cm13-net
+    depends_on:
+      - cm13-mysql
+
+volumes:
+  cm13-mysql:
+
+networks:
+  cm13-net:
+    driver: bridge

@@ -61,6 +61,32 @@
 	</tr>
 </table>
 
+			<h2 class="date">13 November 2021</h2>
+			<h3 class="author">Firartix updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">fixed invalid round logging in huntergames game_mode</li>
+				<li class="bugfix">Fixed an issue with docker container for game ignoring stop signals</li>
+				<li class="tweak">Bumped built BYOND container version from 1539 to 1542</li>
+				<li class="tweak">Added complete multi-stage docker builds in Dockerfile, in addition to just the 'package to container' used by CI.</li>
+				<li class="tweak">Added a sample testing docker-compose environment to codebase</li>
+				<li class="tweak">Server now shutdowns instead of restarting by default. This was already the case in production setup.</li>
+			</ul>
+			<h3 class="author">Geeves updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Attacking a humanoid with an item that does more than 5 damage now properly tracks it, meaning Yautja kills on humans count for honor again, so does punching them.</li>
+				<li class="bugfix">Killing yourself as a yautja no longer gives you bonus honor points.</li>
+				<li class="bugfix">Damaging and killing someone by tossing them into a wall will properly be attributed to you.</li>
+			</ul>
+			<h3 class="author">Nanu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="maptweak">Moves a couple Survivor spawns away from the hives on Shivas Snowball.</li>
+				<li class="maptweak">Removes the rotary phones from planetside on Shiva.</li>
+			</ul>
+			<h3 class="author">Nanu Sionnach updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds a new wound overlay for xenos, makes it easier to see when they are dead and near death.</li>
+			</ul>
+
 			<h2 class="date">12 November 2021</h2>
 			<h3 class="author">Mercadier updated:</h3>
 			<ul class="changes bgimages16">
@@ -1161,29 +1187,6 @@
 			<h3 class="author">naut updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">Hotfixed the broken observer sprite.</li>
-			</ul>
-
-			<h2 class="date">11 September 2021</h2>
-			<h3 class="author">Binbers updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Decapitated head sprites now retain the players eye color and facepaint selections</li>
-				<li class="tweak">Female sprites finally look distinguishable from males for all races</li>
-			</ul>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Shift-clicking your SL/Queen locator will now give you the name of the area you're in.</li>
-				<li class="rscadd">Alt-clicking the queen tracker will now let you configure it to look for other things, such as the hive core or a specific xeno leader.</li>
-			</ul>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Ported a lot of backend procs for colour effects ingame from TG. Added a system for applying these effects screen-wide. These can recolour things, saturate or desaturate the screen, inflict terrifying colour distortions etc.</li>
-				<li class="rscadd">Added a broken VR headset. Anime is not real. It cannot hurt you. The Caramelldansen HUD suffers no such circumscription.</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added more UPP ranks, changed a couple of the current ranks to a slightly higher paygrade to accomodate.</li>
-				<li class="rscadd">Added UPP command officer skills, for Kolonel+ so they can use their matebas</li>
-				<li class="tweak">Master Sergeant changed from ME8 to ME8E, ME8 is now First Sergeant</li>
 			</ul>
 </div>
 </body>

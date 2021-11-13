@@ -16,7 +16,7 @@
 		return null
 	var/datum/cause_data/new_data = new()
 	new_data.cause_name = new_cause
-	if(M && istype(M))
+	if(istype(M))
 		new_data.weak_mob = WEAKREF(M)
 		if(M.mind)
 			new_data.ckey = M.mind.ckey

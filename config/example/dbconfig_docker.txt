@@ -1,0 +1,19 @@
+# file to use with the bundled docker-compose environment, drop it as config/dbconfig.txt
+
+# server adapter
+DB_PROVIDER brsql
+
+# server address
+DB_ADDRESS cm13-mysql
+
+# server port
+DB_PORT 3306
+
+# server db
+DB_DATABASE cm13
+
+# server login
+DB_USERNAME cm13
+
+# server password
+DB_PASSWORD cm13testing

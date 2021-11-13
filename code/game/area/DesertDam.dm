@@ -168,7 +168,9 @@
 /area/desert_dam/interior/dam_interior/south_tunnel_entrance
 	name = "Engineering South Tunnel Entrance"
 	icon_state = "red"
-
+/area/desert_dam/interior/dam_interior/garage
+	name = "Garage"
+	icon_state = "green"
 /area/desert_dam/interior/caves
 	name = "Caves"
 	ceiling = CEILING_DEEP_UNDERGROUND

@@ -150,5 +150,5 @@
 	caliber = "7x45mm"
 	icon_state = "nailgun"
 	w_class = SIZE_SMALL
-	max_rounds = 50
+	max_rounds = 48
 	gun_type = /obj/item/weapon/gun/smg/nailgun

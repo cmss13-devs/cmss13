@@ -40,6 +40,9 @@ SUBSYSTEM_DEF(shuttle)
 	var/loading_shuttle = FALSE
 
 /datum/controller/subsystem/shuttle/Initialize(timeofday)
+	if(GLOB.perf_flags & PERF_TOGGLE_SHUTTLES)
+		can_fire = FALSE
+		return
 	initial_load()
 	return ..()
 
@@ -49,7 +52,9 @@ SUBSYSTEM_DEF(shuttle)
 		S.load_roundstart()
 		CHECK_TICK
 
-/datum/controller/subsystem/shuttle/fire()
+/datum/controller/subsystem/shuttle/fire(resumed = FALSE)
+	if(!resumed && (GLOB.perf_flags & PERF_TOGGLE_SHUTTLES))
+		return
 	for(var/thing in mobile)
 		if(!thing)
 			mobile.Remove(thing)

@@ -177,7 +177,6 @@
 	icon_state = "boulder1"
 	desc = "A large rock. It's not cooking anything."
 	icon = 'icons/obj/structures/props/dam.dmi'
-	density = 0
 	unslashable = TRUE
 	unacidable = TRUE
 /obj/structure/prop/dam/boulder/boulder1

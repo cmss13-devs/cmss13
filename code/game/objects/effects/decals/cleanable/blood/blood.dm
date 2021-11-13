@@ -51,6 +51,10 @@
 	var/dry_time_left = 0
 	if(drying_time)
 		dry_time_left = max(0, drying_time - (world.time - dry_start_time))
+
+	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
+		return
+
 	if(!H.bloody_footsteps)
 		H.AddElement(/datum/element/bloody_feet, dry_time_left, H.shoes, amount, basecolor)
 	else

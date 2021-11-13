@@ -46,8 +46,11 @@
 
 	var/mob/living/carbon/human/overwatch_officer = null	//Who's overwatching this squad?
 	var/supply_cooldown = 0	//Cooldown for supply drops
-	var/primary_objective = null	//Text strings
+
+	///Text strings, not HTML safe so don't use it without encoding
+	var/primary_objective = null
 	var/secondary_objective = null
+
 	var/obj/item/device/squad_beacon/sbeacon = null
 	var/obj/item/device/squad_beacon/bomb/bbeacon = null
 	var/obj/structure/supply_drop/drop_pad = null
@@ -165,7 +168,7 @@
  * leader_only: if truthy sends only to the squad leader
  */
 /datum/squad/proc/send_squad_message(input_text, mob/user, displayed_icon, leader_only = FALSE)
-	var/message = strip_html(input_text)
+	var/message = sanitize_control_chars(strip_html(input_text))
 	var/datum/sound_template/sfx
 
 	if(user)

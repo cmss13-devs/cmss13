@@ -848,9 +848,8 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/construction)
@@ -1023,7 +1022,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform/stair_cut{
 	icon_state = "kutjevo_platform_sm_stair"
 	},
 /turf/open/floor/plating/kutjevo,
@@ -1142,7 +1141,6 @@
 /area/kutjevo/interior/construction)
 "dQ" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1207,7 +1205,6 @@
 "ee" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -1893,9 +1890,8 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /obj/structure/machinery/light{
 	dir = 1
@@ -1975,7 +1971,6 @@
 /area/kutjevo/interior/oob)
 "gC" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /obj/effect/decal/cleanable/blood/oil,
@@ -3219,7 +3214,6 @@
 "kP" = (
 /obj/structure/machinery/landinglight/ds1{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -3990,9 +3984,8 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/runoff_dunes)
@@ -4103,9 +4096,8 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /turf/open/floor/kutjevo/colors/green,
 /area/kutjevo/interior/complex/botany)
@@ -4129,7 +4121,6 @@
 "nH" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -4863,9 +4854,8 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /turf/open/auto_turf/sand/layer0,
 /area/kutjevo/exterior/runoff_bridge)
@@ -5010,7 +5000,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform/stair_cut{
 	icon_state = "kutjevo_platform_sm_stair"
 	},
 /turf/open/floor/plating/kutjevo,
@@ -5286,7 +5276,6 @@
 "rq" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -5295,9 +5284,8 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/exterior/scrubland)
@@ -5884,7 +5872,6 @@
 "tl" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -6151,7 +6138,7 @@
 	dir = 6;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform/stair_cut{
 	icon_state = "kutjevo_platform_sm_stair"
 	},
 /obj/structure/machinery/light/small{
@@ -6628,7 +6615,6 @@
 "vL" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 1;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (NORTH)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -6712,7 +6698,6 @@
 /area/kutjevo/interior/construction)
 "vY" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -7073,7 +7058,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform/stair_cut{
 	icon_state = "kutjevo_platform_sm_stair"
 	},
 /turf/open/floor/plating/kutjevo,
@@ -7930,9 +7915,8 @@
 	dir = 10;
 	icon_state = "p_stair_full"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /obj/structure/machinery/light/small{
 	dir = 1;
@@ -8560,7 +8544,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform/stair_cut{
 	icon_state = "kutjevo_platform_sm_stair"
 	},
 /obj/structure/machinery/light{
@@ -9802,7 +9786,6 @@
 /area/kutjevo/interior/oob/dev_room)
 "GW" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -10086,7 +10069,6 @@
 /area/kutjevo/interior/power_pt2_electric_boogaloo)
 "Id" = (
 /obj/structure/machinery/landinglight/ds1{
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -10709,9 +10691,8 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /turf/open/floor/kutjevo/tan/multi_tiles,
 /area/kutjevo/interior/colony_South/power2)
@@ -11378,7 +11359,6 @@
 "Mz" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -11413,9 +11393,8 @@
 /obj/structure/stairs/perspective/kutjevo{
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1;
-	icon_state = "kutjevo_platform_sm_stair"
+/obj/structure/platform/stair_cut/alt{
+	icon_state = "kutjevo_platform_sm_stair_alt"
 	},
 /turf/open/floor/plating/kutjevo,
 /area/kutjevo/interior/power)
@@ -12543,7 +12522,6 @@
 "Qx" = (
 /obj/structure/machinery/landinglight/ds1/delayone{
 	dir = 4;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (EAST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -13309,7 +13287,7 @@
 	dir = 8;
 	icon_state = "p_stair_ew_full_cap_butt"
 	},
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform/stair_cut{
 	icon_state = "kutjevo_platform_sm_stair"
 	},
 /turf/open/floor/plating/kutjevo,
@@ -14246,7 +14224,6 @@
 "We" = (
 /obj/structure/machinery/landinglight/ds1/delaytwo{
 	dir = 8;
-	icon_state = "landingstripe";
 	tag = "icon-landingstripe (WEST)"
 	},
 /turf/open/floor/kutjevo/multi_tiles,
@@ -14574,7 +14551,7 @@
 /turf/closed/wall/kutjevo/rock,
 /area/kutjevo/exterior/lz_river)
 "Xi" = (
-/obj/structure/platform/kutjevo/smooth{
+/obj/structure/platform/stair_cut{
 	icon_state = "kutjevo_platform_sm_stair"
 	},
 /obj/structure/stairs/perspective/kutjevo{
@@ -34195,7 +34172,7 @@ js
 Oo
 xv
 Oo
-uu
+js
 LR
 uZ
 VA

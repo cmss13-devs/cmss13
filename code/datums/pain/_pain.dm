@@ -300,7 +300,7 @@
 
 /datum/pain/proc/oxy_kill(mob/living/source)
 	SIGNAL_HANDLER
-	INVOKE_ASYNC(source, /mob.proc/death)
+	INVOKE_ASYNC(source, /mob.proc/death, source.last_damage_data)
 
 /datum/pain/Destroy()
 	. = ..()

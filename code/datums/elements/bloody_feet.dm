@@ -55,6 +55,10 @@
 	INVOKE_ASYNC(src, .proc/add_tracks, target, oldLoc, direction)
 
 /datum/element/bloody_feet/proc/add_tracks(mob/living/carbon/human/target, oldLoc, direction)
+	if(GLOB.perf_flags & PERF_TOGGLE_NOBLOODPRINTS)
+		Detach(target)
+		return
+
 	// FIXME: This shit is retarded and Entered should be refactored
 	if(LAZYISIN(entered_bloody_turf, target))
 		LAZYREMOVE(entered_bloody_turf, target)

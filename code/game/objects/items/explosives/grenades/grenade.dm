@@ -39,6 +39,12 @@
 
 	return TRUE
 
+/obj/item/explosive/grenade/dropped(mob/user)
+	. = ..()
+	if(iscarbon(user) && active)
+		var/mob/living/carbon/nade_user = user
+		nade_user.toggle_throw_mode(THROW_MODE_OFF)
+
 /obj/item/explosive/grenade/attack_self(mob/user)
 	if(active)
 		return

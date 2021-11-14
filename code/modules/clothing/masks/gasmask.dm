@@ -25,6 +25,12 @@
 	var/gas_filter_strength = 1			//For gas mask filters
 	var/list/filtered_gases = list("phoron", "sleeping_agent", "carbon_dioxide")
 
+/obj/item/clothing/mask/gas/kutjevo
+	name = "kutjevo respirator"
+	desc = "A respirator worn on the face that filters out harmful air particles often present in the air of Kutjevo."
+	icon_state = "kutjevo_respirator"
+	item_state = "kutjevo_respirator"
+
 /obj/item/clothing/mask/gas/PMC
 	name = "\improper M8 pattern armored balaclava"
 	desc = "An armored balaclava designed to conceal both the identity of the operator and act as an air-filter."

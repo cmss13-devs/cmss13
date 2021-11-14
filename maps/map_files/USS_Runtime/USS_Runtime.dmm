@@ -1,186 +1,186 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/wall/r_wall/bunker,
-/area/event/deep_underground/dynamic)
+/area/event)
 "b" = (
 /obj/effect/landmark/start/tank_crew,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "c" = (
 /obj/effect/landmark/start/engineering,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "e" = (
 /obj/effect/landmark/start/requisition,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "g" = (
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "h" = (
 /obj/effect/landmark/start/police,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "k" = (
 /obj/effect/landmark/start/liaison,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "l" = (
 /obj/effect/landmark/start/marine/medic,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "n" = (
 /obj/effect/landmark/start/professor,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "q" = (
 /obj/effect/landmark/start/warden,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "r" = (
 /obj/effect/landmark/start/maint,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "s" = (
 /obj/effect/landmark/late_join,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "t" = (
 /obj/effect/landmark/start/marine/engineer,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "u" = (
 /obj/effect/landmark/start/tech,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "v" = (
 /obj/effect/landmark/start/marine,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "x" = (
 /obj/effect/landmark/start/captain,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "z" = (
 /obj/effect/landmark/start/pilot,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "A" = (
 /obj/effect/landmark/start/cargo,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "C" = (
 /obj/effect/landmark/start/bridge,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "D" = (
 /obj/effect/landmark/start/warrant,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "F" = (
 /obj/effect/landmark/start/marine/rto,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "G" = (
 /obj/effect/landmark/start/marine/spec,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "I" = (
 /obj/effect/landmark/start/synthetic,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "J" = (
 /obj/effect/landmark/start/executive,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "L" = (
 /obj/effect/landmark/start/researcher,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "N" = (
 /obj/effect/landmark/start/nurse,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "P" = (
 /obj/effect/landmark/start/doctor,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "Q" = (
 /obj/effect/landmark/start/senior,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "R" = (
 /obj/effect/landmark/start/marine/smartgunner,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "T" = (
 /obj/effect/landmark/start/marine/leader,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 "W" = (
 /obj/effect/landmark/start/chef,
 /turf/open/floor/almayer{
 	icon_state = "plating"
 	},
-/area/event/deep_underground/dynamic)
+/area/event)
 
 (1,1,1) = {"
 a

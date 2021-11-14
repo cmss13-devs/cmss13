@@ -455,7 +455,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	//waist
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/ivan, WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/type47/ivan, WEAR_WAIST)
 	//belt filled with random magazines, it's cool
 
 	H.set_species("Human Hero") //Ivan is STRONG.

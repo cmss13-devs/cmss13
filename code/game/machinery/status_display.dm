@@ -52,8 +52,10 @@
 /obj/structure/machinery/status_display/proc/sec_changed(datum/source, new_sec)
 	SIGNAL_HANDLER
 	switch(new_sec)
-		if(SEC_LEVEL_GREEN, SEC_LEVEL_BLUE)
+		if(SEC_LEVEL_GREEN)
 			set_picture("default")
+		if(SEC_LEVEL_BLUE)
+			set_picture("bluealert")
 		if(SEC_LEVEL_RED, SEC_LEVEL_DELTA)
 			set_picture("redalert")
 

@@ -13,3 +13,6 @@ html/changelog.html merge=union
 *.dm text eol=lf
 *.dmm text eol=lf
 *.dme text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+Dockerfile eol=lf

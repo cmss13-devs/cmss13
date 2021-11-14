@@ -171,7 +171,7 @@
 	T.hunter_data.honored_set = src
 	hunter_data.honored_targets += T
 	T.hunter_data.honored = TRUE
-	T.hunter_data.honored_reason = "[reason]' by '[src]"
+	T.hunter_data.honored_reason = "[reason]' by '[src.real_name]"
 	T.hud_set_hunter()
 
 
@@ -249,7 +249,7 @@
 	T.hunter_data.dishonored_set = src
 	hunter_data.dishonored_targets += T
 	T.hunter_data.dishonored = TRUE
-	T.hunter_data.dishonored_reason = "[reason]' by '[src]"
+	T.hunter_data.dishonored_reason = "[reason]' by '[src.real_name]"
 	T.hud_set_hunter()
 
 

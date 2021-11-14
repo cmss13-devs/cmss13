@@ -72,6 +72,8 @@
 	name = "\improper AI Core"
 	icon_state = "airoom"
 	fake_zlevel = 1 // upperdeck
+	soundscape_playlist = SCAPE_PL_ARES
+	soundscape_interval = 8
 	flags_area = AREA_NOTUNNEL
 
 /area/almayer/command/securestorage
@@ -106,6 +108,9 @@
 	icon_state = "upperengineering"
 	fake_zlevel = 1 // upperdeck
 
+/area/almayer/engineering/upper_engineering/notunnel
+	flags_area = AREA_NOTUNNEL
+
 /area/almayer/engineering/ce_room
 	name = "\improper Chief Engineer Office"
 	icon_state = "ceroom"
@@ -133,6 +138,8 @@
 	name = "\improper Engine Reactor Core Room"
 	icon_state = "coreroom"
 	fake_zlevel = 2 // lowerdeck
+	soundscape_playlist = SCAPE_PL_ENG
+	soundscape_interval = 15
 
 /area/almayer/engineering/starboard_atmos
 	name = "\improper Atmospherics Starboard"
@@ -168,6 +175,9 @@
 	name = "\improper Weapon Control Room"
 	icon_state = "weaponroom"
 	fake_zlevel = 2 // lowerdeck
+
+/area/almayer/shipboard/weapon_room/notunnel
+	flags_area = AREA_NOTUNNEL
 
 /area/almayer/shipboard/starboard_point_defense
 	name = "\improper Point Defense Starboard"
@@ -259,6 +269,8 @@
 	name = "\improper Hangar"
 	icon_state = "hangar"
 	fake_zlevel = 2 // lowerdeck
+	soundscape_playlist = SCAPE_PL_HANGAR
+	soundscape_interval = 35
 
 /area/almayer/hallways/vehiclehangar
 	name = "\improper Vehicle Storage"
@@ -647,7 +659,7 @@
 /area/almayer/lifeboat_pumps
 	name = "Lifeboat Fuel Pumps"
 	icon_state = "lifeboat_pump"
-	requires_power = 0
+	requires_power = 1
 	fake_zlevel = 1
 
 /area/almayer/lifeboat_pumps/north1

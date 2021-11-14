@@ -85,15 +85,9 @@ var/list/department_radio_keys = list(
 
 	speech_bubble = null
 
-#define ENDING_PUNCT list(".", "-", "?", "!")
 
 /mob/living/say(var/message, var/datum/language/speaking = null, var/verb="says", var/alt_name="", var/italics=0, var/message_range = world_view_size, var/sound/speech_sound, var/sound_vol, var/nolog = 0, var/message_mode = null)
 	var/turf/T
-
-	// Automatic punctuation
-	if (client && client.prefs && client.prefs.toggle_prefs & TOGGLE_AUTOMATIC_PUNCTUATION)
-		if (!(copytext(message, -1) in ENDING_PUNCT))
-			message += "."
 
 	if(SEND_SIGNAL(src, COMSIG_LIVING_SPEAK, message, speaking, verb, alt_name, italics, message_range, speech_sound, sound_vol, nolog, message_mode) & COMPONENT_OVERRIDE_SPEAK) return
 
@@ -177,8 +171,6 @@ var/list/department_radio_keys = list(
 		log_say("[name]: [message] (CKEY: [key])")
 
 	return 1
-
-#undef ENDING_PUNCT
 
 /mob/living/proc/say_signlang(var/message, var/verb="gestures", var/datum/language/language)
 	for (var/mob/O in viewers(src, null))

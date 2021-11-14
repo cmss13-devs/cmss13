@@ -905,11 +905,10 @@
 /area/shiva/interior/colony/research_hab)
 "ado" = (
 /obj/effect/landmark/survivor_spawn,
-/turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
+/turf/open/floor/shiva{
+	dir = 1
 	},
-/area/shiva/interior/valley_huts/disposals)
+/area/shiva/interior/garage)
 "adp" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/weapon/melee/banhammer,
@@ -2674,7 +2673,7 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "amI" = (
 /obj/structure/surface/table,
@@ -4562,7 +4561,7 @@
 	pixel_x = 7;
 	pixel_y = 4
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "azY" = (
 /obj/structure/machinery/photocopier,
@@ -5405,10 +5404,12 @@
 /area/shiva/interior/colony/medseceng)
 "aJM" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/transmitter/rotary{
-	phone_category = "Colony";
-	phone_id = "North Aerodrome Checkpoint";
-	pixel_y = 4
+/obj/item/clipboard{
+	pixel_y = 5
+	},
+/obj/item/tool/pen/red{
+	pixel_x = 6;
+	pixel_y = 9
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -6095,6 +6096,23 @@
 /obj/structure/blocker/invisible_wall,
 /turf/open/auto_turf/ice/layer1,
 /area/shiva/interior/colony/research_hab)
+"aQq" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/rebreather{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/obj/structure/machinery/light/double{
+	dir = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "aQJ" = (
 /obj/structure/flora/bush/ausbushes/lavendergrass,
 /turf/open/auto_turf/snow/layer1,
@@ -7918,6 +7936,12 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/lz2_habs)
+"bOh" = (
+/obj/effect/landmark/survivor_spawn,
+/turf/open/shuttle{
+	icon_state = "floor7"
+	},
+/area/shiva/interior/aerodrome)
 "bPu" = (
 /obj/item/bodybag,
 /turf/open/floor/plating,
@@ -8070,6 +8094,15 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/medseceng)
+"bWB" = (
+/obj/structure/surface/rack,
+/obj/item/tank/emergency_oxygen/double,
+/obj/item/tank/emergency_oxygen/double{
+	pixel_x = -3;
+	pixel_y = 2
+	},
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "bXl" = (
 /obj/structure/flora/bush/snow{
 	icon_state = "snowgrassbb_3";
@@ -9504,6 +9537,17 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
+"dLi" = (
+/obj/structure/surface/rack,
+/obj/item/lightstick/red/spoke,
+/obj/item/lightstick/red/spoke{
+	pixel_y = 4
+	},
+/obj/item/lightstick/red/spoke{
+	pixel_y = -4
+	},
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "dLk" = (
 /obj/item/device/flashlight,
 /turf/open/floor/shiva{
@@ -10647,6 +10691,19 @@
 	icon_state = "wred"
 	},
 /area/shiva/interior/colony/medseceng)
+"fjS" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/mask/rebreather{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/clothing/mask/rebreather,
+/obj/item/clothing/mask/rebreather{
+	pixel_x = -4;
+	pixel_y = -3
+	},
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "fkb" = (
 /obj/structure/machinery/door/airlock/almayer/engineering{
 	dir = 1;
@@ -12641,6 +12698,9 @@
 "hzJ" = (
 /turf/closed/wall/shiva/prefabricated/reinforced,
 /area/shiva/exterior/lz1_valley)
+"hAS" = (
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "hAX" = (
 /obj/structure/machinery/door/airlock/multi_tile/almayer/generic,
 /turf/open/floor/plating,
@@ -13228,6 +13288,13 @@
 	},
 /turf/open/auto_turf/snow/layer3,
 /area/shiva/exterior/cp_colony_grounds)
+"ieD" = (
+/obj/structure/surface/table,
+/obj/structure/machinery/computer3/laptop/secure_data{
+	pixel_y = 6
+	},
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "ift" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/shiva{
@@ -14149,6 +14216,10 @@
 /obj/item/device/t_scanner,
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/research_alley)
+"iYC" = (
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "iYF" = (
 /obj/item/device/flashlight/lamp/tripod,
 /turf/open/floor/shiva{
@@ -15662,6 +15733,19 @@
 /obj/item/lightstick/red/variant,
 /turf/open/auto_turf/snow/layer1,
 /area/shiva/exterior/lz1_valley)
+"kLi" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/suit/storage/snow_suit/doctor{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/obj/item/clothing/suit/storage/snow_suit/doctor,
+/obj/item/clothing/suit/storage/snow_suit/doctor{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "kLv" = (
 /obj/item/tool/wirecutters/clippers,
 /turf/open/floor/shiva{
@@ -15951,11 +16035,7 @@
 /area/shiva/exterior/lz1_valley)
 "kXt" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/transmitter/rotary{
-	phone_category = "Colony";
-	phone_id = "Research Structure Front Desk";
-	pixel_y = 6
-	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "kXx" = (
@@ -18599,11 +18679,7 @@
 /area/shiva/exterior/cp_lz2)
 "nVn" = (
 /obj/structure/surface/table,
-/obj/structure/transmitter/rotary{
-	phone_category = "Colony";
-	phone_id = "Research Structure Security Office";
-	pixel_y = 6
-	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -19042,7 +19118,6 @@
 "owt" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/landmark/survivor_spawn,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -20753,7 +20828,7 @@
 /obj/item/folder/black{
 	pixel_y = 8
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "qof" = (
 /obj/item/stack/cable_coil/blue,
@@ -21212,7 +21287,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/rad,
 /obj/item/storage/firstaid/rad,
-/turf/open/floor/interior/plastic,
+/turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "qOP" = (
 /obj/structure/machinery/power/port_gen/pacman,
@@ -21232,7 +21307,7 @@
 	dir = 1;
 	pixel_y = 9
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "qPi" = (
 /obj/structure/closet/toolcloset,
@@ -21355,7 +21430,7 @@
 /obj/structure/surface/rack,
 /obj/item/storage/firstaid/toxin,
 /obj/item/storage/firstaid/toxin,
-/turf/open/floor/interior/plastic,
+/turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "qWS" = (
 /obj/item/lightstick/red/spoke/planted{
@@ -21712,7 +21787,7 @@
 	pixel_x = -5;
 	pixel_y = 10
 	},
-/turf/open/floor/interior/plastic,
+/turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "rtv" = (
 /obj/structure/surface/table,
@@ -21739,7 +21814,7 @@
 /area/shiva/interior/colony/botany)
 "rxd" = (
 /obj/structure/bed/chair,
-/turf/open/floor/interior/plastic,
+/turf/open/floor/interior/plastic/alt,
 /area/shiva/interior/warehouse)
 "rxf" = (
 /obj/structure/largecrate/random/case/double,
@@ -23043,6 +23118,13 @@
 "sYu" = (
 /turf/open/auto_turf/snow/layer0,
 /area/shiva/exterior/cp_colony_grounds)
+"sYx" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/shoes/snow,
+/turf/open/floor/interior/plastic/alt,
+/area/shiva/interior/warehouse)
 "tad" = (
 /obj/structure/platform/strata{
 	dir = 1
@@ -52204,7 +52286,7 @@ aUy
 aVL
 aWT
 aVL
-aVL
+bOh
 aVL
 aWS
 aVL
@@ -52225,7 +52307,7 @@ lNg
 kLM
 huz
 huz
-alO
+dLi
 amH
 qsN
 aMN
@@ -52233,7 +52315,7 @@ faH
 hHf
 nTu
 qsN
-sjh
+iYC
 huz
 huz
 dWO
@@ -52387,14 +52469,14 @@ kTP
 iQq
 huz
 huz
-alP
+kLi
 amI
 aCy
 rdS
 axJ
 axJ
 nTu
-aDu
+hAS
 sjh
 huz
 huz
@@ -52555,9 +52637,9 @@ rdS
 axJ
 axJ
 axJ
-aDu
+hAS
 pKf
-sjh
+iYC
 huz
 huz
 oBV
@@ -52718,7 +52800,7 @@ axJ
 fbf
 fbf
 ook
-aDu
+hAS
 aDu
 huz
 huz
@@ -53197,7 +53279,7 @@ iQq
 kLM
 ajd
 huz
-pJM
+fjS
 anJ
 aGf
 aNE
@@ -53523,7 +53605,7 @@ uqb
 huz
 huz
 auh
-auh
+bWB
 qvY
 gZZ
 iof
@@ -53532,7 +53614,7 @@ qoY
 axJ
 axJ
 wFm
-wFm
+sYx
 huz
 huz
 sax
@@ -53684,7 +53766,7 @@ kLM
 kLM
 uqb
 ncS
-auh
+bWB
 auh
 aTO
 hkS
@@ -53693,7 +53775,7 @@ oNz
 qOE
 rdS
 axJ
-wFm
+sYx
 wFm
 huz
 huz
@@ -54017,8 +54099,8 @@ huz
 qWL
 aut
 axJ
-alP
-alP
+kLi
+kLi
 huz
 huz
 sax
@@ -54179,7 +54261,7 @@ pJM
 rgI
 rdS
 axJ
-alP
+kLi
 alP
 huz
 huz
@@ -54274,7 +54356,7 @@ ktd
 ktd
 ktd
 tXd
-ver
+ado
 pSD
 ktd
 ktd
@@ -54331,7 +54413,7 @@ kLM
 iQq
 iQq
 huz
-qSW
+aQq
 axJ
 axJ
 axJ
@@ -54980,14 +55062,14 @@ kLM
 uqb
 huz
 cio
-aCy
+ieD
 aKR
 aDu
 huz
 axJ
 rdS
 rti
-aCy
+ieD
 axJ
 axJ
 hIu
@@ -59937,7 +60019,7 @@ cAW
 atD
 auV
 gxN
-ado
+gxN
 axv
 ayb
 jAN

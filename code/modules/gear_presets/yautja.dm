@@ -93,6 +93,7 @@
 
 /datum/equipment_preset/yautja/elder/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
 	. = ..()
 
 // CLAN LEADER
@@ -107,6 +108,7 @@
 
 /datum/equipment_preset/yautja/leader/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
 	. = ..()
 
 // ANCIENT
@@ -121,4 +123,5 @@
 
 /datum/equipment_preset/yautja/ancient/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
 	. = ..()

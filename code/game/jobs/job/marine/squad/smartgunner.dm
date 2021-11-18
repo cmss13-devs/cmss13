@@ -4,7 +4,7 @@
 	spawn_positions = 4
 	allow_additional = 1
 	scaled = 1
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Smartgunner"
 	entry_message_body = "You are the smartgunner. Your job is to provide heavy weapons support."
 
@@ -28,6 +28,7 @@
 	gear_preset = "USCM Smartgunner"
 
 /datum/job/marine/smartgunner/equipped/whiskey
+	title = JOB_WO_SQUAD_SMARTGUNNER
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = "WO Dust Raider Squad Smartgunner"
 

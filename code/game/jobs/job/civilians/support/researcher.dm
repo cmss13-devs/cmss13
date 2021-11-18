@@ -8,7 +8,7 @@
 	scaled = 1
 	supervisors = "chief medical officer"
 	selection_class = "job_researcher"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = "USCM Researcher"
 	entry_message_body = "You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM. You are tasked with researching and developing new medical treatments, helping your fellow doctors, and generally learning new things. Your role involves a lot of roleplaying, but you can perform the function of a regular doctor. Do not hand out things to marines without getting permission from your supervisor."
 

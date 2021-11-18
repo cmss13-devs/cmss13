@@ -4,7 +4,7 @@
 /datum/job/antag/xenos
 	title = JOB_XENOMORPH
 	role_ban_alternative = "Alien"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_CUSTOM_SPAWN
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	supervisors = "Queen"
 	selection_class = "job_xeno"
 

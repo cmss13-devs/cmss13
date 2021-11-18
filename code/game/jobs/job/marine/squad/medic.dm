@@ -3,7 +3,7 @@
 	total_positions = 16
 	spawn_positions = 16
 	allow_additional = 1
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Medic"
 	entry_message_body = "You must tend the wounds of your squad mates and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
 
@@ -32,6 +32,7 @@
 	gear_preset = "USCM Cryo Medic (Equipped)"
 
 /datum/job/marine/medic/equipped/whiskey
+	title = JOB_WO_SQUAD_MEDIC
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = "WO Dust Raider Squad Medic"
 

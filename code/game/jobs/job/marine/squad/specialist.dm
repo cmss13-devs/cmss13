@@ -4,7 +4,7 @@
 	spawn_positions = 4
 	allow_additional = 1
 	scaled = 1
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
 	gear_preset = "USCM (Cryo) Squad Specialist"
 	entry_message_body = "You are the very rare and valuable weapon expert, trained to use special equipment. You can serve a variety of roles, so choose carefully."
 
@@ -29,6 +29,7 @@
 	gear_preset = "USCM Cryo Specialist (Equipped)"
 
 /datum/job/marine/specialist/equipped/whiskey
+	title = JOB_WO_SQUAD_SPECIALIST
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
 	gear_preset = "WO Dust Raider Squad Specialist"
 

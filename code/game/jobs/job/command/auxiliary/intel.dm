@@ -5,7 +5,7 @@
 	spawn_positions = 3
 	allow_additional = 1
 	scaled = 1
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = "USCM Intelligence Officer (IO) (Cryo)"
 	entry_message_body = "Your job is to assist the marines in collecting intelligence related to the current operation to better inform command of their opposition. You are in charge of gathering any data disks, folders, and notes you may find on the operational grounds in order to decrypt any data in order to further the DEFCON status."
 

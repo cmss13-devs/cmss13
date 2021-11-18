@@ -3,7 +3,7 @@
 /datum/job/antag/predator
 	title = JOB_PREDATOR
 	selection_class = "job_predator"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_YAUTJA
 	supervisors = "Ancients"
 	gear_preset = "Yautja Blooded"

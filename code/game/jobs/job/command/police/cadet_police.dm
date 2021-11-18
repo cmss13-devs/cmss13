@@ -5,7 +5,7 @@
 	allow_additional = 0
 	scaled = 0
 	selection_class = "job_mp"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = "USCM MP Cadet (MPC)"
 	entry_message_body = "You are held by a higher standard and are required to obey not only the server rules but the <a href='"+URL_WIKI_LAW+"'>Marine Law</a>. Failure to do so may result in a job ban or server ban. Your primary job is to maintain peace and stability aboard the ship. Marines can get rowdy after a few weeks of cryosleep!"
 

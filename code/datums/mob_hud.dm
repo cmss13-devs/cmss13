@@ -596,7 +596,7 @@ var/list/datum/mob_hud/huds = list(
 			_role = job
 		else if(I)
 			_role = I.rank
-		switch(_role)
+		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_SQUAD_ENGI) marine_rk = "engi"
 			if(JOB_SQUAD_SPECIALIST) marine_rk = "spec"
 			if(JOB_SQUAD_RTO) marine_rk = "rto"
@@ -640,7 +640,7 @@ var/list/datum/mob_hud/huds = list(
 			_role = job
 		else if(ID)
 			_role = ID.rank
-		switch(_role)
+		switch(GET_DEFAULT_ROLE(_role))
 			if(JOB_XO)
 				marine_rk = "xo"
 				border_rk = "command"

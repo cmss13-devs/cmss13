@@ -1,4 +1,6 @@
 #define get_job_playtime(client, job) (client.player_data? LAZYACCESS(client.player_data.playtimes, job)? client.player_data.playtimes[job].total_minutes MINUTES_TO_DECISECOND : 0 : 0)
+#define GET_MAPPED_ROLE(title) (RoleAuthority?.role_mappings[title] ? RoleAuthority.role_mappings[title] : RoleAuthority.roles_by_name[title])
+#define GET_DEFAULT_ROLE(title) (RoleAuthority?.default_roles[title] ? RoleAuthority.default_roles[title] : title)
 
 // Squad name defines
 #define SQUAD_NAME_1					"Alpha"
@@ -112,6 +114,13 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 
 #define JOB_WO_CORPORATE_LIAISON		"Combat Reporter"
 #define JOB_WO_SYNTH					"Support Synthetic"
+
+#define JOB_WO_SQUAD_MARINE				"Dust Raider Squad Marine"
+#define JOB_WO_SQUAD_MEDIC				"Dust Raider Squad Medic"
+#define JOB_WO_SQUAD_ENGINEER			"Dust Raider Squad Engineer"
+#define JOB_WO_SQUAD_SMARTGUNNER		"Dust Raider Squad Smartgunner"
+#define JOB_WO_SQUAD_SPECIALIST			"Dust Raider Squad Specialist"
+#define JOB_WO_SQUAD_LEADER				"Dust Raider Squad Leader"
 
 //------------------------------------
 

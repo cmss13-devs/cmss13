@@ -472,9 +472,17 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/index = -1
 
 	//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
+
+	var/list/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
+	if(!active_role_names)
+		active_role_names = ROLES_REGULAR_ALL
+
 	var/datum/job/lastJob
-	for(var/i in RoleAuthority.roles_for_mode)
-		var/datum/job/job = RoleAuthority.roles_for_mode[i]
+	for(var/role_name as anything in active_role_names)
+		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
+		if(!job)
+			debug_log("Missing job for prefs: [role_name]")
+			continue
 		index += 1
 		if((index >= limit) || (job.title in splitJobs))
 			if((index < limit) && (lastJob != null))
@@ -597,7 +605,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	return
 
 /datum/preferences/proc/SetJob(mob/user, role, priority)
-	var/datum/job/job = RoleAuthority.roles_for_mode[role]
+	var/datum/job/job = RoleAuthority.roles_by_name[role]
 	if(!job)
 		close_browser(user, "mob_occupation")
 		ShowChoices(user)

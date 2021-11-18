@@ -4,7 +4,7 @@
 	spawn_positions = 2
 	allow_additional = 1
 	scaled = 1
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
 	gear_preset = "USCM Pilot Officer (PO) (Cryo)"
 	entry_message_body = "Your job is to fly, protect, and maintain the ship's dropship. While you are an officer, your authority is limited to the dropship, where you have authority over the enlisted personnel. If you are not piloting, there is an autopilot fallback for command, but don't leave the dropship without reason."
 

@@ -18,7 +18,9 @@ Stay alive, and Godspeed, commander!"}
 		if(..())
 			return
 		sleep(15)
-		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) marine_announcement("All forces, Ground Commander [H.real_name] is in command!")
+		if(H?.loc)
+			marine_announcement("All forces, Ground Commander [H.real_name] is in command!")
+
 
 
 //*************************************

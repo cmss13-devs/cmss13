@@ -40,14 +40,17 @@
 	var/explosion_type = 1 //0 is BIG explosion, 1 ONLY gibs the user.
 	var/notification_sound = TRUE	// Whether the bracer pings when a message comes or not
 	var/scimitars = FALSE
+	var/translator_type = "Modern"
 
 	var/name_active = TRUE
 	var/obj/item/card/id/bracer_chip/embedded_id
 
-/obj/item/clothing/gloves/yautja/Initialize(mapload, ...)
+/obj/item/clothing/gloves/yautja/Initialize(mapload, var/new_translator_type)
 	. = ..()
 	caster = new(src)
 	embedded_id = new(src)
+	if(new_translator_type)
+		translator_type = new_translator_type
 
 /obj/item/clothing/gloves/yautja/emp_act(severity)
 	charge -= (severity * 500)
@@ -887,33 +890,30 @@
 			. = activate_random_verb()
 			return
 
-	var/msg = input(usr,"Your bracer beeps and waits patiently for you to input your message.","Translator","") as text
-	if(!msg || !usr.client) return
+	var/msg = sanitize(input(usr, "Your bracer beeps and waits patiently for you to input your message.","Translator","") as text)
+	if(!msg || !usr.client)
+		return
 
-	msg = sanitize(msg)
-	msg = replacetext(msg, "a", "@")
-	msg = replacetext(msg, "e", "3")
-	msg = replacetext(msg, "i", "1")
-	msg = replacetext(msg, "o", "0")
-	//msg = replacetext(msg, "u", "^")
-	//msg = replacetext(msg, "y", "7")
-	//msg = replacetext(msg, "r", "9")
-	msg = replacetext(msg, "s", "5")
-	//msg = replacetext(msg, "t", "7")
-	msg = replacetext(msg, "l", "1")
-	//msg = replacetext(msg, "n", "*")
-	   //Preds now speak in bastardized 1337speak BECAUSE. -because abby is retarded -spookydonut
+	if(!drain_power(usr, 50))
+		return
 
-	spawn(10)
-		if(!drain_power(usr,50))
-			return //At this point they've upgraded.
+	log_say("Yautja Translator/[usr.client.ckey] : [msg]")
 
-		log_say("Yautja Translator/[usr.client.ckey] : [msg]")
+	var/span_class = "yautja_translator"
+	if(translator_type != "Modern")
+		if(translator_type == "Retro")
+			span_class = "retro_translator"
+		msg = replacetext(msg, "a", "@")
+		msg = replacetext(msg, "e", "3")
+		msg = replacetext(msg, "i", "1")
+		msg = replacetext(msg, "o", "0")
+		msg = replacetext(msg, "s", "5")
+		msg = replacetext(msg, "l", "1")
 
-		for(var/mob/Q in hearers(usr))
-			if(Q.stat && !isobserver(Q))
-				continue //Unconscious
-			to_chat(Q, "[SPAN_INFO("A strange voice says")] <span class='prefix'>'[msg]'</span>.")
+	for(var/mob/Q as anything in hearers(usr))
+		if(Q.stat && !isobserver(Q))
+			continue //Unconscious
+		to_chat(Q, "[SPAN_INFO("A strange voice says,")] <span class='[span_class]'>'[msg]'</span>")
 
 /obj/item/clothing/gloves/yautja/verb/bracername()
 	set name = "Toggle Bracer Name"

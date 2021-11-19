@@ -39,13 +39,15 @@
 	var/armor_number = 1
 	var/boot_number = 1
 	var/mask_number = 1
+	var/translator_type = "Modern"
 	if(H.client && H.client.prefs)
 		armor_number = H.client.prefs.predator_armor_type
 		boot_number = H.client.prefs.predator_boot_type
 		mask_number = H.client.prefs.predator_mask_type
+		translator_type = H.client.prefs.predator_translator_type
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H, translator_type), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)

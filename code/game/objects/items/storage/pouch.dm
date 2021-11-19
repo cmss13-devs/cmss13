@@ -1054,3 +1054,35 @@
 	if(slung && slung.loc == src)
 		return
 	addtimer(CALLBACK(src, .proc/attempt_retrieval, user), 0.3 SECONDS, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+
+/obj/item/storage/pouch/cassette
+	name = "cassette pouch"
+	desc = "A finely crafted pouch, made specifically to keep cassettes safe during wartime."
+	icon_state = "cassette_pouch_closed"
+	var/base_icon_state = "cassette_pouch"
+	w_class = SIZE_SMALL
+	can_hold = list(/obj/item/device/cassette_tape)
+	storage_slots = 3
+
+/obj/item/storage/pouch/cassette/update_icon()
+	underlays.Cut()
+	if(!content_watchers)
+		icon_state = "[base_icon_state]_closed"
+	else
+		switch(min(length(contents), 2))
+			if(2)
+				icon_state = "[base_icon_state]_2"
+				var/obj/item/device/cassette_tape/first_tape = contents[1]
+				underlays += image(first_tape.icon, null, first_tape.icon_state, pixel_y = -4)
+				var/obj/item/device/cassette_tape/second_tape = contents[2]
+				var/image/I = image(second_tape.icon, null, second_tape.icon_state, pixel_y = 5)
+				var/matrix/M = matrix()
+				M.Turn(180)
+				I.transform = M
+				underlays += I
+			if(1)
+				icon_state = "[base_icon_state]_1"
+				var/obj/item/device/cassette_tape/first_tape = contents[1]
+				underlays += image(first_tape.icon, null, first_tape.icon_state, pixel_y = -4)
+			if(0)
+				icon_state = base_icon_state

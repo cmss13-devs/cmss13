@@ -250,6 +250,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/device/cassette_tape/hiphop = "cassette_orange_blue",
 	/obj/item/device/cassette_tape/nam = "cassette_green",
 	/obj/item/device/cassette_tape/ocean = "cassette_ocean",
+	/obj/item/storage/pouch/cassette = "cassette_pouch",
 
 	///// PREFERENCES GEAR
 	/obj/item/prop/helmetgarb/gunoil = "gunoil",

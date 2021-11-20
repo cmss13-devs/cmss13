@@ -80,7 +80,9 @@
 	if(istype(I, /obj/item/weapon/melee/twohanded/folded_metal_chair) && picked_up_item)
 		if(I.flags_item & WIELDED)
 			return ..()
-
+		if(locate(/mob/living) in loc)
+			to_chat(user, SPAN_NOTICE("There's someone is in the way!"))
+			return FALSE
 		user.drop_inv_item_to_loc(I, src)
 		stacked_size++
 		update_overlays()
@@ -496,17 +498,19 @@
 	if(flags_item & WIELDED)
 		return
 	if(isturf(target))
-		if(!proximity)
+		var/turf/open/T = target
+		if(!(istype(T)) || !proximity || T.density)
 			return
-		var/turf/T = target
-		if(!T.density)
-			for(var/atom/movable/AM in T.contents)
-				if(AM.density || istype(AM, /obj/structure/bed))
-					to_chat(user, SPAN_WARNING("You can't unfold the chair here, [AM] blocks the way."))
-					return
-			var/obj/O = new placed_object(T)
-			O.dir = user.dir
-			qdel(src)
+		if(!T.allow_construction)
+			to_chat(user, SPAN_WARNING("[src] must be assembled on a proper surface!"))
+			return
+		for(var/atom/movable/AM in T.contents)
+			if(AM.density || istype(AM, /obj/structure/bed))
+				to_chat(user, SPAN_WARNING("You can't unfold the chair here, [AM] blocks the way."))
+				return
+		var/obj/O = new placed_object(T)
+		O.dir = user.dir
+		qdel(src)
 
 /obj/item/weapon/melee/twohanded/folded_metal_chair/mob_launch_collision(var/mob/living/L)
 	playsound(get_turf(src), 'sound/weapons/metal_chair_slam.ogg', 50, 1)

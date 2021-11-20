@@ -1,5 +1,5 @@
 /datum/job/civilian
-	gear_preset = "Colonist"
+	gear_preset = /datum/equipment_preset/colonist
 
 /datum/timelock/medic
 	name = "Medical Roles"

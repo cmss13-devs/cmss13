@@ -5,7 +5,7 @@
 	supervisors = "the acting commanding officer"
 	selection_class = "job_cmo"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
-	gear_preset = "USCM Chief Medical Officer (CMO)"
+	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/cmo
 	entry_message_body = "You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM. You have final authority over the medical department, medications, and treatments. Make sure that the doctors and nurses are doing their jobs and keeping the marines healthy and strong."
 
 AddTimelock(/datum/job/civilian/professor, list(

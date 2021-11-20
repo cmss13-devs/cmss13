@@ -46,7 +46,7 @@
 	if(!leader)
 		new_mob = new/mob/living/carbon/human(spawn_loc)
 		new_mob.create_hud()
-		arm_equipment(new_mob, "Weyland-Yutani PMC (Xeno Handler)", TRUE, TRUE)
+		arm_equipment(new_mob, /datum/equipment_preset/pmc/xeno_handler, TRUE, TRUE)
 
 		hive.make_leader(new_mob)
 		leader = new_mob

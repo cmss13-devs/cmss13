@@ -7,13 +7,13 @@
         "COLD": true
     },
     "survivor_types": [
-        "Survivor - CORSAT Researcher",
-        "Survivor - CORSAT Researcher",
-        "Survivor - PMC",
-        "Survivor - CORSAT Doctor",
-        "Survivor - CORSAT Security Guard",
-        "Survivor - Interstellar Commerce Commission Liaison CORSAT",
-        "Survivor - Corsat Station Engineer"
+        "/datum/equipment_preset/survivor/scientist/corsat",
+        "/datum/equipment_preset/survivor/scientist/corsat",
+        "/datum/equipment_preset/survivor/pmc",
+        "/datum/equipment_preset/survivor/doctor/corsat",
+        "/datum/equipment_preset/survivor/security/corsat",
+        "/datum/equipment_preset/survivor/interstellar_commerce_commission_liason/corsat",
+        "/datum/equipment_preset/survivor/engineer/corsat"
     ],
     "defcon_triggers": [
         3300,

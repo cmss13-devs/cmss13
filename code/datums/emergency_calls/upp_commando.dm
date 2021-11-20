@@ -49,15 +49,15 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
-		arm_equipment(H, "UPP Commando Leader", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/commando/leader, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a commando squad leader of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
 	else if(medics < max_medics)
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a commando medic of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		arm_equipment(H, "UPP Commando Medic", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/commando/medic, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a commando of the Union of Progressive People, a powerful socialist state that rivals the United Americas!"))
-		arm_equipment(H, "UPP Commando", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/upp/commando, TRUE, TRUE)
 	print_backstory(H)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

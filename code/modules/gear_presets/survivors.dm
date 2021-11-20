@@ -1176,7 +1176,7 @@
 
 // ----- WY Survivors
 
-/datum/equipment_preset/survivor/pmc/
+/datum/equipment_preset/survivor/pmc
 	name = "Survivor - PMC"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
@@ -1283,12 +1283,12 @@
 
 // ----- Hostile Survivors
 
-datum/equipment_preset/survivor/clf
+/datum/equipment_preset/survivor/clf
 	name = "CLF Survivor"
 	flags = EQUIPMENT_PRESET_EXTRA
 	skills = /datum/skills/civilian/survivor/clf
 
-datum/equipment_preset/survivor/clf/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/clf/load_gear(mob/living/carbon/human/H)
 
 	spawn_rebel_uniform(H)
 	spawn_rebel_suit(H)

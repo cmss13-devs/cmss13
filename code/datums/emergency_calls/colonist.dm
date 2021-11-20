@@ -8,14 +8,14 @@
 	arrival_message = "Incoming Transmission: 'This is the *static*. We are *static*.'"
 	objectives = "Follow the orders given to you."
 	probability = 0
-	var/preset = "Colonist"
+	var/preset = /datum/equipment_preset/colonist
 
 
 /datum/emergency_call/colonist/create_member(datum/mind/M) //Blank ERT with only basic items.
 	set waitfor = 0
 	var/turf/T = get_spawn_point()
 
-	if(!istype(T)) 
+	if(!istype(T))
 		return FALSE
 
 	var/mob/living/carbon/human/H = new(T)
@@ -29,12 +29,12 @@
 
 /datum/emergency_call/colonist/engineers
 	name = "Colonists - Engineers"
-	preset = "Colonist - Engineer"
+	preset = /datum/equipment_preset/colonist/engineer
 
 /datum/emergency_call/colonist/security
 	name = "Colonists - Security"
-	preset = "Colonist - Security"
+	preset = /datum/equipment_preset/colonist/security
 
 /datum/emergency_call/colonist/doctors
 	name = "Colonists - Doctors"
-	preset = "Colonist - Doctor"
+	preset = /datum/equipment_preset/colonist/doctor

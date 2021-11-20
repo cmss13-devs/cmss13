@@ -164,12 +164,17 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/hide_statusbar
 
+	//Byond membership status
+
+	var/unlock_content = 0
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
 	if(istype(C))
 		owner = C
 		if(!IsGuestKey(C.key))
+			unlock_content = C.IsByondMember()
 			load_path(C.ckey)
 			if(load_preferences())
 				if(load_character())
@@ -450,6 +455,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'>[synthetic_type]</a><br>"
 		dat += "<b>Synthetic whitelist status:</b> <a href='?_src_=prefs;preference=synth_status;task=input'>[synth_status]</a><br>"
 		dat += "</div>"
+
+	if(unlock_content)
+		dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'><b>[(toggle_prefs & MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
 
 	dat += "</div></body>"
 
@@ -1268,6 +1276,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					religion = choice
 		else
 			switch(href_list["preference"])
+				if("publicity")
+					if(unlock_content)
+						toggle_prefs ^= MEMBER_PUBLIC
+
 				if("gender")
 					if(gender == MALE)
 						gender = FEMALE

@@ -110,8 +110,8 @@
 
 /datum/job/civilian/survivor/synth/survivor_old_equipment(var/mob/living/carbon/human/H)
 	var/list/survivor_types = list(
-			"Survivor - Synthetic",
-		)
+		/datum/equipment_preset/synth/survivor,
+	)
 
 	arm_equipment(H, pick(survivor_types), FALSE, TRUE)
 

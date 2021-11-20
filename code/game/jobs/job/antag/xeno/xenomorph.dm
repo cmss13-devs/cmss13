@@ -28,10 +28,10 @@
 	H.forceMove(get_turf(pick(GLOB.xeno_spawns)))
 
 	var/list/survivor_types = list(
-		"Survivor - Scientist",
-		"Survivor - Doctor",
-		"Survivor - Security",
-		"Survivor - Engineer"
+		/datum/equipment_preset/survivor/scientist,
+		/datum/equipment_preset/survivor/doctor,
+		/datum/equipment_preset/survivor/security,
+		/datum/equipment_preset/survivor/engineer
 	)
 	arm_equipment(H, pick(survivor_types), FALSE, FALSE)
 

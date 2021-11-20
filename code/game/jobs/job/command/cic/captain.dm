@@ -5,15 +5,15 @@
 	selection_class = "job_co"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADMIN_NOTIFY|ROLE_WHITELISTED
 	flags_whitelist = WHITELIST_COMMANDER
-	gear_preset = "USCM Captain (CO)"
+	gear_preset = /datum/equipment_preset/uscm_ship/commander
 	entry_message_body = "You are the Captain of the USS Almayer and the Commanding Officer of the operation. Your goal is to lead the Marines on their mission as well as protect and command the ship and her crew. Your job involves heavy roleplay and requires you to behave like a high-ranking officer and to stay in character at all times. As the Commanding Officer your only superior is High Command itself. You must abide by the <a href='"+URL_WIKI_CO_RULES+"'>Captain's Code of Conduct</a>. Failure to do so may result in punitive action against you. Godspeed, captain."
 
 /datum/job/command/commander/New()
 	. = ..()
 	gear_preset_whitelist = list(
-		"[JOB_CO][WHITELIST_NORMAL]" = "USCM Captain (CO)",
-		"[JOB_CO][WHITELIST_COUNCIL]" = "USCM Commodore (CO+)",
-		"[JOB_CO][WHITELIST_LEADER]" = "USCM Commodore (CO++)"
+		"[JOB_CO][WHITELIST_NORMAL]" = /datum/equipment_preset/uscm_ship/commander,
+		"[JOB_CO][WHITELIST_COUNCIL]" = /datum/equipment_preset/uscm_ship/commander/commodore,
+		"[JOB_CO][WHITELIST_LEADER]" = /datum/equipment_preset/uscm_ship/commander/commodore/plus
 	)
 
 /datum/job/command/commander/get_whitelist_status(var/list/roles_whitelist, var/client/player)

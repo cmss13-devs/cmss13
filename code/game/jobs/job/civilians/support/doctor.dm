@@ -8,7 +8,7 @@
 	supervisors = "the chief medical officer"
 	selection_class = "job_doctor"
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
-	gear_preset = "USCM Doctor"
+	gear_preset = /datum/equipment_preset/uscm_ship/uscm_medical/doctor
 	entry_message_body = "You are a civilian, and are not subject to follow military chain of command, but you do work for the USCM. You are tasked with keeping the marines healthy and strong, usually in the form of surgery. You are also an expert when it comes to medication and treatment. If you do not know what you are doing, mentorhelp so a mentor can assist you."
 
 /datum/job/civilian/doctor/set_spawn_positions(var/count)

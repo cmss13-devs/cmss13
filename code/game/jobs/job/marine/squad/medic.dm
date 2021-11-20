@@ -4,7 +4,7 @@
 	spawn_positions = 16
 	allow_additional = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
-	gear_preset = "USCM (Cryo) Squad Medic"
+	gear_preset = /datum/equipment_preset/uscm/medic
 	entry_message_body = "You must tend the wounds of your squad mates and make sure they are healthy and active. You may not be a fully-fledged doctor, but you stand between life and death when it matters."
 
 /datum/job/marine/medic/set_spawn_positions(var/count)
@@ -29,12 +29,12 @@
 
 /datum/job/marine/medic/equipped
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = "USCM Cryo Medic (Equipped)"
+	gear_preset = /datum/equipment_preset/uscm/medic_equipped
 
 /datum/job/marine/medic/equipped/whiskey
 	title = JOB_WO_SQUAD_MEDIC
 	flags_startup_parameters = ROLE_ADD_TO_SQUAD
-	gear_preset = "WO Dust Raider Squad Medic"
+	gear_preset = /datum/equipment_preset/wo/marine/medic
 
 AddTimelock(/datum/job/marine/medic, list(
 	JOB_MEDIC_ROLES = 1 HOURS,

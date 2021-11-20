@@ -29,22 +29,22 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = mob
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
-		arm_equipment(mob, "Weyland-Yutani PMC (Leader)", TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_leader, TRUE, TRUE)
 	else if(medics < max_medics)
 		medics++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani medic!"))
-		arm_equipment(mob, "Weyland-Yutani PMC (Medic)", TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_medic, TRUE, TRUE)
 	else if(heavies < max_heavies*ERT_PMC_GUNNER_FRACTION)
 		heavies++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani heavy gunner!"))
-		arm_equipment(mob, "Weyland-Yutani PMC (Gunner)", TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
 	else if(heavies < max_heavies)
 		heavies++
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani sniper!"))
-		arm_equipment(mob, "Weyland-Yutani PMC (Sniper)", TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_sniper, TRUE, TRUE)
 	else
 		to_chat(mob, SPAN_ROLE_HEADER("You are a Weyland-Yutani mercenary!"))
-		arm_equipment(mob, "Weyland-Yutani PMC (Standard)", TRUE, TRUE)
+		arm_equipment(mob, /datum/equipment_preset/pmc/pmc_standard, TRUE, TRUE)
 
 	print_backstory(mob)
 
@@ -113,18 +113,18 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani squad leader!"))
-		arm_equipment(H, "Weyland-Yutani PMC (Lead Investigator)", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_lead_investigator, TRUE, TRUE)
 	else if(medics < max_medics)
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani medical investigator!"))
-		arm_equipment(H, "Weyland-Yutani PMC (Medical Investigator)", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_med_investigator, TRUE, TRUE)
 	else if(heavies < max_heavies)
 		heavies++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani heavy gunner!"))
-		arm_equipment(H, "Weyland-Yutani PMC (Gunner)", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_gunner, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a Weyland-Yutani detainer!"))
-		arm_equipment(H, "Weyland-Yutani PMC (Detainer)", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/pmc_detainer, TRUE, TRUE)
 
 	print_backstory(H)
 

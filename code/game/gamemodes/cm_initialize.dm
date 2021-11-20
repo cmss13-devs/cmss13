@@ -654,8 +654,8 @@ Additional game mode variables.
 
 	if(is_synth)
 		survivor_types = list(
-				"Survivor - Synthetic", //to be expanded later
-			)
+			/datum/equipment_preset/synth/survivor, //to be expanded later
+		)
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)

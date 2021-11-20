@@ -88,7 +88,8 @@ GLOBAL_LIST_INIT(surgical_tools, setup_surgical_tools())
 GLOBAL_LIST_INIT(surgical_init_tools, GLOB.surgical_tools - typecacheof(SURGERY_TOOLS_NO_INIT_MSG))
 GLOBAL_LIST_INIT(surgical_patient_types, setup_surgical_patient_types())
 
-GLOBAL_LIST_INIT_TYPED(gear_presets_list, /datum/equipment_preset, setup_gear_presets())
+GLOBAL_LIST_INIT_TYPED(gear_path_presets_list, /datum/equipment_preset, setup_gear_path_presets())
+GLOBAL_LIST_INIT_TYPED(gear_name_presets_list, /datum/equipment_preset, setup_gear_name_presets())
 
 var/global/list/active_areas = list()
 var/global/list/all_areas = list()
@@ -206,15 +207,25 @@ var/global/list/paramslist_cache = list()
 		resin_constructions_list[T] = RC
 	return sortAssoc(resin_constructions_list)
 
-/proc/setup_gear_presets()
-	var/list/gear_presets_list = list()
+/proc/setup_gear_path_presets()
+	var/list/gear_path_presets_list = list()
 	for(var/T in typesof(/datum/equipment_preset))
 		var/datum/equipment_preset/EP = T
 		if (!initial(EP.flags))
 			continue
 		EP = new T
-		gear_presets_list[EP.name] = EP
-	return sortAssoc(gear_presets_list)
+		gear_path_presets_list[EP.type] = EP
+	return sortAssoc(gear_path_presets_list)
+
+/proc/setup_gear_name_presets()
+	var/list/gear_path_presets_list = list()
+	for(var/T in typesof(/datum/equipment_preset))
+		var/datum/equipment_preset/EP = T
+		if (!initial(EP.flags))
+			continue
+		EP = new T
+		gear_path_presets_list[EP.name] = EP
+	return sortAssoc(gear_path_presets_list)
 
 /proc/setup_language_keys()
 	var/list/language_keys = list()

@@ -39,6 +39,6 @@
 		M.transfer_to(test_mob)
 
 		// Equip the mob as a spec
-		arm_equipment(test_mob, "USCM Cryo Specialist (Equipped)", TRUE, TRUE)
+		arm_equipment(test_mob, /datum/equipment_preset/uscm/specialist_equipped, TRUE, TRUE)
 
 		break

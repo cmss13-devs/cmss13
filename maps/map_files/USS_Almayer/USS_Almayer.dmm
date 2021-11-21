@@ -15124,6 +15124,10 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -20227,9 +20231,6 @@
 /area/almayer/medical/operating_room_three)
 "bmj" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -30
 	},
@@ -22151,6 +22152,10 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
+/obj/structure/machinery/light{
+	dir = 1;
+	tag = "icon-tube1 (NORTH)"
+	},
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "sterile_green_corner";
@@ -22486,9 +22491,6 @@
 /area/almayer/medical/lower_medical_lobby)
 "bvz" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -30
 	},
@@ -23213,6 +23215,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -31340,6 +31343,7 @@
 	name = "ship-grade camera";
 	tag = "icon-camera (WEST)"
 	},
+/obj/structure/machinery/light,
 /turf/open/floor/almayer{
 	dir = 8;
 	icon_state = "sterile_green_corner";
@@ -41585,9 +41589,6 @@
 /area/almayer/command/cichallway)
 "feY" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -30
 	},
@@ -41992,10 +41993,12 @@
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 4;
 	name = "ship-grade camera";
+	pixel_y = 6;
 	tag = null
 	},
 /obj/structure/sign/safety/outpatient{
-	pixel_x = -17
+	pixel_x = -17;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer{
 	dir = 10;
@@ -49313,9 +49316,6 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "iGn" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/closet/secure_closet/surgical{
 	pixel_x = -30
 	},
@@ -49582,7 +49582,12 @@
 	id = "med2"
 	},
 /obj/structure/sign/safety/ladder{
-	pixel_x = 32
+	pixel_x = 32;
+	pixel_y = -8
+	},
+/obj/structure/sign/safety/rewire{
+	pixel_x = 32;
+	pixel_y = 7
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -50065,9 +50070,6 @@
 "iXW" = (
 /obj/structure/machinery/power/apc/almayer{
 	dir = 4
-	},
-/obj/structure/sign/safety/rewire{
-	pixel_x = 32
 	},
 /turf/open/floor/almayer{
 	dir = 4;
@@ -79748,16 +79750,14 @@
 	},
 /area/almayer/shipboard/brig/cells)
 "wIb" = (
-/obj/structure/machinery/light{
-	dir = 8
-	},
 /obj/structure/sign/safety/rewire{
-	pixel_x = -17
+	pixel_x = -17;
+	pixel_y = -6
 	},
 /turf/open/floor/almayer{
-	dir = 8;
+	dir = 10;
 	icon_state = "sterile_green_side";
-	tag = "icon-sterile_green_side (WEST)"
+	tag = "icon-sterile_green_side (SOUTHWEST)"
 	},
 /area/almayer/medical/lower_medical_medbay)
 "wIh" = (
@@ -111403,8 +111403,8 @@ kan
 sYh
 buu
 bCe
-nFh
 wIb
+soK
 thP
 beA
 fqZ

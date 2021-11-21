@@ -114,9 +114,6 @@
 #define FLASH_CORPSEREVIVE (1<<2)
 #define FLASH_ADMINPM      (1<<3)
 
-//membership toggle
-#define MEMBER_PUBLIC		1
-
 //=================================================
 
 #define TOGGLES_CHAT_DEFAULT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_ATTACKLOGS|CHAT_LOOC|CHAT_GHOSTHIVEMIND)

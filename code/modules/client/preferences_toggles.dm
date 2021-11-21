@@ -179,6 +179,15 @@
 	prefs.save_preferences()
 	toggle_fullscreen(prefs.toggle_prefs & TOGGLE_FULLSCREEN)
 
+/client/verb/toggle_member_publicity()
+	set name = "Toggle Membership Publicity"
+	set category = "Preferences"
+	set desc = "Toggles if other players can see that you are a BYOND member (OOC logo)."
+
+	prefs.toggle_prefs ^= MEMBER_PUBLIC
+	prefs.save_preferences()
+	to_chat(src, "Others can[(prefs.toggle_prefs & MEMBER_PUBLIC) ? "" : "'t"] see if you are a BYOND member.")
+
 /client/verb/toggle_prefs() // Toggle whether anything will happen when you click yourself in non-help intent
 	set name = "Toggle Preferences"
 	set category = "Preferences"

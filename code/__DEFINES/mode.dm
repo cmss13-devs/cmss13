@@ -72,6 +72,7 @@
 
 #define TOGGLE_FULLSCREEN					(1<<10) // See /client/proc/toggle_fullscreen in client_procs.dm
 
+#define MEMBER_PUBLIC						(1<<11) //determines if you get a byond logo by your name in ooc if you're a member or not
 //=================================================
 
 var/list/be_special_flags = list(

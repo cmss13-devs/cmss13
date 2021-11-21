@@ -54,6 +54,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_name = "Undefined"
 	var/predator_gender = MALE
 	var/predator_age = 100
+	var/predator_translator_type = "Modern"
 	var/predator_mask_type = 1
 	var/predator_armor_type = 1
 	var/predator_boot_type = 1
@@ -163,12 +164,17 @@ var/const/MAX_SAVE_SLOTS = 10
 
 	var/hide_statusbar
 
+	//Byond membership status
+
+	var/unlock_content = 0
+
 /datum/preferences/New(client/C)
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	macros = new(C, src)
 	if(istype(C))
 		owner = C
 		if(!IsGuestKey(C.key))
+			unlock_content = C.IsByondMember()
 			load_path(C.ckey)
 			if(load_preferences())
 				if(load_character())
@@ -434,6 +440,7 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<b>Yautja name:</b> <a href='?_src_=prefs;preference=pred_name;task=input'>[predator_name]</a><br>"
 		dat += "<b>Yautja gender:</b> <a href='?_src_=prefs;preference=pred_gender;task=input'>[predator_gender == MALE ? "Male" : "Female"]</a><br>"
 		dat += "<b>Yautja age:</b> <a href='?_src_=prefs;preference=pred_age;task=input'>[predator_age]</a><br>"
+		dat += "<b>Translator Type:</b> <a href='?_src_=prefs;preference=pred_trans_type;task=input'>[predator_translator_type]</a><br><br>"
 		dat += "<b>Mask style:</b> <a href='?_src_=prefs;preference=pred_mask_type;task=input'>([predator_mask_type])</a><br>"
 		dat += "<b>Armor style:</b> <a href='?_src_=prefs;preference=pred_armor_type;task=input'>([predator_armor_type])</a><br>"
 		dat += "<b>Greave style:</b> <a href='?_src_=prefs;preference=pred_boot_type;task=input'>([predator_boot_type])</a><br><br>"
@@ -448,6 +455,9 @@ var/const/MAX_SAVE_SLOTS = 10
 		dat += "<b>Synthetic Type:</b> <a href='?_src_=prefs;preference=synth_type;task=input'>[synthetic_type]</a><br>"
 		dat += "<b>Synthetic whitelist status:</b> <a href='?_src_=prefs;preference=synth_status;task=input'>[synth_status]</a><br>"
 		dat += "</div>"
+
+	if(unlock_content)
+		dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'><b>[(toggle_prefs & MEMBER_PUBLIC) ? "Public" : "Hidden"]</b></a><br>"
 
 	dat += "</div></body>"
 
@@ -892,6 +902,11 @@ var/const/MAX_SAVE_SLOTS = 10
 				if("pred_age")
 					var/new_predator_age = input(user, "Choose your Predator's age(20 to 10000):", "Character Preference") as num|null
 					if(new_predator_age) predator_age = max(min( round(text2num(new_predator_age)), 10000),20)
+				if("pred_trans_type")
+					var/new_translator_type = tgui_input_list(user, "Choose your translator type.", "Translator Type", list("Modern", "Retro", "Combo"))
+					if(!new_translator_type)
+						return
+					predator_translator_type = new_translator_type
 				if("pred_mask_type")
 					var/new_predator_mask_type = input(user, "Choose your mask type:\n(1-12)", "Mask Selection") as num|null
 					if(new_predator_mask_type) predator_mask_type = round(text2num(new_predator_mask_type))
@@ -1261,6 +1276,10 @@ var/const/MAX_SAVE_SLOTS = 10
 					religion = choice
 		else
 			switch(href_list["preference"])
+				if("publicity")
+					if(unlock_content)
+						toggle_prefs ^= MEMBER_PUBLIC
+
 				if("gender")
 					if(gender == MALE)
 						gender = FEMALE

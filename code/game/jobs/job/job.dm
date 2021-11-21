@@ -118,29 +118,29 @@
 /datum/job/proc/get_access()
 	if(!gear_preset)
 		return null
-	if(GLOB.gear_presets_list[gear_preset])
-		return GLOB.gear_presets_list[gear_preset].access
+	if(GLOB.gear_path_presets_list[gear_preset])
+		return GLOB.gear_path_presets_list[gear_preset].access
 	return null
 
 /datum/job/proc/get_skills()
 	if(!gear_preset)
 		return null
-	if(GLOB.gear_presets_list[gear_preset])
-		return GLOB.gear_presets_list[gear_preset].skills
+	if(GLOB.gear_path_presets_list[gear_preset])
+		return GLOB.gear_path_presets_list[gear_preset].skills
 	return null
 
 /datum/job/proc/get_paygrade()
 	if(!gear_preset)
 		return ""
-	if(GLOB.gear_presets_list[gear_preset])
-		return GLOB.gear_presets_list[gear_preset].paygrade
+	if(GLOB.gear_path_presets_list[gear_preset])
+		return GLOB.gear_path_presets_list[gear_preset].paygrade
 	return ""
 
 /datum/job/proc/get_comm_title()
 	if(!gear_preset)
 		return ""
-	if(GLOB.gear_presets_list[gear_preset])
-		return GLOB.gear_presets_list[gear_preset].role_comm_title
+	if(GLOB.gear_path_presets_list[gear_preset])
+		return GLOB.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
 /datum/job/proc/set_spawn_positions(var/count)

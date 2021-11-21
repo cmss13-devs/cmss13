@@ -5149,7 +5149,7 @@
 	},
 /area/shiva/interior/valley_huts)
 "aFu" = (
-/obj/item/storage/pouch/firstaid/pills,
+/obj/item/storage/pouch/firstaid/full/pills,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "green"

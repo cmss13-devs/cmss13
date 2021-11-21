@@ -922,3 +922,8 @@
 /mob/living/carbon/Xenomorph/proc/cancel_heal()
 	SIGNAL_HANDLER
 	return COMPONENT_CANCEL_XENO_HEAL
+
+/mob/living/carbon/Xenomorph/proc/set_resin_build_order(var/list/build_order)
+	resin_build_order = build_order
+	if(length(resin_build_order))
+		selected_resin = resin_build_order[1]

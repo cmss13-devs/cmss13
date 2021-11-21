@@ -10,7 +10,9 @@
 #define RO_PRICE_VERY_CHEAP	20
 #define RO_PRICE_CHEAP		30
 #define RO_PRICE_NORMAL		40
+#define RO_PRICE_NORMAL_PRICY 50//crinmbe
 #define RO_PRICE_PRICY		60
+#define RO_PRICE_PRICY_MID	80//god this naming schema is fucking stupid
 #define RO_PRICE_VERY_PRICY	100
 
 var/list/all_supply_groups = list(
@@ -19,6 +21,7 @@ var/list/all_supply_groups = list(
 	"Vehicle Modules and Ammo",
 	"Attachments",
 	"Ammo",
+	"Specialist Ammo",
 	"Armor",
 	"Clothing",
 	"Medical",

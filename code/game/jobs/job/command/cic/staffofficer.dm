@@ -5,7 +5,7 @@
 	allow_additional = 1
 	scaled = 1
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
-	gear_preset = "USCM Staff Officer (SO)"
+	gear_preset = /datum/equipment_preset/uscm_ship/so
 	entry_message_body = "Your job is to monitor the marines, man the CIC, and listen to your superior officers. You are in charge of logistics and the overwatch system. You are also in line to take command after the executive officer."
 
 /datum/job/command/bridge/set_spawn_positions(var/count)

@@ -109,6 +109,17 @@
 /datum/supply_packs/ammo_napalm/asrs
 	buyable = 0
 	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/ammo_napalm_gel/asrs
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
+
+/datum/supply_packs/ammo_flamer_mixed/asrs
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_VERY_LOW_WEIGHT
 
 
 //===================================
@@ -126,3 +137,13 @@
 	group = "Munition"
 
 //===================================
+//speciality armor
+/datum/supply_packs/armor_leader/asrs
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_LOWEST_WEIGHT
+
+/datum/supply_packs/armor_rto/asrs
+	buyable = 0
+	group = "Munition"
+	cost = ASRS_LOWEST_WEIGHT

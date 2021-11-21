@@ -261,7 +261,7 @@
 
 	if(!SSticker.mode || !check_rights(R_ADMIN))
 		return
-	
+
 	var/obj/structure/machinery/computer/shuttle_control/input = tgui_input_list(usr, "Choose which console to disable", "Shuttle Controls", GLOB.shuttle_controls)
 	if(!input)
 		return
@@ -661,11 +661,11 @@
 
 /datum/admins/var/create_humans_html = null
 /datum/admins/proc/create_humans(var/mob/user)
-	if(!GLOB.gear_presets_list)
+	if(!GLOB.gear_name_presets_list)
 		return
 
 	if(!create_humans_html)
-		var/equipment_presets = jointext(GLOB.gear_presets_list, ";")
+		var/equipment_presets = jointext(GLOB.gear_name_presets_list, ";")
 		create_humans_html = file2text('html/create_humans.html')
 		create_humans_html = replacetext(create_humans_html, "null /* object types */", "\"[equipment_presets]\"")
 

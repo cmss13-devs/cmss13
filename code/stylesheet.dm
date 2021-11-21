@@ -140,4 +140,8 @@ h1.alert, h2.alert		{color: #000000;}
 .japanese				{color: #0047A0}
 .commando				{color: #FE9B24; font-style: bold;}
 .say_quote				{font-family: Georgia, Verdana, sans-serif;}
+
+.retro_translator		{font-weight: bold;}
+.yautja_translator		{color: #aa0000; font-weight: bold;}
+
 </style>"}

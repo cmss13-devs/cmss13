@@ -3,13 +3,13 @@
     "map_path": "map_files/BigRed",
     "map_file": "BigRed.dmm",
     "survivor_types": [
-        "Survivor - Solaris Scientist",
-        "Survivor - Solaris Doctor",
-        "Survivor - Solaris Chaplain",
-        "Survivor - Solaris Engineer",
-        "Survivor - Solaris Heavy Vehicle Operator",
-        "Survivor - Solaris Security Guard",
-        "Survivor - Solaris Colonial Marshal"
+        "/datum/equipment_preset/survivor/scientist/solaris",
+        "/datum/equipment_preset/survivor/doctor/solaris",
+        "/datum/equipment_preset/survivor/chaplain/solaris",
+        "/datum/equipment_preset/survivor/engineer/solaris",
+        "/datum/equipment_preset/survivor/trucker/solaris",
+        "/datum/equipment_preset/survivor/security/solaris",
+        "/datum/equipment_preset/survivor/colonial_marshal/solaris"
     ],
     "defcon_triggers": [
         4750,

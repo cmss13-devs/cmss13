@@ -40,14 +40,14 @@
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are a leader of the local resistance group, the Colonial Liberation Front!"))
-		arm_equipment(H, "CLF Leader", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/clf/leader, TRUE, TRUE)
 	else if(medics < max_medics)
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic of the local resistance group, the Colonial Liberation Front!"))
-		arm_equipment(H, "CLF Medic", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/clf/medic, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a member of the local resistance group, the Colonial Liberation Front!"))
-		arm_equipment(H, "CLF Soldier", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/clf/soldier, TRUE, TRUE)
 	print_backstory(H)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

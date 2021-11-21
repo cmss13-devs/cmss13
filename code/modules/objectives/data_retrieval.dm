@@ -28,10 +28,10 @@
 
 /datum/cm_objective/retrieve_data/process()
 	if(..())
-		if(data_is_avaliable())
+		if(data_is_available())
 			data_retrieved += data_transfer_rate
 
-/datum/cm_objective/retrieve_data/proc/data_is_avaliable()
+/datum/cm_objective/retrieve_data/proc/data_is_available()
 	if(objective_flags & OBJ_REQUIRES_COMMS)
 		if(SSobjectives.comms?.is_complete())
 			return TRUE
@@ -76,7 +76,7 @@
 /datum/cm_objective/retrieve_data/terminal/get_clue()
 	return SPAN_DANGER("Upload data from data terminal <b>[data_source.label]</b> in <u>[get_area(data_source)]</u>, the password is <b>[decryption_password]</b>")
 
-/datum/cm_objective/retrieve_data/terminal/data_is_avaliable()
+/datum/cm_objective/retrieve_data/terminal/data_is_available()
 	. = ..()
 	if(!data_source.powered())
 		return FALSE
@@ -121,7 +121,7 @@
 /datum/cm_objective/retrieve_data/disk/get_clue()
 	return SPAN_DANGER("Retrieving <font color=[disk.display_color]><u>[disk.disk_color]</u></font> computer disk <b>[disk.label]</b> in <u>[initial_location]</u>, decryption password is <b>[decryption_password]</b>")
 
-/datum/cm_objective/retrieve_data/disk/data_is_avaliable()
+/datum/cm_objective/retrieve_data/disk/data_is_available()
 	. = ..()
 	if(!istype(disk.loc,/obj/structure/machinery/computer/disk_reader))
 		return FALSE
@@ -262,7 +262,7 @@
 	if(disk)
 		to_chat(user, SPAN_NOTICE("[disk] is currently loaded into the machine."))
 		if(disk.objective)
-			if(disk.objective.is_active() && !disk.objective.is_complete() && disk.objective.data_is_avaliable())
+			if(disk.objective.is_active() && !disk.objective.is_complete() && disk.objective.data_is_available())
 				to_chat(user, SPAN_NOTICE("Data is currently being uploaded to ARES."))
 				return
 		to_chat(user, SPAN_NOTICE("No data is being uploaded."))

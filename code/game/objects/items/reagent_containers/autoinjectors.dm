@@ -51,6 +51,9 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
+/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 /obj/item/reagent_container/hypospray/autoinjector/quickclot
 	name = "quick clot autoinjector"
 	chemname = "quickclot"
@@ -93,6 +96,9 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
+/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 /obj/item/reagent_container/hypospray/autoinjector/oxycodone
 	name = "oxycodone autoinjector (EXTREME PAINKILLER)"
 	chemname = "oxycodone"
@@ -107,12 +113,18 @@
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
 
+/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
+
 /obj/item/reagent_container/hypospray/autoinjector/bicaridine
 	name = "bicaridine autoinjector"
 	chemname = "bicaridine"
 	desc = "An auto-injector loaded with 3 uses of Bicaridine, a common brute and circulatory damage medicine."
 	amount_per_transfer_from_this = REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD
 	volume = (REAGENTS_OVERDOSE * INJECTOR_PERCENTAGE_OF_OD) * INJECTOR_USES
+
+/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/inaprovaline
 	name = "inaprovaline autoinjector"
@@ -131,6 +143,9 @@
 	uses_left = 1
 	injectSFX = 'sound/items/air_release.ogg'
 	injectVOL = 70//limited-supply emergency injector with v.large injection of drugs. Variable sfx freq sometimes rolls too quiet.
+
+/obj/item/reagent_container/hypospray/autoinjector/emergency/skillless
+	skilllock = SKILL_MEDICAL_DEFAULT
 
 /obj/item/reagent_container/hypospray/autoinjector/emergency/Initialize()
 	. = ..()
@@ -162,7 +177,7 @@
 	icon_state = "tricord"
 	amount_per_transfer_from_this = 15
 	volume = 15
-	skilllock = 0
+	skilllock = SKILL_MEDICAL_DEFAULT
 	uses_left = 1
 
 /obj/item/reagent_container/hypospray/autoinjector/skillless/attack(mob/M as mob, mob/user as mob)
@@ -235,7 +250,7 @@
 	chemname = "custom_ez"
 	icon_state = "empty_ez"
 	item_state = "empty_ez"
-	skilllock = 0
+	skilllock = SKILL_MEDICAL_DEFAULT
 	amount_per_transfer_from_this = 15
 	uses_left = 0
 

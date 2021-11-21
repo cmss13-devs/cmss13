@@ -15,6 +15,7 @@
 	var/det_time = 40
 	var/dangerous = 0		//Make an danger overlay for humans?
 	var/arm_sound = 'sound/weapons/armbomb.ogg'
+	var/has_arm_sound = TRUE
 	var/underslug_launchable = FALSE
 	var/hand_throwable = TRUE
 	harmful = TRUE	//Is it harmful? Are they banned for synths?
@@ -92,7 +93,8 @@
 		to_chat(user, SPAN_WARNING("This isn't a hand grenade!"))
 		return
 	cause_data = create_cause_data(initial(name), user)
-	playsound(loc, arm_sound, 25, 1, 6)
+	if(has_arm_sound)
+		playsound(loc, arm_sound, 25, 1, 6)
 	if(customizable)
 		activate_sensors()
 	else

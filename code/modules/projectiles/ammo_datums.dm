@@ -2646,6 +2646,20 @@
 	stamina_damage = 25
 	shrapnel_chance = 0
 
+
+/datum/ammo/bullet/shrapnel/hornet_rounds
+	name = ".22 hornet round"
+	icon_state = "hornet_round"
+	flags_ammo_behavior = AMMO_BALLISTIC
+	damage = 55
+	shrapnel_chance = 0
+	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
+	penetration = ARMOR_PENETRATION_TIER_5
+
+/datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/M, obj/item/projectile/P)
+	. = ..()
+	M.AddComponent(/datum/component/bonus_damage_stack, 5, world.time)
+
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
 	icon_state = "beanbag" // looks suprisingly a lot like flaming shrapnel chunks
@@ -2832,6 +2846,7 @@
 	ping = null //no bounce off.
 	damage_type = BURN
 	flags_ammo_behavior = AMMO_HITS_TARGET_TURF
+	icon_state = "flare"
 
 	damage = 15
 	accuracy = HIT_ACCURACY_TIER_3
@@ -2858,21 +2873,31 @@
 	else
 		drop_flare(T, P.firer)
 
-/datum/ammo/flare/do_at_max_range(obj/item/projectile/P)
+/datum/ammo/flare/do_at_max_range(obj/item/projectile/P, var/mob/firer)
 	drop_flare(get_turf(P), P.firer)
 
 /datum/ammo/flare/proc/drop_flare(var/turf/T, var/mob/firer)
 	var/obj/item/device/flashlight/flare/G = new flare_type(T)
 	G.visible_message(SPAN_WARNING("\A [G] bursts into brilliant light nearby!"))
 	return G
-
 /datum/ammo/flare/signal
 	name = "signal flare"
+	icon_state = "flare_signal"
 	flare_type = /obj/item/device/flashlight/flare/signal/gun
 
 /datum/ammo/flare/signal/drop_flare(turf/T, mob/firer)
 	var/obj/item/device/flashlight/flare/signal/gun/G = ..()
 	G.activate_signal(firer)
+/datum/ammo/flare/starshell
+	name = "starshell ash"
+	icon_state = "starshell_bullet"
+	max_range = 5
+	flare_type = /obj/item/device/flashlight/flare/on/starshell_ash
+
+/datum/ammo/flare/starshell/set_bullet_traits()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff, /datum/element/bullet_trait_incendiary)
+	))
 
 /datum/ammo/souto
 	name = "Souto Can"

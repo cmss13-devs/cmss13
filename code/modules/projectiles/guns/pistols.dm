@@ -405,17 +405,28 @@
 
 /obj/item/weapon/gun/pistol/mod88
 	name = "\improper 88 Mod 4 combat pistol"
-	desc = "A powerful sidearm issued mainly to Weyland-Yutani response teams, but issued to the USCM in small numbers, based on the original VP70 more than a century ago. Fires 9mm armor shredding rounds and is capable of 3-round burst."
+	desc = "Standard issue USCM firearm. Also found in the hands of Weyland-Yutani PMC teams. Fires 9mm armor shredding rounds and is capable of 3-round burst."
 	icon_state = "88m4"
 	item_state = "88m4"
-
 	fire_sound = 'sound/weapons/gun_88m4_v7.ogg'
 	reload_sound = 'sound/weapons/gun_88m4_reload.ogg'
 	unload_sound = 'sound/weapons/gun_88m4_unload.ogg'
 	current_mag = /obj/item/ammo_magazine/pistol/mod88
 	force = 8
 	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_ONE_HAND_WIELDED|GUN_AMMO_COUNTER
-
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/heavy_barrel,
+						/obj/item/attachable/compensator,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/burstfire_assembly,
+						/obj/item/attachable/lasersight,
+						/obj/item/attachable/flashlight/grip,
+						/obj/item/attachable/magnetic_harness,
+						/obj/item/attachable/stock/mod88)
 
 /obj/item/weapon/gun/pistol/mod88/set_gun_attachment_offsets()
 	attachable_offset = list("muzzle_x" = 27, "muzzle_y" = 21,"rail_x" = 8, "rail_y" = 22, "under_x" = 21, "under_y" = 18, "stock_x" = 18, "stock_y" = 15)

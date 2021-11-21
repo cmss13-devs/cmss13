@@ -169,6 +169,19 @@
 	message_staff("[key_name_admin(user)] teleported [key_name_admin(target)] to themselves.", M.loc.x, M.loc.y, M.loc.z)
 	return TRUE
 
+/datum/player_action/follow
+	action_tag = "mob_follow"
+	name = "Follow"
+
+/datum/player_action/follow/act(var/client/user, var/mob/target, var/list/params)
+	if(istype(user.mob, /mob/dead/observer))
+		var/mob/dead/observer/O = user.mob
+		O.ManualFollow(target)
+		return TRUE
+	else
+		to_chat(user, SPAN_WARNING("You must be a ghost to do this."))
+
+	return FALSE
 
 /datum/player_action/jump_to
 	action_tag = "jump_to"

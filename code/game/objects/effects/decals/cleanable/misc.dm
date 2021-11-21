@@ -89,6 +89,22 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "cobweb2"
 
+/// Variant used for halloween - need to pass info in constructor as its turned in an overlay
+/obj/effect/decal/cleanable/cobweb2/dynamic
+	alpha = 80
+	appearance_flags = RESET_ALPHA | TILE_BOUND | PIXEL_SCALE
+	garbage = FALSE
+/obj/effect/decal/cleanable/cobweb2/dynamic/Initialize(mapload, targetdir, webscale = 1.0)
+	alpha += round(webscale * 120)
+	var/angle = dir2angle(targetdir)
+	var/matrix/TM = new
+	TM *= webscale
+	TM = TM.Translate(16 * (1 - webscale))
+	angle -= 225 // Flip and adjust, base sprite is top right
+	TM = TM.Turn(angle)
+	transform = TM
+	return ..()
+
 //Vomit (sorry)
 /obj/effect/decal/cleanable/vomit
 	name = "vomit"

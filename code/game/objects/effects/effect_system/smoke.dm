@@ -196,6 +196,15 @@
 	time_to_live = 3
 	smokeranking = SMOKE_RANK_MED
 	var/next_cough = 2 SECONDS
+	var/burn_damage = 40
+	var/applied_fire_stacks = 5
+	var/xeno_yautja_reduction = 0.75
+
+/obj/effect/particle_effect/smoke/phosphorus/weak
+	time_to_live = 2
+	smokeranking = SMOKE_RANK_MED
+	burn_damage = 30
+	xeno_yautja_reduction = 0.5
 
 /obj/effect/particle_effect/smoke/phosphorus/Move()
 	. = ..()
@@ -204,6 +213,7 @@
 
 /obj/effect/particle_effect/smoke/phosphorus/affect(var/mob/living/carbon/M)
 	..()
+	burn_damage = 40
 	if(ishuman(M))
 		if (M.internal != null && M.wear_mask && (M.wear_mask.flags_inventory & ALLOWINTERNALS))
 			return
@@ -217,8 +227,12 @@
 				M.coughedtime = world.time + next_cough
 
 		M.last_damage_data = cause_data
-	M.burn_skin(50)
-	M.adjust_fire_stacks(5)
+
+	if(isYautja(M) || isXeno(M))
+		burn_damage *= xeno_yautja_reduction
+
+	M.burn_skin(burn_damage)
+	M.adjust_fire_stacks(applied_fire_stacks)
 	M.IgniteMob()
 	M.updatehealth()
 
@@ -502,6 +516,9 @@
 
 /datum/effect_system/smoke_spread/phosphorus
 	smoke_type = /obj/effect/particle_effect/smoke/phosphorus
+
+/datum/effect_system/smoke_spread/phosphorus/weak
+	smoke_type = /obj/effect/particle_effect/smoke/phosphorus/weak
 
 // XENO SMOKES
 

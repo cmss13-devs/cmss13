@@ -448,7 +448,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/m60, WEAR_IN_ACCESSORY)
 	//pockets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/frt_kit/full, WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full, WEAR_R_STORE)
 	//head
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/ivanberet, WEAR_HEAD)
 	//limb
@@ -511,7 +511,7 @@
 	H.equip_to_slot_or_del(new /obj/item/stack/medical/splint(H.wear_suit), WEAR_IN_JACKET)
 
 	//pockets
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/pills(H), WEAR_L_STORE)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/full(H), WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H), WEAR_R_STORE)
 
 	//head

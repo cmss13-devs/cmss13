@@ -35915,11 +35915,7 @@
 	pixel_x = -32;
 	pixel_y = 2
 	},
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "15;16;21"
-	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
 /turf/open/floor/almayer,
 /area/almayer/squads/alpha_bravo_shared)
 "cNc" = (
@@ -41055,8 +41051,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/spawner/random/supply_kit,
-/obj/effect/spawner/random/supply_kit,
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	tag = "icon-camera (NORTH)"
@@ -45997,8 +45991,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/spawner/random/supply_kit,
-/obj/effect/spawner/random/supply_kit,
 /obj/structure/machinery/camera/autoname/almayer{
 	name = "ship-grade camera";
 	tag = "icon-camera (NORTH)"
@@ -49011,17 +49003,6 @@
 	tag = "icon-red (SOUTHWEST)"
 	},
 /area/almayer/shipboard/brig/secondary_office)
-"iAv" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/delta{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;18;21"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/charlie_delta_shared)
 "iAw" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -12
@@ -58365,17 +58346,6 @@
 	},
 /turf/open/floor/plating/plating_catwalk,
 /area/almayer/engineering/lower_engineering)
-"mVg" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "15;16;21"
-	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/almayer,
-/area/almayer/squads/alpha_bravo_shared)
 "mVi" = (
 /obj/structure/machinery/vending/snack,
 /obj/structure/machinery/vending/coffee,
@@ -61551,11 +61521,7 @@
 	},
 /area/almayer/command/lifeboat)
 "osc" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/alpha{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "15;16;21"
-	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -62481,11 +62447,7 @@
 	pixel_x = -32;
 	pixel_y = 2
 	},
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/bravo{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "15;16;21"
-	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
 /turf/open/floor/almayer,
 /area/almayer/squads/charlie_delta_shared)
 "oNp" = (
@@ -62681,8 +62643,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/spawner/random/supply_kit,
-/obj/effect/spawner/random/supply_kit,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera";
@@ -73965,11 +73925,7 @@
 /turf/open/floor/almayer,
 /area/almayer/hull/upper_hull/u_f_s)
 "ukV" = (
-/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep/charlie{
-	req_access = null;
-	req_one_access = null;
-	req_one_access_txt = "17;18;21"
-	},
+/obj/structure/machinery/cm_vending/sorted/uniform_supply/squad_prep,
 /obj/structure/machinery/light{
 	dir = 8
 	},
@@ -80335,8 +80291,6 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/effect/spawner/random/supply_kit,
-/obj/effect/spawner/random/supply_kit,
 /obj/structure/machinery/camera/autoname/almayer{
 	dir = 1;
 	name = "ship-grade camera";
@@ -120926,7 +120880,7 @@ jhD
 jeb
 osc
 cMV
-mVg
+osc
 jeb
 aIq
 xHp
@@ -120970,7 +120924,7 @@ tJz
 vra
 ukV
 oNj
-iAv
+ukV
 vra
 gll
 lpt

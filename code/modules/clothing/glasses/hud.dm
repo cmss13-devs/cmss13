@@ -82,7 +82,7 @@
 	hud_type = MOB_HUD_MEDICAL_BASIC
 	actions_types = list(/datum/action/item_action/toggle)
 	req_skill = SKILL_MEDICAL
-	req_skill_level = SKILL_MEDICAL_TRAINED
+	req_skill_level = SKILL_MEDICAL_DEFAULT
 
 /obj/item/clothing/glasses/hud/security
 	name = "\improper PatrolMate HUD"
@@ -96,7 +96,7 @@
 
 /obj/item/clothing/glasses/hud/security/jensenshades
 	name = "augmented shades"
-	desc = "Polarized bioneural eyewear, designed to augment your vision."
+	desc = "Polarized bioneural eyewear, designed to augment your vision. Why don't you try getting a job?"
 	icon_state = "jensenshades"
 	item_state = "jensenshades"
 	vision_flags = SEE_MOBS

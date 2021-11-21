@@ -1,6 +1,6 @@
 /obj/item/storage/pill_bottle/ultrazine/antag
     max_storage_space = 5
-    skilllock = FALSE //Antags can open it
+    skilllock = SKILL_MEDICAL_DEFAULT //Antags can open it
     idlock = FALSE
 
     pill_type_to_fill = /obj/item/reagent_container/pill/stimulant

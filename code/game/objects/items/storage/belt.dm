@@ -355,6 +355,21 @@
 	bypass_w_limit = list(
 		/obj/item/ammo_magazine/smartgun
 	)
+	max_w_class = SIZE_MEDIUM
+	can_hold = list(
+		/obj/item/attachable/bayonet,
+		/obj/item/device/flashlight/flare,
+		/obj/item/ammo_magazine/smartgun,
+		/obj/item/ammo_magazine/rifle,
+		/obj/item/ammo_magazine/smg,
+		/obj/item/ammo_magazine/pistol,
+		/obj/item/ammo_magazine/revolver,
+		/obj/item/ammo_magazine/sniper,
+		/obj/item/ammo_magazine/handful,
+		/obj/item/explosive/grenade,
+		/obj/item/explosive/mine,
+		/obj/item/reagent_container/food/snacks
+	)
 
 /obj/item/storage/belt/marine/smartgunner/fill_preset_inventory()
 	new /obj/item/ammo_magazine/smartgun(src)

@@ -65,8 +65,14 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 /obj/item/stack/sheet/metal/small_stack
 	amount = STACK_10
 
+/obj/item/stack/sheet/metal/med_small_stack
+	amount = STACK_20
+
 /obj/item/stack/sheet/metal/medium_stack
-	amount = STACK_25
+	amount = STACK_30
+
+/obj/item/stack/sheet/metal/med_large_stack
+	amount = STACK_40
 
 /obj/item/stack/sheet/metal/large_stack
 	amount = STACK_50
@@ -110,8 +116,14 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 /obj/item/stack/sheet/plasteel/small_stack
 	amount = STACK_10
 
+/obj/item/stack/sheet/plasteel/med_small_stack
+	amount = STACK_20
+
 /obj/item/stack/sheet/plasteel/medium_stack
 	amount = STACK_30
+
+/obj/item/stack/sheet/plasteel/med_large_stack
+	amount = STACK_40
 
 /obj/item/stack/sheet/plasteel/large_stack
 	amount = STACK_50

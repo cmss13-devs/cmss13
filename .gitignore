@@ -12,6 +12,7 @@ Thumbs.db
 *.db-wal
 data/
 cfg/
+!cfg/.keep
 tmp/
 dmdoc/
 tools/Runtime Condenser/Input.txt

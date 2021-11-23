@@ -123,7 +123,7 @@
 
 /client/proc/cmd_admin_dress_human(var/mob/living/carbon/human/M in GLOB.human_mob_list, var/datum/equipment_preset/dresscode, var/no_logs = 0, var/count_participant = FALSE)
 	if (!no_logs)
-		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", GLOB.gear_presets_list)
+		dresscode = tgui_input_list(usr, "Select dress for [M]", "Robust quick dress shop", GLOB.gear_name_presets_list)
 
 	if(isnull(dresscode))
 		return
@@ -155,7 +155,7 @@
 	set name = "Select Equipment - All Humans"
 	set desc = "Applies an equipment preset to all humans in the world."
 
-	var/datum/equipment_preset/dresscode = tgui_input_list(usr, "Select dress for ALL HUMANS", "Robust quick dress shop", GLOB.gear_presets_list)
+	var/datum/equipment_preset/dresscode = tgui_input_list(usr, "Select dress for ALL HUMANS", "Robust quick dress shop", GLOB.gear_name_presets_list)
 	if (isnull(dresscode))
 		return
 
@@ -169,11 +169,18 @@
 //note: when adding new dresscodes, on top of adding a proper skills_list, make sure the ID given has
 //a rank that matches a job title unless you want the human to bypass the skill system.
 /proc/arm_equipment(var/mob/living/carbon/human/M, var/dresscode, var/randomise = FALSE, var/count_participant = FALSE, var/client/mob_client)
-	if(!GLOB.gear_presets_list)
-		CRASH("arm_equipment !gear_presets_list")
-	if(!GLOB.gear_presets_list[dresscode])
-		CRASH("arm_equipment !gear_presets_list[dresscode]")
-	GLOB.gear_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client)
+	if(ispath(dresscode))
+		if(!GLOB.gear_path_presets_list)
+			CRASH("arm_equipment !gear_path_presets_list")
+		if(!GLOB.gear_path_presets_list[dresscode])
+			CRASH("arm_equipment !gear_path_presets_list[dresscode]")
+		GLOB.gear_path_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client)
+	else
+		if(!GLOB.gear_name_presets_list)
+			CRASH("arm_equipment !gear_path_presets_list")
+		if(!GLOB.gear_name_presets_list[dresscode])
+			CRASH("arm_equipment !gear_path_presets_list[dresscode]")
+		GLOB.gear_name_presets_list[dresscode].load_preset(M, randomise, count_participant, mob_client)
 
 	if(M.faction)
 		M.check_event_info(M.faction)

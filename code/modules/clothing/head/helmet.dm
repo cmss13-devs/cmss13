@@ -250,6 +250,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	/obj/item/device/cassette_tape/hiphop = "cassette_orange_blue",
 	/obj/item/device/cassette_tape/nam = "cassette_green",
 	/obj/item/device/cassette_tape/ocean = "cassette_ocean",
+	/obj/item/storage/pouch/cassette = "cassette_pouch",
 
 	///// PREFERENCES GEAR
 	/obj/item/prop/helmetgarb/gunoil = "gunoil",
@@ -512,11 +513,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	name = "\improper M10 medic helmet"
 	desc = "An M10 marine helmet version worn by squad medics. Has red cross painted on its front."
 	icon_state = "med_helmet"
-	specialty = "M10 medic"
+	specialty = "M10 pattern medic"
 
 /obj/item/clothing/head/helmet/marine/leader
-	name = "\improper M11 pattern leader helmet"
-	desc = "A slightly fancier helmet for marine leaders. This one contains a small built-in camera and has cushioning to project your fragile brain."
+	name = "\improper M11 pattern helmet"
+	desc = "A variant of the standard M10 pattern. The front plate is reinforced. This one contains a small built-in camera and has cushioning to project your fragile brain."
 	icon_state = "sl_helmet"
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -525,11 +526,11 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	specialty = "M11 pattern leader"
+	specialty = "M11 pattern marine"
 
 /obj/item/clothing/head/helmet/marine/rto
-	name = "\improper XM12 pattern radio operator helmet"
-	desc = "An experimental brain-bucket. A dust ruffle hangs from back. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your IMPORTANT phone calls."
+	name = "\improper M12 pattern dust helmet"
+	desc = "An experimental brain-bucket. A dust ruffle hangs from back instead of the standard lobster shell design. Moderately better at deflecting blunt objects at the cost of humiliation. But who will be laughing at the memorial? Not you, you'll be busy getting medals for your IMPORTANT phone calls. Usually worn by Radio Telephone Operators."
 	icon_state = "io"
 	item_state = "io"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -539,7 +540,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_LOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
-	specialty = "XM12 pattern radio operator"
+	specialty = "M12 pattern"
 
 /obj/item/clothing/head/helmet/marine/specialist
 	name = "\improper B18 helmet"

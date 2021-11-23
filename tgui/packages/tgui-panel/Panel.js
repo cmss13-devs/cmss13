@@ -84,7 +84,7 @@ export const Panel = (props, context) => {
               <ChatPanel lineHeight={settings.lineHeight} />
             </Pane.Content>
             <Notifications>
-              {game.connectionLostAt && (
+              {game.connectionLostAt && !game.roundRestartedAt && (
                 <Notifications.Item
                   rightSlot={(
                     <Button
@@ -98,9 +98,16 @@ export const Panel = (props, context) => {
                 </Notifications.Item>
               )}
               {game.roundRestartedAt && (
-                <Notifications.Item>
+                <Notifications.Item
+                  rightSlot={(
+                    <Button
+                      color="white"
+                      onClick={() => Byond.command('.reconnect')}>
+                      Reconnect
+                    </Button>
+                  )}>
                   The connection has been closed because the server is
-                  restarting. Please wait while you automatically reconnect.
+                  restarting. Please wait while you automatically reconnect!
                 </Notifications.Item>
               )}
             </Notifications>

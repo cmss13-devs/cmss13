@@ -74,17 +74,22 @@
 		return
 
 	var/roles[] = new
-	var/i
 	var/datum/job/J
-	var/datum/job/K
-	for (i in RoleAuthority.roles_for_mode) //All the roles in the game.
-		K = RoleAuthority.roles_for_mode[i]
-		if(K.allow_additional)
-			roles += i
+
+	var/active_role_names = GLOB.gamemode_roles[GLOB.master_mode]
+	if(!active_role_names)
+		active_role_names = ROLES_REGULAR_ALL
+
+	for(var/role_name as anything in active_role_names)
+		var/datum/job/job = RoleAuthority.roles_by_name[role_name]
+		if(!job)
+			continue
+		roles += role_name
+
 	var/role = input("Please select role slot to modify", "Modify amount of slots")  as null|anything in roles
 	if(!role)
 		return
-	J = RoleAuthority.roles_for_mode[role]
+	J = RoleAuthority.roles_by_name[role]
 	var/tpos = J.spawn_positions
 	var/num = input("How many slots role [J.title] should have?\nCurrently taken slots: [J.current_positions]\nTotal amount of slots opened this round: [J.total_positions_so_far]","Number:", tpos) as num|null
 	if(!num)

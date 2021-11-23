@@ -118,29 +118,29 @@
 /datum/job/proc/get_access()
 	if(!gear_preset)
 		return null
-	if(GLOB.gear_presets_list[gear_preset])
-		return GLOB.gear_presets_list[gear_preset].access
+	if(GLOB.gear_path_presets_list[gear_preset])
+		return GLOB.gear_path_presets_list[gear_preset].access
 	return null
 
 /datum/job/proc/get_skills()
 	if(!gear_preset)
 		return null
-	if(GLOB.gear_presets_list[gear_preset])
-		return GLOB.gear_presets_list[gear_preset].skills
+	if(GLOB.gear_path_presets_list[gear_preset])
+		return GLOB.gear_path_presets_list[gear_preset].skills
 	return null
 
 /datum/job/proc/get_paygrade()
 	if(!gear_preset)
 		return ""
-	if(GLOB.gear_presets_list[gear_preset])
-		return GLOB.gear_presets_list[gear_preset].paygrade
+	if(GLOB.gear_path_presets_list[gear_preset])
+		return GLOB.gear_path_presets_list[gear_preset].paygrade
 	return ""
 
 /datum/job/proc/get_comm_title()
 	if(!gear_preset)
 		return ""
-	if(GLOB.gear_presets_list[gear_preset])
-		return GLOB.gear_presets_list[gear_preset].role_comm_title
+	if(GLOB.gear_path_presets_list[gear_preset])
+		return GLOB.gear_path_presets_list[gear_preset].role_comm_title
 	return ""
 
 /datum/job/proc/set_spawn_positions(var/count)
@@ -276,7 +276,7 @@
 		if(flags_startup_parameters & ROLE_ADD_TO_SQUAD) //Are we a muhreen? Randomize our squad. This should go AFTER IDs. //TODO Robust this later.
 			RoleAuthority.randomize_squad(H)
 
-		if(Check_WO() && job_squad_roles.Find(H.job))	//activates self setting proc for marine headsets for WO
+		if(Check_WO() && job_squad_roles.Find(GET_DEFAULT_ROLE(H.job)))	//activates self setting proc for marine headsets for WO
 			var/datum/game_mode/whiskey_outpost/WO = SSticker.mode
 			WO.self_set_headset(H)
 

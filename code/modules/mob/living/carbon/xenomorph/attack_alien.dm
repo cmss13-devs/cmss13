@@ -19,8 +19,8 @@
 			if(on_fire)
 				extinguish_mob(M)
 			else
-				M.visible_message(SPAN_NOTICE("[M] caresses [src] with its scythe-like arm."), \
-				SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
+				M.visible_message(SPAN_NOTICE("[M] caresses [src] with its claws."), \
+				SPAN_NOTICE("You caress [src] with your claws."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 		if(INTENT_GRAB)
 			if(M == src || anchored || buckled)
@@ -226,8 +226,8 @@
 
 	switch(M.a_intent)
 		if(INTENT_HELP)
-			M.visible_message(SPAN_NOTICE("[M] caresses [src] with its scythe-like arm."), \
-			SPAN_NOTICE("You caress [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
+			M.visible_message(SPAN_NOTICE("[M] caresses [src] with its claws."), \
+			SPAN_NOTICE("You caress [src] with your claws."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 		if(INTENT_GRAB)
 			if(M == src || anchored || buckled)

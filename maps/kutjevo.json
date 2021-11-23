@@ -3,11 +3,11 @@
     "map_path": "map_files/Kutjevo",
     "map_file": "Kutjevo.dmm",
     "survivor_types": [
-        "Survivor - Kutjevo Doctor",
-        "Survivor - Kutjevo Chaplain",
-        "Survivor - Kutjevo Engineer",
-        "Survivor - Kutjevo Heavy Vehicle Operator",
-        "Survivor - Kutjevo Security Guard"
+        "/datum/equipment_preset/survivor/doctor/kutjevo",
+        "/datum/equipment_preset/survivor/chaplain/kutjevo",
+        "/datum/equipment_preset/survivor/engineer/kutjevo",
+        "/datum/equipment_preset/survivor/trucker/kutjevo",
+        "/datum/equipment_preset/survivor/security/kutjevo"
     ],
     "defcon_triggers": [
         4250,

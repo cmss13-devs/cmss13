@@ -22,6 +22,7 @@
 	var/boot_number = 1
 	var/mask_number = 1
 	var/armor_material = "ebony"
+	var/translator_type = "Modern"
 
 	if(!mob_client)
 		mob_client = H.client
@@ -31,9 +32,10 @@
 		boot_number = mob_client.prefs.predator_boot_type
 		mask_number = mob_client.prefs.predator_mask_type
 		armor_material = mob_client.prefs.predator_armor_material
+		translator_type = mob_client.prefs.predator_translator_type
 
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H, translator_type), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
@@ -93,6 +95,7 @@
 
 /datum/equipment_preset/yautja/elder/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
 	. = ..()
 
 // CLAN LEADER
@@ -107,6 +110,7 @@
 
 /datum/equipment_preset/yautja/leader/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
 	. = ..()
 
 // ANCIENT
@@ -121,4 +125,5 @@
 
 /datum/equipment_preset/yautja/ancient/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/cape/eldercape(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja/elder(H), WEAR_L_EAR)
 	. = ..()

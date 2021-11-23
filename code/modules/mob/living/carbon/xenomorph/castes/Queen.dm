@@ -786,7 +786,7 @@
 	recalculate_actions()
 
 	egg_amount = 0
-	resin_build_order = GLOB.resin_build_order_drone
+	set_resin_build_order(GLOB.resin_build_order_drone)
 	extra_build_dist = initial(extra_build_dist)
 	ovipositor_cooldown = world.time + 5 MINUTES //5 minutes
 	anchored = FALSE
@@ -844,4 +844,3 @@
 
 /mob/living/carbon/Xenomorph/Queen/gib(var/cause = "gibbing")
 	death(cause, 1)
-

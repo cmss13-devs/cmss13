@@ -69,6 +69,6 @@
 		M.transfer_to(curator)
 
 		// Equip the mob as a VC
-		arm_equipment(curator, "USCM Vehicle Crewman (CRMN)", TRUE, TRUE)
+		arm_equipment(curator, /datum/equipment_preset/uscm/tank/full, TRUE, TRUE)
 
 		break

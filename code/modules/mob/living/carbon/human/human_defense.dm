@@ -216,6 +216,12 @@ Contains most of the procs that are called when a mob is attacked by something
 	var/damage = armor_damage_reduction(GLOB.marine_melee, I.force, armor, weapon_blade * ARMOR_SHARP_PENETRATION)
 	apply_damage(damage, I.damtype, affecting, integrity_damage_multiplier, used_weapon = I)
 
+	if(damage > 5)
+		last_damage_data = create_cause_data(initial(I.name), user)
+		user.track_hit(initial(I.name))
+		if(user.faction == faction)
+			user.track_friendly_fire(initial(I.name))
+
 	var/bloody = FALSE
 	if((I.damtype == BRUTE || I.damtype == HALLOSS) && prob(I.force*2 + 25))
 		if(!(affecting.status & LIMB_ROBOT))

@@ -61,7 +61,7 @@
 	switch(state)
 		if(STATE_DEFAULT)
 			dat += "Alert Level: <A href='?src=\ref[src];operation=changeseclevel'>[get_security_level()]</A><BR>"
-			dat += "<BR><A HREF='?src=\ref[src];operation=ship_announce'>[is_announcement_active ? "Make a ship announcement" : "*Unavaliable*"]</A>"
+			dat += "<BR><A HREF='?src=\ref[src];operation=ship_announce'>[is_announcement_active ? "Make a ship announcement" : "*Unavailable*"]</A>"
 			dat += GLOB.admins.len > 0 ? "<BR><A HREF='?src=\ref[src];operation=messageUSCM'>Send a message to USCM</A>" : "<BR>USCM communication offline"
 			dat += "<BR><A HREF='?src=\ref[src];operation=award'>Award a medal</A>"
 			dat += "<BR><hr>"

@@ -351,6 +351,20 @@
 /obj/item/device/flashlight/flare/on/illumination/ex_act(severity)
 	return //Nope
 
+/obj/item/device/flashlight/flare/on/starshell_ash
+	name = "burning star shell ash"
+	desc = "Bright burning ash from a Star Shell 40mm. Don't touch, oh it'll burn ya'."
+	icon_state = "starshell_ash"
+	brightness_on = 7
+	anchored = 1//can't be picked up
+	ammo_datum = /datum/ammo/flare/starshell
+
+/obj/item/device/flashlight/flare/on/starshell_ash/Initialize(mapload, ...)
+	if(mapload)
+		return INITIALIZE_HINT_QDEL
+	. = ..()
+	fuel = rand(5 SECONDS, 60 SECONDS)
+
 /obj/item/device/flashlight/flare/on/illumination/chemical
 	name = "chemical light"
 	brightness_on = 0

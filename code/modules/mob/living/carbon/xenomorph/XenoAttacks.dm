@@ -88,8 +88,8 @@
 				M.attempt_tailswipe(src)
 				return XENO_NONCOMBAT_ACTION
 			else
-				M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its scythe-like arm."), \
-				SPAN_NOTICE("You caress \the [src] with your scythe-like arm."), null, 5, CHAT_TYPE_XENO_FLUFF)
+				M.visible_message(SPAN_NOTICE("\The [M] caresses \the [src] with its claws."), \
+				SPAN_NOTICE("You caress \the [src] with your claws."), null, 5, CHAT_TYPE_XENO_FLUFF)
 
 		if(INTENT_GRAB)
 			if(M == src || anchored)

@@ -34,21 +34,21 @@
 	if(leaders < echo_squad.max_leaders)
 		leader = H
 		leaders++
-		arm_equipment(H, "USCM Echo Squad Leader", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/leader/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a squad leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	else if (medics < max_medics)
 		medics++
-		arm_equipment(H, "USCM Echo Squad Medic", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/medic/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	else if (heavies < max_heavies)
 		heavies++
-		arm_equipment(H, "USCM Echo Squad Engineer", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/engineer/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 	else
-		arm_equipment(H, "USCM Echo Squad Marine (PFC)", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/uscm/pfc/echo, TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a private in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("You are here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to the chain of command."))
 

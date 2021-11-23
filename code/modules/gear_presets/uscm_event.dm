@@ -246,39 +246,6 @@
 	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_IN_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/handcuffs(H), WEAR_IN_JACKET)
 
-
-/datum/equipment_preset/uscm_event/provost/inspector
-	name = "Provost Inspector (PvI)"
-	skills = /datum/skills/CMP
-
-	assignment = JOB_PROVOST_INSPECTOR
-	rank = "Provost Inspector"
-	paygrade = "PvI"
-	role_comm_title = "PvI"
-	flags = EQUIPMENT_PRESET_EXTRA
-
-/datum/equipment_preset/uscm_event/provost/inspector/load_gear(mob/living/carbon/human/H)
-	var/backItem = /obj/item/storage/backpack/satchel/sec
-	if (H.client && H.client.prefs && (H.client.prefs.backbag == 1))
-		backItem = /obj/item/storage/backpack/security
-
-	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/highcom(H), WEAR_L_EAR)
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/mp/provost/inspector(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m44/custom(H), WEAR_WAIST)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/jacket/marine/provost/inspector(H), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses/sechud(H), WEAR_EYES)
-	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/beret/marine/mp/provost/senior(H), WEAR_HEAD)
-	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
-	H.equip_to_slot_or_del(new /obj/item/device/taperecorder(H), WEAR_L_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/MP/provost(H.back), WEAR_IN_BACK)
-
-	H.equip_to_slot_or_del(new /obj/item/device/flash(H), WEAR_IN_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/handcuffs(H), WEAR_IN_JACKET)
-
-
 /datum/equipment_preset/uscm_event/provost/inspector
 	name = "Provost Inspector (PvI)"
 	skills = /datum/skills/CMP

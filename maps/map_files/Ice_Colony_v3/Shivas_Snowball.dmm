@@ -905,11 +905,10 @@
 /area/shiva/interior/colony/research_hab)
 "ado" = (
 /obj/effect/landmark/survivor_spawn,
-/turf/open/floor{
-	icon_state = "dark2";
-	tag = "icon-dark2"
+/turf/open/floor/shiva{
+	dir = 1
 	},
-/area/shiva/interior/valley_huts/disposals)
+/area/shiva/interior/garage)
 "adp" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/weapon/melee/banhammer,
@@ -5150,7 +5149,7 @@
 	},
 /area/shiva/interior/valley_huts)
 "aFu" = (
-/obj/item/storage/pouch/firstaid/pills,
+/obj/item/storage/pouch/firstaid/full/pills,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "green"
@@ -5405,10 +5404,12 @@
 /area/shiva/interior/colony/medseceng)
 "aJM" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/transmitter/rotary{
-	phone_category = "Colony";
-	phone_id = "North Aerodrome Checkpoint";
-	pixel_y = 4
+/obj/item/clipboard{
+	pixel_y = 5
+	},
+/obj/item/tool/pen/red{
+	pixel_x = 6;
+	pixel_y = 9
 	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -7935,6 +7936,12 @@
 	icon_state = "floor3"
 	},
 /area/shiva/interior/lz2_habs)
+"bOh" = (
+/obj/effect/landmark/survivor_spawn,
+/turf/open/shuttle{
+	icon_state = "floor7"
+	},
+/area/shiva/interior/aerodrome)
 "bPu" = (
 /obj/item/bodybag,
 /turf/open/floor/plating,
@@ -16028,11 +16035,7 @@
 /area/shiva/exterior/lz1_valley)
 "kXt" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/structure/transmitter/rotary{
-	phone_category = "Colony";
-	phone_id = "Research Structure Front Desk";
-	pixel_y = 6
-	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/plating,
 /area/shiva/interior/colony/research_hab)
 "kXx" = (
@@ -18676,11 +18679,7 @@
 /area/shiva/exterior/cp_lz2)
 "nVn" = (
 /obj/structure/surface/table,
-/obj/structure/transmitter/rotary{
-	phone_category = "Colony";
-	phone_id = "Research Structure Security Office";
-	pixel_y = 6
-	},
+/obj/effect/landmark/item_pool_spawner/survivor_ammo/buckshot,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "redfull"
@@ -19119,7 +19118,6 @@
 "owt" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
-/obj/effect/landmark/survivor_spawn,
 /obj/structure/machinery/light/small{
 	dir = 8
 	},
@@ -52288,7 +52286,7 @@ aUy
 aVL
 aWT
 aVL
-aVL
+bOh
 aVL
 aWS
 aVL
@@ -54358,7 +54356,7 @@ ktd
 ktd
 ktd
 tXd
-ver
+ado
 pSD
 ktd
 ktd
@@ -60021,7 +60019,7 @@ cAW
 atD
 auV
 gxN
-ado
+gxN
 axv
 ayb
 jAN

@@ -32,21 +32,21 @@
 		leader = H
 		to_chat(H, SPAN_ROLE_HEADER("You are the Whiteout Team Leader!"))
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
-		arm_equipment(H, "Whiteout Team Leader", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/w_y_whiteout/leader, TRUE, TRUE)
 	else if(medics < max_medics)
 		medics++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Whiteout Team Medic!"))
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
-		arm_equipment(H, "Whiteout Team Medic", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/w_y_whiteout/medic, TRUE, TRUE)
 	else if(heavies < max_heavies)
 		heavies++
 		to_chat(H, SPAN_ROLE_HEADER("You are a Whiteout Team Terminator!"))
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
-		arm_equipment(H, "Whiteout Team Terminator", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/w_y_whiteout/terminator, TRUE, TRUE)
 	else
 		to_chat(H, SPAN_ROLE_HEADER("You are a Whiteout Team Operative!"))
 		to_chat(H, SPAN_ROLE_BODY("Whiteout protocol is in effect for the target, all assets onboard are to be liquidated with expediency unless otherwise instructed by Weyland Yutani personnel holding the position of Director or above."))
-		arm_equipment(H, "Whiteout Team Operative", TRUE, TRUE)
+		arm_equipment(H, /datum/equipment_preset/pmc/w_y_whiteout, TRUE, TRUE)
 
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)
 
@@ -83,7 +83,7 @@
 	to_chat(H, SPAN_WARNING(FONT_SIZE_BIG("You are an elite MARSOC Operative, the best of the best.")))
 	to_chat(H, "<B> You are absolutely loyal to High Command and must follow their directives.</b>")
 	to_chat(H, "<B> Execute the mission assigned to you with extreme prejudice!</b>")
-	arm_equipment(H, "MARSOC Operator", TRUE, TRUE)
+	arm_equipment(H, /datum/equipment_preset/marsoc, TRUE, TRUE)
 
 	curr_operator_number++
 	return

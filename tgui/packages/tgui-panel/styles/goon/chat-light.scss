@@ -1006,3 +1006,36 @@ h1.alert, h2.alert {
 .admin .message         {color: #314cad;}
 .admin .prefix          {font-weight: bolder;}
 .pm                     {font-size: 110%;}
+
+.retro_translator {
+  font-weight: bold;
+}
+
+.yautja_translator {
+  color: #aa0000;
+  font-weight: bold;
+
+  /*Animation*/
+  animation: glitch 0.5s infinite;
+}
+
+/*Keyframes*/
+
+@keyframes glitch {
+  25% {
+    color: #aa0000;
+    transform: translate(-2px, -1px);
+  }
+  50% {
+    color: #be0000;
+    transform: translate(1px, -2px);
+  }
+  75% {
+    color: #8d0000;
+    transform: translate(-1px, 2px);
+  }
+  100% {
+    color: #830000;
+    transform: translate(1px, 1px);
+  }
+}

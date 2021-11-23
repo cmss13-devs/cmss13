@@ -27,7 +27,7 @@
 	var/use_points = FALSE			//disabling these two grants unlimited access to items for adminab... I mean, events purposes
 	var/use_snowflake_points = FALSE
 
-	var/avaliable_points_to_display = 0
+	var/available_points_to_display = 0
 	var/show_points = TRUE
 
 	//squad-specific gear
@@ -379,9 +379,9 @@ IN_USE						used for vending/denying
 
 	var/buy_flags = NO_FLAGS
 	if(use_snowflake_points)
-		avaliable_points_to_display = H.marine_snowflake_points
+		available_points_to_display = H.marine_snowflake_points
 	else if(use_points)
-		avaliable_points_to_display = H.marine_points
+		available_points_to_display = H.marine_points
 
 	buy_flags = H.marine_buy_flags
 
@@ -395,7 +395,7 @@ IN_USE						used for vending/denying
 
 			var/prod_available = FALSE
 			var/avail_flag = myprod[4]
-			if(avaliable_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
+			if(available_points_to_display >= p_cost && (!avail_flag || buy_flags & avail_flag))
 				prod_available = TRUE
 
 			//place in main list, name, cost, available or not, color.
@@ -405,7 +405,7 @@ IN_USE						used for vending/denying
 		"vendor_name" = name,
 		"theme" = vendor_theme,
 		"show_points" = show_points,
-		"current_m_points" = avaliable_points_to_display,
+		"current_m_points" = available_points_to_display,
 		"displayed_records" = display_list,
 	)
 
@@ -951,7 +951,7 @@ IN_USE						used for vending/denying
 			return //We found our item, no reason to go on.
 
 //------------GEAR VENDORS---------------
-//For vendors with their own points avaliable
+//For vendors with their own points available
 /obj/structure/machinery/cm_vending/own_points
 	name = "\improper ColMarTech generic vendor"
 	desc = "This is a vendor with its own points system."
@@ -960,8 +960,8 @@ IN_USE						used for vending/denying
 	use_points = FALSE
 	use_snowflake_points = FALSE
 
-	var/avaliable_points = MARINE_TOTAL_BUY_POINTS
-	avaliable_points_to_display = MARINE_TOTAL_BUY_POINTS
+	var/available_points = MARINE_TOTAL_BUY_POINTS
+	available_points_to_display = MARINE_TOTAL_BUY_POINTS
 
 /obj/structure/machinery/cm_vending/own_points/Topic(href, href_list)
 	. = ..()
@@ -1017,13 +1017,13 @@ IN_USE						used for vending/denying
 				vend_fail()
 				return
 
-			if(avaliable_points < cost)
+			if(available_points < cost)
 				to_chat(H, SPAN_WARNING("Not enough points."))
 				vend_fail()
 				return
 			else
-				avaliable_points -= cost
-				avaliable_points_to_display = avaliable_points
+				available_points -= cost
+				available_points_to_display = available_points
 
 			vend_succesfully(L, H, T)
 

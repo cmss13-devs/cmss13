@@ -3,22 +3,22 @@
 /datum/job/antag/predator
 	title = JOB_PREDATOR
 	selection_class = "job_predator"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_WHITELISTED|ROLE_NO_ACCOUNT|ROLE_CUSTOM_SPAWN
 	flags_whitelist = WHITELIST_YAUTJA
 	supervisors = "Ancients"
-	gear_preset = "Yautja Blooded"
+	gear_preset = /datum/equipment_preset/yautja/blooded
 
 	handle_spawn_and_equip = TRUE
 
 /datum/job/antag/predator/New()
 	. = ..()
 	gear_preset_whitelist = list(
-		"[JOB_PREDATOR][CLAN_RANK_YOUNG]" = "Yautja Young",
-		"[JOB_PREDATOR][CLAN_RANK_BLOODED]" = "Yautja Blooded",
-		"[JOB_PREDATOR][CLAN_RANK_ELITE]" = "Yautja Elite",
-		"[JOB_PREDATOR][CLAN_RANK_ELDER]" = "Yautja Elder",
-		"[JOB_PREDATOR][CLAN_RANK_LEADER]" = "Yautja Leader",
-		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = "Yautja Ancient"
+		"[JOB_PREDATOR][CLAN_RANK_YOUNG]" = /datum/equipment_preset/yautja/youngblood,
+		"[JOB_PREDATOR][CLAN_RANK_BLOODED]" = /datum/equipment_preset/yautja/blooded,
+		"[JOB_PREDATOR][CLAN_RANK_ELITE]" = /datum/equipment_preset/yautja/elite,
+		"[JOB_PREDATOR][CLAN_RANK_ELDER]" = /datum/equipment_preset/yautja/elder,
+		"[JOB_PREDATOR][CLAN_RANK_LEADER]" = /datum/equipment_preset/yautja/leader,
+		"[JOB_PREDATOR][CLAN_RANK_ADMIN]" = /datum/equipment_preset/yautja/ancient
 	)
 
 /datum/job/antag/predator/set_spawn_positions(var/count)

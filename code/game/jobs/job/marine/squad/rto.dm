@@ -3,8 +3,8 @@
 	total_positions = 8
 	spawn_positions = 8
 	allow_additional = 1
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_ADD_TO_SQUAD
-	gear_preset = "USCM (Cryo) Squad RT Operator"
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_SQUAD
+	gear_preset = /datum/equipment_preset/uscm/rto
 
 /datum/job/marine/rto/generate_entry_conditions(mob/living/carbon/human/H)
 	. = ..()

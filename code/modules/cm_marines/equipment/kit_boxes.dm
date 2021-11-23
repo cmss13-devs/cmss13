@@ -12,9 +12,9 @@
 	foldable = null
 
 /obj/item/storage/box/spec/update_icon()
-	if(length(overlays))
+	if(LAZYLEN(overlays))
 		overlays.Cut()
-	if(length(contents))
+	if(LAZYLEN(contents))
 		icon_state = "kit_case"
 		overlays += image(icon, kit_overlay)
 	else
@@ -229,9 +229,8 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 //******************************************PFC Kits****************************************************************/
 
 /obj/item/storage/box/kit
-	desc = "Drag this sprite onto yourself to open it up!\nNOTE: You cannot put items back inside this case."
-	icon = 'icons/obj/items/pro_case.dmi'
-	icon_state = "pro_case_mini"
+	icon = 'icons/obj/items/storage.dmi'
+	icon_state = "pro_case_mini"//to-do redo these sprites, they're out of date by current standards
 	w_class = SIZE_HUGE
 	storage_slots = 12
 	slowdown = 1
@@ -244,7 +243,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
 	if(pro_case_overlay)
-		overlays += image('icons/obj/items/pro_case.dmi', "+[pro_case_overlay]")
+		overlays += image('icons/obj/items/storage.dmi', "+[pro_case_overlay]")
 
 /obj/item/storage/box/kit/update_icon()
 	if(!length(contents))
@@ -293,7 +292,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_pyro
 	name = "\improper M240 Pyrotechnician Support Kit"
 	pro_case_overlay = "flamer"
-
 
 /obj/item/storage/box/kit/mini_pyro/fill_preset_inventory()
 	new /obj/item/storage/backpack/marine/engineerpack/flamethrower/kit(src)
@@ -366,7 +364,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 
 /obj/item/storage/box/kit/mini_medic/fill_preset_inventory()
 	new /obj/item/pamphlet/skill/medical(src)
-	new /obj/item/storage/pouch/medical/frt_kit/full(src)
+	new /obj/item/storage/pouch/medical/full(src)
 	new /obj/item/storage/pouch/autoinjector/full(src)
 	new /obj/item/clothing/glasses/hud/sensor(src)
 	new /obj/item/roller(src)
@@ -394,7 +392,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/stack/fulton(src)
 	new /obj/item/device/encryptionkey/tactics(src)
 
-
 /obj/item/storage/box/kit/mini_grenadier
 	name = "\improper Frontline M40 Grenadier Kit"
 	pro_case_overlay = "grenadier"
@@ -402,7 +399,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 /obj/item/storage/box/kit/mini_grenadier/fill_preset_inventory()
 	new /obj/item/storage/belt/grenade/full(src)
 	new /obj/item/storage/pouch/explosive(src)
-
 
 /obj/item/storage/box/kit/self_defense
 	name = "\improper Personal Self Defense Kit"
@@ -434,7 +430,6 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	new /obj/item/attachable/extended_barrel(src)
 	new /obj/item/attachable/lasersight(src)
 	new /obj/item/storage/belt/gun/smartpistol(src)
-
 
 /obj/item/storage/box/kit/honorguard
 	name = "\improper Honor Guard Kit"

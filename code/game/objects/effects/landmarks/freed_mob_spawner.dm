@@ -1,7 +1,7 @@
 /obj/effect/landmark/freed_mob_spawner
 	name = "Naked Human"
 	icon_state = "freed_mob_spawner"
-	var/job_name = "*strip*"
+	var/equipment_path = /datum/equipment_preset/strip
 	var/count_participant = FALSE
 
 /obj/effect/landmark/freed_mob_spawner/Initialize()
@@ -14,15 +14,15 @@
 	H.setDir(dir)
 	if(!H.hud_used)
 		H.create_hud()
-	arm_equipment(H, job_name, TRUE, count_participant)
+	arm_equipment(H, equipment_path, TRUE, count_participant)
 	H.free_for_ghosts()
 
 /obj/effect/landmark/freed_mob_spawner/upp_conscript
 	name = "UPP Conscript"
-	job_name = "UPP Conscript"
+	equipment_path = /datum/equipment_preset/upp/conscript
 	count_participant = TRUE
 
 /obj/effect/landmark/freed_mob_spawner/upp_soldier
 	name = "UPP Soldier"
-	job_name = "UPP Soldier"
+	equipment_path = /datum/equipment_preset/upp/soldier
 	count_participant = TRUE

@@ -40,6 +40,16 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("Stasis Bag", 6, /obj/item/bodybag/cryobag, null, VENDOR_ITEM_REGULAR),
 		list("G8-A General Utility Pouch", 15, /obj/item/storage/sparepouch, null, VENDOR_ITEM_REGULAR),
 
+		list("EXPLOSIVES", 0, null, null, null),
+		list("M40 HEDP High Explosive Packet (x3 grenades)", 18, /obj/item/storage/box/packet/high_explosive, null, VENDOR_ITEM_REGULAR),
+		list("M40 HIDP Incendiary Packet (x3 grenades)", 18, /obj/item/storage/box/packet/incendiary, null, VENDOR_ITEM_REGULAR),
+		list("M40 HPDP White Phosphorus Packet (x3 grenades)", 18, /obj/item/storage/box/packet/phosphorus, null, VENDOR_ITEM_REGULAR),
+		list("M40 HSDP Smoke Packet (x3 grenades)", 9, /obj/item/storage/box/packet/smoke, null, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Frag Airburst Packet (x3 airburst grenades)", 20, /obj/item/storage/box/packet/airburst_he, null, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Incendiary Airburst Packet (x3 airburst grenades)", 20, /obj/item/storage/box/packet/airburst_incen, null, VENDOR_ITEM_REGULAR),
+		list("M74 AGM-Hornet Airburst Packet (x3 airburst grenades", 20, /obj/item/storage/box/packet/hornet, null, VENDOR_ITEM_REGULAR),
+		list("M20 Mine Box (x4 mines)", 20, /obj/item/storage/box/explosive_mines, null, VENDOR_ITEM_REGULAR),
+
 		list("AMMUNITION", 0, null, null, null),
 		list("L42A AP Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/l42a/ap, null, VENDOR_ITEM_REGULAR),
 		list("M39 AP Magazine (10x20mm)", 6, /obj/item/ammo_magazine/smg/m39/ap , null, VENDOR_ITEM_REGULAR),
@@ -47,30 +57,42 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 		list("M41A AP Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/ap , null, VENDOR_ITEM_REGULAR),
 		list("M41A Extended Magazine (10x24mm)", 6, /obj/item/ammo_magazine/rifle/extended , null, VENDOR_ITEM_REGULAR),
 
-		list("ATTACHMENTS", 0, null, null, null),
-		list("Angled Grip", 6, /obj/item/attachable/angledgrip, null, VENDOR_ITEM_REGULAR),
-		list("Extended Barrel", 6, /obj/item/attachable/extended_barrel, null, VENDOR_ITEM_REGULAR),
-		list("Gyroscopic Stabilizer", 6, /obj/item/attachable/gyro, null, VENDOR_ITEM_REGULAR),
-		list("Laser Sight", 6, /obj/item/attachable/lasersight, null, VENDOR_ITEM_REGULAR),
-		list("Masterkey Shotgun", 6, /obj/item/attachable/attached_gun/shotgun, null, VENDOR_ITEM_REGULAR),
-		list("M37 Wooden Stock", 6, /obj/item/attachable/stock/shotgun, null, VENDOR_ITEM_REGULAR),
-		list("M39 Stock", 6, /obj/item/attachable/stock/smg, null, VENDOR_ITEM_REGULAR),
-		list("M41A Solid Stock", 6, /obj/item/attachable/stock/rifle, null, VENDOR_ITEM_REGULAR),
-		list("Recoil Compensator", 6, /obj/item/attachable/compensator, null, VENDOR_ITEM_REGULAR),
-		list("Red-Dot Sight", 6, /obj/item/attachable/reddot, null, VENDOR_ITEM_REGULAR),
-		list("Reflex Sight", 6, /obj/item/attachable/reflex, null, VENDOR_ITEM_REGULAR),
-		list("Suppressor", 6, /obj/item/attachable/suppressor, null, VENDOR_ITEM_REGULAR),
-		list("Underbarrel Extinguisher", 6, /obj/item/attachable/attached_gun/extinguisher, null, VENDOR_ITEM_REGULAR),
-		list("Vertical Grip", 6, /obj/item/attachable/verticalgrip, null, VENDOR_ITEM_REGULAR),
+		list("RESTRICTED FIREARMS", 0, null, null, null),
+		list("VP78 Pistol", 12, /obj/item/storage/box/guncase/vp78, null, VENDOR_ITEM_REGULAR),
+		list("SU-6 Smart Pistol", 12, /obj/item/storage/box/guncase/smartpistol, null, VENDOR_ITEM_REGULAR),
+		list("MOU-53 Shotgun", 12, /obj/item/storage/box/guncase/mou53, null, VENDOR_ITEM_REGULAR),
+		list("M41AE2 Heavy Pulse Rifle", 18, /obj/item/storage/box/guncase/lmg, null, VENDOR_ITEM_REGULAR),
 
 		list("UTILITIES", 0, null, null, null),
-		list("Fire Extinguisher (Portable)", 5, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR)
+		list("Logistics IMP Backpack", 12, /obj/item/storage/backpack/marine/satchel/big, null, VENDOR_ITEM_REGULAR),
+		list("M3 B12 Pattern Armor", 28, /obj/item/clothing/suit/storage/marine/leader, null, VENDOR_ITEM_REGULAR),
+		list("M4 Pattern Armor", 28, /obj/item/clothing/suit/storage/marine/rto, null, VENDOR_ITEM_REGULAR),
+		list("Range Finder", 6, /obj/item/device/binoculars/range, null, VENDOR_ITEM_REGULAR),
+		list("Laser Designator", 8, /obj/item/device/binoculars/range/designator, null, VENDOR_ITEM_REGULAR),
+		list("Large General Pouch", 6, /obj/item/storage/pouch/general/large, null, VENDOR_ITEM_REGULAR),
+		list("Large Magazine Pouch", 6, /obj/item/storage/pouch/magazine/large, null, VENDOR_ITEM_REGULAR),
+		list("Fuel Tank Strap Pouch", 4, /obj/item/storage/pouch/flamertank, null, VENDOR_ITEM_REGULAR),
+		list("Shoulder Holster", 6, /obj/item/clothing/accessory/holster, null, VENDOR_ITEM_REGULAR),
+		list("Machete Scabbard (Full)", 6, /obj/item/storage/large_holster/machete/full, null, VENDOR_ITEM_REGULAR),
+		list("Machete Pouch (Full)", 8, /obj/item/storage/large_holster/macheteB/full, null, VENDOR_ITEM_REGULAR),
+		list("Fire Extinguisher (Portable)", 3, /obj/item/tool/extinguisher/mini, null, VENDOR_ITEM_REGULAR),
+		list("Motion Detector", 8, /obj/item/device/motiondetector, null, VENDOR_ITEM_REGULAR),
+		list("Whistle", 3, /obj/item/device/whistle, null, VENDOR_ITEM_REGULAR),
+		list("Welding Goggles", 3, /obj/item/clothing/glasses/welding, null, VENDOR_ITEM_REGULAR),
+
+		list("RADIO KEYS", 0, null, null, null),
+		list("Engineering Radio Encryption Key", 3, /obj/item/device/encryptionkey/engi, null, VENDOR_ITEM_REGULAR),
+		list("Tactics Radio Encryption Key", 3, /obj/item/device/encryptionkey/tactics, null, VENDOR_ITEM_REGULAR),
+		list("JTAC Radio Encryption Key", 3, /obj/item/device/encryptionkey/jtac, null, VENDOR_ITEM_REGULAR),
+		list("Supply Radio Encryption Key", 3, /obj/item/device/encryptionkey/req, null, VENDOR_ITEM_REGULAR),
 	))
 
 /obj/structure/machinery/cm_vending/gear/medic
 	name = "\improper ColMarTech Squad Medic Gear Rack"
 	desc = "An automated gear rack for Squad Medics."
 	icon_state = "med_gear"
+	show_points = TRUE
+	use_points = TRUE
 	vendor_role = list(JOB_SQUAD_MEDIC)
 	req_access = list(ACCESS_MARINE_MEDPREP)
 
@@ -106,14 +128,18 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 		list("M276 Medical Storage Rig (Full)", 0, /obj/item/storage/belt/medical/full, MARINE_CAN_BUY_BELT, VENDOR_ITEM_RECOMMENDED),
 		list("M276 M39 Holster Rig", 0, /obj/item/storage/large_holster/m39, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 M44 Holster Rig", 0, /obj/item/storage/belt/gun/m44, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 M82F Holster Rig", 0, /obj/item/storage/belt/gun/flaregun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 		list("M276 Shotgun Shell Loading Rig", 0, /obj/item/storage/belt/shotgun, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
+		list("M276 M40 Grenade Rig", 0, /obj/item/storage/belt/grenade, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES (CHOOSE 2)", 0, null, null, null),
 		list("Autoinjector Pouch", 0, /obj/item/storage/pouch/autoinjector, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("First Responder Technical Pouch", 0, /obj/item/storage/pouch/medical/frt_kit, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
-		list("Firstaid Pouch (Full)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Refillable Injectors)", 0, /obj/item/storage/pouch/firstaid/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Splints, Gauze, Ointment)", 0, /obj/item/storage/pouch/firstaid/full/alternate, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("First-Aid Pouch (Pill Packets)", 0, /obj/item/storage/pouch/firstaid/full/pills, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_RECOMMENDED),
 		list("Flare Pouch (Full)", 0, /obj/item/storage/pouch/flare/full, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large General Pouch", 0, /obj/item/storage/pouch/general/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
+		list("Sling Pouch", 0, /obj/item/storage/pouch/sling, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Large Pistol Magazine Pouch", 0, /obj/item/storage/pouch/magazine/pistol/large, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Magazine Pouch", 0, /obj/item/storage/pouch/magazine, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),
 		list("Shotgun Shell Pouch", 0, /obj/item/storage/pouch/shotgun, (MARINE_CAN_BUY_R_POUCH|MARINE_CAN_BUY_L_POUCH), VENDOR_ITEM_REGULAR),

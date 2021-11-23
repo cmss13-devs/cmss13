@@ -318,7 +318,7 @@
 	group = "Ammo"
 
 /datum/supply_packs/ammo_napalm
-	name = "M240 UT-Napthal Fuel (x4)"
+	name = "UT-Napthal Fuel (x4)"
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank,
 					/obj/item/ammo_magazine/flamer_tank,
@@ -326,12 +326,12 @@
 					/obj/item/ammo_magazine/flamer_tank
 					)
 	cost = RO_PRICE_NORMAL
-	containertype = /obj/structure/closet/crate/ammo/alt/flame
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper napthal fuel crate"
 	group = "Ammo"
 
 /datum/supply_packs/ammo_napalm_gel
-	name = "M240 Napalm Gel (x4)"
+	name = "Napalm Gel (x4)"
 	contains = list(
 					/obj/item/ammo_magazine/flamer_tank/gellied,
 					/obj/item/ammo_magazine/flamer_tank/gellied,
@@ -339,18 +339,8 @@
 					/obj/item/ammo_magazine/flamer_tank/gellied
 					)
 	cost = RO_PRICE_NORMAL
-	containertype = /obj/structure/closet/crate/ammo/alt/flame
+	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper napalm gel crate"
-	group = "Ammo"
-
-/datum/supply_packs/ammo_flamer_mixed
-	name = "M240 Fuel Crate (x2 normal, x2 gellied)"
-	contains = list(/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/ammo_magazine/flamer_tank,
-					/obj/item/ammo_magazine/flamer_tank/gellied,
-					/obj/item/ammo_magazine/flamer_tank/gellied)
-	cost = RO_PRICE_NORMAL
-	containertype = /obj/structure/closet/crate/ammo/alt/flame
 	group = "Ammo"
 
 /datum/supply_packs/ammo_black_market
@@ -426,6 +416,222 @@
 	cost = RO_PRICE_PRICY
 	containertype = /obj/structure/closet/crate/ammo
 	containername = "\improper surplus ammo crate"
+	group = "Ammo"
+
+//------------------------Specialists ammunition crates----------------
+
+//M5 RPG
+
+/datum/supply_packs/ammo_rpg_regular
+	name = "M5 RPG rockets crate (HE x1, AP x1, WP x1)"
+	contains = list(
+					/obj/item/ammo_magazine/rocket,
+					/obj/item/ammo_magazine/rocket/ap,
+					/obj/item/ammo_magazine/rocket/wp
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper M5 RPG rockets crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_rpg_he
+	name = "M5 RPG HE rockets crate (x3)"
+	contains = list(
+					/obj/item/ammo_magazine/rocket,
+					/obj/item/ammo_magazine/rocket,
+					/obj/item/ammo_magazine/rocket
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper high-explosive M5 RPG rockets crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_rpg_ap
+	name = "M5 RPG AP rockets crate (x3)"
+	contains = list(
+					/obj/item/ammo_magazine/rocket/ap,
+					/obj/item/ammo_magazine/rocket/ap,
+					/obj/item/ammo_magazine/rocket/ap
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper armor piercing M5 RPG rockets crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_rpg_wp
+	name = "M5 RPG WP rockets crate (x3)"
+	contains = list(
+					/obj/item/ammo_magazine/rocket/wp,
+					/obj/item/ammo_magazine/rocket/wp,
+					/obj/item/ammo_magazine/rocket/wp
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/explosives
+	containername = "\improper white phosphorus M5 RPG rockets crate"
+	group = "Ammo"
+
+//M42A
+
+/datum/supply_packs/ammo_sniper_mix
+	name = "M42A magazines crate (marksman x2, flak x2, incendiary x2)"
+	contains = list(
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper/flak,
+					/obj/item/ammo_magazine/sniper/flak,
+					/obj/item/ammo_magazine/sniper/incendiary,
+					/obj/item/ammo_magazine/sniper/incendiary
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper sniper ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_sniper_marksman
+	name = "M42A sniper marksman magazines crate (x5)"
+	contains = list(
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper,
+					/obj/item/ammo_magazine/sniper
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper marksman sniper ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_sniper_flak
+	name = "M42A sniper flak magazines crate (x5)"
+	contains = list(
+					/obj/item/ammo_magazine/sniper/flak,
+					/obj/item/ammo_magazine/sniper/flak,
+					/obj/item/ammo_magazine/sniper/flak,
+					/obj/item/ammo_magazine/sniper/flak,
+					/obj/item/ammo_magazine/sniper/flak
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper flak sniper ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_sniper_incendiary
+	name = "M42A sniper incendiary magazines crate (x5)"
+	contains = list(
+					/obj/item/ammo_magazine/sniper/incendiary,
+					/obj/item/ammo_magazine/sniper/incendiary,
+					/obj/item/ammo_magazine/sniper/incendiary,
+					/obj/item/ammo_magazine/sniper/incendiary,
+					/obj/item/ammo_magazine/sniper/incendiary
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper incendiary sniper ammo crate"
+	group = "Ammo"
+
+//M4RA
+
+/datum/supply_packs/ammo_scout_mix
+	name = "M4RA A19 high velocity magazines crate (regular x2, incendiary x2, impact x2)"
+	contains = list(
+					/obj/item/ammo_magazine/rifle/m4ra,
+					/obj/item/ammo_magazine/rifle/m4ra,
+					/obj/item/ammo_magazine/rifle/m4ra/incendiary,
+					/obj/item/ammo_magazine/rifle/m4ra/incendiary,
+					/obj/item/ammo_magazine/rifle/m4ra/impact,
+					/obj/item/ammo_magazine/rifle/m4ra/impact
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper scout ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_scout_regular
+	name = "M4RA A19 high velocity magazines crate (x5)"
+	contains = list(
+					/obj/item/ammo_magazine/rifle/m4ra,
+					/obj/item/ammo_magazine/rifle/m4ra,
+					/obj/item/ammo_magazine/rifle/m4ra,
+					/obj/item/ammo_magazine/rifle/m4ra,
+					/obj/item/ammo_magazine/rifle/m4ra
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper scout regular ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_scout_incendiary
+	name = "M4RA A19 high velocity incendiary magazines crate (x5)"
+	contains = list(
+					/obj/item/ammo_magazine/rifle/m4ra/incendiary,
+					/obj/item/ammo_magazine/rifle/m4ra/incendiary,
+					/obj/item/ammo_magazine/rifle/m4ra/incendiary,
+					/obj/item/ammo_magazine/rifle/m4ra/incendiary,
+					/obj/item/ammo_magazine/rifle/m4ra/incendiary
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper scout incendiary ammo crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_scout_impact
+	name = "M4RA A19 high velocity impact magazines crate (x5)"
+	contains = list(
+					/obj/item/ammo_magazine/rifle/m4ra/impact,
+					/obj/item/ammo_magazine/rifle/m4ra/impact,
+					/obj/item/ammo_magazine/rifle/m4ra/impact,
+					/obj/item/ammo_magazine/rifle/m4ra/impact,
+					/obj/item/ammo_magazine/rifle/m4ra/impact
+					)
+	cost = RO_PRICE_NORMAL
+	containertype = /obj/structure/closet/crate/ammo
+	containername = "\improper scout impact ammo crate"
+	group = "Ammo"
+
+//M240-T
+
+/datum/supply_packs/ammo_pyro_mix
+	name = "M240-T fuel crate (extended x1, type-B x1, type-X x1)"
+	contains = list(
+					/obj/item/ammo_magazine/flamer_tank/large,
+					/obj/item/ammo_magazine/flamer_tank/large/B,
+					/obj/item/ammo_magazine/flamer_tank/large/X
+					)
+	cost = RO_PRICE_PRICY
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M240-T fuel tanks crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_pyro_extended
+	name = "M240-T fuel crate (extended x3)"
+	contains = list(
+					/obj/item/ammo_magazine/flamer_tank/large,
+					/obj/item/ammo_magazine/flamer_tank/large,
+					/obj/item/ammo_magazine/flamer_tank/large
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M240-T extended fuel tanks crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_pyro_b
+	name = "M240-T fuel crate (type-B x1)"
+	contains = list(
+					/obj/item/ammo_magazine/flamer_tank/large/B
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M240-T type-B fuel tanks crate"
+	group = "Ammo"
+
+/datum/supply_packs/ammo_pyro_x
+	name = "M240-T fuel crate (type-X x1)"
+	contains = list(
+					/obj/item/ammo_magazine/flamer_tank/large/X
+					)
+	cost = RO_PRICE_CHEAP
+	containertype = /obj/structure/closet/crate/weapon
+	containername = "\improper M240-T type-X fuel tanks crate"
 	group = "Ammo"
 
 //------------------------Mortar ammunition crates----------------

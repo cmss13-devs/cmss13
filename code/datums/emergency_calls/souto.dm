@@ -17,7 +17,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	arm_equipment(H, /datum/equipment_preset/other/souto, TRUE, TRUE)
+	arm_equipment(H, "Souto Man", TRUE, TRUE)
 
 	to_chat(H, SPAN_ROLE_HEADER("You are Souto Man! You should bring awareness to the Souto brand!"))
 	to_chat(H, SPAN_ROLE_BODY("Your job is to party hard and share Souto. Make sure those marines are never thirsty again!"))

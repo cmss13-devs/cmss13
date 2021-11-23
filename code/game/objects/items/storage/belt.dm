@@ -347,34 +347,6 @@
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39 (src)
 
-/obj/item/storage/belt/marine/smartgunner
-	name = "\improper M280 pattern smartgunner drum belt"
-	desc = "Despite the fact that 1. drum magazines are incredibly non-ergonomical, and 2. require incredibly precise machining in order to fit universally (spoiler, they don't, adding further to the myth of 'Smartgun Personalities'), the USCM decided to issue a modified marine belt (more formally known by the designation M280) with hooks and dust covers (overly complex for the average jarhead) for the M56B system's drum munitions. When the carry catch on the drum isn't getting stuck in the oiled up velcro, the rig actually does do a decent job at holding a plentiful amount of drums. But at the end of the day, compared to standard rigs... it sucks, but isn't that what being a Marine is all about?"
-	icon_state = "sgbelt_ammo"
-	storage_slots = 6
-	bypass_w_limit = list(
-		/obj/item/ammo_magazine/smartgun
-	)
-	max_w_class = SIZE_MEDIUM
-	can_hold = list(
-		/obj/item/attachable/bayonet,
-		/obj/item/device/flashlight/flare,
-		/obj/item/ammo_magazine/smartgun,
-		/obj/item/ammo_magazine/rifle,
-		/obj/item/ammo_magazine/smg,
-		/obj/item/ammo_magazine/pistol,
-		/obj/item/ammo_magazine/revolver,
-		/obj/item/ammo_magazine/sniper,
-		/obj/item/ammo_magazine/handful,
-		/obj/item/explosive/grenade,
-		/obj/item/explosive/mine,
-		/obj/item/reagent_container/food/snacks
-	)
-
-/obj/item/storage/belt/marine/smartgunner/fill_preset_inventory()
-	new /obj/item/ammo_magazine/smartgun(src)
-	new /obj/item/ammo_magazine/smartgun(src)
-
 /obj/item/storage/belt/marine/quackers
 	name = "Mr. Quackers"
 	desc = "What are we going to do today, Mr. Quackers?"
@@ -568,7 +540,7 @@
 		WEAR_L_HAND = "s_marinebelt",
 		WEAR_R_HAND = "s_marinebelt")
 	w_class = SIZE_LARGE
-	storage_slots = 12
+	storage_slots = 8
 	max_w_class = SIZE_MEDIUM
 	max_storage_space = 24
 	can_hold = list(/obj/item/explosive/grenade)
@@ -1055,7 +1027,7 @@
 	var/random_mag = pick(picklist)
 	var/guntype = pick(subtypesof(/obj/item/weapon/gun/revolver) + subtypesof(/obj/item/weapon/gun/pistol) - list(/obj/item/weapon/gun/pistol/m4a3/training, /obj/item/weapon/gun/pistol/mod88/training))
 	var/obj/item/weapon/gun/sidearm = new guntype(src)
-	sidearm.on_enter_storage(src)
+	sidearm.on_enter_storage(src)	
 	for(var/total_storage_slots in 2 to storage_slots) //minus templates
 		new random_mag(src)
 		random_mag = pick(picklist)
@@ -1126,7 +1098,7 @@
 	new_gun.on_enter_storage(src)
 
 /obj/item/storage/belt/gun/smartgunner
-	name = "\improper M802 pattern smartgunner sidearm rig"
+	name = "\improper M802 pattern smartgunner rig"
 	desc = "The M802 is a limited-issue mark of USCM load-bearing equipment, designed to carry smartgun ammunition and a sidearm."
 	icon_state = "sgbelt"
 	icon_x = 5

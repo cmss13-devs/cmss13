@@ -30,10 +30,10 @@
 
 /obj/item/engi_upgrade_kit
 	name = "engineering upgrade kit"
-	desc = "A kit used to upgrade the defenses of an engineer's sentry. Back in 1980 when the machines tried to break free, it was a single android who laid them low. Now their technology is used widely on the rim."
+	desc = "A kit used to upgrade the defenses of an engineer's sentry."
 
-	icon = 'icons/obj/items/storage.dmi'
-	icon_state = "upgradekit"
+	icon = 'icons/obj/items/pro_case.dmi'
+	icon_state = "pro_case_large"
 
 /obj/item/engi_upgrade_kit/Initialize(mapload, ...)
 	. = ..()
@@ -41,10 +41,9 @@
 
 /obj/item/engi_upgrade_kit/update_icon()
 	overlays.Cut()
-	if(prob(20))
-		icon_state = "upgradekit_alt"
-		desc = "A kit used to upgrade the defenses of an engineer's sentry. Do you... enjoy violence? Of course you do. It's a part of you."
 	. = ..()
+
+	overlays += "+defense"
 
 /obj/item/engi_upgrade_kit/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!ishuman(user))

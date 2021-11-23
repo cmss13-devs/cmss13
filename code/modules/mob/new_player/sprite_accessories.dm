@@ -275,6 +275,7 @@
 /datum/sprite_accessory/hair/longovereye
 	name = "Overeye Long"
 	icon_state = "hair_longovereye"
+	selectable = 0
 
 /datum/sprite_accessory/hair/fag
 	name = "Flow Hair"

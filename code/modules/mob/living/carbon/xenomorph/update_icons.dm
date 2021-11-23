@@ -214,7 +214,7 @@
 
 	var/health_threshold
 	wound_icon_carrier.layer = layer + 0.01
-	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 0) //From 0 to 4, in 25% chunks
+	health_threshold = max(CEILING((health * 4) / (maxHealth), 1), 1) //From 1 to 4, in 25% chunks
 	if(health > HEALTH_THRESHOLD_DEAD)
 		if(health_threshold > 3)
 			wound_icon_carrier.icon_state = "none"

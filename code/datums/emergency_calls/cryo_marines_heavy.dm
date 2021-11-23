@@ -37,30 +37,30 @@
 	if(leaders < echo_squad.max_leaders)
 		leader = H
 		leaders++
-		arm_equipment(H, /datum/equipment_preset/uscm/leader_equipped/echo, TRUE, TRUE)
+		arm_equipment(H, "USCM Echo Squad Leader (Equipped)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Squad leader in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]."))
 	else if (heavies < max_heavies)
 		heavies++
 		if(prob(40))
-			arm_equipment(H, /datum/equipment_preset/uscm/smartgunner_equipped, TRUE, TRUE)
+			arm_equipment(H, "USCM Echo Squad Smartgunner (Equipped)", TRUE, TRUE)
 			to_chat(H, SPAN_ROLE_HEADER("You are a smartgunner in the USCM"))
 			to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 		else if(prob(20))
-			arm_equipment(H, /datum/equipment_preset/uscm/specialist_equipped/echo, TRUE, TRUE)
+			arm_equipment(H, "USCM Echo Squad Specialist (Equipped)", TRUE, TRUE)
 			to_chat(H, SPAN_ROLE_HEADER("You are a specialist in the USCM"))
 			to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 		else
-			arm_equipment(H, /datum/equipment_preset/uscm/engineer_equipped/echo, TRUE, TRUE)
+			arm_equipment(H, "USCM Echo Squad Engineer (Equipped)", TRUE, TRUE)
 			to_chat(H, SPAN_ROLE_HEADER("You are an engineer in the USCM"))
 			to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 	else if (medics < max_medics)
 		medics++
-		arm_equipment(H, /datum/equipment_preset/uscm/medic_equipped/echo, TRUE, TRUE)
+		arm_equipment(H, "USCM Echo Squad Medic (Equipped)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a medic in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 	else
-		arm_equipment(H, /datum/equipment_preset/uscm/private_equipped/echo, TRUE, TRUE)
+		arm_equipment(H,"USCM Echo Squad Marine (Equipped)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a private in the USCM"))
 		to_chat(H, SPAN_ROLE_BODY("Your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader."))
 

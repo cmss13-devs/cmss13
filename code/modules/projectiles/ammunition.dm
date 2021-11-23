@@ -427,7 +427,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/shotgun
 	name = "shotgun shell box (Slugs x 100)"
 	icon_state = "base_slug"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = ""
 	overlay_gun_type = "_shells"
 	overlay_content = "_slug"
@@ -484,7 +483,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/ap
 	name = "magazine box (AP M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap"
 	overlay_content = "_ap"
 	magazine_type = /obj/item/ammo_magazine/rifle/ap
@@ -494,7 +492,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/le
 	name = "magazine box (LE M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_le"
 	overlay_content = "_le"
 	magazine_type = /obj/item/ammo_magazine/rifle/le
@@ -504,7 +501,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/ext
 	name = "magazine box (Ext M41A x 8)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ext"
 	num_of_magazines = 8
 	magazine_type = /obj/item/ammo_magazine/rifle/extended
@@ -514,7 +510,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/incen
 	name = "magazine box (Incen M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_incen"
 	overlay_content = "_incen"
 	magazine_type = /obj/item/ammo_magazine/rifle/incendiary
@@ -524,7 +519,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 
 /obj/item/ammo_box/magazine/explosive
 	name = "magazine box (Explosive M41A x 10)"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_expl"
 	overlay_content = "_expl"
 	magazine_type = /obj/item/ammo_magazine/rifle/explosive
@@ -537,7 +531,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/m39
 	name = "magazine box (M39 x 12)"
 	icon_state = "base_m39"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m39"
 	overlay_content = "_hv"
@@ -589,7 +582,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/l42a
 	name = "magazine box (L42A x 16)"
 	icon_state = "base_l42"
-	flags_equip_slot = SLOT_BACK
 	overlay_gun_type = "_l42"
 	num_of_magazines = 16
 	magazine_type = /obj/item/ammo_magazine/rifle/l42a
@@ -639,7 +631,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/M16
 	name = "magazine box (M16 x 12)"
 	icon_state = "base_m16"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m16"
 	num_of_magazines = 12
@@ -664,7 +655,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/m4a3
 	name = "magazine box (M4A3 x 16)"
 	icon_state = "base_m4a3"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_m4a3"
 	num_of_magazines = 16
@@ -696,7 +686,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/m44
 	name = "speed loaders box (M44 x 16)"
 	icon_state = "base_m44"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_m44_reg"
 	overlay_gun_type = "_m44"
 	overlay_content = "_speed"
@@ -727,7 +716,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/su6
 	name = "magazine box (SU-6 x 16)"
 	icon_state = "base_su6"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_su6"
 	num_of_magazines = 16
@@ -741,7 +729,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/mod88
 	name = "magazine box (88 Mod 4 AP x 16)"
 	icon_state = "base_mod88"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_ap"
 	overlay_gun_type = "_mod88"
 	overlay_content = "_ap"
@@ -756,7 +743,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/vp78
 	name = "magazine box (VP78 x 16)"
 	icon_state = "base_vp78"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_reg"
 	overlay_gun_type = "_vp78"
 	num_of_magazines = 16
@@ -770,7 +756,6 @@ Turn() or Shift() as there is virtually no overhead. ~N
 /obj/item/ammo_box/magazine/type71
 	name = "magazine box (Type71 x 10)"
 	icon_state = "base_type71"
-	flags_equip_slot = SLOT_BACK
 	overlay_ammo_type = "_type71_reg"
 	overlay_gun_type = "_type71"
 	overlay_content = "_type71_reg"

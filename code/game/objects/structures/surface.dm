@@ -99,7 +99,7 @@
     for(var/obj/item/O in contents)
         var/image/I = image(O.icon)
         I.appearance = O.appearance
-        I.appearance_flags |= RESET_COLOR
+        I.appearance_flags = RESET_COLOR
         I.overlays = O.overlays
         LAZYADD(overlays, I)
 

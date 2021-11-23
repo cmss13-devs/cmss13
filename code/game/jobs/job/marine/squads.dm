@@ -221,7 +221,7 @@
 
 	var/list/extra_access = list()
 
-	switch(GET_DEFAULT_ROLE(M.job))
+	switch(M.job)
 		if(JOB_SQUAD_ENGI)
 			assignment = JOB_SQUAD_ENGI
 			num_engineers++
@@ -241,7 +241,7 @@
 			assignment = JOB_SQUAD_SMARTGUN
 			num_smartgun++
 		if(JOB_SQUAD_LEADER)
-			if(squad_leader && GET_DEFAULT_ROLE(squad_leader.job) != JOB_SQUAD_LEADER) //field promoted SL
+			if(squad_leader && squad_leader.job != JOB_SQUAD_LEADER) //field promoted SL
 				var/old_lead = squad_leader
 				demote_squad_leader()	//replaced by the real one
 				SStracking.start_tracking(tracking_id, old_lead)
@@ -250,7 +250,7 @@
 			SStracking.set_leader(tracking_id, M)
 			SStracking.start_tracking("marine_sl", M)
 
-			if(GET_DEFAULT_ROLE(M.job) == JOB_SQUAD_LEADER) //field promoted SL don't count as real ones
+			if(M.job == JOB_SQUAD_LEADER) //field promoted SL don't count as real ones
 				num_leaders++
 
 	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/personnel_deleted, override = TRUE)
@@ -259,7 +259,7 @@
 
 	count++		//Add up the tally. This is important in even squad distribution.
 
-	if(GET_DEFAULT_ROLE(M.job) != "Squad Marine")
+	if(M.job != "Squad Marine")
 		log_admin("[key_name(M)] has been assigned as [name] [M.job]") // we don't want to spam squad marines but the others are useful
 
 	marines_list += M
@@ -298,7 +298,7 @@
 //gracefully remove a marine from squad system, alive, dead or otherwise
 /datum/squad/proc/forget_marine_in_squad(mob/living/carbon/human/M)
 	if(M.assigned_squad.squad_leader == M)
-		if(GET_DEFAULT_ROLE(M.job) != JOB_SQUAD_LEADER) //a field promoted SL, not a real one
+		if(M.job != JOB_SQUAD_LEADER) //a field promoted SL, not a real one
 			demote_squad_leader()
 		else
 			M.assigned_squad.squad_leader = null
@@ -317,7 +317,7 @@
 	update_squad_ui()
 	M.assigned_squad = null
 
-	switch(GET_DEFAULT_ROLE(M.job))
+	switch(M.job)
 		if(JOB_SQUAD_ENGI)
 			num_engineers--
 		if(JOB_SQUAD_MEDIC)
@@ -339,7 +339,7 @@
 	SStracking.stop_tracking("marine_sl", old_lead)
 
 	squad_leader = null
-	switch(GET_DEFAULT_ROLE(old_lead.job))
+	switch(old_lead.job)
 		if(JOB_SQUAD_SPECIALIST)
 			old_lead.comm_title = "Spc"
 			if(old_lead.skills)
@@ -370,7 +370,7 @@
 			if(old_lead.skills)
 				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 
-	if(GET_DEFAULT_ROLE(old_lead.job) != JOB_SQUAD_LEADER || !leader_killed)
+	if(old_lead.job != JOB_SQUAD_LEADER || !leader_killed)
 		var/obj/item/device/radio/headset/almayer/marine/R = old_lead.get_type_in_ears(/obj/item/device/radio/headset/almayer/marine)
 		if(R)
 			for(var/obj/item/device/encryptionkey/squadlead/acting/key in R.keys)

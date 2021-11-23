@@ -272,7 +272,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 /obj/item/clothing/suit/storage/marine/rto
 	icon_state = "io"
-	name = "\improper M4 pattern marine armor"
+	name = "\improper XM4 pattern radio operator armor"
 	desc = "A well tinkered and crafted hybrid of Smart-Gunner mesh and M3 pattern plates. Robust, yet nimble, with room for all your pouches. Required for carrying a Radio Telephone Pack."
 	armor_melee = CLOTHING_ARMOR_MEDIUM
 	armor_bullet = CLOTHING_ARMOR_MEDIUM
@@ -283,7 +283,8 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 	storage_slots = 4
 	brightness_on = 7 //slightly higher
-	specialty = "M4 pattern marine"
+	uniform_restricted = list(/obj/item/clothing/under/marine/officer, /obj/item/clothing/under/rank/ro_suit, /obj/item/clothing/under/marine/rto)
+	specialty = "XM4 pattern radio operator"
 
 /obj/item/clothing/suit/storage/marine/MP
 	name = "\improper M2 pattern MP armor"
@@ -431,7 +432,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 
 
 /obj/item/clothing/suit/storage/marine/leader
-	name = "\improper B12 pattern marine armor"
+	name = "\improper B12 pattern leader marine armor"
 	desc = "A lightweight suit of carbon fiber body armor built for quick movement. Designed in a lovely forest green. Use it to toggle the built-in flashlight."
 	icon_state = "7"
 	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
@@ -441,7 +442,7 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
 	armor_rad = CLOTHING_ARMOR_MEDIUMLOW
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
-	specialty = "B12 pattern marine"
+	specialty = "B12 pattern leader marine"
 
 /obj/item/clothing/suit/storage/marine/tanker
 	name = "\improper M3 pattern tanker armor"

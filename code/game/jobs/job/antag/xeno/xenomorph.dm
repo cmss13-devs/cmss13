@@ -4,7 +4,7 @@
 /datum/job/antag/xenos
 	title = JOB_XENOMORPH
 	role_ban_alternative = "Alien"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE|ROLE_CUSTOM_SPAWN
 	supervisors = "Queen"
 	selection_class = "job_xeno"
 
@@ -28,10 +28,10 @@
 	H.forceMove(get_turf(pick(GLOB.xeno_spawns)))
 
 	var/list/survivor_types = list(
-		/datum/equipment_preset/survivor/scientist,
-		/datum/equipment_preset/survivor/doctor,
-		/datum/equipment_preset/survivor/security,
-		/datum/equipment_preset/survivor/engineer
+		"Survivor - Scientist",
+		"Survivor - Doctor",
+		"Survivor - Security",
+		"Survivor - Engineer"
 	)
 	arm_equipment(H, pick(survivor_types), FALSE, FALSE)
 

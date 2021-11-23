@@ -29,10 +29,6 @@
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
 
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless,
-
 		/obj/item/reagent_container/glass/bottle/bicaridine,
 		/obj/item/reagent_container/glass/bottle/antitoxin,
 		/obj/item/reagent_container/glass/bottle/dexalin,
@@ -350,10 +346,6 @@
 	chem_refill = list(
 		/obj/item/reagent_container/hypospray/autoinjector/skillless,
 		/obj/item/reagent_container/hypospray/autoinjector/skillless/tramadol,
-		/obj/item/reagent_container/hypospray/autoinjector/tricord/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/bicaridine/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/kelotane/skillless,
-		/obj/item/reagent_container/hypospray/autoinjector/tramadol/skillless
 	)
 	stack_refill = list(
 		/obj/item/stack/medical/bruise_pack,

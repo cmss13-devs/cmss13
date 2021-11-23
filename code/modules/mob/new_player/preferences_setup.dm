@@ -212,72 +212,72 @@ datum/preferences/proc/randomize_skin_color()
 
 	switch(high_priority)
 		if(JOB_SQUAD_MARINE)
-			return /datum/equipment_preset/uscm/private_equipped
+			return "USCM Cryo Squad Marine (Equipped)"
 		if(JOB_SQUAD_ENGI)
-			return /datum/equipment_preset/uscm/engineer_equipped
+			return "USCM Cryo Squad Engineer (Equipped)"
 		if(JOB_SQUAD_LEADER)
-			return /datum/equipment_preset/uscm/leader_equipped
+			return "USCM Cryo Squad Leader (Equipped)"
 		if(JOB_SQUAD_MEDIC)
-			return /datum/equipment_preset/uscm/medic_equipped
+			return "USCM Cryo Squad Medic (Equipped)"
 		if(JOB_SQUAD_SPECIALIST)
-			return /datum/equipment_preset/uscm/specialist_equipped
+			return "USCM Cryo Squad Specialist (Equipped)"
 		if(JOB_SQUAD_SMARTGUN)
-			return /datum/equipment_preset/uscm/smartgunner_equipped
+			return "USCM Cryo Squad Smartgunner (Equipped)"
 		if(JOB_SQUAD_RTO)
-			return /datum/equipment_preset/uscm/rto_equipped
+			return "USCM Cryo Squad RT Operator (Equipped)"
 		if(JOB_CO)
-			return /datum/equipment_preset/uscm_ship/commander
+			return "USCM Captain (CO)"
 		if(JOB_SO)
-			return /datum/equipment_preset/uscm_ship/so
+			return "USCM Staff Officer (SO)"
 		if(JOB_XO)
-			return /datum/equipment_preset/uscm_ship/xo
+			return "USCM Executive Officer (XO)"
 		if(JOB_PILOT)
-			return /datum/equipment_preset/uscm_ship/po/full
+			return "USCM Pilot Officer (PO)"
 		if(JOB_CORPORATE_LIAISON)
-			return /datum/equipment_preset/uscm_ship/liaison
+			return "USCM Corporate Liaison (CL)"
 		if(JOB_SYNTH)
-			return /datum/equipment_preset/synth/uscm
+			return "USCM Synthetic"
 		if(JOB_POLICE_CADET)
-			return /datum/equipment_preset/uscm_ship/uscm_police/mp_cadet
+			return "USCM MP Cadet (MPC)"
 		if(JOB_POLICE)
-			return /datum/equipment_preset/uscm_ship/uscm_police/mp
+			return "USCM Military Police (MP)"
 		if(JOB_CHIEF_POLICE)
-			return /datum/equipment_preset/uscm_ship/uscm_police/cmp
+			return "USCM Chief MP (CMP)"
 		if(JOB_WARDEN)
-			return /datum/equipment_preset/uscm_ship/uscm_police/warden
+			return "USCM Military Warden (MW)"
 		if(JOB_CREWMAN)
-			return /datum/equipment_preset/uscm/tank/full
+			return "USCM Vehicle Crewman (CRMN)"
 		if(JOB_SEA)
-			return /datum/equipment_preset/uscm_ship/sea
+			return "USCM Senior Enlisted Advisor (SEA)"
 		if(JOB_CHIEF_ENGINEER)
-			return /datum/equipment_preset/uscm_ship/chief_engineer
+			return "USCM Chief Engineer (CE)"
 		if(JOB_ORDNANCE_TECH)
-			return /datum/equipment_preset/uscm_ship/ordn
+			return "USCM Ordnance Technician (OT)"
 		if(JOB_MAINT_TECH)
-			return /datum/equipment_preset/uscm_ship/maint
+			return "USCM Maintenance Technician (MT)"
 		if(JOB_CHIEF_REQUISITION)
-			return /datum/equipment_preset/uscm_ship/ro
+			return "USCM Requisitions Officer (RO)"
 		if(JOB_CARGO_TECH)
-			return /datum/equipment_preset/uscm_ship/cargo
+			return "USCM Cargo Technician (CT)"
 		if(JOB_CMO)
-			return /datum/equipment_preset/uscm_ship/uscm_medical/cmo
+			return "USCM Chief Medical Officer (CMO)"
 		if(JOB_DOCTOR)
-			return /datum/equipment_preset/uscm_ship/uscm_medical/doctor
+			return "USCM Doctor"
 		if(JOB_RESEARCHER)
-			return /datum/equipment_preset/uscm_ship/uscm_medical/researcher
+			return "USCM Researcher"
 		if(JOB_NURSE)
-			return /datum/equipment_preset/uscm_ship/uscm_medical/nurse
+			return "USCM Nurse"
 		if(JOB_MESS_SERGEANT)
-			return /datum/equipment_preset/uscm_ship/chef
+			return "USCM Mess Sergeant (MS)"
 		if(JOB_PREDATOR)
 			if(length(RoleAuthority.roles_whitelist))
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]
-				return J.gear_preset_whitelist[J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]
+				return "Yautja [J.get_whitelist_status(RoleAuthority.roles_whitelist, owner)]"
 			else
-				return /datum/equipment_preset/yautja/blooded
+				return "Yautja Blooded"
 
-	return /datum/equipment_preset/uscm/private_equipped
+	return "USCM Cryo Squad Marine (Equipped)"
 
-/datum/preferences/proc/clear_equipment()
+datum/preferences/proc/clear_equipment()
 	for(var/obj/item/I in preview_dummy)
 		qdel(I)

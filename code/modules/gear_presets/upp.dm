@@ -173,7 +173,7 @@
 	H.equip_to_slot_or_del(ppouch, WEAR_R_STORE)
 	for(var/i = 1 to ppouch.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/skorpion, WEAR_IN_R_STORE)
-	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/frt_kit/full, WEAR_L_STORE)
 
 /datum/equipment_preset/upp/sapper
 	name = "UPP Sapper"
@@ -675,7 +675,7 @@
 	H.equip_to_slot_or_del(ppouch, WEAR_R_STORE)
 	for(var/i = 1 to ppouch.storage_slots)
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/skorpion, WEAR_IN_R_STORE)
-	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/frt_kit/full, WEAR_L_STORE)
 
 //*****************************************************************************************************/
 
@@ -932,4 +932,4 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 	//póckets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_R_STORE)
-	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full, WEAR_L_STORE)
+	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/frt_kit/full, WEAR_L_STORE)

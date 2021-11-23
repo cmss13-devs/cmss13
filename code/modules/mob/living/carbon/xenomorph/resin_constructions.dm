@@ -192,7 +192,6 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "Resin that slows down any tallhosts when they walk over it."
 	construction_name = "sticky resin"
 	cost = XENO_RESIN_STICKY_COST
-	build_time = 1 SECONDS
 
 	build_path = /obj/effect/alien/resin/sticky
 
@@ -203,7 +202,6 @@ GLOBAL_VAR_INIT(resin_lz_allowed, FALSE)
 	desc = "Resin that speeds up other sisters when they walk over it."
 	construction_name = "fast resin"
 	cost = XENO_RESIN_FAST_COST
-	build_time = 1 SECONDS
 
 	build_path = /obj/effect/alien/resin/sticky/fast
 

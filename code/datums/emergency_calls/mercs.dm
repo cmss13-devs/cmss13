@@ -42,15 +42,15 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
-		arm_equipment(H, /datum/equipment_preset/other/freelancer/leader, TRUE, TRUE)
+		arm_equipment(H, "Freelancer (Leader)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are the Freelancer leader!"))
 
 	else if(medics < max_medics)
 		medics++
-		arm_equipment(H, /datum/equipment_preset/other/freelancer/medic, TRUE, TRUE)
+		arm_equipment(H, "Freelancer (Medic)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer medic!"))
 	else
-		arm_equipment(H, /datum/equipment_preset/other/freelancer/standard, TRUE, TRUE)
+		arm_equipment(H, "Freelancer (Standard)", TRUE, TRUE)
 		to_chat(H, SPAN_ROLE_HEADER("You are a Freelancer mercenary!"))
 	print_backstory(H)
 

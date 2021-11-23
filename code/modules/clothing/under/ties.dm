@@ -617,23 +617,32 @@
 /obj/item/clothing/accessory/storage/surg_vest/equipped
 	hold = /obj/item/storage/internal/accessory/surg_vest/equipped
 
-/obj/item/clothing/accessory/storage/knifeharness
-	name = "M272 pattern knife vest"
-	desc = "An older generation M272 pattern knife vest once employed by the USCM. Can hold up to 4 knives. It is made of synthcotton."
-	icon_state = "vest_knives"
-	hold = /obj/item/storage/internal/accessory/knifeharness
-
 /obj/item/storage/internal/accessory/knifeharness
-	storage_slots = 5
-	max_storage_space = 5
+	storage_slots = 2
+	max_storage_space = 4
 	can_hold = list(
 		/obj/item/weapon/melee/unathiknife,
 		/obj/item/tool/kitchen/utensil/knife,
 		/obj/item/tool/kitchen/utensil/pknife,
 		/obj/item/tool/kitchen/knife,
-		/obj/item/attachable/bayonet,
-		/obj/item/weapon/melee/throwing_knife,
 	)
+
+/obj/item/storage/internal/accessory/knifeharness/Initialize(mapload, obj/item/MI)
+	. = ..()
+	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/melee/unathiknife(src)
+
+/obj/item/clothing/accessory/storage/knifeharness
+	name = "decorated harness"
+	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
+	icon_state = "unathiharness2"
+	hold = /obj/item/storage/internal/accessory/knifeharness
+
+
+
+
+
+
 
 /*
 	Holobadges are worn on the belt or neck, and can be used to show that the holder is an authorized

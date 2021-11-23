@@ -78,8 +78,8 @@ Additional game mode variables.
 	var/latejoin_larva_drop = LATEJOIN_MARINES_PER_LATEJOIN_LARVA //A larva will spawn in once the tally reaches this level. If set to 0, no latejoin larva drop
 
 	//Role Authority set up.
-	/// List of role titles to override to different roles when starting game
-	var/list/role_mappings
+	var/role_instruction 	= 0 // 1 is to replace, 2 is to add, 3 is to remove.
+	var/roles_for_mode[] //Won't have a list if the instruction is set to 0.
 
 	//Bioscan related.
 	var/bioscan_current_interval = 5 MINUTES//5 minutes in
@@ -94,10 +94,6 @@ Additional game mode variables.
 	var/evolution_ovipositor_threshold = FALSE
 
 	var/flags_round_type = NO_FLAGS
-
-
-/datum/game_mode/proc/get_roles_list()
-	return ROLES_REGULAR_ALL
 
 //===================================================\\
 
@@ -654,8 +650,8 @@ Additional game mode variables.
 
 	if(is_synth)
 		survivor_types = list(
-			/datum/equipment_preset/synth/survivor, //to be expanded later
-		)
+				"Survivor - Synthetic", //to be expanded later
+			)
 
 	//Give them proper jobs and stuff here later
 	var/randjob = pick(survivor_types)

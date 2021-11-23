@@ -20,10 +20,10 @@
 
 	if(!leader)       //First one spawned is always the leader.
 		leader = H
-		arm_equipment(H, /datum/equipment_preset/fun/dutch/arnie, TRUE, TRUE)
+		arm_equipment(H, "Dutch's Dozen - Arnold", TRUE, TRUE)
 	else if(heavies < max_heavies)
 		heavies++
-		arm_equipment(H, /datum/equipment_preset/fun/dutch/minigun, TRUE, TRUE)
+		arm_equipment(H, "Dutch's Dozen - Minigun", TRUE, TRUE)
 	else
-		arm_equipment(H, /datum/equipment_preset/fun/dutch, TRUE, TRUE)
+		arm_equipment(H, "Dutch's Dozen - Soldier", TRUE, TRUE)
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, SPAN_BOLD("Objectives: [objectives]")), 1 SECONDS)

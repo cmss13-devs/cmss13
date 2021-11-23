@@ -6,8 +6,8 @@
 	scaled = 1
 	supervisors = "the requisitions officer"
 	selection_class = "job_ct"
-	flags_startup_parameters = ROLE_ADD_TO_DEFAULT
-	gear_preset = /datum/equipment_preset/uscm_ship/cargo
+	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_ADD_TO_MODE
+	gear_preset = "USCM Cargo Technician (CT)"
 	entry_message_body = "Your job is to dispense supplies to the marines, including weapon attachments. Stay in your department when possible to ensure the marines have full access to the supplies they may require. Listen to the radio in case someone requests a supply drop via the overwatch system."
 
 /datum/job/logistics/cargo/set_spawn_positions(var/count)

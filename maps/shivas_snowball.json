@@ -6,11 +6,11 @@
         "COLD": true
     },
     "survivor_types": [
-        "/datum/equipment_preset/survivor/corporate/shiva",
-        "/datum/equipment_preset/survivor/doctor/shiva",
-        "/datum/equipment_preset/survivor/scientist/shiva",
-        "/datum/equipment_preset/survivor/engineer/shiva",
-        "/datum/equipment_preset/survivor/security/shiva"
+        "Survivor - Shivas Snowball Corporate Liaison",
+        "Survivor - Shivas Snowball Doctor",
+        "Survivor - Shivas Snowball Researcher",
+        "Survivor - Shivas Snowball Engineer",
+        "Survivor - Shivas Snowball Security Guard"
     ],
     "defcon_triggers": [
         3300,

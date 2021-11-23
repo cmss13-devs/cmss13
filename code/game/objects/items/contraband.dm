@@ -4,7 +4,7 @@
 /obj/item/storage/pill_bottle/happy
 	name = "Happy pills"
 	desc = "Highly illegal drug. When you want to see the rainbow."
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 /obj/item/storage/pill_bottle/happy/Initialize()
 	. = ..()

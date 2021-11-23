@@ -582,17 +582,6 @@
 	grenade_type = /obj/item/explosive/grenade/HE/frag
 	has_gamemode_skin = FALSE
 
-/obj/item/storage/box/nade_box/phophorus
-	name = "\improper M40 HPDP grenade box"
-	desc = "A secure box holding 25 M40 HPDP white phosphorus grenade. High explosive, don't store near the flamer fuel."
-	icon_state = "phos_nade_placeholder"
-	w_class = SIZE_LARGE
-	storage_slots = 25
-	max_storage_space = 50
-	can_hold = list(/obj/item/explosive/grenade/phosphorus)
-	grenade_type = /obj/item/explosive/grenade/phosphorus
-	has_gamemode_skin = FALSE
-
 /obj/item/storage/box/nade_box/airburst
 	name = "\improper M74 AGM-F grenade box"
 	desc = "A secure box holding 25 M74 AGM Fragmentation grenades. Explosive, don't store near the flamer fuel."

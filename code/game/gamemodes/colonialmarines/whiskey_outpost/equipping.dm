@@ -4,7 +4,7 @@
 
 /datum/job/command/commander/whiskey
 	title = JOB_WO_CO
-	gear_preset = /datum/equipment_preset/wo/commander
+	gear_preset = "WO Ground Commander"
 
 	generate_entry_message()
 		. = {"Your job is HEAVY ROLE PLAY and requires you to stay IN CHARACTER at all times.
@@ -18,9 +18,7 @@ Stay alive, and Godspeed, commander!"}
 		if(..())
 			return
 		sleep(15)
-		if(H?.loc)
-			marine_announcement("All forces, Ground Commander [H.real_name] is in command!")
-
+		if(H && H.loc && flags_startup_parameters & ROLE_ADD_TO_MODE) marine_announcement("All forces, Ground Commander [H.real_name] is in command!")
 
 
 //*************************************
@@ -29,7 +27,7 @@ Stay alive, and Godspeed, commander!"}
 
 /datum/job/civilian/synthetic/whiskey
 	title = JOB_WO_SYNTH
-	gear_preset = /datum/equipment_preset/synth/uscm/wo
+	gear_preset = "WO Support Synthetic"
 
 	generate_entry_message()
 		. = {"You are a Synthetic! You are held to a higher standard and are required to obey not only the Server Rules but Marine Law and Synthetic Rules. Failure to do so may result in your White-list Removal.
@@ -43,7 +41,7 @@ Destruction in inevitable. At the very least, you can assist in preventing other
 //*************************************/
 /datum/job/command/executive/whiskey
 	title = JOB_WO_XO
-	gear_preset = /datum/equipment_preset/wo/xo
+	gear_preset = "WO Lieutenant Commander"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You've been with the commander for as long as you can remember. You've always been the bookish nerd to the Honor Guard Squad Leader's jock; as such, you're the commander's right-hand man.
@@ -59,7 +57,7 @@ Make the USCM proud!"}
 /datum/job/command/warrant/whiskey
 	title = JOB_WO_CHIEF_POLICE
 	selection_class = "job_honor_guard_sl"
-	gear_preset = /datum/equipment_preset/wo/cmp
+	gear_preset = "WO Honor Guard Squad Leader"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"The Commander is the best hope for this outpost! At least in your eyes. You two have saved each-other's asses enough times to testify to that, and have been together for longer than anyone cares to remember. You're his left-hand man, behind the Gunnery Sergeant. You two are men. Manly men.
@@ -73,7 +71,7 @@ You must lead his Honor guard, his elite unit of marines, to protect the command
 //*************************************/
 /datum/job/command/bridge/whiskey
 	title = JOB_WO_SO
-	gear_preset = /datum/equipment_preset/wo/vhg
+	gear_preset = "WO Veteran Honor Guard"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
@@ -87,7 +85,7 @@ Glory to the commander. Glory to the USCM."}
 //*************************************/
 /datum/job/command/tank_crew/whiskey
 	title = JOB_WO_CREWMAN
-	gear_preset = /datum/equipment_preset/wo/hgs
+	gear_preset = "WO Honor Guard Specialist"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
@@ -101,7 +99,7 @@ Glory to the commander. Glory to the USCM."}
 //*************************************/
 /datum/job/command/police/whiskey
 	title = JOB_WO_POLICE
-	gear_preset = /datum/equipment_preset/wo/hg
+	gear_preset = "WO Honor Guard"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You were assigned to guard the commander in this hostile enviroment; that hasn't changed. Ensure your extra training and equipment isn't wasted!
@@ -114,7 +112,7 @@ Glory to the commander. Glory to the USCM."}
 //*************************************/
 /datum/job/command/pilot/whiskey
 	title = JOB_WO_PILOT
-	gear_preset = /datum/equipment_preset/wo/mortar_crew
+	gear_preset = "WO Mortar Crew"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You're entrusted with the maintaining of the mortars for the outpost. You were expecting to bomb some CLF, maybe, but not this...
@@ -126,7 +124,7 @@ Listen in on your radio, and pay attention to provide fire support for the marin
 //*************************************/
 /datum/job/logistics/requisition/whiskey
 	title = JOB_WO_CHIEF_REQUISITION
-	gear_preset = /datum/equipment_preset/wo/quartermaster
+	gear_preset = "WO Quartermaster"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"This is YOUR Depot - ain't no body, marine or monster, are gonna have their way with it.
@@ -139,7 +137,7 @@ You can order bunker crew to assist you, in place of proper cargo technicians."}
 //*************************************/
 /datum/job/civilian/professor/whiskey
 	title = JOB_WO_CMO
-	gear_preset = /datum/equipment_preset/wo/head_surgeron
+	gear_preset = "WO Head Surgeon"
 
 	generate_entry_message()
 		. = {"You volunteered to assist ground-side with medical duties. That may have been a mistake.
@@ -151,7 +149,7 @@ Treat the wounded, guide triage, and survive for as long as possible."}
 //*************************************/
 /datum/job/civilian/doctor/whiskey
 	title = JOB_WO_DOCTOR
-	gear_preset = /datum/equipment_preset/wo/doctor
+	gear_preset = "WO Field Doctor"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You volunteered to assist ground-side with medical duties. That may have been a mistake.
@@ -163,7 +161,7 @@ Treat the wounded, perform triage, and survive for as long as possible."}
 //*************************************/
 /datum/job/civilian/researcher/whiskey
 	title = JOB_WO_RESEARCHER
-	gear_preset = /datum/equipment_preset/wo/chemist
+	gear_preset = "WO Chemist"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You volunteered to help produce medicine, and perform tests on the local wildlife, to see if it was safe for consumption. That may have been a mistake.
@@ -175,7 +173,7 @@ Hey, at least now, you can try out all those chems that are outlawed - not like 
 //*************************************/
 /datum/job/logistics/engineering/whiskey
 	title = JOB_WO_CHIEF_ENGINEER
-	gear_preset = /datum/equipment_preset/wo/bcm
+	gear_preset = "WO Bunker Crew Master"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"Everything in this bunker is yours. At least, you act like it is. You and your men keep it well maintained. You're not gonna let any filthy aliens take it.
@@ -188,7 +186,7 @@ Ensure power is up, and the bunker is well defended. You share your bunker crew 
 /datum/job/logistics/tech/maint/whiskey
 	title = JOB_WO_ORDNANCE_TECH
 	supervisors = "the bunker crew master and the quartermaster"
-	gear_preset = /datum/equipment_preset/wo/bc
+	gear_preset = "WO Bunker Crew"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"You've worked here for a while, figuring it was a pretty comfy job. Now you gotta fight for your life. Have fun with that.
@@ -202,7 +200,7 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 	title = JOB_WO_REQUISITION
 	supervisors = "the bunker crew master and the quartermaster"
 	selection_class = "job_bunker_crew"
-	gear_preset = /datum/equipment_preset/wo/cargo
+	gear_preset = "WO Bunker Crew Logistics"
 
 
 	generate_entry_message(mob/living/carbon/human/H)
@@ -217,7 +215,7 @@ Assist both the Bunker Crew Master and the Quartermaster in their duties."}
 /datum/job/civilian/liaison/whiskey
 	title = JOB_WO_CORPORATE_LIAISON
 	supervisors = "the press"
-	gear_preset = /datum/equipment_preset/wo/reporter
+	gear_preset = "WO Combat Reporter"
 
 	generate_entry_message(mob/living/carbon/human/H)
 		. = {"What a scoop! You followed the marines down to LV-624 to see what kinda mischief they'd get into down here, but it seems that trouble has come to them!

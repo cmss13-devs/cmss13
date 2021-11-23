@@ -487,7 +487,6 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	name = "\improper UA 571-O sentry post"
 	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 2500-round drum magazine."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
-	luminosity = 5
 	omni_directional = TRUE
 	immobile = TRUE
 	static = TRUE

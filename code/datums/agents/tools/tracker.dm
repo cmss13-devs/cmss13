@@ -1,6 +1,6 @@
 /obj/item/device/tracker
 	name = "OoI tracker"
-	desc = "A tracker that tracks Objects of Interest, it is not widely available."
+	desc = "A tracker that tracks Objects of Interest, it is not widely avaliable."
 	icon_state = "tracker"
 	item_state = "tracker"
 	var/active = FALSE

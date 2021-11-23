@@ -841,10 +841,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	var/GL_sprite = base_gun_icon
 	if(GL_has_empty_icon && !length(cylinder.contents))
 		GL_sprite += "_e"
-		playsound(loc, cocked_sound, 25, 1)
 	if(GL_has_open_icon && open_chamber)
 		GL_sprite += "_o"
-		playsound(loc, cocked_sound, 25, 1)
 	icon_state = GL_sprite
 
 
@@ -910,7 +908,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 
 	user.visible_message(SPAN_NOTICE("[user] loads [I] into [src]."),
 	SPAN_NOTICE("You load [I] into the grenade launcher."), null, 4, CHAT_TYPE_COMBAT_ACTION)
-	playsound(usr, reload_sound, 75, 1)
 	if(internal_slots > 1)
 		to_chat(user, SPAN_INFO("Now storing: [length(cylinder.contents) + 1] / [internal_slots] grenades."))
 
@@ -923,8 +920,8 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		if(!length(cylinder.contents))
 			to_chat(user, SPAN_WARNING("The [name] is empty."))
 			return FALSE
-		var/obj/item/explosive/grenade/G = cylinder.contents[1]
-		if(G.has_iff && user.faction == FACTION_MARINE && explosive_grief_check(G))
+		var/obj/item/G = cylinder.contents[1]
+		if(user.faction == FACTION_MARINE && explosive_grief_check(G))
 			to_chat(user, SPAN_WARNING("\The [name]'s IFF inhibitor prevents you from firing!"))
 			msg_admin_niche("[key_name(user)] attempted to prime \a [G.name] in [get_area(src)] (<A HREF='?_src_=admin_holder;adminplayerobservecoodjump=1;X=[src.loc.x];Y=[src.loc.y];Z=[src.loc.z]'>JMP</a>)")
 			return FALSE
@@ -936,6 +933,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 			to_chat(user, SPAN_WARNING("The grenade launcher beeps a warning noise. You are too close!"))
 			return
 		fire_grenade(target,user)
+		playsound(user.loc, cocked_sound, 25, 1)
 
 
 /obj/item/weapon/gun/launcher/grenade/proc/fire_grenade(atom/target, mob/user)
@@ -947,7 +945,6 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 		to_firer += " [length(cylinder.contents)-1]/[internal_slots] grenades remaining."
 	user.visible_message(SPAN_DANGER("[user] fired a grenade!"),
 	SPAN_WARNING("[to_firer]"), null, null, null, CHAT_TYPE_WEAPON_USE)
-	playsound(user.loc, fire_sound, 50, 1)
 
 	var/angle = round(Get_Angle(user,target))
 	muzzle_flash(angle,user)
@@ -967,7 +964,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	F.activate(user, FALSE)
 	F.forceMove(get_turf(src))
 	F.throw_atom(target, 20, SPEED_VERY_FAST, user, null, NORMAL_LAUNCH, pass_flags)
-
+	playsound(F.loc, fire_sound, 50, 1)
 
 
 //Doesn't use these. Listed for reference.
@@ -1022,6 +1019,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	desc = "A lightweight, single-shot low-angle grenade launcher used by the Colonial Marines for area denial and big explosions."
 	icon_state = "m81"
 	item_state = "m81" //needs a wield sprite.
+	var/riot_version = FALSE
 
 	matter = list("metal" = 7000)
 
@@ -1036,10 +1034,14 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	..()
 	playsound(usr, unload_sound, 30, 1)
 
-/obj/item/weapon/gun/launcher/grenade/m81/riot/able_to_fire(mob/living/user)
+/obj/item/weapon/gun/launcher/grenade/m81/able_to_fire(mob/living/user)
 	. = ..()
 	if (. && istype(user))
-		if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+		if(riot_version)
+			if(!skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+				to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
+				return FALSE
+		else if(!skillcheck(user, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && user.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_GRENADIER)
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return FALSE
 
@@ -1049,47 +1051,7 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	desc = "A lightweight, single-shot low-angle grenade launcher to launch tear gas grenades. Used by the Colonial Marines Military Police during riots."
 	valid_munitions = list(/obj/item/explosive/grenade/custom/teargas)
 	preload = /obj/item/explosive/grenade/custom/teargas
-
-//-------------------------------------------------------
-//M79 Grenade Launcher subtype of the M81
-
-/obj/item/weapon/gun/launcher/grenade/m81/m79//m79 variant for marines
-	name = "\improper M79 grenade launcher"
-	desc = "A heavy, low-angle 40mm grenade launcher. It's been in use since the Vietnam War, though this version has been modernized with an IFF enabled micro-computer. The wooden furniture is, in fact, made of painted hardened polykevlon."
-	icon_state = "m79"
-	item_state = "m79"
-	preload = /obj/item/explosive/grenade/slug/baton
-	is_lobbing = TRUE
-
-	fire_sound = 'sound/weapons/handling/m79_shoot.ogg'
-	cocked_sound = 'sound/weapons/handling/m79_break_open.ogg'
-	reload_sound = 'sound/weapons/handling/m79_reload.ogg'
-	unload_sound = 'sound/weapons/handling/m79_unload.ogg'
-
-	attachable_allowed = list(
-		/obj/item/attachable/magnetic_harness,
-		/obj/item/attachable/flashlight,
-		/obj/item/attachable/reddot,
-		/obj/item/attachable/reflex,
-		/obj/item/attachable/stock/m79,
-		)
-
-/obj/item/weapon/gun/launcher/grenade/m81/m79/handle_starting_attachment()
-	..()
-	var/obj/item/attachable/stock/m79/S = new(src)
-	S.hidden = FALSE
-	S.flags_attach_features &= ~ATTACH_REMOVABLE
-	S.Attach(src)
-	update_attachable(S.slot)
-
-/obj/item/weapon/gun/launcher/grenade/m81/m79/set_gun_attachment_offsets()
-	attachable_offset = list("muzzle_x" = 33, "muzzle_y" = 18,"rail_x" = 14, "rail_y" = 22, "under_x" = 19, "under_y" = 14, "stock_x" = 14, "stock_y" = 14)
-
-/obj/item/weapon/gun/launcher/grenade/m81/m79/set_bullet_traits()
-	LAZYADD(traits_to_give, list(
-		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)//might not need this because of is_lobbing, but let's keep it just incase
-	))
-
+	riot_version = TRUE
 
 //-------------------------------------------------------
 //M5 RPG

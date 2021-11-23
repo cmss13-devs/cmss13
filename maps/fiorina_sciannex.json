@@ -3,15 +3,15 @@
     "map_path": "map_files/FOP_v3_Sciannex",
     "map_file": "Fiorina_SciAnnex.dmm",
     "survivor_types": [
-        "/datum/equipment_preset/survivor/scientist/florina",
-        "/datum/equipment_preset/survivor/doctor/florina",
-        "/datum/equipment_preset/survivor/interstellar_human_rights_observer",
-        "/datum/equipment_preset/survivor/security/florina",
-        "/datum/equipment_preset/survivor/colonial_marshal/florina",
-        "/datum/equipment_preset/survivor/prisoner",
-        "/datum/equipment_preset/survivor/prisoner",
-        "/datum/equipment_preset/survivor/gangleader",
-        "/datum/equipment_preset/survivor/engineer/florina"
+        "Survivor - Florina Researcher",
+        "Survivor - Florina Doctor",
+        "Survivor - Interstellar Human Rights Observer",
+        "Survivor - Florina Prison Guard",
+        "Survivor - United Americas Riot Officer",
+        "Survivor - Prisoner",
+        "Survivor - Prisoner",
+        "Survivor - Gang Leader",
+        "Survivor - Florina Engineer"
     ],
     "defcon_triggers": [
         3750,

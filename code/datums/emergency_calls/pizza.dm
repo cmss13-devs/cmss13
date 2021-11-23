@@ -17,7 +17,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	arm_equipment(H, /datum/equipment_preset/other/pizza, TRUE, TRUE)
+	arm_equipment(H, "Pizza", TRUE, TRUE)
 
 	var/pizzatxt = pick("Discount Pizza","Pizza Kingdom","Papa Pizza")
 	to_chat(H, SPAN_ROLE_HEADER("You are a pizza deliverer! Your employer is the [pizzatxt] Corporation."))

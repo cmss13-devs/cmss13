@@ -100,7 +100,7 @@
 	if(cause_data)
 		var/mob/cause_mob = cause_data.resolve_mob()
 		if(cause_mob)
-			if(isYautja(cause_mob) && cause_mob.client && cause_mob != src)
+			if(isYautja(cause_mob) && cause_mob.client)
 				INVOKE_ASYNC(cause_mob.client, /client.proc/add_honor, max(life_kills_total, 1))
 
 			if(isXeno(cause_mob))

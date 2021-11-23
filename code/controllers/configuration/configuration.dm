@@ -296,7 +296,6 @@
 				mode_names[M.config_tag] = M.name
 				if(M.votable)
 					votable_modes += M.config_tag
-		GLOB.gamemode_roles[M.name] = M.get_roles_list()
 		qdel(M)
 
 /datum/controller/configuration/proc/pick_mode(mode_name)

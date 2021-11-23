@@ -50,18 +50,6 @@ task-install() {
   yarn install
 }
 
-## Install deps in CI mode
-task-install-deps() {
-  cd "${base_dir}"
-  yarn install --immutable
-}
-
-## Check deps in CI mode
-task-install-check() {
-  cd "${base_dir}"
-  yarn install --immutable --immutable-cache
-}
-
 ## Runs webpack
 task-webpack() {
   cd "${base_dir}"
@@ -135,16 +123,6 @@ task-merge-bundle() {
 
 ## Main
 ## --------------------------------------------------------
-
-if [[ ${1} == "--deps-only" ]]; then
-  task-install-deps
-  exit 0
-fi
-
-if [[ ${1} == "--deps-check" ]]; then
-  task-install-check
-  exit 0
-fi
 
 if [[ ${1} == "--merge"* ]]; then
   if [[ ${1} == "--merge=bundle" ]]; then

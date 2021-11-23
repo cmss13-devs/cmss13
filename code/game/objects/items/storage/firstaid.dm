@@ -159,7 +159,7 @@
 	cant_hold = list(
 		/obj/item/ammo_magazine,
 		/obj/item/explosive/grenade
-	) // we need surgery tools buddy
+	) // we need surgery tools buddy 
 
 /obj/item/storage/firstaid/surgical/fill_preset_inventory()
 	new /obj/item/tool/surgery/surgical_line(src)
@@ -245,7 +245,7 @@
 	storage_slots = null
 	use_sound = "pillbottle"
 	max_storage_space = 16
-	var/skilllock = SKILL_MEDICAL_DEFAULT
+	var/skilllock = 1
 	var/pill_type_to_fill //type of pill to use to fill in the bottle in /Initialize()
 	var/bottle_lid = TRUE //Whether it shows a visual lid when opened or closed.
 
@@ -257,7 +257,7 @@ obj/item/storage/pill_bottle/packet
 	storage_slots = 4
 	max_w_class = 0
 	max_storage_space = 4
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 	storage_flags = STORAGE_FLAGS_BOX
 
 /obj/item/storage/pill_bottle/packet/tricordrazine
@@ -412,64 +412,57 @@ obj/item/storage/pill_bottle/packet
 	name = "\improper Kelotane pill bottle"
 	icon_state = "pill_canister2"
 	pill_type_to_fill = /obj/item/reagent_container/pill/kelotane
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/kelotane/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 /obj/item/storage/pill_bottle/antitox
 	name = "\improper Dylovene pill bottle"
 	icon_state = "pill_canister6"
 	pill_type_to_fill = /obj/item/reagent_container/pill/antitox
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/antitox/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 /obj/item/storage/pill_bottle/inaprovaline
 	name = "\improper Inaprovaline pill bottle"
 	icon_state = "pill_canister3"
 	pill_type_to_fill = /obj/item/reagent_container/pill/inaprovaline
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/inaprovaline/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 /obj/item/storage/pill_bottle/tramadol
 	name = "\improper Tramadol pill bottle"
 	icon_state = "pill_canister5"
 	pill_type_to_fill = /obj/item/reagent_container/pill/tramadol
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/tramadol/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 /obj/item/storage/pill_bottle/spaceacillin
 	name = "\improper Spaceacillin pill bottle"
 	icon_state = "pill_canister4"
 	pill_type_to_fill = /obj/item/reagent_container/pill/spaceacillin
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/spaceacillin/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 /obj/item/storage/pill_bottle/bicaridine
 	name = "\improper Bicaridine pill bottle"
 	icon_state = "pill_canister11"
 	pill_type_to_fill = /obj/item/reagent_container/pill/bicaridine
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/bicaridine/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 /obj/item/storage/pill_bottle/dexalin
 	name = "\improper Dexalin pill bottle"
 	icon_state = "pill_canister1"
 	pill_type_to_fill = /obj/item/reagent_container/pill/dexalin
-	skilllock = SKILL_MEDICAL_MEDIC
 
 /obj/item/storage/pill_bottle/dexalin/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 //Alkysine
 /obj/item/storage/pill_bottle/alkysine
@@ -491,7 +484,7 @@ obj/item/storage/pill_bottle/packet
 	pill_type_to_fill = /obj/item/reagent_container/pill/peridaxon
 
 /obj/item/storage/pill_bottle/peridaxon/skillless
-	skilllock = SKILL_MEDICAL_DEFAULT
+	skilllock = 0
 
 //RUSSIAN RED ANTI-RAD
 /obj/item/storage/pill_bottle/russianRed
@@ -511,7 +504,7 @@ obj/item/storage/pill_bottle/packet
 	name = "pill bottle"
 	icon_state = "pill_canister11"
 	max_storage_space = 5
-	skilllock = SKILL_MEDICAL_DEFAULT //CL can open it
+	skilllock = 0 //CL can open it
 	var/idlock = 1
 	pill_type_to_fill = /obj/item/reagent_container/pill/ultrazine/unmarked
 

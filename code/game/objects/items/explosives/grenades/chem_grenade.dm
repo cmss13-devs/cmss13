@@ -77,52 +77,6 @@
 	containers += B2
 	update_icon()
 
-/obj/item/explosive/grenade/custom/flare
-	name = "M40-F flare grenade"
-	desc = "Chemical flare in a grenade form, designed for compatibility with most standard issue launchers."
-	assembly_stage = ASSEMBLY_LOCKED
-	has_blast_wave_dampener = FALSE
-
-/obj/item/explosive/grenade/custom/flare/Initialize()
-	. = ..()
-	var/obj/item/reagent_container/glass/beaker/vial/V1 = new(src)
-	var/obj/item/reagent_container/glass/beaker/vial/V2 = new(src)
-	var/obj/item/reagent_container/glass/beaker/vial/V3 = new(src)
-
-	V1.reagents.add_reagent("aluminum", 30)
-	V2.reagents.add_reagent("potassium", 30)
-	V3.reagents.add_reagent("sulfur", 30)
-
-	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
-
-	containers += V1
-	containers += V2
-	containers += V3
-	update_icon()
-
-/obj/item/explosive/grenade/custom/large/flare
-	name = "M15-F flare grenade"
-	desc = "Chemical flare in a grenade form, expanded variant. The casing is too large to fit most launchers."
-	assembly_stage = ASSEMBLY_LOCKED
-	has_blast_wave_dampener = FALSE
-
-/obj/item/explosive/grenade/custom/large/flare/Initialize()
-	. = ..()
-	var/obj/item/reagent_container/glass/beaker/B1 = new(src)
-	var/obj/item/reagent_container/glass/beaker/B2 = new(src)
-	var/obj/item/reagent_container/glass/beaker/B3 = new(src)
-
-	B1.reagents.add_reagent("aluminum", 60)
-	B2.reagents.add_reagent("potassium", 60)
-	B3.reagents.add_reagent("sulfur", 60)
-
-	detonator = new/obj/item/device/assembly_holder/timer_igniter(src)
-
-	containers += B1
-	containers += B2
-	containers += B3
-	update_icon()
-
 
 /obj/item/explosive/grenade/custom/antiweed
 	name = "weedkiller grenade"

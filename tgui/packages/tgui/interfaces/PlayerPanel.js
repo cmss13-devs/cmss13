@@ -246,12 +246,6 @@ const GeneralActions = (props, context) => {
             disabled={!hasPermission(data, "mob_bring")}
             onClick={() => act("mob_bring")}
           />
-          <Button.Confirm
-            width="100%"
-            content="Follow"
-            disabled={!hasPermission(data, "jump_to")}
-            onClick={() => act("mob_follow")}
-          />
           <Button
             width="100%"
             height="100%"

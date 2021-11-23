@@ -293,7 +293,7 @@ var/global/list/gear_datums = list()
 
 /datum/gear/type_80_Bayonet
 	display_name = "Type 80 Bayonet"
-	path = /obj/item/attachable/bayonet/upp_replica
+	path = /obj/item/attachable/bayonet/upp
 	slot = WEAR_IN_BACK
 	cost = 4
 

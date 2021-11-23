@@ -89,7 +89,6 @@
 	S["pred_name"]			>> predator_name
 	S["pred_gender"]		>> predator_gender
 	S["pred_age"]			>> predator_age
-	S["pred_trans_type"]	>> predator_translator_type
 	S["pred_mask_type"]		>> predator_mask_type
 	S["pred_armor_type"]	>> predator_armor_type
 	S["pred_boot_type"]		>> predator_boot_type
@@ -132,7 +131,6 @@
 	predator_name 		= predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender 	= sanitize_text(predator_gender, initial(predator_gender))
 	predator_age 		= sanitize_integer(predator_age, 100, 10000, initial(predator_age))
-	predator_translator_type = sanitize_inlist(predator_armor_material, list("Modern", "Retro", "Combo"), initial(predator_translator_type))
 	predator_mask_type 	= sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type 	= sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
@@ -205,7 +203,6 @@
 	S["pred_name"] 			<< predator_name
 	S["pred_gender"] 		<< predator_gender
 	S["pred_age"]			<< predator_age
-	S["pred_trans_type"]	<< predator_translator_type
 	S["pred_mask_type"] 	<< predator_mask_type
 	S["pred_armor_type"] 	<< predator_armor_type
 	S["pred_boot_type"] 	<< predator_boot_type

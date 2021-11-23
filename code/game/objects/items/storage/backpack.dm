@@ -352,15 +352,6 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	storage_slots = null
 	max_storage_space = 15
 
-/obj/item/storage/backpack/marine/satchel/big //wacky squad marine loadout item, its the IO backpack.
-	name = "\improper USCM logistics IMP backpack"
-	desc = "A standard-issue backpack worn by logistics personnel. It is occasionally issued to combat personnel for longer term expeditions and deep space incursions."
-	icon_state = "marinebigsatch"
-	worn_accessible = TRUE
-	storage_slots = null
-	max_storage_space = 21 //backpack size
-
-
 /obj/item/storage/backpack/marine/satchel/medic
 	name = "\improper USCM medic satchel"
 	desc = "A heavy-duty satchel used by USCM medics. It sacrifices capacity for usability. A small patch is sewn to the top flap."

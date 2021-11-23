@@ -28,7 +28,7 @@
 	user.set_interaction(src)
 
 	var/dat = "<head><title>Groundside Operations Console</title></head><body>"
-	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make an announcement" : "*Unavailable*"]</A>"
+	dat += "<BR><A HREF='?src=\ref[src];operation=announce'>[is_announcement_active ? "Make an announcement" : "*Unavaliable*"]</A>"
 	dat += "<BR><A href='?src=\ref[src];operation=mapview'>Tactical Map</A>"
 	dat += "<BR><hr>"
 

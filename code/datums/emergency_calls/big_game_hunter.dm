@@ -21,7 +21,7 @@
 	var/mob/living/carbon/human/H = new(spawn_loc)
 	M.transfer_to(H, TRUE)
 
-	arm_equipment(H, /datum/equipment_preset/fun/van_bandolier, FALSE, TRUE)
+	arm_equipment(H, "Fun - Big Game Hunter", FALSE, TRUE)
 
 	to_chat(H, SPAN_ROLE_HEADER("You are a big game hunter!"))
 	to_chat(H, SPAN_ROLE_BODY("You've taken a shot at every beast of the earth, every fowl of the air, and everything that creepeth upon the earth. Mundane beasts \

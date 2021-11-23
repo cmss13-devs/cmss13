@@ -145,31 +145,10 @@
 
 /obj/structure/closet/crate/ammo
 	name = "ammunitions crate"
-	desc = "An ammunitions crate"
+	desc = "A ammunitions crate"
 	icon_state = "closed_ammo"
 	icon_opened = "open_ammo"
 	icon_closed = "closed_ammo"
-
-/obj/structure/closet/crate/ammo/alt
-	name = "ammunitions crate"
-	desc = "A crate that contains ammunition, this one is black."
-	icon_state = "closed_ammo_alt"
-	icon_opened = "open_ammo_alt"
-	icon_closed = "closed_ammo_alt"
-
-/obj/structure/closet/crate/ammo/alt/flame
-	name = "ammunitions crate"
-	desc = "An black crate. Warning, contents are flammable!"
-	icon_state = "closed_ammo_alt2"
-	icon_opened = "open_ammo_alt"//does not have its own unique icon
-	icon_closed = "closed_ammo_alt2"
-
-/obj/structure/closet/crate/green
-	name = "green crate"
-	desc = "A standard green storage crate employed by the USCM. These things are so common, just about anything could be inside."
-	icon_state = "closed_green"
-	icon_opened = "open_green"
-	icon_closed = "closed_green"
 
 /obj/structure/closet/crate/bravo
 	name = "bravo squad crate"

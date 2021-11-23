@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		var/mob/living/carbon/human/H = occupant
 		if(H.assigned_squad)
 			var/datum/squad/S = H.assigned_squad
-			if(GET_MAPPED_ROLE(H.job) == JOB_SQUAD_SPECIALIST)
+			if(H.job == JOB_SQUAD_SPECIALIST)
 				//we make the set this specialist took if any available again
 				if(H.skills)
 					var/set_name
@@ -339,7 +339,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	SSticker.mode.latejoin_tally-- //Cryoing someone out removes someone from the Marines, blocking further larva spawns until accounted for
 
 	//Handle job slot/tater cleanup.
-	RoleAuthority.free_role(GET_MAPPED_ROLE(occupant.job), TRUE)
+	RoleAuthority.free_role(RoleAuthority.roles_for_mode[occupant.job], TRUE)
 
 	var/occupant_ref = WEAKREF(occupant)
 	//Delete them from datacore.
@@ -492,7 +492,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 	time_entered = world.time
 	start_processing()
 	var/area/location = get_area(src)
-	if(M.job != GET_MAPPED_ROLE(JOB_SQUAD_MARINE))
+	if(M.job != JOB_SQUAD_MARINE)
 		message_staff("[key_name_admin(M)], [M.job], has entered a [src] at [location] after playing for [duration2text(world.time - M.life_time_start)].")
 
 	playsound(src, 'sound/machines/hydraulics_3.ogg', 30)

@@ -411,6 +411,9 @@ var/waiting_for_drop_votes = 0
 		to_world(SPAN_DANGER("<FONT size = 4><B>NOBODY WON!?</B></FONT>"))
 		to_world("<FONT size = 3><B>'Somehow you stupid humans managed to even fuck up killing yourselves. Well done.'</B></FONT>")
 		world << 'sound/misc/sadtrombone.ogg'
+
+		if(round_stats) // Logging to data/logs/round_stats.log
+			round_stats << "Humans remaining: [count_humans()]\nRound time: [duration2text()][log_end]"
 	else
 		to_world(SPAN_DANGER("<FONT size = 4><B>NOBODY WON!</B></FONT>"))
 		to_world("<FONT size = 3><B>There was a winner, but they died before they could receive the prize!! Bummer.</B></FONT>")

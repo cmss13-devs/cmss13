@@ -531,7 +531,6 @@
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
-	debilitate = list(1,0,0,0,0,0,0,0)
 
 	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_1

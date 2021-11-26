@@ -15225,6 +15225,7 @@
 /area/bigredv2/outside/bar)
 "aMJ" = (
 /obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
 	pixel_y = 32
 	},
 /obj/structure/machinery/door_control{

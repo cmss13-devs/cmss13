@@ -2622,6 +2622,7 @@
 "ahW" = (
 /obj/structure/surface/table/reinforced,
 /obj/structure/machinery/chem_dispenser/soda{
+	density = 0;
 	pixel_y = 32
 	},
 /turf/open/floor{
@@ -66767,10 +66768,6 @@
 	icon_state = "bluecorner"
 	},
 /area/desert_dam/interior/dam_interior/tech_storage)
-"rqI" = (
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/r_wall/bunker,
-/area/desert_dam/interior/dam_interior/garage)
 "rtW" = (
 /obj/effect/blocker/toxic_water/Group_2,
 /turf/open/asphalt/cement_sunbleached{
@@ -67297,9 +67294,7 @@
 /turf/open/desert/dirt,
 /area/desert_dam/exterior/valley/valley_hydro)
 "trZ" = (
-/obj/structure/prop/dam/boulder/boulder2{
-	density = 1
-	},
+/obj/structure/prop/dam/boulder/boulder2,
 /turf/open/desert/rock/deep,
 /area/desert_dam/interior/caves/temple)
 "tuC" = (
@@ -67638,10 +67633,6 @@
 	icon_state = "cement_sunbleached3"
 	},
 /area/desert_dam/exterior/valley/valley_civilian)
-"uQt" = (
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/rock/orange,
-/area/desert_dam/exterior/rock)
 "uRx" = (
 /obj/structure/surface/table/reinforced,
 /turf/open/floor/prison{

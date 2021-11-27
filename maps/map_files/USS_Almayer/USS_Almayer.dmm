@@ -5961,7 +5961,6 @@
 /turf/open/floor/plating/almayer,
 /area/almayer/living/starboard_garden)
 "aqm" = (
-/obj/structure/bed,
 /obj/item/bedsheet/brown,
 /obj/structure/bed,
 /obj/effect/landmark/start/executive,

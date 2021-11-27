@@ -223,6 +223,10 @@
 	take_damage_type(1e8, "abstract") //OOF.ogg
 
 /obj/vehicle/multitile/van/get_projectile_hit_boolean(obj/item/projectile/P)
+	if(src == P.original) //clicking on the van itself will hit it.
+		var/hitchance = P.get_effective_accuracy()
+		if(prob(hitchance))
+			return TRUE
 	return FALSE
 
 /obj/vehicle/multitile/van/Collide(var/atom/A)

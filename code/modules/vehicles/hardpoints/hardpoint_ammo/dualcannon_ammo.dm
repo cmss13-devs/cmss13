@@ -1,11 +1,11 @@
 /obj/item/ammo_magazine/hardpoint/boyars_dualcannon
-	name = "Boyars Dualcannon Flak Magazine"
-	desc = "A magazine filled with explosive flak, using a modular design to fit all makes of Boyars dualcannons."
+	name = "PARS-159 Dualcannon IFF Magazine"
+	desc = "A magazine for PARS-159 Boyars Dualcannon filled with 20mm rounds. Slightly contuses targets upon hit. Supports IFF."
 	caliber = "20mm"
 	icon_state = "ace_autocannon"
 	w_class = SIZE_LARGE
-	default_ammo = /datum/ammo/bullet/tank/flak/weak
-	max_rounds = 40
+	default_ammo = /datum/ammo/bullet/tank/dualcannon
+	max_rounds = 60
 	gun_type = /obj/item/hardpoint/primary/dualcannon
 
 /obj/item/ammo_magazine/hardpoint/boyars_dualcannon/update_icon()

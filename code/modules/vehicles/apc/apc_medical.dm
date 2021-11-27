@@ -1,13 +1,14 @@
 
 /obj/vehicle/multitile/apc/medical
-	name = "\improper M577-MED Armored Personnel Carrier"
+	name = "M577-MED Armored Personnel Carrier"
 	desc = "A medical modification of the M577 Armored Personnel Carrier. An armored transport with four big wheels. Has compact surgery theater set up inside and stores a significant amount of medical supplies. Entrances on the sides."
 
 	icon_state = "apc_base_med"
 
 	interior_map = "apc_med"
 
-	passengers_slots = 4
+	//increased 4->6, because having only 4 passenger slots is not nearly enough, especially if you have also a medic/nurse/synth inside helping with triage
+	passengers_slots = 6
 	//MED APC can store additional 4 dead revivable bodies for the triage
 	//but interior won't allow more revivable dead if passengers_taken_slots >= passengers_slots + revivable_dead_slots
 	//to prevent infinitely growing the marine force inside of the vehicle

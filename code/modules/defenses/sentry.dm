@@ -335,6 +335,10 @@
 					blocked = TRUE
 					break
 
+			for(var/obj/vehicle/multitile/V in T)
+				blocked = TRUE
+				break
+
 			for(var/obj/effect/particle_effect/smoke/S in T)
 				blocked = TRUE
 				break

@@ -3755,6 +3755,11 @@
 "akv" = (
 /obj/structure/surface/table/reinforced/almayer_B,
 /obj/item/folder/black,
+/obj/structure/machinery/door_control{
+	id = "pobunk2";
+	name = "Privacy Shutters";
+	pixel_x = 23
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -8693,6 +8698,10 @@
 /area/almayer/medical/medical_science)
 "awS" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	id = "officers_mess";
+	name = "\improper Privacy Shutters"
+	},
 /turf/open/floor/plating,
 /area/almayer/living/captain_mess)
 "awV" = (
@@ -16157,6 +16166,10 @@
 /area/almayer/hallways/hangar)
 "aXp" = (
 /obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "pobunk1";
+	name = "\improper Privacy Shutters"
+	},
 /turf/open/floor/plating,
 /area/almayer/living/pilotbunks)
 "aXx" = (
@@ -44422,6 +44435,11 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
+/obj/structure/machinery/door_control{
+	id = "pobunk1";
+	name = "Privacy Shutters";
+	pixel_y = -19
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -44832,6 +44850,14 @@
 /obj/item/reagent_container/hypospray/autoinjector/skillless,
 /turf/open/floor/almayer,
 /area/almayer/command/lifeboat)
+"gzI" = (
+/obj/structure/window/framed/almayer,
+/obj/structure/machinery/door/poddoor/shutters/almayer{
+	id = "pobunk2";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/plating,
+/area/almayer/living/pilotbunks)
 "gzK" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -58231,6 +58257,18 @@
 	tag = "icon-sterile_green_side (EAST)"
 	},
 /area/almayer/medical/medical_science)
+"mSP" = (
+/obj/structure/machinery/door/airlock/almayer/maint,
+/obj/structure/machinery/door/poddoor/shutters/almayer/open{
+	dir = 4;
+	id = "officers_mess";
+	name = "\improper Privacy Shutters"
+	},
+/turf/open/floor/almayer{
+	icon_state = "plate";
+	tag = "icon-sterile"
+	},
+/area/almayer/hull/upper_hull/u_f_p)
 "mTb" = (
 /obj/structure/machinery/light{
 	dir = 4;
@@ -76479,6 +76517,11 @@
 "vkb" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
+	},
+/obj/structure/machinery/door_control{
+	id = "officers_mess";
+	name = "Privacy Shutters";
+	pixel_y = -19
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -107793,7 +107836,7 @@ ajI
 add
 add
 add
-aXp
+gzI
 fdE
 xQg
 aiX
@@ -107996,7 +108039,7 @@ ajI
 add
 add
 add
-aXp
+gzI
 nwL
 iFn
 alw
@@ -108199,7 +108242,7 @@ acW
 aeZ
 aka
 aoI
-aXp
+gzI
 akv
 eGH
 aiX
@@ -108628,7 +108671,7 @@ qFl
 qFl
 qFl
 qFl
-aeD
+mSP
 qFl
 qFl
 qFl

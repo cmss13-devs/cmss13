@@ -355,7 +355,7 @@
 	},
 /area/yautja)
 "bp" = (
-/obj/item/clothing/mask/gas/yautja,
+/obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -366,15 +366,15 @@
 /obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/clothing/suit/armor/yautja,
-/obj/item/clothing/shoes/yautja,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/shoes/yautja/hunter,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
 	},
 /area/yautja)
 "bs" = (
-/obj/item/clothing/mask/gas/yautja,
+/obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -389,15 +389,15 @@
 /obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/clothing/suit/armor/yautja,
-/obj/item/clothing/shoes/yautja,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/shoes/yautja/hunter,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
 	},
 /area/yautja)
 "bu" = (
-/obj/item/clothing/mask/gas/yautja,
+/obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -409,8 +409,8 @@
 /obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/clothing/suit/armor/yautja,
-/obj/item/clothing/shoes/yautja,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/shoes/yautja/hunter,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"
@@ -510,7 +510,7 @@
 /obj/structure/surface/table/reinforced{
 	layer = 2.69
 	},
-/obj/item/clothing/mask/gas/yautja,
+/obj/item/clothing/mask/gas/yautja/hunter,
 /obj/structure/window/reinforced{
 	dir = 8;
 	health = 80
@@ -519,8 +519,8 @@
 	dir = 2;
 	icon_state = "right"
 	},
-/obj/item/clothing/suit/armor/yautja,
-/obj/item/clothing/shoes/yautja,
+/obj/item/clothing/suit/armor/yautja/hunter,
+/obj/item/clothing/shoes/yautja/hunter,
 /turf/open/floor/holofloor{
 	dir = 2;
 	icon_state = "cult"

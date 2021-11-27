@@ -267,13 +267,13 @@
 	icon_state = "pred_mask_elder_n";
 	name = "unsettling stone mask"
 	},
-/obj/item/clothing/suit/armor/yautja{
+/obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1;
 	color = "#FFE55C";
 	icon_state = "halfarmor_elder_n";
 	name = "gilded clan armor"
 	},
-/obj/item/clothing/shoes/yautja{
+/obj/item/clothing/shoes/yautja/hunter{
 	anchored = 1;
 	color = "#FFE55C";
 	icon_state = "y-boots2";
@@ -1638,13 +1638,13 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/clothing/suit/armor/yautja{
+/obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1
 	},
 /obj/item/clothing/mask/gas/yautja{
 	anchored = 1
 	},
-/obj/item/clothing/shoes/yautja{
+/obj/item/clothing/shoes/yautja/hunter{
 	anchored = 1
 	},
 /turf/open/floor/strata{

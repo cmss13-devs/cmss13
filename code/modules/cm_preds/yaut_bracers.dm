@@ -11,6 +11,7 @@
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	flags_item = ITEM_PREDATOR
+	flags_inventory = CANTSTRIP
 	flags_cold_protection = BODY_FLAG_HANDS
 	flags_heat_protection = BODY_FLAG_HANDS
 	flags_armor_protection = BODY_FLAG_HANDS
@@ -40,14 +41,15 @@
 
 /obj/item/clothing/gloves/yautja/equipped(mob/user, slot)
 	. = ..()
-	flags_item ^= NODROP
-	START_PROCESSING(SSobj, src)
-	if(isYautja(user))
-		to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
-	else
-		to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
-	if(!owner)
-		owner = user
+	if(slot == WEAR_HANDS)
+		flags_item |= NODROP
+		START_PROCESSING(SSobj, src)
+		if(isYautja(user))
+			to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+		else
+			to_chat(user, SPAN_WARNING("The bracer clamps painfully around your forearm and beeps angrily. It won't come off!"))
+		if(!owner)
+			owner = user
 
 /obj/item/clothing/gloves/yautja/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -181,15 +183,9 @@
 	. = ..()
 	if(slot != WEAR_HANDS)
 		move_chip_to_bracer()
-		return
-	flags_item ^= NODROP
-	START_PROCESSING(SSobj, src)
-	if(isYautja(user))
-		to_chat(user, SPAN_WARNING("The bracer clamps securely around your forearm and beeps in a comfortable, familiar way."))
+	else
 		if(embedded_id.registered_name)
 			embedded_id.set_user_data(user)
-	else
-		to_chat(user, SPAN_WARNING("The bracers clamp painfully around your forearms and beep angrily. They won't come off!"))
 
 //Any projectile can decloak a predator. It does defeat one free bullet though.
 /obj/item/clothing/gloves/yautja/hunter/proc/bullet_hit(mob/living/carbon/human/H, obj/item/projectile/P)

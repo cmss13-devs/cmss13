@@ -105,7 +105,6 @@
 		G.linked_bracer = TG
 		TG.linked_bracer = G
 		TG.owner = T
-		TG.flags_item ^= NODROP
 		TG.verbs += /obj/item/clothing/gloves/yautja/thrall/proc/buy_gear
 
 		to_chat(user, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beep: Your bracer is now linked to your thrall."))

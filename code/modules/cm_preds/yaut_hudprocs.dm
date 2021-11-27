@@ -1,6 +1,6 @@
 /mob/living/carbon/human/proc/mark_panel()
 	set name = "Mark Panel"
-	set category = "Yautja"
+	set category = "Yautja.Marks"
 	set desc = "Allows you to mark your prey."
 
 	if(is_mob_incapacitated())
@@ -65,7 +65,7 @@
 // Mark for Hunt verbs
 // Add prey for hunt
 /mob/living/carbon/human/proc/mark_for_hunt()
-	set category = "Yautja"
+	set category = "Yautja.Marks"
 	set name = "Mark for Hunt"
 	set desc = "Mark a target for the hunt."
 
@@ -111,7 +111,7 @@
 
 // Removing prey from hunt (i.e. it died, it bugged, it left the game, etc.)
 /mob/living/carbon/human/proc/remove_from_hunt()
-	set category = "Yautja"
+	set category = "Yautja.Marks"
 	set name = "Remove from Hunt"
 	set desc = "Unmark your hunt target."
 

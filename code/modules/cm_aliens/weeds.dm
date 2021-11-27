@@ -481,6 +481,9 @@
 	))
 	health = NODE_HEALTH_STANDARD
 
+/obj/effect/alien/weeds/node/alpha
+	hivenumber = XENO_HIVE_ALPHA
+
 /obj/effect/alien/weeds/node/feral
 	hivenumber = XENO_HIVE_FERAL
 

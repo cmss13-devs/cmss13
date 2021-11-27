@@ -34,16 +34,16 @@
 		armor_material = mob_client.prefs.predator_armor_material
 		translator_type = mob_client.prefs.predator_translator_type
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt(H), WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja(H, translator_type), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/chainshirt/hunter(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yautja/hunter(H, translator_type), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/yautja(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/device/flashlight/lantern(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/device/yautja_teleporter(H),WEAR_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/yautja(H), WEAR_WAIST)
 
-	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/knife(H, boot_number, armor_material), WEAR_FEET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja(H, armor_number, armor_material), WEAR_JACKET)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(H, mask_number, armor_material), WEAR_FACE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/yautja/hunter/knife(H, boot_number, armor_material), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter(H, armor_number, armor_material), WEAR_JACKET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H, mask_number, armor_material), WEAR_FACE)
 
 /datum/equipment_preset/yautja/load_name(mob/living/carbon/human/H, var/randomise)
 	var/final_name = "Le'pro"

@@ -180,7 +180,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC(H), WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade/dutch(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/empgrenade/dutch(H), WEAR_IN_BACK)
-	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja(H), WEAR_IN_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/mask/gas/yautja/hunter(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/belt/marine(H), WEAR_WAIST)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap(H), WEAR_IN_BACK)
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle/m16/ap(H), WEAR_IN_BACK)

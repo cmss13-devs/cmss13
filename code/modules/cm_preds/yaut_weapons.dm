@@ -167,7 +167,7 @@
 
 /obj/item/weapon/wristblades/attack_self(mob/user)
 	..()
-	for(var/obj/item/clothing/gloves/yautja/Y in user.contents)
+	for(var/obj/item/clothing/gloves/yautja/hunter/Y in user.contents)
 		Y.wristblades()
 
 /obj/item/weapon/wristblades/blades //simplest way to ensure scimitars don't get speedup buff.

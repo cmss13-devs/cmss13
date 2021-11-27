@@ -433,9 +433,10 @@
 		return
 
 	var/dat = {"
-		<A href='?src=\ref[src];vehicle=remove_clamp'>Remove Clamp from Tank</A><BR>
-		<A href='?src=\ref[src];vehicle=remove_players'>Eject Players from Tank</A><BR>
-		<BR>
+		<A href='?src=\ref[src];vehicle=remove_clamp'>Remove Vehicle Clamp</A><BR>
+		Forcibly removes vehicle clamp from vehicle selected from a list. Drops it under the vehicle.<BR>
+		<A href='?src=\ref[src];vehicle=repair_vehicle'>Repair Vehicle</A><BR>
+		Fully restores vehicle modules and hull health.<BR>
 		"}
 
 	show_browser(usr, dat, "Vehicle Panel", "vehicles")

@@ -1989,7 +1989,6 @@
 #include "code\modules\vehicles\multitile\multitile.dm"
 #include "code\modules\vehicles\multitile\multitile_bump.dm"
 #include "code\modules\vehicles\multitile\multitile_hardpoints.dm"
-#include "code\modules\vehicles\multitile\multitile_helpers.dm"
 #include "code\modules\vehicles\multitile\multitile_interaction.dm"
 #include "code\modules\vehicles\multitile\multitile_movement.dm"
 #include "code\modules\vehicles\multitile\multitile_verbs.dm"

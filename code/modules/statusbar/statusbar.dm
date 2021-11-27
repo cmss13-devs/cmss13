@@ -27,5 +27,7 @@ SHOW_ON_STATUSBAR(/obj/screen/act_intent)
 SHOW_ON_STATUSBAR(/obj/screen/pull)
 SHOW_ON_STATUSBAR(/obj/screen/xenonightvision)
 SHOW_ON_STATUSBAR(/obj/screen/toggle_inv)
+SHOW_ON_STATUSBAR(/obj/vehicle)
+SHOW_ON_STATUSBAR(/turf/closed)
 
 #undef SHOW_ON_STATUSBAR

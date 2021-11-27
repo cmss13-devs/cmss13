@@ -66,6 +66,10 @@
 //------------CLOTHING VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
+		list("EXPERIMENTAL TOOL TOKEN (TAKE ALL)", 0, null, null, null),
+		list("Experimental Tool Vendor Token", 0, /obj/item/coin/marine/synth, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+
+		list("RADIO (TAKE ALL)", 0, null, null, null),
 		list("Headset", 0, /obj/item/device/radio/headset/almayer/mcom/cdrcom, MARINE_CAN_BUY_EAR, VENDOR_ITEM_MANDATORY),
 
 		list("UNIFORM (CHOOSE 1)", 0, null, null, null),
@@ -228,12 +232,23 @@ GLOBAL_LIST_INIT(cm_vending_clothing_synth, list(
 
 //------------EXPERIMENTAL TOOLS---------------
 /obj/structure/machinery/cm_vending/own_points/experimental_tools
-	name = "\improper Experimental Vendor"
-	desc = "A smaller vendor hooked up to a cache of specially provisioned, experimental tools. Handle with care."
+	name = "\improper Experimental Tools Vendor"
+	desc = "A smaller vendor hooked up to a cache of specially provisioned, experimental tools and equipment. Handle with care."
 	icon_state = "robotics"
+	available_points = 0
+	available_points_to_display = 0
 	vendor_theme = VENDOR_THEME_COMPANY
 	req_access = list(ACCESS_MARINE_COMMANDER)
 	vendor_role = list(JOB_SYNTH)
+
+/obj/structure/machinery/cm_vending/own_points/experimental_tools/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/coin/marine/synth))
+		if(user.drop_inv_item_to_loc(W, src))
+			available_points = available_points + 45
+			available_points_to_display = available_points
+			to_chat(user, SPAN_NOTICE(" You insert the [W] into the [src]"))
+	return ..()
+
 /obj/structure/machinery/cm_vending/own_points/experimental_tools
 	listed_products = list(
 		list("Breaching Hammer", 15, /obj/item/weapon/melee/twohanded/breacher, null, VENDOR_ITEM_REGULAR),

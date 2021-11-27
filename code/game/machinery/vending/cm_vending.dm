@@ -563,7 +563,6 @@ IN_USE						used for vending/denying
 					available_specialist_sets -= p_name
 
 
-
 			if(!handle_points(H, L))
 				return
 
@@ -687,6 +686,14 @@ IN_USE						used for vending/denying
 				to_chat(H, SPAN_WARNING("The floor is too cluttered, make some space."))
 				vend_fail()
 				return
+
+			var/bitf = L[4]
+			if(bitf)
+				if(bitf == MARINE_CAN_BUY_ESSENTIALS && vendor_role.Find(JOB_SYNTH))
+					if(H.job != JOB_SYNTH)
+						to_chat(H, SPAN_WARNING("Only USCM Synthetics may vend experimental tool tokens."))
+						vend_fail()
+						return
 
 			if(use_points)
 				if(use_snowflake_points)

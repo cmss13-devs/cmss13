@@ -483,14 +483,14 @@
 				var/input = sanitize_control_chars(stripped_input(usr, "Please write a message to announce to the squad:", "Squad Message"))
 				if(input)
 					send_to_squad(input, 1) //message, adds username
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message sent to all Marines of squad '[current_squad]'.")]")
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to all Marines of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(usr)] sent '[input]' to squad [current_squad].")
 		if("sl_message")
 			if(current_squad && operator == usr)
 				var/input = sanitize_control_chars(stripped_input(usr, "Please write a message to announce to the squad leader:", "SL Message"))
 				if(input)
 					send_to_squad(input, 1, 1) //message, adds usrname, only to leader
-					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
+					visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Message '[input]' sent to Squad Leader [current_squad.squad_leader] of squad '[current_squad]'.")]")
 					log_overwatch("[key_name(usr)] sent '[input]' to Squad Leader [current_squad.squad_leader] of squad [current_squad].")
 		if("check_primary")
 			if(current_squad) //This is already checked, but ehh.
@@ -506,15 +506,15 @@
 			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's primary objective?", "Primary Objective"))
 			if(current_squad && input)
 				current_squad.primary_objective = "[input] ([worldtime2text()])"
-				send_to_squad("Your primary objective has changed. See Status pane for details.")
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[current_squad]' set.")]")
+				send_to_squad("Your primary objective has been changed to '[input]'. See Status pane for details.")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Primary objective of squad '[current_squad]' set to '[input]'.")]")
 				log_overwatch("[key_name(usr)] set [current_squad]'s primary objective to '[input]'.")
 		if("set_secondary")
 			var/input = sanitize_control_chars(stripped_input(usr, "What will be the squad's secondary objective?", "Secondary Objective"))
 			if(input)
 				current_squad.secondary_objective = input + " ([worldtime2text()])"
-				send_to_squad("Your secondary objective has changed. See Status pane for details.")
-				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[current_squad]' set.")]")
+				send_to_squad("Your secondary objective has been changed to '[input]'. See Status pane for details.")
+				visible_message("[icon2html(src, viewers(src))] [SPAN_BOLDNOTICE("Secondary objective of squad '[current_squad]' set to '[input]'.")]")
 				log_overwatch("[key_name(usr)] set [current_squad]'s secondary objective to '[input]'.")
 		if("supply_x")
 			var/input = input(usr,"What longitude should be targetted? (Increments towards the east)", "X Coordinate", 0) as num
@@ -583,14 +583,14 @@
 		if("dropsupply")
 			if(current_squad)
 				if((current_squad.supply_cooldown + 5000) > world.time)
-					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet available!")]")
+					to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Supply drop not yet ready to launch again!")]")
 				else
 					handle_supplydrop()
 		if("dropbomb")
 			if(almayer_orbital_cannon.is_disabled)
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment disabled!")]")
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon disabled!")]")
 			else if((almayer_orbital_cannon.last_orbital_firing + 5000) > world.time)
-				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment not yet available!")]")
+				to_chat(usr, "[icon2html(src, usr)] [SPAN_WARNING("Orbital bombardment cannon not yet ready to fire again!")]")
 			else
 				handle_bombard(usr)
 		if("back")

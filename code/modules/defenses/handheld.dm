@@ -14,7 +14,6 @@
 	var/defense_type = /obj/structure/machinery/defenses
 	var/deployment_time = 3 SECONDS
 
-	var/list/upgrade_list
 	var/obj_health = 200
 	var/obj_health_max = 200
 
@@ -69,6 +68,8 @@
 	D.health = obj_health
 	qdel(src)
 
+/obj/item/defenses/handheld/proc/get_upgrade_list()
+	return null
 
 // SENTRY BASE AND UPGRADES
 /obj/item/defenses/handheld/sentry
@@ -77,12 +78,13 @@
 	icon_state = "Normal uac_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry
 
-/obj/item/defenses/handheld/sentry/Initialize(mapload, ...)
-	. = ..()
-	upgrade_list = list(
-		"DMR turret" = /obj/item/defenses/handheld/sentry/dmr,
-		"Shotgun turret" = /obj/item/defenses/handheld/sentry/shotgun,
-		"Mini turret" = /obj/item/defenses/handheld/sentry/mini
+/obj/item/defenses/handheld/sentry/get_upgrade_list()
+	. = list()
+	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+		.["DMR Turret"] = /obj/item/defenses/handheld/sentry/dmr
+	. += list(
+		"Shotgun Turret" = /obj/item/defenses/handheld/sentry/shotgun,
+		"Mini Turret" = /obj/item/defenses/handheld/sentry/mini
 	)
 
 /obj/item/defenses/handheld/sentry/dmr
@@ -117,11 +119,12 @@
 	defense_type = /obj/structure/machinery/defenses/sentry/flamer
 	var/ammo_convert
 
-/obj/item/defenses/handheld/sentry/flamer/Initialize(mapload, ...)
-	. = ..()
-	upgrade_list = list(
-		"Plasma glob flamer" = /obj/item/defenses/handheld/sentry/flamer/plasma,
-		"Mini flamer" = /obj/item/defenses/handheld/sentry/flamer/mini
+/obj/item/defenses/handheld/sentry/flamer/get_upgrade_list()
+	. = list()
+	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
+		.["Plasma Glob Flamer"] = /obj/item/defenses/handheld/sentry/dmr
+	. += list(
+		"Mini Flamer" = /obj/item/defenses/handheld/sentry/flamer/mini
 	)
 
 /obj/item/defenses/handheld/sentry/flamer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
@@ -182,9 +185,8 @@
 	defense_type = /obj/structure/machinery/defenses/tesla_coil/micro
 	deployment_time = 0.75 SECONDS
 
-/obj/item/defenses/handheld/tesla_coil/Initialize(mapload, ...)
-	. = ..()
-	upgrade_list = list(
+/obj/item/defenses/handheld/tesla_coil/get_upgrade_list()
+	. = list(
 		"Increased Voltage" = /obj/item/defenses/handheld/tesla_coil/stun,
 		"Micro-tesla" = /obj/item/defenses/handheld/tesla_coil/micro
 	)
@@ -208,9 +210,8 @@
 	obj_health = 250
 	obj_health_max = 250
 
-/obj/item/defenses/handheld/bell_tower/Initialize(mapload, ...)
-	. = ..()
-	upgrade_list = list(
+/obj/item/defenses/handheld/bell_tower/get_upgrade_list()
+	. = list(
 		"Motion Detector" = /obj/item/defenses/handheld/bell_tower/md,
 		"Cloaker" = /obj/item/defenses/handheld/bell_tower/cloaker,
 		"IMP frame mount" = /obj/item/storage/backpack/imp
@@ -224,9 +225,8 @@
 	defense_type = /obj/structure/machinery/defenses/planted_flag
 	deployment_time = 1 SECONDS
 
-/obj/item/defenses/handheld/planted_flag/Initialize(mapload, ...)
-	. = ..()
-	upgrade_list = list(
+/obj/item/defenses/handheld/planted_flag/get_upgrade_list()
+	. = list(
 		"Warbanner" = /obj/item/defenses/handheld/planted_flag/warbanner,
 		"Extended JIMA" = /obj/item/defenses/handheld/planted_flag/range,
 		"JIMA frame mount" = /obj/item/storage/backpack/jima

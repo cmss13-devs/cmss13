@@ -419,3 +419,6 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/check_view_change(var/new_size, var/atom/source)
 	return new_size
+
+/mob/proc/can_be_pulled_by(var/mob/M)
+	return TRUE

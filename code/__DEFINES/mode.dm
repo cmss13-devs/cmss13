@@ -31,6 +31,10 @@
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
+#define MODE_HAS_FLAG(flag) (SSticker.mode.flags_round_type & flag)
+#define MODE_HAS_TOGGLEABLE_FLAG(flag) (SSticker.mode.toggleable_flags & flag)
+
+// Gamemode Flags
 #define MODE_INFESTATION		(1<<0)
 #define MODE_PREDATOR			(1<<1)
 #define MODE_NO_LATEJOIN		(1<<2)
@@ -45,6 +49,13 @@
 #define MODE_BASIC_RT			(1<<11)
 #define MODE_RANDOM_HIVE		(1<<12)// Makes Join-as-Xeno choose a hive to join as pooled larva at random rather than at user's input..
 #define MODE_THUNDERSTORM		(1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
+#define MODE_FACTION_CLASH		(1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses
+
+// Gamemode Toggleable Flags
+#define MODE_NO_SNIPER_SENTRY		(1<<0) /// Upgrade kits will no longer allow you to select long-range upgrades
+#define MODE_NO_ATTACK_DEAD			(1<<1) /// People will not be able to shoot at corpses
+#define MODE_NO_STRIPDRAG_ENEMY		(1<<2) /// Can't strip or drag dead enemies
+#define MODE_STRIP_NONUNIFORM_ENEMY	(1<<3) /// Can strip enemy, but not their boots, uniform, armor, helmet, or ID
 
 #define ROUNDSTATUS_FOG_DOWN 		1
 #define ROUNDSTATUS_PODDOORS_OPEN	2

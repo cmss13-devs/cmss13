@@ -703,7 +703,7 @@ Defined in conflicts.dm of the #defines folder.
 			if(user)
 				to_chat(user, SPAN_WARNING("You must hold [G] with two hands to use [src]."))
 			return FALSE
-		if(SSticker?.mode.flags_round_type & MODE_THUNDERSTORM)
+		if(MODE_HAS_FLAG(MODE_FACTION_CLASH))
 			if(user)
 				to_chat(user, SPAN_DANGER("You peer into [src], but it seems to have fogged up. You can't use this!"))
 			return FALSE

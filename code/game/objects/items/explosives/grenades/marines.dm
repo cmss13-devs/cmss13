@@ -161,11 +161,11 @@
 			detonate = FALSE
 	if(active && detonate) // Active, and we reached our destination.
 		if(hit_turf)
-			for(var/mob/M in hit_turf)
-				create_shrapnel(loc, direct_hit_shrapnel, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
+			for(var/mob/living/M in hit_turf)
+				create_shrapnel(loc, min(direct_hit_shrapnel, shrapnel_count), last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 100)
 				M.Superslow(3.0)
 				shrapnel_count -= direct_hit_shrapnel
-				continue
+				break
 		if(shrapnel_count)
 			create_shrapnel(loc, shrapnel_count, last_move_dir , dispersion_angle ,shrapnel_type, cause_data, FALSE, 0)
 			sleep(2) //so that mobs are not knocked down before being hit by shrapnel. shrapnel might also be getting deleted by explosions?

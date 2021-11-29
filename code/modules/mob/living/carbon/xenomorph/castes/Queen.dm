@@ -256,7 +256,6 @@
 
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
-	var/map_view = 0
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/ovipositor_cooldown = 0
@@ -295,7 +294,7 @@
 		/mob/living/carbon/Xenomorph/proc/toggle_unnesting,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message,
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel
 	)
 
 	var/list/mobile_abilities = list(
@@ -742,6 +741,8 @@
 	for(var/path in immobile_abilities)
 		give_action(src, path)
 
+	add_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
+
 	resin_build_order = GLOB.resin_build_order_hivelord
 	extra_build_dist = IGNORE_BUILD_DISTANCE
 	anchored = TRUE
@@ -772,8 +773,6 @@
 	if(!ovipositor)
 		return
 	ovipositor = FALSE
-	map_view = 0
-	close_browser(src, "queenminimap")
 	update_icons()
 	new /obj/ovipositor(loc)
 
@@ -782,6 +781,8 @@
 	zoom_out()
 
 	give_combat_abilities()
+
+	remove_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
 
 	recalculate_actions()
 

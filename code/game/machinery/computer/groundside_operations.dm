@@ -14,6 +14,10 @@
 	var/datum/squad/current_squad = null
 
 	var/is_announcement_active = TRUE
+	var/tacmap_type = TACMAP_DEFAULT
+	var/tacmap_base_type = TACMAP_BASE_OCCLUDED
+	var/tacmap_additional_parameter = null
+	var/minimap_name = "Marine Minimap"
 
 /obj/structure/machinery/computer/groundside_operations/attack_remote(var/mob/user as mob)
 	return attack_hand(user)
@@ -166,11 +170,10 @@
 		current_mapviewer = null
 		return
 
-	if(!istype(marine_mapview_overlay_5))
-		overlay_marine_mapview()
-
-	current_mapviewer << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
+	var/icon/O = overlay_tacmap(tacmap_type, tacmap_base_type, tacmap_additional_parameter)
+	if(O)
+		current_mapviewer << browse_rsc(O, "marine_minimap.png")
+		show_browser(current_mapviewer, "<img src=marine_minimap.png>", minimap_name, "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/groundside_operations/Topic(href, href_list)
 	if (href_list["close"] && current_mapviewer)
@@ -291,5 +294,23 @@
 		if(H && istype(H) && istype(H.head, /obj/item/clothing/head/helmet/marine))
 			var/obj/item/clothing/head/helmet/marine/helm = H.head
 			return helm.camera
+
+/obj/structure/machinery/computer/groundside_operations/upp
+	tacmap_type = TACMAP_FACTION
+	tacmap_base_type = TACMAP_BASE_OPEN
+	tacmap_additional_parameter = FACTION_UPP
+	minimap_name = "UPP Tactical Map"
+
+/obj/structure/machinery/computer/groundside_operations/clf
+	tacmap_type = TACMAP_FACTION
+	tacmap_base_type = TACMAP_BASE_OPEN
+	tacmap_additional_parameter = FACTION_CLF
+	minimap_name = "CLF Tactical Map"
+
+/obj/structure/machinery/computer/groundside_operations/pmc
+	tacmap_type = TACMAP_FACTION
+	tacmap_base_type = TACMAP_BASE_OPEN
+	tacmap_additional_parameter = FACTION_PMC
+	minimap_name = "PMC Tactical Map"
 
 #undef COOLDOWN_COMM_MESSAGE

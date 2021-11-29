@@ -16,7 +16,8 @@ SUBSYSTEM_DEF(mapview)
 
 /datum/controller/subsystem/mapview/proc/pre_round_start()
 	SIGNAL_HANDLER
-	generate_marine_mapview()
+	generate_tacmap(TACMAP_BASE_OCCLUDED) // for orbital forces
+	generate_tacmap(TACMAP_BASE_OPEN) // for groundside forces
 	create_map_machines()
 	ready = TRUE
 
@@ -40,14 +41,14 @@ SUBSYSTEM_DEF(mapview)
 		var/obj/structure/machinery/computer/communications/C = MM
 		if(istype(C) && C.current_mapviewer)
 			if(!updated)
-				overlay_marine_mapview()
+				overlay_tacmap(TACMAP_DEFAULT)
 			C.update_mapview()
 			updated = TRUE
 
 		var/obj/structure/machinery/prop/almayer/CICmap/M = MM
 		if(istype(M) && M.current_viewers.len)
 			if(!updated)
-				overlay_marine_mapview()
+				overlay_tacmap(TACMAP_DEFAULT)
 			M.update_mapview()
 			updated = TRUE
 

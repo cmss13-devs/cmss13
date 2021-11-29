@@ -200,6 +200,11 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 					H = huds[MOB_HUD_FACTION_CLF]
 					H.add_hud_to(src)
 
+	if(client.prefs.toggles_ghost & GHOST_DARKNESS)
+		see_invisible = SEE_INVISIBLE_OBSERVER_NOLIGHTING
+	else
+		see_invisible = INVISIBILITY_LEVEL_TWO
+
 
 /mob/dead/BlockedPassDirs(atom/movable/mover, target_dir)
 	return NO_BLOCKED_MOVEMENT
@@ -570,10 +575,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Toggle Darkness"
 	set category = "Ghost.Settings"
 
-	if (see_invisible == SEE_INVISIBLE_OBSERVER_NOLIGHTING)
-		see_invisible = INVISIBILITY_LEVEL_TWO
-	else
+	client.prefs.toggles_ghost ^= GHOST_DARKNESS
+	client.prefs.save_preferences()
+	if(client.prefs.toggles_ghost & GHOST_DARKNESS)
+		to_chat(src, "You will now see in the dark as an observer.")
 		see_invisible = SEE_INVISIBLE_OBSERVER_NOLIGHTING
+	else
+		to_chat(src, "You will no longer see in the dark as an observer.")
+		see_invisible = INVISIBILITY_LEVEL_TWO
 
 /mob/dead/observer/verb/toggle_self_visibility()
 	set name = "Toggle Self Visibility"

@@ -1,20 +1,18 @@
+var/global/list/base_mapview_types = list()
+var/global/list/populated_mapview_types = list()
+var/global/list/populated_mapview_type_updated = list()
 
-/var/global/icon/marine_mapview
-/var/global/list/marine_mapview_overlay_1 // yes because need to qdel each one cleanly
-/var/global/list/marine_mapview_overlay_2
-/var/global/list/marine_mapview_overlay_3
-/var/global/list/marine_mapview_overlay_4
-/var/global/list/marine_mapview_overlay_5
-/var/global/squad1updated = FALSE
-/var/global/squad2updated = FALSE
-/var/global/squad3updated = FALSE
-/var/global/squad4updated = FALSE
-/var/global/squad0updated = FALSE // echo squad go away, none of this old spooky code handles you anyway
-/var/global/refreshfrequency = 1 MINUTES // How often the map may update for each squad and the Queen. Anti-lag.
-/var/global/list/map_sizes = list(list(),list(),list())
+var/global/list/map_sizes = list()
+var/global/list/faction_to_tacmap_color = list(
+	FACTION_UPP = "#c26a2f",
+	FACTION_CLF = "#2f98c2",
+	FACTION_PMC = "#d19513"
+)
 
-/proc/generate_marine_mapview()
-	var/icon/minimap = icon('icons/minimap.dmi',SSmapping.configs[GROUND_MAP].map_name)
+#define TACMAP_REFRESH_FREQUENCY 1 MINUTES
+
+/proc/generate_tacmap(var/map_type = TACMAP_BASE_OCCLUDED)
+	var/icon/minimap = icon('icons/minimap.dmi', SSmapping.configs[GROUND_MAP].map_name)
 	var/min_x = 1000
 	var/max_x = 0
 	var/min_y = 1000
@@ -33,12 +31,13 @@
 		if((SSmapping.configs[GROUND_MAP].map_name != MAP_PRISON_STATION || SSmapping.configs[GROUND_MAP].map_name != MAP_PRISON_STATION_V3 ||SSmapping.configs[GROUND_MAP].map_name != MAP_CORSAT) && istype(T,/turf/open/space))
 			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
 			continue
-		if(A.ceiling >= CEILING_PROTECTION_TIER_2 && A.ceiling != CEILING_REINFORCED_METAL)
-			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
-			continue
-		if(A.ceiling >= CEILING_PROTECTION_TIER_2)
-			minimap.DrawBox(rgb(0,0,0),T.x,T.y)
-			continue
+		if(map_type == TACMAP_BASE_OCCLUDED)
+			if(A.ceiling >= CEILING_PROTECTION_TIER_2 && A.ceiling != CEILING_REINFORCED_METAL)
+				minimap.DrawBox(rgb(0,0,0),T.x,T.y)
+				continue
+			if(A.ceiling >= CEILING_PROTECTION_TIER_2)
+				minimap.DrawBox(rgb(0,0,0),T.x,T.y)
+				continue
 		if(locate(/obj/structure/window_frame) in T || locate(/obj/structure/window/framed) in T || locate(/obj/structure/machinery/door) in T)
 			minimap.DrawBox(rgb(25,25,25),T.x,T.y)
 			continue
@@ -64,163 +63,124 @@
 			minimap.DrawBox(rgb(200,200,200),T.x,T.y)
 			continue
 	minimap.Crop(1,1,max_x,max_y)
-	map_sizes[1] = list(max_x,max_y,min_x,min_y)
-	marine_mapview = minimap
+	if(!length(map_sizes))
+		map_sizes = list(max_x, max_y,min_x, min_y)
+	base_mapview_types[map_type] = minimap
 	return minimap
 
-/proc/overlay_marine_mapview(var/datum/squad/S = null)
-	if(istype(S)) // Update timer since this is a rather performance heavy proc
-		if(S.color == 1 && squad1updated)
-			return
-		if(S.color == 2 && squad2updated)
-			return
-		if(S.color == 3 && squad3updated)
-			return
-		if(S.color == 4 && squad4updated)
-			return
-	else if(squad0updated)
-		return
-	var/icon/newoverlay = icon(marine_mapview)
-	var/list/marines_with_helmets = list(list(),list(),list(),list(),list())
-	var/list/vehicles = list()
-	var/list/tier_0 = list()
-	var/list/tier_1 = list()
-	var/list/tier_2 = list()
-	var/list/tier_3 = list()
-	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
+/proc/draw_tacmap_units(var/icon/tacmap, var/tacmap_type = TACMAP_DEFAULT, var/additional_parameter = null)
+	switch(tacmap_type)
+		if(TACMAP_DEFAULT)
+			draw_marines(tacmap)
+			draw_vehicles(tacmap)
+			draw_xenos(tacmap)
+		if(TACMAP_XENO)
+			draw_xenos(tacmap, FALSE, FALSE, additional_parameter)
+		if(TACMAP_YAUTJA)
+			draw_marines(tacmap)
+			draw_vehicles(tacmap)
+			draw_xenos(tacmap, FALSE, FALSE)
+		if(TACMAP_FACTION)
+			draw_faction_units(tacmap, additional_parameter, (additional_parameter in faction_to_tacmap_color) ? faction_to_tacmap_color[additional_parameter] : "#2facc2d3")
+
+/proc/draw_marines(var/icon/tacmap)
+	var/list/colors = squad_colors.Copy()
+	colors += rgb(51, 204, 204)
+	for(var/mob/living/carbon/human/H as anything in GLOB.alive_human_list)
 		if(!is_ground_level(H.z))
 			continue
 		if(!H.has_helmet_camera())
 			continue
-		if(H.stat == DEAD)
-			continue
+		var/color = null
 		if(!H.assigned_squad)
-			marines_with_helmets[5] += H
+			color = colors[6]
+		else
+			color = colors[H.assigned_squad.color]
+		if(color)
+			tacmap.DrawBox(color, H.loc.x-1, H.loc.y-1, H.loc.x+1, H.loc.y+1)
+
+/proc/draw_faction_units(var/icon/tacmap, var/faction, var/color)
+	for(var/mob/living/carbon/human/H as anything in GLOB.alive_human_list)
+		if(H.faction != faction)
 			continue
-		switch(H.assigned_squad.color) // because string compares are expensive
-			if(1)
-				marines_with_helmets[1] += H
-			if(2)
-				marines_with_helmets[2] += H
-			if(3)
-				marines_with_helmets[3] += H
-			if(4)
-				marines_with_helmets[4] += H
-	var/list/colors = squad_colors.Copy()
-	colors += rgb(51,204,51)
-	var/selected = 0
-	if(istype(S))
-		selected = S.color
-		var/i = 1
-		while(i <= 4)
-			if(i != S.color)
-				colors[i] = rgb(51,204,51)
-			i++
-		colors[selected] = squad_colors[selected]
-	var/j
-	for(j=1,j<=marines_with_helmets.len,j++)
-		if(j == selected) continue
-		for(var/mob/living/carbon/human/L in marines_with_helmets[j])
-			newoverlay.DrawBox(colors[j],L.loc.x-1,L.loc.y-1,L.loc.x+1,L.loc.y+1)
-	if(selected)
-		for(var/mob/living/carbon/human/sel in marines_with_helmets[selected])
-			newoverlay.DrawBox(colors[selected],sel.loc.x-1,sel.loc.y-1,sel.loc.x+1,sel.loc.y+1)
-	for(var/obj/vehicle/multitile/MULT in GLOB.all_multi_vehicles)
-		if(MULT.visible_in_tacmap && is_ground_level(MULT.z))	//don't need colony/hostile vehicle to show
-			vehicles += MULT
-	if(vehicles.len)
-		for(var/obj/vehicle/multitile/V in vehicles)
-			newoverlay.DrawBox(rgb(0,153,77),V.x-1,V.y-1,V.x+1,V.y+1)
-			newoverlay.DrawBox(rgb(128,255,128),V.x-1,V.y)
-			newoverlay.DrawBox(rgb(128,255,128),V.x+1,V.y)
-			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y-1)
-			newoverlay.DrawBox(rgb(128,255,128),V.x,V.y+1)
-	if(SSticker.toweractive)
-		for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
-			if(!is_ground_level(X.loc.z)) continue
+		if(!is_ground_level(H.z))
+			continue
+		tacmap.DrawBox(color, H.loc.x-1, H.loc.y-1, H.loc.x+1, H.loc.y+1)
+
+/proc/draw_vehicles(var/icon/tacmap)
+	for(var/obj/vehicle/multitile/V as anything in GLOB.all_multi_vehicles)
+		if(V.visible_in_tacmap && is_ground_level(V.z))	//don't need colony/hostile vehicle to show
+			tacmap.DrawBox(rgb(0,153,77),V.x-1,V.y-1,V.x+1,V.y+1)
+			tacmap.DrawBox(rgb(128,255,128),V.x-1,V.y)
+			tacmap.DrawBox(rgb(128,255,128),V.x+1,V.y)
+			tacmap.DrawBox(rgb(128,255,128),V.x,V.y-1)
+			tacmap.DrawBox(rgb(128,255,128),V.x,V.y+1)
+
+/proc/draw_xenos(var/icon/tacmap, var/human_pov = TRUE, var/use_vehicle = TRUE, var/hivenumber = null)
+	if(!human_pov || SSticker.toweractive)
+		for(var/mob/living/carbon/Xenomorph/X as anything in GLOB.living_xeno_list)
+			if(hivenumber && X.hivenumber != hivenumber)
+				continue
+			if(!is_ground_level(X.loc.z))
+				continue
+			var/xeno_color = null
 			switch(X.tier)
 				if(0)
-					tier_0 += X
+					xeno_color = rgb(255, 153, 153)
 				if(1)
-					tier_1 += X
+					xeno_color = rgb(255, 128, 128)
 				if(2)
-					tier_2 += X
+					xeno_color = rgb(255, 102, 102)
 				if(3)
-					tier_3 += X
-			for(var/mob/living/carbon/Xenomorph/T0 in tier_0)
-				newoverlay.DrawBox(rgb(255,153,153),T0.loc.x-1,T0.loc.y-1,T0.loc.x+1,T0.loc.y+1)
-			for(var/mob/living/carbon/Xenomorph/T1 in tier_1)
-				newoverlay.DrawBox(rgb(255,128,128),T1.loc.x-1,T1.loc.y-1,T1.loc.x+1,T1.loc.y+1)
-			for(var/mob/living/carbon/Xenomorph/T2 in tier_2)
-				newoverlay.DrawBox(rgb(255,102,102),T2.loc.x-1,T2.loc.y-1,T2.loc.x+1,T2.loc.y+1)
-			for(var/mob/living/carbon/Xenomorph/T3 in tier_3)
-				newoverlay.DrawBox(rgb(255,77,77),T3.loc.x-1,T3.loc.y-1,T3.loc.x+1,T3.loc.y+1)
-	else
-		//check if we have at least one CMD APC
-		if(length(GLOB.command_apc_list))
-			//take xenomorph from the pool
-			for(var/mob/living/carbon/Xenomorph/X in GLOB.living_xeno_list)
-				//filter out those not on the ground
-				var/turf/XT = get_turf(X)
-				if(!is_ground_level(XT?.z))
-					continue
-				//check whether xeno is within sensors range of any intact CMD APCs deployed on the ground
-				for(var/i in GLOB.command_apc_list)
-					var/obj/vehicle/multitile/apc/command/CMDAPC = i
-					if(CMDAPC.health > 0 && CMDAPC.visible_in_tacmap && is_ground_level(CMDAPC.loc?.z) && get_dist(CMDAPC, X) <= CMDAPC.sensor_radius)
-						switch(X.tier)
-							if(0)
-								tier_0 += X
-							if(1)
-								tier_1 += X
-							if(2)
-								tier_2 += X
-							if(3)
-								tier_3 += X
+					xeno_color = rgb(255, 77, 77)
+			if(xeno_color)
+				tacmap.DrawBox(xeno_color, X.loc.x-1, X.loc.y-1, X.loc.x+1, X.loc.y+1)
+	else if(use_vehicle && length(GLOB.command_apc_list))
+		//take xenomorph from the pool
+		for(var/mob/living/carbon/Xenomorph/X as anything in GLOB.living_xeno_list)
+			if(hivenumber && X.hivenumber != hivenumber)
+				continue
+			//filter out those not on the ground
+			var/turf/XT = get_turf(X)
+			if(!is_ground_level(XT?.z))
+				continue
+			//check whether xeno is within sensors range of any intact CMD APCs deployed on the ground
+			for(var/obj/vehicle/multitile/apc/command/CMDAPC as anything in GLOB.command_apc_list)
+				if(CMDAPC.health > 0 && CMDAPC.visible_in_tacmap && is_ground_level(CMDAPC.loc?.z) && get_dist(CMDAPC, X) <= CMDAPC.sensor_radius)
+					var/xeno_color
+					switch(X.tier)
+						if(0)
+							xeno_color = rgb(255, 153, 153)
+						if(1)
+							xeno_color = rgb(255, 128, 128)
+						if(2)
+							xeno_color = rgb(255, 102, 102)
+						if(3)
+							xeno_color = rgb(255, 77, 77)
+					if(xeno_color)
+						tacmap.DrawBox(xeno_color, XT.x-1, XT.y-1, XT.x+1, XT.y+1)
 
-			//finally, mark on the map all xenos that we found
-			for(var/mob/living/carbon/Xenomorph/T0 in tier_0)
-				newoverlay.DrawBox(rgb(255,153,153),T0.loc.x-1,T0.loc.y-1,T0.loc.x+1,T0.loc.y+1)
-			for(var/mob/living/carbon/Xenomorph/T1 in tier_1)
-				newoverlay.DrawBox(rgb(255,128,128),T1.loc.x-1,T1.loc.y-1,T1.loc.x+1,T1.loc.y+1)
-			for(var/mob/living/carbon/Xenomorph/T2 in tier_2)
-				newoverlay.DrawBox(rgb(255,102,102),T2.loc.x-1,T2.loc.y-1,T2.loc.x+1,T2.loc.y+1)
-			for(var/mob/living/carbon/Xenomorph/T3 in tier_3)
-				newoverlay.DrawBox(rgb(255,77,77),T3.loc.x-1,T3.loc.y-1,T3.loc.x+1,T3.loc.y+1)
+/proc/overlay_tacmap(var/map_string = TACMAP_DEFAULT, var/map_type = TACMAP_BASE_OCCLUDED, var/additional_parameter = null)
+	var/tacmap_string = map_string
+	if(additional_parameter)
+		tacmap_string += "-[additional_parameter]"
+	if(populated_mapview_type_updated[tacmap_string]) // update this every [refresh_frequency] units of time, iconops is laggy
+		return populated_mapview_types[tacmap_string]
 
-	newoverlay.Crop(1,1,map_sizes[1][1],map_sizes[1][2])
-	newoverlay.Scale(map_sizes[1][1]*2,map_sizes[1][2]*2)
-	if(selected)
-		switch(selected)
-			if(1)
-				marine_mapview_overlay_1 = newoverlay
-				squad1updated = TRUE
-				spawn(refreshfrequency)
-					squad1updated = FALSE
-			if(2)
-				marine_mapview_overlay_2 = newoverlay
-				squad2updated = TRUE
-				spawn(refreshfrequency)
-					squad2updated = FALSE
-			if(3)
-				marine_mapview_overlay_3 = newoverlay
-				squad3updated = TRUE
-				spawn(refreshfrequency)
-					squad3updated = FALSE
-			if(4)
-				marine_mapview_overlay_4 = newoverlay
-				squad4updated = TRUE
-				spawn(refreshfrequency)
-					squad4updated = FALSE
-	else
-		marine_mapview_overlay_5 = newoverlay
-		squad0updated = TRUE
-		spawn(refreshfrequency)
-			squad0updated = FALSE
+	var/icon/tacmap = icon(base_mapview_types[map_type])
+	draw_tacmap_units(tacmap, map_string, additional_parameter)
+	tacmap.Crop(1, 1, map_sizes[1], map_sizes[2])
+	tacmap.Scale(map_sizes[1] * 2, map_sizes[2] * 2)
+	populated_mapview_types[tacmap_string] = tacmap
+	populated_mapview_type_updated[tacmap_string] = TRUE
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/prepare_tacmap_for_update, tacmap_string), TACMAP_REFRESH_FREQUENCY)
+	return tacmap
 
-	return newoverlay
-
+/proc/prepare_tacmap_for_update(var/tacmap_string = TACMAP_DEFAULT)
+	populated_mapview_type_updated[tacmap_string] = FALSE
 
 /mob/living/carbon/human/proc/has_helmet_camera()
 	if(faction == FACTION_MARINE)
 		return istype(head, /obj/item/clothing/head/helmet/marine)
+
+#undef TACMAP_REFRESH_FREQUENCY

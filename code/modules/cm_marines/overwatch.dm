@@ -364,27 +364,10 @@
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return
-	var/icon/O
-	switch(current_squad.color)
-		if(1)
-			if(!istype(marine_mapview_overlay_1))
-				overlay_marine_mapview(current_squad)
-			O = marine_mapview_overlay_1
-		if(2)
-			if(!istype(marine_mapview_overlay_2))
-				overlay_marine_mapview(current_squad)
-			O = marine_mapview_overlay_2
-		if(3)
-			if(!istype(marine_mapview_overlay_3))
-				overlay_marine_mapview(current_squad)
-			O = marine_mapview_overlay_3
-		if(4)
-			if(!istype(marine_mapview_overlay_4))
-				overlay_marine_mapview(current_squad)
-			O = marine_mapview_overlay_4
+	var/icon/O = overlay_tacmap(TACMAP_DEFAULT)
 	if(O)
 		current_mapviewer << browse_rsc(O, "marine_minimap.png")
-		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
+		show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/overwatch/Topic(href, href_list)
 	if(href_list["close"])

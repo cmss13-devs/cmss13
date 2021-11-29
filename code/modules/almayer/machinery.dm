@@ -221,6 +221,9 @@
 	icon = 'icons/obj/structures/machinery/computer.dmi'
 	icon_state = "maptable"
 
+	var/map_type = TACMAP_DEFAULT
+	var/map_base_type = TACMAP_BASE_OCCLUDED
+
 /obj/structure/machinery/prop/almayer/CICmap/Destroy()
 	for(var/mob/living/L in current_viewers)
 		to_chat(L, SPAN_NOTICE("You stop looking at the map."))
@@ -237,17 +240,17 @@
 			current_viewers -= user
 			return
 		current_viewers += user
-		if(!istype(marine_mapview_overlay_5))
-			overlay_marine_mapview()
+		if(!populated_mapview_type_updated[map_type])
+			overlay_tacmap(map_type, map_base_type)
 		to_chat(user, SPAN_NOTICE("You start looking at the map."))
-		user << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
+		user << browse_rsc(populated_mapview_types[map_type], "marine_minimap.png")
+		show_browser(user, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 		return
 	..()
 
 /obj/structure/machinery/prop/almayer/CICmap/proc/update_mapview()
-	if(!istype(marine_mapview_overlay_5))
-		overlay_marine_mapview()
+	if(!populated_mapview_type_updated[map_type])
+		overlay_tacmap(map_type, map_base_type)
 	for(var/mob/living/L in current_viewers)
 		if(!powered() || get_dist(src,L) > 2)
 			to_chat(L, SPAN_NOTICE("You stop looking at the map."))
@@ -255,8 +258,8 @@
 			current_viewers -= L
 			continue
 
-		L << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
+		L << browse_rsc(populated_mapview_types[map_type], "marine_minimap.png")
+		show_browser(L, "<img src=marine_minimap.png>", "Tactical Map Table", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 
 /obj/structure/machinery/prop/almayer/CICmap/Topic(href, href_list)

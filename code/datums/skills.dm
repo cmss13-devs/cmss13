@@ -489,6 +489,14 @@ COMMAND STAFF
 		SKILL_JTAC = SKILL_JTAC_EXPERT
 	)
 
+/datum/skills/SEA/New(var/mob/skillset_owner)
+	..()
+	give_action(skillset_owner, /datum/action/looc_toggle)
+
+/datum/skills/SEA/Destroy()
+	remove_action(owner, /datum/action/looc_toggle)
+	return ..()
+
 /datum/skills/CMO
 	name = "CMO"
 	skills = list(

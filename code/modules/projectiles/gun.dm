@@ -1276,6 +1276,9 @@ and you're good to go.
 	else if(user.a_intent != INTENT_HARM) //Thwack them
 		return ..()
 
+	if(MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && M.stat == DEAD) // don't shoot dead people
+		return afterattack(M, user, TRUE)
+
 	user.next_move = world.time //No click delay on PBs.
 
 	//Point blanking doesn't actually fire the projectile. Instead, it simulates firing the bullet proper.

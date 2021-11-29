@@ -94,6 +94,7 @@ Additional game mode variables.
 	var/evolution_ovipositor_threshold = FALSE
 
 	var/flags_round_type = NO_FLAGS
+	var/toggleable_flags = NO_FLAGS
 
 
 /datum/game_mode/proc/get_roles_list()

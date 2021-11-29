@@ -235,6 +235,7 @@ SUBSYSTEM_DEF(ticker)
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)
+	SSatoms.lateinit_roundstart_atoms()
 
 	CHECK_TICK
 

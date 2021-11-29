@@ -137,6 +137,8 @@
 	var/faction = FACTION_NEUTRAL
 	var/faction_group
 
+	var/looc_overhead = FALSE
+
 	var/datum/skills/skills = null //the knowledge you have about certain abilities and actions (e.g. do you how to do surgery?)
 									//see skills.dm in #define folder and code/datums/skills.dm for more info
 	var/obj/item/legcuffs/legcuffed = null  //Same as handcuffs but for legs. Bear traps use this.

@@ -34,7 +34,7 @@
 	langchat_listeners = null
 
 ///Creates the image if one does not exist, resets settings that are modified by speech procs.
-/mob/proc/langchat_make_image()
+/mob/proc/langchat_make_image(var/override_color = null)
 	if(!langchat_image)
 		langchat_image = image(null, src)
 		langchat_image.layer = 20
@@ -46,13 +46,13 @@
 
 	langchat_image.pixel_y = 0
 	langchat_image.alpha = 0
-	langchat_image.color = langchat_color
+	langchat_image.color = override_color ? override_color : langchat_color
 	if(appearance_flags & PIXEL_SCALE)
 		langchat_image.appearance_flags |= PIXEL_SCALE
 
-/mob/proc/langchat_speech(message, var/list/listeners, language)
+/mob/proc/langchat_speech(message, var/list/listeners, language, var/override_color)
 	langchat_drop_image()
-	langchat_make_image()
+	langchat_make_image(override_color)
 
 	var/text_to_display = message
 	if(length(text_to_display) > LANGCHAT_LONGEST_TEXT)

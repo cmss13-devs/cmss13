@@ -1,7 +1,6 @@
-
 /obj/item/clothing/mask/gas/yautja
-	name = "clan mask"
-	desc = "A beautifully designed metallic face mask, both ornate and functional."
+	name = "ancient alien mask"
+	desc = "A beautifully designed metallic face mask, both ornate and functional. This one seems to be old and degraded."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
@@ -9,15 +8,18 @@
 	)
 	icon_state = "pred_mask1_ebony"
 	item_state = "helmet"
+	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
 
-	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	unequip_sounds = list('sound/items/air_release.ogg')
+
 	min_cold_protection_temperature = SPACE_HELMET_min_cold_protection_temperature
 	flags_armor_protection = BODY_FLAG_HEAD|BODY_FLAG_FACE|BODY_FLAG_EYES
 	flags_cold_protection = BODY_FLAG_HEAD
@@ -30,10 +32,9 @@
 	var/current_goggles = 0 //0: OFF. 1: NVG. 2: Thermals. 3: Mesons
 	vision_impair = VISION_IMPAIR_NONE
 	unacidable = TRUE
-	anti_hug = 100
-	item_state_slots = list(WEAR_FACE = "pred_mask1_ebony")
 	time_to_unequip = 20
-	unequip_sounds = list('sound/items/air_release.ogg')
+	anti_hug = 5
+
 
 /obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", elder_restricted = 0)
 	..()
@@ -58,10 +59,18 @@
 				icon_state = "pred_mask_elder_n"
 				item_state_slots = list(WEAR_FACE = "pred_mask_elder_n")
 
+/obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/mask/gas/yautja/Destroy()
+	remove_from_missing_pred_gear(src)
+	return ..()
+
 /obj/item/clothing/mask/gas/yautja/verb/toggle_zoom()
 	set name = "Toggle Mask Zoom"
 	set desc = "Toggle your mask's zoom function."
-	set category = "Yautja.Utility"
 	set src in usr
 	if(!usr || usr.stat)
 		return
@@ -71,7 +80,6 @@
 /obj/item/clothing/mask/gas/yautja/verb/togglesight()
 	set name = "Toggle Mask Visors"
 	set desc = "Toggle your mask visor sights. You must only be wearing a type of Yautja visor for this to work."
-	set category = "Yautja.Utility"
 	set src in usr
 	if(!usr || usr.stat)
 		return
@@ -82,8 +90,10 @@
 		to_chat(M, SPAN_WARNING("You have no idea how to work these things!"))
 		return
 	current_goggles++
-	if(current_goggles > 3)
-		current_goggles = 0
+	if(istype(src, /obj/item/clothing/mask/gas/yautja/hunter))
+		if(current_goggles > 3) current_goggles = 0
+	else
+		if(current_goggles > 1) current_goggles = 0
 	add_vision(M)
 
 /obj/item/clothing/mask/gas/yautja/proc/add_vision(mob/living/carbon/human/user)
@@ -105,7 +115,7 @@
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(2)
 			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/thermal/yautja(user), WEAR_EYES)
-			to_chat(user, SPAN_NOTICE("Thermal sight module: activated."))
+			to_chat(user, SPAN_NOTICE("Thermal vision module: activated."))
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 		if(3)
 			user.equip_to_slot_or_del(new /obj/item/clothing/glasses/meson/yautja(user), WEAR_EYES)
@@ -116,50 +126,112 @@
 			if(prob(50)) playsound(src,'sound/effects/pred_vision.ogg', 15, 1)
 	user.update_inv_glasses()
 
-/obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
-	if(slot == WEAR_FACE)
-		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
-		H.add_hud_to(user)
-		H = huds[MOB_HUD_XENO_STATUS]
-		H.add_hud_to(user)
-		H = huds[MOB_HUD_HUNTER_CLAN]
-		H.add_hud_to(user)
-		H = huds[MOB_HUD_HUNTER]
-		H.add_hud_to(user)
-		add_vision(user)
-	..()
-
 /obj/item/clothing/mask/gas/yautja/dropped(mob/living/carbon/human/user) //Clear the gogglors if the helmet is removed.
 	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
+		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
+		H.remove_hud_from(user)
+
 		var/obj/item/G = user.glasses
 		if(G)
 			if(istype(G,/obj/item/clothing/glasses/night/yautja) || istype(G,/obj/item/clothing/glasses/meson/yautja) || istype(G,/obj/item/clothing/glasses/thermal/yautja))
 				user.temp_drop_inv_item(G)
 				qdel(G)
 				user.update_inv_glasses()
+
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/mask/gas/yautja/equipped(mob/living/carbon/human/user, slot)
+	if(slot == WEAR_FACE)
 		var/datum/mob_hud/H = huds[MOB_HUD_MEDICAL_OBSERVER]
+		H.add_hud_to(user)
+		add_vision(user)
+	..()
+
+
+
+/obj/item/clothing/mask/gas/yautja/thrall
+	name = "alien mask"
+	desc = "A simplistic metallic face mask with advanced capabilities."
+	color = "#b85440"
+	icon_state = "thrall_mask"
+	item_state = "thrall_mask"
+	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
+	item_icons = list(
+		WEAR_FACE = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
+	)
+	item_state_slots = list(WEAR_FACE = "thrall_mask")
+
+/obj/item/clothing/mask/gas/yautja/thrall/equipped(mob/living/carbon/human/user, slot)
+	if(slot == WEAR_FACE)
+		var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+		H.add_hud_to(user)
+		H = huds[MOB_HUD_HUNTER]
+		H.add_hud_to(user)
+		add_vision(user)
+	..()
+
+/obj/item/clothing/mask/gas/yautja/thrall/dropped(mob/living/carbon/human/user)
+	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
+		var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
 		H.remove_hud_from(user)
-		H = huds[MOB_HUD_XENO_STATUS]
+		H = huds[MOB_HUD_HUNTER]
+		H.remove_hud_from(user)
+	..()
+
+/obj/item/clothing/mask/gas/yautja/thrall/toggle_zoom()
+	set category = "Thrall.Utility"
+	..()
+/obj/item/clothing/mask/gas/yautja/thrall/togglesight()
+	set category = "Thrall.Utility"
+	..()
+
+/obj/item/clothing/mask/gas/yautja/hunter
+	name = "clan mask"
+	desc = "A beautifully designed metallic face mask, both ornate and functional."
+	armor_melee = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+	anti_hug = 100
+
+/obj/item/clothing/mask/gas/yautja/hunter/toggle_zoom()
+	set category = "Yautja.Utility"
+	..()
+/obj/item/clothing/mask/gas/yautja/hunter/togglesight()
+	set category = "Yautja.Utility"
+	if(!isYautja(usr))
+		to_chat(usr, SPAN_WARNING("You have no idea how to work these things!"))
+		return
+	..()
+
+/obj/item/clothing/mask/gas/yautja/hunter/equipped(mob/living/carbon/human/user, slot)
+	if(slot == WEAR_FACE)
+		var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
+		H.add_hud_to(user)
+		H = huds[MOB_HUD_HUNTER_CLAN]
+		H.add_hud_to(user)
+		H = huds[MOB_HUD_HUNTER]
+		H.add_hud_to(user)
+	..()
+
+/obj/item/clothing/mask/gas/yautja/hunter/dropped(mob/living/carbon/human/user)
+	if(istype(user) && user.wear_mask == src) //inventory reference is only cleared after dropped().
+		var/datum/mob_hud/H = huds[MOB_HUD_XENO_STATUS]
 		H.remove_hud_from(user)
 		H = huds[MOB_HUD_HUNTER_CLAN]
 		H.remove_hud_from(user)
 		H = huds[MOB_HUD_HUNTER]
 		H.remove_hud_from(user)
-	add_to_missing_pred_gear(src)
 	..()
-
-/obj/item/clothing/mask/gas/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/mask/gas/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
 
 //flavor, not a subtype
 /obj/item/clothing/mask/yautja_flavor
-	name = "stone clan mask"
+	name = "alien stone mask"
 	desc = "A beautifully designed face mask, ornate but non-functional and made entirely of stone."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'

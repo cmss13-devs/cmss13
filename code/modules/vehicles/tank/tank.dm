@@ -1,5 +1,5 @@
 /obj/vehicle/multitile/tank
-	name = "\improper M34A2 Longstreet Light Tank"
+	name = "M34A2 Longstreet Light Tank"
 	desc = "A giant piece of armor with a big gun, you know what to do. Entrance in the back."
 
 	icon = 'icons/obj/vehicles/tank.dmi'

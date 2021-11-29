@@ -957,7 +957,10 @@ obj/item/weapon/gun/launcher/grenade/update_icon()
 	cylinder.remove_from_storage(F, user.loc)
 	var/pass_flags = NO_FLAGS
 	if(is_lobbing)
-		pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
+		if(istype(F, /obj/item/explosive/grenade/slug/baton))
+			pass_flags |= PASS_MOB_THRU_HUMAN|PASS_MOB_IS_OTHER|PASS_OVER
+		else
+			pass_flags |= PASS_MOB_THRU|PASS_HIGH_OVER
 
 	msg_admin_attack("[key_name_admin(user)] fired a grenade ([F.name]) from \a ([name]).")
 	log_game("[key_name_admin(user)] used a grenade ([name]).")

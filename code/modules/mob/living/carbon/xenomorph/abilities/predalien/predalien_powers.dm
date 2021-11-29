@@ -19,7 +19,7 @@
             var/mob/living/carbon/human/H = C
             H.disable_special_items()
 
-            var/obj/item/clothing/gloves/yautja/YG = locate(/obj/item/clothing/gloves/yautja) in H
+            var/obj/item/clothing/gloves/yautja/hunter/YG = locate(/obj/item/clothing/gloves/yautja/hunter) in H
             if(isYautja(H) && YG)
                 if(YG.cloaked)
                     YG.decloak(H)

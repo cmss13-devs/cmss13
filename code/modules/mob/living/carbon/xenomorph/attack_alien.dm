@@ -95,7 +95,7 @@
 
 			var/armor_block = getarmor(affecting, ARMOR_MELEE)
 
-			if(isYautja(src) && check_zone(M.zone_selected) == "head")
+			if(wear_mask && check_zone(M.zone_selected) == "head")
 				if(istype(wear_mask, /obj/item/clothing/mask/gas/yautja))
 					var/knock_chance = 1
 					if(M.frenzy_aura > 0)
@@ -108,7 +108,10 @@
 						M.visible_message(SPAN_DANGER("The [M] smashes off [src]'s [wear_mask.name]!"), \
 						SPAN_DANGER("You smash off [src]'s [wear_mask.name]!"), null, 5)
 						drop_inv_item_on_ground(wear_mask)
-						emote("roar")
+						if(isYautja(src))
+							emote("roar")
+						else
+							emote("scream")
 						return XENO_ATTACK_ACTION
 
 			var/n_damage = armor_damage_reduction(GLOB.marine_melee, damage, armor_block)

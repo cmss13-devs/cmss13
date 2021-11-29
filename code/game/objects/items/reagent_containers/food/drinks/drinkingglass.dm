@@ -233,7 +233,7 @@
 				if("atomicbomb")
 					icon_state = "atomicbombglass"
 					name = "Atomic Bomb"
-					desc = "Nanotrasen cannot take legal responsibility for your actions after imbibing."
+					desc = "Weyland-Yutani cannot take legal responsibility for your actions after imbibing."
 					center_of_mass = "x=15;y=7"
 				if("longislandicedtea")
 					icon_state = "longislandicedteaglass"
@@ -443,7 +443,7 @@
 				if("acidspit")
 					icon_state = "acidspitglass"
 					name = "Acid Spit"
-					desc = "A drink from Nanotrasen. Made from live aliens."
+					desc = "A drink from Weyland-Yutani. Made from live aliens."
 					center_of_mass = "x=16;y=7"
 				if("amasec")
 					icon_state = "amasecglass"

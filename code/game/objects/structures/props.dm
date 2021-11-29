@@ -770,3 +770,90 @@
 	layer = ABOVE_MOB_LAYER
 	density = 0
 
+/obj/structure/prop/wooden_cross
+	name = "wooden cross"
+	desc = "A wooden grave marker. Is it more respectful because someone made it by hand, or less, because it's crude and misshapen?"
+	icon = 'icons/obj/structures/props/crosses.dmi'
+	icon_state = "cross1"
+	density = FALSE
+	health = 30
+	var/inscription
+	var/obj/item/helmet
+
+/obj/structure/prop/wooden_cross/Destroy()
+	if(helmet)
+		helmet.forceMove(loc)
+		helmet = null
+	return ..()
+
+/obj/structure/prop/wooden_cross/attackby(obj/item/W, mob/living/user)
+	if(istype(W, /obj/item/clothing/head))
+		if(helmet)
+			to_chat(user, SPAN_WARNING("[helmet] is already resting atop [src]!"))
+			return
+		if(!user.drop_inv_item_to_loc(W, src))
+			return
+		helmet = W
+		dir = SOUTH
+		var/image/visual_overlay = W.get_mob_overlay(null, WEAR_HEAD)
+		visual_overlay.pixel_y = -10 //Base image is positioned to go on a human's head.
+		overlays += visual_overlay
+		to_chat(user, SPAN_NOTICE("You set \the [W] atop \the [src]."))
+		return
+
+	if(user.a_intent == INTENT_HARM)
+		..()
+		if(W.force && !(W.flags_item & NOBLUDGEON))
+			playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
+			update_health(W.force)
+		return
+
+	if(W.sharp || W.edge || istype(W, /obj/item/tool/pen) || istype(W, /obj/item/tool/hand_labeler))
+		var/action_msg
+		var/time_multiplier
+		if(W.sharp || W.edge)
+			action_msg = "carve something into"
+			time_multiplier = 3
+		else
+			action_msg = "write something on"
+			time_multiplier = 2
+
+		var/message = sanitize(input(user, "What do you write on [src]?", "Inscription"))
+		if(!message)
+			return
+		user.visible_message(SPAN_NOTICE("[user] begins to [action_msg] [src]."),\
+			SPAN_NOTICE("You begin to [action_msg] [src]."), null, 4)
+
+		if(!do_after(user, length(message) * time_multiplier, INTERRUPT_ALL, BUSY_ICON_GENERIC))
+			to_chat(user, SPAN_WARNING("You were interrupted!"))
+		else
+			user.visible_message(SPAN_NOTICE("[user] uses \his [W.name] to [action_msg] [src]."),\
+				SPAN_NOTICE("You [action_msg] [src] with your [W.name]."), null, 4)
+			if(inscription)
+				inscription += "\n[message]"
+			else
+				inscription = message
+
+/obj/structure/prop/wooden_cross/examine(mob/user)
+	..()
+	to_chat(user, "\"[inscription]\"")
+
+/obj/structure/prop/wooden_cross/attack_hand(mob/user)
+	if(helmet)
+		helmet.forceMove(loc)
+		user.put_in_hands(helmet)
+		to_chat(user, SPAN_NOTICE("You lift \the [helmet] off of \the [src]."))
+		helmet = null
+		overlays.Cut()
+
+/obj/structure/prop/wooden_cross/attack_alien(mob/living/carbon/Xenomorph/M)
+	M.animation_attack_on(src)
+	update_health(rand(M.melee_damage_lower, M.melee_damage_upper))
+	playsound(src, 'sound/effects/woodhit.ogg', 25, 1)
+	if(health <= 0)
+		M.visible_message(SPAN_DANGER("[M] slices [src] apart!"), \
+		SPAN_DANGER("You slice [src] apart!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	else
+		M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
+		SPAN_DANGER("You slash [src]!"), null, 5, CHAT_TYPE_XENO_COMBAT)
+	return XENO_ATTACK_ACTION

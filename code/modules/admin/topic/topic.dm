@@ -1028,7 +1028,7 @@
 
 			if(is_alien_whitelisted(M,"Yautja Elder"))
 				M.change_real_name(M, "Elder [y_name]")
-				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/full(H), WEAR_JACKET)
+				H.equip_to_slot_or_del(new /obj/item/clothing/suit/armor/yautja/hunter/full(H), WEAR_JACKET)
 				H.equip_to_slot_or_del(new /obj/item/weapon/melee/twohanded/yautja/glaive(H), WEAR_L_HAND)
 			else
 				M.change_real_name(M, y_name)
@@ -1120,7 +1120,7 @@
 
 	else if(href_list["admincancelpredsd"])
 		if (!check_rights(R_MOD))	return
-		var/obj/item/clothing/gloves/yautja/bracer = locate(href_list["bracer"])
+		var/obj/item/clothing/gloves/yautja/hunter/bracer = locate(href_list["bracer"])
 		var/mob/living/carbon/victim = locate(href_list["victim"])
 		if (!istype(bracer))
 			return

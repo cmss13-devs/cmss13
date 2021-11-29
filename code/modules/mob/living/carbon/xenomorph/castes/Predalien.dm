@@ -59,6 +59,8 @@
 /mob/living/carbon/Xenomorph/Predalien/Initialize(mapload, mob/living/carbon/Xenomorph/oldXeno, h_number)
 	. = ..()
 	icon = get_icon_from_source(CONFIG_GET(string/alien_predalien))
+	icon_xeno = get_icon_from_source(CONFIG_GET(string/alien_predalien))
+	icon_xenonid = get_icon_from_source(CONFIG_GET(string/alien_predalien))
 	addtimer(CALLBACK(src, .proc/announce_spawn), 3 SECONDS)
 	hunter_data.dishonored = TRUE
 	hunter_data.dishonored_reason = "An abomination upon the honor of us all!"

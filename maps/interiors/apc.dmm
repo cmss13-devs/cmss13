@@ -142,7 +142,8 @@
 /area/space)
 "r" = (
 /obj/structure/interior_wall/apc{
-	icon_state = "corner_inverse_L"
+	icon_state = "corner_inverse_L";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)
@@ -360,7 +361,8 @@
 /area/space)
 "Q" = (
 /obj/structure/interior_wall/apc{
-	icon_state = "wall_2"
+	icon_state = "wall_2";
+	opacity = 0
 	},
 /turf/open/void/vehicle,
 /area/space)

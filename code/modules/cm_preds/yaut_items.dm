@@ -1,5 +1,6 @@
 //Items specific to yautja. Other people can use em, they're not restricted or anything.
 //They can't, however, activate any of the special functions.
+//Thrall subtypes are located in /code/modules/cm_preds/thrall_items.dm
 
 /proc/add_to_missing_pred_gear(var/obj/item/W)
 	if(!(W in yautja_gear) && !(W in untracked_yautja_gear) && !is_admin_level(W.z))
@@ -18,11 +19,9 @@
 
 //======================================\\
 //=================\\//=================\\
-
-
 /obj/item/clothing/suit/armor/yautja
-	name = "clan armor"
-	desc = "A suit of armor with light padding. It looks old, yet functional."
+	name = "ancient alien armor"
+	desc = "Ancient armor made from a strange alloy. It feels cold with an alien weight."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "halfarmor1_ebony"
@@ -31,17 +30,18 @@
 		WEAR_JACKET = 'icons/mob/humans/onmob/hunter/pred_gear.dmi'
 	)
 
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
 	sprite_sheets = list(SPECIES_MONKEY = 'icons/mob/humans/species/monkeys/onmob/suit_monkey_1.dmi')
 	flags_armor_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_ARMS
 	flags_item = ITEM_PREDATOR
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	slowdown = SLOWDOWN_ARMOR_NONE
 	min_cold_protection_temperature = ARMOR_min_cold_protection_temperature
 	max_heat_protection_temperature = ARMOR_max_heat_protection_temperature
@@ -89,7 +89,34 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
-/obj/item/clothing/suit/armor/yautja/full
+/obj/item/clothing/suit/armor/yautja/dropped(mob/living/user)
+	add_to_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/suit/armor/yautja/pickup(mob/living/user)
+	if(isYautja(user))
+		remove_from_missing_pred_gear(src)
+	..()
+
+/obj/item/clothing/suit/armor/yautja/Destroy()
+	remove_from_missing_pred_gear(src)
+	return ..()
+
+/obj/item/clothing/suit/armor/yautja/hunter
+	name = "clan armor"
+	desc = "A suit of armor with light padding. It looks old, yet functional."
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+
+/obj/item/clothing/suit/armor/yautja/hunter/full
 	name = "heavy clan armor"
 	desc = "A suit of armor with heavy padding. It looks old, yet functional."
 	icon_state = "fullarmor_ebony"
@@ -117,19 +144,6 @@
 	. = ..(mapload, 0)
 	icon_state = "fullarmor_[armor_material]"
 	item_state_slots = list(WEAR_JACKET = "fullarmor_[armor_material]")
-
-/obj/item/clothing/suit/armor/yautja/dropped(mob/living/user)
-	add_to_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/suit/armor/yautja/pickup(mob/living/user)
-	if(isYautja(user))
-		remove_from_missing_pred_gear(src)
-	..()
-
-/obj/item/clothing/suit/armor/yautja/Destroy()
-	remove_from_missing_pred_gear(src)
-	return ..()
 
 
 /obj/item/clothing/cape
@@ -199,9 +213,20 @@
 	icon_state = "cape_elder_n"
 	to_chat(usr, "Your cape has been dyed!")
 
+
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+
+
 /obj/item/clothing/shoes/yautja
-	name = "clan greaves"
-	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
+	name = "ancient alien greaves"
+	desc = "Greaves made from scraps of cloth and a strange alloy. They feel cold with an alien weight."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	item_icons = list(
@@ -209,25 +234,29 @@
 	)
 	icon_state = "y-boots1_ebony"
 
-
 	unacidable = TRUE
 	permeability_coefficient = 0.01
 	flags_inventory = NOSLIPPING
 	flags_armor_protection = BODY_FLAG_FEET|BODY_FLAG_LEGS|BODY_FLAG_GROIN
 	flags_item = ITEM_PREDATOR
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
 	siemens_coefficient = 0.2
 	min_cold_protection_temperature = SHOE_min_cold_protection_temperature
 	max_heat_protection_temperature = SHOE_max_heat_protection_temperature
-	items_allowed = list(/obj/item/weapon/melee/yautja/knife, /obj/item/weapon/gun/energy/yautja/plasmapistol)
-	var/bootnumber = 1
+	items_allowed = list(
+		/obj/item/weapon/melee/yautja/knife,
+		/obj/item/weapon/gun/energy/yautja/plasmapistol
+		)
+
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
 	..()
@@ -238,26 +267,40 @@
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
 
-/obj/item/clothing/shoes/yautja/dropped(mob/living/user)
+/obj/item/clothing/shoes/yautja/hunter
+	name = "clan greaves"
+	desc = "A pair of armored, perfectly balanced boots. Perfect for running through the jungle."
+
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
+
+
+/obj/item/clothing/shoes/yautja/hunter/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)
 	..()
 
-/obj/item/clothing/shoes/yautja/pickup(mob/living/user)
+/obj/item/clothing/shoes/yautja/hunter/pickup(mob/living/user)
 	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
 
-/obj/item/clothing/shoes/yautja/Destroy()
+/obj/item/clothing/shoes/yautja/hunter/Destroy()
 	remove_from_missing_pred_gear(src)
 	return ..()
 
-/obj/item/clothing/shoes/yautja/knife/New()
+/obj/item/clothing/shoes/yautja/hunter/knife/New()
 	..()
 	stored_item = new /obj/item/weapon/melee/yautja/knife(src)
 	update_icon()
 /obj/item/clothing/under/chainshirt
-	name = "body mesh"
-	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
+	name = "ancient alien mesh suit"
+	desc = "A strange alloy weave in the form of a vest. It feels cold with an alien weight."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
 	icon_state = "mesh_shirt"
@@ -269,16 +312,17 @@
 	flags_heat_protection = BODY_FLAG_CHEST|BODY_FLAG_GROIN|BODY_FLAG_LEGS|BODY_FLAG_ARMS|BODY_FLAG_FEET|BODY_FLAG_HANDS
 	flags_item = ITEM_PREDATOR
 	has_sensor = 0
-	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
-	armor_bullet = CLOTHING_ARMOR_HIGH
-	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_bomb = CLOTHING_ARMOR_HIGH
-	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
-	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 	siemens_coefficient = 0.9
 	min_cold_protection_temperature = ICE_PLANET_min_cold_protection_temperature
+
+	armor_melee = CLOTHING_ARMOR_MEDIUM
+	armor_bullet = CLOTHING_ARMOR_MEDIUM
+	armor_laser = CLOTHING_ARMOR_MEDIUM
+	armor_energy = CLOTHING_ARMOR_MEDIUM
+	armor_bomb = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUM
+	armor_rad = CLOTHING_ARMOR_MEDIUM
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
 
 /obj/item/clothing/under/chainshirt/Destroy()
 	remove_from_missing_pred_gear(src)
@@ -292,6 +336,19 @@
 	if(isYautja(user))
 		remove_from_missing_pred_gear(src)
 	..()
+
+/obj/item/clothing/under/chainshirt/hunter
+	name = "body mesh"
+	desc = "A set of very fine chainlink in a meshwork for comfort and utility."
+
+	armor_melee = CLOTHING_ARMOR_MEDIUMLOW
+	armor_bullet = CLOTHING_ARMOR_HIGH
+	armor_laser = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_energy = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_bomb = CLOTHING_ARMOR_HIGH
+	armor_bio = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_rad = CLOTHING_ARMOR_MEDIUMHIGH
+	armor_internaldamage = CLOTHING_ARMOR_MEDIUMHIGH
 
 //=================//\\=================\\
 //======================================\\
@@ -863,7 +920,7 @@
 
 //flavor armor & greaves, not a subtype
 /obj/item/clothing/suit/armor/yautja_flavor
-	name = "stone clan armor"
+	name = "alien stone armor"
 	desc = "A suit of armor made entirely out of stone. Looks incredibly heavy."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'
@@ -894,7 +951,7 @@
 	item_state_slots = list(WEAR_JACKET = "fullarmor")
 
 /obj/item/clothing/shoes/yautja_flavor
-	name = "stone clan greaves"
+	name = "alien stone greaves"
 	desc = "A pair of armored, perfectly balanced boots. Perfect for running through cement because they're incredibly heavy."
 
 	icon = 'icons/obj/items/hunter/pred_gear.dmi'

@@ -2,7 +2,7 @@
 /proc/message_all_yautja(var/msg, var/soundeffect = TRUE)
 	for(var/mob/living/carbon/human/Y in GLOB.yautja_mob_list)
 		// Send message to the bracer; appear multiple times if we have more bracers
-		for(var/obj/item/clothing/gloves/yautja/G in Y.contents)
+		for(var/obj/item/clothing/gloves/yautja/hunter/G in Y.contents)
 			to_chat(Y, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
 			if(G.notification_sound)
 				playsound(Y.loc, 'sound/items/pred_bracer.ogg', 75, 1)
@@ -13,7 +13,7 @@
 
 	var/mob/living/carbon/T = hunter_data.thrall
 
-	for(var/obj/item/clothing/gloves/yautja/G in T.contents)
+	for(var/obj/item/clothing/gloves/yautja/hunter/G in T.contents)
 		to_chat(T, SPAN_YAUTJABOLD("[icon2html(G)] \The <b>[G]</b> beeps: [msg]"))
 		if(G.notification_sound)
 			playsound(T.loc, 'sound/items/pred_bracer.ogg', 75, 1)
@@ -271,7 +271,7 @@
 		to_chat(src, "Not here. Only on the ship.")
 		return
 
-	var/obj/item/clothing/gloves/yautja/Y = src.gloves
+	var/obj/item/clothing/gloves/yautja/hunter/Y = src.gloves
 	if(!istype(Y) || Y.upgrades) return
 
 	var/sure = alert("An array of powerful weapons are displayed to you. Pick your gear carefully. If you cancel at any point, you will not claim your equipment.","Sure?","Begin the Hunt","No, not now")
@@ -317,7 +317,7 @@
 				if("The Purifying Smart-Disc")
 					new /obj/item/explosive/grenade/spawnergrenade/smartdisc(src.loc)
 				if("The Formidable Plate Armor")
-					new /obj/item/clothing/suit/armor/yautja/full(src.loc, 0,  src.client.prefs.predator_armor_material)
+					new /obj/item/clothing/suit/armor/yautja/hunter/full(src.loc, 0,  src.client.prefs.predator_armor_material)
 				if("The Steadfast Shield")
 					new /obj/item/weapon/shield/riot/yautja(src.loc)
 			choice = mother_1

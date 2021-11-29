@@ -402,6 +402,9 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
+/obj/structure/bed/chair/vehicle{
+	dir = 1
+	},
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},
@@ -421,6 +424,7 @@
 /obj/structure/barricade/handrail{
 	dir = 8
 	},
+/obj/structure/bed/chair/vehicle,
 /turf/open/shuttle/vehicle{
 	icon_state = "floor_3_13"
 	},

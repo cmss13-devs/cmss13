@@ -104,7 +104,6 @@
 		return
 
 	take_damage_type(O.force * 0.05, "blunt", user) //Melee weapons from people do very little damage
-	. = ..()
 
 // Frame repairs on the vehicle itself
 /obj/vehicle/multitile/proc/handle_repairs(var/obj/item/O, var/mob/user)
@@ -224,10 +223,13 @@
 	playsound(X.loc, pick('sound/effects/metalhit.ogg', 'sound/weapons/alien_claw_metal1.ogg', 'sound/weapons/alien_claw_metal2.ogg', 'sound/weapons/alien_claw_metal3.ogg'), 25, 1)
 
 	var/damage_mult = 1
-	if(X.caste == XENO_CASTE_RAVAGER)
+	if(X.caste == XENO_CASTE_RAVAGER) //Ravs does a heckin double damage
 		damage_mult = 2
 
-	take_damage_type(damage * damage_mult, "slash", X) //Ravs do a heckin double damage
+	else if(X.caste == XENO_CASTE_QUEEN) //Queen does 150% damage to discourage blocking her
+		damage_mult = 1.5
+
+	take_damage_type(damage * damage_mult, "slash", X)
 
 	healthcheck()
 	return XENO_ATTACK_ACTION
@@ -241,6 +243,9 @@
 	var/penetration = P.ammo.penetration
 	var/firer = P.firer
 
+	if(P.runtime_iff_group && get_target_lock(P.runtime_iff_group))
+		return
+
 	if(ammo_flags & AMMO_ANTISTRUCT)
 		// Multiplier based on tank railgun relationship, so might have to reconsider multiplier for AMMO_SIEGE in general
 		damage = round(damage*ANTISTRUCT_DMG_MULT_TANK)
@@ -250,6 +255,16 @@
 	take_damage_type(damage * (0.33 + penetration/100), dam_type, firer)
 
 	healthcheck()
+
+//to handle IFF bullets
+/obj/vehicle/multitile/proc/get_target_lock(var/access_to_check)
+	if(isnull(access_to_check) || !vehicle_faction)
+		return FALSE
+
+	if(!islist(access_to_check))
+		return access_to_check == vehicle_faction
+
+	return vehicle_faction in access_to_check
 
 /obj/vehicle/multitile/ex_act(var/severity)
 	take_damage_type(severity * 0.5, "explosive")

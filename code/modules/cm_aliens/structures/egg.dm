@@ -235,6 +235,8 @@
 /obj/effect/alien/egg/flamer_fire_act() // gotta kill the egg + hugger
 	Burst(TRUE)
 
+/obj/effect/alien/egg/alpha
+	hivenumber = XENO_HIVE_ALPHA
 
 //The invisible traps around the egg to tell it there's a mob right next to it.
 /obj/effect/egg_trigger

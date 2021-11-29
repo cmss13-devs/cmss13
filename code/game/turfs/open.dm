@@ -287,8 +287,8 @@
 			var/mob/living/carbon/human/H = AM
 			cleanup(H)
 			if(H.gloves && rand(0,100) < 60)
-				if(istype(H.gloves,/obj/item/clothing/gloves/yautja))
-					var/obj/item/clothing/gloves/yautja/Y = H.gloves
+				if(istype(H.gloves,/obj/item/clothing/gloves/yautja/hunter))
+					var/obj/item/clothing/gloves/yautja/hunter/Y = H.gloves
 					if(Y && istype(Y) && Y.cloaked)
 						to_chat(H, SPAN_WARNING(" Your bracers hiss and spark as they short out!"))
 						Y.decloak(H, TRUE)

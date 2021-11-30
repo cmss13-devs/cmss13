@@ -122,7 +122,7 @@
 /obj/item/defenses/handheld/sentry/flamer/get_upgrade_list()
 	. = list()
 	if(!MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_SNIPER_SENTRY))
-		.["Plasma Glob Flamer"] = /obj/item/defenses/handheld/sentry/dmr
+		.["Plasma Glob Flamer"] = /obj/item/defenses/handheld/sentry/flamer/plasma
 	. += list(
 		"Mini Flamer" = /obj/item/defenses/handheld/sentry/flamer/mini
 	)

@@ -35,10 +35,14 @@
 	time_to_unequip = 20
 	anti_hug = 5
 
+	var/thrall = FALSE//Used to affect icon generation.
+
 
 /obj/item/clothing/mask/gas/yautja/New(location, mask_number = rand(1,12), armor_material = "ebony", elder_restricted = 0)
 	..()
 	forceMove(location)
+	if(thrall)
+		return
 
 	if(mask_number > 12)
 		mask_number = 1
@@ -153,7 +157,6 @@
 /obj/item/clothing/mask/gas/yautja/thrall
 	name = "alien mask"
 	desc = "A simplistic metallic face mask with advanced capabilities."
-	color = "#b85440"
 	icon_state = "thrall_mask"
 	item_state = "thrall_mask"
 	icon = 'icons/obj/items/hunter/thrall_gear.dmi'
@@ -161,6 +164,7 @@
 		WEAR_FACE = 'icons/mob/humans/onmob/hunter/thrall_gear.dmi'
 	)
 	item_state_slots = list(WEAR_FACE = "thrall_mask")
+	thrall = TRUE
 
 /obj/item/clothing/mask/gas/yautja/thrall/equipped(mob/living/carbon/human/user, slot)
 	if(slot == WEAR_FACE)

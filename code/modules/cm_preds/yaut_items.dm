@@ -54,9 +54,12 @@
 	unacidable = TRUE
 	item_state_slots = list(WEAR_JACKET = "halfarmor1")
 	valid_accessory_slots = list(ACCESSORY_SLOT_ARMOR_A, ACCESSORY_SLOT_ARMOR_L, ACCESSORY_SLOT_ARMOR_S, ACCESSORY_SLOT_ARMOR_M)
+	var/thrall = FALSE//Used to affect icon generation.
 
 /obj/item/clothing/suit/armor/yautja/Initialize(mapload, armor_number = rand(1,7), armor_material = "ebony", elder_restricted = 0)
 	. = ..()
+	if(thrall)
+		return
 	if(elder_restricted)
 		switch(armor_number)
 			if(1341)
@@ -257,9 +260,12 @@
 	armor_bio = CLOTHING_ARMOR_MEDIUM
 	armor_rad = CLOTHING_ARMOR_MEDIUM
 	armor_internaldamage = CLOTHING_ARMOR_MEDIUM
+	var/thrall = FALSE//Used to affect icon generation.
 
 /obj/item/clothing/shoes/yautja/New(location, boot_number = rand(1,4), armor_material = "ebony")
 	..()
+	if(thrall)
+		return
 	if(boot_number > 4)
 		boot_number = 1
 	icon_state = "y-boots[boot_number]_[armor_material]"

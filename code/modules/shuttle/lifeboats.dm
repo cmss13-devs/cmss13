@@ -33,14 +33,14 @@
 
 /// Port Aft Lifeboat default dock
 /obj/docking_port/stationary/lifeboat_dock/port
-	name = "Almayer Starboard Lifeboat Docking Port"
+	name = "Almayer Port Lifeboat Docking Port"
 	dir = NORTH
 	id = "almayer-lifeboat1"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_port
 
 /// Port Aft Lifeboat default dock
 /obj/docking_port/stationary/lifeboat_dock/starboard
-	name = "Almayer Port Lifeboat Docking Port"
+	name = "Almayer Starboard Lifeboat Docking Port"
 	dir = NORTH
 	id = "almayer-lifeboat2"
 	roundstart_template = /datum/map_template/shuttle/lifeboat_starboard

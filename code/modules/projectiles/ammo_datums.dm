@@ -2681,14 +2681,14 @@
 	name = ".22 hornet round"
 	icon_state = "hornet_round"
 	flags_ammo_behavior = AMMO_BALLISTIC
-	damage = 55
+	damage = 20
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
 
 /datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, 5, world.time)
+	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
 
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"

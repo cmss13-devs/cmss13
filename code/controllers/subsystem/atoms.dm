@@ -11,6 +11,7 @@ SUBSYSTEM_DEF(atoms)
 	var/old_initialized
 
 	var/list/late_loaders = list()
+	var/list/roundstart_loaders = list()
 
 	var/list/BadInitializeCalls = list()
 
@@ -85,6 +86,11 @@ SUBSYSTEM_DEF(atoms)
 			if(INITIALIZE_HINT_QDEL)
 				qdel(A)
 				qdeleted = TRUE
+			if(INITIALIZE_HINT_ROUNDSTART)
+				if(SSticker.current_state >= GAME_STATE_PLAYING)
+					A.LateInitialize()
+				else
+					roundstart_loaders += A
 			else
 				BadInitializeCalls[the_type] |= BAD_INIT_NO_HINT
 
@@ -94,6 +100,11 @@ SUBSYSTEM_DEF(atoms)
 		BadInitializeCalls[the_type] |= BAD_INIT_DIDNT_INIT
 
 	return qdeleted || QDELING(A)
+
+/datum/controller/subsystem/atoms/proc/lateinit_roundstart_atoms()
+	for(var/atom/A as anything in roundstart_loaders)
+		A.LateInitialize()
+	roundstart_loaders.Cut()
 
 /datum/controller/subsystem/atoms/proc/map_loader_begin()
 	old_initialized = initialized

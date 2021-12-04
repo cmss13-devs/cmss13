@@ -1288,12 +1288,7 @@
 	},
 /area/yautja)
 "cE" = (
-/obj/structure/machinery/prop/almayer/CICmap{
-	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds.";
-	icon = 'icons/turf/walls/hunter.dmi';
-	icon_state = "globe";
-	name = "Hunter Globe"
-	},
+/obj/structure/machinery/prop/almayer/CICmap/yautja,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1571,12 +1566,7 @@
 	},
 /area/yautja)
 "cZ" = (
-/obj/structure/machinery/prop/almayer/CICmap{
-	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds.";
-	icon = 'icons/turf/walls/hunter.dmi';
-	icon_state = "globe";
-	name = "Hunter Globe"
-	},
+/obj/structure/machinery/prop/almayer/CICmap/yautja,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	dir = 10;
@@ -3116,12 +3106,7 @@
 	},
 /area/yautja)
 "Rq" = (
-/obj/structure/machinery/prop/almayer/CICmap{
-	desc = "A globe designed by the hunters to show them the location of prey across the hunting grounds.";
-	icon = 'icons/turf/walls/hunter.dmi';
-	icon_state = "globe";
-	name = "Hunter Globe"
-	},
+/obj/structure/machinery/prop/almayer/CICmap/yautja,
 /turf/open/floor/strata{
 	color = "#5e5d5d";
 	icon_state = "multi_tiles"

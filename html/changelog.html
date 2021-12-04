@@ -61,6 +61,61 @@
 	</tr>
 </table>
 
+			<h2 class="date">01 December 2021</h2>
+			<h3 class="author">Morrow updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes Invisible Logi Backpack on some maps</li>
+			</ul>
+			<h3 class="author">Nanu updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Tweaks the Hornets dmg. Lowers the dmg to 20 per pellet. Increased the bonus dmg stacks to 5%.</li>
+			</ul>
+			<h3 class="author">Stan_Albatross updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Planted c4 will no longer be moved by explosions.</li>
+			</ul>
+			<h3 class="author">forest2001 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">USS Almayer Lifeboats have swapped IDs, as they're currently the wrong way round.</li>
+			</ul>
+
+			<h2 class="date">30 November 2021</h2>
+			<h3 class="author">Geeves updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Marine announcements will now properly only be sent to marines, PMCs, and anyone aboard the Almayer.</li>
+				<li class="rscadd">Added factional groundside consoles. These only send announcements to their specific faction, and cannot set the LZ or overwatch USCM squads.</li>
+				<li class="rscadd">Observers now get a message when an OB is fired, and can jump to its location to view the carnage.</li>
+				<li class="tweak">UPP Comms now shows up as UPP rather than #unkn.</li>
+				<li class="bugfix">Selecting the Plasma Glob sentry upgrade will now properly give you the Plasma Glob sentry upgrade.</li>
+			</ul>
+			<h3 class="author">forest2001 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Thrall armor now uses its sprites rather than getting overwritten and becoming invisible.</li>
+			</ul>
+
+			<h2 class="date">29 November 2021</h2>
+			<h3 class="author">Geeves updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Yautja translator type preference now properly saves.</li>
+				<li class="rscadd">Senior Enlisted Advisors now have the ability to make their LOOCs appear in their overhead chat.</li>
+				<li class="tweak">Marine Tacmaps no longer care about which squad is being overwatched, all squads will always have their regular squad colors.</li>
+				<li class="rscadd">Queens on ovi now have access to a Xeno Tacmap in the Alien tabs, as 'View Xeno Tacmap'. The structure of the cave isn't shrouded for them, but it does not showcase human movement, only xeno.</li>
+				<li class="rscadd">Yautja hunter globes now have a combination of Marine and Xeno tacmaps.</li>
+				<li class="rscadd">Added factional tacmaps for UPP, CLF, PMCs.</li>
+				<li class="rscadd">You can no longer shoot or attack dead enemies during Faction Clash, nor can you strip their gear or pull them around if they're crit or dead. Staff can toggle this feature mid-round.</li>
+				<li class="tweak">Engineers can't select the DMR or Plasma Glob turret as their engitech upgrade during Faction Clash. Staff can toggle this feature mid-round.</li>
+				<li class="rscadd">Admins can now toggle OB warheads spawning roundstart or not.</li>
+				<li class="rscadd">Your seeing in darkness as an observer preference will now persist.</li>
+				<li class="bugfix">Your taskbar flashing preferences now properly load.</li>
+				<li class="tweak">Only people part of the marine faction are able to see what the primary LZ is in the Status panel now.</li>
+			</ul>
+			<h3 class="author">Stan_Albatross updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">When you set orders via overwatch, they will appear in chat for those recieving them as well.</li>
+				<li class="tweak">When you overwatch message a squad or SL, or set orders, the message/orders that you sent will be shown back to you.</li>
+				<li class="tweak">Clarified when the OB and supply drops are on cooldown via error messages when attempting launch from the overwatch consoles, renamed a few instances of \"orbital bombardment\" to \"orbital bombardment cannon\".</li>
+			</ul>
+
 			<h2 class="date">28 November 2021</h2>
 			<h3 class="author">Stan_Albatross updated:</h3>
 			<ul class="changes bgimages16">
@@ -1025,97 +1080,6 @@
 			<h3 class="author">sg2002 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="rscadd">Marines can now speak on multiple channels at the same time using "..". For example "..abcd OB incoming!" would broadcast that on all 4 channels. You can speak on up to 4 channels at a time.</li>
-			</ul>
-
-			<h2 class="date">29 September 2021</h2>
-			<h3 class="author">Firartix updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed a number of improperly deleted objects around mobs (backend performance)</li>
-				<li class="tweak">Increased quadtree density to reduce overhead of range checking (eg. in sound and automated sentries)</li>
-				<li class="tweak">Optimized a good part of the range checking code implementation</li>
-				<li class="rscadd">Added a verb for admins with +FUN to load map templates as new z-levels easily (Admin, Events, Load Event Level)</li>
-			</ul>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Squad Leaders can now fireman carry. It has a 3 second delay. They do not get any police skills.</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Returns Scimitars to Hunter Bracers. They take the place of a primary weapon, do increased damage compared to normal wristblades but don't have a speed increase on continual use.</li>
-			</ul>
-			<h3 class="author">ghostsheet updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixed an incorrect sprite for the Classic Cigar</li>
-			</ul>
-
-			<h2 class="date">28 September 2021</h2>
-			<h3 class="author">Firartix updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">bone breaking now actually uses bone break combat configuration for purpose of computing armor bypass and critical hits instead of organ damage one. values being the same anyway, this actually changes nothing.</li>
-			</ul>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Yautja healing crystals now help with internal and external bleeding.</li>
-				<li class="rscadd">APC hardpoints now get darker as they get damaged.</li>
-				<li class="rscadd">Freed mobs now display their role next to their name in the freed mobs menu.</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Code for View Variables staff tool slightly tidied.</li>
-				<li class="rscadd">New staff tool for creating custom papers without using a fax.</li>
-			</ul>
-			<h3 class="author">Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Replaced hull windows with Big Red hull windows on 35.Filtration restored, a Nightmare Insert for Big Red. Also removed walls under said windows.</li>
-				<li class="maptweak">Remapped all areas around the yard on Sci-Annex. Oh and I removed the pillar, you know the one.</li>
-			</ul>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Shotgun ammo pouch no longer changes its sprite when opened.</li>
-				<li class="bugfix">Storage items with map skin variants that spawn full no longer have the wrong-coloured flap until first opened.</li>
-				<li class="bugfix">Gunbelt sprite fullness no longer affected by whether the gun is or is not inserted.</li>
-			</ul>
-			<h3 class="author">ihatethisengine2 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Users can now only start restart votes if there are no active admins online.</li>
-				<li class="bugfix">Admin rights are now checked properly when creating votes.</li>
-			</ul>
-
-			<h2 class="date">27 September 2021</h2>
-			<h3 class="author">Firartix updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Removed/Updated some invalid objects in map files</li>
-			</ul>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Autolathes can now switch their categories again.</li>
-				<li class="tweak">The click delay when using reagent containers and assemblies have been reduced, meaning you can operate reagent tanks and assemblies faster.</li>
-				<li class="tweak">Igniters now start unsecured and ready to be attached.</li>
-				<li class="rscadd">Using a reagent container on a Chem Dispenser, Chem Master, or All-in-One Grinder now swaps the containers if there's one already inserted, instead of denying you access.</li>
-				<li class="bugfix">Antag vendors now work properly again.</li>
-				<li class="bugfix">Mobs stuck on solid turfs, like walls, now properly calculate bullet hit chance when fired upon. This means IFF now works when you shoot at someone stuck inside a resin wall.</li>
-				<li class="rscadd">Re-added Echo squad to standard play. They are the squad that cryorines spawn into. You can also be put into Echo squad, but you cannot join as an Echo marine from roundstart. Echo squad has access to every squad's prep.</li>
-				<li class="rscadd">Cryorines now spawn a Squad Leader if they don't have one.</li>
-				<li class="tweak">Requisitions no longer holds a copy of every squad's marine gloves, instead they have normal marine gloves and standard black marine gloves, wear it as you wish.</li>
-				<li class="rscadd">Being put into another squad will automatically update your headset frequency and armor colors.</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Background changes to signals for unequipping items.</li>
-				<li class="bugfix">Fixed runtime errors involving prescription glasses.</li>
-				<li class="bugfix">Fixed a runtime error during hive structure construction choice.</li>
-				<li class="bugfix">Fixed a runtime error on unnesting live men.</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">FF Logs are now color coded - Green for Living Target, Orange for Dead Target.</li>
-				<li class="tweak">Taser shots no longer create FF logs.</li>
-				<li class="tweak">Changed Xeno slash log for infected & nested to a staff alert instead of FF message.</li>
-			</ul>
-			<h3 class="author">naut updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">You can now buckle (and buckle others) to chairs and beds that are right next to them, instead of needing them to stand on top of it to buckle.</li>
-				<li class="soundadd">Added buckling sound effects for above.</li>
 			</ul>
 </div>
 </body>

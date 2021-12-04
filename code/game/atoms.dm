@@ -406,7 +406,6 @@ Parameters are passed from New.
 /atom/proc/LateInitialize()
 	return
 
-
 /atom/process()
 	return
 

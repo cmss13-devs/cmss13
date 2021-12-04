@@ -40,7 +40,7 @@
 
 
 /obj/item/proc/attack(mob/living/M, mob/living/user)
-	if(flags_item & NOBLUDGEON)
+	if((flags_item & NOBLUDGEON) || (MODE_HAS_TOGGLEABLE_FLAG(MODE_NO_ATTACK_DEAD) && M.stat == DEAD && !user.get_target_lock(M.faction_group)))
 		return FALSE
 
 	if(SEND_SIGNAL(M, COMSIG_MOB_ITEM_ATTEMPT_ATTACK, user, src) & COMPONENT_CANCEL_ATTACK)

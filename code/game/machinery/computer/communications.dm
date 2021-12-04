@@ -62,10 +62,10 @@
 		close_browser(current_mapviewer, "marineminimap")
 		current_mapviewer = null
 		return
-	if(!istype(marine_mapview_overlay_5))
-		overlay_marine_mapview()
-	current_mapviewer << browse_rsc(marine_mapview_overlay_5, "marine_minimap.png")
-	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1][1]*2)+50]x[(map_sizes[1][2]*2)+50]", closeref = src)
+	if(!populated_mapview_type_updated[TACMAP_DEFAULT])
+		overlay_tacmap(TACMAP_DEFAULT)
+	current_mapviewer << browse_rsc(populated_mapview_types[TACMAP_DEFAULT], "marine_minimap.png")
+	show_browser(current_mapviewer, "<img src=marine_minimap.png>", "Marine Minimap", "marineminimap", "size=[(map_sizes[1]*2)+50]x[(map_sizes[2]*2)+50]", closeref = src)
 
 /obj/structure/machinery/computer/communications/Topic(href, href_list)
 	if (href_list["close"] && current_mapviewer)

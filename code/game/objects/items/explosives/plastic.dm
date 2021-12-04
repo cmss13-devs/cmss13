@@ -24,6 +24,11 @@
 	disarm()
 	. = ..()
 
+/obj/item/explosive/plastic/explosion_throw(severity, direction, scatter_multiplier)
+	if(active)
+		return
+	return ..()
+
 /obj/item/explosive/plastic/attack(mob/M as mob, mob/user as mob)
 	return FALSE
 

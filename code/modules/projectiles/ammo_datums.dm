@@ -2760,6 +2760,7 @@
 
 /datum/ammo/bullet/shrapnel/jagged
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+	accuracy = HIT_ACCURACY_TIER_MAX
 
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))

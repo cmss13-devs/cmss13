@@ -11,6 +11,7 @@
 	mutator_actions_to_add = list(
 		/datum/action/xeno_action/activable/generate_egg
 	)
+	keystone = TRUE
 
 /datum/xeno_mutator/eggsac/apply_mutator(datum/mutator_set/individual_mutators/MS)
 	. = ..()

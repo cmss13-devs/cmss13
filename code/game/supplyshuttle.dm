@@ -168,7 +168,7 @@ var/datum/controller/supply/supply_controller = new()
 	dat += "<BR><BR>----------------------<br>"
 	dat += "<A href='?src=\ref[src];operation=refresh'>{Refresh}</a><br>"
 
-	show_browser(user, dat, "Supply Drop Console Console", "overwatch", "size=550x550")
+	show_browser(user, dat, "Supply Drop Console", "overwatch", "size=550x550")
 	return
 
 /obj/structure/machinery/computer/supply_drop_console/Topic(href, href_list)

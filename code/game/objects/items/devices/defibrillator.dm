@@ -71,10 +71,14 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return
 
-	defib_cooldown = world.time + 20 //2 seconds cooldown every time the defib is toggled
+	defib_cooldown = world.time + 10 //1 second cooldown every time the defib is toggled
 	ready = !ready
 	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the paddles out" : "off and puts the paddles back in"]."),
 	SPAN_NOTICE("You turn [src] [ready? "on and take the paddles out" : "off and put the paddles back in"]."))
+	if(ready)
+		w_class = SIZE_LARGE
+	else
+		w_class = initial(w_class)
 	playsound(get_turf(src), "sparks", 25, 1, 4)
 	update_icon()
 	add_fingerprint(user)

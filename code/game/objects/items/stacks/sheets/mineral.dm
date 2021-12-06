@@ -19,14 +19,14 @@ GLOBAL_LIST_INIT(sandstone_recipes, list ( \
 	new/datum/stack_recipe("pile of dirt", /obj/structure/machinery/portable_atmospherics/hydroponics/soil, 3, time = 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("sandstone door", /obj/structure/mineral_door/sandstone, 10, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("sandstone wall", /turf/closed/wall/mineral/sandstone, 5, time = 50, skill_req = SKILL_CONSTRUCTION, skill_lvl = SKILL_CONSTRUCTION_ENGI, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("sandstone floor", /turf/open/floor/sandstone/runed, 1, on_floor = 0), \
+	new/datum/stack_recipe("sandstone floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
 	))
 
 GLOBAL_LIST_INIT(runedsandstone_recipes, list ( \
 	new/datum/stack_recipe("temple door", /obj/structure/machinery/door/airlock/sandstone/runed, 15, time = 10, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("temple wall", /turf/closed/wall/mineral/sandstone/runed, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
 	new/datum/stack_recipe("runed temple wall", /turf/closed/wall/mineral/sandstone/runed/decor, 5, time = 50, skill_req = SKILL_ANTAG, skill_lvl = SKILL_ANTAG_HUNTER, one_per_turf = ONE_TYPE_PER_TURF, on_floor = 1), \
-	new/datum/stack_recipe("temple floor", /turf/open/floor/sandstone/runed, 1, on_floor = 0), \
+	new/datum/stack_recipe("temple floor", /turf/open/floor/sandstone/runed, 1, on_floor = 1), \
 	))
 
 GLOBAL_LIST_INIT(silver_recipes, list ( \

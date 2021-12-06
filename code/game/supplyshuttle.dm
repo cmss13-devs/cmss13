@@ -297,6 +297,7 @@ var/datum/controller/supply/supply_controller = new()
 //Can't pick squads, drops less often
 //Uses Echo squad as a placeholder to access its own drop pad
 /obj/structure/machinery/computer/supply_drop_console/limited
+	circuit = /obj/item/circuitboard/computer/supply_drop_console/limited
 	drop_cooldown = 5 MINUTES //higher cooldown than usual
 	can_pick_squad = FALSE//Can't pick squads
 

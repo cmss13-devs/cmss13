@@ -255,7 +255,7 @@ var/global/marines_assigned = 0
 				roles_left = assign_random_role(M, roles_left) //We want to keep the list between assignments.
 			if(BE_MARINE)
 				var/datum/job/marine_job = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
-				assign_role(M, marine_job.title) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
+				assign_role(M, marine_job) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
 			if(BE_XENOMORPH)
 				assign_role(M, temp_roles_for_mode[JOB_XENOMORPH])
 			if(RETURN_TO_LOBBY)

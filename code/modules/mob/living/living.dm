@@ -296,15 +296,13 @@
 
 //whether we are slowed when dragging things
 /mob/living/proc/get_pull_miltiplier()
-	if(grab_level == GRAB_CARRY)
-		return 0.1
+	if(!HAS_TRAIT(src, TRAIT_DEXTROUS))
+		if(grab_level == GRAB_CARRY)
+			return 0.1
+		else
+			return 1.0
 	else
-		return 1.0
-
-/mob/living/carbon/human/get_pull_miltiplier()
-	if(has_species(src,"Yautja"))
-		return 0//Predators aren't slowed when pulling their prey.
-	return ..()
+		return 0
 
 /mob/living/forceMove(atom/destination)
 	stop_pulling()

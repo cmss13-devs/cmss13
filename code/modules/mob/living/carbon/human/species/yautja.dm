@@ -10,7 +10,8 @@
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
-		TRAIT_FOREIGN_BIO
+		TRAIT_FOREIGN_BIO,
+		TRAIT_DEXTROUS
 		)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong

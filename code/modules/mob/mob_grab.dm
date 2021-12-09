@@ -64,8 +64,8 @@
 
 
 	var/mob/victim = grabbed_thing
-	if(victim.mob_size > MOB_SIZE_HUMAN || !(victim.status_flags & CANPUSH))
-		return //can't tighten your grip on big mobs and mobs you can't push.
+	if(victim.mob_size > user.mob_size || !(victim.status_flags & CANPUSH))
+		return //can't tighten your grip on mobs bigger than you and mobs you can't push.
 	last_upgrade = world.time
 
 	switch(user.grab_level)

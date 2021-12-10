@@ -8,22 +8,34 @@
 
 // Toggling procs
 /obj/item/weapon/shield/proc/raise_shield(mob/user as mob) // Prepare for an attack. Slows you down slightly, but increases chance to block.
-	user.visible_message(SPAN_BLUE("[user] raises the [src]."))
+	user.visible_message(SPAN_BLUE("\The [user] raises \the [src]."))
 	shield_readied = TRUE
 	icon_state = "[base_icon_state]_ready"
 
 	var/mob/living/carbon/human/H = user
-	H.shield_slowdown = readied_slowdown
-	H.recalculate_move_delay = TRUE
+	var/current_shield_slowdown = H.shield_slowdown
+	H.shield_slowdown = max(readied_slowdown, H.shield_slowdown)
+	if(H.shield_slowdown != current_shield_slowdown)
+		H.recalculate_move_delay = TRUE
 
 /obj/item/weapon/shield/proc/lower_shield(mob/user as mob)
-	user.visible_message(SPAN_BLUE("[user] lowers the [src]."))
+	user.visible_message(SPAN_BLUE("\The [user] lowers \the [src]."))
 	shield_readied = FALSE
 	icon_state = base_icon_state
 
 	var/mob/living/carbon/human/H = user
-	H.shield_slowdown = 0
-	H.recalculate_move_delay = TRUE
+	var/current_shield_slowdown = H.shield_slowdown
+	var/set_shield_slowdown = 0
+	var/obj/item/weapon/shield/offhand_shield
+	if(H.l_hand == src && istype(H.r_hand, /obj/item/weapon/shield))
+		offhand_shield = H.r_hand
+	else if(H.r_hand == src && istype(H.l_hand, /obj/item/weapon/shield))
+		offhand_shield = H.l_hand
+	if(offhand_shield?.shield_readied)
+		set_shield_slowdown = offhand_shield.readied_slowdown
+	H.shield_slowdown = set_shield_slowdown
+	if(H.shield_slowdown != current_shield_slowdown)
+		H.recalculate_move_delay = TRUE
 
 /obj/item/weapon/shield/proc/toggle_shield(mob/user as mob)
 	if(shield_readied)

@@ -546,12 +546,13 @@
 	initial_burst = FALSE
 	update_flame()
 
-/obj/flamer_fire/process()
+/obj/flamer_fire/process(delta_time)
 	var/turf/T = loc
 	firelevel = max(0, firelevel)
 	if(!istype(T)) //Is it a valid turf? Has to be on a floor
 		qdel(src)
-		return
+		return PROCESS_KILL
+	T.flamer_fire_act(burnlevel*delta_time)
 
 	update_flame()
 
@@ -564,7 +565,7 @@
 		if(++j >= 11) break
 		if(isliving(i))
 			set_on_fire(i)
-		if(isobj(i))
+		else if(isobj(i))
 			var/obj/O = i
 			O.flamer_fire_act(0, weapon_cause_data)
 

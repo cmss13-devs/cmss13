@@ -587,7 +587,7 @@
 	icon_state = "waistcoat"
 
 /obj/item/storage/internal/accessory/surg_vest
-	storage_slots = 12
+	storage_slots = 13
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,

@@ -8519,7 +8519,7 @@
 "aws" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/effect/landmark/start/pilot,
+/obj/effect/landmark/start/crew_chief,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -54160,7 +54160,14 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "kUh" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/tool/crowbar,
+/obj/item/clothing/head/headset{
+	pixel_y = -7
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -60981,8 +60988,10 @@
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "oho" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/item/book/manual/surgery,
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null
+	},
+/obj/item/clothing/mask/rebreather/scarf,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -65500,10 +65509,9 @@
 	},
 /area/almayer/living/briefing)
 "qnD" = (
-/obj/structure/machinery/vending/coffee,
-/obj/structure/sign/safety/coffee{
-	pixel_x = 8;
-	pixel_y = 32
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Crew Chief's Room"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -67272,16 +67280,6 @@
 	tag = "icon-emeraldcorner"
 	},
 /area/almayer/living/briefing)
-"rhf" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/pilotbunks)
 "rhO" = (
 /obj/structure/machinery/disposal{
 	density = 0;
@@ -106010,7 +106008,7 @@ ads
 add
 ohB
 awd
-rhf
+awd
 awd
 awd
 awd
@@ -106213,8 +106211,8 @@ qdQ
 eFT
 hhA
 awd
-amb
-awd
+aws
+amh
 awd
 ana
 aqw
@@ -106416,9 +106414,9 @@ add
 add
 nJx
 awd
-amb
-awd
 kUh
+amh
+awd
 apq
 apq
 apq
@@ -106620,12 +106618,12 @@ aka
 npx
 awd
 oho
-awd
+iFn
 qnD
 amh
 amh
 amh
-alw
+qnD
 iFn
 fdE
 aiX

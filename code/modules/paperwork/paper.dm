@@ -613,7 +613,15 @@
 				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
-			if(C.get_property(PROPERTY_EXPLOSIVE))
+			var/is_volatile = FALSE
+			if(C.chemfiresupp)
+				is_volatile = TRUE
+			else
+				for(var/datum/chem_property/P in C.properties)
+					if(P.volatile)
+						is_volatile = TRUE
+						break
+			if(is_volatile)
 				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("test")

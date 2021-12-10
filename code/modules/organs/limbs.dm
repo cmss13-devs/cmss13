@@ -321,11 +321,11 @@
 		if(W.damage_type == CUT || W.damage_type == BRUISE)
 			var/old_brute = brute
 			brute = W.heal_damage(brute)
-			owner.pain.apply_pain(brute - old_brute)
+			owner.pain.apply_pain(brute - old_brute, BRUTE)
 		else if(W.damage_type == BURN)
 			var/old_burn = burn
 			burn = W.heal_damage(burn)
-			owner.pain.apply_pain(burn - old_burn)
+			owner.pain.apply_pain(burn - old_burn, BURN)
 
 	//Sync the organ's damage with its wounds
 	src.update_damages()

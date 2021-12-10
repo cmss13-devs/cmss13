@@ -169,7 +169,7 @@
 				SPAN_HELPFUL("[user] <b>cleans and seals</b> the wounds on your <b>[affecting.display_name]</b> with bioglue."),
 				SPAN_NOTICE("[user] cleans and seals the wounds on [possessive_their] [affecting.display_name] with bioglue."))
 		if(bandaged)
-			H.apply_damage(-heal_amt, BRUTE, affecting)
+			affecting.heal_damage(brute = heal_amt)
 			use(1)
 
 /obj/item/stack/medical/advanced/bruise_pack/predator
@@ -231,7 +231,7 @@
 				SPAN_HELPFUL("[user] <b>covers the wounds</b> on your <b>[affecting.display_name]</b> with regenerative membrane."),
 				SPAN_NOTICE("[user] covers the wounds on [possessive_their] [affecting.display_name] with regenerative membrane."))
 
-			H.apply_damage(-heal_amt, BURN, affecting)
+			affecting.heal_damage(burn = heal_amt)
 			use(1)
 
 /obj/item/stack/medical/splint

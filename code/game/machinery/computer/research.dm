@@ -51,68 +51,33 @@
 	//Clearance Updating
 	if(!istype(B, /obj/item/card/id))
 		return
-	var/obj/item/card/id/card = B
-	var/clearance_bypass = istype(B, /obj/item/card/id/silver/clearance_badge)
-	if(!(ACCESS_WY_CORPORATE in card.access) && !clearance_bypass)
+	var/obj/item/card/id/silver/clearance_badge/card = B
+	if(!istype(card))
 		visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], but it is refused."))
 		return
-
-	var/list/options = list("Increase","Set to maximum","Set to minimum")
-
-	var/datum/techtree/T = GET_TREE(TREE_MARINE)
-	// Tier 1 allows for CL2, Tier 2 allows for CL4 and Tier 3 allows for CL5
-	var/clearance_allowance = min(T.tier?.tier*2, 5)
-
-	var/can_give_x = FALSE
-	if(clearance_bypass)
-		var/obj/item/card/id/silver/clearance_badge/C = B
-		if(!C.clearance_access)
-			visible_message(SPAN_NOTICE("[user] swipes the clearance card on the [src], but nothing happens."))
-		if(clearance_bypass && user.real_name != C.registered_name)
-			visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. CARD DATA HAS BEEN WIPED."))
-			C.clearance_access = 0
-			return
-
-		if(C.clearance_access == 6)
-			clearance_allowance = 5
-			can_give_x = TRUE
-
-			if(chemical_data.clearance_level == 5)
-				options.Add("Give clearance X")
-		else
-			clearance_allowance = C.clearance_access
-
-
-	var/setting = tgui_input_list(usr,"How do you want to change the clearance settings?","[src]", options)
-	if(!setting)
+	if(card.clearance_access <= chemical_data.clearance_level || (card.clearance_access == 6 && chemical_data.clearance_level >= 5 && chemical_data.clearance_x_access))
+		visible_message(SPAN_NOTICE("[user] swipes the clearance card on the [src], but nothing happens."))
+		return
+	if(user.real_name != card.registered_name)
+		visible_message(SPAN_WARNING("WARNING: ILLEGAL CLEARANCE USER DETECTED. CARD DATA HAS BEEN WIPED."))
+		card.clearance_access = 0
 		return
 
-	switch(setting)
-		if("Increase")
-			if(chemical_data.clearance_level < clearance_allowance)
-				chemical_data.clearance_level = min(5,chemical_data.clearance_level + 1)
-		if("Set to maximum")
-			chemical_data.clearance_level = max(clearance_allowance, chemical_data.clearance_level)
-		if("Set to minimum")
-			chemical_data.clearance_level = 1
-		if("Give clearance X")
-			if(!can_give_x)
-				to_chat(usr, SPAN_WARNING("Access denied."))
-				return
-
-			chemical_data.clearance_x_access = TRUE
-			chemical_data.reached_x_access = TRUE
-
-			visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], granting X clearance access to the terminal."))
-			return
-
-	if(chemical_data.clearance_level == 5 && chemical_data.reached_x_access)
-		chemical_data.clearance_x_access = TRUE
+	var/give_level
+	var/give_x = FALSE
+	if(card.clearance_access == 6)
+		give_level = 5
+		give_x = TRUE
 	else
-		chemical_data.clearance_x_access = FALSE
+		give_level = card.clearance_access
 
-	visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], updating the clearance to level [chemical_data.clearance_level]."))
-	msg_admin_niche("[key_name(user)] has updated the research clearance to level [chemical_data.clearance_level].")
+	chemical_data.clearance_level = give_level
+	if(give_x)
+		chemical_data.clearance_x_access = TRUE
+		chemical_data.reached_x_access = TRUE
+
+	visible_message(SPAN_NOTICE("[user] swipes their ID card on \the [src], updating the clearance to level [give_level][give_x ? "X" : ""]."))
+	msg_admin_niche("[key_name(user)] has updated the research clearance to level [give_level][give_x ? "X" : ""].")
 	return
 
 /obj/structure/machinery/computer/research/attack_hand(mob/user as mob)

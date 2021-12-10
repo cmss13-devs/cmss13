@@ -373,31 +373,29 @@ obj/item/storage/pill_bottle/packet
 
 /obj/item/storage/pill_bottle/clicked(var/mob/user, var/list/mods)
 	if(..())
-		return 1
-	else
-		if(istype(loc, /obj/item/storage/belt/medical))
-			var/obj/item/storage/belt/medical/M = loc
-			if(M.mode)
-				if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
-					error_idlock(user)
-					return
-				if(user.get_active_hand())
-					return 0
-				var/mob/living/carbon/C = user
-				if(C.handcuffed)
-					to_chat(user, SPAN_WARNING("You are handcuffed!"))
-					return
-				if(contents.len)
-					var/obj/item/I = contents[1]
-					if(user.put_in_active_hand(I))
-						remove_from_storage(I,user)
-						to_chat(user, SPAN_NOTICE("You take a pill out of the [name]."))
-						return 1
-				else
-					to_chat(user, SPAN_WARNING("The [name] is empty."))
-					return 0
-			else
-				return 0
+		return TRUE
+	if(!istype(loc, /obj/item/storage/belt/medical))
+		return FALSE
+	var/obj/item/storage/belt/medical/M = loc
+	if(!M.mode)
+		return FALSE
+	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))
+		error_idlock(user)
+		return FALSE
+	if(user.get_active_hand())
+		return FALSE
+	var/mob/living/carbon/C = user
+	if(C.is_mob_restrained())
+		to_chat(user, SPAN_WARNING("You are restrained!"))
+		return FALSE
+	if(!contents.len)
+		to_chat(user, SPAN_WARNING("The [name] is empty."))
+		return FALSE
+	var/obj/item/I = contents[1]
+	if(user.put_in_active_hand(I))
+		remove_from_storage(I,user)
+		to_chat(user, SPAN_NOTICE("You take [I] out of the [name]."))
+		return TRUE
 
 /obj/item/storage/pill_bottle/empty(var/mob/user, var/turf/T)
 	if(skilllock && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))

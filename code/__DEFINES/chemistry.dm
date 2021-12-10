@@ -33,7 +33,7 @@
 
 
 // How many units of reagent are consumed per tick, by default.
-#define REAGENTS_METABOLISM AMOUNT_PER_TIME(1, 20 SECONDS)
+#define REAGENTS_METABOLISM AMOUNT_PER_TIME(1, 10 SECONDS)
 // By defining the effect multiplier this way, it'll exactly adjust
 // all effects according to how they originally were with the 0.4 metabolism
 #define REAGENTS_EFFECT_MULTIPLIER REAGENTS_METABOLISM / 0.4

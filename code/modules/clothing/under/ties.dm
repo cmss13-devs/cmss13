@@ -544,7 +544,7 @@
 	hold = /obj/item/storage/internal/accessory/black_vest
 
 /obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/W, mob/living/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		var/components = 0
 		var/obj/item/reagent_container/glass/beaker/vial
 		var/obj/item/cell/battery

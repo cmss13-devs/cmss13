@@ -404,13 +404,10 @@
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
+		if(isobserver(M))
 			name += " \[ghost\]"
-
+		else if(M.stat == DEAD)
+			name += " \[dead\]"
 		creatures[name] = M
 	return creatures
 

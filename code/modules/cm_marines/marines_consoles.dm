@@ -874,6 +874,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		var/turf/pos = get_turf(H)
 		if(!pos)
 			continue
+		if(is_admin_level(pos.z))
+			continue
 		// Survivors can't be found at ground (until we code remote access to local systems for Almayer)
 		if(H.faction == FACTION_SURVIVOR && is_ground_level(pos.z))
 			continue

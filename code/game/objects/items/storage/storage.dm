@@ -61,15 +61,15 @@
 /obj/item/storage/clicked(var/mob/user, var/list/mods)
 	if(!mods["shift"] && mods["middle"] && CAN_PICKUP(user, src))
 		open(user)
-		return
+		return TRUE
 
 	//Allow alt-clicking to remove items directly from storage.
 	//Does so by passing the alt mod back to do_click(), which eventually delivers it to attack_hand().
 	//This ensures consistent click behaviour between alt-click and left-mouse drawing.
 	if(mods["alt"]  && loc == user && !user.get_active_hand())
-		return
+		return FALSE
 
-	. = ..()
+	return ..()
 
 /obj/item/storage/proc/return_inv()
 	RETURN_TYPE(/list)

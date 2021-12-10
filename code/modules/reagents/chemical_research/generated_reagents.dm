@@ -132,14 +132,14 @@
 	gen_tier = 4
 
 /datum/chemical_reaction/generated/on_reaction(var/datum/reagents/holder, var/created_volume)
-	var/datum/reagent/R = holder.reagent_list[id]
+	var/datum/reagent/R = holder.has_reagent(id)
 	if(!R || !R.properties)
 		return
-	for(var/datum/chem_property/P in R.properties)
-		switch(P.name)
-			if(PROPERTY_HYPERTHERMIC)
-				if(created_volume > R.overdose)
+	if(created_volume > R.overdose)
+		if(R.chemfiresupp)
+			holder.trigger_volatiles = TRUE
+		else
+			for(var/datum/chem_property/P in R.properties)
+				if(P.volatile)
 					holder.trigger_volatiles = TRUE
-			if(PROPERTY_EXPLOSIVE)
-				if(created_volume > R.overdose)
-					holder.trigger_volatiles = TRUE
+					break

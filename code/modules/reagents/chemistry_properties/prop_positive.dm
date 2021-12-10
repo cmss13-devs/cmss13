@@ -11,14 +11,14 @@
 	starter = TRUE
 	value = 1
 
-/datum/chem_property/positive/antitoxic/process(mob/living/M, var/potency = 1)
-	M.apply_damage(-(potency), TOX)
-	M.reagents.remove_all_type(/datum/reagent/toxin, REM, 0, 1)
+/datum/chem_property/positive/antitoxic/process(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(-(0.5 * potency * delta_time), TOX)
+	M.reagents.remove_all_type(/datum/reagent/toxin, 0.5 * REM * delta_time, 0, 1)
 
-/datum/chem_property/positive/antitoxic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_internal_damage(potency, "eyes")
+/datum/chem_property/positive/antitoxic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_internal_damage(0.5 * potency * delta_time, "eyes")
 
-/datum/chem_property/positive/antitoxic/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/antitoxic/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.drowsyness  = max(M.drowsyness, 30)
 
 /datum/chem_property/positive/anticorrosive
@@ -29,14 +29,14 @@
 	starter = TRUE
 	value = 1
 
-/datum/chem_property/positive/anticorrosive/process(mob/living/M, var/potency = 1)
-	M.heal_limb_damage(0, potency)
+/datum/chem_property/positive/anticorrosive/process(mob/living/M, var/potency = 1, delta_time)
+	M.heal_limb_damage(0, 0.5 * potency * delta_time)
 
-/datum/chem_property/positive/anticorrosive/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damages(potency, 0, potency) //Mixed brute/tox damage
+/datum/chem_property/positive/anticorrosive/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(0.5 * potency * delta_time, 0, 0.5 * potency * delta_time) //Mixed brute/tox damage
 
-/datum/chem_property/positive/anticorrosive/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(4*potency, 0, 4*potency) //Massive brute/tox damage
+/datum/chem_property/positive/anticorrosive/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(2 * potency * delta_time, 0, 2 * potency * delta_time) //Massive brute/tox damage
 
 /datum/chem_property/positive/neogenetic
 	name = PROPERTY_NEOGENETIC
@@ -46,14 +46,14 @@
 	starter = TRUE
 	value = 1
 
-/datum/chem_property/positive/neogenetic/process(mob/living/M, var/potency = 1)
-	M.heal_limb_damage(potency, 0)
+/datum/chem_property/positive/neogenetic/process(mob/living/M, var/potency = 1, delta_time)
+	M.heal_limb_damage(0.5 * potency * delta_time, 0)
 
-/datum/chem_property/positive/neogenetic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(potency, BURN)
+/datum/chem_property/positive/neogenetic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(0.5 * potency * delta_time, BURN)
 
-/datum/chem_property/positive/neogenetic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(0, 4*potency, 2*potency)
+/datum/chem_property/positive/neogenetic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(0, 2 * potency * delta_time, potency * delta_time)
 
 /datum/chem_property/positive/repairing
 	name = PROPERTY_REPAIRING
@@ -63,19 +63,19 @@
 	category = PROPERTY_TYPE_MEDICINE
 	value = 2
 
-/datum/chem_property/positive/repairing/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/repairing/process(mob/living/M, var/potency = 1, delta_time)
 	if(!iscarbon(M))
 		return
 	var/mob/living/carbon/human/C = M
 	var/obj/limb/L = pick(C.limbs)
 	if(L && L.status & LIMB_ROBOT)
-		L.heal_damage(2*potency, 2*potency, TRUE)
+		L.heal_damage(potency * delta_time, potency * delta_time, TRUE)
 
-/datum/chem_property/positive/repairing/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+/datum/chem_property/positive/repairing/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, TOX)
 
-/datum/chem_property/positive/repairing/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(4*potency, TOX)
+/datum/chem_property/positive/repairing/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(2 * potency * delta_time, TOX)
 
 /datum/chem_property/positive/hemogenic
 	name = PROPERTY_HEMOGENIC
@@ -83,22 +83,22 @@
 	description = "Increases the production of erythrocytes (red blood cells) in the bonemarrow, leading to polycythemia, an elevated volume of erythrocytes in the blood."
 	rarity = PROPERTY_COMMON
 
-/datum/chem_property/positive/hemogenic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/hemogenic/process(mob/living/M, var/potency = 1, delta_time)
 	if(!iscarbon(M))
 		return
 	var/mob/living/carbon/C = M
 	C.blood_volume = min(C.blood_volume+potency,BLOOD_VOLUME_MAXIMUM+100)
 	if(potency > 3 && C.blood_volume > BLOOD_VOLUME_MAXIMUM && !isYautja(M)) //Too many red blood cells thickens the blood and leads to clotting, doesn't impact Yautja
-		M.take_limb_damage(potency)
-		M.apply_damage(2*potency, OXY)
+		M.take_limb_damage(0.5 * potency * delta_time)
+		M.apply_damage(potency * delta_time, OXY)
 		M.reagent_move_delay_modifier += potency
 		M.recalculate_move_delay = TRUE
 
-/datum/chem_property/positive/hemogenic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+/datum/chem_property/positive/hemogenic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, TOX)
 
-/datum/chem_property/positive/hemogenic/process_critical(mob/living/M, var/potency = 1)
-	M.nutrition = max(M.nutrition - 5*potency, 0)
+/datum/chem_property/positive/hemogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.nutrition = max(M.nutrition - 2.5 * potency * delta_time, 0)
 
 /datum/chem_property/positive/nervestimulating
 	name = PROPERTY_NERVESTIMULATING
@@ -107,24 +107,24 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/positive/nervestimulating/process(mob/living/M, var/potency = 1)
-	M.AdjustKnockedout(potency*-1)
-	M.AdjustStunned(potency*-1)
-	M.AdjustKnockeddown(potency*-1)
-	M.AdjustStunned(-0.5*potency)
+/datum/chem_property/positive/nervestimulating/process(mob/living/M, var/potency = 1, delta_time)
+	M.AdjustKnockedout(-0.5 * potency * delta_time)
+	M.AdjustStunned(-0.5 * potency * delta_time)
+	M.AdjustKnockeddown(-0.5 * potency * delta_time)
+	M.AdjustStunned(-0.25 * potency* delta_time)
 	if(potency > 2)
-		M.stuttering = max(M.stuttering-2*potency, 0)
-		M.confused = max(M.confused-2*potency, 0)
-		M.eye_blurry = max(M.eye_blurry-2*potency, 0)
-		M.drowsyness = max(M.drowsyness-2*potency, 0)
-		M.dizziness = max(M.dizziness-2*potency, 0)
-		M.jitteriness = max(M.jitteriness-2*potency, 0)
+		M.stuttering = max(M.stuttering - potency * delta_time, 0)
+		M.confused = max(M.confused - potency * delta_time, 0)
+		M.eye_blurry = max(M.eye_blurry - potency * delta_time, 0)
+		M.drowsyness = max(M.drowsyness - potency * delta_time, 0)
+		M.dizziness = max(M.dizziness - potency * delta_time, 0)
+		M.jitteriness = max(M.jitteriness - potency * delta_time, 0)
 
-/datum/chem_property/positive/nervestimulating/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+/datum/chem_property/positive/nervestimulating/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, TOX)
 
-/datum/chem_property/positive/nervestimulating/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(potency, potency, 3*potency)
+/datum/chem_property/positive/nervestimulating/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(0.5 * potency* delta_time, 0.5 * potency * delta_time, 1.5 * potency * delta_time)
 
 /datum/chem_property/positive/musclestimulating
 	name = PROPERTY_MUSCLESTIMULATING
@@ -134,20 +134,20 @@
 	category = PROPERTY_TYPE_STIMULANT
 	value = 1
 
-/datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/musclestimulating/process(mob/living/M, var/potency = 1, delta_time)
 	M.reagent_move_delay_modifier -= 0.25 * potency
 	M.recalculate_move_delay = TRUE
-	M.nutrition = max (0, M.nutrition - HUNGER_FACTOR)
-	if(prob(10))
+	M.nutrition = max (0, M.nutrition - 0.5 * HUNGER_FACTOR * delta_time)
+	if(prob(5 * delta_time))
 		M.emote(pick("twitch","blink_r","shiver"))
 
-/datum/chem_property/positive/musclestimulating/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/musclestimulating/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(potency, "heart")
+	M.apply_internal_damage(0.5 * potency * delta_time, "heart")
 
-/datum/chem_property/positive/musclestimulating/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(potency)
+/datum/chem_property/positive/musclestimulating/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.take_limb_damage(0.5 * potency * delta_time)
 
 /datum/chem_property/positive/painkilling
 	name = PROPERTY_PAINKILLING
@@ -162,24 +162,24 @@
 
 	M.pain.reset_pain_reduction()
 
-/datum/chem_property/positive/painkilling/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/painkilling/process(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
 
 	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
 
-/datum/chem_property/positive/painkilling/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/painkilling/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
 
 	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
 	M.hallucination = max(M.hallucination, potency) //Hallucinations and tox damage
-	M.apply_damage(potency, TOX)
+	M.apply_damage(0.5 *  potency * delta_time, TOX)
 
-/datum/chem_property/positive/painkilling/process_critical(mob/living/M, var/potency = 1)
-	M.apply_internal_damage(3 * potency, "liver")
-	M.apply_damage(potency, BRAIN)
-	M.apply_damage(3, OXY)
+/datum/chem_property/positive/painkilling/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_internal_damage(1.5 * potency * delta_time, "liver")
+	M.apply_damage(0.5 * potency * delta_time, BRAIN)
+	M.apply_damage(1.5 * delta_time, OXY)
 
 /datum/chem_property/positive/hepatopeutic
 	name = PROPERTY_HEPATOPEUTIC
@@ -187,18 +187,18 @@
 	description = "Treats deteriorated hepatocytes and damaged tissues in the liver, restoring organ functions."
 	rarity = PROPERTY_UNCOMMON
 
-/datum/chem_property/positive/hepatopeutic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/hepatopeutic/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(-(0.5 * potency), "liver")
+	M.apply_internal_damage(-0.25 * potency * delta_time, "liver")
 
-/datum/chem_property/positive/hepatopeutic/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/hepatopeutic/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(2 * potency, "liver")
+	M.apply_internal_damage(potency * delta_time, "liver")
 
-/datum/chem_property/positive/hepatopeutic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(5*potency, TOX)
+/datum/chem_property/positive/hepatopeutic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(2.5 * potency * delta_time, TOX)
 
 /datum/chem_property/positive/nephropeutic
 	name = PROPERTY_NEPHROPEUTIC
@@ -206,18 +206,18 @@
 	description = "Heals damaged and deteriorated podocytes in the kidney, restoring organ functions."
 	rarity = PROPERTY_UNCOMMON
 
-/datum/chem_property/positive/nephropeutic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/nephropeutic/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(-(0.5 * potency), "kidneys")
+	M.apply_internal_damage(-0.25 * potency * delta_time, "kidneys")
 
-/datum/chem_property/positive/nephropeutic/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/nephropeutic/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(2 * potency, "kidneys")
+	M.apply_internal_damage(potency * delta_time, "kidneys")
 
-/datum/chem_property/positive/nephropeutic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(5*potency, TOX)
+/datum/chem_property/positive/nephropeutic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(2.5 * potency * delta_time, TOX)
 
 /datum/chem_property/positive/pneumopeutic
 	name = PROPERTY_PNEUMOPEUTIC
@@ -225,18 +225,18 @@
 	description = "Mends the interstitium tissue of the alveoli restoring respiratory functions in the lungs."
 	rarity = PROPERTY_UNCOMMON
 
-/datum/chem_property/positive/pneumopeutic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/pneumopeutic/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(-(0.5 * potency), "lungs")
+	M.apply_internal_damage(-0.25 * potency * delta_time, "lungs")
 
-/datum/chem_property/positive/pneumopeutic/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/pneumopeutic/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(2 * potency, "lungs")
+	M.apply_internal_damage(potency * delta_time, "lungs")
 
-/datum/chem_property/positive/pneumopeutic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(5*potency, OXY)
+/datum/chem_property/positive/pneumopeutic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(2.5 * potency * delta_time, OXY)
 
 /datum/chem_property/positive/oculopeutic
 	name = PROPERTY_OCULOPEUTIC
@@ -244,19 +244,19 @@
 	description = "Restores sensory capabilities of photoreceptive cells in the eyes returning lost vision."
 	rarity = PROPERTY_COMMON
 
-/datum/chem_property/positive/oculopeutic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/oculopeutic/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(-potency, "eyes")
-	M.eye_blurry = max(M.eye_blurry-5*potency , 0)
-	M.eye_blind = max(M.eye_blind-5*potency , 0)
+	M.apply_internal_damage(-0.5 * potency * delta_time, "eyes")
+	M.eye_blurry = max(M.eye_blurry - 2.5 * potency * delta_time, 0)
+	M.eye_blind = max(M.eye_blind - 2.5 * potency * delta_time, 0)
 
-/datum/chem_property/positive/oculopeutic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(potency * 2, TOX)
+/datum/chem_property/positive/oculopeutic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, TOX)
 
-/datum/chem_property/positive/oculopeutic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(potency, potency, 3 * potency)
-	M.apply_damage(potency, BRAIN)
+/datum/chem_property/positive/oculopeutic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(0.5 * potency * delta_time, 0.5 * potency * delta_time, 1.5 * potency * delta_time)
+	M.apply_damage(0.5 * potency * delta_time, BRAIN)
 
 /datum/chem_property/positive/cardiopeutic
 	name = PROPERTY_CARDIOPEUTIC
@@ -269,15 +269,15 @@
 
 	M.pain.recalculate_pain()
 
-/datum/chem_property/positive/cardiopeutic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/cardiopeutic/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M) || !(..()))
 		return
-	M.apply_internal_damage(-(0.5 * potency), "heart")
+	M.apply_internal_damage(-0.25 * potency * delta_time, "heart")
 
-/datum/chem_property/positive/cardiopeutic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, OXY)
+/datum/chem_property/positive/cardiopeutic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, OXY)
 
-/datum/chem_property/positive/cardiopeutic/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/cardiopeutic/process_critical(mob/living/M, var/potency = 1, delta_time)
 	if(!(..()))
 		return
 
@@ -289,15 +289,15 @@
 	description = "Rebuilds damaged and broken neurons in the central nervous system re-establishing brain functionality."
 	rarity = PROPERTY_COMMON
 
-/datum/chem_property/positive/neuropeutic/process(mob/living/M, var/potency = 1)
-	M.apply_damage(-3 * potency, BRAIN)
+/datum/chem_property/positive/neuropeutic/process(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(-1.5 * potency * delta_time, BRAIN)
 
-/datum/chem_property/positive/neuropeutic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(potency, TOX)
+/datum/chem_property/positive/neuropeutic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(0.5 * potency * delta_time, TOX)
 
-/datum/chem_property/positive/neuropeutic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(3 * potency, BRAIN)
-	M.AdjustStunned(potency)
+/datum/chem_property/positive/neuropeutic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(1.5 * potency * delta_time, BRAIN)
+	M.AdjustStunned(0.5 * potency * delta_time)
 
 /datum/chem_property/positive/bonemending
 	name = PROPERTY_BONEMENDING
@@ -305,7 +305,7 @@
 	description = "Rapidly increases the production of osteoblasts and chondroblasts while also accelerating the process of endochondral ossification. This allows broken bone tissue to be re-wowen and restored quickly if the bone is correctly positioned. Overdosing may result in the bone structure growing abnormally and can have adverse effects on the skeletal structure."
 	rarity = PROPERTY_UNCOMMON
 
-/datum/chem_property/positive/bonemending/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/bonemending/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -331,10 +331,10 @@
 				L.start_processing()
 				to_chat(M, SPAN_NOTICE("You feel the bones in your [L.display_name] starting to knit together."))
 
-/datum/chem_property/positive/bonemending/process_overdose(mob/living/M, var/potency = 1)
-	M.take_limb_damage(2*potency)
+/datum/chem_property/positive/bonemending/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.take_limb_damage(potency * delta_time)
 
-/datum/chem_property/positive/bonemending/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/bonemending/process_critical(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -349,25 +349,25 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
 
-/datum/chem_property/positive/fluxing/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/fluxing/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
 	var/obj/limb/L = pick(H.limbs)
-	if(L && prob(10*potency))
+	if(L && prob(5 * potency * delta_time))
 		if(L.status & LIMB_ROBOT)
-			L.take_damage(0,2*potency)
+			L.take_damage(0, 2*potency)
 			return
 		if(L.implants && L.implants.len > 0)
 			var/obj/implanted_object = pick(L.implants)
 			if(implanted_object)
 				L.implants -= implanted_object
 
-/datum/chem_property/positive/fluxing/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damages(2*potency, 0, 2*potency)
+/datum/chem_property/positive/fluxing/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(potency * delta_time, 0, potency * delta_time)
 
-/datum/chem_property/positive/fluxing/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(4*potency, 0, 4*potency) //Mixed brute/tox damage
+/datum/chem_property/positive/fluxing/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(2 * potency * delta_time, 0, 2 * potency * delta_time) //Mixed brute/tox damage
 
 /datum/chem_property/positive/neurocryogenic
 	name = PROPERTY_NEUROCRYOGENIC
@@ -376,23 +376,23 @@
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT
 
-/datum/chem_property/positive/neurocryogenic/process(mob/living/M, var/potency = 1)
-	if(prob(20))
+/datum/chem_property/positive/neurocryogenic/process(mob/living/M, var/potency = 1, delta_time)
+	if(prob(10 * delta_time))
 		to_chat(M, SPAN_WARNING("You feel like you have the worst brain freeze ever!"))
 	M.KnockOut(20)
 	M.stunned = max(M.stunned,21)
 
-/datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, var/potency = 1)
-	M.bodytemperature = max(M.bodytemperature-5*potency,0)
+/datum/chem_property/positive/neurocryogenic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.bodytemperature = max(M.bodytemperature - 2.5 * potency * delta_time,0)
 
-/datum/chem_property/positive/neurocryogenic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(5 * potency, BRAIN)
+/datum/chem_property/positive/neurocryogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(2.5 * potency * delta_time, BRAIN)
 
-/datum/chem_property/positive/neurocryogenic/process_dead(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/neurocryogenic/process_dead(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return FALSE
 	var/mob/living/carbon/human/H = M
-	H.revive_grace_period += 5 SECONDS * potency
+	H.revive_grace_period += 2.5 SECONDS * potency * delta_time
 	return TRUE
 
 /datum/chem_property/positive/antiparasitic
@@ -401,7 +401,7 @@
 	description = "Antimicrobial property specifically targeting parasitic pathogens in the body disrupting their growth and potentially killing them."
 	rarity = PROPERTY_UNCOMMON
 
-/datum/chem_property/positive/antiparasitic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/antiparasitic/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -409,8 +409,8 @@
 		var/obj/item/alien_embryo/A = content
 		if(A && istype(A))
 			if(A.counter > 0)
-				A.counter = A.counter - potency
-				H.take_limb_damage(0,0.2*potency)
+				A.counter -= 0.5 * potency * delta_time
+				H.take_limb_damage(0, 0.1 * potency * delta_time)
 			else
 				A.stage--
 				if(A.stage <= 0)//if we reach this point, the embryo dies and the occupant takes a nasty amount of acid damage
@@ -420,11 +420,11 @@
 				else
 					A.counter = 90
 
-/datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+/datum/chem_property/positive/antiparasitic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, TOX)
 
-/datum/chem_property/positive/antiparasitic/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(4*potency, TOX)
+/datum/chem_property/positive/antiparasitic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(2 * potency * delta_time, TOX)
 
 /datum/chem_property/positive/organstabilize
 	name = PROPERTY_ORGANSTABILIZE
@@ -433,17 +433,17 @@
 	rarity = PROPERTY_COMMON
 	value = 2
 
-/datum/chem_property/positive/organstabilize/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/organstabilize/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
 	H.chem_effect_flags |= CHEM_EFFECT_ORGAN_STASIS
 
-/datum/chem_property/positive/organstabilize/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(potency, BRUTE)
+/datum/chem_property/positive/organstabilize/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(0.5 * potency * delta_time, BRUTE)
 
-/datum/chem_property/positive/organstabilize/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(3*potency, 3*potency, 3*potency)
+/datum/chem_property/positive/organstabilize/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(1.5 * potency * delta_time, 1.5 * potency * delta_time, 1.5 * potency * delta_time)
 
 /datum/chem_property/positive/electrogenetic
 	name = PROPERTY_ELECTROGENETIC
@@ -483,23 +483,23 @@
 
 	M.pain.recalculate_pain()
 
-/datum/chem_property/positive/defibrillating/process(mob/living/M, var/potency = 1)
-	if(prob(10))
+/datum/chem_property/positive/defibrillating/process(mob/living/M, var/potency = 1, delta_time)
+	if(prob(5 * delta_time))
 		M.emote("twitch")
 
-/datum/chem_property/positive/defibrillating/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/defibrillating/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!(..()))
 		return
 
 	M.pain.apply_pain(PROPERTY_DEFIBRILLATING_PAIN_OD)
-	M.apply_damage(2*potency, OXY)
+	M.apply_damage(potency * delta_time, OXY)
 
-/datum/chem_property/positive/defibrillating/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/defibrillating/process_critical(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(potency, "heart")
+	M.apply_internal_damage(0.5 * potency * delta_time, "heart")
 
-/datum/chem_property/positive/defibrillating/process_dead(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/defibrillating/process_dead(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -519,23 +519,23 @@
 	value = 3
 	max_level = 1
 
-/datum/chem_property/positive/hyperdensificating/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/hyperdensificating/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
 	if(H.chem_effect_flags & CHEM_EFFECT_RESIST_FRACTURE)
 		return
 	H.chem_effect_flags |= CHEM_EFFECT_RESIST_FRACTURE
-	if(prob(10))
+	if(prob(5 * delta_time))
 		to_chat(M, SPAN_NOTICE("Your body feels incredibly tense."))
 
-/datum/chem_property/positive/hyperdensificating/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/hyperdensificating/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	M.reagent_move_delay_modifier += 2*potency
-	if(prob(10))
+	if(prob(5 * delta_time))
 		to_chat(M, SPAN_NOTICE("It is really hard to move your body."))
 
-/datum/chem_property/positive/hyperdensificating/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(3*potency)
+/datum/chem_property/positive/hyperdensificating/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.take_limb_damage(1.5 * potency * delta_time)
 
 /datum/chem_property/positive/neuroshielding
 	name = PROPERTY_NEUROSHIELDING
@@ -546,7 +546,7 @@
 	value = 3
 	max_level = 1
 
-/datum/chem_property/positive/neuroshielding/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/neuroshielding/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -556,13 +556,13 @@
 	to_chat(M, SPAN_NOTICE("Your skull feels incredibly thick."))
 	M.dazed = 0
 
-/datum/chem_property/positive/neuroshielding/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/neuroshielding/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
-	M.apply_internal_damage(potency, "liver")
+	M.apply_internal_damage(0.5 * potency * delta_time, "liver")
 
-/datum/chem_property/positive/neuroshielding/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, BRAIN)
+/datum/chem_property/positive/neuroshielding/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, BRAIN)
 
 /datum/chem_property/positive/antiaddictive
 	name = PROPERTY_ANTIADDICTIVE
@@ -571,20 +571,20 @@
 	rarity = PROPERTY_RARE
 	category = PROPERTY_TYPE_STIMULANT
 
-/datum/chem_property/positive/antiaddictive/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/antiaddictive/process(mob/living/M, var/potency = 1, delta_time)
 	for(var/datum/disease/addiction/D in M.viruses)
 		if(potency >= 4)
 			D.cure()
 			return
-		D.withdrawal_progression -= 2*potency
-		D.addiction_progression -= 2*potency
+		D.withdrawal_progression -= potency * delta_time
+		D.addiction_progression -= potency * delta_time
 		if(D.addiction_progression < potency)
 			D.cure()
 
-/datum/chem_property/positive/antiaddictive/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, BRAIN)
+/datum/chem_property/positive/antiaddictive/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, BRAIN)
 
-/datum/chem_property/positive/antiaddictive/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/antiaddictive/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.hallucination = max(M.hallucination, potency)
 
 /datum/chem_property/positive/fire
@@ -619,11 +619,16 @@
 	holder.durationmod += durationmod_per_level * level
 	holder.intensitymod += intensitymod_per_level * level
 
-	holder.rangefire = max(holder.rangefire + range_per_level * level, 1)
-	holder.durationfire = max(holder.durationfire + duration_per_level * level, 1)
-	holder.intensityfire = max(holder.intensityfire + intensity_per_level * level, 1)
+	holder.rangefire += range_per_level * level
+	holder.durationfire += duration_per_level * level
+	holder.intensityfire += intensity_per_level * level
 
 	..()
+
+/datum/chem_property/positive/fire/post_update_reagent()
+	holder.rangefire = max(holder.rangefire, 1)
+	holder.durationfire = max(holder.durationfire, 1)
+	holder.intensityfire = max(holder.intensityfire, 1)
 
 /datum/chem_property/positive/fire/fueling
 	name = PROPERTY_FUELING
@@ -671,6 +676,7 @@
 	description = "The chemical is highly explosive. Do not ignite. Careful when handling, sensitivity is based off the OD threshold, which can lead to spontanous detonation."
 	rarity = PROPERTY_UNCOMMON
 	category = PROPERTY_TYPE_REACTANT|PROPERTY_TYPE_COMBUSTIBLE
+	volatile = TRUE
 
 /datum/chem_property/positive/explosive/reset_reagent()
 	holder.explosive = initial(holder.explosive)
@@ -698,25 +704,25 @@
 
 	M.pain.reset_pain_reduction()
 
-/datum/chem_property/positive/cardiostabilizing/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/cardiostabilizing/process(mob/living/M, var/potency = 1, delta_time)
 	if(!..())
 		return
 
 	M.pain.apply_pain_reduction(PAIN_REDUCTION_MULTIPLIER * potency)
 
 	if(M.losebreath >= 10)
-		M.losebreath = max(10, M.losebreath-5*potency)
+		M.losebreath = max(10, M.losebreath - 2.5 * potency * delta_time)
 
-/datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/cardiostabilizing/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	M.make_jittery(5) //Overdose causes a spasm
 	M.KnockOut(20)
 
-/datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/cardiostabilizing/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.drowsyness = max(M.drowsyness, 20)
 	if(!ishuman(M)) //Critical overdose causes total blackout and heart damage. Too much stimulant
 		return
-	M.apply_internal_damage(0.5, "heart")
-	if(prob(10))
+	M.apply_internal_damage(0.25 * delta_time, "heart")
+	if(prob(5 * delta_time))
 		M.emote(pick("twitch","blink_r","shiver"))
 
 /datum/chem_property/positive/aiding
@@ -728,7 +734,7 @@
 	value = 1
 	max_level = 1
 
-/datum/chem_property/positive/aiding/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/aiding/process(mob/living/M, var/potency = 1, delta_time)
 	M.disabilities = 0
 	M.sdisabilities = 0
 	M.status_flags &= ~DISFIGURED
@@ -736,14 +742,14 @@
 		var/mob/living/carbon/human/H = M
 		H.name = H.get_visible_name()
 
-/datum/chem_property/positive/aiding/process_overdose(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/aiding/process_overdose(mob/living/M, var/potency = 1, delta_time)
 	M.confused = max(M.confused, 20 * potency) //Confusion and some toxins
-	M.apply_damage(potency, TOX)
+	M.apply_damage(0.5 * potency * delta_time, TOX)
 
-/datum/chem_property/positive/aiding/process_critical(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/aiding/process_critical(mob/living/M, var/potency = 1, delta_time)
 	M.KnockOut(20 * potency) //Total DNA collapse // That's some long goddamn stun
-	M.apply_damage(potency, TOX)
-	M.apply_damage(3 * potency, CLONE)
+	M.apply_damage(0.5 * potency * delta_time, TOX)
+	M.apply_damage(1.5 * potency * delta_time, CLONE)
 
 /datum/chem_property/positive/oxygenating
 	name = PROPERTY_OXYGENATING
@@ -754,20 +760,20 @@
 	value = 1
 	max_level = 6
 
-/datum/chem_property/positive/oxygenating/process(mob/living/M, var/potency = 1)
+/datum/chem_property/positive/oxygenating/process(mob/living/M, var/potency = 1, delta_time)
 	if(potency >= 2)
-		holder.holder.remove_reagent("lexorin", 1 * potency)
+		holder.holder.remove_reagent("lexorin", 0.5 * potency * delta_time)
 	if(potency >= 3)
 		M.apply_damage(-M.getOxyLoss(), OXY)
 	else
-		M.apply_damage(-1 * potency, OXY)
+		M.apply_damage(-0.5 * potency * delta_time, OXY)
 
 
-/datum/chem_property/positive/oxygenating/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(0.5 * potency, TOX) //Mixed brute/tox damage
+/datum/chem_property/positive/oxygenating/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(0.25 * potency * delta_time, TOX) //Mixed brute/tox damage
 
-/datum/chem_property/positive/oxygenating/process_critical(mob/living/M, var/potency = 1)
-	M.apply_damages(potency, 0, 2 * potency) //Massive brute/tox damage
+/datum/chem_property/positive/oxygenating/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damages(0.5 * potency * delta_time, 0, potency * delta_time) //Massive brute/tox damage
 
 /datum/chem_property/positive/anticarcinogenic
 	name = PROPERTY_ANTICARCINOGENIC
@@ -777,11 +783,11 @@
 	category = PROPERTY_TYPE_MEDICINE
 	value = 1
 
-/datum/chem_property/positive/anticarcinogenic/process(mob/living/M, var/potency = 1)
-	M.adjustCloneLoss(-potency)
+/datum/chem_property/positive/anticarcinogenic/process(mob/living/M, var/potency = 1, delta_time)
+	M.adjustCloneLoss(-0.5 * potency * delta_time)
 
-/datum/chem_property/positive/anticarcinogenic/process_overdose(mob/living/M, var/potency = 1)
-	M.apply_damage(2*potency, TOX)
+/datum/chem_property/positive/anticarcinogenic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.apply_damage(potency * delta_time, TOX)
 
-/datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(2*potency)//Hyperactive apoptosis
+/datum/chem_property/positive/anticarcinogenic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.take_limb_damage(potency * delta_time) //Hyperactive apoptosis

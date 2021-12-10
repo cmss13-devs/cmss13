@@ -36,19 +36,19 @@
 	rarity = PROPERTY_LEGENDARY
 	category = PROPERTY_TYPE_MEDICINE
 
-/datum/chem_property/special/hypergenetic/process(mob/living/M, var/potency = 1)
-	M.heal_limb_damage(0.2+potency)
+/datum/chem_property/special/hypergenetic/process(mob/living/M, var/potency = 1, delta_time)
+	M.heal_limb_damage(0.1 * potency * delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/O in H.internal_organs)
-		M.apply_internal_damage(-potency, O)
+		M.apply_internal_damage(-0.5 * potency * delta_time, O)
 
-/datum/chem_property/special/hypergenetic/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustCloneLoss(2*potency)
+/datum/chem_property/special/hypergenetic/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.adjustCloneLoss(potency * delta_time)
 
-/datum/chem_property/special/hypergenetic/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(3*potency,3*potency)
+/datum/chem_property/special/hypergenetic/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.take_limb_damage(1.5 * potency * delta_time, 1.5 * potency * delta_time)
 
 
 /datum/chem_property/special/organhealing
@@ -58,18 +58,18 @@
 	rarity = PROPERTY_ADMIN
 	category = PROPERTY_TYPE_MEDICINE
 
-/datum/chem_property/special/organhealing/process(mob/living/M, var/potency = 1)
+/datum/chem_property/special/organhealing/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/O in H.internal_organs)
-		M.apply_internal_damage(-potency, O)
+		M.apply_internal_damage(-0.5 * potency * delta_time, O)
 
-/datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1)
-	M.adjustCloneLoss(2*potency)
+/datum/chem_property/special/organhealing/process_overdose(mob/living/M, var/potency = 1, delta_time)
+	M.adjustCloneLoss(potency * delta_time)
 
-/datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1)
-	M.take_limb_damage(3*potency,3*potency)
+/datum/chem_property/special/organhealing/process_critical(mob/living/M, var/potency = 1, delta_time)
+	M.take_limb_damage(1.5 * potency * delta_time, 1.5 * potency * delta_time)
 
 /datum/chem_property/special/DNA_Disintegrating
 	name = PROPERTY_DNA_DISINTEGRATING
@@ -79,8 +79,8 @@
 	category = PROPERTY_TYPE_TOXICANT|PROPERTY_TYPE_ANOMALOUS
 	value = 16
 
-/datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, var/potency = 1)
-	M.adjustCloneLoss(10*potency)
+/datum/chem_property/special/DNA_Disintegrating/process(mob/living/M, var/potency = 1, delta_time)
+	M.adjustCloneLoss(5 * potency * delta_time)
 	if(ishuman(M) && M.cloneloss >= 190)
 		var/mob/living/carbon/human/H = M
 		H.contract_disease(new /datum/disease/xeno_transformation(0),1) //This is the real reason PMCs are being sent to retrieve it.
@@ -102,7 +102,7 @@
 	value = 16
 	max_level = 6
 
-/datum/chem_property/special/ciphering/process(mob/living/M, var/potency = 1)
+/datum/chem_property/special/ciphering/process(mob/living/M, var/potency = 1, delta_time)
 	if(!GLOB.hive_datum[level]) // This should probably always be valid
 		return
 
@@ -168,7 +168,7 @@
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/embryonic/process(mob/living/M, var/potency = 1)
+/datum/chem_property/special/embryonic/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -187,7 +187,7 @@
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/transforming/process(mob/living/M, var/potency = 1)
+/datum/chem_property/special/transforming/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -201,7 +201,7 @@
 	category = PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/ravening/process(mob/living/M, var/potency = 1)
+/datum/chem_property/special/ravening/process(mob/living/M, var/potency = 1, delta_time)
 	if(!ishuman(M))
 		return
 	var/mob/living/carbon/human/H = M
@@ -216,7 +216,7 @@
 	value = 666
 	max_level = 4
 
-/datum/chem_property/special/curing/process(mob/living/M, var/potency = 1)
+/datum/chem_property/special/curing/process(mob/living/M, var/potency = 1, delta_time)
 	var/datum/species/zombie/zs = GLOB.all_species["Zombie"]
 
 	if(!ishuman(M))
@@ -242,12 +242,12 @@
 	category = PROPERTY_TYPE_MEDICINE|PROPERTY_TYPE_ANOMALOUS
 	value = 666
 
-/datum/chem_property/special/omnipotent/process(mob/living/M, var/potency = 1)
-	M.reagents.remove_all_type(/datum/reagent/toxin, 5*REM, 0, 1)
+/datum/chem_property/special/omnipotent/process(mob/living/M, var/potency = 1, delta_time)
+	M.reagents.remove_all_type(/datum/reagent/toxin, 2.5*REM * delta_time, 0, 1)
 	M.setCloneLoss(0)
 	M.setOxyLoss(0)
-	M.heal_limb_damage(5*potency,5*potency)
-	M.apply_damage(-5*potency, TOX)
+	M.heal_limb_damage(2.5 * potency * delta_time, 2.5 * potency * delta_time)
+	M.apply_damage(-2.5 * potency * delta_time, TOX)
 	M.hallucination = 0
 	M.setBrainLoss(0)
 	M.disabilities = 0
@@ -273,7 +273,7 @@
 		return
 	var/mob/living/carbon/human/H = M
 	for(var/datum/internal_organ/I in H.internal_organs)
-		M.apply_internal_damage(1, I)
+		M.apply_internal_damage(-0.5 * potency * delta_time, I)
 
 /datum/chem_property/special/radius
 	name = PROPERTY_RADIUS

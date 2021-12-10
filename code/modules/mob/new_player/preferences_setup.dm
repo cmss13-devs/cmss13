@@ -269,6 +269,10 @@ datum/preferences/proc/randomize_skin_color()
 			return /datum/equipment_preset/uscm_ship/uscm_medical/nurse
 		if(JOB_MESS_SERGEANT)
 			return /datum/equipment_preset/uscm_ship/chef
+		if(JOB_SURVIVOR)
+			if(length(SSmapping.configs[GROUND_MAP].survivor_types))
+				return pick(SSmapping.configs[GROUND_MAP].survivor_types)
+			return /datum/equipment_preset/survivor
 		if(JOB_PREDATOR)
 			if(length(RoleAuthority.roles_whitelist))
 				var/datum/job/J = RoleAuthority.roles_by_name[JOB_PREDATOR]

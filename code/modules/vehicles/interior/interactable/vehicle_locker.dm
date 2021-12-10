@@ -186,6 +186,7 @@
 	new /obj/item/tool/surgery/bonesetter(container)
 	new /obj/item/tool/surgery/FixOVein(container)
 	new /obj/item/stack/nanopaste(container)
+	new /obj/item/tool/surgery/surgical_line(container)
 
 /obj/structure/vehicle_locker/med/examine(mob/user)
 	..()

@@ -468,9 +468,11 @@ GLOBAL_LIST_EMPTY(shuttle_controls)
 			to_chat(usr, SPAN_WARNING("The console flashes a warning about the rear door not being present."))
 
 	if(href_list["cancel_flyby"])
-		var/mob/M = usr
-		if(M.mind && M.skills && !M.skills.get_skill_level(SKILL_PILOT))
-			to_chat(usr, SPAN_WARNING("Need Pilot level access to return the Dropship."))
+		if(isXeno(usr))
+			to_chat(usr, SPAN_WARNING("You have no idea how to use this button!"))
+			return
+		if(!allowed(usr))
+			to_chat(usr, SPAN_WARNING("You need Pilot level access to return the Dropship."))
 			return
 		if(shuttle.transit_gun_mission && shuttle.moving_status == SHUTTLE_INTRANSIT && shuttle.in_transit_time_left>abort_timer)
 			shuttle.in_transit_time_left = abort_timer

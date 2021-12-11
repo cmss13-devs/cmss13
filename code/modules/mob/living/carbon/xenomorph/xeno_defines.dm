@@ -5,7 +5,7 @@
 	var/display_name = ""
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
-	var/language = "Xenomorph"
+	var/language = LANGUAGE_XENOMORPH
 
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
@@ -790,11 +790,11 @@
 
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/Xenomorph/X)
 	. = ..()
-	X.add_language("English")
+	X.add_language(LANGUAGE_ENGLISH)
 
 /datum/hive_status/corrupted/remove_xeno(mob/living/carbon/Xenomorph/X, hard)
 	. = ..()
-	X.remove_language("English")
+	X.remove_language(LANGUAGE_ENGLISH)
 
 /datum/hive_status/alpha
 	name = "Alpha Hive"

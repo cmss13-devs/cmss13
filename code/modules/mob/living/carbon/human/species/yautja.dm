@@ -182,5 +182,5 @@
 				L.max_damage = 75
 				L.time_to_knit = 600 // 1 minute, time is in tenths of a second
 
-	H.set_languages(list("Sainja"))
+	H.set_languages(list(LANGUAGE_YAUTJA))
 	return ..()

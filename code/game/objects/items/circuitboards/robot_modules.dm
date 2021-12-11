@@ -54,10 +54,8 @@
 
 /obj/item/circuitboard/robot_module/proc/add_languages(var/mob/living/silicon/robot/R)
 	//full set of languages
-	R.add_language("Sol Common", 1)
-	R.add_language("Russian", 1)
-	R.add_language("Japanese", 1)
-	R.add_language("Gutter", 0)
+	R.add_language(LANGUAGE_RUSSIAN, 1)
+	R.add_language(LANGUAGE_JAPANESE, 1)
 
 
 /obj/item/circuitboard/robot_module/standard
@@ -293,10 +291,7 @@
 
 /obj/item/circuitboard/robot_module/butler/add_languages(var/mob/living/silicon/robot/R)
 	//full set of languages
-	R.add_language("Sol Common", 1)
-	R.add_language("Rootspeak", 1)
-	R.add_language("Japanese", 1)
-	R.add_language("Gutter", 1)
+	R.add_language(LANGUAGE_JAPANESE, 1)
 
 /obj/item/circuitboard/robot_module/butler/respawn_consumable(var/mob/living/silicon/robot/R)
 	var/obj/item/reagent_container/food/condiment/enzyme/E = locate() in src.modules

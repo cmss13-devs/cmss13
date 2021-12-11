@@ -1,7 +1,7 @@
 /datum/equipment_preset/synth
 	name = "Synth"
 	uses_special_name = TRUE
-	languages = list("English", "Russian", "Japanese", "Sainja", "Xenomorph","Spacendeutchen","Spanish")
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_YAUTJA, LANGUAGE_XENOMORPH, LANGUAGE_SPACENDEUTCHEN, LANGUAGE_SPANISH)
 	skills = /datum/skills/synthetic
 
 /datum/equipment_preset/synth/New()

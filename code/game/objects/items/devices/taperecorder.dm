@@ -1,6 +1,6 @@
 /obj/item/device/taperecorder
-	desc = "A device that can record up to an hour of dialogue and play it back. It automatically translates the content in playback."
 	name = "universal recorder"
+	desc = "A device that can record up to an hour of dialogue and play it back. It automatically translates the content in playback."
 	icon_state = "taperecorderidle"
 	item_state = "analyzer"
 	w_class = SIZE_SMALL
@@ -11,19 +11,22 @@
 	var/playing = 0.0
 	var/timerecorded = 0.0
 	var/playsleepseconds = 0.0
-	var/list/storedinfo = new/list()
-	var/list/timestamp = new/list()
+	var/list/storedinfo = list()
+	var/list/timestamp = list()
+	var/list/known_languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_SPACENDEUTCHEN, LANGUAGE_SPANISH)
 	var/canprint = 1
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 2
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 
-/obj/item/device/taperecorder/hear_talk(mob/living/M as mob, msg, var/verb="says", var/speaking, var/italics = 0)
+/obj/item/device/taperecorder/hear_talk(mob/living/M as mob, msg, var/verb="says", var/datum/language/speaking, var/italics = 0)
 	if(recording)
 		timestamp+= timerecorded
-		storedinfo += "\[[time2text(timerecorded*10,"mm:ss")]\] [M.name] [verb], \"[italics ? "<i>" : null][msg][italics ? "</i>" : null]\""
-		return
+		var/language_known = (M.universal_speak || (speaking && (speaking.name in known_languages)))
+		var/mob_name = language_known ? M.GetVoice() : "Unknown"
+		var/message = language_known ? msg : speaking.scramble(msg)
+		storedinfo += "\[[time2text(timerecorded*10,"mm:ss")]\] [mob_name] [verb], \"[italics ? "<i>" : null][message][italics ? "</i>" : null]\""
 
 /obj/item/device/taperecorder/proc/explode()
 	var/turf/T = get_turf(loc)

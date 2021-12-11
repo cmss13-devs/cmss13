@@ -129,6 +129,9 @@
 		/obj/item/reagent_container/hypospray,
 		/obj/item/bodybag,
 		/obj/item/device/defibrillator,
+		/obj/item/tool/surgery/surgical_line,
+		/obj/item/device/reagent_scanner,
+		/obj/item/device/analyzer/plant_analyzer, 
 		/obj/item/roller
 	)
 
@@ -178,7 +181,9 @@
 		/obj/item/clothing/gloves/latex,
 		/obj/item/reagent_container/hypospray/autoinjector,
 		/obj/item/stack/medical,
-		/obj/item/device/defibrillator/compact
+		/obj/item/device/defibrillator/compact,
+		/obj/item/device/reagent_scanner,
+		/obj/item/device/analyzer/plant_analyzer
 	)
 	has_gamemode_skin = TRUE
 
@@ -430,6 +435,7 @@
 		/obj/item/explosive/plastic,
 		/obj/item/explosive/mine,
 		/obj/item/ammo_magazine/m2c,
+		/obj/item/tool/wirecutters,
 		/obj/item/ammo_magazine/m56d
 	)
 	has_gamemode_skin = FALSE

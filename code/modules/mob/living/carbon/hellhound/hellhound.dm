@@ -18,7 +18,7 @@
 /mob/living/carbon/hellhound/Initialize()
 	create_reagents(1000)
 
-	add_language("Sainja") //They can only understand it though.
+	add_language(LANGUAGE_YAUTJA) //They can only understand it though.
 
 	if(name == initial(name))
 		var/random_name = "[name] ([rand(1, 1000)])"

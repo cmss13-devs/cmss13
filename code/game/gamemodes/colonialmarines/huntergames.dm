@@ -278,9 +278,8 @@ var/waiting_for_drop_votes = 0
 		if(6)//BEARS!!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/bear(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)
-			H.remove_language("English")
-			H.remove_language("Sol Common")
-			H.add_language("Russian")
+			H.remove_language(LANGUAGE_ENGLISH)
+			H.add_language(LANGUAGE_RUSSIAN)
 		if(7) //Highlander!
 			H.equip_to_slot_or_del(new /obj/item/clothing/under/kilt(H), WEAR_BODY)
 			H.equip_to_slot_or_del(new /obj/item/clothing/shoes/sandal(H), WEAR_FEET)

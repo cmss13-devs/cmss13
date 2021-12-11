@@ -20,7 +20,7 @@
 /mob/living/silicon/Initialize()
 	. = ..()
 	SSmob.living_misc_mobs += src
-	add_language("English")
+	add_language(LANGUAGE_ENGLISH)
 
 /mob/living/silicon/Destroy()
 	..()

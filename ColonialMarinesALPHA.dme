@@ -51,6 +51,7 @@
 #include "code\__DEFINES\icon_source_map.dm"
 #include "code\__DEFINES\job.dm"
 #include "code\__DEFINES\keybinding.dm"
+#include "code\__DEFINES\language.dm"
 #include "code\__DEFINES\layers.dm"
 #include "code\__DEFINES\maps.dm"
 #include "code\__DEFINES\marine.dm"

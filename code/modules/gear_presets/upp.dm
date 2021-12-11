@@ -1,7 +1,7 @@
 /datum/equipment_preset/upp
 	name = FACTION_UPP
 
-	languages = list("Russian", "English")
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH)
 	faction = FACTION_UPP
 	idtype = /obj/item/card/id/dogtag
 
@@ -751,7 +751,7 @@
 	role_comm_title = "JKdo"
 	paygrade = "UC1"
 	idtype = /obj/item/card/id/data
-	languages = list("Russian", "English", "Tactical Sign Language", "Spanish")
+	languages = list(LANGUAGE_RUSSIAN, LANGUAGE_ENGLISH, LANGUAGE_TSL, LANGUAGE_SPANISH)
 
 /datum/equipment_preset/upp/commando/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

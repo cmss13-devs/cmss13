@@ -8,7 +8,7 @@
 	active_power_usage = 10
 	layer = FLY_LAYER
 
-	var/list/network = list("military")
+	var/list/network = list(CAMERA_NET_MILITARY)
 	var/c_tag = null
 	var/c_tag_order = 999
 	var/status = 1.0
@@ -33,14 +33,16 @@
 	var/light_disabled = 0
 	var/alarm_on = 0
 
+	var/colony_camera_mapload = TRUE
+
 /obj/structure/machinery/camera/Initialize(mapload, ...)
 	. = ..()
 	WireColorToFlag = randomCameraWires()
 	assembly = new(src)
 	assembly.state = 4
 
-	if(mapload && is_ground_level(z))
-		network = list("colony")
+	if(colony_camera_mapload && mapload && is_ground_level(z))
+		network = list(CAMERA_NET_COLONY)
 
 	if(!src.network || src.network.len < 1)
 		if(loc)
@@ -269,7 +271,8 @@
 	mouse_opacity = 0
 	density = FALSE
 	invuln = TRUE
-	network = list("mortar")
+	network = list(CAMERA_NET_MORTAR)
+	colony_camera_mapload = FALSE
 
 /obj/structure/machinery/camera/mortar/Initialize()
 	c_tag = "Para-Cam ([obfuscate_x(x)]):([obfuscate_y(y)])"

@@ -26,7 +26,7 @@
 
 	radio = new /obj/item/device/radio/headset/yautja(src)
 	camera = new /obj/structure/machinery/camera(src)
-	camera.network = list("PRED")
+	camera.network = list(CAMERA_NET_YAUTJA)
 	camera.c_tag = src.real_name
 	..()
 

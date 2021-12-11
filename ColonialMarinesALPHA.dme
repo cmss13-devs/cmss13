@@ -32,6 +32,7 @@
 #include "code\__DEFINES\bsql.dm"
 #include "code\__DEFINES\bullet_traits.dm"
 #include "code\__DEFINES\callback.dm"
+#include "code\__DEFINES\camera.dm"
 #include "code\__DEFINES\chat.dm"
 #include "code\__DEFINES\chemistry.dm"
 #include "code\__DEFINES\clans.dm"

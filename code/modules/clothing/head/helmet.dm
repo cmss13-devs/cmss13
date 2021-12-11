@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 	pockets.max_storage_space = 3
 
 	camera = new /obj/structure/machinery/camera(src)
-	camera.network = list("overwatch")
+	camera.network = list(CAMERA_NET_OVERWATCH)
 
 	..()
 

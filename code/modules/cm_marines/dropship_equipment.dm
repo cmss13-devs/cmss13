@@ -512,17 +512,21 @@
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
 	linked_cam_console = null
-	. = ..()
+	return ..()
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/on_launch()
-	linked_cam_console.network.Add("landing zones") //only accessible while in the air.
-	for(var/ref in linked_cam_console.concurrent_users)
-		linked_cam_console.update_static_data(locate(ref))
+	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES) //only accessible while in the air.
+	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
+		var/mob/user = ref.resolve()
+		if(user)
+			linked_cam_console.update_static_data(user)
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/on_arrival()
-	linked_cam_console.network.Remove("landing zones")
-	for(var/ref in linked_cam_console.concurrent_users)
-		linked_cam_console.update_static_data(locate(ref))
+	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
+	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
+		var/mob/user = ref.resolve()
+		if(user)
+			linked_cam_console.update_static_data(user)
 
 
 /////////////////////////////////// COMPUTERS //////////////////////////////////////

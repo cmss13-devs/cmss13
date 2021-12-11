@@ -10,5 +10,9 @@
     "monkey_types": [
         "monkey"
     ],
-    "traits": [{ "Ground": true }]
+    "traits": [{ "Ground": true }],
+	"nightmare": {
+		"scenario": "maps/Nightmare/maps/Haunted_House_V2/scenario.json",
+        "mapgen": "maps/Nightmare/maps/Haunted_House_V2/mapgen.json"
+    }
 }

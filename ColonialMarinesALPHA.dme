@@ -1114,7 +1114,6 @@
 #include "code\js\menus.dm"
 #include "code\modules\trigger.dm"
 #include "code\modules\admin\admin.dm"
-#include "code\modules\admin\admin_investigate.dm"
 #include "code\modules\admin\admin_ranks.dm"
 #include "code\modules\admin\admin_verbs.dm"
 #include "code\modules\admin\banjob.dm"

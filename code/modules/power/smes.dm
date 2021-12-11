@@ -306,12 +306,14 @@
 
 	if( href_list["cmode"] )
 		chargemode = !chargemode
+		message_admins("[key_name(usr)] toggled \the [src]'s input [chargemode ? "On" : "Off"].")
 		if(!chargemode)
 			charging = 0
 		updateicon()
 
 	else if( href_list["online"] )
 		online = !online
+		message_admins("[key_name(usr)] toggled \the [src]'s output [online ? "On" : "Off"].")
 		updateicon()
 	else if( href_list["input"] )
 		switch( href_list["input"] )
@@ -322,6 +324,7 @@
 			if("set")
 				chargelevel = input(usr, "Enter new input level (0-[input_level_max])", "SMES Input Power Control", chargelevel) as num
 		chargelevel = max(0, min(input_level_max, chargelevel))	// clamp to range
+		message_admins("[key_name(usr)] set [src]'s input level to [chargelevel].")
 
 	else if( href_list["output"] )
 		switch( href_list["output"] )
@@ -332,8 +335,7 @@
 			if("set")
 				output = input(usr, "Enter new output level (0-[output_level_max])", "SMES Output Power Control", output) as num
 		output = max(0, min(output_level_max, output))	// clamp to range
-
-	investigate_log("input/output; [chargelevel>output?"<font color='green'>":"<font color='red'>"][chargelevel]/[output]</font>|Output-mode: [online?"<font color='green'>on</font>":"<font color='red'>off</font>"]|Input-mode: [chargemode?"<font color='green'>auto</font>":"<font color='red'>off</font>"] by [usr.key]","singulo")
+		message_admins("[key_name(usr)] set [src]'s output level to [chargelevel].")
 
 	return 1
 

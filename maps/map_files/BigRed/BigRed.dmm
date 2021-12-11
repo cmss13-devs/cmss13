@@ -5158,18 +5158,6 @@
 	},
 /turf/open/floor,
 /area/bigredv2/outside/marshal_office)
-"anA" = (
-/obj/structure/machinery/door/airlock/glass_security{
-	icon_state = "door_locked";
-	id_tag = "marshal_cell";
-	locked = 1;
-	name = "Cell";
-	req_access_txt = "101"
-	},
-/turf/open/floor{
-	icon_state = "dark"
-	},
-/area/bigredv2/outside/marshal_office)
 "anB" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -7165,8 +7153,10 @@
 /turf/open/floor/plating,
 /area/bigredv2/outside/office_complex)
 "asI" = (
-/obj/structure/machinery/door/airlock/multi_tile/glass,
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/machinery/door/airlock/multi_tile/almayer/generic{
+	name = "\improper Dormitories"
+	},
 /turf/open/floor,
 /area/bigredv2/outside/dorms)
 "asJ" = (
@@ -53639,7 +53629,7 @@ acr
 agz
 ahm
 aic
-anA
+anx
 afS
 akM
 acp

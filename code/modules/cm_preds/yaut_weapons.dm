@@ -581,25 +581,18 @@
 	actions_types = list(/datum/action/item_action)
 	unacidable = TRUE
 
-/obj/item/weapon/melee/yautja/knife/attack(mob/living/mob_victim, mob/living/carbon/human/user)
-	. =..()
-	if(!.)
+/obj/item/weapon/melee/yautja/knife/attack(mob/living/M, mob/living/carbon/human/user)
+	if(M.stat != DEAD)
+		return ..()
+
+	if(!ishuman(M))
+		to_chat(user, SPAN_WARNING("You can only use this dagger to flay humanoids!"))
 		return
 
-	if(mob_victim.mob_size != MOB_SIZE_HUMAN)
-		to_chat(user, SPAN_WARNING("You're not sure how to do that."))
-		return
-
-	var/mob/living/carbon/human/victim
-	victim = mob_victim
-	if(victim.stat != DEAD || victim.status_flags & PERMANENTLY_DEAD)
-		return
-
-	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
-		return
+	var/mob/living/carbon/human/victim = M
 
 	if(!HAS_TRAIT(user, TRAIT_SUPER_STRONG))
-		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire [victim] apart. Also, that's kind of fucked up.")) //look at this dumbass
+		to_chat(user, SPAN_WARNING("You're not strong enough to rip an entire humanoid apart. Also, that's kind of fucked up.")) //look at this dumbass
 		return
 
 	if(isSameSpecies(user, victim))
@@ -608,6 +601,9 @@
 
 	if(isSpeciesSynth(victim))
 		to_chat(user, SPAN_WARNING("You can't flay metal...")) //look at this dumbass
+		return
+
+	if(!do_after(user, 1 SECONDS, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE, victim))
 		return
 
 	to_chat(user, SPAN_WARNING("You start flaying [victim].."))

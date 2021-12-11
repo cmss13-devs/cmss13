@@ -81,9 +81,9 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 	"thunder",
 	"ERT",
 	"NUKE",
-	"LADDER",
-	"colony",
-	"overwatch",
+	CAMERA_NET_LADDER,
+	CAMERA_NET_COLONY,
+	CAMERA_NET_OVERWATCH,
 	)
 
 #define STASIS_IN_BAG 		1

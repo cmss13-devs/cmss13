@@ -297,7 +297,7 @@
 	else if (h_number)
 		hivenumber = h_number
 
-	set_languages(list("Xenomorph", "Hivemind"))
+	set_languages(list(LANGUAGE_XENOMORPH, LANGUAGE_HIVEMIND))
 	if(oldXeno)
 		for(var/datum/language/L in oldXeno.languages)
 			add_language(L.name)//Make sure to keep languages (mostly for event Queens that know English)

@@ -1,7 +1,7 @@
 /datum/equipment_preset/dust_raider
 	name = "Dust Raider"
 	idtype = /obj/item/card/id/dogtag
-	languages = list("English")
+	languages = list(LANGUAGE_ENGLISH)
 	faction = FACTION_MARINE
 
 

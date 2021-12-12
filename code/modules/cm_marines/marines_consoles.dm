@@ -699,8 +699,9 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// 10-19: Aux Command (Synth isn't Aux head, but important - make him bold)
 		JOB_SYNTH = 10,
 		JOB_PILOT = 11,
-		JOB_CREWMAN	 = 12,
-		JOB_INTEL = 13,
+		JOB_DROPSHIP_CREW_CHIEF = 12,
+		JOB_CREWMAN = 13,
+		JOB_INTEL = 14,
 		// 20-29: Security
 		JOB_CHIEF_POLICE = 20,
 		JOB_WARDEN = 21,
@@ -873,6 +874,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		// Check if z-level is correct
 		var/turf/pos = get_turf(H)
 		if(!pos)
+			continue
+		if(is_admin_level(pos.z))
 			continue
 		// Survivors can't be found at ground (until we code remote access to local systems for Almayer)
 		if(H.faction == FACTION_SURVIVOR && is_ground_level(pos.z))

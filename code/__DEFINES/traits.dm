@@ -134,6 +134,8 @@
 #define TRAIT_MOB_STUTTER "t_mob_stutter"
  /// Mob has weak hands
 #define TRAIT_MOB_WEAK_HANDS "t_mob_weak_hands"
+ /// If the mob is affected by drag delay.area
+#define TRAIT_DEXTROUS "t_dextrous"
 
 //-- item traits --
 
@@ -169,9 +171,13 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_CRAWLER,
 	TRAIT_SIMPLE_DESC,
 	TRAIT_TWOBORE_TRAINING,
+<<<<<<< HEAD
 	TRAIT_MOB_STUTTER,
 	TRAIT_MOB_WEAK_HANDS,
 	TRAIT_EXTREME_BODY_BALANCE
+=======
+	TRAIT_DEXTROUS
+>>>>>>> b1eb56dcec07070c44ef16a5b3f7f04df789f283
 ))
 
 //trait SOURCES

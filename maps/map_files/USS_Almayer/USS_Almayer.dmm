@@ -8519,7 +8519,7 @@
 "aws" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
-/obj/effect/landmark/start/pilot,
+/obj/effect/landmark/start/crew_chief,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -10704,10 +10704,9 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/toughened,
-/obj/structure/machinery/computer/security/almayer_network{
+/obj/structure/machinery/computer/security/almayer_network/vehicle{
 	dir = 4;
 	layer = 2.99;
-	network = list("almayer","vehicle");
 	pixel_y = 4
 	},
 /obj/structure/machinery/computer/almayer_control{
@@ -11291,10 +11290,8 @@
 /area/almayer/living/grunt_rnr)
 "aDX" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer{
-	dir = 4;
-	name = "Containment Cameras";
-	network = list("containment","research")
+/obj/structure/machinery/computer/security/containment{
+	dir = 4
 	},
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
@@ -11889,11 +11886,9 @@
 	name = "General Listening Channel";
 	pixel_y = -28
 	},
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/almayer/vehicle{
 	dir = 4;
 	layer = 3.3;
-	name = "Ship Security Cameras";
-	network = list("almayer","vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -13420,11 +13415,9 @@
 	range = 20;
 	req_one_access_txt = "19;14"
 	},
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/containment{
 	dir = 4;
 	layer = 2.981;
-	name = "Containment Cameras";
-	network = list("containment","research");
 	pixel_y = 16
 	},
 /obj/item/clothing/accessory/stethoscope,
@@ -19862,11 +19855,9 @@
 /area/almayer/hull/upper_hull/u_a_s)
 "bkT" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/containment{
 	dir = 4;
 	layer = 2.99;
-	name = "Containment Cameras";
-	network = list("containment","research");
 	pixel_y = 16
 	},
 /obj/structure/machinery/computer/med_data/laptop{
@@ -21388,9 +21379,8 @@
 /area/almayer/living/offices)
 "brf" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network{
-	dir = 8;
-	network = list("almayer","vehicle")
+/obj/structure/machinery/computer/security/almayer_network/vehicle{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -37000,10 +36990,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/dropship{
 	dir = 8;
-	name = "Dropship Security Cameras Console";
-	network = list("dropship1","dropship2");
 	pixel_y = -24
 	},
 /obj/item/device/radio/intercom{
@@ -42434,10 +42422,9 @@
 /area/almayer/engineering/engine_core)
 "fxY" = (
 /obj/structure/machinery/iv_drip,
-/obj/structure/machinery/camera/autoname/almayer{
+/obj/structure/machinery/camera/autoname/almayer/containment{
 	dir = 1;
 	name = "ship-grade camera";
-	network = list("almayer","containment");
 	tag = "icon-camera (NORTH)"
 	},
 /turf/open/floor/almayer{
@@ -45247,9 +45234,8 @@
 /area/almayer/living/grunt_rnr)
 "gKF" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network{
-	dir = 8;
-	network = list("almayer","vehicle")
+/obj/structure/machinery/computer/security/almayer_network/vehicle{
+	dir = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "redfull";
@@ -54160,7 +54146,14 @@
 /turf/open/floor/almayer,
 /area/almayer/hallways/hangar)
 "kUh" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/tool/crowbar,
+/obj/item/clothing/head/headset{
+	pixel_y = -7
+	},
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -56411,10 +56404,8 @@
 	pixel_x = -6;
 	pixel_y = 28
 	},
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/almayer/vehicle{
 	dir = 4;
-	name = "Ship Security Cameras";
-	network = list("almayer","vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -60981,8 +60972,10 @@
 	},
 /area/almayer/shipboard/brig/general_equipment)
 "oho" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/item/book/manual/surgery,
+/obj/structure/closet/secure_closet/personal/cabinet{
+	req_access = null
+	},
+/obj/item/clothing/mask/rebreather/scarf,
 /turf/open/floor/almayer{
 	icon_state = "plate";
 	tag = "icon-sterile"
@@ -65063,10 +65056,8 @@
 /area/almayer/hull/lower_hull/l_m_s)
 "qck" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/structure/machinery/computer/security/wooden_tv{
-	dir = 8;
-	name = "Ship Security Cameras";
-	network = list("almayer")
+/obj/structure/machinery/computer/security/wooden_tv/almayer{
+	dir = 8
 	},
 /turf/open/floor/carpet,
 /area/almayer/living/commandbunks)
@@ -65500,10 +65491,9 @@
 	},
 /area/almayer/living/briefing)
 "qnD" = (
-/obj/structure/machinery/vending/coffee,
-/obj/structure/sign/safety/coffee{
-	pixel_x = 8;
-	pixel_y = 32
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Crew Chief's Room"
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -65977,10 +65967,8 @@
 	},
 /area/almayer/lifeboat_pumps/south1)
 "qyz" = (
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/containment/hidden{
 	dir = 4;
-	name = "Ship Security Cameras";
-	network = list("almayer","containment","containment_hidden");
 	pixel_x = -17
 	},
 /obj/structure/surface/table/almayer,
@@ -67272,16 +67260,6 @@
 	tag = "icon-emeraldcorner"
 	},
 /area/almayer/living/briefing)
-"rhf" = (
-/obj/structure/machinery/door/airlock/almayer/maint{
-	req_access = null;
-	req_one_access = null
-	},
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
-/area/almayer/living/pilotbunks)
 "rhO" = (
 /obj/structure/machinery/disposal{
 	density = 0;
@@ -67847,10 +67825,7 @@
 /area/almayer/hallways/port_hallway)
 "ruc" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer{
-	name = "Containment Cameras";
-	network = list("containment")
-	},
+/obj/structure/machinery/computer/security/almayer,
 /obj/structure/sign/safety/terminal{
 	pixel_x = 8;
 	pixel_y = 32
@@ -70057,10 +70032,8 @@
 	pixel_x = -12;
 	pixel_y = 28
 	},
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/almayer/vehicle{
 	dir = 4;
-	name = "Ship Security Cameras";
-	network = list("almayer","vehicle");
 	pixel_x = -17
 	},
 /obj/item/device/flashlight/lamp,
@@ -70416,11 +70389,9 @@
 	pixel_y = -28
 	},
 /obj/item/device/flashlight/lamp,
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/almayer/vehicle{
 	dir = 4;
 	layer = 3.3;
-	name = "Ship Security Cameras";
-	network = list("almayer","vehicle");
 	pixel_x = -17
 	},
 /obj/item/clothing/glasses/hud/health,
@@ -72718,12 +72689,9 @@
 /area/almayer/hallways/port_hallway)
 "tHc" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/wooden_tv{
-	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
+/obj/structure/machinery/computer/security/wooden_tv/prop{
 	dir = 8;
 	layer = 3.2;
-	name = "Television set";
-	network = null;
 	pixel_x = -3;
 	pixel_y = 6
 	},
@@ -78073,10 +78041,8 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer{
+/obj/structure/machinery/computer/security/dropship{
 	dir = 4;
-	name = "Dropship Security Cameras Console";
-	network = list("dropship1","dropship2");
 	pixel_y = -24
 	},
 /obj/item/device/radio/intercom{
@@ -79287,13 +79253,10 @@
 	},
 /area/almayer/engineering/upper_engineering)
 "wwW" = (
-/obj/structure/machinery/camera/autoname/almayer{
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden{
 	dir = 8;
 	name = "ship-grade camera";
-	network = list("almayer","containment_hidden");
-	tag = "icon-camera (EAST)";
-	unacidable = 1;
-	unslashable = 1
+	tag = "icon-camera (EAST)"
 	},
 /turf/open/floor/almayer/research/containment/floor2{
 	dir = 8;
@@ -80047,9 +80010,8 @@
 /area/almayer/medical/containment/cell)
 "wPF" = (
 /obj/structure/surface/table/reinforced/almayer_B,
-/obj/structure/machinery/computer/security/almayer_network{
-	dir = 4;
-	network = list("almayer","vehicle")
+/obj/structure/machinery/computer/security/almayer_network/vehicle{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "bluefull";
@@ -82381,10 +82343,7 @@
 	},
 /area/almayer/command/cic)
 "xML" = (
-/obj/structure/machinery/computer/security/wooden_tv{
-	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW.";
-	name = "Television set";
-	network = null;
+/obj/structure/machinery/computer/security/wooden_tv/prop{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -83246,10 +83205,8 @@
 /area/almayer/living/grunt_rnr)
 "yge" = (
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/almayer{
-	dir = 4;
-	name = "Ship Security Cameras";
-	network = list("almayer","vehicle")
+/obj/structure/machinery/computer/security/almayer/vehicle{
+	dir = 4
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -106010,7 +105967,7 @@ ads
 add
 ohB
 awd
-rhf
+awd
 awd
 awd
 awd
@@ -106213,8 +106170,8 @@ qdQ
 eFT
 hhA
 awd
-amb
-awd
+aws
+amh
 awd
 ana
 aqw
@@ -106416,9 +106373,9 @@ add
 add
 nJx
 awd
-amb
-awd
 kUh
+amh
+awd
 apq
 apq
 apq
@@ -106620,12 +106577,12 @@ aka
 npx
 awd
 oho
-awd
+iFn
 qnD
 amh
 amh
 amh
-alw
+qnD
 iFn
 fdE
 aiX

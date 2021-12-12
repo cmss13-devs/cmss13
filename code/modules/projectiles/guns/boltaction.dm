@@ -49,7 +49,7 @@
 /obj/item/weapon/gun/boltaction/set_gun_config_values()
 	..()
 	burst_amount = 0
-	fire_delay = FIRE_DELAY_TIER_7 
+	fire_delay = FIRE_DELAY_TIER_7
 	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_3
 	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_10
 	scatter = SCATTER_AMOUNT_TIER_6
@@ -94,7 +94,7 @@
 
 /obj/item/weapon/gun/boltaction/cock(mob/user)
 	return
-	
+
 /obj/item/weapon/gun/boltaction/replace_magazine(mob/user, obj/item/ammo_magazine/magazine) //mostly standard but without the cock-and-load if unchambered.
 	user.drop_inv_item_to_loc(magazine, src) //Click!
 	current_mag = magazine
@@ -103,3 +103,14 @@
 		SPAN_NOTICE("You load [magazine] into [src]!"), null, 3, CHAT_TYPE_COMBAT_ACTION)
 	if(reload_sound)
 		playsound(user, reload_sound, 25, 1, 5)
+
+/obj/item/weapon/gun/boltaction/colony
+	name = "Model 12 Bolt-Action Rifle"
+	desc = "Produced by Weyland-Yutani Colonial Supplies, the Model 12 is a bolt-action hunting rifle suited for dispatching xenofauna of medium to large size. Designed in the early 2120s for securing the frontiers of more exotic colony planets, the Model 12 has served all manner of colonists well since then. Chambered in 8mm W-Y."
+	flags_gun_features = GUN_CAN_POINTBLANK|GUN_WIELDED_FIRING_ONLY
+	current_mag = /obj/item/ammo_magazine/rifle/boltaction/colony
+
+/obj/item/weapon/gun/boltaction/colony/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_4
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8

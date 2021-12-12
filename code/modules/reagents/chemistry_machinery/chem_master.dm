@@ -212,18 +212,13 @@
 			var/amount_per_pill = reagents.total_volume/count
 			if(amount_per_pill > 60) amount_per_pill = 60
 
-			var/name = reject_bad_text(input(user,"Name:","Name your pill!","[reagents.get_master_reagent_name()] ([amount_per_pill] units)") as text|null)
-			if(!name)
-				return
-
 			if(reagents.total_volume/count < 1) //Sanity checking.
 				return
 			var/was_logged = FALSE
 
 			while (count--)
 				var/obj/item/reagent_container/pill/P = new/obj/item/reagent_container/pill(loc)
-				if(!name) name = reagents.get_master_reagent_name()
-				P.pill_desc = "A [name] pill."
+				P.pill_desc = "A custom pill."
 				P.pixel_x = rand(-7, 7) //random position
 				P.pixel_y = rand(-7, 7)
 				P.icon_state = "pill"+pillsprite
@@ -235,10 +230,10 @@
 
 				if(!was_logged)
 					var/list/reagents_in_pill = list()
-					for(var/datum/reagent/R in reagents.reagent_list)
+					for(var/datum/reagent/R in P.reagents.reagent_list)
 						reagents_in_pill += R.name
 					var/contained = english_list(reagents_in_pill)
-					msg_admin_niche("[key_name(usr)] created one or more pills named [name ? name : "pill"] (total pills to synthesize: [count]) (REAGENTS: [contained]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+					msg_admin_niche("[key_name(usr)] created one or more pills (total pills to synthesize: [count+1]) (REAGENTS: [contained]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 					was_logged = TRUE
 
 		else if(href_list["createglass"])

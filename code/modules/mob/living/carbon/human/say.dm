@@ -80,11 +80,7 @@
 		// This is broadcast to all mobs with the language,
 		// irrespective of distance or anything else.
 		if(speaking.flags & HIVEMIND)
-			var/hive_prefix = "WRYN"
-			if(speaking.name == "Changeling")
-				hive_prefix = "LING"
-			else if(speaking.name == "Xenomorph")
-				hive_prefix = "XENO"
+			var/hive_prefix = (speaking.name == LANGUAGE_HIVEMIND) ? "XENO" : "WRYN"
 			GLOB.STUI.game.Add("\[[time_stamp()]]<font color='#0099FF'>[hive_prefix]: [key_name(src)] : [message]</font><br>")
 			GLOB.STUI.processing |= STUI_LOG_GAME_CHAT
 			speaking.broadcast(src, trim(message))

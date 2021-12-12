@@ -1779,9 +1779,12 @@ Defined in conflicts.dm of the #defines folder.
 /datum/event_handler/bipod_movement
 	var/obj/item/attachable/bipod/attachment
 	var/obj/item/weapon/gun/G
-	handle(mob/living/sender, datum/event_args/mob_movement/ev_args)
-		if(attachment.bipod_deployed)
-			attachment.activate_attachment(G, sender)
+
+/datum/event_handler/bipod_movement/handle(mob/living/sender, datum/event_args/mob_movement/ev_args)
+	if(attachment.bipod_deployed)
+		attachment.activate_attachment(G, sender)
+	sender.apply_effect(1, SUPERSLOW)
+	sender.apply_effect(2, SLOW)
 
 /obj/item/attachable/bipod
 	name = "bipod"
@@ -1862,8 +1865,6 @@ Defined in conflicts.dm of the #defines folder.
 			else
 				to_chat(user, SPAN_NOTICE("You retract [src]."))
 				undeploy_bipod(G,user)
-				user.apply_effect(1, SUPERSLOW)
-				user.apply_effect(2, SLOW)
 				playsound(user,'sound/items/m56dauto_rotate.ogg', 55, 1)
 				if(bipod_movement)
 					user.remove_movement_handler(bipod_movement)

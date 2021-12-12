@@ -4,7 +4,7 @@
 	rank = JOB_SURVIVOR
 
 	skills = /datum/skills/civilian/survivor
-	languages = list("English")
+	languages = list(LANGUAGE_ENGLISH)
 	paygrade = "C"
 	idtype = /obj/item/card/id/lanyard
 	faction = FACTION_SURVIVOR

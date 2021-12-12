@@ -362,7 +362,7 @@
 
 	flameshape = new_flameshape
 
-	//non-dynamic flame is already colored	
+	//non-dynamic flame is already colored
 	if(R.burn_sprite == "dynamic")
 		color = R.burncolor
 	else
@@ -514,7 +514,7 @@
 
 	if(sig_result & COMPONENT_NO_BURN && !tied_reagent.fire_penetrating)
 		burn_damage = 0
-	
+
 	if(!burn_damage)
 		to_chat(M, SPAN_DANGER("You step over the flames."))
 		return
@@ -546,12 +546,13 @@
 	initial_burst = FALSE
 	update_flame()
 
-/obj/flamer_fire/process()
+/obj/flamer_fire/process(delta_time)
 	var/turf/T = loc
 	firelevel = max(0, firelevel)
 	if(!istype(T)) //Is it a valid turf? Has to be on a floor
 		qdel(src)
-		return
+		return PROCESS_KILL
+	T.flamer_fire_act(burnlevel*delta_time)
 
 	update_flame()
 
@@ -564,7 +565,7 @@
 		if(++j >= 11) break
 		if(isliving(i))
 			set_on_fire(i)
-		if(isobj(i))
+		else if(isobj(i))
 			var/obj/O = i
 			O.flamer_fire_act(0, weapon_cause_data)
 
@@ -582,6 +583,8 @@
 		R.burn_sprite = burn_sprite
 		R.burncolor = f_color
 		new/obj/flamer_fire(target, cause_data, R)
+	if(target.density)
+		return
 
 	for(var/spread_direction in alldirs)
 
@@ -611,9 +614,6 @@
 		var/turf/T = get_step(target, spread_direction)
 
 		if(!T) //prevents trying to spread into "null" (edge of the map?)
-			continue
-
-		if(T.density)
 			continue
 
 		if(aerial_flame_level && (T.get_pylon_protection_level() >= aerial_flame_level))

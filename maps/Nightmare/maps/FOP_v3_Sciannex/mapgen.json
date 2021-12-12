@@ -1,0 +1,6 @@
+[
+	{
+		"type": "include", "name": "Standalone variations",
+		"file": "maps/FOP_v3_Sciannex/mapgen_variations.json"
+	}
+]

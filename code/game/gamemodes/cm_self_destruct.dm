@@ -95,7 +95,7 @@ var/global/datum/authority/branch/evacuation/EvacuationAuthority //This is initi
 		evac_time = world.time
 		evac_status = EVACUATION_STATUS_INITIATING
 		ai_announcement("Attention. Emergency. All personel must evacuate immediately. You have [round(EVACUATION_ESTIMATE_DEPARTURE/60,1)] minute\s until departure.", 'sound/AI/evacuate.ogg')
-		xeno_message("A wave of adrenaline ripples through the hive. The fleshy creatures are trying to escape!")
+		xeno_message_all("A wave of adrenaline ripples through the hive. The fleshy creatures are trying to escape!")
 		var/datum/shuttle/ferry/marine/evacuation_pod/P
 		for(var/obj/structure/machinery/status_display/SD in machines)
 			if(is_mainship_level(SD.z))

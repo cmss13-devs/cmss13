@@ -21,9 +21,6 @@
 /proc/mp_slot_formula(var/playercount)
 	return job_slot_formula(playercount,25,2,4,8)
 
-/proc/po_slot_formula(var/playercount)
-	return job_slot_formula(playercount,35,1,2,3)
-
 /proc/so_slot_formula(var/playercount)
 	return job_slot_formula(playercount,40,1,2,5)
 

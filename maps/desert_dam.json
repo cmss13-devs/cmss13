@@ -26,6 +26,7 @@
     ],
     "traits": [{ "Ground": true }],
     "nightmare": {
+		"scenario": "maps/Nightmare/maps/DesertDam/scenario.json",
         "mapgen": "maps/Nightmare/maps/DesertDam/mapgen.json"
     },
     "xvx_hives": {

@@ -1,7 +1,7 @@
 /datum/equipment_preset/yautja
 	name = "Yautja"
 	idtype = null //No IDs for Yautja!
-	languages = list("Sainja")
+	languages = list(LANGUAGE_YAUTJA)
 	rank = "Predator"
 	faction = FACTION_YAUTJA
 	uses_special_name = TRUE

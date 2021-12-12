@@ -156,6 +156,36 @@
 /obj/item/clothing/suit/storage/snow_suit/doctor
 	name = "doctor's snow suit"
 
+/obj/item/clothing/suit/storage/snow_suit/synth
+	name = "synthetic's snow suit"
+	desc = "A snow suit designed for keeping synthetic units within acceptable temperature ranges in extremely cold environments to prevent power supply inefficiency. Due to advancements made in synthetic insulation, they are not required for most cold environments."
+	armor_melee = CLOTHING_ARMOR_NONE //no free armour for synths
+	armor_bullet = CLOTHING_ARMOR_NONE
+	armor_laser = CLOTHING_ARMOR_NONE
+	armor_energy = CLOTHING_ARMOR_NONE
+	armor_internaldamage = CLOTHING_ARMOR_NONE
+	allowed = list(
+		/obj/item/device/analyzer,
+		/obj/item/device/multitool,
+		/obj/item/device/pipe_painter,
+		/obj/item/device/t_scanner,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/wirecutters,
+		/obj/item/tool/wrench,
+		/obj/item/clothing/mask/gas,
+
+		/obj/item/device/flashlight,
+		/obj/item/device/healthanalyzer,
+		/obj/item/device/radio,
+		/obj/item/tank/emergency_oxygen,
+		/obj/item/tool/crowbar,
+		/obj/item/tool/pen,
+		/obj/item/device/binoculars,
+		/obj/item/tool/crew_monitor,
+		/obj/item/reagent_container/hypospray,
+	)
+
 /obj/item/clothing/suit/storage/snow_suit/survivor
 	name = "robust snow suit"
 	icon_state = "snowsuit" //needs new cool sprite

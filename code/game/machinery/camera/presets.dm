@@ -27,7 +27,7 @@
 	invuln = TRUE
 	icon_state = ""
 	mouse_opacity = 0
-	network = list("laser targets")
+	network = list(CAMERA_NET_LASER_TARGETS)
 	unslashable = TRUE
 	unacidable = TRUE
 
@@ -58,7 +58,7 @@
 /obj/structure/machinery/camera/vehicle
 	name = "military-grade vehicle camera"
 	icon_state = "vehicle_camera"
-	network = list("vehicle")
+	network = list(CAMERA_NET_VEHICLE)
 
 /obj/structure/machinery/camera/vehicle/toggle_cam_status(var/on = FALSE)
 	if(on)
@@ -88,23 +88,26 @@
 
 //cameras installed inside the dropships, accessible via both cockpit monitor and Almayer camera computers
 /obj/structure/machinery/camera/autoname/almayer/dropship_one
-	network = list("almayer", "dropship1")
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_ALAMO)
 
 /obj/structure/machinery/camera/autoname/almayer/dropship_two
-	network = list("almayer", "dropship2")
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_NORMANDY)
 
 /obj/structure/machinery/camera/autoname/almayer
 	name = "military-grade camera"
-	network = list("almayer")
+	network = list(CAMERA_NET_ALMAYER)
 
 /obj/structure/machinery/camera/autoname/almayer/containment
 	name = "containment camera"
 	unslashable = TRUE
 	unacidable = TRUE
-	network = list("almayer", "containment")
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_CONTAINMENT)
 
 /obj/structure/machinery/camera/autoname/almayer/containment/attack_alien(mob/living/carbon/Xenomorph/M)
 	return
+
+/obj/structure/machinery/camera/autoname/almayer/containment/hidden
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_CONTAINMENT_HIDDEN)
 
 //used by the landing camera dropship equipment. Do not place them right under where the dropship lands.
 //Should place them near each corner of your LZs.
@@ -113,16 +116,16 @@
 	invuln = TRUE
 	icon_state = "editor_icon"//for the map editor
 	mouse_opacity = 0
-	network = list("landing zones")
+	network = list(CAMERA_NET_LANDING_ZONES)
 	invisibility = 101 //fuck you init()
 
-	emp_act(severity)
-		return //immune to EMPs, just in case
+	colony_camera_mapload = FALSE
 
-	ex_act()
-		return
+/obj/structure/machinery/camera/autoname/lz_camera/emp_act(severity)
+	return //immune to EMPs, just in case
 
-
+/obj/structure/machinery/camera/autoname/lz_camera/ex_act()
+	return
 
 
 // CHECKS
@@ -166,22 +169,8 @@
 
 //Simulator camera
 /obj/structure/machinery/camera/simulation
-	network = list("simulation")
+	network = list(CAMERA_NET_SIMULATION)
 	invuln = TRUE
 	view_range = 14
 	use_power = FALSE
 	invisibility = INVISIBILITY_MAXIMUM
-
-//Desert Dam camera networks
-
-/obj/structure/machinery/camera/autoname/dam/laboratory_cameras
-	network = list("laboratory_cameras")
-
-/obj/structure/machinery/camera/autoname/dam/dam_interior_cameras
-	network = list("dam_interior_cameras")
-
-/obj/structure/machinery/camera/autoname/dam/security_cameras
-	network = list("security_cameras")
-
-/obj/structure/machinery/camera/autoname/dam/medical_cameras
-	network = list("medical_cameras")

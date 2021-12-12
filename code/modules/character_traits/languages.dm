@@ -17,19 +17,19 @@
 	target.remove_language(language_name)
 
 /datum/character_trait/language/russian
-	language_name = "Russian"
+	language_name = LANGUAGE_RUSSIAN
 	applyable = TRUE
 
 /datum/character_trait/language/japanese
-	language_name = "Japanese"
+	language_name = LANGUAGE_JAPANESE
 	applyable = TRUE
 
 /datum/character_trait/language/german
-	language_name = "Spacendeutchen"
+	language_name = LANGUAGE_SPACENDEUTCHEN
 	applyable = TRUE
 
 /datum/character_trait/language/spanish
-	language_name = "Spanish"
+	language_name = LANGUAGE_SPANISH
 	applyable = TRUE
 
 /datum/character_trait_group/language

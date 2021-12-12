@@ -163,7 +163,7 @@
 			to_chat(C, "<font color='#6699CC'><span class='ooc linkify'><span class='prefix'>LOOC:</span> <EM>[display_name]:</EM> <span class='message'>[msg]</span></span></font>")
 
 	if(mob.looc_overhead)
-		var/transmit_language = isXeno(mob) ? "Xenomorph" : "English"
+		var/transmit_language = isXeno(mob) ? LANGUAGE_XENOMORPH : LANGUAGE_ENGLISH
 		mob.langchat_speech(msg, heard, GLOB.all_languages[transmit_language], "#ff47d7")
 
 	// Now handle admins

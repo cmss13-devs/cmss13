@@ -562,16 +562,11 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
-/obj/item/device/radio/headset/yautja,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
+/obj/item/stack/sheet/mineral/sandstone/large_stack,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1319,16 +1314,86 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
-/obj/item/device/encryptionkey/yautja,
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/encryptionkey/yautja{
+	pixel_x = -4;
+	pixel_y = 2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
+/obj/item/device/radio/headset/yautja{
+	pixel_x = 4;
+	pixel_y = -2
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

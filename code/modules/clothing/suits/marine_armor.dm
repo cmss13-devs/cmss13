@@ -493,6 +493,12 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	siemens_coefficient = 0.7
 	uniform_restricted = null
 
+/obj/item/clothing/suit/storage/marine/light/vest/dcc
+	name = "\improper M3-VL pattern flak vest"
+	desc = "A combination of the standard non-combat M3-VL ballistics vest and M70 flak jacket, this piece of armor has been distributed to dropship crew to keep them safe from threats external and internal..."
+	icon_state = "VL_FLAK"
+	storage_slots = 2
+
 /obj/item/clothing/suit/storage/marine/light/synvest
 	name = "\improper M3A1 Synthetic Utility Vest"
 	desc = "This variant of the ubiquitous M3 pattern ballistics vest has been extensively modified, providing no protection in exchange for maximum mobility and storage space. Synthetic programming compliant."

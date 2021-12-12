@@ -43,6 +43,13 @@
 	if(pill_desc)
 		display_contents(user)
 
+/obj/item/reagent_container/pill/display_contents(mob/user)
+	if(isXeno(user))
+		return
+	if(skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
+		to_chat(user, pill_desc)
+	..()
+
 /obj/item/reagent_container/pill/attack(mob/M, mob/user)
 	if(M == user)
 		if(istype(M, /mob/living/carbon/human))

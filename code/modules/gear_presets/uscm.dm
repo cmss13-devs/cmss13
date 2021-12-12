@@ -2,7 +2,7 @@
 	name = "USCM"
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
-	languages = list("English")
+	languages = list(LANGUAGE_ENGLISH)
 	idtype = /obj/item/card/id/dogtag
 
 	utility_under = list(/obj/item/clothing/under/marine)
@@ -693,11 +693,9 @@
 	uses_special_name = TRUE
 	rank = JOB_MARSOC
 	role_comm_title = "Op."
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_TSL)
 	skills = /datum/skills/commando/deathsquad
 	idtype = /obj/item/card/id/dogtag
-
-/datum/equipment_preset/marsoc/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Tactical Sign Language"))
 
 /datum/equipment_preset/marsoc/load_name(mob/living/carbon/human/H, var/randomise)
 	H.gender = MALE

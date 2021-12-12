@@ -6,7 +6,7 @@
 	idtype = /obj/item/card/id/pmc
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
-	languages = list("English")
+	languages = list(LANGUAGE_ENGLISH)
 
 /datum/equipment_preset/pmc/New()
 	. = ..()
@@ -379,7 +379,7 @@
     paygrade = "PMC3"
     role_comm_title = "Spc"
     skills = /datum/skills/pmc/xeno_handler
-    languages = list("English", "Xenomorph")
+    languages = list(LANGUAGE_ENGLISH, LANGUAGE_XENOMORPH)
 
 /datum/equipment_preset/pmc/xeno_handler/load_gear(mob/living/carbon/human/H)
     H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
@@ -415,6 +415,7 @@
 	assignment = "Whiteout Team Operative"
 	role_comm_title = "WO"
 	rank = FACTION_WY_DEATHSQUAD
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_SPACENDEUTCHEN, LANGUAGE_SPANISH, LANGUAGE_RUSSIAN, LANGUAGE_TSL) //Synths after all.
 	skills = /datum/skills/everything //They are Synths, programmed for Everything.
 	idtype = /obj/item/card/id/pmc/ds
 
@@ -437,9 +438,6 @@
 		random_name = "[pick(greek_letters)]"
 	H.change_real_name(H, random_name)
 	H.age = rand(17,45)
-
-/datum/equipment_preset/pmc/w_y_whiteout/load_languages(mob/living/carbon/human/H)
-	H.set_languages(list("English", "Japanese", "Spacendeutchen", "Spanish", "Russian", "Tactical Sign Language")) //Synths after all.
 
 /datum/equipment_preset/pmc/w_y_whiteout/load_gear(mob/living/carbon/human/H)
 	// back

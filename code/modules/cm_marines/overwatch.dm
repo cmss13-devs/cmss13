@@ -13,7 +13,7 @@
 	var/datum/squad/current_squad = null
 	var/state = 0
 	var/obj/structure/machinery/camera/cam = null
-	var/list/network = list("overwatch")
+	var/list/network = list(CAMERA_NET_OVERWATCH)
 	var/x_supply = 0
 	var/y_supply = 0
 	var/x_bomb = 0

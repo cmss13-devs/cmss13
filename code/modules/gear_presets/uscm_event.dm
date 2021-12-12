@@ -3,7 +3,7 @@
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
 	minimum_age = 30
-	languages = list("English")
+	languages = list(LANGUAGE_ENGLISH)
 
 
 /*****************************************************************************************************/
@@ -20,7 +20,7 @@
 	role_comm_title = "RADM"
 	minimum_age = 50
 	skills = /datum/skills/admiral
-	languages = list("English", "Russian", "Japanese", "Spacendeutchen", "Spanish") //Know your enemy.
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN, LANGUAGE_JAPANESE, LANGUAGE_SPACENDEUTCHEN, LANGUAGE_SPANISH) //Know your enemy.
 
 	service_under = list(/obj/item/clothing/under/marine/officer/admiral, /obj/item/clothing/under/marine/officer/bridge)
 	service_over = list(/obj/item/clothing/suit/storage/jacket/marine/dress/admiral, /obj/item/clothing/suit/storage/jacket/marine/service)
@@ -68,7 +68,7 @@
 	paygrade = "ME5"
 	role_comm_title = "OT"
 	skills = /datum/skills/spy
-	languages = list("English", "Russian") //can speak russian, but it's not default
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_RUSSIAN) //can speak russian, but it's not default
 
 /datum/equipment_preset/uscm_event/upp_spy/load_gear(mob/living/carbon/human/H)
 	//TODO: add backpacks and satchels

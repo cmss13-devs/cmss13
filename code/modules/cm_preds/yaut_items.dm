@@ -376,7 +376,7 @@
 	unacidable = TRUE
 	ignore_z = TRUE
 
-/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking = "Sainja")
+/obj/item/device/radio/headset/yautja/talk_into(mob/living/M as mob, message, channel, var/verb = "commands", var/datum/language/speaking)
 	if(!isYautja(M)) //Nope.
 		to_chat(M, SPAN_WARNING("You try to talk into the headset, but just get a horrible shrieking in your ears!"))
 		return
@@ -863,6 +863,7 @@
 		C.emote("needhelp")
 		X.interference = 100 // Some base interference to give pred time to get some damage in, if it cannot land a single hit during this time pred is cheeks
 		RegisterSignal(X, COMSIG_XENO_PRE_HEAL, .proc/block_heal)
+	message_all_yautja("A hunting trap has caught something in [get_area_name(loc)]!")
 
 /obj/item/hunting_trap/proc/block_heal(mob/living/carbon/Xenomorph/xeno)
 	SIGNAL_HANDLER

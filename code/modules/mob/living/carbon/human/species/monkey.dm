@@ -32,7 +32,7 @@
 	..()
 
 /datum/species/monkey/handle_post_spawn(var/mob/living/carbon/human/H)
-	H.set_languages(list("Primitive"))
+	H.set_languages(list(LANGUAGE_MONKEY))
 	if(H.real_name == "unknown")
 		var/random_name = "[lowertext(name)] ([rand(1, 999)])"
 		H.change_real_name(H, random_name)

@@ -14,7 +14,7 @@
 /obj/item/circuitboard/computer/security
 	name = "Circuit board (Security Camera Monitor)"
 	build_path = /obj/structure/machinery/computer/security
-	var/network = list("military")
+	var/network = list(CAMERA_NET_MILITARY)
 	req_access = list(ACCESS_MARINE_BRIG)
 	var/locked = 1
 
@@ -102,15 +102,15 @@
 /obj/item/circuitboard/computer/robotics
 	name = "Circuit board (Robotics Control)"
 	build_path = /obj/structure/machinery/computer/robotics
-	
+
 /obj/item/circuitboard/computer/drone_control
 	name = "Circuit board (Drone Control)"
 	build_path = /obj/structure/machinery/computer/drone_control
-	
+
 /obj/item/circuitboard/computer/arcade
 	name = "Circuit board (Arcade)"
 	build_path = /obj/structure/machinery/computer/arcade
-	
+
 /obj/item/circuitboard/computer/turbine_control
 	name = "Circuit board (Turbine control)"
 	build_path = /obj/structure/machinery/computer/turbine_computer
@@ -141,20 +141,23 @@
 /obj/item/circuitboard/computer/crew
 	name = "Circuit board (Crew monitoring computer)"
 	build_path = /obj/structure/machinery/computer/crew
-	
+
 /obj/item/circuitboard/computer/ordercomp
 	name = "Circuit board (Supply ordering console)"
 	build_path = /obj/structure/machinery/computer/ordercomp
-	
+
 /obj/item/circuitboard/computer/supply_drop_console
 	name = "Circuit board (Supply Drop Console)"
 	build_path = /obj/structure/machinery/computer/supply_drop_console
-	
+
+/obj/item/circuitboard/computer/supply_drop_console/limited
+	name = "Circuit board (Supply Drop Console)"
+	build_path = /obj/structure/machinery/computer/supply_drop_console/limited
 
 /obj/item/circuitboard/computer/supplycomp
-	name = "Circuit board (Supply shuttle console)"
+	name = "Circuit board (ASRS console)"
 	build_path = /obj/structure/machinery/computer/supplycomp
-	
+
 	var/contraband_enabled = 0
 
 /obj/item/circuitboard/computer/supplycomp/construct(var/obj/structure/machinery/computer/supplycomp/SC)
@@ -165,31 +168,32 @@
 	if (..(SC))
 		contraband_enabled = SC.can_order_contraband
 
+
 /obj/item/circuitboard/computer/operating
 	name = "Circuit board (Operating Computer)"
 	build_path = /obj/structure/machinery/computer/operating
-	
+
 /obj/item/circuitboard/computer/comm_monitor
 	name = "Circuit board (Telecommunications Monitor)"
 	build_path = /obj/structure/machinery/computer/telecomms/monitor
-	
+
 /obj/item/circuitboard/computer/comm_server
 	name = "Circuit board (Telecommunications Server Monitor)"
 	build_path = /obj/structure/machinery/computer/telecomms/server
-	
+
 /obj/item/circuitboard/computer/comm_traffic
 	name = "Circuitboard (Telecommunications Traffic Control)"
 	build_path = /obj/structure/machinery/computer/telecomms/traffic
-	
+
 
 /obj/item/circuitboard/computer/aifixer
 	name = "Circuit board (AI Integrity Restorer)"
 	build_path = /obj/structure/machinery/computer/aifixer
-	
+
 /obj/item/circuitboard/computer/area_atmos
 	name = "Circuit board (Area Air Control)"
 	build_path = /obj/structure/machinery/computer/area_atmos
-	
+
 
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/I as obj, mob/user as mob)

@@ -556,7 +556,7 @@
 	rank = JOB_DROPSHIP_CREW_CHIEF
 	paygrade = "ME6"
 	role_comm_title = "DCC"
-	skills = /datum/skills/pilot
+	skills = /datum/skills/crew_chief
 
 /datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

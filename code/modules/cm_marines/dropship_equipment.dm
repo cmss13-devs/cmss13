@@ -17,6 +17,7 @@
 	var/datum/shuttle/ferry/marine/linked_shuttle
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
+	var/skill_required = SKILL_PILOT_TRAINED
 
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
@@ -561,6 +562,7 @@
 	is_weapon = TRUE
 	screen_mode = 1
 	is_interactable = TRUE
+	skill_required = SKILL_PILOT_EXPERT
 	var/last_fired //used for weapon cooldown after use.
 	var/firing_sound
 	var/firing_delay = 20 //delay between firing. 2 seconds by default
@@ -670,6 +672,7 @@
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/cannon30.ogg'
 	point_cost = 400
+	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
 
 /obj/structure/dropship_equipment/weapon/heavygun/update_icon()
@@ -729,6 +732,7 @@
 	firing_sound = 'sound/effects/phasein.ogg'
 	firing_delay = 50 //5 seconds
 	point_cost = 500
+	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
 
 /obj/structure/dropship_equipment/weapon/laser_beam_gun/update_icon()

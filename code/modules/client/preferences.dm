@@ -62,6 +62,8 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/predator_armor_material = "ebony"
 	//CO-specific preferences
 	var/commander_sidearm = "Mateba"
+	//SEA specific preferences
+	var/sea_path = "Command"
 
 	//WL Council preferences.
 	var/yautja_status = WHITELIST_NORMAL
@@ -296,6 +298,9 @@ var/const/MAX_SAVE_SLOTS = 10
 			dat += "<b>Be [role_name]:</b> <a href='?_src_=prefs;preference=be_special;num=[n]'><b>[be_special & (1<<n) ? "Yes" : "No"]</b></a><br>"
 
 		n++
+
+	if(RoleAuthority.roles_whitelist[user.ckey] & WHITELIST_MENTOR)
+		dat += "<b>SEA Grade Path:</b><a href='?_src_=prefs;preference=grade_path;task=input'>[sea_path]</a><br>"
 
 	dat += "<br>"
 	dat += "\t<a href='?_src_=prefs;preference=job;task=menu'><b>Set Role Preferences</b></a>"
@@ -951,6 +956,13 @@ var/const/MAX_SAVE_SLOTS = 10
 					if(!new_co_sidearm)
 						return
 					commander_sidearm = new_co_sidearm
+
+				if("grade_path")
+					var/list/options = list("Command", "Technical")
+					var/new_path = tgui_input_list(user, "Choose your preferred promotion path.", "Promotion Paths", options)
+					if(!new_path)
+						return
+					sea_path = new_path
 
 				if("yautja_status")
 					var/list/options = list("Normal" = WHITELIST_NORMAL)

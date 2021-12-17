@@ -233,8 +233,17 @@
 	if(href_list["open_fire"])
 		var/targ_id = text2num(href_list["open_fire"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
-			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(!H.allow_gun_usage)
+				to_chat(H, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
+				return
+		var/obj/structure/dropship_equipment/weapon/DEW = selected_equipment
+		if(!selected_equipment || !selected_equipment.is_weapon)
+			to_chat(usr, SPAN_WARNING("No weapon selected."))
+			return
+		if(!skillcheck(M, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
+			to_chat(usr, SPAN_WARNING("You don't have the training to fire this weapon!"))
 			return
 
 		if(!faction)
@@ -251,12 +260,15 @@
 				if(shuttle.moving_status != SHUTTLE_INTRANSIT)
 					to_chat(usr, SPAN_WARNING("Dropship can only fire while in flight."))
 					return
-				if(shuttle.queen_locked) return
-
+				if(shuttle.queen_locked)
+					return
 				if(!selected_equipment || !selected_equipment.is_weapon)
 					to_chat(usr, SPAN_WARNING("No weapon selected."))
 					return
-				var/obj/structure/dropship_equipment/weapon/DEW = selected_equipment
+				DEW = selected_equipment // for if the weapon somehow changes
+				if(!skillcheck(M, SKILL_PILOT, DEW.skill_required)) //only pilots can fire dropship weapons.
+					to_chat(usr, SPAN_WARNING("You don't have the training to fire this weapon!"))
+					return
 				if(!shuttle.transit_gun_mission && DEW.fire_mission_only)
 					to_chat(usr, SPAN_WARNING("[DEW] requires a fire mission flight type to be fired."))
 					return
@@ -292,14 +304,14 @@
 
 	if(href_list["deselect"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		selected_equipment = null
 
 	if(href_list["create_mission"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.max_mission_len <= firemission_envelope.missions.len)
@@ -326,7 +338,7 @@
 	if(href_list["mission_tag_delete"])
 		var/ref = text2num(href_list["mission_tag_delete"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
@@ -343,7 +355,7 @@
 	if(href_list["mission_tag"])
 		var/ref = text2num(href_list["mission_tag"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
@@ -360,7 +372,7 @@
 	if(href_list["mission_tag_edit"])
 		var/ref = text2num(href_list["mission_tag_edit"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(ref>firemission_envelope.missions.len)
@@ -379,21 +391,21 @@
 
 	if(href_list["switch_to_firemission"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		in_firemission_mode = TRUE
 
 	if(href_list["leave_firemission_execution"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		in_firemission_mode = FALSE
 
 	if(href_list["change_direction"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		var/list/directions = list(dir2text(NORTH), dir2text(SOUTH), dir2text(EAST), dir2text(WEST))
@@ -408,7 +420,7 @@
 
 	if(href_list["change_offset"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 
@@ -427,7 +439,7 @@
 		if(!targ_id)
 			to_chat(usr, SPAN_WARNING("Bad Target."))
 			return
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.stat > FIRE_MISSION_STATE_IN_TRANSIT && firemission_envelope.stat < FIRE_MISSION_STATE_COOLDOWN)
@@ -450,7 +462,12 @@
 
 	if(href_list["execute_firemission"])
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			if(!H.allow_gun_usage)
+				to_chat(H, SPAN_WARNING("Your programming prevents you from operating dropship weaponry!"))
+				return
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(firemission_envelope.stat != FIRE_MISSION_STATE_IDLE)
@@ -459,7 +476,6 @@
 		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
 			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
 			return
-
 		if(!firemission_envelope.recorded_loc)
 			to_chat(usr, SPAN_WARNING("Target is not selected or lost."))
 			return
@@ -470,7 +486,7 @@
 		var/weap_ref = text2num(href_list["fm_weapon_id"])+1
 		var/offset_ref = text2num(href_list["fm_offset_id"])+1
 		var/mob/M = usr
-		if(M.job != "Pilot Officer") //only pilots can fire dropship weapons.
+		if(!skillcheck(M, SKILL_PILOT, SKILL_PILOT_TRAINED)) //only pilots can fire dropship weapons.
 			to_chat(usr, SPAN_WARNING("A screen with graphics and walls of physics and engineering values open, you immediately force it closed."))
 			return
 		if(!editing_firemission)
@@ -516,7 +532,7 @@
 
 		firemission_envelope.add_user_to_tracking(usr)
 
-		to_chat(usr, "You peek thru the guidance camera.")
+		to_chat(usr, "You peek through the guidance camera.")
 
 	ui_interact(usr)
 

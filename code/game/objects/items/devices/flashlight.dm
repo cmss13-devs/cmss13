@@ -476,3 +476,25 @@
 	turn_on()
 	faction = user.faction
 	return ..()
+
+/obj/item/device/flashlight/flare/signal/debug
+	name = "debug signal flare"
+	desc = "A signal flare used to test CAS runs. If you're seeing this, someone messed up."
+
+/obj/item/device/flashlight/flare/signal/debug/Initialize()
+	..()
+	fuel = INFINITY
+	return INITIALIZE_HINT_ROUNDSTART
+
+/obj/item/device/flashlight/flare/signal/debug/LateInitialize()
+	activate_signal()
+
+/obj/item/device/flashlight/flare/signal/debug/activate_signal()
+	turn_on()
+	faction = FACTION_MARINE
+	signal = new(src)
+	signal.target_id = ++cas_tracking_id_increment
+	name += " [rand(100, 999)]"
+	signal.name = name
+	cas_groups[FACTION_MARINE].add_signal(signal)
+	anchored = TRUE

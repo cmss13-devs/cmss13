@@ -80296,11 +80296,13 @@
 /area/almayer/hull/lower_hull/l_m_p)
 "wUX" = (
 /obj/structure/surface/rack,
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = -4
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
+	pixel_x = -1;
+	pixel_y = 7
 	},
-/obj/item/reagent_container/food/snacks/sliceable/cheesewheel{
-	pixel_y = 5
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature{
+	pixel_x = 1;
+	pixel_y = -5
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

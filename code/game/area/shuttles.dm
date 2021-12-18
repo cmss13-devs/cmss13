@@ -1,17 +1,14 @@
-
-//These are shuttle areas; all subtypes are only used as teleportation markers, they have no actual function beyond that.
-//Multi area shuttles are a thing now, use subtypes! ~ninjanomnom
-
 /area/shuttle
 	name = "Shuttle"
 	requires_power = FALSE
-//	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	always_unpowered = FALSE
-//	valid_territory = FALSE
 	icon_state = "shuttle"
+	ceiling_muffle = TRUE
+
 	// Loading the same shuttle map at a different time will produce distinct area instances.
 	unique = FALSE
 	lighting_use_dynamic = FALSE
+
 
 ///area/shuttle/Initialize()
 //	if(!canSmoothWithAreas)
@@ -25,11 +22,21 @@
 	if(ispath(new_baseturfs[1], /turf/open/floor/plating))
 		new_baseturfs.Insert(1, /turf/baseturf_skipover/shuttle)
 
+// Dynamic sound handling for the shuttles
+/area/shuttle/get_sound_ambience(client/target)
+	// Get the actual shuttle instance
+	var/obj/docking_port/mobile/shuttle = SSshuttle.get_containing_shuttle(target.mob)
+	if(!shuttle)
+		return ambience_exterior
+	// Pass it on
+	return shuttle.get_sound_ambience()
+
 ////////////////////////////Single-area shuttles////////////////////////////
 
 /area/shuttle/transit
 	name = "Hyperspace"
 	desc = "Weeeeee"
+	ambience_exterior = 'sound/ambience/shuttle_fly_loop.ogg'
 
 /area/shuttle/vehicle_elevator
 	name = "Vehicle ASRS"

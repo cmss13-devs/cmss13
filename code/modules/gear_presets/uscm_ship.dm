@@ -82,15 +82,15 @@
 /datum/equipment_preset/uscm_ship/liaison/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		var/playtime = get_job_playtime(H.client, rank)
-
-		if(playtime > JOB_PLAYTIME_TIER_4)
-			return "WY-XE"
-		else if(playtime > JOB_PLAYTIME_TIER_3)
-			return "WY-XD"
-		else if(playtime > JOB_PLAYTIME_TIER_2)
-			return "WY-XC"
-		else
-			return paygrade
+		if(H.client.prefs.playtime_perks)
+			if(playtime > JOB_PLAYTIME_TIER_4)
+				return "WY-XE"
+			else if(playtime > JOB_PLAYTIME_TIER_3)
+				return "WY-XD"
+			else if(playtime > JOB_PLAYTIME_TIER_2)
+				return "WY-XC"
+			else
+				return paygrade
 	return paygrade
 
 //*****************************************************************************************************/
@@ -500,6 +500,8 @@
 				grade8 = "ME8E"
 				grade9 = "ME9E"
 
+		if(!H.client.prefs.playtime_perks)
+			return paygrade
 		if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_3)
 			return grade9
 		else if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_1)

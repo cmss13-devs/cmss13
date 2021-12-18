@@ -36990,7 +36990,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/dropship{
+/obj/structure/machinery/computer/security/hangar{
 	dir = 8;
 	pixel_y = -24
 	},
@@ -78041,7 +78041,7 @@
 	tag = "icon-intact-supply (EAST)"
 	},
 /obj/structure/surface/table/almayer,
-/obj/structure/machinery/computer/security/dropship{
+/obj/structure/machinery/computer/security/hangar{
 	dir = 4;
 	pixel_y = -24
 	},

@@ -37,7 +37,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_military_police, list(
 	name = "\improper ColMarTech Military Police Equipment Rack"
 	desc = "An automated rack hooked up to a colossal storage of Military Police standard-issue equipment."
 	req_access = list(ACCESS_MARINE_BRIG)
-	vendor_role = list(JOB_POLICE)
+	vendor_role = list(JOB_POLICE, JOB_POLICE_CADET)
 
 /obj/structure/machinery/cm_vending/clothing/military_police/Initialize(mapload, ...)
 	. = ..()

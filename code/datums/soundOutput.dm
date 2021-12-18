@@ -56,11 +56,13 @@
 	S.environment = new_area.sound_environment
 	S.status = SOUND_STREAM
 
+	var/area_ambience = new_area.get_sound_ambience(owner)
+
 	if(!force_cur_amb)
-		if(new_area.ambience_exterior == ambience)
+		if(area_ambience == ambience)
 			S.status |= SOUND_UPDATE
 		else
-			ambience = new_area.ambience_exterior
+			ambience = area_ambience
 
 	var/muffle
 	if(new_area.ceiling_muffle)

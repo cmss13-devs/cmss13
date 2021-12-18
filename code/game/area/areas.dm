@@ -45,15 +45,15 @@
 	var/weather_enabled = TRUE	// Manual override for weather if set to false
 
 	// Ambience sounds
-	var/ambience_exterior 	= null //The sound that plays as ambience
-	var/sound_environment 	= 2 //Reverberation applied to ALL sounds that a client in this area hears
-								//Full list of environments in the BYOND reference http://www.byond.com/docs/ref/#/sound/var/environment
-								//Also, diferent environments affect muffling differently
 	var/list/soundscape_playlist = list() //Clients in this area will hear one of the sounds in this list from time to time
 	var/soundscape_interval = INITIAL_SOUNDSCAPE_COOLDOWN //The base interval between each soundscape.
 	var/ceiling_muffle = TRUE //If true, this area's ceiling type will alter the muffling of the ambience sound
 	var/base_muffle = 0 //Ambience will always be muffled by this ammount at minimum
 						//NOTE: Values from 0 to -10000 ONLY. The rest won't work
+	/// Default sound to play as ambience for clients entering the area
+	VAR_PROTECTED/ambience_exterior
+	/// Default sound environment to use for the area, as list or int BYOND preset: http://www.byond.com/docs/ref/#/sound/var/environment
+	var/sound_environment = 2
 
 	//Power stuff
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
@@ -110,6 +110,10 @@
 
 	power_change()		// all machines set to current power level, also updates lighting icon
 	InitializeLighting()
+
+/// Returns the correct ambience sound track for a client in this area
+/area/proc/get_sound_ambience(client/target)
+	return ambience_exterior
 
 /area/proc/poweralert(var/state, var/obj/source as obj)
 	if (state != poweralm)

@@ -37,6 +37,7 @@ var/global/list/job_squad_roles = JOB_SQUAD_ROLES_LIST
 #define JOB_CORPORATE_LIAISON			"Corporate Liaison"
 #define JOB_MESS_SERGEANT				"Mess Sergeant"
 #define JOB_SYNTH						"Synthetic"
+#define JOB_WORKING_JOE					"Working Joe"
 
 #define JOB_CO							"Commanding Officer"
 #define JOB_XO							"Executive Officer"

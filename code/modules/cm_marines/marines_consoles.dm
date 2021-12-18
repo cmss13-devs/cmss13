@@ -776,6 +776,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		JOB_SYNTH_SURVIVOR = 130,
 		JOB_SURVIVOR = 131,
 		JOB_COLONIST = 132,
+		JOB_WORKING_JOE = 133,
 
 		// WO jobs
 		// 00-10: Command

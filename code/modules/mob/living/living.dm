@@ -659,7 +659,7 @@
 				var/datum/reagent/R = A
 				reagents_in_body["[R.id]"] = R.volume
 				if(R.flags & REAGENT_SCANNABLE)
-					reagentdata["[R.id]"] = "[R.overdose != 0 && R.volume >= R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>"
+					reagentdata["[R.id]"] = "[R.overdose != 0 && R.volume > R.overdose && !(R.flags & REAGENT_CANNOT_OVERDOSE) ? SPAN_WARNING("<b>OD: </b>") : ""] <font color='#9773C4'><b>[round(R.volume, 1)]u [R.name]</b></font>"
 				else
 					unknown++
 			if(reagentdata.len)

@@ -384,10 +384,7 @@
 	if(istype(AM, /obj))
 		var/obj/O = AM
 		O.forceMove(src)
-	else if(istype(AM, /mob))
-		var/mob/M = AM
-		M.forceMove(src)
-	src.flush()
+		src.flush()
 
 /obj/structure/machinery/disposal/deliveryChute/flush()
 	flushing = 1

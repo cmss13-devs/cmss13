@@ -89,6 +89,7 @@ h1.alert, h2.alert		{color: #000000;}
 .debuginfo				{color: #493D26;	font-style: italic;}
 .notice					{color: #000099;}
 .xenonotice				{color: #2a623d;}
+.xenoboldnotice			{color: #2a623d;	font-weight: bold;}
 .boldnotice				{color: #000099;	font-weight: bold;}
 .warning				{color: #ff0000;	font-style: italic;}
 .xenowarning			{color: #2a623d;	font-style: italic;}

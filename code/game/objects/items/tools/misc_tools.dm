@@ -246,10 +246,10 @@
 
 
 /obj/item/tool/pen/paralysis/attack(mob/living/M as mob, mob/user as mob)
-	if(!(istype(M,/mob)))
+	if(!(istype(M)))
 		return
 	..()
-	if(M.can_inject(user,1))
+	if(M.can_inject(user, TRUE))
 		if(reagents.total_volume)
 			if(M.reagents) reagents.trans_to(M, 50)
 

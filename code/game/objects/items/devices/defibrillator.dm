@@ -204,12 +204,13 @@
 	H.apply_damage(-H.getOxyLoss(), OXY)
 	H.updatehealth() //Needed for the check to register properly
 
-	for(var/datum/reagent/R in H.reagents.reagent_list)
-		var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
-		if(P)
-			P.trigger(H)
-			H.reagents.remove_reagent(R.id, 1)
-			break
+	if(!(H.species?.flags & NO_CHEM_METABOLIZATION))
+		for(var/datum/reagent/R in H.reagents.reagent_list)
+			var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
+			if(P)
+				P.trigger(H)
+				H.reagents.remove_reagent(R.id, 1)
+				break
 	if(H.health > HEALTH_THRESHOLD_DEAD)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 		user.track_life_saved(user.job)

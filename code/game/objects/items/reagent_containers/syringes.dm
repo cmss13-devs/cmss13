@@ -154,22 +154,17 @@
 				return
 
 			if(ismob(target))
+				var/mob/living/M = target
+				if(!istype(M))
+					return
+				if(!M.can_inject(user, TRUE))
+					return
 				if(target != user)
 
 					if(ishuman(target))
-
 						var/mob/living/carbon/human/H = target
-						if(H.wear_suit)
-							if(istype(H.wear_suit,/obj/item/clothing/suit/space))
-								injection_time = 60
-							else if(!H.can_inject(user, 1))
-								return
-
-					else if(isliving(target))
-
-						var/mob/living/M = target
-						if(!M.can_inject(user, 1))
-							return
+						if(istype(H.wear_suit, /obj/item/clothing/suit/space))
+							injection_time = 60
 
 					if(injection_time != 60)
 						user.visible_message(SPAN_DANGER("<B>[user] is trying to inject [target]!</B>"))
@@ -180,16 +175,14 @@
 
 					user.visible_message(SPAN_DANGER("[user] injects [target] with the syringe!"))
 
-					if(istype(target,/mob/living))
-						var/mob/living/M = target
-						var/list/injected = list()
-						for(var/datum/reagent/R in src.reagents.reagent_list)
-							injected += R.name
-							R.last_source_mob = WEAKREF(user)
-						var/contained = english_list(injected)
-						M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
-						user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
-						msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
+					var/list/injected = list()
+					for(var/datum/reagent/R in src.reagents.reagent_list)
+						injected += R.name
+						R.last_source_mob = WEAKREF(user)
+					var/contained = english_list(injected)
+					M.attack_log += text("\[[time_stamp()]\] <font color='orange'>Has been injected with [src.name] by [key_name(user)]. Reagents: [contained]</font>")
+					user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to inject [key_name(M)]. Reagents: [contained]</font>")
+					msg_admin_attack("[key_name(user)] injected [key_name(M)] with [src.name] (REAGENTS: [contained]) (INTENT: [uppertext(intent_text(user.a_intent))]) in [get_area(user)] ([user.loc.x],[user.loc.y],[user.loc.z]).", user.loc.x, user.loc.y, user.loc.z)
 
 				reagents.reaction(target, INGEST)
 

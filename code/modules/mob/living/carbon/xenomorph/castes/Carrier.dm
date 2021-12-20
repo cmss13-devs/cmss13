@@ -21,6 +21,8 @@
 	can_hold_facehuggers = 1
 	can_hold_eggs = CAN_HOLD_ONE_HAND
 	weed_level = WEED_LEVEL_STANDARD
+
+	hugger_nurturing = TRUE
 	huggers_max = 16
 	eggs_max = 7
 

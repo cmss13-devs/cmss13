@@ -331,6 +331,11 @@
 	if(stat != CONSCIOUS || isnull(loc)) //Make sure we're conscious and not idle or dead.
 		return
 
+	if(isXeno(loc))
+		var/mob/living/carbon/Xenomorph/X = loc
+		if(X.caste.hugger_nurturing) // caste can prevent hugger death
+			return
+
 	leap_at_nearest_target()
 	jumps_left--
 	if(!jumps_left)

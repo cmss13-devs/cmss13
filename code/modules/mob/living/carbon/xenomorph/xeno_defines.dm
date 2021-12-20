@@ -60,7 +60,10 @@
 	var/build_time_mult = BUILD_TIME_MULT_XENO // Default build time and build distance
 	var/max_build_dist = 0
 
-	//Carrier vars
+	// Carrier vars //
+
+	/// if a hugger is held in hand, won't attempt to leap and kill itself
+	var/hugger_nurturing = FALSE
 	var/huggers_max = 0
 	var/throwspeed = 0
 	var/hugger_delay = 0

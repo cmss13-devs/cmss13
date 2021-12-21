@@ -620,3 +620,21 @@
 
 		user.hud_used.hidden_inventory_update()
 	return 1
+
+/obj/screen/rotate
+	icon_state = "centred_arrow"
+	dir = EAST
+	var/atom/assigned_atom
+	var/rotate_amount = 90
+
+/obj/screen/rotate/Initialize(mapload, var/set_assigned_atom)
+	. = ..()
+	assigned_atom = set_assigned_atom
+
+/obj/screen/rotate/clicked(mob/user)
+	if(assigned_atom)
+		assigned_atom.setDir(turn(assigned_atom.dir, rotate_amount))
+
+/obj/screen/rotate/alt
+	dir = WEST
+	rotate_amount = -90

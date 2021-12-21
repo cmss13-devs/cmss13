@@ -7,6 +7,13 @@ GLOBAL_LIST_INIT(stylesheets, list(
 	"Legacy" = "legacy.css"
 ))
 
+GLOBAL_LIST_INIT(bgstate_options, list(
+	"blank",
+	"outerhull",
+	"sterile",
+	"whitefull"
+))
+
 var/const/MAX_SAVE_SLOTS = 10
 
 /datum/preferences
@@ -166,6 +173,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	var/hear_vox = TRUE
 
 	var/hide_statusbar
+
+	var/bg_state = "blank" // the icon_state of the floortile background displayed behind the mannequin in character creation
+	var/show_job_gear = TRUE // whether the job gear gets equipped to the mannequin in character creation
 
 	//Byond membership status
 
@@ -356,6 +366,9 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>Undershirt:</b> <a href='?_src_=prefs;preference=undershirt;task=input'><b>[undershirt_t[undershirt]]</b></a><br>"
 
 	dat += "<b>Backpack Type:</b> <a href ='?_src_=prefs;preference=bag;task=input'><b>[backbaglist[backbag]]</b></a><br>"
+
+	dat += "<b>Show Job Gear:</b> <a href ='?_src_=prefs;preference=toggle_job_gear'><b>[show_job_gear ? "True" : "False"]</b></a><br>"
+	dat += "<b>Background:</b> <a href ='?_src_=prefs;preference=cycle_bg'><b>Cycle Background</b></a><br>"
 
 	dat += "<b>Custom Loadout:</b> "
 	var/total_cost = 0
@@ -833,6 +846,14 @@ var/const/MAX_SAVE_SLOTS = 10
 					var/datum/character_trait/CT = GLOB.character_traits[trait]
 					CT?.try_remove_trait(src)
 					open_character_traits(user, trait_group)
+
+		if("toggle_job_gear")
+			show_job_gear = !show_job_gear
+			update_preview_icon()
+
+		if("cycle_bg")
+			bg_state = next_in_list(bg_state, GLOB.bgstate_options)
+			update_preview_icon()
 
 	switch (href_list["task"])
 		if ("random")

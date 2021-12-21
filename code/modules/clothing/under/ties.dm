@@ -365,30 +365,28 @@
 	. = ..()
 
 //subtypes can override this to specify what can be holstered
-/obj/item/clothing/accessory/holster/proc/can_holster(obj/item/weapon/gun/W)
-	if(!istype(W))
-		return 0 //Only for guns
-	if(W.w_class <= SIZE_MEDIUM) return 1
-	return 0
+/obj/item/clothing/accessory/holster/proc/can_holster(obj/item/I, mob/user)
+	if(!isgun(I) && !isbanana(I))
+		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
+		return FALSE
+	if(I.w_class > SIZE_MEDIUM)
+		to_chat(user, SPAN_DANGER("\The [I] won't fit in \the [src]!"))
+		return FALSE
+	return TRUE
 
-/obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
+/obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user)
 	if(holstered)
 		to_chat(user, SPAN_DANGER("There is already a [holstered] holstered here!"))
 		return
 
-	if (!isgun(I))
-		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
-		return
-
 	var/obj/item/weapon/gun/W = I
-	if (!can_holster(W))
-		to_chat(user, SPAN_DANGER("This [W] won't fit in the [src]!"))
+	if(!can_holster(W, user))
 		return
 
 	holstered = W
 	user.drop_inv_item_to_loc(holstered, src)
 	holstered.add_fingerprint(user)
-	user.visible_message(SPAN_NOTICE("[user] holsters the [holstered]."), "You holster the [holstered].")
+	user.visible_message(SPAN_NOTICE("[user] holsters \the [holstered]."), "You holster \the [holstered].")
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
 	if(!holstered)

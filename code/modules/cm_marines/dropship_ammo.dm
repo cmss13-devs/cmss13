@@ -98,30 +98,31 @@
 		to_chat(user, "It's loaded with an empty [name].")
 
 /obj/structure/ship_ammo/heavygun/detonate_on(turf/impact)
-    set waitfor = 0
-    var/list/turf_list = list()
-    for(var/turf/T in range(impact, bullet_spread_range))
-        turf_list += T
-    var/soundplaycooldown = 0
-    var/debriscooldown = 0
-    for(var/i=1, i<=ammo_used_per_firing, i++)
-        var/turf/U = pick(turf_list)
-        sleep(1)
-        U.ex_act(EXPLOSION_THRESHOLD_MLOW)
-        for(var/atom/movable/AM in U)
-            if(iscarbon(AM))
-                AM.ex_act(EXPLOSION_THRESHOLD_MLOW, , create_cause_data(initial(name), source_mob))
-            else
-                AM.ex_act(EXPLOSION_THRESHOLD_MLOW)
-        if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
-            playsound(U, get_sfx("explosion"), 40, 1, 20)
-            soundplaycooldown = 3
-        soundplaycooldown--
-        if(!debriscooldown)
-            U.ceiling_debris_check(1)
-            debriscooldown = 6
-        debriscooldown--
-        new /obj/effect/particle_effect/expl_particles(U)
+	set waitfor = 0
+	var/list/turf_list = list()
+	for(var/turf/T in range(bullet_spread_range, impact))
+		turf_list += T
+	var/soundplaycooldown = 0
+	var/debriscooldown = 0
+	for(var/i = 1 to ammo_used_per_firing)
+		var/turf/U = pick(turf_list)
+		sleep(1)
+		var/datum/cause_data/cause_data = create_cause_data(initial(name), source_mob)
+		U.ex_act(EXPLOSION_THRESHOLD_MLOW, pick(alldirs), cause_data)
+		for(var/atom/movable/AM in U)
+			if(iscarbon(AM))
+				AM.ex_act(EXPLOSION_THRESHOLD_MLOW, null, cause_data)
+			else
+				AM.ex_act(EXPLOSION_THRESHOLD_MLOW)
+		if(!soundplaycooldown) //so we don't play the same sound 20 times very fast.
+			playsound(U, get_sfx("explosion"), 40, 1, 20)
+			soundplaycooldown = 3
+		soundplaycooldown--
+		if(!debriscooldown)
+			U.ceiling_debris_check(1)
+			debriscooldown = 6
+		debriscooldown--
+		new /obj/effect/particle_effect/expl_particles(U)
 
 
 /obj/structure/ship_ammo/heavygun/highvelocity

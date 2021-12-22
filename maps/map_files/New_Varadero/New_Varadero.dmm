@@ -837,7 +837,9 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "aPU" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair{
+	icon_state = "chair_alt"
+	},
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -968,6 +970,12 @@
 	icon_state = "purple"
 	},
 /area/ice_colony/underground/research/storage)
+"aWE" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt{
+	icon_state = "desert_dug"
+	},
+/area/ice_colony/exterior/underground/caves)
 "aWP" = (
 /turf/open/floor{
 	dir = 8;
@@ -1022,6 +1030,20 @@
 	tag = "icon-darkred2 (SOUTHWEST)"
 	},
 /area/ice_colony/underground/security/armory)
+"bbl" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "bbt" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/gm/dirt,
@@ -1822,6 +1844,7 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
+	dir = 6;
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/command/center)
@@ -1925,7 +1948,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/command/checkpoint)
 "bRg" = (
@@ -1938,12 +1961,12 @@
 /turf/open/floor/shiva,
 /area/ice_colony/underground/crew/disposals)
 "bRo" = (
-/obj/structure/filingcabinet,
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "blue"
+/obj/structure/reagent_dispensers/beerkeg/alt_dark,
+/turf/open/floor{
+	icon_state = "freezerfloor";
+	tag = "icon-freezerfloor"
 	},
-/area/ice_colony/underground/command/center)
+/area/ice_colony/underground/requesition/storage)
 "bRp" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -1958,7 +1981,7 @@
 	dir = 8
 	},
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/command/center)
 "bRS" = (
@@ -2563,8 +2586,15 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "cvy" = (
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/south)
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/ice_colony/exterior/underground/caves)
 "cvW" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/open/floor/shiva{
@@ -3599,12 +3629,17 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "duw" = (
-/obj/structure/filingcabinet,
-/obj/item/paper/research_notes,
-/obj/item/paper/research_notes,
 /obj/effect/decal/cleanable/cobweb2{
 	pixel_x = 11;
 	pixel_y = 22
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8;
+	pixel_y = 4
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
@@ -4041,6 +4076,7 @@
 "dWE" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva{
+	dir = 8;
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/command/checkpoint)
@@ -4897,16 +4933,11 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "eQz" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
-	},
-/obj/structure/window/reinforced/tinted,
-/obj/structure/surface/table/reinforced/prison,
-/obj/item/clipboard,
-/obj/item/tool/stamp,
+/obj/structure/filingcabinet/filingcabinet,
+/obj/item/paper/research_notes,
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	dir = 8;
+	icon_state = "blue"
 	},
 /area/ice_colony/underground/command/center)
 "eQU" = (
@@ -5092,6 +5123,7 @@
 "eZc" = (
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/shiva{
+	dir = 6;
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/command/center)
@@ -5387,6 +5419,16 @@
 	},
 /turf/open/floor/wood,
 /area/shuttle/elevator3/underground)
+"fmD" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/space)
 "foz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/sink{
@@ -5721,15 +5763,12 @@
 	},
 /area/ice_colony/exterior/underground/caves)
 "fFI" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 4
+/obj/structure/bed/chair/office/dark{
+	dir = 8;
+	tag = "icon-officechair_dark (WEST)"
 	},
-/obj/structure/machinery/computer/atmos_alert{
-	dir = 8
-	},
-/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/command/center)
 "fFN" = (
@@ -5871,8 +5910,9 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "fPo" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/crap_item,
+/obj/item/storage/fancy/cigar,
 /turf/open/floor/shiva{
 	icon_state = "blue"
 	},
@@ -5995,6 +6035,7 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
+	dir = 6;
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/command/center)
@@ -6064,7 +6105,7 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "fYB" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin,
 /obj/item/paper/research_notes,
 /turf/open/floor/shiva{
@@ -6101,9 +6142,11 @@
 /area/ice_colony/underground/hangar)
 "fZB" = (
 /obj/structure/prop/structure_lattice{
+	dir = 1;
 	health = 300
 	},
 /obj/structure/prop/structure_lattice{
+	dir = 1;
 	layer = 3.1;
 	pixel_y = 10
 	},
@@ -6384,16 +6427,14 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "gkL" = (
-/obj/structure/bed/chair/office/light{
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/emails{
 	dir = 8;
-	tag = "icon-officechair_white (EAST)"
-	},
-/obj/structure/machinery/light{
-	dir = 4
+	pixel_y = 2
 	},
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "blue"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "gkS" = (
@@ -6653,15 +6694,6 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/requesition/sec_storage)
-"gzA" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8;
-	tag = "icon-officechair_white (EAST)"
-	},
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
-/area/ice_colony/underground/command/center)
 "gzW" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/floor/shiva{
@@ -7467,6 +7499,12 @@
 "hte" = (
 /turf/closed/wall/rock/brown,
 /area/ice_colony/exterior/underground/caves/dig)
+"hto" = (
+/obj/structure/prop/rock/brown,
+/turf/open/gm/dirt{
+	icon_state = "desert_dug"
+	},
+/area/ice_colony/exterior/underground/caves/open)
 "htP" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/icefloor{
@@ -7889,6 +7927,13 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/engineering/locker)
+"hQY" = (
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/ice_colony/underground/requesition)
 "hRs" = (
 /obj/structure/machinery/power/smes/magical{
 	capacity = 9e+008;
@@ -8226,6 +8271,24 @@
 	icon_state = "beachcorner2"
 	},
 /area/space)
+"idI" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "ieh" = (
 /obj/structure/machinery/light{
 	dir = 1
@@ -8298,11 +8361,15 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "ihF" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
-/turf/open/floor/plating,
-/area/ice_colony/underground/maintenance/south)
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/ice_colony/underground/requesition)
 "ihG" = (
 /obj/structure/largecrate/random/case,
 /turf/open/gm/dirt,
@@ -8424,12 +8491,12 @@
 /area/ice_colony/underground/hangar)
 "iqq" = (
 /obj/structure/plasticflaps/mining,
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
-	},
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -8598,16 +8665,13 @@
 	},
 /area/ice_colony/underground/maintenance/north)
 "ixd" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = "icon-officechair_white (EAST)"
+/obj/structure/machinery/computer/communications{
+	dir = 4
 	},
-/obj/structure/machinery/light{
-	dir = 8
-	},
+/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
 	dir = 8;
-	icon_state = "blue"
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "ixh" = (
@@ -8953,7 +9017,11 @@
 /turf/open/gm/river,
 /area/space)
 "iMi" = (
-/obj/structure/filingcabinet,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/cigarettes/arcturian_ace{
+	pixel_x = -5;
+	pixel_y = 5
+	},
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "red"
@@ -9468,6 +9536,15 @@
 	},
 /area/ice_colony/underground/hangar)
 "jlt" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/coffee{
+	pixel_x = 9;
+	pixel_y = 10
+	},
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 7
+	},
 /turf/open/floor/shiva{
 	dir = 9;
 	icon_state = "red"
@@ -9559,6 +9636,14 @@
 	icon_state = "green"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"jts" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 9
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "jty" = (
 /obj/effect/landmark/hunter_primary,
 /turf/open/floor/shiva{
@@ -9733,7 +9818,8 @@
 /area/ice_colony/underground/crew/disposals)
 "jBp" = (
 /obj/structure/bed/chair{
-	dir = 8
+	dir = 8;
+	icon_state = "chair_alt"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -9771,6 +9857,18 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/crew/canteen)
+"jDO" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-3";
+	name = "book case"
+	},
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/command/center)
 "jDW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -9832,12 +9930,19 @@
 	},
 /area/ice_colony/underground/reception/toilet_men)
 "jGT" = (
-/obj/structure/pipes/standard/simple/hidden/green{
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/structure/platform_decoration/kutjevo{
 	dir = 4
 	},
-/obj/structure/blocker/forcefield/vehicles,
-/turf/open/gm/dirt,
-/area/ice_colony/underground/maintenance/south)
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "jHH" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/medical/storage)
@@ -9896,8 +10001,8 @@
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves)
 "jMr" = (
-/obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
+	dir = 6;
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/command/center)
@@ -10016,6 +10121,17 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/research)
+"jRu" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 9
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "jRC" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -10200,15 +10316,21 @@
 	},
 /area/ice_colony/underground/medical/or)
 "kaY" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 4
-	},
-/obj/structure/window/reinforced/tinted,
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/paper_bin,
-/obj/item/tool/pen/blue,
+/obj/item/storage/pill_bottle/inaprovaline/skillless{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/storage/pill_bottle/packet/oxycodone{
+	pixel_x = -4;
+	pixel_y = 8
+	},
+/obj/item/storage/sparepouch{
+	pixel_y = 4
+	},
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "kba" = (
@@ -10290,17 +10412,13 @@
 	},
 /area/ice_colony/underground/medical/treatment)
 "kfJ" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 4
-	},
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/clipboard,
-/obj/item/tool/stamp,
+/obj/structure/machinery/computer/med_data/laptop{
+	pixel_y = 3
+	},
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "khb" = (
@@ -10311,6 +10429,12 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/crew/bball)
+"khj" = (
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/command/checkpoint)
 "khI" = (
 /obj/structure/platform_decoration/kutjevo,
 /turf/open/gm/dirt,
@@ -10397,7 +10521,9 @@
 /turf/open/gm/river,
 /area/space)
 "klu" = (
-/obj/structure/bed/chair,
+/obj/structure/bed/chair{
+	icon_state = "chair_alt"
+	},
 /obj/structure/closet/hydrant{
 	pixel_y = 32
 	},
@@ -10651,6 +10777,11 @@
 /obj/item/tool/weldingtool,
 /turf/open/floor/interior/plastic,
 /area/ice_colony/exterior/underground/caves/open)
+"kAv" = (
+/turf/open/gm/dirt{
+	icon_state = "desert2"
+	},
+/area/ice_colony/exterior/underground/caves/open)
 "kAQ" = (
 /turf/open/floor/shiva{
 	dir = 1
@@ -10766,6 +10897,18 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"kFM" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "kFT" = (
 /turf/open/floor/shiva{
 	icon_state = "wred"
@@ -11042,6 +11185,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/security)
+"kTo" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/command/checkpoint)
 "kTu" = (
 /obj/item/tool/pickaxe/silver,
 /turf/open/gm/dirt,
@@ -11288,6 +11438,12 @@
 /turf/open/gm/river,
 /area/ice_colony/underground/maintenance/research)
 "lhm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/ashtray/plastic,
+/obj/item/trash/cigbutt,
+/obj/item/trash/cigbutt{
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "red"
@@ -11414,7 +11570,7 @@
 	},
 /area/ice_colony/underground/medical/hallway)
 "lnw" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/device/flashlight/lamp/green{
 	pixel_x = -6;
 	pixel_y = 13
@@ -11891,16 +12047,12 @@
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
 "lMB" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
-	},
 /turf/open/floor{
-	icon_state = "freezerfloor";
-	tag = "icon-freezerfloor"
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
 	},
-/area/ice_colony/underground/requesition/storage)
+/area/ice_colony/exterior/underground/caves)
 "lMP" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/shiva{
@@ -12181,7 +12333,8 @@
 /area/ice_colony/underground/command/checkpoint)
 "mbt" = (
 /obj/structure/bed/chair{
-	dir = 8
+	dir = 8;
+	icon_state = "chair_alt"
 	},
 /obj/structure/machinery/light{
 	dir = 4
@@ -12289,9 +12442,11 @@
 /area/ice_colony/underground/crew/lavatory)
 "meD" = (
 /obj/structure/prop/structure_lattice{
+	dir = 1;
 	health = 300
 	},
 /obj/structure/prop/structure_lattice{
+	dir = 1;
 	layer = 3.1;
 	pixel_y = 10
 	},
@@ -12857,6 +13012,18 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"mCY" = (
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-5";
+	name = "book case"
+	},
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/command/center)
 "mCZ" = (
 /turf/closed/wall/rock/brown,
 /area/ice_colony/underground/maintenance/research)
@@ -13374,6 +13541,24 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/ice_colony/underground/hangar)
+"neC" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "neD" = (
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
@@ -14140,6 +14325,18 @@
 /obj/effect/decal/cleanable/blood/oil/streak,
 /turf/open/floor/shiva,
 /area/ice_colony/underground/storage)
+"nUv" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "nUQ" = (
 /obj/item/frame/rack,
 /turf/open/floor{
@@ -14424,9 +14621,11 @@
 	},
 /area/ice_colony/underground/maintenance/north)
 "oiM" = (
-/obj/structure/filingcabinet,
-/turf/open/floor/wood,
-/area/ice_colony/underground/command/pv1)
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/command/center)
 "ojv" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14613,6 +14812,18 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/ice_colony/underground/crew/lavatory)
+"otL" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "ouy" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -14748,6 +14959,12 @@
 	tag = "icon-darkred2 (SOUTHEAST)"
 	},
 /area/ice_colony/underground/security/armory)
+"oCB" = (
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/ice_colony/exterior/underground/caves)
 "oCN" = (
 /obj/structure/machinery/computer/security,
 /obj/structure/window/reinforced/tinted{
@@ -14773,6 +14990,19 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/engineering/locker)
+"oDS" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/space)
 "oDX" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -14998,7 +15228,7 @@
 	dir = 4;
 	pixel_x = -24
 	},
-/obj/structure/surface/table,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/device/taperecorder,
 /turf/open/floor/shiva{
 	dir = 10;
@@ -15041,6 +15271,20 @@
 	icon_state = "blue"
 	},
 /area/ice_colony/underground/storage/highsec)
+"oVp" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "oVr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -15377,18 +15621,20 @@
 	},
 /area/ice_colony/underground/requesition)
 "pmy" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
-	},
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/paper_bin,
-/obj/item/tool/pen/blue,
+/obj/item/ashtray/plastic,
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt/ucigbutt,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 5;
+	pixel_y = 11
+	},
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "poh" = (
@@ -15410,6 +15656,24 @@
 	color = "#dae3e2"
 	},
 /area/space)
+"pop" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 5
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/obj/structure/platform_decoration/kutjevo,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "poE" = (
 /obj/structure/stairs/perspective{
 	color = "#b29082";
@@ -15564,7 +15828,9 @@
 /obj/structure/surface/table/reinforced/prison{
 	color = "#6b675e"
 	},
-/obj/item/reagent_container/food/drinks/bottle/orangejuice,
+/obj/item/reagent_container/food/drinks/bottle/orangejuice{
+	pixel_y = 6
+	},
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -15603,6 +15869,7 @@
 /area/ice_colony/underground/command/checkpoint)
 "pxK" = (
 /obj/structure/closet/secure_closet/personal,
+/obj/item/paper/research_notes,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "pyk" = (
@@ -15664,7 +15931,12 @@
 	},
 /area/ice_colony/underground/security)
 "pBK" = (
-/obj/structure/filingcabinet,
+/obj/structure/filingcabinet{
+	pixel_x = -8
+	},
+/obj/structure/filingcabinet{
+	pixel_x = 8
+	},
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "red"
@@ -15767,6 +16039,15 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"pHn" = (
+/obj/structure/machinery/door/airlock/almayer/generic{
+	dir = 2;
+	name = "\improper Underground Requesitions Freezer";
+	req_access_txt = "100";
+	req_one_access = null
+	},
+/turf/open/floor/plating,
+/area/ice_colony/underground/requesition/storage)
 "pHX" = (
 /obj/structure/prop/rock/brown,
 /turf/open/gm/river{
@@ -16521,7 +16802,7 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "qzd" = (
-/obj/structure/filingcabinet,
+/obj/structure/filingcabinet/filingcabinet,
 /obj/item/paper/research_notes,
 /obj/effect/decal/cleanable/cobweb{
 	pixel_x = -11;
@@ -16635,6 +16916,20 @@
 /obj/structure/inflatable,
 /turf/open/floor/interior/plastic,
 /area/ice_colony/exterior/underground/caves/open)
+"qDa" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "qDh" = (
 /obj/structure{
 	desc = "A lightweight support lattice.";
@@ -16724,7 +17019,7 @@
 	icon_state = "pipe-j2"
 	},
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/command/checkpoint)
 "qFS" = (
@@ -16806,6 +17101,16 @@
 	icon_state = "floor6"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"qMo" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/space)
 "qMC" = (
 /obj/structure/machinery/optable,
 /turf/open/floor/shiva{
@@ -16971,6 +17276,11 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/engineering)
+"qRU" = (
+/turf/open/gm/dirt{
+	icon_state = "desert_dug"
+	},
+/area/ice_colony/exterior/underground/caves/open)
 "qSJ" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
@@ -17199,15 +17509,19 @@
 /area/shuttle/elevator2/underground)
 "rfn" = (
 /obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22"
+	icon_state = "pottedplant_22";
+	pixel_y = 8
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/north)
 "rft" = (
-/obj/structure/bed/chair,
 /obj/structure/disposalpipe/segment,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
 	dir = 1;
 	icon_state = "blue"
@@ -17264,6 +17578,24 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/bball)
+"rjf" = (
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 10
+	},
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "rjn" = (
 /turf/closed/shuttle/elevator{
 	dir = 6;
@@ -17629,17 +17961,24 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
 "rzg" = (
-/obj/structure/bed/chair/office/light{
-	dir = 4;
-	tag = "icon-officechair_white (EAST)"
-	},
 /turf/open/floor/shiva{
+	dir = 1;
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/command/center)
 "rzM" = (
 /turf/open/floor/shiva{
 	icon_state = "floor3"
+	},
+/area/ice_colony/underground/command/checkpoint)
+"rzO" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "blue"
 	},
 /area/ice_colony/underground/command/checkpoint)
 "rAf" = (
@@ -17928,6 +18267,18 @@
 	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/or)
+"rNN" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/plasticflaps/mining,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/requesition)
 "rOL" = (
 /obj/structure/closet/secure_closet/personal{
 	density = 0;
@@ -18406,7 +18757,7 @@
 	},
 /area/ice_colony/underground/maintenance/engineering)
 "smO" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/faxmachine,
 /turf/open/floor/shiva{
 	dir = 1;
@@ -19109,6 +19460,21 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves)
+"tbN" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/plasticflaps/mining,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/requesition)
 "tbQ" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /obj/structure/machinery/light{
@@ -19239,7 +19605,7 @@
 	},
 /area/ice_colony/underground/requesition/sec_storage)
 "tkH" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/reinforced/prison,
 /obj/effect/landmark/crap_item,
 /turf/open/floor/shiva{
 	dir = 5;
@@ -19668,17 +20034,13 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "tOK" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/camera{
+	pixel_y = 5
 	},
-/obj/structure/window/reinforced/tinted,
-/obj/structure/surface/table/reinforced,
-/obj/item/clipboard,
-/obj/item/tool/stamp,
-/obj/effect/landmark/crap_item,
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "tPE" = (
@@ -20822,6 +21184,19 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/central/construction)
+"uTr" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/plasticflaps/mining,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/requesition)
 "uTA" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/corsat{
@@ -20854,6 +21229,11 @@
 	},
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/chapel)
+"uUu" = (
+/turf/open/gm/dirt{
+	icon_state = "desert1"
+	},
+/area/ice_colony/underground/maintenance/south)
 "uUF" = (
 /obj/structure/surface/table,
 /obj/item/tool/wrench,
@@ -21017,9 +21397,14 @@
 	},
 /area/ice_colony/exterior/underground/caves)
 "vaV" = (
-/obj/structure/flora/pottedplant{
-	icon_state = "pottedplant_22";
-	pixel_y = 8
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -6;
+	pixel_y = 13
+	},
+/obj/item/paper/janitor{
+	pixel_x = 5;
+	pixel_y = 3
 	},
 /turf/open/floor/shiva{
 	dir = 9;
@@ -21178,9 +21563,11 @@
 /area/ice_colony/underground/maintenance/security)
 "viY" = (
 /obj/structure/prop/structure_lattice{
+	dir = 1;
 	health = 300
 	},
 /obj/structure/prop/structure_lattice{
+	dir = 1;
 	layer = 3.1;
 	pixel_y = 10
 	},
@@ -21199,6 +21586,11 @@
 /area/ice_colony/underground/hangar)
 "vjv" = (
 /obj/structure/closet/crate/freezer/rations,
+/obj/structure/machinery/power/apc{
+	dir = 1;
+	pixel_y = 24;
+	start_charge = 0
+	},
 /turf/open/floor{
 	icon_state = "freezerfloor";
 	tag = "icon-freezerfloor"
@@ -21563,6 +21955,18 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/engineering)
+"vBW" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
+/turf/open/floor/shiva{
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/command/checkpoint)
 "vBZ" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "W";
@@ -21676,11 +22080,21 @@
 /turf/open/gm/river,
 /area/ice_colony/exterior/underground/caves)
 "vKD" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/tool/pen/blue/clicky,
+/obj/item/tool/pen/sleepypen{
+	pixel_x = -4;
+	pixel_y = 4
 	},
-/area/ice_colony/underground/command/checkpoint)
+/obj/item/tool/lighter/zippo/fluff{
+	pixel_x = 7;
+	pixel_y = 2
+	},
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "bluefull"
+	},
+/area/ice_colony/underground/command/center)
 "vLk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -21767,16 +22181,11 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "vPe" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
-	},
-/obj/structure/machinery/computer/station_alert{
+/obj/structure/bed/chair/office/dark{
 	dir = 4
 	},
-/obj/structure/surface/table/reinforced/prison,
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/command/center)
 "vPj" = (
@@ -22125,6 +22534,7 @@
 	pixel_x = 24;
 	start_charge = 0
 	},
+/obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "blue"
@@ -22182,9 +22592,9 @@
 	},
 /area/ice_colony/underground/crew/lavatory)
 "wjB" = (
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "yellowfull"
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
 	},
 /area/space)
 "wjG" = (
@@ -22383,6 +22793,12 @@
 "wqb" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/maintenance/engineering)
+"wqc" = (
+/obj/structure/prop/invuln/minecart_tracks,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "wqK" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/computer/security{
@@ -22403,6 +22819,18 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/security/interrogation)
+"wrC" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "wrQ" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
@@ -22560,6 +22988,14 @@
 	icon_state = "yellowcorners"
 	},
 /area/ice_colony/underground/requesition/lobby)
+"wBY" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "wCc" = (
 /turf/open/floor{
 	dir = 6;
@@ -22678,18 +23114,13 @@
 	},
 /area/ice_colony/underground/research)
 "wIH" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/computer/station_alert{
+	dir = 8
 	},
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
-/obj/structure/surface/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/tool/pen/blue,
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "wJB" = (
@@ -23050,16 +23481,26 @@
 	},
 /area/ice_colony/exterior/underground/caves)
 "xgW" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 8;
-	tag = "icon-twindow (WEST)"
-	},
-/obj/structure/machinery/computer/communications{
-	dir = 4
-	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/tool/stamp{
+	pixel_x = 6;
+	pixel_y = 12
+	},
+/obj/item/tool/stamp/clown{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/tool/stamp/rd{
+	pixel_x = 7;
+	pixel_y = -2
+	},
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "xgY" = (
@@ -23132,15 +23573,16 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "xkb" = (
-/obj/structure/window/reinforced/tinted{
-	dir = 4
-	},
-/obj/structure/machinery/computer/security{
-	dir = 8
-	},
 /obj/structure/surface/table/reinforced/prison,
+/obj/item/storage/fancy/vials/random{
+	pixel_y = 5
+	},
+/obj/item/clothing/glasses/science{
+	pixel_y = 9
+	},
 /turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/command/center)
 "xkj" = (
@@ -23214,6 +23656,20 @@
 	icon_state = "red"
 	},
 /area/ice_colony/underground/crew/morgue)
+"xnW" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "xpw" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/circuitboard/computer/crew{
@@ -23388,13 +23844,18 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/reception)
-"xxr" = (
-/obj/structure/platform/kutjevo/smooth{
-	dir = 1
+"xxk" = (
+/turf/open/gm/dirt{
+	icon_state = "desert0"
 	},
+/area/ice_colony/underground/maintenance/south)
+"xxr" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -23479,6 +23940,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"xBa" = (
+/obj/item/weapon/gun/energy/laser_top,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/storage/highsec)
 "xBb" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/gm/river,
@@ -24108,6 +24575,16 @@
 	tag = "icon-darkred2 (EAST)"
 	},
 /area/ice_colony/underground/security)
+"yfQ" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/command/checkpoint)
 "yfV" = (
 /obj/structure/cable/heavyduty{
 	icon_state = "1-4-8"
@@ -24245,6 +24722,20 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/medical/lobby)
+"ylc" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "ymf" = (
 /obj/structure/largecrate/random,
 /obj/structure/barricade/wooden,
@@ -25257,7 +25748,7 @@ dkn
 vYW
 vYW
 vYW
-vrp
+aWE
 dkn
 dkn
 dkn
@@ -26339,7 +26830,7 @@ vYW
 vYW
 vYW
 vYW
-vrp
+aWE
 vrp
 vYW
 vYW
@@ -27967,7 +28458,7 @@ dkn
 dkn
 dkn
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -29572,7 +30063,7 @@ dkn
 dkn
 dkn
 dkn
-eyt
+rpu
 eyt
 eyt
 eyt
@@ -29748,12 +30239,12 @@ pGs
 pGs
 dkn
 dkn
-dkn
-dkn
-dkn
-dkn
-dkn
-dkn
+rpu
+rpu
+rpu
+rpu
+rpu
+rpu
 rpu
 rKs
 uqp
@@ -29789,7 +30280,7 @@ vYW
 vYW
 vYW
 dkn
-vrp
+aWE
 vYW
 fGP
 vYW
@@ -29830,7 +30321,7 @@ yks
 dkn
 dkn
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -29930,20 +30421,20 @@ pGs
 pGs
 dkn
 dkn
-dkn
-dkn
-dkn
-dkn
-dkn
-dkn
 rpu
+eyt
+eyt
+eyt
+eyt
+eyt
+eyt
 rKs
 akd
 eBL
 vjA
 pfR
 pfR
-pfR
+bRo
 uqp
 eQU
 kkl
@@ -30010,7 +30501,7 @@ iCy
 jnq
 yks
 dkn
-vrp
+aWE
 dkn
 vYW
 vYW
@@ -30112,13 +30603,13 @@ pGs
 pGs
 dkn
 dkn
-dkn
-dkn
-dkn
-dkn
-dkn
-dkn
 rpu
+eyt
+cvy
+lMB
+lMB
+lMB
+lMB
 rKs
 dro
 eBL
@@ -30147,7 +30638,7 @@ ykc
 efw
 qMY
 rHU
-vrp
+aWE
 vYW
 wto
 vYW
@@ -30295,14 +30786,14 @@ pGs
 dkn
 dkn
 rpu
-rpu
-rpu
-rpu
-rpu
-rpu
-rpu
-rKs
+eyt
+cvy
 lMB
+lMB
+lMB
+oCB
+pHn
+eBL
 eBL
 eBL
 eBL
@@ -30394,7 +30885,7 @@ vYW
 vYW
 vYW
 vYW
-vrp
+aWE
 vrp
 dkn
 dkn
@@ -30463,26 +30954,26 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
+hdh
+hdh
+hdh
+hdh
+hdh
+hdh
+hdh
+hdh
+hdh
+hdh
+hdh
+rpu
+rpu
 rpu
 ebE
-ebE
-ebE
-ebE
-ebE
-ebE
+ihF
+hQY
+hQY
+hQY
+hQY
 rKs
 vjv
 wvK
@@ -30645,26 +31136,26 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
-rpu
+hdh
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+eyt
+eyt
+eyt
 ebE
-wjB
-wjB
-wjB
-wjB
-wjB
+fmD
+jdc
+jdc
+jdc
+jdc
 rKs
 uqp
 uqp
@@ -30827,26 +31318,26 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
-rpu
-ebE
-wjB
-wjB
-wjB
-wjB
-wjB
+hdh
+huF
+idI
+xnW
+xnW
+xnW
+xnW
+xnW
+xnW
+xnW
+xnW
+pop
+ylc
+ylc
+tbN
+oVp
+wqc
+jts
+jdc
+jdc
 ebE
 isK
 nma
@@ -31009,25 +31500,25 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
-rpu
+hdh
+huF
+wrC
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+nUv
+eyt
+eyt
 ebE
-wjB
-wjB
-wjB
-wjB
+fmD
+jdc
+wBY
+jdc
 wjB
 lDN
 azx
@@ -31191,30 +31682,30 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
+hdh
+huF
+wrC
+huF
+hdh
+hdh
+huF
+bbl
+bbl
+bbl
+bbl
+rjf
+eyt
 rpu
 ebE
+fmD
+jdc
+wBY
+jdc
 wjB
-wjB
-wjB
-wjB
-wjB
-lDN
-enU
 hCL
 enU
+enU
+hCL
 oJB
 dFd
 oJB
@@ -31304,7 +31795,7 @@ vYW
 vYW
 vYW
 vYW
-vrp
+aWE
 vrp
 dkn
 dkn
@@ -31373,30 +31864,30 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
+hdh
+huF
+wrC
+huF
+hdh
+hdh
+huF
+huF
+huF
+huF
+huF
+eyt
+eyt
 rpu
 ebE
+fmD
+jdc
+wBY
+jdc
 wjB
-wjB
-wjB
-wjB
-wjB
-lDN
-enU
 hCL
 enU
+enU
+hCL
 oJB
 dFd
 oJB
@@ -31555,25 +32046,25 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
-rpu
+hdh
+huF
+wrC
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+eyt
+eyt
+eyt
 ebE
-wjB
-wjB
-wjB
-wjB
+fmD
+jdc
+wBY
+jdc
 wjB
 lDN
 kkl
@@ -31737,26 +32228,26 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
-rpu
-ebE
-wjB
-wjB
-wjB
-wjB
-wjB
+hdh
+huF
+neC
+bbl
+bbl
+bbl
+bbl
+bbl
+bbl
+bbl
+bbl
+qDa
+qDa
+qDa
+rNN
+jGT
+wqc
+jRu
+jdc
+jdc
 ebE
 jqE
 bWZ
@@ -31837,7 +32328,7 @@ xes
 vKa
 dkn
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -31919,26 +32410,26 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
-rpu
+hdh
+huF
+wrC
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+huF
+eyt
+eyt
+eyt
 ebE
-wjB
-wjB
-wjB
-wjB
-wjB
+oDS
+qMo
+otL
+qMo
+qMo
 ebE
 fWi
 iqv
@@ -32019,7 +32510,7 @@ xes
 wvk
 dkn
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -32101,24 +32592,24 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-pGs
-dkn
-dkn
+hdh
+huF
+wrC
+huF
+hdh
+hdh
+hdh
+hdh
+hdh
+hdh
+hdh
+rpu
+rpu
 rpu
 ebE
 ebE
 ebE
-ebE
+uTr
 ebE
 ebE
 ebE
@@ -32283,25 +32774,25 @@ pGs
 pGs
 pGs
 pGs
-pGs
+hdh
+huF
+wrC
+huF
 hdh
 hdh
 hdh
 hdh
-pGs
 hdh
 hdh
 hdh
-hdh
-hdh
+rpu
+rpu
 rpu
 rpu
 rpu
 eyt
-rpu
-rpu
-rpu
-rpu
+kFM
+eyt
 rpu
 iua
 tPI
@@ -32465,24 +32956,24 @@ pGs
 pGs
 pGs
 pGs
-pGs
-huF
-huF
-huF
-hdh
-pGs
 hdh
 huF
+wrC
+huF
+hdh
+hdh
+hdh
 huF
 huF
 huF
+huF
 eyt
 eyt
 eyt
 eyt
 eyt
 eyt
-eyt
+kFM
 eyt
 rpu
 iua
@@ -32582,7 +33073,7 @@ vYW
 vYW
 vYW
 vYW
-vrp
+aWE
 dkn
 dkn
 dkn
@@ -32647,12 +33138,12 @@ pGs
 pGs
 pGs
 pGs
-pGs
+hdh
 huF
 xxr
 huF
 hdh
-pGs
+hdh
 hdh
 huF
 pGs
@@ -32663,8 +33154,8 @@ dkn
 dkn
 dkn
 dkn
-dkn
-dkn
+eyt
+kFM
 eyt
 rpu
 iua
@@ -32763,7 +33254,7 @@ hWG
 gHJ
 vYW
 vYW
-cLO
+hto
 dkn
 dkn
 dkn
@@ -32829,12 +33320,12 @@ pGs
 pGs
 pGs
 pGs
-pGs
+hdh
 huF
 xxr
 huF
 hdh
-pGs
+hdh
 hdh
 huF
 pGs
@@ -32845,8 +33336,8 @@ dkn
 dkn
 dkn
 dkn
-dkn
-dkn
+eyt
+kFM
 eyt
 rpu
 iua
@@ -32927,7 +33418,7 @@ iNh
 nTG
 dkn
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -33011,7 +33502,7 @@ pGs
 pGs
 pGs
 pGs
-pGs
+hdh
 huF
 xxr
 huF
@@ -33027,8 +33518,8 @@ dkn
 dkn
 dkn
 dkn
-dkn
-dkn
+eyt
+kFM
 eyt
 rpu
 rpu
@@ -33110,7 +33601,7 @@ nTG
 jpD
 dkn
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -33193,7 +33684,7 @@ pGs
 pGs
 pGs
 pGs
-pGs
+hdh
 huF
 xxr
 huF
@@ -33209,8 +33700,8 @@ dkn
 dkn
 dkn
 dkn
-dkn
-dkn
+eyt
+kFM
 eyt
 rpu
 rpu
@@ -33372,10 +33863,10 @@ pGs
 pGs
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
+hdh
+hdh
+hdh
+hdh
 huF
 xxr
 huF
@@ -33391,8 +33882,8 @@ aFr
 dkn
 dkn
 dkn
-dkn
-dkn
+eyt
+eyt
 eyt
 rpu
 rpu
@@ -33457,7 +33948,7 @@ pQp
 pqH
 sDo
 cXQ
-haT
+xBa
 iUO
 pQp
 nBj
@@ -33554,10 +34045,10 @@ cBu
 cBu
 pGs
 pGs
-pGs
-pGs
-pGs
-pGs
+hdh
+huF
+huF
+huF
 huF
 iqq
 huF
@@ -34936,7 +35427,7 @@ nVn
 kyG
 dkn
 dkn
-vrp
+aWE
 vrp
 dkn
 dkn
@@ -36179,10 +36670,10 @@ ojG
 aQc
 xgG
 qzd
-dJO
-dJO
+eQz
+vKD
 ixd
-dJO
+xgW
 dJO
 oTJ
 pBR
@@ -36360,11 +36851,11 @@ shb
 ojG
 aQc
 xgG
-bRo
-gjN
+xUq
+jMr
 kfJ
 fFI
-kaY
+lwu
 gjN
 fYB
 pBR
@@ -36373,7 +36864,7 @@ bNC
 ugW
 pxJ
 vaV
-xZO
+yfQ
 xZO
 pAa
 jbh
@@ -36543,11 +37034,11 @@ qqA
 aQc
 xgG
 tbQ
-gjN
+jMr
 pmy
-xgW
-eQz
-gjN
+lwu
+lwu
+oiM
 fPo
 pBR
 xUq
@@ -36725,10 +37216,10 @@ qqA
 aQc
 xgG
 xUq
+jMr
 gjN
-gjN
-gzA
-gjN
+rzg
+rzg
 gjN
 lwu
 mXo
@@ -36736,11 +37227,11 @@ lwu
 bNC
 ugW
 qvo
-aPU
+rzO
 rQY
-rQY
+khj
 qOn
-wbB
+vBW
 qvo
 mVS
 iKa
@@ -36906,12 +37397,12 @@ shb
 qqA
 dYn
 vcd
-rRz
+lFS
 bRQ
-jMr
-jMr
-jMr
-jMr
+lFS
+lFS
+lFS
+lFS
 fAs
 krL
 rRz
@@ -36919,8 +37410,8 @@ eZc
 lFS
 ybC
 jAD
-vKD
-vKD
+jAD
+jAD
 bQH
 qnf
 dWY
@@ -37090,10 +37581,10 @@ iPb
 xgG
 xUq
 tkT
-gjN
+rzg
 rzg
 gjN
-gjN
+jMr
 lwu
 mXo
 lwu
@@ -37101,8 +37592,8 @@ bNC
 lwu
 hSN
 rzM
-rQY
-rQY
+rzM
+rzM
 qFO
 iWK
 hSN
@@ -37271,11 +37762,11 @@ qqA
 aQc
 xgG
 xJx
-gjN
-kfJ
-xkb
+oiM
+lwu
+lwu
 kaY
-gjN
+jDO
 uEz
 ajA
 bjA
@@ -37284,9 +37775,9 @@ jhL
 itb
 rft
 brM
-brM
+kTo
 map
-wbB
+vBW
 qvo
 mVS
 sJZ
@@ -37454,10 +37945,10 @@ aQc
 xgG
 smO
 gjN
-wIH
+lwu
 vPe
 tOK
-gjN
+mCY
 ojv
 pBR
 xUq
@@ -37466,7 +37957,7 @@ ugW
 pxJ
 klu
 rQY
-rQY
+khj
 jYl
 lEw
 pxJ
@@ -37636,9 +38127,9 @@ aQc
 xgG
 tkH
 jOR
-jOR
+wIH
 gkL
-jOR
+xkb
 wdX
 xxZ
 pBR
@@ -37855,7 +38346,7 @@ vYW
 vYW
 vYW
 vYW
-vYW
+rnf
 vYW
 vYW
 vYW
@@ -38394,7 +38885,7 @@ mUP
 mUP
 pGP
 bWW
-bWW
+uUu
 vYW
 vYW
 vYW
@@ -38554,7 +39045,7 @@ aQc
 qqA
 oaE
 duw
-oiM
+tNT
 tNT
 aAg
 oaE
@@ -38573,7 +39064,7 @@ ksX
 ksX
 bWW
 bWW
-bWW
+uUu
 bvq
 bWW
 bWW
@@ -38757,7 +39248,7 @@ vYW
 vYW
 bWW
 bvq
-cvy
+cto
 ksX
 vrp
 vYW
@@ -38938,15 +39429,15 @@ vYW
 vYW
 vYW
 ksX
-ihF
-cvy
+etv
+cto
 ksX
 vrp
 vYW
 vYW
 vYW
 vYW
-vYW
+kAv
 vYW
 vYW
 dkn
@@ -39120,8 +39611,8 @@ vYW
 vYW
 vYW
 ksX
-ihF
-cvy
+etv
+cto
 ksX
 vrp
 vYW
@@ -39298,12 +39789,12 @@ qnm
 nTG
 dkn
 vYW
-vYW
+qRU
 vYW
 vYW
 ksX
-ihF
-cvy
+etv
+cto
 bWW
 vYW
 vYW
@@ -39484,7 +39975,7 @@ vYW
 vYW
 vrp
 ksX
-ihF
+etv
 bWW
 bWW
 vYW
@@ -39669,7 +40160,7 @@ bWW
 bvq
 bWW
 bWW
-qhd
+xbc
 vYW
 vYW
 vYW
@@ -39844,13 +40335,13 @@ nTG
 dkn
 vYW
 vYW
-vYW
+rnf
 vYW
 vYW
 bWW
 bvq
 bWW
-bWW
+xxk
 vYW
 vYW
 vrp
@@ -40212,7 +40703,7 @@ vYW
 vYW
 vYW
 bWW
-ihF
+etv
 bWW
 bWW
 vYW
@@ -40394,8 +40885,8 @@ dGr
 dGr
 dGr
 bWW
-ihF
-cvy
+etv
+cto
 bWW
 vYW
 vrp
@@ -40576,8 +41067,8 @@ jeo
 vZQ
 dGr
 bWW
-ihF
-cvy
+etv
+cto
 bWW
 vYW
 vYW
@@ -40759,7 +41250,7 @@ xWL
 dGr
 bWW
 bvq
-cvy
+cto
 bWW
 vYW
 vYW
@@ -40941,7 +41432,7 @@ aUP
 dGr
 bWW
 bvq
-cvy
+cto
 bWW
 vYW
 vYW
@@ -40958,7 +41449,7 @@ bWW
 cto
 etv
 bWW
-vYW
+qBd
 vYW
 vYW
 vYW
@@ -41125,7 +41616,7 @@ bWW
 bvq
 bWW
 bWW
-vYW
+kAv
 vYW
 vrp
 fLS
@@ -41141,7 +41632,7 @@ cto
 etv
 bWW
 vYW
-qhd
+xbc
 vYW
 vYW
 vYW
@@ -41304,7 +41795,7 @@ fvw
 vZQ
 dGr
 bWW
-bvq
+etv
 bWW
 bWW
 vYW
@@ -41486,8 +41977,8 @@ fau
 vZQ
 dGr
 eRc
-jGT
-qJF
+msE
+oKt
 qJF
 qJF
 eRc

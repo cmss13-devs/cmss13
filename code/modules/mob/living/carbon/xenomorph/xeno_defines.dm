@@ -222,7 +222,7 @@
 	//List of how many maximum of each special structure you can have
 	var/list/hive_structures_limit = list(
 		XENO_STRUCTURE_CORE = 1,
-		XENO_STRUCTURE_PYLON = 8,
+		XENO_STRUCTURE_CLUSTER = 8,
 		XENO_STRUCTURE_POOL = 1,
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 2,
@@ -231,7 +231,7 @@
 
 	var/global/list/hive_structure_types = list(
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
-		XENO_STRUCTURE_PYLON = /datum/construction_template/xenomorph/pylon,
+		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_POOL = /datum/construction_template/xenomorph/pool,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
 		XENO_STRUCTURE_EVOPOD = /datum/construction_template/xenomorph/evopod,

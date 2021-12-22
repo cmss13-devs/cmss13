@@ -145,6 +145,9 @@
 	. = ..()
 	access = get_all_accesses()
 
+/datum/equipment_preset/synth/working_joe/load_race(mob/living/carbon/human/H)
+	H.set_species(SYNTH_COLONY)
+
 /datum/equipment_preset/synth/working_joe/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/rank/synthetic/joe(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine(H), WEAR_FEET)

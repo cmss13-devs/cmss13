@@ -531,11 +531,11 @@ var/list/datum/mob_hud/huds = list(
 
 /mob/living/carbon/human/sec_hud_set_ID()
 	var/image/holder = hud_list[ID_HUD]
-	holder.icon_state = "hudunknown"
+	holder.icon_state = "hudsec_unknown"
 	if(wear_id)
 		var/obj/item/card/id/I = wear_id.GetID()
 		if(I)
-			holder.icon_state = "hud[ckey(I.GetJobName())]"
+			holder.icon_state = "hudsec_[ckey(I.GetJobName())]"
 
 /mob/living/carbon/human/proc/sec_hud_set_security_status()
 	var/image/holder = hud_list[WANTED_HUD]
@@ -554,22 +554,22 @@ var/list/datum/mob_hud/huds = list(
 		if(E.fields["ref"] == perpref)
 			for(var/datum/data/record/R in GLOB.data_core.security)
 				if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "*Arrest*"))
-					holder.icon_state = "hudwanted"
+					holder.icon_state = "hudsec_wanted"
 					criminal = TRUE
 					break
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Incarcerated"))
-					holder.icon_state = "hudprisoner"
+					holder.icon_state = "hudsec_prisoner"
 					criminal = TRUE
 					break
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Released"))
-					holder.icon_state = "hudreleased"
+					holder.icon_state = "hudsec_released"
 					criminal = FALSE
 					break
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "Suspect"))
-					holder.icon_state = "hudsuspect"
+					holder.icon_state = "hudsec_suspect"
 					break
 				else if((R.fields["id"] == E.fields["id"]) && (R.fields["criminal"] == "NJP"))
-					holder.icon_state = "hudnjp"
+					holder.icon_state = "hudsec_njp"
 					break
 //Squad HUD
 
@@ -617,19 +617,19 @@ var/list/datum/mob_hud/huds = list(
 		langchat_color = squad_colors_chat[assigned_squad.color]
 
 		if(marine_rk)
-			var/image/IMG = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad")
+			var/image/IMG = image('icons/mob/hud/hud.dmi',src, "hudsquad")
 			if(squad_clr)
 				IMG.color = squad_clr
 			else
 				IMG.color = "#5A934A"
 			holder.overlays += IMG
-			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[marine_rk]")
+			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudsquad_[marine_rk]")
 		if(assigned_squad && assigned_fireteam)
-			var/image/IMG2 = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[assigned_fireteam]")
+			var/image/IMG2 = image('icons/mob/hud/hud.dmi',src, "hudsquad_[assigned_fireteam]")
 			IMG2.color = squad_clr
 			holder.overlays += IMG2
 			if(assigned_squad.fireteam_leaders[assigned_fireteam] == src)
-				var/image/IMG3 = image('icons/mob/hud/hud.dmi',src, "hudmarinesquadftl")
+				var/image/IMG3 = image('icons/mob/hud/hud.dmi',src, "hudsquad_ftl")
 				IMG3.color = squad_clr
 				holder.overlays += IMG3
 	else
@@ -660,32 +660,58 @@ var/list/datum/mob_hud/huds = list(
 				marine_rk = "dcc"
 			if(JOB_CREWMAN)
 				marine_rk = "tc"
-			if("Provost Officer")
+			if(JOB_PROVOST_OFFICER || JOB_PROVOST_ENFORCER)
 				marine_rk = "pvo"
-			if("Provost Enforcer")
-				marine_rk = "pvo"
-			if("Provost Team Leader")
+			if(JOB_PROVOST_TML)
 				marine_rk = "pvtml"
-			if("Provost Inspector")
+			if(JOB_PROVOST_INSPECTOR)
 				marine_rk = "pvi"
 				border_rk = "command"
-			if("Provost Advisor")
+			if(JOB_PROVOST_ADVISOR)
 				marine_rk = "pva"
 				border_rk = "command"
-			if("Provost Marshal")
+			if(JOB_PROVOST_MARSHAL || JOB_PROVOST_CMARSHAL || JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
-			if("Provost Sector Marshal")
-				marine_rk = "pvm"
+			if(JOB_CHIEF_POLICE)
+				marine_rk = "cmp"
 				border_rk = "command"
-			if("Provost Chief Marshal")
-				marine_rk = "pvm"
+			if(JOB_POLICE)
+				marine_rk = "mp"
+			if(JOB_POLICE_CADET)
+				marine_rk = "mpcadet"
+			if(JOB_WARDEN)
+				marine_rk = "warden"
 				border_rk = "command"
+			if(JOB_CHIEF_REQUISITION)
+				marine_rk = "ro"
+			if(JOB_CARGO_TECH)
+				marine_rk = "ct"
+			if(JOB_CHIEF_ENGINEER)
+				marine_rk = "ce"
+				border_rk = "command"
+			if(JOB_MAINT_TECH)
+				marine_rk = "mt"
+			if(JOB_ORDNANCE_TECH)
+				marine_rk = "ot"
+			if(JOB_CMO)
+				marine_rk = "cmo"
+				border_rk = "command"
+			if(JOB_DOCTOR)
+				marine_rk = "doctor"
+				border_rk = "command"
+			if(JOB_RESEARCHER)
+				marine_rk = "researcher"
+				border_rk = "command"
+			if(JOB_NURSE)
+				marine_rk = "nurse"
+			if(JOB_SEA)
+				marine_rk = "sea"
 		if(marine_rk)
-			var/image/I = image('icons/mob/hud/hud.dmi',src, "hudmarinesquad")
+			var/image/I = image('icons/mob/hud/hud.dmi',src, "hudsquad")
 			I.color = "#5A934A"
 			holder.overlays += I
-			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarinesquad[marine_rk]")
+			holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudsquad_[marine_rk]")
 			if(border_rk)
 				holder.overlays += image('icons/mob/hud/hud.dmi',src, "hudmarineborder[border_rk]")
 	hud_list[SQUAD_HUD] = holder
@@ -723,25 +749,25 @@ var/global/image/hud_icon_hunter_thralled
 	holder.overlays.Cut()
 	if(hunter_data.hunted)
 		if(!hud_icon_hunter_hunted)
-			hud_icon_hunter_hunted = image('icons/mob/hud/hud_icons.dmi', src, "hunter_hunted")
+			hud_icon_hunter_hunted = image('icons/mob/hud/hud_yautja.dmi', src, "hunter_hunted")
 		holder.overlays += hud_icon_hunter_hunted
 
 	if(hunter_data.dishonored)
 		if(!hud_icon_hunter_dishonored)
-			hud_icon_hunter_dishonored = image('icons/mob/hud/hud_icons.dmi', src, "hunter_dishonored")
+			hud_icon_hunter_dishonored = image('icons/mob/hud/hud_yautja.dmi', src, "hunter_dishonored")
 		holder.overlays += hud_icon_hunter_dishonored
 	else if(hunter_data.honored)
 		if(!hud_icon_hunter_honored)
-			hud_icon_hunter_honored = image('icons/mob/hud/hud_icons.dmi', src, "hunter_honored")
+			hud_icon_hunter_honored = image('icons/mob/hud/hud_yautja.dmi', src, "hunter_honored")
 		holder.overlays += hud_icon_hunter_honored
 
 	if(hunter_data.thralled)
 		if(!hud_icon_hunter_thralled)
-			hud_icon_hunter_thralled = image('icons/mob/hud/hud_icons.dmi', src, "hunter_thralled")
+			hud_icon_hunter_thralled = image('icons/mob/hud/hud_yautja.dmi', src, "hunter_thralled")
 		holder.overlays += hud_icon_hunter_thralled
 	else if(hunter_data.gear)
 		if(!hud_icon_hunter_gear)
-			hud_icon_hunter_gear = image('icons/mob/hud/hud_icons.dmi', src, "hunter_gear")
+			hud_icon_hunter_gear = image('icons/mob/hud/hud_yautja.dmi', src, "hunter_gear")
 		holder.overlays += hud_icon_hunter_gear
 
 	hud_list[HUNTER_HUD] = holder
@@ -753,16 +779,16 @@ var/global/image/hud_icon_hunter_thralled
 	holder.pixel_x = -18
 	if(hunter_data.hunted)
 		if(!hud_icon_hunter_hunted)
-			hud_icon_hunter_hunted = image('icons/mob/hud/hud_icons.dmi', src, "hunter_hunted")
+			hud_icon_hunter_hunted = image('icons/mob/hud/hud_yautja.dmi', src, "hunter_hunted")
 		holder.overlays += hud_icon_hunter_hunted
 
 	if(hunter_data.dishonored)
 		if(!hud_icon_hunter_dishonored)
-			hud_icon_hunter_dishonored = image('icons/mob/hud/hud_icons.dmi', src, "hunter_dishonored")
+			hud_icon_hunter_dishonored = image('icons/mob/hud/hud_yautja.dmi', src, "hunter_dishonored")
 		holder.overlays += hud_icon_hunter_dishonored
 	else if(hunter_data.honored)
 		if(!hud_icon_hunter_honored)
-			hud_icon_hunter_honored = image('icons/mob/hud/hud_icons.dmi', src, "hunter_honored")
+			hud_icon_hunter_honored = image('icons/mob/hud/hud_yautja.dmi', src, "hunter_honored")
 		holder.overlays += hud_icon_hunter_honored
 
 	hud_list[HUNTER_HUD] = holder

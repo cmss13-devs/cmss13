@@ -29,6 +29,18 @@
 	crystals_required = 100 * XENO_STRUCTURE_PLASMA_MULTIPLIER
 	block_range = 0
 
+/datum/construction_template/xenomorph/cluster
+	name = XENO_STRUCTURE_CLUSTER
+	build_type = /obj/effect/alien/resin/special/cluster
+	build_icon_state = "hive_cluster"
+	pixel_y = -8
+	pixel_x = -8
+	crystals_required = 50 * XENO_STRUCTURE_PLASMA_MULTIPLIER
+	block_range = 0
+
+/datum/construction_template/xenomorph/cluster/set_structure_image()
+	build_icon = 'icons/mob/hostiles/structures48x48.dmi'
+
 /datum/construction_template/xenomorph/pylon
 	name = XENO_STRUCTURE_PYLON
 	build_type = /obj/effect/alien/resin/special/pylon

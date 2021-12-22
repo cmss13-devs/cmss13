@@ -1,6 +1,6 @@
 /datum/hud/human/yautja/draw_locator_spot(var/datum/custom_hud/ui_datum)
 	pred_power_icon = new /obj/screen()
-	pred_power_icon.icon = 'icons/mob/hud/hud_icons.dmi'
+	pred_power_icon.icon = 'icons/mob/hud/hud_yautja.dmi'
 	pred_power_icon.icon_state = "powerbar10"
 	pred_power_icon.name = "bracer power stored"
 	pred_power_icon.screen_loc = ui_predator_power

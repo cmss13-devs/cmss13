@@ -21261,11 +21261,8 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "bqy" = (
-/obj/structure/sign/poster{
-	desc = "You are becoming hysterical.";
-	icon_state = "poster11";
-	name = "YOU ALWAYS KNOW A WORKING JOE.";
-	pixel_y = 30
+/obj/structure/sign/poster/hero/voteno{
+	pixel_y = 32
 	},
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)

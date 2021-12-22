@@ -20,6 +20,17 @@
     gvars_datum_init_order += #X;\
 }
 
+/// Lists subtypes of a given type, indexed by initial value of a variable
+#define GLOBAL_SUBTYPE_PATH_INDEXED(X, TypePath, Index)\
+/datum/controller/global_vars/proc/InitGlobal##X(){\
+    ##X = list();\
+    for(var/t in subtypesof(TypePath)){\
+        var##TypePath/A = t;\
+        ##X[initial(A.##Index)] = t;\
+    }\
+    gvars_datum_init_order += #X;\
+}
+
 /// Prevents a given global from being VV'd
 #ifndef TESTING
 #define GLOBAL_PROTECT(X)\
@@ -83,3 +94,6 @@
 #define GLOBAL_REFERENCE_LIST_INDEXED(X, TypePath, Index) GLOBAL_RAW(/list##TypePath/##X); GLOBAL_SUBTYPE_INDEXED(X, TypePath, Index)
 
 #define GLOBAL_REFERENCE_LIST_INDEXED_SORTED(X, TypePath, Index) GLOBAL_RAW(/list##TypePath/##X); GLOBAL_SUBTYPE_INDEXED(X, TypePath, Index); GLOBAL_SORTED(X)
+
+/// Creates list of subtype paths indexed by a variable
+#define GLOBAL_SUBTYPE_PATHS_LIST_INDEXED(X, TypePath, Index) GLOBAL_RAW(/list/##X); GLOBAL_SUBTYPE_PATH_INDEXED(X, TypePath, Index)

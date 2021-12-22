@@ -353,6 +353,8 @@
 #include "code\datums\elements\bullet_trait\ignored_range.dm"
 #include "code\datums\elements\bullet_trait\incendiary.dm"
 #include "code\datums\elements\bullet_trait\penetrating.dm"
+#include "code\datums\elements\traitbound\_traitbound.dm"
+#include "code\datums\elements\traitbound\crawler.dm"
 #include "code\datums\emergency_calls\big_game_hunter.dm"
 #include "code\datums\emergency_calls\clf.dm"
 #include "code\datums\emergency_calls\colonist.dm"

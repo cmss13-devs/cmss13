@@ -502,11 +502,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 /obj/item/clothing/suit/storage/marine/light/synvest
 	name = "\improper M3A1 Synthetic Utility Vest"
 	desc = "This variant of the ubiquitous M3 pattern ballistics vest has been extensively modified, providing no protection in exchange for maximum mobility and storage space. Synthetic programming compliant."
-	icon_state = "VL_syn"
+	icon_state = "VL_syn_camo"
 	storage_slots = 3
 	time_to_unequip = 0.5 SECONDS
 	time_to_equip = 1 SECONDS
-	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
+	flags_atom = NO_NAME_OVERRIDE
 	flags_marine_armor = ARMOR_LAMP_OVERLAY|SYNTH_ALLOWED //No squad colors + can be worn by synths.
 	armor_melee = CLOTHING_ARMOR_NONE
 	armor_bullet = CLOTHING_ARMOR_NONE
@@ -517,6 +517,10 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_NONE
 	uniform_restricted = null
+
+/obj/item/clothing/suit/storage/marine/light/synvest/vanilla
+	icon_state = "VL_syn"
+	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/suit/storage/marine/heavy
 	name = "\improper M3-H pattern heavy armor"

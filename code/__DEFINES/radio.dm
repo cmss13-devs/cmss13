@@ -9,3 +9,8 @@
 #define RADIO_VOLUME_IMPORTANT     2
 #define RADIO_VOLUME_CRITICAL      3
 #define RADIO_VOLUME_MAX           3
+
+#define RADIO_VOLUME_QUIET_STR "Quiet"
+#define RADIO_VOLUME_RAISED_STR "Raised"
+#define RADIO_VOLUME_IMPORTANT_STR "Important"
+#define RADIO_VOLUME_CRITICAL_STR "Critical"

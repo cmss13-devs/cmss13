@@ -59,8 +59,8 @@
 /obj/item/storage/box/beakers,
 /obj/item/reagent_container/glass/beaker/bluespace,
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "adC" = (
@@ -103,6 +103,10 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/requesition)
+"agl" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "agM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/secure{
@@ -198,10 +202,26 @@
 	icon_state = "freezer_1"
 	},
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
+"alh" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "alz" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -226,8 +246,12 @@
 	},
 /area/ice_colony/underground/maintenance/research)
 "alL" = (
-/obj/structure/window/framed/colony/reinforced,
-/turf/open/floor/plating,
+/obj/structure/machinery/power/apc{
+	dir = 8;
+	pixel_x = -24;
+	start_charge = 0
+	},
+/turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "amu" = (
 /turf/closed/wall/r_wall,
@@ -271,10 +295,14 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "aoo" = (
-/obj/structure/machinery/photocopier,
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "On closer inspection, everything on these shelves are made of plastic.";
+	icon_state = "book-5";
+	name = "book case"
+	},
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "aoU" = (
@@ -578,6 +606,23 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/requesition/sec_storage)
+"aDQ" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	layer = 3.1;
+	pixel_x = 8;
+	pixel_y = 21
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	layer = 3.2;
+	pixel_x = 8;
+	pixel_y = 10
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/command/pv1)
 "aDZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating/icefloor{
@@ -609,7 +654,7 @@
 "aEi" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/shiva{
-	icon_state = "wred"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "aEn" = (
@@ -626,6 +671,15 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"aFg" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "aFh" = (
 /obj/structure/surface/table,
 /obj/item/clothing/under/shorts/black,
@@ -771,6 +825,16 @@
 	icon_state = "floor6"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"aJF" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "aJP" = (
 /obj/structure/bed/chair/wood/normal,
 /turf/open/floor{
@@ -806,6 +870,12 @@
 	icon_state = "redfull"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"aMp" = (
+/obj/structure/machinery/photocopier,
+/turf/open/floor/shiva{
+	icon_state = "redfull"
+	},
+/area/ice_colony/underground/medical/hallway)
 "aNz" = (
 /obj/structure/machinery/door/poddoor/shutters/almayer{
 	id = "req_sec_storage";
@@ -832,9 +902,7 @@
 "aPe" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/landmark/corpsespawner/scientist,
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/carpet,
 /area/ice_colony/underground/hallway/south_east)
 "aPU" = (
 /obj/structure/bed/chair{
@@ -941,8 +1009,17 @@
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves)
 "aUP" = (
-/obj/structure/surface/table/woodentable,
-/turf/open/floor/wood,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -11;
+	pixel_y = 3
+	},
+/obj/structure/mirror{
+	pixel_x = -32
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/leisure)
 "aVE" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -1002,6 +1079,18 @@
 	tag = "icon-darkred2 (WEST)"
 	},
 /area/ice_colony/underground/security/hallway)
+"aZb" = (
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty"
+	},
+/obj/item/clothing/glasses/sunglasses{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "aZt" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -1013,6 +1102,13 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
+"aZv" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "bag" = (
 /obj/structure/machinery/light/small{
 	dir = 4
@@ -1074,6 +1170,27 @@
 	tag = "icon-darkred2 (WEST)"
 	},
 /area/ice_colony/underground/security/hallway)
+"ben" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (WEST)"
+	},
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "beD" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
@@ -1342,7 +1459,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/carpet,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "brx" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -1401,7 +1520,7 @@
 /area/ice_colony/underground/storage)
 "bur" = (
 /obj/structure/pipes/vents/pump,
-/turf/open/floor/wood,
+/turf/open/floor/carpet,
 /area/ice_colony/underground/command/pv1)
 "buH" = (
 /obj/structure/machinery/light,
@@ -1555,11 +1674,9 @@
 	},
 /area/ice_colony/underground/requesition/lobby)
 "bzq" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
 /turf/open/floor/shiva{
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "bzO" = (
@@ -1605,6 +1722,12 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/security)
+"bDq" = (
+/obj/structure/bedsheetbin,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "bDr" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -1646,11 +1769,14 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "bFj" = (
-/obj/structure/machinery/cryo_cell,
-/obj/structure/pipes/standard/cap,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/donkpockets{
+	pixel_x = -6;
+	pixel_y = 17
+	},
+/obj/structure/machinery/recharger,
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "bFo" = (
@@ -1682,6 +1808,17 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/research/work)
+"bGy" = (
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
+"bGz" = (
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
+	},
+/area/ice_colony/underground/crew/leisure)
 "bGC" = (
 /obj/structure/prop/fishing/line{
 	dir = 8
@@ -1785,14 +1922,6 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves/open)
-"bKn" = (
-/obj/structure/pipes/standard/manifold/visible{
-	layer = 2.3
-	},
-/turf/open/floor/shiva{
-	icon_state = "wredfull"
-	},
-/area/ice_colony/underground/medical/treatment)
 "bKX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -1802,6 +1931,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"bLp" = (
+/obj/structure/bed/chair/comfy/orange{
+	dir = 8
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/command/pv2)
 "bLy" = (
 /turf/open/floor/shiva{
 	icon_state = "green"
@@ -1815,6 +1950,9 @@
 /obj/structure/machinery/firealarm{
 	dir = 8;
 	pixel_x = -24
+	},
+/obj/structure/prop/ice_colony/tiger_rug{
+	icon_state = "HotlineAlt"
 	},
 /turf/open/floor/shiva{
 	dir = 4;
@@ -1839,6 +1977,23 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"bNi" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
+"bNt" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/item/clothing/suit/storage/bomber,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "bNC" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -1888,6 +2043,16 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/east)
+"bOY" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/closet/crate/trashcart,
+/obj/item/stack/sheet/mineral/plastic{
+	amount = 3
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "bOZ" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/blocker/invisible_wall/water,
@@ -1905,7 +2070,10 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "bPm" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
 	dir = 5;
 	icon_state = "green"
@@ -1999,6 +2167,18 @@
 	icon_state = "floor6"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"bSU" = (
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_r)
+"bTm" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/weapon/gun/rifle/l42a,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "bTA" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/green,
@@ -2050,7 +2230,7 @@
 	tag = "icon-intact (NORTHEAST)"
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "bVI" = (
@@ -2099,6 +2279,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/storage/highsec)
+"bZI" = (
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "bZU" = (
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
@@ -2242,6 +2428,15 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/requesition/sec_storage)
+"chr" = (
+/obj/structure/bed/stool{
+	icon_state = "stool_alt"
+	},
+/obj/item/shard{
+	icon_state = "medium"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "chE" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -2269,6 +2464,13 @@
 	},
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
+"ciu" = (
+/obj/structure/largecrate/random/case/small,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "yellow"
 	},
 /area/ice_colony/underground/hallway/south_east)
 "ciH" = (
@@ -2613,7 +2815,19 @@
 /area/ice_colony/underground/security/interrogation)
 "cwe" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/carpet,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/dry_ramen{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/ammo_magazine/shotgun/buckshot{
+	pixel_x = -10;
+	pixel_y = 4
+	},
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/leisure)
 "cwp" = (
 /obj/structure/window/reinforced{
@@ -2687,7 +2901,10 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "cBq" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
 "cBu" = (
@@ -2695,6 +2912,13 @@
 	color = "#dae3e2"
 	},
 /area/space)
+"cBW" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "snow_mat"
+	},
+/area/ice_colony/underground/medical/hallway)
 "cDc" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -2851,6 +3075,20 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/storage)
+"cIP" = (
+/obj/item/clothing/shoes/snow,
+/obj/structure/surface/rack,
+/obj/item/clothing/shoes/snow,
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask,
+/obj/item/clothing/mask/rebreather/scarf/tacticalmask,
+/obj/item/tank/emergency_oxygen/engi,
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 8
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "cIR" = (
 /obj/structure/surface/rack,
 /obj/item/storage/toolbox/electrical,
@@ -2907,10 +3145,8 @@
 /obj/structure/machinery/light{
 	dir = 4
 	},
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "red"
-	},
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/wood,
 /area/ice_colony/underground/hallway/south_east)
 "cKZ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -3013,14 +3249,20 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/checkpoint)
+"cNC" = (
+/obj/item/fuelCell{
+	pixel_x = 4;
+	pixel_y = 22
+	},
+/turf/open/gm/dirt,
+/area/ice_colony/underground/maintenance/south)
 "cNF" = (
 /obj/structure/machinery/light{
 	dir = 4;
 	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "red"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/hallway/south_east)
 "cNJ" = (
@@ -3176,8 +3418,8 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "cTD" = (
@@ -3319,6 +3561,13 @@
 	dir = 1
 	},
 /area/ice_colony/underground/crew/morgue)
+"ddc" = (
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 1;
+	pixel_y = -8
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "ddz" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
@@ -3414,6 +3663,9 @@
 /area/ice_colony/underground/security)
 "djH" = (
 /obj/structure/pipes/vents/pump,
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/ashtray/plastic,
+/obj/item/trash/cigbutt,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "djP" = (
@@ -3502,6 +3754,15 @@
 	icon_state = "white"
 	},
 /area/ice_colony/underground/security/brig)
+"doa" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "redfull"
+	},
+/area/ice_colony/underground/medical/treatment)
 "doP" = (
 /obj/structure/prop/rock/brown,
 /obj/effect/decal/warning_stripes{
@@ -3626,6 +3887,18 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
 "duh" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "duw" = (
@@ -3634,22 +3907,33 @@
 	pixel_y = 22
 	},
 /obj/structure/filingcabinet{
-	pixel_x = -8;
-	pixel_y = 4
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
 	},
 /obj/structure/filingcabinet{
-	pixel_x = 8;
-	pixel_y = 4
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/noticeboard{
+	pixel_y = 32
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "duZ" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 1
+/obj/item/weapon/gun/rifle/m41a/elite/m40_sd,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
 	},
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/carpet,
-/area/ice_colony/underground/crew/leisure)
+/area/space)
 "dwu" = (
 /obj/structure/bed/roller,
 /turf/open/floor/shiva{
@@ -3712,6 +3996,9 @@
 	icon_state = "red"
 	},
 /area/ice_colony/underground/crew/morgue)
+"dCI" = (
+/turf/open/floor/plating,
+/area/ice_colony/underground/medical/hallway)
 "dDo" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -3724,6 +4011,10 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
+"dDu" = (
+/obj/item/tool/wirecutters,
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "dEl" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/book/manual/security_space_law{
@@ -3793,12 +4084,28 @@
 	icon_state = "yellowfull"
 	},
 /area/ice_colony/underground/engineering)
+"dIT" = (
+/obj/structure/machinery/body_scanconsole,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "dJO" = (
+/obj/structure/closet/secure_closet/security_empty,
+/obj/item/storage/belt/shotgun,
+/obj/item/ammo_box/magazine/shotgun/buckshot,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "blue"
 	},
 /area/ice_colony/underground/command/center)
+"dKm" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/item/clothing/gloves/marine/veteran/PMC,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "dKy" = (
 /obj/structure/closet/crate/freezer/cooler/oj,
 /obj/item/reagent_container/food/drinks/cans/beer,
@@ -3859,6 +4166,22 @@
 	},
 /area/ice_colony/underground/research/storage)
 "dNb" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/drinks/flask/vacuumflask{
+	pixel_x = 9;
+	pixel_y = 25
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "dNJ" = (
@@ -3993,31 +4316,26 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "dQT" = (
-/obj/structure/pipes/standard/simple/visible{
-	dir = 5;
-	tag = "icon-intact (NORTHEAST)"
-	},
+/obj/structure/bed/chair/comfy/teal,
 /turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "dSf" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper Underground Women's Barracks";
-	req_access_txt = "100";
-	req_one_access = null
+/obj/structure/surface/table/reinforced/prison{
+	flipped = 1
 	},
-/turf/open/floor/wood,
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/dorm_r)
 "dSs" = (
-/obj/structure/machinery/alarm{
-	dir = 1;
-	pixel_y = -24
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
 	},
-/turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "dSM" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -4040,8 +4358,8 @@
 "dTC" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	dir = 1;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/hallway)
 "dUc" = (
@@ -4080,6 +4398,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/command/checkpoint)
+"dWN" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/faxmachine{
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/command/pv2)
 "dWY" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -4095,6 +4420,26 @@
 	tag = "icon-wall (NORTHEAST)"
 	},
 /area/shuttle/elevator2/underground)
+"dXJ" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/storage/pill_bottle/inaprovaline/skillless{
+	pixel_x = -5
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "dYn" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
@@ -4169,6 +4514,12 @@
 /obj/item/packageWrap,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/hangar)
+"eaZ" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "ebr" = (
 /turf/closed/wall/rock/brown,
 /area/ice_colony/exterior/underground/caves/open)
@@ -4198,6 +4549,14 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/research)
+"eea" = (
+/obj/vehicle/train/cargo/engine{
+	dir = 2
+	},
+/turf/open/floor/shiva{
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "eeg" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk,
@@ -4315,16 +4674,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/security)
-"emZ" = (
-/obj/structure/bed/chair/office/light{
-	dir = 8;
-	tag = "icon-officechair_white (EAST)"
-	},
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
-	},
-/area/ice_colony/underground/medical/lobby)
 "enu" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -4375,6 +4724,12 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/reception)
+"epm" = (
+/obj/item/weapon/gun/energy/rxfm5_eva{
+	icon_state = "rxfm5_eva_stripped"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "epr" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/clothing/gloves/botanic_leather,
@@ -4477,6 +4832,14 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/south)
+"esz" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/shotgun,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/treatment)
 "esM" = (
 /obj/structure/target/syndicate,
 /turf/open/gm/dirt{
@@ -4618,6 +4981,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/requesition/lobby)
+"ezt" = (
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/crew/leisure)
 "ezx" = (
 /obj/structure/prop/fishing/pole_interactive{
 	dir = 8
@@ -4735,6 +5104,12 @@
 	icon_state = "darkredfull2"
 	},
 /area/ice_colony/underground/hangar)
+"eDF" = (
+/obj/structure/bed/stool{
+	icon_state = "stool_alt"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "eDQ" = (
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/elevator2/underground)
@@ -4811,8 +5186,20 @@
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves/open)
 "eIT" = (
-/obj/structure/surface/table/gamblingtable,
-/turf/open/floor/carpet,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	pixel_x = 5;
+	pixel_y = 10
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = -9;
+	pixel_y = 5
+	},
+/obj/item/reagent_container/food/condiment/saltshaker,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/leisure)
 "eIV" = (
 /turf/open/floor/shiva{
@@ -4829,8 +5216,20 @@
 	},
 /area/ice_colony/underground/reception/toilet_men)
 "eJI" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/storage/box/pillbottles{
+	pixel_x = -7;
+	pixel_y = 6
+	},
+/obj/item/storage/pill_bottle/packet/bicardine{
+	pixel_x = 6;
+	pixel_y = -2
+	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "eKt" = (
@@ -4964,10 +5363,8 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "eRE" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/device/flashlight/lamp,
-/obj/item/tool/pen/blue{
-	pixel_x = 5
+/obj/structure/bed/chair/comfy/orange{
+	dir = 4
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
@@ -5007,8 +5404,8 @@
 	pixel_y = 32
 	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	dir = 4;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/hallway)
 "eTq" = (
@@ -5050,6 +5447,15 @@
 	tag = "icon-darkred2 (SOUTHEAST)"
 	},
 /area/ice_colony/underground/security/brig)
+"eUH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "eUR" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/barricade/handrail/wire{
@@ -5068,11 +5474,18 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "eVW" = (
-/obj/structure/largecrate/random,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
-/area/ice_colony/underground/maintenance/security)
+/area/ice_colony/underground/hangar)
 "eWC" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/shiva{
@@ -5159,17 +5572,30 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "fau" = (
-/obj/structure/bed/chair/wood/normal{
+/obj/structure/platform/kutjevo/smooth{
 	dir = 1
 	},
-/turf/open/floor/carpet,
-/area/ice_colony/underground/crew/leisure)
+/obj/structure/machinery/light{
+	dir = 1
+	},
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/ice_colony/exterior/underground/caves)
 "fay" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/research/work)
 "faC" = (
 /turf/open/floor/plating,
 /area/ice_colony/underground/crew/canteen)
+"faG" = (
+/obj/effect/decal/strata_decals/grime/grime4{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/dorm_r)
 "faV" = (
 /obj/structure/window/framed/dev/reinforced,
 /turf/open/floor/plating/icefloor{
@@ -5274,6 +5700,14 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/east)
+"feV" = (
+/obj/structure/surface/table,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/command/checkpoint)
 "ffe" = (
 /obj/structure/curtain/shower,
 /turf/open/floor/interior/plastic,
@@ -5306,6 +5740,13 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/ice_colony/underground/hangar)
+"ffx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "ffQ" = (
 /obj/structure/closet/secure_closet/medical1{
 	req_access_txt = "100"
@@ -5343,7 +5784,10 @@
 	},
 /area/ice_colony/underground/maintenance/south)
 "fiA" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
 	dir = 6;
 	icon_state = "green"
@@ -5364,6 +5808,12 @@
 	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
+"fiJ" = (
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "redfull"
+	},
+/area/ice_colony/underground/medical/hallway)
 "fjx" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -5374,6 +5824,14 @@
 	tag = "icon-darkred2 (NORTHWEST)"
 	},
 /area/ice_colony/underground/security/backroom)
+"fjC" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 8
+	},
+/obj/item/stack/sheet/metal,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "fjH" = (
 /obj/structure/bed/chair/wood/normal{
 	dir = 4
@@ -5406,6 +5864,12 @@
 	icon_state = "green"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"fkE" = (
+/obj/structure/largecrate/random/case/double,
+/turf/open/floor/shiva{
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "fkR" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/crew/bball)
@@ -5429,6 +5893,19 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/space)
+"fnq" = (
+/obj/effect/spawner/random/technology_scanner,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
+"fok" = (
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 6;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/ice_colony/underground/crew/leisure)
 "foz" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/sink{
@@ -5518,6 +5995,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/central)
+"fqu" = (
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "fqM" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -5555,6 +6039,12 @@
 	dir = 1
 	},
 /area/ice_colony/underground/crew/morgue)
+"frQ" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "frU" = (
 /turf/open/floor{
 	dir = 4;
@@ -5590,6 +6080,21 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/south)
+"fvd" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "fvf" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -5600,7 +6105,14 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
 "fvw" = (
-/turf/open/floor/carpet,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/chem_dispenser/beer{
+	pixel_y = 8
+	},
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/leisure)
 "fvH" = (
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -5699,10 +6211,33 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves/open)
-"fDn" = (
-/obj/structure/machinery/light{
-	dir = 1
+"fCE" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/sling,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
 	},
+/area/ice_colony/underground/medical/treatment)
+"fDn" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/toy/farwadoll,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "fDB" = (
@@ -5716,6 +6251,10 @@
 /area/ice_colony/underground/requesition)
 "fEm" = (
 /obj/structure/largecrate/random,
+/obj/item/reagent_container/food/drinks/cans/thirteenloko{
+	pixel_x = -3;
+	pixel_y = 14
+	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -5726,6 +6265,15 @@
 	tag = "icon-bcircuit"
 	},
 /area/ice_colony/underground/engineering/substation)
+"fEI" = (
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty"
+	},
+/obj/item/clothing/under/CM_uniform,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "fER" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
@@ -5739,11 +6287,27 @@
 	tag = "icon-darkred2 (EAST)"
 	},
 /area/ice_colony/underground/security/hallway)
-"fFs" = (
-/obj/structure/machinery/chem_master,
+"fFm" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 3
+	},
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/leisure)
+"fFs" = (
+/obj/structure/machinery/reagentgrinder{
+	pixel_y = 7
+	},
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/item/stack/sheet/mineral/phoron,
+/obj/structure/surface/table/reinforced/prison,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "fFx" = (
@@ -5772,7 +6336,25 @@
 	},
 /area/ice_colony/underground/command/center)
 "fFN" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/clothing/gloves/marine/veteran/insulated,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "fGE" = (
@@ -5886,6 +6468,21 @@
 	tag = "icon-beach (SOUTHEAST)"
 	},
 /area/space)
+"fMq" = (
+/obj/item/device/cassette_tape/heavymetal{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/clothing/ears/earmuffs{
+	icon_state = "earmuffs2";
+	pixel_x = 5;
+	pixel_y = -3
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/hallway)
 "fOA" = (
 /turf/open/gm/coast{
 	dir = 1
@@ -5953,6 +6550,12 @@
 	icon_state = "red"
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
+"fQW" = (
+/obj/structure/prop/turbine_extras,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "fRl" = (
 /obj/structure/largecrate/random/case,
 /obj/item/spacecash/c10{
@@ -5965,6 +6568,11 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves/open)
+"fTU" = (
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "fUn" = (
 /obj/structure/surface/table,
 /obj/item/paper/janitor{
@@ -5983,6 +6591,10 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/ice_colony/underground/hangar)
+"fUJ" = (
+/obj/structure/machinery/vending/cigarette,
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "fUY" = (
 /turf/open/floor/shiva{
 	dir = 6;
@@ -6072,6 +6684,15 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/hangar)
+"fXG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/bed/stool{
+	icon_state = "stool_alt"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "fXH" = (
 /obj/structure/machinery/landinglight/ds2/delaythree{
 	tag = "icon-landingstripe"
@@ -6118,6 +6739,12 @@
 	icon_state = "yellowfull"
 	},
 /area/ice_colony/underground/crew/disposals)
+"fYQ" = (
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "snow_mat"
+	},
+/area/ice_colony/underground/medical/hallway)
 "fZe" = (
 /obj/structure/machinery/door/airlock/multi_tile/elevator/access/dormatory,
 /turf/open/floor/shiva{
@@ -6185,7 +6812,10 @@
 	},
 /area/ice_colony/underground/engineering/substation)
 "gaw" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /obj/structure/machinery/alarm{
 	pixel_y = 24
 	},
@@ -6299,15 +6929,6 @@
 	tag = "icon-wall (WEST)"
 	},
 /area/shuttle/elevator1/underground)
-"ggv" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
-/obj/structure/closet/secure_closet/personal/patient,
-/turf/open/floor/shiva{
-	icon_state = "wred"
-	},
-/area/ice_colony/underground/medical/treatment)
 "ggY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -6423,8 +7044,10 @@
 /turf/open/floor/wood,
 /area/shuttle/elevator3/underground)
 "gkx" = (
-/obj/structure/machinery/vending/cola,
-/turf/open/floor/wood,
+/obj/item/stack/tile/plasteel{
+	pixel_y = 6
+	},
+/turf/open/floor/plating,
 /area/ice_colony/underground/crew/leisure)
 "gkL" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -6493,8 +7116,10 @@
 	},
 /area/ice_colony/underground/hangar)
 "gnE" = (
-/obj/structure/surface/table,
-/obj/item/storage/surgical_tray,
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/closet/secure_closet/surgical{
+	pixel_x = -30
+	},
 /turf/open/floor/shiva{
 	icon_state = "redfull"
 	},
@@ -6613,6 +7238,12 @@
 	icon_state = "purple"
 	},
 /area/ice_colony/underground/research/storage)
+"guE" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "gvE" = (
 /obj/structure/machinery/light{
 	dir = 4
@@ -6784,6 +7415,13 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/checkpoint)
+"gCH" = (
+/obj/item/ammo_casing{
+	dir = 6;
+	icon_state = "casing_5"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "gDh" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor{
@@ -6796,12 +7434,6 @@
 	},
 /turf/open/gm/dirt,
 /area/space)
-"gDU" = (
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
-	},
-/area/ice_colony/underground/medical/lobby)
 "gEy" = (
 /obj/structure/machinery/light,
 /obj/item/tool/wirecutters/clippers,
@@ -6838,6 +7470,13 @@
 	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
+"gFt" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "green"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "gFv" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -6850,6 +7489,9 @@
 	icon_state = "white"
 	},
 /area/ice_colony/underground/reception/toilet_women)
+"gFx" = (
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "gFW" = (
 /obj/structure/flora/pottedplant{
 	icon_state = "pottedplant_22";
@@ -6894,6 +7536,14 @@
 	icon_state = "greenfull"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"gJs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/medical/treatment)
 "gJA" = (
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -6958,10 +7608,17 @@
 	},
 /area/ice_colony/underground/security/brig)
 "gLZ" = (
-/obj/structure/machinery/power/apc{
-	dir = 1;
-	pixel_y = 24;
-	start_charge = 0
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
@@ -6994,7 +7651,8 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "gNe" = (
@@ -7002,7 +7660,7 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredcorners"
+	icon_state = "wredfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "gNE" = (
@@ -7099,6 +7757,12 @@
 "gTe" = (
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves)
+"gTr" = (
+/obj/structure/closet/crate/ammo/alt,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/requesition)
 "gTC" = (
 /obj/structure/window/framed/colony/reinforced/hull,
 /turf/open/floor/plating,
@@ -7112,7 +7776,6 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "gUB" = (
-/obj/structure/coatrack,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "gUP" = (
@@ -7209,6 +7872,7 @@
 	dir = 8;
 	pixel_x = -24
 	},
+/obj/effect/spawner/random/attachment,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "hay" = (
@@ -7447,6 +8111,13 @@
 	tag = "icon-darkred2"
 	},
 /area/ice_colony/underground/security)
+"hoK" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = -4;
+	pixel_y = 9
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "hoU" = (
 /obj/effect/decal/cleanable/blood{
 	basecolor = "#20d450";
@@ -7505,6 +8176,12 @@
 	icon_state = "desert_dug"
 	},
 /area/ice_colony/exterior/underground/caves/open)
+"htH" = (
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "htP" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating/icefloor{
@@ -7524,6 +8201,21 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/north)
+"huz" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison{
+	dir = 8;
+	flipped = 1
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "huF" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/space)
@@ -7536,8 +8228,7 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "hvj" = (
@@ -7550,12 +8241,6 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/security/hallway)
-"hvM" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/ice_colony/underground/crew/leisure)
 "hwa" = (
 /obj/structure/largecrate/random,
 /turf/open/floor/plating/icefloor{
@@ -7563,14 +8248,18 @@
 	},
 /area/ice_colony/underground/maintenance/central)
 "hwz" = (
-/obj/structure/machinery/light/small{
-	dir = 8
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
 	},
-/obj/structure/largecrate/random,
-/turf/open/floor/plating/icefloor{
-	icon_state = "asteroidplating"
+/obj/structure/machinery/light{
+	dir = 1
 	},
-/area/ice_colony/underground/maintenance/security)
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/space)
 "hwN" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -7580,13 +8269,8 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "hwP" = (
-/obj/structure/machinery/firealarm{
-	pixel_y = 24
-	},
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "greenfull"
-	},
+/obj/effect/spawner/random/toolbox,
+/turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
 "hwZ" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -7602,6 +8286,16 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/exterior/underground/caves)
+"hyd" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/item/tool/crowbar,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "snow_mat"
+	},
+/area/ice_colony/underground/medical/hallway)
 "hyp" = (
 /obj/structure/machinery/computer/prisoner,
 /turf/open/floor{
@@ -7719,8 +8413,7 @@
 /obj/structure/machinery/cryo_cell,
 /obj/structure/pipes/standard/cap,
 /turf/open/floor/shiva{
-	dir = 5;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "hEE" = (
@@ -7783,12 +8476,9 @@
 	},
 /area/ice_colony/underground/medical/hallway)
 "hHA" = (
-/obj/structure/curtain/medical,
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 4;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "hHR" = (
@@ -7856,9 +8546,14 @@
 /obj/structure/filingcabinet,
 /obj/item/paper/research_notes,
 /turf/open/floor/shiva{
-	icon_state = "wred"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
+"hNb" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "hNc" = (
 /obj/structure/machinery/firealarm{
 	dir = 1;
@@ -7885,6 +8580,11 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/underground/hangar)
+"hPd" = (
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "hPD" = (
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -8082,11 +8782,10 @@
 	},
 /area/ice_colony/underground/crew/bball)
 "hXj" = (
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
 	},
-/turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "hXv" = (
 /obj/structure/surface/table,
@@ -8113,7 +8812,7 @@
 	icon_state = "pipe-c"
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "hZD" = (
@@ -8177,8 +8876,7 @@
 	},
 /obj/structure/machinery/chem_dispenser,
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "ibP" = (
@@ -8461,6 +9159,10 @@
 /obj/item/clothing/mask/cigarette/cigar,
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
+"iop" = (
+/obj/structure/closet/medical_wall,
+/turf/closed/wall/r_wall,
+/area/ice_colony/underground/medical/storage)
 "ioA" = (
 /obj/structure/machinery/vending/cigarette/colony,
 /turf/open/floor/shiva{
@@ -8482,6 +9184,15 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"ipv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/machinery/sleep_console,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "ipZ" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -8503,11 +9214,15 @@
 	},
 /area/ice_colony/underground/hangar)
 "iqv" = (
-/obj/structure/largecrate/random/case,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/obj/structure/machinery/light{
+	dir = 8
 	},
-/area/ice_colony/underground/requesition)
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "iqU" = (
 /obj/structure/xenoautopsy/tank/larva,
 /turf/open/floor/corsat{
@@ -8530,11 +9245,13 @@
 	},
 /area/ice_colony/underground/maintenance/central/construction)
 "irc" = (
-/obj/structure/machinery/alarm{
-	dir = 1;
-	pixel_y = -24
+/obj/item/ammo_casing{
+	dir = 2;
+	icon_state = "casing_5"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/ice_colony/underground/crew/dorm_l)
 "irj" = (
 /turf/open/floor{
@@ -8573,7 +9290,14 @@
 /area/ice_colony/underground/reception/toilet_women)
 "isK" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/wrapping_paper,
+/obj/structure/largecrate/random/mini/small_case/b{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/blue{
+	pixel_x = 7;
+	pixel_y = 3
+	},
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -8593,9 +9317,25 @@
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/hangar)
+"itZ" = (
+/obj/structure/largecrate/random/mini/med{
+	layer = 3.01;
+	pixel_x = -8;
+	pixel_y = 7
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/requesition)
 "iua" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/requesition)
+"ivg" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/medical/treatment)
 "ivp" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -8649,6 +9389,46 @@
 	dir = 1
 	},
 /area/ice_colony/underground/research/storage)
+"iwo" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	layer = 3.1;
+	pixel_x = -5;
+	pixel_y = 17
+	},
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	layer = 3.1;
+	pixel_x = -10;
+	pixel_y = 16
+	},
+/obj/item/storage/pill_bottle/kelotane/skillless{
+	pixel_x = -5
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
+"iwy" = (
+/obj/structure/bedsheetbin,
+/obj/item/storage/box/attachments{
+	pixel_x = -2;
+	pixel_y = 8
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "iwL" = (
 /turf/open/floor/shiva{
 	dir = 9;
@@ -8790,10 +9570,7 @@
 	},
 /area/ice_colony/underground/requesition)
 "iAX" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin,
-/obj/item/tool/stamp,
-/turf/open/floor/wood,
+/turf/open/floor/carpet,
 /area/ice_colony/underground/command/pv2)
 "iBH" = (
 /obj/structure/platform/kutjevo/smooth,
@@ -8816,6 +9593,12 @@
 	},
 /turf/open/gm/river,
 /area/ice_colony/exterior/underground/caves)
+"iDm" = (
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/hallway)
 "iDn" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -8961,6 +9744,17 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"iKh" = (
+/obj/structure/machinery/light/small,
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 2.991
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "iKy" = (
 /obj/structure/machinery/light/small{
 	dir = 8
@@ -8980,7 +9774,32 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/storage)
 "iLd" = (
-/obj/structure/surface/table/woodentable,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/reagent_container/food/drinks/cans/sodawater{
+	layer = 3.6;
+	pixel_x = -6;
+	pixel_y = 15
+	},
+/obj/item/bedsheet{
+	layer = 3.1
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "iLz" = (
@@ -9098,6 +9917,11 @@
 	dir = 4;
 	pixel_x = -24
 	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 8
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "iQs" = (
@@ -9123,13 +9947,6 @@
 	tag = "icon-asteroidfloor (NORTH)"
 	},
 /area/ice_colony/underground/hangar)
-"iRR" = (
-/obj/structure/machinery/sleeper,
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
-	},
-/area/ice_colony/underground/medical/treatment)
 "iSc" = (
 /turf/closed/shuttle/elevator/arrivals{
 	icon_state = "wall_button_arrivals"
@@ -9222,8 +10039,24 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/security/hallway)
 "iTP" = (
-/obj/structure/bed,
-/obj/structure/window/reinforced/tinted,
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (WEST)"
+	},
+/obj/item/storage/pill_bottle/bicaridine/skillless{
+	pixel_x = 6
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "iUj" = (
@@ -9259,13 +10092,15 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/engineering)
+"iVD" = (
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/dorm_r)
 "iWf" = (
 /obj/structure/bed/chair/office/light{
 	dir = 1
 	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	icon_state = "wredfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "iWK" = (
@@ -9313,7 +10148,7 @@
 	},
 /turf/open/floor/shiva{
 	dir = 4;
-	icon_state = "wredcorners"
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "jai" = (
@@ -9336,6 +10171,12 @@
 	tag = "icon-darkred2"
 	},
 /area/ice_colony/underground/security/armory)
+"jaW" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "jbh" = (
 /obj/structure/machinery/disposal,
 /obj/structure/disposalpipe/trunk{
@@ -9391,10 +10232,10 @@
 	},
 /area/space)
 "jeo" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 1
+/obj/item/tool/mop,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
 	},
-/turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "jeO" = (
 /obj/structure/machinery/conveyor,
@@ -9422,6 +10263,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/fourway/hidden/green,
 /turf/open/floor/shiva{
+	dir = 4;
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/hallway/south_east)
@@ -9439,8 +10281,7 @@
 	tag = "icon-officechair_white (EAST)"
 	},
 /turf/open/floor/shiva{
-	dir = 9;
-	icon_state = "wred"
+	icon_state = "wredfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "jhb" = (
@@ -9570,6 +10411,16 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves/open)
+"jmB" = (
+/obj/structure/surface/table/reinforced/prison{
+	dir = 1;
+	flipped = 1
+	},
+/obj/structure/bed/chair{
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "jnq" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -9617,13 +10468,13 @@
 	start_charge = 0
 	},
 /turf/open/floor/shiva{
-	icon_state = "wred"
+	dir = 4;
+	icon_state = "snow_mat"
 	},
 /area/ice_colony/underground/medical/hallway)
 "jqE" = (
-/obj/structure/largecrate/random/case/double,
-/turf/open/floor/shiva{
-	icon_state = "floor3"
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/requesition)
 "jsO" = (
@@ -9930,9 +10781,7 @@
 	},
 /area/ice_colony/underground/reception/toilet_men)
 "jGT" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
-	},
+/obj/structure/prop/invuln/minecart_tracks,
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
 	},
@@ -9943,6 +10792,12 @@
 	icon_state = "asteroidplating"
 	},
 /area/space)
+"jHb" = (
+/obj/structure/bed/chair{
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "jHH" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/medical/storage)
@@ -9957,6 +10812,18 @@
 	icon_state = "purple"
 	},
 /area/ice_colony/underground/research/storage)
+"jHJ" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 1;
+	pixel_y = 20
+	},
+/obj/item/clothing/glasses/hud/health{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/command/pv1)
 "jJT" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
@@ -10039,9 +10906,30 @@
 /area/ice_colony/underground/medical/storage)
 "jNT" = (
 /obj/structure/pipes/vents/pump,
+/obj/structure/surface/table/woodentable,
+/obj/item/staff/stick{
+	anchored = 1;
+	desc = "It only plays auto chess. Gross.";
+	icon = 'icons/obj/items/items.dmi';
+	icon_state = "game_kit";
+	name = "Thick Art LTD Gamepad"
+	},
+/obj/item/prop/helmetgarb/raincover{
+	pixel_x = -8;
+	pixel_y = 9
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
+"jNW" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "jOR" = (
+/obj/effect/spawner/random/supply_kit,
+/obj/structure/closet/secure_closet/security_empty,
 /turf/open/floor/shiva{
 	dir = 4;
 	icon_state = "blue"
@@ -10128,6 +11016,11 @@
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 9
 	},
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -10143,12 +11036,6 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/engineering)
-"jSs" = (
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
-	},
-/area/ice_colony/underground/medical/treatment)
 "jSN" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/wood,
@@ -10187,6 +11074,13 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/engineering)
+"jUt" = (
+/obj/structure/blocker/forcefield/vehicles,
+/obj/item/tool/weldingtool/experimental,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/crew/leisure)
 "jUA" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/stock_parts/matter_bin/adv{
@@ -10306,6 +11200,28 @@
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/chapel)
+"jZG" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/clothing/suit/storage/bomber/alt,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
 "jZO" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -10338,10 +11254,20 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/medical/lobby)
-"kbQ" = (
-/obj/structure/machinery/body_scanconsole,
+"kbp" = (
+/obj/structure/janitorialcart,
 /turf/open/floor/shiva{
-	icon_state = "wred"
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/leisure)
+"kbQ" = (
+/obj/structure/machinery/power/apc{
+	pixel_y = -24;
+	start_charge = 0
+	},
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "kbR" = (
@@ -10403,12 +11329,12 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition/sec_storage)
 "kfj" = (
-/obj/structure/pipes/standard/manifold/visible{
-	layer = 2.3
+/obj/structure/pipes/standard/simple/visible{
+	dir = 5;
+	tag = "icon-intact (NORTHEAST)"
 	},
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wredcorners"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "kfJ" = (
@@ -10542,6 +11468,16 @@
 	},
 /turf/open/space/basic,
 /area/ice_colony/underground/hangar)
+"klP" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/item/storage/belt/medical{
+	pixel_x = -3;
+	pixel_y = 1
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "klT" = (
 /turf/closed/wall/r_wall/unmeltable,
 /area/ice_colony/underground/research)
@@ -10593,7 +11529,7 @@
 "krl" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "krL" = (
@@ -10641,7 +11577,10 @@
 	},
 /area/ice_colony/underground/maintenance/central)
 "kus" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "greenfull"
@@ -10652,6 +11591,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/hallway/north_west)
+"kvi" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "kvx" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/storage/box/emps{
@@ -10696,7 +11641,6 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "kwi" = (
-/obj/structure/bed/chair/comfy/orange,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -10719,8 +11663,29 @@
 	},
 /area/ice_colony/underground/medical/storage)
 "kxW" = (
-/obj/structure/machinery/light{
-	dir = 1
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/purple{
+	pixel_y = 13
+	},
+/obj/item/bedsheet/hos{
+	layer = 3.1
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
@@ -10777,6 +11742,17 @@
 /obj/item/tool/weldingtool,
 /turf/open/floor/interior/plastic,
 /area/ice_colony/exterior/underground/caves/open)
+"kAd" = (
+/obj/structure/bed/chair{
+	dir = 4;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
+"kAm" = (
+/obj/structure/machinery/vending/coffee,
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "kAv" = (
 /turf/open/gm/dirt{
 	icon_state = "desert2"
@@ -10874,8 +11850,7 @@
 	dir = 8
 	},
 /turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "kEg" = (
@@ -10910,8 +11885,10 @@
 	},
 /area/ice_colony/exterior/underground/caves)
 "kFT" = (
+/obj/structure/machinery/vending/snack,
 /turf/open/floor/shiva{
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "kFV" = (
@@ -10922,6 +11899,15 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/underground/hangar)
+"kGo" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/treatment)
 "kGM" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -10965,9 +11951,28 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves/open)
+"kIb" = (
+/obj/structure/pipes/vents/pump{
+	dir = 1
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "kIg" = (
-/obj/structure/bed,
-/obj/structure/window/reinforced/tinted,
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (WEST)"
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "kIJ" = (
@@ -11101,8 +12106,7 @@
 	dir = 8
 	},
 /turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/hallway)
 "kNe" = (
@@ -11126,6 +12130,20 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/research)
+"kPl" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/under/shorts/red{
+	pixel_x = -2;
+	pixel_y = -4
+	},
+/obj/item/clothing/head/hardhat/red{
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "kPX" = (
 /obj/structure/surface/table,
 /obj/item/toy/deck/uno{
@@ -11192,6 +12210,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/command/checkpoint)
+"kTs" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "kTu" = (
 /obj/item/tool/pickaxe/silver,
 /turf/open/gm/dirt,
@@ -11237,14 +12261,6 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/requesition/sec_storage)
-"kVW" = (
-/obj/structure/bed,
-/obj/item/bedsheet/medical,
-/obj/structure/machinery/light/small,
-/turf/open/floor/shiva{
-	icon_state = "wred"
-	},
-/area/ice_colony/underground/medical/treatment)
 "kWB" = (
 /turf/open/shuttle/elevator/grating,
 /area/shuttle/elevator1/underground)
@@ -11297,8 +12313,10 @@
 	},
 /area/ice_colony/exterior/underground/caves/dig)
 "laa" = (
-/obj/structure/machinery/disposal,
-/obj/structure/disposalpipe/trunk,
+/obj/structure/bed/chair{
+	dir = 1;
+	icon_state = "chair_alt"
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "lab" = (
@@ -11369,8 +12387,8 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
-/turf/open/floor/shiva{
-	icon_state = "green"
+/turf/open/floor/wood{
+	icon_state = "wood-broken3"
 	},
 /area/ice_colony/underground/hallway/south_east)
 "leF" = (
@@ -11566,7 +12584,8 @@
 "lmV" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 8;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/hallway)
 "lnw" = (
@@ -11844,6 +12863,16 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/engineering/locker)
+"lBf" = (
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "snow_mat"
+	},
+/area/ice_colony/underground/medical/hallway)
 "lBS" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/shiva{
@@ -11851,12 +12880,14 @@
 	icon_state = "greenfull"
 	},
 /area/ice_colony/underground/hallway/south_east)
-"lCG" = (
-/turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+"lCh" = (
+/obj/structure/surface/table/reinforced/prison{
+	flipped = 1
 	},
-/area/ice_colony/underground/medical/lobby)
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "lDh" = (
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -11899,6 +12930,14 @@
 	icon_state = "blue"
 	},
 /area/ice_colony/underground/command/checkpoint)
+"lEB" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/item/clothing/accessory/medal/gold/captain,
+/obj/item/cane,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "lEY" = (
 /obj/structure/machinery/alarm{
 	dir = 8;
@@ -11976,6 +13015,23 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/elevator3/underground)
+"lIT" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/obj/structure/bed/chair{
+	dir = 1;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
+"lIU" = (
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/command/pv2)
 "lIZ" = (
 /obj/structure/plasticflaps/mining,
 /obj/structure/platform/kutjevo/smooth{
@@ -12031,7 +13087,9 @@
 	},
 /area/ice_colony/underground/medical/lobby)
 "lLl" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/bed/chair{
+	icon_state = "chair_alt"
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "lLq" = (
@@ -12046,6 +13104,12 @@
 	icon_state = "red"
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
+"lMv" = (
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "lMB" = (
 /turf/open/floor{
 	dir = 1;
@@ -12094,6 +13158,13 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/hallway/north_west)
+"lPk" = (
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 1;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/ice_colony/underground/hallway/south_east)
 "lPq" = (
 /turf/open/floor/shiva{
 	dir = 4;
@@ -12111,6 +13182,16 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/bball)
+"lQA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/pipes/standard/manifold/hidden/green,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "lQO" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/shiva{
@@ -12121,6 +13202,12 @@
 "lQX" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/crew/dorm_l)
+"lRz" = (
+/obj/item/ammo_casing{
+	icon_state = "casing_7_1"
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "lRU" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -12231,6 +13318,15 @@
 	icon_state = "wood"
 	},
 /area/ice_colony/underground/crew/library)
+"lWh" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/shiva{
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/hallway)
 "lWJ" = (
 /obj/structure/machinery/firealarm{
 	dir = 1;
@@ -12279,7 +13375,10 @@
 	},
 /area/ice_colony/underground/crew/library)
 "lZb" = (
-/obj/structure/flora/pottedplant,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "green"
@@ -12322,8 +13421,7 @@
 /area/ice_colony/underground/medical/hallway)
 "maN" = (
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/medical/treatment)
 "maQ" = (
@@ -12331,6 +13429,33 @@
 	icon_state = "red"
 	},
 /area/ice_colony/underground/command/checkpoint)
+"mbg" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/item/ammo_magazine/handful/shotgun/incendiary{
+	unacidable = 1
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "mbt" = (
 /obj/structure/bed/chair{
 	dir = 8;
@@ -12464,6 +13589,12 @@
 	},
 /turf/open/floor/carpet,
 /area/ice_colony/underground/crew/chapel)
+"mgq" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "mgH" = (
 /turf/closed/wall/rock/brown,
 /area/ice_colony/underground/maintenance/north)
@@ -12589,12 +13720,14 @@
 	},
 /area/ice_colony/underground/storage)
 "mkt" = (
-/obj/structure/bed/chair/wood/normal,
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
 	},
-/turf/open/floor/wood,
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/leisure)
 "mln" = (
 /obj/structure/machinery/light/small{
@@ -12634,6 +13767,31 @@
 	},
 /turf/open/floor/interior/plastic,
 /area/ice_colony/exterior/underground/caves/open)
+"mnm" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/blue{
+	layer = 3.1
+	},
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "mos" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12758,8 +13916,7 @@
 	tag = "icon-pipe-c (NORTH)"
 	},
 /turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "msE" = (
@@ -12848,12 +14005,28 @@
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "mxn" = (
-/obj/structure/machinery/power/apc{
-	pixel_y = -24;
-	start_charge = 0
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
 	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light/small,
+/obj/item/toy/farwadoll,
 /turf/open/floor/shiva{
-	icon_state = "wred"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/medical/treatment)
 "mxv" = (
@@ -12881,8 +14054,7 @@
 	dir = 9
 	},
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "mym" = (
@@ -12930,6 +14102,18 @@
 	req_one_access = null
 	},
 /turf/open/floor/plating,
+/area/ice_colony/underground/hallway/south_east)
+"mzv" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/hallway/south_east)
 "mzI" = (
 /obj/structure/pipes/vents/pump{
@@ -12983,11 +14167,33 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/requesition)
+"mAB" = (
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/leisure)
+"mAX" = (
+/obj/structure/prop/dam/van{
+	desc = "An older Weyland Yutani space crawler. These things are most commonly seen along former trails on shake and bake colonies.";
+	icon_state = "crawler_crate_wy";
+	name = "crawler";
+	pixel_y = 7
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/requesition)
 "mBG" = (
 /turf/open/floor/shiva{
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/crew/disposals)
+"mBY" = (
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/ice_colony/underground/crew/leisure)
 "mCx" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -13008,9 +14214,10 @@
 	dir = 8;
 	icon_state = "pipe-c"
 	},
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
+/obj/item/ammo_casing{
+	icon_state = "casing_10_1"
 	},
+/turf/open/floor/carpet,
 /area/ice_colony/underground/hallway/south_east)
 "mCY" = (
 /obj/structure/prop/structure_lattice{
@@ -13204,6 +14411,15 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/east)
+"mOG" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/south)
 "mOO" = (
 /obj/structure/machinery/vending/coffee,
 /obj/structure/machinery/firealarm{
@@ -13223,6 +14439,12 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/reception)
+"mPI" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "mPT" = (
 /obj/structure/surface/rack,
 /turf/open/floor/plating/icefloor{
@@ -13331,8 +14553,8 @@
 	tag = "icon-tube1 (EAST)"
 	},
 /turf/open/floor/shiva{
-	dir = 5;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/treatment)
 "mVS" = (
@@ -13369,6 +14591,14 @@
 	icon_state = "blue"
 	},
 /area/ice_colony/underground/command/center)
+"mXV" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "mXZ" = (
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	density = 0;
@@ -13617,6 +14847,12 @@
 "nio" = (
 /turf/closed/shuttle/elevator/gears,
 /area/shuttle/elevator2/underground)
+"niF" = (
+/obj/structure/closet/secure_closet/personal/patient,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "nkd" = (
 /obj/structure/surface/table,
 /obj/item/storage/firstaid/o2,
@@ -13681,11 +14917,25 @@
 /area/ice_colony/underground/research/storage)
 "nma" = (
 /obj/structure/surface/table/reinforced/prison,
-/obj/item/tool/weldpack,
+/obj/structure/largecrate/random/mini/small_case/c{
+	pixel_x = 3;
+	pixel_y = 17
+	},
+/obj/item/tool/weldpack{
+	pixel_x = -2;
+	pixel_y = 11
+	},
+/obj/structure/barricade/handrail/wire,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/requesition)
+"nmC" = (
+/obj/structure/machinery/cm_vending/sorted/boozeomat/chess{
+	pixel_x = -4
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "nmH" = (
 /obj/item/tool/warning_cone{
 	pixel_x = -11
@@ -13852,6 +15102,15 @@
 	},
 /turf/open/gm/river,
 /area/space)
+"nwO" = (
+/obj/structure/surface/table/reinforced/prison{
+	flipped = 1
+	},
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "nxW" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -13911,6 +15170,16 @@
 	icon_state = "green"
 	},
 /area/ice_colony/underground/crew/canteen)
+"nzO" = (
+/obj/structure/machinery/light/small,
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "nAQ" = (
 /turf/open/floor{
 	icon_state = "bcircuit";
@@ -13949,6 +15218,12 @@
 /obj/structure/largecrate/random,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/hangar)
+"nDl" = (
+/obj/structure/pipes/standard/manifold/hidden/green{
+	dir = 4
+	},
+/turf/open/gm/dirt,
+/area/ice_colony/underground/maintenance/south)
 "nDC" = (
 /obj/structure/machinery/door/airlock/almayer/maint{
 	dir = 1;
@@ -13998,7 +15273,7 @@
 /area/ice_colony/underground/crew/disposals)
 "nFp" = (
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "nFy" = (
@@ -14030,8 +15305,7 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wredcorners"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "nHA" = (
@@ -14054,6 +15328,17 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/lobby)
+"nIF" = (
+/obj/structure/reagent_dispensers/water_cooler/stacks{
+	density = 0;
+	pixel_y = 17
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
+"nIR" = (
+/obj/structure/machinery/vending/dinnerware,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "nJc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -14063,7 +15348,8 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "nJq" = (
@@ -14114,6 +15400,13 @@
 /obj/item/storage/belt/marine/quackers,
 /turf/open/gm/river,
 /area/ice_colony/exterior/underground/caves)
+"nNz" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "nNW" = (
 /obj/item/book/manual/marine_law,
 /obj/structure/surface/table/reinforced/prison,
@@ -14155,6 +15448,10 @@
 	},
 /area/ice_colony/underground/maintenance/research)
 "nOz" = (
+/obj/structure/surface/table/woodentable/fancy,
+/obj/structure/machinery/computer/station_alert{
+	dir = 4
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "nOO" = (
@@ -14209,6 +15506,16 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/crew/canteen)
+"nPR" = (
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/structure/largecrate/random/barrel/green,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "yellow"
+	},
+/area/ice_colony/underground/requesition)
 "nPT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -14245,6 +15552,15 @@
 	icon_state = "wredfull"
 	},
 /area/ice_colony/underground/medical/storage)
+"nRW" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "snow_mat"
+	},
+/area/ice_colony/underground/medical/hallway)
 "nSi" = (
 /obj/structure/largecrate/random/case,
 /turf/open/gm/dirt,
@@ -14506,7 +15822,11 @@
 	},
 /area/ice_colony/underground/engineering)
 "odw" = (
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/machinery/photocopier,
+/obj/item/storage/firstaid/regular{
+	pixel_x = -2;
+	pixel_y = 9
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "odD" = (
@@ -14521,6 +15841,7 @@
 /area/ice_colony/underground/research/work)
 "odZ" = (
 /obj/structure/closet/toolcloset,
+/obj/structure/barricade/handrail/wire,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellow"
@@ -14582,6 +15903,14 @@
 	icon_state = "green"
 	},
 /area/ice_colony/underground/hallway/north_west)
+"ogW" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "ogX" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
 /turf/open/gm/dirt,
@@ -14612,6 +15941,14 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/medical/lobby)
+"ohG" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/gm/dirt{
+	icon_state = "desert0"
+	},
+/area/ice_colony/underground/maintenance/south)
 "ohM" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -14763,6 +16100,21 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
+/obj/structure/surface/table/woodentable/fancy,
+/obj/item/stack/sheet/wood{
+	pixel_x = -14
+	},
+/obj/item/stack/sheet/wood{
+	pixel_x = 15;
+	pixel_y = -3
+	},
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = 5;
+	pixel_y = 13
+	},
+/obj/item/clothing/shoes/black{
+	layer = 3.1
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "opY" = (
@@ -14773,10 +16125,9 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "orH" = (
-/obj/structure/surface/table/woodentable/fancy,
-/obj/item/device/flashlight/lamp,
-/obj/item/tool/pen/blue{
-	pixel_x = 5
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
@@ -14814,7 +16165,7 @@
 /area/ice_colony/underground/crew/lavatory)
 "otL" = (
 /obj/structure/prop/invuln/minecart_tracks{
-	dir = 8
+	dir = 4
 	},
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -14824,6 +16175,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/space)
+"otO" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "ouy" = (
 /obj/structure/machinery/power/apc{
 	dir = 1;
@@ -14835,6 +16190,13 @@
 	icon_state = "purple"
 	},
 /area/ice_colony/underground/research/storage)
+"ouV" = (
+/obj/effect/spawner/random/bomb_supply,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "ovC" = (
 /turf/open/floor/carpet,
 /area/shuttle/elevator3/underground)
@@ -14844,6 +16206,38 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/north)
+"owY" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/effect/spawner/random/attachment,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
+"oxs" = (
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/medkit/full_advanced,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/central)
 "oyb" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /turf/open/floor{
@@ -14945,12 +16339,30 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/engineering)
+"oBQ" = (
+/obj/structure/bed/chair{
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "oBR" = (
 /obj/structure/machinery/washing_machine,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/crew/lavatory)
+"oCi" = (
+/obj/item/shard{
+	icon_state = "medium";
+	name = "ice shard"
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/leisure)
 "oCy" = (
 /obj/structure/closet/secure_closet/security,
 /turf/open/floor{
@@ -15095,12 +16507,20 @@
 	},
 /area/ice_colony/underground/hangar)
 "oKo" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = 8
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
@@ -15150,6 +16570,21 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/underground/hangar)
+"oMl" = (
+/obj/structure/pipes/vents/pump{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
+"oMF" = (
+/obj/structure/bed/stool{
+	icon_state = "stool_alt"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "oML" = (
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	density = 0
@@ -15272,9 +16707,7 @@
 	},
 /area/ice_colony/underground/storage/highsec)
 "oVp" = (
-/obj/structure/prop/invuln/minecart_tracks{
-	dir = 1
-	},
+/obj/structure/prop/invuln/minecart_tracks,
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
 	},
@@ -15297,7 +16730,6 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "oWr" = (
-/obj/structure/bed/chair/comfy/orange,
 /obj/structure/machinery/power/apc{
 	dir = 1;
 	pixel_y = 24;
@@ -15364,7 +16796,8 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 1;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "oZA" = (
@@ -15486,11 +16919,23 @@
 /area/ice_colony/exterior/underground/caves/open)
 "pdr" = (
 /obj/structure/surface/table,
-/obj/item/trash/chips,
+/obj/item/trash/chips{
+	pixel_x = 2;
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
 	icon_state = "green"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"peA" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/medical/treatment)
 "peE" = (
 /obj/structure/bookcase,
 /turf/open/floor{
@@ -15612,6 +17057,14 @@
 	icon_state = "purple"
 	},
 /area/ice_colony/underground/research/storage)
+"plg" = (
+/obj/structure/machinery/light,
+/turf/open/floor{
+	dir = 1;
+	icon_state = "asteroidfloor";
+	tag = "icon-asteroidfloor (NORTH)"
+	},
+/area/space)
 "plN" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -15745,8 +17198,12 @@
 	},
 /area/ice_colony/underground/crew/morgue)
 "pqY" = (
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
-	dir = 6;
+	dir = 4;
 	icon_state = "wred"
 	},
 /area/ice_colony/underground/medical/hallway)
@@ -15757,7 +17214,8 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 8;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "prY" = (
@@ -15800,6 +17258,13 @@
 	tag = "icon-darkyellow2 (SOUTHEAST)"
 	},
 /area/ice_colony/underground/security/brig)
+"ptY" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "puK" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/machinery/door/airlock/almayer/medical/glass{
@@ -15858,12 +17323,6 @@
 	dir = 1
 	},
 /area/ice_colony/underground/requesition)
-"pxx" = (
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
-	},
-/area/ice_colony/underground/medical/lobby)
 "pxJ" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/command/checkpoint)
@@ -15949,6 +17408,7 @@
 "pBS" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/surface/rack,
+/obj/item/ammo_magazine/shotgun/buckshot,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -16170,6 +17630,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/central)
+"pNI" = (
+/obj/item/stack/cable_coil/cut{
+	pixel_x = 6;
+	pixel_y = -8
+	},
+/turf/open/floor/plating,
+/area/ice_colony/underground/hallway/south_east)
 "pNJ" = (
 /obj/structure/machinery/firealarm{
 	pixel_y = 24
@@ -16213,6 +17680,13 @@
 	icon_state = "warnplate"
 	},
 /area/ice_colony/underground/crew/disposals)
+"pRs" = (
+/obj/structure/prop/souto_land/pole{
+	dir = 8
+	},
+/obj/structure/prop/souto_land/pole,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/dorm_l)
 "pRy" = (
 /obj/item/paper_bin,
 /obj/item/tool/pen/blue,
@@ -16285,6 +17759,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/hangar)
+"pUW" = (
+/obj/item/stack/tile/plasteel{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "pVh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -16390,6 +17871,33 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/storage)
+"pYx" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/purple{
+	pixel_y = 13
+	},
+/obj/item/bedsheet{
+	layer = 3.1
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "pYV" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor/shiva{
@@ -16446,12 +17954,34 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/carpet,
 /area/ice_colony/underground/hallway/south_east)
 "qeu" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/item/storage/bible/hefa{
+	pixel_y = 3
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "qgm" = (
@@ -16485,6 +18015,10 @@
 	icon_state = "purple"
 	},
 /area/ice_colony/underground/research)
+"qhF" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "qhN" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8;
@@ -16562,6 +18096,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/research)
+"qlx" = (
+/obj/item/stack/tile/plasteel,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "qlW" = (
 /obj/structure/surface/table,
 /obj/item/trash/plate,
@@ -16591,6 +18129,14 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/medical/lobby)
+"qnp" = (
+/obj/item/shard{
+	icon_state = "large";
+	pixel_x = -5;
+	pixel_y = -6
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "qnW" = (
 /obj/structure/closet/fireaxecabinet,
 /turf/closed/wall/r_wall,
@@ -16691,12 +18237,6 @@
 	icon_state = "red"
 	},
 /area/ice_colony/underground/reception/checkpoint_north)
-"qsB" = (
-/obj/structure/curtain/medical,
-/turf/open/floor/shiva{
-	icon_state = "wredfull"
-	},
-/area/ice_colony/underground/medical/treatment)
 "qtQ" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/structure/machinery/microwave{
@@ -16722,6 +18262,10 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/reception/toilet_men)
+"quR" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "qvo" = (
 /obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating,
@@ -16786,6 +18330,14 @@
 	icon_state = "squareswood"
 	},
 /area/ice_colony/exterior/underground/caves/dig)
+"qxL" = (
+/obj/structure/surface/table/reinforced/prison{
+	flipped = 1
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "qye" = (
 /obj/structure/machinery/light/small{
 	dir = 4;
@@ -16872,6 +18424,7 @@
 	pixel_x = -11;
 	pixel_y = 20
 	},
+/obj/effect/spawner/random/tool,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -16944,6 +18497,12 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/research)
+"qDk" = (
+/obj/item/weapon/gun/shotgun/double/sawn,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/leisure)
 "qDl" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor{
@@ -16983,11 +18542,13 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "qEf" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
+	},
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/clothing/suit/storage/snow_suit{
+	pixel_x = 1;
+	pixel_y = 2
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
@@ -17062,6 +18623,12 @@
 	icon_state = "yellowfull"
 	},
 /area/ice_colony/underground/engineering/locker)
+"qIi" = (
+/obj/item/tool/wet_sign,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/leisure)
 "qIT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17105,6 +18672,9 @@
 /obj/structure/platform/kutjevo/smooth{
 	dir = 4
 	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
 /turf/open/floor{
 	dir = 1;
 	icon_state = "asteroidfloor";
@@ -17134,6 +18704,12 @@
 	icon_state = "purplefull"
 	},
 /area/ice_colony/underground/research/work)
+"qMW" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/gm/dirt{
+	icon_state = "desert0"
+	},
+/area/ice_colony/underground/maintenance/south)
 "qMY" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17246,6 +18822,30 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/maintenance/central)
+"qQt" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/rd{
+	layer = 3.1
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
 "qQF" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -17317,15 +18917,8 @@
 /turf/open/floor/interior/plastic,
 /area/ice_colony/exterior/underground/caves/open)
 "qUQ" = (
-/obj/structure/surface/table,
-/obj/item/storage/box/donkpockets{
-	pixel_x = -6;
-	pixel_y = 10
-	},
-/obj/item/reagent_container/food/snacks/donkpocket,
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "qVp" = (
@@ -17433,13 +19026,10 @@
 /area/ice_colony/underground/maintenance/north)
 "rby" = (
 /obj/structure/pipes/standard/simple/hidden/green,
-/obj/structure/machinery/door/airlock/almayer/generic{
-	dir = 1;
-	name = "\improper Underground Men's Barracks";
-	req_access_txt = "100";
-	req_one_access = null
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
-/turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "rbU" = (
 /turf/open/floor/wood,
@@ -17460,7 +19050,8 @@
 	tag = "icon-officechair_white (EAST)"
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "rcZ" = (
@@ -17550,6 +19141,16 @@
 	icon_state = "green"
 	},
 /area/ice_colony/underground/hallway/north_west)
+"rgr" = (
+/obj/structure/surface/table/reinforced/prison{
+	dir = 1;
+	flipped = 1
+	},
+/obj/structure/bed/chair{
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "rgy" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -17824,18 +19425,41 @@
 	},
 /area/ice_colony/underground/medical/storage)
 "rsj" = (
-/obj/structure/machinery/cryo_cell,
-/obj/structure/pipes/standard/cap,
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/structure/machinery/microwave{
+	pixel_y = 9
+	},
+/obj/item/reagent_container/food/snacks/donkpocket{
+	pixel_x = -5;
+	pixel_y = 17
+	},
 /turf/open/floor/shiva{
-	dir = 9;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
+"rsw" = (
+/obj/structure/surface/table/reinforced/prison{
+	dir = 8;
+	flipped = 1
+	},
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "rsB" = (
 /turf/open/floor/shiva{
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/engineering/locker)
+"rsM" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "rsR" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -17923,10 +19547,28 @@
 	},
 /area/ice_colony/underground/security)
 "rwS" = (
-/obj/structure/machinery/bodyscanner,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/machinery/light/small,
 /turf/open/floor/shiva{
-	dir = 10;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "rxe" = (
@@ -17960,6 +19602,12 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/underground/hangar)
+"ryR" = (
+/obj/item/stack/sheet/metal,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/leisure)
 "rzg" = (
 /turf/open/floor/shiva{
 	dir = 1;
@@ -18006,8 +19654,10 @@
 	},
 /area/ice_colony/underground/research/storage)
 "rAy" = (
-/obj/structure/bed,
-/turf/open/floor/wood,
+/obj/structure/bedsheetbin,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/ice_colony/underground/crew/dorm_r)
 "rAF" = (
 /obj/structure/machinery/light/small,
@@ -18017,16 +19667,11 @@
 	},
 /area/ice_colony/underground/maintenance/research)
 "rBa" = (
-/obj/structure/disposalpipe/junction{
-	dir = 1;
-	icon_state = "pipe-j2"
-	},
+/obj/structure/disposalpipe/segment,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/shiva{
-	icon_state = "multi_tiles"
-	},
+/turf/open/floor/carpet,
 /area/ice_colony/underground/hallway/south_east)
 "rBz" = (
 /obj/structure/prop/rock/brown_degree,
@@ -18181,6 +19826,15 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/crew/disposals)
+"rJK" = (
+/obj/effect/decal/strata_decals/grime/grime4,
+/obj/item/reagent_container/food/drinks/bottle/sake{
+	layer = 3.1;
+	pixel_x = 13;
+	pixel_y = 21
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/dorm_l)
 "rKe" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -18211,8 +19865,10 @@
 /area/ice_colony/underground/requesition/storage)
 "rKB" = (
 /obj/structure/surface/table/woodentable/fancy,
-/obj/item/paper_bin,
-/obj/item/tool/stamp,
+/obj/item/device/flashlight/lamp/green{
+	pixel_x = -6;
+	pixel_y = 13
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "rKL" = (
@@ -18233,15 +19889,9 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/hangar)
 "rLC" = (
-/obj/structure/prop/structure_lattice{
-	density = 0;
-	desc = "On closer inspection, everything on these shelves are made of plastic.";
-	icon_state = "book-5";
-	name = "book case"
-	},
+/obj/structure/machinery/photocopier,
 /turf/open/floor/shiva{
-	dir = 5;
-	icon_state = "wred"
+	icon_state = "wredfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "rLU" = (
@@ -18250,6 +19900,13 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/central)
+"rMM" = (
+/obj/structure/prop/turbine,
+/obj/structure/prop/turbine_extras/border,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "rMN" = (
 /turf/open/floor/shiva{
 	icon_state = "floor3"
@@ -18369,8 +20026,49 @@
 	pixel_y = 24;
 	start_charge = 0
 	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
+"rSX" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/bedsheet/blue{
+	layer = 3.1
+	},
+/obj/item/clothing/mask/balaclava{
+	layer = 3.6;
+	pixel_x = 4;
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_r)
 "rTu" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/handcuffs,
@@ -18440,8 +20138,9 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 5
 	},
+/obj/structure/machinery/sleeper,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/medical/treatment)
 "rXf" = (
@@ -18470,6 +20169,13 @@
 	},
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves/open)
+"rZA" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/wooden,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/central)
 "rZS" = (
 /obj/structure/machinery/light,
 /obj/structure/flora/pottedplant{
@@ -18534,12 +20240,20 @@
 	},
 /area/ice_colony/underground/requesition/lobby)
 "sbX" = (
-/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
+	},
 /turf/open/floor/shiva{
-	dir = 5;
-	icon_state = "wred"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
+"scD" = (
+/obj/structure/bed/chair{
+	icon_state = "chair_alt"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "scL" = (
 /turf/open/gm/coast{
 	dir = 1
@@ -18555,20 +20269,17 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "sdi" = (
-/obj/structure/machinery/sleep_console,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 1;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "sdz" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/reception/checkpoint_north)
 "sdS" = (
-/obj/structure/window/reinforced/tinted/frosted{
-	dir = 4
-	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "sdZ" = (
@@ -18593,8 +20304,8 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "snow_mat"
 	},
 /area/ice_colony/underground/medical/hallway)
 "sfs" = (
@@ -18616,7 +20327,7 @@
 /turf/open/floor/plating,
 /area/ice_colony/underground/command/pv1)
 "sfM" = (
-/obj/structure/closet/radiation,
+/obj/structure/barricade/handrail/wire,
 /turf/open/floor/shiva{
 	dir = 8;
 	icon_state = "yellow"
@@ -18626,23 +20337,31 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/ice_colony/underground/crew/leisure)
 "sgy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 2.991
+	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/medical/treatment)
 "sgz" = (
-/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 1
 	},
-/turf/open/floor/carpet,
+/turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "sgK" = (
 /obj/structure/closet/crate,
@@ -18681,18 +20400,6 @@
 	icon_state = "purple"
 	},
 /area/ice_colony/underground/research)
-"shV" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "green"
-	},
-/area/ice_colony/underground/hallway/south_east)
 "sia" = (
 /obj/structure/machinery/firealarm{
 	dir = 1;
@@ -18717,7 +20424,7 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "sjR" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/reagent_container/spray/cleaner{
 	pixel_x = -5;
 	pixel_y = 3
@@ -18734,8 +20441,18 @@
 	dir = 1;
 	tag = "icon-tube1 (NORTH)"
 	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
+"slG" = (
+/obj/structure/machinery/vending/snack,
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "smx" = (
 /obj/structure/stairs/perspective{
 	color = "#6b675e";
@@ -18793,6 +20510,15 @@
 	color = "#dae3e2"
 	},
 /area/space)
+"spd" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "snow_mat"
+	},
+/area/ice_colony/underground/medical/hallway)
 "spq" = (
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
@@ -18847,10 +20573,11 @@
 	},
 /area/shuttle/elevator2/underground)
 "srX" = (
-/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/surface/rack,
+/obj/item/storage/pouch/tools/full,
 /turf/open/floor/shiva{
-	dir = 6;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/treatment)
 "ssg" = (
@@ -18868,6 +20595,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/engineering)
+"ssh" = (
+/obj/structure/prop/turbine_extras/left,
+/obj/item/tool/crowbar,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/requesition)
 "ssv" = (
 /obj/effect/landmark/hunter_secondary,
 /obj/structure/machinery/landinglight/ds2/delaythree{
@@ -18953,11 +20687,9 @@
 /turf/open/floor/interior/plastic,
 /area/ice_colony/exterior/underground/caves/open)
 "syL" = (
-/obj/structure/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
 	},
-/turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "syM" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -19029,6 +20761,10 @@
 	icon_state = "purplefull"
 	},
 /area/ice_colony/underground/research/work)
+"sBu" = (
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/dorm_r)
 "sCk" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment{
@@ -19129,7 +20865,21 @@
 	},
 /area/ice_colony/underground/requesition/sec_storage)
 "sEG" = (
-/obj/structure/pipes/vents/pump,
+/obj/structure/surface/table/woodentable,
+/obj/item/ashtray/plastic,
+/obj/item/trash/cigbutt/ucigbutt{
+	pixel_x = 5;
+	pixel_y = 12
+	},
+/obj/item/trash/cigbutt/ucigbutt,
+/obj/item/trash/cigbutt/cigarbutt{
+	pixel_x = 5;
+	pixel_y = 11
+	},
+/obj/item/reagent_container/food/drinks/cans/souto/diet/cranberry{
+	pixel_x = -9;
+	pixel_y = 5
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "sFH" = (
@@ -19168,8 +20918,13 @@
 	},
 /area/ice_colony/underground/hangar)
 "sIf" = (
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
 /turf/open/floor/shiva{
-	icon_state = "redfull"
+	dir = 1;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/hallway)
 "sIg" = (
@@ -19194,6 +20949,27 @@
 	icon_state = "desert1"
 	},
 /area/ice_colony/underground/hangar)
+"sJq" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
 "sJr" = (
 /obj/structure/surface/table/holotable,
 /obj/item/device/reagent_scanner{
@@ -19358,6 +21134,10 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/item/trash/uscm_mre{
+	pixel_x = -10;
+	pixel_y = -7
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "sSm" = (
@@ -19424,6 +21204,12 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves)
+"sWp" = (
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/hallway)
 "sWs" = (
 /obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/plating/icefloor{
@@ -19546,6 +21332,15 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/storage)
+"tex" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/personal/patient,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "teT" = (
 /obj/structure/largecrate/random/case/small,
 /turf/open/shuttle/elevator/grating,
@@ -19562,13 +21357,18 @@
 /area/ice_colony/underground/hallway/north_west)
 "tgk" = (
 /obj/structure/filingcabinet{
-	pixel_x = 8;
-	pixel_y = 4
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
 	},
 /obj/structure/filingcabinet{
-	pixel_x = -8;
-	pixel_y = 4
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
 	},
+/obj/item/limb/foot/l_foot,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
 "tgE" = (
@@ -19580,6 +21380,16 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/shiva,
 /area/ice_colony/underground/storage)
+"thY" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/closet/crate/trashcart,
+/obj/item/stack/sheet/mineral/plastic{
+	amount = 3
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "tju" = (
 /obj/structure/fence,
 /obj/effect/decal/warning_stripes{
@@ -19592,12 +21402,18 @@
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves/open)
 "tjF" = (
-/obj/structure/curtain/medical,
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/treatment)
+"tjO" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/bed/stool{
+	icon_state = "stool_alt"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "tjS" = (
 /turf/open/floor/shiva{
 	dir = 8;
@@ -19681,6 +21497,14 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves/dig)
+"toU" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/turf/open/gm/dirt{
+	icon_state = "desert_dug"
+	},
+/area/ice_colony/underground/maintenance/south)
 "tpB" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/device/autopsy_scanner{
@@ -19736,7 +21560,8 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "tqR" = (
@@ -19748,6 +21573,34 @@
 	icon_state = "wred"
 	},
 /area/ice_colony/underground/medical/storage)
+"trC" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/item/prop/helmetgarb/rosary{
+	layer = 3.6;
+	pixel_x = -12
+	},
+/obj/item/bedsheet/hos{
+	layer = 3.1
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
 "tsN" = (
 /obj/structure/prop/ice_colony/dense/planter_box/hydro{
 	density = 0
@@ -19784,7 +21637,11 @@
 	},
 /area/ice_colony/underground/hallway/south_east)
 "tvI" = (
-/obj/structure/window/framed/colony/reinforced,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/condiment/peppermill{
+	pixel_x = -9;
+	pixel_y = 5
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "twm" = (
@@ -19826,6 +21683,21 @@
 	icon_state = "greencorners"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"tyT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/personal/patient,
+/obj/structure/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 4
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "tzm" = (
 /turf/open/floor{
 	dir = 8;
@@ -19883,8 +21755,7 @@
 	},
 /obj/structure/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/shiva{
-	dir = 5;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "tDK" = (
@@ -19904,6 +21775,15 @@
 	icon_state = "desert2"
 	},
 /area/ice_colony/exterior/underground/caves/open)
+"tEf" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 4
+	},
+/turf/open/floor{
+	icon_state = "asteroidwarning";
+	tag = "icon-asteroidwarning (WEST)"
+	},
+/area/space)
 "tEH" = (
 /obj/structure/prop/fishing/pole_interactive{
 	dir = 4
@@ -19937,8 +21817,8 @@
 	dir = 1
 	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	dir = 4;
+	icon_state = "snow_mat"
 	},
 /area/ice_colony/underground/medical/hallway)
 "tGV" = (
@@ -19979,10 +21859,13 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/security/brig)
 "tJT" = (
-/obj/structure/machinery/vending/snack,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green{
+	pixel_y = 7
+	},
 /turf/open/floor/shiva{
-	dir = 9;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "tKr" = (
@@ -20020,8 +21903,59 @@
 	icon_state = "purplefull"
 	},
 /area/ice_colony/underground/research/work)
-"tNT" = (
+"tMY" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/item/clothing/suit/suspenders,
 /turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
+"tNE" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8
+	},
+/obj/structure/machinery/light{
+	dir = 8;
+	tag = "icon-tube1 (WEST)"
+	},
+/obj/effect/decal/strata_decals/grime/grime3{
+	dir = 4
+	},
+/obj/item/tool/pen/clicky{
+	pixel_x = 7;
+	pixel_y = 3
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
+"tNT" = (
+/obj/effect/spawner/random/tool,
+/turf/open/floor/carpet,
 /area/ice_colony/underground/command/pv1)
 "tOp" = (
 /obj/structure/flora/pottedplant{
@@ -20067,7 +22001,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "tPS" = (
@@ -20095,6 +22029,16 @@
 	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/or)
+"tQI" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/ammo_casing{
+	dir = 8;
+	icon_state = "cartridge_2"
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_r)
 "tQT" = (
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
@@ -20118,6 +22062,14 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/hangar)
+"tSg" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "tSQ" = (
 /obj/effect/landmark/xeno_spawn,
 /obj/effect/alien/weeds/node,
@@ -20219,7 +22171,6 @@
 	},
 /area/ice_colony/underground/research/sample)
 "tXE" = (
-/obj/structure/coatrack,
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv1)
 "tXF" = (
@@ -20240,6 +22191,11 @@
 	},
 /turf/open/floor/plating,
 /area/ice_colony/exterior/underground/caves/open)
+"tYg" = (
+/turf/open/floor/shiva{
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/treatment)
 "tYP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -20269,17 +22225,10 @@
 	},
 /area/ice_colony/underground/hangar)
 "tZE" = (
-/obj/structure/surface/table/reinforced/prison,
-/obj/structure/machinery/reagentgrinder{
-	pixel_y = 7
-	},
-/obj/item/stack/sheet/mineral/phoron,
-/obj/item/stack/sheet/mineral/phoron,
-/obj/item/stack/sheet/mineral/phoron,
-/obj/item/stack/sheet/mineral/phoron,
+/obj/structure/machinery/chem_master,
 /turf/open/floor/shiva{
-	dir = 4;
-	icon_state = "wred"
+	dir = 5;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "uaU" = (
@@ -20376,6 +22325,12 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/ice_colony/underground/requesition/lobby)
+"ueg" = (
+/obj/vehicle/train/cargo/trolley,
+/turf/open/floor/shiva{
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "ueP" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 9
@@ -20587,6 +22542,9 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/hallway/north_west)
+"umT" = (
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "unh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -20597,6 +22555,13 @@
 	tag = "icon-darkred2 (NORTH)"
 	},
 /area/ice_colony/underground/security)
+"unm" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "uoO" = (
 /obj/structure/pipes/vents/pump,
 /turf/open/floor{
@@ -20673,9 +22638,19 @@
 /obj/structure/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/shiva{
-	icon_state = "green"
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = -8;
+	pixel_y = 11
 	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/turf/open/floor/wood,
 /area/ice_colony/underground/hallway/south_east)
 "uuv" = (
 /obj/structure/machinery/power/apc{
@@ -20728,6 +22703,15 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/crew/canteen)
+"uvV" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/closet/crate/ammo/alt,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/requesition)
 "uvX" = (
 /obj/structure/machinery/power/apc{
 	pixel_y = -24;
@@ -20811,8 +22795,7 @@
 "uzg" = (
 /obj/structure/machinery/light,
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "yellow"
+	icon_state = "floor3"
 	},
 /area/ice_colony/underground/hallway/south_east)
 "uzr" = (
@@ -20831,6 +22814,13 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/engineering)
+"uzP" = (
+/obj/structure/surface/table/reinforced/prison{
+	dir = 1;
+	flipped = 1
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "uBX" = (
 /obj/vehicle/train/cargo/engine,
 /turf/open/floor/shiva{
@@ -20849,6 +22839,11 @@
 "uCe" = (
 /turf/open/floor/prison/chapel_carpet,
 /area/ice_colony/underground/crew/chapel)
+"uCJ" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/device/flashlight/lamp/green,
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "uDw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -20867,6 +22862,14 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/requesition/lobby)
+"uEc" = (
+/obj/structure/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/security)
 "uEx" = (
 /obj/structure/platform/kutjevo/smooth{
 	dir = 1
@@ -20988,10 +22991,41 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/crew/disposals)
+"uIj" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/item/ammo_magazine/handful/shotgun/incendiary{
+	unacidable = 1
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
 "uIl" = (
 /obj/structure/machinery/alarm{
 	dir = 4;
 	pixel_x = -24
+	},
+/obj/structure/filingcabinet{
+	pixel_x = -8;
+	pixel_y = 4
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/command/pv2)
@@ -21029,6 +23063,17 @@
 /obj/item/clothing/mask/rebreather,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/hangar)
+"uLP" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/caphat{
+	pixel_x = 2;
+	pixel_y = 9
+	},
+/obj/item/clothing/head/cmcap,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "uLY" = (
 /turf/open/floor/shiva{
 	dir = 8;
@@ -21103,7 +23148,7 @@
 	},
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "uOb" = (
@@ -21160,6 +23205,14 @@
 	icon_state = "green"
 	},
 /area/ice_colony/underground/crew/bball)
+"uQJ" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/disposalpipe/segment,
+/obj/item/stack/sheet/metal,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "uQK" = (
 /turf/open/floor/shiva{
 	icon_state = "yellow"
@@ -21216,8 +23269,7 @@
 	tag = "icon-map (NORTH)"
 	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "uUl" = (
@@ -21235,12 +23287,15 @@
 	},
 /area/ice_colony/underground/maintenance/south)
 "uUF" = (
-/obj/structure/surface/table,
-/obj/item/tool/wrench,
-/obj/item/paper/research_notes,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/structure/surface/table/reinforced/almayer_B,
+/obj/item/device/defibrillator{
+	pixel_y = 5
+	},
 /turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "wred"
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "uUS" = (
@@ -21284,6 +23339,14 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/research)
+"uVu" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c";
+	tag = "icon-pipe-c (NORTH)"
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "uVV" = (
 /obj/structure/machinery/light{
 	dir = 8
@@ -21348,12 +23411,11 @@
 	},
 /area/ice_colony/underground/crew/canteen)
 "uYL" = (
-/obj/structure/machinery/alarm{
-	pixel_y = 24
+/obj/item/stack/tile/plasteel{
+	pixel_x = 8;
+	pixel_y = 6
 	},
-/turf/open/floor/shiva{
-	icon_state = "green"
-	},
+/turf/open/floor/wood,
 /area/ice_colony/underground/hallway/south_east)
 "uZa" = (
 /obj/structure/machinery/light{
@@ -21477,6 +23539,9 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/ice_colony/underground/hallway/south_east)
+"veZ" = (
+/turf/open/floor/plating,
+/area/ice_colony/underground/hallway/south_east)
 "vfg" = (
 /obj/effect/decal/warning_stripes/asteroid{
 	dir = 1;
@@ -21525,9 +23590,13 @@
 /obj/structure/pipes/vents/pump{
 	dir = 4
 	},
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
 /turf/open/floor/shiva{
-	dir = 1;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "vhw" = (
@@ -21634,6 +23703,23 @@
 /obj/structure/flora/bush/ausbushes/var3/sparsegrass,
 /turf/open/gm/dirt,
 /area/ice_colony/underground/hangar)
+"vmy" = (
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
+	},
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/platform/kutjevo/smooth,
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/exterior/underground/caves)
 "vnb" = (
 /obj/structure/bed/chair/hunter,
 /turf/open/floor/corsat{
@@ -21717,16 +23803,17 @@
 "vrh" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "vrj" = (
-/obj/structure/machinery/power/apc{
-	dir = 8;
-	pixel_x = -24;
-	start_charge = 0
+/obj/structure/surface/table/reinforced/prison,
+/obj/structure/machinery/chem_dispenser/soda{
+	pixel_y = 7
 	},
-/turf/open/floor/wood,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/ice_colony/underground/crew/leisure)
 "vrp" = (
 /obj/structure/prop/rock/brown,
@@ -21803,6 +23890,19 @@
 	},
 /turf/open/space/basic,
 /area/ice_colony/underground/hangar)
+"vuE" = (
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/item/stack/tile/plasteel{
+	pixel_x = 4;
+	pixel_y = -6
+	},
+/turf/open/floor/carpet,
+/area/ice_colony/underground/hallway/south_east)
 "vvh" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -21864,14 +23964,15 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "vxM" = (
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/surface/table/reinforced/prison,
+/obj/structure/closet/radiation,
+/obj/structure/barricade/handrail/wire,
 /turf/open/floor/shiva{
 	icon_state = "yellow"
 	},
@@ -21900,6 +24001,12 @@
 	tag = "icon-darkred2 (NORTHEAST)"
 	},
 /area/ice_colony/underground/security/interrogation)
+"vzH" = (
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
 "vzN" = (
 /obj/structure/bed/chair/office/dark,
 /obj/structure/disposalpipe/segment,
@@ -21908,6 +24015,22 @@
 	icon_state = "yellowfull"
 	},
 /area/ice_colony/underground/requesition/lobby)
+"vzX" = (
+/obj/structure/coatrack{
+	pixel_x = 14;
+	pixel_y = 9
+	},
+/obj/item/clothing/head/bowlerhat{
+	pixel_x = 12;
+	pixel_y = 23
+	},
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_x = 9;
+	pixel_y = -4
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/command/pv1)
 "vzY" = (
 /obj/structure/sink{
 	pixel_y = 15
@@ -22006,7 +24129,10 @@
 /area/ice_colony/underground/hallway/north_west)
 "vDC" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
-/turf/open/floor/carpet,
+/obj/effect/decal/cleanable/blood/oil,
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/leisure)
 "vEa" = (
 /turf/open/floor{
@@ -22023,11 +24149,12 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "vFs" = (
-/obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/shiva{
-	icon_state = "blue"
+/obj/structure/surface/rack,
+/obj/item/tool/weldpack,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
 	},
-/area/ice_colony/underground/hallway/south_east)
+/area/ice_colony/exterior/underground/caves)
 "vFu" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/structure/disposalpipe/segment,
@@ -22123,6 +24250,16 @@
 	dir = 4
 	},
 /area/space)
+"vMU" = (
+/obj/structure/surface/rack,
+/obj/effect/spawner/random/tool,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/central)
+"vNu" = (
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/dorm_l)
 "vNG" = (
 /obj/structure/machinery/photocopier,
 /obj/structure/machinery/computer/security/telescreen/entertainment{
@@ -22195,6 +24332,12 @@
 	icon_state = "floor3"
 	},
 /area/ice_colony/underground/crew/canteen)
+"vPK" = (
+/obj/item/ammo_casing{
+	icon_state = "casing_8"
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "vPY" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/device/flashlight/lamp/candelabra{
@@ -22269,11 +24412,21 @@
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/research)
 "vSh" = (
-/obj/structure/surface/table,
+/obj/structure/bed/chair{
+	dir = 8;
+	icon_state = "chair_alt"
+	},
 /turf/open/floor/shiva{
+	dir = 8;
 	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
+"vSP" = (
+/obj/structure/machinery/bodyscanner,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/treatment)
 "vSY" = (
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
@@ -22315,7 +24468,7 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "vUE" = (
@@ -22343,13 +24496,18 @@
 	},
 /area/ice_colony/underground/hangar)
 "vUZ" = (
-/obj/structure/bed/chair/wood/normal{
+/obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
 	},
-/obj/effect/landmark/corpsespawner/engineer,
-/obj/effect/decal/cleanable/blood,
-/turf/open/floor/carpet,
-/area/ice_colony/underground/crew/leisure)
+/obj/structure/closet/crate/miningcar{
+	layer = 3.1;
+	name = "\improper materials storage bin";
+	pixel_y = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/space)
 "vVy" = (
 /obj/structure/machinery/shower{
 	dir = 1
@@ -22409,11 +24567,18 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/shiva{
-	dir = 8;
-	icon_state = "red"
-	},
+/turf/open/floor/wood,
 /area/ice_colony/underground/hallway/south_east)
+"vZs" = (
+/obj/structure/bed/chair{
+	buckling_y = 18;
+	dir = 8;
+	icon_state = "chair_alt";
+	pixel_x = -5;
+	pixel_y = 12
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "vZv" = (
 /obj/structure/toilet,
 /obj/structure/machinery/light/small{
@@ -22452,6 +24617,10 @@
 	tag = "icon-warnplate (EAST)"
 	},
 /area/ice_colony/underground/hangar)
+"wba" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/wood,
+/area/ice_colony/underground/hallway/south_east)
 "wbk" = (
 /obj/structure/reagent_dispensers/water_cooler/stacks{
 	density = 0;
@@ -22528,6 +24697,10 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/hangar)
+"wdA" = (
+/obj/effect/decal/strata_decals/grime/grime2,
+/turf/open/floor/carpet,
+/area/ice_colony/underground/crew/dorm_l)
 "wdX" = (
 /obj/structure/machinery/power/apc{
 	dir = 4;
@@ -22547,8 +24720,12 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "wfy" = (
-/obj/structure/bed,
-/turf/open/floor/wood,
+/obj/structure/bedsheetbin{
+	icon_state = "linenbin-empty"
+	},
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
 /area/ice_colony/underground/crew/dorm_l)
 "wfT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -22563,6 +24740,12 @@
 /obj/item/device/motiondetector/hacked,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/hangar)
+"wgM" = (
+/obj/structure/closet/crate/ammo/alt/flame,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/requesition)
 "wgT" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -22639,7 +24822,31 @@
 	},
 /area/ice_colony/underground/reception)
 "wkM" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = -2;
+	pixel_y = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 3.3;
+	pixel_y = 4
+	},
+/obj/structure/bed{
+	can_buckle = 0
+	},
+/obj/structure/bed{
+	buckling_y = 13;
+	layer = 3.5;
+	pixel_y = 13
+	},
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/structure/barricade/handrail/wire{
+	layer = 3.1
+	},
+/obj/item/bedsheet/hos{
+	pixel_y = 13
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "wlq" = (
@@ -22715,8 +24922,7 @@
 /area/ice_colony/underground/crew/canteen)
 "wnK" = (
 /turf/open/floor/shiva{
-	dir = 10;
-	icon_state = "wred"
+	icon_state = "wredfull"
 	},
 /area/ice_colony/underground/medical/lobby)
 "wot" = (
@@ -22737,6 +24943,10 @@
 	dir = 8;
 	icon_state = "yellowfull"
 	},
+/area/ice_colony/underground/hallway/south_east)
+"woF" = (
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/carpet,
 /area/ice_colony/underground/hallway/south_east)
 "woI" = (
 /obj/structure/pipes/standard/simple/hidden/green{
@@ -22769,12 +24979,20 @@
 	},
 /area/ice_colony/underground/security/hallway)
 "wpm" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 4
-	},
 /obj/structure/pipes/standard/simple/hidden/green,
-/turf/open/floor/carpet,
+/obj/structure/bed/stool{
+	icon_state = "stool_alt"
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/leisure)
+"wpr" = (
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/treatment)
 "wpG" = (
 /obj/effect/landmark/monkey_spawn,
 /obj/effect/alien/weeds/node,
@@ -22794,7 +25012,9 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/maintenance/engineering)
 "wqc" = (
-/obj/structure/prop/invuln/minecart_tracks,
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 1
+	},
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -22819,6 +25039,11 @@
 	tag = "icon-dark2"
 	},
 /area/ice_colony/underground/security/interrogation)
+"wrB" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/obj/item/stack/cable_coil/cut,
+/turf/open/floor/plating,
+/area/ice_colony/underground/hallway/south_east)
 "wrC" = (
 /obj/structure/prop/invuln/minecart_tracks{
 	dir = 8
@@ -22953,6 +25178,12 @@
 	icon_state = "blue"
 	},
 /area/ice_colony/underground/command/checkpoint)
+"wwk" = (
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "snow_mat"
+	},
+/area/ice_colony/underground/medical/hallway)
 "wxu" = (
 /obj/structure/bed/chair,
 /turf/open/floor{
@@ -23135,6 +25366,27 @@
 	},
 /turf/open/floor/shiva,
 /area/ice_colony/underground/crew/disposals)
+"wLv" = (
+/obj/item/weapon/gun/rifle/m41a,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/crew/dorm_r)
+"wLF" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/reagent_container/food/drinks/shaker{
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/obj/item/reagent_container/food/drinks/drinkingglass{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/leisure)
 "wLN" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva{
@@ -23155,7 +25407,7 @@
 	},
 /area/ice_colony/landing/console)
 "wMx" = (
-/obj/structure/surface/table,
+/obj/structure/surface/table/reinforced/prison,
 /obj/item/stack/nanopaste,
 /turf/open/floor/shiva{
 	icon_state = "redfull"
@@ -23240,7 +25492,7 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "wRi" = (
@@ -23266,6 +25518,15 @@
 "wSx" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/crew/lavatory)
+"wSX" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 8
+	},
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "yellow"
+	},
+/area/ice_colony/underground/requesition)
 "wTq" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 8
@@ -23296,12 +25557,20 @@
 "wVa" = (
 /obj/structure/pipes/standard/manifold/hidden/green,
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 8;
+	icon_state = "red"
 	},
 /area/ice_colony/underground/medical/treatment)
 "wVf" = (
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/security/marshal)
+"wVD" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "redfull"
+	},
+/area/ice_colony/underground/medical/hallway)
 "wVE" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -23419,11 +25688,18 @@
 /turf/open/gm/river,
 /area/space)
 "xdz" = (
-/obj/structure/surface/table/gamblingtable,
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
 	},
-/turf/open/floor/carpet,
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
 /area/ice_colony/underground/crew/leisure)
 "xdJ" = (
 /obj/structure/closet/emcloset,
@@ -23465,6 +25741,12 @@
 	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
+"xff" = (
+/obj/structure/largecrate/random,
+/turf/open/floor/shiva{
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "xfD" = (
 /obj/structure/platform_decoration/kutjevo{
 	dir = 4
@@ -23480,6 +25762,16 @@
 	icon_state = "beachcorner2"
 	},
 /area/ice_colony/exterior/underground/caves)
+"xgU" = (
+/obj/structure/prop/structure_lattice{
+	dir = 1;
+	health = 300
+	},
+/obj/structure/blocker/forcefield/vehicles,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/crew/leisure)
 "xgW" = (
 /obj/structure/surface/table/reinforced/prison,
 /obj/item/paper_bin{
@@ -23849,6 +26141,24 @@
 	icon_state = "desert0"
 	},
 /area/ice_colony/underground/maintenance/south)
+"xxo" = (
+/obj/structure/surface/rack,
+/obj/item/clothing/head/hardhat{
+	pixel_x = 3;
+	pixel_y = 1
+	},
+/obj/item/clothing/head/hardhat/red{
+	pixel_x = -2;
+	pixel_y = 9
+	},
+/obj/item/clothing/head/hardhat/white{
+	pixel_x = 2;
+	pixel_y = 17
+	},
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/dorm_l)
 "xxr" = (
 /obj/structure/platform/kutjevo/smooth,
 /obj/structure/prop/invuln/minecart_tracks{
@@ -23928,6 +26238,16 @@
 /obj/structure/machinery/portable_atmospherics/hydroponics,
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves)
+"xAD" = (
+/obj/structure/surface/table/reinforced/prison{
+	dir = 8;
+	flipped = 1
+	},
+/turf/open/floor/shiva{
+	dir = 6;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "xAK" = (
 /turf/open/floor/shiva{
 	dir = 4;
@@ -24022,10 +26342,14 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	dir = 6;
-	icon_state = "wred"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/lobby)
+"xGp" = (
+/turf/open/floor/wood{
+	icon_state = "wood-broken6"
+	},
+/area/ice_colony/underground/hallway/south_east)
 "xGJ" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/carpet,
@@ -24064,6 +26388,22 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/security)
+"xKq" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/paper_bin{
+	pixel_x = 2;
+	pixel_y = 8
+	},
+/obj/item/reagent_container/food/condiment/saltshaker{
+	pixel_x = -9;
+	pixel_y = 7
+	},
+/obj/item/tool/kitchen/utensil/pknife{
+	pixel_x = 12;
+	pixel_y = 7
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/leisure)
 "xKv" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "E-corner";
@@ -24096,14 +26436,12 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/obj/structure/surface/table,
-/obj/structure/machinery/microwave{
-	pixel_x = 3;
-	pixel_y = 9
+/obj/structure/flora/pottedplant{
+	icon_state = "pottedplant_22";
+	pixel_y = 8
 	},
 /turf/open/floor/shiva{
-	dir = 9;
-	icon_state = "wred"
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "xKL" = (
@@ -24136,8 +26474,8 @@
 "xLN" = (
 /obj/structure/machinery/vending/coffee,
 /turf/open/floor/shiva{
-	dir = 10;
-	icon_state = "wred"
+	dir = 8;
+	icon_state = "redfull"
 	},
 /area/ice_colony/underground/medical/hallway)
 "xMq" = (
@@ -24262,6 +26600,7 @@
 	start_charge = 0
 	},
 /obj/structure/closet/secure_closet/security,
+/obj/effect/spawner/random/supply_kit,
 /turf/open/floor/shiva{
 	dir = 10;
 	icon_state = "red"
@@ -24272,7 +26611,8 @@
 	dir = 4
 	},
 /turf/open/floor/shiva{
-	icon_state = "wredfull"
+	dir = 6;
+	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/medical/treatment)
 "xUq" = (
@@ -24331,10 +26671,9 @@
 /turf/open/gm/dirt,
 /area/ice_colony/exterior/underground/caves)
 "xWL" = (
-/obj/structure/bed/chair/wood/normal{
-	dir = 4
+/turf/open/floor/shiva{
+	icon_state = "multi_tiles"
 	},
-/turf/open/floor/wood,
 /area/ice_colony/underground/crew/leisure)
 "xWY" = (
 /turf/open/floor/shiva{
@@ -24425,6 +26764,12 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/requesition/lobby)
+"yaf" = (
+/obj/structure/pipes/standard/simple/hidden/green,
+/turf/open/floor/shiva{
+	icon_state = "red"
+	},
+/area/ice_colony/underground/medical/hallway)
 "yaC" = (
 /obj/structure/machinery/door/airlock/strata/autoname{
 	locked = 1;
@@ -24556,6 +26901,14 @@
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/maintenance/security)
+"yeG" = (
+/obj/structure/surface/table/reinforced/prison,
+/obj/item/frame/camera,
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "multi_tiles"
+	},
+/area/ice_colony/underground/crew/leisure)
 "yeJ" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -24645,6 +26998,27 @@
 /obj/structure/pipes/standard/simple/hidden/green,
 /turf/open/floor/plating,
 /area/ice_colony/underground/storage)
+"yhy" = (
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8;
+	pixel_y = 11
+	},
+/obj/structure/filingcabinet{
+	density = 0;
+	icon_state = "chestdrawer";
+	pixel_x = 8
+	},
+/obj/structure/machinery/light{
+	dir = 4
+	},
+/obj/item/newspaper{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/wood,
+/area/ice_colony/underground/crew/dorm_l)
 "yil" = (
 /turf/open/gm/dirt,
 /area/ice_colony/underground/maintenance/central/construction)
@@ -25045,67 +27419,67 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (3,1,1) = {"
@@ -25227,67 +27601,67 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (4,1,1) = {"
@@ -25409,67 +27783,67 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (5,1,1) = {"
@@ -25591,67 +27965,67 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (6,1,1) = {"
@@ -25773,67 +28147,67 @@ vYW
 vrp
 dkn
 dkn
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (7,1,1) = {"
@@ -25964,58 +28338,58 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (8,1,1) = {"
@@ -26146,58 +28520,58 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (9,1,1) = {"
@@ -26328,58 +28702,58 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (10,1,1) = {"
@@ -26510,58 +28884,58 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (11,1,1) = {"
@@ -26638,13 +29012,13 @@ dkn
 dkn
 vYW
 vYW
-vYW
+rnf
 xbc
 vYW
 vYW
 vYW
 vYW
-vYW
+kev
 vYW
 vYW
 vYW
@@ -26692,58 +29066,58 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (12,1,1) = {"
@@ -26827,7 +29201,7 @@ vYW
 vYW
 vYW
 vYW
-vYW
+rnf
 vYW
 vYW
 aWE
@@ -26874,58 +29248,58 @@ dkn
 dkn
 dkn
 dkn
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (13,1,1) = {"
@@ -27004,7 +29378,7 @@ vrp
 vYW
 vYW
 vYW
-vYW
+kev
 vYW
 vYW
 dkn
@@ -27061,53 +29435,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (14,1,1) = {"
@@ -27243,53 +29617,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (15,1,1) = {"
@@ -27425,53 +29799,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (16,1,1) = {"
@@ -27607,53 +29981,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (17,1,1) = {"
@@ -27789,53 +30163,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (18,1,1) = {"
@@ -27971,53 +30345,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (19,1,1) = {"
@@ -28153,53 +30527,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (20,1,1) = {"
@@ -28335,53 +30709,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (21,1,1) = {"
@@ -28517,53 +30891,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (22,1,1) = {"
@@ -28699,53 +31073,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (23,1,1) = {"
@@ -28881,53 +31255,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (24,1,1) = {"
@@ -29063,53 +31437,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (25,1,1) = {"
@@ -29185,7 +31559,7 @@ rHU
 dkn
 dkn
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -29245,53 +31619,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (26,1,1) = {"
@@ -29366,7 +31740,7 @@ qMY
 rHU
 dkn
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -29427,53 +31801,53 @@ dkn
 dkn
 dkn
 dkn
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (27,1,1) = {"
@@ -29622,40 +31996,40 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (28,1,1) = {"
@@ -29748,7 +32122,7 @@ vYW
 vYW
 vYW
 vYW
-cLO
+hto
 cLO
 dkn
 dkn
@@ -29804,40 +32178,40 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (29,1,1) = {"
@@ -29876,12 +32250,12 @@ pGs
 dkn
 dkn
 dkn
-dkn
-dkn
-dkn
-dkn
-dkn
-dkn
+rpu
+rpu
+rpu
+rpu
+rpu
+rpu
 dkn
 dkn
 dkn
@@ -29986,40 +32360,40 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (30,1,1) = {"
@@ -30057,13 +32431,13 @@ pGs
 pGs
 dkn
 dkn
-dkn
-dkn
-dkn
-dkn
-dkn
-dkn
 rpu
+rpu
+eyt
+eyt
+eyt
+eyt
+eyt
 eyt
 eyt
 eyt
@@ -30116,7 +32490,7 @@ vYW
 vYW
 vYW
 ebr
-cLO
+hto
 rHU
 qMY
 efw
@@ -30168,40 +32542,40 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (31,1,1) = {"
@@ -30240,12 +32614,12 @@ pGs
 dkn
 dkn
 rpu
-rpu
-rpu
-rpu
-rpu
-rpu
-rpu
+eyt
+eyt
+iqv
+vFs
+iqv
+eyt
 rKs
 uqp
 uqp
@@ -30308,7 +32682,7 @@ dkn
 dkn
 dkn
 vrp
-vrp
+aWE
 dkn
 dkn
 dkn
@@ -30350,40 +32724,40 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (32,1,1) = {"
@@ -30423,11 +32797,11 @@ dkn
 dkn
 rpu
 eyt
-eyt
-eyt
-eyt
-eyt
-eyt
+cvy
+lMB
+lMB
+lMB
+lMB
 rKs
 akd
 eBL
@@ -30456,7 +32830,7 @@ ykc
 qDh
 vvh
 rHU
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -30467,7 +32841,7 @@ gHJ
 vYW
 gHJ
 vrp
-vrp
+aWE
 dkn
 dkn
 vYW
@@ -30532,40 +32906,40 @@ dkn
 dkn
 dkn
 dkn
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (33,1,1) = {"
@@ -30606,9 +32980,9 @@ dkn
 rpu
 eyt
 cvy
-lMB
-lMB
-lMB
+tQT
+tQT
+fQW
 lMB
 rKs
 dro
@@ -30649,7 +33023,7 @@ vYW
 qgm
 vYW
 vYW
-vrp
+aWE
 vrp
 vYW
 vYW
@@ -30721,33 +33095,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (34,1,1) = {"
@@ -30787,10 +33161,10 @@ dkn
 dkn
 rpu
 eyt
-cvy
-lMB
-lMB
-lMB
+fau
+tQT
+tQT
+rMM
 oCB
 pHn
 eBL
@@ -30903,33 +33277,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (35,1,1) = {"
@@ -30970,9 +33344,9 @@ rpu
 rpu
 ebE
 ihF
-hQY
-hQY
-hQY
+jqE
+jqE
+ssh
 hQY
 rKs
 vjv
@@ -31085,33 +33459,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (36,1,1) = {"
@@ -31155,7 +33529,7 @@ fmD
 jdc
 jdc
 jdc
-jdc
+plg
 rKs
 uqp
 uqp
@@ -31167,7 +33541,7 @@ uqp
 suC
 oJB
 cPI
-mWi
+gTr
 mWi
 mWi
 fWi
@@ -31188,7 +33562,7 @@ tng
 dkn
 dkn
 vrp
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -31205,7 +33579,7 @@ vYW
 vYW
 dkn
 dkn
-vrp
+aWE
 vrp
 vYW
 vYW
@@ -31214,7 +33588,7 @@ qMY
 kXQ
 rHU
 vrp
-vrp
+aWE
 vYW
 vYW
 vrp
@@ -31267,33 +33641,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (37,1,1) = {"
@@ -31337,8 +33711,8 @@ oVp
 wqc
 jts
 jdc
-jdc
-ebE
+wjB
+mIL
 isK
 nma
 vxM
@@ -31449,33 +33823,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (38,1,1) = {"
@@ -31515,7 +33889,7 @@ nUv
 eyt
 eyt
 ebE
-fmD
+hwz
 jdc
 wBY
 jdc
@@ -31530,7 +33904,7 @@ oJB
 oJB
 oJB
 oJB
-wgT
+uvV
 mWi
 bWZ
 auN
@@ -31631,33 +34005,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (39,1,1) = {"
@@ -31699,7 +34073,7 @@ rpu
 ebE
 fmD
 jdc
-wBY
+vUZ
 jdc
 wjB
 hCL
@@ -31813,33 +34187,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (40,1,1) = {"
@@ -31881,7 +34255,7 @@ rpu
 ebE
 fmD
 jdc
-wBY
+vUZ
 jdc
 wjB
 hCL
@@ -31995,33 +34369,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (41,1,1) = {"
@@ -32061,7 +34435,7 @@ eyt
 eyt
 eyt
 ebE
-fmD
+hwz
 jdc
 wBY
 jdc
@@ -32177,33 +34551,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (42,1,1) = {"
@@ -32247,10 +34621,10 @@ jGT
 wqc
 jRu
 jdc
-jdc
-ebE
-jqE
-bWZ
+wjB
+mIL
+auN
+mAX
 asj
 auN
 sCJ
@@ -32359,33 +34733,33 @@ vrp
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (43,1,1) = {"
@@ -32429,12 +34803,12 @@ oDS
 qMo
 otL
 qMo
-qMo
-ebE
-fWi
-iqv
+tEf
+wSX
+auN
+auN
 asj
-mWi
+gTr
 sCJ
 auN
 oJB
@@ -32541,33 +34915,33 @@ vrp
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (44,1,1) = {"
@@ -32614,9 +34988,9 @@ ebE
 ebE
 ebE
 uyd
-mWi
+wgM
 asj
-mWi
+gTr
 sCJ
 auN
 oJB
@@ -32723,33 +35097,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (45,1,1) = {"
@@ -32791,12 +35165,12 @@ rpu
 rpu
 rpu
 eyt
-kFM
+vmy
 eyt
 rpu
 iua
 tPI
-auN
+itZ
 asj
 bWZ
 sCJ
@@ -32905,33 +35279,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (46,1,1) = {"
@@ -33087,33 +35461,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (47,1,1) = {"
@@ -33159,7 +35533,7 @@ kFM
 eyt
 rpu
 iua
-fDB
+nPR
 azx
 lDN
 azx
@@ -33269,33 +35643,33 @@ vrp
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (48,1,1) = {"
@@ -33451,33 +35825,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (49,1,1) = {"
@@ -33633,33 +36007,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (50,1,1) = {"
@@ -33754,7 +36128,7 @@ csb
 nMe
 puK
 lmV
-kFT
+iDm
 jHH
 qir
 cFV
@@ -33815,33 +36189,33 @@ vrp
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (51,1,1) = {"
@@ -33997,33 +36371,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (52,1,1) = {"
@@ -34117,8 +36491,8 @@ gLt
 gBi
 xkj
 fym
-seY
-kFT
+spd
+wwk
 jHH
 wNV
 nRT
@@ -34179,33 +36553,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (53,1,1) = {"
@@ -34300,7 +36674,7 @@ fiB
 xfb
 fym
 tGr
-mau
+cBW
 dOk
 kvE
 wLN
@@ -34361,33 +36735,33 @@ dkn
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (54,1,1) = {"
@@ -34414,7 +36788,7 @@ huF
 pGs
 dfs
 lYr
-iSz
+eVW
 lYr
 vpB
 pGs
@@ -34476,13 +36850,13 @@ lKV
 gLt
 gjy
 jgQ
-emZ
-pxx
-emZ
+jgQ
+wnK
+jgQ
 wnK
 fym
-seY
-kFT
+nRW
+fYQ
 jHH
 fJR
 nRT
@@ -34543,33 +36917,33 @@ vYW
 dkn
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (55,1,1) = {"
@@ -34663,8 +37037,8 @@ vUi
 nFp
 aEi
 fym
-seY
-kFT
+spd
+lBf
 jHH
 nkd
 nRT
@@ -34725,33 +37099,33 @@ vYW
 vYW
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (56,1,1) = {"
@@ -34839,14 +37213,14 @@ kba
 wFX
 gLt
 uNy
-lCG
+wnK
 nFp
 vxJ
 nFp
 hMh
 fym
-seY
-kFT
+hyd
+dCI
 jHH
 exH
 nRT
@@ -34907,33 +37281,33 @@ vYW
 vYW
 dkn
 dkn
-hdh
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
-cLP
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (57,1,1) = {"
@@ -35024,12 +37398,12 @@ uNy
 rLC
 aoo
 vxJ
-gDU
+nFp
 xFZ
 biW
 eSg
-kFT
-jHH
+fMq
+iop
 nss
 kxg
 sux
@@ -35089,33 +37463,33 @@ vYW
 vYW
 dkn
 dkn
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
-hdh
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
+pGs
 wUU
 "}
 (58,1,1) = {"
@@ -35201,7 +37575,7 @@ biW
 biW
 naW
 nIw
-fym
+biW
 fym
 fym
 fym
@@ -35210,7 +37584,7 @@ fym
 biW
 biW
 cTr
-kFT
+fiJ
 jHH
 jNS
 vsJ
@@ -35388,11 +37762,11 @@ uTV
 uTV
 uTV
 eoY
-uTV
+sWp
 kMU
-uTV
+fiJ
 nHl
-kFT
+qUQ
 jHH
 jHH
 jHH
@@ -35571,10 +37945,10 @@ mau
 mau
 gNe
 dTC
-dTC
-dTC
+yaf
+wVD
 myj
-pqY
+qUQ
 hgQ
 cbe
 stv
@@ -35612,7 +37986,7 @@ ksX
 ksX
 ksX
 ksX
-dkn
+jpD
 dkn
 dkn
 dkn
@@ -35753,12 +38127,12 @@ bGR
 eIV
 pqY
 sIf
-sIf
+lWh
 vSh
-vSh
+aMp
 igU
 hgQ
-bft
+vMU
 qqA
 qqA
 eBf
@@ -35940,7 +38314,7 @@ shb
 shb
 hgQ
 hgQ
-bft
+vMU
 qqA
 qqA
 tYP
@@ -36114,10 +38488,10 @@ uUF
 hvh
 tqr
 mrP
-iRR
+sdi
 kDH
-iRR
-jSs
+bzq
+sdS
 rwS
 shb
 qBn
@@ -36291,18 +38665,18 @@ bih
 rHv
 shb
 bFj
-bKn
+dQT
 eJI
 hZo
 nJc
 wQd
 sdi
-eJI
-sdi
-eJI
+sdS
+vSP
+sdS
 kbQ
 shb
-bft
+vMU
 aQc
 qqA
 qqA
@@ -36472,16 +38846,16 @@ kuX
 bih
 rHv
 shb
-bFj
-bKn
-eJI
-eJI
+ivg
+sdS
+tYg
+sdS
 xTH
 wQd
-eJI
-eJI
-eJI
-eJI
+sdi
+sdS
+dIT
+sdS
 mxn
 shb
 qqA
@@ -36839,14 +39213,14 @@ shb
 shb
 uTZ
 bVu
-eJI
+sdS
 rcA
-eJI
-eJI
+sdS
+sdi
 wQd
-xTH
-qsB
-kVW
+ipv
+sdS
+rwS
 shb
 ojG
 aQc
@@ -37026,9 +39400,9 @@ acO
 fFs
 tZE
 iZH
-xTH
+kGo
 hHA
-ggv
+hHA
 shb
 qqA
 aQc
@@ -37208,9 +39582,9 @@ shb
 shb
 shb
 sgy
-xTH
-qsB
-kVW
+peA
+bzq
+iKh
 shb
 qqA
 aQc
@@ -37389,10 +39763,10 @@ gnE
 sjR
 cPL
 oka
-sgy
-xTH
-hHA
-ggv
+tex
+gJs
+sdS
+niF
 shb
 qqA
 dYn
@@ -37571,10 +39945,10 @@ gjw
 jZO
 gJA
 oka
-sgy
-xTH
-qsB
-kVW
+tyT
+peA
+bzq
+nzO
 shb
 qqA
 iPb
@@ -37755,8 +40129,8 @@ vXu
 jKz
 prh
 wVa
-hHA
-ggv
+wpr
+esz
 shb
 qqA
 aQc
@@ -37936,9 +40310,9 @@ nEO
 rNo
 oka
 maN
-xTH
-qsB
-kVW
+rsM
+maN
+fCE
 shb
 qqA
 aQc
@@ -37976,7 +40350,7 @@ wSx
 rjH
 cto
 ksX
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -38118,11 +40492,11 @@ woI
 xVA
 oka
 mVN
-xTH
+doa
 tjF
 srX
 shb
-bft
+oxs
 aQc
 xgG
 tkH
@@ -38507,7 +40881,7 @@ wwd
 mjA
 rzM
 pxJ
-vUM
+eea
 sJZ
 tEJ
 cNu
@@ -38682,14 +41056,14 @@ qqA
 oaE
 kwi
 rKB
-tNT
+jHJ
 tXE
 oaE
 mqt
 qhN
 kXZ
 pxJ
-vUM
+ueg
 sJZ
 tEJ
 cNu
@@ -38702,7 +41076,7 @@ cto
 cto
 cto
 bvq
-bWW
+cto
 bWW
 vYW
 vYW
@@ -38871,7 +41245,7 @@ qnf
 ayo
 wbB
 pxJ
-vUM
+ueg
 fPn
 aBB
 ozz
@@ -38884,7 +41258,7 @@ mUP
 mUP
 mUP
 pGP
-bWW
+cto
 uUu
 vYW
 vYW
@@ -39045,18 +41419,18 @@ aQc
 qqA
 oaE
 duw
-tNT
-tNT
+aDQ
+vzX
 aAg
 oaE
 sLU
 qOn
 wbB
 pxJ
-vUM
+ueg
 sJZ
 tEJ
-cNu
+ouV
 nTG
 ksX
 ksX
@@ -39065,7 +41439,7 @@ ksX
 bWW
 bWW
 uUu
-bvq
+etv
 bWW
 bWW
 vYW
@@ -39237,7 +41611,7 @@ wDN
 pxJ
 vUM
 sJZ
-tEJ
+fnq
 cNu
 nTG
 dkn
@@ -39247,7 +41621,7 @@ vYW
 vYW
 vYW
 bWW
-bvq
+toU
 cto
 ksX
 vrp
@@ -39413,11 +41787,11 @@ orH
 uIl
 odw
 oPr
-pJZ
+feV
 qOn
 wbB
 pxJ
-vUM
+xff
 sJZ
 tEJ
 cNu
@@ -39592,14 +41966,14 @@ gSC
 oPr
 oWr
 iAX
-nOz
+lIU
 gUB
 oPr
 pJZ
 qOn
 wbB
 pxJ
-vUM
+fkE
 sJZ
 tEJ
 cNu
@@ -39955,8 +42329,8 @@ aQc
 qqA
 oPr
 tgk
-nOz
-nOz
+bLp
+dWN
 sRM
 oPr
 qCk
@@ -39966,7 +42340,7 @@ pxJ
 vUM
 sJZ
 tEJ
-cNu
+ciu
 nTG
 nTG
 vYW
@@ -40148,7 +42522,7 @@ pxJ
 vUM
 sJZ
 tEJ
-cNu
+rsw
 nTG
 vrp
 vYW
@@ -40158,7 +42532,7 @@ vYW
 vYW
 bWW
 bvq
-bWW
+cto
 bWW
 xbc
 vYW
@@ -40335,11 +42709,11 @@ nTG
 dkn
 vYW
 vYW
-rnf
+vYW
 vYW
 vYW
 bWW
-bvq
+etv
 bWW
 xxk
 vYW
@@ -40502,16 +42876,16 @@ kIK
 kIK
 kIK
 kIK
-kIK
+rZA
 kIK
 kIK
 kIK
 kIK
 mlT
 nbA
-vFs
-bKX
-tEJ
+nbA
+lQA
+ptY
 uzg
 nTG
 dkn
@@ -40691,13 +43065,13 @@ lQX
 lQX
 lQX
 lQX
-vUM
-sJZ
+xAD
+huz
 tEJ
-cNu
+bZI
 nTG
 dkn
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -40866,30 +43240,30 @@ gSC
 lQX
 iLd
 iTP
-iLd
-iTP
-iLd
-iTP
-iLd
+jZG
+tNE
+uIj
+bDq
+fEI
 wfy
 lQX
-vUM
-sJZ
-tEJ
-cNu
+rMN
+mzv
+fqu
+rMN
 xHi
 xHi
-xHi
 dGr
 dGr
 dGr
 dGr
-bWW
+dGr
+cNC
 etv
 cto
 bWW
 vYW
-vrp
+aWE
 vYW
 vYW
 vYW
@@ -41047,25 +43421,25 @@ aQc
 qqA
 lQX
 dNb
-dNb
-dNb
-dNb
-dNb
-dNb
-dNb
+vNu
+pRs
+vNu
+vNu
+hPd
+hPd
 irc
-lQX
-uLY
-sJZ
-tEJ
-uLY
+htH
+gFx
+aFg
+umT
+gCH
 alL
 vrj
 mkt
 aUP
 jeo
-vZQ
-dGr
+kbp
+xgU
 bWW
 etv
 cto
@@ -41229,25 +43603,25 @@ jyw
 xya
 lQX
 fDn
-dNb
-dNb
+wdA
+qQt
 jNT
 qeu
-qeu
-qeu
-qeu
+bOY
+mPI
+bTm
 rby
-nbA
-bKX
-tEJ
-iad
-tvI
-fvw
-fvw
-fvw
+qhF
+ffx
+umT
+eDF
+vZQ
 fvw
 xWL
-dGr
+qDk
+qIi
+xWL
+ezt
 bWW
 bvq
 cto
@@ -41411,26 +43785,26 @@ pbt
 pbt
 lQX
 rSI
-dNb
-dNb
-dNb
-dNb
-dNb
-dNb
+vNu
+vNu
+rJK
+vzH
+lEB
+syL
 syL
 lQX
-uLY
-sJZ
+xGp
+aFg
 aPe
-iad
+qnp
 vZQ
-fvw
-fvw
+wLF
+oCi
 sgq
-fvw
-aUP
-dGr
-bWW
+mAB
+xWL
+jUt
+mOG
 bvq
 cto
 bWW
@@ -41592,28 +43966,28 @@ tPS
 tPS
 lUT
 lQX
-iLd
-iTP
-iLd
-iTP
-iLd
-iTP
-iLd
-wfy
+trC
+yhy
+sJq
+iwo
+tMY
+dKm
+xxo
+uLP
 lQX
-fkj
+nIF
 qeh
-aBB
-eFZ
-dwG
+otO
+qhF
+tjO
 cwe
 wpm
 vDC
-fvw
-hvM
+xWL
+xWL
 dGr
 bWW
-bvq
+ohG
 bWW
 bWW
 kAv
@@ -41784,15 +44158,15 @@ lQX
 lQX
 lQX
 uul
-fPn
-jjg
-iad
-alL
-fvw
+eUH
+kIb
+vPK
+oMF
+fFm
 eIT
 xdz
-fvw
-vZQ
+yeG
+ryR
 dGr
 bWW
 etv
@@ -41958,28 +44332,28 @@ bLy
 xNR
 fFN
 kIg
-fFN
-kIg
-fFN
-kIg
-fFN
+nmC
+ben
+mbg
+iwy
+aZb
 rAy
 xNR
-fkj
-sJZ
-tEJ
-iad
-alL
-fvw
-eIT
-xdz
-fau
+fvd
+aFg
+woF
+uYL
+bGz
+chr
+oMF
+fXG
+vZQ
 vZQ
 dGr
 eRc
 msE
 oKt
-qJF
+oKt
 qJF
 eRc
 eRc
@@ -42139,29 +44513,29 @@ qvQ
 bLy
 xNR
 duh
-duh
-duh
-duh
-duh
-duh
-duh
+iVD
+iVD
+faG
+iVD
+bSU
+wLv
 dSs
-xNR
-uLY
-sJZ
-tEJ
-iad
+nwO
+gFx
+aFg
+qlx
+veZ
 vZQ
-fvw
-eIT
+vZQ
+vZQ
 sgz
-duZ
+dwG
 dwG
 lbD
 mUP
-chE
+nDl
 mUP
-cNO
+qMW
 cNO
 mUP
 mUP
@@ -42321,31 +44695,31 @@ qvQ
 uXX
 xNR
 kxW
-duh
-duh
+sBu
+mnm
 sEG
 wkM
-wkM
-wkM
-wkM
+thY
+jaW
+tQI
 dSf
-nbA
-bKX
-tEJ
-iad
-vZQ
-fvw
-eIT
-xdz
-fvw
-vZQ
+wrB
+ffx
+ddc
+aZv
+nIR
+agl
+kAd
+kvi
+mBY
+vZs
 xHi
 cDc
 cto
+bWW
 cto
 cto
-cto
-cto
+bWW
 cto
 cto
 cto
@@ -42503,23 +44877,23 @@ qvQ
 cGd
 xNR
 gLZ
-duh
-duh
-duh
-duh
-duh
-duh
+iVD
+iVD
+iVD
+eaZ
+bNt
+fTU
 hXj
 xNR
 hwP
-sJZ
-tEJ
-iad
+vuE
+umT
+pNI
 tvI
-fvw
-vUZ
+laa
+vZQ
 bpT
-fvw
+hoK
 lWJ
 xHi
 ghs
@@ -42684,24 +45058,24 @@ hiD
 oFq
 nzr
 xNR
-fFN
-kIg
-fFN
-kIg
-fFN
-kIg
-fFN
-rAy
+pYx
+dXJ
+rSX
+alh
+owY
+klP
+kPl
+cIP
 xNR
 uYL
-sJZ
-tEJ
-iad
-alL
+aFg
+jHb
+gFx
+xKq
 laa
 lLl
 oKo
-vZQ
+laa
 gkx
 xHi
 ghs
@@ -42876,15 +45250,15 @@ xNR
 xNR
 xNR
 ldJ
-sJZ
-tEJ
-iad
-xHi
-alL
-vZQ
+aFg
+umT
+scD
+uCJ
+kAd
+lLl
 qEf
-vZQ
-alL
+kAd
+fok
 xHi
 nTG
 nTG
@@ -43052,24 +45426,24 @@ mvI
 mvI
 mvI
 wmC
-mvI
-mvI
-mvI
-mvI
-mvI
-uLY
-sJZ
-tEJ
-uLY
-wmC
-mvI
-mvI
-shV
-mvI
-mvI
-uLY
-mvI
-mvI
+rMN
+lMv
+guE
+rgr
+epm
+gFx
+aFg
+umT
+gFx
+dDu
+xGp
+gFx
+vZm
+pUW
+quR
+lPk
+jNW
+rMN
 mvI
 mvI
 wmC
@@ -43130,7 +45504,7 @@ wUU
 wUU
 bOZ
 jRC
-jRC
+duZ
 jRC
 nSZ
 cBu
@@ -43234,24 +45608,24 @@ tvv
 tEJ
 tEJ
 tEJ
-hgB
+oMl
 tEJ
-tEJ
-tEJ
-tEJ
-tEJ
-iKa
-tvv
-tEJ
-tEJ
-tEJ
-tEJ
-pEE
-tEJ
-tEJ
-hgB
-tEJ
-tEJ
+unm
+jmB
+woF
+umT
+aJF
+uVu
+umT
+umT
+umT
+umT
+kTs
+lRz
+umT
+lIT
+lCh
+bGy
 aLn
 tEJ
 tEJ
@@ -43416,24 +45790,24 @@ sOj
 oGc
 oGc
 oGc
-eAJ
+bNi
 oGc
-oGc
-oGc
-cit
-oGc
+tSg
+hNb
+fjC
+hNb
 mCI
-mzf
-oGc
-oGc
-oGc
-oGc
+ogW
+hNb
+hNb
+hNb
+hNb
 rBa
-oGc
-oGc
+hNb
+mgq
 jfD
-oGc
-oGc
+uQJ
+tSg
 oGc
 oGc
 oGc
@@ -43599,24 +45973,24 @@ hUx
 hUx
 hUx
 cNF
-hUx
-hUx
-hUx
+oBQ
+frQ
+gFx
 vZm
-hUx
+uzP
 cJX
-hUx
-uLY
-rBP
-rBP
-rBP
-rBP
-gvE
-rBP
-fjU
-rBP
-rBP
-rBP
+gFx
+gFx
+gFx
+gFx
+gFx
+wba
+nNz
+gFx
+mXV
+lMv
+qxL
+gFt
 rBP
 gvE
 rBP
@@ -43788,9 +46162,9 @@ abE
 nTG
 nTG
 nTG
-nTG
-nTG
-nTG
+slG
+fUJ
+kAm
 nTG
 nTG
 nTG
@@ -43969,11 +46343,11 @@ pBS
 viK
 bUw
 yeF
-xJZ
-eVW
-hwz
-xJZ
-kHF
+bUw
+bUw
+bUw
+bUw
+bUw
 kHF
 bUw
 rRq
@@ -44152,9 +46526,9 @@ viK
 xJZ
 xJZ
 xJZ
+uEc
 xJZ
-xJZ
-xJZ
+uEc
 xJZ
 xJZ
 bUw

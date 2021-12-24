@@ -4,13 +4,13 @@
     "map_file": "New_Varadero.dmm",
 
     "survivor_types": [
-        "Survivor - LV-624 Archeologist",
-        "Survivor - LV-624 Emergency Medical Technician",
-        "Survivor - LV-624 Priest",
-        "Survivor - LV-624 Engineer",
-        "Survivor - LV-624 Cargo Technician",
-        "Survivor - LV-624 Security Guard",
-        "Survivor - LV-624 Head of Security"
+        "/datum/equipment_preset/survivor/scientist/lv",
+        "/datum/equipment_preset/survivor/doctor/lv",
+        "/datum/equipment_preset/survivor/chaplain/lv",
+        "/datum/equipment_preset/survivor/engineer/lv",
+        "/datum/equipment_preset/survivor/trucker/lv",
+        "/datum/equipment_preset/survivor/security/lv",
+        "/datum/equipment_preset/survivor/colonial_marshal/lv"
     ],
 
     "defcon_triggers": [

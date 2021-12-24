@@ -118,7 +118,9 @@
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/bomber
 	name = "captain's bomber jacket"
 	desc = "A bomber jacket resembling those worn by airmen of old. A classic, stylish choice for those in the higher ranks."
+	has_buttons = TRUE
 	icon_state = "co_bomber"
+	initial_icon_state = "co_bomber"
 
 /obj/item/clothing/suit/storage/jacket/marine/dress/officer/white
 	name = "captain's white dress jacket"

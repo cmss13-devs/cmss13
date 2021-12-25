@@ -204,3 +204,9 @@
 	name = "\improper USCM High Command Radio Encryption Key"
 	icon_state = "binary_key"
 	channels = list("Command" = 1, "MP" = 1, SQUAD_NAME_1 = 1, SQUAD_NAME_2 = 1, SQUAD_NAME_3 = 1, SQUAD_NAME_4 = 1, SQUAD_NAME_5 = 1, "Engi" = 1, "MedSci" = 1, "Req" = 1, "JTAC" = 1, "Tactics" = 1, "HighCom" = 1)
+
+/// Used by the Mortar Crew in WO game mode - intently has no squad radio access
+/obj/item/device/encryptionkey/mortar
+	name = "\improper Mortar Crew Radio Encryption Key"
+	icon_state = "eng_key"
+	channels = list("Engi" = 1, "JTAC" = 1, "Tactics" = 1, "Req" = 1)

@@ -213,6 +213,7 @@
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
 	var/acid_blood_damage = 12
+	var/nocrit = FALSE
 
 
 	//////////////////////////////////////////////////////////////////
@@ -755,7 +756,7 @@
 	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
-	var/new_max_health = health_modifier + caste.max_health
+	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
 	if (new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1

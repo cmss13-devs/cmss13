@@ -20750,7 +20750,7 @@
 "svH" = (
 /obj/structure/surface/table/woodentable,
 /obj/item/book/manual/marine_law{
-	desc = A set of guidelines for the player's of the Pinwizard game. Wait a minute, this is just a copy of Marine Law.";
+	desc = "A set of guidelines for the player's of the Pinwizard game. Wait a minute, this is just a copy of Marine Law.";
 	name = "Pinwizard IV - Player's Handbook";
 	pixel_x = -1;
 	pixel_y = 2

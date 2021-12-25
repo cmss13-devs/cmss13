@@ -870,8 +870,6 @@
 	locked = 1
 	projectile_coverage = PROJECTILE_COVERAGE_HIGH
 	icon = 'icons/turf/whiskeyoutpost.dmi'
-	icon_full = "towergun"
-	icon_empty = "towergun"
 	zoom = 1
 
 /obj/structure/machinery/m56d_hmg/mg_turret/dropship

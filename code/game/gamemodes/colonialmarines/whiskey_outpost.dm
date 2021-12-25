@@ -46,7 +46,8 @@
 	var/finished = 0
 	var/has_started_timer = 10 //This is a simple timer so we don't accidently check win conditions right in post-game
 	var/randomovertime = 0 //This is a simple timer so we can add some random time to the game mode.
-	var/spawn_next_wave = 10 MINUTES //Spawn first batch at ~10 minutes (we divide it by the game ticker time of 2 seconds)
+	var/spawn_next_wave = 12 MINUTES //Spawn first batch at ~12 minutes
+	var/last_wave_time = 0 // Stores the time the last wave (wave 15) started
 	var/xeno_wave = 1 //Which wave is it
 
 	var/wave_ticks_passed = 0 //Timer for xeno waves
@@ -60,12 +61,12 @@
 		//The more entires with same path, the more chances there are to pick it
 			//This will get populated with spawn_xenos() proc
 	var/list/spawnxeno = list()
+	var/list/xeno_pool = list()
 
 	var/next_supply = 1 MINUTES //At which wave does the next supply drop come?
 
 	var/ticks_passed = 0
 	var/lobby_time = 0 //Lobby time does not count for marine 1h win condition
-	var/wave_times_delayed = 0 //How many time was the current wave delayed due to pop limit?
 
 	var/map_locale = 0 // 0 is Jungle Whiskey Outpost, 1 is Big Red Whiskey Outpost, 2 is Ice Colony Whiskey Outpost, 3 is space
 	var/spawn_next_wo_wave = FALSE
@@ -105,7 +106,6 @@
 	update_controllers()
 	initialize_post_marine_gear_list()
 	lobby_time = world.time
-	randomovertime = pickovertime()
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
 
@@ -128,8 +128,20 @@
 	switch(map_locale) //Switching it up.
 		if(0)
 			marine_announcement("This is Captain Hans Naiche, commander of the 3rd Battalion 'Dust Raiders' forces here on LV-624. In our attempts to establish a base on this planet, several of our patrols were wiped out by hostile creatures.  We're setting up a distress call, but we need you to hold [SSmapping.configs[GROUND_MAP].map_name] in order for our engineers to set up the relay. We're prepping several M402 mortar units to provide fire support. If they overrun your positon, we will be wiped out with no way to call for help. Hold the line or we all die.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
-
+	addtimer(CALLBACK(src, .proc/story_announce, 0), 3 MINUTES)
 	return ..()
+
+/datum/game_mode/whiskey_outpost/proc/story_announce(var/time)
+	switch(time)
+		if(0)
+			marine_announcement("This is Captain Hans Niache, Commander of the 3rd Bataillion, 'Dust Raiders' forces on LV-624. As you already know, several of our patrols have gone missing and likely wiped out by hostile local creatures as we've attempted to set our base up.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
+		if(1)
+			marine_announcement("Our scouts report increased activity in the area and given our intel, we're already preparing for the worst. We're setting up a comms relay to send out a distress call, but we're going to need time while our engineers get everything ready. All other stations should prepare accordingly and maximize combat readiness, effective immediately.", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
+		if(2)
+			marine_announcement("Captian Naich here. We've tracked the bulk of enemy forces on the move and [SSmapping.configs[GROUND_MAP].map_name] is likely to be hit before they reach the base. We need you to hold them off while we finish sending the distress call. Expect incoming within a few minutes. Godspeed, [SSmapping.configs[GROUND_MAP].map_name].", "Captain Naich, 3rd Battalion Command, LV-624 Garrison")
+
+	if(time <= 2)
+		addtimer(CALLBACK(src, .proc/story_announce, time+1), 3 MINUTES)
 
 /datum/game_mode/whiskey_outpost/proc/update_controllers()
 	//Update controllers while we're on this mode
@@ -155,12 +167,8 @@
 	wave_ticks_passed++
 
 	if(wave_ticks_passed >= (spawn_next_wave/(delta_time SECONDS)))
-		if(count_xenos() < 50)//Checks braindead too, so we don't overpopulate! Also make sure its less than twice us in the world, so we advance waves/get more xenos the more marines survive.
-			wave_ticks_passed = 0
-			spawn_next_wo_wave = TRUE
-		else
-			wave_ticks_passed -= 50 //Wait 50 ticks and try again
-			wave_times_delayed++
+		wave_ticks_passed = 0
+		spawn_next_wo_wave = TRUE
 
 	if(spawn_next_wo_wave)
 		spawn_next_xeno_wave()
@@ -173,7 +181,9 @@
 		next_supply += 2 MINUTES
 
 	if(checkwin_counter >= 10) //Only check win conditions every 10 ticks.
-		if(!finished && round_should_check_for_win)
+		if(xeno_wave == WO_MAX_WAVE && last_wave_time == 0)
+			last_wave_time = world.time
+		if(!finished && round_should_check_for_win && last_wave_time != 0)
 			check_win()
 		checkwin_counter = 0
 	return 0
@@ -203,7 +213,7 @@
 
 	if(C[1] == 0)
 		finished = 1 //Alien win
-	else if(world.time > 1 HOURS + 20 MINUTES + lobby_time + initial(spawn_next_wave) + randomovertime)//one hour or so, plus lobby time, plus the setup time marines get
+	else if(world.time > last_wave_time + 15 MINUTES) // Around 1:12 hh:mm
 		finished = 2 //Marine win
 
 /datum/game_mode/whiskey_outpost/proc/disablejoining()
@@ -621,11 +631,22 @@
 							/obj/item/ammo_magazine/rifle,
 							/obj/item/ammo_magazine/rifle,
 							/obj/item/ammo_magazine/rifle/ap,
+							/obj/item/ammo_magazine/rifle/ap,
+							/obj/item/ammo_magazine/rifle/ap,
+							/obj/item/ammo_magazine/rifle/ap,
 							/obj/item/ammo_magazine/smg/m39,
 							/obj/item/ammo_magazine/smg/m39,
+							/obj/item/ammo_magazine/smg/m39,
+							/obj/item/ammo_magazine/smg/m39,
+							/obj/item/ammo_magazine/smg/m39/ap,
+							/obj/item/ammo_magazine/smg/m39/ap,
 							/obj/item/ammo_magazine/smg/m39/ap,
 							/obj/item/ammo_magazine/smg/m39/ap,
 							/obj/item/ammo_magazine/shotgun/slugs,
+							/obj/item/ammo_magazine/shotgun/slugs,
+							/obj/item/ammo_magazine/shotgun/slugs,
+							/obj/item/ammo_magazine/shotgun/buckshot,
+							/obj/item/ammo_magazine/shotgun/buckshot,
 							/obj/item/ammo_magazine/shotgun/buckshot)
 		if(1) // Six rockets should be good. Tossed in two AP rockets for possible late round fighting.
 			spawnitems = list(/obj/item/ammo_magazine/rocket,
@@ -645,6 +666,10 @@
 		if(2) //Smartgun supplies
 			spawnitems = list(
 					/obj/item/cell/high,
+					/obj/item/cell/high,
+					/obj/item/ammo_magazine/smartgun,
+					/obj/item/ammo_magazine/smartgun,
+					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
 					/obj/item/ammo_magazine/smartgun,
@@ -704,3 +729,6 @@
 		if(T)
 			new /obj/item/paper/crumpled(T)
 		qdel(src)
+
+/datum/game_mode/whiskey_outpost/announce_bioscans(var/delta = 2)
+	return // No bioscans needed in WO

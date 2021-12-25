@@ -531,6 +531,13 @@
 	desc = "This is used by the marine Echo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
+/obj/item/device/radio/headset/almayer/marine/mortar
+	name = "mortar crew radio headset"
+	desc = "This is used by the dust raider's bunker mortar crew to get feedback on how good the hits of that 80mm rain turned out. Comes with access to the engineering channel with :e, JTAC for coordinating with :j, Tactics with :t, and request more shells supply with :u - this ain't Winchester Outpost!"
+	icon_state = "ce_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/mortar)
+	volume = RADIO_VOLUME_RAISED
+
 //*************************************
 //-----SELF SETTING MARINE HEADSET-----
 //*************************************/
@@ -565,7 +572,7 @@
 					name = "[SQUAD_NAME_5] radio headset"
 					desc = "This is used by [SQUAD_NAME_5] squad members."
 					frequency = ECHO_FREQ
-			switch(H.job)
+			switch(GET_DEFAULT_ROLE(H.job))
 				if(JOB_SQUAD_LEADER)
 					name = "marine leader " + name
 					keys += new /obj/item/device/encryptionkey/squadlead(src)

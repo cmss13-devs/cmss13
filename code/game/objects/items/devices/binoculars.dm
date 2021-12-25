@@ -392,21 +392,8 @@
 			return
 	return
 
-/obj/item/device/binoculars/designator/attack_self(mob/living/carbon/human/user)
-	. = ..()
-
-	if(!.)
-		return
-
-	if(!FAC)
-		FAC = user
-		return
-	else
-		FAC = null
-		return
-
 /obj/item/device/binoculars/designator/proc/lasering(var/mob/living/carbon/human/user, var/atom/A, var/params)
-	if(!FAC || FAC != user || istype(A,/obj/screen))
+	if(istype(A,/obj/screen))
 		return FALSE
 	if(user.stat)
 		zoom(user)
@@ -417,7 +404,7 @@
 	target = A
 	if(!istype(target))
 		return FALSE
-	if(target.z != FAC.z || target.z == 0 || FAC.z == 0 || QDELETED(FAC.loc))
+	if(target.z != user.z)
 		return FALSE
 
 	var/list/modifiers = params2list(params) //Only single clicks.
@@ -432,7 +419,7 @@
 		return 0
 
 	if(las_r || las_b) //Make sure we don't spam strikes
-		to_chat(user, SPAN_WARNING("The laser is currently cooling down. Please wait roughly 10 minutes from lasing the target."))
+		to_chat(user, SPAN_WARNING("The laser is currently cooling down. Please wait roughly 5 minutes from lasing the target."))
 		return 0
 
 	to_chat(user, SPAN_BOLDNOTICE(" You start lasing the target area."))
@@ -442,6 +429,7 @@
 		lasing = TRUE
 		lasertarget.icon_state = "las_r"
 		las_r = 2
+		playsound(src, 'sound/effects/nightvision.ogg', 35)
 		sleep(50)
 		if(SS != get_turf(src)) //Don't move.
 			lasing = FALSE
@@ -472,12 +460,13 @@
 		qdel(lasertarget)
 		lasing = FALSE
 		las_r = 1
-		addtimer(VARSET_CALLBACK(src, las_r, FALSE), 10 MINUTES)
+		addtimer(VARSET_CALLBACK(src, las_r, FALSE), 5 MINUTES)
 		return
 	else if(las_mode == 2 && !las_b) //Give them the option for mortar fire.
 		lasing = TRUE
 		lasertarget.icon_state = "laz_b"
 		las_b = 2
+		playsound(src, 'sound/effects/nightvision.ogg', 35)
 		sleep(50)
 		if(SS != get_turf(src)) //Don't move.
 			lasing = FALSE
@@ -505,7 +494,7 @@
 			explosion(target_3, -1, HE_power, con_power, con_power, , , , cause_data)
 			lasing = FALSE
 			las_b = 1
-			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 10 MINUTES)
+			addtimer(VARSET_CALLBACK(src, las_b, FALSE), 5 MINUTES)
 			return
 
 /obj/item/device/binoculars/designator/afterattack(atom/A as mob|obj|turf, mob/user as mob, params) // This is actually WAY better, espically since its fucken already in the code.

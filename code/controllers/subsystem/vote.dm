@@ -277,6 +277,8 @@ SUBSYSTEM_DEF(vote)
 						continue
 					if(!VM.voteweight)
 						continue
+					if(text2num(SSperf_logging?.round?.id) % VM.vote_cycle != 0)
+						continue
 					if(VM.config_max_users || VM.config_min_users)
 						var/players = length(GLOB.clients)
 						if(VM.config_max_users && players > VM.config_max_users)

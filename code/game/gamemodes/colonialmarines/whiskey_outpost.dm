@@ -108,16 +108,9 @@
 	lobby_time = world.time
 
 	CONFIG_SET(flag/remove_gun_restrictions, TRUE)
-
-	for(var/i in GLOB.human_mob_list)
-		var/mob/living/carbon/human/H = i
-		if(H.client)
-			players += H
-			if(H.job in ROLES_MARINES)
-				spawn_player(H)
 	sleep(10)
 	to_world("<span class='round_header'>The current game mode is - WHISKEY OUTPOST!</span>")
-	to_world(SPAN_ROUNDBODY("It is the year [game_year - 5] on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector"))
+	to_world(SPAN_ROUNDBODY("It is the year 2177 on the planet LV-624, five years before the arrival of the USS Almayer and the 2nd 'Falling Falcons' Battalion in the sector"))
 	to_world(SPAN_ROUNDBODY("The 3rd 'Dust Raiders' Battalion is charged with establishing a USCM prescence in the Tychon's Rift sector"))
 	to_world(SPAN_ROUNDBODY("[SSmapping.configs[GROUND_MAP].map_name], one of the Dust Raider bases being established in the sector, has come under attack from unrecognized alien forces"))
 	to_world(SPAN_ROUNDBODY("With casualties mounting and supplies running thin, the Dust Raiders at [SSmapping.configs[GROUND_MAP].map_name] must survive for an hour to alert the rest of their battalion in the sector"))

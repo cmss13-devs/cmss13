@@ -130,10 +130,10 @@
 /obj/structure/closet/crate/secure/gear
 	name = "gear crate"
 	desc = "A secure gear crate."
-	icon_state = "secure_locked_Weston"
-	icon_opened = "secure_open_Weston"
-	icon_locked = "secure_locked_Weston"
-	icon_unlocked = "secure_unlocked_Weston"
+	icon_state = "secure_locked_ammo"
+	icon_opened = "secure_open_ammo"
+	icon_locked = "secure_locked_ammo"
+	icon_unlocked = "secure_unlocked_ammo"
 
 /obj/structure/closet/crate/secure/hydrosec
 	name = "secure hydroponics crate"

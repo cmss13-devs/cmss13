@@ -1787,6 +1787,7 @@
 	pixel_x = 7;
 	pixel_y = -6
 	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
@@ -4552,7 +4553,7 @@
 /obj/structure/machinery/bot/medbot{
 	name = "Dr. O"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/prison/chapel_carpet,
 /area/ice_colony/underground/crew/chapel)
 "efu" = (
 /obj/structure/disposalpipe/segment,
@@ -5119,7 +5120,7 @@
 /obj/structure/flora/bush/ausbushes/pointybush{
 	pixel_y = 9
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating,
 /area/ice_colony/underground/research)
 "eFA" = (
 /obj/structure/machinery/portable_atmospherics/canister/air,
@@ -9670,7 +9671,7 @@
 	},
 /area/space)
 "iHh" = (
-/obj/item/weapon/gun/shotgun,
+/obj/item/weapon/gun/shotgun/pump,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/security/marshal)
 "iHm" = (
@@ -10178,6 +10179,7 @@
 /area/ice_colony/underground/security/armory)
 "jaW" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -11954,7 +11956,10 @@
 /area/ice_colony/underground/security/armory)
 "kHE" = (
 /obj/effect/decal/cleanable/blood,
-/turf/open/floor/prison/chapel_carpet,
+/turf/open/floor/prison/chapel_carpet{
+	dir = 1;
+	icon_state = "doubleside"
+	},
 /area/ice_colony/underground/crew/chapel)
 "kHF" = (
 /obj/structure/surface/rack,
@@ -12776,21 +12781,14 @@
 	},
 /area/ice_colony/underground/security/interrogation)
 "lxr" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
+/obj/structure/prop/invuln/minecart_tracks{
+	dir = 8
 	},
-/obj/structure/filingcabinet{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/obj/structure/filingcabinet{
-	pixel_x = 8;
-	pixel_y = 4
-	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
-/area/ice_colony/underground/maintenance/central)
+/area/space)
 "lxy" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/shiva{
@@ -13422,15 +13420,17 @@
 /obj/structure/bed/chair{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/plating/icefloor{
 	icon_state = "asteroidplating"
 	},
 /area/ice_colony/underground/hangar)
 "lZU" = (
-/obj/item/ammo_casing{
-	dir = 6;
-	icon_state = "casing_5"
+/obj/item/ammo_casing/shell{
+	dir = 10;
+	icon_state = "bshell_"
 	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/security/marshal)
 "map" = (
@@ -14473,6 +14473,7 @@
 /area/ice_colony/underground/reception)
 "mPI" = (
 /obj/structure/pipes/standard/simple/hidden/green,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/shiva{
 	icon_state = "floor3"
 	},
@@ -15775,9 +15776,11 @@
 	},
 /area/ice_colony/underground/requesition/sec_storage)
 "nZd" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_pool,
-/turf/open/auto_turf/sand_white/layer1,
-/area/ice_colony/exterior/underground/caves/open)
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/medical/lobby)
 "nZk" = (
 /obj/effect/decal/warning_stripes{
 	icon_state = "S";
@@ -18076,9 +18079,9 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_l)
 "qgm" = (
-/obj/effect/landmark/structure_spawner/xvx_hive/xeno_core,
-/turf/open/auto_turf/sand_white/layer1,
-/area/ice_colony/exterior/underground/caves/open)
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor/wood,
+/area/shuttle/elevator3/underground)
 "qgy" = (
 /obj/structure/pipes/standard/simple/hidden/green,
 /obj/effect/decal/warning_stripes/asteroid{
@@ -18096,10 +18099,14 @@
 	},
 /area/ice_colony/underground/hangar)
 "qhd" = (
-/obj/effect/landmark/monkey_spawn,
-/obj/effect/alien/weeds/node,
-/turf/open/auto_turf/sand_white/layer1,
-/area/ice_colony/exterior/underground/caves/open)
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor/shiva{
+	dir = 1
+	},
+/area/ice_colony/underground/research)
 "qhh" = (
 /turf/open/floor/shiva{
 	dir = 8;
@@ -18154,9 +18161,14 @@
 /turf/open/auto_turf/sand_white/layer1,
 /area/ice_colony/underground/maintenance/east)
 "qjU" = (
-/obj/effect/alien/weeds/node,
-/turf/open/auto_turf/sand_white/layer1,
-/area/ice_colony/exterior/underground/caves/open)
+/obj/structure/pipes/standard/simple/hidden/green{
+	dir = 4
+	},
+/obj/effect/landmark/survivor_spawn,
+/turf/open/floor/shiva{
+	icon_state = "floor3"
+	},
+/area/ice_colony/underground/research/work)
 "qkr" = (
 /obj/structure/surface/table,
 /obj/item/prop/helmetgarb/flair_uscm,
@@ -19033,6 +19045,7 @@
 /obj/structure/pipes/standard/manifold/hidden/green{
 	dir = 4
 	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/shiva,
 /area/ice_colony/underground/storage)
 "qVS" = (
@@ -19444,6 +19457,9 @@
 	dir = 1;
 	pixel_y = 24;
 	start_charge = 0
+	},
+/obj/item/ammo_casing/shell{
+	icon_state = "shell_9_1"
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/marshal)
@@ -21290,14 +21306,6 @@
 	icon_state = "red"
 	},
 /area/ice_colony/underground/crew/morgue)
-"sTq" = (
-/obj/structure/pipes/standard/simple/hidden/green{
-	dir = 4
-	},
-/turf/open/floor/prison/chapel_carpet{
-	icon_state = "doubleside"
-	},
-/area/ice_colony/underground/crew/chapel)
 "sTA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -22938,6 +22946,7 @@
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 10
 	},
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/shiva{
 	icon_state = "multi_tiles"
 	},
@@ -23208,11 +23217,6 @@
 	icon_state = "wood-broken6"
 	},
 /area/ice_colony/underground/hangar)
-"uKE" = (
-/turf/open/floor/prison/chapel_carpet{
-	icon_state = "doubleside"
-	},
-/area/ice_colony/underground/crew/chapel)
 "uLa" = (
 /obj/item/clothing/mask/rebreather,
 /turf/open/floor/carpet,
@@ -23348,7 +23352,9 @@
 /turf/open/auto_turf/sand_white/layer0,
 /area/ice_colony/underground/maintenance/engineering)
 "uQa" = (
-/turf/open/floor/plating,
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
 /area/ice_colony/exterior/underground/caves/open)
 "uQi" = (
 /turf/closed/wall/r_wall/unmeltable,
@@ -23577,6 +23583,7 @@
 /area/ice_colony/underground/engineering/substation)
 "uZp" = (
 /obj/effect/decal/cleanable/blood/drip,
+/obj/effect/landmark/survivor_spawn,
 /turf/open/floor/carpet,
 /area/ice_colony/underground/hangar)
 "vao" = (
@@ -24516,10 +24523,7 @@
 /obj/structure/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/prison/chapel_carpet{
-	dir = 1;
-	icon_state = "doubleside"
-	},
+/turf/open/floor/carpet,
 /area/ice_colony/underground/crew/chapel)
 "vQL" = (
 /obj/structure/surface/table/reinforced/prison,
@@ -26022,7 +26026,7 @@
 	icon_state = "pointybush_2";
 	pixel_y = 8
 	},
-/turf/open/auto_turf/sand_white/layer1,
+/turf/open/floor/plating,
 /area/ice_colony/underground/research)
 "xjp" = (
 /obj/structure/machinery/power/geothermal,
@@ -28851,7 +28855,7 @@ qMH
 qMH
 vYW
 vYW
-qhd
+xbc
 vYW
 qMH
 dkn
@@ -29574,7 +29578,7 @@ bwu
 qMD
 bGv
 iAp
-gwC
+qjU
 bGv
 tMx
 fay
@@ -30469,7 +30473,7 @@ miP
 uQi
 qBU
 rbU
-rbU
+qgm
 adC
 rbU
 aCz
@@ -31023,7 +31027,7 @@ jcB
 ltW
 hux
 brx
-qQF
+qhd
 rWJ
 dzN
 ltW
@@ -32089,9 +32093,9 @@ vYW
 vYW
 vYW
 vYW
-gHJ
+vYW
 dkn
-gHJ
+vYW
 vYW
 vYW
 vYW
@@ -32272,7 +32276,7 @@ vYW
 vYW
 vYW
 vYW
-nZd
+vYW
 vYW
 vYW
 vYW
@@ -32453,9 +32457,9 @@ vYW
 vYW
 vYW
 vYW
-gHJ
 vYW
-gHJ
+vYW
+vYW
 vYW
 vYW
 vYW
@@ -32636,7 +32640,7 @@ vYW
 vYW
 vYW
 vYW
-eMf
+vYW
 vYW
 vYW
 vYW
@@ -32818,7 +32822,7 @@ vYW
 dkn
 aWE
 vYW
-fGP
+vYW
 vYW
 vYW
 vYW
@@ -32999,9 +33003,9 @@ vYW
 vYW
 dkn
 aWE
-gHJ
 vYW
-gHJ
+vYW
+vYW
 qMH
 qMH
 dkn
@@ -33182,7 +33186,7 @@ vYW
 aWE
 vYW
 vYW
-qgm
+vYW
 vYW
 vYW
 qMH
@@ -33211,7 +33215,7 @@ vYW
 vYW
 vYW
 vYW
-vYW
+uQa
 deg
 mZw
 iCy
@@ -33363,9 +33367,9 @@ vYW
 vYW
 vYW
 vYW
-gHJ
 vYW
-gHJ
+vYW
+vYW
 vYW
 vYW
 vYW
@@ -33392,8 +33396,8 @@ vYW
 vYW
 xbc
 vYW
-vYW
-vYW
+uQa
+uQa
 doW
 mZw
 iCy
@@ -33544,12 +33548,12 @@ wjA
 vYW
 vYW
 vYW
-qjU
 vYW
 vYW
 vYW
 vYW
-qhd
+vYW
+xbc
 vYW
 vYW
 vYW
@@ -33573,9 +33577,9 @@ vYW
 vYW
 vYW
 vYW
-vYW
-vYW
-vYW
+uQa
+uQa
+uQa
 deg
 mZw
 wAx
@@ -34599,7 +34603,7 @@ eyt
 ebE
 hwz
 jdc
-wBY
+lxr
 jdc
 wjB
 lDN
@@ -35906,7 +35910,7 @@ vQz
 brX
 oXf
 vQz
-cSq
+uCe
 vPY
 bLB
 xWY
@@ -36084,11 +36088,11 @@ hyr
 vnm
 erC
 kHE
-uKE
-sTq
-uKE
-uKE
-uCe
+oXf
+brX
+oXf
+oXf
+hfR
 bio
 bLB
 xWY
@@ -36463,7 +36467,7 @@ bXH
 vsP
 cAX
 kDF
-kba
+nZd
 kba
 kba
 kba
@@ -36478,7 +36482,7 @@ ygT
 nRT
 ffQ
 jHH
-lxr
+aQc
 qqA
 pQp
 pqH

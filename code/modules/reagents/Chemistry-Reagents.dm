@@ -161,7 +161,7 @@
 		P.process(M, potency, delta_time)
 		if(flags & REAGENT_CANNOT_OVERDOSE)
 			continue
-		if(overdose && volume >= overdose)
+		if(overdose && volume > overdose)
 			P.process_overdose(M, potency, delta_time)
 			if(overdose_critical && volume > overdose_critical)
 				P.process_critical(M, potency, delta_time)

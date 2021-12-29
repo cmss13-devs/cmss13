@@ -126,7 +126,7 @@
 	icon_state = "poster7"
 
 /obj/structure/sign/poster/ad/Initialize()
-	serial_number = pick(7,8,9,10,11,13,18,22,35)
+	serial_number = pick(7,8,9,10,11,13,18,22,35,36,37)
 	.=..()
 
 /obj/structure/sign/poster/art
@@ -161,7 +161,7 @@
 	icon_state = "poster3"
 
 /obj/structure/sign/poster/music/Initialize()
-	serial_number = pick(3,5,25,26,29)
+	serial_number = pick(3,5,25,26,29,38,39)
 	.=..()
 
 /obj/structure/sign/poster/pinup
@@ -175,7 +175,7 @@
 	icon_state = "poster4"
 
 /obj/structure/sign/poster/propaganda/Initialize()
-	serial_number = pick(4,14,15,20,21)
+	serial_number = pick(4,14,15,20,21,40)
 	.=..()
 
 /obj/structure/sign/poster/safety
@@ -183,4 +183,15 @@
 
 /obj/structure/sign/poster/safety/Initialize()
 	serial_number = pick(27,28,30,31)
+	.=..()
+
+////////////////
+//Hero Posters//
+////////////////
+
+/obj/structure/sign/poster/hero/voteno
+	icon_state = "poster40"
+
+/obj/structure/sign/poster/hero/voteno/Initialize()
+	serial_number = 40
 	.=..()

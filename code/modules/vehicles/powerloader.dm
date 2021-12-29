@@ -120,6 +120,11 @@
 	var/obj/vehicle/powerloader/linked_powerloader
 	var/obj/loaded
 
+/obj/item/powerloader_clamp/Destroy()
+	if(loaded)
+		loaded.forceMove(get_turf(src))
+	return ..()
+
 /obj/item/powerloader_clamp/dropped(mob/user)
 	if(!linked_powerloader)
 		qdel(src)

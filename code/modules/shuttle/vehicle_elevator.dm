@@ -8,6 +8,10 @@
 	callTime = 5 SECONDS
 	ignitionTime = 1 SECONDS
 
+	ignition_sound = 'sound/machines/asrs_raising.ogg'
+	ambience_idle = null
+	ambience_flight = null
+
 	var/list/railings = list()
 	var/list/gears = list()
 

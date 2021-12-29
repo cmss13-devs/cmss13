@@ -29,7 +29,7 @@
 	icon = 'icons/turf/floors/floors.dmi'
 	var/intact_tile = 1 //used by floors to distinguish floor with/without a floortile(e.g. plating).
 	var/can_bloody = TRUE //Can blood spawn on this turf?
-	var/list/linked_pylons = list()
+	var/list/linked_pylons
 	var/obj/effect/alien/weeds/weeds
 
 	var/list/datum/automata_cell/autocells = list()
@@ -471,7 +471,7 @@
 
 /turf/proc/ceiling_desc(mob/user)
 
-	if (linked_pylons.len > 0)
+	if(LAZYLEN(linked_pylons))
 		switch(get_pylon_protection_level())
 			if(TURF_PROTECTION_MORTAR)
 				to_chat(user, "The ceiling above is made of light resin. Doesn't look like it's going to stop much.")
@@ -638,7 +638,7 @@
 			if(P.protection_level > protection_level)
 				protection_level = P.protection_level
 		else
-			linked_pylons -= pylon
+			LAZYREMOVE(linked_pylons, pylon)
 
 	return protection_level
 

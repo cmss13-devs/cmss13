@@ -391,7 +391,7 @@
 
 /obj/item/device/radio/headset/yautja/elder //primarily for use in another MR
 	name = "\improper Elder Communicator"
-	volume = RADIO_VOLUME_CRITICAL
+	volume_settings = list(RADIO_VOLUME_QUIET_STR, RADIO_VOLUME_RAISED_STR, RADIO_VOLUME_IMPORTANT_STR, RADIO_VOLUME_CRITICAL_STR)
 
 /obj/item/device/encryptionkey/yautja
 	name = "\improper Yautja encryption key"

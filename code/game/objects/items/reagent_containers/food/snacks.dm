@@ -2435,6 +2435,71 @@
 	filling_color = "#FFF700"
 	bitesize = 2
 
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature
+	name = "immature cheese wheel"
+	desc = "A big wheel of supposedly delicious Cheddar, but it hasn't been aged enough and as such tastes rather crap."
+	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge/immature
+
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature/Initialize()
+	. = ..()
+	reagents.add_reagent("cheese", 15)
+	reagents.add_reagent("milk", 5)
+	bitesize = 4
+
+/obj/item/reagent_container/food/snacks/cheesewedge/immature
+	name = "immature cheese wedge"
+	desc = "A wedge of immature Cheddar, without any noticeable good taste. The cheese wheel it was cut from can't have gone far. It's so weak you can basically eat it all in one bite."
+	bitesize = 4
+
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature
+	name = "mature cheese wheel"
+	desc = "A big wheel of delicious Cheddar, sufficiently aged."
+	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge/mature
+
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/mature/Initialize()
+	. = ..()
+	reagents.add_reagent("cheese", 20)
+	reagents.add_reagent("sodiumchloride", 5)
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/cheesewedge/mature
+	name = "mature cheese wedge"
+	desc = "A wedge of mature Cheddar, tastes pretty nice. The cheese wheel it was cut from can't have gone far."
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature
+	name = "aged cheese wheel"
+	desc = "A big wheel of delicious Cheddar, it has been aged for a long time and is pretty strong."
+	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge/verymature
+
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/verymature/Initialize()
+	. = ..()
+	reagents.add_reagent("cheese", 25)
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/cheesewedge/verymature
+	name = "aged cheese wedge"
+	desc = "A wedge of very mature Cheddar. This one's been aged for a while. The cheese wheel it was cut from can't have gone far."
+	bitesize = 2
+
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature
+	name = "primordial cheese wheel"
+	desc = "A big wheel of delicious Cheddar, it has been aged for practically aeons. Merely seeing this cheese causes you to break into a cold sweat. Due to its strength, you can't eat in big bites."
+	slice_path = /obj/item/reagent_container/food/snacks/cheesewedge/extramature
+
+/obj/item/reagent_container/food/snacks/sliceable/cheesewheel/extramature/Initialize()
+	. = ..()
+	reagents.add_reagent("cheese", 25)
+	reagents.add_reagent("sugar", 1)
+	reagents.add_reagent("sodiumchloride", 1)
+	reagents.add_reagent("universal enzyme", 1)
+	bitesize = 1
+
+/obj/item/reagent_container/food/snacks/cheesewedge/extramature
+	name = "primordial cheese wedge"
+	desc = "A wedge of extra mature Cheddar. So strong you can barely put more than a few grammes in your mouth at a time. The cheese wheel it was cut from can't have gone far."
+	bitesize = 1
+
 /obj/item/reagent_container/food/snacks/sliceable/birthdaycake
 	name = "Birthday Cake"
 	desc = "Happy Birthday..."

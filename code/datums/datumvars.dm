@@ -1027,8 +1027,6 @@ body
 			return
 		ADD_TRAIT(C, trait_new, TRAIT_SOURCE_ADMIN)
 		message_staff("TRAIT: [key_name(usr)] added trait '[trait_new]' to [key_name(C)]")
-		if(trait_new == TRAIT_CRAWLER)
-			add_verb(C, /mob/living/proc/ventcrawl)
 
 	else if(href_list["removetrait"])
 		if(!check_rights(R_DEBUG|R_ADMIN|R_SPAWN))
@@ -1044,8 +1042,6 @@ body
 			return
 		REMOVE_TRAIT(C, trait_old, null)
 		message_staff("TRAIT: [key_name(usr)] removed trait '[trait_old]' from [key_name(C)]")
-		if(trait_old == TRAIT_CRAWLER)
-			remove_verb(C, /mob/living/proc/ventcrawl)
 
 	else if(href_list["setmatrix"])
 		if(!check_rights(R_DEBUG|R_ADMIN|R_FUN|R_VAREDIT))

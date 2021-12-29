@@ -184,6 +184,7 @@ datum/preferences/proc/randomize_skin_color()
 	if(!owner)
 		return
 	if(preview_front)
+		preview_front.overlays.Cut()
 		preview_front.vis_contents.Cut()
 	qdel(preview_front)
 
@@ -196,15 +197,25 @@ datum/preferences/proc/randomize_skin_color()
 	preview_dummy.update_body()
 	preview_dummy.update_hair()
 
-	arm_equipment(preview_dummy, J, FALSE, FALSE, owner)
-
+	if(show_job_gear)
+		arm_equipment(preview_dummy, J, FALSE, FALSE, owner)
+	
 	preview_front = new()
 	owner.screen |= preview_front
 	preview_front.icon_state = "blank"
+	preview_front.overlays += image('icons/turf/almayer.dmi', null, bg_state, BELOW_MOB_LAYER)
 	preview_front.vis_contents += preview_dummy
 	preview_front.screen_loc = "preview:0,0"
 
-/datum/preferences/proc/job_pref_to_gear_preset()
+	var/obj/screen/rotate/alt/rotate_left = new(null, preview_dummy)
+	owner.screen |= rotate_left
+	rotate_left.screen_loc = "preview:-1:16,0"
+
+	var/obj/screen/rotate/rotate_right = new(null, preview_dummy)
+	owner.screen |= rotate_right
+	rotate_right.screen_loc = "preview:1:-16,0"
+
+datum/preferences/proc/job_pref_to_gear_preset()
 	var/high_priority
 	for(var/job in job_preference_list)
 		if(job_preference_list[job] == 1)

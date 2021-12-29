@@ -297,7 +297,7 @@
 	name = "Ship Security Cameras"
 	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
-/obj/structure/machinery/computer/security/dropship
+/obj/structure/machinery/computer/security/hangar
 	name = "Dropship Security Cameras Console"
 	icon_state = "security_cam"
 	density = FALSE

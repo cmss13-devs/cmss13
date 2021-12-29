@@ -82,15 +82,15 @@
 /datum/equipment_preset/uscm_ship/liaison/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		var/playtime = get_job_playtime(H.client, rank)
-
-		if(playtime > JOB_PLAYTIME_TIER_4)
-			return "WY-XE"
-		else if(playtime > JOB_PLAYTIME_TIER_3)
-			return "WY-XD"
-		else if(playtime > JOB_PLAYTIME_TIER_2)
-			return "WY-XC"
-		else
-			return paygrade
+		if(H.client.prefs.playtime_perks)
+			if(playtime > JOB_PLAYTIME_TIER_4)
+				return "WY-XE"
+			else if(playtime > JOB_PLAYTIME_TIER_3)
+				return "WY-XD"
+			else if(playtime > JOB_PLAYTIME_TIER_2)
+				return "WY-XC"
+			else
+				return paygrade
 	return paygrade
 
 //*****************************************************************************************************/
@@ -459,12 +459,13 @@
 	access
 	assignment = JOB_SEA
 	rank = JOB_SEA
-	paygrade = "ME8"
+	paygrade = "ME7"
 	role_comm_title = "SEA"
 	minimum_age = 40
 	skills = /datum/skills/SEA
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
+
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
@@ -490,8 +491,21 @@
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
 	if(H.client)
-		if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_1)
-			return "ME9"
+		var/grade8 = "ME8"
+		var/grade9 = "ME9"
+
+		if(H.client && H.client.prefs)
+			var/path = H.client.prefs.sea_path
+			if(path == "Technical")
+				grade8 = "ME8E"
+				grade9 = "ME9E"
+
+		if(!H.client.prefs.playtime_perks)
+			return paygrade
+		if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_3)
+			return grade9
+		else if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_1)
+			return grade8
 	return paygrade
 
 //*****************************************************************************************************/
@@ -556,7 +570,7 @@
 	rank = JOB_DROPSHIP_CREW_CHIEF
 	paygrade = "ME6"
 	role_comm_title = "DCC"
-	skills = /datum/skills/pilot
+	skills = /datum/skills/crew_chief
 
 /datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/H)
 	var/backItem = /obj/item/storage/backpack/satchel

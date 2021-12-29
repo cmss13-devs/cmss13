@@ -229,6 +229,7 @@
 #define ACTION_RED_POWER_UP		10
 #define ACTION_GREEN_POWER_UP	11
 #define ACTION_BLUE_POWER_UP	12
+#define ACTION_PURPLE_POWER_UP	13
 
 //defins for datum/hud
 

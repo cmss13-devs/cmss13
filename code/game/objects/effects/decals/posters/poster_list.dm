@@ -182,3 +182,29 @@ Template
 	icon_state="poster35"
 	name = "Walkman"
 	desc = "This poster depicts a walkman and reads 'Don't Forget Your Walkman.'"
+
+/datum/poster/poster_36
+	icon_state="poster36"
+	name = "TAB"
+	desc = "This poster depicts the logo for TAB. TAB is a low calorie soft drink that never really made it off of Earth. It's odd to see a poster advertising it way out here. Maybe someone just likes the logo."
+
+/datum/poster/poster_37
+	icon_state="poster37"
+	name = "Pepsi Cola"
+	desc = "This poster depicts the logo for Pepsi Cola. Pepsi is a soft drink that never really made it off of Earth. It's odd to see a poster advertising it way out here. Maybe someone just likes the logo. They've claimed to be the taste of a new generation for about 200 years."
+
+/datum/poster/poster_38
+	icon_state="poster38"
+	name = "MTV"
+	desc = "MTV: Broadcasting nothing but music videos for over 200 years. Bootleg tapes of current music fetch a premium in the Outer Rim barter market."
+
+
+/datum/poster/poster_39
+	icon_state="poster39"
+	name = "Jimmy and the Mormons: Enlightened Resonance Tour Poster"
+	desc = "Jimmy and the Mormons were a rock band about ten years back consisting of a man and his seven wives. The Church of Jesus Christ of the Latter-day Saints officially denounced them multiple times and it was later revealed that the band members weren't Mormon and weren't even married. It was quite the scandal in the music world."
+
+/datum/poster/poster_40
+	icon_state="poster40"
+	name = "Vote 'NO' to Proposition 339 and Vote 'NO!' to the Colonial Protection Act"
+	desc = "This poster demands that you vote 'NO!' to that new piece of legislation that would give the military carte-blance permission to stick its nose in corporate affairs. Many view the bill as government overreach, but many others view it as the lesser of two evils compared to letting the megacorps do whatever they want. Because space is friggin' huge, it's going to take a while to gather all of the votes and even if it's passed, it likely won't go into effect until 2186 at the earliest."

@@ -108,6 +108,7 @@ GLOBAL_LIST_EMPTY_TYPED(ghost_images_default, /image)
 
 	ghostimage_default = image(src.icon,src,src.icon_state)
 	ghostimage_default.override = TRUE
+	ghostimage_default.overlays = overlays
 	GLOB.ghost_images_default |= ghostimage_default
 
 	updateallghostimages()

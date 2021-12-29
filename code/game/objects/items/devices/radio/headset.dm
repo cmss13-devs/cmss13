@@ -15,6 +15,8 @@
 	var/list/keys //Actual objects.
 	maxf = 1489
 
+	var/list/volume_settings
+
 /obj/item/device/radio/headset/Initialize()
 	. = ..()
 	keys = list()
@@ -22,6 +24,27 @@
 		keys += new key(src)
 	recalculateChannels()
 	ADD_TRAIT(src, TRAIT_ITEM_EAR_EXCLUSIVE, TRAIT_SOURCE_GENERIC)
+
+	if(length(volume_settings))
+		verbs += /obj/item/device/radio/headset/proc/set_volume_setting
+
+/obj/item/device/radio/headset/proc/set_volume_setting()
+	set name = "Set Headset Volume"
+	set category = "Object"
+	set src in usr
+
+	var/static/list/text_to_volume = list(
+		RADIO_VOLUME_QUIET_STR = RADIO_VOLUME_QUIET,
+		RADIO_VOLUME_RAISED_STR = RADIO_VOLUME_RAISED,
+		RADIO_VOLUME_IMPORTANT_STR = RADIO_VOLUME_IMPORTANT,
+		RADIO_VOLUME_CRITICAL_STR = RADIO_VOLUME_CRITICAL
+	)
+
+	var/volume_setting = tgui_input_list(usr, "Select the volume you want your headset to transmit at.", "Headset Volume", volume_settings)
+	if(!volume_setting)
+		return
+	volume = text_to_volume[volume_setting]
+	to_chat(usr, SPAN_NOTICE("You set \the [src]'s volume to <b>[volume_setting]</b>."))
 
 /obj/item/device/radio/headset/handle_message_mode(mob/living/M as mob, message, channel)
 	if (channel == "special")

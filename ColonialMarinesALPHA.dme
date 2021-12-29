@@ -991,6 +991,7 @@
 #include "code\game\objects\items\reagent_containers\food\cans.dm"
 #include "code\game\objects\items\reagent_containers\food\condiment.dm"
 #include "code\game\objects\items\reagent_containers\food\drinks.dm"
+#include "code\game\objects\items\reagent_containers\food\fish_snacks.dm"
 #include "code\game\objects\items\reagent_containers\food\fortunecookie.dm"
 #include "code\game\objects\items\reagent_containers\food\sandwich.dm"
 #include "code\game\objects\items\reagent_containers\food\snacks.dm"

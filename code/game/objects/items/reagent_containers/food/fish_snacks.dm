@@ -1,16 +1,79 @@
 /obj/item/reagent_container/food/snacks/fishable
-	name = "fishable snack"
+	name = "\improper fishable snack"
 	desc = "From the deep it has come. To the deep you shall return. Mother Ocean consumes all."
 	icon = 'icons/obj/items/fishing_atoms.dmi'
 	icon_state = null
 	bitesize = 4
 	trash = null
+	var/min_length = 1
+	var/max_length = 5
+	var/total_length = ""
+	var/guttable = TRUE
+	var/gutted = FALSE
+	var/gut_icon_state = null
+	var/gut_time = 3
+	var/initial_desc = ""
+	var/list/guttable_atoms = list(/obj/item/reagent_container/food/snacks/meat, /obj/item/reagent_container/food/snacks/meat/syntiflesh)//placeholders, for now
+	var/base_gut_meat = /obj/item/reagent_container/food/snacks/meat
 	//slice_path = null//
 	//slices_num
 	//package = 0//did someone say shell critters?
 
+/obj/item/reagent_container/food/snacks/fishable/Initialize()
+	. = ..()
+	total_length = rand(min_length, max_length)//used for fish fact at the round end
+	initial_desc = initial(desc)
+	gut_icon_state = icon_state + "_gutted"
+	update_desc()
+
+
+/obj/item/reagent_container/food/snacks/fishable/proc/update_desc()
+	var/gut_desc
+	if(guttable)
+		desc = initial_desc + "\n\nIt can still be gutted and cleaned."
+	if(gutted)
+		desc = initial_desc + "\n\nIt has already been gutted!"
+	if(!guttable)
+		desc = initial_desc = "\n\nIt cannot be gutted."
+	gut_desc = desc
+
+	desc = gut_desc + "\n\nIt is [total_length]in."
+	return
+
+/obj/item/reagent_container/food/snacks/fishable/update_icon()
+	if(gutted && (gut_icon_state != null))
+		icon_state = gut_icon_state
+		return
+	return
+
+/obj/item/reagent_container/food/snacks/fishable/attackby(obj/item/W, mob/user)
+	if(gutted)
+		to_chat(user, SPAN_WARNING("[src] has already been gutted!"))
+		return
+	if(!guttable)
+		to_chat(user, SPAN_WARNING("[src] cannot be gutted."))
+		return
+	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
+		user.visible_message("[user] starts to cut [W] open and clean it.", "You start to gut [src].")
+		playsound(loc, 'sound/effects/bladeslice.ogg', 25, 1)
+		if(do_after(user, gut_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
+			var/gut_loot = roll(total_length - min_length)
+			if(gut_loot <= 0)
+				gut_loot = 1
+
+			gibs(user.loc)
+			new base_gut_meat(user.loc)//always spawn at least one meat per gut
+			playsound(loc, 'sound/effects/splat.ogg', 25, 1)//replace
+			for(var/i = 1, i < gut_loot, i++)
+				var/T = pick(guttable_atoms)
+				new T(user.loc)
+			gutted = TRUE
+			update_desc()
+			update_icon()
+			return
+
 /obj/item/reagent_container/food/snacks/fishable/crab
-	name = "generic crab"
+	name = "\improper spindle crab"
 	desc = "Delicious crab meat.... Have you seen my meridian vase?"
 	icon_state = "crab"
 	bitesize = 6
@@ -27,7 +90,7 @@
 	desc = "Could be useful as bait?"
 	icon_state = "worm"
 	bitesize = 1
-
+	//todo, attackby with a knife so you can make bait objects for fishing with
 /obj/item/reagent_container/food/snacks/fishable/quadtopus
 	name = "quadtopus"
 	desc = "Like an octopus, but a whole lot meaner, dumber, and smaller. So basically a marine Marine."

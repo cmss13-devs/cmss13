@@ -71,10 +71,14 @@
 			to_chat(user, SPAN_WARNING("You don't seem to know how to use [src]..."))
 			return
 
-	defib_cooldown = world.time + 20 //2 seconds cooldown every time the defib is toggled
+	defib_cooldown = world.time + 10 //1 second cooldown every time the defib is toggled
 	ready = !ready
 	user.visible_message(SPAN_NOTICE("[user] turns [src] [ready? "on and takes the paddles out" : "off and puts the paddles back in"]."),
 	SPAN_NOTICE("You turn [src] [ready? "on and take the paddles out" : "off and put the paddles back in"]."))
+	if(ready)
+		w_class = SIZE_LARGE
+	else
+		w_class = initial(w_class)
 	playsound(get_turf(src), "sparks", 25, 1, 4)
 	update_icon()
 	add_fingerprint(user)
@@ -200,12 +204,13 @@
 	H.apply_damage(-H.getOxyLoss(), OXY)
 	H.updatehealth() //Needed for the check to register properly
 
-	for(var/datum/reagent/R in H.reagents.reagent_list)
-		var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
-		if(P)
-			P.trigger(H)
-			H.reagents.remove_reagent(R.id, 1)
-			break
+	if(!(H.species?.flags & NO_CHEM_METABOLIZATION))
+		for(var/datum/reagent/R in H.reagents.reagent_list)
+			var/datum/chem_property/P = R.get_property(PROPERTY_ELECTROGENETIC)//Adrenaline helps greatly at restarting the heart
+			if(P)
+				P.trigger(H)
+				H.reagents.remove_reagent(R.id, 1)
+				break
 	if(H.health > HEALTH_THRESHOLD_DEAD)
 		user.visible_message(SPAN_NOTICE("[icon2html(src, viewers(src))] \The [src] beeps: Defibrillation successful."))
 		user.track_life_saved(user.job)

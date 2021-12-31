@@ -2,6 +2,7 @@
 /datum/action
 	var/name = "Generic Action"
 	var/action_icon_state
+	var/button_icon_state
 	var/obj/target = null
 	var/obj/screen/action_button/button = null
 	var/mob/owner
@@ -24,6 +25,8 @@
 		button.overlays += IMG
 	button.source_action = src
 	button.name = name
+	if(button_icon_state)
+		button.icon_state = button_icon_state
 
 	if(override_icon_state)
 		button.overlays += image('icons/mob/hud/actions.dmi', button, override_icon_state)

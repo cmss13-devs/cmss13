@@ -365,30 +365,28 @@
 	. = ..()
 
 //subtypes can override this to specify what can be holstered
-/obj/item/clothing/accessory/holster/proc/can_holster(obj/item/weapon/gun/W)
-	if(!istype(W))
-		return 0 //Only for guns
-	if(W.w_class <= SIZE_MEDIUM) return 1
-	return 0
+/obj/item/clothing/accessory/holster/proc/can_holster(obj/item/I, mob/user)
+	if(!isgun(I) && !isbanana(I))
+		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
+		return FALSE
+	if(I.w_class > SIZE_MEDIUM)
+		to_chat(user, SPAN_DANGER("\The [I] won't fit in \the [src]!"))
+		return FALSE
+	return TRUE
 
-/obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user as mob)
+/obj/item/clothing/accessory/holster/proc/holster(obj/item/I, mob/user)
 	if(holstered)
 		to_chat(user, SPAN_DANGER("There is already a [holstered] holstered here!"))
 		return
 
-	if (!isgun(I))
-		to_chat(user, SPAN_DANGER("Only guns can be holstered!"))
-		return
-
 	var/obj/item/weapon/gun/W = I
-	if (!can_holster(W))
-		to_chat(user, SPAN_DANGER("This [W] won't fit in the [src]!"))
+	if(!can_holster(W, user))
 		return
 
 	holstered = W
 	user.drop_inv_item_to_loc(holstered, src)
 	holstered.add_fingerprint(user)
-	user.visible_message(SPAN_NOTICE("[user] holsters the [holstered]."), "You holster the [holstered].")
+	user.visible_message(SPAN_NOTICE("[user] holsters \the [holstered]."), "You holster \the [holstered].")
 
 /obj/item/clothing/accessory/holster/proc/unholster(mob/user as mob)
 	if(!holstered)
@@ -544,7 +542,7 @@
 	hold = /obj/item/storage/internal/accessory/black_vest
 
 /obj/item/clothing/accessory/storage/black_vest/attackby(obj/item/W, mob/living/user)
-	if(HAS_TRAIT(W, TRAIT_TOOL_SCREWDRIVER) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
+	if(HAS_TRAIT(W, TRAIT_TOOL_WIRECUTTERS) && skillcheck(user, SKILL_RESEARCH, SKILL_RESEARCH_TRAINED))
 		var/components = 0
 		var/obj/item/reagent_container/glass/beaker/vial
 		var/obj/item/cell/battery
@@ -587,7 +585,7 @@
 	icon_state = "waistcoat"
 
 /obj/item/storage/internal/accessory/surg_vest
-	storage_slots = 12
+	storage_slots = 13
 	can_hold = list(
 		/obj/item/tool/surgery,
 		/obj/item/stack/medical/advanced/bruise_pack,

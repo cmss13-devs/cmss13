@@ -151,9 +151,10 @@
 #define SS_PRIORITY_ADMIN          0
 
 
-#define INITIALIZE_HINT_NORMAL   0  //Nothing happens
-#define INITIALIZE_HINT_LATELOAD 1  //Call LateInitialize
-#define INITIALIZE_HINT_QDEL     2  //Call qdel on the atom
+#define INITIALIZE_HINT_NORMAL     0  //Nothing happens
+#define INITIALIZE_HINT_LATELOAD   1  //Call LateInitialize
+#define INITIALIZE_HINT_QDEL       2  //Call qdel on the atom
+#define INITIALIZE_HINT_ROUNDSTART 3  //Call LateInitialize on roundstart
 
 // SS runlevels
 

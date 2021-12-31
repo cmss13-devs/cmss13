@@ -55,8 +55,7 @@ var/global/marines_assigned = 0
 											/datum/job/logistics,
 											/datum/job/marine,
 											/datum/job/antag,
-											/datum/job/distress,
-											/datum/job/distress/provost
+											/datum/job/special
 											)
 	var/squads_all[] = typesof(/datum/squad) - /datum/squad
 	var/castes_all[] = subtypesof(/datum/caste_datum)
@@ -255,7 +254,7 @@ var/global/marines_assigned = 0
 				roles_left = assign_random_role(M, roles_left) //We want to keep the list between assignments.
 			if(BE_MARINE)
 				var/datum/job/marine_job = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
-				assign_role(M, marine_job.title) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
+				assign_role(M, marine_job) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
 			if(BE_XENOMORPH)
 				assign_role(M, temp_roles_for_mode[JOB_XENOMORPH])
 			if(RETURN_TO_LOBBY)
@@ -705,6 +704,47 @@ var/global/marines_assigned = 0
 			to_chat(H, "Something went wrong with randomize_squad()! Tell a coder!")
 			return
 		given_squad.put_marine_in_squad(H) //Found one, finish up
+
+/datum/authority/branch/role/proc/get_caste_by_text(var/name)
+	var/mob/living/carbon/Xenomorph/M
+	switch(name) //ADD NEW CASTES HERE!
+		if(XENO_CASTE_LARVA)
+			M = /mob/living/carbon/Xenomorph/Larva
+		if(XENO_CASTE_RUNNER)
+			M = /mob/living/carbon/Xenomorph/Runner
+		if(XENO_CASTE_DRONE)
+			M = /mob/living/carbon/Xenomorph/Drone
+		if(XENO_CASTE_CARRIER)
+			M = /mob/living/carbon/Xenomorph/Carrier
+		if(XENO_CASTE_HIVELORD)
+			M = /mob/living/carbon/Xenomorph/Hivelord
+		if(XENO_CASTE_BURROWER)
+			M = /mob/living/carbon/Xenomorph/Burrower
+		if(XENO_CASTE_PRAETORIAN)
+			M = /mob/living/carbon/Xenomorph/Praetorian
+		if(XENO_CASTE_RAVAGER)
+			M = /mob/living/carbon/Xenomorph/Ravager
+		if(XENO_CASTE_SENTINEL)
+			M = /mob/living/carbon/Xenomorph/Sentinel
+		if(XENO_CASTE_SPITTER)
+			M = /mob/living/carbon/Xenomorph/Spitter
+		if(XENO_CASTE_LURKER)
+			M = /mob/living/carbon/Xenomorph/Lurker
+		if(XENO_CASTE_WARRIOR)
+			M = /mob/living/carbon/Xenomorph/Warrior
+		if(XENO_CASTE_DEFENDER)
+			M = /mob/living/carbon/Xenomorph/Defender
+		if(XENO_CASTE_QUEEN)
+			M = /mob/living/carbon/Xenomorph/Queen
+		if(XENO_CASTE_CRUSHER)
+			M = /mob/living/carbon/Xenomorph/Crusher
+		if(XENO_CASTE_BOILER)
+			M = /mob/living/carbon/Xenomorph/Boiler
+		if(XENO_CASTE_PREDALIEN)
+			M =	/mob/living/carbon/Xenomorph/Predalien
+
+	return M
+
 
 /proc/get_desired_status(var/desired_status, var/status_limit)
 	var/found_desired = FALSE

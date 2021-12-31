@@ -18,7 +18,7 @@
 /mob/living/carbon/hellhound/Initialize()
 	create_reagents(1000)
 
-	add_language("Sainja") //They can only understand it though.
+	add_language(LANGUAGE_YAUTJA) //They can only understand it though.
 
 	if(name == initial(name))
 		var/random_name = "[name] ([rand(1, 1000)])"
@@ -26,7 +26,7 @@
 
 	radio = new /obj/item/device/radio/headset/yautja(src)
 	camera = new /obj/structure/machinery/camera(src)
-	camera.network = list("PRED")
+	camera.network = list(CAMERA_NET_YAUTJA)
 	camera.c_tag = src.real_name
 	..()
 

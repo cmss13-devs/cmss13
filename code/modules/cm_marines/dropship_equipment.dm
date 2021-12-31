@@ -17,6 +17,7 @@
 	var/datum/shuttle/ferry/marine/linked_shuttle
 	var/screen_mode = 0 //used by the dropship console code when this equipment is selected
 	var/point_cost = 0 //how many points it costs to build this with the fabricator, set to 0 if unbuildable.
+	var/skill_required = SKILL_PILOT_TRAINED
 
 /obj/structure/dropship_equipment/Destroy()
 	QDEL_NULL(ammo_equipped)
@@ -512,17 +513,21 @@
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/Destroy()
 	linked_cam_console = null
-	. = ..()
+	return ..()
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/on_launch()
-	linked_cam_console.network.Add("landing zones") //only accessible while in the air.
-	for(var/ref in linked_cam_console.concurrent_users)
-		linked_cam_console.update_static_data(locate(ref))
+	linked_cam_console.network.Add(CAMERA_NET_LANDING_ZONES) //only accessible while in the air.
+	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
+		var/mob/user = ref.resolve()
+		if(user)
+			linked_cam_console.update_static_data(user)
 
 /obj/structure/dropship_equipment/electronics/landing_zone_detector/on_arrival()
-	linked_cam_console.network.Remove("landing zones")
-	for(var/ref in linked_cam_console.concurrent_users)
-		linked_cam_console.update_static_data(locate(ref))
+	linked_cam_console.network.Remove(CAMERA_NET_LANDING_ZONES)
+	for(var/datum/weakref/ref in linked_cam_console.concurrent_users)
+		var/mob/user = ref.resolve()
+		if(user)
+			linked_cam_console.update_static_data(user)
 
 
 /////////////////////////////////// COMPUTERS //////////////////////////////////////
@@ -557,6 +562,7 @@
 	is_weapon = TRUE
 	screen_mode = 1
 	is_interactable = TRUE
+	skill_required = SKILL_PILOT_EXPERT
 	var/last_fired //used for weapon cooldown after use.
 	var/firing_sound
 	var/firing_delay = 20 //delay between firing. 2 seconds by default
@@ -666,6 +672,7 @@
 	icon_state = "30mm_cannon"
 	firing_sound = 'sound/effects/cannon30.ogg'
 	point_cost = 400
+	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
 
 /obj/structure/dropship_equipment/weapon/heavygun/update_icon()
@@ -725,6 +732,7 @@
 	firing_sound = 'sound/effects/phasein.ogg'
 	firing_delay = 50 //5 seconds
 	point_cost = 500
+	skill_required = SKILL_PILOT_TRAINED
 	fire_mission_only = FALSE
 
 /obj/structure/dropship_equipment/weapon/laser_beam_gun/update_icon()

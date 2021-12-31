@@ -72,42 +72,7 @@
 
 	var/mob/living/carbon/Xenomorph/M = null
 
-	//Better to use a get_caste_by_text proc but ehhhhhhhh. Lazy.
-	switch(castepick) //ADD NEW CASTES HERE!
-		if(XENO_CASTE_LARVA) //Not actually possible, but put here for insanity's sake
-			M = /mob/living/carbon/Xenomorph/Larva
-		if(XENO_CASTE_RUNNER)
-			M = /mob/living/carbon/Xenomorph/Runner
-		if(XENO_CASTE_DRONE)
-			M = /mob/living/carbon/Xenomorph/Drone
-		if(XENO_CASTE_CARRIER)
-			M = /mob/living/carbon/Xenomorph/Carrier
-		if(XENO_CASTE_HIVELORD)
-			M = /mob/living/carbon/Xenomorph/Hivelord
-		if(XENO_CASTE_BURROWER)
-			M = /mob/living/carbon/Xenomorph/Burrower
-		if(XENO_CASTE_PRAETORIAN)
-			M = /mob/living/carbon/Xenomorph/Praetorian
-		if(XENO_CASTE_RAVAGER)
-			M = /mob/living/carbon/Xenomorph/Ravager
-		if(XENO_CASTE_SENTINEL)
-			M = /mob/living/carbon/Xenomorph/Sentinel
-		if(XENO_CASTE_SPITTER)
-			M = /mob/living/carbon/Xenomorph/Spitter
-		if(XENO_CASTE_LURKER)
-			M = /mob/living/carbon/Xenomorph/Lurker
-		if (XENO_CASTE_WARRIOR)
-			M = /mob/living/carbon/Xenomorph/Warrior
-		if (XENO_CASTE_DEFENDER)
-			M = /mob/living/carbon/Xenomorph/Defender
-		if(XENO_CASTE_QUEEN)
-			M = /mob/living/carbon/Xenomorph/Queen
-		if(XENO_CASTE_CRUSHER)
-			M = /mob/living/carbon/Xenomorph/Crusher
-		if(XENO_CASTE_BOILER)
-			M = /mob/living/carbon/Xenomorph/Boiler
-		if(XENO_CASTE_PREDALIEN)
-			M = /mob/living/carbon/Xenomorph/Predalien
+	M = RoleAuthority.get_caste_by_text(castepick)
 
 	if(isnull(M))
 		to_chat(usr, SPAN_WARNING("[castepick] is not a valid caste! If you're seeing this message, tell a coder!"))

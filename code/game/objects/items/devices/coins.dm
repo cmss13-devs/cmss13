@@ -44,6 +44,11 @@
 	name = "platinum coin"
 	icon_state = "coin_adamantine"
 
+/obj/item/coin/marine/synth
+	name = "synthetic experimental tool redemption token"
+	desc = "Insert this into a synthetic experimental tools vendor in order to access a variety of experimental support tools."
+	icon_state = "coin_adamantine"
+
 /obj/item/coin/attackby(obj/item/W as obj, mob/user as mob)
 	if(istype(W,/obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W

@@ -274,16 +274,25 @@
 	icon_state = "webbing"
 	item_state = "webbing"
 	allowed = list(
-		/obj/item/toy,
+		/obj/item/device/analyzer,
+		/obj/item/device/multitool,
+		/obj/item/device/pipe_painter,
+		/obj/item/device/t_scanner,
+		/obj/item/tool/screwdriver,
+		/obj/item/tool/weldingtool,
+		/obj/item/tool/wirecutters,
+		/obj/item/tool/wrench,
+		/obj/item/clothing/mask/gas,
 
 		/obj/item/device/flashlight,
-		/obj/item/device/binoculars,
-		/obj/item/tool/crew_monitor,
 		/obj/item/device/healthanalyzer,
 		/obj/item/device/radio,
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
+		/obj/item/device/binoculars,
+		/obj/item/tool/crew_monitor,
+		/obj/item/reagent_container/hypospray,
 	)
 
 //Blue suit jacket toggle
@@ -423,9 +432,7 @@
 		/obj/item/device/analyzer,
 		/obj/item/device/multitool,
 		/obj/item/device/pipe_painter,
-		/obj/item/device/radio,
 		/obj/item/device/t_scanner,
-		/obj/item/tool/crowbar,
 		/obj/item/tool/screwdriver,
 		/obj/item/tool/weldingtool,
 		/obj/item/tool/wirecutters,
@@ -438,6 +445,9 @@
 		/obj/item/tank/emergency_oxygen,
 		/obj/item/tool/crowbar,
 		/obj/item/tool/pen,
+		/obj/item/device/binoculars,
+		/obj/item/tool/crew_monitor,
+		/obj/item/reagent_container/hypospray,
 	)
 	min_cold_protection_temperature = T0C
 	siemens_coefficient = 0.7

@@ -18,7 +18,7 @@
 /obj/structure/ladder/Initialize(mapload, ...)
 	. = ..()
 	cam = new /obj/structure/machinery/camera(src)
-	cam.network = list("LADDER")
+	cam.network = list(CAMERA_NET_LADDER)
 	cam.c_tag = name
 
 	GLOB.ladder_list += src

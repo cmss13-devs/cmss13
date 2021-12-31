@@ -483,7 +483,7 @@
 
 
 	if(isYautja(user))
-		var/obj/item/clothing/gloves/yautja/bracers = gloves
+		var/obj/item/clothing/gloves/yautja/hunter/bracers = gloves
 		if(istype(bracers) && bracers.name_active)
 			to_chat(user, SPAN_BLUE("Their bracers identifies them as <b>[real_name]</b>."))
 		to_chat(user, SPAN_BLUE("[src] has the scent of [life_kills_total] defeated prey."))

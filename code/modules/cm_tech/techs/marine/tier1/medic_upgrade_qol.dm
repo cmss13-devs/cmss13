@@ -33,6 +33,7 @@
 	var/datum/supply_packs/SP = /datum/supply_packs/upgraded_medical_kits
 	SP = supply_controller.supply_packs[initial(SP.name)]
 	SP.buyable = TRUE
+	SP.cost = RO_PRICE_PRICY
 
 /datum/tech/droppod/item/medic_czsp/get_options(mob/living/carbon/human/H, obj/structure/droppod/D)
 	. = ..()

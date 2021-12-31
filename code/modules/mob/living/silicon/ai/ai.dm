@@ -47,7 +47,7 @@ var/list/ai_verbs_default = list(
 	status_flags = CANSTUN|CANKNOCKOUT
 	med_hud = MOB_HUD_MEDICAL_BASIC
 	sec_hud = MOB_HUD_SECURITY_BASIC
-	var/list/network = list("almayer")
+	var/list/network = list(CAMERA_NET_ALMAYER)
 	var/obj/structure/machinery/camera/camera = null
 	var/list/connected_robots = list()
 	var/aiRestorePowerRoutine = 0
@@ -116,10 +116,10 @@ var/list/ai_verbs_default = list(
 		add_ai_verbs(src)
 
 	//Languages
-	add_language("Robot Talk", 1)
-	add_language("English", 1)
-	add_language("Russian", 1)
-	add_language("Xenomorph", 0)
+	add_language(LANGUAGE_BINARY, 1)
+	add_language(LANGUAGE_ENGLISH, 1)
+	add_language(LANGUAGE_RUSSIAN, 1)
+	add_language(LANGUAGE_XENOMORPH, 0)
 
 
 	if(!safety)//Only used by AIize() to successfully spawn an AI.

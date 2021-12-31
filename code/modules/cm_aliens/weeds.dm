@@ -107,7 +107,7 @@
 	if(parent)
 		if(istype(parent, /obj/effect/alien/weeds/node/pylon))
 			var/obj/effect/alien/weeds/node/pylon/P = parent
-			P.parent_pylon.damaged = TRUE
+			P.set_parent_damaged()
 		parent.remove_child(src)
 
 	var/oldloc = loc
@@ -440,9 +440,6 @@
 		RegisterSignal(TR, COMSIG_PARENT_PREQDELETED, .proc/trap_destroyed)
 		overlay_node = FALSE
 		overlays -= staticnode
-	else
-		overlay_node = TRUE
-		overlays += staticnode
 
 	if(X)
 		add_hiddenprint(X)
@@ -461,6 +458,8 @@
 		COMSIG_WEEDNODE_GROWTH_COMPLETE,
 		COMSIG_WEEDNODE_CANNOT_EXPAND_FURTHER,
 	), .proc/complete_growth)
+
+	update_icon()
 
 /obj/effect/alien/weeds/node/Destroy()
 	// When the node is removed, weeds should start dying out
@@ -481,6 +480,9 @@
 	))
 	health = NODE_HEALTH_STANDARD
 
+/obj/effect/alien/weeds/node/alpha
+	hivenumber = XENO_HIVE_ALPHA
+
 /obj/effect/alien/weeds/node/feral
 	hivenumber = XENO_HIVE_FERAL
 
@@ -488,13 +490,18 @@
 	health = WEED_HEALTH_HIVE
 	weed_strength = WEED_LEVEL_HIVE
 	node_range = WEED_RANGE_PYLON
-	var/obj/effect/alien/resin/special/pylon/parent_pylon
+	overlay_node = FALSE
+	var/obj/effect/alien/resin/special/resin_parent
+
+/obj/effect/alien/weeds/node/pylon/proc/set_parent_damaged()
+	var/obj/effect/alien/resin/special/pylon/parent_pylon = resin_parent
+	parent_pylon.damaged = TRUE
 
 /obj/effect/alien/weeds/node/pylon/core
 	node_range = WEED_RANGE_CORE
 
 /obj/effect/alien/weeds/node/pylon/Destroy()
-	parent_pylon = null
+	resin_parent = null
 	return ..()
 
 /obj/effect/alien/weeds/node/pylon/ex_act(severity)
@@ -511,5 +518,9 @@
 
 /obj/effect/alien/weeds/node/pylon/acid_spray_act()
 	return
+
+/obj/effect/alien/weeds/node/pylon/cluster/set_parent_damaged()
+	var/obj/effect/alien/resin/special/cluster/parent_cluster = resin_parent
+	parent_cluster.damaged = TRUE
 
 #undef WEED_BASE_GROW_SPEED

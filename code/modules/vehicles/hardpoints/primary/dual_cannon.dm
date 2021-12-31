@@ -1,7 +1,7 @@
 // APC cannons
 /obj/item/hardpoint/primary/dualcannon
 	name = "PARS-159 Boyars Dualcannon"
-	desc = "A primary two-barrel cannon for the APC that shoots explosive flak rounds"
+	desc = "A primary two-barrel cannon for the APC that shoots 20mm IFF-compatible rounds."
 	icon = 'icons/obj/vehicles/hardpoints/apc.dmi'
 
 	icon_state = "dual_cannon"
@@ -12,7 +12,7 @@
 	damage_multiplier = 0.2
 
 	health = 500
-	cooldown = 10
+	cooldown = 7
 	accuracy = 0.98
 	firing_arc = 60
 	var/burst_amount = 2
@@ -28,6 +28,12 @@
 		"4" = list(-14, 9),
 		"8" = list(14, 9)
 	)
+
+/obj/item/hardpoint/primary/dualcannon/set_bullet_traits()
+	..()
+	LAZYADD(traits_to_give, list(
+		BULLET_TRAIT_ENTRY(/datum/element/bullet_trait_iff)
+	))
 
 /obj/item/hardpoint/primary/dualcannon/fire(var/mob/user, var/atom/A)
 	if(ammo.current_rounds <= 0)

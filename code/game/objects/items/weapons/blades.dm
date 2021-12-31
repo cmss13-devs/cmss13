@@ -104,8 +104,8 @@
 	sharp = IS_SHARP_ITEM_ACCURATE
 	force = MELEE_FORCE_TIER_1
 	w_class = SIZE_SMALL
-	throwforce = MELEE_FORCE_TIER_11 //increased by throwspeed to roughly 80
-	throw_speed = SPEED_REALLY_FAST
+	throwforce = MELEE_FORCE_TIER_10 //increased by throwspeed to roughly 80
+	throw_speed = SPEED_VERY_FAST
 	throw_range = 7
 	hitsound = 'sound/weapons/slash.ogg'
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

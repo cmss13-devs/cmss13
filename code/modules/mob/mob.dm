@@ -451,6 +451,8 @@
 	var/mob/M
 	if(ismob(AM))
 		M = AM
+		if(!M.can_be_pulled_by(src))
+			return
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
 
@@ -474,6 +476,8 @@
 	var/mob/M
 	if(ismob(AM))
 		M = AM
+		if(!M.can_be_pulled_by(src))
+			return
 	else if(istype(AM, /obj))
 		AM.add_fingerprint(src)
 

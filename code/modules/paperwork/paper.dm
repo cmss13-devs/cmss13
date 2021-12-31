@@ -480,6 +480,10 @@
 	name = "DJ Listening Outpost"
 	info = "<B>Welcome new owner!</B><BR><BR>You have purchased the latest in listening equipment. The telecommunication setup we created is the best in listening to common and private radio fequencies. Here is a step by step guide to start listening in on those saucy radio channels:<br><ol><li>Equip yourself with a multi-tool</li><li>Use the multitool on each machine, that is the broadcaster, receiver and the relay.</li><li>Turn all the machines on, it has already been configured for you to listen on.</li></ol> Simple as that. Now to listen to the private channels, you'll have to configure the intercoms, located on the front desk. Here is a list of frequencies for you to listen on.<br><ul><li>145.7 - Common Channel</li><li>144.7 - Private AI Channel</li><li>135.9 - Security Channel</li><li>135.7 - Engineering Channel</li><li>135.5 - Medical Channel</li><li>135.3 - Command Channel</li><li>135.1 - Science Channel</li><li>134.9 - Mining Channel</li><li>134.7 - Cargo Channel</li>"
 
+/obj/item/paper/warhead_recycle
+	name = "USCM Recycling Efforts"
+	info = "<B>Hello USCM Orbital Cannon System Owner!</B><BR><BR>We regret to inform you that a communications mishap has resulted in your orbital bombardment warheads being recycled for spare metal! Worry not, the metal has been put to good use in High Command's chest freezer."
+
 /obj/item/paper/flag
 	icon_state = "flag_neutral"
 	item_state = "paper"
@@ -530,6 +534,10 @@
 
 /obj/item/paper/prison_station/nursery_rhyme
 	info = "<p>Mary had a little lamb,<BR>\nits fleece was white as snow;<BR>\nAnd everywhere that Mary went,<BR>\nthe lamb was sure to go.</p><p>It followed her to school one day,<BR>\nwhich was against the rule;<BR>\nIt made the children laugh and play,<BR>\nto see a lamb at school.</p><p>And so the teacher turned it out,<BR>\nbut still it lingered near,<BR>\nAnd waited patiently about,<BR>\ntill Mary did appear.</p><p>\"Why does the lamb love Mary so?\"<BR>\nthe eager children cry;<BR>\n\"Why, Mary loves the lamb, you know\",<BR>\nthe teacher did reply."
+
+/obj/item/paper/lv_624/cheese
+	name = "paper= 'Note on the contents of the armoury'"
+	info = "<p>Seems the administrator had an extra shipment of cheese delivered in our last supply drop from Earth. We've got no space to store it in the main kitchen, and he wants it to \"age\" or something.</p><p>It's being kept in the armoury for now, seems it has the right conditions. Anyway, apologies about the smell.</p><p> - Marshall"
 
 /obj/item/paper/crumpled
 	name = "paper scrap"
@@ -609,7 +617,15 @@
 				txt += "<BR>Overdoses at: [C.overdose] units</font><BR>\n"
 			else
 				txt += "<BR>\nTesting for chemical properties is currently pending.<BR>\n"
-			if(C.get_property(PROPERTY_EXPLOSIVE))
+			var/is_volatile = FALSE
+			if(C.chemfiresupp)
+				is_volatile = TRUE
+			else
+				for(var/datum/chem_property/P in C.properties)
+					if(P.volatile)
+						is_volatile = TRUE
+						break
+			if(is_volatile)
 				txt += "<BR><B>\nWARNING: UNSTABLE REAGENT. MIX CAREFULLY.</B><BR>\n"
 			txt += "<BR>\n<HR> - <I>Weyland-Yutani</I>"
 		if("test")

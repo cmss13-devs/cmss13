@@ -43,7 +43,7 @@
 				to_chat(M, SPAN_WARNING("The solution violently explodes."))
 
 			explosion(location, -1, -1, light, flash)
-			if(light > 0) 
+			if(light > 0)
 				return TRUE
 
 	proc/holder_damage(var/atom/holder)
@@ -71,13 +71,14 @@
 	name = "explosive particles"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "explosion_particle"
-	opacity = 1
-	anchored = 1
-	mouse_opacity = 0
+	anchored = TRUE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
-/obj/effect/particle_effect/expl_particles/New()
-	..()
-	QDEL_IN(src, 15)
+/obj/effect/particle_effect/expl_particles/Initialize(mapload, ...)
+	. = ..()
+	dir = pick(alldirs)
+	animate(src, 5, alpha = 0, easing = CUBIC_EASING)
+	QDEL_IN(src, 5)
 
 /datum/effect_system/expl_particles
 	number = 10

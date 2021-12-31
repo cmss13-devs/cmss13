@@ -531,6 +531,7 @@
 #define XENO_STRUCTURE_BUILD_TIME           20
 
 #define XENO_STRUCTURE_CORE                 "hive core"
+#define XENO_STRUCTURE_CLUSTER              "hive cluster"
 #define XENO_STRUCTURE_PYLON                "hive pylon"
 #define XENO_STRUCTURE_POOL                 "spawn pool"
 #define XENO_STRUCTURE_EGGMORPH             "egg morpher"

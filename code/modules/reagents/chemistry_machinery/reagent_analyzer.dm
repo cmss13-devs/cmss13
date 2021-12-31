@@ -104,7 +104,7 @@
 			chemical_data.update_credits(2)
 			chemical_identified_list[S.id] = S.objective_value
 	else
-		report.name += "Analysis of ERROR"
+		report.name = "Analysis of ERROR"
 		report.info += "<center><img src = wylogo.png><HR><I><B>Official Weyland-Yutani Document</B><BR>Reagent Analysis Print</I><HR><H2>Analysis ERROR</H2></center>"
 		report.info += "<B>Result:</B><BR>Analysis failed for sample #[sample_number].<BR><BR>\n"
 		report.info += "<B>Reason for error:</B><BR><I>[reason]</I><BR>\n"

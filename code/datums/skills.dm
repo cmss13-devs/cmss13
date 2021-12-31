@@ -482,12 +482,20 @@ COMMAND STAFF
 		SKILL_MEDICAL = SKILL_MEDICAL_DOCTOR,
 		SKILL_SURGERY = SKILL_SURGERY_TRAINED,
 		SKILL_RESEARCH = SKILL_RESEARCH_TRAINED,
-		SKILL_PILOT = SKILL_PILOT_TRAINED,
+		SKILL_PILOT = SKILL_PILOT_EXPERT,
 		SKILL_POLICE = SKILL_POLICE_SKILLED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
 		SKILL_VEHICLE = SKILL_VEHICLE_LARGE,
 		SKILL_JTAC = SKILL_JTAC_EXPERT
 	)
+
+/datum/skills/SEA/New(var/mob/skillset_owner)
+	..()
+	give_action(skillset_owner, /datum/action/looc_toggle)
+
+/datum/skills/SEA/Destroy()
+	remove_action(owner, /datum/action/looc_toggle)
+	return ..()
 
 /datum/skills/CMO
 	name = "CMO"
@@ -568,6 +576,17 @@ MILITARY NONCOMBATANT
 
 /datum/skills/pilot
 	name = "Pilot Officer"
+	skills = list(
+		SKILL_PILOT = SKILL_PILOT_EXPERT,
+		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,
+		SKILL_LEADERSHIP = SKILL_LEAD_TRAINED,
+		SKILL_MEDICAL = SKILL_MEDICAL_MEDIC,
+		SKILL_SURGERY = SKILL_SURGERY_NOVICE,
+		SKILL_JTAC = SKILL_JTAC_TRAINED,
+	)
+
+/datum/skills/crew_chief
+	name = "Dropship Crew Chief"
 	skills = list(
 		SKILL_PILOT = SKILL_PILOT_TRAINED,
 		SKILL_POWERLOADER = SKILL_POWERLOADER_MASTER,

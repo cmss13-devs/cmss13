@@ -168,7 +168,7 @@
 	M.visible_message(SPAN_NOTICE("[M] starts clearing out the [name]."), SPAN_NOTICE("You start clearing out the [name]."), null, 5, CHAT_TYPE_XENO_COMBAT)
 	playsound(M.loc, 'sound/weapons/alien_claw_swipe.ogg', 25, 1)
 	xeno_attack_delay(M)
-	if(!do_after(M, 25, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+	if(!do_after(M, 12, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
 		return XENO_NO_DELAY_ACTION
 
 	if(!bleed_layer)

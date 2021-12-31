@@ -256,7 +256,6 @@
 
 	icon_xenonid = 'icons/mob/xenonids/queen.dmi'
 
-	var/map_view = 0
 	var/breathing_counter = 0
 	var/ovipositor = FALSE //whether the Queen is attached to an ovipositor
 	var/ovipositor_cooldown = 0
@@ -295,7 +294,7 @@
 		/mob/living/carbon/Xenomorph/proc/toggle_unnesting,
 		/mob/living/carbon/Xenomorph/Queen/proc/set_orders,
 		/mob/living/carbon/Xenomorph/Queen/proc/hive_Message,
-		/mob/living/carbon/Xenomorph/proc/rename_tunnel,
+		/mob/living/carbon/Xenomorph/proc/rename_tunnel
 	)
 
 	var/list/mobile_abilities = list(
@@ -570,15 +569,15 @@
 
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow construction placement to all builder castes."))
-		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!")
+		xeno_message("The Queen has <b>permitted</b> the placement of construction nodes to all builder castes!", hivenumber = src.hivenumber)
 		hive.construction_allowed = NORMAL_XENO
 	else if(choice == "Leaders")
 		to_chat(src, SPAN_XENONOTICE("You restrict construction placement to leaders only."))
-		xeno_message("The Queen has <b>restricted</b> the placement of construction nodes to leading builder castes only.")
+		xeno_message("The Queen has <b>restricted</b> the placement of construction nodes to leading builder castes only.", hivenumber = src.hivenumber)
 		hive.construction_allowed = XENO_LEADER
 	else if(choice == "Queen")
 		to_chat(src, SPAN_XENONOTICE("You forbid construction placement entirely."))
-		xeno_message("The Queen has <b>forbidden</b> the placement of construction nodes to herself.")
+		xeno_message("The Queen has <b>forbidden</b> the placement of construction nodes to herself.", hivenumber = src.hivenumber)
 		hive.construction_allowed = XENO_QUEEN
 
 /mob/living/carbon/Xenomorph/proc/destruction_toggle()
@@ -594,15 +593,15 @@
 
 	if(choice == "Anyone")
 		to_chat(src, SPAN_XENONOTICE("You allow special structure destruction to all builder castes and leaders."))
-		xeno_message("The Queen has <b>permitted</b> the special structure destruction to all builder castes and leaders!")
+		xeno_message("The Queen has <b>permitted</b> the special structure destruction to all builder castes and leaders!", hivenumber = src.hivenumber)
 		hive.destruction_allowed = NORMAL_XENO
 	else if(choice == "Leaders")
 		to_chat(src, SPAN_XENONOTICE("You restrict special structure destruction to leaders only."))
-		xeno_message("The Queen has <b>restricted</b> the special structure destruction to leaders only.")
+		xeno_message("The Queen has <b>restricted</b> the special structure destruction to leaders only.", hivenumber = src.hivenumber)
 		hive.destruction_allowed = XENO_LEADER
 	else if(choice == "Queen")
 		to_chat(src, SPAN_XENONOTICE("You forbid special structure destruction entirely."))
-		xeno_message("The Queen has <b>forbidden</b> the special structure destruction to anyone but herself.")
+		xeno_message("The Queen has <b>forbidden</b> the special structure destruction to anyone but herself.", hivenumber = src.hivenumber)
 		hive.destruction_allowed = XENO_QUEEN
 
 /mob/living/carbon/Xenomorph/proc/toggle_unnesting()
@@ -618,10 +617,10 @@
 
 	if(hive.unnesting_allowed)
 		to_chat(src, SPAN_XENONOTICE("You have allowed everyone to unnest hosts."))
-		xeno_message("The Queen has allowed everyone to unnest hosts.")
+		xeno_message("The Queen has allowed everyone to unnest hosts.", hivenumber = src.hivenumber)
 	else
 		to_chat(src, SPAN_XENONOTICE("You have forbidden anyone to unnest hosts, except for the drone caste."))
-		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.")
+		xeno_message("The Queen has forbidden anyone to unnest hosts, except for the drone caste.", hivenumber = src.hivenumber)
 
 /mob/living/carbon/Xenomorph/Queen/handle_screech_act(var/mob/self, var/mob/living/carbon/Xenomorph/Queen/queen)
 	return COMPONENT_SCREECH_ACT_CANCEL
@@ -742,6 +741,8 @@
 	for(var/path in immobile_abilities)
 		give_action(src, path)
 
+	add_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
+
 	resin_build_order = GLOB.resin_build_order_hivelord
 	extra_build_dist = IGNORE_BUILD_DISTANCE
 	anchored = TRUE
@@ -772,8 +773,6 @@
 	if(!ovipositor)
 		return
 	ovipositor = FALSE
-	map_view = 0
-	close_browser(src, "queenminimap")
 	update_icons()
 	new /obj/ovipositor(loc)
 
@@ -782,6 +781,8 @@
 	zoom_out()
 
 	give_combat_abilities()
+
+	remove_verb(src, /mob/living/carbon/Xenomorph/proc/xeno_tacmap)
 
 	recalculate_actions()
 

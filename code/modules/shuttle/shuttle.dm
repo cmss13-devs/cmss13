@@ -330,6 +330,10 @@
 
 	var/landing_sound = 'sound/effects/engine_landing.ogg'
 	var/ignition_sound = 'sound/effects/engine_startup.ogg'
+	/// Default shuttle audio ambience while flying
+	VAR_PROTECTED/ambience_flight = 'sound/ambience/shuttle_fly_loop.ogg'
+	/// Default shuttle audio ambience while not flying
+	VAR_PROTECTED/ambience_idle = 'sound/ambience/shuttle_idle_loop.ogg'
 
 	// The direction the shuttle prefers to travel in
 	var/preferred_direction = NORTH
@@ -394,6 +398,20 @@
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#0f0")
 	#endif
+
+/// Requests the proper sound ambience to play in the shuttle based on its state
+/obj/docking_port/mobile/proc/get_sound_ambience()
+	if(in_flight())
+		return ambience_flight
+	return ambience_idle
+
+/// Update the sound ambience of ALL shuttle passengers
+/obj/docking_port/mobile/proc/update_ambience()
+	SHOULD_NOT_SLEEP(TRUE)
+	PROTECTED_PROC(TRUE)
+	for(var/client/C as anything in GLOB.clients)
+		if(is_in_shuttle_bounds(C?.mob))
+			C?.soundOutput.update_ambience()
 
 // Called after the shuttle is loaded from template
 /obj/docking_port/mobile/proc/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
@@ -941,7 +959,7 @@
 /obj/docking_port/mobile/proc/set_mode(new_mode)
 	mode = new_mode
 	SEND_SIGNAL(src, COMSIG_SHUTTLE_SETMODE, mode)
-
+	INVOKE_ASYNC(src, .proc/update_ambience)
 
 /obj/docking_port/mobile/proc/can_move_topic(mob/user)
 	if(mode == SHUTTLE_RECHARGING)

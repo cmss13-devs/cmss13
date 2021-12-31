@@ -18,7 +18,7 @@
 		var/alien = 0
 		if(species && species.reagent_tag)
 			alien = species.reagent_tag
-		reagents.metabolize(src,alien, delta_time=delta_time)
+		reagents.metabolize(src, alien, delta_time)
 
 	if(status_flags & GODMODE)
 		return 0 //Godmode
@@ -35,7 +35,7 @@
 
 	return //TODO: DEFERRED
 
-/mob/living/carbon/human/proc/handle_necro_chemicals_in_body()
+/mob/living/carbon/human/proc/handle_necro_chemicals_in_body(var/delta_time)
 	SHOULD_NOT_SLEEP(TRUE)
 	if(!reagents || undefibbable)
 		return // Double checking due to Life() funny background=1
@@ -57,7 +57,7 @@
 			return
 
 		if(mods[REAGENT_FORCE])
-			R.handle_processing(src, mods)
-			R.holder.remove_reagent(R.id, R.custom_metabolism)
+			R.handle_processing(src, mods, delta_time)
+			R.holder.remove_reagent(R.id, R.custom_metabolism * delta_time)
 
-		R.handle_dead_processing(src, mods)
+		R.handle_dead_processing(src, mods, delta_time)

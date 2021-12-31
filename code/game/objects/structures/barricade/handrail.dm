@@ -181,3 +181,12 @@
 /obj/structure/barricade/handrail/wire
 	icon_state = "wire_rail"
 	climb_delay = CLIMB_DELAY_SHORT
+
+/obj/structure/barricade/handrail/sandstone
+	name = "sandstone handrail"
+	icon_state = "hr_sandstone"
+	stack_type = /obj/item/stack/sheet/mineral/sandstone
+	debris = list(/obj/item/stack/sheet/mineral/sandstone)
+
+/obj/structure/barricade/handrail/sandstone/b
+	icon_state = "hr_sandstone_b"

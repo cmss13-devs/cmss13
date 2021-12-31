@@ -250,6 +250,8 @@
 			part_a = "<span class='intelradio'><span class='name'>"
 		else if (display_freq == WY_FREQ)
 			part_a = "<span class='wyradio'><span class='name'>"
+		else if (display_freq == RUS_FREQ)
+			part_a = "<span class='syndradio'><span class='name'>"
 
 
 		else if (display_freq == ALPHA_FREQ)

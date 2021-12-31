@@ -12,6 +12,9 @@
 			_L = target.status_traits; \
 			_L[trait] = list(source); \
 			SEND_SIGNAL(target, SIGNAL_ADDTRAIT(trait), trait); \
+			if(trait in GLOB.traits_with_elements){ \
+				target.AddElement(GLOB.traits_with_elements[trait]); \
+			} \
 		} else { \
 			_L = target.status_traits; \
 			if (_L[trait]) { \
@@ -19,6 +22,9 @@
 			} else { \
 				_L[trait] = list(source); \
 				SEND_SIGNAL(target, SIGNAL_ADDTRAIT(trait), trait); \
+				if(trait in GLOB.traits_with_elements){ \
+					target.AddElement(GLOB.traits_with_elements[trait]); \
+				} \
 			} \
 		} \
 	} while (0)
@@ -40,6 +46,9 @@
 			if (!length(_L[trait])) { \
 				_L -= trait; \
 				SEND_SIGNAL(target, SIGNAL_REMOVETRAIT(trait), trait); \
+				if(trait in GLOB.traits_with_elements) { \
+					target.RemoveElement(GLOB.traits_with_elements[trait]); \
+				} \
 			}; \
 			if (!length(_L)) { \
 				target.status_traits = null \
@@ -126,6 +135,8 @@
 #define TRAIT_TWOBORE_TRAINING "t_twobore"
  /// If the mob has equipment that alleviates nearsightedness
 #define TRAIT_NEARSIGHTED_EQUIPMENT "t_nearsighted_eq"
+ /// If the mob is affected by drag delay.area
+#define TRAIT_DEXTROUS "t_dextrous"
 
 
 
@@ -149,7 +160,8 @@ GLOBAL_LIST_INIT(mob_traits, list(
 	TRAIT_NESTED,
 	TRAIT_CRAWLER,
 	TRAIT_SIMPLE_DESC,
-	TRAIT_TWOBORE_TRAINING
+	TRAIT_TWOBORE_TRAINING,
+	TRAIT_DEXTROUS
 ))
 
 //trait SOURCES

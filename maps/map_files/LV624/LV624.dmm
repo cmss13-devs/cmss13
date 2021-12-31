@@ -8283,7 +8283,7 @@
 	dir = 8;
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "aIc" = (
 /obj/structure/machinery/light/small{
 	dir = 1
@@ -8850,7 +8850,7 @@
 /obj/effect/landmark/hunter_primary,
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "aKf" = (
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
@@ -13707,7 +13707,7 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "cgD" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/gm/dirtgrassborder{
@@ -15345,7 +15345,7 @@
 	dir = 9;
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "gbz" = (
 /obj/effect/landmark/structure_spawner/setup/distress/xeno_weed_node,
 /turf/open/gm/dirt,
@@ -15704,7 +15704,7 @@
 	dir = 6;
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/lazarus/landing_zones/lz1)
 "gYs" = (
 /obj/structure/fence,
 /turf/open/gm/dirtgrassborder,
@@ -16578,6 +16578,12 @@
 	icon_state = "floor6"
 	},
 /area/lv624/ground/caves/sand_temple)
+"jsd" = (
+/obj/structure/flora/jungle/vines{
+	icon_state = "light_2"
+	},
+/turf/open/gm/grass,
+/area/lv624/lazarus/landing_zones/lz2)
 "jtg" = (
 /obj/structure/flora/bush/ausbushes/var3/leafybush,
 /turf/open/gm/grass,
@@ -17548,7 +17554,7 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "lKF" = (
 /turf/closed/wall/rock/brown,
 /area/lv624/ground/barrens/containers)
@@ -18389,7 +18395,7 @@
 /obj/item/stack/sheet/metal{
 	amount = 3
 	},
-/obj/item/clothing/shoes/yautja{
+/obj/item/clothing/shoes/yautja/hunter{
 	anchored = 1
 	},
 /turf/open/gm/dirt,
@@ -19001,7 +19007,7 @@
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "oOV" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/jungle/vines{
@@ -19010,7 +19016,7 @@
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "oPT" = (
 /turf/open/floor{
 	dir = 1;
@@ -19305,7 +19311,7 @@
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/lazarus/landing_zones/lz1)
 "prQ" = (
 /obj/structure/flora/jungle/vines{
 	icon_state = "light_2"
@@ -20611,7 +20617,7 @@
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/lazarus/landing_zones/lz1)
 "sCX" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/bush/ausbushes/ppflowers,
@@ -21124,7 +21130,7 @@
 /turf/open/floor{
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "tES" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor{
@@ -21163,7 +21169,7 @@
 	icon_state = "Synthetic_Template";
 	name = "Eternal guardian"
 	},
-/obj/item/clothing/suit/armor/yautja{
+/obj/item/clothing/suit/armor/yautja/hunter{
 	anchored = 1
 	},
 /obj/item/clothing/mask/gas/yautja{
@@ -21350,7 +21356,7 @@
 	},
 /obj/structure/flora/jungle/vines/heavy,
 /turf/open/gm/grass,
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/lazarus/landing_zones/lz1)
 "ugG" = (
 /obj/effect/landmark/nightmare{
 	insert_tag = "crashed-ship"
@@ -22371,7 +22377,7 @@
 	dir = 10;
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_east_jungle)
+/area/lv624/lazarus/landing_zones/lz1)
 "wOv" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -22673,7 +22679,7 @@
 	dir = 6;
 	icon_state = "warning"
 	},
-/area/lv624/ground/jungle/south_west_jungle)
+/area/lv624/lazarus/landing_zones/lz2)
 "xsN" = (
 /obj/structure/flora/jungle/vines,
 /obj/structure/flora/bush/ausbushes/ppflowers,
@@ -28449,13 +28455,13 @@ ayT
 aAp
 aAp
 sqw
-atC
-atC
+cIL
+cIL
 gby
 aIb
 lKe
 aKd
-atC
+cIL
 sqw
 aKb
 aPf
@@ -30513,7 +30519,7 @@ aRg
 wLz
 tZD
 tZD
-aVK
+nmO
 aLj
 aXh
 aXh
@@ -31881,7 +31887,7 @@ aRg
 wLz
 tZD
 tZD
-aLj
+jsd
 aKf
 aVK
 aXh
@@ -56060,7 +56066,7 @@ aky
 akj
 phU
 apN
-jzZ
+pab
 sYY
 fEn
 wpw
@@ -57428,7 +57434,7 @@ aky
 akj
 muv
 apN
-meP
+phU
 meP
 meP
 jzZ
@@ -60835,13 +60841,13 @@ apu
 apu
 apu
 aHN
-meP
+phU
 ugk
 asJ
 atk
 rpR
-meP
-meP
+phU
+phU
 eDS
 meP
 jzZ

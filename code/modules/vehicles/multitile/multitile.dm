@@ -128,6 +128,9 @@ GLOBAL_LIST_EMPTY(all_multi_vehicles)
 		ACCESS_MARINE_BRIG,
 	)
 
+	//used for IFF stuff. Determined by driver. It will remember faction of a last driver. IFF-compatible rounds won't damage vehicle.
+	var/vehicle_faction = ""
+
 	//All the connected entrances sorted by tag
 	//Exits will be loaded by the interior manager and sorted by tag to match
 	var/list/entrances = list()

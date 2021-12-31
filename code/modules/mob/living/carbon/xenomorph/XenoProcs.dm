@@ -18,8 +18,11 @@
 	if(SSticker.mode && SSticker.mode.xenomorphs.len) //Send to only xenos in our gamemode list. This is faster than scanning all mobs
 		for(var/datum/mind/L in SSticker.mode.xenomorphs)
 			var/mob/living/carbon/M = L.current
-			if(M && istype(M) && !M.stat && M.client && M.ally_of_hivenumber(hivenumber)) //Only living and connected xenos
+			if(M && istype(M) && !M.stat && M.client && (!hivenumber || M.ally_of_hivenumber(hivenumber))) //Only living and connected xenos
 				to_chat(M, SPAN_XENODANGER("<span class=\"[fontsize_style]\"> [message]</span>"))
+
+/proc/xeno_message_all(var/message = null, var/size = 3)
+	xeno_message(message, size)
 
 //Adds stuff to your "Status" pane -- Specific castes can have their own, like carrier hugger count
 //Those are dealt with in their caste files.
@@ -79,39 +82,21 @@
 		. += statdata
 
 	. += ""
-	//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
-	var/msg_holder = "-"
-
-	if(frenzy_aura)
-		switch(frenzy_aura)
-			if(-INFINITY to 0.9) msg_holder = "Very Weak"
-			if(1.0 to 1.9) msg_holder = "Weak"
-			if(2.0 to 2.9) msg_holder = "Moderate"
-			if(3.0 to 3.9) msg_holder = "Strong"
-			if(4.0 to INFINITY) msg_holder = "Very Strong"
-	. += "Frenzy: [msg_holder]"
-	msg_holder = "-"
-
-	if(warding_aura)
-		switch(warding_aura)
-			if(-INFINITY to 0.9) msg_holder = "Very Weak"
-			if(1.0 to 1.9) msg_holder = "Weak"
-			if(2.0 to 2.9) msg_holder = "Moderate"
-			if(3.0 to 3.9) msg_holder = "Strong"
-			if(4.0 to INFINITY) msg_holder = "Very Strong"
-	. += "Warding: [msg_holder]"
-	msg_holder = "-"
-
-	if(recovery_aura)
-		switch(recovery_aura)
-			if(-INFINITY to 0.9) msg_holder = "Very Weak"
-			if(1.0 to 1.9) msg_holder = "Weak"
-			if(2.0 to 2.9) msg_holder = "Moderate"
-			if(3.0 to 3.9) msg_holder = "Strong"
-			if(4.0 to INFINITY) msg_holder = "Very Strong"
-	. += "Recovery: [msg_holder]"
-
-	. += ""
+	if(!ignores_pheromones)
+		//Very weak <= 1.0, weak <= 2.0, no modifier 2-3, strong <= 3.5, very strong <= 4.5
+		var/msg_holder = "-"
+		if(frenzy_aura)
+			msg_holder = get_pheromone_aura_strength(frenzy_aura)
+		. += "Frenzy: [msg_holder]"
+		msg_holder = "-"
+		if(warding_aura)
+			msg_holder = get_pheromone_aura_strength(warding_aura)
+		. += "Warding: [msg_holder]"
+		msg_holder = "-"
+		if(recovery_aura)
+			msg_holder = get_pheromone_aura_strength(recovery_aura)
+		. += "Recovery: [msg_holder]"
+		. += ""
 
 	if(hive)
 		if(!hive.living_xeno_queen)
@@ -494,6 +479,7 @@
 
 /mob/living/carbon/Xenomorph/proc/nocrit(var/wowave)
 	if(SSticker?.mode?.hardcore)
+		nocrit = TRUE
 		if(wowave < 15)
 			maxHealth = ((maxHealth+abs(crit_health))*(wowave/15)*(3/4))+((maxHealth)*1/4) //if it's wo we give xeno's less hp in lower rounds. This makes help the marines feel good.
 			health	= ((health+abs(crit_health))*(wowave/15)*(3/4))+((health)*1/4) //if it's wo we give xeno's less hp in lower rounds. This makes help the marines feel good.
@@ -651,3 +637,16 @@
 
 /mob/living/carbon/Xenomorph/get_role_name()
 	return caste_type
+
+/proc/get_pheromone_aura_strength(var/aura)
+	switch(aura)
+		if(-INFINITY to 0.9)
+			return "Very Weak"
+		if(1.0 to 1.9)
+			return "Weak"
+		if(2.0 to 2.9)
+			return "Moderate"
+		if(3.0 to 3.9)
+			return "Strong"
+		if(4.0 to INFINITY)
+			return "Very Strong"

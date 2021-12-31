@@ -146,9 +146,9 @@
 	required_reagents = list("sodium" = 1, "chlorine" = 1)
 	result_amount = 2
 
-/datum/chemical_reaction/cheesewheel
-	name = "Cheesewheel"
-	id = "cheesewheel"
+/datum/chemical_reaction/cheesewheel/immature
+	name = "Immature Cheesewheel"
+	id = "immaturecheesewheel"
 	result = null
 	required_reagents = list("milk" = 40)
 	required_catalysts = list("enzyme" = 5)
@@ -156,7 +156,7 @@
 
 	on_reaction(var/datum/reagents/holder, var/created_volume)
 		var/location = get_turf(holder.my_atom)
-		new /obj/item/reagent_container/food/snacks/sliceable/cheesewheel(location)
+		new /obj/item/reagent_container/food/snacks/sliceable/cheesewheel/immature(location)
 
 
 /datum/chemical_reaction/syntiflesh

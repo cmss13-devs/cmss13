@@ -1,0 +1,6 @@
+[
+	{
+		"type": "include", "name": "Standalone variations",
+		"file": "maps/Kutjevo/mapgen_variations.json"
+	}
+]

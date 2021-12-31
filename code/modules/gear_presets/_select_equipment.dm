@@ -9,7 +9,7 @@
 	var/flags = EQUIPMENT_PRESET_STUB
 	var/uses_special_name = FALSE //For equipment that loads special name, aka Synths, Yautja, Death Squad, etc.
 
-	var/list/languages = list("English")
+	var/list/languages = list(LANGUAGE_ENGLISH)
 	var/skills
 	var/idtype = /obj/item/card/id
 	var/list/access = list()

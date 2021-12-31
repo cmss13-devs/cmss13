@@ -1,0 +1,6 @@
+[
+	{
+		"type": "include", "name": "Standalone variations",
+		"file": "maps/Haunted_House_V2/mapgen_variations.json"
+	}
+]

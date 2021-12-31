@@ -37,7 +37,7 @@
 		list("RESTRICTED FIREARMS", -1, null, null),
 		list("VP78 Pistol", round(scale * 4), /obj/item/storage/box/guncase/vp78, VENDOR_ITEM_REGULAR),
 		list("SU-6 Smart Pistol", round(scale * 3), /obj/item/storage/box/guncase/smartpistol, VENDOR_ITEM_REGULAR),
-		list("MOU-53 Shotgun", round(scale * 3), /obj/item/storage/box/guncase/mou53, VENDOR_ITEM_REGULAR),
+		list("MOU-53 Shotgun", round(scale * 2), /obj/item/storage/box/guncase/mou53, VENDOR_ITEM_REGULAR),
 		list("M41AE2 Heavy Pulse Rifle", round(scale * 2), /obj/item/storage/box/guncase/lmg, VENDOR_ITEM_REGULAR),
 		list("M41A Pulse Rifle MK1", round(scale * 3), /obj/item/storage/box/guncase/m41aMK1, VENDOR_ITEM_REGULAR),
 		list("M56D Heavy Machine Gun", round(scale * 2), /obj/item/storage/box/guncase/m56d, VENDOR_ITEM_REGULAR),
@@ -115,7 +115,7 @@
 		list("M94 Marking Flare Pack", round(scale * 10), /obj/item/storage/box/m94, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 6), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 		list("Machete Pouch (Full)", round(scale * 4), /obj/item/storage/large_holster/macheteB/full, VENDOR_ITEM_REGULAR),
-		list("MB-6 Folding Barricades (x3)", round(scale * 1), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
+		list("MB-6 Folding Barricades (x3)", round(scale * 3), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR),
 		list("Motion Detector", round(scale * 4), /obj/item/device/motiondetector, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 2), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
 		list("Welding Goggles", round(scale * 3), /obj/item/clothing/glasses/welding, VENDOR_ITEM_REGULAR),
@@ -216,7 +216,7 @@
 		list("M89-S Signal Flare Pack", round(scale * 1), /obj/item/storage/box/m94/signal, VENDOR_ITEM_REGULAR),
 		list("Machete Scabbard (Full)", round(scale * 5), /obj/item/storage/large_holster/machete/full, VENDOR_ITEM_REGULAR),
 		list("Binoculars", round(scale * 1), /obj/item/device/binoculars, VENDOR_ITEM_REGULAR),
-		list("MB-6 Folding Barricades (x3)", round(scale * 1), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR)
+		list("MB-6 Folding Barricades (x3)", round(scale * 2), /obj/item/stack/folding_barricade/three, VENDOR_ITEM_REGULAR)
 		)
 
 //------------AMMUNITION VENDOR---------------
@@ -424,7 +424,7 @@
 
 		list("RAIL", -1, null, null),
 		list("B8 Smart-Scope", round(scale * 3.5), /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
-		list("Magnetic Harness", round(scale * 6.5), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
+		list("Magnetic Harness", round(scale * 8.5), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
 		list("Rail Flashlight", round(scale * 10.5), /obj/item/attachable/flashlight, VENDOR_ITEM_REGULAR),
 		list("S4 2x Telescopic Mini-Scope", round(scale * 4.5), /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
 		list("S5 Red-Dot Sight", round(scale * 9.5), /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
@@ -496,7 +496,7 @@
 
 		list("RAIL", -1, null, null),
 		list("B8 Smart-Scope", round(scale * 1.5), /obj/item/attachable/scope/mini_iff, VENDOR_ITEM_REGULAR),
-		list("Magnetic Harness", round(scale * 3), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
+		list("Magnetic Harness", round(scale * 4), /obj/item/attachable/magnetic_harness, VENDOR_ITEM_REGULAR),
 		list("S4 2x Telescopic Mini-Scope", round(scale * 2), /obj/item/attachable/scope/mini, VENDOR_ITEM_REGULAR),
 		list("S5 Red-Dot Sight", round(scale * 3), /obj/item/attachable/reddot, VENDOR_ITEM_REGULAR),
 		list("S6 Reflex Sight", round(scale * 3), /obj/item/attachable/reflex, VENDOR_ITEM_REGULAR),

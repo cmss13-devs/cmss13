@@ -45,6 +45,20 @@
 
 	density = FALSE
 
+/obj/structure/prop/vehicle/firing_port_weapon/examine(var/mob/user)
+	. = ..()
+	if(ishuman(user))
+		to_chat(SPAN_HELPFUL("Clicking on the [name] while standing on top of support gunner seat will buckle you in and give you the control of the M56 FPW."))
+
+/obj/structure/prop/vehicle/firing_port_weapon/attack_hand(var/mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+	var/obj/structure/bed/chair/comfy/vehicle/support_gunner/SG_seat = locate() in get_turf(H)
+	if(!SG_seat.buckled_mob)
+		SG_seat.do_buckle(H, H)
+		return
+
+
 /obj/structure/prop/vehicle/sensor_equipment
 	name = "Data Analyzing Nexus"
 	desc = "This machinery collects and analyzes data from the M577 CMD APC's sensors cluster and then feeds the results to Almayer's tactical map display network. Better not touch it."

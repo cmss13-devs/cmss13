@@ -1,0 +1,6 @@
+[
+	{
+		"type": "include", "name": "Standalone variations",
+		"file": "maps/FOP_v2_Cellblocks/mapgen_variations.json"
+	}
+]

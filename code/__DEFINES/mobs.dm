@@ -157,7 +157,6 @@
 #define LANGUAGE_ALIEN		2
 #define LANGUAGE_DOG		4
 #define LANGUAGE_CAT		8
-#define LANGUAGE_BINARY		16
 #define LANGUAGE_OTHER		32768
 #define LANGUAGE_UNIVERSAL	65535
 
@@ -230,6 +229,7 @@
 #define ACTION_RED_POWER_UP		10
 #define ACTION_GREEN_POWER_UP	11
 #define ACTION_BLUE_POWER_UP	12
+#define ACTION_PURPLE_POWER_UP	13
 
 //defins for datum/hud
 

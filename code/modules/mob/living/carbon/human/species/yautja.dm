@@ -10,7 +10,8 @@
 	mob_inherent_traits = list(
 		TRAIT_YAUTJA_TECH,
 		TRAIT_SUPER_STRONG,
-		TRAIT_FOREIGN_BIO
+		TRAIT_FOREIGN_BIO,
+		TRAIT_DEXTROUS
 		)
 	unarmed_type = /datum/unarmed_attack/punch/strong
 	secondary_unarmed_type = /datum/unarmed_attack/bite/strong
@@ -181,5 +182,5 @@
 				L.max_damage = 75
 				L.time_to_knit = 600 // 1 minute, time is in tenths of a second
 
-	H.set_languages(list("Sainja"))
+	H.set_languages(list(LANGUAGE_YAUTJA))
 	return ..()

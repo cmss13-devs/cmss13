@@ -43,7 +43,7 @@
 	if(istype(A, /obj/item/reagent_container/glass))
 		to_chat(user, SPAN_NOTICE("The label will not stick to [A]. Use a pen instead."))
 		return
-	if(istype(A, /obj/item/tool/surgery))
+	if(istype(A, /obj/item/tool/surgery) || istype(A, /obj/item/reagent_container/pill))
 		to_chat(user, SPAN_NOTICE("That wouldn't be sanitary."))
 		return
 	if((istype(A, /obj/vehicle/multitile)) || (istype(A, /obj/structure))) // disallow naming structures
@@ -246,10 +246,10 @@
 
 
 /obj/item/tool/pen/paralysis/attack(mob/living/M as mob, mob/user as mob)
-	if(!(istype(M,/mob)))
+	if(!(istype(M)))
 		return
 	..()
-	if(M.can_inject(user,1))
+	if(M.can_inject(user, TRUE))
 		if(reagents.total_volume)
 			if(M.reagents) reagents.trans_to(M, 50)
 

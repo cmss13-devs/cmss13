@@ -26,7 +26,6 @@ GLOBAL_LIST_EMPTY(thunderdome_admin)
 GLOBAL_LIST_EMPTY(thunderdome_observer)
 
 GLOBAL_LIST_EMPTY(latewhiskey)
-GLOBAL_LIST_EMPTY(whiskey_start)
 
 GLOBAL_LIST_EMPTY(latejoin)
 GLOBAL_LIST_EMPTY(newplayer_start)

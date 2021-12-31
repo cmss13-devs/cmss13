@@ -25,13 +25,12 @@
 
 	place_node()
 	for(var/turf/A in range(round(cover_range*PYLON_COVERAGE_MULT), loc))
-		A.linked_pylons += src
+		LAZYADD(A.linked_pylons, src)
 		linked_turfs += A
 
 /obj/effect/alien/resin/special/pylon/Destroy()
-
-	for (var/turf/A in linked_turfs)
-		A.linked_pylons -= src
+	for(var/turf/A as anything in linked_turfs)
+		LAZYREMOVE(A.linked_pylons, src)
 
 	var/obj/effect/alien/weeds/node/pylon/W = locate() in loc
 	if(W)
@@ -84,7 +83,7 @@
 
 /obj/effect/alien/resin/special/pylon/proc/place_node()
 	var/obj/effect/alien/weeds/node/pylon/W = new node_type(loc, null, null, linked_hive)
-	W.parent_pylon = src
+	W.resin_parent = src
 
 //Hive Core - Generates strong weeds, supports other buildings
 /obj/effect/alien/resin/special/pylon/core

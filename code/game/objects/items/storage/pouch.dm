@@ -970,6 +970,12 @@
 	new /obj/item/tool/weldingtool/hugetank(src)
 	new /obj/item/tool/extinguisher/mini(src)
 
+/obj/item/storage/pouch/tools/mortar/fill_preset_inventory()
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/tool/shovel/etool(src)
+
 /obj/item/storage/pouch/tools/tactical/full/fill_preset_inventory()
 	new /obj/item/tool/screwdriver/tactical(src)
 	new /obj/item/tool/wirecutters/tactical(src)

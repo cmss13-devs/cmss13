@@ -88,6 +88,12 @@
 	rank_pin = /obj/item/clothing/accessory/ranks/marine/e9c
 	ranking = 11
 
+/datum/paygrade/marine/e10c
+	paygrade = "ME10C"
+	name = "Sergeant Major of the Marine Corps"
+	prefix = "SMMC."
+	rank_pin = /obj/item/clothing/accessory/ranks/marine/e10c
+
 // COMMISSIONED PAYGRADES
 
 /datum/paygrade/marine/o1

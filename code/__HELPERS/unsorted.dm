@@ -404,13 +404,10 @@
 		else
 			names.Add(name)
 			namecounts[name] = 1
-		if (M.real_name && M.real_name != M.name)
-			name += " \[[M.real_name]\]"
-		if (M.stat == 2)
-			name += " \[dead\]"
-		if(istype(M, /mob/dead/observer/))
+		if(isobserver(M))
 			name += " \[ghost\]"
-
+		else if(M.stat == DEAD)
+			name += " \[dead\]"
 		creatures[name] = M
 	return creatures
 
@@ -884,6 +881,7 @@ var/global/image/emote_indicator_tailswipe
 var/global/image/action_red_power_up
 var/global/image/action_green_power_up
 var/global/image/action_blue_power_up
+var/global/image/action_purple_power_up
 
 /proc/get_busy_icon(busy_type)
 	if(busy_type == BUSY_ICON_GENERIC)
@@ -933,19 +931,24 @@ var/global/image/action_blue_power_up
 		return emote_indicator_tailswipe
 	else if(busy_type == ACTION_RED_POWER_UP)
 		if(!action_red_power_up)
-			action_red_power_up = image('icons/effects/effects.dmi', null,"anger", "pixel_x" = 14)
+			action_red_power_up = image('icons/effects/effects.dmi', null, "anger", "pixel_x" = 16)
 			action_red_power_up.layer = FLY_LAYER
 		return action_red_power_up
 	else if(busy_type == ACTION_GREEN_POWER_UP)
 		if(!action_green_power_up)
-			action_green_power_up = image('icons/effects/effects.dmi', null,"vitality", "pixel_x" = 14)
+			action_green_power_up = image('icons/effects/effects.dmi', null, "vitality", "pixel_x" = 16)
 			action_green_power_up.layer = FLY_LAYER
 		return action_green_power_up
 	else if(busy_type == ACTION_BLUE_POWER_UP)
 		if(!action_blue_power_up)
-			action_blue_power_up = image('icons/effects/effects.dmi', null,"shock", "pixel_x" = 14)
+			action_blue_power_up = image('icons/effects/effects.dmi', null, "shock", "pixel_x" = 16)
 			action_blue_power_up.layer = FLY_LAYER
 		return action_blue_power_up
+	else if(busy_type == ACTION_PURPLE_POWER_UP)
+		if(!action_purple_power_up)
+			action_purple_power_up = image('icons/effects/effects.dmi', null, "pain", "pixel_x" = 16)
+			action_purple_power_up.layer = FLY_LAYER
+		return action_purple_power_up
 
 
 /*

@@ -45,15 +45,15 @@
 	var/weather_enabled = TRUE	// Manual override for weather if set to false
 
 	// Ambience sounds
-	var/ambience_exterior 	= null //The sound that plays as ambience
-	var/sound_environment 	= 2 //Reverberation applied to ALL sounds that a client in this area hears
-								//Full list of environments in the BYOND reference http://www.byond.com/docs/ref/#/sound/var/environment
-								//Also, diferent environments affect muffling differently
 	var/list/soundscape_playlist = list() //Clients in this area will hear one of the sounds in this list from time to time
 	var/soundscape_interval = INITIAL_SOUNDSCAPE_COOLDOWN //The base interval between each soundscape.
 	var/ceiling_muffle = TRUE //If true, this area's ceiling type will alter the muffling of the ambience sound
 	var/base_muffle = 0 //Ambience will always be muffled by this ammount at minimum
 						//NOTE: Values from 0 to -10000 ONLY. The rest won't work
+	/// Default sound to play as ambience for clients entering the area
+	VAR_PROTECTED/ambience_exterior
+	/// Default sound environment to use for the area, as list or int BYOND preset: http://www.byond.com/docs/ref/#/sound/var/environment
+	var/sound_environment = 2
 
 	//Power stuff
 	var/powernet_name = "default" //Default powernet name. Change to something else to make completely separate powernets
@@ -112,6 +112,10 @@
 	power_change()		// all machines set to current power level, also updates lighting icon
 	InitializeLighting()
 
+/// Returns the correct ambience sound track for a client in this area
+/area/proc/get_sound_ambience(client/target)
+	return ambience_exterior
+
 /area/proc/poweralert(var/state, var/obj/source as obj)
 	if (state != poweralm)
 		poweralm = state
@@ -121,9 +125,9 @@
 				for (var/obj/structure/machinery/camera/C in RA)
 					cameras += C
 					if(state == 1)
-						C.network.Remove("Power Alarms")
+						C.network.Remove(CAMERA_NET_POWER_ALARMS)
 					else
-						C.network.Add("Power Alarms")
+						C.network.Add(CAMERA_NET_POWER_ALARMS)
 			for (var/mob/living/silicon/aiPlayer in ai_mob_list)
 				if(aiPlayer.z == source.z)
 					if (state == 1)
@@ -156,7 +160,7 @@
 		if (danger_level < 2 && atmosalm >= 2)
 			for(var/area/RA in related)
 				for(var/obj/structure/machinery/camera/C in RA)
-					C.network.Remove("Atmosphere Alarms")
+					C.network.Remove(CAMERA_NET_ATMOSPHERE_ALARMS)
 			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
 				aiPlayer.cancelAlarm("Atmosphere", src, src)
 			for(var/obj/structure/machinery/computer/station_alert/a in machines)
@@ -168,7 +172,7 @@
 				//updateicon()
 				for(var/obj/structure/machinery/camera/C in RA)
 					cameras += C
-					C.network.Add("Atmosphere Alarms")
+					C.network.Add(CAMERA_NET_ATMOSPHERE_ALARMS)
 			for(var/mob/living/silicon/aiPlayer in ai_mob_list)
 				aiPlayer.triggerAlarm("Atmosphere", src, cameras, src)
 			for(var/obj/structure/machinery/computer/station_alert/a in machines)
@@ -222,7 +226,7 @@
 		for(var/area/RA in related)
 			for (var/obj/structure/machinery/camera/C in RA)
 				cameras.Add(C)
-				C.network.Add("Fire Alarms")
+				C.network.Add(CAMERA_NET_FIRE_ALARMS)
 		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
 			aiPlayer.triggerAlarm("Fire", src, cameras, src)
 		for (var/obj/structure/machinery/computer/station_alert/a in machines)
@@ -242,7 +246,7 @@
 					INVOKE_ASYNC(D, /obj/structure/machinery/door.proc/open)
 		for(var/area/RA in related)
 			for (var/obj/structure/machinery/camera/C in RA)
-				C.network.Remove("Fire Alarms")
+				C.network.Remove(CAMERA_NET_FIRE_ALARMS)
 		for (var/mob/living/silicon/ai/aiPlayer in ai_mob_list)
 			aiPlayer.cancelAlarm("Fire", src, src)
 		for (var/obj/structure/machinery/computer/station_alert/a in machines)

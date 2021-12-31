@@ -239,18 +239,13 @@
 	close_spawn_windows()
 
 	var/turf/T
-	if(SSmapping.configs[GROUND_MAP].map_name != MAP_WHISKEY_OUTPOST)
-		T = get_turf(pick(GLOB.latejoin))
-	else if (SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
-		T = get_turf(pick(GLOB.latewhiskey))
+	T = get_turf(pick(GLOB.latejoin))
 
 	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
 	RoleAuthority.equip_role(character, RoleAuthority.roles_for_mode[rank], T)
 	EquipCustomItems(character)
 
 	GLOB.data_core.manifest_inject(character)
-	if(SSmapping.configs[GROUND_MAP].map_name == MAP_WHISKEY_OUTPOST)
-		call(/datum/game_mode/whiskey_outpost/proc/spawn_player)(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
 	SSticker.mode.latejoin_tally++
 

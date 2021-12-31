@@ -280,7 +280,7 @@
 	w_class = SIZE_SMALL
 
 //--------------------------------------------------------
-//Default bolt action rifle ammo
+//Bolt action rifle ammo
 /obj/item/ammo_magazine/rifle/boltaction
 	name = "\improper Bolt Action magazine (7.62mm)"
 	desc = "Bolt action magazine, simple really."
@@ -290,3 +290,10 @@
 	max_rounds = 10
 	gun_type = /obj/item/weapon/gun/boltaction
 	w_class = SIZE_SMALL
+
+/obj/item/ammo_magazine/rifle/boltaction/colony
+	name = "\improper Model 12 Bolt Action magazine (8mm W-Y)"
+	desc = "A magazine for the Model 12 Bolt Action Rifle, holds ten rounds."
+	caliber = "8mm W-Y"
+	gun_type = /obj/item/weapon/gun/boltaction/colony
+	w_class = SIZE_MEDIUM

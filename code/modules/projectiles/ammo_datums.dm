@@ -531,7 +531,6 @@
 /datum/ammo/bullet/revolver
 	name = "revolver bullet"
 	headshot_state	= HEADSHOT_OVERLAY_MEDIUM
-	debilitate = list(1,0,0,0,0,0,0,0)
 
 	damage = 55
 	penetration = ARMOR_PENETRATION_TIER_1
@@ -754,12 +753,12 @@
 
 /datum/ammo/bullet/smg
 	name = "submachinegun bullet"
-	damage = 40
+	damage = 34
 	accurate_range = 4
 	effective_range_max = 4
 	penetration = ARMOR_PENETRATION_TIER_1
 	shell_speed = AMMO_SPEED_TIER_6
-	damage_falloff = DAMAGE_FALLOFF_TIER_1
+	damage_falloff = DAMAGE_FALLOFF_TIER_3
 	scatter = SCATTER_AMOUNT_TIER_6
 	accuracy = HIT_ACCURACY_TIER_3
 
@@ -769,7 +768,7 @@
 /datum/ammo/bullet/smg/ap
 	name = "armor-piercing submachinegun bullet"
 
-	damage = 28
+	damage = 24
 	penetration = ARMOR_PENETRATION_TIER_6
 	shell_speed = AMMO_SPEED_TIER_4
 
@@ -925,7 +924,7 @@
 	scatter = SCATTER_AMOUNT_TIER_10
 	shell_speed = AMMO_SPEED_TIER_6
 	effective_range_max = 7
-	damage_falloff = DAMAGE_FALLOFF_TIER_6
+	damage_falloff = DAMAGE_FALLOFF_TIER_7
 
 /datum/ammo/bullet/rifle/holo_target
 	name = "holo-targeting rifle bullet"
@@ -1531,10 +1530,41 @@
 	burst(get_turf(T),P,damage_type, 2 , 3)
 	burst(get_turf(T),P,damage_type, 1 , 3 , 0)
 
-/datum/ammo/bullet/tank/flak/weak
-	name = "dualcannon flak bullet"
+/datum/ammo/bullet/tank/dualcannon
+	name = "dualcannon bullet"
+	icon_state 	= "autocannon"
+	damage_falloff = 0
+	flags_ammo_behavior = AMMO_BALLISTIC
 
-	damage = 30
+	accuracy = HIT_ACCURACY_TIER_8
+	scatter = 0
+	damage = 50
+	damage_var_high = PROJECTILE_VARIANCE_TIER_8
+	penetration	= ARMOR_PENETRATION_TIER_3
+	accurate_range = 10
+	max_range = 12
+	shell_speed = AMMO_SPEED_TIER_5
+
+/datum/ammo/bullet/tank/dualcannon/on_hit_mob(mob/M,obj/item/projectile/P)
+	for(var/mob/living/carbon/L in get_turf(M))
+		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
+			shake_camera(L, 1, 1)
+
+/datum/ammo/bullet/tank/dualcannon/on_near_target(turf/T, obj/item/projectile/P)
+	for(var/mob/living/carbon/L in T)
+		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
+			shake_camera(L, 1, 1)
+	return 1
+
+/datum/ammo/bullet/tank/dualcannon/on_hit_obj(obj/O,obj/item/projectile/P)
+	for(var/mob/living/carbon/L in get_turf(O))
+		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
+			shake_camera(L, 1, 1)
+
+/datum/ammo/bullet/tank/dualcannon/on_hit_turf(turf/T,obj/item/projectile/P)
+	for(var/mob/living/carbon/L in T)
+		if(L.stat == CONSCIOUS && L.mob_size <= MOB_SIZE_XENO)
+			shake_camera(L, 1, 1)
 
 /datum/ammo/bullet/sniper/svd
 	name = "crude sniper bullet"
@@ -2651,14 +2681,14 @@
 	name = ".22 hornet round"
 	icon_state = "hornet_round"
 	flags_ammo_behavior = AMMO_BALLISTIC
-	damage = 55
+	damage = 20
 	shrapnel_chance = 0
 	shell_speed = AMMO_SPEED_TIER_3//she fast af boi
 	penetration = ARMOR_PENETRATION_TIER_5
 
 /datum/ammo/bullet/shrapnel/hornet_rounds/on_hit_mob(mob/M, obj/item/projectile/P)
 	. = ..()
-	M.AddComponent(/datum/component/bonus_damage_stack, 5, world.time)
+	M.AddComponent(/datum/component/bonus_damage_stack, 10, world.time)
 
 /datum/ammo/bullet/shrapnel/incendiary
 	name = "flaming shrapnel"
@@ -2730,6 +2760,7 @@
 
 /datum/ammo/bullet/shrapnel/jagged
 	shrapnel_chance = SHRAPNEL_CHANCE_TIER_2
+	accuracy = HIT_ACCURACY_TIER_MAX
 
 /datum/ammo/bullet/shrapnel/jagged/on_hit_mob(mob/M, obj/item/projectile/P)
 	if(isXeno(M))

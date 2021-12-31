@@ -3,7 +3,7 @@
 	faction = FACTION_MARINE
 	faction_group = FACTION_LIST_MARINE
 	minimum_age = 20
-	languages = list("English")
+	languages = list(LANGUAGE_ENGLISH)
 
 	utility_under = list(/obj/item/clothing/under/marine/officer/command)
 	utility_hat = list(/obj/item/clothing/head/cmcap)
@@ -27,7 +27,7 @@
 /datum/equipment_preset/uscm_ship/liaison
 	name = "USCM Corporate Liaison (CL)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
-	languages = list("English", "Japanese")
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 	idtype = /obj/item/card/id/silver/cl
 	access = list(
@@ -82,15 +82,15 @@
 /datum/equipment_preset/uscm_ship/liaison/load_rank(mob/living/carbon/human/H)
 	if(H.client)
 		var/playtime = get_job_playtime(H.client, rank)
-
-		if(playtime > JOB_PLAYTIME_TIER_4)
-			return "WY-XE"
-		else if(playtime > JOB_PLAYTIME_TIER_3)
-			return "WY-XD"
-		else if(playtime > JOB_PLAYTIME_TIER_2)
-			return "WY-XC"
-		else
-			return paygrade
+		if(H.client.prefs.playtime_perks)
+			if(playtime > JOB_PLAYTIME_TIER_4)
+				return "WY-XE"
+			else if(playtime > JOB_PLAYTIME_TIER_3)
+				return "WY-XD"
+			else if(playtime > JOB_PLAYTIME_TIER_2)
+				return "WY-XC"
+			else
+				return paygrade
 	return paygrade
 
 //*****************************************************************************************************/
@@ -459,12 +459,13 @@
 	access
 	assignment = JOB_SEA
 	rank = JOB_SEA
-	paygrade = "ME8"
+	paygrade = "ME7"
 	role_comm_title = "SEA"
 	minimum_age = 40
 	skills = /datum/skills/SEA
 
 	service_hat = list(/obj/item/clothing/head/cmcap, /obj/item/clothing/head/drillhat)
+
 
 /datum/equipment_preset/uscm_ship/sea/New()
 	. = ..()
@@ -490,8 +491,21 @@
 
 /datum/equipment_preset/uscm_ship/sea/load_rank(mob/living/carbon/human/H)
 	if(H.client)
-		if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_1)
-			return "ME9"
+		var/grade8 = "ME8"
+		var/grade9 = "ME9"
+
+		if(H.client && H.client.prefs)
+			var/path = H.client.prefs.sea_path
+			if(path == "Technical")
+				grade8 = "ME8E"
+				grade9 = "ME9E"
+
+		if(!H.client.prefs.playtime_perks)
+			return paygrade
+		if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_3)
+			return grade9
+		else if(get_job_playtime(H.client, JOB_SEA) >= JOB_PLAYTIME_TIER_1)
+			return grade8
 	return paygrade
 
 //*****************************************************************************************************/
@@ -540,6 +554,56 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/pilot(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
+
+	H.hud_set_squad()
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/dcc
+	name = "USCM Dropship Crew Chief (DCC) (Cryo)"
+	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
+
+	idtype = /obj/item/card/id/silver
+	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
+	assignment = JOB_DROPSHIP_CREW_CHIEF
+	rank = JOB_DROPSHIP_CREW_CHIEF
+	paygrade = "ME6"
+	role_comm_title = "DCC"
+	skills = /datum/skills/crew_chief
+
+/datum/equipment_preset/uscm_ship/dcc/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel
+	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+
+//*****************************************************************************************************/
+
+/datum/equipment_preset/uscm_ship/dcc/full
+	name = "USCM Dropship Crew Chief (DCC)"
+	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
+
+	utility_under = list(/obj/item/clothing/under/marine/officer/pilot/dcc)
+
+/datum/equipment_preset/uscm_ship/dcc/full/load_gear(mob/living/carbon/human/H)
+	var/backItem = /obj/item/storage/backpack/satchel
+	if(H.client && H.client.prefs && (H.client.prefs.backbag == 1))
+		backItem = /obj/item/storage/backpack/marine
+
+	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mcom(H), WEAR_L_EAR)
+	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/pilot/dcc(H), WEAR_BODY)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/knife(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/yellow(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/gun/m4a3/commander(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/light/vest/dcc(H), WEAR_JACKET)
+	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/large(H), WEAR_R_STORE)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/cmcap(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(H), WEAR_EYES)
 
 	H.hud_set_squad()

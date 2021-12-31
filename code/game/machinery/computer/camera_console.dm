@@ -5,7 +5,7 @@
 	desc = "Used to access the various cameras on the station."
 	icon_state = "cameras"
 	var/obj/structure/machinery/camera/current
-	var/list/network = list("military")
+	var/list/network = list(CAMERA_NET_MILITARY)
 	circuit = /obj/item/circuitboard/computer/security
 
 	/// The turf where the camera was last updated.
@@ -20,6 +20,8 @@
 	/// All turfs within range of the currently active camera
 	var/list/range_turfs = list()
 
+	var/colony_camera_mapload = TRUE
+
 /obj/structure/machinery/computer/security/Initialize(mapload)
 	. = ..()
 	// Map name has to start and end with an A-Z character,
@@ -27,13 +29,9 @@
 	// I wasted 6 hours on this. :agony:
 	map_name = "camera_console_[REF(src)]_map"
 
-	if(mapload && is_ground_level(z))
-		network = list("colony")
+	if(colony_camera_mapload && mapload && is_ground_level(z))
+		network = list(CAMERA_NET_COLONY)
 
-	// Convert networks to lowercase
-	for(var/i in network)
-		network -= i
-		network += lowertext(i)
 	// Initialize map objects
 	cam_screen = new
 	cam_screen.name = "screen"
@@ -70,7 +68,7 @@
 	update_active_camera_screen()
 
 	if(!ui)
-		var/user_ref = REF(user)
+		var/user_ref = WEAKREF(user)
 		var/is_living = isliving(user)
 		// Ghosts shouldn't count towards concurrent users, which produces
 		// an audible terminal_on click.
@@ -192,7 +190,7 @@
 		cam_screen.vis_contents = visible_turfs
 
 /obj/structure/machinery/computer/security/ui_close(mob/user)
-	var/user_ref = REF(user)
+	var/user_ref = WEAKREF(user)
 	var/is_living = isliving(user)
 	// Living creature or not, we remove you anyway.
 	concurrent_users -= user_ref
@@ -255,6 +253,14 @@
 	icon_state = "security_det"
 	circuit = null
 
+/obj/structure/machinery/computer/security/wooden_tv/almayer
+	name = "Ship Security Cameras"
+	network = list(CAMERA_NET_ALMAYER)
+
+/obj/structure/machinery/computer/security/wooden_tv/prop
+	name = "Television Set"
+	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
+	network = null
 
 /obj/structure/machinery/computer/security/mining
 	name = "Outpost Cameras"
@@ -281,10 +287,34 @@
 /obj/structure/machinery/computer/security/almayer
 	density = 0
 	icon_state = "security_cam"
-	network = list("almayer")
+	network = list(CAMERA_NET_ALMAYER)
+
+/obj/structure/machinery/computer/security/almayer/containment
+	name = "Containment Cameras"
+	network = list(CAMERA_NET_CONTAINMENT)
+
+/obj/structure/machinery/computer/security/almayer/vehicle
+	name = "Ship Security Cameras"
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
+
+/obj/structure/machinery/computer/security/hangar
+	name = "Dropship Security Cameras Console"
+	icon_state = "security_cam"
+	density = FALSE
+	network = list(CAMERA_NET_ALAMO, CAMERA_NET_NORMANDY)
+
+/obj/structure/machinery/computer/security/containment
+	name = "Containment Cameras"
+	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_RESEARCH)
+
+/obj/structure/machinery/computer/security/containment/hidden
+	network = list(CAMERA_NET_CONTAINMENT, CAMERA_NET_CONTAINMENT_HIDDEN, CAMERA_NET_RESEARCH)
 
 /obj/structure/machinery/computer/security/almayer_network
-	network = list("almayer")
+	network = list(CAMERA_NET_ALMAYER)
+
+/obj/structure/machinery/computer/security/almayer_network/vehicle
+	network = list(CAMERA_NET_ALMAYER, CAMERA_NET_VEHICLE)
 
 /obj/structure/machinery/computer/security/mortar
 	name = "Mortar Camera Interface"
@@ -294,8 +324,9 @@
 	use_power = 0
 	idle_power_usage = 0
 	active_power_usage = 0
-	network = list("mortar")
+	network = list(CAMERA_NET_MORTAR)
 	exproof = TRUE
+	colony_camera_mapload = FALSE
 
 /obj/structure/machinery/computer/security/mortar/emp_act(severity)
 	return FALSE
@@ -314,10 +345,10 @@
 
 /obj/structure/machinery/computer/security/dropship/one
 	name = "\improper 'Alamo' camera controls"
-	network = list("dropship1","laser targets")
+	network = list(CAMERA_NET_ALAMO, CAMERA_NET_LASER_TARGETS)
 
 /obj/structure/machinery/computer/security/dropship/two
 	name = "\improper 'Normandy' camera controls"
-	network = list("dropship2","laser targets")
+	network = list(CAMERA_NET_NORMANDY, CAMERA_NET_LASER_TARGETS)
 
 #undef DEFAULT_MAP_SIZE

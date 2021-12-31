@@ -151,13 +151,19 @@
 	name = "pilot officer bodysuit"
 	desc = "A bodysuit worn by pilot officers of the USCM, and is meant for survival in inhospitable conditions. Fly the marines onwards to glory. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "pilot_flightsuit"
+	item_state = "pilot_flightsuit"
 	worn_state = "pilot_flightsuit"
+	flags_atom = NO_NAME_OVERRIDE
 	flags_cold_protection = ICE_PLANET_min_cold_protection_temperature
-	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot)
+	suit_restricted = list(/obj/item/clothing/suit/armor/vest/pilot, /obj/item/clothing/suit/storage/marine/light/vest/dcc)
 
-/obj/item/clothing/under/marine/officer/pilot/New()
-	select_gamemode_skin(type)
-	return //This way we keep it as a bodysuit across all maps.
+/obj/item/clothing/under/marine/officer/pilot/dcc
+	name = "dropship crew chief bodysuit"
+	desc = "A bodysuit worn by dropship crew chiefs of the USCM, and is meant for survival in inhospitable conditions. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	icon_state = "crewchief_flightsuit"
+	item_state = "crewchief_flightsuit"
+	worn_state = "crewchief_flightsuit"
+	flags_atom = NO_SNOW_TYPE|NO_NAME_OVERRIDE
 
 /obj/item/clothing/under/marine/officer/tanker
 	name = "vehicle crewman uniform"
@@ -175,6 +181,7 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"

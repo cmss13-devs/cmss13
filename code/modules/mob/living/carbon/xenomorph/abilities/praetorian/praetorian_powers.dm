@@ -208,11 +208,8 @@
 	if(!X.check_state())
 		return
 
-	if(!check_and_use_plasma_owner())
+	if(!check_plasma_owner())
 		return
-
-	X.visible_message(SPAN_XENODANGER("[X] prepares to fire its resin spurs at [A]!"), SPAN_XENODANGER("You prepare to fire your resin spurs at [A]!"))
-	X.emote("roar")
 
 	// Build our turflist
 	var/list/turf/turflist = list()
@@ -222,6 +219,12 @@
 	var/turf/temp = X.loc
 	for(var/x in 0 to max_distance)
 		temp = get_step(T, facing)
+		if(facing in diagonals) // check if it goes through corners
+			var/reverse_face = reverse_dir[facing]
+			var/turf/back_left = get_step(temp, turn(reverse_face, 45))
+			var/turf/back_right = get_step(temp, turn(reverse_face, -45))
+			if((!back_left || back_left.density) && (!back_right || back_right.density))
+				break
 		if(!temp || temp.density || temp.opacity)
 			break
 
@@ -242,6 +245,13 @@
 		facing = get_dir(T, A)
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown/abduct_hook(T, windup)
 
+	if(!length(turflist))
+		to_chat(X, SPAN_XENOWARNING("You don't have any room to do your abduction!"))
+		return
+
+	X.visible_message(SPAN_XENODANGER("[X] prepares to fire its resin spurs at [A]!"), SPAN_XENODANGER("You prepare to fire your resin spurs at [A]!"))
+	X.emote("roar")
+
 	var/throw_target_turf = get_step(X.loc, facing)
 
 	X.frozen = TRUE
@@ -257,6 +267,9 @@
 		X.frozen = FALSE
 		X.update_canmove()
 
+		return
+
+	if(!check_and_use_plasma_owner())
 		return
 
 	X.frozen = FALSE
@@ -383,7 +396,7 @@
 	if(!A || A.layer >= FLY_LAYER || !isturf(X.loc))
 		return
 
-	if (!check_and_use_plasma_owner())
+	if (!check_plasma_owner())
 		return
 
 	// Transient turf list
@@ -395,11 +408,15 @@
 	var/turf/root = get_turf(X)
 	var/facing = Get_Compass_Dir(X, A)
 	var/turf/infront = get_step(root, facing)
+	var/turf/left = get_step(root, turn(facing, 90))
+	var/turf/right = get_step(root, turn(facing, -90))
 	var/turf/infront_left = get_step(root, turn(facing, 45))
 	var/turf/infront_right = get_step(root, turn(facing, -45))
 	temp_turfs += infront
-	temp_turfs += infront_left
-	temp_turfs += infront_right
+	if(!(!infront || infront.density) && !(!left || left.density))
+		temp_turfs += infront_left
+	if(!(!infront || infront.density) && !(!right || right.density))
+		temp_turfs += infront_right
 
 	for(var/turf/T in temp_turfs)
 		if (!istype(T))
@@ -418,6 +435,10 @@
 		target_turfs += next_turf
 		telegraph_atom_list += new /obj/effect/xenomorph/xeno_telegraph/brown/lash(next_turf, windup)
 
+	if(!length(target_turfs))
+		to_chat(X, SPAN_XENOWARNING("You don't have any room to do your tail lash!"))
+		return
+
 	if(!do_after(X, windup, INTERRUPT_NO_NEEDHAND, BUSY_ICON_HOSTILE))
 		to_chat(X, SPAN_XENOWARNING("You cancel your tail lash."))
 
@@ -426,7 +447,7 @@
 			qdel(XT)
 		return
 
-	if (!action_cooldown_check())
+	if(!action_cooldown_check() || !check_and_use_plasma_owner())
 		return
 
 	apply_cooldown()
@@ -739,7 +760,7 @@
 	if(targetXeno.stat == DEAD)
 		to_chat(X, SPAN_WARNING("[targetXeno] is already dead!"))
 		return
-	
+
 	if (!check_plasma_owner())
 		return
 

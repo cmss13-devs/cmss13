@@ -159,7 +159,7 @@
 			to_chat(user, SPAN_INFO("It is unloaded."))
 		to_chat(user, SPAN_INFO("It is set to administer [amount_per_transfer_from_this] units per dose."))
 
-/obj/item/reagent_container/hypospray/attack(mob/M, mob/living/user)
+/obj/item/reagent_container/hypospray/attack(mob/living/M, mob/living/user)
 	if(magfed && !mag)
 		to_chat(user, SPAN_DANGER("[src] has no vial!"))
 		return
@@ -169,7 +169,9 @@
 
 	if(!istype(M))
 		return
-
+	if(!M.can_inject(user, TRUE))
+		return
+		
 	if(skilllock == SKILL_MEDICAL_TRAINED && !skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_TRAINED))
 		user.visible_message(SPAN_WARNING("[user] fumbles with [src]..."), SPAN_WARNING("You fumble with [src]..."))
 		if(!do_after(user, 30, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, M, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))

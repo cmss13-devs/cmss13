@@ -3,5 +3,12 @@
     "map_path": "map_files/Whiskey_Outpost_v2",
     "map_file": "Whiskey_Outpost_v2.dmm",
     "map_item_type": "/obj/item/map/whiskey_outpost_map",
-    "force_mode": "Whiskey Outpost"
+    "force_mode": "Whiskey Outpost",  
+    "perf_mode": 31,
+    "disable_ship_map": true,
+    "vote_cycle": 5,
+	"nightmare": {
+        "scenario": "maps/Nightmare/maps/Whiskey_Outpost_v2/scenario.json",
+        "mapgen": "maps/Nightmare/maps/Whiskey_Outpost_v2/mapgen.json"
+    }
 }

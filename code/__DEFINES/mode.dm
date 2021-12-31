@@ -31,6 +31,10 @@
 
 #define IS_MODE_COMPILED(MODE) (ispath(text2path("/datum/game_mode/"+(MODE))))
 
+#define MODE_HAS_FLAG(flag) (SSticker.mode.flags_round_type & flag)
+#define MODE_HAS_TOGGLEABLE_FLAG(flag) (SSticker.mode.toggleable_flags & flag)
+
+// Gamemode Flags
 #define MODE_INFESTATION		(1<<0)
 #define MODE_PREDATOR			(1<<1)
 #define MODE_NO_LATEJOIN		(1<<2)
@@ -45,6 +49,13 @@
 #define MODE_BASIC_RT			(1<<11)
 #define MODE_RANDOM_HIVE		(1<<12)// Makes Join-as-Xeno choose a hive to join as pooled larva at random rather than at user's input..
 #define MODE_THUNDERSTORM		(1<<13)// Enables thunderstorm effects on maps that are compatible with it. (Lit exterior tiles, rain effects)
+#define MODE_FACTION_CLASH		(1<<14)// Disables scopes, sniper sentries, OBs, shooting corpses, dragging enemy corpses, stripping enemy corpses
+
+// Gamemode Toggleable Flags
+#define MODE_NO_SNIPER_SENTRY		(1<<0) /// Upgrade kits will no longer allow you to select long-range upgrades
+#define MODE_NO_ATTACK_DEAD			(1<<1) /// People will not be able to shoot at corpses
+#define MODE_NO_STRIPDRAG_ENEMY		(1<<2) /// Can't strip or drag dead enemies
+#define MODE_STRIP_NONUNIFORM_ENEMY	(1<<3) /// Can strip enemy, but not their boots, uniform, armor, helmet, or ID
 
 #define ROUNDSTATUS_FOG_DOWN 		1
 #define ROUNDSTATUS_PODDOORS_OPEN	2
@@ -101,11 +112,11 @@ var/list/be_special_flags = list(
 //=================================================
 
 //Role defines, specifically lists of roles for job bans, crew manifests and the like.
-var/global/list/ROLES_COMMAND 		= list(JOB_CO, JOB_XO, JOB_SO, JOB_PILOT, JOB_CREWMAN, JOB_POLICE, JOB_POLICE_CADET, JOB_CORPORATE_LIAISON, JOB_CHIEF_REQUISITION, JOB_CHIEF_ENGINEER, JOB_CMO, JOB_CHIEF_POLICE, JOB_SEA, JOB_SYNTH, JOB_WARDEN)
+var/global/list/ROLES_COMMAND 		= list(JOB_CO, JOB_XO, JOB_SO, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_POLICE, JOB_POLICE_CADET, JOB_CORPORATE_LIAISON, JOB_CHIEF_REQUISITION, JOB_CHIEF_ENGINEER, JOB_CMO, JOB_CHIEF_POLICE, JOB_SEA, JOB_SYNTH, JOB_WARDEN)
 
-#define ROLES_OFFICERS				list(JOB_CO, JOB_XO, JOB_SO, JOB_PILOT, JOB_CREWMAN, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
+#define ROLES_OFFICERS				list(JOB_CO, JOB_XO, JOB_SO, JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_SYNTH, JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
 var/global/list/ROLES_CIC			= list(JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO)
-var/global/list/ROLES_AUXIL_SUPPORT	= list(JOB_PILOT, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
+var/global/list/ROLES_AUXIL_SUPPORT	= list(JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_WO_PILOT)
 var/global/list/ROLES_MISC			= list(JOB_SYNTH, JOB_SEA, JOB_CORPORATE_LIAISON, JOB_MESS_SERGEANT, JOB_WO_CORPORATE_LIAISON, JOB_WO_SYNTH)
 var/global/list/ROLES_POLICE		= list(JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE, JOB_POLICE_CADET)
 var/global/list/ROLES_ENGINEERING 	= list(JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH)
@@ -125,7 +136,7 @@ var/global/list/ROLES_WO			= list(JOB_WO_CO, JOB_WO_XO, JOB_WO_CORPORATE_LIAISON
 //Role lists used for switch() checks in show_blurb_uscm(). Cosmetic, determines ex. "Engineering, USS Almayer", "2nd Bat. 'Falling Falcons'" etc.
 #define BLURB_USCM_COMBAT JOB_CO, JOB_XO, JOB_SO, JOB_WO_CO, JOB_WO_XO, JOB_CREWMAN, JOB_WO_CHIEF_POLICE, JOB_WO_SO, JOB_WO_CREWMAN, JOB_WO_POLICE, JOB_SEA,\
 						JOB_SQUAD_LEADER, JOB_SQUAD_RTO, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_MEDIC, JOB_SQUAD_ENGI, JOB_SQUAD_MARINE
-#define BLURB_USCM_FLIGHT JOB_PILOT
+#define BLURB_USCM_FLIGHT JOB_PILOT, JOB_DROPSHIP_CREW_CHIEF
 #define BLURB_USCM_MP JOB_CHIEF_POLICE, JOB_WARDEN, JOB_POLICE
 #define BLURB_USCM_ENGI JOB_CHIEF_ENGINEER, JOB_ORDNANCE_TECH, JOB_MAINT_TECH, JOB_WO_CHIEF_ENGINEER, JOB_WO_ORDNANCE_TECH, JOB_WO_PILOT
 #define BLURB_USCM_MEDICAL JOB_CMO, JOB_RESEARCHER, JOB_DOCTOR, JOB_NURSE, JOB_WO_CMO, JOB_WO_RESEARCHER, JOB_WO_DOCTOR

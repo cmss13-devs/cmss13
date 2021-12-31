@@ -5,7 +5,7 @@
 	var/display_name = ""
 	var/tier = 0
 	var/dead_icon = "Drone Dead"
-	var/language = "Xenomorph"
+	var/language = LANGUAGE_XENOMORPH
 
 	var/melee_damage_lower = 10
 	var/melee_damage_upper = 20
@@ -60,7 +60,10 @@
 	var/build_time_mult = BUILD_TIME_MULT_XENO // Default build time and build distance
 	var/max_build_dist = 0
 
-	//Carrier vars
+	// Carrier vars //
+
+	/// if a hugger is held in hand, won't attempt to leap and kill itself
+	var/hugger_nurturing = FALSE
 	var/huggers_max = 0
 	var/throwspeed = 0
 	var/hugger_delay = 0
@@ -222,7 +225,7 @@
 	//List of how many maximum of each special structure you can have
 	var/list/hive_structures_limit = list(
 		XENO_STRUCTURE_CORE = 1,
-		XENO_STRUCTURE_PYLON = 8,
+		XENO_STRUCTURE_CLUSTER = 8,
 		XENO_STRUCTURE_POOL = 1,
 		XENO_STRUCTURE_EGGMORPH = 6,
 		XENO_STRUCTURE_EVOPOD = 2,
@@ -231,7 +234,7 @@
 
 	var/global/list/hive_structure_types = list(
 		XENO_STRUCTURE_CORE = /datum/construction_template/xenomorph/core,
-		XENO_STRUCTURE_PYLON = /datum/construction_template/xenomorph/pylon,
+		XENO_STRUCTURE_CLUSTER = /datum/construction_template/xenomorph/cluster,
 		XENO_STRUCTURE_POOL = /datum/construction_template/xenomorph/pool,
 		XENO_STRUCTURE_EGGMORPH = /datum/construction_template/xenomorph/eggmorph,
 		XENO_STRUCTURE_EVOPOD = /datum/construction_template/xenomorph/evopod,
@@ -790,11 +793,11 @@
 
 /datum/hive_status/corrupted/add_xeno(mob/living/carbon/Xenomorph/X)
 	. = ..()
-	X.add_language("English")
+	X.add_language(LANGUAGE_ENGLISH)
 
 /datum/hive_status/corrupted/remove_xeno(mob/living/carbon/Xenomorph/X, hard)
 	. = ..()
-	X.remove_language("English")
+	X.remove_language(LANGUAGE_ENGLISH)
 
 /datum/hive_status/alpha
 	name = "Alpha Hive"

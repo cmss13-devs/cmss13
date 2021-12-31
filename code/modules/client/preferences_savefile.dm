@@ -71,6 +71,7 @@
 	S["toggles_sound"]		>> toggles_sound
 	S["toggle_prefs"]		>> toggle_prefs
 	S["toggles_flashing"]	>> toggles_flashing
+	S["toggles_ghost"]		>> toggles_ghost
 	S["UI_style_color"]		>> UI_style_color
 	S["UI_style_alpha"]		>> UI_style_alpha
 	S["stylesheet"] 		>> stylesheet
@@ -100,6 +101,8 @@
 	S["yautja_status"]		>> yautja_status
 	S["synth_status"]		>> synth_status
 	S["key_bindings"] 		>> key_bindings
+
+	S["grade_path"]			>> sea_path
 	var/list/remembered_key_bindings
 	S["remembered_key_bindings"] >> remembered_key_bindings
 
@@ -120,6 +123,7 @@
 	toggles_sound	= sanitize_integer(toggles_sound, 0, 65535, initial(toggles_sound))
 	toggle_prefs	= sanitize_integer(toggle_prefs, 0, 65535, initial(toggle_prefs))
 	toggles_flashing= sanitize_integer(toggles_flashing, 0, 65535, initial(toggles_flashing))
+	toggles_ghost	= sanitize_integer(toggles_ghost, 0, 65535, initial(toggles_ghost))
 	UI_style_color	= sanitize_hexcolor(UI_style_color, initial(UI_style_color))
 	UI_style_alpha	= sanitize_integer(UI_style_alpha, 0, 255, initial(UI_style_alpha))
 	window_skin		= sanitize_integer(window_skin, 0, 65535, initial(window_skin))
@@ -132,13 +136,14 @@
 	predator_name 		= predator_name ? sanitize_text(predator_name, initial(predator_name)) : initial(predator_name)
 	predator_gender 	= sanitize_text(predator_gender, initial(predator_gender))
 	predator_age 		= sanitize_integer(predator_age, 100, 10000, initial(predator_age))
-	predator_translator_type = sanitize_inlist(predator_armor_material, list("Modern", "Retro", "Combo"), initial(predator_translator_type))
+	predator_translator_type = sanitize_inlist(predator_translator_type, list("Modern", "Retro", "Combo"), initial(predator_translator_type))
 	predator_mask_type 	= sanitize_integer(predator_mask_type,1,1000000,initial(predator_mask_type))
 	predator_armor_type = sanitize_integer(predator_armor_type,1,1000000,initial(predator_armor_type))
 	predator_boot_type 	= sanitize_integer(predator_boot_type,1,1000000,initial(predator_boot_type))
 	predator_armor_material = sanitize_inlist(predator_armor_material, list("ebony", "silver", "bronze"), initial(predator_armor_material))
 	commander_status	= sanitize_inlist(commander_status, whitelist_hierarchy, initial(commander_status))
 	commander_sidearm   = sanitize_inlist(commander_sidearm, list("Mateba","Commodore's Mateba","Golden Desert Eagle","Desert Eagle"), initial(commander_sidearm))
+	sea_path			= sanitize_inlist(sea_path, list("Command", "Technical"), initial(sea_path))
 	yautja_status		= sanitize_inlist(yautja_status, whitelist_hierarchy + list("Elder"), initial(yautja_status))
 	synth_status		= sanitize_inlist(synth_status, whitelist_hierarchy, initial(synth_status))
 	key_bindings 		= sanitize_keybindings(key_bindings)
@@ -188,7 +193,8 @@
 	S["chat_display_preferences"] << chat_display_preferences
 	S["toggles_sound"]		<< toggles_sound
 	S["toggle_prefs"]		<< toggle_prefs
-	S["toggle_flashing"]	<< toggles_flashing
+	S["toggles_flashing"]	<< toggles_flashing
+	S["toggles_ghost"]		<< toggles_ghost
 	S["window_skin"]		<< window_skin
 	S["fps"]				<< fps
 
@@ -215,6 +221,7 @@
 	S["co_sidearm"]			<< commander_sidearm
 	S["yautja_status"]		<< yautja_status
 	S["synth_status"]		<< synth_status
+	S["grade_path"]			<< sea_path
 
 	S["lang_chat_disabled"] << lang_chat_disabled
 	S["show_permission_errors"] << show_permission_errors

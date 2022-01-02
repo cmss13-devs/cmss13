@@ -36,6 +36,7 @@ GLOBAL_LIST_INIT(resin_build_order_default, list(
 	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_drone, list(
@@ -45,15 +46,19 @@ GLOBAL_LIST_INIT(resin_build_order_drone, list(
 	/datum/resin_construction/resin_obj/nest,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike
 ))
 
 GLOBAL_LIST_INIT(resin_build_order_hivelord, list(
 	/datum/resin_construction/resin_turf/wall/thick,
+	/datum/resin_construction/resin_turf/wall/reflective,
 	/datum/resin_construction/resin_turf/membrane/thick,
 	/datum/resin_construction/resin_obj/door/thick,
 	/datum/resin_construction/resin_obj/nest,
+	/datum/resin_construction/resin_obj/acid_pillar,
 	/datum/resin_construction/resin_obj/sticky_resin,
 	/datum/resin_construction/resin_obj/fast_resin,
+	/datum/resin_construction/resin_obj/resin_spike
 ))
 
 /// Xeno caste datums

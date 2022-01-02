@@ -112,6 +112,7 @@
 
 	START_PROCESSING(SSobj, src)
 	addtimer(CALLBACK(src, .proc/die), time_to_live)
+	animate(src, time_to_live, alpha = 128)
 
 /obj/effect/xenomorph/spray/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -165,14 +166,6 @@
 		H.apply_armoured_damage(damage_amount*0.33, ARMOR_BIO, BURN) //This is ticking damage!
 		to_chat(H, SPAN_DANGER("You are scalded by the burning acid!"))
 
-/obj/effect/xenomorph/spray/process()
-	var/turf/T = loc
-	if(!istype(T))
-		return
-
-	for(var/mob/living/carbon/human/H in loc)
-		apply_spray(H)
-
 /obj/effect/xenomorph/spray/weak
 	name = "weak splatter"
 	desc = "It burns! It burns, but not as much!"
@@ -183,7 +176,7 @@
 	fire_level_to_extinguish = 6
 	time_to_live = 6
 
-	var/bonus_damage = 25
+	var/bonus_damage = 5
 
 /obj/effect/xenomorph/spray/strong
 	name = "strong splatter"

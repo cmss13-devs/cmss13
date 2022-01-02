@@ -8,6 +8,9 @@
 	var/variant = 0
 	var/variant_prefix_name = ""
 
+/turf/open/auto_turf/insert_self_into_baseturfs()
+	baseturfs += type
+
 /turf/open/auto_turf/is_weedable()//for da xenos
 	return TRUE
 
@@ -80,6 +83,9 @@
 /turf/open/auto_turf/sand
 	layer_name = list("red dirt", "sand", "rocky sand", "this layer does not exist", "call a coder")
 
+/turf/open/auto_turf/sand/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/sand/layer0
+
 /turf/open/auto_turf/sand/get_dirt_type()
 	return DIRT_TYPE_SAND
 
@@ -105,6 +111,9 @@
 	icon_prefix = "ice"
 	layer_name = list("cracked permafrost","permafrost","glacial permafrost","warn a coder","warn a coder")
 
+/turf/open/auto_turf/ice/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/ice/layer0
+
 /turf/open/auto_turf/ice/get_dirt_type()
 	return NO_DIRT
 /turf/open/auto_turf/ice/layer0 //still have to manually define the layers for the editor
@@ -126,6 +135,9 @@
 	icon_state = "snow_0"
 	icon_prefix = "snow"
 	layer_name = list("icy dirt", "shallow snow", "deep snow", "very deep snow", "rock filled snow")
+
+/turf/open/auto_turf/snow/insert_self_into_baseturfs()
+	baseturfs += /turf/open/auto_turf/snow/layer0
 
 /turf/open/auto_turf/snow/get_dirt_type()
 	if(bleed_layer)

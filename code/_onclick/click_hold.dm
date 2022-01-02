@@ -4,7 +4,7 @@
 */
 
 // This just checks if A is the click catcher (i.e. the user clicked a black tile on their screen), then updates A and B to be what's "under" the black tile
-#define CONVERT_CLICK_CATCHER(A,B) if(istype(A,/obj/screen/click_catcher)) { var/list/mods = params2list(params); var/turf/TU = params2turf(mods["screen-loc"], get_turf(eye), src); A = TU; B = TU }
+#define CONVERT_CLICK_CATCHER(A,B,C) if(istype(A,/obj/screen/click_catcher)) { var/list/mods = params2list(params); var/turf/TU = params2turf(mods["screen-loc"], get_turf(eye), src); A = TU; B = TU; C = TRUE }
 
 /client
 	/// Whether or not the player is holding their mouse click
@@ -21,7 +21,10 @@
 		return
 
 	// If we're clicking on the black part of the screen
-	CONVERT_CLICK_CATCHER(A, T)
+	var/click_catcher_click = FALSE
+	CONVERT_CLICK_CATCHER(A, T, click_catcher_click)
+	if(click_catcher_click)
+		params += ";click_catcher=1"
 	holding_click = TRUE
 
 	mouse_trace_history = null
@@ -53,7 +56,10 @@
 	if(!A)
 		return
 
-	CONVERT_CLICK_CATCHER(A, T)
+	var/click_catcher_click = FALSE
+	CONVERT_CLICK_CATCHER(A, T, click_catcher_click)
+	if(click_catcher_click)
+		params += ";click_catcher=1"
 	holding_click = FALSE
 
 	var/list/mods = params2list(params)
@@ -64,7 +70,10 @@
 	if(!over_obj)
 		return
 
-	CONVERT_CLICK_CATCHER(over_obj, over_loc)
+	var/click_catcher_click = FALSE
+	CONVERT_CLICK_CATCHER(over_obj, over_loc, click_catcher_click)
+	if(click_catcher_click)
+		params += ";click_catcher=1"
 
 	var/list/mods = params2list(params)
 	if(mods["left"])

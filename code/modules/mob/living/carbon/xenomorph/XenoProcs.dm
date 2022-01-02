@@ -136,8 +136,9 @@
 		if(is_mob_incapacitated() || lying || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
 			return FALSE
-		else if(!(caste_type == XENO_CASTE_QUEEN) && observed_xeno)
+		else if(caste_type != XENO_CASTE_QUEEN && observed_xeno)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))
+			return FALSE
 	else
 		if(is_mob_incapacitated() || buckled)
 			to_chat(src, SPAN_WARNING("You cannot do this in your current state."))

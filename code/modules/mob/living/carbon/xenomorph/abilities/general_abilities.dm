@@ -73,6 +73,8 @@
 	action_type = XENO_ACTION_CLICK
 	ability_primacy = XENO_PRIMARY_ACTION_3
 
+	var/build_speed_mod = 1
+
 	plasma_cost = 1
 
 /datum/action/xeno_action/activable/secrete_resin/can_use_action()

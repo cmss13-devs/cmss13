@@ -79586,17 +79586,13 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "wie" = (
-/obj/structure/surface/table/almayer,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/obj/item/storage/toolbox/electrical,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/obj/structure/machinery/cm_vending/sorted/tech/circuits,
+/turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
 "wiz" = (
 /obj/structure/bed/chair{
@@ -82022,6 +82018,9 @@
 	},
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";

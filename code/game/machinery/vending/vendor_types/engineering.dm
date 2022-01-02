@@ -50,6 +50,25 @@
 		list("Wrench", round(scale * 4), /obj/item/tool/wrench, VENDOR_ITEM_REGULAR)
 	)
 
+/obj/structure/machinery/cm_vending/sorted/tech/circuits
+	name = "circuit board vendor"
+	desc = "A safe storage for pre-programmed circuit boards, it has an internal gyroscope to keep any external force from moving the boards, thick insulation and a custom 2.1mm UPS port for charging various W-Y exclusive devices (sold separately)."
+	icon_state = "robotics"
+
+/obj/structure/machinery/cm_vending/sorted/tech/circuits/populate_product_list(var/scale)
+	listed_products = list(
+		list("CIRCUITBOARDS", -1, null, null),
+		list("Fire Alarm", 5, /obj/item/circuitboard/firealarm, VENDOR_ITEM_REGULAR),
+		list("APC", 6, /obj/item/circuitboard/apc, VENDOR_ITEM_REGULAR),
+		list("Autolathe", 2, /obj/item/circuitboard/machine/autolathe, VENDOR_ITEM_REGULAR),
+		list("TC-4T Telecommunications", 1, /obj/item/circuitboard/machine/telecomms/relay/tower, VENDOR_ITEM_REGULAR),
+		list("Crew Monitoring Computer", 2, /obj/item/circuitboard/computer/crew, VENDOR_ITEM_REGULAR),
+		list("ID Computer", 2, /obj/item/circuitboard/computer/card, VENDOR_ITEM_REGULAR),
+		list("Security Records", 2, /obj/item/circuitboard/computer/secure_data, VENDOR_ITEM_REGULAR),
+		list("Supply Ordering Console", 2, /obj/item/circuitboard/computer/ordercomp, VENDOR_ITEM_REGULAR),
+		list("Research Data Terminal", 2, /obj/item/circuitboard/computer/research_terminal, VENDOR_ITEM_REGULAR),
+	)
+
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag
 	req_access = list(ACCESS_ILLEGAL_PIRATE)
 
@@ -157,3 +176,4 @@
 		list("Anesthetic Tank", 2, /obj/item/tank/anesthetic, VENDOR_ITEM_REGULAR),
 		list("Health Analyzer", 2, /obj/item/device/healthanalyzer, VENDOR_ITEM_REGULAR)
 	)
+

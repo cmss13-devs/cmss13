@@ -262,6 +262,11 @@
 	desc = "An old TV hooked up to a video cassette recorder, you can even use it to time shift WOW."
 	network = null
 
+/obj/structure/machinery/computer/security/wooden_tv/ot
+	name = "Mortar Monitoring Set"
+	desc = "A Console linked to Mortar launched cameras."
+	network = list(CAMERA_NET_MORTAR)
+
 /obj/structure/machinery/computer/security/mining
 	name = "Outpost Cameras"
 	desc = "Used to access the various cameras on the outpost."

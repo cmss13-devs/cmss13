@@ -37915,6 +37915,13 @@
 	tag = "icon-silvercorner (EAST)"
 	},
 /area/almayer/command/cichallway)
+"dvF" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/security/wooden_tv/ot{
+	pixel_y = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "dvM" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -110967,7 +110974,7 @@ jZm
 aqT
 bWM
 gwW
-ast
+dvF
 bWM
 ate
 uku

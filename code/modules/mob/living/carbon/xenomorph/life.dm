@@ -77,58 +77,36 @@
 	//Basically, we use a special tally var so we don't reset the actual aura value before making sure they're not affected
 	//Now moved out of healthy only state, because crit xenos can def still be affected by pheros
 
-	if(aura_strength > 0) //Ignoring pheromone underflow
-		if(current_aura && !stat && plasma_stored > 5)
-			if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
-				var/mob/living/carbon/Xenomorph/Queen/Q = src
-				var/atom/phero_center = Q
-				if(Q.observed_xeno)
-					phero_center = Q.observed_xeno
-				if(!phero_center || !phero_center.loc)
-					return
-				if(phero_center.loc.z == Q.loc.z)//Only same Z-level
-					var/pheromone_range = round(6 + aura_strength * 2)
-					for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, phero_center)) //Goes from 8 for Queen to 16 for Ancient Queen
-						if(Z.ignores_pheromones)
-							continue
-						if((current_aura == "all" || current_aura == "frenzy") && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-							Z.frenzy_new = aura_strength
-						if((current_aura == "all" || current_aura == "warding") && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-							Z.warding_new = aura_strength
-						if((current_aura == "all" || current_aura == "recovery") && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-							Z.recovery_new = aura_strength
-			else
-				var/pheromone_range = round(6 + aura_strength * 2)
-				for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-					if(Z.ignores_pheromones)
-						continue
-					if((current_aura == "all" || current_aura == "frenzy") && aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-						Z.frenzy_new = aura_strength
-					if((current_aura == "all" || current_aura == "warding") && aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-						Z.warding_new = aura_strength
-					if((current_aura == "all" || current_aura == "recovery") && aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-						Z.recovery_new = aura_strength
+	if(!stat)
+		var/use_current_aura = FALSE
+		var/use_leader_aura = FALSE
+		var/aura_center = src
+		if(aura_strength > 0) //Ignoring pheromone underflow
+			if(current_aura && plasma_stored > 5)
+				if(caste_type == XENO_CASTE_QUEEN && anchored) //stationary queen's pheromone apply around the observed xeno.
+					var/mob/living/carbon/Xenomorph/Queen/Q = src
+					var/atom/phero_center = Q
+					if(Q.observed_xeno)
+						phero_center = Q.observed_xeno
+					if(!phero_center || !phero_center.loc)
+						return
+					if(phero_center.loc.z == Q.loc.z)//Only same Z-level
+						use_current_aura = TRUE
+						aura_center = phero_center
+				else
+					use_current_aura = TRUE
 
+		if(leader_current_aura && hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
+			use_leader_aura = TRUE
 
-	if(hive && hive.living_xeno_queen && hive.living_xeno_queen.loc.z == loc.z) //Same Z-level as the Queen!
-		if(leader_current_aura && !stat)
-			var/pheromone_range = round(6 + leader_aura_strength * 2)
-			for(var/mob/living/carbon/Xenomorph/Z in range(pheromone_range, src)) //Goes from 7 for Young Drone to 16 for Ancient Queen
-				if(Z.ignores_pheromones)
+		if(use_current_aura || use_leader_aura)
+			for(var/mob/living/carbon/Xenomorph/Z as anything in GLOB.living_xeno_list)
+				if(Z.ignores_pheromones || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
 					continue
-				if((leader_current_aura == "all" || leader_current_aura == "frenzy") && leader_aura_strength > Z.frenzy_new && hivenumber == Z.hivenumber)
-					Z.frenzy_new = leader_aura_strength
-				if((leader_current_aura == "all" || leader_current_aura == "warding") && leader_aura_strength > Z.warding_new && hivenumber == Z.hivenumber)
-					Z.warding_new = leader_aura_strength
-				if((leader_current_aura == "all" || leader_current_aura == "recovery") && leader_aura_strength > Z.recovery_new && hivenumber == Z.hivenumber)
-					Z.recovery_new = leader_aura_strength
-
-	if(ignores_pheromones)
-		frenzy_aura = 0
-		warding_aura = 0
-		recovery_aura = 0
-		hud_set_pheromone()
-		return
+				if(use_leader_aura)
+					set_xeno_pheromones(Z, leader_current_aura)
+				if(use_current_aura)
+					set_xeno_pheromones(Z, current_aura)
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
@@ -140,6 +118,25 @@
 	frenzy_new = 0
 	warding_new = 0
 	recovery_new = 0
+
+/mob/living/carbon/Xenomorph/proc/set_xeno_pheromones(var/mob/living/carbon/Xenomorph/Z, var/aura)
+	switch(aura)
+		if("all")
+			if(aura_strength > Z.frenzy_new)
+				Z.frenzy_new = aura_strength
+			if(aura_strength > Z.warding_new)
+				Z.warding_new = aura_strength
+			if(aura_strength > Z.recovery_new)
+				Z.recovery_new = aura_strength
+		if("frenzy")
+			if(aura_strength > Z.frenzy_new)
+				Z.frenzy_new = aura_strength
+		if("warding")
+			if(aura_strength > Z.warding_new)
+				Z.warding_new = aura_strength
+		if("recovery")
+			if(aura_strength > Z.recovery_new)
+				Z.recovery_new = aura_strength
 
 /mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure

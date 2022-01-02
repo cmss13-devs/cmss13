@@ -3114,7 +3114,7 @@
 	},
 /area/event/deep_underground/dynamic)
 "kx" = (
-/obj/item/stack/medical/advanced/bruise_pack,
+/obj/item/stack/medical/healing/traumakit,
 /turf/open/floor/prison,
 /area/lv624/lazarus/landing_zones/lz1)
 "ky" = (
@@ -16167,7 +16167,7 @@
 	},
 /area/event/metal/dynamic)
 "YB" = (
-/obj/item/stack/medical/advanced/ointment,
+/obj/item/stack/medical/healing/burnkit,
 /turf/open/floor/prison,
 /area/lv624/lazarus/landing_zones/lz1)
 "YC" = (

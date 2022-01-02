@@ -57,13 +57,13 @@
 	else if(flags_jumpsuit & UNIFORM_SLEEVE_CUTTABLE)
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_CUTTABLE
 		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having cuttable sleeves but could not detect a cut icon state.")
-	
+
 	if((worn_state + "_dj") in icon_states(default_onmob_icons[WEAR_BODY]))
 		flags_jumpsuit |= UNIFORM_JACKET_REMOVABLE
 	else if(flags_jumpsuit & UNIFORM_JACKET_REMOVABLE)
 		flags_jumpsuit &= ~UNIFORM_JACKET_REMOVABLE
 		log_debug("CLOTHING: Jumpsuit of name: \"[src.name]\" and type: \"[src.type]\" was flagged as having a removable jacket but could not detect a shirtless icon state.")
-	
+
 	//autodetect preset states are valid
 	if((flags_jumpsuit & UNIFORM_SLEEVE_ROLLED) && !(flags_jumpsuit & UNIFORM_SLEEVE_ROLLABLE))
 		flags_jumpsuit &= ~UNIFORM_SLEEVE_ROLLED
@@ -103,11 +103,11 @@
 			if(over_object)
 				switch(over_object.name)
 					if("r_hand")
-						usr.drop_inv_item_on_ground(src)
-						usr.put_in_r_hand(src)
+						if(usr.drop_inv_item_on_ground(src))
+							usr.put_in_r_hand(src)
 					if("l_hand")
-						usr.drop_inv_item_on_ground(src)
-						usr.put_in_l_hand(src)
+						if(usr.drop_inv_item_on_ground(src))
+							usr.put_in_l_hand(src)
 				add_fingerprint(usr)
 
 

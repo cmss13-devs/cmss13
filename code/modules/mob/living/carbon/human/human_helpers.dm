@@ -402,3 +402,23 @@
 		to_chat(M, SPAN_WARNING("You can't pull a crit or dead member of another faction!"))
 		return FALSE
 	return TRUE
+
+/mob/living/carbon/human/proc/get_brute_mod()
+	if(LAZYLEN(brute_mod_override))
+		var/lowest_brute_mod = INFINITY
+		for(var/thing in brute_mod_override)
+			var/brute_mod = brute_mod_override[thing]
+			if(brute_mod < lowest_brute_mod)
+				lowest_brute_mod = brute_mod
+		return lowest_brute_mod
+	return species?.brute_mod
+
+/mob/living/carbon/human/proc/get_burn_mod()
+	if(LAZYLEN(burn_mod_override))
+		var/lowest_burn_mod = INFINITY
+		for(var/thing in burn_mod_override)
+			var/burn_mod = burn_mod_override[thing]
+			if(burn_mod < lowest_burn_mod)
+				lowest_burn_mod = burn_mod
+		return lowest_burn_mod
+	return species?.burn_mod

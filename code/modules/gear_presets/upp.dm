@@ -58,6 +58,9 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/marine/upp, WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran, WEAR_HANDS)
 
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
+
 	load_upp_soldier(H, UPP)
 
 /datum/equipment_preset/upp/soldier/proc/load_upp_soldier(mob/living/carbon/human/H, obj/item/clothing/under/marine/veteran/UPP/UPP)
@@ -175,6 +178,9 @@
 		H.equip_to_slot_or_del(new /obj/item/ammo_magazine/pistol/skorpion, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new/obj/item/storage/pouch/medical/full, WEAR_L_STORE)
 
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
+
 /datum/equipment_preset/upp/sapper
 	name = "UPP Sapper"
 	flags = EQUIPMENT_PRESET_EXTRA
@@ -262,6 +268,9 @@
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/explosive/C4, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
 
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
+
 	var/obj/item/device/internal_implant/subdermal_armor/implant = new()
 	implant.on_implanted(H)
 
@@ -325,6 +334,9 @@
 	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/tool/extinguisher, WEAR_IN_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/firstaid/ert, WEAR_L_STORE)
+
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
 //*****************************************************************************************************/
 
@@ -418,6 +430,9 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
 
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/senior
@@ -462,6 +477,9 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
+
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
 //*****************************************************************************************************/
 
@@ -508,6 +526,9 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
 
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
+
 //*****************************************************************************************************/
 
 /datum/equipment_preset/upp/officer/kolonel
@@ -553,6 +574,9 @@
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/explosive/grenade/HE/upp, WEAR_IN_L_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/autoinjector/full, WEAR_R_STORE)
+
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
 //*****************************************************************************************************/
 /datum/equipment_preset/upp/sapper/survivor
@@ -735,6 +759,9 @@
 	else if(prob(30))
 		H.equip_to_slot_or_del(new /obj/item/storage/belt/marine/upp/scarce, WEAR_WAIST)
 	//if you fail the rolls you must scavenge the ammo from your fallen brethren
+
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)
 
 	if(prob(10))
 		//sometimes Ivan smiles upon the corps
@@ -933,3 +960,6 @@
 	//póckets
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/general/medium, WEAR_R_STORE)
 	H.equip_to_slot_or_del(new /obj/item/storage/pouch/medical/full, WEAR_L_STORE)
+
+	if(SSmapping.configs[GROUND_MAP].environment_traits[MAP_COLD])
+		H.equip_to_slot_or_del(new /obj/item/clothing/mask/rebreather/scarf/tacticalmask/green, WEAR_FACE)

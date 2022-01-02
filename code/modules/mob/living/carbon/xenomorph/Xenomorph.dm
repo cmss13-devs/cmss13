@@ -239,6 +239,7 @@
 	// Related to zooming out (primarily queen and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
+	var/can_stack_builds = FALSE
 	var/list/resin_build_order
 	var/selected_resin // Which resin structure to build when we secrete resin, defaults to null.
 	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions

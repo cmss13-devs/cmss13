@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(acid_pillar)
 	name          = "Acid Pillar"
-	wait          = 0.2 SECONDS
+	wait          = 0.3 SECONDS
 	priority      = SS_PRIORITY_ACID_PILLAR
 	flags		  = SS_NO_INIT
 
@@ -25,6 +25,7 @@ SUBSYSTEM_DEF(acid_pillar)
 		var/obj/effect/alien/resin/acid_pillar/P = data.source
 
 		if(!P.acid_travel(data))
+			P.currently_firing = FALSE
 			qdel(data)
 			queuedrun -= hash
 
@@ -41,6 +42,7 @@ SUBSYSTEM_DEF(acid_pillar)
 	var/datum/acid_spray_info/info = new()
 	info.source = P
 	info.target = target
+	info.target_turf = get_turf(target)
 	info.current_turf = P.loc
 	info.hash = hash
 
@@ -48,7 +50,8 @@ SUBSYSTEM_DEF(acid_pillar)
 
 /datum/acid_spray_info
 	var/obj/effect/alien/resin/acid_pillar/source
-	var/atom/target
+	var/mob/living/carbon/target
+	var/turf/target_turf
 	var/turf/current_turf
 	var/distance_travelled = 0
 	var/hash
@@ -56,5 +59,6 @@ SUBSYSTEM_DEF(acid_pillar)
 /datum/acid_spray_info/Destroy(force, ...)
 	source = null
 	target = null
+	target_turf = null
 	current_turf = null
 	return ..()

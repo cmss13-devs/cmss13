@@ -890,7 +890,12 @@
 	storage_slots = 6
 	can_hold = list(
 		/obj/item/circuitboard,
-		/obj/item/cell
+		/obj/item/cell,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/console_screen,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/micro_laser,
+		/obj/item/stock_parts/scanning_module
 	)
 
 /obj/item/storage/pouch/electronics/full/fill_preset_inventory()
@@ -969,6 +974,12 @@
 	new /obj/item/tool/wrench(src)
 	new /obj/item/tool/weldingtool/hugetank(src)
 	new /obj/item/tool/extinguisher/mini(src)
+
+/obj/item/storage/pouch/tools/mortar/fill_preset_inventory()
+	new /obj/item/tool/crowbar(src)
+	new /obj/item/tool/wrench(src)
+	new /obj/item/tool/wirecutters(src)
+	new /obj/item/tool/shovel/etool(src)
 
 /obj/item/storage/pouch/tools/tactical/full/fill_preset_inventory()
 	new /obj/item/tool/screwdriver/tactical(src)

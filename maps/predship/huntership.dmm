@@ -374,10 +374,12 @@
 	color = "#6b675e";
 	layer = 2.79
 	},
-/obj/item/device/healthanalyzer,
-/obj/item/device/healthanalyzer,
-/obj/item/device/healthanalyzer,
-/obj/item/device/healthanalyzer,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"
@@ -1614,6 +1616,9 @@
 /obj/structure/closet/crate{
 	color = "#6b675e"
 	},
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
+/obj/item/device/healthanalyzer/alien,
 /turf/open/floor/corsat{
 	dir = 1;
 	icon_state = "squareswood"

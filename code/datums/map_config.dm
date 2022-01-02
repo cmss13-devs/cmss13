@@ -60,6 +60,8 @@
 
 	var/list/xvx_hives = list(XENO_HIVE_ALPHA = 0, XENO_HIVE_BRAVO = 0)
 
+	var/vote_cycle = 1
+
 /proc/load_map_config(filename, default, delete_after, error_if_missing = TRUE)
 	var/datum/map_config/config = new
 	if(default)
@@ -232,6 +234,9 @@
 
 	if(json["perf_mode"])
 		perf_mode = json["perf_mode"]
+		
+	if(json["vote_cycle"])
+		vote_cycle = json["vote_cycle"]
 
 	if(json["announce_text"])
 		announce_text = json["announce_text"]

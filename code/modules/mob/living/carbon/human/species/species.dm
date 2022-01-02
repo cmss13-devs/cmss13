@@ -99,8 +99,6 @@
 
 	var/blood_mask = 'icons/effects/blood.dmi'
 
-	var/melee_allowed = TRUE
-
 	var/mob_flags = NO_FLAGS // The mob flags to give their mob
 	 /// Status traits to give to the mob.
 	var/list/mob_inherent_traits

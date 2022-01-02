@@ -313,6 +313,7 @@
 
 /obj/structure/mortar/wo
 	fixed = TRUE
+	offset_per_turfs = 50 // The mortar is located at the edge of the map in WO, This to to prevent mass FF
 
 //The portable mortar item
 /obj/item/mortar_kit

@@ -1791,11 +1791,11 @@
 /datum/ammo/rocket/ap/on_hit_mob(mob/M, obj/item/projectile/P)
 	var/turf/T = get_turf(M)
 	M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-	M.KnockDown(2)
-	M.KnockOut(2)
 	if(isHumanStrict(M)) // No yautya or synths. Makes humans gib on direct hit.
 		M.ex_act(300, P.dir, P.weapon_cause_data, 100)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	M.SetKnockeddown(2)
+	M.SetKnockedout(2)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1810,8 +1810,6 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(150, P.dir, P.weapon_cause_data, 100)
-		M.KnockDown(4)
-		M.KnockOut(4)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -1824,6 +1822,9 @@
 		T.ex_act(150, P.dir, P.weapon_cause_data, 200)
 
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	for(var/mob/M in T)
+		M.SetKnockeddown(4)
+		M.SetKnockedout(4)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -1832,8 +1833,6 @@
 	var/hit_something = 0
 	for(var/mob/M in T)
 		M.ex_act(250, P.dir, P.weapon_cause_data, 100)
-		M.KnockDown(2)
-		M.KnockOut(2)
 		hit_something = 1
 		continue
 	if(!hit_something)
@@ -1845,6 +1844,9 @@
 	if(!hit_something)
 		T.ex_act(250, P.dir, P.weapon_cause_data)
 	cell_explosion(T, 100, 50, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, P.weapon_cause_data)
+	for(var/mob/M in T)
+		M.SetKnockeddown(2)
+		M.SetKnockedout(2)
 	smoke.set_up(1, T)
 	smoke.start()
 
@@ -2924,7 +2926,7 @@
 /datum/ammo/flamethrower/sentry_flamer/mini/drop_flame(turf/T, datum/cause_data/cause_data)
 	if(!istype(T))
 		return
-	var/datum/reagent/napalm/R = new()
+	var/datum/reagent/napalm/ut/R = new()
 	R.durationfire = BURN_TIME_INSTANT
 	new /obj/flamer_fire(T, cause_data, R, 0)
 

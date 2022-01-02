@@ -91,8 +91,10 @@
 
 
 /mob/living/carbon/human/adjustBruteLoss(var/amount)
-	if(species.brute_mod && amount > 0)
-		amount = amount*species.brute_mod
+	if(amount > 0)
+		var/brute_mod = get_brute_mod()
+		if(brute_mod)
+			amount *= brute_mod
 
 	if(amount > 0)
 		take_overall_damage(amount, 0)
@@ -101,8 +103,10 @@
 
 
 /mob/living/carbon/human/adjustFireLoss(var/amount)
-	if(species && species.burn_mod && amount > 0)
-		amount = amount*species.burn_mod
+	if(amount > 0)
+		var/burn_mod = get_burn_mod()
+		if(burn_mod)
+			amount *= burn_mod
 
 	if(amount > 0)
 		take_overall_damage(0, amount)
@@ -111,8 +115,10 @@
 
 
 /mob/living/carbon/human/proc/adjustBruteLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
-	if(species && species.brute_mod && amount > 0)
-		amount = amount*species.brute_mod
+	if(amount > 0)
+		var/brute_mod = get_brute_mod()
+		if(brute_mod)
+			amount *= brute_mod
 
 	for(var/X in limbs)
 		var/obj/limb/O = X
@@ -127,8 +133,10 @@
 
 
 /mob/living/carbon/human/proc/adjustFireLossByPart(var/amount, var/organ_name, var/obj/damage_source = null)
-	if(species && species.burn_mod && amount > 0)
-		amount = amount*species.burn_mod
+	if(amount > 0)
+		var/burn_mod = get_burn_mod()
+		if(burn_mod)
+			amount *= burn_mod
 
 	for(var/X in limbs)
 		var/obj/limb/O = X
@@ -424,8 +432,10 @@ This function restores all limbs.
 	switch(damagetype)
 		if(BRUTE)
 			damageoverlaytemp = 20
-			if(species.brute_mod && !force)
-				damage = damage * species.brute_mod
+			if(!force)
+				var/brute_mod = get_brute_mod()
+				if(brute_mod)
+					damage *= brute_mod
 			if(organ.take_damage(damage, 0, int_dmg_multiplier, used_weapon, no_limb_loss = no_limb_loss, attack_source = firer))
 				UpdateDamageIcon()
 

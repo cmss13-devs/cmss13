@@ -103,7 +103,7 @@
 	icon_state = "MP_jumpsuit"
 	worn_state = "MP_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
-	flags_jumpsuit = FALSE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "military police"
 	flags_atom = NO_SNOW_TYPE
 
@@ -116,7 +116,7 @@
 	icon_state = "warden_jumpsuit"
 	worn_state = "warden_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
-	flags_jumpsuit = FALSE
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "military warden"
 	flags_atom = NO_SNOW_TYPE
 
@@ -137,6 +137,7 @@
 	item_state = "WO_jumpsuit"
 	worn_state = "WO_jumpsuit"
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine, /obj/item/clothing/suit/armor/riot/marine)
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	specialty = "chief MP"
 	flags_atom = NO_SNOW_TYPE
 
@@ -181,6 +182,7 @@
 	icon_state = "BO_jumpsuit"
 	worn_state = "BO_jumpsuit"
 	specialty = "marine service"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/officer/exec
 	name = "executive officer uniform"

@@ -37915,6 +37915,13 @@
 	tag = "icon-silvercorner (EAST)"
 	},
 /area/almayer/command/cichallway)
+"dvF" = (
+/obj/structure/surface/table/almayer,
+/obj/structure/machinery/computer/security/wooden_tv/ot{
+	pixel_y = 4
+	},
+/turf/open/floor/almayer,
+/area/almayer/engineering/engineering_workshop/hangar)
 "dvM" = (
 /obj/structure/pipes/vents/pump{
 	dir = 4
@@ -79579,17 +79586,13 @@
 /turf/open/floor/wood/ship,
 /area/almayer/command/corporateliason)
 "wie" = (
-/obj/structure/surface/table/almayer,
 /obj/item/device/radio/intercom{
 	freerange = 1;
 	name = "General Listening Channel";
 	pixel_y = 28
 	},
-/obj/item/storage/toolbox/electrical,
-/turf/open/floor/almayer{
-	icon_state = "plate";
-	tag = "icon-sterile"
-	},
+/obj/structure/machinery/cm_vending/sorted/tech/circuits,
+/turf/open/floor/almayer,
 /area/almayer/engineering/engineering_workshop)
 "wiz" = (
 /obj/structure/bed/chair{
@@ -82015,6 +82018,9 @@
 	},
 /obj/structure/machinery/firealarm{
 	pixel_y = 28
+	},
+/obj/item/storage/toolbox/electrical{
+	pixel_y = 8
 	},
 /turf/open/floor/almayer{
 	icon_state = "plate";
@@ -110967,7 +110973,7 @@ jZm
 aqT
 bWM
 gwW
-ast
+dvF
 bWM
 ate
 uku

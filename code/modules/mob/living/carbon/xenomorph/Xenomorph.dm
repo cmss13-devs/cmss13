@@ -213,6 +213,7 @@
 	var/evolving = FALSE // Whether the xeno is in the process of evolving
 	/// The damage dealt by a xeno whenever they take damage near someone
 	var/acid_blood_damage = 12
+	var/nocrit = FALSE
 
 
 	//////////////////////////////////////////////////////////////////
@@ -238,6 +239,7 @@
 	// Related to zooming out (primarily queen and boiler)
 	var/devour_timer = 0 // The world.time at which we will regurgitate our currently-vored victim
 	var/extra_build_dist = 0 // For drones/hivelords. Extends the maximum build range they have
+	var/can_stack_builds = FALSE
 	var/list/resin_build_order
 	var/selected_resin // Which resin structure to build when we secrete resin, defaults to null.
 	var/selected_construction = XENO_STRUCTURE_CORE //which special structure to build when we place constructions
@@ -755,7 +757,7 @@
 	tacklestrength_max = caste.tacklestrength_max + mutators.tackle_strength_bonus + hive.mutators.tackle_strength_bonus
 
 /mob/living/carbon/Xenomorph/proc/recalculate_health()
-	var/new_max_health = health_modifier + caste.max_health
+	var/new_max_health = nocrit ? health_modifier + maxHealth : health_modifier + caste.max_health
 	if (new_max_health == maxHealth)
 		return
 	var/currentHealthRatio = 1

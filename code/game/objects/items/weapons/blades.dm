@@ -136,54 +136,68 @@
 
 ///For digging shrapnel out of OTHER people, not yourself. Triggered by human/attackby() so target is definitely human. User might not be.
 /obj/item/proc/dig_out_shrapnel_check(mob/living/carbon/human/target, mob/living/carbon/human/user)
-	if(user.a_intent == INTENT_HELP && ishuman(user) && skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC)) //Squad medics and above
+	if(user.a_intent == INTENT_HELP && (target == user || skillcheck(user, SKILL_MEDICAL, SKILL_MEDICAL_MEDIC))) //Squad medics and above, or yourself
 		INVOKE_ASYNC(src, /obj/item.proc/dig_out_shrapnel, target, user)
 		return TRUE
 	return FALSE
 
 // If no user, it means that the embedded_human is removing it themselves
 /obj/item/proc/dig_out_shrapnel(var/mob/living/carbon/human/embedded_human, var/mob/living/carbon/human/user = null)
-	var/mob/living/carbon/human/H = embedded_human
-	var/mob/living/carbon/human/H_user = embedded_human
+	if(!user)
+		user = embedded_human
 
-	if(user)
-		H_user = user
-
-	if(H_user.action_busy)
+	if(user.action_busy)
 		return
 
-	if(user)
-		to_chat(user, SPAN_NOTICE("You begin using [src] to rip shrapnel out of [embedded_human]."))
-		if(!do_after(user, 20, INTERRUPT_NO_NEEDHAND, BUSY_ICON_FRIENDLY, H, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
-			to_chat(H_user, SPAN_NOTICE("You were interrupted!"))
+	var/address_mode
+
+	if(user != embedded_human)
+		user.affected_message(embedded_human,
+			SPAN_NOTICE("You begin examining [embedded_human]'s body for shrapnel."),
+			SPAN_NOTICE("[user] begins to examine your body for shrapnel to dig out. Hold still, this will probably hurt..."),
+			SPAN_NOTICE("[user] begins to examine [embedded_human]'s body for shrapnel."))
+		address_mode = "out of [embedded_human]'s" //includes "out of " to prevent capital-T 'The unknown'.
+		if(!do_after(user, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY, embedded_human, INTERRUPT_MOVED, BUSY_ICON_MEDICAL))
+			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 	else
-		to_chat(H, SPAN_NOTICE("You begin using [src] to rip shrapnel out. Hold still. This will probably hurt..."))
-		if(!do_after(H, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
-			to_chat(H_user, SPAN_NOTICE("You were interrupted!"))
+		user.visible_message(SPAN_NOTICE("[user] starts checking \his body for shrapnel."), \
+			SPAN_NOTICE("You begin searching your body for shrapnel."))
+		address_mode = "out of your"
+		if(!do_after(embedded_human, 20, INTERRUPT_ALL, BUSY_ICON_FRIENDLY))
+			to_chat(user, SPAN_NOTICE("You were interrupted!"))
 			return
 
-	var/no_shards = TRUE
-	for (var/obj/item/shard/S in embedded_human.embedded_items)
+	var/list/removed_limbs = list()
+	for(var/obj/item/shard/S in embedded_human.embedded_items)
 		var/obj/limb/organ = S.embedded_organ
-		if(S.count > 1)
-			to_chat(embedded_human, SPAN_NOTICE("You remove all the [S] stuck in the [organ.display_name]."))
-		else
-			to_chat(embedded_human, SPAN_NOTICE("You remove [S] from the [organ.display_name]."))
+
+		if(!(organ.display_name in removed_limbs))
+			removed_limbs += organ.display_name
+
 		S.forceMove(embedded_human.loc)
 		organ.implants -= S
 		embedded_human.embedded_items -= S
-		no_shards = FALSE
 		organ = null
 		for(var/i in 1 to S.count-1)
-			H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+			user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 			var/shrapnel = new S.type(S.loc)
 			QDEL_IN(shrapnel, 300)
-		H_user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
+		user.count_niche_stat(STATISTICS_NICHE_SURGERY_SHRAPNEL)
 		QDEL_IN(S, 300)
 
-	if(no_shards)
-		to_chat(H_user, SPAN_NOTICE("You couldn't find any shrapnel."))
-		return
+	if(length(removed_limbs))
+		var/duglimbs = english_list(removed_limbs, final_comma_text = ",")
+		user.affected_message(embedded_human,
+			SPAN_NOTICE("You dig the shrapnel [address_mode] [duglimbs] with your [src.name]."),
+			SPAN_NOTICE("[user] digs the shrapnel out of your [duglimbs] with \his [src.name]."),
+			SPAN_NOTICE(user != embedded_human ? "[user] uses \his [src.name] to dig the shrapnel out of [embedded_human]'s [duglimbs]." : "[user] digs the shrapnel out of \his [duglimbs] with \his [src.name]."))
 
-	to_chat(H_user, SPAN_NOTICE("You dig out all the shrapnel you can find."))
+		if(!embedded_human.stat && embedded_human.pain.feels_pain && embedded_human.pain.reduction_pain < PAIN_REDUCTION_HEAVY)
+			if(prob(25))
+				INVOKE_ASYNC(embedded_human, /mob.proc/emote, "pain")
+			else
+				INVOKE_ASYNC(embedded_human, /mob.proc/emote, "me", 1, pick("winces.", "grimaces.", "flinches."))
+
+	else
+		to_chat(user, SPAN_NOTICE("You couldn't find any shrapnel."))

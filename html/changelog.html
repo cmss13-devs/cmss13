@@ -61,6 +61,105 @@
 	</tr>
 </table>
 
+			<h2 class="date">02 January 2022</h2>
+			<h3 class="author">Chiwi updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Adds rolled sleeves and jacketless sprites for MP, WO and Warden uniforms. Code modified to allow these states.</li>
+				<li class="rscadd">Adds shoulder pads to MP armors, classifies original sets as padless.</li>
+				<li class="tweak">ARMOR class added to MP equipment vendor.</li>
+			</ul>
+			<h3 class="author">Geeves updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Directly targeting a mob will now always hit it when you throw something at it. No matter if it's resting or if you high toss it.</li>
+				<li class="rscadd">The UPP now get green tactical scarves on cold maps.</li>
+				<li class="rscadd">Resin spikes have been added to the drone and hivelord build lists, reflective walls and acid pillars have been added to hivelord build lists.</li>
+				<li class="tweak">Acid pillar damage has been lowered, the acid splash travels 0.1 second slower per tile, acid pillars now target one person at a time, depending on who's nearest. Acid pillars no longer target crit people.</li>
+				<li class="tweak">Resin whisperer's long range resin build ability's cooldown has been reduced to 1 seconds, down from 2, though the structure still takes two seconds to build. It no longer requires line-based line of sight, if you can see the tile, you can build there. It no longer spams your chat that it's ready again. You can start building the next resin construction before the previous one finishes. If the build progress is interrupted, the cooldown will be doubled.</li>
+				<li class="tweak">Resin whisperer hivelords no longer have a long sight ability, their view range now gets increased upon taking the strain.</li>
+				<li class="tweak">Resin whisperer now takes twice the time the time to build distant walls, but adjacent walls will take the standard build time.</li>
+				<li class="tweak">Reflective walls no longer beam the bullet back at you with pinpoint accuracy. A random scatter of up to 30 degrees will be applied, and each mob only has a 35% chance to be hit. Additionally, the bullet will only deal half its regular damage.</li>
+				<li class="bugfix">Fixed a bug where certain xeno abilities could be done through overwatch, but claimed you couldn't do it.</li>
+				<li class="tweak">Destroying walls on auto snow, ice, or sand turfs, will now create a cleared turf, instead of a turf with its original layers.</li>
+				<li class="bugfix">Fixed a bug where overriding xeno ability cooldowns wouldn't work properly.</li>
+				<li class="rscadd">Rewrote pheromone code to be less strenuous on the server, while still working as it always has. Additionally, xenos between allied hives can now benefit from eachother's pheromones.</li>
+				<li class="bugfix">Smartpacks no longer modify the entire species when going into protective mode. All the effects are localized to the wearer.</li>
+				<li class="tweak">Smartpack protective mode now also disables using firearms, in the event combat synths get their hands on them. Additionally, you can no longer remove the smartpack when it's in protective mode.</li>
+			</ul>
+			<h3 class="author">GoldenDarkness55 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">AP RPG stun times now closer to what the code intended.</li>
+			</ul>
+			<h3 class="author">Insertusername updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Made a copy of the Wooden TV that links to the mortar cams.</li>
+				<li class="maptweak">Adds a TV linked to the mortar cams to the OT room.</li>
+			</ul>
+			<h3 class="author">Shad0vvs updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Adds 3 hour and 1 month conversion to minutes to newban tooltip.</li>
+			</ul>
+			<h3 class="author">TeDGamer updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fix the reagent type of mini-flamers</li>
+			</ul>
+			<h3 class="author">Triiodine updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Gave the Acid Pillar a new sprite.</li>
+			</ul>
+			<h3 class="author">Vanagandr updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">People without medic skills can now dig shrapnel out of themselves by clicking themselves with the bayonet on help intent. Adds consistency in behaviour and should prevent some accidents - \"how do I get this out?\" \"Use your knife.\" -stab-.</li>
+				<li class="tweak">Fiddled with the messaging when digging shrapnel.</li>
+			</ul>
+			<h3 class="author">forest2001 updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added the YMX Scanner, a hunter version of the HF2 Health Analyzer. It is now required to scan Hunter biology, or any mob with TRAIT_FOREIGN_BIO.</li>
+				<li class="tweak">Signallers can now be attached to doors again without being an Agent, as they don't exist.</li>
+			</ul>
+			<h3 class="author">ghostsheet updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">The SL locator for Dark HUD has been move up to the top right hand corner.</li>
+			</ul>
+
+			<h2 class="date">28 December 2021</h2>
+			<h3 class="author">50RemAndCounting updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Fixed mission-specific camo M3A1 Synthetic Utility Vest variant honking, fixed white t-shirt and brown slacks synth uniform inconsistencies.</li>
+			</ul>
+
+			<h2 class="date">25 December 2021</h2>
+			<h3 class="author">Nivrak updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">Marines in WO now have an extra 2 minutes to prepare</li>
+				<li class="tweak">Nerfed overall amount of xenos in WO (especially boilers), In return waves now spawn continuously</li>
+				<li class="bugfix">Fixed bioscan announce in WO</li>
+				<li class="tweak">In WO the round will result in a marine victory 10 minutes after the last wave, this overall means marines have to hold for much less time</li>
+				<li class="rscadd">Added some fluff story announces before the first wave which also tell you how much time you have left to prepare, credit to Firartix</li>
+				<li class="tweak">Instead of spawning massive amounts of xenos in WO, players can now choose from a list of available castes and spawn by demand</li>
+				<li class="rscadd">WO Honor guards now have minimedic level of medical skill to use medHUD glasses while using overwatch consoles</li>
+				<li class="rscadd">Added an empty pressurized reagent pouch in the medic vendor for 3 points, Mainly for WO as they dont get their usual vendor</li>
+				<li class="rscadd">Added welder-satchels to WO vendors</li>
+				<li class="rscadd">Changed Mortar Crews headset to a unique one which has the following channels: Engineering, JTAC, Tactics, Req - Credit to Nanu</li>
+				<li class="tweak">The mortars in WO are now buffed to have less falloff over long distances</li>
+				<li class="tweak">Tweaked some WO gear presets - Credit to Nanu</li>
+				<li class="bugfix">Picking a strain as a xeno in WO will no longer remove the xeno health reduction from WO</li>
+				<li class="rscadd">WO is now voteable every 5 rounds.</li>
+				<li class="bugfix">Fixed some bugs related to WO</li>
+			</ul>
+			<h3 class="author">Triiodine updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="maptweak">Remapped Whiskey Outpost</li>
+			</ul>
+
+			<h2 class="date">24 December 2021</h2>
+			<h3 class="author">Frans_Feiffer updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">The sleeves of the CO's base uniform are now rollable.</li>
+				<li class="tweak">The CO Jackets shoulders have been altered; they shouldn't be as broad as they were before.</li>
+				<li class="imageadd">Resprited the CO Bomber Jacket, made it possible to unbutton the Jacket as well.</li>
+				<li class="imageadd">Resprited the last of the legacy CO uniforms, that way they fit in with the rest.</li>
+			</ul>
+
 			<h2 class="date">22 December 2021</h2>
 			<h3 class="author">50RemAndCounting updated:</h3>
 			<ul class="changes bgimages16">
@@ -860,122 +959,6 @@
 				<li class="bugfix">Assorted fixes to chemical research calculating costs of operations.</li>
 				<li class="bugfix">Research terminal without a linked copier no longer tries (and fails) perform operations requiring printing a document.</li>
 				<li class="rscdel">Research work in one round no longer affects any future rounds.</li>
-			</ul>
-
-			<h2 class="date">31 October 2021</h2>
-			<h3 class="author">50RemAndCounting updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the Command Pouch, a special pouch available only to Commanding Officers. Can only hold a sidearm, binoculars and the command tablet. COs spawn with the pouch already equipped and is otherwise not obtainable.</li>
-			</ul>
-			<h3 class="author">Warfan1815 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added Haunted_House_V2 to map_config as well as map jsons</li>
-				<li class="bugfix">Fixes event dynamic areas so they actually use dynamic light</li>
-				<li class="maptweak">Added Haunted_House_V2 as a Human Vs Simple Mob EVENT map</li>
-			</ul>
-
-			<h2 class="date">29 October 2021</h2>
-			<h3 class="author">Firartix updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fix an internal error with handling of tackle counters</li>
-				<li class="bugfix">removed a nonsensical operation with preds and medical huds causing errors</li>
-				<li class="bugfix">fix internal error wth item actions and character setup test dummies</li>
-				<li class="bugfix">fix an error preventing explosion hits without a source from being logged</li>
-				<li class="bugfix">fixed getFlatIcon crashing when rendering non-AM objects, this matters notably for areas, which carry lightning overlays</li>
-				<li class="bugfix">fixed ranging implementation of hand-held cameras being a decade old portable hellscape, causing various performance problems and bugs</li>
-				<li class="bugfix">fix an internal timer error in loorker slash reset</li>
-				<li class="bugfix">fix an error when bumping objects into platforms</li>
-			</ul>
-
-			<h2 class="date">27 October 2021</h2>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Changing a humanoid's species will now correctly strip its underwear, if the species it changes to doesn't wear underwear.</li>
-				<li class="rscadd">Flare Guns can now launch signal flares.</li>
-				<li class="tweak">Flares launched by a Flare Gun now burn brighter. How? Magic.</li>
-				<li class="bugfix">Using a wrench on an M56D to rotate it will no longer shift your view, unless you're its operator.</li>
-			</ul>
-			<h3 class="author">Nivrak updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Once berserker reaches max rage they will now have a black glowing effect which weakens after half the duration (like base rav)</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Chemical smoke/fire/explosions no longer occur inside mobs.</li>
-				<li class="bugfix">Certain reagents no longer prevent reactions from occuring within living mobs.</li>
-			</ul>
-			<h3 class="author">Stan_albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">LV-624 : fixed a double fence tile south of internal affairs.</li>
-			</ul>
-
-			<h2 class="date">26 October 2021</h2>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Xenos now get a message when a new tunnel is created, if there is a living queen to relay it.</li>
-				<li class="rscadd">PO sentry deployment is now pinpoint accurate when launched, but cannot be launched next to or on top of another deployed defenses structure, and cannot be deployed on walls anymore.</li>
-				<li class="tweak">Omni-directional sentries now have 1500 rounds, down from 2500.</li>
-				<li class="tweak">The turf range calculation for CAS has been rewritten, inaccuracy might appear a little different now.</li>
-				<li class="bugfix">Launch bays now have proper hitboxes.</li>
-				<li class="bugfix">Chat Markup now works over the radio as well.</li>
-				<li class="rscadd">Links posted in announcements now automatically linkify, meaning you can click those tac-map announcements now.</li>
-			</ul>
-			<h3 class="author">GoldenDarkness55 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Warden Praetorian properly gains Energy Reserves per tick.</li>
-			</ul>
-			<h3 class="author">Silencer_pl updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Added squad-colored accents to the floor around the tables in the briefing room mess on the Almayer.</li>
-			</ul>
-			<h3 class="author">Stan_Albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Removed a stray pixel from the broken light tube sprite</li>
-				<li class="bugfix">Aligned the north-facing left-hand snow backpack sprite properly with the holder</li>
-			</ul>
-			<h3 class="author">Stan_albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Fixes LZs on Shiva's Snowball being weedable.</li>
-				<li class="bugfix">The armoury backpack that the \"Ivans\" get no longer spawns with guns that they cannot use.</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">MP Overhaul Stage 1</li>
-				<li class="rscadd">Added MP Cadet, a role required to play the heads of department and CIC roles to ensure Marine Law is known by the chain of command.</li>
-				<li class="tweak">Increased Warden and CMP timelocks.</li>
-				<li class="tweak">Changed the beanbag fire sound.</li>
-				<li class="rscadd">Blue Mk221 for beanbags only in riot lockers.</li>
-				<li class="rscadd">Added a new default mode for the disabler, it will now only hit targetted criminals unless chaged to free mode (unique_action)</li>
-				<li class="tweak">Warden and CMP given level 1 medical skill to help look after prisoners, and recognise chemicals.</li>
-				<li class="tweak">Warden and CMP given construction and engineering skills to repair walls.</li>
-				<li class="tweak">Changed security records to require brig access, and report access denied if not present.</li>
-				<li class="bugfix">Fixes places in code where Warden, Nurse and other roles are missing.</li>
-				<li class="bugfix">Fixed improvised prod.</li>
-				<li class="bugfix">The beanbag tactical shotgun now has a sprite. Cursed icon conflicts.</li>
-			</ul>
-			<h3 class="author">lunarflu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="spellcheck">Fixed spelling of \"beakeris\" and \"glassis\"</li>
-			</ul>
-
-			<h2 class="date">22 October 2021</h2>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Re-did the UI for the parts fabricator, it should now be easier to interact with, especially for newer players.</li>
-				<li class="rscadd">Added a launch bay and area denial sentry drop ammo for it. When used, will send a droppod containing a omni-directional sentry down onto the field. It will stay in position until its ammo runs out, at which point it deconstructs into stacks of plasteel and metal.</li>
-			</ul>
-
-			<h2 class="date">21 October 2021</h2>
-			<h3 class="author">naut, Frans_Feiffer updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="imageadd">Resprited the existing service uniforms and jackets, by Frans_Feiffer.</li>
-				<li class="rscadd">Added formal uniforms and jacket combinations to the CO dress vendor.</li>
-				<li class="rscadd">Added service dress blue jacket and shirt combo to the CO dress vendor, for that suit-and-tie look.</li>
-				<li class="rscadd">Added a black and white naval combination cover (peaked cap) to the vendor.</li>
-				<li class="rscadd">Added the tactical waistcoat to the commanding officers closet, which functions as a (far more stylish) webbing vest.</li>
-				<li class="tweak">Service jackets can now be buttoned and unbuttoned.</li>
-				<li class="tweak">Commanding officer berets now have MP-level armor (and decap) protection.</li>
-				<li class="rscdel">Removed legacy and style-mismatching items from the CO dress vendor. Many of them are still in the code though.</li>
 			</ul>
 </div>
 </body>

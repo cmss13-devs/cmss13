@@ -486,8 +486,11 @@
 /mob/living/proc/remove_movement_handler(datum/event_handler/handler)
 	event_movement.remove_handler(handler)
 
-/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1)
+/mob/living/proc/health_scan(mob/living/carbon/human/user, var/ignore_delay = FALSE, var/mode = 1, var/hud_mode = 1, var/alien = FALSE)
 	var/dat = ""
+	if(HAS_TRAIT(src, TRAIT_FOREIGN_BIO) && !alien)
+		to_chat(user, SPAN_WARNING("ERROR: Unknown biology detected."))
+		return
 	if((user.getBrainLoss() >= 60) && prob(50))
 		to_chat(user, SPAN_WARNING("You try to analyze the floor's vitals!"))
 		for(var/mob/O in viewers(src, null))

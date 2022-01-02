@@ -27,6 +27,9 @@
 	var/immobile_form_cooldown = 10
 	var/repair_form_cooldown = 180
 
+	var/saved_melee_allowed = TRUE
+	var/saved_gun_allowed = TRUE
+
 /obj/item/storage/backpack/marine/smartpack/Initialize()
 	. = ..()
 	original_icon = icon_state
@@ -164,32 +167,39 @@
 	update_icon(user)
 
 
-/obj/item/storage/backpack/marine/smartpack/proc/protective_form(mob/user)
-	if(!ishuman(user) || activated_form || immobile_form)
+/obj/item/storage/backpack/marine/smartpack/proc/protective_form(mob/living/carbon/human/user)
+	if(!istype(user) || activated_form || immobile_form)
 		return
 
 	if(battery_charge < PROTECTIVE_COST)
 		to_chat(user, SPAN_DANGER("There is a lack of charge for that action. Charge: [battery_charge]/[PROTECTIVE_COST]"))
 		return
-	var/mob/living/carbon/human/H = user
 
 	activated_form = TRUE
-	H.species.brute_mod = 0.2
-	H.species.burn_mod = 0.2
-	H.species.melee_allowed = FALSE
+	flags_item |= NODROP
+	flags_inventory |= CANTSTRIP
+	LAZYSET(user.brute_mod_override, src, 0.2)
+	LAZYSET(user.burn_mod_override, src, 0.2)
+	saved_melee_allowed = user.melee_allowed
+	saved_gun_allowed = user.allow_gun_usage
+	user.melee_allowed = FALSE
+	user.allow_gun_usage = FALSE
 	to_chat(user, SPAN_DANGER("[name] beeps, \"You are now protected, but unable to attack.\""))
 	battery_charge -= PROTECTIVE_COST
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
 	to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
 	update_icon(user)
 
-	addtimer(CALLBACK(src, .proc/protective_form_cooldown, H), protective_form_cooldown)
+	addtimer(CALLBACK(src, .proc/protective_form_cooldown, user), protective_form_cooldown)
 
 /obj/item/storage/backpack/marine/smartpack/proc/protective_form_cooldown(var/mob/living/carbon/human/H)
 	activated_form = FALSE
-	H.species.melee_allowed = TRUE
-	H.species.brute_mod = initial(H.species.brute_mod)
-	H.species.burn_mod = initial(H.species.burn_mod)
+	flags_item &= ~NODROP
+	flags_inventory &= ~CANTSTRIP
+	H.melee_allowed = saved_melee_allowed
+	H.allow_gun_usage = saved_gun_allowed
+	LAZYREMOVE(H.brute_mod_override, src)
+	LAZYREMOVE(H.burn_mod_override, src)
 	to_chat(H, SPAN_DANGER("[name] beeps, \"The protection wears off.\""))
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
 	update_icon(H)

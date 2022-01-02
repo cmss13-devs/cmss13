@@ -194,6 +194,10 @@
 	name = "Circuit board (Area Air Control)"
 	build_path = /obj/structure/machinery/computer/area_atmos
 
+/obj/item/circuitboard/computer/research_terminal
+	name = "Circuit board (Research Data Terminal)"
+	build_path = /obj/structure/machinery/computer/research/main_terminal
+
 
 
 /obj/item/circuitboard/computer/supplycomp/attackby(obj/item/I as obj, mob/user as mob)

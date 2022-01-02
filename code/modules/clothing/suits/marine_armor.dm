@@ -321,6 +321,11 @@ var/list/squad_colors_chat = list(rgb(230,125,125), rgb(255,230,80), rgb(255,150
 	specialty = "M2 pattern MP"
 	item_state_slots = list(WEAR_JACKET = "mp")
 
+/obj/item/clothing/suit/storage/marine/MP/padless
+	name = "M2 pattern padless MP armor"
+	icon_state = "mp_2"
+	specialty = "M2 pattern padless MP"
+
 /obj/item/clothing/suit/storage/marine/MP/warden
 	icon_state = "warden"
 	name = "\improper M3 pattern warden MP armor"

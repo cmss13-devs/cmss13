@@ -84,9 +84,10 @@ FORENSIC SCANNER
 	var/mode = 1
 	var/hud_mode = 1
 	var/last_scan
+	var/alien = FALSE
 
 /obj/item/device/healthanalyzer/attack(mob/living/M, mob/living/user)
-	last_scan = M.health_scan(user, FALSE, mode, hud_mode)
+	last_scan = M.health_scan(user, FALSE, mode, hud_mode, alien)
 	src.add_fingerprint(user)
 	return
 
@@ -135,6 +136,14 @@ FORENSIC SCANNER
 			to_chat(usr, "The scanner now shows results on the hud.")
 		if(0)
 			to_chat(usr, "The scanner no longer shows results on the hud.")
+
+/obj/item/device/healthanalyzer/alien
+	name = "\improper YMX scanner"
+	icon = 'icons/obj/items/hunter/pred_gear.dmi'
+	icon_state = "Tracker"
+	item_state = "analyzer"
+	desc = "An alien design hand-held body scanner able to distinguish vital signs of the subject. The front panel is able to provide the basic readout of the subject's status."
+	alien = TRUE
 
 /obj/item/device/analyzer
 	desc = "A hand-held environmental scanner which reports current gas levels."

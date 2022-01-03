@@ -534,6 +534,37 @@
 
 		to_chat(usr, "You peek through the guidance camera.")
 
+	if(href_list["cas_camera"])
+		if(!ishuman(usr))
+			to_chat(usr, SPAN_WARNING("You have no idea how to do that!"))
+			return
+		if(shuttle.moving_status != SHUTTLE_INTRANSIT)
+			to_chat(usr, SPAN_WARNING("Shuttle has to be in orbit."))
+			return
+
+		if(!faction)
+			to_chat(usr, SPAN_DANGER("Bug encountered, this console doesn't have a faction set, report this to a coder!"))
+			return
+
+		var/datum/cas_iff_group/cas_group = cas_groups[faction]
+		if(!cas_group)
+			to_chat(usr, SPAN_DANGER("Bug encountered, no CAS group exists for this console, report this to a coder!"))
+			return
+
+		var/datum/cas_signal/selected_cas_signal
+		var/targ_id = text2num(href_list["cas_camera"])
+		for(var/datum/cas_signal/LT as anything in cas_group.cas_signals)
+			if(LT.target_id == targ_id && LT.valid_signal())
+				selected_cas_signal = LT
+				break
+
+		if(!selected_cas_signal)
+			to_chat(usr, SPAN_WARNING("Target lost or obstructed."))
+			return
+
+		selected_cas_signal.linked_cam.view_directly(usr)
+		to_chat(usr, "You peek through the guidance camera.")
+
 	ui_interact(usr)
 
 /obj/structure/machinery/computer/dropship_weapons/proc/initiate_firemission()

@@ -281,3 +281,39 @@
 
 /obj/structure/machinery/camera/mortar/isXRay()
 	return TRUE
+
+/obj/structure/machinery/camera/cas
+	name = "cas camera"
+	invisibility = 101
+	invuln = TRUE
+	unslashable = TRUE
+	unacidable = TRUE
+
+	network = list(CAMERA_NET_LASER_TARGETS)
+	colony_camera_mapload = FALSE
+
+	// users looking directly at this, not via console
+	var/list/mob/viewing_users = list()
+
+/obj/structure/machinery/camera/cas/Initialize(mapload, var/c_tag_name)
+	c_tag = c_tag_name
+	return ..()
+
+/obj/structure/machinery/camera/cas/Destroy()
+	for(var/mob/M as anything in viewing_users)
+		M.reset_view()
+	return ..()
+
+/obj/structure/machinery/camera/cas/proc/view_directly(var/mob/living/carbon/human/user)
+	viewing_users += user
+	user.client?.eye = get_turf(src)
+	user.client?.perspective = EYE_PERSPECTIVE
+	give_action(user, /datum/action/human_action/cancel_view)
+	RegisterSignal(user, COMSIG_MOB_RESET_VIEW, .proc/remove_from_view)
+
+/obj/structure/machinery/camera/cas/proc/remove_from_view(var/mob/living/carbon/human/user)
+	viewing_users -= user
+	UnregisterSignal(user, COMSIG_MOB_RESET_VIEW)
+
+/obj/structure/machinery/camera/cas/isXRay()
+	return TRUE

@@ -439,6 +439,7 @@
 		signal.target_id = ++cas_tracking_id_increment
 		name = "[user.assigned_squad ? user.assigned_squad.name : "X"]-[signal.target_id] flare"
 		signal.name = name
+		signal.linked_cam = new(loc, name)
 		cas_groups[user.faction].add_signal(signal)
 		anchored = TRUE
 		if(activate_message)
@@ -496,5 +497,6 @@
 	signal.target_id = ++cas_tracking_id_increment
 	name += " [rand(100, 999)]"
 	signal.name = name
+	signal.linked_cam = new(loc, name)
 	cas_groups[FACTION_MARINE].add_signal(signal)
 	anchored = TRUE

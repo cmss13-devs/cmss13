@@ -2,7 +2,7 @@
 	var/signal_loc
 	var/name = "Unknown Electronic Signal"
 	var/target_id = 0
-	var/obj/structure/machinery/camera/linked_cam
+	var/obj/structure/machinery/camera/cas/linked_cam
 	var/z_initial
 
 /datum/cas_signal/New(location)

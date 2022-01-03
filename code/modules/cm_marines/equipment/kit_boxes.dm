@@ -6,7 +6,7 @@
 	icon_state = "kit_case"
 	var/kit_overlay = null
 	w_class = SIZE_HUGE
-	storage_slots = 12
+	storage_slots = 14
 	slowdown = 1
 	can_hold = list() //Nada. Once you take the stuff out it doesn't fit back in.
 	foldable = null
@@ -66,7 +66,7 @@
 
 /obj/item/storage/box/spec/scout
 	name = "\improper Scout equipment case"
-	desc = "A large case containing M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
+	desc = "A large case containing an M4RA battle rifle, M3-S light armor and helmet, M4RA battle sight, M68 thermal cloak, V3 reactive thermal tarp, improved scout laser designator, ammunition and additional pieces of equipment.\nDrag this sprite onto yourself to open it up! NOTE: You cannot put items back inside this case."
 	kit_overlay = "scout"
 
 /obj/item/storage/box/spec/scout/fill_preset_inventory()
@@ -86,6 +86,7 @@
 	new /obj/item/ammo_magazine/pistol/vp78(src)
 	new /obj/item/weapon/gun/rifle/m4ra(src)
 	new /obj/item/storage/backpack/marine/satchel/scout_cloak(src)
+	new /obj/item/bodybag/tarp/reactive/scout(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/explosive/plastic(src)
 	new /obj/item/device/encryptionkey/jtac(src)

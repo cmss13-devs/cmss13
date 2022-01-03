@@ -22,11 +22,12 @@
 
 /obj/item/clothing/glasses/night/M4RA
 	name = "\improper M4RA Battle sight"
-	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings. Click it to toggle."
+	desc = "A headset and night vision goggles system for the M4RA Battle Rifle. Allows highlighted imaging of surroundings, as well as the ability to view the suit sensor health status readouts of other marines. Click it to toggle."
 	icon = 'icons/obj/items/clothing/glasses.dmi'
 	icon_state = "m56_goggles"
 	deactive_state = "m56_goggles_0"
 	vision_flags = SEE_TURFS
+	hud_type = MOB_HUD_MEDICAL_BASIC
 	darkness_view = 12
 	toggleable = TRUE
 	fullscreen_vision = null

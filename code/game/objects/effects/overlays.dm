@@ -180,9 +180,6 @@
 		signal.name = name
 		signal.target_id = tracking_id
 		signal.linked_cam = new(loc, name)
-		signal.linked_cam.invisibility = 101
-		signal.linked_cam.unslashable = TRUE
-		signal.linked_cam.unacidable = TRUE
 		cas_groups[user.faction].add_signal(signal)
 
 

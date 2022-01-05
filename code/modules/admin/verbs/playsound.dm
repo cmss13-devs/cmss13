@@ -73,7 +73,7 @@
 			for(var/m in GLOB.player_list)
 				var/mob/M = m
 				var/client/C = M.client
-				if(C.prefs.toggles_sound & SOUND_MIDI)
+				if(C.prefs.toggles_sound & SOUND_INTERNET)
 					if(!stop_web_sounds)
 						C.tgui_panel?.play_music(web_sound_url, music_extra_data)
 					else

@@ -91,8 +91,8 @@
 	var/wait_time = RC.build_time * caste.build_time_mult * add_build_mod
 
 	var/obj/effect/alien/weeds/alien_weeds = current_turf.weeds
-	if(!alien_weeds)
-		return
+	if(!alien_weeds || alien_weeds.secreting)
+		return SECRETE_RESIN_FAIL
 
 	var/obj/warning
 	var/succeeded = TRUE

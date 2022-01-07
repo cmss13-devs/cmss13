@@ -773,8 +773,8 @@
 	icon_state = "fab"
 	density = 1
 	layer = 3
-	bound_width = 64
-	bound_height = 64
+	bound_width = 32
+	bound_height = 32
 
 /obj/structure/prop/invuln/ice_prefab/trim
 	layer = ABOVE_MOB_LAYER
@@ -787,11 +787,14 @@
 	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
 	density = FALSE
 
+
 /obj/structure/prop/invuln/ice_prefab/standalone
 	density = 1
 	icon = 'icons/obj/structures/props/ice_colony/fabs_64.dmi'
 	icon_state = "orange"//instance icons
 	layer = 3
+	bound_width = 64
+	bound_height = 64
 
 /obj/structure/prop/invuln/ice_prefab/standalone/trim
 	icon_state = "orange_trim"//instance icons

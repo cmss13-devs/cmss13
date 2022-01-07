@@ -10,12 +10,12 @@
 #define SQUAD_NAME_5					"Echo"
 
 // Job name defines
-#define JOB_SQUAD_MARINE				"Squad Marine"
+#define JOB_SQUAD_MARINE				"Squad Rifleman"
 #define JOB_SQUAD_LEADER				"Squad Leader"
-#define JOB_SQUAD_ENGI					"Squad Engineer"
-#define JOB_SQUAD_MEDIC					"Squad Medic"
-#define JOB_SQUAD_SPECIALIST			"Squad Specialist"
-#define JOB_SQUAD_RTO       			"Squad RT Operator"
+#define JOB_SQUAD_ENGI					"Squad Combat Technician"
+#define JOB_SQUAD_MEDIC					"Squad Hospital Corpsman"
+#define JOB_SQUAD_SPECIALIST			"Squad Weapons Specialist"
+#define JOB_SQUAD_RTO       			"Squad Radio Telephone Operator"
 #define JOB_SQUAD_SMARTGUN				"Squad Smartgunner"
 #define JOB_SQUAD_ROLES					/datum/timelock/squad
 #define JOB_SQUAD_ROLES_LIST            list(JOB_SQUAD_MARINE, JOB_SQUAD_LEADER, JOB_SQUAD_ENGI, JOB_SQUAD_MEDIC, JOB_SQUAD_SPECIALIST, JOB_SQUAD_SMARTGUN, JOB_SQUAD_RTO)
@@ -99,7 +99,7 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_WO_XO						"Lieutenant Commander"
 #define JOB_WO_CHIEF_POLICE				"Honor Guard Squad Leader"
 #define JOB_WO_SO						"Veteran Honor Guard"
-#define JOB_WO_CREWMAN					"Honor Guard Specialist"
+#define JOB_WO_CREWMAN					"Honor Guard Weapons Specialist"
 #define JOB_WO_POLICE					"Honor Guard"
 
 #define JOB_WO_PILOT					"Mortar Crew"
@@ -117,11 +117,11 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_WO_CORPORATE_LIAISON		"Combat Reporter"
 #define JOB_WO_SYNTH					"Support Synthetic"
 
-#define JOB_WO_SQUAD_MARINE				"Dust Raider Squad Marine"
-#define JOB_WO_SQUAD_MEDIC				"Dust Raider Squad Medic"
-#define JOB_WO_SQUAD_ENGINEER			"Dust Raider Squad Engineer"
+#define JOB_WO_SQUAD_MARINE				"Dust Raider Squad Rifleman"
+#define JOB_WO_SQUAD_MEDIC				"Dust Raider Squad Hospital Corpsman"
+#define JOB_WO_SQUAD_ENGINEER			"Dust Raider Squad Combat Technician"
 #define JOB_WO_SQUAD_SMARTGUNNER		"Dust Raider Squad Smartgunner"
-#define JOB_WO_SQUAD_SPECIALIST			"Dust Raider Squad Specialist"
+#define JOB_WO_SQUAD_SPECIALIST			"Dust Raider Squad Weapons Specialist"
 #define JOB_WO_SQUAD_LEADER				"Dust Raider Squad Leader"
 
 //------------------------------------
@@ -132,8 +132,8 @@ var/global/list/job_command_roles = JOB_COMMAND_ROLES_LIST
 #define JOB_PMC_DOCTOR					"PMC Triage"
 #define JOB_PMC_INVESTIGATOR			"PMC Medical Investigator"
 #define JOB_PMC_ELITE					"PMC Elite"
-#define JOB_PMC_GUNNER					"PMC Support Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
-#define JOB_PMC_SNIPER					"PMC Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
+#define JOB_PMC_GUNNER					"PMC Support Weapons Specialist" //Renamed from Specialist to Support Specialist as it only has SG skills.
+#define JOB_PMC_SNIPER					"PMC Weapons Specialist" //Renamed from Sharpshooter to specialist as it uses specialist skills.
 #define JOB_PMC_CREWMAN					"PMC Crewman"
 #define JOB_PMC_NINJA					"PMC Ninja"
 #define JOB_PMC_XENO_HANDLER            "PMC Xeno Handler"

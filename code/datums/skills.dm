@@ -728,7 +728,7 @@ United States Colonial Marines
 	)
 
 /datum/skills/specialist
-	name = "Squad Specialist"
+	name = "Squad Weapons Specialist"
 	skills = list(
 		SKILL_CQC = SKILL_CQC_TRAINED,
 		SKILL_CONSTRUCTION = SKILL_CONSTRUCTION_TRAINED,
@@ -741,7 +741,7 @@ United States Colonial Marines
 	)
 
 /datum/skills/rto
-	name = "Squad RT Operator"
+	name = "Squad Radio Telephone Operator"
 	skills = list(
 		SKILL_ENGINEER = SKILL_ENGINEER_ENGI,
 		SKILL_LEADERSHIP = SKILL_LEAD_BEGINNER,

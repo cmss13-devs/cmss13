@@ -434,7 +434,7 @@
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/engineer
-	name = "\improper Alpha Squad Engineer Preparations"
+	name = "\improper Alpha Squad ComTech Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
 	dir = SOUTH
@@ -442,7 +442,7 @@
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/alpha/medic
-	name = "\improper Alpha Squad Medic Preparations"
+	name = "\improper Alpha Squad Medical Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_ALPHA)
 	req_one_access = list()
 	dir = SOUTH
@@ -482,7 +482,7 @@
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/engineer
-	name = "\improper Bravo Squad Engineer Preparations"
+	name = "\improper Bravo Squad ComTech Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
 	dir = SOUTH
@@ -490,7 +490,7 @@
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/bravo/medic
-	name = "\improper Bravo Squad Medic Preparations"
+	name = "\improper Bravo Squad Medical Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_BRAVO)
 	req_one_access = list()
 	dir = SOUTH
@@ -530,7 +530,7 @@
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie/engineer
-	name = "\improper Charlie Squad Engineer Preparations"
+	name = "\improper Charlie Squad ComTech Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
 	dir = SOUTH
@@ -538,7 +538,7 @@
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/charlie/medic
-	name = "\improper Charlie Squad Medic Preparations"
+	name = "\improper Charlie Squad Medical Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_CHARLIE)
 	req_one_access = list()
 	dir = SOUTH
@@ -578,7 +578,7 @@
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta/engineer
-	name = "\improper Delta Squad Engineer Preparations"
+	name = "\improper Delta Squad ComTech Preparations"
 	req_access = list(ACCESS_MARINE_ENGPREP, ACCESS_MARINE_DELTA)
 	req_one_access = list()
 	dir = SOUTH
@@ -586,7 +586,7 @@
 	glass = 1
 
 /obj/structure/machinery/door/airlock/almayer/marine/delta/medic
-	name = "\improper Delta Squad Medic Preparations"
+	name = "\improper Delta Squad Medical Preparations"
 	req_access = list(ACCESS_MARINE_MEDPREP, ACCESS_MARINE_DELTA)
 	req_one_access = list()
 	dir = SOUTH

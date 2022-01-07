@@ -49,30 +49,30 @@
 			flags_jumpsuit |= UNIFORM_DO_NOT_HIDE_ACCESSORIES
 
 /obj/item/clothing/under/marine/medic
-	name = "\improper USCM medic uniform"
-	desc = "Standard-issue Marine Medic fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "\improper USCM corpsman uniform"
+	desc = "Standard-issue Marine hospital corpsman fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_medic"
 	worn_state = "marine_medic"
-	specialty = "USCM medic"
+	specialty = "USCM Hospital Corpsman"
 
 /obj/item/clothing/under/marine/engineer
-	name = "\improper USCM engineer uniform"
-	desc = "Standard-issue Marine Engineer fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "\improper USCM ComTech uniform"
+	desc = "Standard-issue Marine combat technician fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_engineer"
 	worn_state = "marine_engineer"
-	specialty = "USCM engineer"
+	specialty = "USCM Combat Technician"
 
 /obj/item/clothing/under/marine/rto
-	name = "\improper marine RT operator uniform"
-	desc = "Standard-issue RT Operator fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "\improper USCM radio telephone operator uniform"
+	desc = "Standard-issue RTO fatigues. They have shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "marine_rto"
 	item_state = "marine_rto"
-	specialty = "marine RT operator"
+	specialty = "marine Radio Telephone Operator"
 
 /obj/item/clothing/under/marine/sniper
 	name = "\improper USCM sniper uniform"
 	flags_jumpsuit = FALSE
-	specialty = "USCM sniper"
+	specialty = "USCM Sniper"
 
 /obj/item/clothing/under/marine/tanker
 	name = "\improper USCM tanker uniform"

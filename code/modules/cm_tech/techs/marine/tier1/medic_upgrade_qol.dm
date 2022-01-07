@@ -1,6 +1,6 @@
 /datum/tech/droppod/item/medic_czsp
-	name = "Squad Medic Combat Zone Support Package"
-	desc = "Gives medics to use powerful tools to heal marines."
+	name = "Hospital Corpsman Combat Zone Support Package"
+	desc = "Gives corpsmen powerful tools to heal marines."
 	icon_state = "medic_qol"
 	droppod_name = "Medic CZSP"
 

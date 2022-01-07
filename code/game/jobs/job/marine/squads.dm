@@ -259,7 +259,7 @@
 
 	count++		//Add up the tally. This is important in even squad distribution.
 
-	if(GET_DEFAULT_ROLE(M.job) != "Squad Marine")
+	if(GET_DEFAULT_ROLE(M.job) != "Squad Rifleman")
 		log_admin("[key_name(M)] has been assigned as [name] [M.job]") // we don't want to spam squad marines but the others are useful
 
 	marines_list += M

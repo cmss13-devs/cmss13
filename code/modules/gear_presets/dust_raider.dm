@@ -22,10 +22,10 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP)
-	assignment = "Squad Marine"
-	rank = "Squad Marine"
-	paygrade = "E2"
-	role_comm_title = "Pfc"
+	assignment = "Squad Rifleman"
+	rank = "Squad Rifleman"
+	paygrade = "ME2"
+	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
 
 /datum/equipment_preset/dust_raider/private/load_gear(mob/living/carbon/human/H)
@@ -46,7 +46,7 @@
 	access = list(ACCESS_MARINE_PREP)
 	assignment = "Squad Leader"
 	rank = "Squad Leader"
-	paygrade = "E6"
+	paygrade = "ME5"
 	role_comm_title = "SL"
 	skills = /datum/skills/SL
 
@@ -75,7 +75,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = "Squad Smartgunner"
 	rank = "Squad Smartgunner"
-	paygrade = "E4"
+	paygrade = "ME3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -100,9 +100,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
-	assignment = "Squad Engineer"
-	rank = "Squad Engineer"
-	paygrade = "E3"
+	assignment = "Squad Combat Technician"
+	rank = "Squad Combat Technician"
+	paygrade = "ME3"
 	role_comm_title = "Eng"
 	skills = /datum/skills/combat_engineer
 
@@ -125,14 +125,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/dust_raider/medic
-	name = "Dust Raider Medic"
+	name = "Dust Raider Hospital Corpsman"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
-	assignment = "Squad Medic"
-	rank = "Squad Medic"
-	paygrade = "E3"
-	role_comm_title = "Med"
+	assignment = "Squad Hospital Corpsman"
+	rank = "Squad Hospital Corpsman"
+	paygrade = "ME3"
+	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
 /datum/equipment_preset/dust_raider/medic/load_gear(mob/living/carbon/human/H)
@@ -159,9 +159,9 @@
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
-	assignment = "Squad Specialist"
-	rank = "Squad Specialist"
-	paygrade = "E5"
+	assignment = "Squad Weapons Specialist"
+	rank = "Squad Weapons Specialist"
+	paygrade = "ME3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 

@@ -837,7 +837,7 @@
 		JOB_CLF_MEDIC = list(
 
 			list("PARAMEDIC SET (MANDATORY)", 0, null, null, null),
-			list("Essential Medic Set", 0, /obj/effect/essentials_set/medic/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+			list("Essential Medical Set", 0, /obj/effect/essentials_set/medic/upp, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 			list("FIELD SUPPLIES", 0, null, null, null),
 			list("Adv Burn Kit", 2, /obj/item/stack/medical/advanced/ointment, null, VENDOR_ITEM_RECOMMENDED),

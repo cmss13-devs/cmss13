@@ -44,14 +44,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/pfc
-	name = "USCM (Cryo) Squad Marine (PFC)"
+	name = "USCM (Cryo) Rifleman (PFC)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
 	paygrade = "ME2"
-	role_comm_title = "Mar"
+	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
 
 /datum/equipment_preset/uscm/pfc/load_gear(mob/living/carbon/human/H)
@@ -68,7 +68,7 @@
 	return paygrade
 
 /datum/equipment_preset/uscm/pfc/echo
-	name = "USCM Echo Squad Marine (PFC)"
+	name = "USCM Echo Rifleman (PFC)"
 	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/pfc/echo/load_gear(mob/living/carbon/human/H)
@@ -78,7 +78,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle
-	name = "USCM PFC (Pulse Rifle)"
+	name = "USCM Rifleman (Pulse Rifle)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm/pfc/full_plasma_rifle/load_gear(mob/living/carbon/human/H)
@@ -106,13 +106,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/sg
-	name = "USCM (Cryo) Smartgunner"
+	name = "USCM (Cryo) Squad Smartgunner"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = "ME4"
+	paygrade = "ME3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -124,7 +124,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/sg/echo
-	name = "USCM Echo Smartgunner"
+	name = "USCM Echo Squad Smartgunner"
 	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/sg/echo/load_gear(mob/living/carbon/human/H)
@@ -134,7 +134,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/sg/full
-	name = "USCM Smartgunner"
+	name = "USCM Squad Smartgunner"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm/sg/full/load_gear(mob/living/carbon/human/H)
@@ -167,7 +167,7 @@
 	)
 	assignment = JOB_CREWMAN
 	rank = JOB_CREWMAN
-	paygrade = "ME7"
+	paygrade = "ME4"
 	role_comm_title = "CRMN"
 	minimum_age = 30
 	skills = /datum/skills/tank_crew
@@ -212,13 +212,13 @@
 
 /*****************************************************************************************************/
 /datum/equipment_preset/uscm/spec
-	name = "USCM (Cryo) Squad Specialist"
+	name = "USCM (Cryo) Squad Weapons Specialist"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
-	paygrade = "ME4"
+	paygrade = "ME3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
@@ -231,7 +231,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/specrag(H), WEAR_HEAD)
 
 /datum/equipment_preset/uscm/spec/echo
-	name = "USCM Echo Squad Specialist"
+	name = "USCM Echo Squad Weapons Specialist"
 	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/spec/echo/load_gear(mob/living/carbon/human/H)
@@ -241,7 +241,7 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/spec/full_armor
-	name = "USCM Specialist (B18 Armor)"
+	name = "USCM Weapons Specialist (B18 Armor)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 /datum/equipment_preset/uscm/spec/full_armor/load_gear(mob/living/carbon/human/H)
@@ -266,14 +266,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/medic
-	name = "USCM (Cryo) Squad Medic"
+	name = "USCM (Cryo) Hospital Corpsman"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "ME3"
-	role_comm_title = "Med"
+	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
@@ -286,7 +286,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/medic/echo
-	name = "USCM Echo Squad Medic"
+	name = "USCM Echo Hospital Corpsman"
 	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/medic/echo/load_gear(mob/living/carbon/human/H)
@@ -296,13 +296,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/rto
-	name = "USCM (Cryo) Squad RT Operator"
+	name = "USCM (Cryo) Squad Radio Telephone Operator"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
 	assignment = JOB_SQUAD_RTO
 	rank = JOB_SQUAD_RTO
-	paygrade = "ME5"
+	paygrade = "ME4"
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
@@ -314,7 +314,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/rto/echo
-	name = "USCM Echo Squad RT Operator"
+	name = "USCM Echo Squad Radio Telephone Operator"
 	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/rto/echo/load_gear(mob/living/carbon/human/H)
@@ -324,14 +324,14 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/engineer
-	name = "USCM (Cryo) Squad Engineer"
+	name = "USCM (Cryo) Squad Combat Technician"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	paygrade = "ME3"
-	role_comm_title = "Eng"
+	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
@@ -344,7 +344,7 @@
 	H.equip_to_slot_or_del(new backItem(H), WEAR_BACK)
 
 /datum/equipment_preset/uscm/engineer/echo
-	name = "USCM Echo Squad Engineer"
+	name = "USCM Echo Squad Combat Technician"
 	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/uscm/engineer/echo/load_gear(mob/living/carbon/human/H)
@@ -360,7 +360,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
-	paygrade = "ME6"
+	paygrade = "ME5"
 	role_comm_title = "SL"
 	minimum_age = 27
 	skills = /datum/skills/SL
@@ -385,14 +385,14 @@
 // ERT members that spawn with full gear from DEFCON
 
 /datum/equipment_preset/uscm/private_equipped
-	name = "USCM Cryo Squad Marine (Equipped)"
+	name = "USCM Cryo Rifleman (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
 	paygrade = "ME2"
-	role_comm_title = "Pfc"
+	role_comm_title = "RFN"
 	skills = /datum/skills/pfc/crafty
 
 /datum/equipment_preset/uscm/private_equipped/load_rank(mob/living/carbon/human/H)
@@ -421,7 +421,7 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm/private_equipped/echo
-	name = "USCM Echo Squad Marine (Equipped)"
+	name = "USCM Echo Rifleman (Equipped)"
 	auto_squad_name = SQUAD_NAME_5
 
 
@@ -434,7 +434,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
-	paygrade = "ME6"
+	paygrade = "ME5"
 	role_comm_title = "SL"
 	minimum_age = 27
 	skills = /datum/skills/SL
@@ -470,7 +470,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = "ME4"
+	paygrade = "ME3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -500,14 +500,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/engineer_equipped
-	name = "USCM Cryo Squad Engineer (Equipped)"
+	name = "USCM Cryo Squad Combat Technician (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	paygrade = "ME3"
-	role_comm_title = "Eng"
+	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
 	utility_under = list(/obj/item/clothing/under/marine/engineer)
@@ -538,20 +538,20 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm/engineer_equipped/echo
-	name = "USCM Echo Squad Engineer (Equipped)"
+	name = "USCM Echo Combat Technician (Equipped)"
 	auto_squad_name = SQUAD_NAME_5
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/medic_equipped
-	name = "USCM Cryo Squad Medic (Equipped)"
+	name = "USCM Cryo Squad Hospital Corpsman (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "ME3"
-	role_comm_title = "Med"
+	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
 	utility_under = list(/obj/item/clothing/under/marine/medic)
@@ -582,20 +582,20 @@
 	H.equip_to_slot_or_del(new /obj/item/ammo_magazine/rifle(H.back), WEAR_IN_BACK)
 
 /datum/equipment_preset/uscm/medic_equipped/echo
-	name = "USCM Echo Squad Medic (Equipped)"
+	name = "USCM Echo Hospital Corpsman (Equipped)"
 	auto_squad_name = SQUAD_NAME_5
 
 
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/specialist_equipped
-	name = "USCM Cryo Squad Specialist (Equipped)"
+	name = "USCM Cryo Squad Weapons Specialist (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
-	paygrade = "ME4"
+	paygrade = "ME3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
@@ -655,13 +655,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/uscm/rto_equipped
-	name = "USCM Cryo Squad RT Operator (Equipped)"
+	name = "USCM Cryo Squad Radio Telephone Operator (Equipped)"
 	flags = EQUIPMENT_PRESET_EXTRA|EQUIPMENT_PRESET_MARINE
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_RTO_PREP)
 	assignment = JOB_SQUAD_RTO
 	rank = JOB_SQUAD_RTO
-	paygrade = "ME5"
+	paygrade = "ME4"
 	role_comm_title = "RTO"
 	skills = /datum/skills/rto
 
@@ -682,7 +682,7 @@
 	H.equip_to_slot_or_del(new /obj/item/device/binoculars(H), WEAR_L_HAND)
 
 /datum/equipment_preset/uscm/rto_equipped/echo
-	name = "USCM Echo Squad RT Operator (Equipped)"
+	name = "USCM Echo Squad Radio Telephone Operator (Equipped)"
 	auto_squad_name = SQUAD_NAME_5
 
 /datum/equipment_preset/marsoc

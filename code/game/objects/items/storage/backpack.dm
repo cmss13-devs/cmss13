@@ -333,7 +333,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 	has_gamemode_skin = TRUE //replace this with the atom_flag NO_SNOW_TYPE at some point, just rename it to like, NO_MAP_VARIANT_SKIN
 
 /obj/item/storage/backpack/marine/medic
-	name = "\improper USCM medic backpack"
+	name = "\improper USCM corpsman backpack"
 	desc = "A standard-issue backpack worn by USCM medics."
 	icon_state = "marinepack_medic"
 	item_state = "marinepack_medic"
@@ -362,7 +362,7 @@ obj/item/storage/backpack/proc/compare_id(var/mob/living/carbon/human/H)
 
 
 /obj/item/storage/backpack/marine/satchel/medic
-	name = "\improper USCM medic satchel"
+	name = "\improper USCM corpsman satchel"
 	desc = "A heavy-duty satchel used by USCM medics. It sacrifices capacity for usability. A small patch is sewn to the top flap."
 	icon_state = "marinesatch_medic"
 

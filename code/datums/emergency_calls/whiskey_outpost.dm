@@ -40,7 +40,7 @@
 	else if (medics < max_medics)
 		medics++
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/medic, TRUE, TRUE)
-		to_chat(mob, "<font size='3'>\red You are a medic in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>")
+		to_chat(mob, "<font size='3'>\red You are a hospital corpsman in the USCM, your squad is here to assist in the defence of the [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>")
 	else
 		arm_equipment(mob, /datum/equipment_preset/dust_raider/private, TRUE, TRUE)
 		to_chat(mob, "<font size='3'>\red You are a private in the USCM, your squad is here to assist in the defence of [SSmapping.configs[GROUND_MAP].map_name]. Listen to [leader.name] they are your (acting) squad leader. </B>")

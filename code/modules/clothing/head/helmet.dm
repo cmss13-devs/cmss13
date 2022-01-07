@@ -457,7 +457,7 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 
 /obj/item/clothing/head/helmet/marine/tech
 	name = "\improper M10 technician helmet"
-	desc = "A modified M10 marine helmet for squad engineers. Features a toggleable welding screen for eye protection."
+	desc = "A modified M10 marine helmet for ComTechs. Features a toggleable welding screen for eye protection."
 	icon_state = "tech_helmet"
 	specialty = "M10 technician"
 	var/protection_on = FALSE
@@ -510,8 +510,8 @@ GLOBAL_LIST_INIT(allowed_helmet_items, list(
 			A.update_button_icon()
 
 /obj/item/clothing/head/helmet/marine/medic
-	name = "\improper M10 medic helmet"
-	desc = "An M10 marine helmet version worn by squad medics. Has red cross painted on its front."
+	name = "\improper M10 corpsman helmet"
+	desc = "An M10 marine helmet version worn by marine hospital corpsmen. Has red cross painted on its front."
 	icon_state = "med_helmet"
 	specialty = "M10 pattern medic"
 
@@ -1004,7 +1004,7 @@ obj/item/clothing/head/helmet/marine/veteran/van_bandolier
 //head rag
 
 /obj/item/clothing/head/helmet/specrag
-	name = "specialist head-rag"
+	name = "weapons specialist head-rag"
 	desc = "A hat worn by heavy-weapons operators to block sweat."
 	icon = 'icons/obj/items/clothing/cm_hats.dmi'
 	icon_state = "spec"

@@ -164,7 +164,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		qdel(src)
 
 /obj/item/spec_kit/asrs
-	desc = "A paper box. Open it and get a specialist kit. Works only for squad marines."
+	desc = "A paper box. Open it and get a specialist kit. Works only for squad riflemen."
 
 /obj/item/spec_kit/asrs/attack_self(mob/user)
 	..()
@@ -173,7 +173,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 		if(select_and_spawn(user))
 			qdel(src)
 	else
-		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad marine!"))
+		to_chat(user, SPAN_NOTICE("This box is not for you, give it to a squad rifleman!"))
 
 /obj/item/spec_kit/proc/select_and_spawn(mob/living/carbon/human/user)
 	if(!istype(user))

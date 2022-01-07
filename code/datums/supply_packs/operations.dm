@@ -170,7 +170,7 @@
 	iteration_needed = null
 
 /datum/supply_packs/spec_kits
-	name = "Specialist Kits"
+	name = "Weapons Specialist Kits"
 	contains = list(
 		/obj/item/spec_kit/asrs,
 		/obj/item/spec_kit/asrs,
@@ -179,7 +179,7 @@
 	)
 	cost = 0
 	containertype = /obj/structure/closet/crate/supply
-	containername = "specialist kits crate"
+	containername = "weapons specialist kits crate"
 	buyable = 0
 	group = "Operations"
 	iteration_needed = null

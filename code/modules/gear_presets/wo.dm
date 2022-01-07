@@ -12,13 +12,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/commander
-	name = "WO Ground Commander"
+	name = "WO Commanding Officer"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	assignment = JOB_WO_CO
 	rank = JOB_WO_CO
-	paygrade = "NO5"
-	role_comm_title = "CDR"
+	paygrade = "MO4"
+	role_comm_title = "CO"
 	skills = /datum/skills/commander
 	idtype = /obj/item/card/id/gold
 
@@ -98,8 +98,8 @@
 
 	assignment = JOB_WO_XO
 	rank = JOB_WO_XO
-	paygrade = "NO4"
-	role_comm_title = "LCDR"
+	paygrade = "MO3"
+	role_comm_title = "XO"
 	skills = /datum/skills/XO
 	idtype = /obj/item/card/id/silver
 
@@ -141,7 +141,7 @@
 	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_WO, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_WO_CHIEF_POLICE
 	rank = JOB_WO_CHIEF_POLICE
-	paygrade = "ME9"
+	paygrade = "ME5"
 	role_comm_title = "HGSL"
 	skills = /datum/skills/honor_guard/lead
 	idtype = /obj/item/card/id/silver
@@ -184,7 +184,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_BRIG, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_WO_SO
 	rank = JOB_WO_SO
-	paygrade = "ME8"
+	paygrade = "ME4"
 	role_comm_title = "VHG"
 	skills = /datum/skills/honor_guard/vet
 	idtype = /obj/item/card/id/silver
@@ -226,7 +226,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_WO_CREWMAN
 	rank = JOB_WO_CREWMAN
-	paygrade = "ME8"
+	paygrade = "ME3"
 	role_comm_title = "HGS"
 	skills = /datum/skills/honor_guard/spec
 	idtype = /obj/item/card/id/gold
@@ -264,7 +264,7 @@
 	access = list(ACCESS_MARINE_BRIG, ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_WO_POLICE
 	rank = JOB_WO_POLICE
-	paygrade = "ME7"
+	paygrade = "ME2"
 	role_comm_title = "HG"
 	skills = /datum/skills/honor_guard
 
@@ -296,7 +296,7 @@
 	access = list(ACCESS_MARINE_BRIDGE, ACCESS_MARINE_DROPSHIP, ACCESS_MARINE_LOGISTICS, ACCESS_MARINE_PILOT)
 	assignment = JOB_WO_PILOT
 	rank = JOB_WO_PILOT
-	paygrade = "ME3"
+	paygrade = "ME2"
 	role_comm_title = "MC"
 	skills = /datum/skills/mortar_crew
 
@@ -329,7 +329,7 @@
 	access = list(ACCESS_MARINE_CARGO, ACCESS_MARINE_RO, ACCESS_MARINE_BRIDGE)
 	assignment = JOB_WO_CHIEF_REQUISITION
 	rank = JOB_WO_CHIEF_REQUISITION
-	paygrade = "ME8"
+	paygrade = "MO2"
 	role_comm_title = "QM"
 	skills = /datum/skills/RO
 	idtype = /obj/item/card/id/silver
@@ -491,7 +491,7 @@
 	access = list(ACCESS_MARINE_CE, ACCESS_MARINE_ENGINEERING, ACCESS_MARINE_BRIDGE, ACCESS_CIVILIAN_ENGINEERING, ACCESS_MARINE_LOGISTICS)
 	assignment = JOB_WO_CHIEF_ENGINEER
 	rank = JOB_WO_CHIEF_ENGINEER
-	paygrade = "ME8"
+	paygrade = "ME5"
 	role_comm_title = "BCM"
 	skills = /datum/skills/CE
 	idtype = /obj/item/card/id/silver
@@ -595,7 +595,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_LEADER, ACCESS_MARINE_DROPSHIP)
 	assignment = JOB_SQUAD_LEADER
 	rank = JOB_SQUAD_LEADER
-	paygrade = "ME6"
+	paygrade = "ME5"
 	role_comm_title = "SL"
 	skills = /datum/skills/SL
 
@@ -624,13 +624,13 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/spec
-	name = "WO Dust Raider Squad Specialist"
+	name = "WO Dust Raider Squad Weapons Specialist"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SPECPREP)
 	assignment = JOB_SQUAD_SPECIALIST
 	rank = JOB_SQUAD_SPECIALIST
-	paygrade = "ME5"
+	paygrade = "ME3"
 	role_comm_title = "Spc"
 	skills = /datum/skills/specialist
 
@@ -665,7 +665,7 @@
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_SMARTPREP)
 	assignment = JOB_SQUAD_SMARTGUN
 	rank = JOB_SQUAD_SMARTGUN
-	paygrade = "ME4"
+	paygrade = "ME3"
 	role_comm_title = "SG"
 	skills = /datum/skills/smartgunner
 
@@ -690,14 +690,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/engineer
-	name = "WO Dust Raider Squad Engineer"
+	name = "WO Dust Raider Squad Combat Technician"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_ENGPREP, ACCESS_CIVILIAN_ENGINEERING)
 	assignment = JOB_SQUAD_ENGI
 	rank = JOB_SQUAD_ENGI
 	paygrade = "ME3"
-	role_comm_title = "Eng"
+	role_comm_title = "ComTech"
 	skills = /datum/skills/combat_engineer
 
 /datum/equipment_preset/wo/marine/engineer/load_gear(mob/living/carbon/human/H)
@@ -725,14 +725,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/medic
-	name = "WO Dust Raider Squad Medic"
+	name = "WO Dust Raider Hospital Corpsman"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP, ACCESS_MARINE_MEDPREP, ACCESS_MARINE_MEDBAY)
 	assignment = JOB_SQUAD_MEDIC
 	rank = JOB_SQUAD_MEDIC
 	paygrade = "ME3"
-	role_comm_title = "Med"
+	role_comm_title = "HM"
 	skills = /datum/skills/combat_medic
 
 /datum/equipment_preset/wo/marine/medic/load_gear(mob/living/carbon/human/H)
@@ -759,14 +759,14 @@
 //*****************************************************************************************************/
 
 /datum/equipment_preset/wo/marine/pfc
-	name = "WO Dust Raider Squad Marine (PFC)"
+	name = "WO Dust Raider Rifleman (PFC)"
 	flags = EQUIPMENT_PRESET_START_OF_ROUND_WO
 
 	access = list(ACCESS_MARINE_PREP)
 	assignment = JOB_SQUAD_MARINE
 	rank = JOB_SQUAD_MARINE
 	paygrade = "ME2"
-	role_comm_title = "PFC"
+	role_comm_title = "RFN"
 	skills = /datum/skills/pfc
 
 /datum/equipment_preset/wo/marine/pfc/load_gear(mob/living/carbon/human/H)

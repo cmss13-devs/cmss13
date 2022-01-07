@@ -214,7 +214,7 @@
 		if(ACCESS_MARINE_PREP) 			return "Marine Prep"
 		if(ACCESS_MARINE_ENGPREP) 		return "Marine Squad Engineering"
 		if(ACCESS_MARINE_MEDPREP) 		return "Marine Squad Medical"
-		if(ACCESS_MARINE_SPECPREP) 		return "Marine Specialist"
+		if(ACCESS_MARINE_SPECPREP) 		return "Marine Weapons Specialist"
 		if(ACCESS_MARINE_SMARTPREP)		return "Marine Smartgunner"
 		if(ACCESS_MARINE_LEADER) 		return "Marine Leader"
 		if(ACCESS_MARINE_ALPHA) 		return "Alpha Squad"

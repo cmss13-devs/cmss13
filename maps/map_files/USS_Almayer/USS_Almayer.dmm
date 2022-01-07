@@ -40398,7 +40398,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/start{
-	name = "Squad RT Operator"
+	name = "Squad Radio Telephone Operator"
 	},
 /turf/open/floor/almayer{
 	dir = 8;
@@ -43827,7 +43827,7 @@
 	tag = "icon-SE-out"
 	},
 /obj/effect/landmark/start{
-	name = "Squad RT Operator"
+	name = "Squad Radio Telephone Operator"
 	},
 /turf/open/floor/almayer{
 	dir = 8;

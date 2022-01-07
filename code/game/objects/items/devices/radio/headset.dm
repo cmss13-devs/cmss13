@@ -431,7 +431,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/alpha/med
-	name = "marine alpha medic radio headset"
+	name = "marine alpha corpsman radio headset"
 	desc = "This is used by the marine Alpha combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -461,7 +461,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/bravo/med
-	name = "marine bravo medic radio headset"
+	name = "marine bravo corpsman radio headset"
 	desc = "This is used by the marine Bravo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -491,7 +491,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/charlie/med
-	name = "marine charlie medic radio headset"
+	name = "marine charlie corpsman radio headset"
 	desc = "This is used by the marine Charlie combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -521,7 +521,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/delta/med
-	name = "marine delta medic radio headset"
+	name = "marine delta corpsman radio headset"
 	desc = "This is used by the marine Delta combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -550,7 +550,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/echo/med
-	name = "marine echo medic radio headset"
+	name = "marine echo corpsman radio headset"
 	desc = "This is used by the marine Echo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -601,10 +601,10 @@
 					keys += new /obj/item/device/encryptionkey/squadlead(src)
 					volume = RADIO_VOLUME_CRITICAL
 				if(JOB_SQUAD_MEDIC)
-					name = "marine medic " + name
+					name = "marine hospital corpsman " + name
 					keys += new /obj/item/device/encryptionkey/med(src)
 				if(JOB_SQUAD_ENGI)
-					name = "marine engineer " + name
+					name = "marine combat technician " + name
 					keys += new /obj/item/device/encryptionkey/engi(src)
 				if(JOB_SQUAD_RTO)
 					name = "marine RTO " + name

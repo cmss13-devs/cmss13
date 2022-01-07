@@ -437,6 +437,7 @@ var/list/kits = list("Pyro" = 2, "Grenadier" = 2, "Sniper" = 2, "Scout" = 2, "De
 	pro_case_overlay = "honor_guard"
 
 /obj/item/storage/box/kit/honorguard/fill_preset_inventory()
+	new /obj/item/device/radio/headset/almayer/marine/mp_honor(src)
 	new /obj/item/storage/pill_bottle/packet/oxycodone(src)
 	new /obj/item/storage/pill_bottle/packet/kelotane(src)
 	new /obj/item/storage/pill_bottle/packet/bicardine(src)

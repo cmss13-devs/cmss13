@@ -186,7 +186,7 @@
 		var/turf/T = get_turf(src)
 		if(!istype(T))
 			return
-		var/atom/hit_atom = LM.target ? null : T
+		var/atom/hit_atom = ismob(LM.target) ? null : T // TODO, just check for LM.target, the ismob is to prevent funky behavior with grenades 'n crates
 		if(!hit_atom)
 			for(var/atom/A in T)
 				if(A == LM.target)

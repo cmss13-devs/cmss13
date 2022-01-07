@@ -53,6 +53,7 @@
 	var/uncloak_time = 3	//in SECONDS, this is how long it takes for the tarp to become fully visible again once it's opened from an invisible state
 	var/cloak_time = 15		//ditto for cloaking
 	var/closed_alpha = 60	//how much ALPHA the tarp has once it's fully cloaked.
+	var/can_store_dead = FALSE
 	exit_stun = 0
 
 /obj/structure/closet/bodybag/tarp/snow
@@ -83,6 +84,7 @@
 	cloak_time = 5
 	closed_alpha = 10 //same as scout cloak alpha
 	exit_stun = 1
+	can_store_dead = TRUE
 
 /obj/structure/closet/bodybag/tarp/reactive/scout/close()
 	if(!skillcheck(usr, SKILL_SPEC_WEAPONS, SKILL_SPEC_ALL) && usr.skills.get_skill_level(SKILL_SPEC_WEAPONS) != SKILL_SPEC_SCOUT)
@@ -95,7 +97,7 @@
 	for(var/mob/living/carbon/human/H in loc)
 		if(H.buckled)
 			continue
-		if(H.stat == DEAD) // dead, nope
+		if(H.stat == DEAD && !can_store_dead) // dead, nope
 			continue
 		mobs_can_store += H
 	var/mob/living/carbon/human/mob_to_store

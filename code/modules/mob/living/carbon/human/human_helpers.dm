@@ -422,3 +422,13 @@
 				lowest_burn_mod = burn_mod
 		return lowest_burn_mod
 	return species?.burn_mod
+
+/mob/living/carbon/human/proc/show_hud_tracker()
+	if(hud_used && !hud_used.locate_leader.alpha)
+		hud_used.locate_leader.alpha = 255
+		hud_used.locate_leader.mouse_opacity = 1
+
+/mob/living/carbon/human/proc/hide_hud_tracker()
+	if(hud_used && hud_used.locate_leader.alpha)
+		hud_used.locate_leader.alpha = 0
+		hud_used.locate_leader.mouse_opacity = 0

@@ -34,12 +34,12 @@
 
 /datum/job/command/commander/generate_entry_conditions(mob/living/M, whitelist_status)
 	. = ..()
-	GLOB.roundstart_leaders += M
+	GLOB.marine_leaders[JOB_CO] = M
 	RegisterSignal(M, COMSIG_PARENT_QDELETING, .proc/cleanup_leader_candidate)
 
 /datum/job/command/commander/proc/cleanup_leader_candidate(var/mob/M)
 	SIGNAL_HANDLER
-	GLOB.roundstart_leaders -= M
+	GLOB.marine_leaders -= JOB_CO
 
 /datum/job/command/commander/proc/do_announce_entry_message(mob/living/carbon/human/H)
 	shipwide_ai_announcement("Attention all hands, [H.get_paygrade(0)] [H.real_name] on deck!")

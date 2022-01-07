@@ -1177,39 +1177,47 @@
 
 //very similar to xeno's queen_locator() but this is for locating squad leader.
 /mob/living/carbon/human/proc/locate_squad_leader(var/tracker_setting = TRACKER_SL)
-	if(!assigned_squad) return
+	if(!hud_used)
+		return
 
 	var/mob/living/carbon/human/H
-	var/tl_prefix = ""
-	if(hud_used)
-		hud_used.locate_leader.icon_state = "trackoff"
+	var/tracking_suffix = ""
 
+	hud_used.locate_leader.icon_state = "trackoff"
 
-	if(tracker_setting == TRACKER_SL) //default
-		H = assigned_squad.squad_leader
-	else if(tracker_setting == TRACKER_LZ)
-		var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
-		if(!C) //no LZ selected
-			hud_used.locate_leader.icon_state = "trackoff"
-		else if(C.z != src.z || get_dist(src,C) < 1)
-			hud_used.locate_leader.icon_state = "trackondirect_lz"
-		else
-			hud_used.locate_leader.setDir(get_dir(src,C))
-			hud_used.locate_leader.icon_state = "trackon_lz"
-		return
-	else if(tracker_setting == TRACKER_FTL && src.assigned_fireteam)
-		H = assigned_squad.fireteam_leaders[assigned_fireteam]
-		tl_prefix = "_tl"
+	switch(tracker_setting)
+		if(TRACKER_SL)
+			if(assigned_squad)
+				H = assigned_squad.squad_leader
+		if(TRACKER_LZ)
+			var/obj/structure/machinery/computer/shuttle_control/C = SSticker.mode.active_lz
+			if(!C) //no LZ selected
+				hud_used.locate_leader.icon_state = "trackoff"
+			else if(C.z != src.z || get_dist(src,C) < 1)
+				hud_used.locate_leader.icon_state = "trackondirect_lz"
+			else
+				hud_used.locate_leader.setDir(get_dir(src,C))
+				hud_used.locate_leader.icon_state = "trackon_lz"
+			return
+		if(TRACKER_FTL)
+			if(assigned_squad)
+				if(assigned_fireteam)
+					H = assigned_squad.fireteam_leaders[assigned_fireteam]
+					tracking_suffix = "_tl"
+		if(TRACKER_CO)
+			H = GLOB.marine_leaders[JOB_CO]
+			tracking_suffix = "_co"
+		if(TRACKER_XO)
+			H = GLOB.marine_leaders[JOB_XO]
+			tracking_suffix = "_xo"
+
 	if(!H)
 		return
 	if(H.z != src.z || get_dist(src,H) < 1 || src == H)
-		hud_used.locate_leader.icon_state = "trackondirect[tl_prefix]"
+		hud_used.locate_leader.icon_state = "trackondirect[tracking_suffix]"
 	else
 		hud_used.locate_leader.setDir(get_dir(src,H))
-		hud_used.locate_leader.icon_state = "trackon[tl_prefix]"
-	return
-
-
+		hud_used.locate_leader.icon_state = "trackon[tracking_suffix]"
 
 /mob/living/carbon/proc/locate_nearest_nuke()
 	if(!bomb_set) return

@@ -280,6 +280,7 @@
 			"total_damage" = damage_list,
 			"time_of_death" = new_time_of_death,
 			"total_time_alive" = new_total_time_alive,
+			"total_damage_taken" = new_death.total_damage_taken,
 			"x" = new_death.x,
 			"y" = new_death.y,
 			"z" = new_death.z

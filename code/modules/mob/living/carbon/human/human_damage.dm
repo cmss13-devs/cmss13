@@ -434,6 +434,9 @@ This function restores all limbs.
 
 	pain.apply_pain(damage, damagetype)
 
+	if(damagetype != HALLOSS && damage > 0)
+		life_damage_taken_total += damage
+
 	if(permanent_kill)
 		status_flags |= PERMANENTLY_DEAD
 

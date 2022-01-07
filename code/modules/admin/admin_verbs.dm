@@ -506,6 +506,7 @@ var/list/admin_verbs_mod = list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
+	message_staff("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_random_fact()
 
 

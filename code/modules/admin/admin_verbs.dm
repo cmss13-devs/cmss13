@@ -218,6 +218,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/rejuvenate_all_xenos_in_view,
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
+	/datum/admins/proc/wakeall,
 	/datum/admins/proc/togglejoin,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,

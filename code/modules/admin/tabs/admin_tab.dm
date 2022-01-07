@@ -188,18 +188,30 @@
 	if(!check_rights(0))
 		return
 
-	if(alert("This will toggle a sleep/awake status on ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
+	if(alert("This will sleep ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
 		return
-	for(var/mob/living/M in view())
-		if (M.sleeping > 0) //if they're already slept, set their sleep to zero and remove the icon
-			M.sleeping = 0
-			M.RemoveSleepingIcon()
-		else
-			M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
-			M.AddSleepingIcon()
+	for(var/mob/living/M in view(usr.client))
+		M.KnockOut(3) // prevents them from exiting the screen range
+		M.sleeping = 9999999 //if they're not, sleep them and add the sleep icon, so other marines nearby know not to mess with them.
+		M.AddSleepingIcon()
 
 	message_staff("[key_name(usr)] used Toggle Sleep In View.")
-	return
+
+/datum/admins/proc/wakeall()
+	set name = "Wake All"
+	set category = "Admin.InView"
+	set hidden = 1
+
+	if(!check_rights(0))
+		return
+
+	if(alert("This wake ALL mobs within your view range (for Administration purposes). Are you sure?",,"Yes","Cancel") == "Cancel")
+		return
+	for(var/mob/living/M in view(usr.client))
+		M.sleeping = 0 //set their sleep to zero and remove their icon
+		M.RemoveSleepingIcon()
+
+	message_staff("[key_name(usr)] used Toggle Wake In View.")
 
 /datum/admins/proc/viewUnheardAhelps()
 	set name = "View Unheard Ahelps"

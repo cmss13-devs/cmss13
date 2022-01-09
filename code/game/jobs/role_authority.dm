@@ -614,7 +614,7 @@ var/global/marines_assigned = 0
 		var/datum/squad/lowest
 
 		switch(H.job)
-			if("Squad Combat Technician")
+			if(JOB_SQUAD_ENGI)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_engineers >= S.max_engineers) continue
@@ -627,7 +627,7 @@ var/global/marines_assigned = 0
 						else if(S.num_engineers < lowest.num_engineers)
 							lowest = S
 
-			if("Squad Hospital Corpsman")
+			if(JOB_SQUAD_MEDIC)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_medics >= S.max_medics) continue
@@ -640,7 +640,7 @@ var/global/marines_assigned = 0
 						else if(S.num_medics < lowest.num_medics)
 							lowest = S
 
-			if("Squad Leader")
+			if(JOB_SQUAD_LEADER)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_leaders >= S.max_leaders) continue
@@ -653,7 +653,7 @@ var/global/marines_assigned = 0
 						else if(S.num_leaders < lowest.num_leaders)
 							lowest = S
 
-			if("Squad Specialist")
+			if(JOB_SQUAD_SPECIALIST)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_specialists >= S.max_specialists) continue
@@ -666,7 +666,7 @@ var/global/marines_assigned = 0
 						else if(S.num_specialists < lowest.num_specialists)
 							lowest = S
 
-			if("Squad Radio Telephone Operator")
+			if(JOB_SQUAD_RTO)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_rto >= S.max_rto) continue
@@ -679,7 +679,7 @@ var/global/marines_assigned = 0
 						else if(S.num_rto < lowest.num_rto)
 							lowest = S
 
-			if("Squad Smartgunner")
+			if(JOB_SQUAD_SMARTGUN)
 				for(var/datum/squad/S in mixed_squads)
 					if(S.usable && S.roundstart)
 						if(!skip_limit && S.num_smartgun >= S.max_smartgun) continue

@@ -405,6 +405,7 @@ var/const/MAX_SAVE_SLOTS = 10
 	dat += "<b>tgui Window Mode:</b> <a href='?_src_=prefs;preference=tgui_fancy'>[(tgui_fancy) ? "Fancy (default)" : "Compatible (slower)"]</a><br>"
 	dat += "<b>tgui Window Placement:</b> <a href='?_src_=prefs;preference=tgui_lock'>[(tgui_lock) ? "Primary monitor" : "Free (default)"]</a><br>"
 	dat += "<b>Play Admin Midis:</b> <a href='?_src_=prefs;preference=hear_midis'><b>[(toggles_sound & SOUND_MIDI) ? "Yes" : "No"]</b></a><br>"
+	dat += "<b>Play Admin Internet Sounds:</b> <a href='?_src_=prefs;preference=hear_internet'><b>[(toggles_sound & SOUND_INTERNET) ? "Yes" : "No"]</b></a><br>"
 	dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'><b>[(toggles_sound & SOUND_LOBBY) ? "Yes" : "No"]</b></a><br>"
 	dat += "<b>Play VOX Announcements:</b> <a href='?_src_=prefs;preference=sound_vox'><b>[(hear_vox) ? "Yes" : "No"]</b></a><br>"
 	dat += "<b>Ghost Ears:</b> <a href='?_src_=prefs;preference=ghost_ears'><b>[(toggles_chat & CHAT_GHOSTEARS) ? "All Speech" : "Nearest Creatures"]</b></a><br>"
@@ -1379,6 +1380,9 @@ var/const/MAX_SAVE_SLOTS = 10
 
 				if("hear_midis")
 					toggles_sound ^= SOUND_MIDI
+
+				if("hear_internet")
+					toggles_sound ^= SOUND_INTERNET
 
 				if("lobby_music")
 					toggles_sound ^= SOUND_LOBBY

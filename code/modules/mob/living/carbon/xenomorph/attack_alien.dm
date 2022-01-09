@@ -346,7 +346,7 @@
 //Breaking barricades
 /obj/structure/barricade/attack_alien(mob/living/carbon/Xenomorph/M)
 	M.animation_attack_on(src)
-	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) )
+	take_damage( rand(M.melee_damage_lower, M.melee_damage_upper) * brute_multiplier)
 	if(barricade_hitsound)
 		playsound(src, barricade_hitsound, 25, 1)
 	if(health <= 0)

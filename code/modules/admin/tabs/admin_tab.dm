@@ -420,6 +420,7 @@
 		<A href='?src=\ref[src];teleport=jump_to_obj'>Jump to Object</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_key'>Jump to Ckey</A><BR>
 		<A href='?src=\ref[src];teleport=jump_to_coord'>Jump to Coordinates</A><BR>
+		<A href='?src=\ref[src];teleport=jump_to_offset_coord'>Jump to Offset Coordinates</A><BR>
 		<A href='?src=\ref[src];teleport=get_mob'>Teleport Mob to You</A><BR>
 		<A href='?src=\ref[src];teleport=get_key'>Teleport Ckey to You</A><BR>
 		<A href='?src=\ref[src];teleport=teleport_mob_to_area'>Teleport Mob to Area</A><BR>

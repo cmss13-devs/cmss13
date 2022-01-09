@@ -181,6 +181,7 @@ var/list/admin_mob_verbs_hideable = list(
 var/list/admin_verbs_teleport = list(
 	/client/proc/teleport_panel,			/*teleport panel, for jumping to things/places and getting things/places */
 	/client/proc/jumptocoord,
+	/client/proc/jumptooffsetcoord,
 	/client/proc/jumptomob,
 	/client/proc/jump_to_object,
 	/client/proc/jump_to_turf,

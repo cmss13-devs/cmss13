@@ -55,7 +55,7 @@
 		return
 	if(W.sharp == IS_SHARP_ITEM_ACCURATE || W.sharp == IS_SHARP_ITEM_BIG)
 		user.visible_message("[user] starts to cut [W] open and clean it.", "You start to gut [src].")
-		playsound(loc, 'sound/effects/bladeslice.ogg', 25, 1)
+		playsound(loc, 'sound/effects/blobattack.ogg', 25, 1)
 		if(do_after(user, gut_time SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, src, INTERRUPT_ALL))
 			var/gut_loot = roll(total_length - min_length)
 			if(gut_loot <= 0)

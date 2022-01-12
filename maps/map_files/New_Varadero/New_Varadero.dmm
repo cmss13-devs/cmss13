@@ -3850,6 +3850,14 @@
 /obj/structure/sign/poster/propaganda,
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/storage/highsec)
+"dtq" = (
+/obj/structure/platform/kutjevo/smooth{
+	dir = 8
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/central)
 "dts" = (
 /obj/structure/pipes/standard/simple/hidden/green{
 	dir = 4
@@ -4533,6 +4541,12 @@
 	},
 /turf/open/auto_turf/sand_white/layer1,
 /area/ice_colony/underground/maintenance/research)
+"edu" = (
+/turf/open/floor/shiva{
+	dir = 1;
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/maintenance/central)
 "eea" = (
 /obj/vehicle/train/cargo/engine{
 	dir = 2
@@ -5417,10 +5431,11 @@
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/bball)
 "eUh" = (
-/obj/effect/alien/weeds/node,
-/obj/effect/landmark/structure_spawner/setup/distress/xeno_door,
-/turf/open/auto_turf/sand_white/layer0,
-/area/ice_colony/underground/maintenance/engineering)
+/turf/open/floor/shiva{
+	dir = 8;
+	icon_state = "bluefull"
+	},
+/area/ice_colony/underground/maintenance/central)
 "eUv" = (
 /obj/structure/pipes/vents/pump{
 	dir = 1
@@ -5880,6 +5895,14 @@
 	icon_state = "multi_tiles"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"fnX" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 4
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/central)
 "fok" = (
 /obj/item/stack/cable_coil/cut{
 	pixel_x = 6;
@@ -6334,7 +6357,15 @@
 	layer = 3.5;
 	pixel_y = 13
 	},
-/obj/item/clothing/gloves/marine/veteran/insulated,
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "Made in Little Japan.";
+	health = 300;
+	icon = 'icons/obj/items/items.dmi';
+	icon_state = "sheet-lizard";
+	name = "exotic bedsheet";
+	pixel_x = -1
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "fGE" = (
@@ -8475,8 +8506,13 @@
 	},
 /area/ice_colony/underground/medical/treatment)
 "hHR" = (
-/obj/structure/machinery/light{
-	dir = 8
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "It is kind of pink and wavy with white lines. It has been pinned to the wall with all the care of a meticulate entomologist.";
+	health = 300;
+	icon = 'icons/obj/items/items.dmi';
+	icon_state = "sheet-mythril";
+	name = "funky wall bacon"
 	},
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/security/marshal)
@@ -9521,7 +9557,8 @@
 	layer = 2.991
 	},
 /turf/open/floor/shiva{
-	icon_state = "floor3"
+	dir = 8;
+	icon_state = "blue"
 	},
 /area/ice_colony/underground/maintenance/central)
 "izU" = (
@@ -11589,11 +11626,22 @@
 "kua" = (
 /obj/structure/barricade/handrail/wire{
 	dir = 8;
-	layer = 2.991
+	layer = 3.5
 	},
-/obj/item/device/megaphone,
+/obj/structure/platform/kutjevo/smooth/stair_plate,
+/obj/structure/platform/kutjevo/smooth{
+	dir = 1
+	},
+/obj/structure/prop/structure_lattice{
+	density = 0;
+	desc = "If this is removed, you cannot escape.";
+	health = 300;
+	icon_state = "ladder10";
+	name = "ladder"
+	},
 /turf/open/floor/shiva{
-	icon_state = "floor3"
+	dir = 4;
+	icon_state = "blue"
 	},
 /area/ice_colony/underground/maintenance/central)
 "kus" = (
@@ -11707,6 +11755,7 @@
 /obj/item/bedsheet/hos{
 	layer = 3.1
 	},
+/obj/item/clothing/gloves/marine/veteran/insulated,
 /turf/open/floor/wood,
 /area/ice_colony/underground/crew/dorm_r)
 "kyr" = (
@@ -12901,7 +12950,7 @@
 /area/ice_colony/underground/hallway/south_east)
 "lDh" = (
 /turf/open/floor/shiva{
-	icon_state = "floor3"
+	icon_state = "blue"
 	},
 /area/ice_colony/underground/maintenance/central)
 "lDk" = (
@@ -15120,7 +15169,7 @@
 	},
 /area/ice_colony/underground/hallway/north_west)
 "ntL" = (
-/obj/structure/window/framed/dev/reinforced,
+/obj/structure/window/framed/colony/reinforced,
 /turf/open/floor/plating/icefloor,
 /area/ice_colony/underground/hangar)
 "nuQ" = (
@@ -15667,15 +15716,25 @@
 /turf/closed/wall/r_wall,
 /area/ice_colony/underground/hallway/south_east)
 "nTH" = (
-/obj/structure/barricade/handrail/wire{
-	dir = 8;
-	layer = 2.991
-	},
 /obj/structure/bed/chair/comfy/orange{
-	dir = 8
+	buckling_y = 9;
+	dir = 8;
+	pixel_y = 9
+	},
+/obj/item/device/megaphone{
+	layer = 2;
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/storage/hazardvest{
+	desc = "It oozes authority, prestige, and sick summer vibes.";
+	name = "life guard's vest";
+	pixel_x = 10;
+	pixel_y = -9
 	},
 /turf/open/floor/shiva{
-	icon_state = "floor3"
+	dir = 8;
+	icon_state = "bluefull"
 	},
 /area/ice_colony/underground/maintenance/central)
 "nTS" = (
@@ -16255,6 +16314,14 @@
 	icon_state = "yellow"
 	},
 /area/ice_colony/underground/hallway/south_east)
+"ovp" = (
+/obj/structure/platform_decoration/kutjevo{
+	dir = 1
+	},
+/turf/open/floor/plating/icefloor{
+	icon_state = "asteroidplating"
+	},
+/area/ice_colony/underground/maintenance/central)
 "ovC" = (
 /turf/open/floor/carpet,
 /area/shuttle/elevator3/underground)
@@ -18922,7 +18989,8 @@
 	layer = 3.1
 	},
 /turf/open/floor/shiva{
-	icon_state = "floor3"
+	dir = 1;
+	icon_state = "blue"
 	},
 /area/ice_colony/underground/maintenance/central)
 "qQt" = (
@@ -19993,6 +20061,19 @@
 	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/hangar)
+"rLq" = (
+/obj/structure/platform/kutjevo/smooth{
+	layer = 2.990
+	},
+/obj/structure/barricade/handrail/wire{
+	dir = 8;
+	layer = 2.991
+	},
+/turf/open/floor/shiva{
+	dir = 4;
+	icon_state = "blue"
+	},
+/area/ice_colony/underground/maintenance/central)
 "rLC" = (
 /obj/structure/machinery/photocopier,
 /turf/open/floor/shiva{
@@ -24348,6 +24429,7 @@
 	name = "support struts"
 	},
 /obj/structure/prop/structure_lattice{
+	density = 0;
 	desc = "If this is removed, you cannot escape.";
 	health = 300;
 	icon_state = "ladder10";
@@ -24495,6 +24577,10 @@
 /obj/structure/closet/secure_closet/personal,
 /obj/item/attachable/magnetic_harness,
 /obj/item/storage/large_holster/m37/full,
+/obj/structure/machinery/light{
+	dir = 4;
+	tag = "icon-tube1 (EAST)"
+	},
 /turf/open/floor/wood,
 /area/ice_colony/underground/security/detective)
 "vPj" = (
@@ -42126,7 +42212,7 @@ cQK
 cQK
 emx
 eUR
-lDh
+edu
 aQc
 gSC
 oPr
@@ -42448,8 +42534,8 @@ sOe
 tql
 xBb
 ahg
-aQq
-aQq
+ntL
+ntL
 tCa
 tCa
 tyd
@@ -42490,7 +42576,7 @@ cQK
 cQK
 nNw
 eUR
-lDh
+edu
 aQc
 qqA
 oPr
@@ -42854,7 +42940,7 @@ cQK
 cQK
 cQK
 eUR
-lDh
+edu
 aQc
 qqA
 ojG
@@ -43218,7 +43304,7 @@ gHT
 gHT
 gHT
 bHo
-lDh
+edu
 aQc
 qqA
 lQX
@@ -43394,13 +43480,13 @@ aQc
 qqA
 qqA
 qqA
-lDh
+eUh
 izP
-izP
+rLq
 nTH
 kua
 izP
-lDh
+eUh
 aQc
 gSC
 lQX
@@ -43578,9 +43664,9 @@ ojG
 qqA
 qqA
 qqA
-qqA
-qqA
-qqA
+ovp
+dtq
+fnX
 qqA
 qqA
 aQc
@@ -47583,7 +47669,7 @@ dkn
 dkn
 wVf
 wVf
-hHR
+wVf
 wVf
 wVf
 wVf
@@ -47763,7 +47849,7 @@ tWA
 qMH
 dkn
 dkn
-wVf
+hHR
 idw
 vco
 pja
@@ -50674,7 +50760,7 @@ wXu
 mJW
 nkw
 fNn
-eUh
+iLe
 vYW
 vYW
 vYW

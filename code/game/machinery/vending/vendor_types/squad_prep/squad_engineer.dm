@@ -79,8 +79,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_engi, list(
 	))
 
 /obj/structure/machinery/cm_vending/gear/engi
-	name = "\improper ColMarTech Squad Engineer Gear Rack"
-	desc = "An automated gear rack for Squad Engineers."
+	name = "\improper ColMarTech Squad ComTech Gear Rack"
+	desc = "An automated gear rack for combat technicians."
 	icon_state = "eng_gear"
 	show_points = TRUE
 	use_points = TRUE
@@ -153,8 +153,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_engi, list(
 	))
 
 /obj/structure/machinery/cm_vending/clothing/engi
-	name = "\improper ColMarTech Squad Engineer Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Engineer standard-issue equipment."
+	name = "\improper ColMarTech Squad ComTech Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of combat technician standard-issue equipment."
 	req_access = list(ACCESS_MARINE_ENGPREP)
 	vendor_role = list(JOB_SQUAD_ENGI)
 

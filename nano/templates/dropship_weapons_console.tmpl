@@ -115,7 +115,7 @@
 
 	<div style="display: block; padding-top: 4px">
 		{{for data.targets_data}}
-			{{:helper.link(value.target_name, null, {'open_fire' : value.target_tag},  (data.shuttle_state == "in_transit") ? null : 'disabled' , 'fixedLeftLongText')}}
+			{{:helper.link(value.target_name, null, {'open_fire' : value.target_tag},  (data.shuttle_state == "in_transit") ? null : 'disabled' , 'fixedLeftLongText')}} {{:helper.link('View', 'search', {'cas_camera' : value.target_tag},  (data.shuttle_state == "in_transit") ? null : 'disabled' , 'fixedLeft')}}
 		{{empty}}
 			No laser target detected.
 		{{/for}}

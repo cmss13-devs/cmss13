@@ -20,6 +20,7 @@
 	var/store_items = TRUE
 	var/store_mobs = TRUE
 	var/fill_from_loc = TRUE //Whether items from the tile are automatically moved inside the closet.
+	var/exit_stun = 2 //stun time upon exiting, if at all
 
 	anchored = 1 //Yep
 
@@ -76,7 +77,8 @@
 
 	for(var/mob/M in src)
 		M.forceMove(loc)
-		M.stunned = max(M.stunned, 2) //Action delay when going out of a closet
+		if(!(exit_stun == 0))
+			M.stunned = max(M.stunned, exit_stun) //Action delay when going out of a closet
 		M.update_canmove() //Force the delay to go in action immediately
 		if(!M.lying)
 			M.visible_message(SPAN_WARNING("[M] suddenly gets out of [src]!"),

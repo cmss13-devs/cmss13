@@ -3,7 +3,7 @@
 var/list/available_specialist_sets = list("Scout Set", "Sniper Set", "Demolitionist Set", "Heavy Grenadier Set", "Pyro Set")
 
 GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
-		list("SPECIALIST SETS (CHOOSE 1)", 0, null, null, null),
+		list("WEAPONS SPECIALIST SETS (CHOOSE 1)", 0, null, null, null),
 		list("Demolitionist Set", 0, /obj/item/storage/box/spec/demolitionist, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 		list("Heavy Grenadier Set", 0, /obj/item/storage/box/spec/heavy_grenadier, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
 		list("Pyro Set", 0, /obj/item/storage/box/spec/pyro, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_REGULAR),
@@ -62,8 +62,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_spec, list(
 	))
 
 /obj/structure/machinery/cm_vending/gear/spec
-	name = "\improper ColMarTech Squad Specialist Gear Rack"
-	desc = "An automated gear rack for Squad Specialists."
+	name = "\improper ColMarTech Squad Weapons Specialist Gear Rack"
+	desc = "An automated gear rack for Squad Weapons Specialists."
 	icon_state = "spec_gear"
 	show_points = TRUE
 	use_points = TRUE
@@ -120,8 +120,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_specialist, list(
 	))
 
 /obj/structure/machinery/cm_vending/clothing/specialist
-	name = "\improper ColMarTech Squad Specialist Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Specialist standard-issue equipment."
+	name = "\improper ColMarTech Squad Weapons Specialist Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of Squad Weapons Specialist standard-issue equipment."
 	req_access = list(ACCESS_MARINE_SPECPREP)
 	vendor_role = list(JOB_SQUAD_SPECIALIST)
 

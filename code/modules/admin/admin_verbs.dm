@@ -181,6 +181,7 @@ var/list/admin_mob_verbs_hideable = list(
 var/list/admin_verbs_teleport = list(
 	/client/proc/teleport_panel,			/*teleport panel, for jumping to things/places and getting things/places */
 	/client/proc/jumptocoord,
+	/client/proc/jumptooffsetcoord,
 	/client/proc/jumptomob,
 	/client/proc/jump_to_object,
 	/client/proc/jump_to_turf,
@@ -218,6 +219,7 @@ var/list/admin_verbs_mod = list(
 	/client/proc/rejuvenate_all_xenos_in_view,
 	/datum/admins/proc/togglesleep,
 	/datum/admins/proc/sleepall,
+	/datum/admins/proc/wakeall,
 	/datum/admins/proc/togglejoin,
 	/client/proc/jump_to_object,
 	/client/proc/jumptomob,
@@ -511,6 +513,7 @@ var/list/admin_verbs_mod = list(
 	set desc = "Tells everyone about a random statistic in the round."
 	set category = "OOC"
 
+	message_staff("[key_name(usr)] announced a random fact.")
 	SSticker.mode?.declare_random_fact()
 
 

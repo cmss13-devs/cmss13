@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(cm_vending_clothing_marine, list(
 
 /obj/structure/machinery/cm_vending/clothing/marine
 	name = "\improper ColMarTech Automated Marine Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Marine standard-issue equipment."
+	desc = "An automated rack hooked up to a colossal storage of Marine Rifleman standard-issue equipment."
 	icon_state = "mar_rack"
 	use_points = TRUE
 	show_points = TRUE

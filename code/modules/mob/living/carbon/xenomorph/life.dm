@@ -104,9 +104,9 @@
 				if(Z.ignores_pheromones || Z.z != z || get_dist(aura_center, Z) > round(6 + aura_strength * 2) || !HIVE_ALLIED_TO_HIVE(Z.hivenumber, hivenumber))
 					continue
 				if(use_leader_aura)
-					set_xeno_pheromones(Z, leader_current_aura)
+					Z.affected_by_pheromones(leader_current_aura, leader_aura_strength)
 				if(use_current_aura)
-					set_xeno_pheromones(Z, current_aura)
+					Z.affected_by_pheromones(current_aura, aura_strength)
 
 	if(frenzy_aura != frenzy_new || warding_aura != warding_new || recovery_aura != recovery_new)
 		frenzy_aura = frenzy_new
@@ -119,24 +119,24 @@
 	warding_new = 0
 	recovery_new = 0
 
-/mob/living/carbon/Xenomorph/proc/set_xeno_pheromones(var/mob/living/carbon/Xenomorph/Z, var/aura)
+/mob/living/carbon/Xenomorph/proc/affected_by_pheromones(var/aura, var/strength)
 	switch(aura)
 		if("all")
-			if(aura_strength > Z.frenzy_new)
-				Z.frenzy_new = aura_strength
-			if(aura_strength > Z.warding_new)
-				Z.warding_new = aura_strength
-			if(aura_strength > Z.recovery_new)
-				Z.recovery_new = aura_strength
+			if(strength > frenzy_new)
+				frenzy_new = strength
+			if(strength > warding_new)
+				warding_new = strength
+			if(strength > recovery_new)
+				recovery_new = strength
 		if("frenzy")
-			if(aura_strength > Z.frenzy_new)
-				Z.frenzy_new = aura_strength
+			if(strength > frenzy_new)
+				frenzy_new = strength
 		if("warding")
-			if(aura_strength > Z.warding_new)
-				Z.warding_new = aura_strength
+			if(strength > warding_new)
+				warding_new = strength
 		if("recovery")
-			if(aura_strength > Z.recovery_new)
-				Z.recovery_new = aura_strength
+			if(strength > recovery_new)
+				recovery_new = strength
 
 /mob/living/carbon/Xenomorph/handle_regular_status_updates(regular_update = TRUE)
 	if(regular_update && health <= 0 && (!caste || (caste.fire_immunity & FIRE_IMMUNITY_NO_IGNITE) || !on_fire)) //Sleeping Xenos are also unconscious, but all crit Xenos are under 0 HP. Go figure

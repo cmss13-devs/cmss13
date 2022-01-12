@@ -294,6 +294,11 @@
 /obj/structure/bed/chair/dropship/pilot/rotate()
 	return // no
 
+/obj/structure/bed/chair/dropship/pilot/unbuckle()
+	if(buckled_mob && buckled_mob.buckled == src)
+		buckled_mob.reset_view()
+	return ..()
+
 /obj/structure/bed/chair/dropship/passenger
 	name = "passenger seat"
 	desc = "A sturdy metal chair with a brace that lowers over your body. Holds you in place during high altitude drops."

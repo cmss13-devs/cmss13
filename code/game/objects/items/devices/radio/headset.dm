@@ -225,6 +225,7 @@
 	frequency = PUB_FREQ
 	var/headset_hud_on = 1
 	var/locate_setting = TRACKER_SL
+	var/misc_tracking = FALSE
 
 /*
 /obj/item/device/radio/headset/almayer/verb/enter_tree()
@@ -243,10 +244,10 @@
 			var/datum/mob_hud/H = huds[MOB_HUD_SQUAD]
 			H.add_hud_to(user)
 			//squad leader locator is no longer invisible on our player HUD.
-			if(user.mind && user.assigned_squad && user.hud_used && user.hud_used.locate_leader)
-				user.hud_used.locate_leader.alpha = 255
-				user.hud_used.locate_leader.mouse_opacity = 1
-
+			if(user.mind && (user.assigned_squad || misc_tracking) && user.hud_used && user.hud_used.locate_leader)
+				user.show_hud_tracker()
+			if(misc_tracking)
+				SStracking.start_misc_tracking(user)
 	..()
 
 /obj/item/device/radio/headset/almayer/dropped(mob/living/carbon/human/user)
@@ -256,8 +257,9 @@
 			H.remove_hud_from(user)
 			//squad leader locator is invisible again
 			if(user.hud_used && user.hud_used.locate_leader)
-				user.hud_used.locate_leader.alpha = 0
-				user.hud_used.locate_leader.mouse_opacity = 0
+				user.hide_hud_tracker()
+			if(misc_tracking)
+				SStracking.stop_misc_tracking(user)
 	..()
 
 /obj/item/device/radio/headset/almayer/verb/toggle_squadhud()
@@ -275,13 +277,15 @@
 			if(headset_hud_on)
 				H.add_hud_to(usr)
 				if(user.mind && user.assigned_squad && user.hud_used && user.hud_used.locate_leader)
-					user.hud_used.locate_leader.alpha = 255
-					user.hud_used.locate_leader.mouse_opacity = 1
+					user.show_hud_tracker()
+				if(misc_tracking)
+					SStracking.start_misc_tracking(user)
 			else
 				H.remove_hud_from(usr)
 				if(user.hud_used && user.hud_used.locate_leader)
-					user.hud_used.locate_leader.alpha = 0
-					user.hud_used.locate_leader.mouse_opacity = 0
+					user.hide_hud_tracker()
+				if(misc_tracking)
+					SStracking.stop_misc_tracking(user)
 	to_chat(usr, SPAN_NOTICE("You toggle [src]'s headset HUD [headset_hud_on ? "on":"off"]."))
 	playsound(src,'sound/machines/click.ogg', 20, 1)
 
@@ -291,18 +295,21 @@
 	set src in usr
 
 	if(usr.is_mob_incapacitated())
-		return 0
+		return
+
+	handle_switching_tracker_target(usr)
+
+/obj/item/device/radio/headset/almayer/proc/handle_switching_tracker_target(var/mob/living/carbon/human/user)
 	//Cycles through SL > LZ > FTL
 	if(locate_setting == TRACKER_SL)
-		to_chat(usr, SPAN_NOTICE("You set your headset's tracker to point to the LZ tracking beacon."))
+		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the LZ tracking beacon."))
 		locate_setting = TRACKER_LZ
 		return
-	var/mob/living/carbon/human/H = usr
-	if(locate_setting == TRACKER_LZ && H.assigned_fireteam) //Only set it to FTL if they have a fireteam
-		to_chat(usr, SPAN_NOTICE("You set your headset's tracker to point to your FTL's tracking beacon."))
+	if(locate_setting == TRACKER_LZ && user.assigned_fireteam) //Only set it to FTL if they have a fireteam
+		to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your FTL's tracking beacon."))
 		locate_setting = TRACKER_FTL
 		return
-	to_chat(usr, SPAN_NOTICE("You set your headset's tracker to point to your SL's tracking beacon."))
+	to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to your SL's tracking beacon."))
 	locate_setting = TRACKER_SL
 
 /obj/item/device/radio/headset/almayer/ce
@@ -356,6 +363,24 @@
 	icon_state = "sec_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
 
+/obj/item/device/radio/headset/almayer/marine/mp_honor
+	name = "marine honor guard radio headset"
+	desc = "This is used by members of the marine honor guard. Channels are as follows: :p - military police, :v - marine command. :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	icon_state = "sec_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/mmpo)
+	volume = RADIO_VOLUME_RAISED
+	locate_setting = TRACKER_CO
+	misc_tracking = TRUE
+
+/obj/item/device/radio/headset/almayer/marine/mp_honor/handle_switching_tracker_target(mob/living/carbon/human/user)
+	switch(locate_setting)
+		if(TRACKER_CO)
+			to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the XO's tracking beacon."))
+			locate_setting = TRACKER_XO
+		if(TRACKER_XO)
+			to_chat(user, SPAN_NOTICE("You set your headset's tracker to point to the CO's tracking beacon."))
+			locate_setting = TRACKER_CO
+
 /obj/item/device/radio/headset/almayer/cmpcom
 	name = "marine chief MP radio headset"
 	desc = "For discussing the purchase of donuts and arresting of hooligans. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
@@ -369,6 +394,12 @@
 	icon_state = "mcom_headset"
 	initial_keys = list(/obj/item/device/encryptionkey/mcom)
 	volume = RADIO_VOLUME_CRITICAL
+
+/obj/item/device/radio/headset/almayer/marine/mp_honor/com
+	name = "marine honor guard command radio headset"
+	desc = "Given to highly trusted marine honor guard only. It features a non-standard brace. Channels are as follows: :v - marine command, :p - military police, :n - engineering, :m - medbay, :u - requisitions, :a - alpha squad, :b - bravo squad, :c - charlie squad, :d - delta squad."
+	icon_state = "mcom_headset"
+	initial_keys = list(/obj/item/device/encryptionkey/cmpcom)
 
 /obj/item/device/radio/headset/almayer/po
 	name = "marine pilot radio headset"
@@ -431,7 +462,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/alpha/med
-	name = "marine alpha medic radio headset"
+	name = "marine alpha corpsman radio headset"
 	desc = "This is used by the marine Alpha combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -461,7 +492,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/bravo/med
-	name = "marine bravo medic radio headset"
+	name = "marine bravo corpsman radio headset"
 	desc = "This is used by the marine Bravo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -491,7 +522,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/charlie/med
-	name = "marine charlie medic radio headset"
+	name = "marine charlie corpsman radio headset"
 	desc = "This is used by the marine Charlie combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -521,7 +552,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/delta/med
-	name = "marine delta medic radio headset"
+	name = "marine delta corpsman radio headset"
 	desc = "This is used by the marine Delta combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -550,7 +581,7 @@
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/engi)
 
 /obj/item/device/radio/headset/almayer/marine/echo/med
-	name = "marine echo medic radio headset"
+	name = "marine echo corpsman radio headset"
 	desc = "This is used by the marine Echo combat medics. To access the medical channel, use :m. When worn, grants access to Squad Leader tracker. Click tracker with empty hand to open Squad Info window."
 	initial_keys = list(/obj/item/device/encryptionkey/public, /obj/item/device/encryptionkey/med)
 
@@ -601,10 +632,10 @@
 					keys += new /obj/item/device/encryptionkey/squadlead(src)
 					volume = RADIO_VOLUME_CRITICAL
 				if(JOB_SQUAD_MEDIC)
-					name = "marine medic " + name
+					name = "marine hospital corpsman " + name
 					keys += new /obj/item/device/encryptionkey/med(src)
 				if(JOB_SQUAD_ENGI)
-					name = "marine engineer " + name
+					name = "marine combat technician " + name
 					keys += new /obj/item/device/encryptionkey/engi(src)
 				if(JOB_SQUAD_RTO)
 					name = "marine RTO " + name

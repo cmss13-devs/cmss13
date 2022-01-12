@@ -20,119 +20,119 @@
 ################################################*/
 //ENLISTED
 /obj/item/clothing/accessory/ranks/marine/e1
-	rank_short = "ME1"
+	rank_short = "E1"
 
 /obj/item/clothing/accessory/ranks/marine/e2
-	rank_short = "ME2"
+	rank_short = "E2"
 
 /obj/item/clothing/accessory/ranks/marine/e3
-	rank_short = "ME3"
+	rank_short = "E3"
 
 /obj/item/clothing/accessory/ranks/marine/e4
-	rank_short = "ME4"
+	rank_short = "E4"
 	icon_state = "ranks_nco"
 
 /obj/item/clothing/accessory/ranks/marine/e5
-	rank_short = "ME5"
+	rank_short = "E5"
 	icon_state = "ranks_nco"
 
 /obj/item/clothing/accessory/ranks/marine/e6
-	rank_short = "ME6"
+	rank_short = "E6"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/marine/e7
-	rank_short = "ME7"
+	rank_short = "E7"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/marine/e8
-	rank_short = "ME8"
+	rank_short = "E8"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/marine/e8e
-	rank_short = "ME8E"
+	rank_short = "E8E"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/marine/e9
-	rank_short = "ME9"
+	rank_short = "E9"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/marine/e9e
-	rank_short = "ME9E"
+	rank_short = "E9E"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/marine/e9c
-	rank_short = "ME9C"
+	rank_short = "E9C"
 	icon_state = "ranks_snco"
 
 /obj/item/clothing/accessory/ranks/marine/e10c
-	rank_short = "ME10C"
+	rank_short = "E10C"
 	icon_state = "ranks_snco"
 	icon_state = "ranks_snco"
 
 //OFFICERS
 /obj/item/clothing/accessory/ranks/marine/o1
 	name = "rank boards"
-	rank_short = "MO1"
+	rank_short = "O1"
 	icon_state = "ranks_officer"
 
 /obj/item/clothing/accessory/ranks/marine/o2
 	name = "rank boards"
-	rank_short = "MO2"
+	rank_short = "O2"
 	icon_state = "ranks_officer"
 
 /obj/item/clothing/accessory/ranks/marine/o3
 	name = "rank boards"
-	rank_short = "MO3"
+	rank_short = "O3"
 	icon_state = "ranks_officer"
 
 /obj/item/clothing/accessory/ranks/marine/o4
 	name = "rank boards"
-	rank_short = "MO4"
+	rank_short = "O4"
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o5
 	name = "rank boards"
-	rank_short = "MO5"
+	rank_short = "O5"
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o6
 	name = "rank boards"
-	rank_short = "MO6"
+	rank_short = "M6"
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o6e
 	name = "rank boards"
-	rank_short = "MO6E"
+	rank_short = "O6E"
 	icon_state = "ranks_seniorofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o6c
 	name = "rank boards"
-	rank_short = "MO6C"
+	rank_short = "O6C"
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o7
 	name = "rank boards"
-	rank_short = "MO7"
+	rank_short = "O7"
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o8
 	name = "rank boards"
-	rank_short = "MO8"
+	rank_short = "O8"
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o9
 	name = "rank boards"
-	rank_short = "MO9"
+	rank_short = "O9"
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o10
 	name = "rank boards"
-	rank_short = "MO10"
+	rank_short = "O10"
 	icon_state = "ranks_flagofficer"
 
 /obj/item/clothing/accessory/ranks/marine/o10c
 	name = "rank boards"
-	rank_short = "MO10C"
+	rank_short = "O10C"
 	icon_state = "ranks_flagofficer"
 
 /*################################################

@@ -44,7 +44,7 @@ Instead of being uniform, it starts out a littler slower, goes fast in the middl
 //Flashes a color, then goes back to regular.
 /proc/animation_flash_color(atom/A, flash_color = "#FF0000", speed = 3) //Flashes red on default.
 	var/oldcolor = A.color
-	animate(A, color = flash_color, time = speed)
+	animate(A, color = flash_color, time = speed, flags = ANIMATION_PARALLEL)
 	animate(color = oldcolor, time = speed)
 
 /* fuck this, only halloween uses this -spookydonut
@@ -222,3 +222,12 @@ proc/animation_destruction_long_fade(atom/A, speed = 4, x_n = 4, y_n = 4)
 
 /atom/proc/animation_cancel()
 	animate(src)
+
+/atom/proc/sway_jitter(var/times = 3, var/steps = 3, var/strength = 3, var/sway = 5)
+	var/sway_dir = 1 //left to right
+	animate(src, transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING, flags = ANIMATION_PARALLEL)
+	for(var/i in 1 to steps)
+		animate(transform = turn(matrix(transform), sway*2 * (sway_dir *= -1)), pixel_x = rand(-strength,strength), pixel_y = rand(-strength/3,strength/3), time = times, easing = JUMP_EASING)
+
+	animate(transform = turn(matrix(transform), sway * (sway_dir *= -1)), pixel_x = 0, pixel_y = 0, time = 0)//ease it back
+

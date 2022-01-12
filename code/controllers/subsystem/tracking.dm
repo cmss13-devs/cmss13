@@ -8,6 +8,7 @@ SUBSYSTEM_DEF(tracking)
 
 	// A list split into each squad/hive, where each squad/hive has a list of all their mobs
 	var/list/tracked_mobs = list()
+	var/list/misc_tracking_mobs = list()
 
 	// A quicker reference lookup
 	var/list/mobs_in_processing = list()
@@ -23,7 +24,7 @@ SUBSYSTEM_DEF(tracking)
 
 
 /datum/controller/subsystem/tracking/stat_entry(msg)
-	var/mobs = 0
+	var/mobs = length(misc_tracking_mobs)
 	for(var/tracked_group in tracked_mobs)
 		mobs += length(tracked_mobs[tracked_group])
 	msg = "P:[mobs]"
@@ -33,6 +34,7 @@ SUBSYSTEM_DEF(tracking)
 /datum/controller/subsystem/tracking/fire(resumed = FALSE)
 	if(!resumed)
 		currentrun = copyListList(tracked_mobs)
+		currentrun["Misc"] = misc_tracking_mobs.Copy()
 
 	for(var/tracked_group in currentrun)
 		for(var/mob/living/current_mob in currentrun[tracked_group])
@@ -77,6 +79,12 @@ SUBSYSTEM_DEF(tracking)
 
 	if(tracked_mobs[tracking_id])
 		tracked_mobs[tracking_id] -= mob
+
+/datum/controller/subsystem/tracking/proc/start_misc_tracking(var/mob/living/carbon/mob)
+	misc_tracking_mobs |= mob
+
+/datum/controller/subsystem/tracking/proc/stop_misc_tracking(var/mob/living/carbon/mob)
+	misc_tracking_mobs -= mob
 
 /datum/controller/subsystem/tracking/proc/set_leader(var/tracked_group, var/mob/living/carbon/mob)
 	if(leaders[tracked_group])

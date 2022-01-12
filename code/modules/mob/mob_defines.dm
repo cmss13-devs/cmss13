@@ -82,6 +82,7 @@
 	var/timeofdeath = 0.0//Living
 	var/life_steps_total = 0
 	var/life_kills_total = 0
+	var/life_damage_taken_total = 0
 
 	var/bodytemperature = 310.055	//98.7 F
 	var/old_x = 0

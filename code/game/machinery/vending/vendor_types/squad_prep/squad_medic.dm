@@ -1,8 +1,8 @@
 //------------GEAR VENDOR---------------
 
 GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
-		list("MEDIC SET (MANDATORY)", 0, null, null, null),
-		list("Essential Medic Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
+		list("MEDICAL SET (MANDATORY)", 0, null, null, null),
+		list("Essential Medical Set", 0, /obj/effect/essentials_set/medic, MARINE_CAN_BUY_ESSENTIALS, VENDOR_ITEM_MANDATORY),
 
 		list("FIELD SUPPLIES", 0, null, null, null),
 		list("Adv Burn Kit", 2, /obj/item/stack/medical/healing/burnkit, null, VENDOR_ITEM_RECOMMENDED),
@@ -88,8 +88,8 @@ GLOBAL_LIST_INIT(cm_vending_gear_medic, list(
 	))
 
 /obj/structure/machinery/cm_vending/gear/medic
-	name = "\improper ColMarTech Squad Medic Gear Rack"
-	desc = "An automated gear rack for Squad Medics."
+	name = "\improper ColMarTech Squad Medical Gear Rack"
+	desc = "An automated gear rack for hospital corpsmen."
 	icon_state = "med_gear"
 	show_points = TRUE
 	use_points = TRUE
@@ -118,8 +118,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 		list("Heavy Armor", 0, /obj/item/clothing/suit/storage/marine/heavy, MARINE_CAN_BUY_ARMOR, VENDOR_ITEM_REGULAR),
 
 		list("BACKPACK (CHOOSE 1)", 0, null, null, null),
-		list("Medic Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
-		list("Medic Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
+		list("Medical Backpack", 0, /obj/item/storage/backpack/marine/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_REGULAR),
+		list("Medical Satchel", 0, /obj/item/storage/backpack/marine/satchel/medic, MARINE_CAN_BUY_BACKPACK, VENDOR_ITEM_RECOMMENDED),
 
 		list("BELT (CHOOSE 1)", 0, null, null, null),
 		list("M276 Ammo Load Rig", 0, /obj/item/storage/belt/marine, MARINE_CAN_BUY_BELT, VENDOR_ITEM_REGULAR),
@@ -165,8 +165,8 @@ GLOBAL_LIST_INIT(cm_vending_clothing_medic, list(
 	))
 
 /obj/structure/machinery/cm_vending/clothing/medic
-	name = "\improper ColMarTech Squad Medic Equipment Rack"
-	desc = "An automated rack hooked up to a colossal storage of Squad Medic standard-issue equipment."
+	name = "\improper ColMarTech Squad Medical Equipment Rack"
+	desc = "An automated rack hooked up to a colossal storage of hospital corpsman standard-issue equipment."
 	req_access = list(ACCESS_MARINE_MEDPREP)
 	vendor_role = list(JOB_SQUAD_MEDIC)
 

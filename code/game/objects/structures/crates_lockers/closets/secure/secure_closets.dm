@@ -63,10 +63,10 @@
 					return
 				switch(slotlocktype)
 					if("engi")
-						if(H.job != "Squad Engineer")
+						if(H.job != "Squad Combat Technician")
 							return // stop people giving medics engineer prep access or IDs somehow
 					if("medic")
-						if(H.job != "Squad Medic")
+						if(H.job != "Squad Hospital Corpsman")
 							return // same here
 				I.claimedgear = 1 // you only get one locker, all other roles have this set 1 by default
 				slotlocked = 0 // now permanently unlockable

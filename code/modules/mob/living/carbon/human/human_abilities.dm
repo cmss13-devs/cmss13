@@ -578,6 +578,7 @@ CULT
 	var/mob/living/carbon/human/H = owner
 
 	H.cancel_camera()
+	H.reset_view()
 	H.client.change_view(world_view_size, target)
 	H.client.pixel_x = 0
 	H.client.pixel_y = 0

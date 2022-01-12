@@ -9,14 +9,14 @@
 /*****************************************************************************************************/
 
 /datum/equipment_preset/uscm_event/admiral
-	name = "USCM Admiral (USCM Command)"
+	name = "USCM Brigadier General (USCM Command)"
 	flags = EQUIPMENT_PRESET_EXTRA
 
 	idtype = /obj/item/card/id/admiral
 	access = list(ACCESS_MARINE_MEDBAY, ACCESS_MARINE_CHEMISTRY, ACCESS_MARINE_MORGUE)
-	assignment = "USCM Admiral"
-	rank = "USCM Admiral"
-	paygrade = "NO8"
+	assignment = "USCM Brigadier General"
+	rank = "USCM Brigadier General"
+	paygrade = "MO7"
 	role_comm_title = "RADM"
 	minimum_age = 50
 	skills = /datum/skills/admiral

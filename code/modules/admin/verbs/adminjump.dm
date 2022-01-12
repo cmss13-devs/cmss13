@@ -107,6 +107,32 @@
 			return
 		message_staff(WRAP_STAFF_LOG(usr, "jumped to [get_area(usr)] ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
 
+/client/proc/jumptooffsetcoord(tx as num, ty as num)
+	set name = "Jump to Offset Coordinate"
+	set category = null
+
+	if(!CLIENT_IS_STAFF(src))
+		to_chat(src, "Only administrators may use this command.")
+		return
+
+	if(src.mob)
+		if(!isobserver(mob))
+			src.admin_ghost()
+
+		var/mob/A = src.mob
+		A.on_mob_jump()
+		var/ground_level = 1
+		var/list/ground_z_levels = SSmapping.levels_by_trait(ZTRAIT_GROUND)
+		if(length(ground_z_levels))
+			ground_level = ground_z_levels[1]
+
+		var/turf/T = locate(deobfuscate_x(tx), deobfuscate_y(ty), ground_level)
+		if(!T)
+			to_chat(src, SPAN_WARNING("That coordinate is invalid!"))
+			return
+		A.forceMove(T)
+		message_staff(WRAP_STAFF_LOG(src, "jumped to [get_area(mob)] (Coords:[tx]|[ty]) ([T.x],[T.y],[T.z])."), T.x, T.y, T.z)
+
 /client/proc/jumptokey()
 	set name = "Jump to Ckey"
 	set category = null

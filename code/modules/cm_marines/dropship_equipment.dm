@@ -768,7 +768,7 @@
 	desc = "A winch system to lift injured marines on medical stretchers onto the dropship. Acquire lift target through the dropship equipment console."
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "medevac_system"
-	point_cost = 500
+	point_cost = 300
 	is_interactable = TRUE
 	var/obj/structure/bed/medevac_stretcher/linked_stretcher
 	var/medevac_cooldown
@@ -1001,7 +1001,7 @@
 	desc = "A winch system to collect any fulton recovery balloons in high altitude. Make sure you turn it on!"
 	equip_categories = list(DROPSHIP_CREW_WEAPON)
 	icon_state = "fulton_system"
-	point_cost = 500
+	point_cost = 200
 	is_interactable = TRUE
 	var/fulton_cooldown
 	var/busy_winch

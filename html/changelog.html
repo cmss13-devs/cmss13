@@ -61,6 +61,13 @@
 	</tr>
 </table>
 
+			<h2 class="date">15 January 2022</h2>
+			<h3 class="author">Chiwi updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixes padless MP armors not displaying the correct mob sprites.</li>
+				<li class="rscadd">Adds padless CMP and Warden armor to their respective vendors.</li>
+			</ul>
+
 			<h2 class="date">09 January 2022</h2>
 			<h3 class="author">Geeves updated:</h3>
 			<ul class="changes bgimages16">
@@ -832,136 +839,6 @@
 			<h3 class="author">forest2001 updated:</h3>
 			<ul class="changes bgimages16">
 				<li class="bugfix">Fixed Yautja headsets, Elders and above now have larger text. This was supposed to have happened in a previous MR but accidentally got overwritten.</li>
-			</ul>
-
-			<h2 class="date">13 November 2021</h2>
-			<h3 class="author">Firartix updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">fixed invalid round logging in huntergames game_mode</li>
-				<li class="bugfix">Fixed an issue with docker container for game ignoring stop signals</li>
-				<li class="tweak">Bumped built BYOND container version from 1539 to 1542</li>
-				<li class="tweak">Added complete multi-stage docker builds in Dockerfile, in addition to just the 'package to container' used by CI.</li>
-				<li class="tweak">Added a sample testing docker-compose environment to codebase</li>
-				<li class="tweak">Server now shutdowns instead of restarting by default. This was already the case in production setup.</li>
-			</ul>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Attacking a humanoid with an item that does more than 5 damage now properly tracks it, meaning Yautja kills on humans count for honor again, so does punching them.</li>
-				<li class="bugfix">Killing yourself as a yautja no longer gives you bonus honor points.</li>
-				<li class="bugfix">Damaging and killing someone by tossing them into a wall will properly be attributed to you.</li>
-			</ul>
-			<h3 class="author">Nanu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Moves a couple Survivor spawns away from the hives on Shivas Snowball.</li>
-				<li class="maptweak">Removes the rotary phones from planetside on Shiva.</li>
-			</ul>
-			<h3 class="author">Nanu Sionnach updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Adds a new wound overlay for xenos, makes it easier to see when they are dead and near death.</li>
-			</ul>
-
-			<h2 class="date">12 November 2021</h2>
-			<h3 class="author">Mercadier updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="maptweak">Renovated the ERT station - it is now more spacious, has a lobby, a holding cell, a boxing ring and a lounge.</li>
-			</ul>
-			<h3 class="author">Stan_Albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Trijent Dam : added a garage to the map, north of marshalls, with a truck and some wheels.</li>
-				<li class="bugfix">The breaching hammer can no longer destroy walls remotely.</li>
-				<li class="bugfix">The breaching hammer can no longer skip wall deconstruction timers.</li>
-				<li class="tweak">Changed the name of the breach B5 to B5 breaching hammer</li>
-				<li class="tweak">Added some unique attack verbs to the B5 breaching hammer</li>
-				<li class="tweak">Changed the sounds for the breaching hammer taking down walls to stronger-sounding ones.</li>
-				<li class="rscadd">Added the B5 breaching hammer to the synth experimental tools vendor, a hammer that can be used to take down walls and girders (only by synths), fits on your back like a fire-axe does. Original code by Vampmare.</li>
-			</ul>
-			<h3 class="author">TheFlyingFlail updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added kutjevo related civilian sprites courtesy of Triiodine</li>
-				<li class="rscadd">Coded new sprites into wearable clothing with appropriate types associated with attributes</li>
-				<li class="rscadd">Added new survivor specific trucker and chaplain to Kutjevo</li>
-				<li class="rscadd">Added gear kutjevo survivors</li>
-				<li class="rscadd">Added gear randomizer for doctor survivor</li>
-				<li class="rscadd">Added loot randomizer to corporation liaison survivors so they are not as useless as before</li>
-				<li class="rscadd">Added primary weapon randomizer for all survivors as opposed to always spawning with CMB shotgun</li>
-				<li class="tweak">Removed mod88 from scientist survivor</li>
-				<li class="tweak">Tweaked pistol variety survivors can spawn with</li>
-				<li class="tweak">Removed clipboard from CL survivor as it got in the way of them receiving additional gear they otherwise could have used</li>
-				<li class="tweak">Tweaked colonial marshal survivors to always spawn with heavy pistols due to their status in the colony.</li>
-				<li class="tweak">Removed useless items from the survivor gear randomizer like the lemon slice and etc for items survivors are more likely to use</li>
-				<li class="tweak">Removed items from spawning in the right hand for survivors. This will allow them to now spawn with the extra item as intended.</li>
-				<li class="rscdel">Removed security survivor pistol spawn</li>
-				<li class="bugfix">Fixed doctor survivors not spawning with tool pouch</li>
-				<li class="bugfix">Fixed LV-624 Head of security not spawning with a shotgun</li>
-				<li class="bugfix">Removed duplicate code for LV-624 security guard</li>
-				<li class="bugfix">Fixed PMC Survivor not spawning with appropriate gear & survivor related skills</li>
-				<li class="bugfix">Fixed Roughneck Survivors not spawning with appropriate gear</li>
-				<li class="rscdel">Deleted unnecessary desktop.ini that was left in the previous survivor mr. My bad.</li>
-				<li class="tweak">Moved PMC Survivor, Corporate Manager Survivor, and CLF survivor to survivor gear preset folder for better organization</li>
-				<li class="tweak">Gave roughneck survivors PMC/MERC skills</li>
-				<li class="tweak">Colonial Marshall survivors had their MP belt removed for heavy pistol belt to save space for random items to spawn.</li>
-				<li class="rscadd">Added PMC skill for PMC/MERC survivors so combat survivors don't have to use colonial marshal skills anymore</li>
-				<li class="rscadd">Added new Freelancer and Mercenary Survivor roles for future use</li>
-			</ul>
-			<h3 class="author">Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Fixes burrowers being able to tunnel into inaccessible airlocks on the Almayer.</li>
-				<li class="bugfix">You can no longer walk inside of ARES.</li>
-				<li class="bugfix">Removed some 200 instances of racks on Trijent that had their layer set incorrectly (making them appear beneath weeds).</li>
-				<li class="bugfix">Fixed all the broken stair cut borders on Kutjevo and Science Annex.</li>
-				<li class="bugfix">You can no longer walk through the Orbital Cannon on the Almayer.</li>
-				<li class="bugfix">Added an observer landmark to the center of briefing on the Almayer. Better than Cryo I guess.</li>
-				<li class="bugfix">Moved a dropship crash point out of cargo and into Delta-Charlie prep. This prevents the doors opening into the cargo lift.</li>
-				<li class="bugfix">Lifeboat pump rooms now actually respect lighting and the powernet.</li>
-				<li class="bugfix">Moved some cameras back onto the walls where they were supposed to be on the Almayer.</li>
-				<li class="bugfix">Plastic floors and other floor types from the Chigusa Shipyard icon file now actually have damaged states, and won't turn black when blown up. (They are used on Trijent, Shivas, and Sorokyne).</li>
-				<li class="bugfix">Added some missing firedoors, and removed double firedoors from Almayer prep rooms.</li>
-				<li class="bugfix">1x1 Orange Boulders are now dense.</li>
-				<li class="maptweak">APCs in the lifeboat fuel pumps and lifeboat lounge are now hardened.</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Hunterhud now saves the proper name of the hunter, instead of 'Unknown'</li>
-				<li class="tweak">Renamed the 'Toggle-Marines-Joining' verb to 'Toggle-Joining-Round'.</li>
-			</ul>
-			<h3 class="author">stan_albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Reduced nailgun magazine size from 50 to 48 rounds.</li>
-			</ul>
-
-			<h2 class="date">11 November 2021</h2>
-			<h3 class="author">GoldenDarkness55 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Warrior punch slow duration increased from 4s to 6s.</li>
-			</ul>
-			<h3 class="author">Stan_albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Cameras will no longer take photos when you put them in storage items</li>
-				<li class="bugfix">Cameras will no longer take photos when you attempt to put them in inventory slots</li>
-			</ul>
-			<h3 class="author">ihatethisengine2 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">OW transmissions/objectives now display quotes correctly (' instead of &#39;)</li>
-			</ul>
-
-			<h2 class="date">10 November 2021</h2>
-			<h3 class="author">Vanagandr updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Updated old references to the Falling Falcons as 7th bn - it's the 2nd.</li>
-			</ul>
-			<h3 class="author">ihatethisengine2 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Automatic punctuation now works in radio and hivemind.</li>
-			</ul>
-
-			<h2 class="date">09 November 2021</h2>
-			<h3 class="author">KatherineSmith updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Updated bottle sizes in vendors to match the standard. All bottles should now be 60u.</li>
-			</ul>
-			<h3 class="author">Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">alien melee and marine projectiles now cause blood hit effects if damage is dealt to the receiving mob.</li>
 			</ul>
 </div>
 </body>

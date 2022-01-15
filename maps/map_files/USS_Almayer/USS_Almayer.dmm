@@ -48972,7 +48972,16 @@
 	name = "SEA Office Shutters";
 	pixel_y = 12
 	},
-/obj/item/ashtray/plastic,
+/obj/item/ashtray/plastic{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/structure/transmitter/rotary{
+	name = "Senior Enlisted Advisor Office Telephone";
+	phone_category = "Almayer";
+	phone_id = "Senior Enlisted Advisor's Office";
+	pixel_x = -3
+	},
 /turf/open/floor/wood/ship,
 /area/almayer/shipboard/sea_office)
 "ijU" = (

@@ -72,11 +72,62 @@ obj/item/pamphlet/Initialize()
 	trait = /datum/character_trait/skills/powerloader
 	bypass_pamphlet_limit = TRUE //it's really not necessary to stop people from learning powerloader skill
 
+/obj/item/pamphlet/skill/police
+	name = "Policing instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has the image of a radio on it."
+	icon_state = "pamphlet_jtac"
+	trait = /datum/character_trait/skills/police
+	bypass_pamphlet_limit = TRUE
+
+/obj/item/pamphlet/skill/surgery
+	name = "Surgery instructional pamphlet"
+	desc = "A pamphlet used to quickly impart vital knowledge. This one has a medical insignia."
+	icon_state = "pamphlet_medical"
+	trait = /datum/character_trait/skills/surgery
+	bypass_pamphlet_limit = TRUE
 
 /obj/item/pamphlet/language
 	name = "translation pamphlet"
 	desc = "A pamphlet used by lazy USCM interpreters to quickly learn new languages on the spot."
 	flavour_text = "You go over the pamphlet, learning a new language."
-
 	bypass_pamphlet_limit = TRUE
+
+/obj/item/pamphlet/language/russian
+	name = "Printed Copy of Pari"
+	desc = "Pari, also known as 'The Bet' in English, is a short story written by Russian playwright Anton Chekhov about a bet between a lawyer and a banker; the banker wagers that the lawyer cannot remain in solitary confinement for 15 years, and promises 2 million rubles in exchange. You must be a refined reader if you know this one; why are you even in the USCM if you know that?"
+	trait = /datum/character_trait/language/russian
+
+/obj/item/pamphlet/language/japanese
+	name = "Pages of Turedobando Yohei Adobencha Zohuken"
+	desc = "These are some torn pages from a famous isekai manga named 'Turedobando Yohei Adobencha Zohuken' or Japanese Mercenary Adventure Sequel about a travelling band of Freelancers sent into a fantasy world. Why do you even know this?"
+	trait = /datum/character_trait/language/japanese
+
+/obj/item/pamphlet/language/german
+	name = "Translated Lyrics to 99 Luftballons"
+	desc = "These hastily scribbled translations of 99 Luftballons, an iconic German hit of the 80s, were meant for the yearly Battalion Karaoke Night. I guess you can get some better use out of this."
+	trait = /datum/character_trait/language/german
+
+/obj/item/pamphlet/language/spanish
+	name = "America Latina - A Quick Translation Guide for Southern UA states"
+	desc = "This pamphlet was designed for Intelligence Officers operating on Earth to interact with the local populaces of the Latin American states, but only for IOs who managed to sleep through Dialects and Mannerisms Class."
+	trait = /datum/character_trait/language/spanish
+
+
+
+//Restricted languages, spawnable for events.
+
+/obj/item/pamphlet/language/yautja
+	name = "stained parchment"
+	desc = "A yellowed old piece of parchment covered in strange runes from an alien writing system. The letters seem to shift back and forth into place before your eyes."
+	trait = /datum/character_trait/language/sainja
+
+/obj/item/pamphlet/language/xenomorph
+	name = "Xenobiologist's file"
+	desc = "A xenobiologist's document recording and detailing observations on captive Xenomorph communication via vocalisations and pheromones, as well as notes on attempting to reproduce them by human beings."
+	trait = /datum/character_trait/language/xenomorph
+
+/obj/item/pamphlet/language/monkey
+	name = "scribbled drawings"
+	desc = "A piece of paper covered in crude depictions of bananas and various types of primates. Probably drawn by a three year old child - or an unusually intelligent marine."
+	trait = /datum/character_trait/language/primitive
 

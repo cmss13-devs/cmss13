@@ -1,8 +1,8 @@
 /datum/language/common
 	name = LANGUAGE_ENGLISH
-	desc = "Common earth English."
+	desc = "Common Earth English. The standard language of the United Americas."
 	speech_verb = "says"
-	key = "0"
+	key = "1"
 	flags = RESTRICTED
 
 	syllables = list("al", "an", "ar", "as", "at", "ea", "ed", "en", "er", "es", "ha", "he", "hi", "in", "is", "it", "le", "me", "nd", "ne", "ng", "nt", "on", "or", "ou", "re", "se", "st", "te", "th", "ti", "to", "ve", "wa", "all", "and", "are", "but", "ent", "era", "ere", "eve", "for", "had", "hat", "hen", "her", "hin", "his", "ing", "ion", "ith", "not", "ome", "oul", "our", "sho", "ted", "ter", "tha", "the", "thi", "tio", "uld", "ver", "was", "wit", "you")
@@ -18,7 +18,7 @@
 // Galactic common languages (systemwide accepted standards).
 /datum/language/japanese
 	name = LANGUAGE_JAPANESE
-	desc = "A language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. This gained popularity due to high cultural contact in the RESS, and finds use outside due to immigration."
+	desc = "A notoriously complex language boasting an extensive grammatical system, three writing systems, and a new smattering of English loanwords. It has gained popularity due to high cultural contact in the 3WE, and finds use outside due to emigration."
 	speech_verb = "vocalizes"
 	colour = "japanese"
 	key = "2"
@@ -27,34 +27,34 @@
 
 /datum/language/russian
 	name = LANGUAGE_RUSSIAN
-	desc = "An East Slavic language from Earth."
-	speech_verb = "says"
+	desc = "An East Slavic language from Earth. The dominant tongue of the UPP and frequently used by Slavic minorities in the United Americas."
+	speech_verb = "enunciates"
 	colour = "soghun"
 	key = "3"
 
-	syllables = list("al", "an", "bi", "vye", "vo", "go", "dye", "yel", "?n", "yer", "yet", "ka", "ko", "la", "ly", "lo", "l", "na", "nye", "ny", "no", "ov", "ol", "on", "or", "slog", "ot", "po", "pr", "ra", "rye", "ro", "st", "ta", "tye", "to", "t", "at", "bil", "vyer", "yego", "yeny", "yenn", "yest", "kak", "ln", "ova", "ogo", "oro", "ost", "oto", "pry", "pro", "sta", "stv", "tor", "chto", "eto")
+	syllables = list("al", "an", "bi", "vye", "vo", "go", "dye", "yel", "en", "yer", "yet", "ka", "ko", "la", "ly", "lo", "l", "na", "nye", "ny", "no", "ov", "ol", "on", "or", "slog", "ot", "po", "pr", "ra", "rye", "ro", "st", "ta", "tye", "to", "t", "at", "bil", "vyer", "yego", "yeny", "yenn", "yest", "kak", "ln", "ova", "ogo", "oro", "ost", "oto", "pry", "pro", "sta", "stv", "tor", "chto", "eto", "rus", "nar", "arya", "mol")
 
 /datum/language/german
-	name = LANGUAGE_SPACENDEUTCHEN
-	desc = "A common dialect consisting of a hybrid between American English and German developed due to the high immigration and subsequent enlistment of German-Americans into the USCM."
+	name = LANGUAGE_WELTRAUMDEUTSCH
+	desc = "A common dialect consisting of a hybrid between American English and Hochdeutsch developed due to the high immigration and subsequent enlistment of German-Americans into the USCM."
 	speech_verb = "proclaims"
 	ask_verb = "inquires"
-	exclaim_verb = "bellows loudly"
+	exclaim_verb = "bellows"
 	colour = "german"
 	key = "4"
 
-	syllables = list("die", "das", "wein", "mir", "und", "wier", "ein", "nein", "gen", "en", "sauen", "bien", "nien", "rien", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "be")
+	syllables = list("die", "das", "wein", "mir", "und", "wir", "ein", "nein", "gen", "en", "sauen", "bin", "nein", "rhein", "deut", "der", "lieb", "en", "stein", "nein", "ja", "wolle", "sil", "bei", "der", "sie", "sch", "kein", "nur", "ach", "kann", "volk", "vau", "gelb", "grun", "macht", "zwei", "vier", "nacht", "tag")
 
 /datum/language/spanish
-	name = LANGUAGE_SPANISH
-	desc = "The second most common language spoken in the UA, mostly concentrated and brought from marines from the Latin American territories and in the former southern USA."
+	name = LANGUAGE_NEOSPANISH
+	desc = "The second most common language spoken in the UA, mutated and brought from marines from the Latin American territories and in the former southern USA."
 	speech_verb = "dice"
 	ask_verb = "cuestiona"
 	exclaim_verb = "grita"
 	colour = "spanish"
 	key = "5"
 
-	syllables = list("ha", "pana", "ja", "blo", "que", "spa", "di", "ga", "na", "ces", "si", "mo", "so", "de", "el", "to", "ro", "mi", "ca", "la", "di", "ah", "mio", "tar", "ion", "gran", "van", "jo", "cie", "qie", "las", "locho", "mas")
+	syllables = list("ha", "pana", "ja", "blo", "que", "spa", "di", "ga", "na", "ces", "si", "mo", "so", "de", "el", "to", "ro", "mi", "ca", "la", "di", "ah", "mio", "tar", "ion", "gran", "van", "jo", "cie", "qie", "las", "locho", "mas", "no", "gui", "es", "mal")
 
 /datum/language/commando
 	name = LANGUAGE_TSL
@@ -82,16 +82,16 @@
 	syllables = list("!", "?", ".", "@", "$", "%", "^", "&", "*", "-", "=", "+", "e", "b", "y", "p", "|", "z", "~", ">")
 	space_chance = 20
 
-/datum/language/monkey
+/datum/language/primitive
 	name = LANGUAGE_MONKEY
 	desc = "Ook ook ook."
 	speech_verb = "chimpers"
 	ask_verb = "chimpers"
 	exclaim_verb = "screeches"
 	colour = "monkey"
-	key = "m"
+	key = "9"
 
-/datum/language/xenocommon
+/datum/language/xenomorph
 	name = LANGUAGE_XENOMORPH
 	colour = "xenotalk"
 	desc = "The common tongue of the xenomorphs."

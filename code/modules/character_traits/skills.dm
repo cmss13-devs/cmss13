@@ -89,3 +89,16 @@
 	trait_name = "Powerloader Usage Training"
 	trait_desc = "Boosts the powerloader skill to 1. Crewmember received training in operating powerloaders."
 	skill = SKILL_POWERLOADER
+
+/datum/character_trait/skills/police
+	trait_name = "Police Training"
+	trait_desc = "Boosts the policing skill by 1. Crewmember received training in use of security equipment."
+	skill = SKILL_POLICE
+
+/datum/character_trait/skills/surgery
+	trait_name = "Surgery Training"
+	trait_desc = "Boosts the surgery and research skills. Crewmember received training in surgery and advanced R&D."
+	skill = SKILL_SURGERY
+	secondary_skill = SKILL_RESEARCH
+	secondary_skill_cap = 3
+	skill_increment = 3

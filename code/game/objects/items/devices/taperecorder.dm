@@ -13,7 +13,7 @@
 	var/playsleepseconds = 0.0
 	var/list/storedinfo = list()
 	var/list/timestamp = list()
-	var/list/known_languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_SPACENDEUTCHEN, LANGUAGE_SPANISH)
+	var/list/known_languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE, LANGUAGE_RUSSIAN, LANGUAGE_WELTRAUMDEUTSCH, LANGUAGE_NEOSPANISH)
 	var/canprint = 1
 	flags_atom = FPRINT|CONDUCT
 	throwforce = 2

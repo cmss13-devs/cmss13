@@ -2210,7 +2210,7 @@
 	neuro_callback = CALLBACK(GLOBAL_PROC, .proc/apply_neuro)
 
 /proc/apply_neuro(mob/M, power, insta_neuro)
-	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR) && !insta_neuro)
+	if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX) && !insta_neuro)
 		M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 		return //endurance 5 makes you immune to weak neurotoxin
 	if(ishuman(M))
@@ -2244,7 +2244,7 @@
 /proc/apply_scatter_neuro(mob/M)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
+		if(skillcheck(M, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX))
 			M.visible_message(SPAN_DANGER("[M] withstands the neurotoxin!"))
 			return //endurance 5 makes you immune to weak neuro
 		if(H.chem_effect_flags & CHEM_EFFECT_RESIST_NEURO || H.species.flags & NO_NEURO)

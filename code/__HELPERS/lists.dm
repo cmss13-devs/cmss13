@@ -129,6 +129,13 @@ proc/listclearnulls(list/list)
 			return L[i+1]
 	return L[1]
 
+//Returns the previous element in parameter list before last appearance of parameter element. If it is the first element of the list or not present in list, returns last element.
+/proc/prev_in_list(element, list/L)
+	for(var/i=L.len, i>1, i--)
+		if(L[i] == element)
+			return L[i-1]
+	return L[L.len]
+
 /*
  * Sorting
  */

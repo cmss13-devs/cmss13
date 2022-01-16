@@ -178,6 +178,36 @@
 	user.mob.a_select_zone("lleg")
 	return TRUE
 
+/datum/keybinding/mob/target_next
+	hotkey_keys = list("Numpad7")
+	classic_keys = list("Numpad7")
+	name = "target_next"
+	full_name = "Target: next"
+	description = "Pressing this key targets the next body part, cycling forward through all of them. This will impact where you hit people, and can be used for surgery."
+	keybind_signal = COMSIG_KB_MOB_TARGETNEXT_DOWN
+
+/datum/keybinding/mob/target_next/down(client/user)
+	. = ..()
+	if(.)
+		return
+	user.mob.a_select_zone("next")
+	return TRUE
+
+/datum/keybinding/mob/target_prev
+	hotkey_keys = list("Numpad9")
+	classic_keys = list("Numpad9")
+	name = "target_prev"
+	full_name = "Target: previous"
+	description = "Pressing this key targets the previous body part, cycling backward through all of them. This will impact where you hit people, and can be used for surgery."
+	keybind_signal = COMSIG_KB_MOB_TARGETPREV_DOWN
+
+/datum/keybinding/mob/target_prev/down(client/user)
+	. = ..()
+	if(.)
+		return
+	user.mob.a_select_zone("prev")
+	return TRUE
+
 /datum/keybinding/mob/prevent_movement
 	hotkey_keys = list("Ctrl", "Alt")
 	classic_keys = list("Ctrl", "Alt")

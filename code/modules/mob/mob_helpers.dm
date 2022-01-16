@@ -360,6 +360,10 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 					zone.selecting = "l_leg"
 				else
 					zone.selecting = "l_leg"
+		if("next")
+			zone.selecting = next_in_list(usr.zone_selected, DEFENSE_ZONES_LIVING)
+		if("prev")
+			zone.selecting = prev_in_list(usr.zone_selected, DEFENSE_ZONES_LIVING)
 	zone.update_icon(usr)
 
 /mob/proc/clear_chat_spam_mute(var/warn_level = 1, var/message = FALSE, var/increase_warn = FALSE)

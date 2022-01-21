@@ -38,6 +38,7 @@
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 	has_blast_wave_dampener = FALSE
+	has_iff = FALSE
 
 /obj/item/explosive/grenade/custom/metalfoam/Initialize()
 	. = ..()
@@ -82,6 +83,7 @@
 	desc = "Chemical flare in a grenade form, designed for compatibility with most standard issue launchers."
 	assembly_stage = ASSEMBLY_LOCKED
 	has_blast_wave_dampener = FALSE
+	has_iff = FALSE
 
 /obj/item/explosive/grenade/custom/flare/Initialize()
 	. = ..()
@@ -129,6 +131,7 @@
 	desc = "Used for purging large areas of invasive plant species. Contents under pressure. Do not directly inhale contents."
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
+	has_iff = FALSE
 
 /obj/item/explosive/grenade/custom/antiweed/Initialize()
 	. = ..()
@@ -153,6 +156,7 @@
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 	has_blast_wave_dampener = FALSE
+	has_iff = FALSE
 
 /obj/item/explosive/grenade/custom/cleaner/Initialize()
 	. = ..()
@@ -178,6 +182,7 @@
 	assembly_stage = ASSEMBLY_LOCKED
 	harmful = FALSE
 	has_blast_wave_dampener = FALSE
+	has_iff = FALSE
 
 /obj/item/explosive/grenade/custom/teargas/Initialize()
 	. = ..()

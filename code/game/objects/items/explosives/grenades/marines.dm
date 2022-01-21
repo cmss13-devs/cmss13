@@ -307,6 +307,7 @@
 	item_state = "grenade_smoke"
 	underslug_launchable = TRUE
 	harmful = FALSE
+	has_iff = FALSE
 	var/datum/effect_system/smoke_spread/bad/smoke
 
 /obj/item/explosive/grenade/smokebomb/New()

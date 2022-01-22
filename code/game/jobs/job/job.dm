@@ -10,7 +10,6 @@
 	var/allow_additional	= 0 //Can admins modify positions to it
 	var/scaled = 0
 	var/current_positions 	= 0 //How many players have this job
-	var/fake_positions 		= 0 // Purely used for roundstart pop calculations
 	var/supervisors 		= "" //Supervisors, who this person answers to directly. Should be a string, shown to the player when they enter the game.
 	var/selection_class 	= "" // Job Selection span class (for background color)
 

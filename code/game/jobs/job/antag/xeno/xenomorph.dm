@@ -1,5 +1,5 @@
 
-#define XENO_TO_MARINES_SPAWN_RATIO 1/3
+#define XENO_TO_TOTAL_SPAWN_RATIO 1/4
 
 /datum/job/antag/xenos
 	title = JOB_XENOMORPH
@@ -7,9 +7,15 @@
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	supervisors = "Queen"
 	selection_class = "job_xeno"
+	// Unlimited for the precount purposes, later set_spawn_positions gets called and sets
+	// a proper limit.
+	spawn_positions = -1
+
+/datum/job/antag/xenos/proc/calculate_extra_spawn_positions(var/count)
+	return max((round(count * XENO_TO_TOTAL_SPAWN_RATIO)), 0)
 
 /datum/job/antag/xenos/set_spawn_positions(var/count)
-	spawn_positions = max((round(count * XENO_TO_MARINES_SPAWN_RATIO)), 1)
+	spawn_positions = max((round(count * XENO_TO_TOTAL_SPAWN_RATIO)), 1)
 	total_positions = spawn_positions
 
 /datum/job/antag/xenos/spawn_in_player(var/mob/new_player/NP)

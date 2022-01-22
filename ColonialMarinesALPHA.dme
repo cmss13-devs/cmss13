@@ -596,6 +596,7 @@
 #include "code\game\machinery\cryopod.dm"
 #include "code\game\machinery\deployable.dm"
 #include "code\game\machinery\door_control.dm"
+#include "code\game\machinery\fax_machine.dm"
 #include "code\game\machinery\fire_alarm.dm"
 #include "code\game\machinery\flasher.dm"
 #include "code\game\machinery\floodlight.dm"

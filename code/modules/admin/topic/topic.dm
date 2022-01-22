@@ -1256,9 +1256,9 @@
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Template", list("Send", "Cancel"))
 		if(send_choice == "Cancel")
 			return
-		fax_contents += fax_message // save a copy
+		GLOB.fax_contents += fax_message // save a copy
 
-		USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
+		GLOB.USCMFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>")
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 
@@ -1290,7 +1290,7 @@
 							P.stamped = new
 						P.stamped += /obj/item/tool/stamp
 						P.overlays += stampoverlay
-						P.stamps += "<HR><i>This paper has been stamped by the High Command Quantum Relay.</i>"
+						P.stamps += "<HR><i>This paper has been stamped by the USCM High Command Quantum Relay.</i>"
 
 				to_chat(src.owner, "Message reply to transmitted successfully.")
 				message_staff("[key_name_admin(src.owner)] replied to a fax message from [key_name_admin(H)]", 1)
@@ -1334,9 +1334,9 @@
 		var/send_choice = tgui_input_list(usr, "Send this fax?", "Fax Confirmation", list("Send", "Cancel"))
 		if(send_choice == "Cancel")
 			return
-		fax_contents += fax_message // save a copy
+		GLOB.fax_contents += fax_message // save a copy
 
-		CLFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
+		GLOB.WYFaxes.Add("<a href='?FaxView=\ref[fax_message]'>\[view reply at [world.timeofday]\]</a>") //Add replies so that mods know what the hell is goin on with the RP
 
 		var/customname = input(src.owner, "Pick a title for the report", "Title") as text|null
 		if(!customname)

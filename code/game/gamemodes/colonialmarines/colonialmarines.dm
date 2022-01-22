@@ -120,10 +120,10 @@
 
 	return ..()
 
-#define MONKEYS_TO_MARINES_RATIO 1/20
+#define MONKEYS_TO_TOTAL_RATIO 1/32
 
 /datum/game_mode/colonialmarines/proc/spawn_smallhosts()
-	if(!marines_assigned)
+	if(!players_preassigned)
 		return
 
 	monkey_types = SSmapping.configs[GROUND_MAP].monkey_types
@@ -131,7 +131,7 @@
 	if(!length(monkey_types))
 		return
 
-	var/amount_to_spawn = round(marines_assigned * MONKEYS_TO_MARINES_RATIO)
+	var/amount_to_spawn = round(players_preassigned * MONKEYS_TO_TOTAL_RATIO)
 
 	for(var/i in 0 to min(amount_to_spawn, length(GLOB.monkey_spawns)))
 		var/turf/T = get_turf(pick_n_take(GLOB.monkey_spawns))

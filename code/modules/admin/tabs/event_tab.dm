@@ -293,26 +293,45 @@
 	if(!admin_holder)
 		return
 
-	var/answer = alert(src, "Which kind of faxes would you like to see?", "Faxes", "CL faxes", "USCM faxes", "Cancel")
+	var/list/options = list("Weyland-Yutani", "High Command", "Provost", "Other", "Cancel")
+	var/answer = tgui_input_list(src, "Which kind of faxes would you like to see?", "Faxes", options)
 	switch(answer)
-		if("CL faxes")
+		if("Weyland-Yutani")
 			var/body = "<body>"
 
-			for(var/text in CLFaxes)
+			for(var/text in GLOB.WYFaxes)
 				body += text
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes from the CL", "clfaxviewer", "size=300x600")
-		if("USCM faxes")
+			show_browser(src, body, "Faxes to Weyland-Yutani", "wyfaxviewer", "size=300x600")
+		if("High Command")
 			var/body = "<body>"
 
-			for(var/text in USCMFaxes)
+			for(var/text in GLOB.USCMFaxes)
 				body += text
 				body += "<br><br>"
 
 			body += "<br><br></body>"
-			show_browser(src, body, "Faxes from the USCM", "uscmfaxviewer", "size=300x600")
+			show_browser(src, body, "Faxes to High Command", "uscmfaxviewer", "size=300x600")
+		if("Provost")
+			var/body = "<body>"
+
+			for(var/text in GLOB.ProvostFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Faxes to the Provost Office", "provostfaxviewer", "size=300x600")
+		if("Other")
+			var/body = "<body>"
+
+			for(var/text in GLOB.GeneralFaxes)
+				body += text
+				body += "<br><br>"
+
+			body += "<br><br></body>"
+			show_browser(src, body, "Inter-machine Faxes", "otherfaxviewer", "size=300x600")
 		if("Cancel")
 			return
 

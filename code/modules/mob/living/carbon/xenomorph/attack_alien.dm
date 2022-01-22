@@ -815,24 +815,26 @@
 
 //APCs.
 /obj/structure/machinery/power/apc/attack_alien(mob/living/carbon/Xenomorph/M)
-	var/allcut = TRUE
-	for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
-		if(!isWireCut(wire))
-			allcut = FALSE
-			break
-	if(allcut)
+	if(stat & BROKEN)
 		to_chat(M, SPAN_XENONOTICE("[src] is already broken!"))
+		return XENO_NO_DELAY_ACTION
+	else if(beenhit >= XENO_HITS_TO_CUT_WIRES && M.mob_size < MOB_SIZE_BIG)
+		to_chat(M, SPAN_XENONOTICE("You aren't big enough to further damage [src]."))
 		return XENO_NO_DELAY_ACTION
 	M.animation_attack_on(src)
 	M.visible_message(SPAN_DANGER("[M] slashes [src]!"), \
 	SPAN_DANGER("You slash [src]!"), null, 5)
 	playsound(loc, "alien_claw_metal", 25, 1)
-	if(wiresexposed)
+	if (beenhit >= XENO_HITS_TO_CUT_WIRES)
+		set_broken()
+		visible_message(SPAN_DANGER("[src]'s electronics are destroyed!"), null, null, 5)
+	else if(wiresexposed)
 		for(var/wire = 1; wire < length(get_wire_descriptions()); wire++)
 			cut(wire, M)
 		update_icon()
+		beenhit = XENO_HITS_TO_CUT_WIRES
 		visible_message(SPAN_DANGER("[src]'s wires snap apart in a rain of sparks!"), null, null, 5)
-	else if(beenhit >= pick(3, 4))
+	else if(beenhit >= pick(XENO_HITS_TO_EXPOSE_WIRES_MIN, XENO_HITS_TO_EXPOSE_WIRES_MAX))
 		wiresexposed = TRUE
 		update_icon()
 		visible_message(SPAN_DANGER("[src]'s cover swings open, exposing the wires!"), null, null, 5)

@@ -217,13 +217,7 @@ var/global/players_preassigned = 0
 	if(length(overwritten_roles_for_mode))
 		temp_roles_for_mode = overwritten_roles_for_mode
 
-	// For the precount we count xeno rolling players separately first, pretending that
-	// there are unlimited xeno slots. This is so that a xeno player would never take
-	// a marine slot from a marine only player.
-	players_preassigned += do_assignment_count(temp_roles_for_mode & ROLES_XENO,
-											  unassigned_players)
-	players_preassigned	+= do_assignment_count(temp_roles_for_mode \
-		- (temp_roles_for_mode & ROLES_XENO), unassigned_players)
+	players_preassigned = do_assignment_count(temp_roles_for_mode.Copy(), unassigned_players)
 
 	// Set the xeno starting amount based on marines assigned
 	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]

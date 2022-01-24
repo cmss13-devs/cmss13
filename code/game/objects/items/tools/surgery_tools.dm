@@ -97,6 +97,7 @@
 	edge = 1
 	w_class = SIZE_TINY
 	throwforce = 5.0
+	flags_item = CAN_DIG_SHRAPNEL
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 5
 	matter = list("metal" = 10000, "glass" = 5000)

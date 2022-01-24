@@ -100,6 +100,8 @@
 
 #define FACEHUGGER_LAYER 4.13	// For facehuggers
 
+#define WEATHER_LAYER 4.14	// For WEATHER
+
 #define INTERIOR_WALL_SOUTH_LAYER 5.2
 #define INTERIOR_DOOR_LAYER       5.21
 

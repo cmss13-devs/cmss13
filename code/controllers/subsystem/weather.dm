@@ -191,7 +191,7 @@ SUBSYSTEM_DEF(weather)
 	icon = 'icons/effects/weather.dmi'
 	invisibility = 0
 	mouse_opacity = 0
-	layer = ABOVE_MOB_LAYER
+	layer = WEATHER_LAYER
 
 /obj/effect/weather_vfx_holder/rain
 	icon_state = "strata_storm"

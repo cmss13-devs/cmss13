@@ -49,6 +49,7 @@
 	name = "reinforced hull"
 	desc = "A reinforced metal wall used to seperate rooms and make up the ship."
 	damage_cap = HEALTH_WALL_REINFORCED
+	icon_state = "reinforced"
 
 /turf/closed/wall/almayer/outer
 	name = "outer hull"

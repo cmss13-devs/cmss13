@@ -624,38 +624,7 @@
 
 
 
-/obj/item/storage/sparepouch
-	name="\improper G8-A general utility pouch"
-	desc="A small, lightweight pouch that can be clipped onto Armat Systems M3 Pattern armor to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist."
-	storage_slots = 3
-	w_class = SIZE_LARGE
-	max_w_class = SIZE_MEDIUM
-	flags_equip_slot = SLOT_WAIST
-	icon = 'icons/obj/items/clothing/belts.dmi'
-	icon_state="g8pouch"
-	item_state="g8pouch"
-	has_gamemode_skin = TRUE
 
-/obj/item/storage/sparepouch/equipped(mob/user, slot)
-	switch(slot)
-		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
-			mouse_opacity = 2 //so it's easier to click when properly equipped.
-	..()
-
-/obj/item/storage/sparepouch/dropped(mob/user)
-	mouse_opacity = initial(mouse_opacity)
-	..()
-
-/obj/item/storage/sparepouch/update_icon()
-	overlays.Cut()
-	if(!length(contents))
-		return
-	if(content_watchers)
-		return
-	else if(length(contents) <= storage_slots * 0.5)
-		overlays += "+[icon_state]_half"
-	else
-		overlays += "+[icon_state]_full"
 
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////

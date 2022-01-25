@@ -1410,7 +1410,7 @@
 /area/lv624/lazarus/crashed_ship)
 "KZ" = (
 /obj/structure/surface/table/almayer,
-/obj/item/storage/sparepouch{
+/obj/item/storage/backpack/general_belt{
 	pixel_y = 3
 	},
 /turf/open/floor/plating{
@@ -1563,10 +1563,10 @@
 /area/lv624/lazarus/crashed_ship)
 "Op" = (
 /obj/structure/surface/rack,
-/obj/item/storage/sparepouch{
+/obj/item/storage/backpack/general_belt{
 	pixel_y = 7
 	},
-/obj/item/storage/sparepouch,
+/obj/item/storage/backpack/general_belt,
 /turf/open/floor/almayer{
 	dir = 1;
 	icon_state = "emerald";

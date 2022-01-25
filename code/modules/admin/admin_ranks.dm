@@ -87,6 +87,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 	#endif
 
 /proc/process_rank_file(var/line, var/mentor = FALSE)
+	var/list/MentorRanks = file2list("config/mentor_ranks.txt")
 	if(!length(line))				return
 	if(copytext(line,1,2) == "#")	return
 
@@ -104,7 +105,7 @@ var/list/admin_ranks = list()								//list of all ranks with associated rights
 		rank = ckeyEx(List[2])
 
 	if(mentor)
-		if(!(rank == "Mentor" || rank == "SeniorMentor"))
+		if(!(LAZYISIN(MentorRanks, rank)))
 			log_admin("ADMIN LOADER: WARNING: Mentors.txt attempted to override staff ranks!")
 			log_admin("ADMIN LOADER: Override attempt: (Ckey/[ckey]) (Rank/[rank])")
 			return

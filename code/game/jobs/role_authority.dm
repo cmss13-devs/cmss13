@@ -23,7 +23,7 @@ var/global/datum/authority/branch/role/RoleAuthority
 #define MED_PRIORITY 	2
 #define LOW_PRIORITY	3
 
-var/global/marines_assigned = 0
+var/global/players_preassigned = 0
 
 
 /proc/guest_jobbans(var/job)
@@ -213,28 +213,33 @@ var/global/marines_assigned = 0
 	//===============================================================\\
 	//PART III: Here we're doing the main body of the loop and assigning everyone.
 
-	var/temp_roles_for_mode = roles_for_mode
+	var/list/temp_roles_for_mode = roles_for_mode
 	if(length(overwritten_roles_for_mode))
 		temp_roles_for_mode = overwritten_roles_for_mode
 
-	marines_assigned = do_assignment_count(temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO), unassigned_players)
+	players_preassigned = do_assignment_count(temp_roles_for_mode.Copy(), unassigned_players)
 
 	// Set the xeno starting amount based on marines assigned
-	var/datum/job/XJ = temp_roles_for_mode[JOB_XENOMORPH]
+	var/datum/job/antag/xenos/XJ = temp_roles_for_mode[JOB_XENOMORPH]
 	if(istype(XJ))
-		XJ.set_spawn_positions(marines_assigned)
+		XJ.set_spawn_positions(players_preassigned)
+
+	// Limit the number of SQUAD MARINE roles players can roll initially
+	var/datum/job/SMJ = temp_roles_for_mode[JOB_SQUAD_MARINE]
+	if(istype(SMJ))
+		SMJ.set_spawn_positions(players_preassigned)
 
 	// Set survivor starting amount based on marines assigned
 	var/datum/job/SJ = temp_roles_for_mode[JOB_SURVIVOR]
 	if(istype(SJ))
-		SJ.set_spawn_positions(marines_assigned)
+		SJ.set_spawn_positions(players_preassigned)
 
 	if(prob(SSticker.mode.pred_round_chance))
 		SSticker.mode.flags_round_type |= MODE_PREDATOR
 		// Set predators starting amount based on marines assigned
 		var/datum/job/PJ = temp_roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
-			PJ.set_spawn_positions(marines_assigned)
+			PJ.set_spawn_positions(players_preassigned)
 
 	var/list/roles_left = list()
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
@@ -248,6 +253,10 @@ var/global/marines_assigned = 0
 		var/rest_roles_for_mode = temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO) - (temp_roles_for_mode & ROLES_COMMAND) - (temp_roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
 		roles_left = assign_initial_roles(priority, rest_roles_for_mode)
 
+	var/alternate_option_xenos_before = 0
+	if(istype(XJ))
+		alternate_option_xenos_before = XJ.current_positions
+	var/alternate_option_unassigned_before = length(unassigned_players)
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB)
@@ -270,7 +279,10 @@ var/global/marines_assigned = 0
 	// Now we take spare unfilled xeno slots and make them larva
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(istype(hive) && istype(XJ))
-		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions))
+		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
+		+ (XJ.calculate_extra_spawn_positions(alternate_option_unassigned_before \
+			- length(unassigned_players))) \
+		- (XJ.current_positions - alternate_option_xenos_before))
 
 	/*===============================================================*/
 
@@ -306,7 +318,9 @@ var/global/marines_assigned = 0
 
 			if(assign_role(NP, J))
 				unassigned_players -= NP
-				if(J.current_positions >= J.spawn_positions)
+				// -1 check is not strictly needed here, since standard marines are
+				// supposed to have an actual spawn_positions number at this point
+				if(J.spawn_positions != -1 && J.current_positions >= J.spawn_positions)
 					roles_to_iterate -= job //Remove the position, since we no longer need it.
 					break //Maximum position is reached?
 
@@ -318,6 +332,7 @@ var/global/marines_assigned = 0
 	var/people_assigned = 0
 	for(var/priority in HIGH_PRIORITY to LOW_PRIORITY)
 		for(var/job in roles_to_iterate)
+			var/fake_positions = 0
 			var/datum/job/J = roles_to_iterate[job]
 			if(!istype(J))
 				continue
@@ -327,11 +342,13 @@ var/global/marines_assigned = 0
 				if(!(NP.client.prefs.get_job_priority(J.title) == priority))
 					continue
 
-				J.fake_positions++
+				fake_positions++
 				people_assigned++
 				fake_assigned_players -= NP
 
-				if(J.fake_positions >= J.spawn_positions)
+				// -1 is only for standard marines, make sure we don't stop at 1
+				// marine per priority
+				if(J.spawn_positions != -1 && fake_positions >= J.spawn_positions)
 					roles_to_iterate -= job //Remove the position, since we no longer need it.
 					break //Maximum position is reached?
 

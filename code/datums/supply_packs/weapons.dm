@@ -179,7 +179,7 @@
 /datum/supply_packs/gun/merc
 	contains = list()
 	name = "black market firearms (x1)"
-	cost = RO_PRICE_CHEAP
+	cost = RO_PRICE_NORMAL
 	contraband = 1
 	containertype = /obj/structure/largecrate/guns/merc
 	containername = "\improper black market firearms crate"

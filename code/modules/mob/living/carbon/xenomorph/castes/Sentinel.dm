@@ -70,7 +70,7 @@
 	if (!isXenoOrHuman(C))
 		return original_damage
 
-	if(skillcheck(C, SKILL_ENDURANCE, SKILL_ENDURANCE_SURVIVOR))
+	if(skillcheck(C, SKILL_ENDURANCE, SKILL_ENDURANCE_MAX ))
 		C.visible_message(SPAN_DANGER("[C] withstands the neurotoxin!"))
 		next_slash_buffed = FALSE
 		return original_damage //endurance 5 makes you immune to weak neurotoxin

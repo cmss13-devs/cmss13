@@ -35,7 +35,7 @@
 	if(!(predator_round.flags_round_type & MODE_PREDATOR))
 		var/datum/job/PJ = RoleAuthority.roles_for_mode[JOB_PREDATOR]
 		if(istype(PJ))
-			PJ.set_spawn_positions(marines_assigned)
+			PJ.set_spawn_positions(players_preassigned)
 		predator_round.flags_round_type |= MODE_PREDATOR
 		to_chat(usr, "The Hunt is now enabled.")
 	else

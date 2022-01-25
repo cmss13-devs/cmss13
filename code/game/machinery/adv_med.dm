@@ -312,6 +312,7 @@
 		"dexalin_amount" = H.reagents.get_reagent_amount("dexalin"),
 		"bicaridine_amount" = H.reagents.get_reagent_amount("bicaridine"),
 		"dermaline_amount" = H.reagents.get_reagent_amount("dermaline"),
+		"meralyne_amount" = H.reagents.get_reagent_amount("meralyne"),
 		"blood_amount" = H.blood_volume,
 		"disabilities" = H.sdisabilities,
 		"tg_diseases_list" = H.viruses.Copy(),
@@ -373,6 +374,9 @@
 
 	s_class = occ["dermaline_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
 	dat += "[SET_CLASS("Dermaline:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["dermaline_amount"]] units:", s_class)]<BR>"
+
+	s_class = occ["meralyne_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
+	dat += "[SET_CLASS("meralyne:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["meralyne_amount"]] units:", s_class)]<BR>"
 
 	s_class = occ["bicaridine_amount"] < 30 ? INTERFACE_OKAY : INTERFACE_BAD
 	dat += "[SET_CLASS("Bicaridine:", INTERFACE_HEADER_COLOR)] [SET_CLASS("[occ["bicaridine_amount"]] units", s_class)]<BR>"

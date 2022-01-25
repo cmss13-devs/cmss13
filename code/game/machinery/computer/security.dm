@@ -70,6 +70,7 @@
 
 	if(!allowed(usr))
 		to_chat(user, SPAN_WARNING("Access denied."))
+		return
 
 	if(!is_mainship_level(z))
 		to_chat(user, SPAN_DANGER("<b>Unable to establish a connection</b>: \black You're too far away from the station!"))

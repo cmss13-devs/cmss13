@@ -168,7 +168,7 @@
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/swat(H), WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/combat(H), WEAR_FEET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/combat(H), WEAR_HANDS)
-	H.equip_to_slot_or_del(new /obj/item/storage/sparepouch(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/general_belt(H), WEAR_WAIST)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/dutch(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/storage/backpack/lightpack(H), WEAR_BACK)

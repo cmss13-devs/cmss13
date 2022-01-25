@@ -88,7 +88,7 @@
 			/obj/item/explosive/grenade,
 			/obj/item/device/binoculars,
 			/obj/item/attachable/bayonet,
-			/obj/item/storage/sparepouch,
+			/obj/item/storage/backpack/general_belt,
 			/obj/item/storage/large_holster/machete)
 
 //ROBOCOP

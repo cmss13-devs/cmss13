@@ -1,7 +1,4 @@
 
-
-
-
 //*****************************Shovels********************************/
 
 /obj/item/tool/shovel
@@ -71,7 +68,6 @@
 
 	if(user.action_busy)
 		return
-
 	if(!dirt_amt)
 		var/turf/T = target
 		var/turfdirt = T.get_dirt_type()
@@ -93,11 +89,32 @@
 					else
 						OT.bleed_layer -= transfer_amount
 						OT.update_icon(1,0)
-
 			to_chat(user, SPAN_NOTICE("You dig up some [dirt_type_to_name(turfdirt)]."))
 			dirt_amt = transfer_amount
 			dirt_type = turfdirt
 			update_icon()
+			var/digmore = FALSE
+			while(dirt_amt > 0)
+
+				var/obj/item/stack/sandbags_empty/SB = user.get_inactive_hand()
+				if(istype(SB))
+				else
+					for(var/obj/item/stack/sandbags_empty/sandbags in range(1, user))
+						SB = sandbags
+						break
+				if(!SB)
+					break
+				to_chat(user, SPAN_NOTICE("You begin filling \a [SB.name]."))
+				if(!do_after(user, shovelspeed * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+					to_chat(user, SPAN_NOTICE("You stop filling \a [SB.name]."))
+					return
+				while(dirt_amt > 0 && SB.amount > 0 && get_dist(user, SB) <= 1) // We can't be too sure that they aren't pulling something funny
+					SB.attackby(src, user)
+				if(dirt_amt == 0)
+					digmore = TRUE
+			if(digmore)
+				afterattack(target, user, proximity)
+// auto repeat ends
 	else
 		dump_shovel(target, user)
 

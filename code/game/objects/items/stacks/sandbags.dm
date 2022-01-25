@@ -12,7 +12,7 @@
 	throw_speed = SPEED_VERY_FAST
 	throw_range = 20
 	max_amount = 50
-	attack_verb = list("hit", "bludgeoned", "whacked")
+	attack_verb = list("hit", "slapped", "whacked")
 	stack_id = "empty sandbags"
 
 /obj/item/stack/sandbags_empty/attackby(obj/item/W, mob/user)

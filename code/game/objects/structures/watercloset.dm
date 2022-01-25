@@ -29,6 +29,10 @@
 	update_icon()
 
 /obj/structure/toilet/attack_hand(mob/living/user as mob)
+	if(buckled_mob)
+		manual_unbuckle(user)
+		return
+
 	if(swirlie)
 		user.visible_message(SPAN_DANGER("[user] slams the toilet seat onto [swirlie.name]'s head!"), SPAN_NOTICE("You slam the toilet seat onto [swirlie.name]'s head!"), "You hear reverberating porcelain.")
 		swirlie.apply_damage(8, BRUTE)

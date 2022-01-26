@@ -269,7 +269,7 @@
 	</body></html>
 	"}
 
-	show_browser(usr, dat, "Admin Player Panel", "players", "size=600x480")
+	show_browser(usr, dat, "User Panel", "players", "size=600x480")
 
 //Extended panel with ban related things
 /datum/admins/proc/player_panel_extended()

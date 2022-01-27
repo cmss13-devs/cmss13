@@ -1,0 +1,23 @@
+"a" = (/turf/closed/shuttle/escapepod{icon_state = "wall9"; tag = "icon-wall9"},/area/shuttle/evacuation_pod)
+"h" = (/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{pixel_x = 30},/turf/open/shuttle/escapepod{icon_state = "floor10"; tag = "icon-floor10"},/area/shuttle/evacuation_pod)
+"n" = (/turf/closed/shuttle/escapepod{icon_state = "wall15"; tag = "icon-wall15"},/area/shuttle/evacuation_pod)
+"o" = (/obj/structure/machinery/cryopod/evacuation,/obj/structure/sign/safety/cryo{pixel_x = 8; pixel_y = 28},/turf/open/shuttle/escapepod,/area/shuttle/evacuation_pod)
+"p" = (/turf/closed/shuttle/escapepod{icon_state = "wall4"; tag = "icon-wall4"},/area/shuttle/evacuation_pod)
+"s" = (/turf/closed/shuttle/escapepod{icon_state = "wall10"; tag = "icon-wall10"},/area/shuttle/evacuation_pod)
+"u" = (/turf/closed/shuttle/escapepod{icon_state = "wall1"; tag = "icon-wall1"},/area/shuttle/evacuation_pod)
+"w" = (/turf/open/shuttle/escapepod{icon_state = "floor11"; tag = "icon-floor11"},/area/shuttle/evacuation_pod)
+"G" = (/turf/closed/shuttle/escapepod{icon_state = "wall13"; tag = "icon-wall13"},/area/shuttle/evacuation_pod)
+"H" = (/turf/closed/shuttle/escapepod{icon_state = "wall3"; tag = "icon-wall3"},/area/shuttle/evacuation_pod)
+"N" = (/turf/closed/shuttle/escapepod{icon_state = "wall6"; tag = "icon-wall6"},/area/shuttle/evacuation_pod)
+"O" = (/turf/closed/shuttle/escapepod{icon_state = "wall2"; tag = "icon-wall2"},/area/shuttle/evacuation_pod)
+"S" = (/turf/closed/shuttle/escapepod{icon_state = "wall14"; tag = "icon-wall14"},/area/shuttle/evacuation_pod)
+"T" = (/obj/structure/machinery/cryopod/evacuation,/turf/open/shuttle/escapepod,/area/shuttle/evacuation_pod)
+"X" = (/obj/structure/machinery/door/airlock/evacuation{dir = 2; name = "Evacuation Airlock"},/obj/docking_port/mobile/escape_pod/down,/turf/open/shuttle/escapepod,/area/shuttle/evacuation_pod)
+"Y" = (/turf/open/shuttle/escapepod{icon_state = "floor12"; tag = "icon-floor12"},/area/shuttle/evacuation_pod)
+
+(1,1,1) = {"
+GOuOH
+sToTp
+sYwhp
+anXSN
+"}

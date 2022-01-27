@@ -396,25 +396,11 @@ qdel(src)
 	// This dumps the turfs of marine_src into each DS's docking locs
 	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_dock)
 
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation
-
-/obj/effect/landmark/shuttle_loc/marine_src/evacuation/link_loc()
-	..()
-	var/datum/shuttle/ferry/marine/evacuation_pod/S = shuttle_controller.shuttles["[MAIN_SHIP_NAME] Evac [name]"]
-	if(!S)
-		log_debug("ERROR CODE SO1: unable to find shuttle with the tag of: ["[MAIN_SHIP_NAME] Evac [name]"].")
-		return FALSE
-	S.locs_dock[get_turf(src)] = rotation
-	S.link_support_units(get_turf(src)) //Process links.
-
 /obj/effect/landmark/shuttle_loc/marine_int/dropship/link_loc()
 	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_move)
 
 /obj/effect/landmark/shuttle_loc/marine_trg/landing/link_loc()
 	SHUTTLE_LINK_LOCATIONS("Dropship", S.locs_land)
-
-/obj/effect/landmark/shuttle_loc/marine_trg/evacuation/link_loc()
-	SHUTTLE_LINK_LOCATIONS("Evac", S.locs_land)
 
 /obj/effect/landmark/shuttle_loc/marine_crs/dropship
 

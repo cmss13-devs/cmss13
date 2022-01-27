@@ -156,6 +156,9 @@
 					to_chat(usr, SPAN_WARNING("The ship must be under red alert in order to enact evacuation procedures."))
 					return FALSE
 
+				if(!EvacuationAuthority.dest_master)
+					EvacuationAuthority.prepare()
+
 				if(EvacuationAuthority.flags_scuttle & FLAGS_EVACUATION_DENY)
 					to_chat(usr, SPAN_WARNING("The USCM has placed a lock on deploying the evacuation pods."))
 					return FALSE
@@ -232,6 +235,9 @@
 
 				if(!SSticker.mode)
 					return FALSE //Not a game mode?
+
+				if(!EvacuationAuthority.dest_master)
+					EvacuationAuthority.prepare()
 
 				if(SSticker.mode.force_end_at == 0)
 					to_chat(usr, SPAN_WARNING("ARES has denied your request for operational security reasons."))

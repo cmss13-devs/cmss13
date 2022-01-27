@@ -26,6 +26,7 @@
 			railings += R
 
 /obj/docking_port/mobile/vehicle_elevator/on_ignition()
+	. = ..()
 	for(var/i in gears)
 		var/obj/structure/machinery/gear/G = i
 		G.start_moving()

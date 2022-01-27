@@ -579,18 +579,39 @@
 	indestructible = TRUE
 	unslashable = TRUE
 	unacidable = TRUE
+	density = 1
 
 /obj/structure/prop/invuln/ex_act(severity, direction)
 	return
 
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder
-	density = 0
-	name = "non-functional hatch"
-	desc = "You'll need more than a prybar for this one."
-	icon = 'icons/obj/structures/machinery/bolt_target.dmi'
+/obj/structure/prop/invuln/dense/umbilical_wall
+	name = "umbilical wall"
+	desc = "An inflated membrane. This one is puncture proof. Wow!"
+	icon = 'icons/obj/items/inflatable.dmi'
+	icon_state = "wall"
+	var/has_popped = FALSE
 
-/obj/structure/prop/invuln/lifeboat_hatch_placeholder/terminal
-	icon = 'icons/obj/structures/machinery/bolt_terminal.dmi'
+/obj/structure/prop/invuln/dense/umbilical_wall/ex_act(severity)
+	if(severity >= EXPLOSION_THRESHOLD_LOW && !has_popped)
+		playsound(loc, 'sound/machines/hiss.ogg', 25, 1)
+		flick("wall_popping", src)
+		icon_state = "wall_popped"
+		has_popped = TRUE
+		desc = "\"Puncture proof\" they say? Now it's completely popped."
+
+/obj/structure/prop/invuln/dropship_parts	//move this prop
+	density = TRUE
+
+/obj/structure/prop/invuln/dropship_parts/beforeShuttleMove()
+	. = ..()
+	if(. & MOVE_AREA)
+		. |= MOVE_CONTENTS
+		. &= ~MOVE_TURF
+
+/obj/structure/prop/invuln/dropship_parts/lifeboat
+	name = "Lifeboat"
+	icon = 'icons/turf/lifeboat.dmi'
+
 
 /obj/structure/prop/brazier
 	name = "brazier"
@@ -773,8 +794,8 @@
 	icon_state = "fab"
 	density = 1
 	layer = 3
-	bound_width = 32
-	bound_height = 32
+	bound_width = 64
+	bound_height = 64
 
 /obj/structure/prop/invuln/ice_prefab/trim
 	layer = ABOVE_MOB_LAYER
@@ -787,14 +808,11 @@
 	desc = "Windsocks, Air-Con units, solarpanels, oh my!"
 	density = FALSE
 
-
 /obj/structure/prop/invuln/ice_prefab/standalone
 	density = 1
 	icon = 'icons/obj/structures/props/ice_colony/fabs_64.dmi'
 	icon_state = "orange"//instance icons
 	layer = 3
-	bound_width = 64
-	bound_height = 64
 
 /obj/structure/prop/invuln/ice_prefab/standalone/trim
 	icon_state = "orange_trim"//instance icons

@@ -23,6 +23,17 @@
 #define FLAGS_EVACUATION_DENY 1
 #define FLAGS_SELF_DESTRUCT_DENY 2
 
+#define LIFEBOAT_LOCKED -1
+#define LIFEBOAT_INACTIVE 0
+#define LIFEBOAT_ACTIVE 1
+
+#define ESCAPE_STATE_IDLE			4 //Pod is idle, not ready to launch.
+#define ESCAPE_STATE_BROKEN			5 //Pod failed to launch, is now broken.
+#define ESCAPE_STATE_READY			6 //Pod is armed and ready to go.
+#define ESCAPE_STATE_DELAYED		7 //Pod is being delayed from launching automatically.
+#define ESCAPE_STATE_LAUNCHING		8 //Pod is about to launch.
+#define ESCAPE_STATE_LAUNCHED		9 //Pod has successfully launched.
+
 #define XENO_ROUNDSTART_PROGRESS_AMOUNT 			2
 #define XENO_ROUNDSTART_PROGRESS_TIME_1 			0
 #define XENO_ROUNDSTART_PROGRESS_TIME_2 			15 MINUTES

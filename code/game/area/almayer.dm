@@ -691,58 +691,31 @@
 	icon_state = "selfdestruct"
 	fake_zlevel = 1 // upperdeck
 
+/area/shuttle/lifeboat
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+	requires_power = FALSE
+	flags_atom = AREA_NOTUNNEL
+	lighting_use_dynamic = FALSE
+
+/area/shuttle/evacuation_pod
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "shuttle2"
+	requires_power = FALSE
+	flags_atom = AREA_NOTUNNEL
+	lighting_use_dynamic = FALSE
+
+/area/space/almayer/lifeboat_dock
+	name = "\improper Lifeboat Docking Port"
+	icon = 'icons/turf/area_almayer.dmi'
+	icon_state = "lifeboat"
+	requires_power = FALSE
+	flags_atom = AREA_NOTUNNEL
+	lighting_use_dynamic = FALSE
+
 /area/space/almayer/lifeboat_dock
 	name = "\improper Lifeboat Docking Port"
 	icon = 'icons/turf/area_almayer.dmi'
 	icon_state = "lifeboat"
 	fake_zlevel = 1 // upperdeck
 	flags_atom = AREA_NOTUNNEL
-
-/area/almayer/evacuation
-	icon = 'icons/turf/areas.dmi'
-	icon_state = "shuttle2"
-	requires_power = 0
-	flags_area = AREA_NOTUNNEL
-
-//Placeholder.
-/area/almayer/evacuation/pod1
-/area/almayer/evacuation/pod2
-/area/almayer/evacuation/pod3
-/area/almayer/evacuation/pod4
-/area/almayer/evacuation/pod5
-/area/almayer/evacuation/pod6
-/area/almayer/evacuation/pod7
-/area/almayer/evacuation/pod8
-/area/almayer/evacuation/pod9
-/area/almayer/evacuation/pod10
-/area/almayer/evacuation/pod11
-/area/almayer/evacuation/pod12
-/area/almayer/evacuation/pod13
-/area/almayer/evacuation/pod14
-/area/almayer/evacuation/pod15
-/area/almayer/evacuation/pod16
-/area/almayer/evacuation/pod17
-/area/almayer/evacuation/pod18
-
-/area/almayer/evacuation/stranded
-	test_exemptions = MAP_TEST_EXEMPTION_SPACE
-
-//Placeholder.
-/area/almayer/evacuation/stranded/pod1
-/area/almayer/evacuation/stranded/pod2
-/area/almayer/evacuation/stranded/pod3
-/area/almayer/evacuation/stranded/pod4
-/area/almayer/evacuation/stranded/pod5
-/area/almayer/evacuation/stranded/pod6
-/area/almayer/evacuation/stranded/pod7
-/area/almayer/evacuation/stranded/pod8
-/area/almayer/evacuation/stranded/pod9
-/area/almayer/evacuation/stranded/pod10
-/area/almayer/evacuation/stranded/pod11
-/area/almayer/evacuation/stranded/pod12
-/area/almayer/evacuation/stranded/pod13
-/area/almayer/evacuation/stranded/pod14
-/area/almayer/evacuation/stranded/pod15
-/area/almayer/evacuation/stranded/pod16
-/area/almayer/evacuation/stranded/pod17
-/area/almayer/evacuation/stranded/pod18

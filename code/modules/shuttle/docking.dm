@@ -99,7 +99,7 @@
 		hidden_turfs = new_hidden_turfs
 	/****************************************************************************************************************/
 
-//	check_poddoors()
+	old_dock?.on_departure(src)
 	new_dock.last_dock_time = world.time
 	setDir(new_dock.dir)
 

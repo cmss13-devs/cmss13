@@ -93,20 +93,6 @@
 
 	// END: CORSAT shuttles
 
-	//START: ALMAYER SHUTTLES AND EVAC PODS
-	var/datum/shuttle/ferry/marine/evacuation_pod/P
-	for(var/i = 1 to MAIN_SHIP_ESCAPE_POD_NUMBER)
-		P = new
-		P.shuttle_tag = MAIN_SHIP_NAME + " Evac [i]"
-		switch(i) //TODO: Do this procedurally.
-			if(2 to 3, 5 to 6, 8 to 9, 11 to 12, 14 to 15, 17 to 18) P.info_tag = "Alt Almayer Evac"
-		P.load_datums()
-		shuttles[P.shuttle_tag] = P
-		process_shuttles += P
-
-
-
-
 	// Distress Shuttles - ERT
 	var/datum/shuttle/ferry/ert/ES
 	ES = new ()

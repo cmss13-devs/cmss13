@@ -10,6 +10,8 @@
 	lighting_use_dynamic = FALSE
 
 
+
+
 ///area/shuttle/Initialize()
 //	if(!canSmoothWithAreas)
 //		canSmoothWithAreas = type

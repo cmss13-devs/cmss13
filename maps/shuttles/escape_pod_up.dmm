@@ -1,0 +1,22 @@
+"a" = (/turf/closed/shuttle/escapepod{icon_state = "wall9"; tag = "icon-wall9"},/area/shuttle/evacuation_pod)
+"h" = (/turf/closed/shuttle/escapepod{icon_state = "wall6"; tag = "icon-wall6"},/area/shuttle/evacuation_pod)
+"n" = (/turf/closed/shuttle/escapepod,/area/shuttle/evacuation_pod)
+"o" = (/turf/closed/shuttle/escapepod{icon_state = "wall1"; tag = "icon-wall1"},/area/shuttle/evacuation_pod)
+"w" = (/obj/structure/machinery/cryopod/evacuation,/turf/open/shuttle/escapepod,/area/shuttle/evacuation_pod)
+"y" = (/turf/closed/shuttle/escapepod{icon_state = "wall11"; tag = "icon-wall11"},/area/shuttle/evacuation_pod)
+"B" = (/turf/closed/shuttle/escapepod{icon_state = "wall2"; tag = "icon-wall2"},/area/shuttle/evacuation_pod)
+"C" = (/turf/closed/shuttle/escapepod{icon_state = "wall4"; tag = "icon-wall4"},/area/shuttle/evacuation_pod)
+"J" = (/turf/open/shuttle/escapepod{icon_state = "floor8"; tag = "icon-floor8"},/area/shuttle/evacuation_pod)
+"K" = (/turf/open/shuttle/escapepod{icon_state = "floor9"; tag = "icon-floor9"},/area/shuttle/evacuation_pod)
+"L" = (/turf/closed/shuttle/escapepod{icon_state = "wall3"; tag = "icon-wall3"},/area/shuttle/evacuation_pod)
+"M" = (/turf/closed/shuttle/escapepod{icon_state = "wall7"; tag = "icon-wall7"},/area/shuttle/evacuation_pod)
+"N" = (/obj/structure/machinery/cryopod/evacuation,/obj/structure/sign/safety/cryo{pixel_x = 8; pixel_y = -35},/turf/open/shuttle/escapepod,/area/shuttle/evacuation_pod)
+"W" = (/obj/structure/machinery/embedded_controller/radio/simple_docking_controller/escape_pod{pixel_y = 30},/turf/open/shuttle/escapepod{icon_state = "floor7"; tag = "icon-floor7"},/area/shuttle/evacuation_pod)
+"Y" = (/obj/structure/machinery/door/airlock/evacuation{dir = 2; name = "Evacuation Airlock"},/obj/docking_port/mobile/escape_pod/up,/turf/open/shuttle/escapepod,/area/shuttle/evacuation_pod)
+
+(1,1,1) = {"
+noYBL
+yWJKC
+ywNwC
+aMMMh
+"}

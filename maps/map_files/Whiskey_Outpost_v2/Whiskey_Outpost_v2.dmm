@@ -5565,10 +5565,7 @@
 /turf/open/floor/plating/plating_catwalk/prison,
 /area/whiskey_outpost/inside/engineering)
 "sh" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_guns/wo{
-	vend_x_offset = -1;
-	vend_y_offset = 1
-	},
+/obj/structure/machinery/cm_vending/sorted/cargo_guns/wo,
 /turf/open/floor/prison{
 	icon_state = "floor_plate";
 	tag = "icon-floor_plate"
@@ -5685,10 +5682,7 @@
 	},
 /area/whiskey_outpost/inside/living)
 "sJ" = (
-/obj/structure/machinery/cm_vending/sorted/cargo_ammo/wo{
-	vend_x_offset = -1;
-	vend_y_offset = 2
-	},
+/obj/structure/machinery/cm_vending/sorted/cargo_ammo/wo,
 /turf/open/floor/prison,
 /area/whiskey_outpost/inside/supply)
 "sK" = (
@@ -10728,9 +10722,7 @@
 /turf/closed/wall/r_wall,
 /area/whiskey_outpost/inside/bunker/bunker/front)
 "Kc" = (
-/obj/structure/machinery/cm_vending/sorted/attachments{
-	vend_x_offset = -1
-	},
+/obj/structure/machinery/cm_vending/sorted/attachments,
 /turf/open/floor/plating,
 /area/whiskey_outpost/inside/supply)
 "Kd" = (

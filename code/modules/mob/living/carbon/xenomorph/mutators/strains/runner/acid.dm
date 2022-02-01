@@ -1,6 +1,6 @@
 /datum/xeno_mutator/acider
 	name = "STRAIN: Runner - Acider"
-	description = "You exchange all your abilities for a new organ that is filled with volatile and explosive acid. You can force your body to explode, covering everything with acid, but that process takes 20 seconds and is noticable to people around you."
+	description = "You exchange all your abilities for a new organ that is filled with volatile and explosive acid. Your slashes apply acid to living lifeforms that slowly burns them, and you gain powerful acid to melt items and defenses. You can force your body to explode, covering everything with acid, but that process takes 20 seconds and is noticable to people around you."
 	flavor_description = "Burn their walls, maim their face!"
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE

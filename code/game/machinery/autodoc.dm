@@ -524,7 +524,7 @@
 		target.incision_depths[L.name] = SURGERY_DEPTH_SHALLOW
 
 /obj/structure/machinery/autodoc/verb/eject()
-	set name = "Eject Med-Pod"
+	set name = "Eject AutoDoc"
 	set category = "Object"
 	set src in oview(1)
 	if(usr.stat == DEAD)
@@ -610,6 +610,15 @@
 		connected.stop_processing()
 		connected.process() // one last update
 
+
+//clickdrag code - "resist to get out" code is in living_verbs.dm
+/obj/structure/machinery/autodoc/MouseDrop_T(mob/target, mob/user)
+	. = ..()
+	var/mob/living/H = user
+	if(!istype(H) || target != user) //cant make others get in. grab-click for this
+		return
+
+	move_inside(target) //Using this so not everyone who is untrained can enter it.
 
 /obj/structure/machinery/autodoc/attackby(obj/item/W, mob/living/user)
 	if(!ishuman(user))
@@ -716,7 +725,7 @@
 		return
 	var/dat = ""
 	if(!connected || (connected.inoperable()))
-		dat += "This console is not connected to a Med-Pod or the Med-Pod is non-functional."
+		dat += "This console is not connected to a Auto-Doc or the Auto-Doc is non-functional."
 		to_chat(user, "This console seems to be powered down.")
 	else
 		if(!skillcheck(user, SKILL_SURGERY, SKILL_SURGERY_NOVICE) && !connected.event)
@@ -732,8 +741,8 @@
 				if(2)	t1 = "<font color='red'><b>dead</b></font>"
 			var/operating
 			switch(connected.surgery)
-				if(0) operating = "Med-Pod: STANDING BY"
-				if(1) operating = "Med-Pod: IN SURGERY: DO NOT MANUALLY EJECT"
+				if(0) operating = "Auto-Doc: STANDING BY"
+				if(1) operating = "Auto-Doc: IN SURGERY: DO NOT MANUALLY EJECT"
 			var/damageOxy = occupant.getOxyLoss() > 50 ? "<b>[occupant.getOxyLoss()]</b>" : occupant.getOxyLoss()
 			var/damageTox = occupant.getToxLoss() > 50 ? "<b>[occupant.getToxLoss()]</b>" : occupant.getToxLoss()
 			var/damageFire = occupant.getFireLoss() > 50 ? "<b>[occupant.getFireLoss()]</b>" : occupant.getFireLoss()
@@ -843,9 +852,9 @@
 				if(isnull(surgeryqueue["missing"]))
 					dat += "<a href='?src=\ref[src];missing=1'>Limb Replacement Surgery</a><hr>"
 		else
-			dat += "The Med-Pod is empty."
+			dat += "The Auto-Doc is empty."
 	dat += text("<a href='?src=\ref[];mach_close=sleeper'>Close</a>", user)
-	show_browser(user, dat, "Autodoc Medical System", "sleeper", "size=300x400")
+	show_browser(user, dat, "Auto-Doc Medical System", "sleeper", "size=300x400")
 	onclose(user, "sleeper")
 
 /obj/structure/machinery/autodoc_console/Topic(href, href_list)

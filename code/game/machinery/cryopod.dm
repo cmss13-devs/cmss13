@@ -434,19 +434,25 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		to_chat(usr, SPAN_WARNING("You can't drag people out of hypersleep!"))
 		return
 
-	icon_state = "body_scanner_0"
+	if (alert(usr, "Would you like eject out of the hypersleep chamber?", "Confirm", "Yes", "No") == "Yes")
+		visible_message(SPAN_WARNING ("The hypersleep chamber's casket starts moving!"))
+		to_chat(usr, SPAN_NOTICE ("You get out of the hypersleep chamber."))
+		go_out() //Not adding a delay for this because for some reason it refuses to work. Not a big deal imo
+		add_fingerprint(usr)
 
-	//Eject any items that aren't meant to be in the pod.
-	var/list/items = src.contents
-	if(occupant) items -= occupant
-	if(announce) items -= announce
+		var/mob/living/M = usr
+		var/area/location = get_area(src) //Logs the exit
+		message_staff("[key_name_admin(M)], [M.job], has left [src] at [location].")
 
-	for(var/obj/item/W in items)
-		W.forceMove(get_turf(src))
+		var/list/items = src.contents //-Removes items from the chamber
+		if(occupant) items -= occupant
+		if(announce) items -= announce
 
-	go_out()
-	add_fingerprint(usr)
+		for(var/obj/item/W in items)
+			W.forceMove(get_turf(src))
 
+	else
+		return
 
 /obj/structure/machinery/cryopod/verb/move_inside()
 	set name = "Enter Pod"
@@ -515,7 +521,7 @@ GLOBAL_LIST_INIT(frozen_items, list(SQUAD_NAME_1 = list(), SQUAD_NAME_2 = list()
 		..(sourcemob, message, verb, language, italics)
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
-//clickdrag code
+//clickdrag code - "resist to get out" code is in living_verbs.dm
 /obj/structure/machinery/cryopod/MouseDrop_T(mob/target, mob/user)
 	. = ..()
 	var/mob/living/H = user

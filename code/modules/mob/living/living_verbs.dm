@@ -56,6 +56,41 @@
 		if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 second unzip from inside
 			BB.open()
 
+		///The medical machines below are listed seperately to allow easier changes to each process
+
+	//getting out of hypersleep
+	if(loc && (istype(loc, /obj/structure/machinery/cryopod)))
+		var/obj/structure/machinery/cryopod/BB = loc
+		BB.eject()
+
+	//getting out of bodyscanner
+	if(loc && (istype(loc, /obj/structure/machinery/bodyscanner)))
+		var/obj/structure/machinery/bodyscanner/BB = loc
+		BB.go_out() //This doesn't need flashiness as you can just WASD to walk out anyways
+
+	//getting out of autodoc, resist does the emergency eject
+	//regular ejection is done with verbs and doesnt work for half the time
+	if(loc && (istype(loc, /obj/structure/machinery/autodoc)))
+		var/obj/structure/machinery/autodoc/BB = loc
+		if (alert(usr, "Would you like to emergency eject out of [BB]? A surgery may be in progress.", "Confirm", "Yes", "No") == "Yes")
+			visible_message(SPAN_WARNING ("[BB]'s emergency lights blare as the casket starts moving!"))
+			to_chat(usr, SPAN_NOTICE ("You are now leaving [BB]"))
+			playsound(src, 'sound/machines/beepalert.ogg', 30)
+			if(do_after(src, 5 SECONDS, INTERRUPT_ALL, BUSY_ICON_HOSTILE, BB))//5 sec delay
+				BB.go_out() //Eject doesnt work you have to force it
+		else
+			return
+
+	//getting out of cryocells
+	if(loc && (istype(loc, /obj/structure/machinery/cryo_cell)))
+		var/obj/structure/machinery/cryo_cell/BB = loc
+		BB.move_eject() //Ejection process listed under the machine, no need to list again
+
+	//getting out of sleeper
+	if(loc && (istype(loc, /obj/structure/machinery/sleeper)))
+		var/obj/structure/machinery/sleeper/BB = loc
+		BB.go_out() //This doesn't need flashiness as the verb is instant as well
+
 	//Breaking out of a locker?
 	else if(loc && (istype(loc, /obj/structure/closet)))
 		var/breakout_time = 2 //2 minutes by default

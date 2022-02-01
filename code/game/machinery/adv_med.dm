@@ -2,7 +2,7 @@
 
 
 /obj/structure/machinery/bodyscanner
-	name = "Body Scanner"
+	name = "body scanner"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scanner_0"
 	density = 1
@@ -99,6 +99,15 @@
 /obj/structure/machinery/bodyscanner/attack_hand(mob/living/user)
 	go_out()
 
+//clickdrag code - "resist to get out" code is in living_verbs.dm
+/obj/structure/machinery/bodyscanner/MouseDrop_T(mob/target, mob/user)
+	. = ..()
+	var/mob/living/H = user
+	if(!istype(H) || target != user) //cant make others get in. grab-click for this
+		return
+
+	go_in_bodyscanner(target)
+
 /obj/structure/machinery/bodyscanner/attackby(obj/item/I, mob/living/user)
 	var/mob/M
 	if (istype(I, /obj/item/grab))
@@ -159,7 +168,7 @@
 #endif // ifdef OBJECTS_PROXY_SPEECH
 
 /obj/structure/machinery/body_scanconsole
-	name = "Body Scanner Console"
+	name = "body scanner console"
 	icon = 'icons/obj/structures/machinery/cryogenics.dmi'
 	icon_state = "body_scannerconsole"
 	density = 0

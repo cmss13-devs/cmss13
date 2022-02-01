@@ -37,7 +37,7 @@ datum/chemical_reaction/adrenaline
 	result_amount = 3
 
 /datum/chemical_reaction/meralyne
-	name = "meralyne"
+	name = "Meralyne"
 	id = "meralyne"
 	result = "meralyne"
 	required_reagents = list("carbon" = 1, "water" = 1, "bicaridine" = 1)

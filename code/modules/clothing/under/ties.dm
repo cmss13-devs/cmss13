@@ -633,6 +633,32 @@
 		/obj/item/weapon/melee/throwing_knife,
 	)
 
+/obj/item/storage/internal/accessory/knifeharness/Initialize(mapload, obj/item/MI)
+	. = ..()
+	new /obj/item/weapon/melee/unathiknife(src)
+	new /obj/item/weapon/melee/unathiknife(src)
+
+/obj/item/clothing/accessory/storage/knifeharness
+	name = "decorated harness"
+	desc = "A heavily decorated harness of sinew and leather with two knife-loops."
+	icon_state = "unathiharness2"
+	hold = /obj/item/storage/internal/accessory/knifeharness
+
+/obj/item/clothing/accessory/storage/droppouch
+	name = "drop pouch"
+	desc = "A convenient pouch to carry loose items around."
+	icon_state = "drop_pouch"
+
+	hold = /obj/item/storage/internal/accessory/drop_pouch
+
+/obj/item/storage/internal/accessory/drop_pouch
+	storage_slots = null
+	max_storage_space = 5	//weight system like backpacks, hold enough for 1 medium and 1 small item
+	cant_hold = list(	//Prevent inventory bloat
+		/obj/item/storage/firstaid,
+		/obj/item/storage/bible,
+		)
+	storage_flags = NONE	//no verb, no quick draw, no tile gathering
 /*
 	Holobadges are worn on the belt or neck, and can be used to show that the holder is an authorized
 	Security agent - the user details can be imprinted on the badge with a Security-access ID card,

@@ -157,6 +157,19 @@
 	containername = "Webbing Crate"
 	group = "Clothing"
 
+/datum/supply_packs/drop_pouches
+	name = "Drop Pouch Crate (x4)"
+	contains = list(
+		/obj/item/clothing/accessory/storage/droppouch,
+		/obj/item/clothing/accessory/storage/droppouch,
+		/obj/item/clothing/accessory/storage/droppouch,
+		/obj/item/clothing/accessory/storage/droppouch,
+	)
+	cost = RO_PRICE_VERY_CHEAP
+	containertype = /obj/structure/closet/crate/green
+	containername = "Drop Pouch Crate"
+	group = "Clothing"
+
 /datum/supply_packs/webbing_surgical
 	name = "Surgical Webbing Crate (x3)"
 	contains = list(

@@ -243,6 +243,8 @@
 		list("Brown Webbing Vest", round(scale * 5), /obj/item/clothing/accessory/storage/black_vest/brown_vest, VENDOR_ITEM_REGULAR),
 		list("Shoulder Holster", round(scale * 5), /obj/item/clothing/accessory/holster, VENDOR_ITEM_REGULAR),
 		list("Webbing", round(scale * 5), /obj/item/clothing/accessory/storage/webbing, VENDOR_ITEM_REGULAR),
+		list("Knife Webbing", round(scale * 3), /obj/item/clothing/accessory/storage/knifeharness, VENDOR_ITEM_REGULAR),
+		list("Drop Pouch", round(scale * 5), /obj/item/clothing/accessory/storage/droppouch, VENDOR_ITEM_REGULAR),
 
 		list("POUCHES", -1, null, null),
 		list("Construction Pouch", round(scale * 2), /obj/item/storage/pouch/construction, VENDOR_ITEM_REGULAR),

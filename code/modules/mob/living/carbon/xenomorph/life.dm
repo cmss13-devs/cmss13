@@ -51,7 +51,7 @@
 			src << sound('sound/effects/xeno_evolveready.ogg')
 
 // Always deal 80% of damage and deal the other 20% depending on how many fire stacks mob has
-#define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*((duration-fire_stacks)/duration*0.2 + 0.8)
+#define PASSIVE_BURN_DAM_CALC(intensity, duration, fire_stacks) intensity*(fire_stacks/duration*0.2 + 0.8)
 
 /mob/living/carbon/Xenomorph/proc/handle_xeno_fire()
 	if(!on_fire)

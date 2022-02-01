@@ -1,6 +1,6 @@
 /datum/xeno_mutator/boxer
 	name = "STRAIN: Warrior - Boxer"
-	description = "In exchange for your ability to fling and use agility mode, you gain KO meter and ability to resist stuns. Your punches no longer break bones but remove cooldown from Job. Jab lets you close in and confuse your opponents while resetting Punch cooldown. Your slashes and abilities build up KO meter that later let's you deal damage, knockback, heal, and restore your stun resistance depending on how much KO meter you gained."
+	description = "In exchange for your ability to fling and shield yourself with slashes, you gain KO meter and the ability to resist stuns. Your punches will reset the cooldown of your Jab. Jab lets you close in and confuse your opponents while resetting Punch cooldown. Your slashes and abilities build up KO meter that later lets you deal damage, knockback, heal, and restore your stun resistance depending on how much KO meter you gained with a titanic Uppercut strike."
 	cost = MUTATOR_COST_EXPENSIVE
 	individual_only = TRUE
 	caste_whitelist = list(XENO_CASTE_WARRIOR)

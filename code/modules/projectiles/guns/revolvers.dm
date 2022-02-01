@@ -329,6 +329,9 @@
 	else
 		return ..()
 
+/obj/item/weapon/gun/revolver/m44/mp //No differences (yet) beside spawning with marksman ammo loaded
+	current_mag = /obj/item/ammo_magazine/internal/revolver/m44/marksman
+
 /obj/item/weapon/gun/revolver/m44/custom //accuracy and damage bonus
 	name = "\improper M44 custom combat revolver"
 	desc = "A bulky combat revolver. The handle has been polished to a pearly perfection, and the body is silver plated. Fires .44 Magnum rounds."

@@ -89,12 +89,12 @@
 	..(loc,expected_type, override_icon_state, new_name, new_protection)
 
 /obj/item/clothing/under/marine/chef
-	name = "\improper USCM Mess Sergeant uniform"
-	desc = "Standard-issue Mess Sergeant uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "\improper USCM Mess Technician uniform"
+	desc = "Standard-issue Mess Technician uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "chef_uniform"
 	worn_state = "chef_uniform"
 	flags_jumpsuit = FALSE
-	specialty = "USCM mess sergeant"
+	specialty = "USCM mess technician"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/mp

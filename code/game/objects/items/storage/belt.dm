@@ -868,6 +868,12 @@
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 	new_gun.on_enter_storage(src)
 
+/obj/item/storage/belt/gun/m44/mp/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44/mp(src)
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/marksman(src)
+	new_gun.on_enter_storage(src)
+
 /obj/item/storage/belt/gun/mateba
 	name = "\improper M276 pattern Mateba holster rig"
 	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is for the powerful Mateba magnum revolver, along with five small pouches for speedloaders. This one is aging poorly, and seems to be surplus equipment. It's stamped '3rd 'Dust Raiders' Battalion'."

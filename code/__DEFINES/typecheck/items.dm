@@ -8,6 +8,8 @@
 #define ispowerclamp(O) (istype(O, /obj/item/powerloader_clamp))
 #define isstorage(O) 	(istype(O, /obj/item/storage))
 #define isclothing(O)	(istype(O, /obj/item/clothing))
+//Make sure it defenses!
+#define isdefenses(O) (istype(O, /obj/structure/machinery/defenses))
 
 //Quick type checks for weapons
 var/global/list/weapons = list(

@@ -17,6 +17,7 @@
 	var/immobile = FALSE //Used for prebuilt ones.
 	var/obj/item/ammo_magazine/ammo = new /obj/item/ammo_magazine/sentry
 	var/sentry_type = "sentry" //Used for the icon
+	display_additional_stats = TRUE
 
 	var/omni_directional = FALSE
 	var/sentry_range = SENTRY_RANGE
@@ -223,7 +224,7 @@
 		addtimer(CALLBACK(src, .proc/get_target), fire_delay)
 
 /obj/structure/machinery/defenses/sentry/proc/actual_fire(var/atom/A)
-	var/obj/item/projectile/P = new(create_cause_data(initial(name), owner_mob))
+	var/obj/item/projectile/P = new(src, create_cause_data(initial(name), owner_mob, src))
 	P.generate_bullet(new ammo.default_ammo)
 	P.damage *= damage_mult
 	P.accuracy *= accuracy_mult
@@ -231,6 +232,7 @@
 	P.fire_at(A, src, owner_mob, P.ammo.max_range, P.ammo.shell_speed, null, FALSE)
 	muzzle_flash(Get_Angle(get_turf(src), A))
 	ammo.current_rounds--
+	track_shot()
 	if(ammo.current_rounds == 0)
 		handle_empty()
 

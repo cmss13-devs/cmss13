@@ -98,6 +98,10 @@
 /mob/proc/handle_death_cause(var/datum/cause_data/cause_data, var/turf/death_loc)
 	track_mob_death(cause_data, death_loc)
 	if(cause_data)
+		var/obj/O = cause_data.resolve_cause()
+		if(isdefenses(O))
+			var/obj/structure/machinery/defenses/TR = O
+			TR.earn_kill()
 		var/mob/cause_mob = cause_data.resolve_mob()
 		if(cause_mob)
 			if(isYautja(cause_mob) && cause_mob.client && cause_mob != src)

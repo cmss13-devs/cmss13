@@ -14,14 +14,28 @@
 	var/defense_type = /obj/structure/machinery/defenses
 	var/deployment_time = 3 SECONDS
 
-	var/obj_health = 200
-	var/obj_health_max = 200
+	var/dropped = 1
+	var/obj/structure/machinery/defenses/TR
 
 /obj/item/defenses/handheld/examine(mob/user)
 	. = ..()
 
 	to_chat(user, SPAN_INFO("It is ready for deployment."))
-	to_chat(user, SPAN_INFO("It has [SPAN_HELPFUL("[obj_health]/[obj_health_max]")] health."))
+	to_chat(user, SPAN_INFO("It has [SPAN_HELPFUL("[TR.health]/[TR.health_max]")] health."))
+
+/obj/item/defenses/handheld/Initialize()
+	. = ..()
+	connect()
+
+/obj/item/defenses/handheld/proc/connect()
+	sleep(0.5 SECONDS)
+	if(dropped && !TR)
+		TR = new defense_type
+		if(!TR.HD)
+			TR.HD = src
+			return TRUE
+		return TRUE
+	return FALSE
 
 /obj/item/defenses/handheld/attack_self(var/mob/living/carbon/human/user)
 	..()
@@ -59,14 +73,18 @@
 	if(!do_after(user, deployment_time * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD, src))
 		return
 
-	var/factions = user.get_id_faction_group()
-	var/obj/structure/machinery/defenses/D = new defense_type(T, factions)
-	D.handheld_type = type
-	D.setDir(direction)
 	playsound(T, 'sound/mecha/mechmove01.ogg', 30, 1)
-	D.name = replacetext(src.name, "handheld ", "") //fixed
-	D.health = obj_health
-	qdel(src)
+
+	if(!TR.faction_group) //Littly trolling for stealing marines turrets, bad boys!
+		for(var/i in user.faction_group)
+			LAZYADD(TR.faction_group, i)
+	TR.forceMove(get_turf(T))
+	TR.placed = 1
+	TR.update_icon()
+	TR.setDir(direction)
+	TR.owner_mob = user
+	dropped = 0
+	user.drop_inv_item_to_loc(src, TR)
 
 /obj/item/defenses/handheld/proc/get_upgrade_list()
 	return null
@@ -90,24 +108,18 @@
 /obj/item/defenses/handheld/sentry/dmr
 	name = "handheld UA 725-D sniper sentry"
 	icon_state = "DMR uac_sentry_handheld"
-	obj_health = 150
-	obj_health_max = 150
 	deployment_time = 2 SECONDS
 	defense_type = /obj/structure/machinery/defenses/sentry/dmr
 
 /obj/item/defenses/handheld/sentry/shotgun
 	name = "handheld UA 12-G shotgun sentry"
 	icon_state = "Shotgun uac_sentry_handheld"
-	obj_health = 250
-	obj_health_max = 250
 	defense_type = /obj/structure/machinery/defenses/sentry/shotgun
 
 /obj/item/defenses/handheld/sentry/mini
 	name = "handheld UA 512-M mini sentry"
 	icon_state = "Mini uac_sentry_handheld"
 	defense_type = /obj/structure/machinery/defenses/sentry/mini
-	obj_health = 150
-	obj_health_max = 150
 	deployment_time = 0.75 SECONDS
 
 
@@ -154,13 +166,10 @@
 	defense_type = /obj/structure/machinery/defenses/sentry/flamer/mini
 	deployment_time = 0.75 SECONDS
 	ammo_convert = /obj/item/ammo_magazine/sentry_flamer/mini
-	obj_health = 150
-	obj_health_max = 150
+
 /obj/item/defenses/handheld/sentry/flamer/plasma
 	name = "handheld UA 60-FP plasma sentry"
 	icon_state = "Plasma uac_flamer_handheld"
-	obj_health = 150
-	obj_health_max = 150
 	deployment_time = 2 SECONDS
 	defense_type = /obj/structure/machinery/defenses/sentry/flamer/plasma
 	ammo_convert = /obj/item/ammo_magazine/sentry_flamer/glob
@@ -172,13 +181,12 @@
 	icon = 'icons/obj/structures/machinery/defenses/tesla.dmi'
 	icon_state = "Normal tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil
-	obj_health = 150
-	obj_health_max = 150
 
 /obj/item/defenses/handheld/tesla_coil/stun
 	name = "handheld 21S overclocked tesla coil"
 	icon_state = "Stun tesla_coil_handheld"
 	defense_type = /obj/structure/machinery/defenses/tesla_coil/stun
+
 /obj/item/defenses/handheld/tesla_coil/micro
 	name = "handheld 25S micro tesla coil"
 	icon_state = "Micro tesla_coil_handheld"
@@ -207,8 +215,6 @@
 	name = "handheld camouflaged R-1NG bell tower"
 	icon_state = "Cloaker bell_tower_handheld"
 	defense_type = /obj/structure/machinery/defenses/bell_tower/cloaker
-	obj_health = 250
-	obj_health_max = 250
 
 /obj/item/defenses/handheld/bell_tower/get_upgrade_list()
 	. = list(
@@ -235,16 +241,12 @@
 /obj/item/defenses/handheld/planted_flag/warbanner
 	name = "handheld JIMA planted warbanner"
 	icon_state = "Warbanner planted_flag_handheld"
-	obj_health = 250
-	obj_health_max = 250
 	deployment_time = 0.5 SECONDS
 	defense_type = /obj/structure/machinery/defenses/planted_flag/warbanner
 
 /obj/item/defenses/handheld/planted_flag/range
 	name = "handheld extended JIMA planted flag"
 	icon_state = "Range planted_flag_handheld"
-	obj_health = 150
-	obj_health_max = 150
 	deployment_time = 2 SECONDS
 	defense_type = /obj/structure/machinery/defenses/planted_flag/range
 

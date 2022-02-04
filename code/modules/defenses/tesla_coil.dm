@@ -15,6 +15,7 @@
 	disassemble_time = 10
 	health = 150
 	health_max = 150
+	display_additional_stats = TRUE
 
 
 /obj/structure/machinery/defenses/tesla_coil/Initialize()
@@ -99,6 +100,7 @@
 		qdel(S)
 
 		Beam(A, "electric", 'icons/effects/beam.dmi', 5, 5)
+		track_shot()
 
 	targets = null
 

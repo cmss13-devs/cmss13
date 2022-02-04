@@ -1,4 +1,5 @@
 [
+	{ "type": "map_sprinkle", "path": "map_files/USS_Almayer/sprinkles/" },
 	{
 		"type": "include", "name": "Standalone variations",
 		"file": "maps/Sorokyne_Strate/mapgen_variations.json"

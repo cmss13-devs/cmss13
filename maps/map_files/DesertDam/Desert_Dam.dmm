@@ -67705,6 +67705,20 @@
 	tag = "icon-whiteredcorner (NORTH)"
 	},
 /area/desert_dam/interior/dam_interior/lobby)
+"vir" = (
+/obj/effect/decal/warning_stripes{
+	icon_state = "S";
+	tag = "icon-S"
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "shipgone"
+	},
+/turf/open/floor/prison{
+	dir = 10;
+	icon_state = "floor_plate";
+	tag = "icon-floor_plate (SOUTHWEST)"
+	},
+/area/desert_dam/interior/dam_interior/hanger)
 "viV" = (
 /obj/structure/fence,
 /turf/open/desert/dirt,
@@ -68013,6 +68027,12 @@
 	tag = "icon-whiteyellow (WEST)"
 	},
 /area/desert_dam/interior/dam_interior/garage)
+"wrl" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "cavein"
+	},
+/turf/closed/wall/rock/orange,
+/area/desert_dam/exterior/rock)
 "wsD" = (
 /obj/structure/bed/chair{
 	dir = 1
@@ -68499,6 +68519,15 @@
 	icon_state = "darkyellowcorners2"
 	},
 /area/desert_dam/building/mining/workshop)
+"xZE" = (
+/obj/structure/desertdam/decals/road_edge{
+	icon_state = "road_edge_decal3"
+	},
+/obj/effect/landmark/nightmare{
+	insert_tag = "minievac"
+	},
+/turf/open/asphalt,
+/area/desert_dam/exterior/valley/valley_wilderness)
 "yaA" = (
 /obj/structure/machinery/colony_floodlight,
 /turf/open/desert/rock/deep/transition{
@@ -73560,7 +73589,7 @@ bhP
 bhP
 bhP
 bhP
-bhA
+vir
 bst
 bth
 agP
@@ -88820,7 +88849,7 @@ bgm
 bha
 cBT
 acw
-dTs
+wrl
 dTs
 adw
 adw
@@ -97631,7 +97660,7 @@ aVZ
 aCp
 aWa
 aWB
-aZk
+xZE
 aYf
 aOh
 aWz

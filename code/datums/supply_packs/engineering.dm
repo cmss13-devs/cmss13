@@ -75,7 +75,7 @@
 	group = "Engineering"
 
 /datum/supply_packs/binocs
-	name = "Mixed Binoculars Crate (x2 per, x4 total)"
+	name = "Mixed Binoculars Crate (x2 per, x6 total)"
 	cost = RO_PRICE_VERY_CHEAP
 	containertype = /obj/structure/closet/crate/green
 	containername = "Mixed Binoculars Crate"
@@ -83,6 +83,8 @@
 	contains = list(
 		/obj/item/device/binoculars/range/designator,
 		/obj/item/device/binoculars/range/designator,
+		/obj/item/device/binoculars/range,
+		/obj/item/device/binoculars/range,
 		/obj/item/device/binoculars,
 		/obj/item/device/binoculars
 	)

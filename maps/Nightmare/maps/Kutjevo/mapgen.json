@@ -1,4 +1,5 @@
 [
+	{ "type": "map_sprinkle", "path": "map_files/Kutjevo/sprinkles/" },
 	{
 		"type": "include", "name": "Standalone variations",
 		"file": "maps/Kutjevo/mapgen_variations.json"

@@ -1,4 +1,5 @@
 [
+	{ "type": "map_sprinkle", "path": "map_files/FOP_v2_Cellblocks/sprinkles/" },
 	{
 		"type": "include", "name": "Standalone variations",
 		"file": "maps/FOP_v2_Cellblocks/mapgen_variations.json"

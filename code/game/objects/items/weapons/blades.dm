@@ -32,6 +32,13 @@
 	icon_state = "machete"
 	w_class = SIZE_LARGE
 
+/obj/item/weapon/melee/claymore/mercsword/machete/arnold
+	name = "\improper M2100 \"Ngájhe\" machete"
+	desc = "An older issue USCM machete, never left testing. Designed in the Central African Republic. The notching made it hard to clean, and as such the USCM refused to adopt it - despite the superior bludgeoning power offered. Difficult to carry with the usual kit."
+	icon_state = "arnold-machete"
+	w_class = SIZE_LARGE
+	force = MELEE_FORCE_TIER_11
+
 /obj/item/weapon/melee/claymore/hefa
 	name = "HEFA sword"
 	icon_state = "hefasword"

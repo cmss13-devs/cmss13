@@ -79,6 +79,16 @@
 /obj/item/storage/large_holster/machete/full/fill_preset_inventory()
 	new /obj/item/weapon/melee/claymore/mercsword/machete(src)
 
+/obj/item/storage/large_holster/machete/arnold
+	name = "\improper QH20 pattern M2100 custom machete scabbard"
+	desc = "A large leather scabbard used to carry a M2100 \"Ngájhe\" machete. It can be strapped to the back or the armor."
+	icon_state = "arnold-machete-pouch"
+	flags_equip_slot = SLOT_WAIST|SLOT_BACK
+	can_hold = list(/obj/item/weapon/melee/claymore/mercsword/machete)
+
+/obj/item/storage/large_holster/machete/arnold/full/fill_preset_inventory()
+	new /obj/item/weapon/melee/claymore/mercsword/machete/arnold(src)
+
 /obj/item/storage/large_holster/macheteB
 	name = "\improper H6B pattern M2132 machete scabbard"
 	desc = "A large leather scabbard used to carry a M2132 machete. It can be strapped to the pouch slot."

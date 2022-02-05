@@ -29,7 +29,7 @@
 				to_chat(M, SPAN_NOTICE(" <B>Remove your mask!</B>"))
 				return 0
 			if(head && (head.flags_inventory & COVERMOUTH) || wear_mask && (wear_mask.flags_inventory & COVERMOUTH) && !(wear_mask.flags_inventory & ALLOWCPR))
-				to_chat(M, SPAN_NOTICE(" <B>Remove his mask!</B>"))
+				to_chat(M, SPAN_NOTICE(" <B>Remove [src.gender==MALE?"his":"her"] mask!</B>"))
 				return 0
 
 			//CPR

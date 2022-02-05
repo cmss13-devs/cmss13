@@ -306,7 +306,7 @@
 				cards[k] = crd
 
 	src.update_icon()
-	usr.visible_message("\The [usr] sorts his hand.")
+	usr.visible_message("\The [usr] sorts \his hand.")
 
 /obj/item/toy/handcard/verb/discard()
 	set category = "Object"

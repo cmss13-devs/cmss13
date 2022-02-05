@@ -41,6 +41,7 @@
 
 /obj/structure/closet/bodybag/tarp
 	name = "\improper V1 thermal-dampening tarp"
+	bag_name = "\improper V1 thermal-dampening tarp"
 	desc = "A tarp carried by USCM Snipers. When laying underneath the tarp, the sniper is almost indistinguishable from the landscape if utilized correctly. The tarp contains a thermal-dampening weave to hide the wearer's heat signatures, optical camouflage, and smell dampening."
 	icon = 'icons/obj/bodybag.dmi'
 	icon_state = "jungletarp_closed"
@@ -54,6 +55,8 @@
 	var/cloak_time = 15		//ditto for cloaking
 	var/closed_alpha = 60	//how much ALPHA the tarp has once it's fully cloaked.
 	var/can_store_dead = FALSE
+	var/is_animating = FALSE
+	var/first_open = TRUE
 	exit_stun = 0
 
 /obj/structure/closet/bodybag/tarp/snow
@@ -64,6 +67,7 @@
 
 /obj/structure/closet/bodybag/tarp/reactive
 	name = "\improper V2 reactive thermal tarp"
+	bag_name = "\improper V2 reactive thermal tarp"
 	desc = "A tarp carried by some USCM infantry. This updated tarp is capable of blending into its environment nearly flawlessly, given that it can properly collate data once deployed. The tarp is able to hide the wearer's heat signature."
 	icon_state = "reactivetarp_closed"
 	icon_closed = "reactivetarp_closed"
@@ -76,6 +80,7 @@
 
 /obj/structure/closet/bodybag/tarp/reactive/scout
 	name = "\improper V3 reactive thermal tarp (folded)"
+	bag_name = "\improper V3 reactive thermal tarp"
 	desc = "A more compact and improved version of the V2 thermal tarp, intended primarily for the transportation of deceased or wounded marines. It has improved cloaking technology than earlier models, allowing it to cloak to a greater degree and faster, but can only be used with special training.\nUse this item in-hand or click somewhere on the floor adjacent to you to deploy it, then click it again to close it, which automatically cloaks the bag. Click again to open and uncloak it. If you lose it, right click to check tile contents around you to find it."
 	icon_state = "scouttarp_closed"
 	icon_closed = "scouttarp_closed"
@@ -108,13 +113,36 @@
 		stored_units += mob_size
 	return stored_units
 
+/obj/structure/closet/bodybag/tarp/proc/handle_cloaking()
+	if(opened) //if we are OPENING the bag. It checks for opened because the handle_cloaking proc triggers AFTER the parent open() is called
+		if(first_open) //if this is the first time we are opening it (ie not animated because the open proc is being triggered by putting it on the ground)
+			alpha = 255
+			first_open = FALSE
+			return
+		if(is_animating) //if it's not fully cloaked we don't want to do the whole animation from a fully cloaked state.
+			alpha = 255
+			is_animating = FALSE
+			return
+		else //not animating and not the first time we're opening it, therefore play the full animation from a fully cloaked state
+			is_animating = TRUE
+			animate(src, alpha = 255, time = uncloak_time SECONDS, easing = QUAD_EASING)
+			spawn(uncloak_time SECONDS)
+				is_animating = FALSE
+				return
+	else //if we are CLOSING the bag, animate as usual.
+		is_animating = TRUE
+		animate(src, alpha = closed_alpha, time = cloak_time SECONDS, easing = QUAD_EASING)
+		spawn(cloak_time SECONDS)
+			is_animating = FALSE //animation finished
+			return
+
 /obj/structure/closet/bodybag/tarp/open()
-	animate(src, alpha = 255, time = uncloak_time SECONDS, easing = QUAD_EASING)
 	. = ..()
+	handle_cloaking()
 
 /obj/structure/closet/bodybag/tarp/close()
-	animate(src, alpha = closed_alpha, time = cloak_time SECONDS, easing = QUAD_EASING)
 	. = ..()
+	handle_cloaking()
 
 /obj/item/coin/marine
 	name = "marine specialist weapon token"

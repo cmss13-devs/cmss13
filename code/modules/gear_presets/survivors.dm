@@ -1181,7 +1181,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
 	rank = JOB_PMC
-	paygrade = "PMC1"
+	paygrade = "PMC-OP"
 	skills = /datum/skills/civilian/survivor/pmc
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

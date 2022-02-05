@@ -253,17 +253,16 @@ var/global/players_preassigned = 0
 		var/rest_roles_for_mode = temp_roles_for_mode - (temp_roles_for_mode & ROLES_XENO) - (temp_roles_for_mode & ROLES_COMMAND) - (temp_roles_for_mode & (ROLES_WHITELISTED|ROLES_SPECIAL))
 		roles_left = assign_initial_roles(priority, rest_roles_for_mode)
 
-	var/alternate_option_xenos_before = 0
-	if(istype(XJ))
-		alternate_option_xenos_before = XJ.current_positions
-	var/alternate_option_unassigned_before = length(unassigned_players)
+	var/alternate_option_assigned = 0;
 	for(var/mob/new_player/M in unassigned_players)
 		switch(M.client.prefs.alternate_option)
 			if(GET_RANDOM_JOB)
 				roles_left = assign_random_role(M, roles_left) //We want to keep the list between assignments.
+				alternate_option_assigned++
 			if(BE_MARINE)
 				var/datum/job/marine_job = GET_MAPPED_ROLE(JOB_SQUAD_MARINE)
 				assign_role(M, marine_job) //Should always be available, in all game modes, as a candidate. Even if it may not be a marine.
+				alternate_option_assigned++
 			if(BE_XENOMORPH)
 				assign_role(M, temp_roles_for_mode[JOB_XENOMORPH])
 			if(RETURN_TO_LOBBY)
@@ -276,13 +275,11 @@ var/global/players_preassigned = 0
 
 	unassigned_players = null
 
-	// Now we take spare unfilled xeno slots and make them larva
+	// Now we take spare unfilled xeno slots and make them larva NEW
 	var/datum/hive_status/hive = GLOB.hive_datum[XENO_HIVE_NORMAL]
 	if(istype(hive) && istype(XJ))
 		hive.stored_larva += max(0, (XJ.total_positions - XJ.current_positions) \
-		+ (XJ.calculate_extra_spawn_positions(alternate_option_unassigned_before \
-			- length(unassigned_players))) \
-		- (XJ.current_positions - alternate_option_xenos_before))
+		+ (XJ.calculate_extra_spawn_positions(alternate_option_assigned)))
 
 	/*===============================================================*/
 

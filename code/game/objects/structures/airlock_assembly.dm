@@ -27,12 +27,12 @@
 
 /obj/structure/airlock_assembly/examine(mob/user)
 	. = ..()
-	
+
 	to_chat(user, SPAN_NOTICE("A [SPAN_HELPFUL("crowbar")] will dismantle it."))
 	switch(state)
 		if(STATE_STANDARD)
 			if(anchored)
-				to_chat(user, SPAN_NOTICE("It looks like a [SPAN_HELPFUL("wrench")] will unsecure it. Insert a [SPAN_HELPFUL("airlock circuit")]."))
+				to_chat(user, SPAN_NOTICE("It looks like a [SPAN_HELPFUL("wrench")] will unsecure it. Insert some [SPAN_HELPFUL("glass sheets")] to add windows to it. Insert a [SPAN_HELPFUL("airlock circuit")]."))
 			else
 				to_chat(user, SPAN_NOTICE("It looks like a [SPAN_HELPFUL("wrench")] will secure it."))
 		if(STATE_CIRCUIT)
@@ -48,14 +48,34 @@
 
 	if(!skillcheck(user, SKILL_CONSTRUCTION, SKILL_CONSTRUCTION_TRAINED))
 		to_chat(user, SPAN_WARNING("You are not trained to configure [src]..."))
-		return 
+		return
 
 	if(istype(W, /obj/item/tool/pen))
 		var/t = copytext(stripped_input(user, "Enter the name for the door.", name, created_name), 1, MAX_NAME_LEN)
-		if(!t || !in_range(src, usr) && loc != usr)	
+		if(!t || !in_range(src, usr) && loc != usr)
 			return
 		created_name = t
 		return
+
+	if(istype(W, /obj/item/stack/sheet/glass))
+		var/obj/item/stack/sheet/glass/G = W
+		if(!anchored)
+			to_chat(user, SPAN_NOTICE("The airlock is not secured!"))
+			return
+		if(state != STATE_STANDARD)
+			to_chat(user, SPAN_NOTICE("You can't add in the glass with the circuit already in!"))
+			return
+		if(!do_after(user, 20 * user.get_skill_duration_multiplier(SKILL_CONSTRUCTION), INTERRUPT_ALL|BEHAVIOR_IMMOBILE, BUSY_ICON_BUILD))
+			return
+		if(G.use(5))
+			playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
+			glass = 1
+			to_chat(user, SPAN_NOTICE("You insert some glass into the [src], adding windows to it."))
+			update_icon()
+			return
+		else
+			to_chat(user, SPAN_WARNING("You need five sheets of glass to add windows to the [src]"))
+			return
 
 	if(HAS_TRAIT(W, TRAIT_TOOL_CROWBAR))
 		to_chat(user, SPAN_NOTICE("You start pulling [src] apart."))
@@ -65,6 +85,8 @@
 		to_chat(user, SPAN_NOTICE("You pulled [src] apart."))
 		playsound(loc, 'sound/items/Deconstruct.ogg', 25, 1)
 		new /obj/item/stack/sheet/metal(loc, 5)
+		if(glass == 1)
+			new /obj/item/stack/sheet/glass(loc, 5)
 		qdel(src)
 		return
 

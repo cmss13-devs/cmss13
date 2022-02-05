@@ -101,8 +101,8 @@
 
 /obj/structure/machinery/defenses/proc/track_shot()
 	shots++
-//	if(owner_mob)
-//		owner_mob.track_shot(initial(name))
+	if(owner_mob && owner_mob != src)
+		owner_mob.track_shot(initial(name))
 
 /obj/structure/machinery/defenses/proc/friendly_faction(var/factions)
 	if(factions in faction_group)

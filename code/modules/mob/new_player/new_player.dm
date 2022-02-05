@@ -247,7 +247,7 @@
 
 	GLOB.data_core.manifest_inject(character)
 	SSticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
-	SSticker.mode.latejoin_tally++
+	SSticker.mode.latejoin_tally += RoleAuthority.calculate_role_weight(RoleAuthority.roles_for_mode[rank])
 
 	for(var/datum/squad/sq in RoleAuthority.squads)
 		if(sq)

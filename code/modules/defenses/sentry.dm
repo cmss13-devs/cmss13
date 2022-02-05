@@ -412,6 +412,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 //the turret inside the shuttle sentry deployment system
 /obj/structure/machinery/defenses/sentry/premade/dropship
 	density = TRUE
+	faction_group = FACTION_LIST_MARINE
 	var/obj/structure/dropship_equipment/sentry_holder/deployment_system
 
 /obj/structure/machinery/defenses/sentry/premade/dropship/Destroy()
@@ -493,6 +494,7 @@ obj/structure/machinery/defenses/sentry/premade/damaged_action()
 	name = "\improper UA 571-O sentry post"
 	desc = "A deployable, omni-directional automated turret with AI targeting capabilities. Armed with an M30 Autocannon and a 1500-round drum magazine."
 	ammo = new /obj/item/ammo_magazine/sentry/dropped
+	faction_group = FACTION_LIST_MARINE
 	luminosity = 5
 	omni_directional = TRUE
 	immobile = TRUE

@@ -205,6 +205,27 @@
 	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/stack/medical/splint(src)
 
+/obj/item/storage/belt/medical/lifesaver/full/dutch/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/dexalin(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/peridaxon(src)
+	new /obj/item/storage/pill_bottle/quickclot(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/imidazoline(src)
+	new /obj/item/storage/pill_bottle/alkysine(src)
+
 /obj/item/storage/belt/medical/lifesaver/upp
 	name = "\improper Type 41 pattern lifesaver bag"
 	desc = "The Type 41 load rig is the standard load-bearing equipment of the UPP military. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics."
@@ -351,6 +372,18 @@
 /obj/item/storage/belt/marine/m39/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39 (src)
+
+/obj/item/storage/belt/marine/dutch
+	name = "ammo load rig"
+	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
+
+/obj/item/storage/belt/marine/dutch/m16/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16 (src)
+
+/obj/item/storage/belt/marine/dutch/m16/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
 /obj/item/storage/belt/marine/smartgunner
 	name = "\improper M280 pattern smartgunner drum belt"

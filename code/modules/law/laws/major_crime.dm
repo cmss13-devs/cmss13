@@ -35,7 +35,7 @@
 
 /datum/law/major_law/neglect_of_duty
 	name = "Neglect of duty"
-	desc = "Failure to perform one’s role to an acceptable standard. For example, a Commanding Officer failing to properly organize and ensure his personnel are given orders, failing to follow proper procedure in detriment of one’s duties, or ship crew leaving the ship without authorization from the Commanding Officer or their Department Head. Any officer who commits a crime may be charged with Neglect of Duty in addition to the appropriate crimes."
+	desc = "Failure to perform one’s role to an acceptable standard. For example, a Commanding Officer failing to properly organize and ensure their personnel are given orders, failing to follow proper procedure in detriment of one’s duties, or ship crew leaving the ship without authorization from the Commanding Officer or their Department Head. Any officer who commits a crime may be charged with Neglect of Duty in addition to the appropriate crimes."
 	brig_time = 15
 
 /datum/law/major_law/subterfuge

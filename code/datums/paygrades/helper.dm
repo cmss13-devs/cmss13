@@ -18,11 +18,20 @@
 
 	var/datum/paygrade/P = GLOB.paygrades[paygrade]
 
-	if(size)
-		if(P.prefix)
-			return "[P.prefix] "
-		else
-			return ""
+	if(size)//Builds the prefix, if one should exist.
+		var/NP = ""
+		if(P.fprefix)//Factional (pre)prefix
+			NP = "[P.fprefix] "
+		if(P.prefix)//Actual rank prefix
+			NP =  "[NP][P.prefix] "
+			if(P.prefix == "C")//Override for Civilian ranks that don't have occupational prefixes.
+				if(gender && gender == "female")
+					NP = "Ms. "
+				else if(gender && gender == "male")
+					NP = "Mr. "
+				else
+					NP = ""
+		return NP
 	else
 		return P.name
 

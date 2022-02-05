@@ -109,7 +109,7 @@
 		if(recharging <= 0 && process_state == IDLE_STATE)
 			prepare_automated_launch()
 		//Else, the next automated launch will be prepared once the shuttle is ready
-	else 
+	else
 		if(automated_launch_timer != TIMER_ID_NULL)
 			deltimer(automated_launch_timer)
 			automated_launch_timer = TIMER_ID_NULL
@@ -506,10 +506,11 @@
 			A.set_broken()
 
 	var/turf/sploded
-	for(var/j=0; j<10; j++)
+	var/explonum = rand(10,15)
+	for(var/j=0; j<explonum; j++)
 		sploded = locate(T_trg.x + rand(-5, 15), T_trg.y + rand(-5, 25), T_trg.z)
 		//Fucking. Kaboom.
-		cell_explosion(sploded, 200, 20, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, , , ,create_cause_data("dropship crash")) //Clears out walls
+		cell_explosion(sploded, 250, 10, EXPLOSION_FALLOFF_SHAPE_LINEAR, null, , , ,create_cause_data("dropship crash")) //Clears out walls
 		sleep(3)
 
 	// Break the ultra-reinforced windows.

@@ -12,7 +12,8 @@
 	max_storage_space = 14
 	worn_accessible = TRUE
 	actions_types = list(/datum/action/item_action/toggle)
-	var/original_icon
+
+	var/show_exoskeleton = FALSE
 
 	var/flashlight_cooldown = 0 			//Cooldown for toggling the light
 	var/light_state = FALSE					//Is the light on or off
@@ -30,9 +31,22 @@
 	var/saved_melee_allowed = TRUE
 	var/saved_gun_allowed = TRUE
 
+/obj/item/storage/backpack/marine/smartpack/verb/toggle_exoskeleton()
+	set name = "Toggle Exoskeleton"
+	set category = "Object"
+	set src in usr
+
+	if(!isSynth(usr))
+		to_chat(usr, SPAN_WARNING("You have no idea how to do that!"))
+		return
+
+	show_exoskeleton = !show_exoskeleton
+	to_chat(usr, SPAN_NOTICE("\The [src] will [show_exoskeleton ? "now" : "no longer"] have an exoskeleton."))
+	update_icon(usr)
+
+
 /obj/item/storage/backpack/marine/smartpack/Initialize()
 	. = ..()
-	original_icon = icon_state
 	update_icon()
 
 /obj/item/storage/backpack/marine/smartpack/examine(mob/user)
@@ -42,20 +56,16 @@
 /obj/item/storage/backpack/marine/smartpack/update_icon(mob/user)
 	overlays.Cut()
 
-/*	if(changed_icon)
-		icon_state = original_icon
-		item_state = original_icon
-		changed_icon = FALSE
+	if(show_exoskeleton)
+		if(immobile_form)
+			LAZYSET(item_state_slots, WEAR_BACK, initial(item_state) + "_i")
+		else if(activated_form && !immobile_form)
+			LAZYSET(item_state_slots, WEAR_BACK, initial(item_state) + "_p")
+		else if(!activated_form && !immobile_form)
+			LAZYSET(item_state_slots, WEAR_BACK, initial(item_state) + "_e")
+	else
+		LAZYSET(item_state_slots, WEAR_BACK, initial(item_state))
 
-	if(immobile_form)
-		icon_state = icon_state+"_i"
-		item_state = icon_state+"_i"
-		changed_icon = TRUE
-	else if(activated_form && !immobile_form)
-		icon_state = icon_state+"_p"
-		item_state = icon_state+"_p"
-		changed_icon = TRUE
-*/
 	if(light_state)
 		overlays += "+lamp_on"
 	else
@@ -213,21 +223,21 @@
 		to_chat(user, SPAN_DANGER("There is a lack of charge for that action. Charge: [battery_charge]/[IMMOBILE_COST]"))
 		return
 
+	immobile_form = !immobile_form
 	if(immobile_form)
-		user.status_flags |= CANPUSH
-		user.anchored = FALSE
-		user.unfreeze()
-		to_chat(user, SPAN_DANGER("[name] beeps, \"You can now move again.\""))
-	else
 		battery_charge -= IMMOBILE_COST
 		user.status_flags &= ~CANPUSH
 		user.anchored = TRUE
 		user.frozen = TRUE
 		to_chat(user, SPAN_DANGER("[name] beeps, \"You are anchored in place and cannot be moved.\""))
 		to_chat(user, SPAN_INFO("The current charge reads [battery_charge]/[SMARTPACK_MAX_POWER_STORED]"))
+	else
+		user.status_flags |= CANPUSH
+		user.anchored = FALSE
+		user.unfreeze()
+		to_chat(user, SPAN_DANGER("[name] beeps, \"You can now move again.\""))
 
 	playsound(loc, 'sound/mecha/mechmove04.ogg', 25, TRUE)
-	immobile_form = !immobile_form
 	update_icon(user)
 	activated_form = TRUE
 

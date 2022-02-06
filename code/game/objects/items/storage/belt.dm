@@ -533,7 +533,7 @@
 	icon_state = "van_bandolier_[round(length(contents) * 0.5, 1)]"
 	var/new_state = "van_bandolier_[length(contents)]"
 	for(var/I in item_state_slots)
-		item_state_slots[I] = new_state
+		LAZYSET(item_state_slots, I, new_state)
 
 	if(!istype(user))
 		return
@@ -690,8 +690,8 @@
 /obj/item/storage/belt/gun/post_skin_selection()
 	base_icon = icon_state
 	//Saving current inhands, since we'll be switching item_state around for belt onmobs.
-	item_state_slots[WEAR_L_HAND] = item_state
-	item_state_slots[WEAR_R_HAND] = item_state
+	LAZYSET(item_state_slots, WEAR_L_HAND, item_state)
+	LAZYSET(item_state_slots, WEAR_R_HAND, item_state)
 	//And switch to correct belt state in case we aren't spawning with a gun inserted.
 	item_state = icon_state
 

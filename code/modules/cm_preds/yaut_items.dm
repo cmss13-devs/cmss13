@@ -65,29 +65,29 @@
 			if(1341)
 				name = "\improper 'Armor of the Dragon'"
 				icon_state = "halfarmor_elder_tr"
-				item_state_slots = list(WEAR_JACKET = "halfarmor_elder_tr")
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_tr")
 			if(7128)
 				name = "\improper 'Armor of the Swamp Horror'"
 				icon_state = "halfarmor_elder_joshuu"
-				item_state_slots = list(WEAR_JACKET = "halfarmor_elder_joshuu")
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_joshuu")
 			if(9867)
 				name = "\improper 'Armor of the Enforcer'"
 				icon_state = "halfarmor_elder_feweh"
-				item_state_slots = list(WEAR_JACKET = "halfarmor_elder_feweh")
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_feweh")
 			if(4879)
 				name = "\improper 'Armor of the Ambivalent Collector'"
 				icon_state = "halfarmor_elder_n"
-				item_state_slots = list(WEAR_JACKET = "halfarmor_elder_n")
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder_n")
 			else
 				name = "clan elder's armor"
 				icon_state = "halfarmor_elder"
-				item_state_slots = list(WEAR_JACKET = "halfarmor_elder")
+				LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor_elder")
 	else
 		if(armor_number > 7)
 			armor_number = 1
 		if(armor_number) //Don't change full armor number
 			icon_state = "halfarmor[armor_number]_[armor_material]"
-			item_state_slots = list(WEAR_JACKET = "halfarmor[armor_number]_[armor_material]")
+			LAZYSET(item_state_slots, WEAR_JACKET, "halfarmor[armor_number]_[armor_material]")
 
 	flags_cold_protection = flags_armor_protection
 	flags_heat_protection = flags_armor_protection
@@ -146,7 +146,7 @@
 /obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
 	. = ..(mapload, 0)
 	icon_state = "fullarmor_[armor_material]"
-	item_state_slots = list(WEAR_JACKET = "fullarmor_[armor_material]")
+	LAZYSET(item_state_slots, WEAR_JACKET, "fullarmor_[armor_material]")
 
 
 /obj/item/clothing/cape
@@ -171,19 +171,19 @@
 		if(1341)
 			name = "\improper 'Mantle of the Dragon'"
 			icon_state = "cape_elder_tr"
-			item_state_slots = list(WEAR_JACKET = "cape_elder_tr")
+			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_tr")
 		if(7128)
 			name = "\improper 'Mantle of the Swamp Horror'"
 			icon_state = "cape_elder_joshuu"
-			item_state_slots = list(WEAR_JACKET = "cape_elder_joshuu")
+			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_joshuu")
 		if(9867)
 			name = "\improper 'Mantle of the Enforcer'"
 			icon_state = "cape_elder_feweh"
-			item_state_slots = list(WEAR_JACKET = "cape_elder_feweh")
+			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_feweh")
 		if(4879)
 			name = "\improper 'Mantle of the Ambivalent Collector'"
 			icon_state = "cape_elder_n"
-			item_state_slots = list(WEAR_JACKET = "cape_elder_n")
+			LAZYSET(item_state_slots, WEAR_BACK, "cape_elder_n")
 
 /obj/item/clothing/cape/eldercape/dropped(mob/living/user)
 	add_to_missing_pred_gear(src)

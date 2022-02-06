@@ -17,6 +17,7 @@
 #define SKILL_POWERLOADER "powerloader"
 #define SKILL_VEHICLE "vehicles"
 #define SKILL_JTAC "jtac"
+#define SKILL_EXECUTION "execution"
 
 /*
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -103,6 +104,14 @@
 #define SKILL_CQC_MASTER 5
 #define SKILL_CQC_MAX 5
 
+
+//execution skill
+//roles with the execution skill can perform battlefield executions (i.e. mateba and deagle)
+//should be restricted to CO/admiral/W-Y execs maybe
+
+#define SKILL_EXECUTION_DEFAULT 0
+#define SKILL_EXECUTION_TRAINED 1
+#define SKILL_EXECUTION_MAX 1
 
 //powerloader skill
 //hidden

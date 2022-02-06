@@ -653,6 +653,7 @@
 
 /obj/item/storage/internal/accessory/drop_pouch
 	storage_slots = null
+	max_w_class = SIZE_MEDIUM
 	max_storage_space = 5	//weight system like backpacks, hold enough for 1 medium and 1 small item
 	cant_hold = list(	//Prevent inventory bloat
 		/obj/item/storage/firstaid,

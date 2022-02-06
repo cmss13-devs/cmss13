@@ -373,7 +373,15 @@
 	immobile = TRUE
 	turned_on = TRUE
 	icon_state = "sentry_on"
+	faction_group = FACTION_LIST_MARINE
 	static = TRUE
+
+/obj/structure/machinery/defenses/sentry/premade/examine(mob/user)
+	. = ..()
+	to_chat(user, SPAN_NOTICE("It seems this one's bolts have been securely welded into the floor, and the access panel locked. You can't interact with it."))
+
+/obj/structure/machinery/defenses/sentry/premade/attackby(var/obj/item/O, var/mob/user)
+	return
 
 /obj/structure/machinery/defenses/sentry/premade/power_on()
 	return

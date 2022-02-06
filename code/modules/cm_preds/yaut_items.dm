@@ -143,7 +143,7 @@
 			/obj/item/storage/backpack/yautja,
 			/obj/item/weapon/melee/twohanded/yautja)
 
-/obj/item/clothing/suit/armor/yautja/full/Initialize(mapload, armor_number, armor_material)
+/obj/item/clothing/suit/armor/yautja/hunter/full/Initialize(mapload, armor_number, armor_material = "ebony")
 	. = ..(mapload, 0)
 	icon_state = "fullarmor_[armor_material]"
 	item_state_slots = list(WEAR_JACKET = "fullarmor_[armor_material]")

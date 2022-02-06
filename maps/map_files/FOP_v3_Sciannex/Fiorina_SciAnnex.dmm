@@ -1193,7 +1193,9 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "aFp" = (
-/obj/structure/machinery/defenses/tesla_coil,
+/obj/structure/machinery/defenses/tesla_coil{
+	faction_group = list("CLF")
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/tumor/ship)
 "aFJ" = (
@@ -38233,7 +38235,9 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "xgx" = (
-/obj/structure/machinery/defenses/tesla_coil,
+/obj/structure/machinery/defenses/tesla_coil{
+	faction_group = list("USCM")
+	},
 /turf/open/organic/grass{
 	name = "astroturf"
 	},

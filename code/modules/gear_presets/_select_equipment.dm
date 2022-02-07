@@ -301,7 +301,7 @@
 		/obj/item/storage/belt/utility/full,
 		/obj/item/storage/belt/knifepouch,
 		/obj/item/storage/belt/gun/flaregun/full,
-		/obj/item/storage/sparepouch,
+		/obj/item/storage/backpack/general_belt,
 		/obj/item/storage/large_holster/katana/full,
 		/obj/item/storage/large_holster/machete/full,
 		)

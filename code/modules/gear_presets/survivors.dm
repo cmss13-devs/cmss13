@@ -696,11 +696,11 @@
 	..()
 
 
-/datum/equipment_preset/survivor/engineer/trjent
+/datum/equipment_preset/survivor/engineer/trijent
 	name = "Survivor - Dam Maintenance Technician"
 	assignment = "Dam Maintenance Technician"
 
-/datum/equipment_preset/survivor/engineer/trjent/load_gear(mob/living/carbon/human/H)
+/datum/equipment_preset/survivor/engineer/trijent/load_gear(mob/living/carbon/human/H)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/officer/engi(H), WEAR_BODY)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/almayer/mt(H), WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/hazardvest(H), WEAR_JACKET)
@@ -975,6 +975,22 @@
 
 	..()
 
+/datum/equipment_preset/survivor/trucker/trijent
+	name = "Survivor - Trijent Dam Heavy Vehicle Operator"
+	assignment = "Trijent Dam Heavy Vehicle Operator"
+	skills = /datum/skills/civilian/survivor/trucker
+
+/datum/equipment_preset/survivor/trucker/trijent/load_gear(mob/living/carbon/human/H)
+	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/jackboots(H), WEAR_FEET)
+	H.equip_to_slot_or_del(new /obj/item/storage/belt/utility/full(H), WEAR_WAIST)
+	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/black(H), WEAR_HANDS)
+	H.equip_to_slot_or_del(new /obj/item/storage/backpack/satchel/eng(H), WEAR_BACK)
+	H.equip_to_slot_or_del(new /obj/item/clothing/head/hardhat(H), WEAR_HEAD)
+	H.equip_to_slot_or_del(new /obj/item/tool/weldingtool/hugetank(H), WEAR_IN_BACK)
+
+	..()
+
+
 // ---- Colonial Marshall Survivor
 
 /datum/equipment_preset/survivor/colonial_marshal
@@ -1189,7 +1205,7 @@
 	flags = EQUIPMENT_PRESET_START_OF_ROUND
 	assignment = "Weyland-Yutani PMC (Standard)"
 	rank = JOB_PMC
-	paygrade = "PMC1"
+	paygrade = "PMC-OP"
 	skills = /datum/skills/civilian/survivor/pmc
 	access = list(
 		ACCESS_CIVILIAN_PUBLIC,

@@ -99,7 +99,7 @@
 
 /obj/item/storage/belt/medical
 	name = "\improper M276 pattern medical storage rig"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport medical supplies and pistol ammunition."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. It consists of a modular belt with various clips. This version is a less common configuration, designed to transport medical supplies and pistol ammunition. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicalbelt"
 	item_state = "medical"
 	storage_slots = 14
@@ -131,7 +131,7 @@
 		/obj/item/device/defibrillator,
 		/obj/item/tool/surgery/surgical_line,
 		/obj/item/device/reagent_scanner,
-		/obj/item/device/analyzer/plant_analyzer, 
+		/obj/item/device/analyzer/plant_analyzer,
 		/obj/item/roller
 	)
 
@@ -165,7 +165,7 @@
 
 /obj/item/storage/belt/medical/lifesaver
 	name = "\improper M276 pattern lifesaver bag"
-	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics."
+	desc = "The M276 is the standard load-bearing equipment of the USCM. This configuration mounts a duffel bag filled with a range of injectors and light medical supplies, and is common among medics. \nRight click its sprite and click \"toggle belt mode\" to take pills out of bottles by simply clicking them."
 	icon_state = "medicbag"
 	item_state = "medicbag"
 	storage_slots = 21 //can hold 3 "rows" of very limited medical equipment, but it *should* give a decent boost to squad medics.
@@ -204,6 +204,27 @@
 	new /obj/item/storage/pill_bottle/peridaxon(src)
 	new /obj/item/storage/pill_bottle/quickclot(src)
 	new /obj/item/stack/medical/splint(src)
+
+/obj/item/storage/belt/medical/lifesaver/full/dutch/fill_preset_inventory()
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/bruise_pack(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/stack/medical/advanced/ointment(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/adrenaline(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/dexalinp(src)
+	new /obj/item/reagent_container/hypospray/autoinjector/oxycodone(src)
+	new /obj/item/storage/pill_bottle/bicaridine(src)
+	new /obj/item/storage/pill_bottle/dexalin(src)
+	new /obj/item/storage/pill_bottle/antitox(src)
+	new /obj/item/storage/pill_bottle/kelotane(src)
+	new /obj/item/storage/pill_bottle/inaprovaline(src)
+	new /obj/item/storage/pill_bottle/tramadol(src)
+	new /obj/item/storage/pill_bottle/peridaxon(src)
+	new /obj/item/storage/pill_bottle/quickclot(src)
+	new /obj/item/stack/medical/splint(src)
+	new /obj/item/device/healthanalyzer(src)
+	new /obj/item/storage/pill_bottle/imidazoline(src)
+	new /obj/item/storage/pill_bottle/alkysine(src)
 
 /obj/item/storage/belt/medical/lifesaver/upp
 	name = "\improper Type 41 pattern lifesaver bag"
@@ -351,6 +372,18 @@
 /obj/item/storage/belt/marine/m39/fill_preset_inventory()
 	for(var/i = 1 to storage_slots)
 		new /obj/item/ammo_magazine/smg/m39 (src)
+
+/obj/item/storage/belt/marine/dutch
+	name = "ammo load rig"
+	desc = "Good for carrying around extra ammo in the heat of the jungle. Made of special rot-resistant fabric."
+
+/obj/item/storage/belt/marine/dutch/m16/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16 (src)
+
+/obj/item/storage/belt/marine/dutch/m16/ap/fill_preset_inventory()
+	for(var/i = 1 to storage_slots)
+		new /obj/item/ammo_magazine/rifle/m16/ap (src)
 
 /obj/item/storage/belt/marine/smartgunner
 	name = "\improper M280 pattern smartgunner drum belt"
@@ -500,7 +533,7 @@
 	icon_state = "van_bandolier_[round(length(contents) * 0.5, 1)]"
 	var/new_state = "van_bandolier_[length(contents)]"
 	for(var/I in item_state_slots)
-		item_state_slots[I] = new_state
+		LAZYSET(item_state_slots, I, new_state)
 
 	if(!istype(user))
 		return
@@ -624,38 +657,7 @@
 
 
 
-/obj/item/storage/sparepouch
-	name="\improper G8-A general utility pouch"
-	desc="A small, lightweight pouch that can be clipped onto Armat Systems M3 Pattern armor to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist."
-	storage_slots = 3
-	w_class = SIZE_LARGE
-	max_w_class = SIZE_MEDIUM
-	flags_equip_slot = SLOT_WAIST
-	icon = 'icons/obj/items/clothing/belts.dmi'
-	icon_state="g8pouch"
-	item_state="g8pouch"
-	has_gamemode_skin = TRUE
 
-/obj/item/storage/sparepouch/equipped(mob/user, slot)
-	switch(slot)
-		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
-			mouse_opacity = 2 //so it's easier to click when properly equipped.
-	..()
-
-/obj/item/storage/sparepouch/dropped(mob/user)
-	mouse_opacity = initial(mouse_opacity)
-	..()
-
-/obj/item/storage/sparepouch/update_icon()
-	overlays.Cut()
-	if(!length(contents))
-		return
-	if(content_watchers)
-		return
-	else if(length(contents) <= storage_slots * 0.5)
-		overlays += "+[icon_state]_half"
-	else
-		overlays += "+[icon_state]_full"
 
 
 ////////////////////////////// GUN BELTS /////////////////////////////////////
@@ -688,8 +690,8 @@
 /obj/item/storage/belt/gun/post_skin_selection()
 	base_icon = icon_state
 	//Saving current inhands, since we'll be switching item_state around for belt onmobs.
-	item_state_slots[WEAR_L_HAND] = item_state
-	item_state_slots[WEAR_R_HAND] = item_state
+	LAZYSET(item_state_slots, WEAR_L_HAND, item_state)
+	LAZYSET(item_state_slots, WEAR_R_HAND, item_state)
 	//And switch to correct belt state in case we aren't spawning with a gun inserted.
 	item_state = icon_state
 
@@ -895,6 +897,12 @@
 
 /obj/item/storage/belt/gun/m44/custom/fill_preset_inventory()
 	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44/custom(src)
+	for(var/i = 1 to storage_slots - 1)
+		new /obj/item/ammo_magazine/revolver/marksman(src)
+	new_gun.on_enter_storage(src)
+
+/obj/item/storage/belt/gun/m44/mp/fill_preset_inventory()
+	var/obj/item/weapon/gun/new_gun = new /obj/item/weapon/gun/revolver/m44/mp(src)
 	for(var/i = 1 to storage_slots - 1)
 		new /obj/item/ammo_magazine/revolver/marksman(src)
 	new_gun.on_enter_storage(src)

@@ -6,7 +6,7 @@
 	idtype = /obj/item/card/id/pmc
 	faction = FACTION_PMC
 	faction_group = FACTION_LIST_WY
-	languages = list(LANGUAGE_ENGLISH)
+	languages = list(LANGUAGE_ENGLISH, LANGUAGE_JAPANESE)
 
 /datum/equipment_preset/pmc/New()
 	. = ..()
@@ -22,10 +22,10 @@
 	A.randomize_appearance(H)
 	var/random_name
 	if(H.gender == MALE)
-		random_name = "PMC [pick(first_names_m)] [pick(last_names_mb)]"
+		random_name = "[pick(first_names_m)] [pick(last_names_mb)]"
 		H.f_style = "5 O'clock Shadow"
 	else
-		random_name = "PMC [pick(first_names_f)] [pick(last_names_mb)]"
+		random_name = "[pick(first_names_f)] [pick(last_names_mb)]"
 	H.change_real_name(H, random_name)
 	H.age = rand(25,35)
 	H.h_style = "Shaved Head"
@@ -40,7 +40,7 @@
 
 	assignment = "Weyland-Yutani PMC (Standard)"
 	rank = JOB_PMC
-	paygrade = "PMC1"
+	paygrade = "PMC-OP"
 	skills = /datum/skills/pmc
 
 /datum/equipment_preset/pmc/pmc_standard/load_gear(mob/living/carbon/human/H)
@@ -48,7 +48,10 @@
 	var/choice = rand(1,6)
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+	if(prob(50))
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
@@ -92,14 +95,17 @@
 
 	assignment = "Weyland-Yutani PMC (Detainer)"
 	rank = JOB_PMC
-	paygrade = "PMC1"
+	paygrade = "PMC-EN"
 	skills = /datum/skills/pmc
 
 /datum/equipment_preset/pmc/pmc_detainer/load_gear(mob/living/carbon/human/H)
 
 	H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)
 	H.equip_to_slot_or_del(new /obj/item/clothing/under/marine/veteran/PMC, WEAR_BODY)
-	H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+	if(prob(50))
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC, WEAR_JACKET)
+	else
+		H.equip_to_slot_or_del(new /obj/item/clothing/suit/storage/marine/veteran/PMC/light, WEAR_JACKET)
 	H.equip_to_slot_or_del(new /obj/item/clothing/gloves/marine/veteran/PMC, WEAR_HANDS)
 	H.equip_to_slot_or_del(new /obj/item/clothing/head/helmet/marine/veteran/PMC, WEAR_HEAD)
 	H.equip_to_slot_or_del(new /obj/item/clothing/shoes/veteran/PMC/knife, WEAR_FEET)
@@ -129,7 +135,7 @@
 
 	assignment = "Weyland-Yutani PMC (Medic)"
 	rank = "PMC Medic"
-	paygrade = "PMC2M" //Fixed from PMC2 to PMC2M to display properly.
+	paygrade = "PMC-MS"
 	skills = /datum/skills/pmc/medic
 
 /datum/equipment_preset/pmc/pmc_medic/load_gear(mob/living/carbon/human/H)
@@ -171,7 +177,7 @@
 
 	assignment = JOB_PMC_INVESTIGATOR
 	rank = JOB_PMC_INVESTIGATOR
-	paygrade = "PMC2M" //Fixed from PMC2 to PMC2M to display properly.
+	paygrade = "PMC-MS" //Fixed from PMC2 to PMC-MS to display properly.
 	skills = /datum/skills/pmc/medic/chem
 
 /datum/equipment_preset/pmc/pmc_med_investigator/load_gear(mob/living/carbon/human/H)
@@ -215,7 +221,7 @@
 
 	assignment = JOB_PMC_LEADER
 	rank = JOB_PMC_LEADER
-	paygrade = "PMC4"
+	paygrade = "PMC-TL"
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL
 
@@ -256,7 +262,7 @@
 
 	assignment = JOB_PMC_LEAD_INVEST
 	rank = JOB_PMC_LEAD_INVEST
-	paygrade = "PMC4"
+	paygrade = "PMC-TL"
 	role_comm_title = "SL"
 	skills = /datum/skills/pmc/SL/chem
 
@@ -288,7 +294,7 @@
 
 	assignment = JOB_PMC_GUNNER
 	rank = JOB_PMC_GUNNER
-	paygrade = "PMC2S"
+	paygrade = "PMC-SS"
 	role_comm_title = "SG"
 	skills = /datum/skills/pmc/smartgunner
 
@@ -316,7 +322,7 @@
 
 	assignment = JOB_PMC_SNIPER
 	rank = JOB_PMC_SNIPER
-	paygrade = "PMC3"
+	paygrade = "PMC-WS"
 	role_comm_title = "Spc"
 	skills = /datum/skills/pmc/specialist
 
@@ -345,7 +351,7 @@
 
 	assignment = "Weyland-Yutani PMC (Crewman)"
 	rank = JOB_PMC_CREWMAN
-	paygrade = "PMC5"
+	paygrade = "PMC-VS"
 	skills = /datum/skills/pmc/tank_crew
 
 /datum/equipment_preset/pmc/pmc_crewman/load_gear(mob/living/carbon/human/H)
@@ -376,10 +382,10 @@
 
     assignment = JOB_PMC_XENO_HANDLER
     rank = JOB_PMC_XENO_HANDLER
-    paygrade = "PMC3"
-    role_comm_title = "Spc"
+    paygrade = "PMC-XS"
+    role_comm_title = "XH"
     skills = /datum/skills/pmc/xeno_handler
-    languages = list(LANGUAGE_ENGLISH, LANGUAGE_XENOMORPH)
+    languages = list("English", "Japanese", "Xenomorph")
 
 /datum/equipment_preset/pmc/xeno_handler/load_gear(mob/living/carbon/human/H)
     H.equip_to_slot_or_del(new /obj/item/device/radio/headset/distress/PMC, WEAR_L_EAR)

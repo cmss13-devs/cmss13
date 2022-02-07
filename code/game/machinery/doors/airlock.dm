@@ -94,6 +94,8 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 		to_chat(user, SPAN_WARNING("It looks moderately damaged."))
 	else if(dam > 0)
 		to_chat(user, SPAN_WARNING("It looks slightly damaged."))
+	if(reinforced)
+		to_chat(user, SPAN_INFO("It has been reinforced against breaching attempts."))
 
 /obj/structure/machinery/door/airlock/proc/take_damage(var/dam, var/mob/M)
 	if(!dam || unacidable)
@@ -803,6 +805,6 @@ GLOBAL_LIST_INIT(airlock_wire_descriptions, list(
 	return
 
 /obj/structure/machinery/door/airlock/allowed(mob/M)
-	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_ENGINEERING))))
+	if(isWireCut(AIRLOCK_WIRE_IDSCAN) || (maint_all_access && check_access_list(list(ACCESS_MARINE_MAINT))))
 		return TRUE
 	return ..(M)

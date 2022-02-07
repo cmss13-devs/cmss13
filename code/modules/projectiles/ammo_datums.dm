@@ -375,9 +375,9 @@
 	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
 		return
 
-	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		return TRUE
+		return
 
 	if(L.status_flags & PERMANENTLY_DEAD)
 		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))
@@ -669,10 +669,9 @@
 	if(!user || L == user || user.zone_selected != "head" || user.a_intent != INTENT_HARM || !isHumanStrict(L))
 		return
 
-	if(!skillcheck(user, SKILL_LEADERSHIP, SKILL_LEAD_MASTER) || !skillcheck(user, SKILL_POLICE, SKILL_POLICE_SKILLED))
+	if(!skillcheck(user, SKILL_EXECUTION, SKILL_EXECUTION_TRAINED))
 		to_chat(user, SPAN_DANGER("You don't know how to execute someone correctly."))
-		fired_from.delete_bullet(P, TRUE)
-		return TRUE
+		return
 
 	if(L.status_flags & PERMANENTLY_DEAD)
 		to_chat(user, SPAN_DANGER("[L] is already as dead as it's possible to be!"))

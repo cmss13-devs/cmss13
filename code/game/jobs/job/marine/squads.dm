@@ -345,17 +345,17 @@
 			if(old_lead.skills)
 				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_ENGI)
-			old_lead.comm_title = "Eng"
+			old_lead.comm_title = "ComTech"
 			if(old_lead.skills)
 				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_MEDIC)
-			old_lead.comm_title = "Med"
+			old_lead.comm_title = "HM"
 			if(old_lead.skills)
 				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_RTO)
 			old_lead.comm_title = "RTO"
 			if(old_lead.skills)
-				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_TRAINED)
+				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_BEGINNER)
 		if(JOB_SQUAD_SMARTGUN)
 			old_lead.comm_title = "SG"
 			if(old_lead.skills)
@@ -364,9 +364,9 @@
 			if(!leader_killed)
 				if(old_lead.skills)
 					old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
-				old_lead.comm_title = "Mar"
+				old_lead.comm_title = "RFN"
 		else
-			old_lead.comm_title = "Mar"
+			old_lead.comm_title = "RFN"
 			if(old_lead.skills)
 				old_lead.skills.set_skill(SKILL_LEADERSHIP, SKILL_LEAD_NOVICE)
 

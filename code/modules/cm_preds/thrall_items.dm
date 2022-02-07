@@ -21,7 +21,7 @@
 		armor_number = 1
 	if(armor_number)
 		icon_state = "[armor_area][armor_number]_[armor_material]"
-		item_state_slots = list(WEAR_JACKET = "[armor_area][armor_number]_[armor_material]")
+		LAZYSET(item_state_slots, WEAR_JACKET, "[armor_area][armor_number]_[armor_material]")
 	..()
 
 /obj/item/clothing/shoes/yautja/thrall
@@ -47,7 +47,7 @@
 		greaves_number = 1
 	if(greaves_number)
 		icon_state = "greaves[greaves_number]_[armor_material]"
-		item_state_slots = list(WEAR_FEET = "greaves[greaves_number]_[armor_material]")
+		LAZYSET(item_state_slots, WEAR_JACKET, "greaves[greaves_number]_[armor_material]")
 	..()
 
 /obj/item/clothing/under/chainshirt/thrall

@@ -70,6 +70,7 @@
 	open_sound = 'sound/items/zip.ogg'
 	close_sound = 'sound/items/zip.ogg'
 	var/item_path = /obj/item/bodybag
+	var/open_cooldown = 0 //the active var that tracks the cooldown for opening and closing
 	density = 0
 	anchored = 0
 	layer = ABOVE_OBJ_LAYER //To layer above rollerbeds.
@@ -138,6 +139,15 @@
 	for(var/obj/item/limb/L in loc)
 		L.forceMove(src)
 	return stored_units
+
+/obj/structure/closet/bodybag/attack_hand(mob/living/user)
+	if(!opened)
+		open_cooldown = world.time + 10 //1s cooldown for opening and closing, stop that spam! - stan_albatross
+	if(opened && open_cooldown > world.time)
+		to_chat(user, SPAN_WARNING("\The [src] has been opened too recently!"))
+		return
+	. = ..()
+
 
 /obj/structure/closet/bodybag/close()
 	if(..())

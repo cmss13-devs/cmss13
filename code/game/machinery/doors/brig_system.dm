@@ -379,3 +379,11 @@
 /obj/structure/machinery/brig_cell/cell_4
 	name = "Cell 4"
 	id = "Cell 4"
+
+/obj/structure/machinery/brig_cell/perma_1
+	name = "Perma 1"
+	id = "Perma 1"
+
+/obj/structure/machinery/brig_cell/perma_2
+	name = "Perma 2"
+	id = "Perma 2"

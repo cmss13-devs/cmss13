@@ -3,6 +3,8 @@
 /datum/job/civilian/survivor
 	title = JOB_SURVIVOR
 	selection_class = "job_special"
+	// For the roundstart precount, then gets further limited by set_spawn_positions.
+	total_positions = 8
 	flags_startup_parameters = ROLE_ADD_TO_DEFAULT|ROLE_CUSTOM_SPAWN
 	late_joinable = FALSE
 	var/intro_text

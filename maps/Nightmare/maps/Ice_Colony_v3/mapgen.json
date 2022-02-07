@@ -1,6 +1,7 @@
 [
+	{ "type": "map_sprinkle", "path": "map_files/Ice_Colony_v3/sprinkles/" },
 	{
 		"type": "include", "name": "Standalone variations",
-		"file": "maps/Ice_Colony_v2/mapgen_variations.json"
+		"file": "maps/Ice_Colony_v3/mapgen_variations.json"
 	}
 ]

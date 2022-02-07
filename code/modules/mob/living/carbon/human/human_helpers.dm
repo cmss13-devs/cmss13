@@ -179,10 +179,10 @@
 
 	switch(target_zone)
 		if("head")
-			if(head && head.flags_inventory & BLOCKSHARPOBJ)
+			if(head && head.flags_inventory & NOPRESSUREDMAGE)
 				. = 0
 		else
-			if(wear_suit && wear_suit.flags_inventory & BLOCKSHARPOBJ)
+			if(wear_suit && wear_suit.flags_inventory & NOPRESSUREDMAGE)
 				. = 0
 	if(!. && error_msg && user)
 		// Might need re-wording.

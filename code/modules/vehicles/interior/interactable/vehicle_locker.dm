@@ -28,7 +28,7 @@
 	container.max_storage_space = 40
 	container.use_sound = null
 	container.bypass_w_limit = list(/obj/item/weapon/gun,
-									/obj/item/storage/sparepouch,
+									/obj/item/storage/backpack/general_belt,
 									/obj/item/storage/large_holster/machete,
 									/obj/item/storage/belt,
 									/obj/item/storage/pouch,

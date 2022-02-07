@@ -146,6 +146,9 @@ var/list/RESTRICTED_CAMERA_NETWORKS = list( //Those networks can only be accesse
 #define ONE_TYPE_PER_TURF		1
 #define ONE_TYPE_PER_BORDER		2
 
+#define RESULT_REQUIRES_SNOW	(1<<0)
+
+
 #define TOUCH 1
 #define INGEST 2
 

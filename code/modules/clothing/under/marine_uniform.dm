@@ -89,12 +89,12 @@
 	..(loc,expected_type, override_icon_state, new_name, new_protection)
 
 /obj/item/clothing/under/marine/chef
-	name = "\improper USCM Mess Sergeant uniform"
-	desc = "Standard-issue Mess Sergeant uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
+	name = "\improper USCM Mess Technician uniform"
+	desc = "Standard-issue Mess Technician uniform. It has shards of light Kevlar to help protect against stabbing weapons and bullets."
 	icon_state = "chef_uniform"
 	worn_state = "chef_uniform"
 	flags_jumpsuit = FALSE
-	specialty = "USCM mess sergeant"
+	specialty = "USCM mess technician"
 	flags_atom = NO_SNOW_TYPE
 
 /obj/item/clothing/under/marine/mp
@@ -408,6 +408,7 @@
 	armor_bio = CLOTHING_ARMOR_NONE
 	armor_rad = CLOTHING_ARMOR_NONE
 	armor_internaldamage = CLOTHING_ARMOR_LOW
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 	suit_restricted = list(/obj/item/clothing/suit/storage/marine/veteran/PMC,
 							/obj/item/clothing/suit/storage/marine/smartgunner/veteran/PMC,
 							/obj/item/clothing/suit/armor/vest/security)//For survivors.
@@ -417,6 +418,7 @@
 	desc = "A white set of fatigues, designed for private security operators. The symbol of the Weyland-Yutani corporation is emblazed on the suit. This particular suit looks like it belongs to a high-ranking officer."
 	icon_state = "officer_jumpsuit"
 	worn_state = "officer_jumpsuit"
+	flags_jumpsuit = UNIFORM_SLEEVE_ROLLABLE
 
 /obj/item/clothing/under/marine/veteran/PMC/commando
 	name = "\improper PMC commando uniform"

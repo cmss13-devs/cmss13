@@ -260,9 +260,9 @@
 	properties = list(PROPERTY_NEOGENETIC = 2)
 
 /datum/reagent/medical/meralyne
-	name = "meralyne"
+	name = "Meralyne"
 	id = "meralyne"
-	description = "Advanced analgesic medication used to treat extremely severe blunt trauma. Allows the body to quickly repair damaged tissue. Overdosing on meralyne can cause severe corrosion to cell membranes."
+	description = "Advanced analgesic medication used to treat extremely severe blunt trauma. Allows the body to quickly repair damaged tissue. Overdosing on Meralyne can cause severe corrosion to cell membranes."
 	reagent_state = LIQUID
 	color = "#b40000"
 	overdose = LOWH_REAGENTS_OVERDOSE

@@ -477,6 +477,10 @@
 		to_chat(X, SPAN_XENOWARNING("This area is too far away to affect!"))
 		return FALSE
 
+	if(GLOB.interior_manager.interior_z == X.z) 
+		to_chat(X, SPAN_XENOWARNING("It's too tight in here to build."))
+		return FALSE
+
 	var/choice = XENO_STRUCTURE_CORE
 	if(X.hive.has_structure(XENO_STRUCTURE_CORE) || !X.hive.can_build_structure(XENO_STRUCTURE_CORE))
 		choice = tgui_input_list(X, "Choose a structure to build", "Build structure", X.hive.hive_structure_types + "help")
@@ -527,6 +531,11 @@
 	var/queen_on_zlevel = !X.hive.living_xeno_queen || X.hive.living_xeno_queen.z == T.z
 	if(!queen_on_zlevel)
 		to_chat(X, SPAN_WARNING("Your link to the Queen is too weak here. She is on another world."))
+		qdel(structure_template)
+		return FALSE
+
+	if(GLOB.interior_manager.interior_z == X.z)
+		to_chat(X, SPAN_WARNING("It's too tight in here to build."))
 		qdel(structure_template)
 		return FALSE
 

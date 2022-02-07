@@ -4,7 +4,7 @@ Watch out for friendly fire. Make sure you're not walking into anyone's firing l
 Be mindful when using hand grenades. Getting stunned or knocked over after priming a grenade will drop it at your feet. This is obviously very dangerous for not only you, but your friends as well.
 Reflective walls will bounce back non-IFF bullets, including rockets. Try not to shoot them.
 Vary your loadout! Doing the same thing every round gets old fast. Try out the pistols, or carry flares.
-Be careful when firing an Orbital Bombardment, Close Air Support, or the Railgun. Make sure you're not about to blow up the entire marine push.
+Be careful when firing an Orbital Bombardment, Close Air Support, or the Mortar. Make sure you're not about to blow up the entire marine push.
 The Orbital Bombardment is always closer than it looks.
 Never inject a marine you haven't scanned! You might overdose them; ESPECIALLY so with an emergency autoinjector.
 Check perma-dead marines (skull icon on medhud) for useful gear, such as webbings, AP ammo, or binoculars.
@@ -12,7 +12,7 @@ Always check for traps beneath loose objects - it could save your life!
 Bring a fire extinguisher, it might just save someone's life. They can remove flames that block a push, remove acid from other marines, as well as put out people on fire.
 Trading your life for a Xenomorph's is almost always worth it.
 If another marine is stunned, you can click on them with help intent with an open hand to shake them up faster.
-No round has ever been won behind a barricade.
+No round has ever been won behind a barricade. Apart from the ones that have.
 Always clear weeds and alien structures as you advance.
 Try not to block off pushes when using a flamethrower.
 Recover bodies whenever possible. Even if the marine is unrevivable, useful gear and ammunition can still be salvaged.
@@ -39,7 +39,28 @@ You can grab items from second-level storage, such as a splint in a first-aid ki
 Researchers can make pressurized canister pouches, which can contain up to 480 reagents, and contain custom injectors that can be easily used by privates.
 When fighting xenomorphs, don't aim for the head - It won't increase damage against anyone but your fellow marines.
 Don't forget to set the Anti-Aircraft Gun!
-Scavenging attachments from dead marines isn't bad practice, as long as you make sure they're actually dead first.
+Scavenging attachments (or other things) from dead marines isn't bad practice, as long as you make sure they're actually dead first.
 When receiving a supply crate drop from requisitions, make sure to move the crate before opening it - Otherwise subsequent supply crates will be hidden beneath it!
 If a grenade comes your way, hit the deck! Lying down will reduce damage and let you dodge any shrapnel flying overhead.
 You can grab items from second-level storage, such as a splint in a first aid kit stored inside a satchel.
+By right clicking your medical belt and selecting "toggle belt mode", you can take pills out of bottles by simply clicking them once.
+You can put screwdrivers, cigarettes, and some other things in your second ear slot!
+Pilots : there is one of each engine upgrade in the hangar at the start of the round, saving you the point cost of having to print out a pair of each.
+You can use a hand labeler (as found in squad prep rooms) to name your equipment and make it less likely to be stolen.
+You can use a health analyser in hand (Z key) to check the last scan readout from it.
+Holocards are a useful triage tool for doctors and medics. Ensure you assign them (examine the marine with shift-click and select an appropriate holocard) to marines who have taken damage that cannot be healed without surgery. (Hint : major organ damage or larval infection = red card!)
+Escape pods are designed for only three occupants - more than that, or if a larger xenomorph is in the pod, and it will malfunction and blow up on launch.
+A misloaded OB can deviate severely from the intended target area - ensure you load them correctly!
+The XO and CO are trained in powerloader use and engineering, and can load the OB.
+You can change what your SL tracker beacon is tracking by right clicking on your headset and clicking "Switch Tracker Target".
+Boilers emit light - not every glow from around the corner is friendly!
+You can carry a variety of items inside your helmet - from gauze and cigarettes to flares and screwdrivers.
+CIC staff can track every USCM-aligned person via the suit sensors console and overwatch console - useful for finding escaped prisoners or dead marines.
+When the M7 RPG is fired, it creates a substantial shockwave behind it that can stun and harm marines standing too close. Watch your backblast!
+Remember that you need to put a defibrillator's paddles away in order to store it.
+W-Y PMCs do not have marine IFF. Don't fire smartguns through them!
+To talk on multiple radio channels at once, put a COMMA [,] before your message and add up to four prefixes. E.g, ,abcd talks on all squad channels at once.
+Put .w or :w before your message to whisper. Another way to whisper is to use the verb "whisper" in the IC tab or command bar.
+For Vehicle Crewmen : it is often safer to repair the parts of your APC or tank inside the vehicle than outside it.
+It is almost always faster to do surgery manually than in the autodoc.
+To check your skills, go to the IC tab and click "view skills".

@@ -1193,7 +1193,9 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/aux_engi)
 "aFp" = (
-/obj/structure/machinery/defenses/tesla_coil,
+/obj/structure/machinery/defenses/tesla_coil{
+	faction_group = list("CLF")
+	},
 /turf/open/floor/plating/plating_catwalk,
 /area/fiorina/tumor/ship)
 "aFJ" = (
@@ -3316,6 +3318,15 @@
 	icon_state = "darkbrown2"
 	},
 /area/fiorina/tumor/aux_engi)
+"bTe" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "birthday"
+	},
+/turf/open/organic/grass{
+	desc = "It'll get in your shoes no matter what you do.";
+	name = "astroturf"
+	},
+/area/fiorina/station/central_ring)
 "bTo" = (
 /obj/structure/platform/kutjevo/smooth,
 /turf/open/space,
@@ -30335,6 +30346,12 @@
 	name = "astroturf"
 	},
 /area/fiorina/station/park)
+"skM" = (
+/obj/effect/landmark/nightmare{
+	insert_tag = "repairpanels"
+	},
+/turf/open/space,
+/area/fiorina/oob)
 "skO" = (
 /obj/item/trash/cigbutt,
 /turf/open/floor/prison{
@@ -32375,10 +32392,10 @@
 /area/fiorina/station/research_cells)
 "tAb" = (
 /obj/structure/surface/rack,
-/obj/item/storage/sparepouch{
+/obj/item/storage/backpack/general_belt{
 	pixel_y = 7
 	},
-/obj/item/storage/sparepouch,
+/obj/item/storage/backpack/general_belt,
 /turf/open/floor/almayer,
 /area/fiorina/tumor/ship)
 "tAf" = (
@@ -38218,7 +38235,9 @@
 	},
 /area/fiorina/tumor/aux_engi)
 "xgx" = (
-/obj/structure/machinery/defenses/tesla_coil,
+/obj/structure/machinery/defenses/tesla_coil{
+	faction_group = list("USCM")
+	},
 /turf/open/organic/grass{
 	name = "astroturf"
 	},
@@ -69835,7 +69854,7 @@ tvI
 tvI
 tvI
 tvI
-tvI
+bTe
 tvI
 jfm
 hZY
@@ -70812,7 +70831,7 @@ azZ
 azZ
 azZ
 azZ
-lJa
+azZ
 lJa
 lJa
 lJa
@@ -71024,8 +71043,8 @@ azZ
 azZ
 azZ
 azZ
-lJa
-lJa
+lAh
+lAh
 lJa
 lJa
 lJa
@@ -71236,13 +71255,13 @@ azZ
 azZ
 azZ
 azZ
-lJa
+lAh
 ijs
 lJa
-lJa
-lJa
-lJa
-lJa
+lAh
+lAh
+lAh
+lAh
 lzO
 xjK
 dNF
@@ -71448,7 +71467,7 @@ fnn
 phz
 guf
 guf
-lJa
+lAh
 ijs
 lJa
 lJa
@@ -71660,7 +71679,7 @@ phz
 fRo
 gwM
 gCn
-lJa
+lAh
 inA
 lJa
 lJa
@@ -71872,8 +71891,8 @@ phz
 fRo
 gxj
 gDx
-lJa
-lJa
+lAh
+lAh
 lJa
 ruy
 csp
@@ -72084,8 +72103,8 @@ azZ
 phz
 phz
 phz
-lJa
-lJa
+lAh
+lAh
 lJa
 phz
 ruy
@@ -72291,7 +72310,7 @@ azZ
 azZ
 lAh
 eAY
-lJa
+lAh
 azZ
 azZ
 azZ
@@ -72506,9 +72525,9 @@ ezV
 phz
 fwr
 fTz
-lJa
-lJa
-lJa
+lAh
+lAh
+lAh
 lJa
 aOd
 phz
@@ -72718,9 +72737,9 @@ phz
 phz
 fwr
 fUm
-lJa
-lJa
-lJa
+lAh
+lAh
+lAh
 lJa
 nvZ
 phz
@@ -72930,9 +72949,9 @@ azZ
 eVq
 fFE
 azZ
-lJa
-lJa
-lJa
+lAh
+lAh
+lAh
 lJa
 iQP
 ruy
@@ -73142,11 +73161,11 @@ azZ
 azZ
 azZ
 azZ
-lJa
-lJa
-lJa
-lJa
-lJa
+lAh
+lAh
+lAh
+lAh
+lAh
 phz
 lJa
 ruy
@@ -73355,9 +73374,9 @@ ePv
 aDh
 azZ
 lAh
-lJa
-lJa
-lJa
+lAh
+lAh
+lAh
 azZ
 phz
 phz
@@ -75919,9 +75938,9 @@ azZ
 azZ
 lAh
 lAh
-lAh
-lAh
-lAh
+lJa
+lJa
+lJa
 ruy
 csp
 xjK
@@ -86161,7 +86180,7 @@ sVv
 bTo
 pcu
 sVv
-bQM
+skM
 dzl
 dzl
 bVk

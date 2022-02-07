@@ -541,6 +541,29 @@ GLOBAL_LIST_EMPTY_TYPED(radio_packs, /obj/item/storage/backpack/marine/satchel/r
 	storage_slots = 8
 	can_hold = list(/obj/item/mortar_shell)
 
+/// G-8-a general pouch belt
+/obj/item/storage/backpack/general_belt
+	name = "\improper G8-A general utility pouch"
+	desc = "A small, lightweight pouch that can be clipped onto Armat Systems M3 Pattern armor to provide additional storage. The newer G8-A model, while uncomfortable, can also be clipped around the waist."
+	max_storage_space = 10
+	w_class = SIZE_LARGE
+	max_w_class = SIZE_MEDIUM
+	flags_equip_slot = SLOT_WAIST
+	icon = 'icons/obj/items/clothing/belts.dmi'
+	icon_state = "g8pouch"
+	item_state = "g8pouch"
+	has_gamemode_skin = TRUE
+
+/obj/item/storage/backpack/general_belt/equipped(mob/user, slot)
+	switch(slot)
+		if(WEAR_WAIST, WEAR_J_STORE) //The G8 can be worn on several armours.
+			mouse_opacity = 2 //so it's easier to click when properly equipped.
+	..()
+
+/obj/item/storage/backpack/general_belt/dropped(mob/user)
+	mouse_opacity = initial(mouse_opacity)
+	..()
+
 // Scout Cloak
 /obj/item/storage/backpack/marine/satchel/scout_cloak
 	name = "\improper M68 Thermal Cloak"

@@ -93,6 +93,7 @@
 			dirt_amt = transfer_amount
 			dirt_type = turfdirt
 			update_icon()
+			/*
 			var/digmore = FALSE
 			while(dirt_amt > 0)
 
@@ -115,6 +116,8 @@
 			if(digmore)
 				afterattack(target, user, proximity)
 // auto repeat ends
+*/
+
 	else
 		dump_shovel(target, user)
 

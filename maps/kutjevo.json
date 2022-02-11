@@ -6,6 +6,7 @@
         "/datum/equipment_preset/survivor/doctor/kutjevo",
         "/datum/equipment_preset/survivor/chaplain/kutjevo",
         "/datum/equipment_preset/survivor/engineer/kutjevo",
+        "/datum/equipment_preset/survivor/colonial_marshal/kutjevo",
         "/datum/equipment_preset/survivor/trucker/kutjevo",
         "/datum/equipment_preset/survivor/security/kutjevo"
     ],

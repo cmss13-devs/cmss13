@@ -67,6 +67,8 @@
 		list("Security Records", 2, /obj/item/circuitboard/computer/secure_data, VENDOR_ITEM_REGULAR),
 		list("Supply Ordering Console", 2, /obj/item/circuitboard/computer/ordercomp, VENDOR_ITEM_REGULAR),
 		list("Research Data Terminal", 2, /obj/item/circuitboard/computer/research_terminal, VENDOR_ITEM_REGULAR),
+		list("P.A.C.M.A.N Generator", 1, /obj/item/circuitboard/machine/pacman, VENDOR_ITEM_REGULAR),
+		list("Auxiliar Power Storage Unit", 2, /obj/item/circuitboard/machine/ghettosmes, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/tool_storage/antag
@@ -89,7 +91,7 @@
 
 		list("BATTERIES", -1, null, null),
 		list("High-Capacity Power Cell", round(scale * 3), /obj/item/cell/high, VENDOR_ITEM_REGULAR),
-		list("Low-Capacity Power Cell", round(scale * 6), /obj/item/cell, VENDOR_ITEM_REGULAR),
+		list("Low-Capacity Power Cell", round(scale * 7), /obj/item/cell, VENDOR_ITEM_REGULAR),
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/electronics_storage/antag
@@ -117,7 +119,8 @@
 		list("Matter Bin", round(scale * 4), /obj/item/stock_parts/matter_bin, VENDOR_ITEM_REGULAR),
 		list("Micro Laser", round(scale * 4), /obj/item/stock_parts/micro_laser , VENDOR_ITEM_REGULAR),
 		list("Micro Manipulator", round(scale * 4), /obj/item/stock_parts/manipulator, VENDOR_ITEM_REGULAR),
-		list("Scanning Module", round(scale * 4), /obj/item/stock_parts/scanning_module, VENDOR_ITEM_REGULAR)
+		list("Scanning Module", round(scale * 4), /obj/item/stock_parts/scanning_module, VENDOR_ITEM_REGULAR),
+		list("Capacitor", round(scale * 3), /obj/item/stock_parts/capacitor, VENDOR_ITEM_REGULAR)
 	)
 
 /obj/structure/machinery/cm_vending/sorted/tech/comp_storage/antag

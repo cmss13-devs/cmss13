@@ -1,6 +1,5 @@
 
 
-
 //Machines
 //The one that works safely.
 /obj/structure/machinery/power/smes/batteryrack
@@ -14,6 +13,7 @@
 	output_level_max = 0
 	should_be_mapped = 1
 	icon_state = "gsmes"
+	unslashable = FALSE
 	var/cells_amount = 0
 	var/capacitors_amount = 0
 	power_machine = TRUE
@@ -142,9 +142,9 @@
 	var/overcharge_percent = 0
 	parts_to_add = list(
 		/obj/item/circuitboard/machine/ghettosmes,
-		/obj/item/cell/high,
-		/obj/item/cell/high,
-		/obj/item/cell/high,
+		/obj/item/cell,
+		/obj/item/cell,
+		/obj/item/cell,
 	)
 
 /obj/structure/machinery/power/smes/batteryrack/makeshift/updateicon()
@@ -183,7 +183,7 @@
 				return
 			if (overcharge_percent >= 140)
 				if (prob(1))
-					empulse(src.loc, 3, 8, 1)
+					empulse(src.loc, 1, 2, 0)
 		if ((2.4e6+1) to 3.6e6)
 			if (overcharge_percent >= 115)
 				if (prob(7))
@@ -192,10 +192,10 @@
 				return
 			if (overcharge_percent >= 130)
 				if (prob(1))
-					empulse(src.loc, 3, 8, 1)
+					empulse(src.loc, 1, 3, 0)
 			if (overcharge_percent >= 150)
 				if (prob(1))
-					explosion(src.loc, 0, 1, 3, 5)
+					explosion(src.loc, 0, 0, 1, 3)
 		if ((3.6e6+1) to INFINITY)
 			if (overcharge_percent >= 115)
 				if (prob(8))
@@ -207,7 +207,7 @@
 					empulse(src.loc, 4, 10, 1)
 			if (overcharge_percent >= 140)
 				if (prob(1))
-					explosion(src.loc, 1, 3, 5, 8)
+					explosion(src.loc, 0, 1, 2, 4)
 		else //how the hell was this proc called for negative charge
 			charge = 0
 

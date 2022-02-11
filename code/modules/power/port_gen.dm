@@ -50,6 +50,7 @@ display round(lastgen) and phorontank amount
 	anchored = 0
 //	directwired = 0
 	use_power = 0
+	unslashable = FALSE
 
 	var/active = 0
 	var/power_gen = 5000
@@ -110,7 +111,7 @@ display round(lastgen) and phorontank amount
 	var/sheet_path = /obj/item/stack/sheet/mineral/phoron
 	var/board_path = /obj/item/circuitboard/machine/pacman
 	var/sheet_left = 0 // How much is left of the sheet
-	var/time_per_sheet = 40
+	var/time_per_sheet = 70
 	var/heat = 0
 
 /obj/structure/machinery/power/port_gen/pacman/Initialize()
@@ -335,7 +336,7 @@ display round(lastgen) and phorontank amount
 	icon_state = "portgen1"
 	sheet_path = /obj/item/stack/sheet/mineral/uranium
 	power_gen = 15000
-	time_per_sheet = 65
+	time_per_sheet = 120
 	board_path = /obj/item/circuitboard/machine/pacman/super
 	overheat()
 		explosion(src.loc, 3, 3, 3, -1)
@@ -345,7 +346,7 @@ display round(lastgen) and phorontank amount
 	icon_state = "portgen2"
 	sheet_path = /obj/item/stack/sheet/mineral/tritium
 	power_gen = 40000
-	time_per_sheet = 80
+	time_per_sheet = 150
 	board_path = /obj/item/circuitboard/machine/pacman/mrs
 	overheat()
 		explosion(src.loc, 4, 4, 4, -1)

@@ -61,6 +61,43 @@
 	</tr>
 </table>
 
+			<h2 class="date">11 February 2022</h2>
+			<h3 class="author">Carlarc, Stan_Albatross updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added the NSG-23 Assault Rifle, as a gun for PMC standards. Can also be found somewhere on LV. Thanks to XSlayer300 for the sounds, Triiodine for the gun sprite, and TemperedZ for the magazine sprites.</li>
+			</ul>
+			<h3 class="author">ChainsawMullet updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="bugfix">Fixed some SciAnnex windows not being hull windows, and some windows for some reason being hull windows, as well as some misaligned windows.</li>
+			</ul>
+			<h3 class="author">Nancok   updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="tweak">increased power per fuel for generators by about 80%</li>
+				<li class="tweak">circuit board vendor now has 1 PACMAN board and 2 makeshift PSU (battery rack a.k.a \"gettho SMES\") boards</li>
+				<li class="tweak">makeshift PSU's consequences for being overcharged are no longer dangerous (at most it will burn you a tad if you let it overcharge to 150% and you're adjacent to it)</li>
+				<li class="tweak">component vendor now has capacitors</li>
+				<li class="tweak">electronics vendors now have 7 low capacity cells (up from 6)</li>
+				<li class="tweak">electronics pouch can now hold capacitors</li>
+				<li class="tweak">generators and battery racks can now be slashed by xenos</li>
+			</ul>
+			<h3 class="author">Stan_Albatross updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscdel">removed \"big floppa\" from the code and sprites entirely.</li>
+				<li class="bugfix">fixed a few backend bugs that made spacemandmm angry</li>
+			</ul>
+			<h3 class="author">the_flying_flail updated:</h3>
+			<ul class="changes bgimages16">
+				<li class="rscadd">Added CL Survivor To LV-624</li>
+				<li class="rscadd">Added Colonial Marshall Survivor to Kutjevo and Shiva</li>
+				<li class="rscadd">Added United America Peacekeeper to Solaris and Shiva (Reskinned security survivor)</li>
+				<li class="tweak">Removed Trucker and Chaplain Double Barrel Shotgun</li>
+				<li class="tweak">Adjusted CORSAT and LV-624 Security Guard outfit</li>
+				<li class="tweak">Renamed LV-624 and CORSAT Security Guard to \"Weyland-Yutani Corporate Security Guard\"</li>
+				<li class="tweak">Removed Colonial Marshall Survivor from LV-624 and replaced with PMC survivor</li>
+				<li class="bugfix">Fixed colonial supervisor not spawning with satchel or shoes. Whoops.</li>
+				<li class="bugfix">Soro Survivors now spawn with robust survivor winter jacket as planned.</li>
+			</ul>
+
 			<h2 class="date">10 February 2022</h2>
 			<h3 class="author">Nanu updated:</h3>
 			<ul class="changes bgimages16">
@@ -836,69 +873,6 @@
 				<li class="rscadd">Added the model 12 bolt-action rifle, a replacement for generic use of bolt action rifles on maps.</li>
 				<li class="maptweak">Changed all the generic parent type bolt-action rifles on Shiva's Snowball to model 12s.</li>
 				<li class="maptweak">replaced the old sprite style airlocks in marshalls and dorms on Solaris Ridge with modern ones.</li>
-			</ul>
-
-			<h2 class="date">10 December 2021</h2>
-			<h3 class="author">Geeves updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">Queens modifying build, slash, nesting, etc. perms will now send the message to the correct hive. Humans evaccing will now be sent to all hives.</li>
-				<li class="rscadd">Setting Survivor to high will now change your preview character to a survivor relevant to the current map.</li>
-				<li class="bugfix">Wielding two shields at once will no longer disable the slowdown.</li>
-				<li class="tweak">Observing and following a xeno will now always display only their current name.</li>
-			</ul>
-			<h3 class="author">Geeves, Triiodine updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Adds the Dropship Crew Chief, a companion to the Pilot Officer. They are capable of piloting the ship in the absence of the PO, but their main duty is to maintain order in the dropship and assist the PO in maintaining their assigned ship.</li>
-				<li class="tweak">PO now always has 2 slots, it lost its third slot, replaced by the two DCC slots.</li>
-			</ul>
-			<h3 class="author">Morrow updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Surgical Vest storage increased by 1 for Surgical Line</li>
-				<li class="rscadd">Adds Surgical Line to the MED APC's Surgical Cabinet</li>
-			</ul>
-			<h3 class="author">Nanu updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">M39 Nerf - ROF down to 450 from 600</li>
-				<li class="tweak">M39 Nerf - DMG on AP down to 24 from 28.</li>
-				<li class="tweak">M39 Nerf - DMG on HV down to 34 from 40.</li>
-				<li class="tweak">M39 Buff - Decreased the falloff to 8 from 10.</li>
-			</ul>
-			<h3 class="author">Segrain updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">ASRS no longer randomly orders techweb versions of trauma/burn kits.</li>
-				<li class="bugfix">Trauma/burn kits now correctly apply their healing to the limb actually being targeted.</li>
-				<li class="bugfix">Directly treating burn damage on limbs (advanced burn kits, surgically tending wounds) no longer leaves behind phantom pain.</li>
-				<li class="bugfix">Using middle click to look into a pill bottle in a toggled medical belt no longer takes out an invisible pill.</li>
-				<li class="bugfix">Making pills is now properly logged and no longer asks for a name that is not going to be used.</li>
-				<li class="tweak">Cleaned the code for certain survivors improving research's clearance level, removed deprecated code for CL's effects.</li>
-				<li class="bugfix">Custom flamethrower fuel now properly calculates its variable properties.</li>
-				<li class="bugfix">Producing custom incendiary/explosive chemicals now properly ignites/explodes when created above sensitivity threshold (i.e. overdose amount).</li>
-				<li class="bugfix">Processing reagents now properly accounts for variable frequency of processing.</li>
-				<li class="bugfix">Metabolism frequency of most reagents is no longer off by a factor of two.</li>
-				<li class="bugfix">Reagents now properly process their last dose in the body.</li>
-				<li class="bugfix">A.C.I.D. vests are once again constructed with wirecutters as advertised.</li>
-				<li class="bugfix">Crew monitoring computers no longer report mobs on admin z-level (e.g. thunderdome).</li>
-			</ul>
-			<h3 class="author">Stan_Albatross updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">You no longer need piloting skill to cancel flybys, instead only needing access to the console.</li>
-				<li class="tweak">Queens can no longer cancel flybys.</li>
-				<li class="tweak">Added a synth-specific version of the snow suit with no armour for the snowflake vendor</li>
-				<li class="tweak">All synth specific exosuit/coat items (bomber jackets, synth snow suit, synth external webbing, and windbreakers) can now hold the same items : analysers, multitools, pipe painters, radios, t-ray scanners, crowbars, screwdrivers, welding tools, wirecutters, wrenches, gas masks, flashlights, health analysers, hyposprays, emergency oxygen tanks, pens, binoculars, and the crew monitor.</li>
-				<li class="maptweak">you can no longer early weed on the metal tiles just outside the LZs on LV-642.</li>
-			</ul>
-			<h3 class="author">TeDGamer updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="tweak">Fire spread should spawn a fire on dense tiles before stopping</li>
-				<li class="tweak">Resin structures ( non-special structures only for now ) take damage over time while on fire</li>
-			</ul>
-			<h3 class="author">forest2001 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="rscadd">Added the SMMC paygrade.</li>
-			</ul>
-			<h3 class="author">insertnamehere123 updated:</h3>
-			<ul class="changes bgimages16">
-				<li class="bugfix">PlantBGone and other herbicides now kill weeds as intended.</li>
 			</ul>
 </div>
 </body>

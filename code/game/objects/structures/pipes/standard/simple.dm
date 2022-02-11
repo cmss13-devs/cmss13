@@ -16,9 +16,9 @@
 
 /obj/structure/pipes/standard/simple/create_valid_directions()
 	switch(dir)
-		if(SOUTH || NORTH)
+		if(SOUTH, NORTH)
 			valid_directions = list(SOUTH, NORTH)
-		if(EAST || WEST)
+		if(EAST, WEST)
 			valid_directions = list(EAST, WEST)
 		if(NORTHEAST)
 			valid_directions = list(NORTH, EAST)

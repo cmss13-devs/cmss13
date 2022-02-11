@@ -926,7 +926,8 @@
 		/obj/item/stock_parts/console_screen,
 		/obj/item/stock_parts/manipulator,
 		/obj/item/stock_parts/micro_laser,
-		/obj/item/stock_parts/scanning_module
+		/obj/item/stock_parts/scanning_module,
+		/obj/item/stock_parts/capacitor
 	)
 
 /obj/item/storage/pouch/electronics/full/fill_preset_inventory()

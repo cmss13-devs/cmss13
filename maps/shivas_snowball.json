@@ -10,6 +10,7 @@
         "/datum/equipment_preset/survivor/doctor/shiva",
         "/datum/equipment_preset/survivor/scientist/shiva",
         "/datum/equipment_preset/survivor/engineer/shiva",
+        "/datum/equipment_preset/survivor/colonial_marshal/shiva",
         "/datum/equipment_preset/survivor/security/shiva"
     ],
     "defcon_triggers": [

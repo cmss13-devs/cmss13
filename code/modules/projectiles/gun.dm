@@ -257,7 +257,6 @@
 	if(auto_retrieval_slot)
 		AddElement(/datum/element/drop_retrieval/gun, auto_retrieval_slot)
 
-
 /obj/item/weapon/gun/proc/set_gun_attachment_offsets()
 	attachable_offset = null
 

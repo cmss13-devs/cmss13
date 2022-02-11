@@ -101,6 +101,75 @@
 	current_mag = /obj/item/ammo_magazine/rifle/rubber
 
 //-------------------------------------------------------
+//NSG 23 ASSAULT RIFLE - PMC PRIMARY RIFLE
+
+/obj/item/weapon/gun/rifle/nsg23
+	name = "\improper NSG 23 assault rifle"
+	desc = "A rare sight, this rifle is seen most commonly in the hands of Weyland-Yutani PMCs. Compared to the M41A MK2, it has noticeably improved handling and vastly improved performance at long and medium range, but compares similarly up close."
+	icon_state = "nsg23"
+	item_state = "nsg23"
+	fire_sound = "gun_nsg23"
+	reload_sound = 'sound/weapons/handling/nsg23_reload.ogg'
+	unload_sound = 'sound/weapons/handling/nsg23_unload.ogg'
+	cocked_sound = 'sound/weapons/handling/nsg23_cocked.ogg'
+	aim_slowdown = SLOWDOWN_ADS_QUICK
+	wield_delay = WIELD_DELAY_VERY_FAST
+	current_mag = /obj/item/ammo_magazine/rifle/nsg23
+	attachable_allowed = list(
+						/obj/item/attachable/suppressor,
+						/obj/item/attachable/bayonet,
+						/obj/item/attachable/reddot,
+						/obj/item/attachable/reflex,
+						/obj/item/attachable/flashlight,
+						/obj/item/attachable/bipod,
+						/obj/item/attachable/extended_barrel,
+						/obj/item/attachable/stock/nsg23,
+						/obj/item/attachable/attached_gun/grenade,
+						/obj/item/attachable/scope/mini/nsg23)
+
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON|GUN_BURST_ONLY|GUN_WY_RESTRICTED
+	starting_attachment_types = list(/obj/item/attachable/scope/mini/nsg23,
+								/obj/item/attachable/attached_gun/flamer)
+
+/obj/item/weapon/gun/rifle/nsg23/Initialize(mapload, spawn_empty)
+	. = ..()
+	update_icon()
+
+/obj/item/weapon/gun/rifle/nsg23/set_gun_attachment_offsets()
+	attachable_offset = list("muzzle_x" = 32, "muzzle_y" = 16,"rail_x" = 13, "rail_y" = 22, "under_x" = 21, "under_y" = 10, "stock_x" = 5, "stock_y" = 17)
+
+/obj/item/weapon/gun/rifle/nsg23/set_gun_config_values()
+	..()
+	fire_delay = FIRE_DELAY_TIER_7
+	burst_amount = BURST_AMOUNT_TIER_3
+	burst_delay = FIRE_DELAY_TIER_8
+	accuracy_mult = BASE_ACCURACY_MULT + HIT_ACCURACY_MULT_TIER_10
+	accuracy_mult_unwielded = BASE_ACCURACY_MULT - HIT_ACCURACY_MULT_TIER_7
+	scatter = SCATTER_AMOUNT_TIER_9
+	burst_scatter_mult = SCATTER_AMOUNT_TIER_10
+	scatter_unwielded = SCATTER_AMOUNT_TIER_2
+	damage_mult = BASE_BULLET_DAMAGE_MULT + BULLET_DAMAGE_MULT_TIER_8
+	recoil_unwielded = RECOIL_AMOUNT_TIER_2
+	damage_falloff_mult = 0
+
+/obj/item/weapon/gun/rifle/nsg23/handle_starting_attachment()
+	..()
+	var/obj/item/attachable/stock/nsg23/S = new(src)
+	S.flags_attach_features &= ~ATTACH_REMOVABLE
+	S.Attach(src)
+	update_attachable(S.slot)
+
+//has no scope or underbarrel
+/obj/item/weapon/gun/rifle/nsg23/stripped
+	starting_attachment_types = list() //starts with the stock anyways due to handle_starting_attachment()
+
+/obj/item/weapon/gun/rifle/nsg23/no_lock
+	flags_gun_features = GUN_AUTO_EJECTOR|GUN_CAN_POINTBLANK|GUN_AMMO_COUNTER|GUN_BURST_ON|GUN_BURST_ONLY
+
+/obj/item/weapon/gun/rifle/nsg23/no_lock/stripped
+	starting_attachment_types = list() //starts with the stock anyways due to handle_starting_attachment()
+
+//-------------------------------------------------------
 //M41A PMC VARIANT
 
 /obj/item/weapon/gun/rifle/m41a/elite

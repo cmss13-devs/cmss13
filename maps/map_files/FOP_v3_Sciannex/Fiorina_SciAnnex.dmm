@@ -4105,10 +4105,6 @@
 /turf/open/floor/prison,
 /area/fiorina/tumor/servers)
 "csT" = (
-/mob/living/simple_animal/cat/George{
-	desc = "A fierce caracal with floppy ears. Quite the murderer in disguise.";
-	name = "Hannibal"
-	},
 /turf/open/floor/prison{
 	icon_state = "darkredfull2"
 	},

@@ -660,7 +660,7 @@ var/list/datum/mob_hud/huds = list(
 				marine_rk = "dcc"
 			if(JOB_CREWMAN)
 				marine_rk = "tc"
-			if(JOB_PROVOST_OFFICER || JOB_PROVOST_ENFORCER)
+			if(JOB_PROVOST_OFFICER, JOB_PROVOST_ENFORCER)
 				marine_rk = "pvo"
 			if(JOB_PROVOST_TML)
 				marine_rk = "pvtml"
@@ -670,7 +670,7 @@ var/list/datum/mob_hud/huds = list(
 			if(JOB_PROVOST_ADVISOR)
 				marine_rk = "pva"
 				border_rk = "command"
-			if(JOB_PROVOST_MARSHAL || JOB_PROVOST_CMARSHAL || JOB_PROVOST_SMARSHAL)
+			if(JOB_PROVOST_MARSHAL, JOB_PROVOST_CMARSHAL, JOB_PROVOST_SMARSHAL)
 				marine_rk = "pvm"
 				border_rk = "command"
 			if(JOB_CHIEF_POLICE)

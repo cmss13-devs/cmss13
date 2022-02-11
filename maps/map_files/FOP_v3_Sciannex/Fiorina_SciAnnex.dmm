@@ -6417,11 +6417,6 @@
 "dNh" = (
 /turf/open/auto_turf/sand/layer1,
 /area/fiorina/lz/near_lzI)
-"dNn" = (
-/obj/structure/window/framed/prison/reinforced/hull,
-/obj/structure/window/framed/prison,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/security)
 "dNF" = (
 /turf/open/floor/prison{
 	dir = 10;
@@ -9796,10 +9791,6 @@
 	},
 /turf/open/floor/plating/prison,
 /area/fiorina/station/transit_hub)
-"fUM" = (
-/obj/structure/window/framed/prison/reinforced,
-/turf/open/floor/plating/prison,
-/area/fiorina/station/disco)
 "fUX" = (
 /obj/structure/bedsheetbin,
 /turf/open/floor/plating/prison,
@@ -64733,7 +64724,7 @@ cME
 cME
 cME
 cME
-dNn
+gIB
 sTa
 sTa
 dCM
@@ -64945,7 +64936,7 @@ cME
 cME
 cME
 cME
-dNn
+gIB
 tHs
 tHs
 dCM
@@ -73580,7 +73571,7 @@ sMj
 miU
 xKX
 hgJ
-fUM
+mlC
 bQM
 cAW
 rOa
@@ -73792,7 +73783,7 @@ fBi
 xKX
 rym
 rym
-fUM
+mlC
 rOa
 rOa
 rOa
@@ -74004,7 +73995,7 @@ tom
 vGv
 uzO
 dhe
-fUM
+mlC
 bQM
 rOa
 cAW
@@ -75472,7 +75463,7 @@ uwk
 bQM
 rOa
 bQM
-uwk
+jmG
 hul
 cKa
 cKa
@@ -76108,7 +76099,7 @@ jmG
 bQM
 rOa
 bQM
-jmG
+uwk
 vbt
 fyi
 mIE

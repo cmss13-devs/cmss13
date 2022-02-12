@@ -132,3 +132,74 @@
 /area/varadero/interior/electrical
 	name = "New Varadero - Electrical Annex"
 	icon_state = "req4"
+
+/area/varadero/interior/toilets
+	name = "New Varadero - Restrooms"
+	icon_state = "req0"
+
+/area/varadero/interior/technical_storage
+	name = "New Varadero - Technical Storage"
+	icon_state = "req3"
+
+/area/varadero/interior/laundry
+	name = "New Varadero - Laundry"
+	icon_state = "req2"
+
+/area/varadero/interior/disposals
+	name = "New Varadero - Disposals"
+	icon_state = "offices4"
+
+/area/varadero/interior/administration
+	name = "New Varadero - Administrative Offices"
+	icon_state = "offices2"
+
+/area/varadero/interior/library
+	name = "New Varadero - Library"
+	icon_state = "offices0"
+
+/area/varadero/interior/court
+	name = "New Varadero - Basketball Court"
+	icon_state = "req4"
+
+/area/varadero/interior/mess
+	name = "New Varadero - Mess Hall"
+	icon_state = "req2"
+
+/area/varadero/interior/bunks
+	name = "New Varadero - Level 1 Quarters"
+	icon_state = "req3"
+
+/area/varadero/interior/security
+	name = "New Varadero - Security Offices"
+	icon_state = "offices0"
+
+/area/varadero/interior/records
+	name = "New Varadero - Records"
+	icon_state = "offices2"
+
+/area/varadero/interior/rear_elevator
+	name = "New Varadero - Main Lift"
+	icon_state = "req3"
+
+/area/varadero/interior_protected/caves
+	name = "New Varadero - Research Caves"
+	icon_state = "tunnels4"
+	requires_power = FALSE
+
+/area/varadero/interior_protected/caves/east
+	name = "New Varadero - Beach Caves"
+	icon_state = "tunnels4"
+
+/area/varadero/interior_protected/caves/central
+	name = "New Varadero - Grass Caves"
+	icon_state = "tunnels3"
+
+/area/varadero/interior_protected/caves/digsite
+	name = "New Varadero - Dig Site"
+	icon_state = "tunnels4"
+
+/area/varadero/interior_protected/vessel
+	name = "New Varadero - Unknown Vessel"
+	icon_state = "req0"
+
+
